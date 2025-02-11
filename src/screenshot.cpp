@@ -16,9 +16,7 @@
 #include "screenshot_gui.h"
 #include "blitter/factory.hpp"
 #include "zoom_func.h"
-#include "core/endian_func.hpp"
 #include "saveload/saveload.h"
-#include "company_base.h"
 #include "company_func.h"
 #include "strings_func.h"
 #include "error.h"
@@ -29,6 +27,7 @@
 #include "landscape.h"
 #include "video/video_driver.hpp"
 #include "smallmap_gui.h"
+#include "screenshot_type.h"
 
 #include "table/strings.h"
 
@@ -37,538 +36,34 @@
 static const char * const SCREENSHOT_NAME = "screenshot"; ///< Default filename of a saved screenshot.
 static const char * const HEIGHTMAP_NAME  = "heightmap";  ///< Default filename of a saved heightmap.
 
-std::string _screenshot_format_name;  ///< Extension of the current screenshot format (corresponds with #_cur_screenshot_format).
+std::string _screenshot_format_name;  ///< Extension of the current screenshot format.
 static std::string _screenshot_name;  ///< Filename of the screenshot file.
 std::string _full_screenshot_path;    ///< Pathname of the screenshot file.
 uint _heightmap_highest_peak;         ///< When saving a heightmap, this contains the highest peak on the map.
 
 /**
- * Callback function signature for generating lines of pixel data to be written to the screenshot file.
- * @param userdata Pointer to user data.
- * @param buf      Destination buffer.
- * @param y        Line number of the first line to write.
- * @param pitch    Number of pixels to write (1 byte for 8bpp, 4 bytes for 32bpp). @see Colour
- * @param n        Number of lines to write.
+ * Get the screenshot provider for the selected format.
+ * If the selected provider is not found, then the first provider will be used instead.
+ * @returns ScreenshotProvider, or null if none exist.
  */
-typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, uint n);
-
-/**
- * Function signature for a screenshot generation routine for one of the available formats.
- * @param name        Filename, including extension.
- * @param callb       Callback function for generating lines of pixels.
- * @param userdata    User data, passed on to \a callb.
- * @param w           Width of the image in pixels.
- * @param h           Height of the image in pixels.
- * @param pixelformat Bits per pixel (bpp), either 8 or 32.
- * @param palette     %Colour palette (for 8bpp images).
- * @return File was written successfully.
- */
-typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
-
-/** Screenshot format information. */
-struct ScreenshotFormat {
-	const char *extension;       ///< File extension.
-	ScreenshotHandlerProc *proc; ///< Function for writing the screenshot.
-};
-
-#define MKCOLOUR(x)         TO_LE32(x)
-
-/*************************************************
- **** SCREENSHOT CODE FOR WINDOWS BITMAP (.BMP)
- *************************************************/
-
-/** BMP File Header (stored in little endian) */
-PACK(struct BitmapFileHeader {
-	uint16_t type;
-	uint32_t size;
-	uint32_t reserved;
-	uint32_t off_bits;
-});
-static_assert(sizeof(BitmapFileHeader) == 14);
-
-/** BMP Info Header (stored in little endian) */
-struct BitmapInfoHeader {
-	uint32_t size;
-	int32_t width, height;
-	uint16_t planes, bitcount;
-	uint32_t compression, sizeimage, xpels, ypels, clrused, clrimp;
-};
-static_assert(sizeof(BitmapInfoHeader) == 40);
-
-/** Format of palette data in BMP header */
-struct RgbQuad {
-	uint8_t blue, green, red, reserved;
-};
-static_assert(sizeof(RgbQuad) == 4);
-
-/**
- * Generic .BMP writer
- * @param name file name including extension
- * @param callb callback used for gathering rendered image
- * @param userdata parameters forwarded to \a callb
- * @param w width in pixels
- * @param h height in pixels
- * @param pixelformat bits per pixel
- * @param palette colour palette (for 8bpp mode)
- * @return was everything ok?
- * @see ScreenshotHandlerProc
- */
-static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
+static ScreenshotProvider *GetScreenshotProvider()
 {
-	uint bpp; // bytes per pixel
-	switch (pixelformat) {
-		case 8:  bpp = 1; break;
-		/* 32bpp mode is saved as 24bpp BMP */
-		case 32: bpp = 3; break;
-		/* Only implemented for 8bit and 32bit images so far */
-		default: return false;
-	}
+	auto providers = ProviderManager<ScreenshotProvider>::GetProviders();
+	if (providers.empty()) return nullptr;
 
-	auto of = FileHandle::Open(name, "wb");
-	if (!of.has_value()) return false;
-	auto &f = *of;
+	auto it = std::ranges::find_if(providers, [](const auto &p) { return p->GetName() == _screenshot_format_name; });
+	if (it != std::end(providers)) return *it;
 
-	/* Each scanline must be aligned on a 32bit boundary */
-	uint bytewidth = Align(w * bpp, 4); // bytes per line in file
-
-	/* Size of palette. Only present for 8bpp mode */
-	uint pal_size = pixelformat == 8 ? sizeof(RgbQuad) * 256 : 0;
-
-	/* Setup the file header */
-	BitmapFileHeader bfh;
-	bfh.type = TO_LE16('MB');
-	bfh.size = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size + static_cast<size_t>(bytewidth) * h);
-	bfh.reserved = 0;
-	bfh.off_bits = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size);
-
-	/* Setup the info header */
-	BitmapInfoHeader bih;
-	bih.size = TO_LE32(sizeof(BitmapInfoHeader));
-	bih.width = TO_LE32(w);
-	bih.height = TO_LE32(h);
-	bih.planes = TO_LE16(1);
-	bih.bitcount = TO_LE16(bpp * 8);
-	bih.compression = 0;
-	bih.sizeimage = 0;
-	bih.xpels = 0;
-	bih.ypels = 0;
-	bih.clrused = 0;
-	bih.clrimp = 0;
-
-	/* Write file header and info header */
-	if (fwrite(&bfh, sizeof(bfh), 1, f) != 1 || fwrite(&bih, sizeof(bih), 1, f) != 1) {
-		return false;
-	}
-
-	if (pixelformat == 8) {
-		/* Convert the palette to the windows format */
-		RgbQuad rq[256];
-		for (uint i = 0; i < 256; i++) {
-			rq[i].red   = palette[i].r;
-			rq[i].green = palette[i].g;
-			rq[i].blue  = palette[i].b;
-			rq[i].reserved = 0;
-		}
-		/* Write the palette */
-		if (fwrite(rq, sizeof(rq), 1, f) != 1) {
-			return false;
-		}
-	}
-
-	/* Try to use 64k of memory, store between 16 and 128 lines */
-	uint maxlines = Clamp(65536 / (w * pixelformat / 8), 16, 128); // number of lines per iteration
-
-	std::vector<uint8_t> buff(maxlines * w * pixelformat / 8); // buffer which is rendered to
-	std::vector<uint8_t> line(bytewidth); // one line, stored to file
-
-	/* Start at the bottom, since bitmaps are stored bottom up */
-	do {
-		uint n = std::min(h, maxlines);
-		h -= n;
-
-		/* Render the pixels */
-		callb(userdata, buff.data(), h, w, n);
-
-		/* Write each line */
-		while (n-- != 0) {
-			if (pixelformat == 8) {
-				/* Move to 'line', leave last few pixels in line zeroed */
-				memcpy(line.data(), buff.data() + n * w, w);
-			} else {
-				/* Convert from 'native' 32bpp to BMP-like 24bpp.
-				 * Works for both big and little endian machines */
-				Colour *src = ((Colour *)buff.data()) + n * w;
-				uint8_t *dst = line.data();
-				for (uint i = 0; i < w; i++) {
-					dst[i * 3    ] = src[i].b;
-					dst[i * 3 + 1] = src[i].g;
-					dst[i * 3 + 2] = src[i].r;
-				}
-			}
-			/* Write to file */
-			if (fwrite(line.data(), bytewidth, 1, f) != 1) {
-				return false;
-			}
-		}
-	} while (h != 0);
-
-
-	return true;
+	return providers.front();
 }
-
-/*********************************************************
- **** SCREENSHOT CODE FOR PORTABLE NETWORK GRAPHICS (.PNG)
- *********************************************************/
-#if defined(WITH_PNG)
-#include <png.h>
-
-#ifdef PNG_TEXT_SUPPORTED
-#include "rev.h"
-#include "newgrf_config.h"
-#include "ai/ai_info.hpp"
-#include "company_base.h"
-#include "base_media_base.h"
-#endif /* PNG_TEXT_SUPPORTED */
-
-static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
-{
-	Debug(misc, 0, "[libpng] error: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
-	longjmp(png_jmpbuf(png_ptr), 1);
-}
-
-static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
-{
-	Debug(misc, 1, "[libpng] warning: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
-}
-
-/**
- * Generic .PNG file image writer.
- * @param name        Filename, including extension.
- * @param callb       Callback function for generating lines of pixels.
- * @param userdata    User data, passed on to \a callb.
- * @param w           Width of the image in pixels.
- * @param h           Height of the image in pixels.
- * @param pixelformat Bits per pixel (bpp), either 8 or 32.
- * @param palette     %Colour palette (for 8bpp images).
- * @return File was written successfully.
- * @see ScreenshotHandlerProc
- */
-static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
-{
-	png_color rq[256];
-	uint i, y, n;
-	uint maxlines;
-	uint bpp = pixelformat / 8;
-	png_structp png_ptr;
-	png_infop info_ptr;
-
-	/* only implemented for 8bit and 32bit images so far. */
-	if (pixelformat != 8 && pixelformat != 32) return false;
-
-	auto of = FileHandle::Open(name, "wb");
-	if (!of.has_value()) return false;
-	auto &f = *of;
-
-	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, const_cast<char *>(name), png_my_error, png_my_warning);
-
-	if (png_ptr == nullptr) {
-		return false;
-	}
-
-	info_ptr = png_create_info_struct(png_ptr);
-	if (info_ptr == nullptr) {
-		png_destroy_write_struct(&png_ptr, (png_infopp)nullptr);
-		return false;
-	}
-
-	if (setjmp(png_jmpbuf(png_ptr))) {
-		png_destroy_write_struct(&png_ptr, &info_ptr);
-		return false;
-	}
-
-	png_init_io(png_ptr, f);
-
-	png_set_filter(png_ptr, 0, PNG_FILTER_NONE);
-
-	png_set_IHDR(png_ptr, info_ptr, w, h, 8, pixelformat == 8 ? PNG_COLOR_TYPE_PALETTE : PNG_COLOR_TYPE_RGB,
-		PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
-
-#ifdef PNG_TEXT_SUPPORTED
-	/* Try to add some game metadata to the PNG screenshot so
-	 * it's more useful for debugging and archival purposes. */
-	png_text_struct text[2];
-	memset(text, 0, sizeof(text));
-	text[0].key = const_cast<char *>("Software");
-	text[0].text = const_cast<char *>(_openttd_revision);
-	text[0].text_length = strlen(_openttd_revision);
-	text[0].compression = PNG_TEXT_COMPRESSION_NONE;
-
-	std::string message;
-	message.reserve(1024);
-	fmt::format_to(std::back_inserter(message), "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
-	message += "NewGRFs:\n";
-	if (_game_mode != GM_MENU) {
-		for (const auto &c : _grfconfig) {
-			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
-		}
-	}
-	message += "\nCompanies:\n";
-	for (const Company *c : Company::Iterate()) {
-		if (c->ai_info == nullptr) {
-			fmt::format_to(std::back_inserter(message), "{:2d}: Human\n", (int)c->index);
-		} else {
-			fmt::format_to(std::back_inserter(message), "{:2d}: {} (v{})\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
-		}
-	}
-	text[1].key = const_cast<char *>("Description");
-	text[1].text = const_cast<char *>(message.c_str());
-	text[1].text_length = message.size();
-	text[1].compression = PNG_TEXT_COMPRESSION_zTXt;
-	png_set_text(png_ptr, info_ptr, text, 2);
-#endif /* PNG_TEXT_SUPPORTED */
-
-	if (pixelformat == 8) {
-		/* convert the palette to the .PNG format. */
-		for (i = 0; i != 256; i++) {
-			rq[i].red   = palette[i].r;
-			rq[i].green = palette[i].g;
-			rq[i].blue  = palette[i].b;
-		}
-
-		png_set_PLTE(png_ptr, info_ptr, rq, 256);
-	}
-
-	png_write_info(png_ptr, info_ptr);
-	png_set_flush(png_ptr, 512);
-
-	if (pixelformat == 32) {
-		png_color_8 sig_bit;
-
-		/* Save exact colour/alpha resolution */
-		sig_bit.alpha = 0;
-		sig_bit.blue  = 8;
-		sig_bit.green = 8;
-		sig_bit.red   = 8;
-		sig_bit.gray  = 8;
-		png_set_sBIT(png_ptr, info_ptr, &sig_bit);
-
-		if constexpr (std::endian::native == std::endian::little) {
-			png_set_bgr(png_ptr);
-			png_set_filler(png_ptr, 0, PNG_FILLER_AFTER);
-		} else {
-			png_set_filler(png_ptr, 0, PNG_FILLER_BEFORE);
-		}
-	}
-
-	/* use by default 64k temp memory */
-	maxlines = Clamp(65536 / w, 16, 128);
-
-	/* now generate the bitmap bits */
-	std::vector<uint8_t> buff(static_cast<size_t>(w) * maxlines * bpp); // by default generate 128 lines at a time.
-
-	y = 0;
-	do {
-		/* determine # lines to write */
-		n = std::min(h - y, maxlines);
-
-		/* render the pixels into the buffer */
-		callb(userdata, buff.data(), y, w, n);
-		y += n;
-
-		/* write them to png */
-		for (i = 0; i != n; i++) {
-			png_write_row(png_ptr, (png_bytep)buff.data() + i * w * bpp);
-		}
-	} while (y != h);
-
-	png_write_end(png_ptr, info_ptr);
-	png_destroy_write_struct(&png_ptr, &info_ptr);
-
-	return true;
-}
-#endif /* WITH_PNG */
-
-
-/*************************************************
- **** SCREENSHOT CODE FOR ZSOFT PAINTBRUSH (.PCX)
- *************************************************/
-
-/** Definition of a PCX file header. */
-struct PcxHeader {
-	uint8_t manufacturer;
-	uint8_t version;
-	uint8_t rle;
-	uint8_t bpp;
-	uint32_t unused;
-	uint16_t xmax, ymax;
-	uint16_t hdpi, vdpi;
-	uint8_t pal_small[16 * 3];
-	uint8_t reserved;
-	uint8_t planes;
-	uint16_t pitch;
-	uint16_t cpal;
-	uint16_t width;
-	uint16_t height;
-	uint8_t filler[54];
-};
-static_assert(sizeof(PcxHeader) == 128);
-
-/**
- * Generic .PCX file image writer.
- * @param name        Filename, including extension.
- * @param callb       Callback function for generating lines of pixels.
- * @param userdata    User data, passed on to \a callb.
- * @param w           Width of the image in pixels.
- * @param h           Height of the image in pixels.
- * @param pixelformat Bits per pixel (bpp), either 8 or 32.
- * @param palette     %Colour palette (for 8bpp images).
- * @return File was written successfully.
- * @see ScreenshotHandlerProc
- */
-static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
-{
-	uint maxlines;
-	uint y;
-	PcxHeader pcx;
-	bool success;
-
-	if (pixelformat == 32) {
-		Debug(misc, 0, "Can't convert a 32bpp screenshot to PCX format. Please pick another format.");
-		return false;
-	}
-	if (pixelformat != 8 || w == 0) return false;
-
-	auto of = FileHandle::Open(name, "wb");
-	if (!of.has_value()) return false;
-	auto &f = *of;
-
-	memset(&pcx, 0, sizeof(pcx));
-
-	/* setup pcx header */
-	pcx.manufacturer = 10;
-	pcx.version = 5;
-	pcx.rle = 1;
-	pcx.bpp = 8;
-	pcx.xmax = TO_LE16(w - 1);
-	pcx.ymax = TO_LE16(h - 1);
-	pcx.hdpi = TO_LE16(320);
-	pcx.vdpi = TO_LE16(320);
-
-	pcx.planes = 1;
-	pcx.cpal = TO_LE16(1);
-	pcx.width = pcx.pitch = TO_LE16(w);
-	pcx.height = TO_LE16(h);
-
-	/* write pcx header */
-	if (fwrite(&pcx, sizeof(pcx), 1, f) != 1) {
-		return false;
-	}
-
-	/* use by default 64k temp memory */
-	maxlines = Clamp(65536 / w, 16, 128);
-
-	/* now generate the bitmap bits */
-	std::vector<uint8_t> buff(static_cast<size_t>(w) * maxlines); // by default generate 128 lines at a time.
-
-	y = 0;
-	do {
-		/* determine # lines to write */
-		uint n = std::min(h - y, maxlines);
-		uint i;
-
-		/* render the pixels into the buffer */
-		callb(userdata, buff.data(), y, w, n);
-		y += n;
-
-		/* write them to pcx */
-		for (i = 0; i != n; i++) {
-			const uint8_t *bufp = buff.data() + i * w;
-			uint8_t runchar = bufp[0];
-			uint runcount = 1;
-			uint j;
-
-			/* for each pixel... */
-			for (j = 1; j < w; j++) {
-				uint8_t ch = bufp[j];
-
-				if (ch != runchar || runcount >= 0x3f) {
-					if (runcount > 1 || (runchar & 0xC0) == 0xC0) {
-						if (fputc(0xC0 | runcount, f) == EOF) {
-							return false;
-						}
-					}
-					if (fputc(runchar, f) == EOF) {
-						return false;
-					}
-					runcount = 0;
-					runchar = ch;
-				}
-				runcount++;
-			}
-
-			/* write remaining bytes.. */
-			if (runcount > 1 || (runchar & 0xC0) == 0xC0) {
-				if (fputc(0xC0 | runcount, f) == EOF) {
-					return false;
-				}
-			}
-			if (fputc(runchar, f) == EOF) {
-				return false;
-			}
-		}
-	} while (y != h);
-
-	/* write 8-bit colour palette */
-	if (fputc(12, f) == EOF) {
-		return false;
-	}
-
-	/* Palette is word-aligned, copy it to a temporary byte array */
-	uint8_t tmp[256 * 3];
-
-	for (uint i = 0; i < 256; i++) {
-		tmp[i * 3 + 0] = palette[i].r;
-		tmp[i * 3 + 1] = palette[i].g;
-		tmp[i * 3 + 2] = palette[i].b;
-	}
-	success = fwrite(tmp, sizeof(tmp), 1, f) == 1;
-
-	return success;
-}
-
-/*************************************************
- **** GENERIC SCREENSHOT CODE
- *************************************************/
-
-/** Available screenshot formats. */
-static const ScreenshotFormat _screenshot_formats[] = {
-#if defined(WITH_PNG)
-	{"png", &MakePNGImage},
-#endif
-	{"bmp", &MakeBMPImage},
-	{"pcx", &MakePCXImage},
-};
-
-/* The currently loaded screenshot format. Set to a valid value as it might be used in early crash logs, when InitializeScreenshotFormats has not been called yet. */
-static const ScreenshotFormat *_cur_screenshot_format = std::begin(_screenshot_formats);
 
 /** Get filename extension of current screenshot file format. */
-const char *GetCurrentScreenshotExtension()
+std::string_view GetCurrentScreenshotExtension()
 {
-	return _cur_screenshot_format->extension;
-}
+	auto provider = GetScreenshotProvider();
+	if (provider == nullptr) return {};
 
-/** Initialize screenshot format information on startup, with #_screenshot_format_name filled from the loadsave code. */
-void InitializeScreenshotFormats()
-{
-	for (auto &format : _screenshot_formats) {
-		if (_screenshot_format_name == format.extension) {
-			_cur_screenshot_format = &format;
-			return;
-		}
-	}
-
-	_cur_screenshot_format = std::begin(_screenshot_formats);
+	return provider->GetName();
 }
 
 /**
@@ -642,7 +137,7 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
  * @param crashlog   Create path for crash.png
  * @return Pathname for a screenshot file.
  */
-static const char *MakeScreenshotName(const char *default_fn, const char *ext, bool crashlog = false)
+static const char *MakeScreenshotName(std::string_view default_fn, std::string_view ext, bool crashlog = false)
 {
 	bool generate = _screenshot_name.empty();
 
@@ -682,7 +177,10 @@ static const char *MakeScreenshotName(const char *default_fn, const char *ext, b
 /** Make a screenshot of the current screen. */
 static bool MakeSmallScreenshot(bool crashlog)
 {
-	return _cur_screenshot_format->proc(MakeScreenshotName(SCREENSHOT_NAME, _cur_screenshot_format->extension, crashlog), CurrentScreenCallback, nullptr, _screen.width, _screen.height,
+	auto provider = GetScreenshotProvider();
+	if (provider == nullptr) return false;
+
+	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName(), crashlog), CurrentScreenCallback, nullptr, _screen.width, _screen.height,
 			BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
@@ -776,10 +274,13 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32_t width, uin
  */
 static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint32_t height = 0)
 {
+	auto provider = GetScreenshotProvider();
+	if (provider == nullptr) return false;
+
 	Viewport vp;
 	SetupScreenshotViewport(t, &vp, width, height);
 
-	return _cur_screenshot_format->proc(MakeScreenshotName(SCREENSHOT_NAME, _cur_screenshot_format->extension), LargeWorldCallback, &vp, vp.width, vp.height,
+	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()), LargeWorldCallback, &vp, vp.width, vp.height,
 			BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
@@ -812,6 +313,9 @@ static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
  */
 bool MakeHeightmapScreenshot(const char *filename)
 {
+	auto provider = GetScreenshotProvider();
+	if (provider == nullptr) return false;
+
 	Colour palette[256];
 	for (uint i = 0; i < lengthof(palette); i++) {
 		palette[i].a = 0xff;
@@ -826,7 +330,7 @@ bool MakeHeightmapScreenshot(const char *filename)
 		_heightmap_highest_peak = std::max(h, _heightmap_highest_peak);
 	}
 
-	return _cur_screenshot_format->proc(filename, HeightmapCallback, nullptr, Map::SizeX(), Map::SizeY(), 8, palette);
+	return provider->MakeImage(filename, HeightmapCallback, nullptr, Map::SizeX(), Map::SizeY(), 8, palette);
 }
 
 static ScreenshotType _confirmed_screenshot_type; ///< Screenshot type the current query is about to confirm.
@@ -910,7 +414,12 @@ static bool RealMakeScreenshot(ScreenshotType t, std::string name, uint32_t widt
 			break;
 
 		case SC_HEIGHTMAP: {
-			ret = MakeHeightmapScreenshot(MakeScreenshotName(HEIGHTMAP_NAME, _cur_screenshot_format->extension));
+			auto provider = GetScreenshotProvider();
+			if (provider == nullptr) {
+				ret = false;
+			} else {
+				ret = MakeHeightmapScreenshot(MakeScreenshotName(HEIGHTMAP_NAME, provider->GetName()));
+			}
 			break;
 		}
 
@@ -991,5 +500,8 @@ static void MinimapScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
  */
 bool MakeMinimapWorldScreenshot()
 {
-	return _cur_screenshot_format->proc(MakeScreenshotName(SCREENSHOT_NAME, _cur_screenshot_format->extension), MinimapScreenCallback, nullptr, Map::SizeX(), Map::SizeY(), 32, _cur_palette.palette);
+	auto provider = GetScreenshotProvider();
+	if (provider == nullptr) return false;
+
+	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()), MinimapScreenCallback, nullptr, Map::SizeX(), Map::SizeY(), 32, _cur_palette.palette);
 }

@@ -10,9 +10,7 @@
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H
 
-void InitializeScreenshotFormats();
-
-const char *GetCurrentScreenshotExtension();
+std::string_view GetCurrentScreenshotExtension();
 
 /** Type of requested screenshot */
 enum ScreenshotType : uint8_t {
