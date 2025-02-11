@@ -299,7 +299,6 @@ if(IPO_FOUND)
     set_target_properties(openttd PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELWITHDEBINFO True)
 endif()
 set_target_properties(openttd PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
-process_compile_flags()
 
 include(LinkPackage)
 link_package(PNG TARGET PNG::PNG ENCOURAGED)
