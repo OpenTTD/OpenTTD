@@ -2074,13 +2074,18 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Περιορι�
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Επιτρέπεται στις πόλεις να μπλοκάρουν την κατασκευή αεροδρομίων με βάση το επίπεδο αποδοχής θορύβου, το οποίο βασίζεται στον πληθυσμό της πόλης και στο μέγεθος και την απόσταση του αεροδρομίου. Εάν αυτή η ρύθμιση είναι απενεργοποιημένη, οι πόλεις επιτρέπουν μόνο δύο αεροδρόμια, εκτός εάν η στάση της τοπικής αρχής έχει οριστεί σε «Ανεκτική»
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ίδρυση πόλεων στο παιχνίδι: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν τη ρύθμιση επιτρέπει στους παίκτες να ιδρύσουν νέες πόλεις στο παιχνίδι
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν τη ρύθμιση επιτρέπει στους παίκτες να ιδρύουν νέες πόλεις στο παιχνίδι
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Δεν επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Επιτρέπεται, προσαρμοσμένο σχέδιο πόλης
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Τοποθέτηση μεμονωμένων κατοικιών: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Η ενεργοποίηση αυτής της ρύθμισης επιτρέπει στους παίκτες να τοποθετούν σπίτια πόλεων χειροκίνητα
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Δεν επιτρέπεται
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Επιτρέπεται
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Επιτρέπεται, κατασκευασμένο πλήρως
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Δημιουργία εμπορευμάτων πόλης: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Η ποσότητα εμπορευμάτων που παράγεται απο σπίτια σε πόλεις, σε σχέση με τον συνολικό πληθυσμό της πόλης.{}Τετραγωνική ανάπτυξη: Μια πόλη διπλού μεγέθους παράγει τετραπλάσιο αριθμό επιβατών.{}Γραμμική ανάπτυξη: Μια πόλη διπλού μεγέθους παράγει διπλάσιο αριθμό επιβατών
@@ -2748,7 +2753,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Ο serve
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Οι άλλοι παίκτες δεν θα μπορούν να συνδεθούν στον server σας
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Λαμβάνεται το περιεχόμενο
+STR_CONTENT_TITLE                                               :{WHITE}Διαδικτυακό Περιεχόμενο
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Τύπος
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Τύπος περιεχόμενου
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Όνομα
@@ -2954,6 +2959,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Εξωτερι�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Εσωτερικά Προάστια
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Κέντρο της πόλης
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Αποτροπή αναβαθμίσεων
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Επιλέξτε αν αυτό το σπίτι θα προστατεύεται από αντικατάσταση καθώς η πόλη μεγαλώνει
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Ανενεργό
+STR_HOUSE_PICKER_PROTECT_ON                                     :Ενεργό
 
 STR_STATION_CLASS_DFLT                                          :Προεπιλεγμένος
 STR_STATION_CLASS_DFLT_STATION                                  :Προεπιλεγμένος σταθμός
@@ -3046,7 +3055,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλ
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Κατασκευή Καναλιού Νερού
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Κανάλια Νερού
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Κατασκευή καναλιών. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Κατασκευή καναλιών. Ctrl+Κλικ+Σύρσιμο για διαγώνια επιλογή περιοχής. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή υδατοφράκτη. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευή ναυπηγείου πλοίων (για αγορά και επισκευή πλοίων). Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Ctrl+Κλικ για επιλογή πρόσθετου σταθμού για συνένωση. Επίσης, πατήστε το Shift για εμφάνιση εκτιμώμενου κόστους μόνο
@@ -3231,6 +3240,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Τύπο
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας σιδηροτροχιάς: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας δρόμου: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Όριο ταχύτητας τραμ: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Η πόλη επιτρέπεται να αναπτυχθεί: {LTBLUE}Ναι
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Η πόλη επιτρέπεται να αναπτυχθεί: {LTBLUE}Όχι
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Πέτρες

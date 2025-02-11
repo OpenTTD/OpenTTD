@@ -1987,7 +1987,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允許
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允許，可自訂市鎮道路配置
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :設置一楝市鎮的樓房：{STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :啟用此設定允許玩家手動設置市鎮的樓房
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :禁止
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :允許
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :允許，完全建成
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城鎮貨物生成：{STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :貨物的產出速度取決於城市中的房屋，與城市的總人口數相關。{}二次方：兩倍人口的都市產出四倍量的貨物{}線性：兩倍人口的都市產出兩倍量的貨物
@@ -2201,7 +2206,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}積分�
 STR_INTRO_HELP                                                  :{BLACK}幫助和手冊
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}線上擴充內容
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 設定
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}遊戲腳本設定
 STR_INTRO_QUIT                                                  :{BLACK}離開
@@ -2655,7 +2660,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}你的�
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}其他玩家將無法連線到你的伺服器
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}內容下載中
+STR_CONTENT_TITLE                                               :{WHITE}線上擴充內容
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}種類
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}內容種類
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}名稱
@@ -2861,6 +2866,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :遠郊
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :近郊
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :市鎮中心
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :防止升級
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :選擇是否要保護這棟房子，以免隨著市鎮的發展而被替換
+STR_HOUSE_PICKER_PROTECT_OFF                                    :關閉
+STR_HOUSE_PICKER_PROTECT_ON                                     :開啟
 
 STR_STATION_CLASS_DFLT                                          :預設
 STR_STATION_CLASS_DFLT_STATION                                  :預設車站
@@ -2953,7 +2962,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}選擇�
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}興建水道
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水道
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}開鑿運河。按住 <Shift> 可顯示成本預估。
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}開鑿運河。按住 <Ctrl> 以對角線選擇區域。按住 <Shift> 可顯示成本預估。
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}興建水閘。按住 <Shift> 可顯示預估的興建費用
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}興建船塢 (用以購買及維護船舶)。按住 <Shift> 則可顯示預估成本
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}興建碼頭。按住 <Ctrl> 可興建相鄰車站，按住 <Shift> 可顯示預估的興建費用
@@ -3138,6 +3147,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}電車�
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}軌道速度限制：{LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}道路速度限制：{LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}電車速度限制：{LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}市鎮可升級：{LTBLUE}可以
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}市鎮可升級：{LTBLUE}不可
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :石頭

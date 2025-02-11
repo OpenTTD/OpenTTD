@@ -1540,7 +1540,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максима�
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Ограничение на длину строящихся туннелей
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Способ создания сырьевых предприятий: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Способ создания сырьевых предприятий.{}«Не создавать» - отключить возможность их создания транспортными компаниями.{}«Геологоразведка» - предприятие будет создано в случайном месте на карте; иногда геологи не находят месторождений, и постройка предприятия отменяется.{}«Как и остальные» - сырьевые предприятия строятся как и перерабатывающие, с выбором места постройки.
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Способ создания сырьевых предприятий.{}«Не создавать» - отключить возможность их создания транспортными компаниями.{}«Геологоразведка» - предприятие будет создано в случайном месте на карте; иногда геологи не находят месторождений, и строительство предприятия отменяется.{}«Как и остальные» - сырьевые предприятия строятся как и перерабатывающие, с выбором места размещения.
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не создавать
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :как и остальные
@@ -2138,7 +2138,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :запреще�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с выбором сети дорог
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Строительство отдельных зданий: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Настройка возможности самостоятельного размещения игроками городских зданий
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :запрещено
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :разрешено
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :разрешено, здания завершённые
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Количество грузов и пассажиров в городах: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Зависимость количества грузов и пассажиров от размера города.{}Линейная: в городе двукратного размера появляется в 2 раза больше пассажиров.{}Квадратичная: в городе двукратного размера появляется в 4 раза больше пассажиров.
@@ -2352,7 +2357,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Табл
 STR_INTRO_HELP                                                  :{BLACK}Помощь и документация
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Онлайн-контент
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Настройки ИИ
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Настройки игровых скриптов
 STR_INTRO_QUIT                                                  :{BLACK}Выход
@@ -2806,7 +2811,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Клие
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Другие игроки не смогут подключиться к вашему серверу
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента
+STR_CONTENT_TITLE                                               :{WHITE}Онлайн-контент
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Тип контента
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Название
@@ -2994,7 +2999,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Укаж
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Длина платформы
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Укажите длину ж/д станции
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Произвольно
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Постройка станции на указанном игроком участке
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Строительство станции на указанном игроком участке
 
 STR_PICKER_MODE_ALL                                             :Все
 STR_PICKER_MODE_ALL_TOOLTIP                                     :Показать все элементы
@@ -3032,6 +3037,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Перифер�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Центральные районы
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Центр
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Запрет улучшений
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Вы можете указать, что это здание нельзя заменять другим, несмотря на рост и расширение города.
+STR_HOUSE_PICKER_PROTECT_OFF                                    :отключён
+STR_HOUSE_PICKER_PROTECT_ON                                     :включён
 
 STR_STATION_CLASS_DFLT                                          :Стандартная станция
 STR_STATION_CLASS_DFLT_STATION                                  :Стандартная ж/д станция
@@ -3124,7 +3133,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выбе
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Судоходные коммуникации
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водные пути
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Строительство каналов. При нажатом Shift - оценка стоимости строительства.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Строительство каналов. Ctrl+перетаскивание - выбор диагональной области. При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Строительство шлюзов. При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Строительство доков (для приобретения и обслуживания судов). При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Строительство пристаней. Ctrl+щелчок - объединение новой станции с существующей. При нажатом Shift - оценка стоимости строительства.
@@ -3313,6 +3322,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Тип �
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Макс. скорость ж/д: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Макс. скорость авто: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Ограничение скорости трамваев: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Возможность обновления: {LTBLUE}да
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Возможность обновления: {LTBLUE}нет
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Камни
