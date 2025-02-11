@@ -1207,14 +1207,15 @@ static int SETTING_HEIGHT = 11;    ///< Height of a single setting in the tree v
  * Flags for #SettingEntry
  * @note The #SEF_BUTTONS_MASK matches expectations of the formal parameter 'state' of #DrawArrowButtons
  */
-enum SettingEntryFlags : uint8_t {
-	SEF_LEFT_DEPRESSED  = 0x01, ///< Of a numeric setting entry, the left button is depressed
-	SEF_RIGHT_DEPRESSED = 0x02, ///< Of a numeric setting entry, the right button is depressed
-	SEF_BUTTONS_MASK = (SEF_LEFT_DEPRESSED | SEF_RIGHT_DEPRESSED), ///< Bit-mask for button flags
-
-	SEF_LAST_FIELD = 0x04, ///< This entry is the last one in a (sub-)page
-	SEF_FILTERED   = 0x08, ///< Entry is hidden by the string filter
+enum class SettingEntryFlag : uint8_t {
+	LeftDepressed, ///< Of a numeric setting entry, the left button is depressed
+	RightDepressed, ///< Of a numeric setting entry, the right button is depressed
+	LastField, ///< This entry is the last one in a (sub-)page
+	Filtered, ///< Entry is hidden by the string filter
 };
+using SettingEntryFlags = EnumBitSet<SettingEntryFlag, uint8_t>;
+
+static constexpr SettingEntryFlags SEF_BUTTONS_MASK = {SettingEntryFlag::LeftDepressed, SettingEntryFlag::RightDepressed}; ///< Mask for button flags
 
 /** How the list of advanced settings is filtered. */
 enum RestrictionMode : uint8_t {
@@ -1238,10 +1239,10 @@ struct SettingFilter {
 
 /** Data structure describing a single setting in a tab */
 struct BaseSettingEntry {
-	uint8_t flags; ///< Flags of the setting entry. @see SettingEntryFlags
+	SettingEntryFlags flags; ///< Flags of the setting entry. @see SettingEntryFlags
 	uint8_t level; ///< Nesting level of this setting entry
 
-	BaseSettingEntry() : flags(0), level(0) {}
+	BaseSettingEntry() : flags(), level(0) {}
 	virtual ~BaseSettingEntry() = default;
 
 	virtual void Init(uint8_t level = 0);
@@ -1253,7 +1254,7 @@ struct BaseSettingEntry {
 	 * Set whether this is the last visible entry of the parent node.
 	 * @param last_field Value to set
 	 */
-	void SetLastField(bool last_field) { if (last_field) SETBITS(this->flags, SEF_LAST_FIELD); else CLRBITS(this->flags, SEF_LAST_FIELD); }
+	void SetLastField(bool last_field) { this->flags.Set(SettingEntryFlag::LastField, last_field); }
 
 	virtual uint Length() const = 0;
 	virtual void GetFoldingState([[maybe_unused]] bool &all_folded, [[maybe_unused]] bool &all_unfolded) const {}
@@ -1265,7 +1266,7 @@ struct BaseSettingEntry {
 	 * Check whether an entry is hidden due to filters
 	 * @return true if hidden.
 	 */
-	bool IsFiltered() const { return (this->flags & SEF_FILTERED) != 0; }
+	bool IsFiltered() const { return this->flags.Test(SettingEntryFlag::Filtered); }
 
 	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible) = 0;
 
@@ -1288,7 +1289,7 @@ struct SettingEntry : BaseSettingEntry {
 	uint GetMaxHelpHeight(int maxw) override;
 	bool UpdateFilterState(SettingFilter &filter, bool force_visible) override;
 
-	void SetButtons(uint8_t new_val);
+	void SetButtons(SettingEntryFlags new_val);
 
 protected:
 	void DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const override;
@@ -1438,7 +1439,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 		}
 		/* draw own |- prefix */
 		int halfway_y = y + SETTING_HEIGHT / 2;
-		int bottom_y = (flags & SEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
+		int bottom_y = flags.Test(SettingEntryFlag::LastField) ? halfway_y : y + SETTING_HEIGHT - 1;
 		GfxDrawLine(x + offset, y, x + offset, bottom_y, colour);
 		/* Small horizontal line from the last vertical line */
 		GfxDrawLine(x + offset, halfway_y, x + level_width - (rtl ? -WidgetDimensions::scaled.hsep_normal : WidgetDimensions::scaled.hsep_normal), halfway_y, colour);
@@ -1480,14 +1481,15 @@ void SettingEntry::ResetAll()
 }
 
 /**
- * Set the button-depressed flags (#SEF_LEFT_DEPRESSED and #SEF_RIGHT_DEPRESSED) to a specified value
+ * Set the button-depressed flags (#SettingsEntryFlag::LeftDepressed and #SettingsEntryFlag::RightDepressed) to a specified value
  * @param new_val New value for the button flags
  * @see SettingEntryFlags
  */
-void SettingEntry::SetButtons(uint8_t new_val)
+void SettingEntry::SetButtons(SettingEntryFlags new_val)
 {
-	assert((new_val & ~SEF_BUTTONS_MASK) == 0); // Should not touch any flags outside the buttons
-	this->flags = (this->flags & ~SEF_BUTTONS_MASK) | new_val;
+	assert((new_val & SEF_BUTTONS_MASK) == new_val); // Should not touch any flags outside the buttons
+	this->flags.Set(SettingEntryFlag::LeftDepressed, new_val.Test(SettingEntryFlag::LeftDepressed));
+	this->flags.Set(SettingEntryFlag::RightDepressed, new_val.Test(SettingEntryFlag::RightDepressed));
 }
 
 /** Return number of rows needed to display the (filtered) entry */
@@ -1554,7 +1556,7 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
  */
 bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
-	CLRBITS(this->flags, SEF_FILTERED);
+	this->flags.Reset(SettingEntryFlag::Filtered);
 
 	bool visible = true;
 
@@ -1581,7 +1583,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 		}
 	}
 
-	if (!visible) SETBITS(this->flags, SEF_FILTERED);
+	if (!visible) this->flags.Set(SettingEntryFlag::Filtered);
 	return visible;
 }
 
@@ -1607,7 +1609,7 @@ static const void *ResolveObject(const GameSettings *settings_ptr, const IntSett
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	const IntSettingDesc *sd = this->setting;
-	int state = this->flags & SEF_BUTTONS_MASK;
+	int state = (this->flags & SEF_BUTTONS_MASK).base();
 
 	bool rtl = _current_text_dir == TD_RTL;
 	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
@@ -1864,11 +1866,7 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	}
 
 	bool visible = SettingsContainer::UpdateFilterState(filter, force_visible);
-	if (visible) {
-		CLRBITS(this->flags, SEF_FILTERED);
-	} else {
-		SETBITS(this->flags, SEF_FILTERED);
-	}
+	this->flags.Set(SettingEntryFlag::Filtered, visible);
 	return visible;
 }
 
@@ -1934,7 +1932,7 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, 
 	cur_row = BaseSettingEntry::Draw(settings_ptr, left, right, y, first_row, max_row, selected, cur_row, parent_last);
 
 	if (!this->folded) {
-		if (this->flags & SEF_LAST_FIELD) {
+		if (this->flags.Test(SettingEntryFlag::LastField)) {
 			assert(this->level < 8 * sizeof(parent_last));
 			SetBit(parent_last, this->level); // Add own last-field state
 		}
@@ -2410,7 +2408,7 @@ struct GameSettingsWindow : Window {
 		if (this->closing_dropdown) {
 			this->closing_dropdown = false;
 			assert(this->valuedropdown_entry != nullptr);
-			this->valuedropdown_entry->SetButtons(0);
+			this->valuedropdown_entry->SetButtons({});
 			this->valuedropdown_entry = nullptr;
 		}
 
@@ -2617,10 +2615,10 @@ struct GameSettingsWindow : Window {
 				/* unclick the dropdown */
 				this->CloseChildWindows(WC_DROPDOWN_MENU);
 				this->closing_dropdown = false;
-				this->valuedropdown_entry->SetButtons(0);
+				this->valuedropdown_entry->SetButtons({});
 				this->valuedropdown_entry = nullptr;
 			} else {
-				if (this->valuedropdown_entry != nullptr) this->valuedropdown_entry->SetButtons(0);
+				if (this->valuedropdown_entry != nullptr) this->valuedropdown_entry->SetButtons({});
 				this->closing_dropdown = false;
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL);
@@ -2635,7 +2633,7 @@ struct GameSettingsWindow : Window {
 				/* For dropdowns we also have to check the y position thoroughly, the mouse may not above the just opening dropdown */
 				if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
 					this->valuedropdown_entry = pe;
-					this->valuedropdown_entry->SetButtons(SEF_LEFT_DEPRESSED);
+					this->valuedropdown_entry->SetButtons(SettingEntryFlag::LeftDepressed);
 
 					DropDownList list;
 					for (int32_t i = min_val; i <= static_cast<int32_t>(max_val); i++) {
@@ -2685,10 +2683,10 @@ struct GameSettingsWindow : Window {
 				/* Set up scroller timeout for numeric values */
 				if (value != oldvalue) {
 					if (this->clicked_entry != nullptr) { // Release previous buttons if any
-						this->clicked_entry->SetButtons(0);
+						this->clicked_entry->SetButtons({});
 					}
 					this->clicked_entry = pe;
-					this->clicked_entry->SetButtons((x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
+					this->clicked_entry->SetButtons((x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? SettingEntryFlag::RightDepressed : SettingEntryFlag::LeftDepressed);
 					this->SetTimeout();
 					_left_button_clicked = false;
 				}
@@ -2719,7 +2717,7 @@ struct GameSettingsWindow : Window {
 	void OnTimeout() override
 	{
 		if (this->clicked_entry != nullptr) { // On timeout, release any depressed buttons
-			this->clicked_entry->SetButtons(0);
+			this->clicked_entry->SetButtons({});
 			this->clicked_entry = nullptr;
 			this->SetDirty();
 		}
