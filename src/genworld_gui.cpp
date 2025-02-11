@@ -713,8 +713,8 @@ struct GenerateLandscapeWindow : public Window {
 						map_y * 2 < (1U << _settings_newgame.game_creation.map_y) ||
 						map_y / 2 > (1U << _settings_newgame.game_creation.map_y))) {
 					ShowQuery(
-						STR_WARNING_HEIGHTMAP_SCALE_CAPTION,
-						STR_WARNING_HEIGHTMAP_SCALE_MESSAGE,
+						GetEncodedString(STR_WARNING_HEIGHTMAP_SCALE_CAPTION),
+						GetEncodedString(STR_WARNING_HEIGHTMAP_SCALE_MESSAGE),
 						this,
 						LandscapeGenerationCallback);
 				} else {
@@ -1381,8 +1381,8 @@ struct GenerateProgressWindow : public Window {
 			case WID_GP_ABORT:
 				SetMouseCursorBusy(false);
 				ShowQuery(
-					STR_GENERATION_ABORT_CAPTION,
-					STR_GENERATION_ABORT_MESSAGE,
+					GetEncodedString(STR_GENERATION_ABORT_CAPTION),
+					GetEncodedString(STR_GENERATION_ABORT_MESSAGE),
 					this,
 					AbortGeneratingWorldCallback
 				);

@@ -186,8 +186,8 @@ CommandCost CmdPause(DoCommandFlag flags, PauseMode mode, bool pause)
 	if (flags & DC_EXEC) {
 		if (mode == PM_PAUSED_NORMAL && _pause_mode & PM_PAUSED_ERROR) {
 			ShowQuery(
-				STR_NEWGRF_UNPAUSE_WARNING_TITLE,
-				STR_NEWGRF_UNPAUSE_WARNING,
+				GetEncodedString(STR_NEWGRF_UNPAUSE_WARNING_TITLE),
+				GetEncodedString(STR_NEWGRF_UNPAUSE_WARNING),
 				nullptr,
 				AskUnsafeUnpauseCallback
 			);

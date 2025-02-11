@@ -1065,20 +1065,15 @@ void ShowQueryString(std::string_view str, StringID caption, uint maxsize, Windo
  */
 struct QueryWindow : public Window {
 	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	std::vector<StringParameterData> params; ///< local copy of #_global_string_params
-	StringID message;        ///< message shown for query window
+	EncodedString caption; ///< caption for query window.
+	EncodedString message; ///< message for query window.
 
-	QueryWindow(WindowDesc &desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
+	QueryWindow(WindowDesc &desc, EncodedString &&caption, EncodedString &&message, Window *parent, QueryCallbackProc *callback)
+		: Window(desc), proc(callback), caption(std::move(caption)), message(std::move(message))
 	{
-		/* Create a backup of the variadic arguments to strings because it will be
-		 * overridden pretty often. We will copy these back for drawing */
-		CopyOutDParam(this->params, 10);
-		this->message = message;
-		this->proc    = callback;
-		this->parent  = parent;
+		this->parent = parent;
 
 		this->CreateNestedTree();
-		this->GetWidget<NWidgetCore>(WID_Q_CAPTION)->SetString(caption);
 		this->FinishInitNested(WN_CONFIRM_POPUP_QUERY);
 	}
 
@@ -1100,8 +1095,7 @@ struct QueryWindow : public Window {
 	{
 		switch (widget) {
 			case WID_Q_CAPTION:
-			case WID_Q_TEXT:
-				CopyInDParam(this->params);
+				SetDParamStr(0, this->caption.GetDecodedString());
 				break;
 		}
 	}
@@ -1110,14 +1104,14 @@ struct QueryWindow : public Window {
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		size = GetStringMultiLineBoundingBox(this->message, size);
+		size = GetStringMultiLineBoundingBox(this->message.GetDecodedString(), size);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		DrawStringMultiLine(r, this->message, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r, this->message.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -1166,7 +1160,7 @@ struct QueryWindow : public Window {
 static constexpr NWidgetPart _nested_query_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
-		NWidget(WWT_CAPTION, COLOUR_RED, WID_Q_CAPTION), // The caption's string is set in the constructor
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_Q_CAPTION), SetToolTip(STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
@@ -1196,7 +1190,7 @@ static WindowDesc _query_desc(
  * @param callback callback function pointer to set in the window descriptor
  * @param focus whether the window should be focussed (by default false)
  */
-void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback, bool focus)
+void ShowQuery(EncodedString &&caption, EncodedString &&message, Window *parent, QueryCallbackProc *callback, bool focus)
 {
 	if (parent == nullptr) parent = GetMainWindow();
 
@@ -1210,6 +1204,6 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 		break;
 	}
 
-	QueryWindow *q = new QueryWindow(_query_desc, caption, message, parent, callback);
+	QueryWindow *q = new QueryWindow(_query_desc, std::move(caption), std::move(message), parent, callback);
 	if (focus) SetFocusedWindow(q);
 }

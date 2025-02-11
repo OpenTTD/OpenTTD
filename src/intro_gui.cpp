@@ -479,8 +479,8 @@ static void AskExitGameCallback(Window *, bool confirmed)
 void AskExitGame()
 {
 	ShowQuery(
-		STR_QUIT_CAPTION,
-		STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD,
+		GetEncodedString(STR_QUIT_CAPTION),
+		GetEncodedString(STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD),
 		nullptr,
 		AskExitGameCallback,
 		true
@@ -499,8 +499,8 @@ static void AskExitToGameMenuCallback(Window *, bool confirmed)
 void AskExitToGameMenu()
 {
 	ShowQuery(
-		STR_ABANDON_GAME_CAPTION,
-		(_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY,
+		GetEncodedString(STR_ABANDON_GAME_CAPTION),
+		GetEncodedString((_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY),
 		nullptr,
 		AskExitToGameMenuCallback,
 		true
