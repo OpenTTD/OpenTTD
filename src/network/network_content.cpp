@@ -21,7 +21,11 @@
 #include "table/strings.h"
 
 #if defined(WITH_ZLIB)
-#include <zlib.h>
+#	include <zlib.h>
+#	if defined(_WIN32)
+		/* Required for: dup, fileno, close */
+#		include <io.h>
+#	endif
 #endif
 
 #ifdef __EMSCRIPTEN__

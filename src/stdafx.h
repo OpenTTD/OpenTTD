@@ -298,9 +298,6 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #	define GNU_TARGET(x)
 #endif /* __GNUC__ || __clang__ */
 
-/* For the FMT library we only want to use the headers, not link to some library. */
-#define FMT_HEADER_ONLY
-
 [[noreturn]] void NOT_REACHED(const std::source_location location = std::source_location::current());
 [[noreturn]] void AssertFailedError(const char *expression, const std::source_location location = std::source_location::current());
 
