@@ -1988,7 +1988,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :금지
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :허용
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :허용, 도로 모양 선택 가능
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :개별 도시 건물 배치: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :이 설정을 켜면, 플레이어가 도시 건물을 수동으로 세울 수 있게 됩니다
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :금지
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :허용
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :허용, 건설 완료 상태로 지어짐
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :도시 화물 생성: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :도시의 전반적인 인구에 따라, 도시가 얼마나 많은 화물을 생산하는 지를 설정합니다.{}제곱 성장: 도시의 규모가 2배 커지면 승객을 4배 더 생산합니다.{}선형 성장: 도시의 규모가 2배 커지면 승객을 2배 더 생산합니다
@@ -2202,7 +2207,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}고득�
 STR_INTRO_HELP                                                  :{BLACK}도움말 & 매뉴얼
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠
 STR_INTRO_AI_SETTINGS                                           :{BLACK}인공지능 설정
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}게임 스크립트 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
@@ -2656,7 +2661,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}서버�
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}다른 플레이어가 이 서버에 들어올 수 없게 될 것입니다
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}콘텐츠 다운로드
+STR_CONTENT_TITLE                                               :{WHITE}온라인 콘텐츠
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}종류
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}콘텐츠의 종류입니다
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}이름
@@ -2862,6 +2867,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :바깥쪽 시�
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :안쪽 시내
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :도시 중심
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :도시 발전 방지
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :이 건물이 도시가 성장함에 따라 교체되는 것을 막을지 여부를 선택합니다
+STR_HOUSE_PICKER_PROTECT_OFF                                    :끄기
+STR_HOUSE_PICKER_PROTECT_ON                                     :켜기
 
 STR_STATION_CLASS_DFLT                                          :기본
 STR_STATION_CLASS_DFLT_STATION                                  :기본 역
@@ -2954,7 +2963,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}화물 �
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}수로 건설
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}항만
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}운하를 만듭니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}운하를 만듭니다. CTRL+클릭+드래그하면 대각선 방향의 영역을 선택할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}갑문을 만듭니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}선박 구입과 점검을 위한 정박소를 만듭니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}항구를 만듭니다. CTRL+클릭하면 같은 이름의 항구을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -3139,6 +3148,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}전차 �
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}선로 제한 속력: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}도로 제한 속력: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}전차 제한 속력: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}도시 발전 가능 여부: {LTBLUE}예
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}도시 발전 가능 여부: {LTBLUE}아니요
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :암석

@@ -1989,7 +1989,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbudt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillatt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillatt, egendefinert oppsett av by
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Plassér individuelle byhus: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Ved å aktivere denne innstillingen tillates spillere å plassere byhus manuelt
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Forbudt
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Tillatt
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Tillatt, fullt bebygd
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :varegenerering byer: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hvor mye varer som genereres av hus i byer, i forhold til byens folketall.{}Kvadratisk vekst: En by av dobbel størrelse genererer fire ganger så mange passasjerer.{}Lineær vekst: En by av dobbel størrelse genererer dobbelt så mange passasjerer.
@@ -2203,7 +2208,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tavle me
 STR_INTRO_HELP                                                  :{BLACK}Hjelp og manualer
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Innstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillinger
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Se etter innhold på nettet
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Innhold på nettet
 STR_INTRO_AI_SETTINGS                                           :{BLACK}KI-innstillinger
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Game Script-innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
@@ -2252,6 +2257,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Hjelpefi
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Endringslogg
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Kjente feil
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Lisens
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Skrifttyper
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Rapporter en feil
@@ -2656,7 +2662,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Serveren
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andre spillere vil ikke kunne koble seg til din tjener
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Laster ned innhold
+STR_CONTENT_TITLE                                               :{BLACK}Innhold på nettet
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type innhold
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Navn
@@ -2862,6 +2868,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ytre forsteder
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre forsteder
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Bysentrum
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Forhindre oppgraderinger
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Velg hvorvidt dette huset skal være beskyttet mot å bli byttet ut når byen vokser
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Av
+STR_HOUSE_PICKER_PROTECT_ON                                     :På
 
 STR_STATION_CLASS_DFLT                                          :Standard
 STR_STATION_CLASS_DFLT_STATION                                  :Standard stasjon
@@ -2954,7 +2964,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Velg var
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bygg vannveier
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vannveier
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler. Trykk også Shift for å kun vise kostnadsestimat
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler. Ctrl+klikk+dra for å velge området diagonalt. Trykk også Shift for å kun vise kostnadsestimat
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bygg sluser. Trykk også Shift for å kun vise kostnadsestimat
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skipsdokk (for kjøp og vedlikehold av skip). Trykk også Shift for å kun vise kostnadsestimat
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg havn. Ctrl+klikk for å velge en annen havn å slå sammen med. Trykk også Shift for å kun vise kostnadsestimat
@@ -3139,6 +3149,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Trikkety
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Fartsgrense for jernbanespor: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Veiens fartsgrense: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Fartsgrense for trikk: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}By kan oppgradere: {LTBLUE}Ja
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}By kan oppgradere: {LTBLUE}Nei
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Steiner
@@ -5324,8 +5336,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikke
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikke selge luftfartøy...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Kan ikke selge alt jernbanemateriell...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kan ikke selge alle kjøretøy...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan ikke selge alle skip...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kan ikke selge alle luftfartøy...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Kan ikke bytte ut jernbanemateriell automatisk...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Kan ikke bytte ut kjøretøy automatisk...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Kan ikke bytte ut skip automatisk...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Kan ikke bytte ut luftfartøy automatisk...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mange kjøretøy i spillet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke endre vedlikeholdsintervall...

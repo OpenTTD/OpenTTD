@@ -4648,7 +4648,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Comparac
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :es igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :no es igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :es menor que
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :es menor o igual que
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :es menor o igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :es mayor que
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :es mayor o igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :es verdadero

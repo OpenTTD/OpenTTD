@@ -1988,7 +1988,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibit
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permès
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permès, disposició dels carrers personalitzada
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Construcció manual de cases: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Si aquesta opció està activa, es permet que els jugadors puguin situar poblacions manualment.
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :No permès
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Permès
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Permès, construcció completa
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generació de càrrega a les poblacions: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Estableix quanta càrrega es produirà a les cases en funció dels habitants de la població.{}Creixement quadràtic: una població el doble de gran generarà el quàdruple de passatgers.{}Creixement lineal: una població el doble de gran generarà el doble de passatgers.
@@ -2656,7 +2661,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}El vostr
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Els altres jugadors no podran connectar-se al vostre servidor.
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Descàrregues de contingut
+STR_CONTENT_TITLE                                               :{WHITE}Contingut en línia
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipus
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipus de contingut
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nom
@@ -2862,6 +2867,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbi exterio
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbi interior
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centre de la població
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Evita les millores
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Escolliu si aquesta casa s'ha de protegir i evitar que es reemplaci quan creixi la població.
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Desactivat
+STR_HOUSE_PICKER_PROTECT_ON                                     :Activat
 
 STR_STATION_CLASS_DFLT                                          :Per defecte
 STR_STATION_CLASS_DFLT_STATION                                  :Estació per defecte
@@ -2954,7 +2963,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccio
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcció de canals
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canals
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construeix canals. Amb Maj, se'n mostrarà només el cost estimat.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construeix canals.Amb Ctrl+Clic+Arrossegar, se selecciona una àrea diagonal. Amb Maj, se'n mostrarà només el cost estimat.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construeix rescloses. Amb Maj, se'n mostra el cost estimat.
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per a comprar i revisar vaixells). Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port. Amb Ctrl+clic, es poden construir noves estacions i ajuntar-les amb d'altres ja existents. Amb Maj, només es mostrarà el cost estimat de l'acció.
@@ -3139,6 +3148,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tipus de
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límit de velocitat de la via: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Límit de velocitat de la carretera: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Límit de velocitat dels tramvies: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Es poden millorar les cases: {LTBLUE}Sí
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Es poden millorar les cases: {LTBLUE}No
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Roques
