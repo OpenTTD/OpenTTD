@@ -79,7 +79,7 @@ uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2,
  */
 CargoType GetCargoTranslation(uint8_t cargo, const GRFFile *grffile, bool usebit)
 {
-	/* We can't use GetCargoTranslationTable here as the usebit flag changes behviour. */
+	/* We can't use GetCargoTranslationTable here as the usebit flag changes behaviour. */
 	/* Pre-version 7 uses the bitnum lookup from (standard in v8) instead of climate dependent in some places.. */
 	std::span<const CargoLabel> cargo_list;
 	if (grffile->grf_version < 7 && !usebit) {

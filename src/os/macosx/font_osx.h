@@ -16,7 +16,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 
 class CoreTextFontCache : public TrueTypeFontCache {
-	CFAutoRelease<CTFontDescriptorRef> font_desc; ///< Font descriptor exlcuding font size.
+	CFAutoRelease<CTFontDescriptorRef> font_desc; ///< Font descriptor excluding font size.
 	CFAutoRelease<CTFontRef> font;                ///< CoreText font handle.
 
 	std::string font_name;                        ///< Cached font name.

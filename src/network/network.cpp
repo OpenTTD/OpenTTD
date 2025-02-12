@@ -804,7 +804,7 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 	} else {
 		/* When already playing a game, first go back to the main menu. This
 		 * disconnects the user from the current game, meaning we can safely
-		 * load in the new. After all, there is little point in continueing to
+		 * load in the new. After all, there is little point in continuing to
 		 * play on a server if we are connecting to another one.
 		 */
 		_switch_mode = SM_JOIN_GAME;

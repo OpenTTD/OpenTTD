@@ -658,7 +658,7 @@ static void HeightMapCurves(uint level)
 			/* Apply interpolation of curve map results. */
 			*h = (Height)((ht[corner_a] * yri + ht[corner_b] * yr) * xri + (ht[corner_c] * yri + ht[corner_d] * yr) * xr);
 
-			/* Readd sea level */
+			/* Re-add sea level */
 			*h += I2H(1);
 		}
 	}
@@ -799,10 +799,10 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 		/* Coast found? */
 		if (_height_map.height(x, y) >= I2H(1)) break;
 
-		/* Coast found in the neighborhood? */
+		/* Coast found in the neighbourhood? */
 		if (IsValidXY(x + dir_y, y + dir_x) && _height_map.height(x + dir_y, y + dir_x) > 0) break;
 
-		/* Coast found in the neighborhood on the other side */
+		/* Coast found in the neighbourhood on the other side */
 		if (IsValidXY(x - dir_y, y - dir_x) && _height_map.height(x - dir_y, y - dir_x) > 0) break;
 	}
 

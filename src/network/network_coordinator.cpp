@@ -250,7 +250,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet &p)
 		ClearGRFConfigList(item->info.grfconfig);
 		/* Read the NetworkGameInfo from the packet. */
 		DeserializeNetworkGameInfo(p, item->info, &this->newgrf_lookup_table);
-		/* Check for compatability with the client. */
+		/* Check for compatibility with the client. */
 		CheckGameCompatibility(item->info);
 		/* Mark server as online. */
 		item->status = NGLS_ONLINE;

@@ -227,7 +227,7 @@ protected:
 	/**
 	 * Game Coordinator requests the client/server to do a STUN request to the
 	 * STUN server. Important is to remember the local port these STUN requests
-	 * are sent from, as this will be needed for later conenctions too.
+	 * are sent from, as this will be needed for later connections too.
 	 * The client/server should do multiple STUN requests for every available
 	 * interface that connects to the Internet (e.g., once for IPv4 and once
 	 * for IPv6).

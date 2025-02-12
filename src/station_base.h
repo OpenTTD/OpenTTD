@@ -612,7 +612,7 @@ void RebuildStationKdtree();
 
 /**
  * Call a function on all stations that have any part of the requested area within their catchment.
- * @tparam Func The type of funcion to call
+ * @tparam Func The type of function to call
  * @param area The TileArea to check
  * @param func The function to call, must take two parameters: Station* and TileIndex and return true
  *             if coverage of that tile is acceptable for a given station or false if search should continue

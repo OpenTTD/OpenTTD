@@ -264,7 +264,7 @@ private:
 	uint score_width;    ///< The width of the score text
 	uint header_height;  ///< Height of the table header
 	int line_height;     ///< Height of the text lines
-	Dimension icon_size; ///< Dimenion of the company icon.
+	Dimension icon_size; ///< Dimension of the company icon.
 	std::string title;
 
 	/**

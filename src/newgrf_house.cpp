@@ -373,7 +373,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 /* virtual */ uint32_t HouseScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	if (this->tile == INVALID_TILE) {
-		/* House does not yet exist, nor is it being planned to exist. Provide some default values intead. */
+		/* House does not yet exist, nor is it being planned to exist. Provide some default values instead. */
 		switch (variable) {
 			case 0x40: return TOWN_HOUSE_COMPLETED | this->view << 2; /* Construction stage. */
 			case 0x41: return 0;

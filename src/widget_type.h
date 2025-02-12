@@ -89,7 +89,7 @@ enum WidgetType : uint8_t {
 	WPT_TEXTSTYLE,    ///< Widget part for specifying text colour.
 	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
 	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
-	WPT_ASPECT,       ///< Widget part for sepcifying aspect ratio.
+	WPT_ASPECT,       ///< Widget part for specifying aspect ratio.
 	WPT_ATTRIBUTE_END, ///< End marker for attribute NWidgetPart types.
 
 	WPT_FUNCTION, ///< Widget part for calling a user function.
@@ -479,7 +479,7 @@ public:
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 
 protected:
-	std::vector<std::unique_ptr<NWidgetBase>> children; ///< Child widgets in contaier.
+	std::vector<std::unique_ptr<NWidgetBase>> children; ///< Child widgets in container.
 };
 
 /** Display planes with zero size for #NWidgetStacked. */
@@ -493,7 +493,7 @@ enum StackedZeroSizePlanes : int {
 
 /**
  * Stacked widgets, widgets all occupying the same space in the window.
- * #NWID_SELECTION allows for selecting one of several panels (planes) to tbe displayed. All planes must have the same size.
+ * #NWID_SELECTION allows for selecting one of several panels (planes) to be displayed. All planes must have the same size.
  * Since all planes are also initialized, switching between different planes can be done while the window is displayed.
  *
  * There are also a number of special planes (defined in #StackedZeroSizePlanes) that have zero size in one direction (and are stretchable in
@@ -874,7 +874,7 @@ public:
 	 * @param widget      Widget number of the widget clicked in.
 	 * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
 	 * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
-	 * @return Iterator to the element clicked at. If clicked at a wrong position, returns as interator to the end of the container.
+	 * @return Iterator to the element clicked at. If clicked at a wrong position, returns an iterator to the end of the container.
 	 */
 	template <typename Tcontainer>
 	auto GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const
@@ -978,7 +978,7 @@ inline uint ComputeMaxSize(uint base, uint max_space, uint step)
  *   - #SetPadding Define additional padding around the container.
  *   - #SetPIP Set additional pre/inter/post child widget space.
  *   .
- *   Underneath these properties, all child widgets of the container must be defined. To denote that they are childs, add an indent before the nested widget parts of
+ *   Underneath these properties, all child widgets of the container must be defined. To denote that they are children, add an indent before the nested widget parts of
  *   the child widgets (it has no meaning for the compiler but it makes the widget parts easier to read).
  *   Below the last child widget, use an #EndContainer part. This part should be aligned with the #NWidget part that started the container.
  *

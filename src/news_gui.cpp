@@ -52,7 +52,7 @@ static NewsContainer _news; ///< List of news, with newest items at the start.
 /**
  * Forced news item.
  * Users can force an item by accessing the history or "last message".
- * If the message being shown was forced by the user, an iterater is stored
+ * If the message being shown was forced by the user, an iterator is stored
  * in _forced_news. Otherwise, \a _forced_news variable is the end of \a _news.
  */
 static NewsIterator _forced_news = std::end(_news);
@@ -903,7 +903,7 @@ void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlags flag
 	/* Create new news item node */
 	_news.emplace_front(string, type, style, flags, reftype1, ref1, reftype2, ref2, std::move(data), advice_type);
 
-	/* Keep the number of stored news items to a managable number */
+	/* Keep the number of stored news items to a manageable number */
 	if (std::size(_news) > MAX_NEWS_AMOUNT) {
 		DeleteNewsItem(std::prev(std::end(_news)));
 	}

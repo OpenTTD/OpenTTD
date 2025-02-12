@@ -300,7 +300,7 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 
 		case 4: {
 			/* Ensure that the maximum number of NewGRFs and the field in the network
-			 * protocol are matched to eachother. If that is not the case anymore a
+			 * protocol are matched to each other. If that is not the case anymore a
 			 * check must be added to ensure the received data is still valid. */
 			static_assert(std::numeric_limits<uint8_t>::max() == NETWORK_MAX_GRF_COUNT);
 			uint num_grfs = p.Recv_uint8();

@@ -501,7 +501,7 @@ static Town *RemapTown(TileIndex fallback)
 	/* In some cases depots, industries and stations could refer to a missing town. */
 	Town *t = Town::GetIfValid(RemapTownIndex(_old_town_index));
 	if (t == nullptr) {
-		/* In case the town that was refered to does not exist, find the closest.
+		/* In case the town that was referred to does not exist, find the closest.
 		 * However, this needs the kd-tree to be present. */
 		RebuildTownKdtree();
 		t = CalcClosestTownFromTile(fallback);

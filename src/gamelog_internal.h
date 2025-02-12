@@ -17,7 +17,7 @@
  * Information about the presence of a Grf at a certain point during gamelog history
  * Note about missing Grfs:
  * Changes to missing Grfs are not logged including manual removal of the Grf.
- * So if the gamelog tells a Grf is missing we do not know whether it was readded or completely removed
+ * So if the gamelog tells a Grf is missing we do not know whether it was re-added or completely removed
  * at some later point.
  */
 struct GRFPresence {

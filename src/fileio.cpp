@@ -426,7 +426,7 @@ bool TarScanner::AddFile(Subdirectory sd, const std::string &filename)
  * header contains garbage and is malicious. So, we cannot rely on the string
  * being properly terminated.
  * As such, do not use strlen to determine the actual length (explicitly or
- * implictly via the std::string constructor), but pass the buffer bounds
+ * implicitly via the std::string constructor), but pass the buffer bounds
  * explicitly.
  * @param buffer The buffer to read from.
  * @return The string data.

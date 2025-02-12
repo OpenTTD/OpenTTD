@@ -1786,7 +1786,7 @@ void UpdateGUIZoom()
 
 /**
  * Resolve GUI zoom level and adjust GUI to new zoom, if auto-suggestion is requested.
- * @param automatic Set if the change is occuring due to OS DPI scaling being changed.
+ * @param automatic Set if the change is occurring due to OS DPI scaling being changed.
  * @returns true when the zoom level has changed, caller must call ReInitAllWindows(true)
  * after resizing the application's window/buffer.
  */

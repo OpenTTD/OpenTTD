@@ -142,7 +142,7 @@ bool NetworkContentSocketHandler::ReceivePackets()
 	 * As a result, we simple handle an arbitrary number of packets in one cycle,
 	 * and let the rest be handled in subsequent cycles. These are ran, almost,
 	 * immediately after this cycle so in speed it does not matter much, except
-	 * that the user inferface will appear better responding.
+	 * that the user interface will appear better responding.
 	 *
 	 * What arbitrary number to choose is the ultimate question though.
 	 */

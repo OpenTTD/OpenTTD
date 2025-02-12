@@ -13,7 +13,7 @@
 #include "mock_fontcache.h"
 #include "mock_spritecache.h"
 
-/** Singleton class to set up the mock environemnt once. */
+/** Singleton class to set up the mock environment once. */
 class MockEnvironment {
 public:
 	static MockEnvironment &Instance()

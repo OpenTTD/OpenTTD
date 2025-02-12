@@ -321,7 +321,7 @@ struct ContentListFilterData {
 
 /** Filter criteria for NetworkContentListWindow. */
 enum ContentListFilterCriteria : uint8_t {
-	CONTENT_FILTER_TEXT = 0,        ///< Filter by query sting
+	CONTENT_FILTER_TEXT = 0,        ///< Filter by query string
 	CONTENT_FILTER_TYPE_OR_SELECTED,///< Filter by being of displayed type or selected for download
 };
 

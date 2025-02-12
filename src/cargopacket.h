@@ -184,7 +184,7 @@ public:
 	/**
 	 * Gets the number of cargo aging periods this cargo has been in transit.
 	 * By default a period is 2.5 days (CARGO_AGING_TICKS = 185 ticks), however
-	 * vehicle NewGRFs can overide the length of the cargo aging period. The
+	 * vehicle NewGRFs can override the length of the cargo aging period. The
 	 * value is capped at UINT16_MAX.
 	 * @return Length this cargo has been in transit.
 	 */

@@ -176,7 +176,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 
 /* virtual */ void LoggedChangeRevision::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
-	/* The game was loaded in a diffferent version than before. */
+	/* The game was loaded in a different version than before. */
 	fmt::format_to(output_iterator, "Revision text changed to {}, savegame version {}, ",
 		this->text, this->slver);
 

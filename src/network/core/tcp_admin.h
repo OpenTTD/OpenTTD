@@ -174,7 +174,7 @@ protected:
 	 * Send chat from the external source:
 	 * string  Name of the source this message came from.
 	 * uint16_t  TextColour to use for the message.
-	 * string  Name of the user who sent the messsage.
+	 * string  Name of the user who sent the message.
 	 * string  Message.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.

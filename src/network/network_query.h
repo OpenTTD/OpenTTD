@@ -12,7 +12,7 @@
 
 #include "network_internal.h"
 
-/** Class for handling the client side of quering a game server. */
+/** Class for handling the client side of querying a game server. */
 class QueryNetworkGameSocketHandler : public NetworkGameSocketHandler {
 private:
 	static std::vector<std::unique_ptr<QueryNetworkGameSocketHandler>> queries; ///< Pending queries.
@@ -32,7 +32,7 @@ protected:
 
 public:
 	/**
-	 * Create a new socket for the client side of quering game server.
+	 * Create a new socket for the client side of querying game server.
 	 * @param s The socket to connect with.
 	 * @param connection_string The connection string of the server.
 	 */

@@ -539,7 +539,7 @@ inline TileIndexDiffC TileIndexToTileIndexDiffC(TileIndex tile_a, TileIndex tile
 
 /* Functions to calculate distances */
 uint DistanceManhattan(TileIndex, TileIndex); ///< also known as L1-Norm. Is the shortest distance one could go over diagonal tracks (or roads)
-uint DistanceSquare(TileIndex, TileIndex); ///< euclidian- or L2-Norm squared
+uint DistanceSquare(TileIndex, TileIndex); ///< Euclidean- or L2-Norm squared
 uint DistanceMax(TileIndex, TileIndex); ///< also known as L-Infinity-Norm
 uint DistanceMaxPlusManhattan(TileIndex, TileIndex); ///< Max + Manhattan
 uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the map

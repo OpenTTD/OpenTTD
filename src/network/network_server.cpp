@@ -256,7 +256,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		}
 	}
 
-	/* If we were transfering a map to this client, stop the savegame creation
+	/* If we were transferring a map to this client, stop the savegame creation
 	 * process and queue the next client to receive the map. */
 	if (this->status == STATUS_MAP) {
 		/* Ensure the saving of the game is stopped too. */
@@ -697,7 +697,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
  * Send a chat message from external source.
  * @param source Name of the source this message came from.
  * @param colour TextColour to use for the message.
- * @param user Name of the user who sent the messsage.
+ * @param user Name of the user who sent the message.
  * @param msg The actual message.
  */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg)
@@ -1363,7 +1363,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
  * Send a chat message from external source.
  * @param source Name of the source this message came from.
  * @param colour TextColour to use for the message.
- * @param user Name of the user who sent the messsage.
+ * @param user Name of the user who sent the message.
  * @param msg The actual message.
  */
 void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg)
@@ -1926,7 +1926,7 @@ void NetworkServerShowStatusToConsole()
 	static const char * const stat_str[] = {
 		"inactive",
 		"authorizing",
-		"identifing client",
+		"identifying client",
 		"checking NewGRFs",
 		"authorized",
 		"waiting",

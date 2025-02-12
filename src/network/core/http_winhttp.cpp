@@ -188,7 +188,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			break;
 
 		default:
-			Debug(net, 0, "HTTP request failed: unexepected callback code 0x{:x}", code);
+			Debug(net, 0, "HTTP request failed: unexpected callback code 0x{:x}", code);
 			this->callback.OnFailure();
 			this->finished = true;
 			return;

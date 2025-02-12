@@ -13,7 +13,7 @@
 #include "safeguards.h"
 
 /**
- * Get a tile's slope given the heigh of its four corners.
+ * Get a tile's slope given the height of its four corners.
  * @param hnorth The height at the northern corner in the same unit as TileHeight.
  * @param hwest  The height at the western corner in the same unit as TileHeight.
  * @param heast  The height at the eastern corner in the same unit as TileHeight.

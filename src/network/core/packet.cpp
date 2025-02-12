@@ -442,7 +442,7 @@ std::string Packet::Recv_string(size_t length, StringValidationSettings settings
 
 /**
  * Get the amount of bytes that are still available for the Transfer functions.
- * @return The number of bytes that still have to be transfered.
+ * @return The number of bytes that still have to be transferred.
  */
 size_t Packet::RemainingBytesToTransfer() const
 {

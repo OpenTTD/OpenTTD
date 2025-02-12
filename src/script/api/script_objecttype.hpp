@@ -46,7 +46,7 @@ public:
 	/**
 	 * Build an object of the specified type.
 	 * @param object_type The type of the object to build.
-	 * @param view The view for teh object.
+	 * @param view The view for the object.
 	 * @param tile The tile to build the object on.
 	 * @pre IsValidObjectType(object_type).
 	 * @return True if the object was successfully build.

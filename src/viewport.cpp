@@ -1515,7 +1515,7 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
  * @param center the (preferred) center of the viewport sign
  * @param top    the new top of the sign
  * @param str    the string to show in the sign
- * @param str_small the string to show when zoomed out. If the string is emtpy then the \a str is used.
+ * @param str_small the string to show when zoomed out. If the string is empty then the \a str is used.
  */
 void ViewportSign::UpdatePosition(int center, int top, std::string_view str, std::string_view str_small)
 {
@@ -1607,7 +1607,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 	sprite_list.sort();
 
 	std::vector<ParentSpriteToDraw *> preceding;  // Temporarily stores sprites that precede current and their position in the list
-	auto preceding_prev = sprite_list.begin(); // Store iterator in case we need to delete a single preciding sprite
+	auto preceding_prev = sprite_list.begin(); // Store iterator in case we need to delete a single preceding sprite
 	auto out = psdv->begin();  // Iterator to output sorted sprites
 
 	while (!sprite_order.empty()) {
@@ -1630,7 +1630,7 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 		/* We only need sprites with xmin <= s->xmax && ymin <= s->ymax && zmin <= s->zmax
 		 * So by iterating sprites with xmin + ymin <= s->xmax + s->ymax
 		 * we get all we need and some more that we filter out later.
-		 * We don't include zmin into the sum as there are usually more neighbors on x and y than z
+		 * We don't include zmin into the sum as there are usually more neighbours on x and y than z
 		 * so including it will actually increase the amount of false positives.
 		 * Also min coordinates can be > max so using max(xmin, xmax) + max(ymin, ymax)
 		 * to ensure that we iterate the current sprite as we need to remove it from the list.

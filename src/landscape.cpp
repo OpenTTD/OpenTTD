@@ -260,7 +260,7 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 		case SLOPE_S: return x + y >= (int)TILE_SIZE ? (1 + x + y - TILE_SIZE) >> 1 : 0;
 		case SLOPE_W: return x >= y                  ? (x - y)                 >> 1 : 0;
 
-		/* Two corners next to eachother are up. */
+		/* Two corners next to each other are up. */
 		case SLOPE_NE: return (TILE_SIZE - x) >> 1;
 		case SLOPE_SE: return (y + 1) >> 1;
 		case SLOPE_SW: return (x + 1) >> 1;
@@ -1433,7 +1433,7 @@ static void CreateRivers()
  * Calculate what height would be needed to cover N% of the landmass.
  *
  * The function allows both snow and desert/tropic line to be calculated. It
- * tries to find the closests height which covers N% of the landmass; it can
+ * tries to find the closest height which covers N% of the landmass; it can
  * be below or above it.
  *
  * Tropic has a mechanism where water and tropic tiles in mountains grow
