@@ -4,6 +4,9 @@ find_library(Ogg_LIBRARY
     NAMES ogg
 )
 
+include(FixVcpkgLibrary)
+FixVcpkgLibrary(Ogg)
+
 set(Ogg_COMPILE_OPTIONS "" CACHE STRING "Extra compile options of ogg")
 
 set(Ogg_LINK_LIBRARIES "" CACHE STRING "Extra link libraries of ogg")
@@ -33,5 +36,6 @@ if (Ogg_FOUND)
             INTERFACE_LINK_LIBRARIES "${Ogg_LINK_LIBRARIES}"
             INTERFACE_LINK_FLAGS "${Ogg_LINK_FLAGS}"
         )
+        FixVcpkgTarget(Ogg Ogg::ogg)
     endif()
 endif()
