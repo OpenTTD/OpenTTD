@@ -269,8 +269,9 @@ struct BoolSettingDesc : IntSettingDesc {
 struct OneOfManySettingDesc : IntSettingDesc {
 	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
-	OneOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, int32_t def,
-			int32_t max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<uint32_t> Tmax>
+	OneOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
+			Tmax max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
 			GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
@@ -292,8 +293,9 @@ struct OneOfManySettingDesc : IntSettingDesc {
 
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
+	template <ConvertibleThroughBaseOrTo<int32_t> Tdef>
 	ManyOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup,
-		int32_t def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+		Tdef def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
 		GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
