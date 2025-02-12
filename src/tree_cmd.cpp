@@ -196,7 +196,7 @@ struct BlobHarmonic
  * @param harmonics a std::vector of the harmonics data.
  * @param noOfSegments How many segments make up the polygon.
  */
-std::vector<Point> CreateStarShapedPolygon(const int radius, std::vector<BlobHarmonic> harmonics, const int noOfSegments)
+std::vector<Point> CreateStarShapedPolygon(const int radius, const std::vector<BlobHarmonic> harmonics, const int noOfSegments)
 {
 	std::vector<Point> result;
 
@@ -208,7 +208,7 @@ std::vector<Point> CreateStarShapedPolygon(const int radius, std::vector<BlobHar
 	{
 		float deviation = 0;
 		//add up the values of each harmonic at this segment
-		std::for_each(harmonics.begin(), harmonics.end(), [&deviation, theta](BlobHarmonic &harmonic) {
+		std::for_each(harmonics.begin(), harmonics.end(), [&deviation, theta](const BlobHarmonic &harmonic) {
 			deviation += sin((theta + harmonic.phase) * harmonic.frequency) * harmonic.amplitude;
 		});
 
