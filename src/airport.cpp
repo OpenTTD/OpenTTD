@@ -149,7 +149,7 @@ static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA)
 	return nofelements;
 }
 
-AirportFTA::AirportFTA(const AirportFTAbuildup &buildup) : block(buildup.block), position(buildup.position), next_position(buildup.next), heading(buildup.heading)
+AirportFTA::AirportFTA(const AirportFTAbuildup &buildup) : blocks(buildup.blocks), position(buildup.position), next_position(buildup.next), heading(buildup.heading)
 {
 }
 

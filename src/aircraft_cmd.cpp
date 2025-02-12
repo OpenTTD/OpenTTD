@@ -1209,12 +1209,12 @@ static bool HandleCrashedAircraft(Aircraft *v)
 		/*  remove rubble of crashed airplane */
 
 		/* clear runway-in on all airports, set by crashing plane
-		 * small airports use AIRPORT_BUSY, city airports use RUNWAY_IN_OUT_block, etc.
+		 * small airports use AIRPORT_BUSY, city airports use AirportBlock::RunwayInOut, etc.
 		 * but they all share the same number */
 		if (st != nullptr) {
-			CLRBITS(st->airport.flags, RUNWAY_IN_block);
-			CLRBITS(st->airport.flags, RUNWAY_IN_OUT_block); // commuter airport
-			CLRBITS(st->airport.flags, RUNWAY_IN2_block);    // intercontinental
+			st->airport.blocks.Reset(AirportBlock::RunwayIn);
+			st->airport.blocks.Reset(AirportBlock::RunwayInOut); // commuter airport
+			st->airport.blocks.Reset(AirportBlock::RunwayIn2);    // intercontinental
 		}
 
 		delete v;
@@ -1663,8 +1663,8 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 	Station *st = Station::Get(v->targetairport);
 
 	/* Runway busy, not allowed to use this airstation or closed, circle. */
-	if (CanVehicleUseStation(v, st) && (st->owner == OWNER_NONE || st->owner == v->owner) && !(st->airport.flags & AIRPORT_CLOSED_block)) {
-		/* {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},
+	if (CanVehicleUseStation(v, st) && (st->owner == OWNER_NONE || st->owner == v->owner) && !st->airport.blocks.Test(AirportBlock::AirportClosed)) {
+		/* {32,FLYING,AirportBlock::Nothing,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},
 		 * if it is an airplane, look for LANDING, for helicopter HELILANDING
 		 * it is possible to choose from multiple landing runways, so loop until a free one is found */
 		uint8_t landingtype = (v->subtype == AIR_HELICOPTER) ? HELILANDING : LANDING;
@@ -1683,7 +1683,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 					 * if there are multiple runways, plane won't know which one it took (because
 					 * they all have heading LANDING). And also occupy that block! */
 					v->pos = current->next_position;
-					SETBITS(st->airport.flags, apc->layout[v->pos].block);
+					st->airport.blocks.Set(apc->layout[v->pos].blocks);
 					return;
 				}
 				v->cur_speed = tcur_speed;
@@ -1784,10 +1784,10 @@ static AircraftStateHandler * const _aircraft_state_handlers[] = {
 static void AirportClearBlock(const Aircraft *v, const AirportFTAClass *apc)
 {
 	/* we have left the previous block, and entered the new one. Free the previous block */
-	if (apc->layout[v->previous_pos].block != apc->layout[v->pos].block) {
+	if (apc->layout[v->previous_pos].blocks != apc->layout[v->pos].blocks) {
 		Station *st = Station::Get(v->targetairport);
 
-		CLRBITS(st->airport.flags, apc->layout[v->previous_pos].block);
+		st->airport.blocks.Reset(apc->layout[v->previous_pos].blocks);
 	}
 }
 
@@ -1857,16 +1857,16 @@ static bool AirportHasBlock(Aircraft *v, const AirportFTA *current_pos, const Ai
 	const AirportFTA *next = &apc->layout[current_pos->next_position];
 
 	/* same block, then of course we can move */
-	if (apc->layout[current_pos->position].block != next->block) {
+	if (apc->layout[current_pos->position].blocks != next->blocks) {
 		const Station *st = Station::Get(v->targetairport);
-		uint64_t airport_flags = next->block;
+		AirportBlocks blocks = next->blocks;
 
 		/* check additional possible extra blocks */
-		if (current_pos != reference && current_pos->block != NOTHING_block) {
-			airport_flags |= current_pos->block;
+		if (current_pos != reference && current_pos->blocks != AirportBlock::Nothing) {
+			blocks.Set(current_pos->blocks);
 		}
 
-		if (st->airport.flags & airport_flags) {
+		if (st->airport.blocks.Any(blocks)) {
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			return true;
@@ -1888,15 +1888,15 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
 	const AirportFTA *reference = &apc->layout[v->pos];
 
 	/* if the next position is in another block, check it and wait until it is free */
-	if ((apc->layout[current_pos->position].block & next->block) != next->block) {
-		uint64_t airport_flags = next->block;
+	if (!apc->layout[current_pos->position].blocks.All(next->blocks)) {
+		AirportBlocks blocks = next->blocks;
 		/* search for all all elements in the list with the same state, and blocks != N
 		 * this means more blocks should be checked/set */
 		const AirportFTA *current = current_pos;
 		if (current == reference) current = current->next.get();
 		while (current != nullptr) {
-			if (current->heading == current_pos->heading && current->block != 0) {
-				airport_flags |= current->block;
+			if (current->heading == current_pos->heading && current->blocks.Any()) {
+				blocks.Set(current->blocks);
 				break;
 			}
 			current = current->next.get();
@@ -1904,17 +1904,17 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
 
 		/* if the block to be checked is in the next position, then exclude that from
 		 * checking, because it has been set by the airplane before */
-		if (current_pos->block == next->block) airport_flags ^= next->block;
+		if (current_pos->blocks == next->blocks) blocks.Flip(next->blocks);
 
 		Station *st = Station::Get(v->targetairport);
-		if (st->airport.flags & airport_flags) {
+		if (st->airport.blocks.Any(blocks)) {
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			return false;
 		}
 
-		if (next->block != NOTHING_block) {
-			SETBITS(st->airport.flags, airport_flags); // occupy next block
+		if (next->blocks != AirportBlock::Nothing) {
+			st->airport.blocks.Set(blocks); // occupy next block
 		}
 	}
 	return true;
@@ -1926,22 +1926,22 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
  */
 struct MovementTerminalMapping {
 	AirportMovementStates state; ///< Aircraft movement state when going to this terminal.
-	uint64_t airport_flag;         ///< Bitmask in the airport flags that need to be free for this terminal.
+	AirportBlock blocks; ///< Bitmask in the airport flags that need to be free for this terminal.
 };
 
 /** A list of all valid terminals and their associated blocks. */
 static const MovementTerminalMapping _airport_terminal_mapping[] = {
-	{TERM1, TERM1_block},
-	{TERM2, TERM2_block},
-	{TERM3, TERM3_block},
-	{TERM4, TERM4_block},
-	{TERM5, TERM5_block},
-	{TERM6, TERM6_block},
-	{TERM7, TERM7_block},
-	{TERM8, TERM8_block},
-	{HELIPAD1, HELIPAD1_block},
-	{HELIPAD2, HELIPAD2_block},
-	{HELIPAD3, HELIPAD3_block},
+	{TERM1, AirportBlock::Term1},
+	{TERM2, AirportBlock::Term2},
+	{TERM3, AirportBlock::Term3},
+	{TERM4, AirportBlock::Term4},
+	{TERM5, AirportBlock::Term5},
+	{TERM6, AirportBlock::Term6},
+	{TERM7, AirportBlock::Term7},
+	{TERM8, AirportBlock::Term8},
+	{HELIPAD1, AirportBlock::Helipad1},
+	{HELIPAD2, AirportBlock::Helipad2},
+	{HELIPAD3, AirportBlock::Helipad3},
 };
 
 /**
@@ -1956,10 +1956,10 @@ static bool FreeTerminal(Aircraft *v, uint8_t i, uint8_t last_terminal)
 	assert(last_terminal <= lengthof(_airport_terminal_mapping));
 	Station *st = Station::Get(v->targetairport);
 	for (; i < last_terminal; i++) {
-		if ((st->airport.flags & _airport_terminal_mapping[i].airport_flag) == 0) {
+		if (!st->airport.blocks.Any(_airport_terminal_mapping[i].blocks)) {
 			/* TERMINAL# HELIPAD# */
 			v->state = _airport_terminal_mapping[i].state; // start moving to that terminal/helipad
-			SETBITS(st->airport.flags, _airport_terminal_mapping[i].airport_flag); // occupy terminal/helipad
+			st->airport.blocks.Set(_airport_terminal_mapping[i].blocks); // occupy terminal/helipad
 			return true;
 		}
 	}
@@ -1989,11 +1989,11 @@ static uint GetNumTerminals(const AirportFTAClass *apc)
 static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* example of more terminalgroups
-	 * {0,HANGAR,NOTHING_block,1}, {0,TERMGROUP,TERM_GROUP1_block,0}, {0,TERMGROUP,TERM_GROUP2_ENTER_block,1}, {0,0,N,1},
+	 * {0,HANGAR,AirportBlock::Nothing,1}, {0,TERMGROUP,AirportBlock::TermGroup1,0}, {0,TERMGROUP,TERM_GROUP2_ENTER_block,1}, {0,0,N,1},
 	 * Heading TERMGROUP denotes a group. We see 2 groups here:
-	 * 1. group 0 -- TERM_GROUP1_block (check block)
+	 * 1. group 0 -- AirportBlock::TermGroup1 (check block)
 	 * 2. group 1 -- TERM_GROUP2_ENTER_block (check block)
-	 * First in line is checked first, group 0. If the block (TERM_GROUP1_block) is free, it
+	 * First in line is checked first, group 0. If the block (AirportBlock::TermGroup1) is free, it
 	 * looks at the corresponding terminals of that group. If no free ones are found, other
 	 * possible groups are checked (in this case group 1, since that is after group 0). If that
 	 * fails, then attempt fails and plane waits
@@ -2004,7 +2004,7 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 
 		while (temp != nullptr) {
 			if (temp->heading == TERMGROUP) {
-				if (!(st->airport.flags & temp->block)) {
+				if (!st->airport.blocks.Any(temp->blocks)) {
 					/* read which group do we want to go to?
 					 * (the first free group) */
 					uint target_group = temp->next_position + 1;

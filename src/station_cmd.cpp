@@ -2609,7 +2609,7 @@ CommandCost CmdBuildAirport(DoCommandFlag flags, TileIndex tile, uint8_t airport
 		st->AddFacility(StationFacility::Airport, tile);
 		st->airport.type = airport_type;
 		st->airport.layout = layout;
-		st->airport.flags = 0;
+		st->airport.blocks = {};
 		st->airport.rotation = rotation;
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
@@ -2741,7 +2741,7 @@ CommandCost CmdOpenCloseAirport(DoCommandFlag flags, StationID station_id)
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
-		st->airport.flags ^= AIRPORT_CLOSED_block;
+		st->airport.blocks.Flip(AirportBlock::AirportClosed);
 		SetWindowWidgetDirty(WC_STATION_VIEW, st->index, WID_SV_CLOSE_AIRPORT);
 	}
 	return CommandCost();

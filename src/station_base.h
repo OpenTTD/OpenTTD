@@ -347,7 +347,7 @@ private:
 struct Airport : public TileArea {
 	Airport() : TileArea(INVALID_TILE, 0, 0) {}
 
-	uint64_t flags;       ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
+	AirportBlocks blocks; ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 	uint8_t type;          ///< Type of this airport, @see AirportTypes
 	uint8_t layout;        ///< Airport layout number.
 	Direction rotation; ///< How this airport is rotated.

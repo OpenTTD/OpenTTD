@@ -85,47 +85,49 @@ enum AirportMovementStates : uint8_t {
 };
 
 /** Movement Blocks on Airports blocks (eg_airport_flags). */
-static const uint64_t
-	TERM1_block              = 1ULL <<  0, ///< Block belonging to terminal 1.
-	TERM2_block              = 1ULL <<  1, ///< Block belonging to terminal 2.
-	TERM3_block              = 1ULL <<  2, ///< Block belonging to terminal 3.
-	TERM4_block              = 1ULL <<  3, ///< Block belonging to terminal 4.
-	TERM5_block              = 1ULL <<  4, ///< Block belonging to terminal 5.
-	TERM6_block              = 1ULL <<  5, ///< Block belonging to terminal 6.
-	HELIPAD1_block           = 1ULL <<  6, ///< Block belonging to helipad 1.
-	HELIPAD2_block           = 1ULL <<  7, ///< Block belonging to helipad 2.
-	RUNWAY_IN_OUT_block      = 1ULL <<  8,
-	RUNWAY_IN_block          = 1ULL <<  8,
-	AIRPORT_BUSY_block       = 1ULL <<  8,
-	RUNWAY_OUT_block         = 1ULL <<  9,
-	TAXIWAY_BUSY_block       = 1ULL << 10,
-	OUT_WAY_block            = 1ULL << 11,
-	IN_WAY_block             = 1ULL << 12,
-	AIRPORT_ENTRANCE_block   = 1ULL << 13,
-	TERM_GROUP1_block        = 1ULL << 14,
-	TERM_GROUP2_block        = 1ULL << 15,
-	HANGAR2_AREA_block       = 1ULL << 16,
-	TERM_GROUP2_ENTER1_block = 1ULL << 17,
-	TERM_GROUP2_ENTER2_block = 1ULL << 18,
-	TERM_GROUP2_EXIT1_block  = 1ULL << 19,
-	TERM_GROUP2_EXIT2_block  = 1ULL << 20,
-	PRE_HELIPAD_block        = 1ULL << 21,
+enum class AirportBlock : uint8_t {
+	Term1            =  0, ///< Block belonging to terminal 1.
+	Term2            =  1, ///< Block belonging to terminal 2.
+	Term3            =  2, ///< Block belonging to terminal 3.
+	Term4            =  3, ///< Block belonging to terminal 4.
+	Term5            =  4, ///< Block belonging to terminal 5.
+	Term6            =  5, ///< Block belonging to terminal 6.
+	Helipad1         =  6, ///< Block belonging to helipad 1.
+	Helipad2         =  7, ///< Block belonging to helipad 2.
+	RunwayInOut      =  8,
+	RunwayIn         =  8,
+	AirportBusy      =  8,
+	RunwayOut        =  9,
+	TaxiwayBusy      = 10,
+	OutWay           = 11,
+	InWay            = 12,
+	AirportEntrance  = 13,
+	TermGroup1       = 14,
+	TermGroup2       = 15,
+	Hangar2Area      = 16,
+	TermGroup2Enter1 = 17,
+	TermGroup2Enter2 = 18,
+	TermGroup2Exit1  = 19,
+	TermGroup2Exit2  = 20,
+	PreHelipad       = 21,
 
 	/* blocks for new airports */
-	TERM7_block              = 1ULL << 22, ///< Block belonging to terminal 7.
-	TERM8_block              = 1ULL << 23, ///< Block belonging to terminal 8.
-	HELIPAD3_block           = 1ULL << 24, ///< Block belonging to helipad 3.
-	HANGAR1_AREA_block       = 1ULL << 26,
-	OUT_WAY2_block           = 1ULL << 27,
-	IN_WAY2_block            = 1ULL << 28,
-	RUNWAY_IN2_block         = 1ULL << 29,
-	RUNWAY_OUT2_block        = 1ULL << 10, ///< @note re-uses #TAXIWAY_BUSY_block
-	HELIPAD_GROUP_block      = 1ULL << 13, ///< @note re-uses #AIRPORT_ENTRANCE_block
-	OUT_WAY_block2           = 1ULL << 31,
+	Term7            = 22, ///< Block belonging to terminal 7.
+	Term8            = 23, ///< Block belonging to terminal 8.
+	Helipad3         = 24, ///< Block belonging to helipad 3.
+	Hangar1Area      = 26,
+	OutWay2          = 27,
+	InWay2           = 28,
+	RunwayIn2        = 29,
+	RunwayOut2       = 10, ///< @note re-uses #AirportBlock::TaxiwayBusy
+	HelipadGroup     = 13, ///< @note re-uses #AirportBlock::AirportEntrance
+	OutWay3          = 31,
 	/* end of new blocks */
 
-	NOTHING_block            = 1ULL << 30,
-	AIRPORT_CLOSED_block     = 1ULL << 63; ///< Dummy block for indicating a closed airport.
+	Nothing          = 30,
+	AirportClosed    = 63, ///< Dummy block for indicating a closed airport.
+};
+using AirportBlocks = EnumBitSet<AirportBlock, uint64_t>;
 
 /** A single location on an airport where aircraft can move to. */
 struct AirportMovingData {
@@ -144,7 +146,7 @@ struct AirportFTA {
 	AirportFTA(const AirportFTAbuildup&);
 
 	std::unique_ptr<AirportFTA> next; ///< possible extra movement choices from this position
-	uint64_t block; ///< bitmap of blocks that could be reserved
+	AirportBlocks blocks; ///< bitmap of blocks that could be reserved
 	uint8_t position; ///< the position that an airplane is at
 	uint8_t next_position; ///< next position from this position
 	uint8_t heading; ///< heading (current orders), guiding an airplane to its target on an airport
