@@ -1866,7 +1866,7 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	}
 
 	bool visible = SettingsContainer::UpdateFilterState(filter, force_visible);
-	this->flags.Set(SettingEntryFlag::Filtered, visible);
+	this->flags.Set(SettingEntryFlag::Filtered, !visible);
 	return visible;
 }
 
