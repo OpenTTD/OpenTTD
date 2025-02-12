@@ -3251,7 +3251,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	for (const Station *st : Station::Iterate()) {
 		if (st->town == t) {
 			/* Non-oil rig stations are always a problem. */
-			if (!(st->facilities & FACIL_AIRPORT) || st->airport.type != AT_OILRIG) return CMD_ERROR;
+			if (!st->facilities.Test(StationFacility::Airport) || st->airport.type != AT_OILRIG) return CMD_ERROR;
 			/* We can only automatically delete oil rigs *if* there's no vehicle on them. */
 			CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, st->airport.tile);
 			if (ret.Failed()) return ret;

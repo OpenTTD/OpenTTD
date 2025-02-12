@@ -24,7 +24,7 @@ TransparencyOptionBits _transparency_opt;  ///< The bits that should be transpar
 TransparencyOptionBits _transparency_lock; ///< Prevent these bits from flipping with X.
 TransparencyOptionBits _invisibility_opt;  ///< The bits that should be invisible.
 uint8_t _display_opt; ///< What do we want to draw/do?
-uint8_t _facility_display_opt; ///< What station facilities to draw.
+StationFacilities _facility_display_opt; ///< What station facilities to draw.
 
 class TransparenciesWindow : public Window
 {

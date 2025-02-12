@@ -13,6 +13,7 @@
 #include "gfx_func.h"
 #include "openttd.h"
 #include "core/bitmath_func.hpp"
+#include "station_type.h"
 
 /**
  * Transparency option bits: which position in _transparency_opt stands for which transparency.
@@ -38,7 +39,7 @@ extern TransparencyOptionBits _transparency_opt;
 extern TransparencyOptionBits _transparency_lock;
 extern TransparencyOptionBits _invisibility_opt;
 extern uint8_t _display_opt;
-extern uint8_t _facility_display_opt;
+extern StationFacilities _facility_display_opt;
 
 /**
  * Check if the transparency option bit is set

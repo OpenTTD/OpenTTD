@@ -228,11 +228,11 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
  */
 void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 {
-	if (this->facilities == FACIL_NONE) {
+	if (this->facilities == StationFacilities{}) {
 		this->MoveSign(facil_xy);
 		this->random_bits = Random();
 	}
-	this->facilities |= new_facility_bit;
+	this->facilities.Set(new_facility_bit);
 	this->owner = _current_company;
 	this->build_date = TimerGameCalendar::date;
 	SetWindowClassesDirty(WC_VEHICLE_ORDERS);
@@ -714,7 +714,7 @@ Money AirportMaintenanceCost(Owner owner)
 	Money total_cost = 0;
 
 	for (const Station *st : Station::Iterate()) {
-		if (st->owner == owner && (st->facilities & FACIL_AIRPORT)) {
+		if (st->owner == owner && st->facilities.Test(StationFacility::Airport)) {
 			total_cost += _price[PR_INFRASTRUCTURE_AIRPORT] * st->airport.GetSpec()->maintenance_cost;
 		}
 	}

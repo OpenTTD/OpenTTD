@@ -276,7 +276,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 		wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TRY);
 
 		wp->delete_ctr = 0;
-		wp->facilities |= FACIL_TRAIN;
+		wp->facilities.Set(StationFacility::Train);
 		wp->build_date = TimerGameCalendar::date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
 		wp->train_station = new_location;
@@ -409,7 +409,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlag flags, TileIndex start_tile, Axis
 		}
 
 		wp->delete_ctr = 0;
-		wp->facilities |= FACIL_BUS_STOP | FACIL_TRUCK_STOP;
+		wp->facilities.Set(StationFacility::BusStop).Set(StationFacility::TruckStop);
 		wp->build_date = TimerGameCalendar::date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
 
@@ -494,7 +494,7 @@ CommandCost CmdBuildBuoy(DoCommandFlag flags, TileIndex tile)
 
 		wp->string_id = STR_SV_STNAME_BUOY;
 
-		wp->facilities |= FACIL_DOCK;
+		wp->facilities.Set(StationFacility::Dock);
 		wp->owner = OWNER_NONE;
 
 		wp->build_date = TimerGameCalendar::date;
@@ -535,7 +535,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		wp->facilities &= ~FACIL_DOCK;
+		wp->facilities.Reset(StationFacility::Dock);
 
 		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 

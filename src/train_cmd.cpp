@@ -2953,7 +2953,7 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
 	const Station *st = Station::Get(station);
-	if (!(st->facilities & FACIL_TRAIN)) {
+	if (!st->facilities.Test(StationFacility::Train)) {
 		/* The destination station has no trainstation tiles. */
 		this->IncrementRealOrderIndex();
 		return TileIndex{};

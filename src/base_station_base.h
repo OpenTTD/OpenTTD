@@ -66,7 +66,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 
 	Town *town;                     ///< The town this station is associated with
 	Owner owner;                    ///< The owner of this station
-	StationFacility facilities;     ///< The facilities that this station has
+	StationFacilities facilities;     ///< The facilities that this station has
 
 	std::vector<SpecMapping<StationSpec>> speclist;           ///< List of rail station specs of this station.
 	std::vector<SpecMapping<RoadStopSpec>> roadstop_speclist; ///< List of road stop specs of this station
@@ -175,7 +175,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 */
 	inline bool IsInUse() const
 	{
-		return (this->facilities & ~FACIL_WAYPOINT) != 0;
+		return this->facilities.Any({StationFacility::Train, StationFacility::TruckStop, StationFacility::BusStop, StationFacility::Airport, StationFacility::Dock});
 	}
 
 	inline uint8_t GetRoadStopRandomBits(TileIndex tile) const
@@ -214,7 +214,7 @@ private:
  */
 template <class T, bool Tis_waypoint>
 struct SpecializedStation : public BaseStation {
-	static const StationFacility EXPECTED_FACIL = Tis_waypoint ? FACIL_WAYPOINT : FACIL_NONE; ///< Specialized type
+	static constexpr StationFacilities EXPECTED_FACIL = Tis_waypoint ? StationFacility::Waypoint : StationFacilities{}; ///< Specialized type
 
 	/**
 	 * Set station type correctly
@@ -233,7 +233,7 @@ struct SpecializedStation : public BaseStation {
 	 */
 	static inline bool IsExpected(const BaseStation *st)
 	{
-		return (st->facilities & FACIL_WAYPOINT) == EXPECTED_FACIL;
+		return st->facilities.Test(StationFacility::Waypoint) == Tis_waypoint;
 	}
 
 	/**

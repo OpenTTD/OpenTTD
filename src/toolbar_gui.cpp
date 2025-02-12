@@ -277,12 +277,12 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list.push_back(MakeDropDownListDividerItem());
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_TOWN_NAMES), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OME_SHOW_TOWNNAMES));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_STATION_NAMES), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES));
-	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_TRAIN) != 0, STR_SETTINGS_MENU_STATION_NAMES_TRAIN, OME_SHOW_STATIONNAMES_TRAIN, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_TRUCK_STOP) != 0, STR_SETTINGS_MENU_STATION_NAMES_LORRY, OME_SHOW_STATIONNAMES_LORRY, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_BUS_STOP) != 0, STR_SETTINGS_MENU_STATION_NAMES_BUS, OME_SHOW_STATIONNAMES_BUS, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_DOCK) != 0, STR_SETTINGS_MENU_STATION_NAMES_SHIP, OME_SHOW_STATIONNAMES_SHIP, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_AIRPORT) != 0, STR_SETTINGS_MENU_STATION_NAMES_PLANE, OME_SHOW_STATIONNAMES_PLANE, false, false, 1));
-	list.push_back(MakeDropDownListCheckedItem((_facility_display_opt & FACIL_GHOST) != 0, STR_SETTINGS_MENU_STATION_NAMES_GHOST, OME_SHOW_STATIONNAMES_GHOST, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Train), STR_SETTINGS_MENU_STATION_NAMES_TRAIN, OME_SHOW_STATIONNAMES_TRAIN, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::TruckStop), STR_SETTINGS_MENU_STATION_NAMES_LORRY, OME_SHOW_STATIONNAMES_LORRY, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::BusStop), STR_SETTINGS_MENU_STATION_NAMES_BUS, OME_SHOW_STATIONNAMES_BUS, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Dock), STR_SETTINGS_MENU_STATION_NAMES_SHIP, OME_SHOW_STATIONNAMES_SHIP, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(StationFacility::Airport), STR_SETTINGS_MENU_STATION_NAMES_PLANE, OME_SHOW_STATIONNAMES_PLANE, false, false, 1));
+	list.push_back(MakeDropDownListCheckedItem(_facility_display_opt.Test(STATION_FACILITY_GHOST), STR_SETTINGS_MENU_STATION_NAMES_GHOST, OME_SHOW_STATIONNAMES_GHOST, false, false, 1));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_WAYPOINT_NAMES), STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED, OME_SHOW_WAYPOINTNAMES));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_SIGNS), STR_SETTINGS_MENU_SIGNS_DISPLAYED, OME_SHOW_SIGNS));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS), STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS, OME_SHOW_COMPETITOR_SIGNS));
@@ -294,19 +294,6 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	ShowDropDownList(w, std::move(list), 0, WID_TN_SETTINGS, 140, true);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
-}
-
-/**
- * Toggle display station names for a facility.
- * @param facility Facility to toggle.
- */
-static void ToggleFacilityDisplay(const uint8_t facility)
-{
-	if ((_facility_display_opt & facility) == 0) {
-		SETBITS(_facility_display_opt, facility);
-	} else {
-		CLRBITS(_facility_display_opt, facility);
-	}
 }
 
 /**
@@ -328,12 +315,12 @@ static CallBackFunction MenuClickSettings(int index)
 
 		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);     break;
 		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES);  break;
-		case OME_SHOW_STATIONNAMES_TRAIN: ToggleFacilityDisplay(FACIL_TRAIN); break;
-		case OME_SHOW_STATIONNAMES_LORRY: ToggleFacilityDisplay(FACIL_TRUCK_STOP); break;
-		case OME_SHOW_STATIONNAMES_BUS: ToggleFacilityDisplay(FACIL_BUS_STOP); break;
-		case OME_SHOW_STATIONNAMES_SHIP: ToggleFacilityDisplay(FACIL_DOCK); break;
-		case OME_SHOW_STATIONNAMES_PLANE: ToggleFacilityDisplay(FACIL_AIRPORT); break;
-		case OME_SHOW_STATIONNAMES_GHOST: ToggleFacilityDisplay(FACIL_GHOST); break;
+		case OME_SHOW_STATIONNAMES_TRAIN: _facility_display_opt.Flip(StationFacility::Train); break;
+		case OME_SHOW_STATIONNAMES_LORRY: _facility_display_opt.Flip(StationFacility::TruckStop); break;
+		case OME_SHOW_STATIONNAMES_BUS: _facility_display_opt.Flip(StationFacility::BusStop); break;
+		case OME_SHOW_STATIONNAMES_SHIP: _facility_display_opt.Flip(StationFacility::Dock); break;
+		case OME_SHOW_STATIONNAMES_PLANE: _facility_display_opt.Flip(StationFacility::Airport); break;
+		case OME_SHOW_STATIONNAMES_GHOST: _facility_display_opt.Flip(STATION_FACILITY_GHOST); break;
 		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
 		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);          break;
 		case OME_SHOW_COMPETITOR_SIGNS:

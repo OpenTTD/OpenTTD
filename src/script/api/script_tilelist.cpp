@@ -130,20 +130,20 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 
 	const StationRect *rect = &::Station::Get(station_id)->rect;
 
-	uint station_type_value = 0;
+	EnumBitSet<StationType, uint8_t> station_types = {};
 	/* Convert ScriptStation::StationType to ::StationType, but do it in a
 	 *  bitmask, so we can scan for multiple entries at the same time. */
-	if ((station_type & ScriptStation::STATION_TRAIN) != 0)      station_type_value |= (1 << to_underlying(::StationType::Rail));
-	if ((station_type & ScriptStation::STATION_TRUCK_STOP) != 0) station_type_value |= (1 << to_underlying(::StationType::Truck));
-	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0)   station_type_value |= (1 << to_underlying(::StationType::Bus));
-	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << to_underlying(::StationType::Airport)) | (1 << to_underlying(::StationType::Oilrig));
-	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_type_value |= (1 << to_underlying(::StationType::Dock))    | (1 << to_underlying(::StationType::Oilrig));
+	if ((station_type & ScriptStation::STATION_TRAIN) != 0)      station_types.Set(::StationType::Rail);
+	if ((station_type & ScriptStation::STATION_TRUCK_STOP) != 0) station_types.Set(::StationType::Truck);
+	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0)   station_types.Set(::StationType::Bus);
+	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_types.Set(::StationType::Airport).Set(::StationType::Oilrig);
+	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_types.Set(::StationType::Dock).Set(::StationType::Oilrig);
 
 	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
 	for (TileIndex cur_tile : ta) {
 		if (!::IsTileType(cur_tile, MP_STATION)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;
-		if (!HasBit(station_type_value, to_underlying(::GetStationType(cur_tile)))) continue;
+		if (!station_types.Test(::GetStationType(cur_tile))) continue;
 		this->AddTile(cur_tile);
 	}
 }

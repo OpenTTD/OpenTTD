@@ -1450,10 +1450,10 @@ static void ViewportAddKdtreeSigns(DrawPixelInfo *dpi)
 				const BaseStation *st = BaseStation::Get(std::get<StationID>(item.id));
 
 				/* If no facilities are present the station is a ghost station. */
-				StationFacility facilities = st->facilities;
-				if (facilities == FACIL_NONE) facilities = FACIL_GHOST;
+				StationFacilities facilities = st->facilities;
+				if (facilities == StationFacilities{}) facilities = STATION_FACILITY_GHOST;
 
-				if ((_facility_display_opt & facilities) == 0) break;
+				if (!facilities.Any(_facility_display_opt)) break;
 
 				/* Don't draw if station is owned by another company and competitor station names are hidden. Stations owned by none are never ignored. */
 				if (!show_competitors && _local_company != st->owner && st->owner != OWNER_NONE) break;

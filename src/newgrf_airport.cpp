@@ -169,7 +169,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 		/* Get a variable from the persistent storage */
 		case 0x7C: return (this->st->airport.psa != nullptr) ? this->st->airport.psa->GetValue(parameter) : 0;
 
-		case 0xF0: return this->st->facilities;
+		case 0xF0: return this->st->facilities.base();
 		case 0xFA: return ClampTo<uint16_t>(this->st->build_date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR);
 	}
 

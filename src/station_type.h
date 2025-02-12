@@ -51,19 +51,18 @@ enum class RoadStopType : uint8_t {
 };
 
 /** The facilities a station might be having */
-enum StationFacility : uint8_t {
-	FACIL_NONE       = 0,      ///< The station has no facilities at all
-	FACIL_TRAIN      = 1 << 0, ///< Station with train station
-	FACIL_TRUCK_STOP = 1 << 1, ///< Station with truck stops
-	FACIL_BUS_STOP   = 1 << 2, ///< Station with bus stops
-	FACIL_AIRPORT    = 1 << 3, ///< Station with an airport
-	FACIL_DOCK       = 1 << 4, ///< Station with a dock
-	FACIL_WAYPOINT   = 1 << 7, ///< Station is a waypoint
+enum class StationFacility : uint8_t {
+	Train     = 0, ///< Station with train station
+	TruckStop = 1, ///< Station with truck stops
+	BusStop   = 2, ///< Station with bus stops
+	Airport   = 3, ///< Station with an airport
+	Dock      = 4, ///< Station with a dock
+	Waypoint  = 7, ///< Station is a waypoint
 };
-DECLARE_ENUM_AS_BIT_SET(StationFacility)
+using StationFacilities = EnumBitSet<StationFacility, uint8_t>;
 
 /** Fake 'facility' to allow toggling display of recently-removed station signs. */
-static constexpr StationFacility FACIL_GHOST{1U << 6};
+static constexpr StationFacility STATION_FACILITY_GHOST{6};
 
 /** The vehicles that may have visited a station */
 enum StationHadVehicleOfType : uint8_t {
