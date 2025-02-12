@@ -80,11 +80,11 @@ static constexpr NWidgetPart _nested_town_authority_widgets[] = {
 struct TownAuthorityWindow : Window {
 private:
 	Town *town;    ///< Town being displayed.
-	int sel_index; ///< Currently selected town action, \c 0 to \c TACT_COUNT-1, \c -1 means no action selected.
-	uint displayed_actions_on_previous_painting; ///< Actions that were available on the previous call to OnPaint()
+	TownAction sel_action = TownAction::End; ///< Currently selected town action, TownAction::End means no action selected.
+	TownActions displayed_actions_on_previous_painting{}; ///< Actions that were available on the previous call to OnPaint()
 	TownActions enabled_actions; ///< Actions that are enabled in settings.
-	TownActions available_actions; ///< Actions that are available to execute for the current company.
-	StringID action_tooltips[TACT_COUNT];
+	TownActions available_actions{}; ///< Actions that are available to execute for the current company.
+	StringID action_tooltips[to_underlying(TownAction::End)];
 
 	Dimension icon_size;      ///< Dimensions of company icon
 	Dimension exclusive_size; ///< Dimensions of exlusive icon
@@ -100,7 +100,7 @@ private:
 	int GetNthSetBit(int n)
 	{
 		if (n >= 0) {
-			for (uint i : SetBitIterator(this->enabled_actions)) {
+			for (uint i : SetBitIterator(this->enabled_actions.base())) {
 				n--;
 				if (n < 0) return i;
 			}
@@ -115,18 +115,19 @@ private:
 	 */
 	static TownActions GetEnabledActions()
 	{
-		TownActions enabled = TACT_ALL;
+		TownActions enabled{};
+		enabled.Set();
 
-		if (!_settings_game.economy.fund_roads) CLRBITS(enabled, TACT_ROAD_REBUILD);
-		if (!_settings_game.economy.fund_buildings) CLRBITS(enabled, TACT_FUND_BUILDINGS);
-		if (!_settings_game.economy.exclusive_rights) CLRBITS(enabled, TACT_BUY_RIGHTS);
-		if (!_settings_game.economy.bribe) CLRBITS(enabled, TACT_BRIBE);
+		if (!_settings_game.economy.fund_roads) enabled.Reset(TownAction::RoadRebuild);
+		if (!_settings_game.economy.fund_buildings) enabled.Reset(TownAction::FundBuildings);
+		if (!_settings_game.economy.exclusive_rights) enabled.Reset(TownAction::BuyRights);
+		if (!_settings_game.economy.bribe) enabled.Reset(TownAction::Bribe);
 
 		return enabled;
 	}
 
 public:
-	TownAuthorityWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), sel_index(-1), displayed_actions_on_previous_painting(0), available_actions(TACT_NONE)
+	TownAuthorityWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->town = Town::Get(window_number);
 		this->enabled_actions = GetEnabledActions();
@@ -157,7 +158,7 @@ public:
 		displayed_actions_on_previous_painting = this->available_actions;
 
 		this->SetWidgetLoweredState(WID_TA_ZONE_BUTTON, this->town->show_zone);
-		this->SetWidgetDisabledState(WID_TA_EXECUTE, (this->sel_index == -1) || !HasBit(this->available_actions, this->sel_index));
+		this->SetWidgetDisabledState(WID_TA_EXECUTE, (this->sel_action == TownAction::End) || !this->available_actions.Test(this->sel_action));
 
 		this->DrawWidgets();
 		if (!this->IsShaded())
@@ -228,16 +229,16 @@ public:
 		r.top += GetCharacterHeight(FS_NORMAL);
 
 		/* Draw list of actions */
-		for (int i = 0; i < TACT_COUNT; i++) {
+		for (TownAction i = {}; i != TownAction::End; ++i) {
 			/* Don't show actions if disabled in settings. */
-			if (!HasBit(this->enabled_actions, i)) continue;
+			if (!this->enabled_actions.Test(i)) continue;
 
 			/* Set colour of action based on ability to execute and if selected. */
 			TextColour action_colour = TC_GREY | TC_NO_SHADE;
-			if (HasBit(this->available_actions, i)) action_colour = TC_ORANGE;
-			if (this->sel_index == i) action_colour = TC_WHITE;
+			if (this->available_actions.Test(i)) action_colour = TC_ORANGE;
+			if (this->sel_action == i) action_colour = TC_WHITE;
 
-			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i, action_colour);
+			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i), action_colour);
 			r.top += GetCharacterHeight(FS_NORMAL);
 		}
 	}
@@ -251,13 +252,13 @@ public:
 	{
 		switch (widget) {
 			case WID_TA_ACTION_INFO:
-				if (this->sel_index != -1) {
-					Money action_cost = _price[PR_TOWN_ACTION] * _town_action_costs[this->sel_index] >> 8;
+				if (this->sel_action != TownAction::End) {
+					Money action_cost = _price[PR_TOWN_ACTION] * GetTownActionCost(this->sel_action) >> 8;
 					bool affordable = Company::IsValidID(_local_company) && action_cost < GetAvailableMoney(_local_company);
 
 					SetDParam(0, action_cost);
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-						this->action_tooltips[this->sel_index],
+						this->action_tooltips[to_underlying(this->sel_action)],
 						affordable ? TC_YELLOW : TC_RED);
 				}
 				break;
@@ -270,9 +271,9 @@ public:
 			case WID_TA_ACTION_INFO: {
 				assert(size.width > padding.width && size.height > padding.height);
 				Dimension d = {0, 0};
-				for (int i = 0; i < TACT_COUNT; i++) {
-					SetDParam(0, _price[PR_TOWN_ACTION] * _town_action_costs[i] >> 8);
-					d = maxdim(d, GetStringMultiLineBoundingBox(this->action_tooltips[i], size));
+				for (TownAction i = {}; i != TownAction::End; ++i) {
+					SetDParam(0, _price[PR_TOWN_ACTION] * GetTownActionCost(i) >> 8);
+					d = maxdim(d, GetStringMultiLineBoundingBox(this->action_tooltips[to_underlying(i)], size));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -281,10 +282,10 @@ public:
 			}
 
 			case WID_TA_COMMAND_LIST:
-				size.height = (TACT_COUNT + 1) * GetCharacterHeight(FS_NORMAL) + padding.height;
+				size.height = (to_underlying(TownAction::End) + 1) * GetCharacterHeight(FS_NORMAL) + padding.height;
 				size.width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
-				for (uint i = 0; i < TACT_COUNT; i++ ) {
-					size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + i).width + padding.width);
+				for (TownAction i = {}; i != TownAction::End; ++i) {
+					size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i)).width + padding.width);
 				}
 				size.width += padding.width;
 				break;
@@ -316,17 +317,17 @@ public:
 
 				y = GetNthSetBit(y);
 				if (y >= 0) {
-					this->sel_index = y;
+					this->sel_action = static_cast<TownAction>(y);
 					this->SetDirty();
 				}
 
 				/* When double-clicking, continue */
-				if (click_count == 1 || y < 0 || !HasBit(this->available_actions, y)) break;
+				if (click_count == 1 || y < 0 || !this->available_actions.Test(this->sel_action)) break;
 				[[fallthrough]];
 			}
 
 			case WID_TA_EXECUTE:
-				Command<CMD_DO_TOWN_ACTION>::Post(STR_ERROR_CAN_T_DO_THIS, this->town->xy, static_cast<TownID>(this->window_number), this->sel_index);
+				Command<CMD_DO_TOWN_ACTION>::Post(STR_ERROR_CAN_T_DO_THIS, this->town->xy, static_cast<TownID>(this->window_number), this->sel_action);
 				break;
 		}
 	}
@@ -341,8 +342,8 @@ public:
 		if (!gui_scope) return;
 
 		this->enabled_actions = this->GetEnabledActions();
-		if (!HasBit(this->enabled_actions, this->sel_index)) {
-			this->sel_index = -1;
+		if (!this->enabled_actions.Test(this->sel_action)) {
+			this->sel_action = TownAction::End;
 		}
 	}
 };

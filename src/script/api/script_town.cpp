@@ -258,7 +258,7 @@
 	EnforceCompanyModeValid(false);
 	if (!IsValidTown(town_id)) return false;
 
-	return HasBit(::GetMaskOfTownActions(ScriptObject::GetCompany(), ::Town::Get(town_id)), town_action);
+	return ::GetMaskOfTownActions(ScriptObject::GetCompany(), ::Town::Get(town_id)).Test(::TownAction(town_action));
 }
 
 /* static */ bool ScriptTown::PerformTownAction(TownID town_id, TownAction town_action)
@@ -267,7 +267,7 @@
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, IsActionAvailable(town_id, town_action));
 
-	return ScriptObject::Command<CMD_DO_TOWN_ACTION>::Do(town_id, town_action);
+	return ScriptObject::Command<CMD_DO_TOWN_ACTION>::Do(town_id, ::TownAction(town_action));
 }
 
 /* static */ bool ScriptTown::ExpandTown(TownID town_id, SQInteger houses)
