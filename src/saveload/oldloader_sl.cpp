@@ -761,10 +761,10 @@ static const OldChunks station_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Station, owner ),
 	OCL_SVAR(  OC_UINT8, Station, facilities ),
 	OCL_SVAR( OC_TTD | OC_UINT8, Station, airport.type ),
-	OCL_SVAR( OC_TTO | OC_FILE_U16 | OC_VAR_U64, Station, airport.flags ),
+	OCL_SVAR( OC_TTO | OC_FILE_U16 | OC_VAR_U64, Station, airport.blocks ),
 	OCL_NULL( 3 ),          ///< bus/truck status, blocked months, no longer in use
 	OCL_CNULL( OC_TTD, 1 ), ///< unknown
-	OCL_SVAR( OC_TTD | OC_FILE_U16 | OC_VAR_U64, Station, airport.flags ),
+	OCL_SVAR( OC_TTD | OC_FILE_U16 | OC_VAR_U64, Station, airport.blocks ),
 	OCL_CNULL( OC_TTD, 2 ), ///< last_vehicle. now last_vehicle_type
 	OCL_CNULL( OC_TTD, 4 ), ///< junk at end of chunk
 
@@ -788,9 +788,9 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 				st->string_id = _old_string_id + 0x2800; // custom name
 			}
 
-			if (HasBit(st->airport.flags, 8)) {
+			if (st->airport.blocks.Test(AirportBlock{8})) {
 				st->airport.type = 1; // large airport
-			} else if (HasBit(st->airport.flags, 6)) {
+			} else if (st->airport.blocks.Test(AirportBlock{6})) {
 				st->airport.type = 3; // oil rig
 			} else {
 				st->airport.type = 0; // small airport

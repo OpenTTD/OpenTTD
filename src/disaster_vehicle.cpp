@@ -264,7 +264,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 
 		if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 			Station *st = Station::GetByTile(v->tile);
-			CLRBITS(st->airport.flags, RUNWAY_IN_block);
+			st->airport.blocks.Reset(AirportBlock::RunwayIn);
 			AI::NewEvent(GetTileOwner(v->tile), new ScriptEventDisasterZeppelinerCleared(st->index));
 		}
 
@@ -301,7 +301,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 	}
 
 	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
-		SETBITS(Station::GetByTile(v->tile)->airport.flags, RUNWAY_IN_block);
+		Station::GetByTile(v->tile)->airport.blocks.Set(AirportBlock::RunwayIn);
 	}
 
 	return true;

@@ -239,7 +239,7 @@ template <bool Tfrom, bool Tvia>
 	EnforcePrecondition(false, IsValidStation(station_id));
 	EnforcePrecondition(false, HasStationType(station_id, STATION_AIRPORT));
 
-	return (::Station::Get(station_id)->airport.flags & AIRPORT_CLOSED_block) != 0;
+	return ::Station::Get(station_id)->airport.blocks.Test(AirportBlock::AirportClosed);
 }
 
 /* static */ bool ScriptStation::OpenCloseAirport(StationID station_id)
