@@ -4,6 +4,9 @@ find_library(Opus_LIBRARY
     NAMES opus
 )
 
+include(FixVcpkgLibrary)
+FixVcpkgLibrary(Opus)
+
 set(Opus_COMPILE_OPTIONS "" CACHE STRING "Extra compile options of opus")
 
 set(Opus_LINK_LIBRARIES "" CACHE STRING "Extra link libraries of opus")
@@ -33,5 +36,6 @@ if (Opus_FOUND)
             INTERFACE_LINK_LIBRARIES "${Opus_LINK_LIBRARIES}"
             INTERFACE_LINK_FLAGS "${Opus_LINK_FLAGS}"
         )
+        FixVcpkgTarget(Opus Opus::opus)
     endif()
 endif()

@@ -4,6 +4,9 @@ find_library(OpusFile_LIBRARY
     NAMES opusfile
 )
 
+include(FixVcpkgLibrary)
+FixVcpkgLibrary(OpusFile)
+
 set(OpusFile_COMPILE_OPTIONS "" CACHE STRING "Extra compile options of opusfile")
 
 set(OpusFile_LINK_LIBRARIES "" CACHE STRING "Extra link libraries of opusfile")
@@ -36,5 +39,6 @@ if (OpusFile_FOUND)
             INTERFACE_LINK_LIBRARIES "Ogg::ogg;Opus::opus;${OpusFile_LINK_LIBRARIES}"
             INTERFACE_LINK_FLAGS "${OpusFile_LINK_FLAGS}"
         )
+        FixVcpkgTarget(OpusFile OpusFile::opusfile)
     endif()
 endif()
