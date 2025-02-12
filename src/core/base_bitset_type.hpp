@@ -53,6 +53,17 @@ public:
 	}
 
 	/**
+	 * Set values from another bitset.
+	 * @param other Bitset of values to set.
+	 * @returns The bit set
+	 */
+	inline constexpr Timpl &Set(const Timpl &other)
+	{
+		this->data |= other.data;
+		return static_cast<Timpl&>(*this);
+	}
+
+	/**
 	 * Assign the value-th bit.
 	 * @param value Bit to assign to.
 	 * @param set true if the bit should be set, false if the bit should be reset.
@@ -75,6 +86,17 @@ public:
 	}
 
 	/**
+	 * Reset values from another bitset.
+	 * @param other Bitset of values to reset.
+	 * @returns The bit set
+	 */
+	inline constexpr Timpl &Reset(const Timpl &other)
+	{
+		this->data &= ~other.data;
+		return static_cast<Timpl&>(*this);
+	}
+
+	/**
 	 * Flip the value-th bit.
 	 * @param value Bit to flip.
 	 * @returns The bit set
@@ -86,6 +108,17 @@ public:
 		} else {
 			return this->Set(value);
 		}
+	}
+
+	/**
+	 * Flip values from another bitset.
+	 * @param other Bitset of values to flip.
+	 * @returns The bit set
+	 */
+	inline constexpr Timpl &Flip(const Timpl &other)
+	{
+		this->data ^= other.data;
+		return static_cast<Timpl&>(*this);
 	}
 
 	/**
