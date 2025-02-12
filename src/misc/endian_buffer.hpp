@@ -40,6 +40,18 @@ public:
 		return *this;
 	}
 
+	template <typename... Targs>
+	EndianBufferWriter &operator <<(const std::variant<Targs...> &variant)
+	{
+		this->WriteVariant(variant);
+		return *this;
+	}
+
+	EndianBufferWriter &operator <<(const std::monostate &)
+	{
+		return *this;
+	}
+
 	EndianBufferWriter &operator <<(const ConvertibleThroughBase auto data)
 	{
 		this->Write(data.base());
@@ -72,6 +84,21 @@ private:
 	void WriteTuple(const Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((*this << std::get<Tindices>(values)), ...);
+	}
+
+	template <typename T, std::size_t I = 0>
+	void WriteVariant(const T &variant )
+	{
+		if constexpr (I < std::variant_size_v<T>) {
+			if (I == variant.index()) {
+				static_assert(std::variant_size_v<T> < std::numeric_limits<uint8_t>::max());
+				this->Write(static_cast<uint8_t>(variant.index()));
+				*this << std::get<I>(variant);
+				return;
+			}
+
+			WriteVariant<T, I + 1>(variant);
+		}
 	}
 
 	/** Write overload for string values. */
@@ -135,6 +162,18 @@ public:
 		return *this;
 	}
 
+	template <typename... Targs>
+	EndianBufferReader &operator >>(std::variant<Targs...> &variant)
+	{
+		this->ReadVariant(this->Read<uint8_t>(), variant);
+		return *this;
+	}
+
+	EndianBufferReader &operator >>(const std::monostate &)
+	{
+		return *this;
+	}
+
 	template <ConvertibleThroughBase T>
 	EndianBufferReader &operator >>(T &data)
 	{
@@ -168,6 +207,21 @@ private:
 	void ReadTuple(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((*this >> std::get<Tindices>(values)), ...);
+	}
+
+	template <typename T, std::size_t I = 0>
+	void ReadVariant(uint8_t index, T &variant)
+	{
+		if constexpr (I < std::variant_size_v<T>) {
+			if (I != index) {
+				ReadVariant<T, I + 1>(index, variant);
+				return;
+			}
+
+			std::variant_alternative_t<I, T> data;
+			*this >> data;
+			variant = data;
+		}
 	}
 
 	/** Read overload for string data. */
