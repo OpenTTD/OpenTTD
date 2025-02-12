@@ -100,10 +100,10 @@ void MoveBuoysToWaypoints()
 			}
 
 			wp->train_station = train_st;
-			wp->facilities |= FACIL_TRAIN;
+			wp->facilities.Set(StationFacility::Train);
 		} else if (IsBuoyTile(xy) && GetStationIndex(xy) == index) {
 			wp->rect.BeforeAddTile(xy, StationRect::ADD_FORCE);
-			wp->facilities |= FACIL_DOCK;
+			wp->facilities.Set(StationFacility::Dock);
 		}
 	}
 }
@@ -397,7 +397,7 @@ public:
 		Station *st = Station::From(bst);
 
 		/* Before savegame version 161, persistent storages were not stored in a pool. */
-		if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_145) && st->facilities & FACIL_AIRPORT) {
+		if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_145) && st->facilities.Test(StationFacility::Airport)) {
 			/* Store the old persistent storage. The GRFID will be added later. */
 			assert(PersistentStorage::CanAllocateItem());
 			st->airport.psa = new PersistentStorage(0, 0, TileIndex{});
@@ -629,19 +629,19 @@ public:
 
 	void Save(BaseStation *bst) const override
 	{
-		if ((bst->facilities & FACIL_WAYPOINT) != 0) return;
+		if (bst->facilities.Test(StationFacility::Waypoint)) return;
 		SlObject(bst, this->GetDescription());
 	}
 
 	void Load(BaseStation *bst) const override
 	{
-		if ((bst->facilities & FACIL_WAYPOINT) != 0) return;
+		if (bst->facilities.Test(StationFacility::Waypoint)) return;
 		SlObject(bst, this->GetLoadDescription());
 	}
 
 	void FixPointers(BaseStation *bst) const override
 	{
-		if ((bst->facilities & FACIL_WAYPOINT) != 0) return;
+		if (bst->facilities.Test(StationFacility::Waypoint)) return;
 		SlObject(bst, this->GetDescription());
 	}
 };
@@ -664,19 +664,19 @@ public:
 
 	void Save(BaseStation *bst) const override
 	{
-		if ((bst->facilities & FACIL_WAYPOINT) == 0) return;
+		if (!bst->facilities.Test(StationFacility::Waypoint)) return;
 		SlObject(bst, this->GetDescription());
 	}
 
 	void Load(BaseStation *bst) const override
 	{
-		if ((bst->facilities & FACIL_WAYPOINT) == 0) return;
+		if (!bst->facilities.Test(StationFacility::Waypoint)) return;
 		SlObject(bst, this->GetLoadDescription());
 	}
 
 	void FixPointers(BaseStation *bst) const override
 	{
-		if ((bst->facilities & FACIL_WAYPOINT) == 0) return;
+		if (!bst->facilities.Test(StationFacility::Waypoint)) return;
 		SlObject(bst, this->GetDescription());
 	}
 };
@@ -713,7 +713,7 @@ struct STNNChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			bool waypoint = (SlReadByte() & FACIL_WAYPOINT) != 0;
+			bool waypoint = static_cast<StationFacilities>(SlReadByte()).Test(StationFacility::Waypoint);
 
 			BaseStation *bst = waypoint ? (BaseStation *)new (index) Waypoint() : new (index) Station();
 			SlObject(bst, slt);

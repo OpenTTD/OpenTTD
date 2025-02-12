@@ -97,7 +97,7 @@
 
 	const Station *st = ::Station::GetByTile(tile);
 	if (st->owner != ScriptObject::GetCompany() && ScriptCompanyMode::IsValid()) return -1;
-	if ((st->facilities & FACIL_AIRPORT) == 0) return -1;
+	if (!st->facilities.Test(StationFacility::Airport)) return -1;
 
 	return st->airport.GetNumHangars();
 }
@@ -111,7 +111,7 @@
 
 	const Station *st = ::Station::GetByTile(tile);
 	if (st->owner != ScriptObject::GetCompany() && ScriptCompanyMode::IsValid()) return INVALID_TILE;
-	if ((st->facilities & FACIL_AIRPORT) == 0) return INVALID_TILE;
+	if (!st->facilities.Test(StationFacility::Airport)) return INVALID_TILE;
 
 	return st->airport.GetHangarTile(0);
 }

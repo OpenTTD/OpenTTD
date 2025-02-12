@@ -453,15 +453,15 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			st = in->neutral_station;
 		}
 		if (st != nullptr && (st->owner == _local_company || st->owner == OWNER_NONE)) {
-			uint8_t facil;
+			StationFacilities facil;
 			switch (v->type) {
-				case VEH_SHIP:     facil = FACIL_DOCK;    break;
-				case VEH_TRAIN:    facil = FACIL_TRAIN;   break;
-				case VEH_AIRCRAFT: facil = FACIL_AIRPORT; break;
-				case VEH_ROAD:     facil = FACIL_BUS_STOP | FACIL_TRUCK_STOP; break;
+				case VEH_SHIP:     facil = StationFacility::Dock;    break;
+				case VEH_TRAIN:    facil = StationFacility::Train;   break;
+				case VEH_AIRCRAFT: facil = StationFacility::Airport; break;
+				case VEH_ROAD:     facil = {StationFacility::BusStop, StationFacility::TruckStop}; break;
 				default: NOT_REACHED();
 			}
-			if (st->facilities & facil) {
+			if (st->facilities.Any(facil)) {
 				order.MakeGoToStation(st->index);
 				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
 				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
