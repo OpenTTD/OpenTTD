@@ -431,7 +431,7 @@ static void ComposePart(std::back_insert_iterator<std::string> &output, const st
 	for (const auto &c : value) *output = c;
 }
 
-/* Helper to compose a string from unicde or string parts. */
+/* Helper to compose a string from unicode or string parts. */
 template <typename... Args>
 static std::string Compose(Args &&... args)
 {

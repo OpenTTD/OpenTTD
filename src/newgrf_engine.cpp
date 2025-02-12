@@ -1327,7 +1327,7 @@ static bool EnginePreSort(const EngineID &a, const EngineID &b)
 }
 
 /**
- * Deternine default engine sorting and execute recorded ListOrderChanges from AlterVehicleListOrder.
+ * Determine default engine sorting and execute recorded ListOrderChanges from AlterVehicleListOrder.
  */
 void CommitVehicleListOrderChanges()
 {

@@ -194,7 +194,7 @@
 
 /*
  * When making a (pure) debug build, the compiler will by default disable
- * inlining of functions. This has a detremental effect on the performance of
+ * inlining of functions. This has a detrimental effect on the performance of
  * debug builds, especially when more and more trivial (wrapper) functions get
  * added to the code base.
  * Take for example the savegame called "Wentbourne", when running this game

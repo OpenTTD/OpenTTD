@@ -56,7 +56,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 	sprite_list.sort();
 
 	std::vector<ParentSpriteToDraw *> preceding;  // Temporarily stores sprites that precede current and their position in the list
-	auto preceding_prev = sprite_list.begin(); // Store iterator in case we need to delete a single preciding sprite
+	auto preceding_prev = sprite_list.begin(); // Store iterator in case we need to delete a single preceding sprite
 	auto out = psdv->begin();  // Iterator to output sorted sprites
 
 	while (!sprite_order.empty()) {
@@ -79,7 +79,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 		/* We only need sprites with xmin <= s->xmax && ymin <= s->ymax && zmin <= s->zmax
 		 * So by iterating sprites with xmin + ymin <= s->xmax + s->ymax
 		 * we get all we need and some more that we filter out later.
-		 * We don't include zmin into the sum as there are usually more neighbors on x and y than z
+		 * We don't include zmin into the sum as there are usually more neighbours on x and y than z
 		 * so including it will actually increase the amount of false positives.
 		 * Also min coordinates can be > max so using max(xmin, xmax) + max(ymin, ymax)
 		 * to ensure that we iterate the current sprite as we need to remove it from the list.

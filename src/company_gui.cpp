@@ -2334,7 +2334,7 @@ struct CompanyWindow : Window
 		}
 
 		if (y == r.top) {
-			/* No String was emited before, so there must be no vehicles at all. */
+			/* No String was emitted before, so there must be no vehicles at all. */
 			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
 		}
 	}
@@ -2377,7 +2377,7 @@ struct CompanyWindow : Window
 		}
 
 		if (y == r.top) {
-			/* No String was emited before, so there must be no infrastructure at all. */
+			/* No String was emitted before, so there must be no infrastructure at all. */
 			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_NONE);
 		}
 	}

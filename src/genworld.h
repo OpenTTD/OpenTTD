@@ -52,7 +52,7 @@ static const uint CUSTOM_SEA_LEVEL_MAX_PERCENTAGE = 90;   ///< Maximum percentag
 static constexpr uint MAP_HEIGHT_LIMIT_ORIGINAL = 15; ///< Original map height limit.
 
 static const uint MAP_HEIGHT_LIMIT_AUTO_MINIMUM = 30; ///< When map height limit is auto, make this the lowest possible map height limit.
-static const uint MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM = 15; ///< When map height limit is auto, the map height limit will be the higest peak plus this value.
+static const uint MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM = 15; ///< When map height limit is auto, the map height limit will be the highest peak plus this value.
 
 typedef void GWDoneProc();  ///< Procedure called when the genworld process finishes
 typedef void GWAbortProc(); ///< Called when genworld is aborted

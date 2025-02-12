@@ -106,7 +106,7 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			return t != nullptr ? (GetTownRadiusGroup(t, this->tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy))) : HZB_TOWN_EDGE << 16;
 		}
 
-		/* Get square of Euclidian distance of closest town */
+		/* Get square of Euclidean distance of closest town */
 		case 0x46: {
 			if (this->tile == INVALID_TILE) return 0;
 			const Town *t = (this->st == nullptr) ? ClosestTownFromTile(this->tile, UINT_MAX) : this->st->town;

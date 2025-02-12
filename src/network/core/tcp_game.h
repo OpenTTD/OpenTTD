@@ -372,7 +372,7 @@ protected:
 	 * Sends a chat-packet for external source to the client:
 	 * string  Name of the source this message came from.
 	 * uint16_t  TextColour to use for the message.
-	 * string  Name of the user who sent the messsage.
+	 * string  Name of the user who sent the message.
 	 * string  Message (max NETWORK_CHAT_LENGTH).
 	 * @param p The packet that was just received.
 	 */

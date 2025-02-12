@@ -91,7 +91,7 @@ void ClientNetworkTurnSocketHandler::Connect()
  * Not until you run Connect() on the resulting instance will it start setting
  * up the TURN connection.
  * @param token The token as received from the Game Coordinator.
- * @param tracking_number The tracking number as recieved from the Game Coordinator.
+ * @param tracking_number The tracking number as received from the Game Coordinator.
  * @param ticket The ticket as received from the Game Coordinator.
  * @param connection_string Connection string of the TURN server.
  * @return The handler for this TURN connection.

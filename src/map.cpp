@@ -152,7 +152,7 @@ uint DistanceManhattan(TileIndex t0, TileIndex t1)
  * Gets the 'Square' distance between the two given tiles.
  * The 'Square' distance is the square of the shortest (straight line)
  * distance between the two tiles.
- * Also known as euclidian- or L2-Norm squared.
+ * Also known as Euclidean- or L2-Norm squared.
  * @param t0 the start tile
  * @param t1 the end tile
  * @return the distance

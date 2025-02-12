@@ -87,7 +87,7 @@ private:
 	StringID action_tooltips[TACT_COUNT];
 
 	Dimension icon_size;      ///< Dimensions of company icon
-	Dimension exclusive_size; ///< Dimensions of exlusive icon
+	Dimension exclusive_size; ///< Dimensions of exclusive icon
 
 	/**
 	 * Get the position of the Nth set bit.

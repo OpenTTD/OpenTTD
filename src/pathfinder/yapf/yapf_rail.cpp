@@ -114,7 +114,7 @@ private:
 		return tile != this->res_dest_tile || td != this->res_dest_td;
 	}
 
-	/** Unreserve a single track/platform. Stops when the previous failer is reached. */
+	/** Unreserve a single track/platform. Stops when the previous failure is reached. */
 	bool UnreserveSingleTrack(TileIndex tile, Trackdir td)
 	{
 		if (IsRailStationTile(tile)) {

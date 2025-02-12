@@ -149,7 +149,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	AccelStatus mode = v->GetAccelerationStatus();
 
 	const int max_te = this->gcache.cached_max_te; // [N]
-	/* Constructued from power, with need to multiply by 18 and assuming
+	/* Constructed from power, with need to multiply by 18 and assuming
 	 * low speed, it needs to be a 64 bit integer too. */
 	int64_t force;
 	if (speed > 0) {

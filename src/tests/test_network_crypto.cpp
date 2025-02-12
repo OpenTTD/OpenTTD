@@ -261,11 +261,11 @@ TEST_CASE("Encryption handling")
 	MockNetworkSocketHandler server_socket_handler(server.CreateClientToServerEncryptionHandler(), server.CreateServerToClientEncryptionHandler());
 	MockNetworkSocketHandler client_socket_handler(client.CreateServerToClientEncryptionHandler(), client.CreateClientToServerEncryptionHandler());
 
-	SECTION("Encyption happening client -> server") {
+	SECTION("Encryption happening client -> server") {
 		CheckEncryption(&client_socket_handler, &server_socket_handler);
 	}
 
-	SECTION("Encyption happening server -> client") {
+	SECTION("Encryption happening server -> client") {
 		CheckEncryption(&server_socket_handler, &client_socket_handler);
 	}
 

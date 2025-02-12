@@ -45,7 +45,7 @@ TEST_CASE("HaveDParamChanged")
 	SetDParamStr(1, "some string");
 	CHECK(HaveDParamChanged(backup) == false);
 
-	/* Changing paramter 2 should not have any effect, as the backup is only 2 long. */
+	/* Changing parameter 2 should not have any effect, as the backup is only 2 long. */
 	SetDParam(2, 3);
 	CHECK(HaveDParamChanged(backup) == false);
 

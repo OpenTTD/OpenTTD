@@ -48,7 +48,7 @@ static Palette _local_palette; ///< Current palette to use for drawing.
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
 
-/** Platform-specific callback to get an OpenGL funtion pointer. */
+/** Platform-specific callback to get an OpenGL function pointer. */
 static OGLProc GetOGLProcAddressCallback(const char *proc)
 {
 	static void *dl = nullptr;

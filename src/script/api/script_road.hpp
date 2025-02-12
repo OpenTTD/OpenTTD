@@ -72,8 +72,8 @@ public:
 	 * Type of road station.
 	 */
 	enum RoadVehicleType {
-		ROADVEHTYPE_BUS,   ///< Build objects useable for busses and passenger trams
-		ROADVEHTYPE_TRUCK, ///< Build objects useable for trucks and cargo trams
+		ROADVEHTYPE_BUS,   ///< Build objects usable for busses and passenger trams
+		ROADVEHTYPE_TRUCK, ///< Build objects usable for trucks and cargo trams
 	};
 
 	/**

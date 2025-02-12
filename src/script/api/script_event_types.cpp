@@ -122,7 +122,7 @@ ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :
 {
 }
 /**
- * Convert a JSON part fo Squirrel.
+ * Convert a JSON part for Squirrel.
  * @param vm The VM used.
  * @param json The JSON part to convert to Squirrel.
  */

@@ -4226,7 +4226,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				}
 				break;
 
-			case 0x0D: // Build cost multipler
+			case 0x0D: // Build cost multiplier
 				spec->build_cost_multiplier = buf.ReadByte();
 				spec->clear_cost_multiplier = spec->build_cost_multiplier;
 				break;

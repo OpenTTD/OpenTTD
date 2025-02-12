@@ -57,7 +57,7 @@ WaterRegionPatchDesc GetWaterRegionPatchInfo(TileIndex tile);
 void InvalidateWaterRegion(TileIndex tile);
 
 using TVisitWaterRegionPatchCallBack = std::function<void(const WaterRegionPatchDesc &)>;
-void VisitWaterRegionPatchNeighbors(const WaterRegionPatchDesc &water_region_patch, TVisitWaterRegionPatchCallBack &callback);
+void VisitWaterRegionPatchNeighbours(const WaterRegionPatchDesc &water_region_patch, TVisitWaterRegionPatchCallBack &callback);
 
 void AllocateWaterRegions();
 

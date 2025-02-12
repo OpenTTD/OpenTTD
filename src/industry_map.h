@@ -180,7 +180,7 @@ inline void SetIndustryConstructionCounter(Tile tile, uint8_t value)
 /**
  * Reset the construction stage counter of the industry,
  * as well as the completion bit.
- * In fact, it is the same as restarting construction frmo ground up
+ * In fact, it is the same as restarting construction from the ground up.
  * @param tile the tile to query
  * @pre IsTileType(tile, MP_INDUSTRY)
  */

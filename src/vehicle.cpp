@@ -772,7 +772,7 @@ uint32_t Vehicle::GetGRFID() const
 /**
  * Shift all dates by given interval.
  * This is useful if the date has been modified with the cheat menu.
- * @param interval Number of days to be added or substracted.
+ * @param interval Number of days to be added or subtracted.
  */
 void Vehicle::ShiftDates(TimerGameEconomy::Date interval)
 {
