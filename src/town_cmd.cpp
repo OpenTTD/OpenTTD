@@ -3333,12 +3333,24 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 }
 
 /**
- * Factor in the cost of each town action.
- * @see TownActions
+ * Get cost factors for a TownAction
+ * @param action TownAction to get cost factor for.
+ * @returns Cost factor.
  */
-const uint8_t _town_action_costs[TACT_COUNT] = {
-	2, 4, 9, 35, 48, 53, 117, 175
-};
+uint8_t GetTownActionCost(TownAction action)
+{
+	/**
+	 * Factor in the cost of each town action.
+	 * @see TownActions
+	 */
+	static const uint8_t town_action_costs[] = {
+		2, 4, 9, 35, 48, 53, 117, 175
+	};
+	static_assert(std::size(town_action_costs) == to_underlying(TownAction::End));
+
+	assert(to_underlying(action) < std::size(town_action_costs));
+	return town_action_costs[to_underlying(action)];
+}
 
 /**
  * Perform the "small advertising campaign" town action.
@@ -3620,6 +3632,7 @@ static TownActionProc * const _town_action_proc[] = {
 	TownActionBuyRights,
 	TownActionBribe
 };
+static_assert(std::size(_town_action_proc) == to_underlying(TownAction::End));
 
 /**
  * Get a list of available town authority actions.
@@ -3629,7 +3642,7 @@ static TownActionProc * const _town_action_proc[] = {
  */
 TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 {
-	TownActions buttons = TACT_NONE;
+	TownActions buttons{};
 
 	/* Spectators and unwanted have no options */
 	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
@@ -3639,11 +3652,10 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 
 		/* Check the action bits for validity and
 		 * if they are valid add them */
-		for (uint i = 0; i != lengthof(_town_action_costs); i++) {
-			const TownActions cur = (TownActions)(1 << i);
+		for (TownAction cur = {}; cur != TownAction::End; ++cur) {
 
 			/* Is the company prohibited from bribing ? */
-			if (cur == TACT_BRIBE) {
+			if (cur == TownAction::Bribe) {
 				/* Company can't bribe if setting is disabled */
 				if (!_settings_game.economy.bribe) continue;
 				/* Company can bribe if another company has exclusive transport rights,
@@ -3655,19 +3667,19 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 			}
 
 			/* Is the company not able to buy exclusive rights ? */
-			if (cur == TACT_BUY_RIGHTS && (!_settings_game.economy.exclusive_rights || t->exclusive_counter != 0)) continue;
+			if (cur == TownAction::BuyRights && (!_settings_game.economy.exclusive_rights || t->exclusive_counter != 0)) continue;
 
 			/* Is the company not able to fund buildings ? */
-			if (cur == TACT_FUND_BUILDINGS && !_settings_game.economy.fund_buildings) continue;
+			if (cur == TownAction::FundBuildings && !_settings_game.economy.fund_buildings) continue;
 
 			/* Is the company not able to fund local road reconstruction? */
-			if (cur == TACT_ROAD_REBUILD && !_settings_game.economy.fund_roads) continue;
+			if (cur == TownAction::RoadRebuild && !_settings_game.economy.fund_roads) continue;
 
 			/* Is the company not able to build a statue ? */
-			if (cur == TACT_BUILD_STATUE && t->statues.Test(cid)) continue;
+			if (cur == TownAction::BuildStatue && t->statues.Test(cid)) continue;
 
-			if (avail >= _town_action_costs[i] * _price[PR_TOWN_ACTION] >> 8) {
-				buttons |= cur;
+			if (avail >= GetTownActionCost(cur) * _price[PR_TOWN_ACTION] >> 8) {
+				buttons.Set(cur);
 			}
 		}
 	}
@@ -3684,16 +3696,16 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
  * @param action action to perform, @see _town_action_proc for the list of available actions
  * @return the cost of this operation or an error
  */
-CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, uint8_t action)
+CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, TownAction action)
 {
 	Town *t = Town::GetIfValid(town_id);
-	if (t == nullptr || action >= lengthof(_town_action_proc)) return CMD_ERROR;
+	if (t == nullptr || to_underlying(action) >= std::size(_town_action_proc)) return CMD_ERROR;
 
-	if (!HasBit(GetMaskOfTownActions(_current_company, t), action)) return CMD_ERROR;
+	if (!GetMaskOfTownActions(_current_company, t).Test(action)) return CMD_ERROR;
 
-	CommandCost cost(EXPENSES_OTHER, _price[PR_TOWN_ACTION] * _town_action_costs[action] >> 8);
+	CommandCost cost(EXPENSES_OTHER, _price[PR_TOWN_ACTION] * GetTownActionCost(action) >> 8);
 
-	CommandCost ret = _town_action_proc[action](t, flags);
+	CommandCost ret = _town_action_proc[to_underlying(action)](t, flags);
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {

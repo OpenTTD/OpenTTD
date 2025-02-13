@@ -12,6 +12,7 @@
 
 #include "script_cargo.hpp"
 #include "script_company.hpp"
+#include "../../town.h"
 #include "../../town_type.h"
 
 /**
@@ -31,49 +32,49 @@ public:
 		 * absolute percentage, so 10% becomes 35%, with a max of 99%)
 		 * for all stations within 10 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_SMALL  = 0,
+		TOWN_ACTION_ADVERTISE_SMALL  = to_underlying(::TownAction::AdvertiseSmall),
 
 		/**
 		 * The cargo ratings temporary gains 44% of rating (in
 		 * absolute percentage, so 10% becomes 54%, with a max of 99%)
 		 * for all stations within 15 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_MEDIUM = 1,
+		TOWN_ACTION_ADVERTISE_MEDIUM = to_underlying(::TownAction::AdvertiseMedium),
 
 		/**
 		 * The cargo ratings temporary gains 63% of rating (in
 		 * absolute percentage, so 10% becomes 73%, with a max of 99%)
 		 * for all stations within 20 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_LARGE  = 2,
+		TOWN_ACTION_ADVERTISE_LARGE  = to_underlying(::TownAction::AdvertiseLarge),
 
 		/**
 		 * Rebuild the roads of this town for 6 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_ROAD_REBUILD     = 3,
+		TOWN_ACTION_ROAD_REBUILD     = to_underlying(::TownAction::RoadRebuild),
 
 		/**
 		 * Build a statue in this town.
 		 */
-		TOWN_ACTION_BUILD_STATUE     = 4,
+		TOWN_ACTION_BUILD_STATUE     = to_underlying(::TownAction::BuildStatue),
 
 		/**
 		 * Fund the creation of extra buildings for 3 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_FUND_BUILDINGS   = 5,
+		TOWN_ACTION_FUND_BUILDINGS   = to_underlying(::TownAction::FundBuildings),
 
 		/**
 		 * Buy exclusive rights for this town for 12 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_BUY_RIGHTS       = 6,
+		TOWN_ACTION_BUY_RIGHTS       = to_underlying(::TownAction::BuyRights),
 
 		/**
 		 * Bribe the town in order to get a higher rating.
 		 */
-		TOWN_ACTION_BRIBE            = 7,
+		TOWN_ACTION_BRIBE            = to_underlying(::TownAction::Bribe),
 	};
 
 	/**

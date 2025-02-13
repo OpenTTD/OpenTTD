@@ -207,26 +207,20 @@ Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 void ResetHouses();
 
 /** Town actions of a company. */
-enum TownActions {
-	TACT_NONE             = 0x00, ///< Empty action set.
-
-	TACT_ADVERTISE_SMALL  = 0x01, ///< Small advertising campaign.
-	TACT_ADVERTISE_MEDIUM = 0x02, ///< Medium advertising campaign.
-	TACT_ADVERTISE_LARGE  = 0x04, ///< Large advertising campaign.
-	TACT_ROAD_REBUILD     = 0x08, ///< Rebuild the roads.
-	TACT_BUILD_STATUE     = 0x10, ///< Build a statue.
-	TACT_FUND_BUILDINGS   = 0x20, ///< Fund new buildings.
-	TACT_BUY_RIGHTS       = 0x40, ///< Buy exclusive transport rights.
-	TACT_BRIBE            = 0x80, ///< Try to bribe the council.
-
-	TACT_COUNT            = 8,    ///< Number of available town actions.
-
-	TACT_ADVERTISE        = TACT_ADVERTISE_SMALL | TACT_ADVERTISE_MEDIUM | TACT_ADVERTISE_LARGE, ///< All possible advertising actions.
-	TACT_CONSTRUCTION     = TACT_ROAD_REBUILD | TACT_BUILD_STATUE | TACT_FUND_BUILDINGS,         ///< All possible construction actions.
-	TACT_FUNDS            = TACT_BUY_RIGHTS | TACT_BRIBE,                                        ///< All possible funding actions.
-	TACT_ALL              = TACT_ADVERTISE | TACT_CONSTRUCTION | TACT_FUNDS,                     ///< All possible actions.
+enum class TownAction : uint8_t {
+	AdvertiseSmall, ///< Small advertising campaign.
+	AdvertiseMedium, ///< Medium advertising campaign.
+	AdvertiseLarge, ///< Large advertising campaign.
+	RoadRebuild, ///< Rebuild the roads.
+	BuildStatue, ///< Build a statue.
+	FundBuildings, ///< Fund new buildings.
+	BuyRights, ///< Buy exclusive transport rights.
+	Bribe, ///< Try to bribe the council.
+	End,
 };
-DECLARE_ENUM_AS_BIT_SET(TownActions)
+using TownActions = EnumBitSet<TownAction, uint8_t>;
+
+DECLARE_INCREMENT_DECREMENT_OPERATORS(TownAction);
 
 void ClearTownHouse(Town *t, TileIndex tile);
 void UpdateTownMaxPass(Town *t);
@@ -241,7 +235,7 @@ bool GenerateTowns(TownLayout layout);
 const CargoSpec *FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect effect);
 CargoArray GetAcceptedCargoOfHouse(const HouseSpec *hs);
 
-extern const uint8_t _town_action_costs[TACT_COUNT];
+uint8_t GetTownActionCost(TownAction action);
 
 /**
  * Set the default name for a depot/waypoint
