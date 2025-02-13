@@ -68,9 +68,7 @@ int8_t SaveHighScoreValue(const Company *c)
 	std::move_backward(it, highscores.end() - 1, highscores.end());
 
 	/* Fill the elements. */
-	SetDParam(0, c->index);
-	SetDParam(1, c->index);
-	it->name = GetString(STR_HIGHSCORE_NAME); // get manager/company name string
+	it->name = GetString(STR_HIGHSCORE_NAME, c->index, c->index); // get manager/company name string
 	it->score = score;
 	it->title = EndGameGetPerformanceTitleFromValue(score);
 	return std::distance(highscores.begin(), it);
@@ -104,9 +102,7 @@ int8_t SaveHighScoreValueNetwork()
 	for (size_t i = 0; i < count && i < highscores.size(); i++) {
 		const Company *c = cl[i];
 		auto &highscore = highscores[i];
-		SetDParam(0, c->index);
-		SetDParam(1, c->index);
-		highscore.name = GetString(STR_HIGHSCORE_NAME); // get manager/company name string
+		highscore.name = GetString(STR_HIGHSCORE_NAME, c->index, c->index); // get manager/company name string
 		highscore.score = c->old_economy[0].performance_history;
 		highscore.title = EndGameGetPerformanceTitleFromValue(highscore.score);
 

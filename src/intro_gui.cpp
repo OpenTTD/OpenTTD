@@ -313,13 +313,11 @@ struct SelectGameWindow : public Window {
 		bool changed = false;
 
 		if (NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_SGI_BASESET); wid != nullptr && wid->current_x > 0) {
-			SetDParam(0, _missing_extra_graphics);
-			changed |= wid->UpdateMultilineWidgetSize(GetString(STR_INTRO_BASESET), 3);
+			changed |= wid->UpdateMultilineWidgetSize(GetString(STR_INTRO_BASESET, _missing_extra_graphics), 3);
 		}
 
 		if (NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_SGI_TRANSLATION); wid != nullptr && wid->current_x > 0) {
-			SetDParam(0, _current_language->missing);
-			changed |= wid->UpdateMultilineWidgetSize(GetString(STR_INTRO_TRANSLATION), 3);
+			changed |= wid->UpdateMultilineWidgetSize(GetString(STR_INTRO_TRANSLATION, _current_language->missing), 3);
 		}
 
 		if (changed) this->ReInit(0, 0, this->flags.Test(WindowFlag::Centred));

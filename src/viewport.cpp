@@ -1369,9 +1369,7 @@ static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const T
 		std::string *str = ViewportAddString(dpi, &t->cache.sign, flags, INVALID_COLOUR);
 		if (str == nullptr) continue;
 
-		SetDParam(0, t->index);
-		SetDParam(1, t->cache.population);
-		*str = GetString(stringid);
+		*str = GetString(stringid, t->index, t->cache.population);
 	}
 }
 
@@ -1395,8 +1393,7 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 			(si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
 		if (str == nullptr) continue;
 
-		SetDParam(0, si->index);
-		*str = GetString(STR_SIGN_NAME);
+		*str = GetString(STR_SIGN_NAME, si->index);
 	}
 }
 
@@ -1417,12 +1414,9 @@ static void ViewportAddStationStrings(DrawPixelInfo *dpi, const std::vector<cons
 		if (str == nullptr) continue;
 
 		if (Station::IsExpected(st)) { /* Station */
-			SetDParam(0, st->index);
-			SetDParam(1, st->facilities);
-			*str = GetString(small ? STR_STATION_NAME : STR_VIEWPORT_STATION);
+			*str = GetString(small ? STR_STATION_NAME : STR_VIEWPORT_STATION, st->index, st->facilities);
 		} else { /* Waypoint */
-			SetDParam(0, st->index);
-			*str = GetString(STR_WAYPOINT_NAME);
+			*str = GetString(STR_WAYPOINT_NAME, st->index);
 		}
 	}
 }

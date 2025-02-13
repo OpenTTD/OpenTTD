@@ -384,10 +384,8 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 					const auto &back = k->second;
 					back_time = back.time;
 					if (back.Usage() > 0) {
-						SetDParam(0, back.cargo);
-						SetDParam(1, back.Usage());
-						SetDParam(2, back.Usage() * 100 / (back.capacity + 1));
-						tooltip_extension = GetString(STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION);
+						tooltip_extension = GetString(STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION,
+								back.cargo, back.Usage(), back.Usage() * 100 / (back.capacity + 1));
 					}
 				}
 				/* Add information about the travel time if known. */

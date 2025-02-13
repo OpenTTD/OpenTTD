@@ -284,9 +284,7 @@ std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptan
 
 			/* If the accepted value is less than 8, show it in 1/8:ths */
 			if (acceptance[cargo_type] < 8) {
-				SetDParam(0, acceptance[cargo_type]);
-				SetDParam(1, cs->name);
-				line << GetString(STR_LAND_AREA_INFORMATION_CARGO_EIGHTS);
+				line << GetString(STR_LAND_AREA_INFORMATION_CARGO_EIGHTS, acceptance[cargo_type], cs->name);
 			} else {
 				line << GetString(cs->name);
 			}

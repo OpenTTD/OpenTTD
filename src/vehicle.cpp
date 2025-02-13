@@ -331,11 +331,9 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	}
 
 	/* debug output */
-	SetDParamStr(0, grfconfig->GetName());
-	Debug(grf, 0, "{}", StrMakeValid(GetString(part1)));
+	Debug(grf, 0, "{}", StrMakeValid(GetString(part1, grfconfig->GetName())));
 
-	SetDParam(1, engine);
-	Debug(grf, 0, "{}", StrMakeValid(GetString(part2)));
+	Debug(grf, 0, "{}", StrMakeValid(GetString(part2, std::monostate{}, engine)));
 }
 
 /**

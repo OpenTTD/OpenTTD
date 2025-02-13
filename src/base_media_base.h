@@ -130,11 +130,9 @@ struct BaseSet {
 	 */
 	std::string GetListLabel() const
 	{
-		if (this->GetNumInvalid() == 0) return this->name;
+		if (this->GetNumInvalid() == 0) return GetString(STR_JUST_RAW_STRING, this->name);
 
-		SetDParamStr(0, this->name);
-		SetDParam(1, this->GetNumInvalid());
-		return GetString(STR_BASESET_STATUS);
+		return GetString(STR_BASESET_STATUS, this->name, this->GetNumInvalid());
 	}
 
 	/**

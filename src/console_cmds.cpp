@@ -1870,8 +1870,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 
 	for (const Company *c : Company::Iterate()) {
 		/* Grab the company name */
-		SetDParam(0, c->index);
-		std::string company_name = GetString(STR_COMPANY_NAME);
+		std::string company_name = GetString(STR_COMPANY_NAME, c->index);
 
 		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",

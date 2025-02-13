@@ -47,8 +47,7 @@ void Subsidy::AwardTo(CompanyID company)
 	this->awarded = company;
 	this->remaining = _settings_game.difficulty.subsidy_duration * CalendarTime::MONTHS_IN_YEAR;
 
-	SetDParam(0, company);
-	std::string company_name = GetString(STR_COMPANY_NAME);
+	std::string company_name = GetString(STR_COMPANY_NAME, company);
 
 	/* Add a news item */
 	std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(this, SubsidyDecodeParamType::NewsAwarded, 1);

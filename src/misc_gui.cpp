@@ -179,8 +179,7 @@ public:
 		this->landinfo_data.clear();
 
 		/* Tiletype */
-		SetDParam(0, td.dparam);
-		this->landinfo_data.push_back(GetString(td.str));
+		this->landinfo_data.push_back(GetString(td.str, td.dparam));
 
 		/* Up to four owners */
 		for (uint i = 0; i < 4; i++) {
@@ -211,94 +210,76 @@ public:
 		this->landinfo_data.push_back(GetString(str));
 
 		/* Location */
-		SetDParam(0, TileX(tile));
-		SetDParam(1, TileY(tile));
-		SetDParam(2, GetTileZ(tile));
-		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS));
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS, TileX(tile), TileY(tile), GetTileZ(tile)));
 
 		/* Tile index */
-		SetDParam(0, tile);
-		SetDParam(1, tile);
-		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_INDEX));
+		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_INDEX, tile, tile));
 
 		/* Local authority */
-		SetDParam(0, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE);
-		if (t != nullptr) {
-			SetDParam(0, STR_TOWN_NAME);
-			SetDParam(1, t->index);
+		if (t == nullptr) {
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY, STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE, std::monostate{}));
+		} else {
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY, STR_TOWN_NAME, t->index));
 		}
-		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY));
 
 		/* Build date */
 		if (td.build_date != CalendarTime::INVALID_DATE) {
-			SetDParam(0, td.build_date);
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_BUILD_DATE));
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_BUILD_DATE, td.build_date));
 		}
 
 		/* Station class */
 		if (td.station_class != STR_NULL) {
-			SetDParam(0, td.station_class);
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_STATION_CLASS));
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_STATION_CLASS, td.station_class));
 		}
 
 		/* Station type name */
 		if (td.station_name != STR_NULL) {
-			SetDParam(0, td.station_name);
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_STATION_TYPE));
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_STATION_TYPE, td.station_name));
 		}
 
 		/* Airport class */
 		if (td.airport_class != STR_NULL) {
-			SetDParam(0, td.airport_class);
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORT_CLASS));
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORT_CLASS, td.airport_class));
 		}
 
 		/* Airport name */
 		if (td.airport_name != STR_NULL) {
-			SetDParam(0, td.airport_name);
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORT_NAME));
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORT_NAME, td.airport_name));
 		}
 
 		/* Airport tile name */
 		if (td.airport_tile_name != STR_NULL) {
-			SetDParam(0, td.airport_tile_name);
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME));
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME, td.airport_tile_name));
 		}
 
 		/* Rail type name */
 		if (td.railtype != STR_NULL) {
-			SetDParam(0, td.railtype);
-			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_RAIL_TYPE));
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_RAIL_TYPE, td.railtype));
 		}
 
 		/* Rail speed limit */
 		if (td.rail_speed != 0) {
-			SetDParam(0, PackVelocity(td.rail_speed, VEH_TRAIN));
-			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT));
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT, PackVelocity(td.rail_speed, VEH_TRAIN)));
 		}
 
 		/* Road type name */
 		if (td.roadtype != STR_NULL) {
-			SetDParam(0, td.roadtype);
-			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_ROAD_TYPE));
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_ROAD_TYPE, td.roadtype));
 		}
 
 		/* Road speed limit */
 		if (td.road_speed != 0) {
-			SetDParam(0, PackVelocity(td.road_speed, VEH_ROAD));
-			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT));
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT, PackVelocity(td.road_speed, VEH_ROAD)));
 		}
 
 		/* Tram type name */
 		if (td.tramtype != STR_NULL) {
-			SetDParam(0, td.tramtype);
-			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_TYPE));
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_TYPE, td.tramtype));
 		}
 
 		/* Tram speed limit */
 		if (td.tram_speed != 0) {
-			SetDParam(0, PackVelocity(td.tram_speed, VEH_ROAD));
-			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT));
+			this->landinfo_data.push_back(GetString(STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT, PackVelocity(td.tram_speed, VEH_ROAD)));
 		}
 
 		/* Tile protection status */
@@ -308,8 +289,7 @@ public:
 
 		/* NewGRF name */
 		if (td.grf != nullptr) {
-			SetDParamStr(0, td.grf);
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_NEWGRF_NAME));
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_NEWGRF_NAME, td.grf));
 		}
 
 		/* Cargo acceptance is displayed in a extra multiline */

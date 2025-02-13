@@ -1667,16 +1667,12 @@ struct BuildHouseWindow : public PickerWindow {
 			if (max_year == CalendarTime::MAX_YEAR) {
 				return GetString(STR_HOUSE_PICKER_YEARS_ANY);
 			}
-			SetDParam(0, max_year);
-			return GetString(STR_HOUSE_PICKER_YEARS_UNTIL);
+			return GetString(STR_HOUSE_PICKER_YEARS_UNTIL, max_year);
 		}
 		if (max_year == CalendarTime::MAX_YEAR) {
-			SetDParam(0, min_year);
-			return GetString(STR_HOUSE_PICKER_YEARS_FROM);
+			return GetString(STR_HOUSE_PICKER_YEARS_FROM, min_year);
 		}
-		SetDParam(0, min_year);
-		SetDParam(1, max_year);
-		return GetString(STR_HOUSE_PICKER_YEARS);
+		return GetString(STR_HOUSE_PICKER_YEARS, min_year, max_year);
 	}
 
 	/**
@@ -1688,12 +1684,10 @@ struct BuildHouseWindow : public PickerWindow {
 	{
 		std::stringstream line;
 
-		SetDParam(0, GetHouseName(hs));
-		line << GetString(STR_HOUSE_PICKER_NAME);
+		line << GetString(STR_HOUSE_PICKER_NAME, GetHouseName(hs));
 		line << "\n";
 
-		SetDParam(0, hs->population);
-		line << GetString(STR_HOUSE_PICKER_POPULATION);
+		line << GetString(STR_HOUSE_PICKER_POPULATION, hs->population);
 		line << "\n";
 
 		line << GetHouseYear(hs->min_year, hs->max_year);
@@ -1704,9 +1698,7 @@ struct BuildHouseWindow : public PickerWindow {
 		if (hs->building_flags.Test(BuildingFlag::Size2x1)) size = 0x21;
 		if (hs->building_flags.Test(BuildingFlag::Size1x2)) size = 0x12;
 		if (hs->building_flags.Test(BuildingFlag::Size2x2)) size = 0x22;
-		SetDParam(0, GB(size, 0, 4));
-		SetDParam(1, GB(size, 4, 4));
-		line << GetString(STR_HOUSE_PICKER_SIZE);
+		line << GetString(STR_HOUSE_PICKER_SIZE, GB(size, 0, 4), GB(size, 4, 4));
 		line << "\n";
 
 		auto cargo_string = BuildCargoAcceptanceString(GetAcceptedCargoOfHouse(hs), STR_HOUSE_PICKER_CARGO_ACCEPTED);

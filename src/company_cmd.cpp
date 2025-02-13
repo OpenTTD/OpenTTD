@@ -415,8 +415,7 @@ verify_name:;
 			if (cc->name_1 == str && cc->name_2 == strp) goto bad_town_name;
 		}
 
-		SetDParam(0, strp);
-		name = GetString(str);
+		name = GetString(str, strp);
 		if (Utf8StringLength(name) >= MAX_LENGTH_COMPANY_NAME_CHARS) goto bad_town_name;
 
 set_name:;
@@ -540,14 +539,12 @@ restart:;
 
 		/* Reserve space for extra unicode character. We need to do this to be able
 		 * to detect too long president name. */
-		SetDParam(0, c->index);
-		std::string name = GetString(STR_PRESIDENT_NAME);
+		std::string name = GetString(STR_PRESIDENT_NAME, c->index);
 		if (Utf8StringLength(name) >= MAX_LENGTH_PRESIDENT_NAME_CHARS) continue;
 
 		for (const Company *cc : Company::Iterate()) {
 			if (c != cc) {
-				SetDParam(0, cc->index);
-				std::string other_name = GetString(STR_PRESIDENT_NAME);
+				std::string other_name = GetString(STR_PRESIDENT_NAME, cc->index);
 				if (name == other_name) goto restart;
 			}
 		}
@@ -819,17 +816,14 @@ static IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEcono
  */
 CompanyNewsInformation::CompanyNewsInformation(const Company *c, const Company *other)
 {
-	SetDParam(0, c->index);
-	this->company_name = GetString(STR_COMPANY_NAME);
+	this->company_name = GetString(STR_COMPANY_NAME, c->index);
 
 	if (other != nullptr) {
-		SetDParam(0, other->index);
-		this->other_company_name = GetString(STR_COMPANY_NAME);
+		this->other_company_name = GetString(STR_COMPANY_NAME, other->index);
 		c = other;
 	}
 
-	SetDParam(0, c->index);
-	this->president_name = GetString(STR_PRESIDENT_NAME_MANAGER);
+	this->president_name = GetString(STR_PRESIDENT_NAME_MANAGER, c->index);
 
 	this->colour = c->colour;
 	this->face = c->face;
@@ -1187,8 +1181,7 @@ CommandCost CmdRenameCompany(DoCommandFlag flags, const std::string &text)
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
 
-		SetDParam(0, c->index);
-		std::string new_name = GetString(STR_COMPANY_NAME);
+		std::string new_name = GetString(STR_COMPANY_NAME, c->index);
 		AI::BroadcastNewEvent(new ScriptEventCompanyRenamed(c->index, new_name));
 		Game::NewEvent(new ScriptEventCompanyRenamed(c->index, new_name));
 	}
@@ -1242,8 +1235,7 @@ CommandCost CmdRenamePresident(DoCommandFlag flags, const std::string &text)
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
 
-		SetDParam(0, c->index);
-		std::string new_name = GetString(STR_PRESIDENT_NAME);
+		std::string new_name = GetString(STR_PRESIDENT_NAME, c->index);
 		AI::BroadcastNewEvent(new ScriptEventPresidentRenamed(c->index, new_name));
 		Game::NewEvent(new ScriptEventPresidentRenamed(c->index, new_name));
 	}
@@ -1323,11 +1315,8 @@ CommandCost CmdGiveMoney(DoCommandFlag flags, Money money, CompanyID dest_compan
 		cur_company.Restore();
 
 		if (_networking) {
-			SetDParam(0, dest_company);
-			std::string dest_company_name = GetString(STR_COMPANY_NAME);
-
-			SetDParam(0, _current_company);
-			std::string from_company_name = GetString(STR_COMPANY_NAME);
+			std::string dest_company_name = GetString(STR_COMPANY_NAME, dest_company);
+			std::string from_company_name = GetString(STR_COMPANY_NAME, _current_company);
 
 			NetworkTextMessage(NETWORK_ACTION_GIVE_MONEY, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
 		}

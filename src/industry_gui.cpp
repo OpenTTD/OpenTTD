@@ -391,13 +391,9 @@ class BuildIndustryWindow : public Window {
 		}
 
 		if (numcargo > 0) {
-			SetDParam(0, CargoSpec::Get(cargolist[firstcargo])->name);
-			SetDParamStr(1, cargo_suffix[firstcargo].text);
-			cargostring = GetString(prefixstr) + cargostring;
+			cargostring = GetString(prefixstr, CargoSpec::Get(cargolist[firstcargo])->name, cargo_suffix[firstcargo].text) + cargostring;
 		} else {
-			SetDParam(0, STR_JUST_NOTHING);
-			SetDParamStr(1, "");
-			cargostring = GetString(prefixstr);
+			cargostring = GetString(prefixstr, STR_JUST_NOTHING, "");
 		}
 
 		return cargostring;

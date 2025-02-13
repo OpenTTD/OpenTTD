@@ -100,9 +100,7 @@ class DropDownListCompanyItem : public DropDownIcon<DropDownIcon<DropDownString<
 public:
 	DropDownListCompanyItem(CompanyID company, bool shaded) : DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>>(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(company), NetworkCanJoinCompany(company) ? SPR_EMPTY : SPR_LOCK, PAL_NONE, STR_NULL, company, false, shaded)
 	{
-		SetDParam(0, company);
-		SetDParam(1, company);
-		this->SetString(GetString(STR_COMPANY_NAME_COMPANY_NUM));
+		this->SetString(GetString(STR_COMPANY_NAME_COMPANY_NUM, company, company));
 	}
 };
 
