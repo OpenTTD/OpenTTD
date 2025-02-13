@@ -32,7 +32,7 @@
  * @param text contents of the sign
  * @return the cost of this operation + the ID of the new sign or an error
  */
-std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlag flags, TileIndex tile, const std::string &text)
+std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex tile, const std::string &text)
 {
 	/* Try to locate a new sign */
 	if (!Sign::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_SIGNS), INVALID_SIGN };
@@ -41,7 +41,7 @@ std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlag flags, TileIndex tile
 	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return { CMD_ERROR, INVALID_SIGN };
 
 	/* When we execute, really make the sign */
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Sign *si = new Sign(_game_mode == GM_EDITOR ? OWNER_DEITY : _current_company);
 		int x = TileX(tile) * TILE_SIZE;
 		int y = TileY(tile) * TILE_SIZE;
@@ -69,7 +69,7 @@ std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlag flags, TileIndex tile
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameSign(DoCommandFlag flags, SignID sign_id, const std::string &text)
+CommandCost CmdRenameSign(DoCommandFlags flags, SignID sign_id, const std::string &text)
 {
 	Sign *si = Sign::GetIfValid(sign_id);
 	if (si == nullptr) return CMD_ERROR;
@@ -79,7 +79,7 @@ CommandCost CmdRenameSign(DoCommandFlag flags, SignID sign_id, const std::string
 	if (!text.empty()) {
 		if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
 
-		if (flags & DC_EXEC) {
+		if (flags.Test(DoCommandFlag::Execute)) {
 			/* Assign the new one */
 			si->name = text;
 			if (_game_mode != GM_EDITOR) si->owner = _current_company;
@@ -88,7 +88,7 @@ CommandCost CmdRenameSign(DoCommandFlag flags, SignID sign_id, const std::string
 			InvalidateWindowData(WC_SIGN_LIST, 0, 1);
 		}
 	} else { // Delete sign
-		if (flags & DC_EXEC) {
+		if (flags.Test(DoCommandFlag::Execute)) {
 			si->sign.MarkDirty();
 			if (si->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeSign(si->index));
 			delete si;

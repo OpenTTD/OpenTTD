@@ -15,8 +15,8 @@
 #include "engine_type.h"
 #include "group_type.h"
 
-CommandCost CmdAutoreplaceVehicle(DoCommandFlag flags, VehicleID veh_id);
-CommandCost CmdSetAutoReplace(DoCommandFlag flags, GroupID id_g, EngineID old_engine_type, EngineID new_engine_type, bool when_old);
+CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id);
+CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_engine_type, EngineID new_engine_type, bool when_old);
 
 DEF_CMD_TRAIT(CMD_AUTOREPLACE_VEHICLE, CmdAutoreplaceVehicle, 0, CMDT_VEHICLE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_SET_AUTOREPLACE,     CmdSetAutoReplace,     0, CMDT_VEHICLE_MANAGEMENT)

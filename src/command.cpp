@@ -179,17 +179,17 @@ void CommandHelperBase::InternalDoBefore(bool top_level, bool test)
  * @param top_level Top level of command execution, i.e. command from a command.
  * @param test Test run of command?
  */
-void CommandHelperBase::InternalDoAfter(CommandCost &res, DoCommandFlag flags, bool top_level, bool test)
+void CommandHelperBase::InternalDoAfter(CommandCost &res, DoCommandFlags flags, bool top_level, bool test)
 {
 	if (test) {
 		SetTownRatingTestMode(false);
 
-		if (res.Succeeded() && top_level && !(flags & DC_QUERY_COST) && !(flags & DC_BANKRUPT)) {
+		if (res.Succeeded() && top_level && !flags.Test(DoCommandFlag::QueryCost) && !flags.Test(DoCommandFlag::Bankrupt)) {
 			CheckCompanyHasMoney(res); // CheckCompanyHasMoney() modifies 'res' to an error if it fails.
 		}
 	} else {
 		/* If top-level, subtract the money. */
-		if (res.Succeeded() && top_level && !(flags & DC_BANKRUPT)) {
+		if (res.Succeeded() && top_level && !flags.Test(DoCommandFlag::Bankrupt)) {
 			SubtractMoneyFromCompany(res);
 		}
 	}

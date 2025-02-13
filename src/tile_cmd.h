@@ -88,7 +88,7 @@ typedef void DrawTileProc(TileInfo *ti);
  * @see GetSlopePixelZ
  */
 typedef int GetSlopeZProc(TileIndex tile, uint x, uint y, bool ground_vehicle);
-typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlag flags);
+typedef CommandCost ClearTileProc(TileIndex tile, DoCommandFlags flags);
 
 /**
  * Tile callback function signature for obtaining cargo acceptance of a tile
@@ -140,17 +140,17 @@ typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
  *
  * The function is called when a tile is affected by a terraforming operation.
  * It has to check if terraforming of the tile is allowed and return extra terraform-cost that depend on the tiletype.
- * With DC_EXEC in \a flags it has to perform tiletype-specific actions (like clearing land etc., but not the terraforming itself).
+ * With DoCommandFlag::Execute in \a flags it has to perform tiletype-specific actions (like clearing land etc., but not the terraforming itself).
  *
  * @note The terraforming has not yet taken place. So GetTileZ() and GetTileSlope() refer to the landscape before the terraforming operation.
  *
  * @param tile      The involved tile.
- * @param flags     Command flags passed to the terraform command (DC_EXEC, DC_QUERY_COST, etc.).
+ * @param flags     Command flags passed to the terraform command (DoCommandFlag::Execute, DoCommandFlag::QueryCost, etc.).
  * @param z_new     TileZ after terraforming.
  * @param tileh_new Slope after terraforming.
  * @return Error code or extra cost for terraforming (like clearing land, building foundations, etc., but not the terraforming itself.)
  */
-typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new);
+typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new);
 
 /**
  * Set of callback functions for performing tile operations of a given tile type.

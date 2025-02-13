@@ -166,7 +166,7 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
  * @param dir_up direction; eg up (true) or down (false)
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, TileIndex tile, Slope slope, bool dir_up)
+std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags, TileIndex tile, Slope slope, bool dir_up)
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	int direction = (dir_up ? 1 : -1);
@@ -256,10 +256,10 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 			/* Check tiletype-specific things, and add extra-cost */
 			Backup<bool> old_generating_world(_generating_world);
 			if (_game_mode == GM_EDITOR) old_generating_world.Change(true); // used to create green terraformed land
-			DoCommandFlag tile_flags = flags | DC_AUTO | DC_FORCE_CLEAR_TILE;
+			DoCommandFlags tile_flags = flags | DoCommandFlag::Auto | DoCommandFlag::ForceClearTile;
 			if (pass == 0) {
-				tile_flags &= ~DC_EXEC;
-				tile_flags |= DC_NO_MODIFY_TOWN_RATING;
+				tile_flags.Reset(DoCommandFlag::Execute);
+				tile_flags.Set(DoCommandFlag::NoModifyTownRating);
 			}
 			CommandCost cost;
 			if (indirectly_cleared) {
@@ -280,7 +280,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
 		return { CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED), 0, INVALID_TILE };
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Mark affected areas dirty. */
 		for (const auto &t : ts.dirty_tiles) {
 			MarkTileDirtyByTile(t);
@@ -312,7 +312,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlag flags, 
  * @param LevelMode Mode of leveling \c LevelMode.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm)
+std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, bool diagonal, LevelMode lm)
 {
 	if (start_tile >= Map::Size()) return { CMD_ERROR, 0, INVALID_TILE };
 
@@ -347,7 +347,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlag flags, Tile
 		uint curh = TileHeight(t);
 		while (curh != h) {
 			CommandCost ret;
-			std::tie(ret, std::ignore, error_tile) = Command<CMD_TERRAFORM_LAND>::Do(flags & ~DC_EXEC, t, SLOPE_N, curh <= h);
+			std::tie(ret, std::ignore, error_tile) = Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, SLOPE_N, curh <= h);
 			if (ret.Failed()) {
 				last_error = ret;
 
@@ -356,7 +356,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlag flags, Tile
 				break;
 			}
 
-			if (flags & DC_EXEC) {
+			if (flags.Test(DoCommandFlag::Execute)) {
 				money -= ret.GetCost();
 				if (money < 0) {
 					return { cost, ret.GetCost(), error_tile };

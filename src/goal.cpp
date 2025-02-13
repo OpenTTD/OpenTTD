@@ -75,7 +75,7 @@ INSTANTIATE_POOL_METHODS(Goal)
  * @param text Text of the goal.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text)
+std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text)
 {
 	if (!Goal::CanAllocateItem()) return { CMD_ERROR, INVALID_GOAL };
 
@@ -84,7 +84,7 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID com
 	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_GOAL };
 	if (!Goal::IsValidGoalDestination(company, type, dest)) return { CMD_ERROR, INVALID_GOAL };
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Goal *g = new Goal();
 		g->type = type;
 		g->dst = dest;
@@ -111,12 +111,12 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlag flags, CompanyID com
  * @param goal GoalID to remove.
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal)
+CommandCost CmdRemoveGoal(DoCommandFlags flags, GoalID goal)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(goal)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Goal *g = Goal::Get(goal);
 		CompanyID c = g->company;
 		delete g;
@@ -140,14 +140,14 @@ CommandCost CmdRemoveGoal(DoCommandFlag flags, GoalID goal)
  * @param dest GoalTypeID of destination.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalDestination(DoCommandFlag flags, GoalID goal, GoalType type, GoalTypeID dest)
+CommandCost CmdSetGoalDestination(DoCommandFlags flags, GoalID goal, GoalType type, GoalTypeID dest)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(goal)) return CMD_ERROR;
 	Goal *g = Goal::Get(goal);
 	if (!Goal::IsValidGoalDestination(g->company, type, dest)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		g->type = type;
 		g->dst = dest;
 	}
@@ -162,13 +162,13 @@ CommandCost CmdSetGoalDestination(DoCommandFlag flags, GoalID goal, GoalType typ
  * @param text Text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &text)
+CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(goal)) return CMD_ERROR;
 	if (text.empty()) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Goal *g = Goal::Get(goal);
 		g->text = text;
 
@@ -189,12 +189,12 @@ CommandCost CmdSetGoalText(DoCommandFlag flags, GoalID goal, const std::string &
  * @param text Progress text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::string &text)
+CommandCost CmdSetGoalProgress(DoCommandFlags flags, GoalID goal, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(goal)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Goal *g = Goal::Get(goal);
 		g->progress = text;
 
@@ -215,12 +215,12 @@ CommandCost CmdSetGoalProgress(DoCommandFlag flags, GoalID goal, const std::stri
  * @param completed completed state of goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalCompleted(DoCommandFlag flags, GoalID goal, bool completed)
+CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool completed)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(goal)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Goal *g = Goal::Get(goal);
 		g->completed = completed;
 
@@ -245,7 +245,7 @@ CommandCost CmdSetGoalCompleted(DoCommandFlag flags, GoalID goal, bool completed
  * @param text Text of the question.
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const std::string &text)
+CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const std::string &text)
 {
 	static_assert(sizeof(uint32_t) >= sizeof(CompanyID));
 	CompanyID company = (CompanyID)target;
@@ -261,7 +261,7 @@ CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16_t uniqueid, uint32_t tar
 		/* Only check during pre-flight; the client might have left between
 		 * testing and executing. In that case it is fine to just ignore the
 		 * fact the client is no longer here. */
-		if (!(flags & DC_EXEC) && _network_server && NetworkClientInfo::GetByClientID(client) == nullptr) return CMD_ERROR;
+		if (!flags.Test(DoCommandFlag::Execute) && _network_server && NetworkClientInfo::GetByClientID(client) == nullptr) return CMD_ERROR;
 	} else {
 		if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
 	}
@@ -269,7 +269,7 @@ CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16_t uniqueid, uint32_t tar
 	if (CountBits(button_mask) < min_buttons || CountBits(button_mask) > 3) return CMD_ERROR;
 	if (type >= GQT_END) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (is_client) {
 			if (client != _network_own_client_id) return CommandCost();
 		} else {
@@ -289,23 +289,23 @@ CommandCost CmdGoalQuestion(DoCommandFlag flags, uint16_t uniqueid, uint32_t tar
  * @param button Button the company pressed
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestionAnswer(DoCommandFlag flags, uint16_t uniqueid, uint8_t button)
+CommandCost CmdGoalQuestionAnswer(DoCommandFlags flags, uint16_t uniqueid, uint8_t button)
 {
 	if (button >= GOAL_QUESTION_BUTTON_COUNT) return CMD_ERROR;
 
 	if (_current_company == OWNER_DEITY) {
 		/* It has been requested to close this specific question on all clients */
-		if (flags & DC_EXEC) CloseWindowById(WC_GOAL_QUESTION, uniqueid);
+		if (flags.Test(DoCommandFlag::Execute)) CloseWindowById(WC_GOAL_QUESTION, uniqueid);
 		return CommandCost();
 	}
 
 	if (_networking && _local_company == _current_company) {
 		/* Somebody in the same company answered the question. Close the window */
-		if (flags & DC_EXEC) CloseWindowById(WC_GOAL_QUESTION, uniqueid);
+		if (flags.Test(DoCommandFlag::Execute)) CloseWindowById(WC_GOAL_QUESTION, uniqueid);
 		if (!_network_server) return CommandCost();
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Game::NewEvent(new ScriptEventGoalQuestionAnswer(uniqueid, _current_company, (ScriptGoal::QuestionButton)(1 << button)));
 	}
 

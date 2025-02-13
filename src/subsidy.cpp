@@ -227,7 +227,7 @@ void CreateSubsidy(CargoType cargo_type, Source src, Source dst)
  * @param dst Destination.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCreateSubsidy(DoCommandFlag flags, CargoType cargo_type, Source src, Source dst)
+CommandCost CmdCreateSubsidy(DoCommandFlags flags, CargoType cargo_type, Source src, Source dst)
 {
 	if (!Subsidy::CanAllocateItem()) return CMD_ERROR;
 
@@ -256,7 +256,7 @@ CommandCost CmdCreateSubsidy(DoCommandFlag flags, CargoType cargo_type, Source s
 			return CMD_ERROR;
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		CreateSubsidy(cargo_type, src, dst);
 	}
 

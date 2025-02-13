@@ -43,7 +43,7 @@ static bool IsUniqueDepotName(const std::string &name)
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::string &text)
+CommandCost CmdRenameDepot(DoCommandFlags flags, DepotID depot_id, const std::string &text)
 {
 	Depot *d = Depot::GetIfValid(depot_id);
 	if (d == nullptr) return CMD_ERROR;
@@ -58,7 +58,7 @@ CommandCost CmdRenameDepot(DoCommandFlag flags, DepotID depot_id, const std::str
 		if (!IsUniqueDepotName(text)) return CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (reset) {
 			d->name.clear();
 			MakeDefaultName(d);

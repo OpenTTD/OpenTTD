@@ -15,7 +15,7 @@
 #include "source_type.h"
 #include "misc/endian_buffer.hpp"
 
-CommandCost CmdCreateSubsidy(DoCommandFlag flags, CargoType cargo_type, Source src, Source dst);
+CommandCost CmdCreateSubsidy(DoCommandFlags flags, CargoType cargo_type, Source src, Source dst);
 
 DEF_CMD_TRAIT(CMD_CREATE_SUBSIDY, CmdCreateSubsidy, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
 

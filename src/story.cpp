@@ -206,14 +206,14 @@ bool StoryPageButtonData::ValidateVehicleType() const
  * @param text Title of the story page. Null is allowed in which case a generic page title is provided by OpenTTD.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlag flags, CompanyID company, const std::string &text)
+std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlags flags, CompanyID company, const std::string &text)
 {
 	if (!StoryPage::CanAllocateItem()) return { CMD_ERROR, INVALID_STORY_PAGE };
 
 	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_STORY_PAGE };
 	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_STORY_PAGE };
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (StoryPage::GetNumItems() == 0) {
 			/* Initialize the next sort value variable. */
 			_story_page_next_sort_value = 0;
@@ -245,7 +245,7 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlag flags, Com
  * @param text Text content in case it is a text or location page element
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32_t reference, const std::string &text)
+std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandFlags flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32_t reference, const std::string &text)
 {
 	if (!StoryPageElement::CanAllocateItem()) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
 
@@ -261,7 +261,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 	if (!VerifyElementContentParameters(page_id, type, tile, reference, text)) return { CMD_ERROR, INVALID_STORY_PAGE_ELEMENT };
 
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (StoryPageElement::GetNumItems() == 0) {
 			/* Initialize the next sort value variable. */
 			_story_page_element_next_sort_value = 0;
@@ -291,7 +291,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
  * @param text Text content in case it is a text or location page element
  * @return the cost of this operation or an error
  */
-CommandCost CmdUpdateStoryPageElement(DoCommandFlag flags, TileIndex tile, StoryPageElementID page_element_id, uint32_t reference, const std::string &text)
+CommandCost CmdUpdateStoryPageElement(DoCommandFlags flags, TileIndex tile, StoryPageElementID page_element_id, uint32_t reference, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!StoryPageElement::IsValidID(page_element_id)) return CMD_ERROR;
@@ -302,7 +302,7 @@ CommandCost CmdUpdateStoryPageElement(DoCommandFlag flags, TileIndex tile, Story
 
 	if (!VerifyElementContentParameters(page_id, type, tile, reference, text)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		UpdateElement(*pe, tile, reference, text);
 		InvalidateWindowClassesData(WC_STORY_BOOK, pe->page);
 	}
@@ -317,12 +317,12 @@ CommandCost CmdUpdateStoryPageElement(DoCommandFlag flags, TileIndex tile, Story
  * @param text title text of the story page.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetStoryPageTitle(DoCommandFlag flags, StoryPageID page_id, const std::string &text)
+CommandCost CmdSetStoryPageTitle(DoCommandFlags flags, StoryPageID page_id, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		StoryPage *p = StoryPage::Get(page_id);
 		p->title = text;
 
@@ -339,12 +339,12 @@ CommandCost CmdSetStoryPageTitle(DoCommandFlag flags, StoryPageID page_id, const
  * @param date date
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetStoryPageDate(DoCommandFlag flags, StoryPageID page_id, TimerGameCalendar::Date date)
+CommandCost CmdSetStoryPageDate(DoCommandFlags flags, StoryPageID page_id, TimerGameCalendar::Date date)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		StoryPage *p = StoryPage::Get(page_id);
 		p->date = date;
 
@@ -361,12 +361,12 @@ CommandCost CmdSetStoryPageDate(DoCommandFlag flags, StoryPageID page_id, TimerG
  * @param page_id StoryPageID to show.
  * @return the cost of this operation or an error
  */
-CommandCost CmdShowStoryPage(DoCommandFlag flags, StoryPageID page_id)
+CommandCost CmdShowStoryPage(DoCommandFlags flags, StoryPageID page_id)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		StoryPage *g = StoryPage::Get(page_id);
 		if ((g->company != INVALID_COMPANY && g->company == _local_company) || (g->company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowStoryBook(_local_company, page_id, true);
 	}
@@ -379,12 +379,12 @@ CommandCost CmdShowStoryPage(DoCommandFlag flags, StoryPageID page_id)
  * @param page_id StoryPageID to remove.
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveStoryPage(DoCommandFlag flags, StoryPageID page_id)
+CommandCost CmdRemoveStoryPage(DoCommandFlags flags, StoryPageID page_id)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!StoryPage::IsValidID(page_id)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		StoryPage *p = StoryPage::Get(page_id);
 
 		for (StoryPageElement *pe : StoryPageElement::Iterate()) {
@@ -408,12 +408,12 @@ CommandCost CmdRemoveStoryPage(DoCommandFlag flags, StoryPageID page_id)
  * @param page_element_id StoryPageElementID to remove.
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveStoryPageElement(DoCommandFlag flags, StoryPageElementID page_element_id)
+CommandCost CmdRemoveStoryPageElement(DoCommandFlags flags, StoryPageElementID page_element_id)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!StoryPageElement::IsValidID(page_element_id)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		StoryPageElement *pe = StoryPageElement::Get(page_element_id);
 		StoryPageID page_id = pe->page;
 
@@ -433,7 +433,7 @@ CommandCost CmdRemoveStoryPageElement(DoCommandFlag flags, StoryPageElementID pa
  * @param reference ID of selected item for buttons that select an item (e.g. vehicle), otherwise unused.
  * @return The cost of the operation, or an error.
  */
-CommandCost CmdStoryPageButton(DoCommandFlag flags, TileIndex tile, StoryPageElementID page_element_id, VehicleID reference)
+CommandCost CmdStoryPageButton(DoCommandFlags flags, TileIndex tile, StoryPageElementID page_element_id, VehicleID reference)
 {
 	if (!StoryPageElement::IsValidID(page_element_id)) return CMD_ERROR;
 	const StoryPageElement *const pe = StoryPageElement::Get(page_element_id);
@@ -445,15 +445,15 @@ CommandCost CmdStoryPageButton(DoCommandFlag flags, TileIndex tile, StoryPageEle
 	switch (pe->type) {
 		case SPET_BUTTON_PUSH:
 			/* No validation required */
-			if (flags & DC_EXEC) Game::NewEvent(new ScriptEventStoryPageButtonClick(_current_company, pe->page, page_element_id));
+			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageButtonClick(_current_company, pe->page, page_element_id));
 			break;
 		case SPET_BUTTON_TILE:
 			if (!IsValidTile(tile)) return CMD_ERROR;
-			if (flags & DC_EXEC) Game::NewEvent(new ScriptEventStoryPageTileSelect(_current_company, pe->page, page_element_id, tile));
+			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageTileSelect(_current_company, pe->page, page_element_id, tile));
 			break;
 		case SPET_BUTTON_VEHICLE:
 			if (!Vehicle::IsValidID(reference)) return CMD_ERROR;
-			if (flags & DC_EXEC) Game::NewEvent(new ScriptEventStoryPageVehicleSelect(_current_company, pe->page, page_element_id, reference));
+			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageVehicleSelect(_current_company, pe->page, page_element_id, reference));
 			break;
 		default:
 			/* Invalid page element type, not a button. */

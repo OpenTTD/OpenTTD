@@ -13,9 +13,9 @@
 #include "command_type.h"
 #include "water_map.h"
 
-CommandCost CmdBuildShipDepot(DoCommandFlag flags, TileIndex tile, Axis axis);
-CommandCost CmdBuildCanal(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, WaterClass wc, bool diagonal);
-CommandCost CmdBuildLock(DoCommandFlag flags, TileIndex tile);
+CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis);
+CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, WaterClass wc, bool diagonal);
+CommandCost CmdBuildLock(DoCommandFlags flags, TileIndex tile);
 
 DEF_CMD_TRAIT(CMD_BUILD_SHIP_DEPOT, CmdBuildShipDepot, CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_BUILD_CANAL,      CmdBuildCanal,     CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION)

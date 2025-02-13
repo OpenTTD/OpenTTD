@@ -921,7 +921,7 @@ void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlags flag
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceType reftype1, CompanyID company, uint32_t reference, const std::string &text)
+CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, NewsReferenceType reftype1, CompanyID company, uint32_t reference, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -960,7 +960,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlag flags, NewsType type, NewsReferenceT
 
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		SetDParamStr(0, text);
 		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NewsStyle::Normal, {}, reftype1, reference, NewsReferenceType::None, UINT32_MAX);
 	}

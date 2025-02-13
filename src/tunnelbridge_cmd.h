@@ -14,8 +14,8 @@
 #include "transport_type.h"
 #include "bridge.h"
 
-CommandCost CmdBuildBridge(DoCommandFlag flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type);
-CommandCost CmdBuildTunnel(DoCommandFlag flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type);
+CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex tile_start, TransportType transport_type, BridgeType bridge_type, uint8_t road_rail_type);
+CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, TransportType transport_type, uint8_t road_rail_type);
 
 DEF_CMD_TRAIT(CMD_BUILD_BRIDGE, CmdBuildBridge, CMD_DEITY | CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_BUILD_TUNNEL, CmdBuildTunnel, CMD_DEITY | CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION)

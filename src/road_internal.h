@@ -15,7 +15,7 @@
 
 RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb);
 
-CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadTramType rtt, DoCommandFlag flags, bool town_check = true);
+CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadTramType rtt, DoCommandFlags flags, bool town_check = true);
 
 void DrawRoadCatenary(const TileInfo *ti);
 
