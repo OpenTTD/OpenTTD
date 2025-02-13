@@ -153,12 +153,15 @@ public:
 		PFM_SAVED = 2, ///< Show saved types.
 	};
 
-	enum PickerFilterInvalidation : uint8_t {
-		PFI_CLASS = 1U << 0, ///< Refresh the class list.
-		PFI_TYPE = 1U << 1, ///< Refresh the type list.
-		PFI_POSITION = 1U << 2, ///< Update scroll positions.
-		PFI_VALIDATE = 1U << 3, ///< Validate selected item.
+	enum class PickerInvalidation : uint8_t {
+		Class, ///< Refresh the class list.
+		Type, ///< Refresh the type list.
+		Position, ///< Update scroll positions.
+		Validate, ///< Validate selected item.
 	};
+	using PickerInvalidations = EnumBitSet<PickerInvalidation, uint8_t>;
+
+	static constexpr PickerInvalidations PICKER_INVALIDATION_ALL{PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position, PickerInvalidation::Validate};
 
 	static const int PREVIEW_WIDTH = 64; ///< Width of each preview button.
 	static const int PREVIEW_HEIGHT = 48; ///< Height of each preview button.
@@ -184,6 +187,8 @@ public:
 	enum PickerClassWindowHotkeys : int32_t {
 		PCWHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
 	};
+
+	void InvalidateData(PickerInvalidations data) { this->Window::InvalidateData(data.base()); }
 
 protected:
 	void ConstructWindow();

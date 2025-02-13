@@ -118,7 +118,6 @@ public:
 	{
 		ResetObjectToPlace();
 		this->ConstructWindow();
-		this->InvalidateData();
 	}
 
 	void SetStringParameters(WidgetID widget) const override
@@ -288,7 +287,8 @@ public:
 
 		if (!gui_scope) return;
 
-		if ((data & PickerWindow::PFI_POSITION) != 0) {
+		PickerInvalidations pi(data);
+		if (pi.Test(PickerInvalidation::Position)) {
 			const auto objclass = ObjectClass::Get(_object_gui.sel_class);
 			const auto spec = objclass->GetSpec(_object_gui.sel_type);
 			_object_gui.sel_view = std::min<int>(_object_gui.sel_view, spec->views - 1);
@@ -302,7 +302,7 @@ public:
 			case WID_BO_OBJECT_SPRITE:
 				if (_object_gui.sel_type != std::numeric_limits<uint16_t>::max()) {
 					_object_gui.sel_view = this->GetWidget<NWidgetBase>(widget)->GetParentWidget<NWidgetMatrix>()->GetCurrentElement();
-					this->InvalidateData(PickerWindow::PFI_POSITION);
+					this->InvalidateData(PickerInvalidation::Position);
 					if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				}
 				break;

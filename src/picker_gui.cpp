@@ -234,7 +234,7 @@ void PickerWindow::ConstructWindow()
 
 	this->FinishInitNested(this->window_number);
 
-	this->InvalidateData(PFI_CLASS | PFI_TYPE | PFI_POSITION | PFI_VALIDATE);
+	this->InvalidateData(PICKER_INVALIDATION_ALL);
 }
 
 void PickerWindow::Close(int data)
@@ -340,7 +340,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 			if (this->callbacks.GetSelectedClass() != *it || HasBit(this->callbacks.mode, PFM_ALL)) {
 				ClrBit(this->callbacks.mode, PFM_ALL); // Disable showing all.
 				this->callbacks.SetSelectedClass(*it);
-				this->InvalidateData(PFI_TYPE | PFI_POSITION | PFI_VALIDATE);
+				this->InvalidateData({PickerInvalidation::Type, PickerInvalidation::Position, PickerInvalidation::Validate});
 			}
 			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 			CloseWindowById(WC_SELECT_STATION, 0);
@@ -355,7 +355,7 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				/* Enabling used or saved filters automatically enables all. */
 				SetBit(this->callbacks.mode, PFM_ALL);
 			}
-			this->InvalidateData(PFI_CLASS | PFI_TYPE | PFI_POSITION);
+			this->InvalidateData({PickerInvalidation::Class, PickerInvalidation::Type, PickerInvalidation::Position});
 			break;
 
 		/* Type Picker */
@@ -371,14 +371,14 @@ void PickerWindow::OnClick(Point pt, WidgetID widget, int)
 				} else {
 					this->callbacks.saved.erase(it);
 				}
-				this->InvalidateData(PFI_TYPE);
+				this->InvalidateData(PickerInvalidation::Type);
 				break;
 			}
 
 			if (this->callbacks.IsTypeAvailable(item.class_index, item.index)) {
 				this->callbacks.SetSelectedClass(item.class_index);
 				this->callbacks.SetSelectedType(item.index);
-				this->InvalidateData(PFI_POSITION);
+				this->InvalidateData(PickerInvalidation::Position);
 			}
 			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 			CloseWindowById(WC_SELECT_STATION, 0);
@@ -391,16 +391,17 @@ void PickerWindow::OnInvalidateData(int data, bool gui_scope)
 {
 	if (!gui_scope) return;
 
-	if ((data & PFI_CLASS) != 0) this->classes.ForceRebuild();
-	if ((data & PFI_TYPE) != 0) this->types.ForceRebuild();
+	PickerInvalidations pi(data);
+	if (pi.Test(PickerInvalidation::Class)) this->classes.ForceRebuild();
+	if (pi.Test(PickerInvalidation::Type)) this->types.ForceRebuild();
 
 	this->BuildPickerClassList();
-	if ((data & PFI_VALIDATE) != 0) this->EnsureSelectedClassIsValid();
-	if ((data & PFI_POSITION) != 0) this->EnsureSelectedClassIsVisible();
+	if (pi.Test(PickerInvalidation::Validate)) this->EnsureSelectedClassIsValid();
+	if (pi.Test(PickerInvalidation::Position)) this->EnsureSelectedClassIsVisible();
 
 	this->BuildPickerTypeList();
-	if ((data & PFI_VALIDATE) != 0) this->EnsureSelectedTypeIsValid();
-	if ((data & PFI_POSITION) != 0) this->EnsureSelectedTypeIsVisible();
+	if (pi.Test(PickerInvalidation::Validate)) this->EnsureSelectedTypeIsValid();
+	if (pi.Test(PickerInvalidation::Position)) this->EnsureSelectedTypeIsVisible();
 
 	if (this->has_type_picker) {
 		SetWidgetLoweredState(WID_PW_MODE_ALL, HasBit(this->callbacks.mode, PFM_ALL));
@@ -433,13 +434,13 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 		case WID_PW_CLASS_FILTER:
 			this->class_string_filter.SetFilterTerm(this->class_editbox.text.GetText());
 			this->classes.SetFilterState(!class_string_filter.IsEmpty());
-			this->InvalidateData(PFI_CLASS);
+			this->InvalidateData(PickerInvalidation::Class);
 			break;
 
 		case WID_PW_TYPE_FILTER:
 			this->type_string_filter.SetFilterTerm(this->type_editbox.text.GetText());
 			this->types.SetFilterState(!type_string_filter.IsEmpty());
-			this->InvalidateData(PFI_TYPE);
+			this->InvalidateData(PickerInvalidation::Type);
 			break;
 
 		default:
@@ -513,7 +514,7 @@ void PickerWindow::RefreshUsedTypeList()
 
 	this->callbacks.used.clear();
 	this->callbacks.FillUsedItems(this->callbacks.used);
-	this->InvalidateData(PFI_TYPE);
+	this->InvalidateData(PickerInvalidation::Type);
 }
 
 /** Builds the filter list of types. */

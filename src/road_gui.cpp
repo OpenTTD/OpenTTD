@@ -1677,7 +1677,6 @@ struct BuildRoadWaypointWindow : public PickerWindow {
 	BuildRoadWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_ROAD, RoadWaypointPickerCallbacks::instance)
 	{
 		this->ConstructWindow();
-		this->InvalidateData();
 	}
 
 	static inline HotkeyList hotkeys{"buildroadwaypoint", {
