@@ -522,7 +522,6 @@ int openttd_main(std::span<std::string_view> arguments)
 
 	auto options = CreateOptions();
 	GetOptData mgo(arguments.subspan(1), options);
-	int ret = 0;
 
 	int i;
 	while ((i = mgo.GetOpt()) != -1) {
@@ -610,8 +609,7 @@ int openttd_main(std::span<std::string_view> arguments)
 		case 'q': {
 			DeterminePaths(arguments[0], only_local_path);
 			if (mgo.opt.empty()) {
-				ret = 1;
-				return ret;
+				return 1;
 			}
 
 			std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(mgo.opt)).extension().native());
@@ -625,11 +623,11 @@ int openttd_main(std::span<std::string_view> arguments)
 					InitializeLanguagePacks(); // A language pack is needed for GetString()
 					fmt::print(stderr, "{}\n", GetString(_load_check_data.error, _load_check_data.error_msg));
 				}
-				return ret;
+				return 1;
 			}
 
 			WriteSavegameInfo(title);
-			return ret;
+			return 0;
 		}
 		case 'Q': {
 			extern int _skip_all_newgrf_scanning;
@@ -646,14 +644,12 @@ int openttd_main(std::span<std::string_view> arguments)
 		case 'c': _config_file = mgo.opt; break;
 		case 'x': scanner->save_config = false; break;
 		case 'X': only_local_path = true; break;
-		case 'h':
-			i = -2; // Force printing of help.
-			break;
+		case 'h': break; // handled below
 		}
-		if (i == -2) break;
+		if (i == 'h' || i == -2) break;
 	}
 
-	if (i == -2 || !mgo.arguments.empty()) {
+	if (i == 'h' || i == -2 || !mgo.arguments.empty()) {
 		/* Either the user typed '-h', they made an error, or they added unrecognized command line arguments.
 		 * In all cases, print the help, and exit.
 		 *
@@ -665,7 +661,10 @@ int openttd_main(std::span<std::string_view> arguments)
 		BaseSounds::FindSets();
 		BaseMusic::FindSets();
 		ShowHelp();
-		return ret;
+
+		/* Return zero when asked to print help, and 1 for all other cases. */
+		if (i == 'h') return 0;
+		return 1;
 	}
 
 	DeterminePaths(arguments[0], only_local_path);
@@ -770,7 +769,7 @@ int openttd_main(std::span<std::string_view> arguments)
 
 	if (!HandleBootstrap()) {
 		ShutdownGame();
-		return ret;
+		return 0;
 	}
 
 	VideoDriver::GetInstance()->ClaimMousePointer();
@@ -812,7 +811,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	VideoDriver::GetInstance()->MainLoop();
 
 	PostMainLoop();
-	return ret;
+	return 0;
 }
 
 void HandleExitGameRequest()
