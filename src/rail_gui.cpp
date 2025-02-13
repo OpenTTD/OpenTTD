@@ -1081,7 +1081,6 @@ public:
 	{
 		this->coverage_height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 		this->ConstructWindow();
-		this->InvalidateData();
 	}
 
 	void OnInit() override
@@ -1854,7 +1853,6 @@ struct BuildRailWaypointWindow : public PickerWindow {
 	BuildRailWaypointWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, TRANSPORT_RAIL, WaypointPickerCallbacks::instance)
 	{
 		this->ConstructWindow();
-		this->InvalidateData();
 	}
 
 	static inline HotkeyList hotkeys{"buildrailwaypoint", {

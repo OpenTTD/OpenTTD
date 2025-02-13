@@ -1634,7 +1634,6 @@ struct BuildHouseWindow : public PickerWindow {
 	{
 		HousePickerCallbacks::instance.SetClimateMask();
 		this->ConstructWindow();
-		this->InvalidateData();
 	}
 
 	void UpdateSelectSize(const HouseSpec *spec)
@@ -1759,7 +1758,8 @@ struct BuildHouseWindow : public PickerWindow {
 
 		const HouseSpec *spec = HouseSpec::Get(HousePickerCallbacks::sel_type);
 
-		if ((data & PickerWindow::PFI_POSITION) != 0) {
+		PickerInvalidations pi(data);
+		if (pi.Test(PickerInvalidation::Position)) {
 			UpdateSelectSize(spec);
 			this->house_info = GetHouseInformation(spec);
 		}
