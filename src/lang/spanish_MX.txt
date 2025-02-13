@@ -916,7 +916,7 @@ STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} se está haciendo viejo
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} se está haciendo muy viejo
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} se está haciendo muy viejo y requiere renovación urgente
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} se está haciendo muy viejo y requiere reemplazo urgente
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no encuentra una ruta para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se perdió
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}La ganancia de {VEHICLE} el año pasado fue de {CURRENCY_LONG}
