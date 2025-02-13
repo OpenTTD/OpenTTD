@@ -76,7 +76,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we had shared orders, recover that */
 	if (this->clone != nullptr) {
-		Command<CMD_CLONE_ORDER>::Do(DC_EXEC, CO_SHARE, v->index, this->clone->index);
+		Command<CMD_CLONE_ORDER>::Do(DoCommandFlag::Execute, CO_SHARE, v->index, this->clone->index);
 	} else if (this->orders != nullptr && OrderList::CanAllocateItem()) {
 		v->orders = new OrderList(this->orders, v);
 		this->orders = nullptr;
@@ -94,7 +94,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	if (v->cur_implicit_order_index >= v->GetNumOrders()) v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
-	Command<CMD_ADD_VEHICLE_GROUP>::Do(DC_EXEC, this->group, v->index, false, VehicleListIdentifier{});
+	Command<CMD_ADD_VEHICLE_GROUP>::Do(DoCommandFlag::Execute, this->group, v->index, false, VehicleListIdentifier{});
 }
 
 /**
@@ -151,10 +151,10 @@ void OrderBackup::DoRestore(Vehicle *v)
  * @param user_id User that had the OrderBackup.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdClearOrderBackup(DoCommandFlag flags, TileIndex tile, ClientID user_id)
+CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID user_id)
 {
 	/* No need to check anything. If the tile or user don't exist we just ignore it. */
-	if (flags & DC_EXEC) OrderBackup::ResetOfUser(tile == 0 ? INVALID_TILE : tile, user_id);
+	if (flags.Test(DoCommandFlag::Execute)) OrderBackup::ResetOfUser(tile == 0 ? INVALID_TILE : tile, user_id);
 
 	return CommandCost();
 }

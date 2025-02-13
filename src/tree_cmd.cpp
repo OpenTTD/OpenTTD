@@ -389,7 +389,7 @@ void GenerateTrees()
  * @param diagonal Whether to use the Orthogonal (false) or Diagonal (true) iterator.
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal)
+CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
@@ -418,7 +418,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 					break;
 				}
 
-				if (flags & DC_EXEC) {
+				if (flags.Test(DoCommandFlag::Execute)) {
 					AddTreeCount(current_tile, 1);
 					MarkTileDirtyByTile(current_tile);
 					if (c != nullptr) c->tree_limit -= 1 << 16;
@@ -479,7 +479,7 @@ CommandCost CmdPlantTree(DoCommandFlag flags, TileIndex tile, TileIndex start_ti
 					if (t != nullptr) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM, flags);
 				}
 
-				if (flags & DC_EXEC) {
+				if (flags.Test(DoCommandFlag::Execute)) {
 					if (treetype == TREE_INVALID) {
 						treetype = GetRandomTreeType(current_tile, GB(Random(), 24, 8));
 						if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
@@ -602,7 +602,7 @@ static Foundation GetFoundation_Trees(TileIndex, Slope)
 	return FOUNDATION_NONE;
 }
 
-static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
+static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 {
 	uint num;
 
@@ -614,7 +614,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlag flags)
 	num = GetTreeCount(tile);
 	if (IsInsideMM(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
 
-	if (flags & DC_EXEC) DoClearSquare(tile);
+	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
 
 	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[PR_CLEAR_TREES]);
 }
@@ -890,7 +890,7 @@ void InitializeTrees()
 	_trees_tick_ctr = 0;
 }
 
-static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlag flags, int, Slope)
+static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlags flags, int, Slope)
 {
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }

@@ -18,9 +18,9 @@ bool RoadVehLeaveDepot(RoadVehicle *v, bool first);
 bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev);
 bool RoadVehiclesAreBuilt();
 
-CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **v);
+CommandCost CmdBuildRoadVehicle(DoCommandFlags flags, TileIndex tile, const Engine *e, Vehicle **v);
 
-CommandCost CmdTurnRoadVeh(DoCommandFlag flags, VehicleID veh_id);
+CommandCost CmdTurnRoadVeh(DoCommandFlags flags, VehicleID veh_id);
 
 DEF_CMD_TRAIT(CMD_TURN_ROADVEH, CmdTurnRoadVeh, CMD_LOCATION, CMDT_VEHICLE_MANAGEMENT)
 

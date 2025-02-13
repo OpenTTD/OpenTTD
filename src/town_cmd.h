@@ -18,16 +18,16 @@
 enum TownAcceptanceEffect : uint8_t;
 using HouseID = uint16_t;
 
-std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text);
-CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string &text);
-CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, TownAction action);
-CommandCost CmdTownGrowthRate(DoCommandFlag flags, TownID town_id, uint16_t growth_rate);
-CommandCost CmdTownRating(DoCommandFlag flags, TownID town_id, CompanyID company_id, int16_t rating);
-CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownAcceptanceEffect tae, uint32_t goal);
-CommandCost CmdTownSetText(DoCommandFlag flags, TownID town_id, const std::string &text);
-CommandCost CmdExpandTown(DoCommandFlag flags, TownID town_id, uint32_t grow_amount);
-CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id);
-CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house, bool house_protected);
+std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text);
+CommandCost CmdRenameTown(DoCommandFlags flags, TownID town_id, const std::string &text);
+CommandCost CmdDoTownAction(DoCommandFlags flags, TownID town_id, TownAction action);
+CommandCost CmdTownGrowthRate(DoCommandFlags flags, TownID town_id, uint16_t growth_rate);
+CommandCost CmdTownRating(DoCommandFlags flags, TownID town_id, CompanyID company_id, int16_t rating);
+CommandCost CmdTownCargoGoal(DoCommandFlags flags, TownID town_id, TownAcceptanceEffect tae, uint32_t goal);
+CommandCost CmdTownSetText(DoCommandFlags flags, TownID town_id, const std::string &text);
+CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount);
+CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id);
+CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected);
 
 DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CMD_DEITY | CMD_NO_TEST,  CMDT_LANDSCAPE_CONSTRUCTION) // founding random town can fail only in exec run
 DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CMD_DEITY | CMD_SERVER,   CMDT_OTHER_MANAGEMENT)

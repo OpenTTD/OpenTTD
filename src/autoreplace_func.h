@@ -15,8 +15,8 @@
 
 void RemoveAllEngineReplacement(EngineRenewList *erl);
 EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, bool *replace_when_old = nullptr);
-CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, bool replace_when_old, DoCommandFlag flags);
-CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlag flags);
+CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, bool replace_when_old, DoCommandFlags flags);
+CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlags flags);
 
 /**
  * Remove all engine replacement settings for the given company.
@@ -77,7 +77,7 @@ inline bool EngineHasReplacementWhenOldForCompany(const Company *c, EngineID eng
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID old_engine, EngineID new_engine, GroupID group, bool replace_when_old, DoCommandFlag flags)
+inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID old_engine, EngineID new_engine, GroupID group, bool replace_when_old, DoCommandFlags flags)
 {
 	return AddEngineReplacement(&c->engine_renew_list, old_engine, new_engine, group, replace_when_old, flags);
 }
@@ -90,7 +90,7 @@ inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID old_engin
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-inline CommandCost RemoveEngineReplacementForCompany(Company *c, EngineID engine, GroupID group, DoCommandFlag flags)
+inline CommandCost RemoveEngineReplacementForCompany(Company *c, EngineID engine, GroupID group, DoCommandFlags flags)
 {
 	return RemoveEngineReplacement(&c->engine_renew_list, engine, group, flags);
 }

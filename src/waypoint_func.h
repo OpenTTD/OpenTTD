@@ -16,7 +16,7 @@
 
 enum StationClassID : uint16_t;
 
-CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags);
+CommandCost RemoveBuoy(TileIndex tile, DoCommandFlags flags);
 
 Axis GetAxisForNewRailWaypoint(TileIndex tile);
 Axis GetAxisForNewRoadWaypoint(TileIndex tile);

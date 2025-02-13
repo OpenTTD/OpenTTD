@@ -103,7 +103,7 @@
 	if (!ScriptEngine::IsBuildable(engine_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	auto [res, veh_id, refit_capacity, refit_mail, cargo_capacities] = ::Command<CMD_BUILD_VEHICLE>::Do(DC_QUERY_COST, depot, engine_id, true, cargo, INVALID_CLIENT_ID);
+	auto [res, veh_id, refit_capacity, refit_mail, cargo_capacities] = ::Command<CMD_BUILD_VEHICLE>::Do(DoCommandFlag::QueryCost, depot, engine_id, true, cargo, INVALID_CLIENT_ID);
 	return res.Succeeded() ? refit_capacity : -1;
 }
 
@@ -152,7 +152,7 @@
 	if (!IsValidVehicle(vehicle_id)) return -1;
 	if (!ScriptCargo::IsValidCargo(cargo)) return -1;
 
-	auto [res, refit_capacity, refit_mail, cargo_capacities] = ::Command<CMD_REFIT_VEHICLE>::Do(DC_QUERY_COST, vehicle_id, cargo, 0, false, false, 0);
+	auto [res, refit_capacity, refit_mail, cargo_capacities] = ::Command<CMD_REFIT_VEHICLE>::Do(DoCommandFlag::QueryCost, vehicle_id, cargo, 0, false, false, 0);
 	return res.Succeeded() ? refit_capacity : -1;
 }
 

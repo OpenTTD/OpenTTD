@@ -327,7 +327,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 		SetDParamStr(0, grfconfig->GetName());
 		SetDParam(1, engine);
 		ShowErrorMessage(part1, part2, WL_CRITICAL);
-		if (!_networking) Command<CMD_PAUSE>::Do(DC_EXEC, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, true);
+		if (!_networking) Command<CMD_PAUSE>::Do(DoCommandFlag::Execute, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, true);
 	}
 
 	/* debug output */
@@ -1087,7 +1087,7 @@ void CallVehicleTicks()
 
 		const Company *c = Company::Get(_current_company);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
-		CommandCost res = Command<CMD_AUTOREPLACE_VEHICLE>::Do(DC_EXEC, v->index);
+		CommandCost res = Command<CMD_AUTOREPLACE_VEHICLE>::Do(DoCommandFlag::Execute, v->index);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
 
 		if (!IsLocalCompany()) continue;
@@ -1626,7 +1626,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (v->current_order.IsRefit()) {
 			Backup<CompanyID> cur_company(_current_company, v->owner);
-			CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DC_EXEC, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
+			CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DoCommandFlag::Execute, v->index, v->current_order.GetRefitCargo(), 0xFF, false, false, 0));
 			cur_company.Restore();
 
 			if (cost.Failed()) {
@@ -2580,7 +2580,7 @@ bool Vehicle::IsWaitingForUnbunching() const
  * @param command the command to execute.
  * @return the cost of the depot action.
  */
-CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommandFlags command)
+CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command)
 {
 	CommandCost ret = CheckOwnership(this->owner);
 	if (ret.Failed()) return ret;
@@ -2589,7 +2589,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommandFlags command)
 	if (this->IsStoppedInDepot()) return CMD_ERROR;
 
 	/* No matter why we're headed to the depot, unbunching data is no longer valid. */
-	if (flags & DC_EXEC) this->ResetDepotUnbunching();
+	if (flags.Test(DoCommandFlag::Execute)) this->ResetDepotUnbunching();
 
 	if (this->current_order.IsType(OT_GOTO_DEPOT)) {
 		bool halt_in_depot = (this->current_order.GetDepotActionType() & ODATFB_HALT) != 0;
@@ -2597,7 +2597,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommandFlags command)
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
-			if (flags & DC_EXEC) {
+			if (flags.Test(DoCommandFlag::Execute)) {
 				this->current_order.SetDepotOrderType(ODTF_MANUAL);
 				this->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
 				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
@@ -2606,7 +2606,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommandFlags command)
 		}
 
 		if (command.Test(DepotCommandFlag::DontCancel)) return CMD_ERROR; // Requested no cancellation of depot orders
-		if (flags & DC_EXEC) {
+		if (flags.Test(DoCommandFlag::Execute)) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
 			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->IncrementRealOrderIndex();
@@ -2626,7 +2626,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommandFlags command)
 	static const StringID no_depot[] = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR};
 	if (!closestDepot.found) return CommandCost(no_depot[this->type]);
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (this->current_order.IsType(OT_LOADING)) this->LeaveStation();
 
 		if (this->IsGroundVehicle() && this->GetNumManualOrders() > 0) {
@@ -2641,7 +2641,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommandFlags command)
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
 		if (this->type == VEH_TRAIN && (closestDepot.reverse ^ HasBit(Train::From(this)->flags, VRF_REVERSING))) {
-			Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DC_EXEC, this->index, false);
+			Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, this->index, false);
 		}
 
 		if (this->type == VEH_AIRCRAFT) {

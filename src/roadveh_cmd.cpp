@@ -258,14 +258,14 @@ void RoadVehUpdateCache(RoadVehicle *v, bool same_length)
  * @param[out] ret the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRoadVehicle(DoCommandFlag flags, TileIndex tile, const Engine *e, Vehicle **ret)
+CommandCost CmdBuildRoadVehicle(DoCommandFlags flags, TileIndex tile, const Engine *e, Vehicle **ret)
 {
 	/* Check that the vehicle can drive on the road in question */
 	RoadType rt = e->u.road.roadtype;
 	const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 	if (!HasTileAnyRoadType(tile, rti->powered_roadtypes)) return CommandCost(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		const RoadVehicleInfo *rvi = &e->u.road;
 
 		RoadVehicle *v = new RoadVehicle();
@@ -358,7 +358,7 @@ ClosestDepot RoadVehicle::FindClosestDepot()
  * @param veh_id vehicle ID to turn
  * @return the cost of this operation or an error
  */
-CommandCost CmdTurnRoadVeh(DoCommandFlag flags, VehicleID veh_id)
+CommandCost CmdTurnRoadVeh(DoCommandFlags flags, VehicleID veh_id)
 {
 	RoadVehicle *v = RoadVehicle::GetIfValid(veh_id);
 	if (v == nullptr) return CMD_ERROR;
@@ -382,7 +382,7 @@ CommandCost CmdTurnRoadVeh(DoCommandFlag flags, VehicleID veh_id)
 
 	if (IsTileType(v->tile, MP_TUNNELBRIDGE) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		v->reverse_ctr = 180;
 
 		/* Unbunching data is no longer valid. */
@@ -1126,7 +1126,7 @@ static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadType rt, RoadB
 	/* The 'current' company is not necessarily the owner of the vehicle. */
 	Backup<CompanyID> cur_company(_current_company, c);
 
-	CommandCost ret = Command<CMD_BUILD_ROAD>::Do(DC_NO_WATER, t, r, rt, DRD_NONE, INVALID_TOWN);
+	CommandCost ret = Command<CMD_BUILD_ROAD>::Do(DoCommandFlag::NoWater, t, r, rt, DRD_NONE, INVALID_TOWN);
 
 	cur_company.Restore();
 	return ret.Succeeded();

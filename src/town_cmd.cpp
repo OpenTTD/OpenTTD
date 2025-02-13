@@ -714,9 +714,9 @@ static void TileLoop_Town(TileIndex tile)
  * @param flags Type of operation.
  * @return The cost of this operation or an error.
  */
-static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
+static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlags flags)
 {
-	if (flags & DC_AUTO) return CommandCost(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
+	if (flags.Test(DoCommandFlag::Auto)) return CommandCost(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
 	if (!CanDeleteHouse(tile)) return CMD_ERROR;
 
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
@@ -728,7 +728,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	Town *t = Town::GetByTile(tile);
 
 	if (Company::IsValidID(_current_company)) {
-		if (!_cheats.magic_bulldozer.value && !(flags & DC_NO_TEST_TOWN_RATING)) {
+		if (!_cheats.magic_bulldozer.value && !flags.Test(DoCommandFlag::NoTestTownRating)) {
 			/* NewGRFs can add indestructible houses. */
 			if (rating > RATING_MAXIMUM) {
 				SetDParam(0, t->index);
@@ -743,7 +743,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	}
 
 	ChangeTownRating(t, -rating, RATING_HOUSE_MINIMUM, flags);
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		ClearTownHouse(t, tile);
 	}
 
@@ -1085,8 +1085,8 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 		 * If that fails clear the land, and if that fails exit.
 		 * This is to make sure that we can build a road here later. */
 		RoadType rt = GetTownRoadType();
-		if (Command<CMD_BUILD_ROAD>::Do(DC_AUTO | DC_NO_WATER, tile, (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X, rt, DRD_NONE, t->index).Failed() &&
-				Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile).Failed()) {
+		if (Command<CMD_BUILD_ROAD>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X, rt, DRD_NONE, t->index).Failed() &&
+				Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile).Failed()) {
 			return false;
 		}
 	}
@@ -1103,7 +1103,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 			CommandCost res = CMD_ERROR;
 			if (!_generating_world && Chance16(1, 10)) {
 				/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
-				res = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER,
+				res = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater},
 						tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, false));
 			}
 			if (res.Failed() && Chance16(1, 3)) {
@@ -1120,9 +1120,9 @@ static bool TerraformTownTile(TileIndex tile, Slope edges, bool dir)
 {
 	assert(tile < Map::Size());
 
-	CommandCost r = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER, tile, edges, dir));
+	CommandCost r = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, edges, dir));
 	if (r.Failed() || r.GetCost() >= (_price[PR_TERRAFORM] + 2) * 8) return false;
-	Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER | DC_EXEC, tile, edges, dir);
+	Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater, DoCommandFlag::Execute}, tile, edges, dir);
 	return true;
 }
 
@@ -1253,7 +1253,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 {
 	RoadType rt = GetTownRoadType();
-	if (Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER, tile, rcmd, rt, DRD_NONE, t->index).Succeeded()) {
+	if (Command<CMD_BUILD_ROAD>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, rcmd, rt, DRD_NONE, t->index).Succeeded()) {
 		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}
@@ -1302,7 +1302,7 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
 	if (IsTileType(next_tile, MP_RAILWAY) && !_settings_game.economy.allow_town_level_crossings) return false;
 
 	/* If a road tile can be built, the construction is allowed. */
-	return Command<CMD_BUILD_ROAD>::Do(DC_AUTO | DC_NO_WATER, next_tile, rcmd, rt, DRD_NONE, t->index).Succeeded();
+	return Command<CMD_BUILD_ROAD>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, next_tile, rcmd, rt, DRD_NONE, t->index).Succeeded();
 }
 
 /**
@@ -1398,7 +1398,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 		/* Can we actually build the bridge? */
 		RoadType rt = GetTownRoadType();
 		if (Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt).Succeeded()) {
-			Command<CMD_BUILD_BRIDGE>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt);
+			Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()).Set(DoCommandFlag::Execute), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt);
 			_grow_town_result = GROWTH_SUCCEED;
 			return true;
 		}
@@ -1469,7 +1469,7 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 	/* Attempt to build the tunnel. Return false if it fails to let the town build a road instead. */
 	RoadType rt = GetTownRoadType();
 	if (Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt).Succeeded()) {
-		Command<CMD_BUILD_TUNNEL>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt);
+		Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()).Set(DoCommandFlag::Execute), tile, TRANSPORT_ROAD, rt);
 		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}
@@ -1932,9 +1932,9 @@ static bool GrowTown(Town *t)
 		for (const auto &ptr : _town_coord_mod) {
 			/* Only work with plain land that not already has a house */
 			if (!IsTileType(tile, MP_HOUSE) && IsTileFlat(tile)) {
-				if (Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile).Succeeded()) {
+				if (Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile).Succeeded()) {
 					RoadType rt = GetTownRoadType();
-					Command<CMD_BUILD_ROAD>::Do(DC_EXEC | DC_AUTO, tile, GenRandomRoadBits(), rt, DRD_NONE, t->index);
+					Command<CMD_BUILD_ROAD>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, GenRandomRoadBits(), rt, DRD_NONE, t->index);
 					cur_company.Restore();
 					return true;
 				}
@@ -2150,7 +2150,7 @@ static bool IsUniqueTownName(const std::string &name)
  * @param text Custom name for the town. If empty, the town name parts will be used.
  * @return The cost of this operation or an error.
  */
-std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text)
+std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text)
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
@@ -2198,7 +2198,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlag flags, TileInd
 
 	/* Create the town */
 	TownID new_town = INVALID_TOWN;
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (cost.GetCost() > GetAvailableMoneyForCommand()) {
 			return { CommandCost(EXPENSES_OTHER), cost.GetCost(), INVALID_TOWN };
 		}
@@ -2399,7 +2399,7 @@ static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize si
 		if (t->cache.population > 0) return t;
 
 		Backup<CompanyID> cur_company(_current_company, OWNER_TOWN);
-		[[maybe_unused]] CommandCost rc = Command<CMD_DELETE_TOWN>::Do(DC_EXEC, t->index);
+		[[maybe_unused]] CommandCost rc = Command<CMD_DELETE_TOWN>::Do(DoCommandFlag::Execute, t->index);
 		cur_company.Restore();
 		assert(rc.Succeeded());
 
@@ -2509,7 +2509,7 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
  */
 static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits, bool is_protected)
 {
-	[[maybe_unused]] CommandCost cc = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER, tile);
+	[[maybe_unused]] CommandCost cc = Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile);
 	assert(cc.Succeeded());
 
 	IncreaseBuildingCount(t, type);
@@ -2566,7 +2566,7 @@ static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
 	if (IsBridgeAbove(tile)) return false;
 
 	/* can we clear the land? */
-	return Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile).Succeeded();
+	return Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile).Succeeded();
 }
 
 
@@ -2900,7 +2900,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
  * @param is_protected Whether the house is protected from the town upgrading it.
  * @return Empty cost or an error.
  */
-CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house, bool is_protected)
+CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool is_protected)
 {
 	if (_game_mode != GM_EDITOR && _settings_game.economy.place_houses == PH_FORBIDDEN) return CMD_ERROR;
 
@@ -2920,7 +2920,7 @@ CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house, bo
 	if (IsBridgeAbove(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	/* can we clear the land? */
-	CommandCost cost = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, tile);
+	CommandCost cost = Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile);
 	if (!cost.Succeeded()) return cost;
 
 	int maxz = GetTileMaxZ(tile);
@@ -2936,13 +2936,13 @@ CommandCost CmdPlaceHouse(DoCommandFlag flags, TileIndex tile, HouseID house, bo
 
 	/* Check additional tiles covered by this house. */
 	for (const TileIndex &subtile : ta) {
-		cost = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_AUTO | DC_NO_WATER, subtile);
+		cost = Command<CMD_LANDSCAPE_CLEAR>::Do({DoCommandFlag::Auto, DoCommandFlag::NoWater}, subtile);
 		if (!cost.Succeeded()) return cost;
 
 		if (!CheckBuildHouseSameZ(subtile, maxz, noslope)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		bool house_completed = _settings_game.economy.place_houses == PH_ALLOWED_CONSTRUCTED;
 		BuildTownHouse(t, tile, hs, house, Random(), house_completed, is_protected);
 	}
@@ -3040,7 +3040,7 @@ void ClearTownHouse(Town *t, TileIndex tile)
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string &text)
+CommandCost CmdRenameTown(DoCommandFlags flags, TownID town_id, const std::string &text)
 {
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr) return CMD_ERROR;
@@ -3052,7 +3052,7 @@ CommandCost CmdRenameTown(DoCommandFlag flags, TownID town_id, const std::string
 		if (!IsUniqueTownName(text)) return CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		t->cached_name.clear();
 		if (reset) {
 			t->name.clear();
@@ -3090,7 +3090,7 @@ const CargoSpec *FindFirstCargoWithTownAcceptanceEffect(TownAcceptanceEffect eff
  * @param goal The new goal value.
  * @return Empty cost or an error.
  */
-CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownAcceptanceEffect tae, uint32_t goal)
+CommandCost CmdTownCargoGoal(DoCommandFlags flags, TownID town_id, TownAcceptanceEffect tae, uint32_t goal)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -3103,7 +3103,7 @@ CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownAcceptance
 	const CargoSpec *cargo = FindFirstCargoWithTownAcceptanceEffect(tae);
 	if (cargo == nullptr) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		t->goal[tae] = goal;
 		UpdateTownGrowth(t);
 		InvalidateWindowData(WC_TOWN_VIEW, town_id);
@@ -3119,13 +3119,13 @@ CommandCost CmdTownCargoGoal(DoCommandFlag flags, TownID town_id, TownAcceptance
  * @param text The new text (empty to remove the text).
  * @return Empty cost or an error.
  */
-CommandCost CmdTownSetText(DoCommandFlag flags, TownID town_id, const std::string &text)
+CommandCost CmdTownSetText(DoCommandFlags flags, TownID town_id, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		t->text.clear();
 		if (!text.empty()) t->text = text;
 		InvalidateWindowData(WC_TOWN_VIEW, town_id);
@@ -3141,14 +3141,14 @@ CommandCost CmdTownSetText(DoCommandFlag flags, TownID town_id, const std::strin
  * @param growth_rate Amount of days between growth, or TOWN_GROWTH_RATE_NONE, or 0 to reset custom growth rate.
  * @return Empty cost or an error.
  */
-CommandCost CmdTownGrowthRate(DoCommandFlag flags, TownID town_id, uint16_t growth_rate)
+CommandCost CmdTownGrowthRate(DoCommandFlags flags, TownID town_id, uint16_t growth_rate)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (growth_rate == 0) {
 			/* Just clear the flag, UpdateTownGrowth will determine a proper growth rate */
 			ClrBit(t->flags, TOWN_CUSTOM_GROWTH);
@@ -3179,7 +3179,7 @@ CommandCost CmdTownGrowthRate(DoCommandFlag flags, TownID town_id, uint16_t grow
  * @param rating New rating of company (signed int16_t).
  * @return Empty cost or an error.
  */
-CommandCost CmdTownRating(DoCommandFlag flags, TownID town_id, CompanyID company_id, int16_t rating)
+CommandCost CmdTownRating(DoCommandFlags flags, TownID town_id, CompanyID company_id, int16_t rating)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -3189,7 +3189,7 @@ CommandCost CmdTownRating(DoCommandFlag flags, TownID town_id, CompanyID company
 	if (!Company::IsValidID(company_id)) return CMD_ERROR;
 
 	int16_t new_rating = Clamp(rating, RATING_MINIMUM, RATING_MAXIMUM);
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		t->ratings[company_id] = new_rating;
 		InvalidateWindowData(WC_TOWN_AUTHORITY, town_id);
 	}
@@ -3204,13 +3204,13 @@ CommandCost CmdTownRating(DoCommandFlag flags, TownID town_id, CompanyID company
  * @param grow_amount Amount to grow, or 0 to grow a random size up to the current amount of houses.
  * @return Empty cost or an error.
  */
-CommandCost CmdExpandTown(DoCommandFlag flags, TownID town_id, uint32_t grow_amount)
+CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount)
 {
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) return CMD_ERROR;
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		/* The more houses, the faster we grow */
 		if (grow_amount == 0) {
 			uint amount = RandomRange(ClampTo<uint16_t>(t->cache.num_houses / 10)) + 3;
@@ -3241,7 +3241,7 @@ CommandCost CmdExpandTown(DoCommandFlag flags, TownID town_id, uint32_t grow_amo
  * @param town_id Town ID to delete.
  * @return Empty cost or an error.
  */
-CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
+CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id)
 {
 	if (_game_mode != GM_EDITOR && !_generating_world) return CMD_ERROR;
 	Town *t = Town::GetIfValid(town_id);
@@ -3307,7 +3307,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 							try_clear = true;
 						} else {
 							/* Tell to find a new town. */
-							if (flags & DC_EXEC) o->town = nullptr;
+							if (flags.Test(DoCommandFlag::Execute)) o->town = nullptr;
 						}
 					}
 				}
@@ -3323,7 +3323,7 @@ CommandCost CmdDeleteTown(DoCommandFlag flags, TownID town_id)
 	}
 
 	/* The town destructor will delete the other things related to the town. */
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		_town_kdtree.Remove(t->index);
 		if (t->cache.sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeTown(t->index));
 		delete t;
@@ -3358,9 +3358,9 @@ uint8_t GetTownActionCost(TownAction action)
  * @param flags Type of operation.
  * @return An empty cost.
  */
-static CommandCost TownActionAdvertiseSmall(Town *t, DoCommandFlag flags)
+static CommandCost TownActionAdvertiseSmall(Town *t, DoCommandFlags flags)
 {
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		ModifyStationRatingAround(t->xy, _current_company, 0x40, 10);
 	}
 	return CommandCost();
@@ -3372,9 +3372,9 @@ static CommandCost TownActionAdvertiseSmall(Town *t, DoCommandFlag flags)
  * @param flags Type of operation.
  * @return An empty cost.
  */
-static CommandCost TownActionAdvertiseMedium(Town *t, DoCommandFlag flags)
+static CommandCost TownActionAdvertiseMedium(Town *t, DoCommandFlags flags)
 {
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		ModifyStationRatingAround(t->xy, _current_company, 0x70, 15);
 	}
 	return CommandCost();
@@ -3386,9 +3386,9 @@ static CommandCost TownActionAdvertiseMedium(Town *t, DoCommandFlag flags)
  * @param flags Type of operation.
  * @return An empty cost.
  */
-static CommandCost TownActionAdvertiseLarge(Town *t, DoCommandFlag flags)
+static CommandCost TownActionAdvertiseLarge(Town *t, DoCommandFlags flags)
 {
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		ModifyStationRatingAround(t->xy, _current_company, 0xA0, 20);
 	}
 	return CommandCost();
@@ -3400,12 +3400,12 @@ static CommandCost TownActionAdvertiseLarge(Town *t, DoCommandFlag flags)
  * @param flags Type of operation.
  * @return An empty cost.
  */
-static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
+static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlags flags)
 {
 	/* Check if the company is allowed to fund new roads. */
 	if (!_settings_game.economy.fund_roads) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		t->road_build_months = 6;
 
 		SetDParam(0, _current_company);
@@ -3431,7 +3431,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 static bool CheckClearTile(TileIndex tile)
 {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
-	CommandCost r = Command<CMD_LANDSCAPE_CLEAR>::Do(DC_NONE, tile);
+	CommandCost r = Command<CMD_LANDSCAPE_CLEAR>::Do({}, tile);
 	cur_company.Restore();
 	return r.Succeeded();
 }
@@ -3493,7 +3493,7 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
  * @param flags Used to check if the statue must be built or not.
  * @return Empty cost or an error.
  */
-static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
+static CommandCost TownActionBuildStatue(Town *t, DoCommandFlags flags)
 {
 	if (!Object::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_OBJECTS);
 
@@ -3501,9 +3501,9 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	StatueBuildSearchData statue_data(INVALID_TILE, 0);
 	if (!CircularTileSearch(&tile, 9, SearchTileForStatue, &statue_data)) return CommandCost(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
-		Command<CMD_LANDSCAPE_CLEAR>::Do(DC_EXEC, statue_data.best_position);
+		Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, statue_data.best_position);
 		cur_company.Restore();
 		BuildObject(OBJECT_STATUE, statue_data.best_position, _current_company, t);
 		t->statues.Set(_current_company); // Once found and built, "inform" the Town.
@@ -3518,12 +3518,12 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
  * @param flags Type of operation.
  * @return An empty cost.
  */
-static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
+static CommandCost TownActionFundBuildings(Town *t, DoCommandFlags flags)
 {
 	/* Check if it's allowed to buy the rights */
 	if (!_settings_game.economy.fund_buildings) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		/* And grow for 3 months */
 		t->fund_buildings_months = 3;
 
@@ -3551,13 +3551,13 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
  * @param flags Type of operation.
  * @return An empty cost.
  */
-static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
+static CommandCost TownActionBuyRights(Town *t, DoCommandFlags flags)
 {
 	/* Check if it's allowed to buy the rights */
 	if (!_settings_game.economy.exclusive_rights) return CMD_ERROR;
 	if (t->exclusivity != INVALID_COMPANY) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		t->exclusive_counter = 12;
 		t->exclusivity = _current_company;
 
@@ -3584,9 +3584,9 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
  * @param flags Type of operation.
  * @return An empty cost.
  */
-static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
+static CommandCost TownActionBribe(Town *t, DoCommandFlags flags)
 {
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (Chance16(1, 14)) {
 			/* set as unwanted for 6 months */
 			t->unwanted[_current_company] = 6;
@@ -3599,7 +3599,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 			}
 
 			/* only show error message to the executing player. All errors are handled command.c
-			 * but this is special, because it can only 'fail' on a DC_EXEC */
+			 * but this is special, because it can only 'fail' on a DoCommandFlag::Execute */
 			if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, INVALID_STRING_ID, WL_INFO);
 
 			/* decrease by a lot!
@@ -3611,7 +3611,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 				SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 			}
 		} else {
-			ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DC_EXEC);
+			ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DoCommandFlag::Execute);
 			if (t->exclusivity != _current_company && t->exclusivity != INVALID_COMPANY) {
 				t->exclusivity = INVALID_COMPANY;
 				t->exclusive_counter = 0;
@@ -3621,7 +3621,7 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
 	return CommandCost();
 }
 
-typedef CommandCost TownActionProc(Town *t, DoCommandFlag flags);
+typedef CommandCost TownActionProc(Town *t, DoCommandFlags flags);
 static TownActionProc * const _town_action_proc[] = {
 	TownActionAdvertiseSmall,
 	TownActionAdvertiseMedium,
@@ -3696,7 +3696,7 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
  * @param action action to perform, @see _town_action_proc for the list of available actions
  * @return the cost of this operation or an error
  */
-CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, TownAction action)
+CommandCost CmdDoTownAction(DoCommandFlags flags, TownID town_id, TownAction action)
 {
 	Town *t = Town::GetIfValid(town_id);
 	if (t == nullptr || to_underlying(action) >= std::size(_town_action_proc)) return CMD_ERROR;
@@ -3708,7 +3708,7 @@ CommandCost CmdDoTownAction(DoCommandFlag flags, TownID town_id, TownAction acti
 	CommandCost ret = _town_action_proc[to_underlying(action)](t, flags);
 	if (ret.Failed()) return ret;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		SetWindowDirty(WC_TOWN_AUTHORITY, town_id);
 	}
 
@@ -3885,15 +3885,15 @@ static void UpdateTownGrowth(Town *t)
 /**
  * Checks whether the local authority allows construction of a new station (rail, road, airport, dock) on the given tile
  * @param tile The tile where the station shall be constructed.
- * @param flags Command flags. DC_NO_TEST_TOWN_RATING is tested.
+ * @param flags Command flags. DoCommandFlag::NoTestTownRating is tested.
  * @return Succeeded or failed command.
  */
-CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags)
+CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlags flags)
 {
 	/* The required rating is hardcoded to RATING_VERYPOOR (see below), not the authority attitude setting, so we can bail out like this. */
 	if (_settings_game.difficulty.town_council_tolerance == TOWN_COUNCIL_PERMISSIVE) return CommandCost();
 
-	if (!Company::IsValidID(_current_company) || (flags & DC_NO_TEST_TOWN_RATING)) return CommandCost();
+	if (!Company::IsValidID(_current_company) || flags.Test(DoCommandFlag::NoTestTownRating)) return CommandCost();
 
 	Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 	if (t == nullptr) return CommandCost();
@@ -4007,12 +4007,12 @@ static int GetRating(const Town *t)
  * @param t Town to affect
  * @param add Value to add
  * @param max Minimum (add < 0) resp. maximum (add > 0) rating that should be achievable with this change.
- * @param flags Command flags, especially DC_NO_MODIFY_TOWN_RATING is tested
+ * @param flags Command flags, especially DoCommandFlag::NoModifyTownRating is tested
  */
-void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
+void ChangeTownRating(Town *t, int add, int max, DoCommandFlags flags)
 {
 	/* if magic_bulldozer cheat is active, town doesn't penalize for removing stuff */
-	if (t == nullptr || (flags & DC_NO_MODIFY_TOWN_RATING) ||
+	if (t == nullptr || flags.Test(DoCommandFlag::NoModifyTownRating) ||
 			!Company::IsValidID(_current_company) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;
@@ -4046,11 +4046,11 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
  * @param type  Type of action that is wanted.
  * @return A succeeded command if the action is allowed, a failed command if it is not allowed.
  */
-CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
+CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckType type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
 	if (t == nullptr || !Company::IsValidID(_current_company) ||
-			_cheats.magic_bulldozer.value || (flags & DC_NO_TEST_TOWN_RATING)) {
+			_cheats.magic_bulldozer.value || flags.Test(DoCommandFlag::NoTestTownRating)) {
 		return CommandCost();
 	}
 
@@ -4113,7 +4113,7 @@ static IntervalTimer<TimerGameEconomy> _economy_towns_yearly({TimerGameEconomy::
 	}
 });
 
-static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
+static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {
 		HouseID house = GetHouseType(tile);

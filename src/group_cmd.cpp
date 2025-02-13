@@ -333,7 +333,7 @@ Group::Group(Owner owner)
  * @param parent_group parent groupid
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlag flags, VehicleType vt, GroupID parent_group)
+std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleType vt, GroupID parent_group)
 {
 	if (!IsCompanyBuildableVehicleType(vt)) return { CMD_ERROR, INVALID_GROUP };
 
@@ -345,7 +345,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlag flags, VehicleType
 		if (pg->vehicle_type != vt) return { CMD_ERROR, INVALID_GROUP };
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		Group *g = new Group(_current_company);
 		g->vehicle_type = vt;
 		g->parent = INVALID_GROUP;
@@ -379,7 +379,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlag flags, VehicleType
  * @param group_id index of group
  * @return the cost of this operation or an error
  */
-CommandCost CmdDeleteGroup(DoCommandFlag flags, GroupID group_id)
+CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 {
 	Group *g = Group::GetIfValid(group_id);
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
@@ -394,7 +394,7 @@ CommandCost CmdDeleteGroup(DoCommandFlag flags, GroupID group_id)
 		}
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Update backupped orders if needed */
 		OrderBackup::ClearGroup(g->index);
 
@@ -431,7 +431,7 @@ CommandCost CmdDeleteGroup(DoCommandFlag flags, GroupID group_id)
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID group_id, GroupID parent_id, const std::string &text)
+CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID group_id, GroupID parent_id, const std::string &text)
 {
 	Group *g = Group::GetIfValid(group_id);
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
@@ -444,7 +444,7 @@ CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID grou
 			if (Utf8StringLength(text) >= MAX_LENGTH_GROUP_NAME_CHARS) return CMD_ERROR;
 		}
 
-		if (flags & DC_EXEC) {
+		if (flags.Test(DoCommandFlag::Execute)) {
 			/* Assign the new one */
 			if (reset) {
 				g->name.clear();
@@ -465,7 +465,7 @@ CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID grou
 			if (GroupIsInGroup(pg->index, g->index)) return CommandCost(STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION);
 		}
 
-		if (flags & DC_EXEC) {
+		if (flags.Test(DoCommandFlag::Execute)) {
 			g->parent = (pg == nullptr) ? INVALID_GROUP : pg->index;
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
@@ -483,7 +483,7 @@ CommandCost CmdAlterGroup(DoCommandFlag flags, AlterGroupMode mode, GroupID grou
 		return CMD_ERROR;
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type, 1);
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).ToWindowNumber());
 		InvalidateWindowData(WC_COMPANY_COLOUR, g->owner, g->vehicle_type);
@@ -534,7 +534,7 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
  * @param add_shared Add shared vehicles as well.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli)
+std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli)
 {
 	GroupID new_g = group_id;
 	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP) return { CMD_ERROR, INVALID_GROUP };
@@ -566,7 +566,7 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID
 		new_g = new_group_id;
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		for (const Vehicle *vc : list) {
 			/* VehicleList is const but we need to modify the vehicle. */
 			Vehicle *v = Vehicle::Get(vc->index);
@@ -603,11 +603,11 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlag flags, GroupID
  * @param type type of vehicles
  * @return the cost of this operation or an error
  */
-CommandCost CmdAddSharedVehicleGroup(DoCommandFlag flags, GroupID id_g, VehicleType type)
+CommandCost CmdAddSharedVehicleGroup(DoCommandFlags flags, GroupID id_g, VehicleType type)
 {
 	if (!Group::IsValidID(id_g) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Find the first front engine which belong to the group id_g
 		 * then add all shared vehicles of this front engine to the group id_g */
 		for (const Vehicle *v : Vehicle::Iterate()) {
@@ -634,13 +634,13 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlag flags, GroupID id_g, VehicleT
  * @param group_id index of group
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlag flags, GroupID group_id)
+CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 {
 	Group *g = Group::GetIfValid(group_id);
 
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		/* Find each Vehicle that belongs to the group old_g and add it to the default group */
 		for (const Vehicle *v : Vehicle::Iterate()) {
 			if (v->IsPrimaryVehicle()) {
@@ -664,7 +664,7 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlag flags, GroupID group_id)
  * @param primary Set primary instead of secondary colour
  * @param colour Colour.
  */
-CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primary, Colours colour)
+CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour)
 {
 	Group *g = Group::GetIfValid(group_id);
 
@@ -672,7 +672,7 @@ CommandCost CmdSetGroupLivery(DoCommandFlag flags, GroupID group_id, bool primar
 
 	if (colour >= COLOUR_END && colour != INVALID_COLOUR) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (primary) {
 			AssignBit(g->livery.in_use, 0, colour != INVALID_COLOUR);
 			if (colour == INVALID_COLOUR) colour = GetParentLivery(g)->colour1;
@@ -719,14 +719,14 @@ static void SetGroupFlag(Group *g, GroupFlag flag, bool set, bool children)
  * @param recursive to apply to sub-groups.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGroupFlag(DoCommandFlag flags, GroupID group_id, GroupFlag flag, bool value, bool recursive)
+CommandCost CmdSetGroupFlag(DoCommandFlags flags, GroupID group_id, GroupFlag flag, bool value, bool recursive)
 {
 	Group *g = Group::GetIfValid(group_id);
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
 	if (flag != GroupFlag::ReplaceProtection && flag != GroupFlag::ReplaceWagonRemoval) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		SetGroupFlag(g, flag, value, recursive);
 
 		SetWindowDirty(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).ToWindowNumber());

@@ -1016,13 +1016,13 @@ void ClearEnginesHiddenFlagOfCompany(CompanyID cid)
  * @param hide Set for hidden, unset for visible.
  * @return The cost of this operation or an error.
  */
-CommandCost CmdSetVehicleVisibility(DoCommandFlag flags, EngineID engine_id, bool hide)
+CommandCost CmdSetVehicleVisibility(DoCommandFlags flags, EngineID engine_id, bool hide)
 {
 	Engine *e = Engine::GetIfValid(engine_id);
 	if (e == nullptr || _current_company >= MAX_COMPANIES) return CMD_ERROR;
 	if (!IsEngineBuildable(e->index, e->type, _current_company)) return CMD_ERROR;
 
-	if ((flags & DC_EXEC) != 0) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		e->company_hidden.Set(_current_company, hide);
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
@@ -1037,12 +1037,12 @@ CommandCost CmdSetVehicleVisibility(DoCommandFlag flags, EngineID engine_id, boo
  * @param engine_id engine-prototype offered
  * @return the cost of this operation or an error
  */
-CommandCost CmdWantEnginePreview(DoCommandFlag flags, EngineID engine_id)
+CommandCost CmdWantEnginePreview(DoCommandFlags flags, EngineID engine_id)
 {
 	Engine *e = Engine::GetIfValid(engine_id);
 	if (e == nullptr || !e->flags.Test(EngineFlag::ExclusivePreview) || e->preview_company != _current_company) return CMD_ERROR;
 
-	if (flags & DC_EXEC) AcceptEnginePreview(engine_id, _current_company);
+	if (flags.Test(DoCommandFlag::Execute)) AcceptEnginePreview(engine_id, _current_company);
 
 	return CommandCost();
 }
@@ -1055,13 +1055,13 @@ CommandCost CmdWantEnginePreview(DoCommandFlag flags, EngineID engine_id)
  * @param allow false to forbid, true to allow.
  * @return the cost of this operation or an error
  */
-CommandCost CmdEngineCtrl(DoCommandFlag flags, EngineID engine_id, CompanyID company_id, bool allow)
+CommandCost CmdEngineCtrl(DoCommandFlags flags, EngineID engine_id, CompanyID company_id, bool allow)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
 	if (!Engine::IsValidID(engine_id) || !Company::IsValidID(company_id)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (allow) {
 			EnableEngineForCompany(engine_id, company_id);
 		} else {
@@ -1217,7 +1217,7 @@ static bool IsUniqueEngineName(const std::string &name)
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameEngine(DoCommandFlag flags, EngineID engine_id, const std::string &text)
+CommandCost CmdRenameEngine(DoCommandFlags flags, EngineID engine_id, const std::string &text)
 {
 	Engine *e = Engine::GetIfValid(engine_id);
 	if (e == nullptr) return CMD_ERROR;
@@ -1229,7 +1229,7 @@ CommandCost CmdRenameEngine(DoCommandFlag flags, EngineID engine_id, const std::
 		if (!IsUniqueEngineName(text)) return CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags.Test(DoCommandFlag::Execute)) {
 		if (reset) {
 			e->name.clear();
 		} else {

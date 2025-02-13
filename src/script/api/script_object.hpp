@@ -126,7 +126,7 @@ protected:
 	 * @tparam Targs The command parameter types.
 	 */
 	template <Commands Tcmd, typename Tret, typename... Targs>
-	struct ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...)> {
+	struct ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)> {
 		static bool Do(Script_SuspendCallbackProc *callback, Targs... args)
 		{
 			return Execute(callback, std::forward_as_tuple(args...));
@@ -377,7 +377,7 @@ namespace ScriptObjectInternal {
 }
 
 template <Commands Tcmd, typename Tret, typename... Targs>
-bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlag, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
+bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
 {
 	auto [err, estimate_only, asynchronous, networking] = ScriptObject::DoCommandPrep();
 	if (err) return false;
