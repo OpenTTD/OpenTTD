@@ -10,7 +10,10 @@
 #ifndef PICKER_FUNC_H
 #define PICKER_FUNC_H
 
+#include "ini_type.h"
+
 void PickerLoadConfig(const IniFile &ini);
 void PickerSaveConfig(IniFile &ini);
+void InvalidateAllPickerWindows();
 
 #endif /* PICKER_FUNC_H */
