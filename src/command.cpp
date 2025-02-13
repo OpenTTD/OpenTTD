@@ -217,7 +217,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
 	 * fancy things for 'success'. */
 	bool only_sending = _networking && !network_command;
 
-	if (_pause_mode != PM_UNPAUSED && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
+	if (_pause_mode.Any() && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
 		ShowErrorMessage(err_message, STR_ERROR_NOT_ALLOWED_WHILE_PAUSED, WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
 		return { true, estimate_only, only_sending };
 	} else {
@@ -384,7 +384,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 	SubtractMoneyFromCompany(res_exec);
 
 	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
-	if (_pause_mode != PM_UNPAUSED && _command_proc_table[cmd].type != CMDT_SERVER_SETTING) _pause_mode |= PM_COMMAND_DURING_PAUSE;
+	if (_pause_mode.Any() && _command_proc_table[cmd].type != CMDT_SERVER_SETTING) _pause_mode.Set(PauseMode::CommandDuringPause);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();

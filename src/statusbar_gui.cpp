@@ -142,8 +142,8 @@ struct StatusBarWindow : Window {
 					DrawString(tr, STR_STATUSBAR_SAVING_GAME, TC_FROMSTRING, SA_HOR_CENTER | SA_VERT_CENTER);
 				} else if (_do_autosave) {
 					DrawString(tr, STR_STATUSBAR_AUTOSAVE, TC_FROMSTRING, SA_HOR_CENTER);
-				} else if (_pause_mode != PM_UNPAUSED) {
-					StringID msg = (_pause_mode & PM_PAUSED_LINK_GRAPH) ? STR_STATUSBAR_PAUSED_LINK_GRAPH : STR_STATUSBAR_PAUSED;
+				} else if (_pause_mode.Any()) {
+					StringID msg = _pause_mode.Test(PauseMode::LinkGraph) ? STR_STATUSBAR_PAUSED_LINK_GRAPH : STR_STATUSBAR_PAUSED;
 					DrawString(tr, msg, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (this->ticker_scroll < TICKER_STOP && GetStatusbarNews() != nullptr && GetStatusbarNews()->string_id != 0) {
 					/* Draw the scrolling news text */
@@ -203,7 +203,7 @@ struct StatusBarWindow : Window {
 
 	/** Move information on the ticker slowly from one side to the other. */
 	IntervalTimer<TimerWindow> ticker_scroll_interval = {std::chrono::milliseconds(15), [this](uint count) {
-		if (_pause_mode != PM_UNPAUSED) return;
+		if (_pause_mode.Any()) return;
 
 		if (this->ticker_scroll < TICKER_STOP) {
 			this->ticker_scroll += count;

@@ -21,8 +21,8 @@ template <>
 void IntervalTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 {
 	if (this->period.period == std::chrono::milliseconds::zero()) return;
-	if (this->period.flag == TimerGameRealtime::PeriodFlags::AUTOSAVE && _pause_mode != PM_UNPAUSED && (_pause_mode & PM_COMMAND_DURING_PAUSE) == 0) return;
-	if (this->period.flag == TimerGameRealtime::PeriodFlags::UNPAUSED && _pause_mode != PM_UNPAUSED) return;
+	if (this->period.flag == TimerGameRealtime::PeriodFlags::AUTOSAVE && _pause_mode.Any() && !_pause_mode.Test(PauseMode::CommandDuringPause)) return;
+	if (this->period.flag == TimerGameRealtime::PeriodFlags::UNPAUSED && _pause_mode.Any()) return;
 
 	this->storage.elapsed += delta;
 
@@ -42,8 +42,8 @@ void TimeoutTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 {
 	if (this->fired) return;
 	if (this->period.period == std::chrono::milliseconds::zero()) return;
-	if (this->period.flag == TimerGameRealtime::PeriodFlags::AUTOSAVE && _pause_mode != PM_UNPAUSED && (_pause_mode & PM_COMMAND_DURING_PAUSE) == 0) return;
-	if (this->period.flag == TimerGameRealtime::PeriodFlags::UNPAUSED && _pause_mode != PM_UNPAUSED) return;
+	if (this->period.flag == TimerGameRealtime::PeriodFlags::AUTOSAVE && _pause_mode.Any() && _pause_mode.Test(PauseMode::CommandDuringPause)) return;
+	if (this->period.flag == TimerGameRealtime::PeriodFlags::UNPAUSED && _pause_mode.Any()) return;
 
 	this->storage.elapsed += delta;
 

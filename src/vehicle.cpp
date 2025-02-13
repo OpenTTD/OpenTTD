@@ -327,7 +327,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 		SetDParamStr(0, grfconfig->GetName());
 		SetDParam(1, engine);
 		ShowErrorMessage(part1, part2, WL_CRITICAL);
-		if (!_networking) Command<CMD_PAUSE>::Do(DoCommandFlag::Execute, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, true);
+		if (!_networking) Command<CMD_PAUSE>::Do(DoCommandFlag::Execute, critical ? PauseMode::Error : PauseMode::Normal, true);
 	}
 
 	/* debug output */

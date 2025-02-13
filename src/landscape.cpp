@@ -734,7 +734,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 
 			/* draw explosion animation...
 			 * Disable explosions when game is paused. Looks silly and blocks the view. */
-			if ((t == tile || t == start_tile) && _pause_mode == PM_UNPAUSED) {
+			if ((t == tile || t == start_tile) && _pause_mode.None()) {
 				/* big explosion in two corners, or small explosion for single tiles */
 				CreateEffectVehicleAbove(TileX(t) * TILE_SIZE + TILE_SIZE / 2, TileY(t) * TILE_SIZE + TILE_SIZE / 2, 2,
 					TileX(tile) == TileX(start_tile) && TileY(tile) == TileY(start_tile) ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
