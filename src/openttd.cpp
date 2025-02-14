@@ -331,7 +331,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	}
 
 	FixTitleGameZoom();
-	_pause_mode = PM_UNPAUSED;
+	_pause_mode = {};
 	_cursor.fix_at = false;
 
 	CheckForMissingGlyphs();
@@ -861,7 +861,7 @@ static void MakeNewGameDone()
 	/* In a dedicated server, the server does not play */
 	if (!VideoDriver::GetInstance()->HasGUI()) {
 		OnStartGame(true);
-		if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
+		if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
 		return;
 	}
 
@@ -889,7 +889,7 @@ static void MakeNewGameDone()
 	InitializeRailGUI();
 	InitializeRoadGUI();
 
-	if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
+	if (_settings_client.gui.pause_on_newgame) Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
 
 	CheckEngines();
 	CheckIndustries();
@@ -1107,7 +1107,7 @@ void SwitchToMode(SwitchMode new_mode)
 				}
 				OnStartGame(_network_dedicated);
 				/* Decrease pause counter (was increased from opening load dialog) */
-				Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
+				Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
 			}
 
 			UpdateSocialIntegration(GM_NORMAL);
@@ -1140,7 +1140,7 @@ void SwitchToMode(SwitchMode new_mode)
 				GenerateSavegameId();
 				_settings_newgame.game_creation.starting_year = TimerGameCalendar::year;
 				/* Cancel the saveload pausing */
-				Command<CMD_PAUSE>::Post(PM_PAUSED_SAVELOAD, false);
+				Command<CMD_PAUSE>::Post(PauseMode::SaveLoad, false);
 			} else {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			}
@@ -1213,7 +1213,7 @@ void StateGameLoop()
 	}
 
 	/* Don't execute the state loop during pause or when modal windows are open. */
-	if (_pause_mode != PM_UNPAUSED || HasModalProgress()) {
+	if (_pause_mode.Any() || HasModalProgress()) {
 		PerformanceMeasurer::Paused(PFE_GAMELOOP);
 		PerformanceMeasurer::Paused(PFE_GL_ECONOMY);
 		PerformanceMeasurer::Paused(PFE_GL_TRAINS);
@@ -1291,7 +1291,7 @@ static IntervalTimer<TimerGameRealtime> _autosave_interval({std::chrono::millise
 {
 	/* We reset the command-during-pause mode here, so we don't continue
 	 * to make auto-saves when nothing more is changing. */
-	_pause_mode &= ~PM_COMMAND_DURING_PAUSE;
+	_pause_mode.Reset(PauseMode::CommandDuringPause);
 
 	_do_autosave = true;
 	SetWindowDirty(WC_STATUS_BAR, 0);
@@ -1389,7 +1389,7 @@ void GameLoop()
 		StateGameLoop();
 	}
 
-	if (!_pause_mode && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
+	if (_pause_mode.None() && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
 
 	SoundDriver::GetInstance()->MainLoop();
 	MusicLoop();

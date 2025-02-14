@@ -57,8 +57,8 @@
 	 * needs manual action to continue. */
 	ShowScriptDebugWindow(ScriptObject::GetRootCompany());
 
-	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-		ScriptObject::Command<CMD_PAUSE>::Do(PM_PAUSED_NORMAL, true);
+	if (!_pause_mode.Test(PauseMode::Normal)) {
+		ScriptObject::Command<CMD_PAUSE>::Do(PauseMode::Normal, true);
 	}
 }
 

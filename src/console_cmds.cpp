@@ -813,8 +813,8 @@ DEF_CONSOLE_CMD(ConPauseGame)
 		return true;
 	}
 
-	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-		Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, true);
+	if (!_pause_mode.Test(PauseMode::Normal)) {
+		Command<CMD_PAUSE>::Post(PauseMode::Normal, true);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game paused.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already paused.");
@@ -835,12 +835,12 @@ DEF_CONSOLE_CMD(ConUnpauseGame)
 		return true;
 	}
 
-	if ((_pause_mode & PM_PAUSED_NORMAL) != PM_UNPAUSED) {
-		Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, false);
+	if (_pause_mode.Test(PauseMode::Normal)) {
+		Command<CMD_PAUSE>::Post(PauseMode::Normal, false);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game unpaused.");
-	} else if ((_pause_mode & PM_PAUSED_ERROR) != PM_UNPAUSED) {
+	} else if (_pause_mode.Test(PauseMode::Error)) {
 		IConsolePrint(CC_DEFAULT, "Game is in error state and cannot be unpaused via console.");
-	} else if (_pause_mode != PM_UNPAUSED) {
+	} else if (_pause_mode.Any()) {
 		IConsolePrint(CC_DEFAULT, "Game cannot be unpaused manually; disable pause_on_join/min_active_clients.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already unpaused.");

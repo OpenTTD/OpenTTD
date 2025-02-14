@@ -47,7 +47,7 @@ bool _screen_disable_anim = false;   ///< Disable palette animation (important f
 std::atomic<bool> _exit_game;
 GameMode _game_mode;
 SwitchMode _switch_mode;  ///< The next mainloop command.
-PauseMode _pause_mode;
+PauseModes _pause_mode;
 GameSessionStats _game_session_stats; ///< Statistics about the current session.
 
 static uint8_t _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()

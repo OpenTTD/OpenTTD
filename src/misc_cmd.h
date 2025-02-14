@@ -12,8 +12,7 @@
 
 #include "command_type.h"
 #include "economy_type.h"
-
-enum PauseMode : uint8_t;
+#include "openttd.h"
 
 enum class LoanCommand : uint8_t {
 	Interval,

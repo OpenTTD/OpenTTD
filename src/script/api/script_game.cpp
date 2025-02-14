@@ -19,17 +19,17 @@
 
 /* static */ bool ScriptGame::Pause()
 {
-	return ScriptObject::Command<CMD_PAUSE>::Do(PM_PAUSED_GAME_SCRIPT, true);
+	return ScriptObject::Command<CMD_PAUSE>::Do(PauseMode::GameScript, true);
 }
 
 /* static */ bool ScriptGame::Unpause()
 {
-	return ScriptObject::Command<CMD_PAUSE>::Do(PM_PAUSED_GAME_SCRIPT, false);
+	return ScriptObject::Command<CMD_PAUSE>::Do(PauseMode::GameScript, false);
 }
 
 /* static */ bool ScriptGame::IsPaused()
 {
-	return !!_pause_mode;
+	return _pause_mode.Any();
 }
 
 /* static */ ScriptGame::LandscapeType ScriptGame::GetLandscape()

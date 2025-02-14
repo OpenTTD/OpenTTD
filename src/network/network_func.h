@@ -58,7 +58,7 @@ uint NetworkMaxCompaniesAllowed();
 bool NetworkMaxCompaniesReached();
 void NetworkPrintClients();
 std::string_view NetworkGetPublicKeyOfClient(ClientID client_id);
-void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode);
+void NetworkHandlePauseChange(PauseModes prev_mode, PauseMode changed_mode);
 
 void NetworkOnGameStart();
 

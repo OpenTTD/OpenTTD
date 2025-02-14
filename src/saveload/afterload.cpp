@@ -584,8 +584,8 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_98)) _gamelog.GRFAddList(_grfconfig);
 
 	if (IsSavegameVersionBefore(SLV_119)) {
-		_pause_mode = (_pause_mode == 2) ? PM_PAUSED_NORMAL : PM_UNPAUSED;
-	} else if (_network_dedicated && (_pause_mode & PM_PAUSED_ERROR) != 0) {
+		_pause_mode = (_pause_mode.base() == 2) ? PauseMode::Normal : PauseModes{};
+	} else if (_network_dedicated && _pause_mode.Test(PauseMode::Error)) {
 		Debug(net, 0, "The loading savegame was paused due to an error state");
 		Debug(net, 0, "  This savegame cannot be used for multiplayer");
 		/* Restore the signals */
@@ -599,7 +599,7 @@ bool AfterLoadGame()
 		 * active clients. Note that resetting these values for a network
 		 * client are very bad because then the client is going to execute
 		 * the game loop when the server is not, i.e. it desyncs. */
-		_pause_mode &= ~PMB_PAUSED_NETWORK;
+		_pause_mode.Reset({PauseMode::ActiveClients, PauseMode::Join});
 	}
 
 	/* In very old versions, size of train stations was stored differently.
@@ -723,7 +723,7 @@ bool AfterLoadGame()
 
 	switch (gcf_res) {
 		case GLC_COMPATIBLE: ShowErrorMessage(STR_NEWGRF_COMPATIBLE_LOAD_WARNING, INVALID_STRING_ID, WL_CRITICAL); break;
-		case GLC_NOT_FOUND:  ShowErrorMessage(STR_NEWGRF_DISABLED_WARNING, INVALID_STRING_ID, WL_CRITICAL); _pause_mode = PM_PAUSED_ERROR; break;
+		case GLC_NOT_FOUND:  ShowErrorMessage(STR_NEWGRF_DISABLED_WARNING, INVALID_STRING_ID, WL_CRITICAL); _pause_mode = PauseMode::Error; break;
 		default: break;
 	}
 

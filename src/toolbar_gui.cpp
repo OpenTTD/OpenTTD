@@ -200,7 +200,7 @@ static CallBackFunction ToolbarPauseClick(Window *)
 {
 	if (_networking && !_network_server) return CBF_NONE; // only server can pause the game
 
-	if (Command<CMD_PAUSE>::Post(PM_PAUSED_NORMAL, _pause_mode == PM_UNPAUSED)) {
+	if (Command<CMD_PAUSE>::Post(PauseMode::Normal, _pause_mode.None())) {
 		if (_settings_client.sound.confirm) SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;
@@ -2096,7 +2096,7 @@ struct MainToolbarWindow : Window {
 
 	/** Refresh the state of pause / game-speed on a regular interval.*/
 	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
-		if (this->IsWidgetLowered(WID_TN_PAUSE) != !!_pause_mode) {
+		if (this->IsWidgetLowered(WID_TN_PAUSE) != _pause_mode.Any()) {
 			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
 			this->SetWidgetDirty(WID_TN_PAUSE);
 		}
@@ -2462,7 +2462,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	/** Refresh the state of pause / game-speed on a regular interval.*/
 	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
-		if (this->IsWidgetLowered(WID_TE_PAUSE) != !!_pause_mode) {
+		if (this->IsWidgetLowered(WID_TE_PAUSE) != _pause_mode.Any()) {
 			this->ToggleWidgetLoweredState(WID_TE_PAUSE);
 			this->SetDirty();
 		}
