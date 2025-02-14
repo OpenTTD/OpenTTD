@@ -265,8 +265,7 @@ bool IsPointInTriangle(const int x, const int y, const Point & vertex0, const Po
 	const int s = ((vertex0.x - vertex2.x) * (y - vertex2.y)) - ((vertex0.y - vertex2.y) * (x - vertex2.x));
 	const int t = ((vertex1.x - vertex0.x) * (y - vertex0.y)) - ((vertex1.y - vertex0.y) * (x - vertex0.x));
 
-	if (s < 0 != t < 0 && s != 0 && t != 0)
-	{
+	if (s < 0 != t < 0 && s != 0 && t != 0) {
 		return false;
 	}
 
@@ -276,9 +275,9 @@ bool IsPointInTriangle(const int x, const int y, const Point & vertex0, const Po
 
 /**
  * Returns true if the given coordinates lie within a star shaped polygon.
- * breaks the polygon into a series of triangles around the centre point (0, 0) and then tests the coordinates against each triangle until a match is found [or not].
+ * Breaks the polygon into a series of triangles around the centre point (0, 0) and then tests the coordinates against each triangle until a match is found [or not].
  *
- * There might be a better way to do this.
+ * @note There might be a better way to do this.
  *
  * @param x x.
  * @param y y.
@@ -288,8 +287,7 @@ bool IsPointInTriangle(const int x, const int y, const Point & vertex0, const Po
 bool IsPointInStarShapedPolygon(int x, int y, std::array<Point, GROVE_RESOLUTION> polygon)
 {
 	for (int i = 0; i < polygon.size(); ++i) {
-		if (IsPointInTriangle(x, y, polygon.at(i), polygon.at((i + 1) % polygon.size()), {0, 0}))
-		{
+		if (IsPointInTriangle(x, y, polygon.at(i), polygon.at((i + 1) % polygon.size()), {0, 0})) {
 			return true;
 		}
 	}
