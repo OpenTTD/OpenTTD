@@ -321,10 +321,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_COMPANY_INFO);
 
 	p->Send_uint8 (c->index);
-	SetDParam(0, c->index);
-	p->Send_string(GetString(STR_COMPANY_NAME));
-	SetDParam(0, c->index);
-	p->Send_string(GetString(STR_PRESIDENT_NAME));
+	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
+	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
 	p->Send_uint8 (c->colour);
 	p->Send_bool  (true);
 	p->Send_uint32(c->inaugurated_year.base());
@@ -346,10 +344,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_COMPANY_UPDATE);
 
 	p->Send_uint8 (c->index);
-	SetDParam(0, c->index);
-	p->Send_string(GetString(STR_COMPANY_NAME));
-	SetDParam(0, c->index);
-	p->Send_string(GetString(STR_PRESIDENT_NAME));
+	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
+	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
 	p->Send_uint8 (c->colour);
 	p->Send_bool  (true);
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy

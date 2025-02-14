@@ -170,13 +170,11 @@ void BuildGuiGroupList(GUIGroupList &dst, bool fold, Owner owner, VehicleType ve
 
 	list.Sort([&last_group](const GUIGroupListItem &a, const GUIGroupListItem &b) -> bool {
 		if (a.group != last_group[0].first) {
-			SetDParam(0, a.group->index);
-			last_group[0] = {a.group, GetString(STR_GROUP_NAME)};
+			last_group[0] = {a.group, GetString(STR_GROUP_NAME, a.group->index)};
 		}
 
 		if (b.group != last_group[1].first) {
-			SetDParam(0, b.group->index);
-			last_group[1] = {b.group, GetString(STR_GROUP_NAME)};
+			last_group[1] = {b.group, GetString(STR_GROUP_NAME, b.group->index)};
 		}
 
 		int r = StrNaturalCompare(last_group[0].second, last_group[1].second); // Sort by name (natural sorting).

@@ -515,12 +515,9 @@ void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
 	}
 
 	/* debug output */
-	SetDParamStr(0, grfconfig->GetName());
-	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY)));
+	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY, grfconfig->GetName())));
 
-	SetDParam(1, cbid);
-	SetDParam(2, cb_res);
-	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT)));
+	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, cbid, cb_res)));
 }
 
 /**

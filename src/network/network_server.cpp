@@ -1327,8 +1327,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			if (ci != nullptr && show_local) {
 				if (from_id == CLIENT_ID_SERVER) {
 					StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
-					SetDParam(0, ci_to->client_playas);
-					std::string name = GetString(str);
+					std::string name = GetString(str, ci_to->client_playas);
 					NetworkTextMessage(action, GetDrawStringCompanyColour(ci_own->client_playas), true, name, msg, data);
 				} else {
 					for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
@@ -2003,8 +2002,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_SPECTATOR, DESTTYPE_BROADCAST, 0, "", client_id);
 	} else {
 		/* The client has joined another company. */
-		SetDParam(0, company_id);
-		std::string company_name = GetString(STR_COMPANY_NAME);
+		std::string company_name = GetString(STR_COMPANY_NAME, company_id);
 		NetworkServerSendChat(NETWORK_ACTION_COMPANY_JOIN, DESTTYPE_BROADCAST, 0, company_name, client_id);
 	}
 

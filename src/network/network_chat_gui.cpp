@@ -277,8 +277,7 @@ private:
 		}
 		for (const Town *t : Town::Iterate()) {
 			/* Get the town-name via the string-system */
-			SetDParam(0, t->index);
-			std::string town_name = GetString(STR_TOWN_NAME);
+			std::string town_name = GetString(STR_TOWN_NAME, t->index);
 			if (town_name.starts_with(query)) {
 				suggestions.push_back(std::move(town_name));
 			}

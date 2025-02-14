@@ -339,8 +339,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.type = FIOS_TYPE_PARENT;
 			fios.mtime = 0;
 			fios.name = "..";
-			SetDParamStr(0, "..");
-			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY);
+			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY, "..");
 			sort_start = file_list.size();
 		}
 
@@ -354,8 +353,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.type = FIOS_TYPE_DIR;
 			fios.mtime = 0;
 			fios.name = FS2OTTD(dir_entry.path().filename());
-			SetDParamStr(0, fios.name + PATHSEP);
-			fios.title = GetString(STR_SAVELOAD_DIRECTORY);
+			fios.title = GetString(STR_SAVELOAD_DIRECTORY, fios.name + PATHSEP);
 		}
 
 		/* Sort the subdirs always by name, ascending, remember user-sorting order */

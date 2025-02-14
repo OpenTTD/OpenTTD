@@ -622,8 +622,7 @@ int openttd_main(std::span<char * const> arguments)
 				fmt::print(stderr, "Failed to open savegame\n");
 				if (_load_check_data.HasErrors()) {
 					InitializeLanguagePacks(); // A language pack is needed for GetString()
-					SetDParamStr(0, _load_check_data.error_msg);
-					fmt::print(stderr, "{}\n", GetString(_load_check_data.error));
+					fmt::print(stderr, "{}\n", GetString(_load_check_data.error, _load_check_data.error_msg));
 				}
 				return ret;
 			}

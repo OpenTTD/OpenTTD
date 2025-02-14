@@ -185,8 +185,7 @@ protected:
 		/* Generate generic title if selected page have no custom title. */
 		StoryPage *page = this->GetSelPage();
 		if (page != nullptr && page->title.empty()) {
-			SetDParam(0, GetSelPageNum() + 1);
-			selected_generic_title = GetString(STR_STORY_BOOK_GENERIC_PAGE_ITEM);
+			selected_generic_title = GetString(STR_STORY_BOOK_GENERIC_PAGE_ITEM, GetSelPageNum() + 1);
 		}
 
 		this->story_page_elements.ForceRebuild();
