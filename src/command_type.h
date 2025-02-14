@@ -391,21 +391,21 @@ using DoCommandFlags = EnumBitSet<DoCommandFlag, uint16_t>;
  *
  * This enumeration defines flags for the _command_proc_table.
  */
-enum CommandFlags : uint16_t {
-	CMD_SERVER    = 0x001, ///< the command can only be initiated by the server
-	CMD_SPECTATOR = 0x002, ///< the command may be initiated by a spectator
-	CMD_OFFLINE   = 0x004, ///< the command cannot be executed in a multiplayer game; single-player only
-	CMD_AUTO      = 0x008, ///< set the DoCommandFlag::Auto flag on this command
-	CMD_ALL_TILES = 0x010, ///< allow this command also on MP_VOID tiles
-	CMD_NO_TEST   = 0x020, ///< the command's output may differ between test and execute due to town rating changes etc.
-	CMD_NO_WATER  = 0x040, ///< set the DoCommandFlag::NoWater flag on this command
-	CMD_CLIENT_ID = 0x080, ///< set p2 with the ClientID of the sending client.
-	CMD_DEITY     = 0x100, ///< the command may be executed by COMPANY_DEITY
-	CMD_STR_CTRL  = 0x200, ///< the command's string may contain control strings
-	CMD_NO_EST    = 0x400, ///< the command is never estimated.
-	CMD_LOCATION  = 0x800, ///< the command has implicit location argument.
+enum class CommandFlag : uint8_t {
+	Server, ///< the command can only be initiated by the server
+	Spectator, ///< the command may be initiated by a spectator
+	Offline, ///< the command cannot be executed in a multiplayer game; single-player only
+	Auto, ///< set the DoCommandFlag::Auto flag on this command
+	AllTiles, ///< allow this command also on MP_VOID tiles
+	NoTest, ///< the command's output may differ between test and execute due to town rating changes etc.
+	NoWater, ///< set the DoCommandFlag::NoWater flag on this command
+	ClientID, ///< set p2 with the ClientID of the sending client.
+	Deity, ///< the command may be executed by COMPANY_DEITY
+	StrCtrl, ///< the command's string may contain control strings
+	NoEst, ///< the command is never estimated.
+	Location, ///< the command has implicit location argument.
 };
-DECLARE_ENUM_AS_BIT_SET(CommandFlags)
+using CommandFlags = EnumBitSet<CommandFlag, uint16_t>;
 
 /** Types of commands we have. */
 enum CommandType : uint8_t {
@@ -459,7 +459,7 @@ template <Commands Tcmd> struct CommandTraits;
 		using RetCallbackProc = typename CommandFunctionTraitHelper<ProcType>::CbProcType; \
 		static constexpr Commands cmd = cmd_; \
 		static constexpr auto &proc = proc_; \
-		static constexpr CommandFlags flags = (CommandFlags)(flags_); \
+		static constexpr CommandFlags flags = flags_; \
 		static constexpr CommandType type = type_; \
 		static inline constexpr const char *name = #proc_; \
 	};

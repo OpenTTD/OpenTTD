@@ -29,17 +29,17 @@ CommandCost CmdMassStartStopVehicle(DoCommandFlags flags, TileIndex tile, bool d
 CommandCost CmdDepotSellAllVehicles(DoCommandFlags flags, TileIndex tile, VehicleType vehicle_type);
 CommandCost CmdDepotMassAutoReplace(DoCommandFlags flags, TileIndex tile, VehicleType vehicle_type);
 
-DEF_CMD_TRAIT(CMD_BUILD_VEHICLE,           CmdBuildVehicle,         CMD_CLIENT_ID,                CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_SELL_VEHICLE,            CmdSellVehicle,          CMD_CLIENT_ID | CMD_LOCATION, CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REFIT_VEHICLE,           CmdRefitVehicle,         CMD_LOCATION,                 CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_SEND_VEHICLE_TO_DEPOT,   CmdSendVehicleToDepot,   0,                            CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CHANGE_SERVICE_INT,      CmdChangeServiceInt,     0,                            CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_RENAME_VEHICLE,          CmdRenameVehicle,        0,                            CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLONE_VEHICLE,           CmdCloneVehicle,         CMD_NO_TEST,                  CMDT_VEHICLE_CONSTRUCTION) // NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
-DEF_CMD_TRAIT(CMD_START_STOP_VEHICLE,      CmdStartStopVehicle,     CMD_LOCATION,                 CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_MASS_START_STOP,         CmdMassStartStopVehicle, 0,                            CMDT_VEHICLE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DEPOT_SELL_ALL_VEHICLES, CmdDepotSellAllVehicles, 0,                            CMDT_VEHICLE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, 0,                            CMDT_VEHICLE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_BUILD_VEHICLE,           CmdBuildVehicle,         CommandFlag::ClientID,                CMDT_VEHICLE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_SELL_VEHICLE,            CmdSellVehicle,          CommandFlags({CommandFlag::ClientID, CommandFlag::Location}), CMDT_VEHICLE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_REFIT_VEHICLE,           CmdRefitVehicle,         CommandFlag::Location,                 CMDT_VEHICLE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_SEND_VEHICLE_TO_DEPOT,   CmdSendVehicleToDepot,   {},                            CMDT_VEHICLE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CHANGE_SERVICE_INT,      CmdChangeServiceInt,     {},                            CMDT_VEHICLE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_RENAME_VEHICLE,          CmdRenameVehicle,        {},                            CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CLONE_VEHICLE,           CmdCloneVehicle,         CommandFlag::NoTest,                  CMDT_VEHICLE_CONSTRUCTION) // NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
+DEF_CMD_TRAIT(CMD_START_STOP_VEHICLE,      CmdStartStopVehicle,     CommandFlag::Location,                 CMDT_VEHICLE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_MASS_START_STOP,         CmdMassStartStopVehicle, {},                            CMDT_VEHICLE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_DEPOT_SELL_ALL_VEHICLES, CmdDepotSellAllVehicles, {},                            CMDT_VEHICLE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_DEPOT_MASS_AUTOREPLACE,  CmdDepotMassAutoReplace, {},                            CMDT_VEHICLE_CONSTRUCTION)
 
 void CcBuildPrimaryVehicle(Commands cmd, const CommandCost &result, VehicleID new_veh_id, uint, uint16_t, CargoArray);
 void CcStartStopVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id, bool);

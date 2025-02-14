@@ -15,6 +15,6 @@
 
 CommandCost CmdScrollViewport(DoCommandFlags flags, TileIndex tile, ViewportScrollTarget target, uint32_t ref);
 
-DEF_CMD_TRAIT(CMD_SCROLL_VIEWPORT, CmdScrollViewport, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_SCROLL_VIEWPORT, CmdScrollViewport, CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)
 
 #endif /* VIEWPORT_CMD_H */

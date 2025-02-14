@@ -71,7 +71,7 @@ int RecursiveCommandCounter::_counter = 0;
  * Define a command with the flags which belongs to it.
  *
  * This struct connects a command handler function with the flags created with
- * the #CMD_AUTO, #CMD_OFFLINE and #CMD_SERVER values.
+ * the #CommandFlag::Auto, #CommandFlag::Offline and #CommandFlag::Server values.
  */
 struct CommandInfo {
 	const char *name;   ///< A human readable name for the procedure
@@ -211,7 +211,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
 	 * However, in case of incoming network commands,
 	 * map generation or the pause button we do want
 	 * to execute. */
-	bool estimate_only = _shift_pressed && IsLocalCompany() && !_generating_world && !network_command && !(flags & CMD_NO_EST);
+	bool estimate_only = _shift_pressed && IsLocalCompany() && !_generating_world && !network_command && !flags.Test(CommandFlag::NoEst);
 
 	/* We're only sending the command, so don't do
 	 * fancy things for 'success'. */
@@ -271,12 +271,12 @@ void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, 
 bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex, Backup<CompanyID> &cur_company)
 {
 	/* Always execute server and spectator commands as spectator */
-	bool exec_as_spectator = (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0;
+	bool exec_as_spectator = cmd_flags.Any({CommandFlag::Spectator, CommandFlag::Server});
 
 	/* If the company isn't valid it may only do server command or start a new company!
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
-	if (_game_mode == GM_NORMAL && !exec_as_spectator && !Company::IsValidID(_current_company) && !(_current_company == OWNER_DEITY && (cmd_flags & CMD_DEITY) != 0)) {
+	if (_game_mode == GM_NORMAL && !exec_as_spectator && !Company::IsValidID(_current_company) && !(_current_company == OWNER_DEITY && cmd_flags.Test(CommandFlag::Deity))) {
 		return false;
 	}
 
@@ -304,14 +304,14 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
 	SetTownRatingTestMode(false);
 
 	/* Make sure we're not messing things up here. */
-	assert((cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0 ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
+	assert(cmd_flags.Any({CommandFlag::Spectator, CommandFlag::Server}) ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
 
 	/* If the command fails, we're doing an estimate
 	 * or the player does not have enough money
 	 * (unless it's a command where the test and
 	 * execution phase might return different costs)
 	 * we bail out here. */
-	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;
+	bool test_and_exec_can_differ = cmd_flags.Test(CommandFlag::NoTest);
 	if (res.Failed() || estimate_only || (!test_and_exec_can_differ && !CheckCompanyHasMoney(res))) {
 		return { true, !_networking || _generating_world || network_command, false };
 	}
@@ -350,7 +350,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 		_current_company = _local_company;
 	} else {
 		/* Make sure nothing bad happened, like changing the current company. */
-		assert((cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) != 0 ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
+		assert(cmd_flags.Any({CommandFlag::Spectator, CommandFlag::Server}) ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
 		cur_company.Restore();
 	}
 
@@ -358,7 +358,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 	 * return of the command. Otherwise we can check whether the
 	 * test and execution have yielded the same result,
 	 * i.e. cost and error state are the same. */
-	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;
+	bool test_and_exec_can_differ = cmd_flags.Test(CommandFlag::NoTest);
 	if (!test_and_exec_can_differ) {
 		assert(res_test.GetCost() == res_exec.GetCost() && res_test.Failed() == res_exec.Failed()); // sanity check
 	} else if (res_exec.Failed()) {
