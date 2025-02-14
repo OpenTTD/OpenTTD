@@ -205,6 +205,20 @@ bool VideoDriver_SDL_Base::ClaimMousePointer()
 	return true;
 }
 
+void VideoDriver_SDL_Base::FixMousePointer(bool fix_at)
+{
+	if (_cursor.fix_at == fix_at) return;
+
+	this->VideoDriver::FixMousePointer(fix_at);
+
+	SDL_SetRelativeMouseMode(fix_at ? SDL_TRUE : SDL_FALSE);
+
+	if (!fix_at) {
+		/* Move cursor back to where it was before being fixed. */
+		SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
+	}
+}
+
 /**
  * This is called to indicate that an edit box has gained focus, text input mode should be enabled.
  */
@@ -385,21 +399,23 @@ bool VideoDriver_SDL_Base::PollEvent()
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION: {
-			int32_t x = ev.motion.x;
-			int32_t y = ev.motion.y;
-
 			if (_cursor.fix_at) {
+				/* Use relative motion events. */
+				int32_t x = ev.motion.xrel;
+				int32_t y = ev.motion.yrel;
+
 				/* Get all queued mouse events now in case we have to warp the cursor. In the
 				 * end, we only care about the current mouse position and not bygone events. */
 				while (SDL_PeepEvents(&ev, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION)) {
-					x = ev.motion.x;
-					y = ev.motion.y;
+					x += ev.motion.xrel;
+					y += ev.motion.yrel;
 				}
+
+				_cursor.UpdateCursorPositionRelative(x, y);
+			} else {
+				_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y);
 			}
 
-			if (_cursor.UpdateCursorPosition(x, y)) {
-				SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
-			}
 			HandleMouseEvents();
 			break;
 		}
@@ -560,12 +576,10 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 	if (error) return error;
 
 #ifdef SDL_HINT_MOUSE_AUTO_CAPTURE
-	if (GetDriverParamBool(param, "no_mouse_capture")) {
-		/* By default SDL captures the mouse, while a button is pressed.
-		 * This is annoying during debugging, when OpenTTD is suspended while the button was pressed.
-		 */
-		if (!SDL_SetHint(SDL_HINT_MOUSE_AUTO_CAPTURE, "0")) return SDL_GetError();
-	}
+	/* By default SDL captures the mouse, while a button is pressed.
+	 * This is annoying during debugging, when OpenTTD is suspended while the button was pressed.
+	 */
+	SDL_SetHint(SDL_HINT_MOUSE_AUTO_CAPTURE, "0");
 #endif
 
 #ifdef SDL_HINT_APP_NAME

@@ -240,6 +240,15 @@ bool VideoDriver_Cocoa::AfterBlitterChange()
 	return true;
 }
 
+void VideoDriver_Cocoa::FixMousePointer(bool fix_at)
+{
+	if (_cursor.fix_at == fix_at) return;
+
+	this->VideoDriver::FixMousePointer(fix_at);
+
+	CGAssociateMouseAndMouseCursorPosition(!_cursor.fix_at);
+}
+
 /**
  * An edit box lost the input focus. Abort character compositing if necessary.
  */

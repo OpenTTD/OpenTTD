@@ -674,15 +674,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	HandleMouseEvents();
 }
 
-- (void)internalMouseButtonEvent
-{
-	bool cur_fix = _cursor.fix_at;
-	HandleMouseEvents();
-
-	/* Cursor fix mode was changed, synchronize with OS. */
-	if (cur_fix != _cursor.fix_at) CGAssociateMouseAndMouseCursorPosition(!_cursor.fix_at);
-}
-
 - (BOOL)emulateRightButton:(NSEvent *)event
 {
 	uint32_t keymask = 0;
@@ -708,7 +699,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		[ self rightMouseDown:event ];
 	} else {
 		_left_button_down = true;
-		[ self internalMouseButtonEvent ];
+		HandleMouseEvents();
 	}
 }
 - (void)mouseUp:(NSEvent *)event
@@ -719,7 +710,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	} else {
 		_left_button_down = false;
 		_left_button_clicked = false;
-		[ self internalMouseButtonEvent ];
+		HandleMouseEvents();
 	}
 }
 
@@ -731,12 +722,12 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	_right_button_down = true;
 	_right_button_clicked = true;
-	[ self internalMouseButtonEvent ];
+	HandleMouseEvents();
 }
 - (void)rightMouseUp:(NSEvent *)event
 {
 	_right_button_down = false;
-	[ self internalMouseButtonEvent ];
+	HandleMouseEvents();
 }
 
 - (void)scrollWheel:(NSEvent *)event

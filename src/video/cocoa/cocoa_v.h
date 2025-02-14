@@ -49,6 +49,7 @@ public:
 	void ClearSystemSprites() override;
 	void PopulateSystemSprites() override;
 
+	void FixMousePointer(bool fix_at) override;
 	void EditBoxLostFocus() override;
 
 	std::vector<int> GetListOfMonitorRefreshRates() override;

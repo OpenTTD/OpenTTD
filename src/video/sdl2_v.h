@@ -35,6 +35,8 @@ public:
 
 	bool ClaimMousePointer() override;
 
+	void FixMousePointer(bool fix_at) override;
+
 	void EditBoxGainedFocus() override;
 
 	void EditBoxLostFocus() override;
