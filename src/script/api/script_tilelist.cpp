@@ -15,6 +15,14 @@
 
 #include "../../safeguards.h"
 
+bool ScriptTileList::SaveObject(HSQUIRRELVM vm)
+{
+	sq_pushstring(vm, "TileList");
+	if (!ScriptList::SaveObject(vm)) return false;
+	sq_remove(vm, -2);
+	return true;
+}
+
 void ScriptTileList::AddRectangle(TileIndex t1, TileIndex t2)
 {
 	if (!::IsValidTile(t1)) return;
