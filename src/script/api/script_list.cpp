@@ -403,6 +403,56 @@ public:
 
 
 
+bool ScriptList::SaveObject(HSQUIRRELVM vm)
+{
+	sq_pushstring(vm, "List");
+	sq_newarray(vm, 0);
+	sq_pushinteger(vm, this->sorter_type);
+	sq_arrayappend(vm, -2);
+	sq_pushbool(vm, this->sort_ascending ? SQTrue : SQFalse);
+	sq_arrayappend(vm, -2);
+	sq_newtable(vm);
+	for (ScriptListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
+		sq_pushinteger(vm, iter->first);
+		sq_pushinteger(vm, iter->second);
+		sq_rawset(vm, -3);
+	}
+	sq_arrayappend(vm, -2);
+	return true;
+}
+
+bool ScriptList::LoadObject(HSQUIRRELVM vm)
+{
+	if (sq_gettype(vm, -1) != OT_ARRAY) return false;
+	sq_pushnull(vm);
+	if (SQ_FAILED(sq_next(vm, -2))) return false;
+	if (sq_gettype(vm, -1) != OT_INTEGER) return false;
+	SQInteger type;
+	sq_getinteger(vm, -1, &type);
+	sq_pop(vm, 2);
+	if (SQ_FAILED(sq_next(vm, -2))) return false;
+	if (sq_gettype(vm, -1) != OT_BOOL) return false;
+	SQBool order;
+	sq_getbool(vm, -1, &order);
+	sq_pop(vm, 2);
+	if (SQ_FAILED(sq_next(vm, -2))) return false;
+	if (sq_gettype(vm, -1) != OT_TABLE) return false;
+	sq_pushnull(vm);
+	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
+		if (sq_gettype(vm, -2) != OT_INTEGER && sq_gettype(vm, -1) != OT_INTEGER) return false;
+		SQInteger key, value;
+		sq_getinteger(vm, -2, &key);
+		sq_getinteger(vm, -1, &value);
+		this->AddItem(key, value);
+		sq_pop(vm, 2);
+	}
+	sq_pop(vm, 3);
+	if (SQ_SUCCEEDED(sq_next(vm, -2))) return false;
+	sq_pop(vm, 1);
+	this->Sort(static_cast<SorterType>(type), order == SQTrue);
+	return true;
+}
+
 ScriptList::ScriptList()
 {
 	/* Default sorter */

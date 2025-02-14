@@ -149,6 +149,9 @@ protected:
 		ScriptList::FillList<T>(vm, list, [](const T *) { return true; });
 	}
 
+	virtual bool SaveObject(HSQUIRRELVM vm) override;
+	virtual bool LoadObject(HSQUIRRELVM vm) override;
+
 public:
 	typedef std::set<SQInteger> ScriptItemList;                   ///< The list of items inside the bucket
 	typedef std::map<SQInteger, ScriptItemList> ScriptListBucket; ///< The bucket list per value
