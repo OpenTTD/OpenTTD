@@ -480,6 +480,27 @@ static const SaveLoad _script_byte[] = {
 			return true;
 		}
 
+		case OT_INSTANCE:{
+			if (!test) {
+				_script_sl_byte = SQSL_INSTANCE;
+				SlObject(nullptr, _script_byte);
+			}
+			SQInteger top = sq_gettop(vm);
+			try {
+				ScriptObject *obj = static_cast<ScriptObject *>(Squirrel::GetRealInstance(vm, -1, "Object"));
+				if (!obj->SaveObject(vm)) throw std::exception();
+				if (sq_gettop(vm) != top + 2) throw std::exception();
+				if (sq_gettype(vm, -2) != OT_STRING || !SaveObject(vm, -2, max_depth - 1, test)) throw std::exception();
+				if (!SaveObject(vm, -1, max_depth - 1, test)) throw std::exception();
+				sq_settop(vm, top);
+				return true;
+			} catch (...) {
+				ScriptLog::Error("You tried to save an unsupported type. No data saved.");
+				sq_settop(vm, top);
+				return false;
+			}
+		}
+
 		default:
 			ScriptLog::Error("You tried to save an unsupported type. No data saved.");
 			return false;
@@ -588,7 +609,7 @@ bool ScriptInstance::IsPaused()
 		case SQSL_INT: {
 			int64_t value;
 			SlCopy(&value, 1, IsSavegameVersionBefore(SLV_SCRIPT_INT64) ? SLE_FILE_I32 | SLE_VAR_I64 : SLE_INT64);
-			if (data != nullptr) data->push_back((SQInteger)value);
+			if (data != nullptr) data->push_back(static_cast<SQInteger>(value));
 			return true;
 		}
 
@@ -602,24 +623,29 @@ bool ScriptInstance::IsPaused()
 
 		case SQSL_ARRAY:
 		case SQSL_TABLE: {
-			if (data != nullptr) data->push_back((SQSaveLoadType)_script_sl_byte);
+			if (data != nullptr) data->push_back(static_cast<SQSaveLoadType>(_script_sl_byte));
 			while (LoadObjects(data));
 			return true;
 		}
 
 		case SQSL_BOOL: {
 			SlObject(nullptr, _script_byte);
-			if (data != nullptr) data->push_back((SQBool)(_script_sl_byte != 0));
+			if (data != nullptr) data->push_back(static_cast<SQBool>(_script_sl_byte != 0));
 			return true;
 		}
 
 		case SQSL_NULL: {
-			if (data != nullptr) data->push_back((SQSaveLoadType)_script_sl_byte);
+			if (data != nullptr) data->push_back(static_cast<SQSaveLoadType>(_script_sl_byte));
+			return true;
+		}
+
+		case SQSL_INSTANCE: {
+			if (data != nullptr) data->push_back(static_cast<SQSaveLoadType>(_script_sl_byte));
 			return true;
 		}
 
 		case SQSL_ARRAY_TABLE_END: {
-			if (data != nullptr) data->push_back((SQSaveLoadType)_script_sl_byte);
+			if (data != nullptr) data->push_back(static_cast<SQSaveLoadType>(_script_sl_byte));
 			return false;
 		}
 
@@ -662,6 +688,31 @@ bool ScriptInstance::IsPaused()
 				case SQSL_NULL:
 					sq_pushnull(this->vm);
 					return true;
+
+				case SQSL_INSTANCE: {
+					SQInteger top = sq_gettop(this->vm);
+					LoadObjects(this->vm, this->data);
+					const SQChar *buf;
+					sq_getstring(this->vm, -1, &buf);
+					Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(this->vm));
+					std::string class_name = fmt::format("{}{}", engine->GetAPIName(), buf);
+					sq_pushroottable(this->vm);
+					sq_pushstring(this->vm, class_name);
+					if (SQ_FAILED(sq_get(this->vm, -2))) throw Script_FatalError(fmt::format("'{}' doesn't exist", class_name));
+					sq_pushroottable(vm);
+					if (SQ_FAILED(sq_call(this->vm, 1, SQTrue, SQFalse))) throw Script_FatalError(fmt::format("Failed to instantiate '{}'", class_name));
+					HSQOBJECT res;
+					sq_getstackobj(vm, -1, &res);
+					sq_addref(vm, &res);
+					sq_settop(this->vm, top);
+					sq_pushobject(vm, res);
+					sq_release(vm, &res);
+					ScriptObject *obj = static_cast<ScriptObject *>(Squirrel::GetRealInstance(vm, -1, "Object"));
+					LoadObjects(this->vm, this->data);
+					if (!obj->LoadObject(vm)) throw Script_FatalError(fmt::format("Failed to load '{}'", class_name));
+					sq_pop(this->vm, 1);
+					return true;
+				}
 
 				case SQSL_ARRAY_TABLE_END:
 					return false;

@@ -84,6 +84,22 @@ protected:
 		static ScriptInstance *active;  ///< The global current active instance.
 	};
 
+	/**
+	 * Save this object.
+	 * Must push 2 elements on the stack:
+	 *  - the name (classname without "Script") of the object (OT_STRING)
+	 *  - the data for the object (any supported types)
+	 * @return True iff saving this type is supported.
+	 */
+	virtual bool SaveObject(HSQUIRRELVM) { return false; }
+
+	/**
+	 * Load this object.
+	 * The data for the object must be pushed on the stack before the call.
+	 * @return True iff loading this type is supported.
+	 */
+	virtual bool LoadObject(HSQUIRRELVM) { return false; }
+
 public:
 	/**
 	 * Store the latest result of a DoCommand per company.
