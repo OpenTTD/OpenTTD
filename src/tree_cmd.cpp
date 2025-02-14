@@ -246,7 +246,7 @@ static void CreateRandomStarShapedPolygon(int radius, std::span<Point> shape)
  * @param y Y coordinate relative to centre of shape.
  * @param v1 First vertex of triangle.
  * @param v2 Second vertex of triangle.
- * @param v3 Third vertic of triangle.
+ * @param v3 Third vertex of triangle.
  * @returns true if the given coordinates lie within a triangle.
  */
 static bool IsPointInTriangle(const int x, const int y, const Point &v1, const Point &v2, const Point &v3)
