@@ -197,7 +197,7 @@ bool Order::Equals(const Order &other) const
 uint16_t Order::MapOldOrder() const
 {
 	uint16_t order = this->GetType();
-	switch (this->type) {
+	switch (this->GetType()) {
 		case OT_GOTO_STATION:
 			if (this->GetUnloadType() & OUFB_UNLOAD) SetBit(order, 5);
 			if (this->GetLoadType() & OLFB_FULL_LOAD) SetBit(order, 6);
