@@ -240,14 +240,14 @@ static const double PHASE_DIVISOR = INT32_MAX / (M_PI * 2);  ///< Valid values f
  */
 std::array<Point, GROVE_RESOLUTION> CreateRandomStarShapedPolygon(const int radius)
 {
-	std::array<BlobHarmonic, GROVE_HARMONICS_COUNT> harmonics;
-
 	/* These values are ones i found in my testing that result in suitable-looking polygons that did not self-intersect and fit within a square of radius * radius dimensions. */
 
-	harmonics.at(0) = BlobHarmonic(radius / 2, Random() / PHASE_DIVISOR, 1);
-	harmonics.at(1) = BlobHarmonic(radius / 4, Random() / PHASE_DIVISOR, 2);
-	harmonics.at(2) = BlobHarmonic(radius / 8, Random() / PHASE_DIVISOR, 3);
-	harmonics.at(3) = BlobHarmonic(radius / 16, Random() / PHASE_DIVISOR, 4);
+	std::array<BlobHarmonic, GROVE_HARMONICS_COUNT> harmonics = {
+		BlobHarmonic(radius / 2, Random() / PHASE_DIVISOR, 1),
+		BlobHarmonic(radius / 4, Random() / PHASE_DIVISOR, 2),
+		BlobHarmonic(radius / 8, Random() / PHASE_DIVISOR, 3),
+		BlobHarmonic(radius / 16, Random() / PHASE_DIVISOR, 4),
+	};
 
 	return CreateStarShapedPolygon(radius, harmonics);
 }
@@ -260,6 +260,7 @@ std::array<Point, GROVE_RESOLUTION> CreateRandomStarShapedPolygon(const int radi
  * @param vertex0
  * @param vertex1
  * @param vertex2 the triangle to check against.
+ * @returns true if the given coordinates lie within a triangle.
  */
 bool IsPointInTriangle(const int x, const int y, Point vertex0, Point vertex1, Point vertex2)
 {
