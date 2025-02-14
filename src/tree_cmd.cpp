@@ -191,7 +191,7 @@ struct BlobHarmonic {
  * @param harmonics Harmonics data for the polygon.
  * @param shape Shape to fill with points.
  */
- static void CreateStarShapedPolygon(const int radius, std::span<const BlobHarmonic> harmonics, std::span<Point> shape)
+static void CreateStarShapedPolygon(const int radius, std::span<const BlobHarmonic> harmonics, std::span<Point> shape)
 {
 	float theta = 0;
 	float step = (M_PI * 2) / std::size(shape);
@@ -221,7 +221,7 @@ struct BlobHarmonic {
  * @param radius The maximum radius of the blob. May be smaller, but will not be larger.
  * @param[out] shape Shape to fill with polygon points.
  */
- static void CreateRandomStarShapedPolygon(int radius, std::span<Point> shape)
+static void CreateRandomStarShapedPolygon(int radius, std::span<Point> shape)
 {
 	/* Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range
 	 * from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random
@@ -268,7 +268,7 @@ static bool IsPointInTriangle(const int x, const int y, const Point &v1, const P
  * @param shape The shape to check against.
  * @returns true if the given coordinates lie within the shape.star shaped polygon.
  */
- static bool IsPointInStarShapedPolygon(int x, int y, std::span<Point> shape)
+static bool IsPointInStarShapedPolygon(int x, int y, std::span<Point> shape)
 {
 	for (auto it = std::begin(shape); it != std::end(shape); /* nothing */) {
 		const Point &v1 = *it;
