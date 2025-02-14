@@ -1444,8 +1444,8 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允許購買市
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一所公司購買了一個市鎮的專屬運輸權，其他公司在該市鎮的車站將在十二個月之內不會收到任何貨物與乘客
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一所公司購買了一個市鎮的專屬運輸權，其他公司在該市鎮的車站將在 12 分鐘之內不會收到任何貨物與乘客
 
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :容許資助市鎮建設：{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :容許公司出資供市鎮建造新樓房。
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允許資助市鎮建設：{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :允許公司提供資助給市鎮興建新房屋
 
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :允許挹注資金到地方道路重建：{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :容許公司出資供市鎮重建市內道路，以干擾市內的路面交通服務。
@@ -1987,8 +1987,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允許
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允許，可自訂市鎮道路配置
 
-STR_CONFIG_SETTING_HOUSE_PLACER                                 :設置一楝市鎮的樓房：{STRING}
-STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :啟用此設定允許玩家手動設置市鎮的樓房
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :在市鎮設置獨立房屋：{STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :啟用此選項以允許玩家在市鎮手動設置房屋
 ###length 3
 STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :禁止
 STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :允許
