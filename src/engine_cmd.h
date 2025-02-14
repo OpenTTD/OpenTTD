@@ -17,9 +17,9 @@ CommandCost CmdEngineCtrl(DoCommandFlags flags, EngineID engine_id, CompanyID co
 CommandCost CmdRenameEngine(DoCommandFlags flags, EngineID engine_id, const std::string &text);
 CommandCost CmdSetVehicleVisibility(DoCommandFlags flags, EngineID engine_id, bool hide);
 
-template <> struct CommandTraits<CMD_WANT_ENGINE_PREVIEW>    : DefaultCommandTraits<CMD_WANT_ENGINE_PREVIEW,    "CmdWantEnginePreview",    CmdWantEnginePreview,    {},         CMDT_VEHICLE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_WANT_ENGINE_PREVIEW>    : DefaultCommandTraits<CMD_WANT_ENGINE_PREVIEW,    "CmdWantEnginePreview",    CmdWantEnginePreview,    CommandFlags{}, CMDT_VEHICLE_MANAGEMENT> {};
 template <> struct CommandTraits<CMD_ENGINE_CTRL>            : DefaultCommandTraits<CMD_ENGINE_CTRL,            "CmdEngineCtrl",           CmdEngineCtrl,           CMD_DEITY,  CMDT_VEHICLE_MANAGEMENT> {};
 template <> struct CommandTraits<CMD_RENAME_ENGINE>          : DefaultCommandTraits<CMD_RENAME_ENGINE,          "CmdRenameEngine",         CmdRenameEngine,         CMD_SERVER, CMDT_OTHER_MANAGEMENT> {};
-template <> struct CommandTraits<CMD_SET_VEHICLE_VISIBILITY> : DefaultCommandTraits<CMD_SET_VEHICLE_VISIBILITY, "CmdSetVehicleVisibility", CmdSetVehicleVisibility, {},         CMDT_COMPANY_SETTING> {};
+template <> struct CommandTraits<CMD_SET_VEHICLE_VISIBILITY> : DefaultCommandTraits<CMD_SET_VEHICLE_VISIBILITY, "CmdSetVehicleVisibility", CmdSetVehicleVisibility, CommandFlags{}, CMDT_COMPANY_SETTING> {};
 
 #endif /* ENGINE_CMD_H */

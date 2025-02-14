@@ -23,11 +23,11 @@ CommandCost CmdRemoveFromRoadWaypoint(DoCommandFlags flags, TileIndex start, Til
 CommandCost CmdBuildBuoy(DoCommandFlags flags, TileIndex tile);
 CommandCost CmdRenameWaypoint(DoCommandFlags flags, StationID waypoint_id, const std::string &text);
 
-template <> struct CommandTraits<CMD_BUILD_RAIL_WAYPOINT>       : DefaultCommandTraits<CMD_BUILD_RAIL_WAYPOINT,       "CmdBuildRailWaypoint",      CmdBuildRailWaypoint,      {},       CMDT_LANDSCAPE_CONSTRUCTION> {};
-template <> struct CommandTraits<CMD_REMOVE_FROM_RAIL_WAYPOINT> : DefaultCommandTraits<CMD_REMOVE_FROM_RAIL_WAYPOINT, "CmdRemoveFromRailWaypoint", CmdRemoveFromRailWaypoint, {},       CMDT_LANDSCAPE_CONSTRUCTION> {};
-template <> struct CommandTraits<CMD_BUILD_ROAD_WAYPOINT>       : DefaultCommandTraits<CMD_BUILD_ROAD_WAYPOINT,       "CmdBuildRoadWaypoint",      CmdBuildRoadWaypoint,      {},       CMDT_LANDSCAPE_CONSTRUCTION> {};
-template <> struct CommandTraits<CMD_REMOVE_FROM_ROAD_WAYPOINT> : DefaultCommandTraits<CMD_REMOVE_FROM_ROAD_WAYPOINT, "CmdRemoveFromRoadWaypoint", CmdRemoveFromRoadWaypoint, {},       CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_RAIL_WAYPOINT>       : DefaultCommandTraits<CMD_BUILD_RAIL_WAYPOINT,       "CmdBuildRailWaypoint",      CmdBuildRailWaypoint,      CommandFlags{}, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_FROM_RAIL_WAYPOINT> : DefaultCommandTraits<CMD_REMOVE_FROM_RAIL_WAYPOINT, "CmdRemoveFromRailWaypoint", CmdRemoveFromRailWaypoint, CommandFlags{}, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_BUILD_ROAD_WAYPOINT>       : DefaultCommandTraits<CMD_BUILD_ROAD_WAYPOINT,       "CmdBuildRoadWaypoint",      CmdBuildRoadWaypoint,      CommandFlags{}, CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_REMOVE_FROM_ROAD_WAYPOINT> : DefaultCommandTraits<CMD_REMOVE_FROM_ROAD_WAYPOINT, "CmdRemoveFromRoadWaypoint", CmdRemoveFromRoadWaypoint, CommandFlags{}, CMDT_LANDSCAPE_CONSTRUCTION> {};
 template <> struct CommandTraits<CMD_BUILD_BUOY>                : DefaultCommandTraits<CMD_BUILD_BUOY,                "CmdBuildBuoy",              CmdBuildBuoy,              CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION> {};
-template <> struct CommandTraits<CMD_RENAME_WAYPOINT>           : DefaultCommandTraits<CMD_RENAME_WAYPOINT,           "CmdRenameWaypoint",         CmdRenameWaypoint,         {},       CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_RENAME_WAYPOINT>           : DefaultCommandTraits<CMD_RENAME_WAYPOINT,           "CmdRenameWaypoint",         CmdRenameWaypoint,         CommandFlags{}, CMDT_OTHER_MANAGEMENT> {};
 
 #endif /* WAYPOINT_CMD_H */

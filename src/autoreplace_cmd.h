@@ -18,7 +18,7 @@
 CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id);
 CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_engine_type, EngineID new_engine_type, bool when_old);
 
-template <> struct CommandTraits<CMD_AUTOREPLACE_VEHICLE> : DefaultCommandTraits<CMD_AUTOREPLACE_VEHICLE, "CmdAutoreplaceVehicle", CmdAutoreplaceVehicle, {},       CMDT_VEHICLE_MANAGEMENT> {};
-template <> struct CommandTraits<CMD_SET_AUTOREPLACE>     : DefaultCommandTraits<CMD_SET_AUTOREPLACE,     "CmdSetAutoReplace",     CmdSetAutoReplace,     {},       CMDT_VEHICLE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_AUTOREPLACE_VEHICLE> : DefaultCommandTraits<CMD_AUTOREPLACE_VEHICLE, "CmdAutoreplaceVehicle", CmdAutoreplaceVehicle, CommandFlags{}, CMDT_VEHICLE_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_SET_AUTOREPLACE>     : DefaultCommandTraits<CMD_SET_AUTOREPLACE,     "CmdSetAutoReplace",     CmdSetAutoReplace,     CommandFlags{}, CMDT_VEHICLE_MANAGEMENT> {};
 
 #endif /* AUTOREPLACE_CMD_H */

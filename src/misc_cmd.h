@@ -29,8 +29,8 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause);
 
 template <> struct CommandTraits<CMD_MONEY_CHEAT>          : DefaultCommandTraits<CMD_MONEY_CHEAT,          "CmdMoneyCheat",        CmdMoneyCheat,        CMD_OFFLINE,             CMDT_CHEAT> {};
 template <> struct CommandTraits<CMD_CHANGE_BANK_BALANCE>  : DefaultCommandTraits<CMD_CHANGE_BANK_BALANCE,  "CmdChangeBankBalance", CmdChangeBankBalance, CMD_DEITY,               CMDT_MONEY_MANAGEMENT> {};
-template <> struct CommandTraits<CMD_INCREASE_LOAN>        : DefaultCommandTraits<CMD_INCREASE_LOAN,        "CmdIncreaseLoan",      CmdIncreaseLoan,      {},                      CMDT_MONEY_MANAGEMENT> {};
-template <> struct CommandTraits<CMD_DECREASE_LOAN>        : DefaultCommandTraits<CMD_DECREASE_LOAN,        "CmdDecreaseLoan",      CmdDecreaseLoan,      {},                      CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_INCREASE_LOAN>        : DefaultCommandTraits<CMD_INCREASE_LOAN,        "CmdIncreaseLoan",      CmdIncreaseLoan,      CommandFlags{},          CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_DECREASE_LOAN>        : DefaultCommandTraits<CMD_DECREASE_LOAN,        "CmdDecreaseLoan",      CmdDecreaseLoan,      CommandFlags{},          CMDT_MONEY_MANAGEMENT> {};
 template <> struct CommandTraits<CMD_SET_COMPANY_MAX_LOAN> : DefaultCommandTraits<CMD_SET_COMPANY_MAX_LOAN, "CmdSetCompanyMaxLoan", CmdSetCompanyMaxLoan, CMD_DEITY,               CMDT_MONEY_MANAGEMENT> {};
 template <> struct CommandTraits<CMD_PAUSE>                : DefaultCommandTraits<CMD_PAUSE,                "CmdPause",             CmdPause,             CMD_SERVER | CMD_NO_EST, CMDT_SERVER_SETTING> {};
 

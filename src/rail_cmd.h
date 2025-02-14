@@ -33,7 +33,7 @@ template <> struct CommandTraits<CMD_REMOVE_SINGLE_RAIL>    : DefaultCommandTrai
 template <> struct CommandTraits<CMD_BUILD_TRAIN_DEPOT>     : DefaultCommandTraits<CMD_BUILD_TRAIN_DEPOT,     "CmdBuildTrainDepot",     CmdBuildTrainDepot,     CMD_AUTO | CMD_NO_WATER, CMDT_LANDSCAPE_CONSTRUCTION> {};
 template <> struct CommandTraits<CMD_BUILD_SINGLE_SIGNAL>   : DefaultCommandTraits<CMD_BUILD_SINGLE_SIGNAL,   "CmdBuildSingleSignal",   CmdBuildSingleSignal,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
 template <> struct CommandTraits<CMD_REMOVE_SINGLE_SIGNAL>  : DefaultCommandTraits<CMD_REMOVE_SINGLE_SIGNAL,  "CmdRemoveSingleSignal",  CmdRemoveSingleSignal,  CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
-template <> struct CommandTraits<CMD_CONVERT_RAIL>          : DefaultCommandTraits<CMD_CONVERT_RAIL,          "CmdConvertRail",         CmdConvertRail,         {},                      CMDT_LANDSCAPE_CONSTRUCTION> {};
+template <> struct CommandTraits<CMD_CONVERT_RAIL>          : DefaultCommandTraits<CMD_CONVERT_RAIL,          "CmdConvertRail",         CmdConvertRail,         CommandFlags{},          CMDT_LANDSCAPE_CONSTRUCTION> {};
 template <> struct CommandTraits<CMD_BUILD_SIGNAL_TRACK>    : DefaultCommandTraits<CMD_BUILD_SIGNAL_TRACK,    "CmdBuildSignalTrack",    CmdBuildSignalTrack,    CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
 template <> struct CommandTraits<CMD_REMOVE_SIGNAL_TRACK>   : DefaultCommandTraits<CMD_REMOVE_SIGNAL_TRACK,   "CmdRemoveSignalTrack",   CmdRemoveSignalTrack,   CMD_AUTO,                CMDT_LANDSCAPE_CONSTRUCTION> {};
 

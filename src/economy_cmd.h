@@ -15,6 +15,6 @@
 
 CommandCost CmdBuyCompany(DoCommandFlags flags, CompanyID target_company, bool hostile_takeover);
 
-template <> struct CommandTraits<CMD_BUY_COMPANY> : DefaultCommandTraits<CMD_BUY_COMPANY, "CmdBuyCompany", CmdBuyCompany, {},       CMDT_MONEY_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_BUY_COMPANY> : DefaultCommandTraits<CMD_BUY_COMPANY, "CmdBuyCompany", CmdBuyCompany, CommandFlags{}, CMDT_MONEY_MANAGEMENT> {};
 
 #endif /* ECONOMY_CMD_H */

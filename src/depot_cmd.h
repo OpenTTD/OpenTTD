@@ -15,7 +15,7 @@
 
 CommandCost CmdRenameDepot(DoCommandFlags flags, DepotID depot_id, const std::string &text);
 
-template <> struct CommandTraits<CMD_RENAME_DEPOT> : DefaultCommandTraits<CMD_RENAME_DEPOT, "CmdRenameDepot", CmdRenameDepot, {},       CMDT_OTHER_MANAGEMENT> {};
+template <> struct CommandTraits<CMD_RENAME_DEPOT> : DefaultCommandTraits<CMD_RENAME_DEPOT, "CmdRenameDepot", CmdRenameDepot, CommandFlags{}, CMDT_OTHER_MANAGEMENT> {};
 
 void CcCloneVehicle(Commands cmd, const CommandCost &result, VehicleID veh_id);
 
