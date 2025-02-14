@@ -32,6 +32,8 @@
 #include "table/clear_land.h"
 
 #include "safeguards.h"
+#include <array>
+#include <cstdint>
 
 /**
  * List of tree placer algorithm.
@@ -61,7 +63,7 @@ static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tr
 static const double PHASE_DIVISOR = INT32_MAX / (M_PI * 2);  ///< Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random value by the result.
 static const uint16_t GROVE_RADIUS = 16;                     ///< Maximum radius of tree groups.
 static const uint16_t GROVE_RESOLUTION = 16;                 ///< How many segments make up the tree group.
-
+static const uint16_t GROVE_HARMONICS_COUNT = 4;             ///< How many harmonics are used to generate the tree group.
 /**
  * Tests if a tile can be converted to MP_TREES
  * This is true for clear ground without farms or rocks.
@@ -193,18 +195,17 @@ struct BlobHarmonic
  * Creates a star-shaped[sic] polygon originating from (0, 0) as defined by the given harmonics.
  *
  * @param radius The maximum radius of the polygon. May be smaller, but will not be larger.
- * @param harmonics a std::vector of the harmonics data.
- * @param noOfSegments How many segments make up the polygon.
+ * @param harmonics Harmonics data for the polygon.
  */
-std::vector<Point> CreateStarShapedPolygon(const int radius, const std::vector<BlobHarmonic> harmonics, const int noOfSegments)
+std::array<Point, GROVE_RESOLUTION> CreateStarShapedPolygon(const int radius, const std::array<BlobHarmonic, GROVE_HARMONICS_COUNT> harmonics)
 {
-	std::vector<Point> result;
+	std::array<Point, GROVE_RESOLUTION> result;
 
 	float theta = 0;
-	auto step = (M_PI * 2) / noOfSegments; //tau best circle constant
+	auto step = (M_PI * 2) / GROVE_RESOLUTION; //tau best circle constant
 
 	//divide a circle into a number of equally spaced divisions
-	for(int i = 0; i < noOfSegments; ++i)
+	for(int i = 0; i < GROVE_RESOLUTION; ++i)
 	{
 		float deviation = 0;
 		//add up the values of each harmonic at this segment
@@ -219,7 +220,7 @@ std::vector<Point> CreateStarShapedPolygon(const int radius, const std::vector<B
 		Point vertex;
 		vertex.x = cos(theta) * adjustedRadius;
 		vertex.y = sin(theta) * adjustedRadius;
-		result.push_back(vertex);
+		result.at(i) = vertex;
 
 		//proceed to the next segment
 		theta += step;
@@ -234,18 +235,18 @@ std::vector<Point> CreateStarShapedPolygon(const int radius, const std::vector<B
  * @param radius The maximum radius of the blob. May be smaller, but will not be larger.
  * @param noOfSegments How many segments make up the blob.
  */
-std::vector<Point> CreateRandomStarShapedPolygon(const int radius, const int noOfSegments)
+std::array<Point, GROVE_RESOLUTION> CreateRandomStarShapedPolygon(const int radius, const int noOfSegments)
 {
-	std::vector<BlobHarmonic> harmonics;
+	std::array<BlobHarmonic, GROVE_HARMONICS_COUNT> harmonics;
 
 	// these values are ones i found in my testing that result in suitable-looking polygons that did not self-intersect and fit within a square of radius * radius dimensions.
 
-	harmonics.push_back(BlobHarmonic(radius / 2, Random() / PHASE_DIVISOR, 1));
-	harmonics.push_back(BlobHarmonic(radius / 4, Random() / PHASE_DIVISOR, 2));
-	harmonics.push_back(BlobHarmonic(radius / 8, Random() / PHASE_DIVISOR, 3));
-	harmonics.push_back(BlobHarmonic(radius / 16, Random() / PHASE_DIVISOR, 4));
+	harmonics.at(0) = BlobHarmonic(radius / 2, Random() / PHASE_DIVISOR, 1);
+	harmonics.at(1) = BlobHarmonic(radius / 4, Random() / PHASE_DIVISOR, 2);
+	harmonics.at(2) = BlobHarmonic(radius / 8, Random() / PHASE_DIVISOR, 3);
+	harmonics.at(3) = BlobHarmonic(radius / 16, Random() / PHASE_DIVISOR, 4);
 
-	return CreateStarShapedPolygon(radius, harmonics, noOfSegments);
+	return CreateStarShapedPolygon(radius, harmonics);
 }
 
 /**
@@ -281,7 +282,7 @@ bool IsPointInTriangle(const int x, const int y, Point vertex0, Point vertex1, P
  * @param y y.
  * @param polygon the polygon to check against, a std::vector of multiple Points.
  */
-bool IsPointInStarShapedPolygon(int x, int y, std::vector<Point> polygon)
+bool IsPointInStarShapedPolygon(int x, int y, std::array<Point, GROVE_RESOLUTION> polygon)
 {
 	for(int i = 0; i < polygon.size(); ++i)
 	{
@@ -305,7 +306,7 @@ static void PlaceTreeGroups(uint num_groups)
 	do {
 		TileIndex center_tile = RandomTile();
 
-		std::vector<Point> grove = CreateRandomStarShapedPolygon(GROVE_RADIUS, GROVE_RESOLUTION);
+		std::array<Point, GROVE_RESOLUTION> grove = CreateRandomStarShapedPolygon(GROVE_RADIUS, GROVE_RESOLUTION);
 
 		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
 			IncreaseGeneratingWorldProgress(GWP_TREE);
