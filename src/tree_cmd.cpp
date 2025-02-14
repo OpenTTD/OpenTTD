@@ -232,10 +232,11 @@ std::array<Point, GROVE_RESOLUTION> CreateStarShapedPolygon(const int radius, co
 static const double PHASE_DIVISOR = INT32_MAX / (M_PI * 2);  ///< Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random value by the result.
 
 /**
- * Creates a random star-shaped[sic] polygon originating from (0, 0).
+ * Creates a random star-shaped polygon originating from (0, 0).
  *
  * @param radius The maximum radius of the blob. May be smaller, but will not be larger.
  * @param noOfSegments How many segments make up the blob.
+ * @returns A star-shaped polygon.
  */
 std::array<Point, GROVE_RESOLUTION> CreateRandomStarShapedPolygon(const int radius)
 {
