@@ -23,6 +23,7 @@ struct ScriptAllocator;
 
 class Squirrel {
 	friend class ScriptAllocatorScope;
+	friend class ScriptInstance;
 
 private:
 	typedef void (SQPrintFunc)(bool error_msg, const std::string &message);

@@ -32,6 +32,7 @@ private:
 		SQSL_TABLE           = 0x03, ///< The following data is an table.
 		SQSL_BOOL            = 0x04, ///< The following data is a boolean.
 		SQSL_NULL            = 0x05, ///< A null variable.
+		SQSL_INSTANCE        = 0x06, ///< The following data is an instance.
 		SQSL_ARRAY_TABLE_END = 0xFF, ///< Marks the end of an array or table, no data follows.
 	};
 
