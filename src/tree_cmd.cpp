@@ -206,8 +206,7 @@ std::array<Point, GROVE_RESOLUTION> CreateStarShapedPolygon(const int radius, co
 	auto step = (M_PI * 2) / GROVE_RESOLUTION;
 
 	/* Divide a circle into a number of equally spaced divisions. */
-	for(int i = 0; i < GROVE_RESOLUTION; ++i)
-	{
+	for(int i = 0; i < GROVE_RESOLUTION; ++i) {
 		float deviation = 0;
 		/* Add up the values of each harmonic at this segment.*/
 		std::for_each(harmonics.begin(), harmonics.end(), [&deviation, theta](const BlobHarmonic &harmonic) {
@@ -215,12 +214,12 @@ std::array<Point, GROVE_RESOLUTION> CreateStarShapedPolygon(const int radius, co
 		});
 
 		/* Smooth out changes. */
-		auto adjustedRadius = (radius / 2.0) + (deviation / 2);
+		float adjusted_radius = (radius / 2.0) + (deviation / 2);
 
 		/* Add to the final polygon. */
 		Point vertex;
-		vertex.x = cos(theta) * adjustedRadius;
-		vertex.y = sin(theta) * adjustedRadius;
+		vertex.x = cos(theta) * adjusted_radius;
+		vertex.y = sin(theta) * adjusted_radius;
 		result.at(i) = vertex;
 
 		/* Proceed to the next segment. */
@@ -285,6 +284,7 @@ bool IsPointInTriangle(const int x, const int y, Point vertex0, Point vertex1, P
  * @param x x.
  * @param y y.
  * @param polygon the polygon to check against.
+ * @returns true if the given coordinates lie within a star shaped polygon.
  */
 bool IsPointInStarShapedPolygon(int x, int y, std::array<Point, GROVE_RESOLUTION> polygon)
 {
