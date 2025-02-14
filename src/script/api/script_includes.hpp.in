@@ -11,5 +11,9 @@ ${SQUIRREL_INCLUDES}
 
 void SQ${APIUC}_RegisterAll(Squirrel *engine)
 {
+	DefSQClass<ScriptObject, ScriptType::${APIUC}> SQ${APIUC}Object("${APIUC}Object");
+	SQ${APIUC}Object.PreRegister(engine);
+	SQ${APIUC}Object.PostRegister(engine);
+
 ${SQUIRREL_REGISTER}
 }
