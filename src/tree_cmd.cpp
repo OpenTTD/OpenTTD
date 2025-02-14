@@ -32,8 +32,6 @@
 #include "table/clear_land.h"
 
 #include "safeguards.h"
-#include <array>
-#include <cstdint>
 
 /**
  * List of tree placer algorithm.
