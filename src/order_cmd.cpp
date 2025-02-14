@@ -211,6 +211,12 @@ uint16_t Order::MapOldOrder() const
 			break;
 		case OT_LOADING:
 			if (this->GetLoadType() & OLFB_FULL_LOAD) SetBit(order, 6);
+			/* If both "no load" and "no unload" are set, return nothing order instead */
+			if ((this->GetLoadType() & OLFB_NO_LOAD) && (this->GetUnloadType() & OUFB_NO_UNLOAD)) {
+				order = OT_NOTHING;
+			}
+			break;
+		default:
 			break;
 	}
 	return order;
