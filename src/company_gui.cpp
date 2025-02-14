@@ -1203,10 +1203,6 @@ static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
 							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_MALE2), SetFill(1, 0), SetStringTip(STR_FACE_MALE_BUTTON, STR_FACE_MALE_TOOLTIP),
 							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_FEMALE2), SetFill(1, 0), SetStringTip(STR_FACE_FEMALE_BUTTON, STR_FACE_FEMALE_TOOLTIP),
 						EndContainer(),
-						NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_ETHNICITY_EUR), SetFill(1, 0), SetStringTip(STR_FACE_EUROPEAN, STR_FACE_EUROPEAN_TOOLTIP),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCMF_ETHNICITY_AFR), SetFill(1, 0), SetStringTip(STR_FACE_AFRICAN, STR_FACE_AFRICAN_TOOLTIP),
-						EndContainer(),
 						NWidget(NWID_VERTICAL),
 							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 								NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0),
@@ -1220,6 +1216,15 @@ static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
 							EndContainer(),
 						EndContainer(),
 						NWidget(NWID_VERTICAL),
+							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
+								NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_SKIN_COLOUR_TEXT), SetFill(1, 0),
+									SetStringTip(STR_FACE_SKIN_COLOUR), SetTextStyle(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+								NWidget(NWID_HORIZONTAL),
+									NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_SKIN_COLOUR_L), SetArrowWidgetTypeTip(AWV_DECREASE, STR_FACE_SKIN_COLOUR_TOOLTIP),
+									NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_SKIN_COLOUR), SetStringTip(STR_JUST_STRING1, STR_FACE_SKIN_COLOUR_TOOLTIP), SetTextStyle(TC_WHITE),
+									NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_SKIN_COLOUR_R), SetArrowWidgetTypeTip(AWV_INCREASE, STR_FACE_SKIN_COLOUR_TOOLTIP),
+								EndContainer(),
+							EndContainer(),
 							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 								NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAIR_TEXT), SetFill(1, 0),
 										SetStringTip(STR_FACE_HAIR), SetTextStyle(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
@@ -1463,6 +1468,7 @@ public:
 			case WID_SCMF_COLLAR:
 			case WID_SCMF_TIE_EARRING:
 			case WID_SCMF_GLASSES:
+			case WID_SCMF_SKIN_COLOUR:
 				size = this->number_dim;
 				break;
 		}
@@ -1475,11 +1481,6 @@ public:
 		this->SetWidgetsLoweredState( this->is_female, WID_SCMF_FEMALE, WID_SCMF_FEMALE2);
 
 		/* advanced company manager face selection window */
-
-		/* lower the non-selected ethnicity button */
-		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
-		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
-
 
 		/* Disable dynamically the widgets which CompanyManagerFaceVariable has less than 2 options
 		 * (or in other words you haven't any choice).
@@ -1587,6 +1588,10 @@ public:
 			case WID_SCMF_COLLAR:
 				this->SetFaceStringParameters(WID_SCMF_COLLAR,      GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,      this->ge), false);
 				break;
+
+			case WID_SCMF_SKIN_COLOUR:
+				this->SetFaceStringParameters(WID_SCMF_SKIN_COLOUR, GetCompanyManagerFaceBits(this->face, CMFV_ETHNICITY,   this->ge), false);
+				break;
 		}
 	}
 
@@ -1659,13 +1664,17 @@ public:
 				break;
 
 			/* Toggle ethnicity (european/african) button */
-			case WID_SCMF_ETHNICITY_EUR:
-			case WID_SCMF_ETHNICITY_AFR:
-				SetCompanyManagerFaceBits(this->face, CMFV_ETHNICITY, this->ge, widget - WID_SCMF_ETHNICITY_EUR);
+			case WID_SCMF_SKIN_COLOUR_L:
+			case WID_SCMF_SKIN_COLOUR:
+			case WID_SCMF_SKIN_COLOUR_R:
+			{
+				uint current_ethnicity = GetCompanyManagerFaceBits(this->face, CMFV_ETHNICITY, this->ge);
+				SetCompanyManagerFaceBits(this->face, CMFV_ETHNICITY, this->ge, !current_ethnicity);
 				ScaleAllCompanyManagerFaceBits(this->face);
 				this->UpdateData();
 				this->SetDirty();
 				break;
+			}
 
 			default:
 				/* Here all buttons from WID_SCMF_HAS_MOUSTACHE_EARRING to WID_SCMF_GLASSES_R are handled.

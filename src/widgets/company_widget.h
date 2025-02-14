@@ -98,7 +98,7 @@ enum SelectCompanyLiveryWidgets : WidgetID {
 /**
  * Widgets of the #SelectCompanyManagerFaceWindow class.
  * Do not change the order of the widgets from WID_SCMF_HAS_MOUSTACHE_EARRING to WID_SCMF_GLASSES_R,
- * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
+ * this order is needed for the OnClick event of SelectCompanyManagerFaceWindow().
  */
 enum SelectCompanyManagerFaceWidgets : WidgetID {
 	WID_SCMF_CAPTION,                    ///< Caption of window.
@@ -131,8 +131,7 @@ enum SelectCompanyManagerFaceWidgets : WidgetID {
 	WID_SCMF_CHIN_TEXT,                  ///< Text about chin.
 	WID_SCMF_JACKET_TEXT,                ///< Text about jacket.
 	WID_SCMF_COLLAR_TEXT,                ///< Text about collar.
-	WID_SCMF_ETHNICITY_EUR,              ///< Text about ethnicity european.
-	WID_SCMF_ETHNICITY_AFR,              ///< Text about ethnicity african.
+	WID_SCMF_SKIN_COLOUR_TEXT,           ///< Text about skin colour.
 	WID_SCMF_HAS_MOUSTACHE_EARRING,      ///< Has moustache or earring.
 	WID_SCMF_HAS_GLASSES,                ///< Has glasses.
 	WID_SCMF_EYECOLOUR_L,                ///< Eyecolour left.
@@ -165,6 +164,9 @@ enum SelectCompanyManagerFaceWidgets : WidgetID {
 	WID_SCMF_GLASSES_L,                  ///< Glasses left.
 	WID_SCMF_GLASSES,                    ///< Glasses.
 	WID_SCMF_GLASSES_R,                  ///< Glasses right.
+	WID_SCMF_SKIN_COLOUR_L,              ///< Skin colour left.
+	WID_SCMF_SKIN_COLOUR,                ///< Skin colour.
+	WID_SCMF_SKIN_COLOUR_R,              ///< Skin colour right.
 };
 
 /** Widgets of the #CompanyInfrastructureWindow class. */

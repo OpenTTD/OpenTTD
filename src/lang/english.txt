@@ -2347,13 +2347,11 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't
 STR_FACE_SAVE                                                   :{BLACK}Save
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Save favourite face
 STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favourite in the OpenTTD configuration file
-STR_FACE_EUROPEAN                                               :{BLACK}European
-STR_FACE_EUROPEAN_TOOLTIP                                       :{BLACK}Select European faces
-STR_FACE_AFRICAN                                                :{BLACK}African
-STR_FACE_AFRICAN_TOOLTIP                                        :{BLACK}Select African faces
 STR_FACE_YES                                                    :Yes
 STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Enable moustache or earring
+STR_FACE_SKIN_COLOUR                                            :Skin colour:
+STR_FACE_SKIN_COLOUR_TOOLTIP                                    :{BLACK}Change skin colour
 STR_FACE_HAIR                                                   :Hair:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Change hair
 STR_FACE_EYEBROWS                                               :Eyebrows:
