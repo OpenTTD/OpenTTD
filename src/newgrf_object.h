@@ -58,7 +58,7 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(ObjectClassID)
  */
 struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	/* 2 because of the "normal" and "buy" sprite stacks. */
-	GRFFilePropsBase<2> grf_prop; ///< Properties related the the grf file
+	FixedGRFFileProps<2> grf_prop; ///< Properties related the the grf file
 	AnimationInfo animation;      ///< Information about the animation.
 	StringID name;                ///< The name for this object.
 

@@ -113,7 +113,7 @@ HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town 
 	/* Tile must be valid and a house tile, unless not yet constructed in which case it may also be INVALID_TILE. */
 	assert((IsValidTile(tile) && (not_yet_constructed || IsTileType(tile, MP_HOUSE))) || (not_yet_constructed && tile == INVALID_TILE));
 
-	this->root_spritegroup = HouseSpec::Get(house_id)->grf_prop.spritegroup[0];
+	this->root_spritegroup = HouseSpec::Get(house_id)->grf_prop.GetSpriteGroup();
 }
 
 GrfSpecFeature HouseResolverObject::GetFeature() const
@@ -687,7 +687,7 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, uint8_t base_ra
 	HouseID hid = GetHouseType(tile);
 	HouseSpec *hs = HouseSpec::Get(hid);
 
-	if (hs->grf_prop.spritegroup[0] == nullptr) return;
+	if (hs->grf_prop.GetSpriteGroup() == nullptr) return;
 
 	HouseResolverObject object(hid, tile, Town::GetByTile(tile), CBID_RANDOM_TRIGGER);
 	object.waiting_triggers = GetHouseTriggers(tile) | trigger;

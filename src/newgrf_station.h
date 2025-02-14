@@ -125,7 +125,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 	 * Used for obtaining the sprite offset of custom sprites, and for
 	 * evaluating callbacks.
 	 */
-	GRFFilePropsBase<NUM_CARGO + 3> grf_prop;
+	VariableGRFFileProps grf_prop;
 	StringID name;             ///< Name of this station.
 
 	/**

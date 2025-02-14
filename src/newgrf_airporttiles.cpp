@@ -148,7 +148,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 		}
 	}
 	/* Not an 'old type' tile */
-	if (ats->grf_prop.spritegroup[0] != nullptr) { // tile has a spritegroup ?
+	if (ats->grf_prop.GetSpriteGroup() != nullptr) { // tile has a spritegroup ?
 		if (ats->grf_prop.grfid == cur_grfid) { // same airport, same grf ?
 			return ats->grf_prop.local_id;
 		} else {
@@ -218,7 +218,7 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 		tiles_scope(*this, ats, tile, st),
 		airport_scope(*this, tile, st, st != nullptr ? AirportSpec::Get(st->airport.type) : nullptr, st != nullptr ? st->airport.layout : 0)
 {
-	this->root_spritegroup = ats->grf_prop.spritegroup[0];
+	this->root_spritegroup = ats->grf_prop.GetSpriteGroup();
 }
 
 GrfSpecFeature AirportTileResolverObject::GetFeature() const

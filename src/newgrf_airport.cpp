@@ -246,7 +246,7 @@ AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, const 
 		CallbackID callback, uint32_t param1, uint32_t param2)
 	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, spec, layout)
 {
-	this->root_spritegroup = spec->grf_prop.spritegroup[0];
+	this->root_spritegroup = spec->grf_prop.GetSpriteGroup();
 }
 
 SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)

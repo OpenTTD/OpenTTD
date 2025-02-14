@@ -78,7 +78,7 @@ uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_g
 		}
 	}
 	/* Not an 'old type' tile */
-	if (indtsp->grf_prop.spritegroup[0] != nullptr) { // tile has a spritegroup ?
+	if (indtsp->grf_prop.GetSpriteGroup() != nullptr) { // tile has a spritegroup ?
 		if (indtsp->grf_prop.grfid == cur_grfid) { // same industry, same grf ?
 			return indtsp->grf_prop.local_id;
 		} else {
@@ -476,7 +476,7 @@ IndustriesResolverObject::IndustriesResolverObject(TileIndex tile, Industry *ind
 	: ResolverObject(GetGrffile(type), callback, callback_param1, callback_param2),
 	industries_scope(*this, tile, indus, type, random_bits)
 {
-	this->root_spritegroup = GetIndustrySpec(type)->grf_prop.spritegroup[0];
+	this->root_spritegroup = GetIndustrySpec(type)->grf_prop.GetSpriteGroup();
 }
 
 /**
