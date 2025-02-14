@@ -261,12 +261,12 @@ std::array<Point, GROVE_RESOLUTION> CreateRandomStarShapedPolygon(const int radi
  * @param vertex2 the triangle to check against.
  * @returns true if the given coordinates lie within a triangle.
  */
-bool IsPointInTriangle(const int x, const int y, Point vertex0, Point vertex1, Point vertex2)
+bool IsPointInTriangle(const int x, const int y, const Point & vertex0, const Point & vertex1, const Point & vertex2)
 {
 	const int s = ((vertex0.x - vertex2.x) * (y - vertex2.y)) - ((vertex0.y - vertex2.y) * (x - vertex2.x));
 	const int t = ((vertex1.x - vertex0.x) * (y - vertex0.y)) - ((vertex1.y - vertex0.y) * (x - vertex0.x));
 
-	if ((s < 0) != (t < 0) && (s != 0 && t != 0))
+	if (s < 0 != t < 0 && s != 0 && t != 0)
 	{
 		return false;
 	}
@@ -288,8 +288,7 @@ bool IsPointInTriangle(const int x, const int y, Point vertex0, Point vertex1, P
  */
 bool IsPointInStarShapedPolygon(int x, int y, std::array<Point, GROVE_RESOLUTION> polygon)
 {
-	for(int i = 0; i < polygon.size(); ++i)
-	{
+	for (int i = 0; i < polygon.size(); ++i) {
 		if (IsPointInTriangle(x, y, polygon.at(i), polygon.at((i + 1) % polygon.size()), {0, 0}))
 		{
 			return true;
