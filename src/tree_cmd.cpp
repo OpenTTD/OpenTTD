@@ -7,7 +7,6 @@
 
 /** @file tree_cmd.cpp Handling of tree tiles. */
 
-#include "core/geometry_type.hpp"
 #include "stdafx.h"
 #include "clear_map.h"
 #include "landscape.h"
@@ -21,6 +20,7 @@
 #include "sound_func.h"
 #include "water.h"
 #include "company_base.h"
+#include "core/geometry_type.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
 #include "timer/timer_game_tick.h"
@@ -60,10 +60,7 @@ uint8_t _trees_tick_ctr;
 static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
 static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
-static const double PHASE_DIVISOR = INT32_MAX / (M_PI * 2);  ///< Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random value by the result.
-static const uint16_t GROVE_RADIUS = 16;                     ///< Maximum radius of tree groups.
-static const uint16_t GROVE_RESOLUTION = 16;                 ///< How many segments make up the tree group.
-static const uint16_t GROVE_HARMONICS_COUNT = 4;             ///< How many harmonics are used to generate the tree group.
+
 /**
  * Tests if a tile can be converted to MP_TREES
  * This is true for clear ground without farms or rocks.
@@ -184,6 +181,9 @@ static void PlaceTree(TileIndex tile, uint32_t r)
 	}
 }
 
+static const uint16_t GROVE_RESOLUTION = 16;                 ///< How many segments make up the tree group.
+static const uint16_t GROVE_HARMONICS_COUNT = 4;             ///< How many harmonics are used to generate the tree group.
+
 struct BlobHarmonic
 {
 	int amplitude;
@@ -192,7 +192,7 @@ struct BlobHarmonic
 };
 
 /**
- * Creates a star-shaped[sic] polygon originating from (0, 0) as defined by the given harmonics.
+ * Creates a star-shaped polygon originating from (0, 0) as defined by the given harmonics.
  *
  * @param radius The maximum radius of the polygon. May be smaller, but will not be larger.
  * @param harmonics Harmonics data for the polygon.
@@ -228,6 +228,8 @@ std::array<Point, GROVE_RESOLUTION> CreateStarShapedPolygon(const int radius, co
 
 	return result;
 }
+
+static const double PHASE_DIVISOR = INT32_MAX / (M_PI * 2);  ///< Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random value by the result.
 
 /**
  * Creates a random star-shaped[sic] polygon originating from (0, 0).
@@ -294,6 +296,8 @@ bool IsPointInStarShapedPolygon(int x, int y, std::array<Point, GROVE_RESOLUTION
 
 	return false;
 }
+
+static const uint16_t GROVE_RADIUS = 16;                     ///< Maximum radius of tree groups.
 
 /**
  * Creates a number of tree groups.
