@@ -5810,7 +5810,7 @@ static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 				continue;
 			}
 
-			statspec->grf_prop.spritegroup[ctype] = _cur.spritegroups[groupid];
+			statspec->grf_prop.SetSpriteGroup(ctype, _cur.spritegroups[groupid]);
 		}
 	}
 
@@ -5830,7 +5830,7 @@ static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		statspec->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT] = _cur.spritegroups[groupid];
+		statspec->grf_prop.SetSpriteGroup(SpriteGroupCargo::SG_DEFAULT, _cur.spritegroups[groupid]);
 		statspec->grf_prop.grfid = _cur.grffile->grfid;
 		statspec->grf_prop.grffile = _cur.grffile;
 		statspec->grf_prop.local_id = station;
@@ -5867,7 +5867,7 @@ static void TownHouseMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		hs->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
+		hs->grf_prop.SetSpriteGroup(0, _cur.spritegroups[groupid]);
 	}
 }
 
@@ -5899,7 +5899,7 @@ static void IndustryMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		indsp->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
+		indsp->grf_prop.SetSpriteGroup(0, _cur.spritegroups[groupid]);
 	}
 }
 
@@ -5931,7 +5931,7 @@ static void IndustrytileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		indtsp->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
+		indtsp->grf_prop.SetSpriteGroup(0, _cur.spritegroups[groupid]);
 	}
 }
 
@@ -5995,7 +5995,7 @@ static void ObjectMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 				continue;
 			}
 
-			spec->grf_prop.spritegroup[OBJECT_SPRITE_GROUP_PURCHASE] = _cur.spritegroups[groupid];
+			spec->grf_prop.SetSpriteGroup(OBJECT_SPRITE_GROUP_PURCHASE, _cur.spritegroups[groupid]);
 		}
 	}
 
@@ -6015,7 +6015,7 @@ static void ObjectMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		spec->grf_prop.spritegroup[OBJECT_SPRITE_GROUP_DEFAULT] = _cur.spritegroups[groupid];
+		spec->grf_prop.SetSpriteGroup(OBJECT_SPRITE_GROUP_DEFAULT, _cur.spritegroups[groupid]);
 		spec->grf_prop.grfid = _cur.grffile->grfid;
 		spec->grf_prop.grffile = _cur.grffile;
 		spec->grf_prop.local_id = object;
@@ -6116,7 +6116,7 @@ static void AirportMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		as->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
+		as->grf_prop.SetSpriteGroup(0, _cur.spritegroups[groupid]);
 	}
 }
 
@@ -6148,7 +6148,7 @@ static void AirportTileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		airtsp->grf_prop.spritegroup[0] = _cur.spritegroups[groupid];
+		airtsp->grf_prop.SetSpriteGroup(0, _cur.spritegroups[groupid]);
 	}
 }
 
@@ -6182,7 +6182,7 @@ static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 				continue;
 			}
 
-			roadstopspec->grf_prop.spritegroup[ctype] = _cur.spritegroups[groupid];
+			roadstopspec->grf_prop.SetSpriteGroup(ctype, _cur.spritegroups[groupid]);
 		}
 	}
 
@@ -6202,7 +6202,7 @@ static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		roadstopspec->grf_prop.spritegroup[SpriteGroupCargo::SG_DEFAULT] = _cur.spritegroups[groupid];
+		roadstopspec->grf_prop.SetSpriteGroup(SpriteGroupCargo::SG_DEFAULT, _cur.spritegroups[groupid]);
 		roadstopspec->grf_prop.grfid = _cur.grffile->grfid;
 		roadstopspec->grf_prop.grffile = _cur.grffile;
 		roadstopspec->grf_prop.local_id = roadstop;

@@ -80,7 +80,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 * Used for obtaining the sprite offset of custom sprites, and for
 	 * evaluating callbacks.
 	 */
-	GRFFilePropsBase<NUM_CARGO + 2> grf_prop;
+	VariableGRFFileProps grf_prop;
 	std::vector<WagonOverride> overrides;
 
 	Engine() {}

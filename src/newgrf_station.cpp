@@ -582,25 +582,32 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	if (this->station_scope.st == nullptr) {
 		/* No station, so we are in a purchase list */
 		ctype = SpriteGroupCargo::SG_PURCHASE;
+		this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
 	} else if (Station::IsExpected(this->station_scope.st)) {
 		const Station *st = Station::From(this->station_scope.st);
 		/* Pick the first cargo that we have waiting */
-		for (const CargoSpec *cs : CargoSpec::Iterate()) {
-			if (this->station_scope.statspec->grf_prop.spritegroup[cs->Index()] != nullptr &&
-					st->goods[cs->Index()].HasData() && st->goods[cs->Index()].GetData().cargo.TotalCount() > 0) {
-				ctype = cs->Index();
+		for (const auto &[cargo, spritegroup] : statspec->grf_prop.spritegroups) {
+			if (cargo < NUM_CARGO && st->goods[cargo].HasData() && st->goods[cargo].GetData().cargo.TotalCount() > 0) {
+				ctype = cargo;
+				this->root_spritegroup = spritegroup;
 				break;
 			}
 		}
+
+		if (this->root_spritegroup == nullptr) {
+			ctype = SpriteGroupCargo::SG_DEFAULT_NA;
+			this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
+		}
 	}
 
-	if (this->station_scope.statspec->grf_prop.spritegroup[ctype] == nullptr) {
+
+	if (this->root_spritegroup == nullptr) {
 		ctype = SpriteGroupCargo::SG_DEFAULT;
+		this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
 	}
 
 	/* Remember the cargo type we've picked */
 	this->station_scope.cargo_type = ctype;
-	this->root_spritegroup = this->station_scope.statspec->grf_prop.spritegroup[this->station_scope.cargo_type];
 }
 
 /**

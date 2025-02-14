@@ -756,3 +756,30 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resol
 		if (regs != nullptr) regs++;
 	}
 }
+
+/**
+ * Get the SpriteGroup at the specified index.
+ * @param index Index to get.
+ * @returns SpriteGroup at index, or nullptr if not present.
+ */
+const SpriteGroup *VariableGRFFileProps::GetSpriteGroup(size_t index) const
+{
+	auto it = std::ranges::lower_bound(this->spritegroups, index, std::less{}, &CargoSpriteGroup::first);
+	if (it == std::end(this->spritegroups) || it->first != index) return nullptr;
+	return it->second;
+}
+
+/**
+ * Set the SpriteGroup at the specified index.
+ * @param index Index to set.
+ * @param spritegroup SpriteGroup to set.
+ */
+void VariableGRFFileProps::SetSpriteGroup(size_t index, const SpriteGroup *spritegroup)
+{
+	auto it = std::ranges::lower_bound(this->spritegroups, index, std::less{}, &CargoSpriteGroup::first);
+	if (it == std::end(this->spritegroups) || it->first != index) {
+		this->spritegroups.emplace(it, index, spritegroup);
+	} else {
+		it->second = spritegroup;
+	}
+}

@@ -140,7 +140,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	 * Used for obtaining the sprite offset of custom sprites, and for
 	 * evaluating callbacks.
 	 */
-	GRFFilePropsBase<NUM_CARGO + 3> grf_prop;
+	VariableGRFFileProps grf_prop;
 	StringID name;              ///< Name of this stop
 
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;

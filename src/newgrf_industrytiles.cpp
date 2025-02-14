@@ -142,7 +142,7 @@ IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileInde
 	ind_scope(*this, tile, indus, indus->type),
 	gfx(gfx)
 {
-	this->root_spritegroup = GetIndustryTileSpec(gfx)->grf_prop.spritegroup[0];
+	this->root_spritegroup = GetIndustryTileSpec(gfx)->grf_prop.GetSpriteGroup();
 }
 
 GrfSpecFeature IndustryTileResolverObject::GetFeature() const
@@ -314,7 +314,7 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
-	if (itspec->grf_prop.spritegroup[0] == nullptr) return;
+	if (itspec->grf_prop.GetSpriteGroup() == nullptr) return;
 
 	IndustryTileResolverObject object(gfx, tile, ind, CBID_RANDOM_TRIGGER);
 	object.waiting_triggers = GetIndustryTriggers(tile) | trigger;
