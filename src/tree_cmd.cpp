@@ -198,7 +198,7 @@ struct BlobHarmonic
  * @param harmonics Harmonics data for the polygon.
  * @returns A star-shaped polygon.
  */
-std::array<Point, GROVE_RESOLUTION> CreateStarShapedPolygon(const int radius, const std::array<BlobHarmonic, GROVE_HARMONICS_COUNT> harmonics)
+std::array<Point, GROVE_RESOLUTION> CreateStarShapedPolygon(const int radius, const std::span<const BlobHarmonic> harmonics)
 {
 	std::array<Point, GROVE_RESOLUTION> result;
 
