@@ -666,7 +666,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlags flags, bool wago
 			 * Note: The vehicle attach callback is disabled here :) */
 			if (!flags.Test(DoCommandFlag::Execute)) {
 				/* Separate the head, so we can reattach the old vehicles */
-				Train *second = Train::From(old_head)->GetNextUnit();
+				second = Train::From(old_head)->GetNextUnit();
 				if (second != nullptr) CmdMoveVehicle(second, nullptr, {DoCommandFlag::Execute, DoCommandFlag::AutoReplace}, true);
 
 				assert(Train::From(old_head)->GetNextUnit() == nullptr);

@@ -259,8 +259,7 @@ std::optional<FileHandle> FioFOpenFile(const std::string &filename, const char *
 		/* Resolve ".." */
 		std::istringstream ss(resolved_name);
 		std::vector<std::string> tokens;
-		std::string token;
-		while (std::getline(ss, token, PATHSEPCHAR)) {
+		for (std::string token; std::getline(ss, token, PATHSEPCHAR); /* nothing */) {
 			if (token == "..") {
 				if (tokens.size() < 2) return std::nullopt;
 				tokens.pop_back();
