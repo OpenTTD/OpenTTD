@@ -192,7 +192,7 @@ struct BlobHarmonic {
  * @param harmonics Harmonics data for the polygon.
  * @param[out] shape Shape to fill with points.
  */
-static void CreateStarShapedPolygon(const int radius, std::span<const BlobHarmonic> harmonics, std::span<Point> shape)
+static void CreateStarShapedPolygon(int radius, std::span<const BlobHarmonic> harmonics, std::span<Point> shape)
 {
 	float theta = 0;
 	float step = (M_PI * 2) / std::size(shape);
@@ -251,7 +251,7 @@ static void CreateRandomStarShapedPolygon(int radius, std::span<Point> shape)
  * @param v3 Third vertex of triangle.
  * @returns true if the given coordinates lie within a triangle.
  */
-static bool IsPointInTriangle(const int x, const int y, const Point &v1, const Point &v2, const Point &v3)
+static bool IsPointInTriangle(int x, int y, const Point &v1, const Point &v2, const Point &v3)
 {
 	const int s = ((v1.x - v3.x) * (y - v3.y)) - ((v1.y - v3.y) * (x - v3.x));
 	const int t = ((v2.x - v1.x) * (y - v1.y)) - ((v2.y - v1.y) * (x - v1.x));
