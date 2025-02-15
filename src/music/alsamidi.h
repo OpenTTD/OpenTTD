@@ -12,9 +12,11 @@
 
 #include "music_driver.hpp"
 #include <alsa/asoundlib.h>
-#include "midifile/MidiFile.h"
+#include "../3rdparty/midifile/MidiFile.h"
 #include "../../thread.h"
 #include <atomic>
+
+const int POLL_TIMEOUT = 100;
 
 /** The midi player for ALSA on Linux. */
 class MusicDriver_AlsaMidi : public MusicDriver {
@@ -39,16 +41,19 @@ public:
 	bool Stopping();
 	void WaitForFinish(const unsigned int last_tick);
 	void StopQueue();
+	void VolumeAdjust (const uint8_t new_vol);
+	void SetupPolling();
 
 private:
 	snd_seq_t* seq;
 	int queue_id;
 	int seq_port;
 	int dev_port;
+	std::vector<struct pollfd> poll_fds;
 	std::thread _queue_thread;
 	std::atomic<bool> playing{false};
 	std::atomic<bool> stopping{false};
-
+	std::atomic<uint8_t> current_vol{127};
 	void SetPPQ(const int ppq);
 	void PushEvent(snd_seq_event_t seqev);
 };

@@ -5,14 +5,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file alsamidi.cpp Support for ALSA Linux midi. */
+/** @file alsamidi.cpp Support for ALSA Linux MIDI. */
 
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "alsamidi.h"
 #include "../base_media_base.h"
 #include "midifile.hpp"
-#include <alsa/asoundlib.h>
 #include "../debug.h"
 #include "midi.h"
 #include <chrono>
@@ -20,7 +19,7 @@
 
 #include "../safeguards.h"
 
-/** Factory for ALSA midi player. */
+/** Factory for ALSA MIDI player. */
 static FMusicDriver_AlsaMidi iFMusicDriver_AlsaMidi;
 
 std::optional<std::string_view> MusicDriver_AlsaMidi::Start(const StringList &parm)
@@ -56,12 +55,14 @@ std::optional<std::string_view> MusicDriver_AlsaMidi::Start(const StringList &pa
 	// Set a slightly larger event output buffer than normal
 	snd_seq_set_client_pool_output(this->seq, 1000);
 	snd_seq_set_client_pool_output_room(this->seq, 1000);
+	snd_seq_set_output_buffer_size(this->seq, 1000);
 
-	// Turn on nonblocking more
+	// Turn on nonblocking mode
 	snd_seq_nonblock(this->seq, 1);
 
 	snd_seq_addr_t sender, dest;
 
+	// Setup event port
 	sender.client = snd_seq_client_id(this->seq);
 	sender.port = this->seq_port;
 
@@ -111,12 +112,13 @@ void MusicDriver_AlsaMidi::PlaySong(const MusicSongInfo &song)
 		}
 	}
 
-	// Sort (should be sorted already, and WriteSMF only creates single-track MIDIs anyway)
+	// Sort
 	midifile.sortTracks();
 	// Convert MIDI ticks to absolute seconds
 	midifile.doTimeAnalysis();
 
-	//Merge > 1 tracks into single track for easier queueing.
+	// Merge > 1 tracks into single track for easier queueing.
+	// (WriteSMF only creates single-track MIDIs, other packs may be multitrack)
 	midifile.joinTracks();
 
 	if (this->playing.load() == true) {
@@ -126,10 +128,12 @@ void MusicDriver_AlsaMidi::PlaySong(const MusicSongInfo &song)
 	Debug(driver, 2, "ALSA MIDI: starting playback of {}", song.songname);
 	Debug(driver, 2, "ALSA MIDI: SMF filename {}", filename);
 
-	// ALSA does not allow setting PPQ on started queues, so do this first
-	// Tempo may be adjusted later, on a started queue.
+	// ALSA does not allow setting PPQ on started queues, so do this first.
+	// Tempo may be adjusted later, on a started/running queue.
 	int ppq = midifile.getTPQ();
 	this->SetPPQ(ppq);
+
+	this->SetupPolling();
 
 	snd_seq_start_queue(this->seq, this->queue_id, nullptr);
 	snd_seq_drain_output(this->seq);
@@ -137,6 +141,13 @@ void MusicDriver_AlsaMidi::PlaySong(const MusicSongInfo &song)
 	this->playing.store(true);
 
 	StartNewThread(&this->_queue_thread, "ottd:alsamidi", &StartQueue, this, std::move(midifile));
+}
+
+void MusicDriver_AlsaMidi::SetupPolling()
+{
+	int poll_fd_cnt = snd_seq_poll_descriptors_count(this->seq, POLLOUT);
+	this->poll_fds.resize(poll_fd_cnt);
+	snd_seq_poll_descriptors(this->seq, this->poll_fds.data(), poll_fd_cnt, POLLOUT);
 }
 
 /**
@@ -148,9 +159,8 @@ void MusicDriver_AlsaMidi::PlaySong(const MusicSongInfo &song)
  * send a GM RESET, and terminate), or it has enqueued all events in the MIDI file,
  * and waited for the queue to finish processing them all.
  *
- *
- * @param drv pointer to `this` instance of the class
- * @param midifile the previously-loaded, sorted, and time-corrected STD MIDI file.
+ * @param drv Pointer to `this` instance of the class
+ * @param midifile The previously-loaded, sorted, and time-corrected STD MIDI file.
  *
  * @see Stopping()
  * @see StopSong()
@@ -161,12 +171,14 @@ static void StartQueue(MusicDriver_AlsaMidi *drv, const smf::MidiFile midifile)
 	Debug(driver, 2, "ALSA MIDI: queue thread started");
 
 	unsigned int last_tick;
+
 	// Push all events for all tracks to the sequencer queue
 	for (int track = 0; track < midifile.getNumTracks(); track++) {
 
 		std::vector<uint8_t> sysex_buffer;
 
 		for (int event = 0; event < midifile[track].size(); event++) {
+
 			auto& ev = midifile[track][event];
 
 			last_tick = static_cast<unsigned int>(ev.tick);
@@ -243,6 +255,9 @@ void MusicDriver_AlsaMidi::StopQueue()
 	Debug(driver, 2, "ALSA MIDI: stopping current queue!");
 	snd_seq_stop_queue(this->seq, this->queue_id, nullptr);
 	snd_seq_drain_output(this->seq);
+
+	this->poll_fds.clear();
+
 	this->playing.store(false);
 }
 
@@ -279,7 +294,6 @@ void MusicDriver_AlsaMidi::SendSysexEvent(const std::vector<uint8_t> data)
 		snd_seq_ev_clear(&seqev);
 		snd_seq_ev_set_source(&seqev, this->seq_port);
 		snd_seq_ev_set_subs(&seqev);
-		snd_seq_ev_set_direct(&seqev);
 
 		std::vector<uint8_t> complete_message;
 		complete_message.reserve(data.size() + 2);
@@ -312,6 +326,7 @@ void MusicDriver_AlsaMidi::SendEvent(const smf::MidiEvent& ev)
 		snd_seq_ev_clear(&seqev);
 
 		unsigned int ticks = static_cast<unsigned int>(ev.tick);
+
 
 		if (ev.isNoteOn()) {
 			snd_seq_ev_set_noteon(&seqev, ev.getChannel(), ev[1], ev[2]);
@@ -403,24 +418,17 @@ void MusicDriver_AlsaMidi::WaitForFinish(const unsigned int last_event_tick)
 /**
  * Pushes an ALSA sequencer event onto the ALSA sequencer queue.
  *
- * If the push fails because the output buffer is full, drains the buffer
- * and retries.
+ * If the push fails because the output buffer is full, uses `poll()`
+ * to wait until there's space/device is ready.
  *
  * @param seqev ALSA sequencer event to push.
  */
 void MusicDriver_AlsaMidi::PushEvent(snd_seq_event_t seqev)
 {
-		int res = 0;
-		do {
-			res = snd_seq_event_output(this->seq, &seqev);
-			if (res == -EAGAIN) {
-				Debug(driver, 2, "ALSA MIDI: output queue full, draining and retrying");
-				std::this_thread::sleep_for(std::chrono::milliseconds(10));
-			} else if (res < 0) {
-				Debug(driver, 2, "ALSA MIDI: unknow error sending event to output queue! {}", res);
-			}
-			snd_seq_drain_output(this->seq);
-		} while(res == -EAGAIN);
+	// Wait for space in the queue via `poll()`
+	while (snd_seq_event_output_direct(this->seq, &seqev) < 0) {
+		poll(this->poll_fds.data(), this->poll_fds.size(), 100); // 100ms timeout
+	}
 }
 
 /**
@@ -438,6 +446,7 @@ void MusicDriver_AlsaMidi::StopSong()
 	Debug(driver, 2, "ALSA MIDI: stopping current queue");
 
 	this->stopping.store(false);
+
 	Debug(driver, 2, "ALSA MIDI: stopped song");
 }
 
@@ -451,9 +460,33 @@ bool MusicDriver_AlsaMidi::IsSongPlaying()
 	return this->playing.load();
 }
 
-void MusicDriver_AlsaMidi::SetVolume([[maybe_unused]]uint8_t vol)
+void MusicDriver_AlsaMidi::SetVolume(uint8_t vol)
 {
-	// TODO no-op, output device has its own volume control
+	Debug(driver, 2, "ALSA MIDI: got volume level update {}", vol);
+	if (vol != 127) {
+			vol = 50;
+	}
+	if (vol != this->current_vol.load()) {
+		this->VolumeAdjust(vol);
+	}
+}
+
+
+void MusicDriver_AlsaMidi::VolumeAdjust(uint8_t new_vol)
+{
+	Debug(driver, 2, "ALSA MIDI: setting volume for all channels to {}", new_vol);
+
+	for (int channel = 0; channel < 16; channel++) {
+		snd_seq_event_t vol_ev;
+		snd_seq_ev_clear(&vol_ev);
+		snd_seq_ev_set_controller(&vol_ev, channel, MIDI_CTL_MSB_MAIN_VOLUME, new_vol);
+		snd_seq_ev_set_source(&vol_ev, this->seq_port);
+		snd_seq_ev_set_subs(&vol_ev);
+		snd_seq_ev_set_direct(&vol_ev);
+		this->PushEvent(vol_ev);
+	}
+
+	this->current_vol.store(new_vol);
 }
 
 /**
