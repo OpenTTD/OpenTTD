@@ -141,6 +141,10 @@ enum DeterministicSpriteGroupAdjustOperation : uint8_t {
 	DSGA_OP_SHL,  ///< a << b
 	DSGA_OP_SHR,  ///< (unsigned) a >> b
 	DSGA_OP_SAR,  ///< (signed) a >> b
+	DSGA_OP_ANDN, ///< x & ~y
+	DSGA_OP_NAND, ///< ~(x & y)
+	DSGA_OP_NOR,  ///< ~(x | y)
+	DSGA_OP_XNOR, ///< ~(x ^ y)
 };
 
 

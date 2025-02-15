@@ -175,6 +175,10 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver
 		case DSGA_OP_SHL:  return (uint32_t)(U)last_value << ((U)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
 		case DSGA_OP_SHR:  return (uint32_t)(U)last_value >> ((U)value & 0x1F);
 		case DSGA_OP_SAR:  return (int32_t)(S)last_value >> ((U)value & 0x1F);
+		case DSGA_OP_ANDN: return last_value & ~value;
+		case DSGA_OP_NAND: return ~(last_value & value);
+		case DSGA_OP_NOR:  return ~(last_value | value);
+		case DSGA_OP_XNOR: return ~(last_value ^ value);
 		default:           return value;
 	}
 }
