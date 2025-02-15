@@ -288,9 +288,6 @@ void MusicDriver_AlsaMidi::SendSysexEvent(const std::vector<uint8_t> data)
 		complete_message.push_back(0xF7);  // End of SysEx
 		snd_seq_ev_set_sysex(&seqev, complete_message.size(), complete_message.data());
 
-		snd_seq_ev_set_source(&seqev, this->seq_port);
-		snd_seq_ev_set_subs(&seqev);
-
 		// TODO this assumes all SYSEX msgs are immediate, and not queued with a tick
 		// this is correct for SYSEX GM RESET (all this is currently used for) but
 		// might not be globally correct.
