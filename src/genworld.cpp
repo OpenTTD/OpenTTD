@@ -57,13 +57,16 @@ void StartupDisasters();
 
 void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings);
 
-/**
- * Please only use this variable in genworld.h and genworld.cpp and
- *  nowhere else. For speed improvements we need it to be global, but
- *  in no way the meaning of it is to use it anywhere else besides
- *  in the genworld.h and genworld.cpp!
- */
-GenWorldInfo _gw;
+/** Properties of current genworld process */
+struct GenWorldInfo {
+	static inline bool abort;            ///< Whether to abort the thread ASAP
+	static inline GenWorldMode mode;     ///< What mode are we making a world in
+	static inline CompanyID lc;          ///< The local_company before generating
+	static inline uint size_x;           ///< X-size of the map
+	static inline uint size_y;           ///< Y-size of the map
+	static inline GWDoneProc *proc;      ///< Proc that is called when done (can be nullptr)
+	static inline GWAbortProc *abortp;   ///< Proc that is called when aborting (can be nullptr)
+};
 
 /** Whether we are generating the map or not. */
 bool _generating_world;
@@ -79,8 +82,8 @@ static void CleanupGeneration()
 
 	SetMouseCursorBusy(false);
 	SetModalProgress(false);
-	_gw.proc     = nullptr;
-	_gw.abortp   = nullptr;
+	GenWorldInfo::proc     = nullptr;
+	GenWorldInfo::abortp   = nullptr;
 
 	CloseWindowByClass(WC_MODAL_PROGRESS);
 	ShowFirstError();
@@ -117,8 +120,8 @@ static void _GenerateWorld()
 		bool landscape_generated = false;
 
 		/* Don't generate landscape items when in the scenario editor. */
-		if (_gw.mode != GWM_EMPTY) {
-			landscape_generated = GenerateLandscape(_gw.mode);
+		if (GenWorldInfo::mode != GWM_EMPTY) {
+			landscape_generated = GenerateLandscape(GenWorldInfo::mode);
 		}
 
 		if (!landscape_generated) {
@@ -162,7 +165,7 @@ static void _GenerateWorld()
 		_generating_world = false;
 
 		/* No need to run the tile loop in the scenario editor. */
-		if (_gw.mode != GWM_EMPTY) {
+		if (GenWorldInfo::mode != GWM_EMPTY) {
 			uint i;
 
 			SetGeneratingWorldProgress(GWP_RUNTILELOOP, 0x500);
@@ -192,13 +195,13 @@ static void _GenerateWorld()
 
 		ResetObjectToPlace();
 		_cur_company.Trash();
-		_current_company = _local_company = _gw.lc;
+		_current_company = _local_company = GenWorldInfo::lc;
 		/* Show all vital windows again, because we have hidden them. */
 		if (_game_mode != GM_MENU) ShowVitalWindows();
 
 		SetGeneratingWorldProgress(GWP_GAME_START, 1);
 		/* Call any callback */
-		if (_gw.proc != nullptr) _gw.proc();
+		if (GenWorldInfo::proc != nullptr) GenWorldInfo::proc();
 		IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
 		CleanupGeneration();
@@ -235,7 +238,7 @@ static void _GenerateWorld()
  */
 void GenerateWorldSetCallback(GWDoneProc *proc)
 {
-	_gw.proc = proc;
+	GenWorldInfo::proc = proc;
 }
 
 /**
@@ -245,7 +248,7 @@ void GenerateWorldSetCallback(GWDoneProc *proc)
  */
 void GenerateWorldSetAbortCallback(GWAbortProc *proc)
 {
-	_gw.abortp = proc;
+	GenWorldInfo::abortp = proc;
 }
 
 /**
@@ -253,7 +256,7 @@ void GenerateWorldSetAbortCallback(GWAbortProc *proc)
  */
 void AbortGeneratingWorld()
 {
-	_gw.abort = true;
+	GenWorldInfo::abort = true;
 }
 
 /**
@@ -262,7 +265,7 @@ void AbortGeneratingWorld()
  */
 bool IsGeneratingWorldAborted()
 {
-	return _gw.abort || _exit_game;
+	return GenWorldInfo::abort || _exit_game;
 }
 
 /**
@@ -273,7 +276,7 @@ void HandleGeneratingWorldAbortion()
 	/* Clean up - in SE create an empty map, otherwise, go to intro menu */
 	_switch_mode = (_game_mode == GM_EDITOR) ? SM_EDITOR : SM_MENU;
 
-	if (_gw.abortp != nullptr) _gw.abortp();
+	if (GenWorldInfo::abortp != nullptr) GenWorldInfo::abortp();
 
 	throw AbortGenerateWorldSignal();
 }
@@ -288,26 +291,26 @@ void HandleGeneratingWorldAbortion()
 void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_settings)
 {
 	if (HasModalProgress()) return;
-	_gw.mode   = mode;
-	_gw.size_x = size_x;
-	_gw.size_y = size_y;
+	GenWorldInfo::mode   = mode;
+	GenWorldInfo::size_x = size_x;
+	GenWorldInfo::size_y = size_y;
 	SetModalProgress(true);
-	_gw.abort  = false;
-	_gw.abortp = nullptr;
-	_gw.lc     = _local_company;
+	GenWorldInfo::abort  = false;
+	GenWorldInfo::abortp = nullptr;
+	GenWorldInfo::lc     = _local_company;
 
 	/* This disables some commands and stuff */
 	SetLocalCompany(COMPANY_SPECTATOR);
 
-	InitializeGame(_gw.size_x, _gw.size_y, true, reset_settings);
+	InitializeGame(GenWorldInfo::size_x, GenWorldInfo::size_y, true, reset_settings);
 	PrepareGenerateWorldProgress();
 
 	if (_settings_game.construction.map_height_limit == 0) {
 		uint estimated_height = 0;
 
-		if (_gw.mode == GWM_EMPTY && _game_mode != GM_MENU) {
+		if (GenWorldInfo::mode == GWM_EMPTY && _game_mode != GM_MENU) {
 			estimated_height = _settings_game.game_creation.se_flat_world_height;
-		} else if (_gw.mode == GWM_HEIGHTMAP) {
+		} else if (GenWorldInfo::mode == GWM_HEIGHTMAP) {
 			estimated_height = _settings_game.game_creation.heightmap_height;
 		} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
 			estimated_height = GetEstimationTGPMapHeight();
