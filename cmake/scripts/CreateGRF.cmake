@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.17)
 
 #
 # Create a single GRF file based on sprites/<grfname>.nfo and sprites/*.png
