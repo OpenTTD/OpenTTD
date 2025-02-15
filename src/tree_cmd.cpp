@@ -20,6 +20,7 @@
 #include "sound_func.h"
 #include "water.h"
 #include "company_base.h"
+#include "core/geometry_type.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
 #include "timer/timer_game_tick.h"
@@ -178,6 +179,110 @@ static void PlaceTree(TileIndex tile, uint32_t r)
 	}
 }
 
+struct BlobHarmonic {
+	int amplitude;
+	float phase;
+	int frequency;
+};
+
+/**
+ * Creates a star-shaped polygon originating from (0, 0) as defined by the given harmonics.
+ * The shape is placed into a pre-allocated span so the caller controls allocation.
+ * @param radius The maximum radius of the polygon. May be smaller, but will not be larger.
+ * @param harmonics Harmonics data for the polygon.
+ * @param[out] shape Shape to fill with points.
+ */
+static void CreateStarShapedPolygon(int radius, std::span<const BlobHarmonic> harmonics, std::span<Point> shape)
+{
+	float theta = 0;
+	float step = (M_PI * 2) / std::size(shape);
+
+	/* Divide a circle into a number of equally spaced divisions. */
+	for (Point &vertex : shape) {
+
+		/* Add up the values of each harmonic at this segment.*/
+		float deviation = std::accumulate(std::begin(harmonics), std::end(harmonics), 0.f, [theta](float d, const BlobHarmonic &harmonic) -> float {
+			return d + sinf((theta + harmonic.phase) * harmonic.frequency) * harmonic.amplitude;
+		});
+
+		/* Smooth out changes. */
+		float adjusted_radius = (radius / 2.f) + (deviation / 2);
+
+		/* Add to the final polygon. */
+		vertex.x = cosf(theta) * adjusted_radius;
+		vertex.y = sinf(theta) * adjusted_radius;
+
+		/* Proceed to the next segment. */
+		theta += step;
+	}
+}
+
+/**
+ * Creates a random star-shaped polygon originating from (0, 0).
+ * The shape is placed into a pre-allocated span so the caller controls allocation.
+ * @param radius The maximum radius of the blob. May be smaller, but will not be larger.
+ * @param[out] shape Shape to fill with polygon points.
+ */
+static void CreateRandomStarShapedPolygon(int radius, std::span<Point> shape)
+{
+	/* Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range
+	 * from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random
+	 * value by the result. */
+	static constexpr float PHASE_DIVISOR = static_cast<float>(INT32_MAX / M_PI * 2);
+
+	/* These values are ones found in testing that result in suitable-looking polygons that did not self-intersect
+	 * and fit within a square of radius * radius dimensions. */
+	std::initializer_list<BlobHarmonic> harmonics = {
+		{radius / 2, Random() / PHASE_DIVISOR, 1},
+		{radius / 4, Random() / PHASE_DIVISOR, 2},
+		{radius / 8, Random() / PHASE_DIVISOR, 3},
+		{radius / 16, Random() / PHASE_DIVISOR, 4},
+	};
+
+	CreateStarShapedPolygon(radius, harmonics, shape);
+}
+
+/**
+ * Returns true if the given coordinates lie within a triangle.
+ * @param x X coordinate relative to centre of shape.
+ * @param y Y coordinate relative to centre of shape.
+ * @param v1 First vertex of triangle.
+ * @param v2 Second vertex of triangle.
+ * @param v3 Third vertex of triangle.
+ * @returns true if the given coordinates lie within a triangle.
+ */
+static bool IsPointInTriangle(int x, int y, const Point &v1, const Point &v2, const Point &v3)
+{
+	const int s = ((v1.x - v3.x) * (y - v3.y)) - ((v1.y - v3.y) * (x - v3.x));
+	const int t = ((v2.x - v1.x) * (y - v1.y)) - ((v2.y - v1.y) * (x - v1.x));
+
+	if ((s < 0) != (t < 0) && s != 0 && t != 0) return false;
+
+	const int d = (v3.x - v2.x) * (y - v2.y) - (v3.y - v2.y) * (x - v2.x);
+	return (d < 0) == (s + t <= 0);
+}
+
+/**
+ * Returns true if the given coordinates lie within a star shaped polygon.
+ * Breaks the polygon into a series of triangles around the centre point (0, 0) and then tests the coordinates against each triangle until a match is found (or not).
+ * @param x X coordinate relative to centre of shape.
+ * @param y Y coordinate relative to centre of shape.
+ * @param shape The shape to check against.
+ * @returns true if the given coordinates lie within the star shaped polygon.
+ */
+static bool IsPointInStarShapedPolygon(int x, int y, std::span<Point> shape)
+{
+	for (auto it = std::begin(shape); it != std::end(shape); /* nothing */) {
+		const Point &v1 = *it;
+		++it;
+		const Point &v2 = (it == std::end(shape)) ? shape.front() : *it;
+
+		if (IsPointInTriangle(x, y, v1, v2, {0, 0})) return true;
+	}
+
+	return false;
+}
+
 /**
  * Creates a number of tree groups.
  * The number of trees in each group depends on how many trees are actually placed around the given tile.
@@ -186,21 +291,30 @@ static void PlaceTree(TileIndex tile, uint32_t r)
  */
 static void PlaceTreeGroups(uint num_groups)
 {
+	static constexpr uint GROVE_SEGMENTS = 16; ///< How many segments make up the tree group.
+	static constexpr uint GROVE_RADIUS = 16; ///< Maximum radius of tree groups.
+
+	/* Shape in which trees may be contained. Array is here to reduce allocations. */
+	std::array<Point, GROVE_SEGMENTS> grove;
+
 	do {
 		TileIndex center_tile = RandomTile();
 
-		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
-			uint32_t r = Random();
-			int x = GB(r, 0, 5) - 16;
-			int y = GB(r, 8, 5) - 16;
-			uint dist = abs(x) + abs(y);
-			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
+		CreateRandomStarShapedPolygon(GROVE_RADIUS, grove);
 
+		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
 			IncreaseGeneratingWorldProgress(GWP_TREE);
 
-			if (cur_tile != INVALID_TILE && dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
-				PlaceTree(cur_tile, r);
-			}
+			uint32_t r = Random();
+			int x = GB(r, 0, 5) - GROVE_RADIUS;
+			int y = GB(r, 8, 5) - GROVE_RADIUS;
+			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
+
+			if (cur_tile == INVALID_TILE) continue;
+			if (!CanPlantTreesOnTile(cur_tile, true)) continue;
+			if (!IsPointInStarShapedPolygon(x, y, grove)) continue;
+
+			PlaceTree(cur_tile, r);
 		}
 
 	} while (--num_groups);
