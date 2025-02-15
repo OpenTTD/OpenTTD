@@ -23,14 +23,14 @@ CommandCost CmdCloneOrder(DoCommandFlags flags, CloneOptions action, VehicleID v
 CommandCost CmdMoveOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
 CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID user_id);
 
-DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CMD_CLIENT_ID, CMDT_SERVER_SETTING)
+DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CommandFlag::ClientID, CMDT_SERVER_SETTING)
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)

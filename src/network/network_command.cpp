@@ -365,7 +365,7 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet &p, CommandPacket &c
 	cp.company = (CompanyID)p.Recv_uint8();
 	cp.cmd     = static_cast<Commands>(p.Recv_uint16());
 	if (!IsValidCommand(cp.cmd))               return "invalid command";
-	if (GetCommandFlags(cp.cmd) & CMD_OFFLINE) return "single-player only command";
+	if (GetCommandFlags(cp.cmd).Test(CommandFlag::Offline)) return "single-player only command";
 	cp.err_msg = p.Recv_uint16();
 	cp.data    = _cmd_dispatch[cp.cmd].Sanitize(p.Recv_buffer());
 
@@ -441,7 +441,7 @@ template <class T>
 static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_flags, T &data)
 {
 	if constexpr (std::is_same_v<std::string, T>) {
-		data = StrMakeValid(data, (!_network_server && HasFlag(cmd_flags, CMD_STR_CTRL)) ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
+		data = StrMakeValid(data, (!_network_server && cmd_flags.Test(CommandFlag::StrCtrl)) ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
 	}
 }
 

@@ -15,6 +15,6 @@
 
 CommandCost CmdBuyCompany(DoCommandFlags flags, CompanyID target_company, bool hostile_takeover);
 
-DEF_CMD_TRAIT(CMD_BUY_COMPANY,           CmdBuyCompany,         0, CMDT_MONEY_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_BUY_COMPANY,           CmdBuyCompany,         {}, CMDT_MONEY_MANAGEMENT)
 
 #endif /* ECONOMY_CMD_H */

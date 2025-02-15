@@ -382,7 +382,7 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)
 	auto [err, estimate_only, asynchronous, networking] = ScriptObject::DoCommandPrep();
 	if (err) return false;
 
-	if ((::GetCommandFlags<Tcmd>() & CMD_STR_CTRL) == 0) {
+	if (!::GetCommandFlags<Tcmd>().Test(CommandFlag::StrCtrl)) {
 		ScriptObjectInternal::SanitizeStringsHelper(args, std::index_sequence_for<Targs...>{});
 	}
 
@@ -392,10 +392,10 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)
 	}
 
 	/* Do not even think about executing out-of-bounds tile-commands. */
-	if (tile != 0 && (tile >= Map::Size() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
+	if (tile != 0 && (tile >= Map::Size() || (!IsValidTile(tile) && !GetCommandFlags<Tcmd>().Test(CommandFlag::AllTiles)))) return false;
 
 	/* Only set ClientID parameters when the command does not come from the network. */
-	if constexpr ((::GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) != 0) ScriptObjectInternal::SetClientIds(args, std::index_sequence_for<Targs...>{});
+	if constexpr (::GetCommandFlags<Tcmd>().Test(CommandFlag::ClientID)) ScriptObjectInternal::SetClientIds(args, std::index_sequence_for<Targs...>{});
 
 	/* Store the command for command callback validation. */
 	if (!estimate_only && networking) ScriptObject::SetLastCommand(EndianBufferWriter<CommandDataBuffer>::FromValue(args), Tcmd);

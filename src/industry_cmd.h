@@ -21,11 +21,11 @@ CommandCost CmdIndustrySetExclusivity(DoCommandFlags flags, IndustryID ind_id, O
 CommandCost CmdIndustrySetText(DoCommandFlags flags, IndustryID ind_id, const std::string &text);
 CommandCost CmdIndustrySetProduction(DoCommandFlags flags, IndustryID ind_id, uint8_t prod_level, bool show_news, const std::string &text);
 
-DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CMD_DEITY, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_FLAGS, CmdIndustrySetFlags, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_EXCLUSIVITY, CmdIndustrySetExclusivity, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_TEXT, CmdIndustrySetText, CMD_DEITY | CMD_STR_CTRL, CMDT_OTHER_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INDUSTRY_SET_PRODUCTION, CmdIndustrySetProduction, CMD_DEITY, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CommandFlag::Deity, CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_INDUSTRY_SET_FLAGS, CmdIndustrySetFlags, CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INDUSTRY_SET_EXCLUSIVITY, CmdIndustrySetExclusivity, CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INDUSTRY_SET_TEXT, CmdIndustrySetText, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CMDT_OTHER_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INDUSTRY_SET_PRODUCTION, CmdIndustrySetProduction, CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)
 
 void CcBuildIndustry(Commands cmd, const CommandCost &result, TileIndex tile, IndustryType indtype, uint32_t, bool, uint32_t);
 

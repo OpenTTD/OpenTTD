@@ -48,9 +48,9 @@ constexpr CommandFlags GetCommandFlags()
 static constexpr inline DoCommandFlags CommandFlagsToDCFlags(CommandFlags cmd_flags)
 {
 	DoCommandFlags flags = {};
-	if (cmd_flags & CMD_NO_WATER) flags.Set(DoCommandFlag::NoWater);
-	if (cmd_flags & CMD_AUTO) flags.Set(DoCommandFlag::Auto);
-	if (cmd_flags & CMD_ALL_TILES) flags.Set(DoCommandFlag::AllTiles);
+	if (cmd_flags.Test(CommandFlag::NoWater)) flags.Set(DoCommandFlag::NoWater);
+	if (cmd_flags.Test(CommandFlag::Auto)) flags.Set(DoCommandFlag::Auto);
+	if (cmd_flags.Test(CommandFlag::AllTiles)) flags.Set(DoCommandFlag::AllTiles);
 	return flags;
 }
 
@@ -283,13 +283,13 @@ protected:
 	static bool InternalPost(StringID err_message, Tcallback *callback, bool my_cmd, bool network_command, TileIndex tile, std::tuple<Targs...> args)
 	{
 		/* Do not even think about executing out-of-bounds tile-commands. */
-		if (tile != 0 && (tile >= Map::Size() || (!IsValidTile(tile) && (GetCommandFlags<Tcmd>() & CMD_ALL_TILES) == 0))) return false;
+		if (tile != 0 && (tile >= Map::Size() || (!IsValidTile(tile) && !GetCommandFlags<Tcmd>().Test(CommandFlag::AllTiles)))) return false;
 
 		auto [err, estimate_only, only_sending] = InternalPostBefore(Tcmd, GetCommandFlags<Tcmd>(), tile, err_message, network_command);
 		if (err) return false;
 
 		/* Only set client IDs when the command does not come from the network. */
-		if (!network_command && GetCommandFlags<Tcmd>() & CMD_CLIENT_ID) SetClientIds(args, std::index_sequence_for<Targs...>{});
+		if (!network_command && GetCommandFlags<Tcmd>().Test(CommandFlag::ClientID)) SetClientIds(args, std::index_sequence_for<Targs...>{});
 
 		Tret res = Execute(err_message, reinterpret_cast<CommandCallback *>(reinterpret_cast<void(*)()>(callback)), my_cmd, estimate_only, network_command, tile, args);
 		InternalPostResult(ExtractCommandCost(res), tile, estimate_only, only_sending, err_message, my_cmd);
@@ -357,7 +357,7 @@ protected:
 		/* Command flags are used internally */
 		constexpr CommandFlags cmd_flags = GetCommandFlags<Tcmd>();
 
-		if constexpr ((cmd_flags & CMD_CLIENT_ID) != 0) {
+		if constexpr (cmd_flags.Test(CommandFlag::ClientID)) {
 			/* Make sure arguments are properly set to a ClientID also when processing external commands. */
 			assert(AllClientIdsSet(args, std::index_sequence_for<Targs...>{}));
 		}
@@ -473,6 +473,6 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...), false> : CommandHe
 #endif
 
 template <Commands Tcmd>
-using Command = CommandHelper<Tcmd, typename CommandTraits<Tcmd>::ProcType, (GetCommandFlags<Tcmd>() & CMD_LOCATION) == 0>;
+using Command = CommandHelper<Tcmd, typename CommandTraits<Tcmd>::ProcType, !GetCommandFlags<Tcmd>().Test(CommandFlag::Location)>;
 
 #endif /* COMMAND_FUNC_H */
