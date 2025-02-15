@@ -306,11 +306,11 @@ static void PlaceTreeGroups(uint num_groups)
 			int y = GB(r, 8, 5) - GROVE_RADIUS;
 			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
 
-			if (cur_tile != INVALID_TILE && CanPlantTreesOnTile(cur_tile, true)) {
-				if(IsPointInStarShapedPolygon(x, y, grove)) {
-					PlaceTree(cur_tile, r);
-				}
-			}
+			if (cur_tile == INVALID_TILE) continue;
+			if (!CanPlantTreesOnTile(cur_tile, true)) continue;
+			if (!IsPointInStarShapedPolygon(x, y, grove)) continue;
+
+			PlaceTree(cur_tile, r);
 		}
 
 	} while (--num_groups);
