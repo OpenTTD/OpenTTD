@@ -1024,6 +1024,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische ro
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Letse lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugese Escudo
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Oekraïense hryvnia
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Tijdsduur kiezen tussen automatisch opgeslagen spellen
@@ -1986,7 +1987,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verboden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Toestaan, eigen wegpatroon
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Zelf stedelijke huizen plaatsen: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Als deze instelling is ingeschakeld, kunnen spelers zelf stedelijke huizen plaatsen
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Verboden
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Toegestaan
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Toegestaan, volledig gebouwd
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Genereren van vracht in steden: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hoeveel vracht wordt geproduceerd door huizen in steden, in relatie tot de totale bevolking van de stad.{}Kwadratische groei: een stad die twee keer zo groot is, genereert vier keer zo veel passagiers.{}Lineaire groei: een stad die twee keer zo groot is, genereert twee keer zo veel passagiers
@@ -2200,7 +2206,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Scoretab
 STR_INTRO_HELP                                                  :{BLACK}Help en handleiding
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-instellingen
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Spelscript-instellingen
 STR_INTRO_QUIT                                                  :{BLACK}Afsluiten
@@ -2249,6 +2255,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Leesmij
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Overzicht van wijzigingen
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Bekende fouten
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licentie
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Lettertypen
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Handleiding/wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Een fout rapporteren
@@ -2637,6 +2644,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :wacht op bijwer
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :vertrekt
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} heeft zich bij het spel gevoegd
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} heeft zich bij het spel gevoegd (Speler #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} heeft zich gevoegd bij {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} kijkt nu toe
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} heeft een nieuw bedrijf opgericht (nr. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} heeft het spel verlaten ({2:STRING})
@@ -2652,7 +2660,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Je serve
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andere spelers krijgen geen toegang tot je server
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Download extra inhoud
+STR_CONTENT_TITLE                                               :{WHITE}Online inhoud
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type inhoud
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
@@ -2858,6 +2866,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Buitenste voors
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Binnenste voorsteden
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadscentrum
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Opwaarderen voorkomen
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Kies of dit huis wordt beschermd tegen vervangen als de stad groeit
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Uit
+STR_HOUSE_PICKER_PROTECT_ON                                     :Aan
 
 STR_STATION_CLASS_DFLT                                          :Standaard
 STR_STATION_CLASS_DFLT_STATION                                  :Standaard station
@@ -2950,7 +2962,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selectee
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterwegen bouwen
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterwegen
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanalen bouwen. Voeg Shift toe voor alleen inschatting van de kosten
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanalen bouwen. Ctrl+klik+sleep voor een diagonaal gebied. Voeg bovendien Shift toe voor alleen inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Sluis bouwen. Voeg Shift toe voor alleen inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dok bouwen (voor het kopen en onderhouden van schepen). Voeg Shift toe voor alleen inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Haven bouwen. Ctrl+klik om samen te voegen met ander station. Voeg Shift toe voor alleen inschatting van de kosten
@@ -3135,6 +3147,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tramtype
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Spoorsnelheidslimiet: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Snelheidslimiet weg: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tramsnelheidslimiet: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Stad kan opgewaardeerd worden: {LTBLUE}Ja
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Stad kan opgewaardeerd worden: {LTBLUE}Nee
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rotsen
@@ -5320,8 +5334,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan schi
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet verkopen...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Kan niet alle treinen verkopen...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kan niet alle wegvoertuigen verkopen...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan niet alle schepen verkopen...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kan niet alle vliegtuigen verkopen...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Kan treinen niet automatisch vervangen...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Kan wegvoertuigen niet automatisch vervangen
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Kan schepen niet automatisch vervangen
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Kan vliegtuigen niet automatisch vervangen...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Te veel voertuigen in het spel
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan onderhoudstermijn niet aanpassen...
