@@ -2859,6 +2859,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Years: {
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Years: {ORANGE}Until {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Size: {ORANGE}{NUM}x{NUM} tiles
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Cargo accepted: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Cargo produced: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Edge
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Outskirts

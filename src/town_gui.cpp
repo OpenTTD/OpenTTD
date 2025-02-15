@@ -1626,6 +1626,39 @@ public:
 };
 /* static */ HousePickerCallbacks HousePickerCallbacks::instance;
 
+/**
+ * Get the cargo types produced by a house.
+ * @param hs HouseSpec of the house.
+ * @returns CargoArray of cargo types produced by the house.
+ */
+static CargoArray GetProducedCargoOfHouse(const HouseSpec *hs)
+{
+	/* We don't care how much cargo is produced, but BuildCargoAcceptanceString shows fractions when less then 8. */
+	static const uint MIN_CARGO = 8;
+
+	CargoArray production;
+	if (hs->callback_mask.Test(HouseCallbackMask::ProduceCargo)) {
+		for (uint i = 0; i < 256; i++) {
+			uint16_t callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, 0, hs->Index(), nullptr, INVALID_TILE, true);
+
+			if (callback == CALLBACK_FAILED || callback == CALLBACK_HOUSEPRODCARGO_END) break;
+
+			CargoType cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grf_prop.grffile);
+			if (!IsValidCargoType(cargo)) continue;
+
+			uint amt = GB(callback, 0, 8);
+			if (amt == 0) continue;
+
+			production[cargo] = MIN_CARGO;
+		}
+	} else {
+		/* Cargo is not controlled by NewGRF, town production effect is used instead. */
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) production[cs->Index()] = MIN_CARGO;
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) production[cs->Index()] = MIN_CARGO;
+	}
+	return production;
+}
+
 struct BuildHouseWindow : public PickerWindow {
 	std::string house_info;
 	bool house_protected;
@@ -1699,10 +1732,18 @@ struct BuildHouseWindow : public PickerWindow {
 		if (hs->building_flags.Test(BuildingFlag::Size1x2)) size = 0x12;
 		if (hs->building_flags.Test(BuildingFlag::Size2x2)) size = 0x22;
 		line << GetString(STR_HOUSE_PICKER_SIZE, GB(size, 0, 4), GB(size, 4, 4));
-		line << "\n";
 
 		auto cargo_string = BuildCargoAcceptanceString(GetAcceptedCargoOfHouse(hs), STR_HOUSE_PICKER_CARGO_ACCEPTED);
-		if (cargo_string.has_value()) line << *cargo_string;
+		if (cargo_string.has_value()) {
+			line << "\n";
+			line << *cargo_string;
+		}
+
+		cargo_string = BuildCargoAcceptanceString(GetProducedCargoOfHouse(hs), STR_HOUSE_PICKER_CARGO_PRODUCED);
+		if (cargo_string.has_value()) {
+			line << "\n";
+			line << *cargo_string;
+		}
 
 		return line.str();
 	}
