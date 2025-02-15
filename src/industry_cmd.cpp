@@ -1773,8 +1773,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->type = type;
 
 	auto &industries = Industry::industries[type];
-	auto it = std::ranges::lower_bound(industries, i->index);
-	it = industries.emplace(it, i->index);
+	industries.emplace(std::ranges::lower_bound(industries, i->index), i->index);
 
 	for (size_t index = 0; index < std::size(indspec->produced_cargo); ++index) {
 		if (!IsValidCargoType(indspec->produced_cargo[index])) break;
