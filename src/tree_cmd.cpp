@@ -201,16 +201,16 @@ static void CreateStarShapedPolygon(int radius, std::span<const BlobHarmonic> ha
 	for (Point &vertex : shape) {
 
 		/* Add up the values of each harmonic at this segment.*/
-		float deviation = std::accumulate(std::begin(harmonics), std::end(harmonics), 0, [theta](float d, const BlobHarmonic &harmonic) {
-			return d + sin((theta + harmonic.phase) * harmonic.frequency) * harmonic.amplitude;
+		float deviation = std::accumulate(std::begin(harmonics), std::end(harmonics), 0.f, [theta](float d, const BlobHarmonic &harmonic) -> float {
+			return d + sinf((theta + harmonic.phase) * harmonic.frequency) * harmonic.amplitude;
 		});
 
 		/* Smooth out changes. */
-		float adjusted_radius = (radius / 2.0) + (deviation / 2);
+		float adjusted_radius = (radius / 2.f) + (deviation / 2);
 
 		/* Add to the final polygon. */
-		vertex.x = cos(theta) * adjusted_radius;
-		vertex.y = sin(theta) * adjusted_radius;
+		vertex.x = cosf(theta) * adjusted_radius;
+		vertex.y = sinf(theta) * adjusted_radius;
 
 		/* Proceed to the next segment. */
 		theta += step;
