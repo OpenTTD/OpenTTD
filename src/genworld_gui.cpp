@@ -1334,13 +1334,11 @@ static WindowDesc _generate_progress_desc(
 );
 
 struct GenWorldStatus {
-	uint percent;
-	StringID cls;
-	uint current;
-	uint total;
+	static inline uint percent;
+	static inline StringID cls;
+	static inline uint current;
+	static inline uint total;
 };
-
-static GenWorldStatus _gws;
 
 static const StringID _generation_class_table[]  = {
 	STR_GENERATION_WORLD_GENERATION,
@@ -1418,19 +1416,19 @@ struct GenerateProgressWindow : public Window {
 				/* Draw the % complete with a bar and a text */
 				DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
-				DrawFrameRect(br.WithWidth(br.Width() * _gws.percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				SetDParam(0, _gws.percent);
+				DrawFrameRect(br.WithWidth(br.Width() * GenWorldStatus::percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
+				SetDParam(0, GenWorldStatus::percent);
 				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
 			case WID_GP_PROGRESS_TEXT:
 				/* Tell which class we are generating */
-				DrawString(r.left, r.right, r.top, _gws.cls, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top, GenWorldStatus::cls, TC_FROMSTRING, SA_HOR_CENTER);
 
 				/* And say where we are in that class */
-				SetDParam(0, _gws.current);
-				SetDParam(1, _gws.total);
+				SetDParam(0, GenWorldStatus::current);
+				SetDParam(1, GenWorldStatus::total);
 				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_HOR_CENTER);
 		}
 	}
@@ -1441,10 +1439,10 @@ struct GenerateProgressWindow : public Window {
  */
 void PrepareGenerateWorldProgress()
 {
-	_gws.cls = STR_GENERATION_WORLD_GENERATION;
-	_gws.current = 0;
-	_gws.total = 0;
-	_gws.percent = 0;
+	GenWorldStatus::cls = STR_GENERATION_WORLD_GENERATION;
+	GenWorldStatus::current = 0;
+	GenWorldStatus::total = 0;
+	GenWorldStatus::percent = 0;
 }
 
 /**
@@ -1474,33 +1472,33 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 	}
 
 	if (total == 0) {
-		assert(_gws.cls == _generation_class_table[cls]);
-		_gws.current += progress;
-		assert(_gws.current <= _gws.total);
+		assert(GenWorldStatus::cls == _generation_class_table[cls]);
+		GenWorldStatus::current += progress;
+		assert(GenWorldStatus::current <= GenWorldStatus::total);
 	} else {
-		_gws.cls     = _generation_class_table[cls];
-		_gws.current = progress;
-		_gws.total   = total;
-		_gws.percent = percent_table[cls];
+		GenWorldStatus::cls     = _generation_class_table[cls];
+		GenWorldStatus::current = progress;
+		GenWorldStatus::total   = total;
+		GenWorldStatus::percent = percent_table[cls];
 	}
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
-	_gws.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_gws.current == 0 ? 0 : _gws.current - 1) / _gws.total;
+	GenWorldStatus::percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (GenWorldStatus::current == 0 ? 0 : GenWorldStatus::current - 1) / GenWorldStatus::total;
 
 	if (_network_dedicated) {
 		static uint last_percent = 0;
 
 		/* Never display 0% */
-		if (_gws.percent == 0) return;
+		if (GenWorldStatus::percent == 0) return;
 		/* Reset if percent is lower than the last recorded */
-		if (_gws.percent < last_percent) last_percent = 0;
+		if (GenWorldStatus::percent < last_percent) last_percent = 0;
 		/* Display every 5%, but 6% is also very valid.. just not smaller steps than 5% */
-		if (_gws.percent % 5 != 0 && _gws.percent <= last_percent + 5) return;
+		if (GenWorldStatus::percent % 5 != 0 && GenWorldStatus::percent <= last_percent + 5) return;
 		/* Never show steps smaller than 2%, even if it is a mod 5% */
-		if (_gws.percent <= last_percent + 2) return;
+		if (GenWorldStatus::percent <= last_percent + 2) return;
 
-		Debug(net, 3, "Map generation percentage complete: {}", _gws.percent);
-		last_percent = _gws.percent;
+		Debug(net, 3, "Map generation percentage complete: {}", GenWorldStatus::percent);
+		last_percent = GenWorldStatus::percent;
 
 		return;
 	}
