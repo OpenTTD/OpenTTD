@@ -228,7 +228,7 @@ static void CreateRandomStarShapedPolygon(int radius, std::span<Point> shape)
 	/* Valid values for the phase of blob harmonics are between 0 and Tau. we can get a value in the correct range
 	 * from Random() by dividing the maximum possible value by the desired maximum, and then dividing the random
 	 * value by the result. */
-	static constexpr float PHASE_DIVISOR = INT32_MAX / (M_PI * 2);
+	static constexpr float PHASE_DIVISOR = static_cast<float>(INT32_MAX / M_PI * 2);
 
 	/* These values are ones found in testing that result in suitable-looking polygons that did not self-intersect
 	 * and fit within a square of radius * radius dimensions. */
