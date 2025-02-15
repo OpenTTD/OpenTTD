@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.17)
 
 if(NOT INCLUDES_SOURCE_FILE)
     message(FATAL_ERROR "Script needs INCLUDES_SOURCE_FILE defined")
