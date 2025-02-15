@@ -187,9 +187,10 @@ struct BlobHarmonic {
 
 /**
  * Creates a star-shaped polygon originating from (0, 0) as defined by the given harmonics.
+ * The shape is placed into a pre-allocated span so the caller controls allocation.
  * @param radius The maximum radius of the polygon. May be smaller, but will not be larger.
  * @param harmonics Harmonics data for the polygon.
- * @param shape Shape to fill with points.
+ * @param[out] shape Shape to fill with points.
  */
 static void CreateStarShapedPolygon(const int radius, std::span<const BlobHarmonic> harmonics, std::span<Point> shape)
 {
@@ -218,6 +219,7 @@ static void CreateStarShapedPolygon(const int radius, std::span<const BlobHarmon
 
 /**
  * Creates a random star-shaped polygon originating from (0, 0).
+ * The shape is placed into a pre-allocated span so the caller controls allocation.
  * @param radius The maximum radius of the blob. May be smaller, but will not be larger.
  * @param[out] shape Shape to fill with polygon points.
  */
@@ -254,7 +256,7 @@ static bool IsPointInTriangle(const int x, const int y, const Point &v1, const P
 	const int s = ((v1.x - v3.x) * (y - v3.y)) - ((v1.y - v3.y) * (x - v3.x));
 	const int t = ((v2.x - v1.x) * (y - v1.y)) - ((v2.y - v1.y) * (x - v1.x));
 
-	if (s < 0 != t < 0 && s != 0 && t != 0) return false;
+	if ((s < 0) != (t < 0) && s != 0 && t != 0) return false;
 
 	const int d = (v3.x - v2.x) * (y - v2.y) - (v3.y - v2.y) * (x - v2.x);
 	return (d < 0) == (s + t <= 0);
@@ -262,11 +264,11 @@ static bool IsPointInTriangle(const int x, const int y, const Point &v1, const P
 
 /**
  * Returns true if the given coordinates lie within a star shaped polygon.
- * Breaks the polygon into a series of triangles around the centre point (0, 0) and then tests the coordinates against each triangle until a match is found [or not].
+ * Breaks the polygon into a series of triangles around the centre point (0, 0) and then tests the coordinates against each triangle until a match is found (or not).
  * @param x X coordinate relative to centre of shape.
  * @param y Y coordinate relative to centre of shape.
  * @param shape The shape to check against.
- * @returns true if the given coordinates lie within the shape.star shaped polygon.
+ * @returns true if the given coordinates lie within the star shaped polygon.
  */
 static bool IsPointInStarShapedPolygon(int x, int y, std::span<Point> shape)
 {
@@ -291,6 +293,8 @@ static void PlaceTreeGroups(uint num_groups)
 {
 	static constexpr uint GROVE_SEGMENTS = 16; ///< How many segments make up the tree group.
 	static constexpr uint GROVE_RADIUS = 16; ///< Maximum radius of tree groups.
+
+	/* Shape in which trees may be contained. Array is here to reduce allocations. */
 	std::array<Point, GROVE_SEGMENTS> grove;
 
 	do {
