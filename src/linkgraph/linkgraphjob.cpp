@@ -50,7 +50,7 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 void LinkGraphJob::EraseFlows(NodeID from)
 {
 	for (NodeID node_id = 0; node_id < this->Size(); ++node_id) {
-		(*this)[node_id].flows.erase(from);
+		(*this)[node_id].flows.erase(StationID{from});
 	}
 }
 
@@ -138,7 +138,7 @@ LinkGraphJob::~LinkGraphJob()
 				/* Delete old flows for source stations which have been deleted
 				 * from the new flows. This avoids flow cycles between old and
 				 * new flows. */
-				while (!erased.IsEmpty()) geflows.erase(erased.Pop());
+				while (!erased.IsEmpty()) geflows.erase(StationID{erased.Pop()});
 			} else if ((*lg)[node_id][dest_id].last_unrestricted_update == EconomyTime::INVALID_DATE) {
 				/* Edge is fully restricted. */
 				flows.RestrictFlows(to);

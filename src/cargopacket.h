@@ -555,7 +555,7 @@ public:
 	inline bool HasCargoFor(StationIDStack next) const
 	{
 		while (!next.IsEmpty()) {
-			if (this->packets.find(next.Pop()) != this->packets.end()) return true;
+			if (this->packets.find(StationID{next.Pop()}) != this->packets.end()) return true;
 		}
 		/* Packets for INVALID_STATION can go anywhere. */
 		return this->packets.find(INVALID_STATION) != this->packets.end();

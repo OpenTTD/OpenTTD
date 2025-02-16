@@ -35,7 +35,7 @@ ScriptStationList_Vehicle::ScriptStationList_Vehicle(VehicleID vehicle_id)
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 
 	for (Order *o = v->GetFirstOrder(); o != nullptr; o = o->next) {
-		if (o->IsType(OT_GOTO_STATION)) this->AddItem(o->GetDestination().ToStationID());
+		if (o->IsType(OT_GOTO_STATION)) this->AddItem(o->GetDestination().ToStationID().base());
 	}
 }
 
@@ -137,11 +137,11 @@ CargoCollector::~CargoCollector()
 void CargoCollector::SetValue()
 {
 	if (this->amount > 0) {
-		if (this->list->HasItem(this->last_key)) {
-			this->list->SetValue(this->last_key,
-					this->list->GetValue(this->last_key) + this->amount);
+		if (this->list->HasItem(this->last_key.base())) {
+			this->list->SetValue(this->last_key.base(),
+					this->list->GetValue(this->last_key.base()) + this->amount);
 		} else {
-			this->list->AddItem(this->last_key, this->amount);
+			this->list->AddItem(this->last_key.base(), this->amount);
 		}
 	}
 }

@@ -921,7 +921,7 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
 		uint32_t operator()(const std::monostate &) { return 0; }
 		uint32_t operator()(const TileIndex &t) { return t.base(); }
 		uint32_t operator()(const VehicleID v) { return v.base(); }
-		uint32_t operator()(const StationID s) { return s; }
+		uint32_t operator()(const StationID s) { return s.base(); }
 		uint32_t operator()(const IndustryID i) { return i.base(); }
 		uint32_t operator()(const TownID t) { return t.base(); }
 		uint32_t operator()(const EngineID e) { return e.base(); }

@@ -20,9 +20,9 @@
  */
 class ScriptBaseStation : public ScriptObject {
 public:
-	static const StationID STATION_NEW = ::NEW_STATION; ///< Build a new station
-	static const StationID STATION_JOIN_ADJACENT = ::ADJACENT_STATION; ///< Join an neighbouring station if one exists
-	static const StationID STATION_INVALID = ::INVALID_STATION; ///< Invalid station id.
+	static constexpr StationID STATION_NEW = ::NEW_STATION; ///< Build a new station
+	static constexpr StationID STATION_JOIN_ADJACENT = ::ADJACENT_STATION; ///< Join an neighbouring station if one exists
+	static constexpr StationID STATION_INVALID = ::INVALID_STATION; ///< Invalid station id.
 
 	/**
 	 * Checks whether the given basestation is valid and owned by you.
