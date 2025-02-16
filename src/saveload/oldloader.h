@@ -19,16 +19,16 @@ static const uint OLD_MAP_SIZE = 256;
 struct LoadgameState {
 	std::optional<FileHandle> file;
 
-	uint chunk_size;
+	uint chunk_size = 0;
 
-	bool decoding;
-	uint8_t decode_char;
+	bool decoding = false;
+	uint8_t decode_char = 0;
 
-	uint buffer_count;
-	uint buffer_cur;
-	uint8_t buffer[BUFFER_SIZE];
+	uint buffer_count = 0;
+	uint buffer_cur = 0;
+	std::array<uint8_t, BUFFER_SIZE> buffer{};
 
-	uint total_read;
+	uint total_read = 0;
 };
 
 /* OldChunk-Type */
@@ -75,7 +75,7 @@ enum OldChunkType : uint32_t {
 
 DECLARE_ENUM_AS_BIT_SET(OldChunkType)
 
-typedef bool OldChunkProc(LoadgameState *ls, int num);
+typedef bool OldChunkProc(LoadgameState &ls, int num);
 typedef void *OffsetProc(void *base);
 
 struct OldChunks {
@@ -88,19 +88,19 @@ struct OldChunks {
 };
 
 extern uint _bump_assert_value;
-uint8_t ReadByte(LoadgameState *ls);
-bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks);
+uint8_t ReadByte(LoadgameState &ls);
+bool LoadChunk(LoadgameState &ls, void *base, const OldChunks *chunks);
 
-bool LoadTTDMain(LoadgameState *ls);
-bool LoadTTOMain(LoadgameState *ls);
+bool LoadTTDMain(LoadgameState &ls);
+bool LoadTTOMain(LoadgameState &ls);
 
-inline uint16_t ReadUint16(LoadgameState *ls)
+inline uint16_t ReadUint16(LoadgameState &ls)
 {
 	uint8_t x = ReadByte(ls);
 	return x | ReadByte(ls) << 8;
 }
 
-inline uint32_t ReadUint32(LoadgameState *ls)
+inline uint32_t ReadUint32(LoadgameState &ls)
 {
 	uint16_t x = ReadUint16(ls);
 	return x | ReadUint16(ls) << 16;
