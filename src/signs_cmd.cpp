@@ -35,10 +35,10 @@
 std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex tile, const std::string &text)
 {
 	/* Try to locate a new sign */
-	if (!Sign::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_SIGNS), INVALID_SIGN };
+	if (!Sign::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_SIGNS), SignID::Invalid() };
 
 	/* Check sign text length if any */
-	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return { CMD_ERROR, INVALID_SIGN };
+	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return { CMD_ERROR, SignID::Invalid() };
 
 	/* When we execute, really make the sign */
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -57,7 +57,7 @@ std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex til
 		return { CommandCost(), si->index };
 	}
 
-	return { CommandCost(), INVALID_SIGN };
+	return { CommandCost(), SignID::Invalid() };
 }
 
 /**

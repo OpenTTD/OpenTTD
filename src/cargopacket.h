@@ -60,8 +60,8 @@ private:
 	bool in_vehicle = false; ///< NOSAVE: Whether this cargo is in a vehicle or not.
 #endif /* WITH_ASSERT */
 
-	StationID first_station = INVALID_STATION; ///< The station where the cargo came from first.
-	StationID next_hop = INVALID_STATION; ///< Station where the cargo wants to go next.
+	StationID first_station = StationID::Invalid(); ///< The station where the cargo came from first.
+	StationID next_hop = StationID::Invalid(); ///< Station where the cargo wants to go next.
 
 	/** The CargoList caches, thus needs to know about it. */
 	template <class Tinst, class Tcont> friend class CargoList;
@@ -395,7 +395,7 @@ public:
 	 */
 	inline StationID GetFirstStation() const
 	{
-		return this->count == 0 ? INVALID_STATION : this->packets.front()->first_station;
+		return this->count == 0 ? StationID::Invalid() : this->packets.front()->first_station;
 	}
 
 	/**
@@ -557,8 +557,8 @@ public:
 		while (!next.IsEmpty()) {
 			if (this->packets.find(StationID{next.Pop()}) != this->packets.end()) return true;
 		}
-		/* Packets for INVALID_STATION can go anywhere. */
-		return this->packets.find(INVALID_STATION) != this->packets.end();
+		/* Packets for StationID::Invalid() can go anywhere. */
+		return this->packets.find(StationID::Invalid()) != this->packets.end();
 	}
 
 	/**
@@ -567,7 +567,7 @@ public:
 	 */
 	inline StationID GetFirstStation() const
 	{
-		return this->count == 0 ? INVALID_STATION : this->packets.begin()->second.front()->first_station;
+		return this->count == 0 ? StationID::Invalid() : this->packets.begin()->second.front()->first_station;
 	}
 
 	/**

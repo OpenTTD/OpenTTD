@@ -132,7 +132,7 @@ static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineLis
 }
 
 /* cached values for EngineNameSorter to spare many GetString() calls */
-static EngineID _last_engine[2] = { INVALID_ENGINE, INVALID_ENGINE };
+static EngineID _last_engine[2] = { EngineID::Invalid(), EngineID::Invalid() };
 
 /**
  * Determines order of engines by name
@@ -1132,8 +1132,8 @@ void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, Engi
 
 		const Engine *e = Engine::Get(item.engine_id);
 		EngineDisplayFlags flags = item.flags;
-		if (e->display_last_variant != INVALID_ENGINE) flags.Reset(EngineDisplayFlag::Shaded);
-		dst.emplace_back(e->display_last_variant == INVALID_ENGINE ? item.engine_id : e->display_last_variant, item.engine_id, flags, indent);
+		if (e->display_last_variant != EngineID::Invalid()) flags.Reset(EngineDisplayFlag::Shaded);
+		dst.emplace_back(e->display_last_variant == EngineID::Invalid() ? item.engine_id : e->display_last_variant, item.engine_id, flags, indent);
 
 		/* Add variants if not folded */
 		if (item.flags.Test(EngineDisplayFlag::HasVariants) && !item.flags.Test(EngineDisplayFlag::IsFolded)) {
@@ -1172,7 +1172,7 @@ struct BuildVehicleWindow : Window {
 	uint8_t sort_criteria;                         ///< Current sort criterium.
 	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
 	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
-	EngineID sel_engine;                        ///< Currently selected engine, or #INVALID_ENGINE
+	EngineID sel_engine;                        ///< Currently selected engine, or #EngineID::Invalid()
 	EngineID rename_engine;                     ///< Engine being renamed.
 	GUIEngineList eng_list;
 	CargoType cargo_filter_criteria;              ///< Selected cargo filter
@@ -1187,7 +1187,7 @@ struct BuildVehicleWindow : Window {
 	{
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_BUILD);
 
-		bool refit = this->sel_engine != INVALID_ENGINE && this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY && this->cargo_filter_criteria != CargoFilterCriteria::CF_NONE && this->cargo_filter_criteria != CargoFilterCriteria::CF_ENGINES;
+		bool refit = this->sel_engine != EngineID::Invalid() && this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY && this->cargo_filter_criteria != CargoFilterCriteria::CF_NONE && this->cargo_filter_criteria != CargoFilterCriteria::CF_ENGINES;
 		if (refit) refit = Engine::Get(this->sel_engine)->GetDefaultCargoType() != this->cargo_filter_criteria;
 
 		if (refit) {
@@ -1203,7 +1203,7 @@ struct BuildVehicleWindow : Window {
 		this->listview_mode = tile == INVALID_TILE;
 		this->window_number = this->listview_mode ? (int)type : tile.base();
 
-		this->sel_engine = INVALID_ENGINE;
+		this->sel_engine = EngineID::Invalid();
 
 		this->sort_criteria         = _engine_sort_last_criteria[type];
 		this->descending_sort_order = _engine_sort_last_order[type];
@@ -1249,7 +1249,7 @@ struct BuildVehicleWindow : Window {
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 
 		/* Select the first unshaded engine in the list as default when opening the window */
-		EngineID engine = INVALID_ENGINE;
+		EngineID engine = EngineID::Invalid();
 		auto it = std::ranges::find_if(this->eng_list, [](const GUIEngineListItem &item) { return !item.flags.Test(EngineDisplayFlag::Shaded); });
 		if (it != this->eng_list.end()) engine = it->engine_id;
 		this->SelectEngine(engine);
@@ -1314,7 +1314,7 @@ struct BuildVehicleWindow : Window {
 		this->sel_engine = engine;
 		this->SetBuyVehicleText();
 
-		if (this->sel_engine == INVALID_ENGINE) return;
+		if (this->sel_engine == EngineID::Invalid()) return;
 
 		const Engine *e = Engine::Get(this->sel_engine);
 
@@ -1346,7 +1346,7 @@ struct BuildVehicleWindow : Window {
 	{
 		this->eng_list.Filter(this->cargo_filter_criteria);
 		if (0 == this->eng_list.size()) { // no engine passed through the filter, invalidate the previously selected engine
-			this->SelectEngine(INVALID_ENGINE);
+			this->SelectEngine(EngineID::Invalid());
 		} else if (std::ranges::find(this->eng_list, this->sel_engine, &GUIEngineListItem::engine_id) == this->eng_list.end()) { // previously selected engine didn't pass the filter, select the first engine of the list
 			this->SelectEngine(this->eng_list[0].engine_id);
 		}
@@ -1380,14 +1380,14 @@ struct BuildVehicleWindow : Window {
 	void GenerateBuildTrainList(GUIEngineList &list)
 	{
 		std::vector<EngineID> variants;
-		EngineID sel_id = INVALID_ENGINE;
+		EngineID sel_id = EngineID::Invalid();
 		size_t num_engines = 0;
 
 		list.clear();
 
 		/* Make list of all available train engines and wagons.
 		 * Also check to see if the previously selected engine is still available,
-		 * and if not, reset selection to INVALID_ENGINE. This could be the case
+		 * and if not, reset selection to EngineID::Invalid(). This could be the case
 		 * when engines become obsolete and are removed */
 		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
@@ -1409,7 +1409,7 @@ struct BuildVehicleWindow : Window {
 
 			/* Add all parent variants of this engine to the variant list */
 			EngineID parent = e->info.variant_id;
-			while (parent != INVALID_ENGINE) {
+			while (parent != EngineID::Invalid()) {
 				variants.push_back(parent);
 				parent = Engine::Get(parent)->info.variant_id;
 			}
@@ -1429,7 +1429,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 
 		/* invalidate cached values for name sorter - engine names could change */
-		_last_engine[0] = _last_engine[1] = INVALID_ENGINE;
+		_last_engine[0] = _last_engine[1] = EngineID::Invalid();
 
 		/* make engines first, and then wagons, sorted by selected sort_criteria */
 		_engine_sort_direction = false;
@@ -1446,7 +1446,7 @@ struct BuildVehicleWindow : Window {
 	/* Figure out what road vehicle EngineIDs to put in the list */
 	void GenerateBuildRoadVehList()
 	{
-		EngineID sel_id = INVALID_ENGINE;
+		EngineID sel_id = EngineID::Invalid();
 
 		this->eng_list.clear();
 
@@ -1469,7 +1469,7 @@ struct BuildVehicleWindow : Window {
 	/* Figure out what ship EngineIDs to put in the list */
 	void GenerateBuildShipList()
 	{
-		EngineID sel_id = INVALID_ENGINE;
+		EngineID sel_id = EngineID::Invalid();
 		this->eng_list.clear();
 
 		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
@@ -1490,7 +1490,7 @@ struct BuildVehicleWindow : Window {
 	/* Figure out what aircraft EngineIDs to put in the list */
 	void GenerateBuildAircraftList()
 	{
-		EngineID sel_id = INVALID_ENGINE;
+		EngineID sel_id = EngineID::Invalid();
 
 		this->eng_list.clear();
 
@@ -1498,7 +1498,7 @@ struct BuildVehicleWindow : Window {
 
 		/* Make list of all available planes.
 		 * Also check to see if the previously selected plane is still available,
-		 * and if not, reset selection to INVALID_ENGINE. This could be the case
+		 * and if not, reset selection to EngineID::Invalid(). This could be the case
 		 * when planes become obsolete and are removed */
 		for (const Engine *e : Engine::IterateType(VEH_AIRCRAFT)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
@@ -1554,7 +1554,7 @@ struct BuildVehicleWindow : Window {
 		std::vector<EngineID> variants;
 		for (const auto &item : this->eng_list) {
 			EngineID parent = item.variant_id;
-			while (parent != INVALID_ENGINE) {
+			while (parent != EngineID::Invalid()) {
 				variants.push_back(parent);
 				parent = Engine::Get(parent)->info.variant_id;
 			}
@@ -1571,7 +1571,7 @@ struct BuildVehicleWindow : Window {
 		EngList_Sort(this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
 
 		this->eng_list.swap(list);
-		GUIEngineListAddChildren(this->eng_list, list, INVALID_ENGINE, 0);
+		GUIEngineListAddChildren(this->eng_list, list, EngineID::Invalid(), 0);
 		this->eng_list.RebuildDone();
 	}
 
@@ -1602,7 +1602,7 @@ struct BuildVehicleWindow : Window {
 	void BuildVehicle()
 	{
 		EngineID sel_eng = this->sel_engine;
-		if (sel_eng == INVALID_ENGINE) return;
+		if (sel_eng == EngineID::Invalid()) return;
 
 		CargoType cargo = this->cargo_filter_criteria;
 		if (cargo == CargoFilterCriteria::CF_ANY || cargo == CargoFilterCriteria::CF_ENGINES || cargo == CargoFilterCriteria::CF_NONE) cargo = INVALID_CARGO;
@@ -1615,7 +1615,7 @@ struct BuildVehicleWindow : Window {
 		/* Update last used variant in hierarchy and refresh if necessary. */
 		bool refresh = false;
 		EngineID parent = sel_eng;
-		while (parent != INVALID_ENGINE) {
+		while (parent != EngineID::Invalid()) {
 			Engine *e = Engine::Get(parent);
 			refresh |= (e->display_last_variant != sel_eng);
 			e->display_last_variant = sel_eng;
@@ -1647,14 +1647,14 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_LIST: {
-				EngineID e = INVALID_ENGINE;
+				EngineID e = EngineID::Invalid();
 				const auto it = this->vscroll->GetScrolledItemFromWidget(this->eng_list, pt.y, this, WID_BV_LIST);
 				if (it != this->eng_list.end()) {
 					const auto &item = *it;
 					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
 					if (item.flags.Test(EngineDisplayFlag::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
 						/* toggle folded flag on engine */
-						assert(item.variant_id != INVALID_ENGINE);
+						assert(item.variant_id != EngineID::Invalid());
 						Engine *engine = Engine::Get(item.variant_id);
 						engine->display_flags.Flip(EngineDisplayFlag::IsFolded);
 
@@ -1683,7 +1683,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SHOW_HIDE: {
-				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
+				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr) {
 					Command<CMD_SET_VEHICLE_VISIBILITY>::Post(this->sel_engine, !e->IsHidden(_current_company));
 				}
@@ -1696,7 +1696,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_RENAME: {
 				EngineID sel_eng = this->sel_engine;
-				if (sel_eng != INVALID_ENGINE) {
+				if (sel_eng != EngineID::Invalid()) {
 					this->rename_engine = sel_eng;
 					ShowQueryString(GetString(STR_ENGINE_NAME, PackEngineNameDParam(sel_eng, EngineNameContext::Generic)), STR_QUERY_RENAME_TRAIN_TYPE_CAPTION + this->vehicle_type, MAX_LENGTH_ENGINE_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				}
@@ -1747,7 +1747,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_SHOW_HIDE: {
-				const Engine *e = (this->sel_engine == INVALID_ENGINE) ? nullptr : Engine::Get(this->sel_engine);
+				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr && e->IsHidden(_local_company)) {
 					SetDParam(0, STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
 				} else {
@@ -1825,17 +1825,17 @@ struct BuildVehicleWindow : Window {
 		this->GenerateBuildList();
 		this->vscroll->SetCount(this->eng_list.size());
 
-		this->SetWidgetsDisabledState(this->sel_engine == INVALID_ENGINE, WID_BV_SHOW_HIDE, WID_BV_BUILD);
+		this->SetWidgetsDisabledState(this->sel_engine == EngineID::Invalid(), WID_BV_SHOW_HIDE, WID_BV_BUILD);
 
 		/* Disable renaming engines in network games if you are not the server. */
-		this->SetWidgetDisabledState(WID_BV_RENAME, this->sel_engine == INVALID_ENGINE || (_networking && !_network_server));
+		this->SetWidgetDisabledState(WID_BV_RENAME, this->sel_engine == EngineID::Invalid() || (_networking && !_network_server));
 
 		this->DrawWidgets();
 
 		if (!this->IsShaded()) {
 			int needed_height = this->details_height;
 			/* Draw details panels. */
-			if (this->sel_engine != INVALID_ENGINE) {
+			if (this->sel_engine != EngineID::Invalid()) {
 				const Rect r = this->GetWidget<NWidgetBase>(WID_BV_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 				int text_end = DrawVehiclePurchaseInfo(r.left, r.right, r.top, this->sel_engine, this->te);
 				needed_height = std::max(needed_height, (text_end - r.top) / GetCharacterHeight(FS_NORMAL));

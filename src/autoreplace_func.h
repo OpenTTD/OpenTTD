@@ -33,7 +33,7 @@ inline void RemoveAllEngineReplacementForCompany(Company *c)
  * @param engine Engine type.
  * @param group The group related to this replacement.
  * @param[out] replace_when_old Set to true if the replacement should be done when old.
- * @return The engine type to replace with, or INVALID_ENGINE if no
+ * @return The engine type to replace with, or EngineID::Invalid() if no
  * replacement is in the list.
  */
 inline EngineID EngineReplacementForCompany(const Company *c, EngineID engine, GroupID group, bool *replace_when_old = nullptr)
@@ -50,7 +50,7 @@ inline EngineID EngineReplacementForCompany(const Company *c, EngineID engine, G
  */
 inline bool EngineHasReplacementForCompany(const Company *c, EngineID engine, GroupID group)
 {
-	return EngineReplacementForCompany(c, engine, group) != INVALID_ENGINE;
+	return EngineReplacementForCompany(c, engine, group) != EngineID::Invalid();
 }
 
 /**

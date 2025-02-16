@@ -41,9 +41,6 @@ static const VehicleOrderID INVALID_VEH_ORDER_ID = 0xFF;
 /** Last valid VehicleOrderID. */
 static const VehicleOrderID MAX_VEH_ORDER_ID     = INVALID_VEH_ORDER_ID - 1;
 
-/** Invalid order (sentinel) */
-static constexpr OrderID INVALID_ORDER = OrderID::Invalid();
-
 /**
  * Maximum number of orders in implicit-only lists before we start searching
  * harder for duplicates.

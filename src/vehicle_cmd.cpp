@@ -101,22 +101,22 @@ const StringID _send_to_depot_msg_table[] = {
 std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(DoCommandFlags flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoType cargo, ClientID client_id)
 {
 	/* Elementary check for valid location. */
-	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return { CMD_ERROR, INVALID_VEHICLE, 0, 0, {} };
+	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
 
 	VehicleType type = GetDepotVehicleType(tile);
 
 	/* Validate the engine type. */
-	if (!IsEngineBuildable(eid, type, _current_company)) return { CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + type), INVALID_VEHICLE, 0, 0, {} };
+	if (!IsEngineBuildable(eid, type, _current_company)) return { CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + type), VehicleID::Invalid(), 0, 0, {} };
 
 	/* Validate the cargo type. */
-	if (cargo >= NUM_CARGO && IsValidCargoType(cargo)) return { CMD_ERROR, INVALID_VEHICLE, 0, 0, {} };
+	if (cargo >= NUM_CARGO && IsValidCargoType(cargo)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
 
 	const Engine *e = Engine::Get(eid);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines without valid cargo should not be available */
 	CargoType default_cargo = e->GetDefaultCargoType();
-	if (!IsValidCargoType(default_cargo)) return { CMD_ERROR, INVALID_VEHICLE, 0, 0, {} };
+	if (!IsValidCargoType(default_cargo)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
 
 	bool refitting = IsValidCargoType(cargo) && cargo != default_cargo;
 
@@ -129,13 +129,13 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 		case VEH_AIRCRAFT: num_vehicles = e->u.air.subtype & AIR_CTOL ? 2 : 3; break;
 		default: NOT_REACHED(); // Safe due to IsDepotTile()
 	}
-	if (!Vehicle::CanAllocateItem(num_vehicles)) return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), INVALID_VEHICLE, 0, 0, {} };
+	if (!Vehicle::CanAllocateItem(num_vehicles)) return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid(), 0, 0, {} };
 
 	/* Check whether we can allocate a unit number. Autoreplace does not allocate
 	 * an unit number as it will (always) reuse the one of the replaced vehicle
 	 * and (train) wagons don't have an unit number in any scenario. */
 	UnitID unit_num = (flags.Test(DoCommandFlag::QueryCost) || flags.Test(DoCommandFlag::AutoReplace) || (type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON)) ? 0 : GetFreeUnitNumber(type);
-	if (unit_num == UINT16_MAX) return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), INVALID_VEHICLE, 0, 0, {} };
+	if (unit_num == UINT16_MAX) return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid(), 0, 0, {} };
 
 	/* If we are refitting we need to temporarily purchase the vehicle to be able to
 	 * test it. */
@@ -156,7 +156,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 		default: NOT_REACHED(); // Safe due to IsDepotTile()
 	}
 
-	VehicleID veh_id = INVALID_VEHICLE;
+	VehicleID veh_id = VehicleID::Invalid();
 	uint refitted_capacity = 0;
 	uint16_t refitted_mail_capacity = 0;
 	CargoArray cargo_capacities{};
@@ -842,7 +842,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
-	if (v == nullptr || !v->IsPrimaryVehicle()) return { CMD_ERROR, INVALID_VEHICLE };
+	if (v == nullptr || !v->IsPrimaryVehicle()) return { CMD_ERROR, VehicleID::Invalid() };
 	Vehicle *v_front = v;
 	Vehicle *w = nullptr;
 	Vehicle *w_front = nullptr;
@@ -857,9 +857,9 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 	 */
 
 	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return { ret, INVALID_VEHICLE };
+	if (ret.Failed()) return { ret, VehicleID::Invalid() };
 
-	if (v->type == VEH_TRAIN && (!v->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return { CMD_ERROR, INVALID_VEHICLE };
+	if (v->type == VEH_TRAIN && (!v->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return { CMD_ERROR, VehicleID::Invalid() };
 
 	/* check that we can allocate enough vehicles */
 	if (!flags.Test(DoCommandFlag::Execute)) {
@@ -869,13 +869,13 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		} while ((v = v->Next()) != nullptr);
 
 		if (!Vehicle::CanAllocateItem(veh_counter)) {
-			return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), INVALID_VEHICLE };
+			return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid() };
 		}
 	}
 
 	v = v_front;
 
-	VehicleID new_veh_id = INVALID_VEHICLE;
+	VehicleID new_veh_id = VehicleID::Invalid();
 	do {
 		if (v->type == VEH_TRAIN && Train::From(v)->IsRearDualheaded()) {
 			/* we build the rear ends of multiheaded trains with the front ones */
@@ -897,7 +897,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
 			if (w_front != nullptr) Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-			return { cost, INVALID_VEHICLE };
+			return { cost, VehicleID::Invalid() };
 		}
 
 		total_cost.AddCost(cost);
@@ -918,7 +918,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 					 * Sell what we already made (clean up) and return an error.           */
 					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
 					Command<CMD_SELL_VEHICLE>::Do(flags, w->index,       true, false, INVALID_CLIENT_ID);
-					return { result, INVALID_VEHICLE }; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
+					return { result, VehicleID::Invalid() }; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
 				/* this is a front engine or not a train. */
@@ -999,7 +999,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-			return { result, INVALID_VEHICLE };
+			return { result, VehicleID::Invalid() };
 		}
 
 		/* Now clone the vehicle's name, if it has one. */
@@ -1010,7 +1010,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (!CheckCompanyHasMoney(total_cost)) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-			return { total_cost, INVALID_VEHICLE };
+			return { total_cost, VehicleID::Invalid() };
 		}
 	}
 

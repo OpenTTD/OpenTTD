@@ -26,7 +26,7 @@ class CommandCost {
 	StringID message;                           ///< Warning message for when success is unset
 	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
 	bool success;                               ///< Whether the command went fine up to this moment
-	Owner owner = INVALID_COMPANY; ///< Originator owner of error.
+	Owner owner = CompanyID::Invalid(); ///< Originator owner of error.
 	const GRFFile *textref_stack_grffile = nullptr; ///< NewGRF providing the #TextRefStack content.
 	uint textref_stack_size = 0; ///< Number of uint32_t values to put on the #TextRefStack for the error message.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset

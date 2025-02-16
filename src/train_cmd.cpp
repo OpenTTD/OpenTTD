@@ -112,7 +112,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 	assert(this->IsFrontEngine() || this->IsFreeWagon());
 
 	const RailVehicleInfo *rvi_v = RailVehInfo(this->engine_type);
-	EngineID first_engine = this->IsFrontEngine() ? this->engine_type : INVALID_ENGINE;
+	EngineID first_engine = this->IsFrontEngine() ? this->engine_type : EngineID::Invalid();
 	this->gcache.cached_total_length = 0;
 	this->compatible_railtypes = RAILTYPES_NONE;
 
@@ -126,7 +126,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		assert(u->First() == this);
 
 		/* update the 'first engine' */
-		u->gcache.first_engine = this == u ? INVALID_ENGINE : first_engine;
+		u->gcache.first_engine = this == u ? EngineID::Invalid() : first_engine;
 		u->railtype = rvi_u->railtype;
 
 		if (u->IsEngine()) first_engine = u->engine_type;
@@ -624,7 +624,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 		v->spritenum = rvi->image_index;
 
 		v->engine_type = e->index;
-		v->gcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
+		v->gcache.first_engine = EngineID::Invalid(); // needs to be set before first callback
 
 		DiagDirection dir = GetRailDepotDirection(tile);
 
@@ -775,11 +775,11 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		assert(IsValidCargoType(v->cargo_type));
 		v->cargo_cap = rvi->capacity;
 		v->refit_cap = 0;
-		v->last_station_visited = INVALID_STATION;
-		v->last_loading_station = INVALID_STATION;
+		v->last_station_visited = StationID::Invalid();
+		v->last_loading_station = StationID::Invalid();
 
 		v->engine_type = e->index;
-		v->gcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
+		v->gcache.first_engine = EngineID::Invalid(); // needs to be set before first callback
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -1033,7 +1033,7 @@ static CommandCost CheckTrainAttachment(Train *t)
 		if (!t->IsArticulatedPart() && !t->IsRearDualheaded()) {
 			/* Back up and clear the first_engine data to avoid using wagon override group */
 			EngineID first_engine = t->gcache.first_engine;
-			t->gcache.first_engine = INVALID_ENGINE;
+			t->gcache.first_engine = EngineID::Invalid();
 
 			/* We don't want the cache to interfere. head's cache is cleared before
 			 * the loop and after each callback does not need to be cleared here. */
@@ -1184,7 +1184,7 @@ static void NormaliseTrainHead(Train *head)
  * @param flags type of operation
  *              Note: DoCommandFlag::AutoReplace is set when autoreplace tries to undo its modifications or moves vehicles to temporary locations inside the depot.
  * @param src_veh source vehicle index
- * @param dest_veh what wagon to put the source wagon AFTER, XXX - INVALID_VEHICLE to make a new line
+ * @param dest_veh what wagon to put the source wagon AFTER, XXX - VehicleID::Invalid() to make a new line
  * @param move_chain move all vehicles following the source vehicle
  * @return the cost of this operation or an error
  */
@@ -1201,7 +1201,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlags flags, VehicleID src_veh, VehicleI
 
 	/* if nothing is selected as destination, try and find a matching vehicle to drag to. */
 	Train *dst;
-	if (dest_veh == INVALID_VEHICLE) {
+	if (dest_veh == VehicleID::Invalid()) {
 		dst = (src->IsEngine() || flags.Test(DoCommandFlag::AutoReplace)) ? nullptr : FindGoodVehiclePos(src);
 	} else {
 		dst = Train::GetIfValid(dest_veh);
@@ -2388,7 +2388,7 @@ void FreeTrainTrackReservation(const Train *v)
 	TileIndex tile = v->tile;
 	Trackdir  td = v->GetVehicleTrackdir();
 	bool      free_tile = !(IsRailStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
-	StationID station_id = IsRailStationTile(v->tile) ? GetStationIndex(v->tile) : INVALID_STATION;
+	StationID station_id = IsRailStationTile(v->tile) ? GetStationIndex(v->tile) : StationID::Invalid();
 
 	/* Can't be holding a reservation if we enter a depot. */
 	if (IsRailDepotTile(tile) && TrackdirToExitdir(td) != GetRailDepotDirection(tile)) return;
@@ -2948,7 +2948,7 @@ static bool CheckReverseTrain(const Train *v)
  */
 TileIndex Train::GetOrderStationLocation(StationID station)
 {
-	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
+	if (station == this->last_station_visited) this->last_station_visited = StationID::Invalid();
 
 	const Station *st = Station::Get(station);
 	if (!st->facilities.Test(StationFacility::Train)) {

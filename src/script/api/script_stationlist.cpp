@@ -122,7 +122,7 @@ private:
 
 CargoCollector::CargoCollector(ScriptStationList_Cargo *parent,
 		StationID station_id, CargoType cargo, StationID other) :
-	list(parent), ge(nullptr), other_station(other), last_key(INVALID_STATION), amount(0)
+	list(parent), ge(nullptr), other_station(other), last_key(StationID::Invalid()), amount(0)
 {
 	if (!ScriptStation::IsValidStation(station_id)) return;
 	if (!ScriptCargo::IsValidCargo(cargo)) return;
@@ -149,7 +149,7 @@ void CargoCollector::SetValue()
 template <ScriptStationList_Cargo::CargoSelector Tselector>
 void CargoCollector::Update(StationID from, StationID via, uint amount)
 {
-	StationID key = INVALID_STATION;
+	StationID key = StationID::Invalid();
 	switch (Tselector) {
 		case ScriptStationList_Cargo::CS_VIA_BY_FROM:
 			if (via != this->other_station) return;

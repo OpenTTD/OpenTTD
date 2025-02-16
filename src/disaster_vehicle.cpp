@@ -348,7 +348,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		for (RoadVehicle *u : RoadVehicle::Iterate()) {
 			/* Find (n+1)-th road vehicle. */
 			if (u->IsFrontEngine() && (n-- == 0)) {
-				if (u->crashed_ctr != 0 || u->disaster_vehicle != INVALID_VEHICLE) {
+				if (u->crashed_ctr != 0 || u->disaster_vehicle != VehicleID::Invalid()) {
 					/* Targetted vehicle is crashed or already a target, destroy the UFO. */
 					delete v;
 					return false;
@@ -385,7 +385,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 			v->age++;
 			if (u->crashed_ctr == 0) {
 				uint victims = u->Crash();
-				u->disaster_vehicle = INVALID_VEHICLE;
+				u->disaster_vehicle = VehicleID::Invalid();
 
 				AddTileNewsItem(STR_NEWS_DISASTER_SMALL_UFO, NewsType::Accident, u->tile);
 

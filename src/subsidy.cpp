@@ -206,7 +206,7 @@ void CreateSubsidy(CargoType cargo_type, Source src, Source dst)
 	s->src = src;
 	s->dst = dst;
 	s->remaining = SUBSIDY_OFFER_MONTHS;
-	s->awarded = INVALID_COMPANY;
+	s->awarded = CompanyID::Invalid();
 
 	std::pair<NewsReference, NewsReference> references = SetupSubsidyDecodeParam(s, SubsidyDecodeParamType::NewsOffered);
 	AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NewsType::Subsidies, NewsStyle::Normal, {}, references.first, references.second);

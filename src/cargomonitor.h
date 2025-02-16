@@ -120,22 +120,22 @@ inline bool MonitorMonitorsIndustry(CargoMonitorID num)
 /**
  * Extract the industry number from the cargo monitor.
  * @param num Cargo monitoring number to decode.
- * @return The extracted industry id, or #INVALID_INDUSTRY if the number does not monitor an industry.
+ * @return The extracted industry id, or #IndustryID::Invalid() if the number does not monitor an industry.
  */
 inline IndustryID DecodeMonitorIndustry(CargoMonitorID num)
 {
-	if (!MonitorMonitorsIndustry(num)) return INVALID_INDUSTRY;
+	if (!MonitorMonitorsIndustry(num)) return IndustryID::Invalid();
 	return static_cast<IndustryID>(GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH));
 }
 
 /**
  * Extract the town number from the cargo monitor.
  * @param num Cargo monitoring number to decode.
- * @return The extracted town id, or #INVALID_TOWN if the number does not monitor a town.
+ * @return The extracted town id, or #TownID::Invalid() if the number does not monitor a town.
  */
 inline TownID DecodeMonitorTown(CargoMonitorID num)
 {
-	if (MonitorMonitorsIndustry(num)) return INVALID_TOWN;
+	if (MonitorMonitorsIndustry(num)) return TownID::Invalid();
 	return static_cast<TownID>(GB(num, CCB_TOWN_IND_NUMBER_START, CCB_TOWN_IND_NUMBER_LENGTH));
 }
 
@@ -143,6 +143,6 @@ void ClearCargoPickupMonitoring(CompanyID company = INVALID_OWNER);
 void ClearCargoDeliveryMonitoring(CompanyID company = INVALID_OWNER);
 int32_t GetDeliveryAmount(CargoMonitorID monitor, bool keep_monitoring);
 int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring);
-void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, Source src, const Station *st, IndustryID dest = INVALID_INDUSTRY);
+void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, Source src, const Station *st, IndustryID dest = IndustryID::Invalid());
 
 #endif /* CARGOMONITOR_H */

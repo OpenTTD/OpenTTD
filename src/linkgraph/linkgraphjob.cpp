@@ -156,7 +156,7 @@ LinkGraphJob::~LinkGraphJob()
 					it->second.Invalidate();
 					++it;
 				} else {
-					FlowStat shares(INVALID_STATION, 1);
+					FlowStat shares(StationID::Invalid(), 1);
 					it->second.SwapShares(shares);
 					geflows.erase(it++);
 					for (FlowStat::SharesMap::const_iterator shares_it(shares.GetShares()->begin());

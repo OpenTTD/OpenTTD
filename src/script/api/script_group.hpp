@@ -21,7 +21,7 @@ class ScriptGroup : public ScriptObject {
 public:
 	static constexpr GroupID GROUP_ALL = ::ALL_GROUP; ///< All vehicles are in this group.
 	static constexpr GroupID GROUP_DEFAULT = ::DEFAULT_GROUP; ///< Vehicles not put in any other group are in this one.
-	static constexpr GroupID GROUP_INVALID = ::INVALID_GROUP; ///< An invalid group id.
+	static constexpr GroupID GROUP_INVALID = ::GroupID::Invalid(); ///< An invalid group id.
 
 	/**
 	 * Checks whether the given group is valid.

@@ -137,13 +137,13 @@ void CargoPacket::Reduce(uint count)
 }
 
 /**
- * Invalidates (sets source to INVALID_STATION) all cargo packets from given station.
+ * Invalidates (sets source to StationID::Invalid()) all cargo packets from given station.
  * @param sid Station that gets removed.
  */
 /* static */ void CargoPacket::InvalidateAllFrom(StationID sid)
 {
 	for (CargoPacket *cp : CargoPacket::Iterate()) {
-		if (cp->first_station == sid) cp->first_station = INVALID_STATION;
+		if (cp->first_station == sid) cp->first_station = StationID::Invalid();
 	}
 }
 
@@ -406,7 +406,7 @@ void VehicleCargoList::AgeCargo()
 /* static */ VehicleCargoList::MoveToAction VehicleCargoList::ChooseAction(const CargoPacket *cp, StationID cargo_next,
 		StationID current_station, bool accepted, StationIDStack next_station)
 {
-	if (cargo_next == INVALID_STATION) {
+	if (cargo_next == StationID::Invalid()) {
 		return (accepted && cp->first_station != current_station) ? MTA_DELIVER : MTA_KEEP;
 	} else if (cargo_next == current_station) {
 		return MTA_DELIVER;
@@ -452,7 +452,7 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 		CargoPacket *cp = *it;
 
 		this->packets.erase(it++);
-		StationID cargo_next = INVALID_STATION;
+		StationID cargo_next = StationID::Invalid();
 		MoveToAction action = MTA_LOAD;
 		if (force_keep) {
 			action = MTA_KEEP;
@@ -464,7 +464,7 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 			 * also not to the current station. */
 			FlowStatMap::const_iterator flow_it(flows.find(cp->first_station));
 			if (flow_it == flows.end()) {
-				cargo_next = INVALID_STATION;
+				cargo_next = StationID::Invalid();
 			} else {
 				FlowStat new_shares = flow_it->second;
 				new_shares.ChangeShare(current_station, INT_MIN);
@@ -473,7 +473,7 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 					new_shares.ChangeShare(StationID{excluded.Pop()}, INT_MIN);
 				}
 				if (new_shares.GetShares()->empty()) {
-					cargo_next = INVALID_STATION;
+					cargo_next = StationID::Invalid();
 				} else {
 					cargo_next = new_shares.GetVia();
 				}
@@ -481,13 +481,13 @@ bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationID
 		} else {
 			/* Rewrite an invalid source station to some random other one to
 			 * avoid keeping the cargo in the vehicle forever. */
-			if (cp->first_station == INVALID_STATION && !flows.empty()) {
+			if (cp->first_station == StationID::Invalid() && !flows.empty()) {
 				cp->first_station = flows.begin()->first;
 			}
 			bool restricted = false;
 			FlowStatMap::const_iterator flow_it(flows.find(cp->first_station));
 			if (flow_it == flows.end()) {
-				cargo_next = INVALID_STATION;
+				cargo_next = StationID::Invalid();
 			} else {
 				cargo_next = flow_it->second.GetViaWithRestricted(restricted);
 			}
@@ -577,7 +577,7 @@ uint VehicleCargoList::Reassign<VehicleCargoList::MTA_DELIVER, VehicleCargoList:
 			sum -= cp_split->Count();
 			this->packets.insert(it, cp_split);
 		}
-		cp->next_hop = INVALID_STATION;
+		cp->next_hop = StationID::Invalid();
 	}
 
 	this->action_counts[MTA_DELIVER] -= max_move;
@@ -734,7 +734,7 @@ bool StationCargoList::ShiftCargo(Taction &action, StationID next)
  *                 will be kept and the loop will be aborted.
  * @param action Action instance to be applied.
  * @param next Next hop the cargo wants to visit.
- * @param include_invalid If cargo from the INVALID_STATION list should be
+ * @param include_invalid If cargo from the StationID::Invalid() list should be
  *                        used if necessary.
  * @return Amount of cargo actually moved.
  */
@@ -747,7 +747,7 @@ uint StationCargoList::ShiftCargo(Taction action, StationIDStack next, bool incl
 		if (action.MaxMove() == 0) break;
 	}
 	if (include_invalid && action.MaxMove() > 0) {
-		this->ShiftCargo(action, INVALID_STATION);
+		this->ShiftCargo(action, StationID::Invalid());
 	}
 	return max_move - action.MaxMove();
 }

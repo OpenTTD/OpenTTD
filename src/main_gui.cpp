@@ -436,7 +436,7 @@ struct MainWindow : Window
 			bool in = wheel < 0;
 
 			/* When following, only change zoom - otherwise zoom to the cursor. */
-			if (this->viewport->follow_vehicle != INVALID_VEHICLE) {
+			if (this->viewport->follow_vehicle != VehicleID::Invalid()) {
 				DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, this);
 			} else {
 				ZoomInOrOutToCursorWindow(in, this);

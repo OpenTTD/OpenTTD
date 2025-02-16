@@ -644,7 +644,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 
 		/* Check if the engine is registered in the override manager */
 		EngineID engine = _engine_mngr.GetID(type, internal_id, scope_grfid);
-		if (engine != INVALID_ENGINE) {
+		if (engine != EngineID::Invalid()) {
 			Engine *e = Engine::Get(engine);
 			if (!e->grf_prop.HasGrfFile()) {
 				e->grf_prop.grfid = file->grfid;
@@ -656,7 +656,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t inte
 
 	/* Check if there is an unreserved slot */
 	EngineID engine = _engine_mngr.UseUnreservedID(type, internal_id, scope_grfid, static_access);
-	if (engine != INVALID_ENGINE) {
+	if (engine != EngineID::Invalid()) {
 		Engine *e = Engine::Get(engine);
 
 		if (!e->grf_prop.HasGrfFile()) {
@@ -9244,7 +9244,7 @@ static void FinaliseEngineArray()
 		}
 
 		/* Do final mapping on variant engine ID. */
-		if (e->info.variant_id != INVALID_ENGINE) {
+		if (e->info.variant_id != EngineID::Invalid()) {
 			e->info.variant_id = GetNewEngineID(e->grf_prop.grffile, e->type, e->info.variant_id.base());
 		}
 
@@ -9252,7 +9252,7 @@ static void FinaliseEngineArray()
 
 		/* Skip wagons, there livery is defined via the engine */
 		if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
-			LiveryScheme ls = GetEngineLiveryScheme(e->index, INVALID_ENGINE, nullptr);
+			LiveryScheme ls = GetEngineLiveryScheme(e->index, EngineID::Invalid(), nullptr);
 			SetBit(_loaded_newgrf_features.used_liveries, ls);
 			/* Note: For ships and roadvehicles we assume that they cannot be refitted between passenger and freight */
 
@@ -9282,18 +9282,18 @@ static void FinaliseEngineArray()
 	 * on variant engine. This is performed separately as all variant engines need to have been resolved. */
 	for (Engine *e : Engine::Iterate()) {
 		EngineID parent = e->info.variant_id;
-		while (parent != INVALID_ENGINE) {
+		while (parent != EngineID::Invalid()) {
 			parent = Engine::Get(parent)->info.variant_id;
 			if (parent != e->index) continue;
 
 			/* Engine looped back on itself, so clear the variant. */
-			e->info.variant_id = INVALID_ENGINE;
+			e->info.variant_id = EngineID::Invalid();
 
 			GrfMsg(1, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", e->grf_prop.local_id, e->GetGRF()->filename);
 			break;
 		}
 
-		if (e->info.variant_id != INVALID_ENGINE) {
+		if (e->info.variant_id != EngineID::Invalid()) {
 			Engine::Get(e->info.variant_id)->display_flags.Set(EngineDisplayFlag::HasVariants).Set(EngineDisplayFlag::IsFolded);
 		}
 	}

@@ -29,7 +29,7 @@
 /* This file handles all the admin network commands. */
 
 /** Redirection of the (remote) console to the admin. */
-AdminID _redirect_console_to_admin = INVALID_ADMIN_ID;
+AdminID _redirect_console_to_admin = AdminID::Invalid();
 
 /** The pool with sockets/clients. */
 NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
@@ -74,7 +74,7 @@ ServerNetworkAdminSocketHandler::ServerNetworkAdminSocketHandler(SOCKET s) : Net
 ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 {
 	Debug(net, 3, "[admin] '{}' ({}) has disconnected", this->admin_name, this->admin_version);
-	if (_redirect_console_to_admin == this->index) _redirect_console_to_admin = INVALID_ADMIN_ID;
+	if (_redirect_console_to_admin == this->index) _redirect_console_to_admin = AdminID::Invalid();
 
 	if (this->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
 		this->update_frequency[ADMIN_UPDATE_CONSOLE] = (AdminUpdateFrequency)0;
@@ -492,7 +492,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet &p)
 
 	_redirect_console_to_admin = this->index;
 	IConsoleCmdExec(command);
-	_redirect_console_to_admin = INVALID_ADMIN_ID;
+	_redirect_console_to_admin = AdminID::Invalid();
 	return this->SendRconEnd(command);
 }
 

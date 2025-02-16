@@ -118,7 +118,7 @@ class ReplaceVehicleWindow : public Window {
 	void GenerateReplaceVehList(bool draw_left)
 	{
 		std::vector<EngineID> variants;
-		EngineID selected_engine = INVALID_ENGINE;
+		EngineID selected_engine = EngineID::Invalid();
 		VehicleType type = this->window_number;
 		uint8_t side = draw_left ? 0 : 1;
 
@@ -147,7 +147,7 @@ class ReplaceVehicleWindow : public Window {
 				const uint num_engines = GetGroupNumEngines(_local_company, this->sel_group, eid);
 
 				/* Skip drawing the engines we don't have any of and haven't set for replacement */
-				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, this->sel_group) == INVALID_ENGINE) continue;
+				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, this->sel_group) == EngineID::Invalid()) continue;
 			} else {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
@@ -156,7 +156,7 @@ class ReplaceVehicleWindow : public Window {
 
 			if (side == 1) {
 				EngineID parent = e->info.variant_id;
-				while (parent != INVALID_ENGINE) {
+				while (parent != EngineID::Invalid()) {
 					variants.push_back(parent);
 					parent = Engine::Get(parent)->info.variant_id;
 				}
@@ -199,28 +199,28 @@ class ReplaceVehicleWindow : public Window {
 			/* We need to rebuild the left engines list */
 			this->GenerateReplaceVehList(true);
 			this->vscroll[0]->SetCount(this->engines[0].size());
-			if (this->reset_sel_engine && this->sel_engine[0] == INVALID_ENGINE && !this->engines[0].empty()) {
+			if (this->reset_sel_engine && this->sel_engine[0] == EngineID::Invalid() && !this->engines[0].empty()) {
 				this->sel_engine[0] = this->engines[0][0].engine_id;
 			}
 		}
 
 		if (this->engines[1].NeedRebuild() || e != this->sel_engine[0]) {
 			/* Either we got a request to rebuild the right engines list, or the left engines list selected a different engine */
-			if (this->sel_engine[0] == INVALID_ENGINE) {
+			if (this->sel_engine[0] == EngineID::Invalid()) {
 				/* Always empty the right engines list when nothing is selected in the left engines list */
 				this->engines[1].clear();
-				this->sel_engine[1] = INVALID_ENGINE;
+				this->sel_engine[1] = EngineID::Invalid();
 				this->vscroll[1]->SetCount(this->engines[1].size());
 			} else {
-				if (this->reset_sel_engine && this->sel_engine[0] != INVALID_ENGINE) {
+				if (this->reset_sel_engine && this->sel_engine[0] != EngineID::Invalid()) {
 					/* Select the current replacement for sel_engine[0]. */
 					const Company *c = Company::Get(_local_company);
 					this->sel_engine[1] = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group);
 				}
-				/* Regenerate the list on the right. Note: This resets sel_engine[1] to INVALID_ENGINE, if it is no longer available. */
+				/* Regenerate the list on the right. Note: This resets sel_engine[1] to EngineID::Invalid(), if it is no longer available. */
 				this->GenerateReplaceVehList(false);
 				this->vscroll[1]->SetCount(this->engines[1].size());
-				if (this->reset_sel_engine && this->sel_engine[1] != INVALID_ENGINE) {
+				if (this->reset_sel_engine && this->sel_engine[1] != EngineID::Invalid()) {
 					int position = 0;
 					for (const auto &item : this->engines[1]) {
 						if (item.engine_id == this->sel_engine[1]) break;
@@ -272,8 +272,8 @@ public:
 		this->engines[1].ForceRebuild();
 		this->reset_sel_engine = true;
 		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9);
-		this->sel_engine[0] = INVALID_ENGINE;
-		this->sel_engine[1] = INVALID_ENGINE;
+		this->sel_engine[0] = EngineID::Invalid();
+		this->sel_engine[1] = EngineID::Invalid();
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
 
 		this->CreateNestedTree();
@@ -441,7 +441,7 @@ public:
 			case WID_RV_INFO_TAB: {
 				const Company *c = Company::Get(_local_company);
 				StringID str;
-				if (this->sel_engine[0] != INVALID_ENGINE) {
+				if (this->sel_engine[0] != EngineID::Invalid()) {
 					if (!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group)) {
 						str = STR_REPLACE_NOT_REPLACING;
 					} else {
@@ -479,12 +479,12 @@ public:
 		 *    Either engines list is empty
 		 * or The selected replacement engine has a replacement (to prevent loops). */
 		this->SetWidgetDisabledState(WID_RV_START_REPLACE,
-				this->sel_engine[0] == INVALID_ENGINE || this->sel_engine[1] == INVALID_ENGINE || EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != INVALID_ENGINE);
+				this->sel_engine[0] == EngineID::Invalid() || this->sel_engine[1] == EngineID::Invalid() || EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != EngineID::Invalid());
 
 		/* Disable the "Stop Replacing" button if:
 		 *   The left engines list (existing vehicle) is empty
 		 *   or The selected vehicle has no replacement set up */
-		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE, this->sel_engine[0] == INVALID_ENGINE || !EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
+		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE, this->sel_engine[0] == EngineID::Invalid() || !EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
 
 		this->DrawWidgets();
 
@@ -492,7 +492,7 @@ public:
 			int needed_height = this->details_height;
 			/* Draw details panels. */
 			for (int side = 0; side < 2; side++) {
-				if (this->sel_engine[side] != INVALID_ENGINE) {
+				if (this->sel_engine[side] != EngineID::Invalid()) {
 					/* Use default engine details without refitting */
 					const Engine *e = Engine::Get(this->sel_engine[side]);
 					TestedEngineDetails ted;
@@ -575,7 +575,7 @@ public:
 
 			case WID_RV_STOP_REPLACE: { // Stop replacing
 				EngineID veh_from = this->sel_engine[0];
-				Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, INVALID_ENGINE, false);
+				Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, EngineID::Invalid(), false);
 				break;
 			}
 
@@ -588,14 +588,14 @@ public:
 					click_side = 1;
 				}
 
-				EngineID e = INVALID_ENGINE;
+				EngineID e = EngineID::Invalid();
 				const auto it = this->vscroll[click_side]->GetScrolledItemFromWidget(this->engines[click_side], pt.y, this, widget);
 				if (it != this->engines[click_side].end()) {
 					const auto &item = *it;
 					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
 					if (item.flags.Test(EngineDisplayFlag::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
 						/* toggle folded flag on engine */
-						assert(item.variant_id != INVALID_ENGINE);
+						assert(item.variant_id != EngineID::Invalid());
 						Engine *engine = Engine::Get(item.variant_id);
 						engine->display_flags.Flip(EngineDisplayFlag::IsFolded);
 
@@ -608,10 +608,10 @@ public:
 
 				/* If Ctrl is pressed on the left side and we don't have any engines of the selected type, stop autoreplacing.
 				 * This is most common when we have finished autoreplacing the engine and want to remove it from the list. */
-				if (click_side == 0 && _ctrl_pressed && e != INVALID_ENGINE &&
+				if (click_side == 0 && _ctrl_pressed && e != EngineID::Invalid() &&
 					(GetGroupNumEngines(_local_company, sel_group, e) == 0 || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0)) {
 						EngineID veh_from = e;
-						Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, INVALID_ENGINE, false);
+						Command<CMD_SET_AUTOREPLACE>::Post(this->sel_group, veh_from, EngineID::Invalid(), false);
 						break;
 				}
 

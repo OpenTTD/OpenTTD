@@ -57,7 +57,7 @@
 static void ShowNetworkStartServerWindow();
 
 static ClientID _admin_client_id = INVALID_CLIENT_ID; ///< For what client a confirmation window is open.
-static CompanyID _admin_company_id = INVALID_COMPANY; ///< For what company a confirmation window is open.
+static CompanyID _admin_company_id = CompanyID::Invalid(); ///< For what company a confirmation window is open.
 
 /**
  * Update the network new window because a new server is
@@ -1462,7 +1462,7 @@ private:
 	 */
 	static void OnClickCompanyNew([[maybe_unused]] NetworkClientListWindow *w, [[maybe_unused]] Point pt, CompanyID)
 	{
-		Command<CMD_COMPANY_CTRL>::Post(CCA_NEW, INVALID_COMPANY, CRR_NONE, _network_own_client_id);
+		Command<CMD_COMPANY_CTRL>::Post(CCA_NEW, CompanyID::Invalid(), CRR_NONE, _network_own_client_id);
 	}
 
 	/**

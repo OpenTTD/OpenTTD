@@ -96,7 +96,7 @@ public:
 
 		std::vector<BaseEdge> edges; ///< Sorted list of outgoing edges from this node.
 
-		BaseNode(TileIndex xy = INVALID_TILE, StationID st = INVALID_STATION, uint demand = 0);
+		BaseNode(TileIndex xy = INVALID_TILE, StationID st = StationID::Invalid(), uint demand = 0);
 
 		/**
 		 * Update the node's supply and set last_update to the current date.

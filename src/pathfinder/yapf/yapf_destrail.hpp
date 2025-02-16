@@ -159,7 +159,7 @@ public:
 
 			default:
 				this->dest_tile = v->dest_tile;
-				this->dest_station_id = INVALID_STATION;
+				this->dest_station_id = StationID::Invalid();
 				this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_RAIL, 0));
 				break;
 		}
@@ -175,7 +175,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
-		if (this->dest_station_id != INVALID_STATION) {
+		if (this->dest_station_id != StationID::Invalid()) {
 			return HasStationTileRail(tile)
 				&& (GetStationIndex(tile) == this->dest_station_id)
 				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));

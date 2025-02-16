@@ -190,7 +190,7 @@
 		AI::scanner_info = nullptr;
 		AI::scanner_library = nullptr;
 
-		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+		for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 			if (_settings_game.ai_config[c] != nullptr) {
 				delete _settings_game.ai_config[c];
 				_settings_game.ai_config[c] = nullptr;
@@ -208,7 +208,7 @@
 	/* Check for both newgame as current game if we can reload the AIInfo inside
 	 *  the AIConfig. If not, remove the AI from the list (which will assign
 	 *  a random new AI on reload). */
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (_settings_game.ai_config[c] != nullptr && _settings_game.ai_config[c]->HasScript()) {
 			if (!_settings_game.ai_config[c]->ResetInfo(true)) {
 				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
@@ -270,7 +270,7 @@
 	}
 
 	/* Try to send the event to all AIs */
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (c != skip_company) AI::NewEvent(c, event);
 	}
 }

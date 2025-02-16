@@ -376,11 +376,11 @@ static const Livery *LiveryHelper(EngineID engine, const Vehicle *v)
 
 	if (v == nullptr) {
 		if (!Company::IsValidID(_current_company)) return nullptr;
-		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, nullptr, LIT_ALL);
+		l = GetEngineLivery(engine, _current_company, EngineID::Invalid(), nullptr, LIT_ALL);
 	} else if (v->IsGroundVehicle()) {
 		l = GetEngineLivery(v->engine_type, v->owner, v->GetGroundVehicleCache()->first_engine, v, LIT_ALL);
 	} else {
-		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v, LIT_ALL);
+		l = GetEngineLivery(v->engine_type, v->owner, EngineID::Invalid(), v, LIT_ALL);
 	}
 
 	return l;
@@ -839,7 +839,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x57: return GB(ClampTo<int32_t>(v->GetDisplayProfitLastYear()),  8, 24);
 		case 0x58: return GB(ClampTo<int32_t>(v->GetDisplayProfitLastYear()), 16, 16);
 		case 0x59: return GB(ClampTo<int32_t>(v->GetDisplayProfitLastYear()), 24,  8);
-		case 0x5A: return (v->Next() == nullptr ? INVALID_VEHICLE : v->Next()->index).base();
+		case 0x5A: return (v->Next() == nullptr ? VehicleID::Invalid() : v->Next()->index).base();
 		case 0x5B: break; // not implemented
 		case 0x5C: return ClampTo<int32_t>(v->value);
 		case 0x5D: return GB(ClampTo<int32_t>(v->value),  8, 24);
@@ -964,7 +964,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			case 0xC4: return (Clamp(TimerGameCalendar::year, CalendarTime::ORIGINAL_BASE_YEAR, CalendarTime::ORIGINAL_MAX_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base(); // Build year
 			case 0xC6: return Engine::Get(this->self_type)->grf_prop.local_id;
 			case 0xC7: return GB(Engine::Get(this->self_type)->grf_prop.local_id, 8, 8);
-			case 0xDA: return INVALID_VEHICLE.base(); // Next vehicle
+			case 0xDA: return VehicleID::Invalid().base(); // Next vehicle
 			case 0xF2: return 0; // Cargo subtype
 		}
 
@@ -1345,7 +1345,7 @@ void CommitVehicleListOrderChanges()
 		if (engine_source->grf_prop.local_id == loc.target) continue;
 
 		EngineID target = _engine_mngr.GetID(engine_source->type, loc.target, engine_source->grf_prop.grfid);
-		if (target == INVALID_ENGINE) continue;
+		if (target == EngineID::Invalid()) continue;
 
 		auto it_source = std::ranges::find(ordering, source);
 		auto it_target = std::ranges::find(ordering, target);

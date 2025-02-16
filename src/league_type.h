@@ -33,10 +33,8 @@ struct Link {
 
 using LeagueTableID = PoolID<uint8_t, struct LeagueTableIDTag, 255, 0xFF>; ///< ID of a league table
 struct LeagueTable;
-static constexpr LeagueTableID INVALID_LEAGUE_TABLE = LeagueTableID::Invalid(); ///< Invalid/unknown index of LeagueTable
 
 using LeagueTableElementID = PoolID<uint16_t, struct LeagueTableElementIDTag, 64000, 0xFFFF>; ///< ID of a league table
 struct LeagueTableElement;
-static constexpr LeagueTableElementID INVALID_LEAGUE_TABLE_ELEMENT = LeagueTableElementID::Invalid(); ///< Invalid/unknown index of LeagueTableElement
 
 #endif /* LEAGUE_TYPE_H */

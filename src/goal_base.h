@@ -19,7 +19,7 @@ extern GoalPool _goal_pool;
 
 /** Struct about goals, current and completed */
 struct Goal : GoalPool::PoolItem<&_goal_pool> {
-	CompanyID company;    ///< Goal is for a specific company; INVALID_COMPANY if it is global
+	CompanyID company;    ///< Goal is for a specific company; CompanyID::Invalid() if it is global
 	GoalType type;        ///< Type of the goal
 	GoalTypeID dst;       ///< Index of type
 	std::string text;     ///< Text of the goal.

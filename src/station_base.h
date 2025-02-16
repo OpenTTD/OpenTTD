@@ -132,10 +132,10 @@ public:
 		assert(!this->shares.empty());
 		return this->unrestricted > 0 ?
 				this->shares.upper_bound(RandomRange(this->unrestricted))->second :
-				INVALID_STATION;
+				StationID::Invalid();
 	}
 
-	StationID GetVia(StationID excluded, StationID excluded2 = INVALID_STATION) const;
+	StationID GetVia(StationID excluded, StationID excluded2 = StationID::Invalid()) const;
 
 	void Invalidate();
 
@@ -219,7 +219,7 @@ struct GoodsEntry {
 
 	uint max_waiting_cargo = 0; ///< Max cargo from this station waiting at any station.
 	NodeID node = INVALID_NODE; ///< ID of node in link graph referring to this goods entry.
-	LinkGraphID link_graph = INVALID_LINK_GRAPH; ///< Link graph this station belongs to.
+	LinkGraphID link_graph = LinkGraphID::Invalid(); ///< Link graph this station belongs to.
 
 	uint8_t status = 0; ///< Status of this cargo, see #GoodsEntryStatus.
 
@@ -270,14 +270,14 @@ struct GoodsEntry {
 	/**
 	 * Get the best next hop for a cargo packet from station source.
 	 * @param source Source of the packet.
-	 * @return The chosen next hop or INVALID_STATION if none was found.
+	 * @return The chosen next hop or StationID::Invalid() if none was found.
 	 */
 	inline StationID GetVia(StationID source) const
 	{
-		if (!this->HasData()) return INVALID_STATION;
+		if (!this->HasData()) return StationID::Invalid();
 
 		FlowStatMap::const_iterator flow_it(this->GetData().flows.find(source));
-		return flow_it != this->GetData().flows.end() ? flow_it->second.GetVia() : INVALID_STATION;
+		return flow_it != this->GetData().flows.end() ? flow_it->second.GetVia() : StationID::Invalid();
 	}
 
 	/**
@@ -285,15 +285,15 @@ struct GoodsEntry {
 	 * excluding one or two stations.
 	 * @param source Source of the packet.
 	 * @param excluded If this station would be chosen choose the second best one instead.
-	 * @param excluded2 Second station to be excluded, if != INVALID_STATION.
-	 * @return The chosen next hop or INVALID_STATION if none was found.
+	 * @param excluded2 Second station to be excluded, if != StationID::Invalid().
+	 * @return The chosen next hop or StationID::Invalid() if none was found.
 	 */
-	inline StationID GetVia(StationID source, StationID excluded, StationID excluded2 = INVALID_STATION) const
+	inline StationID GetVia(StationID source, StationID excluded, StationID excluded2 = StationID::Invalid()) const
 	{
-		if (!this->HasData()) return INVALID_STATION;
+		if (!this->HasData()) return StationID::Invalid();
 
 		FlowStatMap::const_iterator flow_it(this->GetData().flows.find(source));
-		return flow_it != this->GetData().flows.end() ? flow_it->second.GetVia(excluded, excluded2) : INVALID_STATION;
+		return flow_it != this->GetData().flows.end() ? flow_it->second.GetVia(excluded, excluded2) : StationID::Invalid();
 	}
 
 	/**

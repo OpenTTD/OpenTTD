@@ -310,20 +310,20 @@
 
 /* static */ TownID ScriptTile::GetTownAuthority(TileIndex tile)
 {
-	if (!::IsValidTile(tile)) return INVALID_TOWN;
+	if (!::IsValidTile(tile)) return TownID::Invalid();
 
 	Town *town = ::ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
-	if (town == nullptr) return INVALID_TOWN;
+	if (town == nullptr) return TownID::Invalid();
 
 	return town->index;
 }
 
 /* static */ TownID ScriptTile::GetClosestTown(TileIndex tile)
 {
-	if (!::IsValidTile(tile)) return INVALID_TOWN;
+	if (!::IsValidTile(tile)) return TownID::Invalid();
 
 	Town *town = ::ClosestTownFromTile(tile, UINT_MAX);
-	if (town == nullptr) return INVALID_TOWN;
+	if (town == nullptr) return TownID::Invalid();
 
 	return town->index;
 }

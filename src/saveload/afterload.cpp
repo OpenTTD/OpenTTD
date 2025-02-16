@@ -73,7 +73,7 @@
 
 #include "../safeguards.h"
 
-extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
+extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
 
 /**
  * Makes a tile canal or water depending on the surroundings.
@@ -179,7 +179,7 @@ static void ConvertTownOwner()
 static void UpdateExclusiveRights()
 {
 	for (Town *t : Town::Iterate()) {
-		t->exclusivity = INVALID_COMPANY;
+		t->exclusivity = CompanyID::Invalid();
 	}
 
 	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
@@ -2285,7 +2285,7 @@ bool AfterLoadGame()
 			if (s->remaining < 12) {
 				/* Converting nonawarded subsidy */
 				s->remaining = 12 - s->remaining; // convert "age" to "remaining"
-				s->awarded = INVALID_COMPANY; // not awarded to anyone
+				s->awarded = CompanyID::Invalid(); // not awarded to anyone
 				const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 				switch (cs->town_acceptance_effect) {
 					case TAE_PASSENGERS:
@@ -3416,7 +3416,7 @@ void ReloadNewGRFData()
 	/* Delete news referring to no longer existing entities */
 	DeleteInvalidEngineNews();
 	/* Update livery selection windows */
-	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; ++i) InvalidateWindowData(WC_COMPANY_COLOUR, i);
+	for (CompanyID i = CompanyID::Begin(); i < MAX_COMPANIES; ++i) InvalidateWindowData(WC_COMPANY_COLOUR, i);
 	/* Update company infrastructure counts. */
 	InvalidateWindowClassesData(WC_COMPANY_INFRASTRUCTURE);
 	InvalidateWindowClassesData(WC_BUILD_TOOLBAR);

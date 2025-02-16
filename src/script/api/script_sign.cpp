@@ -74,14 +74,14 @@
 {
 	ScriptObjectRef counter(name);
 
-	EnforceDeityOrCompanyModeValid(INVALID_SIGN);
-	EnforcePrecondition(INVALID_SIGN, ::IsValidTile(location));
-	EnforcePrecondition(INVALID_SIGN, name != nullptr);
+	EnforceDeityOrCompanyModeValid(SignID::Invalid());
+	EnforcePrecondition(SignID::Invalid(), ::IsValidTile(location));
+	EnforcePrecondition(SignID::Invalid(), name != nullptr);
 	const std::string &text = name->GetDecodedText();
-	EnforcePreconditionEncodedText(INVALID_SIGN, text);
-	EnforcePreconditionCustomError(INVALID_SIGN, ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionEncodedText(SignID::Invalid(), text);
+	EnforcePreconditionCustomError(SignID::Invalid(), ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
 
-	if (!ScriptObject::Command<CMD_PLACE_SIGN>::Do(&ScriptInstance::DoCommandReturnSignID, location, text)) return INVALID_SIGN;
+	if (!ScriptObject::Command<CMD_PLACE_SIGN>::Do(&ScriptInstance::DoCommandReturnSignID, location, text)) return SignID::Invalid();
 
 	/* In case of test-mode, we return SignID 0 */
 	return SignID::Begin();

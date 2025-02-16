@@ -35,7 +35,7 @@
 	HopSet seen_hops;
 	LinkRefresher refresher(v, &seen_hops, allow_merge, is_full_loading);
 
-	refresher.RefreshLinks(first, first, v->last_loading_station != INVALID_STATION ? 1 << HAS_CARGO : 0);
+	refresher.RefreshLinks(first, first, v->last_loading_station != StationID::Invalid() ? 1 << HAS_CARGO : 0);
 }
 
 /**
@@ -200,7 +200,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 {
 	StationID next_station = next->GetDestination().ToStationID();
 	Station *st = Station::GetIfValid(cur->GetDestination().ToStationID());
-	if (st != nullptr && next_station != INVALID_STATION && next_station != st->index) {
+	if (st != nullptr && next_station != StationID::Invalid() && next_station != st->index) {
 		Station *st_to = Station::Get(next_station);
 		for (CargoType c = 0; c < NUM_CARGO; c++) {
 			/* Refresh the link and give it a minimum capacity. */

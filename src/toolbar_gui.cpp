@@ -173,7 +173,7 @@ static void PopupMainCompanyToolbMenu(Window *w, WidgetID widget, CompanyMask gr
 			break;
 	}
 
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (!Company::IsValidID(c)) continue;
 		list.push_back(std::make_unique<DropDownListCompanyItem>(c, grey.Test(c)));
 	}
@@ -615,7 +615,7 @@ static CallBackFunction ToolbarStoryClick(Window *w)
  */
 static CallBackFunction MenuClickStory(int index)
 {
-	ShowStoryBook(index == CTMN_SPECTATOR ? INVALID_COMPANY : (CompanyID)index);
+	ShowStoryBook(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
 	return CBF_NONE;
 }
 
@@ -635,7 +635,7 @@ static CallBackFunction ToolbarGoalClick(Window *w)
  */
 static CallBackFunction MenuClickGoal(int index)
 {
-	ShowGoalsList(index == CTMN_SPECTATOR ? INVALID_COMPANY : (CompanyID)index);
+	ShowGoalsList(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
 	return CBF_NONE;
 }
 
@@ -1164,7 +1164,7 @@ static CallBackFunction MenuClickHelp(int index)
 		case  0: return PlaceLandBlockInfo();
 		case  1: ShowHelpWindow();                 break;
 		case  2: IConsoleSwitch();                 break;
-		case  3: ShowScriptDebugWindow(INVALID_COMPANY, _ctrl_pressed); break;
+		case  3: ShowScriptDebugWindow(CompanyID::Invalid(), _ctrl_pressed); break;
 		case  4: ShowScreenshotWindow();           break;
 		case  5: ShowFramerateWindow();            break;
 		case  6: ShowAboutWindow();                break;

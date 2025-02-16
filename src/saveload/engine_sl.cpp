@@ -83,7 +83,7 @@ struct ENGNChunkHandler : ChunkHandler {
 				/* preview_company_rank was replaced with preview_company and preview_asked.
 				 * Just cancel any previews. */
 				e->flags.Reset(EngineFlag{4}); // ENGINE_OFFER_WINDOW_OPEN
-				e->preview_company = INVALID_COMPANY;
+				e->preview_company = CompanyID::Invalid();
 				e->preview_asked.Set();
 			}
 		}

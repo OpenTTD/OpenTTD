@@ -19,8 +19,5 @@ struct StoryPageElement;
 struct StoryPage;
 enum StoryPageElementType : uint8_t;
 
-static constexpr StoryPageElementID INVALID_STORY_PAGE_ELEMENT = StoryPageElementID::Invalid(); ///< Constant representing a non-existing story page element.
-static constexpr StoryPageID INVALID_STORY_PAGE = StoryPageID::Invalid(); ///< Constant representing a non-existing story page.
-
 #endif /* STORY_TYPE_H */
 

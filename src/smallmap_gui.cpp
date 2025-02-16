@@ -60,25 +60,25 @@ static uint8_t _linkstat_colours_in_legenda[] = {0, 1, 3, 5, 7, 9, 11};
 static const int NUM_NO_COMPANY_ENTRIES = 4; ///< Number of entries in the owner legend that are not companies.
 
 /** Macro for ordinary entry of LegendAndColour */
-#define MK(a, b) {a, b, IT_INVALID, 0, INVALID_COMPANY, true, false, false}
+#define MK(a, b) {a, b, IT_INVALID, 0, CompanyID::Invalid(), true, false, false}
 
 /** Macro for a height legend entry with configurable colour. */
-#define MC(col_break)  {0, STR_TINY_BLACK_HEIGHT, IT_INVALID, 0, INVALID_COMPANY, true, false, col_break}
+#define MC(col_break)  {0, STR_TINY_BLACK_HEIGHT, IT_INVALID, 0, CompanyID::Invalid(), true, false, col_break}
 
 /** Macro for non-company owned property entry of LegendAndColour */
-#define MO(a, b) {a, b, IT_INVALID, 0, INVALID_COMPANY, true, false, false}
+#define MO(a, b) {a, b, IT_INVALID, 0, CompanyID::Invalid(), true, false, false}
 
 /** Macro used for forcing a rebuild of the owner legend the first time it is used. */
 #define MOEND() {0, STR_NULL, IT_INVALID, 0, OWNER_NONE, true, true, false}
 
 /** Macro for end of list marker in arrays of LegendAndColour */
-#define MKEND() {0, STR_NULL, IT_INVALID, 0, INVALID_COMPANY, true, true, false}
+#define MKEND() {0, STR_NULL, IT_INVALID, 0, CompanyID::Invalid(), true, true, false}
 
 /**
  * Macro for break marker in arrays of LegendAndColour.
  * It will have valid data, though
  */
-#define MS(a, b) {a, b, IT_INVALID, 0, INVALID_COMPANY, true, false, true}
+#define MS(a, b) {a, b, IT_INVALID, 0, CompanyID::Invalid(), true, false, true}
 
 /** Legend text giving the colours to look for on the minimap */
 static LegendAndColour _legend_land_contours[] = {
@@ -1538,7 +1538,7 @@ public:
 					SetDParam(0, tbl->legend);
 					str = STR_SMALLMAP_LINKSTATS;
 				} else if (i == SMT_OWNER) {
-					if (tbl->company != INVALID_COMPANY) {
+					if (tbl->company != CompanyID::Invalid()) {
 						if (!Company::IsValidID(tbl->company)) {
 							/* Rebuild the owner legend. */
 							BuildOwnerLegend();
@@ -1581,7 +1581,7 @@ public:
 	{
 		if (this->map_type == SMT_OWNER) {
 			for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
-				if (tbl->company != INVALID_COMPANY && !Company::IsValidID(tbl->company)) {
+				if (tbl->company != CompanyID::Invalid() && !Company::IsValidID(tbl->company)) {
 					/* Rebuild the owner legend. */
 					BuildOwnerLegend();
 					this->InvalidateData(1);
@@ -1660,7 +1660,7 @@ public:
 							[[fallthrough]];
 
 						case SMT_OWNER:
-							if (this->map_type != SMT_OWNER || tbl->company != INVALID_COMPANY) {
+							if (this->map_type != SMT_OWNER || tbl->company != CompanyID::Invalid()) {
 								if (this->map_type == SMT_OWNER) SetDParam(0, tbl->company);
 								if (!tbl->show_on_map) {
 									/* Simply draw the string, not the black border of the legend colour.

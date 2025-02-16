@@ -33,13 +33,13 @@
 	/* If this assert gets triggered, then ScriptCompany::ResolveCompanyID needed to be called before. */
 	assert(company != ScriptCompany::COMPANY_SELF && company != ScriptCompany::COMPANY_SPECTATOR);
 
-	if (company == ScriptCompany::COMPANY_INVALID) return ::INVALID_COMPANY;
+	if (company == ScriptCompany::COMPANY_INVALID) return ::CompanyID::Invalid();
 	return static_cast<::CompanyID>(company);
 }
 
 /* static */ ScriptCompany::CompanyID ScriptCompany::ToScriptCompanyID(::CompanyID company)
 {
-	if (company == ::INVALID_COMPANY) return ScriptCompany::COMPANY_INVALID;
+	if (company == ::CompanyID::Invalid()) return ScriptCompany::COMPANY_INVALID;
 	return static_cast<::ScriptCompany::CompanyID>(company.base());
 }
 

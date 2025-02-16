@@ -124,7 +124,7 @@ protected:
 	 */
 	bool IsPageAvailable(const StoryPage *page) const
 	{
-		return page->company == INVALID_COMPANY || page->company == this->window_number;
+		return page->company == CompanyID::Invalid() || page->company == this->window_number;
 	}
 
 	/**
@@ -191,7 +191,7 @@ protected:
 		this->story_page_elements.ForceRebuild();
 		this->BuildStoryPageElementList();
 
-		if (this->active_button_id != INVALID_STORY_PAGE_ELEMENT) ResetObjectToPlace();
+		if (this->active_button_id != StoryPageElementID::Invalid()) ResetObjectToPlace();
 
 		this->vscroll->SetCount(this->GetContentHeight());
 		this->SetWidgetDirty(WID_SB_SCROLLBAR);
@@ -551,18 +551,18 @@ protected:
 				break;
 
 			case SPET_BUTTON_PUSH:
-				if (this->active_button_id != INVALID_STORY_PAGE_ELEMENT) ResetObjectToPlace();
+				if (this->active_button_id != StoryPageElementID::Invalid()) ResetObjectToPlace();
 				this->active_button_id = pe.index;
 				this->SetTimeout();
 				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 
-				Command<CMD_STORY_PAGE_BUTTON>::Post(TileIndex{}, pe.index, INVALID_VEHICLE);
+				Command<CMD_STORY_PAGE_BUTTON>::Post(TileIndex{}, pe.index, VehicleID::Invalid());
 				break;
 
 			case SPET_BUTTON_TILE:
 				if (this->active_button_id == pe.index) {
 					ResetObjectToPlace();
-					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+					this->active_button_id = StoryPageElementID::Invalid();
 				} else {
 					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
 					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_RECT, this);
@@ -574,7 +574,7 @@ protected:
 			case SPET_BUTTON_VEHICLE:
 				if (this->active_button_id == pe.index) {
 					ResetObjectToPlace();
-					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+					this->active_button_id = StoryPageElementID::Invalid();
 				} else {
 					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
 					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_VEHICLE, this);
@@ -607,9 +607,9 @@ public:
 
 		/* Initialize selected vars. */
 		this->selected_generic_title.clear();
-		this->selected_page_id = INVALID_STORY_PAGE;
+		this->selected_page_id = StoryPageID::Invalid();
 
-		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+		this->active_button_id = StoryPageElementID::Invalid();
 
 		this->OnInvalidateData(-1);
 	}
@@ -633,7 +633,7 @@ public:
 	{
 		if (this->selected_page_id != page_index) {
 			if (this->active_button_id != 0) ResetObjectToPlace();
-			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+			this->active_button_id = StoryPageElementID::Invalid();
 			this->selected_page_id = page_index;
 			this->RefreshSelectedPage();
 			this->UpdatePrevNextDisabledState();
@@ -649,7 +649,7 @@ public:
 				break;
 			}
 			case WID_SB_CAPTION:
-				if (this->window_number == INVALID_COMPANY) {
+				if (this->window_number == CompanyID::Invalid()) {
 					SetDParam(0, STR_STORY_BOOK_SPECTATOR_CAPTION);
 				} else {
 					SetDParam(0, STR_STORY_BOOK_CAPTION);
@@ -872,9 +872,9 @@ public:
 
 			/* Verify page selection. */
 			if (!StoryPage::IsValidID(this->selected_page_id)) {
-				this->selected_page_id = INVALID_STORY_PAGE;
+				this->selected_page_id = StoryPageID::Invalid();
 			}
-			if (this->selected_page_id == INVALID_STORY_PAGE && !this->story_pages.empty()) {
+			if (this->selected_page_id == StoryPageID::Invalid() && !this->story_pages.empty()) {
 				/* No page is selected, but there exist at least one available.
 				 * => Select first page.
 				 */
@@ -891,7 +891,7 @@ public:
 
 	void OnTimeout() override
 	{
-		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+		this->active_button_id = StoryPageElementID::Invalid();
 		this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 	}
 
@@ -900,12 +900,12 @@ public:
 		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
 		if (pe == nullptr || pe->type != SPET_BUTTON_TILE) {
 			ResetObjectToPlace();
-			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+			this->active_button_id = StoryPageElementID::Invalid();
 			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 			return;
 		}
 
-		Command<CMD_STORY_PAGE_BUTTON>::Post(tile, pe->index, INVALID_VEHICLE);
+		Command<CMD_STORY_PAGE_BUTTON>::Post(tile, pe->index, VehicleID::Invalid());
 		ResetObjectToPlace();
 	}
 
@@ -914,7 +914,7 @@ public:
 		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
 		if (pe == nullptr || pe->type != SPET_BUTTON_VEHICLE) {
 			ResetObjectToPlace();
-			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+			this->active_button_id = StoryPageElementID::Invalid();
 			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 			return false;
 		}
@@ -931,7 +931,7 @@ public:
 
 	void OnPlaceObjectAbort() override
 	{
-		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+		this->active_button_id = StoryPageElementID::Invalid();
 		this->SetWidgetDirty(WID_SB_PAGE_PANEL);
 	}
 };
@@ -1043,14 +1043,14 @@ static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
 
 /**
  * Raise or create the story book window for \a company, at page \a page_id.
- * @param company 'Owner' of the story book, may be #INVALID_COMPANY.
- * @param page_id Page to open, may be #INVALID_STORY_PAGE.
+ * @param company 'Owner' of the story book, may be #CompanyID::Invalid().
+ * @param page_id Page to open, may be #StoryPageID::Invalid().
  * @param centered Whether to open the window centered.
  */
 void ShowStoryBook(CompanyID company, StoryPageID page_id, bool centered)
 {
-	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
+	if (!Company::IsValidID(company)) company = (CompanyID)CompanyID::Invalid();
 
 	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow, true>(centered ? _story_book_gs_desc : _story_book_desc, company);
-	if (page_id != INVALID_STORY_PAGE) w->SetSelectedPage(page_id);
+	if (page_id != StoryPageID::Invalid()) w->SetSelectedPage(page_id);
 }

@@ -53,6 +53,6 @@ extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
 uint GetEngineListHeight(VehicleType type);
 void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, WidgetID button);
 void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group);
-void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, EngineID parent = INVALID_ENGINE, uint8_t indent = 0);
+void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, EngineID parent = EngineID::Invalid(), uint8_t indent = 0);
 
 #endif /* ENGINE_GUI_H */

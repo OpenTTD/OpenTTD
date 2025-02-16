@@ -59,7 +59,7 @@ void RemoveAllEngineReplacement(EngineRenewList *erl)
  * @param engine Engine type to be replaced.
  * @param group The group related to this replacement.
  * @param[out] replace_when_old Set to true if the replacement should be done when old.
- * @return The engine type to replace with, or INVALID_ENGINE if no
+ * @return The engine type to replace with, or EngineID::Invalid() if no
  * replacement is in the list.
  */
 EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, bool *replace_when_old)
@@ -81,7 +81,7 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, 
 			*replace_when_old = er->replace_when_old;
 		}
 	}
-	return er == nullptr ? INVALID_ENGINE : er->to;
+	return er == nullptr ? EngineID::Invalid() : er->to;
 }
 
 /**

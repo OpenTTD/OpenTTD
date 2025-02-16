@@ -53,7 +53,7 @@ struct GRPSChunkHandler : ChunkHandler {
 			Group *g = new (index) Group();
 			SlObject(g, slt);
 
-			if (IsSavegameVersionBefore(SLV_189)) g->parent = INVALID_GROUP;
+			if (IsSavegameVersionBefore(SLV_189)) g->parent = GroupID::Invalid();
 		}
 	}
 };

@@ -399,7 +399,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 				t->exclusivity = new_owner;
 			} else {
 				t->exclusive_counter = 0;
-				t->exclusivity = INVALID_COMPANY;
+				t->exclusivity = CompanyID::Invalid();
 			}
 		}
 	}
@@ -1114,7 +1114,7 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 	Station *st = Station::Get(dest);
 
 	/* Give the goods to the industry. */
-	uint accepted_ind = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src.type == SourceType::Industry ? src.ToIndustryID() : INVALID_INDUSTRY, company->index);
+	uint accepted_ind = DeliverGoodsToIndustry(st, cargo_type, num_pieces, src.type == SourceType::Industry ? src.ToIndustryID() : IndustryID::Invalid(), company->index);
 
 	/* If this cargo type is always accepted, accept all */
 	uint accepted_total = HasBit(st->always_accepted, cargo_type) ? num_pieces : accepted_ind;
@@ -1507,7 +1507,7 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 
 	bool is_auto_refit = new_cargo_type == CARGO_AUTO_REFIT;
 	if (is_auto_refit) {
-		/* Get a refittable cargo type with waiting cargo for next_station or INVALID_STATION. */
+		/* Get a refittable cargo type with waiting cargo for next_station or StationID::Invalid(). */
 		new_cargo_type = v_start->cargo_type;
 		for (CargoType cargo_type : SetCargoBitIterator(refit_mask)) {
 			if (st->goods[cargo_type].HasData() && st->goods[cargo_type].GetData().cargo.HasCargoFor(next_station)) {
@@ -1531,11 +1531,11 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 
 	/* Refit if given a valid cargo. */
 	if (new_cargo_type < NUM_CARGO && new_cargo_type != v_start->cargo_type) {
-		/* INVALID_STATION because in the DT_MANUAL case that's correct and in the DT_(A)SYMMETRIC
+		/* StationID::Invalid() because in the DT_MANUAL case that's correct and in the DT_(A)SYMMETRIC
 		 * cases the next hop of the vehicle doesn't really tell us anything if the cargo had been
 		 * "via any station" before reserving. We rather produce some more "any station" cargo than
 		 * misrouting it. */
-		IterateVehicleParts(v_start, ReturnCargoAction(st, INVALID_STATION));
+		IterateVehicleParts(v_start, ReturnCargoAction(st, StationID::Invalid()));
 		CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(DoCommandFlag::Execute, v_start->index, new_cargo_type, 0xFF, true, false, 1)); // Auto-refit and only this vehicle including artic parts.
 		if (cost.Succeeded()) v->First()->profit_this_year -= cost.GetCost() << 8;
 	}
@@ -1700,7 +1700,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 					uint new_remaining = v->cargo.RemainingCount() + v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER);
 					if (v->cargo_cap < new_remaining) {
 						/* Return some of the reserved cargo to not overload the vehicle. */
-						v->cargo.Return(new_remaining - v->cargo_cap, &ge->GetOrCreateData().cargo, INVALID_STATION, v->GetCargoTile());
+						v->cargo.Return(new_remaining - v->cargo_cap, &ge->GetOrCreateData().cargo, StationID::Invalid(), v->GetCargoTile());
 					}
 
 					/* Keep instead of delivering. This may lead to no cargo being unloaded, so ...*/

@@ -2063,7 +2063,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 	for (uint i = 0; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
 
 	t->have_ratings = {};
-	t->exclusivity = INVALID_COMPANY;
+	t->exclusivity = CompanyID::Invalid();
 	t->exclusive_counter = 0;
 	t->statues = {};
 
@@ -2156,37 +2156,37 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
-	if (size >= TSZ_END) return { CMD_ERROR, 0, INVALID_TOWN };
-	if (layout >= NUM_TLS) return { CMD_ERROR, 0, INVALID_TOWN };
+	if (size >= TSZ_END) return { CMD_ERROR, 0, TownID::Invalid() };
+	if (layout >= NUM_TLS) return { CMD_ERROR, 0, TownID::Invalid() };
 
 	/* Some things are allowed only in the scenario editor and for game scripts. */
 	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) {
-		if (_settings_game.economy.found_town == TF_FORBIDDEN) return { CMD_ERROR, 0, INVALID_TOWN };
-		if (size == TSZ_LARGE) return { CMD_ERROR, 0, INVALID_TOWN };
-		if (random_location) return { CMD_ERROR, 0, INVALID_TOWN };
+		if (_settings_game.economy.found_town == TF_FORBIDDEN) return { CMD_ERROR, 0, TownID::Invalid() };
+		if (size == TSZ_LARGE) return { CMD_ERROR, 0, TownID::Invalid() };
+		if (random_location) return { CMD_ERROR, 0, TownID::Invalid() };
 		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && layout != _settings_game.economy.town_layout) {
-			return { CMD_ERROR, 0, INVALID_TOWN };
+			return { CMD_ERROR, 0, TownID::Invalid() };
 		}
 	} else if (_current_company == OWNER_DEITY && random_location) {
 		/* Random parameter is not allowed for Game Scripts. */
-		return { CMD_ERROR, 0, INVALID_TOWN };
+		return { CMD_ERROR, 0, TownID::Invalid() };
 	}
 
 	if (text.empty()) {
 		/* If supplied name is empty, townnameparts has to generate unique automatic name */
-		if (!VerifyTownName(townnameparts, &par)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), 0, INVALID_TOWN };
+		if (!VerifyTownName(townnameparts, &par)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), 0, TownID::Invalid() };
 	} else {
 		/* If name is not empty, it has to be unique custom name */
-		if (Utf8StringLength(text) >= MAX_LENGTH_TOWN_NAME_CHARS) return { CMD_ERROR, 0, INVALID_TOWN };
-		if (!IsUniqueTownName(text)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), 0, INVALID_TOWN };
+		if (Utf8StringLength(text) >= MAX_LENGTH_TOWN_NAME_CHARS) return { CMD_ERROR, 0, TownID::Invalid() };
+		if (!IsUniqueTownName(text)) return { CommandCost(STR_ERROR_NAME_MUST_BE_UNIQUE), 0, TownID::Invalid() };
 	}
 
 	/* Allocate town struct */
-	if (!Town::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_TOWNS), 0, INVALID_TOWN };
+	if (!Town::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_TOWNS), 0, TownID::Invalid() };
 
 	if (!random_location) {
 		CommandCost ret = TownCanBePlacedHere(tile);
-		if (ret.Failed()) return { ret, 0, INVALID_TOWN };
+		if (ret.Failed()) return { ret, 0, TownID::Invalid() };
 	}
 
 	static const uint8_t price_mult[][TSZ_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
@@ -2199,10 +2199,10 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 	cost.MultiplyCost(mult);
 
 	/* Create the town */
-	TownID new_town = INVALID_TOWN;
+	TownID new_town = TownID::Invalid();
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (cost.GetCost() > GetAvailableMoneyForCommand()) {
-			return { CommandCost(EXPENSES_OTHER), cost.GetCost(), INVALID_TOWN };
+			return { CommandCost(EXPENSES_OTHER), cost.GetCost(), TownID::Invalid() };
 		}
 
 		Backup<bool> old_generating_world(_generating_world, true);
@@ -2218,7 +2218,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 		UpdateNearestTownForRoadTiles(false);
 		old_generating_world.Restore();
 
-		if (t == nullptr) return { CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN), 0, INVALID_TOWN };
+		if (t == nullptr) return { CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN), 0, TownID::Invalid() };
 
 		new_town = t->index;
 
@@ -3555,7 +3555,7 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlags flags)
 {
 	/* Check if it's allowed to buy the rights */
 	if (!_settings_game.economy.exclusive_rights) return CMD_ERROR;
-	if (t->exclusivity != INVALID_COMPANY) return CMD_ERROR;
+	if (t->exclusivity != CompanyID::Invalid()) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		t->exclusive_counter = 12;
@@ -3612,8 +3612,8 @@ static CommandCost TownActionBribe(Town *t, DoCommandFlags flags)
 			}
 		} else {
 			ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DoCommandFlag::Execute);
-			if (t->exclusivity != _current_company && t->exclusivity != INVALID_COMPANY) {
-				t->exclusivity = INVALID_COMPANY;
+			if (t->exclusivity != _current_company && t->exclusivity != CompanyID::Invalid()) {
+				t->exclusivity = CompanyID::Invalid();
 				t->exclusive_counter = 0;
 			}
 		}
@@ -3938,8 +3938,8 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 			if (!HasTownOwnedRoad(tile)) {
 				TownID tid = GetTownIndex(tile);
 
-				if (tid == INVALID_TOWN) {
-					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
+				if (tid == TownID::Invalid()) {
+					/* in the case we are generating "many random towns", this value may be TownID::Invalid() */
 					if (_generating_world) return CalcClosestTownFromTile(tile, threshold);
 					assert(Town::GetNumItems() == 0);
 					return nullptr;
@@ -4083,7 +4083,7 @@ static IntervalTimer<TimerGameEconomy> _economy_towns_monthly({TimerGameEconomy:
 		if (t->fund_buildings_months != 0) t->fund_buildings_months--;
 
 		if (t->exclusive_counter != 0) {
-			if (--t->exclusive_counter == 0) t->exclusivity = INVALID_COMPANY;
+			if (--t->exclusive_counter == 0) t->exclusivity = CompanyID::Invalid();
 		}
 
 		/* Check for active failed bribe cooloff periods and decrement them. */

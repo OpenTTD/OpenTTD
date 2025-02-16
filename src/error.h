@@ -38,17 +38,17 @@ protected:
 	EncodedString detailed_msg; ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
 	EncodedString extra_msg; ///< Extra error message shown in third line. Can be #INVALID_STRING_ID.
 	Point position;                 ///< Position of the error message window.
-	CompanyID company; ///< Company belonging to the face being shown. #INVALID_COMPANY if no face present.
+	CompanyID company; ///< Company belonging to the face being shown. #CompanyID::Invalid() if no face present.
 
 public:
 	ErrorMessageData(const ErrorMessageData &data);
-	ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical = false, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32_t *textref_stack = nullptr, EncodedString &&extra_msg = {}, CompanyID company = INVALID_COMPANY);
+	ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical = false, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32_t *textref_stack = nullptr, EncodedString &&extra_msg = {}, CompanyID company = CompanyID::Invalid());
 
 	/* Remove the copy assignment, as the default implementation will not do the right thing. */
 	ErrorMessageData &operator=(ErrorMessageData &rhs) = delete;
 
 	/** Check whether error window shall display a company manager face */
-	bool HasFace() const { return company != INVALID_COMPANY; }
+	bool HasFace() const { return company != CompanyID::Invalid(); }
 };
 
 /** Define a queue with errors. */
@@ -58,7 +58,7 @@ void ScheduleErrorMessage(ErrorList &datas);
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
 void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, const CommandCost &cc);
-void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32_t *textref_stack = nullptr, EncodedString &&extra_msg = {}, CompanyID company = INVALID_COMPANY);
+void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32_t *textref_stack = nullptr, EncodedString &&extra_msg = {}, CompanyID company = CompanyID::Invalid());
 bool HideActiveErrorMessage();
 
 void ClearErrorMessages();

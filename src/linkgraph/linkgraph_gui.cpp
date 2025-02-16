@@ -561,7 +561,7 @@ void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay
 {
 	this->overlay = overlay;
 	CompanyMask companies = this->overlay->GetCompanyMask();
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (!this->IsWidgetDisabled(WID_LGL_COMPANY_FIRST + c)) {
 			this->SetWidgetLoweredState(WID_LGL_COMPANY_FIRST + c, companies.Test(c));
 		}
@@ -658,7 +658,7 @@ bool LinkGraphLegendWindow::OnTooltip([[maybe_unused]] Point, WidgetID widget, T
 void LinkGraphLegendWindow::UpdateOverlayCompanies()
 {
 	CompanyMask mask;
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (this->IsWidgetDisabled(WID_LGL_COMPANY_FIRST + c)) continue;
 		if (!this->IsWidgetLowered(WID_LGL_COMPANY_FIRST + c)) continue;
 		mask.Set(c);
@@ -688,7 +688,7 @@ void LinkGraphLegendWindow::OnClick([[maybe_unused]] Point pt, WidgetID widget, 
 			this->UpdateOverlayCompanies();
 		}
 	} else if (widget == WID_LGL_COMPANIES_ALL || widget == WID_LGL_COMPANIES_NONE) {
-		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+		for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 			if (this->IsWidgetDisabled(WID_LGL_COMPANY_FIRST + c)) continue;
 			this->SetWidgetLoweredState(WID_LGL_COMPANY_FIRST + c, widget == WID_LGL_COMPANIES_ALL);
 		}
@@ -719,7 +719,7 @@ void LinkGraphLegendWindow::OnInvalidateData([[maybe_unused]] int data, [[maybe_
 	}
 
 	/* Disable the companies who are not active */
-	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; ++i) {
+	for (CompanyID i = CompanyID::Begin(); i < MAX_COMPANIES; ++i) {
 		this->SetWidgetDisabledState(WID_LGL_COMPANY_FIRST + i, !Company::IsValidID(i));
 	}
 }

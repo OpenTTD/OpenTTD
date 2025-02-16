@@ -55,9 +55,9 @@ bool IsValidLink(Link link)
  */
 std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags, const std::string &title, const std::string &header, const std::string &footer)
 {
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_LEAGUE_TABLE };
-	if (!LeagueTable::CanAllocateItem()) return { CMD_ERROR, INVALID_LEAGUE_TABLE };
-	if (title.empty()) return { CMD_ERROR, INVALID_LEAGUE_TABLE };
+	if (_current_company != OWNER_DEITY) return { CMD_ERROR, LeagueTableID::Invalid() };
+	if (!LeagueTable::CanAllocateItem()) return { CMD_ERROR, LeagueTableID::Invalid() };
+	if (title.empty()) return { CMD_ERROR, LeagueTableID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		LeagueTable *lt = new LeagueTable();
@@ -67,7 +67,7 @@ std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags
 		return { CommandCost(), lt->index };
 	}
 
-	return { CommandCost(), INVALID_LEAGUE_TABLE };
+	return { CommandCost(), LeagueTableID::Invalid() };
 }
 
 
@@ -76,7 +76,7 @@ std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags
  * @param flags type of operation
  * @param table Id of the league table this element belongs to
  * @param rating Value that elements are ordered by
- * @param company Company to show the color blob for or INVALID_COMPANY
+ * @param company Company to show the color blob for or CompanyID::Invalid()
  * @param text Text of the element
  * @param score String representation of the score associated with the element
  * @param link_type Type of the referenced object
@@ -85,11 +85,11 @@ std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags
  */
 std::tuple<CommandCost, LeagueTableElementID> CmdCreateLeagueTableElement(DoCommandFlags flags, LeagueTableID table, int64_t rating, CompanyID company, const std::string &text, const std::string &score, LinkType link_type, LinkTargetID link_target)
 {
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_LEAGUE_TABLE_ELEMENT };
-	if (!LeagueTableElement::CanAllocateItem()) return { CMD_ERROR, INVALID_LEAGUE_TABLE_ELEMENT };
+	if (_current_company != OWNER_DEITY) return { CMD_ERROR, LeagueTableElementID::Invalid() };
+	if (!LeagueTableElement::CanAllocateItem()) return { CMD_ERROR, LeagueTableElementID::Invalid() };
 	Link link{link_type, link_target};
-	if (!IsValidLink(link)) return { CMD_ERROR, INVALID_LEAGUE_TABLE_ELEMENT };
-	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_LEAGUE_TABLE_ELEMENT };
+	if (!IsValidLink(link)) return { CMD_ERROR, LeagueTableElementID::Invalid() };
+	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return { CMD_ERROR, LeagueTableElementID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		LeagueTableElement *lte = new LeagueTableElement();
@@ -102,14 +102,14 @@ std::tuple<CommandCost, LeagueTableElementID> CmdCreateLeagueTableElement(DoComm
 		InvalidateWindowData(WC_COMPANY_LEAGUE, table);
 		return { CommandCost(), lte->index };
 	}
-	return { CommandCost(), INVALID_LEAGUE_TABLE_ELEMENT };
+	return { CommandCost(), LeagueTableElementID::Invalid() };
 }
 
 /**
  * Update the attributes of a league table element.
  * @param flags type of operation
  * @param element Id of the element to update
- * @param company Company to show the color blob for or INVALID_COMPANY
+ * @param company Company to show the color blob for or CompanyID::Invalid()
  * @param text Text of the element
  * @param link_type Type of the referenced object
  * @param link_target Id of the referenced object
@@ -120,7 +120,7 @@ CommandCost CmdUpdateLeagueTableElementData(DoCommandFlags flags, LeagueTableEle
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	auto lte = LeagueTableElement::GetIfValid(element);
 	if (lte == nullptr) return CMD_ERROR;
-	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
+	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return CMD_ERROR;
 	Link link{link_type, link_target};
 	if (!IsValidLink(link)) return CMD_ERROR;
 

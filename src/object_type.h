@@ -32,6 +32,4 @@ using ObjectID = PoolID<uint32_t, struct ObjectIDTag, 0xFF0000, 0xFFFFFFFF>;
 struct Object;
 struct ObjectSpec;
 
-static constexpr ObjectID INVALID_OBJECT = ObjectID::Invalid(); ///< An invalid object
-
 #endif /* OBJECT_TYPE_H */

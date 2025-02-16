@@ -47,7 +47,7 @@ struct GoalListWindow : public Window {
 		this->FinishInitNested(window_number);
 		this->owner = this->window_number;
 		NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(WID_GOAL_SELECT_BUTTONS);
-		wi->SetDisplayedPlane(window_number == INVALID_COMPANY ? 1 : 0);
+		wi->SetDisplayedPlane(window_number == CompanyID::Invalid() ? 1 : 0);
 		this->OnInvalidateData(0);
 	}
 
@@ -55,7 +55,7 @@ struct GoalListWindow : public Window {
 	{
 		if (widget != WID_GOAL_CAPTION) return;
 
-		if (this->window_number == INVALID_COMPANY) {
+		if (this->window_number == CompanyID::Invalid()) {
 			SetDParam(0, STR_GOALS_SPECTATOR_CAPTION);
 		} else {
 			SetDParam(0, STR_GOALS_CAPTION);
@@ -67,7 +67,7 @@ struct GoalListWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GOAL_GLOBAL_BUTTON:
-				ShowGoalsList(INVALID_COMPANY);
+				ShowGoalsList(CompanyID::Invalid());
 				break;
 
 			case WID_GOAL_COMPANY_BUTTON:
@@ -134,7 +134,7 @@ struct GoalListWindow : public Window {
 				 */
 				CompanyID goal_company = s->company;
 				CompanyID story_company = StoryPage::Get(s->dst)->company;
-				if (goal_company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != goal_company) return;
+				if (goal_company == CompanyID::Invalid() ? story_company != CompanyID::Invalid() : story_company != CompanyID::Invalid() && story_company != goal_company) return;
 
 				ShowStoryBook(static_cast<CompanyID>(this->window_number), static_cast<StoryPageID>(s->dst));
 				return;
@@ -311,11 +311,11 @@ static WindowDesc _goals_list_desc(
 
 /**
  * Open a goal list window.
- * @param company %Company to display the goals for, use #INVALID_COMPANY to display global goals.
+ * @param company %Company to display the goals for, use #CompanyID::Invalid() to display global goals.
  */
 void ShowGoalsList(CompanyID company)
 {
-	if (!Company::IsValidID(company)) company = (CompanyID)INVALID_COMPANY;
+	if (!Company::IsValidID(company)) company = (CompanyID)CompanyID::Invalid();
 
 	AllocateWindowDescFront<GoalListWindow>(_goals_list_desc, company);
 }
