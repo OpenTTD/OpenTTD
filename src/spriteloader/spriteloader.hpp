@@ -31,11 +31,11 @@ class SpriteLoader {
 public:
 	/** Definition of a common pixel in OpenTTD's realm. */
 	struct CommonPixel {
-		uint8_t r;  ///< Red-channel
-		uint8_t g;  ///< Green-channel
-		uint8_t b;  ///< Blue-channel
-		uint8_t a;  ///< Alpha-channel
-		uint8_t m;  ///< Remap-channel
+		uint8_t r = 0;  ///< Red-channel
+		uint8_t g = 0;  ///< Green-channel
+		uint8_t b = 0;  ///< Blue-channel
+		uint8_t a = 0;  ///< Alpha-channel
+		uint8_t m = 0;  ///< Remap-channel
 	};
 
 	/**

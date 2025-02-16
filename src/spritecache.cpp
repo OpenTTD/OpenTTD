@@ -296,23 +296,23 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 	for (uint y = 0; y < height; y++) {
 		if (y < pad_top || pad_bottom + y >= height) {
 			/* Top/bottom padding. */
-			MemSetT(data, 0, width);
+			std::fill_n(data, width, SpriteLoader::CommonPixel{});
 			data += width;
 		} else {
 			if (pad_left > 0) {
 				/* Pad left. */
-				MemSetT(data, 0, pad_left);
+				std::fill_n(data, pad_left, SpriteLoader::CommonPixel{});
 				data += pad_left;
 			}
 
 			/* Copy pixels. */
-			MemCpyT(data, src, sprite->width);
+			std::copy_n(src, sprite->width, data);
 			src += sprite->width;
 			data += sprite->width;
 
 			if (pad_right > 0) {
 				/* Pad right. */
-				MemSetT(data, 0, pad_right);
+				std::fill_n(data, pad_right, SpriteLoader::CommonPixel{});
 				data += pad_right;
 			}
 		}

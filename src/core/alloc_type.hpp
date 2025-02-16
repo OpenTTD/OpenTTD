@@ -23,15 +23,9 @@
 template <typename T>
 class ReusableBuffer {
 private:
-	T *buffer;    ///< The real data buffer
-	size_t count; ///< Number of T elements in the buffer
+	std::vector<T> buffer;
 
 public:
-	/** Create a new buffer */
-	ReusableBuffer() : buffer(nullptr), count(0) {}
-	/** Clear the buffer */
-	~ReusableBuffer() { free(this->buffer); }
-
 	/**
 	 * Get buffer of at least count times T.
 	 * @note the buffer might be bigger
@@ -41,16 +35,12 @@ public:
 	 */
 	T *Allocate(size_t count)
 	{
-		if (this->count < count) {
-			free(this->buffer);
-			this->buffer = MallocT<T>(count);
-			this->count = count;
-		}
-		return this->buffer;
+		if (this->buffer.size() < count) this->buffer.resize(count);
+		return this->buffer.data();
 	}
 
 	/**
-	 * Get buffer of at least count times T with zeroed memory.
+	 * Get buffer of at least count times T of default initialised elements.
 	 * @note the buffer might be bigger
 	 * @note calling this function invalidates any previous buffers given
 	 * @param count the minimum buffer size
@@ -58,14 +48,9 @@ public:
 	 */
 	T *ZeroAllocate(size_t count)
 	{
-		if (this->count < count) {
-			free(this->buffer);
-			this->buffer = CallocT<T>(count);
-			this->count = count;
-		} else {
-			memset(this->buffer, 0, sizeof(T) * count);
-		}
-		return this->buffer;
+		this->buffer.clear();
+		this->buffer.resize(count, {});
+		return this->buffer.data();
 	}
 
 	/**
@@ -74,7 +59,7 @@ public:
 	 */
 	inline const T *GetBuffer() const
 	{
-		return this->buffer;
+		return this->buffer.data();
 	}
 };
 

@@ -148,8 +148,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 	 * memory around as this function is called quite often
 	 * and the memory usage is quite low. */
 	static ReusableBuffer<uint8_t> temp_buffer;
-	SpriteData *temp_dst = (SpriteData *)temp_buffer.Allocate(memory);
-	memset(temp_dst, 0, sizeof(*temp_dst));
+	SpriteData *temp_dst = reinterpret_cast<SpriteData *>(temp_buffer.ZeroAllocate(memory));
 	uint8_t *dst = temp_dst->data;
 
 	/* Make the sprites per zoom-level */
