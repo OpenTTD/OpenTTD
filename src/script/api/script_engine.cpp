@@ -46,8 +46,7 @@
 {
 	if (!IsValidEngine(engine_id)) return std::nullopt;
 
-	::SetDParam(0, engine_id);
-	return GetString(STR_ENGINE_NAME);
+	return ::StrMakeValid(::GetString(STR_ENGINE_NAME, engine_id));
 }
 
 /* static */ CargoType ScriptEngine::GetCargoType(EngineID engine_id)

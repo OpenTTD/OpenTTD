@@ -51,8 +51,7 @@
 {
 	if (!IsValidSign(sign_id)) return std::nullopt;
 
-	::SetDParam(0, sign_id);
-	return GetString(STR_SIGN_NAME);
+	return ::StrMakeValid(::GetString(STR_SIGN_NAME, sign_id));
 }
 
 /* static */ TileIndex ScriptSign::GetLocation(SignID sign_id)

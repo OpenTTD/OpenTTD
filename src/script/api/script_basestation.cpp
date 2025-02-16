@@ -31,8 +31,7 @@
 {
 	if (!IsValidBaseStation(station_id)) return std::nullopt;
 
-	::SetDParam(0, station_id);
-	return GetString(::Station::IsValidID(station_id) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
+	return ::StrMakeValid(::GetString(::Station::IsValidID(station_id) ? STR_STATION_NAME : STR_WAYPOINT_NAME, station_id));
 }
 
 /* static */ bool ScriptBaseStation::SetName(StationID station_id, Text *name)
