@@ -132,7 +132,7 @@ bool Textbuf::InsertChar(char32_t key)
 	if (this->buf.size() + len < this->max_bytes && this->chars + 1 <= this->max_chars) {
 		/* Make space in the string, then overwrite it with the Utf8 encoded character. */
 		auto pos = this->buf.begin() + this->caretpos;
-		this->buf.insert(pos, len, '\0');
+		pos = this->buf.insert(pos, len, '\0');
 		Utf8Encode(pos, key);
 		this->chars++;
 		this->caretpos += len;
