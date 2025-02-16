@@ -33,6 +33,7 @@
 #include "console_func.h"
 #include "genworld.h"
 #include "string_func.h"
+#include "strings_func.h"
 #include "window_func.h"
 #include "company_func.h"
 #include "rev.h"
@@ -381,16 +382,15 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 	char *end;
 	size_t val = std::strtoul(str, &end, 0);
 	if (end == str) {
-		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-		msg.SetDParamStr(0, str);
-		msg.SetDParamStr(1, this->GetName());
-		_settings_error_list.push_back(msg);
+		_settings_error_list.emplace_back(
+			GetEncodedString(STR_CONFIG_ERROR),
+			GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 		return this->GetDefaultValue();
 	}
 	if (*end != '\0') {
-		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
-		msg.SetDParamStr(0, this->GetName());
-		_settings_error_list.push_back(msg);
+		_settings_error_list.emplace_back(
+			GetEncodedString(STR_CONFIG_ERROR),
+			GetEncodedString(STR_CONFIG_ERROR_TRAILING_CHARACTERS, this->GetName()));
 	}
 	return val;
 }
@@ -403,10 +403,9 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 	if (r == SIZE_MAX && this->many_cnvt != nullptr) r = this->many_cnvt(str);
 	if (r != SIZE_MAX) return r; // and here goes converted value
 
-	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->GetName());
-	_settings_error_list.push_back(msg);
+	_settings_error_list.emplace_back(
+		GetEncodedString(STR_CONFIG_ERROR),
+		GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 	return this->GetDefaultValue();
 }
 
@@ -414,10 +413,10 @@ size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 {
 	size_t r = LookupManyOfMany(this->many, str);
 	if (r != SIZE_MAX) return r;
-	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->GetName());
-	_settings_error_list.push_back(msg);
+
+	_settings_error_list.emplace_back(
+		GetEncodedString(STR_CONFIG_ERROR),
+		GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 	return this->GetDefaultValue();
 }
 
@@ -426,10 +425,9 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
 	auto r = BoolSettingDesc::ParseSingleValue(str);
 	if (r.has_value()) return *r;
 
-	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->GetName());
-	_settings_error_list.push_back(msg);
+	_settings_error_list.emplace_back(
+		GetEncodedString(STR_CONFIG_ERROR),
+		GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 	return this->GetDefaultValue();
 }
 
@@ -690,9 +688,9 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
 	void *ptr = GetVariableAddress(object, this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
-		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
-		msg.SetDParamStr(0, this->GetName());
-		_settings_error_list.push_back(msg);
+		_settings_error_list.emplace_back(
+			GetEncodedString(STR_CONFIG_ERROR),
+			GetEncodedString(STR_CONFIG_ERROR_ARRAY, this->GetName()));
 
 		/* Use default */
 		LoadIntList(this->def, ptr, this->save.length, GetVarMemType(this->save.conv));
@@ -1035,8 +1033,9 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 			if (params.has_value()) {
 				BaseGraphics::ini_data.extra_params = params.value();
 			} else {
-				SetDParamStr(0, BaseGraphics::ini_data.name);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+					GetEncodedString(STR_CONFIG_ERROR_ARRAY, BaseGraphics::ini_data.name),
+					WL_CRITICAL);
 			}
 		}
 	}
@@ -1101,36 +1100,39 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 			if (params.has_value()) {
 				c->SetParams(params.value());
 			} else {
-				SetDParamStr(0, filename);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+					GetEncodedString(STR_CONFIG_ERROR_ARRAY, filename),
+					WL_CRITICAL);
 			}
 		}
 
 		/* Check if item is valid */
 		if (!FillGRFDetails(*c, is_static) || c->flags.Test(GRFConfigFlag::Invalid)) {
+			StringID reason;
 			if (c->status == GCS_NOT_FOUND) {
-				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND);
+				reason = STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND;
 			} else if (c->flags.Test(GRFConfigFlag::Unsafe)) {
-				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNSAFE);
+				reason = STR_CONFIG_ERROR_INVALID_GRF_UNSAFE;
 			} else if (c->flags.Test(GRFConfigFlag::System)) {
-				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_SYSTEM);
+				reason = STR_CONFIG_ERROR_INVALID_GRF_SYSTEM;
 			} else if (c->flags.Test(GRFConfigFlag::Invalid)) {
-				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE);
+				reason = STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE;
 			} else {
-				SetDParam(1, STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN);
+				reason = STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN;
 			}
 
-			SetDParamStr(0, filename.empty() ? item.name.c_str() : filename);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_GRF, WL_CRITICAL);
+			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+				GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name.c_str() : filename, reason),
+				WL_CRITICAL);
 			continue;
 		}
 
 		/* Check for duplicate GRFID (will also check for duplicate filenames) */
 		auto found = std::ranges::find_if(list, [&c](const auto &gc) { return gc->ident.grfid == c->ident.grfid; });
 		if (found != std::end(list)) {
-			SetDParamStr(0, c->filename);
-			SetDParamStr(1, (*found)->filename);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_DUPLICATE_GRFID, WL_CRITICAL);
+			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+				GetEncodedString(STR_CONFIG_ERROR_DUPLICATE_GRFID, c->filename, (*found)->filename),
+				WL_CRITICAL);
 			continue;
 		}
 
@@ -1139,7 +1141,8 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 			c->flags.Set(GRFConfigFlag::Static);
 		} else if (++num_grfs > NETWORK_MAX_GRF_COUNT) {
 			/* Check we will not load more non-static NewGRFs than allowed. This could trigger issues for game servers. */
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED, WL_CRITICAL);
+			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+				GetEncodedString(STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED), WL_CRITICAL);
 			break;
 		}
 

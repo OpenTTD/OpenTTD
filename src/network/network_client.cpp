@@ -508,7 +508,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FULL(Packet &)
 	Debug(net, 9, "Client::Receive_SERVER_FULL()");
 
 	/* We try to join a server which is full */
-	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_FULL, INVALID_STRING_ID, WL_CRITICAL);
+	ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_SERVER_FULL), {}, WL_CRITICAL);
 
 	return NETWORK_RECV_STATUS_SERVER_FULL;
 }
@@ -518,7 +518,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet &
 	Debug(net, 9, "Client::Receive_SERVER_BANNED()");
 
 	/* We try to join a server where we are banned */
-	ShowErrorMessage(STR_NETWORK_ERROR_SERVER_BANNED, INVALID_STRING_ID, WL_CRITICAL);
+	ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_SERVER_BANNED), {}, WL_CRITICAL);
 
 	return NETWORK_RECV_STATUS_SERVER_BANNED;
 }
@@ -624,10 +624,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p
 	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];
 	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
 	if (error == NETWORK_ERROR_KICKED && p.CanReadFromPacket(1)) {
-		SetDParamStr(0, p.Recv_string(NETWORK_CHAT_LENGTH));
-		ShowErrorMessage(err, STR_NETWORK_ERROR_KICK_MESSAGE, WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(err),
+			GetEncodedString(STR_NETWORK_ERROR_KICK_MESSAGE, p.Recv_string(NETWORK_CHAT_LENGTH)),
+			WL_CRITICAL);
 	} else {
-		ShowErrorMessage(err, INVALID_STRING_ID, WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(err), {}, WL_CRITICAL);
 	}
 
 	/* Perform an emergency save if we had already entered the game */
@@ -665,7 +666,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	}
 
 	/* NewGRF mismatch, bail out */
-	ShowErrorMessage(STR_NETWORK_ERROR_NEWGRF_MISMATCH, INVALID_STRING_ID, WL_CRITICAL);
+	ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NEWGRF_MISMATCH), {}, WL_CRITICAL);
 	return ret;
 }
 
@@ -831,7 +832,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MAP_DONE(Packet
 	this->last_packet = std::chrono::steady_clock::now();
 
 	if (!load_success) {
-		ShowErrorMessage(STR_NETWORK_ERROR_SAVEGAMEERROR, INVALID_STRING_ID, WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_SAVEGAMEERROR), {}, WL_CRITICAL);
 		return NETWORK_RECV_STATUS_SAVEGAME;
 	}
 	/* If the savegame has successfully loaded, ALL windows have been removed,
@@ -1074,7 +1075,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_SHUTDOWN(Packet
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
 	if (this->status >= STATUS_JOIN) {
-		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_SHUTDOWN, INVALID_STRING_ID, WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(STR_NETWORK_MESSAGE_SERVER_SHUTDOWN), {}, WL_CRITICAL);
 	}
 
 	if (this->status == STATUS_ACTIVE) ClientNetworkEmergencySave();
@@ -1093,7 +1094,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEWGAME(Packet 
 		 * Client ID modulo 16 + 1 (value 0 means no reconnect).
 		 * This way reconnects should be spread out a bit. */
 		_network_reconnect = _network_own_client_id % 16 + 1;
-		ShowErrorMessage(STR_NETWORK_MESSAGE_SERVER_REBOOT, INVALID_STRING_ID, WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(STR_NETWORK_MESSAGE_SERVER_REBOOT), {}, WL_CRITICAL);
 	}
 
 	if (this->status == STATUS_ACTIVE) ClientNetworkEmergencySave();
@@ -1185,8 +1186,10 @@ void ClientNetworkGameSocketHandler::CheckConnection()
 	if (std::chrono::duration_cast<std::chrono::seconds>(last_lag) == std::chrono::duration_cast<std::chrono::seconds>(lag)) return;
 
 	last_lag = lag;
-	SetDParam(0, std::chrono::duration_cast<std::chrono::seconds>(lag).count());
-	ShowErrorMessage(STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION, STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION, WL_INFO);
+	ShowErrorMessage(
+		GetEncodedString(STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION),
+		GetEncodedString(STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION, std::chrono::duration_cast<std::chrono::seconds>(lag).count()),
+		WL_INFO);
 }
 
 
@@ -1276,7 +1279,7 @@ bool NetworkValidateClientName(std::string &client_name)
 	StrTrimInPlace(client_name);
 	if (NetworkIsValidClientName(client_name)) return true;
 
-	ShowErrorMessage(STR_NETWORK_ERROR_BAD_PLAYER_NAME, INVALID_STRING_ID, WL_ERROR);
+	ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_BAD_PLAYER_NAME), {}, WL_ERROR);
 	return false;
 }
 

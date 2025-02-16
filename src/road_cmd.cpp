@@ -303,8 +303,7 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 	if (KillFirstBit(n) != ROAD_NONE && (n & remove) != ROAD_NONE) {
 		/* you can remove all kind of roads with extra dynamite */
 		if (!_settings_game.construction.extra_dynamite) {
-			SetDParam(0, t->index);
-			return CommandCost(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
+			return CommandCostWithParam(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS, t->index);
 		}
 		rating_decrease = RATING_ROAD_DOWN_STEP_INNER;
 	}
@@ -2515,8 +2514,12 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 
 				if (rtt == RTT_ROAD && owner == OWNER_TOWN) {
-					SetDParamsForOwnedBy(OWNER_TOWN, tile);
 					error.MakeError(STR_ERROR_OWNED_BY);
+					if (IsLocalCompany()) {
+						auto params = GetParamsForOwnedBy(OWNER_TOWN, tile);
+						error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
+						error.SetErrorOwner(owner);
+					}
 					continue;
 				}
 			}
@@ -2568,8 +2571,12 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 
 				if (rtt == RTT_ROAD && owner == OWNER_TOWN) {
-					SetDParamsForOwnedBy(OWNER_TOWN, tile);
 					error.MakeError(STR_ERROR_OWNED_BY);
+					if (IsLocalCompany()) {
+						auto params = GetParamsForOwnedBy(OWNER_TOWN, tile);
+						error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
+						error.SetErrorOwner(owner);
+					}
 					continue;
 				}
 			}

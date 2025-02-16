@@ -245,8 +245,10 @@ bool CheckCompanyHasMoney(CommandCost &cost)
 
 	const Company *c = Company::GetIfValid(_current_company);
 	if (c != nullptr && cost.GetCost() > c->money) {
-		SetDParam(0, cost.GetCost());
 		cost.MakeError(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
+		if (IsLocalCompany()) {
+			cost.SetEncodedMessage(GetEncodedString(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, cost.GetCost()));
+		}
 		return false;
 	}
 	return true;
@@ -331,26 +333,20 @@ void UpdateLandscapingLimits()
  * @param tile  optional tile to get the right town.
  * @pre if tile == 0, then owner can't be OWNER_TOWN.
  */
-void SetDParamsForOwnedBy(Owner owner, TileIndex tile)
+std::array<StringParameter, 2> GetParamsForOwnedBy(Owner owner, TileIndex tile)
 {
-	SetDParam(OWNED_BY_OWNER_IN_PARAMETERS_OFFSET, owner);
-
-	if (owner != OWNER_TOWN) {
-		if (!Company::IsValidID(owner)) {
-			SetDParam(0, STR_COMPANY_SOMEONE);
-		} else {
-			SetDParam(0, STR_COMPANY_NAME);
-			SetDParam(1, owner);
-		}
-	} else {
+	if (owner == OWNER_TOWN) {
 		assert(tile != 0);
 		const Town *t = ClosestTownFromTile(tile, UINT_MAX);
-
-		SetDParam(0, STR_TOWN_NAME);
-		SetDParam(1, t->index);
+		return {STR_TOWN_NAME, t->index};
 	}
-}
 
+	if (!Company::IsValidID(owner)) {
+		return {STR_COMPANY_SOMEONE, std::monostate{}};
+	}
+
+	return {STR_COMPANY_NAME, owner};
+}
 
 /**
  * Check whether the current owner owns something.
@@ -367,8 +363,13 @@ CommandCost CheckOwnership(Owner owner, TileIndex tile)
 
 	if (owner == _current_company) return CommandCost();
 
-	SetDParamsForOwnedBy(owner, tile);
-	return CommandCost(STR_ERROR_OWNED_BY);
+	CommandCost error{STR_ERROR_OWNED_BY};
+	if (IsLocalCompany()) {
+		auto params = GetParamsForOwnedBy(owner, tile);
+		error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
+		error.SetErrorOwner(owner);
+	}
+	return error;
 }
 
 /**
@@ -380,15 +381,7 @@ CommandCost CheckOwnership(Owner owner, TileIndex tile)
  */
 CommandCost CheckTileOwnership(TileIndex tile)
 {
-	Owner owner = GetTileOwner(tile);
-
-	assert(owner < OWNER_END);
-
-	if (owner == _current_company) return CommandCost();
-
-	/* no need to get the name of the owner unless we're the local company (saves some time) */
-	if (IsLocalCompany()) SetDParamsForOwnedBy(owner, tile);
-	return CommandCost(STR_ERROR_OWNED_BY);
+	return CheckOwnership(GetTileOwner(tile), tile);
 }
 
 /**

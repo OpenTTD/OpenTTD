@@ -218,7 +218,8 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
 	bool only_sending = _networking && !network_command;
 
 	if (_pause_mode.Any() && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
-		ShowErrorMessage(err_message, STR_ERROR_NOT_ALLOWED_WHILE_PAUSED, WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
+		ShowErrorMessage(GetEncodedString(err_message), GetEncodedString(STR_ERROR_NOT_ALLOWED_WHILE_PAUSED),
+			WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
 		return { true, estimate_only, only_sending };
 	} else {
 		return { false, estimate_only, only_sending };
@@ -242,7 +243,7 @@ void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex til
 	if (res.Failed()) {
 		/* Only show the error when it's for us. */
 		if (estimate_only || (IsLocalCompany() && err_message != 0 && my_cmd)) {
-			ShowErrorMessage(err_message, x, y, res);
+			ShowErrorMessage(GetEncodedString(err_message), x, y, res);
 		}
 	} else if (estimate_only) {
 		ShowEstimatedCostOrIncome(res.GetCost(), x, y);
@@ -371,8 +372,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 		/* It could happen we removed rail, thus gained money, and deleted something else.
 		 * So make sure the signal buffer is empty even in this case */
 		UpdateSignalsInBuffer();
-		SetDParam(0, extra_cash);
-		return CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY);
+		return CommandCostWithParam(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY, extra_cash);
 	}
 
 	/* update last build coordinate of company. */
@@ -412,7 +412,9 @@ void CommandCost::AddCost(const CommandCost &ret)
  * There is only one static instance of the array, just like there is only one
  * instance of normal DParams.
  */
-uint32_t CommandCost::textref_stack[16];
+/* static */ uint32_t CommandCost::textref_stack[16];
+
+/* static */ EncodedString CommandCost::encoded_message;
 
 /**
  * Activate usage of the NewGRF #TextRefStack for the error message.
@@ -429,4 +431,19 @@ void CommandCost::UseTextRefStack(const GRFFile *grffile, uint num_registers)
 	for (uint i = 0; i < num_registers; i++) {
 		textref_stack[i] = _temp_store.GetValue(0x100 + i);
 	}
+}
+
+/**
+ * Return an error status, with string and parameter.
+ * @param str StringID of error.
+ * @param value Single parameter for error.
+ * @returns CommandCost representing the error.
+ */
+CommandCost CommandCostWithParam(StringID str, uint64_t value)
+{
+	CommandCost error = CommandCost(str);
+	if (IsLocalCompany()) {
+		error.SetEncodedMessage(GetEncodedString(str, value));
+	}
+	return error;
 }

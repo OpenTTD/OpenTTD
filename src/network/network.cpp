@@ -302,7 +302,7 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
 void ShowNetworkError(StringID error_string)
 {
 	_switch_mode = SM_MENU;
-	ShowErrorMessage(error_string, INVALID_STRING_ID, WL_CRITICAL);
+	ShowErrorMessage(GetEncodedString(error_string), {}, WL_CRITICAL);
 }
 
 /**
@@ -862,7 +862,7 @@ bool NetworkValidateServerName(std::string &server_name)
 	StrTrimInPlace(server_name);
 	if (!server_name.empty()) return true;
 
-	ShowErrorMessage(STR_NETWORK_ERROR_BAD_SERVER_NAME, INVALID_STRING_ID, WL_ERROR);
+	ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_BAD_SERVER_NAME), {}, WL_ERROR);
 	return false;
 }
 

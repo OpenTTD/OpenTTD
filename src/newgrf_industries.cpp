@@ -615,9 +615,9 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		 * 'loop' is provided as 16 bits to the newgrf, so abort when those are exceeded. */
 		if (loop >= 0x10000) {
 			/* display error message */
-			SetDParamStr(0, spec->grf_prop.grffile->filename);
-			SetDParam(1, spec->name);
-			ShowErrorMessage(STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK, WL_WARNING);
+			ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, spec->grf_prop.grffile->filename),
+				GetEncodedString(STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK, std::monostate{}, spec->name),
+				WL_WARNING);
 
 			/* abort the function early, this error isn't critical and will allow the game to continue to run */
 			break;
@@ -630,10 +630,9 @@ void IndustryProductionCallback(Industry *ind, int reason)
 
 		if (group->version == 0xFF) {
 			/* Result was marked invalid on load, display error message */
-			SetDParamStr(0, spec->grf_prop.grffile->filename);
-			SetDParam(1, spec->name);
-			SetDParam(2, ind->location.tile);
-			ShowErrorMessage(STR_NEWGRF_BUGGY, STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK, WL_WARNING);
+			ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, spec->grf_prop.grffile->filename),
+				GetEncodedString(STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK, std::monostate{}, spec->name, ind->location.tile),
+				WL_WARNING);
 
 			/* abort the function early, this error isn't critical and will allow the game to continue to run */
 			break;

@@ -2404,8 +2404,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 			 * with the colour marker. */
 			static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
 			Utf8Encode(err_str.data(), SCC_YELLOW);
-			SetDParamStr(0, err_str);
-			ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
+			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
 		}
 
 		if (bad_font && base_font) {
@@ -2425,8 +2424,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
 		static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
 		Utf8Encode(err_str.data(), SCC_YELLOW);
-		SetDParamStr(0, err_str);
-		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
 
 		/* Reset the font width */
 		LoadStringWidthTable(searcher->Monospace());
@@ -2453,8 +2451,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	if (_current_text_dir != TD_LTR) {
 		static std::string err_str("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
 		Utf8Encode(err_str.data(), SCC_YELLOW);
-		SetDParamStr(0, err_str);
-		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_ERROR);
 	}
 #endif /* !(WITH_ICU_I18N && WITH_HARFBUZZ) && !WITH_UNISCRIBE && !WITH_COCOA */
 }

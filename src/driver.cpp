@@ -13,6 +13,7 @@
 #include "error_func.h"
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
+#include "strings_func.h"
 #include "video/video_driver.hpp"
 #include "string_func.h"
 #include "table/strings.h"
@@ -128,8 +129,8 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 						Debug(driver, 1, "Probing {} driver '{}' skipped due to earlier crash", GetDriverTypeName(type), d->name);
 
 						_video_hw_accel = false;
-						ErrorMessageData msg(STR_VIDEO_DRIVER_ERROR, STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH, true);
-						ScheduleErrorMessage(msg);
+						ErrorMessageData msg(GetEncodedString(STR_VIDEO_DRIVER_ERROR), GetEncodedString(STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH), true);
+						ScheduleErrorMessage(std::move(msg));
 						continue;
 					}
 
@@ -154,8 +155,8 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 
 				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
 					_video_hw_accel = false;
-					ErrorMessageData msg(STR_VIDEO_DRIVER_ERROR, STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION, true);
-					ScheduleErrorMessage(msg);
+					ErrorMessageData msg(GetEncodedString(STR_VIDEO_DRIVER_ERROR), GetEncodedString(STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION), true);
+					ScheduleErrorMessage(std::move(msg));
 				}
 			}
 		}
