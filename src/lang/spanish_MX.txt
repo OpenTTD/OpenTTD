@@ -354,7 +354,7 @@ STR_SORT_BY_ENGINE_ID                                           :ID de vehículo
 STR_SORT_BY_COST                                                :Costo
 STR_SORT_BY_POWER                                               :Potencia
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Fuerza de tracción
-STR_SORT_BY_INTRO_DATE                                          :Fecha de introducción
+STR_SORT_BY_INTRO_DATE                                          :Fecha de lanzamiento
 STR_SORT_BY_RUNNING_COST                                        :Costo de operación
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia vs. costo de operación
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidad de carga
@@ -829,7 +829,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostrar 
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar último mensaje o noticia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EN PAUSA  *  *
-STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  EN PAUSA (esperando actualización de gráf. de distribución) *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  EN PAUSA (esperando actualización de la gráfica de conexiones) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}GUARDADO AUTOMÁTICO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GUARDANDO PARTIDA  *  *
 
@@ -1306,7 +1306,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Averías de veh
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controlar cada cuánto los vehículos con poco mantenimiento sufren fallas
 
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador de subsidio: {STRING}
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Establecer cuánto se paga por subsidios conectados
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Cuánto se paga por conexiones subsidiadas
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duración de subsidio: {STRING}
 ###length 2
@@ -1468,7 +1468,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ninguno*
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 
-STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir pasos a nivel con carreteras o ferrocarriles propiedad de otras empresas: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :Permitir pasos a nivel con carreteras o ferrocarriles de otras empresas: {STRING}
 STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :Se podrán construir pasos a nivel en carreteras o ferrocarriles que sean propiedad de otras empresas
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir construcción de paradas de paso en localidades: {STRING}
@@ -1487,7 +1487,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :Color secundari
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :Selecciona un color secundario para la empresa, si usas un NewGRF que lo permita.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos siempre disponibles: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de aeropuertos estarán disponibles todo el tiempo tras haber sido introducidos
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de aeropuertos estarán disponibles todo el tiempo tras haber sido lanzados
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar si un vehículo se ha perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensajes indicando aquellos vehículos que no puedan encontrar una ruta a su destino
@@ -1508,16 +1508,16 @@ STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Avisar si un ve
 STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Al activarse, se muestra una noticia si un vehículo se está volviendo viejo
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehículos siempre disponibles: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los modelos de vehículos estarán disponibles para siempre tras haber sido introducidos
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los modelos de vehículos estarán disponibles para siempre tras haber sido lanzados
 
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Cronómetro: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Seleccione las unidades de tiempo del juego. Esto no puede cambiarse más tarde.{}{}El modo basado en el calendario es la experiencia clásica de OpenTTD, con un año que consta de 12 meses, y cada mes tiene de 28 a 31 días.{}{}En cambio, en el modo Reloj de pared, la producción de carga y las finanzas se basan en incrementos de un minuto, que es más o menos lo que dura un mes de 30 días en el modo basado en el calendario.{}{}En cualquiera de los dos modos siempre hay un calendario clásico, que se utiliza para las fechas de introducción de vehículos, casas y otras infraestructuras.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Transcurso de tiempo: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Seleccionar cómo transcurre el tiempo en el juego. Esto no puede cambiarse más tarde.{}{}La experiencia típica de OpenTTD es por un calendario de 12 meses, con 28 a 31 días por mes.{}{}En el modo reloj, la producción de carga y las finanzas se basan en incrementos de un minuto, más o menos lo que dura un mes de 30 días en el modo calendario.{}{}En cualquiera de los dos modos siempre hay un calendario normal, utilizado para las fechas de lanzamiento de vehículos, casas y otra infraestructura
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloj
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Minutos por año: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Selecciona el número de minutos de un año de calendario. Por defecto es 12 minutos. Introduce 0 para evitar que cambie el tiempo del calendario. Este ajuste no afecta a la simulación de la economía del juego y sólo está disponible cuando se usa el modo "Reloj" .
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Indicar el número de minutos de un año de calendario. Por defecto es 12 minutos. 0 evita que el tiempo del calendario transcurra. Cualquier incremento afecta la fecha de lanzamiento de vehículos, casas y otra infraestructura, pero no la velocidad de los vehículos ni la simulación de la economía del juego, salvo la inflación. Este ajuste solo está disponible en el modo relojChoose the number of minutes in a calendar year. The default is 12 minutes. Set to 0 to stop calendar time from changing. Increasing the length of the calendar year slows down the introduction of vehicles, houses, and other infrastructure. It does not affect vehicle speed or economic simulation, except for inflation. This setting is only available when using wallclock timekeeping
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -2055,10 +2055,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ninguno
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial de tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades relativo a las localidades al inicio del juego
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualizar gráfico de distribución cada {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tiempo entre los recálculos posteriores del gráfico de enlaces. Cada recálculo calcula los planes de un componente del gráfico. Esto significa que un valor X para este ajuste no significa que todo el gráfico se actualizará cada X segundos. Sólo algunos componentes lo harán. Cuanto más corto sea el valor, más tiempo de CPU será necesario para calcularlo. Cuanto más largo sea el valor, más tardará la distribución de la carga en las nuevas rutas.
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Utilizar {STRING} para recalcular el gráfico de distribución
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tiempo que tarda cada recálculo de un componente del gráfico de enlaces. Cuando un recálculo se inicia, un proceso es creado y se le permite ejecutarse durante este número de segundos. Cuanto más corto sea este valor, más probable es que el proceso no termine cuando se supone que deba hacerlo. Entonces el juego se detiene hasta que lo haga ("lag"). Cuanto más largo lo establezcas más tardará en actualizarse la distribución cuando cambien las rutas
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :Actualizar gráfica de distribución cada {STRING}
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :Tiempo entre nuevos cálculos sucesivos de la gráfica de conexiones. Un valor de X segundos significa que los planes de un solo componente se actualizarán, mas no toda la gráfica. Entre más corto sea el valor, mayor tiempo de CPU será necesario para cada nuevo cálculo; entre más largo, más tardará hasta que la distribución de carga inicie en nuevas rutas
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :Utilizar {STRING} para calcular la gráfica de distribución
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :Tiempo que tarda cada nuevo cálculo de un componente de la gráfica de conexiones. Cuando un nuevo cálculo inicia, se crea un proceso que se ejecuta solo el número de segundos indicado. Entre más corto sea este valor, más probable es que el proceso no termine a su tiempo, provocando que el juego se detenga mientras tanto. Entre más largo, más tardará en actualizarse la distribución cuando las rutas cambien
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasajeros: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "Simétrica", se envía la misma cantidad de pasajeros de la estación A a la B que de la B a la A. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en cualquier direccion. "Manual" significa que no se realiza una distribución automática para los pasajeros.
@@ -2074,7 +2074,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asimétrica
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Simétrica
 
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de la distribución: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Si el valor es alto, se requerirá mayor tiempo para calcular la gráfica de distribución (si se lleva demasiado tiempo, se notará desfase en el juego). Si es muy bajo, la distribución será imprecisa, pudiendo hacer que la carga no vaya al lugar indicado
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Si el valor es alto, se requerirá mayor tiempo para calcular la gráfica de conexiones (si se lleva demasiado tiempo, se notará desfase en el juego). Si es muy bajo, la distribución será imprecisa, pudiendo hacer que la carga no vaya al lugar indicado
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Con un valor mayor de 0, la distancia entre una estación de origen A y una estación de destino B afectará la cantidad de carga que se envíe desde A a B, enviando menos carga cuanto más lejos esté. Cuanto mayor sea el valor de esta opción, menos carga se enviará a estaciones distantes en favor de estaciones cercanas.
@@ -2624,7 +2624,7 @@ STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nombre de clien
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 
 ###length 12
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Partida pausada ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Partida en pausa ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partida aún en pausa ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partida aún en pausa ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partida aún en pausa ({STRING}, {STRING}, {STRING})
@@ -2635,7 +2635,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de juga
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :clientes conectándose
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de juego
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :esperando actualización de gráf. de distribución
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :esperando actualización de la gráfica de conexiones
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saliendo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se unió a la partida
@@ -2744,7 +2744,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transpar
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparencia de puentes. Ctrl+Clic para bloquear
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparencia de estructuras como faros o antenas. Ctrl+Clic para bloquear
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparencia de catenaria. Ctrl+Clic para bloquear
-STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Ajustar transparencia para el texto que indica la carga, el coste y los ingresos. Ctrl+clic para bloquear
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Transparencia de texto que indica la carga, el costo y los ingresos. Ctrl+clic para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ocultar objetos totalmente
 
 # Linkgraph legend window
@@ -3268,7 +3268,7 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Ticks d
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Ticks de barcos:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Ticks de aeronaves:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Ticks de mapa:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Retraso en gráfica de distribución:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Retraso en gráfica de conexiones:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Presentación de gráficos:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Ventanas de vista generales:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Salida de video:
@@ -3285,7 +3285,7 @@ STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks de autotr
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks de areonaves
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticks de mapa
-STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Retraso en gráfica de distribución
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Retraso en gráfica de conexiones
 STR_FRAMETIME_CAPTION_DRAWING                                   :Presentación de gráficos
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Presentación de ventanas de vista generales
 STR_FRAMETIME_CAPTION_VIDEO                                     :Salida de video
@@ -4897,7 +4897,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parámetros
-STR_AI_SETTINGS_CAPTION_AI                                      :Parámetros de IA
+STR_AI_SETTINGS_CAPTION_AI                                      :IA
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
@@ -5866,10 +5866,10 @@ STR_TOWN_NAME                                                   :{TOWN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_WAYPOINT_NAME                                               :{WAYPOINT}
 
-STR_CURRENCY_SHORT_KILO                                         :{NBSP}k
-STR_CURRENCY_SHORT_MEGA                                         :{NBSP}M
-STR_CURRENCY_SHORT_GIGA                                         :{NBSP}kM
-STR_CURRENCY_SHORT_TERA                                         :{NBSP}MM
+STR_CURRENCY_SHORT_KILO                                         :{NBSP}mil
+STR_CURRENCY_SHORT_MEGA                                         :{NBSP}mill.
+STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mil mill.
+STR_CURRENCY_SHORT_TERA                                         :{NBSP}bill.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}

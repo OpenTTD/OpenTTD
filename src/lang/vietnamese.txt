@@ -1980,6 +1980,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :không cho phé
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :cho phép
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :cho phép, tùy chọn bố trí đô thị
 
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Bật tùy chọn này cho phép người chơi đặt nhà cửa bằng tay
 ###length 3
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Nhu cầu vận chuyển hàng đô thị: {STRING}
@@ -2243,6 +2244,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Lịch sử thay đổi
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Các lỗi đã biết
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Giấy phép
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Phông chữ
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Hướng dẫn / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Báo cáo lỗi
