@@ -346,7 +346,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 		}
 
 		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyObjectTileInformation(parameter, this->tile, this->obj == nullptr ? INVALID_OBJECT : this->obj->index, this->ro.grffile->grf_version >= 8);
+		case 0x62: return GetNearbyObjectTileInformation(parameter, this->tile, this->obj == nullptr ? ObjectID::Invalid() : this->obj->index, this->ro.grffile->grf_version >= 8);
 
 		/* Animation counter of nearby tile */
 		case 0x63: {

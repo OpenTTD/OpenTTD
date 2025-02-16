@@ -38,8 +38,8 @@
  */
 class ScriptStoryPage : public ScriptObject {
 public:
-	static constexpr StoryPageID STORY_PAGE_INVALID = ::INVALID_STORY_PAGE; ///< An invalid story page id.
-	static constexpr StoryPageElementID STORY_PAGE_ELEMENT_INVALID = ::INVALID_STORY_PAGE_ELEMENT; ///< An invalid story page element id.
+	static constexpr StoryPageID STORY_PAGE_INVALID = ::StoryPageID::Invalid(); ///< An invalid story page id.
+	static constexpr StoryPageElementID STORY_PAGE_ELEMENT_INVALID = ::StoryPageElementID::Invalid(); ///< An invalid story page element id.
 
 	/**
 	 * Story page element types.

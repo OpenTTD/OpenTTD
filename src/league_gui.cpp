@@ -343,7 +343,7 @@ public:
 		for (auto [rank, lte] : this->rows) {
 			SetDParam(0, rank + 1);
 			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
-			if (this->icon_size.width > 0 && lte->company != INVALID_COMPANY) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
+			if (this->icon_size.width > 0 && lte->company != CompanyID::Invalid()) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
 			SetDParamStr(0, lte->text);
 			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
 			SetDParamStr(0, lte->score);
@@ -378,7 +378,7 @@ public:
 			this->text_width = std::max(this->text_width, GetStringBoundingBox(STR_JUST_RAW_STRING).width);
 			SetDParamStr(0, lte->score);
 			this->score_width = std::max(this->score_width, GetStringBoundingBox(STR_JUST_RAW_STRING).width);
-			if (lte->company != INVALID_COMPANY) show_icon_column = true;
+			if (lte->company != CompanyID::Invalid()) show_icon_column = true;
 		}
 
 		if (!show_icon_column) this->icon_size.width = 0;

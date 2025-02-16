@@ -73,7 +73,7 @@ Company::Company(StringID name_1, bool is_ai)
 	this->tree_limit         = (uint32_t)_settings_game.construction.tree_frame_burst << 16;
 	this->build_object_limit = (uint32_t)_settings_game.construction.build_object_frame_burst << 16;
 
-	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
+	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, CompanyID::Invalid());
 }
 
 /** Destructor. */
@@ -574,7 +574,7 @@ void ResetCompanyLivery(Company *c)
  * @param company CompanyID to use for the new company
  * @return the company struct
  */
-Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
+Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid())
 {
 	if (!Company::CanAllocateItem()) return nullptr;
 
@@ -582,7 +582,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	Colours colour = GenerateCompanyColour();
 
 	Company *c;
-	if (company == INVALID_COMPANY) {
+	if (company == CompanyID::Invalid()) {
 		c = new Company(STR_SV_UNNAMED, is_ai);
 	} else {
 		if (Company::IsValidID(company)) return nullptr;
@@ -644,7 +644,7 @@ TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::C
 
 	/* Send a command to all clients to start up a new AI.
 	 * Works fine for Multiplayer and Singleplayer */
-	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+	Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
 });
 
 /** Start of a new game. */
@@ -764,7 +764,7 @@ void OnTick_Companies()
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
 				if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) break;
 				if (n++ >= _settings_game.difficulty.max_no_competitors) break;
-				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, INVALID_COMPANY, CRR_NONE, INVALID_CLIENT_ID);
+				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
 			}
 			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
 		}
@@ -906,15 +906,15 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 		}
 
 		case CCA_NEW_AI: { // Make a new AI company
-			if (company_id != INVALID_COMPANY && company_id >= MAX_COMPANIES) return CMD_ERROR;
+			if (company_id != CompanyID::Invalid() && company_id >= MAX_COMPANIES) return CMD_ERROR;
 
 			/* For network games, company deletion is delayed. */
-			if (!_networking && company_id != INVALID_COMPANY && Company::IsValidID(company_id)) return CMD_ERROR;
+			if (!_networking && company_id != CompanyID::Invalid() && Company::IsValidID(company_id)) return CMD_ERROR;
 
 			if (!flags.Test(DoCommandFlag::Execute)) return CommandCost();
 
 			/* For network game, just assume deletion happened. */
-			assert(company_id == INVALID_COMPANY || !Company::IsValidID(company_id));
+			assert(company_id == CompanyID::Invalid() || !Company::IsValidID(company_id));
 
 			Company *c = DoStartupNewCompany(true, company_id);
 			if (c != nullptr) {
@@ -1325,7 +1325,7 @@ CommandCost CmdGiveMoney(DoCommandFlags flags, Money money, CompanyID dest_compa
  *  to get the index of the company:
  *  1st - get the first existing human company.
  *  2nd - get the first non-existing company.
- *  3rd - get COMPANY_FIRST.
+ *  3rd - get CompanyID::Begin().
  * @return the index of the first available company.
  */
 CompanyID GetFirstPlayableCompanyID()
@@ -1337,12 +1337,12 @@ CompanyID GetFirstPlayableCompanyID()
 	}
 
 	if (Company::CanAllocateItem()) {
-		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+		for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 			if (!Company::IsValidID(c)) {
 				return c;
 			}
 		}
 	}
 
-	return COMPANY_FIRST;
+	return CompanyID::Begin();
 }

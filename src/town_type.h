@@ -14,7 +14,6 @@
 #include "core/pool_type.hpp"
 
 using TownID = PoolID<uint16_t, struct TownIDTag, 64000, 0xFFFF>;
-static constexpr TownID INVALID_TOWN = TownID::Invalid();
 
 struct Town;
 

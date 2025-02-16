@@ -27,9 +27,9 @@ inline void AddCompanyNewsItem(StringID string, std::unique_ptr<CompanyNewsInfor
  *
  * @warning The DParams may not reference the vehicle due to autoreplace stuff. See AddVehicleAdviceNewsItem for how that can be done.
  */
-inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle, StationID station = INVALID_STATION)
+inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle, StationID station = StationID::Invalid())
 {
-	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, vehicle, station == INVALID_STATION ? NewsReference{} : station);
+	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, vehicle, station == StationID::Invalid() ? NewsReference{} : station);
 }
 
 /**
@@ -42,9 +42,9 @@ inline void AddVehicleAdviceNewsItem(AdviceType advice_type, StringID string, Ve
 	AddNewsItem(string, NewsType::Advice, NewsStyle::Small, {NewsFlag::InColour, NewsFlag::VehicleParam0}, vehicle, {}, nullptr, advice_type);
 }
 
-inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, StationID station = INVALID_STATION)
+inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, StationID station = StationID::Invalid())
 {
-	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, tile, station == INVALID_STATION ? NewsReference{} : station);
+	AddNewsItem(string, type, NewsStyle::Thin, {NewsFlag::NoTransparency, NewsFlag::Shaded}, tile, station == StationID::Invalid() ? NewsReference{} : station);
 }
 
 inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry)

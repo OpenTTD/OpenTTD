@@ -57,7 +57,7 @@ INSTANTIATE_POOL_METHODS(Goal)
 		case GT_STORY_PAGE: {
 			if (!StoryPage::IsValidID(dest)) return false;
 			CompanyID story_company = StoryPage::Get(dest)->company;
-			if (company == INVALID_COMPANY ? story_company != INVALID_COMPANY : story_company != INVALID_COMPANY && story_company != company) return false;
+			if (company == CompanyID::Invalid() ? story_company != CompanyID::Invalid() : story_company != CompanyID::Invalid() && story_company != company) return false;
 			break;
 		}
 
@@ -77,12 +77,12 @@ INSTANTIATE_POOL_METHODS(Goal)
  */
 std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text)
 {
-	if (!Goal::CanAllocateItem()) return { CMD_ERROR, INVALID_GOAL };
+	if (!Goal::CanAllocateItem()) return { CMD_ERROR, GoalID::Invalid() };
 
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, INVALID_GOAL };
-	if (text.empty()) return { CMD_ERROR, INVALID_GOAL };
-	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return { CMD_ERROR, INVALID_GOAL };
-	if (!Goal::IsValidGoalDestination(company, type, dest)) return { CMD_ERROR, INVALID_GOAL };
+	if (_current_company != OWNER_DEITY) return { CMD_ERROR, GoalID::Invalid() };
+	if (text.empty()) return { CMD_ERROR, GoalID::Invalid() };
+	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return { CMD_ERROR, GoalID::Invalid() };
+	if (!Goal::IsValidGoalDestination(company, type, dest)) return { CMD_ERROR, GoalID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		Goal *g = new Goal();
@@ -92,7 +92,7 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID co
 		g->text = text;
 		g->completed = false;
 
-		if (g->company == INVALID_COMPANY) {
+		if (g->company == CompanyID::Invalid()) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
 		} else {
 			InvalidateWindowData(WC_GOALS_LIST, g->company);
@@ -102,7 +102,7 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID co
 		return { CommandCost(), g->index };
 	}
 
-	return { CommandCost(), INVALID_GOAL };
+	return { CommandCost(), GoalID::Invalid() };
 }
 
 /**
@@ -121,7 +121,7 @@ CommandCost CmdRemoveGoal(DoCommandFlags flags, GoalID goal)
 		CompanyID c = g->company;
 		delete g;
 
-		if (c == INVALID_COMPANY) {
+		if (c == CompanyID::Invalid()) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
 		} else {
 			InvalidateWindowData(WC_GOALS_LIST, c);
@@ -172,7 +172,7 @@ CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const std::string 
 		Goal *g = Goal::Get(goal);
 		g->text = text;
 
-		if (g->company == INVALID_COMPANY) {
+		if (g->company == CompanyID::Invalid()) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
 		} else {
 			InvalidateWindowData(WC_GOALS_LIST, g->company);
@@ -198,7 +198,7 @@ CommandCost CmdSetGoalProgress(DoCommandFlags flags, GoalID goal, const std::str
 		Goal *g = Goal::Get(goal);
 		g->progress = text;
 
-		if (g->company == INVALID_COMPANY) {
+		if (g->company == CompanyID::Invalid()) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
 		} else {
 			InvalidateWindowData(WC_GOALS_LIST, g->company);
@@ -224,7 +224,7 @@ CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool complete
 		Goal *g = Goal::Get(goal);
 		g->completed = completed;
 
-		if (g->company == INVALID_COMPANY) {
+		if (g->company == CompanyID::Invalid()) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
 		} else {
 			InvalidateWindowData(WC_GOALS_LIST, g->company);
@@ -263,7 +263,7 @@ CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t ta
 		 * fact the client is no longer here. */
 		if (!flags.Test(DoCommandFlag::Execute) && _network_server && NetworkClientInfo::GetByClientID(client) == nullptr) return CMD_ERROR;
 	} else {
-		if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
+		if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return CMD_ERROR;
 	}
 	uint min_buttons = (type == GQT_QUESTION ? 1 : 0);
 	if (CountBits(button_mask) < min_buttons || CountBits(button_mask) > 3) return CMD_ERROR;
@@ -273,8 +273,8 @@ CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t ta
 		if (is_client) {
 			if (client != _network_own_client_id) return CommandCost();
 		} else {
-			if (company == INVALID_COMPANY && !Company::IsValidID(_local_company)) return CommandCost();
-			if (company != INVALID_COMPANY && company != _local_company) return CommandCost();
+			if (company == CompanyID::Invalid() && !Company::IsValidID(_local_company)) return CommandCost();
+			if (company != CompanyID::Invalid() && company != _local_company) return CommandCost();
 		}
 		ShowGoalQuestion(uniqueid, type, button_mask, text);
 	}

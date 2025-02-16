@@ -634,7 +634,7 @@ private:
 		} else {
 			const Group *g = Group::Get(this->sel);
 			livery = &g->livery;
-			if (g->parent == INVALID_GROUP) {
+			if (g->parent == GroupID::Invalid()) {
 				default_livery = &c->livery[LS_DEFAULT];
 			} else {
 				const Group *pg = Group::Get(g->parent);
@@ -697,7 +697,7 @@ public:
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCL_MATRIX_SCROLLBAR);
 
-		if (group == INVALID_GROUP) {
+		if (group == GroupID::Invalid()) {
 			this->livery_class = LC_OTHER;
 			this->sel = 1;
 			this->LowerWidget(WID_SCL_CLASS_GENERAL);
@@ -796,7 +796,7 @@ public:
 		bool local = this->window_number == _local_company;
 
 		/* Disable dropdown controls if no scheme is selected */
-		bool disabled = this->livery_class < LC_GROUP_RAIL ? (this->sel == 0) : (this->sel == INVALID_GROUP);
+		bool disabled = this->livery_class < LC_GROUP_RAIL ? (this->sel == 0) : (this->sel == GroupID::Invalid());
 		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, !local || disabled);
 		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, !local || disabled);
 
@@ -831,7 +831,7 @@ public:
 						}
 					}
 				} else {
-					if (this->sel != INVALID_GROUP) {
+					if (this->sel != GroupID::Invalid()) {
 						const Group *g = Group::Get(this->sel);
 						const Livery *livery = &g->livery;
 						if (HasBit(livery->in_use, primary ? 0 : 1)) {
@@ -944,7 +944,7 @@ public:
 						}
 					}
 				} else {
-					this->sel = INVALID_GROUP.base();
+					this->sel = GroupID::Invalid().base();
 					this->groups.ForceRebuild();
 					this->BuildGroupList(this->window_number);
 
@@ -1038,7 +1038,7 @@ public:
 				this->SetRows();
 
 				if (!Group::IsValidID(this->sel)) {
-					this->sel = INVALID_GROUP.base();
+					this->sel = GroupID::Invalid().base();
 					if (!this->groups.empty()) this->sel = this->groups[0].group->index.base();
 				}
 
@@ -1112,7 +1112,7 @@ void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
 	SelectCompanyLiveryWindow *w = (SelectCompanyLiveryWindow *)BringWindowToFrontById(WC_COMPANY_COLOUR, company);
 	if (w == nullptr) {
 		new SelectCompanyLiveryWindow(_select_company_livery_desc, company, group);
-	} else if (group != INVALID_GROUP) {
+	} else if (group != GroupID::Invalid()) {
 		w->SetSelectedGroup(company, group);
 	}
 }
@@ -2452,7 +2452,7 @@ struct CompanyWindow : Window
 			case WID_C_NEW_FACE: DoSelectCompanyManagerFace(this); break;
 
 			case WID_C_COLOUR_SCHEME:
-				ShowCompanyLiveryWindow(this->window_number, INVALID_GROUP);
+				ShowCompanyLiveryWindow(this->window_number, GroupID::Invalid());
 				break;
 
 			case WID_C_PRESIDENT_NAME:

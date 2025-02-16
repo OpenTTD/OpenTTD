@@ -52,9 +52,6 @@ using ClientPoolID = PoolID<uint16_t, struct ClientPoolIDTag, MAX_CLIENTS + 1 /*
 /** Indices into the admin tables. */
 using AdminID = PoolID<uint8_t, struct AdminIDTag, 16, 0xFF>;
 
-/** An invalid admin marker. */
-static constexpr AdminID INVALID_ADMIN_ID = AdminID::Invalid();
-
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
 	uint16_t num_vehicle[NETWORK_VEH_END];            ///< How many vehicles are there of this type?

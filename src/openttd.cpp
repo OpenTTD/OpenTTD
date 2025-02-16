@@ -95,7 +95,7 @@ void CallWindowGameTickEvent();
 bool HandleBootstrap();
 
 extern void CheckCaches();
-extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
+extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
 extern void OSOpenBrowser(const std::string &url);
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern std::string _config_file;
@@ -327,7 +327,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 		GenerateWorld(GWM_EMPTY, 64, 64); // if failed loading, make empty world.
 		SetLocalCompany(COMPANY_SPECTATOR);
 	} else {
-		SetLocalCompany(COMPANY_FIRST);
+		SetLocalCompany(CompanyID::Begin());
 	}
 
 	FixTitleGameZoom();
@@ -341,7 +341,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 
 void MakeNewgameSettingsLive()
 {
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (_settings_game.ai_config[c] != nullptr) {
 			delete _settings_game.ai_config[c];
 		}
@@ -355,7 +355,7 @@ void MakeNewgameSettingsLive()
 	_settings_game = _settings_newgame;
 	_old_vds = _settings_client.company.vehicle;
 
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		_settings_game.ai_config[c] = nullptr;
 		if (_settings_newgame.ai_config[c] != nullptr) {
 			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
@@ -865,7 +865,7 @@ static void MakeNewGameDone()
 	/* Create a single company */
 	DoStartupNewCompany(false);
 
-	Company *c = Company::Get(COMPANY_FIRST);
+	Company *c = Company::Get(CompanyID::Begin());
 	c->settings = _settings_client.company;
 
 	/* Overwrite color from settings if needed

@@ -78,7 +78,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 
 		/* Land info of nearby tiles */
 		case 0x60: return GetNearbyIndustryTileInformation(parameter, this->tile,
-				this->industry == nullptr ? (IndustryID)INVALID_INDUSTRY : this->industry->index, true, this->ro.grffile->grf_version >= 8);
+				this->industry == nullptr ? (IndustryID)IndustryID::Invalid() : this->industry->index, true, this->ro.grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x61: {
@@ -102,16 +102,16 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 /* virtual */ uint32_t IndustryTileScopeResolver::GetRandomBits() const
 {
 	assert(this->industry != nullptr && IsValidTile(this->tile));
-	assert(this->industry->index == INVALID_INDUSTRY || IsTileType(this->tile, MP_INDUSTRY));
+	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, MP_INDUSTRY));
 
-	return (this->industry->index != INVALID_INDUSTRY) ? GetIndustryRandomBits(this->tile) : 0;
+	return (this->industry->index != IndustryID::Invalid()) ? GetIndustryRandomBits(this->tile) : 0;
 }
 
 /* virtual */ uint32_t IndustryTileScopeResolver::GetTriggers() const
 {
 	assert(this->industry != nullptr && IsValidTile(this->tile));
-	assert(this->industry->index == INVALID_INDUSTRY || IsTileType(this->tile, MP_INDUSTRY));
-	if (this->industry->index == INVALID_INDUSTRY) return 0;
+	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, MP_INDUSTRY));
+	if (this->industry->index == IndustryID::Invalid()) return 0;
 	return GetIndustryTriggers(this->tile);
 }
 
@@ -181,7 +181,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGro
 uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile)
 {
 	assert(industry != nullptr && IsValidTile(tile));
-	assert(industry->index == INVALID_INDUSTRY || IsTileType(tile, MP_INDUSTRY));
+	assert(industry->index == IndustryID::Invalid() || IsTileType(tile, MP_INDUSTRY));
 
 	IndustryTileResolverObject object(gfx_id, tile, industry, callback, param1, param2);
 	return object.ResolveCallback();
@@ -230,7 +230,7 @@ extern bool IsSlopeRefused(Slope current, Slope refused);
 CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, size_t layout_index, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type)
 {
 	Industry ind;
-	ind.index = INVALID_INDUSTRY;
+	ind.index = IndustryID::Invalid();
 	ind.location.tile = ind_base_tile;
 	ind.location.w = 0;
 	ind.type = type;

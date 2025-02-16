@@ -269,7 +269,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 		/* Land info of nearby tiles */
 		case 0x62:
 			if (this->tile == INVALID_TILE) break;
-			return GetNearbyIndustryTileInformation(parameter, this->tile, INVALID_INDUSTRY, false, this->ro.grffile->grf_version >= 8);
+			return GetNearbyIndustryTileInformation(parameter, this->tile, IndustryID::Invalid(), false, this->ro.grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x63: {
@@ -435,7 +435,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_
 
 /* virtual */ void IndustriesScopeResolver::StorePSA(uint pos, int32_t value)
 {
-	if (this->industry->index == INVALID_INDUSTRY) return;
+	if (this->industry->index == IndustryID::Invalid()) return;
 
 	if (this->industry->psa == nullptr) {
 		/* There is no need to create a storage if the value is zero. */
@@ -490,7 +490,7 @@ TownScopeResolver *IndustriesResolverObject::GetTown()
 		bool readonly = true;
 		if (this->industries_scope.industry != nullptr) {
 			t = this->industries_scope.industry->town;
-			readonly = this->industries_scope.industry->index == INVALID_INDUSTRY;
+			readonly = this->industries_scope.industry->index == IndustryID::Invalid();
 		} else if (this->industries_scope.tile != INVALID_TILE) {
 			t = ClosestTownFromTile(this->industries_scope.tile, UINT_MAX);
 		}
@@ -542,7 +542,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	Industry ind;
-	ind.index = INVALID_INDUSTRY;
+	ind.index = IndustryID::Invalid();
 	ind.location.tile = tile;
 	ind.location.w = 0; // important to mark the industry invalid
 	ind.type = type;

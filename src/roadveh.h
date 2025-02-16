@@ -106,7 +106,7 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	uint8_t reverse_ctr;
 
 	RoadType roadtype; ///< NOSAVE: Roadtype of this vehicle.
-	VehicleID disaster_vehicle = INVALID_VEHICLE; ///< NOSAVE: Disaster vehicle targetting this vehicle.
+	VehicleID disaster_vehicle = VehicleID::Invalid(); ///< NOSAVE: Disaster vehicle targetting this vehicle.
 	RoadTypes compatible_roadtypes; ///< NOSAVE: Roadtypes this consist is powered on.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */

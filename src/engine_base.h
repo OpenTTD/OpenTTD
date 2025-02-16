@@ -55,7 +55,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16_t duration_phase_3;    ///< Third reliability phase in months, decaying to #reliability_final.
 	EngineFlags flags;                 ///< Flags of the engine. @see EngineFlags
 
-	CompanyID preview_company;  ///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
+	CompanyID preview_company;  ///< Company which is currently being offered a preview \c CompanyID::Invalid() means no company.
 	uint8_t preview_wait;          ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	uint8_t original_image_index; ///< Original vehicle image index, thus the image index of the overridden vehicle
 	VehicleType type;           ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
@@ -149,7 +149,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 */
 	const Engine *GetDisplayVariant() const
 	{
-		if (this->display_last_variant == this->index || this->display_last_variant == INVALID_ENGINE) return this;
+		if (this->display_last_variant == this->index || this->display_last_variant == EngineID::Invalid()) return this;
 		return Engine::Get(this->display_last_variant);
 	}
 

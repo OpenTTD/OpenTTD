@@ -25,7 +25,7 @@
  */
 class ScriptGoal : public ScriptObject {
 public:
-	static constexpr GoalID GOAL_INVALID = ::INVALID_GOAL; ///< An invalid goal id.
+	static constexpr GoalID GOAL_INVALID = ::GoalID::Invalid(); ///< An invalid goal id.
 
 	/**
 	 * Goal types that can be given to a goal.

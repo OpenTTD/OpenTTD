@@ -92,7 +92,7 @@ void UpdateNetworkGameWindow();
  * Everything we need to know about a command to be able to execute it.
  */
 struct CommandPacket {
-	CommandPacket() : company(INVALID_COMPANY), frame(0), my_cmd(false) {}
+	CommandPacket() : company(CompanyID::Invalid()), frame(0), my_cmd(false) {}
 	CompanyID company;   ///< company that is executing the command
 	uint32_t frame;        ///< the frame in which this packet is executed
 	bool my_cmd;         ///< did the command originate from "me"

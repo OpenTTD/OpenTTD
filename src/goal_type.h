@@ -39,6 +39,5 @@ typedef uint32_t GoalTypeID; ///< Contains either tile, industry ID, town ID, co
 using GoalID = PoolID<uint16_t, struct GoalIDTag, 64000, 0xFFFF>;
 
 struct Goal;
-static constexpr GoalID INVALID_GOAL = GoalID::Invalid(); ///< Constant representing a non-existing goal.
 
 #endif /* GOAL_TYPE_H */

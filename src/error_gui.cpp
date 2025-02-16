@@ -197,12 +197,12 @@ public:
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		/* If company gets shut down, while displaying an error about it, remove the error message. */
-		if (this->company != INVALID_COMPANY && !Company::IsValidID(this->company)) this->Close();
+		if (this->company != CompanyID::Invalid() && !Company::IsValidID(this->company)) this->Close();
 	}
 
 	void SetStringParameters(WidgetID widget) const override
 	{
-		if (widget == WID_EM_CAPTION && this->company != INVALID_COMPANY) SetDParam(0, this->company);
+		if (widget == WID_EM_CAPTION && this->company != CompanyID::Invalid()) SetDParam(0, this->company);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

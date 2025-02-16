@@ -73,8 +73,8 @@ Engine::Engine(VehicleType type, uint16_t local_id)
 	this->type = type;
 	this->grf_prop.local_id = local_id;
 	this->list_position = local_id;
-	this->preview_company = INVALID_COMPANY;
-	this->display_last_variant = INVALID_ENGINE;
+	this->preview_company = CompanyID::Invalid();
+	this->display_last_variant = EngineID::Invalid();
 
 	/* Check if this base engine is within the original engine data range */
 	if (local_id >= _engine_counts[type]) {
@@ -99,7 +99,7 @@ Engine::Engine(VehicleType type, uint16_t local_id)
 		/* Set cargo aging period to the default value. */
 		this->info.cargo_age_period = Ticks::CARGO_AGING_TICKS;
 		/* Not a variant */
-		this->info.variant_id = INVALID_ENGINE;
+		this->info.variant_id = EngineID::Invalid();
 		return;
 	}
 
@@ -496,7 +496,7 @@ bool Engine::IsVariantHidden(CompanyID c) const
 	 * the last display variant rather than the actual parent variant. */
 	const Engine *re = this;
 	const Engine *ve = re->GetDisplayVariant();
-	while (!(ve->IsHidden(c)) && re->info.variant_id != INVALID_ENGINE) {
+	while (!(ve->IsHidden(c)) && re->info.variant_id != EngineID::Invalid()) {
 		re = Engine::Get(re->info.variant_id);
 		ve = re->GetDisplayVariant();
 	}
@@ -525,14 +525,14 @@ void EngineOverrideManager::ResetToDefaultMapping()
  * @param grfid The GrfID that defines the scope of grf_local_id.
  *              If a newgrf overrides the engines of another newgrf, the "scope grfid" is the ID of the overridden newgrf.
  *              If dynnamic_engines is disabled, all newgrf share the same ID scope identified by INVALID_GRFID.
- * @return The engine ID if present, or INVALID_ENGINE if not.
+ * @return The engine ID if present, or EngineID::Invalid() if not.
  */
 EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid)
 {
 	const auto &map = this->mappings[type];
 	const auto key = EngineIDMapping::Key(grfid, grf_local_id);
 	auto it = std::ranges::lower_bound(map, key, std::less{}, EngineIDMappingKeyProjection{});
-	if (it == std::end(map) || it->Key() != key) return INVALID_ENGINE;
+	if (it == std::end(map) || it->Key() != key) return EngineID::Invalid();
 	return it->engine;
 }
 
@@ -544,14 +544,14 @@ EngineID EngineOverrideManager::GetID(VehicleType type, uint16_t grf_local_id, u
  *              If a newgrf overrides the engines of another newgrf, the "scope grfid" is the ID of the overridden newgrf.
  *              If dynnamic_engines is disabled, all newgrf share the same ID scope identified by INVALID_GRFID.
  * @param static_access Whether to actually reserve the EngineID.
- * @return The engine ID if present and now reserved, or INVALID_ENGINE if not.
+ * @return The engine ID if present and now reserved, or EngineID::Invalid() if not.
  */
 EngineID EngineOverrideManager::UseUnreservedID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, bool static_access)
 {
 	auto &map = _engine_mngr.mappings[type];
 	const auto key = EngineIDMapping::Key(INVALID_GRFID, grf_local_id);
 	auto it = std::ranges::lower_bound(map, key, std::less{}, EngineIDMappingKeyProjection{});
-	if (it == std::end(map) || it->Key() != key) return INVALID_ENGINE;
+	if (it == std::end(map) || it->Key() != key) return EngineID::Invalid();
 
 	if (!static_access && grfid != INVALID_GRFID) {
 		/* Reserve the engine slot for the new grfid. */
@@ -636,7 +636,7 @@ static bool IsWagon(EngineID index)
 static void ClearLastVariant(EngineID engine_id, VehicleType type)
 {
 	for (Engine *e : Engine::IterateType(type)) {
-		if (e->display_last_variant == engine_id) e->display_last_variant = INVALID_ENGINE;
+		if (e->display_last_variant == engine_id) e->display_last_variant = EngineID::Invalid();
 	}
 }
 
@@ -648,7 +648,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 {
 	/* Get source engine for reliability age. This is normally our engine unless variant reliability syncing is requested. */
 	Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && re->info.extra_flags.Test(ExtraEngineFlag::SyncReliability)) {
+	while (re->info.variant_id != EngineID::Invalid() && re->info.extra_flags.Test(ExtraEngineFlag::SyncReliability)) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
@@ -750,7 +750,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 
 	/* Get parent variant index for syncing reliability via random seed. */
 	const Engine *re = e;
-	while (re->info.variant_id != INVALID_ENGINE && re->info.extra_flags.Test(ExtraEngineFlag::SyncReliability)) {
+	while (re->info.variant_id != EngineID::Invalid() && re->info.extra_flags.Test(ExtraEngineFlag::SyncReliability)) {
 		re = Engine::Get(re->info.variant_id);
 	}
 
@@ -884,7 +884,7 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 {
 	Engine *e = Engine::Get(eid);
 
-	e->preview_company = INVALID_COMPANY;
+	e->preview_company = CompanyID::Invalid();
 	e->preview_asked.Set();
 
 	EnableEngineForCompany(eid, company);
@@ -910,11 +910,11 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company, int recursion_d
 /**
  * Get the best company for an engine preview.
  * @param e Engine to preview.
- * @return Best company if it exists, #INVALID_COMPANY otherwise.
+ * @return Best company if it exists, #CompanyID::Invalid() otherwise.
  */
 static CompanyID GetPreviewCompany(Engine *e)
 {
-	CompanyID best_company = INVALID_COMPANY;
+	CompanyID best_company = CompanyID::Invalid();
 
 	/* For trains the cargomask has no useful meaning, since you can attach other wagons */
 	CargoTypes cargomask = e->type != VEH_TRAIN ? GetUnionOfArticulatedRefitMasks(e->index, true) : ALL_CARGOTYPES;
@@ -971,15 +971,15 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 	for (Engine *e : Engine::Iterate()) {
 		EngineID i = e->index;
 		if (e->flags.Test(EngineFlag::ExclusivePreview)) {
-			if (e->preview_company != INVALID_COMPANY) {
+			if (e->preview_company != CompanyID::Invalid()) {
 				if (!--e->preview_wait) {
 					CloseWindowById(WC_ENGINE_PREVIEW, i);
-					e->preview_company = INVALID_COMPANY;
+					e->preview_company = CompanyID::Invalid();
 				}
 			} else if (CountBits(e->preview_asked.base()) < MAX_COMPANIES) {
 				e->preview_company = GetPreviewCompany(e);
 
-				if (e->preview_company == INVALID_COMPANY) {
+				if (e->preview_company == CompanyID::Invalid()) {
 					e->preview_asked.Set();
 					continue;
 				}
@@ -1177,7 +1177,7 @@ void CalendarEnginesMonthlyLoop()
 
 				/* Show preview dialog to one of the companies. */
 				e->flags.Set(EngineFlag::ExclusivePreview);
-				e->preview_company = INVALID_COMPANY;
+				e->preview_company = CompanyID::Invalid();
 				e->preview_asked = CompanyMask{};
 			}
 		}

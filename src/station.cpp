@@ -96,7 +96,7 @@ Station::~Station()
 
 	for (Aircraft *a : Aircraft::Iterate()) {
 		if (!a->IsNormalAircraft()) continue;
-		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
+		if (a->targetairport == this->index) a->targetairport = StationID::Invalid();
 	}
 
 	for (CargoType c = 0; c < NUM_CARGO; ++c) {
@@ -122,10 +122,10 @@ Station::~Station()
 	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == this->index) {
-			v->last_station_visited = INVALID_STATION;
+			v->last_station_visited = StationID::Invalid();
 		}
 		if (v->last_loading_station == this->index) {
-			v->last_loading_station = INVALID_STATION;
+			v->last_loading_station = StationID::Invalid();
 		}
 	}
 

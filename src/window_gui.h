@@ -244,12 +244,12 @@ static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for W
 /**
  * Data structure for a window viewport.
  * A viewport is either following a vehicle (its id in then in #follow_vehicle), or it aims to display a specific
- * location #dest_scrollpos_x, #dest_scrollpos_y (#follow_vehicle is then #INVALID_VEHICLE).
+ * location #dest_scrollpos_x, #dest_scrollpos_y (#follow_vehicle is then #VehicleID::Invalid()).
  * The actual location being shown is #scrollpos_x, #scrollpos_y.
  * @see InitializeViewport(), UpdateViewportPosition(), UpdateViewportCoordinates().
  */
 struct ViewportData : Viewport {
-	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #INVALID_VEHICLE otherwise.
+	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #VehicleID::Invalid() otherwise.
 	int32_t scrollpos_x;        ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
 	int32_t scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
 	int32_t dest_scrollpos_x;   ///< Current destination x coordinate to display (virtual screen coordinate of topleft corner of the viewport).

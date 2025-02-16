@@ -437,7 +437,7 @@ static bool FixTTOEngines()
 			e->info.climates = LandscapeType::Temperate;
 		}
 
-		e->preview_company = INVALID_COMPANY;
+		e->preview_company = CompanyID::Invalid();
 		e->preview_asked.Set();
 		e->preview_wait = 0;
 		e->name = std::string{};
@@ -724,8 +724,8 @@ static bool LoadOldGood(LoadgameState &ls, int num)
 	AssignBit(ge->status, GoodsEntry::GES_ACCEPTANCE, HasBit(_waiting_acceptance, 15));
 	AssignBit(ge->status, GoodsEntry::GES_RATING, _cargo_source != 0xFF);
 	if (GB(_waiting_acceptance, 0, 12) != 0 && CargoPacket::CanAllocateItem()) {
-		ge->GetOrCreateData().cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? INVALID_STATION : StationID{_cargo_source}, INVALID_TILE, 0),
-				INVALID_STATION);
+		ge->GetOrCreateData().cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? StationID::Invalid() : StationID{_cargo_source}, INVALID_TILE, 0),
+				StationID::Invalid());
 	}
 
 	return true;
@@ -1372,8 +1372,8 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 		v->next = (Vehicle *)(size_t)_old_next_ptr;
 
 		if (_cargo_count != 0 && CargoPacket::CanAllocateItem()) {
-			StationID source =    (_cargo_source == 0xFF) ? INVALID_STATION : StationID{_cargo_source};
-			TileIndex source_xy = (source != INVALID_STATION) ? Station::Get(source)->xy : (TileIndex)0;
+			StationID source =    (_cargo_source == 0xFF) ? StationID::Invalid() : StationID{_cargo_source};
+			TileIndex source_xy = (source != StationID::Invalid()) ? Station::Get(source)->xy : (TileIndex)0;
 			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, source_xy, 0));
 		}
 	}

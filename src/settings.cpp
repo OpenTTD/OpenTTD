@@ -960,14 +960,14 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 	const IniGroup *group = ini.GetGroup(grpname);
 
 	/* Clean any configured AI */
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME)->Change(std::nullopt);
 	}
 
 	/* If no group exists, return */
 	if (group == nullptr) return;
 
-	CompanyID c = COMPANY_FIRST;
+	CompanyID c = CompanyID::Begin();
 	for (const IniItem &item : group->items) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
@@ -1173,7 +1173,7 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 	IniGroup &group = ini.GetOrCreateGroup(grpname);
 	group.Clear();
 
-	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; ++c) {
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 		std::string name;
 		std::string value = config->SettingsToString();

@@ -165,7 +165,7 @@ void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 	/* if there is a roadpiece just outside of the station entrance, build a connecting route */
 	if (IsNormalRoadTile(tile)) {
 		if (GetRoadBits(tile, GetRoadTramType(_cur_roadtype)) != ROAD_NONE) {
-			Command<CMD_BUILD_ROAD>::Post(tile, DiagDirToRoadBits(ReverseDiagDir(direction)), _cur_roadtype, DRD_NONE, INVALID_TOWN);
+			Command<CMD_BUILD_ROAD>::Post(tile, DiagDirToRoadBits(ReverseDiagDir(direction)), _cur_roadtype, DRD_NONE, TownID::Invalid());
 		}
 	}
 }
@@ -237,7 +237,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, RoadStopType
 	auto proc = [=](bool test, StationID to_join) -> bool {
 		if (test) {
 			return Command<CMD_BUILD_ROAD_STOP>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_STOP>()), ta.tile, ta.w, ta.h, stop_type, drive_through,
-					ddir, rt, spec_class, spec_index, INVALID_STATION, adjacent).Succeeded();
+					ddir, rt, spec_class, spec_index, StationID::Invalid(), adjacent).Succeeded();
 		} else {
 			return Command<CMD_BUILD_ROAD_STOP>::Post(err_msg, CcRoadStop, ta.tile, ta.w, ta.h, stop_type, drive_through,
 					ddir, rt, spec_class, spec_index, to_join, adjacent);
@@ -266,7 +266,7 @@ static void PlaceRoad_Waypoint(TileIndex tile)
 	} else {
 		/* Tile where we can't build road waypoints. This is always going to fail,
 		 * but provides the user with a proper error message. */
-		Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, tile, AXIS_X, 1, 1, ROADSTOP_CLASS_WAYP, 0, INVALID_STATION, false);
+		Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, tile, AXIS_X, 1, 1, ROADSTOP_CLASS_WAYP, 0, StationID::Invalid(), false);
 	}
 }
 
@@ -766,7 +766,7 @@ struct BuildRoadToolbarWindow : Window {
 
 							auto proc = [=](bool test, StationID to_join) -> bool {
 								if (test) {
-									return Command<CMD_BUILD_ROAD_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, INVALID_STATION, adjacent).Succeeded();
+									return Command<CMD_BUILD_ROAD_WAYPOINT>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_ROAD_WAYPOINT>()), ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, StationID::Invalid(), adjacent).Succeeded();
 								} else {
 									return Command<CMD_BUILD_ROAD_WAYPOINT>::Post(STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT, CcPlaySound_CONSTRUCTION_OTHER, ta.tile, axis, ta.w, ta.h, _waypoint_gui.sel_class, _waypoint_gui.sel_type, to_join, adjacent);
 								}

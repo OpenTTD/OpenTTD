@@ -276,14 +276,14 @@ static CargoType GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, boo
  * @param v The vehicle to find a replacement for
  * @param c The vehicle's owner (it's faster to forward the pointer than refinding it)
  * @param always_replace Always replace, even if not old.
- * @param[out] e the EngineID of the replacement. INVALID_ENGINE if no replacement is found
+ * @param[out] e the EngineID of the replacement. EngineID::Invalid() if no replacement is found
  * @return Error if the engine to build is not available
  */
 static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool always_replace, EngineID &e)
 {
 	assert(v->type != VEH_TRAIN || !v->IsArticulatedPart());
 
-	e = INVALID_ENGINE;
+	e = EngineID::Invalid();
 
 	if (v->type == VEH_TRAIN && Train::From(v)->IsRearDualheaded()) {
 		/* we build the rear ends of multiheaded trains with the front ones */
@@ -292,10 +292,10 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool alw
 
 	bool replace_when_old;
 	e = EngineReplacementForCompany(c, v->engine_type, v->group_id, &replace_when_old);
-	if (!always_replace && replace_when_old && !v->NeedsAutorenewing(c, false)) e = INVALID_ENGINE;
+	if (!always_replace && replace_when_old && !v->NeedsAutorenewing(c, false)) e = EngineID::Invalid();
 
 	/* Autoreplace, if engine is available */
-	if (e != INVALID_ENGINE && IsEngineBuildable(e, v->type, _current_company)) {
+	if (e != EngineID::Invalid() && IsEngineBuildable(e, v->type, _current_company)) {
 		return CommandCost();
 	}
 
@@ -303,7 +303,7 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool alw
 	if (v->NeedsAutorenewing(c)) e = v->engine_type;
 
 	/* Nothing to do or all is fine? */
-	if (e == INVALID_ENGINE || IsEngineBuildable(e, v->type, _current_company)) return CommandCost();
+	if (e == EngineID::Invalid() || IsEngineBuildable(e, v->type, _current_company)) return CommandCost();
 
 	/* The engine we need is not available. Report error to user */
 	return CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + v->type);
@@ -327,7 +327,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	EngineID e;
 	CommandCost cost = GetNewEngineType(old_veh, c, true, e);
 	if (cost.Failed()) return cost;
-	if (e == INVALID_ENGINE) return CommandCost(); // neither autoreplace is set, nor autorenew is triggered
+	if (e == EngineID::Invalid()) return CommandCost(); // neither autoreplace is set, nor autorenew is triggered
 
 	/* Does it need to be refitted */
 	CargoType refit_cargo = GetNewCargoTypeForReplace(old_veh, e, part_of_chain);
@@ -397,7 +397,7 @@ static inline CommandCost DoCmdStartStopVehicle(const Vehicle *v, bool evaluate_
  */
 static inline CommandCost CmdMoveVehicle(const Vehicle *v, const Vehicle *after, DoCommandFlags flags, bool whole_chain)
 {
-	return Command<CMD_MOVE_RAIL_VEHICLE>::Do(flags.Set(DoCommandFlag::NoCargoCapacityCheck), v->index, after != nullptr ? after->index : INVALID_VEHICLE, whole_chain);
+	return Command<CMD_MOVE_RAIL_VEHICLE>::Do(flags.Set(DoCommandFlag::NoCargoCapacityCheck), v->index, after != nullptr ? after->index : VehicleID::Invalid(), whole_chain);
 }
 
 /**
@@ -763,7 +763,7 @@ CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id)
 		EngineID e;
 		CommandCost cost = GetNewEngineType(w, c, false, e);
 		if (cost.Failed()) return cost;
-		any_replacements |= (e != INVALID_ENGINE);
+		any_replacements |= (e != EngineID::Invalid());
 		w = (!free_wagon && w->type == VEH_TRAIN ? Train::From(w)->GetNextUnit() : nullptr);
 	}
 
@@ -828,7 +828,7 @@ CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_e
 	if (!Engine::IsValidID(old_engine_type)) return CMD_ERROR;
 	if (Group::IsValidID(id_g) && Group::Get(id_g)->vehicle_type != Engine::Get(old_engine_type)->type) return CMD_ERROR;
 
-	if (new_engine_type != INVALID_ENGINE) {
+	if (new_engine_type != EngineID::Invalid()) {
 		if (!Engine::IsValidID(new_engine_type)) return CMD_ERROR;
 		if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
 

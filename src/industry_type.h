@@ -11,7 +11,6 @@
 #define INDUSTRY_TYPE_H
 
 using IndustryID = PoolID<uint16_t, struct IndustryIDTag, 64000, 0xFFFF>;
-static constexpr IndustryID INVALID_INDUSTRY = IndustryID::Invalid();
 
 typedef uint16_t IndustryGfx;
 typedef uint8_t IndustryType;

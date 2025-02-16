@@ -38,7 +38,7 @@
 			(type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(destination))) ||
 			(type == GT_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(destination))) ||
 			(type == GT_COMPANY && ScriptCompany::ResolveCompanyID(ScriptCompany::ToScriptCompanyID(static_cast<::CompanyID>(destination))) != ScriptCompany::COMPANY_INVALID) ||
-			(type == GT_STORY_PAGE && story_page != nullptr && (c == INVALID_COMPANY ? story_page->company == INVALID_COMPANY : story_page->company == INVALID_COMPANY || story_page->company == c));
+			(type == GT_STORY_PAGE && story_page != nullptr && (c == CompanyID::Invalid() ? story_page->company == CompanyID::Invalid() : story_page->company == CompanyID::Invalid() || story_page->company == c));
 }
 
 /* static */ GoalID ScriptGoal::New(ScriptCompany::CompanyID company, Text *goal, GoalType type, SQInteger destination)

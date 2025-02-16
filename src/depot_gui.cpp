@@ -144,7 +144,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 	if (wagon == v) return;
 
-	Command<CMD_MOVE_RAIL_VEHICLE>::Post(STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index, wagon == nullptr ? INVALID_VEHICLE : wagon->index, _ctrl_pressed);
+	Command<CMD_MOVE_RAIL_VEHICLE>::Post(STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index, wagon == nullptr ? VehicleID::Invalid() : wagon->index, _ctrl_pressed);
 }
 
 static VehicleCellSize _base_block_sizes_depot[VEH_COMPANY_END];    ///< Cell size for vehicle images in the depot view.
@@ -255,7 +255,7 @@ const Sprite *GetAircraftSprite(EngineID engine);
 
 struct DepotWindow : Window {
 	VehicleID sel;
-	VehicleID vehicle_over; ///< Rail vehicle over which another one is dragged, \c INVALID_VEHICLE if none.
+	VehicleID vehicle_over; ///< Rail vehicle over which another one is dragged, \c VehicleID::Invalid() if none.
 	VehicleType type;
 	bool generate_list;
 	bool check_unitnumber_digits;
@@ -271,8 +271,8 @@ struct DepotWindow : Window {
 	{
 		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
 
-		this->sel = INVALID_VEHICLE;
-		this->vehicle_over = INVALID_VEHICLE;
+		this->sel = VehicleID::Invalid();
+		this->vehicle_over = VehicleID::Invalid();
 		this->generate_list = true;
 		this->check_unitnumber_digits = true;
 		this->hovered_widget = -1;
@@ -558,8 +558,8 @@ struct DepotWindow : Window {
 
 				VehicleID sel = this->sel;
 
-				if (this->type == VEH_TRAIN && sel != INVALID_VEHICLE) {
-					this->sel = INVALID_VEHICLE;
+				if (this->type == VEH_TRAIN && sel != VehicleID::Invalid()) {
+					this->sel = VehicleID::Invalid();
 					TrainDepotMoveVehicle(v, sel, gdvp.head);
 				} else if (v != nullptr) {
 					SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
@@ -980,8 +980,8 @@ struct DepotWindow : Window {
 		this->SetWidgetDirty(WID_D_CLONE);
 
 		/* abort drag & drop */
-		this->sel = INVALID_VEHICLE;
-		this->vehicle_over = INVALID_VEHICLE;
+		this->sel = VehicleID::Invalid();
+		this->vehicle_over = VehicleID::Invalid();
 		this->SetWidgetDirty(WID_D_MATRIX);
 
 		if (this->hovered_widget != -1) {
@@ -1002,7 +1002,7 @@ struct DepotWindow : Window {
 
 	void OnMouseDrag(Point pt, WidgetID widget) override
 	{
-		if (this->sel == INVALID_VEHICLE) return;
+		if (this->sel == VehicleID::Invalid()) return;
 		if (widget != this->hovered_widget) {
 			if (this->hovered_widget == WID_D_SELL || this->hovered_widget == WID_D_SELL_CHAIN) {
 				this->SetWidgetLoweredState(this->hovered_widget, false);
@@ -1018,8 +1018,8 @@ struct DepotWindow : Window {
 
 		/* A rail vehicle is dragged.. */
 		if (widget != WID_D_MATRIX) { // ..outside of the depot matrix.
-			if (this->vehicle_over != INVALID_VEHICLE) {
-				this->vehicle_over = INVALID_VEHICLE;
+			if (this->vehicle_over != VehicleID::Invalid()) {
+				this->vehicle_over = VehicleID::Invalid();
 				this->SetWidgetDirty(WID_D_MATRIX);
 			}
 			return;
@@ -1030,7 +1030,7 @@ struct DepotWindow : Window {
 
 		if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) != MODE_DRAG_VEHICLE) return;
 
-		VehicleID new_vehicle_over = INVALID_VEHICLE;
+		VehicleID new_vehicle_over = VehicleID::Invalid();
 		if (gdvp.head != nullptr) {
 			if (gdvp.wagon == nullptr && gdvp.head->Last()->index != this->sel) { // ..at the end of the train.
 				/* NOTE: As a wagon can't be moved at the begin of a train, head index isn't used to mark a drag-and-drop
@@ -1058,17 +1058,17 @@ struct DepotWindow : Window {
 				const Vehicle *v = nullptr;
 				VehicleID sel = this->sel;
 
-				this->sel = INVALID_VEHICLE;
+				this->sel = VehicleID::Invalid();
 				this->SetDirty();
 
 				if (this->type == VEH_TRAIN) {
 					GetDepotVehiclePtData gdvp = { nullptr, nullptr };
 
-					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE && sel != INVALID_VEHICLE) {
+					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE && sel != VehicleID::Invalid()) {
 						if (gdvp.wagon != nullptr && gdvp.wagon->index == sel && _ctrl_pressed) {
 							Command<CMD_REVERSE_TRAIN_DIRECTION>::Post(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true);
 						} else if (gdvp.wagon == nullptr || gdvp.wagon->index != sel) {
-							this->vehicle_over = INVALID_VEHICLE;
+							this->vehicle_over = VehicleID::Invalid();
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 						} else if (gdvp.head != nullptr && gdvp.head->IsFrontEngine()) {
 							ShowVehicleViewWindow(gdvp.head);
@@ -1082,12 +1082,12 @@ struct DepotWindow : Window {
 
 			case WID_D_SELL: case WID_D_SELL_CHAIN: {
 				if (this->IsWidgetDisabled(widget)) return;
-				if (this->sel == INVALID_VEHICLE) return;
+				if (this->sel == VehicleID::Invalid()) return;
 
 				this->HandleButtonClick(widget);
 
 				const Vehicle *v = Vehicle::Get(this->sel);
-				this->sel = INVALID_VEHICLE;
+				this->sel = VehicleID::Invalid();
 				this->SetDirty();
 
 				bool sell_cmd = (v->type == VEH_TRAIN && (widget == WID_D_SELL_CHAIN || _ctrl_pressed));
@@ -1096,7 +1096,7 @@ struct DepotWindow : Window {
 			}
 
 			default:
-				this->sel = INVALID_VEHICLE;
+				this->sel = VehicleID::Invalid();
 				this->SetDirty();
 				break;
 		}
@@ -1129,7 +1129,7 @@ struct DepotWindow : Window {
 
 	EventState OnCTRLStateChange() override
 	{
-		if (this->sel != INVALID_VEHICLE) {
+		if (this->sel != VehicleID::Invalid()) {
 			_cursor.vehchain = _ctrl_pressed;
 			this->SetWidgetDirty(WID_D_MATRIX);
 			return ES_HANDLED;

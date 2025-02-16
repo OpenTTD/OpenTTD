@@ -17,7 +17,6 @@
 using StationID = PoolID<uint16_t, struct StationIDTag, 64000, 0xFFFF>;
 static constexpr StationID NEW_STATION{0xFFFD};
 static constexpr StationID ADJACENT_STATION{0xFFFE};
-static constexpr StationID INVALID_STATION = StationID::Invalid();
 
 using RoadStopID = PoolID<uint16_t, struct RoadStopIDTag, 64000, 0xFFFF>;
 
@@ -27,7 +26,7 @@ struct RoadStop;
 struct StationSpec;
 struct Waypoint;
 
-using StationIDStack = SmallStack<StationID::BaseType, StationID::BaseType, INVALID_STATION.base(), 8, StationID::End().base()>;
+using StationIDStack = SmallStack<StationID::BaseType, StationID::BaseType, StationID::Invalid().base(), 8, StationID::End().base()>;
 
 /** Station types */
 enum class StationType : uint8_t {

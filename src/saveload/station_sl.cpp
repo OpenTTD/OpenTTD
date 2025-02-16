@@ -193,15 +193,15 @@ static void SwapPackets(GoodsEntry *ge)
 	StationCargoPacketMap &ge_packets = const_cast<StationCargoPacketMap &>(*ge->GetOrCreateData().cargo.Packets());
 
 	if (_packets.empty()) {
-		std::map<StationID, std::list<CargoPacket *> >::iterator it(ge_packets.find(INVALID_STATION));
+		std::map<StationID, std::list<CargoPacket *> >::iterator it(ge_packets.find(StationID::Invalid()));
 		if (it == ge_packets.end()) {
 			return;
 		} else {
 			it->second.swap(_packets);
 		}
 	} else {
-		assert(ge_packets[INVALID_STATION].empty());
-		ge_packets[INVALID_STATION].swap(_packets);
+		assert(ge_packets[StationID::Invalid()].empty());
+		ge_packets[StationID::Invalid()].swap(_packets);
 	}
 }
 
@@ -322,7 +322,7 @@ public:
 		GoodsEntry::GoodsEntryData &data = ge->GetOrCreateData();
 		FlowSaveLoad flow{};
 		FlowStat *fs = nullptr;
-		StationID prev_source = INVALID_STATION;
+		StationID prev_source = StationID::Invalid();
 		for (uint32_t j = 0; j < num_flows; ++j) {
 			SlObject(&flow, this->GetLoadDescription());
 			if (fs == nullptr || prev_source != flow.source) {
@@ -416,8 +416,8 @@ public:
 			if (IsSavegameVersionBefore(SLV_68)) {
 				AssignBit(ge.status, GoodsEntry::GES_ACCEPTANCE, HasBit(_waiting_acceptance, 15));
 				if (GB(_waiting_acceptance, 0, 12) != 0) {
-					/* In old versions, enroute_from used 0xFF as INVALID_STATION */
-					StationID source = (IsSavegameVersionBefore(SLV_7) && _cargo_source == 0xFF) ? INVALID_STATION : static_cast<StationID>(_cargo_source);
+					/* In old versions, enroute_from used 0xFF as StationID::Invalid() */
+					StationID source = (IsSavegameVersionBefore(SLV_7) && _cargo_source == 0xFF) ? StationID::Invalid() : static_cast<StationID>(_cargo_source);
 
 					/* Make sure we can allocate the CargoPacket. This is safe
 					 * as there can only be ~64k stations and 32 cargoes in these
@@ -427,7 +427,7 @@ public:
 
 					/* Don't construct the packet with station here, because that'll fail with old savegames */
 					CargoPacket *cp = new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, source, TileIndex{_cargo_source_xy}, _cargo_feeder_share);
-					ge.GetOrCreateData().cargo.Append(cp, INVALID_STATION);
+					ge.GetOrCreateData().cargo.Append(cp, StationID::Invalid());
 					SetBit(ge.status, GoodsEntry::GES_RATING);
 				}
 			}

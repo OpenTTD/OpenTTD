@@ -265,7 +265,7 @@ static inline void UpdateNumEngineGroup(const Vehicle *v, GroupID old_g, GroupID
 
 const Livery *GetParentLivery(const Group *g)
 {
-	if (g->parent == INVALID_GROUP) {
+	if (g->parent == GroupID::Invalid()) {
 		const Company *c = Company::Get(g->owner);
 		return &c->livery[LS_DEFAULT];
 	}
@@ -311,7 +311,7 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 void UpdateCompanyGroupLiveries(const Company *c)
 {
 	for (Group *g : Group::Iterate()) {
-		if (g->owner == c->index && g->parent == INVALID_GROUP) {
+		if (g->owner == c->index && g->parent == GroupID::Invalid()) {
 			if (!HasBit(g->livery.in_use, 0)) g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
 			if (!HasBit(g->livery.in_use, 1)) g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
 			PropagateChildLivery(g, false);
@@ -335,20 +335,20 @@ Group::Group(Owner owner)
  */
 std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleType vt, GroupID parent_group)
 {
-	if (!IsCompanyBuildableVehicleType(vt)) return { CMD_ERROR, INVALID_GROUP };
+	if (!IsCompanyBuildableVehicleType(vt)) return { CMD_ERROR, GroupID::Invalid() };
 
-	if (!Group::CanAllocateItem()) return { CMD_ERROR, INVALID_GROUP };
+	if (!Group::CanAllocateItem()) return { CMD_ERROR, GroupID::Invalid() };
 
 	const Group *pg = Group::GetIfValid(parent_group);
 	if (pg != nullptr) {
-		if (pg->owner != _current_company) return { CMD_ERROR, INVALID_GROUP };
-		if (pg->vehicle_type != vt) return { CMD_ERROR, INVALID_GROUP };
+		if (pg->owner != _current_company) return { CMD_ERROR, GroupID::Invalid() };
+		if (pg->vehicle_type != vt) return { CMD_ERROR, GroupID::Invalid() };
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		Group *g = new Group(_current_company);
 		g->vehicle_type = vt;
-		g->parent = INVALID_GROUP;
+		g->parent = GroupID::Invalid();
 
 		Company *c = Company::Get(g->owner);
 		g->number = c->freegroups.UseID(c->freegroups.NextID());
@@ -369,7 +369,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 		return { CommandCost(), g->index };
 	}
 
-	return { CommandCost(), INVALID_GROUP};
+	return { CommandCost(), GroupID::Invalid()};
 }
 
 
@@ -466,7 +466,7 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 		}
 
 		if (flags.Test(DoCommandFlag::Execute)) {
-			g->parent = (pg == nullptr) ? INVALID_GROUP : pg->index;
+			g->parent = (pg == nullptr) ? GroupID::Invalid() : pg->index;
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
 			if (!HasBit(g->livery.in_use, 0) || !HasBit(g->livery.in_use, 1)) {
@@ -537,30 +537,30 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli)
 {
 	GroupID new_g = group_id;
-	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP) return { CMD_ERROR, INVALID_GROUP };
+	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP) return { CMD_ERROR, GroupID::Invalid() };
 
 	VehicleList list;
-	if (veh_id == INVALID_VEHICLE && vli.Valid()) {
-		if (!GenerateVehicleSortList(&list, vli) || list.empty()) return { CMD_ERROR, INVALID_GROUP };
+	if (veh_id == VehicleID::Invalid() && vli.Valid()) {
+		if (!GenerateVehicleSortList(&list, vli) || list.empty()) return { CMD_ERROR, GroupID::Invalid() };
 	} else {
 		Vehicle *v = Vehicle::GetIfValid(veh_id);
-		if (v == nullptr) return { CMD_ERROR, INVALID_GROUP };
+		if (v == nullptr) return { CMD_ERROR, GroupID::Invalid() };
 		list.push_back(v);
 	}
 
 	VehicleType vtype = list.front()->type;
 	for (const Vehicle *v : list) {
-		if (v->owner != _current_company || !v->IsPrimaryVehicle()) return { CMD_ERROR, INVALID_GROUP };
+		if (v->owner != _current_company || !v->IsPrimaryVehicle()) return { CMD_ERROR, GroupID::Invalid() };
 	}
 
 	if (Group::IsValidID(new_g)) {
 		Group *g = Group::Get(new_g);
-		if (g->owner != _current_company || g->vehicle_type != vtype) return { CMD_ERROR, INVALID_GROUP };
+		if (g->owner != _current_company || g->vehicle_type != vtype) return { CMD_ERROR, GroupID::Invalid() };
 	}
 
 	if (new_g == NEW_GROUP) {
 		/* Create new group. */
-		auto [ret, new_group_id] = CmdCreateGroup(flags, vtype, INVALID_GROUP);
+		auto [ret, new_group_id] = CmdCreateGroup(flags, vtype, GroupID::Invalid());
 		if (ret.Failed()) return { ret, new_group_id };
 
 		new_g = new_group_id;
@@ -878,7 +878,7 @@ bool GroupIsInGroup(GroupID search, GroupID group)
 	do {
 		if (search == group) return true;
 		search = Group::Get(search)->parent;
-	} while (search != INVALID_GROUP);
+	} while (search != GroupID::Invalid());
 
 	return false;
 }

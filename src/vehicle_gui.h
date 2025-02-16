@@ -51,7 +51,7 @@ struct TestedEngineDetails {
 
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te);
 
-void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest = INVALID_VEHICLE);
+void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest = VehicleID::Invalid());
 void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip = 0);
 void DrawShipImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type);
 void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type);

@@ -373,7 +373,7 @@ static bool TryFoundTownNearby(TileIndex tile, void *user_data)
 	TownID id = std::get<TownID>(result);
 
 	/* Check if the command failed. */
-	if (id == INVALID_TOWN) return false;
+	if (id == TownID::Invalid()) return false;
 
 	/* The command succeeded, send the ID back through user_data. */
 	town.town_id = id;

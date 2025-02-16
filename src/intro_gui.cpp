@@ -62,7 +62,7 @@ struct IntroGameViewportCommand {
 
 	int command_index = 0;               ///< Sequence number of the command (order they are performed in).
 	Point position{ 0, 0 };              ///< Calculated world coordinate to position viewport top-left at.
-	VehicleID vehicle = INVALID_VEHICLE; ///< Vehicle to follow, or INVALID_VEHICLE if not following a vehicle.
+	VehicleID vehicle = VehicleID::Invalid(); ///< Vehicle to follow, or VehicleID::Invalid() if not following a vehicle.
 	uint delay = 0;                      ///< Delay until next command.
 	int zoom_adjust = 0;                 ///< Adjustment to zoom level from base zoom level.
 	bool pan_to_next = false;            ///< If true, do a smooth pan from this position to the next.
@@ -77,7 +77,7 @@ struct IntroGameViewportCommand {
 	 */
 	Point PositionForViewport(const Viewport *vp)
 	{
-		if (this->vehicle != INVALID_VEHICLE) {
+		if (this->vehicle != VehicleID::Invalid()) {
 			const Vehicle *v = Vehicle::Get(this->vehicle);
 			this->position = RemapCoords(v->x_pos, v->y_pos, v->z_pos);
 		}
@@ -228,7 +228,7 @@ struct SelectGameWindow : public Window {
 		Viewport *vp = mw->viewport;
 
 		/* Early exit if the current command hasn't elapsed and isn't animated. */
-		if (!changed_command && !vc.pan_to_next && vc.vehicle == INVALID_VEHICLE) return;
+		if (!changed_command && !vc.pan_to_next && vc.vehicle == VehicleID::Invalid()) return;
 
 		/* Suppress panning commands, while user interacts with GUIs. */
 		if (!changed_command && suppress_panning) return;
@@ -256,7 +256,7 @@ struct SelectGameWindow : public Window {
 		mw->SetDirty(); // Required during panning, otherwise logo graphics disappears
 
 		/* If there is only one command, we just executed it and don't need to do any more */
-		if (intro_viewport_commands.size() == 1 && vc.vehicle == INVALID_VEHICLE) intro_viewport_commands.clear();
+		if (intro_viewport_commands.size() == 1 && vc.vehicle == VehicleID::Invalid()) intro_viewport_commands.clear();
 	}
 
 	/**

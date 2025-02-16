@@ -25,9 +25,9 @@
  */
 class ScriptLeagueTable : public ScriptObject {
 public:
-	static constexpr LeagueTableID LEAGUE_TABLE_INVALID = ::INVALID_LEAGUE_TABLE; ///< An invalid league table id.
+	static constexpr LeagueTableID LEAGUE_TABLE_INVALID = ::LeagueTableID::Invalid(); ///< An invalid league table id.
 
-	static constexpr LeagueTableElementID LEAGUE_TABLE_ELEMENT_INVALID = ::INVALID_LEAGUE_TABLE_ELEMENT; ///< An invalid league table element id.
+	static constexpr LeagueTableElementID LEAGUE_TABLE_ELEMENT_INVALID = ::LeagueTableElementID::Invalid(); ///< An invalid league table element id.
 
 	/**
 	 * The type of a link.

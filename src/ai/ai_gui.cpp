@@ -93,7 +93,7 @@ static WindowDesc _ai_config_desc(
  * Window to configure which AIs will start.
  */
 struct AIConfigWindow : public Window {
-	CompanyID selected_slot; ///< The currently selected AI slot or \c INVALID_COMPANY.
+	CompanyID selected_slot; ///< The currently selected AI slot or \c CompanyID::Invalid().
 	int line_height;         ///< Height of a single AI-name line.
 	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
 
@@ -101,7 +101,7 @@ struct AIConfigWindow : public Window {
 	{
 		this->InitNested(WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_AIC_SCROLLBAR);
-		this->selected_slot = INVALID_COMPANY;
+		this->selected_slot = CompanyID::Invalid();
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);
 		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
 		this->vscroll->SetCount(MAX_COMPANIES);
@@ -169,7 +169,7 @@ struct AIConfigWindow : public Window {
 					for (const Company *c : Company::Iterate()) {
 						if (c->is_ai) max_slot--;
 					}
-					for (CompanyID cid = COMPANY_FIRST; cid < max_slot && cid < MAX_COMPANIES; ++cid) {
+					for (CompanyID cid = CompanyID::Begin(); cid < max_slot && cid < MAX_COMPANIES; ++cid) {
 						if (Company::IsValidID(cid)) max_slot++;
 					}
 				} else {
@@ -206,7 +206,7 @@ struct AIConfigWindow : public Window {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget >= WID_AIC_TEXTFILE && widget < WID_AIC_TEXTFILE + TFT_CONTENT_END) {
-			if (this->selected_slot == INVALID_COMPANY || AIConfig::GetConfig(this->selected_slot) == nullptr) return;
+			if (this->selected_slot == CompanyID::Invalid() || AIConfig::GetConfig(this->selected_slot) == nullptr) return;
 
 			ShowScriptTextfileWindow((TextfileType)(widget - WID_AIC_TEXTFILE), this->selected_slot);
 			return;
@@ -266,7 +266,7 @@ struct AIConfigWindow : public Window {
 
 			case WID_AIC_OPEN_URL: {
 				const AIConfig *config = AIConfig::GetConfig(this->selected_slot);
-				if (this->selected_slot == INVALID_COMPANY || config == nullptr || config->GetInfo() == nullptr) return;
+				if (this->selected_slot == CompanyID::Invalid() || config == nullptr || config->GetInfo() == nullptr) return;
 				OpenBrowser(config->GetInfo()->GetURL());
 				break;
 			}
@@ -297,25 +297,25 @@ struct AIConfigWindow : public Window {
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!IsEditable(this->selected_slot) && !Company::IsValidAiID(this->selected_slot)) {
-			this->selected_slot = INVALID_COMPANY;
+			this->selected_slot = CompanyID::Invalid();
 		}
 
 		if (!gui_scope) return;
 
-		AIConfig *config = this->selected_slot == INVALID_COMPANY ? nullptr : AIConfig::GetConfig(this->selected_slot);
+		AIConfig *config = this->selected_slot == CompanyID::Invalid() ? nullptr : AIConfig::GetConfig(this->selected_slot);
 
 		this->SetWidgetDisabledState(WID_AIC_DECREASE_NUMBER, GetGameSettings().difficulty.max_no_competitors == 0);
 		this->SetWidgetDisabledState(WID_AIC_INCREASE_NUMBER, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES - 1);
 		this->SetWidgetDisabledState(WID_AIC_DECREASE_INTERVAL, GetGameSettings().difficulty.competitors_interval == MIN_COMPETITORS_INTERVAL);
 		this->SetWidgetDisabledState(WID_AIC_INCREASE_INTERVAL, GetGameSettings().difficulty.competitors_interval == MAX_COMPETITORS_INTERVAL);
 		this->SetWidgetDisabledState(WID_AIC_CHANGE, !IsEditable(this->selected_slot));
-		this->SetWidgetDisabledState(WID_AIC_CONFIGURE, this->selected_slot == INVALID_COMPANY || config->GetConfigList()->empty());
+		this->SetWidgetDisabledState(WID_AIC_CONFIGURE, this->selected_slot == CompanyID::Invalid() || config->GetConfigList()->empty());
 		this->SetWidgetDisabledState(WID_AIC_MOVE_UP, !IsEditable(this->selected_slot) || !IsEditable((CompanyID)(this->selected_slot - 1)));
 		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, !IsEditable(this->selected_slot) || !IsEditable((CompanyID)(this->selected_slot + 1)));
 
-		this->SetWidgetDisabledState(WID_AIC_OPEN_URL, this->selected_slot == INVALID_COMPANY || config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
+		this->SetWidgetDisabledState(WID_AIC_OPEN_URL, this->selected_slot == CompanyID::Invalid() || config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
-			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || !config->GetTextfile(tft, this->selected_slot).has_value());
+			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == CompanyID::Invalid() || !config->GetTextfile(tft, this->selected_slot).has_value());
 		}
 	}
 };

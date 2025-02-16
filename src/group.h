@@ -83,7 +83,7 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	GroupID parent;             ///< Parent group
 	uint16_t number; ///< Per-company group number.
 
-	Group(CompanyID owner = INVALID_COMPANY);
+	Group(CompanyID owner = CompanyID::Invalid());
 };
 
 

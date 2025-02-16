@@ -61,7 +61,7 @@ static int HighlightDragPosition(int px, int max_width, int y, VehicleID selecti
 {
 	bool rtl = _current_text_dir == TD_RTL;
 
-	assert(selection != INVALID_VEHICLE);
+	assert(selection != VehicleID::Invalid());
 	int dragged_width = 0;
 	for (Train *t = Train::Get(selection); t != nullptr; t = chain ? t->Next() : (t->HasArticulatedPart() ? t->GetNextArticulatedPart() : nullptr)) {
 		dragged_width += t->GetDisplayImageWidth(nullptr);
@@ -88,7 +88,7 @@ static int HighlightDragPosition(int px, int max_width, int y, VehicleID selecti
  * @param r         Rect to draw at
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
- * @param drag_dest The vehicle another one is dragged over, \c INVALID_VEHICLE if none.
+ * @param drag_dest The vehicle another one is dragged over, \c VehicleID::Invalid() if none.
  */
 void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip, VehicleID drag_dest)
 {
@@ -113,7 +113,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 		int px = rtl ? max_width + skip : -skip;
 		int y = r.Height() / 2;
 		bool sel_articulated = false;
-		bool dragging = (drag_dest != INVALID_VEHICLE);
+		bool dragging = (drag_dest != VehicleID::Invalid());
 		bool drag_at_end_of_train = (drag_dest == v->index); // Head index is used to mark dragging at end of train.
 		for (; v != nullptr && (rtl ? px > 0 : px < max_width); v = v->Next()) {
 			if (dragging && !drag_at_end_of_train && drag_dest == v->index) {
@@ -288,12 +288,12 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary &su
 			item->subtype = new_item.subtype;
 			item->capacity = 0;
 			item->amount = 0;
-			item->source = INVALID_STATION;
+			item->source = StationID::Invalid();
 		}
 
 		item->capacity += v->cargo_cap;
 		item->amount += v->cargo.StoredCount();
-		if (item->source == INVALID_STATION) item->source = v->cargo.GetFirstStation();
+		if (item->source == StationID::Invalid()) item->source = v->cargo.GetFirstStation();
 	} while ((v = v->Next()) != nullptr && v->IsArticulatedPart());
 }
 

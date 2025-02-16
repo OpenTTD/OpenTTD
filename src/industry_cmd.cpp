@@ -178,7 +178,7 @@ Industry::~Industry()
 		for (TileIndex tile_cur : ta) {
 			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
 					GetIndustryIndexOfField(tile_cur) == this->index) {
-				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);
+				SetIndustryIndexOfField(tile_cur, IndustryID::Invalid());
 			}
 		}
 	}

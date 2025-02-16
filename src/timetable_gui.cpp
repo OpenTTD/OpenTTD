@@ -278,7 +278,7 @@ struct TimetableWindow : Window {
 	int GetOrderFromTimetableWndPt(int y, [[maybe_unused]] const Vehicle *v)
 	{
 		int32_t sel = this->vscroll->GetScrolledRowFromWidget(y, this, WID_VT_TIMETABLE_PANEL, WidgetDimensions::scaled.framerect.top);
-		if (sel == INT32_MAX) return INVALID_ORDER.base();
+		if (sel == INT32_MAX) return OrderID::Invalid().base();
 		assert(IsInsideBS(sel, 0, v->GetNumOrders() * 2));
 		return sel;
 	}
@@ -645,7 +645,7 @@ struct TimetableWindow : Window {
 				int selected = GetOrderFromTimetableWndPt(pt.y, v);
 
 				this->CloseChildWindows();
-				this->sel_index = (selected == INVALID_ORDER.base() || selected == this->sel_index) ? -1 : selected;
+				this->sel_index = (selected == OrderID::Invalid().base() || selected == this->sel_index) ? -1 : selected;
 				break;
 			}
 

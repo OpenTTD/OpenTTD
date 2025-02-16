@@ -22,7 +22,6 @@
 
 /** Unique identification number of an engine. */
 using EngineID = PoolID<uint16_t, struct EngineIDTag, 64000, 0xFFFF>;
-static constexpr EngineID INVALID_ENGINE = EngineID::Invalid(); ///< Constant denoting an invalid engine.
 
 struct Engine;
 

@@ -30,8 +30,8 @@ public:
 	/** Different constants related to CompanyID. */
 	enum CompanyID {
 		/* Note: these values represent part of the in-game Owner enum */
-		COMPANY_FIRST     = ::COMPANY_FIRST.base(), ///< The first available company.
-		COMPANY_LAST      = ::MAX_COMPANIES,   ///< The last available company.
+		COMPANY_FIRST     = ::CompanyID::Begin().base(), ///< The first available company.
+		COMPANY_LAST      = ::CompanyID::End().base(),   ///< The last available company.
 
 		/* Custom added value, only valid for this API */
 		COMPANY_INVALID   = -1,                ///< An invalid company.

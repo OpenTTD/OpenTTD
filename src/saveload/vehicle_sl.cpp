@@ -225,7 +225,7 @@ void UpdateOldAircraft()
 static void CheckValidVehicles()
 {
 	size_t total_engines = Engine::GetPoolSize();
-	EngineID first_engine[4] = { INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE };
+	EngineID first_engine[4] = { EngineID::Invalid(), EngineID::Invalid(), EngineID::Invalid(), EngineID::Invalid() };
 
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) { first_engine[VEH_TRAIN] = e->index; break; }
 	for (const Engine *e : Engine::IterateType(VEH_ROAD)) { first_engine[VEH_ROAD] = e->index; break; }
@@ -262,7 +262,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 
 		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = nullptr;
-		if (v->IsGroundVehicle()) v->GetGroundVehicleCache()->first_engine = INVALID_ENGINE;
+		if (v->IsGroundVehicle()) v->GetGroundVehicleCache()->first_engine = EngineID::Invalid();
 	}
 
 	/* AfterLoadVehicles may also be called in case of NewGRF reload, in this
@@ -515,7 +515,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 					RoadVehicle *u = RoadVehicle::GetIfValid(v->dest_tile.base());
 					if (u != nullptr && u->IsFrontEngine()) {
 						/* Delete UFO targetting a vehicle which is already a target. */
-						if (u->disaster_vehicle != INVALID_VEHICLE && u->disaster_vehicle != dv->index) {
+						if (u->disaster_vehicle != VehicleID::Invalid() && u->disaster_vehicle != dv->index) {
 							delete v;
 							continue;
 						} else {
@@ -1144,10 +1144,10 @@ struct VEHSChunkHandler : ChunkHandler {
 
 			/* Old savegames used 'last_station_visited = 0xFF' */
 			if (IsSavegameVersionBefore(SLV_5) && v->last_station_visited == 0xFF) {
-				v->last_station_visited = INVALID_STATION;
+				v->last_station_visited = StationID::Invalid();
 			}
 
-			if (IsSavegameVersionBefore(SLV_182)) v->last_loading_station = INVALID_STATION;
+			if (IsSavegameVersionBefore(SLV_182)) v->last_loading_station = StationID::Invalid();
 
 			if (IsSavegameVersionBefore(SLV_5)) {
 				/* Convert the current_order.type (which is a mix of type and flags, because

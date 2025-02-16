@@ -37,7 +37,7 @@ struct EngineRenew : EngineRenewPool::PoolItem<&_enginerenew_pool> {
 	GroupID group_id;
 	bool replace_when_old; ///< Do replacement only when vehicle is old.
 
-	EngineRenew(EngineID from = INVALID_ENGINE, EngineID to = INVALID_ENGINE) : from(from), to(to) {}
+	EngineRenew(EngineID from = EngineID::Invalid(), EngineID to = EngineID::Invalid()) : from(from), to(to) {}
 	~EngineRenew() {}
 };
 

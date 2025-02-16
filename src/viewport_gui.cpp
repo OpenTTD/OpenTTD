@@ -85,7 +85,7 @@ public:
 				/* set this view to same location. Based on the center, adjusting for zoom */
 				w->viewport->dest_scrollpos_x =  x - (w->viewport->virtual_width -  this->viewport->virtual_width) / 2;
 				w->viewport->dest_scrollpos_y =  y - (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
-				w->viewport->follow_vehicle   = INVALID_VEHICLE;
+				w->viewport->follow_vehicle   = VehicleID::Invalid();
 				break;
 			}
 

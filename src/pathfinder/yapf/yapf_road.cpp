@@ -253,7 +253,7 @@ public:
 			this->non_artic = !v->HasArticulatedPart();
 			this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 		} else {
-			this->dest_station = INVALID_STATION;
+			this->dest_station = StationID::Invalid();
 			this->dest_tile = v->dest_tile;
 			this->dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_ROAD, GetRoadTramType(v->roadtype)));
 		}
@@ -261,7 +261,7 @@ public:
 
 	const Station *GetDestinationStation() const
 	{
-		return this->dest_station != INVALID_STATION ? Station::GetIfValid(this->dest_station) : nullptr;
+		return this->dest_station != StationID::Invalid() ? Station::GetIfValid(this->dest_station) : nullptr;
 	}
 
 protected:
@@ -280,7 +280,7 @@ public:
 
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
-		if (this->dest_station != INVALID_STATION) {
+		if (this->dest_station != StationID::Invalid()) {
 			return IsTileType(tile, MP_STATION) &&
 				GetStationIndex(tile) == this->dest_station &&
 				(this->station_type == GetStationType(tile)) &&

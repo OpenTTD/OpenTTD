@@ -260,7 +260,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 			y = TileY(tile) * TILE_SIZE;
 			pt = MapXYZToViewport(vp, x, y, GetSlopePixelZ(x, y));
 		}
-		vp->follow_vehicle = INVALID_VEHICLE;
+		vp->follow_vehicle = VehicleID::Invalid();
 	}
 
 	vp->scrollpos_x = pt.x;
@@ -1968,7 +1968,7 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 {
 	const Viewport *vp = w->viewport;
 
-	if (w->viewport->follow_vehicle != INVALID_VEHICLE) {
+	if (w->viewport->follow_vehicle != VehicleID::Invalid()) {
 		const Vehicle *veh = Vehicle::Get(w->viewport->follow_vehicle);
 		Point pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 
@@ -2530,7 +2530,7 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 	}
 
 	Point pt = MapXYZToViewport(w->viewport, x, y, z);
-	w->viewport->follow_vehicle = INVALID_VEHICLE;
+	w->viewport->follow_vehicle = VehicleID::Invalid();
 
 	if (w->viewport->dest_scrollpos_x == pt.x && w->viewport->dest_scrollpos_y == pt.y) return false;
 

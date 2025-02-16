@@ -77,7 +77,7 @@
 	EnforcePrecondition(false, IsValidAirportType(type));
 	EnforcePrecondition(false, station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id));
 
-	return ScriptObject::Command<CMD_BUILD_AIRPORT>::Do(tile, type, 0, (ScriptStation::IsValidStation(station_id) ? station_id : INVALID_STATION), station_id != ScriptStation::STATION_JOIN_ADJACENT);
+	return ScriptObject::Command<CMD_BUILD_AIRPORT>::Do(tile, type, 0, (ScriptStation::IsValidStation(station_id) ? station_id : StationID::Invalid()), station_id != ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptAirport::RemoveAirport(TileIndex tile)
@@ -148,11 +148,11 @@
 
 /* static */ TownID ScriptAirport::GetNearestTown(TileIndex tile, AirportType type)
 {
-	if (!::IsValidTile(tile)) return INVALID_TOWN;
-	if (!IsAirportInformationAvailable(type)) return INVALID_TOWN;
+	if (!::IsValidTile(tile)) return TownID::Invalid();
+	if (!IsAirportInformationAvailable(type)) return TownID::Invalid();
 
 	const AirportSpec *as = AirportSpec::Get(type);
-	if (!as->IsWithinMapBounds(0, tile)) return INVALID_TOWN;
+	if (!as->IsWithinMapBounds(0, tile)) return TownID::Invalid();
 
 	uint dist;
 	const auto &layout = as->layouts[0];

@@ -14,8 +14,6 @@
 #include "core/pool_type.hpp"
 
 using CompanyID = PoolID<uint8_t, struct CompanyIDTag, 0xF, 0xFF>;
-static constexpr CompanyID COMPANY_FIRST = CompanyID::Begin();
-static constexpr CompanyID INVALID_COMPANY = CompanyID::Invalid(); ///< An invalid company
 
 /* 'Fake' companies used for networks */
 static constexpr CompanyID COMPANY_INACTIVE_CLIENT{253}; ///< The client is joining

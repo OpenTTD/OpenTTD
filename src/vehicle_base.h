@@ -739,11 +739,11 @@ public:
 
 	/**
 	 * Get the next station the vehicle will stop at.
-	 * @return ID of the next station the vehicle will stop at or INVALID_STATION.
+	 * @return ID of the next station the vehicle will stop at or StationID::Invalid().
 	 */
 	inline StationIDStack GetNextStoppingStation() const
 	{
-		return (this->orders == nullptr) ? INVALID_STATION.base() : this->orders->GetNextStoppingStation(this);
+		return (this->orders == nullptr) ? StationID::Invalid().base() : this->orders->GetNextStoppingStation(this);
 	}
 
 	void ResetRefitCaps();

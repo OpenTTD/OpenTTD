@@ -95,7 +95,7 @@ public:
 		VS_INVALID = 0xFF, ///< An invalid vehicle state.
 	};
 
-	static constexpr VehicleID VEHICLE_INVALID = ::INVALID_VEHICLE; ///< Invalid VehicleID.
+	static constexpr VehicleID VEHICLE_INVALID = ::VehicleID::Invalid(); ///< Invalid VehicleID.
 
 	/**
 	 * Checks whether the given vehicle is valid and owned by you.
