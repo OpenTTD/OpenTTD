@@ -202,8 +202,8 @@ extern VehiclePool _vehicle_pool;
 /* Some declarations of functions, so we can make them friendly */
 struct GroundVehicleCache;
 struct LoadgameState;
-extern bool LoadOldVehicle(LoadgameState *ls, int num);
-extern void FixOldVehicles();
+extern bool LoadOldVehicle(LoadgameState &ls, int num);
+extern void FixOldVehicles(LoadgameState &ls);
 
 struct GRFFile;
 
@@ -247,7 +247,7 @@ private:
 	Vehicle *previous_shared;           ///< NOSAVE: pointer to the previous vehicle in the shared order chain
 
 public:
-	friend void FixOldVehicles();
+	friend void FixOldVehicles(LoadgameState &ls);
 	friend void AfterLoadVehiclesPhase1(bool part_of_load);       ///< So we can set the #previous and #first pointers while loading
 	friend bool LoadOldVehicle(LoadgameState &ls, int num);       ///< So we can set the proper next pointer while loading
 	/* So we can use private/protected variables in the saveload code */

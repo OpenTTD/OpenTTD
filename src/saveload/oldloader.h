@@ -29,6 +29,9 @@ struct LoadgameState {
 	std::array<uint8_t, BUFFER_SIZE> buffer{};
 
 	uint total_read = 0;
+
+	uint8_t vehicle_multiplier = 1; ///< TTDPatch vehicle multiplier
+	std::vector<StringID> vehicle_names;
 };
 
 /* OldChunk-Type */
