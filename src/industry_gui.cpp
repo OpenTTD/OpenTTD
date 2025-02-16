@@ -385,9 +385,8 @@ class BuildIndustryWindow : public Window {
 				firstcargo = j;
 				continue;
 			}
-			SetDParam(0, CargoSpec::Get(cargolist[j])->name);
-			SetDParamStr(1, cargo_suffix[j].text);
-			AppendStringInPlace(cargostring, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION);
+			auto params = MakeParameters(CargoSpec::Get(cargolist[j])->name, cargo_suffix[j].text);
+			AppendStringWithArgsInPlace(cargostring, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION, params);
 		}
 
 		if (numcargo > 0) {
@@ -428,8 +427,7 @@ public:
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
-				SetDParamMaxDigits(0, 4);
-				Dimension count = GetStringBoundingBox(STR_JUST_COMMA, FS_SMALL);
+				Dimension count = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxDigits(4)), FS_SMALL);
 				Dimension d{};
 				for (const auto &indtype : this->list) {
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
@@ -542,8 +540,7 @@ public:
 					DrawString(text, indsp->name, selected ? TC_WHITE : TC_ORANGE);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
-					SetDParam(0, Industry::GetIndustryTypeCount(type));
-					DrawString(text, STR_JUST_COMMA, TC_BLACK, SA_RIGHT, false, FS_SMALL);
+					DrawString(text, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TC_BLACK, SA_RIGHT, false, FS_SMALL);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
@@ -562,8 +559,7 @@ public:
 				const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 
 				if (_game_mode != GM_EDITOR) {
-					SetDParam(0, indsp->GetConstructionCost());
-					DrawString(ir, STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST);
+					DrawString(ir, GetString(STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST, indsp->GetConstructionCost()));
 					ir.top += GetCharacterHeight(FS_NORMAL);
 				}
 
@@ -905,21 +901,18 @@ public:
 			CargoSuffix suffix;
 			GetCargoSuffix(CARGOSUFFIX_IN, CST_VIEW, i, i->type, ind, a.cargo, &a - i->accepted.data(), suffix);
 
-			SetDParam(0, CargoSpec::Get(a.cargo)->name);
-			SetDParam(1, a.cargo);
-			SetDParam(2, a.waiting);
-			SetDParamStr(3, "");
 			StringID str = STR_NULL;
+			std::string suffix_text;
 			switch (suffix.display) {
 				case CSD_CARGO_AMOUNT_TEXT:
-					SetDParamStr(3, suffix.text);
+					suffix_text = suffix.text;
 					[[fallthrough]];
 				case CSD_CARGO_AMOUNT:
 					str = stockpiling ? STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT : STR_INDUSTRY_VIEW_ACCEPT_CARGO;
 					break;
 
 				case CSD_CARGO_TEXT:
-					SetDParamStr(3, suffix.text);
+					suffix_text = suffix.text;
 					[[fallthrough]];
 				case CSD_CARGO:
 					str = STR_INDUSTRY_VIEW_ACCEPT_CARGO;
@@ -928,7 +921,8 @@ public:
 				default:
 					NOT_REACHED();
 			}
-			DrawString(ir.Indent(label_indent, rtl), str);
+			DrawString(ir.Indent(label_indent, rtl),
+				GetString(str, CargoSpec::Get(a.cargo)->name, a.cargo, a.waiting, suffix_text));
 			ir.top += GetCharacterHeight(FS_NORMAL);
 		}
 
@@ -951,11 +945,8 @@ public:
 			CargoSuffix suffix;
 			GetCargoSuffix(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, p.cargo, &p - i->produced.data(), suffix);
 
-			SetDParam(0, p.cargo);
-			SetDParam(1, p.history[LAST_MONTH].production);
-			SetDParamStr(2, suffix.text);
-			SetDParam(3, ToPercent8(p.history[LAST_MONTH].PctTransported()));
-			DrawString(ir.Indent(label_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_TRANSPORTED);
+			DrawString(ir.Indent(label_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset),
+					GetString(STR_INDUSTRY_VIEW_TRANSPORTED, p.cargo, p.history[LAST_MONTH].production, suffix.text, ToPercent8(p.history[LAST_MONTH].PctTransported())));
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
 				DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + (&p - i->produced.data())) ? this->clicked_button : 0,
@@ -971,8 +962,8 @@ public:
 			button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
 			ir.top += WidgetDimensions::scaled.vsep_wide;
 			this->production_offset_y = ir.top;
-			SetDParam(0, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT));
-			DrawString(ir.Indent(label_indent + SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Translate(0, text_y_offset), STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
+			DrawString(ir.Indent(label_indent + SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Translate(0, text_y_offset),
+					GetString(STR_INDUSTRY_VIEW_PRODUCTION_LEVEL, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT)));
 			DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
 					i->prod_level > PRODLEVEL_MINIMUM, i->prod_level < PRODLEVEL_MAXIMUM);
 			ir.top += line_height;
@@ -1001,9 +992,8 @@ public:
 		}
 
 		if (!i->text.empty()) {
-			SetDParamStr(0, i->text);
 			ir.top += WidgetDimensions::scaled.vsep_wide;
-			ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+			ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, GetString(STR_JUST_RAW_STRING, i->text), TC_BLACK);
 		}
 
 		/* Return required bottom position, the last pixel row plus some padding. */
@@ -1574,13 +1564,9 @@ protected:
 	 * @param i the industry to get the StringID of.
 	 * @return the StringID.
 	 */
-	StringID GetIndustryString(const Industry *i) const
+	std::string GetIndustryString(const Industry *i) const
 	{
 		const IndustrySpec *indsp = GetIndustrySpec(i->type);
-		uint8_t p = 0;
-
-		/* Industry name */
-		SetDParam(p++, i->index);
 
 		/* Get industry productions (CargoType, production, suffix, transported) */
 		struct CargoInfo {
@@ -1630,27 +1616,38 @@ protected:
 			}
 		}
 
-		/* Display first 3 cargos */
-		for (size_t j = 0; j < std::min<size_t>(3, cargos.size()); j++) {
+		static constexpr size_t MAX_DISPLAYED_CARGOES = 3;
+		std::array<StringParameter, 2 + 5 * MAX_DISPLAYED_CARGOES> params{};
+		auto it = params.begin();
+
+		/* Industry name */
+		*it++ = i->index;
+
+		size_t displayed_cargoes = std::min<size_t>(MAX_DISPLAYED_CARGOES, cargos.size());
+		/* Display first MAX_DISPLAYED_CARGOES cargoes */
+		for (size_t j = 0; j < displayed_cargoes; j++) {
 			CargoInfo &ci = cargos[j];
-			SetDParam(p++, STR_INDUSTRY_DIRECTORY_ITEM_INFO);
-			SetDParam(p++, ci.cargo_type);
-			SetDParam(p++, ci.production);
-			SetDParamStr(p++, std::move(ci.suffix));
-			SetDParam(p++, ci.transported);
+			*it++ = STR_INDUSTRY_DIRECTORY_ITEM_INFO;
+			*it++ = ci.cargo_type;
+			*it++ = ci.production;
+			*it++ = std::move(ci.suffix);
+			*it++ = ci.transported;
 		}
 
 		/* Undisplayed cargos if any */
-		SetDParam(p++, cargos.size() - 3);
+		if (displayed_cargoes < cargos.size()) *it++ = cargos.size() - MAX_DISPLAYED_CARGOES;
 
 		/* Drawing the right string */
+		StringID str;
 		switch (cargos.size()) {
-			case 0: return STR_INDUSTRY_DIRECTORY_ITEM_NOPROD;
-			case 1: return STR_INDUSTRY_DIRECTORY_ITEM_PROD1;
-			case 2: return STR_INDUSTRY_DIRECTORY_ITEM_PROD2;
-			case 3: return STR_INDUSTRY_DIRECTORY_ITEM_PROD3;
-			default: return STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE;
+			case 0: str = STR_INDUSTRY_DIRECTORY_ITEM_NOPROD; break;
+			case 1: str = STR_INDUSTRY_DIRECTORY_ITEM_PROD1; break;
+			case 2: str = STR_INDUSTRY_DIRECTORY_ITEM_PROD2; break;
+			case 3: str = STR_INDUSTRY_DIRECTORY_ITEM_PROD3; break;
+			default: str = STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE; break;
 		}
+
+		return GetStringWithArgs(str, {params.begin(), it});
 	}
 
 public:

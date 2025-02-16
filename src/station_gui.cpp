@@ -95,8 +95,8 @@ int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad,
 			if (cargoes[i] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, i);
 		}
 	}
-	SetDParam(0, cargo_mask);
-	return DrawStringMultiLine(r, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
+	return DrawStringMultiLine(r,
+			GetString(supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO, cargo_mask));
 }
 
 /**
@@ -517,9 +517,8 @@ public:
 					 * when the order had been removed and the station list hasn't been removed yet */
 					assert(st->owner == owner || st->owner == OWNER_NONE);
 
-					SetDParam(0, st->index);
-					SetDParam(1, st->facilities);
-					int x = DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2, STR_STATION_LIST_STATION);
+					int x = DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2,
+							GetString(STR_STATION_LIST_STATION, st->index, st->facilities));
 					x += rtl ? -text_spacing : text_spacing;
 
 					/* show cargo waiting and station ratings */
@@ -1745,15 +1744,20 @@ struct StationViewWindow : public Window {
 	 */
 	StringID GetEntryString(StationID station, StringID here, StringID other_station, StringID any)
 	{
-		if (station == this->window_number) {
-			return here;
-		} else if (station == StationID::Invalid()) {
-			return any;
-		} else if (station == NEW_STATION) {
-			return STR_STATION_VIEW_RESERVED;
-		} else {
-			SetDParam(2, station);
-			return other_station;
+		if (station == this->window_number) return here;
+		if (station == StationID::Invalid()) return any;
+		if (station == NEW_STATION) return STR_STATION_VIEW_RESERVED;
+
+		return other_station;
+	}
+
+	StringID GetStringForGrouping(Grouping grouping, StationID station)
+	{
+		switch (grouping) {
+			case GR_SOURCE: return this->GetEntryString(station, STR_STATION_VIEW_FROM_HERE, STR_STATION_VIEW_FROM, STR_STATION_VIEW_FROM_ANY);
+			case GR_NEXT: return this->GetEntryString(station, STR_STATION_VIEW_VIA_HERE, STR_STATION_VIEW_VIA, STR_STATION_VIEW_VIA_ANY);
+			case GR_DESTINATION: return this->GetEntryString(station, STR_STATION_VIEW_TO_HERE, STR_STATION_VIEW_TO, STR_STATION_VIEW_TO_ANY);
+			default: NOT_REACHED();
 		}
 	}
 
@@ -1819,31 +1823,18 @@ struct StationViewWindow : public Window {
 
 			if (pos > -maxrows && pos <= 0) {
 				StringID str = STR_EMPTY;
+				StationID station = StationID::Invalid();
 				int y = r.top - pos * GetCharacterHeight(FS_NORMAL);
-				SetDParam(0, cargo);
-				SetDParam(1, cd->GetCount());
-
 				if (this->groupings[column] == GR_CARGO) {
 					str = STR_STATION_VIEW_WAITING_CARGO;
 					DrawCargoIcons(cd->GetCargo(), cd->GetCount(), r.left + this->expand_shrink_width, r.right - this->expand_shrink_width, y);
 				} else {
 					if (!auto_distributed) grouping = GR_SOURCE;
-					StationID station = cd->GetStation();
+					station = cd->GetStation();
 
-					switch (grouping) {
-						case GR_SOURCE:
-							str = this->GetEntryString(station, STR_STATION_VIEW_FROM_HERE, STR_STATION_VIEW_FROM, STR_STATION_VIEW_FROM_ANY);
-							break;
-						case GR_NEXT:
-							str = this->GetEntryString(station, STR_STATION_VIEW_VIA_HERE, STR_STATION_VIEW_VIA, STR_STATION_VIEW_VIA_ANY);
-							if (str == STR_STATION_VIEW_VIA) str = this->SearchNonStop(cd, station, column);
-							break;
-						case GR_DESTINATION:
-							str = this->GetEntryString(station, STR_STATION_VIEW_TO_HERE, STR_STATION_VIEW_TO, STR_STATION_VIEW_TO_ANY);
-							break;
-						default:
-							NOT_REACHED();
-					}
+					str = GetStringForGrouping(grouping, station);
+					if (grouping == GR_NEXT && str == STR_STATION_VIEW_VIA) str = this->SearchNonStop(cd, station, column);
+
 					if (pos == -this->scroll_to_row && Station::IsValidID(station)) {
 						ScrollMainWindowToTile(Station::Get(station)->xy);
 					}
@@ -1853,8 +1844,7 @@ struct StationViewWindow : public Window {
 				Rect text = r.Indent(column * WidgetDimensions::scaled.hsep_indent, rtl).Indent(this->expand_shrink_width, !rtl);
 				Rect shrink = r.WithWidth(this->expand_shrink_width, !rtl);
 
-				DrawString(text.left, text.right, y, str);
-
+				DrawString(text.left, text.right, y, GetString(str, cargo, cd->GetCount(), station));
 				if (column < NUM_COLUMNS - 1) {
 					const char *sym = nullptr;
 					if (cd->GetNumChildren() > 0) {
@@ -1893,8 +1883,8 @@ struct StationViewWindow : public Window {
 		const Station *st = Station::Get(this->window_number);
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
-		SetDParam(0, GetAcceptanceMask(st));
-		int bottom = DrawStringMultiLine(tr.left, tr.right, tr.top, INT32_MAX, STR_STATION_VIEW_ACCEPTS_CARGO);
+		int bottom = DrawStringMultiLine(tr.left, tr.right, tr.top, INT32_MAX,
+				GetString(STR_STATION_VIEW_ACCEPTS_CARGO, GetAcceptanceMask(st)));
 		return CeilDiv(bottom - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL));
 	}
 
@@ -1910,8 +1900,7 @@ struct StationViewWindow : public Window {
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		if (st->town->exclusive_counter > 0) {
-			SetDParam(0, st->town->exclusivity);
-			tr.top = DrawStringMultiLine(tr, st->town->exclusivity == st->owner ? STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF : STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY);
+			tr.top = DrawStringMultiLine(tr, GetString(st->town->exclusivity == st->owner ? STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF : STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY, st->town->exclusivity));
 			tr.top += WidgetDimensions::scaled.vsep_wide;
 		}
 
@@ -1923,11 +1912,12 @@ struct StationViewWindow : public Window {
 			if (!ge->HasRating()) continue;
 
 			const LinkGraph *lg = LinkGraph::GetIfValid(ge->link_graph);
-			SetDParam(0, cs->name);
-			SetDParam(1, lg != nullptr ? lg->Monthly((*lg)[ge->node].supply) : 0);
-			SetDParam(2, STR_CARGO_RATING_APPALLING + (ge->rating >> 5));
-			SetDParam(3, ToPercent8(ge->rating));
-			DrawString(tr.Indent(WidgetDimensions::scaled.hsep_indent, rtl), STR_STATION_VIEW_CARGO_SUPPLY_RATING);
+			DrawString(tr.Indent(WidgetDimensions::scaled.hsep_indent, rtl),
+					GetString(STR_STATION_VIEW_CARGO_SUPPLY_RATING,
+							cs->name,
+							lg != nullptr ? lg->Monthly((*lg)[ge->node].supply) : 0,
+							STR_CARGO_RATING_APPALLING + (ge->rating >> 5),
+							ToPercent8(ge->rating)));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 		return CeilDiv(tr.top - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL));
@@ -2343,9 +2333,9 @@ struct SelectStationWindow : Window {
 		for (const auto &station : _stations_nearby_list) {
 			if (station == NEW_STATION) continue;
 			const BaseStation *st = BaseStation::Get(station);
-			SetDParam(0, st->index);
-			SetDParam(1, st->facilities);
-			d = maxdim(d, GetStringBoundingBox(T::IsWaypoint() ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION));
+			d = maxdim(d, GetStringBoundingBox(T::IsWaypoint()
+				? GetString(STR_STATION_LIST_WAYPOINT, st->index)
+				: GetString(STR_STATION_LIST_STATION, st->index, st->facilities)));
 		}
 
 		resize.height = d.height;
@@ -2366,9 +2356,9 @@ struct SelectStationWindow : Window {
 				DrawString(tr, T::IsWaypoint() ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
 			} else {
 				const BaseStation *st = BaseStation::Get(*it);
-				SetDParam(0, st->index);
-				SetDParam(1, st->facilities);
-				DrawString(tr, T::IsWaypoint() ? STR_STATION_LIST_WAYPOINT : STR_STATION_LIST_STATION);
+				DrawString(tr, T::IsWaypoint()
+					? GetString(STR_STATION_LIST_WAYPOINT, st->index)
+					: GetString(STR_STATION_LIST_STATION, st->index, st->facilities));
 			}
 		}
 

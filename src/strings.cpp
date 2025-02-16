@@ -458,6 +458,13 @@ void AppendStringInPlace(std::string &result, StringID string)
 	GetStringWithArgs(builder, string, _global_string_params);
 }
 
+void AppendStringWithArgsInPlace(std::string &result, StringID string, std::span<StringParameter> params)
+{
+	StringParameters tmp_params{params};
+	StringBuilder builder(result);
+	GetStringWithArgs(builder, string, tmp_params);
+}
+
 /**
  * Get a parsed string with most special stringcodes replaced by the string parameters.
  * @param string The ID of the string to parse.

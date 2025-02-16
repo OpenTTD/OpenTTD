@@ -547,18 +547,21 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GO_BASE_GRF_DESCRIPTION:
-				SetDParamStr(0, BaseGraphics::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX,
+					GetString(STR_JUST_RAW_STRING, BaseGraphics::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())),
+					TC_BLACK);
 				break;
 
 			case WID_GO_BASE_SFX_DESCRIPTION:
-				SetDParamStr(0, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX,
+					GetString(STR_JUST_RAW_STRING, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())),
+					TC_BLACK);
 				break;
 
 			case WID_GO_BASE_MUSIC_DESCRIPTION:
-				SetDParamStr(0, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX,
+					GetString(STR_JUST_RAW_STRING, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())),
+					TC_BLACK);
 				break;
 
 			case WID_GO_GUI_SCALE:
@@ -566,8 +569,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_VIDEO_DRIVER_INFO:
-				SetDParamStr(0, std::string{VideoDriver::GetInstance()->GetInfoString()});
-				DrawStringMultiLine(r, STR_GAME_OPTIONS_VIDEO_DRIVER_INFO);
+				DrawStringMultiLine(r, GetString(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, std::string{VideoDriver::GetInstance()->GetInfoString()}));
 				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
@@ -606,30 +608,30 @@ struct GameOptionsWindow : Window {
 		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_GO_BASE_GRF_DESCRIPTION);
 		int y = 0;
 		for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
-			SetDParamStr(0, BaseGraphics::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
+			std::string str = GetString(STR_JUST_RAW_STRING, BaseGraphics::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
+			y = std::max(y, GetStringHeight(str, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_BASE_SFX_DESCRIPTION);
 		y = 0;
 		for (int i = 0; i < BaseSounds::GetNumSets(); i++) {
-			SetDParamStr(0, BaseSounds::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
+			std::string str = GetString(STR_JUST_RAW_STRING, BaseSounds::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
+			y = std::max(y, GetStringHeight(str, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_BASE_MUSIC_DESCRIPTION);
 		y = 0;
 		for (int i = 0; i < BaseMusic::GetNumSets(); i++) {
-			SetDParamStr(0, BaseMusic::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
+			std::string str = GetString(STR_JUST_RAW_STRING, BaseMusic::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
+			y = std::max(y, GetStringHeight(str, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_VIDEO_DRIVER_INFO);
-		SetDParamStr(0, std::string{VideoDriver::GetInstance()->GetInfoString()});
-		y = GetStringHeight(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, wid->current_x);
+		std::string str = GetString(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, std::string{VideoDriver::GetInstance()->GetInfoString()});
+		y = GetStringHeight(str, wid->current_x);
 		changed |= wid->UpdateVerticalSize(y);
 
 		if (changed) this->ReInit(0, 0, this->flags.Test(WindowFlag::Centred));
@@ -1565,8 +1567,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 		/* Process the search text filter for this item. */
 		filter.string.ResetState();
 
-		SetDParam(0, STR_EMPTY);
-		filter.string.AddLine(sd->GetTitle());
+		filter.string.AddLine(GetString(sd->GetTitle(), STR_EMPTY));
 		filter.string.AddLine(sd->GetHelp());
 
 		visible = filter.string.GetState();
@@ -2385,8 +2386,7 @@ struct GameSettingsWindow : Window {
 					STR_CONFIG_SETTING_TYPE_GAME_MENU, STR_CONFIG_SETTING_TYPE_GAME_INGAME,
 				};
 				for (const auto &setting_type : setting_types) {
-					SetDParam(0, setting_type);
-					size.width = std::max(size.width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width + padding.width);
+					size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_CONFIG_SETTING_TYPE, setting_type)).width + padding.width);
 				}
 				size.height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal +
 						std::max(size.height, GetSettingsTree().GetMaxHelpHeight(size.width));
@@ -2419,8 +2419,7 @@ struct GameSettingsWindow : Window {
 		if (this->warn_missing == WHR_NONE) {
 			new_warn_lines = 0;
 		} else {
-			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			new_warn_lines = GetStringLineCount(warn_str, panel.Width());
+			new_warn_lines = GetStringLineCount(GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]), panel.Width());
 		}
 		if (this->warn_lines != new_warn_lines) {
 			this->vscroll->SetCount(this->vscroll->GetCount() - this->warn_lines + new_warn_lines);
@@ -2431,8 +2430,9 @@ struct GameSettingsWindow : Window {
 
 		/* Draw the 'some search results are hidden' notice. */
 		if (this->warn_missing != WHR_NONE) {
-			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			DrawStringMultiLine(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)), warn_str, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)),
+				GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]),
+				TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -2496,13 +2496,14 @@ struct GameSettingsWindow : Window {
 					const IntSettingDesc *sd = this->last_clicked->setting;
 
 					Rect tr = r;
+					StringID str;
 					switch (sd->GetType()) {
-						case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME); break;
-						case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_CLIENT); break;
-						case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME); break;
+						case ST_COMPANY: str = _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME; break;
+						case ST_CLIENT:  str = STR_CONFIG_SETTING_TYPE_CLIENT; break;
+						case ST_GAME:    str = _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME; break;
 						default: NOT_REACHED();
 					}
-					DrawString(tr, STR_CONFIG_SETTING_TYPE);
+					DrawString(tr, GetString(STR_CONFIG_SETTING_TYPE, str));
 					tr.top += GetCharacterHeight(FS_NORMAL);
 
 					auto [param1, param2] = sd->GetValueParams(sd->GetDefaultValue());
@@ -3034,9 +3035,7 @@ struct CustomCurrencyWindow : Window {
 
 			/* Make sure the window is wide enough for the widest exchange rate */
 			case WID_CC_RATE:
-				SetDParam(0, 1);
-				SetDParam(1, INT32_MAX);
-				size = GetStringBoundingBox(STR_CURRENCY_EXCHANGE_RATE);
+				size = GetStringBoundingBox(GetString(STR_CURRENCY_EXCHANGE_RATE, 1, INT32_MAX));
 				break;
 		}
 	}

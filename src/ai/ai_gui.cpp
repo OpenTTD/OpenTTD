@@ -176,15 +176,13 @@ struct AIConfigWindow : public Window {
 					max_slot++; // Slot 0 is human
 				}
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
-					StringID text;
-
+					std::string text;
 					if ((_game_mode != GM_NORMAL && i == 0) || (_game_mode == GM_NORMAL && Company::IsValidHumanID(i))) {
-						text = STR_AI_CONFIG_HUMAN_PLAYER;
+						text = GetString(STR_AI_CONFIG_HUMAN_PLAYER);
 					} else if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != nullptr) {
-						SetDParamStr(0, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
-						text = STR_JUST_RAW_STRING;
+						text = GetString(STR_JUST_RAW_STRING, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
 					} else {
-						text = STR_AI_CONFIG_RANDOM_AI;
+						text = GetString(STR_AI_CONFIG_RANDOM_AI);
 					}
 
 					TextColour tc = TC_SILVER;

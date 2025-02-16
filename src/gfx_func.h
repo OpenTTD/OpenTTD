@@ -138,7 +138,7 @@ uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize = FS_N
 Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(std::string_view str, int maxw, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
-int GetStringLineCount(StringID str, int maxw);
+int GetStringLineCount(std::string_view str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion);
 void LoadStringWidthTable(bool monospace = false);

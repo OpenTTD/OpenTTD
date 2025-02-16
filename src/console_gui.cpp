@@ -198,8 +198,7 @@ struct IConsoleWindow : Window
 		int ypos = this->height - this->line_height - WidgetDimensions::scaled.hsep_normal;
 		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
 			const IConsoleLine &print = _iconsole_buffer[line_index];
-			SetDParamStr(0, print.buffer);
-			ypos = DrawStringMultiLine(WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, STR_JUST_RAW_STRING, print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - WidgetDimensions::scaled.hsep_normal;
+			ypos = DrawStringMultiLine(WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, GetString(STR_JUST_RAW_STRING, print.buffer), print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - WidgetDimensions::scaled.hsep_normal;
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */

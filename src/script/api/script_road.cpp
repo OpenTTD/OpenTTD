@@ -15,6 +15,7 @@
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
 #include "../../station_cmd.h"
+#include "../../strings_func.h"
 #include "../../newgrf_roadstop.h"
 #include "../../script/squirrel_helper_type.hpp"
 
@@ -29,7 +30,7 @@
 {
 	if (!IsRoadTypeAvailable(road_type)) return std::nullopt;
 
-	return GetString(GetRoadTypeInfo((::RoadType)road_type)->strings.name);
+	return ::StrMakeValid(::GetString(GetRoadTypeInfo((::RoadType)road_type)->strings.name));
 }
 
 /* static */ bool ScriptRoad::IsRoadTile(TileIndex tile)

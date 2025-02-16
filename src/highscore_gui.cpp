@@ -143,14 +143,13 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		/* We need to get performance from last year because the image is shown
 		 * at the start of the new year when these things have already been copied */
 		if (this->background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
-			SetDParam(0, c->index);
-			SetDParam(1, c->index);
-			SetDParam(2, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(pt.x + ScaleSpriteTrad(15), pt.x + ScaleSpriteTrad(640) - ScaleSpriteTrad(25), pt.y + ScaleSpriteTrad(90), pt.y + ScaleSpriteTrad(160), STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x + ScaleSpriteTrad(15), pt.x + ScaleSpriteTrad(640) - ScaleSpriteTrad(25), pt.y + ScaleSpriteTrad(90), pt.y + ScaleSpriteTrad(160),
+					GetString(STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, c->index, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
+					TC_FROMSTRING, SA_CENTER);
 		} else {
-			SetDParam(0, c->index);
-			SetDParam(1, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawStringMultiLine(pt.x + ScaleSpriteTrad(36), pt.x + ScaleSpriteTrad(640), pt.y + ScaleSpriteTrad(140), pt.y + ScaleSpriteTrad(206), STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(pt.x + ScaleSpriteTrad(36), pt.x + ScaleSpriteTrad(640), pt.y + ScaleSpriteTrad(140), pt.y + ScaleSpriteTrad(206),
+					GetString(STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
+					TC_FROMSTRING, SA_CENTER);
 		}
 	}
 };
@@ -194,17 +193,16 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 		/* Draw Highscore peepz */
 		for (uint8_t i = 0; i < ClampTo<uint8_t>(hs.size()); i++) {
-			SetDParam(0, i + 1);
-			DrawString(pt.x + ScaleSpriteTrad(40), pt.x + ScaleSpriteTrad(600), pt.y + ScaleSpriteTrad(140 + i * 55), STR_HIGHSCORE_POSITION);
+			DrawString(pt.x + ScaleSpriteTrad(40), pt.x + ScaleSpriteTrad(600), pt.y + ScaleSpriteTrad(140 + i * 55),
+					GetString(STR_HIGHSCORE_POSITION, i + 1));
 
 			if (!hs[i].name.empty()) {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
-				SetDParamStr(0, hs[i].name);
-				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55), STR_JUST_BIG_RAW_STRING, colour);
-				SetDParam(0, hs[i].title);
-				SetDParam(1, hs[i].score);
-				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FS_LARGE) + ScaleSpriteTrad(i * 55), STR_HIGHSCORE_STATS, colour);
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55),
+						GetString(STR_JUST_BIG_RAW_STRING, hs[i].name), colour);
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FS_LARGE) + ScaleSpriteTrad(i * 55),
+						GetString(STR_HIGHSCORE_STATS, hs[i].title, hs[i].score), colour);
 			}
 		}
 	}

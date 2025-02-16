@@ -611,7 +611,7 @@ STR_GRAPH_KEY_BUTTON                                            :{BLACK}Key
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Show key to graphs
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING2}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING1}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Operating Profit Graph
@@ -4767,7 +4767,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetabl
 STR_TIMETABLE_NO_TRAVEL                                         :No travel
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Travel (automatic; timetabled by next manual order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel (not timetabled) with at most {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel (not timetabled) with at most {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING1}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Travel for {STRING1} with at most {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Travel (for {STRING1}, not timetabled)

@@ -205,17 +205,15 @@ struct GoalListWindow : public Window {
 					switch (column) {
 						case GC_GOAL: {
 							/* Display the goal. */
-							SetDParamStr(0, s->text);
 							uint width_reduction = progress_col_width > 0 ? progress_col_width + WidgetDimensions::scaled.framerect.Horizontal() : 0;
-							DrawString(r.Indent(width_reduction, !rtl), STR_GOALS_TEXT);
+							DrawString(r.Indent(width_reduction, !rtl), GetString(STR_GOALS_TEXT, s->text));
 							break;
 						}
 
 						case GC_PROGRESS:
 							if (!s->progress.empty()) {
-								SetDParamStr(0, s->progress);
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								DrawString(r.WithWidth(progress_col_width, !rtl), str, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 							}
 							break;
 					}
@@ -243,9 +241,8 @@ struct GoalListWindow : public Window {
 		uint max_width = 0;
 		for (const Goal *s : Goal::Iterate()) {
 			if (!s->progress.empty()) {
-				SetDParamStr(0, s->progress);
 				StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-				uint str_width = GetStringBoundingBox(str).width;
+				uint str_width = GetStringBoundingBox(GetString(str, s->progress)).width;
 				if (str_width > max_width) max_width = str_width;
 			}
 		}
@@ -392,16 +389,14 @@ struct GoalQuestionWindow : public Window {
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
-		SetDParamStr(0, this->question);
-		size.height = GetStringHeight(STR_JUST_RAW_STRING, size.width);
+		size.height = GetStringHeight(GetString(STR_JUST_RAW_STRING, this->question), size.width);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
-		SetDParamStr(0, this->question);
-		DrawStringMultiLine(r, STR_JUST_RAW_STRING, this->colour, SA_TOP | SA_HOR_CENTER);
+		DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, this->question), this->colour, SA_TOP | SA_HOR_CENTER);
 	}
 };
 

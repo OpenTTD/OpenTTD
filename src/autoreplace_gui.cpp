@@ -315,10 +315,8 @@ public:
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
 				StringID str = this->GetWidget<NWidgetCore>(widget)->GetString();
-				SetDParam(0, STR_CONFIG_SETTING_ON);
-				Dimension d = GetStringBoundingBox(str);
-				SetDParam(0, STR_CONFIG_SETTING_OFF);
-				d = maxdim(d, GetStringBoundingBox(str));
+				Dimension d = GetStringBoundingBox(GetString(str, STR_CONFIG_SETTING_ON));
+				d = maxdim(d, GetStringBoundingBox(GetString(str, STR_CONFIG_SETTING_OFF)));
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);
@@ -440,21 +438,21 @@ public:
 
 			case WID_RV_INFO_TAB: {
 				const Company *c = Company::Get(_local_company);
-				StringID str;
+				std::string str;
 				if (this->sel_engine[0] != EngineID::Invalid()) {
 					if (!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group)) {
-						str = STR_REPLACE_NOT_REPLACING;
+						str = GetString(STR_REPLACE_NOT_REPLACING);
 					} else {
 						bool when_old = false;
 						EngineID e = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group, &when_old);
-						str = when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME;
-						SetDParam(0, PackEngineNameDParam(e, EngineNameContext::PurchaseList));
+						str = GetString(when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME,
+								PackEngineNameDParam(e, EngineNameContext::PurchaseList));
 					}
 				} else {
-					str = STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED;
+					str = GetString(STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
 				}
 
-				DrawString(r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect), str, TC_BLACK, SA_HOR_CENTER);
+				DrawString(r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect), std::move(str), TC_BLACK, SA_HOR_CENTER);
 				break;
 			}
 
