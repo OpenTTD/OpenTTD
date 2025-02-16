@@ -88,9 +88,11 @@ struct OskWindow : public Window {
 		this->SetWidgetLoweredState(WID_OSK_CAPS, HasBit(_keystate, KEYS_CAPS));
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_OSK_CAPTION) SetDParam(0, this->caption);
+		if (widget == WID_OSK_CAPTION) return GetString(this->caption);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

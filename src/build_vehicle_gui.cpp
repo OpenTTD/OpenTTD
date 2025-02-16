@@ -569,10 +569,8 @@ static int DrawCargoCapacityInfo(int left, int right, int y, TestedEngineDetails
 		CargoType cargo_type = cs->Index();
 		if (te.all_capacities[cargo_type] == 0) continue;
 
-		SetDParam(0, cargo_type);
-		SetDParam(1, te.all_capacities[cargo_type]);
-		SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
-		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_CAPACITY, cargo_type, te.all_capacities[cargo_type], refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
@@ -586,36 +584,34 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 
 	/* Purchase cost */
 	if (te.cost != 0) {
-		SetDParam(0, e->GetCost() + te.cost);
-		SetDParam(1, te.cost);
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_COST_REFIT, e->GetCost() + te.cost, te.cost));
 	} else {
-		SetDParam(0, e->GetCost());
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_COST, e->GetCost()));
 	}
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Wagon weight - (including cargo) */
 	uint weight = e->GetDisplayWeight();
-	SetDParam(0, weight);
-	SetDParam(1, GetCargoWeight(te.all_capacities, VEH_TRAIN) + weight);
-	DrawString(left, right, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT);
+	DrawString(left, right, y,
+			GetString(STR_PURCHASE_INFO_WEIGHT_CWEIGHT, weight, GetCargoWeight(te.all_capacities, VEH_TRAIN) + weight));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Wagon speed limit, displayed if above zero */
 	if (_settings_game.vehicle.wagon_speed_limits) {
 		uint max_speed = e->GetDisplayMaxSpeed();
 		if (max_speed > 0) {
-			SetDParam(0, PackVelocity(max_speed, e->type));
-			DrawString(left, right, y, STR_PURCHASE_INFO_SPEED);
+			DrawString(left, right, y,
+					GetString(STR_PURCHASE_INFO_SPEED, PackVelocity(max_speed, e->type)));
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 	}
 
 	/* Running cost */
 	if (rvi->running_cost_class != INVALID_PRICE) {
-		SetDParam(0, e->GetRunningCost());
-		DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
+		DrawString(left, right, y,
+				GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
@@ -629,42 +625,37 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 
 	/* Purchase Cost - Engine weight */
 	if (te.cost != 0) {
-		SetDParam(0, e->GetCost() + te.cost);
-		SetDParam(1, te.cost);
-		SetDParam(2, e->GetDisplayWeight());
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_WEIGHT);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_COST_REFIT_WEIGHT, e->GetCost() + te.cost, te.cost, e->GetDisplayWeight()));
 	} else {
-		SetDParam(0, e->GetCost());
-		SetDParam(1, e->GetDisplayWeight());
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST_WEIGHT);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_COST_WEIGHT, e->GetCost(), e->GetDisplayWeight()));
 	}
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Max speed - Engine power */
-	SetDParam(0, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-	SetDParam(1, e->GetPower());
-	DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_POWER);
+	DrawString(left, right, y,
+			GetString(STR_PURCHASE_INFO_SPEED_POWER, PackVelocity(e->GetDisplayMaxSpeed(), e->type), e->GetPower()));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
 	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(rvi->railtype)->acceleration_type != 2) {
-		SetDParam(0, e->GetDisplayMaxTractiveEffort());
-		DrawString(left, right, y, STR_PURCHASE_INFO_MAX_TE);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_MAX_TE, e->GetDisplayMaxTractiveEffort()));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
 	/* Running cost */
 	if (rvi->running_cost_class != INVALID_PRICE) {
-		SetDParam(0, e->GetRunningCost());
-		DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
+		DrawString(left, right, y,
+				GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
 	/* Powered wagons power - Powered wagons extra weight */
 	if (rvi->pow_wag_power != 0) {
-		SetDParam(0, rvi->pow_wag_power);
-		SetDParam(1, rvi->pow_wag_weight);
-		DrawString(left, right, y, STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT, rvi->pow_wag_power, rvi->pow_wag_weight));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
@@ -679,50 +670,44 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
 		/* Purchase Cost */
 		if (te.cost != 0) {
-			SetDParam(0, e->GetCost() + te.cost);
-			SetDParam(1, te.cost);
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT);
+			DrawString(left, right, y,
+					GetString(STR_PURCHASE_INFO_COST_REFIT, e->GetCost() + te.cost, te.cost));
 		} else {
-			SetDParam(0, e->GetCost());
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+			DrawString(left, right, y,
+					GetString(STR_PURCHASE_INFO_COST, e->GetCost()));
 		}
 		y += GetCharacterHeight(FS_NORMAL);
 
 		/* Road vehicle weight - (including cargo) */
 		int16_t weight = e->GetDisplayWeight();
-		SetDParam(0, weight);
-		SetDParam(1, GetCargoWeight(te.all_capacities, VEH_ROAD) + weight);
-		DrawString(left, right, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_WEIGHT_CWEIGHT, weight, GetCargoWeight(te.all_capacities, VEH_ROAD) + weight));
 		y += GetCharacterHeight(FS_NORMAL);
 
 		/* Max speed - Engine power */
-		SetDParam(0, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-		SetDParam(1, e->GetPower());
-		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_POWER);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_SPEED_POWER, PackVelocity(e->GetDisplayMaxSpeed(), e->type), e->GetPower()));
 		y += GetCharacterHeight(FS_NORMAL);
 
 		/* Max tractive effort */
-		SetDParam(0, e->GetDisplayMaxTractiveEffort());
-		DrawString(left, right, y, STR_PURCHASE_INFO_MAX_TE);
+		DrawString(left, right, y,
+				GetString(STR_PURCHASE_INFO_MAX_TE, e->GetDisplayMaxTractiveEffort()));
 		y += GetCharacterHeight(FS_NORMAL);
 	} else {
 		/* Purchase cost - Max speed */
 		if (te.cost != 0) {
-			SetDParam(0, e->GetCost() + te.cost);
-			SetDParam(1, te.cost);
-			SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
+			DrawString(left, right, y,
+					GetString(STR_PURCHASE_INFO_COST_REFIT_SPEED, e->GetCost() + te.cost, te.cost, PackVelocity(e->GetDisplayMaxSpeed(), e->type)));
 		} else {
-			SetDParam(0, e->GetCost());
-			SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+			DrawString(left, right, y,
+					GetString(STR_PURCHASE_INFO_COST_SPEED, e->GetCost(), PackVelocity(e->GetDisplayMaxSpeed(), e->type)));
 		}
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
 	/* Running cost */
-	SetDParam(0, e->GetRunningCost());
-	DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
+	DrawString(left, right, y,
+			GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	return y;
@@ -740,46 +725,32 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 
 	if (ocean_speed == canal_speed) {
 		if (te.cost != 0) {
-			SetDParam(0, e->GetCost() + te.cost);
-			SetDParam(1, te.cost);
-			SetDParam(2, PackVelocity(ocean_speed, e->type));
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
+			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_REFIT_SPEED, e->GetCost() + te.cost, te.cost, PackVelocity(ocean_speed, e->type)));
 		} else {
-			SetDParam(0, e->GetCost());
-			SetDParam(1, PackVelocity(ocean_speed, e->type));
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_SPEED, e->GetCost(), PackVelocity(ocean_speed, e->type)));
 		}
 		y += GetCharacterHeight(FS_NORMAL);
 	} else {
 		if (te.cost != 0) {
-			SetDParam(0, e->GetCost() + te.cost);
-			SetDParam(1, te.cost);
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT);
+			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_REFIT, e->GetCost() + te.cost, te.cost));
 		} else {
-			SetDParam(0, e->GetCost());
-			DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST, e->GetCost()));
 		}
 		y += GetCharacterHeight(FS_NORMAL);
 
-		SetDParam(0, PackVelocity(ocean_speed, e->type));
-		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_OCEAN);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_OCEAN, PackVelocity(ocean_speed, e->type)));
 		y += GetCharacterHeight(FS_NORMAL);
 
-		SetDParam(0, PackVelocity(canal_speed, e->type));
-		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_CANAL);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_CANAL, PackVelocity(canal_speed, e->type)));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
 	/* Cargo type + capacity */
-	SetDParam(0, te.cargo);
-	SetDParam(1, te.capacity);
-	SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
-	DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
+	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_CAPACITY, te.cargo, te.capacity, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Running cost */
-	SetDParam(0, e->GetRunningCost());
-	DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
+	DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	return y;
@@ -800,49 +771,34 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 
 	/* Purchase cost - Max speed */
 	if (te.cost != 0) {
-		SetDParam(0, e->GetCost() + te.cost);
-		SetDParam(1, te.cost);
-		SetDParam(2, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST_REFIT_SPEED);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_REFIT_SPEED, e->GetCost() + te.cost, te.cost, PackVelocity(e->GetDisplayMaxSpeed(), e->type)));
 	} else {
-		SetDParam(0, e->GetCost());
-		SetDParam(1, PackVelocity(e->GetDisplayMaxSpeed(), e->type));
-		DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_SPEED, e->GetCost(), PackVelocity(e->GetDisplayMaxSpeed(), e->type)));
 	}
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Cargo capacity */
 	if (te.mail_capacity > 0) {
-		SetDParam(0, te.cargo);
-		SetDParam(1, te.capacity);
-		SetDParam(2, GetCargoTypeByLabel(CT_MAIL));
-		SetDParam(3, te.mail_capacity);
-		DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_AIRCRAFT_CAPACITY, te.cargo, te.capacity, GetCargoTypeByLabel(CT_MAIL), te.mail_capacity));
 	} else {
 		/* Note, if the default capacity is selected by the refit capacity
 		 * callback, then the capacity shown is likely to be incorrect. */
-		SetDParam(0, te.cargo);
-		SetDParam(1, te.capacity);
-		SetDParam(2, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY);
-		DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_CAPACITY, te.cargo, te.capacity, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY));
 	}
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Running cost */
-	SetDParam(0, e->GetRunningCost());
-	DrawString(left, right, y, TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR);
+	DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Aircraft type */
-	SetDParam(0, e->GetAircraftTypeText());
-	DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_TYPE);
+	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_AIRCRAFT_TYPE, e->GetAircraftTypeText()));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	/* Aircraft range, if available. */
 	uint16_t range = e->GetRange();
 	if (range != 0) {
-		SetDParam(0, range);
-		DrawString(left, right, y, STR_PURCHASE_INFO_AIRCRAFT_RANGE);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_AIRCRAFT_RANGE, range));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
@@ -867,7 +823,9 @@ static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
 	}
 
 	StartTextRefStackUsage(grffile, 6);
-	std::string result = GetString(GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback));
+	/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+	std::array<StringParameter, 20> params{};
+	std::string result = GetStringWithArgs(GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback), params);
 	StopTextRefStackUsage();
 	return result;
 }
@@ -949,9 +907,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 		int new_y = DrawCargoCapacityInfo(left, right, y, te, refittable);
 
 		if (new_y == y) {
-			SetDParam(0, INVALID_CARGO);
-			SetDParam(2, STR_EMPTY);
-			DrawString(left, right, y, STR_PURCHASE_INFO_CAPACITY);
+			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_CAPACITY, INVALID_CARGO, 0, STR_EMPTY));
 			y += GetCharacterHeight(FS_NORMAL);
 		} else {
 			y = new_y;
@@ -961,14 +917,11 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	/* Draw details that apply to all types except rail wagons. */
 	if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
 		/* Design date - Life length */
-		SetDParam(0, ymd.year);
-		SetDParam(1, TimerGameCalendar::DateToYear(e->GetLifeLengthInDays()));
-		DrawString(left, right, y, STR_PURCHASE_INFO_DESIGNED_LIFE);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_DESIGNED_LIFE, ymd.year, TimerGameCalendar::DateToYear(e->GetLifeLengthInDays())));
 		y += GetCharacterHeight(FS_NORMAL);
 
 		/* Reliability */
-		SetDParam(0, ToPercent16(e->reliability));
-		DrawString(left, right, y, STR_PURCHASE_INFO_RELIABILITY);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_RELIABILITY, ToPercent16(e->reliability)));
 		y += GetCharacterHeight(FS_NORMAL);
 	}
 
@@ -1026,8 +979,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 			biggest_num_engines = std::max(biggest_num_engines, num_engines);
 		}
 
-		SetDParam(0, biggest_num_engines);
-		count_width = GetStringBoundingBox(STR_JUST_COMMA, FS_SMALL).width;
+		count_width = GetStringBoundingBox(GetString(STR_JUST_COMMA, biggest_num_engines), FS_SMALL).width;
 	}
 
 	Rect tr = ir.Indent(circle_width + WidgetDimensions::scaled.hsep_normal + sprite_width + WidgetDimensions::scaled.hsep_wide, rtl); // Name position
@@ -1072,19 +1024,14 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
 		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : ((hidden | shaded) ? (TC_GREY | TC_FORCED | TC_NO_SHADE) : TC_BLACK);
 
-		if (show_count) {
-			/* relies on show_count to find 'Vehicle in use' panel of autoreplace window */
-			SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::AutoreplaceVehicleInUse, item.indent));
-		} else {
-			SetDParam(0, PackEngineNameDParam(item.engine_id, EngineNameContext::PurchaseList, item.indent));
-		}
+		/* If the count is visible then this is part of in-use autoreplace list. */
+		auto engine_name = PackEngineNameDParam(item.engine_id, show_count ? EngineNameContext::AutoreplaceVehicleInUse : EngineNameContext::PurchaseList, item.indent);
 		Rect itr = tr.Indent(indent, rtl);
-		DrawString(itr.left, itr.right, y + normal_text_y_offset, str, tc);
+		DrawString(itr.left, itr.right, y + normal_text_y_offset, GetString(str, engine_name), tc);
 		int sprite_x = ir.Indent(indent + circle_width + WidgetDimensions::scaled.hsep_normal, rtl).WithWidth(sprite_width, rtl).left + sprite_left;
 		DrawVehicleEngine(r.left, r.right, sprite_x, y + sprite_y_offset, item.engine_id, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(item.engine_id, _local_company), EIT_PURCHASE);
 		if (show_count) {
-			SetDParam(0, num_engines);
-			DrawString(cr.left, cr.right, y + small_text_y_offset, STR_JUST_COMMA, TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+			DrawString(cr.left, cr.right, y + small_text_y_offset, GetString(STR_JUST_COMMA, num_engines), TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr.left, y + replace_icon_y_offset);
 		}
 		if (has_variants) {
@@ -1723,38 +1670,36 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.ForceRebuild();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_BV_CAPTION:
 				if (this->vehicle_type == VEH_TRAIN && !this->listview_mode) {
 					const RailTypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
-					SetDParam(0, rti->strings.build_caption);
-				} else if (this->vehicle_type == VEH_ROAD && !this->listview_mode) {
-					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);
-					SetDParam(0, rti->strings.build_caption);
-				} else {
-					SetDParam(0, (this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
+					return GetString(rti->strings.build_caption);
 				}
-				break;
+				if (this->vehicle_type == VEH_ROAD && !this->listview_mode) {
+					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);
+					return GetString(rti->strings.build_caption);
+				}
+				return GetString((this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
 
 			case WID_BV_SORT_DROPDOWN:
-				SetDParam(0, std::data(_engine_sort_listing[this->vehicle_type])[this->sort_criteria]);
-				break;
+				return GetString(std::data(_engine_sort_listing[this->vehicle_type])[this->sort_criteria]);
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
-				SetDParam(0, this->GetCargoFilterLabel(this->cargo_filter_criteria));
-				break;
+				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr && e->IsHidden(_local_company)) {
-					SetDParam(0, STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
-				} else {
-					SetDParam(0, STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
+					return GetString(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
 				}
-				break;
+				return GetString(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
 			}
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

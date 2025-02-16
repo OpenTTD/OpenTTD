@@ -103,12 +103,13 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 		this->LoadTextfile(textfile, BASESET_DIR);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, content_type);
-			SetDParamStr(1, this->name);
+			return GetString(stringid, content_type, this->name);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 };
 
@@ -248,37 +249,28 @@ public:
 		return *longest;
 	}
 
-	void SetStringParameters(int widget) const
+	std::string GetWidgetString(WidgetID widget, StringID) const
 	{
 		switch (widget) {
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE);
-					SetDParamStr(1, GetWidestPlugin(&SocialIntegrationPlugin::name));
-					SetDParamStr(2, GetWidestPlugin(&SocialIntegrationPlugin::version));
-					break;
+					return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, GetWidestPlugin(&SocialIntegrationPlugin::name), GetWidestPlugin(&SocialIntegrationPlugin::version));
 				}
 
 				if (this->plugins[this->current_index]->name.empty()) {
-					SetDParam(0, STR_JUST_RAW_STRING);
-					SetDParamStr(1, this->plugins[this->current_index]->basepath);
+					return GetString(STR_JUST_RAW_STRING, this->plugins[this->current_index]->basepath);
 				} else {
-					SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE);
-					SetDParamStr(1, this->plugins[this->current_index]->name);
-					SetDParamStr(2, this->plugins[this->current_index]->version);
+					return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, this->plugins[this->current_index]->name, this->plugins[this->current_index]->version);
 				}
-				break;
 
 			case WID_GO_SOCIAL_PLUGIN_PLATFORM:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					SetDParamStr(0, GetWidestPlugin(&SocialIntegrationPlugin::social_platform));
-					break;
+					return GetString(STR_JUST_RAW_STRING, GetWidestPlugin(&SocialIntegrationPlugin::social_platform));
 				}
 
-				SetDParamStr(0, this->plugins[this->current_index]->social_platform);
-				break;
+				return GetString(STR_JUST_RAW_STRING, this->plugins[this->current_index]->social_platform);
 
 			case WID_GO_SOCIAL_PLUGIN_STATE: {
 				static const std::pair<SocialIntegrationPlugin::State, StringID> state_to_string[] = {
@@ -296,38 +288,33 @@ public:
 					auto longest_plugin = GetWidestPlugin(&SocialIntegrationPlugin::social_platform);
 
 					/* Set the longest plugin when looking for the longest status. */
-					SetDParamStr(0, longest_plugin);
-
 					StringID longest = STR_NULL;
 					int longest_length = 0;
-					for (auto state : state_to_string) {
-						int length = GetStringBoundingBox(state.second).width;
+					for (const auto &[state, string] : state_to_string) {
+						int length = GetStringBoundingBox(GetString(string, longest_plugin)).width;
 						if (length > longest_length) {
 							longest_length = length;
-							longest = state.second;
+							longest = string;
 						}
 					}
 
-					SetDParam(0, longest);
-					SetDParamStr(1, longest_plugin);
-					break;
+					return GetString(longest, longest_plugin);
 				}
 
-				auto plugin = this->plugins[this->current_index];
-
-				/* Default string, in case no state matches. */
-				SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED);
-				SetDParamStr(1, plugin->social_platform);
+				const auto plugin = this->plugins[this->current_index];
 
 				/* Find the string for the state. */
-				for (auto state : state_to_string) {
-					if (plugin->state == state.first) {
-						SetDParam(0, state.second);
-						break;
+				for (const auto &[state, string] : state_to_string) {
+					if (plugin->state == state) {
+						return GetString(string, plugin->social_platform);
 					}
 				}
+
+				/* Default string, in case no state matches. */
+				return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED, plugin->social_platform);
 			}
-			break;
+
+			default: NOT_REACHED();
 		}
 	}
 
@@ -403,9 +390,7 @@ struct GameOptionsWindow : Window {
 					if (currency.code.empty()) {
 						list.push_back(MakeDropDownListStringItem(currency.name, i, HasBit(disabled, i)));
 					} else {
-						SetDParam(0, currency.name);
-						SetDParamStr(1, currency.code);
-						list.push_back(MakeDropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CODE, i, HasBit(disabled, i)));
+						list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code), i, HasBit(disabled, i)));
 					}
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
@@ -436,19 +421,24 @@ struct GameOptionsWindow : Window {
 					bool hide_language = IsReleasedVersion() && !_languages[i].IsReasonablyFinished();
 					if (hide_language) continue;
 					bool hide_percentage = IsReleasedVersion() || _languages[i].missing < _settings_client.gui.missing_strings_threshold;
+					char *name;
 					if (&_languages[i] == _current_language) {
 						*selected_index = i;
-						SetDParamStr(0, _languages[i].own_name);
+						name = _languages[i].own_name;
 					} else {
 						/* Especially with sprite-fonts, not all localized
 						 * names can be rendered. So instead, we use the
 						 * international names for anything but the current
 						 * selected language. This avoids showing a few ????
 						 * entries in the dropdown list. */
-						SetDParamStr(0, _languages[i].name);
+						name = _languages[i].name;
 					}
-					SetDParam(1, (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS);
-					list.push_back(MakeDropDownListStringItem(hide_percentage ? STR_JUST_RAW_STRING : STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, i));
+					if (hide_percentage) {
+						list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, name), i));
+					} else {
+						int percentage = (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS;
+						list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, name, percentage), i));
+					}
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 				break;
@@ -459,9 +449,7 @@ struct GameOptionsWindow : Window {
 
 				*selected_index = GetCurrentResolutionIndex();
 				for (uint i = 0; i < _resolutions.size(); i++) {
-					SetDParam(0, _resolutions[i].width);
-					SetDParam(1, _resolutions[i].height);
-					list.push_back(MakeDropDownListStringItem(STR_GAME_OPTIONS_RESOLUTION_ITEM, i));
+					list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_RESOLUTION_ITEM, _resolutions[i].width, _resolutions[i].height), i));
 				}
 				break;
 
@@ -469,8 +457,7 @@ struct GameOptionsWindow : Window {
 				for (auto it = _refresh_rates.begin(); it != _refresh_rates.end(); it++) {
 					auto i = std::distance(_refresh_rates.begin(), it);
 					if (*it == _settings_client.gui.refresh_rate) *selected_index = i;
-					SetDParam(0, *it);
-					list.push_back(MakeDropDownListStringItem(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, i));
+					list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, *it), i));
 				}
 				break;
 
@@ -490,45 +477,36 @@ struct GameOptionsWindow : Window {
 		return list;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: {
 				const CurrencySpec &currency = _currency_specs[this->opt->locale.currency];
-				if (currency.code.empty()) {
-					SetDParam(0, currency.name);
-				} else {
-					SetDParam(0, STR_GAME_OPTIONS_CURRENCY_CODE);
-					SetDParam(1, currency.name);
-					SetDParamStr(2, currency.code);
-				}
-				break;
+				if (currency.code.empty()) return GetString(currency.name);
+				return GetString(STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code);
 			}
+
 			case WID_GO_AUTOSAVE_DROPDOWN: {
 				int index = 0;
 				for (auto &minutes : _autosave_dropdown_to_minutes) {
 					index++;
 					if (_settings_client.gui.autosave_interval <= minutes) break;
 				}
-				SetDParam(0, _autosave_dropdown[index - 1]);
-				break;
+				return GetString(_autosave_dropdown[index - 1]);
 			}
-			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
-			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_REFRESH_RATE_DROPDOWN: SetDParam(0, _settings_client.gui.refresh_rate); break;
+
+			case WID_GO_LANG_DROPDOWN:         return GetString(STR_JUST_RAW_STRING, _current_language->own_name);
+			case WID_GO_BASE_GRF_DROPDOWN:     return GetString(STR_JUST_RAW_STRING, BaseGraphics::GetUsedSet()->GetListLabel());
+			case WID_GO_BASE_SFX_DROPDOWN:     return GetString(STR_JUST_RAW_STRING, BaseSounds::GetUsedSet()->GetListLabel());
+			case WID_GO_BASE_MUSIC_DROPDOWN:   return GetString(STR_JUST_RAW_STRING, BaseMusic::GetUsedSet()->GetListLabel());
+			case WID_GO_REFRESH_RATE_DROPDOWN: return GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, _settings_client.gui.refresh_rate);
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
 
 				if (current_resolution == _resolutions.size()) {
-					SetDParam(0, STR_GAME_OPTIONS_RESOLUTION_OTHER);
-				} else {
-					SetDParam(0, STR_GAME_OPTIONS_RESOLUTION_ITEM);
-					SetDParam(1, _resolutions[current_resolution].width);
-					SetDParam(2, _resolutions[current_resolution].height);
+					return GetString(STR_GAME_OPTIONS_RESOLUTION_OTHER);
 				}
-				break;
+				return GetString(STR_GAME_OPTIONS_RESOLUTION_ITEM, _resolutions[current_resolution].width, _resolutions[current_resolution].height);
 			}
 
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
@@ -537,9 +515,11 @@ struct GameOptionsWindow : Window {
 				const NWidgetSocialPlugins *plugin = this->GetWidget<NWidgetSocialPlugins>(WID_GO_SOCIAL_PLUGINS);
 				assert(plugin != nullptr);
 
-				plugin->SetStringParameters(widget);
-				break;
+				return plugin->GetWidgetString(widget, stringid);
 			}
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -547,18 +527,21 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GO_BASE_GRF_DESCRIPTION:
-				SetDParamStr(0, BaseGraphics::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX,
+					GetString(STR_JUST_RAW_STRING, BaseGraphics::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())),
+					TC_BLACK);
 				break;
 
 			case WID_GO_BASE_SFX_DESCRIPTION:
-				SetDParamStr(0, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX,
+					GetString(STR_JUST_RAW_STRING, BaseSounds::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())),
+					TC_BLACK);
 				break;
 
 			case WID_GO_BASE_MUSIC_DESCRIPTION:
-				SetDParamStr(0, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
-				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX,
+					GetString(STR_JUST_RAW_STRING, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode())),
+					TC_BLACK);
 				break;
 
 			case WID_GO_GUI_SCALE:
@@ -566,8 +549,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_VIDEO_DRIVER_INFO:
-				SetDParamStr(0, std::string{VideoDriver::GetInstance()->GetInfoString()});
-				DrawStringMultiLine(r, STR_GAME_OPTIONS_VIDEO_DRIVER_INFO);
+				DrawStringMultiLine(r, GetString(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, std::string{VideoDriver::GetInstance()->GetInfoString()}));
 				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
@@ -606,30 +588,30 @@ struct GameOptionsWindow : Window {
 		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_GO_BASE_GRF_DESCRIPTION);
 		int y = 0;
 		for (int i = 0; i < BaseGraphics::GetNumSets(); i++) {
-			SetDParamStr(0, BaseGraphics::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
+			std::string str = GetString(STR_JUST_RAW_STRING, BaseGraphics::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
+			y = std::max(y, GetStringHeight(str, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_BASE_SFX_DESCRIPTION);
 		y = 0;
 		for (int i = 0; i < BaseSounds::GetNumSets(); i++) {
-			SetDParamStr(0, BaseSounds::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
+			std::string str = GetString(STR_JUST_RAW_STRING, BaseSounds::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
+			y = std::max(y, GetStringHeight(str, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_BASE_MUSIC_DESCRIPTION);
 		y = 0;
 		for (int i = 0; i < BaseMusic::GetNumSets(); i++) {
-			SetDParamStr(0, BaseMusic::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
-			y = std::max(y, GetStringHeight(STR_JUST_RAW_STRING, wid->current_x));
+			std::string str = GetString(STR_JUST_RAW_STRING, BaseMusic::GetSet(i)->GetDescription(GetCurrentLanguageIsoCode()));
+			y = std::max(y, GetStringHeight(str, wid->current_x));
 		}
 		changed |= wid->UpdateVerticalSize(y);
 
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_VIDEO_DRIVER_INFO);
-		SetDParamStr(0, std::string{VideoDriver::GetInstance()->GetInfoString()});
-		y = GetStringHeight(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, wid->current_x);
+		std::string str = GetString(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, std::string{VideoDriver::GetInstance()->GetInfoString()});
+		y = GetStringHeight(str, wid->current_x);
 		changed |= wid->UpdateVerticalSize(y);
 
 		if (changed) this->ReInit(0, 0, this->flags.Test(WindowFlag::Centred));
@@ -1565,8 +1547,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 		/* Process the search text filter for this item. */
 		filter.string.ResetState();
 
-		SetDParam(0, STR_EMPTY);
-		filter.string.AddLine(sd->GetTitle());
+		filter.string.AddLine(GetString(sd->GetTitle(), STR_EMPTY));
 		filter.string.AddLine(sd->GetHelp());
 
 		visible = filter.string.GetState();
@@ -2385,8 +2366,7 @@ struct GameSettingsWindow : Window {
 					STR_CONFIG_SETTING_TYPE_GAME_MENU, STR_CONFIG_SETTING_TYPE_GAME_INGAME,
 				};
 				for (const auto &setting_type : setting_types) {
-					SetDParam(0, setting_type);
-					size.width = std::max(size.width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width + padding.width);
+					size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_CONFIG_SETTING_TYPE, setting_type)).width + padding.width);
 				}
 				size.height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal +
 						std::max(size.height, GetSettingsTree().GetMaxHelpHeight(size.width));
@@ -2419,8 +2399,7 @@ struct GameSettingsWindow : Window {
 		if (this->warn_missing == WHR_NONE) {
 			new_warn_lines = 0;
 		} else {
-			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			new_warn_lines = GetStringLineCount(warn_str, panel.Width());
+			new_warn_lines = GetStringLineCount(GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]), panel.Width());
 		}
 		if (this->warn_lines != new_warn_lines) {
 			this->vscroll->SetCount(this->vscroll->GetCount() - this->warn_lines + new_warn_lines);
@@ -2431,26 +2410,28 @@ struct GameSettingsWindow : Window {
 
 		/* Draw the 'some search results are hidden' notice. */
 		if (this->warn_missing != WHR_NONE) {
-			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			DrawStringMultiLine(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)), warn_str, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)),
+				GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]),
+				TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				SetDParam(0, _game_settings_restrict_dropdown[this->filter.mode]);
-				break;
+				return GetString(_game_settings_restrict_dropdown[this->filter.mode]);
 
 			case WID_GS_TYPE_DROPDOWN:
 				switch (this->filter.type) {
-					case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME); break;
-					case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME); break;
-					case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT); break;
-					default:         SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL); break;
+					case ST_GAME:    return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
+					case ST_COMPANY: return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
+					case ST_CLIENT:  return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
+					default:         return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
 				}
-				break;
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -2496,13 +2477,14 @@ struct GameSettingsWindow : Window {
 					const IntSettingDesc *sd = this->last_clicked->setting;
 
 					Rect tr = r;
+					StringID str;
 					switch (sd->GetType()) {
-						case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME); break;
-						case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_CLIENT); break;
-						case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME); break;
+						case ST_COMPANY: str = _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME; break;
+						case ST_CLIENT:  str = STR_CONFIG_SETTING_TYPE_CLIENT; break;
+						case ST_GAME:    str = _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME; break;
 						default: NOT_REACHED();
 					}
-					DrawString(tr, STR_CONFIG_SETTING_TYPE);
+					DrawString(tr, GetString(STR_CONFIG_SETTING_TYPE, str));
 					tr.top += GetCharacterHeight(FS_NORMAL);
 
 					auto [param1, param2] = sd->GetValueParams(sd->GetDefaultValue());
@@ -2996,21 +2978,21 @@ struct CustomCurrencyWindow : Window {
 		this->SetWidgetDisabledState(WID_CC_YEAR_UP, GetCustomCurrency().to_euro == CalendarTime::MAX_YEAR);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_CC_RATE:      SetDParam(0, 1); SetDParam(1, 1);            break;
-			case WID_CC_SEPARATOR: SetDParamStr(0, GetCustomCurrency().separator); break;
-			case WID_CC_PREFIX:    SetDParamStr(0, GetCustomCurrency().prefix);    break;
-			case WID_CC_SUFFIX:    SetDParamStr(0, GetCustomCurrency().suffix);    break;
+			case WID_CC_RATE:      return GetString(stringid, 1, 1);
+			case WID_CC_SEPARATOR: return GetString(stringid, GetCustomCurrency().separator);
+			case WID_CC_PREFIX:    return GetString(stringid, GetCustomCurrency().prefix);
+			case WID_CC_SUFFIX:    return GetString(stringid, GetCustomCurrency().suffix);
 			case WID_CC_YEAR:
-				SetDParam(0, (GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER);
-				SetDParam(1, GetCustomCurrency().to_euro);
-				break;
+				return GetString((GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, GetCustomCurrency().to_euro);
 
 			case WID_CC_PREVIEW:
-				SetDParam(0, 10000);
-				break;
+				return GetString(stringid, 10000);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -3034,9 +3016,7 @@ struct CustomCurrencyWindow : Window {
 
 			/* Make sure the window is wide enough for the widest exchange rate */
 			case WID_CC_RATE:
-				SetDParam(0, 1);
-				SetDParam(1, INT32_MAX);
-				size = GetStringBoundingBox(STR_CURRENCY_EXCHANGE_RATE);
+				size = GetStringBoundingBox(GetString(STR_CURRENCY_EXCHANGE_RATE, 1, INT32_MAX));
 				break;
 		}
 	}

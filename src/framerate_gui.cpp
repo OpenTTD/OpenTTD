@@ -431,11 +431,8 @@ struct FramerateWindow : Window {
 			this->strid = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
 		}
 
-		inline void InsertDParams(uint n) const
-		{
-			SetDParam(n, this->value);
-			SetDParam(n + 1, 2);
-		}
+		inline uint32_t GetValue() const { return this->value; }
+		inline uint32_t GetDecimals() const { return 2; }
 	};
 
 	CachedDecimal rate_gameloop;            ///< cached game loop tick rate
@@ -500,31 +497,29 @@ struct FramerateWindow : Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_FRW_CAPTION:
 				/* When the window is shaded, the caption shows game loop rate and speed factor */
-				if (!this->small) break;
-				SetDParam(0, this->rate_gameloop.strid);
-				this->rate_gameloop.InsertDParams(1);
-				this->speed_gameloop.InsertDParams(3);
-				break;
+				if (!this->small) GetString(widget, stringid);
+
+				return GetString(stringid, this->rate_gameloop.strid, this->rate_gameloop.GetValue(), this->rate_gameloop.GetDecimals(), this->speed_gameloop.GetValue(), this->speed_gameloop.GetDecimals());
 
 			case WID_FRW_RATE_GAMELOOP:
-				SetDParam(0, this->rate_gameloop.strid);
-				this->rate_gameloop.InsertDParams(1);
-				break;
+				return GetString(stringid, this->rate_gameloop.strid, this->rate_gameloop.GetValue(), this->rate_gameloop.GetDecimals());
+
 			case WID_FRW_RATE_DRAWING:
-				SetDParam(0, this->rate_drawing.strid);
-				this->rate_drawing.InsertDParams(1);
-				break;
+				return GetString(stringid, this->rate_drawing.strid, this->rate_drawing.GetValue(), this->rate_drawing.GetDecimals());
+
 			case WID_FRW_RATE_FACTOR:
-				this->speed_gameloop.InsertDParams(0);
-				break;
+				return GetString(stringid, this->speed_gameloop.GetValue(), this->speed_gameloop.GetDecimals());
+
 			case WID_FRW_INFO_DATA_POINTS:
-				SetDParam(0, NUM_FRAMERATE_POINTS);
-				break;
+				return GetString(stringid, NUM_FRAMERATE_POINTS);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -532,21 +527,13 @@ struct FramerateWindow : Window {
 	{
 		switch (widget) {
 			case WID_FRW_RATE_GAMELOOP:
-				SetDParam(0, STR_FRAMERATE_FPS_GOOD);
-				SetDParamMaxDigits(1, 6);
-				SetDParam(2, 2);
-				size = GetStringBoundingBox(STR_FRAMERATE_RATE_GAMELOOP);
+				size = GetStringBoundingBox(GetString(STR_FRAMERATE_RATE_GAMELOOP, STR_FRAMERATE_FPS_GOOD, GetParamMaxDigits(6), 2));
 				break;
 			case WID_FRW_RATE_DRAWING:
-				SetDParam(0, STR_FRAMERATE_FPS_GOOD);
-				SetDParamMaxDigits(1, 6);
-				SetDParam(2, 2);
-				size = GetStringBoundingBox(STR_FRAMERATE_RATE_BLITTER);
+				size = GetStringBoundingBox(GetString(STR_FRAMERATE_RATE_BLITTER, STR_FRAMERATE_FPS_GOOD, GetParamMaxDigits(6), 2));
 				break;
 			case WID_FRW_RATE_FACTOR:
-				SetDParamMaxDigits(0, 6);
-				SetDParam(1, 2);
-				size = GetStringBoundingBox(STR_FRAMERATE_SPEED_FACTOR);
+				size = GetStringBoundingBox(GetString(STR_FRAMERATE_SPEED_FACTOR, GetParamMaxDigits(6), 2));
 				break;
 
 			case WID_FRW_TIMES_NAMES: {
@@ -560,9 +547,7 @@ struct FramerateWindow : Window {
 					if (e < PFE_AI0) {
 						line_size = GetStringBoundingBox(STR_FRAMERATE_GAMELOOP + e);
 					} else {
-						SetDParam(0, e - PFE_AI0 + 1);
-						SetDParamStr(1, GetAIName(e - PFE_AI0));
-						line_size = GetStringBoundingBox(STR_FRAMERATE_AI);
+						line_size = GetStringBoundingBox(GetString(STR_FRAMERATE_AI, e - PFE_AI0 + 1, GetAIName(e - PFE_AI0)));
 					}
 					size.width = std::max(size.width, line_size.width);
 				}
@@ -573,9 +558,7 @@ struct FramerateWindow : Window {
 			case WID_FRW_TIMES_AVERAGE:
 			case WID_FRW_ALLOCSIZE: {
 				size = GetStringBoundingBox(STR_FRAMERATE_CURRENT + (widget - WID_FRW_TIMES_CURRENT));
-				SetDParamMaxDigits(0, 6);
-				SetDParam(1, 2);
-				Dimension item_size = GetStringBoundingBox(STR_FRAMERATE_MS_GOOD);
+				Dimension item_size = GetStringBoundingBox(GetString(STR_FRAMERATE_MS_GOOD, GetParamMaxDigits(6), 2));
 				size.width = std::max(size.width, item_size.width);
 				size.height += GetCharacterHeight(FS_NORMAL) * MIN_ELEMENTS + WidgetDimensions::scaled.vsep_normal;
 				resize.width = 0;
@@ -599,8 +582,7 @@ struct FramerateWindow : Window {
 			if (skip > 0) {
 				skip--;
 			} else {
-				values[e].InsertDParams(0);
-				DrawString(r.left, r.right, y, values[e].strid, TC_FROMSTRING, SA_RIGHT);
+				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TC_FROMSTRING, SA_RIGHT);
 				y += GetCharacterHeight(FS_NORMAL);
 				drawable--;
 				if (drawable == 0) break;
@@ -621,18 +603,15 @@ struct FramerateWindow : Window {
 			if (skip > 0) {
 				skip--;
 			} else if (e == PFE_GAMESCRIPT || e >= PFE_AI0) {
-				if (e == PFE_GAMESCRIPT) {
-					SetDParam(0, Game::GetInstance()->GetAllocatedMemory());
-				} else {
-					SetDParam(0, Company::Get(e - PFE_AI0)->ai_instance->GetAllocatedMemory());
-				}
-				DrawString(r.left, r.right, y, STR_FRAMERATE_BYTES_GOOD, TC_FROMSTRING, SA_RIGHT);
+				uint64_t value = e == PFE_GAMESCRIPT
+						? Game::GetInstance()->GetAllocatedMemory()
+						: Company::Get(e - PFE_AI0)->ai_instance->GetAllocatedMemory();
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TC_FROMSTRING, SA_RIGHT);
 				y += GetCharacterHeight(FS_NORMAL);
 				drawable--;
 				if (drawable == 0) break;
 			} else if (e == PFE_SOUND) {
-				SetDParam(0, GetSoundPoolAllocatedMemory());
-				DrawString(r.left, r.right, y, STR_FRAMERATE_BYTES_GOOD, TC_FROMSTRING, SA_RIGHT);
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, GetSoundPoolAllocatedMemory()), TC_FROMSTRING, SA_RIGHT);
 				y += GetCharacterHeight(FS_NORMAL);
 				drawable--;
 				if (drawable == 0) break;
@@ -662,9 +641,7 @@ struct FramerateWindow : Window {
 						if (e < PFE_AI0) {
 							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + e, TC_FROMSTRING, SA_LEFT);
 						} else {
-							SetDParam(0, e - PFE_AI0 + 1);
-							SetDParamStr(1, GetAIName(e - PFE_AI0));
-							DrawString(r.left, r.right, y, STR_FRAMERATE_AI, TC_FROMSTRING, SA_LEFT);
+							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, e - PFE_AI0 + 1, GetAIName(e - PFE_AI0)), TC_FROMSTRING, SA_LEFT);
 						}
 						y += GetCharacterHeight(FS_NORMAL);
 						drawable--;
@@ -759,28 +736,25 @@ struct FrametimeGraphWindow : Window {
 		this->UpdateScale();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_FGW_CAPTION:
 				if (this->element < PFE_AI0) {
-					SetDParam(0, STR_FRAMETIME_CAPTION_GAMELOOP + this->element);
-				} else {
-					SetDParam(0, STR_FRAMETIME_CAPTION_AI);
-					SetDParam(1, this->element - PFE_AI0 + 1);
-					SetDParamStr(2, GetAIName(this->element - PFE_AI0));
+					return GetString(stringid, STR_FRAMETIME_CAPTION_GAMELOOP + this->element);
 				}
-				break;
+				return GetString(stringid, STR_FRAMETIME_CAPTION_AI, this->element - PFE_AI0 + 1, GetAIName(this->element - PFE_AI0));
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_FGW_GRAPH) {
-			SetDParam(0, 100);
-			Dimension size_ms_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_MILLISECONDS);
-			SetDParam(0, 100);
-			Dimension size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
+			Dimension size_ms_label = GetStringBoundingBox(GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, 100));
+			Dimension size_s_label = GetStringBoundingBox(GetString(STR_FRAMERATE_GRAPH_SECONDS, 100));
 
 			/* Size graph in height to fit at least 10 vertical labels with space between, or at least 100 pixels */
 			graph_size.height = std::max(100u, 10 * (size_ms_label.height + 1));
@@ -928,11 +902,13 @@ struct FrametimeGraphWindow : Window {
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
 					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
-						SetDParam(0, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION);
-						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL), STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL),
+								GetString(STR_FRAMERATE_GRAPH_SECONDS, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION),
+								TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					} else {
-						SetDParam(0, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION);
-						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL), STR_FRAMERATE_GRAPH_MILLISECONDS, TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL),
+								GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION),
+								TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					}
 				}
 			}
@@ -941,8 +917,9 @@ struct FrametimeGraphWindow : Window {
 				int x = Scinterlate(x_zero, x_max, 0, (int)horz_divisions, (int)horz_divisions - (int)division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
-					SetDParam(0, division * horz_div_scl / 2);
-					DrawString(x, x_max, y_zero + 2, STR_FRAMERATE_GRAPH_SECONDS, TC_GREY, SA_LEFT | SA_FORCE, false, FS_SMALL);
+					DrawString(x, x_max, y_zero + 2,
+							GetString(STR_FRAMERATE_GRAPH_SECONDS, division * horz_div_scl / 2),
+							TC_GREY, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
 			}
 
@@ -999,12 +976,12 @@ struct FrametimeGraphWindow : Window {
 			if (points_drawn > 0 && peak_value > TIMESTAMP_PRECISION / 100 && 2 * peak_value > 3 * value_sum / points_drawn) {
 				TextColour tc_peak = (TextColour)(TC_IS_PALETTE_COLOUR | c_peak);
 				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
-				SetDParam(0, peak_value * 1000 / TIMESTAMP_PRECISION);
+				uint64_t value = peak_value * 1000 / TIMESTAMP_PRECISION;
 				int label_y = std::max(y_max, peak_point.y - GetCharacterHeight(FS_SMALL));
 				if (peak_point.x - x_zero > (int)this->graph_size.width / 2) {
-					DrawString(x_zero, peak_point.x - 2, label_y, STR_FRAMERATE_GRAPH_MILLISECONDS, tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+					DrawString(x_zero, peak_point.x - 2, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 				} else {
-					DrawString(peak_point.x + 2, x_max, label_y, STR_FRAMERATE_GRAPH_MILLISECONDS, tc_peak, SA_LEFT | SA_FORCE, false, FS_SMALL);
+					DrawString(peak_point.x + 2, x_max, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
 			}
 		}

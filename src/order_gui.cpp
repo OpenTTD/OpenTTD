@@ -233,30 +233,30 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 		colour = TC_WHITE;
 	}
 
-	SetDParam(0, order_index + 1);
-	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, STR_ORDER_INDEX, colour, SA_RIGHT | SA_FORCE);
+	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, GetString(STR_ORDER_INDEX, order_index + 1), colour, SA_RIGHT | SA_FORCE);
 
-	SetDParam(5, STR_EMPTY);
-	SetDParam(8, STR_EMPTY);
-	SetDParam(9, STR_EMPTY);
+	std::array<StringParameter, 10> params{};
+	params[5] = STR_EMPTY;
+	params[8] = STR_EMPTY;
+	params[9] = STR_EMPTY;
 
 	/* Check range for aircraft. */
 	if (v->type == VEH_AIRCRAFT && Aircraft::From(v)->GetRange() > 0 && order->IsGotoOrder()) {
 		const Order *next = order->next != nullptr ? order->next : v->GetFirstOrder();
-		if (GetOrderDistance(order, next, v) > Aircraft::From(v)->acache.cached_max_range_sqr) SetDParam(9, STR_ORDER_OUT_OF_RANGE);
+		if (GetOrderDistance(order, next, v) > Aircraft::From(v)->acache.cached_max_range_sqr) params[9] = STR_ORDER_OUT_OF_RANGE;
 	}
 
 	switch (order->GetType()) {
 		case OT_DUMMY:
-			SetDParam(0, STR_INVALID_ORDER);
-			SetDParam(1, order->GetDestination());
+			params[0] = STR_INVALID_ORDER;
+			params[1] = order->GetDestination();
 			break;
 
 		case OT_IMPLICIT:
-			SetDParam(0, STR_ORDER_GO_TO_STATION);
-			SetDParam(1, STR_ORDER_GO_TO);
-			SetDParam(2, order->GetDestination());
-			SetDParam(3, timetable ? STR_EMPTY : STR_ORDER_IMPLICIT);
+			params[0] = STR_ORDER_GO_TO_STATION;
+			params[1] = STR_ORDER_GO_TO;
+			params[2] = order->GetDestination();
+			params[3] = timetable ? STR_EMPTY : STR_ORDER_IMPLICIT;
 			break;
 
 		case OT_GOTO_STATION: {
@@ -264,30 +264,31 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 			OrderUnloadFlags unload = order->GetUnloadType();
 			bool valid_station = CanVehicleUseStation(v, Station::Get(order->GetDestination().ToStationID()));
 
-			SetDParam(0, valid_station ? STR_ORDER_GO_TO_STATION : STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION);
-			SetDParam(1, STR_ORDER_GO_TO + (v->IsGroundVehicle() ? order->GetNonStopType() : 0));
-			SetDParam(2, order->GetDestination());
+			params[0] = valid_station ? STR_ORDER_GO_TO_STATION : STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION;
+			params[1] = STR_ORDER_GO_TO + (v->IsGroundVehicle() ? order->GetNonStopType() : 0);
+			params[2] = order->GetDestination();
 
 			if (timetable) {
 				/* Show only wait time in the timetable window. */
-				SetDParam(3, STR_EMPTY);
+				params[3] = STR_EMPTY;
 
 				if (order->GetWaitTime() > 0) {
-					SetDParam(5, order->IsWaitTimetabled() ? STR_TIMETABLE_STAY_FOR : STR_TIMETABLE_STAY_FOR_ESTIMATED);
-					SetTimetableParams(6, 7, order->GetWaitTime());
+					params[5] = order->IsWaitTimetabled() ? STR_TIMETABLE_STAY_FOR : STR_TIMETABLE_STAY_FOR_ESTIMATED;
+					params[6] = GetTimetableStringFormat();
+					params[7] = GetTimetableStringValue(order->GetWaitTime());
 				}
 			} else {
 				/* Show non-stop, refit and stop location only in the order window. */
-				SetDParam(3, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[order->IsRefit()][unload][load]);
+				params[3] = (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[order->IsRefit()][unload][load];
 				if (order->IsRefit()) {
-					SetDParam(4, order->IsAutoRefit() ? STR_ORDER_AUTO_REFIT_ANY : CargoSpec::Get(order->GetRefitCargo())->name);
+					params[4] = order->IsAutoRefit() ? STR_ORDER_AUTO_REFIT_ANY : CargoSpec::Get(order->GetRefitCargo())->name;
 				}
 				if (v->type == VEH_TRAIN && (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) == 0) {
 					/* Only show the stopping location if other than the default chosen by the player. */
 					if (order->GetStopLocation() != (OrderStopLocation)(_settings_client.gui.stop_location)) {
-						SetDParam(5, STR_ORDER_STOP_LOCATION_NEAR_END + order->GetStopLocation());
+						params[5] = STR_ORDER_STOP_LOCATION_NEAR_END + order->GetStopLocation();
 					} else {
-						SetDParam(5, STR_EMPTY);
+						params[5] = STR_EMPTY;
 					}
 				}
 			}
@@ -297,77 +298,78 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 		case OT_GOTO_DEPOT:
 			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
 				/* Going to the nearest depot. */
-				SetDParam(0, STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT);
+				params[0] = STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT;
 				if (v->type == VEH_AIRCRAFT) {
-					SetDParam(2, STR_ORDER_NEAREST_HANGAR);
-					SetDParam(3, STR_EMPTY);
+					params[2] = STR_ORDER_NEAREST_HANGAR;
+					params[3] = STR_EMPTY;
 				} else {
-					SetDParam(2, STR_ORDER_NEAREST_DEPOT);
-					SetDParam(3, STR_ORDER_TRAIN_DEPOT + v->type);
+					params[2] = STR_ORDER_NEAREST_DEPOT;
+					params[3] = STR_ORDER_TRAIN_DEPOT + v->type;
 				}
 			} else {
 				/* Going to a specific depot. */
-				SetDParam(0, STR_ORDER_GO_TO_DEPOT_FORMAT);
-				SetDParam(2, v->type);
-				SetDParam(3, order->GetDestination());
+				params[0] = STR_ORDER_GO_TO_DEPOT_FORMAT;
+				params[2] = v->type;
+				params[3] = order->GetDestination();
 			}
 
 			if (order->GetDepotOrderType() & ODTFB_SERVICE) {
-				SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT);
+				params[1] = (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT;
 			} else {
-				SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO);
+				params[1] = (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO;
 			}
 
 			/* Do not show stopping in the depot in the timetable window. */
 			if (!timetable && (order->GetDepotActionType() & ODATFB_HALT)) {
-				SetDParam(5, STR_ORDER_STOP_ORDER);
+				params[5] = STR_ORDER_STOP_ORDER;
 			}
 
 			/* Do not show refitting in the depot in the timetable window. */
 			if (!timetable && order->IsRefit()) {
-				SetDParam(5, (order->GetDepotActionType() & ODATFB_HALT) ? STR_ORDER_REFIT_STOP_ORDER : STR_ORDER_REFIT_ORDER);
-				SetDParam(6, CargoSpec::Get(order->GetRefitCargo())->name);
+				params[5] = (order->GetDepotActionType() & ODATFB_HALT) ? STR_ORDER_REFIT_STOP_ORDER : STR_ORDER_REFIT_ORDER;
+				params[6] = CargoSpec::Get(order->GetRefitCargo())->name;
 			}
 
 			/* Show unbunching depot in both order and timetable windows. */
 			if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
-				SetDParam(8, STR_ORDER_WAIT_TO_UNBUNCH);
+				params[8] = STR_ORDER_WAIT_TO_UNBUNCH;
 			}
 
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			SetDParam(0, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT);
-			SetDParam(1, order->GetDestination());
+			params[0] = (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT;
+			params[1] = order->GetDestination();
 			break;
 
 		case OT_CONDITIONAL:
-			SetDParam(1, order->GetConditionSkipToOrder() + 1);
+			params[1] = order->GetConditionSkipToOrder() + 1;
 			if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
-				SetDParam(0, STR_ORDER_CONDITIONAL_UNCONDITIONAL);
+				params[0] = STR_ORDER_CONDITIONAL_UNCONDITIONAL;
 			} else {
 				OrderConditionComparator occ = order->GetConditionComparator();
-				SetDParam(0, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_ORDER_CONDITIONAL_TRUE_FALSE : STR_ORDER_CONDITIONAL_NUM);
-				SetDParam(2, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
-				SetDParam(3, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
+				params[0] = (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_ORDER_CONDITIONAL_TRUE_FALSE : STR_ORDER_CONDITIONAL_NUM;
+				params[2] = STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable();
+				params[3] = STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ;
 
 				uint value = order->GetConditionValue();
 				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, v->type);
-				SetDParam(4, value);
+				params[4] = value;
 			}
 
 			if (timetable && order->GetWaitTime() > 0) {
-				SetDParam(5, order->IsWaitTimetabled() ? STR_TIMETABLE_AND_TRAVEL_FOR : STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED);
-				SetTimetableParams(6, 7, order->GetWaitTime());
+				params[5] = order->IsWaitTimetabled() ? STR_TIMETABLE_AND_TRAVEL_FOR : STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED;
+				params[6] = GetTimetableStringFormat();
+				params[7] = GetTimetableStringValue(order->GetWaitTime());
 			} else {
-				SetDParam(5, STR_EMPTY);
+				params[5] = STR_EMPTY;
 			}
 			break;
 
 		default: NOT_REACHED();
 	}
 
-	DrawString(rtl ? left : middle, rtl ? middle : right, y, STR_ORDER_TEXT, colour);
+	DrawString(rtl ? left : middle, rtl ? middle : right, y, GetStringWithArgs(STR_ORDER_TEXT, params), colour);
 }
 
 /**
@@ -1116,8 +1118,8 @@ public:
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 		bool rtl = _current_text_dir == TD_RTL;
-		SetDParamMaxValue(0, this->vehicle->GetNumOrders(), 2);
-		int index_column_width = GetStringBoundingBox(STR_ORDER_INDEX).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + WidgetDimensions::scaled.hsep_normal;
+		auto max_value = GetParamMaxValue(this->vehicle->GetNumOrders(), 2);
+		int index_column_width = GetStringBoundingBox(GetString(STR_ORDER_INDEX, max_value)).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + WidgetDimensions::scaled.hsep_normal;
 		int middle = rtl ? ir.right - index_column_width : ir.left + index_column_width;
 
 		int y = ir.top;
@@ -1169,7 +1171,7 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_O_COND_VALUE: {
@@ -1179,36 +1181,29 @@ public:
 				if (order != nullptr && order->IsType(OT_CONDITIONAL)) {
 					uint value = order->GetConditionValue();
 					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
-					SetDParam(0, value);
+					return GetString(STR_JUST_COMMA, value);
 				}
-				break;
+				return {};
 			}
 
 			case WID_O_CAPTION:
-				SetDParam(0, this->vehicle->index);
-				break;
+				return GetString(stringid, this->vehicle->index);
 
 			case WID_O_DEPOT_ACTION: {
 				VehicleOrderID sel = this->OrderGetSel();
 				const Order *order = this->vehicle->GetOrder(sel);
-				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) {
-					/* We can't leave this param unset or the undefined behavior can cause a crash. */
-					SetDParam(0, STR_EMPTY);
-					break;
-				};
+				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) return {};
 
 				/* Select the current action selected in the dropdown. The flags don't match the dropdown so we can't just use an index. */
-				if (order->GetDepotOrderType() & ODTFB_SERVICE) {
-					SetDParam(0, STR_ORDER_DROP_SERVICE_DEPOT);
-				} else if (order->GetDepotActionType() & ODATFB_HALT) {
-					SetDParam(0, STR_ORDER_DROP_HALT_DEPOT);
-				} else if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
-					SetDParam(0, STR_ORDER_DROP_UNBUNCH);
-				} else {
-					SetDParam(0, STR_ORDER_DROP_GO_ALWAYS_DEPOT);
-				}
-				break;
+				if (order->GetDepotOrderType() & ODTFB_SERVICE) return GetString(STR_ORDER_DROP_SERVICE_DEPOT);
+				if (order->GetDepotActionType() & ODATFB_HALT) return GetString(STR_ORDER_DROP_HALT_DEPOT);
+				if (order->GetDepotActionType() & ODATFB_UNBUNCH) return GetString(STR_ORDER_DROP_UNBUNCH);
+
+				return GetString(STR_ORDER_DROP_GO_ALWAYS_DEPOT);
 			}
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

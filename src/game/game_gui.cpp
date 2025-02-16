@@ -166,11 +166,11 @@ struct GSConfigWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GSC_GSLIST: {
-				StringID text = STR_AI_CONFIG_NONE;
-
+				std::string text;
 				if (GameConfig::GetConfig()->GetInfo() != nullptr) {
-					SetDParamStr(0, GameConfig::GetConfig()->GetInfo()->GetName());
-					text = STR_JUST_RAW_STRING;
+					text = GetString(STR_JUST_RAW_STRING, GameConfig::GetConfig()->GetInfo()->GetName());
+				} else {
+					text = GetString(STR_AI_CONFIG_NONE);
 				}
 
 				/* There is only one slot, unlike with the GS GUI, so it should never be white */
@@ -195,19 +195,20 @@ struct GSConfigWindow : public Window {
 
 					StringID str;
 					TextColour colour;
-					uint idx = 0;
+					std::array<StringParameter, 4> params{};
+					auto itp = params.begin();
 					if (config_item.description.empty()) {
 						str = STR_JUST_STRING1;
 						colour = TC_ORANGE;
 					} else {
 						str = STR_AI_SETTINGS_SETTING;
 						colour = TC_LIGHT_BLUE;
-						SetDParamStr(idx++, config_item.description);
+						*itp++ = config_item.description;
 					}
 
 					if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
 						DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
-						SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
+						*itp++ = current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON;
 					} else {
 						int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 						if (config_item.complete_labels) {
@@ -218,15 +219,15 @@ struct GSConfigWindow : public Window {
 
 						auto config_iterator = config_item.labels.find(current_value);
 						if (config_iterator != config_item.labels.end()) {
-							SetDParam(idx++, STR_JUST_RAW_STRING);
-							SetDParamStr(idx++, config_iterator->second);
+							*itp++ = STR_JUST_RAW_STRING;
+							*itp++ = config_iterator->second;
 						} else {
-							SetDParam(idx++, STR_JUST_INT);
-							SetDParam(idx++, current_value);
+							*itp++ = STR_JUST_INT;
+							*itp++ = current_value;
 						}
 					}
 
-					DrawString(tr.left, tr.right, y + text_y_offset, str, colour);
+					DrawString(tr.left, tr.right, y + text_y_offset, GetStringWithArgs(str, {params.begin(), itp}), colour);
 					y += this->line_height;
 				}
 				break;
@@ -316,7 +317,7 @@ struct GSConfigWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.push_back(MakeDropDownListStringItem(config_item.labels.find(i)->second, i));
+								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, config_item.labels.find(i)->second), i));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_GSC_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);

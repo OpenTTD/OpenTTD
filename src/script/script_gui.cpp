@@ -22,6 +22,7 @@
 #include "../hotkeys.h"
 #include "../company_cmd.h"
 #include "../misc_cmd.h"
+#include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
 
@@ -96,11 +97,11 @@ struct ScriptListWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRL_CAPTION) return;
+		if (widget != WID_SCRL_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
+		return GetString(stringid, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -130,9 +131,7 @@ struct ScriptListWindow : public Window {
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->vscroll->IsVisible(i)) {
-						SetDParamStr(0, item.second->GetName());
-						SetDParam(1, item.second->GetVersion());
-						DrawString(tr, str, (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						DrawString(tr, GetString(str, item.second->GetName(), item.second->GetVersion()), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
 						tr.top += this->line_height;
 					}
 				}
@@ -148,19 +147,15 @@ struct ScriptListWindow : public Window {
 				/* Some info about the currently selected Script. */
 				if (selected_info != nullptr) {
 					Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
-					SetDParamStr(0, selected_info->GetAuthor());
-					DrawString(tr, STR_AI_LIST_AUTHOR);
+					DrawString(tr, GetString(STR_AI_LIST_AUTHOR, selected_info->GetAuthor()));
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
-					SetDParam(0, selected_info->GetVersion());
-					DrawString(tr, STR_AI_LIST_VERSION);
+					DrawString(tr, GetString(STR_AI_LIST_VERSION, selected_info->GetVersion()));
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 					if (!selected_info->GetURL().empty()) {
-						SetDParamStr(0, selected_info->GetURL());
-						DrawString(tr, STR_AI_LIST_URL);
+						DrawString(tr, GetString(STR_AI_LIST_URL, selected_info->GetURL()));
 						tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 					}
-					SetDParamStr(0, selected_info->GetDescription());
-					DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_WHITE);
+					DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, selected_info->GetDescription()), TC_WHITE);
 				}
 				break;
 			}
@@ -334,11 +329,11 @@ struct ScriptSettingsWindow : public Window {
 		this->vscroll->SetCount(this->visible_settings.size());
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRS_CAPTION) return;
+		if (widget != WID_SCRS_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
+		return GetString(stringid, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -371,21 +366,22 @@ struct ScriptSettingsWindow : public Window {
 			int current_value = this->script_config->GetSetting(config_item.name);
 			bool editable = this->IsEditableItem(config_item);
 
+			std::array<StringParameter, 4> params{};
+			auto itp = params.begin();
 			StringID str;
 			TextColour colour;
-			uint idx = 0;
 			if (config_item.description.empty()) {
 				str = STR_JUST_STRING1;
 				colour = TC_ORANGE;
 			} else {
 				str = STR_AI_SETTINGS_SETTING;
 				colour = TC_LIGHT_BLUE;
-				SetDParamStr(idx++, config_item.description);
+				*itp++ = config_item.description;
 			}
 
 			if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
 				DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
-				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
+				*itp++ = current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON;
 			} else {
 				int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 				if (config_item.complete_labels) {
@@ -396,15 +392,15 @@ struct ScriptSettingsWindow : public Window {
 
 				auto config_iterator = config_item.labels.find(current_value);
 				if (config_iterator != config_item.labels.end()) {
-					SetDParam(idx++, STR_JUST_RAW_STRING);
-					SetDParamStr(idx++, config_iterator->second);
+					*itp++ = STR_JUST_RAW_STRING;
+					*itp++ = config_iterator->second;
 				} else {
-					SetDParam(idx++, STR_JUST_INT);
-					SetDParam(idx++, current_value);
+					*itp++ = STR_JUST_INT;
+					*itp++ = current_value;
 				}
 			}
 
-			DrawString(tr.left, tr.right, y + text_y_offset, str, colour);
+			DrawString(tr.left, tr.right, y + text_y_offset, GetStringWithArgs(str, {params.begin(), itp}), colour);
 			y += this->line_height;
 		}
 	}
@@ -466,7 +462,7 @@ struct ScriptSettingsWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.push_back(MakeDropDownListStringItem(config_item.labels.find(i)->second, i));
+								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, config_item.labels.find(i)->second), i));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_SCRS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
@@ -633,12 +629,13 @@ struct ScriptTextfileWindow : public TextfileWindow {
 		this->OnInvalidateData();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
-			SetDParamStr(1, GetConfig(slot)->GetInfo()->GetName());
+			return GetString(stringid, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI, GetConfig(slot)->GetInfo()->GetName());
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
@@ -837,25 +834,22 @@ struct ScriptDebugWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRD_NAME_TEXT) return;
+		if (widget != WID_SCRD_NAME_TEXT) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->filter.script_debug_company == OWNER_DEITY) {
 			const GameInfo *info = Game::GetInfo();
 			assert(info != nullptr);
-			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
-			SetDParamStr(1, info->GetName());
-			SetDParam(2, info->GetVersion());
-		} else if (this->filter.script_debug_company == CompanyID::Invalid() || !Company::IsValidAiID(this->filter.script_debug_company)) {
-			SetDParam(0, STR_EMPTY);
-		} else {
-			const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
-			assert(info != nullptr);
-			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
-			SetDParamStr(1, info->GetName());
-			SetDParam(2, info->GetVersion());
+			return GetString(STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 		}
+		if (this->filter.script_debug_company == CompanyID::Invalid() || !Company::IsValidAiID(this->filter.script_debug_company)) {
+			return GetString(STR_EMPTY);
+		}
+
+		const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
+		assert(info != nullptr);
+		return GetString(STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

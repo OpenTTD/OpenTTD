@@ -217,8 +217,7 @@ void NetworkDrawChatMessage()
 	int string_height = 0;
 	for (auto &cmsg : _chatmsg_list) {
 		if (!show_all && cmsg.remove_time < now) continue;
-		SetDParamStr(0, cmsg.message);
-		string_height += GetStringLineCount(STR_JUST_RAW_STRING, width - 1) * GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING;
+		string_height += GetStringLineCount(GetString(STR_JUST_RAW_STRING, cmsg.message), width - 1) * GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING;
 	}
 
 	string_height = std::min<uint>(string_height, MAX_CHAT_MESSAGES * (GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING));
@@ -318,15 +317,7 @@ struct NetworkChatWindow : public Window {
 		this->message_editbox.cancel_button = WID_NC_CLOSE;
 		this->message_editbox.ok_button = WID_NC_SENDBUTTON;
 
-		static const StringID chat_captions[] = {
-			STR_NETWORK_CHAT_ALL_CAPTION,
-			STR_NETWORK_CHAT_COMPANY_CAPTION,
-			STR_NETWORK_CHAT_CLIENT_CAPTION
-		};
-		assert((uint)this->dtype < lengthof(chat_captions));
-
 		this->CreateNestedTree();
-		this->GetWidget<NWidgetCore>(WID_NC_DESTINATION)->SetString(chat_captions[this->dtype]);
 		this->FinishInitNested(type);
 
 		this->SetFocusedWidget(WID_NC_TEXTBOX);
@@ -362,13 +353,22 @@ struct NetworkChatWindow : public Window {
 		return pt;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_NC_DESTINATION) return;
+		if (widget != WID_NC_DESTINATION) return this->Window::GetWidgetString(widget, stringid);
+
+		static const StringID chat_captions[] = {
+			STR_NETWORK_CHAT_ALL_CAPTION,
+			STR_NETWORK_CHAT_COMPANY_CAPTION,
+			STR_NETWORK_CHAT_CLIENT_CAPTION
+		};
+		assert((uint)this->dtype < lengthof(chat_captions));
 
 		if (this->dtype == DESTTYPE_CLIENT) {
-			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
+			return GetString(STR_NETWORK_CHAT_CLIENT_CAPTION, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
 		}
+
+		return GetString(chat_captions[this->dtype]);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

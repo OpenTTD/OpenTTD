@@ -365,9 +365,6 @@ struct NewsWindow : Window {
 
 		this->CreateNestedTree();
 
-		/* For company news with a face we have a separate headline in param[0] */
-		if (&desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->SetString(static_cast<StringID>(std::get<uint64_t>(this->ni->params[0])));
-
 		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
 		if (std::holds_alternative<VehicleID>(ni->ref1) && nwid != nullptr) {
 			const Vehicle *v = Vehicle::Get(std::get<VehicleID>(ni->ref1));
@@ -446,17 +443,13 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(this->ni->params);
-				str = GetString(this->ni->string_id);
-				break;
-
 			case WID_N_COMPANY_MSG:
-				str = GetString(this->GetCompanyMessageString());
+				str = this->ni->headline.GetDecodedString();
 				break;
 
 			case WID_N_VEH_NAME:
 			case WID_N_VEH_TITLE:
-				str = GetString(this->GetNewVehicleMessageString(widget));
+				str = this->GetNewVehicleMessageString(widget);
 				break;
 
 			case WID_N_VEH_INFO: {
@@ -497,16 +490,22 @@ struct NewsWindow : Window {
 		size = maxdim(size, d);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_N_DATE) SetDParam(0, this->ni->date);
+		if (widget == WID_N_DATE) return GetString(STR_JUST_DATE_LONG, this->ni->date);
+		if (widget == WID_N_TITLE) {
+			const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
+			return GetString(cni->title);
+		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
-				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, TC_FROMSTRING, STR_NEWS_MESSAGE_CAPTION, SA_CENTER, FS_NORMAL);
+				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, TC_FROMSTRING, GetString(STR_NEWS_MESSAGE_CAPTION), SA_CENTER, FS_NORMAL);
 				break;
 
 			case WID_N_PANEL:
@@ -514,8 +513,8 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-				CopyInDParam(this->ni->params);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->string_id, TC_FROMSTRING, SA_CENTER);
+			case WID_N_COMPANY_MSG:
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->headline.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
 				break;
 
 			case WID_N_MGR_FACE: {
@@ -526,13 +525,9 @@ struct NewsWindow : Window {
 			}
 			case WID_N_MGR_NAME: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
-				SetDParamStr(0, cni->president_name);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, GetString(STR_JUST_RAW_STRING, cni->president_name), TC_FROMSTRING, SA_CENTER);
 				break;
 			}
-			case WID_N_COMPANY_MSG:
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->GetCompanyMessageString(), TC_FROMSTRING, SA_CENTER);
-				break;
 
 			case WID_N_VEH_BKGND:
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PC_GREY);
@@ -617,8 +612,7 @@ struct NewsWindow : Window {
 
 		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_N_MGR_NAME);
 		if (wid != nullptr) {
-			SetDParamStr(0, static_cast<const CompanyNewsInformation *>(this->ni->data.get())->president_name);
-			int y = GetStringHeight(STR_JUST_RAW_STRING, wid->current_x);
+			int y = GetStringHeight(GetString(STR_JUST_RAW_STRING, static_cast<const CompanyNewsInformation *>(this->ni->data.get())->president_name), wid->current_x);
 			if (wid->UpdateVerticalSize(y)) this->ReInit(0, 0);
 		}
 	}
@@ -671,26 +665,17 @@ private:
 		AddDirtyBlock(this->left, mintop, this->left + this->width, maxtop + this->height);
 	}
 
-	StringID GetCompanyMessageString() const
-	{
-		/* Company news with a face have a separate headline, so the normal message is shifted by two params */
-		CopyInDParam(std::span(this->ni->params.data() + 2, this->ni->params.size() - 2));
-		return std::get<uint64_t>(this->ni->params[1]);
-	}
-
-	StringID GetNewVehicleMessageString(WidgetID widget) const
+	std::string GetNewVehicleMessageString(WidgetID widget) const
 	{
 		assert(std::holds_alternative<EngineID>(ni->ref1));
 		EngineID engine = std::get<EngineID>(this->ni->ref1);
 
 		switch (widget) {
 			case WID_N_VEH_TITLE:
-				SetDParam(0, GetEngineCategoryName(engine));
-				return STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE;
+				return GetString(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE, GetEngineCategoryName(engine));
 
 			case WID_N_VEH_NAME:
-				SetDParam(0, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
-				return STR_NEWS_NEW_VEHICLE_TYPE;
+				return GetString(STR_NEWS_NEW_VEHICLE_TYPE, PackEngineNameDParam(engine, EngineNameContext::PreviewNews));
 
 			default:
 				NOT_REACHED();
@@ -875,12 +860,22 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
-	string_id(string_id), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), ref1(ref1), ref2(ref2), data(std::move(data))
+NewsItem::NewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
+	headline(std::move(headline)), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), ref1(ref1), ref2(ref2), data(std::move(data))
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags.Set(NewsFlag::InColour);
-	CopyOutDParam(this->params, 10);
+}
+
+std::string NewsItem::GetStatusText() const
+{
+	if (this->data != nullptr) {
+		/* CompanyNewsInformation is the only type of additional data used. */
+		const CompanyNewsInformation &cni = *static_cast<const CompanyNewsInformation*>(this->data.get());
+		return GetString(STR_MESSAGE_NEWS_FORMAT, cni.title, this->headline.GetDecodedString());
+	}
+
+	return this->headline.GetDecodedString();
 }
 
 /**
@@ -895,12 +890,12 @@ NewsItem::NewsItem(StringID string_id, NewsType type, NewsStyle style, NewsFlags
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
+void AddNewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type)
 {
 	if (_game_mode == GM_MENU) return;
 
 	/* Create new news item node */
-	_news.emplace_front(string, type, style, flags, ref1, ref2, std::move(data), advice_type);
+	_news.emplace_front(std::move(headline), type, style, flags, ref1, ref2, std::move(data), advice_type);
 
 	/* Keep the number of stored news items to a manageable number */
 	if (std::size(_news) > MAX_NEWS_AMOUNT) {
@@ -963,8 +958,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		SetDParamStr(0, text);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NewsStyle::Normal, {}, reference, {});
+		AddNewsItem(GetEncodedString(STR_NEWS_CUSTOM_ITEM, text), type, NewsStyle::Normal, {}, reference, {});
 	}
 
 	return CommandCost();
@@ -1084,7 +1078,7 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 	for (auto &ni : _news) {
 		ChangeObject(ni.ref1, from_index, to_index);
 		ChangeObject(ni.ref2, from_index, to_index);
-		if (ni.flags.Test(NewsFlag::VehicleParam0) && std::get<uint64_t>(ni.params[0]) == from_index) ni.params[0] = to_index.base();
+		if (ni.flags.Test(NewsFlag::VehicleParam0) && IsReferenceObject(ni.ref1, to_index)) ni.headline = ni.headline.ReplaceParam(0, to_index.base());
 	}
 }
 
@@ -1186,10 +1180,8 @@ void ShowLastNewsMessage()
  */
 static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem *ni)
 {
-	CopyInDParam(ni->params);
-
 	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
-	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string message = StrMakeValid(ni->GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
 	/* Truncate and show string; postfixed by '...' if necessary */
 	DrawString(left, right, y, message, colour);
@@ -1217,8 +1209,7 @@ struct MessageHistoryWindow : Window {
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */
-			SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::ORIGINAL_MAX_YEAR, 7, 30));
-			this->date_width = GetStringBoundingBox(STR_JUST_DATE_TINY).width + WidgetDimensions::scaled.hsep_wide;
+			this->date_width = GetStringBoundingBox(GetString(STR_JUST_DATE_TINY, TimerGameCalendar::ConvertYMDToDate(CalendarTime::ORIGINAL_MAX_YEAR, 7, 30))).width + WidgetDimensions::scaled.hsep_wide;
 
 			size.height = 4 * resize.height + WidgetDimensions::scaled.framerect.Vertical(); // At least 4 lines are visible.
 			size.width = std::max(200u, size.width); // At least 200 pixels wide.
@@ -1237,8 +1228,7 @@ struct MessageHistoryWindow : Window {
 
 		auto [first, last] = this->vscroll->GetVisibleRangeIterators(_news);
 		for (auto ni = first; ni != last; ++ni) {
-			SetDParam(0, ni->date);
-			DrawString(date.left, date.right, y, STR_JUST_DATE_TINY, TC_WHITE);
+			DrawString(date.left, date.right, y, GetString(STR_JUST_DATE_TINY, ni->date), TC_WHITE);
 
 			DrawNewsString(news.left, news.right, y, TC_WHITE, &*ni);
 			y += this->line_height;

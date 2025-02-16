@@ -61,10 +61,9 @@ public:
 	}
 
 	template <typename... Args>
-	explicit DropDownString(const std::string &string, Args&&... args) : TBase(std::forward<Args>(args)...)
+	explicit DropDownString(std::string &&string, Args&&... args) : TBase(std::forward<Args>(args)...)
 	{
-		SetDParamStr(0, string);
-		this->SetString(GetString(STR_JUST_RAW_STRING));
+		this->SetString(std::move(string));
 	}
 
 	void SetString(std::string &&string)

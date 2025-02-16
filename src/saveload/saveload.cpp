@@ -3325,28 +3325,30 @@ std::string GenerateDefaultSaveName()
 		}
 	}
 
-	SetDParam(0, cid);
+	std::array<StringParameter, 4> params{};
+	auto it = params.begin();
+	*it++ = cid;
 
 	/* We show the current game time differently depending on the timekeeping units used by this game. */
 	if (TimerGameEconomy::UsingWallclockUnits()) {
 		/* Insert time played. */
 		const auto play_time = TimerGameTick::counter / Ticks::TICKS_PER_SECOND;
-		SetDParam(1, STR_SAVEGAME_DURATION_REALTIME);
-		SetDParam(2, play_time / 60 / 60);
-		SetDParam(3, (play_time / 60) % 60);
+		*it++ = STR_SAVEGAME_DURATION_REALTIME;
+		*it++ = play_time / 60 / 60;
+		*it++ = (play_time / 60) % 60;
 	} else {
 		/* Insert current date */
 		switch (_settings_client.gui.date_format_in_default_names) {
-			case 0: SetDParam(1, STR_JUST_DATE_LONG); break;
-			case 1: SetDParam(1, STR_JUST_DATE_TINY); break;
-			case 2: SetDParam(1, STR_JUST_DATE_ISO); break;
+			case 0: *it++ = STR_JUST_DATE_LONG; break;
+			case 1: *it++ = STR_JUST_DATE_TINY; break;
+			case 2: *it++ = STR_JUST_DATE_ISO; break;
 			default: NOT_REACHED();
 		}
-		SetDParam(2, TimerGameEconomy::date);
+		*it++ = TimerGameEconomy::date;
 	}
 
 	/* Get the correct string (special string for when there's not company) */
-	std::string filename = GetString(!Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT);
+	std::string filename = GetStringWithArgs(!Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT, {params.begin(), it});
 	SanitizeFilename(filename);
 	return filename;
 }

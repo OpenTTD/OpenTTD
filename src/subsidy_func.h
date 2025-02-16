@@ -17,7 +17,8 @@
 #include "news_type.h"
 #include "subsidy_base.h"
 
-std::pair<NewsReference, NewsReference> SetupSubsidyDecodeParam(const struct Subsidy *s, SubsidyDecodeParamType mode, uint parameter_offset = 0);
+NewsReference GetNewsReference(const Source &src);
+StringID GetSourceFormat(const Source &src);
 void DeleteSubsidyWith(Source src);
 bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const Station *st);
 void RebuildSubsidisedSourceAndDestinationCache();

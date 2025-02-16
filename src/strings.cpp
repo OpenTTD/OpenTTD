@@ -59,19 +59,6 @@ TextDirection _current_text_dir; ///< Text direction of the currently selected l
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
 
-ArrayStringParameters<20> _global_string_params;
-
-/**
- * Prepare the string parameters for the next formatting run. This means
- * resetting the type information and resetting the offset to the begin.
- */
-void StringParameters::PrepareForNextRun()
-{
-	for (auto &param : this->parameters) param.type = 0;
-	this->offset = 0;
-}
-
-
 /**
  * Get the next parameter from our parameters.
  * This updates the offset, so the next time this is called the next parameter
@@ -146,6 +133,64 @@ EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParam
 	return EncodedString{std::move(result)};
 }
 
+EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&value)
+{
+	std::vector<StringParameter> params;
+
+	const char *p = &*std::begin(this->string);
+	const char *e = &*std::end(this->string);
+
+	[[maybe_unused]] char32_t c = Utf8Consume(p);
+	assert(c == SCC_ENCODED_INTERNAL);
+
+	StringID str;
+	auto [ptr, err] = std::from_chars(p, e, str, 16);
+	assert(*ptr == ':' || ptr == e);
+	p = ptr;
+
+	while (p != e) {
+		auto s = ++p;
+
+		/* Find end of the parameter. */
+		for (; p != e && *p != SCC_RECORD_SEPARATOR; ++p) {}
+
+		if (s == p) {
+			/* This is an empty parameter. */
+			params.emplace_back(std::monostate{});
+			continue;
+		}
+
+		/* Get the parameter type. */
+		char32_t parameter_type;
+		size_t len = Utf8Decode(&parameter_type, s);
+		s += len;
+
+		switch (parameter_type) {
+			case SCC_ENCODED:
+			case SCC_ENCODED_NUMERIC: {
+				uint64_t param;
+				auto [ptr, err] = std::from_chars(s, p, param, 16);
+				assert(err == std::errc{} && ptr == p);
+				params.emplace_back(param);
+				break;
+			}
+
+			case SCC_ENCODED_STRING: {
+				params.emplace_back(std::string(s, p - s));
+				break;
+			}
+
+			default:
+				/* Unknown parameter, make it blank. */
+				params.emplace_back(std::monostate{});
+				break;
+		}
+	}
+
+	params[param] = value;
+	return GetEncodedStringWithArgs(str, params);
+}
+
 /**
  * Decode the encoded string.
  * @returns Decoded raw string.
@@ -156,96 +201,37 @@ std::string EncodedString::GetDecodedString() const
 }
 
 /**
- * Set a string parameter \a v at index \a n in the global string parameter array.
- * @param n Index of the string parameter.
- * @param v Value of the string parameter.
+ * Get some number that is suitable for string size computations.
+ * @param count Number of digits which shall be displayable.
+ * @param size  Font of the number
+ * @returns Number to use for string size computations.
  */
-void SetDParam(size_t n, uint64_t v)
+uint64_t GetParamMaxDigits(uint count, FontSize size)
 {
-	_global_string_params.SetParam(n, v);
+	auto [front, next] = GetBroadestDigit(size);
+	uint64_t val = count > 1 ? front : next;
+	for (; count > 1; count--) {
+		val = 10 * val + next;
+	}
+	return val;
 }
 
 /**
- * Get the current string parameter at index \a n from the global string parameter array.
- * @param n Index of the string parameter.
- * @return Value of the requested string parameter.
- */
-uint64_t GetDParam(size_t n)
-{
-	return std::get<uint64_t>(_global_string_params.GetParam(n));
-}
-
-/**
- * Set DParam n to some number that is suitable for string size computations.
- * @param n Index of the string parameter.
+ * Get some number that is suitable for string size computations.
  * @param max_value The biggest value which shall be displayed.
  *                  For the result only the number of digits of \a max_value matter.
  * @param min_count Minimum number of digits independent of \a max.
  * @param size  Font of the number
+ * @returns Number to use for string size computations.
  */
-void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count, FontSize size)
+uint64_t GetParamMaxValue(uint64_t max_value, uint min_count, FontSize size)
 {
 	uint num_digits = 1;
 	while (max_value >= 10) {
 		num_digits++;
 		max_value /= 10;
 	}
-	SetDParamMaxDigits(n, std::max(min_count, num_digits), size);
-}
-
-/**
- * Set DParam n to some number that is suitable for string size computations.
- * @param n Index of the string parameter.
- * @param count Number of digits which shall be displayable.
- * @param size  Font of the number
- */
-void SetDParamMaxDigits(size_t n, uint count, FontSize size)
-{
-	uint front = 0;
-	uint next = 0;
-	GetBroadestDigit(&front, &next, size);
-	uint64_t val = count > 1 ? front : next;
-	for (; count > 1; count--) {
-		val = 10 * val + next;
-	}
-	SetDParam(n, val);
-}
-
-/**
- * Copy the parameters from the backup into the global string parameter array.
- * @param backup The backup to copy from.
- */
-void CopyInDParam(const std::span<const StringParameterData> backup)
-{
-	for (size_t i = 0; i < backup.size(); i++) {
-		_global_string_params.SetParam(i, backup[i]);
-	}
-}
-
-/**
- * Copy \a num string parameters from the global string parameter array to the \a backup.
- * @param backup The backup to write to.
- * @param num Number of string parameters to copy.
- */
-void CopyOutDParam(std::vector<StringParameterData> &backup, size_t num)
-{
-	backup.resize(num);
-	for (size_t i = 0; i < backup.size(); i++) {
-		backup[i] = _global_string_params.GetParam(i);
-	}
-}
-
-/**
- * Checks whether the global string parameters have changed compared to the given backup.
- * @param backup The backup to check against.
- * @return True when the parameters have changed, otherwise false.
- */
-bool HaveDParamChanged(const std::span<const StringParameterData> backup)
-{
-	for (size_t i = 0; i < backup.size(); i++) {
-		if (backup[i] != _global_string_params.GetParam(i)) return true;
-	}
-	return false;
+	return GetParamMaxDigits(std::max(min_count, num_digits), size);
 }
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x);
@@ -412,28 +398,31 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, std::span<String
 }
 
 /**
- * Resolve the given StringID into a std::string with all the associated
- * DParam lookups and formatting.
+ * Resolve the given StringID into a std::string with formatting but no parameters.
  * @param string The unique identifier of the translatable string.
  * @return The std::string of the translated string.
  */
 std::string GetString(StringID string)
 {
-	_global_string_params.PrepareForNextRun();
-	return GetStringWithArgs(string, _global_string_params);
+	return GetStringWithArgs(string, {});
 }
 
 /**
- * Resolve the given StringID and append in place into an existing std::string with all the associated
- * DParam lookups and formatting.
+ * Resolve the given StringID and append in place into an existing std::string with formatting but no parameters.
  * @param result The std::string to place the translated string.
  * @param string The unique identifier of the translatable string.
  */
 void AppendStringInPlace(std::string &result, StringID string)
 {
-	_global_string_params.PrepareForNextRun();
 	StringBuilder builder(result);
-	GetStringWithArgs(builder, string, _global_string_params);
+	GetStringWithArgs(builder, string, {});
+}
+
+void AppendStringWithArgsInPlace(std::string &result, StringID string, std::span<StringParameter> params)
+{
+	StringParameters tmp_params{params};
+	StringBuilder builder(result);
+	GetStringWithArgs(builder, string, tmp_params);
 }
 
 /**
@@ -456,39 +445,6 @@ std::string GetStringWithArgs(StringID string, std::span<StringParameter> args)
 	StringBuilder builder(result);
 	GetStringWithArgs(builder, string, args);
 	return result;
-}
-
-/**
- * This function is used to "bind" a C string to a OpenTTD dparam slot.
- * @param n slot of the string
- * @param str string to bind
- */
-void SetDParamStr(size_t n, const char *str)
-{
-	_global_string_params.SetParam(n, str);
-}
-
-/**
- * This function is used to "bind" the C string of a std::string to a OpenTTD dparam slot.
- * The caller has to ensure that the std::string reference remains valid while the string is shown.
- * @param n slot of the string
- * @param str string to bind
- */
-void SetDParamStr(size_t n, const std::string &str)
-{
-	_global_string_params.SetParam(n, str);
-}
-
-/**
- * This function is used to "bind" the std::string to a OpenTTD dparam slot.
- * Contrary to the other \c SetDParamStr functions, this moves the string into
- * the parameter slot.
- * @param n slot of the string
- * @param str string to bind
- */
-void SetDParamStr(size_t n, std::string &&str)
-{
-	_global_string_params.SetParam(n, std::move(str));
 }
 
 static const char *GetDecimalSeparator()
@@ -1021,7 +977,7 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
  */
 static const char *DecodeEncodedString(const char *str, bool game_script, StringBuilder &builder)
 {
-	ArrayStringParameters<20> sub_args;
+	std::vector<StringParameter> sub_args;
 
 	char *p;
 	StringIndexInTab id(std::strtoul(str, &p, 16));
@@ -1036,8 +992,7 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 		return p;
 	}
 
-	int i = 0;
-	while (*p != '\0' && i < 20) {
+	while (*p != '\0') {
 		/* The start of parameter. */
 		const char *s = ++p;
 
@@ -1046,7 +1001,7 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 
 		if (s == p) {
 			/* This is an empty parameter. */
-			sub_args.SetParam(i++, std::monostate{});
+			sub_args.emplace_back(std::monostate{});
 			continue;
 		}
 
@@ -1064,24 +1019,24 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 					return p;
 				}
 				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
-				sub_args.SetParam(i++, param);
+				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_NUMERIC: {
 				uint64_t param = std::strtoull(s, &p, 16);
-				sub_args.SetParam(i++, param);
+				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				sub_args.SetParam(i++, std::string(s, p - s));
+				sub_args.emplace_back(std::string(s, p - s));
 				break;
 			}
 
 			default:
 				/* Unknown parameter, make it blank. */
-				sub_args.SetParam(i++, std::monostate{});
+				sub_args.emplace_back(std::monostate{});
 				break;
 		}
 	}
@@ -1305,14 +1260,12 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					/* Strings that consume arguments */
 					StringID string_id = args.GetNextParameter<StringID>();
 					if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
-					uint size = b - SCC_STRING1 + 1;
-					if (size > args.GetDataLeft()) {
-						builder += "(consumed too many parameters)";
-					} else {
-						StringParameters sub_args(args, game_script ? args.GetDataLeft() : size);
-						GetStringWithArgs(builder, string_id, sub_args, next_substr_case_index, game_script);
-						args.AdvanceOffset(size);
-					}
+					size_t size = b - SCC_STRING1 + 1;
+
+					StringParameters sub_args(args, game_script ? args.GetDataLeft() : std::min(args.GetDataLeft(), size));
+					GetStringWithArgs(builder, string_id, sub_args, next_substr_case_index, game_script);
+					args.AdvanceOffset(size);
+
 					next_substr_case_index = 0;
 					break;
 				}
@@ -1649,7 +1602,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 							assert(grffile != nullptr);
 
 							StartTextRefStackUsage(grffile, 6);
-							ArrayStringParameters<6> tmp_params;
+							/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+							std::array<StringParameter, 20> tmp_params{};
 							GetStringWithArgs(builder, GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback), tmp_params);
 							StopTextRefStackUsage();
 

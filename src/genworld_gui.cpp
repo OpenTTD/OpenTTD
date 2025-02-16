@@ -338,8 +338,7 @@ static DropDownList BuildMapsizeDropDown()
 	DropDownList list;
 
 	for (uint i = MIN_MAP_SIZE_BITS; i <= MAX_MAP_SIZE_BITS; i++) {
-		SetDParam(0, 1LL << i);
-		list.push_back(MakeDropDownListStringItem(STR_JUST_INT, i));
+		list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_INT, 1LL << i), i));
 	}
 
 	return list;
@@ -416,85 +415,73 @@ struct GenerateLandscapeWindow : public Window {
 	}
 
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_GL_START_DATE_TEXT:      SetDParam(0, TimerGameCalendar::ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1)); break;
-			case WID_GL_MAPSIZE_X_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_x); break;
-			case WID_GL_MAPSIZE_Y_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_y); break;
-			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: SetDParam(0, _settings_newgame.game_creation.heightmap_height); break;
-			case WID_GL_SNOW_COVERAGE_TEXT:   SetDParam(0, _settings_newgame.game_creation.snow_coverage); break;
-			case WID_GL_DESERT_COVERAGE_TEXT: SetDParam(0, _settings_newgame.game_creation.desert_coverage); break;
+			case WID_GL_START_DATE_TEXT:      return GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
+			case WID_GL_MAPSIZE_X_PULLDOWN:   return GetString(STR_JUST_INT, 1LL << _settings_newgame.game_creation.map_x);
+			case WID_GL_MAPSIZE_Y_PULLDOWN:   return GetString(STR_JUST_INT, 1LL << _settings_newgame.game_creation.map_y);
+			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: return GetString(STR_JUST_INT, _settings_newgame.game_creation.heightmap_height);
+			case WID_GL_SNOW_COVERAGE_TEXT:   return GetString(STR_MAPGEN_SNOW_COVERAGE_TEXT, _settings_newgame.game_creation.snow_coverage);
+			case WID_GL_DESERT_COVERAGE_TEXT: return GetString(STR_MAPGEN_DESERT_COVERAGE_TEXT, _settings_newgame.game_creation.desert_coverage);
 
 			case WID_GL_TOWN_PULLDOWN:
 				if (_game_mode == GM_EDITOR) {
-					SetDParam(0, STR_CONFIG_SETTING_OFF);
-				} else if (_settings_newgame.difficulty.number_towns == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
-					SetDParam(0, STR_NUM_CUSTOM_NUMBER);
-					SetDParam(1, _settings_newgame.game_creation.custom_town_number);
-				} else {
-					SetDParam(0, _num_towns[_settings_newgame.difficulty.number_towns]);
+					return GetString(STR_CONFIG_SETTING_OFF);
 				}
-				break;
+				if (_settings_newgame.difficulty.number_towns == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+					return GetString(STR_NUM_CUSTOM_NUMBER, _settings_newgame.game_creation.custom_town_number);
+				}
+				return GetString(_num_towns[_settings_newgame.difficulty.number_towns]);
 
 			case WID_GL_TOWNNAME_DROPDOWN: {
 				uint gen = _settings_newgame.game_creation.town_name;
 				StringID name = gen < BUILTIN_TOWNNAME_GENERATOR_COUNT ?
 						STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH + gen :
 						GetGRFTownNameName(gen - BUILTIN_TOWNNAME_GENERATOR_COUNT);
-				SetDParam(0, name);
-				break;
+				return GetString(name);
 			}
 
 			case WID_GL_INDUSTRY_PULLDOWN:
 				if (_game_mode == GM_EDITOR) {
-					SetDParam(0, STR_CONFIG_SETTING_OFF);
-				} else if (_settings_newgame.difficulty.industry_density == ID_CUSTOM) {
-					SetDParam(0, STR_NUM_CUSTOM_NUMBER);
-					SetDParam(1, _settings_newgame.game_creation.custom_industry_number);
-				} else {
-					SetDParam(0, _num_inds[_settings_newgame.difficulty.industry_density]);
+					return GetString(STR_CONFIG_SETTING_OFF);
 				}
-				break;
+				if (_settings_newgame.difficulty.industry_density == ID_CUSTOM) {
+					return GetString(STR_NUM_CUSTOM_NUMBER, _settings_newgame.game_creation.custom_industry_number);
+				}
+				return GetString(_num_inds[_settings_newgame.difficulty.industry_density]);
 
 			case WID_GL_TERRAIN_PULLDOWN:
 				if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
-					SetDParam(0, STR_TERRAIN_TYPE_CUSTOM_VALUE);
-					SetDParam(1, _settings_newgame.game_creation.custom_terrain_type);
-				} else {
-					SetDParam(0, _elevations[_settings_newgame.difficulty.terrain_type]); break;
+					return GetString(STR_TERRAIN_TYPE_CUSTOM_VALUE, _settings_newgame.game_creation.custom_terrain_type);
 				}
-				break;
+				return GetString(_elevations[_settings_newgame.difficulty.terrain_type]);
 
 			case WID_GL_WATER_PULLDOWN:
 				if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
-					SetDParam(0, STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
-					SetDParam(1, _settings_newgame.game_creation.custom_sea_level);
-				} else {
-					SetDParam(0, _sea_lakes[_settings_newgame.difficulty.quantity_sea_lakes]);
+					return GetString(STR_SEA_LEVEL_CUSTOM_PERCENTAGE, _settings_newgame.game_creation.custom_sea_level);
 				}
-				break;
+				return GetString(_sea_lakes[_settings_newgame.difficulty.quantity_sea_lakes]);
 
-			case WID_GL_HEIGHTMAP_NAME_TEXT: SetDParamStr(0, this->name); break;
-			case WID_GL_RIVER_PULLDOWN:      SetDParam(0, _rivers[_settings_newgame.game_creation.amount_of_rivers]); break;
-			case WID_GL_SMOOTHNESS_PULLDOWN: SetDParam(0, _smoothness[_settings_newgame.game_creation.tgen_smoothness]); break;
-			case WID_GL_VARIETY_PULLDOWN:    SetDParam(0, _variety[_settings_newgame.game_creation.variety]); break;
-			case WID_GL_BORDERS_RANDOM:      SetDParam(0, (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL); break;
-			case WID_GL_WATER_NE: SetDParam(0, (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
-			case WID_GL_WATER_NW: SetDParam(0, (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
-			case WID_GL_WATER_SE: SetDParam(0, (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
-			case WID_GL_WATER_SW: SetDParam(0, (_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM); break;
-			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: SetDParam(0, _rotation[_settings_newgame.game_creation.heightmap_rotation]); break;
+			case WID_GL_HEIGHTMAP_NAME_TEXT: return GetString(STR_JUST_RAW_STRING, this->name);
+			case WID_GL_RIVER_PULLDOWN:      return GetString(_rivers[_settings_newgame.game_creation.amount_of_rivers]);
+			case WID_GL_SMOOTHNESS_PULLDOWN: return GetString(_smoothness[_settings_newgame.game_creation.tgen_smoothness]);
+			case WID_GL_VARIETY_PULLDOWN:    return GetString(_variety[_settings_newgame.game_creation.variety]);
+			case WID_GL_BORDERS_RANDOM:      return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL);
+			case WID_GL_WATER_NE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
+			case WID_GL_WATER_NW: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
+			case WID_GL_WATER_SE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
+			case WID_GL_WATER_SW: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
+			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: return GetString(_rotation[_settings_newgame.game_creation.heightmap_rotation]);
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
 				if (_settings_newgame.game_creation.heightmap_rotation == HM_CLOCKWISE) {
-					SetDParam(0, this->y);
-					SetDParam(1, this->x);
-				} else {
-					SetDParam(0, this->x);
-					SetDParam(1, this->y);
+					return GetString(STR_MAPGEN_HEIGHTMAP_SIZE, this->y, this->x);
 				}
-				break;
+				return GetString(STR_MAPGEN_HEIGHTMAP_SIZE, this->x, this->y);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -583,59 +570,48 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT:
-				SetDParam(0, MAX_TILE_HEIGHT);
-				d = GetStringBoundingBox(STR_JUST_INT);
+				d = GetStringBoundingBox(GetString(STR_JUST_INT, MAX_TILE_HEIGHT));
 				break;
 
 			case WID_GL_START_DATE_TEXT:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
-				d = GetStringBoundingBox(STR_JUST_DATE_LONG);
+				d = GetStringBoundingBox(GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1)));
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN:
 			case WID_GL_MAPSIZE_Y_PULLDOWN:
-				SetDParamMaxValue(0, MAX_MAP_SIZE);
-				d = GetStringBoundingBox(STR_JUST_INT);
+				d = GetStringBoundingBox(GetString(STR_JUST_INT, GetParamMaxValue(MAX_MAP_SIZE)));
 				break;
 
 			case WID_GL_SNOW_COVERAGE_TEXT:
-				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
-				d = GetStringBoundingBox(STR_MAPGEN_SNOW_COVERAGE_TEXT);
+				d = GetStringBoundingBox(GetString(STR_MAPGEN_SNOW_COVERAGE_TEXT, GetParamMaxValue(MAX_TILE_HEIGHT)));
 				break;
 
 			case WID_GL_DESERT_COVERAGE_TEXT:
-				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
-				d = GetStringBoundingBox(STR_MAPGEN_DESERT_COVERAGE_TEXT);
+				d = GetStringBoundingBox(GetString(STR_MAPGEN_DESERT_COVERAGE_TEXT, GetParamMaxValue(MAX_TILE_HEIGHT)));
 				break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
-				SetDParam(0, this->x);
-				SetDParam(1, this->y);
-				d = GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE);
+				d = GetStringBoundingBox(GetString(STR_MAPGEN_HEIGHTMAP_SIZE, this->x, this->y));
 				break;
 
 			case WID_GL_TOWN_PULLDOWN:
 				strs = _num_towns;
-				SetDParamMaxValue(0, CUSTOM_TOWN_MAX_NUMBER);
-				d = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
+				d = GetStringBoundingBox(GetString(STR_NUM_CUSTOM_NUMBER, GetParamMaxValue(CUSTOM_TOWN_MAX_NUMBER)));
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN:
 				strs = _num_inds;
-				SetDParamMaxValue(0, IndustryPool::MAX_SIZE);
-				d = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
+				d = GetStringBoundingBox(GetString(STR_NUM_CUSTOM_NUMBER, GetParamMaxValue(IndustryPool::MAX_SIZE)));
 				break;
 
 			case WID_GL_TERRAIN_PULLDOWN:
 				strs = _elevations;
-				SetDParamMaxValue(0, MAX_MAP_HEIGHT_LIMIT);
-				d = GetStringBoundingBox(STR_TERRAIN_TYPE_CUSTOM_VALUE);
+				d = GetStringBoundingBox(GetString(STR_TERRAIN_TYPE_CUSTOM_VALUE, GetParamMaxValue(MAX_MAP_HEIGHT_LIMIT)));
 				break;
 
 			case WID_GL_WATER_PULLDOWN:
 				strs = _sea_lakes;
-				SetDParamMaxValue(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
-				d = GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
+				d = GetStringBoundingBox(GetString(STR_SEA_LEVEL_CUSTOM_PERCENTAGE, GetParamMaxValue(CUSTOM_SEA_LEVEL_MAX_PERCENTAGE)));
 				break;
 
 			case WID_GL_RIVER_PULLDOWN:      strs = _rivers; break;
@@ -1073,24 +1049,23 @@ struct CreateScenarioWindow : public Window
 		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_CS_START_DATE_TEXT:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
-				break;
+				return GetString(stringid, TimerGameCalendar::ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 
 			case WID_CS_MAPSIZE_X_PULLDOWN:
-				SetDParam(0, 1LL << _settings_newgame.game_creation.map_x);
-				break;
+				return GetString(stringid, 1LL << _settings_newgame.game_creation.map_x);
 
 			case WID_CS_MAPSIZE_Y_PULLDOWN:
-				SetDParam(0, 1LL << _settings_newgame.game_creation.map_y);
-				break;
+				return GetString(stringid, 1LL << _settings_newgame.game_creation.map_y);
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
-				SetDParam(0, _settings_newgame.game_creation.se_flat_world_height);
-				break;
+				return GetString(stringid, _settings_newgame.game_creation.se_flat_world_height);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1111,7 +1086,7 @@ struct CreateScenarioWindow : public Window
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		StringID str = STR_JUST_INT;
+		std::string str;
 		switch (widget) {
 			case WID_CS_TEMPERATE: case WID_CS_ARCTIC:
 			case WID_CS_TROPICAL: case WID_CS_TOYLAND:
@@ -1120,17 +1095,16 @@ struct CreateScenarioWindow : public Window
 				return;
 
 			case WID_CS_START_DATE_TEXT:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
-				str = STR_JUST_DATE_LONG;
+				str = GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
 				break;
 
 			case WID_CS_MAPSIZE_X_PULLDOWN:
 			case WID_CS_MAPSIZE_Y_PULLDOWN:
-				SetDParamMaxValue(0, MAX_MAP_SIZE);
+				str = GetString(STR_JUST_INT, GetParamMaxValue(MAX_MAP_SIZE));
 				break;
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
-				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
+				str = GetString(STR_JUST_INT, GetParamMaxValue(MAX_TILE_HEIGHT));
 				break;
 
 			default:
@@ -1392,8 +1366,7 @@ struct GenerateProgressWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GP_PROGRESS_BAR: {
-				SetDParamMaxValue(0, 100);
-				size = GetStringBoundingBox(STR_GENERATION_PROGRESS);
+				size = GetStringBoundingBox(GetString(STR_GENERATION_PROGRESS, GetParamMaxValue(100)));
 				/* We need some spacing for the 'border' */
 				size.height += WidgetDimensions::scaled.frametext.Horizontal();
 				size.width  += WidgetDimensions::scaled.frametext.Vertical();
@@ -1417,8 +1390,8 @@ struct GenerateProgressWindow : public Window {
 				DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 				DrawFrameRect(br.WithWidth(br.Width() * GenWorldStatus::percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				SetDParam(0, GenWorldStatus::percent);
-				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)),
+						GetString(STR_GENERATION_PROGRESS, GenWorldStatus::percent), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
@@ -1427,9 +1400,8 @@ struct GenerateProgressWindow : public Window {
 				DrawString(r.left, r.right, r.top, GenWorldStatus::cls, TC_FROMSTRING, SA_HOR_CENTER);
 
 				/* And say where we are in that class */
-				SetDParam(0, GenWorldStatus::current);
-				SetDParam(1, GenWorldStatus::total);
-				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal,
+						GetString(STR_GENERATION_PROGRESS_NUM, GenWorldStatus::current, GenWorldStatus::total), TC_FROMSTRING, SA_HOR_CENTER);
 		}
 	}
 };

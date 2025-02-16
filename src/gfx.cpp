@@ -725,9 +725,9 @@ int GetStringHeight(StringID str, int maxw)
  * @param maxw maximum string width
  * @return number of lines of string when it is drawn
  */
-int GetStringLineCount(StringID str, int maxw)
+int GetStringLineCount(std::string_view str, int maxw)
 {
-	Layouter layout(GetString(str), maxw);
+	Layouter layout(str, maxw);
 	return (uint)layout.size();
 }
 
@@ -855,7 +855,7 @@ Dimension GetStringBoundingBox(std::string_view str, FontSize start_fontsize)
 }
 
 /**
- * Get bounding box of a string. Uses parameters set by #SetDParam if needed.
+ * Get bounding box of a string.
  * Has the same restrictions as #GetStringBoundingBox(std::string_view str, FontSize start_fontsize).
  * @param strid String to examine.
  * @return Width and height of the bounding box for the string in pixels.
@@ -1248,21 +1248,25 @@ uint8_t GetDigitWidth(FontSize size)
 
 /**
  * Determine the broadest digits for guessing the maximum width of a n-digit number.
- * @param[out] front Broadest digit, which is not 0. (Use this digit as first digit for numbers with more than one digit.)
- * @param[out] next Broadest digit, including 0. (Use this digit for all digits, except the first one; or for numbers with only one digit.)
- * @param size  Font of the digit
+ * @param size Font of the digit
+ * @returns Broadest digits, first which is not 0 (use this digit as first digit for numbers with more than one
+ *          digit.), second including 0 (use this digit for all digits, except the first one; or for numbers with
+ *          only one digit.)
  */
-void GetBroadestDigit(uint *front, uint *next, FontSize size)
+std::pair<uint8_t, uint8_t> GetBroadestDigit(FontSize size)
 {
+	uint8_t front = 0;
+	uint8_t next = 0;
 	int width = -1;
 	for (char c = '9'; c >= '0'; c--) {
 		int w = GetCharacterWidth(size, c);
-		if (w > width) {
-			width = w;
-			*next = c - '0';
-			if (c != '0') *front = c - '0';
-		}
+		if (w <= width) continue;
+
+		width = w;
+		next = c - '0';
+		if (c != '0') front = c - '0';
 	}
+	return {front, next};
 }
 
 void ScreenSizeChanged()

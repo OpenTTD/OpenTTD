@@ -32,9 +32,9 @@ std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int v
 	return std::make_unique<DropDownListStringItem>(str, value, masked, shaded);
 }
 
-std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(const std::string &str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, int value, bool masked, bool shaded)
 {
-	return std::make_unique<DropDownListStringItem>(str, value, masked, shaded);
+	return std::make_unique<DropDownListStringItem>(std::move(str), value, masked, shaded);
 }
 
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
@@ -42,9 +42,19 @@ std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, Pale
 	return std::make_unique<DropDownListIconItem>(sprite, palette, str, value, masked, shaded);
 }
 
+std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
+{
+	return std::make_unique<DropDownListIconItem>(sprite, palette, std::move(str), value, masked, shaded);
+}
+
 std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
 {
 	return std::make_unique<DropDownListIconItem>(dim, sprite, palette, str, value, masked, shaded);
+}
+
+std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
+{
+	return std::make_unique<DropDownListIconItem>(dim, sprite, palette, std::move(str), value, masked, shaded);
 }
 
 std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, StringID str, int value, bool masked, bool shaded, uint indent)

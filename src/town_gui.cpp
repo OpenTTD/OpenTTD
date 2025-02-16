@@ -190,8 +190,9 @@ public:
 			if ((this->town->have_ratings.Test(c->index) || this->town->exclusivity == c->index)) {
 				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
 
-				SetDParam(0, c->index);
-				SetDParam(1, c->index);
+				if (this->town->exclusivity == c->index) {
+					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive.left, text.top + exclusive_y_offset);
+				}
 
 				int rating = this->town->ratings[c->index];
 				StringID str = STR_CARGO_RATING_APPALLING;
@@ -203,12 +204,7 @@ public:
 				if (rating > RATING_VERYGOOD)  str++;
 				if (rating > RATING_EXCELLENT) str++;
 
-				SetDParam(2, str);
-				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive.left, text.top + exclusive_y_offset);
-				}
-
-				DrawString(text.left, text.right, text.top + text_y_offset, STR_LOCAL_AUTHORITY_COMPANY_RATING);
+				DrawString(text.left, text.right, text.top + text_y_offset, GetString(STR_LOCAL_AUTHORITY_COMPANY_RATING, c->index, c->index, str));
 				text.top += this->resize.step_height;
 			}
 		}
@@ -243,9 +239,11 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_TA_CAPTION) SetDParam(0, this->window_number);
+		if (widget == WID_TA_CAPTION) return GetString(stringid, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -256,9 +254,8 @@ public:
 					Money action_cost = _price[PR_TOWN_ACTION] * GetTownActionCost(this->sel_action) >> 8;
 					bool affordable = Company::IsValidID(_local_company) && action_cost < GetAvailableMoney(_local_company);
 
-					SetDParam(0, action_cost);
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-						this->action_tooltips[to_underlying(this->sel_action)],
+						GetString(this->action_tooltips[to_underlying(this->sel_action)], action_cost),
 						affordable ? TC_YELLOW : TC_RED);
 				}
 				break;
@@ -272,8 +269,8 @@ public:
 				assert(size.width > padding.width && size.height > padding.height);
 				Dimension d = {0, 0};
 				for (TownAction i = {}; i != TownAction::End; ++i) {
-					SetDParam(0, _price[PR_TOWN_ACTION] * GetTownActionCost(i) >> 8);
-					d = maxdim(d, GetStringMultiLineBoundingBox(this->action_tooltips[to_underlying(i)], size));
+					Money price = _price[PR_TOWN_ACTION] * GetTownActionCost(i) >> 8;
+					d = maxdim(d, GetStringMultiLineBoundingBox(GetString(this->action_tooltips[to_underlying(i)], price), size));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -392,9 +389,11 @@ public:
 		this->Window::Close();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_TV_CAPTION) SetDParam(0, this->town->index);
+		if (widget == WID_TV_CAPTION) return GetString(stringid, this->town->index);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnPaint() override
@@ -411,9 +410,7 @@ public:
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
-		SetDParam(0, this->town->cache.population);
-		SetDParam(1, this->town->cache.num_houses);
-		DrawString(tr, STR_TOWN_VIEW_POPULATION_HOUSES);
+		DrawString(tr, GetString(STR_TOWN_VIEW_POPULATION_HOUSES, this->town->cache.population, this->town->cache.num_houses));
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
 		StringID str_last_period = TimerGameEconomy::UsingWallclockUnits() ? STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX : STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX;
@@ -421,10 +418,7 @@ public:
 		for (auto tpe : {TPE_PASSENGERS, TPE_MAIL}) {
 			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
 				CargoType cargo_type = cs->Index();
-				SetDParam(0, 1ULL << cargo_type);
-				SetDParam(1, this->town->supplied[cargo_type].old_act);
-				SetDParam(2, this->town->supplied[cargo_type].old_max);
-				DrawString(tr, str_last_period);
+				DrawString(tr, GetString(str_last_period, 1ULL << cargo_type, this->town->supplied[cargo_type].old_act, this->town->supplied[cargo_type].old_max));
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 		}
@@ -446,11 +440,9 @@ public:
 			const CargoSpec *cargo = FindFirstCargoWithTownAcceptanceEffect((TownAcceptanceEffect)i);
 			assert(cargo != nullptr);
 
-			StringID string;
-
 			if (this->town->goal[i] == TOWN_GROWTH_DESERT || this->town->goal[i] == TOWN_GROWTH_WINTER) {
 				/* For 'original' gameplay, don't show the amount required (you need 1 or more ..) */
-				string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL;
+				StringID string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL;
 				if (this->town->received[i].old_act == 0) {
 					string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL;
 
@@ -459,25 +451,20 @@ public:
 					}
 				}
 
-				SetDParam(0, cargo->name);
+				DrawString(tr.Indent(20, rtl), GetString(string, cargo->name));
 			} else {
-				string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED;
+				StringID string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED;
 				if (this->town->received[i].old_act < this->town->goal[i]) {
 					string = STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED;
 				}
 
-				SetDParam(0, cargo->Index());
-				SetDParam(1, this->town->received[i].old_act);
-				SetDParam(2, cargo->Index());
-				SetDParam(3, this->town->goal[i]);
+				DrawString(tr.Indent(20, rtl), GetString(string, cargo->Index(), this->town->received[i].old_act, cargo->Index(), this->town->goal[i]));
 			}
-			DrawString(tr.Indent(20, rtl), string);
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 
 		if (HasBit(this->town->flags, TOWN_IS_GROWING)) {
-			SetDParam(0, RoundDivSU(this->town->growth_rate + 1, Ticks::DAY_TICKS));
-			DrawString(tr, this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED);
+			DrawString(tr, GetString(this->town->fund_buildings_months == 0 ? STR_TOWN_VIEW_TOWN_GROWS_EVERY : STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED, RoundDivSU(this->town->growth_rate + 1, Ticks::DAY_TICKS)));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		} else {
 			DrawString(tr, STR_TOWN_VIEW_TOWN_GROW_STOPPED);
@@ -486,15 +473,12 @@ public:
 
 		/* only show the town noise, if the noise option is activated. */
 		if (_settings_game.economy.station_noise_level) {
-			SetDParam(0, this->town->noise_reached);
-			SetDParam(1, this->town->MaxTownNoise());
-			DrawString(tr, STR_TOWN_VIEW_NOISE_IN_TOWN);
+			DrawString(tr, GetString(STR_TOWN_VIEW_NOISE_IN_TOWN, this->town->noise_reached, this->town->MaxTownNoise()));
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
 
 		if (!this->town->text.empty()) {
-			SetDParamStr(0, this->town->text);
-			tr.top = DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_BLACK);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, this->town->text), TC_BLACK);
 		}
 	}
 
@@ -566,8 +550,7 @@ public:
 		if (_settings_game.economy.station_noise_level) aimed_height += GetCharacterHeight(FS_NORMAL);
 
 		if (!this->town->text.empty()) {
-			SetDParamStr(0, this->town->text);
-			aimed_height += GetStringHeight(STR_JUST_RAW_STRING, width - WidgetDimensions::scaled.framerect.Horizontal());
+			aimed_height += GetStringHeight(GetString(STR_JUST_RAW_STRING, this->town->text), width - WidgetDimensions::scaled.framerect.Horizontal());
 		}
 
 		return aimed_height;
@@ -828,21 +811,20 @@ public:
 		this->townname_editbox.cancel_button = QueryString::ACTION_CLEAR;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_TD_CAPTION:
-				SetDParam(0, this->vscroll->GetCount());
-				SetDParam(1, Town::GetNumItems());
-				break;
+				return GetString(stringid, this->vscroll->GetCount(), Town::GetNumItems());
 
 			case WID_TD_WORLD_POPULATION:
-				SetDParam(0, GetWorldPopulation());
-				break;
+				return GetString(STR_TOWN_POPULATION, GetWorldPopulation());
 
 			case WID_TD_SORT_CRITERIA:
-				SetDParam(0, TownDirectoryWindow::sorter_names[this->towns.SortType()]);
-				break;
+				return GetString(TownDirectoryWindow::sorter_names[this->towns.SortType()]);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -851,9 +833,9 @@ public:
 	 * @param t Town to draw.
 	 * @return The string to use.
 	 */
-	static StringID GetTownString(const Town *t)
+	static std::string GetTownString(const Town *t)
 	{
-		return t->larger_town ? STR_TOWN_DIRECTORY_CITY : STR_TOWN_DIRECTORY_TOWN;
+		return GetString(t->larger_town ? STR_TOWN_DIRECTORY_CITY : STR_TOWN_DIRECTORY_TOWN, t->index, t->cache.population);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -891,8 +873,6 @@ public:
 						DrawSprite(icon, PAL_NONE, icon_x, tr.top + (this->resize.step_height - icon_size.height) / 2);
 					}
 
-					SetDParam(0, t->index);
-					SetDParam(1, t->cache.population);
 					DrawString(tr.left, tr.right, tr.top + (this->resize.step_height - GetCharacterHeight(FS_NORMAL)) / 2, GetTownString(t));
 
 					tr.top += this->resize.step_height;
@@ -926,8 +906,6 @@ public:
 
 					assert(t != nullptr);
 
-					SetDParam(0, t->index);
-					SetDParamMaxDigits(1, 8);
 					d = maxdim(d, GetStringBoundingBox(GetTownString(t)));
 				}
 				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
@@ -941,8 +919,7 @@ public:
 				break;
 			}
 			case WID_TD_WORLD_POPULATION: {
-				SetDParamMaxDigits(0, 10);
-				Dimension d = GetStringBoundingBox(STR_TOWN_POPULATION);
+				Dimension d = GetStringBoundingBox(GetString(STR_TOWN_POPULATION, GetParamMaxDigits(10)));
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);

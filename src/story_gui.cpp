@@ -250,11 +250,10 @@ protected:
 		for (const StoryPage *p : this->story_pages) {
 			bool current_page = p->index == this->selected_page_id;
 			if (!p->title.empty()) {
-				list.push_back(MakeDropDownListStringItem(p->title, p->index.base(), current_page));
+				list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, p->title), p->index.base(), current_page));
 			} else {
 				/* No custom title => use a generic page title with page number. */
-				SetDParam(0, page_num);
-				list.push_back(MakeDropDownListStringItem(STR_STORY_BOOK_GENERIC_PAGE_ITEM, p->index.base(), current_page));
+				list.push_back(MakeDropDownListStringItem(GetString(STR_STORY_BOOK_GENERIC_PAGE_ITEM, page_num), p->index.base(), current_page));
 			}
 			page_num++;
 		}
@@ -285,8 +284,7 @@ protected:
 
 		/* Title lines */
 		height += GetCharacterHeight(FS_NORMAL); // Date always use exactly one line.
-		SetDParamStr(0, !page->title.empty() ? page->title : this->selected_generic_title);
-		height += GetStringHeight(STR_STORY_BOOK_TITLE, max_width);
+		height += GetStringHeight(GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title : this->selected_generic_title), max_width);
 
 		return height;
 	}
@@ -322,8 +320,7 @@ protected:
 	{
 		switch (pe.type) {
 			case SPET_TEXT:
-				SetDParamStr(0, pe.text);
-				return GetStringHeight(STR_JUST_RAW_STRING, max_width);
+				return GetStringHeight(GetString(STR_JUST_RAW_STRING, pe.text), max_width);
 
 			case SPET_GOAL:
 			case SPET_LOCATION: {
@@ -513,7 +510,7 @@ protected:
 	 * @param string_id The string id to draw.
 	 * @return the number of lines.
 	 */
-	void DrawActionElement(int &y_offset, int width, int line_height, SpriteID action_sprite, StringID string_id = STR_JUST_RAW_STRING) const
+	void DrawActionElement(int &y_offset, int width, int line_height, SpriteID action_sprite, const std::string &text) const
 	{
 		Dimension sprite_dim = GetSpriteSize(action_sprite);
 		uint element_height = std::max(sprite_dim.height, (uint)line_height);
@@ -522,7 +519,7 @@ protected:
 		uint text_top = y_offset + (element_height - line_height) / 2;
 
 		DrawSprite(action_sprite, PAL_NONE, 0, sprite_top);
-		DrawString(sprite_dim.width + WidgetDimensions::scaled.frametext.left, width, text_top, string_id, TC_BLACK);
+		DrawString(sprite_dim.width + WidgetDimensions::scaled.frametext.left, width, text_top, text, TC_BLACK);
 
 		y_offset += element_height;
 	}
@@ -640,22 +637,22 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_SB_SEL_PAGE: {
 				StoryPage *page = this->GetSelPage();
-				SetDParamStr(0, page != nullptr && !page->title.empty() ? page->title : this->selected_generic_title);
-				break;
+				return GetString(stringid, page != nullptr && !page->title.empty() ? page->title : this->selected_generic_title);
 			}
+
 			case WID_SB_CAPTION:
 				if (this->window_number == CompanyID::Invalid()) {
-					SetDParam(0, STR_STORY_BOOK_SPECTATOR_CAPTION);
-				} else {
-					SetDParam(0, STR_STORY_BOOK_CAPTION);
-					SetDParam(1, this->window_number);
+					return GetString(STR_STORY_BOOK_SPECTATOR_CAPTION);
 				}
-				break;
+				return GetString(STR_STORY_BOOK_CAPTION, this->window_number);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -697,14 +694,14 @@ public:
 
 		/* Date */
 		if (page->date != CalendarTime::INVALID_DATE) {
-			SetDParam(0, page->date);
-			DrawString(0, fr.right, y_offset, STR_JUST_DATE_LONG, TC_BLACK);
+			DrawString(0, fr.right, y_offset, GetString(STR_JUST_DATE_LONG, page->date), TC_BLACK);
 		}
 		y_offset += line_height;
 
 		/* Title */
-		SetDParamStr(0, !page->title.empty() ? page->title : this->selected_generic_title);
-		y_offset = DrawStringMultiLine(0, fr.right, y_offset, fr.bottom, STR_STORY_BOOK_TITLE, TC_BLACK, SA_TOP | SA_HOR_CENTER);
+		y_offset = DrawStringMultiLine(0, fr.right, y_offset, fr.bottom,
+				GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title : this->selected_generic_title),
+				TC_BLACK, SA_TOP | SA_HOR_CENTER);
 
 		/* Page elements */
 		this->EnsureStoryPageElementLayout();
@@ -712,21 +709,21 @@ public:
 			y_offset = ce.bounds.top - scrollpos;
 			switch (ce.pe->type) {
 				case SPET_TEXT:
-					SetDParamStr(0, ce.pe->text);
-					y_offset = DrawStringMultiLine(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos, STR_JUST_RAW_STRING, TC_BLACK, SA_TOP | SA_LEFT);
+					y_offset = DrawStringMultiLine(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos,
+							GetString(STR_JUST_RAW_STRING, ce.pe->text),
+							TC_BLACK, SA_TOP | SA_LEFT);
 					break;
 
 				case SPET_GOAL: {
 					Goal *g = Goal::Get((GoalID) ce.pe->referenced_id);
-					StringID string_id = g == nullptr ? STR_STORY_BOOK_INVALID_GOAL_REF : STR_JUST_RAW_STRING;
-					if (g != nullptr) SetDParamStr(0, g->text);
-					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe), string_id);
+					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe),
+						g == nullptr ? GetString(STR_STORY_BOOK_INVALID_GOAL_REF) : GetString(STR_JUST_RAW_STRING, g->text));
 					break;
 				}
 
 				case SPET_LOCATION:
-					SetDParamStr(0, ce.pe->text);
-					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe));
+					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe),
+						GetString(STR_JUST_RAW_STRING, ce.pe->text));
 					break;
 
 				case SPET_BUTTON_PUSH:
@@ -738,8 +735,9 @@ public:
 
 					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);
 
-					SetDParamStr(0, ce.pe->text);
-					DrawString(ce.bounds.left + WidgetDimensions::scaled.bevel.left, ce.bounds.right - WidgetDimensions::scaled.bevel.right, ce.bounds.top + tmargin - scrollpos, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
+					DrawString(ce.bounds.left + WidgetDimensions::scaled.bevel.left, ce.bounds.right - WidgetDimensions::scaled.bevel.right, ce.bounds.top + tmargin - scrollpos,
+							GetString(STR_JUST_RAW_STRING, ce.pe->text),
+							TC_WHITE, SA_CENTER);
 					break;
 				}
 
@@ -762,13 +760,7 @@ public:
 				/* Get max title width. */
 				for (size_t i = 0; i < this->story_pages.size(); i++) {
 					const StoryPage *s = this->story_pages[i];
-
-					if (!s->title.empty()) {
-						SetDParamStr(0, s->title);
-					} else {
-						SetDParamStr(0, this->selected_generic_title);
-					}
-					Dimension title_d = GetStringBoundingBox(STR_JUST_RAW_STRING);
+					Dimension title_d = GetStringBoundingBox(GetString(STR_JUST_RAW_STRING, s->title.empty() ? this->selected_generic_title : s->title));
 
 					if (title_d.width > d.width) {
 						d.width = title_d.width;

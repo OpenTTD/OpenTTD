@@ -138,7 +138,7 @@ uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize = FS_N
 Dimension GetStringListBoundingBox(std::span<const StringID> list, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(std::string_view str, int maxw, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
-int GetStringLineCount(StringID str, int maxw);
+int GetStringLineCount(std::string_view str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion);
 void LoadStringWidthTable(bool monospace = false);
@@ -183,7 +183,7 @@ bool ToggleFullScreen(bool fs);
 /* gfx.cpp */
 uint8_t GetCharacterWidth(FontSize size, char32_t key);
 uint8_t GetDigitWidth(FontSize size = FS_NORMAL);
-void GetBroadestDigit(uint *front, uint *next, FontSize size = FS_NORMAL);
+std::pair<uint8_t, uint8_t> GetBroadestDigit(FontSize size);
 
 int GetCharacterHeight(FontSize size);
 

@@ -659,7 +659,7 @@ static void AddDropDownLeagueTableOptions(DropDownList &list)
 {
 	if (LeagueTable::GetNumItems() > 0) {
 		for (LeagueTable *lt : LeagueTable::Iterate()) {
-			list.push_back(MakeDropDownListStringItem(lt->title, lt->index.base()));
+			list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, lt->title), lt->index.base()));
 		}
 	} else {
 		list.push_back(MakeDropDownListStringItem(STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, LTMN_PERFORMANCE_LEAGUE));
@@ -2353,12 +2353,14 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_TE_DATE:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
-				break;
+				return GetString(stringid, TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -2386,8 +2388,7 @@ struct ScenarioEditorToolbarWindow : Window {
 				break;
 
 			case WID_TE_DATE:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
-				size = GetStringBoundingBox(STR_JUST_DATE_LONG);
+				size = GetStringBoundingBox(GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1)));
 				break;
 		}
 	}

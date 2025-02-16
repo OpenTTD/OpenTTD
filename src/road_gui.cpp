@@ -439,18 +439,18 @@ struct BuildRoadToolbarWindow : Window {
 		this->ReInit();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_ROT_CAPTION) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(this->roadtype);
 			if (rti->max_speed > 0) {
-				SetDParam(0, STR_TOOLBAR_RAILTYPE_VELOCITY);
-				SetDParam(1, rti->strings.toolbar_caption);
-				SetDParam(2, PackVelocity(rti->max_speed / 2, VEH_ROAD));
-			} else {
-				SetDParam(0, rti->strings.toolbar_caption);
+				return GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.toolbar_caption, PackVelocity(rti->max_speed / 2, VEH_ROAD));
 			}
+			return GetString(rti->strings.toolbar_caption);
+
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	/**
@@ -1771,13 +1771,13 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
-		SetDParam(0, rti->strings.menu_text);
-		SetDParam(1, rti->max_speed / 2);
 		if (for_replacement) {
 			list.push_back(MakeDropDownListStringItem(rti->strings.replace_text, rt, !HasBit(avail_roadtypes, rt)));
 		} else {
-			StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
-			list.push_back(MakeDropDownListIconItem(d, rti->gui_sprites.build_x_road, PAL_NONE, str, rt, !HasBit(avail_roadtypes, rt)));
+			std::string str = rti->max_speed > 0
+				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
+				: GetString(rti->strings.menu_text);
+			list.push_back(MakeDropDownListIconItem(d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !HasBit(avail_roadtypes, rt)));
 		}
 	}
 
@@ -1813,10 +1813,10 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
-		SetDParam(0, rti->strings.menu_text);
-		SetDParam(1, rti->max_speed / 2);
-		StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
-		list.push_back(MakeDropDownListIconItem(d, rti->gui_sprites.build_x_road, PAL_NONE, str, rt, !HasBit(avail_roadtypes, rt)));
+		std::string str = rti->max_speed > 0
+			? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
+			: GetString(rti->strings.menu_text);
+		list.push_back(MakeDropDownListIconItem(d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !HasBit(avail_roadtypes, rt)));
 	}
 
 	if (list.empty()) {

@@ -217,8 +217,7 @@ struct SignListWindow : Window, SignList {
 
 					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, tr.top + sprite_offset_y);
 
-					SetDParam(0, si->index);
-					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_SIGN_NAME, TC_YELLOW);
+					DrawString(tr.left, tr.right, tr.top + text_offset_y, GetString(STR_SIGN_NAME, si->index), TC_YELLOW);
 					tr.top += this->resize.step_height;
 				}
 				break;
@@ -226,9 +225,11 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_SIL_CAPTION) SetDParam(0, this->vscroll->GetCount());
+		if (widget == WID_SIL_CAPTION) return GetString(stringid, this->vscroll->GetCount());
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -269,8 +270,7 @@ struct SignListWindow : Window, SignList {
 			}
 
 			case WID_SIL_CAPTION:
-				SetDParamMaxValue(0, Sign::GetPoolSize(), 3);
-				size = GetStringBoundingBox(STR_SIGN_LIST_CAPTION);
+				size = GetStringBoundingBox(GetString(STR_SIGN_LIST_CAPTION, GetParamMaxValue(Sign::GetPoolSize(), 3)));
 				size.height += padding.height;
 				size.width  += padding.width;
 				break;
@@ -466,12 +466,14 @@ struct SignWindow : Window, SignList {
 		return next ? this->signs.front() : this->signs.back();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_QES_CAPTION:
-				SetDParam(0, this->name_editbox.caption);
-				break;
+				return GetString(this->name_editbox.caption);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

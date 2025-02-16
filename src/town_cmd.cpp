@@ -2232,15 +2232,10 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 			assert(!random_location);
 
 			if (_current_company == OWNER_DEITY) {
-				SetDParam(0, t->index);
-				AddTileNewsItem(STR_NEWS_NEW_TOWN_UNSPONSORED, NewsType::IndustryOpen, tile);
+				AddTileNewsItem(GetEncodedString(STR_NEWS_NEW_TOWN_UNSPONSORED, t->index), NewsType::IndustryOpen, tile);
 			} else {
 				std::string company_name = GetString(STR_COMPANY_NAME, _current_company);
-
-				SetDParamStr(0, company_name);
-				SetDParam(1, t->index);
-
-				AddTileNewsItem(STR_NEWS_NEW_TOWN, NewsType::IndustryOpen, tile);
+				AddTileNewsItem(GetEncodedString(STR_NEWS_NEW_TOWN, company_name, t->index), NewsType::IndustryOpen, tile);
 			}
 			AI::BroadcastNewEvent(new ScriptEventTownFounded(t->index));
 			Game::NewEvent(new ScriptEventTownFounded(t->index));
@@ -3411,11 +3406,8 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlags flags)
 
 		std::string company_name = GetString(STR_COMPANY_NAME, _current_company);
 
-		SetDParam(0, t->index);
-		SetDParamStr(1, company_name);
-
 		AddNewsItem(
-			TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_ROAD_REBUILDING_MINUTES : STR_NEWS_ROAD_REBUILDING_MONTHS,
+			GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_ROAD_REBUILDING_MINUTES : STR_NEWS_ROAD_REBUILDING_MONTHS, t->index, company_name),
 			NewsType::General, NewsStyle::Normal, {}, t->index);
 		AI::BroadcastNewEvent(new ScriptEventRoadReconstruction(_current_company, t->index));
 		Game::NewEvent(new ScriptEventRoadReconstruction(_current_company, t->index));
@@ -3566,12 +3558,10 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlags flags)
 		SetWindowClassesDirty(WC_STATION_VIEW);
 
 		/* Spawn news message */
-		auto cni = std::make_unique<CompanyNewsInformation>(Company::Get(_current_company));
-		SetDParam(0, STR_NEWS_EXCLUSIVE_RIGHTS_TITLE);
-		SetDParam(1, TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES : STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS);
-		SetDParam(2, t->index);
-		SetDParamStr(3, cni->company_name);
-		AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NewsType::General, NewsStyle::Company, {}, t->index, {}, std::move(cni));
+		auto cni = std::make_unique<CompanyNewsInformation>(STR_NEWS_EXCLUSIVE_RIGHTS_TITLE, Company::Get(_current_company));
+		EncodedString message = GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES : STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS, t->index, cni->company_name);
+		AddNewsItem(std::move(message),
+			NewsType::General, NewsStyle::Company, {}, t->index, {}, std::move(cni));
 		AI::BroadcastNewEvent(new ScriptEventExclusiveTransportRights(_current_company, t->index));
 		Game::NewEvent(new ScriptEventExclusiveTransportRights(_current_company, t->index));
 	}

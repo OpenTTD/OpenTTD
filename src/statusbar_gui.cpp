@@ -38,10 +38,8 @@
 
 static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left, int right, int top, int bottom)
 {
-	CopyInDParam(ni->params);
-
 	/* Replace newlines and the likes with spaces. */
-	std::string message = StrMakeValid(GetString(ni->string_id), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string message = StrMakeValid(ni->GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
@@ -88,15 +86,13 @@ struct StatusBarWindow : Window {
 		Dimension d;
 		switch (widget) {
 			case WID_S_LEFT:
-				SetDParamMaxValue(0, TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR));
-				d = GetStringBoundingBox(STR_JUST_DATE_LONG);
+				d = GetStringBoundingBox(GetString(STR_JUST_DATE_LONG, GetParamMaxValue(TimerGameCalendar::DateAtStartOfYear(CalendarTime::MAX_YEAR).base())));
 				break;
 
 			case WID_S_RIGHT: {
 				int64_t max_money = UINT32_MAX;
 				for (const Company *c : Company::Iterate()) max_money = std::max<int64_t>(c->money, max_money);
-				SetDParam(0, 100LL * max_money);
-				d = GetStringBoundingBox(STR_JUST_CURRENCY_LONG);
+				d = GetStringBoundingBox(GetString(STR_JUST_CURRENCY_LONG, 100LL * max_money));
 				break;
 			}
 
@@ -116,8 +112,7 @@ struct StatusBarWindow : Window {
 		switch (widget) {
 			case WID_S_LEFT:
 				/* Draw the date */
-				SetDParam(0, TimerGameCalendar::date);
-				DrawString(tr, STR_JUST_DATE_LONG, TC_WHITE, SA_HOR_CENTER);
+				DrawString(tr, GetString(STR_JUST_DATE_LONG, TimerGameCalendar::date), TC_WHITE, SA_HOR_CENTER);
 				break;
 
 			case WID_S_RIGHT: {
@@ -129,8 +124,7 @@ struct StatusBarWindow : Window {
 					/* Draw company money, if any */
 					const Company *c = Company::GetIfValid(_local_company);
 					if (c != nullptr) {
-						SetDParam(0, c->money);
-						DrawString(tr, STR_JUST_CURRENCY_LONG, TC_WHITE, SA_HOR_CENTER);
+						DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, c->money), TC_WHITE, SA_HOR_CENTER);
 					}
 				}
 				break;
@@ -145,21 +139,19 @@ struct StatusBarWindow : Window {
 				} else if (_pause_mode.Any()) {
 					StringID msg = _pause_mode.Test(PauseMode::LinkGraph) ? STR_STATUSBAR_PAUSED_LINK_GRAPH : STR_STATUSBAR_PAUSED;
 					DrawString(tr, msg, TC_FROMSTRING, SA_HOR_CENTER);
-				} else if (this->ticker_scroll < TICKER_STOP && GetStatusbarNews() != nullptr && GetStatusbarNews()->string_id != 0) {
+				} else if (this->ticker_scroll < TICKER_STOP && GetStatusbarNews() != nullptr && !GetStatusbarNews()->headline.empty()) {
 					/* Draw the scrolling news text */
 					if (!DrawScrollingStatusText(GetStatusbarNews(), ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
 						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
 						if (Company::IsValidID(_local_company)) {
 							/* This is the default text */
-							SetDParam(0, _local_company);
-							DrawString(tr, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_HOR_CENTER);
+							DrawString(tr, GetString(STR_STATUSBAR_COMPANY_NAME, _local_company), TC_FROMSTRING, SA_HOR_CENTER);
 						}
 					}
 				} else {
 					if (Company::IsValidID(_local_company)) {
 						/* This is the default text */
-						SetDParam(0, _local_company);
-						DrawString(tr, STR_STATUSBAR_COMPANY_NAME, TC_FROMSTRING, SA_HOR_CENTER);
+						DrawString(tr, GetString(STR_STATUSBAR_COMPANY_NAME, _local_company), TC_FROMSTRING, SA_HOR_CENTER);
 					}
 				}
 

@@ -90,8 +90,7 @@ struct SetDateWindow : Window {
 
 			case WID_SD_YEAR:
 				for (TimerGameEconomy::Year i = this->min_year; i <= this->max_year; i++) {
-					SetDParam(0, i);
-					list.push_back(MakeDropDownListStringItem(STR_JUST_INT, i.base()));
+					list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_INT, i), i.base()));
 				}
 				selected = this->date.year.base();
 				break;
@@ -119,8 +118,7 @@ struct SetDateWindow : Window {
 				break;
 
 			case WID_SD_YEAR:
-				SetDParamMaxValue(0, this->max_year);
-				d = maxdim(d, GetStringBoundingBox(STR_JUST_INT));
+				d = maxdim(d, GetStringBoundingBox(GetString(STR_JUST_INT, GetParamMaxValue(this->max_year.base()))));
 				break;
 		}
 
@@ -129,12 +127,14 @@ struct SetDateWindow : Window {
 		size = d;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_SD_DAY:   SetDParam(0, STR_DAY_NUMBER_1ST + this->date.day - 1); break;
-			case WID_SD_MONTH: SetDParam(0, STR_MONTH_JAN + this->date.month); break;
-			case WID_SD_YEAR:  SetDParam(0, this->date.year); break;
+			case WID_SD_DAY:   return GetString(STR_DAY_NUMBER_1ST + this->date.day - 1);
+			case WID_SD_MONTH: return GetString(STR_MONTH_JAN + this->date.month);
+			case WID_SD_YEAR:  return GetString(STR_JUST_INT, this->date.year);
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

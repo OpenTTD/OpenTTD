@@ -391,8 +391,8 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 				/* Add information about the travel time if known. */
 				const auto time = link.time ? back_time ? ((link.time + back_time) / 2) : link.time : back_time;
 				if (time > 0) {
-					SetDParam(0, time);
-					AppendStringInPlace(tooltip_extension, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION);
+					auto params = MakeParameters(time);
+					AppendStringWithArgsInPlace(tooltip_extension, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION, params);
 				}
 				GuiShowTooltips(this->window,
 					GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_LINKGRAPH_STATS_TOOLTIP_MINUTE : STR_LINKGRAPH_STATS_TOOLTIP_MONTH,

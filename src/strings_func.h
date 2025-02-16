@@ -63,6 +63,7 @@ std::string GetStringWithArgs(StringID string, std::span<StringParameter> args);
 std::string GetString(StringID string);
 const char *GetStringPtr(StringID string);
 void AppendStringInPlace(std::string &result, StringID string);
+void AppendStringWithArgsInPlace(std::string &result, StringID string, std::span<StringParameter> params);
 
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type);
 uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type);
@@ -71,7 +72,7 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type);
  * Pack velocity and vehicle type for use with SCC_VELOCITY string parameter.
  * @param speed Display speed for parameter.
  * @param type Type of vehicle for parameter.
- * @return Bit-packed velocity and vehicle type, for use with SetDParam().
+ * @return Bit-packed velocity and vehicle type, for use with string parameters.
  */
 inline int64_t PackVelocity(uint speed, VehicleType type)
 {
@@ -80,29 +81,8 @@ inline int64_t PackVelocity(uint speed, VehicleType type)
 	return speed | (static_cast<uint64_t>(type) << 56);
 }
 
-void SetDParam(size_t n, uint64_t v);
-void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
-void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
-
-void SetDParam(size_t n, ConvertibleThroughBase auto v)
-{
-	SetDParam(n, v.base());
-}
-
-void SetDParamMaxValue(size_t n, ConvertibleThroughBase auto max_value, uint min_count = 0, FontSize size = FS_NORMAL)
-{
-	SetDParamMaxValue(n, max_value.base(), min_count, size);
-}
-
-void SetDParamStr(size_t n, const char *str);
-void SetDParamStr(size_t n, const std::string &str);
-void SetDParamStr(size_t n, std::string &&str);
-
-void CopyInDParam(const std::span<const StringParameterData> backup);
-void CopyOutDParam(std::vector<StringParameterData> &backup, size_t num);
-bool HaveDParamChanged(const std::span<const StringParameterData> backup);
-
-uint64_t GetDParam(size_t n);
+uint64_t GetParamMaxValue(uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
+uint64_t GetParamMaxDigits(uint count, FontSize size = FS_NORMAL);
 
 extern TextDirection _current_text_dir; ///< Text direction of the currently selected language
 

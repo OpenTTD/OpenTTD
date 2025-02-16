@@ -120,21 +120,18 @@ public:
 		this->ConstructWindow();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_SIZE: {
 				ObjectClass *objclass = ObjectClass::Get(_object_gui.sel_class);
 				const ObjectSpec *spec = objclass->GetSpec(_object_gui.sel_type);
 				int size = spec == nullptr ? 0 : spec->size;
-				SetDParam(0, GB(size, HasBit(_object_gui.sel_view, 0) ? 4 : 0, 4));
-				SetDParam(1, GB(size, HasBit(_object_gui.sel_view, 0) ? 0 : 4, 4));
-				break;
+				return GetString(STR_OBJECT_BUILD_SIZE, GB(size, HasBit(_object_gui.sel_view, 0) ? 4 : 0, 4), GB(size, HasBit(_object_gui.sel_view, 0) ? 0 : 4, 4));
 			}
 
 			default:
-				this->PickerWindow::SetStringParameters(widget);
-				break;
+				return this->PickerWindow::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -232,10 +229,12 @@ public:
 							StringID message = GetGRFStringID(spec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
 							if (message != STR_NULL && message != STR_UNDEFINED) {
 								StartTextRefStackUsage(spec->grf_prop.grffile, 6);
+								/* We don't know how many parameters the TextRefStack uses, so pessimistically allow all 20. */
+								std::array<StringParameter, 20> params{};
 								/* Use all the available space left from where we stand up to the
 								 * end of the window. We ALSO enlarge the window if needed, so we
 								 * can 'go' wild with the bottom of the window. */
-								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message, TC_ORANGE) - r.top - 1;
+								int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, GetStringWithArgs(message, params), TC_ORANGE) - r.top - 1;
 								StopTextRefStackUsage();
 								if (y > this->info_height) {
 									BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
