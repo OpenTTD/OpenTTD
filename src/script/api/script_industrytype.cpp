@@ -61,7 +61,7 @@
 {
 	if (!IsValidIndustryType(industry_type)) return std::nullopt;
 
-	return GetString(::GetIndustrySpec(industry_type)->name);
+	return ::StrMakeValid(::GetString(::GetIndustrySpec(industry_type)->name));
 }
 
 /* static */ ScriptList *ScriptIndustryType::GetProducedCargo(IndustryType industry_type)

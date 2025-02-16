@@ -249,11 +249,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->log_data;
 }
 
-/* static */ std::string ScriptObject::GetString(StringID string)
-{
-	return ::StrMakeValid(::GetString(string));
-}
-
 /* static */ void ScriptObject::SetCallbackVariable(int index, int value)
 {
 	if (static_cast<size_t>(index) >= GetStorage()->callback_value.size()) GetStorage()->callback_value.resize(index + 1);

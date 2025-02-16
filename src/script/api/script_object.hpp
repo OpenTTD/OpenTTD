@@ -320,11 +320,6 @@ protected:
 	 */
 	static ScriptLogTypes::LogData &GetLogData();
 
-	/**
-	 * Get an allocated string with all control codes stripped off.
-	 */
-	static std::string GetString(StringID string);
-
 private:
 	/* Helper functions for DoCommand. */
 	static std::tuple<bool, bool, bool, bool> DoCommandPrep();

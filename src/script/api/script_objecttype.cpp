@@ -14,6 +14,7 @@
 #include "script_error.hpp"
 #include "script_map.hpp"
 #include "../../object_cmd.h"
+#include "../../strings_func.h"
 
 #include "../../safeguards.h"
 
@@ -27,7 +28,7 @@
 {
 	EnforcePrecondition(std::nullopt, IsValidObjectType(object_type));
 
-	return GetString(ObjectSpec::Get(object_type)->name);
+	return ::StrMakeValid(::GetString(ObjectSpec::Get(object_type)->name));
 }
 
 /* static */ SQInteger ScriptObjectType::GetViews(ObjectType object_type)
