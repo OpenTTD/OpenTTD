@@ -44,11 +44,11 @@ public:
 	 */
 	enum StationType {
 		/* Note: these values represent part of the in-game StationFacilities enum */
-		STATION_TRAIN      = (1 << to_underlying(::StationFacility::Train)),     ///< Train station
-		STATION_TRUCK_STOP = (1 << to_underlying(::StationFacility::TruckStop)), ///< Truck station
-		STATION_BUS_STOP   = (1 << to_underlying(::StationFacility::BusStop)),   ///< Bus station
-		STATION_AIRPORT    = (1 << to_underlying(::StationFacility::Airport)),   ///< Airport
-		STATION_DOCK       = (1 << to_underlying(::StationFacility::Dock)),      ///< Dock
+		STATION_TRAIN      = ::StationFacilities{::StationFacility::Train}.base(),     ///< Train station
+		STATION_TRUCK_STOP = ::StationFacilities{::StationFacility::TruckStop}.base(), ///< Truck station
+		STATION_BUS_STOP   = ::StationFacilities{::StationFacility::BusStop}.base(),   ///< Bus station
+		STATION_AIRPORT    = ::StationFacilities{::StationFacility::Airport}.base(),   ///< Airport
+		STATION_DOCK       = ::StationFacilities{::StationFacility::Dock}.base(),      ///< Dock
 		STATION_ANY        = STATION_TRAIN | STATION_TRUCK_STOP | STATION_BUS_STOP | STATION_AIRPORT | STATION_DOCK, ///< All station types
 	};
 
