@@ -41,7 +41,6 @@
 
 static bool _read_ttdpatch_flags;    ///< Have we (tried to) read TTDPatch extra flags?
 static uint16_t _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
-static uint8_t _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
 
 void FixOldMapArray()
 {
@@ -153,14 +152,12 @@ static void FixOldTowns()
 	}
 }
 
-static StringID *_old_vehicle_names;
-
 /**
  * Convert the old style vehicles into something that resembles
  * the old new style savegames. Then #AfterLoadGame can handle
  * the rest of the conversion.
  */
-void FixOldVehicles()
+void FixOldVehicles(LoadgameState &ls)
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
 		if ((size_t)v->next == 0xFFFF) {
@@ -179,7 +176,7 @@ void FixOldVehicles()
 		/* Vehicle-subtype is different in TTD(Patch) */
 		if (v->type == VEH_EFFECT) v->subtype = v->subtype >> 1;
 
-		v->name = CopyFromOldName(_old_vehicle_names[v->index]);
+		v->name = CopyFromOldName(ls.vehicle_names[v->index]);
 
 		/* We haven't used this bit for stations for ages */
 		if (v->type == VEH_ROAD) {
@@ -509,14 +506,14 @@ static Town *RemapTown(TileIndex fallback)
 	return t;
 }
 
-static void ReadTTDPatchFlags()
+static void ReadTTDPatchFlags(LoadgameState &ls)
 {
 	if (_read_ttdpatch_flags) return;
 
 	_read_ttdpatch_flags = true;
 
 	/* Set default values */
-	_old_vehicle_multiplier = 1;
+	ls.vehicle_multiplier = 1;
 	_ttdp_version = 0;
 	_old_extra_chunk_nums = 0;
 	_bump_assert_value = 0;
@@ -524,19 +521,19 @@ static void ReadTTDPatchFlags()
 	if (_savegame_type == SGT_TTO) return;
 
 	/* TTDPatch misuses old map3 (now m3/m4) for flags.. read them! */
-	_old_vehicle_multiplier = Tile(0).m3();
+	ls.vehicle_multiplier = Tile(0).m3();
 	/* Somehow.... there was an error in some savegames, so 0 becomes 1
 	 * and 1 becomes 2. The rest of the values are okay */
-	if (_old_vehicle_multiplier < 2) _old_vehicle_multiplier++;
+	if (ls.vehicle_multiplier < 2) ls.vehicle_multiplier++;
 
-	_old_vehicle_names = MallocT<StringID>(_old_vehicle_multiplier * 850);
+	ls.vehicle_names.resize(ls.vehicle_multiplier * 850);
 
 	/* TTDPatch increases the Vehicle-part in the middle of the game,
 	 * so if the multiplier is anything else but 1, the assert fails..
 	 * bump the assert value so it doesn't!
 	 * (1 multiplier == 850 vehicles
 	 * 1 vehicle   == 128 bytes */
-	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
+	_bump_assert_value = (ls.vehicle_multiplier - 1) * 850 * 128;
 
 	/* The first 17 bytes are used by TTDP1, which translates to the first 9 m3s and first 8 m4s. */
 	for (TileIndex i{}; i <= 8; i++) { // check tile 0, too
@@ -561,7 +558,7 @@ static void ReadTTDPatchFlags()
 
 	if (_savegame_type == SGT_TTDP2) Debug(oldloader, 2, "Found TTDPatch game");
 
-	Debug(oldloader, 3, "Vehicle-multiplier is set to {} ({} vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
+	Debug(oldloader, 3, "Vehicle-multiplier is set to {} ({} vehicles)", ls.vehicle_multiplier, ls.vehicle_multiplier * 850);
 }
 
 static const OldChunks town_chunk[] = {
@@ -1250,10 +1247,10 @@ static const OldChunks vehicle_chunk[] = {
 bool LoadOldVehicle(LoadgameState &ls, int num)
 {
 	/* Read the TTDPatch flags, because we need some info from it */
-	ReadTTDPatchFlags();
+	ReadTTDPatchFlags(ls);
 
-	for (uint i = 0; i < _old_vehicle_multiplier; i++) {
-		_current_vehicle_id = num * _old_vehicle_multiplier + i;
+	for (uint i = 0; i < ls.vehicle_multiplier; i++) {
+		_current_vehicle_id = num * ls.vehicle_multiplier + i;
 
 		Vehicle *v;
 
@@ -1335,7 +1332,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 				default:     _old_string_id += 0x2A00;                    break; // custom name
 			}
 
-			_old_vehicle_names[_current_vehicle_id] = _old_string_id;
+			ls.vehicle_names[_current_vehicle_id] = _old_string_id;
 		} else {
 			/* Read the vehicle type and allocate the right vehicle */
 			switch (ReadByte(ls)) {
@@ -1352,7 +1349,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
 			if (v == nullptr) continue;
 
-			_old_vehicle_names[_current_vehicle_id] = RemapOldStringID(_old_string_id);
+			ls.vehicle_names[_current_vehicle_id] = RemapOldStringID(_old_string_id);
 
 			/* This should be consistent, else we have a big problem... */
 			if (v->index != _current_vehicle_id) {
@@ -1558,7 +1555,7 @@ static bool LoadOldMapPart2(LoadgameState &ls, int)
 
 static bool LoadTTDPatchExtraChunks(LoadgameState &ls, int)
 {
-	ReadTTDPatchFlags();
+	ReadTTDPatchFlags(ls);
 
 	Debug(oldloader, 2, "Found {} extra chunk(s)", _old_extra_chunk_nums);
 
@@ -1795,16 +1792,9 @@ bool LoadTTDMain(LoadgameState &ls)
 	_read_ttdpatch_flags = false;
 
 	/* Load the biggest chunk */
-	_old_vehicle_names = nullptr;
-	try {
-		if (!LoadChunk(ls, nullptr, main_chunk)) {
-			Debug(oldloader, 0, "Loading failed");
-			free(_old_vehicle_names);
-			return false;
-		}
-	} catch (...) {
-		free(_old_vehicle_names);
-		throw;
+	if (!LoadChunk(ls, nullptr, main_chunk)) {
+		Debug(oldloader, 0, "Loading failed");
+		return false;
 	}
 
 	Debug(oldloader, 3, "Done, converting game data...");
@@ -1817,15 +1807,13 @@ bool LoadTTDMain(LoadgameState &ls)
 
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();
-	FixOldVehicles();
+	FixOldVehicles(ls);
 
 	/* We have a new difficulty setting */
 	_settings_game.difficulty.town_council_tolerance = Clamp(_old_diff_level, 0, 2);
 
 	Debug(oldloader, 3, "Finished converting game data");
 	Debug(oldloader, 1, "TTD(Patch) savegame successfully converted");
-
-	free(_old_vehicle_names);
 
 	return true;
 }
@@ -1838,8 +1826,6 @@ bool LoadTTOMain(LoadgameState &ls)
 
 	std::array<uint8_t, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
 	_old_engines = (Engine *)engines.data();
-	std::array<StringID, 800> vehnames;
-	_old_vehicle_names = vehnames.data();
 
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, nullptr, main_chunk)) {
@@ -1859,7 +1845,7 @@ bool LoadTTOMain(LoadgameState &ls)
 	}
 
 	FixOldTowns();
-	FixOldVehicles();
+	FixOldVehicles(ls);
 	FixTTOCompanies();
 
 	/* We have a new difficulty setting */
