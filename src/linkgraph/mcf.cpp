@@ -134,7 +134,7 @@ private:
 	LinkGraphJob &job; ///< Link graph job we're working with.
 
 	/** Lookup table for getting NodeIDs from StationIDs. */
-	std::vector<NodeID> station_to_node;
+	ReferenceThroughBaseContainer<std::vector<NodeID>> station_to_node;
 
 	/** Current iterator in the shares map. */
 	FlowStat::SharesMap::const_iterator it;

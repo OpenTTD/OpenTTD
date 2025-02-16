@@ -393,7 +393,7 @@ StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, const Order *
 		next = this->GetOrderAt(v->cur_implicit_order_index);
 		if (next == nullptr) {
 			next = this->GetFirstOrder();
-			if (next == nullptr) return INVALID_STATION;
+			if (next == nullptr) return INVALID_STATION.base();
 		} else {
 			/* GetNext never returns nullptr if there is a valid station in the list.
 			 * As the given "next" is already valid and a station in the list, we
@@ -430,11 +430,11 @@ StationIDStack OrderList::GetNextStoppingStation(const Vehicle *v, const Order *
 		if (next == nullptr || ((next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT)) &&
 				next->GetDestination() == v->last_station_visited &&
 				(next->GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) != 0)) {
-			return INVALID_STATION;
+			return INVALID_STATION.base();
 		}
 	} while (next->IsType(OT_GOTO_DEPOT) || next->GetDestination() == v->last_station_visited);
 
-	return next->GetDestination().ToStationID();
+	return next->GetDestination().ToStationID().base();
 }
 
 /**

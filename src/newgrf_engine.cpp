@@ -756,7 +756,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x13: return GB(ClampTo<uint16_t>(v->date_of_last_service_newgrf - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR), 8, 8);
 		case 0x14: return v->GetServiceInterval();
 		case 0x15: return GB(v->GetServiceInterval(), 8, 8);
-		case 0x16: return v->last_station_visited;
+		case 0x16: return v->last_station_visited.base();
 		case 0x17: return v->tick_counter;
 		case 0x18:
 		case 0x19: {
@@ -808,7 +808,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x3B: return GB(v->cargo_cap, 8, 8);
 		case 0x3C: return ClampTo<uint16_t>(v->cargo.StoredCount());
 		case 0x3D: return GB(ClampTo<uint16_t>(v->cargo.StoredCount()), 8, 8);
-		case 0x3E: return v->cargo.GetFirstStation();
+		case 0x3E: return v->cargo.GetFirstStation().base();
 		case 0x3F: return ClampTo<uint8_t>(v->cargo.PeriodsInTransit());
 		case 0x40: return ClampTo<uint16_t>(v->age);
 		case 0x41: return GB(ClampTo<uint16_t>(v->age), 8, 8);
@@ -924,7 +924,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			Aircraft *a = Aircraft::From(v);
 			switch (variable - 0x80) {
 				case 0x62: return MapAircraftMovementState(a);  // Current movement state
-				case 0x63: return a->targetairport;             // Airport to which the action refers
+				case 0x63: return a->targetairport.base();      // Airport to which the action refers
 				case 0x66: return MapAircraftMovementAction(a); // Current movement action
 			}
 			break;

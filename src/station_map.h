@@ -720,7 +720,7 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
 	SetDockingTile(t, false);
-	t.m2() = sid;
+	t.m2() = sid.base();
 	t.m3() = 0;
 	t.m4() = 0;
 	t.m5() = section;

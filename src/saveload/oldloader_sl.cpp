@@ -724,7 +724,7 @@ static bool LoadOldGood(LoadgameState &ls, int num)
 	AssignBit(ge->status, GoodsEntry::GES_ACCEPTANCE, HasBit(_waiting_acceptance, 15));
 	AssignBit(ge->status, GoodsEntry::GES_RATING, _cargo_source != 0xFF);
 	if (GB(_waiting_acceptance, 0, 12) != 0 && CargoPacket::CanAllocateItem()) {
-		ge->GetOrCreateData().cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, INVALID_TILE, 0),
+		ge->GetOrCreateData().cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? INVALID_STATION : StationID{_cargo_source}, INVALID_TILE, 0),
 				INVALID_STATION);
 	}
 
@@ -771,7 +771,7 @@ static const OldChunks station_chunk[] = {
 static bool LoadOldStation(LoadgameState &ls, int num)
 {
 	Station *st = new (num) Station();
-	_current_station_id = num;
+	_current_station_id = st->index;
 
 	if (!LoadChunk(ls, st, station_chunk)) return false;
 
@@ -1372,7 +1372,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 		v->next = (Vehicle *)(size_t)_old_next_ptr;
 
 		if (_cargo_count != 0 && CargoPacket::CanAllocateItem()) {
-			StationID source =    (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
+			StationID source =    (_cargo_source == 0xFF) ? INVALID_STATION : StationID{_cargo_source};
 			TileIndex source_xy = (source != INVALID_STATION) ? Station::Get(source)->xy : (TileIndex)0;
 			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, source_xy, 0));
 		}

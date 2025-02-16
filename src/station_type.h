@@ -14,7 +14,11 @@
 #include "core/smallstack_type.hpp"
 #include "tilearea_type.h"
 
-typedef uint16_t StationID;
+using StationID = PoolID<uint16_t, struct StationIDTag, 64000, 0xFFFF>;
+static constexpr StationID NEW_STATION{0xFFFD};
+static constexpr StationID ADJACENT_STATION{0xFFFE};
+static constexpr StationID INVALID_STATION = StationID::Invalid();
+
 using RoadStopID = PoolID<uint16_t, struct RoadStopIDTag, 64000, 0xFFFF>;
 
 struct BaseStation;
@@ -23,11 +27,7 @@ struct RoadStop;
 struct StationSpec;
 struct Waypoint;
 
-static const StationID NEW_STATION = 0xFFFD;
-static const StationID ADJACENT_STATION = 0xFFFE;
-static const StationID INVALID_STATION = 0xFFFF;
-
-typedef SmallStack<StationID, StationID, INVALID_STATION, 8, 0xFFFD> StationIDStack;
+using StationIDStack = SmallStack<StationID::BaseType, StationID::BaseType, INVALID_STATION.base(), 8, StationID::End().base()>;
 
 /** Station types */
 enum class StationType : uint8_t {
