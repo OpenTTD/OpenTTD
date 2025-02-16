@@ -4337,8 +4337,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramway vehicle
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aircraft
 STR_ENGINE_PREVIEW_SHIP                                         :ship
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING2}{}{5:STRING1}{}{STRING4}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING2}{}{STRING3}{}{STRING1}{}{STRING4}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Cost: {CURRENCY_LONG}  Weight: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Cost: {CURRENCY_LONG}  Max. Speed: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Speed: {VELOCITY}  Power: {POWER}

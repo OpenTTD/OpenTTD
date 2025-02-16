@@ -34,7 +34,7 @@ void EngList_Sort(GUIEngineList &el, EngList_SortTypeFunction compare);
 void EngList_SortPartial(GUIEngineList &el, EngList_SortTypeFunction compare, size_t begin, size_t num_items);
 
 StringID GetEngineCategoryName(EngineID engine);
-StringID GetEngineInfoString(EngineID engine);
+std::string GetEngineInfoString(EngineID engine);
 
 void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
 void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
