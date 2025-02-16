@@ -58,14 +58,14 @@ static inline uint8_t CalcOldVarLen(OldChunkType type)
  * Reads a byte from a file (do not call yourself, use ReadByte())
  *
  */
-static uint8_t ReadByteFromFile(LoadgameState *ls)
+static uint8_t ReadByteFromFile(LoadgameState &ls)
 {
 	/* To avoid slow reads, we read BUFFER_SIZE of bytes per time
 	and just return a byte per time */
-	if (ls->buffer_cur >= ls->buffer_count) {
+	if (ls.buffer_cur >= ls.buffer_count) {
 
 		/* Read some new bytes from the file */
-		int count = static_cast<int>(fread(ls->buffer, 1, BUFFER_SIZE, *ls->file));
+		int count = static_cast<int>(fread(ls.buffer.data(), 1, ls.buffer.size(), *ls.file));
 
 		/* We tried to read, but there is nothing in the file anymore.. */
 		if (count == 0) {
@@ -73,11 +73,11 @@ static uint8_t ReadByteFromFile(LoadgameState *ls)
 			throw std::exception();
 		}
 
-		ls->buffer_count = count;
-		ls->buffer_cur   = 0;
+		ls.buffer_count = count;
+		ls.buffer_cur   = 0;
 	}
 
-	return ls->buffer[ls->buffer_cur++];
+	return ls.buffer[ls.buffer_cur++];
 }
 
 /**
@@ -85,7 +85,7 @@ static uint8_t ReadByteFromFile(LoadgameState *ls)
  * Reads a byte from the buffer and decompress if needed
  *
  */
-uint8_t ReadByte(LoadgameState *ls)
+uint8_t ReadByte(LoadgameState &ls)
 {
 	/* Old savegames have a nice compression algorithm (RLE)
 	which means that we have a chunk, which starts with a length
@@ -93,25 +93,25 @@ uint8_t ReadByte(LoadgameState *ls)
 	that many times ( + 1). Else, we need to read that amount of bytes.
 	Works pretty well if you have many zeros behind each other */
 
-	if (ls->chunk_size == 0) {
+	if (ls.chunk_size == 0) {
 		/* Read new chunk */
 		int8_t new_byte = ReadByteFromFile(ls);
 
 		if (new_byte < 0) {
 			/* Repeat next char for new_byte times */
-			ls->decoding    = true;
-			ls->decode_char = ReadByteFromFile(ls);
-			ls->chunk_size  = -new_byte + 1;
+			ls.decoding    = true;
+			ls.decode_char = ReadByteFromFile(ls);
+			ls.chunk_size  = -new_byte + 1;
 		} else {
-			ls->decoding    = false;
-			ls->chunk_size  = new_byte + 1;
+			ls.decoding    = false;
+			ls.chunk_size  = new_byte + 1;
 		}
 	}
 
-	ls->total_read++;
-	ls->chunk_size--;
+	ls.total_read++;
+	ls.chunk_size--;
 
-	return ls->decoding ? ls->decode_char : ReadByteFromFile(ls);
+	return ls.decoding ? ls.decode_char : ReadByteFromFile(ls);
 }
 
 /**
@@ -119,7 +119,7 @@ uint8_t ReadByte(LoadgameState *ls)
  * Loads a chunk from the old savegame
  *
  */
-bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
+bool LoadChunk(LoadgameState &ls, void *base, const OldChunks *chunks)
 {
 	for (const OldChunks *chunk = chunks; chunk->type != OC_END; chunk++) {
 		if (((chunk->type & OC_TTD) && _savegame_type == SGT_TTO) ||
@@ -144,8 +144,8 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 						break;
 
 					case OC_ASSERT:
-						Debug(oldloader, 4, "Assert point: 0x{:X} / 0x{:X}", ls->total_read, (uint)(size_t)chunk->ptr + _bump_assert_value);
-						if (ls->total_read != (size_t)chunk->ptr + _bump_assert_value) throw std::exception();
+						Debug(oldloader, 4, "Assert point: 0x{:X} / 0x{:X}", ls.total_read, reinterpret_cast<size_t>(chunk->ptr) + _bump_assert_value);
+						if (ls.total_read != reinterpret_cast<size_t>(chunk->ptr) + _bump_assert_value) throw std::exception();
 					default: break;
 				}
 			} else {
@@ -191,28 +191,6 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 }
 
 /**
- *
- * Initialize some data before reading
- *
- */
-static void InitLoading(LoadgameState *ls)
-{
-	ls->chunk_size   = 0;
-	ls->total_read   = 0;
-
-	ls->decoding     = false;
-	ls->decode_char  = 0;
-
-	ls->buffer_cur   = 0;
-	ls->buffer_count = 0;
-	memset(ls->buffer, 0, BUFFER_SIZE);
-
-	_bump_assert_value = 0;
-
-	_settings_game.construction.freeform_edges = false; // disable so we can convert map array (SetTileType is still used)
-}
-
-/**
  * Verifies the title has a valid checksum
  * @param title title and checksum
  * @param len   the length of the title to read/checksum
@@ -253,15 +231,16 @@ static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(Fil
 	return { SGT_INVALID, "(broken) Unknown" };
 }
 
-typedef bool LoadOldMainProc(LoadgameState *ls);
+typedef bool LoadOldMainProc(LoadgameState &ls);
 
 bool LoadOldSaveGame(const std::string &file)
 {
-	LoadgameState ls;
+	LoadgameState ls{};
 
 	Debug(oldloader, 3, "Trying to load a TTD(Patch) savegame");
 
-	InitLoading(&ls);
+	_bump_assert_value = 0;
+	_settings_game.construction.freeform_edges = false; // disable so we can convert map array (SetTileType is still used)
 
 	/* Open file */
 	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
@@ -289,7 +268,7 @@ bool LoadOldSaveGame(const std::string &file)
 
 	bool game_loaded;
 	try {
-		game_loaded = proc != nullptr && proc(&ls);
+		game_loaded = proc != nullptr && proc(ls);
 	} catch (...) {
 		game_loaded = false;
 	}

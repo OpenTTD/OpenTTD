@@ -616,7 +616,7 @@ static const OldChunks town_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldTown(LoadgameState *ls, int num)
+static bool LoadOldTown(LoadgameState &ls, int num)
 {
 	Town *t = new (num) Town();
 	if (!LoadChunk(ls, t, town_chunk)) return false;
@@ -639,7 +639,7 @@ static const OldChunks order_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldOrder(LoadgameState *ls, int num)
+static bool LoadOldOrder(LoadgameState &ls, int num)
 {
 	if (!LoadChunk(ls, nullptr, order_chunk)) return false;
 
@@ -658,7 +658,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 	return true;
 }
 
-static bool LoadOldAnimTileList(LoadgameState *ls, int)
+static bool LoadOldAnimTileList(LoadgameState &ls, int)
 {
 	TileIndex anim_list[256];
 	const OldChunks anim_chunk[] = {
@@ -683,7 +683,7 @@ static const OldChunks depot_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldDepot(LoadgameState *ls, int num)
+static bool LoadOldDepot(LoadgameState &ls, int num)
 {
 	Depot *d = new (num) Depot();
 	if (!LoadChunk(ls, d, depot_chunk)) return false;
@@ -714,7 +714,7 @@ static const OldChunks goods_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldGood(LoadgameState *ls, int num)
+static bool LoadOldGood(LoadgameState &ls, int num)
 {
 	/* for TTO games, 12th (num == 11) goods entry is created in the Station constructor */
 	if (_savegame_type == SGT_TTO && num == 11) return true;
@@ -771,7 +771,7 @@ static const OldChunks station_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldStation(LoadgameState *ls, int num)
+static bool LoadOldStation(LoadgameState &ls, int num)
 {
 	Station *st = new (num) Station();
 	_current_station_id = num;
@@ -853,7 +853,7 @@ static const OldChunks industry_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldIndustry(LoadgameState *ls, int num)
+static bool LoadOldIndustry(LoadgameState &ls, int num)
 {
 	Industry *i = new (num) Industry();
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
@@ -891,7 +891,7 @@ static const OldChunks _company_yearly_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldCompanyYearly(LoadgameState *ls, int num)
+static bool LoadOldCompanyYearly(LoadgameState &ls, int num)
 {
 	Company *c = Company::Get(_current_company_id);
 
@@ -918,7 +918,7 @@ static const OldChunks _company_economy_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldCompanyEconomy(LoadgameState *ls, int)
+static bool LoadOldCompanyEconomy(LoadgameState &ls, int)
 {
 	Company *c = Company::Get(_current_company_id);
 
@@ -979,7 +979,7 @@ static const OldChunks _company_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldCompany(LoadgameState *ls, int num)
+static bool LoadOldCompany(LoadgameState &ls, int num)
 {
 	Company *c = new (num) Company();
 
@@ -1121,10 +1121,10 @@ static const OldChunks vehicle_empty_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldVehicleUnion(LoadgameState *ls, int)
+static bool LoadOldVehicleUnion(LoadgameState &ls, int)
 {
 	Vehicle *v = Vehicle::GetIfValid(_current_vehicle_id);
-	uint temp = ls->total_read;
+	uint temp = ls.total_read;
 	bool res;
 
 	if (v == nullptr) {
@@ -1142,7 +1142,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int)
 	}
 
 	/* This chunk size should always be 10 bytes */
-	if (ls->total_read - temp != 10) {
+	if (ls.total_read - temp != 10) {
 		Debug(oldloader, 0, "Assert failed in VehicleUnion: invalid chunk size");
 		return false;
 	}
@@ -1247,7 +1247,7 @@ static const OldChunks vehicle_chunk[] = {
  * @param num The number of vehicles to load.
  * @return True iff loading went without problems.
  */
-bool LoadOldVehicle(LoadgameState *ls, int num)
+bool LoadOldVehicle(LoadgameState &ls, int num)
 {
 	/* Read the TTDPatch flags, because we need some info from it */
 	ReadTTDPatchFlags();
@@ -1390,7 +1390,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
  * @param index The index of the loaded custom string.
  * @return Always true.
  */
-bool LoadOldCustomString(LoadgameState *ls, int index)
+bool LoadOldCustomString(LoadgameState &ls, int index)
 {
 	/*
 	 * Data is stored in fixed size "cells"; read these completely.
@@ -1414,7 +1414,7 @@ static const OldChunks sign_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldSign(LoadgameState *ls, int num)
+static bool LoadOldSign(LoadgameState &ls, int num)
 {
 	Sign *si = new (num) Sign();
 	if (!LoadChunk(ls, si, sign_chunk)) return false;
@@ -1456,13 +1456,13 @@ static const OldChunks engine_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldEngine(LoadgameState *ls, int num)
+static bool LoadOldEngine(LoadgameState &ls, int num)
 {
 	Engine *e = _savegame_type == SGT_TTO ? &_old_engines[num] : GetTempDataEngine(num);
 	return LoadChunk(ls, e, engine_chunk);
 }
 
-static bool LoadOldEngineName(LoadgameState *ls, int num)
+static bool LoadOldEngineName(LoadgameState &ls, int num)
 {
 	Engine *e = GetTempDataEngine(num);
 	e->name = CopyFromOldName(RemapOldStringID(ReadUint16(ls)));
@@ -1478,7 +1478,7 @@ static const OldChunks subsidy_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldSubsidy(LoadgameState *ls, int num)
+static bool LoadOldSubsidy(LoadgameState &ls, int num)
 {
 	Subsidy *s = new (num) Subsidy();
 	bool ret = LoadChunk(ls, s, subsidy_chunk);
@@ -1507,7 +1507,7 @@ static const OldChunks game_difficulty_chunk[] = {
 	OCL_END()
 };
 
-static bool LoadOldGameDifficulty(LoadgameState *ls, int)
+static bool LoadOldGameDifficulty(LoadgameState &ls, int)
 {
 	bool ret = LoadChunk(ls, &_settings_game.difficulty, game_difficulty_chunk);
 	_settings_game.difficulty.max_loan *= 1000;
@@ -1515,7 +1515,7 @@ static bool LoadOldGameDifficulty(LoadgameState *ls, int)
 }
 
 
-static bool LoadOldMapPart1(LoadgameState *ls, int)
+static bool LoadOldMapPart1(LoadgameState &ls, int)
 {
 	if (_savegame_type == SGT_TTO) {
 		Map::Allocate(OLD_MAP_SIZE, OLD_MAP_SIZE);
@@ -1544,7 +1544,7 @@ static bool LoadOldMapPart1(LoadgameState *ls, int)
 	return true;
 }
 
-static bool LoadOldMapPart2(LoadgameState *ls, int)
+static bool LoadOldMapPart2(LoadgameState &ls, int)
 {
 	for (auto t : Map::Iterate()) {
 		t.type() = ReadByte(ls);
@@ -1556,7 +1556,7 @@ static bool LoadOldMapPart2(LoadgameState *ls, int)
 	return true;
 }
 
-static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int)
+static bool LoadTTDPatchExtraChunks(LoadgameState &ls, int)
 {
 	ReadTTDPatchFlags();
 
@@ -1788,7 +1788,7 @@ static const OldChunks main_chunk[] = {
 	OCL_END()
 };
 
-bool LoadTTDMain(LoadgameState *ls)
+bool LoadTTDMain(LoadgameState &ls)
 {
 	Debug(oldloader, 3, "Reading main chunk...");
 
@@ -1830,7 +1830,7 @@ bool LoadTTDMain(LoadgameState *ls)
 	return true;
 }
 
-bool LoadTTOMain(LoadgameState *ls)
+bool LoadTTOMain(LoadgameState &ls)
 {
 	Debug(oldloader, 3, "Reading main chunk...");
 
