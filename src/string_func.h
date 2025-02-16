@@ -166,9 +166,11 @@ inline const char *Utf8PrevChar(const char *s)
 
 inline std::string::iterator Utf8PrevChar(std::string::iterator &s)
 {
-	auto *cur = &*s;
-	auto *prev = Utf8PrevChar(cur);
-	return s - (cur - prev);
+	auto cur = s;
+	do {
+		cur = std::prev(cur);
+	} while (IsUtf8Part(*cur));
+	return cur;
 }
 
 size_t Utf8StringLength(const char *s);
