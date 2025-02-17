@@ -74,6 +74,15 @@ void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &badge_clas
 
 uint32_t GetBadgeVariableResult(const struct GRFFile &grffile, std::span<const BadgeID> badges, uint32_t parameter);
 
+class BadgeTextFilter {
+public:
+	BadgeTextFilter(struct StringFilter &filter, GrfSpecFeature feature);
+	bool Filter(std::span<const BadgeID> badges) const;
+
+private:
+	std::vector<BadgeID> badges{};
+};
+
 std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, StringID str, int value, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked = false, bool shaded = false);
 

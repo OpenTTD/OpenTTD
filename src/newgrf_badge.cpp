@@ -14,6 +14,7 @@
 #include "newgrf_badge.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_spritegroup.h"
+#include "stringfilter_type.h"
 #include "strings_func.h"
 #include "timer/timer_game_calendar.h"
 #include "window_gui.h"
@@ -387,6 +388,42 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
 uint GUIBadgeClasses::GetTotalColumnsWidth() const
 {
 	return std::accumulate(std::begin(this->column_widths), std::end(this->column_widths), 0U);
+}
+
+/**
+ * Construct a badge text filter.
+ * @param filter string filter.
+ * @param feature feature being used.
+ */
+BadgeTextFilter::BadgeTextFilter(StringFilter &filter, GrfSpecFeature feature)
+{
+	/* Do not filter if the filter text box is empty */
+	if (filter.IsEmpty()) return;
+
+	/* Pre-build list of badges that match by string. */
+	for (const auto &badge : _badges.specs) {
+		if (badge.name == STR_NULL) continue;
+		if (!badge.features.Test(feature)) continue;
+
+		filter.ResetState();
+		filter.AddLine(GetString(badge.name));
+		if (!filter.GetState()) continue;
+
+		auto it = std::ranges::lower_bound(this->badges, badge.index);
+		if (it != std::end(this->badges) && *it == badge.index) continue;
+
+		this->badges.insert(it, badge.index);
+	}
+}
+
+/**
+ * Test if any of the given badges matches the filtered badge list.
+ * @param badges List of badges.
+ * @returns true iff at least one badge in badges is present.
+ */
+bool BadgeTextFilter::Filter(std::span<const BadgeID> badges) const
+{
+	return std::ranges::any_of(badges, [this](const BadgeID &badge) { return std::ranges::binary_search(this->badges, badge); });
 }
 
 /**

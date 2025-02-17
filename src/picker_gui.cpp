@@ -147,6 +147,8 @@ static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
 /** Filter types by class name. */
 static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
 {
+	if (filter.btf.has_value() && filter.btf->Filter(filter.callbacks->GetTypeBadges(item->class_index, item->index))) return true;
+
 	filter.ResetState();
 	filter.AddLine(GetString(filter.callbacks->GetTypeName(item->class_index, item->index)));
 	return filter.GetState();
@@ -449,6 +451,11 @@ void PickerWindow::OnEditboxChanged(WidgetID wid)
 
 		case WID_PW_TYPE_FILTER:
 			this->type_string_filter.SetFilterTerm(this->type_editbox.text.GetText());
+			if (!type_string_filter.IsEmpty()) {
+				this->type_string_filter.btf.emplace(this->type_string_filter, this->callbacks.GetFeature());
+			} else {
+				this->type_string_filter.btf.reset();
+			}
 			this->types.SetFilterState(!type_string_filter.IsEmpty());
 			this->InvalidateData(PickerInvalidation::Type);
 			break;

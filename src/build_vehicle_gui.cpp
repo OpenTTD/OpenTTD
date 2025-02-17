@@ -1436,6 +1436,8 @@ struct BuildVehicleWindow : Window {
 
 		list.clear();
 
+		BadgeTextFilter btf(this->string_filter, GSF_TRAINS);
+
 		/* Make list of all available train engines and wagons.
 		 * Also check to see if the previously selected engine is still available,
 		 * and if not, reset selection to EngineID::Invalid(). This could be the case
@@ -1452,7 +1454,7 @@ struct BuildVehicleWindow : Window {
 			if (!FilterSingleEngine(eid)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1501,6 +1503,8 @@ struct BuildVehicleWindow : Window {
 
 		this->eng_list.clear();
 
+		BadgeTextFilter btf(this->string_filter, GSF_ROADVEHICLES);
+
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
@@ -1508,7 +1512,7 @@ struct BuildVehicleWindow : Window {
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1523,13 +1527,15 @@ struct BuildVehicleWindow : Window {
 		EngineID sel_id = EngineID::Invalid();
 		this->eng_list.clear();
 
+		BadgeTextFilter btf(this->string_filter, GSF_SHIPS);
+
 		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1547,6 +1553,8 @@ struct BuildVehicleWindow : Window {
 
 		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(TileIndex(this->window_number));
 
+		BadgeTextFilter btf(this->string_filter, GSF_AIRCRAFT);
+
 		/* Make list of all available planes.
 		 * Also check to see if the previously selected plane is still available,
 		 * and if not, reset selection to EngineID::Invalid(). This could be the case
@@ -1559,7 +1567,7 @@ struct BuildVehicleWindow : Window {
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
 			/* Filter by name or NewGRF extra text */
-			if (!FilterByText(e)) continue;
+			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
 
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
