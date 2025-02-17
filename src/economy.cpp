@@ -246,9 +246,10 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	/* Generate statistics depending on recent income statistics */
 	{
+		static_assert(MAX_HISTORY_QUARTERS >= 12u);
 		int numec = std::min<uint>(c->num_valid_stat_ent, 12u);
 		if (numec != 0) {
-			const CompanyEconomyEntry *cee = c->old_economy;
+			auto cee = c->old_economy.begin();
 			Money min_income = cee->income + cee->expenses;
 			Money max_income = cee->income + cee->expenses;
 
@@ -267,9 +268,10 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	/* Generate score depending on amount of transported cargo */
 	{
+		static_assert(MAX_HISTORY_QUARTERS >= 4u);
 		int numec = std::min<uint>(c->num_valid_stat_ent, 4u);
 		if (numec != 0) {
-			const CompanyEconomyEntry *cee = c->old_economy;
+			auto cee = c->old_economy.begin();
 			OverflowSafeInt64 total_delivered = 0;
 			do {
 				total_delivered += cee->delivered_cargo.GetSum<OverflowSafeInt64>();
@@ -281,7 +283,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	/* Generate score for variety of cargo */
 	{
-		_score_part[owner][SCORE_CARGO] = c->old_economy->delivered_cargo.GetCount();
+		_score_part[owner][SCORE_CARGO] = c->old_economy[0].delivered_cargo.GetCount();
 	}
 
 	/* Generate score for company's money */
@@ -695,7 +697,7 @@ static void CompaniesGenStatistics()
 
 	for (Company *c : Company::Iterate()) {
 		/* Drop the oldest history off the end */
-		std::copy_backward(c->old_economy, c->old_economy + MAX_HISTORY_QUARTERS - 1, c->old_economy + MAX_HISTORY_QUARTERS);
+		std::copy_backward(c->old_economy.data(), c->old_economy.data() + MAX_HISTORY_QUARTERS - 1, c->old_economy.data() + MAX_HISTORY_QUARTERS);
 		c->old_economy[0] = c->cur_economy;
 		c->cur_economy = {};
 
