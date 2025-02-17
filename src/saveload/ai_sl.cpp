@@ -27,18 +27,21 @@ static std::string _ai_saveload_name;
 static int         _ai_saveload_version;
 static std::string _ai_saveload_settings;
 static bool        _ai_saveload_is_random;
+static bool        _ai_saveload_force_exact_match;
 
 static const SaveLoad _ai_company_desc[] = {
 	   SLEG_SSTR("name",      _ai_saveload_name,         SLE_STR),
 	   SLEG_SSTR("settings",  _ai_saveload_settings,     SLE_STR),
 	SLEG_CONDVAR("version",   _ai_saveload_version,   SLE_UINT32, SLV_108, SL_MAX_VERSION),
 	SLEG_CONDVAR("is_random", _ai_saveload_is_random,   SLE_BOOL, SLV_136, SLV_AI_LOCAL_CONFIG),
+	SLEG_CONDVAR("force_exact_match", _ai_saveload_force_exact_match, SLE_BOOL, SLV_SCRIPT_FORCE_EXACT_MATCH, SL_MAX_VERSION),
 };
 
 static const SaveLoad _ai_running_desc[] = {
 	SLEG_CONDSSTR("running_name",     _ai_saveload_name,        SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
 	SLEG_CONDSSTR("running_settings", _ai_saveload_settings,    SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
 	 SLEG_CONDVAR("running_version",  _ai_saveload_version,  SLE_UINT32, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
+	 SLEG_CONDVAR("running_force_exact_match", _ai_saveload_force_exact_match, SLE_BOOL, SLV_SCRIPT_FORCE_EXACT_MATCH, SL_MAX_VERSION),
 };
 
 static void SaveReal_AIPL(int arg)
@@ -56,6 +59,7 @@ static void SaveReal_AIPL(int arg)
 	}
 
 	_ai_saveload_settings = config->SettingsToString();
+	_ai_saveload_force_exact_match = config->GetForceExactMatch();
 
 	SlObject(nullptr, _ai_company_desc);
 
@@ -66,10 +70,10 @@ static void SaveReal_AIPL(int arg)
 	_ai_saveload_name = config->GetName();
 	_ai_saveload_version = config->GetVersion();
 	_ai_saveload_settings = config->SettingsToString();
+	_ai_saveload_force_exact_match = config->GetForceExactMatch();
 
 	SlObject(nullptr, _ai_running_desc);
 	AI::Save(index);
-
 }
 
 struct AIPLChunkHandler : ChunkHandler {
@@ -90,6 +94,7 @@ struct AIPLChunkHandler : ChunkHandler {
 
 			_ai_saveload_is_random = false;
 			_ai_saveload_version = -1;
+			_ai_saveload_force_exact_match = false;
 			SlObject(nullptr, slt);
 
 			if (_game_mode == GM_MENU || (_networking && !_network_server)) {
@@ -105,19 +110,27 @@ struct AIPLChunkHandler : ChunkHandler {
 				/* A random AI. */
 				config->Change(std::nullopt, -1, false);
 			} else {
-				config->Change(_ai_saveload_name, _ai_saveload_version, false);
+				if (_ai_saveload_force_exact_match) config->Change(_ai_saveload_name, _ai_saveload_version, true);
 				if (!config->HasScript()) {
-					/* No version of the AI available. Try to configure the
-					 * latest version of the AI instead. */
-					config->Change(_ai_saveload_name, -1, false);
+					/* Exact version of the AI is not available. Try to
+					 * configure the highest compatible version. */
+					config->Change(_ai_saveload_name, _ai_saveload_version, false);
 					if (!config->HasScript()) {
-						if (_ai_saveload_name.compare("%_dummy") != 0) {
-							Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-							Debug(script, 0, "Configuration switched to Random AI.");
+						/* No version of the AI available. Try to configure the
+						 * latest version of the AI instead. */
+						config->Change(_ai_saveload_name, -1, false);
+						if (!config->HasScript()) {
+							if (_ai_saveload_name.compare("%_dummy") != 0) {
+								Debug(script, 0, "The savegame has an AI by the name '{}', {}version {} which is no longer available.", _ai_saveload_name, _ai_saveload_force_exact_match ? "forcing " : "", _ai_saveload_version);
+								Debug(script, 0, "Configuration switched to Random AI.");
+							}
+						} else {
+							Debug(script, 0, "The savegame has an AI by the name '{}', {}version {} which is no longer available.", _ai_saveload_name, _ai_saveload_force_exact_match ? "forcing " : "", _ai_saveload_version);
+							Debug(script, 0, "The latest version of that AI has been configured instead.");
 						}
-					} else {
-						Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-						Debug(script, 0, "The latest version of that AI has been configured instead");
+					} else if (_ai_saveload_force_exact_match) {
+						Debug(script, 0, "The savegame has an AI by the name '{}', forcing version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+						Debug(script, 0, "The highest compatible version of that AI has been configured instead.");
 					}
 				}
 			}
@@ -130,26 +143,34 @@ struct AIPLChunkHandler : ChunkHandler {
 
 			Company::Get(index)->ai_config = std::make_unique<AIConfig>();
 			config = Company::Get(index)->ai_config.get();
-			config->Change(_ai_saveload_name, _ai_saveload_version, false);
+			if (_ai_saveload_force_exact_match) config->Change(_ai_saveload_name, _ai_saveload_version, true);
 			if (!config->HasScript()) {
-				/* No version of the AI available that can load the data. Try to load the
-				 * latest version of the AI instead. */
-				config->Change(_ai_saveload_name, -1, false);
+				/* Exact version of the AI is not available. Try to load the highest
+				 * compatible version of the AI instead that can load the data. */
+				config->Change(_ai_saveload_name, _ai_saveload_version, false);
 				if (!config->HasScript()) {
-					if (_ai_saveload_name.compare("%_dummy") != 0) {
-						Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-						Debug(script, 0, "A random other AI will be loaded in its place.");
+					/* No version of the AI available that can load the data. Try to load the
+					 * latest version of the AI instead. */
+					config->Change(_ai_saveload_name, -1, false);
+					if (!config->HasScript()) {
+						if (_ai_saveload_name.compare("%_dummy") != 0) {
+							Debug(script, 0, "The savegame has an AI by the name '{}', {}version {} which is no longer available.", _ai_saveload_name, _ai_saveload_force_exact_match ? "forcing " : "", _ai_saveload_version);
+							Debug(script, 0, "A random other AI will be loaded in its place.");
+						} else {
+							Debug(script, 0, "The savegame had no AIs available at the time of saving.");
+							Debug(script, 0, "A random available AI will be loaded now.");
+						}
 					} else {
-						Debug(script, 0, "The savegame had no AIs available at the time of saving.");
-						Debug(script, 0, "A random available AI will be loaded now.");
+						Debug(script, 0, "The savegame has an AI by the name '{}', {}version {} which is no longer available.", _ai_saveload_name, _ai_saveload_force_exact_match ? "forcing " : "", _ai_saveload_version);
+						Debug(script, 0, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 					}
-				} else {
-					Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-					Debug(script, 0, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
+					/* Make sure the AI doesn't get the saveload data, as it was not the
+					 *  writer of the saveload data in the first place */
+					_ai_saveload_version = -1;
+				} else if (_ai_saveload_force_exact_match) {
+					Debug(script, 0, "The savegame has an AI by the name '{}', forcing version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+					Debug(script, 0, "The highest compatible version of that AI has been loaded instead.");
 				}
-				/* Make sure the AI doesn't get the saveload data, as it was not the
-				 *  writer of the saveload data in the first place */
-				_ai_saveload_version = -1;
 			}
 			config->StringToSettings(_ai_saveload_settings);
 			config->SetToLoadData(AIInstance::Load(_ai_saveload_version));
