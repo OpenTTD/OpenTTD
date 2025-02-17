@@ -971,10 +971,22 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 	for (const IniItem &item : group->items) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
-		config->Change(item.name);
+		std::string name;
+		std::size_t dot_position = item.name.find('.');
+		if (dot_position != std::string::npos) {
+			name = item.name.substr(0, dot_position);
+			std::string ver = item.name.substr(dot_position + 1);
+
+			int v = std::atoi(ver.c_str());
+			config->Change(name, v, true);
+		} else {
+			name = item.name;
+			config->Change(name);
+		}
+
 		if (!config->HasScript()) {
-			if (item.name != "none") {
-				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
+			if (name != "none") {
+				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", name);
 				continue;
 			}
 		}
@@ -998,10 +1010,22 @@ static void GameLoadConfig(const IniFile &ini, const char *grpname)
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 
-	config->Change(item.name);
+	std::string name;
+	std::size_t dot_position = item.name.find('.');
+	if (dot_position != std::string::npos) {
+		name = item.name.substr(0, dot_position);
+		std::string ver = item.name.substr(dot_position + 1);
+
+		int v = std::atoi(ver.c_str());
+		config->Change(name, v, true);
+	} else {
+		name = item.name;
+		config->Change(name);
+	}
+
 	if (!config->HasScript()) {
-		if (item.name != "none") {
-			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);
+		if (name != "none") {
+			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", name);
 			return;
 		}
 	}
@@ -1180,6 +1204,9 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 
 		if (config->HasScript()) {
 			name = config->GetName();
+			if (config->GetForceExactMatch()) {
+				name = fmt::format("{}.{}", name, config->GetVersion());
+			}
 		} else {
 			name = "none";
 		}
@@ -1199,6 +1226,9 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
 
 	if (config->HasScript()) {
 		name = config->GetName();
+		if (config->GetForceExactMatch()) {
+			name = fmt::format("{}.{}", name, config->GetVersion());
+		}
 	} else {
 		name = "none";
 	}
