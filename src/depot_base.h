@@ -19,13 +19,14 @@ extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	/* DepotID index member of DepotPool is 2 bytes. */
-	uint16_t town_cn; ///< The N-1th depot for this town (consecutive number)
-	TileIndex xy;
-	Town *town;
-	std::string name;
-	TimerGameCalendar::Date build_date; ///< Date of construction
+	uint16_t town_cn = 0; ///< The N-1th depot for this town (consecutive number)
+	TileIndex xy = INVALID_TILE;
+	Town *town = nullptr;
+	std::string name{};
+	TimerGameCalendar::Date build_date{}; ///< Date of construction
 
-	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
+	Depot() {}
+	Depot(TileIndex xy) : xy(xy), build_date(TimerGameCalendar::date) {}
 	~Depot();
 
 	static inline Depot *GetByTile(TileIndex tile)
