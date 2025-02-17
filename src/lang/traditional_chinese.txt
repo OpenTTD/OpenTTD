@@ -2859,6 +2859,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}可用�
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}可用年份：{ORANGE}至 {NUM} 年前可用
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}大小：{ORANGE}{NUM}x{NUM} 格
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}接受貨物：{ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}產出的貨物：{ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :市鎮邊緣
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊區邊緣
@@ -4336,8 +4337,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :電車車輛
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :飛機
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :費用：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :費用：{CURRENCY_LONG}  最高速度：{VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :速度：{VELOCITY} 功率：{POWER}
@@ -4998,7 +4997,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}畫面�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}訊息
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}來自 {STRING} 的訊息
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}超過地圖邊緣
@@ -5017,7 +5015,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 已�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 已達區塊清除的限制
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 已達植樹的限制
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名稱必須是唯一的
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}被 {1:STRING} 擋住
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}當暫停時不允許這樣做
 
 # Local authority errors
@@ -5926,3 +5923,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

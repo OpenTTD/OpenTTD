@@ -2139,7 +2139,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разреше�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с выбором сети дорог
 
 STR_CONFIG_SETTING_HOUSE_PLACER                                 :Строительство отдельных зданий: {STRING}
-STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Настройка возможности самостоятельного размещения игроками городских зданий
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Настройка возможности строительства игроками городских зданий
 ###length 3
 STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :запрещено
 STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :разрешено
@@ -3030,6 +3030,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Дата
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Дата: {ORANGE}до {NUM} г.
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размеры: {ORANGE}{NUM}×{NUM}
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Принимаемый груз: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Груза отдано: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Пригород
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраина
@@ -4519,8 +4520,6 @@ STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушн�
 STR_ENGINE_PREVIEW_SHIP                                         :судно
 STR_ENGINE_PREVIEW_SHIP.gen                                     :судна
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Цена: {CURRENCY_LONG} Масса: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Скорость: {VELOCITY} Мощность: {POWER}
@@ -5185,7 +5184,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не у�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Сообщение от {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}За краем карты
@@ -5204,7 +5202,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... до
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... достигнуто ограничение по количеству очищаемых клеток
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... достигнут лимит высадки деревьев
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Имя должно быть уникальным
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} мешает
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Запрещено во время паузы
 
 # Local authority errors
@@ -6187,3 +6184,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

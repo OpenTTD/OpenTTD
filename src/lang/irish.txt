@@ -4504,7 +4504,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Theip ar
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Teachtaireacht
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Teachtaireacht ó {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Thar taobh na léarscáile
@@ -4523,7 +4522,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... bain
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... baineadh teorainn glanta na dtíleanna amach
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... teorainn chun crainnte a chur bainte amach
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Caithfidh ainm uathúil a bheith ann
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}Tá {1:STRING} sa bhealach
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ní cheadaítear é seo le linn sosa
 
 # Local authority errors
@@ -5377,3 +5375,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

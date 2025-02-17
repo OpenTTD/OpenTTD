@@ -4510,7 +4510,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}!לא י
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}הודעה
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING} -הודעה מ
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}מחוץ לשטח המפה
@@ -4529,7 +4528,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... הג
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... הגעת למגבלת פינוי המשבצות
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... הגעת למגבלת נטיעת העצים
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}השם חייב להיות ייחודי
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}חוסם את הדרך {1:STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}אסור בזמן שהמשחק מושהה
 
 # Local authority errors
@@ -5401,3 +5399,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

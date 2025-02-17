@@ -4317,8 +4317,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramm
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :õhusõiduki
 STR_ENGINE_PREVIEW_SHIP                                         :laeva
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Hind: {CURRENCY_LONG}  Kaal: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Hind: {CURRENCY_LONG}  Tippkiirus: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Tippkiirus: {VELOCITY}  Võimsus: {POWER}
@@ -4979,7 +4977,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekraanip
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Sõnum
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING} teatab
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Väljaspool kaardi piire
@@ -4998,7 +4995,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maas
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruudutühjenduse limiit täis
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puu istutamise limiit täis
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nime ei tohi korduda
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} on ees
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Pole lubatud kui mäng seisab
 
 # Local authority errors
@@ -5892,3 +5888,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

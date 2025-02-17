@@ -4319,8 +4319,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :toa xe điện
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
 STR_ENGINE_PREVIEW_SHIP                                         :tàu thuỷ
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Chi phí: {CURRENCY_LONG}  Trọng lượng: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Chi phí: {CURRENCY_LONG}  Tốc độ tối đa: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Tốc độ: {VELOCITY}  Công suất: {POWER}
@@ -4981,7 +4979,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Chụp m
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Thông Điệp
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Tin nhắn từ {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Vượt qua giới hạn bản đồ
@@ -5000,7 +4997,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... gi�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... giới hạn xoá ô đã tới
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... số cây trồng đã tới giới hạn
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Tên phải không trùng lặp
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} đang trên đường.
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Không cho phép trong khi dừng
 
 # Local authority errors
@@ -5901,3 +5897,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

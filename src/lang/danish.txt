@@ -4315,8 +4315,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :sporvogn
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :fly
 STR_ENGINE_PREVIEW_SHIP                                         :skib
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Pris: {CURRENCY_LONG}  Vægt: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Pris: {CURRENCY_LONG}  Max. Hastighed: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Hastighed: {VELOCITY}  Styrke: {POWER}
@@ -4977,7 +4975,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Fejl und
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Besked
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Besked fra {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Ude over kanten af kortet
@@ -4996,7 +4993,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... græ
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... grænsen for rydning af felter er nået
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... grænse for plantning af træer er nået
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vejen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikke tilladt imens spillet er på pause
 
 # Local authority errors
@@ -5897,3 +5893,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

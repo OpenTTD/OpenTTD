@@ -3824,7 +3824,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Tangkapa
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Pesanan
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Pesanan dari {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Keluar peta
@@ -3842,7 +3841,6 @@ STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... kawa
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... limit kerja lanskap telah dicapai
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... Limit pembersihan petak dicapai
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama mesti unik
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} menghalang
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak dibenarkan semasa dihentikan
 
 # Local authority errors
@@ -4677,3 +4675,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

@@ -4027,7 +4027,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Pantaila
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mezua
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING} bidalitako mezua
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Maparen ertza itzalita
@@ -4046,7 +4045,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... terr
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... karratua nibelazio mugara iritsi da
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... gehienez landatu daitezkeen zuhaitz kopurura iritsi da
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ezin da izena errepikatu
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} bidean
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ezin da jokoa geldituta dagoenean
 
 # Local authority errors
@@ -4880,3 +4878,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

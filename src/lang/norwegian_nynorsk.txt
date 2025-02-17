@@ -4078,7 +4078,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermdu
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Melding
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Melding frå {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Utanfor kartet
@@ -4097,7 +4096,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... land
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutetømminga si grense er nådd
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... øvre grense for antal tre er nådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet må vera unikt
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er i vegen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikkje tillet når spelet er pausa
 
 # Local authority errors
@@ -4941,3 +4939,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

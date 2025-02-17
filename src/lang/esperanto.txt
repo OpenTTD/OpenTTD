@@ -4784,7 +4784,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekranfot
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mesaĝo
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mesaĝo de {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}For de la mapo
@@ -4803,7 +4802,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... land
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... kahelan forigantan limigon plenumis
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... arbo planti limo atingita
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nomo devas esti ununura
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} okupas la lokon
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ne permesa dum paŭzo
 
 # Local authority errors
@@ -5682,3 +5680,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

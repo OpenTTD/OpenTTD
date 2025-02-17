@@ -4583,8 +4583,6 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}караб
 STR_ENGINE_PREVIEW_SHIP.gen                                     :карабля
 STR_ENGINE_PREVIEW_SHIP.acc                                     :карабель
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Кошт: {CURRENCY_LONG} Маса: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Кошт: {CURRENCY_LONG} Макс. хуткасць: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Хуткасць: {VELOCITY} Магутнасць: {POWER}
@@ -5250,7 +5248,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не а�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Паведамленьне
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Паведамленьне ад {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}За краем мапы
@@ -5269,7 +5266,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... да
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... дасягнута абмежаваньне па колькасьці ачышчаных клетак
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... дасягнены лiмiт пасаджаных дрэваў
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Імя павінна быць унікальным
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на шляху
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Забаронена падчас паўзы
 
 # Local authority errors
@@ -6278,3 +6274,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

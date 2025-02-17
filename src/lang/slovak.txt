@@ -4319,8 +4319,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=z}električk
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=s}lietadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Cena: {CURRENCY_LONG}  Váha: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Cena: {CURRENCY_LONG}  Max. Rýchlosť: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Rýchlosť: {VELOCITY} Výkon: {POWER}
@@ -4980,7 +4978,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Uloženi
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Správa
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Správa od {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Za okrajom mapy
@@ -4999,7 +4996,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... limi
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... limit čistenia políčok dosiahnutý
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... dosiahol si limit sadenia stromov
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Meno musí byť jedinečné
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} v ceste
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nieje povolené ak je hra pozastavená
 
 # Local authority errors
@@ -5893,3 +5889,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

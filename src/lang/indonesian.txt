@@ -4785,7 +4785,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Pengambi
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Pesan
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Pesan dari {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Batas tepi peta
@@ -4804,7 +4803,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... bata
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... batas penghapusan area terlampaui
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... batas penanaman pohon tercapai
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama haruslah unik
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :terhalang {WHITE}{1:STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak diijinkan saat dijeda
 
 # Local authority errors
@@ -5683,3 +5681,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

@@ -1998,7 +1998,6 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... мо
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Порака
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Порака од {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Надвор од работ на мапата
@@ -2009,7 +2008,6 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ова �
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Не може да се исчисти оваа област...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... несоодветно место
 STR_ERROR_OWNED_BY                                              :{WHITE}... во сопственост на {STRING}
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} во начинот на
 
 # Local authority errors
 
@@ -2259,3 +2257,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

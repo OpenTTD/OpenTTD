@@ -4336,8 +4336,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :streetcar
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aircraft
 STR_ENGINE_PREVIEW_SHIP                                         :ship
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Cost: {CURRENCY_LONG}  Weight: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Cost: {CURRENCY_LONG}  Max. Speed: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Speed: {VELOCITY}  Power: {POWER}
@@ -4998,7 +4996,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screensh
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Message
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Message from {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Off edge of map
@@ -5017,7 +5014,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... terr
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... tile clearing limit reached
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... tree planting limit reached
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name must be unique
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in the way
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Not allowed while paused
 
 # Local authority errors
@@ -5926,3 +5922,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

@@ -4290,8 +4290,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :cerbyd tramffor
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :awyren
 STR_ENGINE_PREVIEW_SHIP                                         :llong
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Cost: {CURRENCY_LONG}  Pwysau: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Cost: {CURRENCY_LONG}  Cyflymder uchaf: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Cyflymder: {VELOCITY}  Pŵer: {POWER}
@@ -4951,7 +4949,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Methodd 
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Neges
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Neges gan {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Oddi ar ymyl y map
@@ -4970,7 +4967,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... wedi
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... diben clirio teiliau wedi ei gyrraedd
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... wedi cyrraedd y diben planu coed
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Rhaid i'r enw fod yn unigryw
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} yn y ffordd
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni chaniateir hynny tra fo'r gêm wedi ei oedi
 
 # Local authority errors
@@ -5871,3 +5867,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

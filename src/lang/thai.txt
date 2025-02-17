@@ -4253,7 +4253,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}กา�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}ข้อความ
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}ข้อความจาก {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}อยู่นอกขอบแผนที่
@@ -4272,7 +4271,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... ก�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... การเคลียพื้่นที่ถึงขีดจำักัด
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... การปลูกต้นไม้ถึงขีดจำกัด
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}ชื่อนี้มีอยู่แล้ว!!
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} ในเส้นทาง
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}ไม่อนุญาตให้ สร้าง/รื้อถอน ขณะหยุดเกม
 
 # Local authority errors
@@ -5113,3 +5111,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

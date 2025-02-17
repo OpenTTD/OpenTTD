@@ -4073,7 +4073,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}لم ي�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}رسالة
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}رسالة من {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}خارج حدود الخريطة
@@ -4092,7 +4091,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... تم
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... تم الوصول لاقصى عدد ازالة
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... تم الوصول للحد الاقصى لزرع الاشجار
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}السم يجب ان يكون فريدا - غير مستخدم
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} على الطريق
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}غير مسموح في حين توقفت
 
 # Local authority errors
@@ -4937,3 +4935,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

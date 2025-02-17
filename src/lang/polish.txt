@@ -2586,7 +2586,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Najwyżs
 STR_INTRO_HELP                                                  :{BLACK}Pomoc i Instrukcje
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ustawienia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pobierz Dodatki
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Przeglądarka Dodatków
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ustawienia SI
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ustawienia Skryptu
 STR_INTRO_QUIT                                                  :{BLACK}Wyjście
@@ -2606,7 +2606,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wybierz 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Otwórz opcje gry
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Otwórz tabelę najwyższych wyników
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Skorzystaj z dokumentacji i zasobów online
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otwórz ustawienia gry
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otwórz ustawienia rozgrywki
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Otwórz ustawienia dodatków NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych dodatków lub aktualizacji do pobrania
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otwórz ustawienia SI
@@ -3040,7 +3040,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Twój se
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Inni gracze nie będą mogli połączyć się z twoim serwerem
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Pobieranie Dodatkowej Zawartości
+STR_CONTENT_TITLE                                               :{WHITE}Przeglądarka Dodatków
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Rodzaj zawartości
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nazwa
@@ -3239,6 +3239,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Lata: {O
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Lata: {ORANGE}Do {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rozmiar: {ORANGE}{NUM}x{NUM} p{P ole ola ól}
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akceptowany ładunek: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produkowany ładunek: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Obrzeża
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peryferia
@@ -4722,8 +4723,6 @@ STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}statek
 STR_ENGINE_PREVIEW_SHIP.b                                       :statek
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Koszt: {CURRENCY_LONG}  Masa: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Koszt: {CURRENCY_LONG}  Prędkość maksymalna: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Prędkość: {VELOCITY}  Moc: {POWER}
@@ -5384,7 +5383,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Błąd z
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Wiadomość
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Wiadomość od {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Poza krawędzią mapy
@@ -5403,7 +5401,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... osi�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... osiągnięto limit czyszczenia pól
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... wykorzystano limit sadzenia drzew
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nazwa nie może się powtarzać
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na drodze
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwolone w trakcie pauzy
 
 # Local authority errors
@@ -6367,3 +6364,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

@@ -2952,6 +2952,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Έτη: 
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Έτη: {ORANGE}Έως {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Μέγεθος: {ORANGE}{NUM}x{NUM} τετραγωνίδια
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Αποδεκτό φορτίο: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Φορτίο που παρήχθει: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Άκρη
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Περίχωρα
@@ -4437,8 +4438,6 @@ STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :αεροσκά�
 STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοίου
 STR_ENGINE_PREVIEW_SHIP.geniki                                  :πλοίου
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Κόστος: {CURRENCY_LONG}  Βάρος: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Κόστος: {CURRENCY_LONG}  Μεγ. Ταχύτητα: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Ταχύτητα: {VELOCITY} Ισχύς: {POWER}
@@ -5099,7 +5098,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Η λή�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Μήνυμα
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Μήνυμα από {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Από την άκρη του χάρτη
@@ -5118,7 +5116,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... υπ
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... υπερβαίνει το όριο καθαρισμού τετραγωνιδίων
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... υπερβαίνει το όριο φύτευσης δέντρων
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Το όνομα πρέπει να είναι μοναδικό
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} στη μέση
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Δεν επιτρέπεται όσο το παιχνίδι είναι σε παύση
 
 # Local authority errors
@@ -6031,3 +6028,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+

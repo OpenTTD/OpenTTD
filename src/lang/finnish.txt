@@ -2859,6 +2859,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Vuodet: 
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Vuodet: {ORANGE}{NUM} saakka
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Koko: {ORANGE}{NUM}×{NUM} ruutua
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Ottaa vastaan: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Tuottaa: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Reuna-alueet
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Laitamat
@@ -4336,8 +4337,6 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :raitiovaunu
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :ilma-alus
 STR_ENGINE_PREVIEW_SHIP                                         :laiva
 
-STR_ENGINE_PREVIEW_TEXT3                                        :{BLACK}{STRING}{}{5:STRING}{}{STRING}
-STR_ENGINE_PREVIEW_TEXT4                                        :{BLACK}{STRING}{}{STRING}{}{STRING}{}{STRING}
 STR_ENGINE_PREVIEW_COST_WEIGHT                                  :Hinta: {CURRENCY_LONG}  Paino: {WEIGHT_SHORT}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :Hinta: {CURRENCY_LONG}  Huippunopeus: {VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :Nopeus: {VELOCITY}  Teho: {POWER}
@@ -4998,7 +4997,6 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Kuvakaap
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Viesti
-STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Viesti: {STRING}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Kartan reunan ulkopuolella.
@@ -5017,7 +5015,6 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maan
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruutujen tyhjennysraja saavutettu
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puiden istutusraja saavutettu
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nimen täytyy olla ainutkertainen
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} on tiellä.
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ei sallittu pelin ollessa pysäytetty
 
 # Local authority errors
@@ -5926,3 +5923,4 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+
