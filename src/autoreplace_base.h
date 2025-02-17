@@ -31,13 +31,15 @@ extern EngineRenewPool _enginerenew_pool;
  * it.
  */
 struct EngineRenew : EngineRenewPool::PoolItem<&_enginerenew_pool> {
-	EngineID from;
-	EngineID to;
-	EngineRenew *next;
-	GroupID group_id;
-	bool replace_when_old; ///< Do replacement only when vehicle is old.
+	EngineID from = EngineID::Invalid();
+	EngineID to = EngineID::Invalid();
+	EngineRenew *next = nullptr;
+	GroupID group_id = GroupID::Invalid();
+	bool replace_when_old = false; ///< Do replacement only when vehicle is old.
 
-	EngineRenew(EngineID from = EngineID::Invalid(), EngineID to = EngineID::Invalid()) : from(from), to(to) {}
+	EngineRenew() {}
+	EngineRenew(EngineID from, EngineID to, GroupID group_id, bool replace_when_old, EngineRenew *next) :
+		from(from), to(to), next(next), group_id(group_id), replace_when_old(replace_when_old) {}
 	~EngineRenew() {}
 };
 

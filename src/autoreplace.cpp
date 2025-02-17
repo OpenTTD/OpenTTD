@@ -109,13 +109,8 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 	if (!EngineRenew::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		er = new EngineRenew(old_engine, new_engine);
-		er->group_id = group;
-		er->replace_when_old = replace_when_old;
-
 		/* Insert before the first element */
-		er->next = (EngineRenew *)(*erl);
-		*erl = (EngineRenewList)er;
+		*erl = new EngineRenew(old_engine, new_engine, group, replace_when_old, *erl);
 	}
 
 	return CommandCost();
