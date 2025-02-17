@@ -25,11 +25,13 @@
 static std::string _game_saveload_name;
 static int         _game_saveload_version;
 static std::string _game_saveload_settings;
+static bool        _game_saveload_force_exact_match;
 
 static const SaveLoad _game_script_desc[] = {
 	   SLEG_SSTR("name",      _game_saveload_name,         SLE_STR),
 	   SLEG_SSTR("settings",  _game_saveload_settings,     SLE_STR),
 	    SLEG_VAR("version",   _game_saveload_version,   SLE_UINT32),
+	SLEG_CONDVAR("force_exact_match", _game_saveload_force_exact_match, SLE_BOOL, SLV_SCRIPT_FORCE_EXACT_MATCH, SL_MAX_VERSION),
 };
 
 static void SaveReal_GSDT(int)
@@ -46,6 +48,7 @@ static void SaveReal_GSDT(int)
 	}
 
 	_game_saveload_settings = config->SettingsToString();
+	_game_saveload_force_exact_match = config->GetForceExactMatch();
 
 	SlObject(nullptr, _game_script_desc);
 	Game::Save();
@@ -64,6 +67,7 @@ struct GSDTChunkHandler : ChunkHandler {
 		if (SlIterateArray() == -1) return;
 
 		_game_saveload_version = -1;
+		_game_saveload_force_exact_match = false;
 		SlObject(nullptr, slt);
 
 		if (_game_mode == GM_MENU || (_networking && !_network_server)) {
@@ -74,26 +78,34 @@ struct GSDTChunkHandler : ChunkHandler {
 
 		GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
 		if (!_game_saveload_name.empty()) {
-			config->Change(_game_saveload_name, _game_saveload_version, false);
+			if (_game_saveload_force_exact_match) config->Change(_game_saveload_name, _game_saveload_version, true);
 			if (!config->HasScript()) {
-				/* No version of the GameScript available that can load the data. Try to load the
-				 * latest version of the GameScript instead. */
-				config->Change(_game_saveload_name, -1, false);
+				/* Exact version of the GameScript is not available. Try to load the highest
+				 * compatible version of the AI instead that can load the data. */
+				config->Change(_game_saveload_name, _game_saveload_version, false);
 				if (!config->HasScript()) {
-					if (_game_saveload_name.compare("%_dummy") != 0) {
-						Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
-						Debug(script, 0, "This game will continue to run without GameScript.");
+					/* No version of the GameScript available that can load the data. Try to load the
+					 * latest version of the GameScript instead. */
+					config->Change(_game_saveload_name, -1, false);
+					if (!config->HasScript()) {
+						if (_game_saveload_name.compare("%_dummy") != 0) {
+							Debug(script, 0, "The savegame has a GameScript by the name '{}', {}version {} which is no longer available.", _game_saveload_name, _game_saveload_force_exact_match ? "forcing " : "", _game_saveload_version);
+							Debug(script, 0, "This game will continue to run without GameScript.");
+						} else {
+							Debug(script, 0, "The savegame had no GameScript available at the time of saving.");
+							Debug(script, 0, "This game will continue to run without GameScript.");
+						}
 					} else {
-						Debug(script, 0, "The savegame had no GameScript available at the time of saving.");
-						Debug(script, 0, "This game will continue to run without GameScript.");
+						Debug(script, 0, "The savegame has a GameScript by the name '{}', {}version {} which is no longer available.", _game_saveload_name, _game_saveload_force_exact_match ? "forcing " : "", _game_saveload_version);
+						Debug(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 					}
-				} else {
-					Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
-					Debug(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
+					/* Make sure the GameScript doesn't get the saveload data, as it was not the
+					 *  writer of the saveload data in the first place */
+					_game_saveload_version = -1;
+				} else if (_game_saveload_force_exact_match) {
+					Debug(script, 0, "The savegame has a GameScript by the name '{}', forcing version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
+					Debug(script, 0, "The highest compatible version of that GameScript has been loaded instead.");
 				}
-				/* Make sure the GameScript doesn't get the saveload data, as it was not the
-				 *  writer of the saveload data in the first place */
-				_game_saveload_version = -1;
 			}
 		}
 
