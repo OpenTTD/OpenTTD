@@ -1011,7 +1011,6 @@ CommandCost CmdBuildTrainDepot(DoCommandFlags flags, TileIndex tile, RailType ra
 			SetRailDepotExitDirection(tile, dir);
 		} else {
 			Depot *d = new Depot(tile);
-			d->build_date = TimerGameCalendar::date;
 
 			MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 			MakeDefaultName(d);
