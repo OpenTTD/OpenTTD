@@ -583,7 +583,6 @@ void NewGRFSpriteLayout::Allocate(uint num_sprites)
  */
 void NewGRFSpriteLayout::AllocateRegisters()
 {
-	assert(!this->seq.empty());
 	assert(this->registers.empty());
 
 	this->registers.resize(1 + this->seq.size(), {}); // 1 for the ground sprite
