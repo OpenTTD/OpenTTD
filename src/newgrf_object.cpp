@@ -496,8 +496,8 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 	if (Company::IsValidID(_local_company)) {
 		/* Get the colours of our company! */
 		if (spec->flags.Test(ObjectFlag::Uses2CC)) {
-			const Livery *l = Company::Get(_local_company)->livery;
-			palette = SPR_2CCMAP_BASE + l->colour1 + l->colour2 * 16;
+			const Livery &l = Company::Get(_local_company)->livery[0];
+			palette = SPR_2CCMAP_BASE + l.colour1 + l.colour2 * 16;
 		} else {
 			palette = COMPANY_SPRITE_COLOUR(_local_company);
 		}
