@@ -8,6 +8,7 @@
 /** @file economy.cpp Handling of the economy. */
 
 #include "stdafx.h"
+#include <ranges>
 #include "company_func.h"
 #include "command_func.h"
 #include "industry.h"
@@ -246,36 +247,21 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	/* Generate statistics depending on recent income statistics */
 	{
-		static_assert(MAX_HISTORY_QUARTERS >= 12u);
 		int numec = std::min<uint>(c->num_valid_stat_ent, 12u);
 		if (numec != 0) {
-			auto cee = c->old_economy.begin();
-			Money min_income = cee->income + cee->expenses;
-			Money max_income = cee->income + cee->expenses;
+			auto [min_income, max_income] = std::ranges::minmax(c->old_economy | std::views::take(numec) | std::views::transform([](const auto &ce) { return ce.income + ce.expenses; }));
 
-			do {
-				min_income = std::min(min_income, cee->income + cee->expenses);
-				max_income = std::max(max_income, cee->income + cee->expenses);
-			} while (++cee, --numec);
-
-			if (min_income > 0) {
-				_score_part[owner][SCORE_MIN_INCOME] = min_income;
-			}
-
+			if (min_income > 0) _score_part[owner][SCORE_MIN_INCOME] = min_income;
 			_score_part[owner][SCORE_MAX_INCOME] = max_income;
 		}
 	}
 
 	/* Generate score depending on amount of transported cargo */
 	{
-		static_assert(MAX_HISTORY_QUARTERS >= 4u);
 		int numec = std::min<uint>(c->num_valid_stat_ent, 4u);
 		if (numec != 0) {
-			auto cee = c->old_economy.begin();
 			OverflowSafeInt64 total_delivered = 0;
-			do {
-				total_delivered += cee->delivered_cargo.GetSum<OverflowSafeInt64>();
-			} while (++cee, --numec);
+			for (auto &ce : c->old_economy | std::views::take(numec)) total_delivered += ce.delivered_cargo.GetSum<OverflowSafeInt64>();
 
 			_score_part[owner][SCORE_DELIVERED] = total_delivered;
 		}
