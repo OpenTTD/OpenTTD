@@ -7,12 +7,14 @@
 
 #include "../script_controller.hpp"
 
-template <> const char *GetClassName<ScriptController, ScriptType::GS>() { return "GSController"; }
+template <> SQInteger PushClassName<ScriptController, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSController", -1); return 1; }
 
 void SQGSController_Register(Squirrel *engine)
 {
 	DefSQClass<ScriptController, ScriptType::GS> SQGSController("GSController");
 	SQGSController.PreRegister(engine);
+
+	SQGSController.DefSQAdvancedStaticMethod(engine, &PushClassName<ScriptController, ScriptType::GS>, "_typeof");
 
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::GetTick,           "GetTick",           1, ".");
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::GetOpsTillSuspend, "GetOpsTillSuspend", 1, ".");

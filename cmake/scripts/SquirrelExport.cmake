@@ -340,7 +340,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
         endif()
 
         string(APPEND SQUIRREL_EXPORT "\n")
-        string(APPEND SQUIRREL_EXPORT "\ntemplate <> const char *GetClassName<${CLS}, ScriptType::${APIUC}>() { return \"${API_CLS}\"; }")
+        string(APPEND SQUIRREL_EXPORT "\ntemplate <> SQInteger PushClassName<${CLS}, ScriptType::${APIUC}>(HSQUIRRELVM vm) { sq_pushstring(vm, \"${API_CLS}\", -1); return 1; }")
         string(APPEND SQUIRREL_EXPORT "\n")
 
         # Then do the registration functions of the class.
@@ -484,9 +484,8 @@ foreach(LINE IN LISTS SOURCE_LINES)
                 string(APPEND SQUIRREL_EXPORT "\n	SQ${API_CLS}.DefSQStaticMethod(engine, &${CLS}::${FUNCNAME},${SPACES}\"${FUNCNAME}\",${SPACES}${ARGC}, \"${TYPES}\");")
             endif()
         endforeach()
-        if(MLEN)
-            string(APPEND SQUIRREL_EXPORT "\n")
-        endif()
+        string(APPEND SQUIRREL_EXPORT "\n	SQ${API_CLS}.DefSQAdvancedStaticMethod(engine, &PushClassName<${CLS}, ScriptType::${APIUC}>, \"_typeof\");")
+        string(APPEND SQUIRREL_EXPORT "\n")
 
         # Non-static methods
         set(MLEN 0)
