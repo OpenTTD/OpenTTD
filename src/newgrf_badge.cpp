@@ -403,6 +403,7 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
 	std::set<BadgeClassID> classes;
 	for (const BadgeID &index : badges) classes.insert(GetBadge(index)->class_index);
 
+	std::string_view list_separator = GetListSeparator();
 	for (const BadgeClassID &class_index : classes) {
 		const Badge *class_badge = GetClassBadge(class_index);
 		if (class_badge == nullptr || class_badge->name == STR_NULL) continue;
@@ -415,7 +416,7 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
 
 			if (!s.empty()) {
 				if (badge->flags.Test(BadgeFlag::NameListFirstOnly)) continue;
-				s += ", ";
+				s += list_separator;
 			}
 			AppendStringInPlace(s, badge->name);
 			if (badge->flags.Test(BadgeFlag::NameListStop)) break;
