@@ -25,10 +25,7 @@ static bool CheckAPIVersion(const std::string &api_version)
 	return std::ranges::find(GameInfo::ApiVersions, api_version) != std::end(GameInfo::ApiVersions);
 }
 
-#if defined(_WIN32)
-#undef GetClassName
-#endif /* _WIN32 */
-template <> const char *GetClassName<GameInfo, ScriptType::GS>() { return "GSInfo"; }
+template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSInfo", -1); return 1; }
 
 /* static */ void GameInfo::RegisterAPI(Squirrel *engine)
 {
@@ -36,6 +33,7 @@ template <> const char *GetClassName<GameInfo, ScriptType::GS>() { return "GSInf
 	DefSQClass<GameInfo, ScriptType::GS> SQGSInfo("GSInfo");
 	SQGSInfo.PreRegister(engine);
 	SQGSInfo.AddConstructor<void (GameInfo::*)(), 1>(engine, "x");
+	SQGSInfo.DefSQAdvancedStaticMethod(engine, &PushClassName<GameInfo, ScriptType::GS>, "_typeof");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddSetting, "AddSetting");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddLabels, "AddLabels");
 	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_NONE");

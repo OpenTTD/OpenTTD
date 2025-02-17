@@ -16,7 +16,7 @@
 #include "../core/convertible_through_base.hpp"
 #include "squirrel_helper_type.hpp"
 
-template <class CL, ScriptType ST> const char *GetClassName();
+template <class CL, ScriptType ST> SQInteger PushClassName(HSQUIRRELVM);
 
 /**
  * The Squirrel convert routines
@@ -240,8 +240,7 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		const char *className = GetClassName<Tcls, Ttype>();
-		sq_pushstring(vm, className, -1);
+		PushClassName<Tcls, Ttype>(vm);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
 		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, "class method is non-static");
@@ -284,8 +283,7 @@ namespace SQConvert {
 
 		/* Protect against calls to a non-static method in a static way */
 		sq_pushroottable(vm);
-		const char *className = GetClassName<Tcls, Ttype>();
-		sq_pushstring(vm, className, -1);
+		PushClassName<Tcls, Ttype>(vm);
 		sq_get(vm, -2);
 		sq_pushobject(vm, instance);
 		if (sq_instanceof(vm) != SQTrue) return sq_throwerror(vm, "class method is non-static");
