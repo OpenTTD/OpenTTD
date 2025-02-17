@@ -23,13 +23,13 @@ extern CargoPaymentPool _cargo_payment_pool;
  */
 struct CargoPayment : CargoPaymentPool::PoolItem<&_cargo_payment_pool> {
 	/* CargoPaymentID index member of CargoPaymentPool is 4 bytes. */
-	StationID current_station; ///< NOSAVE: The current station
-	Company *owner; ///< NOSAVE: The owner of the vehicle
+	StationID current_station = StationID::Invalid(); ///< NOSAVE: The current station
+	Company *owner = nullptr; ///< NOSAVE: The owner of the vehicle
 
-	Vehicle *front;        ///< The front vehicle to do the payment of
-	Money route_profit;    ///< The amount of money to add/remove from the bank account
-	Money visual_profit;   ///< The visual profit to show
-	Money visual_transfer; ///< The transfer credits to be shown
+	Vehicle *front = nullptr; ///< The front vehicle to do the payment of
+	Money route_profit = 0; ///< The amount of money to add/remove from the bank account
+	Money visual_profit = 0; ///< The visual profit to show
+	Money visual_transfer = 0; ///< The transfer credits to be shown
 
 	/** Constructor for pool saveload */
 	CargoPayment() {}
