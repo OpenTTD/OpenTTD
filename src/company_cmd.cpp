@@ -66,7 +66,6 @@ INSTANTIATE_POOL_METHODS(Company)
 Company::Company(StringID name_1, bool is_ai)
 {
 	this->name_1 = name_1;
-	this->location_of_HQ = INVALID_TILE;
 	this->is_ai = is_ai;
 	this->terraform_limit    = (uint32_t)_settings_game.construction.terraform_frame_burst << 16;
 	this->clear_limit        = (uint32_t)_settings_game.construction.clear_frame_burst << 16;

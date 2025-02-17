@@ -76,9 +76,9 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */
 struct Livery {
-	uint8_t in_use;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
-	Colours colour1; ///< First colour, for all vehicles.
-	Colours colour2; ///< Second colour, for vehicles with 2CC support.
+	uint8_t in_use = 0;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
+	Colours colour1 = COLOUR_BEGIN; ///< First colour, for all vehicles.
+	Colours colour2 = COLOUR_BEGIN; ///< Second colour, for vehicles with 2CC support.
 };
 
 void ResetCompanyLivery(Company *c);
