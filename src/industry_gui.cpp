@@ -311,6 +311,7 @@ class BuildIndustryWindow : public Window {
 	bool enabled;                               ///< Availability state of the selected industry.
 	Scrollbar *vscroll;
 	Dimension legend;                           ///< Dimension of the legend 'blob'.
+	GUIBadgeClasses badge_classes{GSF_INDUSTRIES};
 
 	/** The largest allowed minimum-width of the window, given in line heights */
 	static const int MAX_MINWIDTH_LINEHEIGHTS = 20;
@@ -436,7 +437,7 @@ public:
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
 				}
 				resize.height = std::max<uint>({this->legend.height, d.height, count.height}) + padding.height;
-				d.width += this->legend.width + WidgetDimensions::scaled.hsep_wide + WidgetDimensions::scaled.hsep_normal + count.width + padding.width;
+				d.width += this->badge_classes.GetTotalColumnsWidth() + this->legend.width + WidgetDimensions::scaled.hsep_wide + WidgetDimensions::scaled.hsep_normal + count.width + padding.width;
 				d.height = 5 * resize.height;
 				size = maxdim(size, d);
 				break;
@@ -533,18 +534,30 @@ public:
 				icon.top    = r.top + (this->resize.step_height - this->legend.height + 1) / 2;
 				icon.bottom = icon.top + this->legend.height - 1;
 
+				auto badge_column_widths = badge_classes.GetColumnWidths();
+
 				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->list);
 				for (auto it = first; it != last; ++it) {
 					IndustryType type = *it;
 					bool selected = this->selected_type == type;
 					const IndustrySpec *indsp = GetIndustrySpec(type);
 
+					Rect tr = text;
+					if (badge_column_widths.size() >= 1 && badge_column_widths[0] > 0) {
+						DrawBadgeColumn(tr.WithWidth(badge_column_widths[0], rtl), 0, this->badge_classes, indsp->badges, GSF_INDUSTRIES, std::nullopt, PAL_NONE);
+						tr = tr.Indent(badge_column_widths[0], rtl);
+					}
+					if (badge_column_widths.size() >= 2 && badge_column_widths[1] > 0) {
+						DrawBadgeColumn(tr.WithWidth(badge_column_widths[1], !rtl), 0, this->badge_classes, indsp->badges, GSF_INDUSTRIES, std::nullopt, PAL_NONE);
+						tr = tr.Indent(badge_column_widths[1], !rtl);
+					}
+
 					/* Draw the name of the industry in white is selected, otherwise, in orange */
-					DrawString(text, indsp->name, selected ? TC_WHITE : TC_ORANGE);
+					DrawString(tr, indsp->name, selected ? TC_WHITE : TC_ORANGE);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
 					SetDParam(0, Industry::GetIndustryTypeCount(type));
-					DrawString(text, STR_JUST_COMMA, TC_BLACK, SA_RIGHT, false, FS_SMALL);
+					DrawString(tr, STR_JUST_COMMA, TC_BLACK, SA_RIGHT, false, FS_SMALL);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
