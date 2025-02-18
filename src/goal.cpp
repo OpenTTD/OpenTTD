@@ -85,12 +85,7 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID co
 	if (!Goal::IsValidGoalDestination(company, type, dest)) return { CMD_ERROR, GoalID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Goal *g = new Goal();
-		g->type = type;
-		g->dst = dest;
-		g->company = company;
-		g->text = text;
-		g->completed = false;
+		Goal *g = new Goal(type, dest, company, text);
 
 		if (g->company == CompanyID::Invalid()) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
