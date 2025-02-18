@@ -24,7 +24,7 @@ extern NetworkAdminSocketPool _networkadminsocket_pool;
 /** Class for handling the server side of the game connection. */
 class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, ADMIN_PACKET_SERVER_FULL, ADMIN_PACKET_SERVER_BANNED> {
 private:
-	std::unique_ptr<NetworkAuthenticationServerHandler> authentication_handler; ///< The handler for the authentication.
+	std::unique_ptr<NetworkAuthenticationServerHandler> authentication_handler = nullptr; ///< The handler for the authentication.
 protected:
 	NetworkRecvStatus Receive_ADMIN_JOIN(Packet &p) override;
 	NetworkRecvStatus Receive_ADMIN_QUIT(Packet &p) override;
@@ -43,9 +43,9 @@ protected:
 	NetworkRecvStatus SendAuthRequest();
 	NetworkRecvStatus SendEnableEncryption();
 public:
-	AdminUpdateFrequency update_frequency[ADMIN_UPDATE_END]; ///< Admin requested update intervals.
-	std::chrono::steady_clock::time_point connect_time;      ///< Time of connection.
-	NetworkAddress address;                                  ///< Address of the admin.
+	std::array<AdminUpdateFrequency, ADMIN_UPDATE_END> update_frequency{}; ///< Admin requested update intervals.
+	std::chrono::steady_clock::time_point connect_time{}; ///< Time of connection.
+	NetworkAddress address{}; ///< Address of the admin.
 
 	ServerNetworkAdminSocketHandler(SOCKET s);
 	~ServerNetworkAdminSocketHandler();
