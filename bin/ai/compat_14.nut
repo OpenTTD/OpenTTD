@@ -8,3 +8,8 @@
 /* This file contains code to downgrade the API from 15 to 14. */
 
 AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+
+AIBaseStation.IsValidBaseStation <- function(station_id)
+{
+	return AIStation.IsValidStation(station_id) || AIWaypoint.IsValidWaypoint(station_id);
+}
