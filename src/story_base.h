@@ -120,7 +120,7 @@ inline bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)
 
 /** Helper to construct packed "id" values for button-type StoryPageElement */
 struct StoryPageButtonData {
-	uint32_t referenced_id;
+	uint32_t referenced_id = 0;
 
 	void SetColour(Colours button_colour);
 	void SetFlags(StoryPageButtonFlags flags);
@@ -152,38 +152,32 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	inline StoryPageElement() { }
+	StoryPageElement() { }
+	StoryPageElement(uint32_t sort_value, StoryPageElementType type, StoryPageID page) :
+		sort_value(sort_value), page(page), type(type) { }
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	inline ~StoryPageElement() { }
+	~StoryPageElement() { }
 };
 
 /** Struct about stories, current and completed */
 struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
-	uint32_t sort_value;            ///< A number that increases for every created story page. Used for sorting. The id of a story page is the pool index.
-	TimerGameCalendar::Date date; ///< Date when the page was created.
-	CompanyID company;            ///< StoryPage is for a specific company; CompanyID::Invalid() if it is global
+	uint32_t sort_value = 0; ///< A number that increases for every created story page. Used for sorting. The id of a story page is the pool index.
+	TimerGameCalendar::Date date{}; ///< Date when the page was created.
+	CompanyID company = CompanyID::Invalid(); ///< StoryPage is for a specific company; CompanyID::Invalid() if it is global
 
-	std::string title;            ///< Title of story page
+	std::string title; ///< Title of story page
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	inline StoryPage() { }
+	StoryPage() { }
+	StoryPage(uint32_t sort_value, TimerGameCalendar::Date date, CompanyID company, const std::string &title) :
+		sort_value(sort_value), date(date), company(company), title(title) {}
 
-	/**
-	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
-	 */
-	inline ~StoryPage()
-	{
-		if (!this->CleaningPool()) {
-			for (StoryPageElement *spe : StoryPageElement::Iterate()) {
-				if (spe->page == this->index) delete spe;
-			}
-		}
-	}
+	~StoryPage();
 };
 
 #endif /* STORY_BASE_H */
