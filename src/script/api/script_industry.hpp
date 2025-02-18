@@ -93,7 +93,7 @@ public:
 	 * @see \ref ScriptCalendarTime
 	 * @api -ai
 	 */
-	static ScriptDate::Date GetConstructionDate(IndustryID industry_id);
+	static ScriptCalendarDate *GetConstructionDate(IndustryID industry_id);
 
 	/**
 	 * Set the custom text of an industry, shown in the GUI.
@@ -265,11 +265,11 @@ public:
 	 * @param cargo_type The cargo to query, or INVALID_CARGO to query latest of all accepted cargoes.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre IsValidCargo(cargo_type) || cargo_type == INVALID_CARGO.
-	 * @return Economy-date the industry last received cargo from a delivery, or ScriptDate::DATE_INVALID on error.
+	 * @return Economy-date the industry last received cargo from a delivery, ScriptEconomyDate::IsValid() returns false on error.
 	 * @see \ref ScriptEconomyTime
 	 * @api -ai
 	 */
-	static ScriptDate::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoType cargo_type);
+	static ScriptEconomyDate *GetCargoLastAcceptedDate(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Get the current control flags for an industry.

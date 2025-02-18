@@ -40,12 +40,14 @@ foreach(API "ai;AI" "game;GS" "template;Template")
     list(GET API 1 APIUC)
 
     foreach(SCRIPT_API_FILE IN LISTS SCRIPT_API_FILES)
-        if("${SCRIPT_API_FILE}" MATCHES ".*script_controller.*")
-            continue()
-        endif()
         get_filename_component(SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE}" NAME_WE)
         string(REPLACE "script_" "${APILC}_" SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE_NAME}")
         set(SCRIPT_API_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${SCRIPT_API_FILE_NAME}.sq.hpp")
+
+        if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${APILC}/${SCRIPT_API_FILE_NAME}.sq.hpp")
+            file(REMOVE "${SCRIPT_API_BINARY_FILE}")
+            continue()
+        endif()
 
         add_custom_command_timestamp(OUTPUT ${SCRIPT_API_BINARY_FILE}
                 COMMAND ${CMAKE_COMMAND}
@@ -74,6 +76,7 @@ foreach(API "ai;AI" "game;GS" "template;Template")
 
     if(NOT "${APILC}" STREQUAL "template")
         list(APPEND SCRIPT_${APIUC}_BINARY_FILES "${CMAKE_CURRENT_SOURCE_DIR}/${APILC}/${APILC}_controller.sq.hpp")
+        list(APPEND SCRIPT_${APIUC}_BINARY_FILES "${CMAKE_CURRENT_SOURCE_DIR}/${APILC}/${APILC}_date.sq.hpp")
         set(INCLUDES_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${APILC}_includes.hpp")
         set(API_FILES "${CMAKE_CURRENT_BINARY_DIR}/${APILC}.files")
         file(GENERATE OUTPUT ${API_FILES} CONTENT "${SCRIPT_${APIUC}_BINARY_FILES}")
@@ -120,6 +123,7 @@ foreach(API "ai;AI" "game;GS" "template;Template")
             )
         endif()
     else()
+        list(APPEND SCRIPT_Template_BINARY_FILES "${CMAKE_CURRENT_SOURCE_DIR}/template/template_date.sq.hpp")
         add_dependencies(script_api
                 script_${APILC}
         )
@@ -233,7 +237,6 @@ add_files(
     script_company.cpp
     script_companymode.cpp
     script_controller.cpp
-    script_date.cpp
     script_depotlist.cpp
     script_engine.cpp
     script_enginelist.cpp

@@ -7,6 +7,19 @@
 
 /* This file contains code to downgrade the API from 15 to 14. */
 
+GSDate <- GSEconomyDate;
+GSDate.IsValidDate <- function(date) { return GSDate(date).IsValid(); }
+GSDate.GetCurrentDateCompat14 <- GSDate.GetCurrentDate;
+GSDate.GetCurrentDate <- function() { return GSDate.GetCurrentDateCompat14().date(); }
+GSDate.GetYearCompat14 <- GSDate.GetYear;
+GSDate.GetYear <- function(date) { return GSDate(date).GetYearCompat14(); }
+GSDate.GetMonthCompat14 <- GSDate.GetMonth;
+GSDate.GetMonth <- function(date) { return GSDate(date).GetMonthCompat14(); }
+GSDate.GetDayOfMonthCompat14 <- GSDate.GetDayOfMonth;
+GSDate.GetDayOfMonth <- function(date) { return GSDate(date).GetDayOfMonthCompat14(); }
+GSDate.GetDateCompat14 <- GSDate.GetDate;
+GSDate.GetDate <- function(year, month, day) { return GSDate.GetDateCompat14(year, month, day).date(); }
+
 GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
 
 /* Emulate old GSText parameter padding behaviour */
@@ -21,6 +34,8 @@ class GSCompat14 {
 	}
 }
 
+GSBaseStation.GetConstructionDateCompat14 <- GSBaseStation.GetConstructionDate;
+GSBaseStation.GetConstructionDate <- function(station_id) { return GSBaseStation.GetConstructionDateCompat14(station_id).date(); }
 GSBaseStation.SetNameCompat14 <- GSBaseStation.SetName;
 GSBaseStation.SetName <- function(id, name) { return GSBaseStation.SetNameCompat14(id, GSCompat14.Text(name)); }
 
@@ -28,6 +43,9 @@ GSCompany.SetNameCompat14 <- GSCompany.SetName;
 GSCompany.SetName <- function(name) { return GSCompany.SetNameCompat14(GSCompat14.Text(name)); }
 GSCompany.SetPresidentNameCompat14 <- GSCompany.SetPresidentName;
 GSCompany.SetPresidentName <- function(name) { return GSCompany.SetPresidentNameCompat14(GSCompat14.Text(name)); }
+
+GSEngine.GetDesignDateCompat14 <- GSEngine.GetDesignDate;
+GSEngine.GetDesignDate <- function(engine_id) { return GSEngine.GetDesignDateCompat14(engine_id).date(); }
 
 GSGoal.NewCompat14 <- GSGoal.New;
 GSGoal.New <- function(company, goal, type, dest) { return GSGoal.NewCompat14(company, GSCompat14.Text(goal), type, dest); }
@@ -43,6 +61,10 @@ GSGoal.QuestionClient <- function(id, target, is_client, question, type, buttons
 GSGroup.SetNameCompat14 <- GSGroup.SetName;
 GSGroup.SetName <- function(id, name) { return GSGroup.SetNameCompat14(id, GSCompat14.Text(name)); }
 
+GSIndustry.GetConstructionDateCompat14 <- GSIndustry.GetConstructionDate;
+GSIndustry.GetConstructionDate <- function(industry_id) { return GSIndustry.GetConstructionDateCompat14(industry_id).date(); }
+GSIndustry.GetCargoLastAcceptedDateCompat14 <- GSIndustry.GetCargoLastAcceptedDate;
+GSIndustry.GetCargoLastAcceptedDate <- function(industry_id, cargo_type) { return GSIndustry.GetCargoLastAcceptedDateCompat14(industry_id, cargo_type).date(); }
 GSIndustry.SetTextCompat14 <- GSIndustry.SetText;
 GSIndustry.SetText <- function(id, text) { return GSIndustry.SetTextCompat14(id, GSCompat14.Text(text)); }
 GSIndustry.SetProductionLevelCompat14 <- GSIndustry.SetProductionLevel;
@@ -63,14 +85,21 @@ GSNews.Create <- function(type, text, company, ref_type, ref) { return GSNews.Cr
 GSSign.BuildSignCompat14 <- GSSign.BuildSign;
 GSSign.BuildSign <- function(id, name) { return GSSign.BuildSignCompat14(id, GSCompat14.Text(name)); }
 
+GSStoryPage.GetDateCompat14 <- GSStoryPage.GetDate;
+GSStoryPage.GetDate <- function(story_page_id) { return GSStoryPage.GetDateCompat14(story_page_id).date(); }
 GSStoryPage.NewCompat14 <- GSStoryPage.New;
 GSStoryPage.New <- function(company, title) { return GSStoryPage.NewCompat14(company, GSCompat14.Text(title)); }
 GSStoryPage.NewElementCompat14 <- GSStoryPage.NewElement;
 GSStoryPage.NewElement <- function(page, type, ref, text) { return GSStoryPage.NewElementCompat14(page, type, ref, GSCompat14.Text(text)); }
 GSStoryPage.UpdateElementCompat14 <- GSStoryPage.UpdateElement;
 GSStoryPage.UpdateElement <- function(id, ref, text) { return GSStoryPage.UpdateElementCompat14(id, ref, GSCompat14.Text(text)); }
+GSStoryPage.SetDateCompat14 <- GSStoryPage.SetDate;
+GSStoryPage.SetDate <- function(story_page_id, date) { return GSStoryPage.SetDateCompat14(story_page_id, GSCalendarDate(date)); }
 GSStoryPage.SetTitleCompat14 <- GSStoryPage.SetTitle;
 GSStoryPage.SetTitle <- function(page, tile) { return GSStoryPage.SetTitleCompat14(page, GSCompat14.Text(title)); }
+
+GSSubsidy.GetExpireDateCompat14 <- GSSubsidy.GetExpireDate;
+GSSubsidy.GetExpireDate <- function(subsidy_id) { return GSSubsidy.GetExpireDateCompat14(subsidy_id).date(); }
 
 GSTown.SetNameCompat14 <- GSTown.SetName;
 GSTown.SetName <- function(id, name) { return GSTown.SetNameCompat14(id, GSCompat14.Text(name)); }
