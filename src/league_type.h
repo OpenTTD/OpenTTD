@@ -25,10 +25,11 @@ enum LinkType : uint8_t {
 typedef uint32_t LinkTargetID; ///< Contains either tile, industry ID, town ID, story page ID or company ID
 
 struct Link {
-	LinkType type;
-	LinkTargetID target;
-	Link(LinkType type, LinkTargetID target): type{type}, target{target} {}
-	Link(): Link(LT_NONE, 0) {}
+	LinkType type = LT_NONE;
+	LinkTargetID target = 0;
+
+	Link() {}
+	Link(LinkType type, LinkTargetID target) : type{type}, target{target} {}
 };
 
 using LeagueTableID = PoolID<uint8_t, struct LeagueTableIDTag, 255, 0xFF>; ///< ID of a league table
