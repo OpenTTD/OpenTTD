@@ -37,6 +37,15 @@ StoryPagePool _story_page_pool("StoryPage");
 INSTANTIATE_POOL_METHODS(StoryPageElement)
 INSTANTIATE_POOL_METHODS(StoryPage)
 
+StoryPage::~StoryPage()
+{
+	if (!this->CleaningPool()) {
+		for (StoryPageElement *spe : StoryPageElement::Iterate()) {
+			if (spe->page == this->index) delete spe;
+		}
+	}
+}
+
 /**
  * This helper for Create/Update PageElement Cmd procedure verifies if the page
  * element parameters are correct for the given page element type.
@@ -219,11 +228,7 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlags flags, Co
 			_story_page_next_sort_value = 0;
 		}
 
-		StoryPage *s = new StoryPage();
-		s->sort_value = _story_page_next_sort_value;
-		s->date = TimerGameCalendar::date;
-		s->company = company;
-		s->title = text;
+		StoryPage *s = new StoryPage(_story_page_next_sort_value, TimerGameCalendar::date, company, text);
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
 		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
@@ -267,10 +272,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 			_story_page_element_next_sort_value = 0;
 		}
 
-		StoryPageElement *pe = new StoryPageElement();
-		pe->sort_value = _story_page_element_next_sort_value;
-		pe->type = type;
-		pe->page = page_id;
+		StoryPageElement *pe = new StoryPageElement(_story_page_element_next_sort_value, type, page_id);
 		UpdateElement(*pe, tile, reference, text);
 
 		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
