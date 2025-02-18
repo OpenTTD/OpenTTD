@@ -90,12 +90,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	TileArea ta(tile, GB(spec->size, HasBit(view, 0) ? 4 : 0, 4), GB(spec->size, HasBit(view, 0) ? 0 : 4, 4));
-	Object *o = new Object();
-	o->type          = type;
-	o->location      = ta;
-	o->town          = town == nullptr ? CalcClosestTownFromTile(tile) : town;
-	o->build_date    = TimerGameCalendar::date;
-	o->view          = view;
+	Object *o = new Object(type, town == nullptr ? CalcClosestTownFromTile(tile) : town, ta, TimerGameCalendar::date, view);
 
 	/* If nothing owns the object, the colour will be random. Otherwise
 	 * get the colour from the company's livery settings. */
