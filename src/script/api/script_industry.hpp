@@ -93,7 +93,7 @@ public:
 	 * @see \ref ScriptCalendarTime
 	 * @api -ai
 	 */
-	static ScriptDate::Date GetConstructionDate(IndustryID industry_id);
+	static ScriptDate *GetConstructionDate(IndustryID industry_id);
 
 	/**
 	 * Set the custom text of an industry, shown in the GUI.
@@ -269,7 +269,7 @@ public:
 	 * @see \ref ScriptEconomyTime
 	 * @api -ai
 	 */
-	static ScriptDate::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoType cargo_type);
+	static ScriptDate *GetCargoLastAcceptedDate(IndustryID industry_id, CargoType cargo_type);
 
 	/**
 	 * Get the current control flags for an industry.

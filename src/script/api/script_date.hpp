@@ -58,51 +58,55 @@ public:
 		DATE_INVALID = ::EconomyTime::INVALID_DATE.base(), ///< A value representing an invalid date.
 	};
 
+	enum DateType {
+		DT_ECONOMY,
+		DT_CALENDAR,
+		DT_SYSTEM,
+	};
+
+	ScriptDate(ScriptDate::Date, ScriptDate::DateType);
+
 	/**
-	 * Validates if a date value represent a valid date.
-	 * @param date The date to validate.
+	 * Validates if a date value represent a valid date for the given type.
+	 * @param type The type to validate for.
 	 * @return True if the date is valid, otherwise false
 	 */
-	static bool IsValidDate(Date date);
+	bool IsValid(DateType type);
 
 	/**
 	 * Get the current date.
-	 * This is the number of days since epoch under the assumption that
-	 *  there is a leap year every 4 years, except when dividable by
-	 *  100 but not by 400.
+	 * @param calendar Whether the returned date is in calendar time.
 	 * @return The current date.
 	 */
-	static Date GetCurrentDate();
+	static ScriptDate *GetCurrentDate(bool calendar);
 
 	/**
 	 * Get the year of the given date.
-	 * @param date The date to get the year of.
 	 * @return The year.
 	 */
-	static SQInteger GetYear(Date date);
+	SQInteger GetYear();
 
 	/**
 	 * Get the month of the given date.
-	 * @param date The date to get the month of.
 	 * @return The month.
 	 */
-	static SQInteger GetMonth(Date date);
+	SQInteger GetMonth();
 
 	/**
 	 * Get the day (of the month) of the given date.
-	 * @param date The date to get the day of.
 	 * @return The day.
 	 */
-	static SQInteger GetDayOfMonth(Date date);
+	SQInteger GetDayOfMonth();
 
 	/**
 	 * Get the date given a year, month and day of month.
 	 * @param year The year of the to-be determined date.
 	 * @param month The month of the to-be determined date.
 	 * @param day_of_month The day of month of the to-be determined date.
+	 * @param calendar Whether the returned date is in calendar time.
 	 * @return The date.
 	 */
-	static Date GetDate(SQInteger year, SQInteger month, SQInteger day_of_month);
+	static ScriptDate *GetDate(SQInteger year, SQInteger month, SQInteger day_of_month, bool calendar);
 
 	/**
 	 * Get the time of the host system.
@@ -110,7 +114,35 @@ public:
 	 * @api -ai
 	 * @note This uses the clock of the host system, which can skew or be set back. Use with caution.
 	 */
-	static SQInteger GetSystemTime();
+	static ScriptDate *GetSystemTime();
+
+	Date GetValue();
+
+#ifndef DOXYGEN_API
+	/**
+	 * Used for string concatenation and print() from Squirrel.
+	 */
+	SQInteger _tostring(HSQUIRRELVM vm);
+
+	/**
+	 * Used by + operator.
+	 */
+	SQInteger _add(HSQUIRRELVM vm);
+
+	/**
+	* Used by - operator.
+	*/
+	SQInteger _sub(HSQUIRRELVM vm);
+
+	/**
+	 * Used for comparisons.
+	 */
+	SQInteger _cmp(HSQUIRRELVM vm);
+#endif /* DOXYGEN_API */
+
+private:
+	Date date = DATE_INVALID;
+	DateType type = DT_ECONOMY;
 };
 
 #endif /* SCRIPT_DATE_HPP */

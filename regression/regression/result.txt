@@ -9705,7 +9705,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
         IsValidSubsidy():      true
         IsAwarded():           false
         GetAwardedTo():        -1
-        GetExpireDate():       714080
+        GetExpireDate():       714080 E
         GetSourceType():       1
         GetSourceIndex():      15
         GetDestinationType():  1

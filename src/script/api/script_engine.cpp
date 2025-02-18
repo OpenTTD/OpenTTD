@@ -168,11 +168,11 @@
 	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort() / 1000;
 }
 
-/* static */ ScriptDate::Date ScriptEngine::GetDesignDate(EngineID engine_id)
+/* static */ ScriptDate *ScriptEngine::GetDesignDate(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return ScriptDate::DATE_INVALID;
+	if (!IsValidEngine(engine_id)) return new ScriptDate(ScriptDate::DATE_INVALID, ScriptDate::DT_CALENDAR);
 
-	return (ScriptDate::Date)::Engine::Get(engine_id)->intro_date.base();
+	return new ScriptDate(static_cast<ScriptDate::Date>(::Engine::Get(engine_id)->intro_date.base()), ScriptDate::DT_CALENDAR);
 }
 
 /* static */ ScriptVehicle::VehicleType ScriptEngine::GetVehicleType(EngineID engine_id)

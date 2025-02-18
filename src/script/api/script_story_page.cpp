@@ -179,20 +179,21 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return ScriptCompany::ToScriptCompanyID(StoryPage::Get(story_page_id)->company);
 }
 
-/* static */ ScriptDate::Date ScriptStoryPage::GetDate(StoryPageID story_page_id)
+/* static */ ScriptDate *ScriptStoryPage::GetDate(StoryPageID story_page_id)
 {
-	EnforcePrecondition(ScriptDate::DATE_INVALID, IsValidStoryPage(story_page_id));
-	EnforceDeityMode(ScriptDate::DATE_INVALID);
+	EnforcePrecondition(new ScriptDate(ScriptDate::DATE_INVALID, ScriptDate::DT_CALENDAR), IsValidStoryPage(story_page_id));
+	EnforceDeityMode(new ScriptDate(ScriptDate::DATE_INVALID, ScriptDate::DT_CALENDAR));
 
-	return (ScriptDate::Date)StoryPage::Get(story_page_id)->date.base();
+	return new ScriptDate(static_cast<ScriptDate::Date>(StoryPage::Get(story_page_id)->date.base()), ScriptDate::DT_CALENDAR);
 }
 
-/* static */ bool ScriptStoryPage::SetDate(StoryPageID story_page_id, ScriptDate::Date date)
+/* static */ bool ScriptStoryPage::SetDate(StoryPageID story_page_id, ScriptDate &date)
 {
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
+	EnforcePrecondition(false, date.IsValid(ScriptDate::DT_CALENDAR));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_STORY_PAGE_DATE>::Do(story_page_id, ::TimerGameCalendar::Date{date});
+	return ScriptObject::Command<CMD_SET_STORY_PAGE_DATE>::Do(story_page_id, ::TimerGameCalendar::Date{date.GetValue()});
 }
 
 
