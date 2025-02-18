@@ -106,26 +106,28 @@ ScriptVehicleList_SharedOrders::ScriptVehicleList_SharedOrders(VehicleID vehicle
 
 ScriptVehicleList_Group::ScriptVehicleList_Group(GroupID group_id)
 {
-	EnforceCompanyModeValid_Void();
+	EnforceDeityOrCompanyModeValid_Void();
 	if (!ScriptGroup::IsValidGroup(group_id)) return;
 
+	bool is_deity = ScriptCompanyMode::IsDeity();
 	::CompanyID owner = ScriptObject::GetCompany();
 
 	ScriptList::FillList<Vehicle>(this,
-		[owner](const Vehicle *v) { return v->owner == owner && v->IsPrimaryVehicle(); },
+		[owner, is_deity](const Vehicle *v) { return (v->owner == owner || is_deity) && v->IsPrimaryVehicle(); },
 		[group_id](const Vehicle *v) { return v->group_id == group_id; }
 	);
 }
 
 ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type)
 {
-	EnforceCompanyModeValid_Void();
+	EnforceDeityOrCompanyModeValid_Void();
 	if (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR) return;
 
+	bool is_deity = ScriptCompanyMode::IsDeity();
 	::CompanyID owner = ScriptObject::GetCompany();
 
 	ScriptList::FillList<Vehicle>(this,
-		[owner](const Vehicle *v) { return v->owner == owner && v->IsPrimaryVehicle(); },
+		[owner, is_deity](const Vehicle *v) { return (v->owner == owner || is_deity) && v->IsPrimaryVehicle(); },
 		[vehicle_type](const Vehicle *v) { return v->type == (::VehicleType)vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT; }
 	);
 }
