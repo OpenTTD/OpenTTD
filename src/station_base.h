@@ -140,8 +140,8 @@ public:
 	void Invalidate();
 
 private:
-	SharesMap shares;  ///< Shares of flow to be sent via specified station (or consumed locally).
-	uint unrestricted; ///< Limit for unrestricted shares.
+	SharesMap shares{}; ///< Shares of flow to be sent via specified station (or consumed locally).
+	uint unrestricted = 0; ///< Limit for unrestricted shares.
 };
 
 /** Flow descriptions by origin stations. */
@@ -347,12 +347,12 @@ private:
 struct Airport : public TileArea {
 	Airport() : TileArea(INVALID_TILE, 0, 0) {}
 
-	AirportBlocks blocks; ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
-	uint8_t type;          ///< Type of this airport, @see AirportTypes
-	uint8_t layout;        ///< Airport layout number.
-	Direction rotation; ///< How this airport is rotated.
+	AirportBlocks blocks{}; ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
+	uint8_t type = 0; ///< Type of this airport, @see AirportTypes
+	uint8_t layout = 0; ///< Airport layout number.
+	Direction rotation = INVALID_DIR; ///< How this airport is rotated.
 
-	PersistentStorage *psa; ///< Persistent storage for NewGRF airports.
+	PersistentStorage *psa = nullptr; ///< Persistent storage for NewGRF airports.
 
 	/**
 	 * Get the AirportSpec that from the airport type of this airport. If there
@@ -480,8 +480,8 @@ private:
 };
 
 struct IndustryListEntry {
-	uint distance;
-	Industry *industry;
+	uint distance = 0;
+	Industry *industry = nullptr;
 
 	bool operator== (const IndustryListEntry &other) const { return this->distance == other.distance && this->industry == other.industry; };
 };
@@ -502,31 +502,31 @@ public:
 
 	RoadStop *GetPrimaryRoadStop(const struct RoadVehicle *v) const;
 
-	RoadStop *bus_stops;    ///< All the road stops
-	TileArea bus_station;   ///< Tile area the bus 'station' part covers
-	RoadStop *truck_stops;  ///< All the truck stops
-	TileArea truck_station; ///< Tile area the truck 'station' part covers
+	RoadStop *bus_stops = nullptr; ///< All the road stops
+	TileArea bus_station{}; ///< Tile area the bus 'station' part covers
+	RoadStop *truck_stops = nullptr; ///< All the truck stops
+	TileArea truck_station{}; ///< Tile area the truck 'station' part covers
 
-	Airport airport;          ///< Tile area the airport covers
-	TileArea ship_station;    ///< Tile area the ship 'station' part covers
-	TileArea docking_station; ///< Tile area the docking tiles cover
+	Airport airport{}; ///< Tile area the airport covers
+	TileArea ship_station{}; ///< Tile area the ship 'station' part covers
+	TileArea docking_station{}; ///< Tile area the docking tiles cover
 
-	IndustryType indtype;   ///< Industry type to get the name from
+	IndustryType indtype = IT_INVALID; ///< Industry type to get the name from
 
-	BitmapTileArea catchment_tiles; ///< NOSAVE: Set of individual tiles covered by catchment area
+	BitmapTileArea catchment_tiles{}; ///< NOSAVE: Set of individual tiles covered by catchment area
 
-	StationHadVehicleOfType had_vehicle_of_type;
+	StationHadVehicleOfType had_vehicle_of_type{};
 
-	uint8_t time_since_load;
-	uint8_t time_since_unload;
+	uint8_t time_since_load = 0;
+	uint8_t time_since_unload = 0;
 
-	uint8_t last_vehicle_type;
-	std::list<Vehicle *> loading_vehicles;
-	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
-	CargoTypes always_accepted;       ///< Bitmask of always accepted cargo types (by houses, HQs, industry tiles when industry doesn't accept cargo)
+	uint8_t last_vehicle_type = 0;
+	std::list<Vehicle *> loading_vehicles{};
+	std::array<GoodsEntry, NUM_CARGO> goods; ///< Goods at this station
+	CargoTypes always_accepted{}; ///< Bitmask of always accepted cargo types (by houses, HQs, industry tiles when industry doesn't accept cargo)
 
-	IndustryList industries_near; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
-	Industry *industry;           ///< NOSAVE: Associated industry for neutral stations. (Rebuilt on load from Industry->st)
+	IndustryList industries_near{}; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()
+	Industry *industry = nullptr; ///< NOSAVE: Associated industry for neutral stations. (Rebuilt on load from Industry->st)
 
 	Station(TileIndex tile = INVALID_TILE);
 	~Station();
@@ -581,7 +581,7 @@ public:
 /** Iterator to iterate over all tiles belonging to an airport. */
 class AirportTileIterator : public OrthogonalTileIterator {
 private:
-	const Station *st; ///< The station the airport is a part of.
+	const Station *st = nullptr; ///< The station the airport is a part of.
 
 public:
 	/**
