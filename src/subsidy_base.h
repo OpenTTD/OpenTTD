@@ -21,21 +21,22 @@ extern SubsidyPool _subsidy_pool;
 
 /** Struct about subsidies, offered and awarded */
 struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
-	CargoType cargo_type;  ///< Cargo type involved in this subsidy, INVALID_CARGO for invalid subsidy
-	uint16_t remaining;    ///< Remaining months when this subsidy is valid
-	CompanyID awarded;   ///< Subsidy is awarded to this company; CompanyID::Invalid() if it's not awarded to anyone
-	Source src; ///< Source of subsidised path
-	Source dst; ///< Destination of subsidised path
+	CargoType cargo_type = INVALID_CARGO;  ///< Cargo type involved in this subsidy, INVALID_CARGO for invalid subsidy
+	uint16_t remaining = 0;    ///< Remaining months when this subsidy is valid
+	CompanyID awarded = CompanyID::Invalid();   ///< Subsidy is awarded to this company; CompanyID::Invalid() if it's not awarded to anyone
+	Source src{}; ///< Source of subsidised path
+	Source dst{}; ///< Destination of subsidised path
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	inline Subsidy() { }
+	Subsidy() { }
+	Subsidy(CargoType cargo_type, Source src, Source dst, uint16_t remaining) : cargo_type(cargo_type), remaining(remaining), src(src), dst(dst) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	inline ~Subsidy() { }
+	~Subsidy() { }
 
 	/**
 	 * Tests whether this subsidy has been awarded to someone
