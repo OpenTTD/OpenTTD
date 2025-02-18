@@ -2868,7 +2868,7 @@ STR_HOUSE_PICKER_CLASS_ZONE4                                    :近郊
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :市鎮中心
 
 STR_HOUSE_PICKER_PROTECT_TITLE                                  :防止升級
-STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :選擇是否要保護這棟房子，以免隨著市鎮的發展而被替換
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :選擇是否要保護房屋以免房屋隨著市鎮的發展而被替換
 STR_HOUSE_PICKER_PROTECT_OFF                                    :關閉
 STR_HOUSE_PICKER_PROTECT_ON                                     :開啟
 
@@ -4997,6 +4997,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}畫面�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}訊息
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}來自 {COMPANY} 的訊息
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}超過地圖邊緣
@@ -5015,6 +5016,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 已�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 已達區塊清除的限制
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 已達植樹的限制
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名稱必須是唯一的
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}被 {STRING} 擋住
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}當暫停時不允許這樣做
 
 # Local authority errors
@@ -5924,3 +5926,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}：{GOLD}{STRING}

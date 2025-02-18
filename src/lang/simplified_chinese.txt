@@ -705,7 +705,7 @@ STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
-STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}没有可用的音乐包
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}没有可用的音乐
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}音轨
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}乐曲主题
@@ -1531,8 +1531,8 @@ STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :载具到达使用年限时自动更新：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :启用时，所有符合更换条件的载具在进入车库时会被自动更新
 
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :自动替换年龄到达使用期限{STRING}的载具
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :如果载具距离使用期限的时间小于等于指定值，则载具进入车库时便会被自动替换
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :自动更新年龄到达使用期限{STRING}的载具
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :如果载具距离使用期限的时间小于等于指定值，则载具进入车库时便会被自动更新
 ###length 2
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :前 {COMMA} 个月
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :后 {COMMA} 个月
@@ -1987,7 +1987,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允许
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定义城镇布局
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :在城镇中单独建设房屋：{STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :启用此选项以允许玩家在城镇内手动设置房屋
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :禁止
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :允许
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :允许，完全建成
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :城镇货物生成：{STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :城镇建筑的客货产出与人口的关系。{}平方增长：城镇人口规模增长为原来的两倍时旅客的生成量为原来的四倍。{}线性增长：城镇人口规模增长为原来的两倍时旅客的生成量为原来的两倍
@@ -1999,7 +2004,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制游戏内树木的生长。此选项可能会影响一些依赖树木的工业，例如伐木场
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :生长但不扩散 {RED}（损坏伐木场）
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :仅在雨林扩散
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :仅在雨林生长与扩散
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :生长并四处扩散
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :不生长，不扩散 {RED}（损坏伐木场）
 
@@ -2201,7 +2206,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}高分�
 STR_INTRO_HELP                                                  :{BLACK}帮助和指南
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}线上拓展内容
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 设置
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}游戏脚本设置
 STR_INTRO_QUIT                                                  :{BLACK}退出
@@ -2223,7 +2228,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}显示�
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}获取说明和在线资源
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}显示设置
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示 NewGRF 设定
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}检查有无最新或可更新的内容可供下载
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}显示 AI 设置
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}显示游戏脚本设置
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 OpenTTD
@@ -2602,7 +2607,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :连接丢失
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :套接字错误
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 不匹配
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :没有授权
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到异常数据包
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到无效或未预期的数据包
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :错误的版本
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已经有人用这个名字了
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :错误的密码
@@ -2655,16 +2660,16 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}您的�
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{BLACK}其他玩家将无法连接你的服务器
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}下载内容
+STR_CONTENT_TITLE                                               :{WHITE}线上拓展内容
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}类型
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}扩展包类型
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}内容种类
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}名称
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}内容名称
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}单击一行以查看详情{}单击复选框选择下载
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}全选
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}选定所有扩展包
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}标记下载所有内容
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}选择升级
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}更新所有已下载的扩展包
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}标记下载所有更新内容
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消全部选择
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}在外部网站搜索
@@ -2673,20 +2678,20 @@ STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}正在�
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}在外部网站下载内容的规则及条款可能跟 OpenTTD 引用的规则及条款不同。{}您需要参照有关网站以取得在 OpenTTD 安装有关内容的资讯。{}您要继续吗？
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
 STR_CONTENT_OPEN_URL                                            :{BLACK}主页
-STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}访问此项目的网站
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}下载
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}下载选定的内容
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}总计下载大小：{WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}扩展包信息
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}内容信息
 
 ###length 5
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}您尚未选择下载该扩展包
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}您已选择需要下载的扩展包
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}您尚未选择下载此项目
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}您已经选择下载此项目
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}此依存组件已被选择下载
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}您已经下载过该扩展包
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}该扩展包无法识别，OpenTTD 无法下载该扩展包
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}您已经下载过此项目
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}此未知内容无法于 OpenTTD 中下载
 
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}该扩展包将会替换到当前使用的 {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}这是现有 {STRING} 的替代版本
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}名称：{WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}版本：{WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}描述：{WHITE}{STRING}
@@ -2722,7 +2727,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}已下�
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}无法链接到下载服务器……
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}下载失败……
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}……文件无法写入
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压已下载的文件
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}缺失图形组
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 需要基础图形组用以绘制界面。您是否希望 OpenTTD 下载并安装以下图形组？
@@ -2854,6 +2859,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}可用�
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}可用年份：{ORANGE}至 {NUM} 年前可用
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}大小：{ORANGE}{NUM}×{NUM} 格
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}接受货物：{ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}产出货物：{ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :城镇边缘
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊区边缘
@@ -2861,6 +2867,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :外郊区
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :内郊区
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :城镇中心
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :防止升级
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :选择是否保护房屋以防止房屋随着城镇发展被替换
+STR_HOUSE_PICKER_PROTECT_OFF                                    :关闭
+STR_HOUSE_PICKER_PROTECT_ON                                     :开启
 
 STR_STATION_CLASS_DFLT                                          :默认
 STR_STATION_CLASS_DFLT_STATION                                  :默认车站
@@ -2953,7 +2963,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}选择�
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}水运建设
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水运
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建运河。按住 <Shift> 键点选以显示预计费用
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建运河。按住 <Ctrl> 键以沿对角线操作，按住 <Shift> 键点选以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设船闸。按住 <Shift> 键点选以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}建造船坞（可以购买或维护船只），按住 <Shift> 键以显示预计费用
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}建造码头。按住 <Ctrl> 键操作以合并车站，按住 <Shift> 键操作以显示预计费用
@@ -3138,6 +3148,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}电车�
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}轨道限速：{LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}道路限速：{LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}电车限速：{LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}城镇可以升级：{LTBLUE}是
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}城镇可以升级：{LTBLUE}否
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :岩石
@@ -3477,7 +3489,7 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}将选�
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下移
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}将选定的 NewGRF 文件向下移动
 STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}更新
-STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}更新当前已安装的扩展包
+STR_NEWGRF_SETTINGS_UPGRADE_TOOLTIP                             :{BLACK}更新当前已应用的 NewGRF
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经安装的 NewGRF 文件列表{}点击可以改变参数
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
@@ -3486,8 +3498,8 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切换�
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切换选定 GRF 的调色盘。{}如果该 GRF 在游戏中看起来是一片粉色，您可以尝试调整此项以解决问题
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}应用
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}在线查找缺失的扩展包
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}看看您需要的扩展包是否能在线找到
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}在线查找缺失的内容
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}检查是否可以在线下载缺失的内容
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}文件名：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
@@ -3625,7 +3637,7 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它会�
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY} 所拥有的列车 {0:VEHICLE} 长度无效。这个错误可能是由 NewGRF 导致的。游戏可能会无法同步或崩溃
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF“{STRING}”的信息不正确
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买“{1:ENGINE}”后，将造成货物/运费的参数与购买列表不符，这将有可能造成自动更新/购买不成功
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买清单中“{1:ENGINE}”的货物/改装信息与购买后的信息不同。这可能会导致自动更新或自动替换时无法正确改装此载具
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}“{1:STRING}”产生了一个死循环
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回调函数 {1:HEX} 返回了一个未知/错误的结果 {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}“{1:STRING}”返回了错误的货物类型。位于产品回调函数 {2:HEX} 处
@@ -4254,10 +4266,10 @@ STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}出售�
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}出售机库中的所有飞机
 
 ###length VEHICLE_TYPES
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}自动更新车库中的所有列车
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}自动更新车库中的所有汽车
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}自动更新船坞中的所有船只
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}自动更新机库中的所有飞机
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}自动替换车库中的所有列车
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}自动替换车库中的所有汽车
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}自动替换船坞中的所有船只
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}自动替换机库中的所有飞机
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}购买列车
@@ -4838,7 +4850,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看�
 STR_AI_GAME_SCRIPT                                              :{BLACK}游戏脚本
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}检查游戏脚本日志。按住 <Ctrl> 操作以打开新窗口
 
-STR_ERROR_AI_NO_AI_FOUND                                        :找不到可用的 AI。{}本 AI 是一个演示 AI，并不会在游戏中做任何动作，{}您可以通过“在线查找扩展包”功能下载新的 AI
+STR_ERROR_AI_NO_AI_FOUND                                        :找不到可用的 AI。{}本 AI 是一个演示 AI 且没有任何效果。{}您可以通过“线上拓展内容”功能下载新的 AI
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}您使用的一个 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI 调试窗口只对服务器可用
 
@@ -4973,7 +4985,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}缩放�
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找到一个备用音效库；若您需要正式版音效，请通过在线扩展包下载安装音效库
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找到一个备用音效包；若您需要正式版音效，请通过线上拓展下载系统安装音效包
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}超大截图
@@ -4985,6 +4997,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}屏幕�
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}消息
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}来自 {COMPANY} 的消息
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}超过地图边界
@@ -5003,6 +5016,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}……�
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}……已达地块清理限制
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}……已经达最大植树量
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复！请重新命名
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}被 {STRING} 挡住
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停时不能进行此操作
 
 # Local authority errors
@@ -5319,8 +5333,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}不能�
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}不能出售飞机……
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}无法出售所有列车……
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}无法出售所有汽车……
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}无法出售所有船只……
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}无法出售所有飞机……
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}无法自动替换列车……
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}无法自动替换汽车……
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}无法自动替换船只……
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}无法自动替换飞机……
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}游戏中的载具过多
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能改变维护周期……
@@ -5409,7 +5431,7 @@ STR_BASEGRAPHICS_WIN_DESCRIPTION                                :运输大亨 Wi
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :运输大亨 DOS 豪华版原版音效包。
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoon Deluxe Windows（运输大亨 Windows 豪华版）的原版音效包。
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :一个空的音效包。
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Transport Tycoon Deluxe（运输大亨 Windows 豪华版）的原版音乐包
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Transport Tycoon Deluxe（运输大亨 Windows 豪华版）的原版音乐包。
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :运输大亨 DOS 豪华版原版音乐。
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :原版运输大亨（DOS 版及地图编辑器扩展）音乐。
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :一个没有实际内容的音乐包。
@@ -5904,3 +5926,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING}（{VELOCITY}）
 
+STR_BADGE_NAME_LIST                                             :{STRING}：{GOLD}{STRING}

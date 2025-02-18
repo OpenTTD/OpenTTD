@@ -4997,6 +4997,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Kuvakaap
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Viesti
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Viesti yhtiöltä {COMPANY}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Kartan reunan ulkopuolella.
@@ -5015,6 +5016,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maan
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruutujen tyhjennysraja saavutettu
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puiden istutusraja saavutettu
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nimen täytyy olla ainutkertainen
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} on tiellä
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ei sallittu pelin ollessa pysäytetty
 
 # Local authority errors
@@ -5924,3 +5926,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
