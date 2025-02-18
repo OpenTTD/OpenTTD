@@ -31,9 +31,9 @@ enum PersistentStorageMode : uint8_t {
  * so we have a generalised access to the virtual methods.
  */
 struct BasePersistentStorageArray {
-	uint32_t grfid;    ///< GRFID associated to this persistent storage. A value of zero means "default".
-	uint8_t feature;    ///< NOSAVE: Used to identify in the owner of the array in debug output.
-	TileIndex tile;  ///< NOSAVE: Used to identify in the owner of the array in debug output.
+	uint32_t grfid = 0; ///< GRFID associated to this persistent storage. A value of zero means "default".
+	uint8_t feature = 0; ///< NOSAVE: Used to identify in the owner of the array in debug output.
+	TileIndex tile = INVALID_TILE; ///< NOSAVE: Used to identify in the owner of the array in debug output.
 
 	virtual ~BasePersistentStorageArray();
 

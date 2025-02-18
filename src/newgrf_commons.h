@@ -117,7 +117,7 @@ struct NewGRFSpriteLayout : DrawTileSprites {
 	 * Number of sprites in all referenced spritesets.
 	 * If these numbers are inconsistent, then this is 0 and the real values are in \c registers.
 	 */
-	uint consistent_max_offset;
+	uint consistent_max_offset = 0;
 
 	void Allocate(uint num_sprites);
 	void AllocateRegisters();
