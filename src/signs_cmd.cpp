@@ -42,16 +42,11 @@ std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex til
 
 	/* When we execute, really make the sign */
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Sign *si = new Sign(_game_mode == GM_EDITOR ? OWNER_DEITY : _current_company);
 		int x = TileX(tile) * TILE_SIZE;
 		int y = TileY(tile) * TILE_SIZE;
 
-		si->x = x;
-		si->y = y;
-		si->z = GetSlopePixelZ(x, y);
-		if (!text.empty()) {
-			si->name = text;
-		}
+		Sign *si = new Sign(_game_mode == GM_EDITOR ? OWNER_DEITY : _current_company, x, y, GetSlopePixelZ(x, y), text);
+
 		si->UpdateVirtCoord();
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
 		return { CommandCost(), si->index };

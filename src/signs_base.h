@@ -19,14 +19,15 @@ typedef Pool<Sign, SignID, 16> SignPool;
 extern SignPool _sign_pool;
 
 struct Sign : SignPool::PoolItem<&_sign_pool> {
-	std::string         name;
-	TrackedViewportSign sign;
-	int32_t               x;
-	int32_t               y;
-	int32_t               z;
-	Owner               owner; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
+	std::string name{};
+	TrackedViewportSign sign{};
+	int32_t x = 0;
+	int32_t y = 0;
+	int32_t z = 0;
+	Owner owner = INVALID_OWNER; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
-	Sign(Owner owner = INVALID_OWNER);
+	Sign() {}
+	Sign(Owner owner, int32_t x, int32_t y, int32_t z, const std::string &name) : name(name), x(x), y(y), z(z), owner(owner) {}
 	~Sign();
 
 	void UpdateVirtCoord();
