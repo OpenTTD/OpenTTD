@@ -40,12 +40,12 @@ public:
 	 * An edge in the link graph. Corresponds to a link between two stations.
 	 */
 	struct BaseEdge {
-		uint capacity;                 ///< Capacity of the link.
-		uint usage;                    ///< Usage of the link.
-		uint64_t travel_time_sum;        ///< Sum of the travel times of the link, in ticks.
-		TimerGameEconomy::Date last_unrestricted_update; ///< When the unrestricted part of the link was last updated.
-		TimerGameEconomy::Date last_restricted_update;   ///< When the restricted part of the link was last updated.
-		NodeID dest_node;              ///< Destination of the edge.
+		uint capacity = 0; ///< Capacity of the link.
+		uint usage = 0; ///< Usage of the link.
+		uint64_t travel_time_sum = 0; ///< Sum of the travel times of the link, in ticks.
+		TimerGameEconomy::Date last_unrestricted_update{}; ///< When the unrestricted part of the link was last updated.
+		TimerGameEconomy::Date last_restricted_update{}; ///< When the restricted part of the link was last updated.
+		NodeID dest_node = INVALID_NODE; ///< Destination of the edge.
 
 		BaseEdge(NodeID dest_node = INVALID_NODE);
 
@@ -88,11 +88,11 @@ public:
 	 * in a separate thread.
 	 */
 	struct BaseNode {
-		uint supply;             ///< Supply at the station.
-		uint demand;             ///< Acceptance at the station.
-		StationID station;       ///< Station ID.
-		TileIndex xy;            ///< Location of the station referred to by the node.
-		TimerGameEconomy::Date last_update;        ///< When the supply was last updated.
+		uint supply = 0; ///< Supply at the station.
+		uint demand = 0; ///< Acceptance at the station.
+		StationID station = StationID::Invalid(); ///< Station ID.
+		TileIndex xy = INVALID_TILE; ///< Location of the station referred to by the node.
+		TimerGameEconomy::Date last_update{}; ///< When the supply was last updated.
 
 		std::vector<BaseEdge> edges; ///< Sorted list of outgoing edges from this node.
 
@@ -189,7 +189,7 @@ public:
 	}
 
 	/** Bare constructor, only for save/load. */
-	LinkGraph() : cargo(INVALID_CARGO), last_compression(0) {}
+	LinkGraph() {}
 	/**
 	 * Real constructor.
 	 * @param cargo Cargo the link graph is about.
@@ -261,9 +261,9 @@ protected:
 	friend class SlLinkgraphEdge;
 	friend class LinkGraphJob;
 
-	CargoType cargo;         ///< Cargo of this component's link graph.
-	TimerGameEconomy::Date last_compression; ///< Last time the capacities and supplies were compressed.
-	NodeVector nodes;      ///< Nodes in the component.
+	CargoType cargo = INVALID_CARGO; ///< Cargo of this component's link graph.
+	TimerGameEconomy::Date last_compression{}; ///< Last time the capacities and supplies were compressed.
+	NodeVector nodes{}; ///< Nodes in the component.
 };
 
 #endif /* LINKGRAPH_H */

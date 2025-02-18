@@ -37,9 +37,7 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 		 * This is on purpose. */
 		link_graph(orig),
 		settings(_settings_game.linkgraph),
-		join_date(TimerGameEconomy::date + (_settings_game.linkgraph.recalc_time / EconomyTime::SECONDS_PER_DAY)),
-		job_completed(false),
-		job_aborted(false)
+		join_date(TimerGameEconomy::date + (_settings_game.linkgraph.recalc_time / EconomyTime::SECONDS_PER_DAY))
 {
 }
 
