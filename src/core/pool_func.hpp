@@ -23,9 +23,9 @@
  * @param type The return type of the method.
  */
 #define DEFINE_POOL_METHOD(type) \
-	template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type, bool Tcache, bool Tzero> \
+	template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type, bool Tcache> \
 	requires std::is_base_of_v<PoolIDBase, Tindex> \
-	type Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache, Tzero>
+	type Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache>
 
 /**
  * Create a clean pool.
@@ -113,13 +113,6 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 		assert(sizeof(Titem) == size);
 		item = reinterpret_cast<Titem *>(this->alloc_cache);
 		this->alloc_cache = this->alloc_cache->next;
-		if (Tzero) {
-			/* Explicitly casting to (void *) prevents a clang warning -
-			 * we are actually memsetting a (not-yet-constructed) object */
-			memset(static_cast<void *>(item), 0, sizeof(Titem));
-		}
-	} else if (Tzero) {
-		item = reinterpret_cast<Titem *>(CallocT<uint8_t>(size));
 	} else {
 		item = reinterpret_cast<Titem *>(MallocT<uint8_t>(size));
 	}
