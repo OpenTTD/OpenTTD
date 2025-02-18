@@ -512,13 +512,14 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 
 /* static */ SQUserPointer Squirrel::GetRealInstance(HSQUIRRELVM vm, int index, const char *tag)
 {
+	if (sq_gettype(vm, index) == OT_NULL) return nullptr;
 	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
 	std::string class_name = fmt::format("{}{}", engine->GetAPIName(), tag);
 	sq_pushroottable(vm);
 	sq_pushstring(vm, class_name);
 	sq_get(vm, -2);
 	sq_push(vm, index);
-	if (sq_instanceof(vm)) {
+	if (sq_instanceof(vm) == SQTrue) {
 		sq_pop(vm, 3);
 		SQUserPointer ptr = nullptr;
 		if (SQ_SUCCEEDED(sq_getinstanceup(vm, index, &ptr, nullptr))) return ptr;

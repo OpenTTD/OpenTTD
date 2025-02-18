@@ -1,0 +1,62 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "../script_date.hpp"
+#include "../template/template_date.hpp.sq"
+
+template <> SQInteger PushClassName<ScriptEconomyDate, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSEconomyDate", -1); return 1; }
+template <> SQInteger PushClassName<ScriptCalendarDate, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSCalendarDate", -1); return 1; }
+
+void SQGSDate_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEconomyDate, ScriptType::GS> SQGSEconomyDate("GSEconomyDate");
+	SQGSEconomyDate.PreRegister(engine);
+	SQGSEconomyDate.AddConstructor<void (ScriptEconomyDate::*)(), -1>(engine, "xi");
+
+	SQGSEconomyDate.DefSQConst(engine, ScriptEconomyDate::DATE_INVALID, "DATE_INVALID");
+
+	SQGSEconomyDate.DefSQStaticMethod(engine, &ScriptEconomyDate::GetCurrentDate, "GetCurrentDate", 1, ".");
+	SQGSEconomyDate.DefSQStaticMethod(engine, &ScriptEconomyDate::GetDate,        "GetDate",        4, ".iii");
+	SQGSEconomyDate.DefSQStaticMethod(engine, &ScriptEconomyDate::GetSystemTime,  "GetSystemTime",  1, ".");
+
+	SQGSEconomyDate.DefSQMethod(engine, &ScriptEconomyDate::IsValid,        "IsValid",        1, ".");
+	SQGSEconomyDate.DefSQMethod(engine, &ScriptEconomyDate::GetYear,        "GetYear",        1, ".");
+	SQGSEconomyDate.DefSQMethod(engine, &ScriptEconomyDate::GetMonth,       "GetMonth",       1, ".");
+	SQGSEconomyDate.DefSQMethod(engine, &ScriptEconomyDate::GetDayOfMonth,  "GetDayOfMonth",  1, ".");
+	SQGSEconomyDate.DefSQMethod(engine, &ScriptEconomyDate::date,           "date",           1, ".");
+
+	SQGSEconomyDate.DefSQAdvancedMethod(engine, &ScriptEconomyDate::_tostring, "_tostring");
+	SQGSEconomyDate.DefSQAdvancedMethod(engine, &ScriptEconomyDate::_add,      "_add");
+	SQGSEconomyDate.DefSQAdvancedMethod(engine, &ScriptEconomyDate::_sub,      "_sub");
+	SQGSEconomyDate.DefSQAdvancedMethod(engine, &ScriptEconomyDate::_cmp,      "_cmp");
+
+	SQGSEconomyDate.PostRegister(engine);
+
+
+	DefSQClass<ScriptCalendarDate, ScriptType::GS> SQGSCalendarDate("GSCalendarDate");
+	SQGSCalendarDate.PreRegister(engine);
+	SQGSCalendarDate.AddConstructor<void (ScriptCalendarDate::*)(), -1>(engine, "xi");
+
+	SQGSCalendarDate.DefSQConst(engine, ScriptCalendarDate::DATE_INVALID, "DATE_INVALID");
+
+	SQGSCalendarDate.DefSQStaticMethod(engine, &ScriptCalendarDate::GetCurrentDate, "GetCurrentDate", 1, ".");
+	SQGSCalendarDate.DefSQStaticMethod(engine, &ScriptCalendarDate::GetDate,        "GetDate",        4, ".iii");
+	SQGSCalendarDate.DefSQStaticMethod(engine, &ScriptCalendarDate::GetSystemTime,  "GetSystemTime",  1, ".");
+
+	SQGSCalendarDate.DefSQMethod(engine, &ScriptCalendarDate::IsValid,        "IsValid",        1, ".");
+	SQGSCalendarDate.DefSQMethod(engine, &ScriptCalendarDate::GetYear,        "GetYear",        1, ".");
+	SQGSCalendarDate.DefSQMethod(engine, &ScriptCalendarDate::GetMonth,       "GetMonth",       1, ".");
+	SQGSCalendarDate.DefSQMethod(engine, &ScriptCalendarDate::GetDayOfMonth,  "GetDayOfMonth",  1, ".");
+	SQGSCalendarDate.DefSQMethod(engine, &ScriptCalendarDate::date,           "date",           1, ".");
+
+	SQGSCalendarDate.DefSQAdvancedMethod(engine, &ScriptCalendarDate::_tostring, "_tostring");
+	SQGSCalendarDate.DefSQAdvancedMethod(engine, &ScriptCalendarDate::_add,      "_add");
+	SQGSCalendarDate.DefSQAdvancedMethod(engine, &ScriptCalendarDate::_sub,      "_sub");
+	SQGSCalendarDate.DefSQAdvancedMethod(engine, &ScriptCalendarDate::_cmp,      "_cmp");
+
+	SQGSCalendarDate.PostRegister(engine);
+}

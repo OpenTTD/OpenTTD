@@ -78,3 +78,35 @@ GSTown.FoundTown <- function(tile, size, city, layout, name) { return GSTown._Fo
 
 GSVehicle._SetName <- GSVehicle.SetName;
 GSVehicle.SetName <- function(id, name) { return GSVehicle._SetName(id, GSCompat14.Text(name)); }
+
+GSDate <- GSEconomyDate;
+GSDate.IsValidDate <- function(date) { return GSDate(date).IsValid(); }
+GSDate._GetCurrentDate <- GSDate.GetCurrentDate;
+GSDate.GetCurrentDate <- function() { return GSDate._GetCurrentDate().date(); }
+GSDate._GetYear <- GSDate.GetYear;
+GSDate.GetYear <- function(date) { return GSDate(date)._GetYear(); }
+GSDate._GetMonth <- GSDate.GetMonth;
+GSDate.GetMonth <- function(date) { return GSDate(date)._GetMonth(); }
+GSDate._GetDayOfMonth <- GSDate.GetDayOfMonth;
+GSDate.GetDayOfMonth <- function(date) { return GSDate(date)._GetDayOfMonth(); }
+GSDate._GetDate <- GSDate.GetDate;
+GSDate.GetDate <- function(year, month, day) { return GSDate._GetDate(year, month, day).date(); }
+
+GSBaseStation._GetConstructionDate <- GSBaseStation.GetConstructionDate;
+GSBaseStation.GetConstructionDate <- function(station_id) { return GSBaseStation._GetConstructionDate(station_id).date(); }
+
+GSEngine._GetDesignDate <- GSEngine.GetDesignDate;
+GSEngine.GetDesignDate <- function(engine_id) { return GSEngine._GetDesignDate(engine_id).date(); }
+
+GSIndustry._GetConstructionDate <- GSIndustry.GetConstructionDate;
+GSIndustry.GetConstructionDate <- function(industry_id) { return GSIndustry._GetConstructionDate(industry_id).date(); }
+GSIndustry._GetCargoLastAcceptedDate <- GSIndustry.GetCargoLastAcceptedDate;
+GSIndustry.GetCargoLastAcceptedDate <- function(industry_id, cargo_type) { return GSIndustry._GetCargoLastAcceptedDate(industry_id, cargo_type).date(); }
+
+SStoryPage._GetDate <- GSStoryPage.GetDate;
+GSStoryPage.GetDate <- function(story_page_id) { return GSStoryPage._GetDate(story_page_id).date(); }
+GSStoryPage._SetDate <- GSStoryPage.SetDate;
+GSStoryPage.SetDate <- function(story_page_id, date) { return GSStoryPage._SetDate(story_page_id, GSCalendarDate(date)); }
+
+GSSubsidy._GetExpireDate <- GSSubsidy.GetExpireDate;
+GSSubsidy.GetExpireDate <- function(subsidy_id) { return GSSubsidy._GetExpireDate(subsidy_id).date(); }

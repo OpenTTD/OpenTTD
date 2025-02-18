@@ -36,3 +36,25 @@ AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown._Fo
 
 AIVehicle._SetName <- AIVehicle.SetName;
 AIVehicle.SetName <- function(id, name) { return AIVehicle._SetName(id, AICompat14.Text(name)); }
+
+AIDate <- AIEconomyDate;
+AIDate.IsValidDate <- function(date) { return AIDate(date).IsValid(); }
+AIDate._GetCurrentDate <- AIDate.GetCurrentDate;
+AIDate.GetCurrentDate <- function() { return AIDate._GetCurrentDate().date(); }
+AIDate._GetYear <- AIDate.GetYear;
+AIDate.GetYear <- function(date) { return AIDate(date)._GetYear(); }
+AIDate._GetMonth <- AIDate.GetMonth;
+AIDate.GetMonth <- function(date) { return AIDate(date)._GetMonth(); }
+AIDate._GetDayOfMonth <- AIDate.GetDayOfMonth;
+AIDate.GetDayOfMonth <- function(date) { return AIDate(date)._GetDayOfMonth(); }
+AIDate._GetDate <- AIDate.GetDate;
+AIDate.GetDate <- function(year, month, day) { return AIDate._GetDate(year, month, day, false).date(); }
+
+AIBaseStation._GetConstructionDate <- AIBaseStation.GetConstructionDate;
+AIBaseStation.GetConstructionDate <- function(station_id) { return AIBaseStation._GetConstructionDate(station_id).date(); }
+
+AIEngine._GetDesignDate <- AIEngine.GetDesignDate;
+AIEngine.GetDesignDate <- function(engine_id) { return AIEngine._GetDesignDate(engine_id).date(); }
+
+AISubsidy._GetExpireDate <- AISubsidy.GetExpireDate;
+AISubsidy.GetExpireDate <- function(subsidy_id) { return AISubsidy._GetExpireDate(subsidy_id).date(); }
