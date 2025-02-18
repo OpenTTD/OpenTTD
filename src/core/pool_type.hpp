@@ -126,10 +126,9 @@ private:
  * @tparam Tgrowth_step Size of growths; if the pool is full increase the size by this amount
  * @tparam Tpool_type   Type of this pool
  * @tparam Tcache       Whether to perform 'alloc' caching, i.e. don't actually free/malloc just reuse the memory
- * @tparam Tzero        Whether to zero the memory
  * @warning when Tcache is enabled *all* instances of this pool's item must be of the same size.
  */
-template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type = PoolType::Normal, bool Tcache = false, bool Tzero = true>
+template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type = PoolType::Normal, bool Tcache = false>
 requires std::is_base_of_v<PoolIDBase, Tindex>
 struct Pool : PoolBase {
 public:
@@ -282,12 +281,12 @@ public:
 	 * Base class for all PoolItems
 	 * @tparam Tpool The pool this item is going to be part of
 	 */
-	template <struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache, Tzero> *Tpool>
+	template <struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache> *Tpool>
 	struct PoolItem {
 		Tindex index; ///< Index of this pool item
 
 		/** Type of the pool this item is going to be part of */
-		typedef struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache, Tzero> Pool;
+		typedef struct Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache> Pool;
 
 		/**
 		 * Allocates space for new Titem
