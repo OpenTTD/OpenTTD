@@ -62,8 +62,8 @@ static const int LAST_MONTH = 1;
  */
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	struct ProducedHistory {
-		uint16_t production; ///< Total produced
-		uint16_t transported; ///< Total transported
+		uint16_t production = 0; ///< Total produced
+		uint16_t transported = 0; ///< Total transported
 
 		uint8_t PctTransported() const
 		{
@@ -73,51 +73,51 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	};
 
 	struct ProducedCargo {
-		CargoType cargo; ///< Cargo type
-		uint16_t waiting; ///< Amount of cargo produced
-		uint8_t rate; ///< Production rate
-		std::array<ProducedHistory, 25> history; ///< History of cargo produced and transported for this month and 24 previous months
+		CargoType cargo = 0; ///< Cargo type
+		uint16_t waiting = 0; ///< Amount of cargo produced
+		uint8_t rate = 0; ///< Production rate
+		std::array<ProducedHistory, 25> history{}; ///< History of cargo produced and transported for this month and 24 previous months
 	};
 
 	struct AcceptedCargo {
-		CargoType cargo; ///< Cargo type
-		uint16_t waiting; ///< Amount of cargo waiting to processed
-		TimerGameEconomy::Date last_accepted; ///< Last day cargo was accepted by this industry
+		CargoType cargo = 0; ///< Cargo type
+		uint16_t waiting = 0; ///< Amount of cargo waiting to processed
+		TimerGameEconomy::Date last_accepted{}; ///< Last day cargo was accepted by this industry
 	};
 
 	using ProducedCargoes = std::vector<ProducedCargo>;
 	using AcceptedCargoes = std::vector<AcceptedCargo>;
 
-	TileArea location;                                     ///< Location of the industry
-	Town *town;                                            ///< Nearest town
-	Station *neutral_station;                              ///< Associated neutral station
-	ProducedCargoes produced; ///< produced cargo slots
-	AcceptedCargoes accepted; ///< accepted cargo slots
-	uint8_t prod_level;                                       ///< general production level
-	uint16_t counter;                                        ///< used for animation and/or production (if available cargo)
+	TileArea location{INVALID_TILE, 0, 0}; ///< Location of the industry
+	Town *town = nullptr; ///< Nearest town
+	Station *neutral_station = nullptr; ///< Associated neutral station
+	ProducedCargoes produced{}; ///< produced cargo slots
+	AcceptedCargoes accepted{}; ///< accepted cargo slots
+	uint8_t prod_level = 0; ///< general production level
+	uint16_t counter = 0; ///< used for animation and/or production (if available cargo)
 
-	IndustryType type;             ///< type of industry.
-	Owner owner;                   ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
-	Colours random_colour;         ///< randomized colour of the industry, for display purpose
-	TimerGameEconomy::Year last_prod_year; ///< last economy year of production
-	uint8_t was_cargo_delivered;      ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
-	IndustryControlFlags ctlflags; ///< flags overriding standard behaviours
+	IndustryType type = 0; ///< type of industry.
+	Owner owner = INVALID_OWNER; ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
+	Colours random_colour = COLOUR_BEGIN; ///< randomized colour of the industry, for display purpose
+	TimerGameEconomy::Year last_prod_year{}; ///< last economy year of production
+	uint8_t was_cargo_delivered = 0; ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
+	IndustryControlFlags ctlflags{}; ///< flags overriding standard behaviours
 
-	PartOfSubsidy part_of_subsidy; ///< NOSAVE: is this industry a source/destination of a subsidy?
-	StationList stations_near;     ///< NOSAVE: List of nearby stations.
-	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the industry
+	PartOfSubsidy part_of_subsidy{}; ///< NOSAVE: is this industry a source/destination of a subsidy?
+	StationList stations_near{}; ///< NOSAVE: List of nearby stations.
+	mutable std::string cached_name{}; ///< NOSAVE: Cache of the resolved name of the industry
 
-	Owner founder;                 ///< Founder of the industry
-	TimerGameCalendar::Date construction_date; ///< Date of the construction of the industry
-	uint8_t construction_type;       ///< Way the industry was constructed (@see IndustryConstructionType)
-	uint8_t selected_layout;          ///< Which tile layout was used when creating the industry
-	Owner exclusive_supplier;      ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
-	Owner exclusive_consumer;      ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)
-	std::string text;              ///< General text with additional information.
+	Owner founder = INVALID_OWNER; ///< Founder of the industry
+	TimerGameCalendar::Date construction_date{}; ///< Date of the construction of the industry
+	uint8_t construction_type = 0; ///< Way the industry was constructed (@see IndustryConstructionType)
+	uint8_t selected_layout = 0; ///< Which tile layout was used when creating the industry
+	Owner exclusive_supplier = INVALID_OWNER; ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
+	Owner exclusive_consumer = INVALID_OWNER; ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)
+	std::string text{}; ///< General text with additional information.
 
-	uint16_t random;                 ///< Random value used for randomisation of all kinds of things
+	uint16_t random = 0; ///< Random value used for randomisation of all kinds of things
 
-	PersistentStorage *psa;        ///< Persistent storage for NewGRF industries.
+	PersistentStorage *psa = nullptr; ///< Persistent storage for NewGRF industries.
 
 	Industry(TileIndex tile = INVALID_TILE) : location(tile, 0, 0) {}
 	~Industry();
