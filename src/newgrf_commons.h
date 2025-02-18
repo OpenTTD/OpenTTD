@@ -294,6 +294,8 @@ struct GRFFilePropsBase {
 	uint32_t grfid = 0; ///< grfid that introduced this entity.
 	const struct GRFFile *grffile = nullptr; ///< grf file that introduced this entity
 
+	void SetGRFFile(const struct GRFFile *grffile);
+
 	/**
 	 * Test if this entity was introduced by NewGRF.
 	 * @returns true iff the grfid property is set.

@@ -733,6 +733,16 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resol
 }
 
 /**
+ * Set the NewGRF file, and its grfid, associated with grf props.
+ * @param grffile GRFFile to set.
+ */
+void GRFFilePropsBase::SetGRFFile(const struct GRFFile *grffile)
+{
+	this->grffile = grffile;
+	this->grfid = grffile == nullptr ? 0 : grffile->grfid;
+}
+
+/**
  * Get the SpriteGroup at the specified index.
  * @param index Index to get.
  * @returns SpriteGroup at index, or nullptr if not present.

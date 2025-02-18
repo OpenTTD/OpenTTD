@@ -71,8 +71,7 @@ void SetCustomEngineSprites(EngineID engine, CargoType cargo, const SpriteGroup 
 void SetEngineGRF(EngineID engine, const GRFFile *file)
 {
 	Engine *e = Engine::Get(engine);
-	e->grf_prop.grfid = file->grfid;
-	e->grf_prop.grffile = file;
+	e->grf_prop.SetGRFFile(file);
 }
 
 
