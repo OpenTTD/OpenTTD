@@ -22,11 +22,11 @@ extern NetworkClientInfoPool _networkclientinfo_pool;
 
 /** Container for all information known about a client. */
 struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool> {
-	ClientID client_id;      ///< Client identifier (same as ClientState->client_id)
-	std::string client_name; ///< Name of the client
-	std::string public_key; ///< The public key of the client.
-	CompanyID client_playas; ///< As which company is this client playing (CompanyID)
-	TimerGameEconomy::Date join_date; ///< Gamedate the client has joined
+	ClientID client_id = INVALID_CLIENT_ID; ///< Client identifier (same as ClientState->client_id)
+	std::string client_name{}; ///< Name of the client
+	std::string public_key{}; ///< The public key of the client.
+	CompanyID client_playas = CompanyID::Invalid(); ///< As which company is this client playing (CompanyID)
+	TimerGameEconomy::Date join_date{}; ///< Gamedate the client has joined
 
 	/**
 	 * Create a new client.

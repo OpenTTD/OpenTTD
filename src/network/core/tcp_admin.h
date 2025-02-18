@@ -116,8 +116,8 @@ enum AdminCompanyRemoveReason : uint8_t {
 /** Main socket handler for admin related connections. */
 class NetworkAdminSocketHandler : public NetworkTCPSocketHandler {
 protected:
-	std::string admin_name; ///< Name of the admin.
-	std::string admin_version; ///< Version string of the admin.
+	std::string admin_name{}; ///< Name of the admin.
+	std::string admin_version{}; ///< Version string of the admin.
 	AdminStatus status = ADMIN_STATUS_INACTIVE; ///< Status of this admin.
 
 	NetworkRecvStatus ReceiveInvalidPacket(PacketAdminType type);
