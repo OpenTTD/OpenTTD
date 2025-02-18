@@ -1284,8 +1284,9 @@ static void River_FoundEndNode(AyStar *aystar, PathNode *current)
  * @param end The end of the river.
  * @param spring The springing point of the river.
  * @param main_river Whether the current river is a big river that others flow into.
+ * @return true if the river is successfully built, otherwise false.
  */
-static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool main_river)
+static bool BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool main_river)
 {
 	River_UserData user_data = { spring, main_river };
 
@@ -1302,7 +1303,7 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
 	start.tile = begin;
 	start.td = INVALID_TRACKDIR;
 	finder.AddStartNode(&start, 0);
-	finder.Main();
+	return finder.Main() == AyStarStatus::FoundEndNode;
 }
 
 /**
@@ -1312,8 +1313,9 @@ static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool ma
  * @param min_river_length The minimum length for the river.
  * @return First element: True iff a river could/has been built, otherwise false; second element: River ends at sea.
  */
-static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint min_river_length)
+static std::tuple<bool, bool> FlowRiver(TileIndex &spring, TileIndex begin, uint min_river_length)
 {
+	const TileIndex original_spring = spring;
 	uint height_begin = TileHeight(begin);
 
 	if (IsWaterTile(begin)) {
@@ -1383,7 +1385,13 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 	}
 
 	marks.clear();
-	if (found) BuildRiver(begin, end, spring, main_river);
+	if (found && spring == original_spring) {
+		/* This may end being a partially built river. Update the spring location. */
+		if (!BuildRiver(begin, end, spring, main_river)) {
+			spring = end;
+		}
+	}
+
 	return { found, main_river };
 }
 
