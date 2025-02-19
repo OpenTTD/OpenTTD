@@ -692,6 +692,23 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				default: return 0x00;
 			}
 
+		case 0x64: { // Count consist's badge ID occurrence
+			if (v->type != VEH_TRAIN) return GetBadgeVariableResult(*object->ro.grffile, v->GetEngine()->badges, parameter);
+
+			/* Look up badge index. */
+			if (parameter >= std::size(object->ro.grffile->badge_list)) return UINT_MAX;
+			BadgeID index = object->ro.grffile->badge_list[parameter];
+
+			/* Count number of vehicles that contain this badge index. */
+			uint count = 0;
+			for (; v != nullptr; v = v->Next()) {
+				const auto &badges = v->GetEngine()->badges;
+				if (std::ranges::find(badges, index) != std::end(badges)) count++;
+			}
+
+			return count;
+		}
+
 		case 0x7A: return GetBadgeVariableResult(*object->ro.grffile, v->GetEngine()->badges, parameter);
 
 		case 0xFE:
