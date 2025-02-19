@@ -139,38 +139,8 @@ public:
 	{
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
-		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
-		TileDesc td;
-
-		td.build_date = CalendarTime::INVALID_DATE;
-
-		/* Most tiles have only one owner, but
-		 *  - drivethrough roadstops can be build on town owned roads (up to 2 owners) and
-		 *  - roads can have up to four owners (railroad, road, tram, 3rd-roadtype "highway").
-		 */
+		TileDesc td{};
 		td.owner_type[0] = STR_LAND_AREA_INFORMATION_OWNER; // At least one owner is displayed, though it might be "N/A".
-		td.owner_type[1] = STR_NULL;       // STR_NULL results in skipping the owner
-		td.owner_type[2] = STR_NULL;
-		td.owner_type[3] = STR_NULL;
-		td.owner[0] = OWNER_NONE;
-		td.owner[1] = OWNER_NONE;
-		td.owner[2] = OWNER_NONE;
-		td.owner[3] = OWNER_NONE;
-
-		td.station_class = STR_NULL;
-		td.station_name = STR_NULL;
-		td.airport_class = STR_NULL;
-		td.airport_name = STR_NULL;
-		td.airport_tile_name = STR_NULL;
-		td.railtype = STR_NULL;
-		td.rail_speed = 0;
-		td.roadtype = STR_NULL;
-		td.road_speed = 0;
-		td.tramtype = STR_NULL;
-		td.tram_speed = 0;
-		td.town_can_upgrade = std::nullopt;
-
-		td.grf = nullptr;
 
 		CargoArray acceptance{};
 		AddAcceptedCargo(tile, acceptance, nullptr);
