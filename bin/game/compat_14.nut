@@ -38,7 +38,7 @@ GSGoal._QuestionClient <- GSGoal.QuestionClient;
 GSGoal.QuestionClient <- function(id, target, is_client, question, type, buttons) { return GSGoal._QuestionClient(id, target, is_client, GSCompat14.Text(question), type, buttons); }
 
 GSGroup._SetName <- GSGroup.SetName;
-GSGroup.SetName <- function(name) { return GSGroup._SetName(GSCompat14.Text(name)); }
+GSGroup.SetName <- function(id, name) { return GSGroup._SetName(id, GSCompat14.Text(name)); }
 
 GSIndustry._SetText <- GSIndustry.SetText;
 GSIndustry.SetText <- function(id, text) { return GSIndustry._SetText(id, GSCompat14.Text(text)); }
