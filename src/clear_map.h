@@ -58,6 +58,7 @@ inline ClearGround GetRawClearGround(Tile t)
  */
 inline ClearGround GetClearGround(Tile t)
 {
+	if (GetRawClearGround(t) == CLEAR_ROCKS) return CLEAR_ROCKS;
 	if (IsSnowTile(t)) return CLEAR_SNOW;
 	return GetRawClearGround(t);
 }
