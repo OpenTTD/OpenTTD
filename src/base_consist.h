@@ -15,23 +15,23 @@
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
 struct BaseConsist {
-	std::string name;                   ///< Name of vehicle
+	std::string name{}; ///< Name of vehicle
 
 	/* Used for timetabling. */
-	TimerGameTick::Ticks current_order_time;    ///< How many ticks have passed since this order started.
-	TimerGameTick::Ticks lateness_counter;      ///< How many ticks late (or early if negative) this vehicle is.
-	TimerGameTick::TickCounter timetable_start; ///< At what tick of TimerGameTick::counter the vehicle should start its timetable.
+	TimerGameTick::Ticks current_order_time{}; ///< How many ticks have passed since this order started.
+	TimerGameTick::Ticks lateness_counter{}; ///< How many ticks late (or early if negative) this vehicle is.
+	TimerGameTick::TickCounter timetable_start{}; ///< At what tick of TimerGameTick::counter the vehicle should start its timetable.
 
-	TimerGameTick::TickCounter depot_unbunching_last_departure; ///< When the vehicle last left its unbunching depot.
-	TimerGameTick::TickCounter depot_unbunching_next_departure; ///< When the vehicle will next try to leave its unbunching depot.
+	TimerGameTick::TickCounter depot_unbunching_last_departure{}; ///< When the vehicle last left its unbunching depot.
+	TimerGameTick::TickCounter depot_unbunching_next_departure{}; ///< When the vehicle will next try to leave its unbunching depot.
 	TimerGameTick::Ticks round_trip_time;  ///< How many ticks for a single circumnavigation of the orders.
 
-	uint16_t service_interval;            ///< The interval for (automatic) servicing; either in days or %.
+	uint16_t service_interval = 0; ///< The interval for (automatic) servicing; either in days or %.
 
-	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
-	VehicleOrderID cur_implicit_order_index;///< The index to the current implicit order
+	VehicleOrderID cur_real_order_index = 0; ///< The index to the current real (non-implicit) order
+	VehicleOrderID cur_implicit_order_index = 0; ///< The index to the current implicit order
 
-	uint16_t vehicle_flags;               ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
+	uint16_t vehicle_flags = 0; ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
 	virtual ~BaseConsist() = default;
 

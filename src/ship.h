@@ -18,9 +18,9 @@ WaterClass GetEffectiveWaterClass(TileIndex tile);
 
 /** Element of the ShipPathCache. */
 struct ShipPathElement {
-	Trackdir trackdir; ///< Trackdir for this element.
+	Trackdir trackdir = INVALID_TRACKDIR; ///< Trackdir for this element.
 
-	constexpr ShipPathElement() : trackdir(INVALID_TRACKDIR) {}
+	constexpr ShipPathElement() {}
 	constexpr ShipPathElement(Trackdir trackdir) : trackdir(trackdir) {}
 };
 
@@ -30,11 +30,11 @@ using ShipPathCache = std::vector<ShipPathElement>;
  * All ships have this type.
  */
 struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
-	ShipPathCache path;   ///< Cached path.
-	TrackBits state;      ///< The "track" the ship is following.
-	Direction rotation;   ///< Visible direction.
-	int16_t rotation_x_pos; ///< NOSAVE: X Position before rotation.
-	int16_t rotation_y_pos; ///< NOSAVE: Y Position before rotation.
+	ShipPathCache path{}; ///< Cached path.
+	TrackBits state{}; ///< The "track" the ship is following.
+	Direction rotation = INVALID_DIR; ///< Visible direction.
+	int16_t rotation_x_pos = 0; ///< NOSAVE: X Position before rotation.
+	int16_t rotation_y_pos = 0; ///< NOSAVE: Y Position before rotation.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Ship() : SpecializedVehicleBase() {}

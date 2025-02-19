@@ -8,3 +8,31 @@
 /* This file contains code to downgrade the API from 15 to 14. */
 
 AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
+
+class AICompat14 {
+	function Text(text)
+	{
+		if (typeof(text) != "string") return null;
+		return text;
+	}
+}
+
+AIBaseStation._SetName <- AIBaseStation.SetName;
+AIBaseStation.SetName <- function(id, name) { return AIBaseStation._SetName(id, AICompat14.Text(name)); }
+
+AICompany._SetName <- AICompany.SetName;
+AICompany.SetName <- function(name) { return AICompany._SetName(AICompat14.Text(name)); }
+AICompany._SetPresidentName <- AICompany.SetPresidentName;
+AICompany.SetPresidentName <- function(name) { return AICompany._SetPresidentName(AICompat14.Text(name)); }
+
+AIGroup._SetName <- AIGroup.SetName;
+AIGroup.SetName <- function(name) { return AIGroup._SetName(AICompat14.Text(name)); }
+
+AISign._BuildSign <- AISign.BuildSign;
+AISign.BuildSign <- function(id, name) { return AISign._BuildSign(id, AICompat14.Text(name)); }
+
+AITown._FoundTown <- AITown.FoundTown;
+AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown._FoundTown(tile, size, city, layout, AICompat14.Text(name)); }
+
+AIVehicle._SetName <- AIVehicle.SetName;
+AIVehicle.SetName <- function(id, name) { return AIVehicle._SetName(id, AICompat14.Text(name)); }

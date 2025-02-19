@@ -319,12 +319,6 @@ void UpdateCompanyGroupLiveries(const Company *c)
 	}
 }
 
-Group::Group(Owner owner)
-{
-	this->owner = owner;
-	this->folded = false;
-}
-
 
 /**
  * Create a new vehicle group.
@@ -346,9 +340,7 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Group *g = new Group(_current_company);
-		g->vehicle_type = vt;
-		g->parent = GroupID::Invalid();
+		Group *g = new Group(_current_company, vt);
 
 		Company *c = Company::Get(g->owner);
 		g->number = c->freegroups.UseID(c->freegroups.NextID());

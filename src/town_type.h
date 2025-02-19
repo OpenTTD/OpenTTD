@@ -113,12 +113,10 @@ static const uint MAX_LENGTH_TOWN_NAME_CHARS = 32; ///< The maximum length of a 
 /** Store the maximum and actually transported cargo amount for the current and the last month. */
 template <typename Tstorage>
 struct TransportedCargoStat {
-	Tstorage old_max;  ///< Maximum amount last month
-	Tstorage new_max;  ///< Maximum amount this month
-	Tstorage old_act;  ///< Actually transported last month
-	Tstorage new_act;  ///< Actually transported this month
-
-	TransportedCargoStat() : old_max(0), new_max(0), old_act(0), new_act(0) {}
+	Tstorage old_max = 0; ///< Maximum amount last month
+	Tstorage new_max = 0; ///< Maximum amount this month
+	Tstorage old_act = 0; ///< Actually transported last month
+	Tstorage new_act = 0; ///< Actually transported this month
 
 	/** Update stats for a new month. */
 	void NewMonth()

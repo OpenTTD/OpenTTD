@@ -260,20 +260,18 @@ private:
 	friend void AfterLoadVehiclesPhase1(bool part_of_load); ///< For instantiating the shared vehicle chain
 	friend SaveLoadTable GetOrderListDescription(); ///< Saving and loading of order lists.
 
-	VehicleOrderID num_orders;        ///< NOSAVE: How many orders there are in the list.
-	VehicleOrderID num_manual_orders; ///< NOSAVE: How many manually added orders are there in the list.
-	uint num_vehicles;                ///< NOSAVE: Number of vehicles that share this order list.
-	Vehicle *first_shared;            ///< NOSAVE: pointer to the first vehicle in the shared order chain.
-	Order *first;                     ///< First order of the order list.
+	VehicleOrderID num_orders = INVALID_VEH_ORDER_ID; ///< NOSAVE: How many orders there are in the list.
+	VehicleOrderID num_manual_orders = 0; ///< NOSAVE: How many manually added orders are there in the list.
+	uint num_vehicles = 0; ///< NOSAVE: Number of vehicles that share this order list.
+	Vehicle *first_shared = nullptr; ///< NOSAVE: pointer to the first vehicle in the shared order chain.
+	Order *first = nullptr; ///< First order of the order list.
 
-	TimerGameTick::Ticks timetable_duration;         ///< NOSAVE: Total timetabled duration of the order list.
-	TimerGameTick::Ticks total_duration;             ///< NOSAVE: Total (timetabled or not) duration of the order list.
+	TimerGameTick::Ticks timetable_duration{}; ///< NOSAVE: Total timetabled duration of the order list.
+	TimerGameTick::Ticks total_duration{}; ///< NOSAVE: Total (timetabled or not) duration of the order list.
 
 public:
 	/** Default constructor producing an invalid order list. */
-	OrderList(VehicleOrderID num_orders = INVALID_VEH_ORDER_ID)
-		: num_orders(num_orders), num_manual_orders(0), num_vehicles(0), first_shared(nullptr), first(nullptr),
-		  timetable_duration(0), total_duration(0) { }
+	OrderList(VehicleOrderID num_orders = INVALID_VEH_ORDER_ID) : num_orders(num_orders) { }
 
 	/**
 	 * Create an order list with the given order chain for the given vehicle.

@@ -67,12 +67,12 @@ enum NewGRFCacheValidValues : uint8_t {
 /** Cached often queried (NewGRF) values */
 struct NewGRFCache {
 	/* Values calculated when they are requested for the first time after invalidating the NewGRF cache. */
-	uint32_t position_consist_length;   ///< Cache for NewGRF var 40.
-	uint32_t position_same_id_length;   ///< Cache for NewGRF var 41.
-	uint32_t consist_cargo_information; ///< Cache for NewGRF var 42. (Note: The cargotype is untranslated in the cache because the accessing GRF is yet unknown.)
-	uint32_t company_information;       ///< Cache for NewGRF var 43.
-	uint32_t position_in_vehicle;       ///< Cache for NewGRF var 4D.
-	uint8_t  cache_valid;               ///< Bitset that indicates which cache values are valid.
+	uint32_t position_consist_length = 0; ///< Cache for NewGRF var 40.
+	uint32_t position_same_id_length = 0; ///< Cache for NewGRF var 41.
+	uint32_t consist_cargo_information = 0; ///< Cache for NewGRF var 42. (Note: The cargotype is untranslated in the cache because the accessing GRF is yet unknown.)
+	uint32_t company_information = 0; ///< Cache for NewGRF var 43.
+	uint32_t position_in_vehicle = 0; ///< Cache for NewGRF var 4D.
+	uint8_t  cache_valid = 0; ///< Bitset that indicates which cache values are valid.
 
 	auto operator<=>(const NewGRFCache &) const = default;
 };
@@ -123,10 +123,10 @@ enum GroundVehicleSubtypeFlags : uint8_t {
 
 /** Cached often queried values common to all vehicles. */
 struct VehicleCache {
-	uint16_t cached_max_speed;        ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
-	uint16_t cached_cargo_age_period; ///< Number of ticks before carried cargo is aged.
+	uint16_t cached_max_speed = 0; ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
+	uint16_t cached_cargo_age_period = 0; ///< Number of ticks before carried cargo is aged.
 
-	uint8_t cached_vis_effect;  ///< Visual effect to show (see #VisualEffect)
+	uint8_t cached_vis_effect = 0;  ///< Visual effect to show (see #VisualEffect)
 
 	auto operator<=>(const VehicleCache &) const = default;
 };
@@ -188,11 +188,11 @@ struct VehicleSpriteSeq {
  * or calculating the viewport.
  */
 struct MutableSpriteCache {
-	Direction last_direction;     ///< Last direction we obtained sprites for
-	bool revalidate_before_draw;  ///< We need to do a GetImage() and check bounds before drawing this sprite
-	bool is_viewport_candidate;   ///< This vehicle can potentially be drawn on a viewport
-	Rect old_coord;               ///< Co-ordinates from the last valid bounding box
-	VehicleSpriteSeq sprite_seq;  ///< Vehicle appearance.
+	Direction last_direction = INVALID_DIR; ///< Last direction we obtained sprites for
+	bool revalidate_before_draw = false; ///< We need to do a GetImage() and check bounds before drawing this sprite
+	bool is_viewport_candidate = false; ///< This vehicle can potentially be drawn on a viewport
+	Rect old_coord{}; ///< Co-ordinates from the last valid bounding box
+	VehicleSpriteSeq sprite_seq{}; ///< Vehicle appearance.
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */
@@ -239,12 +239,12 @@ struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle, BaseConsist
 private:
 	typedef std::list<RefitDesc> RefitList;
 
-	Vehicle *next;                      ///< pointer to the next vehicle in the chain
-	Vehicle *previous;                  ///< NOSAVE: pointer to the previous vehicle in the chain
-	Vehicle *first;                     ///< NOSAVE: pointer to the first vehicle in the chain
+	Vehicle *next = nullptr; ///< pointer to the next vehicle in the chain
+	Vehicle *previous = nullptr; ///< NOSAVE: pointer to the previous vehicle in the chain
+	Vehicle *first = nullptr; ///< NOSAVE: pointer to the first vehicle in the chain
 
-	Vehicle *next_shared;               ///< pointer to the next vehicle that shares the order
-	Vehicle *previous_shared;           ///< NOSAVE: pointer to the previous vehicle in the shared order chain
+	Vehicle *next_shared = nullptr; ///< pointer to the next vehicle that shares the order
+	Vehicle *previous_shared = nullptr; ///< NOSAVE: pointer to the previous vehicle in the shared order chain
 
 public:
 	friend void FixOldVehicles(LoadgameState &ls);
@@ -255,111 +255,111 @@ public:
 	friend class SlVehicleDisaster;
 	friend void Ptrs_VEHS();
 
-	TileIndex tile;                     ///< Current tile index
+	TileIndex tile = INVALID_TILE; ///< Current tile index
 
 	/**
 	 * Heading for this tile.
 	 * For airports and train stations this tile does not necessarily belong to the destination station,
 	 * but it can be used for heuristic purposes to estimate the distance.
 	 */
-	TileIndex dest_tile;
+	TileIndex dest_tile = INVALID_TILE;
 
-	Money profit_this_year;             ///< Profit this year << 8, low 8 bits are fract
-	Money profit_last_year;             ///< Profit last year << 8, low 8 bits are fract
-	Money value;                        ///< Value of the vehicle
+	Money profit_this_year = 0; ///< Profit this year << 8, low 8 bits are fract
+	Money profit_last_year = 0; ///< Profit last year << 8, low 8 bits are fract
+	Money value = 0; ///< Value of the vehicle
 
-	CargoPayment *cargo_payment;        ///< The cargo payment we're currently in
+	CargoPayment *cargo_payment = nullptr; ///< The cargo payment we're currently in
 
-	mutable Rect coord;                 ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
+	mutable Rect coord{}; ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
 
-	Vehicle *hash_viewport_next;        ///< NOSAVE: Next vehicle in the visual location hash.
-	Vehicle **hash_viewport_prev;       ///< NOSAVE: Previous vehicle in the visual location hash.
+	Vehicle *hash_viewport_next = nullptr; ///< NOSAVE: Next vehicle in the visual location hash.
+	Vehicle **hash_viewport_prev = nullptr; ///< NOSAVE: Previous vehicle in the visual location hash.
 
-	Vehicle *hash_tile_next;            ///< NOSAVE: Next vehicle in the tile location hash.
-	Vehicle **hash_tile_prev;           ///< NOSAVE: Previous vehicle in the tile location hash.
-	Vehicle **hash_tile_current;        ///< NOSAVE: Cache of the current hash chain.
+	Vehicle *hash_tile_next = nullptr; ///< NOSAVE: Next vehicle in the tile location hash.
+	Vehicle **hash_tile_prev = nullptr; ///< NOSAVE: Previous vehicle in the tile location hash.
+	Vehicle **hash_tile_current = nullptr; ///< NOSAVE: Cache of the current hash chain.
 
-	SpriteID colourmap;                 ///< NOSAVE: cached colour mapping
+	SpriteID colourmap{}; ///< NOSAVE: cached colour mapping
 
 	/* Related to age and service time */
-	TimerGameCalendar::Year build_year;           ///< Year the vehicle has been built.
-	TimerGameCalendar::Date age;                  ///< Age in calendar days.
-	TimerGameEconomy::Date economy_age;           ///< Age in economy days.
-	TimerGameCalendar::Date max_age;              ///< Maximum age
-	TimerGameEconomy::Date date_of_last_service; ///< Last economy date the vehicle had a service at a depot.
-	TimerGameCalendar::Date date_of_last_service_newgrf; ///< Last calendar date the vehicle had a service at a depot, unchanged by the date cheat to protect against unsafe NewGRF behavior.
-	uint16_t reliability;                 ///< Reliability.
-	uint16_t reliability_spd_dec;         ///< Reliability decrease speed.
-	uint8_t breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown
-	uint8_t breakdown_delay;               ///< Counter for managing breakdown length.
-	uint8_t breakdowns_since_last_service; ///< Counter for the amount of breakdowns.
-	uint8_t breakdown_chance;              ///< Current chance of breakdowns.
+	TimerGameCalendar::Year build_year{}; ///< Year the vehicle has been built.
+	TimerGameCalendar::Date age{}; ///< Age in calendar days.
+	TimerGameEconomy::Date economy_age{}; ///< Age in economy days.
+	TimerGameCalendar::Date max_age{}; ///< Maximum age
+	TimerGameEconomy::Date date_of_last_service{}; ///< Last economy date the vehicle had a service at a depot.
+	TimerGameCalendar::Date date_of_last_service_newgrf{}; ///< Last calendar date the vehicle had a service at a depot, unchanged by the date cheat to protect against unsafe NewGRF behavior.
+	uint16_t reliability = 0; ///< Reliability.
+	uint16_t reliability_spd_dec = 0; ///< Reliability decrease speed.
+	uint8_t breakdown_ctr = 0; ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown
+	uint8_t breakdown_delay = 0; ///< Counter for managing breakdown length.
+	uint8_t breakdowns_since_last_service = 0; ///< Counter for the amount of breakdowns.
+	uint8_t breakdown_chance = 0; ///< Current chance of breakdowns.
 
-	int32_t x_pos;                        ///< x coordinate.
-	int32_t y_pos;                        ///< y coordinate.
-	int32_t z_pos;                        ///< z coordinate.
-	Direction direction;                ///< facing
+	int32_t x_pos = 0; ///< x coordinate.
+	int32_t y_pos = 0; ///< y coordinate.
+	int32_t z_pos = 0; ///< z coordinate.
+	Direction direction = INVALID_DIR; ///< facing
 
-	Owner owner;                        ///< Which company owns the vehicle?
+	Owner owner = INVALID_OWNER; ///< Which company owns the vehicle?
 	/**
 	 * currently displayed sprite index
 	 * 0xfd == custom sprite, 0xfe == custom second head sprite
 	 * 0xff == reserved for another custom sprite
 	 */
-	uint8_t spritenum;
-	uint8_t x_extent;                      ///< x-extent of vehicle bounding box
-	uint8_t y_extent;                      ///< y-extent of vehicle bounding box
-	uint8_t z_extent;                      ///< z-extent of vehicle bounding box
-	int8_t x_bb_offs;                     ///< x offset of vehicle bounding box
-	int8_t y_bb_offs;                     ///< y offset of vehicle bounding box
-	int8_t x_offs;                        ///< x offset for vehicle sprite
-	int8_t y_offs;                        ///< y offset for vehicle sprite
-	EngineID engine_type;               ///< The type of engine used for this vehicle.
+	uint8_t spritenum = 0;
+	uint8_t x_extent = 0; ///< x-extent of vehicle bounding box
+	uint8_t y_extent = 0; ///< y-extent of vehicle bounding box
+	uint8_t z_extent = 0; ///< z-extent of vehicle bounding box
+	int8_t x_bb_offs = 0; ///< x offset of vehicle bounding box
+	int8_t y_bb_offs = 0; ///< y offset of vehicle bounding box
+	int8_t x_offs = 0; ///< x offset for vehicle sprite
+	int8_t y_offs = 0; ///< y offset for vehicle sprite
+	EngineID engine_type = EngineID::Invalid(); ///< The type of engine used for this vehicle.
 
-	TextEffectID fill_percent_te_id;    ///< a text-effect id to a loading indicator object
-	UnitID unitnumber;                  ///< unit number, for display purposes only
+	TextEffectID fill_percent_te_id = INVALID_TE_ID; ///< a text-effect id to a loading indicator object
+	UnitID unitnumber{}; ///< unit number, for display purposes only
 
-	uint16_t cur_speed;                   ///< current speed
-	uint8_t subspeed;                      ///< fractional speed
-	uint8_t acceleration;                  ///< used by train & aircraft
-	uint32_t motion_counter;              ///< counter to occasionally play a vehicle sound.
-	uint8_t progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
+	uint16_t cur_speed = 0; ///< current speed
+	uint8_t subspeed = 0; ///< fractional speed
+	uint8_t acceleration = 0; ///< used by train & aircraft
+	uint32_t motion_counter = 0; ///< counter to occasionally play a vehicle sound.
+	uint8_t progress = 0; ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
-	uint8_t waiting_triggers;              ///< Triggers to be yet matched before rerandomizing the random bits.
-	uint16_t random_bits; ///< Bits used for randomized variational spritegroups.
+	uint8_t waiting_triggers = 0; ///< Triggers to be yet matched before rerandomizing the random bits.
+	uint16_t random_bits = 0; ///< Bits used for randomized variational spritegroups.
 
-	StationID last_station_visited;     ///< The last station we stopped at.
-	StationID last_loading_station;     ///< Last station the vehicle has stopped at and could possibly leave from with any cargo loaded.
-	TimerGameTick::TickCounter last_loading_tick; ///< Last TimerGameTick::counter tick that the vehicle has stopped at a station and could possibly leave with any cargo loaded.
+	StationID last_station_visited = StationID::Invalid(); ///< The last station we stopped at.
+	StationID last_loading_station = StationID::Invalid(); ///< Last station the vehicle has stopped at and could possibly leave from with any cargo loaded.
+	TimerGameTick::TickCounter last_loading_tick{}; ///< Last TimerGameTick::counter tick that the vehicle has stopped at a station and could possibly leave with any cargo loaded.
 
-	VehicleCargoList cargo;             ///< The cargo this vehicle is carrying
-	CargoType cargo_type;                 ///< type of cargo this vehicle is carrying
-	uint8_t cargo_subtype;                 ///< Used for livery refits (NewGRF variations)
-	uint16_t cargo_cap;                   ///< total capacity
-	uint16_t refit_cap;                   ///< Capacity left over from before last refit.
-	uint16_t cargo_age_counter;           ///< Ticks till cargo is aged next.
-	int8_t trip_occupancy;                ///< NOSAVE: Occupancy of vehicle of the current trip (updated after leaving a station).
+	VehicleCargoList cargo{}; ///< The cargo this vehicle is carrying
+	CargoType cargo_type{}; ///< type of cargo this vehicle is carrying
+	uint8_t cargo_subtype = 0; ///< Used for livery refits (NewGRF variations)
+	uint16_t cargo_cap = 0; ///< total capacity
+	uint16_t refit_cap = 0; ///< Capacity left over from before last refit.
+	uint16_t cargo_age_counter = 0; ///< Ticks till cargo is aged next.
+	int8_t trip_occupancy = 0; ///< NOSAVE: Occupancy of vehicle of the current trip (updated after leaving a station).
 
-	uint8_t day_counter;                   ///< Increased by one for each day
-	uint8_t tick_counter;                  ///< Increased by one for each tick
-	uint8_t running_ticks;                 ///< Number of ticks this vehicle was not stopped this day
-	uint16_t load_unload_ticks;           ///< Ticks to wait before starting next cycle.
+	uint8_t day_counter = 0; ///< Increased by one for each day
+	uint8_t tick_counter = 0; ///< Increased by one for each tick
+	uint8_t running_ticks = 0; ///< Number of ticks this vehicle was not stopped this day
+	uint16_t load_unload_ticks = 0; ///< Ticks to wait before starting next cycle.
 
-	uint8_t vehstatus;                     ///< Status
-	uint8_t subtype;                       ///< subtype (Filled with values from #AircraftSubType/#DisasterSubType/#EffectVehicleType/#GroundVehicleSubtypeFlags)
-	Order current_order;                ///< The current order (+ status, like: loading)
+	uint8_t vehstatus = 0; ///< Status
+	uint8_t subtype = 0; ///< subtype (Filled with values from #AircraftSubType/#DisasterSubType/#EffectVehicleType/#GroundVehicleSubtypeFlags)
+	Order current_order{}; ///< The current order (+ status, like: loading)
 
 	union {
-		OrderList *orders;              ///< Pointer to the order list for this vehicle
-		Order *old_orders;              ///< Only used during conversion of old save games
+		OrderList *orders = nullptr; ///< Pointer to the order list for this vehicle
+		Order *old_orders; ///< Only used during conversion of old save games
 	};
 
-	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
-	VehicleCache vcache;                ///< Cache of often used vehicle values.
+	NewGRFCache grf_cache{}; ///< Cache of often used calculated NewGRF values
+	VehicleCache vcache{}; ///< Cache of often used vehicle values.
 
-	GroupID group_id;                   ///< Index of group Pool array
+	GroupID group_id = GroupID::Invalid(); ///< Index of group Pool array
 
-	mutable MutableSpriteCache sprite_cache; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
+	mutable MutableSpriteCache sprite_cache{}; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
 
 	/**
 	 * Calculates the weight value that this vehicle will have when fully loaded with its current cargo.

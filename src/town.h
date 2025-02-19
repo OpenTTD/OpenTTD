@@ -19,8 +19,8 @@
 
 template <typename T>
 struct BuildingCounts {
-	std::vector<T> id_count;
-	std::vector<T> class_count;
+	std::vector<T> id_count{};
+	std::vector<T> class_count{};
 
 	auto operator<=>(const BuildingCounts &) const = default;
 };
@@ -38,47 +38,47 @@ extern TownPool _town_pool;
 
 /** Data structure with cached data of towns. */
 struct TownCache {
-	uint32_t num_houses;                        ///< Amount of houses
-	uint32_t population;                        ///< Current population of people
-	TrackedViewportSign sign;                 ///< Location of name sign, UpdateVirtCoord updates this
-	PartOfSubsidy part_of_subsidy;            ///< Is this town a source/destination of a subsidy?
-	std::array<uint32_t, HZB_END> squared_town_zone_radius; ///< UpdateTownRadius updates this given the house count
-	BuildingCounts<uint16_t> building_counts;   ///< The number of each type of building in the town
+	uint32_t num_houses = 0; ///< Amount of houses
+	uint32_t population = 0; ///< Current population of people
+	TrackedViewportSign sign{}; ///< Location of name sign, UpdateVirtCoord updates this
+	PartOfSubsidy part_of_subsidy{}; ///< Is this town a source/destination of a subsidy?
+	std::array<uint32_t, HZB_END> squared_town_zone_radius{}; ///< UpdateTownRadius updates this given the house count
+	BuildingCounts<uint16_t> building_counts{}; ///< The number of each type of building in the town
 
 	auto operator<=>(const TownCache &) const = default;
 };
 
 /** Town data structure. */
 struct Town : TownPool::PoolItem<&_town_pool> {
-	TileIndex xy;                  ///< town center tile
+	TileIndex xy = INVALID_TILE; ///< town center tile
 
-	TownCache cache; ///< Container for all cacheable data.
+	TownCache cache{}; ///< Container for all cacheable data.
 
 	/* Town name */
-	uint32_t townnamegrfid;
-	uint16_t townnametype;
-	uint32_t townnameparts;
-	std::string name;                ///< Custom town name. If empty, the town was not renamed and uses the generated name.
-	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
+	uint32_t townnamegrfid = 0;
+	uint16_t townnametype = 0;
+	uint32_t townnameparts = 0;
+	std::string name{}; ///< Custom town name. If empty, the town was not renamed and uses the generated name.
+	mutable std::string cached_name{}; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
 
-	uint8_t flags;                    ///< See #TownFlags.
+	uint8_t flags = 0; ///< See #TownFlags.
 
-	uint16_t noise_reached;          ///< level of noise that all the airports are generating
+	uint16_t noise_reached = 0; ///< level of noise that all the airports are generating
 
-	CompanyMask statues;           ///< which companies have a statue?
+	CompanyMask statues{}; ///< which companies have a statue?
 
 	/* Company ratings. */
-	CompanyMask have_ratings;      ///< which companies have a rating
-	ReferenceThroughBaseContainer<std::array<uint8_t, MAX_COMPANIES>> unwanted; ///< how many months companies aren't wanted by towns (bribe)
-	CompanyID exclusivity;         ///< which company has exclusivity
-	uint8_t exclusive_counter;       ///< months till the exclusivity expires
-	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings;  ///< ratings of each company for this town
+	CompanyMask have_ratings{}; ///< which companies have a rating
+	ReferenceThroughBaseContainer<std::array<uint8_t, MAX_COMPANIES>> unwanted{}; ///< how many months companies aren't wanted by towns (bribe)
+	CompanyID exclusivity = CompanyID::Invalid(); ///< which company has exclusivity
+	uint8_t exclusive_counter = 0; ///< months till the exclusivity expires
+	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings{};  ///< ratings of each company for this town
 
-	TransportedCargoStat<uint32_t> supplied[NUM_CARGO]; ///< Cargo statistics about supplied cargo.
-	TransportedCargoStat<uint16_t> received[NUM_TAE]; ///< Cargo statistics about received cargotypes.
-	uint32_t goal[NUM_TAE]; ///< Amount of cargo required for the town to grow.
+	std::array<TransportedCargoStat<uint32_t>, NUM_CARGO> supplied{}; ///< Cargo statistics about supplied cargo.
+	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
+	std::array<uint32_t, NUM_TAE> goal{}; ///< Amount of cargo required for the town to grow.
 
-	std::string text; ///< General text with additional information.
+	std::string text{}; ///< General text with additional information.
 
 	inline uint8_t GetPercentTransported(CargoType cargo_type) const
 	{
@@ -86,22 +86,22 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 		return this->supplied[cargo_type].old_act * 256 / (this->supplied[cargo_type].old_max + 1);
 	}
 
-	StationList stations_near;       ///< NOSAVE: List of nearby stations.
+	StationList stations_near{}; ///< NOSAVE: List of nearby stations.
 
-	uint16_t time_until_rebuild;       ///< time until we rebuild a house
+	uint16_t time_until_rebuild = 0; ///< time until we rebuild a house
 
-	uint16_t grow_counter;             ///< counter to count when to grow, value is smaller than or equal to growth_rate
-	uint16_t growth_rate;              ///< town growth rate
+	uint16_t grow_counter = 0; ///< counter to count when to grow, value is smaller than or equal to growth_rate
+	uint16_t growth_rate = 0; ///< town growth rate
 
-	uint8_t fund_buildings_months;      ///< fund buildings program in action?
-	uint8_t road_build_months;          ///< fund road reconstruction in action?
+	uint8_t fund_buildings_months = 0; ///< fund buildings program in action?
+	uint8_t road_build_months = 0; ///< fund road reconstruction in action?
 
-	bool larger_town;                ///< if this is a larger town and should grow more quickly
-	TownLayout layout;               ///< town specific road layout
+	bool larger_town = false; ///< if this is a larger town and should grow more quickly
+	TownLayout layout{}; ///< town specific road layout
 
-	bool show_zone;                  ///< NOSAVE: mark town to show the local authority zone in the viewports
+	bool show_zone = false; ///< NOSAVE: mark town to show the local authority zone in the viewports
 
-	std::vector<PersistentStorage *> psa_list;
+	std::vector<PersistentStorage *> psa_list{};
 
 	/**
 	 * Creates a new town.

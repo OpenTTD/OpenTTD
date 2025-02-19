@@ -47,9 +47,8 @@ struct EffectVehicle;
 struct DisasterVehicle;
 
 /** Base vehicle class. */
-struct BaseVehicle
-{
-	VehicleType type; ///< Type of vehicle
+struct BaseVehicle {
+	VehicleType type = VEH_INVALID; ///< Type of vehicle
 };
 
 /** Flags for goto depot commands. */

@@ -27,10 +27,7 @@ static bool CheckAPIVersion(const std::string &api_version)
 	return std::ranges::find(AIInfo::ApiVersions, api_version) != std::end(AIInfo::ApiVersions);
 }
 
-#if defined(_WIN32)
-#undef GetClassName
-#endif /* _WIN32 */
-template <> const char *GetClassName<AIInfo, ScriptType::AI>() { return "AIInfo"; }
+template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIInfo", -1); return 1; }
 
 /* static */ void AIInfo::RegisterAPI(Squirrel *engine)
 {
@@ -38,6 +35,7 @@ template <> const char *GetClassName<AIInfo, ScriptType::AI>() { return "AIInfo"
 	DefSQClass<AIInfo, ScriptType::AI> SQAIInfo("AIInfo");
 	SQAIInfo.PreRegister(engine);
 	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
+	SQAIInfo.DefSQAdvancedStaticMethod(engine, &PushClassName<AIInfo, ScriptType::AI>, "_typeof");
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddSetting, "AddSetting");
 	SQAIInfo.DefSQAdvancedMethod(engine, &AIInfo::AddLabels, "AddLabels");
 	SQAIInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_NONE");

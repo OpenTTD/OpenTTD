@@ -60,10 +60,7 @@ std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags
 	if (title.empty()) return { CMD_ERROR, LeagueTableID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		LeagueTable *lt = new LeagueTable();
-		lt->title = title;
-		lt->header = header;
-		lt->footer = footer;
+		LeagueTable *lt = new LeagueTable(title, header, footer);
 		return { CommandCost(), lt->index };
 	}
 
@@ -92,13 +89,7 @@ std::tuple<CommandCost, LeagueTableElementID> CmdCreateLeagueTableElement(DoComm
 	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return { CMD_ERROR, LeagueTableElementID::Invalid() };
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		LeagueTableElement *lte = new LeagueTableElement();
-		lte->table = table;
-		lte->rating = rating;
-		lte->company = company;
-		lte->text = text;
-		lte->score = score;
-		lte->link = link;
+		LeagueTableElement *lte = new LeagueTableElement(table, rating, company, text, score, link);
 		InvalidateWindowData(WC_COMPANY_LEAGUE, table);
 		return { CommandCost(), lte->index };
 	}

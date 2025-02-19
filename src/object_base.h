@@ -21,15 +21,17 @@ extern ObjectPool _object_pool;
 
 /** An object, such as transmitter, on the map. */
 struct Object : ObjectPool::PoolItem<&_object_pool> {
-	ObjectType type;    ///< Type of the object
-	Town *town;         ///< Town the object is built in
-	TileArea location;  ///< Location of the object
-	TimerGameCalendar::Date build_date; ///< Date of construction
-	uint8_t colour;        ///< Colour of the object, for display purpose
-	uint8_t view;          ///< The view setting for this object
+	ObjectType type = INVALID_OBJECT_TYPE; ///< Type of the object
+	Town *town = nullptr; ///< Town the object is built in
+	TileArea location{INVALID_TILE, 0, 0}; ///< Location of the object
+	TimerGameCalendar::Date build_date{}; ///< Date of construction
+	uint8_t colour = 0; ///< Colour of the object, for display purpose
+	uint8_t view = 0; ///< The view setting for this object
 
 	/** Make sure the object isn't zeroed. */
 	Object() {}
+	Object(ObjectType type, Town *town, TileArea location, TimerGameCalendar::Date build_date, uint8_t view) :
+		type(type), town(town), location(location), build_date(build_date), view(view) {}
 	/** Make sure the right destructor is called as well! */
 	~Object() {}
 
