@@ -32,12 +32,11 @@
 #include "animated_tile_func.h"
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
-#include "ai/ai.hpp"
+#include "script/script_trigger.hpp"
 #include "core/pool_func.hpp"
 #include "subsidy_func.h"
 #include "core/backup_type.hpp"
 #include "object_base.h"
-#include "game/game.hpp"
 #include "error.h"
 #include "string_func.h"
 #include "industry_cmd.h"
@@ -513,8 +512,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		AI::BroadcastNewEvent(new ScriptEventIndustryClose(i->index));
-		Game::NewEvent(new ScriptEventIndustryClose(i->index));
+		ScriptTrigger::BroadcastNewEvent<ScriptEventIndustryClose>(i->index);
 		delete i;
 	}
 	return CommandCost(EXPENSES_CONSTRUCTION, indspec->GetRemovalCost());
@@ -1727,8 +1725,7 @@ static void AdvertiseIndustryOpening(const Industry *ind)
 		SetDParam(1, ind->town->index);
 	}
 	AddIndustryNewsItem(ind_spc->new_industry_text, NewsType::IndustryOpen, ind->index);
-	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
-	Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
+	ScriptTrigger::BroadcastNewEvent<ScriptEventIndustryOpen>(ind->index);
 }
 
 /**
@@ -2974,8 +2971,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		/* Compute news category */
 		if (closeit) {
 			nt = NewsType::IndustryClose;
-			AI::BroadcastNewEvent(new ScriptEventIndustryClose(i->index));
-			Game::NewEvent(new ScriptEventIndustryClose(i->index));
+			ScriptTrigger::BroadcastNewEvent<ScriptEventIndustryClose>(i->index);
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
 				case 0: nt = NewsType::IndustryNobody;  break;
