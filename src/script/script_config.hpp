@@ -147,6 +147,11 @@ public:
 	int GetVersion() const;
 
 	/**
+	 * Whether the config is forcing the exact version of the Script?
+	 */
+	bool GetForceExactMatch() const;
+
+	/**
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this Script.
 	 */
@@ -172,6 +177,7 @@ public:
 protected:
 	std::string name;                                         ///< Name of the Script
 	int version;                                              ///< Version of the Script
+	bool force_exact_match;                                   ///< Force exact match for the version
 	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
 	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
 	std::unique_ptr<ScriptConfigItemList> config_list;        ///< List with all settings defined by this Script

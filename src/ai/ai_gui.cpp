@@ -180,11 +180,19 @@ struct AIConfigWindow : public Window {
 
 					if ((_game_mode != GM_NORMAL && i == 0) || (_game_mode == GM_NORMAL && Company::IsValidHumanID(i))) {
 						text = STR_AI_CONFIG_HUMAN_PLAYER;
-					} else if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != nullptr) {
-						SetDParamStr(0, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
-						text = STR_JUST_RAW_STRING;
 					} else {
-						text = STR_AI_CONFIG_RANDOM_AI;
+						AIConfig *config = AIConfig::GetConfig((CompanyID)i);
+						if (config->GetInfo() != nullptr) {
+							SetDParamStr(0, config->GetInfo()->GetName());
+							if (config->GetForceExactMatch()) {
+								SetDParam(1, config->GetInfo()->GetVersion());
+								text = STR_AI_CONFIG_NAME_VERSION;
+							} else {
+								text = STR_JUST_RAW_STRING;
+							}
+						} else {
+							text = STR_AI_CONFIG_RANDOM_AI;
+						}
 					}
 
 					TextColour tc = TC_SILVER;
