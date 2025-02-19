@@ -912,6 +912,10 @@ CommandCost CmdBuildShip(DoCommandFlags flags, TileIndex tile, const Engine *e, 
 		v->y_pos = y;
 		v->z_pos = GetSlopePixelZ(x, y);
 
+		v->direction = DiagDirToDir(GetShipDepotDirection(tile));
+		v->rotation = v->direction;
+		v->rotation_x_pos = v->x_pos;
+		v->rotation_y_pos = v->y_pos;
 		v->UpdateDeltaXY();
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
