@@ -12,8 +12,8 @@ AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
 class AICompat14 {
 	function Text(text)
 	{
-		if (typeof(text) != "string") return null;
-		return text;
+		if (type(text) == "string") return text;
+		return null;
 	}
 }
 
