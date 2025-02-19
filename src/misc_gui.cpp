@@ -185,8 +185,8 @@ public:
 		for (uint i = 0; i < 4; i++) {
 			if (td.owner_type[i] == STR_NULL) continue;
 
-			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) {
-				this->landinfo_data.push_back(GetString(td.owner_type[i], STR_LAND_AREA_INFORMATION_OWNER_N_A));
+			if (td.owner[i] == OWNER_NONE || td.owner[i] == OWNER_WATER) {
+				this->landinfo_data.push_back(GetString(td.owner_type[i], STR_LAND_AREA_INFORMATION_OWNER_N_A, std::monostate{}));
 			} else {
 				auto params = GetParamsForOwnedBy(td.owner[i], tile);
 				this->landinfo_data.push_back(GetStringWithArgs(td.owner_type[i], params));
