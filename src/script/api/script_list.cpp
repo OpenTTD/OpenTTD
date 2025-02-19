@@ -403,6 +403,43 @@ public:
 
 
 
+bool ScriptList::SaveObject(HSQUIRRELVM vm)
+{
+	sq_pushstring(vm, "List");
+	sq_newtable(vm);
+	sq_pushinteger(vm, this->sorter_type);
+	sq_pushbool(vm, this->sort_ascending);
+	sq_rawset(vm, -3);
+	for (ScriptListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
+		sq_pushinteger(vm, iter->first);
+		sq_pushinteger(vm, iter->second);
+		sq_rawset(vm, -3);
+	}
+	return true;
+}
+
+bool ScriptList::LoadObject(HSQUIRRELVM vm)
+{
+	if (sq_gettype(vm, -1) != OT_TABLE) return false;
+	sq_pushnull(vm);
+	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
+		SQInteger key, value;
+		sq_getinteger(vm, -2, &key);
+		if (sq_gettype(vm, -1) == OT_BOOL) {
+			SQBool val;
+			sq_getbool(vm, -1, &val);
+			this->Sort(static_cast<SorterType>(key), val);
+			sq_pop(vm, 2);
+			continue;
+		}
+		sq_getinteger(vm, -1, &value);
+		this->AddItem(key, value);
+		sq_pop(vm, 2);
+	}
+	sq_pop(vm, 1);
+	return true;
+}
+
 ScriptList::ScriptList()
 {
 	/* Default sorter */
