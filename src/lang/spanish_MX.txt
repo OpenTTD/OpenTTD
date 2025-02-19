@@ -292,7 +292,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Arrastra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Cambiar entre tamaño de ventana grande o pequeño
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento (mueve la lista arriba o abajo)
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento (mueve la lista izquierda o derecha)
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demoler edificios, etc. en un área de terreno. Ctrl para seleccionar un área en diagonal. Mayús muestra un costo estimado
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demoler construcciones de un área de terreno. Ctrl selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -384,30 +384,30 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir ve
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar partida
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rápido
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opciones
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar partida y salir del juego
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostrar mapa, ventana de vista adicional o lista de carteles
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostrar guía de localidades
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar, cargar o salir de la partida, o salir del programa
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Abrir mapa, vista adicional, flujos de carga o lista de letreros
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Abrir directorio de localidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostrar subsidios
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Mostrar lista de estaciones
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Abrir lista de estaciones de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Abrir información financiera de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Abrir información general de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar historial
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostrar lista de objetivos
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficas
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficas de empresa y tasas de pago por carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabla de evaluación de empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Listar todas las industrias o aportar fondos para una nueva
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de trenes de la empresa. Ctrl+Clic oculta la lista de grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de autotransportes de la empresa. Ctrl+Clic oculta la lista de grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de barcos de la empresa. Ctrl+Clic oculta la lista de grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves de la empresa. Ctrl+Clic oculta la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir lista de trenes de la empresa. Ctrl+Clic oculta la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Abrir lista de autotransportes de la empresa. Ctrl+Clic oculta la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Abrir lista de barcos de la empresa. Ctrl+Clic oculta la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Abrir lista de aeronaves de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Acercar
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Alejar
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir vías férreas
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir infraestructura de ferrocarriles
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construir infraestructura de carreteras
-STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construir tranvías
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir muelles
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construir infraestructura de tranvías
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir infraestructura para canales
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeropuertos
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir herramienta para nivelar o elevar el terreno, plantar árboles, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir menú de alteración de terreno, menú de plantar árboles, o poner letrero
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Abrir ventana de sonido y música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Abrir último mensaje o noticia, historial de mensajes o borrar todo
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Información sobre área de terreno, consola, depuración de script, capturas de pantalla, acerca de OpenTTD
@@ -420,7 +420,7 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor 
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Retroceder un año la fecha de inicio
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Avanzar un año la fecha de inicio
 STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Clic para establecer el año inicial
-STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Mostrar mapa, guía de localidades
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Abrir mapa, directorio de localidades, lista de letreros o directorio de industrias
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Generación de terreno
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Generación de localidades
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Generación de industrias
@@ -454,7 +454,7 @@ STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de tra
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nombres de localidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nombres de estaciones
 STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Estaciones de trenes
-STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Paradas de camiones
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Estaciones de camiones
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Paradas de autobuses
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Muelles
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeropuertos
@@ -480,7 +480,7 @@ STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de fluj
 STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
 
 # Town menu
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Guía de localidades
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de localidades
 STR_TOWN_MENU_FOUND_TOWN                                        :Fundar localidad
 
 # Subsidies menu
@@ -500,7 +500,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalles de des
 STR_GRAPH_MENU_HIGHSCORE                                        :Tabla de puntuaciones
 
 # Industry menu
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Guía de industrias
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Directorio de industrias
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadenas de industrias
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nueva industria
 
@@ -788,7 +788,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rutas de transporte
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Bosque
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Estación de ferrocarril
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Estación de carga de camiones
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Estación de camiones
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Parada de autobús
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeropuerto/Helipuerto
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Muelle
@@ -806,7 +806,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Desierto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nieve
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar nombres de localidades
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar u ocultar nombres de localidades
 STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrar en ubicación actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -924,7 +924,7 @@ STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Las gana
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} no puede llegar al siguiente destino porque no está a su alcance
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} no avanza porque no pudo reformarse
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática fallida para {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática de {VEHICLE} falló{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} ahora disponible!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -1079,7 +1079,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Permitir
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Al activarse, OpenTTD enviará datos recopilados automáticamente al salir del juego
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Detalles e información de privacidad
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ir a la página web con más información sobre la recopilación de datos automática (en inglés)
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista previa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Ver qué datos se enviarán
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar los datos recopilados del juego actual que se enviarán
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
@@ -2227,10 +2227,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir m
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabla de puntuaciones
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Acceder a documentación y recursos en línea
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abre la configuración
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abrir configuración
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar si hay nuevos contenidos actualizados para descargar
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abre la configuración de IA
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir configuración de IA
 STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir configuración de Script de juego
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
@@ -2403,7 +2403,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Fecha ac
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Tiempo de juego
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Tiempo jugado mientras el{}juego no estaba en pausa
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Idioma, versión del servidor, etc.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Compatibilidad del servidor e información de autenticación
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Clic para elegir una partida de la lista
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servidor al que te conectaste la última vez:
@@ -2452,7 +2452,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}La parti
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contraseña
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteger la partida con una contraseña para prevenir el acceso a otras personas
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidad
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidad:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Quién puede ver tu servidor en la lista pública
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Número máximo de clientes:
@@ -2545,8 +2545,8 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Sí, sol
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Sí, no volver a preguntar
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :¿Permitir recopilar datos?
-STR_NETWORK_ASK_SURVEY_TEXT                                     :¿Permites recopilar datos?{}OpenTTD enviará información al salir de una partida.{}Puedes cambiar esto cuando sea en las "Opciones de juego".
-STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Vista previa
+STR_NETWORK_ASK_SURVEY_TEXT                                     :¿Permitir recopilar datos?{}OpenTTD enviará información al salir de una partida.{}Se puede cambiar esto cuando sea en las "Opciones de juego".
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :Ver qué datos se enviarán
 STR_NETWORK_ASK_SURVEY_LINK                                     :Detalles e información de privacidad
 STR_NETWORK_ASK_SURVEY_NO                                       :No
 STR_NETWORK_ASK_SURVEY_YES                                      :Sí
@@ -2920,23 +2920,23 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular (silici
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcción de carretera
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcción de tranvía
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir sección de carretera. Ctrl quita las carreteras. Mayús muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir sección de tranvía. Ctrl quita los carriles de tranvía. Mayús muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir sección de carretera. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir sección de tranvía. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir carretera con orientación automática. Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir tranvías con orientación automática. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de autotransportes (para comprar y dar mantenimiento a vehículos). Mayús muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de tranvías (para comprar y dar mantenimiento a tranvías). Mayús muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre carretera. Ctrl+Clic activa la unión de puntos de ruta. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre vía de tranvía. Ctrl+Clic para seleccionar otro punto de ruta para unirlo. Mayús+Clic solo muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir parada de autobús. Ctrl activa la ampliación de estaciones. Mayús muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir parada de autobús. Ctrl+Clic activa la ampliación de paradas. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estación de tranvía de pasajeros. Ctrl activa la ampliación de estaciones. Mayús muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estación de carga de camiones. Ctrl activa la ampliación de estaciones. Mayús muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estación de tranvía de carga. Ctrl activa la ampliación de estaciones. Mayús muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estación de camiones. Ctrl activa la ampliación de estaciones. Mayús+Clic muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estación de tranvía de carga. Ctrl activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activar o desactivar carreteras de un sentido
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir puente de carretera. Mayús+Clic solo muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir puente de tranvía. Mayús muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel de carretera. Mayús muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel de tranvía. Mayús muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir puente de tranvía. Mayús+Clic solo muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel de carretera. Mayús+Clic solo muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel de tranvía. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Quitar carretera
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Quitar carriles de tranvía
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Convertir o actualizar tipo de carretera. Mayús+Clic solo muestra un costo estimado
@@ -2954,7 +2954,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elegir l
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientación de la parada de autobús
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Elegir la orientación de la parada de autobús
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientación de la estación de camiones
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientación de estación de camiones
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Elegir la orientación de la estación de camiones
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientación de la estación de tranvía de pasajeros
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Elegir la orientación de la estación de tranvía de pasajeros
@@ -2964,13 +2964,13 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Elegir l
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vías fluviales
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canales
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canal. Mayús muestra un costo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canal. Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir esclusa. Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir astillero (para comprar y dar mantenimiento a barcos). Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelles. Ctrl activa la ampliación de estaciones. Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya para utilizar como punto de ruta marítimo. Mayús muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir acueducto. Mayús+Clic solo muestra un costo estimado
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definir cuerpo de agua.{}Crea un canal, a menos que se pulse Ctrl en un área al nivel del mar, en cuyo caso se inundarán los alrededores
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construir canal. Ctrl+Clic en un área a nivel del mar la inunda con agua marina
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos. Ctrl+Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
 
 # Ship depot construction window
@@ -3030,7 +3030,7 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar 
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árboles al azar
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árboles al azar sobre el terreno
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantar árboles individuales al arrastrar sobre el terreno.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantar árboles individuales al arrastrar sobre el terreno
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Arboleda
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantar bosques pequeños al arrastrar sobre el terreno
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Bosque
@@ -3053,7 +3053,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Elimin
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generación de localidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nueva localidad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar una nueva localidad. Mayús muestra un costo estimado
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar una nueva localidad. Mayús+Clic solo muestra un costo estimado
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localidad aleatoria
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar la localidad en un lugar aleatorio
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Muchas localidades aleatorias
@@ -3373,7 +3373,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Variedad
 STR_MAPGEN_GENERATE                                             :{WHITE}Generar
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}¡Crear mundo y jugar OpenTTD!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Configuración de NewGRF
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Mostrar configuración de NewGRF
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Abrir configuración de NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Configuración de IA
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Abrir configuración de IA
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Configuración de script de juego
@@ -3801,7 +3801,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Historia
 STR_STORY_BOOK_SPECTATOR                                        :Historial global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página {NUM}
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Pasar a una página específica al elegirla de esta lista
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Ir directamente a una página específica
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Anterior
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Ir a la página anterior
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Siguiente
@@ -4052,10 +4052,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}: {COMMA} aeronave{P "" s}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenes. Clic para más información
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotransportes. Clic para más información. Ctrl+Mayús muestra el tipo de carga
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos. Clic para más información
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave. Clic para más información
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenes. Clic para más información. Dejar pulsado Ctrl+Mayús muestra el tipo de carga
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Autotransportes. Clic para más información. Dejar pulsado Ctrl+Mayús muestra el tipo de carga
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos. Clic para más información. Dejar pulsado Ctrl+Mayús muestra el tipo de carga
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronaves. Clic para más información. Dejar pulsado Ctrl+Mayús muestra el tipo de carga
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
@@ -4190,16 +4190,16 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar y reformar aeronave
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el tren elegido. Mayús+Clic muestra un precio estimado de compra
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el autotransporte elegido. Mayús+Clic muestra un costo estimado de compra
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar el barco elegido. Mayús+Clic muestra un precio estimado de compra
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave elegida. Mayús+Clic muestra un costo estimado de compra
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el tren elegido. Mayús+Clic solo muestra un precio estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el autotransporte elegido. Mayús+Clic solo muestra un costo estimado
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar el barco elegido. Mayús+Clic solo muestra un precio estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave elegida. Mayús+Clic solo muestra un costo estimado
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar y reformar el tren elegido. Mayús+Clic muestra un precio estimado de compra
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar y reformar el autotransporte elegido. Mayús+Clic muestra un precio estimado de compra
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar y reformar el barco elegido. Mayús+Clic muestra un precio estimado de compra
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar y reformar la aeronave seleccionada. Mayús+Clic muestra un costo estimado de compra
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Comprar y reformar el tren elegido. Mayús+Clic solo muestra un precio estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Comprar y reformar el autotransporte elegido. Mayús+Clic solo muestra un precio estimado
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Comprar y reformar el barco elegido. Mayús+Clic solo muestra un precio estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar y reformar la aeronave elegida. Mayús+Clic solo muestra un costo estimado
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Cambiar nombre
@@ -4273,13 +4273,13 @@ STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Reemplaz
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Reemplaza automáticamente todas las aeronaves en el hangar
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nuevo tren
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nuevo vehículo
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nuevo vehículo
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nuevo barco
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nueva aeronave
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Comprar nuevo tren
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Comprar un nuevo vehículo
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar nuevo autotransporte
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Comprar nuevo barco
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Comprar nueva aeronave
@@ -4405,14 +4405,14 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK} Centrar la vista en el tren. Doble clic permite seguir el tren. Ctrl+Clic abre una vista aparte
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK} Centrar la vista en el vehículo. Doble clic permite seguir el vehículo. Ctrl+Clic abre una vista aparte
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK} Centrar la vista en el vehículo. Doble clic sigue el vehículo en la vista principal. Ctrl+Clic abre una vista aparte
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrar la vista en el barco. Ctrl+Clic abre una vista aparte
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centrar la vista en la aeronave. Doble clic permite seguir la aeronave. Ctrl+Clic abre una vista aparte
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren al depósito. Ctrl+Clic para realizar solamente mantenimiento
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar vehículo al depósito. Ctrl+Clic para realizar solamente mantenimiento
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar barco al astillero. Ctrl+Clic para realizar solamente mantenimiento
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren al depósito. Ctrl+Clic solo realiza mantenimiento
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar vehículo al depósito. Ctrl+Clic solo realiza mantenimiento
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar barco al astillero. Ctrl+Clic solo realiza mantenimiento
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar aeronave al hangar. Ctrl+Clic solo realiza mantenimiento
 
 ###length VEHICLE_TYPES
@@ -4469,10 +4469,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Hacia {
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Mantenimiento en {0:DEPOT}, {1:VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}Espaciar y mantenimiento en {0:DEPOT}, {1:VELOCITY}
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}No puede llegar a {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}No puede llegar a {WAYPOINT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}No puede llegar a {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}No puede llegar a {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}No puede llegar a {0:STATION}, {1:VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}No puede llegar a {0:WAYPOINT}, {1:VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}No puede llegar a {0:DEPOT}, {1:VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}No puede llegar a {0:DEPOT}, {1:VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Detenido
@@ -4489,7 +4489,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Cambiar 
 
 STR_VEHICLE_INFO_AGE                                            :{COMMA} año{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} año{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Costo de mantenimiento: {LTBLUE}{CURRENCY_LONG}/año
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Edad: {LTBLUE}{STRING}{BLACK} Costo de operación: {LTBLUE}{CURRENCY_LONG}/año
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}Edad: {LTBLUE}{STRING}{BLACK} Costo operación: {LTBLUE}{CURRENCY_LONG}/período
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidad máx.: {LTBLUE}{VELOCITY}
@@ -4606,10 +4606,10 @@ STR_ORDER_GO_VIA                                                :Pasar por
 STR_ORDER_GO_NON_STOP_VIA                                       :Ir sin paradas por
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambiar la forma de hacer parada en la orden resaltada
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llenar cualquiera
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Llenar cualquier carga
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Cargar si hay disponible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Llenar todo
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Llenar cualquiera
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Llenar cualquier carga
 STR_ORDER_DROP_NO_LOADING                                       :No cargar
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Cambiar la forma de cargar en la orden resaltada
 
@@ -4715,33 +4715,33 @@ STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{R
 STR_ORDER_IMPLICIT                                              :(Implícito)
 
 STR_ORDER_FULL_LOAD                                             :(Llenar todo)
-STR_ORDER_FULL_LOAD_ANY                                         :(Llenar cualquiera)
+STR_ORDER_FULL_LOAD_ANY                                         :(Llenar cualquier carga)
 STR_ORDER_NO_LOAD                                               :(No cargar)
 STR_ORDER_UNLOAD                                                :(Descargar y cargar)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descargar y llenar todo)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descargar y llenar cualquiera)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descargar y llenar cualquier carga)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Descargar y dejar vacío)
 STR_ORDER_TRANSFER                                              :(Transferir y cargar)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir y llenar)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir y llenar cualquiera)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir y llenar cualquier carga)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir y dejar vacío)
 STR_ORDER_NO_UNLOAD                                             :(No descargar y cargar)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descargar y llenar todo)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y llenar cualquiera)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y llenar cualquier carga)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descargar ni cargar)
 
 STR_ORDER_AUTO_REFIT                                            :(Reformar a {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Llenar todo y reformar a{STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Llenar cualquiera y reformar a {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Llenar cualquier carga con reforma a {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Descargar y cargar con reforma a {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descargar y llenar todo con reforma a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar y llenar cualquiera con reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar y llenar cualquier carga con reforma a {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Transferir y cargar con reforma a {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir y llenar con reforma a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir y llenar cualquiera con reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir y llenar cualquier carga con reforma a {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(No descargar y cargar con reforma a {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descargar y llenar todo con reforma a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y llenar cualquiera con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y llenar cualquier carga con reforma a {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :carga disponible
 
