@@ -26,7 +26,7 @@ AICompany._SetPresidentName <- AICompany.SetPresidentName;
 AICompany.SetPresidentName <- function(name) { return AICompany._SetPresidentName(AICompat14.Text(name)); }
 
 AIGroup._SetName <- AIGroup.SetName;
-AIGroup.SetName <- function(name) { return AIGroup._SetName(AICompat14.Text(name)); }
+AIGroup.SetName <- function(id, name) { return AIGroup._SetName(id, AICompat14.Text(name)); }
 
 AISign._BuildSign <- AISign.BuildSign;
 AISign.BuildSign <- function(id, name) { return AISign._BuildSign(id, AICompat14.Text(name)); }
