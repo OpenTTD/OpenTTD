@@ -12,9 +12,9 @@ GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
 class GSCompat14 {
 	function Text(text)
 	{
-		type = typeof(text)
-		if (type != "string" && type != "GSText") return null;
-		return text;
+		if (type(text) == "string") return text;
+		if (type(text) == "instance" && text instanceof GSText) return text;
+		return null;
 	}
 }
 

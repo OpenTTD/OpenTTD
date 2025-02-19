@@ -33,7 +33,6 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	DefSQClass<GameInfo, ScriptType::GS> SQGSInfo("GSInfo");
 	SQGSInfo.PreRegister(engine);
 	SQGSInfo.AddConstructor<void (GameInfo::*)(), 1>(engine, "x");
-	SQGSInfo.DefSQAdvancedStaticMethod(engine, &PushClassName<GameInfo, ScriptType::GS>, "_typeof");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddSetting, "AddSetting");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddLabels, "AddLabels");
 	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_NONE");

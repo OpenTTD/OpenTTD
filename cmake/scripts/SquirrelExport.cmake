@@ -484,8 +484,9 @@ foreach(LINE IN LISTS SOURCE_LINES)
                 string(APPEND SQUIRREL_EXPORT "\n	SQ${API_CLS}.DefSQStaticMethod(engine, &${CLS}::${FUNCNAME},${SPACES}\"${FUNCNAME}\",${SPACES}${ARGC}, \"${TYPES}\");")
             endif()
         endforeach()
-        string(APPEND SQUIRREL_EXPORT "\n	SQ${API_CLS}.DefSQAdvancedStaticMethod(engine, &PushClassName<${CLS}, ScriptType::${APIUC}>, \"_typeof\");")
-        string(APPEND SQUIRREL_EXPORT "\n")
+        if(MLEN)
+            string(APPEND SQUIRREL_EXPORT "\n")
+        endif()
 
         # Non-static methods
         set(MLEN 0)

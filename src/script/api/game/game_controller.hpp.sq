@@ -14,8 +14,6 @@ void SQGSController_Register(Squirrel *engine)
 	DefSQClass<ScriptController, ScriptType::GS> SQGSController("GSController");
 	SQGSController.PreRegister(engine);
 
-	SQGSController.DefSQAdvancedStaticMethod(engine, &PushClassName<ScriptController, ScriptType::GS>, "_typeof");
-
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::GetTick,           "GetTick",           1, ".");
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::GetOpsTillSuspend, "GetOpsTillSuspend", 1, ".");
 	SQGSController.DefSQStaticMethod(engine, &ScriptController::SetCommandDelay,   "SetCommandDelay",   2, ".i");

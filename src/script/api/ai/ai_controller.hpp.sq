@@ -14,8 +14,6 @@ void SQAIController_Register(Squirrel *engine)
 	DefSQClass<ScriptController, ScriptType::AI> SQAIController("AIController");
 	SQAIController.PreRegister(engine);
 
-	SQAIController.DefSQAdvancedStaticMethod(engine, &PushClassName<ScriptController, ScriptType::AI>, "_typeof");
-
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetTick,           "GetTick",           1, ".");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetOpsTillSuspend, "GetOpsTillSuspend", 1, ".");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::SetCommandDelay,   "SetCommandDelay",   2, ".i");
