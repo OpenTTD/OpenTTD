@@ -1646,14 +1646,11 @@ public:
 /**
  * Get the cargo types produced by a house.
  * @param hs HouseSpec of the house.
- * @returns CargoArray of cargo types produced by the house.
+ * @returns Mask of cargo types produced by the house.
  */
-static CargoArray GetProducedCargoOfHouse(const HouseSpec *hs)
+static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 {
-	/* We don't care how much cargo is produced, but BuildCargoAcceptanceString shows fractions when less then 8. */
-	static const uint MIN_CARGO = 8;
-
-	CargoArray production;
+	CargoTypes produced{};
 	if (hs->callback_mask.Test(HouseCallbackMask::ProduceCargo)) {
 		for (uint i = 0; i < 256; i++) {
 			uint16_t callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, 0, hs->Index(), nullptr, INVALID_TILE, true);
@@ -1666,14 +1663,14 @@ static CargoArray GetProducedCargoOfHouse(const HouseSpec *hs)
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
 
-			production[cargo] = MIN_CARGO;
+			SetBit(produced, cargo);
 		}
 	} else {
 		/* Cargo is not controlled by NewGRF, town production effect is used instead. */
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) production[cs->Index()] = MIN_CARGO;
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) production[cs->Index()] = MIN_CARGO;
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) SetBit(produced, cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) SetBit(produced, cs->Index());
 	}
-	return production;
+	return produced;
 }
 
 struct BuildHouseWindow : public PickerWindow {
@@ -1756,10 +1753,10 @@ struct BuildHouseWindow : public PickerWindow {
 			line << *cargo_string;
 		}
 
-		cargo_string = BuildCargoAcceptanceString(GetProducedCargoOfHouse(hs), STR_HOUSE_PICKER_CARGO_PRODUCED);
-		if (cargo_string.has_value()) {
+		CargoTypes produced = GetProducedCargoOfHouse(hs);
+		if (produced != 0) {
 			line << "\n";
-			line << *cargo_string;
+			line << GetString(STR_HOUSE_PICKER_CARGO_PRODUCED, produced);
 		}
 
 		return line.str();
