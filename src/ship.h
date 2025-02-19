@@ -57,7 +57,7 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 	void OnNewEconomyDay() override;
 	Trackdir GetVehicleTrackdir() const override;
 	TileIndex GetOrderStationLocation(StationID station) override;
-	ClosestDepot FindClosestDepot() override;
+	ClosestDepot FindClosestDepot(bool may_reverse = false) override;
 	void UpdateCache();
 	void SetDestTile(TileIndex tile) override;
 };
