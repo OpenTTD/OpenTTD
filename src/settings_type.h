@@ -579,20 +579,20 @@ struct StationSettings {
 
 /** Default settings for vehicles. */
 struct VehicleDefaultSettings {
-	bool   servint_ispercent;                ///< service intervals are in percents
-	uint16_t servint_trains;                   ///< service interval for trains
-	uint16_t servint_roadveh;                  ///< service interval for road vehicles
-	uint16_t servint_aircraft;                 ///< service interval for aircraft
-	uint16_t servint_ships;                    ///< service interval for ships
+	bool   servint_ispercent = false; ///< service intervals are in percents
+	uint16_t servint_trains = 0; ///< service interval for trains
+	uint16_t servint_roadveh = 0; ///< service interval for road vehicles
+	uint16_t servint_aircraft = 0; ///< service interval for aircraft
+	uint16_t servint_ships = 0; ///< service interval for ships
 };
 
 /** Settings that can be set per company. */
 struct CompanySettings {
-	bool engine_renew;                       ///< is autorenew enabled
-	int16_t engine_renew_months;               ///< months before/after the maximum vehicle age a vehicle should be renewed
-	uint32_t engine_renew_money;               ///< minimum amount of money before autorenew is used
-	bool renew_keep_length;                  ///< sell some wagons if after autoreplace the train is longer than before
-	VehicleDefaultSettings vehicle;          ///< default settings for vehicles
+	bool engine_renew = false; ///< is autorenew enabled
+	int16_t engine_renew_months = 0; ///< months before/after the maximum vehicle age a vehicle should be renewed
+	uint32_t engine_renew_money = 0; ///< minimum amount of money before autorenew is used
+	bool renew_keep_length = false; ///< sell some wagons if after autoreplace the train is longer than before
+	VehicleDefaultSettings vehicle{}; ///< default settings for vehicles
 };
 
 /** All settings together for the game. */
