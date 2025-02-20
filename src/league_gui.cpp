@@ -274,24 +274,24 @@ private:
 	{
 		this->rows.clear();
 		this->title = std::string{};
-		auto lt = LeagueTable::GetIfValid(this->table);
+
+		const LeagueTable *lt = LeagueTable::GetIfValid(this->table);
 		if (lt == nullptr) return;
 
 		/* We store title in the window class so we can safely reference the string later */
 		this->title = lt->title;
 
 		std::vector<const LeagueTableElement *> elements;
-		for (LeagueTableElement *lte : LeagueTableElement::Iterate()) {
-			if (lte->table == this->table) {
-				elements.push_back(lte);
-			}
+		for (const LeagueTableElement *lte : LeagueTableElement::Iterate()) {
+			if (lte->table != this->table) continue;
+			elements.push_back(lte);
 		}
-		std::sort(elements.begin(), elements.end(), [](auto a, auto b) { return a->rating > b->rating; });
+		std::ranges::sort(elements, [](const LeagueTableElement *a, const LeagueTableElement *b) { return a->rating > b->rating; });
 
 		/* Calculate rank, companies with the same rating share the ranks */
 		uint rank = 0;
 		for (uint i = 0; i != elements.size(); i++) {
-			auto *lte = elements[i];
+			const LeagueTableElement *lte = elements[i];
 			if (i > 0 && elements[i - 1]->rating != lte->rating) rank = i;
 			this->rows.emplace_back(rank, lte);
 		}
@@ -319,7 +319,7 @@ public:
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
-		auto lt = LeagueTable::GetIfValid(this->table);
+		const LeagueTable *lt = LeagueTable::GetIfValid(this->table);
 		if (lt == nullptr) return;
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
@@ -340,7 +340,7 @@ public:
 		Rect text_rect = ir.Indent(this->rank_width + spacer + this->icon_size.width, rtl).WithWidth(this->text_width, rtl);
 		Rect score_rect = ir.Indent(this->rank_width + 2 * spacer + this->icon_size.width + this->text_width, rtl).WithWidth(this->score_width, rtl);
 
-		for (auto [rank, lte] : this->rows) {
+		for (const auto &[rank, lte] : this->rows) {
 			SetDParam(0, rank + 1);
 			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
 			if (this->icon_size.width > 0 && lte->company != CompanyID::Invalid()) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
@@ -362,7 +362,7 @@ public:
 	{
 		if (widget != WID_SLT_BACKGROUND) return;
 
-		auto lt = LeagueTable::GetIfValid(this->table);
+		const LeagueTable *lt = LeagueTable::GetIfValid(this->table);
 		if (lt == nullptr) return;
 
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
@@ -371,7 +371,7 @@ public:
 		/* Calculate maximum width of every column */
 		this->rank_width = this->text_width = this->score_width = 0;
 		bool show_icon_column = false;
-		for (auto [rank, lte] : this->rows) {
+		for (const auto &[rank, lte] : this->rows) {
 			SetDParam(0, rank + 1);
 			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_RANK).width);
 			SetDParamStr(0, lte->text);
@@ -381,12 +381,15 @@ public:
 			if (lte->company != CompanyID::Invalid()) show_icon_column = true;
 		}
 
-		if (!show_icon_column) this->icon_size.width = 0;
-		else this->icon_size.width += WidgetDimensions::scaled.hsep_wide;
+		if (!show_icon_column) {
+			this->icon_size.width = 0;
+		} else {
+			this->icon_size.width += WidgetDimensions::scaled.hsep_wide;
+		}
 
 		uint non_text_width = this->rank_width + this->icon_size.width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
 		size.width = std::max(size.width, non_text_width + this->text_width);
-		size.height = std::max(size.height, this->line_height * std::max<uint>(3u, (unsigned)this->rows.size()) + WidgetDimensions::scaled.framerect.Vertical());
+		size.height = std::max(size.height, this->line_height * std::max<uint>(3u, static_cast<uint>(this->rows.size())) + WidgetDimensions::scaled.framerect.Vertical());
 
 		/* Adjust text_width to fill any space left over if the preset minimal width is larger than our calculated width. */
 		this->text_width = size.width - non_text_width;
@@ -395,7 +398,9 @@ public:
 			SetDParamStr(0, lt->header);
 			this->header_height = GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 			size.height += header_height;
-		} else this->header_height = 0;
+		} else {
+			this->header_height = 0;
+		}
 
 		if (!lt->footer.empty()) {
 			SetDParamStr(0, lt->footer);
@@ -409,8 +414,8 @@ public:
 
 		auto *wid = this->GetWidget<NWidgetResizeBase>(WID_SLT_BACKGROUND);
 		int index = (pt.y - WidgetDimensions::scaled.framerect.top - wid->pos_y - this->header_height) / this->line_height;
-		if (index >= 0 && (uint)index < this->rows.size()) {
-			auto lte = this->rows[index].second;
+		if (index >= 0 && static_cast<uint>(index) < this->rows.size()) {
+			const LeagueTableElement *lte = this->rows[index].second;
 			HandleLinkClick(lte->link);
 		}
 	}
