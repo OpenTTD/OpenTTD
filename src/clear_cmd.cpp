@@ -165,7 +165,8 @@ static void TileLoopClearAlps(TileIndex tile)
 		/* Below the snow line, do nothing if no snow. */
 		/* At or above the snow line, make snow tile if needed. */
 		if (k >= 0) {
-			MakeSnow(tile, IsClearGround(tile, CLEAR_ROCKS) ? GetClearDensity(tile) : 0);
+			/* Snow density is started at 0 so that it can gradually reach the required density. */
+			MakeSnow(tile, 0);
 			MarkTileDirtyByTile(tile);
 		}
 		return;
