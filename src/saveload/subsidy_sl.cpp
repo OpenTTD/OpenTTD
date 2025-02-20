@@ -48,7 +48,7 @@ struct SUBSChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Subsidy *s = new (index) Subsidy();
+			Subsidy *s = new (SubsidyID(index)) Subsidy();
 			SlObject(s, slt);
 		}
 	}

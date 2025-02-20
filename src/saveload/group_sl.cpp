@@ -50,7 +50,7 @@ struct GRPSChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			Group *g = new (index) Group();
+			Group *g = new (GroupID(index)) Group();
 			SlObject(g, slt);
 
 			if (IsSavegameVersionBefore(SLV_189)) g->parent = GroupID::Invalid();

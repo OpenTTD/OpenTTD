@@ -108,7 +108,7 @@ struct CAPYChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			CargoPayment *cp = new (index) CargoPayment();
+			CargoPayment *cp = new (CargoPaymentID(index)) CargoPayment();
 			SlObject(cp, slt);
 		}
 	}

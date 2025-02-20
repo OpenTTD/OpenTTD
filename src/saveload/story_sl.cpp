@@ -58,7 +58,7 @@ struct STPEChunkHandler : ChunkHandler {
 		int index;
 		uint32_t max_sort_value = 0;
 		while ((index = SlIterateArray()) != -1) {
-			StoryPageElement *s = new (index) StoryPageElement();
+			StoryPageElement *s = new (StoryPageElementID(index)) StoryPageElement();
 			SlObject(s, slt);
 			if (s->sort_value > max_sort_value) {
 				max_sort_value = s->sort_value;
@@ -100,7 +100,7 @@ struct STPAChunkHandler : ChunkHandler {
 		int index;
 		uint32_t max_sort_value = 0;
 		while ((index = SlIterateArray()) != -1) {
-			StoryPage *s = new (index) StoryPage();
+			StoryPage *s = new (StoryPageID(index)) StoryPage();
 			SlObject(s, slt);
 			if (s->sort_value > max_sort_value) {
 				max_sort_value = s->sort_value;
