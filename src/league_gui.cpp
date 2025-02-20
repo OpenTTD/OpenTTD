@@ -384,8 +384,12 @@ public:
 		if (!show_icon_column) this->icon_size.width = 0;
 		else this->icon_size.width += WidgetDimensions::scaled.hsep_wide;
 
-		size.width = this->rank_width + this->icon_size.width + this->text_width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
-		size.height = this->line_height * std::max<uint>(3u, (unsigned)this->rows.size()) + WidgetDimensions::scaled.framerect.Vertical();
+		uint non_text_width = this->rank_width + this->icon_size.width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
+		size.width = std::max(size.width, non_text_width + this->text_width);
+		size.height = std::max(size.height, this->line_height * std::max<uint>(3u, (unsigned)this->rows.size()) + WidgetDimensions::scaled.framerect.Vertical());
+
+		/* Adjust text_width to fill any space left over if the preset minimal width is larger than our calculated width. */
+		this->text_width = size.width - non_text_width;
 
 		if (!lt->header.empty()) {
 			SetDParamStr(0, lt->header);
