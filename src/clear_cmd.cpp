@@ -335,21 +335,23 @@ static TrackStatus GetTileTrackStatus_Clear(TileIndex, TransportType, uint, Diag
 	return 0;
 }
 
-static const StringID _clear_land_str[] = {
-	STR_LAI_CLEAR_DESCRIPTION_GRASS,
-	STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND,
-	STR_LAI_CLEAR_DESCRIPTION_ROCKS,
-	STR_LAI_CLEAR_DESCRIPTION_FIELDS,
-	STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND,
-	STR_LAI_CLEAR_DESCRIPTION_DESERT
-};
-
 static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
 {
-	if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
+	/* Each pair holds a normal and a snowy ClearGround description. */
+	static constexpr std::pair<StringID, StringID> clear_land_str[] = {
+		{STR_LAI_CLEAR_DESCRIPTION_GRASS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS},
+		{STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND},
+		{STR_LAI_CLEAR_DESCRIPTION_ROCKS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS},
+		{STR_LAI_CLEAR_DESCRIPTION_FIELDS,     STR_EMPTY},
+		{STR_EMPTY,                            STR_EMPTY}, // CLEAR_SNOW does not appear in the map.
+		{STR_LAI_CLEAR_DESCRIPTION_DESERT,     STR_EMPTY},
+	};
+
+	if (!IsSnowTile(tile) && IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
 		td.str = STR_LAI_CLEAR_DESCRIPTION_BARE_LAND;
 	} else {
-		td.str = _clear_land_str[GetClearGround(tile)];
+		const auto &[name, snowy_name] = clear_land_str[GetClearGround(tile)];
+		td.str = IsSnowTile(tile) ? snowy_name : name;
 	}
 	td.owner[0] = GetTileOwner(tile);
 }

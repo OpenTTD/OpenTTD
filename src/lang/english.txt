@@ -3157,8 +3157,10 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Rough land
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Bare land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Grass
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fields
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snow-covered land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desert
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Snow-covered rocks
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Snow-covered rough land
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Snow-covered grass
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Railway track
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Railway track with block signals
