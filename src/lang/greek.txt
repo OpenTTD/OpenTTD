@@ -2952,7 +2952,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Έτη: 
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Έτη: {ORANGE}Έως {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Μέγεθος: {ORANGE}{NUM}x{NUM} τετραγωνίδια
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Αποδεκτό φορτίο: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Φορτίο που παρήχθει: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Άκρη
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Περίχωρα

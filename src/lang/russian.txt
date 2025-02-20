@@ -3030,7 +3030,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Дата
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Дата: {ORANGE}до {NUM} г.
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Размеры: {ORANGE}{NUM}×{NUM}
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Принимаемый груз: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Груза отдано: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Пригород
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Окраина

@@ -2861,7 +2861,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {OR
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}Til {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Størrelse: {ORANGE}{NUM}x{NUM} ruter
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Godtatte varer: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Varer produsert: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ytterkant

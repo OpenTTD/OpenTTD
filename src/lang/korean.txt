@@ -2860,7 +2860,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}연도: 
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}연도: {ORANGE}{NUM}년까지
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}크기: {ORANGE}{NUM}x{NUM}칸
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}받는 화물: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}생산 화물량: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :가장자리
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :교외

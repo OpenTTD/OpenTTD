@@ -2859,7 +2859,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}可用�
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}可用年份：{ORANGE}至 {NUM} 年前可用
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}大小：{ORANGE}{NUM}x{NUM} 格
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}接受貨物：{ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}產出的貨物：{ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :市鎮邊緣
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊區邊緣

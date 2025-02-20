@@ -2859,7 +2859,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Vuodet: 
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Vuodet: {ORANGE}{NUM} saakka
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Koko: {ORANGE}{NUM}×{NUM} ruutua
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Ottaa vastaan: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Tuottaa: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Reuna-alueet
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Laitamat

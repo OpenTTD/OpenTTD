@@ -2860,7 +2860,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Anos: {O
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Anos: {ORANGE}Até {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Tamanho: {ORANGE}{NUM}x{NUM} mosaicos
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carga aceite: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Carga produzida: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Borda
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Arredores

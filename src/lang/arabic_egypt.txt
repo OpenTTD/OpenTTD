@@ -2305,7 +2305,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}السن
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}السنوات: {ORANGE}حتى {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}الحجم: {ORANGE}{NUM}×{NUM} مربع
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}الشحنة المقبولة: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}الشحنة المنتجة: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :الطرف
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :الضواحي

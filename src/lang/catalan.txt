@@ -2860,7 +2860,6 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Anys: {O
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Anys: {ORANGE}Fins al {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Mida: {ORANGE}{NUM}x{NUM} caselles
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Càrrega acceptada: {ORANGE}
-STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Càrrega produïda: {ORANGE}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Vora
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Afores
