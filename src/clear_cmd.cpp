@@ -106,7 +106,8 @@ static void DrawClearLandFence(const TileInfo *ti)
 
 static void DrawTile_Clear(TileInfo *ti)
 {
-	ClearGround ground = IsSnowTile(ti->tile) ? CLEAR_SNOW : GetClearGround(ti->tile);
+	ClearGround real_ground = GetClearGround(ti->tile);
+	ClearGround ground = IsSnowTile(ti->tile) ? CLEAR_SNOW : real_ground;
 
 	switch (ground) {
 		case CLEAR_GRASS:
@@ -126,7 +127,17 @@ static void DrawTile_Clear(TileInfo *ti)
 			DrawClearLandFence(ti);
 			break;
 
-		case CLEAR_SNOW:
+		case CLEAR_SNOW: {
+			uint8_t density = GetClearDensity(ti->tile);
+			DrawGroundSprite(_clear_land_sprites_snow_desert[density] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			if (real_ground == CLEAR_ROCKS) {
+				/* There 4 levels of snowy overlay rocks, each with 19 sprites. */
+				++density;
+				DrawGroundSprite(SPR_OVERLAY_ROCKS_BASE + (density * 19) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			}
+			break;
+		}
+
 		case CLEAR_DESERT:
 			DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			break;
