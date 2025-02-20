@@ -130,14 +130,14 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_CLEAR) && ::GetRawClearGround(tile) == ::CLEAR_ROCKS);
+	return (::IsTileType(tile, MP_CLEAR) && ::GetClearGround(tile) == ::CLEAR_ROCKS);
 }
 
 /* static */ bool ScriptTile::IsRoughTile(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_CLEAR) && ::GetRawClearGround(tile) == ::CLEAR_ROUGH);
+	return (::IsTileType(tile, MP_CLEAR) && ::GetClearGround(tile) == ::CLEAR_ROUGH);
 }
 
 /* static */ bool ScriptTile::IsSnowTile(TileIndex tile)

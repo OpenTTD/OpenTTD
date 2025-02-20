@@ -74,7 +74,7 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
 		case MP_CLEAR:
-			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && GetRawClearGround(tile) != CLEAR_ROCKS &&
+			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
 			       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
 
 		default: return false;
@@ -106,15 +106,20 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 			ClearNeighbourNonFloodingStates(tile);
 			break;
 
-		case MP_CLEAR:
-			switch (GetClearGround(tile)) {
-				case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       break;
-				case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;       break;
-				case CLEAR_SNOW:   ground = GetRawClearGround(tile) == CLEAR_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT; break;
-				default:           ground = TREE_GROUND_SNOW_DESERT; break;
+		case MP_CLEAR: {
+			ClearGround clearground = GetClearGround(tile);
+			if (IsSnowTile(tile)) {
+				ground = clearground == CLEAR_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
+			} else {
+				switch (clearground) {
+					case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       break;
+					case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;       break;
+					default:           ground = TREE_GROUND_SNOW_DESERT; break;
+				}
 			}
-			if (GetClearGround(tile) != CLEAR_ROUGH) density = GetClearDensity(tile);
+			if (clearground != CLEAR_ROUGH) density = GetClearDensity(tile);
 			break;
+		}
 
 		default: NOT_REACHED();
 	}
@@ -575,7 +580,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 				if (IsTileType(current_tile, MP_CLEAR)) {
 					/* Remove fields or rocks. Note that the ground will get barrened */
-					switch (GetRawClearGround(current_tile)) {
+					switch (GetClearGround(current_tile)) {
 						case CLEAR_FIELDS:
 						case CLEAR_ROCKS: {
 							CommandCost ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, current_tile);

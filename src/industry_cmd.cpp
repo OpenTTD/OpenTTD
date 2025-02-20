@@ -1004,7 +1004,7 @@ static const uint8_t _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 
 static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR: return !IsClearGround(tile, CLEAR_SNOW) && !IsClearGround(tile, CLEAR_DESERT) && (allow_fields || !IsClearGround(tile, CLEAR_FIELDS));
+		case MP_CLEAR: return !IsSnowTile(tile) && !IsClearGround(tile, CLEAR_DESERT) && (allow_fields || !IsClearGround(tile, CLEAR_FIELDS));
 		case MP_TREES: return GetTreeGround(tile) != TREE_GROUND_SHORE;
 		default:       return false;
 	}

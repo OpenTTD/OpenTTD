@@ -633,7 +633,7 @@ public:
 
 		/* Clear farmland. */
 		for (const auto tile : Map::Iterate()) {
-			if (IsTileType(tile, MP_CLEAR) && GetRawClearGround(tile) == CLEAR_FIELDS) {
+			if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_FIELDS) {
 				MakeClear(tile, CLEAR_GRASS, 3);
 			}
 		}

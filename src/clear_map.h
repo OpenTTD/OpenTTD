@@ -21,7 +21,7 @@ enum ClearGround : uint8_t {
 	CLEAR_ROUGH  = 1, ///< 3
 	CLEAR_ROCKS  = 2, ///< 3
 	CLEAR_FIELDS = 3, ///< 3
-	CLEAR_SNOW   = 4, ///< 0-3
+	CLEAR_SNOW   = 4, ///< 0-3 (Not stored in map.)
 	CLEAR_DESERT = 5, ///< 1,3
 };
 
@@ -39,18 +39,6 @@ inline bool IsSnowTile(Tile t)
 }
 
 /**
- * Get the type of clear tile but never return CLEAR_SNOW.
- * @param t the tile to get the clear ground type of
- * @pre IsTileType(t, MP_CLEAR)
- * @return the ground type
- */
-inline ClearGround GetRawClearGround(Tile t)
-{
-	assert(IsTileType(t, MP_CLEAR));
-	return (ClearGround)GB(t.m5(), 2, 3);
-}
-
-/**
  * Get the type of clear tile.
  * @param t the tile to get the clear ground type of
  * @pre IsTileType(t, MP_CLEAR)
@@ -58,8 +46,8 @@ inline ClearGround GetRawClearGround(Tile t)
  */
 inline ClearGround GetClearGround(Tile t)
 {
-	if (IsSnowTile(t)) return CLEAR_SNOW;
-	return GetRawClearGround(t);
+	assert(IsTileType(t, MP_CLEAR));
+	return static_cast<ClearGround>(GB(t.m5(), 2, 3));
 }
 
 /**
@@ -295,13 +283,13 @@ inline void MakeField(Tile t, uint field_type, IndustryID industry)
  * Make a snow tile.
  * @param t the tile to make snowy
  * @param density The density of snowiness.
- * @pre GetClearGround(t) != CLEAR_SNOW
+ * @pre !IsSnowTile(t)
  */
 inline void MakeSnow(Tile t, uint density = 0)
 {
-	assert(GetClearGround(t) != CLEAR_SNOW);
+	assert(!IsSnowTile(t));
 	SetBit(t.m3(), 4);
-	if (GetRawClearGround(t) == CLEAR_FIELDS) {
+	if (GetClearGround(t) == CLEAR_FIELDS) {
 		SetClearGroundDensity(t, CLEAR_GRASS, density);
 	} else {
 		SetClearDensity(t, density);
@@ -311,11 +299,11 @@ inline void MakeSnow(Tile t, uint density = 0)
 /**
  * Clear the snow from a tile and return it to its previous type.
  * @param t the tile to clear of snow
- * @pre GetClearGround(t) == CLEAR_SNOW
+ * @pre IsSnowTile(t)
  */
 inline void ClearSnow(Tile t)
 {
-	assert(GetClearGround(t) == CLEAR_SNOW);
+	assert(IsSnowTile(t));
 	ClrBit(t.m3(), 4);
 	SetClearDensity(t, 3);
 }
