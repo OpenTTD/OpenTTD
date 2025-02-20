@@ -45,7 +45,7 @@ struct LEAEChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			LeagueTableElement *lte = new (index) LeagueTableElement();
+			LeagueTableElement *lte = new (LeagueTableElementID(index)) LeagueTableElement();
 			SlObject(lte, slt);
 		}
 	}
@@ -76,7 +76,7 @@ struct LEATChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			LeagueTable *lt = new (index) LeagueTable();
+			LeagueTable *lt = new (LeagueTableID(index)) LeagueTable();
 			SlObject(lt, slt);
 		}
 	}

@@ -125,7 +125,7 @@ private:
  * @tparam Tindex       Type of the index for this pool
  * @tparam Tgrowth_step Size of growths; if the pool is full increase the size by this amount
  * @tparam Tpool_type   Type of this pool
- * @tparam Tcache       Whether to perform 'alloc' caching, i.e. don't actually free/malloc just reuse the memory
+ * @tparam Tcache       Whether to perform 'alloc' caching, i.e. don't actually deallocated/allocate just reuse the memory
  * @warning when Tcache is enabled *all* instances of this pool's item must be of the same size.
  */
 template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type = PoolType::Normal, bool Tcache = false>
@@ -137,20 +137,20 @@ public:
 	using BitmapStorage = size_t;
 	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
 
-	const char * const name; ///< Name of this pool
+	const char * const name = nullptr; ///< Name of this pool
 
-	size_t first_free;   ///< No item with index lower than this is free (doesn't say anything about this one!)
-	size_t first_unused; ///< This and all higher indexes are free (doesn't say anything about first_unused-1 !)
-	size_t items;        ///< Number of used indexes (non-nullptr)
+	size_t first_free = 0; ///< No item with index lower than this is free (doesn't say anything about this one!)
+	size_t first_unused = 0; ///< This and all higher indexes are free (doesn't say anything about first_unused-1 !)
+	size_t items = 0; ///< Number of used indexes (non-nullptr)
 #ifdef WITH_ASSERT
-	size_t checked;      ///< Number of items we checked for
+	size_t checked = 0; ///< Number of items we checked for
 #endif /* WITH_ASSERT */
-	bool cleaning;       ///< True if cleaning pool (deleting all items)
+	bool cleaning = false; ///< True if cleaning pool (deleting all items)
 
-	std::vector<Titem *> data; ///< Pointers to Titem
-	std::vector<BitmapStorage> used_bitmap; ///< Bitmap of used indices.
+	std::vector<Titem *> data{}; ///< Pointers to Titem
+	std::vector<BitmapStorage> used_bitmap{}; ///< Bitmap of used indices.
 
-	Pool(const char *name);
+	Pool(const char *name) : PoolBase(Tpool_type), name(name) {}
 	void CleanPool() override;
 
 	/**
@@ -304,12 +304,12 @@ public:
 		 * @param p memory to free
 		 * @note the item has to be allocated in the pool!
 		 */
-		inline void operator delete(void *p)
+		inline void operator delete(void *p, size_t size)
 		{
 			if (p == nullptr) return;
 			Titem *pn = static_cast<Titem *>(p);
 			assert(pn == Tpool->Get(Pool::GetRawIndex(pn->index)));
-			Tpool->FreeItem(Pool::GetRawIndex(pn->index));
+			Tpool->FreeItem(size, Pool::GetRawIndex(pn->index));
 		}
 
 		/**
@@ -320,9 +320,9 @@ public:
 		 * @note can never fail (return nullptr), use CanAllocate() to check first!
 		 * @pre index has to be unused! Else it will crash
 		 */
-		inline void *operator new(size_t size, size_t index)
+		inline void *operator new(size_t size, Tindex index)
 		{
-			return Tpool->GetNew(size, index);
+			return Tpool->GetNew(size, index.base());
 		}
 
 		/**
@@ -449,7 +449,8 @@ private:
 	};
 
 	/** Cache of freed pointers */
-	AllocCache *alloc_cache;
+	AllocCache *alloc_cache = nullptr;
+	std::allocator<uint8_t> allocator{};
 
 	void *AllocateItem(size_t size, size_t index);
 	void ResizeFor(size_t index);
@@ -458,7 +459,7 @@ private:
 	void *GetNew(size_t size);
 	void *GetNew(size_t size, size_t index);
 
-	void FreeItem(size_t index);
+	void FreeItem(size_t size, size_t index);
 
 	static constexpr size_t GetRawIndex(size_t index) { return index; }
 	template <typename T> requires std::is_base_of_v<PoolIDBase, T>
