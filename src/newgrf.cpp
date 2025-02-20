@@ -2376,10 +2376,11 @@ static ChangeInfoResult BridgeChangeInfo(uint first, uint last, int prop, ByteRe
 			case 0x0D: { // Bridge sprite tables
 				uint8_t tableid = buf.ReadByte();
 				uint8_t numtables = buf.ReadByte();
+				size_t size = tableid + numtables;
 
-				if (bridge->sprite_table == nullptr) {
+				if (bridge->sprite_table.size() < size) {
 					/* Allocate memory for sprite table pointers and zero out */
-					bridge->sprite_table = CallocT<PalSpriteID*>(NUM_BRIDGE_PIECES);
+					bridge->sprite_table.resize(std::min<size_t>(size, NUM_BRIDGE_PIECES));
 				}
 
 				for (; numtables-- != 0; tableid++) {
@@ -2389,8 +2390,8 @@ static ChangeInfoResult BridgeChangeInfo(uint first, uint last, int prop, ByteRe
 						continue;
 					}
 
-					if (bridge->sprite_table[tableid] == nullptr) {
-						bridge->sprite_table[tableid] = MallocT<PalSpriteID>(SPRITES_PER_BRIDGE_PIECE);
+					if (bridge->sprite_table[tableid].empty()) {
+						bridge->sprite_table[tableid].resize(SPRITES_PER_BRIDGE_PIECE);
 					}
 
 					for (uint8_t sprite = 0; sprite < SPRITES_PER_BRIDGE_PIECE; sprite++) {

@@ -579,7 +579,7 @@ static const PalSpriteID _bridge_sprite_table_12_2[] = {
 	{  0xA1F, PALETTE_TO_STRUCT_CONCRETE }, {     0xA03, PALETTE_TO_STRUCT_CONCRETE }, {     0xA07, PALETTE_TO_STRUCT_CONCRETE }, {       0x0, PAL_NONE },
 };
 
-static const PalSpriteID * const _bridge_sprite_table_archgirder[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_archgirder[] = {
 	_bridge_sprite_table_archgirder_middle,
 	_bridge_sprite_table_archgirder_middle,
 	_bridge_sprite_table_archgirder_middle,
@@ -589,7 +589,7 @@ static const PalSpriteID * const _bridge_sprite_table_archgirder[] = {
 	_bridge_sprite_table_archgirder_heads,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_4[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_4[] = {
 	_bridge_sprite_table_4_0,
 	_bridge_sprite_table_4_1,
 	_bridge_sprite_table_4_2,
@@ -599,7 +599,7 @@ static const PalSpriteID * const _bridge_sprite_table_4[] = {
 	_bridge_sprite_table_4_6,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_5[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_5[] = {
 	_bridge_sprite_table_5_0,
 	_bridge_sprite_table_5_1,
 	_bridge_sprite_table_5_2,
@@ -609,7 +609,7 @@ static const PalSpriteID * const _bridge_sprite_table_5[] = {
 	_bridge_sprite_table_5_6,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_concrete_suspended[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_concrete_suspended[] = {
 	_bridge_sprite_table_concrete_suspended_A,
 	_bridge_sprite_table_concrete_suspended_B,
 	_bridge_sprite_table_concrete_suspended_C,
@@ -619,7 +619,7 @@ static const PalSpriteID * const _bridge_sprite_table_concrete_suspended[] = {
 	_bridge_sprite_table_concrete_suspended_heads,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_6[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_6[] = {
 	_bridge_sprite_table_6_0,
 	_bridge_sprite_table_6_1,
 	_bridge_sprite_table_6_2,
@@ -629,7 +629,7 @@ static const PalSpriteID * const _bridge_sprite_table_6[] = {
 	_bridge_sprite_table_6_3,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_7[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_7[] = {
 	_bridge_sprite_table_7_0,
 	_bridge_sprite_table_7_1,
 	_bridge_sprite_table_7_2,
@@ -639,7 +639,7 @@ static const PalSpriteID * const _bridge_sprite_table_7[] = {
 	_bridge_sprite_table_7_3,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_8[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_8[] = {
 	_bridge_sprite_table_8_0,
 	_bridge_sprite_table_8_1,
 	_bridge_sprite_table_8_2,
@@ -649,7 +649,7 @@ static const PalSpriteID * const _bridge_sprite_table_8[] = {
 	_bridge_sprite_table_8_3,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_wood[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_wood[] = {
 	_bridge_sprite_table_wood_middle,
 	_bridge_sprite_table_wood_middle,
 	_bridge_sprite_table_wood_middle,
@@ -659,7 +659,7 @@ static const PalSpriteID * const _bridge_sprite_table_wood[] = {
 	_bridge_sprite_table_wood_heads,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_concrete[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_concrete[] = {
 	_bridge_sprite_table_concrete_middle,
 	_bridge_sprite_table_concrete_middle,
 	_bridge_sprite_table_concrete_middle,
@@ -669,7 +669,7 @@ static const PalSpriteID * const _bridge_sprite_table_concrete[] = {
 	_bridge_sprite_table_concrete_heads,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_9[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_9[] = {
 	_bridge_sprite_table_9_0,
 	_bridge_sprite_table_9_0,
 	_bridge_sprite_table_9_0,
@@ -679,7 +679,7 @@ static const PalSpriteID * const _bridge_sprite_table_9[] = {
 	_bridge_sprite_table_4_6,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_10[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_10[] = {
 	_bridge_sprite_table_10_0,
 	_bridge_sprite_table_10_1,
 	_bridge_sprite_table_10_2,
@@ -689,7 +689,7 @@ static const PalSpriteID * const _bridge_sprite_table_10[] = {
 	_bridge_sprite_table_4_6,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_11[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_11[] = {
 	_bridge_sprite_table_11_0,
 	_bridge_sprite_table_11_1,
 	_bridge_sprite_table_11_2,
@@ -699,7 +699,7 @@ static const PalSpriteID * const _bridge_sprite_table_11[] = {
 	_bridge_sprite_table_5_6,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_12[] = {
+static const std::span<const PalSpriteID> _bridge_sprite_table_12[] = {
 	_bridge_sprite_table_12_0,
 	_bridge_sprite_table_12_1,
 	_bridge_sprite_table_12_2,
@@ -709,7 +709,7 @@ static const PalSpriteID * const _bridge_sprite_table_12[] = {
 	_bridge_sprite_table_concrete_suspended_heads,
 };
 
-static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
+static const std::span<const std::span<const PalSpriteID>> _bridge_sprite_table[MAX_BRIDGES] = {
 	_bridge_sprite_table_wood,
 	_bridge_sprite_table_concrete,
 	_bridge_sprite_table_archgirder,
@@ -739,7 +739,7 @@ static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
  * @param nrd description of the road bridge in query tool
  */
 #define MBR(y, mnl, mxl, p, mxs, spr, plt, dsc, nrl, nrd) \
-	{TimerGameCalendar::Year{y}, mnl, mxl, p, mxs, spr, plt, dsc, { nrl, nrd }, nullptr, 0}
+	{TimerGameCalendar::Year{y}, mnl, mxl, p, mxs, spr, plt, dsc, { nrl, nrd }, {}, 0}
 
 const BridgeSpec _orig_bridge[] = {
 /*
