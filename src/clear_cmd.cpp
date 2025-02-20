@@ -25,7 +25,7 @@
 
 static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 {
-	static const Price clear_price_table[] = {
+	static constexpr Price clear_price_table[] = {
 		PR_CLEAR_GRASS,
 		PR_CLEAR_ROUGH,
 		PR_CLEAR_ROCKS,
@@ -35,7 +35,9 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 	};
 	CommandCost price(EXPENSES_CONSTRUCTION);
 
-	if (!IsClearGround(tile, CLEAR_GRASS) || GetClearDensity(tile) != 0) {
+	if (IsSnowTile(tile)) {
+		price.AddCost(_price[clear_price_table[CLEAR_SNOW]]);
+	} else if (!IsClearGround(tile, CLEAR_GRASS) || GetClearDensity(tile) != 0) {
 		price.AddCost(_price[clear_price_table[GetClearGround(tile)]]);
 	}
 
@@ -100,7 +102,9 @@ static void DrawClearLandFence(const TileInfo *ti)
 
 static void DrawTile_Clear(TileInfo *ti)
 {
-	switch (GetClearGround(ti->tile)) {
+	ClearGround ground = IsSnowTile(ti->tile) ? CLEAR_SNOW : GetClearGround(ti->tile);
+
+	switch (ground) {
 		case CLEAR_GRASS:
 			DrawClearLandTile(ti, GetClearDensity(ti->tile));
 			break;
@@ -236,6 +240,8 @@ static void TileLoop_Clear(TileIndex tile)
 		case LandscapeType::Arctic: TileLoopClearAlps(tile);   break;
 		default: break;
 	}
+
+	if (IsSnowTile(tile)) return;
 
 	switch (GetClearGround(tile)) {
 		case CLEAR_GRASS:
