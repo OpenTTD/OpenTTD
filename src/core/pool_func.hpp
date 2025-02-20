@@ -10,9 +10,8 @@
 #ifndef POOL_FUNC_HPP
 #define POOL_FUNC_HPP
 
-#include "alloc_func.hpp"
 #include "bitmath_func.hpp"
-#include "mem_func.hpp"
+#include "math_func.hpp"
 #include "pool_type.hpp"
 #include "../error_func.h"
 
@@ -26,23 +25,6 @@
 	template <class Titem, typename Tindex, size_t Tgrowth_step, PoolType Tpool_type, bool Tcache> \
 	requires std::is_base_of_v<PoolIDBase, Tindex> \
 	type Pool<Titem, Tindex, Tgrowth_step, Tpool_type, Tcache>
-
-/**
- * Create a clean pool.
- * @param name The name for the pool.
- */
-DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
-		PoolBase(Tpool_type),
-		name(name),
-		first_free(0),
-		first_unused(0),
-		items(0),
-#ifdef WITH_ASSERT
-		checked(0),
-#endif /* WITH_ASSERT */
-		cleaning(false),
-		alloc_cache(nullptr)
-{ }
 
 /**
  * Resizes the pool so 'index' can be addressed
@@ -114,7 +96,7 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 		item = reinterpret_cast<Titem *>(this->alloc_cache);
 		this->alloc_cache = this->alloc_cache->next;
 	} else {
-		item = reinterpret_cast<Titem *>(MallocT<uint8_t>(size));
+		item = reinterpret_cast<Titem *>(this->allocator.allocate(size));
 	}
 	this->data[index] = item;
 	SetBit(this->used_bitmap[index / BITMAP_SIZE], index % BITMAP_SIZE);
@@ -169,11 +151,12 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 
 /**
  * Deallocates memory used by this index and marks item as free
+ * @param size the size of the freed object
  * @param index item to deallocate
  * @pre unit is allocated (non-nullptr)
  * @note 'delete nullptr' doesn't cause call of this function, so it is safe
  */
-DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
+DEFINE_POOL_METHOD(void)::FreeItem(size_t size, size_t index)
 {
 	assert(index < this->data.size());
 	assert(this->data[index] != nullptr);
@@ -182,7 +165,7 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 		ac->next = this->alloc_cache;
 		this->alloc_cache = ac;
 	} else {
-		free(this->data[index]);
+		this->allocator.deallocate(reinterpret_cast<uint8_t*>(this->data[index]), size);
 	}
 	this->data[index] = nullptr;
 	this->first_free = std::min(this->first_free, index);
@@ -212,7 +195,7 @@ DEFINE_POOL_METHOD(void)::CleanPool()
 		while (this->alloc_cache != nullptr) {
 			AllocCache *ac = this->alloc_cache;
 			this->alloc_cache = ac->next;
-			free(ac);
+			this->allocator.deallocate(reinterpret_cast<uint8_t*>(ac), sizeof(Titem));
 		}
 	}
 }
@@ -227,7 +210,7 @@ DEFINE_POOL_METHOD(void)::CleanPool()
 #define INSTANTIATE_POOL_METHODS(name) \
 	template void * name ## Pool::GetNew(size_t size); \
 	template void * name ## Pool::GetNew(size_t size, size_t index); \
-	template void name ## Pool::FreeItem(size_t index); \
+	template void name ## Pool::FreeItem(size_t size, size_t index); \
 	template void name ## Pool::CleanPool();
 
 #endif /* POOL_FUNC_HPP */
