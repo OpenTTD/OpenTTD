@@ -13,7 +13,6 @@ add_files(
     sqfuncstate.h
     sqlexer.cpp
     sqlexer.h
-    sqmem.cpp
     sqobject.cpp
     sqobject.h
     sqopcodes.h

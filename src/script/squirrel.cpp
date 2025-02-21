@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "squirrel_std.hpp"
+#include "../error_func.h"
 #include "../fileio_func.h"
 #include "../string_func.h"
 #include "script_fatalerror.hpp"
@@ -17,15 +18,8 @@
 #include <sqstdaux.h>
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
-#include "../core/alloc_func.hpp"
 
-/**
- * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
- * does not have enough memory the game does not go into unrecoverable error mode and kill the
- * whole game, but rather let the AI die though then we need to circumvent MallocT/ReallocT.
- *
- * So no #include "../safeguards.h" here as is required, but after the allocator's implementation.
- */
+#include "../safeguards.h"
 
 /*
  * If changing the call paths into the scripting engine, define this symbol to enable full debugging of allocations.
@@ -34,7 +28,9 @@
  */
 
 struct ScriptAllocator {
-	size_t allocated_size;   ///< Sum of allocated data size
+private:
+	std::allocator<uint8_t> allocator;
+	size_t allocated_size = 0; ///< Sum of allocated data size
 	size_t allocation_limit; ///< Maximum this allocator may use before allocations fail
 	/**
 	 * Whether the error has already been thrown, so to not throw secondary errors in
@@ -42,7 +38,7 @@ struct ScriptAllocator {
 	 * throw a Squirrel error so the Squirrel stack can be dumped, however that gets
 	 * allocated by this allocator and then you might end up in an infinite loop.
 	 */
-	bool error_thrown;
+	bool error_thrown = false;
 
 	static const size_t SAFE_LIMIT = 0x8000000; ///< 128 MiB, a safe choice for almost any situation
 
@@ -50,42 +46,51 @@ struct ScriptAllocator {
 	std::map<void *, size_t> allocations;
 #endif
 
-	void CheckLimit() const
+	/**
+	 * Checks whether an allocation is allowed by the memory limit set for the script.
+	 * @param requested_size The requested size that was requested to be allocated.
+	 * @throws Script_FatalError When memory may not be allocated (limit reached, except for error handling).
+	 */
+	void CheckAllocationAllowed(size_t requested_size)
 	{
-		if (this->allocated_size > this->allocation_limit) throw Script_FatalError("Maximum memory allocation exceeded");
+		/* When an error has been thrown, we are allocating just a bit of memory for the stack trace. */
+		if (this->error_thrown) return;
+
+		if (this->allocated_size + requested_size <= this->allocation_limit) return;
+
+		/* Do not allow allocating more than the allocation limit. */
+		this->error_thrown = true;
+		std::string msg = fmt::format("Maximum memory allocation exceeded by {} bytes when allocating {} bytes",
+			this->allocated_size + requested_size - this->allocation_limit, requested_size);
+		throw Script_FatalError(msg);
 	}
 
 	/**
-	 * Catch all validation for the allocation; did it allocate too much memory according
-	 * to the allocation limit or did the allocation at the OS level maybe fail? In those
-	 * error situations a Script_FatalError is thrown, but once that has been done further
-	 * allocations are allowed to make it possible for Squirrel to throw the error and
-	 * clean everything up.
-	 * @param requested_size The requested size that was requested to be allocated.
-	 * @param p              The pointer to the allocated object, or null if allocation failed.
+	 * Internal helper to allocate the given amount of bytes.
+	 * @param requested_size The requested size.
+	 * @return The allocated memory.
+	 * @throws Script_FatalError When memory could not be allocated.
 	 */
-	void CheckAllocation(size_t requested_size, void *p)
+	void *DoAlloc(SQUnsignedInteger requested_size)
 	{
-		if (this->allocated_size + requested_size > this->allocation_limit && !this->error_thrown) {
-			/* Do not allow allocating more than the allocation limit, except when an error is
-			 * already as then the allocation is for throwing that error in Squirrel, the
-			 * associated stack trace information and while cleaning up the AI. */
-			this->error_thrown = true;
-			std::string msg = fmt::format("Maximum memory allocation exceeded by {} bytes when allocating {} bytes",
-				this->allocated_size + requested_size - this->allocation_limit, requested_size);
-			/* Don't leak the rejected allocation. */
-			free(p);
-			throw Script_FatalError(msg);
-		}
+		try {
+			void *p = this->allocator.allocate(requested_size);
+			assert(p != nullptr);
+			this->allocated_size += requested_size;
 
-		if (p == nullptr) {
+#ifdef SCRIPT_DEBUG_ALLOCATIONS
+			assert(this->allocations.find(p) == this->allocations.end());
+			this->allocations[p] = requested_size;
+#endif
+			return p;
+		} catch (const std::bad_alloc &) {
 			/* The OS did not have enough memory to allocate the object, regardless of the
 			 * limit imposed by OpenTTD on the amount of memory that may be allocated. */
 			if (this->error_thrown) {
 				/* The allocation is called in the error handling of a memory allocation
 				 * failure, then not being able to allocate that small amount of memory
 				 * means there is no other choice than to bug out completely. */
-				MallocError(requested_size);
+				FatalError("Out of memory. Cannot allocate {} bytes", requested_size);
 			}
 
 			this->error_thrown = true;
@@ -94,21 +99,24 @@ struct ScriptAllocator {
 		}
 	}
 
+public:
+	size_t GetAllocatedSize() const { return this->allocated_size; }
+
+	void CheckLimit() const
+	{
+		if (this->allocated_size > this->allocation_limit) throw Script_FatalError("Maximum memory allocation exceeded");
+	}
+
+	void Reset()
+	{
+		assert(this->allocated_size == 0);
+		this->error_thrown = false;
+	}
+
 	void *Malloc(SQUnsignedInteger size)
 	{
-		void *p = malloc(size);
-
-		this->CheckAllocation(size, p);
-
-		this->allocated_size += size;
-
-#ifdef SCRIPT_DEBUG_ALLOCATIONS
-		assert(p != nullptr);
-		assert(this->allocations.find(p) == this->allocations.end());
-		this->allocations[p] = size;
-#endif
-
-		return p;
+		this->CheckAllocationAllowed(size);
+		return this->DoAlloc(size);
 	}
 
 	void *Realloc(void *p, SQUnsignedInteger oldsize, SQUnsignedInteger size)
@@ -121,30 +129,11 @@ struct ScriptAllocator {
 			return nullptr;
 		}
 
-#ifdef SCRIPT_DEBUG_ALLOCATIONS
-		assert(this->allocations[p] == oldsize);
-		this->allocations.erase(p);
-#endif
-		/* Can't use realloc directly because memory limit check.
-		 * If memory exception is thrown, the old pointer is expected
-		 * to be valid for engine cleanup.
-		 */
-		void *new_p = malloc(size);
+		this->CheckAllocationAllowed(size - oldsize);
 
-		this->CheckAllocation(size - oldsize, new_p);
-
-		/* Memory limit test passed, we can copy data and free old pointer. */
+		void *new_p = this->DoAlloc(size);
 		memcpy(new_p, p, std::min(oldsize, size));
-		free(p);
-
-		this->allocated_size -= oldsize;
-		this->allocated_size += size;
-
-#ifdef SCRIPT_DEBUG_ALLOCATIONS
-		assert(new_p != nullptr);
-		assert(this->allocations.find(p) == this->allocations.end());
-		this->allocations[new_p] = size;
-#endif
+		this->Free(p, oldsize);
 
 		return new_p;
 	}
@@ -152,7 +141,7 @@ struct ScriptAllocator {
 	void Free(void *p, SQUnsignedInteger size)
 	{
 		if (p == nullptr) return;
-		free(p);
+		this->allocator.deallocate(reinterpret_cast<uint8_t*>(p), size);
 		this->allocated_size -= size;
 
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
@@ -163,10 +152,8 @@ struct ScriptAllocator {
 
 	ScriptAllocator()
 	{
-		this->allocated_size = 0;
 		this->allocation_limit = static_cast<size_t>(_settings_game.script.script_max_memory_megabytes) << 20;
 		if (this->allocation_limit == 0) this->allocation_limit = SAFE_LIMIT; // in case the setting is somehow zero
-		this->error_thrown = false;
 	}
 
 	~ScriptAllocator()
@@ -177,27 +164,16 @@ struct ScriptAllocator {
 	}
 };
 
-/**
- * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
- * does not have enough memory the game does not go into unrecoverable error mode and kill the
- * whole game, but rather let the AI die though then we need to circumvent MallocT/ReallocT.
- * For the rest of this code, the safeguards should be in place though!
- */
-#include "../safeguards.h"
-
 ScriptAllocator *_squirrel_allocator = nullptr;
 
-/* See 3rdparty/squirrel/squirrel/sqmem.cpp for the default allocator implementation, which this overrides */
-#ifndef SQUIRREL_DEFAULT_ALLOCATOR
 void *sq_vm_malloc(SQUnsignedInteger size) { return _squirrel_allocator->Malloc(size); }
 void *sq_vm_realloc(void *p, SQUnsignedInteger oldsize, SQUnsignedInteger size) { return _squirrel_allocator->Realloc(p, oldsize, size); }
 void sq_vm_free(void *p, SQUnsignedInteger size) { _squirrel_allocator->Free(p, size); }
-#endif
 
 size_t Squirrel::GetAllocatedMemory() const noexcept
 {
 	assert(this->allocator != nullptr);
-	return this->allocator->allocated_size;
+	return this->allocator->GetAllocatedSize();
 }
 
 
@@ -761,10 +737,8 @@ void Squirrel::Uninitialize()
 	sq_pop(this->vm, 1);
 	sq_close(this->vm);
 
-	assert(this->allocator->allocated_size == 0);
-
 	/* Reset memory allocation errors. */
-	this->allocator->error_thrown = false;
+	this->allocator->Reset();
 }
 
 void Squirrel::Reset()
