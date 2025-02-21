@@ -4692,8 +4692,8 @@ STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надё
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ёмкость: {LTBLUE}отсутствует{STRING}
-STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ёмкость: {LTBLUE}{0:CARGO_LONG}{3:STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ёмкость: {LTBLUE}{0:CARGO_LONG}{3:STRING} (×{4:NUM})
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ёмкость: {LTBLUE}{CARGO_LONG}{STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ёмкость: {LTBLUE}{CARGO_LONG}{STRING} (×{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмкость: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY_LONG}
