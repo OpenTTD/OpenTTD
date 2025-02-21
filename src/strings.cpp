@@ -201,9 +201,7 @@ void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count, FontSize si
  */
 void SetDParamMaxDigits(size_t n, uint count, FontSize size)
 {
-	uint front = 0;
-	uint next = 0;
-	GetBroadestDigit(&front, &next, size);
+	auto [front, next] = GetBroadestDigit(size);
 	uint64_t val = count > 1 ? front : next;
 	for (; count > 1; count--) {
 		val = 10 * val + next;
