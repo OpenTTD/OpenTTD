@@ -3239,6 +3239,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Lata: {O
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Lata: {ORANGE}Do {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Rozmiar: {ORANGE}{NUM}x{NUM} p{P ole ola ól}
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Akceptowany ładunek: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Produkowany ładunek: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Obrzeża
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Peryferia

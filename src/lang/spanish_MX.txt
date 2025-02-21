@@ -2860,6 +2860,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Años: {
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Años: {ORANGE}Hasta {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Tamaño: {ORANGE}{NUM}×{NUM} casillas
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carga aceptada: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Carga producida: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Extremos
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Afueras
@@ -2923,7 +2924,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir sección de tranvía. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir carretera con orientación automática. Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir tranvías con orientación automática. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de autotransportes (para comprar y dar mantenimiento a vehículos). Mayús muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de autotransportes (para comprar y dar mantenimiento a vehículos). Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de tranvías (para comprar y dar mantenimiento a tranvías). Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre carretera. Ctrl+Clic activa la unión de puntos de ruta. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre vía de tranvía. Ctrl+Clic para seleccionar otro punto de ruta para unirlo. Mayús+Clic solo muestra un costo estimado
@@ -4565,7 +4566,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nueva ca
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costo por reformar: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir los vehículos a reformar. Arrastrar con el ratón para elegir más de un vehículo. Clic en un espacio vacío para elegir el tren completo. Ctrl+Clic para elegir una unidad del tren y los vagones subsecuentes
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir qué vehículos reformar. Clic y arrastrar selecciona más de un vehículo. Clic en un espacio vacío selecciona el todo el vehículo. Ctrl+Clic selecciona una unidad del tren y los vagones subsecuentes
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir el tipo de carga para el tren
