@@ -80,6 +80,9 @@ inline int64_t PackVelocity(uint speed, VehicleType type)
 	return speed | (static_cast<uint64_t>(type) << 56);
 }
 
+uint64_t GetParamMaxValue(uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
+uint64_t GetParamMaxDigits(uint count, FontSize size = FS_NORMAL);
+
 void SetDParam(size_t n, uint64_t v);
 void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count = 0, FontSize size = FS_NORMAL);
 void SetDParamMaxDigits(size_t n, uint count, FontSize size = FS_NORMAL);
