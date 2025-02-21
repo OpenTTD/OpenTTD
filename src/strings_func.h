@@ -59,6 +59,15 @@ inline StringID MakeStringID(StringTab tab, StringIndexInTab index)
 	return (tab << TAB_SIZE_BITS) + index.base();
 }
 
+/**
+ * Prepare the string parameters for the next formatting run, resetting the type information.
+ * This is only necessary if parameters are reused for multiple format runs.
+ */
+static inline void PrepareArgsForNextRun(std::span<StringParameter> args)
+{
+	for (auto &param : args) param.type = 0;
+}
+
 std::string GetStringWithArgs(StringID string, std::span<StringParameter> args);
 std::string GetString(StringID string);
 const char *GetStringPtr(StringID string);
