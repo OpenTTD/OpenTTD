@@ -34,18 +34,14 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 	int y = r.top;
 	for (const Aircraft *u = v; u != nullptr; u = u->Next()) {
 		if (u->IsNormalAircraft()) {
-			SetDParam(0, PackEngineNameDParam(u->engine_type, EngineNameContext::VehicleDetails));
-			SetDParam(1, u->build_year);
-			SetDParam(2, u->value);
-			DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);
+			DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_BUILT_VALUE, PackEngineNameDParam(u->engine_type, EngineNameContext::VehicleDetails), u->build_year, u->value));
 			y += GetCharacterHeight(FS_NORMAL);
 
-			SetDParam(0, u->cargo_type);
-			SetDParam(1, u->cargo_cap);
-			SetDParam(2, u->Next()->cargo_type);
-			SetDParam(3, u->Next()->cargo_cap);
-			SetDParam(4, GetCargoSubtypeText(u));
-			DrawString(r.left, r.right, y, (u->Next()->cargo_cap != 0) ? STR_VEHICLE_INFO_CAPACITY_CAPACITY : STR_VEHICLE_INFO_CAPACITY);
+			if (u->Next()->cargo_cap != 0) {
+				DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_CAPACITY_CAPACITY, u->cargo_type, u->cargo_cap, u->Next()->cargo_type, u->Next()->cargo_cap, GetCargoSubtypeText(u)));
+			} else {
+				DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_CAPACITY, u->cargo_type, u->cargo_cap, GetCargoSubtypeText(u)));
+			}
 			y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 		}
 
@@ -54,10 +50,7 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 
 			if (cargo_count != 0) {
 				/* Cargo names (fix pluralness) */
-				SetDParam(0, u->cargo_type);
-				SetDParam(1, cargo_count);
-				SetDParam(2, u->cargo.GetFirstStation());
-				DrawString(r.left, r.right, y, STR_VEHICLE_DETAILS_CARGO_FROM);
+				DrawString(r.left, r.right, y, GetString(STR_VEHICLE_DETAILS_CARGO_FROM, u->cargo_type, cargo_count, u->cargo.GetFirstStation()));
 				y += GetCharacterHeight(FS_NORMAL);
 				feeder_share += u->cargo.GetFeederShare();
 			}
@@ -65,8 +58,7 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 	}
 
 	y += WidgetDimensions::scaled.vsep_normal;
-	SetDParam(0, feeder_share);
-	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+	DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_FEEDER_CARGO_VALUE, feeder_share));
 }
 
 

@@ -29,13 +29,9 @@
 void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 {
 	int y = r.top + (v->HasArticulatedPart() ? ScaleSpriteTrad(15) : 0); // Draw the first line below the sprite of an articulated RV instead of after it.
-	StringID str;
 	Money feeder_share = 0;
 
-	SetDParam(0, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails));
-	SetDParam(1, v->build_year);
-	SetDParam(2, v->value);
-	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_BUILT_VALUE);
+	DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_BUILT_VALUE, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails), v->build_year, v->value));
 	y += GetCharacterHeight(FS_NORMAL);
 
 	if (v->HasArticulatedPart()) {
@@ -59,9 +55,8 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 			if (max_cargo[cargo_type] > 0) {
 				if (!first) capacity += list_separator;
 
-				SetDParam(0, cargo_type);
-				SetDParam(1, max_cargo[cargo_type]);
-				AppendStringInPlace(capacity, STR_JUST_CARGO);
+				auto params = MakeParameters(cargo_type, max_cargo[cargo_type]);
+				AppendStringWithArgsInPlace(capacity, STR_JUST_CARGO, params);
 
 				if (subtype_text[cargo_type] != STR_NULL) {
 					AppendStringInPlace(capacity, subtype_text[cargo_type]);
@@ -77,40 +72,34 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			if (u->cargo_cap == 0) continue;
 
-			str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
+			std::string str;
 			if (u->cargo.StoredCount() > 0) {
-				SetDParam(0, u->cargo_type);
-				SetDParam(1, u->cargo.StoredCount());
-				SetDParam(2, u->cargo.GetFirstStation());
-				str = STR_VEHICLE_DETAILS_CARGO_FROM;
+				str = GetString(STR_VEHICLE_DETAILS_CARGO_FROM, u->cargo_type, u->cargo.StoredCount(), u->cargo.GetFirstStation());
 				feeder_share += u->cargo.GetFeederShare();
+			} else {
+				str = GetString(STR_VEHICLE_DETAILS_CARGO_EMPTY);
 			}
 			DrawString(r.left, r.right, y, str);
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 		y += WidgetDimensions::scaled.vsep_normal;
 	} else {
-		SetDParam(0, v->cargo_type);
-		SetDParam(1, v->cargo_cap);
-		SetDParam(4, GetCargoSubtypeText(v));
-		DrawString(r.left, r.right, y, STR_VEHICLE_INFO_CAPACITY);
+		DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_CAPACITY, v->cargo_type, v->cargo_cap, GetCargoSubtypeText(v)));
 		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 
-		str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
+		std::string str;
 		if (v->cargo.StoredCount() > 0) {
-			SetDParam(0, v->cargo_type);
-			SetDParam(1, v->cargo.StoredCount());
-			SetDParam(2, v->cargo.GetFirstStation());
-			str = STR_VEHICLE_DETAILS_CARGO_FROM;
+			str = GetString(STR_VEHICLE_DETAILS_CARGO_FROM, v->cargo_type, v->cargo.StoredCount(), v->cargo.GetFirstStation());
 			feeder_share += v->cargo.GetFeederShare();
+		} else {
+			str = GetString(STR_VEHICLE_DETAILS_CARGO_EMPTY);
 		}
 		DrawString(r.left, r.right, y, str);
 		y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 	}
 
 	/* Draw Transfer credits text */
-	SetDParam(0, feeder_share);
-	DrawString(r.left, r.right, y, STR_VEHICLE_INFO_FEEDER_CARGO_VALUE);
+	DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_FEEDER_CARGO_VALUE, feeder_share));
 }
 
 /**
