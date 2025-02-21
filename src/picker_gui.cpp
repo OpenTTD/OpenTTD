@@ -238,9 +238,12 @@ void PickerWindow::ConstructWindow()
 
 	this->FinishInitNested(this->window_number);
 
-	this->badge_classes = GUIBadgeClasses(this->callbacks.GetFeature());
-
 	this->InvalidateData(PICKER_INVALIDATION_ALL);
+}
+
+void PickerWindow::OnInit()
+{
+	this->badge_classes = GUIBadgeClasses(this->callbacks.GetFeature());
 }
 
 void PickerWindow::Close(int data)

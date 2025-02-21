@@ -1241,11 +1241,6 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	void BuildBadgeClasses()
-	{
-		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
-	}
-
 	BuildVehicleWindow(WindowDesc &desc, TileIndex tile, VehicleType type) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
 		this->vehicle_type = type;
@@ -1257,8 +1252,6 @@ struct BuildVehicleWindow : Window {
 		this->sort_criteria         = _engine_sort_last_criteria[type];
 		this->descending_sort_order = _engine_sort_last_order[type];
 		this->show_hidden_engines   = _engine_sort_show_hidden_engines[type];
-
-		this->BuildBadgeClasses();
 
 		this->UpdateFilterByTile();
 
@@ -1389,6 +1382,7 @@ struct BuildVehicleWindow : Window {
 
 	void OnInit() override
 	{
+		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
 		this->SetCargoFilterArray();
 	}
 

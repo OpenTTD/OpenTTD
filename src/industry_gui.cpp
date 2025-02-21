@@ -311,7 +311,7 @@ class BuildIndustryWindow : public Window {
 	bool enabled;                               ///< Availability state of the selected industry.
 	Scrollbar *vscroll;
 	Dimension legend;                           ///< Dimension of the legend 'blob'.
-	GUIBadgeClasses badge_classes{GSF_INDUSTRIES};
+	GUIBadgeClasses badge_classes;
 
 	/** The largest allowed minimum-width of the window, given in line heights */
 	static const int MAX_MINWIDTH_LINEHEIGHTS = 20;
@@ -419,6 +419,8 @@ public:
 
 	void OnInit() override
 	{
+		this->badge_classes = GUIBadgeClasses{GSF_INDUSTRIES};
+
 		/* Width of the legend blob -- slightly larger than the smallmap legend blob. */
 		this->legend.height = GetCharacterHeight(FS_SMALL);
 		this->legend.width = this->legend.height * 9 / 6;
