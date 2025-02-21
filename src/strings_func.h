@@ -63,6 +63,7 @@ std::string GetStringWithArgs(StringID string, std::span<StringParameter> args);
 std::string GetString(StringID string);
 const char *GetStringPtr(StringID string);
 void AppendStringInPlace(std::string &result, StringID string);
+void AppendStringWithArgsInPlace(std::string &result, StringID string, std::span<StringParameter> params);
 
 uint ConvertKmhishSpeedToDisplaySpeed(uint speed, VehicleType type);
 uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type);
