@@ -383,7 +383,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}Abrir ve
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar partida
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rápido
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opciones
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opciones y configuración
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar, cargar o salir de la partida, o salir del programa
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Abrir mapa, vista adicional, flujos de carga o lista de letreros
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Abrir directorio de localidades
@@ -395,7 +395,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostrar lista de objetivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficas de empresa y tasas de pago por carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabla de evaluación de empresas
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Listar todas las industrias o aportar fondos para una nueva
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Abrir directorio de industrias, cadena industrial o proveer fondos para una nueva
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir lista de trenes de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Abrir lista de autotransportes de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Abrir lista de barcos de la empresa. Ctrl+Clic oculta la lista de grupos
@@ -410,7 +410,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir menú de alteración de terreno, menú de plantar árboles, o poner letrero
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Abrir ventana de sonido y música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Abrir último mensaje o noticia, historial de mensajes o borrar todo
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Información sobre área de terreno, consola, depuración de script, capturas de pantalla, acerca de OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Abrir información de terreno, menú de capturas de pantalla, créditos de OpenTTD o herramientas de desarrollador
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Cambiar barras de herramientas
 
 # Extra tooltips for the scenario editor toolbar
@@ -2940,7 +2940,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Quitar carretera
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Quitar carriles de tranvía
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Convertir o actualizar tipo de carretera. Mayús+Clic solo muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Convertir o actualizar tipo de tranvía. Mayús muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Convertir o actualizar tipo de tranvía. Mayús+Clic solo muestra un costo estimado
 
 STR_ROAD_NAME_ROAD                                              :Carretera
 STR_ROAD_NAME_TRAM                                              :Tranvía
@@ -2965,10 +2965,10 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Elegir l
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vías fluviales
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canales
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canal. Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir esclusa. Mayús muestra un costo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir esclusa. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir astillero (para comprar y dar mantenimiento a barcos). Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelles. Ctrl+Clic activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya para utilizar como punto de ruta marítimo. Mayús muestra un costo estimado
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya y utilizarla como punto de ruta marítimo. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir acueducto. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construir canal. Ctrl+Clic en un área a nivel del mar la inunda con agua marina
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar ríos. Ctrl+Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
@@ -3039,7 +3039,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generación de terreno
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Colocar zonas rocosas sobre el terreno
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área desértica.{}Mantener pulsado Ctrl para quitarla
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área desértica.{}Ctrl+Clic la elimina
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumentar el tamaño del área de terreno a rebajar o elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminuir el tamaño del área de terreno a rebajar o elevar
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generar terreno al azar
@@ -4457,7 +4457,7 @@ STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}Esperan
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}¡Accidentado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Averiado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Detenido
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Deteniéndose, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Frenando
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sin potencia
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando ruta libre
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Muy lejos del próximo destino
@@ -4807,7 +4807,7 @@ STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Eliminar
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eliminar el límite máximo de velocidad de la orden resaltada. Ctrl+clic la elimina para todas las órdenes
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar retrasos
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar el contador del retraso para que el vehículo vaya a tiempo
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar contador de retraso para que el vehículo sea puntual. Ctrl+Clic lo reinicia a todo el grupo, con lo que el último vehículo será puntual y los demás llegarán antes de tiempo
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Llenar automáticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores de la orden siguiente. Ctrl+clic para intentar mantener los tiempos de espera en estación

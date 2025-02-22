@@ -459,6 +459,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Kravas auto pie
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Autobusu pieturas
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Doki
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Lidostas
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Spoks
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rādīt pieturas punktu nosaukumus
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Rādīt zīmes
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rādīt sāncenšu zīmes un nosaukumus
@@ -1025,6 +1026,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonēzijas r�
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijas Ringits
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvijas lati
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugāles eskudo
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainas Grivna
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automātiskā saglabāšana
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izvēlēties spēles automātiskās saglabāšanas starplaikus
@@ -1987,7 +1989,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :aizliegta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :atļauta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :atļauta, ar brīvi izvēlētu izkārtojumu
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Atsevišķu pilsētas māju izvietošana: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Iespējojot šo iestatījumu, spēlētāji var manuāli novietot pilsētas mājas
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Aizliegts
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Atļauts
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Atļauts, pilnībā uzbūvēts
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Pilsētas kravu radīšana: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cik daudz kravas rada pilsētu mājas, attiecībā pret kopējo pilsētas iedzīvotāju skaitu.{}Kvadrātisks pieaugums: divas reizes lielāka pilsēta rada četras reizes vairāk pasažieru.{}Lineārs pieaugums: divas reizes lielāka pilsēta rada divas reizes vairāk pasažieru
@@ -2203,7 +2210,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Sasniegu
 STR_INTRO_HELP                                                  :{BLACK}Palīdzība un rokasgrāmatas
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešsaistes saturu
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tiešsaistes saturs
 STR_INTRO_AI_SETTINGS                                           :{BLACK}MI Iestatījumi
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Spēles Skripta Iestatījumi
 STR_INTRO_QUIT                                                  :{BLACK}Iziet
@@ -2252,6 +2259,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Lasi_Man
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Izmaiņu žurnāls
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Zināmās kļūdas
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licence
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fonti
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Rokasgrāmata / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Ziņot par kļūdu
@@ -2640,6 +2648,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :gaida uz saišu
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :aizeju
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ir pievienojies spēlei
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} ir pievienojies spēlei (Klients #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} pievienojās {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir pievienojies novērotājiem
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} ir nodibinājis jaunu uzņēmumu (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} ir pametis spēli ({2:STRING})
@@ -2655,7 +2664,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Jūsu se
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Citiem spēlētājiem nebūs iespējas pievienoties serverim
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Satura lejupielāde
+STR_CONTENT_TITLE                                               :{WHITE}Tiešsaistes saturs
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tips
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Satura tips
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nosaukums
@@ -2854,6 +2863,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Gadi: {O
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Gadi: {ORANGE}Līdz {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Izmērs: {ORANGE}{NUM}x{NUM} lauciņi
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Pieņemamā krava: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Saražotā krava: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Mala
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Nomale
@@ -2861,6 +2871,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ārējās priek
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Iekšējās priekšpilsētas
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Pilsētas centrs
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Novērst uzlabojumus
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Izvēlieties, vai šī māja tiks aizsargāta pret nomaiņu, pilsētai augot
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Izslēgts
+STR_HOUSE_PICKER_PROTECT_ON                                     :Ieslēgts
 
 STR_STATION_CLASS_DFLT                                          :Noklusējuma
 STR_STATION_CLASS_DFLT_STATION                                  :Noklusējuma stacija
@@ -2953,7 +2967,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izvēlē
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Ūdensceļu būvniecība
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Ūdensceļi
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Būvēt kanālus. Shift parāda izmaksas, neveicot būvēšanu
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Būvēt kanālus. Ctrl+klikšķis+vilkt, lai atlasītu apgabalu pa diagonāli. Nospiediet arī taustiņu Shift, lai rādītu tikai izmaksu tāmi
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Būvēt slūžas.  Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Būvēt kuģu depo (kuģu būvēšanai un apkopei).  Shift parāda novērtētās izmaksas, neveicot būvēšanu
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Būvēt kuģu piestātni. Ctrl+klikšķis ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
@@ -3139,6 +3153,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tramvaja
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Sliežu ātruma ierobežojums: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ceļa ātruma ierobežojums: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tramvaja ātruma ierobežojums: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Pilsēta var attīstīties: {LTBLUE}Jā
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Pilsēta var attīstīties: {LTBLUE}Nē
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Akmeņi
@@ -4992,6 +5008,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekrānuz
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Ziņojums
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Ziņojums no {COMPANY}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Ārpus kartes robežām
@@ -5010,6 +5027,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... sasn
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... sasniegts lauciņu attīrīšanas ierobežojums
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... sasniegts koku stādīšanas ierobežojums
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam ir jābūt unikālam
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} traucē
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nav atļauts pauzes režīmā
 
 # Local authority errors
@@ -5326,8 +5344,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nevar p�
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nevar pārdot lidaparātu...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Nevar pārdot visus dzelzceļa transportlīdzekļus...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Nevar pārdot visus transportlīdzekļus...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Nevar pārdot visus kuģus...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Nevar pārdot visas lidmašīnas...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Nevar automātiski aizstāt dzelzceļa transportlīdzekļus...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Nevar automātiski nomainīt transportlīdzekļus...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Nevar automātiski nomainīt kuģus...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Nevar automātiski nomainīt lidmašīnu...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Spēlē ir pārāk daudz transportlīdzekļu
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nevar mainīt apkopes starplaiku...
@@ -5911,3 +5937,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
