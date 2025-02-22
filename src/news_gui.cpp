@@ -349,10 +349,10 @@ NewsDisplay NewsTypeData::GetDisplay() const
 
 /** Window class displaying a news item. */
 struct NewsWindow : Window {
-	uint16_t chat_height;   ///< Height of the chat window.
-	uint16_t status_height; ///< Height of the status bar window
-	const NewsItem *ni;   ///< News item to display.
-	static int duration;  ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
+	uint16_t chat_height = 0; ///< Height of the chat window.
+	uint16_t status_height = 0; ///< Height of the status bar window
+	const NewsItem *ni = nullptr; ///< News item to display.
+	static int duration; ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
 
 	NewsWindow(WindowDesc &desc, const NewsItem *ni) : Window(desc), ni(ni)
 	{
@@ -1196,10 +1196,10 @@ static void DrawNewsString(uint left, uint right, int y, TextColour colour, cons
 }
 
 struct MessageHistoryWindow : Window {
-	int line_height; /// < Height of a single line in the news history window including spacing.
-	int date_width;  /// < Width needed for the date part.
+	int line_height = 0; /// < Height of a single line in the news history window including spacing.
+	int date_width = 0; /// < Width needed for the date part.
 
-	Scrollbar *vscroll;
+	Scrollbar *vscroll = nullptr;
 
 	MessageHistoryWindow(WindowDesc &desc) : Window(desc)
 	{
