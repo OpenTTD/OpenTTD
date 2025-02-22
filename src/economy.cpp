@@ -886,7 +886,7 @@ static void HandleEconomyFluctuations()
  */
 void ResetPriceBaseMultipliers()
 {
-	memset(_price_base_multiplier, 0, sizeof(_price_base_multiplier));
+	_price_base_multiplier.fill(0);
 }
 
 /**

@@ -18,7 +18,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
 #include "core/bitmath_func.hpp"
-#include "core/alloc_type.hpp"
 #include "core/mem_func.hpp"
 
 /**
@@ -109,13 +108,13 @@ struct GRFLabel {
 };
 
 /** Dynamic data of a loaded NewGRF */
-struct GRFFile : ZeroedMemoryAllocator {
-	std::string filename;
-	uint32_t grfid;
-	uint8_t grf_version;
+struct GRFFile {
+	std::string filename{};
+	uint32_t grfid = 0;
+	uint8_t grf_version = 0;
 
-	uint sound_offset;
-	uint16_t num_sounds;
+	uint sound_offset = 0;
+	uint16_t num_sounds = 0;
 
 	std::vector<std::unique_ptr<struct StationSpec>> stations;
 	std::vector<std::unique_ptr<struct HouseSpec>> housespec;
@@ -126,34 +125,34 @@ struct GRFFile : ZeroedMemoryAllocator {
 	std::vector<std::unique_ptr<struct AirportTileSpec>> airtspec;
 	std::vector<std::unique_ptr<struct RoadStopSpec>> roadstops;
 
-	std::vector<uint32_t> param;
+	std::vector<uint32_t> param{};
 
-	std::vector<GRFLabel> labels;                   ///< List of labels
+	std::vector<GRFLabel> labels{}; ///< List of labels
 
-	std::vector<CargoLabel> cargo_list;             ///< Cargo translation table (local ID -> label)
+	std::vector<CargoLabel> cargo_list{}; ///< Cargo translation table (local ID -> label)
 	std::array<uint8_t, NUM_CARGO> cargo_map{}; ///< Inverse cargo translation table (CargoType -> local ID)
 
-	std::vector<BadgeID> badge_list; ///< Badge translation table (local index -> global index)
-	std::unordered_map<uint16_t, BadgeID> badge_map;
+	std::vector<BadgeID> badge_list{}; ///< Badge translation table (local index -> global index)
+	std::unordered_map<uint16_t, BadgeID> badge_map{};
 
-	std::vector<RailTypeLabel> railtype_list;       ///< Railtype translation table
+	std::vector<RailTypeLabel> railtype_list{}; ///< Railtype translation table
 	std::array<RailType, RAILTYPE_END> railtype_map{};
 
-	std::vector<RoadTypeLabel> roadtype_list;       ///< Roadtype translation table (road)
+	std::vector<RoadTypeLabel> roadtype_list{}; ///< Roadtype translation table (road)
 	std::array<RoadType, ROADTYPE_END> roadtype_map{};
 
-	std::vector<RoadTypeLabel> tramtype_list;       ///< Roadtype translation table (tram)
+	std::vector<RoadTypeLabel> tramtype_list{}; ///< Roadtype translation table (tram)
 	std::array<RoadType, ROADTYPE_END> tramtype_map{};
 
-	CanalProperties canal_local_properties[CF_END]; ///< Canal properties as set by this NewGRF
+	std::array<CanalProperties, CF_END> canal_local_properties{}; ///< Canal properties as set by this NewGRF
 
-	std::unordered_map<uint8_t, LanguageMap> language_map; ///< Mappings related to the languages.
+	std::unordered_map<uint8_t, LanguageMap> language_map{}; ///< Mappings related to the languages.
 
-	int traininfo_vehicle_pitch;  ///< Vertical offset for drawing train images in depot GUI and vehicle details
-	uint traininfo_vehicle_width; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
+	int traininfo_vehicle_pitch = 0; ///< Vertical offset for drawing train images in depot GUI and vehicle details
+	uint traininfo_vehicle_width = 0; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
 
-	uint32_t grf_features;                     ///< Bitset of GrfSpecFeature the grf uses
-	PriceMultipliers price_base_multipliers; ///< Price base multipliers as set by the grf.
+	uint32_t grf_features = 0; ///< Bitset of GrfSpecFeature the grf uses
+	PriceMultipliers price_base_multipliers{}; ///< Price base multipliers as set by the grf.
 
 	GRFFile(const struct GRFConfig &config);
 
