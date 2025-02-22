@@ -121,10 +121,10 @@ public:
 
 /** The window used for building objects. */
 class BuildObjectWindow : public PickerWindow {
-	int info_height; ///< The height of the info box.
+	int info_height = 1; ///< The height of the info box.
 
 public:
-	BuildObjectWindow(WindowDesc &desc, WindowNumber) : PickerWindow(desc, nullptr, 0, ObjectPickerCallbacks::instance), info_height(1)
+	BuildObjectWindow(WindowDesc &desc, WindowNumber) : PickerWindow(desc, nullptr, 0, ObjectPickerCallbacks::instance)
 	{
 		ResetObjectToPlace();
 		this->ConstructWindow();

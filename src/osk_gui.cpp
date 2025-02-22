@@ -35,12 +35,12 @@ enum KeyStateBits : uint8_t {
 static uint8_t _keystate = KEYS_NONE;
 
 struct OskWindow : public Window {
-	StringID caption;      ///< the caption for this window.
-	QueryString *qs;       ///< text-input
-	WidgetID text_btn;     ///< widget number of parent's text field
-	Textbuf *text;         ///< pointer to parent's textbuffer (to update caret position)
-	std::string orig_str;  ///< Original string.
-	bool shift;            ///< Is the shift effectively pressed?
+	StringID caption{}; ///< the caption for this window.
+	QueryString *qs = nullptr; ///< text-input
+	WidgetID text_btn{}; ///< widget number of parent's text field
+	Textbuf *text = nullptr; ///< pointer to parent's textbuffer (to update caret position)
+	std::string orig_str{}; ///< Original string.
+	bool shift = false; ///< Is the shift effectively pressed?
 
 	OskWindow(WindowDesc &desc, Window *parent, WidgetID button) : Window(desc)
 	{
