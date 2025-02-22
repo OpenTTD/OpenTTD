@@ -17,13 +17,13 @@
 /** Base window for showing the download status of content */
 class BaseNetworkContentDownloadStatusWindow : public Window, ContentCallback {
 protected:
-	uint total_bytes;      ///< Number of bytes to download
-	uint downloaded_bytes; ///< Number of bytes downloaded
-	uint total_files;      ///< Number of files to download
-	uint downloaded_files; ///< Number of files downloaded
+	uint total_bytes = 0; ///< Number of bytes to download
+	uint downloaded_bytes = 0; ///< Number of bytes downloaded
+	uint total_files = 0; ///< Number of files to download
+	uint downloaded_files = 0; ///< Number of files downloaded
 
-	uint32_t cur_id;    ///< The current ID of the downloaded file
-	std::string name; ///< The current name of the downloaded file
+	uint32_t cur_id = UINT32_MAX; ///< The current ID of the downloaded file
+	std::string name{}; ///< The current name of the downloaded file
 
 public:
 	/**

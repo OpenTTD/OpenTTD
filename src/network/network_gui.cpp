@@ -182,17 +182,17 @@ protected:
 	static const std::initializer_list<GUIGameServerList::SortFunction * const> sorter_funcs;
 	static const std::initializer_list<GUIGameServerList::FilterFunction * const> filter_funcs;
 
-	NetworkGameList *server;        ///< Selected server.
-	NetworkGameList *last_joined;   ///< The last joined server.
-	GUIGameServerList servers;      ///< List with game servers.
-	ServerListPosition list_pos;    ///< Position of the selected server.
-	Scrollbar *vscroll;             ///< Vertical scrollbar of the list of servers.
-	QueryString name_editbox;       ///< Client name editbox.
-	QueryString filter_editbox;     ///< Editbox for filter on servers.
+	NetworkGameList *server = nullptr; ///< Selected server.
+	NetworkGameList *last_joined = nullptr; ///< The last joined server.
+	GUIGameServerList servers{}; ///< List with game servers.
+	ServerListPosition list_pos = SLP_INVALID; ///< Position of the selected server.
+	Scrollbar *vscroll = nullptr; ///< Vertical scrollbar of the list of servers.
+	QueryString name_editbox; ///< Client name editbox.
+	QueryString filter_editbox; ///< Editbox for filter on servers.
 	bool searched_internet = false; ///< Did we ever press "Search Internet" button?
 
-	Dimension lock; /// Dimension of lock icon.
-	Dimension blot; /// Dimension of compatibility icon.
+	Dimension lock{}; /// Dimension of lock icon.
+	Dimension blot{}; /// Dimension of compatibility icon.
 
 	/**
 	 * (Re)build the GUI network game list (a.k.a. this->servers) as some
@@ -433,9 +433,6 @@ protected:
 public:
 	NetworkGameWindow(WindowDesc &desc) : Window(desc), name_editbox(NETWORK_CLIENT_NAME_LENGTH), filter_editbox(120)
 	{
-		this->list_pos = SLP_INVALID;
-		this->server = nullptr;
-
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NG_SCROLLBAR);
 		this->FinishInitNested(WN_NETWORK_WINDOW_GAME);
@@ -967,8 +964,8 @@ void ShowNetworkGameWindow()
 }
 
 struct NetworkStartServerWindow : public Window {
-	WidgetID widget_id;          ///< The widget that has the pop-up input menu
-	QueryString name_editbox;    ///< Server name editbox.
+	WidgetID widget_id{}; ///< The widget that has the pop-up input menu
+	QueryString name_editbox; ///< Server name editbox.
 
 	NetworkStartServerWindow(WindowDesc &desc) : Window(desc), name_editbox(NETWORK_NAME_LENGTH)
 	{
@@ -1396,19 +1393,19 @@ using ClientButton = Button<ClientID>;
  */
 struct NetworkClientListWindow : Window {
 private:
-	ClientListWidgets query_widget; ///< During a query this tracks what widget caused the query.
+	ClientListWidgets query_widget{}; ///< During a query this tracks what widget caused the query.
 
-	ClientID dd_client_id; ///< During admin dropdown, track which client this was for.
-	CompanyID dd_company_id; ///< During admin dropdown, track which company this was for.
+	ClientID dd_client_id{}; ///< During admin dropdown, track which client this was for.
+	CompanyID dd_company_id = CompanyID::Invalid(); ///< During admin dropdown, track which company this was for.
 
-	Scrollbar *vscroll; ///< Vertical scrollbar of this window.
-	uint line_height; ///< Current lineheight of each entry in the matrix.
-	uint line_count; ///< Amount of lines in the matrix.
-	int hover_index; ///< Index of the current line we are hovering over, or -1 if none.
-	int player_self_index; ///< The line the current player is on.
-	int player_host_index; ///< The line the host is on.
+	Scrollbar *vscroll = nullptr; ///< Vertical scrollbar of this window.
+	uint line_height = 0; ///< Current lineheight of each entry in the matrix.
+	uint line_count = 0; ///< Amount of lines in the matrix.
+	int hover_index = -1; ///< Index of the current line we are hovering over, or -1 if none.
+	int player_self_index = -1; ///< The line the current player is on.
+	int player_host_index = -1; ///< The line the host is on.
 
-	std::map<uint, std::vector<std::unique_ptr<ButtonCommon>>> buttons; ///< Per line which buttons are available.
+	std::map<uint, std::vector<std::unique_ptr<ButtonCommon>>> buttons{}; ///< Per line which buttons are available.
 
 	/**
 	 * Chat button on a Company is clicked.
@@ -1614,11 +1611,7 @@ private:
 	}
 
 public:
-	NetworkClientListWindow(WindowDesc &desc, WindowNumber window_number) :
-			Window(desc),
-			hover_index(-1),
-			player_self_index(-1),
-			player_host_index(-1)
+	NetworkClientListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_CL_SCROLLBAR);
@@ -2055,7 +2048,7 @@ uint32_t _network_join_bytes;             ///< The number of bytes we already do
 uint32_t _network_join_bytes_total;       ///< The total number of bytes to download.
 
 struct NetworkJoinStatusWindow : Window {
-	std::shared_ptr<NetworkAuthenticationPasswordRequest> request;
+	std::shared_ptr<NetworkAuthenticationPasswordRequest> request{};
 
 	NetworkJoinStatusWindow(WindowDesc &desc) : Window(desc)
 	{
@@ -2199,9 +2192,9 @@ void ShowNetworkNeedPassword(std::shared_ptr<NetworkAuthenticationPasswordReques
  * Window used for asking the user if he is okay using a relay server.
  */
 struct NetworkAskRelayWindow : public Window {
-	std::string server_connection_string; ///< The game server we want to connect to.
-	std::string relay_connection_string;  ///< The relay server we want to connect to.
-	std::string token;                    ///< The token for this connection.
+	std::string server_connection_string{}; ///< The game server we want to connect to.
+	std::string relay_connection_string{}; ///< The relay server we want to connect to.
+	std::string token{}; ///< The token for this connection.
 
 	NetworkAskRelayWindow(WindowDesc &desc, Window *parent, const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token) :
 		Window(desc),
