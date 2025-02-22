@@ -172,7 +172,7 @@ enum Price : uint8_t {
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Price)
 
 typedef Money Prices[PR_END]; ///< Prices of everything. @see Price
-typedef int8_t PriceMultipliers[PR_END];
+using PriceMultipliers = std::array<int8_t, PR_END>;
 
 /** Types of expenses. */
 enum ExpensesType : uint8_t {

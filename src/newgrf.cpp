@@ -9213,9 +9213,7 @@ GRFFile::GRFFile(const GRFConfig &config)
 	this->traininfo_vehicle_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 
 	/* Mark price_base_multipliers as 'not set' */
-	for (Price i = PR_BEGIN; i < PR_END; i++) {
-		this->price_base_multipliers[i] = INVALID_PRICE_MODIFIER;
-	}
+	this->price_base_multipliers.fill(INVALID_PRICE_MODIFIER);
 
 	/* Initialise rail type map with default rail types */
 	this->railtype_map.fill(INVALID_RAILTYPE);
