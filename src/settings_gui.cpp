@@ -352,16 +352,14 @@ std::unique_ptr<NWidgetBase> MakeNWidgetSocialPlugins()
 }
 
 struct GameOptionsWindow : Window {
-	GameSettings *opt;
-	bool reload;
-	int gui_scale;
+	GameSettings *opt = nullptr;
+	bool reload = false;
+	int gui_scale = 0;
 	static inline WidgetID active_tab = WID_GO_TAB_GENERAL;
 
-	GameOptionsWindow(WindowDesc &desc) : Window(desc)
+	GameOptionsWindow(WindowDesc &desc) : Window(desc), gui_scale(_gui_scale)
 	{
 		this->opt = &GetGameSettings();
-		this->reload = false;
-		this->gui_scale = _gui_scale;
 
 		AddCustomRefreshRates();
 
@@ -1237,24 +1235,22 @@ static void ResetAllSettingsConfirmationCallback(Window *w, bool confirmed)
 struct GameSettingsWindow : Window {
 	static GameSettings *settings_ptr; ///< Pointer to the game settings being displayed and modified.
 
-	SettingEntry *valuewindow_entry;   ///< If non-nullptr, pointer to setting for which a value-entering window has been opened.
-	SettingEntry *clicked_entry;       ///< If non-nullptr, pointer to a clicked numeric setting (with a depressed left or right button).
-	SettingEntry *last_clicked;        ///< If non-nullptr, pointer to the last clicked setting.
-	SettingEntry *valuedropdown_entry; ///< If non-nullptr, pointer to the value for which a dropdown window is currently opened.
-	bool closing_dropdown;             ///< True, if the dropdown list is currently closing.
+	SettingEntry *valuewindow_entry = nullptr; ///< If non-nullptr, pointer to setting for which a value-entering window has been opened.
+	SettingEntry *clicked_entry = nullptr; ///< If non-nullptr, pointer to a clicked numeric setting (with a depressed left or right button).
+	SettingEntry *last_clicked = nullptr; ///< If non-nullptr, pointer to the last clicked setting.
+	SettingEntry *valuedropdown_entry = nullptr; ///< If non-nullptr, pointer to the value for which a dropdown window is currently opened.
+	bool closing_dropdown = false; ///< True, if the dropdown list is currently closing.
 
-	SettingFilter filter;              ///< Filter for the list.
-	QueryString filter_editbox;        ///< Filter editbox;
-	bool manually_changed_folding;     ///< Whether the user expanded/collapsed something manually.
-	WarnHiddenResult warn_missing;     ///< Whether and how to warn about missing search results.
-	int warn_lines;                    ///< Number of lines used for warning about missing search results.
+	SettingFilter filter{}; ///< Filter for the list.
+	QueryString filter_editbox; ///< Filter editbox;
+	bool manually_changed_folding = false; ///< Whether the user expanded/collapsed something manually.
+	WarnHiddenResult warn_missing = WHR_NONE; ///< Whether and how to warn about missing search results.
+	int warn_lines = 0; ///< Number of lines used for warning about missing search results.
 
 	Scrollbar *vscroll;
 
 	GameSettingsWindow(WindowDesc &desc) : Window(desc), filter_editbox(50)
 	{
-		this->warn_missing = WHR_NONE;
-		this->warn_lines = 0;
 		this->filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
 		this->filter.min_cat = RM_ALL;
 		this->filter.type = ST_ALL;
@@ -1262,13 +1258,6 @@ struct GameSettingsWindow : Window {
 		this->settings_ptr = &GetGameSettings();
 
 		GetSettingsTree().FoldAll(); // Close all sub-pages
-
-		this->valuewindow_entry = nullptr; // No setting entry for which a entry window is opened
-		this->clicked_entry = nullptr; // No numeric setting buttons are depressed
-		this->last_clicked = nullptr;
-		this->valuedropdown_entry = nullptr;
-		this->closing_dropdown = false;
-		this->manually_changed_folding = false;
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
@@ -1896,7 +1885,7 @@ void DrawBoolButton(int x, int y, bool state, bool clickable)
 }
 
 struct CustomCurrencyWindow : Window {
-	int query_widget;
+	WidgetID query_widget{};
 
 	CustomCurrencyWindow(WindowDesc &desc) : Window(desc)
 	{

@@ -26,8 +26,8 @@
 #include "safeguards.h"
 
 struct SubsidyListWindow : Window {
-	Scrollbar *vscroll;
-	Dimension cargo_icon_size;
+	Scrollbar *vscroll = nullptr;
+	Dimension cargo_icon_size{};
 
 	SubsidyListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{

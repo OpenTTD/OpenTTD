@@ -638,17 +638,17 @@ protected:
 
 	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #WID_SM_LEGEND widget for the #SMT_INDUSTRY legend.
 
-	uint min_number_of_columns;    ///< Minimal number of columns in legends.
-	uint min_number_of_fixed_rows; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
-	uint column_width;             ///< Width of a column in the #WID_SM_LEGEND widget.
-	uint legend_width;             ///< Width of legend 'blob'.
+	uint min_number_of_columns = 0; ///< Minimal number of columns in legends.
+	uint min_number_of_fixed_rows = 0; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
+	uint column_width = 0; ///< Width of a column in the #WID_SM_LEGEND widget.
+	uint legend_width = 0; ///< Width of legend 'blob'.
 
-	int32_t scroll_x;  ///< Horizontal world coordinate of the base tile left of the top-left corner of the smallmap display.
-	int32_t scroll_y;  ///< Vertical world coordinate of the base tile left of the top-left corner of the smallmap display.
-	int32_t subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
-	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
+	int32_t scroll_x = 0; ///< Horizontal world coordinate of the base tile left of the top-left corner of the smallmap display.
+	int32_t scroll_y = 0; ///< Vertical world coordinate of the base tile left of the top-left corner of the smallmap display.
+	int32_t subscroll = 0; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
+	int zoom = 0; ///< Zoom level. Bigger number means more zoom-out (further away).
 
-	std::unique_ptr<LinkGraphOverlay> overlay;
+	std::unique_ptr<LinkGraphOverlay> overlay{};
 
 	/** Notify the industry chain window to stop sending newly selected industries. */
 	static void BreakIndustryChainLink()

@@ -434,17 +434,15 @@ static void HandleAutoSignalPlacement()
 
 /** Rail toolbar management class. */
 struct BuildRailToolbarWindow : Window {
-	RailType railtype;    ///< Rail type to build.
-	int last_user_action; ///< Last started user action.
+	RailType railtype = INVALID_RAILTYPE; ///< Rail type to build.
+	int last_user_action = INVALID_WID_RAT; ///< Last started user action.
 
-	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc)
+	BuildRailToolbarWindow(WindowDesc &desc, RailType railtype) : Window(desc), railtype(railtype)
 	{
-		this->railtype = railtype;
 		this->CreateNestedTree();
 		this->FinishInitNested(TRANSPORT_RAIL);
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->OnInvalidateData();
-		this->last_user_action = INVALID_WID_RAT;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -1051,7 +1049,7 @@ public:
 
 struct BuildRailStationWindow : public PickerWindow {
 private:
-	uint coverage_height; ///< Height of the coverage texts.
+	uint coverage_height = 0; ///< Height of the coverage texts.
 
 	/**
 	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.
@@ -1454,8 +1452,8 @@ static Window *ShowStationBuilder(Window *parent)
 
 struct BuildSignalWindow : public PickerWindowBase {
 private:
-	Dimension sig_sprite_size;     ///< Maximum size of signal GUI sprites.
-	int sig_sprite_bottom_offset;  ///< Maximum extent of signal GUI sprite from reference point towards bottom.
+	Dimension sig_sprite_size{}; ///< Maximum size of signal GUI sprites.
+	int sig_sprite_bottom_offset = 0; ///< Maximum extent of signal GUI sprite from reference point towards bottom.
 
 	/**
 	 * Draw dynamic a signal-sprite in a button in the signal GUI
