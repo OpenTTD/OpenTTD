@@ -39,7 +39,7 @@ static bool _accepted_external_search = false;
 
 /** Window for displaying the textfile of an item in the content list. */
 struct ContentTextfileWindow : public TextfileWindow {
-	const ContentInfo *ci; ///< View the textfile of this ContentInfo.
+	const ContentInfo *ci = nullptr; ///< View the textfile of this ContentInfo.
 
 	ContentTextfileWindow(TextfileType file_type, const ContentInfo *ci) : TextfileWindow(file_type), ci(ci)
 	{
@@ -101,8 +101,7 @@ static WindowDesc _network_content_download_status_window_desc(
 	_nested_network_content_download_status_window_widgets
 );
 
-BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(WindowDesc &desc) :
-		Window(desc), downloaded_bytes(0), downloaded_files(0), cur_id(UINT32_MAX)
+BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(WindowDesc &desc) : Window(desc)
 {
 	_network_content_client.AddCallback(this);
 	_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
@@ -184,7 +183,7 @@ void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInf
 /** Window for showing the download status of content */
 struct NetworkContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
 private:
-	std::vector<ContentType> receivedTypes;     ///< Types we received so we can update their cache
+	std::vector<ContentType> receivedTypes{}; ///< Types we received so we can update their cache
 
 public:
 	/**
@@ -330,16 +329,16 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	static Filtering last_filtering; ///< The last filtering setting.
 	static const std::initializer_list<GUIContentList::SortFunction * const> sorter_funcs;   ///< Sorter functions
 	static const std::initializer_list<GUIContentList::FilterFunction * const> filter_funcs; ///< Filter functions.
-	GUIContentList content;      ///< List with content
-	bool auto_select;            ///< Automatically select all content when the meta-data becomes available
-	ContentListFilterData filter_data; ///< Filter for content list
-	QueryString filter_editbox;  ///< Filter editbox;
-	Dimension checkbox_size;     ///< Size of checkbox/"blot" sprite
+	GUIContentList content{}; ///< List with content
+	bool auto_select = false; ///< Automatically select all content when the meta-data becomes available
+	ContentListFilterData filter_data{}; ///< Filter for content list
+	QueryString filter_editbox; ///< Filter editbox;
+	Dimension checkbox_size{}; ///< Size of checkbox/"blot" sprite
 
-	const ContentInfo *selected; ///< The selected content info
-	int list_pos;                ///< Our position in the list
-	uint filesize_sum;           ///< The sum of all selected file sizes
-	Scrollbar *vscroll;          ///< Cache of the vertical scrollbar
+	const ContentInfo *selected = nullptr; ///< The selected content info
+	int list_pos = 0; ///< Our position in the list
+	uint filesize_sum = 0; ///< The sum of all selected file sizes
+	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar
 
 	static std::string content_type_strs[CONTENT_TYPE_END]; ///< Cached strings for all content types.
 
@@ -539,9 +538,7 @@ public:
 	NetworkContentListWindow(WindowDesc &desc, bool select_all, const std::bitset<CONTENT_TYPE_END> &types) :
 			Window(desc),
 			auto_select(select_all),
-			filter_editbox(EDITBOX_MAX_SIZE),
-			selected(nullptr),
-			list_pos(0)
+			filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NCL_SCROLLBAR);
