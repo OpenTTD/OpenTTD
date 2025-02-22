@@ -912,7 +912,12 @@ CommandCost CmdBuildShip(DoCommandFlags flags, TileIndex tile, const Engine *e, 
 		v->y_pos = y;
 		v->z_pos = GetSlopePixelZ(x, y);
 
+		v->direction = DiagDirToDir(GetShipDepotDirection(tile));
+
+		/* UpdateDeltaXY() requires rotation to be initialised as well. */
+		v->rotation = v->direction;
 		v->UpdateDeltaXY();
+
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = svi->image_index;
