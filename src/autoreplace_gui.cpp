@@ -78,20 +78,20 @@ static const StringID _start_replace_dropdown[] = {
  * Window for the autoreplacing of vehicles.
  */
 class ReplaceVehicleWindow : public Window {
-	EngineID sel_engine[2];       ///< Selected engine left and right.
-	GUIEngineList engines[2];     ///< Left and right list of engines.
-	bool replace_engines;         ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
-	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
-	GroupID sel_group;            ///< Group selected to replace.
-	int details_height;           ///< Minimal needed height of the details panels, in text lines (found so far).
-	VehicleType vehicle_type; ///< Type of vehicle in this window.
-	uint8_t sort_criteria;           ///< Criteria of sorting vehicles.
-	bool descending_sort_order;   ///< Order of sorting vehicles.
-	bool show_hidden_engines;     ///< Whether to show the hidden engines.
-	RailType sel_railtype;        ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
-	RoadType sel_roadtype;        ///< Type of road selected. #INVALID_ROADTYPE to show all.
-	Scrollbar *vscroll[2];
-	GUIBadgeClasses badge_classes;
+	std::array<EngineID, 2> sel_engine{}; ///< Selected engine left and right.
+	std::array<GUIEngineList, 2> engines{}; ///< Left and right list of engines.
+	bool replace_engines = true; ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
+	bool reset_sel_engine = true; ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
+	GroupID sel_group = GroupID::Invalid(); ///< Group selected to replace.
+	int details_height = 0; ///< Minimal needed height of the details panels, in text lines (found so far).
+	VehicleType vehicle_type = VEH_INVALID; ///< Type of vehicle in this window.
+	uint8_t sort_criteria = 0; ///< Criteria of sorting vehicles.
+	bool descending_sort_order = false; ///< Order of sorting vehicles.
+	bool show_hidden_engines = false; ///< Whether to show the hidden engines.
+	RailType sel_railtype = INVALID_RAILTYPE; ///< Type of rail tracks selected. #INVALID_RAILTYPE to show all.
+	RoadType sel_roadtype = INVALID_ROADTYPE; ///< Type of road selected. #INVALID_ROADTYPE to show all.
+	std::array<Scrollbar *, 2> vscroll{};
+	GUIBadgeClasses badge_classes{};
 
 	/**
 	 * Figure out if an engine should be added to a list.
@@ -269,12 +269,8 @@ public:
 	ReplaceVehicleWindow(WindowDesc &desc, VehicleType vehicletype, GroupID id_g) : Window(desc)
 	{
 		this->vehicle_type = vehicletype;
-		this->sel_railtype = INVALID_RAILTYPE;
-		this->sel_roadtype = INVALID_ROADTYPE;
-		this->replace_engines  = true; // start with locomotives (all other vehicles will not read this bool)
 		this->engines[0].ForceRebuild();
 		this->engines[1].ForceRebuild();
-		this->reset_sel_engine = true;
 		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9);
 		this->sel_engine[0] = EngineID::Invalid();
 		this->sel_engine[1] = EngineID::Invalid();
