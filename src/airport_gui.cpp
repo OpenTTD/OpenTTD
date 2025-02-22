@@ -82,14 +82,13 @@ static void PlaceAirport(TileIndex tile)
 
 /** Airport build toolbar window handler. */
 struct BuildAirToolbarWindow : Window {
-	int last_user_action; // Last started user action.
+	int last_user_action = INVALID_WID_AT; // Last started user action.
 
 	BuildAirToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
 		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
-		this->last_user_action = INVALID_WID_AT;
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -233,9 +232,9 @@ Window *ShowBuildAirToolbar()
 }
 
 class BuildAirportWindow : public PickerWindowBase {
-	SpriteID preview_sprite; ///< Cached airport preview sprite.
-	int line_height;
-	Scrollbar *vscroll;
+	SpriteID preview_sprite{}; ///< Cached airport preview sprite.
+	int line_height = 0;
+	Scrollbar *vscroll = nullptr;
 
 	/** Build a dropdown list of available airport classes */
 	static DropDownList BuildAirportClassDropDown()

@@ -146,9 +146,9 @@ static WindowDesc _console_window_desc(
 struct IConsoleWindow : Window
 {
 	static size_t scroll;
-	int line_height;   ///< Height of one line of text in the console.
-	int line_offset;
-	int cursor_width;
+	int line_height = 0; ///< Height of one line of text in the console.
+	int line_offset = 0;
+	int cursor_width = 0;
 
 	IConsoleWindow() : Window(_console_window_desc)
 	{

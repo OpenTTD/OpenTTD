@@ -407,9 +407,9 @@ static constexpr NWidgetPart _framerate_window_widgets[] = {
 };
 
 struct FramerateWindow : Window {
-	bool small;
-	int num_active;
-	int num_displayed;
+	bool small = false;
+	int num_active = 0;
+	int num_displayed = 0;
 
 	struct CachedDecimal {
 		StringID strid;
@@ -438,13 +438,13 @@ struct FramerateWindow : Window {
 		}
 	};
 
-	CachedDecimal rate_gameloop;            ///< cached game loop tick rate
-	CachedDecimal rate_drawing;             ///< cached drawing frame rate
-	CachedDecimal speed_gameloop;           ///< cached game loop speed factor
-	CachedDecimal times_shortterm[PFE_MAX]; ///< cached short term average times
-	CachedDecimal times_longterm[PFE_MAX];  ///< cached long term average times
+	CachedDecimal rate_gameloop{}; ///< cached game loop tick rate
+	CachedDecimal rate_drawing{}; ///< cached drawing frame rate
+	CachedDecimal speed_gameloop{}; ///< cached game loop speed factor
+	std::array<CachedDecimal, PFE_MAX> times_shortterm{}; ///< cached short term average times
+	std::array<CachedDecimal, PFE_MAX> times_longterm{}; ///< cached long term average times
 
-	static constexpr int MIN_ELEMENTS = 5;      ///< smallest number of elements to display
+	static constexpr int MIN_ELEMENTS = 5; ///< smallest number of elements to display
 
 	FramerateWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
@@ -586,7 +586,7 @@ struct FramerateWindow : Window {
 	}
 
 	/** Render a column of formatted average durations */
-	void DrawElementTimesColumn(const Rect &r, StringID heading_str, const CachedDecimal *values) const
+	void DrawElementTimesColumn(const Rect &r, StringID heading_str, std::span<const CachedDecimal> values) const
 	{
 		const Scrollbar *sb = this->GetScrollbar(WID_FRW_SCROLLBAR);
 		int32_t skip = sb->GetPosition();
@@ -743,18 +743,14 @@ static constexpr NWidgetPart _frametime_graph_window_widgets[] = {
 };
 
 struct FrametimeGraphWindow : Window {
-	int vertical_scale;       ///< number of TIMESTAMP_PRECISION units vertically
-	int horizontal_scale;     ///< number of half-second units horizontally
+	int vertical_scale = TIMESTAMP_PRECISION / 10; ///< number of TIMESTAMP_PRECISION units vertically
+	int horizontal_scale = 4; ///< number of half-second units horizontally
 
-	PerformanceElement element; ///< what element this window renders graph for
-	Dimension graph_size;       ///< size of the main graph area (excluding axis labels)
+	PerformanceElement element{}; ///< what element this window renders graph for
+	Dimension graph_size{}; ///< size of the main graph area (excluding axis labels)
 
-	FrametimeGraphWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
+	FrametimeGraphWindow(WindowDesc &desc, WindowNumber number) : Window(desc), element(static_cast<PerformanceElement>(number))
 	{
-		this->element = (PerformanceElement)number;
-		this->horizontal_scale = 4;
-		this->vertical_scale = TIMESTAMP_PRECISION / 10;
-
 		this->InitNested(number);
 		this->UpdateScale();
 	}

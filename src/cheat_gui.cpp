@@ -234,15 +234,15 @@ static constexpr NWidgetPart _nested_cheat_widgets[] = {
 
 /** GUI for the cheats. */
 struct CheatWindow : Window {
-	int clicked;
-	int clicked_cheat;
-	uint line_height;
-	Dimension icon;     ///< Dimension of company icon sprite
+	int clicked = 0;
+	int clicked_cheat = 0;
+	uint line_height = 0;
+	Dimension icon{}; ///< Dimension of company icon sprite
 
-	std::vector<const SettingDesc *> sandbox_settings;
-	const SettingDesc *clicked_setting;
-	const SettingDesc *last_clicked_setting;
-	const SettingDesc *valuewindow_entry;
+	std::vector<const SettingDesc *> sandbox_settings{};
+	const SettingDesc *clicked_setting = nullptr;
+	const SettingDesc *last_clicked_setting = nullptr;
+	const SettingDesc *valuewindow_entry = nullptr;
 
 	CheatWindow(WindowDesc &desc) : Window(desc)
 	{

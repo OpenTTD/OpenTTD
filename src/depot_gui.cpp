@@ -254,31 +254,29 @@ static void DepotSellAllConfirmationCallback(Window *w, bool confirmed);
 const Sprite *GetAircraftSprite(EngineID engine);
 
 struct DepotWindow : Window {
-	VehicleID sel;
-	VehicleID vehicle_over; ///< Rail vehicle over which another one is dragged, \c VehicleID::Invalid() if none.
-	VehicleType type;
-	bool generate_list;
-	bool check_unitnumber_digits;
-	WidgetID hovered_widget; ///< Index of the widget being hovered during drag/drop. -1 if no drag is in progress.
-	VehicleList vehicle_list;
-	VehicleList wagon_list;
-	uint unitnumber_digits;
-	uint num_columns;       ///< Number of columns.
-	Scrollbar *hscroll;     ///< Only for trains.
-	Scrollbar *vscroll;
+	VehicleID sel = VehicleID::Invalid();
+	VehicleID vehicle_over = VehicleID::Invalid(); ///< Rail vehicle over which another one is dragged, \c VehicleID::Invalid() if none.
+	VehicleType type = VEH_INVALID;
+	bool generate_list = true;
+	bool check_unitnumber_digits = true;
+	WidgetID hovered_widget = -1; ///< Index of the widget being hovered during drag/drop. -1 if no drag is in progress.
+	VehicleList vehicle_list{};
+	VehicleList wagon_list{};
+	uint unitnumber_digits = 2;
+	uint num_columns = 1; ///< Number of columns.
+	Scrollbar *hscroll = nullptr; ///< Only for trains.
+	Scrollbar *vscroll = nullptr;
+	uint count_width = 0; ///< Width of length count, including separator.
+	uint header_width = 0; ///< Width of unit number and flag, including separator.
+	Dimension flag_size{}; ///< Size of start/stop flag.
+	VehicleCellSize cell_size{}; ///< Vehicle sprite cell size.
+	bool last_overlay_state = false;
 
 	DepotWindow(WindowDesc &desc, TileIndex tile, VehicleType type) : Window(desc)
 	{
 		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
 
-		this->sel = VehicleID::Invalid();
-		this->vehicle_over = VehicleID::Invalid();
-		this->generate_list = true;
-		this->check_unitnumber_digits = true;
-		this->hovered_widget = -1;
 		this->type = type;
-		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
-		this->unitnumber_digits = 2;
 
 		this->CreateNestedTree();
 		this->hscroll = (this->type == VEH_TRAIN ? this->GetScrollbar(WID_D_H_SCROLL) : nullptr);
@@ -646,11 +644,6 @@ struct DepotWindow : Window {
 		}
 	}
 
-	uint count_width;          ///< Width of length count, including separator.
-	uint header_width;         ///< Width of unit number and flag, including separator.
-	Dimension flag_size;       ///< Size of start/stop flag.
-	VehicleCellSize cell_size; ///< Vehicle sprite cell size.
-
 	void OnInit() override
 	{
 		this->cell_size = GetVehicleImageCellSize(this->type, EIT_IN_DEPOT);
@@ -991,7 +984,6 @@ struct DepotWindow : Window {
 		}
 	}
 
-	bool last_overlay_state;
 	void OnMouseLoop() override
 	{
 		if (last_overlay_state != ShowCargoIconOverlay()) {

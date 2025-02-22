@@ -1132,26 +1132,26 @@ enum BuildVehicleHotkeys : int32_t {
 
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
-	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
+	VehicleType vehicle_type = VEH_INVALID; ///< Type of vehicles shown in the window.
 	union {
 		RailType railtype;   ///< Rail type to show, or #INVALID_RAILTYPE.
 		RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
-	} filter;                                   ///< Filter to apply.
-	bool descending_sort_order;                 ///< Sort direction, @see _engine_sort_direction
-	uint8_t sort_criteria;                         ///< Current sort criterium.
-	bool show_hidden_engines;                   ///< State of the 'show hidden engines' button.
-	bool listview_mode;                         ///< If set, only display the available vehicles and do not show a 'build' button.
-	EngineID sel_engine;                        ///< Currently selected engine, or #EngineID::Invalid()
-	EngineID rename_engine;                     ///< Engine being renamed.
-	GUIEngineList eng_list;
-	CargoType cargo_filter_criteria;              ///< Selected cargo filter
-	int details_height;                         ///< Minimal needed height of the details panels, in text lines (found so far).
-	Scrollbar *vscroll;
-	TestedEngineDetails te;                     ///< Tested cost and capacity after refit.
-	GUIBadgeClasses badge_classes;
+	} filter{}; ///< Filter to apply.
+	bool descending_sort_order = false; ///< Sort direction, @see _engine_sort_direction
+	uint8_t sort_criteria = 0; ///< Current sort criterium.
+	bool show_hidden_engines = false; ///< State of the 'show hidden engines' button.
+	bool listview_mode = false; ///< If set, only display the available vehicles and do not show a 'build' button.
+	EngineID sel_engine = EngineID::Invalid(); ///< Currently selected engine, or #EngineID::Invalid()
+	EngineID rename_engine = EngineID::Invalid(); ///< Engine being renamed.
+	GUIEngineList eng_list{};
+	CargoType cargo_filter_criteria{}; ///< Selected cargo filter
+	int details_height = 0; ///< Minimal needed height of the details panels, in text lines (found so far).
+	Scrollbar *vscroll = nullptr;
+	TestedEngineDetails te{}; ///< Tested cost and capacity after refit.
+	GUIBadgeClasses badge_classes{};
 
-	StringFilter string_filter;                 ///< Filter for vehicle name
-	QueryString vehicle_editbox;                ///< Filter editbox
+	StringFilter string_filter{}; ///< Filter for vehicle name
+	QueryString vehicle_editbox; ///< Filter editbox
 
 	void SetBuyVehicleText()
 	{
@@ -1172,8 +1172,6 @@ struct BuildVehicleWindow : Window {
 		this->vehicle_type = type;
 		this->listview_mode = tile == INVALID_TILE;
 		this->window_number = this->listview_mode ? (int)type : tile.base();
-
-		this->sel_engine = EngineID::Invalid();
 
 		this->sort_criteria         = _engine_sort_last_criteria[type];
 		this->descending_sort_order = _engine_sort_last_order[type];

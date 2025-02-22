@@ -70,19 +70,19 @@ static WindowDesc _dropdown_desc(
 
 /** Drop-down menu window */
 struct DropdownWindow : Window {
-	WidgetID parent_button;       ///< Parent widget number where the window is dropped from.
-	Rect wi_rect;                 ///< Rect of the button that opened the dropdown.
-	DropDownList list;            ///< List with dropdown menu items.
-	int selected_result;          ///< Result value of the selected item in the list.
-	uint8_t click_delay = 0;         ///< Timer to delay selection.
+	WidgetID parent_button{}; ///< Parent widget number where the window is dropped from.
+	Rect wi_rect{}; ///< Rect of the button that opened the dropdown.
+	DropDownList list{}; ///< List with dropdown menu items.
+	int selected_result = 0; ///< Result value of the selected item in the list.
+	uint8_t click_delay = 0; ///< Timer to delay selection.
 	bool drag_mode = true;
-	bool instant_close;           ///< Close the window when the mouse button is raised.
-	bool persist;                 ///< Persist dropdown menu.
-	int scrolling = 0;            ///< If non-zero, auto-scroll the item list (one time).
-	Point position;               ///< Position of the topleft corner of the window.
-	Scrollbar *vscroll;
+	bool instant_close = false; ///< Close the window when the mouse button is raised.
+	bool persist = false; ///< Persist dropdown menu.
+	int scrolling = 0; ///< If non-zero, auto-scroll the item list (one time).
+	Point position{}; ///< Position of the topleft corner of the window.
+	Scrollbar *vscroll = nullptr;
 
-	Dimension items_dim; ///< Calculated cropped and padded dimension for the items widget.
+	Dimension items_dim{}; ///< Calculated cropped and padded dimension for the items widget.
 
 	/**
 	 * Create a dropdown menu.
