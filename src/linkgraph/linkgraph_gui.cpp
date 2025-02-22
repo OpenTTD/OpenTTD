@@ -544,10 +544,8 @@ void ShowLinkGraphLegend()
 	AllocateWindowDescFront<LinkGraphLegendWindow>(_linkgraph_legend_desc, 0);
 }
 
-LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc &desc, int window_number) : Window(desc)
+LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc &desc, int window_number) : Window(desc), num_cargo(_sorted_cargo_specs.size())
 {
-	this->num_cargo = _sorted_cargo_specs.size();
-
 	this->InitNested(window_number);
 	this->InvalidateData(0);
 	this->SetOverlay(GetMainWindow()->viewport->overlay);

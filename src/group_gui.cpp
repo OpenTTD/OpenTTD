@@ -199,15 +199,16 @@ private:
 		VGC_END
 	};
 
-	GroupID group_sel;     ///< Selected group (for drag/drop)
-	GroupID group_rename;  ///< Group being renamed, GroupID::Invalid() if none
-	GroupID group_over;    ///< Group over which a vehicle is dragged, GroupID::Invalid() if none
-	GroupID group_confirm; ///< Group awaiting delete confirmation
-	GUIGroupList groups;   ///< List of groups
-	uint tiny_step_height; ///< Step height for the group list
-	Scrollbar *group_sb;
+	GroupID group_sel = GroupID::Invalid(); ///< Selected group (for drag/drop)
+	GroupID group_rename = GroupID::Invalid(); ///< Group being renamed, GroupID::Invalid() if none
+	GroupID group_over = GroupID::Invalid(); ///< Group over which a vehicle is dragged, GroupID::Invalid() if none
+	GroupID group_confirm = GroupID::Invalid(); ///< Group awaiting delete confirmation
+	GUIGroupList groups{}; ///< List of groups
+	uint tiny_step_height = 0; ///< Step height for the group list
+	Scrollbar *group_sb = nullptr;
 
-	Dimension column_size[VGC_END]; ///< Size of the columns in the group list.
+	std::array<Dimension, VGC_END> column_size{}; ///< Size of the columns in the group list.
+	bool last_overlay_state = false;
 
 	/**
 	 * (Re)Build the group list.
@@ -394,9 +395,6 @@ public:
 		this->group_sb = this->GetScrollbar(WID_GL_LIST_GROUP_SCROLLBAR);
 
 		this->vli.SetIndex(ALL_GROUP);
-		this->group_sel = GroupID::Invalid();
-		this->group_rename = GroupID::Invalid();
-		this->group_over = GroupID::Invalid();
 
 		this->groups.ForceRebuild();
 		this->groups.NeedResort();
@@ -692,7 +690,6 @@ public:
 		}
 	}
 
-	bool last_overlay_state;
 	void OnMouseLoop() override
 	{
 		if (last_overlay_state != ShowCargoIconOverlay()) {

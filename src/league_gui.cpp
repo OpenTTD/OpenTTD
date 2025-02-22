@@ -56,11 +56,11 @@ static inline StringID GetPerformanceTitleFromValue(uint value)
 
 class PerformanceLeagueWindow : public Window {
 private:
-	GUIList<const Company *> companies;
-	uint ordinal_width; ///< The width of the ordinal number
-	uint text_width;    ///< The width of the actual text
-	int line_height;    ///< Height of the text lines
-	Dimension icon;     ///< Dimension of the company icon.
+	GUIList<const Company *> companies{};
+	uint ordinal_width = 0; ///< The width of the ordinal number
+	uint text_width = 0; ///< The width of the actual text
+	int line_height = 0; ///< Height of the text lines
+	Dimension icon{}; ///< Dimension of the company icon.
 
 	/**
 	 * (Re)Build the company league list
@@ -249,15 +249,15 @@ static void HandleLinkClick(Link link)
 
 class ScriptLeagueWindow : public Window {
 private:
-	LeagueTableID table;
-	std::vector<std::pair<uint, const LeagueTableElement *>> rows;
-	uint rank_width;     ///< The width of the rank ordinal
-	uint text_width;     ///< The width of the actual text
-	uint score_width;    ///< The width of the score text
-	uint header_height;  ///< Height of the table header
-	int line_height;     ///< Height of the text lines
-	Dimension icon_size; ///< Dimension of the company icon.
-	std::string title;
+	LeagueTableID table{};
+	std::vector<std::pair<uint, const LeagueTableElement *>> rows{};
+	uint rank_width = 0; ///< The width of the rank ordinal
+	uint text_width = 0; ///< The width of the actual text
+	uint score_width = 0; ///< The width of the score text
+	uint header_height = 0; ///< Height of the table header
+	int line_height = 0; ///< Height of the text lines
+	Dimension icon_size{}; ///< Dimension of the company icon.
+	std::string title{};
 
 	/**
 	 * Rebuild the company league list
