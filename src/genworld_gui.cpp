@@ -385,11 +385,11 @@ static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, 
 static_assert(std::size(_num_inds) == ID_END);
 
 struct GenerateLandscapeWindow : public Window {
-	WidgetID widget_id;
-	uint x;
-	uint y;
-	std::string name;
-	GenerateLandscapeWindowMode mode;
+	WidgetID widget_id{};
+	uint x = 0;
+	uint y = 0;
+	std::string name{};
+	GenerateLandscapeWindowMode mode{};
 
 	GenerateLandscapeWindow(WindowDesc &desc, WindowNumber number = 0) : Window(desc)
 	{
@@ -1065,7 +1065,7 @@ void StartNewGameWithoutGUI(uint32_t seed)
 
 struct CreateScenarioWindow : public Window
 {
-	WidgetID widget_id;
+	WidgetID widget_id{};
 
 	CreateScenarioWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{

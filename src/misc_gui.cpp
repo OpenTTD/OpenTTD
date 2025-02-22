@@ -68,11 +68,11 @@ static WindowDesc _land_info_desc(
 );
 
 class LandInfoWindow : public Window {
-	StringList  landinfo_data;    ///< Info lines to show.
-	std::string cargo_acceptance; ///< Centered multi-line string for cargo acceptance.
+	StringList landinfo_data{}; ///< Info lines to show.
+	std::string cargo_acceptance{}; ///< Centered multi-line string for cargo acceptance.
 
 public:
-	TileIndex tile;
+	TileIndex tile = INVALID_TILE;
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
@@ -442,8 +442,8 @@ static const std::initializer_list<const std::string_view> _credits = {
 };
 
 struct AboutWindow : public Window {
-	int text_position;                       ///< The top of the scrolling text
-	int line_height;                         ///< The height of a single line
+	int text_position = 0; ///< The top of the scrolling text
+	int line_height = 0; ///< The height of a single line
 	static const int num_visible_lines = 19; ///< The number of lines visible simultaneously
 
 	AboutWindow() : Window(_about_desc)
@@ -630,8 +630,8 @@ static WindowDesc _tool_tips_desc(
 /** Window for displaying a tooltip. */
 struct TooltipsWindow : public Window
 {
-	EncodedString text; ///< String to display as tooltip.
-	TooltipCloseCondition close_cond; ///< Condition for closing the window.
+	EncodedString text{}; ///< String to display as tooltip.
+	TooltipCloseCondition close_cond{}; ///< Condition for closing the window.
 
 	TooltipsWindow(Window *parent, EncodedString &&text, TooltipCloseCondition close_tooltip) : Window(_tool_tips_desc), text(std::move(text))
 	{
@@ -926,8 +926,8 @@ void QueryString::ClickEditBox(Window *w, Point pt, WidgetID wid, int click_coun
 /** Class for the string query window. */
 struct QueryStringWindow : public Window
 {
-	QueryString editbox;    ///< Editbox.
-	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
+	QueryString editbox; ///< Editbox.
+	QueryStringFlags flags{}; ///< Flags controlling behaviour of the window.
 
 	QueryStringWindow(std::string_view str, StringID caption, uint max_bytes, uint max_chars, WindowDesc &desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			Window(desc), editbox(max_bytes, max_chars)
@@ -1046,9 +1046,9 @@ void ShowQueryString(std::string_view str, StringID caption, uint maxsize, Windo
  * Window used for asking the user a YES/NO question.
  */
 struct QueryWindow : public Window {
-	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	EncodedString caption; ///< caption for query window.
-	EncodedString message; ///< message for query window.
+	QueryCallbackProc *proc = nullptr; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
+	EncodedString caption{}; ///< caption for query window.
+	EncodedString message{}; ///< message for query window.
 
 	QueryWindow(WindowDesc &desc, EncodedString &&caption, EncodedString &&message, Window *parent, QueryCallbackProc *callback)
 		: Window(desc), proc(callback), caption(std::move(caption)), message(std::move(message))

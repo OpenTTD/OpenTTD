@@ -300,12 +300,12 @@ static WindowDesc _build_industry_desc(
 
 /** Build (fund or prospect) a new industry, */
 class BuildIndustryWindow : public Window {
-	IndustryType selected_type;                 ///< industry corresponding to the above index
-	std::vector<IndustryType> list;             ///< List of industries.
-	bool enabled;                               ///< Availability state of the selected industry.
-	Scrollbar *vscroll;
-	Dimension legend;                           ///< Dimension of the legend 'blob'.
-	GUIBadgeClasses badge_classes;
+	IndustryType selected_type = IT_INVALID; ///< industry corresponding to the above index
+	std::vector<IndustryType> list{}; ///< List of industries.
+	bool enabled = false; ///< Availability state of the selected industry.
+	Scrollbar *vscroll = nullptr;
+	Dimension legend{}; ///< Dimension of the legend 'blob'.
+	GUIBadgeClasses badge_classes{};
 
 	/** The largest allowed minimum-width of the window, given in line heights */
 	static const int MAX_MINWIDTH_LINEHEIGHTS = 20;
@@ -398,8 +398,6 @@ class BuildIndustryWindow : public Window {
 public:
 	BuildIndustryWindow() : Window(_build_industry_desc)
 	{
-		this->selected_type = IT_INVALID;
-
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_DPI_SCROLLBAR);
 		/* Show scenario editor tools in editor. */
@@ -815,22 +813,19 @@ class IndustryViewWindow : public Window
 		IL_RATE2,             ///< Production rate of cargo 2
 	};
 
-	Dimension cargo_icon_size; ///< Largest cargo icon dimension.
-	Editability editable;     ///< Mode for changing production
-	InfoLine editbox_line;    ///< The line clicked to open the edit box
-	InfoLine clicked_line;    ///< The line of the button that has been clicked
-	uint8_t clicked_button;      ///< The button that has been clicked (to raise)
-	int production_offset_y;  ///< The offset of the production texts/buttons
-	int info_height;          ///< Height needed for the #WID_IV_INFO panel
-	int cheat_line_height;    ///< Height of each line for the #WID_IV_INFO panel
+	Dimension cargo_icon_size{}; ///< Largest cargo icon dimension.
+	Editability editable{}; ///< Mode for changing production
+	InfoLine editbox_line = IL_NONE; ///< The line clicked to open the edit box
+	InfoLine clicked_line = IL_NONE; ///< The line of the button that has been clicked
+	uint8_t clicked_button = 0; ///< The button that has been clicked (to raise)
+	int production_offset_y = 0; ///< The offset of the production texts/buttons
+	int info_height = 0; ///< Height needed for the #WID_IV_INFO panel
+	int cheat_line_height = 0; ///< Height of each line for the #WID_IV_INFO panel
 
 public:
 	IndustryViewWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->flags.Set(WindowFlag::DisableVpScroll);
-		this->editbox_line = IL_NONE;
-		this->clicked_line = IL_NONE;
-		this->clicked_button = 0;
 		this->info_height = WidgetDimensions::scaled.framerect.Vertical() + 2 * GetCharacterHeight(FS_NORMAL); // Info panel has at least two lines text.
 
 		this->InitNested(window_number);
@@ -1362,16 +1357,16 @@ protected:
 	static const std::initializer_list<GUIIndustryList::SortFunction * const> sorter_funcs;
 
 	GUIIndustryList industries{IndustryDirectoryWindow::produced_cargo_filter};
-	Scrollbar *vscroll;
-	Scrollbar *hscroll;
+	Scrollbar *vscroll{};
+	Scrollbar *hscroll{};
 
-	CargoType produced_cargo_filter_criteria;     ///< Selected produced cargo filter index
-	CargoType accepted_cargo_filter_criteria;     ///< Selected accepted cargo filter index
+	CargoType produced_cargo_filter_criteria{}; ///< Selected produced cargo filter index
+	CargoType accepted_cargo_filter_criteria{}; ///< Selected accepted cargo filter index
 	static CargoType produced_cargo_filter;
 
-	const int MAX_FILTER_LENGTH = 16;           ///< The max length of the filter, in chars
-	StringFilter string_filter;                 ///< Filter for industries
-	QueryString industry_editbox;               ///< Filter editbox
+	const int MAX_FILTER_LENGTH = 16; ///< The max length of the filter, in chars
+	StringFilter string_filter{}; ///< Filter for industries
+	QueryString industry_editbox; ///< Filter editbox
 
 	enum class SorterType : uint8_t {
 		ByName,        ///< Sorter type to sort by name
@@ -2026,27 +2021,27 @@ struct CargoesField {
 	using Cargoes = uint16_t;
 	static_assert(std::numeric_limits<Cargoes>::digits >= MAX_CARGOES);
 
-	CargoesFieldType type; ///< Type of field.
+	CargoesFieldType type{}; ///< Type of field.
 	union {
 		struct {
-			IndustryType ind_type;                 ///< Industry type (#NUM_INDUSTRYTYPES means 'houses').
-			CargoType other_produced[MAX_CARGOES];   ///< Cargoes produced but not used in this figure.
-			CargoType other_accepted[MAX_CARGOES];   ///< Cargoes accepted but not used in this figure.
+			IndustryType ind_type; ///< Industry type (#NUM_INDUSTRYTYPES means 'houses').
+			std::array<CargoType, MAX_CARGOES> other_produced; ///< Cargoes produced but not used in this figure.
+			std::array<CargoType, MAX_CARGOES> other_accepted; ///< Cargoes accepted but not used in this figure.
 		} industry; ///< Industry data (for #CFT_INDUSTRY).
 		struct {
-			CargoType vertical_cargoes[MAX_CARGOES]; ///< Cargoes running from top to bottom (cargo type or #INVALID_CARGO).
+			std::array<CargoType, MAX_CARGOES> vertical_cargoes; ///< Cargoes running from top to bottom (cargo type or #INVALID_CARGO).
 			Cargoes supp_cargoes; ///< Cargoes in \c vertical_cargoes entering from the left.
 			Cargoes cust_cargoes; ///< Cargoes in \c vertical_cargoes leaving to the right.
-			uint8_t num_cargoes;                   ///< Number of cargoes.
-			uint8_t top_end;                       ///< Stop at the top of the vertical cargoes.
-			uint8_t bottom_end;                    ///< Stop at the bottom of the vertical cargoes.
+			uint8_t num_cargoes; ///< Number of cargoes.
+			uint8_t top_end; ///< Stop at the top of the vertical cargoes.
+			uint8_t bottom_end; ///< Stop at the bottom of the vertical cargoes.
 		} cargo; ///< Cargo data (for #CFT_CARGO).
 		struct {
-			CargoType cargoes[MAX_CARGOES];          ///< Cargoes to display (or #INVALID_CARGO).
-			bool left_align;                       ///< Align all cargo texts to the left (else align to the right).
+			std::array<CargoType, MAX_CARGOES> cargoes; ///< Cargoes to display (or #INVALID_CARGO).
+			bool left_align; ///< Align all cargo texts to the left (else align to the right).
 		} cargo_label;   ///< Label data (for #CFT_CARGO_LABEL).
 		StringID header; ///< Header text (for #CFT_HEADER).
-	} u; // Data for each type.
+	} u{}; // Data for each type.
 
 	/**
 	 * Make one of the empty fields (#CFT_EMPTY or #CFT_SMALL_EMPTY).
@@ -2567,11 +2562,11 @@ next_cargo: ;
 struct IndustryCargoesWindow : public Window {
 	typedef std::vector<CargoesRow> Fields;
 
-	Fields fields;  ///< Fields to display in the #WID_IC_PANEL.
-	uint ind_cargo; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo type + NUM_INDUSTRYTYPES.
-	Dimension cargo_textsize; ///< Size to hold any cargo text, as well as STR_INDUSTRY_CARGOES_SELECT_CARGO.
-	Dimension ind_textsize;   ///< Size to hold any industry type text, as well as STR_INDUSTRY_CARGOES_SELECT_INDUSTRY.
-	Scrollbar *vscroll;
+	Fields fields{}; ///< Fields to display in the #WID_IC_PANEL.
+	uint ind_cargo = 0; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo type + NUM_INDUSTRYTYPES.
+	Dimension cargo_textsize{}; ///< Size to hold any cargo text, as well as STR_INDUSTRY_CARGOES_SELECT_CARGO.
+	Dimension ind_textsize{}; ///< Size to hold any industry type text, as well as STR_INDUSTRY_CARGOES_SELECT_INDUSTRY.
+	Scrollbar *vscroll = nullptr;
 
 	IndustryCargoesWindow(int id) : Window(_industry_cargoes_desc)
 	{

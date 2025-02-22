@@ -38,7 +38,7 @@ enum GoalColumn : uint8_t {
 
 /** Window for displaying goals. */
 struct GoalListWindow : public Window {
-	Scrollbar *vscroll; ///< Reference to the scrollbar widget.
+	Scrollbar *vscroll = nullptr; ///< Reference to the scrollbar widget.
 
 	GoalListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
@@ -322,10 +322,10 @@ void ShowGoalsList(CompanyID company)
 
 /** Ask a question about a goal. */
 struct GoalQuestionWindow : public Window {
-	std::string question; ///< Question to ask (private copy).
-	int buttons;          ///< Number of valid buttons in #button.
-	int button[3];        ///< Buttons to display.
-	TextColour colour;    ///< Colour of the question text.
+	std::string question{}; ///< Question to ask (private copy).
+	int buttons = 0; ///< Number of valid buttons in #button.
+	std::array<int, 3> button{}; ///< Buttons to display.
+	TextColour colour{}; ///< Colour of the question text.
 
 	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const std::string &question) : Window(desc), colour(colour)
 	{
