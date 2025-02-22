@@ -2419,8 +2419,7 @@ struct GameSettingsWindow : Window {
 		if (this->warn_missing == WHR_NONE) {
 			new_warn_lines = 0;
 		} else {
-			SetDParam(0, _game_settings_restrict_dropdown[this->filter.min_cat]);
-			new_warn_lines = GetStringLineCount(warn_str, panel.Width());
+			new_warn_lines = GetStringLineCount(GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]), panel.Width());
 		}
 		if (this->warn_lines != new_warn_lines) {
 			this->vscroll->SetCount(this->vscroll->GetCount() - this->warn_lines + new_warn_lines);

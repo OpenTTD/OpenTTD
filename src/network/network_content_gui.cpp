@@ -119,15 +119,14 @@ void BaseNetworkContentDownloadStatusWindow::Close([[maybe_unused]] int data)
 void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize)
 {
 	switch (widget) {
-		case WID_NCDS_PROGRESS_BAR:
-			SetDParamMaxDigits(0, 8);
-			SetDParamMaxDigits(1, 8);
-			SetDParamMaxDigits(2, 8);
-			size = GetStringBoundingBox(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE);
+		case WID_NCDS_PROGRESS_BAR: {
+			auto max_value = GetParamMaxDigits(8);
+			size = GetStringBoundingBox(GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, max_value, max_value, max_value));
 			/* We need some spacing for the 'border' */
 			size.height += WidgetDimensions::scaled.frametext.Horizontal();
 			size.width  += WidgetDimensions::scaled.frametext.Vertical();
 			break;
+		}
 
 		case WID_NCDS_PROGRESS_TEXT:
 			size.height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
@@ -143,28 +142,23 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-			SetDParam(0, this->downloaded_bytes);
-			SetDParam(1, this->total_bytes);
-			SetDParam(2, this->downloaded_bytes * 100LL / this->total_bytes);
-			DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_FROMSTRING, SA_HOR_CENTER);
+			DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)),
+				GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, this->downloaded_bytes, this->total_bytes, this->downloaded_bytes * 100LL / this->total_bytes),
+				TC_FROMSTRING, SA_HOR_CENTER);
 			break;
 		}
 
-		case WID_NCDS_PROGRESS_TEXT: {
-			StringID str;
+		case WID_NCDS_PROGRESS_TEXT:
 			if (this->downloaded_bytes == this->total_bytes) {
-				str = STR_CONTENT_DOWNLOAD_COMPLETE;
+				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_COMPLETE, TC_FROMSTRING, SA_CENTER);
 			} else if (!this->name.empty()) {
-				SetDParamStr(0, this->name);
-				SetDParam(1, this->downloaded_files);
-				SetDParam(2, this->total_files);
-				str = STR_CONTENT_DOWNLOAD_FILE;
+				DrawStringMultiLine(r,
+					GetString(STR_CONTENT_DOWNLOAD_FILE, this->name, this->downloaded_files, this->total_files),
+					TC_FROMSTRING, SA_CENTER);
 			} else {
-				str = STR_CONTENT_DOWNLOAD_INITIALISE;
+				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_INITIALISE, TC_FROMSTRING, SA_CENTER);
 			}
-			DrawStringMultiLine(r, str, TC_FROMSTRING, SA_CENTER);
 			break;
-		}
 	}
 }
 
@@ -697,8 +691,7 @@ public:
 		DrawString(hr.left, hr.right, hr.top, STR_CONTENT_DETAIL_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 
 		/* Draw the total download size */
-		SetDParam(0, this->filesize_sum);
-		DrawString(tr.left, tr.right, tr.bottom - GetCharacterHeight(FS_NORMAL) + 1, STR_CONTENT_TOTAL_DOWNLOAD_SIZE);
+		DrawString(tr.left, tr.right, tr.bottom - GetCharacterHeight(FS_NORMAL) + 1, GetString(STR_CONTENT_TOTAL_DOWNLOAD_SIZE, this->filesize_sum));
 
 		if (this->selected == nullptr) return;
 
@@ -709,35 +702,28 @@ public:
 		tr.bottom -= GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 		if (this->selected->upgrade) {
-			SetDParam(0, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS);
-			tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_UPDATE);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_UPDATE, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS));
 			tr.top += WidgetDimensions::scaled.vsep_wide;
 		}
 
-		SetDParamStr(0, this->selected->name);
-		tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_NAME);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_NAME, this->selected->name));
 
 		if (!this->selected->version.empty()) {
-			SetDParamStr(0, this->selected->version);
-			tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_VERSION);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_VERSION, this->selected->version));
 		}
 
 		if (!this->selected->description.empty()) {
-			SetDParamStr(0, this->selected->description);
-			tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_DESCRIPTION);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_DESCRIPTION, this->selected->description));
 		}
 
 		if (!this->selected->url.empty()) {
-			SetDParamStr(0, this->selected->url);
-			tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_URL);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_URL, this->selected->url));
 		}
 
-		SetDParam(0, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS);
-		tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_TYPE);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_TYPE, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS));
 
 		tr.top += WidgetDimensions::scaled.vsep_wide;
-		SetDParam(0, this->selected->filesize);
-		tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_FILESIZE);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_FILESIZE, this->selected->filesize));
 
 		std::string_view list_separator = GetListSeparator();
 		if (!this->selected->dependencies.empty()) {
@@ -755,8 +741,7 @@ public:
 					break;
 				}
 			}
-			SetDParamStr(0, buf);
-			tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_DEPENDENCIES);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_DEPENDENCIES, std::move(buf)));
 		}
 
 		if (!this->selected->tags.empty()) {
@@ -766,8 +751,7 @@ public:
 				if (!buf.empty()) buf += list_separator;
 				buf += tag;
 			}
-			SetDParamStr(0, buf);
-			tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_TAGS);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_TAGS, std::move(buf)));
 		}
 
 		if (this->selected->IsSelected()) {
@@ -783,8 +767,7 @@ public:
 				buf += ci->name;
 			}
 			if (!buf.empty()) {
-				SetDParamStr(0, buf);
-				tr.top = DrawStringMultiLine(tr, STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF);
+				tr.top = DrawStringMultiLine(tr, GetString(STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF, std::move(buf)));
 			}
 		}
 	}
