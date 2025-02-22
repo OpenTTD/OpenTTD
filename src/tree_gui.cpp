@@ -88,8 +88,8 @@ class BuildTreesWindow : public Window
 		PM_FOREST_LG,
 	};
 
-	int tree_to_plant;  ///< Tree number to plant, \c TREE_INVALID for a random tree.
-	PlantingMode mode;  ///< Current mode for planting
+	int tree_to_plant = -1; ///< Tree number to plant, \c TREE_INVALID for a random tree.
+	PlantingMode mode = PM_NORMAL; ///< Current mode for planting
 
 	/**
 	 * Update the GUI and enable/disable planting to reflect selected options.
@@ -139,7 +139,7 @@ class BuildTreesWindow : public Window
 	}
 
 public:
-	BuildTreesWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), tree_to_plant(-1), mode(PM_NORMAL)
+	BuildTreesWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->CreateNestedTree();
 		ResetObjectToPlace();
