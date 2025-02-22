@@ -901,6 +901,9 @@ public:
 		bool first = true;
 		bool has_accept = false;
 
+		/* Use all the available space past the rect, so that we can enlarge the window if needed. */
+		ir.bottom = INT_MAX;
+
 		if (i->prod_level == PRODLEVEL_CLOSURE) {
 			DrawString(ir, STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE);
 			ir.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
@@ -1008,10 +1011,7 @@ public:
 						ir.top += WidgetDimensions::scaled.vsep_wide;
 
 						StartTextRefStackUsage(ind->grf_prop.grffile, 6);
-						/* Use all the available space left from where we stand up to the
-						 * end of the window. We ALSO enlarge the window if needed, so we
-						 * can 'go' wild with the bottom of the window. */
-						ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, message, TC_BLACK);
+						ir.top = DrawStringMultiLine(ir, message, TC_BLACK);
 						StopTextRefStackUsage();
 					}
 				}
@@ -1021,7 +1021,7 @@ public:
 		if (!i->text.empty()) {
 			SetDParamStr(0, i->text);
 			ir.top += WidgetDimensions::scaled.vsep_wide;
-			ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+			ir.top = DrawStringMultiLine(ir, STR_JUST_RAW_STRING, TC_BLACK);
 		}
 
 		/* Return required bottom position, the last pixel row plus some padding. */

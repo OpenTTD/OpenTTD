@@ -326,7 +326,7 @@ public:
 
 		if (!lt->header.empty()) {
 			SetDParamStr(0, lt->header);
-			ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK) + WidgetDimensions::scaled.vsep_wide;
+			ir.top = DrawStringMultiLine(ir, STR_JUST_RAW_STRING, TC_BLACK) + WidgetDimensions::scaled.vsep_wide;
 		}
 
 		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
@@ -354,7 +354,7 @@ public:
 		if (!lt->footer.empty()) {
 			ir.top += WidgetDimensions::scaled.vsep_wide;
 			SetDParamStr(0, lt->footer);
-			ir.top = DrawStringMultiLine(ir.left, ir.right, ir.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
+			ir.top = DrawStringMultiLine(ir, STR_JUST_RAW_STRING, TC_BLACK);
 		}
 	}
 
