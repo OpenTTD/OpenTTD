@@ -27,11 +27,7 @@ class CommandCost {
 	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
 	bool success;                               ///< Whether the command went fine up to this moment
 	Owner owner = CompanyID::Invalid(); ///< Originator owner of error.
-	const GRFFile *textref_stack_grffile = nullptr; ///< NewGRF providing the #TextRefStack content.
-	uint textref_stack_size = 0; ///< Number of uint32_t values to put on the #TextRefStack for the error message.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
-
-	static uint32_t textref_stack[16];
 
 	static EncodedString encoded_message; ///< Encoded error message, used if the error message includes parameters.
 
@@ -144,35 +140,6 @@ public:
 		this->success = false;
 		this->message = message;
 		this->extra_message = INVALID_STRING_ID;
-	}
-
-	void UseTextRefStack(const GRFFile *grffile, uint num_registers);
-
-	/**
-	 * Returns the NewGRF providing the #TextRefStack of the error message.
-	 * @return the NewGRF.
-	 */
-	const GRFFile *GetTextRefStackGRF() const
-	{
-		return this->textref_stack_grffile;
-	}
-
-	/**
-	 * Returns the number of uint32_t values for the #TextRefStack of the error message.
-	 * @return number of uint32_t values.
-	 */
-	uint GetTextRefStackSize() const
-	{
-		return this->textref_stack_size;
-	}
-
-	/**
-	 * Returns a pointer to the values for the #TextRefStack of the error message.
-	 * @return uint32_t values for the #TextRefStack
-	 */
-	const uint32_t *GetTextRefStack() const
-	{
-		return textref_stack;
 	}
 
 	/**

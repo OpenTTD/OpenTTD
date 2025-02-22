@@ -71,42 +71,22 @@ static WindowDesc _errmsg_face_desc(
 );
 
 /**
- * Copy the given data into our instance.
- * @param data The data to copy.
- */
-ErrorMessageData::ErrorMessageData(const ErrorMessageData &data) :
-	is_critical(data.is_critical), textref_stack_grffile(data.textref_stack_grffile), textref_stack_size(data.textref_stack_size),
-	summary_msg(data.summary_msg), detailed_msg(data.detailed_msg), extra_msg(data.extra_msg), position(data.position), company(data.company)
-{
-	memcpy(this->textref_stack, data.textref_stack, sizeof(this->textref_stack));
-}
-
-/**
  * Display an error message in a window.
  * @param summary_msg  General error message showed in first line. Must be valid.
  * @param detailed_msg Detailed error message showed in second line. Can be empty.
  * @param is_critical  Whether the error is critical. Critical messages never go away on their own.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
- * @param textref_stack_grffile NewGRF that provides the #TextRefStack for the error message.
- * @param textref_stack_size Number of uint32_t values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
- * @param textref_stack Values to put on the #TextRefStack.
  * @param extra_msg    Extra error message showed in third line. Can be empty.
  */
-ErrorMessageData::ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32_t *textref_stack, EncodedString &&extra_msg, CompanyID company) :
+ErrorMessageData::ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical, int x, int y, EncodedString &&extra_msg, CompanyID company) :
 	is_critical(is_critical),
-	textref_stack_grffile(textref_stack_grffile),
-	textref_stack_size(textref_stack_size),
 	summary_msg(std::move(summary_msg)),
 	detailed_msg(std::move(detailed_msg)),
 	extra_msg(std::move(extra_msg)),
+	position(x, y),
 	company(company)
 {
-	this->position.x = x;
-	this->position.y = y;
-
-	if (textref_stack_size > 0) MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
-
 	assert(!this->summary_msg.empty());
 }
 
@@ -143,13 +123,9 @@ public:
 	{
 		switch (widget) {
 			case WID_EM_MESSAGE: {
-				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
-
 				this->height_summary = GetStringHeight(this->summary_msg.GetDecodedString(), size.width);
 				this->height_detailed = (this->detailed_msg.empty()) ? 0 : GetStringHeight(this->detailed_msg.GetDecodedString(), size.width);
 				this->height_extra = (this->extra_msg.empty()) ? 0 : GetStringHeight(this->extra_msg.GetDecodedString(), size.width);
-
-				if (this->textref_stack_size > 0) StopTextRefStackUsage();
 
 				uint panel_height = this->height_summary;
 				if (!this->detailed_msg.empty()) panel_height += this->height_detailed + WidgetDimensions::scaled.vsep_wide;
@@ -215,8 +191,6 @@ public:
 			}
 
 			case WID_EM_MESSAGE:
-				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
-
 				if (this->detailed_msg.empty()) {
 					DrawStringMultiLine(r, this->summary_msg.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
 				} else if (this->extra_msg.empty()) {
@@ -239,7 +213,6 @@ public:
 					DrawStringMultiLine(bottom_section, this->extra_msg.GetDecodedString(), TC_WHITE, SA_CENTER);
 				}
 
-				if (this->textref_stack_size > 0) StopTextRefStackUsage();
 				break;
 
 			default:
@@ -310,7 +283,7 @@ void UnshowCriticalError()
  * @param summary_msg  General error message showed in first line. Must be valid.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
- * @param cc           CommandCost containing the optional detailed and extra error messages shown in the second and third lines (can be empty) and TextRefStack info.
+ * @param cc           CommandCost containing the optional detailed and extra error messages shown in the second and third lines (can be empty).
  */
 void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, const CommandCost &cc)
 {
@@ -318,7 +291,6 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, const CommandCo
 	if (error.empty()) error = GetEncodedStringIfValid(cc.GetErrorMessage());
 
 	ShowErrorMessage(std::move(summary_msg), std::move(error), WL_INFO, x, y,
-		cc.GetTextRefStackGRF(), cc.GetTextRefStackSize(), cc.GetTextRefStack(),
 		GetEncodedStringIfValid(cc.GetExtraErrorMessage()), cc.GetErrorOwner());
 }
 
@@ -329,19 +301,12 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, const CommandCo
  * @param wl           Message severity.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
- * @param textref_stack_grffile NewGRF providing the #TextRefStack for the error message.
- * @param textref_stack_size Number of uint32_t values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
- * @param textref_stack Values to put on the #TextRefStack.
  * @param extra_msg    Extra error message shown in third line. Can be empty.
  */
-void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32_t *textref_stack, EncodedString &&extra_msg, CompanyID company)
+void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x, int y, EncodedString &&extra_msg, CompanyID company)
 {
-	assert(textref_stack_size == 0 || (textref_stack_grffile != nullptr && textref_stack != nullptr));
-
 	if (wl != WL_INFO) {
 		/* Print message to console */
-
-		if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_grffile, textref_stack_size, textref_stack);
 
 		std::string message = summary_msg.GetDecodedString();
 		if (!detailed_msg.empty()) {
@@ -353,8 +318,6 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 			message += extra_msg.GetDecodedString();
 		}
 
-		if (textref_stack_size > 0) StopTextRefStackUsage();
-
 		IConsolePrint(wl == WL_WARNING ? CC_WARNING : CC_ERROR, message);
 	}
 
@@ -363,7 +326,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 	if (_game_mode == GM_BOOTSTRAP) return;
 	if (_settings_client.gui.errmsg_duration == 0 && !is_critical) return;
 
-	ErrorMessageData data(std::move(summary_msg), std::move(detailed_msg), is_critical, x, y, textref_stack_grffile, textref_stack_size, textref_stack, std::move(extra_msg), company);
+	ErrorMessageData data(std::move(summary_msg), std::move(detailed_msg), is_critical, x, y, std::move(extra_msg), company);
 
 	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (w != nullptr) {

@@ -1143,19 +1143,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		 */
 		std::string buffer;
 		StringBuilder dry_run_builder(buffer);
-		if (UsingNewGRFTextStack()) {
-			/* Values from the NewGRF text stack are only copied to the normal
-			 * argv array at the time they are encountered. That means that if
-			 * another string command references a value later in the string it
-			 * would fail. We solve that by running FormatString twice. The first
-			 * pass makes sure the argv array is correctly filled and the second
-			 * pass can reference later values without problems. */
-			struct TextRefStack *backup = CreateTextRefStackBackup();
-			FormatString(dry_run_builder, str_arg, args, case_index, game_script, true);
-			RestoreTextRefStackBackup(backup);
-		} else {
-			FormatString(dry_run_builder, str_arg, args, case_index, game_script, true);
-		}
+		FormatString(dry_run_builder, str_arg, args, case_index, game_script, true);
 		/* We have to restore the original offset here to to read the correct values. */
 		args.SetOffset(orig_offset);
 	}
@@ -1174,8 +1162,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 			if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 				/* We need to pass some stuff as it might be modified. */
-				StringParameters remaining = args.GetRemainingParameters();
-				b = RemapNewGRFStringControlCode(b, &str, remaining, dry_run);
+				b = RemapNewGRFStringControlCode(b, &str);
 				if (b == 0) continue;
 			}
 
@@ -1677,11 +1664,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 							const GRFFile *grffile = e->GetGRF();
 							assert(grffile != nullptr);
 
-							StartTextRefStackUsage(grffile, 6);
-							ArrayStringParameters<6> tmp_params;
-							GetStringWithArgs(builder, GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback), tmp_params);
-							StopTextRefStackUsage();
-
+							builder += GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, 6);
 							break;
 						}
 					}

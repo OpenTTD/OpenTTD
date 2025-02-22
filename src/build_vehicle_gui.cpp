@@ -804,10 +804,7 @@ static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
 		return std::nullopt;
 	}
 
-	StartTextRefStackUsage(grffile, 6);
-	std::string result = GetString(GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback));
-	StopTextRefStackUsage();
-	return result;
+	return GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, 6);
 }
 
 /**

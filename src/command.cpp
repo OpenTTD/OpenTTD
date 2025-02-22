@@ -407,31 +407,7 @@ void CommandCost::AddCost(const CommandCost &ret)
 	}
 }
 
-/**
- * Values to put on the #TextRefStack for the error message.
- * There is only one static instance of the array, just like there is only one
- * instance of normal DParams.
- */
-/* static */ uint32_t CommandCost::textref_stack[16];
-
 /* static */ EncodedString CommandCost::encoded_message;
-
-/**
- * Activate usage of the NewGRF #TextRefStack for the error message.
- * @param grffile NewGRF that provides the #TextRefStack
- * @param num_registers number of entries to copy from the temporary NewGRF registers
- */
-void CommandCost::UseTextRefStack(const GRFFile *grffile, uint num_registers)
-{
-	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
-
-	assert(num_registers < lengthof(textref_stack));
-	this->textref_stack_grffile = grffile;
-	this->textref_stack_size = num_registers;
-	for (uint i = 0; i < num_registers; i++) {
-		textref_stack[i] = _temp_store.GetValue(0x100 + i);
-	}
-}
 
 /**
  * Return an error status, with string and parameter.

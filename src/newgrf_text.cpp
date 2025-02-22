@@ -17,6 +17,7 @@
 
 #include "stdafx.h"
 
+#include "debug.h"
 #include "newgrf.h"
 #include "strings_internal.h"
 #include "newgrf_storage.h"
@@ -685,12 +686,24 @@ void CleanUpStrings()
 }
 
 struct TextRefStack {
-	std::array<uint8_t, 0x30> stack;
-	uint8_t position;
-	const GRFFile *grffile;
-	bool used;
+	std::array<uint8_t, 0x30> stack{};
+	uint8_t position = 0;
+	const GRFFile *grffile = nullptr;
 
-	TextRefStack() : position(0), grffile(nullptr), used(false) {}
+	TextRefStack(const GRFFile *grffile, uint8_t num_entries) : grffile(grffile)
+	{
+		extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
+
+		assert(num_entries < sizeof(uint32_t) * std::size(stack));
+
+		auto stack_it = this->stack.begin();
+		for (uint i = 0; i < num_entries; i++) {
+			uint32_t value = _temp_store.GetValue(0x100 + i);
+			for (uint j = 0; j < 32; j += 8) {
+				*stack_it++ = GB(value, j, 8);
+			}
+		}
+	}
 
 	uint8_t  PopUnsignedByte()  { assert(this->position < this->stack.size()); return this->stack[this->position++]; }
 	int8_t   PopSignedByte()    { return (int8_t)this->PopUnsignedByte(); }
@@ -736,213 +749,95 @@ struct TextRefStack {
 		this->stack[this->position]     = GB(word, 0, 8);
 		this->stack[this->position + 1] = GB(word, 8, 8);
 	}
-
-	void ResetStack(const GRFFile *grffile)
-	{
-		assert(grffile != nullptr);
-		this->position = 0;
-		this->grffile = grffile;
-		this->used = true;
-	}
 };
 
-/** The stack that is used for TTDP compatible string code parsing */
-static TextRefStack _newgrf_textrefstack;
+static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack, std::vector<StringParameter> &params);
 
 /**
- * Check whether the NewGRF text stack is in use.
- * @return True iff the NewGRF text stack is used.
+ * Process NewGRF string control code instructions.
+ * @param scc The string control code that has been read.
+ * @param str The string that we are reading from.
+ * @param stack The TextRefStack.
+ * @param[out] params Output parameters
  */
-bool UsingNewGRFTextStack()
+static void RemapNewGRFStringControlCode(char32_t scc, const char **str, TextRefStack &stack, std::vector<StringParameter> &params)
 {
-	return _newgrf_textrefstack.used;
-}
+	auto it = std::back_inserter(params);
 
-/**
- * Create a backup of the current NewGRF text stack.
- * @return A copy of the current text stack.
- */
-struct TextRefStack *CreateTextRefStackBackup()
-{
-	return new TextRefStack(_newgrf_textrefstack);
-}
-
-/**
- * Restore a copy of the text stack to the used stack.
- * @param backup The copy to restore.
- */
-void RestoreTextRefStackBackup(struct TextRefStack *backup)
-{
-	_newgrf_textrefstack = *backup;
-	delete backup;
-}
-
-/**
- * Start using the TTDP compatible string code parsing.
- *
- * On start a number of values is copied on the #TextRefStack.
- * You can then use #GetString() and the normal string drawing functions,
- * and they will use the #TextRefStack for NewGRF string codes.
- *
- * However, when you want to draw a string multiple times using the same stack,
- * you have to call #RewindTextRefStack() between draws.
- *
- * After you are done with drawing, you must disable usage of the #TextRefStack
- * by calling #StopTextRefStackUsage(), so NewGRF string codes operate on the
- * normal string parameters again.
- *
- * @param grffile the NewGRF providing the stack data
- * @param numEntries number of entries to copy from the registers
- * @param values values to copy onto the stack; if nullptr the temporary NewGRF registers will be used instead
- */
-void StartTextRefStackUsage(const GRFFile *grffile, uint8_t numEntries, const uint32_t *values)
-{
-	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
-
-	_newgrf_textrefstack.ResetStack(grffile);
-
-	auto stack_it = _newgrf_textrefstack.stack.begin();
-	for (uint i = 0; i < numEntries; i++) {
-		uint32_t value = values != nullptr ? values[i] : _temp_store.GetValue(0x100 + i);
-		for (uint j = 0; j < 32; j += 8) {
-			*stack_it = GB(value, j, 8);
-			stack_it++;
-		}
-	}
-}
-
-/** Stop using the TTDP compatible string code parsing */
-void StopTextRefStackUsage()
-{
-	_newgrf_textrefstack.used = false;
-}
-
-/**
- * FormatString for NewGRF specific "magic" string control codes
- * @param scc   the string control code that has been read
- * @param str   the string that we need to write
- * @param parameters the OpenTTD string formatting parameters
- * @param modify_parameters When true, modify the OpenTTD string formatting parameters.
- * @return the string control code to "execute" now
- */
-char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str, StringParameters &parameters, bool modify_parameters)
-{
+	/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
+	 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
 	switch (scc) {
-		default: break;
+		default: return;
+		case SCC_NEWGRF_PRINT_BYTE_SIGNED:      *it = stack.PopSignedByte();    break;
+		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   *it = stack.PopSignedQWord();   break;
 
-		/* These control codes take one string parameter, check there are at least that many available. */
-		case SCC_NEWGRF_PRINT_DWORD_SIGNED:
-		case SCC_NEWGRF_PRINT_WORD_SIGNED:
-		case SCC_NEWGRF_PRINT_BYTE_SIGNED:
-		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:
-		case SCC_NEWGRF_PRINT_BYTE_HEX:
-		case SCC_NEWGRF_PRINT_WORD_HEX:
-		case SCC_NEWGRF_PRINT_DWORD_HEX:
-		case SCC_NEWGRF_PRINT_QWORD_HEX:
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
-		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
-		case SCC_NEWGRF_PRINT_WORD_STRING_ID:
-		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
-		case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
-		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:
-		case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
+		case SCC_NEWGRF_PRINT_DWORD_SIGNED:     *it = stack.PopSignedDWord();   break;
+
+		case SCC_NEWGRF_PRINT_BYTE_HEX:         *it = stack.PopUnsignedByte();  break;
+		case SCC_NEWGRF_PRINT_QWORD_HEX:        *it = stack.PopUnsignedQWord(); break;
+
 		case SCC_NEWGRF_PRINT_WORD_SPEED:
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_LONG:
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT:
+		case SCC_NEWGRF_PRINT_WORD_SIGNED:      *it = stack.PopSignedWord();    break;
+
+		case SCC_NEWGRF_PRINT_WORD_HEX:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_POWER:
-		case SCC_NEWGRF_PRINT_DWORD_FORCE:
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
-		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
-			if (parameters.GetDataLeft() < 1) {
-				Debug(misc, 0, "Too many NewGRF string parameters.");
-				return 0;
-			}
-			break;
+		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    *it = stack.PopUnsignedWord();  break;
 
-		/* These string code take two string parameters, check there are at least that many available. */
+		case SCC_NEWGRF_PRINT_DWORD_FORCE:
+		case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
+		case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
+		case SCC_NEWGRF_PRINT_DWORD_HEX:        *it = stack.PopUnsignedDWord(); break;
+
+		/* Dates from NewGRFs have 1920-01-01 as their zero point, convert it to OpenTTD's epoch. */
+		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
+		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  *it = CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + stack.PopUnsignedWord(); break;
+
+		case SCC_NEWGRF_DISCARD_WORD:           stack.PopUnsignedWord(); break;
+
+		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     stack.RotateTop4Words(); break;
+		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(Utf8Consume(str)); break;
+
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
-			if (parameters.GetDataLeft() < 2) {
-				Debug(misc, 0, "Too many NewGRF string parameters.");
-				return 0;
-			}
+			*it = GetCargoTranslation(stack.PopUnsignedWord(), stack.grffile);
+			*it = stack.PopUnsignedWord();
 			break;
-	}
 
-	if (_newgrf_textrefstack.used && modify_parameters) {
-		/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
-		 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
-		switch (scc) {
-			default: NOT_REACHED();
-			case SCC_NEWGRF_PRINT_BYTE_SIGNED:      parameters.SetParam(0, _newgrf_textrefstack.PopSignedByte());    break;
-			case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   parameters.SetParam(0, _newgrf_textrefstack.PopSignedQWord());   break;
-
-			case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
-			case SCC_NEWGRF_PRINT_DWORD_SIGNED:     parameters.SetParam(0, _newgrf_textrefstack.PopSignedDWord());   break;
-
-			case SCC_NEWGRF_PRINT_BYTE_HEX:         parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedByte());  break;
-			case SCC_NEWGRF_PRINT_QWORD_HEX:        parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedQWord()); break;
-
-			case SCC_NEWGRF_PRINT_WORD_SPEED:
-			case SCC_NEWGRF_PRINT_WORD_VOLUME_LONG:
-			case SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT:
-			case SCC_NEWGRF_PRINT_WORD_SIGNED:      parameters.SetParam(0, _newgrf_textrefstack.PopSignedWord());    break;
-
-			case SCC_NEWGRF_PRINT_WORD_HEX:
-			case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
-			case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
-			case SCC_NEWGRF_PRINT_WORD_POWER:
-			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
-			case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedWord());  break;
-
-			case SCC_NEWGRF_PRINT_DWORD_FORCE:
-			case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
-			case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
-			case SCC_NEWGRF_PRINT_DWORD_HEX:        parameters.SetParam(0, _newgrf_textrefstack.PopUnsignedDWord()); break;
-
-			/* Dates from NewGRFs have 1920-01-01 as their zero point, convert it to OpenTTD's epoch. */
-			case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
-			case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  parameters.SetParam(0, CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + _newgrf_textrefstack.PopUnsignedWord()); break;
-
-			case SCC_NEWGRF_DISCARD_WORD:           _newgrf_textrefstack.PopUnsignedWord(); break;
-
-			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     _newgrf_textrefstack.RotateTop4Words(); break;
-			case SCC_NEWGRF_PUSH_WORD:              _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
-
-			case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
-			case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
-			case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
-				parameters.SetParam(0, GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile));
-				parameters.SetParam(1, _newgrf_textrefstack.PopUnsignedWord());
-				break;
-
-			case SCC_NEWGRF_PRINT_WORD_STRING_ID:
-				parameters.SetParam(0, MapGRFStringID(_newgrf_textrefstack.grffile->grfid, GRFStringID{_newgrf_textrefstack.PopUnsignedWord()}));
-				break;
-
-			case SCC_NEWGRF_PRINT_WORD_CARGO_NAME: {
-				CargoType cargo = GetCargoTranslation(_newgrf_textrefstack.PopUnsignedWord(), _newgrf_textrefstack.grffile);
-				parameters.SetParam(0, cargo < NUM_CARGO ? 1ULL << cargo : 0);
-				break;
-			}
+		case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
+			StringID stringid = MapGRFStringID(stack.grffile->grfid, GRFStringID{stack.PopUnsignedWord()});
+			*it = stringid;
+			/* We also need to handle the substring's stack usage. */
+			HandleNewGRFStringControlCodes(GetStringPtr(stringid), stack, params);
+			break;
 		}
-	} else {
-		/* Consume additional parameter characters that follow the NewGRF string code. */
-		switch (scc) {
-			default: break;
 
-			case SCC_NEWGRF_PUSH_WORD:
-				Utf8Consume(str);
-				break;
+		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME: {
+			CargoType cargo = GetCargoTranslation(stack.PopUnsignedWord(), stack.grffile);
+			*it = cargo < NUM_CARGO ? 1ULL << cargo : 0;
+			break;
 		}
 	}
+}
 
-	/* Emit OpenTTD's internal string code for the different NewGRF variants. */
+/**
+ * Emit OpenTTD's internal string code for the different NewGRF string codes.
+ * @param scc NewGRF string code.
+ * @param[in,out] str String iterator, moved forward if SCC_NEWGRF_PUSH_WORD is found.
+ * @returns String code to use.
+ */
+char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
+{
 	switch (scc) {
-		default: NOT_REACHED();
+		default:
+			return scc;
+
 		case SCC_NEWGRF_PRINT_DWORD_SIGNED:
 		case SCC_NEWGRF_PRINT_WORD_SIGNED:
 		case SCC_NEWGRF_PRINT_BYTE_SIGNED:
@@ -1007,9 +902,66 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str, StringPara
 			return SCC_STATION_NAME;
 
 		/* These NewGRF string codes modify the NewGRF stack or otherwise do not map to OpenTTD string codes. */
+		case SCC_NEWGRF_PUSH_WORD:
+			Utf8Consume(str);
+			return 0;
+
 		case SCC_NEWGRF_DISCARD_WORD:
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:
-		case SCC_NEWGRF_PUSH_WORD:
 			return 0;
 	}
+}
+
+/**
+ * Handle control codes in a NewGRF string, processing the stack and filling parameters.
+ * @param str String to process.
+ * @param[in,out] stack Stack to use.
+ * @param[out] params Parameters to fill.
+ */
+static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack, std::vector<StringParameter> &params)
+{
+	if (str == nullptr) return;
+
+	for (const char *p = str; *p != '\0'; /* nothing */) {
+		char32_t scc;
+		p += Utf8Decode(&scc, p);
+		RemapNewGRFStringControlCode(scc, &p, stack, params);
+	}
+}
+
+/**
+ * Process the text ref stack for a GRF String and return its parameters.
+ * @param grffile GRFFile of string.
+ * @param stringid StringID of string.
+ * @param num_entries Number of temporary storage registers to import.
+ * @returns Parameters for GRF string.
+ */
+std::vector<StringParameter> GetGRFSringTextStackParameters(const GRFFile *grffile, StringID stringid, uint8_t num_entries)
+{
+	if (stringid == INVALID_STRING_ID) return {};
+
+	const char *str = GetStringPtr(stringid);
+	if (str == nullptr) return {};
+
+	std::vector<StringParameter> params;
+	params.reserve(20);
+
+	TextRefStack stack{grffile, num_entries};
+	HandleNewGRFStringControlCodes(str, stack, params);
+
+	return params;
+}
+
+/**
+ * Format a GRF string using the text ref stack for parameters.
+ * @param grffile GRFFile of string.
+ * @param grfstringid GRFStringID of string.
+ * @param num_entries Number of temporary storage registers to import.
+ * @returns Formatted string.
+ */
+std::string GetGRFStringWithTextStack(const struct GRFFile *grffile, GRFStringID grfstringid, uint8_t num_entries)
+{
+	StringID stringid = GetGRFStringID(grffile->grfid, grfstringid);
+	auto params = GetGRFSringTextStackParameters(grffile, stringid, num_entries);
+	return GetStringWithArgs(stringid, params);
 }
