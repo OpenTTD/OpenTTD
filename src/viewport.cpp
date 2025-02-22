@@ -1311,7 +1311,6 @@ static void ViewportAddLandscape()
 /**
  * Add a string to draw in the current viewport.
  * @param dpi current viewport area
- * @param small_from Zoomlevel from when the small font should be used
  * @param sign sign position and dimension
  * @param flags ViewportStringFlags to control the string's appearance.
  * @param colour colour of the sign background; or INVALID_COLOUR if transparent
@@ -1376,7 +1375,7 @@ static void ViewportAddTownStrings(DrawPixelInfo *dpi, const std::vector<const T
 /**
  * Add sign strings to a viewport.
  * @param dpi Current viewport area.
- * @param towns List of signs to add.
+ * @param signs List of signs to add.
  * @param small Add small versions of strings.
  */
 static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const Sign *> &signs, bool small)
@@ -1400,7 +1399,7 @@ static void ViewportAddSignStrings(DrawPixelInfo *dpi, const std::vector<const S
 /**
  * Add station strings to a viewport.
  * @param dpi Current viewport area.
- * @param towns List of stations to add.
+ * @param stations List of stations to add.
  * @param small Add small versions of strings.
  */
 static void ViewportAddStationStrings(DrawPixelInfo *dpi, const std::vector<const BaseStation *> &stations, bool small)
@@ -1963,6 +1962,7 @@ static void ClampSmoothScroll(uint32_t delta_ms, int64_t delta_hi, int64_t delta
 /**
  * Update the viewport position being displayed.
  * @param w %Window owning the viewport.
+ * @param delta_ms Milliseconds since the last update.
  */
 void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 {

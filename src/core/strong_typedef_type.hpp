@@ -116,11 +116,11 @@ namespace StrongType {
 	 * Templated helper to make a type-safe 'typedef' representing a single POD value.
 	 * A normal 'typedef' is not distinct from its base type and will be treated as
 	 * identical in many contexts. This class provides a distinct type that can still
-	 * be assign from and compared to values of its base type.
+	 * be assigned from and compared to values of its base type.
 	 *
 	 * Example usage:
 	 *
-	 *   using MyType = StrongType::Typedef<int, struct MyTypeTag, StrongType::Explicit, StrongType::Compare, StrongType::Integer>;
+	 *   using MyType = StrongType::Typedef<int, struct MyTypeTag, StrongType::Compare, StrongType::Integer>;
 	 *
 	 * @tparam TBaseType Type of the derived class (i.e. the concrete usage of this class).
 	 * @tparam TTag An unique struct to keep types of the same TBaseType distinct.
