@@ -84,6 +84,7 @@ class ReplaceVehicleWindow : public Window {
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
 	int details_height;           ///< Minimal needed height of the details panels, in text lines (found so far).
+	VehicleType vehicle_type; ///< Type of vehicle in this window.
 	uint8_t sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
@@ -267,6 +268,7 @@ class ReplaceVehicleWindow : public Window {
 public:
 	ReplaceVehicleWindow(WindowDesc &desc, VehicleType vehicletype, GroupID id_g) : Window(desc)
 	{
+		this->vehicle_type = vehicletype;
 		this->sel_railtype = INVALID_RAILTYPE;
 		this->sel_roadtype = INVALID_ROADTYPE;
 		this->replace_engines  = true; // start with locomotives (all other vehicles will not read this bool)
@@ -277,8 +279,6 @@ public:
 		this->sel_engine[0] = EngineID::Invalid();
 		this->sel_engine[1] = EngineID::Invalid();
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
-
-		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + vehicletype));
 
 		this->CreateNestedTree();
 		this->vscroll[0] = this->GetScrollbar(WID_RV_LEFT_SCROLLBAR);
@@ -293,6 +293,11 @@ public:
 		this->descending_sort_order = _engine_sort_last_order[vehicletype];
 		this->owner = _local_company;
 		this->sel_group = id_g;
+	}
+
+	void OnInit() override
+	{
+		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
