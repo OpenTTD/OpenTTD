@@ -99,7 +99,7 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	SQUserPointer instance;
 	sq_getinstanceup(vm, 2, &instance, nullptr);
 	AIInfo *info = (AIInfo *)instance;
-	info->api_version = fmt::format("{}.{}", GB(_openttd_newgrf_version, 28, 4), GB(_openttd_newgrf_version, 24, 4));
+	info->api_version = *std::rbegin(AIInfo::ApiVersions);
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;
