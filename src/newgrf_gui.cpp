@@ -1561,16 +1561,15 @@ public:
 	static const uint MAX_EXTRA_INFO_WIDTH;    ///< Maximal additional width given to the panel.
 	static const uint MIN_EXTRA_FOR_3_COLUMNS; ///< Minimal additional width needed before switching to 3 columns.
 
-	std::unique_ptr<NWidgetBase> avs; ///< Widget with the available grfs list and buttons.
-	std::unique_ptr<NWidgetBase> acs; ///< Widget with the active grfs list and buttons.
-	std::unique_ptr<NWidgetBase> inf; ///< Info panel.
-	bool editable;    ///< Editable status of the parent NewGRF window (if \c false, drop all widgets that make the window editable).
+	std::unique_ptr<NWidgetBase> avs{}; ///< Widget with the available grfs list and buttons.
+	std::unique_ptr<NWidgetBase> acs{}; ///< Widget with the active grfs list and buttons.
+	std::unique_ptr<NWidgetBase> inf{}; ///< Info panel.
+	bool editable = true; ///< Editable status of the parent NewGRF window (if \c false, drop all widgets that make the window editable).
 
 	NWidgetNewGRFDisplay(std::unique_ptr<NWidgetBase> &&avs, std::unique_ptr<NWidgetBase> &&acs, std::unique_ptr<NWidgetBase> &&inf) : NWidgetBase(NWID_CUSTOM)
 		, avs(std::move(avs))
 		, acs(std::move(acs))
 		, inf(std::move(inf))
-		, editable(true) // Temporary setting, 'real' value is set in SetupSmallestSize().
 	{
 	}
 

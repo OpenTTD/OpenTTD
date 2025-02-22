@@ -1908,12 +1908,9 @@ int SmallMapWindow::map_height_limit = -1;
  *       The bar should have a minimal size with a zero-size legends display. Child padding is not supported.
  */
 class NWidgetSmallmapDisplay : public NWidgetContainer {
-	const SmallMapWindow *smallmap_window; ///< Window manager instance.
+	const SmallMapWindow *smallmap_window = nullptr; ///< Window manager instance.
 public:
-	NWidgetSmallmapDisplay() : NWidgetContainer(NWID_VERTICAL)
-	{
-		this->smallmap_window = nullptr;
-	}
+	NWidgetSmallmapDisplay() : NWidgetContainer(NWID_VERTICAL) {}
 
 	void SetupSmallestSize(Window *w) override
 	{

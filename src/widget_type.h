@@ -10,7 +10,6 @@
 #ifndef WIDGET_TYPE_H
 #define WIDGET_TYPE_H
 
-#include "core/alloc_type.hpp"
 #include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
 #include "strings_type.h"
@@ -132,9 +131,10 @@ using WidgetLookup = std::map<WidgetID, class NWidgetBase *>;
  * @invariant After initialization, \f$current\_y = smallest\_y + m * resize\_y, for m \geq 0\f$.
  * @ingroup NestedWidgets
  */
-class NWidgetBase : public ZeroedMemoryAllocator {
+class NWidgetBase {
 public:
-	NWidgetBase(WidgetType tp);
+	NWidgetBase(WidgetType tp) : type(tp) {}
+	virtual ~NWidgetBase() = default;
 
 	void ApplyAspectRatio();
 	virtual void AdjustPaddingForZoom();
@@ -220,29 +220,29 @@ public:
 		return r;
 	}
 
-	WidgetType type;      ///< Type of the widget / nested widget.
-	uint fill_x;          ///< Horizontal fill stepsize (from initial size, \c 0 means not resizable).
-	uint fill_y;          ///< Vertical fill stepsize (from initial size, \c 0 means not resizable).
-	uint resize_x;        ///< Horizontal resize step (\c 0 means not resizable).
-	uint resize_y;        ///< Vertical resize step (\c 0 means not resizable).
+	WidgetType type{}; ///< Type of the widget / nested widget.
+	uint fill_x = 0; ///< Horizontal fill stepsize (from initial size, \c 0 means not resizable).
+	uint fill_y = 0; ///< Vertical fill stepsize (from initial size, \c 0 means not resizable).
+	uint resize_x = 0; ///< Horizontal resize step (\c 0 means not resizable).
+	uint resize_y = 0; ///< Vertical resize step (\c 0 means not resizable).
 	/* Size of the widget in the smallest window possible.
 	 * Computed by #SetupSmallestSize() followed by #AssignSizePosition().
 	 */
-	uint smallest_x;      ///< Smallest horizontal size of the widget in a filled window.
-	uint smallest_y;      ///< Smallest vertical size of the widget in a filled window.
+	uint smallest_x = 0; ///< Smallest horizontal size of the widget in a filled window.
+	uint smallest_y = 0; ///< Smallest vertical size of the widget in a filled window.
 	/* Current widget size (that is, after resizing). */
-	uint current_x;       ///< Current horizontal size (after resizing).
-	uint current_y;       ///< Current vertical size (after resizing).
+	uint current_x = 0; ///< Current horizontal size (after resizing).
+	uint current_y = 0; ///< Current vertical size (after resizing).
 	float aspect_ratio = 0; ///< Desired aspect ratio of widget.
 	AspectFlags aspect_flags = AspectFlag::ResizeX; ///< Which dimensions can be resized.
 
-	int pos_x;            ///< Horizontal position of top-left corner of the widget in the window.
-	int pos_y;            ///< Vertical position of top-left corner of the widget in the window.
+	int pos_x = 0; ///< Horizontal position of top-left corner of the widget in the window.
+	int pos_y = 0; ///< Vertical position of top-left corner of the widget in the window.
 
-	RectPadding padding;    ///< Padding added to the widget. Managed by parent container widget. (parent container may swap left and right for RTL)
-	RectPadding uz_padding; ///< Unscaled padding, for resize calculation.
+	RectPadding padding{}; ///< Padding added to the widget. Managed by parent container widget. (parent container may swap left and right for RTL)
+	RectPadding uz_padding{}; ///< Unscaled padding, for resize calculation.
 
-	NWidgetBase *parent; ///< Parent widget of this widget, automatically filled in when added to container.
+	NWidgetBase *parent = nullptr; ///< Parent widget of this widget, automatically filled in when added to container.
 
 protected:
 	inline void StoreSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height);
@@ -310,16 +310,16 @@ public:
 
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
 
-	uint min_x; ///< Minimal horizontal size of only this widget.
-	uint min_y; ///< Minimal vertical size of only this widget.
+	uint min_x = 0; ///< Minimal horizontal size of only this widget.
+	uint min_y = 0; ///< Minimal vertical size of only this widget.
 
-	bool absolute; ///< Set if minimum size is fixed and should not be resized.
-	uint uz_min_x; ///< Unscaled Minimal horizontal size of only this widget.
-	uint uz_min_y; ///< Unscaled Minimal vertical size of only this widget.
+	bool absolute = false; ///< Set if minimum size is fixed and should not be resized.
+	uint uz_min_x = 0; ///< Unscaled Minimal horizontal size of only this widget.
+	uint uz_min_y = 0; ///< Unscaled Minimal vertical size of only this widget.
 
-	uint8_t uz_text_lines;   ///< 'Unscaled' text lines, stored for resize calculation.
-	uint8_t uz_text_spacing; ///< 'Unscaled' text padding, stored for resize calculation.
-	FontSize uz_text_size; ///< 'Unscaled' font size, stored for resize calculation.
+	uint8_t uz_text_lines = 0; ///< 'Unscaled' text lines, stored for resize calculation.
+	uint8_t uz_text_spacing = 0; ///< 'Unscaled' text padding, stored for resize calculation.
+	FontSize uz_text_size{}; ///< 'Unscaled' font size, stored for resize calculation.
 };
 
 /** Nested widget flags that affect display and interaction with 'real' widgets. */
@@ -392,14 +392,14 @@ public:
 	NWidgetDisplayFlags disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
 protected:
-	const WidgetID index;      ///< Index of the nested widget (\c -1 means 'not used').
-	WidgetData widget_data; ///< Data of the widget. @see Widget::data
-	StringID tool_tip; ///< Tooltip of the widget. @see Widget::tool_tips
-	WidgetID scrollbar_index;  ///< Index of an attached scrollbar.
-	TextColour highlight_colour; ///< Colour of highlight.
-	TextColour text_colour;    ///< Colour of text within widget.
-	FontSize text_size;        ///< Size of text within widget.
-	StringAlignment align;     ///< Alignment of text/image within widget.
+	const WidgetID index = -1; ///< Index of the nested widget (\c -1 means 'not used').
+	WidgetData widget_data{}; ///< Data of the widget. @see Widget::data
+	StringID tool_tip{}; ///< Tooltip of the widget. @see Widget::tool_tips
+	WidgetID scrollbar_index = -1; ///< Index of an attached scrollbar.
+	TextColour highlight_colour{}; ///< Colour of highlight.
+	TextColour text_colour{}; ///< Colour of text within widget.
+	FontSize text_size = FS_NORMAL; ///< Size of text within widget.
+	StringAlignment align = SA_CENTER; ///< Alignment of text/image within widget.
 
 	/* This function constructs the widgets, so it should be able to write the variables. */
 	friend void ApplyNWidgetPartAttribute(const struct NWidgetPart &nwid, NWidgetBase *dest);
@@ -479,7 +479,7 @@ public:
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 
 protected:
-	std::vector<std::unique_ptr<NWidgetBase>> children; ///< Child widgets in container.
+	std::vector<std::unique_ptr<NWidgetBase>> children{}; ///< Child widgets in container.
 };
 
 /** Display planes with zero size for #NWidgetStacked. */
@@ -503,7 +503,7 @@ enum StackedZeroSizePlanes : int {
  */
 class NWidgetStacked : public NWidgetContainer {
 public:
-	NWidgetStacked(WidgetID index);
+	NWidgetStacked(WidgetID index) : NWidgetContainer(NWID_SELECTION), index(index) {}
 
 	void SetupSmallestSize(Window *w) override;
 	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
@@ -514,10 +514,10 @@ public:
 
 	bool SetDisplayedPlane(int plane);
 
-	int shown_plane; ///< Plane being displayed (for #NWID_SELECTION only).
-	const WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
+	int shown_plane = 0; ///< Plane being displayed (for #NWID_SELECTION only).
+	const WidgetID index = -1; ///< If non-negative, index in the #Window::widget_lookup.
 private:
-	WidgetLookup *widget_lookup; ///< Window's widget lookup, updated in SetDisplayedPlane().
+	WidgetLookup *widget_lookup = nullptr; ///< Window's widget lookup, updated in SetDisplayedPlane().
 };
 
 /** Nested widget container flags, */
@@ -537,19 +537,19 @@ public:
 	void SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_rato_post);
 
 protected:
-	NWidContainerFlags flags; ///< Flags of the container.
-	uint8_t pip_pre;            ///< Amount of space before first widget.
-	uint8_t pip_inter;          ///< Amount of space between widgets.
-	uint8_t pip_post;           ///< Amount of space after last widget.
-	uint8_t pip_ratio_pre;      ///< Ratio of remaining space before first widget.
-	uint8_t pip_ratio_inter;    ///< Ratio of remaining space between widgets.
-	uint8_t pip_ratio_post;     ///< Ratio of remaining space after last widget.
+	NWidContainerFlags flags{}; ///< Flags of the container.
+	uint8_t pip_pre = 0; ///< Amount of space before first widget.
+	uint8_t pip_inter = 0; ///< Amount of space between widgets.
+	uint8_t pip_post = 0; ///< Amount of space after last widget.
+	uint8_t pip_ratio_pre = 0; ///< Ratio of remaining space before first widget.
+	uint8_t pip_ratio_inter = 0; ///< Ratio of remaining space between widgets.
+	uint8_t pip_ratio_post = 0; ///< Ratio of remaining space after last widget.
 
-	uint8_t uz_pip_pre;         ///< Unscaled space before first widget.
-	uint8_t uz_pip_inter;       ///< Unscaled space between widgets.
-	uint8_t uz_pip_post;        ///< Unscaled space after last widget.
+	uint8_t uz_pip_pre = 0; ///< Unscaled space before first widget.
+	uint8_t uz_pip_inter = 0; ///< Unscaled space between widgets.
+	uint8_t uz_pip_post = 0; ///< Unscaled space after last widget.
 
-	uint8_t gaps; ///< Number of gaps between widgets.
+	uint8_t gaps = 0; ///< Number of gaps between widgets.
 };
 
 /**
@@ -611,17 +611,17 @@ public:
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	void Draw(const Window *w) override;
 protected:
-	const WidgetID index; ///< If non-negative, index in the #Window::widget_lookup.
-	Colours colour; ///< Colour of this widget.
-	int clicked;    ///< The currently clicked element.
-	int count;      ///< Amount of valid elements.
-	int current_element; ///< The element currently being processed.
-	Scrollbar *sb;  ///< The scrollbar we're associated with.
+	const WidgetID index = -1; ///< If non-negative, index in the #Window::widget_lookup.
+	Colours colour{}; ///< Colour of this widget.
+	int clicked = -1; ///< The currently clicked element.
+	int count = -1; ///< Amount of valid elements.
+	int current_element = 0; ///< The element currently being processed.
+	Scrollbar *sb = nullptr;  ///< The scrollbar we're associated with.
 private:
-	int widget_w;   ///< The width of the child widget including inter spacing.
-	int widget_h;   ///< The height of the child widget including inter spacing.
-	int widgets_x;  ///< The number of visible widgets in horizontal direction.
-	int widgets_y;  ///< The number of visible widgets in vertical direction.
+	int widget_w = 0; ///< The width of the child widget including inter spacing.
+	int widget_h = 0; ///< The height of the child widget including inter spacing.
+	int widgets_x = 0; ///< The number of visible widgets in horizontal direction.
+	int widgets_y = 0; ///< The number of visible widgets in vertical direction.
 
 	void GetScrollOffsets(int &start_x, int &start_y, int &base_offs_x, int &base_offs_y);
 };
@@ -666,7 +666,7 @@ public:
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 
 private:
-	std::unique_ptr<NWidgetPIPContainer> child; ///< Child widget.
+	std::unique_ptr<NWidgetPIPContainer> child{}; ///< Child widget.
 };
 
 /**
@@ -698,11 +698,11 @@ public:
 	static constexpr size_type max_size_type = std::numeric_limits<size_type>::max();
 	static constexpr size_type npos = max_size_type;
 private:
-	const bool is_vertical; ///< Scrollbar has vertical orientation.
-	size_type count; ///< Number of elements in the list.
-	size_type cap; ///< Number of visible elements of the scroll bar.
-	size_type pos; ///< Index of first visible item of the list.
-	size_type stepsize; ///< Distance to scroll, when pressing the buttons or using the wheel.
+	const bool is_vertical = false; ///< Scrollbar has vertical orientation.
+	size_type count = 0; ///< Number of elements in the list.
+	size_type cap = 0; ///< Number of visible elements of the scroll bar.
+	size_type pos = 0; ///< Index of first visible item of the list.
+	size_type stepsize = 1; ///< Distance to scroll, when pressing the buttons or using the wheel.
 
 public:
 	/** Stepping sizes when scrolling */
@@ -712,9 +712,7 @@ public:
 		SS_BIG,             ///< Step in #cap units.
 	};
 
-	Scrollbar(bool is_vertical) : is_vertical(is_vertical), stepsize(1)
-	{
-	}
+	Scrollbar(bool is_vertical) : is_vertical(is_vertical) {}
 
 	/**
 	 * Gets the number of elements in the list

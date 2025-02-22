@@ -343,7 +343,7 @@ public:
 
 private:
 	int current_index = -1;
-	std::vector<SocialIntegrationPlugin *> plugins;
+	std::vector<SocialIntegrationPlugin *> plugins{};
 };
 
 /** Construct nested container widget for managing the list of social plugins. */

@@ -10,6 +10,7 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
+#include "core/alloc_type.hpp"
 #include "vehiclelist.h"
 #include "vehicle_type.h"
 #include "viewport_type.h"
