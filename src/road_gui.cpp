@@ -343,12 +343,11 @@ static bool RoadToolbar_CtrlChanged(Window *w)
 
 /** Road toolbar window handler. */
 struct BuildRoadToolbarWindow : Window {
-	RoadType roadtype;          ///< Road type to build.
-	int last_started_action;    ///< Last started user action.
+	RoadType roadtype = INVALID_ROADTYPE; ///< Road type to build.
+	int last_started_action = INVALID_WID_ROT; ///< Last started user action.
 
-	BuildRoadToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	BuildRoadToolbarWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), roadtype(_cur_roadtype)
 	{
-		this->roadtype = _cur_roadtype;
 		this->CreateNestedTree();
 		this->FinishInitNested(window_number);
 		this->SetWidgetDisabledState(WID_ROT_REMOVE, true);
@@ -358,7 +357,6 @@ struct BuildRoadToolbarWindow : Window {
 		}
 
 		this->OnInvalidateData();
-		this->last_started_action = INVALID_WID_ROT;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -1293,7 +1291,7 @@ static PickerCallbacks &GetRoadStopPickerCallbacks(RoadStopType rs)
 
 struct BuildRoadStationWindow : public PickerWindow {
 private:
-	uint coverage_height; ///< Height of the coverage texts.
+	uint coverage_height = 0; ///< Height of the coverage texts.
 
 	void CheckOrientationValid()
 	{

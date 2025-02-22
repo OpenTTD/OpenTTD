@@ -139,8 +139,8 @@ enum SignListHotkeys : int32_t {
 
 struct SignListWindow : Window, SignList {
 	QueryString filter_editbox; ///< Filter editbox;
-	int text_offset; ///< Offset of the sign text relative to the left edge of the WID_SIL_LIST widget.
-	Scrollbar *vscroll;
+	int text_offset = 0; ///< Offset of the sign text relative to the left edge of the WID_SIL_LIST widget.
+	Scrollbar *vscroll = nullptr;
 
 	SignListWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), filter_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
@@ -409,7 +409,7 @@ static bool RenameSign(SignID index, const char *text)
 
 struct SignWindow : Window, SignList {
 	QueryString name_editbox;
-	SignID cur_sign;
+	SignID cur_sign{};
 
 	SignWindow(WindowDesc &desc, const Sign *si) : Window(desc), name_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
