@@ -8,6 +8,7 @@
 /** @file gfx.cpp Handling of drawing text and other gfx related stuff. */
 
 #include "stdafx.h"
+#include "core/alloc_func.hpp"
 #include "gfx_layout.h"
 #include "progress.h"
 #include "zoom_func.h"

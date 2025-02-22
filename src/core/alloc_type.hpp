@@ -10,8 +10,6 @@
 #ifndef ALLOC_TYPE_HPP
 #define ALLOC_TYPE_HPP
 
-#include "alloc_func.hpp"
-
 /**
  * A reusable buffer that can be used for places that temporary allocate
  * a bit of memory and do that very often, or for places where static
@@ -61,43 +59,6 @@ public:
 	{
 		return this->buffer.data();
 	}
-};
-
-/**
- * Base class that provides memory initialization on dynamically created objects.
- * All allocated memory will be zeroed.
- */
-class ZeroedMemoryAllocator
-{
-public:
-	ZeroedMemoryAllocator() {}
-	virtual ~ZeroedMemoryAllocator() = default;
-
-	/**
-	 * Memory allocator for a single class instance.
-	 * @param size the amount of bytes to allocate.
-	 * @return the given amounts of bytes zeroed.
-	 */
-	inline void *operator new(size_t size) { return CallocT<uint8_t>(size); }
-
-	/**
-	 * Memory allocator for an array of class instances.
-	 * @param size the amount of bytes to allocate.
-	 * @return the given amounts of bytes zeroed.
-	 */
-	inline void *operator new[](size_t size) { return CallocT<uint8_t>(size); }
-
-	/**
-	 * Memory release for a single class instance.
-	 * @param ptr  the memory to free.
-	 */
-	inline void operator delete(void *ptr) { free(ptr); }
-
-	/**
-	 * Memory release for an array of class instances.
-	 * @param ptr  the memory to free.
-	 */
-	inline void operator delete[](void *ptr) { free(ptr); }
 };
 
 #endif /* ALLOC_TYPE_HPP */
