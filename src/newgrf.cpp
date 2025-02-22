@@ -556,7 +556,7 @@ static StringID TTDPStringIDToOTTDStringIDMapping(GRFStringID str)
  * Used when setting an object's property to map to the GRF's strings
  * while taking in consideration the "drift" between TTDPatch string system and OpenTTD's one
  * @param grfid Id of the grf file.
- * @param str StringID that we want to have the equivalent in OoenTTD.
+ * @param str GRF-local GRFStringID that we want to have the equivalent in OpenTTD.
  * @return The properly adjusted StringID.
  */
 StringID MapGRFStringID(uint32_t grfid, GRFStringID str)
@@ -4632,6 +4632,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
  * @param last Local ID of the last roadtype.
  * @param prop The property to change.
  * @param buf The property value.
+ * @param rtt Road/tram type.
  * @return ChangeInfoResult.
  */
 static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, ByteReader &buf, RoadTramType rtt)

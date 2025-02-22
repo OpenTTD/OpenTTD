@@ -172,7 +172,7 @@ public:
 /**
  * Drop down indent component.
  * @tparam TBase Base component.
- * @tparam TEnd Position checkmark at end if true, or start if false.
+ * @tparam TEnd Position indent at end if true, or start if false.
  */
 template <class TBase, bool TEnd = false>
 class DropDownIndent : public TBase {

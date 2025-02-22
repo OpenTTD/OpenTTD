@@ -959,7 +959,9 @@ inline uint ComputeMaxSize(uint base, uint max_space, uint step)
  *   Next, specify its properties with one or more of
  *   - #SetMinimalSize Define the minimal size of the widget.
  *   - #SetFill Define how the widget may grow to make it nicely.
- *   - #SetDataTip Define the data and the tooltip of the widget.
+ *   - #SetStringTip Define the string and the tooltip of the widget.
+ *   - #SetSpriteTip Define the sprite ID and the tooltip of the widget.
+ *   - #SetToolTip Define the tooltip of the widget.
  *   - #SetResize Define how the widget may resize.
  *   - #SetPadding Create additional space around the widget.
  *
