@@ -52,12 +52,12 @@ static ScriptConfig *GetConfig(CompanyID slot)
  * Window that let you choose an available Script.
  */
 struct ScriptListWindow : public Window {
-	const ScriptInfoList *info_list;    ///< The list of Scripts.
-	int selected;                       ///< The currently selected Script.
-	CompanyID slot;                     ///< The company we're selecting a new Script for.
-	int line_height;                    ///< Height of a row in the matrix widget.
-	Scrollbar *vscroll;                 ///< Cache of the vertical scrollbar.
-	bool show_all;                      ///< Whether to show all available versions.
+	const ScriptInfoList *info_list = nullptr; ///< The list of Scripts.
+	int selected = -1; ///< The currently selected Script.
+	CompanyID slot{}; ///< The company we're selecting a new Script for.
+	int line_height = 0; ///< Height of a row in the matrix widget.
+	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
+	bool show_all = false; ///< Whether to show all available versions.
 
 	/**
 	 * Constructor for the window.
@@ -81,7 +81,6 @@ struct ScriptListWindow : public Window {
 		this->vscroll->SetCount(this->info_list->size() + 1);
 
 		/* Try if we can find the currently selected AI */
-		this->selected = -1;
 		if (GetConfig(slot)->HasScript()) {
 			ScriptInfo *info = GetConfig(slot)->GetInfo();
 			int i = 0;
@@ -285,28 +284,24 @@ void ShowScriptListWindow(CompanyID slot, bool show_all)
  * Window for settings the parameters of an AI.
  */
 struct ScriptSettingsWindow : public Window {
-	CompanyID slot;                       ///< The currently show company's setting.
-	ScriptConfig *script_config;          ///< The configuration we're modifying.
-	int clicked_button;                   ///< The button we clicked.
-	bool clicked_increase;                ///< Whether we clicked the increase or decrease button.
-	bool clicked_dropdown;                ///< Whether the dropdown is open.
-	bool closing_dropdown;                ///< True, if the dropdown list is currently closing.
-	int clicked_row;                      ///< The clicked row of settings.
-	int line_height;                      ///< Height of a row in the matrix widget.
-	Scrollbar *vscroll;                   ///< Cache of the vertical scrollbar.
+	CompanyID slot{}; ///< The currently show company's setting.
+	ScriptConfig *script_config = nullptr; ///< The configuration we're modifying.
+	int clicked_button = -1; ///< The button we clicked.
+	bool clicked_increase = false; ///< Whether we clicked the increase or decrease button.
+	bool clicked_dropdown = false; ///< Whether the dropdown is open.
+	bool closing_dropdown = false; ///< True, if the dropdown list is currently closing.
+	int clicked_row = 0; ///< The clicked row of settings.
+	int line_height = 0; ///< Height of a row in the matrix widget.
+	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
 	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
-	VisibleSettingsList visible_settings; ///< List of visible AI settings
+	VisibleSettingsList visible_settings{}; ///< List of visible AI settings
 
 	/**
 	 * Constructor for the window.
 	 * @param desc The description of the window.
 	 * @param slot The company we're changing the settings for.
 	 */
-	ScriptSettingsWindow(WindowDesc &desc, CompanyID slot) : Window(desc),
-		slot(slot),
-		clicked_button(-1),
-		clicked_dropdown(false),
-		closing_dropdown(false)
+	ScriptSettingsWindow(WindowDesc &desc, CompanyID slot) : Window(desc), slot(slot)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCRS_SCROLLBAR);
@@ -625,7 +620,7 @@ void ShowScriptSettingsWindow(CompanyID slot)
 
 /** Window for displaying the textfile of a AI. */
 struct ScriptTextfileWindow : public TextfileWindow {
-	CompanyID slot; ///< View the textfile of this CompanyID slot.
+	CompanyID slot{}; ///< View the textfile of this CompanyID slot.
 
 	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
 	{
@@ -705,15 +700,15 @@ struct ScriptDebugWindow : public Window {
 		false,
 	};
 
-	int last_vscroll_pos;                                  ///< Last position of the scrolling.
-	bool autoscroll;                                       ///< Whether automatically scrolling should be enabled or not.
-	bool show_break_box;                                   ///< Whether the break/debug box is visible.
-	QueryString break_editbox;                             ///< Break editbox
-	StringFilter break_string_filter;                      ///< Log filter for break.
-	int highlight_row;                                     ///< The output row that matches the given string, or -1
-	Scrollbar *vscroll;                                    ///< Cache of the vertical scrollbar.
-	Scrollbar *hscroll;                                    ///< Cache of the horizontal scrollbar.
-	FilterState filter;
+	int last_vscroll_pos = 0; ///< Last position of the scrolling.
+	bool autoscroll = true; ///< Whether automatically scrolling should be enabled or not.
+	bool show_break_box = false; ///< Whether the break/debug box is visible.
+	QueryString break_editbox; ///< Break editbox
+	StringFilter break_string_filter{}; ///< Log filter for break.
+	int highlight_row = -1; ///< The output row that matches the given string, or -1
+	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
+	Scrollbar *hscroll = nullptr; ///< Cache of the horizontal scrollbar.
+	FilterState filter{};
 
 	ScriptLogTypes::LogData &GetLogData() const
 	{
@@ -784,10 +779,6 @@ struct ScriptDebugWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_SCRD_VSCROLLBAR);
 		this->hscroll = this->GetScrollbar(WID_SCRD_HSCROLLBAR);
 		this->FinishInitNested(number);
-
-		this->last_vscroll_pos = 0;
-		this->autoscroll = true;
-		this->highlight_row = -1;
 
 		this->querystrings[WID_SCRD_BREAK_STR_EDIT_BOX] = &this->break_editbox;
 

@@ -54,8 +54,8 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 }
 
 struct StatusBarWindow : Window {
-	bool saving;
-	int ticker_scroll;
+	bool saving = false;
+	int ticker_scroll = TICKER_STOP;
 
 	static const int TICKER_STOP    = 1640; ///< scrolling is finished when counter reaches this value
 	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
@@ -63,8 +63,6 @@ struct StatusBarWindow : Window {
 
 	StatusBarWindow(WindowDesc &desc) : Window(desc)
 	{
-		this->ticker_scroll = TICKER_STOP;
-
 		this->InitNested();
 		this->flags.Reset(WindowFlag::WhiteBorder);
 		PositionStatusbar(this);
