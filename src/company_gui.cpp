@@ -336,12 +336,11 @@ struct CompanyFinancesWindow : Window {
 	static constexpr int NUM_PERIODS = WID_CF_EXPS_PRICE3 - WID_CF_EXPS_PRICE1 + 1;
 
 	static Money max_money; ///< The maximum amount of money a company has had this 'run'
-	bool small;             ///< Window is toggled to 'small'.
+	bool small = false; ///< Window is toggled to 'small'.
 	uint8_t first_visible = NUM_PERIODS - 1; ///< First visible expenses column. The last column (current) is always visible.
 
 	CompanyFinancesWindow(WindowDesc &desc, CompanyID company) : Window(desc)
 	{
-		this->small = false;
 		this->CreateNestedTree();
 		this->SetupWidgets();
 		this->FinishInitNested(company);
@@ -1325,15 +1324,15 @@ static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
 /** Management class for customizing the face of the company manager. */
 class SelectCompanyManagerFaceWindow : public Window
 {
-	CompanyManagerFace face; ///< company manager face bits
-	bool advanced; ///< advanced company manager face selection window
+	CompanyManagerFace face{}; ///< company manager face bits
+	bool advanced = false; ///< advanced company manager face selection window
 
-	GenderEthnicity ge; ///< Gender and ethnicity.
-	bool is_female;     ///< Female face.
-	bool is_moust_male; ///< Male face with a moustache.
+	GenderEthnicity ge{}; ///< Gender and ethnicity.
+	bool is_female = false;     ///< Female face.
+	bool is_moust_male = false; ///< Male face with a moustache.
 
-	Dimension yesno_dim;  ///< Dimension of a yes/no button of a part in the advanced face window.
-	Dimension number_dim; ///< Dimension of a number widget of a part in the advanced face window.
+	Dimension yesno_dim{};  ///< Dimension of a yes/no button of a part in the advanced face window.
+	Dimension number_dim{}; ///< Dimension of a number widget of a part in the advanced face window.
 
 	/**
 	 * Set parameters for value of face control buttons.
@@ -1373,7 +1372,6 @@ class SelectCompanyManagerFaceWindow : public Window
 public:
 	SelectCompanyManagerFaceWindow(WindowDesc &desc, Window *parent) : Window(desc)
 	{
-		this->advanced = false;
 		this->CreateNestedTree();
 		this->SelectDisplayPlanes(this->advanced);
 		this->FinishInitNested(parent->window_number);
@@ -1786,10 +1784,10 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
  */
 struct CompanyInfrastructureWindow : Window
 {
-	RailTypes railtypes; ///< Valid railtypes.
-	RoadTypes roadtypes; ///< Valid roadtypes.
+	RailTypes railtypes{}; ///< Valid railtypes.
+	RoadTypes roadtypes{}; ///< Valid roadtypes.
 
-	uint total_width; ///< String width of the total cost line.
+	uint total_width = 0; ///< String width of the total cost line.
 
 	CompanyInfrastructureWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
@@ -2204,7 +2202,7 @@ static const StringID _company_view_vehicle_count_strings[] = {
  */
 struct CompanyWindow : Window
 {
-	CompanyWidgets query_widget;
+	CompanyWidgets query_widget{};
 
 	/** Display planes in the company window. */
 	enum CompanyWindowPlanes : uint8_t {
@@ -2688,8 +2686,8 @@ struct BuyCompanyWindow : Window {
 	}};
 
 private:
-	bool hostile_takeover; ///< Whether the window is showing a hostile takeover.
-	Money company_value; ///< The value of the company for which the user can buy it.
+	bool hostile_takeover = false; ///< Whether the window is showing a hostile takeover.
+	Money company_value{}; ///< The value of the company for which the user can buy it.
 };
 
 static constexpr NWidgetPart _nested_buy_company_widgets[] = {

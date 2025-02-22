@@ -194,7 +194,7 @@ static WindowDesc _bootstrap_query_desc(
 
 /** The window for the query. It can't use the generic query window as that uses sprites that don't exist yet. */
 class BootstrapAskForDownloadWindow : public Window, ContentCallback {
-	Dimension button_size; ///< The dimension of the button
+	Dimension button_size{}; ///< The dimension of the button
 
 public:
 	/** Start listening to the content client events. */
