@@ -1367,7 +1367,7 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetToolbarContainer : public NWidgetContainer {
 protected:
-	uint spacers;          ///< Number of spacer widgets in this toolbar
+	uint spacers = 0; ///< Number of spacer widgets in this toolbar
 
 public:
 	NWidgetToolbarContainer() : NWidgetContainer(NWID_HORIZONTAL)
@@ -1832,20 +1832,21 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 
 /** Container for the scenario editor's toolbar */
 class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
-	uint panel_widths[2]; ///< The width of the two panels (the text panel and date panel)
+	std::array<uint, 2> panel_widths{}; ///< The width of the two panels (the text panel and date panel)
 
 	void SetupSmallestSize(Window *w) override
 	{
 		this->NWidgetToolbarContainer::SetupSmallestSize(w);
 
 		/* Find the size of panel_widths */
-		uint i = 0;
+		auto it = this->panel_widths.begin();
 		for (const auto &child_wid : this->children) {
 			if (child_wid->type == NWID_SPACER || this->IsButton(child_wid->type)) continue;
 
-			assert(i < lengthof(this->panel_widths));
-			this->panel_widths[i++] = child_wid->current_x;
+			assert(it != this->panel_widths.end());
+			*it = child_wid->current_x;
 			_toolbar_width += child_wid->current_x;
+			++it;
 		}
 	}
 
@@ -1919,7 +1920,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		};
 
 		/* If we can place all buttons *and* the panels, show them. */
-		uint min_full_width = (lengthof(arrange_all) - lengthof(this->panel_widths)) * this->smallest_x + this->panel_widths[0] + this->panel_widths[1];
+		size_t min_full_width = (lengthof(arrange_all) - std::size(this->panel_widths)) * this->smallest_x + this->panel_widths[0] + this->panel_widths[1];
 		if (width >= min_full_width) {
 			width -= this->panel_widths[0] + this->panel_widths[1];
 			arrangable_count = lengthof(arrange_all);
@@ -1929,7 +1930,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		}
 
 		/* Otherwise don't show the date panel and if we can't fit half the buttons and the panels anymore, split the toolbar in two */
-		uint min_small_width = (lengthof(arrange_switch) - lengthof(this->panel_widths)) * this->smallest_x / 2 + this->panel_widths[1];
+		size_t min_small_width = (lengthof(arrange_switch) - std::size(this->panel_widths)) * this->smallest_x / 2 + this->panel_widths[1];
 		if (width > min_small_width) {
 			width -= this->panel_widths[1];
 			arrangable_count = lengthof(arrange_nopanel);
