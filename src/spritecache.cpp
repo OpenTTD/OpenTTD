@@ -8,6 +8,7 @@
 /** @file spritecache.cpp Caching of sprites. */
 
 #include "stdafx.h"
+#include "core/alloc_func.hpp"
 #include "random_access_file_type.h"
 #include "spriteloader/grf.hpp"
 #include "spriteloader/makeindexed.h"
