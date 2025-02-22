@@ -73,17 +73,17 @@ struct BaseVehicleListWindow : public Window {
 		GB_END,
 	};
 
-	GroupBy grouping;                           ///< How we want to group the list.
-	VehicleList vehicles;                       ///< List of vehicles.  This is the buffer for `vehgroups` to point into; if this is structurally modified, `vehgroups` must be rebuilt.
-	GUIVehicleGroupList vehgroups;              ///< List of (groups of) vehicles.  This stores iterators of `vehicles`, and should be rebuilt if `vehicles` is structurally changed.
-	Listing *sorting;                           ///< Pointer to the vehicle type related sorting.
-	uint8_t unitnumber_digits;                     ///< The number of digits of the highest unit number.
-	Scrollbar *vscroll;
-	VehicleListIdentifier vli;                  ///< Identifier of the vehicle list we want to currently show.
-	VehicleID vehicle_sel;                      ///< Selected vehicle
-	CargoType cargo_filter_criteria;              ///< Selected cargo filter index
-	uint order_arrow_width;                     ///< Width of the arrow in the small order list.
-	CargoTypes used_cargoes;
+	GroupBy grouping{}; ///< How we want to group the list.
+	VehicleList vehicles{}; ///< List of vehicles.  This is the buffer for `vehgroups` to point into; if this is structurally modified, `vehgroups` must be rebuilt.
+	GUIVehicleGroupList vehgroups{}; ///< List of (groups of) vehicles.  This stores iterators of `vehicles`, and should be rebuilt if `vehicles` is structurally changed.
+	Listing *sorting = nullptr; ///< Pointer to the vehicle type related sorting.
+	uint8_t unitnumber_digits = 0; ///< The number of digits of the highest unit number.
+	Scrollbar *vscroll = nullptr;
+	VehicleListIdentifier vli{}; ///< Identifier of the vehicle list we want to currently show.
+	VehicleID vehicle_sel{}; ///< Selected vehicle
+	CargoType cargo_filter_criteria{}; ///< Selected cargo filter index
+	uint order_arrow_width = 0; ///< Width of the arrow in the small order list.
+	CargoTypes used_cargoes{};
 
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
 	typedef GUIVehicleList::SortFunction VehicleIndividualSortFunction;

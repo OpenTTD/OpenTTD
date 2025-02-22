@@ -189,19 +189,17 @@ static void ChangeTimetableStartCallback(const Window *w, TimerGameEconomy::Date
 
 
 struct TimetableWindow : Window {
-	int sel_index;
-	VehicleTimetableWidgets query_widget; ///< Which button was clicked to open the query text input?
-	const Vehicle *vehicle;    ///< Vehicle monitored by the window.
-	bool show_expected;        ///< Whether we show expected arrival or scheduled.
-	Scrollbar *vscroll;        ///< The scrollbar.
-	bool set_start_date_all;   ///< Set start date using minutes text entry for all timetable entries (ctrl-click) action.
-	bool change_timetable_all; ///< Set wait time or speed for all timetable entries (ctrl-click) action.
+	int sel_index = -1;
+	VehicleTimetableWidgets query_widget{}; ///< Which button was clicked to open the query text input?
+	const Vehicle *vehicle = nullptr; ///< Vehicle monitored by the window.
+	bool show_expected = true; ///< Whether we show expected arrival or scheduled.
+	Scrollbar *vscroll = nullptr; ///< The scrollbar.
+	bool set_start_date_all = false; ///< Set start date using minutes text entry for all timetable entries (ctrl-click) action.
+	bool change_timetable_all = false; ///< Set wait time or speed for all timetable entries (ctrl-click) action.
 
 	TimetableWindow(WindowDesc &desc, WindowNumber window_number) :
 			Window(desc),
-			sel_index(-1),
-			vehicle(Vehicle::Get(window_number)),
-			show_expected(true)
+			vehicle(Vehicle::Get(window_number))
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_VT_SCROLLBAR);
