@@ -473,6 +473,13 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRF
 
 	if (cb_res < 0x400) {
 		res = CommandCost(GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + cb_res));
+
+		/* If this error isn't for the local player then it won't be seen, so don't bother encoding anything. */
+		if (!IsLocalCompany()) return res;
+
+		StringID stringid = GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + cb_res);
+		auto params = GetGRFSringTextStackParameters(grffile, stringid, 4);
+		res.SetEncodedMessage(GetEncodedStringWithArgs(stringid, params));
 	} else {
 		switch (cb_res) {
 			case 0x400: return res; // No error.
@@ -489,14 +496,6 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRF
 			case 0x408: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER); break;
 		}
 	}
-
-	/* If this error isn't for the local player then it won't be seen, so don't bother encoding anything. */
-	if (!IsLocalCompany()) return res;
-
-	/* Copy some parameters from the registers to the error message text ref. stack */
-	std::array<StringParameter, 20> params{};
-	res.UseTextRefStack(grffile, 4);
-	res.SetEncodedMessage(GetEncodedStringWithArgs(res.GetErrorMessage(), params));
 
 	return res;
 }

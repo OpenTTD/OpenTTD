@@ -245,11 +245,9 @@ public:
 						if (callback_res > 0x400) {
 							ErrorUnknownCallbackResult(spec->grf_prop.grfid, CBID_OBJECT_FUND_MORE_TEXT, callback_res);
 						} else {
-							StringID message = GetGRFStringID(spec->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
-							if (message != STR_NULL && message != STR_UNDEFINED) {
-								StartTextRefStackUsage(spec->grf_prop.grffile, 6);
-								tr.top = DrawStringMultiLine(tr, message, TC_ORANGE);
-								StopTextRefStackUsage();
+							std::string str = GetGRFStringWithTextStack(spec->grf_prop.grffile, GRFSTR_MISC_GRF_TEXT + callback_res, 6);
+							if (!str.empty()) {
+								tr.top = DrawStringMultiLine(tr, str, TC_ORANGE);
 							}
 						}
 					}
