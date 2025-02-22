@@ -100,13 +100,13 @@ struct IntroGameViewportCommand {
 
 struct SelectGameWindow : public Window {
 	/** Vector of viewport commands parsed. */
-	std::vector<IntroGameViewportCommand> intro_viewport_commands;
+	std::vector<IntroGameViewportCommand> intro_viewport_commands{};
 	/** Index of currently active viewport command. */
-	size_t cur_viewport_command_index;
+	size_t cur_viewport_command_index = SIZE_MAX;
 	/** Time spent (milliseconds) on current viewport command. */
-	uint cur_viewport_command_time;
-	uint mouse_idle_time;
-	Point mouse_idle_pos;
+	uint cur_viewport_command_time = 0;
+	uint mouse_idle_time = 0;
+	Point mouse_idle_pos{};
 
 	/**
 	 * Find and parse all viewport command signs.
@@ -176,18 +176,13 @@ struct SelectGameWindow : public Window {
 		}
 	}
 
-	SelectGameWindow(WindowDesc &desc) : Window(desc)
+	SelectGameWindow(WindowDesc &desc) : Window(desc), mouse_idle_pos(_cursor.pos)
 	{
 		this->CreateNestedTree();
 		this->FinishInitNested(0);
 		this->OnInvalidateData();
 
 		this->ReadIntroGameViewportCommands();
-
-		this->cur_viewport_command_index = SIZE_MAX;
-		this->cur_viewport_command_time = 0;
-		this->mouse_idle_time = 0;
-		this->mouse_idle_pos = _cursor.pos;
 	}
 
 	void OnRealtimeTick(uint delta_ms) override
