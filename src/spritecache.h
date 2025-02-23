@@ -31,12 +31,6 @@ enum SpriteCacheCtrlFlags : uint8_t {
 
 extern uint _sprite_cache_size;
 
-/** SpriteAllocate that uses malloc to allocate memory. */
-class SimpleSpriteAllocator : public SpriteAllocator {
-protected:
-	void *AllocatePtr(size_t size) override;
-};
-
 /** SpriteAllocator that allocates memory via a unique_ptr array. */
 class UniquePtrSpriteAllocator : public SpriteAllocator {
 public:
