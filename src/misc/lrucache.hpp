@@ -21,10 +21,10 @@
 template <class Tkey, class Tdata>
 class LRUCache {
 private:
-	typedef std::pair<Tkey, Tdata *> Tpair;
+	typedef std::pair<Tkey, std::unique_ptr<Tdata>> Tpair;
 	typedef typename std::list<Tpair>::iterator Titer;
 
-	std::list<Tpair> data;                         ///< Ordered list of all items.
+	std::list<Tpair> data; ///< Ordered list of all items.
 	std::unordered_map<Tkey, Titer> lookup;  ///< Map of keys to items.
 
 	const size_t capacity; ///< Number of items to cache.
@@ -50,46 +50,33 @@ public:
 	 * Insert a new data item with a specified key.
 	 * @param key Key under which the item should be stored.
 	 * @param item Item to insert.
-	 * @return Evicted item or nullptr, if no item had to be evicted.
 	 */
-	Tdata *Insert(const Tkey key, Tdata *item)
+	void Insert(const Tkey key, std::unique_ptr<Tdata> &&item)
 	{
-		Tdata *old = nullptr;
-
 		if (this->Contains(key)) {
 			/* Replace old value. */
-			old = this->lookup[key]->second;
-			this->lookup[key]->second = item;
-		} else {
-			/* Delete least used item if maximum items cached. */
-			if (this->data.size() >= this->capacity) {
-				Tpair last = data.back();
-				this->lookup.erase(last.first);
-				this->data.pop_back();
-
-				old = last.second;
-			}
-
-			/* Insert new item. */
-			this->data.emplace_front(key, item);
-			this->lookup.emplace(key, this->data.begin());
+			this->lookup[key]->second = std::move(item);
+			return;
 		}
 
-		return old;
+		/* Delete least used item if maximum items cached. */
+		if (this->data.size() >= this->capacity) {
+			this->lookup.erase(data.back().first);
+			this->data.pop_back();
+		}
+
+		/* Insert new item. */
+		this->data.emplace_front(key, std::move(item));
+		this->lookup.emplace(key, this->data.begin());
 	}
 
 	/**
-	 * Pop the least recently used item.
-	 * @return The item value or nullptr if no items cached.
+	 * Clear the cache.
 	 */
-	inline Tdata *Pop()
+	void Clear()
 	{
-		if (this->data.empty()) return nullptr;
-
-		Tdata *value = this->data.back().second;
-		this->lookup.erase(this->data.back().first);
-		this->data.pop_back();
-		return value;
+		this->lookup.clear();
+		this->data.clear();
 	}
 
 	/**
@@ -104,7 +91,7 @@ public:
 		/* Move to front if needed. */
 		this->data.splice(this->data.begin(), this->data, this->lookup[key]);
 
-		return this->data.front().second;
+		return this->data.front().second.get();
 	}
 };
 

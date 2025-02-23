@@ -1077,15 +1077,25 @@ void OpenGLBackend::DrawMouseCursor()
 	for (const auto &cs : this->cursor_sprites) {
 		/* Sprites are cached by PopulateCursorCache(). */
 		if (this->cursor_cache.Contains(cs.image.sprite)) {
-			Sprite *spr = this->cursor_cache.Get(cs.image.sprite);
+			OpenGLSprite *spr = this->cursor_cache.Get(cs.image.sprite);
 
-			this->RenderOglSprite((OpenGLSprite *)spr->data, cs.image.pal,
+			this->RenderOglSprite(spr, cs.image.pal,
 					this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
 					this->cursor_pos.y + cs.pos.y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
 					ZOOM_LVL_GUI);
 		}
 	}
 }
+
+class OpenGLSpriteAllocator : public SpriteAllocator {
+public:
+	LRUCache<SpriteID, OpenGLSprite> &lru;
+	SpriteID sprite;
+
+	OpenGLSpriteAllocator(LRUCache<SpriteID, OpenGLSprite> &lru, SpriteID sprite) : lru(lru), sprite(sprite) {}
+protected:
+	void *AllocatePtr(size_t) override { NOT_REACHED(); }
+};
 
 void OpenGLBackend::PopulateCursorCache()
 {
@@ -1105,13 +1115,8 @@ void OpenGLBackend::PopulateCursorCache()
 		this->cursor_sprites.emplace_back(sc);
 
 		if (!this->cursor_cache.Contains(sc.image.sprite)) {
-			SimpleSpriteAllocator allocator;
-			Sprite *old = this->cursor_cache.Insert(sc.image.sprite, static_cast<Sprite *>(GetRawSprite(sc.image.sprite, SpriteType::Normal, &allocator, this)));
-			if (old != nullptr) {
-				OpenGLSprite *gl_sprite = (OpenGLSprite *)old->data;
-				gl_sprite->~OpenGLSprite();
-				free(old);
-			}
+			OpenGLSpriteAllocator allocator(this->cursor_cache, sc.image.sprite);
+			GetRawSprite(sc.image.sprite, SpriteType::Normal, &allocator, this);
 		}
 	}
 }
@@ -1121,12 +1126,7 @@ void OpenGLBackend::PopulateCursorCache()
  */
 void OpenGLBackend::InternalClearCursorCache()
 {
-	Sprite *sp;
-	while ((sp = this->cursor_cache.Pop()) != nullptr) {
-		OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
-		sprite->~OpenGLSprite();
-		free(sp);
-	}
+	this->cursor_cache.Clear();
 }
 
 /**
@@ -1260,23 +1260,11 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 
 /* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
-	/* Allocate and construct sprite data. */
-	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + sizeof(OpenGLSprite));
+	/* This encoding is only called for mouse cursors. We don't need real sprites but OpenGLSprites to show as cursor. These need to be put in the LRU cache. */
+	OpenGLSpriteAllocator &gl_allocator = static_cast<OpenGLSpriteAllocator&>(allocator);
+	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite));
 
-	OpenGLSprite *gl_sprite = (OpenGLSprite *)dest_sprite->data;
-	new (gl_sprite) OpenGLSprite(sprite[ZOOM_LVL_MIN].width, sprite[ZOOM_LVL_MIN].height, sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END, sprite[ZOOM_LVL_MIN].colours);
-
-	/* Upload texture data. */
-	for (int i = 0; i < (sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
-		gl_sprite->Update(sprite[i].width, sprite[i].height, i, sprite[i].data);
-	}
-
-	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
-	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
-	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
-
-	return dest_sprite;
+	return nullptr;
 }
 
 /**
@@ -1407,18 +1395,14 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 
 /**
  * Create an OpenGL sprite with a palette remap part.
- * @param width Width of the top-level texture.
- * @param height Height of the top-level texture.
- * @param levels Number of mip-map levels.
- * @param components Indicates which sprite components are used.
+ * @param sprite The sprite to create the OpenGL sprite for
  */
-OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteComponents components)
+OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
+	dim(sprite[ZOOM_LVL_MIN].width, sprite[ZOOM_LVL_MIN].height), x_offs(sprite[ZOOM_LVL_MIN].x_offs), y_offs(sprite[ZOOM_LVL_MIN].y_offs)
 {
+	int levels = sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END;
 	assert(levels > 0);
 	(void)_glGetError();
-
-	this->dim.width = width;
-	this->dim.height = height;
 
 	MemSetT(this->tex, 0, NUM_TEX);
 	_glActiveTexture(GL_TEXTURE0);
@@ -1426,8 +1410,8 @@ OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteComponent
 
 	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
 		/* Sprite component present? */
-		if (t == TEX_RGBA && components == SpriteComponent::Palette) continue;
-		if (t == TEX_REMAP && !components.Test(SpriteComponent::Palette)) continue;
+		if (t == TEX_RGBA && sprite[ZOOM_LVL_MIN].colours == SpriteComponent::Palette) continue;
+		if (t == TEX_REMAP && !sprite[ZOOM_LVL_MIN].colours.Test(SpriteComponent::Palette)) continue;
 
 		/* Allocate texture. */
 		_glGenTextures(1, &this->tex[t]);
@@ -1440,7 +1424,7 @@ OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteComponent
 		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 		/* Set size. */
-		for (uint i = 0, w = width, h = height; i < levels; i++, w /= 2, h /= 2) {
+		for (int i = 0, w = this->dim.width, h = this->dim.height; i < levels; i++, w /= 2, h /= 2) {
 			assert(w * h != 0);
 			if (t == TEX_REMAP) {
 				_glTexImage2D(GL_TEXTURE_2D, i, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
@@ -1448,6 +1432,11 @@ OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteComponent
 				_glTexImage2D(GL_TEXTURE_2D, i, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
 			}
 		}
+	}
+
+	/* Upload texture data. */
+	for (int i = 0; i < (sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
+		this->Update(sprite[i].width, sprite[i].height, i, sprite[i].data);
 	}
 
 	assert(_glGetError() == GL_NO_ERROR);
