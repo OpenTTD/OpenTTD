@@ -3584,7 +3584,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Ubahsuai ke {S
 STR_ORDER_STOP_ORDER                                            :(Berhenti)
 
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(Tersirat)
 

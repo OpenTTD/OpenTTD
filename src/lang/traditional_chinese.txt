@@ -4708,8 +4708,8 @@ STR_ORDER_STOP_ORDER                                            :(停止)
 
 STR_ORDER_WAIT_TO_UNBUNCH                                       :（等候調節班次）
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(不能使用車站){POP_COLOUR} {STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(不能使用車站){POP_COLOUR} {STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(內含)
 

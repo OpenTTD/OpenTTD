@@ -4229,8 +4229,8 @@ STR_ORDER_STOP_ORDER                                            :(நிறு�
 
 STR_ORDER_WAIT_TO_UNBUNCH                                       :(அவிழ்க்க காத்திருக்கவும்)
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(நிலையத்தைப் பயன்படுத்த முடியாது){POP_COLOUR} {STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(நிலையத்தைப் பயன்படுத்த முடியாது){POP_COLOUR} {STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(தானியங்கி)
 

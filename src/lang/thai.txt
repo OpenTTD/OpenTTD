@@ -4001,7 +4001,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(ดัดแ�
 STR_ORDER_STOP_ORDER                                            :(หยุด)
 
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(อัตโนมัติ)
 

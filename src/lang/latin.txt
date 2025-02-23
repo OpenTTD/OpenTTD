@@ -4153,7 +4153,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Reficere {STRI
 STR_ORDER_STOP_ORDER                                            :(Consiste)
 
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(Implicitum)
 
