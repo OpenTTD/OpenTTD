@@ -10,22 +10,15 @@
  *
  * Unsafe methods are, for example, strndup and strncpy because they may leave the
  * string without a null termination, but also strdup and strndup because they can
- * return nullptr and then all strdups would need to be guarded against that instead
- * of using the current MallocT/ReallocT/CallocT technique of just giving the user
- * an error that too much memory was used instead of spreading that code though
- * the whole code base.
+ * return nullptr and then all strdups would need to be guarded against.
  */
 
 #ifndef SAFEGUARDS_H
 #define SAFEGUARDS_H
 
-/* Use MallocT instead. */
+/* Use std::vector/std::unique_ptr/new instead. */
 #define malloc    SAFEGUARD_DO_NOT_USE_THIS_METHOD
-
-/* Use MallocT instead. */
 #define calloc    SAFEGUARD_DO_NOT_USE_THIS_METHOD
-
-/* Use ReallocT instead. */
 #define realloc   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use std::string instead. */
