@@ -59,7 +59,7 @@ private:
 	GLint  sprite_rgb_loc = 0; ///< Uniform location for RGB mode flag.
 	GLint  sprite_crash_loc = 0; ///< Uniform location for crash remap mode flag.
 
-	LRUCache<SpriteID, Sprite> cursor_cache; ///< Cache of encoded cursor sprites.
+	LRUCache<SpriteID, OpenGLSprite> cursor_cache; ///< Cache of encoded cursor sprites.
 	PaletteID last_sprite_pal = (PaletteID)-1; ///< Last uploaded remap palette.
 	bool clear_cursor_cache = false; ///< A clear of the cursor cache is pending.
 
@@ -123,6 +123,8 @@ private:
 
 	Dimension dim;
 	GLuint tex[NUM_TEX]; ///< The texture objects.
+	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
+	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
 
 	static GLuint dummy_tex[NUM_TEX]; ///< 1x1 dummy textures to substitute for unused sprite components.
 
@@ -136,7 +138,13 @@ private:
 	bool BindTextures();
 
 public:
-	OpenGLSprite(uint width, uint height, uint levels, SpriteComponents components);
+	OpenGLSprite(const SpriteLoader::SpriteCollection &sprite);
+
+	/* No support for moving/copying the textures is implemented. */
+	OpenGLSprite(const OpenGLSprite&) = delete;
+	OpenGLSprite(OpenGLSprite&&) = delete;
+	OpenGLSprite& operator=(const OpenGLSprite&) = delete;
+	OpenGLSprite& operator=(OpenGLSprite&&) = delete;
 	~OpenGLSprite();
 
 	void Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel *data);
