@@ -335,20 +335,24 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 		if (!IsLocalCompany() || !flags.Test(DoCommandFlag::Execute)) return CommandCost();
 
 		VehicleID old_veh_id = (old_veh->type == VEH_TRAIN) ? Train::From(old_veh)->First()->index : old_veh->index;
-		SetDParam(0, old_veh_id);
+		EncodedString headline;
 
 		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
 		if (order_id != -1) {
 			/* Orders contained a refit order that is incompatible with the new vehicle. */
-			SetDParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT);
-			SetDParam(2, order_id + 1); // 1-based indexing for display
+			headline = GetEncodedString(STR_NEWS_VEHICLE_AUTORENEW_FAILED,
+				old_veh_id,
+				STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT,
+				order_id + 1); // 1-based indexing for display
 		} else {
 			/* Current cargo is incompatible with the new vehicle. */
-			SetDParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO);
-			SetDParam(2, CargoSpec::Get(old_veh->cargo_type)->name);
+			headline = GetEncodedString(STR_NEWS_VEHICLE_AUTORENEW_FAILED,
+				old_veh_id,
+				STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO,
+				CargoSpec::Get(old_veh->cargo_type)->name);
 		}
 
-		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh_id);
+		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, std::move(headline), old_veh_id);
 		return CommandCost();
 	}
 

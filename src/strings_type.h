@@ -102,6 +102,7 @@ public:
 	auto operator<=>(const EncodedString &) const = default;
 
 	std::string GetDecodedString() const;
+	EncodedString ReplaceParam(size_t param, StringParameter &&value) const;
 
 	inline void clear() { this->string.clear(); }
 	inline bool empty() const { return this->string.empty(); }

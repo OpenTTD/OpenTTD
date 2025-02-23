@@ -147,6 +147,75 @@ EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParam
 }
 
 /**
+ * Replace a parameter of this EncodedString.
+ * @note If the string cannot be decoded for some reason, an empty EncodedString will be returned instead.
+ * @param param Index of parameter to replace.
+ * @param data New data for parameter.
+ * @returns a new EncodedString with the parameter replaced.
+ */
+EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&data) const
+{
+	if (this->empty()) return {};
+
+	std::vector<StringParameter> params;
+
+	/* We need char * for std::from_chars. Iterate the underlying data, as string's own iterators may interfere. */
+	const char *p = this->string.data();
+	const char *e = this->string.data() + this->string.length();
+
+	char32_t c = Utf8Consume(p);
+	if (c != SCC_ENCODED_INTERNAL) return {};
+
+	StringID str;
+	auto result = std::from_chars(p, e, str, 16);
+	if (result.ec != std::errc()) return {};
+	if (result.ptr != e && *result.ptr != SCC_RECORD_SEPARATOR) return {};
+	p = result.ptr;
+
+	while (p != e) {
+		auto s = ++p;
+
+		/* Find end of the parameter. */
+		for (; p != e && *p != SCC_RECORD_SEPARATOR; ++p) {}
+
+		if (s == p) {
+			/* This is an empty parameter. */
+			params.emplace_back(std::monostate{});
+			continue;
+		}
+
+		/* Get the parameter type. */
+		char32_t parameter_type;
+		size_t len = Utf8Decode(&parameter_type, s);
+		s += len;
+
+		switch (parameter_type) {
+			case SCC_ENCODED_NUMERIC: {
+				uint64_t value;
+				result = std::from_chars(s, p, value, 16);
+				if (result.ec != std::errc() || result.ptr != p) return {};
+				params.emplace_back(value);
+				break;
+			}
+
+			case SCC_ENCODED_STRING: {
+				params.emplace_back(std::string(s, p));
+				break;
+			}
+
+			default:
+				/* Unknown parameter, make it blank. */
+				params.emplace_back(std::monostate{});
+				break;
+		}
+	}
+
+	if (param >= std::size(params)) return {};
+	params[param] = data;
+	return GetEncodedStringWithArgs(str, params);
+}
+
+/**
  * Decode the encoded string.
  * @returns Decoded raw string.
  */
