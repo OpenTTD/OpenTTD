@@ -2181,7 +2181,7 @@ static const StringID _road_tile_strings[] = {
 	STR_LAI_ROAD_DESCRIPTION_ROAD,
 };
 
-static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Road(TileIndex tile, TileDesc &td)
 {
 	Owner rail_owner = INVALID_OWNER;
 	Owner road_owner = INVALID_OWNER;
@@ -2191,36 +2191,36 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 	RoadType tram_rt = GetRoadTypeTram(tile);
 	if (road_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(road_rt);
-		td->roadtype = rti->strings.name;
-		td->road_speed = rti->max_speed / 2;
+		td.roadtype = rti->strings.name;
+		td.road_speed = rti->max_speed / 2;
 		road_owner = GetRoadOwner(tile, RTT_ROAD);
 	}
 	if (tram_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(tram_rt);
-		td->tramtype = rti->strings.name;
-		td->tram_speed = rti->max_speed / 2;
+		td.tramtype = rti->strings.name;
+		td.tram_speed = rti->max_speed / 2;
 		tram_owner = GetRoadOwner(tile, RTT_TRAM);
 	}
 
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_CROSSING: {
-			td->str = STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING;
+			td.str = STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING;
 			rail_owner = GetTileOwner(tile);
 
 			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-			td->railtype = rti->strings.name;
-			td->rail_speed = rti->max_speed;
+			td.railtype = rti->strings.name;
+			td.rail_speed = rti->max_speed;
 
 			break;
 		}
 
 		case ROAD_TILE_DEPOT:
-			td->str = STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT;
-			td->build_date = Depot::GetByTile(tile)->build_date;
+			td.str = STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT;
+			td.build_date = Depot::GetByTile(tile)->build_date;
 			break;
 
 		default: {
-			td->str = (road_rt != INVALID_ROADTYPE ? _road_tile_strings[GetRoadside(tile)] : STR_LAI_ROAD_DESCRIPTION_TRAMWAY);
+			td.str = (road_rt != INVALID_ROADTYPE ? _road_tile_strings[GetRoadside(tile)] : STR_LAI_ROAD_DESCRIPTION_TRAMWAY);
 			break;
 		}
 	}
@@ -2235,15 +2235,15 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 
 	if (mixed_owners) {
 		/* Multiple owners */
-		td->owner_type[0] = (rail_owner == INVALID_OWNER ? STR_NULL : STR_LAND_AREA_INFORMATION_RAIL_OWNER);
-		td->owner[0] = rail_owner;
-		td->owner_type[1] = (road_owner == INVALID_OWNER ? STR_NULL : STR_LAND_AREA_INFORMATION_ROAD_OWNER);
-		td->owner[1] = road_owner;
-		td->owner_type[2] = (tram_owner == INVALID_OWNER ? STR_NULL : STR_LAND_AREA_INFORMATION_TRAM_OWNER);
-		td->owner[2] = tram_owner;
+		td.owner_type[0] = (rail_owner == INVALID_OWNER ? STR_NULL : STR_LAND_AREA_INFORMATION_RAIL_OWNER);
+		td.owner[0] = rail_owner;
+		td.owner_type[1] = (road_owner == INVALID_OWNER ? STR_NULL : STR_LAND_AREA_INFORMATION_ROAD_OWNER);
+		td.owner[1] = road_owner;
+		td.owner_type[2] = (tram_owner == INVALID_OWNER ? STR_NULL : STR_LAND_AREA_INFORMATION_TRAM_OWNER);
+		td.owner[2] = tram_owner;
 	} else {
 		/* One to rule them all */
-		td->owner[0] = first_owner;
+		td.owner[0] = first_owner;
 	}
 }
 

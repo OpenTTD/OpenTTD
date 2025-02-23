@@ -733,17 +733,17 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, num * _price[PR_CLEAR_TREES]);
 }
 
-static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Trees(TileIndex tile, TileDesc &td)
 {
 	TreeType tt = GetTreeType(tile);
 
 	if (IsInsideMM(tt, TREE_RAINFOREST, TREE_CACTUS)) {
-		td->str = STR_LAI_TREE_NAME_RAINFOREST;
+		td.str = STR_LAI_TREE_NAME_RAINFOREST;
 	} else {
-		td->str = tt == TREE_CACTUS ? STR_LAI_TREE_NAME_CACTUS_PLANTS : STR_LAI_TREE_NAME_TREES;
+		td.str = tt == TREE_CACTUS ? STR_LAI_TREE_NAME_CACTUS_PLANTS : STR_LAI_TREE_NAME_TREES;
 	}
 
-	td->owner[0] = GetTileOwner(tile);
+	td.owner[0] = GetTileOwner(tile);
 }
 
 static void TileLoopTreesDesert(TileIndex tile)

@@ -338,14 +338,14 @@ static const StringID _clear_land_str[] = {
 	STR_LAI_CLEAR_DESCRIPTION_DESERT
 };
 
-static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
 {
 	if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
-		td->str = STR_LAI_CLEAR_DESCRIPTION_BARE_LAND;
+		td.str = STR_LAI_CLEAR_DESCRIPTION_BARE_LAND;
 	} else {
-		td->str = _clear_land_str[GetClearGround(tile)];
+		td.str = _clear_land_str[GetClearGround(tile)];
 	}
-	td->owner[0] = GetTileOwner(tile);
+	td.owner[0] = GetTileOwner(tile);
 }
 
 static void ChangeTileOwner_Clear(TileIndex, Owner, Owner)
