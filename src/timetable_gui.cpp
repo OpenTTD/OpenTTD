@@ -42,26 +42,16 @@ struct TimetableArrivalDeparture {
 };
 
 /**
- * Set the timetable parameters in the format as described by the setting.
- * @param param1 the first DParam to fill
- * @param param2 the second DParam to fill
- * @param ticks  the number of ticks to 'draw'
+ * Get parameters to format timetable time.
+ * @param ticks Number of ticks to format.
+ * @returns Pair of parameters to format timetable time.
  */
-void SetTimetableParams(int param1, int param2, TimerGameTick::Ticks ticks)
+std::pair<StringParameter, StringParameter> GetTimetableParameters(TimerGameTick::Ticks ticks)
 {
 	switch (_settings_client.gui.timetable_mode) {
-		case TimetableMode::Days:
-			SetDParam(param1, STR_UNITS_DAYS);
-			SetDParam(param2, ticks / Ticks::DAY_TICKS);
-			break;
-		case TimetableMode::Seconds:
-			SetDParam(param1, STR_UNITS_SECONDS);
-			SetDParam(param2, ticks / Ticks::TICKS_PER_SECOND);
-			break;
-		case TimetableMode::Ticks:
-			SetDParam(param1, STR_UNITS_TICKS);
-			SetDParam(param2, ticks);
-			break;
+		case TimetableMode::Days: return {STR_UNITS_DAYS, ticks / Ticks::DAY_TICKS};
+		case TimetableMode::Seconds: return {STR_UNITS_SECONDS, ticks / Ticks::TICKS_PER_SECOND};
+		case TimetableMode::Ticks: return {STR_UNITS_TICKS, ticks};
 		default:
 			NOT_REACHED();
 	}
@@ -255,11 +245,17 @@ struct TimetableWindow : Window {
 				/* We handle this differently depending on the timetable mode. */
 				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 					/* A five-digit number would fit a timetable lasting 2.7 real-world hours, which should be plenty. */
-					SetDParamMaxDigits(1, 4, FS_SMALL);
-					size.width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
+					uint64_t max_digits = GetParamMaxDigits(4, FS_SMALL);
+					size.width = std::max(
+							GetStringBoundingBox(GetString(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, TC_BLACK, max_digits)).width,
+							GetStringBoundingBox(GetString(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, TC_BLACK, max_digits)).width)
+							+ WidgetDimensions::scaled.hsep_wide + padding.width;
 				} else {
-					SetDParamMaxValue(1, TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR), 0, FS_SMALL);
-					size.width = std::max(GetStringBoundingBox(STR_TIMETABLE_ARRIVAL_DATE).width, GetStringBoundingBox(STR_TIMETABLE_DEPARTURE_DATE).width) + WidgetDimensions::scaled.hsep_wide + padding.width;
+					uint64_t max_value = GetParamMaxValue(TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR).base(), 0, FS_SMALL);
+					size.width = std::max(
+							GetStringBoundingBox(GetString(STR_TIMETABLE_ARRIVAL_DATE, TC_BLACK, max_value)).width,
+							GetStringBoundingBox(GetString(STR_TIMETABLE_DEPARTURE_DATE, TC_BLACK, max_value)).width)
+							+ WidgetDimensions::scaled.hsep_wide + padding.width;
 				}
 				[[fallthrough]];
 
@@ -410,6 +406,38 @@ struct TimetableWindow : Window {
 		}
 	}
 
+	std::string GetTimetableTravelString(const Order &order, int i, TextColour &colour) const
+	{
+		colour = (i == this->sel_index) ? TC_WHITE : TC_BLACK;
+
+		if (order.IsType(OT_CONDITIONAL)) {
+			return GetString(STR_TIMETABLE_NO_TRAVEL);
+		}
+
+		if (order.IsType(OT_IMPLICIT)) {
+			colour = ((i == this->sel_index) ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
+			return GetString(STR_TIMETABLE_NOT_TIMETABLEABLE);
+		}
+
+		if (order.IsTravelTimetabled()) {
+			auto [str, value] = GetTimetableParameters(order.GetTimetabledTravel());
+			return order.GetMaxSpeed() != UINT16_MAX
+				? GetString(STR_TIMETABLE_TRAVEL_FOR_SPEED, str, value, PackVelocity(order.GetMaxSpeed(), this->vehicle->type))
+				: GetString(STR_TIMETABLE_TRAVEL_FOR, str, value);
+		}
+
+		if (order.GetTravelTime() > 0) {
+			auto [str, value] = GetTimetableParameters(order.GetTravelTime());
+			return order.GetMaxSpeed() != UINT16_MAX
+				? GetString(STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED, str, value, PackVelocity(order.GetMaxSpeed(), this->vehicle->type))
+				: GetString(STR_TIMETABLE_TRAVEL_FOR_ESTIMATED, str, value);
+		}
+
+		return order.GetMaxSpeed() != UINT16_MAX
+			? GetString(STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED, PackVelocity(order.GetMaxSpeed(), this->vehicle->type))
+			: GetString(STR_TIMETABLE_TRAVEL_NOT_TIMETABLED);
+	}
+
 	/**
 	 * Helper function to draw the timetable panel.
 	 * @param r The rect to draw within.
@@ -424,8 +452,7 @@ struct TimetableWindow : Window {
 		int selected = this->sel_index;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		SetDParamMaxValue(0, v->GetNumOrders(), 2);
-		int index_column_width = GetStringBoundingBox(STR_ORDER_INDEX).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + WidgetDimensions::scaled.hsep_normal;
+		int index_column_width = GetStringBoundingBox(GetString(STR_ORDER_INDEX, GetParamMaxValue(v->GetNumOrders(), 2))).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + WidgetDimensions::scaled.hsep_normal;
 		int middle = rtl ? tr.right - index_column_width : tr.left + index_column_width;
 
 		const Order *order = v->GetOrder(order_id);
@@ -445,30 +472,8 @@ struct TimetableWindow : Window {
 					order = order->next;
 				}
 			} else {
-				StringID string;
-				TextColour colour = (i == selected) ? TC_WHITE : TC_BLACK;
-				if (order->IsType(OT_CONDITIONAL)) {
-					string = STR_TIMETABLE_NO_TRAVEL;
-				} else if (order->IsType(OT_IMPLICIT)) {
-					string = STR_TIMETABLE_NOT_TIMETABLEABLE;
-					colour = ((i == selected) ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
-				} else if (!order->IsTravelTimetabled()) {
-					if (order->GetTravelTime() > 0) {
-						SetTimetableParams(0, 1, order->GetTravelTime());
-						string = order->GetMaxSpeed() != UINT16_MAX ?
-							STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED :
-							STR_TIMETABLE_TRAVEL_FOR_ESTIMATED;
-					} else {
-						string = order->GetMaxSpeed() != UINT16_MAX ?
-							STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED :
-							STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
-					}
-				} else {
-					SetTimetableParams(0, 1, order->GetTimetabledTravel());
-					string = order->GetMaxSpeed() != UINT16_MAX ?
-						STR_TIMETABLE_TRAVEL_FOR_SPEED : STR_TIMETABLE_TRAVEL_FOR;
-				}
-				SetDParam(2, PackVelocity(order->GetMaxSpeed(), v->type));
+				TextColour colour;
+				std::string string = GetTimetableTravelString(*order, i, colour);
 
 				DrawString(rtl ? tr.left : middle, rtl ? middle : tr.right, tr.top, string, colour);
 
@@ -509,7 +514,7 @@ struct TimetableWindow : Window {
 			if (!this->vscroll->IsVisible(i)) break;
 
 			/* TC_INVALID will skip the colour change. */
-			SetDParam(0, show_late ? TC_RED : TC_INVALID);
+			TextColour tc = show_late ? TC_RED : TC_INVALID;
 			if (i % 2 == 0) {
 				/* Draw an arrival time. */
 				if (arr_dep[i / 2].arrival != Ticks::INVALID_TICKS) {
@@ -518,7 +523,7 @@ struct TimetableWindow : Window {
 					if (this->show_expected && i / 2 == earlyID) {
 						/* Show expected arrival. */
 						this_offset = 0;
-						SetDParam(0, TC_GREEN);
+						tc = TC_GREEN;
 					} else {
 						/* Show scheduled arrival. */
 						this_offset = offset;
@@ -527,12 +532,14 @@ struct TimetableWindow : Window {
 					/* Now actually draw the arrival time. */
 					if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 						/* Display seconds from now. */
-						SetDParam(1, ((arr_dep[i / 2].arrival + offset) / Ticks::TICKS_PER_SECOND));
-						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, i == selected ? TC_WHITE : TC_BLACK);
+						DrawString(tr.left, tr.right, tr.top,
+							GetString(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, tc, (arr_dep[i / 2].arrival + offset) / Ticks::TICKS_PER_SECOND),
+							i == selected ? TC_WHITE : TC_BLACK);
 					} else {
 						/* Show a date. */
-						SetDParam(1, TimerGameEconomy::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS);
-						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_ARRIVAL_DATE, i == selected ? TC_WHITE : TC_BLACK);
+						DrawString(tr.left, tr.right, tr.top,
+							GetString(STR_TIMETABLE_ARRIVAL_DATE, tc, TimerGameEconomy::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS),
+							i == selected ? TC_WHITE : TC_BLACK);
 					}
 				}
 			} else {
@@ -540,17 +547,27 @@ struct TimetableWindow : Window {
 				if (arr_dep[i / 2].departure != Ticks::INVALID_TICKS) {
 					if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 						/* Display seconds from now. */
-						SetDParam(1, ((arr_dep[i / 2].departure + offset) / Ticks::TICKS_PER_SECOND));
-						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, i == selected ? TC_WHITE : TC_BLACK);
+						DrawString(tr.left, tr.right, tr.top,
+							GetString(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, tc, (arr_dep[i / 2].departure + offset) / Ticks::TICKS_PER_SECOND),
+							i == selected ? TC_WHITE : TC_BLACK);
 					} else {
 						/* Show a date. */
-						SetDParam(1, TimerGameEconomy::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS);
-						DrawString(tr.left, tr.right, tr.top, STR_TIMETABLE_DEPARTURE_DATE, i == selected ? TC_WHITE : TC_BLACK);
+						DrawString(tr.left, tr.right, tr.top,
+							GetString(STR_TIMETABLE_DEPARTURE_DATE, tc, TimerGameEconomy::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS),
+							i == selected ? TC_WHITE : TC_BLACK);
 					}
 				}
 			}
 			tr.top += GetCharacterHeight(FS_NORMAL);
 		}
+	}
+
+	std::string GetTimetableTotalTimeString(TimerGameTick::Ticks total_time) const
+	{
+		auto [str, value] = GetTimetableParameters(total_time);
+		if (!this->vehicle->orders->IsCompleteTimetable()) return GetString(STR_TIMETABLE_TOTAL_TIME_INCOMPLETE, str, value);
+		if (total_time % TicksPerTimetableUnit() == 0) return GetString(STR_TIMETABLE_TOTAL_TIME, str, value);
+		return GetString(STR_TIMETABLE_APPROX_TIME, str, value);
 	}
 
 	/**
@@ -564,14 +581,7 @@ struct TimetableWindow : Window {
 
 		TimerGameTick::Ticks total_time = v->orders != nullptr ? v->orders->GetTimetableDurationIncomplete() : 0;
 		if (total_time != 0) {
-			SetTimetableParams(0, 1, total_time);
-			if (!v->orders->IsCompleteTimetable()) {
-				DrawString(tr, STR_TIMETABLE_TOTAL_TIME_INCOMPLETE);
-			} else if (total_time % TicksPerTimetableUnit() == 0) {
-				DrawString(tr, STR_TIMETABLE_TOTAL_TIME);
-			} else {
-				DrawString(tr, STR_TIMETABLE_APPROX_TIME);
-			}
+			DrawString(tr, GetTimetableTotalTimeString(total_time));
 		}
 		tr.top += GetCharacterHeight(FS_NORMAL);
 
@@ -581,13 +591,10 @@ struct TimetableWindow : Window {
 			 * timetable at the given time. */
 			if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 				/* Real time units use seconds relative to now. */
-				SetDParam(0, (static_cast<TimerGameTick::Ticks>(v->timetable_start - TimerGameTick::counter) / Ticks::TICKS_PER_SECOND));
-				DrawString(tr, STR_TIMETABLE_STATUS_START_IN_SECONDS);
+				DrawString(tr, GetString(STR_TIMETABLE_STATUS_START_IN_SECONDS, static_cast<TimerGameTick::Ticks>(v->timetable_start - TimerGameTick::counter) / Ticks::TICKS_PER_SECOND));
 			} else {
 				/* Other units use dates. */
-				SetDParam(0, STR_JUST_DATE_TINY);
-				SetDParam(1, GetDateFromStartTick(v->timetable_start));
-				DrawString(tr, STR_TIMETABLE_STATUS_START_AT_DATE);
+				DrawString(tr, GetString(STR_TIMETABLE_STATUS_START_AT_DATE, STR_JUST_DATE_TINY, GetDateFromStartTick(v->timetable_start)));
 			}
 		} else if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
 			/* We aren't running on a timetable yet. */
@@ -597,8 +604,8 @@ struct TimetableWindow : Window {
 			DrawString(tr, STR_TIMETABLE_STATUS_ON_TIME);
 		} else {
 			/* We are late. */
-			SetTimetableParams(0, 1, abs(v->lateness_counter));
-			DrawString(tr, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE);
+			auto [str, value] = GetTimetableParameters(abs(v->lateness_counter));
+			DrawString(tr, GetString(v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE, str, value));
 		}
 	}
 

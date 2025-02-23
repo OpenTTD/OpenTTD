@@ -10,6 +10,7 @@
 #ifndef TIMETABLE_H
 #define TIMETABLE_H
 
+#include "strings_type.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_economy.h"
 #include "vehicle_type.h"
@@ -27,6 +28,7 @@ TimerGameEconomy::Date GetDateFromStartTick(TimerGameTick::TickCounter start_tic
 
 void ShowTimetableWindow(const Vehicle *v);
 void UpdateVehicleTimetable(Vehicle *v, bool travelling);
-void SetTimetableParams(int param1, int param2, TimerGameTick::Ticks ticks);
+
+std::pair<StringParameter, StringParameter> GetTimetableParameters(TimerGameTick::Ticks ticks);
 
 #endif /* TIMETABLE_H */
