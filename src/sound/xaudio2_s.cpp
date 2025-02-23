@@ -12,7 +12,6 @@
 #include "../driver.h"
 #include "../mixer.h"
 #include "../debug.h"
-#include "../core/alloc_func.hpp"
 #include "../core/bitmath_func.hpp"
 #include "../core/math_func.hpp"
 

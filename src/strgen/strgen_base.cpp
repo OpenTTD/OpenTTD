@@ -8,7 +8,6 @@
 /** @file strgen_base.cpp Tool to create computer readable (stand-alone) translation files. */
 
 #include "../stdafx.h"
-#include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
 #include "../core/mem_func.hpp"
 #include "../error_func.h"
