@@ -4686,8 +4686,8 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_WAIT_TO_UNBUNCH                                       :(Warden fir ze verspreeën)
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Statioun kann net benotzt ginn){POP_COLOUR} {STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Statioun kann net benotzt ginn){POP_COLOUR} {STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(Implizit)
 
