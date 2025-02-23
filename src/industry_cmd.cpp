@@ -1719,14 +1719,13 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, Indus
 static void AdvertiseIndustryOpening(const Industry *ind)
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(ind->type);
-	SetDParam(0, ind_spc->name);
+	EncodedString headline;
 	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
-		SetDParam(1, STR_TOWN_NAME);
-		SetDParam(2, ind->town->index);
+		headline = GetEncodedString(ind_spc->new_industry_text, ind_spc->name, STR_TOWN_NAME, ind->town->index);
 	} else {
-		SetDParam(1, ind->town->index);
+		headline = GetEncodedString(ind_spc->new_industry_text, ind_spc->name, ind->town->index);
 	}
-	AddIndustryNewsItem(ind_spc->new_industry_text, NewsType::IndustryOpen, ind->index);
+	AddIndustryNewsItem(std::move(headline), NewsType::IndustryOpen, ind->index);
 	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
 	Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
 }
@@ -2194,16 +2193,15 @@ CommandCost CmdIndustrySetProduction(DoCommandFlags flags, IndustryID ind_id, ui
 			}
 
 			/* Set parameters of news string */
+			EncodedString headline;
 			if (str == STR_NEWS_CUSTOM_ITEM) {
-				SetDParamStr(0, custom_news);
+				headline = GetEncodedString(str, custom_news);
 			} else if (str > STR_LAST_STRINGID) {
-				SetDParam(0, STR_TOWN_NAME);
-				SetDParam(1, ind->town->index);
-				SetDParam(2, GetIndustrySpec(ind->type)->name);
+				headline = GetEncodedString(str, STR_TOWN_NAME, ind->town->index, GetIndustrySpec(ind->type)->name);
 			} else {
-				SetDParam(0, ind->index);
+				headline = GetEncodedString(str, ind->index);
 			}
-			AddIndustryNewsItem(str, nt, ind->index);
+			AddIndustryNewsItem(std::move(headline), nt, ind->index);
 		}
 	}
 
@@ -2778,11 +2776,10 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType type, in
 		case 2: nt = NewsType::IndustryCompany; break;
 		default: NOT_REACHED();
 	}
-	SetDParam(2, abs(percent));
-	SetDParam(0, CargoSpec::Get(type)->name);
-	SetDParam(1, ind->index);
 	AddIndustryNewsItem(
-		percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
+		GetEncodedString(percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
+			CargoSpec::Get(type)->name, ind->index, abs(percent)
+		),
 		nt,
 		ind->index
 	);
@@ -2985,22 +2982,19 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			}
 		}
 		/* Set parameters of news string */
+		EncodedString headline;
 		if (str > STR_LAST_STRINGID) {
-			SetDParam(0, STR_TOWN_NAME);
-			SetDParam(1, i->town->index);
-			SetDParam(2, indspec->name);
+			headline = GetEncodedString(str, STR_TOWN_NAME, i->town->index, indspec->name);
 		} else if (closeit) {
-			SetDParam(0, STR_FORMAT_INDUSTRY_NAME);
-			SetDParam(1, i->town->index);
-			SetDParam(2, indspec->name);
+			headline = GetEncodedString(str, STR_FORMAT_INDUSTRY_NAME, i->town->index, indspec->name);
 		} else {
-			SetDParam(0, i->index);
+			headline = GetEncodedString(str, i->index);
 		}
 		/* and report the news to the user */
 		if (closeit) {
-			AddTileNewsItem(str, nt, i->location.tile + TileDiffXY(1, 1));
+			AddTileNewsItem(std::move(headline), nt, i->location.tile + TileDiffXY(1, 1));
 		} else {
-			AddIndustryNewsItem(str, nt, i->index);
+			AddIndustryNewsItem(std::move(headline), nt, i->index);
 		}
 	}
 }

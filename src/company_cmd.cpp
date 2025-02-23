@@ -419,12 +419,10 @@ set_name:;
 		Game::NewEvent(new ScriptEventCompanyRenamed(c->index, name));
 
 		if (c->is_ai) {
-			auto cni = std::make_unique<CompanyNewsInformation>(c);
-			SetDParam(0, STR_NEWS_COMPANY_LAUNCH_TITLE);
-			SetDParam(1, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION);
-			SetDParamStr(2, cni->company_name);
-			SetDParam(3, t->index);
-			AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NewsType::CompanyInfo, NewsStyle::Company, {}, c->last_build_coordinate, {}, std::move(cni));
+			auto cni = std::make_unique<CompanyNewsInformation>(STR_NEWS_COMPANY_LAUNCH_TITLE, c);
+			EncodedString headline = GetEncodedString(STR_NEWS_COMPANY_LAUNCH_DESCRIPTION, cni->company_name, t->index);
+			AddNewsItem(std::move(headline),
+				NewsType::CompanyInfo, NewsStyle::Company, {}, c->last_build_coordinate, {}, std::move(cni));
 		}
 		return;
 	}
@@ -806,7 +804,7 @@ static IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEcono
  * @param c the current company.
  * @param other the other company (use \c nullptr if not relevant).
  */
-CompanyNewsInformation::CompanyNewsInformation(const Company *c, const Company *other)
+CompanyNewsInformation::CompanyNewsInformation(StringID title, const Company *c, const Company *other)
 {
 	this->company_name = GetString(STR_COMPANY_NAME, c->index);
 
@@ -817,6 +815,7 @@ CompanyNewsInformation::CompanyNewsInformation(const Company *c, const Company *
 
 	this->president_name = GetString(STR_PRESIDENT_NAME_MANAGER, c->index);
 
+	this->title = title;
 	this->colour = c->colour;
 	this->face = c->face;
 
@@ -934,13 +933,10 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 
 			if (!flags.Test(DoCommandFlag::Execute)) return CommandCost();
 
-			auto cni = std::make_unique<CompanyNewsInformation>(c);
-
 			/* Show the bankrupt news */
-			SetDParam(0, STR_NEWS_COMPANY_BANKRUPT_TITLE);
-			SetDParam(1, STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION);
-			SetDParamStr(2, cni->company_name);
-			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, std::move(cni));
+			auto cni = std::make_unique<CompanyNewsInformation>(STR_NEWS_COMPANY_BANKRUPT_TITLE, c);
+			EncodedString headline = GetEncodedString(STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION, cni->company_name);
+			AddCompanyNewsItem(std::move(headline), std::move(cni));
 
 			/* Remove the company */
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);

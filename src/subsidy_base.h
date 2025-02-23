@@ -58,12 +58,4 @@ static const uint SUBSIDY_MAX_PCT_TRANSPORTED  =  42; ///< Subsidy will be creat
 static const uint SUBSIDY_MAX_DISTANCE         =  70; ///< Max. length of subsidised route (DistanceManhattan)
 static const uint SUBSIDY_TOWN_CARGO_RADIUS    =   6; ///< Extent of a tile area around town center when scanning for town cargo acceptance and production (6 ~= min catchmement + min station / 2)
 
-/** Types of subsidy news messages, which determine how the date is printed and whether to use singular or plural cargo names */
-enum class SubsidyDecodeParamType : uint8_t {
-	NewsOffered   = 0, ///< News item for an offered subsidy
-	NewsAwarded   = 1, ///< News item for an awarded subsidy
-	NewsWithdrawn = 2, ///< News item for a subsidy offer withdrawn, or expired subsidy
-	Gui           = 3, ///< Subsidies listed in the Subsidy GUI
-};
-
 #endif /* SUBSIDY_BASE_H */

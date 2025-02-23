@@ -12,7 +12,10 @@
 #include "../3rdparty/catch2/catch.hpp"
 
 #include "../string_func.h"
+#include "../strings_func.h"
 #include "../table/control_codes.h"
+
+#include "table/strings.h"
 
 /**** String compare/equals *****/
 
@@ -472,4 +475,16 @@ TEST_CASE("FixSCCEncoded")
 
 	/* Test conversion with one sub-string and two string parameters. */
 	CHECK(FixSCCEncodedWrapper("\uE000777:\uE0008888:\"Foo\":\"BarBaz\"", false) == Compose(SCC_ENCODED, "777", SCC_RECORD_SEPARATOR, SCC_ENCODED, "8888", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Foo", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "BarBaz"));
+}
+
+TEST_CASE("EncodedString::ReplaceParam")
+{
+	/* Test that two encoded strings with different parameters are not the same. */
+	EncodedString string1 = GetEncodedString(STR_NULL, "Foo", 10, "Bar");
+	EncodedString string2 = GetEncodedString(STR_NULL, "Foo", 15, "Bar");
+	CHECK(string1 != string2);
+
+	/* Test that replacing parameter results in the same string. */
+	EncodedString string3 = string1.ReplaceParam(1, 15);
+	CHECK(string2 == string3);
 }
