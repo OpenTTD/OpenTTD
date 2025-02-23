@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "squirrel_std.hpp"
+#include "../error_func.h"
 #include "../fileio_func.h"
 #include "../string_func.h"
 #include "script_fatalerror.hpp"
@@ -17,7 +18,6 @@
 #include <sqstdaux.h>
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
-#include "../core/alloc_func.hpp"
 
 #include "../safeguards.h"
 
@@ -90,7 +90,7 @@ private:
 				/* The allocation is called in the error handling of a memory allocation
 				 * failure, then not being able to allocate that small amount of memory
 				 * means there is no other choice than to bug out completely. */
-				MallocError(requested_size);
+				FatalError("Out of memory. Cannot allocate {} bytes", requested_size);
 			}
 
 			this->error_thrown = true;

@@ -321,15 +321,6 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #	define MAX_PATH 260
 #endif
 
-/**
- * Version of the standard free that accepts const pointers.
- * @param ptr The data to free.
- */
-inline void free(const void *ptr)
-{
-	free(const_cast<void *>(ptr));
-}
-
 #if defined(_MSC_VER) && !defined(_DEBUG)
 #	define IGNORE_UNINITIALIZED_WARNING_START __pragma(warning(push)) __pragma(warning(disable:4700))
 #	define IGNORE_UNINITIALIZED_WARNING_STOP __pragma(warning(pop))
