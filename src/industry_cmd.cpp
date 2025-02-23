@@ -472,20 +472,20 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 	}
 }
 
-static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Industry(TileIndex tile, TileDesc &td)
 {
 	const Industry *i = Industry::GetByTile(tile);
 	const IndustrySpec *is = GetIndustrySpec(i->type);
 
-	td->owner[0] = i->owner;
-	td->str = is->name;
+	td.owner[0] = i->owner;
+	td.str = is->name;
 	if (!IsIndustryCompleted(tile)) {
-		td->dparam = td->str;
-		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
+		td.dparam = td.str;
+		td.str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
 	if (is->grf_prop.HasGrfFile()) {
-		td->grf = GetGRFConfig(is->grf_prop.grfid)->GetName();
+		td.grf = GetGRFConfig(is->grf_prop.grfid)->GetName();
 	}
 }
 

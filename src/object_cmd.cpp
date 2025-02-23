@@ -652,15 +652,15 @@ static void AddProducedCargo_Object(TileIndex tile, CargoArray &produced)
 }
 
 
-static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Object(TileIndex tile, TileDesc &td)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
-	td->str = spec->name;
-	td->owner[0] = GetTileOwner(tile);
-	td->build_date = Object::GetByTile(tile)->build_date;
+	td.str = spec->name;
+	td.owner[0] = GetTileOwner(tile);
+	td.build_date = Object::GetByTile(tile)->build_date;
 
 	if (spec->grf_prop.HasGrfFile()) {
-		td->grf = GetGRFConfig(spec->grf_prop.grfid)->GetName();
+		td.grf = GetGRFConfig(spec->grf_prop.grfid)->GetName();
 	}
 }
 

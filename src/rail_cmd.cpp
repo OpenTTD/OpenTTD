@@ -2780,15 +2780,15 @@ static bool ClickTile_Track(TileIndex tile)
 	return true;
 }
 
-static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Track(TileIndex tile, TileDesc &td)
 {
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	td->rail_speed = rti->max_speed;
-	td->railtype = rti->strings.name;
-	td->owner[0] = GetTileOwner(tile);
+	td.rail_speed = rti->max_speed;
+	td.railtype = rti->strings.name;
+	td.owner[0] = GetTileOwner(tile);
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_NORMAL:
-			td->str = STR_LAI_RAIL_DESCRIPTION_TRACK;
+			td.str = STR_LAI_RAIL_DESCRIPTION_TRACK;
 			break;
 
 		case RAIL_TILE_SIGNALS: {
@@ -2852,20 +2852,20 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 				secondary_signal = primary_signal = GetSignalType(tile, TRACK_LOWER);
 			}
 
-			td->str = signal_type[secondary_signal][primary_signal];
+			td.str = signal_type[secondary_signal][primary_signal];
 			break;
 		}
 
 		case RAIL_TILE_DEPOT:
-			td->str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
+			td.str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
 			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
-				if (td->rail_speed > 0) {
-					td->rail_speed = std::min<uint16_t>(td->rail_speed, 61);
+				if (td.rail_speed > 0) {
+					td.rail_speed = std::min<uint16_t>(td.rail_speed, 61);
 				} else {
-					td->rail_speed = 61;
+					td.rail_speed = 61;
 				}
 			}
-			td->build_date = Depot::GetByTile(tile)->build_date;
+			td.build_date = Depot::GetByTile(tile)->build_date;
 			break;
 
 		default:

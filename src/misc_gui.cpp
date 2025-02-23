@@ -144,7 +144,7 @@ public:
 
 		CargoArray acceptance{};
 		AddAcceptedCargo(tile, acceptance, nullptr);
-		GetTileDesc(tile, &td);
+		GetTileDesc(tile, td);
 
 		this->landinfo_data.clear();
 

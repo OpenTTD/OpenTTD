@@ -863,14 +863,14 @@ CargoArray GetAcceptedCargoOfHouse(const HouseSpec *hs)
 	return acceptance;
 }
 
-static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Town(TileIndex tile, TileDesc &td)
 {
 	const HouseID house = GetHouseType(tile);
 	const HouseSpec *hs = HouseSpec::Get(house);
 	bool house_completed = IsHouseCompleted(tile);
 
-	td->str = hs->building_name;
-	td->town_can_upgrade = !IsHouseProtected(tile);
+	td.str = hs->building_name;
+	td.town_can_upgrade = !IsHouseProtected(tile);
 
 	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), tile);
 	if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
@@ -879,22 +879,22 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 		} else {
 			StringID new_name = GetGRFStringID(hs->grf_prop.grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
 			if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
-				td->str = new_name;
+				td.str = new_name;
 			}
 		}
 	}
 
 	if (!house_completed) {
-		td->dparam = td->str;
-		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
+		td.dparam = td.str;
+		td.str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
 	if (hs->grf_prop.HasGrfFile()) {
 		const GRFConfig *gc = GetGRFConfig(hs->grf_prop.grfid);
-		td->grf = gc->GetName();
+		td.grf = gc->GetName();
 	}
 
-	td->owner[0] = OWNER_TOWN;
+	td.owner[0] = OWNER_TOWN;
 }
 
 static TrackStatus GetTileTrackStatus_Town(TileIndex, TransportType, uint, DiagDirection)

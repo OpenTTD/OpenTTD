@@ -3450,7 +3450,7 @@ static Foundation GetFoundation_Station(TileIndex, Slope tileh)
 	return FlatteningFoundation(tileh);
 }
 
-static void FillTileDescRoadStop(TileIndex tile, TileDesc *td)
+static void FillTileDescRoadStop(TileIndex tile, TileDesc &td)
 {
 	RoadType road_rt = GetRoadTypeRoad(tile);
 	RoadType tram_rt = GetRoadTypeTram(tile);
@@ -3458,77 +3458,77 @@ static void FillTileDescRoadStop(TileIndex tile, TileDesc *td)
 	Owner tram_owner = INVALID_OWNER;
 	if (road_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(road_rt);
-		td->roadtype = rti->strings.name;
-		td->road_speed = rti->max_speed / 2;
+		td.roadtype = rti->strings.name;
+		td.road_speed = rti->max_speed / 2;
 		road_owner = GetRoadOwner(tile, RTT_ROAD);
 	}
 
 	if (tram_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(tram_rt);
-		td->tramtype = rti->strings.name;
-		td->tram_speed = rti->max_speed / 2;
+		td.tramtype = rti->strings.name;
+		td.tram_speed = rti->max_speed / 2;
 		tram_owner = GetRoadOwner(tile, RTT_TRAM);
 	}
 
 	if (IsDriveThroughStopTile(tile)) {
 		/* Is there a mix of owners? */
-		if ((tram_owner != INVALID_OWNER && tram_owner != td->owner[0]) ||
-				(road_owner != INVALID_OWNER && road_owner != td->owner[0])) {
+		if ((tram_owner != INVALID_OWNER && tram_owner != td.owner[0]) ||
+				(road_owner != INVALID_OWNER && road_owner != td.owner[0])) {
 			uint i = 1;
 			if (road_owner != INVALID_OWNER) {
-				td->owner_type[i] = STR_LAND_AREA_INFORMATION_ROAD_OWNER;
-				td->owner[i] = road_owner;
+				td.owner_type[i] = STR_LAND_AREA_INFORMATION_ROAD_OWNER;
+				td.owner[i] = road_owner;
 				i++;
 			}
 			if (tram_owner != INVALID_OWNER) {
-				td->owner_type[i] = STR_LAND_AREA_INFORMATION_TRAM_OWNER;
-				td->owner[i] = tram_owner;
+				td.owner_type[i] = STR_LAND_AREA_INFORMATION_TRAM_OWNER;
+				td.owner[i] = tram_owner;
 			}
 		}
 	}
 }
 
-void FillTileDescRailStation(TileIndex tile, TileDesc *td)
+void FillTileDescRailStation(TileIndex tile, TileDesc &td)
 {
 	const StationSpec *spec = GetStationSpec(tile);
 
 	if (spec != nullptr) {
-		td->station_class = StationClass::Get(spec->class_index)->name;
-		td->station_name  = spec->name;
+		td.station_class = StationClass::Get(spec->class_index)->name;
+		td.station_name  = spec->name;
 
 		if (spec->grf_prop.HasGrfFile()) {
 			const GRFConfig *gc = GetGRFConfig(spec->grf_prop.grfid);
-			td->grf = gc->GetName();
+			td.grf = gc->GetName();
 		}
 	}
 
 	const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	td->rail_speed = rti->max_speed;
-	td->railtype = rti->strings.name;
+	td.rail_speed = rti->max_speed;
+	td.railtype = rti->strings.name;
 }
 
-void FillTileDescAirport(TileIndex tile, TileDesc *td)
+void FillTileDescAirport(TileIndex tile, TileDesc &td)
 {
 	const AirportSpec *as = Station::GetByTile(tile)->airport.GetSpec();
-	td->airport_class = AirportClass::Get(as->class_index)->name;
-	td->airport_name = as->name;
+	td.airport_class = AirportClass::Get(as->class_index)->name;
+	td.airport_name = as->name;
 
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
-	td->airport_tile_name = ats->name;
+	td.airport_tile_name = ats->name;
 
 	if (as->grf_prop.HasGrfFile()) {
 		const GRFConfig *gc = GetGRFConfig(as->grf_prop.grfid);
-		td->grf = gc->GetName();
+		td.grf = gc->GetName();
 	} else if (ats->grf_prop.HasGrfFile()) {
 		const GRFConfig *gc = GetGRFConfig(ats->grf_prop.grfid);
-		td->grf = gc->GetName();
+		td.grf = gc->GetName();
 	}
 }
 
-static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Station(TileIndex tile, TileDesc &td)
 {
-	td->owner[0] = GetTileOwner(tile);
-	td->build_date = BaseStation::GetByTile(tile)->build_date;
+	td.owner[0] = GetTileOwner(tile);
+	td.build_date = BaseStation::GetByTile(tile)->build_date;
 
 	if (IsAnyRoadStop(tile)) FillTileDescRoadStop(tile, td);
 	if (HasStationRail(tile)) FillTileDescRailStation(tile, td);
@@ -3546,9 +3546,9 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		case StationType::Oilrig: {
 			const Industry *i = Station::GetByTile(tile)->industry;
 			const IndustrySpec *is = GetIndustrySpec(i->type);
-			td->owner[0] = i->owner;
+			td.owner[0] = i->owner;
 			str = is->name;
-			if (is->grf_prop.HasGrfFile()) td->grf = GetGRFConfig(is->grf_prop.grfid)->GetName();
+			if (is->grf_prop.HasGrfFile()) td.grf = GetGRFConfig(is->grf_prop.grfid)->GetName();
 			break;
 		}
 		case StationType::Dock:     str = STR_LAI_STATION_DESCRIPTION_SHIP_DOCK; break;
@@ -3556,7 +3556,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		case StationType::RailWaypoint: str = STR_LAI_STATION_DESCRIPTION_WAYPOINT; break;
 		case StationType::RoadWaypoint: str = STR_LAI_STATION_DESCRIPTION_WAYPOINT; break;
 	}
-	td->str = str;
+	td.str = str;
 }
 
 
