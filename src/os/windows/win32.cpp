@@ -23,7 +23,6 @@
 #include <io.h>
 #include "win32.h"
 #include "../../fios.h"
-#include "../../core/alloc_func.hpp"
 #include "../../string_func.h"
 #include <sys/stat.h>
 #include "../../language.h"

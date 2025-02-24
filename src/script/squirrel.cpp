@@ -17,7 +17,6 @@
 #include <sqstdaux.h>
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
-#include "../core/alloc_func.hpp"
 
 /**
  * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
