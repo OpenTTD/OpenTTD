@@ -4540,7 +4540,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Comută 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de comenzi - clic pe o comandă pentru a o selecta. Ctrl+Click pentru a repoziționa ecranul pe stația destinație
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Sfârșitul comenzilor - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Sfârșitul comenzilor sincronizate - -
@@ -4639,15 +4638,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Mergi fără op
 STR_ORDER_SERVICE_AT                                            :Service la
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Service non-stop la
 
-STR_ORDER_NEAREST_DEPOT                                         :cel mai apropiat
-STR_ORDER_NEAREST_HANGAR                                        :cel mai apropiat Hangar
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Depou de Trenuri
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Autobază
 STR_ORDER_SHIP_DEPOT                                            :șantier Naval
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Rearanjeaza in {STRING})

@@ -4575,7 +4575,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Passa al
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista degli ordini - fare clic su un ordine per selezionarlo. Ctrl+Clic per scorrere fino alla destinazione dell'ordine
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fine degli ordini - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fine degli ordini condivisi - -
@@ -4674,15 +4673,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Passa no-stop p
 STR_ORDER_SERVICE_AT                                            :Manutenzione a
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenzione no-stop a
 
-STR_ORDER_NEAREST_DEPOT                                         :più vicino
-STR_ORDER_NEAREST_HANGAR                                        :più vicino Hangar
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Deposito ferroviario
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Deposito automezzi
 STR_ORDER_SHIP_DEPOT                                            :Deposito navale
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING}l {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Riadatta per {STRING})

@@ -4231,15 +4231,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :{WAYPOINT} :ע�
 STR_ORDER_SERVICE_AT                                            :טיפול ב
 STR_ORDER_SERVICE_NON_STOP_AT                                   :טיפול ללא עצירה ב
 
-STR_ORDER_NEAREST_DEPOT                                         :הקרוב
-STR_ORDER_NEAREST_HANGAR                                        :סככת המטוסים הקרובה
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :מוסך רכבות
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :מוסך רכבים
 STR_ORDER_SHIP_DEPOT                                            :מבדוק ספינות
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{2:STRING} {1:STRING} {0:STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING} התאם לנשיאת)
@@ -4247,7 +4244,6 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(ועצור {ST
 STR_ORDER_STOP_ORDER                                            :(עצור)
 
 
-STR_ORDER_GO_TO_STATION                                         :{2:STRING} {1:STATION} {0:STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(לא ניתן להשתמש בתחנה){POP_COLOUR} {STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(משתמע)

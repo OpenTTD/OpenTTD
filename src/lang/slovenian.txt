@@ -4030,15 +4030,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Pojdi non-stop 
 STR_ORDER_SERVICE_AT                                            :Na servis v
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Na servis non-stop v
 
-STR_ORDER_NEAREST_DEPOT                                         :najbližjo
-STR_ORDER_NEAREST_HANGAR                                        :najbližji hangar
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Železniška garaža
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cestna garaža
 STR_ORDER_SHIP_DEPOT                                            :Ladijska garaža
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Preuredi za {STRING})

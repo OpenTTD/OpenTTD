@@ -391,7 +391,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Abrir li
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Abrir lista de estaciones de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Abrir información financiera de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Abrir información general de la empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Mostrar historial
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir libro de historias
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostrar lista de objetivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficas de empresa y tasas de pago por carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabla de evaluación de empresas
@@ -3796,9 +3796,9 @@ STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :hasta {DATE_SHO
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} restantes
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}Historial de {COMPANY}
-STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Historial global
-STR_STORY_BOOK_SPECTATOR                                        :Historial global
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Libro de historias de {COMPANY}
+STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Libro de historias global
+STR_STORY_BOOK_SPECTATOR                                        :Libro de historias global
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Página {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Ir directamente a una página específica
@@ -4157,7 +4157,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {
 STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} (Costo de reformación: {GOLD}{CURRENCY_LONG}{BLACK}) Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reforma: {GOLD}{STRING}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformable a: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todo tipo de carga
 STR_PURCHASE_INFO_NONE                                          :Ninguno
 STR_PURCHASE_INFO_ENGINES_ONLY                                  :Solo locomotoras
@@ -4593,7 +4593,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de órdenes. Clic para resaltar. Ctrl+Clic para ir al destino de la orden
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fin de órdenes - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fin de órdenes compartidas - -
@@ -4692,15 +4691,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir sin paradas 
 STR_ORDER_SERVICE_AT                                            :Mantenimiento en
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Ir a sin paradas a mantenimiento en
 
-STR_ORDER_NEAREST_DEPOT                                         :el más cercano
-STR_ORDER_NEAREST_HANGAR                                        :el hangar más cercano
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :depósito de trenes
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de autotransportes
 STR_ORDER_SHIP_DEPOT                                            :astillero de barcos
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Reformar a {STRING})

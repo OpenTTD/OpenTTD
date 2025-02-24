@@ -3568,15 +3568,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Pergi tanpa hen
 STR_ORDER_SERVICE_AT                                            :Selenggara di
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Servis tanpa henti di
 
-STR_ORDER_NEAREST_DEPOT                                         :paling hampir
-STR_ORDER_NEAREST_HANGAR                                        :hangar yang paling hampir
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Depoh Keretapi
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depoh Kenderaan Jalanraya
 STR_ORDER_SHIP_DEPOT                                            :Depoh Kapal
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Ubahsuai ke {STRING})

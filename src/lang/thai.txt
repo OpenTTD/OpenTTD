@@ -3985,15 +3985,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :ไม่หย
 STR_ORDER_SERVICE_AT                                            :ซ่อมบำรุงที่
 STR_ORDER_SERVICE_NON_STOP_AT                                   :ไม่หยุดจนไปซ่อมบำรุงที่
 
-STR_ORDER_NEAREST_DEPOT                                         :ใกล้ที่สุด
-STR_ORDER_NEAREST_HANGAR                                        :โรงซ่อมที่ใกล้ที่สุด
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :โรงซ่อมบำรุง
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :โรงซ่อมบำรุงรถ
 STR_ORDER_SHIP_DEPOT                                            :อู่เรือ
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(ดัดแปลงเป็น {STRING})

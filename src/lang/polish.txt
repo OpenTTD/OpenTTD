@@ -3157,8 +3157,8 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nie pod�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Podświetl zasięg projektowanej stacji
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptuje: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Zasoby: {GOLD}{CARGO_LIST}
-STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Kosz utrzymania: {GOLD}{CURRENCY_SHORT}/rok
-STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Kosz utrzymania: {GOLD}{CURRENCY_SHORT}/okres
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_SHORT}/rok
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_SHORT}/okres
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Połącz stację
@@ -4523,8 +4523,8 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędko�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Prędkość na oceanie: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Prędkość na kanale/rzece: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Kosz Utrzymania: {GOLD}{CURRENCY_LONG}/rok
-STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Kosz Utrzymania: {GOLD}{CURRENCY_LONG}/okres
+STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_LONG}/rok
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_LONG}/okres
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ładowność: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowywalny)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Żywotność: {GOLD}{COMMA} lat
@@ -4729,8 +4729,8 @@ STR_ENGINE_PREVIEW_SPEED_POWER                                  :Prędkość: {V
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :Typ samolotu: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Typ samolotu: {STRING} Zasięg: {COMMA} p{P ole ola ól}
-STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Kosz Utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Kosz Utrzymania: {CURRENCY_LONG}/okres
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Koszt utrzymania: {CURRENCY_LONG}/okres
 STR_ENGINE_PREVIEW_CAPACITY                                     :Ładowność: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Ładowność: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4978,7 +4978,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Otwórz 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - kliknij na polecenie, aby je zaznaczyć. Użyj Ctrl, aby przenieść się do miejsca docelowego
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Koniec poleceń - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec współdzielonych poleceń - -
@@ -5077,15 +5076,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bezpośred
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj bezpośrednio w
 
-STR_ORDER_NEAREST_DEPOT                                         :najbliższego
-STR_ORDER_NEAREST_HANGAR                                        :najbliższego hangaru
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :serwisu w warsztatach
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :serwisu w zajezdni
 STR_ORDER_SHIP_DEPOT                                            :Doku
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Przebuduj na {STRING.b})

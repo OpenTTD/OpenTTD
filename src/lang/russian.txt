@@ -4779,7 +4779,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Пока
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Список заданий. Щёлкните по заданию для выделения. Ctrl+щелчок - показать пункт назначения.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Конец заданий - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Конец общих заданий - -
@@ -4878,15 +4877,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехать бе
 STR_ORDER_SERVICE_AT                                            :Если требуется, пройти ТО в
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Если требуется, без остановок пройти ТО в
 
-STR_ORDER_NEAREST_DEPOT                                         :{NBSP}
-STR_ORDER_NEAREST_HANGAR                                        :{G=m}{NBSP}ангар
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :{G=n}депо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :{G=m}гараж
 STR_ORDER_SHIP_DEPOT                                            :{G=m}док
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} ближайш{G 2 ий ую ее ие}{STRING}{STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})

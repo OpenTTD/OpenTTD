@@ -4228,15 +4228,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Gabh gan stad t
 STR_ORDER_SERVICE_AT                                            :Seirbhísigh ag
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Seirbhísigh gan stad ag
 
-STR_ORDER_NEAREST_DEPOT                                         :is gaire
-STR_ORDER_NEAREST_HANGAR                                        :an Haingear is gaire
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Iosta Traenach
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Iosta Feithiclí Bóthair
 STR_ORDER_SHIP_DEPOT                                            :Iosta Traenach
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Athfheistigh go {STRING})

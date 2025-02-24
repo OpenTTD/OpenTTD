@@ -4569,7 +4569,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Отва
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Пътен лист - натиснете върху заповед за маркиране. Ctrl+Click - центрира върху дестинацията
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Край на Заповедите - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Край на Споделения пътен лист - -
@@ -4668,15 +4667,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Мини без
 STR_ORDER_SERVICE_AT                                            :Сервизиране когато е необходимо в
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Сервиз без спиране в
 
-STR_ORDER_NEAREST_DEPOT                                         :{LRM}
-STR_ORDER_NEAREST_HANGAR                                        :най-близкия хангар
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :{G=n}влаково депо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :{G=n}автомобилно депо
 STR_ORDER_SHIP_DEPOT                                            :{G=f}корабен док
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING}{G 2 "" най-близкия най-близкото най-близките} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Преоборудване за {STRING})

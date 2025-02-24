@@ -3995,15 +3995,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Gaan sonder-sto
 STR_ORDER_SERVICE_AT                                            :Diens by
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Diens geen-stop by
 
-STR_ORDER_NEAREST_DEPOT                                         :die naaste
-STR_ORDER_NEAREST_HANGAR                                        :die naaste vliegtuigloods
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Treindepot
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Pad Voertuig Diensstasie
 STR_ORDER_SHIP_DEPOT                                            :Skeepswerf
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Herbou na {STRING})

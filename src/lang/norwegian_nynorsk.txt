@@ -3813,15 +3813,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Køyr utan stop
 STR_ORDER_SERVICE_AT                                            :Vedlikehald ved
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Vedlikehald direkte ved
 
-STR_ORDER_NEAREST_DEPOT                                         :næraste
-STR_ORDER_NEAREST_HANGAR                                        :den næraste hangaren
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Togstall
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garasje
 STR_ORDER_SHIP_DEPOT                                            :Skipsdokk
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Bygg om til {STRING})

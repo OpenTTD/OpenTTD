@@ -4532,7 +4532,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Zaman ta
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + Sol tıklama istasyona kaydırır
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Talimatların Sonu - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Paylaşılmış talimat sonu - -
@@ -4631,15 +4630,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :{WAYPOINT} üze
 STR_ORDER_SERVICE_AT                                            :Burada bakıma gir
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Durmaksızın bakıma gir
 
-STR_ORDER_NEAREST_DEPOT                                         :en yakın
-STR_ORDER_NEAREST_HANGAR                                        :en yakın Hangar
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Tren Garajı
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Karayolu Garajı
 STR_ORDER_SHIP_DEPOT                                            :Tersane
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Moifiye ile > {STRING})

@@ -4592,7 +4592,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}시간�
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 경로의 끝 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 공유된 경로의 끝 - -
@@ -4691,15 +4690,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :직행 경유 {
 STR_ORDER_SERVICE_AT                                            :완행 점검
 STR_ORDER_SERVICE_NON_STOP_AT                                   :직행 점검
 
-STR_ORDER_NEAREST_DEPOT                                         :가까운
-STR_ORDER_NEAREST_HANGAR                                        :가까운 격납고
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :차량기지
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :차고지
 STR_ORDER_SHIP_DEPOT                                            :정박소
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING}{G 0 "으" ""}로 개조)

@@ -4680,7 +4680,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Pereiti 
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Užduočių sąrašas — užduotis pažymima ant jos spragtelėjus. Spragtelėjus laikant nuspaustą Ctrl klavišą, kad užduoties tikslo vieta būtų centruojama pagrindiniame ekrane
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Užduočių pabaiga- -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Bendrų užduočių pabaiga - -
@@ -4775,12 +4774,6 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Vykti nesustoja
 STR_ORDER_SERVICE_AT                                            :Vykti techninės apžiūros į
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Vykti techninės apžiūros nesustojant į
 
-STR_ORDER_NEAREST_DEPOT                                         :artimiausias
-STR_ORDER_NEAREST_DEPOT.kas                                     :artimiausias
-STR_ORDER_NEAREST_DEPOT.ka                                      :artimiausią
-STR_ORDER_NEAREST_HANGAR                                        :artimiausias angaras
-STR_ORDER_NEAREST_HANGAR.kas                                    :artimiausias angaras
-STR_ORDER_NEAREST_HANGAR.ka                                     :artimiausią angarą
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :depas
 STR_ORDER_TRAIN_DEPOT.kas                                       :depas
@@ -4793,7 +4786,6 @@ STR_ORDER_SHIP_DEPOT.kas                                        :dokas
 STR_ORDER_SHIP_DEPOT.ka                                         :doką
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING.ka} {STRING.ka}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} „{DEPOT}“
 
 STR_ORDER_REFIT_ORDER                                           :(pertvarkyti {STRING.kam})
@@ -4802,7 +4794,6 @@ STR_ORDER_STOP_ORDER                                            :(sustoti)
 
 STR_ORDER_WAIT_TO_UNBUNCH                                       :(Palaukti iškrovimo)
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} „{STATION}“ {STRING}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Negalima naudotis stotimi){POP_COLOUR} {STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(automatinis)

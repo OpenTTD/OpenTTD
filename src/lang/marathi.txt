@@ -1708,7 +1708,6 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}सर�
 ###length 3
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 

@@ -3766,15 +3766,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Hemendik joan g
 STR_ORDER_SERVICE_AT                                            :Mantenimendua
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Gelditu gabeko mantenimendua
 
-STR_ORDER_NEAREST_DEPOT                                         :hurbilena
-STR_ORDER_NEAREST_HANGAR                                        :Hangar hurbilena
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Tren gordailua
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Errepide ibilgailu gordailua
 STR_ORDER_SHIP_DEPOT                                            :Itsasontzi gordailua
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Honera birmoldatu {STRING})
@@ -3782,7 +3779,6 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(honera birmold
 STR_ORDER_STOP_ORDER                                            :(Gelditu)
 
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}-ra {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Implizitua)
 

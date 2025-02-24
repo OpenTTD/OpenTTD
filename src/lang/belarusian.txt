@@ -4846,7 +4846,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Праг
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Сьпіс заданьняў: пстрыкніце заданьне для вылучэньня. Ctrl+пстрычка — агляд станцыі прызначэньня.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Канец заданьняў - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Канец агульных заданьняў - -
@@ -4945,15 +4944,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехаць бе
 STR_ORDER_SERVICE_AT                                            :Для праходжаньня ТА ісьці ў
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Для праходжаньня ТА ісьці без прыпынкаў у
 
-STR_ORDER_NEAREST_DEPOT                                         :{NBSP}
-STR_ORDER_NEAREST_HANGAR                                        :{G=m}{NBSP}анґар
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :{G=n}дэпо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :{G=m}гараж
 STR_ORDER_SHIP_DEPOT                                            :{G=m}док
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} найбліжэйш{G 2 ы ую ае ыя}{STRING}{STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Пераабстал. пад {STRING.acc})

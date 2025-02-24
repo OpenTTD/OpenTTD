@@ -4146,15 +4146,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Rach gun stad s
 STR_ORDER_SERVICE_AT                                            :Obair-ghlèidhidh aig
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Obair-ghlèidhidh gun stad aig
 
-STR_ORDER_NEAREST_DEPOT                                         :as fhaisge
-STR_ORDER_NEAREST_HANGAR                                        :’n hangar as fhaisge
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :’n trèan-lann
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :’n gharaids
 STR_ORDER_SHIP_DEPOT                                            :’n chala
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Mùth airson {STRING})

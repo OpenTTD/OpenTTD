@@ -3456,15 +3456,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Far non-stop vi
 STR_ORDER_SERVICE_AT                                            :Eftirlit í
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Eftirlit non-stop í
 
-STR_ORDER_NEAREST_DEPOT                                         :nærmastu
-STR_ORDER_NEAREST_HANGAR                                        :nærmasti hangarur
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Tok goymsla
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Akfars goymsla
 STR_ORDER_SHIP_DEPOT                                            :Skips goymsla
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Bygg um til {STRING})

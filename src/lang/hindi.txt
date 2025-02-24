@@ -1378,12 +1378,10 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}वा�
 # String parts to build the order string
 
 
-STR_ORDER_NEAREST_DEPOT                                         :निकटतम
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :ट्रेन डिपो
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 

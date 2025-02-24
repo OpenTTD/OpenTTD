@@ -3649,15 +3649,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 
 STR_ORDER_SERVICE_AT                                            :Underhâld by
 
-STR_ORDER_NEAREST_DEPOT                                         :de tichtstbye
-STR_ORDER_NEAREST_HANGAR                                        :de tichtstbye Hangar
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Treindepot
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garaazje
 STR_ORDER_SHIP_DEPOT                                            :Skip Depot
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Ombouwe nij {STRING})

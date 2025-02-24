@@ -4693,7 +4693,6 @@ STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλα
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - πατήστε σε μια εντολή για να την επιλέξετε. Ctrl+Κλικ για μετακίνηση στον προορισμό της εντολής
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Τέλος Εντολών - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Τέλος Διαμοιρασμένων Εντολών - -
@@ -4792,15 +4791,12 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Πήγαινε 
 STR_ORDER_SERVICE_AT                                            :Επισκευή στο
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Επισκευή χωρίς στάση στο
 
-STR_ORDER_NEAREST_DEPOT                                         :το κοντινότερο
-STR_ORDER_NEAREST_HANGAR                                        :το κοντινότερο Υπόστεγο
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :Αμαξοστάσιο Τρένων
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Αμαξοστάσιο Οχημάτων
 STR_ORDER_SHIP_DEPOT                                            :Ναυπηγείο Πλοίων
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Μετατροπή σε {STRING})
