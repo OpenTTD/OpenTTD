@@ -517,7 +517,7 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 	sq_pushstring(vm, class_name);
 	sq_get(vm, -2);
 	sq_push(vm, index);
-	if (sq_instanceof(vm)) {
+	if (sq_instanceof(vm) == SQTrue) {
 		sq_pop(vm, 3);
 		SQUserPointer ptr = nullptr;
 		if (SQ_SUCCEEDED(sq_getinstanceup(vm, index, &ptr, nullptr))) return ptr;
