@@ -511,6 +511,7 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 
 /* static */ SQUserPointer Squirrel::GetRealInstance(HSQUIRRELVM vm, int index, const char *tag)
 {
+	if (sq_gettype(vm, index) == OT_NULL) return nullptr;
 	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
 	std::string class_name = fmt::format("{}{}", engine->GetAPIName(), tag);
 	sq_pushroottable(vm);
