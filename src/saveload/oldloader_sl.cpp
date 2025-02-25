@@ -615,7 +615,7 @@ static const OldChunks town_chunk[] = {
 
 static bool LoadOldTown(LoadgameState &ls, int num)
 {
-	Town *t = new (num) Town();
+	Town *t = new (TownID(num)) Town();
 	if (!LoadChunk(ls, t, town_chunk)) return false;
 
 	if (t->xy != 0) {
@@ -640,7 +640,7 @@ static bool LoadOldOrder(LoadgameState &ls, int num)
 {
 	if (!LoadChunk(ls, nullptr, order_chunk)) return false;
 
-	Order *o = new (num) Order();
+	Order *o = new (OrderID(num)) Order();
 	o->AssignOrder(UnpackOldOrder(_old_order));
 
 	if (o->IsType(OT_NOTHING)) {
@@ -682,7 +682,7 @@ static const OldChunks depot_chunk[] = {
 
 static bool LoadOldDepot(LoadgameState &ls, int num)
 {
-	Depot *d = new (num) Depot();
+	Depot *d = new (DepotID(num)) Depot();
 	if (!LoadChunk(ls, d, depot_chunk)) return false;
 
 	if (d->xy != 0) {
@@ -770,7 +770,7 @@ static const OldChunks station_chunk[] = {
 
 static bool LoadOldStation(LoadgameState &ls, int num)
 {
-	Station *st = new (num) Station();
+	Station *st = new (StationID(num)) Station();
 	_current_station_id = st->index;
 
 	if (!LoadChunk(ls, st, station_chunk)) return false;
@@ -852,7 +852,7 @@ static const OldChunks industry_chunk[] = {
 
 static bool LoadOldIndustry(LoadgameState &ls, int num)
 {
-	Industry *i = new (num) Industry();
+	Industry *i = new (IndustryID(num)) Industry();
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
 	if (i->location.tile != 0) {
@@ -978,7 +978,7 @@ static const OldChunks _company_chunk[] = {
 
 static bool LoadOldCompany(LoadgameState &ls, int num)
 {
-	Company *c = new (num) Company();
+	Company *c = new (CompanyID(num)) Company();
 
 	_current_company_id = (CompanyID)num;
 
@@ -1260,12 +1260,12 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 				default: return false;
 				case 0x00 /* VEH_INVALID  */: v = nullptr;                                        break;
 				case 0x25 /* MONORAIL     */:
-				case 0x20 /* VEH_TRAIN    */: v = new (_current_vehicle_id) Train();           break;
-				case 0x21 /* VEH_ROAD     */: v = new (_current_vehicle_id) RoadVehicle();     break;
-				case 0x22 /* VEH_SHIP     */: v = new (_current_vehicle_id) Ship();            break;
-				case 0x23 /* VEH_AIRCRAFT */: v = new (_current_vehicle_id) Aircraft();        break;
-				case 0x24 /* VEH_EFFECT   */: v = new (_current_vehicle_id) EffectVehicle();   break;
-				case 0x26 /* VEH_DISASTER */: v = new (_current_vehicle_id) DisasterVehicle(); break;
+				case 0x20 /* VEH_TRAIN    */: v = new (VehicleID(_current_vehicle_id)) Train();           break;
+				case 0x21 /* VEH_ROAD     */: v = new (VehicleID(_current_vehicle_id)) RoadVehicle();     break;
+				case 0x22 /* VEH_SHIP     */: v = new (VehicleID(_current_vehicle_id)) Ship();            break;
+				case 0x23 /* VEH_AIRCRAFT */: v = new (VehicleID(_current_vehicle_id)) Aircraft();        break;
+				case 0x24 /* VEH_EFFECT   */: v = new (VehicleID(_current_vehicle_id)) EffectVehicle();   break;
+				case 0x26 /* VEH_DISASTER */: v = new (VehicleID(_current_vehicle_id)) DisasterVehicle(); break;
 			}
 
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
@@ -1338,12 +1338,12 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 			switch (ReadByte(ls)) {
 				default: SlErrorCorrupt("Invalid vehicle type");
 				case 0x00 /* VEH_INVALID */: v = nullptr;                                        break;
-				case 0x10 /* VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
-				case 0x11 /* VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
-				case 0x12 /* VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
-				case 0x13 /* VEH_AIRCRAFT*/: v = new (_current_vehicle_id) Aircraft();        break;
-				case 0x14 /* VEH_EFFECT  */: v = new (_current_vehicle_id) EffectVehicle();   break;
-				case 0x15 /* VEH_DISASTER*/: v = new (_current_vehicle_id) DisasterVehicle(); break;
+				case 0x10 /* VEH_TRAIN   */: v = new (VehicleID(_current_vehicle_id)) Train();           break;
+				case 0x11 /* VEH_ROAD    */: v = new (VehicleID(_current_vehicle_id)) RoadVehicle();     break;
+				case 0x12 /* VEH_SHIP    */: v = new (VehicleID(_current_vehicle_id)) Ship();            break;
+				case 0x13 /* VEH_AIRCRAFT*/: v = new (VehicleID(_current_vehicle_id)) Aircraft();        break;
+				case 0x14 /* VEH_EFFECT  */: v = new (VehicleID(_current_vehicle_id)) EffectVehicle();   break;
+				case 0x15 /* VEH_DISASTER*/: v = new (VehicleID(_current_vehicle_id)) DisasterVehicle(); break;
 			}
 
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
@@ -1413,7 +1413,7 @@ static const OldChunks sign_chunk[] = {
 
 static bool LoadOldSign(LoadgameState &ls, int num)
 {
-	Sign *si = new (num) Sign();
+	Sign *si = new (SignID(num)) Sign();
 	if (!LoadChunk(ls, si, sign_chunk)) return false;
 
 	if (_old_string_id != 0) {
@@ -1477,7 +1477,7 @@ static const OldChunks subsidy_chunk[] = {
 
 static bool LoadOldSubsidy(LoadgameState &ls, int num)
 {
-	Subsidy *s = new (num) Subsidy();
+	Subsidy *s = new (SubsidyID(num)) Subsidy();
 	bool ret = LoadChunk(ls, s, subsidy_chunk);
 	if (!IsValidCargoType(s->cargo_type)) delete s;
 	return ret;

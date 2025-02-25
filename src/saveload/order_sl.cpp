@@ -148,7 +148,7 @@ struct ORDRChunkHandler : ChunkHandler {
 				SlCopy(&orders[0], len, SLE_UINT16);
 
 				for (size_t i = 0; i < len; ++i) {
-					Order *o = new (i) Order();
+					Order *o = new (OrderID(static_cast<uint32_t>(i))) Order();
 					o->AssignOrder(UnpackVersion4Order(orders[i]));
 				}
 			} else if (IsSavegameVersionBefore(SLV_5, 2)) {
@@ -158,7 +158,7 @@ struct ORDRChunkHandler : ChunkHandler {
 				SlCopy(&orders[0], len, SLE_UINT32);
 
 				for (size_t i = 0; i < len; ++i) {
-					new (i) Order(GB(orders[i], 0, 8), GB(orders[i], 8, 8), GB(orders[i], 16, 16));
+					new (OrderID(static_cast<uint32_t>(i))) Order(GB(orders[i], 0, 8), GB(orders[i], 8, 8), GB(orders[i], 16, 16));
 				}
 			}
 
@@ -181,7 +181,7 @@ struct ORDRChunkHandler : ChunkHandler {
 			int index;
 
 			while ((index = SlIterateArray()) != -1) {
-				Order *order = new (index) Order();
+				Order *order = new (OrderID(index)) Order();
 				SlObject(order, slt);
 			}
 		}
@@ -229,7 +229,7 @@ struct ORDLChunkHandler : ChunkHandler {
 
 		while ((index = SlIterateArray()) != -1) {
 			/* set num_orders to 0 so it's a valid OrderList */
-			OrderList *list = new (index) OrderList(0);
+			OrderList *list = new (OrderListID(index)) OrderList(0);
 			SlObject(list, slt);
 		}
 
@@ -294,7 +294,7 @@ struct BKORChunkHandler : ChunkHandler {
 
 		while ((index = SlIterateArray()) != -1) {
 			/* set num_orders to 0 so it's a valid OrderList */
-			OrderBackup *ob = new (index) OrderBackup();
+			OrderBackup *ob = new (OrderBackupID(index)) OrderBackup();
 			SlObject(ob, slt);
 		}
 	}

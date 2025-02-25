@@ -25,7 +25,7 @@ using CargoPacketID = PoolID<uint32_t, struct CargoPacketIDTag, 0xFFF000, 0xFFFF
 struct CargoPacket;
 
 /** Type of the pool for cargo packets for a little over 16 million packets. */
-using CargoPacketPool = Pool<CargoPacket, CargoPacketID, 1024, PoolType::Normal, true, false>;
+using CargoPacketPool = Pool<CargoPacket, CargoPacketID, 1024, PoolType::Normal, true>;
 /** The actual pool with cargo packets. */
 extern CargoPacketPool _cargopacket_pool;
 
