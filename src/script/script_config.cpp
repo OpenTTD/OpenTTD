@@ -27,6 +27,7 @@ void ScriptConfig::Change(std::optional<const std::string> name, int version, bo
 		this->info = nullptr;
 	}
 	this->version = (info == nullptr) ? -1 : info->GetVersion();
+	this->force_exact_match = (info == nullptr) ? false : force_exact_match;
 	this->config_list.reset();
 	this->to_load_data.reset();
 
@@ -38,6 +39,7 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	this->name = config->name;
 	this->info = config->info;
 	this->version = config->version;
+	this->force_exact_match = config->force_exact_match;
 	this->to_load_data.reset();
 
 	for (const auto &item : config->settings) {
@@ -136,6 +138,11 @@ const std::string &ScriptConfig::GetName() const
 int ScriptConfig::GetVersion() const
 {
 	return this->version;
+}
+
+bool ScriptConfig::GetForceExactMatch() const
+{
+	return this->force_exact_match;
 }
 
 void ScriptConfig::StringToSettings(const std::string &value)

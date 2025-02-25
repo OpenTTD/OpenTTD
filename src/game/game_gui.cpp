@@ -168,9 +168,15 @@ struct GSConfigWindow : public Window {
 			case WID_GSC_GSLIST: {
 				StringID text = STR_AI_CONFIG_NONE;
 
-				if (GameConfig::GetConfig()->GetInfo() != nullptr) {
-					SetDParamStr(0, GameConfig::GetConfig()->GetInfo()->GetName());
-					text = STR_JUST_RAW_STRING;
+				GameConfig *config = GameConfig::GetConfig();
+				if (config->GetInfo() != nullptr) {
+					SetDParamStr(0, config->GetInfo()->GetName());
+					if (config->GetForceExactMatch()) {
+						SetDParam(1, config->GetInfo()->GetVersion());
+						text = STR_AI_CONFIG_NAME_VERSION;
+					} else {
+						text = STR_JUST_RAW_STRING;
+					}
 				}
 
 				/* There is only one slot, unlike with the GS GUI, so it should never be white */
