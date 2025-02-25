@@ -297,8 +297,8 @@ private:
 
 /** Window to enter the chat message in. */
 struct NetworkChatWindow : public Window {
-	DestType dtype;       ///< The type of destination.
-	int dest;             ///< The identifier of the destination.
+	DestType dtype{}; ///< The type of destination.
+	int dest = 0; ///< The identifier of the destination.
 	QueryString message_editbox; ///< Message editbox.
 	NetworkChatAutoCompletion chat_tab_completion; ///< Holds the state and logic of auto-completion of player names and towns on Tab press.
 
@@ -309,10 +309,8 @@ struct NetworkChatWindow : public Window {
 	 * @param dest The actual destination index.
 	 */
 	NetworkChatWindow(WindowDesc &desc, DestType type, int dest)
-			: Window(desc), message_editbox(NETWORK_CHAT_LENGTH), chat_tab_completion(&message_editbox.text)
+			: Window(desc), dtype(type), dest(dest), message_editbox(NETWORK_CHAT_LENGTH), chat_tab_completion(&message_editbox.text)
 	{
-		this->dtype   = type;
-		this->dest    = dest;
 		this->querystrings[WID_NC_TEXTBOX] = &this->message_editbox;
 		this->message_editbox.cancel_button = WID_NC_CLOSE;
 		this->message_editbox.ok_button = WID_NC_SENDBUTTON;
