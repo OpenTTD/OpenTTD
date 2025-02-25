@@ -1,6 +1,4 @@
 add_files(
-    alloc_func.cpp
-    alloc_func.hpp
     alloc_type.hpp
     backup_type.hpp
     base_bitset_type.hpp

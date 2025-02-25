@@ -79,7 +79,7 @@ void MoveBuoysToWaypoints()
 		/* Stations and waypoints are in the same pool, so if a station
 		 * is deleted there must be place for a Waypoint. */
 		assert(Waypoint::CanAllocateItem());
-		Waypoint *wp   = new (index.base()) Waypoint(xy);
+		Waypoint *wp   = new (index) Waypoint(xy);
 		wp->town       = town;
 		wp->string_id  = train ? STR_SV_STNAME_WAYPOINT : STR_SV_STNAME_BUOY;
 		wp->name       = name;
@@ -512,7 +512,7 @@ struct STNSChunkHandler : ChunkHandler {
 
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			Station *st = new (index) Station();
+			Station *st = new (StationID(index)) Station();
 
 			_waiting_acceptance = 0;
 			SlObject(st, slt);
@@ -714,7 +714,7 @@ struct STNNChunkHandler : ChunkHandler {
 		while ((index = SlIterateArray()) != -1) {
 			bool waypoint = static_cast<StationFacilities>(SlReadByte()).Test(StationFacility::Waypoint);
 
-			BaseStation *bst = waypoint ? (BaseStation *)new (index) Waypoint() : new (index) Station();
+			BaseStation *bst = waypoint ? (BaseStation *)new (StationID(index)) Waypoint() : new (StationID(index)) Station();
 			SlObject(bst, slt);
 		}
 	}
@@ -752,7 +752,7 @@ struct ROADChunkHandler : ChunkHandler {
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			RoadStop *rs = new (index) RoadStop(INVALID_TILE);
+			RoadStop *rs = new (RoadStopID(index)) RoadStop(INVALID_TILE);
 
 			SlObject(rs, slt);
 		}

@@ -85,21 +85,18 @@ static WindowDesc _gs_config_desc(
  * Window to configure which GSs will start.
  */
 struct GSConfigWindow : public Window {
-	ScriptConfig *gs_config; ///< The configuration we're modifying.
-	int line_height;         ///< Height of a single GS-name line.
-	int clicked_button;      ///< The button we clicked.
-	bool clicked_increase;   ///< Whether we clicked the increase or decrease button.
-	bool clicked_dropdown;   ///< Whether the dropdown is open.
-	bool closing_dropdown;   ///< True, if the dropdown list is currently closing.
-	int clicked_row;         ///< The clicked row of settings.
-	Scrollbar *vscroll;      ///< Cache of the vertical scrollbar.
+	ScriptConfig *gs_config = nullptr; ///< The configuration we're modifying.
+	int line_height = 0; ///< Height of a single GS-name line.
+	int clicked_button = -1; ///< The button we clicked.
+	bool clicked_increase = false; ///< Whether we clicked the increase or decrease button.
+	bool clicked_dropdown = false; ///< Whether the dropdown is open.
+	bool closing_dropdown = false; ///< True, if the dropdown list is currently closing.
+	int clicked_row = 0; ///< The clicked row of settings.
+	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar.
 	typedef std::vector<const ScriptConfigItem *> VisibleSettingsList; ///< typdef for a vector of script settings
-	VisibleSettingsList visible_settings; ///< List of visible GS settings
+	VisibleSettingsList visible_settings{}; ///< List of visible GS settings
 
-	GSConfigWindow() : Window(_gs_config_desc),
-		clicked_button(-1),
-		clicked_dropdown(false),
-		closing_dropdown(false)
+	GSConfigWindow() : Window(_gs_config_desc)
 	{
 		this->gs_config = GameConfig::GetConfig();
 

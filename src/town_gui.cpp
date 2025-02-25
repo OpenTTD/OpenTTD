@@ -79,15 +79,15 @@ static constexpr NWidgetPart _nested_town_authority_widgets[] = {
 /** Town authority window. */
 struct TownAuthorityWindow : Window {
 private:
-	Town *town;    ///< Town being displayed.
+	Town *town = nullptr; ///< Town being displayed.
 	TownAction sel_action = TownAction::End; ///< Currently selected town action, TownAction::End means no action selected.
 	TownActions displayed_actions_on_previous_painting{}; ///< Actions that were available on the previous call to OnPaint()
-	TownActions enabled_actions; ///< Actions that are enabled in settings.
+	TownActions enabled_actions{}; ///< Actions that are enabled in settings.
 	TownActions available_actions{}; ///< Actions that are available to execute for the current company.
-	StringID action_tooltips[to_underlying(TownAction::End)];
+	std::array<StringID, to_underlying(TownAction::End)> action_tooltips{};
 
-	Dimension icon_size;      ///< Dimensions of company icon
-	Dimension exclusive_size; ///< Dimensions of exclusive icon
+	Dimension icon_size{}; ///< Dimensions of company icon
+	Dimension exclusive_size{}; ///< Dimensions of exclusive icon
 
 	/**
 	 * Get the position of the Nth set bit.
@@ -364,7 +364,7 @@ static void ShowTownAuthorityWindow(uint town)
 /* Town view window. */
 struct TownViewWindow : Window {
 private:
-	Town *town; ///< Town displayed by the window.
+	Town *town = nullptr; ///< Town displayed by the window.
 
 public:
 	static const int WID_TV_HEIGHT_NORMAL = 150;
@@ -742,12 +742,12 @@ private:
 	};
 	static const std::initializer_list<GUITownList::SortFunction * const> sorter_funcs;
 
-	StringFilter string_filter;             ///< Filter for towns
-	QueryString townname_editbox;           ///< Filter editbox
+	StringFilter string_filter{}; ///< Filter for towns
+	QueryString townname_editbox; ///< Filter editbox
 
 	GUITownList towns{TownDirectoryWindow::last_sorting.order};
 
-	Scrollbar *vscroll;
+	Scrollbar *vscroll = nullptr;
 
 	void BuildSortTownList()
 	{
@@ -1165,18 +1165,17 @@ static constexpr NWidgetPart _nested_found_town_widgets[] = {
 /** Found a town window class. */
 struct FoundTownWindow : Window {
 private:
-	TownSize town_size;     ///< Selected town size
-	TownLayout town_layout; ///< Selected town layout
-	bool city;              ///< Are we building a city?
+	TownSize town_size = TSZ_MEDIUM; ///< Selected town size
+	TownLayout town_layout{}; ///< Selected town layout
+	bool city = false; ///< Are we building a city?
 	QueryString townname_editbox; ///< Townname editbox
-	bool townnamevalid;     ///< Is generated town name valid?
-	uint32_t townnameparts;   ///< Generated town name
-	TownNameParams params;  ///< Town name parameters
+	bool townnamevalid = false; ///< Is generated town name valid?
+	uint32_t townnameparts = 0; ///< Generated town name
+	TownNameParams params; ///< Town name parameters
 
 public:
 	FoundTownWindow(WindowDesc &desc, WindowNumber window_number) :
 			Window(desc),
-			town_size(TSZ_MEDIUM),
 			town_layout(_settings_game.economy.town_layout),
 			townname_editbox(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS),
 			params(_settings_game.game_creation.town_name)
@@ -1674,8 +1673,8 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 }
 
 struct BuildHouseWindow : public PickerWindow {
-	std::string house_info;
-	bool house_protected;
+	std::string house_info{};
+	bool house_protected = false;
 
 	BuildHouseWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, HousePickerCallbacks::instance)
 	{
