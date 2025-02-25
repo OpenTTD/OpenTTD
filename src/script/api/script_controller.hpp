@@ -209,11 +209,6 @@ private:
 	uint ticks;                       ///< The amount of ticks we're sleeping.
 	LoadedLibraryList loaded_library; ///< The libraries we loaded.
 	int loaded_library_count;         ///< The amount of libraries.
-
-	/**
-	 * Register all classes that are known inside the script API.
-	 */
-	void RegisterClasses();
 };
 
 #endif /* SCRIPT_CONTROLLER_HPP */
