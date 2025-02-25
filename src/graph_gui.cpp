@@ -184,24 +184,24 @@ protected:
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
 	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
-	uint64_t excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
-	uint64_t excluded_range; ///< bitmask of ranges that should not be displayed.
-	uint8_t num_on_x_axis;
-	uint8_t num_vert_lines;
+	uint64_t excluded_data = 0; ///< bitmask of the datasets that shouldn't be displayed.
+	uint64_t excluded_range = 0; ///< bitmask of ranges that should not be displayed.
+	uint8_t num_on_x_axis = 0;
+	uint8_t num_vert_lines = GRAPH_NUM_MONTHS;
 
 	/* The starting month and year that values are plotted against. */
-	TimerGameEconomy::Month month;
-	TimerGameEconomy::Year year;
-	uint8_t month_increment; ///< month increment between vertical lines. must be divisor of 12.
+	TimerGameEconomy::Month month{};
+	TimerGameEconomy::Year year{};
+	uint8_t month_increment = 3; ///< month increment between vertical lines. must be divisor of 12.
 
 	bool draw_dates = true; ///< Should we draw months and years on the time axis?
 
 	/* These values are used if the graph is being plotted against values
 	 * rather than the dates specified by month and year. */
-	uint16_t x_values_start;
-	uint16_t x_values_increment;
+	uint16_t x_values_start = 0;
+	uint16_t x_values_increment = 0;
 
-	StringID format_str_y_axis;
+	StringID format_str_y_axis{};
 
 	struct DataSet {
 		std::array<OverflowSafeInt64, GRAPH_NUM_MONTHS> values;
@@ -210,7 +210,7 @@ protected:
 		uint8_t range_bit;
 		uint8_t dash;
 	};
-	std::vector<DataSet> data;
+	std::vector<DataSet> data{};
 
 	std::span<const StringID> ranges = {};
 
@@ -519,8 +519,6 @@ protected:
 			format_str_y_axis(format_str_y_axis)
 	{
 		SetWindowDirty(WC_GRAPH_LEGEND, 0);
-		this->num_vert_lines = GRAPH_NUM_MONTHS;
-		this->month_increment = 3;
 	}
 
 	void InitializeWindow(WindowNumber number)
@@ -1026,9 +1024,9 @@ void ShowCompanyValueGraph()
 /*****************/
 
 struct PaymentRatesGraphWindow : BaseGraphWindow {
-	uint line_height;   ///< Pixel height of each cargo type row.
-	Scrollbar *vscroll; ///< Cargo list scrollbar.
-	uint legend_width;  ///< Width of legend 'blob'.
+	uint line_height = 0; ///< Pixel height of each cargo type row.
+	Scrollbar *vscroll = nullptr; ///< Cargo list scrollbar.
+	uint legend_width = 0; ///< Width of legend 'blob'.
 
 	PaymentRatesGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
@@ -1262,7 +1260,15 @@ void ShowCargoPaymentRates()
 
 struct PerformanceRatingDetailWindow : Window {
 	static CompanyID company;
-	int timeout;
+	int timeout = 0;
+	uint score_info_left = 0;
+	uint score_info_right = 0;
+	uint bar_left = 0;
+	uint bar_right = 0;
+	uint bar_width = 0;
+	uint bar_height = 0;
+	uint score_detail_left = 0;
+	uint score_detail_right = 0;
 
 	PerformanceRatingDetailWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
@@ -1282,15 +1288,6 @@ struct PerformanceRatingDetailWindow : Window {
 
 		this->timeout = Ticks::DAY_TICKS * 5;
 	}
-
-	uint score_info_left;
-	uint score_info_right;
-	uint bar_left;
-	uint bar_right;
-	uint bar_width;
-	uint bar_height;
-	uint score_detail_left;
-	uint score_detail_right;
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
@@ -1492,9 +1489,9 @@ CompanyID PerformanceRatingDetailWindow::company = CompanyID::Invalid();
 /*******************************/
 
 struct IndustryProductionGraphWindow : BaseGraphWindow {
-	uint line_height;   ///< Pixel height of each cargo type row.
-	Scrollbar *vscroll; ///< Cargo list scrollbar.
-	uint legend_width;  ///< Width of legend 'blob'.
+	uint line_height = 0; ///< Pixel height of each cargo type row.
+	Scrollbar *vscroll = nullptr; ///< Cargo list scrollbar.
+	uint legend_width = 0;  ///< Width of legend 'blob'.
 
 	static inline constexpr StringID RANGE_LABELS[] = {
 		STR_GRAPH_INDUSTRY_RANGE_PRODUCED,

@@ -561,13 +561,13 @@ private:
 		DP_BOTTOM_MIDDLE_STOP_SHARING = 1, ///< Display 'stop sharing' in the middle button of the bottom row of the vehicle order window.
 	};
 
-	int selected_order;
-	VehicleOrderID order_over;         ///< Order over which another order is dragged, \c INVALID_VEH_ORDER_ID if none.
-	OrderPlaceObjectState goto_type;
-	const Vehicle *vehicle; ///< Vehicle owning the orders being displayed and manipulated.
-	Scrollbar *vscroll;
-	bool can_do_refit;     ///< Vehicle chain can be refitted in depot.
-	bool can_do_autorefit; ///< Vehicle chain can be auto-refitted.
+	int selected_order = -1;
+	VehicleOrderID order_over = INVALID_VEH_ORDER_ID; ///< Order over which another order is dragged, \c INVALID_VEH_ORDER_ID if none.
+	OrderPlaceObjectState goto_type = OPOS_NONE;
+	const Vehicle *vehicle = nullptr; ///< Vehicle owning the orders being displayed and manipulated.
+	Scrollbar *vscroll = nullptr;
+	bool can_do_refit = false; ///< Vehicle chain can be refitted in depot.
+	bool can_do_autorefit = false; ///< Vehicle chain can be auto-refitted.
 
 	/**
 	 * Return the memorised selected order.
@@ -807,9 +807,6 @@ public:
 		}
 		this->FinishInitNested(v->index);
 
-		this->selected_order = -1;
-		this->order_over = INVALID_VEH_ORDER_ID;
-		this->goto_type = OPOS_NONE;
 		this->owner = v->owner;
 
 		this->UpdateAutoRefitState();

@@ -52,15 +52,15 @@ protected:
 		Right,
 	};
 
-	Scrollbar *vscroll;                ///< Scrollbar of the page text.
-	mutable LayoutCache layout_cache;  ///< Cached element layout.
+	Scrollbar *vscroll = nullptr; ///< Scrollbar of the page text.
+	mutable LayoutCache layout_cache{}; ///< Cached element layout.
 
-	GUIStoryPageList story_pages;      ///< Sorted list of pages.
-	GUIStoryPageElementList story_page_elements; ///< Sorted list of page elements that belong to the current page.
-	StoryPageID selected_page_id;      ///< Pool index of selected page.
-	std::string selected_generic_title;  ///< If the selected page doesn't have a custom title, this buffer is used to store a generic page title.
+	GUIStoryPageList story_pages{}; ///< Sorted list of pages.
+	GUIStoryPageElementList story_page_elements{}; ///< Sorted list of page elements that belong to the current page.
+	StoryPageID selected_page_id{}; ///< Pool index of selected page.
+	std::string selected_generic_title{}; ///< If the selected page doesn't have a custom title, this buffer is used to store a generic page title.
 
-	StoryPageElementID active_button_id; ///< Which button element the player is currently using
+	StoryPageElementID active_button_id{}; ///< Which button element the player is currently using
 
 	static const std::initializer_list<GUIStoryPageList::SortFunction * const> page_sorter_funcs;
 	static const std::initializer_list<GUIStoryPageElementList::SortFunction * const> page_element_sorter_funcs;

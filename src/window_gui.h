@@ -10,7 +10,6 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
-#include "core/alloc_type.hpp"
 #include "vehiclelist.h"
 #include "vehicle_type.h"
 #include "viewport_type.h"
@@ -270,7 +269,7 @@ enum TooltipCloseCondition : uint8_t {
 /**
  * Data structure for an opened window
  */
-struct Window : ZeroedMemoryAllocator {
+struct Window {
 private:
 	static std::vector<Window *> closed_windows;
 
@@ -279,8 +278,8 @@ protected:
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	virtual void FindWindowPlacementAndResize(int def_width, int def_height);
 
-	std::vector<int> scheduled_invalidation_data;  ///< Data of scheduled OnInvalidateData() calls.
-	bool scheduled_resize; ///< Set if window has been resized.
+	std::vector<int> scheduled_invalidation_data{}; ///< Data of scheduled OnInvalidateData() calls.
+	bool scheduled_resize = false; ///< Set if window has been resized.
 
 	/* Protected to prevent deletion anywhere outside Window::DeleteClosedWindows(). */
 	virtual ~Window();
@@ -296,37 +295,37 @@ public:
 	 */
 	inline void *operator new[](size_t size) = delete;
 
-	WindowDesc &window_desc;    ///< Window description
-	WindowFlags flags;          ///< Window flags
-	WindowClass window_class;   ///< Window class
-	WindowNumber window_number; ///< Window number within the window class
+	WindowDesc &window_desc; ///< Window description
+	WindowFlags flags{}; ///< Window flags
+	WindowClass window_class{}; ///< Window class
+	WindowNumber window_number = 0; ///< Window number within the window class
 
-	int scale; ///< Scale of this window -- used to determine how to resize.
+	int scale = 0; ///< Scale of this window -- used to determine how to resize.
 
-	uint8_t timeout_timer;      ///< Timer value of the WindowFlag::Timeout for flags.
-	uint8_t white_border_timer; ///< Timer value of the WindowFlag::WhiteBorder for flags.
+	uint8_t timeout_timer = 0; ///< Timer value of the WindowFlag::Timeout for flags.
+	uint8_t white_border_timer = 0; ///< Timer value of the WindowFlag::WhiteBorder for flags.
 
-	int left;   ///< x position of left edge of the window
-	int top;    ///< y position of top edge of the window
-	int width;  ///< width of the window (number of pixels to the right in x direction)
-	int height; ///< Height of the window (number of pixels down in y direction)
+	int left = 0; ///< x position of left edge of the window
+	int top = 0; ///< y position of top edge of the window
+	int width = 0; ///< width of the window (number of pixels to the right in x direction)
+	int height = 0; ///< Height of the window (number of pixels down in y direction)
 
-	ResizeInfo resize;  ///< Resize information
+	ResizeInfo resize{}; ///< Resize information
 
-	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
+	Owner owner = INVALID_OWNER; ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
-	ViewportData *viewport;          ///< Pointer to viewport data, if present.
-	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
-	std::map<WidgetID, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
-	std::unique_ptr<NWidgetBase> nested_root; ///< Root of the nested tree.
-	WidgetLookup widget_lookup; ///< Indexed access to the nested widget tree. Do not access directly, use #Window::GetWidget() instead.
-	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.
-	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
+	ViewportData *viewport = nullptr; ///< Pointer to viewport data, if present.
+	const NWidgetCore *nested_focus = nullptr; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
+	std::map<WidgetID, QueryString*> querystrings{}; ///< QueryString associated to WWT_EDITBOX widgets.
+	std::unique_ptr<NWidgetBase> nested_root{}; ///< Root of the nested tree.
+	WidgetLookup widget_lookup{}; ///< Indexed access to the nested widget tree. Do not access directly, use #Window::GetWidget() instead.
+	NWidgetStacked *shade_select = nullptr; ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.
+	Dimension unshaded_size{}; ///< Last known unshaded size (only valid while shaded).
 
-	WidgetID mouse_capture_widget;   ///< ID of current mouse capture widget (e.g. dragged scrollbar). -1 if no widget has mouse capture.
+	WidgetID mouse_capture_widget = -1; ///< ID of current mouse capture widget (e.g. dragged scrollbar). -1 if no widget has mouse capture.
 
-	Window *parent;                  ///< Parent window.
-	WindowList::iterator z_position;
+	Window *parent = nullptr; ///< Parent window.
+	WindowList::iterator z_position{};
 
 	template <class NWID>
 	inline const NWID *GetWidget(WidgetID widnum) const;

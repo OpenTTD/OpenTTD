@@ -115,8 +115,8 @@ public:
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 
 private:
-	std::shared_ptr<LinkGraphOverlay> overlay;
-	size_t num_cargo;
+	std::shared_ptr<LinkGraphOverlay> overlay{};
+	size_t num_cargo = 0;
 
 	void UpdateOverlayCompanies();
 	void UpdateOverlayCargoes();
