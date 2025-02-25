@@ -4697,54 +4697,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito Rodov
 STR_ORDER_SHIP_DEPOT                                            :Depósito de Embarcações
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} o Hangar mais próximo
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} o mais próximo {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Adaptar para {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Adaptar para {STRING} e parar)
-STR_ORDER_STOP_ORDER                                            :(Parar)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Adaptar para {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Adaptar para {STRING} e parar)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Parar)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Aguardar para desagrupar)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Aguardar para desagrupar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Não pode usar a estação){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Implícita)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implícita)
 
-STR_ORDER_FULL_LOAD                                             :(Carga completa)
-STR_ORDER_FULL_LOAD_ANY                                         :(Carga completa de qualquer carga)
-STR_ORDER_NO_LOAD                                               :(Não carregar)
-STR_ORDER_UNLOAD                                                :(Descarregar e pegar carga)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarregar e aguardar por carga completa)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarregar e aguardar por qualquer carga completa)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarregar e partir vazio)
-STR_ORDER_TRANSFER                                              :(Transferir e pegar carga)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir e aguardar por carga completa)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir e aguardar por qualquer carga completa)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir e partir vazio)
-STR_ORDER_NO_UNLOAD                                             :(Não descarregar e pegar carga)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e aguardar por carga completa)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e aguardar por qualquer carga completa)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Não descarregar e não carregar)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Carga completa)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Carga completa de qualquer carga)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Não carregar)
+STR_ORDER_UNLOAD                                                :{SPACE}(Descarregar e pegar carga)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Descarregar e aguardar por carga completa)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Descarregar e aguardar por qualquer carga completa)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Descarregar e partir vazio)
+STR_ORDER_TRANSFER                                              :{SPACE}(Transferir e pegar carga)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transferir e aguardar por carga completa)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transferir e aguardar por qualquer carga completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transferir e partir vazio)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Não descarregar e pegar carga)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Não descarregar e aguardar por carga completa)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Não descarregar e aguardar por qualquer carga completa)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Não descarregar e não carregar)
 
-STR_ORDER_AUTO_REFIT                                            :(Adaptar para {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Carga completa, com adaptação para {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Carga completa de qualquer carga, com adaptação para {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Descarregar e pegar carga, com adaptação para {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descarregar e aguardar por carga completa, com adaptação para {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarregar e aguardar por qualquer carga completa, com adaptação para {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transferir e pegar carga, com adaptação para {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir e aguardar por carga completa, com adaptação para {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir e aguardar por qualquer carga completa, com adaptação para {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Não descarregar e pegar carga, com adaptação para {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Não descarregar e aguardar por carga completa, com adaptação para {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Não descarregar e aguardar por qualquer carga completa, com adaptação para {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Adaptar para {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Carga completa com adaptação para {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Carga completa de qualquer carga com adaptação para {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Descarregar e pegar carga com adaptação para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Descarregar e aguardar por carga completa com adaptação para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Descarregar e aguardar por qualquer carga completa com adaptação para {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transferir e pegar carga com adaptação para {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transferir e aguardar por carga completa com adaptação para {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transferir e aguardar por qualquer carga completa com adaptação para {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Não descarregar e pegar carga com adaptação para {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Não descarregar e aguardar por carga completa com adaptação para {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Não descarregar e aguardar por qualquer carga completa com adaptação para {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :carga disponível
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[início]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[meio]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[final]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[início]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[meio]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[final]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Próximo destino está fora de alcance)
 
@@ -4769,8 +4771,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante 
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} no máximo a {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, não programado)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, não programado) no máximo a {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ficar por {STRING}, não programado)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante {STRING}, não programado)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(ficar por {STRING}, não programado)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar durante {STRING}, não programado)
 STR_TIMETABLE_STAY_FOR                                          :e ficar por {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar durante {STRING}
 

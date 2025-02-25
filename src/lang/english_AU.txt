@@ -4696,54 +4696,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Road Vehicle De
 STR_ORDER_SHIP_DEPOT                                            :Ship Depot
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} the nearest Hangar
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} the nearest {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Refit to {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Refit to {STRING} and stop)
-STR_ORDER_STOP_ORDER                                            :(Stop)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Refit to {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Refit to {STRING} and stop)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Wait to unbunch)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Wait to unbunch)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Can't use station){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Implicit)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implicit)
 
-STR_ORDER_FULL_LOAD                                             :(Full load)
-STR_ORDER_FULL_LOAD_ANY                                         :(Full load any cargo)
-STR_ORDER_NO_LOAD                                               :(No loading)
-STR_ORDER_UNLOAD                                                :(Unload and take cargo)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Unload and wait for full load)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Unload and wait for any full load)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Unload and leave empty)
-STR_ORDER_TRANSFER                                              :(Transfer and take cargo)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer and wait for full load)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer and wait for any full load)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer and leave empty)
-STR_ORDER_NO_UNLOAD                                             :(No unloading and take cargo)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unloading and wait for full load)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unloading and wait for any full load)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No unloading and no loading)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Full load)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Full load any cargo)
+STR_ORDER_NO_LOAD                                               :{SPACE}(No loading)
+STR_ORDER_UNLOAD                                                :{SPACE}(Unload and take cargo)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Unload and wait for full load)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Unload and wait for any full load)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Unload and leave empty)
+STR_ORDER_TRANSFER                                              :{SPACE}(Transfer and take cargo)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transfer and wait for full load)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transfer and wait for any full load)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transfer and leave empty)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(No unloading and take cargo)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(No unloading and wait for full load)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(No unloading and wait for any full load)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(No unloading and no loading)
 
-STR_ORDER_AUTO_REFIT                                            :(Refit to {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Full load with refit to {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Full load any cargo with refit to {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Unload and take cargo with refit to {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Unload and wait for full load with refit to {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Unload and wait for any full load with refit to {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transfer and take cargo with refit to {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfer and wait for full load with refit to {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfer and wait for any full load with refit to {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(No unloading and take cargo with refit to {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No unloading and wait for full load with refit to {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No unloading and wait for any full load with refit to {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Refit to {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Full load with refit to {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Full load any cargo with refit to {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Unload and take cargo with refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Unload and wait for full load with refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Unload and wait for any full load with refit to {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transfer and take cargo with refit to {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transfer and wait for full load with refit to {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transfer and wait for any full load with refit to {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(No unloading and take cargo with refit to {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(No unloading and wait for full load with refit to {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(No unloading and wait for any full load with refit to {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :available cargo
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[far end]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[near end]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[middle]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[far end]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Next destination is out of range)
 
@@ -4768,8 +4770,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STR
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Travel for {STRING} with at most {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Travel (for {STRING}, not timetabled)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Travel (for {STRING}, not timetabled) with at most {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stay for {STRING}, not timetabled)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(travel for {STRING}, not timetabled)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(stay for {STRING}, not timetabled)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(travel for {STRING}, not timetabled)
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING}
 

@@ -4696,54 +4696,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Varikko
 STR_ORDER_SHIP_DEPOT                                            :Telakka
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} lähimpään lentokonehalliin
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} lähimmälle {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Sovita {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtityypille {STRING} ja pysähdy)
-STR_ORDER_STOP_ORDER                                            :(Pysähdy)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Sovita rahdille {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Sovita rahtityypille {STRING} ja pysähdy)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Pysähdy)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Odota suman purkamiseksi)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Odota suman purkamiseksi)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Asema ei käytettävissä){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Ehdoton)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implisiittinen)
 
-STR_ORDER_FULL_LOAD                                             :(Lastaa täyteen)
-STR_ORDER_FULL_LOAD_ANY                                         :(Lastaa täyteen mitä tahansa rahtia)
-STR_ORDER_NO_LOAD                                               :(Ei lastausta)
-STR_ORDER_UNLOAD                                                :(Pura lasti ja lastaa uusi rahti)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Pura lasti ja odota uuden lastin täyttymistä)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Pura ja odota minkä tahansa rahdin täyttymistä)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Pura ja lähde tyhjänä)
-STR_ORDER_TRANSFER                                              :(Siirrä ja lastaa rahti)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Siirrä ja odota uuden lastin täyttymistä)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Siirrä ja odota minkä tahansa lastin täyttymistä)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Siirrä rahti ja jätä tyhjäksi)
-STR_ORDER_NO_UNLOAD                                             :(Ei purkua mutta lastaa rahti)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei lastin purkua, mutta odota uuden lastin täyttymistä)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purkua, mutta odota minkä tahansa lastin täyttymistä)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei purkua eikä lastausta)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Lastaa täyteen)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Lastaa täyteen mitä tahansa rahtia)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Ei lastausta)
+STR_ORDER_UNLOAD                                                :{SPACE}(Pura lasti ja lastaa uusi rahti)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Pura lasti ja odota uuden lastin täyttymistä)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Pura ja odota minkä tahansa rahdin täyttymistä)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Pura ja lähde tyhjänä)
+STR_ORDER_TRANSFER                                              :{SPACE}(Siirrä ja lastaa rahti)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Siirrä ja odota uuden lastin täyttymistä)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Siirrä ja odota minkä tahansa lastin täyttymistä)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Siirrä rahti ja jätä tyhjäksi)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Ei purkua mutta lastaa rahti)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Ei lastin purkua, odota uuden lastin täyttymistä)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Ei lastin purkua, odota minkä tahansa lastin täyttymistä)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Ei purkua eikä lastausta)
 
-STR_ORDER_AUTO_REFIT                                            :(Sovita rahdille {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Sovita rahdille {STRING} ja lastaa täyteen)
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Sovita rahdille {STRING} ja lastaa täyteen mitä tahansa rahtia)
-STR_ORDER_UNLOAD_REFIT                                          :(Pura lasti, sovita rahdille {STRING}, ota rahti)
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Pura lasti, sovita rahdille {STRING}, odota täyttä lastia)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Pura lasti, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
-STR_ORDER_TRANSFER_REFIT                                        :(Siirrä, sovita rahdille {STRING}, ota rahti)
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Siirrä, sovita rahdille {STRING}, odota täyttä lastia)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Siirrä, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei purkua, sovita rahdille {STRING}, ota rahti)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei purkua, sovita rahdille {STRING}, odota täyttä lastia)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei purkua, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Sovita rahdille {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Sovita rahdille {STRING} ja lastaa täyteen)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Sovita rahdille {STRING} ja lastaa täyteen mitä tahansa rahtia)
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Pura lasti, sovita rahdille {STRING}, ota rahti)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Pura lasti, sovita rahdille {STRING}, odota täyttä lastia)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Pura lasti, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Siirrä, sovita rahdille {STRING}, ota rahti)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Siirrä, sovita rahdille {STRING}, odota täyttä lastia)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Siirrä, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Ei purkua, sovita rahdille {STRING}, ota rahti)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Ei purkua, sovita rahdille {STRING}, odota täyttä lastia)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Ei purkua, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
 
 STR_ORDER_AUTO_REFIT_ANY                                        :saatavilla oleva rahti
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[alkupäähän]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[loppupäähän]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[alkupäähän]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[keskelle]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[loppupäähän]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Seuraava määränpää on toimintasäteen ulkopuolella)
 
@@ -4768,8 +4770,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteesee
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Kulje kohteeseen {STRING} enintään {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Kulje ({STRING}, ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Kulje ({STRING}, ei aikataulua) enimmillään {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(pysy {STRING}, ei aikataulua)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(matkusta {STRING}, ei aikataulua)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(pysy {STRING}, ei aikataulua)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(matkusta {STRING}, ei aikataulua)
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
 

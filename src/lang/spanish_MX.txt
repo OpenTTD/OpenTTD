@@ -632,7 +632,7 @@ STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Ninguna
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en la gráfica de tasas de pago
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar todos los tipos de carga en la gráfica de tasas de pago
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar gráfica de este tipo de carga
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar u ocultar gráfica de este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Historial de producción
@@ -839,7 +839,7 @@ STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(dinero 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de mensajes
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista de los mensajes más recientes
-STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING} - {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaje
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
@@ -1947,7 +1947,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, c
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Distancia de separación entre señales hasta topar con algún obstáculo (otra señal, un desvío, etc.) al colocarlas con arrastre
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Al arrastrar, mantener distancia fija entre señales: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Forma en que se colocan las señales con Ctrl+Arrastrar. Al desactivarse, se colocan señales cerca de túneles y puentes para evitar tramos largos sin señales. Al activarse, se colocan señales cada tanto de casillas, con lo que alinear señales en vías paralelas es más fácil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Forma en que se colocan las señales con Ctrl y arrastrar. Al desactivarse, se colocan señales cerca de túneles y puentes para evitar tramos largos sin señales. Al activarse, se colocan señales cada tanto de casillas, con lo que alinear señales en vías paralelas es más fácil
 
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecánicas por defecto antes de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Año a partir del cual se usarán señales eléctricas. Antes de ese año se usarán señales mecánicas, las cuales funcionan igual, pero tienen distinto aspecto
@@ -3121,7 +3121,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Elegir l
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información sobre área de terreno
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centrar la vista en la casilla. Ctrl+Clic abre una vista aparte
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centrar vista en la casilla. Ctrl+Clic abre una vista aparte en su ubicación
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Costo por despejar: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Costo por despejar: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ingreso por despejar: {LTBLUE}{CURRENCY_LONG}
@@ -3666,7 +3666,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Distingu
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto del cartel
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrar la vista en la señal. Ctrl+Clic abre una vista aparte
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrar vista en el letrero. Ctrl+Clic abre una vista aparte en su ubicación
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir al siguiente cartel
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir al cartel anterior
 
@@ -3677,7 +3677,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Localida
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (ciudad){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de las localidades. Clic para centrar la vista en la localidad. Ctrl+Clic abre una vista aparte
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de localidades. Clic en un nombre centra la vista principal en la localidad. Ctrl+Clic abre una vista aparte en su ubicación
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
 # Town view window
@@ -3696,7 +3696,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La local
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La localidad crece cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiado)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La localidad {RED}no{BLACK} está creciendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivel de ruido en la localidad: {ORANGE}{COMMA}{BLACK} máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar la vista en la localidad. Ctrl+Clic abre una vista aparte
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista en la localidad. Ctrl+Clic abre una vista aparte en su ubicación
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Ayuntamiento
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostrar información sobre el ayuntamiento local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre de la localidad
@@ -3753,7 +3753,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clic en un objetivo para centrar la vista en la industria, localidad o casilla. Ctrl+Clic abre una vista aparte
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clic en un objetivo para centrar la vista en la industria, localidad o casilla. Ctrl+Clic abre una vista aparte en su ubicación
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
@@ -3789,7 +3789,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ninguno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servicios con subsidio:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW},  {STRING})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic en un servicio para centrar la vista en la industria o localidad. Ctrl+Clic abre una vista aparte
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic en un servicio para centrar la vista en la industria o localidad. Ctrl+Clic abre una vista aparte en su ubicación
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :hasta {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :durante {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :hasta {DATE_SHORT}
@@ -3809,7 +3809,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir a la 
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referencia a objetivos no válida
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estaciones. Clic para centrar la vista en la estación. Ctrl+Clic abre una vista aparte
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estaciones. Clic en un nombre centra la vista principal en la estación. Ctrl+Clic abre una vista aparte en su ubicación
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Mantener pulsado Ctrl para seleccionar más de un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY}: {COMMA} estaci{P ón ones}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3875,7 +3875,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :Muy buena
 STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar la vista en la estación. Ctrl+Clic abre una vista aparte
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la estación. Ctrl+Clic abre una vista aparte en su ubicación
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambiar nombre de la estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar aquellos trenes que tienen esta estación en su itinerario
@@ -3890,9 +3890,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita el
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar la vista en el punto de ruta. Ctrl+Clic abre una vista aparte
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista en el punto de ruta. Ctrl+Clic abre una vista aparte en su ubicación
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar nombre de punto de ruta
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar la vista en la boya. Ctrl+Clic abre una vista aparte
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista en la boya. Ctrl+Clic abre una vista aparte en su ubicación
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambiar nombre de boya
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cambiar nombre de punto de ruta
@@ -4016,7 +4016,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} y {NUM} más...
-STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nombres de industrias. Clic para centrar la vista en la industria. Ctrl+Clic abre una vista aparte
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}Nombres de industrias. Clic en un nombre centra la vista principal en la industria. Ctrl+Clic abre una vista aparte en su ubicación
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carga aceptada: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Carga producida: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Todos los tipos
@@ -4027,7 +4027,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción último mes:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción último minuto:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportad{G 0 o a}{P 0 "" s})
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar la vista en la industria. Ctrl+Clic abre una vista aparte
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar vista en la industria. Ctrl+Clic abre una vista aparte en su ubicación
 STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gráfica de producción
 STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Muestra la gráfica del historial de producción de la industria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
@@ -4297,10 +4297,10 @@ STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Comprar 
 STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Comprar una copia de la aeronave. Clic en este botón y después en la aeronave a copiar. Ctrl+Clic comparte las órdenes. Mayús+Clic solo muestra un costo estimado
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar la vista en el depósito de trenes. Ctrl+Clic abre una vista aparte
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar la vista en el depósito de vehículos. Ctrl+Clic abre una vista aparte
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar la vista en el astillero. Ctrl+Clic abre una vista aparte
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar la vista en el hangar. Ctrl+Clic abre una vista aparte
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar vista en el depósito de trenes. Ctrl+Clic abre una vista aparte en su ubicación
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar vista en el depósito de vehículos. Ctrl+Clic abre una vista aparte en su ubicación
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar vista en el astillero. Ctrl+Clic abre una vista aparte en su ubicación
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar vista en el hangar. Ctrl+Clic abre una vista aparte en su ubicación
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Listar todos los trenes con órdenes hacia este depósito
@@ -4345,7 +4345,7 @@ STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :Velocidad: {VEL
 STR_ENGINE_PREVIEW_TYPE                                         :Tipo de aeronave: {STRING}
 STR_ENGINE_PREVIEW_TYPE_RANGE                                   :Tipo de aeronave: {STRING} Alcance: {COMMA} casillas
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :Costo de operación: {CURRENCY_LONG}/año
-STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Coste de operación: {CURRENCY_LONG}/período
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :Costo de operación: {CURRENCY_LONG}/período
 STR_ENGINE_PREVIEW_CAPACITY                                     :Capacidad: {CARGO_LONG}
 STR_ENGINE_PREVIEW_CAPACITY_2                                   :Capacidad: {CARGO_LONG}, {CARGO_LONG}
 
@@ -4404,10 +4404,10 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK} Centrar la vista en el tren. Doble clic permite seguir el tren. Ctrl+Clic abre una vista aparte
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK} Centrar la vista en el vehículo. Doble clic sigue el vehículo en la vista principal. Ctrl+Clic abre una vista aparte
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrar la vista en el barco. Ctrl+Clic abre una vista aparte
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centrar la vista en la aeronave. Doble clic permite seguir la aeronave. Ctrl+Clic abre una vista aparte
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK} Centrar vista en el tren. Doble clic lo sigue en la vista principal. Ctrl+Clic abre una vista aparte en su ubicación
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK} Centrar vista en el vehículo. Doble clic lo sigue en la vista principal. Ctrl+Clic abre una vista aparte en su ubicación
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrar vista en el barco. Doble clic lo sigue en la vista principal. Ctrl+Clic abre una vista aparte en su ubicación
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK} Centrar vista en la aeronave. Doble clic la sigue en la vista principal. Ctrl+Clic abre una vista aparte en su ubicación
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren al depósito. Ctrl+Clic solo realiza mantenimiento
@@ -4424,7 +4424,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Comprar 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forzar al tren a proceder sin esperar a que la señal le ceda vía libre
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Cambiar dirección del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forzar al vehículo a girar en sentido opuesto
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar la vista en el destino de la orden. Ctrl+Clic abre una vista aparte
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrar vista en el destino de la orden. Ctrl+Clic abre una vista aparte en su ubicación
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reformar tren para llevar otro tipo de carga
@@ -4693,58 +4693,58 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Ir a sin parada
 
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :depósito de trenes
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de autotransportes
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :depósito de autotransportes
 STR_ORDER_SHIP_DEPOT                                            :astillero de barcos
 ###next-name-looks-similar
 
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Reformar a {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Reformar a {STRING} y detenerse)
-STR_ORDER_STOP_ORDER                                            :(Detenerse)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Reformar a {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Reformar a {STRING} y detenerse)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Detenerse)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Esperar para espaciar)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Esperar para espaciar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No se puede usar la estación){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Implícito)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implícita)
 
-STR_ORDER_FULL_LOAD                                             :(Llenar todo)
-STR_ORDER_FULL_LOAD_ANY                                         :(Llenar cualquier carga)
-STR_ORDER_NO_LOAD                                               :(No cargar)
-STR_ORDER_UNLOAD                                                :(Descargar y cargar)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descargar y llenar todo)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descargar y llenar cualquier carga)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Descargar y dejar vacío)
-STR_ORDER_TRANSFER                                              :(Transferir y cargar)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir y llenar)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir y llenar cualquier carga)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir y dejar vacío)
-STR_ORDER_NO_UNLOAD                                             :(No descargar y cargar)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descargar y llenar todo)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y llenar cualquier carga)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descargar ni cargar)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Llenar todo)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Llenar cualquier carga)
+STR_ORDER_NO_LOAD                                               :{SPACE}(No cargar)
+STR_ORDER_UNLOAD                                                :{SPACE}(Descargar y cargar)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Descargar y llenar todo)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Descargar y llenar cualquier carga)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Descargar e irse vacío)
+STR_ORDER_TRANSFER                                              :{SPACE}(Transferir y cargar)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transferir y llenar todo)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transferir y llenar cualquier carga)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transferir e irse vacío)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(No descargar y cargar)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(No descargar y llenar todo)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(No descargar y llenar cualquier carga)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(No descargar ni cargar)
 
-STR_ORDER_AUTO_REFIT                                            :(Reformar a {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Llenar todo y reformar a{STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Llenar cualquier carga con reforma a {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Descargar y cargar con reforma a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descargar y llenar todo con reforma a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar y llenar cualquier carga con reforma a {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transferir y cargar con reforma a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir y llenar con reforma a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir y llenar cualquier carga con reforma a {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(No descargar y cargar con reforma a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descargar y llenar todo con reforma a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y llenar cualquier carga con reforma a {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Reformar a {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Llenar todo y reformar a{STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Llenar cualquier carga con reforma a {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Descargar y cargar con reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Descargar y llenar todo con reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Descargar y llenar cualquier carga con reforma a {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transferir y cargar con reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir y llenar todo con reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transferir y llenar cualquier carga con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(No descargar y cargar con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(No descargar y llenar todo con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(No descargar y llenar cualquier carga con reforma a {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :carga disponible
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[inicio]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[mitad]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[final]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[inicio]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[mitad]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[final]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (El siguiente destino está muy lejos)
 
@@ -4769,8 +4769,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante 
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} a {VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, no programado)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, no programado) a {VELOCITY} como máximo
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(esperar {STRING}, no programado)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar {STRING}, no programado)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(esperar {STRING}, no programado)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar {STRING}, no programado)
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar {STRING}
 
@@ -4843,9 +4843,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Distingu
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar distinción de mayúsculas al comparar los mensajes registrados de la IA con el texto de interrupción
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reanudar y que la IA continúe
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA. Ctrl+Clic abre una vista aparte
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA. Ctrl+Clic la abre en una nueva ventana
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de juego
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Analizar el registro del script de juego. Ctrl+Clic abre una vista aparte
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Analizar registro del script de juego. Ctrl+Clic lo abre una nueva ventana
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró ninguna IA apropiada para cargar.{}Esta es una IA estándar que no hace nada.{}Se pueden descargar nuevas IA desde el "Contenido en línea"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, informa del fallo al autor del script con una captura de la ventana de depuración
