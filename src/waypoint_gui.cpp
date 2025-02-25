@@ -32,8 +32,8 @@
 /** GUI for accessing waypoints and buoys. */
 struct WaypointWindow : Window {
 private:
-	VehicleType vt; ///< Vehicle type using the waypoint.
-	Waypoint *wp;   ///< Waypoint displayed by the window.
+	VehicleType vt = VEH_INVALID; ///< Vehicle type using the waypoint.
+	Waypoint *wp = nullptr; ///< Waypoint displayed by the window.
 
 	/**
 	 * Get the center tile of the waypoint.
