@@ -123,12 +123,12 @@ struct GSConfigWindow : public Window {
 	 */
 	void RebuildVisibleSettings()
 	{
-		visible_settings.clear();
+		this->visible_settings.clear();
 
 		for (const auto &item : *this->gs_config->GetConfigList()) {
 			bool no_hide = !item.flags.Test(ScriptConfigFlag::Developer);
 			if (no_hide || _settings_client.gui.ai_developer_tools) {
-				visible_settings.push_back(&item);
+				this->visible_settings.push_back(&item);
 			}
 		}
 
@@ -200,7 +200,7 @@ struct GSConfigWindow : public Window {
 					} else {
 						int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 						if (config_item.complete_labels) {
-							DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
+							DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, editable);
 						} else {
 							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 						}
@@ -350,14 +350,14 @@ struct GSConfigWindow : public Window {
 		if (!str.has_value()) return;
 		auto value = ParseInteger<int32_t>(*str);
 		if (!value.has_value()) return;
-		SetValue(*value);
+		this->SetValue(*value);
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		if (widget != WID_GSC_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
-		SetValue(index);
+		this->SetValue(index);
 	}
 
 	void OnDropdownClose(Point, WidgetID widget, int, bool) override
