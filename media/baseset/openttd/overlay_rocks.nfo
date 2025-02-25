@@ -1,0 +1,112 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Overlay rocks"
+   -1 * 3	 05 1A 5F
+
+// Plain overlay rocks (unused...)
+   -1 sprites/overlay_rocks.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_rocks.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_rocks.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_rocks.png 8bpp 1441 1  64  31 -31   -8 normal
+
+// Snowy rocks level 0
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp 1441 1  64  31 -31   -8 normal
+
+// Snowy rocks level 1
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp 1441 1  64  31 -31   -8 normal
+
+// Snowy rocks level 2
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp 1441 1  64  31 -31   -8 normal
+
+// Snowy rocks level 4
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp 1441 1  64  31 -31   -8 normal
