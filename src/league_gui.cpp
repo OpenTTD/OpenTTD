@@ -116,15 +116,11 @@ public:
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
-			SetDParam(0, i + 1);
-			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
+			DrawString(ordinal.left, ordinal.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1));
 
 			DrawCompanyIcon(c->index, icon_left, ir.top + icon_y_offset);
 
-			SetDParam(0, c->index);
-			SetDParam(1, c->index);
-			SetDParam(2, GetPerformanceTitleFromValue(c->old_economy[0].performance_history));
-			DrawString(text.left, text.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_NAME);
+			DrawString(text.left, text.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(c->old_economy[0].performance_history)));
 			ir.top += this->line_height;
 		}
 	}
@@ -135,8 +131,7 @@ public:
 
 		this->ordinal_width = 0;
 		for (uint i = 0; i < MAX_COMPANIES; i++) {
-			SetDParam(0, i + 1);
-			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_RANK).width);
+			this->ordinal_width = std::max(this->ordinal_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, i + 1)).width);
 		}
 		this->ordinal_width += WidgetDimensions::scaled.hsep_wide; // Keep some extra spacing
 
@@ -154,10 +149,7 @@ public:
 		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
 
 		for (const Company *c : Company::Iterate()) {
-			SetDParam(0, c->index);
-			SetDParam(1, c->index);
-			SetDParam(2, widest_title);
-			widest_width = std::max(widest_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_NAME).width);
+			widest_width = std::max(widest_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, widest_title)).width);
 		}
 
 		this->text_width = widest_width + WidgetDimensions::scaled.hsep_indent * 3; // Keep some extra spacing
@@ -325,8 +317,7 @@ public:
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		if (!lt->header.empty()) {
-			SetDParamStr(0, lt->header);
-			ir.top = DrawStringMultiLine(ir, STR_JUST_RAW_STRING, TC_BLACK) + WidgetDimensions::scaled.vsep_wide;
+			ir.top = DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, lt->header), TC_BLACK) + WidgetDimensions::scaled.vsep_wide;
 		}
 
 		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
@@ -341,20 +332,16 @@ public:
 		Rect score_rect = ir.Indent(this->rank_width + 2 * spacer + this->icon_size.width + this->text_width, rtl).WithWidth(this->score_width, rtl);
 
 		for (const auto &[rank, lte] : this->rows) {
-			SetDParam(0, rank + 1);
-			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, STR_COMPANY_LEAGUE_COMPANY_RANK);
+			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, rank + 1));
 			if (this->icon_size.width > 0 && lte->company != CompanyID::Invalid()) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
-			SetDParamStr(0, lte->text);
-			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
-			SetDParamStr(0, lte->score);
-			DrawString(score_rect.left, score_rect.right, ir.top + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK, SA_RIGHT);
+			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, GetString(STR_JUST_RAW_STRING, lte->text), TC_BLACK);
+			DrawString(score_rect.left, score_rect.right, ir.top + text_y_offset, GetString(STR_JUST_RAW_STRING, lte->score), TC_BLACK, SA_RIGHT);
 			ir.top += this->line_height;
 		}
 
 		if (!lt->footer.empty()) {
 			ir.top += WidgetDimensions::scaled.vsep_wide;
-			SetDParamStr(0, lt->footer);
-			ir.top = DrawStringMultiLine(ir, STR_JUST_RAW_STRING, TC_BLACK);
+			ir.top = DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, lt->footer), TC_BLACK);
 		}
 	}
 
@@ -372,12 +359,9 @@ public:
 		this->rank_width = this->text_width = this->score_width = 0;
 		bool show_icon_column = false;
 		for (const auto &[rank, lte] : this->rows) {
-			SetDParam(0, rank + 1);
-			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(STR_COMPANY_LEAGUE_COMPANY_RANK).width);
-			SetDParamStr(0, lte->text);
-			this->text_width = std::max(this->text_width, GetStringBoundingBox(STR_JUST_RAW_STRING).width);
-			SetDParamStr(0, lte->score);
-			this->score_width = std::max(this->score_width, GetStringBoundingBox(STR_JUST_RAW_STRING).width);
+			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, rank + 1)).width);
+			this->text_width = std::max(this->text_width, GetStringBoundingBox(GetString(STR_JUST_RAW_STRING, lte->text)).width);
+			this->score_width = std::max(this->score_width, GetStringBoundingBox(GetString(STR_JUST_RAW_STRING, lte->score)).width);
 			if (lte->company != CompanyID::Invalid()) show_icon_column = true;
 		}
 
@@ -395,16 +379,14 @@ public:
 		this->text_width = size.width - non_text_width;
 
 		if (!lt->header.empty()) {
-			SetDParamStr(0, lt->header);
-			this->header_height = GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			this->header_height = GetStringHeight(GetString(STR_JUST_RAW_STRING, lt->header), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 			size.height += header_height;
 		} else {
 			this->header_height = 0;
 		}
 
 		if (!lt->footer.empty()) {
-			SetDParamStr(0, lt->footer);
-			size.height += GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			size.height += GetStringHeight(GetString(STR_JUST_RAW_STRING, lt->footer), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 		}
 	}
 
