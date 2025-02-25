@@ -159,19 +159,22 @@ struct GSConfigWindow : public Window {
 		return _game_mode != GM_NORMAL || Game::GetInstance() != nullptr;
 	}
 
+	/**
+	 * Get text to display for game script name.
+	 * @returns Text to display for game script name.
+	 */
+	std::string GetText() const
+	{
+		if (const GameInfo *info = GameConfig::GetConfig()->GetInfo(); info != nullptr) return info->GetName();
+		return GetString(STR_AI_CONFIG_NONE);
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
 			case WID_GSC_GSLIST: {
-				StringID text = STR_AI_CONFIG_NONE;
-
-				if (GameConfig::GetConfig()->GetInfo() != nullptr) {
-					SetDParamStr(0, GameConfig::GetConfig()->GetInfo()->GetName());
-					text = STR_JUST_RAW_STRING;
-				}
-
 				/* There is only one slot, unlike with the GS GUI, so it should never be white */
-				DrawString(r.Shrink(WidgetDimensions::scaled.matrix), text, (IsEditable() ? TC_ORANGE : TC_SILVER));
+				DrawString(r.Shrink(WidgetDimensions::scaled.matrix), this->GetText(), (IsEditable() ? TC_ORANGE : TC_SILVER));
 				break;
 			}
 			case WID_GSC_SETTINGS: {
@@ -190,21 +193,8 @@ struct GSConfigWindow : public Window {
 					int current_value = this->gs_config->GetSetting(config_item.name);
 					bool editable = this->IsEditableItem(config_item);
 
-					StringID str;
-					TextColour colour;
-					uint idx = 0;
-					if (config_item.description.empty()) {
-						str = STR_JUST_STRING1;
-						colour = TC_ORANGE;
-					} else {
-						str = STR_AI_SETTINGS_SETTING;
-						colour = TC_LIGHT_BLUE;
-						SetDParamStr(idx++, config_item.description);
-					}
-
 					if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
 						DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
-						SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 					} else {
 						int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 						if (config_item.complete_labels) {
@@ -212,18 +202,9 @@ struct GSConfigWindow : public Window {
 						} else {
 							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 						}
-
-						auto config_iterator = config_item.labels.find(current_value);
-						if (config_iterator != config_item.labels.end()) {
-							SetDParam(idx++, STR_JUST_RAW_STRING);
-							SetDParamStr(idx++, config_iterator->second);
-						} else {
-							SetDParam(idx++, STR_JUST_INT);
-							SetDParam(idx++, current_value);
-						}
 					}
 
-					DrawString(tr.left, tr.right, y + text_y_offset, str, colour);
+					DrawString(tr.left, tr.right, y + text_y_offset, config_item.GetString(current_value), config_item.GetColour());
 					y += this->line_height;
 				}
 				break;
