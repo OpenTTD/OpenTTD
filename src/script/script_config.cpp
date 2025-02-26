@@ -73,7 +73,7 @@ void ScriptConfig::ClearConfigList()
 void ScriptConfig::AnchorUnchangeableSettings()
 {
 	for (const auto &item : *this->GetConfigList()) {
-		if ((item.flags & SCRIPTCONFIG_INGAME) == 0) {
+		if (!item.flags.Test(ScriptConfigFlag::InGame)) {
 			this->SetSetting(item.name, this->GetSetting(item.name));
 		}
 	}
@@ -112,8 +112,8 @@ void ScriptConfig::ResetEditableSettings(bool yet_to_start)
 		const ScriptConfigItem *config_item = this->info->GetConfigItem(it->first);
 		assert(config_item != nullptr);
 
-		bool editable = yet_to_start || (config_item->flags & SCRIPTCONFIG_INGAME) != 0;
-		bool visible = _settings_client.gui.ai_developer_tools || (config_item->flags & SCRIPTCONFIG_DEVELOPER) == 0;
+		bool editable = yet_to_start || config_item->flags.Test(ScriptConfigFlag::InGame);
+		bool visible = _settings_client.gui.ai_developer_tools || !config_item->flags.Test(ScriptConfigFlag::Developer);
 
 		if (editable && visible) {
 			it = this->settings.erase(it);
@@ -193,7 +193,7 @@ ScriptInstance::ScriptData *ScriptConfig::GetToLoadData()
 
 static std::pair<StringParameter, StringParameter> GetValueParams(const ScriptConfigItem &config_item, int value)
 {
-	if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) return {value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF, {}};
+	if (config_item.flags.Test(ScriptConfigFlag::Boolean)) return {value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF, {}};
 
 	auto it = config_item.labels.find(value);
 	if (it != std::end(config_item.labels)) return {STR_JUST_RAW_STRING, it->second};

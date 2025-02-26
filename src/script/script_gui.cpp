@@ -314,7 +314,7 @@ struct ScriptSettingsWindow : public Window {
 		visible_settings.clear();
 
 		for (const auto &item : *this->script_config->GetConfigList()) {
-			bool no_hide = (item.flags & SCRIPTCONFIG_DEVELOPER) == 0;
+			bool no_hide = !item.flags.Test(ScriptConfigFlag::Developer);
 			if (no_hide || _settings_client.gui.ai_developer_tools) {
 				visible_settings.push_back(&item);
 			}
@@ -360,7 +360,7 @@ struct ScriptSettingsWindow : public Window {
 			int current_value = this->script_config->GetSetting(config_item.name);
 			bool editable = this->IsEditableItem(config_item);
 
-			if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
+			if (config_item.flags.Test(ScriptConfigFlag::Boolean)) {
 				DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
 			} else {
 				int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
@@ -403,7 +403,7 @@ struct ScriptSettingsWindow : public Window {
 					this->clicked_dropdown = false;
 				}
 
-				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
+				bool bool_item = config_item.flags.Test(ScriptConfigFlag::Boolean);
 
 				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 				int x = pt.x - r.left;
@@ -537,14 +537,14 @@ private:
 		return _game_mode == GM_MENU
 			|| _game_mode == GM_EDITOR
 			|| ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot))
-			|| (config_item.flags & SCRIPTCONFIG_INGAME) != 0
+			|| config_item.flags.Test(ScriptConfigFlag::InGame)
 			|| _settings_client.gui.ai_developer_tools;
 	}
 
 	void SetValue(int value)
 	{
 		const ScriptConfigItem &config_item = *this->visible_settings[this->clicked_row];
-		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
+		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && !config_item.flags.Test(ScriptConfigFlag::InGame)) return;
 		this->script_config->SetSetting(config_item.name, value);
 		this->SetDirty();
 	}

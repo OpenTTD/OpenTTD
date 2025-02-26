@@ -35,11 +35,11 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	SQGSInfo.AddConstructor<void (GameInfo::*)(), 1>(engine, "x");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddSetting, "AddSetting");
 	SQGSInfo.DefSQAdvancedMethod(engine, &GameInfo::AddLabels, "AddLabels");
-	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_NONE");
-	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_NONE, "CONFIG_RANDOM"); // Deprecated, mapped to NONE.
-	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_BOOLEAN, "CONFIG_BOOLEAN");
-	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_INGAME, "CONFIG_INGAME");
-	SQGSInfo.DefSQConst(engine, SCRIPTCONFIG_DEVELOPER, "CONFIG_DEVELOPER");
+	SQGSInfo.DefSQConst(engine, ScriptConfigFlags{}.base(), "CONFIG_NONE");
+	SQGSInfo.DefSQConst(engine, ScriptConfigFlags{}.base(), "CONFIG_RANDOM"); // Deprecated, mapped to NONE.
+	SQGSInfo.DefSQConst(engine, ScriptConfigFlags{ScriptConfigFlag::Boolean}.base(), "CONFIG_BOOLEAN");
+	SQGSInfo.DefSQConst(engine, ScriptConfigFlags{ScriptConfigFlag::InGame}.base(), "CONFIG_INGAME");
+	SQGSInfo.DefSQConst(engine, ScriptConfigFlags{ScriptConfigFlag::Developer}.base(), "CONFIG_DEVELOPER");
 
 	SQGSInfo.PostRegister(engine);
 	engine->AddMethod("RegisterGS", &GameInfo::Constructor, 2, "tx");

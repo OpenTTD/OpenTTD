@@ -177,7 +177,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	}
 
 	/* Make sure all properties are defined */
-	uint mask = (config.flags & SCRIPTCONFIG_BOOLEAN) ? 0x1F3 : 0x1FF;
+	uint mask = config.flags.Test(ScriptConfigFlag::Boolean) ? 0x1F3 : 0x1FF;
 	if (items != mask) {
 		this->engine->ThrowError("please define all properties of a setting (min/max not allowed for booleans)");
 		return SQ_ERROR;
