@@ -198,7 +198,7 @@ struct ScriptListWindow : public Window {
 		switch (widget) {
 			case WID_SCRL_LIST: { // Select one of the Scripts
 				int sel = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SCRL_LIST) - 1;
-				if (sel < (int)this->info_list->size()) {
+				if (sel < static_cast<int>(this->info_list->size())) {
 					this->selected = sel;
 					this->SetDirty();
 					if (click_count > 1) {
@@ -856,7 +856,7 @@ struct ScriptDebugWindow : public Window {
 	void DrawWidgetCompanyButton(const Rect &r, WidgetID widget, int start) const
 	{
 		if (this->IsWidgetDisabled(widget)) return;
-		CompanyID cid = (CompanyID)(widget - start);
+		CompanyID cid = static_cast<CompanyID>(widget - start);
 		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
 		DrawCompanyIcon(cid, CentreBounds(r.left, r.right, sprite_size.width), CentreBounds(r.top, r.bottom, sprite_size.height));
 	}
@@ -921,7 +921,7 @@ struct ScriptDebugWindow : public Window {
 
 		ScriptLogTypes::LogData &log = this->GetLogData();
 
-		int scroll_count = (int)log.size();
+		int scroll_count = static_cast<int>(log.size());
 		if (this->vscroll->GetCount() != scroll_count) {
 			this->vscroll->SetCount(scroll_count);
 
@@ -933,10 +933,10 @@ struct ScriptDebugWindow : public Window {
 
 		/* Detect when the user scrolls the window. Enable autoscroll when the bottom-most line becomes visible. */
 		if (this->last_vscroll_pos != this->vscroll->GetPosition()) {
-			this->autoscroll = this->vscroll->GetPosition() + this->vscroll->GetCapacity() >= (int)log.size();
+			this->autoscroll = this->vscroll->GetPosition() + this->vscroll->GetCapacity() >= static_cast<int>(log.size());
 		}
 
-		if (this->autoscroll && this->vscroll->SetPosition((int)log.size())) {
+		if (this->autoscroll && this->vscroll->SetPosition(static_cast<int>(log.size()))) {
 			/* We need a repaint */
 			this->SetWidgetDirty(WID_SCRD_VSCROLLBAR);
 			this->SetWidgetDirty(WID_SCRD_LOG_PANEL);
@@ -1015,7 +1015,7 @@ struct ScriptDebugWindow : public Window {
 
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END + 1)) {
-			this->ChangeToScript((CompanyID)(widget - WID_SCRD_COMPANY_BUTTON_START), _ctrl_pressed);
+			this->ChangeToScript(static_cast<CompanyID>(widget - WID_SCRD_COMPANY_BUTTON_START), _ctrl_pressed);
 		}
 
 		switch (widget) {
@@ -1123,7 +1123,7 @@ struct ScriptDebugWindow : public Window {
 					}
 
 					/* Highlight row that matched */
-					this->highlight_row = (int)(log.size() - 1);
+					this->highlight_row = static_cast<int>(log.size() - 1);
 				}
 			}
 		}
