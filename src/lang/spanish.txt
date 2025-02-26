@@ -3137,7 +3137,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreno irregul
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreno desnudo
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Pastos
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreno cubierto de nieve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desierto
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía de ferrocarril

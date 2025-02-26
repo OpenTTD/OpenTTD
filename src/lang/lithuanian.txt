@@ -3241,7 +3241,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Nelygi žemė
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Lygi žemė
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Žolė
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Laukai
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Užpustyta žemė
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Dykuma
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Geležinkelis bėgiai

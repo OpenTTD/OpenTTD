@@ -2500,7 +2500,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Rûch lân
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Leech lân
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gers
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fjilden
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snie
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woastine
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoarwei spoarbaan

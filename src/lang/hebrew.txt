@@ -2838,7 +2838,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :אדמה קשה
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :קרקע חשופה
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :עשבייה
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :שדות
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :אדמה מכוסה בשלג
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :מדבר
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :מסילת ברזל

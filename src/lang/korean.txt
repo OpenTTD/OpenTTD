@@ -3157,7 +3157,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :거친 땅
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :맨 땅
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :초원
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :들판
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :눈덮인 땅
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :사막
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :철도 선로

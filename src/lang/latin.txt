@@ -2839,7 +2839,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terra Aspera
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terra Nuda
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Herba
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Agri
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terra Nivea
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserta
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Astarium Ferriviae

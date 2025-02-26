@@ -3537,7 +3537,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Wyboisty teren
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Odkryty teren
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Trawa
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pola
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zaśnieżony teren
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustynia
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{G=m}Tor kolejowy
@@ -5077,15 +5076,13 @@ STR_ORDER_SERVICE_AT                                            :Serwisuj w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj bezpośrednio w
 
 ###length 3
-STR_ORDER_TRAIN_DEPOT                                           :warsztatów
+STR_ORDER_TRAIN_DEPOT                                           :Hali Warsztatów
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Zajezdni
-STR_ORDER_SHIP_DEPOT                                            :stoczni
+STR_ORDER_SHIP_DEPOT                                            :Stoczni
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} najbliższy hangar
-STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT.d                         :{STRING} najbliższego hangaru
-STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT.m                         :{STRING} najbliższym hangarze
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} najbliż. {STRING}
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} najbliższej Hali Hangaru
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} najbliższej {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :{SPACE}(Przebuduj na {STRING.b})

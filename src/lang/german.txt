@@ -3125,7 +3125,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Unebenes Land
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Kahles Land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ackerland
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Schneebedecktes Land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüste
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schienen

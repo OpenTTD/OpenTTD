@@ -2376,7 +2376,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Tanah kasar
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Tanah kosong
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Rumput
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ladang
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tanah diliputi salji
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Padang pasir
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Landasan keretapi

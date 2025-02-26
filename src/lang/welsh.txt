@@ -3120,7 +3120,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Tir garw
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Tir moel
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gwair
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Caeau
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tir ag eira
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Anialdir
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cledrau rheilffordd

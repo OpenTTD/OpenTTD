@@ -2477,7 +2477,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Hrjúft land
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Bert land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akur
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snjóþekið land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Eyðimörk
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Járnbrautarspor spor

@@ -3140,7 +3140,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Ojämn mark
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Barmark
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gräs
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fält
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snötäckt mark
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Öken
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Järnvägsspår

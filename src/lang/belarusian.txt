@@ -3408,7 +3408,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Грубая з
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Голая зямля
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Трава
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Палi
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Засьнежаная зямля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустэльня
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Чыгуначны пуць

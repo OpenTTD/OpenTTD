@@ -3135,7 +3135,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Knubbelegt Land
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Eidelt Land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Felder
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Schnéibedeckt Land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Wüst
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Schinn

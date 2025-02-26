@@ -3119,7 +3119,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Teren pietros
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Teren viran
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Verdeață
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Teren agricol
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Teren înzăpezit
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deșert
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cale ferată cale ferată

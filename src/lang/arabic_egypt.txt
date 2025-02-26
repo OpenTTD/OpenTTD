@@ -2582,7 +2582,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :ارض جبلي
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :ارض جرداء
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :عشب
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :حقول
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :ارض ثلجية
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :صحراء
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :سكة حديد مسار

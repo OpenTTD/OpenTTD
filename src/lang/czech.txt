@@ -3219,7 +3219,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Hrbolatá země
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Prázdná země
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Travnatá země
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pole
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasněžená země
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Poušť
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železniční trať

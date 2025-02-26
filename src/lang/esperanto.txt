@@ -3038,7 +3038,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Malglata lando
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Nuda lando
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Herbo
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Kampoj
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Neĝkovrita lando
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Dezerto
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Fervoja trako

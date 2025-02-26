@@ -2371,7 +2371,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Harðrent lendi
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Bert lendi
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Markir
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Kava-klætt lendi
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Oyðimørk
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{G=m}Jarnbreyt breyt

@@ -3153,7 +3153,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Konarlik maa
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Lage maa
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Rohi
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Põllud
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumine maa
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Kõrb
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Raudteerööbas

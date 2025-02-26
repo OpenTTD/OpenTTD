@@ -3157,7 +3157,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :荒地
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :土地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :铁路轨道
@@ -4601,7 +4600,7 @@ STR_ORDER_NON_STOP                                              :{BLACK}直达
 STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :直达
 STR_ORDER_GO_VIA                                                :经由
-STR_ORDER_GO_NON_STOP_VIA                                       :直达且经由
+STR_ORDER_GO_NON_STOP_VIA                                       :直达经由
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}修改当前命令在车站的停靠措施
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}满载任一货物
@@ -4625,7 +4624,7 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}选择�
 STR_ORDER_DROP_REFIT_AUTO                                       :固定货物
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :可用货物
 
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :总是进行
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :直达车库
 STR_ORDER_DROP_SERVICE_DEPOT                                    :若需要则维护
 STR_ORDER_DROP_HALT_DEPOT                                       :停留
 STR_ORDER_DROP_UNBUNCH                                          :自动调节班次
@@ -4685,7 +4684,7 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}显示�
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :经过 {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :直达且经由 {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :直达经由 {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :前往维护
 STR_ORDER_SERVICE_NON_STOP_AT                                   :直达维护

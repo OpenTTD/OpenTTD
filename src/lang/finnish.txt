@@ -3157,7 +3157,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Epätasaista ma
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Paljasta maata
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Ruohikkoa
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Peltoja
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Lumen peittämää maata
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Aavikkoa
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Rautatie

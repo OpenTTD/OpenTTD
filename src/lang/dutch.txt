@@ -3157,7 +3157,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Ruw land
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Braakliggend land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akkers
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Sneeuw
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woestijn
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoor

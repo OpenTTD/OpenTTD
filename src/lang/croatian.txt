@@ -2804,7 +2804,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Surova zemlja
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Ogoljena zemlja
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Trava
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zemlja pokrivena snijegom
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pustinja
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Pruga

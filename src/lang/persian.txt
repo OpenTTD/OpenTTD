@@ -2386,7 +2386,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :سرزمین س
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :سرزمین بایر
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :چمن
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :زمین ها
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :زمین پوشیده از برف
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :صحرا
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :راه‌آهن ریل

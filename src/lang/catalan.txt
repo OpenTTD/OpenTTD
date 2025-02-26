@@ -3158,7 +3158,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreny irregul
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreny erm
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gespa
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Camps de conreu
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreny nevat
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desert
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Via ferroviària
@@ -4697,54 +4696,55 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cotxera de Vehi
 STR_ORDER_SHIP_DEPOT                                            :Drassanes
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} l'hangar més proper
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Remodela a {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Remodela a {STRING} i para)
-STR_ORDER_STOP_ORDER                                            :(Para)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Remodela a {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Remodela a {STRING} i para)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Para)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Espera per a deixar espai entre vehicles)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Espera per a deixar espai entre vehicles)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No pot usar l'estació){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Implícit)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implícit)
 
-STR_ORDER_FULL_LOAD                                             :(Carrega del tot)
-STR_ORDER_FULL_LOAD_ANY                                         :(Carrega del tot qualsevol càrrega)
-STR_ORDER_NO_LOAD                                               :(No carregar)
-STR_ORDER_UNLOAD                                                :(Descarrega i agafa la càrrega)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarrega i espera carregar del tot)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarrega i espera una càrrega completa qualsevol)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarrega i deixa buit)
-STR_ORDER_TRANSFER                                              :(Transfereix i agafa càrrega)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfereix i espera una càrrega completa)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfereix i espera qualsevol càrrega completa)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfereix i deixa buit)
-STR_ORDER_NO_UNLOAD                                             :(No descarreguis i agafa càrrega)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descarreguis i espera a carregar del tot)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descarreguis i espera carregar del tot qualsevol càrrega)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descarreguis i no carreguis)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Carrega del tot)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Carrega del tot qualsevol càrrega)
+STR_ORDER_NO_LOAD                                               :{SPACE}(No carregar)
+STR_ORDER_UNLOAD                                                :{SPACE}(Descarrega i agafa la càrrega)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Descarrega i espera carregar del tot)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Descarrega i espera una càrrega completa qualsevol)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Descarrega i deixa buit)
+STR_ORDER_TRANSFER                                              :{SPACE}(Transfereix i agafa càrrega)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transfereix i espera una càrrega completa)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transfereix i espera qualsevol càrrega completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transfereix i deixa buit)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(No descarreguis i agafa càrrega)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(No descarreguis i espera a carregar del tot)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(No descarreguis i espera carregar del tot qualsevol càrrega)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(No descarreguis i no carreguis)
 
-STR_ORDER_AUTO_REFIT                                            :(Remodelació a {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Càrrega completa amb remodelació a {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Càrrega completa de qualsevol càrrega amb remodelació a {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Descarrega i pren la càrrega amb remodelació a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descarrega i espera fins a càrrega completa amb remodelació a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarrega i espera fins a càrrega completa qualsevol amb remodelació a {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transfereix i pren la càrrega amb remodelació a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transfereix i espera a càrrega completa amb remodelació a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transfereix i espera a càrrega completa qualsevol amb remodelació a {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(No descarreguis i pren càrrega amb remodelació a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descarreguis i espera càrrega completa amb remodelació a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descarreguis i espera càrrega completa qualsevol amb remodelació a {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Remodelació a {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Càrrega completa amb remodelació a {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Càrrega completa de qualsevol càrrega amb remodelació a {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Descarrega i pren la càrrega amb remodelació a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Descarrega i espera fins a càrrega completa amb remodelació a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Descarrega i espera fins a càrrega completa qualsevol amb remodelació a {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transfereix i pren la càrrega amb remodelació a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transfereix i espera a càrrega completa amb remodelació a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transfereix i espera a càrrega completa qualsevol amb remodelació a {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(No descarreguis i pren càrrega amb remodelació a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(No descarreguis i espera càrrega completa amb remodelació a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(No descarreguis i espera càrrega completa qualsevol amb remodelació a {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :càrrega disponible
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[extrem més proper]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[a la meitat]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[extrem més llunyà]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[extrem més proper]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[a la meitat]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[extrem més llunyà]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (El proper destí és fora de l'abast)
 
@@ -4769,8 +4769,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRIN
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viatja durant {STRING} com a molt a {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viatja (durant {STRING}, sense horari)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viatja (durant {STRING}, sense horari) com a molt a {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(quedar-s'hi durant {STRING}, sense horari)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viatja durant {STRING}, sense horari)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(quedar-s'hi durant {STRING}, sense horari)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viatja durant {STRING}, sense horari)
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {STRING}
 

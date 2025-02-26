@@ -2779,7 +2779,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Neravna tla
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Gola tla
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Trava
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežen teren
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Puščava
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železnica tiri

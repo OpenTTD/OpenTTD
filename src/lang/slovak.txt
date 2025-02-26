@@ -3155,7 +3155,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Nerovný terén
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Holý terén
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Trávnatý terén
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polia
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežený terén
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Púšť
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železničná trať

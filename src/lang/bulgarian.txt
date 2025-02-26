@@ -3134,7 +3134,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Неравна 
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Пуста земя
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Трева
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснежена земя
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустиня
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Влакова линия

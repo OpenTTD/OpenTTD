@@ -3154,7 +3154,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreno acciden
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreno spoglio
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Erba
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campi
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terreno innevato
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Ferrovia

@@ -3135,7 +3135,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Barskt land
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Bart land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Græs
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Marker
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snedækket land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Ørken
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Jernbanespor

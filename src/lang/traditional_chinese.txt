@@ -3157,7 +3157,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :粗地
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :裸地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :覆雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :鐵道軌道
@@ -4700,52 +4699,52 @@ STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING}最近�
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} 最近的 {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :{SPACE}（改裝為 {STRING}）
-STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}（改裝為 {STRING} 並停止）
-STR_ORDER_STOP_ORDER                                            :{SPACE}（停止）
+STR_ORDER_REFIT_ORDER                                           :（改裝為 {STRING}）
+STR_ORDER_REFIT_STOP_ORDER                                      :（改裝為 {STRING} 並停止）
+STR_ORDER_STOP_ORDER                                            :（停止）
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}（等候調節班次）
+STR_ORDER_WAIT_TO_UNBUNCH                                       :（等候調節班次）
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(不能使用車站){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :{SPACE}（自動）
+STR_ORDER_IMPLICIT                                              :（自動）
 
-STR_ORDER_FULL_LOAD                                             :{SPACE}（等候滿載）
-STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}（滿載任一種類客貨）
-STR_ORDER_NO_LOAD                                               :{SPACE}（不裝載）
-STR_ORDER_UNLOAD                                                :{SPACE}（卸載後裝載客貨）
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}（卸載後等候滿載）
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}（卸載後等候任一種類滿載）
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}（卸載後空車離開）
-STR_ORDER_TRANSFER                                              :{SPACE}（轉運且載客貨）
-STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}（轉運且等候滿載）
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}（轉運且等候任一種類滿載）
-STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}（轉運後空車離開）
-STR_ORDER_NO_UNLOAD                                             :{SPACE}（不卸載且裝載）
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}（不卸載且等候滿載）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}（不卸載且等候任一種類滿載）
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}（不卸載也不裝載）
+STR_ORDER_FULL_LOAD                                             :（等候滿載）
+STR_ORDER_FULL_LOAD_ANY                                         :（滿載任一種類客貨）
+STR_ORDER_NO_LOAD                                               :（不裝載）
+STR_ORDER_UNLOAD                                                :（卸載後裝載客貨）
+STR_ORDER_UNLOAD_FULL_LOAD                                      :（卸載後等候滿載）
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :（卸載後等候任一種類滿載）
+STR_ORDER_UNLOAD_NO_LOAD                                        :（卸載後空車離開）
+STR_ORDER_TRANSFER                                              :（轉運且載客貨）
+STR_ORDER_TRANSFER_FULL_LOAD                                    :（轉運且等候滿載）
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :（轉運且等候任一種類滿載）
+STR_ORDER_TRANSFER_NO_LOAD                                      :（轉運後空車離開）
+STR_ORDER_NO_UNLOAD                                             :（不卸載且裝載）
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（不卸載且等候滿載）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不卸載且等候任一種類滿載）
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :（不卸載也不裝載）
 
-STR_ORDER_AUTO_REFIT                                            :{SPACE}（自動改裝為運載 {STRING}）
-STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}（自動改裝為運載 {STRING} 且等候滿載）
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}（自動改裝為運載 {STRING} 且等候滿載任一種客貨）
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}（卸載後改裝為運載 {STRING} 然後裝載客貨）
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}（卸載後改裝為運載 {STRING} 然後等候滿載）
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}（卸載後改裝為運載 {STRING} 然後等候滿載任一種客貨）
-STR_ORDER_TRANSFER_REFIT                                        :{SPACE}（轉運後改裝為運載 {STRING} 然後裝載客貨）
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}（轉運後改裝為運載 {STRING} 然後等候滿載）
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}（轉運後改裝為運載 {STRING} 然後等候滿載任一種客貨）
-STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}（不卸載且改裝為運載 {STRING} 然後裝載客貨）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}（不卸載且改裝為運載 {STRING} 然後等候滿載）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}（不卸載且改裝為運載 {STRING} 然後等候滿載任一種客貨）
+STR_ORDER_AUTO_REFIT                                            :（自動改裝為運載 {STRING}）
+STR_ORDER_FULL_LOAD_REFIT                                       :（自動改裝為運載 {STRING} 且等候滿載）
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :（自動改裝為運載 {STRING} 且等候滿載任一種客貨）
+STR_ORDER_UNLOAD_REFIT                                          :（卸載後改裝為運載 {STRING} 然後裝載客貨）
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :（卸載後改裝為運載 {STRING} 然後等候滿載）
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :（卸載後改裝為運載 {STRING} 然後等候滿載任一種客貨）
+STR_ORDER_TRANSFER_REFIT                                        :（轉運後改裝為運載 {STRING} 然後裝載客貨）
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :（轉運後改裝為運載 {STRING} 然後等候滿載）
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :（轉運後改裝為運載 {STRING} 然後等候滿載任一種客貨）
+STR_ORDER_NO_UNLOAD_REFIT                                       :（不卸載且改裝為運載 {STRING} 然後裝載客貨）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :（不卸載且改裝為運載 {STRING} 然後等候滿載）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :（不卸載且改裝為運載 {STRING} 然後等候滿載任一種客貨）
 
 STR_ORDER_AUTO_REFIT_ANY                                        :可用貨物
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[近端]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[中間]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[遠端]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :［近端］
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :［中間］
+STR_ORDER_STOP_LOCATION_FAR_END                                 :［遠端］
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED}（下一目的地的距離過遠）
 
@@ -4770,8 +4769,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :行駛需時 {S
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :開往 {STRING} ，限速為 {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :開往（{STRING} ，無時刻表）
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :開往（{STRING} ，無時刻表）以最高速度 {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}（等候 {STRING} ，無時刻表）
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}（開往 {STRING} ，無時刻表）
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING} ，無時刻表）
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（開往 {STRING} ，無時刻表）
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :並開往 {STRING}
 

@@ -2843,7 +2843,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Tìr gharbh
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Tìr lom
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Tìr feurach
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Achaidhean
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Tìr sneachdach
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Fàsach
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Slighe rathaid-iarainn

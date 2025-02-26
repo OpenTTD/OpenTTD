@@ -2675,7 +2675,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :พื้นท
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :พื้นที่เปล่า
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :หญ้า
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :ทุ่งหญ้า
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :พื้นที่หิมะปกคลุม
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :ทะเลทราย
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :รางรถไฟ ราง

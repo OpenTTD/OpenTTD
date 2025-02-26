@@ -3106,7 +3106,6 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Engebeli arazi
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Çıplak arazi
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Çim
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Mera
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Karlı arazi
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Çöl
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Ray
