@@ -705,7 +705,6 @@ struct ScriptDebugWindow : public Window {
 		false,
 	};
 
-	int redraw_timer;                                      ///< Timer for redrawing the window, otherwise it'll happen every tick.
 	int last_vscroll_pos;                                  ///< Last position of the scrolling.
 	bool autoscroll;                                       ///< Whether automatically scrolling should be enabled or not.
 	bool show_break_box;                                   ///< Whether the break/debug box is visible.
