@@ -280,7 +280,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Elegir p
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Elegir criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
-STR_TOOLTIP_CATCHMENT                                           :{BLACK}Alternar vista de área de cobertura
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar u ocultar vista de área de recolección
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cerrar ventana
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana (arrastrar para mover)
@@ -501,7 +501,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Tabla de puntua
 
 # Industry menu
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Directorio de industrias
-STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadenas de industrias
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadenas industriales
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nueva industria
 
 # URailway construction menu
@@ -580,32 +580,32 @@ STR_DAY_NUMBER_30TH                                             :30
 STR_DAY_NUMBER_31ST                                             :31
 
 ###length 12
-STR_MONTH_ABBREV_JAN                                            :Ene
-STR_MONTH_ABBREV_FEB                                            :Feb
-STR_MONTH_ABBREV_MAR                                            :Mar
-STR_MONTH_ABBREV_APR                                            :Abr
-STR_MONTH_ABBREV_MAY                                            :May
-STR_MONTH_ABBREV_JUN                                            :Jun
-STR_MONTH_ABBREV_JUL                                            :Jul
-STR_MONTH_ABBREV_AUG                                            :Ago
-STR_MONTH_ABBREV_SEP                                            :Sep
-STR_MONTH_ABBREV_OCT                                            :Oct
-STR_MONTH_ABBREV_NOV                                            :Nov
-STR_MONTH_ABBREV_DEC                                            :Dic
+STR_MONTH_ABBREV_JAN                                            :ene.
+STR_MONTH_ABBREV_FEB                                            :feb.
+STR_MONTH_ABBREV_MAR                                            :mar.
+STR_MONTH_ABBREV_APR                                            :abr.
+STR_MONTH_ABBREV_MAY                                            :may.
+STR_MONTH_ABBREV_JUN                                            :jun.
+STR_MONTH_ABBREV_JUL                                            :jul.
+STR_MONTH_ABBREV_AUG                                            :ago.
+STR_MONTH_ABBREV_SEP                                            :sept.
+STR_MONTH_ABBREV_OCT                                            :oct.
+STR_MONTH_ABBREV_NOV                                            :nov.
+STR_MONTH_ABBREV_DEC                                            :dic.
 
 ###length 12
-STR_MONTH_JAN                                                   :Enero
-STR_MONTH_FEB                                                   :Febrero
-STR_MONTH_MAR                                                   :Marzo
-STR_MONTH_APR                                                   :Abril
-STR_MONTH_MAY                                                   :Mayo
-STR_MONTH_JUN                                                   :Junio
-STR_MONTH_JUL                                                   :Julio
-STR_MONTH_AUG                                                   :Agosto
-STR_MONTH_SEP                                                   :Septiembre
-STR_MONTH_OCT                                                   :Octubre
-STR_MONTH_NOV                                                   :Noviembre
-STR_MONTH_DEC                                                   :Diciembre
+STR_MONTH_JAN                                                   :enero
+STR_MONTH_FEB                                                   :febrero
+STR_MONTH_MAR                                                   :marzo
+STR_MONTH_APR                                                   :abril
+STR_MONTH_MAY                                                   :mayo
+STR_MONTH_JUN                                                   :junio
+STR_MONTH_JUL                                                   :julio
+STR_MONTH_AUG                                                   :agosto
+STR_MONTH_SEP                                                   :septiembre
+STR_MONTH_OCT                                                   :octubre
+STR_MONTH_NOV                                                   :noviembre
+STR_MONTH_DEC                                                   :diciembre
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Leyenda
@@ -792,7 +792,7 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Parada de autobús
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeropuerto/Helipuerto
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Muelle
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Suelo irregular
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Suelo rugoso
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Pasto
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreno árido
 STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Selva
@@ -816,14 +816,14 @@ STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Ninguno
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Todo
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar relieve
 STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Mostrar nombres de industrias
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ocultar del mapa las industrias
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ocultar industrias
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas las industrias en el mapa
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alternar vista de relieve
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Mostrar nombres de industrias
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ocultar del mapa las propiedades de las empresas
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar todas las propiedades de empresas en el mapa
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Ocultar del mapa las cargas
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostrar todas las cargas en el mapa
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar u ocultar relieve
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}Mostrar u ocultar nombres de industrias
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ocultar propiedades de empresas
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar todas las propiedades de empresas
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Ocultar cargas
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostrar todas las cargas
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar último mensaje o noticia
@@ -952,10 +952,10 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLAC
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vista {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cambiar ventana de vista
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Copiar la vista principal a esta ventana de vista
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cambiar vista principal
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copiar ubicación en esta vista a la principal
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar de vista principal
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}Copiar ubicación de la vista principal a esta ventana de vista
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Copiar a vista principal
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copiar ubicación de esta ventana de vista a la principal
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones de juego
@@ -1127,9 +1127,9 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El modo 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE} {CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reducir el valor de la moneda por una libra (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementar el valor de la moneda por una libra (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ajustar el valor de cambio de la moneda por una Libra (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Reducir el valor de la moneda en una libra (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Incrementar el valor de la moneda en una libra (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Ajustar el valor de cambio de la moneda en una libra (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Establecer el separador de la moneda
@@ -1225,7 +1225,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se en
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplegar todo
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Compactar todo
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Contraer todo
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer todos los ajustes
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sin explicación disponible)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
@@ -1577,7 +1577,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad indust
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Número de industrias a generar y nivel a mantener durante el juego
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distancia máxima de industrias petrolíferas al borde del mapa: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Distancia límite desde el borde del mapa a partir del cual se pueden construir refinerías y plataformas de petróleo. En mapas con forma de isla esto garantiza que se ubiquen cerca de la costa. En mapas de más de 256 casillas el valor se amplía
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Distancia límite desde el borde del mapa a partir del cual se pueden construir refinerías y plataformas petrolíferas. En mapas con islas, esto garantiza que se ubiquen cerca de la costa. En mapas de más de 256 casillas, el valor se amplía
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivel de inicio de nieve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Elegir la altitud donde inicia la nieve en un ambiente Subártico, lo cual afectará la generación de industrias y los requisitos de crecimiento de localidades. Solo puede cambiarse en el Editor de mapas, si no, se calculará según la "Extensión de nieve"
@@ -1914,7 +1914,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidios: {STR
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostrar noticias sobre eventos relacionados con subsidios
 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información general: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostrar noticias sobre eventos generales, tales como la compra de derechos exclusivos de transporte o el pago de la reconstrucción de carreteras locales
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Mostrar noticias sobre eventos generales, tales como la compra de derechos de transporte exclusivos o el pago de la reconstrucción de carreteras locales
 ###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Desactivado
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Resumen
@@ -2037,7 +2037,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Máxima resolución de sprites: {STRING}
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limitar la resolución máxima para sprites, lo cual impedirá que se usen gráficos de alta resolución aun cuando estén disponibles. Con esto se mantiene uniformidad en la apariencia del juego al haber archivos GRF múltiples con gráficos de resolución diversos
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Restringir la resolución máxima para sprites, lo cual impedirá que se usen gráficos de alta resolución aun cuando estén disponibles. Con esto se mantiene uniformidad en la apariencia del juego al haber archivos GRF múltiples con gráficos de resolución diversos
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
@@ -2231,7 +2231,7 @@ STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abrir co
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar si hay nuevos contenidos actualizados para descargar
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir configuración de IA
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir configuración de Script de juego
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir configuración de script de juego
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Los gráficos base elegidos necesitan {NUM} spirte{P "" s}. Revisa si hay actualizaciones para el paquete base.
@@ -2459,7 +2459,7 @@ STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Número 
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Elegir el número máximo de clientes. No es necesario que se conecten todos
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} empresa{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Número máximo de empresas:
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limitar el servidor a un cierto número de empresas
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Restringir el número de empresas en el servidor
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introducir un nombre para la partida en red
 
@@ -2756,7 +2756,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ocultar 
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Leyenda de flujos de carga
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ninguna
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Elegir las empresas a mostrar
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Elegir qué empresas mostrar
 STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
@@ -2797,7 +2797,7 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcción f
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcción de monorriel
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción de maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril en una orientación. Ctrl quita tramos. Mayús+Click solo muestra un costo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril en una orientación. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramo de ferrocarril con orientación automática. Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre ferrocarril. Ctrl+Clic activa la unión de puntos de ruta. Mayús+Clic solo muestra un costo estimado
@@ -2848,7 +2848,7 @@ STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Elegir qué cla
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Elegir qué tipo de estación de camiones construir. Ctrl+Clic lo añade o elimina de guardados
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Elegir qué clase de objeto mostrar
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Elegir qué tipo de objeto construir. Ctrl+Clic lo añade o elimina de guardados. Ctrl+Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Elegir una zona urbana a mostrar
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Elegir qué zona urbana mostrar
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Elegir qué tipo de edificio construir. Ctrl+Clic lo añade o elimina de guardados
 
 STR_HOUSE_PICKER_CAPTION                                        :Selección de edificios
@@ -2931,7 +2931,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir parada de autobús. Ctrl+Clic activa la ampliación de paradas. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir estación de tranvía de pasajeros. Ctrl+Clic activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir estación de camiones. Ctrl+Clic activa la ampliación de estaciones. Mayús+Clic muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estación de tranvía de carga. Ctrl activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir estación de tranvía de carga. Ctrl+Clic activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activar o desactivar carreteras de un sentido
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir puente de carretera. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir puente de tranvía. Mayús+Clic solo muestra un costo estimado
@@ -3117,7 +3117,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Elegir y
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Elegir carga
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Elegir el tipo de carga
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Elegir industria
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Elegir la industria a mostrar
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Elegir qué industria mostrar
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información sobre área de terreno
@@ -3154,11 +3154,14 @@ STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}La local
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocas
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Suelo irregular
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Suelo rugoso
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Tierra árida
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Hierba
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Sembradíos
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desierto
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rocas con nieve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Suelo rugoso con nieve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Hierba con nieve
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vías férreas
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vías férreas con señales de bloqueo
@@ -3725,7 +3728,7 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Gran campaña p
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Pagar la reconstrucción de las carreteras locales
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Poner una estatua al dueño de la empresa
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Pagar la construcción de nuevos edificios
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar los derechos exclusivos de transporte
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar los derechos de transporte exclusivos
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar al ayuntamiento
 ###next-name-looks-similar
 
@@ -3832,8 +3835,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Lista de carga aceptada
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acepta: {WHITE}{CARGO_LIST}
 
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene los derechos exclusivos de transporte en esta localidad.
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró los derechos exclusivos de transporte en esta localidad.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene los derechos de transporte exclusivos en esta localidad.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró los derechos de transporte exclusivos en esta localidad.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluación
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver evaluación de la estación
@@ -4516,12 +4519,12 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}Interval
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Mantenimiento cada: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :Último mantenimiento: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :Último mantenimiento: {LTBLUE}hace {NUM} minuto{P "" s}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Incrementar intervalo de mantenimiento 10 días. Ctrl+clic para reducirlo 5 días
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Incrementar intervalo de mantenimiento 5 minutos. Ctrl+clic para reducirlo 1 minuto
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Incrementar intervalo de mantenimiento 10%. Ctrl+clic para reducirlo 5%
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Reducir intervalo de mantenimiento 10 días. Ctrl+clic para reducirlo 5 días
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Reducir intervalo de mantenimiento 5 minutos. Ctrl+clic para reducirlo 1 minuto
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Reducir intervalo de mantenimiento 10%. Ctrl+clic para reducirlo 5%
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Incrementar intervalo de mantenimiento 10 días. Ctrl+Clic lo incrementa en 5 días
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Incrementar intervalo de mantenimiento 5 minutos. Ctrl+Clic lo incrementa en 1 minuto
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Incrementar intervalo de mantenimiento 10%. Ctrl+Clic lo incrementa en 5%
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}Reducir intervalo de mantenimiento 10 días. Ctrl+Clic lo reduce en 5 días
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}Reducir intervalo de mantenimiento 5 minutos. Ctrl+Clic lo reduce en 1 minuto
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}Reducir intervalo de mantenimiento 10%. Ctrl+Clic lo reduce en 5%
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambiar tipo de intervalo de mantenimiento
 STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto
@@ -4688,7 +4691,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Ir pasando por 
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ir sin paradas pasando por {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Mantenimiento en
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Ir a sin paradas a mantenimiento en
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Ir sin paradas a mantenimiento en
 
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :depósito de trenes
@@ -4696,6 +4699,8 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :depósito de au
 STR_ORDER_SHIP_DEPOT                                            :astillero de barcos
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING}l hangar más cercano
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING}l {STRING} más cercano
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :{SPACE}(Reformar a {STRING})
@@ -4804,7 +4809,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eliminar
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar retrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar contador de retraso para que el vehículo sea puntual. Ctrl+Clic lo reinicia a todo el grupo, con lo que el último vehículo será puntual y los demás llegarán antes de tiempo
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Llenar automáticamente
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Llenado automático
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena el horario automáticamente con los valores de la orden siguiente. Ctrl+clic para intentar mantener los tiempos de espera en estación
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
@@ -4905,7 +4910,7 @@ STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
-STR_AI_SETTINGS_RESET                                           :{BLACK}Restaurar parámetros
+STR_AI_SETTINGS_RESET                                           :{BLACK}Restablecer parámetros
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 
@@ -5819,9 +5824,9 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Helicóptero Po
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{0:ZEROFILL_NUM}/{1:ZEROFILL_NUM}/{2:NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{0:STRING} {1:STRING} {2:NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} de {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} de {STRING} de {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})

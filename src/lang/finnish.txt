@@ -791,13 +791,13 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Linja-autoasema
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Lento-/helikopterikenttä
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Satama
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Kumpuilevaa maata
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Epätasaista maata
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Ruohikkoa
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Paljasta maata
 STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Sademetsää
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Peltoja
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Puita
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Kiviä
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Kivikkoa
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Vettä
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Ei omistajaa
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Taajamia
@@ -3152,12 +3152,15 @@ STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Kunta vo
 STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Kunta voi uudistaa: {LTBLUE}Ei
 
 # Description of land area of different tiles
-STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kalliota
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kivikkoa
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Epätasaista maata
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Paljasta maata
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Ruohikkoa
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Peltoja
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Aavikkoa
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Lumista kivikkoa
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Lumista epätasaista maata
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Lumista ruohikkoa
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Rautatie
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Rautatie suojastusopastimilla

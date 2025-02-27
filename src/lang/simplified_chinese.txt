@@ -3158,6 +3158,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :土地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :积雪岩石
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :积雪荒地
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :积雪草地
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :铁路轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有通过信号灯的铁路轨道

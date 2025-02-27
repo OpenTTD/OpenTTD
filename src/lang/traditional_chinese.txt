@@ -791,7 +791,7 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}公車站
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}機場／直昇機場
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}碼頭
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}泥地
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}荒地
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}草地
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}荒地
 STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}雨林
@@ -3153,11 +3153,14 @@ STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}市鎮�
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :石頭
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :粗地
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :荒地
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :裸地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :積雪岩石
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :積雪荒地
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :積雪草地
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :鐵道軌道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :設有閉塞號誌的鐵道軌道
@@ -3448,7 +3451,7 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}產生世界
 STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}景觀生成
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}產生河流
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}產生粗地與岩石區域
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}產生荒地與岩石地貌
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}市鎮生成
 STR_GENERATION_INDUSTRY_GENERATION                              :{BLACK}工業生成
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}無法移動

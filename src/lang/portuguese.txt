@@ -3159,6 +3159,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreno deserto
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Prados
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rochas cobertas de neve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Terreno irregular coberto de neve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Relva coberta de neve
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Linha de caminhos-de-ferro
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Linha de caminhos-de-ferro com sinais de bloqueio
