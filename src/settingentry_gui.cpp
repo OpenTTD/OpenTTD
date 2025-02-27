@@ -234,9 +234,8 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 		/* Process the search text filter for this item. */
 		filter.string.ResetState();
 
-		SetDParam(0, STR_EMPTY);
-		filter.string.AddLine(sd->GetTitle());
-		filter.string.AddLine(sd->GetHelp());
+		filter.string.AddLine(GetString(sd->GetTitle(), STR_EMPTY));
+		filter.string.AddLine(GetString(sd->GetHelp()));
 
 		visible = filter.string.GetState();
 	}
@@ -530,7 +529,7 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
 	if (!force_visible && !filter.string.IsEmpty()) {
 		filter.string.ResetState();
-		filter.string.AddLine(this->title);
+		filter.string.AddLine(GetString(this->title));
 		force_visible = filter.string.GetState();
 	}
 

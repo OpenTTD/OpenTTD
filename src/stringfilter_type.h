@@ -58,8 +58,7 @@ public:
 
 	void ResetState();
 	void AddLine(const char *str);
-	void AddLine(const std::string &str);
-	void AddLine(StringID str);
+	void AddLine(const std::string &str) { this->AddLine(str.c_str()); }
 
 	/**
 	 * Get the matching state of the current item.
