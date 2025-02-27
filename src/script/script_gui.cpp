@@ -461,7 +461,7 @@ struct ScriptSettingsWindow : public Window {
 
 							DropDownList list;
 							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
-								list.push_back(MakeDropDownListStringItem(config_item.labels.find(i)->second, i));
+								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, config_item.labels.find(i)->second), i));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_SCRS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);

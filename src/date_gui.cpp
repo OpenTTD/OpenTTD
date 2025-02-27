@@ -90,8 +90,7 @@ struct SetDateWindow : Window {
 
 			case WID_SD_YEAR:
 				for (TimerGameEconomy::Year i = this->min_year; i <= this->max_year; i++) {
-					SetDParam(0, i);
-					list.push_back(MakeDropDownListStringItem(STR_JUST_INT, i.base()));
+					list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_INT, i), i.base()));
 				}
 				selected = this->date.year.base();
 				break;

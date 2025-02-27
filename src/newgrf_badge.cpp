@@ -543,12 +543,12 @@ private:
 using DropDownListBadgeItem = DropDownBadges<DropDownListStringItem>;
 using DropDownListBadgeIconItem = DropDownBadges<DropDownListIconItem>;
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, StringID str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded)
 {
-	return std::make_unique<DropDownListBadgeItem>(badge_classes, badges, feature, introduction_date, str, value, masked, shaded);
+	return std::make_unique<DropDownListBadgeItem>(badge_classes, badges, feature, introduction_date, std::move(str), value, masked, shaded);
 }
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
 {
-	return std::make_unique<DropDownListBadgeIconItem>(badge_classes, badges, feature, introduction_date, dim, sprite, palette, str, value, masked, shaded);
+	return std::make_unique<DropDownListBadgeIconItem>(badge_classes, badges, feature, introduction_date, dim, sprite, palette, std::move(str), value, masked, shaded);
 }

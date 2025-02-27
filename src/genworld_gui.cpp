@@ -338,8 +338,7 @@ static DropDownList BuildMapsizeDropDown()
 	DropDownList list;
 
 	for (uint i = MIN_MAP_SIZE_BITS; i <= MAX_MAP_SIZE_BITS; i++) {
-		SetDParam(0, 1LL << i);
-		list.push_back(MakeDropDownListStringItem(STR_JUST_INT, i));
+		list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_INT, 1ULL << i), i));
 	}
 
 	return list;
