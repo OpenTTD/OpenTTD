@@ -39,6 +39,9 @@ struct ScriptConfigItem {
 	ScriptConfigFlags flags = SCRIPTCONFIG_NONE; ///< Flags for the configuration setting.
 	LabelMapping labels;          ///< Text labels for the integer values.
 	bool complete_labels = false; ///< True if all values have a label.
+
+	std::string GetString(int value) const;
+	TextColour GetColour() const;
 };
 
 typedef std::vector<ScriptConfigItem> ScriptConfigItemList; ///< List of ScriptConfig items.

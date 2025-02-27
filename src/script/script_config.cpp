@@ -191,3 +191,35 @@ ScriptInstance::ScriptData *ScriptConfig::GetToLoadData()
 	return this->to_load_data.get();
 }
 
+static std::pair<StringParameter, StringParameter> GetValueParams(const ScriptConfigItem &config_item, int value)
+{
+	if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) return {value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF, {}};
+
+	auto it = config_item.labels.find(value);
+	if (it != std::end(config_item.labels)) return {STR_JUST_RAW_STRING, it->second};
+
+	return {STR_JUST_INT, value};
+}
+
+/**
+ * Get string to display this setting in the configuration interface.
+ * @param value Current value.
+ * @returns String to display.
+ */
+std::string ScriptConfigItem::GetString(int value) const
+{
+	auto [param1, param2] = GetValueParams(*this, value);
+	return this->description.empty()
+		? ::GetString(STR_JUST_STRING1, param1, param2)
+		: ::GetString(STR_AI_SETTINGS_SETTING, this->description, param1, param2);
+}
+
+/**
+ * Get text colour to display this setting in the configuration interface.
+ * @returns Text colour to display this setting.
+ */
+TextColour ScriptConfigItem::GetColour() const
+{
+	return this->description.empty() ? TC_ORANGE : TC_LIGHT_BLUE;
+}
+

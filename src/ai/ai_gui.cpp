@@ -159,6 +159,32 @@ struct AIConfigWindow : public Window {
 		return slot < MAX_COMPANIES && !Company::IsValidID(slot);
 	}
 
+	/**
+	 * Get text to display for a given company slot.
+	 * @param cid Company to display.
+	 * @returns Text to display for company.
+	 */
+	std::string GetSlotText(CompanyID cid) const
+	{
+		if ((_game_mode != GM_NORMAL && cid == 0) || (_game_mode == GM_NORMAL && Company::IsValidHumanID(cid))) return GetString(STR_AI_CONFIG_HUMAN_PLAYER);
+		if (const AIInfo *info = AIConfig::GetConfig(cid)->GetInfo(); info != nullptr) return info->GetName();
+		return GetString(STR_AI_CONFIG_RANDOM_AI);
+	}
+
+	/**
+	 * Get colour to display text in for a given company slot.
+	 * @param cid Company to display.
+	 * @param max_slot Maximum company ID that can be an AI.
+	 * @returns Colour to display text for company.
+	 */
+	TextColour GetSlotColour(CompanyID cid, CompanyID max_slot) const
+	{
+		if (this->selected_slot == cid) return TC_WHITE;
+		if (IsEditable(cid)) return cid < max_slot ? TC_ORANGE : TC_SILVER;
+		if (Company::IsValidAiID(cid)) return TC_GREEN;
+		return TC_SILVER;
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
@@ -176,26 +202,8 @@ struct AIConfigWindow : public Window {
 					max_slot++; // Slot 0 is human
 				}
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
-					StringID text;
-
-					if ((_game_mode != GM_NORMAL && i == 0) || (_game_mode == GM_NORMAL && Company::IsValidHumanID(i))) {
-						text = STR_AI_CONFIG_HUMAN_PLAYER;
-					} else if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != nullptr) {
-						SetDParamStr(0, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
-						text = STR_JUST_RAW_STRING;
-					} else {
-						text = STR_AI_CONFIG_RANDOM_AI;
-					}
-
-					TextColour tc = TC_SILVER;
-					if (this->selected_slot == i) {
-						tc = TC_WHITE;
-					} else if (IsEditable((CompanyID)i)) {
-						if (i < max_slot) tc = TC_ORANGE;
-					} else if (Company::IsValidAiID(i)) {
-						tc = TC_GREEN;
-					}
-					DrawString(tr, text, tc);
+					CompanyID cid = static_cast<CompanyID>(i);
+					DrawString(tr, this->GetSlotText(cid), this->GetSlotColour(cid, static_cast<CompanyID>(max_slot)));
 					tr.top += this->line_height;
 				}
 				break;

@@ -22,6 +22,7 @@
 #include "../hotkeys.h"
 #include "../company_cmd.h"
 #include "../misc_cmd.h"
+#include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
 
@@ -124,14 +125,11 @@ struct ScriptListWindow : public Window {
 					DrawString(tr, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
 					tr.top += this->line_height;
 				}
-				StringID str = this->show_all ? STR_AI_CONFIG_NAME_VERSION : STR_JUST_RAW_STRING;
 				int i = 0;
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->vscroll->IsVisible(i)) {
-						SetDParamStr(0, item.second->GetName());
-						SetDParam(1, item.second->GetVersion());
-						DrawString(tr, str, (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						DrawString(tr, this->show_all ? GetString(STR_AI_CONFIG_NAME_VERSION, item.second->GetName(), item.second->GetVersion()) : item.second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
 						tr.top += this->line_height;
 					}
 				}
@@ -147,19 +145,15 @@ struct ScriptListWindow : public Window {
 				/* Some info about the currently selected Script. */
 				if (selected_info != nullptr) {
 					Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
-					SetDParamStr(0, selected_info->GetAuthor());
-					DrawString(tr, STR_AI_LIST_AUTHOR);
+					DrawString(tr, GetString(STR_AI_LIST_AUTHOR, selected_info->GetAuthor()));
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
-					SetDParam(0, selected_info->GetVersion());
-					DrawString(tr, STR_AI_LIST_VERSION);
+					DrawString(tr, GetString(STR_AI_LIST_VERSION, selected_info->GetVersion()));
 					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 					if (!selected_info->GetURL().empty()) {
-						SetDParamStr(0, selected_info->GetURL());
-						DrawString(tr, STR_AI_LIST_URL);
+						DrawString(tr, GetString(STR_AI_LIST_URL, selected_info->GetURL()));
 						tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
 					}
-					SetDParamStr(0, selected_info->GetDescription());
-					DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_WHITE);
+					DrawStringMultiLine(tr, selected_info->GetDescription(), TC_WHITE);
 				}
 				break;
 			}
@@ -366,21 +360,8 @@ struct ScriptSettingsWindow : public Window {
 			int current_value = this->script_config->GetSetting(config_item.name);
 			bool editable = this->IsEditableItem(config_item);
 
-			StringID str;
-			TextColour colour;
-			uint idx = 0;
-			if (config_item.description.empty()) {
-				str = STR_JUST_STRING1;
-				colour = TC_ORANGE;
-			} else {
-				str = STR_AI_SETTINGS_SETTING;
-				colour = TC_LIGHT_BLUE;
-				SetDParamStr(idx++, config_item.description);
-			}
-
 			if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
 				DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
-				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
 				int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
 				if (config_item.complete_labels) {
@@ -388,18 +369,9 @@ struct ScriptSettingsWindow : public Window {
 				} else {
 					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
-
-				auto config_iterator = config_item.labels.find(current_value);
-				if (config_iterator != config_item.labels.end()) {
-					SetDParam(idx++, STR_JUST_RAW_STRING);
-					SetDParamStr(idx++, config_iterator->second);
-				} else {
-					SetDParam(idx++, STR_JUST_INT);
-					SetDParam(idx++, current_value);
-				}
 			}
 
-			DrawString(tr.left, tr.right, y + text_y_offset, str, colour);
+			DrawString(tr.left, tr.right, y + text_y_offset, config_item.GetString(current_value), config_item.GetColour());
 			y += this->line_height;
 		}
 	}
