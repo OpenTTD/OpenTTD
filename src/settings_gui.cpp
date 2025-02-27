@@ -400,9 +400,7 @@ struct GameOptionsWindow : Window {
 					if (currency.code.empty()) {
 						list.push_back(MakeDropDownListStringItem(currency.name, i, HasBit(disabled, i)));
 					} else {
-						SetDParam(0, currency.name);
-						SetDParamStr(1, currency.code);
-						list.push_back(MakeDropDownListStringItem(STR_GAME_OPTIONS_CURRENCY_CODE, i, HasBit(disabled, i)));
+						list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code), i, HasBit(disabled, i)));
 					}
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
@@ -433,19 +431,24 @@ struct GameOptionsWindow : Window {
 					bool hide_language = IsReleasedVersion() && !_languages[i].IsReasonablyFinished();
 					if (hide_language) continue;
 					bool hide_percentage = IsReleasedVersion() || _languages[i].missing < _settings_client.gui.missing_strings_threshold;
+					char *name;
 					if (&_languages[i] == _current_language) {
 						*selected_index = i;
-						SetDParamStr(0, _languages[i].own_name);
+						name = _languages[i].own_name;
 					} else {
 						/* Especially with sprite-fonts, not all localized
 						 * names can be rendered. So instead, we use the
 						 * international names for anything but the current
 						 * selected language. This avoids showing a few ????
 						 * entries in the dropdown list. */
-						SetDParamStr(0, _languages[i].name);
+						name = _languages[i].name;
 					}
-					SetDParam(1, (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS);
-					list.push_back(MakeDropDownListStringItem(hide_percentage ? STR_JUST_RAW_STRING : STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, i));
+					if (hide_percentage) {
+						list.push_back(MakeDropDownListStringItem(name, i));
+					} else {
+						int percentage = (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS;
+						list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, name, percentage), i));
+					}
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 				break;
@@ -456,9 +459,7 @@ struct GameOptionsWindow : Window {
 
 				*selected_index = GetCurrentResolutionIndex();
 				for (uint i = 0; i < _resolutions.size(); i++) {
-					SetDParam(0, _resolutions[i].width);
-					SetDParam(1, _resolutions[i].height);
-					list.push_back(MakeDropDownListStringItem(STR_GAME_OPTIONS_RESOLUTION_ITEM, i));
+					list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_RESOLUTION_ITEM, _resolutions[i].width, _resolutions[i].height), i));
 				}
 				break;
 
@@ -466,8 +467,7 @@ struct GameOptionsWindow : Window {
 				for (auto it = _refresh_rates.begin(); it != _refresh_rates.end(); it++) {
 					auto i = std::distance(_refresh_rates.begin(), it);
 					if (*it == _settings_client.gui.refresh_rate) *selected_index = i;
-					SetDParam(0, *it);
-					list.push_back(MakeDropDownListStringItem(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, i));
+					list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, *it), i));
 				}
 				break;
 
