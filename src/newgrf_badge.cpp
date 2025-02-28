@@ -461,9 +461,7 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
 
 		if (s.empty()) continue;
 
-		SetDParam(0, class_badge->name);
-		SetDParamStr(1, std::move(s));
-		r.top = DrawStringMultiLine(r, STR_BADGE_NAME_LIST, TC_BLACK);
+		r.top = DrawStringMultiLine(r, GetString(STR_BADGE_NAME_LIST, class_badge->name, std::move(s)), TC_BLACK);
 	}
 
 	return r.top;
