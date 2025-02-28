@@ -455,6 +455,15 @@ struct NewGRFInspectWindow : Window {
 		}
 	}
 
+	std::string GetPropertyString(const NIProperty &nip, uint value) const
+	{
+		switch (nip.type) {
+			case NIT_INT: return GetString(STR_JUST_INT, value);
+			case NIT_CARGO: return GetString(IsValidCargoType(value) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
+			default: NOT_REACHED();
+		}
+	}
+
 	/**
 	 * Helper function to draw the main panel widget.
 	 * @param r The rectangle to draw within.
@@ -519,22 +528,7 @@ struct NewGRFInspectWindow : Window {
 					default: NOT_REACHED();
 				}
 
-				StringID string;
-				SetDParam(0, value);
-				switch (nip.type) {
-					case NIT_INT:
-						string = STR_JUST_INT;
-						break;
-
-					case NIT_CARGO:
-						string = IsValidCargoType(value) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A;
-						break;
-
-					default:
-						NOT_REACHED();
-				}
-
-				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip.prop, GetString(string), nip.name));
+				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip.prop, this->GetPropertyString(nip, value), nip.name));
 			}
 		}
 
@@ -941,9 +935,7 @@ struct SpriteAlignerWindow : Window {
 			case WID_SA_LIST: {
 				Dimension d = {};
 				for (const auto &spritefile : GetCachedSpriteFiles()) {
-					SetDParamStr(0, spritefile->GetSimplifiedFilename());
-					SetDParamMaxDigits(1, 6);
-					d = maxdim(d, GetStringBoundingBox(STR_SPRITE_ALIGNER_SPRITE));
+					d = maxdim(d, GetStringBoundingBox(GetString(STR_SPRITE_ALIGNER_SPRITE, spritefile->GetSimplifiedFilename(), GetParamMaxDigits(6))));
 				}
 				size.width = d.width + padding.width;
 				resize.height = GetCharacterHeight(FS_NORMAL) + padding.height;
@@ -1005,12 +997,9 @@ struct SpriteAlignerWindow : Window {
 				for (auto it = first; it != last; ++it) {
 					const SpriteFile *file = GetOriginFile(*it);
 					if (file == nullptr) {
-						SetDParam(0, *it);
-						DrawString(ir, STR_JUST_COMMA, *it == this->current_sprite ? TC_WHITE : (TC_GREY | TC_NO_SHADE), SA_RIGHT | SA_FORCE);
+						DrawString(ir, GetString(STR_JUST_COMMA, *it), *it == this->current_sprite ? TC_WHITE : (TC_GREY | TC_NO_SHADE), SA_RIGHT | SA_FORCE);
 					} else {
-						SetDParamStr(0, file->GetSimplifiedFilename());
-						SetDParam(1, GetSpriteLocalID(*it));
-						DrawString(ir, STR_SPRITE_ALIGNER_SPRITE, *it == this->current_sprite ? TC_WHITE : TC_BLACK);
+						DrawString(ir, GetString(STR_SPRITE_ALIGNER_SPRITE, file->GetSimplifiedFilename(), GetSpriteLocalID(*it)), *it == this->current_sprite ? TC_WHITE : TC_BLACK);
 					}
 					ir.top += step_size;
 				}

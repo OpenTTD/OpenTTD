@@ -68,61 +68,56 @@ void ShowNewGRFError()
 	}
 }
 
+static StringID GetGRFPaletteString(uint8_t palette)
+{
+	if (palette & GRFP_BLT_32BPP) {
+		return (palette & GRFP_USE_WINDOWS) ? STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP : STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP;
+	}
+	return (palette & GRFP_USE_WINDOWS) ? STR_NEWGRF_SETTINGS_PALETTE_LEGACY : STR_NEWGRF_SETTINGS_PALETTE_DEFAULT;
+}
+
 static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 {
 	Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
 	if (c.error.has_value()) {
-		SetDParamStr(0, c.error->custom_message); // is skipped by built-in messages
-		SetDParamStr(1, c.filename);
-		SetDParamStr(2, c.error->data);
-		for (uint i = 0; i < c.error->param_value.size(); i++) {
-			SetDParam(3 + i, c.error->param_value[i]);
-		}
+		std::array<StringParameter, 3 + std::tuple_size_v<decltype(c.error->param_value)>> params{};
+		auto it = params.begin();
+		*it++ = c.error->custom_message; // is skipped by built-in messages
+		*it++ = c.filename;
+		*it++ = c.error->data;
+		for (const uint32_t &value : c.error->param_value) *it++ = value;
 
-		SetDParamStr(0, GetString(c.error->message != STR_NULL ? c.error->message : STR_JUST_RAW_STRING));
-		tr.top = DrawStringMultiLine(tr, c.error->severity);
+		tr.top = DrawStringMultiLine(tr, GetString(c.error->severity, GetStringWithArgs(c.error->message != STR_NULL ? c.error->message : STR_JUST_RAW_STRING, {params.begin(), it})));
 	}
 
 	/* Draw filename or not if it is not known (GRF sent over internet) */
 	if (!c.filename.empty()) {
-		SetDParamStr(0, c.filename);
-		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_FILENAME);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_FILENAME, c.filename));
 	}
 
 	/* Prepare and draw GRF ID */
-	SetDParamStr(0, fmt::format("{:08X}", std::byteswap(c.ident.grfid)));
-	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_GRF_ID);
+	tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_GRF_ID, fmt::format("{:08X}", std::byteswap(c.ident.grfid))));
 
 	if ((_settings_client.gui.newgrf_developer_tools || _settings_client.gui.newgrf_show_old_versions) && c.version != 0) {
-		SetDParam(0, c.version);
-		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_VERSION);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_VERSION, c.version));
 	}
 	if ((_settings_client.gui.newgrf_developer_tools || _settings_client.gui.newgrf_show_old_versions) && c.min_loadable_version != 0) {
-		SetDParam(0, c.min_loadable_version);
-		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_MIN_VERSION);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_MIN_VERSION, c.min_loadable_version));
 	}
 
 	/* Prepare and draw MD5 sum */
-	SetDParamStr(0, FormatArrayAsHex(c.ident.md5sum));
-	tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_MD5SUM);
+	tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_MD5SUM, FormatArrayAsHex(c.ident.md5sum)));
 
 	/* Show GRF parameter list */
 	if (show_params) {
 		if (!c.param.empty()) {
-			SetDParam(0, STR_JUST_RAW_STRING);
-			SetDParamStr(1, GRFBuildParamList(c));
+			tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_PARAMETER, STR_JUST_RAW_STRING, GRFBuildParamList(c)));
 		} else {
-			SetDParam(0, STR_NEWGRF_SETTINGS_PARAMETER_NONE);
+			tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_PARAMETER, STR_NEWGRF_SETTINGS_PARAMETER_NONE));
 		}
-		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_PARAMETER);
 
 		/* Draw the palette of the NewGRF */
-		if (c.palette & GRFP_BLT_32BPP) {
-			SetDParam(0, (c.palette & GRFP_USE_WINDOWS) ? STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP : STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP);
-		} else {
-			SetDParam(0, (c.palette & GRFP_USE_WINDOWS) ? STR_NEWGRF_SETTINGS_PALETTE_LEGACY : STR_NEWGRF_SETTINGS_PALETTE_DEFAULT);
-		}
-		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_PALETTE);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_PALETTE, GetGRFPaletteString(c.palette)));
 	}
 
 	/* Show flags */
@@ -133,8 +128,7 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 
 	/* Draw GRF info if it exists */
 	if (!StrEmpty(c.GetDescription())) {
-		SetDParamStr(0, c.GetDescription());
-		tr.top = DrawStringMultiLine(tr, STR_JUST_RAW_STRING, TC_BLACK);
+		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, c.GetDescription()), TC_BLACK);
 	} else {
 		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
@@ -217,8 +211,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_NUMPAR: {
-				SetDParamMaxValue(0, GRFConfig::MAX_NUM_PARAMS);
-				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->GetString());
+				Dimension d = GetStringBoundingBox(GetString(this->GetWidget<NWidgetCore>(widget)->GetString(), GetParamMaxValue(GRFConfig::MAX_NUM_PARAMS)));
 				d.width += padding.width;
 				d.height += padding.height;
 				size = maxdim(size, d);
@@ -258,6 +251,27 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
+	std::pair<StringParameter, StringParameter> GetValueParams(const GRFParameterInfo &par_info, uint32_t value) const
+	{
+		if (par_info.type == PTYPE_BOOL) return {value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF, {}};
+
+		auto it = std::ranges::lower_bound(par_info.value_names, value, std::less{}, &GRFParameterInfo::ValueName::first);
+		if (it != std::end(par_info.value_names) && it->first == value) {
+			if (const char *label = GetGRFStringFromGRFText(it->second); label != nullptr) return {STR_JUST_RAW_STRING, label};
+		}
+
+		return {STR_JUST_INT, value};
+	}
+
+	std::string GetSettingString(const GRFParameterInfo &par_info, int i, uint32_t value) const
+	{
+		auto [param1, param2] = this->GetValueParams(par_info, value);
+		const char *name = GetGRFStringFromGRFText(par_info.name);
+		return name == nullptr
+			? GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, i + 1, param1, param2)
+			: GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_JUST_RAW_STRING, name, param1, param2);
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_NP_DESCRIPTION) {
@@ -285,35 +299,15 @@ struct NewGRFParametersWindow : public Window {
 
 			if (par_info.type == PTYPE_BOOL) {
 				DrawBoolButton(buttons_left, ir.top + button_y_offset, current_value != 0, this->editable);
-				SetDParam(2, this->grf_config.GetValue(par_info) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else if (par_info.type == PTYPE_UINT_ENUM) {
 				if (par_info.complete_labels) {
 					DrawDropDownButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
 				} else {
 					DrawArrowButtons(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info.min_value, this->editable && current_value < par_info.max_value);
 				}
-				SetDParam(2, STR_JUST_INT);
-				SetDParam(3, current_value);
-				auto it = std::ranges::lower_bound(par_info.value_names, current_value, std::less{}, &GRFParameterInfo::ValueName::first);
-				if (it != std::end(par_info.value_names) && it->first == current_value) {
-					const char *label = GetGRFStringFromGRFText(it->second);
-					if (label != nullptr) {
-						SetDParam(2, STR_JUST_RAW_STRING);
-						SetDParamStr(3, label);
-					}
-				}
 			}
 
-			const char *name = GetGRFStringFromGRFText(par_info.name);
-			if (name != nullptr) {
-				SetDParam(0, STR_JUST_RAW_STRING);
-				SetDParamStr(1, name);
-			} else {
-				SetDParam(0, STR_NEWGRF_PARAMETERS_DEFAULT_NAME);
-				SetDParam(1, i + 1);
-			}
-
-			DrawString(tr.left, tr.right, ir.top + text_y_offset, STR_NEWGRF_PARAMETERS_SETTING, selected ? TC_WHITE : TC_LIGHT_BLUE);
+			DrawString(tr.left, tr.right, ir.top + text_y_offset, this->GetSettingString(par_info, i, current_value), selected ? TC_WHITE : TC_LIGHT_BLUE);
 			ir.top += this->line_height;
 		}
 	}
@@ -760,8 +754,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_PRESET_LIST: {
 				Dimension d = GetStringBoundingBox(STR_NUM_CUSTOM);
 				for (const auto &i : this->grf_presets) {
-					SetDParamStr(0, i);
-					d = maxdim(d, GetStringBoundingBox(STR_JUST_RAW_STRING));
+					d = maxdim(d, GetStringBoundingBox(GetString(STR_JUST_RAW_STRING, i)));
 				}
 				d.width += padding.width;
 				size = maxdim(d, size);
@@ -2168,23 +2161,21 @@ struct ScanProgressWindow : public Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_SP_PROGRESS_BAR: {
-				SetDParamMaxValue(0, 100);
-				size = GetStringBoundingBox(STR_GENERATION_PROGRESS);
+			case WID_SP_PROGRESS_BAR:
+				size = GetStringBoundingBox(GetString(STR_GENERATION_PROGRESS, GetParamMaxValue(100)));
 				/* We need some spacing for the 'border' */
 				size.height += WidgetDimensions::scaled.frametext.Horizontal();
 				size.width  += WidgetDimensions::scaled.frametext.Vertical();
 				break;
-			}
 
-			case WID_SP_PROGRESS_TEXT:
-				SetDParamMaxDigits(0, 4);
-				SetDParamMaxDigits(1, 4);
+			case WID_SP_PROGRESS_TEXT: {
+				uint64_t max_digits = GetParamMaxDigits(4);
 				/* We really don't know the width. We could determine it by scanning the NewGRFs,
 				 * but this is the status window for scanning them... */
-				size.width = std::max<uint>(size.width, GetStringBoundingBox(STR_NEWGRF_SCAN_STATUS).width + padding.width);
+				size.width = std::max<uint>(size.width, GetStringBoundingBox(GetString(STR_NEWGRF_SCAN_STATUS, max_digits, max_digits)).width + padding.width);
 				size.height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
 				break;
+			}
 		}
 	}
 
@@ -2197,15 +2188,12 @@ struct ScanProgressWindow : public Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				uint percent = scanned * 100 / std::max(1U, _settings_client.gui.last_newgrf_count);
 				DrawFrameRect(ir.WithWidth(ir.Width() * percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				SetDParam(0, percent);
-				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_GENERATION_PROGRESS, percent), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
 			case WID_SP_PROGRESS_TEXT:
-				SetDParam(0, this->scanned);
-				SetDParam(1, _settings_client.gui.last_newgrf_count);
-				DrawString(r.left, r.right, r.top, STR_NEWGRF_SCAN_STATUS, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top, GetString(STR_NEWGRF_SCAN_STATUS, this->scanned, _settings_client.gui.last_newgrf_count), TC_FROMSTRING, SA_HOR_CENTER);
 
 				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal, this->last_name, TC_BLACK, SA_HOR_CENTER);
 				break;
