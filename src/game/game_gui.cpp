@@ -124,7 +124,7 @@ struct GSConfigWindow : public Window {
 		visible_settings.clear();
 
 		for (const auto &item : *this->gs_config->GetConfigList()) {
-			bool no_hide = (item.flags & SCRIPTCONFIG_DEVELOPER) == 0;
+			bool no_hide = !item.flags.Test(ScriptConfigFlag::Developer);
 			if (no_hide || _settings_client.gui.ai_developer_tools) {
 				visible_settings.push_back(&item);
 			}
@@ -193,7 +193,7 @@ struct GSConfigWindow : public Window {
 					int current_value = this->gs_config->GetSetting(config_item.name);
 					bool editable = this->IsEditableItem(config_item);
 
-					if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
+					if (config_item.flags.Test(ScriptConfigFlag::Boolean)) {
 						DrawBoolButton(br.left, y + button_y_offset, current_value != 0, editable);
 					} else {
 						int i = static_cast<int>(std::distance(std::begin(this->visible_settings), it));
@@ -264,7 +264,7 @@ struct GSConfigWindow : public Window {
 					this->clicked_dropdown = false;
 				}
 
-				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
+				bool bool_item = config_item.flags.Test(ScriptConfigFlag::Boolean);
 
 				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 				int x = pt.x - r.left;
@@ -404,15 +404,15 @@ private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
 	{
 		return _game_mode == GM_MENU
-		    || _game_mode == GM_EDITOR
-		    || (config_item.flags & SCRIPTCONFIG_INGAME) != 0
-		    || _settings_client.gui.ai_developer_tools;
+			|| _game_mode == GM_EDITOR
+			|| config_item.flags.Test(ScriptConfigFlag::InGame)
+			|| _settings_client.gui.ai_developer_tools;
 	}
 
 	void SetValue(int value)
 	{
 		const ScriptConfigItem &config_item = *this->visible_settings[this->clicked_row];
-		if (_game_mode == GM_NORMAL && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
+		if (_game_mode == GM_NORMAL && !config_item.flags.Test(ScriptConfigFlag::InGame)) return;
 		this->gs_config->SetSetting(config_item.name, value);
 		this->SetDirty();
 	}
