@@ -2390,7 +2390,7 @@ struct CompanyWindow : Window
 
 			case WID_C_FACE_TITLE:
 				SetDParam(0, c->index);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawStringMultiLine(r, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
@@ -2651,7 +2651,7 @@ struct BuyCompanyWindow : Window {
 				const Company *c = Company::Get(this->window_number);
 				SetDParam(0, c->index);
 				SetDParam(1, this->company_value);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
 				break;
 			}
 		}

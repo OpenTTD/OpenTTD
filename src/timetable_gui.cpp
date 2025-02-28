@@ -530,12 +530,12 @@ struct TimetableWindow : Window {
 					/* Now actually draw the arrival time. */
 					if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 						/* Display seconds from now. */
-						DrawString(tr.left, tr.right, tr.top,
+						DrawString(tr,
 							GetString(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, tc, (arr_dep[i / 2].arrival + offset) / Ticks::TICKS_PER_SECOND),
 							i == selected ? TC_WHITE : TC_BLACK);
 					} else {
 						/* Show a date. */
-						DrawString(tr.left, tr.right, tr.top,
+						DrawString(tr,
 							GetString(STR_TIMETABLE_ARRIVAL_DATE, tc, TimerGameEconomy::date + (arr_dep[i / 2].arrival + this_offset) / Ticks::DAY_TICKS),
 							i == selected ? TC_WHITE : TC_BLACK);
 					}
@@ -545,12 +545,12 @@ struct TimetableWindow : Window {
 				if (arr_dep[i / 2].departure != Ticks::INVALID_TICKS) {
 					if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 						/* Display seconds from now. */
-						DrawString(tr.left, tr.right, tr.top,
+						DrawString(tr,
 							GetString(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, tc, (arr_dep[i / 2].departure + offset) / Ticks::TICKS_PER_SECOND),
 							i == selected ? TC_WHITE : TC_BLACK);
 					} else {
 						/* Show a date. */
-						DrawString(tr.left, tr.right, tr.top,
+						DrawString(tr,
 							GetString(STR_TIMETABLE_DEPARTURE_DATE, tc, TimerGameEconomy::date + (arr_dep[i / 2].departure + offset) / Ticks::DAY_TICKS),
 							i == selected ? TC_WHITE : TC_BLACK);
 					}
