@@ -3333,6 +3333,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Пустырь
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Трава
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустыня
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Заснеженные камни
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Заснеженное бездорожье
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Заснеженная трава
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Ж/д путь
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Ж/д путь с сигналами
