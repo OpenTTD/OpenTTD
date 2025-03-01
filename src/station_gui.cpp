@@ -95,8 +95,7 @@ int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad,
 			if (cargoes[i] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, i);
 		}
 	}
-	SetDParam(0, cargo_mask);
-	return DrawStringMultiLine(r, supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO);
+	return DrawStringMultiLine(r, GetString(supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO, cargo_mask));
 }
 
 /**

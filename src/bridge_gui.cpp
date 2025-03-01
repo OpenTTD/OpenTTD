@@ -138,16 +138,19 @@ private:
 	 * @param bridge_data the bridge to get the StringID of.
 	 * @return the StringID.
 	 */
-	StringID GetBridgeSelectString(const BuildBridgeData &bridge_data) const
+	std::string GetBridgeSelectString(const BuildBridgeData &bridge_data) const
 	{
-		SetDParam(0, bridge_data.spec->material);
-		SetDParam(1, PackVelocity(bridge_data.spec->speed, static_cast<VehicleType>(this->transport_type)));
-		SetDParam(2, bridge_data.cost);
 		/* If the bridge has no meaningful speed limit, don't display it. */
 		if (bridge_data.spec->speed == UINT16_MAX) {
-			return _game_mode == GM_EDITOR ? STR_SELECT_BRIDGE_INFO_NAME : STR_SELECT_BRIDGE_INFO_NAME_COST;
+			return _game_mode == GM_EDITOR
+				? GetString(STR_SELECT_BRIDGE_INFO_NAME, bridge_data.spec->material)
+				: GetString(STR_SELECT_BRIDGE_INFO_NAME_COST, bridge_data.spec->material, bridge_data.cost);
 		}
-		return _game_mode == GM_EDITOR ? STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED : STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST;
+
+		uint64_t packed_velocity = PackVelocity(bridge_data.spec->speed, static_cast<VehicleType>(this->transport_type));
+		return _game_mode == GM_EDITOR
+			? GetString(STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED, bridge_data.spec->material, packed_velocity)
+			: GetString(STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST, bridge_data.spec->material, packed_velocity, bridge_data.cost);
 	}
 
 public:

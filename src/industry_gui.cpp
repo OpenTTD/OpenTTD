@@ -381,9 +381,8 @@ class BuildIndustryWindow : public Window {
 				firstcargo = j;
 				continue;
 			}
-			SetDParam(0, CargoSpec::Get(cargolist[j])->name);
-			SetDParamStr(1, cargo_suffix[j].text);
-			AppendStringInPlace(cargostring, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION);
+			auto params = MakeParameters(CargoSpec::Get(cargolist[j])->name, cargo_suffix[j].text);
+			AppendStringWithArgsInPlace(cargostring, STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION, params);
 		}
 
 		if (numcargo > 0) {
@@ -424,8 +423,7 @@ public:
 	{
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
-				SetDParamMaxDigits(0, 4);
-				Dimension count = GetStringBoundingBox(STR_JUST_COMMA, FS_SMALL);
+				Dimension count = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxDigits(4)), FS_SMALL);
 				Dimension d{};
 				for (const auto &indtype : this->list) {
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
@@ -550,8 +548,7 @@ public:
 					DrawString(tr, indsp->name, selected ? TC_WHITE : TC_ORANGE);
 					GfxFillRect(icon, selected ? PC_WHITE : PC_BLACK);
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
-					SetDParam(0, Industry::GetIndustryTypeCount(type));
-					DrawString(tr, STR_JUST_COMMA, TC_BLACK, SA_RIGHT, false, FS_SMALL);
+					DrawString(tr, GetString(STR_JUST_COMMA, Industry::GetIndustryTypeCount(type)), TC_BLACK, SA_RIGHT, false, FS_SMALL);
 
 					text = text.Translate(0, this->resize.step_height);
 					icon = icon.Translate(0, this->resize.step_height);
@@ -570,8 +567,7 @@ public:
 				const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 
 				if (_game_mode != GM_EDITOR) {
-					SetDParam(0, indsp->GetConstructionCost());
-					DrawString(ir, STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST);
+					DrawString(ir, GetString(STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST, indsp->GetConstructionCost()));
 					ir.top += GetCharacterHeight(FS_NORMAL);
 				}
 
