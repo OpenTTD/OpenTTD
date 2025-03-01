@@ -136,6 +136,16 @@ public:
 	static TileIndex GetHangarOfAirport(TileIndex tile);
 
 	/**
+	 * Get a tile of the airport guaranteed not to be hangar.
+	 * @param tile Any tile of the airport.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @return The first non-hangar tile of the airport.
+	 * @note Use this when assigning orders to aircraft when intending to use the
+	 *  airport as a station destination.
+	 */
+	static TileIndex GetTileOfAirport(TileIndex tile);
+
+	/**
 	 * Builds a airport with tile at the topleft corner.
 	 * @param tile The topleft corner of the airport.
 	 * @param type The type of airport to build.
