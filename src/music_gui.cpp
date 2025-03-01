@@ -525,8 +525,7 @@ struct MusicTrackSelectionWindow : public Window {
 				Dimension d = {0, 0};
 
 				for (int i = 0; i < 6; i++) {
-					SetDParam(0, STR_MUSIC_PLAYLIST_ALL + i);
-					d = maxdim(d, GetStringBoundingBox(STR_PLAYLIST_PROGRAM));
+					d = maxdim(d, GetStringBoundingBox(GetString(STR_PLAYLIST_PROGRAM, STR_MUSIC_PLAYLIST_ALL + i)));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -538,10 +537,7 @@ struct MusicTrackSelectionWindow : public Window {
 				Dimension d = {0, 0};
 
 				for (const auto &song : _music.music_set) {
-					SetDParam(0, song.tracknr);
-					SetDParam(1, 2);
-					SetDParamStr(2, song.songname);
-					Dimension d2 = GetStringBoundingBox(STR_PLAYLIST_TRACK_NAME);
+					Dimension d2 = GetStringBoundingBox(GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
 					d.width = std::max(d.width, d2.width);
 					d.height += d2.height;
 				}
@@ -561,10 +557,7 @@ struct MusicTrackSelectionWindow : public Window {
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (const auto &song : _music.music_set) {
-					SetDParam(0, song.tracknr);
-					SetDParam(1, 2);
-					SetDParamStr(2, song.songname);
-					DrawString(tr, STR_PLAYLIST_TRACK_NAME);
+					DrawString(tr, GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
 					tr.top += GetCharacterHeight(FS_SMALL);
 				}
 				break;
@@ -575,10 +568,7 @@ struct MusicTrackSelectionWindow : public Window {
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 				for (const auto &song : _music.active_playlist) {
-					SetDParam(0, song.tracknr);
-					SetDParam(1, 2);
-					SetDParamStr(2, song.songname);
-					DrawString(tr, STR_PLAYLIST_TRACK_NAME);
+					DrawString(tr, GetString(STR_PLAYLIST_TRACK_NAME, song.tracknr, 2, song.songname));
 					tr.top += GetCharacterHeight(FS_SMALL);
 				}
 				break;
@@ -725,8 +715,7 @@ struct MusicWindow : public Window {
 			case WID_M_TRACK_NAME: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TITLE_NONE);
 				for (const auto &song : _music.music_set) {
-					SetDParamStr(0, song.songname);
-					d = maxdim(d, GetStringBoundingBox(STR_MUSIC_TITLE_NAME));
+					d = maxdim(d, GetStringBoundingBox(GetString(STR_MUSIC_TITLE_NAME, song.songname)));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -750,27 +739,28 @@ struct MusicWindow : public Window {
 				if (BaseMusic::GetUsedSet()->num_available == 0) {
 					break;
 				}
-				StringID str = STR_MUSIC_TRACK_NONE;
+				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 				if (_music.IsPlaying()) {
-					SetDParam(0, _music.GetCurrentSong().tracknr);
-					SetDParam(1, 2);
-					str = STR_MUSIC_TRACK_DIGIT;
+					DrawString(ir, GetString(STR_MUSIC_TRACK_DIGIT, _music.GetCurrentSong().tracknr, 2));
+				} else {
+					DrawString(ir, STR_MUSIC_TRACK_NONE);
 				}
-				DrawString(r.Shrink(WidgetDimensions::scaled.framerect), str);
 				break;
 			}
 
 			case WID_M_TRACK_NAME: {
 				GfxFillRect(r.Shrink(0, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, WidgetDimensions::scaled.bevel.bottom), PC_BLACK);
-				StringID str = STR_MUSIC_TITLE_NONE;
+				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
+
 				MusicSystem::PlaylistEntry entry(_music.GetCurrentSong());
 				if (BaseMusic::GetUsedSet()->num_available == 0) {
-					str = STR_MUSIC_TITLE_NOMUSIC;
+					DrawString(ir, STR_MUSIC_TITLE_NOMUSIC, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (_music.IsPlaying()) {
-					str = STR_MUSIC_TITLE_NAME;
-					SetDParamStr(0, entry.songname);
+					DrawString(ir, GetString(STR_MUSIC_TITLE_NAME, entry.songname), TC_FROMSTRING, SA_HOR_CENTER);
+				} else {
+					DrawString(ir, STR_MUSIC_TITLE_NONE, TC_FROMSTRING, SA_HOR_CENTER);
 				}
-				DrawString(r.Shrink(WidgetDimensions::scaled.framerect), str, TC_FROMSTRING, SA_HOR_CENTER);
+
 				break;
 			}
 
