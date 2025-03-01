@@ -25,6 +25,7 @@
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
  * \li GSWaypoint::GetWaypointID now returns the StationID of any type of waypoint
+ * \li GSStation::GetStationID can no longer return the StationID of waypoints
  *
  * \b 14.0
  *
