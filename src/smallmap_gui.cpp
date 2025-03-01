@@ -997,8 +997,7 @@ protected:
 					y + GetCharacterHeight(FS_SMALL) > dpi->top &&
 					y < dpi->top + dpi->height) {
 				/* And draw it. */
-				SetDParam(0, t->index);
-				DrawString(x, x + t->cache.sign.width_small, y, STR_SMALLMAP_TOWN);
+				DrawString(x, x + t->cache.sign.width_small, y, GetString(STR_SMALLMAP_TOWN, t->index));
 			}
 		}
 	}
@@ -1529,14 +1528,11 @@ public:
 			uint height = 0;
 			uint num_columns = 1;
 			for (const LegendAndColour *tbl = _legend_table[i]; !tbl->end; ++tbl) {
-				StringID str;
+				std::string str;
 				if (i == SMT_INDUSTRY) {
-					SetDParam(0, tbl->legend);
-					SetDParam(1, IndustryPool::MAX_SIZE);
-					str = STR_SMALLMAP_INDUSTRY;
+					str = GetString(STR_SMALLMAP_INDUSTRY, tbl->legend, IndustryPool::MAX_SIZE);
 				} else if (i == SMT_LINKSTATS) {
-					SetDParam(0, tbl->legend);
-					str = STR_SMALLMAP_LINKSTATS;
+					str = GetString(STR_SMALLMAP_LINKSTATS, tbl->legend);
 				} else if (i == SMT_OWNER) {
 					if (tbl->company != CompanyID::Invalid()) {
 						if (!Company::IsValidID(tbl->company)) {
@@ -1546,10 +1542,9 @@ public:
 							return;
 						}
 						/* Non-fixed legend entries for the owner view. */
-						SetDParam(0, tbl->company);
-						str = STR_SMALLMAP_COMPANY;
+						str = GetString(STR_SMALLMAP_COMPANY, tbl->company);
 					} else {
-						str = tbl->legend;
+						str = GetString(tbl->legend);
 					}
 				} else {
 					if (tbl->col_break) {
@@ -1558,8 +1553,11 @@ public:
 						num_columns++;
 					}
 					height++;
-					str = tbl->legend;
-					if (i == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);
+					if (i == SMT_CONTOUR) {
+						str = GetString(tbl->legend, tbl->height * TILE_HEIGHT_STEP);
+					} else {
+						str = GetString(tbl->legend);
+					}
 				}
 				min_width = std::max(GetStringBoundingBox(str).width, min_width);
 			}
@@ -1644,30 +1642,31 @@ public:
 
 					uint8_t legend_colour = tbl->colour;
 
+					std::array<StringParameter, 2> params{};
 					switch (this->map_type) {
 						case SMT_INDUSTRY:
 							/* Industry name must be formatted, since it's not in tiny font in the specs.
 							 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
-							SetDParam(0, tbl->legend);
-							SetDParam(1, Industry::GetIndustryTypeCount(tbl->type));
+							params[0] = tbl->legend;
+							params[1] = Industry::GetIndustryTypeCount(tbl->type);
 							if (tbl->show_on_map && tbl->type == _smallmap_industry_highlight) {
 								legend_colour = _smallmap_industry_highlight_state ? PC_WHITE : PC_BLACK;
 							}
 							[[fallthrough]];
 
 						case SMT_LINKSTATS:
-							SetDParam(0, tbl->legend);
+							params[0] = tbl->legend;
 							[[fallthrough]];
 
 						case SMT_OWNER:
 							if (this->map_type != SMT_OWNER || tbl->company != CompanyID::Invalid()) {
-								if (this->map_type == SMT_OWNER) SetDParam(0, tbl->company);
+								if (this->map_type == SMT_OWNER) params[0] = tbl->company;
 								if (!tbl->show_on_map) {
 									/* Simply draw the string, not the black border of the legend colour.
 									 * This will enforce the idea of the disabled item */
-									DrawString(text, string, TC_GREY);
+									DrawString(text, GetStringWithArgs(string, params), TC_GREY);
 								} else {
-									DrawString(text, string, TC_BLACK);
+									DrawString(text, GetStringWithArgs(string, params), TC_BLACK);
 									GfxFillRect(icon, PC_BLACK); // Outer border of the legend colour
 								}
 								break;
@@ -1675,10 +1674,13 @@ public:
 							[[fallthrough]];
 
 						default:
-							if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);
 							/* Anything that is not an industry or a company is using normal process */
 							GfxFillRect(icon, PC_BLACK);
-							DrawString(text, tbl->legend);
+							if (this->map_type == SMT_CONTOUR) {
+								DrawString(text, GetString(tbl->legend, tbl->height * TILE_HEIGHT_STEP));
+							} else {
+								DrawString(text, tbl->legend);
+							}
 							break;
 					}
 					GfxFillRect(icon.Shrink(WidgetDimensions::scaled.bevel), legend_colour); // Legend colour
