@@ -131,7 +131,7 @@ inline void DrawFrameRect(const Rect &r, Colours colour, FrameFlags flags)
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, flags);
 }
 
-void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align, FontSize fs);
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, std::string_view str, StringAlignment align, FontSize fs);
 
 /* window.cpp */
 using WindowList = std::list<Window *>;
@@ -623,6 +623,16 @@ public:
 	 * @param widget  Widget number.
 	 */
 	virtual void SetStringParameters([[maybe_unused]] WidgetID widget) const {}
+
+	/**
+	 * Get the raw string for a widget.
+	 * Calls to this function are also made during initialization to measure the size (that is as part of #InitNested()), during drawing,
+	 * and while re-initializing the window. Only for widgets that render text initializing is requested.
+	 * @param widget Widget number.
+	 * @param stringid StringID assigned to widget.
+	 * @returns raw string to display.
+	 */
+	virtual std::string GetWidgetString([[maybe_unused]] WidgetID widget, StringID stringid) const;
 
 	/**
 	 * The window has gained focus.
