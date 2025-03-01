@@ -170,7 +170,7 @@ struct ScriptListWindow : public Window {
 		} else {
 			ScriptInfoList::const_iterator it = this->info_list->cbegin();
 			std::advance(it, this->selected);
-			GetConfig(slot)->Change(it->second->GetName(), it->second->GetVersion());
+			GetConfig(slot)->Change(it->second->GetName(), it->second->GetVersion(), this->show_all);
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
