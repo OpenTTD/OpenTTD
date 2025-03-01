@@ -582,59 +582,48 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_HEIGHTMAP_HEIGHT_TEXT:
-				SetDParam(0, MAX_TILE_HEIGHT);
-				d = GetStringBoundingBox(STR_JUST_INT);
+				d = GetStringBoundingBox(GetString(STR_JUST_INT, MAX_TILE_HEIGHT));
 				break;
 
 			case WID_GL_START_DATE_TEXT:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
-				d = GetStringBoundingBox(STR_JUST_DATE_LONG);
+				d = GetStringBoundingBox(GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1)));
 				break;
 
 			case WID_GL_MAPSIZE_X_PULLDOWN:
 			case WID_GL_MAPSIZE_Y_PULLDOWN:
-				SetDParamMaxValue(0, MAX_MAP_SIZE);
-				d = GetStringBoundingBox(STR_JUST_INT);
+				d = GetStringBoundingBox(GetString(STR_JUST_INT, GetParamMaxValue(MAX_MAP_SIZE)));
 				break;
 
 			case WID_GL_SNOW_COVERAGE_TEXT:
-				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
-				d = GetStringBoundingBox(STR_MAPGEN_SNOW_COVERAGE_TEXT);
+				d = GetStringBoundingBox(GetString(STR_MAPGEN_SNOW_COVERAGE_TEXT, GetParamMaxValue(MAX_TILE_HEIGHT)));
 				break;
 
 			case WID_GL_DESERT_COVERAGE_TEXT:
-				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
-				d = GetStringBoundingBox(STR_MAPGEN_DESERT_COVERAGE_TEXT);
+				d = GetStringBoundingBox(GetString(STR_MAPGEN_DESERT_COVERAGE_TEXT, GetParamMaxValue(MAX_TILE_HEIGHT)));
 				break;
 
 			case WID_GL_HEIGHTMAP_SIZE_TEXT:
-				SetDParam(0, this->x);
-				SetDParam(1, this->y);
-				d = GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE);
+				d = GetStringBoundingBox(GetString(STR_MAPGEN_HEIGHTMAP_SIZE, this->x, this->y));
 				break;
 
 			case WID_GL_TOWN_PULLDOWN:
 				strs = _num_towns;
-				SetDParamMaxValue(0, CUSTOM_TOWN_MAX_NUMBER);
-				d = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
+				d = GetStringBoundingBox(GetString(STR_NUM_CUSTOM_NUMBER, GetParamMaxValue(CUSTOM_TOWN_MAX_NUMBER)));
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN:
 				strs = _num_inds;
-				SetDParamMaxValue(0, IndustryPool::MAX_SIZE);
-				d = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
+				d = GetStringBoundingBox(GetString(STR_NUM_CUSTOM_NUMBER, GetParamMaxValue(IndustryPool::MAX_SIZE)));
 				break;
 
 			case WID_GL_TERRAIN_PULLDOWN:
 				strs = _elevations;
-				SetDParamMaxValue(0, MAX_MAP_HEIGHT_LIMIT);
-				d = GetStringBoundingBox(STR_TERRAIN_TYPE_CUSTOM_VALUE);
+				d = GetStringBoundingBox(GetString(STR_TERRAIN_TYPE_CUSTOM_VALUE, GetParamMaxValue(MAX_MAP_HEIGHT_LIMIT)));
 				break;
 
 			case WID_GL_WATER_PULLDOWN:
 				strs = _sea_lakes;
-				SetDParamMaxValue(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
-				d = GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
+				d = GetStringBoundingBox(GetString(STR_SEA_LEVEL_CUSTOM_PERCENTAGE, GetParamMaxValue(CUSTOM_SEA_LEVEL_MAX_PERCENTAGE)));
 				break;
 
 			case WID_GL_RIVER_PULLDOWN:      strs = _rivers; break;
@@ -1110,7 +1099,7 @@ struct CreateScenarioWindow : public Window
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		StringID str = STR_JUST_INT;
+		std::string str;
 		switch (widget) {
 			case WID_CS_TEMPERATE: case WID_CS_ARCTIC:
 			case WID_CS_TROPICAL: case WID_CS_TOYLAND:
@@ -1119,17 +1108,16 @@ struct CreateScenarioWindow : public Window
 				return;
 
 			case WID_CS_START_DATE_TEXT:
-				SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
-				str = STR_JUST_DATE_LONG;
+				str = GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1));
 				break;
 
 			case WID_CS_MAPSIZE_X_PULLDOWN:
 			case WID_CS_MAPSIZE_Y_PULLDOWN:
-				SetDParamMaxValue(0, MAX_MAP_SIZE);
+				str = GetString(STR_JUST_INT, GetParamMaxValue(MAX_MAP_SIZE));
 				break;
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
-				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
+				str = GetString(STR_JUST_INT, GetParamMaxValue(MAX_TILE_HEIGHT));
 				break;
 
 			default:
@@ -1391,8 +1379,7 @@ struct GenerateProgressWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GP_PROGRESS_BAR: {
-				SetDParamMaxValue(0, 100);
-				size = GetStringBoundingBox(STR_GENERATION_PROGRESS);
+				size = GetStringBoundingBox(GetString(STR_GENERATION_PROGRESS, GetParamMaxValue(100)));
 				/* We need some spacing for the 'border' */
 				size.height += WidgetDimensions::scaled.frametext.Horizontal();
 				size.width  += WidgetDimensions::scaled.frametext.Vertical();
@@ -1416,8 +1403,8 @@ struct GenerateProgressWindow : public Window {
 				DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 				Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 				DrawFrameRect(br.WithWidth(br.Width() * GenWorldStatus::percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				SetDParam(0, GenWorldStatus::percent);
-				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)), STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_NORMAL)),
+					GetString(STR_GENERATION_PROGRESS, GenWorldStatus::percent), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
@@ -1426,9 +1413,8 @@ struct GenerateProgressWindow : public Window {
 				DrawString(r.left, r.right, r.top, GenWorldStatus::cls, TC_FROMSTRING, SA_HOR_CENTER);
 
 				/* And say where we are in that class */
-				SetDParam(0, GenWorldStatus::current);
-				SetDParam(1, GenWorldStatus::total);
-				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, r.top + GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal,
+					GetString(STR_GENERATION_PROGRESS_NUM, GenWorldStatus::current, GenWorldStatus::total), TC_FROMSTRING, SA_HOR_CENTER);
 		}
 	}
 };
