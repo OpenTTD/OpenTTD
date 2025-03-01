@@ -1352,7 +1352,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 			ci = NetworkClientInfo::GetByClientID(from_id);
 			if (ci != nullptr) {
-				NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data, "");
+				NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
 			}
 			break;
 	}
@@ -1370,7 +1370,7 @@ void NetworkServerSendExternalChat(const std::string &source, TextColour colour,
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) cs->SendExternalChat(source, colour, user, msg);
 	}
-	NetworkTextMessage(NETWORK_ACTION_EXTERNAL_CHAT, colour, false, user, msg, 0, source);
+	NetworkTextMessage(NETWORK_ACTION_EXTERNAL_CHAT, colour, false, user, msg, source);
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
