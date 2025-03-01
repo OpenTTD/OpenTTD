@@ -791,7 +791,7 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bushalte
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Vliegveld/heliplatform
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Haven
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Ruw land
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Ruw terrein
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Grasland
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Braakliggend land
 STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Regenwoud
@@ -934,8 +934,8 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Groepsve
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} accepteert niet langer: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} accepteert nu: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie ingetrokken:{}{}{STRING}route van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidieaanbod verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt niet meer gesubsidieerd
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie ingetrokken:{}{}{STRING} route van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidie aangeboden:{}{}Eerste {STRING} van {STRING} naar {STRING} krijgt {UNITS_YEARS_OR_MINUTES} lang subsidie van de gemeente!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidie toegekend aan {STRING}!{}{}{STRING} van {STRING} naar {STRING} krijgt de volgende {UNITS_YEARS_OR_MINUTES} 50% extra betaald!
@@ -3153,11 +3153,14 @@ STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Stad kan
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rotsen
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Ruw land
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Ruw terrein
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Braakliggend land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gras
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akkers
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woestijn
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rotsen met sneeuw
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Ruw terrein met sneeuw
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Gras met sneeuw
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Spoor
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Spoor met blokseinen
@@ -4695,54 +4698,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garage
 STR_ORDER_SHIP_DEPOT                                            :Dok
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} de dichtstbijzijnde hangar
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} de dichtstbijzijnde {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Ombouwen naar {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwen naar {STRING} en stop)
-STR_ORDER_STOP_ORDER                                            :(Stop)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Ombouwen naar {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Ombouwen naar {STRING} en stop)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Stop)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Wacht op ontkreukelen)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Wacht op ontkreukelen)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan station niet gebruiken){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Impliciet)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Impliciet)
 
-STR_ORDER_FULL_LOAD                                             :(Volledig laden)
-STR_ORDER_FULL_LOAD_ANY                                         :(Eén soort vracht volledig laden)
-STR_ORDER_NO_LOAD                                               :(Niet laden)
-STR_ORDER_UNLOAD                                                :(Lossen, vracht meenemen)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lossen, volledig laden)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lossen, één soort vracht volledig laden)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Lossen, leeg vertrekken)
-STR_ORDER_TRANSFER                                              :(Overdragen, vracht meenemen)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overdragen, volledig laden)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overdragen, één soort vracht volledig laden)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Overdragen, leeg vertrekken)
-STR_ORDER_NO_UNLOAD                                             :(Niet lossen, vracht meenemen)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen, volledig laden)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen, één soort vracht volledig laden)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Niet lossen, niet laden)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Volledig laden)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Eén soort vracht volledig laden)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Niet laden)
+STR_ORDER_UNLOAD                                                :{SPACE}(Lossen, vracht meenemen)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Lossen, volledig laden)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Lossen, één soort vracht volledig laden)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Lossen, leeg vertrekken)
+STR_ORDER_TRANSFER                                              :{SPACE}(Overdragen, vracht meenemen)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Overdragen, volledig laden)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Overdragen, één soort vracht volledig laden)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Overdragen, leeg vertrekken)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Niet lossen, vracht meenemen)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Niet lossen, volledig laden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Niet lossen, één soort vracht volledig laden)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Niet lossen, niet laden)
 
-STR_ORDER_AUTO_REFIT                                            :(Ombouw naar {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Volledig laden, ombouwen naar {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Eén soort vracht volledig laden, ombouwen naar {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Lossen, vracht meenemen, ombouwen naar {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Lossen, volledig laden, ombouwen naar {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Lossen, één soort vracht volledig laden, ombouwen naar {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Overdragen, vracht meenemen, ombouwen naar {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Overdragen, volledig laden, ombouwen naar {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Overdragen, één soort vracht volledig laden, ombouwen naar {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Niet lossen, vracht meenemen, daartoe ombouwen naar {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Niet lossen, volledig laden, ombouwen naar {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Niet lossen en wacht op willekeurig volledig geladen vracht met ombouw naar {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Ombouwen naar {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Volledig laden, ombouwen naar {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Eén soort vracht volledig laden, ombouwen naar {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Lossen, vracht meenemen, ombouwen naar {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Lossen, volledig laden, ombouwen naar {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Lossen, één soort vracht volledig laden, ombouwen naar {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Overdragen, vracht meenemen, ombouwen naar {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Overdragen, volledig laden, ombouwen naar {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Overdragen, één soort vracht volledig laden, ombouwen naar {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Niet lossen, vracht meenemen met ombouw naar {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Niet lossen, volledig laden, ombouwen naar {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Niet lossen en wacht op willekeurig volledig geladen vracht met ombouw naar {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :beschikbare vracht
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[begin]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[einde]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[begin]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[midden]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[einde]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (De volgende bestemming is buiten bereik)
 
@@ -4767,8 +4772,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRI
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis {STRING} met maximaal {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reis (gedurende {STRING}, geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reis (gedurende {STRING}, geen dienstregeling) maximaal {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(wacht gedurende {STRING}, geen dienstregeling)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reis gedurende {STRING}, geen dienstregeling)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(wacht {STRING} lang, geen dienstregeling)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(reis gedurende {STRING}, geen dienstregeling)
 STR_TIMETABLE_STAY_FOR                                          :en blijf gedurende {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd {STRING}
 

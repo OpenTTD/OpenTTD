@@ -1511,7 +1511,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehículos siem
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los modelos de vehículos estarán disponibles para siempre tras haber sido lanzados
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Transcurso de tiempo: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Seleccionar cómo transcurre el tiempo en el juego. Esto no puede cambiarse más tarde.{}{}La experiencia típica de OpenTTD es por un calendario de 12 meses, con 28 a 31 días por mes.{}{}En el modo reloj, la producción de carga y las finanzas se basan en incrementos de un minuto, más o menos lo que dura un mes de 30 días en el modo calendario.{}{}En cualquiera de los dos modos siempre hay un calendario normal, utilizado para las fechas de lanzamiento de vehículos, casas y otra infraestructura
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Elegir el transcurso del tiempo en el juego. Esto no puede cambiarse más tarde.{}{}La experiencia típica de OpenTTD es por un calendario de 12 meses, con 28 a 31 días por mes.{}{}En el modo reloj, la producción de carga y las finanzas se basan en incrementos de un minuto, más o menos lo que dura un mes de 30 días en el modo calendario.{}{}En cualquiera de los dos modos siempre hay un calendario normal, utilizado para las fechas de lanzamiento de vehículos, casas y otra infraestructura
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Calendario
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Reloj
@@ -2832,11 +2832,11 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastra
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir una estación mediante arrastrar y soltar el ratón
 
 STR_PICKER_MODE_ALL                                             :Todos
-STR_PICKER_MODE_ALL_TOOLTIP                                     :Alternar vista de elementos de todas las clases
-STR_PICKER_MODE_USED                                            :Utilizados
-STR_PICKER_MODE_USED_TOOLTIP                                    :Alternar vista de solo los elementos existentes
+STR_PICKER_MODE_ALL_TOOLTIP                                     :Mostrar u ocultar elementos de todas las clases
+STR_PICKER_MODE_USED                                            :Usados
+STR_PICKER_MODE_USED_TOOLTIP                                    :Ver solo los elementos existentes
 STR_PICKER_MODE_SAVED                                           :Guardados
-STR_PICKER_MODE_SAVED_TOOLTIP                                   :Alternar vista de solo los elementos guardados
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :Ver solo los elementos guardados
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Elegir qué clase de estación mostrar
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Elegir qué tipo de estación construir. Ctrl+Clic lo añade o elimina de guardados
@@ -2866,7 +2866,7 @@ STR_HOUSE_PICKER_CLASS_ZONE1                                    :Extremos
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Afueras
 STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios exteriores
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
-STR_HOUSE_PICKER_CLASS_ZONE5                                    :Zona centro
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro
 
 STR_HOUSE_PICKER_PROTECT_TITLE                                  :Prevenir mejoras
 STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Optar por que el edificio no sea reemplazado cuando la localidad crezca

@@ -1039,7 +1039,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :每 120 分钟
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}语言
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}选择界面语言
-STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（完成了 {NUM}%）
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM}%）
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}全屏幕
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}选择此项可以在全屏幕模式下进行 OpenTTD 游戏
@@ -1441,8 +1441,8 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :允许公司尝
 
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允许买断经营权：{STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一家公司购买了一座城镇的独家经营权，其他公司在此城镇的车站在十二个月之内将不会收到任何货物与旅客
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一家公司购买了一座城镇的独家经营权，其他公司在此城镇的车站在 12 分钟之内将不会收到任何货物与旅客
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一家公司购买一座城镇的独家经营权，其他公司在此城镇的车站在十二个月之内将不会收到任何货物与旅客
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一家公司购买一座城镇的独家经营权，其他公司在此城镇的车站在 12 分钟之内将不会收到任何货物与旅客
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允许资助城镇建设：{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :“打开”时，允许公司提供资助新建房屋
@@ -1723,7 +1723,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间（
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :国际格式（2008-12-31）
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :开始新游戏时自动暂停：{STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :“打开”时，为了让玩家有时间研究地图，开启新游戏自动暂停游戏
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :启用时，游戏会在开始时自动暂停，方便玩家详细研究地图
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :暂停时允许：{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :选择游戏暂停时可以进行哪些操作
@@ -2169,10 +2169,10 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变�
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}配置文件错误……
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}……函数错误“{STRING}”
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}……对“{STRING}”设置了错误值“{STRING}”
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}……“{STRING}”不是“{STRING}”的有效值
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}……有多余字符在设定的结尾处“{STRING}”
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……忽略 NewGRF“{STRING}”：重复的 GRF ID“{STRING}”
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}……忽略了无效的 NewGRF“{STRING}”：{STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……正忽略 NewGRF“{STRING}”：重复的 GRF ID “{STRING}”
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}……正忽略无效的 NewGRF“{STRING}”：{STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :静态使用时不安全
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系统 NewGRF
@@ -2189,7 +2189,7 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}无法�
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}图形设置错误……
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}……找不到合适的 GPU。硬件加速已禁用
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU 使游戏崩溃了。硬件加速已禁用
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU 驱动程序导致游戏崩溃。硬件加速已禁用
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2234,7 +2234,7 @@ STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}显示�
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}当前选定的基础图形组缺少 {NUM} 个贴图。请检查基础图形组有无更新。
-STR_INTRO_TRANSLATION                                           :{BLACK}简体中文翻译缺失了 {NUM} 条字符串。请注册成为翻译人员以帮助开发 OpenTTD。{}详见 readme.txt。
+STR_INTRO_TRANSLATION                                           :{BLACK}简体中文翻译缺失了 {NUM} 条字符串。请注册成为翻译人员以帮助开发 OpenTTD。详见 readme.txt。
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}退出
@@ -2609,7 +2609,7 @@ STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 不匹�
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :没有授权
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到无效或未预期的数据包
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :错误的版本
-STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已经有人用这个名字了
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已有人使用相同名称
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :错误的密码
 STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :不在白名单内
 STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :已请求的验证方式均不可用
@@ -2655,7 +2655,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务�
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 被踢出服务器。原因：（{STRING}）
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}服务器注册失败
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}另一个设置了同样邀请码的服务器已经注册。切换到“本地”游戏模式。
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}已有其他服务器使用同样的邀请码注册。正切换到“本地”游戏模式。
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}您的服务器不允许远程连接
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{BLACK}其他玩家将无法连接你的服务器
 
@@ -3835,7 +3835,7 @@ STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}显示�
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}接受：{WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}这个车站在这个镇里享有独家经营权
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 购买了本城镇专属经营权
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 已购买本城镇专属经营权
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}评价
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}显示车站评价
@@ -4326,7 +4326,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}你将�
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}来自供货商的消息
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我们新近设计了一款{STRING}{}您愿意在产品正式上市前试用一年吗？
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我们新近设计了一款{STRING}{}您愿意在产品正式上市前独家试用一年，以便我们在正式上市前观察它的表现吗？
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :铁路机车
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :电气化铁路机车
@@ -4851,7 +4851,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}游戏�
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}检查游戏脚本日志。按住 <Ctrl> 操作以打开新窗口
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到可用的 AI。{}本 AI 是一个演示 AI 且没有任何效果。{}您可以通过“线上拓展内容”功能下载新的 AI
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}您使用的一个 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在运行中的一个 AI 或游戏脚本发生错误。请将此问题回报给脚本作者，并附上一张“AI/游戏脚本调试”窗口的截图
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI 调试窗口只对服务器可用
 
 # AI configuration window
@@ -4974,12 +4974,12 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}当前�
 STR_ERROR_PNGMAP                                                :{WHITE}无法从 PNG 文件中读取场景……
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}……文件未找到
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}……不能转换图像格式{}请使用 8 位或 24 位 PNG 格式图片
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}……似乎出现了错误{}（可能是损坏的文件等）
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}……似乎出现了错误（可能是损坏的文件等）
 
 STR_ERROR_BMPMAP                                                :{WHITE}无法从 BMP 文件中读取场景……
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}……不能转换图像格式
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}……图像太大了
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}……图像过大
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}缩放警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
@@ -5001,7 +5001,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}来自 
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}超过地图边界
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}距离地图边界过近
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}距离地图边缘过近
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}资金不足 - 需要 {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}需要平坦的地面
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地倾斜的方向不对
@@ -5009,7 +5009,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能�
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须先摧毁建筑
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}无法清除这个区域……
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}……地点不合适
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}……已经建好了
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}……已经建成
 STR_ERROR_OWNED_BY                                              :{WHITE}……所有者是 {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}……此区域由另一公司所有
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}……已达地形限制
@@ -5030,10 +5030,10 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}不能�
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}不能降低这里的地面……
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}无法在此处变更地形……
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}挖掘将破坏隧道
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}……已经是海平面了
-STR_ERROR_TOO_HIGH                                              :{WHITE}……太高了
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}……已经平了
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}这样的话，在它上面的桥梁会太高
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}……已到海平面
+STR_ERROR_TOO_HIGH                                              :{WHITE}……太高
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}……已经平整
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}于地形上的桥梁会过高
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}无法修改公司名称……
@@ -5041,7 +5041,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}不能�
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}……最大贷款额度是{CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}无法借更多钱……
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}……没有要偿还的贷款了
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}……没有要偿还的贷款
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}……需要{CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}不能偿还贷款……
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能给予银行贷款……
@@ -5054,10 +5054,10 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}无法�
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}不能重命名城镇……
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}不能在这里建设城镇……
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}无法扩展城镇……
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}……太靠近地图边缘了
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}……太靠近另一个城镇了
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}……城镇太多了
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}……地图上没有多余的地方了
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}……距离地图边缘过近
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}……距离另一城镇过近
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}……已有太多城镇
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}……地图没有足够空间
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇……{}城镇范围内还有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}……城市中心没有合适的地方放置公司塑像
@@ -5083,7 +5083,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}……�
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}……只能在雪线以上建造
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}……只能在雪线以下建造
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}由于运气不好，勘探失败了；请再试一次
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}勘探由于运气不好而失败；请再试一次
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}没有合适的地方勘探这种工业
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}没有合适的地方建设“{STRING}”工业
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}请更改参数以生成较好的场景
@@ -5192,7 +5192,7 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可�
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必须先拆除信号灯
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}没有合适的轨道
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必须先拆除轨道
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}这是单行道或这条路被堵死了
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路为单行道或道路已封闭
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}该轨道类型不允许建设平交道
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :该道路类型不允许建设平交道
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}不能在这里设置信号灯……
@@ -5232,7 +5232,7 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}请先�
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}无法在此建设渡槽……
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}……此处已经有树木了
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}……此处已有树木
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}……树木种类与地形不符
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}不能在这里植树……
 
@@ -5241,8 +5241,8 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}不能�
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}必须先拆除桥梁
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}起止点不能相同
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}桥梁起止点不在同一水平高度
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}桥梁对于现有地形来说位置太低了
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}这桥梁对这个地形而言太高了
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}桥梁太接近地面
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}桥梁对于此种地形而言太高
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}起止两端必须在一条线上
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}……桥的两端必须都位于地面上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……桥梁太长
@@ -5371,7 +5371,7 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆�
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}飞机正在飞行
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}没有多余的调度计划的位置了
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}无法新增指令
 STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}调度计划过多
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}不能插入新的调度计划……
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}不能删除调度计划……
@@ -5414,7 +5414,7 @@ STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}……�
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}……时刻表尚未开始
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}……标志太多了
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}……已有太多标志
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}不能在这里放置标志……
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}不能更改标志的名称……
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}无法删除标记……
