@@ -630,6 +630,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::COMPETITOR_TIMEOUT, 0 }, []() {
 	if (_game_mode == GM_MENU || !AI::CanStartNew()) return;
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
+	if (_settings_game.difficulty.competitors_interval == 0) return;
 
 	/* count number of competitors */
 	uint8_t n = 0;
@@ -753,14 +754,15 @@ void OnTick_Companies()
 		/* If the interval is zero, start as many competitors as needed then check every ~10 minutes if a company went bankrupt and needs replacing. */
 		if (timeout == 0) {
 			/* count number of competitors */
-			uint8_t n = 0;
+			uint8_t num_ais = 0;
 			for (const Company *cc : Company::Iterate()) {
-				if (cc->is_ai) n++;
+				if (cc->is_ai) num_ais++;
 			}
 
+			size_t num_companies = Company::GetNumItems();
 			for (auto i = 0; i < _settings_game.difficulty.max_no_competitors; i++) {
-				if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) break;
-				if (n++ >= _settings_game.difficulty.max_no_competitors) break;
+				if (_networking && num_companies++ >= _settings_client.network.max_companies) break;
+				if (num_ais++ >= _settings_game.difficulty.max_no_competitors) break;
 				Command<CMD_COMPANY_CTRL>::Post(CCA_NEW_AI, CompanyID::Invalid(), CRR_NONE, INVALID_CLIENT_ID);
 			}
 			timeout = 10 * 60 * Ticks::TICKS_PER_SECOND;
