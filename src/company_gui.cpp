@@ -222,8 +222,7 @@ static void DrawPrice(Money amount, int left, int right, int top, TextColour col
 		amount = -amount;
 		str = STR_FINANCES_POSITIVE_INCOME;
 	}
-	SetDParam(0, amount);
-	DrawString(left, right, top, str, colour, SA_RIGHT);
+	DrawString(left, right, top, GetString(str, amount), colour, SA_RIGHT);
 }
 
 /**
@@ -265,8 +264,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	Money sum;
 
 	/* Year header */
-	SetDParam(0, year);
-	DrawString(r.left, r.right, y, STR_FINANCES_YEAR, TC_FROMSTRING, SA_RIGHT, true);
+	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TC_FROMSTRING, SA_RIGHT, true);
 	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 	/* Categories */
@@ -408,10 +406,12 @@ struct CompanyFinancesWindow : Window {
 
 			case WID_CF_BALANCE_VALUE:
 			case WID_CF_LOAN_VALUE:
-			case WID_CF_OWN_VALUE:
-				SetDParamMaxValue(0, CompanyFinancesWindow::max_money);
-				size.width = std::max(GetStringBoundingBox(STR_FINANCES_NEGATIVE_INCOME).width, GetStringBoundingBox(STR_FINANCES_POSITIVE_INCOME).width) + padding.width;
+			case WID_CF_OWN_VALUE: {
+				uint64_t max_value = GetParamMaxValue(CompanyFinancesWindow::max_money);
+				size.width = std::max(GetStringBoundingBox(GetString(STR_FINANCES_NEGATIVE_INCOME, max_value)).width, GetStringBoundingBox(GetString(STR_FINANCES_POSITIVE_INCOME, max_value)).width);
+				size.width += padding.width;
 				break;
+			}
 
 			case WID_CF_INTEREST_RATE:
 				size.height = GetCharacterHeight(FS_NORMAL);
@@ -751,8 +751,7 @@ public:
 				/* And group names */
 				for (const Group *g : Group::Iterate()) {
 					if (g->owner == this->window_number) {
-						SetDParam(0, g->index);
-						d = maxdim(d, GetStringBoundingBox(STR_GROUP_NAME));
+						d = maxdim(d, GetStringBoundingBox(GetString(STR_GROUP_NAME, g->index)));
 					}
 				}
 
@@ -873,7 +872,7 @@ public:
 		int y = ir.top;
 
 		/* Helper function to draw livery info. */
-		auto draw_livery = [&](StringID str, const Livery &livery, bool is_selected, bool is_default_scheme, int indent) {
+		auto draw_livery = [&](std::string_view str, const Livery &livery, bool is_selected, bool is_default_scheme, int indent) {
 			/* Livery Label. */
 			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TC_WHITE : TC_BLACK);
 
@@ -897,15 +896,14 @@ public:
 			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
 					if (pos-- > 0) continue;
-					draw_livery(STR_LIVERY_DEFAULT + scheme, c->livery[scheme], HasBit(this->sel, scheme), scheme == LS_DEFAULT, 0);
+					draw_livery(GetString(STR_LIVERY_DEFAULT + scheme), c->livery[scheme], HasBit(this->sel, scheme), scheme == LS_DEFAULT, 0);
 				}
 			}
 		} else {
 			auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->groups);
 			for (auto it = first; it != last; ++it) {
 				const Group *g = it->group;
-				SetDParam(0, g->index);
-				draw_livery(STR_GROUP_NAME, g->livery, this->sel == g->index, false, it->indent * WidgetDimensions::scaled.hsep_indent);
+				draw_livery(GetString(STR_GROUP_NAME, g->index), g->livery, this->sel == g->index, false, it->indent * WidgetDimensions::scaled.hsep_indent);
 			}
 
 			if (this->vscroll->GetCount() == 0) {
@@ -1410,8 +1408,7 @@ public:
 		/* Size of the number button + arrows. */
 		Dimension number_dim = {0, 0};
 		for (int val = 1; val <= 12; val++) {
-			SetDParam(0, val);
-			number_dim = maxdim(number_dim, GetStringBoundingBox(STR_JUST_INT));
+			number_dim = maxdim(number_dim, GetStringBoundingBox(GetString(STR_JUST_INT, val)));
 		}
 		uint arrows_width = GetSpriteSize(SPR_ARROW_LEFT).width + GetSpriteSize(SPR_ARROW_RIGHT).width + 2 * (WidgetDimensions::scaled.imgbtn.Horizontal());
 		number_dim.width += WidgetDimensions::scaled.framerect.Horizontal() + arrows_width;
@@ -1941,17 +1938,16 @@ struct CompanyInfrastructureWindow : Window
 				max_val = std::max(max_val, c->infrastructure.airport);
 				max_cost = std::max(max_cost, AirportMaintenanceCost(c->index));
 
-				SetDParamMaxValue(0, max_val);
-				uint count_width = GetStringBoundingBox(STR_JUST_COMMA).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
+				uint count_width = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxValue(max_val))).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
 
 				if (_settings_game.economy.infrastructure_maintenance) {
 					StringID str_total = TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR;
-					SetDParamMaxValue(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
-					this->total_width = GetStringBoundingBox(str_total).width + WidgetDimensions::scaled.hsep_indent * 2;
+					/* Convert to per year */
+					this->total_width = GetStringBoundingBox(GetString(str_total, GetParamMaxValue(this->GetTotalMaintenanceCost() * 12))).width + WidgetDimensions::scaled.hsep_indent * 2;
 					size.width = std::max(size.width, this->total_width);
 
-					SetDParamMaxValue(0, max_cost * 12); // Convert to per year
-					count_width += std::max(this->total_width, GetStringBoundingBox(str_total).width);
+					/* Convert to per year */
+					count_width += std::max(this->total_width, GetStringBoundingBox(GetString(str_total, GetParamMaxValue(max_cost * 12))).width);
 				}
 
 				size.width = std::max(size.width, count_width);
@@ -1974,14 +1970,12 @@ struct CompanyInfrastructureWindow : Window
 	 */
 	void DrawCountLine(const Rect &r, int &y, int count, Money monthly_cost) const
 	{
-		SetDParam(0, count);
-		DrawString(r.left, r.right, y += GetCharacterHeight(FS_NORMAL), STR_JUST_COMMA, TC_WHITE, SA_RIGHT);
+		DrawString(r.left, r.right, y += GetCharacterHeight(FS_NORMAL), GetString(STR_JUST_COMMA, count), TC_WHITE, SA_RIGHT);
 
 		if (_settings_game.economy.infrastructure_maintenance) {
-			SetDParam(0, monthly_cost * 12); // Convert to per year
 			Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
 			DrawString(tr.left, tr.right, y,
-				TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
+				GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, monthly_cost * 12),
 				TC_FROMSTRING, SA_RIGHT);
 		}
 	}
@@ -2065,9 +2059,8 @@ struct CompanyInfrastructureWindow : Window
 					Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
 					GfxFillRect(tr.left, y, tr.right, y + WidgetDimensions::scaled.bevel.top - 1, PC_WHITE);
 					y += WidgetDimensions::scaled.vsep_normal;
-					SetDParam(0, this->GetTotalMaintenanceCost() * 12); // Convert to per year
 					DrawString(tr.left, tr.right, y,
-						TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR,
+						GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, this->GetTotalMaintenanceCost() * 12),
 						TC_FROMSTRING, SA_RIGHT);
 				}
 				break;
@@ -2276,27 +2269,29 @@ struct CompanyWindow : Window
 			}
 
 			case WID_C_DESC_COMPANY_VALUE:
-				SetDParam(0, INT64_MAX); // Arguably the maximum company value
-				size.width = GetStringBoundingBox(STR_COMPANY_VIEW_COMPANY_VALUE).width;
+				/* INT64_MAX is arguably the maximum company value */
+				size.width = GetStringBoundingBox(GetString(STR_COMPANY_VIEW_COMPANY_VALUE, INT64_MAX)).width;
 				break;
 
-			case WID_C_DESC_VEHICLE_COUNTS:
-				SetDParamMaxValue(0, 5000); // Maximum number of vehicles
+			case WID_C_DESC_VEHICLE_COUNTS: {
+				uint64_t max_value = GetParamMaxValue(5000); // Maximum number of vehicles
 				for (const auto &count_string : _company_view_vehicle_count_strings) {
-					size.width = std::max(size.width, GetStringBoundingBox(count_string).width + padding.width);
+					size.width = std::max(size.width, GetStringBoundingBox(GetString(count_string, max_value)).width + padding.width);
 				}
 				break;
+			}
 
-			case WID_C_DESC_INFRASTRUCTURE_COUNTS:
-				SetDParamMaxValue(0, UINT_MAX);
-				size.width = GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL).width;
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD).width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_WATER).width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_STATION).width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT).width);
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_NONE).width);
+			case WID_C_DESC_INFRASTRUCTURE_COUNTS: {
+				uint64_t max_value = GetParamMaxValue(UINT_MAX);
+				size.width = GetStringBoundingBox(GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL, max_value)).width;
+				size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD, max_value)).width);
+				size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_WATER, max_value)).width);
+				size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_STATION, max_value)).width);
+				size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT, max_value)).width);
+				size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_NONE, max_value)).width);
 				size.width += padding.width;
 				break;
+			}
 
 			case WID_C_VIEW_HQ:
 			case WID_C_BUILD_HQ:
@@ -2325,8 +2320,7 @@ struct CompanyWindow : Window
 		for (VehicleType type = VEH_BEGIN; type < VEH_COMPANY_END; type++) {
 			uint amount = c->group_all[type].num_vehicle;
 			if (amount != 0) {
-				SetDParam(0, amount);
-				DrawString(r.left, r.right, y, _company_view_vehicle_count_strings[type]);
+				DrawString(r.left, r.right, y, GetString(_company_view_vehicle_count_strings[type], amount));
 				y += GetCharacterHeight(FS_NORMAL);
 			}
 		}
@@ -2343,34 +2337,29 @@ struct CompanyWindow : Window
 
 		uint rail_pieces = c->infrastructure.signal + c->infrastructure.GetRailTotal();
 		if (rail_pieces != 0) {
-			SetDParam(0, rail_pieces);
-			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL);
+			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL, rail_pieces));
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 
 		/* GetRoadTotal() skips tram pieces, but we actually want road and tram here. */
 		uint road_pieces = std::accumulate(std::begin(c->infrastructure.road), std::end(c->infrastructure.road), 0U);
 		if (road_pieces != 0) {
-			SetDParam(0, road_pieces);
-			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD);
+			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD, road_pieces));
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 
 		if (c->infrastructure.water != 0) {
-			SetDParam(0, c->infrastructure.water);
-			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_WATER);
+			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_WATER, c->infrastructure.water));
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 
 		if (c->infrastructure.station != 0) {
-			SetDParam(0, c->infrastructure.station);
-			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_STATION);
+			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_STATION, c->infrastructure.station));
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 
 		if (c->infrastructure.airport != 0) {
-			SetDParam(0, c->infrastructure.airport);
-			DrawString(r.left, r.right, y, STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT);
+			DrawString(r.left, r.right, y, GetString(STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT, c->infrastructure.airport));
 			y += GetCharacterHeight(FS_NORMAL);
 		}
 
@@ -2389,8 +2378,7 @@ struct CompanyWindow : Window
 				break;
 
 			case WID_C_FACE_TITLE:
-				SetDParam(0, c->index);
-				DrawStringMultiLine(r, STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawStringMultiLine(r, GetString(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, c->index), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
 			case WID_C_DESC_COLOUR_SCHEME_EXAMPLE: {
@@ -2439,8 +2427,7 @@ struct CompanyWindow : Window
 	void OnResize() override
 	{
 		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_C_FACE_TITLE);
-		SetDParam(0, this->owner);
-		int y = GetStringHeight(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, wid->current_x);
+		int y = GetStringHeight(GetString(STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE, this->owner), wid->current_x);
 		if (wid->UpdateVerticalSize(y)) this->ReInit(0, 0);
 	}
 
@@ -2622,9 +2609,7 @@ struct BuyCompanyWindow : Window {
 
 			case WID_BC_QUESTION:
 				const Company *c = Company::Get(this->window_number);
-				SetDParam(0, c->index);
-				SetDParam(1, this->company_value);
-				size.height = GetStringHeight(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, size.width);
+				size.height = GetStringHeight(GetString(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, c->index, this->company_value), size.width);
 				break;
 		}
 	}
@@ -2649,9 +2634,7 @@ struct BuyCompanyWindow : Window {
 
 			case WID_BC_QUESTION: {
 				const Company *c = Company::Get(this->window_number);
-				SetDParam(0, c->index);
-				SetDParam(1, this->company_value);
-				DrawStringMultiLine(r, this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(this->hostile_takeover ? STR_BUY_COMPANY_HOSTILE_TAKEOVER : STR_BUY_COMPANY_MESSAGE, c->index, this->company_value), TC_FROMSTRING, SA_CENTER);
 				break;
 			}
 		}
