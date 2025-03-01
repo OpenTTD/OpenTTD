@@ -229,45 +229,42 @@ uint8_t NetworkSpectatorCount()
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
  * If 'self_send' is true, this is the client who is sending the message */
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, int64_t data, const std::string &data_str)
+void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, StringParameter &&data)
 {
-	StringID strid;
+	std::string string;
 	switch (action) {
 		case NETWORK_ACTION_SERVER_MESSAGE:
 			/* Ignore invalid messages */
-			strid = STR_NETWORK_SERVER_MESSAGE;
+			string = GetString(STR_NETWORK_SERVER_MESSAGE, str);
 			colour = CC_DEFAULT;
 			break;
 		case NETWORK_ACTION_COMPANY_SPECTATOR:
 			colour = CC_DEFAULT;
-			strid = STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE;
+			string = GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE, name);
 			break;
 		case NETWORK_ACTION_COMPANY_JOIN:
 			colour = CC_DEFAULT;
-			strid = STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN;
+			string = GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN, name, str);
 			break;
 		case NETWORK_ACTION_COMPANY_NEW:
 			colour = CC_DEFAULT;
-			strid = STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW;
+			string = GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW, name, std::move(data));
 			break;
 		case NETWORK_ACTION_JOIN:
 			/* Show the Client ID for the server but not for the client. */
-			strid = _network_server ? STR_NETWORK_MESSAGE_CLIENT_JOINED_ID :  STR_NETWORK_MESSAGE_CLIENT_JOINED;
+			string = _network_server ?
+					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED_ID, name, std::move(data)) :
+					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED, name);
 			break;
-		case NETWORK_ACTION_LEAVE:          strid = STR_NETWORK_MESSAGE_CLIENT_LEFT; break;
-		case NETWORK_ACTION_NAME_CHANGE:    strid = STR_NETWORK_MESSAGE_NAME_CHANGE; break;
-		case NETWORK_ACTION_GIVE_MONEY:     strid = STR_NETWORK_MESSAGE_GIVE_MONEY; break;
-		case NETWORK_ACTION_CHAT_COMPANY:   strid = self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY; break;
-		case NETWORK_ACTION_CHAT_CLIENT:    strid = self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT;  break;
-		case NETWORK_ACTION_KICKED:         strid = STR_NETWORK_MESSAGE_KICKED; break;
-		case NETWORK_ACTION_EXTERNAL_CHAT:  strid = STR_NETWORK_CHAT_EXTERNAL; break;
-		default:                            strid = STR_NETWORK_CHAT_ALL; break;
+		case NETWORK_ACTION_LEAVE:          string = GetString(STR_NETWORK_MESSAGE_CLIENT_LEFT, name, std::move(data)); break;
+		case NETWORK_ACTION_NAME_CHANGE:    string = GetString(STR_NETWORK_MESSAGE_NAME_CHANGE, name, str); break;
+		case NETWORK_ACTION_GIVE_MONEY:     string = GetString(STR_NETWORK_MESSAGE_GIVE_MONEY, name, std::move(data), str); break;
+		case NETWORK_ACTION_KICKED:         string = GetString(STR_NETWORK_MESSAGE_KICKED, name, str); break;
+		case NETWORK_ACTION_CHAT_COMPANY:   string = GetString(self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, name, str); break;
+		case NETWORK_ACTION_CHAT_CLIENT:    string = GetString(self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT, name, str);  break;
+		case NETWORK_ACTION_EXTERNAL_CHAT:  string = GetString(STR_NETWORK_CHAT_EXTERNAL, std::move(data), name, str); break;
+		default:                            string = GetString(STR_NETWORK_CHAT_ALL, name, str); break;
 	}
-
-	SetDParamStr(0, name);
-	SetDParamStr(1, str);
-	SetDParam(2, data);
-	SetDParamStr(3, data_str);
 
 	/* All of these strings start with "***". These characters are interpreted as both left-to-right and
 	 * right-to-left characters depending on the context. As the next text might be an user's name, the
@@ -276,7 +273,7 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 	std::ostringstream stream;
 	std::ostreambuf_iterator<char> iterator(stream);
 	Utf8Encode(iterator, _current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
-	std::string message = stream.str() + GetString(strid);
+	std::string message = stream.str() + string;
 
 	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, message);
 	IConsolePrint(colour, message);

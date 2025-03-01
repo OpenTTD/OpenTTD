@@ -17,6 +17,7 @@
 #include "../command_type.h"
 #include "../command_func.h"
 #include "../misc/endian_buffer.hpp"
+#include "../strings_type.h"
 
 #ifdef RANDOM_DEBUG
 /**
@@ -110,7 +111,7 @@ void NetworkSyncCommandQueue(NetworkClientSocket *cs);
 void NetworkReplaceCommandClientId(CommandPacket &cp, ClientID client_id);
 
 void ShowNetworkError(StringID error_string);
-void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str = "", int64_t data = 0, const std::string &data_str = "");
+void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str = "", StringParameter &&data = {});
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkMakeClientNameUnique(std::string &new_name);
