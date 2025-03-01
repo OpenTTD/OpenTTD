@@ -20,6 +20,8 @@
  * @ingroup ScriptList
  */
 class ScriptTileList : public ScriptList {
+protected:
+	virtual bool SaveObject(HSQUIRRELVM) override;
 public:
 	/**
 	 * Adds the rectangle between tile_from and tile_to to the to-be-evaluated tiles.

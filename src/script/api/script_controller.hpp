@@ -77,9 +77,8 @@ public:
 	 *   - booleans, and
 	 *   - nulls.
 	 *
-	 * In particular, instances of classes can't be saved including
-	 *   ScriptList. Such a list should be converted to an array or table on
-	 *   save and converted back on load.
+	 * In particular, instances of classes can't be saved with the exception of
+	 *   ScriptList.
 	 *
 	 * The function is called as soon as the user saves the game,
 	 *   independently of other activities of the script. The script is not
