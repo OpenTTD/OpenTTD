@@ -255,9 +255,8 @@ private:
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_PROFIT].height);
 
 		int num_vehicle = GetGroupNumVehicle(this->vli.company, ALL_GROUP, this->vli.vtype);
-		SetDParamMaxValue(0, num_vehicle, 3, FS_SMALL);
-		SetDParamMaxValue(1, num_vehicle, 3, FS_SMALL);
-		this->column_size[VGC_NUMBER] = GetStringBoundingBox(STR_GROUP_COUNT_WITH_SUBGROUP);
+		uint64_t max_value = GetParamMaxValue(num_vehicle, 3, FS_SMALL);
+		this->column_size[VGC_NUMBER] = GetStringBoundingBox(GetString(STR_GROUP_COUNT_WITH_SUBGROUP, max_value, max_value));
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_NUMBER].height);
 
 		this->tiny_step_height += WidgetDimensions::scaled.framerect.Vertical();
@@ -320,17 +319,16 @@ private:
 		}
 
 		/* draw group name */
-		StringID str;
+		std::string str;
 		if (IsAllGroupID(g_id)) {
-			str = STR_GROUP_ALL_TRAINS + this->vli.vtype;
+			str = GetString(STR_GROUP_ALL_TRAINS + this->vli.vtype);
 		} else if (IsDefaultGroupID(g_id)) {
-			str = STR_GROUP_DEFAULT_TRAINS + this->vli.vtype;
+			str = GetString(STR_GROUP_DEFAULT_TRAINS + this->vli.vtype);
 		} else {
-			SetDParam(0, g_id);
-			str = STR_GROUP_NAME;
+			str = GetString(STR_GROUP_NAME, g_id);
 		}
 		x = rtl ? x - WidgetDimensions::scaled.hsep_normal - this->column_size[VGC_NAME].width : x + WidgetDimensions::scaled.hsep_normal + this->column_size[VGC_FOLD].width;
-		DrawString(x + (rtl ? 0 : indent * WidgetDimensions::scaled.hsep_indent), x + this->column_size[VGC_NAME].width - 1 - (rtl ? indent * WidgetDimensions::scaled.hsep_indent : 0), y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, str, colour);
+		DrawString(x + (rtl ? 0 : indent * WidgetDimensions::scaled.hsep_indent), x + this->column_size[VGC_NAME].width - 1 - (rtl ? indent * WidgetDimensions::scaled.hsep_indent : 0), y + (this->tiny_step_height - this->column_size[VGC_NAME].height) / 2, std::move(str), colour);
 
 		/* draw autoreplace protection */
 		x = rtl ? x - WidgetDimensions::scaled.hsep_wide - this->column_size[VGC_PROTECT].width : x + WidgetDimensions::scaled.hsep_wide + this->column_size[VGC_NAME].width;
@@ -361,12 +359,9 @@ private:
 		int num_vehicle_with_subgroups = GetGroupNumVehicle(this->vli.company, g_id, this->vli.vtype);
 		int num_vehicle = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype).num_vehicle;
 		if (IsAllGroupID(g_id) || IsDefaultGroupID(g_id) || num_vehicle_with_subgroups == num_vehicle) {
-			SetDParam(0, num_vehicle);
-			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, STR_JUST_COMMA, colour, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, GetString(STR_JUST_COMMA, num_vehicle), colour, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 		} else {
-			SetDParam(0, num_vehicle);
-			SetDParam(1, num_vehicle_with_subgroups - num_vehicle);
-			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, STR_GROUP_COUNT_WITH_SUBGROUP, colour, SA_RIGHT | SA_FORCE);
+			DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, GetString(STR_GROUP_COUNT_WITH_SUBGROUP, num_vehicle, num_vehicle_with_subgroups - num_vehicle), colour, SA_RIGHT | SA_FORCE);
 		}
 	}
 
@@ -621,20 +616,17 @@ public:
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_THIS_PERIOD : STR_GROUP_PROFIT_THIS_YEAR, TC_BLACK);
-				SetDParam(0, this_year);
-				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
+				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, this_year), TC_BLACK, SA_RIGHT);
 
 				tr.top += GetCharacterHeight(FS_NORMAL);
 				DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_GROUP_PROFIT_LAST_PERIOD : STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
-				SetDParam(0, last_year);
-				DrawString(tr, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
+				DrawString(tr, GetString(STR_JUST_CURRENCY_LONG, last_year), TC_BLACK, SA_RIGHT);
 
 				tr.top += GetCharacterHeight(FS_NORMAL);
 				DrawString(tr, STR_GROUP_OCCUPANCY, TC_BLACK);
 				const size_t vehicle_count = this->vehicles.size();
 				if (vehicle_count > 0) {
-					SetDParam(0, occupancy / vehicle_count);
-					DrawString(tr, STR_GROUP_OCCUPANCY_VALUE, TC_BLACK, SA_RIGHT);
+					DrawString(tr, GetString(STR_GROUP_OCCUPANCY_VALUE, occupancy / vehicle_count), TC_BLACK, SA_RIGHT);
 				}
 
 				break;
