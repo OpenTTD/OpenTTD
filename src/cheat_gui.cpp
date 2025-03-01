@@ -280,12 +280,13 @@ struct CheatWindow : Window {
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
 
+			std::string str;
 			switch (ce->type) {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
 					DrawBoolButton(button_left, y + button_y_offset, on, true);
-					SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+					str = GetString(ce->str, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 					break;
 				}
 
@@ -297,23 +298,27 @@ struct CheatWindow : Window {
 
 					switch (ce->str) {
 						/* Display date for change date cheat */
-						case STR_CHEAT_CHANGE_DATE: SetDParam(0, TimerGameCalendar::date); break;
+						case STR_CHEAT_CHANGE_DATE:
+							str = GetString(ce->str, TimerGameCalendar::date);
+							break;
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY: {
-							SetDParam(0, val + 1);
 							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(ce->str).width;
 							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
+							str = GetString(ce->str, val + 1);
 							break;
 						}
 
-						default: SetDParam(0, val);
+						default:
+							str = GetString(ce->str, val);
+							break;
 					}
 					break;
 				}
 			}
 
-			DrawString(text_left, text_right, y + text_y_offset, ce->str);
+			DrawString(text_left, text_right, y + text_y_offset, str);
 
 			y += this->line_height;
 		}
@@ -375,29 +380,24 @@ struct CheatWindow : Window {
 		for (const auto &ce : _cheats_ui) {
 			switch (ce.type) {
 				case SLE_BOOL:
-					SetDParam(0, STR_CONFIG_SETTING_ON);
-					width = std::max(width, GetStringBoundingBox(ce.str).width);
-					SetDParam(0, STR_CONFIG_SETTING_OFF);
-					width = std::max(width, GetStringBoundingBox(ce.str).width);
+					width = std::max(width, GetStringBoundingBox(GetString(ce.str, STR_CONFIG_SETTING_ON)).width);
+					width = std::max(width, GetStringBoundingBox(GetString(ce.str, STR_CONFIG_SETTING_OFF)).width);
 					break;
 
 				default:
 					switch (ce.str) {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE:
-							SetDParam(0, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 11, 31));
-							width = std::max(width, GetStringBoundingBox(ce.str).width);
+							width = std::max(width, GetStringBoundingBox(GetString(ce.str, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 11, 31))).width);
 							break;
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
-							SetDParamMaxValue(0, MAX_COMPANIES);
-							width = std::max(width, GetStringBoundingBox(ce.str).width + WidgetDimensions::scaled.hsep_wide);
+							width = std::max(width, GetStringBoundingBox(GetString(ce.str, MAX_COMPANIES)).width + WidgetDimensions::scaled.hsep_wide);
 							break;
 
 						default:
-							SetDParam(0, INT64_MAX);
-							width = std::max(width, GetStringBoundingBox(ce.str).width);
+							width = std::max(width, GetStringBoundingBox(GetString(ce.str, INT64_MAX)).width);
 							break;
 					}
 					break;
