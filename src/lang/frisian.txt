@@ -2092,7 +2092,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Oan {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privee] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privee] Nei {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Yderiin] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriuw berjocht foar netwurk chat
 
 # Network messages
@@ -2134,7 +2134,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kaart ferwurkje
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :ûnjildige namme
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spul yn rêst ({STRING})
@@ -2145,9 +2145,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :hânmjittich
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spulskript
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :Ferlit
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} der is ien bykommen(Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} der is ien bykommen(Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} is in neie taskôger
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hat it spul ferlitten ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hat it spul ferlitten ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat syn/har namme oanpast nei {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server hat de ferbyning slúten
 

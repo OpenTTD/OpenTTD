@@ -2548,7 +2548,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Tîm] i {STRIN
 STR_NETWORK_CHAT_CLIENT                                         :[Preifat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Preifat] To {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Pawb] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}teipiwch destun ar gyfer sgwrs rwydwaith
 
 # Network messages
@@ -2606,7 +2606,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :goramseru wrth 
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :enw gwestai annilys
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Gêm wedi'i oedi ({STRING})
@@ -2624,12 +2624,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :yn aros am ddiw
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :wrthi'n gadael
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Mae {STRING} wedi ymuno â'r gêm
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Mae {0:STRING} wedi ymuno a'r gêm (Gwestai #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Mae {STRING} wedi ymuno a'r gêm (Gwestai #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Mae {STRING} wedi ymuno â'r gwylwyr
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Mae {0:STRING} wedi dechrau cwmni newydd (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {0:STRING} wedi gadael y gêm ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Mae {STRING} wedi dechrau cwmni newydd (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING} wedi gadael y gêm ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid eu henw i {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {0:STRING} {2:CURRENCY_LONG} i {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {STRING} {CURRENCY_LONG} i {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Fe gaewyd y sesiwn gan y gweinydd
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
 STR_NETWORK_MESSAGE_KICKED                                      :*** Mae {STRING} wedi cael cic gan y gweinydd. Rheswm: ({STRING})

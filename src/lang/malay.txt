@@ -1950,7 +1950,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :muat turun peta
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :proses peta megambil masa terlalu lama
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Permainan dihentikan ({STRING})
@@ -1966,10 +1966,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :Skrip permainan
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :sedang meninggalkan permainan
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} telah menyertai permainan ini
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} telah menyertai permainan ini (Klien #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} telah menyertai permainan ini (Klien #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} telah menjadi penyaksi
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} telah menubuhkan syarikat baru (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} sudah meninggalkan permainan ini ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} telah menubuhkan syarikat baru (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} sudah meninggalkan permainan ini ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah menukar namanya kepada {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Pelayan telah menutup sesi ini
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Pelayan sedang dimulakan semula...{}Harap bersabar...

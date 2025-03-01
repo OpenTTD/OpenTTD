@@ -2610,7 +2610,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Csapat] {STRIN
 STR_NETWORK_CHAT_CLIENT                                         :[Privát] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privát] {STRING} számára: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Mindenkinek] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Add meg a hálózati beszélgetéshez a neved
 
 # Network messages
@@ -2667,7 +2667,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :térkép feldol
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Érvénytelen kliens név
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Játék megállítva ({STRING})
@@ -2685,12 +2685,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :várakozás a k
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :kilépés
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} csatlakozott a játékhoz
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} csatlakozott a játékhoz ({2:NUM}. számú kliens)
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} csatlakozott a játékhoz ({NUM}. számú kliens)
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} csatlakozott a megfigyelőkhöz
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} új vállalatot alapított (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} kilépett a játékból ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} új vállalatot alapított (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} kilépett a játékból ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nevet változtatott. Új neve: {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} a következő összeget utalta {1:STRING} részére: {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} a következő összeget utalta {2:STRING} részére: {1:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}A szerver leállította a játékot
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}A szerver újraindul...{}Türelem...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ki lett rúgva. Oka: ({STRING})

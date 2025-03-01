@@ -2536,7 +2536,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Takım] -> {ST
 STR_NETWORK_CHAT_CLIENT                                         :[Özel] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Özel] -> {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohbeti için yazı girin
 
 # Network messages
@@ -2593,7 +2593,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :haritayı işle
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Geçersiz ev sahibi ismi
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Oyun duraklatıldı ({STRING})
@@ -2611,12 +2611,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :bağlantı graf
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ayrılıyor
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} oyuna katıldı
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} oyuna katıldı (İstemci #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} oyuna katıldı (İstemci #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} izleyicilere katıldı
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} yeni bir şirket kurdu (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} oyunu terketti ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} yeni bir şirket kurdu (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} oyunu terketti ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} adını {STRING} olarak değiştirdi
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} {1:STRING} adlı şirkete {2:CURRENCY_LONG} verdi
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} {2:STRING} adlı şirkete {1:CURRENCY_LONG} verdi
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Sunucu kapandı
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} atıldı. Sebep: ({STRING})

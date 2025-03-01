@@ -2386,7 +2386,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :bhathar ro fhad
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :bhathar ro fhada a' giullachd a' mhapa
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Geama na stad ({STRING})
@@ -2402,10 +2402,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :sgriobt geama
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :a' fàgail
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** ghabh {STRING} sa gheama
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Ghabh {STRING} sa gheama (Cliant {2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Ghabh {STRING} sa gheama (Cliant {NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Ghabh {STRING} ann mar amharcaiche
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Stèidhich {STRING} companaidh ùr ({2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Dh'fhalbh {STRING} an geama ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Stèidhich {STRING} companaidh ùr ({NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Dh'fhalbh {STRING} an geama ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Dh'atharraich {0:STRING} (a h-)ainm gu {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhùin am frithealaiche an seisean
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tha am frithealaiche ag ath-thòiseachadh...{}Fuirich greis...

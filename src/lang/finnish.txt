@@ -2567,7 +2567,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Joukkue] {STRI
 STR_NETWORK_CHAT_CLIENT                                         :[Yksityinen] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Yksityinen] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Kaikki] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Syötä teksti verkkokeskustelua varten
 
 # Network messages
@@ -2625,7 +2625,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kartan käsitte
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Epäkelpo asiakasnimi
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Peli pysäytetty ({STRING})
@@ -2643,13 +2643,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :odotetaan yhtey
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :poistutaan
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} on liittynyt peliin
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} liittyi peliin (asiakas nro{NBSP}{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} liittyi peliin (asiakas nro{NBSP}{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} on liittynyt yhtiöön {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} on liittynyt katselijoihin
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} on aloittanut uuden yhtiön (nro{NBSP}{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} on poistunut pelistä ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on aloittanut uuden yhtiön (nro{NBSP}{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} antoi {2:CURRENCY_LONG} yhtiölle {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi {CURRENCY_LONG} yhtiölle {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})

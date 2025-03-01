@@ -2556,7 +2556,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Nhóm] tới {
 STR_NETWORK_CHAT_CLIENT                                         :[Riêng] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Riêng] Tới {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Chung] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Nhập thông điệp tán gẫu
 
 # Network messages
@@ -2614,7 +2614,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :xử lý bản 
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :tên client không đúng
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Ván chơi tạm dừng ({STRING})
@@ -2632,13 +2632,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :đợi cập nh
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ra khỏi ván
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Máy trạm {STRING} gia nhập ván chơi
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Máy trạm {0:STRING} đã vào trò chơi (Máy trạm #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Máy trạm {STRING} đã vào trò chơi (Máy trạm #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} đã gia nhập {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} vào xem ván chơi
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} khai trương công ty mới (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} rời bỏ ván chơi ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} khai trương công ty mới (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} rời bỏ ván chơi ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} đã đổi tên thành {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} tặng {2:CURRENCY_LONG} cho {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tặng {CURRENCY_LONG} cho {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server kết thúc phiên
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server khởi động lại...{}Xin chờ...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} đã bị đá khỏi ván chơi. Lý do: ({STRING})

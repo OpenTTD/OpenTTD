@@ -2050,7 +2050,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :að niðurhala 
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :úrvinnsla kortsins tók of langan tíma
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Leikur í pásu ({STRING})
@@ -2066,10 +2066,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :forskrift
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :yfirgefur
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} tengdist leiknum
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} hefur tengst leiknum (Notandi #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} hefur tengst leiknum (Notandi #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} horfir á
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} stofnaði nýtt fyrirtæki (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} yfirgefur leikinn ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} stofnaði nýtt fyrirtæki (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} yfirgefur leikinn ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heitir nú {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Þjónninn sleit tengingunni
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...

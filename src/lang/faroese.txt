@@ -2012,7 +2012,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :tók ov langa t
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :viðgerð av kort tók ov langa tíð
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spæl steðga ({STRING})
@@ -2028,10 +2028,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spæl skript
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :rýmur
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} tekur lut í spælinum
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} tekur lut í spælinum (klient #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} tekur lut í spælinum (klient #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} er vorðin eygleiðari
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} hevur stovnað eina nýggja fyritøku (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} er farin úr spælinum ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} hevur stovnað eina nýggja fyritøku (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} er farin úr spælinum ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hevur broytt sítt navn til {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servarin endaði setuna
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servarin endurbyrjar...{}Vinarliga bíða...

@@ -2547,7 +2547,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Echipă] Cătr
 STR_NETWORK_CHAT_CLIENT                                         :[Mesaj privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Mesaj privat] Către {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Toți] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introdu textul pentru chat în retea
 
 # Network messages
@@ -2605,7 +2605,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :a expirat timpu
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :numele clientului nu este valid
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Joc în pauză ({STRING})
@@ -2623,12 +2623,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :se așteaptă p
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :iese
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a intrat în joc
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} a intrat în joc (Clientul #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} a intrat în joc (Clientul #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a intrat ca spectator
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a început o companie nouă (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} a ieșit din joc ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a început o companie nouă (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a ieșit din joc ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} și-a schimbat numele în {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} a dat {2:CURRENCY_LONG} către {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a dat {CURRENCY_LONG} către {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul a închis conexiunea
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Vă rugăm așteptați...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} a fost dat afară. Motiv: ({STRING})
