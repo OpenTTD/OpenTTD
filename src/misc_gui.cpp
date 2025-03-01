@@ -85,8 +85,7 @@ public:
 		}
 
 		if (!this->cargo_acceptance.empty()) {
-			SetDParamStr(0, this->cargo_acceptance);
-			DrawStringMultiLine(ir, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, this->cargo_acceptance), TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -105,8 +104,7 @@ public:
 		if (!this->cargo_acceptance.empty()) {
 			uint width = GetStringBoundingBox(this->cargo_acceptance).width + WidgetDimensions::scaled.frametext.Horizontal();
 			size.width = std::max(size.width, std::min(static_cast<uint>(ScaleGUITrad(300)), width));
-			SetDParamStr(0, cargo_acceptance);
-			size.height += GetStringHeight(STR_JUST_RAW_STRING, size.width - WidgetDimensions::scaled.frametext.Horizontal());
+			size.height += GetStringHeight(GetString(STR_JUST_RAW_STRING, this->cargo_acceptance), size.width - WidgetDimensions::scaled.frametext.Horizontal());
 		}
 	}
 
@@ -164,23 +162,26 @@ public:
 		}
 
 		/* Cost to clear/revenue when cleared */
-		StringID str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A;
 		Company *c = Company::GetIfValid(_local_company);
 		if (c != nullptr) {
 			assert(_current_company == _local_company);
 			CommandCost costclear = Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::QueryCost, tile);
 			if (costclear.Succeeded()) {
 				Money cost = costclear.GetCost();
+				StringID str;
 				if (cost < 0) {
 					cost = -cost; // Negate negative cost to a positive revenue
 					str = STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED;
 				} else {
 					str = STR_LAND_AREA_INFORMATION_COST_TO_CLEAR;
 				}
-				SetDParam(0, cost);
+				this->landinfo_data.push_back(GetString(str, cost));
+			} else {
+				this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A));
 			}
+		} else {
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A));
 		}
-		this->landinfo_data.push_back(GetString(str));
 
 		/* Location */
 		this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_LANDINFO_COORDS, TileX(tile), TileY(tile), GetTileZ(tile)));

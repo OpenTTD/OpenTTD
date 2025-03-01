@@ -281,13 +281,11 @@ struct SelectGameWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SGI_BASESET:
-				SetDParam(0, _missing_extra_graphics);
-				DrawStringMultiLine(r, STR_INTRO_BASESET, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(STR_INTRO_BASESET, _missing_extra_graphics), TC_FROMSTRING, SA_CENTER);
 				break;
 
 			case WID_SGI_TRANSLATION:
-				SetDParam(0, _current_language->missing);
-				DrawStringMultiLine(r, STR_INTRO_TRANSLATION, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(STR_INTRO_TRANSLATION, _current_language->missing), TC_FROMSTRING, SA_CENTER);
 				break;
 		}
 	}
