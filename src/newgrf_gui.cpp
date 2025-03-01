@@ -113,7 +113,7 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 		if (!c.param.empty()) {
 			tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_PARAMETER, STR_JUST_RAW_STRING, GRFBuildParamList(c)));
 		} else {
-			tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_PARAMETER, STR_NEWGRF_SETTINGS_PARAMETER_NONE));
+			tr.top = DrawStringMultiLine(tr, GetString(STR_NEWGRF_SETTINGS_PARAMETER, STR_NEWGRF_SETTINGS_PARAMETER_NONE, std::monostate{}));
 		}
 
 		/* Draw the palette of the NewGRF */
