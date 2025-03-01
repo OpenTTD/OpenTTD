@@ -12,7 +12,7 @@ AIBridge.GetBridgeID <- AIBridge.GetBridgeType;
 class AICompat14 {
 	function Text(text)
 	{
-		if (type(text) == "string") return text;
+		if (typeof text == "string") return text;
 		return null;
 	}
 }
