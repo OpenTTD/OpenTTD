@@ -2605,7 +2605,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRI
 STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Všetkým] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadajte text pre sieťový chat
 
 # Network messages
@@ -2662,7 +2662,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :spracovanie map
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Neplatný názov klienta
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Hra pozastavená ({STRING})
@@ -2680,12 +2680,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :čaká sa na ak
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odchádza
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} vstúpil do hry
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} vstúpil do hry (klient č. {2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} vstúpil do hry (klient č. {NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} sa pripojil k pozorovateľom
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} založil novú spoločnosť (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} opustil hru ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} založil novú spoločnosť (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opustil hru ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmenil/-a svoje meno na {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} dal {2:CURRENCY_LONG} spoločnosti {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} dal {CURRENCY_LONG} spoločnosti {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil reláciu
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server sa reštartuje...{}Čakajte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** Hráč {STRING} bol vyhodený. Dôvod: ({STRING})

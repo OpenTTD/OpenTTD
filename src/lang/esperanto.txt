@@ -2512,7 +2512,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Teamo] Al {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] Al {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Ĉiuj] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tajpu tekston por retbabilado
 
 # Network messages
@@ -2563,7 +2563,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :prilaborado de 
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :malvalida klientonomo
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Ludo paŭzas ({STRING})
@@ -2581,12 +2581,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :atendas ĝisdat
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlasanta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ensalutis la ludon
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} aliĝis al la ludo (Kliento #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} aliĝis al la ludo (Kliento #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} iĝis spektanto
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} fondis novan kompanion (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} foriris el la ludo ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} fondis novan kompanion (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} foriris el la ludo ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} donis {2:CURRENCY_LONG} al {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} donis {CURRENCY_LONG} al {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} estis forbatita. Kialo: ({STRING})

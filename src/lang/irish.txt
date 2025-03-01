@@ -2304,7 +2304,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Foireann] Chui
 STR_NETWORK_CHAT_CLIENT                                         :[Príobháideach] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Príobháideach] Chuig {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Gach duine] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Iontráil téacs don chomhrá líonra
 
 # Network messages
@@ -2359,7 +2359,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :thóg sé rófh
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :ainm an chliaint neamhbhailí
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Cluiche ar sos ({STRING})
@@ -2377,12 +2377,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :ag fanacht ar n
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ag fágáil
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Tháinig {STRING} isteach sa chluiche
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Tháinig {STRING} isteach sa chluiche (Cliant #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Tháinig {STRING} isteach sa chluiche (Cliant #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Tá {STRING} i measc na bhféachadóirí anois
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Thosaigh {STRING} cuideachta nua (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** D'fhág {STRING} an cluiche ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Thosaigh {STRING} cuideachta nua (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** D'fhág {STRING} an cluiche ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** D'athraigh {STRING} a (h)ainm go {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Thug {STRING} {2:CURRENCY_LONG} do {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Thug {STRING} {CURRENCY_LONG} do {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhún an freastalaí an seisiún
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tá an freastalaí á atosú...{}Fan go fóill...
 STR_NETWORK_MESSAGE_KICKED                                      :*** Ciceáladh {STRING}. An chúis: ({STRING})

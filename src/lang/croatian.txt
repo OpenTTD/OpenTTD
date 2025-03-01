@@ -2302,7 +2302,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipa] Za {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite tekst mrežnog razgovora
 
 # Network messages
@@ -2355,7 +2355,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :preuzimanje map
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :procesiranje map je predugo trajalo
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Igra zaustavljena ({STRING})
@@ -2371,10 +2371,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skripta igre
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odlazim
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se pridružio igri
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :{G=female}*** {STRING} se pridružila igri (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :{G=female}*** {STRING} se pridružila igri (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se pridružio promatračima
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} je osnovao novu tvrtku (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} je izašao iz igre ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} je osnovao novu tvrtku (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} je izašao iz igre ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je promijenio/la ime u {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Poslužitelj je zatvorio sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Poslužitelj se ponovno pokreće...{}Molimo pričekajte...

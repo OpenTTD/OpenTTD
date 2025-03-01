@@ -2567,7 +2567,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[团队] {STRIN
 STR_NETWORK_CHAT_CLIENT                                         :[私聊] {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[私聊] {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[全体] {STRING}：{WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}：{WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}请输入联机聊天内容
 
 # Network messages
@@ -2625,7 +2625,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :处理地图用
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :非法客户端名称
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :游戏暂停（{STRING}）
@@ -2643,13 +2643,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :等待货物分
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :离开
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入游戏
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} 加入了游戏（Client #{2:NUM}）
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} 加入了游戏（Client #{NUM}）
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} 已加入 {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 已作为观众加入
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} 成立了新公司（#{2:NUM}）
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} 已离开游戏（{2:STRING}）
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 成立了新公司（#{NUM}）
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 已离开游戏（{STRING}）
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已更改姓名为 {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 给予 {1:STRING} {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 给予 {2:STRING} {1:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器关闭了进程
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动……{}请稍等……
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 被踢出服务器。原因：（{STRING}）

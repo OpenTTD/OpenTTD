@@ -2553,7 +2553,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Hold] Til {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv tekst i netværks-chat
 
 # Network messages
@@ -2611,7 +2611,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :det tog for lan
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :ugyldigt klientnavn
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spillet er pauset ({STRING})
@@ -2629,12 +2629,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :afventer forbin
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlader
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har tilsluttet sig spillet
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har tilsluttet sig spillet (Klient #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har tilsluttet sig spillet (Klient #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har tilsluttet sig som tilskuer
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har startet et nyt selskab (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forladt spillet ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har startet et nyt selskab (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forladt spillet ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har ændret sit navn til {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav {2:CURRENCY_LONG} til {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav {CURRENCY_LONG} til {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveren har lukket ned for dette spil
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveren genstarter...{}Vent venligst...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} blev smidt ud. Grund: ({STRING})

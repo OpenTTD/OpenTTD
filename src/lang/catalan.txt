@@ -2568,7 +2568,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Equip] a {STRI
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] a {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Tothom] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Posa el text pel xat de xarxa
 
 # Network messages
@@ -2626,7 +2626,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :el processat de
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nom de client no vàlid
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Partida en pausa ({STRING})
@@ -2644,13 +2644,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :s'espera que s'
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :deixant
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} s'ha unit a la partida
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} s'ha unit a la partida (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} s'ha unit a la partida (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} s'ha unit a {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} s'ha unit als espectadors
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} ha començat una nova companyia (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} ha deixat la partida ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha començat una nova companyia (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha deixat la partida ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha canviat el seu nom a {STRING}.
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} ha donat {2:CURRENCY_LONG} a {1:STRING}.
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha donat {CURRENCY_LONG} a {STRING}.
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha tancat la sessió
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor està reiniciant...{}Espera un moment...
 STR_NETWORK_MESSAGE_KICKED                                      :*** S'ha expulsat {STRING}. Motiu: {STRING}

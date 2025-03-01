@@ -2678,7 +2678,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipi] Za {STR
 STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Unesi tekst poruke za razgovor
 
 # Network messages
@@ -2733,7 +2733,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :obrađivanje te
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :neispravan naziv klijenta
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Igra je pauzirana ({STRING})
@@ -2751,12 +2751,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :čeka se dopuna
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :napušta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se priključio igri
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} se pridružio igri (klijent #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} se pridružio igri (klijent #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se pridružio posmatračima
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} je osnovao novo preduzeće (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} je napustio igru ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} je osnovao novo preduzeće (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} je napustio igru ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je promenio/la ime u {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} je dao {2:CURRENCY_LONG} preduzeću {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je dao {CURRENCY_LONG} preduzeću {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server je zatvorio sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se ponovo pokreće...{}Molimo sačekaj...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} je izbačen. Razlog: ({STRING})

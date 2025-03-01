@@ -834,7 +834,7 @@ STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed 
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 

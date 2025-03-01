@@ -2121,7 +2121,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :nedlasting av k
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :prosessering av kartet tok for lang tid
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spelet er pausa ({STRING})
@@ -2137,10 +2137,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spelscript
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlet
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har blitt med i spelet
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har blitt med i spelet (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har blitt med i spelet (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har slutta seg til tilskodarane
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har starta eit nytt firma (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forlatt spelet ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har starta eit nytt firma (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forlatt spelet ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endra namnet sitt til {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tenaren avslutta spelet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tenaren startar om att...{}Vær venleg og vent...

@@ -2660,7 +2660,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Ομάδα] Σ
 STR_NETWORK_CHAT_CLIENT                                         :[Προσωπικό] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Προσωπικό] Σε {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Όλοι] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Εισαγάγετε το κείμενο για δικτυακή συζήτηση
 
 # Network messages
@@ -2718,7 +2718,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :η επεξερ
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :μη έγκυρο όνομα πελάτη
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Παιχνίδι σε παύση ({STRING})
@@ -2736,13 +2736,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :αναμονή 
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :αποχώρηση
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} συμμετέχει στο παιχνίδι
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} συμμετέχει στο παιχνίδι (Πελάτης #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} συμμετέχει στο παιχνίδι (Πελάτης #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} συμμετέχει στον/στην/στο {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} συμμετέχει στους θεατές
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} ξεκίνησε μια νέα εταιρία (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} αποχώρησε από το παιχνίδι ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ξεκίνησε μια νέα εταιρία (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} αποχώρησε από το παιχνίδι ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξαν το όνομά τους σε {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} έδωσε {2:CURRENCY_LONG} στον {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσε {CURRENCY_LONG} στον {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο διακομιστής έκλεισε την συνεδρία
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής επανεκκινεί...{}Παρακαλώ περιμένετε...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} εκδιώχθηκε. Λόγος: ({STRING})

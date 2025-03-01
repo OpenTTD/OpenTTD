@@ -2371,7 +2371,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :עיבוד המ
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :שם לקוח לא חוקי
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :המשחק הופסק ({STRING})
@@ -2389,12 +2389,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :מחכה לעד
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :עוזב
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} הצטרף למשחק
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} הצטרף למשחק (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} הצטרף למשחק (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :***{STRING} הצטרף למשחק כצופה
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} הקים חברה חדשה (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :({2:STRING}) עזב את המשחק {NBSP}{0:STRING} ***
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} הקים חברה חדשה (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :({1:STRING}) עזב את המשחק {NBSP}{0:STRING} ***
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :{STRING} שינה את שמו ל {STRING} ***
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} נתן {2:CURRENCY_LONG} ל-{1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} נתן {CURRENCY_LONG} ל-{STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}השרת סגר את המשחק
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}השרת מופעל מחדש...{}אנא המתן...
 

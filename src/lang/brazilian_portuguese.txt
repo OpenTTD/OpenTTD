@@ -2568,7 +2568,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipe] Para {
 STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduza a mensagem para conversar na rede
 
 # Network messages
@@ -2626,7 +2626,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :o processamento
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nome de cliente inválido
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Jogo pausado ({STRING})
@@ -2644,13 +2644,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :aguardando atua
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saindo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} entrou no jogo
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} entrou no jogo (Cliente #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} entrou no jogo (Cliente #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} entrou para {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} entrou como espectador
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} iniciou uma nova empresa (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} saiu do jogo ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} iniciou uma nova empresa (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} saiu do jogo ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou o nome para {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} deu {2:CURRENCY_LONG} para {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu {CURRENCY_LONG} para {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor fechou a sessão
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor está reiniciando...{}Aguarde...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} foi expulso. Motivo: ({STRING})

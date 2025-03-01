@@ -2060,7 +2060,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[فريق] ال
 STR_NETWORK_CHAT_CLIENT                                         :[خاص] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[خاص] الى {STRING} : {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[الكل] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}ادخل نص للمحادثة
 
 # Network messages
@@ -2105,7 +2105,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :خادم ممت
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :كان يرسل الكثير من الاوامر
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :اللعبة متوقفة ({STRING})
@@ -2121,12 +2121,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :يدوي
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :يغادر
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} قد انضم للعبة
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} انضم الى اللعبة (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} انضم الى اللعبة (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} انضم الى المشاهدين
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} قد بدأ شركة جديدة: (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} قد غادر اللعبة : - {2:STRING}-
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} قد بدأ شركة جديدة: (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} قد غادر اللعبة : - {STRING}-
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} قد غير الاسم الى {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} اعطى {2:CURRENCY_LONG} إلى {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} اعطى {CURRENCY_LONG} إلى {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}اقفل الخادم الجلسة
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}يتم بدأ الخادم من جديد ...{} الرجاء الأنتظار
 

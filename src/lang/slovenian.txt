@@ -2340,7 +2340,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :prenos ozemlja 
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :obdelava ozemlja je trajala predolgo
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Igra je prekinjena ({STRING})
@@ -2356,10 +2356,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skripta
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :zapušča
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} pristopa k igri
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} se je pridružil igri (Gost #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} se je pridružil igri (Gost #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se pridružuje opazovalcem
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} na novo ustvarja podjetje (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} odstopa od igre ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} na novo ustvarja podjetje (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} odstopa od igre ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je opravil/a spremembo imena v {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Strežnik je zaprl sejo
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Strežnik se zaganja...{}Prosim počakaj...

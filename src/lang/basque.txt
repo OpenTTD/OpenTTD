@@ -2101,7 +2101,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :mapa deskargatz
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :mapa prozesatzeko denbora gehiegi erabili da
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Jokoa pausatua ({STRING})
@@ -2117,10 +2117,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script jokoa
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :uzten
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} jokora batu da
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} jokora batu da (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} jokora batu da (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ikusle bezala batu da
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} konpainia berria sortu du (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} jokoa utzi du ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} konpainia berria sortu du (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} jokoa utzi du ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING}-k bere izena {STRING}-ra aldatu du
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Zebitzariak saioa itxi du
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Zerbitzaria berriro hasten ari da...{}Mesedez itxaron...

@@ -2571,7 +2571,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Komanda] Uz {S
 STR_NETWORK_CHAT_CLIENT                                         :[Privāti] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privāti] Uz {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Visiem] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ievadīt tekstu tīkla tērzēšanai
 
 # Network messages
@@ -2629,7 +2629,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kartes apstrād
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Nederīgs klienta nosaukums
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spēle pauzēta ({STRING})
@@ -2647,13 +2647,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :gaida uz saišu
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :aizeju
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ir pievienojies spēlei
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} ir pievienojies spēlei (Klients #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ir pievienojies spēlei (Klients #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} pievienojās {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir pievienojies novērotājiem
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} ir nodibinājis jaunu uzņēmumu (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} ir pametis spēli ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ir nodibinājis jaunu uzņēmumu (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ir pametis spēli ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ir mainījis nosaukumu uz {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} piešķīra {2:CURRENCY_LONG} uz {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} piešķīra {CURRENCY_LONG} uz {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris beidza sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris pārstartējas...{}Lūdzu uzgaidiet...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} tika izmests. Iemesls: ({STRING})

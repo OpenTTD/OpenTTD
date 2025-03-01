@@ -1949,7 +1949,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :بارگیری 
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :پردازش نقشه بیش از حد طول کشید
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :بازی متوقف شده ({STRING})
@@ -1965,12 +1965,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :کد بازی
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :می رود
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} به بازی پیوست
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} به بازی پیوست (سرویس گیرنده #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} به بازی پیوست (سرویس گیرنده #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} به تماشاچیان پیوست
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} یک شرکت جدید آغاز کرد (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} از بازی بیرون رفت ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} یک شرکت جدید آغاز کرد (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} از بازی بیرون رفت ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نامش را به {STRING} تغییر داد
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} داد {2:CURRENCY_LONG} به {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} داد {CURRENCY_LONG} به {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرویس دهنده جلسه را تعطیل کرد
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}راه اندازی مجدد سرویس دهنده...{}لطفا صبر کنید...
 

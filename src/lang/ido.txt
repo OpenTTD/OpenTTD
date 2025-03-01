@@ -904,7 +904,7 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Tu sendi
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendinta tro multa imperi
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 

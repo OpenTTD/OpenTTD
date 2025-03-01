@@ -1822,7 +1822,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :نقشہ ڈاو
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :نقشہ پر کام کرنے میں بہت دیر لگی
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :کھیل رکا ہوا ہے۔ ({STRING})
@@ -1838,10 +1838,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :کھیل کا �
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :چھوڑ رہا ہوں
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} کھیل میں شامل ہوا ہے
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} کھیل میں شامل ہوا ہے (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} کھیل میں شامل ہوا ہے (Client #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ناظرین میں شامل ہوا
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} نے نئی کمپنی شروع کی ہے (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} نے کھیل چھوڑ دیا ہے ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} نے نئی کمپنی شروع کی ہے (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} نے کھیل چھوڑ دیا ہے ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نے اپنا نام بدل کر {STRING} رکھ لیا ہے
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرور نے سیشن بند کر دیا
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}سرور دوبارہ سے سٹارٹ ہو رہا ہے - - -{}برائے مہربانی انتظار فرمائیے ۔ ۔ ۔

@@ -2598,7 +2598,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] kohta {S
 STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] kohta {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sisesta tekst võrgus suhtlemiseks
 
 # Network messages
@@ -2655,7 +2655,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kaardi töötle
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :kliendinimi ei vasta nõuetele
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Mäng seisatud ({STRING})
@@ -2673,12 +2673,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :transpordisõlm
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lahkub
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} liitus mänguga
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} liitus mänguga ({2:NUM}. klient)
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} liitus mänguga ({NUM}. klient)
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} liitus vaatlejatega
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} alustas uue ettevõtte (nr {2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} lahkus mängust ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} alustas uue ettevõtte (nr {NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} lahkus mängust ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muutnud oma nimeks {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} saatis {2:CURRENCY_LONG} ettevõttele {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} saatis {CURRENCY_LONG} ettevõttele {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server sulges sessiooni
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server restardib...{}Palun oota...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} visati välja. Põhjendus: ({STRING})

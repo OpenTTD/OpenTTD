@@ -2551,7 +2551,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] an {STRI
 STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] an {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{3:STRING}] {0:STRING}: {WHITE}{1:STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Chattext eingeben
 
 # Network messages
@@ -2609,7 +2609,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :Verarbeitung de
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Ungültiger Teilnehmername
 
 # Network related errors
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
+STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
 
 ###length 12
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spiel angehalten ({STRING})
@@ -2627,12 +2627,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :Warten auf Neub
 
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :geht
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ist dem Spiel beigetreten
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {0:STRING} ist dem Spiel beigetreten (Teilnehmer #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ist dem Spiel beigetreten (Teilnehmer #{NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ist den Zuschauern beigetreten
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {0:STRING} hat eine neue Firma gegründet (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {0:STRING} hat das Spiel verlassen ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} hat eine neue Firma gegründet (#{NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hat das Spiel verlassen ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat den eigenen Namen zu {STRING} geändert
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} gab {2:CURRENCY_LONG} an {1:STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gab {CURRENCY_LONG} an {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Der Server hat das Spiel beendet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Der Server startet neu...{}Bitte warten...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} wurde vom Server hinausgeworfen. Grund: ({STRING})
