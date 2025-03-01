@@ -76,9 +76,7 @@ struct GraphLegendWindow : Window {
 		DrawCompanyIcon(cid, rtl ? ir.right - d.width : ir.left, CenterBounds(ir.top, ir.bottom, d.height));
 
 		const Rect tr = ir.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
-		SetDParam(0, cid);
-		SetDParam(1, cid);
-		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), STR_COMPANY_NAME_COMPANY_NUM, _legend_excluded_companies.Test(cid) ? TC_BLACK : TC_WHITE);
+		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_COMPANY_NAME_COMPANY_NUM, cid, cid), _legend_excluded_companies.Test(cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -309,9 +307,7 @@ protected:
 		uint max_width = 0;
 
 		for (int i = 0; i < (num_hori_lines + 1); i++) {
-			SetDParam(0, this->format_str_y_axis);
-			SetDParam(1, y_label);
-			Dimension d = GetStringBoundingBox(STR_GRAPH_Y_LABEL);
+			Dimension d = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label));
 			if (d.width > max_width) max_width = d.width;
 
 			y_label -= y_label_separation;
@@ -412,9 +408,9 @@ protected:
 		y = r.top - GetCharacterHeight(FS_SMALL) / 2;
 
 		for (int i = 0; i < (num_hori_lines + 1); i++) {
-			SetDParam(0, this->format_str_y_axis);
-			SetDParam(1, y_label);
-			DrawString(r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y, STR_GRAPH_Y_LABEL, GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
+			DrawString(r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y,
+				GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
+				GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
 
 			y_label -= y_label_separation;
 			y += y_sep;
@@ -427,9 +423,9 @@ protected:
 			TimerGameEconomy::Month month = this->month;
 			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, STR_MONTH_ABBREV_JAN + month);
-				SetDParam(1, year);
-				DrawStringMultiLine(x, x + x_sep, y, this->height, month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
+				DrawStringMultiLine(x, x + x_sep, y, this->height,
+					GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
+					GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 
 				month += this->month_increment;
 				if (month >= 12) {
@@ -448,8 +444,7 @@ protected:
 			uint16_t label = this->x_values_start;
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
-				SetDParam(0, label);
-				DrawString(x + 1, x + x_sep - 1, y, STR_GRAPH_Y_LABEL_NUMBER, GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
+				DrawString(x + 1, x + x_sep - 1, y, GetString(STR_GRAPH_Y_LABEL_NUMBER, label), GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
 
 				label += this->x_values_increment;
 				x += x_sep;
@@ -564,9 +559,7 @@ public:
 					TimerGameEconomy::Month month = this->month;
 					TimerGameEconomy::Year year = this->year;
 					for (int i = 0; i < this->num_on_x_axis; i++) {
-						SetDParam(0, STR_MONTH_ABBREV_JAN + month);
-						SetDParam(1, year);
-						x_label_width = std::max(x_label_width, GetStringBoundingBox(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH).width);
+						x_label_width = std::max(x_label_width, GetStringBoundingBox(GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year)).width);
 
 						month += this->month_increment;
 						if (month >= 12) {
@@ -576,13 +569,11 @@ public:
 					}
 				} else {
 					/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
-					SetDParamMaxValue(0, this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
-					x_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL_NUMBER).width;
+					uint64_t max_value = GetParamMaxValue(this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
+					x_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL_NUMBER, max_value)).width;
 				}
 
-				SetDParam(0, this->format_str_y_axis);
-				SetDParam(1, INT64_MAX);
-				uint y_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL).width;
+				uint y_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, INT64_MAX)).width;
 
 				size.width  = std::max<uint>(size.width,  ScaleGUITrad(5) + y_label_width + this->num_vert_lines * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
 				size.height = std::max<uint>(size.height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->draw_dates ? 3 : 1)) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4));
@@ -1072,8 +1063,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		size.height = GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical();
 
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			SetDParam(0, cs->name);
-			Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
+			Dimension d = GetStringBoundingBox(GetString(STR_GRAPH_CARGO_PAYMENT_CARGO, cs->name));
 			d.width += this->legend_width + WidgetDimensions::scaled.hsep_normal; // colour field
 			d.width += WidgetDimensions::scaled.framerect.Horizontal();
 			d.height += WidgetDimensions::scaled.framerect.Vertical();
@@ -1114,8 +1104,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			GfxFillRect(cargo.Shrink(WidgetDimensions::scaled.bevel), cs->legend_colour);
 
 			/* Cargo name */
-			SetDParam(0, cs->name);
-			DrawString(text.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl), STR_GRAPH_CARGO_PAYMENT_CARGO);
+			DrawString(text.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl), GetString(STR_GRAPH_CARGO_PAYMENT_CARGO, cs->name));
 
 			line = line.Translate(0, this->line_height);
 		}
@@ -1300,11 +1289,9 @@ struct PerformanceRatingDetailWindow : Window {
 				for (uint i = SCORE_BEGIN; i < SCORE_END; i++) {
 					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + i).width);
 				}
-				SetDParamMaxValue(0, 1000);
-				score_info_width += GetStringBoundingBox(STR_JUST_COMMA).width + WidgetDimensions::scaled.hsep_wide;
+				score_info_width += GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxValue(1000))).width + WidgetDimensions::scaled.hsep_wide;
 
-				SetDParamMaxValue(0, 100);
-				this->bar_width = GetStringBoundingBox(STR_PERFORMANCE_DETAIL_PERCENT).width + WidgetDimensions::scaled.hsep_indent * 2; // Wide bars!
+				this->bar_width = GetStringBoundingBox(GetString(STR_PERFORMANCE_DETAIL_PERCENT, GetParamMaxValue(100))).width + WidgetDimensions::scaled.hsep_indent * 2; // Wide bars!
 
 				/* At this number we are roughly at the max; it can become wider,
 				 * but then you need at 1000 times more money. At that time you're
@@ -1326,9 +1313,7 @@ struct PerformanceRatingDetailWindow : Window {
 				 * exchange rate is that high, 999 999 k is usually not enough anymore
 				 * to show the different currency numbers. */
 				if (GetCurrency().rate < 1000) max /= GetCurrency().rate;
-				SetDParam(0, max);
-				SetDParam(1, max);
-				uint score_detail_width = GetStringBoundingBox(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY).width;
+				uint score_detail_width = GetStringBoundingBox(GetString(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, max, max)).width;
 
 				size.width = WidgetDimensions::scaled.frametext.Horizontal() + score_info_width + WidgetDimensions::scaled.hsep_wide + this->bar_width + WidgetDimensions::scaled.hsep_wide + score_detail_width;
 				uint left  = WidgetDimensions::scaled.frametext.left;
@@ -1385,8 +1370,7 @@ struct PerformanceRatingDetailWindow : Window {
 		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
 
 		/* Draw the score */
-		SetDParam(0, score);
-		DrawString(this->score_info_left, this->score_info_right, text_top, STR_JUST_COMMA, TC_BLACK, SA_RIGHT);
+		DrawString(this->score_info_left, this->score_info_right, text_top, GetString(STR_JUST_COMMA, score), TC_BLACK, SA_RIGHT);
 
 		/* Calculate the %-bar */
 		uint x = Clamp<int64_t>(val, 0, needed) * this->bar_width / needed;
@@ -1402,26 +1386,24 @@ struct PerformanceRatingDetailWindow : Window {
 		if (x != this->bar_right) GfxFillRect(x,              bar_top, this->bar_right, bar_top + this->bar_height - 1, rtl ? colour_done : colour_notdone);
 
 		/* Draw it */
-		SetDParam(0, Clamp<int64_t>(val, 0, needed) * 100 / needed);
-		DrawString(this->bar_left, this->bar_right, text_top, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_HOR_CENTER);
+		DrawString(this->bar_left, this->bar_right, text_top, GetString(STR_PERFORMANCE_DETAIL_PERCENT, Clamp<int64_t>(val, 0, needed) * 100 / needed), TC_FROMSTRING, SA_HOR_CENTER);
 
 		/* SCORE_LOAN is inversed */
 		if (score_type == SCORE_LOAN) val = needed - val;
 
 		/* Draw the amount we have against what is needed
 		 * For some of them it is in currency format */
-		SetDParam(0, val);
-		SetDParam(1, needed);
 		switch (score_type) {
 			case SCORE_MIN_PROFIT:
 			case SCORE_MIN_INCOME:
 			case SCORE_MAX_INCOME:
 			case SCORE_MONEY:
 			case SCORE_LOAN:
-				DrawString(this->score_detail_left, this->score_detail_right, text_top, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY);
+				DrawString(this->score_detail_left, this->score_detail_right, text_top, GetString(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, val, needed));
 				break;
 			default:
-				DrawString(this->score_detail_left, this->score_detail_right, text_top, STR_PERFORMANCE_DETAIL_AMOUNT_INT);
+				DrawString(this->score_detail_left, this->score_detail_right, text_top, GetString(STR_PERFORMANCE_DETAIL_AMOUNT_INT, val, needed));
+				break;
 		}
 	}
 
@@ -1559,8 +1541,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 			if (!IsValidCargoType(p.cargo)) continue;
 
 			cs = CargoSpec::Get(p.cargo);
-			SetDParam(0, cs->name);
-			Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
+			Dimension d = GetStringBoundingBox(GetString(STR_GRAPH_CARGO_PAYMENT_CARGO, cs->name));
 			d.width += this->legend_width + WidgetDimensions::scaled.hsep_normal; // colour field
 			d.width += WidgetDimensions::scaled.framerect.Horizontal();
 			d.height += WidgetDimensions::scaled.framerect.Vertical();
@@ -1610,8 +1591,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 			GfxFillRect(cargo.Shrink(WidgetDimensions::scaled.bevel), cs->legend_colour);
 
 			/* Cargo name */
-			SetDParam(0, cs->name);
-			DrawString(text.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl), STR_GRAPH_CARGO_PAYMENT_CARGO);
+			DrawString(text.Indent(this->legend_width + WidgetDimensions::scaled.hsep_normal, rtl), GetString(STR_GRAPH_CARGO_PAYMENT_CARGO, cs->name));
 
 			line = line.Translate(0, this->line_height);
 		}
