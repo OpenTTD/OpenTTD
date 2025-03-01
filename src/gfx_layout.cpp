@@ -8,7 +8,6 @@
 /** @file gfx_layout.cpp Handling of laying out text. */
 
 #include "stdafx.h"
-#include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
 #include "gfx_layout.h"
 #include "string_func.h"
@@ -64,15 +63,15 @@ Font::Font(FontSize size, TextColour colour) :
 template <typename T>
 static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view str, FontState &state)
 {
-	free(line.buffer);
+	typename T::CharType *buff_begin = new typename T::CharType[str.size() + 1];
+	/* Move ownership of buff_begin into the Buffer/unique_ptr. */
+	line.buffer = Layouter::LineCacheItem::Buffer(buff_begin, [](void *p) { delete[] reinterpret_cast<T::CharType *>(p); });
 
-	typename T::CharType *buff_begin = MallocT<typename T::CharType>(str.size() + 1);
 	const typename T::CharType *buffer_last = buff_begin + str.size() + 1;
 	typename T::CharType *buff = buff_begin;
 	FontMap &font_mapping = line.runs;
 	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
 
-	line.buffer = buff_begin;
 	font_mapping.clear();
 
 	auto cur = str.begin();
