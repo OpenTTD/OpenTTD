@@ -327,10 +327,10 @@ struct DepotWindow : Window {
 				DrawTrainImage(u, image.Indent(x_space, rtl), this->sel, EIT_IN_DEPOT, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
 				/* Length of consist in tiles with 1 fractional digit (rounded up) */
-				SetDParam(0, CeilDiv(u->gcache.cached_total_length * 10, TILE_SIZE));
-				SetDParam(1, 1);
 				Rect count = text.WithWidth(this->count_width - WidgetDimensions::scaled.hsep_normal, !rtl);
-				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FS_SMALL) + 1, STR_JUST_DECIMAL, TC_BLACK, SA_RIGHT, false, FS_SMALL); // Draw the counter
+				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FS_SMALL) + 1,
+						GetString(STR_JUST_DECIMAL, CeilDiv(u->gcache.cached_total_length * 10, TILE_SIZE), 1),
+						TC_BLACK, SA_RIGHT, false, FS_SMALL); // Draw the counter
 				break;
 			}
 
@@ -358,8 +358,7 @@ struct DepotWindow : Window {
 			Rect flag = r.WithWidth(this->flag_size.width, rtl).WithHeight(this->flag_size.height).Translate(0, diff_y);
 			DrawSpriteIgnorePadding((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, flag, SA_CENTER);
 
-			SetDParam(0, v->unitnumber);
-			DrawString(text, STR_JUST_COMMA, (v->max_age - CalendarTime::DAYS_IN_LEAP_YEAR) >= v->age ? TC_BLACK : TC_RED);
+			DrawString(text, GetString(STR_JUST_COMMA, v->unitnumber), (v->max_age - CalendarTime::DAYS_IN_LEAP_YEAR) >= v->age ? TC_BLACK : TC_RED);
 		}
 	}
 
@@ -657,15 +656,12 @@ struct DepotWindow : Window {
 				uint min_height = 0;
 
 				if (this->type == VEH_TRAIN) {
-					SetDParamMaxValue(0, 1000, 0, FS_SMALL);
-					SetDParam(1, 1);
-					this->count_width = GetStringBoundingBox(STR_JUST_DECIMAL, FS_SMALL).width + WidgetDimensions::scaled.hsep_normal;
+					this->count_width = GetStringBoundingBox(GetString(STR_JUST_DECIMAL, GetParamMaxValue(1000, 0, FS_SMALL), 1), FS_SMALL).width + WidgetDimensions::scaled.hsep_normal;
 				} else {
 					this->count_width = 0;
 				}
 
-				SetDParamMaxDigits(0, this->unitnumber_digits);
-				Dimension unumber = GetStringBoundingBox(STR_JUST_COMMA);
+				Dimension unumber = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxDigits(this->unitnumber_digits)));
 
 				if (this->type == VEH_TRAIN || this->type == VEH_ROAD) {
 					min_height = std::max<uint>(unumber.height, this->flag_size.height);
@@ -882,11 +878,8 @@ struct DepotWindow : Window {
 			CargoType cargo_type = cs->Index();
 			if (capacity[cargo_type] == 0) continue;
 
-			SetDParam(0, cargo_type);           // {CARGO} #1
-			SetDParam(1, loaded[cargo_type]);   // {CARGO} #2
-			SetDParam(2, cargo_type);           // {SHORTCARGO} #1
-			SetDParam(3, capacity[cargo_type]); // {SHORTCARGO} #2
-			AppendStringInPlace(details, STR_DEPOT_VEHICLE_TOOLTIP_CARGO);
+			auto params = MakeParameters(cargo_type, loaded[cargo_type], cargo_type, capacity[cargo_type]);
+			AppendStringWithArgsInPlace(details, STR_DEPOT_VEHICLE_TOOLTIP_CARGO, params);
 		}
 
 		/* Show tooltip window */
