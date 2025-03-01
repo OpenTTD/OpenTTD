@@ -217,8 +217,7 @@ struct SignListWindow : Window, SignList {
 
 					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, tr.top + sprite_offset_y);
 
-					SetDParam(0, si->index);
-					DrawString(tr.left, tr.right, tr.top + text_offset_y, STR_SIGN_NAME, TC_YELLOW);
+					DrawString(tr.left, tr.right, tr.top + text_offset_y, GetString(STR_SIGN_NAME, si->index), TC_YELLOW);
 					tr.top += this->resize.step_height;
 				}
 				break;
@@ -269,8 +268,7 @@ struct SignListWindow : Window, SignList {
 			}
 
 			case WID_SIL_CAPTION:
-				SetDParamMaxValue(0, Sign::GetPoolSize(), 3);
-				size = GetStringBoundingBox(STR_SIGN_LIST_CAPTION);
+				size = GetStringBoundingBox(GetString(STR_SIGN_LIST_CAPTION, GetParamMaxValue(Sign::GetPoolSize(), 3)));
 				size.height += padding.height;
 				size.width  += padding.width;
 				break;
