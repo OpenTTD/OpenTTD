@@ -17,22 +17,22 @@ class AICompat14 {
 	}
 }
 
-AIBaseStation._SetName <- AIBaseStation.SetName;
-AIBaseStation.SetName <- function(id, name) { return AIBaseStation._SetName(id, AICompat14.Text(name)); }
+AIBaseStation.SetNameCompat14 <- AIBaseStation.SetName;
+AIBaseStation.SetName <- function(id, name) { return AIBaseStation.SetNameCompat14(id, AICompat14.Text(name)); }
 
-AICompany._SetName <- AICompany.SetName;
-AICompany.SetName <- function(name) { return AICompany._SetName(AICompat14.Text(name)); }
-AICompany._SetPresidentName <- AICompany.SetPresidentName;
-AICompany.SetPresidentName <- function(name) { return AICompany._SetPresidentName(AICompat14.Text(name)); }
+AICompany.SetNameCompat14 <- AICompany.SetName;
+AICompany.SetName <- function(name) { return AICompany.SetNameCompat14(AICompat14.Text(name)); }
+AICompany.SetPresidentNameCompat14 <- AICompany.SetPresidentName;
+AICompany.SetPresidentName <- function(name) { return AICompany.SetPresidentNameCompat14(AICompat14.Text(name)); }
 
-AIGroup._SetName <- AIGroup.SetName;
-AIGroup.SetName <- function(id, name) { return AIGroup._SetName(id, AICompat14.Text(name)); }
+AIGroup.SetNameCompat14 <- AIGroup.SetName;
+AIGroup.SetName <- function(id, name) { return AIGroup.SetNameCompat14(id, AICompat14.Text(name)); }
 
-AISign._BuildSign <- AISign.BuildSign;
-AISign.BuildSign <- function(id, name) { return AISign._BuildSign(id, AICompat14.Text(name)); }
+AISign.BuildSignCompat14 <- AISign.BuildSign;
+AISign.BuildSign <- function(id, name) { return AISign.BuildSignCompat14(id, AICompat14.Text(name)); }
 
-AITown._FoundTown <- AITown.FoundTown;
-AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown._FoundTown(tile, size, city, layout, AICompat14.Text(name)); }
+AITown.FoundTownCompat14 <- AITown.FoundTown;
+AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown.FoundTownCompat14(tile, size, city, layout, AICompat14.Text(name)); }
 
-AIVehicle._SetName <- AIVehicle.SetName;
-AIVehicle.SetName <- function(id, name) { return AIVehicle._SetName(id, AICompat14.Text(name)); }
+AIVehicle.SetNameCompat14 <- AIVehicle.SetName;
+AIVehicle.SetName <- function(id, name) { return AIVehicle.SetNameCompat14(id, AICompat14.Text(name)); }

@@ -7,8 +7,8 @@
 
 /* This file contains code to downgrade the API from 1.5 to 1.4 */
 
-GSNews._Create <- GSNews.Create;
+GSNews.CreateCompat1_4 <- GSNews.Create;
 GSNews.Create <- function(type, text, company)
 {
-    return GSNews._Create(type, text, company, GSNews.NR_NONE, 0);
+    return GSNews.CreateCompat1_4(type, text, company, GSNews.NR_NONE, 0);
 }

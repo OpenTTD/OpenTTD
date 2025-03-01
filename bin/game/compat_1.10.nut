@@ -7,8 +7,8 @@
 
 /* This file contains code to downgrade the API from 1.11 to 1.10. */
 
-GSCompany._ChangeBankBalance <- GSCompany.ChangeBankBalance;
+GSCompany.ChangeBankBalanceCompat1_10 <- GSCompany.ChangeBankBalance;
 GSCompany.ChangeBankBalance <- function(company, delta, expenses_type)
 {
-	return GSCompany._ChangeBankBalance(company, delta, expenses_type, GSMap.TILE_INVALID);
+	return GSCompany.ChangeBankBalanceCompat1_10(company, delta, expenses_type, GSMap.TILE_INVALID);
 }

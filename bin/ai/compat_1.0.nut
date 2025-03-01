@@ -7,20 +7,20 @@
 
 /* This file contains code to downgrade the API from 1.1 to 1.0. */
 
-AIRoad._BuildRoadStation <- AIRoad.BuildRoadStation;
+AIRoad.BuildRoadStationCompat1_0 <- AIRoad.BuildRoadStation;
 AIRoad.BuildRoadStation <- function(tile, front, road_veh_type, station_id)
 {
 	if (AIRoad.IsRoadStationTile(tile) && AICompany.IsMine(AITile.GetOwner(tile))) return false;
 
-	return AIRoad._BuildRoadStation(tile, front, road_veh_type, station_id);
+	return AIRoad.BuildRoadStationCompat1_0(tile, front, road_veh_type, station_id);
 }
 
-AIRoad._BuildDriveThroughRoadStation <- AIRoad.BuildDriveThroughRoadStation;
+AIRoad.BuildDriveThroughRoadStationCompat1_0 <- AIRoad.BuildDriveThroughRoadStation;
 AIRoad.BuildDriveThroughRoadStation <- function(tile, front, road_veh_type, station_id)
 {
 	if (AIRoad.IsRoadStationTile(tile) && AICompany.IsMine(AITile.GetOwner(tile))) return false;
 
-	return AIRoad._BuildDriveThroughRoadStation(tile, front, road_veh_type, station_id);
+	return AIRoad.BuildDriveThroughRoadStationCompat1_0(tile, front, road_veh_type, station_id);
 }
 
 AIBridgeList.HasNext <-
@@ -59,10 +59,10 @@ function()
 	return !this.IsEnd();
 }
 
-AIIndustry._IsCargoAccepted <- AIIndustry.IsCargoAccepted;
+AIIndustry.IsCargoAcceptedCompat1_0 <- AIIndustry.IsCargoAccepted;
 AIIndustry.IsCargoAccepted <- function(industry_id, cargo_id)
 {
-	return AIIndustry._IsCargoAccepted(industry_id, cargo_id) != AIIndustry.CAS_NOT_ACCEPTED;
+	return AIIndustry.IsCargoAcceptedCompat1_0(industry_id, cargo_id) != AIIndustry.CAS_NOT_ACCEPTED;
 }
 
 AIAbstractList <- AIList;
