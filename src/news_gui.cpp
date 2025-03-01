@@ -513,42 +513,42 @@ struct NewsWindow : Window {
 
 			case WID_N_MESSAGE:
 			case WID_N_COMPANY_MSG:
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->ni->headline.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, this->ni->headline.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
 				break;
 
 			case WID_N_MGR_FACE: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
 				DrawCompanyManagerFace(cni->face, cni->colour, r);
-				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_MGR_NAME: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
 				SetDParamStr(0, cni->president_name);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
 				break;
 			}
 
 			case WID_N_VEH_BKGND:
-				GfxFillRect(r.left, r.top, r.right, r.bottom, PC_GREY);
+				GfxFillRect(r, PC_GREY);
 				break;
 
 			case WID_N_VEH_NAME:
 			case WID_N_VEH_TITLE:
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->GetNewVehicleMessageString(widget), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, this->GetNewVehicleMessageString(widget), TC_FROMSTRING, SA_CENTER);
 				break;
 
 			case WID_N_VEH_SPR: {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
 				DrawVehicleEngine(r.left, r.right, CenterBounds(r.left, r.right, 0), CenterBounds(r.top, r.bottom, 0), engine, GetEnginePalette(engine, _local_company), EIT_PREVIEW);
-				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
+				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_VEH_INFO: {
 				assert(std::holds_alternative<EngineID>(ni->ref1));
 				EngineID engine = std::get<EngineID>(this->ni->ref1);
-				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, GetEngineInfoString(engine), TC_BLACK, SA_CENTER);
+				DrawStringMultiLine(r, GetEngineInfoString(engine), TC_BLACK, SA_CENTER);
 				break;
 			}
 		}

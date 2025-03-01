@@ -410,7 +410,7 @@ public:
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_ADDITIONAL_TEXT);
 					if (string != STR_UNDEFINED) {
-						DrawStringMultiLine(r.left, r.right, r.top, r.bottom, string, TC_BLACK);
+						DrawStringMultiLine(r, string, TC_BLACK);
 					}
 				}
 				break;
