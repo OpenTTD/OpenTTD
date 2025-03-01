@@ -7,10 +7,10 @@
 
 /* This file contains code to downgrade the API from 1.4 to 1.3. */
 
-GSTown._SetGrowthRate <- GSTown.SetGrowthRate;
+GSTown.SetGrowthRateCompat1_3 <- GSTown.SetGrowthRate;
 GSTown.SetGrowthRate <- function(town_id, days_between_town_growth)
 {
 	/* Growth rate 0 caused resetting the custom growth rate. While this was undocumented, it was used nevertheless (ofc). */
 	if (days_between_town_growth == 0) days_between_town_growth = GSTown.TOWN_GROWTH_NORMAL;
-	return GSTown._SetGrowthRate(town_id, days_between_town_growth);
+	return GSTown.SetGrowthRateCompat1_3(town_id, days_between_town_growth);
 }

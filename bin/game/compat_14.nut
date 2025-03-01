@@ -18,63 +18,63 @@ class GSCompat14 {
 	}
 }
 
-GSBaseStation._SetName <- GSBaseStation.SetName;
-GSBaseStation.SetName <- function(id, name) { return GSBaseStation._SetName(id, GSCompat14.Text(name)); }
+GSBaseStation.SetNameCompat14 <- GSBaseStation.SetName;
+GSBaseStation.SetName <- function(id, name) { return GSBaseStation.SetNameCompat14(id, GSCompat14.Text(name)); }
 
-GSCompany._SetName <- GSCompany.SetName;
-GSCompany.SetName <- function(name) { return GSCompany._SetName(GSCompat14.Text(name)); }
-GSCompany._SetPresidentName <- GSCompany.SetPresidentName;
-GSCompany.SetPresidentName <- function(name) { return GSCompany._SetPresidentName(GSCompat14.Text(name)); }
+GSCompany.SetNameCompat14 <- GSCompany.SetName;
+GSCompany.SetName <- function(name) { return GSCompany.SetNameCompat14(GSCompat14.Text(name)); }
+GSCompany.SetPresidentNameCompat14 <- GSCompany.SetPresidentName;
+GSCompany.SetPresidentName <- function(name) { return GSCompany.SetPresidentNameCompat14(GSCompat14.Text(name)); }
 
-GSGoal._New <- GSGoal.New;
-GSGoal.New <- function(company, goal, type, dest) { return GSGoal._New(company, GSCompat14.Text(goal), type, dest); }
-GSGoal._SetText <- GSGoal.SetText;
-GSGoal.SetText <- function(id, goal) { return GSGoal._SetText(id, GSCompat14.Text(goal)); }
-GSGoal._SetProgress <- GSGoal.SetProgress;
-GSGoal.SetProgress <- function(id, progress) { return GSGoal._SetProgress(id, GSCompat14.Text(progress)); }
-GSGoal._Question <- GSGoal.Question;
-GSGoal.Question <- function(id, company, question, type, buttons) { return GSGoal._Question(id, company, GSCompat14.Text(question), type, buttons); }
-GSGoal._QuestionClient <- GSGoal.QuestionClient;
-GSGoal.QuestionClient <- function(id, target, is_client, question, type, buttons) { return GSGoal._QuestionClient(id, target, is_client, GSCompat14.Text(question), type, buttons); }
+GSGoal.NewCompat14 <- GSGoal.New;
+GSGoal.New <- function(company, goal, type, dest) { return GSGoal.NewCompat14(company, GSCompat14.Text(goal), type, dest); }
+GSGoal.SetTextCompat14 <- GSGoal.SetText;
+GSGoal.SetText <- function(id, goal) { return GSGoal.SetTextCompat14(id, GSCompat14.Text(goal)); }
+GSGoal.SetProgressCompat14 <- GSGoal.SetProgress;
+GSGoal.SetProgress <- function(id, progress) { return GSGoal.SetProgressCompat14(id, GSCompat14.Text(progress)); }
+GSGoal.QuestionCompat14 <- GSGoal.Question;
+GSGoal.Question <- function(id, company, question, type, buttons) { return GSGoal.QuestionCompat14(id, company, GSCompat14.Text(question), type, buttons); }
+GSGoal.QuestionClientCompat14 <- GSGoal.QuestionClient;
+GSGoal.QuestionClient <- function(id, target, is_client, question, type, buttons) { return GSGoal.QuestionClientCompat14(id, target, is_client, GSCompat14.Text(question), type, buttons); }
 
-GSGroup._SetName <- GSGroup.SetName;
-GSGroup.SetName <- function(id, name) { return GSGroup._SetName(id, GSCompat14.Text(name)); }
+GSGroup.SetNameCompat14 <- GSGroup.SetName;
+GSGroup.SetName <- function(id, name) { return GSGroup.SetNameCompat14(id, GSCompat14.Text(name)); }
 
-GSIndustry._SetText <- GSIndustry.SetText;
-GSIndustry.SetText <- function(id, text) { return GSIndustry._SetText(id, GSCompat14.Text(text)); }
-GSIndustry._SetProductionLevel <- GSIndustry.SetProductionLevel;
-GSIndustry.SetProductionLevel <- function(id, level, news, text) { return GSIndustry._SetProductionLevel(id, level, news, GSCompat14.Text(text)); }
+GSIndustry.SetTextCompat14 <- GSIndustry.SetText;
+GSIndustry.SetText <- function(id, text) { return GSIndustry.SetTextCompat14(id, GSCompat14.Text(text)); }
+GSIndustry.SetProductionLevelCompat14 <- GSIndustry.SetProductionLevel;
+GSIndustry.SetProductionLevel <- function(id, level, news, text) { return GSIndustry.SetProductionLevelCompat14(id, level, news, GSCompat14.Text(text)); }
 
-GSLeagueTable._New <- GSLeagueTable.New;
-GSLeagueTable.New <- function(title, header, footer) { return GSLeagueTable._New(GSCompat14.Text(title), GSCompat14.Text(header), GSCompat14.Text(footer)); }
-GSLeagueTable._NewElement <- GSLeagueTable.NewElement;
-GSLeagueTable.NewElement <- function(table, rating, company, text, score, type, target) { return GSLeagueTable._NewElement(table, rating, company, GSCompat14.Text(text), GSCompat14.Text(score), type, target); }
-GSLeagueTable._UpdateElementData <- GSLeagueTable.UpdateElementData;
-GSLeagueTable.UpdateElementData <- function(element, company, text, type, target) { return GSLeagueTable._UpdateElementData(element, company, GSCompat14.Text(text), type, target); }
-GSLeagueTable._UpdateElementScore <- GSLeagueTable.UpdateElementScore;
-GSLeagueTable.UpdateElementScore <- function(element, rating, score) { return GSLeagueTable._UpdateElementScore(element, rating, GSCompat14.Text(score)); }
+GSLeagueTable.NewCompat14 <- GSLeagueTable.New;
+GSLeagueTable.New <- function(title, header, footer) { return GSLeagueTable.NewCompat14(GSCompat14.Text(title), GSCompat14.Text(header), GSCompat14.Text(footer)); }
+GSLeagueTable.NewElementCompat14 <- GSLeagueTable.NewElement;
+GSLeagueTable.NewElement <- function(table, rating, company, text, score, type, target) { return GSLeagueTable.NewElementCompat14(table, rating, company, GSCompat14.Text(text), GSCompat14.Text(score), type, target); }
+GSLeagueTable.UpdateElementDataCompat14 <- GSLeagueTable.UpdateElementData;
+GSLeagueTable.UpdateElementData <- function(element, company, text, type, target) { return GSLeagueTable.UpdateElementDataCompat14(element, company, GSCompat14.Text(text), type, target); }
+GSLeagueTable.UpdateElementScoreCompat14 <- GSLeagueTable.UpdateElementScore;
+GSLeagueTable.UpdateElementScore <- function(element, rating, score) { return GSLeagueTable.UpdateElementScoreCompat14(element, rating, GSCompat14.Text(score)); }
 
-GSNews._Create <- GSNews.Create;
-GSNews.Create <- function(type, text, company, ref_type, ref) { return GSNews._Create(type, GSCompat14.Text(text), company, ref_type, ref); }
+GSNews.CreateCompat14 <- GSNews.Create;
+GSNews.Create <- function(type, text, company, ref_type, ref) { return GSNews.CreateCompat14(type, GSCompat14.Text(text), company, ref_type, ref); }
 
-GSSign._BuildSign <- GSSign.BuildSign;
-GSSign.BuildSign <- function(id, name) { return GSSign._BuildSign(id, GSCompat14.Text(name)); }
+GSSign.BuildSignCompat14 <- GSSign.BuildSign;
+GSSign.BuildSign <- function(id, name) { return GSSign.BuildSignCompat14(id, GSCompat14.Text(name)); }
 
-GSStoryPage._New <- GSStoryPage.New;
-GSStoryPage.New <- function(company, title) { return GSStoryPage._New(company, GSCompat14.Text(title)); }
-GSStoryPage._NewElement <- GSStoryPage.NewElement;
-GSStoryPage.NewElement <- function(page, type, ref, text) { return GSStoryPage._NewElement(page, type, ref, GSCompat14.Text(text)); }
-GSStoryPage._UpdateElement <- GSStoryPage.UpdateElement;
-GSStoryPage.UpdateElement <- function(id, ref, text) { return GSStoryPage._UpdateElement(id, ref, GSCompat14.Text(text)); }
-GSStoryPage._SetTitle <- GSStoryPage.SetTitle;
-GSStoryPage.SetTitle <- function(page, tile) { return GSStoryPage._SetTitle(page, GSCompat14.Text(title)); }
+GSStoryPage.NewCompat14 <- GSStoryPage.New;
+GSStoryPage.New <- function(company, title) { return GSStoryPage.NewCompat14(company, GSCompat14.Text(title)); }
+GSStoryPage.NewElementCompat14 <- GSStoryPage.NewElement;
+GSStoryPage.NewElement <- function(page, type, ref, text) { return GSStoryPage.NewElementCompat14(page, type, ref, GSCompat14.Text(text)); }
+GSStoryPage.UpdateElementCompat14 <- GSStoryPage.UpdateElement;
+GSStoryPage.UpdateElement <- function(id, ref, text) { return GSStoryPage.UpdateElementCompat14(id, ref, GSCompat14.Text(text)); }
+GSStoryPage.SetTitleCompat14 <- GSStoryPage.SetTitle;
+GSStoryPage.SetTitle <- function(page, tile) { return GSStoryPage.SetTitleCompat14(page, GSCompat14.Text(title)); }
 
-GSTown._SetName <- GSTown.SetName;
-GSTown.SetName <- function(id, name) { return GSTown._SetName(id, GSCompat14.Text(name)); }
-GSTown._SetText <- GSTown.SetText;
-GSTown.SetText <- function(id, text) { return GSTown._SetText(id, GSCompat14.Text(text)); }
-GSTown._FoundTown <- GSTown.FoundTown;
-GSTown.FoundTown <- function(tile, size, city, layout, name) { return GSTown._FoundTown(tile, size, city, layout, GSCompat14.Text(name)); }
+GSTown.SetNameCompat14 <- GSTown.SetName;
+GSTown.SetName <- function(id, name) { return GSTown.SetNameCompat14(id, GSCompat14.Text(name)); }
+GSTown.SetTextCompat14 <- GSTown.SetText;
+GSTown.SetText <- function(id, text) { return GSTown.SetTextCompat14(id, GSCompat14.Text(text)); }
+GSTown.FoundTownCompat14 <- GSTown.FoundTown;
+GSTown.FoundTown <- function(tile, size, city, layout, name) { return GSTown.FoundTownCompat14(tile, size, city, layout, GSCompat14.Text(name)); }
 
-GSVehicle._SetName <- GSVehicle.SetName;
-GSVehicle.SetName <- function(id, name) { return GSVehicle._SetName(id, GSCompat14.Text(name)); }
+GSVehicle.SetNameCompat14 <- GSVehicle.SetName;
+GSVehicle.SetName <- function(id, name) { return GSVehicle.SetNameCompat14(id, GSCompat14.Text(name)); }

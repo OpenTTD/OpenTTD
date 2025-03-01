@@ -7,8 +7,8 @@
 
 /* This file contains code to downgrade the API from 1.9 to 1.8. */
 
-GSBridge._GetName <- GSBridge.GetName;
+GSBridge.GetNameCompat1_8 <- GSBridge.GetName;
 GSBridge.GetName <- function(bridge_id)
 {
-	return GSBridge._GetName(bridge_id, GSVehicle.VT_RAIL);
+	return GSBridge.GetNameCompat1_8(bridge_id, GSVehicle.VT_RAIL);
 }

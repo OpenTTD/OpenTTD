@@ -7,12 +7,12 @@
 
 /* This file contains code to downgrade the API from 13 to 12. */
 
-GSRoad._HasRoadType <- GSRoad.HasRoadType;
+GSRoad.HasRoadTypeCompat12 <- GSRoad.HasRoadType;
 GSRoad.HasRoadType <- function(tile, road_type)
 {
 	local list = GSRoadTypeList(GSRoad.GetRoadTramType(road_type));
 	foreach (rt, _ in list) {
-		if (GSRoad._HasRoadType(tile, rt)) {
+		if (GSRoad.HasRoadTypeCompat12(tile, rt)) {
 			return true;
 		}
 	}

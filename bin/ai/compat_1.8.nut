@@ -7,14 +7,14 @@
 
 /* This file contains code to downgrade the API from 1.9 to 1.8. */
 
-AIBridge._GetName <- AIBridge.GetName;
+AIBridge.GetNameCompat1_8 <- AIBridge.GetName;
 AIBridge.GetName <- function(bridge_id)
 {
-	return AIBridge._GetName(bridge_id, AIVehicle.VT_RAIL);
+	return AIBridge.GetNameCompat1_8(bridge_id, AIVehicle.VT_RAIL);
 }
 
-AIGroup._CreateGroup <- AIGroup.CreateGroup;
+AIGroup.CreateGroupCompat1_8 <- AIGroup.CreateGroup;
 AIGroup.CreateGroup <- function(vehicle_type)
 {
-	return AIGroup._CreateGroup(vehicle_type, AIGroup.GROUP_INVALID);
+	return AIGroup.CreateGroupCompat1_8(vehicle_type, AIGroup.GROUP_INVALID);
 }

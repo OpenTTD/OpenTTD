@@ -7,12 +7,12 @@
 
 /* This file contains code to downgrade the API from 13 to 12. */
 
-AIRoad._HasRoadType <- AIRoad.HasRoadType;
+AIRoad.HasRoadTypeCompat12 <- AIRoad.HasRoadType;
 AIRoad.HasRoadType <- function(tile, road_type)
 {
 	local list = AIRoadTypeList(AIRoad.GetRoadTramType(road_type));
 	foreach (rt, _ in list) {
-		if (AIRoad._HasRoadType(tile, rt)) {
+		if (AIRoad.HasRoadTypeCompat12(tile, rt)) {
 			return true;
 		}
 	}
