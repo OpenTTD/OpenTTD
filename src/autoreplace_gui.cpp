@@ -380,58 +380,49 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_RV_CAPTION:
-				SetDParam(0, STR_REPLACE_VEHICLE_TRAIN + this->window_number);
 				switch (this->sel_group.base()) {
 					case ALL_GROUP.base():
-						SetDParam(1, STR_GROUP_ALL_TRAINS + this->window_number);
+						return GetString(stringid, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_ALL_TRAINS + this->window_number);
 						break;
 
 					case DEFAULT_GROUP.base():
-						SetDParam(1, STR_GROUP_DEFAULT_TRAINS + this->window_number);
+						return GetString(stringid, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_DEFAULT_TRAINS + this->window_number);
 						break;
 
 					default:
-						SetDParam(1, STR_GROUP_NAME);
-						SetDParam(2, sel_group);
-						break;
+						return GetString(stringid, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_NAME, sel_group);
 				}
 				break;
 
 			case WID_RV_SORT_DROPDOWN:
-				SetDParam(0, std::data(_engine_sort_listing[this->window_number])[this->sort_criteria]);
-				break;
+				return GetString(stringid, std::data(_engine_sort_listing[this->window_number])[this->sort_criteria]);
 
-			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
-				bool remove_wagon;
-				const Group *g = Group::GetIfValid(this->sel_group);
-				if (g != nullptr) {
-					remove_wagon = g->flags.Test(GroupFlag::ReplaceWagonRemoval);
-					SetDParam(0, STR_GROUP_NAME);
-					SetDParam(1, sel_group);
+			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE:
+				if (const Group *g = Group::GetIfValid(this->sel_group); g != nullptr) {
+					bool remove_wagon = g->flags.Test(GroupFlag::ReplaceWagonRemoval);
+					return GetString(stringid, STR_GROUP_NAME, sel_group, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				} else {
 					const Company *c = Company::Get(_local_company);
-					remove_wagon = c->settings.renew_keep_length;
-					SetDParam(0, STR_GROUP_DEFAULT_TRAINS + this->window_number);
+					bool remove_wagon = c->settings.renew_keep_length;
+					return GetString(stringid, STR_GROUP_DEFAULT_TRAINS + this->window_number, std::monostate{}, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				}
-				SetDParam(2, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				break;
-			}
 
 			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN:
-				SetDParam(0, this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
-				break;
+				return GetString(stringid, this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
 
 			case WID_RV_RAIL_TYPE_DROPDOWN:
-				SetDParam(0, this->sel_railtype == INVALID_RAILTYPE ? STR_REPLACE_ALL_RAILTYPE : GetRailTypeInfo(this->sel_railtype)->strings.replace_text);
-				break;
+				return GetString(stringid, this->sel_railtype == INVALID_RAILTYPE ? STR_REPLACE_ALL_RAILTYPE : GetRailTypeInfo(this->sel_railtype)->strings.replace_text);
 
 			case WID_RV_ROAD_TYPE_DROPDOWN:
-				SetDParam(0, this->sel_roadtype == INVALID_ROADTYPE ? STR_REPLACE_ALL_ROADTYPE : GetRoadTypeInfo(this->sel_roadtype)->strings.replace_text);
-				break;
+				return GetString(stringid, this->sel_roadtype == INVALID_ROADTYPE ? STR_REPLACE_ALL_ROADTYPE : GetRoadTypeInfo(this->sel_roadtype)->strings.replace_text);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

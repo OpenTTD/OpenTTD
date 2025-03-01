@@ -292,28 +292,26 @@ public:
 		this->PickerWindowBase::Close();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN:
-				SetDParam(0, AirportClass::Get(_selected_airport_class)->name);
-				break;
+				return GetString(stringid, AirportClass::Get(_selected_airport_class)->name);
 
 			case WID_AP_LAYOUT_NUM:
-				SetDParam(0, STR_EMPTY);
 				if (_selected_airport_index != -1) {
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_LAYOUT_NAME);
 					if (string != STR_UNDEFINED) {
-						SetDParam(0, string);
+						return GetString(stringid, string);
 					} else if (as->layouts.size() > 1) {
-						SetDParam(0, STR_STATION_BUILD_AIRPORT_LAYOUT_NAME);
-						SetDParam(1, _selected_airport_layout + 1);
+						return GetString(stringid, STR_STATION_BUILD_AIRPORT_LAYOUT_NAME, _selected_airport_layout + 1);
 					}
 				}
-				break;
+				return GetString(stringid, STR_EMPTY);
 
-			default: break;
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
