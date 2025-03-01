@@ -36,3 +36,8 @@ AITown.FoundTown <- function(tile, size, city, layout, name) { return AITown._Fo
 
 AIVehicle._SetName <- AIVehicle.SetName;
 AIVehicle.SetName <- function(id, name) { return AIVehicle._SetName(id, AICompat14.Text(name)); }
+
+AIBaseStation.IsValidBaseStation <- function(station_id)
+{
+	return AIStation.IsValidStation(station_id) || AIWaypoint.IsValidWaypoint(station_id);
+}
