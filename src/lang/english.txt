@@ -4039,8 +4039,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produces
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{RAW_STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requires:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:RAW_STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} waiting{RAW_STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:RAW_STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} waiting{3:RAW_STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} waiting
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production (multiple of 8, up to 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Change production level (percentage, up to 800%)
