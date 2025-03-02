@@ -61,13 +61,15 @@ public:
 		if (_settings_client.gui.zoom_min == viewport->zoom) this->DisableWidget(WID_EV_ZOOM_IN);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_EV_CAPTION:
 				/* set the number in the title bar */
-				SetDParam(0, this->window_number + 1);
-				break;
+				return GetString(stringid, this->window_number + 1);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

@@ -255,7 +255,7 @@ private:
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_PROFIT].height);
 
 		int num_vehicle = GetGroupNumVehicle(this->vli.company, ALL_GROUP, this->vli.vtype);
-		uint64_t max_value = GetParamMaxValue(num_vehicle, 3, FS_SMALL);
+		auto max_value = GetParamMaxValue(num_vehicle, 3, FS_SMALL);
 		this->column_size[VGC_NUMBER] = GetStringBoundingBox(GetString(STR_GROUP_COUNT_WITH_SUBGROUP, max_value, max_value));
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_NUMBER].height);
 
@@ -502,34 +502,28 @@ public:
 		this->SetDirty();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GL_FILTER_BY_CARGO:
-				SetDParam(0, this->GetCargoFilterLabel(this->cargo_filter_criteria));
-				break;
+				return GetString(stringid, this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 			case WID_GL_AVAILABLE_VEHICLES:
-				SetDParam(0, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
-				break;
+				return GetString(stringid, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
 
 			case WID_GL_CAPTION:
 				/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
 				 * We list all vehicles or ungrouped vehicles */
 				if (IsDefaultGroupID(this->vli.ToGroupID()) || IsAllGroupID(this->vli.ToGroupID())) {
-					SetDParam(0, STR_COMPANY_NAME);
-					SetDParam(1, this->vli.company);
-					SetDParam(2, this->vehicles.size());
-					SetDParam(3, this->vehicles.size());
+					return GetString(stringid, STR_COMPANY_NAME, this->vli.company, this->vehicles.size(), this->vehicles.size());
 				} else {
 					uint num_vehicle = GetGroupNumVehicle(this->vli.company, this->vli.ToGroupID(), this->vli.vtype);
 
-					SetDParam(0, STR_GROUP_NAME);
-					SetDParam(1, this->vli.ToGroupID());
-					SetDParam(2, num_vehicle);
-					SetDParam(3, num_vehicle);
+					return GetString(stringid, STR_GROUP_NAME, this->vli.ToGroupID(), num_vehicle, num_vehicle);
 				}
-				break;
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

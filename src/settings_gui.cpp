@@ -102,12 +102,13 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 		this->LoadTextfile(textfile, BASESET_DIR);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, content_type);
-			SetDParamStr(1, this->name);
+			return GetString(stringid, content_type, this->name);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 };
 
@@ -247,37 +248,28 @@ public:
 		return *longest;
 	}
 
-	void SetStringParameters(int widget) const
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const
 	{
 		switch (widget) {
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE);
-					SetDParamStr(1, GetWidestPlugin(&SocialIntegrationPlugin::name));
-					SetDParamStr(2, GetWidestPlugin(&SocialIntegrationPlugin::version));
-					break;
+					return GetString(stringid, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, GetWidestPlugin(&SocialIntegrationPlugin::name), GetWidestPlugin(&SocialIntegrationPlugin::version));
 				}
 
 				if (this->plugins[this->current_index]->name.empty()) {
-					SetDParam(0, STR_JUST_RAW_STRING);
-					SetDParamStr(1, this->plugins[this->current_index]->basepath);
+					return GetString(stringid, STR_JUST_RAW_STRING, this->plugins[this->current_index]->basepath);
 				} else {
-					SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE);
-					SetDParamStr(1, this->plugins[this->current_index]->name);
-					SetDParamStr(2, this->plugins[this->current_index]->version);
+					return GetString(stringid, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, this->plugins[this->current_index]->name, this->plugins[this->current_index]->version);
 				}
-				break;
 
 			case WID_GO_SOCIAL_PLUGIN_PLATFORM:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					SetDParamStr(0, GetWidestPlugin(&SocialIntegrationPlugin::social_platform));
-					break;
+					return GetString(stringid, GetWidestPlugin(&SocialIntegrationPlugin::social_platform));
 				}
 
-				SetDParamStr(0, this->plugins[this->current_index]->social_platform);
-				break;
+				return GetString(stringid, this->plugins[this->current_index]->social_platform);
 
 			case WID_GO_SOCIAL_PLUGIN_STATE: {
 				static const std::pair<SocialIntegrationPlugin::State, StringID> state_to_string[] = {
@@ -295,38 +287,33 @@ public:
 					auto longest_plugin = GetWidestPlugin(&SocialIntegrationPlugin::social_platform);
 
 					/* Set the longest plugin when looking for the longest status. */
-					SetDParamStr(0, longest_plugin);
-
 					StringID longest = STR_NULL;
 					int longest_length = 0;
-					for (auto state : state_to_string) {
-						int length = GetStringBoundingBox(state.second).width;
+					for (const auto &state : state_to_string) {
+						int length = GetStringBoundingBox(GetString(state.second, longest_plugin)).width;
 						if (length > longest_length) {
 							longest_length = length;
 							longest = state.second;
 						}
 					}
 
-					SetDParam(0, longest);
-					SetDParamStr(1, longest_plugin);
-					break;
+					return GetString(stringid, longest, longest_plugin);
 				}
 
-				auto plugin = this->plugins[this->current_index];
-
-				/* Default string, in case no state matches. */
-				SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED);
-				SetDParamStr(1, plugin->social_platform);
+				const auto plugin = this->plugins[this->current_index];
 
 				/* Find the string for the state. */
-				for (auto state : state_to_string) {
+				for (const auto &state : state_to_string) {
 					if (plugin->state == state.first) {
-						SetDParam(0, state.second);
-						break;
+						return GetString(stringid, state.second, plugin->social_platform);
 					}
 				}
+
+				/* Default string, in case no state matches. */
+				return GetString(stringid, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED, plugin->social_platform);
 			}
-			break;
+
+			default: NOT_REACHED();
 		}
 	}
 
@@ -487,45 +474,36 @@ struct GameOptionsWindow : Window {
 		return list;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: {
 				const CurrencySpec &currency = _currency_specs[this->opt->locale.currency];
-				if (currency.code.empty()) {
-					SetDParam(0, currency.name);
-				} else {
-					SetDParam(0, STR_GAME_OPTIONS_CURRENCY_CODE);
-					SetDParam(1, currency.name);
-					SetDParamStr(2, currency.code);
-				}
-				break;
+				if (currency.code.empty()) return GetString(stringid, currency.name);
+				return GetString(stringid, STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code);
 			}
+
 			case WID_GO_AUTOSAVE_DROPDOWN: {
 				int index = 0;
 				for (auto &minutes : _autosave_dropdown_to_minutes) {
 					index++;
 					if (_settings_client.gui.autosave_interval <= minutes) break;
 				}
-				SetDParam(0, _autosave_dropdown[index - 1]);
-				break;
+				return GetString(stringid, _autosave_dropdown[index - 1]);
 			}
-			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
-			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_REFRESH_RATE_DROPDOWN: SetDParam(0, _settings_client.gui.refresh_rate); break;
+
+			case WID_GO_LANG_DROPDOWN:         return GetString(stringid, _current_language->own_name);
+			case WID_GO_BASE_GRF_DROPDOWN:     return GetString(stringid, BaseGraphics::GetUsedSet()->GetListLabel());
+			case WID_GO_BASE_SFX_DROPDOWN:     return GetString(stringid, BaseSounds::GetUsedSet()->GetListLabel());
+			case WID_GO_BASE_MUSIC_DROPDOWN:   return GetString(stringid, BaseMusic::GetUsedSet()->GetListLabel());
+			case WID_GO_REFRESH_RATE_DROPDOWN: return GetString(stringid, _settings_client.gui.refresh_rate);
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
 
 				if (current_resolution == _resolutions.size()) {
-					SetDParam(0, STR_GAME_OPTIONS_RESOLUTION_OTHER);
-				} else {
-					SetDParam(0, STR_GAME_OPTIONS_RESOLUTION_ITEM);
-					SetDParam(1, _resolutions[current_resolution].width);
-					SetDParam(2, _resolutions[current_resolution].height);
+					return GetString(stringid, STR_GAME_OPTIONS_RESOLUTION_OTHER);
 				}
-				break;
+				return GetString(stringid, STR_GAME_OPTIONS_RESOLUTION_ITEM, _resolutions[current_resolution].width, _resolutions[current_resolution].height);
 			}
 
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
@@ -534,9 +512,11 @@ struct GameOptionsWindow : Window {
 				const NWidgetSocialPlugins *plugin = this->GetWidget<NWidgetSocialPlugins>(WID_GO_SOCIAL_PLUGINS);
 				assert(plugin != nullptr);
 
-				plugin->SetStringParameters(widget);
-				break;
+				return plugin->GetWidgetString(widget, stringid);
 			}
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1338,21 +1318,22 @@ struct GameSettingsWindow : Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				SetDParam(0, _game_settings_restrict_dropdown[this->filter.mode]);
-				break;
+				return GetString(stringid, _game_settings_restrict_dropdown[this->filter.mode]);
 
 			case WID_GS_TYPE_DROPDOWN:
 				switch (this->filter.type) {
-					case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME); break;
-					case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME); break;
-					case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT); break;
-					default:         SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL); break;
+					case ST_GAME:    return GetString(stringid, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
+					case ST_COMPANY: return GetString(stringid, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
+					case ST_CLIENT:  return GetString(stringid, STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
+					default:         return GetString(stringid, STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
 				}
-				break;
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1899,21 +1880,23 @@ struct CustomCurrencyWindow : Window {
 		this->SetWidgetDisabledState(WID_CC_YEAR_UP, GetCustomCurrency().to_euro == CalendarTime::MAX_YEAR);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_CC_RATE:      SetDParam(0, 1); SetDParam(1, 1);            break;
-			case WID_CC_SEPARATOR: SetDParamStr(0, GetCustomCurrency().separator); break;
-			case WID_CC_PREFIX:    SetDParamStr(0, GetCustomCurrency().prefix);    break;
-			case WID_CC_SUFFIX:    SetDParamStr(0, GetCustomCurrency().suffix);    break;
+			case WID_CC_RATE:      return GetString(stringid, 1, 1);
+			case WID_CC_SEPARATOR: return GetString(stringid, GetCustomCurrency().separator);
+			case WID_CC_PREFIX:    return GetString(stringid, GetCustomCurrency().prefix);
+			case WID_CC_SUFFIX:    return GetString(stringid, GetCustomCurrency().suffix);
 			case WID_CC_YEAR:
-				SetDParam(0, (GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER);
-				SetDParam(1, GetCustomCurrency().to_euro);
-				break;
+				return GetString(stringid,
+					(GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER,
+					GetCustomCurrency().to_euro);
 
 			case WID_CC_PREVIEW:
-				SetDParam(0, 10000);
-				break;
+				return GetString(stringid, 10000);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

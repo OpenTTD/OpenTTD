@@ -96,11 +96,11 @@ struct ScriptListWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRL_CAPTION) return;
+		if (widget != WID_SCRL_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
+		return GetString(stringid, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -323,11 +323,11 @@ struct ScriptSettingsWindow : public Window {
 		this->vscroll->SetCount(this->visible_settings.size());
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRS_CAPTION) return;
+		if (widget != WID_SCRS_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
+		return GetString(stringid, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -600,12 +600,13 @@ struct ScriptTextfileWindow : public TextfileWindow {
 		this->OnInvalidateData();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
-			SetDParamStr(1, GetConfig(slot)->GetInfo()->GetName());
+			return GetString(stringid, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI, GetConfig(slot)->GetInfo()->GetName());
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
@@ -799,25 +800,22 @@ struct ScriptDebugWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRD_NAME_TEXT) return;
+		if (widget != WID_SCRD_NAME_TEXT) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->filter.script_debug_company == OWNER_DEITY) {
 			const GameInfo *info = Game::GetInfo();
 			assert(info != nullptr);
-			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
-			SetDParamStr(1, info->GetName());
-			SetDParam(2, info->GetVersion());
-		} else if (this->filter.script_debug_company == CompanyID::Invalid() || !Company::IsValidAiID(this->filter.script_debug_company)) {
-			SetDParam(0, STR_EMPTY);
-		} else {
-			const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
-			assert(info != nullptr);
-			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
-			SetDParamStr(1, info->GetName());
-			SetDParam(2, info->GetVersion());
+			return GetString(stringid, STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 		}
+		if (this->filter.script_debug_company == CompanyID::Invalid() || !Company::IsValidAiID(this->filter.script_debug_company)) {
+			return GetString(stringid, STR_EMPTY);
+		}
+
+		const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
+		assert(info != nullptr);
+		return GetString(stringid, STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
