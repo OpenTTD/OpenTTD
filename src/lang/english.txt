@@ -2265,15 +2265,15 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Communit
 STR_CHEATS                                                      :{WHITE}Sandbox Options
 STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Playing as company: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovable objects): {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovable objects): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edit the maximum map height: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edit the maximum height of mountains on the map
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Change date: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Change current year
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING1}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fix station ratings at 100%: {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fix station ratings at 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Colour Scheme
