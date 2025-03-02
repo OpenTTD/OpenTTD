@@ -161,10 +161,10 @@ public:
 	virtual const void *GetSpec(uint index) const = 0;
 
 	/**
-	 * Set the string parameters to write the right data for a STRINGn.
-	 * @param index the index to get the string parameters for.
+	 * Get the name of this item.
+	 * @param index the index to get the name for.
 	 */
-	virtual void SetStringParameters(uint index) const = 0;
+	virtual std::string GetName(uint index) const = 0;
 
 	/**
 	 * Get the GRFID of the file that includes this item.
@@ -208,38 +208,6 @@ public:
 	virtual const std::span<int32_t> GetPSA([[maybe_unused]] uint index, [[maybe_unused]] uint32_t grfid) const
 	{
 		return {};
-	}
-
-protected:
-	/**
-	 * Helper to make setting the strings easier.
-	 * @param string the string to actually draw.
-	 * @param index  the (instance) index for the string.
-	 */
-	void SetSimpleStringParameters(StringID string, uint32_t index) const
-	{
-		SetDParam(0, string);
-		SetDParam(1, index);
-	}
-
-
-	/**
-	 * Helper to make setting the strings easier for objects at a specific tile.
-	 * @param string the string to draw the object's name
-	 * @param index  the (instance) index for the string.
-	 * @param tile   the tile the object is at
-	 */
-	void SetObjectAtStringParameters(StringID string, uint32_t index, TileIndex tile) const
-	{
-		SetDParam(0, STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT);
-		SetDParam(1, string);
-		SetDParam(2, index);
-		SetDParam(3, tile);
-	}
-
-	void SetObjectAtStringParameters(StringID string, ConvertibleThroughBase auto index, TileIndex tile) const
-	{
-		this->SetObjectAtStringParameters(string, index.base(), tile);
 	}
 };
 
@@ -374,11 +342,11 @@ struct NewGRFInspectWindow : Window {
 		this->OnInvalidateData(0, true);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_NGRFI_CAPTION) return;
+		if (widget != WID_NGRFI_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		GetFeatureHelper(this->window_number).SetStringParameters(this->GetFeatureIndex());
+		return GetFeatureHelper(this->window_number).GetName(this->GetFeatureIndex());
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -877,33 +845,33 @@ struct SpriteAlignerWindow : Window {
 		this->InvalidateData(0, true);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		const Sprite *spr = GetSprite(this->current_sprite, SpriteType::Normal);
 		switch (widget) {
 			case WID_SA_CAPTION:
 				if (this->act5_type != nullptr) {
-					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_ACTION5);
-					SetDParam(1, this->act5_type - GetAction5Types().data());
-					SetDParam(2, this->current_sprite - this->act5_type->sprite_base);
-					SetDParamStr(3, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
-					SetDParam(4, GetSpriteLocalID(this->current_sprite));
-				} else if (this->current_sprite < SPR_OPENTTD_BASE) {
-					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_ACTIONA);
-					SetDParam(1, this->current_sprite);
-					SetDParamStr(2, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
-					SetDParam(3, GetSpriteLocalID(this->current_sprite));
-				} else {
-					SetDParam(0, STR_SPRITE_ALIGNER_CAPTION_NO_ACTION);
-					SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
-					SetDParam(2, GetSpriteLocalID(this->current_sprite));
+					return GetString(stringid,
+						STR_SPRITE_ALIGNER_CAPTION_ACTION5,
+						this->act5_type - GetAction5Types().data(),
+						this->current_sprite - this->act5_type->sprite_base,
+						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
+						GetSpriteLocalID(this->current_sprite));
 				}
-				break;
+				if (this->current_sprite < SPR_OPENTTD_BASE) {
+					return GetString(stringid,
+						STR_SPRITE_ALIGNER_CAPTION_ACTIONA,
+						this->current_sprite,
+						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
+						GetSpriteLocalID(this->current_sprite));
+				}
+				return GetString(stringid,
+					STR_SPRITE_ALIGNER_CAPTION_NO_ACTION,
+					GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
+					GetSpriteLocalID(this->current_sprite));
 
 			case WID_SA_OFFSETS_ABS:
-				SetDParam(0, UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom));
-				SetDParam(1, UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
-				break;
+				return GetString(stringid, UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom), UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
 
 			case WID_SA_OFFSETS_REL: {
 				/* Relative offset is new absolute offset - starting absolute offset.
@@ -911,17 +879,16 @@ struct SpriteAlignerWindow : Window {
 				 */
 				const auto key_offs_pair = this->offs_start_map.find(this->current_sprite);
 				if (key_offs_pair != this->offs_start_map.end()) {
-					SetDParam(0, UnScaleByZoom(spr->x_offs - key_offs_pair->second.first, SpriteAlignerWindow::zoom));
-					SetDParam(1, UnScaleByZoom(spr->y_offs - key_offs_pair->second.second, SpriteAlignerWindow::zoom));
-				} else {
-					SetDParam(0, 0);
-					SetDParam(1, 0);
+					return GetString(stringid,
+						UnScaleByZoom(spr->x_offs - key_offs_pair->second.first, SpriteAlignerWindow::zoom),
+						UnScaleByZoom(spr->y_offs - key_offs_pair->second.second, SpriteAlignerWindow::zoom));
 				}
-				break;
+
+				return GetString(stringid, 0, 0);
 			}
 
 			default:
-				break;
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
