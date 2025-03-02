@@ -296,10 +296,11 @@ public:
 		this->InitNested(table);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SLT_CAPTION) return;
-		SetDParamStr(0, this->title);
+		if (widget != WID_SLT_CAPTION) return this->Window::GetWidgetString(widget, stringid);
+
+		return GetString(stringid, this->title);
 	}
 
 	void OnPaint() override
