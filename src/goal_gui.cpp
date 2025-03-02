@@ -51,16 +51,14 @@ struct GoalListWindow : public Window {
 		this->OnInvalidateData(0);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_GOAL_CAPTION) return;
+		if (widget != WID_GOAL_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->window_number == CompanyID::Invalid()) {
-			SetDParam(0, STR_GOALS_SPECTATOR_CAPTION);
-		} else {
-			SetDParam(0, STR_GOALS_CAPTION);
-			SetDParam(1, this->window_number);
+			return GetString(stringid, STR_GOALS_SPECTATOR_CAPTION);
 		}
+		return GetString(stringid, STR_GOALS_CAPTION, this->window_number);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -348,20 +346,20 @@ struct GoalQuestionWindow : public Window {
 	}
 
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
-				break;
+				return GetString(stringid, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
 
 			case WID_GQ_BUTTON_2:
-				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[1]);
-				break;
+				return GetString(stringid, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[1]);
 
 			case WID_GQ_BUTTON_3:
-				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[2]);
-				break;
+				return GetString(stringid, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[2]);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
