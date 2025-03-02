@@ -78,7 +78,7 @@ public:
 	 * @param force_exact_match If true try to find the exact same version
 	 *   as specified. If false any compatible version is ok.
 	 */
-	void Change(std::optional<const std::string> name, int version = -1, bool force_exact_match = false);
+	void Change(std::optional<std::string> name, int version = -1, bool force_exact_match = false);
 
 	/**
 	 * Get the ScriptInfo linked to this ScriptConfig.

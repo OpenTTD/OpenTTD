@@ -18,7 +18,7 @@
 
 #include "../safeguards.h"
 
-void ScriptConfig::Change(std::optional<const std::string> name, int version, bool force_exact_match)
+void ScriptConfig::Change(std::optional<std::string> name, int version, bool force_exact_match)
 {
 	if (name.has_value()) {
 		this->name = std::move(name.value());
