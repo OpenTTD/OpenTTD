@@ -2517,7 +2517,6 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					if (IsLocalCompany()) {
 						auto params = GetParamsForOwnedBy(OWNER_TOWN, tile);
 						error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
-						error.SetErrorOwner(owner);
 					}
 					continue;
 				}
@@ -2574,7 +2573,6 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					if (IsLocalCompany()) {
 						auto params = GetParamsForOwnedBy(OWNER_TOWN, tile);
 						error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
-						error.SetErrorOwner(owner);
 					}
 					continue;
 				}
