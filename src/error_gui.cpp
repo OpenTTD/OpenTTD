@@ -53,7 +53,7 @@ static WindowDesc _errmsg_desc(
 static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
-		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION), SetStringTip(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_RED),
 		NWidget(NWID_HORIZONTAL),
@@ -176,9 +176,11 @@ public:
 		if (this->company != CompanyID::Invalid() && !Company::IsValidID(this->company)) this->Close();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_EM_CAPTION && this->company != CompanyID::Invalid()) SetDParam(0, this->company);
+		if (widget == WID_EM_CAPTION && this->company != CompanyID::Invalid()) return GetString(STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY, this->company);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
