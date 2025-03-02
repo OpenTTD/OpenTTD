@@ -3575,8 +3575,6 @@ STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Tha an 
 
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Feum air:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} a' feitheamh{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Atharraich an saothrachaidh (iomadach aig 8, suas gu 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Atharraich ìre an saothrachaidh (ceudad, suas gu 800%)

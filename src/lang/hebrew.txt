@@ -3633,8 +3633,6 @@ STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}דורש
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}דורש:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} ממתין{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה (כפולות של 8, עד 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}שינוי ברמת ההפקה (עד 800% אחוז)

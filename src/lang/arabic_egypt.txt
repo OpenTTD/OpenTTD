@@ -2345,7 +2345,6 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}اختر
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}بناء الجسور - اختر الجسر المفضل لديك لبنائة
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
-STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :تعليق, حديدي
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :العارضة, حديدية
@@ -3302,7 +3301,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}ينتج
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :، {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}:يتطلب
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} تنتظر{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج مضاعف من 8 الى 2040
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}غير مستوى الانتاج{}نسبة مئوية حتى 800%.

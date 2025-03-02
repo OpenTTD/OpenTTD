@@ -2905,7 +2905,6 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir 
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - Cliquer sur le type de pont désiré pour le construire.
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
-STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspendu en acier
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en acier
@@ -4037,8 +4036,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produit{
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Nécessite{NBSP}:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}{NBSP}: {CARGO_SHORT} en attente{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production (multiple de 8, max. 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Changer le niveau de production (pourcentage, max. 800{NBSP}%)

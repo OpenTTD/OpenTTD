@@ -3580,8 +3580,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Proizvod
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Treba:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} čeka{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju (višekratnik broja 8, do 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Promijeni razinu proizvodnje (postotak, do najviše 800%)

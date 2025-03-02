@@ -2905,7 +2905,6 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecci�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de puente. Clic para construir
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
-STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante (acero)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas (acero)
@@ -3689,8 +3688,8 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitant
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mes: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} útlimo minuto: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} (requerida)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} (requerida en invierno)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} (requerid{G 0 o a}s)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} (requerid{G 0 o a}s en invierno)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} (entregada)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{RED} (todavía requerid{G 1 o a}{P 1 "" s})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{GREEN} (entregad{G 1 o a}{P 1 "" s})
@@ -3840,8 +3839,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluación
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver evaluación de la estación
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Suministro por mes y calificación local:
-STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Suministro por minuto y calificación local:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Abastecimiento por mes y calificación local:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Abastecimiento por minuto y calificación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA}/{STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
@@ -4040,8 +4039,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce:
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requiere:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} esperando{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción (múltiplo de 8, máximo 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambiar nivel de producción (porcentaje, máximo 800%)
@@ -4150,7 +4147,7 @@ STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}Costo de
 STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}Costo de operación: {GOLD}{CURRENCY_LONG}/período
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidad: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(reformable)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUM}{BLACK} Duración: {GOLD}{COMMA} año{P "" s}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUM}{BLACK} Vida útil: {GOLD}{COMMA} año{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Máx. fiabilidad: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Costo: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Costo: {GOLD}{CURRENCY_LONG}{BLACK} (Costo de reformación: {GOLD}{CURRENCY_LONG}{BLACK})
@@ -5496,7 +5493,7 @@ STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Mina de di
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Mina de hierro
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantación de fruta
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantación de caucho
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Suministro de agua
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Pozo de agua
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Torre de agua
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Granja

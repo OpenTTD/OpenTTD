@@ -2906,7 +2906,6 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vali sil
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Silla valik - ehitamiseks klõpsi sobival sillal
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
-STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Rippsild, terasest
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Raamistikuga, terasest
@@ -4016,8 +4015,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Toodab: 
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Nõuab:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} ootel{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine (kaheksaga jaguv, kuni 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuda tootlikkuse taset (protsent, kuni 800%)

@@ -2888,7 +2888,6 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Chọn L
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Chọn cầu - chọn loại cầu bạn muốn xây dựng
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
-STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Cầu treo thép
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Cầu dầm thép
@@ -4018,8 +4017,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Sản l�
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Cần cung cấp:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} đang chờ{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Thay đổi sản lượng (bội số của 8, max 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Thay đổi mức sản lượng (theo phần trăm, cao nhất 800%)

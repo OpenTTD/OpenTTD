@@ -1167,7 +1167,6 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUST
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 
 
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 
 
 # Vehicle lists

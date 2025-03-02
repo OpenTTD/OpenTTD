@@ -2963,7 +2963,6 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Zvolit s
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Výběr mostů - staví se kliknutím na obrázek mostu
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
-STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{0:STRING},{} {WHITE}{2:CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Zavěšený, ocelový
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Trámový, ocelový
@@ -4091,8 +4090,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produkuj
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Vyžaduje:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{0:STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} ček{P á ají á}{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit produkci (násobky 8, až do 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Změna velikosti produkce (procentuelně, do 800%)

@@ -3552,8 +3552,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Fabricat
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Postulat:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING.acc}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} manet{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mutare productionem (per octo multiplicatur, ad 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mutare productionem (centesima, ad 800%)

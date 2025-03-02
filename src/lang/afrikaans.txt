@@ -3405,8 +3405,6 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produsee
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Benodig:
-STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
-STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} wagtend{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander produksie (veelvoude van 8, tot en met 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Verander produksie vlakke (persentasie, tot 800%)
