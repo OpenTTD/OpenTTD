@@ -243,13 +243,13 @@ struct TimetableWindow : Window {
 				/* We handle this differently depending on the timetable mode. */
 				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 					/* A five-digit number would fit a timetable lasting 2.7 real-world hours, which should be plenty. */
-					uint64_t max_digits = GetParamMaxDigits(4, FS_SMALL);
+					auto max_digits = GetParamMaxDigits(4, FS_SMALL);
 					size.width = std::max(
 							GetStringBoundingBox(GetString(STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE, TC_BLACK, max_digits)).width,
 							GetStringBoundingBox(GetString(STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE, TC_BLACK, max_digits)).width)
 							+ WidgetDimensions::scaled.hsep_wide + padding.width;
 				} else {
-					uint64_t max_value = GetParamMaxValue(TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR).base(), 0, FS_SMALL);
+					auto max_value = GetParamMaxValue(TimerGameEconomy::DateAtStartOfYear(EconomyTime::MAX_YEAR).base(), 0, FS_SMALL);
 					size.width = std::max(
 							GetStringBoundingBox(GetString(STR_TIMETABLE_ARRIVAL_DATE, TC_BLACK, max_value)).width,
 							GetStringBoundingBox(GetString(STR_TIMETABLE_DEPARTURE_DATE, TC_BLACK, max_value)).width)
@@ -396,11 +396,12 @@ struct TimetableWindow : Window {
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_VT_CAPTION: SetDParam(0, this->vehicle->index); break;
-			case WID_VT_EXPECTED: SetDParam(0, this->show_expected ? STR_TIMETABLE_EXPECTED : STR_TIMETABLE_SCHEDULED); break;
+			case WID_VT_CAPTION: return GetString(stringid, this->vehicle->index);
+			case WID_VT_EXPECTED: return GetString(this->show_expected ? STR_TIMETABLE_EXPECTED : STR_TIMETABLE_SCHEDULED);
+			default: return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

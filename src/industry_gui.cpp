@@ -493,7 +493,7 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_DPI_FUND_WIDGET:
@@ -501,16 +501,16 @@ public:
 				 * In Editor, you just build, while ingame, or you fund or you prospect */
 				if (_game_mode == GM_EDITOR) {
 					/* We've chosen many random industries but no industries have been specified */
-					SetDParam(0, STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
-				} else {
-					if (this->selected_type != IT_INVALID) {
-						const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
-						SetDParam(0, (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
-					} else {
-						SetDParam(0, STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
-					}
+					return GetString(STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
 				}
-				break;
+				if (this->selected_type != IT_INVALID) {
+					const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
+					return GetString((_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
+				}
+				return GetString(STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -997,9 +997,11 @@ public:
 		return ir.top - 1 + WidgetDimensions::scaled.framerect.bottom;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_IV_CAPTION) SetDParam(0, this->window_number);
+		if (widget == WID_IV_CAPTION) return GetString(stringid, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -1676,25 +1678,23 @@ public:
 		this->hscroll->SetCount(0);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_ID_CAPTION:
-				SetDParam(0, this->vscroll->GetCount());
-				SetDParam(1, Industry::GetNumItems());
-				break;
+				return GetString(stringid, this->vscroll->GetCount(), Industry::GetNumItems());
 
 			case WID_ID_DROPDOWN_CRITERIA:
-				SetDParam(0, IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
-				break;
+				return GetString(IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
 
 			case WID_ID_FILTER_BY_ACC_CARGO:
-				SetDParam(0, this->GetCargoFilterLabel(this->accepted_cargo_filter_criteria));
-				break;
+				return GetString(stringid, this->GetCargoFilterLabel(this->accepted_cargo_filter_criteria));
 
 			case WID_ID_FILTER_BY_PROD_CARGO:
-				SetDParam(0, this->GetCargoFilterLabel(this->produced_cargo_filter_criteria));
-				break;
+				return GetString(stringid, this->GetCargoFilterLabel(this->produced_cargo_filter_criteria));
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -2656,16 +2656,16 @@ struct IndustryCargoesWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_IC_CAPTION) return;
+		if (widget != WID_IC_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->ind_cargo < NUM_INDUSTRYTYPES) {
 			const IndustrySpec *indsp = GetIndustrySpec(this->ind_cargo);
-			SetDParam(0, indsp->name);
+			return GetString(stringid, indsp->name);
 		} else {
 			const CargoSpec *csp = CargoSpec::Get(this->ind_cargo - NUM_INDUSTRYTYPES);
-			SetDParam(0, csp->name);
+			return GetString(stringid, csp->name);
 		}
 	}
 

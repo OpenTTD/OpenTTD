@@ -490,14 +490,17 @@ struct NewsWindow : Window {
 		size = maxdim(size, d);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_N_DATE) {
-			SetDParam(0, this->ni->date);
+			return GetString(STR_JUST_DATE_LONG, this->ni->date);
 		} else if (widget == WID_N_TITLE) {
 			const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
-			SetDParam(0, cni->title);
+			return GetString(cni->title);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
+
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

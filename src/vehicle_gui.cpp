@@ -992,9 +992,11 @@ struct RefitWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_VR_CAPTION) SetDParam(0, Vehicle::Get(this->window_number)->index);
+		if (widget == WID_VR_CAPTION) return GetString(stringid, Vehicle::Get(this->window_number)->index);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	/**
@@ -1998,46 +2000,36 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_VL_AVAILABLE_VEHICLES:
-				SetDParam(0, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
-				break;
+				return GetString(STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
 
 			case WID_VL_FILTER_BY_CARGO:
-				SetDParam(0, this->GetCargoFilterLabel(this->cargo_filter_criteria));
-				break;
+				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 			case WID_VL_CAPTION:
 			case WID_VL_CAPTION_SHARED_ORDERS: {
 				switch (this->vli.type) {
 					case VL_SHARED_ORDERS: // Shared Orders
-						SetDParam(0, this->vehicles.size());
-						break;
+						return GetString(stringid, this->vehicles.size());
 
 					case VL_STANDARD: // Company Name
-						SetDParam(0, STR_COMPANY_NAME);
-						SetDParam(1, this->vli.ToCompanyID());
-						SetDParam(3, this->vehicles.size());
-						break;
+						return GetString(stringid, STR_COMPANY_NAME, this->vli.ToCompanyID(), std::monostate{}, this->vehicles.size());
 
 					case VL_STATION_LIST: // Station/Waypoint Name
-						SetDParam(0, Station::IsExpected(BaseStation::Get(this->vli.ToStationID())) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
-						SetDParam(1, this->vli.ToStationID());
-						SetDParam(3, this->vehicles.size());
-						break;
+						return GetString(stringid, Station::IsExpected(BaseStation::Get(this->vli.ToStationID())) ? STR_STATION_NAME : STR_WAYPOINT_NAME, this->vli.ToStationID(), std::monostate{}, this->vehicles.size());
 
 					case VL_DEPOT_LIST:
-						SetDParam(0, STR_DEPOT_CAPTION);
-						SetDParam(1, this->vli.vtype);
-						SetDParam(2, this->vli.ToDestinationID());
-						SetDParam(3, this->vehicles.size());
-						break;
+						return GetString(stringid, STR_DEPOT_CAPTION, this->vli.vtype, this->vli.ToDestinationID(), this->vehicles.size());
+
 					default: NOT_REACHED();
 				}
-				break;
 			}
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -2580,9 +2572,11 @@ struct VehicleDetailsWindow : Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_VD_CAPTION) SetDParam(0, Vehicle::Get(this->window_number)->index);
+		if (widget == WID_VD_CAPTION) return GetString(stringid, Vehicle::Get(this->window_number)->index);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -3117,12 +3111,12 @@ public:
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_VV_CAPTION) return;
+		if (widget != WID_VV_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
 		const Vehicle *v = Vehicle::Get(this->window_number);
-		SetDParam(0, v->index);
+		return GetString(stringid, v->index);
 	}
 
 	std::string GetVehicleStatusString(const Vehicle *v, TextColour &text_colour) const

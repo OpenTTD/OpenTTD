@@ -569,7 +569,7 @@ public:
 					}
 				} else {
 					/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
-					uint64_t max_value = GetParamMaxValue(this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
+					auto max_value = GetParamMaxValue(this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
 					x_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL_NUMBER, max_value)).width;
 				}
 
@@ -1643,9 +1643,11 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_GRAPH_CAPTION) SetDParam(0, this->window_number);
+		if (widget == WID_GRAPH_CAPTION) GetString(stringid, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnResize() override

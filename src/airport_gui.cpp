@@ -296,7 +296,7 @@ public:
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN:
-				return GetString(stringid, AirportClass::Get(_selected_airport_class)->name);
+				return GetString(AirportClass::Get(_selected_airport_class)->name);
 
 			case WID_AP_LAYOUT_NUM:
 				if (_selected_airport_index != -1) {

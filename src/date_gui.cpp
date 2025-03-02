@@ -127,12 +127,14 @@ struct SetDateWindow : Window {
 		size = d;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_SD_DAY:   SetDParam(0, STR_DAY_NUMBER_1ST + this->date.day - 1); break;
-			case WID_SD_MONTH: SetDParam(0, STR_MONTH_JAN + this->date.month); break;
-			case WID_SD_YEAR:  SetDParam(0, this->date.year); break;
+			case WID_SD_DAY:   return GetString(STR_DAY_NUMBER_1ST + this->date.day - 1);
+			case WID_SD_MONTH: return GetString(STR_MONTH_JAN + this->date.month);
+			case WID_SD_YEAR:  return GetString(STR_JUST_INT, this->date.year);
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

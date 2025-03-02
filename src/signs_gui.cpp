@@ -225,9 +225,11 @@ struct SignListWindow : Window, SignList {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_SIL_CAPTION) SetDParam(0, this->vscroll->GetCount());
+		if (widget == WID_SIL_CAPTION) return GetString(stringid, this->vscroll->GetCount());
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -464,12 +466,14 @@ struct SignWindow : Window, SignList {
 		return next ? this->signs.front() : this->signs.back();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_QES_CAPTION:
-				SetDParam(0, this->name_editbox.caption);
-				break;
+				return GetString(this->name_editbox.caption);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

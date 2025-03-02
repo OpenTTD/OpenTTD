@@ -424,10 +424,11 @@ struct AboutWindow : public Window {
 		this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_A_WEBSITE) SetDParamStr(0, "Website: https://www.openttd.org");
-		if (widget == WID_A_COPYRIGHT) SetDParamStr(0, _openttd_revision_year);
+		if (widget == WID_A_WEBSITE) return GetString(STR_JUST_RAW_STRING, "Website: https://www.openttd.org");
+		if (widget == WID_A_COPYRIGHT) return GetString(STR_ABOUT_COPYRIGHT_OPENTTD, _openttd_revision_year);
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -931,9 +932,11 @@ struct QueryStringWindow : public Window
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_QS_CAPTION) SetDParam(0, this->editbox.caption);
+		if (widget == WID_QS_CAPTION) return GetString(this->editbox.caption);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnOk()
@@ -1044,12 +1047,14 @@ struct QueryWindow : public Window {
 		this->SetDirty();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_Q_CAPTION:
-				SetDParamStr(0, this->caption.GetDecodedString());
-				break;
+				return this->caption.GetDecodedString();
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 

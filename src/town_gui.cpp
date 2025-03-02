@@ -242,9 +242,11 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_TA_CAPTION) SetDParam(0, this->window_number);
+		if (widget == WID_TA_CAPTION) return GetString(stringid, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -390,9 +392,11 @@ public:
 		this->Window::Close();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_TV_CAPTION) SetDParam(0, this->town->index);
+		if (widget == WID_TV_CAPTION) return GetString(stringid, this->town->index);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnPaint() override
@@ -811,21 +815,20 @@ public:
 		this->townname_editbox.cancel_button = QueryString::ACTION_CLEAR;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_TD_CAPTION:
-				SetDParam(0, this->vscroll->GetCount());
-				SetDParam(1, Town::GetNumItems());
-				break;
+				return GetString(stringid, this->vscroll->GetCount(), Town::GetNumItems());
 
 			case WID_TD_WORLD_POPULATION:
-				SetDParam(0, GetWorldPopulation());
-				break;
+				return GetString(STR_TOWN_POPULATION, GetWorldPopulation());
 
 			case WID_TD_SORT_CRITERIA:
-				SetDParam(0, TownDirectoryWindow::sorter_names[this->towns.SortType()]);
-				break;
+				return GetString(TownDirectoryWindow::sorter_names[this->towns.SortType()]);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
