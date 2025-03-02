@@ -304,9 +304,9 @@ struct CheatWindow : Window {
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY: {
-							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(ce->str).width;
-							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
 							str = GetString(ce->str, val + 1);
+							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(str).width;
+							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
 							break;
 						}
 
