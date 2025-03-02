@@ -127,12 +127,13 @@ struct SetDateWindow : Window {
 		size = d;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_SD_DAY:   SetDParam(0, STR_DAY_NUMBER_1ST + this->date.day - 1); break;
-			case WID_SD_MONTH: SetDParam(0, STR_MONTH_JAN + this->date.month); break;
-			case WID_SD_YEAR:  SetDParam(0, this->date.year); break;
+			case WID_SD_DAY:   return GetString(STR_DAY_NUMBER_1ST + this->date.day - 1);
+			case WID_SD_MONTH: return GetString(STR_MONTH_JAN + this->date.month);
+			case WID_SD_YEAR:  return GetString(STR_JUST_INT, this->date.year);
+			default: return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -180,9 +181,9 @@ static constexpr NWidgetPart _nested_set_date_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_VERTICAL), SetPIP(6, 6, 6),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(6, 6, 6),
-				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_DAY), SetFill(1, 0), SetStringTip(STR_JUST_STRING, STR_DATE_DAY_TOOLTIP),
-				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_MONTH), SetFill(1, 0), SetStringTip(STR_JUST_STRING, STR_DATE_MONTH_TOOLTIP),
-				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_YEAR), SetFill(1, 0), SetStringTip(STR_JUST_INT, STR_DATE_YEAR_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_DAY), SetFill(1, 0), SetToolTip(STR_DATE_DAY_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_MONTH), SetFill(1, 0), SetToolTip(STR_DATE_MONTH_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_SD_YEAR), SetFill(1, 0), SetToolTip(STR_DATE_YEAR_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SPACER), SetFill(1, 0),
