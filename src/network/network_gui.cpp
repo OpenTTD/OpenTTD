@@ -977,20 +977,20 @@ struct NetworkStartServerWindow : public Window {
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
-				SetDParam(0, STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
-				break;
+				return GetString(stringid, STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
 
 			case WID_NSS_CLIENTS_TXT:
-				SetDParam(0, _settings_client.network.max_clients);
-				break;
+				return GetString(stringid, _settings_client.network.max_clients);
 
 			case WID_NSS_COMPANIES_TXT:
-				SetDParam(0, _settings_client.network.max_companies);
-				break;
+				return GetString(stringid, _settings_client.network.max_companies);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1675,38 +1675,32 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_CL_MATRIX);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_CL_SERVER_NAME:
-				SetDParamStr(0, _network_server ? _settings_client.network.server_name : _network_server_name);
-				break;
+				return GetString(stringid, _network_server ? _settings_client.network.server_name : _network_server_name);
 
 			case WID_CL_SERVER_VISIBILITY:
-				SetDParam(0, STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
-				break;
+				return GetString(stringid, STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
 
 			case WID_CL_SERVER_INVITE_CODE: {
-				static std::string empty = {};
-				SetDParamStr(0, _network_server_connection_type == CONNECTION_TYPE_UNKNOWN ? empty : _network_server_invite_code);
-				break;
+				return GetString(stringid, _network_server_connection_type == CONNECTION_TYPE_UNKNOWN ? std::string{} : _network_server_invite_code);
 			}
 
 			case WID_CL_SERVER_CONNECTION_TYPE:
-				SetDParam(0, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN + _network_server_connection_type);
-				break;
+				return GetString(stringid, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN + _network_server_connection_type);
 
 			case WID_CL_CLIENT_NAME: {
 				const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
-				SetDParamStr(0, own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name);
-				break;
+				return GetString(stringid, own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name);
 			}
 
 			case WID_CL_CLIENT_COMPANY_COUNT:
-				SetDParam(0, NetworkClientInfo::GetNumItems());
-				SetDParam(1, Company::GetNumItems());
-				SetDParam(2, NetworkMaxCompaniesAllowed());
-				break;
+				return GetString(stringid, NetworkClientInfo::GetNumItems(), Company::GetNumItems(), NetworkMaxCompaniesAllowed());
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -2234,13 +2228,14 @@ struct NetworkAskRelayWindow : public Window {
 		this->SetDirty();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_NAR_TEXT:
-				SetDParamStr(0, this->server_connection_string);
-				SetDParamStr(1, this->relay_connection_string);
-				break;
+				return GetString(stringid, this->server_connection_string, this->relay_connection_string);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
