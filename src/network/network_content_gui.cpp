@@ -66,12 +66,13 @@ struct ContentTextfileWindow : public TextfileWindow {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, this->GetTypeString());
-			SetDParamStr(1, this->ci->name);
+			return GetString(stringid, this->GetTypeString(), this->ci->name);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 };
 

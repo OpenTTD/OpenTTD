@@ -359,13 +359,15 @@ struct NetworkChatWindow : public Window {
 		return pt;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_NC_DESTINATION) return;
+		if (widget != WID_NC_DESTINATION) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->dtype == DESTTYPE_CLIENT) {
-			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
+			return GetString(stringid, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
 		}
+
+		return GetString(stringid);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
