@@ -26,6 +26,7 @@
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
  * \li AIWaypoint::GetWaypointID now returns the StationID of any type of waypoint
  * \li AIList instances can now be saved
+ * \li AIAircraft::GetHangarOfAirport adds an optional parameter for the index of the hangar
  *
  * \b 14.0
  *
