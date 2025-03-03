@@ -40,14 +40,14 @@ static constexpr NWidgetPart _nested_ai_config_widgets[] = {
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_DECREASE_NUMBER), SetArrowWidgetTypeTip(AWV_DECREASE),
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_INCREASE_NUMBER), SetArrowWidgetTypeTip(AWV_INCREASE),
 					EndContainer(),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_AIC_NUMBER), SetStringTip(STR_AI_CONFIG_MAX_COMPETITORS), SetFill(1, 0),
+					NWidget(WWT_TEXT, INVALID_COLOUR, WID_AIC_NUMBER), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_DECREASE_INTERVAL), SetArrowWidgetTypeTip(AWV_DECREASE),
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_AIC_INCREASE_INTERVAL), SetArrowWidgetTypeTip(AWV_INCREASE),
 					EndContainer(),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_AIC_INTERVAL), SetStringTip(STR_AI_CONFIG_COMPETITORS_INTERVAL), SetFill(1, 0),
+					NWidget(WWT_TEXT, INVALID_COLOUR, WID_AIC_INTERVAL), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_MOVE_UP), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_CONFIG_MOVE_UP, STR_AI_CONFIG_MOVE_UP_TOOLTIP),
@@ -119,10 +119,10 @@ struct AIConfigWindow : public Window {
 	{
 		switch (widget) {
 			case WID_AIC_NUMBER:
-				return GetString(stringid, GetGameSettings().difficulty.max_no_competitors);
+				return GetString(STR_AI_CONFIG_MAX_COMPETITORS, GetGameSettings().difficulty.max_no_competitors);
 
 			case WID_AIC_INTERVAL:
-				return GetString(stringid, GetGameSettings().difficulty.competitors_interval);
+				return GetString(STR_AI_CONFIG_COMPETITORS_INTERVAL, GetGameSettings().difficulty.competitors_interval);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
