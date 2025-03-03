@@ -617,14 +617,6 @@ public:
 	virtual void UpdateWidgetSize([[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) {}
 
 	/**
-	 * Initialize string parameters for a widget.
-	 * Calls to this function are made during initialization to measure the size (that is as part of #InitNested()), during drawing,
-	 * and while re-initializing the window. Only for widgets that render text initializing is requested.
-	 * @param widget  Widget number.
-	 */
-	virtual void SetStringParameters([[maybe_unused]] WidgetID widget) const {}
-
-	/**
 	 * Get the raw string for a widget.
 	 * Calls to this function are also made during initialization to measure the size (that is as part of #InitNested()), during drawing,
 	 * and while re-initializing the window. Only for widgets that render text initializing is requested.
