@@ -111,7 +111,6 @@ static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
 						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
 						NWidget(WWT_LABEL, INVALID_COLOUR, WID_N_DATE),
-								SetStringTip(STR_JUST_DATE_LONG),
 								SetTextStyle(TC_BLACK, FS_SMALL),
 								SetAlignment(SA_RIGHT | SA_TOP),
 					EndContainer(),
@@ -197,7 +196,6 @@ static constexpr NWidgetPart _nested_company_news_widgets[] = {
 						SetMinimalTextLines(1, 0, FS_LARGE),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
-						SetStringTip(STR_EMPTY),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(2),
@@ -234,7 +232,6 @@ static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(0, 1, 0),
 						NWidget(WWT_CLOSEBOX, COLOUR_WHITE, WID_N_CLOSEBOX),
 						NWidget(WWT_LABEL, INVALID_COLOUR, WID_N_DATE),
-								SetStringTip(STR_JUST_DATE_LONG),
 								SetTextStyle(TC_BLACK, FS_SMALL),
 								SetAlignment(SA_RIGHT | SA_TOP),
 					EndContainer(),
@@ -490,14 +487,17 @@ struct NewsWindow : Window {
 		size = maxdim(size, d);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_N_DATE) {
-			SetDParam(0, this->ni->date);
+			return GetString(STR_JUST_DATE_LONG, this->ni->date);
 		} else if (widget == WID_N_TITLE) {
 			const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
-			SetDParam(0, cni->title);
+			return GetString(cni->title);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
+
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
