@@ -109,9 +109,11 @@ public:
 		this->Window::Close();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_W_CAPTION) SetDParam(0, this->wp->index);
+		if (widget == WID_W_CAPTION) return GetString(STR_WAYPOINT_VIEW_CAPTION, this->wp->index);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnPaint() override
@@ -189,7 +191,7 @@ static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_W_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_BUOY_VIEW_RENAME_TOOLTIP),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_W_CAPTION), SetStringTip(STR_WAYPOINT_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_W_CAPTION),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_W_CENTER_VIEW), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_BUOY_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
