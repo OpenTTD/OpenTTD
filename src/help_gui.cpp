@@ -76,11 +76,13 @@ struct GameManualTextfileWindow : public TextfileWindow {
 		this->OnClick({ 0, 0 }, WID_TF_WRAPTEXT, 1);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParamStr(0, this->filename);
+			return GetString(stringid, this->filename);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void AfterLoadText() override
