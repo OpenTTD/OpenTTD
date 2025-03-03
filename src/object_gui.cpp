@@ -130,21 +130,18 @@ public:
 		this->ConstructWindow();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_SIZE: {
 				ObjectClass *objclass = ObjectClass::Get(_object_gui.sel_class);
 				const ObjectSpec *spec = objclass->GetSpec(_object_gui.sel_type);
 				int size = spec == nullptr ? 0 : spec->size;
-				SetDParam(0, GB(size, HasBit(_object_gui.sel_view, 0) ? 4 : 0, 4));
-				SetDParam(1, GB(size, HasBit(_object_gui.sel_view, 0) ? 0 : 4, 4));
-				break;
+				return GetString(STR_OBJECT_BUILD_SIZE, GB(size, HasBit(_object_gui.sel_view, 0) ? 4 : 0, 4), GB(size, HasBit(_object_gui.sel_view, 0) ? 0 : 4, 4));
 			}
 
 			default:
-				this->PickerWindow::SetStringParameters(widget);
-				break;
+				return this->PickerWindow::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -401,7 +398,7 @@ static constexpr NWidgetPart _nested_build_object_widgets[] = {
 							NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetToolTip(STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 							EndContainer(),
 						EndContainer(),
-						NWidget(WWT_TEXT, INVALID_COLOUR, WID_BO_OBJECT_SIZE), SetStringTip(STR_OBJECT_BUILD_SIZE), SetAlignment(SA_CENTER),
+						NWidget(WWT_TEXT, INVALID_COLOUR, WID_BO_OBJECT_SIZE), SetAlignment(SA_CENTER),
 						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetFill(1, 0), SetResize(1, 0),
 					EndContainer(),
 				EndContainer(),
