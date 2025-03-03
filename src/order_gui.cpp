@@ -1157,7 +1157,7 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_O_COND_VALUE: {
@@ -1167,36 +1167,29 @@ public:
 				if (order != nullptr && order->IsType(OT_CONDITIONAL)) {
 					uint value = order->GetConditionValue();
 					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value, this->vehicle->type);
-					SetDParam(0, value);
+					return GetString(STR_JUST_COMMA, value);
 				}
-				break;
+				return {};
 			}
 
 			case WID_O_CAPTION:
-				SetDParam(0, this->vehicle->index);
-				break;
+				return GetString(STR_ORDERS_CAPTION, this->vehicle->index);
 
 			case WID_O_DEPOT_ACTION: {
 				VehicleOrderID sel = this->OrderGetSel();
 				const Order *order = this->vehicle->GetOrder(sel);
-				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) {
-					/* We can't leave this param unset or the undefined behavior can cause a crash. */
-					SetDParam(0, STR_EMPTY);
-					break;
-				};
+				if (order == nullptr || !order->IsType(OT_GOTO_DEPOT)) return {};
 
 				/* Select the current action selected in the dropdown. The flags don't match the dropdown so we can't just use an index. */
-				if (order->GetDepotOrderType() & ODTFB_SERVICE) {
-					SetDParam(0, STR_ORDER_DROP_SERVICE_DEPOT);
-				} else if (order->GetDepotActionType() & ODATFB_HALT) {
-					SetDParam(0, STR_ORDER_DROP_HALT_DEPOT);
-				} else if (order->GetDepotActionType() & ODATFB_UNBUNCH) {
-					SetDParam(0, STR_ORDER_DROP_UNBUNCH);
-				} else {
-					SetDParam(0, STR_ORDER_DROP_GO_ALWAYS_DEPOT);
-				}
-				break;
+				if (order->GetDepotOrderType() & ODTFB_SERVICE) return GetString(STR_ORDER_DROP_SERVICE_DEPOT);
+				if (order->GetDepotActionType() & ODATFB_HALT) return GetString(STR_ORDER_DROP_HALT_DEPOT);
+				if (order->GetDepotActionType() & ODATFB_UNBUNCH) return GetString(STR_ORDER_DROP_UNBUNCH);
+
+				return GetString(STR_ORDER_DROP_GO_ALWAYS_DEPOT);
 			}
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1604,7 +1597,7 @@ public:
 static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_O_CAPTION), SetStringTip(STR_ORDERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_O_CAPTION),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_O_TIMETABLE_VIEW), SetMinimalSize(61, 14), SetStringTip(STR_ORDERS_TIMETABLE_VIEW, STR_ORDERS_TIMETABLE_VIEW_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
@@ -1645,7 +1638,7 @@ static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_O_COND_COMPARATOR), SetMinimalSize(124, 12), SetFill(1, 0),
 															SetToolTip(STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP), SetResize(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_O_COND_VALUE), SetMinimalSize(124, 12), SetFill(1, 0),
-															SetStringTip(STR_JUST_COMMA, STR_ORDER_CONDITIONAL_VALUE_TOOLTIP), SetResize(1, 0),
+															SetToolTip(STR_ORDER_CONDITIONAL_VALUE_TOOLTIP), SetResize(1, 0),
 			EndContainer(),
 		EndContainer(),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_O_SHARED_ORDER_LIST), SetAspect(1), SetSpriteTip(SPR_SHARED_ORDERS_ICON, STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP),
@@ -1709,7 +1702,7 @@ static constexpr NWidgetPart _nested_orders_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_O_REFIT), SetMinimalSize(186, 12), SetFill(1, 0),
 													SetStringTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP), SetResize(1, 0),
 				NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_DEPOT_ACTION), SetMinimalSize(124, 12), SetFill(1, 0),
-													SetStringTip(STR_JUST_STRING), SetResize(1, 0),
+													SetResize(1, 0),
 			EndContainer(),
 
 			/* Buttons for setting a condition. */
