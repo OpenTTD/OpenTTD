@@ -486,15 +486,17 @@ struct MusicTrackSelectionWindow : public Window {
 		this->LowerWidget(WID_MTS_ALL + _settings_client.music.playlist);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_MTS_PLAYLIST:
-				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
-				break;
+				return GetString(STR_PLAYLIST_PROGRAM, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
+
 			case WID_MTS_CAPTION:
-				SetDParamStr(0, BaseMusic::GetUsedSet()->name);
-				break;
+				return GetString(STR_PLAYLIST_MUSIC_SELECTION_SETNAME, BaseMusic::GetUsedSet()->name);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -623,7 +625,7 @@ struct MusicTrackSelectionWindow : public Window {
 static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_MTS_CAPTION), SetStringTip(STR_PLAYLIST_MUSIC_SELECTION_SETNAME, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_MTS_CAPTION),
 		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_MTS_MUSICSET), SetStringTip(STR_PLAYLIST_CHANGE_SET, STR_PLAYLIST_TOOLTIP_CHANGE_SET),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -649,7 +651,7 @@ static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
 			EndContainer(),
 			/* Right panel. */
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, INVALID_COLOUR, WID_MTS_PLAYLIST), SetFill(1, 0), SetStringTip(STR_PLAYLIST_PROGRAM),
+				NWidget(WWT_LABEL, INVALID_COLOUR, WID_MTS_PLAYLIST), SetFill(1, 0),
 				NWidget(WWT_PANEL, COLOUR_GREY, WID_MTS_LIST_RIGHT), SetFill(1, 1), SetMinimalSize(180, 194), SetToolTip(STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK), EndContainer(),
 				NWidget(NWID_SPACER), SetFill(1, 0), SetMinimalSize(0, 2),
 			EndContainer(),
