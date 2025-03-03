@@ -96,11 +96,11 @@ struct ScriptListWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRL_CAPTION) return;
+		if (widget != WID_SCRL_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
+		return GetString(STR_AI_LIST_CAPTION, (this->slot == OWNER_DEITY) ? STR_AI_LIST_CAPTION_GAMESCRIPT : STR_AI_LIST_CAPTION_AI);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -236,7 +236,7 @@ struct ScriptListWindow : public Window {
 static constexpr NWidgetPart _nested_script_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRL_CAPTION), SetStringTip(STR_AI_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRL_CAPTION),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -323,11 +323,11 @@ struct ScriptSettingsWindow : public Window {
 		this->vscroll->SetCount(this->visible_settings.size());
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRS_CAPTION) return;
+		if (widget != WID_SCRS_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		SetDParam(0, (this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
+		return GetString((this->slot == OWNER_DEITY) ? STR_AI_SETTINGS_CAPTION_GAMESCRIPT : STR_AI_SETTINGS_CAPTION_AI);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -554,7 +554,7 @@ private:
 static constexpr NWidgetPart _nested_script_settings_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
-		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRS_CAPTION), SetStringTip(STR_AI_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE, WID_SCRS_CAPTION),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -600,12 +600,13 @@ struct ScriptTextfileWindow : public TextfileWindow {
 		this->OnInvalidateData();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
-			SetDParamStr(1, GetConfig(slot)->GetInfo()->GetName());
+			return GetString(stringid, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI, GetConfig(slot)->GetInfo()->GetName());
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
@@ -799,25 +800,22 @@ struct ScriptDebugWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_SCRD_NAME_TEXT) return;
+		if (widget != WID_SCRD_NAME_TEXT) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->filter.script_debug_company == OWNER_DEITY) {
 			const GameInfo *info = Game::GetInfo();
 			assert(info != nullptr);
-			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
-			SetDParamStr(1, info->GetName());
-			SetDParam(2, info->GetVersion());
-		} else if (this->filter.script_debug_company == CompanyID::Invalid() || !Company::IsValidAiID(this->filter.script_debug_company)) {
-			SetDParam(0, STR_EMPTY);
-		} else {
-			const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
-			assert(info != nullptr);
-			SetDParam(0, STR_AI_DEBUG_NAME_AND_VERSION);
-			SetDParamStr(1, info->GetName());
-			SetDParam(2, info->GetVersion());
+			return GetString(STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 		}
+		if (this->filter.script_debug_company == CompanyID::Invalid() || !Company::IsValidAiID(this->filter.script_debug_company)) {
+			return {};
+		}
+
+		const AIInfo *info = Company::GetIfValid(this->filter.script_debug_company)->ai_info;
+		assert(info != nullptr);
+		return GetString(STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -1213,7 +1211,7 @@ static constexpr NWidgetPart _nested_script_debug_widgets[] = {
 			NWidgetFunction(MakeCompanyButtonRowsScriptDebug), SetPadding(0, 2, 1, 2),
 		EndContainer(),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_SCRIPT_GAME), SetMinimalSize(100, 20), SetStringTip(STR_AI_GAME_SCRIPT, STR_AI_GAME_SCRIPT_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_NAME_TEXT), SetResize(1, 0), SetStringTip(STR_JUST_STRING2, STR_AI_DEBUG_NAME_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SCRD_NAME_TEXT), SetResize(1, 0), SetToolTip(STR_AI_DEBUG_NAME_TOOLTIP),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_SETTINGS), SetMinimalSize(100, 20), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCRD_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetFill(0, 1), SetStringTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
