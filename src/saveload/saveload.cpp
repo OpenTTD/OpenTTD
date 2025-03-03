@@ -3348,7 +3348,7 @@ std::string GenerateDefaultSaveName()
 	}
 
 	/* Get the correct string (special string for when there's not company) */
-	std::string filename = GetStringWithArgs(!Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT, {params.begin(), it});
+	std::string filename = GetStringWithArgs(!Company::IsValidID(cid) ? STR_SAVEGAME_NAME_SPECTATOR : STR_SAVEGAME_NAME_DEFAULT, params);
 	SanitizeFilename(filename);
 	return filename;
 }
