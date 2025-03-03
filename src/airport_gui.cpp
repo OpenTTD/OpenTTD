@@ -296,19 +296,19 @@ public:
 	{
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN:
-				return GetString(stringid, AirportClass::Get(_selected_airport_class)->name);
+				return GetString(AirportClass::Get(_selected_airport_class)->name);
 
 			case WID_AP_LAYOUT_NUM:
 				if (_selected_airport_index != -1) {
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_LAYOUT_NAME);
 					if (string != STR_UNDEFINED) {
-						return GetString(stringid, string);
+						return GetString(string);
 					} else if (as->layouts.size() > 1) {
-						return GetString(stringid, STR_STATION_BUILD_AIRPORT_LAYOUT_NAME, _selected_airport_layout + 1);
+						return GetString(STR_STATION_BUILD_AIRPORT_LAYOUT_NAME, _selected_airport_layout + 1);
 					}
 				}
-				return GetString(stringid, STR_EMPTY);
+				return {};
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -587,7 +587,7 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(WidgetDimensions::unscaled.picker),
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0),
 				NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_AIRPORT_CLASS_LABEL), SetFill(1, 0),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_AP_CLASS_DROPDOWN), SetFill(1, 0), SetStringTip(STR_JUST_STRING, STR_STATION_BUILD_AIRPORT_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_AP_CLASS_DROPDOWN), SetFill(1, 0), SetToolTip(STR_STATION_BUILD_AIRPORT_TOOLTIP),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_AP_AIRPORT_SPRITE), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_MATRIX, COLOUR_GREY, WID_AP_AIRPORT_LIST), SetFill(1, 0), SetMatrixDataTip(1, 5, STR_STATION_BUILD_AIRPORT_TOOLTIP), SetScrollbar(WID_AP_SCROLLBAR),
@@ -596,7 +596,7 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 				NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_ORIENTATION), SetFill(1, 0),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_AP_LAYOUT_DECREASE), SetMinimalSize(12, 0), SetArrowWidgetTypeTip(AWV_DECREASE),
-					NWidget(WWT_LABEL, INVALID_COLOUR, WID_AP_LAYOUT_NUM), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_JUST_STRING1),
+					NWidget(WWT_LABEL, INVALID_COLOUR, WID_AP_LAYOUT_NUM), SetResize(1, 0), SetFill(1, 0),
 					NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_AP_LAYOUT_INCREASE), SetMinimalSize(12, 0), SetArrowWidgetTypeTip(AWV_INCREASE),
 				EndContainer(),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_AP_EXTRA_TEXT), SetFill(1, 0), SetMinimalSize(150, 0),
