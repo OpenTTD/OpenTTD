@@ -286,7 +286,7 @@ static constexpr NWidgetPart _nested_build_industry_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_DPI_DISPLAY_WIDGET), SetFill(1, 0), SetResize(1, 0),
 				SetStringTip(STR_INDUSTRY_DISPLAY_CHAIN, STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP),
-		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_DPI_FUND_WIDGET), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_JUST_STRING),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_DPI_FUND_WIDGET), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 };
@@ -493,7 +493,7 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_DPI_FUND_WIDGET:
@@ -501,16 +501,16 @@ public:
 				 * In Editor, you just build, while ingame, or you fund or you prospect */
 				if (_game_mode == GM_EDITOR) {
 					/* We've chosen many random industries but no industries have been specified */
-					SetDParam(0, STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
-				} else {
-					if (this->selected_type != IT_INVALID) {
-						const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
-						SetDParam(0, (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
-					} else {
-						SetDParam(0, STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
-					}
+					return GetString(STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
 				}
-				break;
+				if (this->selected_type != IT_INVALID) {
+					const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
+					return GetString((_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY : STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
+				}
+				return GetString(STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -997,9 +997,11 @@ public:
 		return ir.top - 1 + WidgetDimensions::scaled.framerect.bottom;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_IV_CAPTION) SetDParam(0, this->window_number);
+		if (widget == WID_IV_CAPTION) return GetString(STR_INDUSTRY_VIEW_CAPTION, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -1203,7 +1205,7 @@ static void UpdateIndustryProduction(Industry *i)
 static constexpr NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_CREAM),
-		NWidget(WWT_CAPTION, COLOUR_CREAM, WID_IV_CAPTION), SetStringTip(STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_CREAM, WID_IV_CAPTION),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_CREAM, WID_IV_GOTO), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_INDUSTRY_VIEW_LOCATION_TOOLTIP),
 		NWidget(WWT_DEBUGBOX, COLOUR_CREAM),
 		NWidget(WWT_SHADEBOX, COLOUR_CREAM),
@@ -1241,7 +1243,7 @@ void ShowIndustryViewWindow(IndustryID industry)
 static constexpr NWidgetPart _nested_industry_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_ID_CAPTION), SetStringTip(STR_INDUSTRY_DIRECTORY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_ID_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -1250,12 +1252,12 @@ static constexpr NWidgetPart _nested_industry_directory_widgets[] = {
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_ID_DROPDOWN_ORDER), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_DROPDOWN_CRITERIA), SetStringTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_DROPDOWN_CRITERIA), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 				NWidget(WWT_EDITBOX, COLOUR_BROWN, WID_ID_FILTER), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_ACC_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetStringTip(STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER, STR_TOOLTIP_FILTER_CRITERIA),
-				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_PROD_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetStringTip(STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER, STR_TOOLTIP_FILTER_CRITERIA),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_ACC_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetToolTip(STR_TOOLTIP_FILTER_CRITERIA),
+				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_PROD_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetToolTip(STR_TOOLTIP_FILTER_CRITERIA),
 				NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, WID_ID_INDUSTRY_LIST), SetToolTip(STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP), SetResize(1, 1), SetScrollbar(WID_ID_VSCROLLBAR),
@@ -1676,25 +1678,23 @@ public:
 		this->hscroll->SetCount(0);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_ID_CAPTION:
-				SetDParam(0, this->vscroll->GetCount());
-				SetDParam(1, Industry::GetNumItems());
-				break;
+				return GetString(STR_INDUSTRY_DIRECTORY_CAPTION, this->vscroll->GetCount(), Industry::GetNumItems());
 
 			case WID_ID_DROPDOWN_CRITERIA:
-				SetDParam(0, IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
-				break;
+				return GetString(IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
 
 			case WID_ID_FILTER_BY_ACC_CARGO:
-				SetDParam(0, this->GetCargoFilterLabel(this->accepted_cargo_filter_criteria));
-				break;
+				return GetString(STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER, this->GetCargoFilterLabel(this->accepted_cargo_filter_criteria));
 
 			case WID_ID_FILTER_BY_PROD_CARGO:
-				SetDParam(0, this->GetCargoFilterLabel(this->produced_cargo_filter_criteria));
-				break;
+				return GetString(STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER, this->GetCargoFilterLabel(this->produced_cargo_filter_criteria));
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1949,7 +1949,7 @@ void ShowIndustryDirectory()
 static constexpr NWidgetPart _nested_industry_cargoes_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_IC_CAPTION), SetStringTip(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_IC_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
@@ -2656,16 +2656,16 @@ struct IndustryCargoesWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget != WID_IC_CAPTION) return;
+		if (widget != WID_IC_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->ind_cargo < NUM_INDUSTRYTYPES) {
 			const IndustrySpec *indsp = GetIndustrySpec(this->ind_cargo);
-			SetDParam(0, indsp->name);
+			return GetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, indsp->name);
 		} else {
 			const CargoSpec *csp = CargoSpec::Get(this->ind_cargo - NUM_INDUSTRYTYPES);
-			SetDParam(0, csp->name);
+			return GetString(STR_INDUSTRY_CARGOES_CARGO_CAPTION, csp->name);
 		}
 	}
 
@@ -2820,7 +2820,6 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	void ComputeIndustryDisplay(IndustryType displayed_it)
 	{
-		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->SetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION);
 		this->ind_cargo = displayed_it;
 		_displayed_industries.reset();
 		_displayed_industries.set(displayed_it);
@@ -2898,7 +2897,6 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	void ComputeCargoDisplay(CargoType cargo_type)
 	{
-		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->SetString(STR_INDUSTRY_CARGOES_CARGO_CAPTION);
 		this->ind_cargo = cargo_type + NUM_INDUSTRYTYPES;
 		_displayed_industries.reset();
 
