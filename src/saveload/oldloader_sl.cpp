@@ -518,7 +518,10 @@ static void ReadTTDPatchFlags(LoadgameState &ls)
 	_old_extra_chunk_nums = 0;
 	_bump_assert_value = 0;
 
-	if (_savegame_type == SGT_TTO) return;
+	if (_savegame_type == SGT_TTO) {
+		ls.vehicle_names.resize(800);
+		return;
+	}
 
 	/* TTDPatch misuses old map3 (now m3/m4) for flags.. read them! */
 	ls.vehicle_multiplier = Tile(0).m3();
