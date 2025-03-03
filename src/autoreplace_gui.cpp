@@ -386,40 +386,40 @@ public:
 			case WID_RV_CAPTION:
 				switch (this->sel_group.base()) {
 					case ALL_GROUP.base():
-						return GetString(stringid, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_ALL_TRAINS + this->window_number);
+						return GetString(STR_REPLACE_VEHICLES_WHITE, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_ALL_TRAINS + this->window_number);
 						break;
 
 					case DEFAULT_GROUP.base():
-						return GetString(stringid, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_DEFAULT_TRAINS + this->window_number);
+						return GetString(STR_REPLACE_VEHICLES_WHITE, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_DEFAULT_TRAINS + this->window_number);
 						break;
 
 					default:
-						return GetString(stringid, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_NAME, sel_group);
+						return GetString(STR_REPLACE_VEHICLES_WHITE, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_NAME, sel_group);
 				}
 				break;
 
 			case WID_RV_SORT_DROPDOWN:
-				return GetString(stringid, std::data(_engine_sort_listing[this->window_number])[this->sort_criteria]);
+				return GetString(std::data(_engine_sort_listing[this->window_number])[this->sort_criteria]);
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE:
 				if (const Group *g = Group::GetIfValid(this->sel_group); g != nullptr) {
 					bool remove_wagon = g->flags.Test(GroupFlag::ReplaceWagonRemoval);
-					return GetString(stringid, STR_GROUP_NAME, sel_group, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+					return GetString(STR_GROUP_NAME, sel_group, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				} else {
 					const Company *c = Company::Get(_local_company);
 					bool remove_wagon = c->settings.renew_keep_length;
-					return GetString(stringid, STR_GROUP_DEFAULT_TRAINS + this->window_number, std::monostate{}, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+					return GetString(STR_GROUP_DEFAULT_TRAINS + this->window_number, std::monostate{}, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				}
 				break;
 
 			case WID_RV_TRAIN_ENGINEWAGON_DROPDOWN:
-				return GetString(stringid, this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
+				return GetString(this->replace_engines ? STR_REPLACE_ENGINES : STR_REPLACE_WAGONS);
 
 			case WID_RV_RAIL_TYPE_DROPDOWN:
-				return GetString(stringid, this->sel_railtype == INVALID_RAILTYPE ? STR_REPLACE_ALL_RAILTYPE : GetRailTypeInfo(this->sel_railtype)->strings.replace_text);
+				return GetString(this->sel_railtype == INVALID_RAILTYPE ? STR_REPLACE_ALL_RAILTYPE : GetRailTypeInfo(this->sel_railtype)->strings.replace_text);
 
 			case WID_RV_ROAD_TYPE_DROPDOWN:
-				return GetString(stringid, this->sel_roadtype == INVALID_ROADTYPE ? STR_REPLACE_ALL_ROADTYPE : GetRoadTypeInfo(this->sel_roadtype)->strings.replace_text);
+				return GetString(this->sel_roadtype == INVALID_ROADTYPE ? STR_REPLACE_ALL_ROADTYPE : GetRoadTypeInfo(this->sel_roadtype)->strings.replace_text);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -700,7 +700,7 @@ public:
 static constexpr NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION), SetStringTip(STR_REPLACE_VEHICLES_WHITE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
@@ -716,15 +716,15 @@ static constexpr NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_RAIL_TYPE_DROPDOWN), SetMinimalSize(136, 12), SetStringTip(STR_JUST_STRING, STR_REPLACE_RAILTYPE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN), SetStringTip(STR_JUST_STRING, STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_RAIL_TYPE_DROPDOWN), SetMinimalSize(136, 12), SetToolTip(STR_REPLACE_RAILTYPE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_TRAIN_ENGINEWAGON_DROPDOWN), SetToolTip(STR_REPLACE_ENGINE_WAGON_SELECT_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASCENDING_DESCENDING), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 1),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetStringTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_RV_SHOW_HIDDEN_ENGINES), SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP),
@@ -764,7 +764,7 @@ static WindowDesc _replace_rail_vehicle_desc(
 static constexpr NWidgetPart _nested_replace_road_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION), SetStringTip(STR_REPLACE_VEHICLES_WHITE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
@@ -779,13 +779,13 @@ static constexpr NWidgetPart _nested_replace_road_vehicle_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_ROAD_TYPE_DROPDOWN), SetMinimalSize(136, 12), SetStringTip(STR_JUST_STRING, STR_REPLACE_ROADTYPE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_ROAD_TYPE_DROPDOWN), SetMinimalSize(136, 12), SetToolTip(STR_REPLACE_ROADTYPE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 			NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASCENDING_DESCENDING), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 1),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetStringTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_RV_SHOW_HIDDEN_ENGINES), SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP),
@@ -822,7 +822,7 @@ static WindowDesc _replace_road_vehicle_desc(
 static constexpr NWidgetPart _nested_replace_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION), SetMinimalSize(433, 14), SetStringTip(STR_REPLACE_VEHICLES_WHITE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_RV_CAPTION), SetMinimalSize(433, 14),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
@@ -840,7 +840,7 @@ static constexpr NWidgetPart _nested_replace_vehicle_widgets[] = {
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_SORT_ASCENDING_DESCENDING), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetStringTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_RV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_RV_SHOW_HIDDEN_ENGINES), SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP),
