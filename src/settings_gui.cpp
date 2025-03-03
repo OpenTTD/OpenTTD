@@ -102,12 +102,13 @@ struct BaseSetTextfileWindow : public TextfileWindow {
 		this->LoadTextfile(textfile, BASESET_DIR);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, content_type);
-			SetDParamStr(1, this->name);
+			return GetString(stringid, this->content_type, this->name);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 };
 
@@ -174,14 +175,14 @@ static std::optional<std::string> VolumeMarkFunc(int, int mark, int value)
 
 static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_FRAME, COLOUR_GREY, WID_GO_SOCIAL_PLUGIN_TITLE), SetStringTip(STR_JUST_STRING2),
+		NWidget(WWT_FRAME, COLOUR_GREY, WID_GO_SOCIAL_PLUGIN_TITLE),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				NWidget(WWT_TEXT, INVALID_COLOUR), SetMinimalSize(0, 12), SetFill(1, 0), SetStringTip(STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM),
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_SOCIAL_PLUGIN_PLATFORM), SetMinimalSize(100, 12), SetStringTip(STR_JUST_RAW_STRING), SetAlignment(SA_RIGHT),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_SOCIAL_PLUGIN_PLATFORM), SetMinimalSize(100, 12), SetAlignment(SA_RIGHT),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 				NWidget(WWT_TEXT, INVALID_COLOUR), SetMinimalSize(0, 12), SetFill(1, 0), SetStringTip(STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE),
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_SOCIAL_PLUGIN_STATE), SetMinimalSize(100, 12), SetStringTip(STR_JUST_STRING1), SetAlignment(SA_RIGHT),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_GO_SOCIAL_PLUGIN_STATE), SetMinimalSize(100, 12), SetAlignment(SA_RIGHT),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -247,37 +248,28 @@ public:
 		return *longest;
 	}
 
-	void SetStringParameters(int widget) const
+	std::string GetWidgetString(WidgetID widget, StringID) const
 	{
 		switch (widget) {
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE);
-					SetDParamStr(1, GetWidestPlugin(&SocialIntegrationPlugin::name));
-					SetDParamStr(2, GetWidestPlugin(&SocialIntegrationPlugin::version));
-					break;
+					return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, GetWidestPlugin(&SocialIntegrationPlugin::name), GetWidestPlugin(&SocialIntegrationPlugin::version));
 				}
 
 				if (this->plugins[this->current_index]->name.empty()) {
-					SetDParam(0, STR_JUST_RAW_STRING);
-					SetDParamStr(1, this->plugins[this->current_index]->basepath);
-				} else {
-					SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE);
-					SetDParamStr(1, this->plugins[this->current_index]->name);
-					SetDParamStr(2, this->plugins[this->current_index]->version);
+					return this->plugins[this->current_index]->basepath;
 				}
-				break;
+
+				return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE, this->plugins[this->current_index]->name, this->plugins[this->current_index]->version);
 
 			case WID_GO_SOCIAL_PLUGIN_PLATFORM:
 				/* For SetupSmallestSize, use the longest string we have. */
 				if (this->current_index < 0) {
-					SetDParamStr(0, GetWidestPlugin(&SocialIntegrationPlugin::social_platform));
-					break;
+					return GetWidestPlugin(&SocialIntegrationPlugin::social_platform);
 				}
 
-				SetDParamStr(0, this->plugins[this->current_index]->social_platform);
-				break;
+				return this->plugins[this->current_index]->social_platform;
 
 			case WID_GO_SOCIAL_PLUGIN_STATE: {
 				static const std::pair<SocialIntegrationPlugin::State, StringID> state_to_string[] = {
@@ -295,38 +287,33 @@ public:
 					auto longest_plugin = GetWidestPlugin(&SocialIntegrationPlugin::social_platform);
 
 					/* Set the longest plugin when looking for the longest status. */
-					SetDParamStr(0, longest_plugin);
-
 					StringID longest = STR_NULL;
 					int longest_length = 0;
-					for (auto state : state_to_string) {
-						int length = GetStringBoundingBox(state.second).width;
+					for (const auto &[state, string] : state_to_string) {
+						int length = GetStringBoundingBox(GetString(string, longest_plugin)).width;
 						if (length > longest_length) {
 							longest_length = length;
-							longest = state.second;
+							longest = string;
 						}
 					}
 
-					SetDParam(0, longest);
-					SetDParamStr(1, longest_plugin);
-					break;
+					return GetString(longest, longest_plugin);
 				}
 
-				auto plugin = this->plugins[this->current_index];
-
-				/* Default string, in case no state matches. */
-				SetDParam(0, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED);
-				SetDParamStr(1, plugin->social_platform);
+				const auto plugin = this->plugins[this->current_index];
 
 				/* Find the string for the state. */
-				for (auto state : state_to_string) {
-					if (plugin->state == state.first) {
-						SetDParam(0, state.second);
-						break;
+				for (const auto &[state, string] : state_to_string) {
+					if (plugin->state == state) {
+						return GetString(string, plugin->social_platform);
 					}
 				}
+
+				/* Default string, in case no state matches. */
+				return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED, plugin->social_platform);
 			}
-			break;
+
+			default: NOT_REACHED();
 		}
 	}
 
@@ -487,45 +474,36 @@ struct GameOptionsWindow : Window {
 		return list;
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: {
 				const CurrencySpec &currency = _currency_specs[this->opt->locale.currency];
-				if (currency.code.empty()) {
-					SetDParam(0, currency.name);
-				} else {
-					SetDParam(0, STR_GAME_OPTIONS_CURRENCY_CODE);
-					SetDParam(1, currency.name);
-					SetDParamStr(2, currency.code);
-				}
-				break;
+				if (currency.code.empty()) return GetString(currency.name);
+				return GetString(STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code);
 			}
+
 			case WID_GO_AUTOSAVE_DROPDOWN: {
 				int index = 0;
 				for (auto &minutes : _autosave_dropdown_to_minutes) {
 					index++;
 					if (_settings_client.gui.autosave_interval <= minutes) break;
 				}
-				SetDParam(0, _autosave_dropdown[index - 1]);
-				break;
+				return GetString(_autosave_dropdown[index - 1]);
 			}
-			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
-			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->GetListLabel()); break;
-			case WID_GO_REFRESH_RATE_DROPDOWN: SetDParam(0, _settings_client.gui.refresh_rate); break;
+
+			case WID_GO_LANG_DROPDOWN:         return _current_language->own_name;
+			case WID_GO_BASE_GRF_DROPDOWN:     return BaseGraphics::GetUsedSet()->GetListLabel();
+			case WID_GO_BASE_SFX_DROPDOWN:     return BaseSounds::GetUsedSet()->GetListLabel();
+			case WID_GO_BASE_MUSIC_DROPDOWN:   return BaseMusic::GetUsedSet()->GetListLabel();
+			case WID_GO_REFRESH_RATE_DROPDOWN: return GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, _settings_client.gui.refresh_rate);
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
 
 				if (current_resolution == _resolutions.size()) {
-					SetDParam(0, STR_GAME_OPTIONS_RESOLUTION_OTHER);
-				} else {
-					SetDParam(0, STR_GAME_OPTIONS_RESOLUTION_ITEM);
-					SetDParam(1, _resolutions[current_resolution].width);
-					SetDParam(2, _resolutions[current_resolution].height);
+					return GetString(STR_GAME_OPTIONS_RESOLUTION_OTHER);
 				}
-				break;
+				return GetString(STR_GAME_OPTIONS_RESOLUTION_ITEM, _resolutions[current_resolution].width, _resolutions[current_resolution].height);
 			}
 
 			case WID_GO_SOCIAL_PLUGIN_TITLE:
@@ -534,9 +512,11 @@ struct GameOptionsWindow : Window {
 				const NWidgetSocialPlugins *plugin = this->GetWidget<NWidgetSocialPlugins>(WID_GO_SOCIAL_PLUGINS);
 				assert(plugin != nullptr);
 
-				plugin->SetStringParameters(widget);
-				break;
+				return plugin->GetWidgetString(widget, stringid);
 			}
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1016,15 +996,15 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 			/* General tab */
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_LANGUAGE),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_LANG_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_LANG_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_AUTOSAVE_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_STRING, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_AUTOSAVE_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_STRING2, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GO_SURVEY_SEL),
@@ -1099,7 +1079,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_BASE_GRF), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0), SetFill(1, 0),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_GRF_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_GRF_TOOLTIP), SetFill(1, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_GRF_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_GAME_OPTIONS_BASE_GRF_TOOLTIP), SetFill(1, 0),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_PARAMETERS), SetStringTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_GRF_CONTENT_DOWNLOAD), SetStringTip(STR_GAME_OPTIONS_ONLINE_CONTENT, STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP),
 					EndContainer(),
@@ -1132,7 +1112,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_BASE_SFX), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP), SetFill(1, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_GAME_OPTIONS_BASE_SFX_TOOLTIP), SetFill(1, 0),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_SFX_CONTENT_DOWNLOAD), SetStringTip(STR_GAME_OPTIONS_ONLINE_CONTENT, STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP),
 					EndContainer(),
 					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_BASE_SFX_DESCRIPTION), SetMinimalSize(200, 0), SetMinimalTextLines(1, 0), SetToolTip(STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetFill(1, 0),
@@ -1150,7 +1130,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 
 				NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_BASE_MUSIC), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP), SetFill(1, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP), SetFill(1, 0),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_GO_BASE_MUSIC_CONTENT_DOWNLOAD), SetStringTip(STR_GAME_OPTIONS_ONLINE_CONTENT, STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
@@ -1338,21 +1318,22 @@ struct GameSettingsWindow : Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				SetDParam(0, _game_settings_restrict_dropdown[this->filter.mode]);
-				break;
+				return GetString(_game_settings_restrict_dropdown[this->filter.mode]);
 
 			case WID_GS_TYPE_DROPDOWN:
 				switch (this->filter.type) {
-					case ST_GAME:    SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME); break;
-					case ST_COMPANY: SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME); break;
-					case ST_CLIENT:  SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT); break;
-					default:         SetDParam(0, STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL); break;
+					case ST_GAME:    return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
+					case ST_COMPANY: return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
+					case ST_CLIENT:  return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
+					default:         return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
 				}
-				break;
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1767,11 +1748,11 @@ static constexpr NWidgetPart _nested_settings_selection_widgets[] = {
 		NWidget(NWID_VERTICAL), SetPIP(WidgetDimensions::unscaled.frametext.top, WidgetDimensions::unscaled.vsep_normal, WidgetDimensions::unscaled.frametext.bottom),
 			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.frametext.right),
 				NWidget(WWT_TEXT, INVALID_COLOUR, WID_GS_RESTRICT_CATEGORY), SetStringTip(STR_CONFIG_SETTING_RESTRICT_CATEGORY),
-				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_RESTRICT_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_STRING, STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_RESTRICT_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.frametext.right),
 				NWidget(WWT_TEXT, INVALID_COLOUR, WID_GS_RESTRICT_TYPE), SetStringTip(STR_CONFIG_SETTING_RESTRICT_TYPE),
-				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_TYPE_DROPDOWN), SetMinimalSize(100, 12), SetStringTip(STR_JUST_STRING, STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_TYPE_DROPDOWN), SetMinimalSize(100, 12), SetToolTip(STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL), SetPIP(WidgetDimensions::unscaled.frametext.left, WidgetDimensions::unscaled.hsep_wide, WidgetDimensions::unscaled.frametext.right),
 				NWidget(WWT_TEXT, INVALID_COLOUR), SetFill(0, 1), SetStringTip(STR_CONFIG_SETTING_FILTER_TITLE),
@@ -1899,21 +1880,21 @@ struct CustomCurrencyWindow : Window {
 		this->SetWidgetDisabledState(WID_CC_YEAR_UP, GetCustomCurrency().to_euro == CalendarTime::MAX_YEAR);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_CC_RATE:      SetDParam(0, 1); SetDParam(1, 1);            break;
-			case WID_CC_SEPARATOR: SetDParamStr(0, GetCustomCurrency().separator); break;
-			case WID_CC_PREFIX:    SetDParamStr(0, GetCustomCurrency().prefix);    break;
-			case WID_CC_SUFFIX:    SetDParamStr(0, GetCustomCurrency().suffix);    break;
+			case WID_CC_RATE:      return GetString(STR_CURRENCY_EXCHANGE_RATE, 1, 1);
+			case WID_CC_SEPARATOR: return GetString(STR_CURRENCY_SEPARATOR, GetCustomCurrency().separator);
+			case WID_CC_PREFIX:    return GetString(STR_CURRENCY_PREFIX, GetCustomCurrency().prefix);
+			case WID_CC_SUFFIX:    return GetString(STR_CURRENCY_SUFFIX, GetCustomCurrency().suffix);
 			case WID_CC_YEAR:
-				SetDParam(0, (GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER);
-				SetDParam(1, GetCustomCurrency().to_euro);
-				break;
+				return GetString((GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, GetCustomCurrency().to_euro);
 
 			case WID_CC_PREVIEW:
-				SetDParam(0, 10000);
-				break;
+				return GetString(STR_CURRENCY_PREVIEW, 10000);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -2070,30 +2051,30 @@ static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_RATE_DOWN), SetArrowWidgetTypeTip(AWV_DECREASE, STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP),
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_RATE_UP), SetArrowWidgetTypeTip(AWV_INCREASE, STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP),
 					EndContainer(),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_RATE), SetStringTip(STR_CURRENCY_EXCHANGE_RATE, STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_RATE), SetToolTip(STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, WID_CC_SEPARATOR_EDIT), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP), SetFill(0, 1),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_SEPARATOR), SetStringTip(STR_CURRENCY_SEPARATOR, STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_SEPARATOR), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, WID_CC_PREFIX_EDIT), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP), SetFill(0, 1),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_PREFIX), SetStringTip(STR_CURRENCY_PREFIX, STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_PREFIX), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(WWT_PUSHBTN, COLOUR_DARK_BLUE, WID_CC_SUFFIX_EDIT), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP), SetFill(0, 1),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_SUFFIX), SetStringTip(STR_CURRENCY_SUFFIX, STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_SUFFIX), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_YEAR_DOWN), SetArrowWidgetTypeTip(AWV_DECREASE, STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
 						NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_CC_YEAR_UP), SetArrowWidgetTypeTip(AWV_INCREASE, STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP),
 					EndContainer(),
-					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_YEAR), SetStringTip(STR_JUST_STRING1, STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_TEXT, INVALID_COLOUR, WID_CC_YEAR), SetToolTip(STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 			NWidget(WWT_LABEL, INVALID_COLOUR, WID_CC_PREVIEW),
-					SetStringTip(STR_CURRENCY_PREVIEW, STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP),
+					SetToolTip(STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 };
