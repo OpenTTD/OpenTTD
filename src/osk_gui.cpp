@@ -88,9 +88,11 @@ struct OskWindow : public Window {
 		this->SetWidgetLoweredState(WID_OSK_CAPS, HasBit(_keystate, KEYS_CAPS));
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_OSK_CAPTION) SetDParam(0, this->caption);
+		if (widget == WID_OSK_CAPTION) return GetString(this->caption);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -319,7 +321,7 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 
 
 static constexpr NWidgetPart _nested_osk_widgets[] = {
-	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetStringTip(STR_JUST_STRING), SetTextStyle(TC_WHITE),
+	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetTextStyle(TC_WHITE),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_OSK_TEXT), SetMinimalSize(252, 0), SetPadding(2, 2, 2, 2),
 	EndContainer(),
