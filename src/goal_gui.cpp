@@ -56,9 +56,9 @@ struct GoalListWindow : public Window {
 		if (widget != WID_GOAL_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
 		if (this->window_number == CompanyID::Invalid()) {
-			return GetString(stringid, STR_GOALS_SPECTATOR_CAPTION);
+			return GetString(STR_GOALS_SPECTATOR_CAPTION);
 		}
-		return GetString(stringid, STR_GOALS_CAPTION, this->window_number);
+		return GetString(STR_GOALS_CAPTION, this->window_number);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -278,7 +278,7 @@ struct GoalListWindow : public Window {
 static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION), SetStringTip(STR_JUST_STRING1, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GOAL_SELECT_BUTTONS),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
