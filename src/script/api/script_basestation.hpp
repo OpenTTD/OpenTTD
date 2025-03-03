@@ -68,7 +68,7 @@ public:
 	 * @return The last calendar-date some part of this station was build.
 	 * @see \ref ScriptCalendarTime
 	 */
-	static ScriptDate::Date GetConstructionDate(StationID station_id);
+	static ScriptCalendarDate *GetConstructionDate(StationID station_id);
 };
 
 #endif /* SCRIPT_BASESTATION_HPP */
