@@ -242,12 +242,14 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR:
-				SetDParam(0, this->vscroll->GetCount());
-				break;
+				return GetString(STR_NEWGRF_PARAMETERS_NUM_PARAM, this->vscroll->GetCount());
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -505,7 +507,7 @@ static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
 			NWidget(NWID_HORIZONTAL), SetPIP(4, 0, 4),
 				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_NP_NUMPAR_DEC), SetMinimalSize(12, 12), SetArrowWidgetTypeTip(AWV_DECREASE),
 				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, WID_NP_NUMPAR_INC), SetMinimalSize(12, 12), SetArrowWidgetTypeTip(AWV_INCREASE),
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_NP_NUMPAR), SetResize(1, 0), SetFill(1, 0), SetPadding(0, 0, 0, 4), SetStringTip(STR_NEWGRF_PARAMETERS_NUM_PARAM),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_NP_NUMPAR), SetResize(1, 0), SetFill(1, 0), SetPadding(0, 0, 0, 4),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -552,12 +554,13 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 		this->LoadTextfile(textfile.value(), NEWGRF_DIR);
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_TF_CAPTION) {
-			SetDParam(0, STR_CONTENT_TYPE_NEWGRF);
-			SetDParamStr(1, this->grf_config->GetName());
+			return GetString(stringid, STR_CONTENT_TYPE_NEWGRF, this->grf_config->GetName());
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 };
 
@@ -778,17 +781,16 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->vscroll2->SetCapacityFromWidget(this, WID_NS_AVAIL_LIST, WidgetDimensions::scaled.framerect.Vertical());
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_NS_PRESET_LIST:
-				if (this->preset == -1) {
-					SetDParam(0, STR_NUM_CUSTOM);
-				} else {
-					SetDParam(0, STR_JUST_RAW_STRING);
-					SetDParamStr(1, this->grf_presets[this->preset]);
-				}
-				break;
+				if (this->preset == -1) return GetString(STR_NUM_CUSTOM);
+
+				return this->grf_presets[this->preset];
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -1755,7 +1757,7 @@ static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
 				NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_NEWGRF_SETTINGS_SELECT_PRESET),
 						SetPadding(0, WidgetDimensions::unscaled.hsep_wide, 0, 0),
 				NWidget(WWT_DROPDOWN, COLOUR_YELLOW, WID_NS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
-						SetStringTip(STR_JUST_STRING1, STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
+						SetToolTip(STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_PRESET_SAVE), SetFill(1, 0), SetResize(1, 0),
