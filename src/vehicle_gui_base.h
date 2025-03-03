@@ -124,9 +124,9 @@ struct BaseVehicleListWindow : public Window {
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group, bool show_create);
 	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group, bool show_create);
 
-	std::span<const StringID> GetVehicleSorterNames();
+	std::span<const StringID> GetVehicleSorterNames() const;
 
-	std::span<VehicleGroupSortFunction * const> GetVehicleSorterFuncs()
+	std::span<VehicleGroupSortFunction * const> GetVehicleSorterFuncs() const
 	{
 		switch (this->grouping) {
 			case GB_NONE:
