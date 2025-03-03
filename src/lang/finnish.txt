@@ -2904,6 +2904,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Valitse 
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sillan valinta – napsauta valittua siltaa rakentaaksesi sen
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Riippusilta, terästä
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Palkki, terästä
@@ -3631,17 +3632,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Löydet
 STR_NEWGRF_LIST_MISSING                                         :{RED}Puuttuvia tiedostoja
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n ”{0:STRING}” käytös aiheuttaa todennäköisesti nykimistä ja/tai kaatumisia
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Se muutti yksikön ”{1:ENGINE}” vetävän vaunun tilaa tallin ulkopuolella
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muutti kulkuneuvon ”{1:ENGINE}” pituutta varikon ulkopuolella
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Se muutti kulkuneuvon ”{1:ENGINE}” kapasiteettia, vaikka kulkuneuvo ei ollut varikolla tai uudelleensovitettavana
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n ”{PUSH_COLOUR}{0:STRING}{POP_COLOUR}” käytös aiheuttaa todennäköisesti nykimistä ja/tai kaatumisia
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Se muutti yksikön ”{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}” vetävän vaunun tilaa varikon ulkopuolella
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muutti kulkuneuvon ”{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}” pituutta varikon ulkopuolella
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Se muutti kulkuneuvon ”{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}” kapasiteettia, vaikka kulkuneuvo ei ollut varikolla eikä uudelleensovitettavana
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiölle ”{1:COMPANY}” kuuluvan junan ”{0:VEHICLE}” pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa nykiä tai kaatua
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF ”{0:STRING}” antaa väärää tietoa
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Kulkuneuvon ”{1:ENGINE}” rahti-/uudelleensovitustiedot ovat toiset kuin ostolistassa rakentamisen jälkeen. Tämä voi johtaa uudelleensovituksen epäonnistumiseen, kun kulkuneuvo uudistetaan tai korvataan automaattisesti
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}”{1:STRING}” aiheutti ikuisen silmukan tuotannon takaisinkutsussa
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF ”{PUSH_COLOUR}{0:STRING}{POP_COLOUR}” antaa virheellistä tietoa
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Kulkuneuvon ”{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}” rahti- tai uudelleensovitustiedot poikkeavat rakentamisen jälkeen ostoluettelosta. Tämä voi johtaa uudelleensovituksen epäonnistumiseen, kun kulkuneuvo uudistetaan tai korvataan automaattisesti
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}”{PUSH_COLOUR}{1:STRING}{POP_COLOUR}” aiheutti ikuisen silmukan tuotannon takaisinkutsussa
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktio {1:HEX} palautti tuntemattoman/kelvottoman tuloksen {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}”{1:STRING}” palautti virheellisen rahtityypin tuotannon takaisinkutsun kohdassa {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}”{PUSH_COLOUR}{1:STRING}{POP_COLOUR}” palautti virheellisen rahtityypin tuotannon takaisinkutsun kohdassa {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<virheellinen rahti>
@@ -4038,6 +4039,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Tuottaa:
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Tarvitsee:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} odottaa{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} odottaa
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa tuotantoa (8:n kerroin, 2040:een asti)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800{NBSP}%:iin asti)

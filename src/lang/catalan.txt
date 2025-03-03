@@ -2905,6 +2905,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Seleccio
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Pont penjant d'acer
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Pont biga d'acer
@@ -3158,6 +3159,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreny erm
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gespa
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Camps de conreu
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desert
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Roques cobertes de neu
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Terreny irregular cobert de neu
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Herba coberta de neu
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Via ferroviària
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Via ferroviària amb senyals de secció
@@ -4036,6 +4040,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produeix
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necessita:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} esperant{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} esperant
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvia la producció (múltiple de 8, fins a 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Canvia el nivell de producció (en percentatge, fins al 800{NBSP}%)
@@ -4694,6 +4702,7 @@ STR_ORDER_SHIP_DEPOT                                            :Drassanes
 ###next-name-looks-similar
 
 STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} l'hangar més proper
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} el {STRING} més proper
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :{SPACE}(Remodela a {STRING})

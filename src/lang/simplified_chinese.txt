@@ -1666,7 +1666,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :设置在缩略
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :建设时显示距离格数和地形高差
 
-STR_CONFIG_SETTING_LIVERIES                                     :显示公司自订涂装：{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :显示公司自定义涂装：{STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :设置是否允许为个别载具种类指定配色，而不是为公司的所有载具指定同一种配色
 ###length 3
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不显示
@@ -2650,7 +2650,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 已离开游戏（{STRING}）
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已更改姓名为 {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 给予 {2:STRING} {1:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器关闭了进程
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器已关闭会话
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动……{}请稍等……
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 被踢出服务器。原因：（{STRING}）
 
@@ -2904,6 +2904,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}选择�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}选择桥梁 - 点击选择桥梁进行建设
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING}，{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING}，{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :钢制悬索桥
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :钢制桁桥
@@ -3631,17 +3632,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}找到�
 STR_NEWGRF_LIST_MISSING                                         :{RED}缺失文件
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF“{0:STRING}”的行为可能造成同步错误或是崩溃
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}{1:ENGINE}机车车厢的状态没在车库内发生变动
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}“{1:ENGINE}” 不在车库内却发生长度变动
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它会在“{1:ENGINE}”在机厂外或不在接受改装时改変其运载能力
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF“{PUSH_COLOUR}{0:STRING}{POP_COLOUR}”的行为可能造成同步错误或崩溃
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}它于“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”不在车库内时改变了动力车厢状态
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}它于“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”不在车库内时改変了列车长度
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它于“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”不在车库内或不在改装时改変了运载量
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY} 所拥有的列车 {0:VEHICLE} 长度无效。这个错误可能是由 NewGRF 导致的。游戏可能会无法同步或崩溃
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF“{STRING}”的信息不正确
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买清单中“{1:ENGINE}”的货物/改装信息与购买后的信息不同。这可能会导致自动更新或自动替换时无法正确改装此载具
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}“{1:STRING}”产生了一个死循环
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回调函数 {1:HEX} 返回了一个未知/错误的结果 {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}“{1:STRING}”返回了错误的货物类型。位于产品回调函数 {2:HEX} 处
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF“{PUSH_COLOUR}{STRING}{POP_COLOUR}”提供了错误的信息
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买列表中“{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}”的货物/改装信息与购买后的信息不同。这可能会导致自动更新或自动替换时无法正确改装此载具
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}“{PUSH_COLOUR}{1:STRING}{POP_COLOUR}”在生产回调函数中产生了一个死循环
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回调函数 {1:HEX} 返回了一个未知/错误的结果：{2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}“{PUSH_COLOUR}{1:STRING}{POP_COLOUR}”返回了错误的货物类型。位于生产回调函数 {2:HEX} 处
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<无效货物>
@@ -4038,6 +4039,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}产出�
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :，{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}需要：
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}：库存 {1:CARGO_SHORT} {3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}：库存 {1:CARGO_SHORT}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}修改产量（百分比，最高为 800%）

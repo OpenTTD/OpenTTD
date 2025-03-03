@@ -2905,6 +2905,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Seleccio
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecção de ponte - clique na ponte desejada para a construir
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensa, Aço
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Viga, Aço
@@ -3632,17 +3633,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Foram e
 STR_NEWGRF_LIST_MISSING                                         :{RED}Faltam ficheiros
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar dessincronizações e/ou outros problemas.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Mudou o estado electrificado do modelo de vagão '{1:ENGINE}' quando fora do depósito.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Mudou a capacidade do veículo para '{1:ENGINE}' quando não estiver no interior do depósito ou em adaptação
+STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' pode causar dessincronizações e/ou falhas.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Mudou o estado de motorização do vagão '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' quando não estava dentro de um depósito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mudou o comprimento do veículo para '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' quando não estava dentro de um depósito.
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Mudou a capacidade do veículo para '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' quando não estava dentro de um depósito ou em adaptação
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de carga/adaptação do modelo de veículo '{1:ENGINE}' difere da que consta na lista de veículos depois de adquirido. Isto poderá causar problemas ao adaptar quando automaticamente renovado/substituído.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback de produção.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' fornece informação incorreta
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de carga/adaptação para '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' é diferente da lista de compra depois da construção. Isto poderá fazer a renovação/substituição automática falhar o processo de adaptação de forma correta.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' causou um loop infinito no pedido de chamada de produção.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} devolveu resultado desconhecido/inválido {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' devolveu tipo de carga inválida no callback de produção em {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' devolveu tipo de carga inválida no pedido de chamada de produção em {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<mercadoria inválida>
@@ -4039,6 +4040,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produz: 
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requer:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} em espera{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} em espera
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção (múltiplo de 8, até 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mudar o nível de produção (percentagem, até 800%)

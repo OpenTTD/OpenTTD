@@ -946,8 +946,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}在{TOWN}內出現交通混亂！{}{}由{STRING}贊助的道路重建計劃將為駕駛者帶來多達 6 個月的阻塞苦楚！
 STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}在{TOWN}內出現交通混亂！{}{}由{STRING}贊助的道路重建計劃將為駕駛者帶來多達 6 分鐘的阻塞苦楚！
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}運輸大亨!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}{TOWN} 地方政府與 {STRING} 簽署了為期一年的專屬運輸權！
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}{TOWN} 地方政府與 {STRING} 簽署了 12 分鐘專屬運輸權！
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}{TOWN} 地方政府與 {STRING} 簽署了為期一年的專屬營運權合約！
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}{TOWN} 地方政府與 {STRING} 簽署了 12 分鐘專屬營運權合約！
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}視野 {COMMA}
@@ -1039,7 +1039,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :每120分鐘
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}語言
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}選擇要用的介面語言
-STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (已完成{NUM}%)
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM} ％）
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}全螢幕
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}勾選即可在全螢幕下玩 OpenTTD
@@ -1439,10 +1439,10 @@ STR_CONFIG_SETTING_BRIBE                                        :可向地方政
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :容許公司嘗試賄賂地方政府。如果賄賂行為被調查員揭發，公司在往後六個月內無法接觸有關地方政府。
 STR_CONFIG_SETTING_BRIBE_HELPTEXT_MINUTES                       :容許公司嘗試賄賂地方政府。如果賄賂行為被調查員揭發，公司將在往後 6 分鐘內無法接觸有關地方政府。
 
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允許購買市鎮的專屬運輸權：{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允許購買市鎮的專屬營運權：{STRING}
 ###length 2
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一所公司購買了一個市鎮的專屬運輸權，其他公司在該市鎮的車站將在十二個月之內不會收到任何貨物與乘客
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一所公司購買了一個市鎮的專屬運輸權，其他公司在該市鎮的車站將在 12 分鐘之內不會收到任何貨物與乘客
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :如果一所公司購買了一個市鎮的專屬營運權，其他公司在該市鎮的車站將在十二個月之內不會收到任何貨物與乘客
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT_MINUTES             :如果一所公司購買了一個市鎮的專屬營運權，其他公司在該市鎮的車站將在 12 分鐘之內不會收到任何貨物與乘客
 
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允許資助市鎮建設：{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :允許公司提供資助給市鎮興建新房屋
@@ -1723,7 +1723,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短格式 (31-1
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際格式 (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :自動在開始新遊戲時暫停：{STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :如啟用此選項，遊戲在開始時會自動暫停，方便玩家詳細觀察地圖。
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :如啟用此選項，遊戲在開始時會自動暫停，方便玩家詳細觀察地圖
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :暫停時允許：{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :選擇遊戲暫停時可以進行的動作。
@@ -1886,7 +1886,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :工業開業：
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :當有新工業開張時顯示報紙訊息。
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :關閉工業：{STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :當工業設施關閉時顯示報紙訊息。
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :當工業設施關閉時顯示報紙報導訊息
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :經濟變動：{STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :顯示關於經濟總體變動的報紙訊息。
@@ -2169,10 +2169,10 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}修改�
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}讀取或更新設定檔時出錯
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 處理陣列 '{STRING}' 時出錯
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{STRING}' 不是 '{STRING}' 的有效值
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}……「 {STRING} 」不是「 {STRING} 」的有效值
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 在設定 '{STRING}' 的末尾有殘餘字句
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... 正在忽略 NewGRF 套件 '{STRING}'：此套件的 GRF 識別碼與 '{STRING}' 的 GRF 識別碼相同
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 正在忽略無效的 NewGRF 套件 '{STRING}'：{STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}……正在忽略 NewGRF 套件「 {STRING} 」：此套件的 GRF 識別碼與「 {STRING} 」的 GRF 識別碼相同
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}……正在忽略無效的 NewGRF 套件「 {STRING} 」：{STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :找不到
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :此套件被標記為「不安全」，不能載入為靜態 NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系統 NewGRF
@@ -2180,16 +2180,16 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :與此版本的
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :不明
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 無效的壓縮層級值 '{STRING}'
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... 本版本不支援存檔格式 '{STRING}'，現改用 '{STRING}' 格式
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 正在忽略 '{STRING}' 基本圖形集：找不到檔案
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 正在忽略 '{STRING}' 基本音效集：找不到檔案
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 正在忽略 '{STRING}' 基本音樂集：找不到檔案
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}……正在忽略「 {STRING} 」基本圖形集：找不到檔案
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}……正在忽略「 {STRING} 」基本音效集：找不到檔案
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}……正在忽略「 {STRING} 」基本音樂集：找不到檔案
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}記憶體不足
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}無法編配 {BYTES} 作為子畫面快取。子畫面快取的大小已降至 {BYTES} 。 OpenTTD的效能會受到影響。請嘗試停用 32bpp 圖形及／或減少放大倍數，以減低記憶體要求
 
 # Video initalization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}圖像設定錯誤...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}...找不到相容的顯示卡裝置，硬體加速已被停用
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU驅動程式導致遊戲崩潰。硬體加速已停用
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU 驅動程式導致遊戲崩潰。硬體加速已停用
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2234,7 +2234,7 @@ STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}開啟�
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}離開「OpenTTD」
 
 STR_INTRO_BASESET                                               :{BLACK}目前圖形設定缺少 {NUM}個貼圖。 請確認基礎貼圖組是否有更新。
-STR_INTRO_TRANSLATION                                           :{BLACK}此段翻譯缺了{NUM}字串。請成為OpenTTD的翻譯員以讓本遊戲更完整。詳情請參閱readme.txt。
+STR_INTRO_TRANSLATION                                           :{BLACK}繁體中文翻譯欠缺了 {NUM} 行字串。請申請成為 OpenTTD 的翻譯員以讓本遊戲更完善。詳情請參閱 readme.txt。
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}離開
@@ -2655,7 +2655,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}伺服�
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 已被踢出。原因：({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}伺服器註冊失敗
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}已有另一個伺服器以同樣的邀請碼進行註冊。點擊"本地"以改變遊戲模式
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}已有另一個伺服器以同樣的邀請碼進行註冊。正切換到『本地』遊戲模式。
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}你的伺服器不接受遠端連線
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}其他玩家將無法連線到你的伺服器
 
@@ -2904,6 +2904,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}選擇�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}選擇橋樑 - 點選想建的橋樑即可建造
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING}，{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :鋼製吊橋
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :鋼製桁橋
@@ -3631,17 +3632,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}發現�
 STR_NEWGRF_LIST_MISSING                                         :{RED}缺少檔案
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' 的行為可能會造成失去同步或當機
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' 不在機廠內卻發生動力車廂列車狀態的變動。
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' 不在機廠內卻發生列車長度的變動。
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}它會在 '{1:ENGINE}' 在機廠外或不在接受改裝時改變其運載量
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF 「{PUSH_COLOUR}{0:STRING}{POP_COLOUR}」 的行為可能會造成同步失敗或當機
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」不在機廠內卻發生動力車廂列車狀態的變動
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」不在機廠內卻發生列車長度的變動
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」不在機廠內或不在改裝時卻發生列車運載量的變動
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY} 所擁有的列車 {0:VEHICLE} 長度無效。 這個錯誤可能是由 NewGRF 導致的，遊戲可能會無法同步或當機
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' 提供了錯誤的資訊。
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中 '{1:ENGINE}' 的貨物/改裝資訊和購買後的資訊不同。 這可能會導致自動更新/取代時無法正確的改裝該車輛。
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}{1:STRING}會導致產量 Callback 時發生無窮迴圈的錯誤。
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回調程序 {1:HEX} 返回預料之外或無效的結果：{2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}'  產品回傳函數:{2:HEX} ，回傳了錯誤的貨物類型
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF 「{PUSH_COLOUR}{0:STRING}{POP_COLOUR}」 提供了錯誤的資訊
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中「 {PUSH_COLOUR}{1:ENGINE}{POP_COLOUR} 」的貨物或改裝資訊與購買後的資訊不同。這可能會導致自動更新或自動替換時無法正確的改裝該車輛
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}「 {PUSH_COLOUR}{1:STRING}{POP_COLOUR} 」會導致生產回傳函數陷入無限循環的錯誤
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回傳函數 {1:HEX} 回傳了一個未知或無效的結果：{2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}「 {PUSH_COLOUR}{1:STRING}{POP_COLOUR} 」產品回傳函數：{2:HEX} ，回傳了錯誤的貨物類型
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<無效貨物>
@@ -3726,7 +3727,7 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :大型廣告活
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :出資重建當地道路
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :建造公司所有人的雕像
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :資助市鎮建設
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬運輸權
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :購買專屬營運權
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :向地方政府行賄
 ###next-name-looks-similar
 
@@ -3737,9 +3738,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}贊助市鎮道路網絡重建。{}這將會使到市鎮的交通阻塞 6 分鐘。{}{POP_COLOUR}費用︰{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}建造雕像紀念您的公司。{}使城鎮範圍內的車站獲得永久的評分增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}出資協助市鎮建造新的商業建築。{}使城鎮獲得暫時性的成長速度增益。{}{POP_COLOUR}費用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}購買本市鎮 12 個月的專屬運輸權。{}市政府將不許乘客和貨物使用競爭對手的車站。如競爭對手成功賄賂則本合約將被取消。{}{POP_COLOUR}費用︰{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}購買本市鎮 12 分鐘的專屬運輸權。{}市政府將不許乘客和貨物使用競爭對手的車站。如競爭對手成功賄賂則本合約將被取消。{}{POP_COLOUR}費用︰{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}賄賂地方政府以提高您的評級並終止競爭對手的專屬運輸權，如果被發現，將面臨嚴厲處罰的風險。{}{POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}購買該市鎮 12 個月的專屬營運權。{}市政府將不許乘客和貨物使用其他公司的車站。但如果競爭對手成功賄賂則該合約將被取消。{}{POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}購買該市鎮 12 分鐘的專屬營運權。{}市政府將不許乘客和貨物使用其他公司的車站。但如果競爭對手成功賄賂則該合約將被取消。{}{POP_COLOUR}費用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}賄賂地方政府以提高您的評級並終止競爭對手的專屬營運權，但如果被發現，將面臨嚴厲處罰的風險。{}{POP_COLOUR}費用：{CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 遊戲目標
@@ -3833,8 +3834,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受�
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}顯示接受的貨物種類
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}接受：{WHITE}{CARGO_LIST}
 
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}此車站享有所屬市鎮的專屬運輸權
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK}已購買此市鎮的專屬運輸權
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}此車站享有所屬市鎮的專屬營運權
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 已購買該市鎮的專屬營運權
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評價
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示車站評價
@@ -4038,6 +4039,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}產出�
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :，{STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}需要:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}：庫存 {1:CARGO_SHORT} {3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}：庫存 {1:CARGO_SHORT}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量 (以 8 為倍數增減，最大為 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}變更產出等級 (百分比，最高可到800%)
@@ -4323,7 +4328,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正�
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}車輛製造商的訊息
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我們剛設計了一種新{STRING} - 您有興趣獨家使用它一年，讓我們在正式上市之前先 觀察它的表現嗎？
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}我們剛設計了一款新的{STRING}{}您願意在產品正式上市前獨家使用它一年，讓我們在正式上市前觀察它的表現嗎？
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :鐵道機車
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :電氣化鐵道機車
@@ -4848,7 +4853,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}遊戲�
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}檢查遊戲腳本日誌。按住 <Ctrl> 點選以開啟新視窗
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可以載入。{}此 AI 是虛擬 AI，沒有任何效果。{}您可以透過「線上內容」系統下載更多 AI。
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在執行中的一個 AI 或遊戲腳本發生錯誤。請開啟「AI／遊戲腳本除錯」視窗後擷取螢幕畫面，將此問題回報給腳本作者
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在執行中的一個 AI 或遊戲腳本發生錯誤。請開啟「AI／遊戲腳本除錯」視窗後擷取螢幕畫面後，將此問題連同該圖片附件回報給腳本作者
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}只可於伺服器開啟AI／遊戲腳本除錯視窗
 
 # AI configuration window
@@ -4874,7 +4879,7 @@ STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}選擇 AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}選擇遊戲腳本
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}載入另一腳本。按住 Ctrl 可顯示所有可用版本。
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}載入另一腳本。按住 <Ctrl> 點選可顯示所有可用版本
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}組態設定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}設定腳本的參數
 
@@ -4971,7 +4976,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... 這�
 STR_ERROR_PNGMAP                                                :{WHITE}無法從 PNG 檔載入地形...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... 找不到檔案
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... 無法轉換影像格式，需要 8 或 24-bit PNG 影像
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 出現一點狀況，抱歉 (或許是檔案損毀)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}……抱歉，出現一點狀況（或許是檔案損毀）
 
 STR_ERROR_BMPMAP                                                :{WHITE}無法從 BMP 檔載入地形...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 無法轉換影像格式
@@ -5006,12 +5011,12 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能�
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必須先摧毀建築物
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}不能清除這個地段...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地點不適合
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已經建了
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}……經已建成
 STR_ERROR_OWNED_BY                                              :{WHITE}... 所有者是 {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此區域屬於其他公司所有
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 已達地形的限制
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 已達區塊清除的限制
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 已達植樹的限制
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}……此區域屬於其他公司所有
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}……已達地形的限制
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}……已達區塊清除的上限
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}……已達植樹量的上限
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名稱必須是唯一的
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}被 {STRING} 擋住
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}當暫停時不允許這樣做
@@ -5027,10 +5032,10 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}無法�
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}無法降低土地...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}無法修改此處地形...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}挖掘工作會摧毀隧道
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}已到海平面
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}……已達海平面
 STR_ERROR_TOO_HIGH                                              :{WHITE}... 太高
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已經平了
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}這樣做的話，在它上面的橋樑會太高
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}……經已平整
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}在此地形上的橋樑會過高。
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}無法修改公司名稱...
@@ -5051,8 +5056,8 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}無法�
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}無法修改市鎮名稱...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}不能在此建造市鎮...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}無法擴展市鎮...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 太接近地圖邊緣
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 太接近另一個市鎮
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}……太接近地圖邊緣
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}……太接近另一個市鎮
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 已有太多市鎮
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地圖沒有足夠空間
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路施工中
@@ -5061,12 +5066,12 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 市�
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}無法興建房屋…
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 已有太多工業
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}……太多所工業
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}無法產生工業...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}無法在此建造 {STRING} ……
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}無法在此新建這種工業...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}無法勘探工業...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... 太接近另一個工業
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}……太接近另一所工業
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 應先建造市鎮
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 每個市鎮僅允許一個
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 只能在市鎮人口超過 1200 人的地方建造
@@ -5142,7 +5147,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}無法�
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必須先移除鐵道號誌站
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}必須先移除道路號誌站
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 被浮標擋住
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 浮標正被其他公司使用！
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}……浮標正被其他公司使用！
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}無法在此興建鐵道機廠……
@@ -5229,7 +5234,7 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}必須�
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}無法在此興建水道橋……
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... 這邊已經有樹了
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}……這裡已有樹木
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... 樹木種類與該地形不符
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}不能在這邊植樹...
 
@@ -5255,13 +5260,13 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}無法�
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 隧道過長
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 已有太多物件
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}……已有太多物件
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}無法建立物件...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}被東西擋住
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 被公司總部擋住
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能購買這塊土地...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 您已經擁有了！
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}...已達物件建造之上限
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}……您經已擁有該區塊！
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}……已達物件建造的上限
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}無法建立群組...
@@ -5344,7 +5349,7 @@ STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}無法�
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}遊戲中已有太多車輛
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能更改檢修週期...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 車輛已被摧毀
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}……車輛已被撞毀
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}...車輛並非全部相同
 
@@ -5407,8 +5412,8 @@ STR_ERROR_NO_BUOY                                               :{WHITE}沒有�
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法為車輛加入時刻表...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}車輛只能在車站停靠等候
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此車輛不會停靠此站
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... 時刻表並不完整
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :… 時刻表尚未開始
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}……時刻表並不完整
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}……時刻表尚未開始
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 已有太多標誌

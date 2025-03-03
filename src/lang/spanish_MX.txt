@@ -44,7 +44,7 @@ STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Diamantes
 STR_CARGO_PLURAL_FOOD                                           :{G=m}Alimentos
 STR_CARGO_PLURAL_PAPER                                          :{G=m}Papel
 STR_CARGO_PLURAL_GOLD                                           :{G=m}Oro
-STR_CARGO_PLURAL_WATER                                          :{G=m}Agua
+STR_CARGO_PLURAL_WATER                                          :{G=f}Agua
 STR_CARGO_PLURAL_WHEAT                                          :{G=m}Trigo
 STR_CARGO_PLURAL_RUBBER                                         :{G=m}Caucho
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Azúcar
@@ -78,7 +78,7 @@ STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Diamante
 STR_CARGO_SINGULAR_FOOD                                         :{G=m}Alimento
 STR_CARGO_SINGULAR_PAPER                                        :{G=m}Papel
 STR_CARGO_SINGULAR_GOLD                                         :{G=m}Oro
-STR_CARGO_SINGULAR_WATER                                        :{G=m}Agua
+STR_CARGO_SINGULAR_WATER                                        :{G=f}Agua
 STR_CARGO_SINGULAR_WHEAT                                        :{G=m}Trigo
 STR_CARGO_SINGULAR_RUBBER                                       :{G=m}Caucho
 STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Azúcar
@@ -395,7 +395,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir li
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostrar lista de objetivos
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficas de empresa y tasas de pago por carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabla de evaluación de empresas
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Abrir directorio de industrias, cadena industrial o proveer fondos para una nueva
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Abrir directorio de industrias, cadenas industriales o financiar una nueva industria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir lista de trenes de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Abrir lista de autotransportes de la empresa. Ctrl+Clic oculta la lista de grupos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Abrir lista de barcos de la empresa. Ctrl+Clic oculta la lista de grupos
@@ -502,7 +502,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Tabla de puntua
 # Industry menu
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Directorio de industrias
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Cadenas industriales
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Fundar nueva industria
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiar nueva industria
 
 # URailway construction menu
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construcción de ferrocarril
@@ -914,9 +914,9 @@ STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tiene una estación no válida en la lista
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} tiene un aeropuerto con una pista muy corta en la lista
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} se está haciendo viejo
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} se está haciendo muy viejo
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} se está haciendo muy viejo y requiere reemplazo urgente
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} se está quedando viejo
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} se está quedando muy viejo
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} se está quedando muy viejo y necesita reemplazo urgente
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no encuentra una ruta para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se perdió
 STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}La ganancia de {VEHICLE} el año pasado fue de {CURRENCY_LONG}
@@ -1150,7 +1150,7 @@ STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 li
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar parámetro de moneda personalizada
 
 STR_NONE                                                        :Ninguno
-STR_FUNDING_ONLY                                                :Solo fundadas
+STR_FUNDING_ONLY                                                :Solo financiadas
 STR_MINIMAL                                                     :Mínimo
 STR_NUM_VERY_LOW                                                :Muy bajo
 STR_NUM_LOW                                                     :Bajo
@@ -1389,8 +1389,8 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Altura máxima 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longitud máxima de túneles: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud máxima permitida al construir túneles
 
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método para fundar una industria primaria: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método con el que se funda una industria primaria. 'Ninguno' indica que no se puede crear ninguna. 'Prospección' indica que se puede fundar una nueva industria pero cuya construcción ocurrirá en un lugar aleatorio del mapa con posibilidad de fallar. 'Como las demás' indica que las industrias primarias pueden construirse como otras industrias, en el lugar que se quiera
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método para financiar una industria primaria: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método con el que se financia una industria primaria. 'Ninguno' indica que no se puede crear ninguna. 'Prospección' indica que se puede financiar una nueva industria pero cuya construcción ocurrirá en un lugar aleatorio del mapa con posibilidad de fallar. 'Como las demás' indica que las industrias primarias pueden construirse como otras industrias, en el lugar que se quiera
 ###length 3
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ninguno
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Como las demás
@@ -1504,8 +1504,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las u
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Al activarse, se muestra una noticia si un vehículo no ha logrado ganancia durante un año
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Al activarse, se muestra una noticia si un vehículo no ha logrado ganancia durante un período
 
-STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Avisar si un vehículo se está volviendo viejo: {STRING}
-STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Al activarse, se muestra una noticia si un vehículo se está volviendo viejo
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Avisar si un vehículo se está quedando viejo: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :Al activarse, se muestra una noticia si un vehículo se está quedando viejo
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehículos siempre disponibles: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los modelos de vehículos estarán disponibles para siempre tras haber sido lanzados
@@ -1982,7 +1982,7 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :Restringir la c
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Permitir que las localidades impidan la construcción de aeropuertos, según cuánto ruido aceptan en factor de su población y la distancia y tamaño del aeropuerto. Al desactivarse, solo podrá haber dos aeropuertos por localidad, excepto si la actitud del ayuntamiento es "Permisiva"
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar localidades: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activar esta opción permite a los jugadores funda nuevas localidades durante la partida
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activar esta opción permite a los jugadores fundar nuevas localidades durante la partida
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
@@ -2206,7 +2206,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabla de puntuaciones
 STR_INTRO_HELP                                                  :{BLACK}Ayuda y manuales
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configuración
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Config. NewGRF
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido en línea
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración de IA
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuración de script de juego
@@ -2905,6 +2905,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecci�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de puente. Clic para construir
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante (acero)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas (acero)
@@ -3086,7 +3087,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Rejilla 
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatorio
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Fundación de industrias
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financiación de industrias
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Elegir de la lista la industria adecuada
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Crear industrias al azar
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cubrir el mapa con industrias colocadas al azar
@@ -3095,7 +3096,7 @@ STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}¿Segur
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Costo: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospección
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construir
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financiar
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Eliminar todas las industrias
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Eliminar todas las industrias que haya en el mapa
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Eliminar todas las industrias
@@ -3632,17 +3633,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Archivo
 STR_NEWGRF_LIST_MISSING                                         :{RED}Archivos que faltan
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Es posible que el funcionamiento del NewGRF '{0:STRING}' cause desincronizaciones o errores
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambió el estado 'vagón con motor' para '{1:ENGINE}' cuando no estaba dentro de un depósito
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}cambió la longitud del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Cambió la capacidad del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito o mientras no se estaba reformando
+STR_NEWGRF_BROKEN                                               :{WHITE}Es posible que el funcionamiento del NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' cause desincronizaciones o errores
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambió el estado 'vagón con motor' para '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' cuando no estaba dentro de un depósito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambió la longitud del vehículo para '{1:ENGINE}' cuando no estaba dentro de un depósito
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Cambió la capacidad del vehículo para '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' cuando no estaba dentro de un depósito o mientras no se estaba reformando
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren {VEHICLE} de {COMPANY} tiene una longitud no válida. Quizá es por problemas de los NewGRF, y puede provocar que el juego falle
 
-STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga o reforma de '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la renovación y el reemplazo automático no haga la reforma correcta
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causado un bucle sin fin en la llamada de producción
+STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' da información incorrecta
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga o reforma de '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' difiere de la lista de compra después de la construcción. Esto puede causar que la renovación y el reemplazo automático no haga la reforma correcta
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' ha causado un bucle sin fin en la llamada de producción
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}La llamada {1:HEX} devolvió un resultado desconocido o no válido {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' retornó un tipo inválido de carga en la callback de producción en {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' retornó un tipo inválido de carga en la callback de producción en {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<carga no válida>
@@ -3690,7 +3691,7 @@ STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_L
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} (requerid{G 0 o a}s)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} (requerid{G 0 o a}s en invierno)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} (entregada)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} (entregad{G 0 o a}s)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{RED} (todavía requerid{G 1 o a}{P 1 "" s})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{GREEN} (entregad{G 1 o a}{P 1 "" s})
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La localidad crece cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
@@ -4039,6 +4040,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce:
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Requiere:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} esperando{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} en espera
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción (múltiplo de 8, máximo 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambiar nivel de producción (porcentaje, máximo 800%)
@@ -4941,7 +4946,7 @@ STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST                                           :{RED}Costo: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Ingreso: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Ingresos: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Transferencia: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {GREEN}Utilidad: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Transferencia: {CURRENCY_LONG}{WHITE} / {RED}Costo: {CURRENCY_LONG}
@@ -5153,10 +5158,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}No se pu
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}No se puede cambiar nombre del depósito...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... puede que esté detenido dentro de un depósito
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... puede que esté detenido dentro de un depósito
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... puede que esté detenido dentro de un astillero
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... puede que esté detenido dentro de un hangar
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tiene que estar detenido dentro del depósito
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... tiene que estar detenido dentro del depósito
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... tiene que estar detenido dentro del astillero
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... tiene que estar detenido dentro del hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los trenes pueden modificarse solo si están detenidos dentro de un depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren demasiado largo
