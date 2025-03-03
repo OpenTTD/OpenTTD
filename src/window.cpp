@@ -502,7 +502,6 @@ bool Window::SetFocusedWidget(WidgetID widget_index)
 std::string Window::GetWidgetString([[maybe_unused]] WidgetID widget, StringID stringid) const
 {
 	if (stringid == STR_NULL) return {};
-	this->SetStringParameters(widget);
 	return GetString(stringid);
 }
 

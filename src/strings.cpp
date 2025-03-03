@@ -59,19 +59,6 @@ TextDirection _current_text_dir; ///< Text direction of the currently selected l
 std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
 
-ArrayStringParameters<20> _global_string_params;
-
-/**
- * Prepare the string parameters for the next formatting run. This means
- * resetting the type information and resetting the offset to the begin.
- */
-void StringParameters::PrepareForNextRun()
-{
-	for (auto &param : this->parameters) param.type = 0;
-	this->offset = 0;
-}
-
-
 /**
  * Get the next parameter from our parameters.
  * This updates the offset, so the next time this is called the next parameter
@@ -225,26 +212,6 @@ std::string EncodedString::GetDecodedString() const
 }
 
 /**
- * Set a string parameter \a v at index \a n in the global string parameter array.
- * @param n Index of the string parameter.
- * @param v Value of the string parameter.
- */
-void SetDParam(size_t n, uint64_t v)
-{
-	_global_string_params.SetParam(n, v);
-}
-
-/**
- * Get the current string parameter at index \a n from the global string parameter array.
- * @param n Index of the string parameter.
- * @return Value of the requested string parameter.
- */
-uint64_t GetDParam(size_t n)
-{
-	return std::get<uint64_t>(_global_string_params.GetParam(n));
-}
-
-/**
  * Get some number that is suitable for string size computations.
  * @param count Number of digits which shall be displayable.
  * @param size  Font of the number
@@ -258,17 +225,6 @@ uint64_t GetParamMaxDigits(uint count, FontSize size)
 		val = 10 * val + next;
 	}
 	return val;
-}
-
-/**
- * Set DParam n to some number that is suitable for string size computations.
- * @param n Index of the string parameter.
- * @param count Number of digits which shall be displayable.
- * @param size  Font of the number
- */
-void SetDParamMaxDigits(size_t n, uint count, FontSize size)
-{
-	SetDParam(n, GetParamMaxDigits(count, size));
 }
 
 /**
@@ -287,56 +243,6 @@ uint64_t GetParamMaxValue(uint64_t max_value, uint min_count, FontSize size)
 		max_value /= 10;
 	}
 	return GetParamMaxDigits(std::max(min_count, num_digits), size);
-}
-
-/**
- * Set DParam n to some number that is suitable for string size computations.
- * @param n Index of the string parameter.
- * @param max_value The biggest value which shall be displayed.
- *                  For the result only the number of digits of \a max_value matter.
- * @param min_count Minimum number of digits independent of \a max.
- * @param size  Font of the number
- */
-void SetDParamMaxValue(size_t n, uint64_t max_value, uint min_count, FontSize size)
-{
-	SetDParam(n, GetParamMaxValue(max_value, min_count, size));
-}
-
-/**
- * Copy the parameters from the backup into the global string parameter array.
- * @param backup The backup to copy from.
- */
-void CopyInDParam(const std::span<const StringParameterData> backup)
-{
-	for (size_t i = 0; i < backup.size(); i++) {
-		_global_string_params.SetParam(i, backup[i]);
-	}
-}
-
-/**
- * Copy \a num string parameters from the global string parameter array to the \a backup.
- * @param backup The backup to write to.
- * @param num Number of string parameters to copy.
- */
-void CopyOutDParam(std::vector<StringParameterData> &backup, size_t num)
-{
-	backup.resize(num);
-	for (size_t i = 0; i < backup.size(); i++) {
-		backup[i] = _global_string_params.GetParam(i);
-	}
-}
-
-/**
- * Checks whether the global string parameters have changed compared to the given backup.
- * @param backup The backup to check against.
- * @return True when the parameters have changed, otherwise false.
- */
-bool HaveDParamChanged(const std::span<const StringParameterData> backup)
-{
-	for (size_t i = 0; i < backup.size(); i++) {
-		if (backup[i] != _global_string_params.GetParam(i)) return true;
-	}
-	return false;
 }
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x);
@@ -503,28 +409,24 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, std::span<String
 }
 
 /**
- * Resolve the given StringID into a std::string with all the associated
- * DParam lookups and formatting.
+ * Resolve the given StringID into a std::string with formatting but no parameters.
  * @param string The unique identifier of the translatable string.
  * @return The std::string of the translated string.
  */
 std::string GetString(StringID string)
 {
-	_global_string_params.PrepareForNextRun();
-	return GetStringWithArgs(string, _global_string_params);
+	return GetStringWithArgs(string, {});
 }
 
 /**
- * Resolve the given StringID and append in place into an existing std::string with all the associated
- * DParam lookups and formatting.
+ * Resolve the given StringID and append in place into an existing std::string with formatting but no parameters.
  * @param result The std::string to place the translated string.
  * @param string The unique identifier of the translatable string.
  */
 void AppendStringInPlace(std::string &result, StringID string)
 {
-	_global_string_params.PrepareForNextRun();
 	StringBuilder builder(result);
-	GetStringWithArgs(builder, string, _global_string_params);
+	GetStringWithArgs(builder, string, {});
 }
 
 void AppendStringWithArgsInPlace(std::string &result, StringID string, std::span<StringParameter> params)
@@ -554,39 +456,6 @@ std::string GetStringWithArgs(StringID string, std::span<StringParameter> args)
 	StringBuilder builder(result);
 	GetStringWithArgs(builder, string, args);
 	return result;
-}
-
-/**
- * This function is used to "bind" a C string to a OpenTTD dparam slot.
- * @param n slot of the string
- * @param str string to bind
- */
-void SetDParamStr(size_t n, const char *str)
-{
-	_global_string_params.SetParam(n, str);
-}
-
-/**
- * This function is used to "bind" the C string of a std::string to a OpenTTD dparam slot.
- * The caller has to ensure that the std::string reference remains valid while the string is shown.
- * @param n slot of the string
- * @param str string to bind
- */
-void SetDParamStr(size_t n, const std::string &str)
-{
-	_global_string_params.SetParam(n, str);
-}
-
-/**
- * This function is used to "bind" the std::string to a OpenTTD dparam slot.
- * Contrary to the other \c SetDParamStr functions, this moves the string into
- * the parameter slot.
- * @param n slot of the string
- * @param str string to bind
- */
-void SetDParamStr(size_t n, std::string &&str)
-{
-	_global_string_params.SetParam(n, std::move(str));
 }
 
 static const char *GetDecimalSeparator()

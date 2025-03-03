@@ -33,7 +33,7 @@ using CompanyPropertiesMap = std::map<uint, std::unique_ptr<CompanyProperties>>;
 struct LoadCheckData {
 	bool checkable;     ///< True if the savegame could be checked by SL_LOAD_CHECK. (Old savegames are not checkable.)
 	StringID error;     ///< Error message from loading. INVALID_STRING_ID if no error.
-	std::string error_msg; ///< Data to pass to SetDParamStr when displaying #error.
+	std::string error_msg; ///< Data to pass to string parameters when displaying #error.
 
 	uint32_t map_size_x, map_size_y;
 	TimerGameCalendar::Date current_date;
