@@ -300,7 +300,8 @@ public:
 	{
 		if (widget != WID_SLT_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		return GetString(stringid, this->title);
+		/* Encoded string from game script needs to be formatted. */
+		return GetString(STR_JUST_RAW_STRING, this->title);
 	}
 
 	void OnPaint() override
@@ -418,7 +419,7 @@ public:
 static constexpr NWidgetPart _nested_script_league_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SLT_CAPTION), SetStringTip(STR_JUST_RAW_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_SLT_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
 	EndContainer(),
