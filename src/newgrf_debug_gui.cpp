@@ -851,27 +851,24 @@ struct SpriteAlignerWindow : Window {
 		switch (widget) {
 			case WID_SA_CAPTION:
 				if (this->act5_type != nullptr) {
-					return GetString(stringid,
-						STR_SPRITE_ALIGNER_CAPTION_ACTION5,
+					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTION5,
 						this->act5_type - GetAction5Types().data(),
 						this->current_sprite - this->act5_type->sprite_base,
 						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
 						GetSpriteLocalID(this->current_sprite));
 				}
 				if (this->current_sprite < SPR_OPENTTD_BASE) {
-					return GetString(stringid,
-						STR_SPRITE_ALIGNER_CAPTION_ACTIONA,
+					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTIONA,
 						this->current_sprite,
 						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
 						GetSpriteLocalID(this->current_sprite));
 				}
-				return GetString(stringid,
-					STR_SPRITE_ALIGNER_CAPTION_NO_ACTION,
+				return GetString(STR_SPRITE_ALIGNER_CAPTION_NO_ACTION,
 					GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
 					GetSpriteLocalID(this->current_sprite));
 
 			case WID_SA_OFFSETS_ABS:
-				return GetString(stringid, UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom), UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
+				return GetString(STR_SPRITE_ALIGNER_OFFSETS_ABS, UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom), UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
 
 			case WID_SA_OFFSETS_REL: {
 				/* Relative offset is new absolute offset - starting absolute offset.
@@ -879,12 +876,12 @@ struct SpriteAlignerWindow : Window {
 				 */
 				const auto key_offs_pair = this->offs_start_map.find(this->current_sprite);
 				if (key_offs_pair != this->offs_start_map.end()) {
-					return GetString(stringid,
+					return GetString(STR_SPRITE_ALIGNER_OFFSETS_REL,
 						UnScaleByZoom(spr->x_offs - key_offs_pair->second.first, SpriteAlignerWindow::zoom),
 						UnScaleByZoom(spr->y_offs - key_offs_pair->second.second, SpriteAlignerWindow::zoom));
 				}
 
-				return GetString(stringid, 0, 0);
+				return GetString(STR_SPRITE_ALIGNER_OFFSETS_REL, 0, 0);
 			}
 
 			default:
@@ -1138,7 +1135,7 @@ bool SpriteAlignerWindow::crosshair = true;
 static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SA_CAPTION), SetStringTip(STR_JUST_STRING4, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SA_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
@@ -1174,8 +1171,8 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SA_DOWN), SetSpriteTip(SPR_ARROW_DOWN, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0), SetMinimalSize(11, 11),
 					NWidget(NWID_SPACER), SetFill(1, 1), SetResize(1, 0),
 				EndContainer(),
-				NWidget(WWT_LABEL, INVALID_COLOUR, WID_SA_OFFSETS_ABS), SetStringTip(STR_SPRITE_ALIGNER_OFFSETS_ABS), SetFill(1, 0), SetResize(1, 0),
-				NWidget(WWT_LABEL, INVALID_COLOUR, WID_SA_OFFSETS_REL), SetStringTip(STR_SPRITE_ALIGNER_OFFSETS_REL), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_LABEL, INVALID_COLOUR, WID_SA_OFFSETS_ABS), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_LABEL, INVALID_COLOUR, WID_SA_OFFSETS_REL), SetFill(1, 0), SetResize(1, 0),
 				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 					NWidget(WWT_TEXTBTN_2, COLOUR_GREY, WID_SA_CENTRE), SetStringTip(STR_SPRITE_ALIGNER_CENTRE_OFFSET), SetFill(1, 0), SetResize(1, 0),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SA_RESET_REL), SetStringTip(STR_SPRITE_ALIGNER_RESET_BUTTON, STR_SPRITE_ALIGNER_RESET_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
