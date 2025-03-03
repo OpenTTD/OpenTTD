@@ -550,24 +550,20 @@ public:
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_STL_CAPTION) {
-			SetDParam(0, this->window_number);
-			SetDParam(1, this->vscroll->GetCount());
+			return GetString(STR_STATION_LIST_CAPTION, this->window_number, this->vscroll->GetCount());
 		}
 
 		if (widget == WID_STL_CARGODROPDOWN) {
-			if (this->filter.cargoes == 0) {
-				SetDParam(0, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
-			} else if (this->filter.cargoes == _cargo_mask) {
-				SetDParam(0, this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
-			} else if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) {
-				SetDParam(0, CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
-			} else {
-				SetDParam(0, STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
-			}
+			if (this->filter.cargoes == 0) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
+			if (this->filter.cargoes == _cargo_mask) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
+			if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) return GetString(CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
+			return GetString(STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	DropDownList BuildCargoDropDownList(bool expanded) const
@@ -765,7 +761,7 @@ const std::initializer_list<GUIStationList::SortFunction * const> CompanyStation
 static constexpr NWidgetPart _nested_company_stations_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_STL_CAPTION), SetStringTip(STR_STATION_LIST_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_STL_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
@@ -778,7 +774,7 @@ static constexpr NWidgetPart _nested_company_stations_widgets[] = {
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_AIRPLANE), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_PLANE, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_STL_FACILALL), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_ABBREV_ALL, STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP), SetTextStyle(TC_BLACK, FS_SMALL), SetFill(0, 1),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(5, 0), SetFill(0, 1), EndContainer(),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_STL_CARGODROPDOWN), SetFill(1, 0), SetStringTip(STR_JUST_STRING, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP),
+		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_STL_CARGODROPDOWN), SetFill(1, 0), SetToolTip(STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -818,7 +814,7 @@ static constexpr NWidgetPart _nested_station_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SV_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_STATION_VIEW_RENAME_TOOLTIP),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SV_CAPTION), SetStringTip(STR_STATION_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SV_CAPTION),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SV_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
@@ -1506,13 +1502,14 @@ struct StationViewWindow : public Window {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		if (widget == WID_SV_CAPTION) {
 			const Station *st = Station::Get(this->window_number);
-			SetDParam(0, st->index);
-			SetDParam(1, st->facilities);
+			return GetString(STR_STATION_VIEW_CAPTION, st->index, st->facilities);
 		}
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	/**
