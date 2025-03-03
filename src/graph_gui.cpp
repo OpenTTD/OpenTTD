@@ -1643,9 +1643,11 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		}
 	}
 
-	void SetStringParameters(WidgetID widget) const override
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_GRAPH_CAPTION) SetDParam(0, this->window_number);
+		if (widget == WID_GRAPH_CAPTION) GetString(STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION, this->window_number);
+
+		return this->Window::GetWidgetString(widget, stringid);
 	}
 
 	void OnResize() override
@@ -1709,7 +1711,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GRAPH_CAPTION), SetStringTip(STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GRAPH_CAPTION),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
