@@ -22,6 +22,9 @@
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
  *
+ * API removals:
+ * \li AIBaseStation::IsValidBaseStation, use AIStation::IsValidStation or AIWaypoint::IsValidWaypoint instead
+ *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
  * \li AIWaypoint::GetWaypointID now returns the StationID of any type of waypoint
