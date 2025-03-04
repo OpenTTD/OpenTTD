@@ -424,6 +424,7 @@ struct NewsWindow : Window {
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
+		FontSize fontsize = FS_NORMAL;
 		std::string str;
 		switch (widget) {
 			case WID_N_CAPTION: {
@@ -441,6 +442,7 @@ struct NewsWindow : Window {
 
 			case WID_N_MESSAGE:
 			case WID_N_COMPANY_MSG:
+				fontsize = FS_LARGE;
 				str = this->ni->headline.GetDecodedString();
 				break;
 
@@ -481,7 +483,7 @@ struct NewsWindow : Window {
 		Dimension d = size;
 		d.width = (d.width >= padding.width) ? d.width - padding.width : 0;
 		d.height = (d.height >= padding.height) ? d.height - padding.height : 0;
-		d = GetStringMultiLineBoundingBox(str, d);
+		d = GetStringMultiLineBoundingBox(str, d, fontsize);
 		d.width += padding.width;
 		d.height += padding.height;
 		size = maxdim(size, d);
@@ -513,7 +515,7 @@ struct NewsWindow : Window {
 
 			case WID_N_MESSAGE:
 			case WID_N_COMPANY_MSG:
-				DrawStringMultiLine(r, this->ni->headline.GetDecodedString(), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, this->ni->headline.GetDecodedString(), TC_BLACK, SA_CENTER, false, FS_LARGE);
 				break;
 
 			case WID_N_MGR_FACE: {
@@ -957,7 +959,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		AddNewsItem(GetEncodedString(STR_NEWS_CUSTOM_ITEM, text.GetDecodedString()), type, NewsStyle::Normal, {}, reference, {});
+		AddNewsItem(EncodedString{text}, type, NewsStyle::Normal, {}, reference, {});
 	}
 
 	return CommandCost();

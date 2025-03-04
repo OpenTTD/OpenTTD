@@ -750,9 +750,9 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  * @param suggestion Suggested bounding box.
  * @return Bounding box for the multi-line string, may be bigger than \a suggestion.
  */
-Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion)
+Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion, FontSize fontsize)
 {
-	Dimension box = {suggestion.width, (uint)GetStringHeight(str, suggestion.width)};
+	Dimension box = {suggestion.width, (uint)GetStringHeight(str, suggestion.width, fontsize)};
 	return box;
 }
 
