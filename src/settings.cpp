@@ -971,10 +971,21 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 	for (const IniItem &item : group->items) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
 
-		config->Change(item.name);
+		std::string name = item.name;
+		std::optional<int> version = std::nullopt;
+		auto sc = item.name.rfind('.');
+		if (sc != std::string::npos) {
+			std::string ver = item.name.substr(sc + 1);
+			if (!ver.empty() && std::ranges::all_of(ver, isdigit)) {
+				name = item.name.substr(0, sc);
+				version = std::atoi(ver.c_str());
+			}
+		}
+		config->Change(name, version.has_value() ? version.value() : -1, version.has_value());
+
 		if (!config->HasScript()) {
-			if (item.name != "none") {
-				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
+			if (name != "none") {
+				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", name);
 				continue;
 			}
 		}
@@ -998,10 +1009,21 @@ static void GameLoadConfig(const IniFile &ini, const char *grpname)
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
 
-	config->Change(item.name);
+	std::string name = item.name;
+	std::optional<int> version = std::nullopt;
+	auto sc = item.name.rfind('.');
+	if (sc != std::string::npos) {
+		std::string ver = item.name.substr(sc + 1);
+		if (!ver.empty() && std::ranges::all_of(ver, isdigit)) {
+			name = item.name.substr(0, sc);
+			version = std::atoi(ver.c_str());
+		}
+	}
+	config->Change(name, version.has_value() ? version.value() : -1, version.has_value());
+
 	if (!config->HasScript()) {
-		if (item.name != "none") {
-			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);
+		if (name != "none") {
+			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", name);
 			return;
 		}
 	}
@@ -1175,13 +1197,12 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
-		std::string name;
+		std::string name = "none";
 		std::string value = config->SettingsToString();
 
 		if (config->HasScript()) {
 			name = config->GetName();
-		} else {
-			name = "none";
+			if (config->GetForceExactMatch()) name = fmt::format("{}.{}", name, config->GetVersion());
 		}
 
 		group.CreateItem(name).SetValue(value);
@@ -1194,13 +1215,12 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
 	group.Clear();
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
-	std::string name;
+	std::string name = "none";
 	std::string value = config->SettingsToString();
 
 	if (config->HasScript()) {
 		name = config->GetName();
-	} else {
-		name = "none";
+		if (config->GetForceExactMatch()) name = fmt::format("{}.{}", name, config->GetVersion());
 	}
 
 	group.CreateItem(name).SetValue(value);
