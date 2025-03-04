@@ -21,6 +21,8 @@
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIVehicle::GetEconomyAge
+ * \li AIVehicle::GetWagonEconomyAge
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
