@@ -26,6 +26,7 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/tramtracks.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/tunnel_portals.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/2ccmap.nfo
+                         ${CMAKE_CURRENT_SOURCE_DIR}/badges.nfo
         PNG_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/airports.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/airport_preview.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/aqueduct.png
@@ -49,5 +50,7 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/tramtracks.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/tramtracks_bare_depot.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/tunnel_portals.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/badges00.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/badges00.32.png
     )
 endif()
