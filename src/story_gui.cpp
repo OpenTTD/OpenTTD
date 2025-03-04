@@ -706,7 +706,11 @@ public:
 		/* Page elements */
 		this->EnsureStoryPageElementLayout();
 		for (const LayoutCacheElement &ce : this->layout_cache) {
+			if (ce.bounds.bottom - scrollpos < fr.top) continue;
+
 			y_offset = ce.bounds.top - scrollpos;
+			if (y_offset > fr.bottom) return;
+
 			switch (ce.pe->type) {
 				case SPET_TEXT:
 					y_offset = DrawStringMultiLine(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos,
