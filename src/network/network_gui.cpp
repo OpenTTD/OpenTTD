@@ -2209,14 +2209,14 @@ struct NetworkAskRelayWindow : public Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		if (widget == WID_NAR_TEXT) {
-			size = GetStringBoundingBox(STR_NETWORK_ASK_RELAY_TEXT);
+			size = GetStringBoundingBox(GetString(STR_NETWORK_ASK_RELAY_TEXT, this->server_connection_string, this->relay_connection_string));
 		}
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_NAR_TEXT) {
-			DrawStringMultiLine(r, STR_NETWORK_ASK_RELAY_TEXT, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(r, GetString(STR_NETWORK_ASK_RELAY_TEXT, this->server_connection_string, this->relay_connection_string), TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -2226,17 +2226,6 @@ struct NetworkAskRelayWindow : public Window {
 		this->left = Clamp(parent->left + (parent->width / 2) - (this->width / 2), 0, _screen.width - this->width);
 		this->top = Clamp(parent->top + (parent->height / 2) - (this->height / 2), 0, _screen.height - this->height);
 		this->SetDirty();
-	}
-
-	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
-	{
-		switch (widget) {
-			case WID_NAR_TEXT:
-				return GetString(stringid, this->server_connection_string, this->relay_connection_string);
-
-			default:
-				return this->Window::GetWidgetString(widget, stringid);
-		}
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
