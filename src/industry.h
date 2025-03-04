@@ -113,7 +113,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	uint8_t selected_layout = 0; ///< Which tile layout was used when creating the industry
 	Owner exclusive_supplier = INVALID_OWNER; ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
 	Owner exclusive_consumer = INVALID_OWNER; ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)
-	std::string text{}; ///< General text with additional information.
+	EncodedString text{}; ///< General text with additional information.
 
 	uint16_t random = 0; ///< Random value used for randomisation of all kinds of things
 

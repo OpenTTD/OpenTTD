@@ -990,7 +990,7 @@ public:
 
 		if (!i->text.empty()) {
 			ir.top += WidgetDimensions::scaled.vsep_wide;
-			ir.top = DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, i->text), TC_BLACK);
+			ir.top = DrawStringMultiLine(ir, i->text.GetDecodedString(), TC_BLACK);
 		}
 
 		/* Return required bottom position, the last pixel row plus some padding. */

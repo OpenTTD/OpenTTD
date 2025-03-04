@@ -257,7 +257,7 @@ private:
 	uint header_height = 0; ///< Height of the table header
 	int line_height = 0; ///< Height of the text lines
 	Dimension icon_size{}; ///< Dimension of the company icon.
-	std::string title{};
+	EncodedString title{};
 
 	/**
 	 * Rebuild the company league list
@@ -265,7 +265,7 @@ private:
 	void BuildTable()
 	{
 		this->rows.clear();
-		this->title = std::string{};
+		this->title = {};
 
 		const LeagueTable *lt = LeagueTable::GetIfValid(this->table);
 		if (lt == nullptr) return;
@@ -300,8 +300,7 @@ public:
 	{
 		if (widget != WID_SLT_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		/* Encoded string from game script needs to be formatted. */
-		return GetString(STR_JUST_RAW_STRING, this->title);
+		return this->title.GetDecodedString();
 	}
 
 	void OnPaint() override
@@ -319,7 +318,7 @@ public:
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		if (!lt->header.empty()) {
-			ir.top = DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, lt->header), TC_BLACK) + WidgetDimensions::scaled.vsep_wide;
+			ir.top = DrawStringMultiLine(ir, lt->header.GetDecodedString(), TC_BLACK) + WidgetDimensions::scaled.vsep_wide;
 		}
 
 		int icon_y_offset = (this->line_height - this->icon_size.height) / 2;
@@ -336,14 +335,14 @@ public:
 		for (const auto &[rank, lte] : this->rows) {
 			DrawString(rank_rect.left, rank_rect.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, rank + 1));
 			if (this->icon_size.width > 0 && lte->company != CompanyID::Invalid()) DrawCompanyIcon(lte->company, icon_rect.left, ir.top + icon_y_offset);
-			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, GetString(STR_JUST_RAW_STRING, lte->text), TC_BLACK);
-			DrawString(score_rect.left, score_rect.right, ir.top + text_y_offset, GetString(STR_JUST_RAW_STRING, lte->score), TC_BLACK, SA_RIGHT);
+			DrawString(text_rect.left, text_rect.right, ir.top + text_y_offset, lte->text.GetDecodedString(), TC_BLACK);
+			DrawString(score_rect.left, score_rect.right, ir.top + text_y_offset, lte->score.GetDecodedString(), TC_BLACK, SA_RIGHT);
 			ir.top += this->line_height;
 		}
 
 		if (!lt->footer.empty()) {
 			ir.top += WidgetDimensions::scaled.vsep_wide;
-			ir.top = DrawStringMultiLine(ir, GetString(STR_JUST_RAW_STRING, lt->footer), TC_BLACK);
+			ir.top = DrawStringMultiLine(ir, lt->footer.GetDecodedString(), TC_BLACK);
 		}
 	}
 
@@ -362,8 +361,8 @@ public:
 		bool show_icon_column = false;
 		for (const auto &[rank, lte] : this->rows) {
 			this->rank_width = std::max(this->rank_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_RANK, rank + 1)).width);
-			this->text_width = std::max(this->text_width, GetStringBoundingBox(GetString(STR_JUST_RAW_STRING, lte->text)).width);
-			this->score_width = std::max(this->score_width, GetStringBoundingBox(GetString(STR_JUST_RAW_STRING, lte->score)).width);
+			this->text_width = std::max(this->text_width, GetStringBoundingBox(lte->text.GetDecodedString()).width);
+			this->score_width = std::max(this->score_width, GetStringBoundingBox(lte->score.GetDecodedString()).width);
 			if (lte->company != CompanyID::Invalid()) show_icon_column = true;
 		}
 
@@ -381,14 +380,14 @@ public:
 		this->text_width = size.width - non_text_width;
 
 		if (!lt->header.empty()) {
-			this->header_height = GetStringHeight(GetString(STR_JUST_RAW_STRING, lt->header), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			this->header_height = GetStringHeight(lt->header.GetDecodedString(), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 			size.height += header_height;
 		} else {
 			this->header_height = 0;
 		}
 
 		if (!lt->footer.empty()) {
-			size.height += GetStringHeight(GetString(STR_JUST_RAW_STRING, lt->footer), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			size.height += GetStringHeight(lt->footer.GetDecodedString(), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 		}
 	}
 

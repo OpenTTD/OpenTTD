@@ -18,8 +18,8 @@
 CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType it, uint32_t first_layout, bool fund, uint32_t seed);
 CommandCost CmdIndustrySetFlags(DoCommandFlags flags, IndustryID ind_id, IndustryControlFlags ctlflags);
 CommandCost CmdIndustrySetExclusivity(DoCommandFlags flags, IndustryID ind_id, Owner company_id, bool consumer);
-CommandCost CmdIndustrySetText(DoCommandFlags flags, IndustryID ind_id, const std::string &text);
-CommandCost CmdIndustrySetProduction(DoCommandFlags flags, IndustryID ind_id, uint8_t prod_level, bool show_news, const std::string &text);
+CommandCost CmdIndustrySetText(DoCommandFlags flags, IndustryID ind_id, const EncodedString &text);
+CommandCost CmdIndustrySetProduction(DoCommandFlags flags, IndustryID ind_id, uint8_t prod_level, bool show_news, const EncodedString &text);
 
 DEF_CMD_TRAIT(CMD_BUILD_INDUSTRY, CmdBuildIndustry, CommandFlag::Deity, CMDT_LANDSCAPE_CONSTRUCTION)
 DEF_CMD_TRAIT(CMD_INDUSTRY_SET_FLAGS, CmdIndustrySetFlags, CommandFlag::Deity, CMDT_OTHER_MANAGEMENT)

@@ -12,6 +12,7 @@
 
 #include <string_view>
 #include "../core/bitmath_func.hpp"
+#include "../strings_type.h"
 
 /**
  * Endian-aware buffer adapter that always writes values in little endian order.
@@ -29,6 +30,7 @@ public:
 	EndianBufferWriter(typename Titer::container_type &container) : buffer(std::back_inserter(container)) {}
 
 	EndianBufferWriter &operator <<(const std::string &data) { return *this << std::string_view{ data }; }
+	EndianBufferWriter &operator <<(const EncodedString &data) { return *this << data.string; }
 	EndianBufferWriter &operator <<(const char *data) { return *this << std::string_view{ data }; }
 	EndianBufferWriter &operator <<(std::string_view data) { this->Write(data); return *this; }
 	EndianBufferWriter &operator <<(bool data) { return *this << static_cast<uint8_t>(data ? 1 : 0); }
@@ -153,6 +155,7 @@ public:
 	void rewind() { this->read_pos = 0; }
 
 	EndianBufferReader &operator >>(std::string &data) { data = this->ReadStr(); return *this; }
+	EndianBufferReader &operator >>(EncodedString &data) { data = EncodedString{this->ReadStr()}; return *this; }
 	EndianBufferReader &operator >>(bool &data) { data = this->Read<uint8_t>() != 0; return *this; }
 
 	template <typename... Targs>

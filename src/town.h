@@ -78,7 +78,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
 	std::array<uint32_t, NUM_TAE> goal{}; ///< Amount of cargo required for the town to grow.
 
-	std::string text{}; ///< General text with additional information.
+	EncodedString text{}; ///< General text with additional information.
 
 	inline uint8_t GetPercentTransported(CargoType cargo_type) const
 	{

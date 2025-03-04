@@ -13,13 +13,13 @@
 #include "command_type.h"
 #include "goal_type.h"
 
-std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text);
+std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID company, GoalType type, GoalTypeID dest, const EncodedString &text);
 CommandCost CmdRemoveGoal(DoCommandFlags flags, GoalID goal);
 CommandCost CmdSetGoalDestination(DoCommandFlags flags, GoalID goal, GoalType type, GoalTypeID dest);
-CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const std::string &text);
-CommandCost CmdSetGoalProgress(DoCommandFlags flags, GoalID goal, const std::string &text);
+CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const EncodedString &text);
+CommandCost CmdSetGoalProgress(DoCommandFlags flags, GoalID goal, const EncodedString &text);
 CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool completed);
-CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const std::string &text);
+CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const EncodedString &text);
 CommandCost CmdGoalQuestionAnswer(DoCommandFlags flags, uint16_t uniqueid, uint8_t button);
 
 DEF_CMD_TRAIT(CMD_CREATE_GOAL,          CmdCreateGoal,         CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CMDT_OTHER_MANAGEMENT)

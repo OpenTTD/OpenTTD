@@ -204,14 +204,14 @@ struct GoalListWindow : public Window {
 						case GC_GOAL: {
 							/* Display the goal. */
 							uint width_reduction = progress_col_width > 0 ? progress_col_width + WidgetDimensions::scaled.framerect.Horizontal() : 0;
-							DrawString(r.Indent(width_reduction, !rtl), GetString(STR_GOALS_TEXT, s->text));
+							DrawString(r.Indent(width_reduction, !rtl), GetString(STR_GOALS_TEXT, s->text.GetDecodedString()));
 							break;
 						}
 
 						case GC_PROGRESS:
 							if (!s->progress.empty()) {
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress.GetDecodedString()), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 							}
 							break;
 					}
@@ -240,7 +240,7 @@ struct GoalListWindow : public Window {
 		for (const Goal *s : Goal::Iterate()) {
 			if (!s->progress.empty()) {
 				StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-				uint str_width = GetStringBoundingBox(GetString(str, s->progress)).width;
+				uint str_width = GetStringBoundingBox(GetString(str, s->progress.GetDecodedString())).width;
 				if (str_width > max_width) max_width = str_width;
 			}
 		}
@@ -317,12 +317,12 @@ void ShowGoalsList(CompanyID company)
 
 /** Ask a question about a goal. */
 struct GoalQuestionWindow : public Window {
-	std::string question{}; ///< Question to ask (private copy).
+	EncodedString question{}; ///< Question to ask (private copy).
 	int buttons = 0; ///< Number of valid buttons in #button.
 	std::array<int, 3> button{}; ///< Buttons to display.
 	TextColour colour{}; ///< Colour of the question text.
 
-	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const std::string &question) : Window(desc), colour(colour)
+	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const EncodedString &question) : Window(desc), colour(colour)
 	{
 		this->question = question;
 
@@ -387,14 +387,14 @@ struct GoalQuestionWindow : public Window {
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
-		size.height = GetStringHeight(GetString(STR_JUST_RAW_STRING, this->question), size.width);
+		size.height = GetStringHeight(this->question.GetDecodedString(), size.width);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
-		DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, this->question), this->colour, SA_TOP | SA_HOR_CENTER);
+		DrawStringMultiLine(r, this->question.GetDecodedString(), this->colour, SA_TOP | SA_HOR_CENTER);
 	}
 };
 
@@ -472,7 +472,7 @@ static WindowDesc _goal_question_list_desc[] = {
  * @param button_mask Buttons to display.
  * @param question Question to ask.
  */
-void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const std::string &question)
+void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const EncodedString &question)
 {
 	assert(type < GQT_END);
 	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);

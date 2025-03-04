@@ -934,7 +934,7 @@ uint32_t SerialiseNewsReference(const NewsReference &reference)
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, const std::string &text)
+CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, const EncodedString &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -957,7 +957,7 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		AddNewsItem(GetEncodedString(STR_NEWS_CUSTOM_ITEM, text), type, NewsStyle::Normal, {}, reference, {});
+		AddNewsItem(GetEncodedString(STR_NEWS_CUSTOM_ITEM, text.GetDecodedString()), type, NewsStyle::Normal, {}, reference, {});
 	}
 
 	return CommandCost();
