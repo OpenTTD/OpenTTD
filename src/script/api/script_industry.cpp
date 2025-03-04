@@ -62,7 +62,7 @@
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
 
-	return ScriptObject::Command<CMD_INDUSTRY_SET_TEXT>::Do(industry_id, text != nullptr ? text->GetEncodedText() : std::string{});
+	return ScriptObject::Command<CMD_INDUSTRY_SET_TEXT>::Do(industry_id, text != nullptr ? text->GetEncodedText() : EncodedString{});
 }
 
 /* static */ ScriptIndustry::CargoAcceptState ScriptIndustry::IsCargoAccepted(IndustryID industry_id, CargoType cargo_type)
@@ -310,5 +310,5 @@
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
 	EnforcePrecondition(false, prod_level >= PRODLEVEL_MINIMUM && prod_level <= PRODLEVEL_MAXIMUM);
 
-	return ScriptObject::Command<CMD_INDUSTRY_SET_PRODUCTION>::Do(industry_id, prod_level, show_news, custom_news != nullptr ? custom_news->GetEncodedText() : std::string{});
+	return ScriptObject::Command<CMD_INDUSTRY_SET_PRODUCTION>::Do(industry_id, prod_level, show_news, custom_news != nullptr ? custom_news->GetEncodedText() : EncodedString{});
 }

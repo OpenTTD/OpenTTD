@@ -658,7 +658,7 @@ static void AddDropDownLeagueTableOptions(DropDownList &list)
 {
 	if (LeagueTable::GetNumItems() > 0) {
 		for (LeagueTable *lt : LeagueTable::Iterate()) {
-			list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, lt->title), lt->index.base()));
+			list.push_back(MakeDropDownListStringItem(lt->title.GetDecodedString(), lt->index.base()));
 		}
 	} else {
 		list.push_back(MakeDropDownListStringItem(STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE, LTMN_PERFORMANCE_LEAGUE));

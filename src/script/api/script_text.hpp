@@ -11,6 +11,7 @@
 #define SCRIPT_TEXT_HPP
 
 #include "script_object.hpp"
+#include "../../strings_func.h"
 
 #include <variant>
 
@@ -25,7 +26,7 @@ public:
 	 * @return A string.
 	 * @api -all
 	 */
-	virtual std::string GetEncodedText() = 0;
+	virtual EncodedString GetEncodedText() = 0;
 
 	/**
 	 * Convert a #ScriptText into a decoded normal string.
@@ -43,7 +44,7 @@ class RawText : public Text {
 public:
 	RawText(const std::string &text) : text(text) {}
 
-	std::string GetEncodedText() override { return this->text; }
+	EncodedString GetEncodedText() override { return ::GetEncodedString(STR_JUST_RAW_STRING, this->text); }
 private:
 	const std::string text;
 };
@@ -124,7 +125,7 @@ public:
 	/**
 	 * @api -all
 	 */
-	std::string GetEncodedText() override;
+	EncodedString GetEncodedText() override;
 
 private:
 	using ScriptTextRef = ScriptObjectRef<ScriptText>;

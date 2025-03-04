@@ -53,7 +53,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
 	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE>::Do(&ScriptInstance::DoCommandReturnStoryPageID,
-		c, title != nullptr ? title->GetEncodedText() : std::string{})) return STORY_PAGE_INVALID;
+		c, title != nullptr ? title->GetEncodedText() : EncodedString{})) return STORY_PAGE_INVALID;
 
 	/* In case of test-mode, we return StoryPageID 0 */
 	return StoryPageID::Begin();
@@ -68,7 +68,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforceDeityMode(STORY_PAGE_ELEMENT_INVALID);
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, IsValidStoryPage(story_page_id));
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, IsValidStoryPageElementType(type));
-	std::string encoded_text;
+	EncodedString encoded_text;
 	if (StoryPageElementTypeRequiresText(btype)) {
 		EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, text != nullptr);
 		encoded_text = text->GetEncodedText();
@@ -117,7 +117,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	const StoryPage *p = StoryPage::Get(pe->page);
 	::StoryPageElementType type = pe->type;
 
-	std::string encoded_text;
+	EncodedString encoded_text;
 	if (StoryPageElementTypeRequiresText(type)) {
 		EnforcePrecondition(false, text != nullptr);
 		encoded_text = text->GetEncodedText();
@@ -169,7 +169,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_STORY_PAGE_TITLE>::Do(story_page_id, title != nullptr ? title->GetEncodedText() : std::string{});
+	return ScriptObject::Command<CMD_SET_STORY_PAGE_TITLE>::Do(story_page_id, title != nullptr ? title->GetEncodedText() : EncodedString{});
 }
 
 /* static */ ScriptCompany::CompanyID ScriptStoryPage::GetCompany(StoryPageID story_page_id)

@@ -12,6 +12,7 @@
 
 #include "company_type.h"
 #include "story_type.h"
+#include "strings_type.h"
 #include "timer/timer_game_calendar.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
@@ -147,7 +148,7 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	StoryPageElementType type; ///< Type of page element
 
 	uint32_t referenced_id;      ///< Id of referenced object (location, goal etc.)
-	std::string text;          ///< Static content text of page element
+	EncodedString text;          ///< Static content text of page element
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
@@ -168,13 +169,13 @@ struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
 	TimerGameCalendar::Date date{}; ///< Date when the page was created.
 	CompanyID company = CompanyID::Invalid(); ///< StoryPage is for a specific company; CompanyID::Invalid() if it is global
 
-	std::string title; ///< Title of story page
+	EncodedString title; ///< Title of story page
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
 	StoryPage() { }
-	StoryPage(uint32_t sort_value, TimerGameCalendar::Date date, CompanyID company, const std::string &title) :
+	StoryPage(uint32_t sort_value, TimerGameCalendar::Date date, CompanyID company, const EncodedString &title) :
 		sort_value(sort_value), date(date), company(company), title(title) {}
 
 	~StoryPage();

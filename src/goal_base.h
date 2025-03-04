@@ -13,6 +13,7 @@
 #include "company_type.h"
 #include "goal_type.h"
 #include "core/pool_type.hpp"
+#include "strings_type.h"
 
 using GoalPool = Pool<Goal, GoalID, 64>;
 extern GoalPool _goal_pool;
@@ -22,15 +23,15 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	CompanyID company = CompanyID::Invalid(); ///< Goal is for a specific company; CompanyID::Invalid() if it is global
 	GoalType type = GT_NONE; ///< Type of the goal
 	GoalTypeID dst = 0; ///< Index of type
-	std::string text{}; ///< Text of the goal.
-	std::string progress{}; ///< Progress text of the goal.
+	EncodedString text{}; ///< Text of the goal.
+	EncodedString progress{}; ///< Progress text of the goal.
 	bool completed = false; ///< Is the goal completed or not?
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
 	Goal() { }
-	Goal(GoalType type, GoalTypeID dst, CompanyID company, const std::string &text) : company(company), type(type), dst(dst), text(text) {}
+	Goal(GoalType type, GoalTypeID dst, CompanyID company, const EncodedString &text) : company(company), type(type), dst(dst), text(text) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter

@@ -153,7 +153,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	return this->_SetParam(k, vm);
 }
 
-std::string ScriptText::GetEncodedText()
+EncodedString ScriptText::GetEncodedText()
 {
 	ScriptTextList seen_texts;
 	ParamList params;
@@ -163,7 +163,7 @@ std::string ScriptText::GetEncodedText()
 	this->_FillParamList(params, seen_texts);
 	this->_GetEncodedText(output, param_count, params, true);
 	if (param_count > SCRIPT_TEXT_MAX_PARAMETERS) throw Script_FatalError(fmt::format("{}: Too many parameters", GetGameStringName(this->string)));
-	return result;
+	return ::EncodedString{std::move(result)};
 }
 
 void ScriptText::_FillParamList(ParamList &params, ScriptTextList &seen_texts)
@@ -298,5 +298,5 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 
 const std::string Text::GetDecodedText()
 {
-	return ::GetString(STR_JUST_RAW_STRING, this->GetEncodedText());
+	return this->GetEncodedText().GetDecodedString();
 }

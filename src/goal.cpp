@@ -75,7 +75,7 @@ INSTANTIATE_POOL_METHODS(Goal)
  * @param text Text of the goal.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID company, GoalType type, GoalTypeID dest, const std::string &text)
+std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID company, GoalType type, GoalTypeID dest, const EncodedString &text)
 {
 	if (!Goal::CanAllocateItem()) return { CMD_ERROR, GoalID::Invalid() };
 
@@ -157,7 +157,7 @@ CommandCost CmdSetGoalDestination(DoCommandFlags flags, GoalID goal, GoalType ty
  * @param text Text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const std::string &text)
+CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const EncodedString &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(goal)) return CMD_ERROR;
@@ -184,7 +184,7 @@ CommandCost CmdSetGoalText(DoCommandFlags flags, GoalID goal, const std::string 
  * @param text Progress text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalProgress(DoCommandFlags flags, GoalID goal, const std::string &text)
+CommandCost CmdSetGoalProgress(DoCommandFlags flags, GoalID goal, const EncodedString &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(goal)) return CMD_ERROR;
@@ -240,7 +240,7 @@ CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool complete
  * @param text Text of the question.
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const std::string &text)
+CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const EncodedString &text)
 {
 	static_assert(sizeof(uint32_t) >= sizeof(CompanyID));
 	CompanyID company = (CompanyID)target;

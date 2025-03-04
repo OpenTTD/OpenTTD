@@ -61,7 +61,7 @@
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, IsValidTown(town_id));
 
-	return ScriptObject::Command<CMD_TOWN_SET_TEXT>::Do(town_id, text != nullptr ? text->GetEncodedText() : std::string{});
+	return ScriptObject::Command<CMD_TOWN_SET_TEXT>::Do(town_id, text != nullptr ? text->GetEncodedText() : EncodedString{});
 }
 
 /* static */ SQInteger ScriptTown::GetPopulation(TownID town_id)

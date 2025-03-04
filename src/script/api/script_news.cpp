@@ -38,7 +38,7 @@ static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQI
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, text != nullptr);
-	std::string encoded = text->GetEncodedText();
+	EncodedString encoded = text->GetEncodedText();
 	EnforcePreconditionEncodedText(false, encoded);
 	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);

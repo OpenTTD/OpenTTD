@@ -47,7 +47,7 @@
 
 	EnforceDeityMode(GOAL_INVALID);
 	EnforcePrecondition(GOAL_INVALID, goal != nullptr);
-	std::string text = goal->GetEncodedText();
+	EncodedString text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(GOAL_INVALID, text);
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(GOAL_INVALID, IsValidGoalDestination(company, type, destination));
@@ -83,7 +83,7 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, goal != nullptr);
-	std::string text = goal->GetEncodedText();
+	EncodedString text = goal->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
 
 	return ScriptObject::Command<CMD_SET_GOAL_TEXT>::Do(goal_id, text);
@@ -96,7 +96,7 @@
 	EnforcePrecondition(false, IsValidGoal(goal_id));
 	EnforceDeityMode(false);
 
-	return ScriptObject::Command<CMD_SET_GOAL_PROGRESS>::Do(goal_id, progress != nullptr ? progress->GetEncodedText() : std::string{});
+	return ScriptObject::Command<CMD_SET_GOAL_PROGRESS>::Do(goal_id, progress != nullptr ? progress->GetEncodedText() : EncodedString{});
 }
 
 /* static */ bool ScriptGoal::SetCompleted(GoalID goal_id, bool completed)
@@ -122,7 +122,7 @@
 
 	EnforceDeityMode(false);
 	EnforcePrecondition(false, question != nullptr);
-	std::string text = question->GetEncodedText();
+	EncodedString text = question->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
 	uint min_buttons = (type == QT_QUESTION ? 1 : 0);
 	EnforcePrecondition(false, CountBits<uint64_t>(buttons) >= min_buttons && CountBits<uint64_t>(buttons) <= 3);

@@ -24,7 +24,7 @@ CommandCost CmdDoTownAction(DoCommandFlags flags, TownID town_id, TownAction act
 CommandCost CmdTownGrowthRate(DoCommandFlags flags, TownID town_id, uint16_t growth_rate);
 CommandCost CmdTownRating(DoCommandFlags flags, TownID town_id, CompanyID company_id, int16_t rating);
 CommandCost CmdTownCargoGoal(DoCommandFlags flags, TownID town_id, TownAcceptanceEffect tae, uint32_t goal);
-CommandCost CmdTownSetText(DoCommandFlags flags, TownID town_id, const std::string &text);
+CommandCost CmdTownSetText(DoCommandFlags flags, TownID town_id, const EncodedString &text);
 CommandCost CmdExpandTown(DoCommandFlags flags, TownID town_id, uint32_t grow_amount);
 CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id);
 CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected);
