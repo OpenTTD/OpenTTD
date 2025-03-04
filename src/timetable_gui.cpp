@@ -685,7 +685,7 @@ struct TimetableWindow : Window {
 				}
 
 				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
-				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME_QUERY, 31, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
 			}
 
@@ -705,7 +705,7 @@ struct TimetableWindow : Window {
 				}
 
 				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
-				ShowQueryString(current, STR_TIMETABLE_CHANGE_SPEED, 31, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_SPEED_QUERY, 31, this, CS_NUMERAL, QSF_NONE);
 				break;
 			}
 
