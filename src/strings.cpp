@@ -119,6 +119,16 @@ EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParam
 
 		void operator()(const std::string &value)
 		{
+#ifdef WITH_ASSERT
+			/* Don't allow an encoded string to contain another encoded string. */
+			if (!value.empty()) {
+				char32_t c;
+				const char *p = value.data();
+				if (Utf8Decode(&c, p)) {
+					assert(c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL);
+				}
+			}
+#endif /* WITH_ASSERT */
 			Utf8Encode(output, SCC_ENCODED_STRING);
 			fmt::format_to(this->output, "{}", value);
 		}
