@@ -5094,7 +5094,6 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Сним
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Снимок миникарты
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :ИИ
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :игровых скриптов
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыть

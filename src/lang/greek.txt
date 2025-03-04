@@ -2997,6 +2997,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Επιλ
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Επιλογή γέφυρας - πατήστε στη γέφυρα της προτίμησής σας για κατασκευή
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Ατσάλινη, Κρεμαστή
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ατσάλινη, με Δοκούς
@@ -3724,17 +3725,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Βρέ�
 STR_NEWGRF_LIST_MISSING                                         :{RED}Λείπουν αρχεία
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF «{0:STRING}» είναι πιθανό να προκαλέσει αποσυγχρονισμούς ή/και απρόοπτα κλεισίματα
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Άλλαξε την κατάσταση *** για «{1:ENGINE}» όταν δεν είναι μέσα σε αμαξοστάσιο
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος «{1:ENGINE}» ενώ δεν βρισκόταν μέσα σε αμαξοστάσιο
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Άλλαξε τη χωριτικότητα όχηματος για τη «{1:ENGINE}» όταν δεν είναι σε αμαξοστάσιο ή διαδικασία μετατροπής
+STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' είναι πιθανό να προκαλέσει αποσυγχρονισμούς ή/και απρόοπτα κλεισίματα
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Άλλαξε την κατάσταση μηχανοκίνητου βαγονιού για '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' όταν δεν είναι μέσα σε αμαξοστάσιο
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλαξε το μήκος του οχήματος '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' όταν δεν βρίσκεται μέσα σε αμαξοστάσιο
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Άλλαξε τη χωρητικότητα όχηματος για τη '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' όταν δεν είναι σε αμαξοστάσιο ή σε διαδικασία μετατροπής
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρένο «{VEHICLE}» που ανήκει στην εταιρία «{COMPANY}» έχει μη έγκυρο μήκος. Πιθανόν να προκλήθηκε από προβλήματα με κάποια NewGRF. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κλείσει απρόοπτα.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF «{0:STRING}» δίνει λάθος πληροφορίες
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για το «{1:ENGINE}» διαφέρει από τη λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία της αυτόματης ανανέωσης/αντικατάστασης για σωστή μετατροπή
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Το «{1:STRING}» προκάλεσε ένα ατέρμονο βρόχο στην κλήση παραγωγής
+STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' δίνει λάθος πληροφορίες
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για τη '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' διαφέρει από τη λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία σωστής μετατροπής της διαδικασίας αυτόματης ανανέωσης/αντικατάστασης
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Το '{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' προκάλεσε ένα ατέρμονο βρόχο στην κλήση παραγωγής
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Η κλήση {1:HEX} επέστρεψε άγνωστο/άκυρο αποτέλεσμα {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}Το '{1:STRING}' επέστρεψε άγνωστο/άκυρο τύπο εμπορεύματος στην κλήση {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}Το '{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' επέστρεψε άγνωστο/άκυρο τύπο εμπορεύματος στην κλήση {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
@@ -4132,6 +4133,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Παρά
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Απαιτεί:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} περιμένει/νουν{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} περιμένει/νουν
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής (πολλαπλάσιο του 8, μέχρι το 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Αλλαγή του επιπέδου παραγωγής (ποσοστιαία, μέχρι το 800%)
@@ -5003,7 +5008,6 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγ
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Σενάριο Παιχνιδιού
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο

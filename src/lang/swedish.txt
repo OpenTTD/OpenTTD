@@ -4880,7 +4880,6 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Skärmdu
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Skärmdump av miniatyrkartan
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrar
 STR_AI_SETTINGS_CAPTION_AI                                      :Datorspelare
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng

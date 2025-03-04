@@ -547,37 +547,37 @@ STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Ativar coloraç
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alternar contornos de "widget"
 
 ###length 31
-STR_DAY_NUMBER_1ST                                              :1.º
-STR_DAY_NUMBER_2ND                                              :2.º
-STR_DAY_NUMBER_3RD                                              :3.º
-STR_DAY_NUMBER_4TH                                              :4.º
-STR_DAY_NUMBER_5TH                                              :5.º
-STR_DAY_NUMBER_6TH                                              :6.º
-STR_DAY_NUMBER_7TH                                              :7.º
-STR_DAY_NUMBER_8TH                                              :8.º
-STR_DAY_NUMBER_9TH                                              :9.º
-STR_DAY_NUMBER_10TH                                             :10.º
-STR_DAY_NUMBER_11TH                                             :11.º
-STR_DAY_NUMBER_12TH                                             :12.º
-STR_DAY_NUMBER_13TH                                             :13.º
-STR_DAY_NUMBER_14TH                                             :14.º
-STR_DAY_NUMBER_15TH                                             :15.º
-STR_DAY_NUMBER_16TH                                             :16.º
-STR_DAY_NUMBER_17TH                                             :17.º
-STR_DAY_NUMBER_18TH                                             :18.º
-STR_DAY_NUMBER_19TH                                             :19.º
-STR_DAY_NUMBER_20TH                                             :20.º
-STR_DAY_NUMBER_21ST                                             :21.º
-STR_DAY_NUMBER_22ND                                             :22.º
-STR_DAY_NUMBER_23RD                                             :23.º
-STR_DAY_NUMBER_24TH                                             :24.º
-STR_DAY_NUMBER_25TH                                             :25.º
-STR_DAY_NUMBER_26TH                                             :26.º
-STR_DAY_NUMBER_27TH                                             :27.º
-STR_DAY_NUMBER_28TH                                             :28.º
-STR_DAY_NUMBER_29TH                                             :29.º
-STR_DAY_NUMBER_30TH                                             :30.º
-STR_DAY_NUMBER_31ST                                             :31.º
+STR_DAY_NUMBER_1ST                                              :1
+STR_DAY_NUMBER_2ND                                              :2
+STR_DAY_NUMBER_3RD                                              :3
+STR_DAY_NUMBER_4TH                                              :4
+STR_DAY_NUMBER_5TH                                              :5
+STR_DAY_NUMBER_6TH                                              :6
+STR_DAY_NUMBER_7TH                                              :7
+STR_DAY_NUMBER_8TH                                              :8
+STR_DAY_NUMBER_9TH                                              :9
+STR_DAY_NUMBER_10TH                                             :10
+STR_DAY_NUMBER_11TH                                             :11
+STR_DAY_NUMBER_12TH                                             :12
+STR_DAY_NUMBER_13TH                                             :13
+STR_DAY_NUMBER_14TH                                             :14
+STR_DAY_NUMBER_15TH                                             :15
+STR_DAY_NUMBER_16TH                                             :16
+STR_DAY_NUMBER_17TH                                             :17
+STR_DAY_NUMBER_18TH                                             :18
+STR_DAY_NUMBER_19TH                                             :19
+STR_DAY_NUMBER_20TH                                             :20
+STR_DAY_NUMBER_21ST                                             :21
+STR_DAY_NUMBER_22ND                                             :22
+STR_DAY_NUMBER_23RD                                             :23
+STR_DAY_NUMBER_24TH                                             :24
+STR_DAY_NUMBER_25TH                                             :25
+STR_DAY_NUMBER_26TH                                             :26
+STR_DAY_NUMBER_27TH                                             :27
+STR_DAY_NUMBER_28TH                                             :28
+STR_DAY_NUMBER_29TH                                             :29
+STR_DAY_NUMBER_30TH                                             :30
+STR_DAY_NUMBER_31ST                                             :31
 
 ###length 12
 STR_MONTH_ABBREV_JAN                                            :Jan
@@ -2266,8 +2266,8 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Comunida
 STR_CHEATS                                                      :{WHITE}Opções da "sandbox"
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, objectos amovíveis etc.): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora mágica (remove indústrias, objetos imóveis): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis podem cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aviões a jato não irão ter acidentes (frequentes) em aeroportos pequenos: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Editar altura máxima do mapa: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Editar altura máxima de montanhas no mapa
@@ -4908,7 +4908,6 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de ecrã do minimapa
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Jogo
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar

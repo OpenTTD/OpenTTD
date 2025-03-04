@@ -4849,7 +4849,6 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Ciplun m
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Ciplun map bychan
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramedrau
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Sgript Gêm
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cau
