@@ -46,8 +46,7 @@
 #include "depot_base.h"
 #include "object_map.h"
 #include "object_base.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "town_cmd.h"
 #include "landscape_cmd.h"
 #include "road_cmd.h"
@@ -2237,8 +2236,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 				std::string company_name = GetString(STR_COMPANY_NAME, _current_company);
 				AddTileNewsItem(GetEncodedString(STR_NEWS_NEW_TOWN, company_name, t->index), NewsType::IndustryOpen, tile);
 			}
-			AI::BroadcastNewEvent(new ScriptEventTownFounded(t->index));
-			Game::NewEvent(new ScriptEventTownFounded(t->index));
+			ScriptTrigger::BroadcastNewEvent<ScriptEventTownFounded>(t->index);
 		}
 	}
 	return { cost, 0, new_town };
@@ -3409,8 +3407,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlags flags)
 		AddNewsItem(
 			GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_ROAD_REBUILDING_MINUTES : STR_NEWS_ROAD_REBUILDING_MONTHS, t->index, company_name),
 			NewsType::General, NewsStyle::Normal, {}, t->index);
-		AI::BroadcastNewEvent(new ScriptEventRoadReconstruction(_current_company, t->index));
-		Game::NewEvent(new ScriptEventRoadReconstruction(_current_company, t->index));
+		ScriptTrigger::BroadcastNewEvent<ScriptEventRoadReconstruction>(_current_company, t->index);
 	}
 	return CommandCost();
 }
@@ -3562,8 +3559,7 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlags flags)
 		EncodedString message = GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES : STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS, t->index, cni->company_name);
 		AddNewsItem(std::move(message),
 			NewsType::General, NewsStyle::Company, {}, t->index, {}, std::move(cni));
-		AI::BroadcastNewEvent(new ScriptEventExclusiveTransportRights(_current_company, t->index));
-		Game::NewEvent(new ScriptEventExclusiveTransportRights(_current_company, t->index));
+		ScriptTrigger::BroadcastNewEvent<ScriptEventExclusiveTransportRights>(_current_company, t->index);
 	}
 	return CommandCost();
 }
