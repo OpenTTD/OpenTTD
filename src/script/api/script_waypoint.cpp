@@ -31,7 +31,7 @@
 /* static */ bool ScriptWaypoint::HasWaypointType(StationID waypoint_id, WaypointType waypoint_type)
 {
 	if (!IsValidWaypoint(waypoint_id)) return false;
-	if (!HasExactlyOneBit(waypoint_type)) return false;
+	if (waypoint_type != WAYPOINT_RAIL && waypoint_type != WAYPOINT_BUOY && waypoint_type != WAYPOINT_ROAD) return false;
 
 	return ::Waypoint::Get(waypoint_id)->facilities.Any(static_cast<StationFacilities>(waypoint_type));
 }

@@ -21,6 +21,11 @@
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIRoad::IsRoadWaypointTile
+ * \li AIRoad::BuildRoadWaypoint
+ * \li AIRoad::RemoveRoadWaypointTileRectangle
+ * \li AIWaypoint::WAYPOINT_ROAD
+ * \li AIRoad::BT_WAYPOINT
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
