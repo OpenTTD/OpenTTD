@@ -53,9 +53,9 @@
 	return ScriptCompany::ToScriptCompanyID(::Subsidy::Get(subsidy_id)->awarded);
 }
 
-/* static */ ScriptDate::Date ScriptSubsidy::GetExpireDate(SubsidyID subsidy_id)
+/* static */ ScriptEconomyDate *ScriptSubsidy::GetExpireDate(SubsidyID subsidy_id)
 {
-	if (!IsValidSubsidy(subsidy_id)) return ScriptDate::DATE_INVALID;
+	if (!IsValidSubsidy(subsidy_id)) return new ScriptEconomyDate();
 
 	TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 	ymd.day = 1;
@@ -63,7 +63,7 @@
 	ymd.month = (m - 1) % 12 + 1;
 	ymd.year += TimerGameEconomy::Year{(m - 1) / 12};
 
-	return (ScriptDate::Date)TimerGameEconomy::ConvertYMDToDate(ymd.year, ymd.month, ymd.day).base();
+	return ScriptEconomyDate::GetDate(ymd.year.base(), ymd.month + 1, ymd.day);
 }
 
 /* static */ CargoType ScriptSubsidy::GetCargoType(SubsidyID subsidy_id)
