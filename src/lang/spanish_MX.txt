@@ -279,8 +279,8 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Elegir o
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Elegir patrón de ordenamiento
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Elegir criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar
-STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
-STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar u ocultar vista de área de recolección
+STR_BUTTON_CATCHMENT                                            :{BLACK}Alcance
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar u ocultar área de recolección
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cerrar ventana
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana (arrastrar para mover)
@@ -392,8 +392,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Abrir li
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Abrir información financiera de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Abrir información general de la empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Abrir libro de historias
-STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Mostrar lista de objetivos
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficas de empresa y tasas de pago por carga
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Abrir lista de objetivos
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Abrir gráficas de empresa y tasas de pago por carga
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Abrir tabla de evaluación de empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Abrir directorio de industrias, cadenas industriales o financiar una nueva industria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Abrir lista de trenes de la empresa. Ctrl+Clic oculta la lista de grupos
@@ -427,7 +427,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Generaci
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Construcción de carreteras
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Construcción de tranvía
 STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Plantar árboles. Ctrl+Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Poner cartel
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Poner letrero
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Colocar objeto. Ctrl+Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
 
 # Scenario editor file menu
@@ -460,12 +460,12 @@ STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Muelles
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeropuertos
 STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Vestigios
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Mostrar puntos de ruta
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar carteles propios
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar carteles y nombres del competidor
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Mostrar letreros propios
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar letreros y nombres de la competencia
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animación completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalle completo
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Carteles transparentes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Letreros transparentes
 
 # File menu
 STR_FILE_MENU_SAVE_GAME                                         :Guardar partida
@@ -477,7 +477,7 @@ STR_FILE_MENU_EXIT                                              :Salir
 STR_MAP_MENU_MAP_OF_WORLD                                       :Minimapa completo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ventana de vista adicional
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de flujos de carga
-STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
+STR_MAP_MENU_SIGN_LIST                                          :Lista de letreros
 
 # Town menu
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de localidades
@@ -842,7 +842,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista de
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING} - {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensaje
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer tren a {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Los ciudadanos celebran:{}¡Llegada del primer autobús a {STATION}!
@@ -1219,7 +1218,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (no afecta las acciones de las empresas)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron archivos de IA apropiados...{}Se pueden descargar por medio del sistema de 'Contenido en línea'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron archivos de IA apropiados...{}{}Se pueden descargar por medio del sistema de 'Contenido en línea'
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
@@ -2652,7 +2651,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} sa
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} cambió su nombre a {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} le transfirió {CURRENCY_LONG} a {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está reiniciando el servidor...{}Espera por favor...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está reiniciando el servidor...{}{}Espera por favor...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}El registro del servidor falló
@@ -2741,15 +2740,15 @@ STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Salir de
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opciones de transparencia
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparencia de carteles. Ctrl+Clic para bloquear
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparencia de árboles. Ctrl+Clic para bloquear
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparencia de casas. Ctrl+Clic para bloquear
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparencia de industrias. Ctrl+Clic para bloquear
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparencia de estaciones, depósitos o puntos de ruta. Ctrl+Clic para bloquear
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparencia de puentes. Ctrl+Clic para bloquear
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparencia de estructuras como faros o antenas. Ctrl+Clic para bloquear
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparencia de catenaria. Ctrl+Clic para bloquear
-STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Transparencia de texto que indica la carga, el costo y los ingresos. Ctrl+clic para bloquear
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Letreros transparentes. Ctrl+Clic para bloquear
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Árboles transparentes. Ctrl+Clic para bloquear
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Casas transparentes. Ctrl+Clic para bloquear
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Industrias transparentes. Ctrl+Clic para bloquear
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Estaciones, depósitos y puntos de ruta transparentes. Ctrl+Clic para bloquear
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Puentes transparentes. Ctrl+Clic para bloquear
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Estructuras como faros o antenas transparentes. Ctrl+Clic para bloquear
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Catenaria transparente. Ctrl+Clic para bloquear
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}Indicadores de carga, costo e ingresos transparentes. Ctrl+clic para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ocultar objetos totalmente
 
 # Linkgraph legend window
@@ -3387,7 +3386,7 @@ STR_MAPGEN_TOWN_NAME_FRENCH                                     :Francés
 STR_MAPGEN_TOWN_NAME_GERMAN                                     :Alemán
 STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :Inglés (adicional)
 STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :América Latina
-STR_MAPGEN_TOWN_NAME_SILLY                                      :Tonterías (inglés)
+STR_MAPGEN_TOWN_NAME_SILLY                                      :Infantiles (inglés)
 STR_MAPGEN_TOWN_NAME_SWEDISH                                    :Sueco
 STR_MAPGEN_TOWN_NAME_DUTCH                                      :Holandés
 STR_MAPGEN_TOWN_NAME_FINNISH                                    :Finlandés
@@ -3662,17 +3661,17 @@ STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} Ne
 STR_NEWGRF_SCAN_ARCHIVES                                        :Analizando archivos
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles: {COMMA} cartel{P "" es}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de letreros: {COMMA} cartel{P "" es}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Distinguir mayúsculas
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Distinguir entre mayúsculas y minúsculas al filtrar la lista de carteles
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Distinguir entre mayúsculas y minúsculas al filtrar los letreros
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto del cartel
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto del letrero
 STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrar vista en el letrero. Ctrl+Clic abre una vista aparte en su ubicación
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir al siguiente cartel
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir al cartel anterior
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ir al letrero siguiente
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ir al letrero anterior
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Indicar un nombre para el cartel
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Indicar un nombre para el letrero
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Localidades ({COMMA} de {COMMA})
@@ -4793,7 +4792,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Este iti
 
 STR_TIMETABLE_START                                             :{BLACK}Comenzar itinerario
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Elegir el inicio del itinerario. Ctrl+clic para distribuir uniformemente el comienzo de todos los vehículos que lo comparten según su orden relativo, si el itinerario está lleno
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos hasta el comienzo del itinerario
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar duración
@@ -4908,8 +4906,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de minimapa
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de juego
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parámetros de IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parámetros de script de juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Restablecer parámetros
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4970,7 +4968,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partida fue guardada en una versión que no admite tranvías. Todos los tranvías serán eliminados
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}... no hay ubicaciones apropiadas para localidades
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}{}... no hay ubicaciones apropiadas para localidades
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hay localidades en el mapa
 
 STR_ERROR_PNGMAP                                                :{WHITE}No se puede cargar mapa desde PNG...
@@ -5061,7 +5059,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... dema
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiadas localidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ya no hay espacio en el mapa
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede eliminar esta localidad...{}Aún tiene una estación o depósito, o una de sus casillas no se puede quitar
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede eliminar esta localidad...{}{}Aún tiene una estación o depósito, o una de sus casillas no se puede quitar
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hay lugar apto para una estatua en el centro de esta localidad
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}No se puede construir edificio...
 
@@ -5416,10 +5414,10 @@ STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... el i
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... el itinerario aún no ha comenzado
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados carteles
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}No se puede poner cartel aquí...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No se puede cambiar el nombre del cartel...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}No se puede quitar el cartel...
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados letreros
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}No se puede poner el letrero aquí...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No se puede cambiar nombre del letrero...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}No se puede borrar el letrero...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1
@@ -5856,7 +5854,7 @@ STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STAT
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :estación desconocida
-STR_DEFAULT_SIGN_NAME                                           :Cartel
+STR_DEFAULT_SIGN_NAME                                           :Letrero
 STR_COMPANY_SOMEONE                                             :alguien
 
 STR_SAVEGAME_DURATION_REALTIME                                  :{NUM}h {NUM}m
@@ -5902,8 +5900,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

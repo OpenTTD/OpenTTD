@@ -291,7 +291,6 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * ठ
 
 # News message history
 
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}नागरिक हर्षित हैं . . .{}पहली माल ट्रैम {STATION} पर पहुँची है!
 
@@ -1400,7 +1399,6 @@ STR_ORDER_NO_LOAD                                               :(कोई ल�
 
 # Time table window
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}आदेश
-
 
 
 

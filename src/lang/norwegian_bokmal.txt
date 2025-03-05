@@ -843,7 +843,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Innbyggerne jubler . . .{}Første tog ankommer {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Innbyggerne jubler . . .{}Første buss ankommer {STATION}!
@@ -4783,7 +4782,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Denne ru
 
 STR_TIMETABLE_START                                             :{BLACK}Start rutetabell
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Velg når denne rutetabellen starter. Ctrl+klikk for å distribuere start av alle transportmidler som deler denne ordren basert på deres innbyrdes rekkefølge jevnt, hvis ordren er fullstendig beskrevet i rutetabellen
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunder til rutetabellen starter
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Endre tid
@@ -5892,8 +5890,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

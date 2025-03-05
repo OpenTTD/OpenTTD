@@ -799,7 +799,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}רשימ
 STR_MESSAGE_NEWS_FORMAT                                         :{1:STRING}  -  {0:STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}הודעה
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}התושבים חוגגים . . .{}רכבת ראשונה הגיעה ל{STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}תושבים חוגגים . . .{}אוטובוס ראשון הגיע ל{STATION}!
@@ -4316,7 +4315,6 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}כלי �
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}{STRING} רכב זה מאחר ב
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}{STRING} רכב זה מקדים ב
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}לוח זמנים זה עדיין לא התחיל
-
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}שנה זמן

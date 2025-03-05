@@ -1327,7 +1327,6 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 
 
 
-
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Промена на брзина
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Промена на Максимална брзина од означената цел
 

@@ -1588,7 +1588,6 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
-
 # Date window (for timetable)
 
 

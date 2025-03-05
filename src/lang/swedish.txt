@@ -839,7 +839,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En lista
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Meddelande
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första bussen ankommer till {STATION}!
@@ -4765,7 +4764,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Denna ti
 
 STR_TIMETABLE_START                                             :{BLACK}Starta tidtabell
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Välj när denna tidtabell startar. Ctrl+Klick för jämn distribution av starterna för alla fordon som delar denna order, baserat på deras relativa ordning, om ordern är helt schemalagd
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunder tills tidtabellen startar
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra tid
@@ -5864,8 +5862,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

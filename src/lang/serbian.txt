@@ -1007,7 +1007,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Spisak s
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Poruka
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog voza na stanicu {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog autobusa na stanicu {STATION}!
@@ -4796,7 +4795,6 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ovaj ras
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Ovaj red vožnje će započeti za {COMMA} sekund{P u e e}
 
 STR_TIMETABLE_START                                             :{BLACK}Početak rasporeda
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Broj sekundi do početka rasporeda
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promena vremena
@@ -5870,7 +5868,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

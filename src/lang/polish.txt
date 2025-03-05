@@ -1221,7 +1221,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista os
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING} - {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Wiadomość
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mieszkańcy świętują . . .{}Pierwszy pociąg przybył do {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Mieszkańcy świętują . . .{}Pierwszy autobus przybył do {STATION}!
@@ -1598,7 +1597,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne (bez wpływu na działania firmy)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez przeglądarkę „Dodatków Online”
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak odpowiednich SI...{}{}Możesz pobrać różne SI przez „Przeglądarkę Dodatków”
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ustawienia
@@ -3031,7 +3030,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} op
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmienił swoją nazwę na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Firma {0:STRING} przekazała firmie {2:STRING} {1:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serwer zamknął sesję
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}Proszę czekać...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}{}Proszę czekać...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} został wyrzucony. Powód: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Rejestracja serwera nie powiodła się
@@ -5178,7 +5177,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Ten rozk
 
 STR_TIMETABLE_START                                             :{BLACK}Początek Rozkładu
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Wybierz moment rozpoczęcia tego rozkładu jazdy. Użyj Ctrl, aby rozłożyć równomiernie momenty startów każdego z pojazdów współdzielących te polecenia w oparciu o ich względną kolejność (jeśli rozkład jest w pełni zaplanowany)
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundy do uruchomienia rozkładu jazdy
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień Czas
@@ -5293,8 +5291,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Zrzut ob
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut obrazu minimapy
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :SI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry SI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parametry Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5355,7 +5353,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generowanie mapy anulowane...{}... brak odpowiednich miejsc dla miast
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generowanie mapy anulowane...{}{}... brak odpowiednich miejsc dla miast
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... nie ma żadnego miasta w scenariuszu
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nie można wczytać krajobrazu z PNG...
@@ -5446,7 +5444,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zbyt
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zbyt wiele miast
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie ma więcej miejsca na mapie
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trwają roboty drogowe
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}Stacja lub zajezdnia przynależy do tego miasta lub obszar miasta nie może być usunięty
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}{}Stacja lub zajezdnia przynależy do tego miasta lub obszar miasta nie może być usunięty
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... w centrum tego miasta nie ma odpowiedniego miejsca na pomnik
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nie można postawić budynku...
 
@@ -6342,8 +6340,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

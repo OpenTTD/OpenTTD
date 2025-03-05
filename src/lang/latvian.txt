@@ -843,7 +843,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Neseno z
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Ziņojums
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais vilciens ierodas {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais autobuss ierodas {STATION}!
@@ -4793,7 +4792,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Šis gra
 
 STR_TIMETABLE_START                                             :{BLACK}Sākt Grafiku
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Atlasiet, kad sākas šis grafiks. Ctrl+klikšķis, lai vienmērīgi sadalītu visu transportlīdzekļu sākumu, kas koplieto šo rīkojumu. Rīkojumā visiem transportiem jāizmanto grafiks
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundes līdz grafika sākumam
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
@@ -5902,8 +5900,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

@@ -970,7 +970,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Спис
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Повідомлення
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший автобус з'явився на {STATION}!
@@ -4880,7 +4879,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS.d                         :{BLACK}Цей �
 
 STR_TIMETABLE_START                                             :{BLACK}Початок розкладу
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Обрати початок розкладу. Ctrl+клац для рівного розподілу початку руху транспорту зі спільними завданнями. Якщо завдання включає в себе розклад, транспорт розподілиться по маршруту з його урахуванням
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Секунд до початку розкладу
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
@@ -6016,8 +6014,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

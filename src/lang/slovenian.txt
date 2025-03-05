@@ -900,7 +900,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Seznam z
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sporočilo
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Prebivalci praznujejo . . .{}Prvi vlak je slovesno pripeljal{}na postajo {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Prebivalci praznujejo . . .{}Prihod prvega avtobusa na postajo {STATION}!
@@ -4117,7 +4116,6 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}To vozil
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}To vozilo zamuja za {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}To vozilo prehiteva za {STRING} .
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ta urnik se še ni začel
-
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Spremeni čas

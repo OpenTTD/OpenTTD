@@ -883,7 +883,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Nimekiri
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teade
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Rahvas tervitab. . .{}{STATION} jaama saabus esimene rong!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Rahvas tervitab. . .{}{STATION} jaama saabus esimene buss!
@@ -4761,7 +4760,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}See graa
 
 STR_TIMETABLE_START                                             :{BLACK}Alusta graafikut
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Vali, millal see graafik algab. Ctrl+klõps hajutab võrdselt kõikide sõidukite alustamise nende suhtelise järjestuse põhjal, kui korraldus on täielikult ajastatud
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundeid kuni graafik algab
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
@@ -5855,7 +5853,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

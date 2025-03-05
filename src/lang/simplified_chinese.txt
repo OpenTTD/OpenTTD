@@ -841,7 +841,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最新�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}消息
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}首列火车抵达 {STATION}！
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}首辆巴士抵达 {STATION}！
@@ -1218,7 +1217,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :隐忍
 STR_CITY_APPROVAL_HOSTILE                                       :对立
 STR_CITY_APPROVAL_PERMISSIVE                                    :放任（所有行为均不受影响）
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合适的 AI 可用……{}你可以在线下载各种 AI
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}无合适的 AI 可用……{}{}可以使用“线上拓展内容”功能下载新的 AI
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}设置
@@ -2651,7 +2650,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已更改姓名为 {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 给予 {2:STRING} {1:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器已关闭会话
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动……{}请稍等……
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动……{}{}请稍等……
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 被踢出服务器。原因：（{STRING}）
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}服务器注册失败
@@ -4792,7 +4791,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}本时�
 
 STR_TIMETABLE_START                                             :{BLACK}开始时刻表
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}选择此时刻表开始的时间。如果调度计划有完善的时刻表，则按住 <Ctrl> 键单击会根据它们的相对顺序均匀分配共享此调度计划的所有载具的出发时间
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :直至时刻表开始的秒数
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
@@ -4908,7 +4906,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}小地�
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI 参数
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :游戏脚本
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}游戏脚本参数
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}关闭
 STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}：{ORANGE}{STRING}
@@ -4969,7 +4967,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<不可用>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}游戏已保存为无电车版。所有电车已被去除
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}生成场景失败……{}……无合适地点建设城镇
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}地图生成失败……{}{}……无合适地点建设城镇
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}当前场景中没有城镇……
 
 STR_ERROR_PNGMAP                                                :{WHITE}无法从 PNG 文件中读取场景……
@@ -5060,7 +5058,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}……�
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}……已有太多城镇
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}……地图没有足够空间
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇……{}城镇范围内还有车站、车库或无法移除的区块
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇……{}{}城镇范围内尚有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}……城市中心没有合适的地方放置公司塑像
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}不能建造房屋……
 
@@ -5901,8 +5899,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

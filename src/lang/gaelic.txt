@@ -950,7 +950,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liosta n
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Brath
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Hòro-gheallaidh nan saoranach . . .{}Ràinig a' chiad trèan {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Hòro-gheallaidh nan saoranach . . .{}Ràinig a' chiad bhus {STATION}!
@@ -4231,7 +4230,6 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Tha an c
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Tha an carbad seo {STRING} air deireadh an-dràsta
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Tha an carbad seo {STRING} ro àm an-dràsta
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Cha do thòisich an clàr-ama seo fhathast
-
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Uair eile

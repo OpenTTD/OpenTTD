@@ -842,7 +842,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}최근 �
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}시민들이 기뻐합니다 . . .{}{STATION}에 처음으로 열차가 도착했습니다!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}시민들이 기뻐합니다 . . .{}{STATION}에 처음으로 버스가 도착했습니다!
@@ -4788,7 +4787,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}이 시�
 
 STR_TIMETABLE_START                                             :{BLACK}시간표 시작
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}이 시간표가 언제 시작할지 선택합니다. CTRL+클릭하면, 만약 모든 경로에 시간표가 작성되어 있는 경우 이 경로를 공유하고 있는 모든 차량을 차량의 상대적인 순서에 따라 동일하게 배치시킵니다
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :시간표를 이 시간(초) 뒤에 시작
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
@@ -5897,8 +5895,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

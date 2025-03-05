@@ -712,7 +712,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Лист
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Порака
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Граѓаните го слават. . .{}Првиот воз пристигнува во {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}граѓаните го слават . . .{}Прво автобус пристигнува во {STATION}!
@@ -1921,7 +1920,6 @@ STR_ORDER_OUT_OF_RANGE                                          :{RED} (След
 
 
 # Time table window
-
 
 
 

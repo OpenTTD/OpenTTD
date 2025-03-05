@@ -738,7 +738,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Azken al
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mezua
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Hiritarrak ospatzen dute . . .{} {STATION}era heltzen den lehenengo trena!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen del lehenengo autobusa!
@@ -3848,7 +3847,6 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ibilgail
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ibilgailu hau {STRING} berandu dabil
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ibilgailu hau {STRING} aurreratua dabil
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ordutegia ez da hasi
-
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Denbora aldatu

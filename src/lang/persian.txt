@@ -741,7 +741,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}لیست
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}پیغام
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
@@ -3404,7 +3403,6 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :حرکت ({STRI
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :حرکت ({STRING}, برنامه ریزی نشده است) با حداکثر {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(توقف برای {STRING}, برنامه ریزی نشده است)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(دستور کار {STRING}, برنامه ریزی نشده است)
-
 
 
 

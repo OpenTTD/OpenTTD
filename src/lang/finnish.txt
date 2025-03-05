@@ -841,7 +841,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista vi
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  –  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Viesti
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Asukkaat juhlivat . . .{}{STATION} vastaanottaa ensimmäisen linja-auton!
@@ -1218,7 +1217,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
 STR_CITY_APPROVAL_HOSTILE                                       :Vihamielinen
 STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva (ei vaikutusta yhtiön toimiin)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ei soveltuvia tekoälyjä saatavilla...{}Voit ladata tekoälyjä ”online-sisältö” -palvelulla
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ei soveltuvia tekoälyjä saatavilla…{}{}Voit ladata tekoälyjä online-sisältöpalvelun kautta
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Asetukset
@@ -2651,7 +2650,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi {CURRENCY_LONG} yhtiölle {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen…{}{}Odota, ole hyvä…
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Palvelimen rekisteröinti epäonnistui
@@ -4792,7 +4791,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Tämä a
 
 STR_TIMETABLE_START                                             :{BLACK}Käynnistä aikataulu
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Valitse tämän aikataulun alkamisajankohta. Ctrl+napsautus jakaa tasaisesti kaikkien tätä käskyä jakavien kulkuneuvojen lähtöajat niiden keskinäisen järjestyksen mukaan, mikäli käsky on kokonaan aikataulutettu
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunteja aikataulun alkamiseen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
@@ -4907,8 +4905,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Korkeusk
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pienoiskartan kuvakaappaus
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :Tekoäly
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Peliskripti
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tekoälyparametrit
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Peliskriptin parametrit
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4969,7 +4967,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ei saatavilla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan luominen peruutettu…{}… ei kelvollisia kuntien sijainteja
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan luominen peruutettu…{}{}… ei kelvollisia sijainteja kunnille
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... tässä skenaariossa ei ole yhtään kuntaa
 
 STR_ERROR_PNGMAP                                                :{WHITE}Maastoa ei voida ladata PNG-tiedostosta...
@@ -5060,7 +5058,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liia
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kuntaa
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... kartalla ei ole enää tilaa
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tietyöt ovat käynnissä.
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kuntaa ei voida poistaa...{}Asema tai varikko viittaa kuntaan tai kunnan omistamaa ruutua ei voida poistaa
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kuntaa ei voida poistaa…{}{}Asema tai varikko viittaa kuntaan tai kunnan omistamaa ruutua ei voida poistaa
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tämän kunnan keskustassa ei ole sopivaa paikkaa patsaalle
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Taloa ei voida rakentaa…
 
@@ -5901,8 +5899,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

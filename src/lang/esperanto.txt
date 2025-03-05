@@ -899,7 +899,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listo da
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua vagonaro alvenas ĉe {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Enloĝantoj festas . . .{}Unua buso alvenas en {STATION}!
@@ -4578,7 +4577,6 @@ STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Tiu ĉi 
 STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Tiu ĉi horaro komenciĝos post {COMMA} sekundoj
 
 STR_TIMETABLE_START                                             :{BLACK}Komencu horaron
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundoj ĝis kiam komenciĝos la horaro
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu tempon
@@ -5647,8 +5645,6 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
 STR_JUST_STRING1.n                                              :{STRING.n}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING2.n                                              :{STRING.n}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

@@ -749,7 +749,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}In list 
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Berjocht
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste trein komt oan yn {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste bus komt oan yn {STATION}!
@@ -3720,7 +3719,6 @@ STR_TIMETABLE_STAY_FOR                                          :en bliuw foar{S
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit fiertûch is op tiid
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dit fiertûch is {STRING} te betiid
-
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tiid Feroarje

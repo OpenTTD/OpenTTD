@@ -753,7 +753,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}รา�
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}ข้อความ
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}ผู้คนต่างยินดีปรีดา. . .{}ที่รถไฟขบวนปฐมฤกษ์เทียบชานชาลาที่ {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}ผู้คนต่างยินดีปรีดา. . .{}ที่รถโดยสารเที่ยวปฐมฤกษ์ได้มาถึง {STATION}!
@@ -4070,7 +4069,6 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}ยา�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}ยานพาหนะนี้เดินทางช้ากว่าเวลาปกติอยู่ {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}ยานพาหนะนี้เดินทางเร็วกว่าเวลาปกติอยู่ {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}ตารางเวลายังไม่เริ่มต้น
-
 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}ปรับเปลี่ยนเวลา

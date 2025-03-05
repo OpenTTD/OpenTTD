@@ -934,7 +934,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Λίστ
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Μήνυμα
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο τρένο φτάνει στον στάθμο {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Οι πολίτες εορτάζουν. . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
@@ -1311,7 +1310,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Υπομονε�
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρική
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτική (χωρίς επίδραση σε ενέργειες της εταιρίας)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν υπάρχει διαθέσιμο κατάλληλο Al...{}Μπορείτε να κατεβάσετε AIs μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν υπάρχει διαθέσιμο κατάλληλο Al...{}{}Μπορείτε να κατεβάσετε AI μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ρυθμίσεις
@@ -2744,7 +2743,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} α
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξαν το όνομά τους σε {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσε {CURRENCY_LONG} στον {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο διακομιστής έκλεισε την συνεδρία
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής επανεκκινεί...{}Παρακαλώ περιμένετε...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής επανεκκινεί...{}{}Παρακαλώ περιμένετε...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} εκδιώχθηκε. Λόγος: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Η εγγραφή του server απέτυχε
@@ -4893,7 +4892,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Αυτό
 
 STR_TIMETABLE_START                                             :{BLACK}Εκκίνηση δρομολογίου
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Επιλέξτε πότε ξεκινά αυτό το δρομολόγιο. Ctrl+Κλικ για ομοιόμορφη κατανομή της εκκίνησης όλων των οχημάτων που μοιράζονται αυτήν την εντολή με βάση τη σχετική τους εντολή, εάν η εντολή είναι πλήρως προγραμματισμένη
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Δευτερόλεπτα μέχρι την έναρξη του δρομολογίου
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
@@ -5008,8 +5006,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγ
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Σενάριο Παιχνιδιού
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Παράμετροι τεχνητης νοημοσύνης
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Παράμετροι σεναρίου παιχνιδιού
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5070,7 +5068,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<μη διαθ�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει αποθηκευτεί σε έκδοση χωρίς υποστήριξη για τραμ. Όλα τα τραμ έχουν αφαιρεθεί
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλείφτηκε...{}... δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία χάρτη ματαιώθηκε...{}{}... δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... δεν υπάρχει καμία πόλη σε αυτό το σενάριο
 
 STR_ERROR_PNGMAP                                                :{WHITE}Δεν ήταν δυνατή η φόρτωση τοπίου από PNG...
@@ -5161,7 +5159,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... πο
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... πάρα πολλές πόλεις
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δεν υπάρχει άλλος χώρος στον χάρτη
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιίας σε εξέλιξη
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο που αναφέρεται στην πόλη ή ένα τετραγωνίδιο της πόλης δεν μπορεί να αφαιρεθεί
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}{}Ένας σταθμός ή ένα αμαξοστάσιο αναφέρεται στην πόλη ή ένα τετραγωνίδιο που ανήκει στην πόλη δεν μπορεί να αφαιρεθεί
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δεν υπάρχει κατάλληλο μέρος για άγαλμα στο κέντρο αυτής της πόλης
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Δεν ήταν δυνατό το χτίσιμο του σπιτιού...
 
@@ -6006,8 +6004,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

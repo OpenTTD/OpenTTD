@@ -718,7 +718,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Yvirlit 
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Boð
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Íbúgvar fegnast . . .{}Fyrsta toki kemur til {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Íbúgvar fegnast . . .{}Fyrsti bussur kemur til {STATION}!
@@ -3523,7 +3522,6 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Skift ti
 
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ferðast ikki
-
 
 
 

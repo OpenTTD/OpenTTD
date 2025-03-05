@@ -893,7 +893,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Az előz
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Üzenet
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}A lakosság ünnepel . . .{}Megérkezett az első vonat {STATION} állomásra!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}A lakosság ünnepel . . .{}Megérkezett az első busz {STATION} állomásra!
@@ -4794,7 +4793,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}A menetr
 
 STR_TIMETABLE_START                                             :{BLACK}Menetrend megkezdése
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Menetrend kezdésének beállítása. Ctrl+kattintással az összes jármű indításának egyenletes elosztása a relatív utasításuk alapján, ha az utasítás teljesen be van ütemezve
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Másodpercek a menetrend kezdetéig
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
@@ -5934,8 +5932,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

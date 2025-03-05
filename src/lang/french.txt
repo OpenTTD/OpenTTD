@@ -842,7 +842,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Liste de
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Message
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier train arrive à {STATION}{NBSP}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}{NBSP}!
@@ -1219,7 +1218,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolérante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive (pas d'effet sur les actions des compagnies)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Paramètres
@@ -2274,7 +2273,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Modifier
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date{NBSP}: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année courante
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production{NBSP}: {ORANGE}{STRING}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixer la qualité de service de la station à 100% : {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fixer la qualité de service de la station à 100{NBSP}%{NBSP}: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Couleur
@@ -2652,7 +2651,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a 
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} a changé son nom en {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a donné {CURRENCY_LONG} à {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Le serveur a fermé la session
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serveur redémarre...{}Veuillez patienter...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serveur redémarre...{}{}Veuillez patienter...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} a été exclu. Raison{NBSP}: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Échec de l'enregistrement du serveur
@@ -2905,6 +2904,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir 
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - Cliquer sur le type de pont désiré pour le construire.
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspendu en acier
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en acier
@@ -3158,6 +3158,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terre nue
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Herbe
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Champs
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Désert
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Roches couvertes de neige
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Terre en friche couverte de neige
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Herbe couverte de neige
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Voie ferrée
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Voie ferrée avec signaux de bloc
@@ -3629,17 +3632,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Modules
 STR_NEWGRF_LIST_MISSING                                         :{RED}Modules manquants
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF "{0:STRING}" peut provoquer des erreurs de synchronisation et/ou des plantages
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour "{1:ENGINE}" en dehors du dépôt
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour "{1:ENGINE}" en dehors du dépôt
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Il a changé la capacité pour "{1:ENGINE}" hors d'un dépôt ou d'un réaménagement
+STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF "{PUSH_COLOUR}{0:STRING}{POP_COLOUR}" peut provoquer des erreurs de synchronisation et/ou des plantages
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" en dehors du dépôt
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" en dehors du dépôt
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Il a changé la capacité pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" hors d'un dépôt ou d'un réaménagement
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train "{VEHICLE}" appartenant à "{COMPANY}" a une longueur invalide. Cela est probablement dû à des problèmes avec des NewGRFs, et peut provoquer des erreurs de synchronisation ou planter le jeu.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Le module NewGRF "{0:STRING}" fournit une information incorrecte
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Les informations de cargaison/réaménagement pour "{1:ENGINE}" après sa construction sont différentes de celles de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}"{1:STRING}" a causé une boucle infinie dans la fonction de rappel de production
+STR_NEWGRF_BUGGY                                                :{WHITE}Le module NewGRF "{PUSH_COLOUR}{0:STRING}{POP_COLOUR}" fournit une information incorrecte
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Les informations de cargaison/réaménagement pour "{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}" après sa construction sont différentes de celles de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}"{PUSH_COLOUR}{1:STRING}{POP_COLOUR}" a causé une boucle infinie dans la fonction de rappel de production
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}La fonction de rappel {1:HEX} a retourné un résultat invalide {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}"{1:STRING}" a renvoyé un type de cargaison invalide dans la fonction de rappel de production à {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}"{PUSH_COLOUR}{1:STRING}{POP_COLOUR}" a renvoyé un type de cargaison invalide dans la fonction de rappel de production à {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<marchandise invalide>
@@ -4036,6 +4039,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produit{
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Nécessite{NBSP}:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}{NBSP}: {1:CARGO_SHORT} en attente{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}{NBSP}: {1:CARGO_SHORT} en attente
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production (multiple de 8, max. 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Changer le niveau de production (pourcentage, max. 800{NBSP}%)
@@ -4693,54 +4700,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :dépôt routier
 STR_ORDER_SHIP_DEPOT                                            :dépôt naval
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} hangar le plus proche
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} le plus proche
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Réaménager pour {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Réaménager pour {STRING} et arrêt)
-STR_ORDER_STOP_ORDER                                            :(Arrêt)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Réaménager pour {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Réaménager pour {STRING} et arrêt)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Arrêt)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Attendre la répartition)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Attendre la répartition)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station inutilisable){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Implicite)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implicite)
 
-STR_ORDER_FULL_LOAD                                             :(Charger complètement)
-STR_ORDER_FULL_LOAD_ANY                                         :(Charger complètement pour un seul type)
-STR_ORDER_NO_LOAD                                               :(Pas de chargement)
-STR_ORDER_UNLOAD                                                :(Décharger)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Décharger et attendre pleine charge)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Décharger et attendre pleine charge pour un seul type)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Décharger et laisser vide)
-STR_ORDER_TRANSFER                                              :(Transférer et charger)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transférer et attendre pleine charge)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transférer et attendre pleine charge pour un seul type)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transférer et laisser vide)
-STR_ORDER_NO_UNLOAD                                             :(Ne pas décharger et charger)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne pas décharger et attendre pleine charge)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne pas décharger et attendre pleine charge pour un seul type)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne pas décharger et ne pas charger)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Charger complètement)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Charger complètement pour un seul type)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Pas de chargement)
+STR_ORDER_UNLOAD                                                :{SPACE}(Décharger et charger)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Décharger et attendre pleine charge)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Décharger et attendre pleine charge pour un seul type)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Décharger et laisser vide)
+STR_ORDER_TRANSFER                                              :{SPACE}(Transférer et charger)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transférer et attendre pleine charge)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transférer et attendre pleine charge pour un seul type)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transférer et laisser vide)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Ne pas décharger et charger)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Ne pas décharger et attendre pleine charge)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Ne pas décharger et attendre pleine charge pour un seul type)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Ne pas décharger et ne pas charger)
 
-STR_ORDER_AUTO_REFIT                                            :(Réaménager pour {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Charger complétement avec réaménagement pour {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Charger complétement pour un seul type avec réaménagement pour {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Décharger et charger avec réaménagement pour {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Décharger et attendre pleine charge avec réaménagement pour {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Décharger et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transférer et charger avec réaménagement pour {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transférer et attendre pleine charge avec réaménagement pour {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transférer et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ne pas décharger et charger avec réaménagement pour {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ne pas décharger et attendre pleine charge avec réaménagement pour {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne pas décharger et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Réaménager pour {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Charger complétement avec réaménagement pour {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Charger complétement pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Décharger et charger avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Décharger et attendre pleine charge avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Décharger et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transférer et charger avec réaménagement pour {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transférer et attendre pleine charge avec réaménagement pour {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transférer et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Ne pas décharger et charger avec réaménagement pour {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Ne pas décharger et attendre pleine charge avec réaménagement pour {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Ne pas décharger et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :cargaison disponible
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[queue]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[milieu]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[tête]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[queue]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[milieu]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[tête]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (La prochaine destination est hors de portée)
 
@@ -4765,8 +4774,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Voyager pendant {STRING} à {VELOCITY} max.
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Voyager (pendant {STRING}, non planifié)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Voyager (pendant {STRING}, non planifié) à {VELOCITY} max.
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(rester pendant {STRING}, non planifié)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(voyager pendant {STRING}, non planifié)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(rester pendant {STRING}, non planifié)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(voyager pendant {STRING}, non planifié)
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
 
@@ -4783,7 +4792,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Cet hora
 
 STR_TIMETABLE_START                                             :{BLACK}Démarrer l'horaire
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Sélectionner quand l'horaire doit démarrer. Ctrl-clic pour éventuellement donner l'ordre de démarrer l'horaire aux véhicules qui le partagent, seulement si leurs ordres sont complètement définis dans leurs horaires respectifs.
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Nombre de secondes avant que l'horaire ne commence
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
@@ -4849,7 +4857,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fen�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Paramètres d'IA
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Paramètres du scripts de jeu
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Paramètres du script de jeu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le script de jeu qui sera chargé dans la prochaine partie
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs qui seront chargées dans la prochaine partie
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain
@@ -4898,8 +4906,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Capture 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Capture d'écran de la mini-carte
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :de l'IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :du script de jeu
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Paramètres de l'IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Paramètres du script de jeu
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}
@@ -4960,7 +4968,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<non disponible
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Génération de la carte annulée...{}... pas d'emplacements valables pour une ville
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Génération de la carte annulée...{}{}... pas d'emplacements valables pour une ville
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... il n'y a pas de ville dans ce scénario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Chargement du paysage depuis PNG impossible...
@@ -5051,7 +5059,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... trop
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... trop de villes
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... il n'y a plus d'emplacement sur la carte
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Route en travaux
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}Une station ou un dépôt fait référence à cette ville ou une propriété municipale ne peut pas être supprimée.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}{}Une station ou un dépôt fait référence à cette ville ou une propriété municipale ne peut pas être supprimée
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... aucun emplacement convenable disponible pour une statue dans ce centre-ville
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Impossible de construire une maison
 
@@ -5892,8 +5900,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}

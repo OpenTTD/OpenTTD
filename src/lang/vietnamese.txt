@@ -835,7 +835,6 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Danh sá
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông Điệp
-STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe buýt đầu tiên đến {STATION}!
@@ -4764,7 +4763,6 @@ STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Lịch t
 
 STR_TIMETABLE_START                                             :{BLACK}Khởi động bảng biểu
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Lựa chọn cho bảng thời gian khi nào bắt đầu. Ctrl+Click để chia đều từ lúc bắt đầu cho tất cả phương tiện đang chia sẻ lịch trình này theo thứ tự tương đối của chúng, nếu như lịch trình đã hoàn tất một bảng thời gian.
-
 STR_TIMETABLE_START_SECONDS_QUERY                               :Số giây cho đến khi lịch trình bắt đầu
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
@@ -5863,8 +5861,6 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING1                                                :{STRING}
-STR_JUST_STRING2                                                :{STRING}
-STR_JUST_STRING4                                                :{STRING}
 STR_JUST_STRING_STRING                                          :{STRING}{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_BIG_RAW_STRING                                         :{BIG_FONT}{STRING}
