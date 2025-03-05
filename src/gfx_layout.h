@@ -135,7 +135,7 @@ public:
  *
  * It also accounts for the memory allocations and frees.
  */
-class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Line>> {
+class Layouter : public std::vector<const ParagraphLayouter::Line *> {
 	std::string_view string; ///< Pointer to the original string.
 
 	/** Key into the linecache */
@@ -174,6 +174,9 @@ public:
 
 		FontState state_after;     ///< Font state after the line.
 		std::unique_ptr<ParagraphLayouter> layout = nullptr; ///< Layout of the line.
+
+		std::vector<std::unique_ptr<const ParagraphLayouter::Line>> cached_layout{}; ///< Cached results of line layouting.
+		int cached_width = 0; ///< Width used for the cached layout.
 	};
 private:
 	typedef std::map<LineCacheKey, LineCacheItem, LineCacheCompare> LineCache;
