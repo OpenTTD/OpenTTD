@@ -3344,6 +3344,18 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (!IsSavegameVersionBefore(SLV_INCREASE_HOUSE_LIMIT) && IsSavegameVersionBeforeOrAt(SLV_SCRIPT_SAVE_INSTANCES)) {
+		/* Between these two versions (actually from f8b1e303 to 77236258) EngineFlags had an off-by-one. Depending
+		 * on when the save was started, this may or may not affect existing engines. Here we try to detect invalid flags
+		 * and reset them to what they should be. */
+		for (Engine *e : Engine::Iterate()) {
+			if (e->flags.Test(EngineFlag::Available)) continue;
+			if (e->flags.Test(EngineFlag{2}) || (e->flags.Test(EngineFlag::ExclusivePreview) && e->preview_asked.None())) {
+				e->flags = EngineFlags(e->flags.base() >> 1U);
+			}
+		}
+	}
+
 	for (Company *c : Company::Iterate()) {
 		UpdateCompanyLiveries(c);
 	}
