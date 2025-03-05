@@ -104,6 +104,23 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	return res;
 }
 
+/**
+ * Convert an order index from OpenTTD to a ScriptOrder::OrderPosition (which is the manual order index)
+ * @param order_position The OpenTTD-internal index to convert.
+ * @return An OrderPosition for the same order.
+ */
+static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(VehicleID vehicle_id, int order_position)
+{
+	const Order *order = ::Vehicle::Get(vehicle_id)->GetFirstOrder();
+	assert(order != nullptr);
+	int num_implicit_orders = 0;
+	for (int i = 0; i < order_position; i++) {
+		if (order->GetType() == OT_IMPLICIT) num_implicit_orders++;
+		order = order->next;
+	}
+	return static_cast<ScriptOrder::OrderPosition>(order_position - num_implicit_orders);
+}
+
 /* static */ bool ScriptOrder::IsGotoStationOrder(VehicleID vehicle_id, OrderPosition order_position)
 {
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return false;
@@ -175,16 +192,9 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 	if (order_position == ORDER_CURRENT) {
 		int cur_order_pos = ::Vehicle::Get(vehicle_id)->cur_real_order_index;
-		const Order *order = ::Vehicle::Get(vehicle_id)->GetFirstOrder();
-		assert(order != nullptr);
-		int num_implicit_orders = 0;
-		for (int i = 0; i < cur_order_pos; i++) {
-			if (order->GetType() == OT_IMPLICIT) num_implicit_orders++;
-			order = order->next;
-		}
-		int real_order_pos = cur_order_pos - num_implicit_orders;
-		assert(real_order_pos < num_manual_orders);
-		return (ScriptOrder::OrderPosition)real_order_pos;
+		OrderPosition order_pos = ::RealOrderPositionToScriptOrderPosition(vehicle_id, cur_order_pos);
+		assert(order_pos < num_manual_orders);
+		return order_pos;
 	}
 	return (order_position >= 0 && order_position < num_manual_orders) ? order_position : ORDER_INVALID;
 }
@@ -328,7 +338,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	if (order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position)) return ORDER_INVALID;
 
 	const Order *order = ::ResolveOrder(vehicle_id, order_position);
-	return (OrderPosition)order->GetConditionSkipToOrder();
+	return ::RealOrderPositionToScriptOrderPosition(vehicle_id, order->GetConditionSkipToOrder());
 }
 
 /* static */ ScriptOrder::OrderCondition ScriptOrder::GetOrderCondition(VehicleID vehicle_id, OrderPosition order_position)
@@ -386,7 +396,9 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	EnforcePrecondition(false, order_position != ORDER_CURRENT && IsConditionalOrder(vehicle_id, order_position));
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, jump_to) && jump_to != ORDER_CURRENT);
 
-	return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(0, vehicle_id, order_position, MOF_COND_DESTINATION, jump_to);
+	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
+	int jump_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, jump_to);
+	return ScriptObject::Command<CMD_MODIFY_ORDER>::Do(0, vehicle_id, order_pos, MOF_COND_DESTINATION, jump_pos);
 }
 
 /* static */ bool ScriptOrder::SetOrderCondition(VehicleID vehicle_id, OrderPosition order_position, OrderCondition condition)
@@ -531,7 +543,8 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, jump_to) && jump_to != ORDER_CURRENT);
 
 	Order order;
-	order.MakeConditional(jump_to);
+	int jump_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, jump_to);
+	order.MakeConditional(jump_pos);
 
 	int order_pos = ScriptOrderPositionToRealOrderPosition(vehicle_id, order_position);
 	return ScriptObject::Command<CMD_INSERT_ORDER>::Do(0, vehicle_id, order_pos, order);
