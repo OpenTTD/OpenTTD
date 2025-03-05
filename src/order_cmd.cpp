@@ -1699,10 +1699,10 @@ void CheckOrders(const Vehicle *v)
 	if (_settings_client.gui.order_review_system == 0) return;
 
 	/* Do nothing for crashed vehicles */
-	if (v->vehstatus & VS_CRASHED) return;
+	if (v->vehstatus.Test(VehState::Crashed)) return;
 
 	/* Do nothing for stopped vehicles if setting is '1' */
-	if (_settings_client.gui.order_review_system == 1 && (v->vehstatus & VS_STOPPED)) return;
+	if (_settings_client.gui.order_review_system == 1 && v->vehstatus.Test(VehState::Stopped)) return;
 
 	/* do nothing we we're not the first vehicle in a share-chain */
 	if (v->FirstShared() != v) return;
