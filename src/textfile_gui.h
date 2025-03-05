@@ -25,6 +25,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override;
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override;
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnResize() override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
@@ -103,7 +104,7 @@ private:
 	uint ReflowContent();
 	uint GetContentHeight();
 	void SetupScrollbars(bool force_reflow);
-	void CheckHyperlinkClick(Point pt);
+	const Hyperlink *GetHyperlink(Point pt) const;
 
 	void AfterLoadMarkdown();
 };
