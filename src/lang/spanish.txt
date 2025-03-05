@@ -873,8 +873,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}¡{STRING} patrocina la construcción del nuevo municipio {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}¡Un nuevo municipio, llamado: {TOWN}, ha sido fundado!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} en construcción cerca de {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} está siendo plantad{G o a} cerca de {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}¡Nuev{G o a o a} {STRING} en construcción cerca de {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}¡Nuev{G o a o a} {STRING} está siendo plantad{G o a o a} cerca de {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}¡La industria {STRING} anuncia su cierre inminente!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}¡Los problemas de suministro hacen que {STRING} anuncie su cierre inminente!
@@ -919,9 +919,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} se ha detenido debido a un fallo en una orden de reforma
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática fallida para {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} ahora disponible!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}¡Nuev{G o a o a} {STRING} ahora disponible!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}¡Nuev{G o a} {STRING} ahora disponible!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}¡Nuev{G o a o a} {STRING} ahora disponible!  -  {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abre la lista de vehículos centrada en el grupo del vehículo
 
@@ -2677,7 +2677,7 @@ STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta de
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ya tienes esto
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este contenido es desconocido y no puede ser descargado en OpenTTD
 
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este es un sustituto de un{G "" a} {STRING} existente
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este es un sustituto de un{G "" a "" a} {STRING} existente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nombre: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versión: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descripción: {WHITE}{STRING}
@@ -2750,9 +2750,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sobrecargado
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} serán transportad{G 0 o a}s cada mes desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} serán transportad{G 0 o a}s cada minuto desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} para ser transportad{G 0 o a}{P 0 "" s} de vuelta ({COMMA}% de la capacidad)
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} serán transportad{G 0 o a o a}s cada mes desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} serán transportad{G 0 o a o a}s cada minuto desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} para ser transportad{G 0 o a o a}{P 0 "" s} de vuelta ({COMMA}% de la capacidad)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tiempo de viaje promedio: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
@@ -4299,7 +4299,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Estás 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje del fabricante de vehículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a} nuev{G o a} {STRING} - ¿estaría interesado en el uso exclusivo de este vehículo durante un año, para que podamos ver cómo funciona antes de ponerlo a disposición del público?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a "" a} nuev{G o a o a} {STRING} - ¿estaría interesado en el uso exclusivo de este vehículo durante un año, para que podamos ver cómo funciona antes de ponerlo a disposición del público?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotora
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Locomotora de ferrocarril eléctrico

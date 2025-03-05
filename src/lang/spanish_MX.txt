@@ -879,8 +879,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}¡{STRING} patrocinó la creación de la nueva localidad de {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}¡La nueva localidad de {TOWN} ha sido formada!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} en construcción cerca de {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} en desarrollo cerca de {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}¡Nuev{G o a o a} {STRING} en construcción cerca de {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}¡Nuev{G o a o a} {STRING} en desarrollo cerca de {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}¡La industria {STRING} anuncia su inminente cierre!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}¡La falta de abastecimiento provoca que {STRING} anuncie su inminente cierre!
@@ -925,9 +925,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} no avanza porque no pudo reformarse
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática de {VEHICLE} falló{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}¡Nuev{G o a} {STRING} ahora disponible!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}¡Nuev{G o a o a} {STRING} ahora disponible!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}¡Nuev{G o a} {STRING} ahora disponible!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}¡Nuev{G o a o a} {STRING} ahora disponible!  -  {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir la ventana de este vehículo
 
@@ -2691,7 +2691,7 @@ STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Depende
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Este contenido ya fue descargado
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este contenido es desconocido y no puede ser descargado en OpenTTD
 
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este es un sustituto de un{G "" a} {STRING} existente
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este es un sustituto de un{G "" a "" a} {STRING} existente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nombre: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versión: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descripción: {WHITE}{STRING}
@@ -2764,9 +2764,9 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}sobrecargado
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} serán transportad{G 0 o a}s cada mes desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} serán transportad{G 0 o a}s cada minuto desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
-STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} a ser transportad{G 0 o a}{P 0 "" s}) de vuelta ({COMMA}% de la capacidad)
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}{CARGO_LONG} serán transportad{G 0 o a o a}s cada mes desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}{CARGO_LONG} serán transportad{G 0 o a o a}s cada minuto desde {STATION} a {STATION} ({COMMA}% de capacidad){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}{CARGO_LONG} a ser transportad{G 0 o a o a}{P 0 "" s}) de vuelta ({COMMA}% de la capacidad)
 STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}Tiempo de viaje promedio: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
@@ -3688,11 +3688,11 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitant
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mes: {ORANGE}{COMMA}{BLACK}  máx.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} útlimo minuto: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{RED} (todavía requerid{G 1 o a}{P 1 "" s})
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{GREEN} (entregad{G 1 o a}{P 1 "" s})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} (requerid{G 0 o a os as})
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} (requerid{G 0 o a os as} en invierno)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} (entregad{G 0 o a os as})
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{RED} (todavía requerid{G 1 o a o a}{P 1 "" s})
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY}/{CARGO_LONG}{GREEN} (entregad{G 1 o a o a}{P 1 "" s})
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La localidad crece cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La localidad crece cada {ORANGE}{UNITS_DAYS_OR_SECONDS} (financiado)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La localidad {RED}no{BLACK} está creciendo
@@ -3828,7 +3828,7 @@ STR_STATION_LIST_CARGO_FILTER_EXPAND                            :Mostrar más...
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservad{G 0 o a}{P 0 "" s} para cargar)
+STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO_SHORT} reservad{G 0 o a o a}{P 0 "" s} para cargar)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Lista de carga aceptada
@@ -4011,7 +4011,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias ({COMMA} de {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ninguna -
-STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportad{G 0 o a}{P 0 "" s}){BLACK}
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportad{G 0 o a o a}{P 0 "" s}){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
@@ -4027,7 +4027,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ninguno
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción último mes:
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producción último minuto:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportad{G 0 o a}{P 0 "" s})
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportad{G 0 o a o a}{P 0 "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar vista en la industria. Ctrl+Clic abre una vista aparte en su ubicación
 STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gráfica de producción
 STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Muestra la gráfica del historial de producción de la industria
@@ -4328,7 +4328,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Se vend
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje del fabricante de vehículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a} nuev{G o a} {STRING}. ¿Le interesaría el uso exclusivo de este vehículo por un año para que podamos probar su desempeño antes de lanzarlo al público?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a "" a} nuev{G o a o a} {STRING}. ¿Le interesaría el uso exclusivo de este vehículo por un año para que podamos probar su desempeño antes de lanzarlo al público?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotora
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotora eléctrica
