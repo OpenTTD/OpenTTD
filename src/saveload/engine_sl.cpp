@@ -82,7 +82,7 @@ struct ENGNChunkHandler : ChunkHandler {
 			if (IsSavegameVersionBefore(SLV_179)) {
 				/* preview_company_rank was replaced with preview_company and preview_asked.
 				 * Just cancel any previews. */
-				e->flags.Reset(EngineFlag{4}); // ENGINE_OFFER_WINDOW_OPEN
+				e->flags.Reset(EngineFlag{2}); // ENGINE_OFFER_WINDOW_OPEN
 				e->preview_company = CompanyID::Invalid();
 				e->preview_asked.Set();
 			}
