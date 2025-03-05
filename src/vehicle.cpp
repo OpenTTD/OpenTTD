@@ -1098,14 +1098,14 @@ void CallVehicleTicks()
 
 		if (error_message == STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY) error_message = STR_ERROR_AUTOREPLACE_MONEY_LIMIT;
 
-		StringID message;
+		EncodedString headline;
 		if (error_message == STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
-			message = error_message;
+			headline = GetEncodedString(error_message, v->index);
 		} else {
-			message = STR_NEWS_VEHICLE_AUTORENEW_FAILED;
+			headline = GetEncodedString(STR_NEWS_VEHICLE_AUTORENEW_FAILED, v->index, error_message, std::monostate{});
 		}
 
-		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, GetEncodedString(message, v->index, error_message), v->index);
+		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, std::move(headline), v->index);
 	}
 
 	cur_company.Restore();
