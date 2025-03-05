@@ -427,7 +427,7 @@ void Textbuf::Assign(const std::string_view text)
 	/* Make sure the name isn't too long for the text buffer in the number of
 	 * characters (not bytes). max_chars also counts the '\0' characters. */
 	auto iter = this->buf.begin();
-	for (size_t len = 0; len < this->max_chars && iter != this->buf.end(); ++len) Utf8Consume(iter);
+	for (size_t len = 1; len < this->max_chars && iter != this->buf.end(); ++len) Utf8Consume(iter);
 
 	if (iter != this->buf.end()) {
 		this->buf.erase(iter, this->buf.end());
