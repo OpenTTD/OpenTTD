@@ -3479,7 +3479,7 @@ void StopGlobalFollowVehicle(const Vehicle *v)
 	Window *w = GetMainWindow();
 	if (w->viewport->follow_vehicle == v->index) {
 		ScrollMainWindowTo(v->x_pos, v->y_pos, v->z_pos, true); // lock the main view on the vehicle's last position
-		w->viewport->follow_vehicle = VehicleID::Invalid();
+		w->viewport->CancelFollow(*w);
 	}
 }
 
