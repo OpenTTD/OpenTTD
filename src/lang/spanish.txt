@@ -26,37 +26,37 @@ STR_JUST_NOTHING                                                :Nada
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Pasajeros
-STR_CARGO_PLURAL_COAL                                           :{G=m}Carbón
-STR_CARGO_PLURAL_MAIL                                           :{G=m}Correo
-STR_CARGO_PLURAL_OIL                                            :{G=m}Petróleo
-STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Ganado
-STR_CARGO_PLURAL_GOODS                                          :{G=f}Mercancías
-STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereal
-STR_CARGO_PLURAL_WOOD                                           :{G=f}Madera
-STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Mineral de Hierro
-STR_CARGO_PLURAL_STEEL                                          :{G=m}Acero
-STR_CARGO_PLURAL_VALUABLES                                      :{G=m}Objetos de Valor
-STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Mineral de Cobre
-STR_CARGO_PLURAL_MAIZE                                          :{G=m}Maíz
-STR_CARGO_PLURAL_FRUIT                                          :{G=f}Frutas
-STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Diamantes
-STR_CARGO_PLURAL_FOOD                                           :{G=m}Alimentos
-STR_CARGO_PLURAL_PAPER                                          :{G=m}Papel
-STR_CARGO_PLURAL_GOLD                                           :{G=m}Oro
+STR_CARGO_PLURAL_PASSENGERS                                     :{G=mp}Pasajeros
+STR_CARGO_PLURAL_COAL                                           :{G=mp}Carbón
+STR_CARGO_PLURAL_MAIL                                           :{G=mp}Correo
+STR_CARGO_PLURAL_OIL                                            :{G=mp}Petróleo
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=mp}Ganado
+STR_CARGO_PLURAL_GOODS                                          :{G=fp}Mercancías
+STR_CARGO_PLURAL_GRAIN                                          :{G=mp}Cereal
+STR_CARGO_PLURAL_WOOD                                           :{G=fp}Madera
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=mp}Mineral de Hierro
+STR_CARGO_PLURAL_STEEL                                          :{G=mp}Acero
+STR_CARGO_PLURAL_VALUABLES                                      :{G=mp}Objetos de Valor
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=mp}Mineral de Cobre
+STR_CARGO_PLURAL_MAIZE                                          :{G=mp}Maíz
+STR_CARGO_PLURAL_FRUIT                                          :{G=fp}Frutas
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=mp}Diamantes
+STR_CARGO_PLURAL_FOOD                                           :{G=mp}Alimentos
+STR_CARGO_PLURAL_PAPER                                          :{G=mp}Papel
+STR_CARGO_PLURAL_GOLD                                           :{G=mp}Oro
 STR_CARGO_PLURAL_WATER                                          :{G=m}Agua
-STR_CARGO_PLURAL_WHEAT                                          :{G=m}Trigo
-STR_CARGO_PLURAL_RUBBER                                         :{G=m}Caucho
-STR_CARGO_PLURAL_SUGAR                                          :{G=m}Azúcar
-STR_CARGO_PLURAL_TOYS                                           :{G=m}Juguetes
-STR_CARGO_PLURAL_SWEETS                                         :{G=m}Caramelos
-STR_CARGO_PLURAL_COLA                                           :{G=f}Cola
-STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=m}Algodón de Azúcar
-STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Burbujas
-STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Tofes
-STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Pilas
-STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Plástico
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=m}Refrescos
+STR_CARGO_PLURAL_WHEAT                                          :{G=mp}Trigo
+STR_CARGO_PLURAL_RUBBER                                         :{G=mp}Caucho
+STR_CARGO_PLURAL_SUGAR                                          :{G=mp}Azúcar
+STR_CARGO_PLURAL_TOYS                                           :{G=mp}Juguetes
+STR_CARGO_PLURAL_SWEETS                                         :{G=mp}Caramelos
+STR_CARGO_PLURAL_COLA                                           :{G=fp}Cola
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=mp}Algodón de Azúcar
+STR_CARGO_PLURAL_BUBBLES                                        :{G=fp}Burbujas
+STR_CARGO_PLURAL_TOFFEE                                         :{G=mp}Tofes
+STR_CARGO_PLURAL_BATTERIES                                      :{G=fp}Pilas
+STR_CARGO_PLURAL_PLASTIC                                        :{G=mp}Plástico
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=mp}Refrescos
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -3663,9 +3663,9 @@ STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Habitant
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} último mes: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}{CARGO_LIST} útlimo minuto: {ORANGE}{COMMA}{BLACK} máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para crecimiento del municipio:
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requeridos
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerido en invierno
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregado
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requerid{G 0 o a os as}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requerid{G 0 o a os as} en invierno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregad{G 0 o a os as}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (todavía requerido)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregado)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}El municipio crece cada {ORANGE}{UNITS_DAYS_OR_SECONDS}
