@@ -4795,12 +4795,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunteja aikat
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuta aikaa, jonka valitun käskyn tulisi kestää. Ctrl+napsautus asettaa keston kaikille käskyille
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Muuta aikaa
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nollaa aika
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nollaa valitun käskyn kesto. Ctrl+napsautus nollaa kaikkien käskyjen kestot.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuta nopeusrajoitusta
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuta suurinta sallittua nopeutta valitulle käskylle. Ctrl+napsautus asettaa nopeusrajoituksen kaikille käskyille
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Muuta nopeusrajoitusta
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tyhjennä nopeusrajoitus
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Poista suurin sallittu nopeus valitulta käskyltä. Ctrl+napsautus poistaaksesi kaikkien käskyjen nopeusrajoitukset

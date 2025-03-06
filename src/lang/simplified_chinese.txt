@@ -4793,14 +4793,16 @@ STR_TIMETABLE_START                                             :{BLACK}开始�
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}选择此时刻表开始的时间。如果调度计划有完善的时刻表，则按住 <Ctrl> 键单击会根据它们的相对顺序均匀分配共享此调度计划的所有载具的出发时间
 STR_TIMETABLE_START_SECONDS_QUERY                               :直至时刻表开始的秒数
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}修改时间
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}修改选定命令设定的时间。按住 <Ctrl> 键操作以修改所有命令的限时
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :修改时间
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}清除时间
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除选定命令设定的时间。按住 <Ctrl> 键操作以清除所有命令的限时
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}更改限速
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}修改限速
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}修改选定命令设定的限速。按住 <Ctrl> 键操作以修改所有命令的限速
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :修改限速
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}取消限速
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}清除选定命令设定的限速。按住 <Ctrl> 键操作以清除所有命令的限速

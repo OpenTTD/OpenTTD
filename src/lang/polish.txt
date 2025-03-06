@@ -5181,12 +5181,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundy do uruc
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień Czas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ustal ilość czasu, jaką powinno zająć zaznaczone polecenie. Użyj Ctrl, aby ustalić taki czas dla wszystkich poleceń
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Zmień czas
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Wyczyść Czas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Wyczyść podany czas w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić czasy we wszystkich poleceniach
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień Limit Prędkości
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ustal ograniczenie prędkości przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby ustalić takie ograniczenie we wszystkich poleceniach
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Zmień limit prędkości
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść Limit
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść ograniczenie prędkości przejazdu w zaznaczonym poleceniu. Użyj Ctrl, aby wyczyścić ograniczenia we wszystkich poleceniach

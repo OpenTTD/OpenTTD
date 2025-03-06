@@ -1217,7 +1217,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :能忍受
 STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
 STR_CITY_APPROVAL_PERMISSIVE                                    :放任（所有行為均不受影響）
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可供使用……{}{}您可以從「線上擴充內容」功能中下載各種的 AI
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可供使用……{}{}您可以使用「線上擴充內容」功能下載更多的 AI
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}顯示設定
@@ -4793,14 +4793,16 @@ STR_TIMETABLE_START                                             :{BLACK}開始�
 STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}選擇此時刻表的開始時間。如果已完成排定時刻表的調度指令，則按住 <Ctrl> 點選會根據這些相應的次序均勻分配共享此調度指令的所有車輛的出發時間
 STR_TIMETABLE_START_SECONDS_QUERY                               :距離時刻表開始還有的秒數
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}修改時刻
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}修改時間
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}修改選取指令所需的時間。按住 <Ctrl> 點選可設定所有指令的時間
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :修改時間
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}清除時刻表
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}移除目前選定指令所設定的時間。按住 <Ctrl> 點選可移除所有指令的時間
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}修改速度限制
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}修改選取指令所設定的最高速度。按住 <Ctrl> 點選可設定所有指令的速度
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :修改速度限制
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}清除速度限制
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}移除選取指令所設定的最高速度。按住 <Ctrl> 點選可移除所有指令的速度
@@ -4850,7 +4852,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}檢視�
 STR_AI_GAME_SCRIPT                                              :{BLACK}遊戲腳本
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}檢查遊戲腳本日誌。按住 <Ctrl> 點選以開啟新視窗
 
-STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可供使用。{}此 AI 是虛擬 AI 並且沒有任何功能。{}您可以透過使用「線上擴充內容」功能中下載各種的 AI
+STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可供使用。{}此 AI 是虛擬 AI 並且沒有任何功能。{}您可以使用「線上擴充內容」功能下載更多的 AI
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在執行中的一個 AI 或遊戲腳本發生錯誤。請開啟「AI／遊戲腳本除錯」視窗後擷取螢幕畫面後，將此問題連同該圖片附件回報給腳本作者
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}只可於伺服器開啟AI／遊戲腳本除錯視窗
 

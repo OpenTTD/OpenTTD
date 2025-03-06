@@ -4795,12 +4795,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Seconds until t
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take. Ctrl+Click to set the time for all orders
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Change time
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Clear Time
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clear the amount of time for the highlighted order. Ctrl+Click to clear the time for all orders
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Change Speed Limit
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Change the maximum travel speed of the highlighted order. Ctrl+Click to set the speed for all orders
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Change speed limit
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Clear Speed Limit
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Clear the maximum travel speed of the highlighted order. Ctrl+Click to clear the speed for all orders

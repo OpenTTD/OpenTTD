@@ -3661,7 +3661,7 @@ STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} Ne
 STR_NEWGRF_SCAN_ARCHIVES                                        :Analizando archivos
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de letreros: {COMMA} cartel{P "" es}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de letreros: {COMMA} letrero{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Distinguir mayúsculas
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Distinguir entre mayúsculas y minúsculas al filtrar los letreros
 
@@ -4796,12 +4796,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos hasta 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar duración
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar la duración de la orden resaltada. Ctrl+Clic la cambia para todas las órdenes
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Cambiar duración
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Eliminar duración
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Eliminar la duración de la orden resaltada. Ctrl+Clic la elimina para todas las órdenes
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambiar límite de velocidad
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambiar el límite máximo de velocidad de la orden resaltada. Ctrl+clic lo cambia para todas las órdenes
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Cambiar límite de velocidad
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Eliminar límite de velocidad
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eliminar el límite máximo de velocidad de la orden resaltada. Ctrl+clic la elimina para todas las órdenes
@@ -5831,23 +5833,23 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZERO
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
 STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING}, {0:TOWN}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
 
 ###length 2
-STR_FORMAT_BUOY_NAME                                            :Boya {TOWN}
-STR_FORMAT_BUOY_NAME_SERIAL                                     :Boya {TOWN} #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :Boya de {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Boya #{1:COMMA} de {0:TOWN}
 
 ###length 2
-STR_FORMAT_WAYPOINT_NAME                                        :Punto de ruta, {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto de ruta #{1:COMMA}, {0:TOWN}
+STR_FORMAT_WAYPOINT_NAME                                        :Punto de ruta de {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto de ruta #{1:COMMA} de {0:TOWN}
 
 ###length 6
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de trenes, {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de trenes #{1:COMMA}, {0:TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de autotransportes, {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de autotransportes #{1:COMMA}, {0:TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :Astillero, {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Astillero #{1:COMMA}, {0:TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de trenes de {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de trenes #{1:COMMA} de {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de autotransportes de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de autotransportes #{1:COMMA} de {0:TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Astillero de {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Astillero #{1:COMMA} de {0:TOWN}
 ###next-name-looks-similar
 
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}

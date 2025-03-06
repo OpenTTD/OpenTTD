@@ -1366,7 +1366,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :терпимо�
 STR_CITY_APPROVAL_HOSTILE                                       :отрицательное
 STR_CITY_APPROVAL_PERMISSIVE                                    :дозволяющее (нет ограничений)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}Их можно скачать через систему проверки онлайн-контента.
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}{}Их можно скачать через систему онлайн-контента.
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Расширенные настройки
@@ -2415,15 +2415,15 @@ STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Сооб
 STR_CHEATS                                                      :{WHITE}Настройки песочницы
 STR_CHEAT_MONEY                                                 :{LTBLUE}Добавить {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Игра за компанию: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос ВСЕГО): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос любых объектов): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Туннели могут пересекаться: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Большие самолёты реже разбиваются в малых аэропортах: {ORANGE}{STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Изменить макс. высоту карты: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Изменить максимальную высоту гор на карте
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Изменение даты: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Изменить текущий год
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Разрешить изменение производительности: {ORANGE}{STRING}
-STR_CHEAT_STATION_RATING                                        :{LTBLUE}Рейтинг станций всегда 100%: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Разрешить изменение производительности предприятий: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Рейтинг компании на станциях всегда 100%: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Цвета компании «{COMPANY}»
@@ -2801,7 +2801,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} п
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} сменил(а) имя на {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Компания «{0:STRING}» передала «{2:STRING}» {1:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрыл сессию
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}Пожалуйста, подождите...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}{}Пожалуйста, подождите...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} был исключён из игры. Причина: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Не удалось зарегистрировать сервер
@@ -3670,8 +3670,8 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Спис
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Показать параметры
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключить палитру
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Переключить палитру для выбраного NewGRF файла.{}Используйте переключение, если графика отрисовывается розовым цветом.
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Коррекция палитры
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Переключить палитру для выбранного модуля NewGRF.{}Используйте переключение, если графика отрисовывается розовым цветом.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Применить изменения
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Найти отсутствующие файлы в сети
@@ -4982,12 +4982,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Секунд д
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изменить время
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время, выделенное на выполнение указанного задания. Ctrl+щелчок устанавливает время для всех заданий.
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Время
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Сбросить время
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Сбросить время в выделенном задании. Ctrl+щелчок - сбросить время во всех заданиях.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Изменить огранич. скорости
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Изменить ограничение скорости движения для выбранного задания. Ctrl+щелчок устанавливает скорость для всех заданий.
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Ограничение скорости
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Сбросить огранич. скорости
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Сбросить ограничение скорости движения для выделенного задания. Ctrl+щелчок - сбросить время для всех заданий.
@@ -5059,7 +5061,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Вниз
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Переместить этот модуль ИИ вниз по списку
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Игровой скрипт
-STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Параметры
+STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Настройки
 STR_AI_CONFIG_AI                                                :{SILVER}ИИ
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}ИИ
@@ -5092,8 +5094,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Сним
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Снимок миникарты
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :ИИ
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :игровых скриптов
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Настройки ИИ
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Настройки игровых скриптов
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыть
 STR_AI_SETTINGS_RESET                                           :{BLACK}Сброс
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5154,7 +5156,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<недосту
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Игра была сохранена в версии без поддержки трамваев. Все трамваи удалены.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Создание карты прекращено...{}... нет доступных мест для размещения городов
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Создание карты прекращено.{}{}Нет доступных мест для размещения городов.
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... в этом сценарии нет городов
 
 STR_ERROR_PNGMAP                                                :{WHITE}Не удалось загрузить ландшафт из PNG...
@@ -5245,7 +5247,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... сл
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... слишком много городов
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... нет места на карте
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно снести город.{}{}К нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... в центре города нет места для статуи
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Невозможно поставить дом...
 

@@ -4896,12 +4896,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Δευτερό�
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Αλλαγή Χρόνων
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλαγή του χρόνου που παίρνει η επιλεγμένη εντολή για να εκτελεστεί. Ctrl+Κλικ για ορισμό χρόνου όλων των εντολών
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Αλλαγή ώρας
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Εκκαθάριση Χρόνων
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Καθαρίζει το χρόνο για την επιλεγμένη εντολή. Ctrl+Κλικ για καθαρισμό χρόνου όλων των εντολών
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Αλλαγή Ορίου Ταχύτητας
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Αλλαγή της μέγιστης ταχύτητας ταξιδιού της επιλεγμένης εντολής. Ctrl+Κλικ για ορισμό της ταχύτητας ταξιδιού όλων των εντολών
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Αλλαγή ορίου ταχύτητας
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Εκκαθάριση Ορίου Ταχύτητας
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Καθαρίζει τη μέγιστη ταχύτητα ταξιδιού της επιλεγμένης εντολής. Ctrl+Κλικ για καθαρισμό ταχύτητας όλων των εντολών

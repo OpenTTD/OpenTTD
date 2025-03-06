@@ -4796,12 +4796,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos até o
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mudar a duração do tempo que a ordem selecionada deve durar. Ctrl+Clique para definir o tempo para todas as ordens
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Alterar horário
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Apagar Tempo
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpar a duração do tempo da ordem selecionada. Ctrl+Clique para limpar o tempo para todas as ordens
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Alterar limite de velocidade
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Alterar a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para definir a velocidade para todas as ordens
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Alterar limite de velocidade
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Remover limite de velocidade
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpar a velocidade máxima de viagem da ordem selecionada. Ctrl+Clique para limpar a velocidade para todas as ordens.
