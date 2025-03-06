@@ -80,7 +80,7 @@ static void AirportBuildAutomata(std::vector<AirportFTA> &layout, uint8_t nofele
 AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Direction rotation, uint num_tiles_x, uint num_tiles_y)
 {
 	AirportMovingData amd;
-	amd.flag = orig->flag;
+	amd.flags = orig->flags;
 	amd.direction = ChangeDir(orig->direction, (DirDiff)rotation);
 	switch (rotation) {
 		case DIR_N:

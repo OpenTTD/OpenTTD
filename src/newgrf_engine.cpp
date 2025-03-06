@@ -136,35 +136,35 @@ static uint8_t MapAircraftMovementState(const Aircraft *v)
 	if (st == nullptr) return AMS_TTDP_FLIGHT_TO_TOWER;
 
 	const AirportFTAClass *afc = st->airport.GetFTA();
-	uint16_t amdflag = afc->MovingData(v->pos)->flag;
+	AirportMovingDataFlags amdflag = afc->MovingData(v->pos)->flags;
 
 	switch (v->state) {
 		case HANGAR:
 			/* The international airport is a special case as helicopters can land in
 			 * front of the hangar. Helicopters also change their air.state to
-			 * AMED_HELI_LOWER some time before actually descending. */
+			 * AirportMovingDataFlag::HeliLower some time before actually descending. */
 
 			/* This condition only occurs for helicopters, during descent,
 			 * to a landing by the hangar of an international airport. */
-			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPORT;
+			if (amdflag.Test(AirportMovingDataFlag::HeliLower)) return AMS_TTDP_HELI_LAND_AIRPORT;
 
 			/* This condition only occurs for helicopters, before starting descent,
 			 * to a landing by the hangar of an international airport. */
-			if (amdflag & AMED_SLOWTURN) return AMS_TTDP_FLIGHT_TO_TOWER;
+			if (amdflag.Test(AirportMovingDataFlag::SlowTurn)) return AMS_TTDP_FLIGHT_TO_TOWER;
 
 			/* The final two conditions apply to helicopters or aircraft.
 			 * Has reached hangar? */
-			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_HANGAR;
+			if (amdflag.Test(AirportMovingDataFlag::ExactPosition)) return AMS_TTDP_HANGAR;
 
 			/* Still moving towards hangar. */
 			return AMS_TTDP_TO_HANGAR;
 
 		case TERM1:
-			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD1;
+			if (amdflag.Test(AirportMovingDataFlag::ExactPosition)) return AMS_TTDP_TO_PAD1;
 			return AMS_TTDP_TO_JUNCTION;
 
 		case TERM2:
-			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD2;
+			if (amdflag.Test(AirportMovingDataFlag::ExactPosition)) return AMS_TTDP_TO_PAD2;
 			return AMS_TTDP_TO_ENTRY_2_AND_3_AND_H;
 
 		case TERM3:
@@ -174,15 +174,15 @@ static uint8_t MapAircraftMovementState(const Aircraft *v)
 		case TERM7:
 		case TERM8:
 			/* TTDPatch only has 3 terminals, so treat these states the same */
-			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD3;
+			if (amdflag.Test(AirportMovingDataFlag::ExactPosition)) return AMS_TTDP_TO_PAD3;
 			return AMS_TTDP_TO_ENTRY_2_AND_3_AND_H;
 
 		case HELIPAD1:
 		case HELIPAD2:
 		case HELIPAD3:
 			/* Will only occur for helicopters.*/
-			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPORT; // Descending.
-			if (amdflag & AMED_SLOWTURN)   return AMS_TTDP_FLIGHT_TO_TOWER;   // Still hasn't started descent.
+			if (amdflag.Test(AirportMovingDataFlag::HeliLower)) return AMS_TTDP_HELI_LAND_AIRPORT; // Descending.
+			if (amdflag.Test(AirportMovingDataFlag::SlowTurn)) return AMS_TTDP_FLIGHT_TO_TOWER;   // Still hasn't started descent.
 			return AMS_TTDP_TO_JUNCTION; // On the ground.
 
 		case TAKEOFF: // Moving to takeoff position.
@@ -196,26 +196,26 @@ static uint8_t MapAircraftMovementState(const Aircraft *v)
 
 		case HELITAKEOFF: // Helicopter is moving to take off position.
 			if (afc->delta_z == 0) {
-				return amdflag & AMED_HELI_RAISE ?
+				return amdflag.Test(AirportMovingDataFlag::HeliRaise) ?
 					AMS_TTDP_HELI_TAKEOFF_AIRPORT : AMS_TTDP_TO_JUNCTION;
 			} else {
 				return AMS_TTDP_HELI_TAKEOFF_HELIPORT;
 			}
 
 		case FLYING:
-			return amdflag & AMED_HOLD ? AMS_TTDP_FLIGHT_APPROACH : AMS_TTDP_FLIGHT_TO_TOWER;
+			return amdflag.Test(AirportMovingDataFlag::Hold) ? AMS_TTDP_FLIGHT_APPROACH : AMS_TTDP_FLIGHT_TO_TOWER;
 
 		case LANDING: // Descent
 			return AMS_TTDP_FLIGHT_DESCENT;
 
 		case ENDLANDING: // On the runway braking
-			if (amdflag & AMED_BRAKE) return AMS_TTDP_BRAKING;
+			if (amdflag.Test(AirportMovingDataFlag::Brake)) return AMS_TTDP_BRAKING;
 			/* Landed - moving off runway */
 			return AMS_TTDP_TO_INWAY;
 
 		case HELILANDING:
 		case HELIENDLANDING: // Helicoptor is descending.
-			if (amdflag & AMED_HELI_LOWER) {
+			if (amdflag.Test(AirportMovingDataFlag::HeliLower)) {
 				return afc->delta_z == 0 ?
 					AMS_TTDP_HELI_LAND_AIRPORT : AMS_TTDP_HELI_LAND_HELIPORT;
 			} else {
