@@ -254,6 +254,8 @@ struct ViewportData : Viewport {
 	int32_t scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
 	int32_t dest_scrollpos_x;   ///< Current destination x coordinate to display (virtual screen coordinate of topleft corner of the viewport).
 	int32_t dest_scrollpos_y;   ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
+
+	void CancelFollow(const Window &viewport_window);
 };
 
 struct QueryString;

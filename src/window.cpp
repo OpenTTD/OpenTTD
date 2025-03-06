@@ -2697,17 +2697,17 @@ static void HandleAutoscroll()
 	/* If we succeed at scrolling in any direction, stop following a vehicle. */
 	static const int SCROLLSPEED = 3;
 	if (x - 15 < 0) {
-		w->viewport->follow_vehicle = VehicleID::Invalid();
+		w->viewport->CancelFollow(*w);
 		w->viewport->dest_scrollpos_x += ScaleByZoom((x - 15) * SCROLLSPEED, vp->zoom);
 	} else if (15 - (vp->width - x) > 0) {
-		w->viewport->follow_vehicle = VehicleID::Invalid();
+		w->viewport->CancelFollow(*w);
 		w->viewport->dest_scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * SCROLLSPEED, vp->zoom);
 	}
 	if (y - 15 < 0) {
-		w->viewport->follow_vehicle = VehicleID::Invalid();
+		w->viewport->CancelFollow(*w);
 		w->viewport->dest_scrollpos_y += ScaleByZoom((y - 15) * SCROLLSPEED, vp->zoom);
 	} else if (15 - (vp->height - y) > 0) {
-		w->viewport->follow_vehicle = VehicleID::Invalid();
+		w->viewport->CancelFollow(*w);
 		w->viewport->dest_scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * SCROLLSPEED, vp->zoom);
 	}
 }
@@ -2775,7 +2775,8 @@ static void HandleKeyScrolling()
 
 		if (_game_mode != GM_MENU && _game_mode != GM_BOOTSTRAP) {
 			/* Key scrolling stops following a vehicle. */
-			GetMainWindow()->viewport->follow_vehicle = VehicleID::Invalid();
+			Window *main_window = GetMainWindow();
+			main_window->viewport->CancelFollow(*main_window);
 		}
 
 		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
