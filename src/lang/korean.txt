@@ -1218,7 +1218,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
 STR_CITY_APPROVAL_HOSTILE                                       :싫어함
 STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안 씀 (회사 행동에 영향 없음)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용할 수 있는 인공지능이 없습니다...{}'온라인 콘텐츠' 시스템을 통해 인공지능을 다운로드받을 수 있습니다.
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용할 수 있는 인공지능이 없습니다...{}{}'온라인 콘텐츠' 시스템을 통해 인공지능을 다운로드받을 수 있습니다.
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}설정
@@ -2651,7 +2651,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 님이 이름을 {STRING}(으)로 바꾸었습니다
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 님이 {2:STRING}에게 {1:CURRENCY_LONG}만큼의 돈을 보내셨습니다
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 게임을 종료하였습니다
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버가 재시작되고 있습니다...{}기다려주세요...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버가 재시작되고 있습니다...{}{}기다려주세요...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} - 서버에서 강제로 추방되었습니다. 사유: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}서버 등록 실패
@@ -2904,6 +2904,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}다리 �
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :강철 현수교
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :강철 거더교
@@ -3631,17 +3632,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}호환�
 STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없음
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' NewGRF가 적용되는 과정에서 비동기화나 충돌이 일어날 수 있습니다
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}' 동력 차량의 상태가 바뀌었습니다
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}차량이 기지 안에 있지 않거나 개조가 불가능한 상태에서 '{1:ENGINE}'의 수송량이 변경되었습니다
+STR_NEWGRF_BROKEN                                               :{WHITE}'{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' NewGRF가 적용되는 과정에서 비동기화나 충돌이 일어날 수 있습니다
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' 동력 차량의 상태가 바뀌었습니다
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}차량이 기지 안에 있지 않거나 개조가 불가능한 상태에서 '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}'의 수송량이 변경되었습니다
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'에 속한 열차 '{0:VEHICLE}'의 길이가 잘못된 값을 가지고 있습니다. NewGRF에 의한 문제로 보입니다. 게임이 비동기화 또는 충돌을 일으킬 수 있습니다
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}'에서 잘못된 정보를 제공하고 있습니다
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}(을)를 만들기 이전과 이후의 화물/개조 정보가 현재의 구매 목록과 다릅니다. 이 경우 자동 교체시 열차 개조에 실패할 수도 있습니다
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}'에서 잘못된 정보를 제공하고 있습니다
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}(을)를 만들기 이전과 이후의 화물/개조 정보가 현재의 구매 목록과 다릅니다. 이 경우 자동 교체시 열차 개조에 실패할 수도 있습니다
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}콜백 함수({1:HEX})가 알 수 없거나 잘못된 결과 값({2:HEX})을 반환했습니다
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' - 생산 콜백 함수의 {2:HEX}에서 잘못된 화물 종류를 반환했습니다
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' - 생산 콜백 함수의 {2:HEX}에서 잘못된 화물 종류를 반환했습니다
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<알 수 없는 화물>
@@ -4038,6 +4039,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}생산 �
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}받는 화물:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} {3:STRING} 대기 중
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} 대기 중
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경 (8의 배수, 최대 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}생산 등급 변경 (퍼센트, 800%까지)
@@ -4791,12 +4796,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :시간표를 �
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다. CTRL+클릭하면 모든 경로에 그 시간 값을 설정합니다
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :시간 변경
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간값 초기화
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로에서 소요되는 시간 값을 초기화합니다. CTRL+클릭하면 모든 경로의 시간을 초기화합니다
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속력 제한
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 운행 속력을 제한합니다. CTRL+클릭하면 모든 경로에 그 속력 값을 설정합니다
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :속력 제한 변경
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속력 제한값 초기화
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 운행 속력 제한값을 초기화합니다. CTRL+클릭하면 모든 경로의 속력을 초기화합니다
@@ -4901,8 +4908,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}높이�
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}미니맵 스크린 샷
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :인공지능
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :게임 스크립트
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}인공지능 매개 변수
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}게임 스크립트 매개 변수
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4963,7 +4970,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<사용 불가�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}지도 생성이 중지되었습니다...{}... 도시를 건설할 적절한 곳이 존재하지 않습니다
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}지도 생성이 중단되었습니다...{}{}... 도시를 건설할 만한 적절한 곳이 존재하지 않습니다
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... 시나리오에 도시가 없습니다
 
 STR_ERROR_PNGMAP                                                :{WHITE}PNG 파일에서 지형을 불러올 수 없습니다...
@@ -5054,7 +5061,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 다�
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도시가 너무 많습니다
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지도에 더 이상 공간이 없습니다
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행 중입니다
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시나 도시 소유의 땅에 역, 정류장, 항구, 공항 또는 차량기지, 차고지, 정박소 등이 존재하면 도시를 삭제할 수 없습니다.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}{}도시나 도시 소유의 땅에 역, 정류장, 항구, 공항 또는 차량기지, 차고지, 정박소 등이 존재하면 도시를 삭제할 수 없습니다.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}건물을 지을 수 없습니다...
 
