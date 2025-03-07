@@ -26,7 +26,7 @@ INSTANTIATE_POOL_METHODS(RoadStop)
 RoadStop::~RoadStop()
 {
 	/* When we are the head we need to free the entries */
-	if (HasBit(this->status, RSSFB_BASE_ENTRY)) {
+	if (this->status.Test(RoadStopStatusFlag::BaseEntry)) {
 		delete this->east;
 		delete this->west;
 	}
@@ -86,7 +86,7 @@ void RoadStop::MakeDriveThrough()
 
 		if (south && rs_south->east != nullptr) { // (east != nullptr) == (west != nullptr)
 			/* There more southern tiles too, they must 'join' us too */
-			ClrBit(rs_south->status, RSSFB_BASE_ENTRY);
+			rs_south->status.Reset(RoadStopStatusFlag::BaseEntry);
 			this->east->occupied += rs_south->east->occupied;
 			this->west->occupied += rs_south->west->occupied;
 
@@ -107,13 +107,13 @@ void RoadStop::MakeDriveThrough()
 		/* There is one to the south, but not to the north... so we become 'parent' */
 		this->east = rs_south->east;
 		this->west = rs_south->west;
-		SetBit(this->status, RSSFB_BASE_ENTRY);
-		ClrBit(rs_south->status, RSSFB_BASE_ENTRY);
+		this->status.Set(RoadStopStatusFlag::BaseEntry);
+		rs_south->status.Reset(RoadStopStatusFlag::BaseEntry);
 	} else {
 		/* We are the only... so we are automatically the master */
 		this->east = new Entry();
 		this->west = new Entry();
-		SetBit(this->status, RSSFB_BASE_ENTRY);
+		this->status.Set(RoadStopStatusFlag::BaseEntry);
 	}
 
 	/* Now update the lengths */
@@ -153,7 +153,7 @@ void RoadStop::ClearDriveThrough()
 		if (south) {
 			/* There are more southern tiles too, they must be split;
 			 * first make the new southern 'base' */
-			SetBit(rs_south->status, RSSFB_BASE_ENTRY);
+			rs_south->status.Set(RoadStopStatusFlag::BaseEntry);
 			rs_south->east = new Entry();
 			rs_south->west = new Entry();
 
@@ -182,7 +182,7 @@ void RoadStop::ClearDriveThrough()
 			rs_south_base->east->Rebuild(rs_south_base);
 			rs_south_base->west->Rebuild(rs_south_base);
 
-			assert(HasBit(rs_north->status, RSSFB_BASE_ENTRY));
+			assert(rs_north->status.Test(RoadStopStatusFlag::BaseEntry));
 			rs_north->east->Rebuild(rs_north);
 			rs_north->west->Rebuild(rs_north);
 		} else {
@@ -192,7 +192,7 @@ void RoadStop::ClearDriveThrough()
 		}
 	} else if (south) {
 		/* There is only something to the south. Hand over the base entry */
-		SetBit(rs_south->status, RSSFB_BASE_ENTRY);
+		rs_south->status.Set(RoadStopStatusFlag::BaseEntry);
 		rs_south->east->length -= TILE_SIZE;
 		rs_south->west->length -= TILE_SIZE;
 	} else {
@@ -202,7 +202,7 @@ void RoadStop::ClearDriveThrough()
 	}
 
 	/* Make sure we don't get used for something 'incorrect' */
-	ClrBit(this->status, RSSFB_BASE_ENTRY);
+	this->status.Reset(RoadStopStatusFlag::BaseEntry);
 	this->east = nullptr;
 	this->west = nullptr;
 }
@@ -364,7 +364,7 @@ static DiagDirection GetEntryDirection(bool east, Axis axis)
  */
 void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 {
-	assert(HasBit(rs->status, RSSFB_BASE_ENTRY));
+	assert(rs->status.Test(RoadStopStatusFlag::BaseEntry));
 
 	Axis axis = GetDriveThroughStopAxis(rs->xy);
 	if (side == -1) side = (rs->east == this);
@@ -392,7 +392,7 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
  */
 void RoadStop::Entry::CheckIntegrity(const RoadStop *rs) const
 {
-	if (!HasBit(rs->status, RSSFB_BASE_ENTRY)) return;
+	if (!rs->status.Test(RoadStopStatusFlag::BaseEntry)) return;
 
 	/* The tile 'before' the road stop must not be part of this 'line' */
 	assert(IsDriveThroughStopTile(rs->xy));

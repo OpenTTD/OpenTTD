@@ -149,7 +149,7 @@ void AfterLoadRoadStops()
 	}
 	/* And then rebuild the data in those entries */
 	for (RoadStop *rs : RoadStop::Iterate()) {
-		if (!HasBit(rs->status, RoadStop::RSSFB_BASE_ENTRY)) continue;
+		if (!rs->status.Test(RoadStop::RoadStopStatusFlag::BaseEntry)) continue;
 
 		rs->GetEntry(DIAGDIR_NE)->Rebuild(rs);
 		rs->GetEntry(DIAGDIR_NW)->Rebuild(rs);
