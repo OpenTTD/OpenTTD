@@ -5011,7 +5011,7 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Building
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Can't clear this area...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... site unsuitable
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... already built
-STR_ERROR_OWNED_BY                                              :{WHITE}... owned by {STRING2}
+STR_ERROR_OWNED_BY                                              :{WHITE}... owned by {STRING1}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area is owned by another company
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landscaping limit reached
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... tile clearing limit reached
