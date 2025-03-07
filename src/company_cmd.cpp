@@ -366,7 +366,7 @@ CommandCost CheckOwnership(Owner owner, TileIndex tile)
 	if (IsLocalCompany()) {
 		auto params = GetParamsForOwnedBy(owner, tile);
 		error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
-		error.SetErrorOwner(owner);
+		if (owner != OWNER_TOWN) error.SetErrorOwner(owner);
 	}
 	return error;
 }
