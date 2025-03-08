@@ -299,13 +299,13 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 }
 
 /**
- * Check if the user clicked on a hyperlink, and handle it if so.
- *
- * @param pt The loation the user clicked.
+ * Get the hyperlink at the given position.
+ * @param pt The point to check.
+ * @returns The hyperlink at the given position, or nullptr if there is no hyperlink.
  */
-void TextfileWindow::CheckHyperlinkClick(Point pt)
+const TextfileWindow::Hyperlink *TextfileWindow::GetHyperlink(Point pt) const
 {
-	if (this->links.empty()) return;
+	if (this->links.empty()) return nullptr;
 
 	/* Which line was clicked. */
 	const int clicked_row = this->GetRowFromWidget(pt.y, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.top, GetCharacterHeight(FS_MONO)) + this->GetScrollbar(WID_TF_VSCROLLBAR)->GetPosition();
@@ -313,7 +313,7 @@ void TextfileWindow::CheckHyperlinkClick(Point pt)
 	size_t subline;
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
 		auto it = std::ranges::find_if(this->lines, [clicked_row](const Line &l) { return l.top <= clicked_row && l.bottom > clicked_row; });
-		if (it == this->lines.cend()) return;
+		if (it == this->lines.cend()) return nullptr;
 		line_index = it - this->lines.cbegin();
 		subline = clicked_row - it->top;
 		Debug(misc, 4, "TextfileWindow check hyperlink: clicked_row={}, line_index={}, line.top={}, subline={}", clicked_row, line_index, it->top, subline);
@@ -323,29 +323,30 @@ void TextfileWindow::CheckHyperlinkClick(Point pt)
 	}
 
 	/* Find hyperlinks in this line. */
-	std::vector<Hyperlink> found_links;
+	std::vector<const Hyperlink *> found_links;
 	for (const auto &link : this->links) {
-		if (link.line == line_index) found_links.push_back(link);
+		if (link.line == line_index) found_links.push_back(&link);
 	}
-	if (found_links.empty()) return;
+	if (found_links.empty()) return nullptr;
 
 	/* Build line layout to figure out character position that was clicked. */
 	uint window_width = IsWidgetLowered(WID_TF_WRAPTEXT) ? this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WidgetDimensions::scaled.frametext.Horizontal() : INT_MAX;
 	Layouter layout(this->lines[line_index].text, window_width, FS_MONO);
 	assert(subline < layout.size());
 	ptrdiff_t char_index = layout.GetCharAtPosition(pt.x - WidgetDimensions::scaled.frametext.left, subline);
-	if (char_index < 0) return;
+	if (char_index < 0) return nullptr;
 	Debug(misc, 4, "TextfileWindow check hyperlink click: line={}, subline={}, char_index={}", line_index, subline, (int)char_index);
 
 	/* Found character index in line, check if any links are at that position. */
-	for (const auto &link : found_links) {
-		Debug(misc, 4, "Checking link from char {} to {}", link.begin, link.end);
-		if (static_cast<size_t>(char_index) >= link.begin && static_cast<size_t>(char_index) < link.end) {
-			Debug(misc, 4, "Activating link with destination: {}", link.destination);
-			this->OnHyperlinkClick(link);
-			return;
+	for (const Hyperlink *link : found_links) {
+		Debug(misc, 4, "Checking link from char {} to {}", link->begin, link->end);
+		if (static_cast<size_t>(char_index) >= link->begin && static_cast<size_t>(char_index) < link->end) {
+			Debug(misc, 4, "Returning link with destination: {}", link->destination);
+			return link;
 		}
 	}
+
+	return nullptr;
 }
 
 /**
@@ -548,10 +549,24 @@ void TextfileWindow::AfterLoadMarkdown()
 			this->NavigateHistory(+1);
 			break;
 
-		case WID_TF_BACKGROUND:
-			this->CheckHyperlinkClick(pt);
+		case WID_TF_BACKGROUND: {
+			const Hyperlink *link = this->GetHyperlink(pt);
+			if (link != nullptr) this->OnHyperlinkClick(*link);
 			break;
+		}
 	}
+}
+
+/* virtual */ bool TextfileWindow::OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond)
+{
+	if (widget != WID_TF_BACKGROUND) return false;
+
+	const Hyperlink *link = this->GetHyperlink(pt);
+	if (link == nullptr) return false;
+
+	GuiShowTooltips(this, GetEncodedString(STR_JUST_RAW_STRING, link->destination), close_cond);
+
+	return true;
 }
 
 /* virtual */ void TextfileWindow::DrawWidget(const Rect &r, WidgetID widget) const
