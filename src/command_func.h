@@ -87,7 +87,7 @@ protected:
 	static void InternalDoBefore(bool top_level, bool test);
 	static void InternalDoAfter(CommandCost &res, DoCommandFlags flags, bool top_level, bool test);
 	static std::tuple<bool, bool, bool> InternalPostBefore(Commands cmd, CommandFlags flags, TileIndex tile, StringID err_message, bool network_command);
-	static void InternalPostResult(const CommandCost &res, TileIndex tile, bool estimate_only, bool only_sending, StringID err_message, bool my_cmd);
+	static void InternalPostResult(CommandCost &res, TileIndex tile, bool estimate_only, bool only_sending, StringID err_message, bool my_cmd);
 	static bool InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex tile, Backup<CompanyID> &cur_company);
 	static std::tuple<bool, bool, bool> InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, Backup<CompanyID> &cur_company);
 	static CommandCost InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company);
