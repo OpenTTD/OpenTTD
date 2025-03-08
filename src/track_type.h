@@ -51,7 +51,6 @@ enum TrackBits : uint8_t {
 	TRACK_BIT_MASK    = 0x3FU,                                              ///< Bitmask for the first 6 bits
 	TRACK_BIT_WORMHOLE = 0x40U,                                             ///< Bitflag for a wormhole (used for tunnels)
 	TRACK_BIT_DEPOT   = 0x80U,                                              ///< Bitflag for a depot
-	INVALID_TRACK_BIT = 0xFF,                                               ///< Flag for an invalid trackbits value
 };
 DECLARE_ENUM_AS_BIT_SET(TrackBits)
 
