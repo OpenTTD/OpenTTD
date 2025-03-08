@@ -287,7 +287,7 @@ void Ship::OnNewEconomyDay()
 
 Trackdir Ship::GetVehicleTrackdir() const
 {
-	if (this->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
+	if (this->vehstatus.Test(VehState::Crashed)) return INVALID_TRACKDIR;
 
 	if (this->IsInDepot()) {
 		/* We'll assume the ship is facing outwards */
@@ -420,7 +420,7 @@ static bool CheckShipLeaveDepot(Ship *v)
 	}
 
 	v->state = AxisToTrackBits(axis);
-	v->vehstatus &= ~VS_HIDDEN;
+	v->vehstatus.Reset(VehState::Hidden);
 
 	v->cur_speed = 0;
 	v->UpdateViewport(true, true);
@@ -702,7 +702,7 @@ static void ShipController(Ship *v)
 
 	if (v->HandleBreakdown()) return;
 
-	if (v->vehstatus & VS_STOPPED) return;
+	if (v->vehstatus.Test(VehState::Stopped)) return;
 
 	if (ProcessOrders(v) && CheckReverseShip(v)) return ReverseShip(v);
 
@@ -847,7 +847,7 @@ static void ShipController(Ship *v)
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				v->UpdatePosition();
-				if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
+				if (!v->vehstatus.Test(VehState::Hidden)) v->Vehicle::UpdateViewport(true);
 				continue;
 			}
 
@@ -869,7 +869,7 @@ bool Ship::Tick()
 {
 	PerformanceAccumulator framerate(PFE_GL_SHIPS);
 
-	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
+	if (!this->vehstatus.Test(VehState::Stopped)) this->running_ticks++;
 
 	ShipController(this);
 
@@ -917,7 +917,7 @@ CommandCost CmdBuildShip(DoCommandFlags flags, TileIndex tile, const Engine *e, 
 		v->rotation = v->direction;
 		v->UpdateDeltaXY();
 
-		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
+		v->vehstatus = {VehState::Hidden, VehState::Stopped, VehState::DefaultPalette};
 
 		v->spritenum = svi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();

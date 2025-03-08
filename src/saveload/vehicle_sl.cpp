@@ -174,13 +174,13 @@ void UpdateOldAircraft()
 		 * skip those */
 		if (a->IsNormalAircraft()) {
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
-			if ((a->vehstatus & VS_STOPPED) && a->state == 0) {
+			if (a->vehstatus.Test(VehState::Stopped) && a->state == 0) {
 				a->state = HANGAR;
 				continue;
 			}
 
 			AircraftLeaveHangar(a, a->direction); // make airplane visible if it was in a depot for example
-			a->vehstatus &= ~VS_STOPPED; // make airplane moving
+			a->vehstatus.Reset(VehState::Stopped); // make airplane moving
 			UpdateAircraftCache(a);
 			a->cur_speed = a->vcache.cached_max_speed; // so aircraft don't have zero speed while in air
 			if (!a->current_order.IsType(OT_GOTO_STATION) && !a->current_order.IsType(OT_GOTO_DEPOT)) {
@@ -465,7 +465,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 			if (v->type == VEH_TRAIN) {
 				Train *t = Train::From(v);
 				if (!t->IsFrontEngine()) {
-					if (t->IsEngine()) t->vehstatus |= VS_STOPPED;
+					if (t->IsEngine()) t->vehstatus.Set(VehState::Stopped);
 					/* cur_speed is now relevant for non-front parts - nonzero breaks
 					 * moving-wagons-inside-depot- and autoreplace- code */
 					t->cur_speed = 0;
@@ -473,7 +473,7 @@ void AfterLoadVehiclesPhase2(bool part_of_load)
 			}
 			/* trains weren't stopping gradually in old OTTD versions (and TTO/TTD)
 			 * other vehicle types didn't have zero speed while stopped (even in 'recent' OTTD versions) */
-			if ((v->vehstatus & VS_STOPPED) && (v->type != VEH_TRAIN || IsSavegameVersionBefore(SLV_2, 1))) {
+			if (v->vehstatus.Test(VehState::Stopped) && (v->type != VEH_TRAIN || IsSavegameVersionBefore(SLV_2, 1))) {
 				v->cur_speed = 0;
 			}
 		}
@@ -556,7 +556,7 @@ void FixupTrainLengths()
 			 * so we need to move all vehicles forward to cover the difference to the
 			 * old center, otherwise wagon spacing in trains would be broken upon load. */
 			for (Train *u = Train::From(v); u != nullptr; u = u->Next()) {
-				if (u->track == TRACK_BIT_DEPOT || (u->vehstatus & VS_CRASHED)) continue;
+				if (u->track == TRACK_BIT_DEPOT || u->vehstatus.Test(VehState::Crashed)) continue;
 
 				Train *next = u->Next();
 
@@ -617,7 +617,7 @@ void FixupTrainLengths()
 					int d = TicksToLeaveDepot(u);
 					if (d <= 0) {
 						/* Next vehicle should have left the depot already, show it and pull forward. */
-						next->vehstatus &= ~VS_HIDDEN;
+						next->vehstatus.Reset(VehState::Hidden);
 						next->track = TrackToTrackBits(GetRailDepotTrack(next->tile));
 						for (int i = 0; i >= d; i--) TrainController(next, nullptr);
 					}

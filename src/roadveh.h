@@ -222,7 +222,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline AccelStatus GetAccelerationStatus() const
 	{
-		return (this->vehstatus & VS_STOPPED) ? AS_BRAKE : AS_ACCEL;
+		return this->vehstatus.Test(VehState::Stopped) ? AS_BRAKE : AS_ACCEL;
 	}
 
 	/**

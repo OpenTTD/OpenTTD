@@ -1020,7 +1020,7 @@ static void FloodVehicle(Vehicle *v)
  */
 static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 {
-	if ((v->vehstatus & VS_CRASHED) != 0) return nullptr;
+	if (v->vehstatus.Test(VehState::Crashed)) return nullptr;
 
 	switch (v->type) {
 		default: break;

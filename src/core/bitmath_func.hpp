@@ -124,18 +124,6 @@ constexpr T SetBit(T &x, const uint8_t y)
 }
 
 /**
- * Sets several bits in a variable.
- *
- * This macro sets several bits in a variable. The bits to set are provided
- * by a value. The new value is also returned.
- *
- * @param x The variable to set some bits
- * @param y The value with set bits for setting them in the variable
- * @return The new value of x
- */
-#define SETBITS(x, y) ((x) |= (y))
-
-/**
  * Clears a bit in a variable.
  *
  * This function clears a bit in a variable. The variable is

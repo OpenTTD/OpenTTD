@@ -127,7 +127,7 @@ void DisasterVehicle::UpdateImage()
 DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target) :
 		SpecializedVehicleBase(), big_ufo_destroyer_target(big_ufo_destroyer_target)
 {
-	this->vehstatus = VS_UNCLICKABLE;
+	this->vehstatus = VehState::Unclickable;
 
 	this->x_pos = x;
 	this->y_pos = y;
@@ -158,7 +158,7 @@ DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubT
 		case ST_BIG_UFO_SHADOW:
 		case ST_BIG_UFO_DESTROYER_SHADOW:
 			this->z_pos = 0;
-			this->vehstatus |= VS_SHADOW;
+			this->vehstatus.Set(VehState::Shadow);
 			break;
 	}
 
@@ -368,7 +368,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 
 		uint dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
 
-		if (dist < TILE_SIZE && !(u->vehstatus & VS_HIDDEN) && u->breakdown_ctr == 0) {
+		if (dist < TILE_SIZE && !u->vehstatus.Test(VehState::Hidden) && u->breakdown_ctr == 0) {
 			u->breakdown_ctr = 3;
 			u->breakdown_delay = 140;
 		}
@@ -380,7 +380,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		if (dist <= TILE_SIZE && z > u->z_pos) z--;
 		v->UpdatePosition(gp.x, gp.y, z);
 
-		if (z <= u->z_pos && (u->vehstatus & VS_HIDDEN) == 0) {
+		if (z <= u->z_pos && !u->vehstatus.Test(VehState::Hidden)) {
 			v->age++;
 			if (u->crashed_ctr == 0) {
 				uint victims = u->Crash();
@@ -588,7 +588,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			return t->IsFrontEngine() // Only the engines
 				&& Company::IsHumanID(t->owner) // Don't break AIs
 				&& IsPlainRailTile(t->tile) // No tunnels
-				&& (t->vehstatus & VS_CRASHED) == 0; // Not crashed
+				&& !t->vehstatus.Test(VehState::Crashed); // Not crashed
 		};
 
 		uint n = 0; // Total number of targetable trains.

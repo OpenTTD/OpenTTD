@@ -281,7 +281,7 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		v->z_pos = GetSlopePixelZ(x, y, true);
 
 		v->state = RVSB_IN_DEPOT;
-		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
+		v->vehstatus = {VehState::Hidden, VehState::Stopped, VehState::DefaultPalette};
 
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
@@ -368,8 +368,7 @@ CommandCost CmdTurnRoadVeh(DoCommandFlags flags, VehicleID veh_id)
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	if ((v->vehstatus & VS_STOPPED) ||
-			(v->vehstatus & VS_CRASHED) ||
+	if (v->vehstatus.Any({VehState::Stopped, VehState::Crashed}) ||
 			v->breakdown_ctr != 0 ||
 			v->overtaking != 0 ||
 			v->state == RVSB_WORMHOLE ||
@@ -449,7 +448,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 		}
 
 		/* Vehicle is on the middle part of a bridge. */
-		if (u->state == RVSB_WORMHOLE && !(u->vehstatus & VS_HIDDEN)) {
+		if (u->state == RVSB_WORMHOLE && !u->vehstatus.Test(VehState::Hidden)) {
 			max_speed = std::min(max_speed, GetBridgeSpec(GetBridgeType(u->tile))->speed * 2);
 		}
 	}
@@ -818,7 +817,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	 * Original acceleration always accelerates, so always use the maximum speed. */
 	int u_speed = (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL || u->GetAcceleration() > 0) ? u->GetCurrentMaxSpeed() : u->cur_speed;
 	if (u_speed >= v->GetCurrentMaxSpeed() &&
-			!(u->vehstatus & VS_STOPPED) &&
+			!u->vehstatus.Test(VehState::Stopped) &&
 			u->cur_speed != 0) {
 		return;
 	}
@@ -839,7 +838,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 
 	/* When the vehicle in front of us is stopped we may only take
 	 * half the time to pass it than when the vehicle is moving. */
-	v->overtaking_ctr = (od.u->cur_speed == 0 || (od.u->vehstatus & VS_STOPPED)) ? RV_OVERTAKE_TIMEOUT / 2 : 0;
+	v->overtaking_ctr = (od.u->cur_speed == 0 || od.u->vehstatus.Test(VehState::Stopped)) ? RV_OVERTAKE_TIMEOUT / 2 : 0;
 	v->overtaking = RVSB_DRIVE_SIDE;
 }
 
@@ -1028,7 +1027,7 @@ bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 		v->cur_speed = 0;
 	}
 
-	v->vehstatus &= ~VS_HIDDEN;
+	v->vehstatus.Reset(VehState::Hidden);
 	v->state = tdir;
 	v->frame = RVC_DEPOT_START_FRAME;
 
@@ -1172,7 +1171,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
 		v->UpdatePosition();
-		if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
+		if (!v->vehstatus.Test(VehState::Hidden)) v->Vehicle::UpdateViewport(true);
 		return true;
 	}
 
@@ -1560,13 +1559,13 @@ static bool RoadVehController(RoadVehicle *v)
 	if (v->reverse_ctr != 0) v->reverse_ctr--;
 
 	/* handle crashed */
-	if (v->vehstatus & VS_CRASHED || RoadVehCheckTrainCrash(v)) {
+	if (v->vehstatus.Test(VehState::Crashed) || RoadVehCheckTrainCrash(v)) {
 		return RoadVehIsCrashed(v);
 	}
 
 	/* road vehicle has broken down? */
 	if (v->HandleBreakdown()) return true;
-	if (v->vehstatus & VS_STOPPED) {
+	if (v->vehstatus.Test(VehState::Stopped)) {
 		v->SetLastSpeed();
 		return true;
 	}
@@ -1611,7 +1610,7 @@ static bool RoadVehController(RoadVehicle *v)
 	v->SetLastSpeed();
 
 	for (RoadVehicle *u = v; u != nullptr; u = u->Next()) {
-		if ((u->vehstatus & VS_HIDDEN) != 0) continue;
+		if (u->vehstatus.Test(VehState::Hidden)) continue;
 
 		u->UpdateViewport(false, false);
 	}
@@ -1642,7 +1641,7 @@ bool RoadVehicle::Tick()
 	this->tick_counter++;
 
 	if (this->IsFrontEngine()) {
-		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
+		if (!this->vehstatus.Test(VehState::Stopped)) this->running_ticks++;
 		return RoadVehController(this);
 	}
 
@@ -1729,7 +1728,7 @@ void RoadVehicle::OnNewEconomyDay()
 
 Trackdir RoadVehicle::GetVehicleTrackdir() const
 {
-	if (this->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
+	if (this->vehstatus.Test(VehState::Crashed)) return INVALID_TRACKDIR;
 
 	if (this->IsInDepot()) {
 		/* We'll assume the road vehicle is facing outwards */

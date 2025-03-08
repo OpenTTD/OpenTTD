@@ -299,8 +299,8 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 		u->z_pos = GetSlopePixelZ(x, y);
 		v->z_pos = u->z_pos + 1;
 
-		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
-		u->vehstatus = VS_HIDDEN | VS_UNCLICKABLE | VS_SHADOW;
+		v->vehstatus = {VehState::Hidden, VehState::Stopped, VehState::DefaultPalette};
+		u->vehstatus = {VehState::Hidden, VehState::Unclickable, VehState::Shadow};
 
 		v->spritenum = avi->image_index;
 
@@ -378,7 +378,7 @@ CommandCost CmdBuildAircraft(DoCommandFlags flags, TileIndex tile, const Engine 
 			w->x_pos = v->x_pos;
 			w->y_pos = v->y_pos;
 			w->z_pos = v->z_pos + ROTOR_Z_OFFSET;
-			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
+			w->vehstatus = {VehState::Hidden, VehState::Unclickable};
 			w->spritenum = 0xFF;
 			w->subtype = AIR_ROTOR;
 			w->sprite_cache.sprite_seq.Set(SPR_ROTOR_STOPPED);
@@ -482,11 +482,11 @@ static void HelicopterTickHandler(Aircraft *v)
 {
 	Aircraft *u = v->Next()->Next();
 
-	if (u->vehstatus & VS_HIDDEN) return;
+	if (u->vehstatus.Test(VehState::Hidden)) return;
 
 	/* if true, helicopter rotors do not rotate. This should only be the case if a helicopter is
 	 * loading/unloading at a terminal or stopped */
-	if (v->current_order.IsType(OT_LOADING) || (v->vehstatus & VS_STOPPED)) {
+	if (v->current_order.IsType(OT_LOADING) || v->vehstatus.Test(VehState::Stopped)) {
 		if (u->cur_speed != 0) {
 			u->cur_speed++;
 			if (u->cur_speed >= 0x80 && u->state == HRS_ROTOR_MOVING_3) {
@@ -576,10 +576,10 @@ void HandleAircraftEnterHangar(Aircraft *v)
 	v->progress = 0;
 
 	Aircraft *u = v->Next();
-	u->vehstatus |= VS_HIDDEN;
+	u->vehstatus.Set(VehState::Hidden);
 	u = u->Next();
 	if (u != nullptr) {
-		u->vehstatus |= VS_HIDDEN;
+		u->vehstatus.Set(VehState::Hidden);
 		u->cur_speed = 0;
 	}
 
@@ -660,7 +660,7 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	speed_limit *= _settings_game.vehicle.plane_speed;
 
 	/* adjust speed for broken vehicles */
-	if (v->vehstatus & VS_AIRCRAFT_BROKEN) {
+	if (v->vehstatus.Test(VehState::AircraftBroken)) {
 		if (SPEED_LIMIT_BROKEN < speed_limit) hard_limit = false;
 		speed_limit = std::min<uint>(speed_limit, SPEED_LIMIT_BROKEN);
 	}
@@ -1020,7 +1020,7 @@ static bool AircraftController(Aircraft *v)
 
 	if (amd.flags.Test(AirportMovingDataFlag::Brake) && v->cur_speed > SPEED_LIMIT_TAXI * _settings_game.vehicle.plane_speed) {
 		MaybeCrashAirplane(v);
-		if ((v->vehstatus & VS_CRASHED) != 0) return false;
+		if (v->vehstatus.Test(VehState::Crashed)) return false;
 	}
 
 	uint speed_limit = SPEED_LIMIT_TAXI;
@@ -1247,11 +1247,11 @@ static void HandleAircraftSmoke(Aircraft *v, bool mode)
 		{  0,  6 }
 	};
 
-	if (!(v->vehstatus & VS_AIRCRAFT_BROKEN)) return;
+	if (!v->vehstatus.Test(VehState::AircraftBroken)) return;
 
 	/* Stop smoking when landed */
 	if (v->cur_speed < 10) {
-		v->vehstatus &= ~VS_AIRCRAFT_BROKEN;
+		v->vehstatus.Reset(VehState::AircraftBroken);
 		v->breakdown_ctr = 0;
 		return;
 	}
@@ -1468,15 +1468,15 @@ void AircraftLeaveHangar(Aircraft *v, Direction exit_dir)
 	v->subspeed = 0;
 	v->progress = 0;
 	v->direction = exit_dir;
-	v->vehstatus &= ~VS_HIDDEN;
+	v->vehstatus.Reset(VehState::Hidden);
 	{
 		Vehicle *u = v->Next();
-		u->vehstatus &= ~VS_HIDDEN;
+		u->vehstatus.Reset(VehState::Hidden);
 
 		/* Rotor blades */
 		u = u->Next();
 		if (u != nullptr) {
-			u->vehstatus &= ~VS_HIDDEN;
+			u->vehstatus.Reset(VehState::Hidden);
 			u->cur_speed = 80;
 		}
 	}
@@ -1522,7 +1522,7 @@ static void AircraftEventHandler_InHangar(Aircraft *v, const AirportFTAClass *ap
 	}
 
 	/* if we were sent to the depot, stay there */
-	if (v->current_order.IsType(OT_GOTO_DEPOT) && (v->vehstatus & VS_STOPPED)) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT) && v->vehstatus.Test(VehState::Stopped)) {
 		v->current_order.Free();
 		return;
 	}
@@ -2077,11 +2077,11 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 
 static bool AircraftEventHandler(Aircraft *v, int loop)
 {
-	if (v->vehstatus & VS_CRASHED) {
+	if (v->vehstatus.Test(VehState::Crashed)) {
 		return HandleCrashedAircraft(v);
 	}
 
-	if (v->vehstatus & VS_STOPPED) return true;
+	if (v->vehstatus.Test(VehState::Stopped)) return true;
 
 	v->HandleBreakdown();
 
@@ -2119,7 +2119,7 @@ bool Aircraft::Tick()
 
 	this->tick_counter++;
 
-	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
+	if (!this->vehstatus.Test(VehState::Stopped)) this->running_ticks++;
 
 	if (this->subtype == AIR_HELICOPTER) HelicopterTickHandler(this);
 

@@ -344,7 +344,7 @@
 	if (!IsPrimaryVehicle(vehicle_id)) return -1;
 
 	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
-	return (v->vehstatus & (::VS_STOPPED | ::VS_CRASHED)) == 0 ? v->GetDisplaySpeed() : 0; // km-ish/h
+	return !v->vehstatus.Any({::VehState::Stopped, ::VehState::Crashed}) ? v->GetDisplaySpeed() : 0; // km-ish/h
 }
 
 /* static */ ScriptVehicle::VehicleState ScriptVehicle::GetState(VehicleID vehicle_id)
@@ -352,12 +352,12 @@
 	if (!IsValidVehicle(vehicle_id)) return ScriptVehicle::VS_INVALID;
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
-	uint8_t vehstatus = v->vehstatus;
+	VehStates vehstatus = v->vehstatus;
 
-	if (vehstatus & ::VS_CRASHED) return ScriptVehicle::VS_CRASHED;
+	if (vehstatus.Test(::VehState::Crashed)) return ScriptVehicle::VS_CRASHED;
 	if (v->breakdown_ctr != 0) return ScriptVehicle::VS_BROKEN;
 	if (v->IsStoppedInDepot()) return ScriptVehicle::VS_IN_DEPOT;
-	if (vehstatus & ::VS_STOPPED) return ScriptVehicle::VS_STOPPED;
+	if (vehstatus.Test(::VehState::Stopped)) return ScriptVehicle::VS_STOPPED;
 	if (v->current_order.IsType(OT_LOADING)) return ScriptVehicle::VS_AT_STATION;
 	return ScriptVehicle::VS_RUNNING;
 }

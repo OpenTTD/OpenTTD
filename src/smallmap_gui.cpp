@@ -949,7 +949,7 @@ protected:
 	{
 		for (const Vehicle *v : Vehicle::Iterate()) {
 			if (v->type == VEH_EFFECT) continue;
-			if (v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) continue;
+			if (v->vehstatus.Any({VehState::Hidden, VehState::Unclickable})) continue;
 
 			/* Remap into flat coordinates. */
 			Point pt = this->RemapTile(v->x_pos / (int)TILE_SIZE, v->y_pos / (int)TILE_SIZE);

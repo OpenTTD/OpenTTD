@@ -28,17 +28,18 @@
 const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
 const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
 
-/** Vehicle status bits in #Vehicle::vehstatus. */
-enum VehStatus : uint8_t {
-	VS_HIDDEN          = 0x01, ///< Vehicle is not visible.
-	VS_STOPPED         = 0x02, ///< Vehicle is stopped by the player.
-	VS_UNCLICKABLE     = 0x04, ///< Vehicle is not clickable by the user (shadow vehicles).
-	VS_DEFPAL          = 0x08, ///< Use default vehicle palette. @see DoDrawVehicle
-	VS_TRAIN_SLOWING   = 0x10, ///< Train is slowing down.
-	VS_SHADOW          = 0x20, ///< Vehicle is a shadow vehicle.
-	VS_AIRCRAFT_BROKEN = 0x40, ///< Aircraft is broken down.
-	VS_CRASHED         = 0x80, ///< Vehicle is crashed.
+/** Vehicle state bits in #Vehicle::vehstatus. */
+enum class VehState : uint8_t {
+	Hidden         = 0, ///< Vehicle is not visible.
+	Stopped        = 1, ///< Vehicle is stopped by the player.
+	Unclickable    = 2, ///< Vehicle is not clickable by the user (shadow vehicles).
+	DefaultPalette = 3, ///< Use default vehicle palette. @see DoDrawVehicle
+	TrainSlowing   = 4, ///< Train is slowing down.
+	Shadow         = 5, ///< Vehicle is a shadow vehicle.
+	AircraftBroken = 6, ///< Aircraft is broken down.
+	Crashed        = 7, ///< Vehicle is crashed.
 };
+using VehStates = EnumBitSet<VehState, uint8_t>;
 
 /** Bit numbers in #Vehicle::vehicle_flags. */
 enum VehicleFlags : uint8_t {
@@ -345,7 +346,7 @@ public:
 	uint8_t running_ticks = 0; ///< Number of ticks this vehicle was not stopped this day
 	uint16_t load_unload_ticks = 0; ///< Ticks to wait before starting next cycle.
 
-	uint8_t vehstatus = 0; ///< Status
+	VehStates vehstatus{}; ///< Status
 	uint8_t subtype = 0; ///< subtype (Filled with values from #AircraftSubType/#DisasterSubType/#EffectVehicleType/#GroundVehicleSubtypeFlags)
 	Order current_order{}; ///< The current order (+ status, like: loading)
 
@@ -554,8 +555,8 @@ public:
 	bool IsStoppedInDepot() const
 	{
 		assert(this == this->First());
-		/* Free wagons have no VS_STOPPED state */
-		if (this->IsPrimaryVehicle() && !(this->vehstatus & VS_STOPPED)) return false;
+		/* Free wagons have no VehState::Stopped state */
+		if (this->IsPrimaryVehicle() && !this->vehstatus.Test(VehState::Stopped)) return false;
 		return this->IsChainInDepot();
 	}
 

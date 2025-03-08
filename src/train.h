@@ -254,7 +254,7 @@ protected: // These functions should not be called outside acceleration code.
 	inline uint8_t GetAirDragArea() const
 	{
 		/* Air drag is higher in tunnels due to the limited cross-section. */
-		return (this->track == TRACK_BIT_WORMHOLE && this->vehstatus & VS_HIDDEN) ? 28 : 14;
+		return (this->track == TRACK_BIT_WORMHOLE && this->vehstatus.Test(VehState::Hidden)) ? 28 : 14;
 	}
 
 	/**
@@ -272,7 +272,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline AccelStatus GetAccelerationStatus() const
 	{
-		return (this->vehstatus & VS_STOPPED) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK) ? AS_BRAKE : AS_ACCEL;
+		return this->vehstatus.Test(VehState::Stopped) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK) ? AS_BRAKE : AS_ACCEL;
 	}
 
 	/**

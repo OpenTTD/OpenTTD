@@ -85,7 +85,7 @@ void CheckCaches()
 	std::vector<TrainCache> tra_cache;
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
+		if (v != v->First() || v->vehstatus.Test(VehState::Crashed) || !v->IsPrimaryVehicle()) continue;
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);

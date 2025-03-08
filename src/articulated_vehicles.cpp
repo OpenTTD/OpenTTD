@@ -420,7 +420,8 @@ void AddArticulatedParts(Vehicle *first)
 		v->date_of_last_service = first->date_of_last_service;
 		v->date_of_last_service_newgrf = first->date_of_last_service_newgrf;
 		v->build_year = first->build_year;
-		v->vehstatus = first->vehstatus & ~VS_STOPPED;
+		v->vehstatus = first->vehstatus;
+		v->vehstatus.Reset(VehState::Stopped);
 
 		v->cargo_subtype = 0;
 		v->max_age = CalendarTime::MIN_DATE;

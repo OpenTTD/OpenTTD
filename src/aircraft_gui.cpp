@@ -87,8 +87,8 @@ void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, Eng
 
 	int heli_offs = 0;
 
-	PaletteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	seq.Draw(x, y, pal, (v->vehstatus & VS_CRASHED) != 0);
+	PaletteID pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(v);
+	seq.Draw(x, y, pal, v->vehstatus.Test(VehState::Crashed));
 
 	/* Aircraft can store cargo in their shadow, show this if present. */
 	const Vehicle *u = v->Next();

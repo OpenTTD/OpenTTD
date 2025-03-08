@@ -78,7 +78,7 @@ void CheckTrainsLengths()
 	bool first = true;
 
 	for (const Train *v : Train::Iterate()) {
-		if (v->First() == v && !(v->vehstatus & VS_CRASHED)) {
+		if (v->First() == v && !v->vehstatus.Test(VehState::Crashed)) {
 			for (const Train *u = v, *w = v->Next(); w != nullptr; u = w, w = w->Next()) {
 				if (u->track != TRACK_BIT_DEPOT) {
 					if ((w->track != TRACK_BIT_DEPOT &&
@@ -415,7 +415,7 @@ int Train::GetCurrentMaxSpeed() const
 		}
 
 		/* Vehicle is on the middle part of a bridge. */
-		if (u->track == TRACK_BIT_WORMHOLE && !(u->vehstatus & VS_HIDDEN)) {
+		if (u->track == TRACK_BIT_WORMHOLE && !u->vehstatus.Test(VehState::Hidden)) {
 			max_speed = std::min<int>(max_speed, GetBridgeSpec(GetBridgeType(u->tile))->speed);
 		}
 	}
@@ -639,7 +639,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 		v->z_pos = GetSlopePixelZ(x, y, true);
 		v->owner = _current_company;
 		v->track = TRACK_BIT_DEPOT;
-		v->vehstatus = VS_HIDDEN | VS_DEFPAL;
+		v->vehstatus = {VehState::Hidden, VehState::DefaultPalette};
 
 		v->SetWagon();
 
@@ -676,7 +676,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 					w->IsFreeWagon() &&             ///< A free wagon chain
 					w->engine_type == e->index &&   ///< Same type
 					w->First() != v &&              ///< Don't connect to ourself
-					!(w->vehstatus & VS_CRASHED)) { ///< Not crashed/flooded
+					!w->vehstatus.Test(VehState::Crashed)) { ///< Not crashed/flooded
 				if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DoCommandFlag::Execute, v->index, w->Last()->index, true).Succeeded()) {
 					break;
 				}
@@ -713,7 +713,8 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->y_pos = v->y_pos;
 	u->z_pos = v->z_pos;
 	u->track = TRACK_BIT_DEPOT;
-	u->vehstatus = v->vehstatus & ~VS_STOPPED;
+	u->vehstatus = v->vehstatus;
+	u->vehstatus.Reset(VehState::Stopped);
 	u->spritenum = v->spritenum + 1;
 	u->cargo_type = v->cargo_type;
 	u->cargo_subtype = v->cargo_subtype;
@@ -769,7 +770,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		v->y_pos = y;
 		v->z_pos = GetSlopePixelZ(x, y, true);
 		v->track = TRACK_BIT_DEPOT;
-		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
+		v->vehstatus = {VehState::Hidden, VehState::Stopped, VehState::DefaultPalette};
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
 		assert(IsValidCargoType(v->cargo_type));
@@ -826,7 +827,7 @@ static Train *FindGoodVehiclePos(const Train *src)
 	TileIndex tile = src->tile;
 
 	for (Train *dst : Train::Iterate()) {
-		if (dst->IsFreeWagon() && dst->tile == tile && !(dst->vehstatus & VS_CRASHED)) {
+		if (dst->IsFreeWagon() && dst->tile == tile && !dst->vehstatus.Test(VehState::Crashed)) {
 			/* check so all vehicles in the line have the same engine. */
 			Train *t = dst;
 			while (t->engine_type == eng) {
@@ -1197,7 +1198,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlags flags, VehicleID src_veh, VehicleI
 	if (ret.Failed()) return ret;
 
 	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
-	if (src->vehstatus & VS_CRASHED) return CMD_ERROR;
+	if (src->vehstatus.Test(VehState::Crashed)) return CMD_ERROR;
 
 	/* if nothing is selected as destination, try and find a matching vehicle to drag to. */
 	Train *dst;
@@ -1211,7 +1212,7 @@ CommandCost CmdMoveRailVehicle(DoCommandFlags flags, VehicleID src_veh, VehicleI
 		if (ret.Failed()) return ret;
 
 		/* Do not allow appending to crashed vehicles, too */
-		if (dst->vehstatus & VS_CRASHED) return CMD_ERROR;
+		if (dst->vehstatus.Test(VehState::Crashed)) return CMD_ERROR;
 	}
 
 	/* if an articulated part is being handled, deal with its parent vehicle */
@@ -1636,9 +1637,10 @@ void ReverseTrainSwapVeh(Train *v, int l, int r)
 	if (a != b) {
 		/* swap the hidden bits */
 		{
-			uint16_t tmp = (a->vehstatus & ~VS_HIDDEN) | (b->vehstatus & VS_HIDDEN);
-			b->vehstatus = (b->vehstatus & ~VS_HIDDEN) | (a->vehstatus & VS_HIDDEN);
-			a->vehstatus = tmp;
+			bool a_hidden = a->vehstatus.Test(VehState::Hidden);
+			bool b_hidden = b->vehstatus.Test(VehState::Hidden);
+			b->vehstatus.Set(VehState::Hidden, a_hidden);
+			a->vehstatus.Set(VehState::Hidden, b_hidden);
 		}
 
 		Swap(a->track, b->track);
@@ -1694,7 +1696,7 @@ bool TrainOnCrossing(TileIndex tile)
  */
 static Vehicle *TrainApproachingCrossingEnum(Vehicle *v, void *data)
 {
-	if (v->type != VEH_TRAIN || (v->vehstatus & VS_CRASHED)) return nullptr;
+	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return nullptr;
 
 	Train *t = Train::From(v);
 	if (!t->IsFrontEngine()) return nullptr;
@@ -1912,7 +1914,7 @@ static void AdvanceWagonsAfterSwap(Train *v)
 		int d = TicksToLeaveDepot(dep);
 
 		if (d <= 0) {
-			leave->vehstatus &= ~VS_HIDDEN; // move it out of the depot
+			leave->vehstatus.Reset(VehState::Hidden); // move it out of the depot
 			leave->track = TrackToTrackBits(GetRailDepotTrack(leave->tile));
 			for (int i = 0; i >= d; i--) TrainController(leave, nullptr); // maybe move it, and maybe let another wagon leave
 		}
@@ -2087,7 +2089,7 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 	} else {
 		/* turn the whole train around */
 		if (!v->IsPrimaryVehicle()) return CMD_ERROR;
-		if ((v->vehstatus & VS_CRASHED) || v->breakdown_ctr != 0) return CMD_ERROR;
+		if (v->vehstatus.Test(VehState::Crashed) || v->breakdown_ctr != 0) return CMD_ERROR;
 
 		if (flags.Test(DoCommandFlag::Execute)) {
 			/* Properly leave the station if we are loading and won't be loading anymore */
@@ -2163,7 +2165,7 @@ CommandCost CmdForceTrainProceed(DoCommandFlags flags, VehicleID veh_id)
  */
 static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 {
-	assert(!(v->vehstatus & VS_CRASHED));
+	assert(!v->vehstatus.Test(VehState::Crashed));
 
 	return YapfTrainFindNearestDepot(v, max_distance);
 }
@@ -2267,7 +2269,7 @@ static bool CheckTrainStayInDepot(Train *v)
 
 	/* if the train got no power, then keep it in the depot */
 	if (v->gcache.cached_power == 0) {
-		v->vehstatus |= VS_STOPPED;
+		v->vehstatus.Set(VehState::Stopped);
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 		return true;
 	}
@@ -2322,7 +2324,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	v->track = TRACK_BIT_X;
 	if (v->direction & 2) v->track = TRACK_BIT_Y;
 
-	v->vehstatus &= ~VS_HIDDEN;
+	v->vehstatus.Reset(VehState::Hidden);
 	v->cur_speed = 0;
 
 	v->UpdateViewport(true, true);
@@ -3148,7 +3150,7 @@ static uint TrainCrashed(Train *v)
 	uint victims = 0;
 
 	/* do not crash train twice */
-	if (!(v->vehstatus & VS_CRASHED)) {
+	if (!v->vehstatus.Test(VehState::Crashed)) {
 		victims = v->Crash();
 		AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_TRAIN, victims));
 		Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_TRAIN, victims));
@@ -3251,7 +3253,7 @@ static bool CheckTrainCollision(Train *v)
 
 static Vehicle *CheckTrainAtSignal(Vehicle *v, void *data)
 {
-	if (v->type != VEH_TRAIN || (v->vehstatus & VS_CRASHED)) return nullptr;
+	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return nullptr;
 
 	Train *t = Train::From(v);
 	DiagDirection exitdir = *(DiagDirection *)data;
@@ -3516,7 +3518,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				v->UpdatePosition();
-				if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
+				if (!v->vehstatus.Test(VehState::Hidden)) v->Vehicle::UpdateViewport(true);
 				continue;
 			}
 		}
@@ -3596,7 +3598,7 @@ static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
 {
 	TrackBits *trackbits = (TrackBits *)data;
 
-	if (v->type == VEH_TRAIN && (v->vehstatus & VS_CRASHED) != 0) {
+	if (v->type == VEH_TRAIN && v->vehstatus.Test(VehState::Crashed)) {
 		TrackBits train_tbits = Train::From(v)->track;
 		if (train_tbits == TRACK_BIT_WORMHOLE) {
 			/* Vehicle is inside a wormhole, v->track contains no useful value then. */
@@ -3708,7 +3710,7 @@ static void ChangeTrainDirRandomly(Train *v)
 
 	do {
 		/* We don't need to twist around vehicles if they're not visible */
-		if (!(v->vehstatus & VS_HIDDEN)) {
+		if (!v->vehstatus.Test(VehState::Hidden)) {
 			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
 			/* Refrain from updating the z position of the vehicle when on
 			 * a bridge, because UpdateInclination() will put the vehicle under
@@ -3732,7 +3734,7 @@ static bool HandleCrashedTrain(Train *v)
 {
 	int state = ++v->crash_anim_pos;
 
-	if (state == 4 && !(v->vehstatus & VS_HIDDEN)) {
+	if (state == 4 && !v->vehstatus.Test(VehState::Hidden)) {
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	}
 
@@ -3812,7 +3814,7 @@ static bool TrainApproachingLineEnd(Train *v, bool signal, bool reverse)
 	}
 
 	/* slow down */
-	v->vehstatus |= VS_TRAIN_SLOWING;
+	v->vehstatus.Set(VehState::TrainSlowing);
 	uint16_t break_speed = _breakdown_speeds[x & 0xF];
 	if (break_speed < v->cur_speed) v->cur_speed = break_speed;
 
@@ -3858,7 +3860,7 @@ static bool TrainCanLeaveTile(const Train *v)
 static TileIndex TrainApproachingCrossingTile(const Train *v)
 {
 	assert(v->IsFrontEngine());
-	assert(!(v->vehstatus & VS_CRASHED));
+	assert(!v->vehstatus.Test(VehState::Crashed));
 
 	if (!TrainCanLeaveTile(v)) return INVALID_TILE;
 
@@ -3888,12 +3890,12 @@ static bool TrainCheckIfLineEnds(Train *v, bool reverse)
 
 	int t = v->breakdown_ctr;
 	if (t > 1) {
-		v->vehstatus |= VS_TRAIN_SLOWING;
+		v->vehstatus.Set(VehState::TrainSlowing);
 
 		uint16_t break_speed = _breakdown_speeds[GB(~t, 4, 4)];
 		if (break_speed < v->cur_speed) v->cur_speed = break_speed;
 	} else {
-		v->vehstatus &= ~VS_TRAIN_SLOWING;
+		v->vehstatus.Reset(VehState::TrainSlowing);
 	}
 
 	if (!TrainCanLeaveTile(v)) return true;
@@ -3936,7 +3938,7 @@ static bool TrainCheckIfLineEnds(Train *v, bool reverse)
 static bool TrainLocoHandler(Train *v, bool mode)
 {
 	/* train has crashed? */
-	if (v->vehstatus & VS_CRASHED) {
+	if (v->vehstatus.Test(VehState::Crashed)) {
 		return mode ? true : HandleCrashedTrain(v); // 'this' can be deleted here
 	}
 
@@ -3953,7 +3955,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	}
 
 	/* exit if train is stopped */
-	if ((v->vehstatus & VS_STOPPED) && v->cur_speed == 0) return true;
+	if (v->vehstatus.Test(VehState::Stopped) && v->cur_speed == 0) return true;
 
 	bool valid_order = !v->current_order.IsType(OT_NOTHING) && v->current_order.GetType() != OT_CONDITIONAL;
 	if (ProcessOrders(v) && CheckReverseTrain(v)) {
@@ -4025,7 +4027,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	int j = v->UpdateSpeed();
 
 	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
-	if (v->cur_speed == 0 && (v->vehstatus & VS_STOPPED)) {
+	if (v->cur_speed == 0 && v->vehstatus.Test(VehState::Stopped)) {
 		/* If we manually stopped, we're not force-proceeding anymore. */
 		v->force_proceed = TFP_NONE;
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
@@ -4062,7 +4064,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	}
 
 	for (Train *u = v; u != nullptr; u = u->Next()) {
-		if ((u->vehstatus & VS_HIDDEN) != 0) continue;
+		if (u->vehstatus.Test(VehState::Hidden)) continue;
 
 		u->UpdateViewport(false, false);
 	}
@@ -4108,14 +4110,14 @@ bool Train::Tick()
 	if (this->IsFrontEngine()) {
 		PerformanceAccumulator framerate(PFE_GL_TRAINS);
 
-		if (!(this->vehstatus & VS_STOPPED) || this->cur_speed > 0) this->running_ticks++;
+		if (!this->vehstatus.Test(VehState::Stopped) || this->cur_speed > 0) this->running_ticks++;
 
 		this->current_order_time++;
 
 		if (!TrainLocoHandler(this, false)) return false;
 
 		return TrainLocoHandler(this, true);
-	} else if (this->IsFreeWagon() && (this->vehstatus & VS_CRASHED)) {
+	} else if (this->IsFreeWagon() && this->vehstatus.Test(VehState::Crashed)) {
 		/* Delete flooded standalone wagon chain */
 		if (++this->crash_anim_pos >= 4400) {
 			delete this;
@@ -4214,7 +4216,7 @@ void Train::OnNewEconomyDay()
  */
 Trackdir Train::GetVehicleTrackdir() const
 {
-	if (this->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
+	if (this->vehstatus.Test(VehState::Crashed)) return INVALID_TRACKDIR;
 
 	if (this->track == TRACK_BIT_DEPOT) {
 		/* We'll assume the train is facing outwards */

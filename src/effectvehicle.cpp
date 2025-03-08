@@ -574,7 +574,7 @@ EffectVehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 	v->z_pos = z;
 	v->tile = TileIndex{};
 	v->UpdateDeltaXY();
-	v->vehstatus = VS_UNCLICKABLE;
+	v->vehstatus = VehState::Unclickable;
 
 	_effect_procs[type].init_proc(v);
 

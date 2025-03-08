@@ -1185,7 +1185,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != nullptr && v->track != TRACK_BIT_DEPOT) {
 			/* Extend the train's path if it's not stopped or loading, or not at a safe position. */
-			if (!(((v->vehstatus & VS_STOPPED) && v->cur_speed == 0) || v->current_order.IsType(OT_LOADING)) ||
+			if (!((v->vehstatus.Test(VehState::Stopped) && v->cur_speed == 0) || v->current_order.IsType(OT_LOADING)) ||
 					!IsSafeWaitingPosition(v, v->tile, v->GetVehicleTrackdir(), true, _settings_game.pf.forbid_90_deg)) {
 				TryPathReserve(v, true);
 			}
@@ -2962,7 +2962,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 		if (fract_coord_leave == fract_coord) {
 			/* Leave the depot. */
 			if ((v = v->Next()) != nullptr) {
-				v->vehstatus &= ~VS_HIDDEN;
+				v->vehstatus.Reset(VehState::Hidden);
 				v->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 			}
 		}
@@ -2970,7 +2970,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int
 		/* Entering depot. */
 		assert(DiagDirToDir(ReverseDiagDir(dir)) == v->direction);
 		v->track = TRACK_BIT_DEPOT,
-		v->vehstatus |= VS_HIDDEN;
+		v->vehstatus.Set(VehState::Hidden);
 		v->direction = ReverseDir(v->direction);
 		if (v->Next() == nullptr) VehicleEnterDepot(v->First());
 		v->tile = tile;

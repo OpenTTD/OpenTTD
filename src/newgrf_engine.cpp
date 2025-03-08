@@ -639,7 +639,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			 * zz - Signed difference of z position between the selected and this vehicle.
 			 * yy - Signed difference of y position between the selected and this vehicle.
 			 * xx - Signed difference of x position between the selected and this vehicle.
-			 * F  - Flags, bit 7 corresponds to VS_HIDDEN.
+			 * F  - Flags, bit 7 corresponds to VehState::Hidden.
 			 * D  - Dir difference, like in 0x45.
 			 */
 			if (!v->IsGroundVehicle()) return 0;
@@ -652,7 +652,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			uint32_t ret = prev ? DirDifference(u->direction, v->direction) : DirDifference(v->direction, u->direction);
 			if (ret > DIRDIFF_REVERSE) ret |= 0x08;
 
-			if (u->vehstatus & VS_HIDDEN) ret |= 0x80;
+			if (u->vehstatus.Test(VehState::Hidden)) ret |= 0x80;
 
 			/* Get position difference. */
 			ret |= ((prev ? u->x_pos - v->x_pos : v->x_pos - u->x_pos) & 0xFF) << 8;
@@ -815,7 +815,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x2F: break; // not implemented
 		case 0x30: break; // not implemented
 		case 0x31: break; // not implemented
-		case 0x32: return v->vehstatus;
+		case 0x32: return v->vehstatus.base();
 		case 0x33: return 0; // non-existent high byte of vehstatus
 		case 0x34: return v->type == VEH_AIRCRAFT ? (v->cur_speed * 10) / 128 : v->cur_speed;
 		case 0x35: return GB(v->type == VEH_AIRCRAFT ? (v->cur_speed * 10) / 128 : v->cur_speed, 8, 8);

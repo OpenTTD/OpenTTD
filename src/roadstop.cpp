@@ -327,7 +327,7 @@ Vehicle *FindVehiclesInRoadStop(Vehicle *v, void *data)
 {
 	RoadStopEntryRebuilderHelper *rserh = (RoadStopEntryRebuilderHelper*)data;
 	/* Not a RV or not in the right direction or crashed :( */
-	if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != rserh->dir || !v->IsPrimaryVehicle() || (v->vehstatus & VS_CRASHED) != 0) return nullptr;
+	if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != rserh->dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) return nullptr;
 
 	RoadVehicle *rv = RoadVehicle::From(v);
 	/* Don't add ones not in a road stop */
