@@ -21,6 +21,11 @@
  * \li GSEventVehicleCrashed::GetVictims
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
+ * \li GSAirport::GetAirportPlaneCompatibility
+ * \li GSAirport::APC_INCOMPATIBLE
+ * \li GSAirport::APC_COMPATIBLE
+ * \li GSAirport::APC_SHORT_RUNWAY
+ * \li GSAirport::APC_INVALID
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
