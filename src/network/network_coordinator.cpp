@@ -78,7 +78,7 @@ public:
 	 */
 	NetworkReuseStunConnecter(const std::string &hostname, uint16_t port, const NetworkAddress &bind_address, std::string token, uint8_t tracking_number, uint8_t family) :
 		TCPConnecter(hostname, port, bind_address),
-		token(token),
+		token(std::move(token)),
 		tracking_number(tracking_number),
 		family(family)
 	{

@@ -295,7 +295,7 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 	fixed_line += std::string(last_match_end, line.text.cend());
 
 	/* Overwrite original line text with "fixed" line text. */
-	line.text = fixed_line;
+	line.text = std::move(fixed_line);
 }
 
 /**

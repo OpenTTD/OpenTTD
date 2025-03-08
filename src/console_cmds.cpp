@@ -1712,7 +1712,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 		return false;
 	}
 
-	MakeScreenshot(type, name, width, height);
+	MakeScreenshot(type, std::move(name), width, height);
 	return true;
 }
 

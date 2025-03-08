@@ -2168,7 +2168,7 @@ static void FillLanguageList(const std::string &path)
 		} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
 			Debug(misc, 3, "{}'s language ID is already known", FS2OTTD(lmd.file));
 		} else {
-			_languages.push_back(lmd);
+			_languages.push_back(std::move(lmd));
 		}
 	}
 	if (error_code) {
@@ -2352,7 +2352,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 
 		bad_font = !SetFallbackFont(&_fcsettings, _langpack.langpack->isocode, searcher);
 
-		_fcsettings = backup;
+		_fcsettings = std::move(backup);
 
 		if (!bad_font && any_font_configured) {
 			/* If the user configured a bad font, and we found a better one,

@@ -282,7 +282,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		}
 
 		NetworkAddress addr(runp->ai_addr, (int)runp->ai_addrlen);
-		(*sockets)[sock] = addr;
+		(*sockets)[sock] = std::move(addr);
 		sock = INVALID_SOCKET;
 	}
 	freeaddrinfo (ai);

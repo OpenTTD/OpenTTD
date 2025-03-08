@@ -2953,7 +2953,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				std::string prefix = ReadDWordAsString(buf);
 
 				if (curidx < CURRENCY_END) {
-					_currency_specs[curidx].prefix = prefix;
+					_currency_specs[curidx].prefix = std::move(prefix);
 				} else {
 					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", curidx);
 				}
@@ -2965,7 +2965,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				std::string suffix = ReadDWordAsString(buf);
 
 				if (curidx < CURRENCY_END) {
-					_currency_specs[curidx].suffix = suffix;
+					_currency_specs[curidx].suffix = std::move(suffix);
 				} else {
 					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", curidx);
 				}
@@ -3851,7 +3851,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 				}
 
 				/* Install final layout construction in the industry spec */
-				indsp->layouts = new_layouts;
+				indsp->layouts = std::move(new_layouts);
 				break;
 			}
 
