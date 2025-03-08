@@ -10,7 +10,6 @@
 #ifndef VIDEO_OPENGL_H
 #define VIDEO_OPENGL_H
 
-#include "../core/alloc_type.hpp"
 #include "../core/geometry_type.hpp"
 #include "../gfx_type.h"
 #include "../spriteloader/spriteloader.hpp"
@@ -121,12 +120,12 @@ private:
 		NUM_TEX
 	};
 
-	Dimension dim;
-	GLuint tex[NUM_TEX]; ///< The texture objects.
-	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
-	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
+	Dimension dim{};
+	std::array<GLuint, NUM_TEX> tex{}; ///< The texture objects.
+	int16_t x_offs = 0;  ///< Number of pixels to shift the sprite to the right.
+	int16_t y_offs = 0;  ///< Number of pixels to shift the sprite downwards.
 
-	static GLuint dummy_tex[NUM_TEX]; ///< 1x1 dummy textures to substitute for unused sprite components.
+	static std::array<GLuint, NUM_TEX> dummy_tex; ///< 1x1 dummy textures to substitute for unused sprite components.
 
 	static GLuint pal_identity; ///< Identity texture mapping.
 	static GLuint pal_tex;      ///< Texture for palette remap.
