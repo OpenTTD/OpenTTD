@@ -792,7 +792,7 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 	if (!_network_available) return false;
 	if (!NetworkValidateOurClientName()) return false;
 
-	_network_join.connection_string = resolved_connection_string;
+	_network_join.connection_string = std::move(resolved_connection_string);
 	_network_join.company = join_as;
 	_network_join.server_password = join_server_password;
 

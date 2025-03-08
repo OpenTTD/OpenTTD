@@ -117,13 +117,13 @@ void MusicSystem::BuildPlaylists()
 		this->music_set.push_back(entry);
 
 		/* Add theme song to theme-only playlist */
-		if (i == 0) this->standard_playlists[PLCH_THEMEONLY].push_back(entry);
+		if (i == 0) this->standard_playlists[PLCH_THEMEONLY].push_back(std::move(entry));
 
 		/* Don't add the theme song to standard playlists */
 		if (i > 0) {
 			this->standard_playlists[PLCH_ALLMUSIC].push_back(entry);
 			uint theme = (i - 1) / NUM_SONGS_CLASS;
-			this->standard_playlists[PLCH_OLDSTYLE + theme].push_back(entry);
+			this->standard_playlists[PLCH_OLDSTYLE + theme].push_back(std::move(entry));
 		}
 	}
 
@@ -132,11 +132,11 @@ void MusicSystem::BuildPlaylists()
 	for (uint i = 0; i < NUM_SONGS_PLAYLIST; i++) {
 		if (_settings_client.music.custom_1[i] > 0 && _settings_client.music.custom_1[i] <= NUM_SONGS_AVAILABLE) {
 			PlaylistEntry entry(set, _settings_client.music.custom_1[i] - 1);
-			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM1].push_back(entry);
+			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM1].push_back(std::move(entry));
 		}
 		if (_settings_client.music.custom_2[i] > 0 && _settings_client.music.custom_2[i] <= NUM_SONGS_AVAILABLE) {
 			PlaylistEntry entry(set, _settings_client.music.custom_2[i] - 1);
-			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM2].push_back(entry);
+			if (entry.IsValid()) this->standard_playlists[PLCH_CUSTOM2].push_back(std::move(entry));
 		}
 	}
 }
@@ -342,7 +342,7 @@ void MusicSystem::PlaylistAdd(size_t song_index)
 
 	/* Add it to the active playlist, if playback is shuffled select a random position to add at */
 	if (this->active_playlist.empty()) {
-		this->active_playlist.push_back(entry);
+		this->active_playlist.push_back(std::move(entry));
 		if (this->IsPlaying()) this->Play();
 	} else if (this->IsShuffle()) {
 		/* Generate a random position between 0 and n (inclusive, new length) to insert at */
@@ -352,7 +352,7 @@ void MusicSystem::PlaylistAdd(size_t song_index)
 		/* Make sure to shift up the current playback position if the song was inserted before it */
 		if ((int)newpos <= this->playlist_position) this->playlist_position++;
 	} else {
-		this->active_playlist.push_back(entry);
+		this->active_playlist.push_back(std::move(entry));
 	}
 
 	this->SaveCustomPlaylist(this->selected_playlist);

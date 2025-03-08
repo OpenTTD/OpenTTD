@@ -410,7 +410,7 @@ int CDECL main(int argc, char *argv[])
 		 * with a (free) parameter the program will translate that language to destination
 		 * directory. As input english.txt is parsed from the source directory */
 		if (mgo.arguments.empty()) {
-			std::filesystem::path input_path = src_dir;
+			std::filesystem::path input_path = std::move(src_dir);
 			input_path /= "english.txt";
 
 			/* parse master file */
@@ -429,7 +429,7 @@ int CDECL main(int argc, char *argv[])
 			writer.Finalise(data);
 			if (_errors != 0) return 1;
 		} else {
-			std::filesystem::path input_path = src_dir;
+			std::filesystem::path input_path = std::move(src_dir);
 			input_path /= "english.txt";
 
 			StringData data(TEXT_TAB_END);

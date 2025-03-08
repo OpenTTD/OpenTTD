@@ -356,7 +356,7 @@ void SurveyGrfs(nlohmann::json &survey)
 {
 	for (const auto &c : _grfconfig) {
 		auto grfid = fmt::format("{:08x}", std::byteswap(c->ident.grfid));
-		auto &grf = survey[grfid];
+		auto &grf = survey[std::move(grfid)];
 
 		grf["md5sum"] = FormatArrayAsHex(c->ident.md5sum);
 		grf["status"] = c->status;

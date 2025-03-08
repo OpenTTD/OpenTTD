@@ -249,7 +249,7 @@ bool CrashLog::WriteScreenshot()
 	if (_screen.width < 1 || _screen.height < 1 || _screen.dst_ptr == nullptr) return false;
 
 	std::string filename = this->CreateFileName("", false);
-	bool res = MakeScreenshot(SC_CRASHLOG, filename);
+	bool res = MakeScreenshot(SC_CRASHLOG, std::move(filename));
 	if (res) this->screenshot_filename = _full_screenshot_path;
 	return res;
 }
