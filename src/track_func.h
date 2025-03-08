@@ -120,7 +120,7 @@ inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir)
  * This function searches for the first bit in the TrackBits,
  * remove this bit from the parameter and returns the found
  * bit as Track value. It returns INVALID_TRACK if the
- * parameter was TRACK_BIT_NONE or INVALID_TRACK_BIT. This
+ * parameter was TRACK_BIT_NONE. This
  * is basically used in while-loops to get up to 6 possible
  * tracks on a tile until the parameter becomes TRACK_BIT_NONE.
  *
@@ -130,7 +130,7 @@ inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir)
  */
 inline Track RemoveFirstTrack(TrackBits *tracks)
 {
-	if (*tracks != TRACK_BIT_NONE && *tracks != INVALID_TRACK_BIT) {
+	if (*tracks != TRACK_BIT_NONE) {
 		assert((*tracks & ~TRACK_BIT_MASK) == TRACK_BIT_NONE);
 		Track first = (Track)FindFirstBit(*tracks);
 		ClrBit(*tracks, first);
@@ -168,7 +168,7 @@ inline Trackdir RemoveFirstTrackdir(TrackdirBits *trackdirs)
  * Returns first Track from TrackBits or INVALID_TRACK
  *
  * This function returns the first Track found in the TrackBits value as Track-value.
- * It returns INVALID_TRACK if the parameter is TRACK_BIT_NONE or INVALID_TRACK_BIT.
+ * It returns INVALID_TRACK if the parameter is TRACK_BIT_NONE.
  *
  * @param tracks The TrackBits value
  * @return The first Track found or INVALID_TRACK
@@ -176,7 +176,7 @@ inline Trackdir RemoveFirstTrackdir(TrackdirBits *trackdirs)
  */
 inline Track FindFirstTrack(TrackBits tracks)
 {
-	return (tracks != TRACK_BIT_NONE && tracks != INVALID_TRACK_BIT) ? (Track)FindFirstBit(tracks) : INVALID_TRACK;
+	return (tracks != TRACK_BIT_NONE) ? (Track)FindFirstBit(tracks) : INVALID_TRACK;
 }
 
 /**
@@ -184,16 +184,16 @@ inline Track FindFirstTrack(TrackBits tracks)
  *
  * This function converts a TrackBits value to a Track value. As it
  * is not possible to convert two or more tracks to one track the
- * parameter must contain only one track or be the INVALID_TRACK_BIT value.
+ * parameter must contain only one track.
  *
  * @param tracks The TrackBits value to convert
- * @return The Track from the value or INVALID_TRACK
- * @pre tracks must contains only one Track or be INVALID_TRACK_BIT
+ * @return The Track from the value
+ * @pre tracks must contains only one Track
  */
 inline Track TrackBitsToTrack(TrackBits tracks)
 {
-	assert(tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KillFirstBit(tracks & TRACK_BIT_MASK) == TRACK_BIT_NONE));
-	return tracks != INVALID_TRACK_BIT ? (Track)FindFirstBit(tracks & TRACK_BIT_MASK) : INVALID_TRACK;
+	assert(tracks != TRACK_BIT_NONE && KillFirstBit(tracks & TRACK_BIT_MASK) == TRACK_BIT_NONE);
+	return static_cast<Track>(FindFirstBit(tracks & TRACK_BIT_MASK));
 }
 
 /**

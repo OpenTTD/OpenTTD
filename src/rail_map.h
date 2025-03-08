@@ -209,7 +209,6 @@ inline TrackBits GetRailReservationTrackBits(Tile t)
 inline void SetTrackReservation(Tile t, TrackBits b)
 {
 	assert(IsPlainRailTile(t));
-	assert(b != INVALID_TRACK_BIT);
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(&b);
 	SB(t.m2(), 8, 3, track == INVALID_TRACK ? 0 : track + 1);
