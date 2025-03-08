@@ -1488,8 +1488,8 @@ public:
 		}
 	}
 
-	HouseZones climate_mask;
-	uint8_t class_mask; ///< Mask of available 'classes'.
+	HouseZones climate_mask{};
+	uint8_t class_mask = 0; ///< Mask of available 'classes'.
 
 	static inline int sel_class; ///< Currently selected 'class'.
 	static inline int sel_type; ///< Currently selected HouseID.

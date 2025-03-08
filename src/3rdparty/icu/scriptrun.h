@@ -24,15 +24,15 @@ U_NAMESPACE_BEGIN
 
 struct ScriptRecord
 {
-    UChar32 startChar;
-    UChar32 endChar;
-    UScriptCode scriptCode;
+    UChar32 startChar = 0;
+    UChar32 endChar = 0;
+    UScriptCode scriptCode{};
 };
 
 struct ParenStackEntry
 {
-    int32_t pairIndex;
-    UScriptCode scriptCode;
+    int32_t pairIndex = 0;
+    UScriptCode scriptCode{};
 };
 
 class ScriptRun : public UObject {
@@ -75,16 +75,16 @@ private:
 
     static UBool sameScript(int32_t scriptOne, int32_t scriptTwo);
 
-    int32_t charStart;
-    int32_t charLimit;
-    const char16_t *charArray;
+    int32_t charStart = 0;
+    int32_t charLimit = 0;
+    const char16_t *charArray = nullptr;
 
-    int32_t scriptStart;
-    int32_t scriptEnd;
-    UScriptCode scriptCode;
+    int32_t scriptStart = 0;
+    int32_t scriptEnd = 0;
+    UScriptCode scriptCode{};
 
-    ParenStackEntry parenStack[128];
-    int32_t parenSP;
+    std::array<ParenStackEntry, 128> parenStack{};
+    int32_t parenSP = 0;
 
     static int8_t highBit(int32_t value);
     static int32_t getPairIndex(UChar32 ch);

@@ -56,11 +56,11 @@ enum SQMetaMethod{
 
 struct SQRefCounted
 {
-	SQRefCounted() { _uiRef = 0; _weakref = nullptr; }
+	SQRefCounted() {}
 	virtual ~SQRefCounted();
 	SQWeakRef *GetWeakRef(SQObjectType type);
-	SQUnsignedInteger _uiRef;
-	struct SQWeakRef *_weakref;
+	SQUnsignedInteger _uiRef = 0;
+	struct SQWeakRef *_weakref = nullptr;
 	virtual void Release()=0;
 
 	/* Placement new/delete to prevent memory leaks if constructor throws an exception. */
@@ -79,7 +79,7 @@ struct SQRefCounted
 	inline void operator delete(void *) { NOT_REACHED(); }
 
 private:
-	size_t size;
+	size_t size = 0;
 };
 
 struct SQWeakRef : SQRefCounted

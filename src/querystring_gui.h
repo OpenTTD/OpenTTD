@@ -23,19 +23,19 @@ struct QueryString {
 	static const int ACTION_DESELECT = -2; ///< Deselect editbox.
 	static const int ACTION_CLEAR    = -3; ///< Clear editbox.
 
-	StringID caption;
-	int ok_button;      ///< Widget button of parent window to simulate when pressing OK in OSK.
-	int cancel_button;  ///< Widget button of parent window to simulate when pressing CANCEL in OSK.
+	StringID caption{};
+	int ok_button = ACTION_NOTHING; ///< Widget button of parent window to simulate when pressing OK in OSK.
+	int cancel_button = ACTION_DESELECT; ///< Widget button of parent window to simulate when pressing CANCEL in OSK.
 	Textbuf text;
-	std::optional<std::string> orig;
-	bool handled;
+	std::optional<std::string> orig{};
+	bool handled = false;
 
 	/**
 	 * Initialize string.
 	 * @param size Maximum size in bytes.
 	 * @param chars Maximum size in chars.
 	 */
-	QueryString(uint16_t size, uint16_t chars = UINT16_MAX) : ok_button(ACTION_NOTHING), cancel_button(ACTION_DESELECT), text(size, chars)
+	QueryString(uint16_t size, uint16_t chars = UINT16_MAX) : text(size, chars)
 	{
 	}
 
