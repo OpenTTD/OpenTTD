@@ -52,7 +52,7 @@ public:
  * can only decrease or stay the same if you add more edges.
  */
 class CapacityAnnotation : public Path {
-	int cached_annotation;
+	int cached_annotation = 0;
 
 public:
 

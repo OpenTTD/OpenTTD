@@ -49,18 +49,7 @@ static void PrintFunc(bool error_msg, const std::string &message)
 	ScriptController::Print(error_msg, message);
 }
 
-ScriptInstance::ScriptInstance(const char *APIName) :
-	engine(nullptr),
-	controller(nullptr),
-	storage(nullptr),
-	instance(nullptr),
-	is_started(false),
-	is_dead(false),
-	is_save_data_on_stack(false),
-	suspend(0),
-	is_paused(false),
-	in_shutdown(false),
-	callback(nullptr)
+ScriptInstance::ScriptInstance(const char *APIName)
 {
 	this->storage = new ScriptStorage();
 	this->engine  = new Squirrel(APIName);

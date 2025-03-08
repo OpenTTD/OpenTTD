@@ -24,8 +24,8 @@ protected:
 	static constexpr int MAX_GLYPH_DIM = 256;          ///< Maximum glyph dimensions.
 	static constexpr uint MAX_FONT_MIN_REC_SIZE = 20u; ///< Upper limit for the recommended font size in case a font file contains nonsensical values.
 
-	int req_size;  ///< Requested font size.
-	int used_size; ///< Used font size.
+	int req_size = 0; ///< Requested font size.
+	int used_size = 0; ///< Used font size.
 
 	/** Container for information about a glyph. */
 	struct GlyphEntry {

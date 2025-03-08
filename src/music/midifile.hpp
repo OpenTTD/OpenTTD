@@ -29,9 +29,9 @@ struct MidiFile {
 		TempoChange(uint32_t _ticktime, uint32_t _tempo) : ticktime(_ticktime), tempo(_tempo) { }
 	};
 
-	std::vector<DataBlock> blocks;   ///< sequential time-annotated data of file, merged to a single track
-	std::vector<TempoChange> tempos; ///< list of tempo changes in file
-	uint16_t tickdiv;                  ///< ticks per quarter note
+	std::vector<DataBlock> blocks{}; ///< sequential time-annotated data of file, merged to a single track
+	std::vector<TempoChange> tempos{}; ///< list of tempo changes in file
+	uint16_t tickdiv = 0; ///< ticks per quarter note
 
 	MidiFile();
 	~MidiFile();
