@@ -21,6 +21,17 @@
  * \li GSEventVehicleCrashed::GetVictims
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
+ * \li GSGroup::GetOwner
+ * \li GSEventVehicleLost
+ * \li GSEventVehicleWaitingInDepot
+ * \li GSEventVehicleUnprofitable
+ * \li GSEventEngineAvailable
+ * \li GSEventDisasterZeppelinerCrashed
+ * \li GSEventDisasterZeppelinerCleared
+ * \li GSEventAircraftDestTooFar
+ * \li GSEventVehicleAutoReplaced
+ * \li GSEventCompanyAskMerger
+ * \li GSEventEnginePreview
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
