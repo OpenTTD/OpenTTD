@@ -189,7 +189,7 @@ size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const
 	if (isdigit(*str)) return std::strtoul(str, nullptr, 0);
 
 	size_t idx = 0;
-	for (auto one : many) {
+	for (const auto &one : many) {
 		if (one.size() == len && strncmp(one.c_str(), str, len) == 0) return idx;
 		idx++;
 	}

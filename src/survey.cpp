@@ -146,7 +146,7 @@ static void SurveySettingsTable(nlohmann::json &survey, const SettingTable &tabl
 		/* Skip any old settings we no longer save/load. */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 
-		auto name = sd->GetName();
+		const auto &name = sd->GetName();
 		if (skip_if_default && sd->IsDefaultValue(object)) continue;
 		survey[name] = sd->FormatValue(object);
 	}
