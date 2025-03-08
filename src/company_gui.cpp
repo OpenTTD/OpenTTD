@@ -594,13 +594,13 @@ public:
 /** Company livery colour scheme window. */
 struct SelectCompanyLiveryWindow : public Window {
 private:
-	uint32_t sel;
-	LiveryClass livery_class;
-	Dimension square;
-	uint rows;
-	uint line_height;
-	GUIGroupList groups;
-	Scrollbar *vscroll;
+	uint32_t sel = 0;
+	LiveryClass livery_class{};
+	Dimension square{};
+	uint rows = 0;
+	uint line_height = 0;
+	GUIGroupList groups{};
+	Scrollbar *vscroll = nullptr;
 
 	void ShowColourDropDownMenu(uint32_t widget)
 	{
