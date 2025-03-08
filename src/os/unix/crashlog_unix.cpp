@@ -121,7 +121,7 @@ public:
 	}
 
 	/** Buffer to track the long jump set setup. */
-	jmp_buf internal_fault_jmp_buf;
+	jmp_buf internal_fault_jmp_buf{};
 
 	/** Whether we are in a TryExecute block. */
 	bool try_execute_active = false;

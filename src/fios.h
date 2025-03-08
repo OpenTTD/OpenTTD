@@ -31,25 +31,24 @@ using CompanyPropertiesMap = std::map<uint, std::unique_ptr<CompanyProperties>>;
  * Container for loading in mode SL_LOAD_CHECK.
  */
 struct LoadCheckData {
-	bool checkable;     ///< True if the savegame could be checked by SL_LOAD_CHECK. (Old savegames are not checkable.)
-	StringID error;     ///< Error message from loading. INVALID_STRING_ID if no error.
-	std::string error_msg; ///< Data to pass to string parameters when displaying #error.
+	bool checkable = false; ///< True if the savegame could be checked by SL_LOAD_CHECK. (Old savegames are not checkable.)
+	StringID error{}; ///< Error message from loading. INVALID_STRING_ID if no error.
+	std::string error_msg{}; ///< Data to pass to string parameters when displaying #error.
 
-	uint32_t map_size_x, map_size_y;
-	TimerGameCalendar::Date current_date;
+	uint32_t map_size_x = 0;
+	uint32_t map_size_y = 0;
+	TimerGameCalendar::Date current_date{};
 
-	GameSettings settings;
+	GameSettings settings{};
 
-	CompanyPropertiesMap companies;               ///< Company information.
+	CompanyPropertiesMap companies{}; ///< Company information.
 
-	GRFConfigList grfconfig;                      ///< NewGrf configuration from save.
-	GRFListCompatibility grf_compatibility;       ///< Summary state of NewGrfs, whether missing files or only compatible found.
+	GRFConfigList grfconfig{}; ///< NewGrf configuration from save.
+	GRFListCompatibility grf_compatibility = GLC_NOT_FOUND; ///< Summary state of NewGrfs, whether missing files or only compatible found.
 
-	Gamelog gamelog; ///< Gamelog actions
+	Gamelog gamelog{}; ///< Gamelog actions
 
-	LoadCheckData() : grf_compatibility(GLC_NOT_FOUND)
-	{
-	}
+	LoadCheckData() {}
 
 	/**
 	 * Check whether loading the game resulted in errors.

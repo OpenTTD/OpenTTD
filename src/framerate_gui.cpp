@@ -52,22 +52,22 @@ namespace {
 		static const TimingMeasurement INVALID_DURATION = UINT64_MAX;
 
 		/** Time spent processing each cycle of the performance element, circular buffer */
-		TimingMeasurement durations[NUM_FRAMERATE_POINTS];
+		std::array<TimingMeasurement, NUM_FRAMERATE_POINTS> durations{};
 		/** Start time of each cycle of the performance element, circular buffer */
-		TimingMeasurement timestamps[NUM_FRAMERATE_POINTS];
+		std::array<TimingMeasurement, NUM_FRAMERATE_POINTS> timestamps{};
 		/** Expected number of cycles per second when the system is running without slowdowns */
-		double expected_rate;
+		double expected_rate = 0;
 		/** Next index to write to in \c durations and \c timestamps */
-		int next_index;
+		int next_index = 0;
 		/** Last index written to in \c durations and \c timestamps */
-		int prev_index;
+		int prev_index = 0;
 		/** Number of data points recorded, clamped to \c NUM_FRAMERATE_POINTS */
-		int num_valid;
+		int num_valid = 0;
 
 		/** Current accumulated duration */
-		TimingMeasurement acc_duration;
+		TimingMeasurement acc_duration{};
 		/** Start time for current accumulation cycle */
-		TimingMeasurement acc_timestamp;
+		TimingMeasurement acc_timestamp{};
 
 		/**
 		 * Initialize a data element with an expected collection rate
@@ -75,7 +75,7 @@ namespace {
 		 * Expected number of cycles per second of the performance element. Use 1 if unknown or not relevant.
 		 * The rate is used for highlighting slow-running elements in the GUI.
 		 */
-		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate), next_index(0), prev_index(0), num_valid(0) { }
+		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate) { }
 
 		/** Collect a complete measurement, given start and ending times for a processing block */
 		void Add(TimingMeasurement start_time, TimingMeasurement end_time)
@@ -793,8 +793,8 @@ struct FrametimeGraphWindow : Window {
 	/** Recalculate the graph scaling factors based on current recorded data */
 	void UpdateScale()
 	{
-		const TimingMeasurement *durations = _pf_data[this->element].durations;
-		const TimingMeasurement *timestamps = _pf_data[this->element].timestamps;
+		const auto &durations = _pf_data[this->element].durations;
+		const auto &timestamps = _pf_data[this->element].timestamps;
 		int num_valid = _pf_data[this->element].num_valid;
 		int point = _pf_data[this->element].prev_index;
 
@@ -855,8 +855,8 @@ struct FrametimeGraphWindow : Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_FGW_GRAPH) {
-			const TimingMeasurement *durations  = _pf_data[this->element].durations;
-			const TimingMeasurement *timestamps = _pf_data[this->element].timestamps;
+			const auto &durations  = _pf_data[this->element].durations;
+			const auto &timestamps = _pf_data[this->element].timestamps;
 			int point = _pf_data[this->element].prev_index;
 
 			const int x_zero = r.right - (int)this->graph_size.width;
