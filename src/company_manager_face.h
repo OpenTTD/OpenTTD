@@ -117,8 +117,7 @@ inline void SetCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManagerFac
 
 /**
  * Increase/Decrease the company manager's face variable by the given amount.
- * If the new value greater than the max value for this variable it will be set to 0.
- * Or is it negative (< 0) it will be set to max value.
+ * The value wraps around to stay in the valid range.
  *
  * @param cmf    the company manager face to write the bits to
  * @param cmfv   the company manager face variable to write the data of
@@ -132,11 +131,10 @@ inline void IncreaseCompanyManagerFaceBits(CompanyManagerFace &cmf, CompanyManag
 	int8_t val = GetCompanyManagerFaceBits(cmf, cmfv, ge) + amount; // the new value for the cmfv
 
 	/* scales the new value to the correct scope */
-	if (val >= _cmf_info[cmfv].valid_values[ge]) {
-		val = 0;
-	} else if (val < 0) {
-		val = _cmf_info[cmfv].valid_values[ge] - 1;
+	while (val < 0) {
+		val += _cmf_info[cmfv].valid_values[ge];
 	}
+	val %= _cmf_info[cmfv].valid_values[ge];
 
 	SetCompanyManagerFaceBits(cmf, cmfv, ge, val); // save the new value
 }
