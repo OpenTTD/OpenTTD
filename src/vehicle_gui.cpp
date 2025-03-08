@@ -49,8 +49,8 @@
 #include "safeguards.h"
 
 
-BaseVehicleListWindow::GroupBy _grouping[VLT_END][VEH_COMPANY_END];
-Sorting _sorting[BaseVehicleListWindow::GB_END];
+std::array<std::array<BaseVehicleListWindow::GroupBy, VEH_COMPANY_END>, VLT_END> _grouping{};
+std::array<Sorting, BaseVehicleListWindow::GB_END> _sorting{};
 
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleNumberSorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleNameSorter;
@@ -1553,8 +1553,8 @@ static bool VehicleTimetableDelaySorter(const Vehicle * const &a, const Vehicle 
 
 void InitializeGUI()
 {
-	MemSetT(&_grouping, 0);
-	MemSetT(&_sorting, 0);
+	_grouping = {};
+	_sorting = {};
 }
 
 /**
