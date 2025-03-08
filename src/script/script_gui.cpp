@@ -813,8 +813,7 @@ struct ScriptDebugWindow : public Window {
 			return {};
 		}
 
-		const AIInfo *info = Company::GetIfValid(this->filter.script_debug_company)->ai_info;
-		assert(info != nullptr);
+		const AIInfo *info = Company::Get(this->filter.script_debug_company)->ai_info;
 		return GetString(STR_AI_DEBUG_NAME_AND_VERSION, info->GetName(), info->GetVersion());
 	}
 
