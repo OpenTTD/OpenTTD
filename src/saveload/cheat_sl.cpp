@@ -67,7 +67,7 @@ struct CHTSChunkHandler : ChunkHandler {
 
 				if (count == 0) break;
 			}
-			slt = oslt;
+			slt = std::move(oslt);
 		}
 
 		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;

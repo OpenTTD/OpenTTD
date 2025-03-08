@@ -558,7 +558,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 				/* Store the first directory name we detect */
 				Debug(misc, 6, "Found dir in tar: {}", name);
-				if (_tar_list[this->subdir][filename].empty()) _tar_list[this->subdir][filename] = name;
+				if (_tar_list[this->subdir][filename].empty()) _tar_list[this->subdir][filename] = std::move(name);
 				break;
 
 			default:
@@ -783,7 +783,7 @@ void DetermineBasePaths(const char *exe)
 	_searchpaths[SP_PERSONAL_DIR].clear();
 #else
 	if (!homedir.empty()) {
-		tmp = homedir;
+		tmp = std::move(homedir);
 		tmp += PATHSEP;
 		tmp += PERSONAL_DIR;
 		AppendPathSeparator(tmp);
@@ -855,7 +855,7 @@ void DetermineBasePaths(const char *exe)
 #else
 	tmp = GLOBAL_DATA_DIR;
 	AppendPathSeparator(tmp);
-	_searchpaths[SP_INSTALLATION_DIR] = tmp;
+	_searchpaths[SP_INSTALLATION_DIR] = std::move(tmp);
 #endif
 #ifdef WITH_COCOA
 extern void CocoaSetApplicationBundleDir();
@@ -882,7 +882,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 
 #ifdef USE_XDG
 	std::string config_home;
-	const std::string homedir = GetHomeDir();
+	std::string homedir = GetHomeDir();
 	const char *xdg_config_home = std::getenv("XDG_CONFIG_HOME");
 	if (xdg_config_home != nullptr) {
 		config_home = xdg_config_home;
@@ -890,7 +890,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 		config_home += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 	} else if (!homedir.empty()) {
 		/* Defaults to ~/.config */
-		config_home = homedir;
+		config_home = std::move(homedir);
 		config_home += PATHSEP ".config" PATHSEP;
 		config_home += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 	}
@@ -910,7 +910,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 		if (!personal_dir.empty()) {
 			auto end = personal_dir.find_last_of(PATHSEPCHAR);
 			if (end != std::string::npos) personal_dir.erase(end + 1);
-			config_dir = personal_dir;
+			config_dir = std::move(personal_dir);
 		} else {
 #ifdef USE_XDG
 			/* No previous configuration file found. Use the configuration folder from XDG. */

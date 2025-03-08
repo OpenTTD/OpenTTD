@@ -192,7 +192,7 @@ public:
 	 * @param secret_key The secret key to initialize this handler with.
 	 * @param handler The handler requesting the password from the user, if required.
 	 */
-	X25519PAKEClientHandler(const X25519SecretKey &secret_key, std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> handler) : X25519AuthenticationHandler(secret_key), handler(handler) {}
+	X25519PAKEClientHandler(const X25519SecretKey &secret_key, std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> handler) : X25519AuthenticationHandler(secret_key), handler(std::move(handler)) {}
 
 	virtual RequestResult ReceiveRequest(struct Packet &p) override;
 	virtual bool SendResponse(struct Packet &p) override { return this->X25519AuthenticationHandler::SendResponse(p, this->handler->password); }
