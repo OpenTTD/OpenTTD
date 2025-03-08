@@ -21,6 +21,8 @@
  * \li GSEventVehicleCrashed::GetVictims
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
+ * \li GSOrder.OF_UNBUNCH_IN_DEPOT
+ * \li GSOrder.ERR_ORDER_UNBUNCH
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
