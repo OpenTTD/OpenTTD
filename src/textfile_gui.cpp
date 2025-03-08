@@ -251,7 +251,7 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 	while (matcher != std::sregex_iterator()) {
 		std::smatch match = *matcher;
 
-		Hyperlink link;
+		Hyperlink link{};
 		link.line = line_index;
 		link.destination = match[2].str();
 		this->links.push_back(link);

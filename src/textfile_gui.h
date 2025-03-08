@@ -54,10 +54,10 @@ protected:
 	};
 
 	struct Hyperlink {
-		size_t line;             ///< Which line the link is on.
-		size_t begin;            ///< Character position on line the link begins.
-		size_t end;              ///< Character position on line the link end.
-		std::string destination; ///< Destination for the link.
+		size_t line = 0; ///< Which line the link is on.
+		size_t begin = 0; ///< Character position on line the link begins.
+		size_t end = 0; ///< Character position on line the link end.
+		std::string destination{}; ///< Destination for the link.
 	};
 
 	struct HistoryEntry {
