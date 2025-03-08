@@ -205,7 +205,7 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 	if (!md5sum) return true;
 
 	ScriptFileChecksumCreator checksum(dir);
-	auto tar_filename = info->GetTarFile();
+	const auto &tar_filename = info->GetTarFile();
 	TarList::iterator iter;
 	if (!tar_filename.empty() && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
 		/* The main script is in a tar file, so find all files that

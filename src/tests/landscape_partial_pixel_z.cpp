@@ -85,7 +85,7 @@ TEST_CASE("PartialPixelSlopeAdditionTest - A half tile steep slope is a one corn
  * @param expected The expect partial pixels Z values.
  * @return True iff at all GetPartialPixelZ results are the same as the expected Z-coordinates.
  */
-bool CheckPartialPixelZ(Slope slope, std::array<int, TILE_SIZE * TILE_SIZE> expected)
+bool CheckPartialPixelZ(Slope slope, const std::array<int, TILE_SIZE * TILE_SIZE> &expected)
 {
 	for (uint i = 0; i < expected.size(); i++) {
 		int actual = GetPartialPixelZ(GB(i, 4, 4), GB(i, 0, 4), slope);

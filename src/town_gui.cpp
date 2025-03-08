@@ -1599,7 +1599,7 @@ public:
 	{
 		if (src.empty()) return src;
 
-		const auto specs = HouseSpec::Specs();
+		const auto &specs = HouseSpec::Specs();
 		std::set<PickerItem> dst;
 		for (const auto &item : src) {
 			if (item.grfid == 0) {
