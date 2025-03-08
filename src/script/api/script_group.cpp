@@ -88,7 +88,7 @@
 {
 	EnforcePrecondition(::GroupID::Invalid(), IsValidGroup(group_id));
 
-	const Group *g = ::Group::GetIfValid(group_id);
+	const Group *g = ::Group::Get(group_id);
 	return g->parent;
 }
 
@@ -239,7 +239,7 @@
 {
 	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
 
-	const Group *g = ::Group::GetIfValid(group_id);
+	const Group *g = ::Group::Get(group_id);
 	if (!HasBit(g->livery.in_use, 0)) return ScriptCompany::Colours::COLOUR_INVALID;
 	return (ScriptCompany::Colours)g->livery.colour1;
 }
@@ -248,7 +248,7 @@
 {
 	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
 
-	const Group *g = ::Group::GetIfValid(group_id);
+	const Group *g = ::Group::Get(group_id);
 	if (!HasBit(g->livery.in_use, 1)) return ScriptCompany::Colours::COLOUR_INVALID;
 	return (ScriptCompany::Colours)g->livery.colour2;
 }
