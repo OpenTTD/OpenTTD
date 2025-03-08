@@ -658,8 +658,10 @@ static void ChangeMinutesPerYear(int32_t new_value)
 	 * This can only happen in the menu, since the pre_cb ensures this setting can only be changed there, or if we're already using wallclock units.
 	 */
 	if (_game_mode == GM_MENU && (_settings_newgame.economy.minutes_per_calendar_year != CalendarTime::DEF_MINUTES_PER_YEAR)) {
-		_settings_newgame.economy.timekeeping_units = TKU_WALLCLOCK;
-		InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
+		if (_settings_newgame.economy.timekeeping_units != TKU_WALLCLOCK) {
+			_settings_newgame.economy.timekeeping_units = TKU_WALLCLOCK;
+			ChangeTimekeepingUnits(TKU_WALLCLOCK);
+		}
 	}
 }
 
