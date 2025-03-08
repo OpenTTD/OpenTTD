@@ -226,11 +226,13 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 			s++; // skip [
 			group = &this->CreateGroup(std::string_view(s, e - s));
 			group->comment = std::move(comment);
+			comment.clear(); // std::move leaves comment in a "valid but unspecified state" according to the specification.
 		} else if (group != nullptr) {
 			if (group->type == IGT_SEQUENCE) {
 				/* A sequence group, use the line as item name without further interpretation. */
 				IniItem &item = group->CreateItem(std::string_view(buffer, e - buffer));
 				item.comment = std::move(comment);
+				comment.clear(); // std::move leaves comment in a "valid but unspecified state" according to the specification.
 				continue;
 			}
 			char *t;
@@ -246,6 +248,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 			/* it's an item in an existing group */
 			IniItem &item = group->CreateItem(std::string_view(s, t - s));
 			item.comment = std::move(comment);
+			comment.clear(); // std::move leaves comment in a "valid but unspecified state" according to the specification.
 
 			/* find start of parameter */
 			while (*t == '=' || *t == ' ' || *t == '\t') t++;

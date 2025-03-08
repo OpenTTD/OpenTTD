@@ -66,6 +66,7 @@ static std::vector<std::string> EscapeQuotesAndSlashesAndSplitOnNewLines(const s
 	for (auto c : message) {
 		if (c == '\n') {
 			messages.emplace_back(std::move(safe_message));
+			safe_message.clear(); // std::move leaves safe_message in a "valid but unspecified state" according to the specification.
 			continue;
 		}
 
