@@ -56,12 +56,14 @@ void GroundVehicle<T, Type>::PowerChanged()
 
 	this->gcache.cached_air_drag = air_drag + 3 * air_drag * number_of_parts / 20;
 
+	if (total_power == 0) {
+		/* Ensure that vehicles are never completely stuck */
+		total_power = 1;
+	}
+
 	max_te *= GROUND_ACCELERATION; // Tractive effort in (tonnes * 1000 * 9.8 =) N.
 	max_te /= 256;  // Tractive effort is a [0-255] coefficient.
 	if (this->gcache.cached_power != total_power || this->gcache.cached_max_te != max_te) {
-		/* Stop the vehicle if it has no power. */
-		if (total_power == 0) this->vehstatus |= VS_STOPPED;
-
 		this->gcache.cached_power = total_power;
 		this->gcache.cached_max_te = max_te;
 		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
