@@ -164,7 +164,7 @@ struct Sorting {
 	Listing train;
 };
 
-extern BaseVehicleListWindow::GroupBy _grouping[VLT_END][VEH_COMPANY_END];
-extern Sorting _sorting[BaseVehicleListWindow::GB_END];
+extern std::array<std::array<BaseVehicleListWindow::GroupBy, VEH_COMPANY_END>, VLT_END> _grouping;
+extern std::array<Sorting, BaseVehicleListWindow::GB_END> _sorting;
 
 #endif /* VEHICLE_GUI_BASE_H */
