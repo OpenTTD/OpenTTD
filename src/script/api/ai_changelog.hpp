@@ -21,6 +21,11 @@
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIEconomyDate
+ * \li AICalendarDate
+ *
+ * API removals:
+ * \li AIDate
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType

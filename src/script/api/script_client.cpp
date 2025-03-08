@@ -46,9 +46,9 @@ static NetworkClientInfo *FindClientInfo(ScriptClient::ClientID client)
 	return ScriptCompany::ToScriptCompanyID(ci->client_playas);
 }
 
-/* static */ ScriptDate::Date ScriptClient::GetJoinDate(ScriptClient::ClientID client)
+/* static */ ScriptEconomyDate *ScriptClient::GetJoinDate(ScriptClient::ClientID client)
 {
 	NetworkClientInfo *ci = FindClientInfo(client);
-	if (ci == nullptr) return ScriptDate::DATE_INVALID;
-	return (ScriptDate::Date)ci->join_date.base();
+	if (ci == nullptr) return new ScriptEconomyDate();
+	return new ScriptEconomyDate(static_cast<ScriptEconomyDate::Date>(ci->join_date.base()));
 }
