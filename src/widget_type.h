@@ -383,6 +383,9 @@ public:
 	inline void SetDisabled(bool disabled);
 	inline bool IsDisabled() const;
 
+	inline TextColour GetTextColour() const { return this->text_colour; }
+	inline FontSize GetFontSize() const { return this->text_size; }
+
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	bool IsHighlighted() const override;

@@ -120,6 +120,7 @@ static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 						SetMinimalTextLines(8, 0, FS_LARGE),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
+						SetTextStyle(TC_BLACK, FS_LARGE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -150,6 +151,7 @@ static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 						SetStringTip(STR_EMPTY),
+						SetTextStyle(TC_BLACK, FS_LARGE),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_VEH_BKGND), SetPadding(WidgetDimensions::unscaled.fullbevel),
 				NWidget(NWID_VERTICAL),
@@ -196,6 +198,7 @@ static constexpr NWidgetPart _nested_company_news_widgets[] = {
 						SetMinimalTextLines(1, 0, FS_LARGE),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
+						SetTextStyle(TC_BLACK, FS_LARGE),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0), SetPadding(2),
@@ -210,6 +213,7 @@ static constexpr NWidgetPart _nested_company_news_widgets[] = {
 						SetFill(1, 1),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_wide),
 						SetMinimalSize(300, 0),
+						SetTextStyle(TC_BLACK, FS_LARGE),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -241,6 +245,7 @@ static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 						SetMinimalTextLines(3, 0, FS_LARGE),
 						SetMinimalSize(400, 0),
 						SetPadding(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.vsep_normal),
+						SetTextStyle(TC_BLACK, FS_LARGE),
 			EndContainer(),
 			NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT), SetMinimalSize(426, 70),
 					SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -279,6 +284,7 @@ static constexpr NWidgetPart _nested_small_news_widgets[] = {
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_N_MESSAGE),
 					SetMinimalTextLines(2, 0),
 					SetMinimalSize(275, 0),
+					SetTextStyle(TC_WHITE, FS_NORMAL),
 		EndContainer(),
 	EndContainer(),
 };
@@ -442,7 +448,7 @@ struct NewsWindow : Window {
 
 			case WID_N_MESSAGE:
 			case WID_N_COMPANY_MSG:
-				fontsize = FS_LARGE;
+				fontsize = this->GetWidget<NWidgetLeaf>(widget)->GetFontSize();
 				str = this->ni->headline.GetDecodedString();
 				break;
 
@@ -514,9 +520,11 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MESSAGE:
-			case WID_N_COMPANY_MSG:
-				DrawStringMultiLine(r, this->ni->headline.GetDecodedString(), TC_BLACK, SA_CENTER, false, FS_LARGE);
+			case WID_N_COMPANY_MSG: {
+				const NWidgetLeaf &nwid = *this->GetWidget<NWidgetLeaf>(widget);
+				DrawStringMultiLine(r, this->ni->headline.GetDecodedString(), nwid.GetTextColour(), SA_CENTER, false, nwid.GetFontSize());
 				break;
+			}
 
 			case WID_N_MGR_FACE: {
 				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
