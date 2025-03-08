@@ -3157,6 +3157,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Bart land
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gress
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Jorder
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Ørken
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Snødekte steiner
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Snødekt ulendt terreng
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Snødekt gress
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Jernbanespor
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Jernbanespor med blokksignaler
@@ -4035,6 +4038,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produser
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Krever:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} venter{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} venter
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon (multiplum av 8, opptil 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Endre produksjonsnivå (prosentsats, opptil 800{NBSP}%)
@@ -4692,6 +4699,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garasje
 STR_ORDER_SHIP_DEPOT                                            :Skipsdokk
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} nærmeste hangar
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Bygg om til {STRING})
@@ -4705,12 +4713,12 @@ STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{R
 
 STR_ORDER_IMPLICIT                                              :(Ubetinget)
 
-STR_ORDER_FULL_LOAD                                             :(Full last av alle varetyper)
-STR_ORDER_FULL_LOAD_ANY                                         :(Full last av minst en varetype)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Full last av alle varetyper)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Full last av minst en varetype)
 STR_ORDER_NO_LOAD                                               :(Ingen lasting)
 STR_ORDER_UNLOAD                                                :(Loss av og last på varer)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Loss av og vent på full last)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Loss av og vent på første fulle last)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Loss av og vent på full last)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Loss av og vent på første fulle last)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Loss av og forlat tom)
 STR_ORDER_TRANSFER                                              :(Overfør og last på varer)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent på full last)
@@ -4722,11 +4730,11 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ingen lossing 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ingen av og pålasting)
 
 STR_ORDER_AUTO_REFIT                                            :(Ombygging til {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Full last med ombygging til {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Full last av minst en varetype med ombygging til {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Full last med ombygging til {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Full last av minst en varetype med ombygging til {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Loss av og ta last med ombygging til {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Loss av og vent på full last med ombygging til {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Loss av og vent på første fulle last med ombygging til {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Loss av og vent på full last med ombygging til {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Loss av og vent på første fulle last med ombygging til {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Overfør og last på varer med ombygging til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Overfør og vent på full last med ombygging til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Overfør og vent på første fulle last med ombygging til {STRING})
@@ -4786,12 +4794,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunder til ru
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Endre tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Endre hvor lang tid den merkede ordren skal ta. Ctrl+klikk for å sette tiden for alle ordre
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Endre tid
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nullstill tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern varigheten for den merkede ordren. Ctrl+klikk for å fjerne varigheten for alle ordre
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Endre fartsgrense
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Endre største reisehastighet for den merkede ordren. Ctrl+klikk for å sette hastigheten for alle ordre
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Endre fartsgrense
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Fjern fartsgrense
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Fjern største reisehastighet for den merkede ordren. Ctrl+klikk for å fjerne hastigheten for alle ordre

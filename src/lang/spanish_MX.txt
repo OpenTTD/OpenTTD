@@ -1338,7 +1338,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automático)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No se puede establecer el límite de elevación del mapa en el valor indicado. Al menos una montaña ya es más alta
 
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Alterar terreno debajo de edificios, vías férreas, etc.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Alterar terreno debajo de edificios, ferrocarriles, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir alteración de terreno debajo de infraestructura sin tener que retirarla
 
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir áreas de recolección más realistas: {STRING}
@@ -1371,7 +1371,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinación de
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Grado de inclinación de una casilla con pendiente para un autotransporte. Los valores altos hacen que sea más difícil subir las colinas
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibir a trenes realizar giros de 90°: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Los giros de 90° ocurren en vías férreas perpendiculares donde el tren gira 90° al pasar de una casilla a otra, en lugar de los 45° habituales en otras combinaciones de vías
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Los giros de 90° ocurren en vías perpendiculares donde el tren gira al pasar de una casilla a otra, en lugar de los 45° habituales en otras combinaciones de vías
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir ampliación de estaciones no adyacentes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permitir que, con Ctrl+Clic, se añadan partes a una estación sin tener que estar en contacto directo
@@ -1396,13 +1396,13 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Como las demás
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospección
 
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana alrededor de industrias: {STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cantidad de espacio plano alrededor de las industrias. Esto asegura que haya espacio libre alrededor de las industrias para construir vías férreas, etc.
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cantidad de espacio plano alrededor de las industrias para que haya espacio libre para construir infraestructura
 
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permitir varias industrias similares por localidad: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :En general, una localidad admite un solo tipo de industria a la vez, pero con esta opción varias industrias del mismo tipo en una localidad serán posibles
 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar señales: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Elegir el lado de las vías donde se construirán las señales
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Elegir el lado de las vías donde se colocarán las señales
 ###length 3
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A la izquierda
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :En el lado de conducción
@@ -1752,21 +1752,21 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar tiempos
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de órdenes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Elegir automáticamente la opción 'Ir a' al abrir la ventana de órdenes
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo de vías por defecto al iniciar o cargar un juego: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de vías de tren por defecto al iniciar o cargar un juego. "Primero disponible" elige el tipo más viejo, "Último disponible" elige el tipo más nuevo y "Más usado" elige el tipo de mayor uso al momento
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo de vías por defecto al iniciar o cargar una partida: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de vías de tren por defecto al iniciar o cargar una partida. "Primero disponible" elige el tipo más viejo, "Último disponible" elige el tipo más nuevo y "Más usado" elige el tipo de mayor uso al momento
 ###length 3
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar rutas reservadas sobre las vías férreas: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dar un color especial a las vías de tren reservadas para ayudar a resolver problemas con trenes que no ingresan en secciones con señales de ruta
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar rutas reservadas sobre las vías: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dar un color especial a las vías reservadas para ayudar a resolver problemas con trenes que no ingresan en secciones con señales de ruta
 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantener activas las herramientas de construcción tras su uso: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantener abiertas las herramientas de construcción de puentes, túneles, etc., después de usarlas
 
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Quitar señales de forma automática al construir vías férreas: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Quitar las señales de forma automática al construir vías férreas si estas obstruyen. Puede provocar choques de trenes
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Quitar señales de forma automática al construir ferrocarriles: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Quitar las señales de forma automática al construir ferrocarriles si estas obstruyen. Puede provocar choques de trenes
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Límite de velocidad del avance rápido: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Límite de velocidad del avance rápido. 0 significa sin límite o la velocidad que el sistema permita. Valores debajo de 100% retardan el juego. El límite más alto varía en factor de las capacidades del sistema y el juego
@@ -2796,15 +2796,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcción f
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcción de monorriel
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción de maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril en una orientación. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramo de ferrocarril con orientación automática. Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril en una orientación. Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramo de ferrocarril con orientación automática (Autorail). Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito de trenes (para comprar y dar mantenimiento a trenes). Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre ferrocarril. Ctrl+Clic activa la unión de puntos de ruta. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estación de ferrocarril. Ctrl+Clic activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Colocar señales de ferrocarril. Ctrl+Clic cambia los estilos de señales. Clic y arrastrar rellena un tramo con señales intercaladas según la distancia indicada. Ctrl+Clic y arrastrar rellena un tramo con señales hasta la siguiente desviación, estación u otra señal. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel de ferrocarril. Mayús+Clic solo muestra un costo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Quitar ferrocarril, señales, estaciones o puntos de ruta. Ctrl+Clic incluye las vías cuando se quita una estación o punto de ruta
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construir o quitar ferrocarriles, señales, estaciones o puntos de ruta. Ctrl+Clic incluye también las vías cuando se quita una estación o punto de ruta
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir o actualizar tipo de ferrocarril. Mayús+Clic solo muestra un costo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrocarril
@@ -2921,8 +2921,8 @@ STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construc
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcción de tranvía
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir sección de carretera. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir sección de tranvía. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir carretera con orientación automática. Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir tranvías con orientación automática. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir carretera con orientación automática (Autoroad). Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir tranvías con orientación automática (Autotram). Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de autotransportes (para comprar y dar mantenimiento a vehículos). Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de tranvías (para comprar y dar mantenimiento a tranvías). Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre carretera. Ctrl+Clic activa la unión de puntos de ruta. Mayús+Clic solo muestra un costo estimado
@@ -3162,28 +3162,28 @@ STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rocas con nieve
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Suelo rugoso con nieve
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Hierba con nieve
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vías férreas
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vías férreas con señales de bloqueo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vías férreas con señales de entrada
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vías férreas con señales de salida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vías férreas con señales combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vías férreas con señales de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vías férreas con señales de ruta de un solo sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vías férreas con señales de bloqueo y de entrada
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vías férreas con señales de bloqueo y de salida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vías férreas con señales de bloqueo y combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vías férreas con señales de bloqueo y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vías férreas con señales de bloqueo y de ruta de un solo sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vías férreas con señales de entrada y de salida
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vías férreas con señales de entrada y combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vías férreas con señales de entrada y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vías férreas con señales de entrada y de ruta de un solo sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vías férreas con señales de salida y combo
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vías férreas con señales de salida y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vías férreas con señales de salida y de ruta de un solo sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vías férreas con señales combo y de ruta
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vías férreas con señales combo y de ruta de un solo sentido
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vías férreas con señales de ruta y de ruta de un solo sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vías de ferrocarril
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vías de ferrocarril con señales de bloque
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Vías de ferrocarril con señales de entrada
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Vías de ferrocarril con señales de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Vías de ferrocarril con señales combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Vías de ferrocarril con señales de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Vías de ferrocarril con señales de ruta de un solo sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Vías de ferrocarril con señales de bloque y de entrada
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Vías de ferrocarril con señales de bloque y de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Vías de ferrocarril con señales de bloque y combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Vías de ferrocarril con señales de bloque y de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Vías de ferrocarril con señales de bloque y de ruta de un solo sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Vías de ferrocarril con señales de entrada y de salida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Vías de ferrocarril con señales de entrada y combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Vías de ferrocarril con señales de entrada y de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Vías de ferrocarril con señales de entrada y de ruta de un solo sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Vías de ferrocarril con señales de salida y combo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Vías de ferrocarril con señales de salida y de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Vías de ferrocarril con señales de salida y de ruta de un solo sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Vías de ferrocarril con señales combo y de ruta
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Vías de ferrocarril con señales combo y de ruta de un solo sentido
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vías de ferrocarril con señales de ruta y de ruta de un solo sentido
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depósito (trenes)
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Carretera
@@ -3958,7 +3958,7 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ninguno
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor de la empresa: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestructura:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} tramo{P "" s} de vías férreas
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} tramo{P "" s} de ferrocarril
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} tramo{P "" s} de carretera
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} casilla{P "" s} de agua
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} casilla{P "" s} de estaci{P ón ones}
@@ -3996,7 +3996,7 @@ STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}En una c
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura de {COMPANY}
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Tramos de vías férreas:
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Tramos de ferrocarril:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Señales
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Tramos de carretera:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Tramos de tranvía:
@@ -4386,7 +4386,7 @@ STR_REPLACE_ALL_RAILTYPE                                        :Todos los vehí
 STR_REPLACE_ALL_ROADTYPE                                        :Todos los autotransportes
 
 ###length 2
-STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Elegir el tipo de vías férreas según el vehículo ferroviario a reemplazar
+STR_REPLACE_RAILTYPE_TOOLTIP                                    :{BLACK}Elegir el tipo de vías de ferrocarril según el vehículo a reemplazar
 STR_REPLACE_ROADTYPE_TOOLTIP                                    :{BLACK}Elegir el tipo de carretera según el autotransporte a reemplazar
 ###next-name-looks-similar
 
@@ -5166,7 +5166,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los tren
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren demasiado largo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se puede cambiar dirección del vehículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... vehículo compuesto por múltiples unidades
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Los tipos de vías férreas no son compatibles
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Los tipos de vías de ferrocarril no son compatibles
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se puede mover vehículo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La locomotora trasera debe conectarse a la delantera
@@ -5192,20 +5192,20 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}El nuevo
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinación imposible de vías
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Primero se deben quitar las señales
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de vías férreas no apropiado
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Primero se debe quitar el tramo de vías férreas
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de vías no apropiado
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Primero se debe quitar el tramo de vías
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Carretera de un solo sentido o bloqueada
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}No se permiten pasos a nivel para este tipo de vías férreas
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}No se permiten pasos a nivel para este tipo de vías
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}No se permiten pasos a nivel para este tipo de carretera
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}No se pueden instalar señales aquí...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir vías férreas aquí...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden quitar vías férreas de aquí...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir vías aquí...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden quitar vías de aquí...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}No se pueden quitar señales de aquí...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}No se pueden convertir las señales aquí...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... no hay vías férreas
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... no hay vías
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... no hay señales
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}No se puede convertir tipo de vías férreas aquí...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}No se puede convertir tipo de vías aquí...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Primero se debe quitar la carretera

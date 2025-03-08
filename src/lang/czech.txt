@@ -1625,7 +1625,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Doba zobrazení
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Zobrazení kontextové nápovědy: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Prodleva před zobrazením nápovědy, pokud kurzor leží nad nějakým ovládacím prvkem. Nápověda může být rovněž vyvolána pravým tlačítkem myši.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Podržet kurzor po dobu {COMMA} sekund{P y "" ""}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Podržet kurzor po dobu {COMMA}  milisekund{P y "" ""}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Pravým klikem
 

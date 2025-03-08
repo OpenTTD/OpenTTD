@@ -1217,7 +1217,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
 STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk (geen effect op bedrijfsactiviteiten)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AI's beschikbaar...{}Je kunt diverse AI's downloaden via het 'online-inhoud'-systeem
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AI's beschikbaar...{}{}Je kunt diverse AI's downloaden via het 'online-inhoud'-systeem
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Instellingen
@@ -2265,7 +2265,7 @@ STR_CHEATS                                                      :{WHITE}Zandbako
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kapitaal vergroten met {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen als bedrijf: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels kunnen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Straalvliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Wijzig de maximale kaarthoogte: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Wijzig de maximale hoogte van bergen op de kaart
@@ -2650,7 +2650,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} he
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heeft diens naam gewijzigd in {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gaf {CURRENCY_LONG} aan {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De server heeft de sessie gesloten
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht alstublieft...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}{}Even geduld...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} is eruit geschopt. Reden: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistratie mislukt
@@ -2903,6 +2903,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selectee
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brugkeuze - klik op de gewenste brug om die te bouwen
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hangend, staal
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Ligger, staal
@@ -3630,17 +3631,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Compati
 STR_NEWGRF_LIST_MISSING                                         :{RED}Ontbrekende bestanden
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of vastlopers veroorzaken
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Het wijzigde de status van motorrijtuig van '{1:ENGINE}' terwijl het niet in een depot was
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het veranderde de lengte van voertuig '{1:ENGINE}' wanneer het niet in een depot is
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Het wijzigde voertuigcapaciteit voor '{1:ENGINE}' terwijl het niet in een depot was of werd omgebouwd
+STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of vastlopers veroorzaken
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Het wijzigde de status van motorrijtuig van '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' terwijl het niet in een depot was
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het veranderde de lengte van voertuig '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' terwijl het niet in een depot was
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Het wijzigde voertuigcapaciteit voor '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' terwijl het niet in een depot was of werd omgebouwd
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Dit wordt waarschijnlijk veroorzaakt door problemen met NewGRF's. Het spel kan desynchroniseren of vastlopen
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht- of ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' heeft een eindeloze loop veroorzaakt in de productiecallback
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} gaf onbekend/ongeldig resultaat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' retourneerde een ongeldig vrachttype in de productie-terugroep op {2:HEX}
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' geeft onjuiste informatie
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht- of ombouwinformatie voor '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' heeft een eindeloze lus veroorzaakt in de productie-terugroep
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Terugroep {1:HEX} gaf onbekend/ongeldig resultaat {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' retourneerde een ongeldig vrachttype in de productie-terugroep op {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>
@@ -4037,6 +4038,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Producee
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Vereist:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} wacht{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} wacht
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Productie wijzigen (veelvoud van 8, maximaal 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Productieniveau wijzigen (percentage, maximaal 800%)
@@ -4790,12 +4795,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Seconden tot de
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Tijd wijzigen
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren. Met Ctrl+klik stel je de tijd voor alle orders in
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Tijd wijzigen
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tijd wissen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de tijdsduur die de geselecteerde order mag duren. Met Ctrl+klik wis je de tijd voor alle orders
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Maximumsnelheid wijzigen
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Wijzig de maximumsnelheid voor de gekozen order. Met Ctrl+klik stel je de snelheid voor alle orders in
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Maximumsnelheid wijzigen
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Snelheidslimiet wissen
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Verwijder de maximumsnelheid van de gekozen order. Met Ctrl+klik wis je de snelheid voor alle orders
@@ -4901,7 +4908,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Schermaf
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI-parameters
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelscript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spelscript-parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Terugstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4962,7 +4969,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<niet beschikba
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was opgeslagen in een versie zonder tramondersteuning. Alle trams zijn verwijderd
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartmaken afgebroken...{}... geen geschikte dorpslocaties
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaart maken afgebroken...{}{}... geen geschikte stadslocaties
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... er is geen stad in dit scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan landschap uit PNG niet laden...
@@ -5053,7 +5060,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te d
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel plaatsen
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er is geen ruimte meer op de kaart
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze stad niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de stad beheerde tegel kan niet worden verwijderd
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze stad niet verwijderen...{}{}Een station of depot verwijst naar deze plaats of een door de stad beheerde tegel kan niet worden verwijderd
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan huis niet bouwen...
 

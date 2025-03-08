@@ -452,6 +452,7 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Sandkasse mulig
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Busstoppesteder
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rutepunkt-navne vist
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Viste skilte
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Modstander skilte og navne vist
@@ -2629,6 +2630,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :afventer forbin
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlader
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har tilsluttet sig spillet
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har tilsluttet sig spillet (Klient #{NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} har tilsluttet sig {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har tilsluttet sig som tilskuer
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har startet et nyt selskab (#{NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forladt spillet ({STRING})
@@ -2850,6 +2852,8 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Ydre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Indre Forstæder
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Bymidte
 
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Slukket
+STR_HOUSE_PICKER_PROTECT_ON                                     :tændt
 
 STR_STATION_CLASS_DFLT                                          :Standard station
 STR_STATION_CLASS_DFLT_STATION                                  :Standard station
@@ -2883,6 +2887,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vælg ve
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Valg af bro - klik på din foretrukne brotype for at bygge den
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hængebro, stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Bjælkebro, stål
@@ -4669,6 +4674,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Værksted
 STR_ORDER_SHIP_DEPOT                                            :Skibsdok
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} den nærmeste {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Tilpas til {STRING})
@@ -4769,6 +4775,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil 
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ændr hastighedsbegrænsning
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Skift den maksimale kørehastighed for den fremhævede rækkefølge. Ctrl+klik for at indstille hastigheden for alle ordrer
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Skift hastighedsgrænse
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Nulstil hastighedsbegrænsning
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Slet den maksimale kørehastighed for den fremhævede rækkefølge. Ctrl+klik for at rydde hastigheden for alle ordrer
@@ -4873,8 +4880,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Højdeko
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikort skærmbillede
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spilscript
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI-parametre
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spil Script parametre
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Luk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulstil
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4964,6 +4971,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Fejl und
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Besked
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Besked fra {COMPANY}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Ude over kanten af kortet
@@ -4982,6 +4990,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... græ
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... grænsen for rydning af felter er nået
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... grænse for plantning af træer er nået
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} i vejen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikke tilladt imens spillet er på pause
 
 # Local authority errors
@@ -5298,6 +5307,9 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikke
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikke sælge flyet...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kan ikke sælge alle vejkøretøjer...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan ikke sælge alle skibe...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kan ikke sælge alle fly...
 
 ###length VEHICLE_TYPES
 
@@ -5881,3 +5893,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
