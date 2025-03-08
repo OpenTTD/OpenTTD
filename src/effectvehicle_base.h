@@ -22,8 +22,8 @@
  *  - bubbles (industry)
  */
 struct EffectVehicle final : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
-	uint16_t animation_state;  ///< State primarily used to change the graphics/behaviour.
-	uint8_t animation_substate; ///< Sub state to time the change of the graphics/behaviour.
+	uint16_t animation_state = 0; ///< State primarily used to change the graphics/behaviour.
+	uint8_t animation_substate = 0; ///< Sub state to time the change of the graphics/behaviour.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	EffectVehicle() : SpecializedVehicleBase() {}

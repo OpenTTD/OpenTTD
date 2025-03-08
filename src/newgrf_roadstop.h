@@ -89,13 +89,13 @@ enum RoadStopView : uint8_t {
 
 /** Scope resolver for road stops. */
 struct RoadStopScopeResolver : public ScopeResolver {
-	TileIndex tile;                             ///< %Tile of the station.
-	struct BaseStation *st;                     ///< Instance of the station.
-	const struct RoadStopSpec *roadstopspec;    ///< Station (type) specification.
-	CargoType cargo_type;                         ///< Type of cargo of the station.
-	StationType type;                           ///< Station type.
-	uint8_t view;                                 ///< Station axis.
-	RoadType roadtype;                          ///< Road type (used when no tile)
+	TileIndex tile{}; ///< %Tile of the station.
+	struct BaseStation *st = nullptr; ///< Instance of the station.
+	const struct RoadStopSpec *roadstopspec = nullptr; ///< Station (type) specification.
+	CargoType cargo_type{}; ///< Type of cargo of the station.
+	StationType type{}; ///< Station type.
+	uint8_t view = 0; ///< Station axis.
+	RoadType roadtype{}; ///< Road type (used when no tile)
 
 	RoadStopScopeResolver(ResolverObject &ro, BaseStation *st, const RoadStopSpec *roadstopspec, TileIndex tile, RoadType roadtype, StationType type, uint8_t view = 0)
 		: ScopeResolver(ro), tile(tile), st(st), roadstopspec(roadstopspec), type(type), view(view), roadtype(roadtype)

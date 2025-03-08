@@ -49,11 +49,11 @@ struct NewGRFProfiler {
 		GrfSpecFeature feat; ///< GRF feature being resolved for
 	};
 
-	const GRFFile *grffile;  ///< Which GRF is being profiled
-	bool active;             ///< Is this profiler collecting data
-	uint64_t start_tick;       ///< Tick number this profiler was started on
-	Call cur_call;           ///< Data for current call in progress
-	std::vector<Call> calls; ///< All calls collected so far
+	const GRFFile *grffile = nullptr; ///< Which GRF is being profiled
+	bool active = false; ///< Is this profiler collecting data
+	uint64_t start_tick = 0; ///< Tick number this profiler was started on
+	Call cur_call{}; ///< Data for current call in progress
+	std::vector<Call> calls{}; ///< All calls collected so far
 };
 
 extern std::vector<NewGRFProfiler> _newgrf_profilers;

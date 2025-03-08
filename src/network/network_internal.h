@@ -93,15 +93,14 @@ void UpdateNetworkGameWindow();
  * Everything we need to know about a command to be able to execute it.
  */
 struct CommandPacket {
-	CommandPacket() : company(CompanyID::Invalid()), frame(0), my_cmd(false) {}
-	CompanyID company;   ///< company that is executing the command
-	uint32_t frame;        ///< the frame in which this packet is executed
-	bool my_cmd;         ///< did the command originate from "me"
+	CompanyID company = CompanyID::Invalid(); ///< company that is executing the command
+	uint32_t frame = 0; ///< the frame in which this packet is executed
+	bool my_cmd = false; ///< did the command originate from "me"
 
-	Commands cmd;              ///< command being executed.
-	StringID err_msg;          ///< string ID of error message to use.
-	CommandCallback *callback; ///< any callback function executed upon successful completion of the command.
-	CommandDataBuffer data;    ///< command parameters.
+	Commands cmd{}; ///< command being executed.
+	StringID err_msg{}; ///< string ID of error message to use.
+	CommandCallback *callback = nullptr; ///< any callback function executed upon successful completion of the command.
+	CommandDataBuffer data{}; ///< command parameters.
 };
 
 void NetworkDistributeCommands();

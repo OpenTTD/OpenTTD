@@ -252,8 +252,8 @@ public:
 	void ReleaseSQObject(HSQOBJECT *obj);
 
 protected:
-	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
-	std::string versionAPI;               ///< Current API used by this script.
+	class Squirrel *engine = nullptr; ///< A wrapper around the squirrel vm.
+	std::string versionAPI{}; ///< Current API used by this script.
 
 	/**
 	 * Register all API functions to the VM.
@@ -284,18 +284,18 @@ protected:
 	virtual void LoadDummyScript() = 0;
 
 private:
-	class ScriptController *controller;   ///< The script main class.
-	class ScriptStorage *storage;         ///< Some global information for each running script.
-	SQObject *instance;                   ///< Squirrel-pointer to the script main class.
+	class ScriptController *controller = nullptr; ///< The script main class.
+	class ScriptStorage *storage = nullptr; ///< Some global information for each running script.
+	SQObject *instance = nullptr; ///< Squirrel-pointer to the script main class.
 
-	bool is_started;                      ///< Is the scripts constructor executed?
-	bool is_dead;                         ///< True if the script has been stopped.
-	bool is_save_data_on_stack;           ///< Is the save data still on the squirrel stack?
-	int suspend;                          ///< The amount of ticks to suspend this script before it's allowed to continue.
-	bool is_paused;                       ///< Is the script paused? (a paused script will not be executed until unpaused)
-	bool in_shutdown;                     ///< Is this instance currently being destructed?
-	Script_SuspendCallbackProc *callback; ///< Callback that should be called in the next tick the script runs.
-	size_t last_allocated_memory;         ///< Last known allocated memory value (for display for crashed scripts)
+	bool is_started = false; ///< Is the scripts constructor executed?
+	bool is_dead = false; ///< True if the script has been stopped.
+	bool is_save_data_on_stack = false; ///< Is the save data still on the squirrel stack?
+	int suspend = 0; ///< The amount of ticks to suspend this script before it's allowed to continue.
+	bool is_paused = false; ///< Is the script paused? (a paused script will not be executed until unpaused)
+	bool in_shutdown = false; ///< Is this instance currently being destructed?
+	Script_SuspendCallbackProc *callback = nullptr; ///< Callback that should be called in the next tick the script runs.
+	size_t last_allocated_memory = 0; ///< Last known allocated memory value (for display for crashed scripts)
 
 	/**
 	 * Call the script Load function if it exists and data was loaded

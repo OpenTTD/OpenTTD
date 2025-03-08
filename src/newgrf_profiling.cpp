@@ -27,7 +27,7 @@ std::vector<NewGRFProfiler> _newgrf_profilers;
  * @param grffile   The GRF file to collect profiling data on
  * @param end_date  Game date to end profiling on
  */
-NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile) : grffile{ grffile }, active{ false }, cur_call{}
+NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile) : grffile(grffile)
 {
 }
 

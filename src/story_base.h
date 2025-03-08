@@ -143,12 +143,12 @@ struct StoryPageButtonData {
  * page content. Each element only contain one type of content.
  **/
 struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_pool> {
-	uint32_t sort_value;         ///< A number that increases for every created story page element. Used for sorting. The id of a story page element is the pool index.
-	StoryPageID page;          ///< Id of the page which the page element belongs to
-	StoryPageElementType type; ///< Type of page element
+	uint32_t sort_value = 0; ///< A number that increases for every created story page element. Used for sorting. The id of a story page element is the pool index.
+	StoryPageID page{}; ///< Id of the page which the page element belongs to
+	StoryPageElementType type{}; ///< Type of page element
 
-	uint32_t referenced_id;      ///< Id of referenced object (location, goal etc.)
-	EncodedString text;          ///< Static content text of page element
+	uint32_t referenced_id = 0; ///< Id of referenced object (location, goal etc.)
+	EncodedString text{}; ///< Static content text of page element
 
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)

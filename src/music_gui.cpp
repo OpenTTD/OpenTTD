@@ -58,11 +58,11 @@ struct MusicSystem {
 		PLCH_MAX,
 	};
 
-	Playlist active_playlist;    ///< current play order of songs, including any shuffle
-	Playlist displayed_playlist; ///< current playlist as displayed in GUI, never in shuffled order
-	Playlist music_set;          ///< all songs in current music set, in set order
+	Playlist active_playlist{}; ///< current play order of songs, including any shuffle
+	Playlist displayed_playlist{}; ///< current playlist as displayed in GUI, never in shuffled order
+	Playlist music_set{}; ///< all songs in current music set, in set order
 
-	PlaylistChoices selected_playlist;
+	PlaylistChoices selected_playlist{};
 
 	void BuildPlaylists();
 
@@ -90,11 +90,11 @@ private:
 	uint GetSetIndex();
 	void SetPositionBySetIndex(uint set_index);
 	void ChangePlaylistPosition(int ofs);
-	int playlist_position;
+	int playlist_position = 0;
 
 	void SaveCustomPlaylist(PlaylistChoices pl);
 
-	Playlist standard_playlists[PLCH_MAX];
+	std::array<Playlist, PLCH_MAX> standard_playlists{};
 };
 
 MusicSystem _music;
