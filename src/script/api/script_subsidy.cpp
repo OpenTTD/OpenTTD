@@ -60,8 +60,8 @@
 	TimerGameEconomy::YearMonthDay ymd = TimerGameEconomy::ConvertDateToYMD(TimerGameEconomy::date);
 	ymd.day = 1;
 	auto m = ymd.month + ::Subsidy::Get(subsidy_id)->remaining;
-	ymd.month = (m - 1) % 12 + 1;
-	ymd.year += TimerGameEconomy::Year{(m - 1) / 12};
+	ymd.month = m % 12;
+	ymd.year += TimerGameEconomy::Year{m / 12};
 
 	return (ScriptDate::Date)TimerGameEconomy::ConvertYMDToDate(ymd.year, ymd.month, ymd.day).base();
 }
