@@ -82,6 +82,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
  */
 #if defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
 	int f = open(file_new.c_str(), O_RDWR);
+	if (f < 0) return false;
 	int ret = fdatasync(f);
 	close(f);
 	if (ret != 0) return false;
