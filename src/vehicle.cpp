@@ -381,7 +381,7 @@ const int TOTAL_HASH_MASK = TOTAL_HASH_SIZE - 1;
  * Profiling results show that 0 is fastest. */
 const int HASH_RES = 0;
 
-static Vehicle *_vehicle_tile_hash[TOTAL_HASH_SIZE];
+static std::array<Vehicle *, TOTAL_HASH_SIZE> _vehicle_tile_hash{};
 
 static Vehicle *VehicleFromTileHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc, bool find_first)
 {
@@ -646,7 +646,7 @@ static void UpdateVehicleTileHash(Vehicle *v, bool remove)
 	v->hash_tile_current = new_hash;
 }
 
-static Vehicle *_vehicle_viewport_hash[1 << (GEN_HASHX_BITS + GEN_HASHY_BITS)];
+static std::array<Vehicle *, 1 << (GEN_HASHX_BITS + GEN_HASHY_BITS)> _vehicle_viewport_hash{};
 
 static void UpdateVehicleViewportHash(Vehicle *v, int x, int y, int old_x, int old_y)
 {
@@ -675,8 +675,8 @@ static void UpdateVehicleViewportHash(Vehicle *v, int x, int y, int old_x, int o
 void ResetVehicleHash()
 {
 	for (Vehicle *v : Vehicle::Iterate()) { v->hash_tile_current = nullptr; }
-	memset(_vehicle_viewport_hash, 0, sizeof(_vehicle_viewport_hash));
-	memset(_vehicle_tile_hash, 0, sizeof(_vehicle_tile_hash));
+	_vehicle_viewport_hash = {};
+	_vehicle_tile_hash = {};
 }
 
 void ResetVehicleColourMap()
