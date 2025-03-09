@@ -443,11 +443,11 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 		size_t index;
 		if ((overflow_run->level & 1) == 0) {
 			/* LTR */
-			for (index = overflow_run->glyphs.size(); index > 0; index--) {
-				cur_width -= overflow_run->advance[index - 1];
+			for (index = overflow_run->glyphs.size(); index > 0; /* nothing */) {
+				--index;
+				cur_width -= overflow_run->advance[index];
 				if (cur_width <= max_width) break;
 			}
-			index--;
 		} else {
 			/* RTL */
 			for (index = 0; index < overflow_run->glyphs.size(); index++) {
