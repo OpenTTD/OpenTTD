@@ -49,7 +49,7 @@ void UpdateAirportsNoise();
 bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrackOffset *overlay_offset);
 
 void IncreaseStats(Station *st, const Vehicle *v, StationID next_station_id, uint32_t time);
-void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
+void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint capacity, uint usage, uint32_t time, EdgeUpdateModes modes);
 void RerouteCargo(Station *st, CargoType c, StationID avoid, StationID avoid2);
 
 /**
