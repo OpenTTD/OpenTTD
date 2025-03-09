@@ -56,7 +56,6 @@ enum class DepotCommandFlag : uint8_t {
 	Service, ///< The vehicle will leave the depot right after arrival (service only)
 	MassSend, ///< Tells that it's a mass send to depot command (type in VLW flag)
 	DontCancel, ///< Don't cancel current goto depot command if any
-	LocateHangar, ///< Find another airport if the target one lacks a hangar
 };
 using DepotCommandFlags = EnumBitSet<DepotCommandFlag, uint8_t>;
 
