@@ -83,7 +83,7 @@ struct PacketWriter : SaveFilter {
 	{
 		std::unique_lock<std::mutex> lock(this->mutex);
 
-		if (this->cs != nullptr) this->exit_sig.wait(lock);
+		while (this->cs != nullptr) this->exit_sig.wait(lock);
 
 		/* This must all wait until the Destroy function is called. */
 
