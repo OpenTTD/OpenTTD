@@ -530,8 +530,7 @@ void Window::RaiseButtons(bool autoraise)
 	for (auto &pair : this->widget_lookup) {
 		WidgetType type = pair.second->type;
 		NWidgetCore *wid = dynamic_cast<NWidgetCore *>(pair.second);
-		assert(wid != nullptr);
-		if (((type & ~WWB_PUSHBUTTON) < WWT_LAST || type == NWID_PUSHBUTTON_DROPDOWN) &&
+		if (wid != nullptr && ((type & ~WWB_PUSHBUTTON) < WWT_LAST || type == NWID_PUSHBUTTON_DROPDOWN) &&
 				(!autoraise || (type & WWB_PUSHBUTTON) || type == WWT_EDITBOX) && wid->IsLowered()) {
 			wid->SetLowered(false);
 			wid->SetDirty(this);
