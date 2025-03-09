@@ -3088,9 +3088,9 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
 						if (dx + dy >= (int)TILE_SIZE) {
-							x += (dx + dy < 0) ? (int)TILE_SIZE : -(int)TILE_SIZE;
+							x -= (int)TILE_SIZE;
 						} else {
-							y += (dx + dy < 0) ? (int)TILE_SIZE : -(int)TILE_SIZE;
+							y += (int)TILE_SIZE;
 						}
 					}
 
@@ -3122,10 +3122,10 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
-						if (dx - dy < 0) {
-							y += (dx > dy) ? (int)TILE_SIZE : -(int)TILE_SIZE;
+						if (dx < dy) {
+							y -= (int)TILE_SIZE;
 						} else {
-							x += (dx < dy) ? (int)TILE_SIZE : -(int)TILE_SIZE;
+							x -= (int)TILE_SIZE;
 						}
 					}
 
