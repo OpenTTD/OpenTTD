@@ -762,41 +762,39 @@ static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack,
  */
 static void RemapNewGRFStringControlCode(char32_t scc, const char **str, TextRefStack &stack, std::vector<StringParameter> &params)
 {
-	auto it = std::back_inserter(params);
-
 	/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
 	 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
 	switch (scc) {
 		default: return;
-		case SCC_NEWGRF_PRINT_BYTE_SIGNED:      *it = stack.PopSignedByte();    break;
-		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   *it = stack.PopSignedQWord();   break;
+		case SCC_NEWGRF_PRINT_BYTE_SIGNED:      params.emplace_back(stack.PopSignedByte());    break;
+		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   params.emplace_back(stack.PopSignedQWord());   break;
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
-		case SCC_NEWGRF_PRINT_DWORD_SIGNED:     *it = stack.PopSignedDWord();   break;
+		case SCC_NEWGRF_PRINT_DWORD_SIGNED:     params.emplace_back(stack.PopSignedDWord());   break;
 
-		case SCC_NEWGRF_PRINT_BYTE_HEX:         *it = stack.PopUnsignedByte();  break;
-		case SCC_NEWGRF_PRINT_QWORD_HEX:        *it = stack.PopUnsignedQWord(); break;
+		case SCC_NEWGRF_PRINT_BYTE_HEX:         params.emplace_back(stack.PopUnsignedByte());  break;
+		case SCC_NEWGRF_PRINT_QWORD_HEX:        params.emplace_back(stack.PopUnsignedQWord()); break;
 
 		case SCC_NEWGRF_PRINT_WORD_SPEED:
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_LONG:
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT:
-		case SCC_NEWGRF_PRINT_WORD_SIGNED:      *it = stack.PopSignedWord();    break;
+		case SCC_NEWGRF_PRINT_WORD_SIGNED:      params.emplace_back(stack.PopSignedWord());    break;
 
 		case SCC_NEWGRF_PRINT_WORD_HEX:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_POWER:
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
-		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    *it = stack.PopUnsignedWord();  break;
+		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    params.emplace_back(stack.PopUnsignedWord());  break;
 
 		case SCC_NEWGRF_PRINT_DWORD_FORCE:
 		case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
 		case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
-		case SCC_NEWGRF_PRINT_DWORD_HEX:        *it = stack.PopUnsignedDWord(); break;
+		case SCC_NEWGRF_PRINT_DWORD_HEX:        params.emplace_back(stack.PopUnsignedDWord()); break;
 
 		/* Dates from NewGRFs have 1920-01-01 as their zero point, convert it to OpenTTD's epoch. */
 		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
-		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  *it = CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + stack.PopUnsignedWord(); break;
+		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  params.emplace_back(CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + stack.PopUnsignedWord()); break;
 
 		case SCC_NEWGRF_DISCARD_WORD:           stack.PopUnsignedWord(); break;
 
@@ -806,13 +804,13 @@ static void RemapNewGRFStringControlCode(char32_t scc, const char **str, TextRef
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
-			*it = GetCargoTranslation(stack.PopUnsignedWord(), stack.grffile);
-			*it = stack.PopUnsignedWord();
+			params.emplace_back(GetCargoTranslation(stack.PopUnsignedWord(), stack.grffile));
+			params.emplace_back(stack.PopUnsignedWord());
 			break;
 
 		case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 			StringID stringid = MapGRFStringID(stack.grffile->grfid, GRFStringID{stack.PopUnsignedWord()});
-			*it = stringid;
+			params.emplace_back(stringid);
 			/* We also need to handle the substring's stack usage. */
 			HandleNewGRFStringControlCodes(GetStringPtr(stringid), stack, params);
 			break;
@@ -820,7 +818,7 @@ static void RemapNewGRFStringControlCode(char32_t scc, const char **str, TextRef
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME: {
 			CargoType cargo = GetCargoTranslation(stack.PopUnsignedWord(), stack.grffile);
-			*it = cargo < NUM_CARGO ? 1ULL << cargo : 0;
+			params.emplace_back(cargo < NUM_CARGO ? 1ULL << cargo : 0);
 			break;
 		}
 	}
