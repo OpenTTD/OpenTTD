@@ -35,6 +35,11 @@ public:
 		CC_REFRIGERATED = ::CargoClasses{::CargoClass::Refrigerated}.base(), ///< Refrigerated cargo (Food, Fruit)
 		CC_HAZARDOUS    = ::CargoClasses{::CargoClass::Hazardous}.base(),    ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
 		CC_COVERED      = ::CargoClasses{::CargoClass::Covered}.base(),      ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
+		CC_OVERSIZED = ::CargoClasses{::CargoClass::Oversized}.base(), ///< Oversized (stake/flatbed wagon)
+		CC_POWDERIZED = ::CargoClasses{::CargoClass::Powderized}.base(), ///< Powderized, moist protected (powder/silo wagon)
+		CC_NOT_POURABLE = ::CargoClasses{::CargoClass::NotPourable}.base(), ///< Not Pourable (open wagon, but not hopper wagon)
+		CC_POTABLE = ::CargoClasses{::CargoClass::Potable}.base(), ///< Potable / food / clean.
+		CC_NON_POTABLE = ::CargoClasses{::CargoClass::NonPotable}.base(), ///< Non-potable / non-food / dirty.
 	};
 
 	/**
