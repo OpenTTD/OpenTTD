@@ -679,7 +679,7 @@ static std::vector<char> Gunzip(std::span<char> input)
 		 * inflate is out of output space - allocate more */
 		z.avail_out += BLOCKSIZE;
 		output.resize(output.size() + BLOCKSIZE);
-		z.next_out = reinterpret_cast<Bytef *>(&*output.end() - z.avail_out);
+		z.next_out = reinterpret_cast<Bytef *>(output.data() + output.size() - z.avail_out);
 		res = inflate(&z, Z_FINISH);
 	}
 
@@ -717,7 +717,7 @@ static std::vector<char> Xunzip(std::span<char> input)
 		 * inflate is out of output space - allocate more */
 		z.avail_out += BLOCKSIZE;
 		output.resize(output.size() + BLOCKSIZE);
-		z.next_out = reinterpret_cast<uint8_t *>(&*output.end() - z.avail_out);
+		z.next_out = reinterpret_cast<uint8_t *>(output.data() + output.size() - z.avail_out);
 		res = lzma_code(&z, LZMA_FINISH);
 	}
 
