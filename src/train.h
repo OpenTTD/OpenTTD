@@ -41,18 +41,19 @@ enum TrainForceProceeding : uint8_t {
 };
 
 /** Flags for Train::ConsistChanged */
-enum ConsistChangeFlags : uint8_t {
-	CCF_LENGTH     = 0x01,     ///< Allow vehicles to change length.
-	CCF_CAPACITY   = 0x02,     ///< Allow vehicles to change capacity.
-
-	CCF_TRACK      = 0,                          ///< Valid changes while vehicle is driving, and possibly changing tracks.
-	CCF_LOADUNLOAD = 0,                          ///< Valid changes while vehicle is loading/unloading.
-	CCF_AUTOREFIT  = CCF_CAPACITY,               ///< Valid changes for autorefitting in stations.
-	CCF_REFIT      = CCF_LENGTH | CCF_CAPACITY,  ///< Valid changes for refitting in a depot.
-	CCF_ARRANGE    = CCF_LENGTH | CCF_CAPACITY,  ///< Valid changes for arranging the consist in a depot.
-	CCF_SAVELOAD   = CCF_LENGTH,                 ///< Valid changes when loading a savegame. (Everything that is not stored in the save.)
+enum class ConsistChangeFlag : uint8_t {
+	Length, ///< Allow vehicles to change length.
+	Capacity, ///< Allow vehicles to change capacity.
 };
-DECLARE_ENUM_AS_BIT_SET(ConsistChangeFlags)
+
+using ConsistChangeFlags = EnumBitSet<ConsistChangeFlag, uint8_t>;
+
+static constexpr ConsistChangeFlags CCF_TRACK{}; ///< Valid changes while vehicle is driving, and possibly changing tracks.
+static constexpr ConsistChangeFlags CCF_LOADUNLOAD{}; ///< Valid changes while vehicle is loading/unloading.
+static constexpr ConsistChangeFlags CCF_AUTOREFIT{ConsistChangeFlag::Capacity}; ///< Valid changes for autorefitting in stations.
+static constexpr ConsistChangeFlags CCF_REFIT{ConsistChangeFlag::Length, ConsistChangeFlag::Capacity}; ///< Valid changes for refitting in a depot.
+static constexpr ConsistChangeFlags CCF_ARRANGE{ConsistChangeFlag::Length, ConsistChangeFlag::Capacity}; ///< Valid changes for arranging the consist in a depot.
+static constexpr ConsistChangeFlags CCF_SAVELOAD{ConsistChangeFlag::Length}; ///< Valid changes when loading a savegame. (Everything that is not stored in the save.)
 
 uint8_t FreightWagonMult(CargoType cargo);
 
