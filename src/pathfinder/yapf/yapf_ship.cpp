@@ -289,7 +289,7 @@ public:
 			return result;
 		}
 
-		return INVALID_TRACKDIR;
+		NOT_REACHED();
 	}
 
 	/**
