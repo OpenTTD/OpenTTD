@@ -312,7 +312,7 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		v->compatible_roadtypes = rti->powered_roadtypes;
 		v->gcache.cached_veh_length = VEHICLE_LENGTH;
 
-		if (e->flags.Test(EngineFlag::ExclusivePreview)) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+		if (e->flags.Test(EngineFlag::ExclusivePreview)) v->vehicle_flags.Set(VehicleFlag::BuiltAsPrototype);
 		v->SetServiceIntervalIsPercent(Company::Get(_current_company)->settings.vehicle.servint_ispercent);
 
 		AddArticulatedParts(v);

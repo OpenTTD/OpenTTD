@@ -263,7 +263,7 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 
 	/* A vehicle can't be late if its timetable hasn't started.
 	 * If we're setting all vehicles in the group, we handle that below. */
-	if (!apply_to_group && !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return CommandCost(STR_ERROR_TIMETABLE_NOT_STARTED);
+	if (!apply_to_group && !v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) return CommandCost(STR_ERROR_TIMETABLE_NOT_STARTED);
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -273,7 +273,7 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 			TimerGameTick::Ticks most_late = 0;
 			for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
 				/* A vehicle can't be late if its timetable hasn't started. */
-				if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) continue;
+				if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) continue;
 
 				if (u->lateness_counter > most_late) {
 					most_late = u->lateness_counter;
@@ -285,7 +285,7 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 			if (most_late > 0) {
 				for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
 					/* A vehicle can't be late if its timetable hasn't started. */
-					if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) continue;
+					if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) continue;
 
 					u->lateness_counter -= most_late;
 					SetWindowDirty(WC_VEHICLE_TIMETABLE, u->index);
@@ -395,7 +395,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool ti
 
 		for (Vehicle *w : vehs) {
 			w->lateness_counter = 0;
-			ClrBit(w->vehicle_flags, VF_TIMETABLE_STARTED);
+			w->vehicle_flags.Reset(VehicleFlag::TimetableStarted);
 			/* Do multiplication, then division to reduce rounding errors. */
 			w->timetable_start = start_tick + (idx * total_duration / num_vehs);
 
@@ -435,24 +435,24 @@ CommandCost CmdAutofillTimetable(DoCommandFlags flags, VehicleID veh, bool autof
 			/* Start autofilling the timetable, which clears the
 			 * "timetable has started" bit. Times are not cleared anymore, but are
 			 * overwritten when the order is reached now. */
-			SetBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-			ClrBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
+			v->vehicle_flags.Set(VehicleFlag::AutofillTimetable);
+			v->vehicle_flags.Reset(VehicleFlag::TimetableStarted);
 
 			/* Overwrite waiting times only if they got longer */
-			if (preserve_wait_time) SetBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+			if (preserve_wait_time) v->vehicle_flags.Set(VehicleFlag::AutofillPreserveWaitTime);
 
 			v->timetable_start = 0;
 			v->lateness_counter = 0;
 		} else {
-			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-			ClrBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+			v->vehicle_flags.Reset(VehicleFlag::AutofillTimetable);
+			v->vehicle_flags.Reset(VehicleFlag::AutofillPreserveWaitTime);
 		}
 
 		for (Vehicle *v2 = v->FirstShared(); v2 != nullptr; v2 = v2->NextShared()) {
 			if (v2 != v) {
 				/* Stop autofilling; only one vehicle at a time can perform autofill */
-				ClrBit(v2->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-				ClrBit(v2->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+				v2->vehicle_flags.Reset(VehicleFlag::AutofillTimetable);
+				v2->vehicle_flags.Reset(VehicleFlag::AutofillPreserveWaitTime);
 			}
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, v2->index);
 		}
@@ -491,22 +491,22 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		 * the vehicle last arrived at the first destination, update it to the
 		 * current time. Otherwise set the late counter appropriately to when
 		 * the vehicle should have arrived. */
-		just_started = !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
+		just_started = !v->vehicle_flags.Test(VehicleFlag::TimetableStarted);
 
 		if (v->timetable_start != 0) {
 			v->lateness_counter = TimerGameTick::counter - v->timetable_start;
 			v->timetable_start = 0;
 		}
 
-		SetBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
+		v->vehicle_flags.Set(VehicleFlag::TimetableStarted);
 		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 	}
 
-	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
+	if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) return;
 
-	bool autofilling = HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+	bool autofilling = v->vehicle_flags.Test(VehicleFlag::AutofillTimetable);
 	bool remeasure_wait_time = !real_current_order->IsWaitTimetabled() ||
-			(autofilling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME));
+			(autofilling && !v->vehicle_flags.Test(VehicleFlag::AutofillPreserveWaitTime));
 
 	if (travelling && remeasure_wait_time) {
 		/* We just finished travelling and want to remeasure the loading time,
@@ -542,8 +542,8 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		/* If we just started we would have returned earlier and have not reached
 		 * this code. So obviously, we have completed our round: So turn autofill
 		 * off again. */
-		ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-		ClrBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+		v->vehicle_flags.Reset(VehicleFlag::AutofillTimetable);
+		v->vehicle_flags.Reset(VehicleFlag::AutofillPreserveWaitTime);
 	}
 
 	if (autofilling) return;

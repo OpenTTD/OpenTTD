@@ -10,8 +10,24 @@
 #ifndef BASE_CONSIST_H
 #define BASE_CONSIST_H
 
+#include "core/enum_type.hpp"
 #include "order_type.h"
 #include "timer/timer_game_tick.h"
+
+/** Bit numbers in #Vehicle::vehicle_flags. */
+enum class VehicleFlag : uint8_t {
+	LoadingFinished = 0, ///< Vehicle has finished loading.
+	CargoUnloading = 1, ///< Vehicle is unloading cargo.
+	BuiltAsPrototype = 2, ///< Vehicle is a prototype (accepted as exclusive preview).
+	TimetableStarted = 3, ///< Whether the vehicle has started running on the timetable yet.
+	AutofillTimetable = 4, ///< Whether the vehicle should fill in the timetable automatically.
+	AutofillPreserveWaitTime = 5, ///< Whether non-destructive auto-fill should preserve waiting times
+	StopLoading = 6, ///< Don't load anymore during the next load cycle.
+	PathfinderLost = 7, ///< Vehicle's pathfinder is lost.
+	ServiceIntervalIsCustom = 8, ///< Service interval is custom.
+	ServiceIntervalIsPercent = 9, ///< Service interval is percent.
+};
+using VehicleFlags = EnumBitSet<VehicleFlag, uint16_t>;
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
 struct BaseConsist {
@@ -31,7 +47,7 @@ struct BaseConsist {
 	VehicleOrderID cur_real_order_index = 0; ///< The index to the current real (non-implicit) order
 	VehicleOrderID cur_implicit_order_index = 0; ///< The index to the current implicit order
 
-	uint16_t vehicle_flags = 0; ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
+	VehicleFlags vehicle_flags{}; ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
 	virtual ~BaseConsist() = default;
 

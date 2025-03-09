@@ -41,20 +41,6 @@ enum class VehState : uint8_t {
 };
 using VehStates = EnumBitSet<VehState, uint8_t>;
 
-/** Bit numbers in #Vehicle::vehicle_flags. */
-enum VehicleFlags : uint8_t {
-	VF_LOADING_FINISHED,        ///< Vehicle has finished loading.
-	VF_CARGO_UNLOADING,         ///< Vehicle is unloading cargo.
-	VF_BUILT_AS_PROTOTYPE,      ///< Vehicle is a prototype (accepted as exclusive preview).
-	VF_TIMETABLE_STARTED,       ///< Whether the vehicle has started running on the timetable yet.
-	VF_AUTOFILL_TIMETABLE,      ///< Whether the vehicle should fill in the timetable automatically.
-	VF_AUTOFILL_PRES_WAIT_TIME, ///< Whether non-destructive auto-fill should preserve waiting times
-	VF_STOP_LOADING,            ///< Don't load anymore during the next load cycle.
-	VF_PATHFINDER_LOST,         ///< Vehicle's pathfinder is lost.
-	VF_SERVINT_IS_CUSTOM,       ///< Service interval is custom.
-	VF_SERVINT_IS_PERCENT,      ///< Service interval is percent.
-};
-
 /** Bit numbers used to indicate which of the #NewGRFCache values are valid. */
 enum NewGRFCacheValidValues : uint8_t {
 	NCVV_POSITION_CONSIST_LENGTH   = 0, ///< This bit will be set if the NewGRF var 40 currently stored is valid.
@@ -816,13 +802,13 @@ public:
 
 	inline void SetServiceInterval(uint16_t interval) { this->service_interval = interval; }
 
-	inline bool ServiceIntervalIsCustom() const { return HasBit(this->vehicle_flags, VF_SERVINT_IS_CUSTOM); }
+	inline bool ServiceIntervalIsCustom() const { return this->vehicle_flags.Test(VehicleFlag::ServiceIntervalIsCustom); }
 
-	inline bool ServiceIntervalIsPercent() const { return HasBit(this->vehicle_flags, VF_SERVINT_IS_PERCENT); }
+	inline bool ServiceIntervalIsPercent() const { return this->vehicle_flags.Test(VehicleFlag::ServiceIntervalIsPercent); }
 
-	inline void SetServiceIntervalIsCustom(bool on) { AssignBit(this->vehicle_flags, VF_SERVINT_IS_CUSTOM, on); }
+	inline void SetServiceIntervalIsCustom(bool on) { this->vehicle_flags.Set(VehicleFlag::ServiceIntervalIsCustom, on); }
 
-	inline void SetServiceIntervalIsPercent(bool on) { AssignBit(this->vehicle_flags, VF_SERVINT_IS_PERCENT, on); }
+	inline void SetServiceIntervalIsPercent(bool on) { this->vehicle_flags.Set(VehicleFlag::ServiceIntervalIsPercent, on); }
 
 	bool HasFullLoadOrder() const;
 	bool HasConditionalOrder() const;
