@@ -5011,7 +5011,7 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Aluetta ei voi tyhjentää...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... maasto on sopimaton
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... se on jo rakennettu
-STR_ERROR_OWNED_BY                                              :{WHITE}... omistaja: {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}… omistaja on {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alueen omistaa toinen yhtiö
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maanmuokkausraja saavutettu
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruutujen tyhjennysraja saavutettu

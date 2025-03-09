@@ -840,7 +840,7 @@ STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(uendeli
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meldingshistorikk
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En liste over de siste nyhetsmeldingene
-STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING} - {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
 
@@ -935,8 +935,8 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Vis grup
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} aksepter ikke lengre: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} aksepterer nå: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke subsidieres.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie er trukket tilbake:{}{}Transport av {STRING} fra {STRING} til {STRING} subsidieres ikke lenger.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke bli subsidiert
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie er trukket tilbake:{}{}Transport av {STRING} fra {STRING} til {STRING} subsidieres ikke lenger
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidietilbud:{}{}Første transport av {STRING} fra {STRING} til {STRING} vil subsidieres av lokale myndigheter i {UNITS_YEARS_OR_MINUTES}!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidie gitt til {STRING}!{}{}{STRING} fra {STRING} til {STRING} vil gi 50% ekstra betaling neste {UNITS_YEARS_OR_MINUTES}!
@@ -1219,7 +1219,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fiendtlig
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatende (ingen betydning for selskapets handlinger)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen egnet KI tilgjengelig...{}Du kan laste ned flere KI-er fra nettet med spillets nedlastingssystem.
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen egnet KI tilgjengelig...{}{}Du kan laste ned flere KI-er fra nettet med spillets nedlastingssystem.
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Innstillinger
@@ -2273,7 +2273,7 @@ STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Rediger
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Rediger den største fjellhøyden på kartet
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Endre dato: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Endre nåværende år
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillat endring av produksjonsmengder: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillat endring av produksjonsverdier: {ORANGE}{STRING}
 STR_CHEAT_STATION_RATING                                        :{LTBLUE}Lås stasjonsvurdering til 100%: {ORANGE}{STRING}
 
 # Livery window
@@ -2652,7 +2652,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endret navnet sitt til {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ga {CURRENCY_LONG} til {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tjeneren avsluttet spillet
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tjeneren starter på nytt...{}Vennligst vent...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tjeneren starter på nytt...{}{}Vennligst vent...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ble kastet ut. Grunn: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistrering mislykket
@@ -2860,6 +2860,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}År: {OR
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}År: {ORANGE}Til {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Størrelse: {ORANGE}{NUM}x{NUM} ruter
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Godtatte varer: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Varer produsert: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Kant
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Ytterkant
@@ -2904,6 +2905,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Velg vei
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brovalg - klikk på broen du vil ha for å bygge den.
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hengebro, stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Bjelker, stål
@@ -3631,17 +3633,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fant ko
 STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret maskinvogntilstand for '{1:ENGINE}' mens det er utenfor en togstall.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall.
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE} Det endret kjøretøykapasitet for '{1:ENGINE}' når ikke i et depot eller under ombygging
+STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret maskinvogntilstand for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når det er utenfor en togstall
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for ''{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når utenfor en togstall
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Det endret kjøretøykapasitet for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' når ikke i et depot eller under ombygging
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRF-er. Spillet kan bli usynkronisert eller krasje.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare-/ombyggingsinformasjon for '{1:ENGINE}' er forskjellig fra kjøpelisten etter konstruksjonen. Dette kan resultere i at automatisk fornyelse ikke fungerer på riktig måte.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaket en uendelig løkke i produksjonstilbakekallet.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' gir feilaktig informasjon
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare-/ombyggingsinformasjon for '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' er forskjellig fra kjøpelisten etter bygging. Dette kan resultere i at automatisk fornyelse ikke fungerer på riktig måte
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' forårsaket en uendelig løkke i produksjons-callback
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Tilbakekall {1:HEX} rapporterte ukjent/ugyldig resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' ugyldig varetype i produksjonscallback at {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' returnerte ugyldig varetype i produksjons-callback i {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
@@ -4700,54 +4702,55 @@ STR_ORDER_SHIP_DEPOT                                            :Skipsdokk
 ###next-name-looks-similar
 
 STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} nærmeste hangar
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} nærmeste {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Bygg om til {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {STRING} og stopp)
-STR_ORDER_STOP_ORDER                                            :(Stopp)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Bygg om til {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Bygg om til {STRING} og stopp)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Stopp)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Vent for å fjerne klumping)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Vent for å fjerne klumping)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ikke bruke stasjon){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Ubetinget)
+STR_ORDER_IMPLICIT                                              :{WHITE}(Ubetinget)
 
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Full last av alle varetyper)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Full last av minst en varetype)
-STR_ORDER_NO_LOAD                                               :(Ingen lasting)
-STR_ORDER_UNLOAD                                                :(Loss av og last på varer)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Ingen lasting)
+STR_ORDER_UNLOAD                                                :{SPACE}(Loss av og last på varer)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Loss av og vent på full last)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Loss av og vent på første fulle last)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Loss av og forlat tom)
-STR_ORDER_TRANSFER                                              :(Overfør og last på varer)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent på full last)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på første fulle last)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og forlat tom)
-STR_ORDER_NO_UNLOAD                                             :(Ingen lossing og last på varer)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ingen lossing og vent på full last)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ingen lossing og vent på første fulle last)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ingen av og pålasting)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Loss av og forlat tom)
+STR_ORDER_TRANSFER                                              :{SPACE}(Overfør og last på varer)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Overfør og vent på full last)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Overfør og vent på første fulle last)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Overfør og forlat tom)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Ingen lossing og lasting av varer)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Ingen lossing eller venting på full last)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Ingen lossing eller venting på første fulle last)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{WHITE}(Ingen av og pålasting)
 
-STR_ORDER_AUTO_REFIT                                            :(Ombygging til {STRING})
+STR_ORDER_AUTO_REFIT                                            :{WHITE}(Ombygging til {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Full last med ombygging til {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Full last av minst en varetype med ombygging til {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Loss av og ta last med ombygging til {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Loss av og last på med ombygging til {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Loss av og vent på full last med ombygging til {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Loss av og vent på første fulle last med ombygging til {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Overfør og last på varer med ombygging til {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Overfør og vent på full last med ombygging til {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Overfør og vent på første fulle last med ombygging til {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ingen lossing og last på varer med ombygging til {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ingen lossing og vent på full last med ombygging til {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ingen lossing og vent på første fulle last med ombygging til {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Overfør og last på varer med ombygging til {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Overfør og vent på full last med ombygging til {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Overfør og vent på første fulle last med ombygging til {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{WHITE}(Ingen lossing og lasting av varer med ombygging til {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Ingen lossing eller venting på full last med ombygging til {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Ingen lossing eller venting på første fulle last med ombygging til {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :tilgjengelige varetyper
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[nærenden]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[bortenden]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[nærmeste ende]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[midten]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[bortre ende]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Neste destinasjon er utenfor rekkevidde)
 
@@ -4772,8 +4775,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Reise i {STRING
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING} med inntil {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reise (i {STRING}, ikke oppsatt i rutetabell)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reise (i {STRING}, ikke oppsatt i rutetabell) med høyst {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(opphold i {STRING}, ikke oppsatt i rutetabell)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(reise for {STRING}, ikke oppsatt med rutetabell)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(opphold i {STRING}, ikke oppsatt i rutetabell)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(reise for {STRING}, ikke oppsatt med rutetabell)
 STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
 
@@ -4906,8 +4909,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Høydeka
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Oversiktskart skjermbilde
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :KI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}KI-parametere
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Game Script-parametere
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lukk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakestill
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4968,7 +4971,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spillet ble lagret i en versjon uten støtte for trikk. Alle trikker har blitt fjernet.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartgenerering avbrutt...{}... ingen passende steder å plassere byer
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartgenerering avbrutt...{}{}... ingen passende steder å plassere byer
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det er ingen by i dette scenarioet
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kunne ikke laste landskap fra PNG...
@@ -5010,7 +5013,7 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bygninge
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan ikke rydde dette området...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...{NBSP}feltet er uegnet
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... allerede bygget
-STR_ERROR_OWNED_BY                                              :{WHITE}...{NBSP}eies av {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}... eid av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området eies av et annet selskap
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... grense for landskapsendring er nådd
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruterensingens grense nådd
@@ -5059,7 +5062,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...{NBSP
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...{NBSP}for mange byer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det er ikke mer plass på kartet
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Veiarbeid i gang
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke fjerne denne byen...{}En stasjon eller garasje/stall/hangar/dokk henviser til byen eller en byeid rute som ikke kan fjernes
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke fjerne denne byen...{}{}En stasjon eller et depot er knyttet til byen eller en rute eid av byen som ikke kan fjernes
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passende steder for en statue i sentrum av denne byen
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Kan ikke bygge hus...
 

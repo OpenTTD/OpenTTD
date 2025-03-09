@@ -291,7 +291,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka o
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan upp/ned
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan höger/vänster
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 
 # Show engines button
 ###length VEHICLE_TYPES
@@ -1021,6 +1021,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk rupi
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringgit
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lettiska Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugisisk escudo
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainsk hryvnia
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Spara automatiskt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
@@ -1214,7 +1215,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 STR_CITY_APPROVAL_PERMISSIVE                                    :Tillåtande (ingen effekt på företags handlingar)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande datorspelare finns tillgänglig...{}Du kan ladda ner ett flertal datorspelare via 'Online Content'-systemet
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande datorspelare finns tillgänglig...{}{}Du kan ladda ner ett flertal datorspelare via systemet för 'online-innehåll'
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Inställningar
@@ -1983,7 +1984,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Förbjuden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillåten, vanlig stads-layout
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Placering av individuella hus i städer: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Om denna inställning aktiveras blir det möjligt för spelare att manuellt placera ut hus i städer
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Förbjuden
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Tillåten
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Tillåten, färdigbyggda
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Fraktgods som genereras i staden: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hur mycket fraktgods som produceras av hus i städer, i förhållande till den totala befolkningen i staden.{}Kvadratisk tillväxt: En dubbelt så stor stad genererar fyra gånger så många passagerare.{}Linjär tillväxt: En dubbelt så stor stad genererar dubbelt så många passagerare
@@ -1994,10 +2000,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linjär
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering av träd i spelläge: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrollera den slumpmässiga uppkomsten av träd under spelets gång. Detta kan påverka industrier som är beroende av växande träd, till exempel sågverk
 ###length 4
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Växer, men sprids ej {RED}(sågverk fungerar inte)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Växer, men sprids endast i regnskogar
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Växer och sprids överallt
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Växer ej, sprids ej {RED}(sågverk fungerar inte)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Växer, men sprider sig ej {RED}(sågverk fungerar inte)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Växer, men sprider sig endast i regnskogar
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Växer och sprider sig överallt
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Växer ej, sprider sig ej {RED}(sågverk fungerar inte)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Verktygsradens position: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Verktygsradens horisontella position i skärmens överkant
@@ -2197,7 +2203,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Bästa s
 STR_INTRO_HELP                                                  :Hjälp & Manualer
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Inställningar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-inställningar
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera online-innehåll
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online-innehåll
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-inställningar
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Spelskriptinställningar
 STR_INTRO_QUIT                                                  :{BLACK}Avsluta
@@ -2246,6 +2252,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Manual
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Ändringshistorik
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Kända buggar
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licens
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Typsnitt
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Rapportera en bugg
@@ -2256,7 +2263,7 @@ STR_CHEATS                                                      :{WHITE}Sandbox-
 STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelar som företag:: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (ta bort industrier, oflyttbara objekt etc.): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnlar får korsa varandra: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplan kommer inte att störta (frekvent) på små flygplatser: {ORANGE} {STRING}
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Ändra maximal karthöjd: {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Ändra maximal höjd för berg på kartan
@@ -2634,13 +2641,14 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :väntar på upp
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lämnar
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har gått med i spelet
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har gått med i spelet (Klient #{NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} har gått med i {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har gått med som åskådare
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har startat ett nytt företag (#{NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har lämnat spelet ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har ändrat sitt namn till {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav {CURRENCY_LONG} till {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servern avslutade sessionen
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern startar om...{}Var vänlig vänta...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern startar om...{}{}Var vänlig vänta...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} kastades ut. Orsak: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Serverregistrering misslyckades
@@ -2649,7 +2657,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Din serv
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andra spelare kommer ej ha möjlighet att ansluta till din server
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Nedladdning av innehåll
+STR_CONTENT_TITLE                                               :{WHITE}Online-innehåll
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Typ av innehåll
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Namn
@@ -2835,7 +2843,7 @@ STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Välj en bussta
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Välj vilken klass av laststationer som ska visas
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Välj en laststationstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Välj vilken klass av objekt som ska visas
-STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Välj en objektstyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Välj en objektstyp att bygga. Ctrl+klicka för att lägga till eller ta bort i sparade objekt. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Välj vilken stadszon som ska visas
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Välj en hustyp att bygga. Ctrl+Klick för att lägga till eller ta bort i sparade objekt
 
@@ -2855,6 +2863,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Yttrerförorter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Innerförorter
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Stadskärnan
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Förhindra uppgraderingar
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Välj huruvida detta hus ska skyddas från att ersättas i samband med att staden växer
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Av
+STR_HOUSE_PICKER_PROTECT_ON                                     :På
 
 STR_STATION_CLASS_DFLT                                          :Original
 STR_STATION_CLASS_DFLT_STATION                                  :Standardstation
@@ -2888,6 +2900,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Välj v�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Välj bro - klicka på önskad bro för att bygga den
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hängbro, stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balkbro, stål
@@ -2946,7 +2959,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Välj ri
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Farledskonstruktion
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Farled
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler. Håll även in Shift för att endast visa uppskattad kostnad
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bygg slussar. Håll även in Shift för att endast visa uppskattad kostnad
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skeppsvarv (för köp och service av skepp). Håll även in Shift för att endast visa uppskattad kostnad
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg hamn. Ctrl+Klick för att välja en annan station att sammanlänka. Håll även in Shift för att endast visa uppskattad kostnad
@@ -2991,9 +3004,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Generera
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsplanering
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sänk ett hörn av marken. Klick+Drag för att sänka det förstvalda hörnet och utjämna vald yta till det nya hörnets höjd. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sänk ett hörn av marken. Klicka+dra för att sänka det först valda hörnet och utjämna vald yta till det nya hörnets höjd. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj ett hörn av marken. Klick+Drag för att höja det förstvalda hörnet och utjämna vald yta till det nya hörnets höjd. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna ett markområde till höjden av det förstvalda hörnet. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna ett markområde till höjden av det först valda hörnet. Ctrl+klicka+dra för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning. Ctrl+Klick+Drag för att välja ytan diagonalt. Håll även in Shift för att endast visa uppskattad kostnad
 
 # Object construction window
@@ -3131,6 +3144,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Spårvag
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Hastighetsgräns för järnvägsspår: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Hastighetsbegränsning på väg: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Hastighetsgräns för spårvagnar: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Staden kan uppgradera: {LTBLUE}Ja
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Staden kan uppgradera: {LTBLUE}Nej
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Stenar
@@ -3139,6 +3154,8 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Barmark
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gräs
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fält
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Öken
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Snötäckta stenblock
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Snötäckt gräs
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Järnvägsspår
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Järnvägsspår med normal signal
@@ -3610,13 +3627,13 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Hittade
 STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade filer
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
+STR_NEWGRF_BROKEN                                               :{WHITE}Beteendet hos NewGRF:en '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' kommer troligen orsaka desynkronisering och/eller krascher
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Power wagon-tillstånd för '{1:ENGINE}' ändrades utanför en depå
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depå
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Kapaciteten ändrades för '{1:ENGINE}' utan att vara i depå eller anpassning
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåget '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' ger felaktig information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en oändlig loop i en produktions-callback-funktion
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktion {1:HEX} returnerade ett okänt/ogiltligt resultat {2:HEX}
@@ -4017,6 +4034,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Producer
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Kräver:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} väntar{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} väntar
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ändra produktion (produkt av 8, upp till 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ändra produktionsnivå (procent, upp till 800%)
@@ -4674,54 +4695,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Vägfordonsdep�
 STR_ORDER_SHIP_DEPOT                                            :Skeppsdepå
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} den närmsta hangaren
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} den närmsta {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Anpassa för {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Anpassa för {STRING} och stanna)
-STR_ORDER_STOP_ORDER                                            :(Stanna)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Anpassa för {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Anpassa för {STRING} och stanna)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Stanna)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Invänta utglesning)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Invänta utglesning)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan ej använda stationen){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Underförstådd)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Underförstådd)
 
-STR_ORDER_FULL_LOAD                                             :(Full last)
-STR_ORDER_FULL_LOAD_ANY                                         :(Full last någon godstyp)
-STR_ORDER_NO_LOAD                                               :(Ingen lastning)
-STR_ORDER_UNLOAD                                                :(Lasta av och lasta gods)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lasta av och vänta på full last)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lasta av och vänta på någon full last)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Lasta av och lämna tom)
-STR_ORDER_TRANSFER                                              :(Överför och lasta gods)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Överför och vänta på full last)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Överför och vänta på full last av någon godstyp)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Överför och lämna tom)
-STR_ORDER_NO_UNLOAD                                             :(Lasta ej av men lasta på)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Lasta ej av men vänta på full last)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Lasta ej av men vänta på full last av någon godstyp)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Lasta ej av och lasta ej)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Full last)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Full last någon godstyp)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Ingen lastning)
+STR_ORDER_UNLOAD                                                :{SPACE}(Lasta av och lasta gods)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Lasta av och vänta på full last)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Lasta av och vänta på full last av någon godstyp)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Lasta av och lämna tom)
+STR_ORDER_TRANSFER                                              :{SPACE}(Överför och lasta gods)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Överför och vänta på full last)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Överför och vänta på full last av någon godstyp)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Överför och lämna tom)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Lasta ej av men lasta på)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Lasta ej av men vänta på full last)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Lasta ej av men vänta på full last av någon godstyp)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Lasta ej av och lasta ej)
 
-STR_ORDER_AUTO_REFIT                                            :(Auto-anpassa till {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Vänta på full last och auto-anpassa till {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Vänta på full last av någon godstyp och auto-anpassa till {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Lasta av och på gods. Auto-anpassa till {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Lasta av och vänta på full last. Auto-anpassa till {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Lasta av och vänta på full last av någon godstyp. Auto-anpassa till {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Överför och lasta gods. Auto-anpassa till {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Överför och vänta på full last. Auto-anpassa till {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Överför och vänta på full last av någon godstyp. Auto-anpassa till {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Lasta ej av men lasta på och auto-anpassa till {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Lasta ej av men vänta på full last och auto-anpassa till {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Lasta ej av men vänta på full last av någon godstyp och auto-anpassa till {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Auto-anpassa till {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Vänta på full last och auto-anpassa till {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Vänta på full last av någon godstyp och auto-anpassa till {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Lasta av och på gods. Auto-anpassa till {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Lasta av och vänta på full last. Auto-anpassa till {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Lasta av och vänta på full last av någon godstyp. Auto-anpassa till {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Överför och lasta gods. Auto-anpassa till {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Överför och vänta på full last. Auto-anpassa till {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Överför och vänta på full last av någon godstyp. Auto-anpassa till {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Lasta ej av men lasta på och auto-anpassa till {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Lasta ej av men vänta på full last och auto-anpassa till {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Lasta ej av men vänta på full last av någon godstyp och auto-anpassa till {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :tillgänglig last
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[början]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[mitten]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[slutet]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[början]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[mitten]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[slutet]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nästa destination är utanför räckvidden)
 
@@ -4746,8 +4769,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Res i {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Res i {STRING} med högsta hastighet {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Resor (för {STRING}, ej schemalagd)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Resor (för {STRING}, ej schemalagd) med högst {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stanna {STRING}, ej schemalagd)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(resor för {STRING}, ej schemalagd)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(stanna {STRING}, ej schemalagd)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(resor för {STRING}, ej schemalagd)
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
 
@@ -4768,12 +4791,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekunder tills 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra tid
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra hur lång tid den markerade ordern bör ta. Ctrl+Klick för att ställa in tiden för alla ordrar
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Ändra tid
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Rensa tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Ta bort tidsbegränsningen för den markerade ordern. Ctrl+Klick för att ta bort tidsbegränsningen för alla ordrar
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ändra hastighetsgräns
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ändra den maximala hastigheten för den markerade ordern. Ctrl+Klick ställer in hastigheten för alla ordrar
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Ändra hastighetsgräns
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Rensa hastighetsgräns
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Ta bort hastighetsbegränsningen för den markerade ordern. Ctrl+Klick för att ta bort hastighetsbegränsningen för alla ordrar
@@ -4878,8 +4903,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Skärmdu
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Skärmdump av miniatyrkartan
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :Datorspelare
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spelskript
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametrar för datorspelare
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parametrar för spelskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4969,6 +4994,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skärmdu
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Meddelande
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Meddelande från {COMPANY}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Utanför kanten
@@ -4987,6 +5013,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... land
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutrensningsbegränsning uppnådd
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... trädplanteringsbegränsning uppnådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet måste vara unikt
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} i vägen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Inte tillåtet när spelet är pausat
 
 # Local authority errors
@@ -5285,7 +5312,7 @@ STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan inte
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan inte skicka flygplan till hangar...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan inte köpa järnvägfordon...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan inte köpa järnvägsfordon...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan inte köpa vägfordon...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan inte köpa skepp...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan inte köpa flygplan...
@@ -5297,12 +5324,16 @@ STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan inte
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan inte byta namn på flygplanstyp...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan inte sälja järnvägfordon...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan inte sälja järnvägsfordon...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan inte sälja vägfordon...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan inte sälja skepp...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan inte sälja flygplan...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Kan inte sälja alla järnvägsfordon...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kan inte sälja alla vägfordon...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan inte sälja alla skepp...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Kan inte sälja alla flygplan...
 
 ###length VEHICLE_TYPES
 
@@ -5886,3 +5917,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}

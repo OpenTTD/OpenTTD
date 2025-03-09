@@ -5011,7 +5011,7 @@ STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须�
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}无法清除这个区域……
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}……地点不合适
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}……已经建成
-STR_ERROR_OWNED_BY                                              :{WHITE}……所有者是 {STRING}
+STR_ERROR_OWNED_BY                                              :{WHITE}……由 {STRING} 所有
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}……此区域由另一公司所有
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}……已达地形限制
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}……已达地块清理限制
