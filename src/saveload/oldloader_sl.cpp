@@ -939,7 +939,7 @@ static bool LoadOldCompanyEconomy(LoadgameState &ls, int)
 static const OldChunks _company_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
 	OCL_SVAR( OC_UINT32, Company, name_2 ),
-	OCL_SVAR( OC_UINT32, Company, face ),
+	OCL_SVAR( OC_UINT32, Company, face.bits ),
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id_2 ),
 	OCL_SVAR( OC_UINT32, Company, president_name_2 ),
 
@@ -992,9 +992,9 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 
 	if (_savegame_type == SGT_TTO) {
 		/* adjust manager's face */
-		if (HasBit(c->face, 27) && GB(c->face, 26, 1) == GB(c->face, 19, 1)) {
+		if (HasBit(c->face.bits, 27) && GB(c->face.bits, 26, 1) == GB(c->face.bits, 19, 1)) {
 			/* if face would be black in TTD, adjust tie colour and thereby face colour */
-			ClrBit(c->face, 27);
+			ClrBit(c->face.bits, 27);
 		}
 
 		/* Company name */

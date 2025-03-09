@@ -1625,7 +1625,17 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_49)) for (Company *c : Company::Iterate()) c->face = ConvertFromOldCompanyManagerFace(c->face);
+	if (IsSavegameVersionBefore(SLV_49)) {
+		/* Perform conversion of very old face bits. */
+		for (Company *c : Company::Iterate()) {
+			c->face = ConvertFromOldCompanyManagerFace(c->face.bits);
+		}
+	} else if (IsSavegameVersionBefore(SLV_FACE_STYLES)) {
+		/* Convert old gender and ethnicity bits to face style. */
+		for (Company *c : Company::Iterate()) {
+			c->face.style = GB(c->face.bits, 0, 2);
+		}
+	}
 
 	if (IsSavegameVersionBefore(SLV_52)) {
 		for (auto t : Map::Iterate()) {
