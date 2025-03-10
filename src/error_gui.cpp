@@ -337,7 +337,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 			if (wl == WL_CRITICAL) {
 				/* Push another critical error in the queue of errors,
 				 * but do not put other errors in the queue. */
-				_error_list.push_back(data);
+				_error_list.push_back(std::move(data));
 			}
 			return;
 		}

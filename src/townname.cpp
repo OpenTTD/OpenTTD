@@ -109,7 +109,7 @@ bool VerifyTownName(uint32_t r, const TownNameParams *par, TownNames *town_names
 
 	if (town_names != nullptr) {
 		if (town_names->find(name) != town_names->end()) return false;
-		town_names->insert(name);
+		town_names->insert(std::move(name));
 	} else {
 		for (const Town *t : Town::Iterate()) {
 			/* We can't just compare the numbers since

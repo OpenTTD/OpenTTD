@@ -557,7 +557,7 @@ LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc &desc, int window_number
  */
 void LinkGraphLegendWindow::SetOverlay(std::shared_ptr<LinkGraphOverlay> overlay)
 {
-	this->overlay = overlay;
+	this->overlay = std::move(overlay);
 	CompanyMask companies = this->overlay->GetCompanyMask();
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (!this->IsWidgetDisabled(WID_LGL_COMPANY_FIRST + c)) {

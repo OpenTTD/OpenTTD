@@ -82,7 +82,7 @@ void MoveBuoysToWaypoints()
 		Waypoint *wp   = new (index) Waypoint(xy);
 		wp->town       = town;
 		wp->string_id  = train ? STR_SV_STNAME_WAYPOINT : STR_SV_STNAME_BUOY;
-		wp->name       = name;
+		wp->name       = std::move(name);
 		wp->delete_ctr = 0; // Just reset delete counter for once.
 		wp->build_date = build_date;
 		wp->owner      = train ? GetTileOwner(xy) : OWNER_NONE;

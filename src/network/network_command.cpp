@@ -212,7 +212,7 @@ void NetworkSendCommand(Commands cmd, StringID err_message, CommandCallback *cal
 		c.frame = _frame_counter_max + 1;
 		c.my_cmd = true;
 
-		_local_wait_queue.push_back(c);
+		_local_wait_queue.push_back(std::move(c));
 		return;
 	}
 

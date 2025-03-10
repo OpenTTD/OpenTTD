@@ -86,7 +86,7 @@ public:
 	 */
 	[[nodiscard]] IntervalTimer(const TPeriod interval, std::function<void(uint)> callback) :
 		BaseTimer<TTimerType>(interval),
-		callback(callback)
+		callback(std::move(callback))
 	{
 	}
 
@@ -130,7 +130,7 @@ public:
 	[[nodiscard]] TimeoutTimer(const TPeriod timeout, std::function<void()> callback, bool start = false) :
 		BaseTimer<TTimerType>(timeout),
 		fired(!start),
-		callback(callback)
+		callback(std::move(callback))
 	{
 	}
 

@@ -123,7 +123,7 @@ void TCPConnecter::Connect(addrinfo *address)
 		return;
 	}
 
-	this->sock_to_address[sock] = network_address;
+	this->sock_to_address[sock] = std::move(network_address);
 	this->sockets.push_back(sock);
 }
 

@@ -124,7 +124,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
 		}
 		CheckForMissingGlyphs();
-		_fcsettings = backup;
+		_fcsettings = std::move(backup);
 	} else {
 		InitFontCache(true);
 	}

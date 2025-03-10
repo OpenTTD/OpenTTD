@@ -147,7 +147,7 @@ Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(s
 			if (line.layout == nullptr) {
 				GetLayouter<ICUParagraphLayoutFactory>(line, str_line, state);
 				if (line.layout == nullptr) {
-					state = old_state;
+					state = std::move(old_state);
 				}
 			}
 #endif
@@ -156,7 +156,7 @@ Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(s
 			if (line.layout == nullptr) {
 				GetLayouter<UniscribeParagraphLayoutFactory>(line, str_line, state);
 				if (line.layout == nullptr) {
-					state = old_state;
+					state = std::move(old_state);
 				}
 			}
 #endif
@@ -165,7 +165,7 @@ Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(s
 			if (line.layout == nullptr) {
 				GetLayouter<CoreTextParagraphLayoutFactory>(line, str_line, state);
 				if (line.layout == nullptr) {
-					state = old_state;
+					state = std::move(old_state);
 				}
 			}
 #endif

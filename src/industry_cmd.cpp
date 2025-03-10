@@ -2005,7 +2005,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	/* 2. Built-in checks on industry tiles. */
 	std::vector<ClearedObjectArea> object_areas(_cleared_object_areas);
 	ret = CheckIfIndustryTilesAreFree(tile, layout, type);
-	_cleared_object_areas = object_areas;
+	_cleared_object_areas = std::move(object_areas);
 	if (ret.Failed()) return ret;
 
 	/* 3. NewGRF-defined checks on industry level. */

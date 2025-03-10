@@ -19,7 +19,7 @@ struct LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LoadFilter(std::shared_ptr<LoadFilter> chain) : chain(chain)
+	LoadFilter(std::shared_ptr<LoadFilter> chain) : chain(std::move(chain))
 	{
 	}
 
@@ -62,7 +62,7 @@ struct SaveFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	SaveFilter(std::shared_ptr<SaveFilter> chain) : chain(chain)
+	SaveFilter(std::shared_ptr<SaveFilter> chain) : chain(std::move(chain))
 	{
 	}
 

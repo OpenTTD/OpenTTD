@@ -915,7 +915,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
 	this->SetInfo(ci);
 	ci->join_date = TimerGameEconomy::date;
-	ci->client_name = client_name;
+	ci->client_name = std::move(client_name);
 	ci->client_playas = playas;
 	ci->public_key = this->peer_public_key;
 	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, ci->client_playas, ci->index);
@@ -1130,7 +1130,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 
 	if (GetCommandFlags(cp.cmd).Test(CommandFlag::ClientID)) NetworkReplaceCommandClientId(cp, this->client_id);
 
-	this->incoming_queue.push_back(cp);
+	this->incoming_queue.push_back(std::move(cp));
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -1430,7 +1430,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 		/* Display change */
 		if (NetworkMakeClientNameUnique(client_name)) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, client_name);
-			ci->client_name = client_name;
+			ci->client_name = std::move(client_name);
 			NetworkUpdateClientInfo(ci->client_id);
 		}
 	}

@@ -90,16 +90,16 @@ static const size_t MEMORY_CHUNK_SIZE = 128 * 1024;
 /** A buffer for reading (and buffering) savegame data. */
 struct ReadBuffer {
 	uint8_t buf[MEMORY_CHUNK_SIZE]; ///< Buffer we're going to read from.
-	uint8_t *bufp;                  ///< Location we're at reading the buffer.
-	uint8_t *bufe;                  ///< End of the buffer we can read from.
-	std::shared_ptr<LoadFilter> reader; ///< The filter used to actually read.
-	size_t read;                 ///< The amount of read bytes so far from the filter.
+	uint8_t *bufp = nullptr; ///< Location we're at reading the buffer.
+	uint8_t *bufe = nullptr; ///< End of the buffer we can read from.
+	std::shared_ptr<LoadFilter> reader{}; ///< The filter used to actually read.
+	size_t read = 0; ///< The amount of read bytes so far from the filter.
 
 	/**
 	 * Initialise our variables.
 	 * @param reader The filter to actually read data.
 	 */
-	ReadBuffer(std::shared_ptr<LoadFilter> reader) : bufp(nullptr), bufe(nullptr), reader(reader), read(0)
+	ReadBuffer(std::shared_ptr<LoadFilter> reader) : reader(std::move(reader))
 	{
 	}
 
@@ -978,7 +978,7 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 		it += len;
 	}
 
-	str = result;
+	str = std::move(result);
 }
 
 /**
@@ -1903,7 +1903,7 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 					}
 
 					/* We don't know this field, so read to nothing. */
-					saveloads.push_back({key, saveload_type, ((VarType)type & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SL_MIN_VERSION, SL_MAX_VERSION, nullptr, 0, handler});
+					saveloads.push_back({std::move(key), saveload_type, ((VarType)type & SLE_FILE_TYPE_MASK) | SLE_VAR_NULL, 1, SL_MIN_VERSION, SL_MAX_VERSION, nullptr, 0, std::move(handler)});
 					continue;
 				}
 
@@ -2394,7 +2394,7 @@ struct LZOLoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LZOLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain)
+	LZOLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain))
 	{
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
 	}
@@ -2441,7 +2441,7 @@ struct LZOSaveFilter : SaveFilter {
 	 * Initialise this filter.
 	 * @param chain             The next filter in this chain.
 	 */
-	LZOSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t) : SaveFilter(chain)
+	LZOSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t) : SaveFilter(std::move(chain))
 	{
 		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
@@ -2481,7 +2481,7 @@ struct NoCompLoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	NoCompLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain)
+	NoCompLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain))
 	{
 	}
 
@@ -2497,7 +2497,7 @@ struct NoCompSaveFilter : SaveFilter {
 	 * Initialise this filter.
 	 * @param chain             The next filter in this chain.
 	 */
-	NoCompSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t) : SaveFilter(chain)
+	NoCompSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t) : SaveFilter(std::move(chain))
 	{
 	}
 
@@ -2523,7 +2523,7 @@ struct ZlibLoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	ZlibLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain)
+	ZlibLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain))
 	{
 		memset(&this->z, 0, sizeof(this->z));
 		if (inflateInit(&this->z) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
@@ -2568,7 +2568,7 @@ struct ZlibSaveFilter : SaveFilter {
 	 * @param chain             The next filter in this chain.
 	 * @param compression_level The requested level of compression.
 	 */
-	ZlibSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(chain)
+	ZlibSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(std::move(chain))
 	{
 		memset(&this->z, 0, sizeof(this->z));
 		if (deflateInit(&this->z, compression_level) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
@@ -2652,7 +2652,7 @@ struct LZMALoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LZMALoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(chain), lzma(_lzma_init)
+	LZMALoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain)), lzma(_lzma_init)
 	{
 		/* Allow saves up to 256 MB uncompressed */
 		if (lzma_auto_decoder(&this->lzma, 1 << 28, 0) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
@@ -2696,7 +2696,7 @@ struct LZMASaveFilter : SaveFilter {
 	 * @param chain             The next filter in this chain.
 	 * @param compression_level The requested level of compression.
 	 */
-	LZMASaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(chain), lzma(_lzma_init)
+	LZMASaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(std::move(chain)), lzma(_lzma_init)
 	{
 		if (lzma_easy_encoder(&this->lzma, compression_level, LZMA_CHECK_CRC32) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
@@ -2988,7 +2988,7 @@ static SaveOrLoadResult DoSave(std::shared_ptr<SaveFilter> writer, bool threaded
 	assert(!_sl.saveinprogress);
 
 	_sl.dumper = std::make_unique<MemoryDumper>();
-	_sl.sf = writer;
+	_sl.sf = std::move(writer);
 
 	_sl_version = SAVEGAME_VERSION;
 
@@ -3019,7 +3019,7 @@ SaveOrLoadResult SaveWithFilter(std::shared_ptr<SaveFilter> writer, bool threade
 {
 	try {
 		_sl.action = SLA_SAVE;
-		return DoSave(writer, threaded);
+		return DoSave(std::move(writer), threaded);
 	} catch (...) {
 		ClearSaveLoadState();
 		return SL_ERROR;
@@ -3077,7 +3077,7 @@ static const SaveLoadFormat *DetermineSaveLoadFormat(uint32_t tag, uint32_t raw_
  */
 static SaveOrLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check)
 {
-	_sl.lf = reader;
+	_sl.lf = std::move(reader);
 
 	if (load_check) {
 		/* Clear previous check data */
@@ -3179,7 +3179,7 @@ SaveOrLoadResult LoadWithFilter(std::shared_ptr<LoadFilter> reader)
 {
 	try {
 		_sl.action = SLA_LOAD;
-		return DoLoad(reader, false);
+		return DoLoad(std::move(reader), false);
 	} catch (...) {
 		ClearSaveLoadState();
 		return SL_REINIT;
