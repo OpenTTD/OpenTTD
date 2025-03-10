@@ -3749,7 +3749,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Inga -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klicka på målet för att centrera huvudvyn på industrin/byn/rutan. Ctrl+Klick för att öppna en ny fönstervy över industrin/byn/rutan
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klicka på målet för att centrera huvudvyn på industrin/byn/rutan. Ctrl+klicka för att öppna en ny fönstervy över industrin/byn/rutan
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Fråga
@@ -3785,7 +3785,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Inga -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Redan subventionerade rutter:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} från {STRING} till {STRING}{YELLOW} ({COMPANY}{YELLOW}, {STRING})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klicka på service för att centrera huvudvyn på industrin/staden. Ctrl+Klick för att öppna en ny fönstervy över industrins/stadens läge
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klicka på service för att centrera huvudvyn på industrin/staden. Ctrl+klicka för att öppna en ny fönstervy över industrins/stadens läge
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :per den {DATE_SHORT}
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :inom {UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :tills {DATE_SHORT}
@@ -3888,7 +3888,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindra f
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera huvudvyn på riktmärket. Ctrl+Klick för att öppna en ny fönstervy över riktmärkets läge
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på riktmärke
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på bojen. Ctrl+Klick för att öppna en ny skärmvy över bojens läge
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på bojen. Ctrl+klicka för att öppna en ny skärmvy över bojens läge
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Ändra namn på boj
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på riktmärke
@@ -4298,7 +4298,7 @@ STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Köp en 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrera huvudvyn ovanför depån. Ctrl+Klick för att öppna en ny fönstervy över tågdepåns läge
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrera huvudvyn ovanför vägfordonsdepån. Ctrl+Klick för att öppna en ny fönstervy över vägfordonsdepåns läge
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrera huvudvyn ovanför skeppsdepån. Ctrl+Klick för att öppna en ny fönstervy över skeppsdepåns läge
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrera huvudvyn ovanför hangaren. Ctrl+Klick för att öppna en ny skärmvy över hangarens läge
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrera huvudvyn ovanför hangaren. Ctrl+klicka för att öppna en ny skärmvy över hangarens läge
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Visa en lista med alla tåg som har denna depå i sitt körschema
@@ -4844,9 +4844,9 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Matcha V
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Slå på/av matchning av VERSALER/gemener när datorspelares loggmeddelanden jämförs mot brytsträngen
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsätt
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Opausa och låt datorspelaren fortsätta
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visa felsökningsutskrifter för denna datorspelare. Ctrl+Klick för att öppna i ett nytt fönster
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visa felsökningsutskrifter för denna datorspelare. Ctrl+klicka för att öppna i ett nytt fönster
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spelskript
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visa felsökningsutskrifter för spelskript. Ctrl+Klick för att öppna i ett nytt fönster
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visa felsökningsutskrifter för spelskript. Ctrl+klicka för att öppna i ett nytt fönster
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande datorspelare hittades.{}Denna datorspelare är en test-datorspelare och kommer inte göra någonting.{}Du kan ladda ner nya datorspelare genom spelets 'Online-innehåll'-system
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ett av skripten som körs har kraschat. Vänligen rapportera detta till datorspelarens skapare med en skärmdump av förstret 'Felsökning av datorspelare / spelskript'

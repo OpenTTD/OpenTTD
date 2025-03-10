@@ -791,7 +791,7 @@ STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Estaciones de camiones
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Estaciones de autobuses
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aeropuertos y helipuertos
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Muelle
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Muelles
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Suelo rugoso
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Pasto
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreno árido
@@ -1054,7 +1054,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Intentar
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Esta configuración solo tendrá efecto después de reiniciar el juego
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Sincronización vertical
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Activar la sincronización vertical de pantalla (v-sync). Se debe activar la aceleración por hardware y reiniciar el juego y reiniciar el juego para que el cambio surta efecto
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Activar la sincronización vertical de pantalla (v-sync). Se debe activar la aceleración por hardware y reiniciar el juego para que el cambio surta efecto
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
@@ -1089,11 +1089,11 @@ STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM} Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Las frecuencias mayores a 60 Hz pueden alterar el rendimiento.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Elegir los gráficos base (no pueden cambiarse en la partida, solo desde el menú principal)
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Elegir el paquete de gráficos base. Solo pueden cambiarse desde el menú principal
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre los gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sonidos base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Elegir los sonidos base (no pueden cambiarse en la partida, solo desde el menú principal)
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Elegir el paquete de sonidos base. Solo pueden cambiarse desde el menú principal
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre los sonidos base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Música base
@@ -2966,7 +2966,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canales
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canal. Clic y arrastrar selecciona un área en diagonal. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir esclusa. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir astillero (para comprar y dar mantenimiento a barcos). Mayús+Clic solo muestra un costo estimado
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelles. Ctrl+Clic activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir muelle. Ctrl+Clic activa la ampliación de estaciones. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Colocar boya y utilizarla como punto de ruta marítimo. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir acueducto. Mayús+Clic solo muestra un costo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Construir canal. Ctrl+Clic en un área a nivel del mar la inunda con agua marina

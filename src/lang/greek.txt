@@ -602,9 +602,9 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλ�
 STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Ρυθμός εμφάνισης καρέ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής στοιχεών
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής sprites
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Εναλλαγή πλαισίου οριοθέτησης
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Εναλλαγή χρωματισμού λερωμένων τετραγωνίδιων
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Εναλλαγή χρωματισμού βρώμικων τετραγωνίδιων
 STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Εναλλαγή περιγραμμάτων γραφικών στοιχείων
 
 ###length 31
@@ -1391,7 +1391,7 @@ STR_CONFIG_SETTING_RUNNING_COSTS                                :Λειτουρ�
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Θέτει το επίπεδο συντήρησης και τα λειτουργικά έξοδα των οχημάτων και της υποδομής
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Ταχύτητα οικοδόμησης: {STRING}
-STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από τα ΑΙ
+STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Περιορίζει το ποσοστό των οικοδομήμσεων από την ΤΝ
 
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Βλάβες οχημάτων: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Ελέγχει πόσο συχνά παθαίνουν βλάβες τα ανεπαρκώς συντηρημένα οχήματα
@@ -4934,36 +4934,36 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Επιλ
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
+STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση ΤΝ και δέσμης ενεργειών παιχνιδιού
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (έκδοση {NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Όνομα δέσμης ενεργειών
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ρυθμίσεις
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων της δέσμης ενεργειών
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Επαναφόρτωση AI
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε την AI, ξαναφορτώστε τη δέσμη ενεργειών και επανεκκινήστε την AI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/απενεργοποίηση παύσης όταν μια καταχώρηση ιστορικού της ΑΙ ταυτίζεται με το αλφαριθμητικό παύσης
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Επαναφόρτωση ΤΝ
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε την ΤΝ, ξαναφορτώστε τη δέσμη ενεργειών και επανεκκινήστε την ΤΝ
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/απενεργοποίηση παύσης όταν μια καταχώρηση ιστορικού της ΤΝ ταυτίζεται με το αλφαριθμητικό παύσης
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Παύση στο:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Παύση στο
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος αλφαριθμητικού με μια καταχώρηση από τα μηνύματα του ΑΙ, τότε γίνεται παύση του παιχνιδιού
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος αλφαριθμητικού με μια καταχώρηση από τα μηνύματα του ΤΝ, τότε γίνεται παύση του παιχνιδιού
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτιση μεγέθους
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης μεγέθους όταν η γίνεται σύγκριση μιας καταχώρησης της ΑΙ με το αλφαριθμητικό παύσης
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης μεγέθους όταν η γίνεται σύγκριση μιας καταχώρησης της ΤΝ με το αλφαριθμητικό παύσης
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας της AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης αυτής της AI. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας της ΤΝ
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης αυτής της ΤΝ. Με Ctrl+Κλικ ανοίγει νέο παράθυρο εμφάνισης
 STR_AI_GAME_SCRIPT                                              :{BLACK}Δέσμη Ενεργειών Παιχνιδιού
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Έλεγχος ιστορικού δέσμης ενεργειών παιχνιδιού. Ctrl+Κλικ για άνοιγμα σε νέο παράθυρο
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλη AI για φόρτωση.{}Αυτή η AI είναι ψεύτικη και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορες AΙ από το σύστημα Διαδικτυακού Περιεχομένου.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια από τις δέσμες ενεργειών που εκτελούνται τερμάτισε απότομα. Παρακαλώ ενημερώστε τον συγγραφέα της δέσμης ενεργειών με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI/Παιχνιδιού
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΑΙ και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΤΝ και δέσμης ενεργειών είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Ρυθμίσεις ΤΝ
 STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Ρυθμίσεις δέσμης ενεργειών παιχνιδιού
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η Δέσμη Ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι AIs που θα φορτωθούν στο επόμενο παιχνίδι
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι ΤΝ που θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
-STR_AI_CONFIG_RANDOM_AI                                         :Τυχαία AI
+STR_AI_CONFIG_RANDOM_AI                                         :Τυχαία ΤΝ
 STR_AI_CONFIG_NONE                                              :{G=f}(καμία)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Μέγιστος αρ. ανταγωνιστών: {ORANGE}{COMMA}
@@ -4972,7 +4972,7 @@ STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Διά�
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση Πάνω
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση της επιλεγμένης AI πάνω στη λίστα
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετακίνηση Κάτω
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μετακίνηση της επιλεγμένης AI κάτω στη λίστα
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μετακίνηση της επιλεγμένης ΤΝ κάτω στη λίστα
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Δέσμη Ενεργειών
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Παράμετροι
@@ -4986,7 +4986,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμ
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Διαθέσιμη {STRING}
-STR_AI_LIST_CAPTION_AI                                          :AI
+STR_AI_LIST_CAPTION_AI                                          :ΤΝ
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Δέσμες Ενεργειών
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Πατήστε για να επιλέξετε μία δέσμη ενεργειών
 
@@ -5008,7 +5008,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Στιγ
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγμιότυπο μίνι χάρτη
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Παράμετροι τεχνητης νοημοσύνης
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Παράμετροι ΤΝ (Τεχνητης Νοημοσύνης)
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Παράμετροι σεναρίου παιχνιδιού
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
