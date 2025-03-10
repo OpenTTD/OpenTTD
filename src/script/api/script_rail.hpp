@@ -60,7 +60,7 @@ public:
 		RAILTRACK_SW_SE   = ::TRACK_BIT_LOWER,   ///< Track in the lower corner of the tile (south).
 		RAILTRACK_NW_SW   = ::TRACK_BIT_LEFT,    ///< Track in the left corner of the tile (west).
 		RAILTRACK_NE_SE   = ::TRACK_BIT_RIGHT,   ///< Track in the right corner of the tile (east).
-		RAILTRACK_INVALID = ::INVALID_TRACK_BIT, ///< Flag for an invalid track.
+		RAILTRACK_INVALID = 0xFF, ///< Flag for an invalid track.
 	};
 
 	/**
