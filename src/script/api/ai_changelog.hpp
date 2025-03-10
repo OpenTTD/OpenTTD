@@ -21,6 +21,8 @@
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIOrder.OF_UNBUNCH_IN_DEPOT
+ * \li AIOrder.ERR_ORDER_UNBUNCH
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
