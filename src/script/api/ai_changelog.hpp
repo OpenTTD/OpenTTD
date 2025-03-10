@@ -21,6 +21,7 @@
  * \li AIEventVehicleCrashed::GetVictims
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
+ * \li AIAirport::GetAirportNumHangars
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
