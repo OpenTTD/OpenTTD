@@ -374,21 +374,23 @@ public:
 
 		uint non_text_width = this->rank_width + this->icon_size.width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
 		size.width = std::max(size.width, non_text_width + this->text_width);
-		size.height = std::max(size.height, this->line_height * std::max<uint>(3u, static_cast<uint>(this->rows.size())) + WidgetDimensions::scaled.framerect.Vertical());
+		uint used_height = this->line_height * std::max<uint>(3u, static_cast<uint>(this->rows.size())) + WidgetDimensions::scaled.framerect.Vertical();
 
 		/* Adjust text_width to fill any space left over if the preset minimal width is larger than our calculated width. */
 		this->text_width = size.width - non_text_width;
 
 		if (!lt->header.empty()) {
 			this->header_height = GetStringHeight(lt->header.GetDecodedString(), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
-			size.height += header_height;
 		} else {
 			this->header_height = 0;
 		}
+		used_height += this->header_height;
 
 		if (!lt->footer.empty()) {
-			size.height += GetStringHeight(lt->footer.GetDecodedString(), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
+			used_height += GetStringHeight(lt->footer.GetDecodedString(), size.width - WidgetDimensions::scaled.framerect.Horizontal()) + WidgetDimensions::scaled.vsep_wide;
 		}
+
+		size.height = std::max(size.height, used_height);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
