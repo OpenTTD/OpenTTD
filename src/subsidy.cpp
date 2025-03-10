@@ -93,8 +93,8 @@ void Subsidy::AwardTo(CompanyID company)
 static inline void SetPartOfSubsidyFlag(Source source, PartOfSubsidy flag)
 {
 	switch (source.type) {
-		case SourceType::Industry: Industry::Get(source.ToIndustryID())->part_of_subsidy |= flag; return;
-		case SourceType::Town: Town::Get(source.ToTownID())->cache.part_of_subsidy |= flag; return;
+		case SourceType::Industry: Industry::Get(source.ToIndustryID())->part_of_subsidy.Set(flag); return;
+		case SourceType::Town: Town::Get(source.ToTownID())->cache.part_of_subsidy.Set(flag); return;
 		default: NOT_REACHED();
 	}
 }
@@ -102,13 +102,13 @@ static inline void SetPartOfSubsidyFlag(Source source, PartOfSubsidy flag)
 /** Perform a full rebuild of the subsidies cache. */
 void RebuildSubsidisedSourceAndDestinationCache()
 {
-	for (Town *t : Town::Iterate()) t->cache.part_of_subsidy = POS_NONE;
+	for (Town *t : Town::Iterate()) t->cache.part_of_subsidy = {};
 
-	for (Industry *i : Industry::Iterate()) i->part_of_subsidy = POS_NONE;
+	for (Industry *i : Industry::Iterate()) i->part_of_subsidy = {};
 
 	for (const Subsidy *s : Subsidy::Iterate()) {
-		SetPartOfSubsidyFlag(s->src, POS_SRC);
-		SetPartOfSubsidyFlag(s->dst, POS_DST);
+		SetPartOfSubsidyFlag(s->src, PartOfSubsidy::Source);
+		SetPartOfSubsidyFlag(s->dst, PartOfSubsidy::Destination);
 	}
 }
 
@@ -177,8 +177,8 @@ void CreateSubsidy(CargoType cargo_type, Source src, Source dst)
 	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 	EncodedString headline = GetEncodedString(STR_NEWS_SERVICE_SUBSIDY_OFFERED, cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id, _settings_game.difficulty.subsidy_duration);
 	AddNewsItem(std::move(headline), NewsType::Subsidies, NewsStyle::Normal, {}, s->src.GetNewsReference(), s->dst.GetNewsReference());
-	SetPartOfSubsidyFlag(s->src, POS_SRC);
-	SetPartOfSubsidyFlag(s->dst, POS_DST);
+	SetPartOfSubsidyFlag(s->src, PartOfSubsidy::Source);
+	SetPartOfSubsidyFlag(s->dst, PartOfSubsidy::Destination);
 	AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));
 	Game::NewEvent(new ScriptEventSubsidyOffer(s->index));
 
@@ -510,10 +510,10 @@ bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const 
 	if (!src.IsValid()) return false;
 	switch (src.type) {
 		case SourceType::Industry:
-			if (!(Industry::Get(src.ToIndustryID())->part_of_subsidy & POS_SRC)) return false;
+			if (!Industry::Get(src.ToIndustryID())->part_of_subsidy.Test(PartOfSubsidy::Source)) return false;
 			break;
 		case SourceType::Town:
-			if (!(Town::Get(src.ToTownID())->cache.part_of_subsidy & POS_SRC)) return false;
+			if (!Town::Get(src.ToTownID())->cache.part_of_subsidy.Test(PartOfSubsidy::Source)) return false;
 			break;
 		default: return false;
 	}
@@ -532,7 +532,7 @@ bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const 
 			for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
 				if (!IsTileType(tile, MP_HOUSE)) continue;
 				const Town *t = Town::GetByTile(tile);
-				if (t->cache.part_of_subsidy & POS_DST) include(towns_near, t);
+				if (t->cache.part_of_subsidy.Test(PartOfSubsidy::Destination)) include(towns_near, t);
 			}
 			break;
 		}
@@ -548,7 +548,7 @@ bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const 
 				case SourceType::Industry:
 					for (const auto &i : st->industries_near) {
 						if (s->dst.ToIndustryID() == i.industry->index) {
-							assert(i.industry->part_of_subsidy & POS_DST);
+							assert(i.industry->part_of_subsidy.Test(PartOfSubsidy::Destination));
 							subsidised = true;
 							if (!s->IsAwarded()) s->AwardTo(company);
 						}
@@ -557,7 +557,7 @@ bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const 
 				case SourceType::Town:
 					for (const Town *tp : towns_near) {
 						if (s->dst.ToTownID() == tp->index) {
-							assert(tp->cache.part_of_subsidy & POS_DST);
+							assert(tp->cache.part_of_subsidy.Test(PartOfSubsidy::Destination));
 							subsidised = true;
 							if (!s->IsAwarded()) s->AwardTo(company);
 						}

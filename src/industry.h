@@ -103,7 +103,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	uint8_t was_cargo_delivered = 0; ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 	IndustryControlFlags ctlflags{}; ///< flags overriding standard behaviours
 
-	PartOfSubsidy part_of_subsidy{}; ///< NOSAVE: is this industry a source/destination of a subsidy?
+	PartsOfSubsidy part_of_subsidy{}; ///< NOSAVE: is this industry a source/destination of a subsidy?
 	StationList stations_near{}; ///< NOSAVE: List of nearby stations.
 	mutable std::string cached_name{}; ///< NOSAVE: Cache of the resolved name of the industry
 

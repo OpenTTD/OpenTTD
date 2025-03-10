@@ -13,12 +13,12 @@
 #include "core/enum_type.hpp"
 
 /** What part of a subsidy is something? */
-enum PartOfSubsidy : uint8_t {
-	POS_NONE =     0, ///< nothing
-	POS_SRC = 1 << 0, ///< bit 0 set -> town/industry is source of subsidised path
-	POS_DST = 1 << 1, ///< bit 1 set -> town/industry is destination of subsidised path
+enum class PartOfSubsidy : uint8_t {
+	Source, ///< town/industry is source of subsidised path
+	Destination, ///< town/industry is destination of subsidised path
 };
-DECLARE_ENUM_AS_BIT_SET(PartOfSubsidy)
+
+using PartsOfSubsidy = EnumBitSet<PartOfSubsidy, uint8_t>;
 
 using SubsidyID = PoolID<uint16_t, struct SubsidyIDTag, 256, 0xFFFF>; ///< ID of a subsidy
 struct Subsidy;
