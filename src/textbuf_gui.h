@@ -15,14 +15,13 @@
 #include "strings_type.h"
 
 /** Flags used in ShowQueryString() call */
-enum QueryStringFlags : uint8_t {
-	QSF_NONE             =    0,
-	QSF_ACCEPT_UNCHANGED = 0x01, ///< return success even when the text didn't change
-	QSF_ENABLE_DEFAULT   = 0x02, ///< enable the 'Default' button ("\0" is returned)
-	QSF_LEN_IN_CHARS     = 0x04, ///< the length of the string is counted in characters
+enum class QueryStringFlag : uint8_t {
+	AcceptUnchanged, ///< return success even when the text didn't change
+	EnableDefault, ///< enable the 'Default' button ("\0" is returned)
+	LengthIsInChars, ///< the length of the string is counted in characters
 };
 
-DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)
+using QueryStringFlags = EnumBitSet<QueryStringFlag, uint8_t>;
 
 /** Callback procedure for the ShowQuery method. */
 typedef void QueryCallbackProc(Window*, bool);

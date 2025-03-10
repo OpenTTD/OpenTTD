@@ -659,7 +659,7 @@ struct TimetableWindow : Window {
 				if (_settings_client.gui.timetable_mode == TimetableMode::Seconds) {
 					this->query_widget = WID_VT_START_DATE;
 					this->change_timetable_all = _ctrl_pressed;
-					ShowQueryString({}, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+					ShowQueryString({}, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QueryStringFlag::AcceptUnchanged);
 				} else {
 					ShowSetDateWindow(this, v->index.base(), TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_ctrl_pressed)));
 				}
@@ -685,7 +685,7 @@ struct TimetableWindow : Window {
 				}
 
 				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
-				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME_QUERY, 31, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME_QUERY, 31, this, CS_NUMERAL, QueryStringFlag::AcceptUnchanged);
 				break;
 			}
 
@@ -705,7 +705,7 @@ struct TimetableWindow : Window {
 				}
 
 				this->change_timetable_all = _ctrl_pressed && (order != nullptr);
-				ShowQueryString(current, STR_TIMETABLE_CHANGE_SPEED_QUERY, 31, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_SPEED_QUERY, 31, this, CS_NUMERAL, {});
 				break;
 			}
 

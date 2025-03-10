@@ -1592,7 +1592,7 @@ struct GameSettingsWindow : Window {
 
 				this->valuewindow_entry = pe;
 				/* Limit string length to 14 so that MAX_INT32 * max currency rate doesn't exceed MAX_INT64. */
-				ShowQueryString(GetString(STR_JUST_INT, value64), STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, charset_filter, QSF_ENABLE_DEFAULT);
+				ShowQueryString(GetString(STR_JUST_INT, value64), STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, charset_filter, QueryStringFlag::EnableDefault);
 			}
 			this->SetDisplayedHelpText(pe);
 		}
@@ -1993,7 +1993,7 @@ struct CustomCurrencyWindow : Window {
 
 		if (len != 0) {
 			this->query_widget = line;
-			ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, this, afilter, QSF_NONE);
+			ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, this, afilter, {});
 		}
 
 		this->SetTimeout();

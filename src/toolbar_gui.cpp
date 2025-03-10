@@ -1198,7 +1198,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
  */
 static CallBackFunction ToolbarScenDatePanel(Window *w)
 {
-	ShowQueryString(GetString(STR_JUST_INT, _settings_game.game_creation.starting_year), STR_MAPGEN_START_DATE_QUERY_CAPT, 8, w, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+	ShowQueryString(GetString(STR_JUST_INT, _settings_game.game_creation.starting_year), STR_MAPGEN_START_DATE_QUERY_CAPT, 8, w, CS_NUMERAL, QueryStringFlag::EnableDefault);
 	return CBF_NONE;
 }
 

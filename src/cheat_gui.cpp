@@ -450,11 +450,11 @@ struct CheatWindow : Window {
 		if (btn == CHT_CHANGE_DATE && x >= SETTING_BUTTON_WIDTH) {
 			/* Click at the date text directly. */
 			clicked_cheat = CHT_CHANGE_DATE;
-			ShowQueryString(GetString(STR_JUST_INT, value), STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+			ShowQueryString(GetString(STR_JUST_INT, value), STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QueryStringFlag::AcceptUnchanged);
 			return;
 		} else if (btn == CHT_EDIT_MAX_HL && x >= SETTING_BUTTON_WIDTH) {
 			clicked_cheat = CHT_EDIT_MAX_HL;
-			ShowQueryString(GetString(STR_JUST_INT, value), STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+			ShowQueryString(GetString(STR_JUST_INT, value), STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT, 8, this, CS_NUMERAL, QueryStringFlag::AcceptUnchanged);
 			return;
 		}
 
@@ -517,7 +517,7 @@ struct CheatWindow : Window {
 				this->valuewindow_entry = sd;
 
 				/* Limit string length to 14 so that MAX_INT32 * max currency rate doesn't exceed MAX_INT64. */
-				ShowQueryString(GetString(STR_JUST_INT, value64), STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, charset_filter, QSF_ENABLE_DEFAULT);
+				ShowQueryString(GetString(STR_JUST_INT, value64), STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, charset_filter, QueryStringFlag::EnableDefault);
 			}
 
 			this->clicked_setting = sd;
