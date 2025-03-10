@@ -1607,7 +1607,7 @@ public:
 
 			/* 'Company manager face number' button, view and/or set company manager face number */
 			case WID_SCMF_FACECODE:
-				ShowQueryString(GetString(STR_JUST_INT, this->face), STR_FACE_FACECODE_CAPTION, 10 + 1, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(GetString(STR_JUST_INT, this->face), STR_FACE_FACECODE_CAPTION, 10 + 1, this, CS_NUMERAL, {});
 				break;
 
 			/* Save button */
@@ -2422,12 +2422,12 @@ struct CompanyWindow : Window
 
 			case WID_C_PRESIDENT_NAME:
 				this->query_widget = WID_C_PRESIDENT_NAME;
-				ShowQueryString(GetString(STR_PRESIDENT_NAME, this->window_number), STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION, MAX_LENGTH_PRESIDENT_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				ShowQueryString(GetString(STR_PRESIDENT_NAME, this->window_number), STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION, MAX_LENGTH_PRESIDENT_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				break;
 
 			case WID_C_COMPANY_NAME:
 				this->query_widget = WID_C_COMPANY_NAME;
-				ShowQueryString(GetString(STR_COMPANY_NAME, this->window_number), STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
+				ShowQueryString(GetString(STR_COMPANY_NAME, this->window_number), STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				break;
 
 			case WID_C_VIEW_HQ: {
@@ -2471,7 +2471,7 @@ struct CompanyWindow : Window
 
 			case WID_C_GIVE_MONEY:
 				this->query_widget = WID_C_GIVE_MONEY;
-				ShowQueryString({}, STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION, 30, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString({}, STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION, 30, this, CS_NUMERAL, {});
 				break;
 
 			case WID_C_HOSTILE_TAKEOVER:

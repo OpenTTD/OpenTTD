@@ -733,7 +733,7 @@ public:
 					_settings_client.network.connect_to_ip,
 					STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS,
 					NETWORK_HOSTNAME_PORT_LENGTH,  // maximum number of characters including '\0'
-					this, CS_ALPHANUMERAL, QSF_ACCEPT_UNCHANGED);
+					this, CS_ALPHANUMERAL, QueryStringFlag::AcceptUnchanged);
 				break;
 
 			case WID_NG_START: // Start server
@@ -1023,7 +1023,7 @@ struct NetworkStartServerWindow : public Window {
 
 			case WID_NSS_SETPWD: // Set password button
 				this->widget_id = WID_NSS_SETPWD;
-				ShowQueryString(_settings_client.network.server_password, STR_NETWORK_START_SERVER_SET_PASSWORD, NETWORK_PASSWORD_LENGTH, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(_settings_client.network.server_password, STR_NETWORK_START_SERVER_SET_PASSWORD, NETWORK_PASSWORD_LENGTH, this, CS_ALPHANUMERAL, {});
 				break;
 
 			case WID_NSS_CONNTYPE_BTN: // Connection type
@@ -1051,12 +1051,12 @@ struct NetworkStartServerWindow : public Window {
 
 			case WID_NSS_CLIENTS_TXT:    // Click on number of clients
 				this->widget_id = WID_NSS_CLIENTS_TXT;
-				ShowQueryString(GetString(STR_JUST_INT, _settings_client.network.max_clients), STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS,    4, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(GetString(STR_JUST_INT, _settings_client.network.max_clients), STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS,    4, this, CS_NUMERAL, {});
 				break;
 
 			case WID_NSS_COMPANIES_TXT:  // Click on number of companies
 				this->widget_id = WID_NSS_COMPANIES_TXT;
-				ShowQueryString(GetString(STR_JUST_INT, _settings_client.network.max_companies), STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES,  3, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(GetString(STR_JUST_INT, _settings_client.network.max_companies), STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES,  3, this, CS_NUMERAL, {});
 				break;
 
 			case WID_NSS_GENERATE_GAME: // Start game
@@ -1710,13 +1710,13 @@ public:
 				if (!_network_server) break;
 
 				this->query_widget = WID_CL_SERVER_NAME_EDIT;
-				ShowQueryString(_settings_client.network.server_name, STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION, NETWORK_NAME_LENGTH, this, CS_ALPHANUMERAL, QSF_LEN_IN_CHARS);
+				ShowQueryString(_settings_client.network.server_name, STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION, NETWORK_NAME_LENGTH, this, CS_ALPHANUMERAL, QueryStringFlag::LengthIsInChars);
 				break;
 
 			case WID_CL_CLIENT_NAME_EDIT: {
 				const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				this->query_widget = WID_CL_CLIENT_NAME_EDIT;
-				ShowQueryString(own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name, STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION, NETWORK_CLIENT_NAME_LENGTH, this, CS_ALPHANUMERAL, QSF_LEN_IN_CHARS);
+				ShowQueryString(own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name, STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION, NETWORK_CLIENT_NAME_LENGTH, this, CS_ALPHANUMERAL, QueryStringFlag::LengthIsInChars);
 				break;
 			}
 			case WID_CL_SERVER_VISIBILITY:
@@ -2178,7 +2178,7 @@ void ShowNetworkNeedPassword(std::shared_ptr<NetworkAuthenticationPasswordReques
 	if (w == nullptr) return;
 	w->request = request;
 
-	ShowQueryString({}, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_NONE);
+	ShowQueryString({}, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, {});
 }
 
 /**

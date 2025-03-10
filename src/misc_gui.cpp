@@ -906,7 +906,7 @@ struct QueryStringWindow : public Window
 	{
 		this->editbox.text.Assign(str);
 
-		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->editbox.orig = this->editbox.text.GetText();
+		if (!flags.Test(QueryStringFlag::AcceptUnchanged)) this->editbox.orig = this->editbox.text.GetText();
 
 		this->querystrings[WID_QS_TEXT] = &this->editbox;
 		this->editbox.caption = caption;
@@ -924,7 +924,7 @@ struct QueryStringWindow : public Window
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		if (widget == WID_QS_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
+		if (widget == WID_QS_DEFAULT && !this->flags.Test(QueryStringFlag::EnableDefault)) {
 			/* We don't want this widget to show! */
 			fill.width = 0;
 			resize.width = 0;
@@ -1013,7 +1013,7 @@ void ShowQueryString(std::string_view str, StringID caption, uint maxsize, Windo
 	assert(parent != nullptr);
 
 	CloseWindowByClass(WC_QUERY_STRING);
-	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, _query_string_desc, parent, afilter, flags);
+	new QueryStringWindow(str, caption, (flags.Test(QueryStringFlag::LengthIsInChars) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, _query_string_desc, parent, afilter, flags);
 }
 
 /**
