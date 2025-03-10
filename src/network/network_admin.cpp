@@ -43,17 +43,17 @@ static const std::chrono::seconds ADMIN_AUTHORISATION_TIMEOUT(10);
 
 
 /** Frequencies, which may be registered for a certain update type. */
-static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
-	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_DAILY | ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_DATE
-	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CLIENT_INFO
-	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_COMPANY_INFO
-	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_ECONOMY
-	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_STATS
-	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CHAT
-	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CONSOLE
-	ADMIN_FREQUENCY_POLL,                                                                                                                                  ///< ADMIN_UPDATE_CMD_NAMES
-	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CMD_LOGGING
-	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_GAMESCRIPT
+static const AdminUpdateFrequencies _admin_update_type_frequencies[] = {
+	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Daily, AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_DATE
+	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CLIENT_INFO
+	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_COMPANY_INFO
+	{AdminUpdateFrequency::Poll,                              AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_COMPANY_ECONOMY
+	{AdminUpdateFrequency::Poll,                              AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_COMPANY_STATS
+	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CHAT
+	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CONSOLE
+	{AdminUpdateFrequency::Poll,                                                                                                                                                          }, // ADMIN_UPDATE_CMD_NAMES
+	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CMD_LOGGING
+	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_GAMESCRIPT
 };
 /** Sanity check. */
 static_assert(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
@@ -76,8 +76,8 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 	Debug(net, 3, "[admin] '{}' ({}) has disconnected", this->admin_name, this->admin_version);
 	if (_redirect_console_to_admin == this->index) _redirect_console_to_admin = AdminID::Invalid();
 
-	if (this->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
-		this->update_frequency[ADMIN_UPDATE_CONSOLE] = (AdminUpdateFrequency)0;
+	if (this->update_frequency[ADMIN_UPDATE_CONSOLE].Test(AdminUpdateFrequency::Automatic)) {
+		this->update_frequency[ADMIN_UPDATE_CONSOLE] = {};
 		DebugReconsiderSendRemoteMessages();
 	}
 }
@@ -155,7 +155,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 	for (int i = 0; i < ADMIN_UPDATE_END; i++) {
 		p->Send_bool  (true);
 		p->Send_uint16(i);
-		p->Send_uint16(_admin_update_type_frequencies[i]);
+		p->Send_uint16(_admin_update_type_frequencies[i].base());
 	}
 
 	p->Send_bool(false);
@@ -661,9 +661,9 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENC
 	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	AdminUpdateType type = (AdminUpdateType)p.Recv_uint16();
-	AdminUpdateFrequency freq = (AdminUpdateFrequency)p.Recv_uint16();
+	AdminUpdateFrequencies freq = static_cast<AdminUpdateFrequencies>(p.Recv_uint16());
 
-	if (type >= ADMIN_UPDATE_END || (_admin_update_type_frequencies[type] & freq) != freq) {
+	if (type >= ADMIN_UPDATE_END || !_admin_update_type_frequencies[type].All(freq)) {
 		/* The server does not know of this UpdateType. */
 		Debug(net, 1, "[admin] Not supported update frequency {} ({}) from '{}' ({})", type, freq, this->admin_name, this->admin_version);
 		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
@@ -879,7 +879,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_AUTH_RESPONSE(P
 void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendClientInfo(cs, cs->GetInfo());
 			if (new_client) {
 				as->SendClientJoin(cs->client_id);
@@ -895,7 +895,7 @@ void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client)
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendClientUpdate(ci);
 		}
 	}
@@ -908,7 +908,7 @@ void NetworkAdminClientUpdate(const NetworkClientInfo *ci)
 void NetworkAdminClientQuit(ClientID client_id)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendClientQuit(client_id);
 		}
 	}
@@ -922,7 +922,7 @@ void NetworkAdminClientQuit(ClientID client_id)
 void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendClientError(client_id, error_code);
 		}
 	}
@@ -940,7 +940,7 @@ void NetworkAdminCompanyNew(const Company *company)
 	}
 
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != ADMIN_FREQUENCY_AUTOMATIC) continue;
+		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != AdminUpdateFrequency::Automatic) continue;
 
 		as->SendCompanyNew(company->index);
 		as->SendCompanyInfo(company);
@@ -956,7 +956,7 @@ void NetworkAdminCompanyUpdate(const Company *company)
 	if (company == nullptr) return;
 
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != ADMIN_FREQUENCY_AUTOMATIC) continue;
+		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != AdminUpdateFrequency::Automatic) continue;
 
 		as->SendCompanyUpdate(company);
 	}
@@ -983,7 +983,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
 	if (from_admin) return;
 
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CHAT] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_CHAT].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendChat(action, desttype, client_id, msg, data);
 		}
 	}
@@ -1008,7 +1008,7 @@ void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, con
 void NetworkAdminConsole(const std::string_view origin, const std::string_view string)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_CONSOLE].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendConsole(origin, string);
 		}
 	}
@@ -1021,7 +1021,7 @@ void NetworkAdminConsole(const std::string_view origin, const std::string_view s
 void NetworkAdminGameScript(const std::string_view json)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_GAMESCRIPT] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_GAMESCRIPT].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendGameScript(json);
 		}
 	}
@@ -1037,7 +1037,7 @@ void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacke
 	ClientID client_id = owner == nullptr ? _network_own_client_id : owner->client_id;
 
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
-		if (as->update_frequency[ADMIN_UPDATE_CMD_LOGGING] & ADMIN_FREQUENCY_AUTOMATIC) {
+		if (as->update_frequency[ADMIN_UPDATE_CMD_LOGGING].Test(AdminUpdateFrequency::Automatic)) {
 			as->SendCmdLogging(client_id, cp);
 		}
 	}
@@ -1061,7 +1061,7 @@ void NetworkAdminUpdate(AdminUpdateFrequency freq)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		for (int i = 0; i < ADMIN_UPDATE_END; i++) {
-			if (as->update_frequency[i] & freq) {
+			if (as->update_frequency[i].Test(freq)) {
 				/* Update the admin for the required details */
 				switch (i) {
 					case ADMIN_UPDATE_DATE:
