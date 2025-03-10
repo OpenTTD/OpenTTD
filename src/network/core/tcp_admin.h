@@ -93,16 +93,16 @@ enum AdminUpdateType : uint8_t {
 };
 
 /** Update frequencies an admin can register. */
-enum AdminUpdateFrequency : uint8_t {
-	ADMIN_FREQUENCY_POLL      = 0x01, ///< The admin can poll this.
-	ADMIN_FREQUENCY_DAILY     = 0x02, ///< The admin gets information about this on a daily basis.
-	ADMIN_FREQUENCY_WEEKLY    = 0x04, ///< The admin gets information about this on a weekly basis.
-	ADMIN_FREQUENCY_MONTHLY   = 0x08, ///< The admin gets information about this on a monthly basis.
-	ADMIN_FREQUENCY_QUARTERLY = 0x10, ///< The admin gets information about this on a quarterly basis.
-	ADMIN_FREQUENCY_ANUALLY   = 0x20, ///< The admin gets information about this on a yearly basis.
-	ADMIN_FREQUENCY_AUTOMATIC = 0x40, ///< The admin gets information about this when it changes.
+enum class AdminUpdateFrequency : uint8_t {
+	Poll, ///< The admin can poll this.
+	Daily, ///< The admin gets information about this on a daily basis.
+	Weekly, ///< The admin gets information about this on a weekly basis.
+	Monthly, ///< The admin gets information about this on a monthly basis.
+	Quarterly, ///< The admin gets information about this on a quarterly basis.
+	Annually, ///< The admin gets information about this on a yearly basis.
+	Automatic, ///< The admin gets information about this when it changes.
 };
-DECLARE_ENUM_AS_BIT_SET(AdminUpdateFrequency)
+using AdminUpdateFrequencies = EnumBitSet<AdminUpdateFrequency, uint8_t>;
 
 /** Reasons for removing a company - communicated to admins. */
 enum AdminCompanyRemoveReason : uint8_t {
@@ -142,7 +142,7 @@ protected:
 	/**
 	 * Register updates to be sent at certain frequencies (as announced in the PROTOCOL packet):
 	 * uint16_t  Update type (see #AdminUpdateType). Note integer type - see "Certain Packet Information" in docs/admin_network.md.
-	 * uint16_t  Update frequency (see #AdminUpdateFrequency), setting #ADMIN_FREQUENCY_POLL is always ignored.
+	 * uint16_t  Update frequency (see #AdminUpdateFrequency), setting #AdminUpdateFrequency::Poll is always ignored.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
 	 */
@@ -150,7 +150,7 @@ protected:
 
 	/**
 	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
-	 * uint8_t   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet. Note integer type - see "Certain Packet Information" in docs/admin_network.md.
+	 * uint8_t   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency::Poll is advertised in the PROTOCOL packet. Note integer type - see "Certain Packet Information" in docs/admin_network.md.
 	 * uint32_t  ID relevant to the packet type, e.g.
 	 *          - the client ID for #ADMIN_UPDATE_CLIENT_INFO. Use UINT32_MAX to show all clients.
 	 *          - the company ID for #ADMIN_UPDATE_COMPANY_INFO. Use UINT32_MAX to show all companies.

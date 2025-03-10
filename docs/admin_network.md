@@ -223,7 +223,7 @@ Last updated:    2024-03-26
 
 ## 5.1) Receiving chat
 
-  Register `ADMIN_UPDATE_CHAT` at `ADMIN_FREQUENCY_AUTOMATIC` to receive chat.
+  Register `ADMIN_UPDATE_CHAT` at `AdminUpdateFrequency::Automatic` to receive chat.
   The application will be able to receive all chat the server can see.
 
   The configuration option `network.server_admin_chat` specifies whether
