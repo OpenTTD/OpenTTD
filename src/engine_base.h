@@ -213,7 +213,7 @@ struct EngineIDMapping {
 
 /** Projection to get a unique key of an EngineIDMapping, used for sorting in EngineOverrideManager. */
 struct EngineIDMappingKeyProjection {
-	inline size_t operator()(const EngineIDMapping &eid) const { return eid.Key(); }
+	inline uint64_t operator()(const EngineIDMapping &eid) const { return eid.Key(); }
 };
 
 /**
