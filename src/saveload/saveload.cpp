@@ -2110,7 +2110,7 @@ static void SlLoadChunk(const ChunkHandler &ch)
 	/* The header should always be at the start. Read the length; the
 	 * Load() should as first action process the header. */
 	if (_sl.expect_table_header) {
-		SlIterateArray();
+		if (SlIterateArray() != INT32_MAX) SlErrorCorrupt("Table chunk without header");
 	}
 
 	switch (_sl.block_mode) {
@@ -2163,7 +2163,7 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 	/* The header should always be at the start. Read the length; the
 	 * LoadCheck() should as first action process the header. */
 	if (_sl.expect_table_header) {
-		SlIterateArray();
+		if (SlIterateArray() != INT32_MAX) SlErrorCorrupt("Table chunk without header");
 	}
 
 	switch (_sl.block_mode) {
