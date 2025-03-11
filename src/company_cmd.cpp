@@ -431,6 +431,7 @@ bad_town_name:;
 	if (c->president_name_1 == SPECSTR_PRESIDENT_NAME) {
 		str = SPECSTR_ANDCO_NAME;
 		strp = c->president_name_2;
+		name = GetString(str, strp);
 		goto set_name;
 	} else {
 		str = SPECSTR_ANDCO_NAME;
