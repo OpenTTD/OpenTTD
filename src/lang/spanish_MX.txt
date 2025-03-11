@@ -344,7 +344,7 @@ STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Longitud
 STR_SORT_BY_LIFE_TIME                                           :Vida útil restante
-STR_SORT_BY_TIMETABLE_DELAY                                     :Retraso en itinerario
+STR_SORT_BY_TIMETABLE_DELAY                                     :Retraso en horario
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING_TOTAL                                       :Carga total en espera
 STR_SORT_BY_WAITING_AVAILABLE                                   :Carga disponible en espera
@@ -647,7 +647,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Mostrar 
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabla de evaluación de empresas
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} "{STRING}"
 STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniero
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Director de Tráfico
@@ -670,7 +670,7 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Mostrar 
 ###length 10
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estaciones:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Ganancia mín.:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Ganancias mín.:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ingreso mín.:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Ingreso máx.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregado:
@@ -680,13 +680,13 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstam
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ###next-name-looks-similar
 
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Número de vehículos que obtuvieron ganancias el último año, incluyendo autotransportes, trenes, barcos y aeronaves
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de vehículos que obtuvieron ganancias en el último período, incluyendo autotransportes, trenes, barcos y aeronaves
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}Número de vehículos que obtuvieron ganancias el año pasado, incluyendo autotransportes, trenes, barcos y aeronaves
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}Número de vehículos que obtuvieron ganancias el período pasado, incluyendo autotransportes, trenes, barcos y aeronaves
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estaciones abastecidas recientemente. Las estaciones de tren, estaciones de autobuses, aeropuertos y demás se cuentan aparte, aun si pertenecen a la misma estación
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}La ganancia del vehículo con menos ingresos (solo se consideran los vehículos con más de dos años de antigüedad)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}Las ganancias del vehículo con menos ingresos (solo se consideran los vehículos con más de dos años de antigüedad)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}Las ganancias del vehículo con menos ingresos (solo se consideran los vehículos con más de dos períodos de antigüedad)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de efectivo ganado en el trimestre con las menores ganancias de los últimos 12 trimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de efectivo ganado en el trimestre con las mayores ganancias de los últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de efectivo obtenido en el trimestre con las menores ganancias de los últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de efectivo obtenido en el trimestre con las mayores ganancias de los últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregadas en los últimos cuatro trimestres
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga entregadas en el último trimestre
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Cantidad de dinero que esta empresa tiene en el banco
@@ -749,7 +749,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnate
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Potentado
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnate del siglo
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}"{STRING}"   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}¡{COMPANY} logra colocarse como '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}¡{PRESIDENT_NAME} de {COMPANY} logra colocarse como '{STRING}'!
 
@@ -807,7 +807,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Nieve
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar u ocultar nombres de pueblos
-STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrar en ubicación actual
+STR_SMALLMAP_CENTER_TOOLTIP                                     :{BLACK}Centrar minimapa en la ubicación actual
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -907,7 +907,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 ###next-name-looks-similar
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tiene muy pocas órdenes en el itinerario
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tiene muy pocas órdenes en el horario
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tiene una orden vacía
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tiene órdenes duplicadas
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tiene una estación no válida en la lista
@@ -918,8 +918,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} se está quedando muy viejo y necesita reemplazo urgente
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no encuentra una ruta para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se perdió
-STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}La ganancia de {VEHICLE} el año pasado fue de {CURRENCY_LONG}
-STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Las ganancias de {VEHICLE} en el último período fueron de {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}Las ganancias de {VEHICLE} el año pasado fueron de {CURRENCY_LONG}
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}Las ganancias de {VEHICLE} el período pasado fueron de {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} no puede llegar al siguiente destino porque no está a su alcance
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} no avanza porque no pudo reformarse
@@ -1198,10 +1198,10 @@ STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
 ###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Clima templado
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Clima subártico
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Clima subtropical
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Clima mundo de juguetes
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Clima Templado
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Clima Subártico
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Clima Subtropical
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Clima Mundo de juguetes
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Muy plano
@@ -1500,7 +1500,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Todos los vehí
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si los ingresos de un vehículo son negativos: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Al activarse, se muestra una noticia si un vehículo no ha logrado ganancia durante un año
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Al activarse, se muestra una noticia si un vehículo no ha logrado ganancias durante un año
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :Al activarse, se muestra una noticia si un vehículo no ha logrado ganancia durante un período
 
 STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :Avisar si un vehículo se está quedando viejo: {STRING}
@@ -1739,15 +1739,15 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activar el uso 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Mostrar indicadores sobre los vehículos mientras cargan o descargan
 
-STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unidad de tiempo para itinerarios: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Elegir la unidad de tiempo para los itinerarios de los vehículos
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :Unidad de tiempo para horarios: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :Elegir la unidad de tiempo para los horarios de los vehículos
 ###length 3
 STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :Días
 STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :Segundos
 STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :Ticks
 
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en itinerarios: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar tiempos anticipados de llegadas y salidas en los itinerarios
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en horarios: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostrar tiempos anticipados de llegadas y salidas en los horarios
 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de órdenes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Elegir automáticamente la opción 'Ir a' al abrir la ventana de órdenes
@@ -2196,7 +2196,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nueva partida
 STR_INTRO_LOAD_GAME                                             :{BLACK}Cargar partida
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jugar mapa pers.
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jugar mapa personalizado
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jugar mapa de alturas
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor de mapas
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijugador
@@ -2218,10 +2218,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Comenzar
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Crear un mapa personalizado
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Comenzar una partida multijugador
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Elegir mapa de clima templado
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Elegir mapa de clima subártico
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elegir mapa de clima subtropical
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir mapa de clima mundo de juguetes
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Elegir mapa de clima Templado
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Elegir mapa de clima Subártico
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elegir mapa de clima Subtropical
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir mapa de clima Mundo de juguetes
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabla de puntuaciones
@@ -2709,7 +2709,7 @@ STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}Gráficos 
 STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
 STR_CONTENT_TYPE_AI                                             :{G=f}IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Biblioteca de IA
-STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Mapa pers.
+STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Mapa personalizado
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=m}Mapa de alturas
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Sonidos base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m}Música base
@@ -3879,10 +3879,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la estación. Ctrl+Clic abre una vista aparte en su ubicación
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambiar nombre de la estación
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar los trenes que tienen esta estación en su itinerario
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar los autotransportes con esta estación en su itinerario
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar las aeronaves que tienen este aeropuerto en su itinerario
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar los barcos que tienen este muelle en su itinerario
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar los trenes con esta estación en su horario
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar los autotransportes con esta estación en su horario
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar las aeronaves con este aeropuerto en su horario
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar los barcos con este muelle en su horario
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Cambiar nombre de estación
 
@@ -4072,7 +4072,7 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Reemplazar veh�
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Enviar a mantenimiento
 STR_VEHICLE_LIST_CREATE_GROUP                                   :Crear grupo
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Ganancias este año: {CURRENCY_LONG} (último año: {CURRENCY_LONG})
-STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Ganancias de este período: {CURRENCY_LONG} (último período: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Ganancias este período: {CURRENCY_LONG} (período pasado: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4119,8 +4119,8 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Cambiar 
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Ganancias de este año:
 STR_GROUP_PROFIT_THIS_PERIOD                                    :Ganancias este período:
-STR_GROUP_PROFIT_LAST_YEAR                                      :Ganancias último año:
-STR_GROUP_PROFIT_LAST_PERIOD                                    :Ganancias último período:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Ganancias el año pasado:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :Ganancias período pasado:
 STR_GROUP_OCCUPANCY                                             :Uso actual:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4436,10 +4436,10 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reformar
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reformar aeronave para llevar otro tipo de carga
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ver órdenes del tren. Ctrl+Clic muestra su itinerario
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ver órdenes del vehículo. Ctrl+Clic muestra su itinerario
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órdenes del barco. Ctrl+Clic muestra su itinerario
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave. Ctrl+Clic muestra su itinerario
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ver órdenes del tren. Ctrl+Clic muestra su horario
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ver órdenes del vehículo. Ctrl+Clic muestra su horario
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órdenes del barco. Ctrl+Clic muestra su horario
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave. Ctrl+Clic muestra su horario
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Ver detalles del tren
@@ -4501,10 +4501,10 @@ STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Vel. má
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potencia: {LTBLUE}{POWER}{BLACK} Velocidad máx.: {LTBLUE}{VELOCITY} {BLACK}F. T. máx.: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (último año: {CURRENCY_LONG}) {BLACK}Mín. rendimiento: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Ganancias este período: {LTBLUE}{CURRENCY_LONG} (último período: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Ganancias este período: {LTBLUE}{CURRENCY_LONG} (último período: {CURRENCY_LONG}){BLACK}Rendimiento mín.: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (año pasado: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Ganancias este año: {LTBLUE}{CURRENCY_LONG} (año pasado: {CURRENCY_LONG}) {BLACK}Mín. rendimiento: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Ganancias este período: {LTBLUE}{CURRENCY_LONG} (período pasado: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Ganancias este período: {LTBLUE}{CURRENCY_LONG} (período pasado: {CURRENCY_LONG}){BLACK}Rendimiento mín.: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde el último mantenimiento: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construido: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY_LONG}
@@ -4591,8 +4591,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reformar
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Órdenes)
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Itinerario
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar a la ventana de itinerarios
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horario
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar a la ventana de horarios
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de órdenes. Clic para resaltar. Ctrl+Clic para ir al destino de la orden
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -4685,7 +4685,7 @@ STR_ORDER_CONDITIONAL                                           :Salto condicion
 STR_ORDER_SHARE                                                 :Compartir órdenes
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir una nueva orden antes de la resaltada o al final de la lista. Ctrl+Clic en una estación para 'Cargar máx. cualquier carga', en un punto de ruta para 'Sin paradas' y en un depósito para 'Mantenimiento' (desactiva el mantenimiento automático). Ctrl+Clic en otro vehículo para que ambos compartan las órdenes. Clic en un vehículo para copiar sus órdenes (sin compartirlas).
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostrar todos los vehículos que comparten este itinerario
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostrar todos los vehículos que comparten este horario
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Ir pasando por {WAYPOINT}
@@ -4760,11 +4760,11 @@ STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltar a la ord
 STR_INVALID_ORDER                                               :{RED} (Orden no válida)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Itinerarios)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horario)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Órdenes
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Cambiar a la ventana de órdenes
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Itinerarios. Clic en una orden para resaltarla
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario. Clic en una orden para resaltarla
 
 STR_TIMETABLE_NO_TRAVEL                                         :No viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado según la siguiente instrucción manual)
@@ -4779,20 +4779,20 @@ STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar 
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar {STRING}
 
-STR_TIMETABLE_APPROX_TIME                                       :{BLACK}El itinerario tardará aproximadamente {STRING} en recorrerse
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El itinerario completo se recorre en {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El itinerario completo se recorre en {STRING} (no todo programado)
+STR_TIMETABLE_APPROX_TIME                                       :{BLACK}El horario tardará aproximadamente {STRING} en completarse
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en completarse
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El horario tardará al menos {STRING} en completarse (no todo programado)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo va a tiempo
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo va retrasado por {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo va adelantado por {STRING}
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este itinerario no ha comenzado
-STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Este itinerario comenzará el {STRING}
-STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Este itinerario comenzará en {COMMA} segundos
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horario no ha comenzado
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}Este horario comenzará el {STRING}
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}Este horario comenzará en {COMMA} segundos
 
-STR_TIMETABLE_START                                             :{BLACK}Comenzar itinerario
-STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Elegir el inicio del itinerario. Ctrl+clic para distribuir uniformemente el comienzo de todos los vehículos que lo comparten según su orden relativo, si el itinerario está lleno
-STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos hasta el comienzo del itinerario
+STR_TIMETABLE_START                                             :{BLACK}Comenzar horario
+STR_TIMETABLE_START_TOOLTIP                                     :{BLACK}Elegir el inicio del horario. Ctrl+clic para distribuir uniformemente el comienzo de todos los vehículos que lo comparten según su orden relativo, si el horario está lleno
+STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos hasta el comienzo del horario
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar duración
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar la duración de la orden resaltada. Ctrl+Clic la cambia para todas las órdenes
@@ -4827,7 +4827,7 @@ STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :S: {COLOUR}{COM
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Elegir fecha
 STR_DATE_SET_DATE                                               :{BLACK}Elegir fecha
-STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usar la fecha elegida como fecha inicial del itinerario
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usar la fecha elegida como fecha inicial del horario
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Elegir día
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Elegir mes
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elegir año
@@ -5409,11 +5409,11 @@ STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}No hay p
 STR_ERROR_NO_BUOY                                               :{WHITE}No hay boya
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se pueden asignar itinerarios al vehículo...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se pueden asignar horarios al vehículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Los vehículos solo pueden esperar en estaciones
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo no se detendrá en esta estación
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... el itinerario está incompleto
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... el itinerario aún no ha comenzado
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... el horario está incompleto
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... el horario aún no ha comenzado
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados letreros
@@ -5484,7 +5484,7 @@ STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Refinería
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma petrolífera
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fábrica
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Imprenta
-STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Planta acerera
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Acería
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Granja
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Mina de cobre
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pozos petrolíferos
