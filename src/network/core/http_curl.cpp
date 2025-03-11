@@ -122,6 +122,14 @@ static std::string _http_ca_path = "";
 	}
 }
 
+void CurlSetOption(CURL *curl, auto option, auto value)
+{
+	CURLcode res = curl_easy_setopt(curl, option, value);
+	if (res != CURLE_OK) {
+		Debug(net, 0, "Could not execute curl_easy_setopt for {} [{}]", option, res);
+	}
+}
+
 void HttpThread()
 {
 	CURL *curl = curl_easy_init();
@@ -147,31 +155,31 @@ void HttpThread()
 		curl_slist *headers = nullptr;
 
 		if (_debug_net_level >= 5) {
-			curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+			CurlSetOption(curl, CURLOPT_VERBOSE, 1L);
 		}
 
 		/* Setup some default options. */
 		std::string user_agent = fmt::format("OpenTTD/{}", GetNetworkRevisionString());
-		curl_easy_setopt(curl, CURLOPT_USERAGENT, user_agent.c_str());
-		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-		curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 5L);
+		CurlSetOption(curl, CURLOPT_USERAGENT, user_agent.c_str());
+		CurlSetOption(curl, CURLOPT_FOLLOWLOCATION, 1L);
+		CurlSetOption(curl, CURLOPT_MAXREDIRS, 5L);
 
 		/* Ensure we validate the certificate and hostname of the server. */
 #if defined(UNIX)
-		curl_easy_setopt(curl, CURLOPT_CAINFO, _http_ca_file.empty() ? nullptr : _http_ca_file.c_str());
-		curl_easy_setopt(curl, CURLOPT_CAPATH, _http_ca_path.empty() ? nullptr : _http_ca_path.c_str());
+		CurlSetOption(curl, CURLOPT_CAINFO, _http_ca_file.empty() ? nullptr : _http_ca_file.c_str());
+		CurlSetOption(curl, CURLOPT_CAPATH, _http_ca_path.empty() ? nullptr : _http_ca_path.c_str());
 #endif /* UNIX */
-		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 2);
-		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, true);
+		CurlSetOption(curl, CURLOPT_SSL_VERIFYHOST, 2);
+		CurlSetOption(curl, CURLOPT_SSL_VERIFYPEER, true);
 
 		/* Give the connection about 10 seconds to complete. */
-		curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 10L);
+		CurlSetOption(curl, CURLOPT_CONNECTTIMEOUT, 10L);
 
 		/* Set a buffer of 100KiB, as the default of 16KiB seems a bit small. */
-		curl_easy_setopt(curl, CURLOPT_BUFFERSIZE, 100L * 1024L);
+		CurlSetOption(curl, CURLOPT_BUFFERSIZE, 100L * 1024L);
 
 		/* Fail our call if we don't receive a 2XX return value. */
-		curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
+		CurlSetOption(curl, CURLOPT_FAILONERROR, 1L);
 
 		/* Prepare POST body and URI. */
 		if (!request->data.empty()) {
@@ -182,14 +190,14 @@ void HttpThread()
 				headers = curl_slist_append(headers, "Content-Type: application/x-www-form-urlencoded");
 			}
 
-			curl_easy_setopt(curl, CURLOPT_POST, 1L);
-			curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request->data.c_str());
-			curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+			CurlSetOption(curl, CURLOPT_POST, 1L);
+			CurlSetOption(curl, CURLOPT_POSTFIELDS, request->data.c_str());
+			CurlSetOption(curl, CURLOPT_HTTPHEADER, headers);
 		}
-		curl_easy_setopt(curl, CURLOPT_URL, request->uri.c_str());
+		CurlSetOption(curl, CURLOPT_URL, request->uri.c_str());
 
 		/* Setup our (C-style) callback function which we pipe back into the callback. */
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, +[](char *ptr, size_t size, size_t nmemb, void *userdata) -> size_t {
+		CurlSetOption(curl, CURLOPT_WRITEFUNCTION, +[](char *ptr, size_t size, size_t nmemb, void *userdata) -> size_t {
 			Debug(net, 6, "HTTP callback: {} bytes", size * nmemb);
 			HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
 
@@ -200,18 +208,18 @@ void HttpThread()
 
 			return size * nmemb;
 		});
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &request->callback);
+		CurlSetOption(curl, CURLOPT_WRITEDATA, &request->callback);
 
 		/* Create a callback from which we can cancel. Sadly, there is no other
 		 * thread-safe way to do this. If the connection went idle, it can take
 		 * up to a second before this callback is called. There is little we can
 		 * do about this. */
-		curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
-		curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, +[](void *userdata, curl_off_t /*dltotal*/, curl_off_t /*dlnow*/, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) -> int {
+		CurlSetOption(curl, CURLOPT_NOPROGRESS, 0L);
+		CurlSetOption(curl, CURLOPT_XFERINFOFUNCTION, +[](void *userdata, curl_off_t /*dltotal*/, curl_off_t /*dlnow*/, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) -> int {
 			const HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
 			return (callback->cancelled || _http_thread_exit) ? 1 : 0;
 		});
-		curl_easy_setopt(curl, CURLOPT_XFERINFODATA, &request->callback);
+		CurlSetOption(curl, CURLOPT_XFERINFODATA, &request->callback);
 
 		/* Perform the request. */
 		CURLcode res = curl_easy_perform(curl);
