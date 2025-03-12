@@ -161,6 +161,14 @@ struct SQObjectPtr : public SQObject
 		_unVal=o._unVal;
 		__AddRef(_type,_unVal);
 	}
+	SQObjectPtr(SQObjectPtr &&o)
+	{
+		SQ_OBJECT_RAWINIT()
+		this->_type = OT_NULL;
+		this->_unVal.pUserPointer = nullptr;
+		std::swap(this->_type, o._type);
+		std::swap(this->_unVal, o._unVal);
+	}
 	SQObjectPtr(const SQObject &o)
 	{
 		SQ_OBJECT_RAWINIT()
@@ -328,6 +336,12 @@ struct SQObjectPtr : public SQObject
 		_type = obj._type;
 		__AddRef(_type,_unVal);
 		__Release(tOldType,unOldVal);
+		return *this;
+	}
+	inline SQObjectPtr& operator=(SQObjectPtr &&obj)
+	{
+		std::swap(this->_type, obj._type);
+		std::swap(this->_unVal, obj._unVal);
 		return *this;
 	}
 	inline SQObjectPtr& operator=(const SQObject& obj)
