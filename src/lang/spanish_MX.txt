@@ -32,9 +32,9 @@ STR_CARGO_PLURAL_MAIL                                           :{G=mp}Correo
 STR_CARGO_PLURAL_OIL                                            :{G=mp}Petróleo
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=mp}Ganado
 STR_CARGO_PLURAL_GOODS                                          :{G=fp}Mercancías
-STR_CARGO_PLURAL_GRAIN                                          :{G=mp}Granos
+STR_CARGO_PLURAL_GRAIN                                          :{G=mp}Grano
 STR_CARGO_PLURAL_WOOD                                           :{G=fp}Madera
-STR_CARGO_PLURAL_IRON_ORE                                       :{G=mp}Minerales de hierro
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=mp}Mineral de hierro
 STR_CARGO_PLURAL_STEEL                                          :{G=mp}Acero
 STR_CARGO_PLURAL_VALUABLES                                      :{G=mp}Objetos de valor
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=mp}Mineral de cobre
@@ -313,7 +313,7 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Aceptar
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :|1234567890'¿\qwertyuiop´+asdfghjklñ{}<zxcvbnm,.- .
+STR_OSK_KEYBOARD_LAYOUT                                         :|1234567890'¿\qwertyuiop´+asdfghjklñ{{}}<zxcvbnm,.- .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :º!"#$%&/()=?¡|QWERTYUIOP¨*ASDFGHJKLÑ[]>ZXCVBNM;:_ .
 
 # Measurement tooltip
@@ -2923,7 +2923,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir sección de tranvía. Ctrl quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir carretera con orientación automática (Autoroad). Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir tranvías con orientación automática (Autotram). Ctrl+Clic quita tramos. Mayús+Clic solo muestra un costo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de carretera (para comprar y dar mantenimiento a vehículos). Mayús+Clic solo muestra un costo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de carretera (para comprar y dar mantenimiento a autotransportes). Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de tranvías (para comprar y dar mantenimiento a tranvías). Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre carretera. Ctrl+Clic activa la unión de puntos de ruta. Mayús+Clic solo muestra un costo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construir punto de ruta sobre vía de tranvía. Ctrl+Clic para seleccionar otro punto de ruta para unirlo. Mayús+Clic solo muestra un costo estimado
@@ -3102,9 +3102,9 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Eliminar
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}¿Seguro de eliminar todas las industrias?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena industrial de carga - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias abastecedoras
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena de industrias: {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de cargas: {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias productoras
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias receptoras
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clic en la industria para ver sus proveedores y clientes
@@ -4030,7 +4030,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producci
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportad{G 0 o a o a}{P 0 "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar vista en la industria. Ctrl+Clic abre una vista aparte en su ubicación
 STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Gráfica de producción
-STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Muestra la gráfica del historial de producción de la industria
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Mostrar la gráfica histórica de producción de la industria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivel de producción: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}¡La industria ha anunciado su cierre inminente!
 
@@ -5497,7 +5497,7 @@ STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Mina de di
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Mina de hierro
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantación de fruta
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantación de caucho
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Pozo de agua
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Suministro de agua
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Torre de agua
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Granja
