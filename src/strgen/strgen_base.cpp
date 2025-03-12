@@ -85,10 +85,10 @@ void StringData::FreeTranslation()
  * @param s  The name of the string.
  * @param ls The string to add.
  */
-void StringData::Add(std::unique_ptr<LangString> ls)
+void StringData::Add(std::shared_ptr<LangString> ls)
 {
-	this->name_to_string[ls->name] = ls.get();
-	this->strings[ls->index].swap(ls);
+	this->name_to_string[ls->name] = ls;
+	this->strings[ls->index] = std::move(ls);
 }
 
 /**
@@ -96,12 +96,12 @@ void StringData::Add(std::unique_ptr<LangString> ls)
  * @param s The string name to search on.
  * @return The LangString or nullptr if it is not known.
  */
-LangString *StringData::Find(const std::string_view s)
+LangString *StringData::Find(const std::string &s)
 {
 	auto it = this->name_to_string.find(s);
 	if (it == this->name_to_string.end()) return nullptr;
 
-	return it->second;
+	return it->second.get();
 }
 
 /**
