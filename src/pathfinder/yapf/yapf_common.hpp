@@ -25,7 +25,9 @@ public:
 
 protected:
 	TileIndex origin_tile; ///< origin tile
-	TrackdirBits origin_trackdirs; ///< origin trackdir mask
+	TrackdirBits origin_forward_trackdirs; ///< trackdirs considered for forward motion
+	TrackdirBits origin_reverse_trackdirs; ///< trackdirs considered for reversal
+	int reverse_penalty; ///< Cost penalty added for the reverse directions
 
 	/** to access inherited path finder */
 	inline Tpf &Yapf()
@@ -35,21 +37,29 @@ protected:
 
 public:
 	/** Set origin tile / trackdir mask */
-	void SetOrigin(TileIndex tile, TrackdirBits trackdirs)
+	void SetOrigin(TileIndex tile, TrackdirBits forward_trackdirs, TrackdirBits reverse_trackdirs = TRACKDIR_BIT_NONE, int reverse_penalty = 0)
 	{
+		assert((forward_trackdirs & reverse_trackdirs) == TRACKDIR_BIT_NONE); // Forward dirs can't also be reverse dirs and vice versa
 		this->origin_tile = tile;
-		this->origin_trackdirs = trackdirs;
+		this->origin_forward_trackdirs = forward_trackdirs;
+		this->origin_reverse_trackdirs = reverse_trackdirs;
+		this->reverse_penalty = reverse_penalty;
 	}
 
 	/** Called when YAPF needs to place origin nodes into open list */
 	void PfSetStartupNodes()
 	{
-		bool is_choice = (KillFirstBit(this->origin_trackdirs) != TRACKDIR_BIT_NONE);
-		for (TrackdirBits tdb = this->origin_trackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
-			Trackdir td = (Trackdir)FindFirstBit(tdb);
-			Node &n1 = Yapf().CreateNewNode();
-			n1.Set(nullptr, this->origin_tile, td, is_choice);
-			Yapf().AddStartupNode(n1);
+		const bool is_choice = CountBits(this->origin_forward_trackdirs | this->origin_reverse_trackdirs) > 1;
+		for (Trackdir td : SetTrackdirBitIterator(this->origin_forward_trackdirs)) {
+			Node &node = Yapf().CreateNewNode();
+			node.Set(nullptr, this->origin_tile, td, is_choice);
+			Yapf().AddStartupNode(node);
+		}
+		for (Trackdir td : SetTrackdirBitIterator(this->origin_reverse_trackdirs)) {
+			Node &node = Yapf().CreateNewNode();
+			node.Set(nullptr, this->origin_tile, td, is_choice);
+			node.cost = reverse_penalty;
+			Yapf().AddStartupNode(node);
 		}
 	}
 };
