@@ -39,16 +39,16 @@ struct LangString {
 
 /** Information about the currently known strings. */
 struct StringData {
-	std::vector<std::unique_ptr<LangString>> strings; ///< List of all known strings.
-	std::unordered_map<std::string_view, LangString *> name_to_string; ///< Lookup table for the strings.
+	std::vector<std::shared_ptr<LangString>> strings; ///< List of all known strings.
+	std::unordered_map<std::string, std::shared_ptr<LangString>> name_to_string; ///< Lookup table for the strings.
 	size_t tabs;          ///< The number of 'tabs' of strings.
 	size_t max_strings;   ///< The maximum number of strings.
 	size_t next_string_id;///< The next string ID to allocate.
 
 	StringData(size_t tabs);
 	void FreeTranslation();
-	void Add(std::unique_ptr<LangString> ls);
-	LangString *Find(const std::string_view s);
+	void Add(std::shared_ptr<LangString> ls);
+	LangString *Find(const std::string &s);
 	uint VersionHashStr(uint hash, const char *s) const;
 	uint Version() const;
 	uint CountInUse(uint tab) const;
