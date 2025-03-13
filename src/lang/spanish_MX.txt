@@ -313,8 +313,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}Aceptar
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :|1234567890'¿\qwertyuiop´+asdfghjklñ{{}}<zxcvbnm,.- .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :º!"#$%&/()=?¡|QWERTYUIOP¨*ASDFGHJKLÑ[]>ZXCVBNM;:_ .
+STR_OSK_KEYBOARD_LAYOUT                                         :|1234567890'¿ qwertyuiop´+asdfghjklñ{{}}<zxcvbnm,.- .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :º!"#$%&/()=?¡ QWERTYUIOP¨*ASDFGHJKLÑ[]>ZXCVBNM;:_ .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Longitud: {NUM}
@@ -1283,7 +1283,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}segundo{P "" s}
 
-STR_CONFIG_SETTING_INFINITE_MONEY                               :Capital infinito: {STRING}
+STR_CONFIG_SETTING_INFINITE_MONEY                               :Dinero infinito: {STRING}
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Las empresas tienen fondos ilimitados y no pueden irse a bancarrota
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Máximo préstamo inicial: {STRING}
@@ -3973,8 +3973,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reubicar
 STR_COMPANY_VIEW_RELOCATE_HQ_TOOLTIP                            :{BLACK}Reubicar la sede de la empresa pagando el 1% del valor total de la empresa. Mayús+Clic solo muestra un costo estimado
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informe detallado de infraestructura
-STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Transferir capital
-STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Transferir capital a esta empresa
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Transferir dinero
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Transferir dinero a esta empresa
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}Compra hostil
 STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}Realizar una compra hostil de esta empresa
 
@@ -5047,7 +5047,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... no h
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... se requieren {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No se puede pagar préstamo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No se puede regalar dinero que fue prestado de un banco...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}No se puede transferir capital a esta empresa...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}No se puede transferir dinero a esta empresa...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No se puede comprar la empresa...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No se puede construir la sede de la empresa...
 
@@ -5852,7 +5852,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :Astillero de {T
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Astillero #{1:COMMA} de {0:TOWN}
 ###next-name-looks-similar
 
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar del {STATION}
 # _SERIAL version of AIRACRAFT doesn't exist
 
 STR_UNKNOWN_STATION                                             :estación desconocida

@@ -527,8 +527,12 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Možnosti písk
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavení průhlednosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobrazení jmen měst
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobrazení jmen stanic
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Vlaková nádraží
 STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Nákladové rampy
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Autobusové zastávky
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Přístavy
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Letiště
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Duch
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Zobrazení jmen směrování
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobrazení popisků
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Zobrazovat popisky a jména protivníků
@@ -901,6 +905,7 @@ STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}Zobrazit
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nezobrazit na mapě žádný průmysl
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Zobrazit na mapě veškerý průmysl
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Zapnout zobrazení výškové mapy
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :Zapnout/Vypnout zobrazení jmen průmyslu
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Skrýt všechen majetek společnosti na mapě
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Zobrazit všechen majetek společnosti na mapě
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nezobrazovat žádný náklad na mapě
@@ -2050,7 +2055,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Náhodně
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Města smějí stavět silnice: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí městům stavět silnice pro růst. Zakaž k zabránění výstavby silnic městy.
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Města mohou stavět přejezdy: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Města smějí stavět přejezdy: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolení tohoto nastavení umožní městům, budovat železniční přejezdy
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Omezovat výstavbu letišť hlukovými limity: {STRING}
@@ -2063,7 +2068,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Zakázáno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Povoleno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Povoleno s výběrem rozložení a velikosti města
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Umísťování individuálních domů města: {STRING}
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Zakázáno
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Povoleno
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Produkce nákladu městy: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Určuje, kolik nákladu je produkováno domy ve městě relativně k celkovému počtu obyvatel města.{}Kvadratická závislost: Dvakrát větší město produkuje čtyřikrát více cestujících.{}Lineární závislost: Dvakrát větší město produkuje dvakrát více cestujících.
@@ -2326,6 +2334,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Seznam změn
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Nahlášené chyby
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licence
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Písma
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Příručka / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Nahlásit chybu
@@ -2921,7 +2930,12 @@ STR_HOUSE_PICKER_CAPTION                                        :Výběr domu
 STR_HOUSE_PICKER_NAME                                           :{BLACK}Název: {ORANGE}{STRING}
 STR_HOUSE_PICKER_POPULATION                                     :{BLACK}Populace: {ORANGE}{NUM}
 STR_HOUSE_PICKER_YEARS                                          :{BLACK}Roky: {ORANGE}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}Roky: {ORANGE}Jakékoliv
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Roky: {ORANGE}Od {NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Roky: {ORANGE}Do {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}Velikost: {ORANGE}{NUM}x{NUM} polí
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Přijímaný náklad: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Vyprodukováno nákladu: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Okraj
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferie
@@ -2929,6 +2943,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Vnější před
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Vnitní předměstí
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centrum města
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Zabránit vylepšování
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Vyber, zdali bude tento dům chráněn před nahrazením, jak se bude město rozrůstat
+STR_HOUSE_PICKER_PROTECT_OFF                                    :Vypnuto
+STR_HOUSE_PICKER_PROTECT_ON                                     :Zapnuto
 
 STR_STATION_CLASS_DFLT                                          :Původní
 STR_STATION_CLASS_DFLT_STATION                                  :Původní stanice
@@ -3210,6 +3228,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Typ tram
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rychlostní omezení tratě: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Rychlostní omezení silnice: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Omezení rychlosti pro tramvaje: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}Města mohou vylepšovat: {LTBLUE}Ano
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}Města mohou vylepšovat: {LTBLUE}Ne
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kamení
@@ -3218,6 +3238,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Prázdná země
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Travnatá země
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Pole
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Poušť
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Kameny pokryté sněhem
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Zasněžená hrubá zem
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Zasněžená tráva
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železniční trať
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železniční trať s obyčejnými návěstidly
@@ -3617,6 +3640,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Předcho
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jít na předchozí normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení začátku se jde na konec
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Zobrazení vybraného spritu. Posun se při jeho vykreslení neuvažoval
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Posouvání spritu změnou souřadnic X a Y. Ctrl+kliknutí posouvá o osm jednotek najednou.
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}Posunutí vystředění
@@ -4089,6 +4113,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produkuj
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Vyžaduje:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} čeká{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} čeká
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit produkci (násobky 8, až do 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Změna velikosti produkce (procentuelně, do 800%)
@@ -4749,6 +4777,8 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :silničním dep
 STR_ORDER_SHIP_DEPOT                                            :lodním depu
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} nejbližšího hangáru
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} nejbližšího {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Přestavět na {STRING})
@@ -4822,7 +4852,7 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Jeď {STRING} a
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Jeď ({STRING}, mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Jeď ({STRING}, mimo jízdní řád) při maximální rychlosti {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(zůstaň {STRING}, mimo jízdní řád)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(jet {STRING}, mimo jízdní řád)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(jet {STRING}, mimo jízdní řád)
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a jet {STRING}
 
@@ -4842,12 +4872,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Sekundy do zač
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Změnit čas
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit čas pro splnění jízdního příkazu. Ctrl+klik změní čas pro všechny příkazy.
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Změnit čas
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Smazat čas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit čas pro splnění jízdního příkazu. Ctrl+klik zruší čas pro všechny příkazy
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Změnit rychlostní limit
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Změnit maximální cestovní rychlost u vybraného příkazu. Ctrl+klik nastaví rychlost pro všechny příkazy
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Změnit rychlostní limit
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Odstranit rychlostní limit
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Odstranit maximální cestovní rychlost u vybraného příkazu. Ctrl+klik odstraní maximální rychlosti u všech příkazů
@@ -4953,7 +4985,7 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Snímek 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Herní skript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parametry herního skriptu
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -5390,6 +5422,7 @@ STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Nelze pr
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Nelze prodat všechna letadla...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Nepodařilo se provést automatickou náhradu letadla...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Příliš mnoho vozidel ve hře
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nelze změnit interval oprav...
@@ -5449,7 +5482,8 @@ STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Zde nen�
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Nejsou zde žádné stanice vhodné pro kloubové silniční vozidla.{}Kloubové silniční vozidla vyžadují průjezdnou stanici.
 STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Toto letadlo nemůže přistát na tomto letišti
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Tato helikoptéra nemůže přistát na tomto letišti
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Zde není žádný kolejový směrovač
+STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Zde není žádné železniční směrování
+STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Zde není žádné silniční směrování
 STR_ERROR_NO_BUOY                                               :{WHITE}Zde není žádná bójka
 
 # Timetable related errors
@@ -6085,3 +6119,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
