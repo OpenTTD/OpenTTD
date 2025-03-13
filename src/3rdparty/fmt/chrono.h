@@ -538,7 +538,7 @@ FMT_BEGIN_EXPORT
 inline auto localtime(std::time_t time) -> std::tm {
   struct dispatcher {
     std::time_t time_;
-    std::tm tm_;
+    std::tm tm_{};
 
     inline dispatcher(std::time_t t) : time_(t) {}
 
@@ -589,7 +589,7 @@ inline auto localtime(std::chrono::local_time<Duration> time) -> std::tm {
 inline auto gmtime(std::time_t time) -> std::tm {
   struct dispatcher {
     std::time_t time_;
-    std::tm tm_;
+    std::tm tm_{};
 
     inline dispatcher(std::time_t t) : time_(t) {}
 

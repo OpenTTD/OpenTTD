@@ -1719,7 +1719,7 @@ class format_string_checker {
 /// internal class and shouldn't be used directly, only via `memory_buffer`.
 template <typename T> class buffer {
  private:
-  T* ptr_;
+  T* ptr_ = nullptr;
   size_t size_;
   size_t capacity_;
 
