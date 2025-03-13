@@ -454,7 +454,7 @@ static bool RealMakeScreenshot(ScreenshotType t, const std::string &name, uint32
  * @return true iff the screenshot was successfully made.
  * @see MakeScreenshotWithConfirm
  */
-bool MakeScreenshot(ScreenshotType t, std::string name, uint32_t width, uint32_t height)
+bool MakeScreenshot(ScreenshotType t, const std::string &name, uint32_t width, uint32_t height)
 {
 	if (t == SC_CRASHLOG) {
 		/* Video buffer might or might not be locked. */
