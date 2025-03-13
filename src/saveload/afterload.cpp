@@ -1599,7 +1599,7 @@ bool AfterLoadGame()
 		 * loading again, even if it didn't actually load anything, so now the
 		 * amount that has been paid is stored. */
 		for (Vehicle *v : Vehicle::Iterate()) {
-			ClrBit(v->vehicle_flags, 2);
+			v->vehicle_flags.Reset(VehicleFlag{2});
 		}
 	}
 
@@ -1654,7 +1654,7 @@ bool AfterLoadGame()
 
 				/* The loading finished flag is *only* set when actually completely
 				 * finished. Because the vehicle is loading, it is not finished. */
-				ClrBit(v->vehicle_flags, VF_LOADING_FINISHED);
+				v->vehicle_flags.Reset(VehicleFlag::LoadingFinished);
 			}
 		}
 	} else if (IsSavegameVersionBefore(SLV_59)) {
@@ -2665,7 +2665,7 @@ bool AfterLoadGame()
 			if (!HasBit(t->flags, 5)) continue;
 
 			ClrBit(t->flags, 5);
-			SetBit(t->vehicle_flags, VF_PATHFINDER_LOST);
+			t->vehicle_flags.Set(VehicleFlag::PathfinderLost);
 		}
 
 		/* Introduced terraform/clear limits. */

@@ -1266,7 +1266,7 @@ void PrepareUnload(Vehicle *front_v)
 	curr_station->loading_vehicles.push_back(front_v);
 
 	/* At this moment loading cannot be finished */
-	ClrBit(front_v->vehicle_flags, VF_LOADING_FINISHED);
+	front_v->vehicle_flags.Reset(VehicleFlag::LoadingFinished);
 
 	/* Start unloading at the first possible moment */
 	front_v->load_unload_ticks = 1;
@@ -1290,7 +1290,7 @@ void PrepareUnload(Vehicle *front_v)
 						front_v->current_order.GetUnloadType(), ge,
 						v->cargo_type, front_v->cargo_payment,
 						v->GetCargoTile());
-				if (v->cargo.UnloadCount() > 0) SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
+				if (v->cargo.UnloadCount() > 0) v->vehicle_flags.Set(VehicleFlag::CargoUnloading);
 			}
 		}
 	}
@@ -1642,7 +1642,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	if (front->type == VEH_TRAIN && (!IsTileType(front->tile, MP_STATION) || GetStationIndex(front->tile) != st->index)) {
 		/* The train reversed in the station. Take the "easy" way
 		 * out and let the train just leave as it always did. */
-		SetBit(front->vehicle_flags, VF_LOADING_FINISHED);
+		front->vehicle_flags.Set(VehicleFlag::LoadingFinished);
 		front->load_unload_ticks = 1;
 		return;
 	}
@@ -1671,7 +1671,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
 
-		if (HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) && (front->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
+		if (v->vehicle_flags.Test(VehicleFlag::CargoUnloading) && (front->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 			uint cargo_count = v->cargo.UnloadCount();
 			uint amount_unloaded = _settings_game.order.gradual_loading ? std::min(cargo_count, GetLoadAmount(v)) : cargo_count;
 			bool remaining = false; // Are there cargo entities in this vehicle that can still be unloaded here?
@@ -1729,14 +1729,14 @@ static void LoadUnloadVehicle(Vehicle *front)
 				completely_emptied = false;
 			} else {
 				/* We have finished unloading (cargo count == 0) */
-				ClrBit(v->vehicle_flags, VF_CARGO_UNLOADING);
+				v->vehicle_flags.Reset(VehicleFlag::CargoUnloading);
 			}
 
 			continue;
 		}
 
 		/* Do not pick up goods when we have no-load set or loading is stopped. */
-		if (front->current_order.GetLoadType() & OLFB_NO_LOAD || HasBit(front->vehicle_flags, VF_STOP_LOADING)) continue;
+		if (front->current_order.GetLoadType() & OLFB_NO_LOAD || front->vehicle_flags.Test(VehicleFlag::StopLoading)) continue;
 
 		/* This order has a refit, if this is the first vehicle part carrying cargo and the whole vehicle is empty, try refitting. */
 		if (front->current_order.IsRefit() && artic_part == 1) {
@@ -1849,7 +1849,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 	if (!anything_unloaded) delete payment;
 
-	ClrBit(front->vehicle_flags, VF_STOP_LOADING);
+	front->vehicle_flags.Reset(VehicleFlag::StopLoading);
 	if (anything_loaded || anything_unloaded) {
 		if (_settings_game.order.gradual_loading) {
 			/* The time it takes to load one 'slice' of cargo or passengers depends
@@ -1862,7 +1862,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		 * load and we're not supposed to wait any longer: stop loading. */
 		if (!anything_unloaded && full_load_amount == 0 && reservation_left == 0 && !(front->current_order.GetLoadType() & OLFB_FULL_LOAD) &&
 				front->current_order_time >= std::max(front->current_order.GetTimetabledWait() - front->lateness_counter, 0)) {
-			SetBit(front->vehicle_flags, VF_STOP_LOADING);
+			front->vehicle_flags.Set(VehicleFlag::StopLoading);
 		}
 
 		UpdateLoadUnloadTicks(front, st, new_load_unload_ticks);
@@ -1889,7 +1889,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			if (!finished_loading) LinkRefresher::Run(front, true, true);
 		}
 
-		SB(front->vehicle_flags, VF_LOADING_FINISHED, 1, finished_loading);
+		front->vehicle_flags.Set(VehicleFlag::LoadingFinished, finished_loading);
 	}
 
 	/* Calculate the loading indicator fill percent and display

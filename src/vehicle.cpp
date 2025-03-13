@@ -789,10 +789,10 @@ void Vehicle::HandlePathfindingResult(bool path_found)
 {
 	if (path_found) {
 		/* Route found, is the vehicle marked with "lost" flag? */
-		if (!HasBit(this->vehicle_flags, VF_PATHFINDER_LOST)) return;
+		if (!this->vehicle_flags.Test(VehicleFlag::PathfinderLost)) return;
 
 		/* Clear the flag as the PF's problem was solved. */
-		ClrBit(this->vehicle_flags, VF_PATHFINDER_LOST);
+		this->vehicle_flags.Reset(VehicleFlag::PathfinderLost);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 		InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type));
 		/* Delete the news item. */
@@ -801,10 +801,10 @@ void Vehicle::HandlePathfindingResult(bool path_found)
 	}
 
 	/* Were we already lost? */
-	if (HasBit(this->vehicle_flags, VF_PATHFINDER_LOST)) return;
+	if (this->vehicle_flags.Test(VehicleFlag::PathfinderLost)) return;
 
 	/* It is first time the problem occurred, set the "lost" flag. */
-	SetBit(this->vehicle_flags, VF_PATHFINDER_LOST);
+	this->vehicle_flags.Set(VehicleFlag::PathfinderLost);
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type));
 
@@ -1505,10 +1505,10 @@ uint8_t CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 		count += v->cargo.StoredCount();
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0 && colour != nullptr) {
-			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
+			unloading += v->vehicle_flags.Test(VehicleFlag::CargoUnloading) ? 1 : 0;
 			loading |= !order_no_load &&
 					(order_full_load || st->goods[v->cargo_type].HasRating()) &&
-					!HasBit(front->vehicle_flags, VF_LOADING_FINISHED) && !HasBit(front->vehicle_flags, VF_STOP_LOADING);
+					!front->vehicle_flags.Test(VehicleFlag::LoadingFinished) && !front->vehicle_flags.Test(VehicleFlag::StopLoading);
 			cars++;
 		}
 	}
@@ -2425,7 +2425,7 @@ void Vehicle::HandleLoading(bool mode)
 			TimerGameTick::Ticks wait_time = std::max(this->current_order.GetTimetabledWait() - this->lateness_counter, 0);
 
 			/* Not the first call for this tick, or still loading */
-			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) || this->current_order_time < wait_time) return;
+			if (mode || !this->vehicle_flags.Test(VehicleFlag::LoadingFinished) || this->current_order_time < wait_time) return;
 
 			this->PlayLeaveStationSound();
 
