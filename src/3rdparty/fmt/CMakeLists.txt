@@ -1,10 +1,18 @@
 add_files(
+    args.h
+    base.h
     chrono.h
+    color.h
+    compile.h
     core.h
     format.cc
     format.h
     format-inl.h
+    os.cc
+    os.h
     ostream.h
+    printf.h
     ranges.h
     std.h
+    xchar.h
 )
