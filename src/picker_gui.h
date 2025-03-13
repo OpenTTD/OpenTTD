@@ -184,6 +184,7 @@ public:
 	void Close(int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize) override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
+	void OnDropdownSelect(WidgetID widget, int index, int click_result) override;
 	void OnResize() override;
 	void OnClick(Point pt, WidgetID widget, int click_count) override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
