@@ -758,7 +758,7 @@ static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack,
  * @param stack The TextRefStack.
  * @param[out] params Output parameters
  */
-static void RemapNewGRFStringControlCode(char32_t scc, const char **str, TextRefStack &stack, std::vector<StringParameter> &params)
+static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextRefStack &stack, std::vector<StringParameter> &params)
 {
 	/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
 	 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
@@ -797,7 +797,7 @@ static void RemapNewGRFStringControlCode(char32_t scc, const char **str, TextRef
 		case SCC_NEWGRF_DISCARD_WORD:           stack.PopUnsignedWord(); break;
 
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     stack.RotateTop4Words(); break;
-		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(Utf8Consume(str)); break;
+		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(Utf8Consume(&str)); break;
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
@@ -921,7 +921,7 @@ static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack,
 	for (const char *p = str; *p != '\0'; /* nothing */) {
 		char32_t scc;
 		p += Utf8Decode(&scc, p);
-		RemapNewGRFStringControlCode(scc, &p, stack, params);
+		ProcessNewGRFStringControlCode(scc, p, stack, params);
 	}
 }
 
