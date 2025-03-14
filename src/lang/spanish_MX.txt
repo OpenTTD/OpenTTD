@@ -1182,8 +1182,8 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizado (
 
 ###length 4
 STR_RIVERS_NONE                                                 :Ninguno
-STR_RIVERS_FEW                                                  :Muy pocos
-STR_RIVERS_MODERATE                                             :Algunos
+STR_RIVERS_FEW                                                  :Pocos
+STR_RIVERS_MODERATE                                             :Medio
 STR_RIVERS_LOT                                                  :Muchos
 
 ###length 3
@@ -1765,8 +1765,8 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dar un color es
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantener activas las herramientas de construcción tras su uso: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantener abiertas las herramientas de construcción de puentes, túneles, etc., después de usarlas
 
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Quitar señales de forma automática al construir ferrocarriles: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Quitar las señales de forma automática al construir ferrocarriles si estas obstruyen. Puede provocar choques de trenes
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Retirar señales de forma automática al construir ferrocarriles: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Retirar las señales de forma automática al construir ferrocarriles si estas obstruyen. Puede provocar choques de trenes
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Límite de velocidad del avance rápido: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Límite de velocidad del avance rápido. 0 significa sin límite o la velocidad que el sistema permita. Valores debajo de 100% retardan el juego. El límite más alto varía en factor de las capacidades del sistema y el juego
@@ -2804,7 +2804,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Colocar señales de ferrocarril. Ctrl+Clic cambia los estilos de señales. Clic y arrastrar rellena un tramo con señales intercaladas según la distancia indicada. Ctrl+Clic y arrastrar rellena un tramo con señales hasta la siguiente desviación, estación u otra señal. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril. Mayús+Clic solo muestra un costo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel de ferrocarril. Mayús+Clic solo muestra un costo estimado
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construir o quitar ferrocarriles, señales, estaciones o puntos de ruta. Ctrl+Clic incluye también las vías cuando se quita una estación o punto de ruta
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construir o retirar ferrocarriles, señales, estaciones o puntos de ruta. Ctrl+Clic incluye también las vías al retirar una estación o punto de ruta
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir o actualizar tipo de ferrocarril. Mayús+Clic solo muestra un costo estimado
 
 STR_RAIL_NAME_RAILROAD                                          :Ferrocarril

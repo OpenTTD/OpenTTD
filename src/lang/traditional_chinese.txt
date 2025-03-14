@@ -2303,11 +2303,11 @@ STR_LIVERY_MONORAIL                                             :單軌鐵道機
 STR_LIVERY_MAGLEV                                               :磁浮機車
 STR_LIVERY_DMU                                                  :柴聯車組
 STR_LIVERY_EMU                                                  :電聯車組
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :載客車廂 (蒸汽列車)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :載客車廂 (柴油列車)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :載客車廂 (電動列車)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :載客車廂 (單軌)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :載客車廂 (磁浮)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :客運機車（蒸汽）
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :客運機車（柴油機）
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :客運機車（電力）
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :客運機車（單軌）
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :客運機車（磁浮）
 STR_LIVERY_FREIGHT_WAGON                                        :載貨車廂
 STR_LIVERY_BUS                                                  :公車
 STR_LIVERY_TRUCK                                                :載貨卡車
@@ -5586,8 +5586,8 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (電力
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (電力)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (電力)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (電力)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :載客車廂
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :郵件車廂
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :客運車廂
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :郵務車廂
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :煤炭車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :油罐車
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :家畜車
@@ -5616,8 +5616,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :塑膠車
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (電力)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (電力)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :載客車廂
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :郵件車廂
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :客運車廂
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :郵務車廂
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :煤斗車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :油罐車
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :家畜車
@@ -5648,8 +5648,8 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' 
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (電力)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (電力)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :載客車廂
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :郵件車廂
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :客運車廂
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :郵務車廂
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :煤斗車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :油罐車
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :家畜車
