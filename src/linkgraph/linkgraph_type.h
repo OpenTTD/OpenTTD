@@ -43,13 +43,13 @@ enum DistributionType : uint8_t {
  * Refreshing a link makes just sure a minimum capacity is kept. Increasing
  * actually adds the given capacity.
  */
-enum EdgeUpdateMode : uint8_t {
-	EUM_INCREASE     = 1,      ///< Increase capacity.
-	EUM_REFRESH      = 1 << 1, ///< Refresh capacity.
-	EUM_RESTRICTED   = 1 << 2, ///< Use restricted link.
-	EUM_UNRESTRICTED = 1 << 3, ///< Use unrestricted link.
+enum class EdgeUpdateMode : uint8_t {
+	Increase, ///< Increase capacity.
+	Refresh, ///< Refresh capacity.
+	Restricted, ///< Use restricted link.
+	Unrestricted, ///< Use unrestricted link.
 };
 
-DECLARE_ENUM_AS_BIT_SET(EdgeUpdateMode)
+using EdgeUpdateModes = EnumBitSet<EdgeUpdateMode, uint8_t>;
 
 #endif /* LINKGRAPH_TYPE_H */

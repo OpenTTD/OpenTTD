@@ -61,7 +61,7 @@ public:
 		 */
 		TimerGameEconomy::Date LastUpdate() const { return std::max(this->last_unrestricted_update, this->last_restricted_update); }
 
-		void Update(uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
+		void Update(uint capacity, uint usage, uint32_t time, EdgeUpdateModes modes);
 		void Restrict() { this->last_unrestricted_update = EconomyTime::INVALID_DATE; }
 		void Release() { this->last_restricted_update = EconomyTime::INVALID_DATE; }
 
@@ -126,8 +126,8 @@ public:
 			this->demand = demand;
 		}
 
-		void AddEdge(NodeID to, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
-		void UpdateEdge(NodeID to, uint capacity, uint usage, uint32_t time, EdgeUpdateMode mode);
+		void AddEdge(NodeID to, uint capacity, uint usage, uint32_t time, EdgeUpdateModes modes);
+		void UpdateEdge(NodeID to, uint capacity, uint usage, uint32_t time, EdgeUpdateModes modes);
 		void RemoveEdge(NodeID to);
 
 		/**

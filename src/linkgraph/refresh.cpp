@@ -218,7 +218,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 
 			/* A link is at least partly restricted if a vehicle can't load at its source. */
 			EdgeUpdateMode restricted_mode = (cur->GetLoadType() & OLFB_NO_LOAD) == 0 ?
-						EUM_UNRESTRICTED : EUM_RESTRICTED;
+						EdgeUpdateMode::Unrestricted : EdgeUpdateMode::Restricted;
 			/* This estimates the travel time of the link as the time needed
 			 * to travel between the stations at half the max speed of the consist.
 			 * The result is in tiles/tick (= 2048 km-ish/h). */
@@ -236,14 +236,14 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 				if (effective_capacity > (uint)this->vehicle->orders->GetTotalDuration()) {
 					IncreaseStats(st, c, next_station, effective_capacity /
 							this->vehicle->orders->GetTotalDuration(), 0, 0,
-							EUM_INCREASE | restricted_mode);
+							{EdgeUpdateMode::Increase, restricted_mode});
 				} else if (RandomRange(this->vehicle->orders->GetTotalDuration()) < effective_capacity) {
-					IncreaseStats(st, c, next_station, 1, 0, 0, EUM_INCREASE | restricted_mode);
+					IncreaseStats(st, c, next_station, 1, 0, 0, {EdgeUpdateMode::Increase, restricted_mode});
 				} else {
-					IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, EUM_REFRESH | restricted_mode);
+					IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, {EdgeUpdateMode::Refresh, restricted_mode});
 				}
 			} else {
-				IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, EUM_REFRESH | restricted_mode);
+				IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, {EdgeUpdateMode::Refresh, restricted_mode});
 			}
 		}
 	}
