@@ -9957,6 +9957,13 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 
 		if (type == 0xFF) {
 			if (_cur.skip_sprites == 0) {
+				/* Limit the special sprites to 1 MiB. */
+				if (num > 1024 * 1024) {
+					GrfMsg(0, "LoadNewGRFFile: Unexpectedly large sprite, disabling");
+					DisableGrf(STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
+					break;
+				}
+
 				DecodeSpecialSprite(buf.Allocate(num), num, stage);
 
 				/* Stop all processing if we are to skip the remaining sprites */
