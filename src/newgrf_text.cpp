@@ -121,7 +121,7 @@ struct UnmappedChoiceList {
 	int offset;             ///< The offset for the plural/gender form.
 
 	/** Mapping of NewGRF supplied ID to the different strings in the choice list. */
-	std::map<uint8_t, std::stringstream> strings;
+	std::map<int, std::stringstream> strings;
 
 	/**
 	 * Flush this choice list into the destination string.
