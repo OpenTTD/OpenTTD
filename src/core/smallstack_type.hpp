@@ -191,8 +191,8 @@ public:
 	 */
 	inline void Push(const Titem &item)
 	{
+		std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 		if (this->value != Tinvalid) {
-			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			Tindex new_item = SmallStack::GetPool().Create();
 			if (new_item != Tmax_size) {
 				PooledSmallStack &pushed = SmallStack::GetPool().Get(new_item);
@@ -211,11 +211,11 @@ public:
 	 */
 	inline Titem Pop()
 	{
+		std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 		Titem ret = this->value;
 		if (this->next == Tmax_size) {
 			this->value = Tinvalid;
 		} else {
-			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			PooledSmallStack &popped = SmallStack::GetPool().Get(this->next);
 			this->value = popped.value;
 			if (popped.branch_count == 0) {
