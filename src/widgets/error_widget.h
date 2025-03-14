@@ -12,9 +12,11 @@
 
 /** Widgets of the #ErrmsgWindow class. */
 enum ErrorMessageWidgets : WidgetID {
-	WID_EM_CAPTION, ///< Caption of the window.
-	WID_EM_FACE,    ///< Error title.
-	WID_EM_MESSAGE, ///< Error message.
+	WID_EM_CAPTION,  ///< Caption of the window.
+	WID_EM_FACE,     ///< Error title.
+	WID_EM_MESSAGE,  ///< Error message.
+	WID_EM_CLOSEBOX, ///< Close box button.
+	WID_EM_PANEL,    ///< Coloured background panel.
 };
 
 #endif /* WIDGETS_ERROR_WIDGET_H */

@@ -30,7 +30,7 @@ enum WarningLevel : uint8_t {
 /** The data of the error message. */
 class ErrorMessageData {
 protected:
-	bool is_critical;               ///< Whether the error message is critical.
+	WarningLevel level; ///< Level of the error message (e.g. whether it's a critical error).
 	EncodedString summary_msg; ///< General error message showed in first line. Must be valid.
 	EncodedString detailed_msg; ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
 	EncodedString extra_msg; ///< Extra error message shown in third line. Can be #INVALID_STRING_ID.
@@ -38,7 +38,7 @@ protected:
 	CompanyID company; ///< Company belonging to the face being shown. #CompanyID::Invalid() if no face present.
 
 public:
-	ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical = false, int x = 0, int y = 0, EncodedString &&extra_msg = {}, CompanyID company = CompanyID::Invalid());
+	ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel level = WL_ERROR, int x = 0, int y = 0, EncodedString &&extra_msg = {}, CompanyID company = CompanyID::Invalid());
 
 	/** Check whether error window shall display a company manager face */
 	bool HasFace() const { return company != CompanyID::Invalid(); }
