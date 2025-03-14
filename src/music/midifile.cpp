@@ -458,6 +458,8 @@ bool MidiFile::LoadFile(const std::string &filename)
 	if (header.format != 0 && header.format != 1) return false;
 	/* Doesn't support SMPTE timecode files */
 	if ((header.tickdiv & 0x8000) != 0) return false;
+	/* Ticks per beat / parts per quarter note should not be zero. */
+	if (header.tickdiv == 0) return false;
 
 	this->tickdiv = header.tickdiv;
 
