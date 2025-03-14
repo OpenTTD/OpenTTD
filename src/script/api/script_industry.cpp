@@ -48,11 +48,11 @@
 	return ::StrMakeValid(::GetString(STR_INDUSTRY_NAME, industry_id));
 }
 
-/* static */ ScriptDate::Date ScriptIndustry::GetConstructionDate(IndustryID industry_id)
+/* static */ ScriptCalendarDate *ScriptIndustry::GetConstructionDate(IndustryID industry_id)
 {
 	const Industry *i = Industry::GetIfValid(industry_id);
-	if (i == nullptr) return ScriptDate::DATE_INVALID;
-	return (ScriptDate::Date)i->construction_date.base();
+	if (i == nullptr) return new ScriptCalendarDate();
+	return new ScriptCalendarDate(static_cast<ScriptCalendarDate::Date>(i->construction_date.base()));
 }
 
 /* static */ bool ScriptIndustry::SetText(IndustryID industry_id, Text *text)
@@ -225,18 +225,18 @@
 	return i->last_prod_year.base();
 }
 
-/* static */ ScriptDate::Date ScriptIndustry::GetCargoLastAcceptedDate(IndustryID industry_id, CargoType cargo_type)
+/* static */ ScriptEconomyDate *ScriptIndustry::GetCargoLastAcceptedDate(IndustryID industry_id, CargoType cargo_type)
 {
 	const Industry *i = Industry::GetIfValid(industry_id);
-	if (i == nullptr) return ScriptDate::DATE_INVALID;
+	if (i == nullptr) return new ScriptEconomyDate();
 
 	if (!::IsValidCargoType(cargo_type)) {
 		auto it = std::max_element(std::begin(i->accepted), std::end(i->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
-		return (ScriptDate::Date)it->last_accepted.base();
+		return new ScriptEconomyDate(static_cast<ScriptEconomyDate::Date>(it->last_accepted.base()));
 	} else {
 		auto it = i->GetCargoAccepted(cargo_type);
-		if (it == std::end(i->accepted)) return ScriptDate::DATE_INVALID;
-		return (ScriptDate::Date)it->last_accepted.base();
+		if (it == std::end(i->accepted)) return new ScriptEconomyDate();
+		return new ScriptEconomyDate(static_cast<ScriptEconomyDate::Date>(it->last_accepted.base()));
 	}
 }
 
