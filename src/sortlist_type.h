@@ -218,7 +218,7 @@ public:
 	bool NeedResort()
 	{
 		if (--this->resort_timer == 0) {
-			this->flags.Reset(SortListFlag::Resort);
+			this->flags.Set(SortListFlag::Resort);
 			this->ResetResortTimer();
 			return true;
 		}
