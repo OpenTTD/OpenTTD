@@ -35,10 +35,10 @@
 
 static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_RED),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED, WID_EM_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION), SetStringTip(STR_ERROR_MESSAGE_CAPTION),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_RED),
+	NWidget(WWT_PANEL, COLOUR_RED, WID_EM_PANEL),
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_EM_MESSAGE), SetPadding(WidgetDimensions::unscaled.modalpopup), SetFill(1, 0), SetMinimalSize(236, 0),
 	EndContainer(),
 };
@@ -52,10 +52,10 @@ static WindowDesc _errmsg_desc(
 
 static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_RED),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED, WID_EM_CLOSEBOX),
 		NWidget(WWT_CAPTION, COLOUR_RED, WID_EM_CAPTION),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_RED),
+	NWidget(WWT_PANEL, COLOUR_RED, WID_EM_PANEL),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_EM_FACE), SetPadding(2, 0, 2, 2), SetFill(0, 1), SetMinimalSize(92, 119),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_EM_MESSAGE), SetPadding(WidgetDimensions::unscaled.modalpopup), SetFill(1, 1), SetMinimalSize(236, 0),
@@ -74,13 +74,13 @@ static WindowDesc _errmsg_face_desc(
  * Display an error message in a window.
  * @param summary_msg  General error message showed in first line. Must be valid.
  * @param detailed_msg Detailed error message showed in second line. Can be empty.
- * @param is_critical  Whether the error is critical. Critical messages never go away on their own.
+ * @param level        Warning/error level of the message. NOTE: critical messages never go away on their own.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param extra_msg    Extra error message showed in third line. Can be empty.
  */
-ErrorMessageData::ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical, int x, int y, EncodedString &&extra_msg, CompanyID company) :
-	is_critical(is_critical),
+ErrorMessageData::ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel level, int x, int y, EncodedString &&extra_msg, CompanyID company) :
+	level(level),
 	summary_msg(std::move(summary_msg)),
 	detailed_msg(std::move(detailed_msg)),
 	extra_msg(std::move(extra_msg)),
@@ -113,8 +113,15 @@ public:
 	{
 		this->InitNested();
 
+		Colours window_colour = COLOUR_RED;
+		if (level == WL_INFO) window_colour = COLOUR_GREEN;
+		if (level == WL_WARNING) window_colour = COLOUR_ORANGE;
+		this->GetWidget<NWidgetCore>(WID_EM_CAPTION)->colour = window_colour;
+		this->GetWidget<NWidgetCore>(WID_EM_CLOSEBOX)->colour = window_colour;
+		this->GetWidget<NWidgetCore>(WID_EM_PANEL)->colour = window_colour;
+
 		/* Only start the timeout if the message is not critical. */
-		if (!this->is_critical) {
+		if (this->level != WL_CRITICAL) {
 			this->display_timeout.Reset();
 		}
 	}
@@ -225,7 +232,7 @@ public:
 	void OnMouseLoop() override
 	{
 		/* Disallow closing the window too easily, if timeout is disabled */
-		if (_right_button_down && !this->is_critical) this->Close();
+		if (_right_button_down && this->level != WL_CRITICAL) this->Close();
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
@@ -241,7 +248,7 @@ public:
 	 */
 	bool IsCritical()
 	{
-		return this->is_critical;
+		return this->level == WL_CRITICAL;
 	}
 };
 
@@ -281,7 +288,7 @@ void UnshowCriticalError()
 
 /**
  * Display an error message in a window.
- * Note: CommandCost errors are always severity level WL_INFO.
+ * Note: CommandCost errors are always severity level WL_ERROR.
  * @param summary_msg  General error message showed in first line. Must be valid.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
@@ -292,7 +299,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, const CommandCo
 	EncodedString error = std::move(cc.GetEncodedMessage());
 	if (error.empty()) error = GetEncodedStringIfValid(cc.GetErrorMessage());
 
-	ShowErrorMessage(std::move(summary_msg), std::move(error), WL_INFO, x, y,
+	ShowErrorMessage(std::move(summary_msg), std::move(error), WL_ERROR, x, y,
 		GetEncodedStringIfValid(cc.GetExtraErrorMessage()), cc.GetErrorOwner());
 }
 
@@ -323,12 +330,10 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 		IConsolePrint(wl == WL_WARNING ? CC_WARNING : CC_ERROR, message);
 	}
 
-	bool is_critical = wl == WL_CRITICAL;
-
 	if (_game_mode == GM_BOOTSTRAP) return;
-	if (_settings_client.gui.errmsg_duration == 0 && !is_critical) return;
+	if (_settings_client.gui.errmsg_duration == 0 && wl != WL_CRITICAL) return;
 
-	ErrorMessageData data(std::move(summary_msg), std::move(detailed_msg), is_critical, x, y, std::move(extra_msg), company);
+	ErrorMessageData data(std::move(summary_msg), std::move(detailed_msg), wl, x, y, std::move(extra_msg), company);
 
 	ErrmsgWindow *w = dynamic_cast<ErrmsgWindow *>(FindWindowById(WC_ERRMSG, 0));
 	if (w != nullptr) {
