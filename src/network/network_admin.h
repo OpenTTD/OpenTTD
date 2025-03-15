@@ -43,7 +43,7 @@ protected:
 	NetworkRecvStatus SendAuthRequest();
 	NetworkRecvStatus SendEnableEncryption();
 public:
-	std::array<AdminUpdateFrequency, ADMIN_UPDATE_END> update_frequency{}; ///< Admin requested update intervals.
+	std::array<AdminUpdateFrequencies, ADMIN_UPDATE_END> update_frequency{}; ///< Admin requested update intervals.
 	std::chrono::steady_clock::time_point connect_time{}; ///< Time of connection.
 	NetworkAddress address{}; ///< Address of the admin.
 
