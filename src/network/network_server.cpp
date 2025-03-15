@@ -1874,7 +1874,7 @@ static IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy
 {
 	if (!_network_server) return;
 
-	NetworkAdminUpdate(ADMIN_FREQUENCY_ANUALLY);
+	NetworkAdminUpdate(AdminUpdateFrequency::Annually);
 });
 
 /** Quarterly "callback". Called whenever the economy quarter changes. */
@@ -1883,7 +1883,7 @@ static IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUA
 	if (!_network_server) return;
 
 	NetworkAutoCleanCompanies();
-	NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
+	NetworkAdminUpdate(AdminUpdateFrequency::Quarterly);
 });
 
 /** Economy monthly "callback". Called whenever the economy month changes. */
@@ -1892,7 +1892,7 @@ static IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH
 	if (!_network_server) return;
 
 	NetworkAutoCleanCompanies();
-	NetworkAdminUpdate(ADMIN_FREQUENCY_MONTHLY);
+	NetworkAdminUpdate(AdminUpdateFrequency::Monthly);
 });
 
 /** Economy weekly "callback". Called whenever the economy week changes. */
@@ -1900,7 +1900,7 @@ static IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, 
 {
 	if (!_network_server) return;
 
-	NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
+	NetworkAdminUpdate(AdminUpdateFrequency::Weekly);
 });
 
 /** Daily "callback". Called whenever the economy date changes. */
@@ -1908,7 +1908,7 @@ static IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy:
 {
 	if (!_network_server) return;
 
-	NetworkAdminUpdate(ADMIN_FREQUENCY_DAILY);
+	NetworkAdminUpdate(AdminUpdateFrequency::Daily);
 });
 
 /**
