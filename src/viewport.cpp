@@ -1833,7 +1833,7 @@ void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom
 	dp.zoom = ZOOM_LVL_MIN;
 	dp.width = UnScaleByZoom(dp.width, zoom);
 	dp.height = UnScaleByZoom(dp.height, zoom);
-	_cur_dpi = &dp;
+	AutoRestoreBackup cur_dpi(_cur_dpi, &dp);
 
 	if (vp->overlay != nullptr && vp->overlay->GetCargoMask() != 0 && vp->overlay->GetCompanyMask().Any()) {
 		/* translate to window coordinates */

@@ -9910,8 +9910,8 @@ static void DecodeSpecialSprite(uint8_t *buf, uint num, GrfLoadingStage stage)
  */
 static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, SpriteFile &file)
 {
-	_cur.file = &file;
-	_cur.grfconfig = &config;
+	AutoRestoreBackup cur_file(_cur.file, &file);
+	AutoRestoreBackup cur_config(_cur.grfconfig, &config);
 
 	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
 
