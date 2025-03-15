@@ -34,7 +34,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	switch (::GetTileType(t)) {
 		default: break;
 		case MP_STATION:
-			if (IsBuoy(t) || IsRailWaypoint(t)) return OT_GOTO_WAYPOINT;
+			if (IsBuoy(t) || IsRailWaypoint(t) || IsRoadWaypoint(t)) return OT_GOTO_WAYPOINT;
 			if (IsHangar(t)) return OT_GOTO_DEPOT;
 			return OT_GOTO_STATION;
 
@@ -297,8 +297,12 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 				for (TileIndex t : wp->train_station) {
 					if (wp->TileBelongsToRailStation(t)) return t;
 				}
+			} else if (wp->road_waypoint_area.tile != INVALID_TILE) {
+				for (TileIndex t : wp->road_waypoint_area) {
+					if (::IsRoadWaypointTile(t) && ::GetStationIndex(t) == wp->index) return t;
+				}
 			}
-			/* If the waypoint has no rail waypoint tiles, it must have a buoy */
+			/* If the waypoint has no rail or road waypoint tiles, it must have a buoy */
 			return wp->xy;
 		}
 		default:               return INVALID_TILE;
