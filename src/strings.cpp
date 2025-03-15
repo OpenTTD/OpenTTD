@@ -1227,7 +1227,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 							break;
 						}
 						/* Otherwise skip to the next case */
-						str += 3 + (str[1] << 8) + str[2];
+						str += 3 + (static_cast<uint8_t>(str[1]) << 8) + static_cast<uint8_t>(str[2]);
 						num--;
 					}
 					break;
