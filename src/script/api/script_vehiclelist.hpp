@@ -104,7 +104,6 @@ class ScriptVehicleList_Group : public ScriptList {
 public:
 	/**
 	 * @param group_id The ID of the group the vehicles are in.
-	 * @game @pre ScriptCompanyMode::IsValid().
 	 */
 	ScriptVehicleList_Group(GroupID group_id);
 };
@@ -118,7 +117,6 @@ class ScriptVehicleList_DefaultGroup : public ScriptList {
 public:
 	/**
 	 * @param vehicle_type The VehicleType to get the list of vehicles for.
-	 * @game @pre ScriptCompanyMode::IsValid().
 	 */
 	ScriptVehicleList_DefaultGroup(ScriptVehicle::VehicleType vehicle_type);
 };
