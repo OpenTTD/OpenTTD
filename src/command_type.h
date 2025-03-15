@@ -28,8 +28,7 @@ class CommandCost {
 	bool success;                               ///< Whether the command went fine up to this moment
 	Owner owner = CompanyID::Invalid(); ///< Originator owner of error.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
-
-	static EncodedString encoded_message; ///< Encoded error message, used if the error message includes parameters.
+	EncodedString encoded_message{}; ///< Encoded error message, used if the error message includes parameters.
 
 public:
 	/**
@@ -70,18 +69,18 @@ public:
 	 * @note Do not set an encoded message if the error is not for the local player, as it will never be seen.
 	 * @param message EncodedString message to set.
 	 */
-	static void SetEncodedMessage(EncodedString &&message)
+	void SetEncodedMessage(EncodedString &&message)
 	{
-		CommandCost::encoded_message = std::move(message);
+		this->encoded_message = std::move(message);
 	}
 
 	/**
 	 * Get the last encoded error message.
 	 * @returns Reference to the encoded message.
 	 */
-	static EncodedString &GetEncodedMessage()
+	EncodedString &GetEncodedMessage()
 	{
-		return CommandCost::encoded_message;
+		return this->encoded_message;
 	}
 
 	/**

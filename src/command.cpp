@@ -235,7 +235,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
  * @param err_message Message prefix to show on error.
  * @param my_cmd Is the command from this client?
  */
-void CommandHelperBase::InternalPostResult(const CommandCost &res, TileIndex tile, bool estimate_only, bool only_sending, StringID err_message, bool my_cmd)
+void CommandHelperBase::InternalPostResult(CommandCost &res, TileIndex tile, bool estimate_only, bool only_sending, StringID err_message, bool my_cmd)
 {
 	int x = TileX(tile) * TILE_SIZE;
 	int y = TileY(tile) * TILE_SIZE;
@@ -406,8 +406,6 @@ void CommandCost::AddCost(const CommandCost &ret)
 		this->success = false;
 	}
 }
-
-/* static */ EncodedString CommandCost::encoded_message;
 
 /**
  * Return an error status, with string and parameter.
