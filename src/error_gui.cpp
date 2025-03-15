@@ -107,7 +107,7 @@ public:
 	ErrmsgWindow(const ErrorMessageData &data) :
 		Window(data.HasFace() ? _errmsg_face_desc : _errmsg_desc),
 		ErrorMessageData(data),
-		display_timeout(std::chrono::seconds(3 * _settings_client.gui.errmsg_duration), [this]() {
+		display_timeout(std::chrono::seconds(_settings_client.gui.errmsg_duration), [this]() {
 			this->Close();
 		})
 	{
