@@ -3765,7 +3765,6 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 
 				for (uint8_t j = 0; j < new_num_layouts; j++) {
 					layout.clear();
-					layout.reserve(new_num_layouts);
 
 					for (uint k = 0;; k++) {
 						if (bytes_read >= definition_size) {
@@ -3843,8 +3842,6 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 					if (!ValidateIndustryLayout(layout)) {
 						/* The industry layout was not valid, so skip this one. */
 						GrfMsg(1, "IndustriesChangeInfo: Invalid industry layout for industry id {}. Ignoring", id);
-						new_num_layouts--;
-						j--;
 					} else {
 						new_layouts.push_back(layout);
 					}
