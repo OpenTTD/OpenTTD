@@ -203,6 +203,9 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 	}
 	chunk_length = FROM_BE32(chunk_length);
 
+	/* Limit chunk size to 1 MiB. */
+	if (chunk_length > 1024 * 1024) return false;
+
 	ByteBuffer chunk(file, chunk_length);
 	if (!chunk.IsValid()) {
 		return false;
