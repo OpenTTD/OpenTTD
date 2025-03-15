@@ -3926,7 +3926,7 @@ static void UpdateStationRating(Station *st)
 				int or_ = ge->rating; // old rating
 
 				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-				ge->rating = rating = or_ + Clamp(ClampTo<uint8_t>(rating) - or_, -2, 2);
+				ge->rating = rating = ClampTo<uint8_t>(or_ + Clamp(rating - or_, -2, 2));
 
 				/* if rating is <= 64 and more than 100 items waiting on average per destination,
 				 * remove some random amount of goods from the station */
