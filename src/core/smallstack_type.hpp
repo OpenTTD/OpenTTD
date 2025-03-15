@@ -10,8 +10,6 @@
 #ifndef SMALLSTACK_TYPE_HPP
 #define SMALLSTACK_TYPE_HPP
 
-#include <mutex>
-
 /**
  * A simplified pool which stores values instead of pointers and doesn't
  * redefine operator new/delete. It also never zeroes memory and always reuses
@@ -21,13 +19,6 @@ template <typename Titem, typename Tindex, Tindex Tgrowth_step, Tindex Tmax_size
 class SimplePool {
 public:
 	inline SimplePool() : first_unused(0), first_free(0) {}
-
-	/**
-	 * Get the mutex. We don't lock the mutex in the pool methods as the
-	 * SmallStack isn't necessarily in a consistent state after each method.
-	 * @return Mutex.
-	 */
-	inline std::mutex &GetMutex() { return this->mutex; }
 
 	/**
 	 * Get the item at position index.
@@ -82,7 +73,6 @@ private:
 	Tindex first_unused;
 	Tindex first_free;
 
-	std::mutex mutex;
 	std::vector<SimplePoolPoolItem> data;
 };
 
@@ -121,10 +111,6 @@ struct SmallStackItem {
  * 5. You can choose your own index type, so that you can align it with your
  *    value type. E.G. value types of 16 bits length like to be combined with
  *    index types of the same length.
- * 6. All accesses to the underlying pool are guarded by a mutex and atomic in
- *    the sense that the mutex stays locked until the pool has reacquired a
- *    consistent state. This means that even though a common data structure is
- *    used the SmallStack is still reentrant.
  * @tparam Titem Value type to be used.
  * @tparam Tindex Index type to use for the pool.
  * @tparam Tinvalid Invalid item to keep at the bottom of each stack.
@@ -157,7 +143,6 @@ public:
 	 */
 	inline ~SmallStack()
 	{
-		/* Pop() locks the mutex and after each pop the pool is consistent.*/
 		while (this->next != Tmax_size) this->Pop();
 	}
 
@@ -192,7 +177,6 @@ public:
 	inline void Push(const Titem &item)
 	{
 		if (this->value != Tinvalid) {
-			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			Tindex new_item = SmallStack::GetPool().Create();
 			if (new_item != Tmax_size) {
 				PooledSmallStack &pushed = SmallStack::GetPool().Get(new_item);
@@ -215,22 +199,18 @@ public:
 		if (this->next == Tmax_size) {
 			this->value = Tinvalid;
 		} else {
-			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			PooledSmallStack &popped = SmallStack::GetPool().Get(this->next);
 			this->value = popped.value;
 			if (popped.branch_count == 0) {
 				SmallStack::GetPool().Destroy(this->next);
 			} else {
 				--popped.branch_count;
-				/* We can't use Branch() here as we already have the mutex.*/
 				if (popped.next != Tmax_size) {
 					++(SmallStack::GetPool().Get(popped.next).branch_count);
 				}
 			}
 			/* Accessing popped here is no problem as the pool will only set
-			 * the validity flag, not actually delete the item, on Destroy().
-			 * It's impossible for another thread to acquire the same item in
-			 * the mean time because of the mutex. */
+			 * the validity flag, not actually delete the item, on Destroy(). */
 			this->next = popped.next;
 		}
 		return ret;
@@ -254,7 +234,6 @@ public:
 	{
 		if (item == Tinvalid || item == this->value) return true;
 		if (this->next != Tmax_size) {
-			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			const SmallStack *in_list = this;
 			do {
 				in_list = static_cast<const SmallStack *>(
@@ -278,7 +257,6 @@ protected:
 	inline void Branch()
 	{
 		if (this->next != Tmax_size) {
-			std::lock_guard<std::mutex> lock(SmallStack::GetPool().GetMutex());
 			++(SmallStack::GetPool().Get(this->next).branch_count);
 		}
 	}
