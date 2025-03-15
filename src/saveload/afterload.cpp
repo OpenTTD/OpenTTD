@@ -181,15 +181,6 @@ static void UpdateExclusiveRights()
 	for (Town *t : Town::Iterate()) {
 		t->exclusivity = CompanyID::Invalid();
 	}
-
-	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
-	 *   could be implemented this way:
-	 * 1.) Go through all stations
-	 *     Build an array town_blocked[ town_id ][ company_id ]
-	 *     that stores if at least one station in that town is blocked for a company
-	 * 2.) Go through that array, if you find a town that is not blocked for
-	 *     one company, but for all others, then give it exclusivity.
-	 */
 }
 
 static const uint8_t convert_currency[] = {

@@ -948,9 +948,6 @@ static bool AircraftController(Aircraft *v)
 		SetBit(v->flags, VAF_HELI_DIRECT_DESCENT);
 
 		if (st == nullptr) {
-			/* FIXME - AircraftController -> if station no longer exists, do not land
-			 * helicopter will circle until sign disappears, then go to next order
-			 * what to do when it is the only order left, right now it just stays in 1 place */
 			v->state = FLYING;
 			UpdateAircraftCache(v);
 			AircraftNextAirportPos_and_Order(v);
