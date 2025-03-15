@@ -30,11 +30,16 @@ public:
 		CC_EXPRESS      = ::CargoClasses{::CargoClass::Express}.base(),      ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
 		CC_ARMOURED     = ::CargoClasses{::CargoClass::Armoured}.base(),     ///< Armoured cargo (Valuables, Gold, Diamonds)
 		CC_BULK         = ::CargoClasses{::CargoClass::Bulk}.base(),         ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
-		CC_PIECE_GOODS  = ::CargoClasses{::CargoClass::PieceGoods}.base(),  ///< Piece goods (Livestock, Wood, Steel, Paper)
+		CC_PIECE_GOODS  = ::CargoClasses{::CargoClass::PieceGoods}.base(),   ///< Piece goods (Livestock, Wood, Steel, Paper)
 		CC_LIQUID       = ::CargoClasses{::CargoClass::Liquid}.base(),       ///< Liquids (Oil, Water, Rubber)
 		CC_REFRIGERATED = ::CargoClasses{::CargoClass::Refrigerated}.base(), ///< Refrigerated cargo (Food, Fruit)
 		CC_HAZARDOUS    = ::CargoClasses{::CargoClass::Hazardous}.base(),    ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
 		CC_COVERED      = ::CargoClasses{::CargoClass::Covered}.base(),      ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
+		CC_OVERSIZED    = ::CargoClasses{::CargoClass::Oversized}.base(),    ///< Oversized (stake/flatbed wagon)
+		CC_POWDERIZED   = ::CargoClasses{::CargoClass::Powderized}.base(),   ///< Powderized, moist protected (powder/silo wagon)
+		CC_NON_POURABLE = ::CargoClasses{::CargoClass::NotPourable}.base(),  ///< Non-pourable (open wagon, but not hopper wagon)
+		CC_POTABLE      = ::CargoClasses{::CargoClass::Potable}.base(),      ///< Potable / food / clean.
+		CC_NON_POTABLE  = ::CargoClasses{::CargoClass::NonPotable}.base(),   ///< Non-potable / non-food / dirty.
 	};
 
 	/**
