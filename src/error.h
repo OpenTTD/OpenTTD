@@ -50,7 +50,7 @@ typedef std::list<ErrorMessageData> ErrorList;
 void ScheduleErrorMessage(ErrorList &datas);
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
-void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, const CommandCost &cc);
+void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc);
 void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg, WarningLevel wl, int x = 0, int y = 0, EncodedString &&extra_msg = {}, CompanyID company = CompanyID::Invalid());
 bool HideActiveErrorMessage();
 

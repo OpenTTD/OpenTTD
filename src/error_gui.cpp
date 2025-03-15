@@ -287,7 +287,7 @@ void UnshowCriticalError()
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param cc           CommandCost containing the optional detailed and extra error messages shown in the second and third lines (can be empty).
  */
-void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, const CommandCost &cc)
+void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc)
 {
 	EncodedString error = std::move(cc.GetEncodedMessage());
 	if (error.empty()) error = GetEncodedStringIfValid(cc.GetErrorMessage());
