@@ -252,7 +252,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 	}
 
 	/* Helper variable for a possible (string) mapping. */
-	UnmappedChoiceList *mapping = nullptr;
+	std::optional<UnmappedChoiceList> mapping;
 
 	std::ostringstream dest;
 	std::ostreambuf_iterator<char> d(dest);
@@ -381,7 +381,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x10:
 					case 0x11:
 						if (str[0] == '\0') goto string_end;
-						if (mapping == nullptr) {
+						if (!mapping.has_value()) {
 							if (code == 0x10) src++; // Skip the index
 							GrfMsg(1, "choice list {} marker found when not expected", code == 0x10 ? "next" : "default");
 							break;
@@ -396,13 +396,12 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 						break;
 
 					case 0x12:
-						if (mapping == nullptr) {
+						if (!mapping.has_value()) {
 							GrfMsg(1, "choice list end marker found when not expected");
 						} else {
 							/* Now we can start flushing everything and clean everything up. */
 							mapping->Flush(LanguageMap::GetLanguageMap(grfid, language_id), dest);
-							delete mapping;
-							mapping = nullptr;
+							mapping.reset();
 
 							d = std::ostreambuf_iterator<char>(dest);
 						}
@@ -412,12 +411,12 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x14:
 					case 0x15:
 						if (src[0] == '\0') goto string_end;
-						if (mapping != nullptr) {
+						if (mapping.has_value()) {
 							GrfMsg(1, "choice lists can't be stacked, it's going to get messy now...");
 							if (code != 0x14) src++;
 						} else {
 							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST };
-							mapping = new UnmappedChoiceList(mp[code - 0x13], code == 0x14 ? 0 : *src++);
+							mapping.emplace(mp[code - 0x13], code == 0x14 ? 0 : *src++);
 						}
 						break;
 
@@ -469,9 +468,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 	}
 
 string_end:
-	if (mapping != nullptr) {
+	if (mapping.has_value()) {
 		GrfMsg(1, "choice list was incomplete, the whole list is ignored");
-		delete mapping;
 	}
 
 	return dest.str();
