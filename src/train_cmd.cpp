@@ -4178,6 +4178,8 @@ void Train::OnNewCalendarDay()
 /** Economy day handler. */
 void Train::OnNewEconomyDay()
 {
+	PerformanceAccumulator framerate(PFE_GL_TRAINS);
+
 	EconomyAgeVehicle(this);
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
