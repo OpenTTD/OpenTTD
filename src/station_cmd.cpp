@@ -3607,8 +3607,6 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 
 static void TileLoop_Station(TileIndex tile)
 {
-	/* FIXME -- GetTileTrackStatus_Station -> animated stationtiles
-	 * hardcoded.....not good */
 	switch (GetStationType(tile)) {
 		case StationType::Airport:
 			AirportTileAnimationTrigger(Station::GetByTile(tile), tile, AAT_TILELOOP);
