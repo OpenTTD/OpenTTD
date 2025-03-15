@@ -21,7 +21,6 @@
 #include "../progress.h"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
-#include "../core/mem_func.hpp"
 #include "../core/geometry_func.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
@@ -144,7 +143,7 @@ bool VideoDriver_SDL_OpenGL::AllocateBackingStore(int w, int h, bool force)
 
 	w = std::max(w, 64);
 	h = std::max(h, 64);
-	MemSetT(&this->dirty_rect, 0);
+	this->dirty_rect = {};
 
 	bool res = OpenGLBackend::Get()->Resize(w, h, force);
 	SDL_GL_SwapWindow(this->sdl_window);
@@ -167,7 +166,7 @@ void VideoDriver_SDL_OpenGL::ReleaseVideoPointer()
 {
 	if (this->anim_buffer != nullptr) OpenGLBackend::Get()->ReleaseAnimBuffer(this->dirty_rect);
 	OpenGLBackend::Get()->ReleaseVideoBuffer(this->dirty_rect);
-	MemSetT(&this->dirty_rect, 0);
+	this->dirty_rect = {};
 	this->anim_buffer = nullptr;
 }
 

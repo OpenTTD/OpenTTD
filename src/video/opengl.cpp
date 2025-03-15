@@ -29,9 +29,7 @@
 
 #include "opengl.h"
 #include "../core/geometry_func.hpp"
-#include "../core/mem_func.hpp"
 #include "../core/math_func.hpp"
-#include "../core/mem_func.hpp"
 #include "../gfx_func.h"
 #include "../debug.h"
 #include "../blitter/factory.hpp"
@@ -1315,7 +1313,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 }
 
 
-/* static */ GLuint OpenGLSprite::dummy_tex[] = { 0, 0 };
+/* static */ std::array<GLuint, OpenGLSprite::NUM_TEX> OpenGLSprite::dummy_tex{};
 /* static */ GLuint OpenGLSprite::pal_identity = 0;
 /* static */ GLuint OpenGLSprite::pal_tex = 0;
 /* static */ GLuint OpenGLSprite::pal_pbo = 0;
@@ -1326,7 +1324,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
  */
 /* static */ bool OpenGLSprite::Create()
 {
-	_glGenTextures(NUM_TEX, OpenGLSprite::dummy_tex);
+	_glGenTextures(NUM_TEX, OpenGLSprite::dummy_tex.data());
 
 	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
 		_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[t]);
@@ -1387,7 +1385,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 /** Free all common resources for sprite rendering. */
 /* static */ void OpenGLSprite::Destroy()
 {
-	_glDeleteTextures(NUM_TEX, OpenGLSprite::dummy_tex);
+	_glDeleteTextures(NUM_TEX, OpenGLSprite::dummy_tex.data());
 	_glDeleteTextures(1, &OpenGLSprite::pal_identity);
 	_glDeleteTextures(1, &OpenGLSprite::pal_tex);
 	if (_glDeleteBuffers != nullptr) _glDeleteBuffers(1, &OpenGLSprite::pal_pbo);
@@ -1404,7 +1402,7 @@ OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
 	assert(levels > 0);
 	(void)_glGetError();
 
-	MemSetT(this->tex, 0, NUM_TEX);
+	this->tex = {};
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
@@ -1444,7 +1442,7 @@ OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
 
 OpenGLSprite::~OpenGLSprite()
 {
-	_glDeleteTextures(NUM_TEX, this->tex);
+	_glDeleteTextures(NUM_TEX, this->tex.data());
 }
 
 /**
