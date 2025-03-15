@@ -26,6 +26,8 @@
  * \li GSCargo::CC_NON_POURABLE
  * \li GSCargo::CC_POTABLE
  * \li GSCargo::CC_NON_POTABLE
+ * \li GSOrder.OF_UNBUNCH_IN_DEPOT
+ * \li GSOrder.ERR_ORDER_UNBUNCH
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
