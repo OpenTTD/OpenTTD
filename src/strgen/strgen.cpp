@@ -133,7 +133,7 @@ void FileStringReader::HandlePragma(char *str)
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = std::strtol(buf, nullptr, 16);
-		if (langid > static_cast<long>UINT16_MAX || langid < 0) {
+		if (langid > static_cast<long>(UINT16_MAX) || langid < 0) {
 			FatalError("Invalid winlangid {}", buf);
 		}
 		_lang.winlangid = static_cast<uint16_t>(langid);

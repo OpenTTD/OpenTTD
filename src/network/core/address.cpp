@@ -172,8 +172,8 @@ bool NetworkAddress::IsInNetmask(const std::string &netmask)
 	uint32_t *mask;
 	switch (this->address.ss_family) {
 		case AF_INET:
-			ip = static_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in*>(&this->address))->sin_addr.s_addr);
-			mask = static_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in*>(&mask_address.address))->sin_addr.s_addr);
+			ip = reinterpret_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in*>(&this->address))->sin_addr.s_addr);
+			mask = reinterpret_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in*>(&mask_address.address))->sin_addr.s_addr);
 			break;
 
 		case AF_INET6:
