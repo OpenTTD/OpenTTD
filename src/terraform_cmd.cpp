@@ -349,10 +349,10 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 			CommandCost ret;
 			std::tie(ret, std::ignore, error_tile) = Command<CMD_TERRAFORM_LAND>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, SLOPE_N, curh <= h);
 			if (ret.Failed()) {
-				last_error = ret;
+				last_error = std::move(ret);
 
 				/* Did we reach the limit? */
-				if (ret.GetErrorMessage() == STR_ERROR_TERRAFORM_LIMIT_REACHED) limit = 0;
+				if (last_error.GetErrorMessage() == STR_ERROR_TERRAFORM_LIMIT_REACHED) limit = 0;
 				break;
 			}
 
