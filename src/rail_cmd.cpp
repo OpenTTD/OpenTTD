@@ -891,7 +891,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 		ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
 
 		if (ret.Failed()) {
-			last_error = ret;
+			last_error = std::move(ret);
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
 				if (fail_on_obstacle) return last_error;
 				if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
@@ -1595,7 +1595,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		/* Trying to convert other's rail */
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Failed()) {
-			error = ret;
+			error = std::move(ret);
 			continue;
 		}
 
@@ -1607,7 +1607,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			if (!IsCompatibleRail(type, totype)) {
 				ret = IsPlainRailTile(tile) ? EnsureNoTrainOnTrackBits(tile, GetTrackBits(tile)) : EnsureNoVehicleOnGround(tile);
 				if (ret.Failed()) {
-					error = ret;
+					error = std::move(ret);
 					continue;
 				}
 			}
@@ -1691,7 +1691,7 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				if (!IsCompatibleRail(GetRailType(tile), totype)) {
 					ret = TunnelBridgeIsFree(tile, endtile);
 					if (ret.Failed()) {
-						error = ret;
+						error = std::move(ret);
 						continue;
 					}
 				}

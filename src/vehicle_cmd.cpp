@@ -723,7 +723,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlags flags, TileIndex tile, Vehicl
 			cost.AddCost(ret);
 			had_success = true;
 		} else {
-			last_error = ret;
+			last_error = std::move(ret);
 		}
 	}
 

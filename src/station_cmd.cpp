@@ -2343,7 +2343,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlags flags, const TileArea &r
 			ret = RemoveRoadStop(cur_tile, flags);
 		}
 		if (ret.Failed()) {
-			last_error = ret;
+			last_error = std::move(ret);
 			continue;
 		}
 		cost.AddCost(ret);

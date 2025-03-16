@@ -1025,7 +1025,7 @@ CommandCost CmdBuildLongRoad(DoCommandFlags flags, TileIndex end_tile, TileIndex
 
 		CommandCost ret = Command<CMD_BUILD_ROAD>::Do(flags, tile, bits, rt, drd, TownID::Invalid());
 		if (ret.Failed()) {
-			last_error = ret;
+			last_error = std::move(ret);
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
 				if (is_ai) return last_error;
 				if (had_success) break; // Keep going if we haven't constructed any road yet, skipping the start of the drag
@@ -1119,7 +1119,7 @@ std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlags flags, TileIndex
 					case STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS:
 						break;
 					default:
-						last_error = ret;
+						last_error = std::move(ret);
 				}
 			}
 		}
@@ -2484,7 +2484,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		if (!CanConvertUnownedRoadType(owner, rtt)) {
 			CommandCost ret = CheckOwnership(owner, tile);
 			if (ret.Failed()) {
-				error = ret;
+				error = std::move(ret);
 				continue;
 			}
 		}
@@ -2495,7 +2495,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 			CommandCost ret = CheckforTownRating({}, t, tt == MP_TUNNELBRIDGE ? TUNNELBRIDGE_REMOVE : ROAD_REMOVE);
 			if (ret.Failed()) {
-				error = ret;
+				error = std::move(ret);
 				continue;
 			}
 		}
@@ -2506,7 +2506,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			if (!HasPowerOnRoad(from_type, to_type)) {
 				CommandCost ret = EnsureNoVehicleOnGround(tile);
 				if (ret.Failed()) {
-					error = ret;
+					error = std::move(ret);
 					continue;
 				}
 
@@ -2562,7 +2562,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			if (!HasPowerOnRoad(from_type, to_type)) {
 				CommandCost ret = TunnelBridgeIsFree(tile, endtile);
 				if (ret.Failed()) {
-					error = ret;
+					error = std::move(ret);
 					continue;
 				}
 
