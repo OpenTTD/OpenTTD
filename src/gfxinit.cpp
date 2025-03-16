@@ -481,18 +481,27 @@ template <class Tbase_set>
 	if (BaseMedia<Tbase_set>::used_set != nullptr) return true;
 
 	const Tbase_set *best = nullptr;
+
+	auto IsBetter = [&best] (const auto *current) {
+		/* Nothing chosen yet. */
+		if (best == nullptr) return true;
+		/* Not being a fallback is better. */
+		if (best->fallback && !current->fallback) return true;
+		/* Having more valid files is better. */
+		if (best->valid_files < current->valid_files) return true;
+		/* Having (essentially) fewer valid files is worse. */
+		if (best->valid_files != current->valid_files) return false;
+		/* Having a later version of the same base set is better. */
+		if (best->shortname == current->shortname && best->version < current->version) return true;
+		/* The DOS palette is the better palette. */
+		return best->palette != PAL_DOS && current->palette == PAL_DOS;
+	};
+
 	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
-		if (best == nullptr ||
-				(best->fallback && !c->fallback) ||
-				best->valid_files < c->valid_files ||
-				(best->valid_files == c->valid_files && (
-					(best->shortname == c->shortname && best->version < c->version) ||
-					(best->palette != PAL_DOS && c->palette == PAL_DOS)))) {
-			best = c;
-		}
+		if (IsBetter(c)) best = c;
 	}
 
 	BaseMedia<Tbase_set>::used_set = best;

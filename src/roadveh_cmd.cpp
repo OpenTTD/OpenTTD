@@ -620,21 +620,24 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 	short x_diff = v->x_pos - rvf->x;
 	short y_diff = v->y_pos - rvf->y;
 
-	if (v->type == VEH_ROAD &&
-			!v->IsInDepot() &&
-			abs(v->z_pos - rvf->veh->z_pos) < 6 &&
-			v->direction == rvf->dir &&
-			rvf->veh->First() != v->First() &&
-			(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&
-			(dist_x[v->direction] <= 0 || (x_diff < dist_x[v->direction] && x_diff >= 0)) &&
-			(dist_y[v->direction] >= 0 || (y_diff > dist_y[v->direction] && y_diff <= 0)) &&
-			(dist_y[v->direction] <= 0 || (y_diff < dist_y[v->direction] && y_diff >= 0))) {
-		uint diff = abs(x_diff) + abs(y_diff);
+	/* Not a close Road vehicle when it's not a road vehicle, in the depot, or ourself. */
+	if (v->type != VEH_ROAD || v->IsInDepot() || rvf->veh->First() == v->First()) return nullptr;
 
-		if (diff < rvf->best_diff || (diff == rvf->best_diff && v->index < rvf->best->index)) {
-			rvf->best = v;
-			rvf->best_diff = diff;
-		}
+	/* Not close when at a different height or when going in a different direction. */
+	if (abs(v->z_pos - rvf->veh->z_pos) >= 6 || v->direction != rvf->dir) return nullptr;
+
+	/* We 'return' the closest vehicle, in distance and then VehicleID as tie-breaker. */
+	uint diff = abs(x_diff) + abs(y_diff);
+	if (diff > rvf->best_diff || (diff == rvf->best_diff && v->index > rvf->best->index)) return nullptr;
+
+	auto IsCloseOnAxis = [](short dist, short diff) {
+		if (dist < 0) return diff > dist && diff <= 0;
+		return diff < dist && diff >= 0;
+	};
+
+	if (IsCloseOnAxis(dist_x[v->direction], x_diff) && IsCloseOnAxis(dist_y[v->direction], y_diff)) {
+		rvf->best = v;
+		rvf->best_diff = diff;
 	}
 
 	return nullptr;
