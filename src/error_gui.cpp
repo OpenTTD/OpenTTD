@@ -225,7 +225,7 @@ public:
 	void OnMouseLoop() override
 	{
 		/* Disallow closing the window too easily, if timeout is disabled */
-		if (_right_button_down && !this->is_critical) this->Close();
+		if ((_right_button_down || _left_button_down) && !this->is_critical) this->Close();
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
