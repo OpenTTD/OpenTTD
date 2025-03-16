@@ -21,7 +21,7 @@
 /* static */ SQInteger ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || static_cast<::RailType>(railtype) >= RAILTYPE_END) return 0;
 
 	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->infrastructure.rail[railtype];
 }
@@ -29,7 +29,7 @@
 /* static */ SQInteger ScriptInfrastructure::GetRoadPieceCount(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || static_cast<::RoadType>(roadtype) >= ROADTYPE_END) return 0;
 
 	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->infrastructure.road[roadtype];
 }
@@ -67,19 +67,19 @@
 /* static */ Money ScriptInfrastructure::GetMonthlyRailCosts(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RailType)railtype >= RAILTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || static_cast<::RailType>(railtype) >= RAILTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
 
 	const ::Company *c = ::Company::Get(ScriptCompany::FromScriptCompanyID(company));
-	return ::RailMaintenanceCost((::RailType)railtype, c->infrastructure.rail[railtype], c->infrastructure.GetRailTotal());
+	return ::RailMaintenanceCost(static_cast<::RailType>(railtype), c->infrastructure.rail[railtype], c->infrastructure.GetRailTotal());
 }
 
 /* static */ Money ScriptInfrastructure::GetMonthlyRoadCosts(ScriptCompany::CompanyID company, ScriptRoad::RoadType roadtype)
 {
 	company = ScriptCompany::ResolveCompanyID(company);
-	if (company == ScriptCompany::COMPANY_INVALID || (::RoadType)roadtype >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
+	if (company == ScriptCompany::COMPANY_INVALID || static_cast<::RoadType>(roadtype) >= ROADTYPE_END || !_settings_game.economy.infrastructure_maintenance) return 0;
 
 	const ::Company *c = ::Company::Get(ScriptCompany::FromScriptCompanyID(company));
-	return ::RoadMaintenanceCost((::RoadType)roadtype, c->infrastructure.road[roadtype], RoadTypeIsRoad((::RoadType)roadtype) ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal());
+	return ::RoadMaintenanceCost(static_cast<::RoadType>(roadtype), c->infrastructure.road[roadtype], RoadTypeIsRoad(static_cast<::RoadType>(roadtype)) ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal());
 }
 
 /* static */ Money ScriptInfrastructure::GetMonthlyInfrastructureCosts(ScriptCompany::CompanyID company, Infrastructure infra_type)

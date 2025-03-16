@@ -136,7 +136,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p)
 {
-	NetworkErrorCode error = (NetworkErrorCode)p.Recv_uint8();
+	NetworkErrorCode error = static_cast<NetworkErrorCode>(p.Recv_uint8());
 
 	Debug(net, 9, "Query::Receive_SERVER_ERROR(): error={}", error);
 

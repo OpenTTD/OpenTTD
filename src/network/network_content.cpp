@@ -58,8 +58,8 @@ typedef bool (*HasProc)(const ContentInfo *ci, bool md5sum);
 bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 {
 	ContentInfo *ci = new ContentInfo();
-	ci->type     = (ContentType)p.Recv_uint8();
-	ci->id       = (ContentID)p.Recv_uint32();
+	ci->type     = static_cast<ContentType>(p.Recv_uint8());
+	ci->id       = static_cast<ContentID>(p.Recv_uint32());
 	ci->filesize = p.Recv_uint32();
 
 	ci->name        = p.Recv_string(NETWORK_CONTENT_NAME_LENGTH);
@@ -73,7 +73,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	uint dependency_count = p.Recv_uint8();
 	ci->dependencies.reserve(dependency_count);
 	for (uint i = 0; i < dependency_count; i++) {
-		ContentID dependency_cid = (ContentID)p.Recv_uint32();
+		ContentID dependency_cid = static_cast<ContentID>(p.Recv_uint32());
 		ci->dependencies.push_back(dependency_cid);
 		this->reverse_dependency_map.emplace(dependency_cid, ci->id);
 	}
@@ -209,7 +209,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 	this->Connect();
 
 	auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_LIST);
-	p->Send_uint8 ((uint8_t)type);
+	p->Send_uint8 (static_cast<uint8_t>(type));
 	p->Send_uint32(0xffffffff);
 	p->Send_uint8 (1);
 	p->Send_string("vanilla");
@@ -273,10 +273,10 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 			(sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
 	auto p = std::make_unique<Packet>(this, send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
-	p->Send_uint8((uint8_t)cv->size());
+	p->Send_uint8(static_cast<uint8_t>(cv->size()));
 
 	for (const ContentInfo *ci : *cv) {
-		p->Send_uint8((uint8_t)ci->type);
+		p->Send_uint8(static_cast<uint8_t>(ci->type));
 		p->Send_uint32(ci->unique_id);
 		if (!send_md5sum) continue;
 		p->Send_bytes(ci->md5sum);
@@ -319,7 +319,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 		bytes += ci->filesize;
 	}
 
-	files = (uint)content.size();
+	files = static_cast<uint>(content.size());
 
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
@@ -355,7 +355,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
  */
 void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const ContentIDList &content)
 {
-	uint count = (uint)content.size();
+	uint count = static_cast<uint>(content.size());
 	const ContentID *content_ids = content.data();
 	this->Connect();
 
@@ -483,8 +483,8 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 		delete this->curInfo;
 		/* When we haven't opened a file this must be our first packet with metadata. */
 		this->curInfo = new ContentInfo;
-		this->curInfo->type     = (ContentType)p.Recv_uint8();
-		this->curInfo->id       = (ContentID)p.Recv_uint32();
+		this->curInfo->type     = static_cast<ContentType>(p.Recv_uint8());
+		this->curInfo->id       = static_cast<ContentID>(p.Recv_uint32());
 		this->curInfo->filesize = p.Recv_uint32();
 		this->curInfo->filename = p.Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
 
@@ -507,7 +507,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 			return false;
 		}
 
-		this->OnDownloadProgress(this->curInfo, (int)toRead);
+		this->OnDownloadProgress(this->curInfo, static_cast<int>(toRead));
 
 		if (toRead == 0) this->AfterDownload();
 	}
@@ -635,7 +635,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 			this->OnFailure();
 		} else {
 			/* Just received the data. */
-			this->OnDownloadProgress(this->curInfo, (int)length);
+			this->OnDownloadProgress(this->curInfo, static_cast<int>(length));
 		}
 
 		/* Nothing more to do now. */
@@ -647,7 +647,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		this->AfterDownload();
 	}
 
-	if ((uint)this->http_response_index >= this->http_response.size()) {
+	if (static_cast<uint>(this->http_response_index) >= this->http_response.size()) {
 		/* It's not a real failure, but if there's
 		 * nothing more to download it helps with
 		 * cleaning up the stuff we allocated. */
@@ -670,18 +670,18 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		check_and_terminate(p);
 
 		/* Update the index for the next one */
-		this->http_response_index += (int)strlen(str) + 1;
+		this->http_response_index += static_cast<int>(strlen(str)) + 1;
 
 		/* Read the ID */
 		p = strchr(str, ',');
 		check_and_terminate(p);
-		this->curInfo->id = (ContentID)atoi(str);
+		this->curInfo->id = static_cast<ContentID>(atoi(str));
 
 		/* Read the type */
 		str = p + 1;
 		p = strchr(str, ',');
 		check_and_terminate(p);
-		this->curInfo->type = (ContentType)atoi(str);
+		this->curInfo->type = static_cast<ContentType>(atoi(str));
 
 		/* Read the file size */
 		str = p + 1;
@@ -693,7 +693,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		str = p + 1;
 		/* Is it a fallback URL? If so, just continue with the next one. */
 		if (strncmp(str, "ottd", 4) == 0) {
-			if ((uint)this->http_response_index >= this->http_response.size()) {
+			if (static_cast<uint>(this->http_response_index) >= this->http_response.size()) {
 				/* Have we gone through all lines? */
 				this->OnFailure();
 				return;

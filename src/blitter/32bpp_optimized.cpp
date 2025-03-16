@@ -28,24 +28,24 @@ static FBlitter_32bppOptimized iFBlitter_32bppOptimized;
 template <BlitterMode mode, bool Tpal_to_rgb>
 inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 {
-	const SpriteData *src = (const SpriteData *)bp->sprite;
+	const SpriteData *src = static_cast<const SpriteData *>(bp->sprite);
 
 	/* src_px : each line begins with uint32_t n = 'number of bytes in this line',
 	 *          then n times is the Colour struct for this line */
-	const Colour *src_px = (const Colour *)(src->data + src->offset[zoom][0]);
+	const Colour *src_px = reinterpret_cast<const Colour *>(src->data + src->offset[zoom][0]);
 	/* src_n  : each line begins with uint32_t n = 'number of bytes in this line',
 	 *          then interleaved stream of 'm' and 'n' channels. 'm' is remap,
 	 *          'n' is number of bytes with the same alpha channel class */
-	const uint16_t *src_n  = (const uint16_t *)(src->data + src->offset[zoom][1]);
+	const uint16_t *src_n  = reinterpret_cast<const uint16_t *>(src->data + src->offset[zoom][1]);
 
 	/* skip upper lines in src_px and src_n */
 	for (uint i = bp->skip_top; i != 0; i--) {
-		src_px = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
-		src_n = (const uint16_t *)((const uint8_t *)src_n + *(const uint32_t *)src_n);
+		src_px = reinterpret_cast<const Colour *>(reinterpret_cast<const uint8_t *>(src_px) + *reinterpret_cast<const uint32_t *>(src_px));
+		src_n = reinterpret_cast<const uint16_t *>(reinterpret_cast<const uint8_t *>(src_n) + *reinterpret_cast<const uint32_t *>(src_n));
 	}
 
 	/* skip lines in dst */
-	Colour *dst = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
+	Colour *dst = static_cast<Colour *>(bp->dst) + bp->top * bp->pitch + bp->left;
 
 	/* store so we don't have to access it via bp every time (compiler assumes pointer aliasing) */
 	const uint8_t *remap = bp->remap;
@@ -55,11 +55,11 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 		Colour *dst_ln = dst + bp->pitch;
 
 		/* next src line begins here */
-		const Colour *src_px_ln = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
+		const Colour *src_px_ln = reinterpret_cast<const Colour *>(reinterpret_cast<const uint8_t *>(src_px) + *reinterpret_cast<const uint32_t *>(src_px));
 		src_px++;
 
 		/* next src_n line begins here */
-		const uint16_t *src_n_ln = (const uint16_t *)((const uint8_t *)src_n + *(const uint32_t *)src_n);
+		const uint16_t *src_n_ln = reinterpret_cast<const uint16_t *>(reinterpret_cast<const uint8_t *>(src_n) + *reinterpret_cast<const uint32_t *>(src_n));
 		src_n += 2;
 
 		/* we will end this line when we reach this point */
@@ -84,7 +84,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 					dst = dst_end - bp->skip_left;
 					dst_end = dst + bp->width;
 
-					n = std::min(n - d, (uint)bp->width);
+					n = std::min(n - d, static_cast<uint>(bp->width));
 					goto draw;
 				}
 				dst += n;
@@ -330,8 +330,8 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 
 		for (uint y = src_orig->height; y > 0; y--) {
 			/* Index 0 of dst_px and dst_n is left as space to save the length of the row to be filled later. */
-			Colour *dst_px = (Colour *)&dst_px_ln[1];
-			uint16_t *dst_n = (uint16_t *)&dst_n_ln[1];
+			Colour *dst_px = reinterpret_cast<Colour *>(&dst_px_ln[1]);
+			uint16_t *dst_n = reinterpret_cast<uint16_t *>(&dst_n_ln[1]);
 
 			uint16_t *dst_len = dst_n++;
 
@@ -395,14 +395,14 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 				*dst_len = len;
 			}
 
-			dst_px = (Colour *)AlignPtr(dst_px, 4);
-			dst_n  = (uint16_t *)AlignPtr(dst_n, 4);
+			dst_px = static_cast<Colour *>(AlignPtr(dst_px, 4));
+			dst_n  = static_cast<uint16_t *>(AlignPtr(dst_n, 4));
 
-			*dst_px_ln = (uint8_t *)dst_px - (uint8_t *)dst_px_ln;
-			*dst_n_ln  = (uint8_t *)dst_n  - (uint8_t *)dst_n_ln;
+			*dst_px_ln = reinterpret_cast<uint8_t *>(dst_px) - reinterpret_cast<uint8_t *>(dst_px_ln);
+			*dst_n_ln  = reinterpret_cast<uint8_t *>(dst_n)  - reinterpret_cast<uint8_t *>(dst_n_ln);
 
-			dst_px_ln = (uint32_t *)dst_px;
-			dst_n_ln =  (uint32_t *)dst_n;
+			dst_px_ln = reinterpret_cast<uint32_t *>(dst_px);
+			dst_n_ln =  reinterpret_cast<uint32_t *>(dst_n);
 		}
 
 		lengths[z][0] = reinterpret_cast<uint8_t *>(dst_px_ln) - reinterpret_cast<uint8_t *>(dst_px_orig[z].get()); // all are aligned to 4B boundary
@@ -421,7 +421,7 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
 	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 
-	SpriteData *dst = (SpriteData *)dest_sprite->data;
+	SpriteData *dst = reinterpret_cast<SpriteData *>(dest_sprite->data);
 	memset(dst, 0, sizeof(*dst));
 
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {

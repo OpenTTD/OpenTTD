@@ -224,7 +224,7 @@ void Industry::PostDestructor(size_t)
 /* static */ Industry *Industry::GetRandom()
 {
 	if (Industry::GetNumItems() == 0) return nullptr;
-	int num = RandomRange((uint16_t)Industry::GetNumItems());
+	int num = RandomRange(static_cast<uint16_t>(Industry::GetNumItems()));
 	size_t index = std::numeric_limits<size_t>::max();
 
 	while (num >= 0) {
@@ -1815,7 +1815,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
 	 * 0 = created prior of newindustries
 	 * else, chosen layout + 1 */
-	i->selected_layout = (uint8_t)(layout_index + 1);
+	i->selected_layout = static_cast<uint8_t>(layout_index + 1);
 
 	i->exclusive_supplier = INVALID_OWNER;
 	i->exclusive_consumer = INVALID_OWNER;
@@ -2091,7 +2091,7 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 					 */
 					tile = RandomTile();
 					/* Start with a random layout */
-					size_t layout = RandomRange((uint32_t)num_layouts);
+					size_t layout = RandomRange(static_cast<uint32_t>(num_layouts));
 					/* Check now each layout, starting with the random one */
 					for (size_t j = 0; j < num_layouts; j++) {
 						layout = (layout + 1) % num_layouts;
@@ -2275,7 +2275,7 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type, IndustryAv
 	uint32_t seed = Random();
 	uint32_t seed2 = Random();
 	Industry *i = nullptr;
-	size_t layout_index = RandomRange((uint32_t)indspec->layouts.size());
+	size_t layout_index = RandomRange(static_cast<uint32_t>(indspec->layouts.size()));
 	[[maybe_unused]] CommandCost ret = CreateNewIndustryHelper(tile, type, DoCommandFlag::Execute, indspec, layout_index, seed, GB(seed2, 0, 16), OWNER_NONE, creation_type, &i);
 	assert(i != nullptr || ret.Failed());
 	return i;
@@ -2351,7 +2351,7 @@ static uint GetNumberOfIndustries()
 	};
 
 	assert(lengthof(numof_industry_table) == ID_END);
-	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.industry_density : (uint)ID_VERY_LOW;
+	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.industry_density : static_cast<uint>(ID_VERY_LOW);
 
 	if (difficulty == ID_CUSTOM) return std::min<uint>(IndustryPool::MAX_SIZE, _settings_game.game_creation.custom_industry_number);
 
@@ -2639,7 +2639,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 				int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
 				if (difference <= 0) continue; // Too many of this kind.
 				if (count == 1) break;
-				if (r < (uint)difference) break;
+				if (r < static_cast<uint>(difference)) break;
 				r -= difference;
 			}
 			assert(it < NUM_INDUSTRYTYPES && this->builddata[it].target_count > Industry::GetIndustryTypeCount(it));

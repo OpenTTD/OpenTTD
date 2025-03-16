@@ -685,7 +685,7 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resol
 				} else {
 					if (HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) result.image.sprite += resolved_sprite;
 					if (flags & TLF_SPRITE) {
-						int16_t offset = (int16_t)GetRegister(regs->sprite); // mask to 16 bits to avoid trouble
+						int16_t offset = static_cast<int16_t>(GetRegister(regs->sprite)); // mask to 16 bits to avoid trouble
 						if (!HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_sprite_offset)) {
 							result.image.sprite += offset;
 						} else {
@@ -715,7 +715,7 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resol
 				/* Apply registers */
 				if (HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) result.image.pal += resolved_sprite;
 				if (flags & TLF_PALETTE) {
-					int16_t offset = (int16_t)GetRegister(regs->palette); // mask to 16 bits to avoid trouble
+					int16_t offset = static_cast<int16_t>(GetRegister(regs->palette)); // mask to 16 bits to avoid trouble
 					if (!HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_palette_offset)) {
 						result.image.pal += offset;
 					} else {

@@ -560,7 +560,7 @@ struct GenerateLandscapeWindow : public Window {
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		Dimension d{0, (uint)GetCharacterHeight(FS_NORMAL)};
+		Dimension d{0, static_cast<uint>(GetCharacterHeight(FS_NORMAL))};
 		std::span<const StringID> strs;
 		switch (widget) {
 			case WID_GL_TEMPERATE: case WID_GL_ARCTIC:
@@ -860,7 +860,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_HEIGHTMAP_ROTATION_PULLDOWN: _settings_newgame.game_creation.heightmap_rotation = index; break;
 
 			case WID_GL_TOWN_PULLDOWN:
-				if ((uint)index == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+				if (static_cast<uint>(index) == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_town_number), STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, {});
 				}
@@ -875,7 +875,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN:
-				if ((uint)index == ID_CUSTOM) {
+				if (static_cast<uint>(index) == ID_CUSTOM) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_industry_number), STR_MAPGEN_NUMBER_OF_INDUSTRIES, 5, this, CS_NUMERAL, {});
 				}
@@ -883,7 +883,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_TERRAIN_PULLDOWN: {
-				if ((uint)index == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+				if (static_cast<uint>(index) == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_terrain_type), STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT, 4, this, CS_NUMERAL, {});
 				}
@@ -892,7 +892,7 @@ struct GenerateLandscapeWindow : public Window {
 			}
 
 			case WID_GL_WATER_PULLDOWN: {
-				if ((uint)index == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+				if (static_cast<uint>(index) == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
 					this->widget_id = widget;
 					ShowQueryString(GetString(STR_JUST_INT, _settings_newgame.game_creation.custom_sea_level), STR_MAPGEN_SEA_LEVEL, 3, this, CS_NUMERAL, {});
 				}

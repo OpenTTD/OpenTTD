@@ -86,7 +86,7 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override { return (uint)this->size();  }
+		int CountRuns() const override { return static_cast<uint>(this->size());  }
 		const VisualRun &GetVisualRun(int run) const override { return this->at(run); }
 
 		int GetInternalCharLength(char32_t c) const override
@@ -538,6 +538,6 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 	/* Transform from UTF-32 to internal ICU format of UTF-16. */
 	int32_t length = 0;
 	UErrorCode err = U_ZERO_ERROR;
-	u_strFromUTF32(buff, buffer_last - buff, &length, (UChar32*)&c, 1, &err);
+	u_strFromUTF32(buff, buffer_last - buff, &length, reinterpret_cast<UChar32*>(&c), 1, &err);
 	return length;
 }

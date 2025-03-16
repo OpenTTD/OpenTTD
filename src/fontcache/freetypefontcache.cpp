@@ -69,7 +69,7 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 		int scaled_height = ScaleGUITrad(FontCache::GetDefaultFontHeight(this->fs));
 		pixels = scaled_height;
 
-		TT_Header *head = (TT_Header *)FT_Get_Sfnt_Table(this->face, ft_sfnt_head);
+		TT_Header *head = static_cast<TT_Header *>(FT_Get_Sfnt_Table(this->face, ft_sfnt_head));
 		if (head != nullptr) {
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
@@ -235,8 +235,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
 	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
-	uint width  = std::max(1U, (uint)slot->bitmap.width + shadow);
-	uint height = std::max(1U, (uint)slot->bitmap.rows  + shadow);
+	uint width  = std::max(1U, static_cast<uint>(slot->bitmap.width) + shadow);
+	uint height = std::max(1U, static_cast<uint>(slot->bitmap.rows)  + shadow);
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
@@ -255,8 +255,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 
 	/* Draw shadow for medium size */
 	if (this->fs == FS_NORMAL && !aa) {
-		for (uint y = 0; y < (uint)slot->bitmap.rows; y++) {
-			for (uint x = 0; x < (uint)slot->bitmap.width; x++) {
+		for (uint y = 0; y < static_cast<uint>(slot->bitmap.rows); y++) {
+			for (uint x = 0; x < static_cast<uint>(slot->bitmap.width); x++) {
 				if (HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 					sprite.data[shadow + x + (shadow + y) * sprite.width].m = SHADOW_COLOUR;
 					sprite.data[shadow + x + (shadow + y) * sprite.width].a = 0xFF;
@@ -265,8 +265,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 		}
 	}
 
-	for (uint y = 0; y < (uint)slot->bitmap.rows; y++) {
-		for (uint x = 0; x < (uint)slot->bitmap.width; x++) {
+	for (uint y = 0; y < static_cast<uint>(slot->bitmap.rows); y++) {
+		for (uint x = 0; x < static_cast<uint>(slot->bitmap.width); x++) {
 			if (aa ? (slot->bitmap.buffer[x + y * slot->bitmap.pitch] > 0) : HasBit(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 				sprite.data[x + y * sprite.width].m = FACE_COLOUR;
 				sprite.data[x + y * sprite.width].a = aa ? slot->bitmap.buffer[x + y * slot->bitmap.pitch] : 0xFF;

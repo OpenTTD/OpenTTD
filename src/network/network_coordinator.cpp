@@ -126,7 +126,7 @@ public:
 
 bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet &p)
 {
-	NetworkCoordinatorErrorType error = (NetworkCoordinatorErrorType)p.Recv_uint8();
+	NetworkCoordinatorErrorType error = static_cast<NetworkCoordinatorErrorType>(p.Recv_uint8());
 	std::string detail = p.Recv_string(NETWORK_ERROR_DETAIL_LENGTH);
 
 	switch (error) {
@@ -181,7 +181,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet &p)
 
 	_settings_client.network.server_invite_code = p.Recv_string(NETWORK_INVITE_CODE_LENGTH);
 	_settings_client.network.server_invite_code_secret = p.Recv_string(NETWORK_INVITE_CODE_SECRET_LENGTH);
-	_network_server_connection_type = (ConnectionType)p.Recv_uint8();
+	_network_server_connection_type = static_cast<ConnectionType>(p.Recv_uint8());
 
 	if (_network_server_connection_type == CONNECTION_TYPE_ISOLATED) {
 		ShowErrorMessage(

@@ -177,7 +177,7 @@ namespace {
 			}
 
 			if (total == 0 || count == 0) return 0;
-			return (double)count * TIMESTAMP_PRECISION / total;
+			return static_cast<double>(count) * TIMESTAMP_PRECISION / total;
 		}
 	};
 
@@ -232,7 +232,7 @@ namespace {
 static TimingMeasurement GetPerformanceTimer()
 {
 	using namespace std::chrono;
-	return (TimingMeasurement)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count();
+	return static_cast<TimingMeasurement>(time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count());
 }
 
 
@@ -418,7 +418,7 @@ struct FramerateWindow : Window {
 		{
 			const double threshold_good = target * 0.95;
 			const double threshold_bad = target * 2 / 3;
-			this->value = (uint32_t)(value * 100);
+			this->value = static_cast<uint32_t>(value * 100);
 			this->strid = (value > threshold_good) ? STR_FRAMERATE_FPS_GOOD : (value < threshold_bad) ? STR_FRAMERATE_FPS_BAD : STR_FRAMERATE_FPS_WARN;
 		}
 
@@ -426,7 +426,7 @@ struct FramerateWindow : Window {
 		{
 			const double threshold_good = target / 3;
 			const double threshold_bad = target;
-			this->value = (uint32_t)(value * 100);
+			this->value = static_cast<uint32_t>(value * 100);
 			this->strid = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
 		}
 
@@ -786,7 +786,7 @@ struct FrametimeGraphWindow : Window {
 			TIMESTAMP_PRECISION / 200,
 		};
 		for (const auto &sc : vscales) {
-			if (range < sc) this->vertical_scale = (int)sc;
+			if (range < sc) this->vertical_scale = static_cast<int>(sc);
 		}
 	}
 
@@ -859,16 +859,16 @@ struct FrametimeGraphWindow : Window {
 			const auto &timestamps = _pf_data[this->element].timestamps;
 			int point = _pf_data[this->element].prev_index;
 
-			const int x_zero = r.right - (int)this->graph_size.width;
+			const int x_zero = r.right - static_cast<int>(this->graph_size.width);
 			const int x_max = r.right;
-			const int y_zero = r.top + (int)this->graph_size.height;
+			const int y_zero = r.top + static_cast<int>(this->graph_size.height);
 			const int y_max = r.top;
 			const int c_grid = PC_DARK_GREY;
 			const int c_lines = PC_BLACK;
 			const int c_peak = PC_DARK_RED;
 
-			const TimingMeasurement draw_horz_scale = (TimingMeasurement)this->horizontal_scale * TIMESTAMP_PRECISION / 2;
-			const TimingMeasurement draw_vert_scale = (TimingMeasurement)this->vertical_scale;
+			const TimingMeasurement draw_horz_scale = static_cast<TimingMeasurement>(this->horizontal_scale) * TIMESTAMP_PRECISION / 2;
+			const TimingMeasurement draw_vert_scale = static_cast<TimingMeasurement>(this->vertical_scale);
 
 			/* Number of \c horizontal_scale units in each horizontal division */
 			const uint horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
@@ -879,10 +879,10 @@ struct FrametimeGraphWindow : Window {
 
 			/* Draw division lines and labels for the vertical axis */
 			for (uint division = 0; division < vert_divisions; division++) {
-				int y = Scinterlate(y_zero, y_max, 0, (int)vert_divisions, (int)division);
+				int y = Scinterlate(y_zero, y_max, 0, static_cast<int>(vert_divisions), static_cast<int>(division));
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
-					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
+					if (static_cast<TimingMeasurement>(this->vertical_scale) > TIMESTAMP_PRECISION) {
 						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL),
 							GetString(STR_FRAMERATE_GRAPH_SECONDS, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION),
 							TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
@@ -895,7 +895,7 @@ struct FrametimeGraphWindow : Window {
 			}
 			/* Draw division lines and labels for the horizontal axis */
 			for (uint division = horz_divisions; division > 0; division--) {
-				int x = Scinterlate(x_zero, x_max, 0, (int)horz_divisions, (int)horz_divisions - (int)division);
+				int x = Scinterlate(x_zero, x_max, 0, static_cast<int>(horz_divisions), static_cast<int>(horz_divisions) - static_cast<int>(division));
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
 					DrawString(x, x_max, y_zero + 2,
@@ -907,7 +907,7 @@ struct FrametimeGraphWindow : Window {
 			/* Position of last rendered data point */
 			Point lastpoint = {
 				x_max,
-				(int)Scinterlate<int64_t>(y_zero, y_max, 0, this->vertical_scale, durations[point])
+				static_cast<int>(Scinterlate<int64_t>(y_zero, y_max, 0, this->vertical_scale, durations[point]))
 			};
 			/* Timestamp of last rendered data point */
 			TimingMeasurement lastts = timestamps[point];
@@ -937,8 +937,8 @@ struct FrametimeGraphWindow : Window {
 
 				/* Draw line from previous point to new point */
 				Point newpoint = {
-					(int)Scinterlate<int64_t>(x_zero, x_max, 0, (int64_t)draw_horz_scale, (int64_t)draw_horz_scale - (int64_t)time_sum),
-					(int)Scinterlate<int64_t>(y_zero, y_max, 0, (int64_t)draw_vert_scale, (int64_t)value)
+					static_cast<int>(Scinterlate<int64_t>(x_zero, x_max, 0, static_cast<int64_t>(draw_horz_scale), static_cast<int64_t>(draw_horz_scale) - static_cast<int64_t>(time_sum))),
+					static_cast<int>(Scinterlate<int64_t>(y_zero, y_max, 0, static_cast<int64_t>(draw_vert_scale), static_cast<int64_t>(value)))
 				};
 				if (newpoint.x > lastpoint.x) continue; // don't draw backwards
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
@@ -955,11 +955,11 @@ struct FrametimeGraphWindow : Window {
 
 			/* If the peak value is significantly larger than the average, mark and label it */
 			if (points_drawn > 0 && peak_value > TIMESTAMP_PRECISION / 100 && 2 * peak_value > 3 * value_sum / points_drawn) {
-				TextColour tc_peak = (TextColour)(TC_IS_PALETTE_COLOUR | c_peak);
+				TextColour tc_peak = static_cast<TextColour>(TC_IS_PALETTE_COLOUR | c_peak);
 				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
 				uint64_t value = peak_value * 1000 / TIMESTAMP_PRECISION;
 				int label_y = std::max(y_max, peak_point.y - GetCharacterHeight(FS_SMALL));
-				if (peak_point.x - x_zero > (int)this->graph_size.width / 2) {
+				if (peak_point.x - x_zero > static_cast<int>(this->graph_size.width) / 2) {
 					DrawString(x_zero, peak_point.x - 2, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 				} else {
 					DrawString(peak_point.x + 2, x_max, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_LEFT | SA_FORCE, false, FS_SMALL);

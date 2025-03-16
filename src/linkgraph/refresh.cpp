@@ -233,7 +233,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 					st->index == vehicle->last_station_visited &&
 					this->vehicle->orders->GetTotalDuration() > this->vehicle->current_order_time) {
 				uint effective_capacity = cargo_quantity * this->vehicle->load_unload_ticks;
-				if (effective_capacity > (uint)this->vehicle->orders->GetTotalDuration()) {
+				if (effective_capacity > static_cast<uint>(this->vehicle->orders->GetTotalDuration())) {
 					IncreaseStats(st, c, next_station, effective_capacity /
 							this->vehicle->orders->GetTotalDuration(), 0, 0,
 							{EdgeUpdateMode::Increase, restricted_mode});

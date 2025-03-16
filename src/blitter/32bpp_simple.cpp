@@ -25,8 +25,8 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 	Colour *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
-	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
-	dst_line = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
+	src_line = static_cast<const Blitter_32bppSimple::Pixel *>(bp->sprite) + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	dst_line = static_cast<Colour *>(bp->dst) + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
 		dst = dst_line;
@@ -89,7 +89,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 
 void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height, PaletteID pal)
 {
-	Colour *udst = (Colour *)dst;
+	Colour *udst = static_cast<Colour *>(dst);
 
 	if (pal == PALETTE_TO_TRANSPARENT) {
 		do {
@@ -125,8 +125,8 @@ Sprite *Blitter_32bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite
 	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
 	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 
-	dst = (Blitter_32bppSimple::Pixel *)dest_sprite->data;
-	SpriteLoader::CommonPixel *src = (SpriteLoader::CommonPixel *)sprite[ZOOM_LVL_MIN].data;
+	dst = reinterpret_cast<Blitter_32bppSimple::Pixel *>(dest_sprite->data);
+	SpriteLoader::CommonPixel *src = sprite[ZOOM_LVL_MIN].data;
 
 	for (int i = 0; i < sprite[ZOOM_LVL_MIN].height * sprite[ZOOM_LVL_MIN].width; i++) {
 		if (src->m == 0) {

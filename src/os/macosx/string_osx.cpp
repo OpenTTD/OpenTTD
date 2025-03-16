@@ -137,8 +137,8 @@ public:
 /** Get the width of an encoded sprite font character.  */
 static CGFloat SpriteFontGetWidth(void *ref_con)
 {
-	FontSize fs = (FontSize)((size_t)ref_con >> 24);
-	char32_t c = (char32_t)((size_t)ref_con & 0xFFFFFF);
+	FontSize fs = static_cast<FontSize>((size_t)ref_con >> 24);
+	char32_t c = static_cast<char32_t>((size_t)ref_con & 0xFFFFFF);
 
 	return GetGlyphWidth(fs, c);
 }

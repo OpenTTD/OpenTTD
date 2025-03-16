@@ -29,9 +29,9 @@ static const int HEADER_CHECKSUM_SIZE = 2;
 
 uint32_t _bump_assert_value;
 
-static inline OldChunkType GetOldChunkType(OldChunkType type)     {return (OldChunkType)GB(type, 0, 4);}
-static inline OldChunkType GetOldChunkVarType(OldChunkType type)  {return (OldChunkType)(GB(type, 8, 8) << 8);}
-static inline OldChunkType GetOldChunkFileType(OldChunkType type) {return (OldChunkType)(GB(type, 16, 8) << 16);}
+static inline OldChunkType GetOldChunkType(OldChunkType type)     {return static_cast<OldChunkType>(GB(type, 0, 4));}
+static inline OldChunkType GetOldChunkVarType(OldChunkType type)  {return static_cast<OldChunkType>(GB(type, 8, 8) << 8);}
+static inline OldChunkType GetOldChunkFileType(OldChunkType type) {return static_cast<OldChunkType>(GB(type, 16, 8) << 16);}
 
 /**
  * Return expected size in bytes of a OldChunkType
@@ -128,7 +128,7 @@ bool LoadChunk(LoadgameState &ls, void *base, const OldChunks *chunks)
 			continue;
 		}
 
-		uint8_t *ptr = (uint8_t*)chunk->ptr;
+		uint8_t *ptr = static_cast<uint8_t*>(chunk->ptr);
 
 		for (uint i = 0; i < chunk->amount; i++) {
 			/* Handle simple types */
@@ -153,11 +153,11 @@ bool LoadChunk(LoadgameState &ls, void *base, const OldChunks *chunks)
 
 				/* Reading from the file: bits 16 to 23 have the FILE type */
 				switch (GetOldChunkFileType(chunk->type)) {
-					case OC_FILE_I8:  res = (int8_t)ReadByte(ls); break;
+					case OC_FILE_I8:  res = static_cast<int8_t>(ReadByte(ls)); break;
 					case OC_FILE_U8:  res = ReadByte(ls); break;
-					case OC_FILE_I16: res = (int16_t)ReadUint16(ls); break;
+					case OC_FILE_I16: res = static_cast<int16_t>(ReadUint16(ls)); break;
 					case OC_FILE_U16: res = ReadUint16(ls); break;
-					case OC_FILE_I32: res = (int32_t)ReadUint32(ls); break;
+					case OC_FILE_I32: res = static_cast<int32_t>(ReadUint32(ls)); break;
 					case OC_FILE_U32: res = ReadUint32(ls); break;
 					default: NOT_REACHED();
 				}
@@ -166,18 +166,18 @@ bool LoadChunk(LoadgameState &ls, void *base, const OldChunks *chunks)
 				if (base == nullptr && chunk->ptr == nullptr) continue;
 
 				/* Chunk refers to a struct member, get address in base. */
-				if (chunk->ptr == nullptr) ptr = (uint8_t *)chunk->offset(base);
+				if (chunk->ptr == nullptr) ptr = static_cast<uint8_t *>(chunk->offset(base));
 
 				/* Write the data */
 				switch (GetOldChunkVarType(chunk->type)) {
-					case OC_VAR_I8: *(int8_t  *)ptr = GB(res, 0, 8); break;
-					case OC_VAR_U8: *(uint8_t *)ptr = GB(res, 0, 8); break;
-					case OC_VAR_I16:*(int16_t *)ptr = GB(res, 0, 16); break;
-					case OC_VAR_U16:*(uint16_t*)ptr = GB(res, 0, 16); break;
-					case OC_VAR_I32:*(int32_t *)ptr = res; break;
-					case OC_VAR_U32:*(uint32_t*)ptr = res; break;
-					case OC_VAR_I64:*(int64_t *)ptr = res; break;
-					case OC_VAR_U64:*(uint64_t*)ptr = res; break;
+					case OC_VAR_I8: *reinterpret_cast<int8_t  *>(ptr) = GB(res, 0, 8); break;
+					case OC_VAR_U8: *ptr = GB(res, 0, 8); break;
+					case OC_VAR_I16:*reinterpret_cast<int16_t *>(ptr) = GB(res, 0, 16); break;
+					case OC_VAR_U16:*reinterpret_cast<uint16_t*>(ptr) = GB(res, 0, 16); break;
+					case OC_VAR_I32:*reinterpret_cast<int32_t *>(ptr) = res; break;
+					case OC_VAR_U32:*reinterpret_cast<uint32_t*>(ptr) = res; break;
+					case OC_VAR_I64:*reinterpret_cast<int64_t *>(ptr) = res; break;
+					case OC_VAR_U64:*reinterpret_cast<uint64_t*>(ptr) = res; break;
 					default: NOT_REACHED();
 				}
 

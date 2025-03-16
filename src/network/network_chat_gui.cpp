@@ -255,9 +255,9 @@ static void SendChat(const std::string &buf, DestType type, int dest)
 {
 	if (buf.empty()) return;
 	if (!_network_server) {
-		MyClient::SendChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, 0);
+		MyClient::SendChat(static_cast<NetworkAction>(NETWORK_ACTION_CHAT + type), type, dest, buf, 0);
 	} else {
-		NetworkServerSendChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, CLIENT_ID_SERVER);
+		NetworkServerSendChat(static_cast<NetworkAction>(NETWORK_ACTION_CHAT + type), type, dest, buf, CLIENT_ID_SERVER);
 	}
 }
 
@@ -363,7 +363,7 @@ struct NetworkChatWindow : public Window {
 		assert((uint)this->dtype < lengthof(chat_captions));
 
 		if (this->dtype == DESTTYPE_CLIENT) {
-			return GetString(STR_NETWORK_CHAT_CLIENT_CAPTION, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
+			return GetString(STR_NETWORK_CHAT_CLIENT_CAPTION, NetworkClientInfo::GetByClientID(static_cast<ClientID>(this->dest))->client_name);
 		}
 
 		return GetString(chat_captions[this->dtype]);

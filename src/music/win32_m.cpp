@@ -370,7 +370,7 @@ std::optional<std::string_view> MusicDriver_Win32::Start(const StringList &parm)
 	Debug(driver, 2, "Win32-MIDI: Start: initializing");
 
 	int resolution = GetDriverParamInt(parm, "resolution", 5);
-	uint port = (uint)GetDriverParamInt(parm, "port", UINT_MAX);
+	uint port = static_cast<uint>(GetDriverParamInt(parm, "port", UINT_MAX));
 	const char *portname = GetDriverParam(parm, "portname");
 
 	/* Enumerate ports either for selecting port by name, or for debug output */

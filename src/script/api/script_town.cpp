@@ -132,7 +132,7 @@
 
 	goal = Clamp<SQInteger>(goal, 0, UINT32_MAX);
 
-	return ScriptObject::Command<CMD_TOWN_CARGO_GOAL>::Do(town_id, (::TownAcceptanceEffect)towneffect_id, goal);
+	return ScriptObject::Command<CMD_TOWN_CARGO_GOAL>::Do(town_id, static_cast<::TownAcceptanceEffect>(towneffect_id), goal);
 }
 
 /* static */ SQInteger ScriptTown::GetCargoGoal(TownID town_id, ScriptCargo::TownEffect towneffect_id)
@@ -205,7 +205,7 @@
 	if (!IsValidTown(town_id)) return false;
 
 	const Town *t = ::Town::Get(town_id);
-	return ((uint32_t)GetDistanceSquareToTile(town_id, tile) <= t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]);
+	return (static_cast<uint32_t>(GetDistanceSquareToTile(town_id, tile)) <= t->cache.squared_town_zone_radius[HZB_TOWN_EDGE]);
 }
 
 /* static */ bool ScriptTown::HasStatue(TownID town_id)
@@ -293,7 +293,7 @@
 		EnforcePrecondition(false, layout >= ROAD_LAYOUT_ORIGINAL && layout <= ROAD_LAYOUT_RANDOM);
 	} else {
 		/* The layout parameter is ignored for AIs when custom layouts is disabled. */
-		layout = (RoadLayout) (uint8_t)_settings_game.economy.town_layout;
+		layout = static_cast<RoadLayout>(static_cast<uint8_t>(_settings_game.economy.town_layout));
 	}
 
 	std::string text;
@@ -307,7 +307,7 @@
 		return false;
 	}
 
-	return ScriptObject::Command<CMD_FOUND_TOWN>::Do(tile, (::TownSize)size, city, (::TownLayout)layout, false, townnameparts, text);
+	return ScriptObject::Command<CMD_FOUND_TOWN>::Do(tile, static_cast<::TownSize>(size), city, static_cast<::TownLayout>(layout), false, townnameparts, text);
 }
 
 /* static */ ScriptTown::TownRating ScriptTown::GetRating(TownID town_id, ScriptCompany::CompanyID company_id)
@@ -384,5 +384,5 @@
 {
 	if (!IsValidTown(town_id)) return ROAD_LAYOUT_INVALID;
 
-	return (ScriptTown::RoadLayout)((TownLayout)::Town::Get(town_id)->layout);
+	return static_cast<ScriptTown::RoadLayout>(::Town::Get(town_id)->layout);
 }

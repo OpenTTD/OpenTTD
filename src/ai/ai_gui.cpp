@@ -217,7 +217,7 @@ struct AIConfigWindow : public Window {
 		if (widget >= WID_AIC_TEXTFILE && widget < WID_AIC_TEXTFILE + TFT_CONTENT_END) {
 			if (this->selected_slot == CompanyID::Invalid() || AIConfig::GetConfig(this->selected_slot) == nullptr) return;
 
-			ShowScriptTextfileWindow((TextfileType)(widget - WID_AIC_TEXTFILE), this->selected_slot);
+			ShowScriptTextfileWindow(static_cast<TextfileType>(widget - WID_AIC_TEXTFILE), this->selected_slot);
 			return;
 		}
 
@@ -249,14 +249,14 @@ struct AIConfigWindow : public Window {
 			}
 
 			case WID_AIC_LIST: { // Select a slot
-				this->selected_slot = (CompanyID)this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
+				this->selected_slot = CompanyID(this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget));
 				this->InvalidateData();
-				if (click_count > 1 && IsEditable(this->selected_slot)) ShowScriptListWindow((CompanyID)this->selected_slot, _ctrl_pressed);
+				if (click_count > 1 && IsEditable(this->selected_slot)) ShowScriptListWindow(CompanyID(this->selected_slot), _ctrl_pressed);
 				break;
 			}
 
 			case WID_AIC_MOVE_UP:
-				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot - 1))) {
+				if (IsEditable(this->selected_slot) && IsEditable(CompanyID(this->selected_slot - 1))) {
 					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot - 1]);
 					this->selected_slot = CompanyID(this->selected_slot - 1);
 					this->vscroll->ScrollTowards(this->selected_slot.base());
@@ -265,7 +265,7 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case WID_AIC_MOVE_DOWN:
-				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot + 1))) {
+				if (IsEditable(this->selected_slot) && IsEditable(CompanyID(this->selected_slot + 1))) {
 					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot + 1]);
 					++this->selected_slot;
 					this->vscroll->ScrollTowards(this->selected_slot.base());
@@ -281,11 +281,11 @@ struct AIConfigWindow : public Window {
 			}
 
 			case WID_AIC_CHANGE:  // choose other AI
-				if (IsEditable(this->selected_slot)) ShowScriptListWindow((CompanyID)this->selected_slot, _ctrl_pressed);
+				if (IsEditable(this->selected_slot)) ShowScriptListWindow(CompanyID(this->selected_slot), _ctrl_pressed);
 				break;
 
 			case WID_AIC_CONFIGURE: // change the settings for an AI
-				ShowScriptSettingsWindow((CompanyID)this->selected_slot);
+				ShowScriptSettingsWindow(CompanyID(this->selected_slot));
 				break;
 
 			case WID_AIC_CONTENT_DOWNLOAD:
@@ -319,8 +319,8 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_AIC_INCREASE_INTERVAL, GetGameSettings().difficulty.competitors_interval == MAX_COMPETITORS_INTERVAL);
 		this->SetWidgetDisabledState(WID_AIC_CHANGE, !IsEditable(this->selected_slot));
 		this->SetWidgetDisabledState(WID_AIC_CONFIGURE, this->selected_slot == CompanyID::Invalid() || config->GetConfigList()->empty());
-		this->SetWidgetDisabledState(WID_AIC_MOVE_UP, !IsEditable(this->selected_slot) || !IsEditable((CompanyID)(this->selected_slot - 1)));
-		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, !IsEditable(this->selected_slot) || !IsEditable((CompanyID)(this->selected_slot + 1)));
+		this->SetWidgetDisabledState(WID_AIC_MOVE_UP, !IsEditable(this->selected_slot) || !IsEditable(CompanyID(this->selected_slot - 1)));
+		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, !IsEditable(this->selected_slot) || !IsEditable(CompanyID(this->selected_slot + 1)));
 
 		this->SetWidgetDisabledState(WID_AIC_OPEN_URL, this->selected_slot == CompanyID::Invalid() || config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {

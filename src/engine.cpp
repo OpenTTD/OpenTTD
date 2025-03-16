@@ -676,7 +676,7 @@ void CalcEngineReliability(Engine *e, bool new_month)
 		e->reliability = e->reliability_max;
 	} else if ((age -= e->duration_phase_2) < e->duration_phase_3) {
 		uint max = e->reliability_max;
-		e->reliability = (int)age * (int)(e->reliability_final - max) / e->duration_phase_3 + max;
+		e->reliability = static_cast<int>(age) * static_cast<int>(e->reliability_final - max) / e->duration_phase_3 + max;
 	} else {
 		/* time's up for this engine.
 		 * We will now completely retire this design */
@@ -737,7 +737,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
 	 * Note: TTDP uses fixed 1922 */
-	e->intro_date = ei->base_intro <= TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
+	e->intro_date = ei->base_intro <= TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : TimerGameCalendar::Date(GB(r, 0, 9)) + ei->base_intro;
 	if (e->intro_date <= TimerGameCalendar::date) {
 		TimerGameCalendar::YearMonthDay intro_ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
 		int aging_months = aging_ymd.year.base() * 12 + aging_ymd.month;
@@ -778,7 +778,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	e->reliability_final = GB(r, 16, 14) + RELIABILITY_FINAL;
 
 	e->duration_phase_1 = GB(r, 0, 5) + 7;
-	e->duration_phase_2 = std::max(0, int(GB(r, 5, 4)) + ei->base_life.base() * 12 - 96);
+	e->duration_phase_2 = std::max(0, static_cast<int>(GB(r, 5, 4)) + ei->base_life.base() * 12 - 96);
 	e->duration_phase_3 = GB(r, 9, 7) + 120;
 
 	RestoreRandomSeeds(saved_seeds);

@@ -408,7 +408,7 @@
 	if (!IsValidVehicle(vehicle_id)) return ScriptRoad::ROADTYPE_INVALID;
 	if (GetVehicleType(vehicle_id) != VT_ROAD) return ScriptRoad::ROADTYPE_INVALID;
 
-	return (ScriptRoad::RoadType)(int)(::RoadVehicle::Get(vehicle_id))->roadtype;
+	return static_cast<ScriptRoad::RoadType>(static_cast<int>((::RoadVehicle::Get(vehicle_id))->roadtype));
 }
 
 /* static */ SQInteger ScriptVehicle::GetCapacity(VehicleID vehicle_id, CargoType cargo)

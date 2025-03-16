@@ -18,10 +18,10 @@
 #include "../../safeguards.h"
 
 /* Make sure that these enums match. */
-static_assert((int)CRR_MANUAL    == (int)ADMIN_CRR_MANUAL);
-static_assert((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);
-static_assert((int)CRR_BANKRUPT  == (int)ADMIN_CRR_BANKRUPT);
-static_assert((int)CRR_END       == (int)ADMIN_CRR_END);
+static_assert(static_cast<int>(CRR_MANUAL)    == static_cast<int>(ADMIN_CRR_MANUAL));
+static_assert(static_cast<int>(CRR_AUTOCLEAN) == static_cast<int>(ADMIN_CRR_AUTOCLEAN));
+static_assert(static_cast<int>(CRR_BANKRUPT)  == static_cast<int>(ADMIN_CRR_BANKRUPT));
+static_assert(static_cast<int>(CRR_END)       == static_cast<int>(ADMIN_CRR_END));
 
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
 {
@@ -36,7 +36,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
  */
 NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet &p)
 {
-	PacketAdminType type = (PacketAdminType)p.Recv_uint8();
+	PacketAdminType type = static_cast<PacketAdminType>(p.Recv_uint8());
 
 	if (this->HasClientQuit()) {
 		Debug(net, 0, "[tcp/admin] Received invalid packet from '{}' ({})", this->admin_name, this->admin_version);

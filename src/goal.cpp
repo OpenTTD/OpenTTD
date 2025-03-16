@@ -243,9 +243,9 @@ CommandCost CmdSetGoalCompleted(DoCommandFlags flags, GoalID goal, bool complete
 CommandCost CmdGoalQuestion(DoCommandFlags flags, uint16_t uniqueid, uint32_t target, bool is_client, uint32_t button_mask, GoalQuestionType type, const EncodedString &text)
 {
 	static_assert(sizeof(uint32_t) >= sizeof(CompanyID));
-	CompanyID company = (CompanyID)target;
+	CompanyID company = CompanyID(target);
 	static_assert(sizeof(uint32_t) >= sizeof(ClientID));
-	ClientID client = (ClientID)target;
+	ClientID client = static_cast<ClientID>(target);
 
 	static_assert(GOAL_QUESTION_BUTTON_COUNT < 29);
 	button_mask &= (1U << GOAL_QUESTION_BUTTON_COUNT) - 1;
@@ -301,7 +301,7 @@ CommandCost CmdGoalQuestionAnswer(DoCommandFlags flags, uint16_t uniqueid, uint8
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		Game::NewEvent(new ScriptEventGoalQuestionAnswer(uniqueid, _current_company, (ScriptGoal::QuestionButton)(1 << button)));
+		Game::NewEvent(new ScriptEventGoalQuestionAnswer(uniqueid, _current_company, static_cast<ScriptGoal::QuestionButton>(1 << button)));
 	}
 
 	return CommandCost();

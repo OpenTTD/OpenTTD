@@ -50,7 +50,7 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	/* Get the GameInfo */
 	SQUserPointer instance = nullptr;
 	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, nullptr)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of GameInfo to RegisterGame");
-	GameInfo *info = (GameInfo *)instance;
+	GameInfo *info = static_cast<GameInfo *>(instance);
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;

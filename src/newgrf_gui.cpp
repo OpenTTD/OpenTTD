@@ -228,7 +228,7 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_DESCRIPTION:
 				/* Minimum size of 4 lines. The 500 is the default size of the window. */
-				Dimension suggestion = {500U - WidgetDimensions::scaled.frametext.Horizontal(), (uint)GetCharacterHeight(FS_NORMAL) * 4 + WidgetDimensions::scaled.frametext.Vertical()};
+				Dimension suggestion = {500U - WidgetDimensions::scaled.frametext.Horizontal(), static_cast<uint>(GetCharacterHeight(FS_NORMAL)) * 4 + WidgetDimensions::scaled.frametext.Vertical()};
 				for (const auto &par_info : this->grf_config.param_info) {
 					if (!par_info.has_value()) continue;
 					const char *desc = GetGRFStringFromGRFText(par_info->desc);
@@ -925,7 +925,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TFT_CONTENT_END) {
 			if (this->active_sel == nullptr && this->avail_sel == nullptr) return;
 
-			ShowNewGRFTextfileWindow((TextfileType)(widget - WID_NS_NEWGRF_TEXTFILE), this->active_sel != nullptr ? this->active_sel : this->avail_sel);
+			ShowNewGRFTextfileWindow(static_cast<TextfileType>(widget - WID_NS_NEWGRF_TEXTFILE), this->active_sel != nullptr ? this->active_sel : this->avail_sel);
 			return;
 		}
 
@@ -1493,7 +1493,7 @@ private:
 
 		/* Select next (or previous, if last one) item in the list. */
 		int new_pos = this->avail_pos + 1;
-		if (new_pos >= (int)this->avails.size()) new_pos = this->avail_pos - 1;
+		if (new_pos >= static_cast<int>(this->avails.size())) new_pos = this->avail_pos - 1;
 		this->avail_pos = new_pos;
 		if (new_pos >= 0) this->avail_sel = this->avails[new_pos];
 
@@ -2057,7 +2057,7 @@ struct SavePresetWindow : public Window {
 					size.width = std::max(size.width, d.width + padding.width);
 					resize.height = std::max(resize.height, d.height);
 				}
-				size.height = ClampU((uint)this->presets.size(), 5, 20) * resize.height + padding.height;
+				size.height = ClampU(static_cast<uint>(this->presets.size()), 5, 20) * resize.height + padding.height;
 				break;
 			}
 		}

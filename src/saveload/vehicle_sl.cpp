@@ -1121,7 +1121,7 @@ struct VEHSChunkHandler : ChunkHandler {
 
 		while ((index = SlIterateArray()) != -1) {
 			Vehicle *v;
-			VehicleType vtype = (VehicleType)SlReadByte();
+			VehicleType vtype = static_cast<VehicleType>(SlReadByte());
 
 			switch (vtype) {
 				case VEH_TRAIN:    v = new (VehicleID(index)) Train();           break;

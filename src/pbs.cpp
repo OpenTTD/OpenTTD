@@ -262,12 +262,12 @@ struct FindTrainOnTrackInfo {
 /** Callback for Has/FindVehicleOnPos to find a train on a specific track. */
 static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
 {
-	FindTrainOnTrackInfo *info = (FindTrainOnTrackInfo *)data;
+	FindTrainOnTrackInfo *info = static_cast<FindTrainOnTrackInfo *>(data);
 
 	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return nullptr;
 
 	Train *t = Train::From(v);
-	if (t->track == TRACK_BIT_WORMHOLE || HasBit((TrackBits)t->track, TrackdirToTrack(info->res.trackdir))) {
+	if (t->track == TRACK_BIT_WORMHOLE || HasBit(t->track, TrackdirToTrack(info->res.trackdir))) {
 		t = t->First();
 
 		/* ALWAYS return the lowest ID (anti-desync!) */

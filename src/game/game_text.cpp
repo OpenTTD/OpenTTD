@@ -136,7 +136,7 @@ struct TranslationWriter : LanguageWriter {
 
 	void Write(const uint8_t *buffer, size_t length) override
 	{
-		this->strings.emplace_back((const char *)buffer, length);
+		this->strings.emplace_back(reinterpret_cast<const char *>(buffer), length);
 	}
 };
 
@@ -154,7 +154,7 @@ struct StringNameWriter : HeaderWriter {
 
 	void WriteStringID(const std::string &name, int stringid) override
 	{
-		if (stringid == (int)this->strings.size()) this->strings.emplace_back(name);
+		if (stringid == static_cast<int>(this->strings.size())) this->strings.emplace_back(name);
 	}
 
 	void Finalise(const StringData &) override

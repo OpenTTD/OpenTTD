@@ -120,7 +120,7 @@ public:
 	{
 		_linkgraph = lg;
 
-		uint16_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _num_nodes : (uint16_t)SlGetStructListLength(UINT16_MAX);
+		uint16_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _num_nodes : static_cast<uint16_t>(SlGetStructListLength(UINT16_MAX));
 		lg->Init(length);
 		for (NodeID from = 0; from < length; ++from) {
 			_linkgraph_from = from;

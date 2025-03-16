@@ -381,14 +381,14 @@ static bool FixupMidiData(MidiFile &target)
 			/* block is within the current tempo */
 			int64_t tickdiff = block.ticktime - last_ticktime;
 			last_ticktime = block.ticktime;
-			last_realtime += uint32_t(tickdiff * tempo.tempo / target.tickdiv);
+			last_realtime += static_cast<uint32_t>(tickdiff * tempo.tempo / target.tickdiv);
 			block.realtime = last_realtime;
 			cur_block++;
 		} else {
 			/* tempo change occurs before this block */
 			int64_t tickdiff = next_tempo.ticktime - last_ticktime;
 			last_ticktime = next_tempo.ticktime;
-			last_realtime += uint32_t(tickdiff * tempo.tempo / target.tickdiv); // current tempo until the tempo change
+			last_realtime += static_cast<uint32_t>(tickdiff * tempo.tempo / target.tickdiv); // current tempo until the tempo change
 			cur_tempo++;
 		}
 	}
@@ -564,7 +564,7 @@ struct MpsMachine {
 			 * Two bytes between offset to next and start of data
 			 * are unaccounted for. */
 			this->segments.push_back(pos + 4);
-			pos += FROM_LE16(*(const int16_t *)(this->songdata + pos));
+			pos += FROM_LE16(*reinterpret_cast<const int16_t *>(this->songdata + pos));
 		}
 
 		/* After segments follows list of master tracks for each channel,
@@ -576,7 +576,7 @@ struct MpsMachine {
 			 * to next track. */
 			uint8_t ch = this->songdata[pos++];
 			this->channels[ch].startpos = pos + 4;
-			pos += FROM_LE16(*(const int16_t *)(this->songdata + pos));
+			pos += FROM_LE16(*reinterpret_cast<const int16_t *>(this->songdata + pos));
 		}
 	}
 
@@ -674,7 +674,7 @@ struct MpsMachine {
 						int16_t velocity;
 						if (channel == 9) {
 							/* Percussion channel, fixed velocity scaling not in the table */
-							velocity = (int16_t)b2 * 0x50;
+							velocity = static_cast<int16_t>(b2) * 0x50;
 						} else {
 							/* Regular channel, use scaling from table */
 							velocity = b2 * programvelocities[chandata.cur_program];
@@ -698,7 +698,7 @@ struct MpsMachine {
 						/* Standard MIDI controller 0 is "bank select", override meaning to change tempo.
 						 * This is not actually used in any of the original songs. */
 						if (b2 != 0) {
-							this->current_tempo = ((int)b2) * 48 / 60;
+							this->current_tempo = (static_cast<int>(b2)) * 48 / 60;
 						}
 						break;
 					} else if (b1 == MIDICT_EFFECTS1) {
@@ -781,7 +781,7 @@ struct MpsMachine {
 		/* Initialize playback simulation */
 		this->RestartSong();
 		this->shouldplayflag = true;
-		this->current_tempo = (int32_t)this->initial_tempo * 24 / 60;
+		this->current_tempo = static_cast<int32_t>(this->initial_tempo) * 24 / 60;
 		this->tempo_ticks = this->current_tempo;
 
 		/* Always reset percussion channel to program 0 */
@@ -909,7 +909,7 @@ bool MidiFile::WriteSMF(const std::string &filename)
 		0x00, 0x00, 0x00, 0x06, // BE32 block length, always 6 bytes
 		0x00, 0x00,             // writing format 0 (all in one track)
 		0x00, 0x01,             // containing 1 track (BE16)
-		(uint8_t)(this->tickdiv >> 8), (uint8_t)this->tickdiv, // tickdiv in BE16
+		static_cast<uint8_t>(this->tickdiv >> 8), static_cast<uint8_t>(this->tickdiv), // tickdiv in BE16
 	};
 	fwrite(fileheader, sizeof(fileheader), 1, f);
 
@@ -1010,7 +1010,7 @@ bool MidiFile::WriteSMF(const std::string &filename)
 	/* Fill out the RIFF block length */
 	size_t trackendpos = ftell(f);
 	fseek(f, tracksizepos, SEEK_SET);
-	uint32_t tracksize = (uint32_t)(trackendpos - tracksizepos - 4); // blindly assume we never produce files larger than 2 GB
+	uint32_t tracksize = static_cast<uint32_t>(trackendpos - tracksizepos - 4); // blindly assume we never produce files larger than 2 GB
 	tracksize = TO_BE32(tracksize);
 	fwrite(&tracksize, 4, 1, f);
 

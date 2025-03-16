@@ -47,7 +47,7 @@ static std::string GetStringForWidget(const Window *w, const NWidgetCore *nwid, 
  */
 static inline RectPadding ScaleGUITrad(const RectPadding &r)
 {
-	return {(uint8_t)ScaleGUITrad(r.left), (uint8_t)ScaleGUITrad(r.top), (uint8_t)ScaleGUITrad(r.right), (uint8_t)ScaleGUITrad(r.bottom)};
+	return {static_cast<uint8_t>(ScaleGUITrad(r.left)), static_cast<uint8_t>(ScaleGUITrad(r.top)), static_cast<uint8_t>(ScaleGUITrad(r.right)), static_cast<uint8_t>(ScaleGUITrad(r.bottom))};
 }
 
 /**
@@ -57,7 +57,7 @@ static inline RectPadding ScaleGUITrad(const RectPadding &r)
  */
 static inline Dimension ScaleGUITrad(const Dimension &dim)
 {
-	return {(uint)ScaleGUITrad(dim.width), (uint)ScaleGUITrad(dim.height)};
+	return {static_cast<uint>(ScaleGUITrad(dim.width)), static_cast<uint>(ScaleGUITrad(dim.height))};
 }
 
 /**
@@ -2007,7 +2007,7 @@ void NWidgetMatrix::SetupSmallestSize(Window *w)
 
 	this->children.front()->SetupSmallestSize(w);
 
-	Dimension padding = { (uint)this->pip_pre + this->pip_post, (uint)this->pip_pre + this->pip_post};
+	Dimension padding = { static_cast<uint>(this->pip_pre) + this->pip_post, static_cast<uint>(this->pip_pre) + this->pip_post};
 	Dimension size    = {this->children.front()->smallest_x + padding.width, this->children.front()->smallest_y + padding.height};
 	Dimension fill    = {0, 0};
 	Dimension resize  = {this->pip_inter + this->children.front()->smallest_x, this->pip_inter + this->children.front()->smallest_y};
@@ -2064,11 +2064,11 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 	bool rtl = _current_text_dir == TD_RTL;
 
 	int widget_col = (rtl ?
-				-x + (int)this->pip_post + this->pos_x + base_offs_x + this->widget_w - 1 - (int)this->pip_inter :
-				 x - (int)this->pip_pre  - this->pos_x - base_offs_x
+				-x + static_cast<int>(this->pip_post) + this->pos_x + base_offs_x + this->widget_w - 1 - static_cast<int>(this->pip_inter) :
+				 x - static_cast<int>(this->pip_pre)  - this->pos_x - base_offs_x
 			) / this->widget_w;
 
-	int widget_row = (y - base_offs_y - (int)this->pip_pre - this->pos_y) / this->widget_h;
+	int widget_row = (y - base_offs_y - static_cast<int>(this->pip_pre) - this->pos_y) / this->widget_h;
 
 	this->current_element = (widget_row + start_y) * this->widgets_x + start_x + widget_col;
 	if (this->current_element >= this->count) return nullptr;
@@ -2106,7 +2106,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 		for (int y = start_y; y < start_y + this->widgets_y + 1; y++, offs_y += this->widget_h) {
 			/* Are we within bounds? */
 			if (offs_y + child->smallest_y <= 0) continue;
-			if (offs_y >= (int)this->current_y) break;
+			if (offs_y >= static_cast<int>(this->current_y)) break;
 
 			/* We've passed our amount of widgets. */
 			if (y * this->widgets_x >= this->count) break;
@@ -2115,7 +2115,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 			for (int x = start_x; x < start_x + this->widgets_x + 1; x++, offs_x += rtl ? -this->widget_w : this->widget_w) {
 				/* Are we within bounds? */
 				if (offs_x + child->smallest_x <= 0) continue;
-				if (offs_x >= (int)this->current_x) continue;
+				if (offs_x >= static_cast<int>(this->current_x)) continue;
 
 				/* Do we have this many widgets? */
 				this->current_element = y * this->widgets_x + x;
@@ -2522,9 +2522,9 @@ void Scrollbar::SetCapacityFromWidget(Window *w, WidgetID widget, int padding)
 {
 	NWidgetBase *nwid = w->GetWidget<NWidgetBase>(widget);
 	if (this->IsVertical()) {
-		this->SetCapacity(((int)nwid->current_y - padding) / (int)nwid->resize_y);
+		this->SetCapacity((static_cast<int>(nwid->current_y) - padding) / static_cast<int>(nwid->resize_y));
 	} else {
-		this->SetCapacity(((int)nwid->current_x - padding) / (int)nwid->resize_x);
+		this->SetCapacity((static_cast<int>(nwid->current_x) - padding) / static_cast<int>(nwid->resize_x));
 	}
 }
 

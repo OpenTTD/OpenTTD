@@ -154,7 +154,7 @@ struct DropdownWindow : Window {
 		if (desired.height < available_height) return;
 
 		/* If the dropdown doesn't fully fit, we a need a dropdown. */
-		uint avg_height = list.height / (uint)this->list.size();
+		uint avg_height = list.height / static_cast<uint>(this->list.size());
 		uint rows = std::max((available_height - WidgetDimensions::scaled.dropdownlist.Vertical()) / avg_height, 1U);
 
 		desired.width = std::max(list.width, desired.width - NWidgetScrollbar::GetVerticalDimension().width);
@@ -194,7 +194,7 @@ struct DropdownWindow : Window {
 
 		if (_current_text_dir == TD_RTL) {
 			/* In case the list is wider than the parent button, the list should be right aligned to the button and overflow to the left. */
-			this->position.x = button_rect.right + 1 - (int)(widget_dim.width + (list_dim.height > widget_dim.height ? NWidgetScrollbar::GetVerticalDimension().width : 0));
+			this->position.x = button_rect.right + 1 - static_cast<int>(widget_dim.width + (list_dim.height > widget_dim.height ? NWidgetScrollbar::GetVerticalDimension().width : 0));
 		} else {
 			this->position.x = button_rect.left;
 		}

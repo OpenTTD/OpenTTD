@@ -73,9 +73,9 @@ inline uint CrunchColour(uint c)
 static uint CalculateColourDistance(const Colour &col1, int r2, int g2, int b2)
 {
 	/* Euclidean colour distance for sRGB based on https://en.wikipedia.org/wiki/Color_difference#sRGB */
-	int r = (int)col1.r - (int)r2;
-	int g = (int)col1.g - (int)g2;
-	int b = (int)col1.b - (int)b2;
+	int r = static_cast<int>(col1.r) - r2;
+	int g = static_cast<int>(col1.g) - g2;
+	int b = static_cast<int>(col1.b) - b2;
 
 	int avgr = (col1.r + r2) / 2;
 	return ((2 + (avgr / 256.0)) * r * r) + (4 * g * g) + ((2 + ((255 - avgr) / 256.0)) * b * b);
@@ -364,7 +364,7 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold)
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
 	/* Compare with threshold brightness which defaults to 128 (50%) */
-	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
+	return sq1000_brightness < (static_cast<uint>(threshold)) * (static_cast<uint>(threshold)) * 1000 ? TC_WHITE : TC_BLACK;
 }
 
 /**

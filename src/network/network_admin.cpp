@@ -660,7 +660,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENC
 {
 	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	AdminUpdateType type = (AdminUpdateType)p.Recv_uint16();
+	AdminUpdateType type = static_cast<AdminUpdateType>(p.Recv_uint16());
 	AdminUpdateFrequencies freq = static_cast<AdminUpdateFrequencies>(p.Recv_uint16());
 
 	if (type >= ADMIN_UPDATE_END || !_admin_update_type_frequencies[type].All(freq)) {
@@ -680,7 +680,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet &p)
 {
 	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	AdminUpdateType type = (AdminUpdateType)p.Recv_uint8();
+	AdminUpdateType type = static_cast<AdminUpdateType>(p.Recv_uint8());
 	uint32_t d1 = p.Recv_uint32();
 
 	switch (type) {
@@ -700,7 +700,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet &p)
 				if (d1 == CLIENT_ID_SERVER) {
 					this->SendClientInfo(nullptr, NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER));
 				} else {
-					const NetworkClientSocket *cs = NetworkClientSocket::GetByClientID((ClientID)d1);
+					const NetworkClientSocket *cs = NetworkClientSocket::GetByClientID(static_cast<ClientID>(d1));
 					if (cs != nullptr) this->SendClientInfo(cs, cs->GetInfo());
 				}
 			}
@@ -746,8 +746,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet &p)
 {
 	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	NetworkAction action = (NetworkAction)p.Recv_uint8();
-	DestType desttype = (DestType)p.Recv_uint8();
+	NetworkAction action = static_cast<NetworkAction>(p.Recv_uint8());
+	DestType desttype = static_cast<DestType>(p.Recv_uint8());
 	int dest = p.Recv_uint32();
 
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
@@ -773,7 +773,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_EXTERNAL_CHAT(P
 	if (this->status <= ADMIN_STATUS_AUTHENTICATE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
-	TextColour colour = (TextColour)p.Recv_uint16();
+	TextColour colour = static_cast<TextColour>(p.Recv_uint16());
 	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 

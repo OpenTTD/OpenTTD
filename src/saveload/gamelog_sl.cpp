@@ -351,7 +351,7 @@ public:
 			uint8_t type;
 			while ((type = SlReadByte()) != GLCT_NONE) {
 				if (type >= GLCT_END) SlErrorCorrupt("Invalid gamelog change type");
-				LoadChange(la, (GamelogChangeType)type);
+				LoadChange(la, static_cast<GamelogChangeType>(type));
 			}
 			return;
 		}
@@ -360,7 +360,7 @@ public:
 		la->change.reserve(length);
 
 		for (size_t i = 0; i < length; i++) {
-			LoadChange(la, (GamelogChangeType)SlReadByte());
+			LoadChange(la, static_cast<GamelogChangeType>(SlReadByte()));
 		}
 	}
 
@@ -389,7 +389,7 @@ struct GLOGChunkHandler : ChunkHandler {
 				if (type >= GLAT_END) SlErrorCorrupt("Invalid gamelog action type");
 
 				LoggedAction &la = gamelog.data->action.emplace_back();
-				la.at = (GamelogActionType)type;
+				la.at = static_cast<GamelogActionType>(type);
 				SlObject(&la, slt);
 			}
 			return;

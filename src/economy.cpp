@@ -80,7 +80,7 @@ INSTANTIATE_POOL_METHODS(CargoPayment)
  */
 static inline int32_t BigMulS(const int32_t a, const int32_t b, const uint8_t shift)
 {
-	return (int32_t)((int64_t)a * (int64_t)b >> shift);
+	return static_cast<int32_t>(static_cast<int64_t>(a) * static_cast<int64_t>(b) >> shift);
 }
 
 typedef std::vector<Industry *> SmallIndustryList;
@@ -745,7 +745,7 @@ bool AddInflation(bool check_year)
 void RecomputePrices()
 {
 	/* Setup maximum loan as a rounded down multiple of LOAN_INTERVAL. */
-	_economy.max_loan = ((uint64_t)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
+	_economy.max_loan = (static_cast<uint64_t>(_settings_game.difficulty.max_loan) * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
 
 	/* Setup price bases */
 	for (Price i = PR_BEGIN; i < PR_END; i++) {
@@ -798,7 +798,7 @@ void RecomputePrices()
 
 	/* Setup cargo payment */
 	for (CargoSpec *cs : CargoSpec::Iterate()) {
-		cs->current_payment = (cs->initial_payment * (int64_t)_economy.inflation_payment) >> 16;
+		cs->current_payment = (cs->initial_payment * static_cast<int64_t>(_economy.inflation_payment)) >> 16;
 	}
 
 	SetWindowClassesDirty(WC_BUILD_VEHICLE);
@@ -858,7 +858,7 @@ static void HandleEconomyFluctuations()
 	}
 
 	if (_economy.fluct == 0) {
-		_economy.fluct = -(int)GB(Random(), 0, 2);
+		_economy.fluct = -static_cast<int>(GB(Random(), 0, 2));
 		AddNewsItem(GetEncodedString(STR_NEWS_BEGIN_OF_RECESSION), NewsType::Economy, NewsStyle::Normal, {});
 	} else if (_economy.fluct == -12) {
 		_economy.fluct = GB(Random(), 0, 8) + 312;
@@ -1898,7 +1898,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 	 * if _settings_client.gui.loading_indicators == 1, _local_company must be the owner or must be a spectator to show ind., so 1 > 0
 	 * if _settings_client.gui.loading_indicators == 0, do not display indicators ... 0 is never greater than anything
 	 */
-	if (_game_mode != GM_MENU && (_settings_client.gui.loading_indicators > (uint)(front->owner != _local_company && _local_company != COMPANY_SPECTATOR))) {
+	if (_game_mode != GM_MENU && (_settings_client.gui.loading_indicators > static_cast<uint>(front->owner != _local_company && _local_company != COMPANY_SPECTATOR))) {
 		StringID percent_up_down = STR_NULL;
 		int percent = CalcPercentVehicleFilled(front, &percent_up_down);
 		if (front->fill_percent_te_id == INVALID_TE_ID) {

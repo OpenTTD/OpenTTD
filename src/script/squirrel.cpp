@@ -182,7 +182,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 	std::string msg = fmt::format("Error {}:{}/{}: {}", source, line, column, desc);
 
 	/* Check if we have a custom print function */
-	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
+	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
 	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
@@ -195,7 +195,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *so
 void Squirrel::ErrorPrintFunc(HSQUIRRELVM vm, const std::string &s)
 {
 	/* Check if we have a custom print function */
-	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
+	SQPrintFunc *func = (static_cast<Squirrel *>(sq_getforeignptr(vm)))->print_func;
 	if (func == nullptr) {
 		fmt::print(stderr, "{}", s);
 	} else {
@@ -211,7 +211,7 @@ void Squirrel::RunError(HSQUIRRELVM vm, const SQChar *error)
 
 	/* Check if we have a custom print function */
 	std::string msg = fmt::format("Your script made an error: {}\n", error);
-	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
+	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
 		fmt::print(stderr, "{}", msg);
@@ -243,7 +243,7 @@ SQInteger Squirrel::_RunError(HSQUIRRELVM vm)
 void Squirrel::PrintFunc(HSQUIRRELVM vm, const std::string &s)
 {
 	/* Check if we have a custom print function */
-	SQPrintFunc *func = ((Squirrel *)sq_getforeignptr(vm))->print_func;
+	SQPrintFunc *func = (static_cast<Squirrel *>(sq_getforeignptr(vm)))->print_func;
 	if (func == nullptr) {
 		fmt::print("{}", s);
 	} else {
@@ -434,7 +434,7 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 
 /* static */ bool Squirrel::CreateClassInstanceVM(HSQUIRRELVM vm, const std::string &class_name, void *real_instance, HSQOBJECT *instance, SQRELEASEHOOK release_hook, bool prepend_API_name)
 {
-	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
+	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
 
 	int oldtop = sq_gettop(vm);
 
@@ -564,7 +564,7 @@ public:
 static char32_t _io_file_lexfeed_ASCII(SQUserPointer file)
 {
 	unsigned char c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return c;
+	if ((static_cast<SQFile *>(file))->Read(&c, sizeof(c), 1) > 0) return c;
 	return 0;
 }
 
@@ -573,12 +573,12 @@ static char32_t _io_file_lexfeed_UTF8(SQUserPointer file)
 	char buffer[5];
 
 	/* Read the first character, and get the length based on UTF-8 specs. If invalid, bail out. */
-	if (((SQFile *)file)->Read(buffer, sizeof(buffer[0]), 1) != 1) return 0;
+	if ((static_cast<SQFile *>(file))->Read(buffer, sizeof(buffer[0]), 1) != 1) return 0;
 	uint len = Utf8EncodedCharLen(buffer[0]);
 	if (len == 0) return -1;
 
 	/* Read the remaining bits. */
-	if (len > 1 && ((SQFile *)file)->Read(buffer + 1, sizeof(buffer[0]), len - 1) != len - 1) return 0;
+	if (len > 1 && (static_cast<SQFile *>(file))->Read(buffer + 1, sizeof(buffer[0]), len - 1) != len - 1) return 0;
 
 	/* Convert the character, and when definitely invalid, bail out as well. */
 	char32_t c;
@@ -590,23 +590,23 @@ static char32_t _io_file_lexfeed_UTF8(SQUserPointer file)
 static char32_t _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
 {
 	unsigned short c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (char32_t)c;
+	if ((static_cast<SQFile *>(file))->Read(&c, sizeof(c), 1) > 0) return static_cast<char32_t>(c);
 	return 0;
 }
 
 static char32_t _io_file_lexfeed_UCS2_swap(SQUserPointer file)
 {
 	unsigned short c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) {
+	if ((static_cast<SQFile *>(file))->Read(&c, sizeof(c), 1) > 0) {
 		c = ((c >> 8) & 0x00FF)| ((c << 8) & 0xFF00);
-		return (char32_t)c;
+		return static_cast<char32_t>(c);
 	}
 	return 0;
 }
 
 static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger size)
 {
-	SQInteger ret = ((SQFile *)file)->Read(buf, 1, size);
+	SQInteger ret = (static_cast<SQFile *>(file))->Read(buf, 1, size);
 	if (ret == 0) return -1;
 	return ret;
 }

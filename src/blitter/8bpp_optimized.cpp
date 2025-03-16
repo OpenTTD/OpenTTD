@@ -22,12 +22,12 @@ static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	/* Find the offset of this zoom-level */
-	const SpriteData *sprite_src = (const SpriteData *)bp->sprite;
+	const SpriteData *sprite_src = static_cast<const SpriteData *>(bp->sprite);
 	uint offset = sprite_src->offset[zoom];
 
 	/* Find where to start reading in the source sprite */
 	const uint8_t *src = sprite_src->data + offset;
-	uint8_t *dst_line = (uint8_t *)bp->dst + bp->top * bp->pitch + bp->left;
+	uint8_t *dst_line = static_cast<uint8_t *>(bp->dst) + bp->top * bp->pitch + bp->left;
 
 	/* Skip over the top lines in the source image */
 	for (int y = 0; y < bp->skip_top; y++) {
@@ -212,7 +212,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 		}
 	}
 
-	uint size = dst - (uint8_t *)temp_dst;
+	uint size = dst - reinterpret_cast<uint8_t *>(temp_dst);
 
 	/* Safety check, to make sure we guessed the size correctly */
 	assert(size < memory);

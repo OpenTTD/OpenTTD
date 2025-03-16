@@ -338,7 +338,7 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
-	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
+	if (err >= static_cast<ptrdiff_t>lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
 
 	return network_error_strings[err];
 }
@@ -490,10 +490,10 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
 					*company_id = COMPANY_SPECTATOR;
 				} else {
 					/* "#1" means the first company, which has index 0. */
-					*company_id = (CompanyID)(company_value - 1);
+					*company_id = CompanyID(company_value - 1);
 				}
 			} else {
-				*company_id = (CompanyID)company_value;
+				*company_id = CompanyID(company_value);
 			}
 		}
 	}

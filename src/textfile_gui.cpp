@@ -535,7 +535,7 @@ void TextfileWindow::AfterLoadMarkdown()
 		case WID_TF_JUMPLIST: {
 			DropDownList list;
 			for (size_t line : this->jumplist) {
-				list.push_back(MakeDropDownListStringItem(GetString(STR_TEXTFILE_JUMPLIST_ITEM, this->lines[line].text), (int)line));
+				list.push_back(MakeDropDownListStringItem(GetString(STR_TEXTFILE_JUMPLIST_ITEM, this->lines[line].text), static_cast<int>(line)));
 			}
 			ShowDropDownList(this, std::move(list), -1, widget);
 			break;

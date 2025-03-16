@@ -704,28 +704,28 @@ struct TextRefStack {
 	}
 
 	uint8_t  PopUnsignedByte()  { assert(this->position < this->stack.size()); return this->stack[this->position++]; }
-	int8_t   PopSignedByte()    { return (int8_t)this->PopUnsignedByte(); }
+	int8_t   PopSignedByte()    { return static_cast<int8_t>(this->PopUnsignedByte()); }
 
 	uint16_t PopUnsignedWord()
 	{
 		uint16_t val = this->PopUnsignedByte();
 		return val | (this->PopUnsignedByte() << 8);
 	}
-	int16_t  PopSignedWord()    { return (int32_t)this->PopUnsignedWord(); }
+	int16_t  PopSignedWord()    { return static_cast<int32_t>(this->PopUnsignedWord()); }
 
 	uint32_t PopUnsignedDWord()
 	{
 		uint32_t val = this->PopUnsignedWord();
 		return val | (this->PopUnsignedWord() << 16);
 	}
-	int32_t  PopSignedDWord()   { return (int32_t)this->PopUnsignedDWord(); }
+	int32_t  PopSignedDWord()   { return static_cast<int32_t>(this->PopUnsignedDWord()); }
 
 	uint64_t PopUnsignedQWord()
 	{
 		uint64_t val = this->PopUnsignedDWord();
-		return val | (((uint64_t)this->PopUnsignedDWord()) << 32);
+		return val | ((static_cast<uint64_t>(this->PopUnsignedDWord())) << 32);
 	}
-	int64_t  PopSignedQWord()   { return (int64_t)this->PopUnsignedQWord(); }
+	int64_t  PopSignedQWord()   { return static_cast<int64_t>(this->PopUnsignedQWord()); }
 
 	/** Rotate the top four words down: W1, W2, W3, W4 -> W4, W1, W2, W3 */
 	void RotateTop4Words()

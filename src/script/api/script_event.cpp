@@ -28,7 +28,7 @@ struct ScriptEventData {
 
 /* static */ void ScriptEventController::FreeEventPointer()
 {
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
+	ScriptEventData *data = static_cast<ScriptEventData *>(ScriptObject::GetEventPointer());
 
 	/* Free all waiting events (if any) */
 	while (!data->stack.empty()) {
@@ -44,7 +44,7 @@ struct ScriptEventData {
 /* static */ bool ScriptEventController::IsEventWaiting()
 {
 	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
+	ScriptEventData *data = static_cast<ScriptEventData *>(ScriptObject::GetEventPointer());
 
 	return !data->stack.empty();
 }
@@ -52,7 +52,7 @@ struct ScriptEventData {
 /* static */ ScriptEvent *ScriptEventController::GetNextEvent()
 {
 	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
+	ScriptEventData *data = static_cast<ScriptEventData *>(ScriptObject::GetEventPointer());
 
 	if (data->stack.empty()) return nullptr;
 
@@ -64,7 +64,7 @@ struct ScriptEventData {
 /* static */ void ScriptEventController::InsertEvent(ScriptEvent *event)
 {
 	if (ScriptObject::GetEventPointer() == nullptr) ScriptEventController::CreateEventPointer();
-	ScriptEventData *data = (ScriptEventData *)ScriptObject::GetEventPointer();
+	ScriptEventData *data = static_cast<ScriptEventData *>(ScriptObject::GetEventPointer());
 
 	event->AddRef();
 	data->stack.push(event);

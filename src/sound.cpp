@@ -212,7 +212,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 				top < vp->virtual_top + vp->virtual_height && bottom > vp->virtual_top) {
 			int screen_x = (left + right) / 2 - vp->virtual_left;
 			int width = (vp->virtual_width == 0 ? 1 : vp->virtual_width);
-			float panning = (float)screen_x / width;
+			float panning = static_cast<float>(screen_x) / width;
 
 			StartSound(
 				sound,

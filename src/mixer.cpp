@@ -126,7 +126,7 @@ void MxMixSamples(void *buffer, uint samples)
 	PerformanceMeasurer framerate(PFE_SOUND);
 	static uint last_samples = 0;
 	if (samples != last_samples) {
-		framerate.SetExpectedRate((double)_play_rate / samples);
+		framerate.SetExpectedRate(static_cast<double>(_play_rate) / samples);
 		last_samples = samples;
 	}
 
@@ -136,7 +136,7 @@ void MxMixSamples(void *buffer, uint samples)
 	{
 		std::lock_guard<std::mutex> lock{ _music_stream_mutex };
 		/* Fetch music if a sampled stream is available */
-		if (_music_stream) _music_stream((int16_t*)buffer, samples);
+		if (_music_stream) _music_stream(static_cast<int16_t*>(buffer), samples);
 	}
 
 	/* Check if any channels should be stopped. */
@@ -159,9 +159,9 @@ void MxMixSamples(void *buffer, uint samples)
 	for (uint8_t idx : SetBitIterator(active)) {
 		MixerChannel *mc = &_channels[idx];
 		if (mc->is16bit) {
-			mix_int16<int16_t>(mc, (int16_t*)buffer, samples, effect_vol);
+			mix_int16<int16_t>(mc, static_cast<int16_t*>(buffer), samples, effect_vol);
 		} else {
-			mix_int16<int8_t>(mc, (int16_t*)buffer, samples, effect_vol);
+			mix_int16<int8_t>(mc, static_cast<int16_t*>(buffer), samples, effect_vol);
 		}
 		if (mc->samples_left == 0) MxCloseChannel(idx);
 	}
@@ -200,7 +200,7 @@ void MxSetChannelRawSrc(MixerChannel *mc, const std::shared_ptr<std::vector<uint
 	}
 
 	/* Scale number of samples by play rate. */
-	mc->samples_left = (uint)size * _play_rate / rate;
+	mc->samples_left = static_cast<uint>(size) * _play_rate / rate;
 	mc->is16bit = is16bit;
 }
 
@@ -214,8 +214,8 @@ void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan)
 {
 	/* Use sinusoidal pan to maintain overall sound power level regardless
 	 * of position. */
-	mc->volume_left = (uint)(sin((1.0 - pan) * M_PI / 2.0) * volume);
-	mc->volume_right = (uint)(sin(pan * M_PI / 2.0) * volume);
+	mc->volume_left = static_cast<uint>(sin((1.0 - pan) * M_PI / 2.0) * volume);
+	mc->volume_right = static_cast<uint>(sin(pan * M_PI / 2.0) * volume);
 }
 
 

@@ -401,7 +401,7 @@ void Gamelog::Oldver()
 	assert(this->action_type == GLAT_LOAD);
 
 	this->Change(std::make_unique<LoggedChangeOldVersion>(_savegame_type,
-		(_savegame_type == SGT_OTTD ? ((uint32_t)_sl_version << 8 | _sl_minor_version) : _ttdp_version)));
+		(_savegame_type == SGT_OTTD ? (static_cast<uint32_t>(_sl_version) << 8 | _sl_minor_version) : _ttdp_version)));
 }
 
 /**
@@ -655,7 +655,7 @@ void Gamelog::GRFUpdate(const GRFConfigList &oldc, const GRFConfigList &newc)
 				/* GRF was moved down */
 				this->GRFMove(ol[o++]->ident.grfid, ni);
 			} else {
-				this->GRFMove(nl[n++]->ident.grfid, -(int)oi);
+				this->GRFMove(nl[n++]->ident.grfid, -static_cast<int>(oi));
 			}
 		} else {
 			if (og.ident.md5sum != ng.ident.md5sum) {

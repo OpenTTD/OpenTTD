@@ -63,7 +63,7 @@
 	ymd.month = m % 12;
 	ymd.year += TimerGameEconomy::Year{m / 12};
 
-	return (ScriptDate::Date)TimerGameEconomy::ConvertYMDToDate(ymd.year, ymd.month, ymd.day).base();
+	return static_cast<ScriptDate::Date>(TimerGameEconomy::ConvertYMDToDate(ymd.year, ymd.month, ymd.day).base());
 }
 
 /* static */ CargoType ScriptSubsidy::GetCargoType(SubsidyID subsidy_id)

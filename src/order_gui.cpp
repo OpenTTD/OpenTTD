@@ -230,11 +230,11 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	Dimension sprite_size = GetSpriteSize(sprite);
 	if (v->cur_real_order_index == order_index) {
 		/* Draw two arrows before the next real order. */
-		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)GetCharacterHeight(FS_NORMAL) - (int)sprite_size.height) / 2);
-		DrawSprite(sprite, PAL_NONE, rtl ? right - 2 * sprite_size.width : left + sprite_size.width, y + ((int)GetCharacterHeight(FS_NORMAL) - (int)sprite_size.height) / 2);
+		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + (GetCharacterHeight(FS_NORMAL) - static_cast<int>(sprite_size.height)) / 2);
+		DrawSprite(sprite, PAL_NONE, rtl ? right - 2 * sprite_size.width : left + sprite_size.width, y + (GetCharacterHeight(FS_NORMAL) - static_cast<int>(sprite_size.height)) / 2);
 	} else if (v->cur_implicit_order_index == order_index) {
 		/* Draw one arrow before the next implicit order; the next real order will still get two arrows. */
-		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)GetCharacterHeight(FS_NORMAL) - (int)sprite_size.height) / 2);
+		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + (GetCharacterHeight(FS_NORMAL) - static_cast<int>(sprite_size.height)) / 2);
 	}
 
 	TextColour colour = TC_BLACK;
@@ -285,7 +285,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 
 				if (v->type == VEH_TRAIN && (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) == 0) {
 					/* Only show the stopping location if other than the default chosen by the player. */
-					if (order->GetStopLocation() != (OrderStopLocation)(_settings_client.gui.stop_location)) {
+					if (order->GetStopLocation() != static_cast<OrderStopLocation>(_settings_client.gui.stop_location)) {
 						line += GetString(STR_ORDER_STOP_LOCATION_NEAR_END + order->GetStopLocation());
 					}
 				}
@@ -374,7 +374,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	order.index = OrderID::Begin();
 
 	/* check depot first */
-	if (IsDepotTypeTile(tile, (TransportType)(uint)v->type) && IsTileOwner(tile, _local_company)) {
+	if (IsDepotTypeTile(tile, static_cast<TransportType>(static_cast<uint>(v->type))) && IsTileOwner(tile, _local_company)) {
 		order.MakeGoToDepot(GetDepotDestinationIndex(tile),
 				ODTFB_PART_OF_ORDERS,
 				(_settings_client.gui.new_nonstop && v->IsGroundVehicle()) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
@@ -456,7 +456,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				order.MakeGoToStation(st->index);
 				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
 				if (_settings_client.gui.new_nonstop && v->IsGroundVehicle()) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
-				order.SetStopLocation(v->type == VEH_TRAIN ? (OrderStopLocation)(_settings_client.gui.stop_location) : OSL_PLATFORM_FAR_END);
+				order.SetStopLocation(v->type == VEH_TRAIN ? static_cast<OrderStopLocation>(_settings_client.gui.stop_location) : OSL_PLATFORM_FAR_END);
 				return order;
 			}
 		}
@@ -732,7 +732,7 @@ private:
 	void OrderClick_Delete()
 	{
 		/* When networking, move one order lower */
-		int selected = this->selected_order + (int)_networking;
+		int selected = this->selected_order + static_cast<int>(_networking);
 
 		if (Command<CMD_DELETE_ORDER>::Post(STR_ERROR_CAN_T_DELETE_THIS_ORDER, this->vehicle->tile, this->vehicle->index, this->OrderGetSel())) {
 			this->selected_order = selected >= this->vehicle->GetNumOrders() ? -1 : selected;
@@ -899,9 +899,9 @@ public:
 
 				if (from != this->selected_order) {
 					/* Moving from preceding order? */
-					this->selected_order -= (int)(from <= this->selected_order);
+					this->selected_order -= static_cast<int>(from <= this->selected_order);
 					/* Moving to   preceding order? */
-					this->selected_order += (int)(to   <= this->selected_order);
+					this->selected_order += static_cast<int>(to   <= this->selected_order);
 					break;
 				}
 
@@ -948,7 +948,7 @@ public:
 			/* The 'End of Shared Orders' order isn't selected, show the 'delete' button. */
 			delete_sel->SetDisplayedPlane(DP_BOTTOM_MIDDLE_DELETE);
 			this->SetWidgetDisabledState(WID_O_DELETE,
-				(uint)this->vehicle->GetNumOrders() + ((shared_orders || this->vehicle->GetNumOrders() != 0) ? 1 : 0) <= (uint)this->selected_order);
+				static_cast<uint>(this->vehicle->GetNumOrders()) + ((shared_orders || this->vehicle->GetNumOrders() != 0) ? 1 : 0) <= static_cast<uint>(this->selected_order));
 
 			/* Set the tooltip of the 'delete' button depending on whether the
 			 * 'End of Orders' order or a regular order is selected. */
@@ -1386,11 +1386,11 @@ public:
 				break;
 
 			case WID_O_FULL_LOAD:
-				this->OrderClick_FullLoad((OrderLoadFlags)index);
+				this->OrderClick_FullLoad(static_cast<OrderLoadFlags>(index));
 				break;
 
 			case WID_O_UNLOAD:
-				this->OrderClick_Unload((OrderUnloadFlags)index);
+				this->OrderClick_Unload(static_cast<OrderUnloadFlags>(index));
 				break;
 
 			case WID_O_GOTO:

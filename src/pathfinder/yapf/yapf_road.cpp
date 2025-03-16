@@ -305,8 +305,8 @@ public:
 
 		TileIndex tile = n.segment_last_tile;
 		DiagDirection exitdir = TrackdirToExitdir(n.segment_last_td);
-		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[(int)exitdir];
-		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[(int)exitdir];
+		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[static_cast<int>(exitdir)];
+		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[static_cast<int>(exitdir)];
 		int x2 = 2 * TileX(this->dest_tile);
 		int y2 = 2 * TileY(this->dest_tile);
 		int dx = abs(x1 - x2);
@@ -532,7 +532,7 @@ Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDi
 		? CYapfRoad1::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache) // Trackdir
 		: CYapfRoad2::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache); // ExitDir, allow 90-deg
 
-	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit(trackdirs);
+	return (td_ret != INVALID_TRACKDIR) ? td_ret : static_cast<Trackdir>(FindFirstBit(trackdirs));
 }
 
 FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_distance)

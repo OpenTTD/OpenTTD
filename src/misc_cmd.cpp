@@ -92,10 +92,10 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 	switch (cmd) {
 		default: return CMD_ERROR; // Invalid method
 		case LoanCommand::Interval: // Pay back one step
-			loan = std::min(c->current_loan, (Money)LOAN_INTERVAL);
+			loan = std::min(c->current_loan, Money(LOAN_INTERVAL));
 			break;
 		case LoanCommand::Max: // Pay back as much as possible
-			loan = std::max(std::min(c->current_loan, GetAvailableMoneyForCommand()), (Money)LOAN_INTERVAL);
+			loan = std::max(std::min(c->current_loan, GetAvailableMoneyForCommand()), Money(LOAN_INTERVAL));
 			loan -= loan % LOAN_INTERVAL;
 			break;
 		case LoanCommand::Amount: // Repay the given amount of loan
@@ -126,7 +126,7 @@ CommandCost CmdSetCompanyMaxLoan(DoCommandFlags flags, CompanyID company, Money 
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (amount != COMPANY_MAX_LOAN_DEFAULT) {
-		if (amount < 0 || amount > (Money)MAX_LOAN_LIMIT) return CMD_ERROR;
+		if (amount < 0 || amount > Money(MAX_LOAN_LIMIT)) return CMD_ERROR;
 	}
 
 	Company *c = Company::GetIfValid(company);
@@ -249,6 +249,6 @@ CommandCost CmdChangeBankBalance(DoCommandFlags flags, TileIndex tile, Money del
 	}
 
 	/* This command doesn't cost anything for deity. */
-	CommandCost zero_cost(expenses_type, (Money)0);
+	CommandCost zero_cost(expenses_type, Money(0));
 	return zero_cost;
 }

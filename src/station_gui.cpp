@@ -1357,7 +1357,7 @@ struct StationViewWindow : public Window {
 		this->SelectGroupBy(_settings_client.gui.station_gui_group_order);
 		this->SelectSortBy(_settings_client.gui.station_gui_sort_by);
 		this->sort_orders[0] = SO_ASCENDING;
-		this->SelectSortOrder((SortOrder)_settings_client.gui.station_gui_sort_order);
+		this->SelectSortOrder(static_cast<SortOrder>(_settings_client.gui.station_gui_sort_order));
 		this->owner = Station::Get(window_number)->owner;
 	}
 
@@ -1938,7 +1938,7 @@ struct StationViewWindow : public Window {
 	 */
 	void HandleCargoWaitingClick(int row)
 	{
-		if (row < 0 || (uint)row >= this->displayed_rows.size()) return;
+		if (row < 0 || static_cast<uint>(row) >= this->displayed_rows.size()) return;
 		if (_ctrl_pressed) {
 			this->scroll_to_row = row;
 		} else {
@@ -2000,7 +2000,7 @@ struct StationViewWindow : public Window {
 			case WID_SV_SHIPS:    // Show list of scheduled ships to this station
 			case WID_SV_PLANES: { // Show list of scheduled aircraft to this station
 				Owner owner = Station::Get(this->window_number)->owner;
-				ShowVehicleListWindow(owner, (VehicleType)(widget - WID_SV_TRAINS), static_cast<StationID>(this->window_number));
+				ShowVehicleListWindow(owner, static_cast<VehicleType>(widget - WID_SV_TRAINS), static_cast<StationID>(this->window_number));
 				break;
 			}
 
@@ -2146,7 +2146,7 @@ struct StationViewWindow : public Window {
 	{
 		if (gui_scope) {
 			if (data >= 0 && data < NUM_CARGO) {
-				this->cached_destinations.Remove((CargoType)data);
+				this->cached_destinations.Remove(static_cast<CargoType>(data));
 			} else {
 				this->ReInit();
 			}
@@ -2190,7 +2190,7 @@ static std::vector<StationID> _stations_nearby_list;
 template <class T>
 static bool AddNearbyStation(TileIndex tile, void *user_data)
 {
-	TileArea *ctx = (TileArea *)user_data;
+	TileArea *ctx = static_cast<TileArea *>(user_data);
 
 	/* First check if there were deleted stations here */
 	for (auto it = _deleted_stations_nearby.begin(); it != _deleted_stations_nearby.end(); /* nothing */) {

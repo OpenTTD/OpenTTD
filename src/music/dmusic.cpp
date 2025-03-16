@@ -717,7 +717,7 @@ static void MidiThreadProc()
 				REFERENCE_TIME playback_time = current_time - playback_start_time;
 				if (block.realtime * MIDITIME_TO_REFTIME > playback_time +  3 *_playback.preload_time * MS_TO_REFTIME) {
 					/* Stop the thread loop until we are at the preload time of the next block. */
-					next_timeout = Clamp(((int64_t)block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
+					next_timeout = Clamp((static_cast<int64_t>(block.realtime) * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
 					Debug(driver, 9, "DMusic thread: Next event in {} ms (music {}, ref {})", next_timeout, block.realtime * MIDITIME_TO_REFTIME, playback_time);
 					break;
 				}
@@ -971,7 +971,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				download_port->Release();
 				return "Can't get instrument download buffer";
 			}
-			char *inst_base = (char *)instrument;
+			char *inst_base = static_cast<char *>(instrument);
 
 			/* Fill download header. */
 			DMUS_DOWNLOADINFO *d_info = (DMUS_DOWNLOADINFO *)instrument;
@@ -996,7 +996,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 			/* Write global articulations. */
 			if (!dls_file.instruments[i].articulators.empty()) {
 				inst_data->ulGlobalArtIdx = last_offset;
-				offset_table[last_offset++] = (char *)instrument - inst_base;
+				offset_table[last_offset++] = static_cast<char *>(instrument) - inst_base;
 				offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
 
 				instrument = DownloadArticulationData(inst_data->ulGlobalArtIdx, instrument, dls_file.instruments[i].articulators);
@@ -1036,7 +1036,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				/* Write local articulator data. */
 				if (!rgn.articulators.empty()) {
 					inst_region->ulRegionArtIdx = last_offset;
-					offset_table[last_offset++] = (char *)instrument - inst_base;
+					offset_table[last_offset++] = static_cast<char *>(instrument) - inst_base;
 					offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
 
 					instrument = DownloadArticulationData(inst_region->ulRegionArtIdx, instrument, rgn.articulators);

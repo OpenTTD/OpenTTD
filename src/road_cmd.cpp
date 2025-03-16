@@ -145,10 +145,10 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 			rti->introduction_date = CalendarTime::INVALID_DATE;
 
 			/* Make us compatible with ourself. */
-			rti->powered_roadtypes = (RoadTypes)(1ULL << rt);
+			rti->powered_roadtypes = static_cast<RoadTypes>(1ULL << rt);
 
 			/* We also introduce ourself. */
-			rti->introduces_roadtypes = (RoadTypes)(1ULL << rt);
+			rti->introduces_roadtypes = static_cast<RoadTypes>(1ULL << rt);
 
 			/* Default sort order; order of allocation, but with some
 			 * offsets so it's easier for NewGRF to pick a spot without
@@ -373,7 +373,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 			cost.AddCost(len * 2 * RoadClearCost(existing_rt));
 			if (flags.Test(DoCommandFlag::Execute)) {
 				/* A full diagonal road tile has two road bits. */
-				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
+				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -static_cast<int>(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 
 				SetRoadType(other_end, rtt, INVALID_ROADTYPE);
 				SetRoadType(tile,      rtt, INVALID_ROADTYPE);
@@ -454,7 +454,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 					}
 				}
 
-				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -(int)CountBits(pieces));
+				UpdateCompanyRoadInfrastructure(existing_rt, GetRoadOwner(tile, rtt), -static_cast<int>(CountBits(pieces)));
 
 				if (present == ROAD_NONE) {
 					/* No other road type, just clear tile. */
@@ -2125,7 +2125,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, u
 					if (side != INVALID_DIAGDIR && (DiagDirToRoadBits(side) & bits) == 0) break;
 
 					uint multiplier = drd_to_multiplier[(rtt == RTT_TRAM) ? DRD_NONE : GetDisallowedRoadDirections(tile)];
-					if (!HasRoadWorks(tile)) trackdirbits = (TrackdirBits)(_road_trackbits[bits] * multiplier);
+					if (!HasRoadWorks(tile)) trackdirbits = static_cast<TrackdirBits>(_road_trackbits[bits] * multiplier);
 					break;
 				}
 
@@ -2415,7 +2415,7 @@ static void ConvertRoadTypeOwner(TileIndex tile, uint num_pieces, Owner owner, R
 
 	switch (owner.base()) {
 	case OWNER_NONE.base():
-		SetRoadOwner(tile, GetRoadTramType(to_type), (Owner)_current_company);
+		SetRoadOwner(tile, GetRoadTramType(to_type), Owner(_current_company));
 		UpdateCompanyRoadInfrastructure(to_type, _current_company, num_pieces);
 		break;
 

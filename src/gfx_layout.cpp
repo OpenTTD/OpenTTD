@@ -87,13 +87,13 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 			/* Caller should already have filtered out these characters. */
 			NOT_REACHED();
 		} else if (c >= SCC_BLUE && c <= SCC_BLACK) {
-			state.SetColour((TextColour)(c - SCC_BLUE));
+			state.SetColour(static_cast<TextColour>(c - SCC_BLUE));
 		} else if (c == SCC_PUSH_COLOUR) {
 			state.PushColour();
 		} else if (c == SCC_POP_COLOUR) {
 			state.PopColour();
 		} else if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
-			state.SetFontSize((FontSize)(c - SCC_FIRST_FONT));
+			state.SetFontSize(static_cast<FontSize>(c - SCC_FIRST_FONT));
 		} else {
 			/* Filter out non printable characters */
 			if (!IsPrintable(c)) continue;

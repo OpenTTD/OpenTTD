@@ -98,7 +98,7 @@ void TCPConnecter::Connect(addrinfo *address)
 	}
 
 	if (this->bind_address.GetPort() > 0) {
-		if (bind(sock, (const sockaddr *)this->bind_address.GetAddress(), this->bind_address.GetAddressLength()) != 0) {
+		if (bind(sock, reinterpret_cast<const sockaddr *>(this->bind_address.GetAddress()), this->bind_address.GetAddressLength()) != 0) {
 			Debug(net, 1, "Could not bind socket on {}: {}", this->bind_address.GetAddressAsString(), NetworkError::GetLast().AsString());
 			closesocket(sock);
 			return;
@@ -112,10 +112,10 @@ void TCPConnecter::Connect(addrinfo *address)
 		Debug(net, 0, "Setting non-blocking mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
-	NetworkAddress network_address = NetworkAddress(address->ai_addr, (int)address->ai_addrlen);
+	NetworkAddress network_address = NetworkAddress(address->ai_addr, static_cast<int>(address->ai_addrlen));
 	Debug(net, 5, "Attempting to connect to {}", network_address.GetAddressAsString());
 
-	int err = connect(sock, address->ai_addr, (int)address->ai_addrlen);
+	int err = connect(sock, address->ai_addr, static_cast<int>(address->ai_addrlen));
 	if (err != 0 && !NetworkError::GetLast().IsConnectInProgress()) {
 		closesocket(sock);
 

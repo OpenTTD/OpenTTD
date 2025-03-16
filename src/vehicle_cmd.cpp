@@ -804,7 +804,7 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 		buf = src->name.substr(0, number_position);
 
 		auto num_str = src->name.substr(number_position);
-		padding = (uint8_t)num_str.length();
+		padding = static_cast<uint8_t>(num_str.length());
 
 		std::istringstream iss(num_str);
 		iss >> num;

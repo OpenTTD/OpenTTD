@@ -283,7 +283,7 @@ DEF_CONSOLE_CMD(ConResetTile)
 	if (argc == 2) {
 		uint32_t result;
 		if (GetArgumentInteger(&result, argv[1])) {
-			DoClearSquare((TileIndex)result);
+			DoClearSquare(TileIndex(result));
 			return true;
 		}
 	}
@@ -382,7 +382,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile((TileIndex)result, instant);
+				ScrollMainWindowToTile(TileIndex(result), instant);
 				return true;
 			}
 			break;
@@ -666,7 +666,7 @@ static bool ConKickOrBan(const char *argv, bool ban, const std::string &reason)
 	uint n;
 
 	if (strchr(argv, '.') == nullptr && strchr(argv, ':') == nullptr) { // banning with ID
-		ClientID client_id = (ClientID)atoi(argv);
+		ClientID client_id = static_cast<ClientID>(atoi(argv));
 
 		/* Don't kill the server, or the client doing the rcon. The latter can't be kicked because
 		 * kicking frees closes and subsequently free the connection related instances, which we
@@ -903,7 +903,7 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 		return true;
 	}
 
-	ClientID client_id = (ClientID)atoi(argv[1]);
+	ClientID client_id = static_cast<ClientID>(atoi(argv[1]));
 
 	if (client_id == CLIENT_ID_SERVER) {
 		IConsolePrint(CC_ERROR, "Please use the command 'name' to change your own name!");
@@ -937,7 +937,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 		return true;
 	}
 
-	CompanyID company_id = (CompanyID)(atoi(argv[1]) <= MAX_COMPANIES ? atoi(argv[1]) - 1 : atoi(argv[1]));
+	CompanyID company_id = CompanyID(atoi(argv[1]) <= MAX_COMPANIES ? atoi(argv[1]) - 1 : atoi(argv[1]));
 
 	const NetworkClientInfo *info = NetworkClientInfo::GetByClientID(_network_own_client_id);
 	if (info == nullptr) {
@@ -984,8 +984,8 @@ DEF_CONSOLE_CMD(ConMoveClient)
 		return true;
 	}
 
-	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID((ClientID)atoi(argv[1]));
-	CompanyID company_id = (CompanyID)(atoi(argv[2]) <= MAX_COMPANIES ? atoi(argv[2]) - 1 : atoi(argv[2]));
+	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(static_cast<ClientID>(atoi(argv[1])));
+	CompanyID company_id = CompanyID(atoi(argv[2]) <= MAX_COMPANIES ? atoi(argv[2]) - 1 : atoi(argv[2]));
 
 	/* check the client exists */
 	if (ci == nullptr) {
@@ -1029,7 +1029,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	if (argc != 2) return false;
 
-	CompanyID index = (CompanyID)(atoi(argv[1]) - 1);
+	CompanyID index = CompanyID(atoi(argv[1]) - 1);
 
 	/* Check valid range */
 	if (!Company::IsValidID(index)) {
@@ -1081,7 +1081,7 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 		return true;
 	}
 
-	CompanyID playas = (argc >= 2) ? (CompanyID)atoi(argv[1]) : COMPANY_SPECTATOR;
+	CompanyID playas = (argc >= 2) ? CompanyID(atoi(argv[1])) : COMPANY_SPECTATOR;
 	switch (playas.base()) {
 		case 0: playas = COMPANY_NEW_COMPANY; break;
 		case COMPANY_SPECTATOR.base(): /* nothing to do */ break;
@@ -1263,7 +1263,7 @@ DEF_CONSOLE_CMD(ConEchoC)
 	}
 
 	if (argc < 3) return false;
-	IConsolePrint((TextColour)Clamp(atoi(argv[1]), TC_BEGIN, TC_END - 1), argv[2]);
+	IConsolePrint(static_cast<TextColour>(Clamp(atoi(argv[1]), TC_BEGIN, TC_END - 1)), argv[2]);
 	return true;
 }
 
@@ -1423,7 +1423,7 @@ DEF_CONSOLE_CMD(ConStartAI)
 		n++;
 	}
 
-	AIConfig *config = AIConfig::GetConfig((CompanyID)n);
+	AIConfig *config = AIConfig::GetConfig(CompanyID(n));
 	if (argc >= 2) {
 		config->Change(argv[1], -1, false);
 
@@ -1474,7 +1474,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 		return true;
 	}
 
-	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
+	CompanyID company_id = CompanyID(atoi(argv[1]) - 1);
 	if (!Company::IsValidID(company_id)) {
 		IConsolePrint(CC_ERROR, "Unknown company. Company range is between 1 and {}.", MAX_COMPANIES);
 		return true;
@@ -1512,7 +1512,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 		return true;
 	}
 
-	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
+	CompanyID company_id = CompanyID(atoi(argv[1]) - 1);
 	if (!Company::IsValidID(company_id)) {
 		IConsolePrint(CC_ERROR, "Unknown company. Company range is between 1 and {}.", MAX_COMPANIES);
 		return true;
@@ -1915,7 +1915,7 @@ DEF_CONSOLE_CMD(ConSayCompany)
 
 	if (argc != 3) return false;
 
-	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
+	CompanyID company_id = CompanyID(atoi(argv[1]) - 1);
 	if (!Company::IsValidID(company_id)) {
 		IConsolePrint(CC_DEFAULT, "Unknown company. Company range is between 1 and {}.", MAX_COMPANIES);
 		return true;
@@ -2185,7 +2185,7 @@ DEF_CONSOLE_CMD(ConContent)
 			 * good for 70% of the consumed bandwidth of BaNaNaS. */
 			IConsolePrint(CC_ERROR, "'select all' is no longer supported since 1.11.");
 		} else {
-			_network_content_client.Select((ContentID)atoi(argv[2]));
+			_network_content_client.Select(static_cast<ContentID>(atoi(argv[2])));
 		}
 		return true;
 	}
@@ -2198,7 +2198,7 @@ DEF_CONSOLE_CMD(ConContent)
 		if (StrEqualsIgnoreCase(argv[2], "all")) {
 			_network_content_client.UnselectAll();
 		} else {
-			_network_content_client.Unselect((ContentID)atoi(argv[2]));
+			_network_content_client.Unselect(static_cast<ContentID>(atoi(argv[2])));
 		}
 		return true;
 	}
@@ -2468,7 +2468,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 	if (StrStartsWithIgnoreCase(argv[1], "sel") && argc >= 3) {
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
-			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
+			if (grfnum < 1 || grfnum > static_cast<int>(files.size())) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
 				IConsolePrint(CC_WARNING, "GRF number {} out of range, not added.", grfnum);
 				continue;
 			}
@@ -2490,7 +2490,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				break;
 			}
 			int grfnum = atoi(argv[argnum]);
-			if (grfnum < 1 || grfnum > (int)files.size()) {
+			if (grfnum < 1 || grfnum > static_cast<int>(files.size())) {
 				IConsolePrint(CC_WARNING, "GRF number {} out of range, not removing.", grfnum);
 				continue;
 			}
@@ -2623,7 +2623,7 @@ static void ConDumpRoadTypes()
 			grfs.emplace(grfid, grf);
 		}
 		IConsolePrint(CC_DEFAULT, "  {:02d} {} {}, Flags: {}{}{}{}{}, GRF: {:08X}, {}",
-				(uint)rt,
+				static_cast<uint>(rt),
 				RoadTypeIsTram(rt) ? "Tram" : "Road",
 				FormatLabel(rti->label),
 				rti->flags.Test(RoadTypeFlag::Catenary)        ? 'c' : '-',
@@ -2661,7 +2661,7 @@ static void ConDumpRailTypes()
 			grfs.emplace(grfid, grf);
 		}
 		IConsolePrint(CC_DEFAULT, "  {:02d} {}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}",
-				(uint)rt,
+				static_cast<uint>(rt),
 				FormatLabel(rti->label),
 				rti->flags.Test(RailTypeFlag::Catenary)        ? 'c' : '-',
 				rti->flags.Test(RailTypeFlag::NoLevelCrossing) ? 'l' : '-',

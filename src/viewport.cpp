@@ -1123,7 +1123,7 @@ static void DrawTileSelection(const TileInfo *ti)
 	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_NONE) return;
 
 	if (_thd.diagonal) { // We're drawing a 45 degrees rotated (diagonal) rectangle
-		if (IsInsideRotatedRectangle((int)ti->x, (int)ti->y)) goto draw_inner;
+		if (IsInsideRotatedRectangle(ti->x, ti->y)) goto draw_inner;
 		return;
 	}
 
@@ -1191,7 +1191,7 @@ draw_inner:
 static int GetViewportY(Point tile)
 {
 	/* Each increment in X or Y direction moves down by half a tile, i.e. TILE_PIXELS / 2. */
-	return (tile.y * (int)(TILE_PIXELS / 2) + tile.x * (int)(TILE_PIXELS / 2) - TilePixelHeightOutsideMap(tile.x, tile.y)) << ZOOM_BASE_SHIFT;
+	return (tile.y * static_cast<int>(TILE_PIXELS / 2) + tile.x * static_cast<int>(TILE_PIXELS / 2) - TilePixelHeightOutsideMap(tile.x, tile.y)) << ZOOM_BASE_SHIFT;
 }
 
 /**
@@ -1218,8 +1218,8 @@ static void ViewportAddLandscape()
 	 *  - Right column is column of upper_right (rounded up) and one column to the right.
 	 * Note: Integer-division does not round down for negative numbers, so ensure rounding with another increment/decrement.
 	 */
-	int left_column = (upper_left.y - upper_left.x) / (int)TILE_SIZE - 2;
-	int right_column = (upper_right.y - upper_right.x) / (int)TILE_SIZE + 2;
+	int left_column = (upper_left.y - upper_left.x) / static_cast<int>(TILE_SIZE) - 2;
+	int right_column = (upper_right.y - upper_right.x) / static_cast<int>(TILE_SIZE) + 2;
 
 	int potential_bridge_height = ZOOM_BASE * TILE_HEIGHT * _settings_game.construction.max_bridge_height;
 
@@ -1227,7 +1227,7 @@ static void ViewportAddLandscape()
 	 * The first row that could possibly be visible is the row above upper_left (if it is at height 0).
 	 * Due to integer-division not rounding down for negative numbers, we need another decrement.
 	 */
-	int row = (upper_left.x + upper_left.y) / (int)TILE_SIZE - 2;
+	int row = (upper_left.x + upper_left.y) / static_cast<int>(TILE_SIZE) - 2;
 	bool last_row = false;
 	for (; !last_row; row++) {
 		last_row = true;
@@ -1746,7 +1746,7 @@ static void ViewportDrawDirtyBlocks()
 
 	uint8_t bo = UnScaleByZoom(dpi->left + dpi->top, dpi->zoom) & 1;
 	do {
-		for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8_t)colour);
+		for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, static_cast<uint8_t>(colour));
 		dst = blitter->MoveTo(dst, 0, 1);
 	} while (--bottom > 0);
 }
@@ -2216,8 +2216,8 @@ static void SetSelectionTilesDirty()
 		/* a_size, b_size describe a rectangle with rotated coordinates */
 		int a_size = x_size + y_size, b_size = x_size - y_size;
 
-		int interval_a = a_size < 0 ? -(int)TILE_SIZE : (int)TILE_SIZE;
-		int interval_b = b_size < 0 ? -(int)TILE_SIZE : (int)TILE_SIZE;
+		int interval_a = a_size < 0 ? -static_cast<int>(TILE_SIZE) : static_cast<int>(TILE_SIZE);
+		int interval_b = b_size < 0 ? -static_cast<int>(TILE_SIZE) : static_cast<int>(TILE_SIZE);
 
 		for (int a = -interval_a; a != a_size + interval_a; a += interval_a) {
 			for (int b = -interval_b; b != b_size + interval_b; b += interval_b) {
@@ -2521,11 +2521,11 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
 	if (z == -1) {
-		if ( x >= 0 && x <= (int)Map::SizeX() * (int)TILE_SIZE - 1
-				&& y >= 0 && y <= (int)Map::SizeY() * (int)TILE_SIZE - 1) {
+		if ( x >= 0 && x <= static_cast<int>(Map::SizeX()) * static_cast<int>(TILE_SIZE) - 1
+				&& y >= 0 && y <= static_cast<int>(Map::SizeY()) * static_cast<int>(TILE_SIZE) - 1) {
 			z = GetSlopePixelZ(x, y);
 		} else {
-			z = TileHeightOutsideMap(x / (int)TILE_SIZE, y / (int)TILE_SIZE);
+			z = TileHeightOutsideMap(x / static_cast<int>(TILE_SIZE), y / static_cast<int>(TILE_SIZE));
 		}
 	}
 
@@ -3008,7 +3008,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 	}
 
 	if (swap) Swap(h0, h1);
-	return (int)(h1 - h0) * TILE_HEIGHT_STEP;
+	return static_cast<int>(h1 - h0) * TILE_HEIGHT_STEP;
 }
 
 /**
@@ -3074,7 +3074,7 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 				} else {
 					/* We are not on a straight line. Determine the rail to build
 					 * based on whether we are above or below it. */
-					b = dx + dy >= (int)TILE_SIZE ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
+					b = dx + dy >= static_cast<int>(TILE_SIZE) ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
 
 					/* Calculate where a horizontal line through the start point and
 					 * a vertical line from the selected end point intersect and
@@ -3085,10 +3085,10 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
-						if (dx + dy >= (int)TILE_SIZE) {
-							x -= (int)TILE_SIZE;
+						if (dx + dy >= static_cast<int>(TILE_SIZE)) {
+							x -= static_cast<int>(TILE_SIZE);
 						} else {
-							y += (int)TILE_SIZE;
+							y += static_cast<int>(TILE_SIZE);
 						}
 					}
 
@@ -3114,16 +3114,16 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 					/* Calculate where a vertical line through the start point and
 					 * a horizontal line from the selected end point intersect and
 					 * use that point as the end point. */
-					int offset = (raw_dx + raw_dy + (int)TILE_SIZE) / 2;
+					int offset = (raw_dx + raw_dy + static_cast<int>(TILE_SIZE)) / 2;
 					x = _thd.selstart.x - (offset & ~TILE_UNIT_MASK);
 					y = _thd.selstart.y - (offset & ~TILE_UNIT_MASK);
 
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
 						if (dx < dy) {
-							y -= (int)TILE_SIZE;
+							y -= static_cast<int>(TILE_SIZE);
 						} else {
-							x -= (int)TILE_SIZE;
+							x -= static_cast<int>(TILE_SIZE);
 						}
 					}
 
@@ -3146,18 +3146,18 @@ static void CalcRaildirsDrawstyle(int x, int y, int method)
 			b = HT_RECT;
 		}
 	} else if (h == TILE_SIZE) { // Is this in X direction?
-		if (dx == (int)TILE_SIZE) { // 2x1 special handling
+		if (dx == static_cast<int>(TILE_SIZE)) { // 2x1 special handling
 			b = (Check2x1AutoRail(3)) | HT_LINE;
-		} else if (dx == -(int)TILE_SIZE) {
+		} else if (dx == -static_cast<int>(TILE_SIZE)) {
 			b = (Check2x1AutoRail(2)) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_X;
 		}
 		y = _thd.selstart.y;
 	} else if (w == TILE_SIZE) { // Or Y direction?
-		if (dy == (int)TILE_SIZE) { // 2x1 special handling
+		if (dy == static_cast<int>(TILE_SIZE)) { // 2x1 special handling
 			b = (Check2x1AutoRail(1)) | HT_LINE;
-		} else if (dy == -(int)TILE_SIZE) { // 2x1 other direction
+		} else if (dy == -static_cast<int>(TILE_SIZE)) { // 2x1 other direction
 			b = (Check2x1AutoRail(0)) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_Y;
@@ -3363,7 +3363,7 @@ calc_heightdiff_single_direction:;
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
-				style = (HighLightStyle)_thd.next_drawstyle;
+				style = _thd.next_drawstyle;
 				if (_thd.IsDraggingDiagonal()) {
 					/* Determine the "area" of the diagonal dragged selection.
 					 * We assume the area is the number of tiles along the X
@@ -3602,10 +3602,10 @@ CommandCost CmdScrollViewport(DoCommandFlags flags, TileIndex tile, ViewportScro
 		case VST_EVERYONE:
 			break;
 		case VST_COMPANY:
-			if (_local_company != (CompanyID)ref) return CommandCost();
+			if (_local_company != CompanyID(ref)) return CommandCost();
 			break;
 		case VST_CLIENT:
-			if (_network_own_client_id != (ClientID)ref) return CommandCost();
+			if (_network_own_client_id != static_cast<ClientID>(ref)) return CommandCost();
 			break;
 		default:
 			return CMD_ERROR;

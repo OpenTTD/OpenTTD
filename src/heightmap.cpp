@@ -52,7 +52,7 @@ static_assert(MAX_HEIGHTMAP_SIZE_PIXELS < UINT32_MAX / 8);
  */
 static inline bool IsValidHeightmapDimension(size_t width, size_t height)
 {
-	return (uint64_t)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
+	return static_cast<uint64_t>(width) * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
 		width > 0 && width <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS &&
 		height > 0 && height <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS;
 }
@@ -409,8 +409,8 @@ void FixSlopes()
 	height  = Map::SizeY();
 
 	/* Top and left edge */
-	for (row = 0; (uint)row < height; row++) {
-		for (col = 0; (uint)col < width; col++) {
+	for (row = 0; static_cast<uint>(row) < height; row++) {
+		for (col = 0; static_cast<uint>(col) < width; col++) {
 			current_height = MAX_TILE_HEIGHT;
 			if (col != 0) {
 				/* Find lowest tile; either the top or left one */
@@ -424,7 +424,7 @@ void FixSlopes()
 
 			/* Does the height differ more than one? */
 			TileIndex tile = TileXY(col, row);
-			if (TileHeight(tile) >= (uint)current_height + 2) {
+			if (TileHeight(tile) >= static_cast<uint>(current_height) + 2) {
 				/* Then change the height to be no more than one */
 				SetTileHeight(tile, current_height + 1);
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the
@@ -440,12 +440,12 @@ void FixSlopes()
 	for (row = height - 1; row >= 0; row--) {
 		for (col = width - 1; col >= 0; col--) {
 			current_height = MAX_TILE_HEIGHT;
-			if ((uint)col != width - 1) {
+			if (static_cast<uint>(col) != width - 1) {
 				/* Find lowest tile; either the bottom and right one */
 				current_height = TileHeight(TileXY(col + 1, row)); // bottom edge
 			}
 
-			if ((uint)row != height - 1) {
+			if (static_cast<uint>(row) != height - 1) {
 				if (TileHeight(TileXY(col, row + 1)) < current_height) {
 					current_height = TileHeight(TileXY(col, row + 1)); // right edge
 				}
@@ -453,7 +453,7 @@ void FixSlopes()
 
 			/* Does the height differ more than one? */
 			TileIndex tile = TileXY(col, row);
-			if (TileHeight(tile) >= (uint)current_height + 2) {
+			if (TileHeight(tile) >= static_cast<uint>(current_height) + 2) {
 				/* Then change the height to be no more than one */
 				SetTileHeight(tile, current_height + 1);
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the

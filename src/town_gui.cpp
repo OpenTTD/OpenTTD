@@ -291,7 +291,7 @@ public:
 				break;
 
 			case WID_TA_RATING_INFO:
-				resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)GetCharacterHeight(FS_NORMAL)});
+				resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, static_cast<uint>(GetCharacterHeight(FS_NORMAL))});
 				size.height = 9 * resize.height + padding.height;
 				break;
 		}
@@ -440,7 +440,7 @@ public:
 
 			bool rtl = _current_text_dir == TD_RTL;
 
-			const CargoSpec *cargo = FindFirstCargoWithTownAcceptanceEffect((TownAcceptanceEffect)i);
+			const CargoSpec *cargo = FindFirstCargoWithTownAcceptanceEffect(static_cast<TownAcceptanceEffect>(i));
 			assert(cargo != nullptr);
 
 			StringID string;
@@ -1273,7 +1273,7 @@ public:
 				break;
 
 			case WID_TF_SIZE_SMALL: case WID_TF_SIZE_MEDIUM: case WID_TF_SIZE_LARGE: case WID_TF_SIZE_RANDOM:
-				this->town_size = (TownSize)(widget - WID_TF_SIZE_SMALL);
+				this->town_size = static_cast<TownSize>(widget - WID_TF_SIZE_SMALL);
 				this->UpdateButtons(false);
 				break;
 
@@ -1285,7 +1285,7 @@ public:
 
 			case WID_TF_LAYOUT_ORIGINAL: case WID_TF_LAYOUT_BETTER: case WID_TF_LAYOUT_GRID2:
 			case WID_TF_LAYOUT_GRID3: case WID_TF_LAYOUT_RANDOM:
-				this->town_layout = (TownLayout)(widget - WID_TF_LAYOUT_ORIGINAL);
+				this->town_layout = static_cast<TownLayout>(widget - WID_TF_LAYOUT_ORIGINAL);
 
 				/* If we are in the editor, sync the settings of the current game to the chosen layout,
 				 * so that importing towns from file uses the selected layout. */

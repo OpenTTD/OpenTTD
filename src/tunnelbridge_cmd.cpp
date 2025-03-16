@@ -257,12 +257,12 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
-			roadtype = (RoadType)road_rail_type;
+			roadtype = static_cast<RoadType>(road_rail_type);
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
-			railtype = (RailType)road_rail_type;
+			railtype = static_cast<RailType>(road_rail_type);
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
@@ -587,10 +587,10 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		if (c != nullptr) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		if (transport_type != TRANSPORT_WATER) {
-			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
+			cost.AddCost(static_cast<int64_t>(bridge_len) * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
 		} else {
 			/* Aqueducts use a separate base cost. */
-			cost.AddCost((int64_t)bridge_len * _price[PR_BUILD_AQUEDUCT]);
+			cost.AddCost(static_cast<int64_t>(bridge_len) * _price[PR_BUILD_AQUEDUCT]);
 		}
 
 	}
@@ -616,12 +616,12 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 	_build_tunnel_endtile = TileIndex{};
 	switch (transport_type) {
 		case TRANSPORT_RAIL:
-			railtype = (RailType)road_rail_type;
+			railtype = static_cast<RailType>(road_rail_type);
 			if (!ValParamRailType(railtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_ROAD:
-			roadtype = (RoadType)road_rail_type;
+			roadtype = static_cast<RoadType>(road_rail_type);
 			if (!ValParamRoadType(roadtype)) return CMD_ERROR;
 			break;
 
@@ -740,7 +740,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		coa = nullptr;
 
 		ret = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(flags, end_tile, end_tileh & start_tileh, false));
-		_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
+		_cleared_object_areas[static_cast<uint>(coa_index)].first_tile = old_first_tile;
 		if (ret.Failed()) return CommandCost(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 		cost.AddCost(ret);
 	}
@@ -891,8 +891,8 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlags flags)
 			if (v != nullptr) TryPathReserve(v);
 		} else {
 			/* A full diagonal road tile has two road bits. */
-			UpdateCompanyRoadInfrastructure(GetRoadTypeRoad(tile), GetRoadOwner(tile, RTT_ROAD), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
-			UpdateCompanyRoadInfrastructure(GetRoadTypeTram(tile), GetRoadOwner(tile, RTT_TRAM), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
+			UpdateCompanyRoadInfrastructure(GetRoadTypeRoad(tile), GetRoadOwner(tile, RTT_ROAD), -static_cast<int>(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
+			UpdateCompanyRoadInfrastructure(GetRoadTypeTram(tile), GetRoadOwner(tile, RTT_TRAM), -static_cast<int>(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 
 			DoClearSquare(tile);
 			DoClearSquare(endtile);
@@ -958,8 +958,8 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlags flags)
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.rail[GetRailType(tile)] -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
 		} else if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
 			/* A full diagonal road tile has two road bits. */
-			UpdateCompanyRoadInfrastructure(GetRoadTypeRoad(tile), GetRoadOwner(tile, RTT_ROAD), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
-			UpdateCompanyRoadInfrastructure(GetRoadTypeTram(tile), GetRoadOwner(tile, RTT_TRAM), -(int)(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
+			UpdateCompanyRoadInfrastructure(GetRoadTypeRoad(tile), GetRoadOwner(tile, RTT_ROAD), -static_cast<int>(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
+			UpdateCompanyRoadInfrastructure(GetRoadTypeTram(tile), GetRoadOwner(tile, RTT_TRAM), -static_cast<int>(len * 2 * TUNNELBRIDGE_TRACKBIT_FACTOR));
 		} else { // Aqueduct
 			if (Company::IsValidID(owner)) Company::Get(owner)->infrastructure.water -= len * TUNNELBRIDGE_TRACKBIT_FACTOR;
 		}
@@ -1097,7 +1097,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	if (z_front_south < z_front) DrawPillar(psid, x, y, bottom_z, w, h, &half_pillar_sub_sprite[axis][1]);
 
 	/* Draw back pillars, skip top two parts, which are hidden by the bridge */
-	int z_bridge_back = z_bridge - 2 * (int)TILE_HEIGHT;
+	int z_bridge_back = z_bridge - 2 * static_cast<int>(TILE_HEIGHT);
 	if (drawfarpillar && (z_back_north <= z_bridge_back || z_back_south <= z_bridge_back)) {
 		bottom_z = DrawPillarColumn(z_back, z_bridge_back, psid, x_back, y_back, w, h);
 		if (z_back_north < z_back) DrawPillar(psid, x_back, y_back, bottom_z, w, h, &half_pillar_sub_sprite[axis][0]);

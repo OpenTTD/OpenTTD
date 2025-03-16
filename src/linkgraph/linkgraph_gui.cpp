@@ -186,16 +186,16 @@ inline bool LinkGraphOverlay::IsLinkVisible(Point pta, Point ptb, const DrawPixe
 		if ((c0 & c1) != 0) return false;
 
 		if (c0 & TOP) {           // point 0 is above the clip window
-			x0 = x0 + (int)(((int64_t) (x1 - x0)) * ((int64_t) (top - y0)) / ((int64_t) (y1 - y0)));
+			x0 = x0 + static_cast<int>((static_cast<int64_t>(x1 - x0)) * (static_cast<int64_t>(top - y0)) / (static_cast<int64_t>(y1 - y0)));
 			y0 = top;
 		} else if (c0 & BOTTOM) { // point 0 is below the clip window
-			x0 = x0 + (int)(((int64_t) (x1 - x0)) * ((int64_t) (bottom - y0)) / ((int64_t) (y1 - y0)));
+			x0 = x0 + static_cast<int>((static_cast<int64_t>(x1 - x0)) * (static_cast<int64_t>(bottom - y0)) / (static_cast<int64_t>(y1 - y0)));
 			y0 = bottom;
 		} else if (c0 & RIGHT) {  // point 0 is to the right of clip window
-			y0 = y0 + (int)(((int64_t) (y1 - y0)) * ((int64_t) (right - x0)) / ((int64_t) (x1 - x0)));
+			y0 = y0 + static_cast<int>((static_cast<int64_t>(y1 - y0)) * (static_cast<int64_t>(right - x0)) / (static_cast<int64_t>(x1 - x0)));
 			x0 = right;
 		} else if (c0 & LEFT) {   // point 0 is to the left of clip window
-			y0 = y0 + (int)(((int64_t) (y1 - y0)) * ((int64_t) (left - x0)) / ((int64_t) (x1 - x0)));
+			y0 = y0 + static_cast<int>((static_cast<int64_t>(y1 - y0)) * (static_cast<int64_t>(left - x0)) / (static_cast<int64_t>(x1 - x0)));
 			x0 = left;
 		}
 
@@ -367,8 +367,8 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 
 			/* Check the distance from the cursor to the line defined by the two stations. */
 			Point ptb = this->GetStationMiddle(Station::Get(j->first));
-			float dist = std::abs((int64_t)(ptb.x - pta.x) * (int64_t)(pta.y - pt.y) - (int64_t)(pta.x - pt.x) * (int64_t)(ptb.y - pta.y)) /
-				std::sqrt((int64_t)(ptb.x - pta.x) * (int64_t)(ptb.x - pta.x) + (int64_t)(ptb.y - pta.y) * (int64_t)(ptb.y - pta.y));
+			float dist = std::abs(static_cast<int64_t>(ptb.x - pta.x) * static_cast<int64_t>(pta.y - pt.y) - static_cast<int64_t>(pta.x - pt.x) * static_cast<int64_t>(ptb.y - pta.y)) /
+				std::sqrt(static_cast<int64_t>(ptb.x - pta.x) * static_cast<int64_t>(ptb.x - pta.x) + static_cast<int64_t>(ptb.y - pta.y) * static_cast<int64_t>(ptb.y - pta.y));
 			const auto &link = j->second;
 			if (dist <= 4 && link.Usage() > 0 &&
 					pt.x + 2 >= std::min(pta.x, ptb.x) &&
@@ -602,7 +602,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 	Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 	if (IsInsideMM(widget, WID_LGL_COMPANY_FIRST, WID_LGL_COMPANY_LAST + 1)) {
 		if (this->IsWidgetDisabled(widget)) return;
-		CompanyID cid = (CompanyID)(widget - WID_LGL_COMPANY_FIRST);
+		CompanyID cid = CompanyID(widget - WID_LGL_COMPANY_FIRST);
 		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
 		DrawCompanyIcon(cid, CenterBounds(br.left, br.right, sprite_size.width), CenterBounds(br.top, br.bottom, sprite_size.height));
 	}

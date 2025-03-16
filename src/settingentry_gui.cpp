@@ -93,7 +93,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 	if (cur_row >= max_row) return cur_row;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int offset = (rtl ? -(int)_circle_size.width : (int)_circle_size.width) / 2;
+	int offset = (rtl ? -static_cast<int>(_circle_size.width) : static_cast<int>(_circle_size.width)) / 2;
 	int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 
 	int x = rtl ? right : left;

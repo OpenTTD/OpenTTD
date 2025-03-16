@@ -983,7 +983,7 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 {
 	Company *c = new (CompanyID(num)) Company();
 
-	_current_company_id = (CompanyID)num;
+	_current_company_id = CompanyID(num);
 
 	if (!LoadChunk(ls, c, _company_chunk)) return false;
 
@@ -1372,11 +1372,11 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 			DisasterVehicle::From(v)->state = UnpackOldOrder(_old_order).GetDestination().value;
 		}
 
-		v->next = (Vehicle *)(size_t)_old_next_ptr;
+		v->next = (Vehicle *)static_cast<size_t>(_old_next_ptr);
 
 		if (_cargo_count != 0 && CargoPacket::CanAllocateItem()) {
 			StationID source =    (_cargo_source == 0xFF) ? StationID::Invalid() : StationID{_cargo_source};
-			TileIndex source_xy = (source != StationID::Invalid()) ? Station::Get(source)->xy : (TileIndex)0;
+			TileIndex source_xy = (source != StationID::Invalid()) ? Station::Get(source)->xy : TileIndex(0);
 			v->cargo.Append(new CargoPacket(_cargo_count, _cargo_periods, source, source_xy, 0));
 		}
 	}
@@ -1828,7 +1828,7 @@ bool LoadTTOMain(LoadgameState &ls)
 	_read_ttdpatch_flags = false;
 
 	std::array<uint8_t, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
-	_old_engines = (Engine *)engines.data();
+	_old_engines = reinterpret_cast<Engine *>(engines.data());
 
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, nullptr, main_chunk)) {

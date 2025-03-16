@@ -336,7 +336,7 @@ void GenerateClearTile()
 				MarkTileDirtyByTile(tile);
 				do {
 					if (--j == 0) goto get_out;
-					tile_new = tile + TileOffsByDiagDir((DiagDirection)GB(Random(), 0, 2));
+					tile_new = tile + TileOffsByDiagDir(static_cast<DiagDirection>(GB(Random(), 0, 2)));
 				} while (!IsTileType(tile_new, MP_CLEAR) || IsClearGround(tile_new, CLEAR_DESERT));
 				tile = tile_new;
 			}

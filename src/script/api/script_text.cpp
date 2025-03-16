@@ -141,7 +141,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	} else if (sq_gettype(vm, 2) == OT_INTEGER) {
 		SQInteger key;
 		sq_getinteger(vm, 2, &key);
-		k = (int32_t)key;
+		k = static_cast<int32_t>(key);
 	} else {
 		return SQ_ERROR;
 	}
@@ -183,7 +183,7 @@ void ScriptText::_FillParamList(ParamList &params, ScriptTextList &seen_texts)
 	/* Fill with dummy parameters to match FormatString() behaviour. */
 	if (seen_texts.empty()) {
 		static Param dummy = 0;
-		int nb_extra = SCRIPT_TEXT_MAX_PARAMETERS - (int)params.size();
+		int nb_extra = SCRIPT_TEXT_MAX_PARAMETERS - static_cast<int>(params.size());
 		for (int i = 0; i < nb_extra; i++)
 			params.emplace_back(StringIndexInTab(-1), i, &dummy);
 	}

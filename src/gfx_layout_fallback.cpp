@@ -173,7 +173,7 @@ int FallbackParagraphLayout::FallbackLine::GetWidth() const
  */
 int FallbackParagraphLayout::FallbackLine::CountRuns() const
 {
-	return (uint)this->size();
+	return static_cast<uint>(this->size());
 }
 
 /**

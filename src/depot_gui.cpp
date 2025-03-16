@@ -189,7 +189,7 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 		}
 		if (y > max_height) max_height = y;
 		if (-x_offs > max_extend_left) max_extend_left = -x_offs;
-		if ((int)x + x_offs > max_extend_right) max_extend_right = x + x_offs;
+		if (static_cast<int>(x) + x_offs > max_extend_right) max_extend_right = x + x_offs;
 	}
 
 	int min_extend = ScaleSpriteTrad(16);
@@ -407,7 +407,7 @@ struct DepotWindow : Window {
 				/* Draw all vehicles in the current row */
 				const Vehicle *v = this->vehicle_list[num];
 				this->DrawVehicleInDepot(v, cell);
-				cell = cell.Translate(rtl ? -(int)this->resize.step_width : (int)this->resize.step_width, 0);
+				cell = cell.Translate(rtl ? -static_cast<int>(this->resize.step_width) : static_cast<int>(this->resize.step_width), 0);
 			}
 		}
 
@@ -480,7 +480,7 @@ struct DepotWindow : Window {
 			/* Skip vehicles that are scrolled off the list */
 			if (this->type == VEH_TRAIN) x += this->hscroll->GetPosition();
 		} else {
-			pos -= (uint)this->vehicle_list.size();
+			pos -= static_cast<uint>(this->vehicle_list.size());
 			*veh = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
 			x -= ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
@@ -505,7 +505,7 @@ struct DepotWindow : Window {
 
 				case VEH_SHIP:
 				case VEH_AIRCRAFT:
-					if (xm <= this->flag_size.width && ym >= (uint)(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal)) return MODE_START_STOP;
+					if (xm <= this->flag_size.width && ym >= static_cast<uint>(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal)) return MODE_START_STOP;
 					break;
 
 				default: NOT_REACHED();
@@ -740,7 +740,7 @@ struct DepotWindow : Window {
 			/* Always make it longer than the longest train, so you can attach vehicles at the end, and also see the next vertical tile separator line */
 			this->hscroll->SetCount(max_width + ScaleSpriteTrad(2 * VEHICLEINFO_FULL_VEHICLE_WIDTH + 1));
 		} else {
-			this->vscroll->SetCount(CeilDiv((uint)this->vehicle_list.size(), this->num_columns));
+			this->vscroll->SetCount(CeilDiv(static_cast<uint>(this->vehicle_list.size()), this->num_columns));
 		}
 
 		/* Setup disabled buttons. */

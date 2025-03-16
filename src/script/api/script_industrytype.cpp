@@ -124,7 +124,7 @@
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	uint32_t seed = ScriptBase::Rand();
-	uint32_t layout_index = ScriptBase::RandRange((uint32_t)::GetIndustrySpec(industry_type)->layouts.size());
+	uint32_t layout_index = ScriptBase::RandRange(static_cast<uint32_t>(::GetIndustrySpec(industry_type)->layouts.size()));
 	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, industry_type, layout_index, true, seed);
 }
 

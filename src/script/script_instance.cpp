@@ -375,7 +375,7 @@ static const SaveLoad _script_byte[] = {
 			SQInteger res;
 			sq_getinteger(vm, index, &res);
 			if (!test) {
-				int64_t value = (int64_t)res;
+				int64_t value = static_cast<int64_t>(res);
 				SlCopy(&value, 1, SLE_INT64);
 			}
 			return true;
@@ -394,7 +394,7 @@ static const SaveLoad _script_byte[] = {
 				return false;
 			}
 			if (!test) {
-				_script_sl_byte = (uint8_t)len;
+				_script_sl_byte = static_cast<uint8_t>(len);
 				SlObject(nullptr, _script_byte);
 				SlCopy(const_cast<char *>(buf), len, SLE_CHAR);
 			}
@@ -735,7 +735,7 @@ bool ScriptInstance::IsPaused()
 	if (_script_sl_byte == 0) return nullptr;
 
 	ScriptData *data = new ScriptData();
-	data->push_back((SQInteger)version);
+	data->push_back(static_cast<SQInteger>(version));
 	LoadObjects(data);
 	return data;
 }

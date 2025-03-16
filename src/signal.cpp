@@ -295,7 +295,7 @@ static SigFlags ExploreSegment(Owner owner)
 
 				assert(IsValidDiagDirection(enterdir));
 				TrackBits tracks = GetTrackBits(tile); // trackbits of tile
-				TrackBits tracks_masked = (TrackBits)(tracks & _enterdir_to_trackbits[enterdir]); // only incidating trackbits
+				TrackBits tracks_masked = (tracks & _enterdir_to_trackbits[enterdir]); // only incidating trackbits
 
 				if (tracks == TRACK_BIT_HORZ || tracks == TRACK_BIT_VERT) { // there is exactly one incidating track, no need to check
 					tracks = tracks_masked;
@@ -313,7 +313,7 @@ static SigFlags ExploreSegment(Owner owner)
 					Track track = TrackBitsToTrack(tracks_masked); // mask TRACK_BIT_X and Y too
 					if (HasSignalOnTrack(tile, track)) { // now check whole track, not trackdir
 						SignalType sig = GetSignalType(tile, track);
-						Trackdir trackdir = (Trackdir)FindFirstBit((tracks * 0x101U) & _enterdir_to_trackdirbits[enterdir]);
+						Trackdir trackdir = static_cast<Trackdir>(FindFirstBit((tracks * 0x101U) & _enterdir_to_trackdirbits[enterdir]));
 						Trackdir reversedir = ReverseTrackdir(trackdir);
 						/* add (tile, reversetrackdir) to 'to-be-updated' set when there is
 						 * ANY conventional signal in REVERSE direction

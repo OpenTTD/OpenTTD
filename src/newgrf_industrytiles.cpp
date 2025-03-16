@@ -79,7 +79,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 
 		/* Land info of nearby tiles */
 		case 0x60: return GetNearbyIndustryTileInformation(parameter, this->tile,
-				this->industry == nullptr ? (IndustryID)IndustryID::Invalid() : this->industry->index, true, this->ro.grffile->grf_version >= 8);
+				this->industry == nullptr ? static_cast<IndustryID>(IndustryID::Invalid()) : this->industry->index, true, this->ro.grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x61: {
@@ -240,7 +240,7 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 	ind.random = initial_random_bits;
 	ind.founder = founder;
 
-	uint16_t callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, creation_type << 8 | (uint32_t)layout_index, gfx, &ind, ind_tile);
+	uint16_t callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, creation_type << 8 | static_cast<uint32_t>(layout_index), gfx, &ind, ind_tile);
 	if (callback_res == CALLBACK_FAILED) {
 		if (!IsSlopeRefused(GetTileSlope(ind_tile), its->slopes_refused)) return CommandCost();
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);

@@ -317,7 +317,7 @@ struct TimetableWindow : Window {
 				if (from == to) break; // no need to change anything
 
 				/* if from == INVALID_VEH_ORDER_ID, one order was added; if to == INVALID_VEH_ORDER_ID, one order was removed */
-				uint old_num_orders = this->vehicle->GetNumOrders() - (uint)(from == INVALID_VEH_ORDER_ID) + (uint)(to == INVALID_VEH_ORDER_ID);
+				uint old_num_orders = this->vehicle->GetNumOrders() - static_cast<uint>(from == INVALID_VEH_ORDER_ID) + static_cast<uint>(to == INVALID_VEH_ORDER_ID);
 
 				VehicleOrderID selected_order = (this->sel_index + 1) / 2;
 				if (selected_order == old_num_orders) selected_order = 0; // when last travel time is selected, it belongs to order 0
@@ -326,9 +326,9 @@ struct TimetableWindow : Window {
 
 				if (from != selected_order) {
 					/* Moving from preceding order? */
-					selected_order -= (int)(from <= selected_order);
+					selected_order -= static_cast<int>(from <= selected_order);
 					/* Moving to   preceding order? */
-					selected_order += (int)(to   <= selected_order);
+					selected_order += static_cast<int>(to   <= selected_order);
 				} else {
 					/* Now we are modifying the selected order */
 					if (to == INVALID_VEH_ORDER_ID) {
@@ -343,7 +343,7 @@ struct TimetableWindow : Window {
 				}
 
 				/* recompute new sel_index */
-				this->sel_index = 2 * selected_order - (int)travel;
+				this->sel_index = 2 * selected_order - static_cast<int>(travel);
 				/* travel time of first order needs special handling */
 				if (this->sel_index == -1) this->sel_index = this->vehicle->GetNumOrders() * 2 - 1;
 				break;
@@ -501,7 +501,7 @@ struct TimetableWindow : Window {
 		std::vector<TimetableArrivalDeparture> arr_dep(v->GetNumOrders());
 		const VehicleOrderID cur_order = v->cur_real_order_index % v->GetNumOrders();
 
-		VehicleOrderID earlyID = BuildArrivalDepartureList(v, arr_dep) ? cur_order : (VehicleOrderID)INVALID_VEH_ORDER_ID;
+		VehicleOrderID earlyID = BuildArrivalDepartureList(v, arr_dep) ? cur_order : INVALID_VEH_ORDER_ID;
 		int selected = this->sel_index;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);

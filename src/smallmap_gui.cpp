@@ -851,7 +851,7 @@ protected:
 			sx = -hv.x;
 			sub = 0;
 		}
-		if (sx > (int)(Map::MaxX() * TILE_SIZE) - hv.x) {
+		if (sx > static_cast<int>(Map::MaxX() * TILE_SIZE) - hv.x) {
 			sx = Map::MaxX() * TILE_SIZE - hv.x;
 			sub = 0;
 		}
@@ -859,7 +859,7 @@ protected:
 			sy = -hv.y;
 			sub = 0;
 		}
-		if (sy > (int)(Map::MaxY() * TILE_SIZE) - hv.y) {
+		if (sy > static_cast<int>(Map::MaxY() * TILE_SIZE) - hv.y) {
 			sy = Map::MaxY() * TILE_SIZE - hv.y;
 			sub = 0;
 		}
@@ -881,10 +881,10 @@ protected:
 		Point upper_left_smallmap_coord  = InverseRemapCoords2(vp->virtual_left, vp->virtual_top);
 		Point lower_right_smallmap_coord = InverseRemapCoords2(vp->virtual_left + vp->virtual_width - 1, vp->virtual_top + vp->virtual_height - 1);
 
-		Point upper_left = this->RemapTile(upper_left_smallmap_coord.x / (int)TILE_SIZE, upper_left_smallmap_coord.y / (int)TILE_SIZE);
+		Point upper_left = this->RemapTile(upper_left_smallmap_coord.x / static_cast<int>(TILE_SIZE), upper_left_smallmap_coord.y / static_cast<int>(TILE_SIZE));
 		upper_left.x -= this->subscroll;
 
-		Point lower_right = this->RemapTile(lower_right_smallmap_coord.x / (int)TILE_SIZE, lower_right_smallmap_coord.y / (int)TILE_SIZE);
+		Point lower_right = this->RemapTile(lower_right_smallmap_coord.x / static_cast<int>(TILE_SIZE), lower_right_smallmap_coord.y / static_cast<int>(TILE_SIZE));
 		lower_right.x -= this->subscroll;
 
 		SmallMapWindow::DrawVertMapIndicator(upper_left.x, upper_left.y, lower_right.y);
@@ -932,7 +932,7 @@ protected:
 			ta.ClampToMap(); // Clamp to map boundaries (may contain MP_VOID tiles!).
 
 			uint32_t val = this->GetTileColours(ta);
-			uint8_t *val8 = (uint8_t *)&val;
+			uint8_t *val8 = reinterpret_cast<uint8_t *>(&val);
 			int idx = std::max(0, -start_pos);
 			for (int pos = std::max(0, start_pos); pos < end_pos; pos++) {
 				blitter->SetPixel(dst, idx, 0, val8[idx]);
@@ -954,7 +954,7 @@ protected:
 			if (v->vehstatus.Any({VehState::Hidden, VehState::Unclickable})) continue;
 
 			/* Remap into flat coordinates. */
-			Point pt = this->RemapTile(v->x_pos / (int)TILE_SIZE, v->y_pos / (int)TILE_SIZE);
+			Point pt = this->RemapTile(v->x_pos / static_cast<int>(TILE_SIZE), v->y_pos / static_cast<int>(TILE_SIZE));
 
 			int y = pt.y - dpi->top;
 			if (!IsInsideMM(y, 0, dpi->height)) continue; // y is out of bounds.
@@ -1065,8 +1065,8 @@ protected:
 		/* Which tile is displayed at (dpi->left, dpi->top)? */
 		int dx;
 		Point tile = this->PixelToTile(dpi->left, dpi->top, &dx);
-		int tile_x = this->scroll_x / (int)TILE_SIZE + tile.x;
-		int tile_y = this->scroll_y / (int)TILE_SIZE + tile.y;
+		int tile_x = this->scroll_x / static_cast<int>(TILE_SIZE) + tile.x;
+		int tile_y = this->scroll_y / static_cast<int>(TILE_SIZE) + tile.y;
 
 		void *ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
 		int x = - dx - 4;
@@ -1123,8 +1123,8 @@ protected:
 	 */
 	Point RemapTile(int tile_x, int tile_y) const
 	{
-		int x_offset = tile_x - this->scroll_x / (int)TILE_SIZE;
-		int y_offset = tile_y - this->scroll_y / (int)TILE_SIZE;
+		int x_offset = tile_x - this->scroll_x / static_cast<int>(TILE_SIZE);
+		int y_offset = tile_y - this->scroll_y / static_cast<int>(TILE_SIZE);
 
 		if (this->zoom == 1) return SmallmapRemapCoords(x_offset, y_offset);
 
@@ -1482,8 +1482,8 @@ public:
 
 		int sub;
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-		Point sxy = this->ComputeScroll(viewport_center.x / (int)TILE_SIZE, viewport_center.y / (int)TILE_SIZE,
-				std::max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
+		Point sxy = this->ComputeScroll(viewport_center.x / static_cast<int>(TILE_SIZE), viewport_center.y / static_cast<int>(TILE_SIZE),
+				std::max(0, static_cast<int>(wid->current_x) / 2 - 2), wid->current_y / 2, &sub);
 		this->SetNewScroll(sxy.x, sxy.y, sub);
 		this->SetDirty();
 	}
@@ -1637,7 +1637,7 @@ public:
 					if (tbl->col_break || ((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER || this->map_type == SMT_LINKSTATS) && i++ >= number_of_rows)) {
 						/* Column break needed, continue at top, COLUMN_WIDTH pixels
 						 * (one "row") to the right. */
-						int x = rtl ? -(int)this->column_width : this->column_width;
+						int x = rtl ? -static_cast<int>(this->column_width) : this->column_width;
 						int y = origin.top - text.top;
 						text = text.Translate(x, y);
 						icon = icon.Translate(x, y);
@@ -1715,7 +1715,7 @@ public:
 			case WID_SM_ZOOM_IN:
 			case WID_SM_ZOOM_OUT: {
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-				Point zoom_pt = { (int)wid->current_x / 2, (int)wid->current_y / 2};
+				Point zoom_pt = { static_cast<int>(wid->current_x) / 2, static_cast<int>(wid->current_y) / 2};
 				this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &zoom_pt);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
@@ -1728,7 +1728,7 @@ public:
 			case WID_SM_ROUTES:     // Show transport routes
 			case WID_SM_VEGETATION: // Show vegetation
 			case WID_SM_OWNERS:     // Show land owners
-				this->SwitchMapType((SmallMapType)(widget - WID_SM_CONTOUR));
+				this->SwitchMapType(static_cast<SmallMapType>(widget - WID_SM_CONTOUR));
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
 

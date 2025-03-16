@@ -250,7 +250,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 			}
 		}
 
-		if (v->y_pos >= (int)((Map::SizeY() + 9) * TILE_SIZE - 1)) {
+		if (v->y_pos >= static_cast<int>((Map::SizeY() + 9) * TILE_SIZE - 1)) {
 			delete v;
 			return false;
 		}
@@ -320,7 +320,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		/* Fly around randomly */
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
-		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= (int)TILE_SIZE) {
+		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= static_cast<int>(TILE_SIZE)) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
@@ -436,7 +436,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
-	if ((leave_at_top && gp.x < (-10 * (int)TILE_SIZE)) || (!leave_at_top && gp.x > (int)(Map::SizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1)) {
+	if ((leave_at_top && gp.x < (-10 * static_cast<int>(TILE_SIZE))) || (!leave_at_top && gp.x > static_cast<int>(Map::SizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1)) {
 		delete v;
 		return false;
 	}
@@ -471,7 +471,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 		int x = v->x_pos + ((leave_at_top ? -15 : 15) * TILE_SIZE);
 		int y = v->y_pos;
 
-		if ((uint)x > Map::MaxX() * TILE_SIZE - 1) return true;
+		if (static_cast<uint>(x) > Map::MaxX() * TILE_SIZE - 1) return true;
 
 		TileIndex tile = TileVirtXY(x, y);
 		if (!IsTileType(tile, MP_INDUSTRY)) return true;
@@ -551,7 +551,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 		for (Vehicle *target : Vehicle::Iterate()) {
 			if (target->IsGroundVehicle()) {
-				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * (int)TILE_SIZE) {
+				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * static_cast<int>(TILE_SIZE)) {
 					target->breakdown_ctr = 5;
 					target->breakdown_delay = 0xF0;
 				}
@@ -565,13 +565,13 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			delete v;
 			return false;
 		}
-		DisasterVehicle *u = new DisasterVehicle(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER, v->index);
-		DisasterVehicle *w = new DisasterVehicle(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
+		DisasterVehicle *u = new DisasterVehicle(-6 * static_cast<int>(TILE_SIZE), v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER, v->index);
+		DisasterVehicle *w = new DisasterVehicle(-6 * static_cast<int>(TILE_SIZE), v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
 		u->SetNext(w);
 	} else if (v->state == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
-		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= (int)TILE_SIZE) {
+		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= static_cast<int>(TILE_SIZE)) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
@@ -628,14 +628,14 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	v->UpdatePosition(gp.x, gp.y, GetAircraftFlightLevel(v));
 
-	if (gp.x > (int)(Map::SizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1) {
+	if (gp.x > static_cast<int>(Map::SizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1) {
 		delete v;
 		return false;
 	}
 
 	if (v->state == 0) {
 		Vehicle *u = Vehicle::Get(v->big_ufo_destroyer_target);
-		if (Delta(v->x_pos, u->x_pos) > (int)TILE_SIZE) return true;
+		if (Delta(v->x_pos, u->x_pos) > static_cast<int>(TILE_SIZE)) return true;
 		v->state = 1;
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);
@@ -806,7 +806,7 @@ static void Disaster_Helicopter_Init()
 
 	if (found == nullptr) return;
 
-	int x = -16 * (int)TILE_SIZE;
+	int x = -16 * static_cast<int>(TILE_SIZE);
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
 	DisasterVehicle *v = new DisasterVehicle(x, y, DIR_SW, ST_HELICOPTER);
@@ -888,7 +888,7 @@ static void Disaster_CoalMine_Init()
 
 				{
 					TileIndex tile = i->location.tile;
-					TileIndexDiff step = TileOffsByDiagDir((DiagDirection)GB(Random(), 0, 2));
+					TileIndexDiff step = TileOffsByDiagDir(static_cast<DiagDirection>(GB(Random(), 0, 2)));
 
 					for (uint n = 0; n < 30; n++) {
 						DisasterClearSquare(tile);

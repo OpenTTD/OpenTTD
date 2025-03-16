@@ -553,7 +553,7 @@ ParsedCommandStruct ExtractCommandString(const char *s, bool)
 
 		if (ar->consumes) {
 			if (argno != -1) argidx = argno;
-			if (argidx < 0 || (uint)argidx >= p.consuming_commands.max_size()) StrgenFatal("invalid param idx {}", argidx);
+			if (argidx < 0 || static_cast<uint>(argidx) >= p.consuming_commands.max_size()) StrgenFatal("invalid param idx {}", argidx);
 			if (p.consuming_commands[argidx] != nullptr && p.consuming_commands[argidx] != ar) StrgenFatal("duplicate param idx {}", argidx);
 
 			p.consuming_commands[argidx++] = ar;
@@ -787,8 +787,8 @@ void HeaderWriter::WriteHeader(const StringData &data)
 	int last = 0;
 	for (size_t i = 0; i < data.max_strings; i++) {
 		if (data.strings[i] != nullptr) {
-			this->WriteStringID(data.strings[i]->name, (int)i);
-			last = (int)i;
+			this->WriteStringID(data.strings[i]->name, static_cast<int>(i));
+			last = static_cast<int>(i);
 		}
 	}
 
@@ -799,7 +799,7 @@ static int TranslateArgumentIdx(int argidx, int offset)
 {
 	int sum;
 
-	if (argidx < 0 || (uint)argidx >= _cur_pcs.consuming_commands.max_size()) {
+	if (argidx < 0 || static_cast<uint>(argidx) >= _cur_pcs.consuming_commands.max_size()) {
 		StrgenFatal("invalid argidx {}", argidx);
 	}
 	const CmdStruct *cs = _cur_pcs.consuming_commands[argidx];
@@ -884,7 +884,7 @@ void LanguageWriter::WriteLength(uint length)
 		buffer[offs++] = (length >> 8) | 0xC0;
 	}
 	buffer[offs++] = length & 0xFF;
-	this->Write((uint8_t*)buffer, offs);
+	this->Write(reinterpret_cast<uint8_t*>(buffer), offs);
 }
 
 /**
@@ -895,7 +895,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 {
 	std::vector<uint> in_use;
 	for (size_t tab = 0; tab < data.tabs; tab++) {
-		uint n = data.CountInUse((uint)tab);
+		uint n = data.CountInUse(static_cast<uint>(tab));
 
 		in_use.push_back(n);
 		_lang.offsets[tab] = TO_LE16(n);
@@ -956,20 +956,20 @@ void LanguageWriter::WriteLang(const StringData &data)
 				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 				 * Each LEN is printed using 2 bytes in big endian order. */
 				buffer.AppendUtf8(SCC_SWITCH_CASE);
-				buffer.AppendByte((uint8_t)ls->translated_cases.size());
+				buffer.AppendByte(static_cast<uint8_t>(ls->translated_cases.size()));
 
 				/* Write each case */
 				for (const Case &c : ls->translated_cases) {
 					buffer.AppendByte(c.caseidx);
 					/* Make some space for the 16-bit length */
-					uint pos = (uint)buffer.size();
+					uint pos = static_cast<uint>(buffer.size());
 					buffer.AppendByte(0);
 					buffer.AppendByte(0);
 					/* Write string */
 					PutCommandString(&buffer, c.string.c_str());
 					buffer.AppendByte(0); // terminate with a zero
 					/* Fill in the length */
-					uint size = (uint)buffer.size() - (pos + 2);
+					uint size = static_cast<uint>(buffer.size()) - (pos + 2);
 					buffer[pos + 0] = GB(size, 8, 8);
 					buffer[pos + 1] = GB(size, 0, 8);
 				}
@@ -977,7 +977,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 			if (!cmdp->empty()) PutCommandString(&buffer, cmdp->c_str());
 
-			this->WriteLength((uint)buffer.size());
+			this->WriteLength(static_cast<uint>(buffer.size()));
 			this->Write(buffer.data(), buffer.size());
 			buffer.clear();
 		}

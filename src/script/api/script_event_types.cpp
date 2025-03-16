@@ -44,7 +44,7 @@ CargoType ScriptEventEnginePreview::GetCargoType()
 	auto it = std::max_element(std::cbegin(cap), std::cend(cap));
 	if (*it == 0) return INVALID_CARGO;
 
-	return CargoType(std::distance(std::cbegin(cap), it));
+	return static_cast<CargoType>(std::distance(std::cbegin(cap), it));
 }
 
 int32_t ScriptEventEnginePreview::GetCapacity()

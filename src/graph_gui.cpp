@@ -65,7 +65,7 @@ struct GraphLegendWindow : Window {
 	{
 		if (!IsInsideMM(widget, WID_GL_FIRST_COMPANY, WID_GL_FIRST_COMPANY + MAX_COMPANIES)) return;
 
-		CompanyID cid = (CompanyID)(widget - WID_GL_FIRST_COMPANY);
+		CompanyID cid = CompanyID(widget - WID_GL_FIRST_COMPANY);
 
 		if (!Company::IsValidID(cid)) return;
 
@@ -261,7 +261,7 @@ protected:
 
 		if (abs_lower != 0 || abs_higher != 0) {
 			/* The number of grids to reserve for the positive part is: */
-			num_pos_grids = (int)floor(0.5 + num_hori_lines * abs_higher / (abs_higher + abs_lower));
+			num_pos_grids = static_cast<int>(floor(0.5 + num_hori_lines * abs_higher / (abs_higher + abs_lower)));
 
 			/* If there are any positive or negative values, force that they have at least one grid. */
 			if (num_pos_grids == 0 && abs_higher != 0) num_pos_grids++;
@@ -328,7 +328,7 @@ protected:
 
 		/* the colours and cost array of GraphDrawer must accommodate
 		 * both values for cargo and companies. So if any are higher, quit */
-		static_assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
+		static_assert(GRAPH_MAX_DATASETS >= static_cast<int>(NUM_CARGO) && GRAPH_MAX_DATASETS >= static_cast<int>(MAX_COMPANIES));
 		assert(this->num_vert_lines > 0);
 
 		/* Rect r will be adjusted to contain just the graph, with labels being
@@ -360,7 +360,7 @@ protected:
 
 		OverflowSafeInt64 interval_size = interval.highest + abs(interval.lowest);
 		/* Where to draw the X axis. Use floating point to avoid overflowing and results of zero. */
-		x_axis_offset = (int)((r.bottom - r.top) * (double)interval.highest / (double)interval_size);
+		x_axis_offset = static_cast<int>((r.bottom - r.top) * (double)interval.highest / (double)interval_size);
 
 		/* Draw the background of the graph itself. */
 		GfxFillRect(r.left, r.top, r.right, r.bottom, GRAPH_BASE_COLOUR);
@@ -1339,7 +1339,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		if (IsInsideMM(widget, WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST + 1)) {
 			if (this->IsWidgetDisabled(widget)) return;
-			CompanyID cid = (CompanyID)(widget - WID_PRD_COMPANY_FIRST);
+			CompanyID cid = CompanyID(widget - WID_PRD_COMPANY_FIRST);
 			Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
 			DrawCompanyIcon(cid, CenterBounds(r.left, r.right, sprite_size.width), CenterBounds(r.top, r.bottom, sprite_size.height));
 			return;
@@ -1347,7 +1347,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		if (!IsInsideMM(widget, WID_PRD_SCORE_FIRST, WID_PRD_SCORE_LAST + 1)) return;
 
-		ScoreID score_type = (ScoreID)(widget - WID_PRD_SCORE_FIRST);
+		ScoreID score_type = static_cast<ScoreID>(widget - WID_PRD_SCORE_FIRST);
 
 		/* The colours used to show how the progress is going */
 		int colour_done = GetColourGradient(COLOUR_GREEN, SHADE_NORMAL);
@@ -1414,7 +1414,7 @@ struct PerformanceRatingDetailWindow : Window {
 			/* Is it no on disable? */
 			if (!this->IsWidgetDisabled(widget)) {
 				this->RaiseWidget(WID_PRD_COMPANY_FIRST + this->company);
-				this->company = (CompanyID)(widget - WID_PRD_COMPANY_FIRST);
+				this->company = CompanyID(widget - WID_PRD_COMPANY_FIRST);
 				this->LowerWidget(WID_PRD_COMPANY_FIRST + this->company);
 				this->SetDirty();
 			}

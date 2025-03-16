@@ -69,5 +69,5 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 
 /* static */ ScriptError::ErrorCategories ScriptError::GetErrorCategory()
 {
-	return (ScriptError::ErrorCategories)(GetLastError() >> (uint)ERR_CAT_BIT_SIZE);
+	return static_cast<ScriptError::ErrorCategories>(GetLastError() >> static_cast<uint>(ERR_CAT_BIT_SIZE));
 }

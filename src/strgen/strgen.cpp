@@ -133,17 +133,17 @@ void FileStringReader::HandlePragma(char *str)
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = std::strtol(buf, nullptr, 16);
-		if (langid > (long)UINT16_MAX || langid < 0) {
+		if (langid > static_cast<long>UINT16_MAX || langid < 0) {
 			FatalError("Invalid winlangid {}", buf);
 		}
-		_lang.winlangid = (uint16_t)langid;
+		_lang.winlangid = static_cast<uint16_t>(langid);
 	} else if (!memcmp(str, "grflangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = std::strtol(buf, nullptr, 16);
 		if (langid >= 0x7F || langid < 0) {
 			FatalError("Invalid grflangid {}", buf);
 		}
-		_lang.newgrflangid = (uint8_t)langid;
+		_lang.newgrflangid = static_cast<uint8_t>(langid);
 	} else if (!memcmp(str, "gender ", 7)) {
 		if (this->master) FatalError("Genders are not allowed in the base translation.");
 		char *buf = str + 7;
@@ -292,7 +292,7 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 
 	void WriteHeader(const LanguagePackHeader *header) override
 	{
-		this->Write((const uint8_t *)header, sizeof(*header));
+		this->Write(reinterpret_cast<const uint8_t *>(header), sizeof(*header));
 	}
 
 	void Finalise() override
@@ -303,7 +303,7 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 
 	void Write(const uint8_t *buffer, size_t length) override
 	{
-		this->output_stream.write((const char *)buffer, length);
+		this->output_stream.write(reinterpret_cast<const char *>(buffer), length);
 	}
 };
 

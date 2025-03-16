@@ -106,8 +106,8 @@ public:
 
 		TileIndex tile = n.segment_last_tile;
 		DiagDirection exitdir = TrackdirToExitdir(n.segment_last_td);
-		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[(int)exitdir];
-		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[(int)exitdir];
+		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[static_cast<int>(exitdir)];
+		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[static_cast<int>(exitdir)];
 		int x2 = 2 * TileX(destination_tile);
 		int y2 = 2 * TileY(destination_tile);
 		int dx = abs(x1 - x2);
@@ -357,7 +357,7 @@ public:
 
 	static Vehicle *CountShipProc(Vehicle *v, void *data)
 	{
-		uint *count = (uint*)data;
+		uint *count = static_cast<uint*>(data);
 		/* Ignore other vehicles (aircraft) and ships inside depot. */
 		if (v->type == VEH_SHIP && !v->vehstatus.Test(VehState::Hidden)) (*count)++;
 

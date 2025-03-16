@@ -127,7 +127,7 @@ public:
 				} else {
 					/* Convert from 'native' 32bpp to BMP-like 24bpp.
 					 * Works for both big and little endian machines */
-					Colour *src = ((Colour *)buff.data()) + n * w;
+					Colour *src = (reinterpret_cast<Colour *>(buff.data())) + n * w;
 					uint8_t *dst = line.data();
 					for (uint i = 0; i < w; i++) {
 						dst[i * 3    ] = src[i].b;

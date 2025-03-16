@@ -58,7 +58,7 @@
 	auto it = std::max_element(std::cbegin(cap), std::cend(cap));
 	if (*it == 0) return INVALID_CARGO;
 
-	return CargoType(std::distance(std::cbegin(cap), it));
+	return static_cast<CargoType>(std::distance(std::cbegin(cap), it));
 }
 
 /* static */ bool ScriptEngine::CanRefitCargo(EngineID engine_id, CargoType cargo_type)
@@ -172,7 +172,7 @@
 {
 	if (!IsValidEngine(engine_id)) return ScriptDate::DATE_INVALID;
 
-	return (ScriptDate::Date)::Engine::Get(engine_id)->intro_date.base();
+	return static_cast<ScriptDate::Date>(::Engine::Get(engine_id)->intro_date.base());
 }
 
 /* static */ ScriptVehicle::VehicleType ScriptEngine::GetVehicleType(EngineID engine_id)
@@ -202,7 +202,7 @@
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
 	if (!ScriptRail::IsRailTypeAvailable(track_rail_type)) return false;
 
-	return ::IsCompatibleRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
+	return ::IsCompatibleRail(::RailVehInfo(engine_id)->railtype, static_cast<::RailType>(track_rail_type));
 }
 
 /* static */ bool ScriptEngine::HasPowerOnRail(EngineID engine_id, ScriptRail::RailType track_rail_type)
@@ -211,7 +211,7 @@
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
 	if (!ScriptRail::IsRailTypeAvailable(track_rail_type)) return false;
 
-	return ::HasPowerOnRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
+	return ::HasPowerOnRail(::RailVehInfo(engine_id)->railtype, static_cast<::RailType>(track_rail_type));
 }
 
 /* static */ bool ScriptEngine::CanRunOnRoad(EngineID engine_id, ScriptRoad::RoadType road_type)
@@ -225,7 +225,7 @@
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return false;
 	if (!ScriptRoad::IsRoadTypeAvailable(road_type)) return false;
 
-	return ::HasPowerOnRoad((::RoadType)::RoadVehInfo(engine_id)->roadtype, (::RoadType)road_type);
+	return ::HasPowerOnRoad(::RoadVehInfo(engine_id)->roadtype, static_cast<::RoadType>(road_type));
 }
 
 /* static */ ScriptRoad::RoadType ScriptEngine::GetRoadType(EngineID engine_id)
@@ -233,7 +233,7 @@
 	if (!IsValidEngine(engine_id)) return ScriptRoad::ROADTYPE_INVALID;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD) return ScriptRoad::ROADTYPE_INVALID;
 
-	return (ScriptRoad::RoadType)(uint)::RoadVehInfo(engine_id)->roadtype;
+	return static_cast<ScriptRoad::RoadType>(static_cast<uint>(::RoadVehInfo(engine_id)->roadtype));
 }
 
 /* static */ ScriptRail::RailType ScriptEngine::GetRailType(EngineID engine_id)
@@ -241,7 +241,7 @@
 	if (!IsValidEngine(engine_id)) return ScriptRail::RAILTYPE_INVALID;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return ScriptRail::RAILTYPE_INVALID;
 
-	return (ScriptRail::RailType)(uint)::RailVehInfo(engine_id)->railtype;
+	return static_cast<ScriptRail::RailType>(static_cast<uint>(::RailVehInfo(engine_id)->railtype));
 }
 
 /* static */ bool ScriptEngine::IsArticulated(EngineID engine_id)
@@ -257,7 +257,7 @@
 	if (!IsValidEngine(engine_id)) return ScriptAirport::PT_INVALID;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_AIR) return ScriptAirport::PT_INVALID;
 
-	return (ScriptAirport::PlaneType)::AircraftVehInfo(engine_id)->subtype;
+	return static_cast<ScriptAirport::PlaneType>(::AircraftVehInfo(engine_id)->subtype);
 }
 
 /* static */ SQInteger ScriptEngine::GetMaximumOrderDistance(EngineID engine_id)
@@ -265,7 +265,7 @@
 	if (!IsValidEngine(engine_id)) return 0;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_AIR) return 0;
 
-	return (SQInteger)::Engine::Get(engine_id)->GetRange() * ::Engine::Get(engine_id)->GetRange();
+	return static_cast<SQInteger>(::Engine::Get(engine_id)->GetRange()) * ::Engine::Get(engine_id)->GetRange();
 }
 
 /* static */ bool ScriptEngine::EnableForCompany(EngineID engine_id, ScriptCompany::CompanyID company)

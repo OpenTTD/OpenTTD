@@ -438,8 +438,8 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			/* Update company infrastructure counts. If the current tile is a normal road tile, remove the old
 			 * bits first. */
 			if (IsNormalRoadTile(cur_tile)) {
-				UpdateCompanyRoadInfrastructure(road_rt, road_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_ROAD)));
-				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_TRAM)));
+				UpdateCompanyRoadInfrastructure(road_rt, road_owner, -static_cast<int>(CountBits(GetRoadBits(cur_tile, RTT_ROAD))));
+				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -static_cast<int>(CountBits(GetRoadBits(cur_tile, RTT_TRAM))));
 			}
 
 			UpdateCompanyRoadInfrastructure(road_rt, road_owner, ROAD_STOP_TRACKBIT_FACTOR);

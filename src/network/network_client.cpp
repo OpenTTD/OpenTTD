@@ -529,8 +529,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet &
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Packet &p)
 {
 	NetworkClientInfo *ci;
-	ClientID client_id = (ClientID)p.Recv_uint32();
-	CompanyID playas = (CompanyID)p.Recv_uint8();
+	ClientID client_id = static_cast<ClientID>(p.Recv_uint32());
+	CompanyID playas = CompanyID(p.Recv_uint8());
 
 	Debug(net, 9, "Client::Receive_SERVER_CLIENT_INFO(): client_id={}, playas={}", client_id, playas);
 
@@ -616,12 +616,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
-	NetworkErrorCode error = (NetworkErrorCode)p.Recv_uint8();
+	NetworkErrorCode error = static_cast<NetworkErrorCode>(p.Recv_uint8());
 
 	Debug(net, 9, "Client::Receive_SERVER_ERROR(): error={}", error);
 
 	StringID err = STR_NETWORK_ERROR_LOSTCONNECTION;
-	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];
+	if (error < static_cast<ptrdiff_t>lengthof(network_error_strings)) err = network_error_strings[error];
 	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
 	if (error == NETWORK_ERROR_KICKED && p.CanReadFromPacket(1)) {
 		ShowErrorMessage(GetEncodedString(err),
@@ -731,7 +731,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet 
 	Debug(net, 9, "Client::status = AUTHORIZED");
 	this->status = STATUS_AUTHORIZED;
 
-	_network_own_client_id = (ClientID)p.Recv_uint32();
+	_network_own_client_id = static_cast<ClientID>(p.Recv_uint32());
 
 	Debug(net, 9, "Client::Receive_SERVER_WELCOME(): client_id={}", _network_own_client_id);
 
@@ -948,8 +948,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet &p)
 	std::string name;
 	const NetworkClientInfo *ci = nullptr, *ci_to;
 
-	NetworkAction action = (NetworkAction)p.Recv_uint8();
-	ClientID client_id = (ClientID)p.Recv_uint32();
+	NetworkAction action = static_cast<NetworkAction>(p.Recv_uint8());
+	ClientID client_id = static_cast<ClientID>(p.Recv_uint32());
 	bool self_send = p.Recv_bool();
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 	int64_t data = p.Recv_uint64();
@@ -996,7 +996,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_EXTERNAL_CHAT(P
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	std::string source = p.Recv_string(NETWORK_CHAT_LENGTH);
-	TextColour colour = (TextColour)p.Recv_uint16();
+	TextColour colour = static_cast<TextColour>(p.Recv_uint16());
 	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 
@@ -1013,13 +1013,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR_QUIT(Pack
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ClientID client_id = (ClientID)p.Recv_uint32();
+	ClientID client_id = static_cast<ClientID>(p.Recv_uint32());
 
 	Debug(net, 9, "Client::Receive_SERVER_ERROR_QUIT(): client_id={}", client_id);
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "", GetNetworkErrorMsg((NetworkErrorCode)p.Recv_uint8()));
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "", GetNetworkErrorMsg(static_cast<NetworkErrorCode>(p.Recv_uint8())));
 		delete ci;
 	}
 
@@ -1032,7 +1032,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_QUIT(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ClientID client_id = (ClientID)p.Recv_uint32();
+	ClientID client_id = static_cast<ClientID>(p.Recv_uint32());
 
 	Debug(net, 9, "Client::Receive_SERVER_QUIT(): client_id={}", client_id);
 
@@ -1054,7 +1054,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_JOIN(Packet &p)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ClientID client_id = (ClientID)p.Recv_uint32();
+	ClientID client_id = static_cast<ClientID>(p.Recv_uint32());
 
 	Debug(net, 9, "Client::Receive_SERVER_JOIN(): client_id={}", client_id);
 
@@ -1108,7 +1108,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_RCON(Packet &p)
 
 	Debug(net, 9, "Client::Receive_SERVER_RCON()");
 
-	TextColour colour_code = (TextColour)p.Recv_uint16();
+	TextColour colour_code = static_cast<TextColour>(p.Recv_uint16());
 	if (!IsValidConsoleColour(colour_code)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	std::string rcon_out = p.Recv_string(NETWORK_RCONCOMMAND_LENGTH);
@@ -1123,8 +1123,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MOVE(Packet &p)
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	/* Nothing more in this packet... */
-	ClientID client_id   = (ClientID)p.Recv_uint32();
-	CompanyID company_id = (CompanyID)p.Recv_uint8();
+	ClientID client_id   = static_cast<ClientID>(p.Recv_uint32());
+	CompanyID company_id = CompanyID(p.Recv_uint8());
 
 	Debug(net, 9, "Client::Receive_SERVER_MOVE(): client_id={}, comapny_id={}", client_id, company_id);
 

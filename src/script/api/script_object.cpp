@@ -322,12 +322,12 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 			/* Insert return value into to stack and throw a control code that
 			 * the return value in the stack should be used. */
 			callback(GetActiveInstance());
-			throw SQInteger(1);
+			throw static_cast<SQInteger>(1);
 		}
 		return true;
 	} else if (_networking) {
 		/* Suspend the script till the command is really executed. */
-		throw Script_Suspend(-(int)GetDoCommandDelay(), callback);
+		throw Script_Suspend(-static_cast<int>(GetDoCommandDelay()), callback);
 	} else {
 		IncreaseDoCommandCosts(res.GetCost());
 

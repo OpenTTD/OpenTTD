@@ -71,7 +71,7 @@
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, IsValidLink(Link((::LinkType)link_type, link_target)));
 
-	if (!ScriptObject::Command<CMD_CREATE_LEAGUE_TABLE_ELEMENT>::Do(&ScriptInstance::DoCommandReturnLeagueTableElementID, table, rating, c, encoded_text, encoded_score, (::LinkType)link_type, (::LinkTargetID)link_target)) return LEAGUE_TABLE_ELEMENT_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_LEAGUE_TABLE_ELEMENT>::Do(&ScriptInstance::DoCommandReturnLeagueTableElementID, table, rating, c, encoded_text, encoded_score, static_cast<::LinkType>(link_type), static_cast<::LinkTargetID>(link_target))) return LEAGUE_TABLE_ELEMENT_INVALID;
 
 	/* In case of test-mode, we return LeagueTableElementID 0 */
 	return LeagueTableElementID::Begin();
@@ -93,7 +93,7 @@
 
 	EnforcePrecondition(false, IsValidLink(Link((::LinkType)link_type, link_target)));
 
-	return ScriptObject::Command<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA>::Do(element, c, encoded_text, (::LinkType)link_type, (::LinkTargetID)link_target);
+	return ScriptObject::Command<CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA>::Do(element, c, encoded_text, static_cast<::LinkType>(link_type), static_cast<::LinkTargetID>(link_target));
 }
 
 /* static */ bool ScriptLeagueTable::UpdateElementScore(LeagueTableElementID element, SQInteger rating, Text *score)

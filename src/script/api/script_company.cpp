@@ -109,7 +109,7 @@
 
 	Randomizer &randomizer = ScriptObject::GetRandomizer();
 	CompanyManagerFace cmf;
-	GenderEthnicity ge = (GenderEthnicity)((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (randomizer.Next() & (1 << ETHNICITY_BLACK)));
+	GenderEthnicity ge = static_cast<GenderEthnicity>((gender == GENDER_FEMALE ? (1 << ::GENDER_FEMALE) : 0) | (randomizer.Next() & (1 << ETHNICITY_BLACK)));
 	RandomCompanyManagerFaceBits(cmf, ge, false, randomizer);
 
 	return ScriptObject::Command<CMD_SET_COMPANY_MANAGER_FACE>::Do(cmf);
@@ -120,7 +120,7 @@
 	company = ResolveCompanyID(company);
 	if (company == ScriptCompany::COMPANY_INVALID) return GENDER_INVALID;
 
-	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(Company::Get(ScriptCompany::FromScriptCompanyID(company))->face, CMFV_GEN_ETHN, GE_WM);
+	GenderEthnicity ge = static_cast<GenderEthnicity>(GetCompanyManagerFaceBits(Company::Get(ScriptCompany::FromScriptCompanyID(company))->face, CMFV_GEN_ETHN, GE_WM));
 	return HasBit(ge, ::GENDER_FEMALE) ? GENDER_FEMALE : GENDER_MALE;
 }
 
@@ -284,7 +284,7 @@
 	EnforcePrecondition(false, company != ScriptCompany::COMPANY_INVALID);
 
 	/* Network commands only allow 0 to indicate invalid tiles, not INVALID_TILE */
-	return ScriptObject::Command<CMD_CHANGE_BANK_BALANCE>::Do(tile == INVALID_TILE ? (TileIndex)0U : tile, delta, ScriptCompany::FromScriptCompanyID(company), (::ExpensesType)expenses_type);
+	return ScriptObject::Command<CMD_CHANGE_BANK_BALANCE>::Do(tile == INVALID_TILE ? TileIndex(0U) : tile, delta, ScriptCompany::FromScriptCompanyID(company), static_cast<::ExpensesType>(expenses_type));
 }
 
 /* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)
@@ -353,31 +353,31 @@
 /* static */ bool ScriptCompany::SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
 	EnforceCompanyModeValid(false);
-	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do((::LiveryScheme)scheme, true, (::Colours)colour);
+	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do(static_cast<::LiveryScheme>(scheme), true, static_cast<::Colours>(colour));
 }
 
 /* static */ bool ScriptCompany::SetSecondaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
 	EnforceCompanyModeValid(false);
-	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do((::LiveryScheme)scheme, false, (::Colours)colour);
+	return ScriptObject::Command<CMD_SET_COMPANY_COLOUR>::Do(static_cast<::LiveryScheme>(scheme), false, static_cast<::Colours>(colour));
 }
 
 /* static */ ScriptCompany::Colours ScriptCompany::GetPrimaryLiveryColour(ScriptCompany::LiveryScheme scheme)
 {
-	if ((::LiveryScheme)scheme < LS_BEGIN || (::LiveryScheme)scheme >= LS_END) return COLOUR_INVALID;
+	if (static_cast<::LiveryScheme>(scheme) < LS_BEGIN || static_cast<::LiveryScheme>(scheme) >= LS_END) return COLOUR_INVALID;
 
 	const Company *c = ::Company::GetIfValid(_current_company);
 	if (c == nullptr) return COLOUR_INVALID;
 
-	return (ScriptCompany::Colours)c->livery[scheme].colour1;
+	return static_cast<ScriptCompany::Colours>(c->livery[scheme].colour1);
 }
 
 /* static */ ScriptCompany::Colours ScriptCompany::GetSecondaryLiveryColour(ScriptCompany::LiveryScheme scheme)
 {
-	if ((::LiveryScheme)scheme < LS_BEGIN || (::LiveryScheme)scheme >= LS_END) return COLOUR_INVALID;
+	if (static_cast<::LiveryScheme>(scheme) < LS_BEGIN || static_cast<::LiveryScheme>(scheme) >= LS_END) return COLOUR_INVALID;
 
 	const Company *c = ::Company::GetIfValid(_current_company);
 	if (c == nullptr) return COLOUR_INVALID;
 
-	return (ScriptCompany::Colours)c->livery[scheme].colour2;
+	return static_cast<ScriptCompany::Colours>(c->livery[scheme].colour2);
 }

@@ -24,7 +24,7 @@
 
 /* static */ bool ScriptAirport::IsAirportInformationAvailable(AirportType type)
 {
-	return type >= 0 && type < (AirportType)NUM_AIRPORTS && AirportSpec::Get(type)->enabled;
+	return type >= 0 && type < static_cast<AirportType>(NUM_AIRPORTS) && AirportSpec::Get(type)->enabled;
 }
 
 /* static */ Money ScriptAirport::GetPrice(AirportType type)
@@ -67,7 +67,7 @@
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
-	return _settings_game.station.modified_catchment ? ::AirportSpec::Get(type)->catchment : (uint)CA_UNMODIFIED;
+	return _settings_game.station.modified_catchment ? ::AirportSpec::Get(type)->catchment : CA_UNMODIFIED;
 }
 
 /* static */ bool ScriptAirport::BuildAirport(TileIndex tile, AirportType type, StationID station_id)
@@ -124,7 +124,7 @@
 
 	if (!ScriptStation::HasStationType(station_id, ScriptStation::STATION_AIRPORT)) return AT_INVALID;
 
-	return (AirportType)::Station::Get(station_id)->airport.type;
+	return static_cast<AirportType>(::Station::Get(station_id)->airport.type);
 }
 
 
@@ -170,7 +170,7 @@
 {
 	if (!IsAirportInformationAvailable(type)) return -1;
 
-	return (int64_t)GetMaintenanceCostFactor(type) * _price[PR_INFRASTRUCTURE_AIRPORT] >> 3;
+	return static_cast<int64_t>(GetMaintenanceCostFactor(type)) * _price[PR_INFRASTRUCTURE_AIRPORT] >> 3;
 }
 
 /* static */ SQInteger ScriptAirport::GetAirportNumHelipads(AirportType type)

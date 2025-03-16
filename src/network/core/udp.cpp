@@ -88,13 +88,13 @@ void NetworkUDPSocketHandler::SendPacket(Packet &p, NetworkAddress &recv, bool a
 		if (broadcast) {
 			/* Enable broadcast */
 			unsigned long val = 1;
-			if (setsockopt(s.first, SOL_SOCKET, SO_BROADCAST, (char *) &val, sizeof(val)) < 0) {
+			if (setsockopt(s.first, SOL_SOCKET, SO_BROADCAST, reinterpret_cast<char *>(&val), sizeof(val)) < 0) {
 				Debug(net, 1, "Setting broadcast mode failed: {}", NetworkError::GetLast().AsString());
 			}
 		}
 
 		/* Send the buffer */
-		ssize_t res = p.TransferOut<int>(sendto, s.first, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
+		ssize_t res = p.TransferOut<int>(sendto, s.first, 0, reinterpret_cast<const struct sockaddr *>(send.GetAddress()), send.GetAddressLength());
 		Debug(net, 7, "sendto({})", send.GetAddressAsString());
 
 		/* Check for any errors, but ignore it otherwise */
@@ -120,7 +120,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 			/* Try to receive anything */
 			SetNonBlocking(s.first); // Some OSes seem to lose the non-blocking status of the socket
-			ssize_t nbytes = p.TransferIn<int>(recvfrom, s.first, 0, (struct sockaddr *)&client_addr, &client_len);
+			ssize_t nbytes = p.TransferIn<int>(recvfrom, s.first, 0, reinterpret_cast<struct sockaddr *>(&client_addr), &client_len);
 
 			/* Did we get the bytes for the base header of the packet? */
 			if (nbytes <= 0) break;    // No data, i.e. no packet
@@ -160,7 +160,7 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet &p, NetworkAddress &client_
 	/* New packet == new client, which has not quit yet */
 	this->Reopen();
 
-	type = (PacketUDPType)p.Recv_uint8();
+	type = static_cast<PacketUDPType>(p.Recv_uint8());
 
 	switch (this->HasClientQuit() ? PACKET_UDP_END : type) {
 		case PACKET_UDP_CLIENT_FIND_SERVER:   this->Receive_CLIENT_FIND_SERVER(p, client_addr);   break;

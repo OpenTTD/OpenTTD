@@ -288,7 +288,7 @@ void MusicSystem::CheckStatus()
 {
 	if ((_game_mode == GM_MENU) != (this->selected_playlist == PLCH_THEMEONLY)) {
 		/* Make sure the theme-only playlist is active when on the title screen, and not during gameplay */
-		this->ChangePlaylist((_game_mode == GM_MENU) ? PLCH_THEMEONLY : (PlaylistChoices)_settings_client.music.playlist);
+		this->ChangePlaylist((_game_mode == GM_MENU) ? PLCH_THEMEONLY : static_cast<PlaylistChoices>(_settings_client.music.playlist));
 	}
 	if (this->active_playlist.empty()) return;
 	/* If we were supposed to be playing, but music has stopped, move to next song */
@@ -350,7 +350,7 @@ void MusicSystem::PlaylistAdd(size_t song_index)
 		size_t newpos = InteractiveRandom() % maxpos;
 		this->active_playlist.insert(this->active_playlist.begin() + newpos, entry);
 		/* Make sure to shift up the current playback position if the song was inserted before it */
-		if ((int)newpos <= this->playlist_position) this->playlist_position++;
+		if (static_cast<int>(newpos) <= this->playlist_position) this->playlist_position++;
 	} else {
 		this->active_playlist.push_back(std::move(entry));
 	}
@@ -382,7 +382,7 @@ void MusicSystem::PlaylistRemove(size_t song_index)
 		Playlist::iterator s2 = this->active_playlist.begin() + i;
 		if (s2->filename == song.filename && s2->cat_index == song.cat_index) {
 			this->active_playlist.erase(s2);
-			if ((int)i == this->playlist_position && this->IsPlaying()) this->Play();
+			if (static_cast<int>(i) == this->playlist_position && this->IsPlaying()) this->Play();
 			break;
 		}
 	}
@@ -417,8 +417,8 @@ void MusicSystem::ChangePlaylistPosition(int ofs)
 		this->playlist_position = 0;
 	} else {
 		this->playlist_position += ofs;
-		while (this->playlist_position >= (int)this->active_playlist.size()) this->playlist_position -= (int)this->active_playlist.size();
-		while (this->playlist_position < 0) this->playlist_position += (int)this->active_playlist.size();
+		while (this->playlist_position >= static_cast<int>(this->active_playlist.size())) this->playlist_position -= static_cast<int>(this->active_playlist.size());
+		while (this->playlist_position < 0) this->playlist_position += static_cast<int>(this->active_playlist.size());
 	}
 }
 
@@ -442,7 +442,7 @@ void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
 
 	for (const auto &song : this->standard_playlists[pl]) {
 		/* Music set indices in the settings playlist are 1-based, 0 means unused slot */
-		settings_pl[num++] = (uint8_t)song.set_index + 1;
+		settings_pl[num++] = static_cast<uint8_t>(song.set_index) + 1;
 	}
 }
 
@@ -605,7 +605,7 @@ struct MusicTrackSelectionWindow : public Window {
 
 			case WID_MTS_ALL: case WID_MTS_OLD: case WID_MTS_NEW:
 			case WID_MTS_EZY: case WID_MTS_CUSTOM1: case WID_MTS_CUSTOM2: // set playlist
-				_music.ChangePlaylist((MusicSystem::PlaylistChoices)(widget - WID_MTS_ALL));
+				_music.ChangePlaylist(static_cast<MusicSystem::PlaylistChoices>(widget - WID_MTS_ALL));
 				break;
 		}
 	}
@@ -848,7 +848,7 @@ struct MusicWindow : public Window {
 
 			case WID_M_ALL: case WID_M_OLD: case WID_M_NEW:
 			case WID_M_EZY: case WID_M_CUSTOM1: case WID_M_CUSTOM2: // playlist
-				_music.ChangePlaylist((MusicSystem::PlaylistChoices)(widget - WID_M_ALL));
+				_music.ChangePlaylist(static_cast<MusicSystem::PlaylistChoices>(widget - WID_M_ALL));
 				break;
 		}
 	}

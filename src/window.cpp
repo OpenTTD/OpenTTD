@@ -693,8 +693,8 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 				int dy = (w->resize.step_height == 0) ? 0 : def_height - w->height;
 				/* dx and dy has to go by step.. calculate it.
 				 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
-				if (w->resize.step_width  > 1) dx -= dx % (int)w->resize.step_width;
-				if (w->resize.step_height > 1) dy -= dy % (int)w->resize.step_height;
+				if (w->resize.step_width  > 1) dx -= dx % static_cast<int>(w->resize.step_width);
+				if (w->resize.step_height > 1) dy -= dy % static_cast<int>(w->resize.step_height);
 				ResizeWindow(w, dx, dy, false);
 			}
 
@@ -729,7 +729,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	/* Check if the widget is highlighted; if so, disable highlight and dispatch an event to the GameScript */
 	if (w->IsWidgetHighlighted(widget_index)) {
 		w->SetWidgetHighlight(widget_index, TC_INVALID);
-		Game::NewEvent(new ScriptEventWindowWidgetClick((ScriptWindow::WindowClass)w->window_class, w->window_number, widget_index));
+		Game::NewEvent(new ScriptEventWindowWidgetClick(static_cast<ScriptWindow::WindowClass>(w->window_class), w->window_number, widget_index));
 	}
 
 	w->OnClick(pt, widget_index, click_count);
@@ -977,8 +977,8 @@ void Window::ReInit(int rx, int ry, bool reposition)
 	int dy = (this->resize.step_height == 0) ? 0 : window_height - this->height;
 	/* dx and dy has to go by step.. calculate it.
 	 * The cast to int is necessary else dx/dy are implicitly casted to unsigned int, which won't work. */
-	if (this->resize.step_width  > 1) dx -= dx % (int)this->resize.step_width;
-	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
+	if (this->resize.step_width  > 1) dx -= dx % static_cast<int>(this->resize.step_width);
+	if (this->resize.step_height > 1) dy -= dy % static_cast<int>(this->resize.step_height);
 
 	if (reposition) {
 		Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
@@ -1009,8 +1009,8 @@ void Window::SetShaded(bool make_shaded)
 			this->ReInit(0, -this->height);
 		} else {
 			this->shade_select->SetDisplayedPlane(desired);
-			int dx = ((int)this->unshaded_size.width  > this->width)  ? (int)this->unshaded_size.width  - this->width  : 0;
-			int dy = ((int)this->unshaded_size.height > this->height) ? (int)this->unshaded_size.height - this->height : 0;
+			int dx = (static_cast<int>(this->unshaded_size.width)  > this->width)  ? static_cast<int>(this->unshaded_size.width)  - this->width  : 0;
+			int dy = (static_cast<int>(this->unshaded_size.height) > this->height) ? static_cast<int>(this->unshaded_size.height) - this->height : 0;
 			this->ReInit(dx, dy);
 		}
 	}
@@ -1443,8 +1443,8 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 		/* X and Y has to go by step.. calculate it.
 		 * The cast to int is necessary else x/y are implicitly casted to
 		 * unsigned int, which won't work. */
-		if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)this->resize.step_width;
-		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
+		if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % static_cast<int>(this->resize.step_width);
+		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % static_cast<int>(this->resize.step_height);
 
 		ResizeWindow(this, enlarge_x, enlarge_y, true, false);
 		/* ResizeWindow() calls this->OnResize(). */
@@ -1604,7 +1604,7 @@ static Point GetAutoPlacePosition(int width, int height)
 	 * of the closebox
 	 */
 	int left = rtl ? _screen.width - width : 0, top = toolbar_y;
-	int offset_x = rtl ? -(int)NWidgetLeaf::closebox_dimension.width : (int)NWidgetLeaf::closebox_dimension.width;
+	int offset_x = rtl ? -static_cast<int>(NWidgetLeaf::closebox_dimension.width) : static_cast<int>(NWidgetLeaf::closebox_dimension.width);
 	int offset_y = std::max<int>(NWidgetLeaf::closebox_dimension.height, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.captiontext.Vertical());
 
 restart:
@@ -2030,14 +2030,14 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, boo
 			 * the resolution clamp it in such a manner that it stays within the bounds. */
 			int new_right  = w->left + w->width  + delta_x;
 			int new_bottom = w->top  + w->height + delta_y;
-			if (new_right  >= (int)_screen.width)  delta_x -= Ceil(new_right  - _screen.width,  std::max(1U, w->nested_root->resize_x));
-			if (new_bottom >= (int)_screen.height) delta_y -= Ceil(new_bottom - _screen.height, std::max(1U, w->nested_root->resize_y));
+			if (new_right  >= _screen.width)  delta_x -= Ceil(new_right  - _screen.width,  std::max(1U, w->nested_root->resize_x));
+			if (new_bottom >= _screen.height) delta_y -= Ceil(new_bottom - _screen.height, std::max(1U, w->nested_root->resize_y));
 		}
 
 		w->SetDirty();
 
-		uint new_xinc = std::max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
-		uint new_yinc = std::max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
+		uint new_xinc = std::max(0, (w->nested_root->resize_x == 0) ? 0 : static_cast<int>(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
+		uint new_yinc = std::max(0, (w->nested_root->resize_y == 0) ? 0 : static_cast<int>(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
 		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
 		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
@@ -2218,14 +2218,14 @@ static EventState HandleWindowDragging()
 			/* X and Y has to go by step.. calculate it.
 			 * The cast to int is necessary else x/y are implicitly casted to
 			 * unsigned int, which won't work. */
-			if (w->resize.step_width  > 1) x -= x % (int)w->resize.step_width;
-			if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
+			if (w->resize.step_width  > 1) x -= x % static_cast<int>(w->resize.step_width);
+			if (w->resize.step_height > 1) y -= y % static_cast<int>(w->resize.step_height);
 
 			/* Check that we don't go below the minimum set size */
-			if ((int)w->width + x < (int)w->nested_root->smallest_x) {
+			if (w->width + x < static_cast<int>(w->nested_root->smallest_x)) {
 				x = w->nested_root->smallest_x - w->width;
 			}
-			if ((int)w->height + y < (int)w->nested_root->smallest_y) {
+			if (w->height + y < static_cast<int>(w->nested_root->smallest_y)) {
 				y = w->nested_root->smallest_y - w->height;
 			}
 

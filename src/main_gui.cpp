@@ -104,7 +104,7 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 
 		case ZOOM_IN:
 			if (vp->zoom <= _settings_client.gui.zoom_min) return false;
-			vp->zoom = (ZoomLevel)((int)vp->zoom - 1);
+			vp->zoom = static_cast<ZoomLevel>(static_cast<int>(vp->zoom) - 1);
 			vp->virtual_width >>= 1;
 			vp->virtual_height >>= 1;
 
@@ -115,7 +115,7 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom >= _settings_client.gui.zoom_max) return false;
-			vp->zoom = (ZoomLevel)((int)vp->zoom + 1);
+			vp->zoom = static_cast<ZoomLevel>(static_cast<int>(vp->zoom) + 1);
 
 			w->viewport->scrollpos_x -= vp->virtual_width >> 1;
 			w->viewport->scrollpos_y -= vp->virtual_height >> 1;
@@ -355,7 +355,7 @@ struct MainWindow : Window
 			case GHK_TOGGLE_TRANSPARENCY + 7:
 			case GHK_TOGGLE_TRANSPARENCY + 8:
 				/* Transparency toggle hot keys */
-				ToggleTransparency((TransparencyOption)(hotkey - GHK_TOGGLE_TRANSPARENCY));
+				ToggleTransparency(static_cast<TransparencyOption>(hotkey - GHK_TOGGLE_TRANSPARENCY));
 				MarkWholeScreenDirty();
 				break;
 
@@ -368,7 +368,7 @@ struct MainWindow : Window
 			case GHK_TOGGLE_INVISIBILITY + 6:
 			case GHK_TOGGLE_INVISIBILITY + 7:
 				/* Invisibility toggle hot keys */
-				ToggleInvisibilityWithTransparency((TransparencyOption)(hotkey - GHK_TOGGLE_INVISIBILITY));
+				ToggleInvisibilityWithTransparency(static_cast<TransparencyOption>(hotkey - GHK_TOGGLE_INVISIBILITY));
 				MarkWholeScreenDirty();
 				break;
 

@@ -307,7 +307,7 @@ struct ITBLChunkHandler : ChunkHandler {
 		}
 		int index;
 		while ((index = SlIterateArray()) != -1) {
-			if ((uint)index >= NUM_INDUSTRYTYPES) SlErrorCorrupt("Too many industry builder datas");
+			if (static_cast<uint>(index) >= NUM_INDUSTRYTYPES) SlErrorCorrupt("Too many industry builder datas");
 			SlObject(_industry_builder.builddata + index, slt);
 		}
 	}

@@ -299,7 +299,7 @@ protected:
 	{
 		switch (pe.type) {
 			case SPET_GOAL: {
-				Goal *g = Goal::Get((GoalID) pe.referenced_id);
+				Goal *g = Goal::Get(GoalID(pe.referenced_id));
 				if (g == nullptr) return SPR_IMG_GOAL_BROKEN_REF;
 				return g->completed ? SPR_IMG_GOAL_COMPLETED : SPR_IMG_GOAL;
 			}
@@ -513,7 +513,7 @@ protected:
 	void DrawActionElement(int &y_offset, int width, int line_height, SpriteID action_sprite, const std::string &text) const
 	{
 		Dimension sprite_dim = GetSpriteSize(action_sprite);
-		uint element_height = std::max(sprite_dim.height, (uint)line_height);
+		uint element_height = std::max(sprite_dim.height, static_cast<uint>(line_height));
 
 		uint sprite_top = y_offset + (element_height - sprite_dim.height) / 2;
 		uint text_top = y_offset + (element_height - line_height) / 2;
@@ -537,9 +537,9 @@ protected:
 
 			case SPET_LOCATION:
 				if (_ctrl_pressed) {
-					ShowExtraViewportWindow((TileIndex)pe.referenced_id);
+					ShowExtraViewportWindow(TileIndex(pe.referenced_id));
 				} else {
-					ScrollMainWindowToTile((TileIndex)pe.referenced_id);
+					ScrollMainWindowToTile(TileIndex(pe.referenced_id));
 				}
 				break;
 
@@ -717,7 +717,7 @@ public:
 					break;
 
 				case SPET_GOAL: {
-					Goal *g = Goal::Get((GoalID) ce.pe->referenced_id);
+					Goal *g = Goal::Get(GoalID(ce.pe->referenced_id));
 					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe),
 						g == nullptr ? GetString(STR_STORY_BOOK_INVALID_GOAL_REF) : g->text.GetDecodedString());
 					break;
@@ -1042,7 +1042,7 @@ static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
  */
 void ShowStoryBook(CompanyID company, StoryPageID page_id, bool centered)
 {
-	if (!Company::IsValidID(company)) company = (CompanyID)CompanyID::Invalid();
+	if (!Company::IsValidID(company)) company = static_cast<CompanyID>(CompanyID::Invalid());
 
 	StoryBookWindow *w = AllocateWindowDescFront<StoryBookWindow, true>(centered ? _story_book_gs_desc : _story_book_desc, company);
 	if (page_id != StoryPageID::Invalid()) w->SetSelectedPage(page_id);

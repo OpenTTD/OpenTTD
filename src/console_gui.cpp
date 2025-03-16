@@ -204,7 +204,7 @@ struct IConsoleWindow : Window
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - WidgetDimensions::scaled.frametext.right - cursor_width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
 		}
 

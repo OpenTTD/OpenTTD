@@ -165,7 +165,7 @@ const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo()
 	 *  - invite_code
 	 * These don't need to be updated manually here.
 	 */
-	_network_game_info.companies_on  = (uint8_t)Company::GetNumItems();
+	_network_game_info.companies_on  = static_cast<uint8_t>(Company::GetNumItems());
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.calendar_date = TimerGameCalendar::date;
 	_network_game_info.ticks_playing = TimerGameTick::counter;
@@ -221,7 +221,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 
 	/* NETWORK_GAME_INFO_VERSION = 5 */
 	GameInfo *game_info = Game::GetInfo();
-	p.Send_uint32(game_info == nullptr ? -1 : (uint32_t)game_info->GetVersion());
+	p.Send_uint32(game_info == nullptr ? -1 : static_cast<uint32_t>(game_info->GetVersion()));
 	p.Send_string(game_info == nullptr ? "" : game_info->GetName());
 
 	/* NETWORK_GAME_INFO_VERSION = 4 */
@@ -288,12 +288,12 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			[[fallthrough]];
 
 		case 6:
-			newgrf_serialisation = (NewGRFSerializationType)p.Recv_uint8();
+			newgrf_serialisation = static_cast<NewGRFSerializationType>(p.Recv_uint8());
 			if (newgrf_serialisation >= NST_END) return;
 			[[fallthrough]];
 
 		case 5: {
-			info.gamescript_version = (int)p.Recv_uint32();
+			info.gamescript_version = static_cast<int>(p.Recv_uint32());
 			info.gamescript_name = p.Recv_string(NETWORK_NAME_LENGTH);
 			[[fallthrough]];
 		}

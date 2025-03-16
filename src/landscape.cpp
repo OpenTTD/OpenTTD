@@ -236,7 +236,7 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 				break;
 
 			case CORNER_S:
-				if (x + y >= (int)TILE_SIZE) return GetSlopeMaxPixelZ(corners);
+				if (x + y >= static_cast<int>(TILE_SIZE)) return GetSlopeMaxPixelZ(corners);
 				break;
 
 			case CORNER_E:
@@ -244,7 +244,7 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 				break;
 
 			case CORNER_N:
-				if (x + y < (int)TILE_SIZE) return GetSlopeMaxPixelZ(corners);
+				if (x + y < static_cast<int>(TILE_SIZE)) return GetSlopeMaxPixelZ(corners);
 				break;
 
 			default: NOT_REACHED();
@@ -255,9 +255,9 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 		case SLOPE_FLAT: return 0;
 
 		/* One corner is up.*/
-		case SLOPE_N: return x + y <= (int)TILE_SIZE ? (TILE_SIZE - x - y)     >> 1 : 0;
+		case SLOPE_N: return x + y <= static_cast<int>(TILE_SIZE) ? (TILE_SIZE - x - y)     >> 1 : 0;
 		case SLOPE_E: return y >= x                  ? (1 + y - x)             >> 1 : 0;
-		case SLOPE_S: return x + y >= (int)TILE_SIZE ? (1 + x + y - TILE_SIZE) >> 1 : 0;
+		case SLOPE_S: return x + y >= static_cast<int>(TILE_SIZE) ? (1 + x + y - TILE_SIZE) >> 1 : 0;
 		case SLOPE_W: return x >= y                  ? (x - y)                 >> 1 : 0;
 
 		/* Two corners next to each other are up. */
@@ -267,13 +267,13 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 		case SLOPE_NW: return (TILE_SIZE - y) >> 1;
 
 		/* Three corners are up on the same level. */
-		case SLOPE_ENW: return x + y >= (int)TILE_SIZE ? TILE_HEIGHT - ((1 + x + y - TILE_SIZE) >> 1) : TILE_HEIGHT;
+		case SLOPE_ENW: return x + y >= static_cast<int>(TILE_SIZE) ? TILE_HEIGHT - ((1 + x + y - TILE_SIZE) >> 1) : TILE_HEIGHT;
 		case SLOPE_SEN: return y < x                   ? TILE_HEIGHT - ((x - y)                 >> 1) : TILE_HEIGHT;
-		case SLOPE_WSE: return x + y <= (int)TILE_SIZE ? TILE_HEIGHT - ((TILE_SIZE - x - y)     >> 1) : TILE_HEIGHT;
+		case SLOPE_WSE: return x + y <= static_cast<int>(TILE_SIZE) ? TILE_HEIGHT - ((TILE_SIZE - x - y)     >> 1) : TILE_HEIGHT;
 		case SLOPE_NWS: return x < y                   ? TILE_HEIGHT - ((1 + y - x)             >> 1) : TILE_HEIGHT;
 
 		/* Two corners at opposite sides are up. */
-		case SLOPE_NS: return x + y < (int)TILE_SIZE ? (TILE_SIZE - x - y) >> 1 : (1 + x + y - TILE_SIZE) >> 1;
+		case SLOPE_NS: return x + y < static_cast<int>(TILE_SIZE) ? (TILE_SIZE - x - y) >> 1 : (1 + x + y - TILE_SIZE) >> 1;
 		case SLOPE_EW: return x >= y ? (x - y) >> 1 : (1 + y - x) >> 1;
 
 		/* Very special cases. */
@@ -442,7 +442,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	if (!HasFoundationNE(ti->tile, slope, z)) sprite_block += 2;
 
 	/* Use the original slope sprites if NW and NE borders should be visible */
-	SpriteID leveled_base = (sprite_block == 0 ? (int)SPR_FOUNDATION_BASE : (SPR_SLOPES_VIRTUAL_BASE + sprite_block * TRKFOUND_BLOCK_SIZE));
+	SpriteID leveled_base = (sprite_block == 0 ? static_cast<int>(SPR_FOUNDATION_BASE) : (SPR_SLOPES_VIRTUAL_BASE + sprite_block * TRKFOUND_BLOCK_SIZE));
 	SpriteID inclined_base = SPR_SLOPES_VIRTUAL_BASE + SLOPES_INCLINED_OFFSET + sprite_block * TRKFOUND_BLOCK_SIZE;
 	SpriteID halftile_base = SPR_HALFTILE_FOUNDATION_BASE + sprite_block * HALFTILE_BLOCK_SIZE;
 
@@ -469,10 +469,10 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			OffsetGroundSprite(0, 0);
 		} else if (IsLeveledFoundation(f)) {
 			AddSortableSpriteToDraw(leveled_base + SlopeWithOneCornerRaised(highest_corner), PAL_NONE, ti->x, ti->y, TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1, ti->z - TILE_HEIGHT);
-			OffsetGroundSprite(0, -(int)TILE_HEIGHT);
+			OffsetGroundSprite(0, -static_cast<int>(TILE_HEIGHT));
 		} else if (f == FOUNDATION_STEEP_LOWER) {
 			/* one corner raised */
-			OffsetGroundSprite(0, -(int)TILE_HEIGHT);
+			OffsetGroundSprite(0, -static_cast<int>(TILE_HEIGHT));
 		} else {
 			/* halftile foundation */
 			int x_bb = (((highest_corner == CORNER_W) || (highest_corner == CORNER_S)) ? TILE_SIZE / 2 : 0);
@@ -488,7 +488,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 		if (IsLeveledFoundation(f)) {
 			/* leveled foundation */
 			AddSortableSpriteToDraw(leveled_base + ti->tileh, PAL_NONE, ti->x, ti->y, TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1, ti->z);
-			OffsetGroundSprite(0, -(int)TILE_HEIGHT);
+			OffsetGroundSprite(0, -static_cast<int>(TILE_HEIGHT));
 		} else if (IsNonContinuousFoundation(f)) {
 			/* halftile foundation */
 			Corner halftile_corner = GetHalftileFoundationCorner(f);
@@ -652,7 +652,7 @@ CommandCost CmdLandscapeClear(DoCommandFlags flags, TileIndex tile)
 	}
 
 	Company *c = flags.Any({DoCommandFlag::Auto, DoCommandFlag::Bankrupt}) ? nullptr : Company::GetIfValid(_current_company);
-	if (c != nullptr && (int)GB(c->clear_limit, 16, 16) < 1) {
+	if (c != nullptr && static_cast<int>(GB(c->clear_limit, 16, 16)) < 1) {
 		return CommandCost(STR_ERROR_CLEARING_LIMIT_REACHED);
 	}
 
@@ -790,7 +790,7 @@ void RunTileLoop()
 		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
 
 		/* Get the next tile in sequence using a Galois LFSR. */
-		tile = TileIndex{(tile.base() >> 1) ^ (-(int32_t)(tile.base() & 1) & feedback)};
+		tile = TileIndex{(tile.base() >> 1) ^ (-static_cast<int32_t>(tile.base() & 1) & feedback)};
 	}
 
 	_cur_tileloop_tile = tile;
@@ -830,7 +830,7 @@ static void GenerateTerrain(int type, uint flag)
 	uint edge_distance = 1 + (_settings_game.construction.freeform_edges ? 1 : 0);
 	if (x <= edge_distance || y <= edge_distance) return;
 
-	DiagDirection direction = (DiagDirection)GB(r, 22, 2);
+	DiagDirection direction = static_cast<DiagDirection>(GB(r, 22, 2));
 	uint w = templ->width;
 	uint h = templ->height;
 

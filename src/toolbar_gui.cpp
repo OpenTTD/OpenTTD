@@ -538,7 +538,7 @@ static CallBackFunction ToolbarStationsClick(Window *w)
  */
 static CallBackFunction MenuClickStations(int index)
 {
-	ShowCompanyStations((CompanyID)index);
+	ShowCompanyStations(CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -558,7 +558,7 @@ static CallBackFunction ToolbarFinancesClick(Window *w)
  */
 static CallBackFunction MenuClickFinances(int index)
 {
-	ShowCompanyFinances((CompanyID)index);
+	ShowCompanyFinances(CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -594,7 +594,7 @@ static CallBackFunction MenuClickCompany(int index)
 				return CBF_NONE;
 		}
 	}
-	ShowCompany((CompanyID)index);
+	ShowCompany(CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -614,7 +614,7 @@ static CallBackFunction ToolbarStoryClick(Window *w)
  */
 static CallBackFunction MenuClickStory(int index)
 {
-	ShowStoryBook(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
+	ShowStoryBook(index == CTMN_SPECTATOR ? CompanyID::Invalid() : CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -634,7 +634,7 @@ static CallBackFunction ToolbarGoalClick(Window *w)
  */
 static CallBackFunction MenuClickGoal(int index)
 {
-	ShowGoalsList(index == CTMN_SPECTATOR ? CompanyID::Invalid() : (CompanyID)index);
+	ShowGoalsList(index == CTMN_SPECTATOR ? CompanyID::Invalid() : CompanyID(index));
 	return CBF_NONE;
 }
 
@@ -721,7 +721,7 @@ static CallBackFunction MenuClickGraphsOrLeague(int index)
 		case LTMN_HIGHSCORE: ShowHighscoreTable(); break;
 		default: {
 			if (LeagueTable::IsValidID(index)) {
-				ShowScriptLeagueTable((LeagueTableID)index);
+				ShowScriptLeagueTable(LeagueTableID(index));
 			}
 		}
 	}
@@ -786,7 +786,7 @@ static CallBackFunction ToolbarTrainClick(Window *w)
  */
 static CallBackFunction MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_TRAIN);
+	ShowVehicleListWindow(CompanyID(index), VEH_TRAIN);
 	return CBF_NONE;
 }
 
@@ -806,7 +806,7 @@ static CallBackFunction ToolbarRoadClick(Window *w)
  */
 static CallBackFunction MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_ROAD);
+	ShowVehicleListWindow(CompanyID(index), VEH_ROAD);
 	return CBF_NONE;
 }
 
@@ -826,7 +826,7 @@ static CallBackFunction ToolbarShipClick(Window *w)
  */
 static CallBackFunction MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_SHIP);
+	ShowVehicleListWindow(CompanyID(index), VEH_SHIP);
 	return CBF_NONE;
 }
 
@@ -846,7 +846,7 @@ static CallBackFunction ToolbarAirClick(Window *w)
  */
 static CallBackFunction MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow((CompanyID)index, VEH_AIRCRAFT);
+	ShowVehicleListWindow(CompanyID(index), VEH_AIRCRAFT);
 	return CBF_NONE;
 }
 
@@ -855,7 +855,7 @@ static CallBackFunction MenuClickShowAir(int index)
 static CallBackFunction ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, GetMainWindow())) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_IN : (WidgetID)WID_TN_ZOOM_IN);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? static_cast<WidgetID>(WID_TE_ZOOM_IN) : static_cast<WidgetID>(WID_TN_ZOOM_IN));
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;
@@ -866,7 +866,7 @@ static CallBackFunction ToolbarZoomInClick(Window *w)
 static CallBackFunction ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, GetMainWindow())) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (WidgetID)WID_TE_ZOOM_OUT : (WidgetID)WID_TN_ZOOM_OUT);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? static_cast<WidgetID>(WID_TE_ZOOM_OUT) : static_cast<WidgetID>(WID_TN_ZOOM_OUT));
 		if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	}
 	return CBF_NONE;
@@ -889,7 +889,7 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRail(int index)
 {
-	_last_built_railtype = (RailType)index;
+	_last_built_railtype = static_cast<RailType>(index);
 	ShowBuildRailToolbar(_last_built_railtype);
 	return CBF_NONE;
 }
@@ -911,7 +911,7 @@ static CallBackFunction ToolbarBuildRoadClick(Window *w)
  */
 static CallBackFunction MenuClickBuildRoad(int index)
 {
-	_last_built_roadtype = (RoadType)index;
+	_last_built_roadtype = static_cast<RoadType>(index);
 	ShowBuildRoadToolbar(_last_built_roadtype);
 	return CBF_NONE;
 }
@@ -933,7 +933,7 @@ static CallBackFunction ToolbarBuildTramClick(Window *w)
  */
 static CallBackFunction MenuClickBuildTram(int index)
 {
-	_last_built_tramtype = (RoadType)index;
+	_last_built_tramtype = static_cast<RoadType>(index);
 	ShowBuildRoadToolbar(_last_built_tramtype);
 	return CBF_NONE;
 }
@@ -1015,7 +1015,7 @@ static CallBackFunction MenuClickForest(int index)
 
 static CallBackFunction ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_MUSIC_SOUND : (WidgetID)WID_TN_MUSIC_SOUND, {STR_TOOLBAR_SOUND_MUSIC});
+	PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? static_cast<WidgetID>(WID_TE_MUSIC_SOUND) : static_cast<WidgetID>(WID_TN_MUSIC_SOUND), {STR_TOOLBAR_SOUND_MUSIC});
 	return CBF_NONE;
 }
 
@@ -1070,13 +1070,13 @@ static CallBackFunction PlaceLandBlockInfo()
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? static_cast<WidgetID>(WID_TE_HELP) : static_cast<WidgetID>(WID_TN_HELP), {STR_ABOUT_MENU_LAND_BLOCK_INFO,
 				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD,
 				STR_ABOUT_MENU_SPRITE_ALIGNER, STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES, STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS,
 				STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES});
 	} else {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
+		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? static_cast<WidgetID>(WID_TE_HELP) : static_cast<WidgetID>(WID_TN_HELP), {STR_ABOUT_MENU_LAND_BLOCK_INFO,
 				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
 				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD});
 	}
@@ -1186,7 +1186,7 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 	}
 
 	w->ReInit();
-	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? (WidgetID)WID_TE_SWITCH_BAR : (WidgetID)WID_TN_SWITCH_BAR, _toolbar_mode == TB_LOWER);
+	w->SetWidgetLoweredState(_game_mode == GM_EDITOR ? static_cast<WidgetID>(WID_TE_SWITCH_BAR) : static_cast<WidgetID>(WID_TN_SWITCH_BAR), _toolbar_mode == TB_LOWER);
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -1275,7 +1275,7 @@ static CallBackFunction ToolbarScenBuildRoadClick(Window *w)
  */
 static CallBackFunction ToolbarScenBuildRoad(int index)
 {
-	_last_built_roadtype = (RoadType)index;
+	_last_built_roadtype = static_cast<RoadType>(index);
 	ShowBuildRoadScenToolbar(_last_built_roadtype);
 	return CBF_NONE;
 }
@@ -1295,7 +1295,7 @@ static CallBackFunction ToolbarScenBuildTramClick(Window *w)
  */
 static CallBackFunction ToolbarScenBuildTram(int index)
 {
-	_last_built_tramtype = (RoadType)index;
+	_last_built_tramtype = static_cast<RoadType>(index);
 	ShowBuildRoadScenToolbar(_last_built_tramtype);
 	return CBF_NONE;
 }
@@ -1448,7 +1448,7 @@ public:
 
 		/* Now assign the widgets to their rightful place */
 		uint position = 0; // Place to put next child relative to origin of the container.
-		uint spacer_space = std::max(0, (int)given_width - (int)(button_count * this->smallest_x)); // Remaining spacing for 'spacer' widgets
+		uint spacer_space = std::max(0, static_cast<int>(given_width) - static_cast<int>(button_count * this->smallest_x)); // Remaining spacing for 'spacer' widgets
 		uint button_space = given_width - spacer_space; // Remaining spacing for the buttons
 		uint spacer_i = 0;
 		uint button_i = 0;

@@ -197,7 +197,7 @@ void Town::InitializeLayout(TownLayout layout)
 /* static */ Town *Town::GetRandom()
 {
 	if (Town::GetNumItems() == 0) return nullptr;
-	int num = RandomRange((uint16_t)Town::GetNumItems());
+	int num = RandomRange(static_cast<uint16_t>(Town::GetNumItems()));
 	size_t index = std::numeric_limits<size_t>::max();
 
 	while (num >= 0) {
@@ -258,7 +258,7 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
  */
 static inline DiagDirection RandomDiagDir()
 {
-	return (DiagDirection)(RandomRange(DIAGDIR_END));
+	return static_cast<DiagDirection>(RandomRange(DIAGDIR_END));
 }
 
 /**
@@ -917,7 +917,7 @@ static bool GrowTown(Town *t);
 static void TownTickHandler(Town *t)
 {
 	if (HasBit(t->flags, TOWN_IS_GROWING)) {
-		int i = (int)t->grow_counter - 1;
+		int i = static_cast<int>(t->grow_counter) - 1;
 		if (i < 0) {
 			if (GrowTown(t)) {
 				i = t->growth_rate;
@@ -1325,7 +1325,7 @@ static bool RedundantBridgeExistsNearby(TileIndex tile, void *user_data)
 	if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return false;
 
 	/* If the bridge is facing the same direction as the proposed bridge, we've found a redundant bridge. */
-	return (GetTileSlope(tile) & InclinedSlope(ReverseDiagDir(*(DiagDirection *)user_data)));
+	return (GetTileSlope(tile) & InclinedSlope(ReverseDiagDir(*static_cast<DiagDirection *>(user_data))));
 }
 
 /**
@@ -1886,7 +1886,7 @@ static RoadBits GenRandomRoadBits()
 	uint a = GB(r, 0, 2);
 	uint b = GB(r, 8, 2);
 	if (a == b) b ^= 2;
-	return (RoadBits)((ROAD_NW << a) + (ROAD_NW << b));
+	return static_cast<RoadBits>((ROAD_NW << a) + (ROAD_NW << b));
 }
 
 /**
@@ -2078,7 +2078,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 
 	t->larger_town = city;
 
-	int x = (int)size * 16 + 3;
+	int x = static_cast<int>(size) * 16 + 3;
 	if (size == TSZ_RANDOM) x = (Random() & 0xF) + 8;
 	/* Don't create huge cities when founding town in-game */
 	if (city && (!manual || _game_mode == GM_EDITOR)) x *= _settings_game.economy.initial_city_size;
@@ -2307,7 +2307,7 @@ struct SpotData {
  */
 static bool FindFurthestFromWater(TileIndex tile, void *user_data)
 {
-	SpotData *sp = (SpotData*)user_data;
+	SpotData *sp = static_cast<SpotData*>(user_data);
 	uint dist = GetClosestWaterDistance(tile, true);
 
 	if (IsTileType(tile, MP_CLEAR) &&
@@ -2421,7 +2421,7 @@ bool GenerateTowns(TownLayout layout)
 {
 	uint current_number = 0;
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
-	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : Map::ScaleBySize(_num_initial_towns[difficulty] + (Random() & 7));
+	uint total = (difficulty == CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : Map::ScaleBySize(_num_initial_towns[difficulty] + (Random() & 7));
 	total = std::min<uint>(TownPool::MAX_SIZE, total);
 	uint32_t townnameparts;
 	TownNames town_names;
@@ -3446,7 +3446,7 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 {
 	static const int STATUE_NUMBER_INNER_TILES = 25; // Number of tiles int the center of the city, where we try to protect houses.
 
-	StatueBuildSearchData *statue_data = (StatueBuildSearchData *)user_data;
+	StatueBuildSearchData *statue_data = static_cast<StatueBuildSearchData *>(user_data);
 	statue_data->tile_count++;
 
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
@@ -3729,7 +3729,7 @@ static void UpdateTownRating(Town *t)
 	/* Increase company ratings if they're low */
 	for (const Company *c : Company::Iterate()) {
 		if (t->ratings[c->index] < RATING_GROWTH_MAXIMUM) {
-			t->ratings[c->index] = std::min((int)RATING_GROWTH_MAXIMUM, t->ratings[c->index] + RATING_GROWTH_UP_STEP);
+			t->ratings[c->index] = std::min(RATING_GROWTH_MAXIMUM, t->ratings[c->index] + RATING_GROWTH_UP_STEP);
 		}
 	}
 
@@ -3769,7 +3769,7 @@ static void UpdateTownGrowCounter(Town *t, uint16_t prev_growth_rate)
 		t->grow_counter = std::min<uint16_t>(t->growth_rate, t->grow_counter);
 		return;
 	}
-	t->grow_counter = RoundDivSU((uint32_t)t->grow_counter * (t->growth_rate + 1), prev_growth_rate + 1);
+	t->grow_counter = RoundDivSU(static_cast<uint32_t>(t->grow_counter) * (t->growth_rate + 1), prev_growth_rate + 1);
 }
 
 /**

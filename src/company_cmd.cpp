@@ -67,10 +67,10 @@ Company::Company(StringID name_1, bool is_ai)
 {
 	this->name_1 = name_1;
 	this->is_ai = is_ai;
-	this->terraform_limit    = (uint32_t)_settings_game.construction.terraform_frame_burst << 16;
-	this->clear_limit        = (uint32_t)_settings_game.construction.clear_frame_burst << 16;
-	this->tree_limit         = (uint32_t)_settings_game.construction.tree_frame_burst << 16;
-	this->build_object_limit = (uint32_t)_settings_game.construction.build_object_frame_burst << 16;
+	this->terraform_limit    = static_cast<uint32_t>(_settings_game.construction.terraform_frame_burst) << 16;
+	this->clear_limit        = static_cast<uint32_t>(_settings_game.construction.clear_frame_burst) << 16;
+	this->tree_limit         = static_cast<uint32_t>(_settings_game.construction.tree_frame_burst) << 16;
+	this->build_object_limit = static_cast<uint32_t>(_settings_game.construction.build_object_frame_burst) << 16;
 
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, CompanyID::Invalid());
 }
@@ -89,8 +89,8 @@ Company::~Company()
  */
 void Company::PostDestructor(size_t index)
 {
-	InvalidateWindowData(WC_GRAPH_LEGEND, 0, (int)index);
-	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, (int)index);
+	InvalidateWindowData(WC_GRAPH_LEGEND, 0, static_cast<int>(index));
+	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, static_cast<int>(index));
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 	InvalidateWindowData(WC_LINKGRAPH_LEGEND, 0);
 	/* If the currently shown error message has this company in it, then close it. */
@@ -147,8 +147,8 @@ void SetLocalCompany(CompanyID new_company)
  */
 TextColour GetDrawStringCompanyColour(CompanyID company)
 {
-	if (!Company::IsValidID(company)) return (TextColour)GetColourGradient(COLOUR_WHITE, SHADE_NORMAL) | TC_IS_PALETTE_COLOUR;
-	return (TextColour)GetColourGradient(_company_colours[company], SHADE_NORMAL) | TC_IS_PALETTE_COLOUR;
+	if (!Company::IsValidID(company)) return static_cast<TextColour>(GetColourGradient(COLOUR_WHITE, SHADE_NORMAL)) | TC_IS_PALETTE_COLOUR;
+	return static_cast<TextColour>(GetColourGradient(_company_colours[company], SHADE_NORMAL)) | TC_IS_PALETTE_COLOUR;
 }
 
 /**
@@ -172,7 +172,7 @@ static bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 {
 	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_GEN_ETHN, GE_WM)) return false;
 
-	GenderEthnicity ge   = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
+	GenderEthnicity ge   = static_cast<GenderEthnicity>(GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM));
 	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
 	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
 	bool has_glasses     = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
@@ -605,7 +605,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 	if (_company_manager_face != 0 && !is_ai && !_networking) {
 		c->face = _company_manager_face;
 	} else {
-		RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false, _random);
+		RandomCompanyManagerFaceBits(c->face, static_cast<GenderEthnicity>(Random()), false, _random);
 	}
 
 	SetDefaultCompanySettings(c->index);
@@ -840,7 +840,7 @@ void CompanyAdminUpdate(const Company *company)
  */
 void CompanyAdminRemove(CompanyID company_id, CompanyRemoveReason reason)
 {
-	if (_network_server) NetworkAdminCompanyRemove(company_id, (AdminCompanyRemoveReason)reason);
+	if (_network_server) NetworkAdminCompanyRemove(company_id, static_cast<AdminCompanyRemoveReason>(reason));
 }
 
 /**
@@ -949,7 +949,7 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 			delete c;
 			AI::BroadcastNewEvent(new ScriptEventCompanyBankrupt(c_index));
 			Game::NewEvent(new ScriptEventCompanyBankrupt(c_index));
-			CompanyAdminRemove(c_index, (CompanyRemoveReason)reason);
+			CompanyAdminRemove(c_index, reason);
 
 			if (StoryPage::GetNumItems() == 0 || Goal::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 			InvalidateWindowData(WC_CLIENT_LIST, 0);

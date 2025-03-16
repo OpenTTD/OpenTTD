@@ -183,7 +183,7 @@ void Packet::Send_string(const std::string_view data)
 void Packet::Send_buffer(const std::vector<uint8_t> &data)
 {
 	assert(this->CanWriteToPacket(sizeof(uint16_t) + data.size()));
-	this->Send_uint16((uint16_t)data.size());
+	this->Send_uint16(static_cast<uint16_t>(data.size()));
 	this->buffer.insert(this->buffer.end(), data.begin(), data.end());
 }
 
@@ -335,8 +335,8 @@ uint16_t Packet::Recv_uint16()
 
 	if (!this->CanReadFromPacket(sizeof(n), true)) return 0;
 
-	n  = (uint16_t)this->buffer[this->pos++];
-	n += (uint16_t)this->buffer[this->pos++] << 8;
+	n  = static_cast<uint16_t>(this->buffer[this->pos++]);
+	n += static_cast<uint16_t>(this->buffer[this->pos++]) << 8;
 	return n;
 }
 
@@ -350,10 +350,10 @@ uint32_t Packet::Recv_uint32()
 
 	if (!this->CanReadFromPacket(sizeof(n), true)) return 0;
 
-	n  = (uint32_t)this->buffer[this->pos++];
-	n += (uint32_t)this->buffer[this->pos++] << 8;
-	n += (uint32_t)this->buffer[this->pos++] << 16;
-	n += (uint32_t)this->buffer[this->pos++] << 24;
+	n  = static_cast<uint32_t>(this->buffer[this->pos++]);
+	n += static_cast<uint32_t>(this->buffer[this->pos++]) << 8;
+	n += static_cast<uint32_t>(this->buffer[this->pos++]) << 16;
+	n += static_cast<uint32_t>(this->buffer[this->pos++]) << 24;
 	return n;
 }
 
@@ -367,14 +367,14 @@ uint64_t Packet::Recv_uint64()
 
 	if (!this->CanReadFromPacket(sizeof(n), true)) return 0;
 
-	n  = (uint64_t)this->buffer[this->pos++];
-	n += (uint64_t)this->buffer[this->pos++] << 8;
-	n += (uint64_t)this->buffer[this->pos++] << 16;
-	n += (uint64_t)this->buffer[this->pos++] << 24;
-	n += (uint64_t)this->buffer[this->pos++] << 32;
-	n += (uint64_t)this->buffer[this->pos++] << 40;
-	n += (uint64_t)this->buffer[this->pos++] << 48;
-	n += (uint64_t)this->buffer[this->pos++] << 56;
+	n  = static_cast<uint64_t>(this->buffer[this->pos++]);
+	n += static_cast<uint64_t>(this->buffer[this->pos++]) << 8;
+	n += static_cast<uint64_t>(this->buffer[this->pos++]) << 16;
+	n += static_cast<uint64_t>(this->buffer[this->pos++]) << 24;
+	n += static_cast<uint64_t>(this->buffer[this->pos++]) << 32;
+	n += static_cast<uint64_t>(this->buffer[this->pos++]) << 40;
+	n += static_cast<uint64_t>(this->buffer[this->pos++]) << 48;
+	n += static_cast<uint64_t>(this->buffer[this->pos++]) << 56;
 	return n;
 }
 

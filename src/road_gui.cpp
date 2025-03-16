@@ -201,7 +201,7 @@ void CcRoadStop(Commands, const CommandCost &result, TileIndex tile, uint8_t wid
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
 	bool connect_to_road = true;
-	if ((uint)spec_class < RoadStopClass::GetClassCount() && spec_index < RoadStopClass::Get(spec_class)->GetSpecCount()) {
+	if (static_cast<uint>(spec_class) < RoadStopClass::GetClassCount() && spec_index < RoadStopClass::Get(spec_class)->GetSpecCount()) {
 		const RoadStopSpec *roadstopspec = RoadStopClass::Get(spec_class)->GetSpec(spec_index);
 		if (roadstopspec != nullptr && roadstopspec->flags.Test(RoadStopSpecFlag::NoAutoRoadConnection)) connect_to_road = false;
 	}
@@ -592,7 +592,7 @@ struct BuildRoadToolbarWindow : Window {
 
 			default: NOT_REACHED();
 		}
-		this->UpdateOptionWidgetStatus((RoadToolbarWidgets)widget);
+		this->UpdateOptionWidgetStatus(static_cast<RoadToolbarWidgets>(widget));
 		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
 	}
 
@@ -1123,7 +1123,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (ir.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (ir.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
-			DrawRoadDepotSprite(x, y, (DiagDirection)(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
+			DrawRoadDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BROD_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
 		}
 	}
 
@@ -1135,7 +1135,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 			case WID_BROD_DEPOT_SW:
 			case WID_BROD_DEPOT_SE:
 				this->RaiseWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
-				_road_depot_orientation = (DiagDirection)(widget - WID_BROD_DEPOT_NE);
+				_road_depot_orientation = static_cast<DiagDirection>(widget - WID_BROD_DEPOT_NE);
 				this->LowerWidget(WID_BROD_DEPOT_NE + _road_depot_orientation);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
@@ -1254,7 +1254,7 @@ public:
 		} else {
 			DiagDirection orientation = _roadstop_gui.orientation;
 			if (orientation < DIAGDIR_END && spec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) orientation = DIAGDIR_END;
-			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, (uint8_t)orientation);
+			DrawRoadStopTile(x, y, _cur_roadtype, spec, roadstoptype == RoadStopType::Bus ? StationType::Bus : StationType::Truck, static_cast<uint8_t>(orientation));
 		}
 	}
 
@@ -1467,7 +1467,7 @@ public:
 					if (spec != nullptr && spec->flags.Test(RoadStopSpecFlag::DriveThroughOnly)) return;
 				}
 				this->RaiseWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
-				_roadstop_gui.orientation = (DiagDirection)(widget - WID_BROS_STATION_NE);
+				_roadstop_gui.orientation = static_cast<DiagDirection>(widget - WID_BROS_STATION_NE);
 				this->LowerWidget(WID_BROS_STATION_NE + _roadstop_gui.orientation);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();

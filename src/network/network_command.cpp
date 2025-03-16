@@ -139,8 +139,8 @@ constexpr UnpackNetworkCommandProc MakeUnpackNetworkCommandCallback() noexcept
 	using Tcallback = std::tuple_element_t<Tcb, decltype(_callback_tuple)>;
 	if constexpr (std::is_same_v<Tcallback, CommandCallback * const> || // Callback type is CommandCallback.
 			std::is_same_v<Tcallback, CommandCallbackData * const> || // Callback type is CommandCallbackData.
-			std::is_same_v<typename CommandTraits<Tcmd>::CbArgs, typename CallbackArgsHelper<Tcallback>::Args> || // Callback proc takes all command return values and parameters.
-			(!std::is_void_v<typename CommandTraits<Tcmd>::RetTypes> && std::is_same_v<typename CallbackArgsHelper<typename CommandTraits<Tcmd>::RetCallbackProc const>::Args, typename CallbackArgsHelper<Tcallback>::Args>)) { // Callback return is more than CommandCost and the proc takes all return values.
+			std::is_same_v<typename CommandTraits<static_cast<>(Tcmd)>::CbArgs, typename CallbackArgsHelper<Tcallback>::Args> || // Callback proc takes all command return values and parameters.
+			(!std::is_void_v<typename CommandTraits<static_cast<>(Tcmd)>::RetTypes> && std::is_same_v<typename CallbackArgsHelper<typename CommandTraits<static_cast<>(Tcmd)>::RetCallbackProc const>::Args, typename CallbackArgsHelper<Tcallback>::Args>)) { // Callback return is more than CommandCost and the proc takes all return values.
 		return &UnpackNetworkCommand<Tcmd, Tcb>;
 	} else {
 		return nullptr;
@@ -362,7 +362,7 @@ void NetworkDistributeCommands()
  */
 const char *NetworkGameSocketHandler::ReceiveCommand(Packet &p, CommandPacket &cp)
 {
-	cp.company = (CompanyID)p.Recv_uint8();
+	cp.company = CompanyID(p.Recv_uint8());
 	cp.cmd     = static_cast<Commands>(p.Recv_uint16());
 	if (!IsValidCommand(cp.cmd))               return "invalid command";
 	if (GetCommandFlags(cp.cmd).Test(CommandFlag::Offline)) return "single-player only command";
@@ -393,7 +393,7 @@ void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket &cp)
 		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp.cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
-	p.Send_uint8 ((uint8_t)callback);
+	p.Send_uint8 (static_cast<uint8_t>(callback));
 }
 
 /** Helper to process a single ClientID argument. */
@@ -462,7 +462,7 @@ template <Commands Tcmd>
 CommandDataBuffer SanitizeCmdStrings(const CommandDataBuffer &data)
 {
 	auto args = EndianBufferReader::ToValue<typename CommandTraits<Tcmd>::Args>(data);
-	SanitizeStringsHelper(CommandTraits<Tcmd>::flags, args, std::make_index_sequence<std::tuple_size_v<typename CommandTraits<Tcmd>::Args>>{});
+	SanitizeStringsHelper(CommandTraits<Tcmd>::flags, args, std::make_index_sequence<std::tuple_size_v<typename CommandTraits<static_cast<>(Tcmd)>::Args>>{});
 	return EndianBufferWriter<CommandDataBuffer>::FromValue(args);
 }
 

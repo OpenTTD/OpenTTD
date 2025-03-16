@@ -670,7 +670,7 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 		speed_limit = v->vcache.cached_max_speed;
 	}
 
-	v->subspeed = (t = v->subspeed) + (uint8_t)spd;
+	v->subspeed = (t = v->subspeed) + static_cast<uint8_t>(spd);
 
 	/* Aircraft's current speed is used twice so that very fast planes are
 	 * forced to slow down rapidly in the short distance needed. The magic
@@ -697,7 +697,7 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	spd = v->GetOldAdvanceSpeed(spd);
 
 	spd += v->progress;
-	v->progress = (uint8_t)spd;
+	v->progress = static_cast<uint8_t>(spd);
 	return spd >> 8;
 }
 

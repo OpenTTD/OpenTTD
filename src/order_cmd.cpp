@@ -1347,7 +1347,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 	if (flags.Test(DoCommandFlag::Execute)) {
 		switch (mof) {
 			case MOF_NON_STOP:
-				order->SetNonStopType((OrderNonStopFlags)data);
+				order->SetNonStopType(static_cast<OrderNonStopFlags>(data));
 				if (data & ONSF_NO_STOP_AT_DESTINATION_STATION) {
 					order->SetRefit(CARGO_NO_REFIT);
 					order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
@@ -1356,44 +1356,44 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 				break;
 
 			case MOF_STOP_LOCATION:
-				order->SetStopLocation((OrderStopLocation)data);
+				order->SetStopLocation(static_cast<OrderStopLocation>(data));
 				break;
 
 			case MOF_UNLOAD:
-				order->SetUnloadType((OrderUnloadFlags)data);
+				order->SetUnloadType(static_cast<OrderUnloadFlags>(data));
 				break;
 
 			case MOF_LOAD:
-				order->SetLoadType((OrderLoadFlags)data);
+				order->SetLoadType(static_cast<OrderLoadFlags>(data));
 				if (data & OLFB_NO_LOAD) order->SetRefit(CARGO_NO_REFIT);
 				break;
 
 			case MOF_DEPOT_ACTION: {
 				switch (data) {
 					case DA_ALWAYS_GO:
-						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_UNBUNCH));
+						order->SetDepotOrderType(static_cast<OrderDepotTypeFlags>(order->GetDepotOrderType() & ~ODTFB_SERVICE));
+						order->SetDepotActionType((order->GetDepotActionType() & ~ODATFB_HALT));
+						order->SetDepotActionType((order->GetDepotActionType() & ~ODATFB_UNBUNCH));
 						break;
 
 					case DA_SERVICE:
-						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() | ODTFB_SERVICE));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_UNBUNCH));
+						order->SetDepotOrderType(static_cast<OrderDepotTypeFlags>(order->GetDepotOrderType() | ODTFB_SERVICE));
+						order->SetDepotActionType((order->GetDepotActionType() & ~ODATFB_HALT));
+						order->SetDepotActionType((order->GetDepotActionType() & ~ODATFB_UNBUNCH));
 						order->SetRefit(CARGO_NO_REFIT);
 						break;
 
 					case DA_STOP:
-						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() | ODATFB_HALT));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_UNBUNCH));
+						order->SetDepotOrderType(static_cast<OrderDepotTypeFlags>(order->GetDepotOrderType() & ~ODTFB_SERVICE));
+						order->SetDepotActionType((order->GetDepotActionType() | ODATFB_HALT));
+						order->SetDepotActionType((order->GetDepotActionType() & ~ODATFB_UNBUNCH));
 						order->SetRefit(CARGO_NO_REFIT);
 						break;
 
 					case DA_UNBUNCH:
-						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
-						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() | ODATFB_UNBUNCH));
+						order->SetDepotOrderType(static_cast<OrderDepotTypeFlags>(order->GetDepotOrderType() & ~ODTFB_SERVICE));
+						order->SetDepotActionType((order->GetDepotActionType() & ~ODATFB_HALT));
+						order->SetDepotActionType((order->GetDepotActionType() | ODATFB_UNBUNCH));
 						break;
 
 					default:
@@ -1403,7 +1403,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			}
 
 			case MOF_COND_VARIABLE: {
-				order->SetConditionVariable((OrderConditionVariable)data);
+				order->SetConditionVariable(static_cast<OrderConditionVariable>(data));
 
 				OrderConditionComparator occ = order->GetConditionComparator();
 				switch (order->GetConditionVariable()) {
@@ -1430,7 +1430,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			}
 
 			case MOF_COND_COMPARATOR:
-				order->SetConditionComparator((OrderConditionComparator)data);
+				order->SetConditionComparator(static_cast<OrderConditionComparator>(data));
 				break;
 
 			case MOF_COND_VALUE:
@@ -1675,8 +1675,8 @@ CommandCost CmdOrderRefit(DoCommandFlags flags, VehicleID veh, VehicleOrderID or
 
 		/* Make the depot order an 'always go' order. */
 		if (cargo != CARGO_NO_REFIT && order->IsType(OT_GOTO_DEPOT)) {
-			order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
-			order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
+			order->SetDepotOrderType(static_cast<OrderDepotTypeFlags>(order->GetDepotOrderType() & ~ODTFB_SERVICE));
+			order->SetDepotActionType((order->GetDepotActionType() & ~ODATFB_HALT));
 		}
 
 		for (Vehicle *u = v->FirstShared(); u != nullptr; u = u->NextShared()) {
@@ -1974,7 +1974,7 @@ VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
 		default: NOT_REACHED();
 	}
 
-	return skip_order ? order->GetConditionSkipToOrder() : (VehicleOrderID)INVALID_VEH_ORDER_ID;
+	return skip_order ? order->GetConditionSkipToOrder() : INVALID_VEH_ORDER_ID;
 }
 
 /**

@@ -72,9 +72,9 @@ static int32_t ClickMoneyCheat(int32_t, int32_t change_direction)
  */
 static int32_t ClickChangeCompanyCheat(int32_t new_value, int32_t change_direction)
 {
-	while ((uint)new_value < Company::GetPoolSize()) {
-		if (Company::IsValidID((CompanyID)new_value)) {
-			SetLocalCompany((CompanyID)new_value);
+	while (static_cast<uint>(new_value) < Company::GetPoolSize()) {
+		if (Company::IsValidID(CompanyID(new_value))) {
+			SetLocalCompany(CompanyID(new_value));
 			return _local_company.base();
 		}
 		new_value += change_direction;
@@ -150,7 +150,7 @@ static int32_t ClickChangeMaxHlCheat(int32_t new_value, int32_t)
 	/* Check if at least one mountain on the map is higher than the new value.
 	 * If yes, disallow the change. */
 	for (const auto t : Map::Iterate()) {
-		if ((int32_t)TileHeight(t) > new_value) {
+		if (static_cast<int32_t>(TileHeight(t)) > new_value) {
 			ShowErrorMessage(GetEncodedString(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN), {}, WL_ERROR);
 			/* Return old, unchanged value */
 			return _settings_game.construction.map_height_limit;
@@ -283,7 +283,7 @@ struct CheatWindow : Window {
 			std::string str;
 			switch (ce->type) {
 				case SLE_BOOL: {
-					bool on = (*(bool*)ce->variable);
+					bool on = (*static_cast<bool*>(ce->variable));
 
 					DrawBoolButton(button_left, y + button_y_offset, on, true);
 					str = GetString(ce->str, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);

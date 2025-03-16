@@ -664,7 +664,7 @@ private:
 		this->groups.clear();
 
 		if (this->livery_class >= LC_GROUP_RAIL) {
-			VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
+			VehicleType vtype = static_cast<VehicleType>(this->livery_class - LC_GROUP_RAIL);
 			BuildGuiGroupList(this->groups, false, owner, vtype);
 		}
 
@@ -681,7 +681,7 @@ private:
 				}
 			}
 		} else {
-			this->rows = (uint)this->groups.size();
+			this->rows = static_cast<uint>(this->groups.size());
 		}
 
 		this->vscroll->SetCount(this->rows);
@@ -759,7 +759,7 @@ public:
 			case WID_SCL_MATRIX: {
 				/* 11 items in the default rail class */
 				this->square = GetSpriteSize(SPR_SQUARE);
-				this->line_height = std::max(this->square.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				this->line_height = std::max(this->square.height, static_cast<uint>(GetCharacterHeight(FS_NORMAL))) + padding.height;
 
 				size.height = 5 * this->line_height;
 				resize.width = 1;
@@ -906,7 +906,7 @@ public:
 
 			if (this->vscroll->GetCount() == 0) {
 				const StringID empty_labels[] = { STR_LIVERY_TRAIN_GROUP_EMPTY, STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY, STR_LIVERY_SHIP_GROUP_EMPTY, STR_LIVERY_AIRCRAFT_GROUP_EMPTY };
-				VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
+				VehicleType vtype = static_cast<VehicleType>(this->livery_class - LC_GROUP_RAIL);
 				DrawString(ir.left, ir.right, y + text_offs, empty_labels[vtype], TC_BLACK);
 			}
 		}
@@ -926,7 +926,7 @@ public:
 			case WID_SCL_GROUPS_SHIP:
 			case WID_SCL_GROUPS_AIRCRAFT:
 				this->RaiseWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
-				this->livery_class = (LiveryClass)(widget - WID_SCL_CLASS_GENERAL);
+				this->livery_class = static_cast<LiveryClass>(widget - WID_SCL_CLASS_GENERAL);
 				this->LowerWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 
 				/* Select the first item in the list */
@@ -965,7 +965,7 @@ public:
 					uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, widget);
 					if (row >= this->rows) return;
 
-					LiveryScheme j = (LiveryScheme)row;
+					LiveryScheme j = static_cast<LiveryScheme>(row);
 
 					for (LiveryScheme scheme = LS_BEGIN; scheme <= j && scheme < LS_END; scheme++) {
 						if (_livery_class[scheme] != this->livery_class || !HasBit(_loaded_newgrf_features.used_liveries, scheme)) j++;
@@ -1120,7 +1120,7 @@ void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
  */
 void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &r)
 {
-	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
+	GenderEthnicity ge = static_cast<GenderEthnicity>(GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM));
 
 	/* Determine offset from centre of drawing rect. */
 	Dimension d = GetSpriteSize(SPR_GRADIENT);
@@ -1352,7 +1352,7 @@ class SelectCompanyManagerFaceWindow : public Window
 
 	void UpdateData()
 	{
-		this->ge = (GenderEthnicity)GB(this->face, _cmf_info[CMFV_GEN_ETHN].offset, _cmf_info[CMFV_GEN_ETHN].length); // get the gender and ethnicity
+		this->ge = static_cast<GenderEthnicity>(GB(this->face, _cmf_info[CMFV_GEN_ETHN].offset, _cmf_info[CMFV_GEN_ETHN].length)); // get the gender and ethnicity
 		this->is_female = HasBit(this->ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
 		this->is_moust_male = !is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE, this->ge) != 0; // is a male face with moustache
 
@@ -2222,7 +2222,7 @@ struct CompanyWindow : Window
 			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_HOSTILE_TAKEOVER)->SetDisplayedPlane((local || _local_company == COMPANY_SPECTATOR || !c->is_ai || _networking) ? SZSP_NONE : 0);
 
 			/* Multiplayer buttons. */
-			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking || !NetworkCanJoinCompany(c->index) || _local_company == c->index) ? (int)SZSP_NONE : 0);
+			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking || !NetworkCanJoinCompany(c->index) || _local_company == c->index) ? static_cast<int>(SZSP_NONE) : 0);
 
 			this->SetWidgetDisabledState(WID_C_COMPANY_JOIN, c->is_ai);
 

@@ -126,6 +126,6 @@ ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::Ve
 
 	ScriptList::FillList<Vehicle>(this,
 		[owner](const Vehicle *v) { return v->owner == owner && v->IsPrimaryVehicle(); },
-		[vehicle_type](const Vehicle *v) { return v->type == (::VehicleType)vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT; }
+		[vehicle_type](const Vehicle *v) { return v->type == static_cast<::VehicleType>(vehicle_type) && v->group_id == ScriptGroup::GROUP_DEFAULT; }
 	);
 }

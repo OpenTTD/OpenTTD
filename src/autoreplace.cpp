@@ -26,7 +26,7 @@ INSTANTIATE_POOL_METHODS(EngineRenew)
  */
 static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 {
-	EngineRenew *er = (EngineRenew *)erl;
+	EngineRenew *er = static_cast<EngineRenew *>(erl);
 
 	while (er != nullptr) {
 		if (er->from == engine && GroupIsInGroup(group, er->group_id)) return er;
@@ -42,7 +42,7 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, G
  */
 void RemoveAllEngineReplacement(EngineRenewList *erl)
 {
-	EngineRenew *er = (EngineRenew *)(*erl);
+	EngineRenew *er = static_cast<EngineRenew *>(*erl);
 	EngineRenew *next;
 
 	while (er != nullptr) {
@@ -126,7 +126,7 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
  */
 CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlags flags)
 {
-	EngineRenew *er = (EngineRenew *)(*erl);
+	EngineRenew *er = static_cast<EngineRenew *>(*erl);
 	EngineRenew *prev = nullptr;
 
 	while (er != nullptr) {
@@ -134,7 +134,7 @@ CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, Group
 			if (flags.Test(DoCommandFlag::Execute)) {
 				if (prev == nullptr) { // First element
 					/* The second becomes the new first element */
-					*erl = (EngineRenewList)er->next;
+					*erl = static_cast<EngineRenewList>(er->next);
 				} else {
 					/* Cut this element out */
 					prev->next = er->next;

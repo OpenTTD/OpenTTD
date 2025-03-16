@@ -102,14 +102,14 @@
 {
 	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
 
-	return ::IsSteepSlope((::Slope)slope);
+	return ::IsSteepSlope(static_cast<::Slope>(slope));
 }
 
 /* static */ bool ScriptTile::IsHalftileSlope(Slope slope)
 {
 	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
 
-	return ::IsHalftileSlope((::Slope)slope);
+	return ::IsHalftileSlope(static_cast<::Slope>(slope));
 }
 
 /* static */ bool ScriptTile::HasTreeOnTile(TileIndex tile)
@@ -171,14 +171,14 @@
 {
 	if (!::IsValidTile(tile)) return SLOPE_INVALID;
 
-	return (Slope)::GetTileSlope(tile);
+	return static_cast<Slope>(::GetTileSlope(tile));
 }
 
 /* static */ ScriptTile::Slope ScriptTile::GetComplementSlope(Slope slope)
 {
 	if ((slope & ~SLOPE_ELEVATED) != 0) return SLOPE_INVALID;
 
-	return (Slope)::ComplementSlope((::Slope)slope);
+	return static_cast<Slope>(::ComplementSlope(static_cast<::Slope>(slope)));
 }
 
 /* static */ SQInteger ScriptTile::GetMinHeight(TileIndex tile)
@@ -197,10 +197,10 @@
 
 /* static */ SQInteger ScriptTile::GetCornerHeight(TileIndex tile, Corner corner)
 {
-	if (!::IsValidTile(tile) || !::IsValidCorner((::Corner)corner)) return -1;
+	if (!::IsValidTile(tile) || !::IsValidCorner(static_cast<::Corner>(corner))) return -1;
 
 	auto [slope, z] = ::GetTileSlopeZ(tile);
-	return (z + ::GetSlopeZInCorner(slope, (::Corner)corner));
+	return (z + ::GetSlopeZInCorner(slope, static_cast<::Corner>(corner)));
 }
 
 /* static */ ScriptCompany::CompanyID ScriptTile::GetOwner(TileIndex tile)
@@ -217,10 +217,10 @@
 	if (!::IsValidTile(tile)) return false;
 
 	if (transport_type == TRANSPORT_ROAD) {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE ||
-				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 1)) != TRACKDIR_BIT_NONE;
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, static_cast<::TransportType>(transport_type), 0)) != TRACKDIR_BIT_NONE ||
+				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, static_cast<::TransportType>(transport_type), 1)) != TRACKDIR_BIT_NONE;
 	} else {
-		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE;
+		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, static_cast<::TransportType>(transport_type), 0)) != TRACKDIR_BIT_NONE;
 	}
 }
 
@@ -228,7 +228,7 @@
 {
 	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0 || !ScriptCargo::IsValidCargo(cargo_type)) return -1;
 
-	CargoArray acceptance = ::GetAcceptanceAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
+	CargoArray acceptance = ::GetAcceptanceAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : static_cast<int>(CA_UNMODIFIED));
 	return acceptance[cargo_type];
 }
 
@@ -236,7 +236,7 @@
 {
 	if (!::IsValidTile(tile) || width <= 0 || height <= 0 || radius < 0 || !ScriptCargo::IsValidCargo(cargo_type)) return -1;
 
-	CargoArray produced = ::GetProductionAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : (int)CA_UNMODIFIED);
+	CargoArray produced = ::GetProductionAroundTiles(tile, width, height, _settings_game.station.modified_catchment ? radius : static_cast<int>(CA_UNMODIFIED));
 	return produced[cargo_type];
 }
 
@@ -255,7 +255,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, tile < ScriptMap::GetMapSize());
 
-	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, (::Slope)slope, true);
+	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, static_cast<::Slope>(slope), true);
 }
 
 /* static */ bool ScriptTile::LowerTile(TileIndex tile, Slope slope)
@@ -263,7 +263,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, tile < ScriptMap::GetMapSize());
 
-	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, (::Slope)slope, false);
+	return ScriptObject::Command<CMD_TERRAFORM_LAND>::Do(tile, static_cast<::Slope>(slope), false);
 }
 
 /* static */ bool ScriptTile::LevelTiles(TileIndex start_tile, TileIndex end_tile)

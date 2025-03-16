@@ -22,7 +22,7 @@
 
 /* static */ ScriptDate::Date ScriptDate::GetCurrentDate()
 {
-	return (ScriptDate::Date)TimerGameEconomy::date.base();
+	return static_cast<ScriptDate::Date>(TimerGameEconomy::date.base());
 }
 
 /* static */ SQInteger ScriptDate::GetYear(ScriptDate::Date date)

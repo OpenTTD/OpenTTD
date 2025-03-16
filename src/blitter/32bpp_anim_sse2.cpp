@@ -31,7 +31,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 	assert(this->palette.first_dirty == PALETTE_ANIM_START || this->palette.first_dirty == 0);
 
 	const uint16_t *anim = this->anim_buf;
-	Colour *dst = (Colour *)_screen.dst_ptr;
+	Colour *dst = static_cast<Colour *>(_screen.dst_ptr);
 
 	bool screen_dirty = false;
 
@@ -47,7 +47,7 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 		const uint16_t *next_anim_ln = anim + anim_pitch;
 		int x = width;
 		while (x > 0) {
-			__m128i data = _mm_load_si128((const __m128i *) anim);
+			__m128i data = _mm_load_si128(reinterpret_cast<const __m128i *>(anim));
 
 			/* low bytes only, shifted into high positions */
 			__m128i colour_data = _mm_and_si128(data, colour_mask);

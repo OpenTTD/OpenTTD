@@ -532,11 +532,11 @@ std::span<const int> UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCha
 
 		char32_t c = Utf8Consume(&s);
 		if (c < 0x10000) {
-			utf16_str.push_back((wchar_t)c);
+			utf16_str.push_back(static_cast<wchar_t>(c));
 		} else {
 			/* Make a surrogate pair. */
-			utf16_str.push_back((wchar_t)(0xD800 + ((c - 0x10000) >> 10)));
-			utf16_str.push_back((wchar_t)(0xDC00 + ((c - 0x10000) & 0x3FF)));
+			utf16_str.push_back(static_cast<wchar_t>(0xD800 + ((c - 0x10000) >> 10)));
+			utf16_str.push_back(static_cast<wchar_t>(0xDC00 + ((c - 0x10000) & 0x3FF)));
 			this->utf16_to_utf8.push_back(idx);
 		}
 		this->utf16_to_utf8.push_back(idx);

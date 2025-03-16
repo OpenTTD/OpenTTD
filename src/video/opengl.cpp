@@ -171,7 +171,7 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 	/* Starting with OpenGL 3.0 the preferred API to get the extensions
 	 * has changed. Try to load the required function once. */
 	if (!glGetStringi_loaded) {
-		if (IsOpenGLVersionAtLeast(3, 0)) glGetStringi = (PFNGLGETSTRINGIPROC)GetOGLProcAddress("glGetStringi");
+		if (IsOpenGLVersionAtLeast(3, 0)) glGetStringi = reinterpret_cast<PFNGLGETSTRINGIPROC>(GetOGLProcAddress("glGetStringi"));
 		glGetStringi_loaded = true;
 	}
 
@@ -181,12 +181,12 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 		_glGetIntegerv(GL_NUM_EXTENSIONS, &num_exts);
 
 		for (GLint i = 0; i < num_exts; i++) {
-			const char *entry = (const char *)glGetStringi(GL_EXTENSIONS, i);
+			const char *entry = reinterpret_cast<const char *>(glGetStringi(GL_EXTENSIONS, i));
 			if (strcmp(entry, extension) == 0) return true;
 		}
 	} else {
 		/* Old style: A single, space-delimited string for all extensions. */
-		return FindStringInExtensionList((const char *)_glGetString(GL_EXTENSIONS), extension) != nullptr;
+		return FindStringInExtensionList(reinterpret_cast<const char *>(_glGetString(GL_EXTENSIONS)), extension) != nullptr;
 	}
 
 	return false;
@@ -525,9 +525,9 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	if (!BindBasicInfoProcs()) return "OpenGL not supported";
 
 	/* Always query the supported OpenGL version as the current context might have changed. */
-	const char *ver = (const char *)_glGetString(GL_VERSION);
-	const char *vend = (const char *)_glGetString(GL_VENDOR);
-	const char *renderer = (const char *)_glGetString(GL_RENDERER);
+	const char *ver = reinterpret_cast<const char *>(_glGetString(GL_VERSION));
+	const char *vend = reinterpret_cast<const char *>(_glGetString(GL_VENDOR));
+	const char *renderer = reinterpret_cast<const char *>(_glGetString(GL_RENDERER));
 
 	if (ver == nullptr || vend == nullptr || renderer == nullptr) return "OpenGL not supported";
 
@@ -587,7 +587,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	/* Check maximum texture size against screen resolution. */
 	GLint max_tex_size = 0;
 	_glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_tex_size);
-	if (std::max(screen_res.width, screen_res.height) > (uint)max_tex_size) return "Max supported texture size is too small";
+	if (std::max(screen_res.width, screen_res.height) > static_cast<uint>(max_tex_size)) return "Max supported texture size is too small";
 
 	/* Check available texture units. */
 	GLint max_tex_units = 0;
@@ -801,7 +801,7 @@ static bool VerifyProgram(GLuint program)
  */
 bool OpenGLBackend::InitShaders()
 {
-	const char *ver = (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION);
+	const char *ver = reinterpret_cast<const char *>(_glGetString(GL_SHADING_LANGUAGE_VERSION));
 	if (ver == nullptr) return false;
 
 	int glsl_major  = ver[0] - '0';
@@ -1007,7 +1007,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 	/* Update screen size in remap shader program. */
 	_glUseProgram(this->remap_program);
-	_glUniform2f(this->remap_screen_loc, (float)_screen.width, (float)_screen.height);
+	_glUniform2f(this->remap_screen_loc, static_cast<float>(_screen.width), static_cast<float>(_screen.height));
 
 	_glClear(GL_COLOR_BUFFER_BIT);
 
@@ -1100,7 +1100,7 @@ void OpenGLBackend::PopulateCursorCache()
 	if (this->clear_cursor_cache) {
 		/* We have a pending cursor cache clear to do first. */
 		this->clear_cursor_cache = false;
-		this->last_sprite_pal = (PaletteID)-1;
+		this->last_sprite_pal = static_cast<PaletteID>(-1);
 
 		this->InternalClearCursorCache();
 	}
@@ -1181,7 +1181,7 @@ uint8_t *OpenGLBackend::GetAnimBuffer()
 		this->anim_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, static_cast<GLsizeiptr>(_screen.pitch) * _screen.height, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
 	}
 
-	return (uint8_t *)this->anim_buffer;
+	return static_cast<uint8_t *>(this->anim_buffer);
 }
 
 /**
@@ -1211,9 +1211,9 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 		_glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 		_glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
 		if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8) {
-			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid*)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid*)static_cast<size_t>(update_rect.top * _screen.pitch + update_rect.left));
 		} else {
-			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid*)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
+			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid*)static_cast<size_t>(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
 		}
 
 #ifndef NO_GL_BUFFER_SYNC
@@ -1248,7 +1248,7 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 		_glActiveTexture(GL_TEXTURE0);
 		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
 		_glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
-		_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+		_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)static_cast<size_t>(update_rect.top * _screen.pitch + update_rect.left));
 
 #ifndef NO_GL_BUFFER_SYNC
 		if (this->persistent_mapping_supported) this->sync_anim_mapping = _glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
@@ -1302,9 +1302,9 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 	/* Set up shader program. */
 	Dimension dim = gl_sprite->GetSize(zoom);
 	_glUseProgram(this->sprite_program);
-	_glUniform4f(this->sprite_sprite_loc, (float)x, (float)y, (float)dim.width, (float)dim.height);
-	_glUniform1f(this->sprite_zoom_loc, (float)zoom);
-	_glUniform2f(this->sprite_screen_loc, (float)_screen.width, (float)_screen.height);
+	_glUniform4f(this->sprite_sprite_loc, static_cast<float>(x), static_cast<float>(y), static_cast<float>(dim.width), static_cast<float>(dim.height));
+	_glUniform1f(this->sprite_zoom_loc, static_cast<float>(zoom));
+	_glUniform2f(this->sprite_screen_loc, static_cast<float>(_screen.width), static_cast<float>(_screen.height));
 	_glUniform1i(this->sprite_rgb_loc, rgb ? 1 : 0);
 	_glUniform1i(this->sprite_crash_loc, pal == PALETTE_CRASH ? 1 : 0);
 
@@ -1502,7 +1502,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
  */
 inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
 {
-	Dimension sd = { (uint)UnScaleByZoomLower(this->dim.width, level), (uint)UnScaleByZoomLower(this->dim.height, level) };
+	Dimension sd = { static_cast<uint>(UnScaleByZoomLower(this->dim.width, level)), static_cast<uint>(UnScaleByZoomLower(this->dim.height, level)) };
 	return sd;
 }
 

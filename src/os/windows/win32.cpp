@@ -73,7 +73,7 @@ void FiosGetDrives(FileList &file_list)
 		FiosItem *fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
-		fios->name += (char)(s[0] & 0xFF);
+		fios->name += static_cast<char>(s[0] & 0xFF);
 		fios->name += ':';
 		fios->title = fios->name;
 		while (*s++ != '\0') { /* Nothing */ }
@@ -336,7 +336,7 @@ std::optional<std::string> GetClipboardContents()
  */
 std::string FS2OTTD(const std::wstring &name)
 {
-	int name_len = (name.length() >= INT_MAX) ? INT_MAX : (int)name.length();
+	int name_len = (name.length() >= INT_MAX) ? INT_MAX : static_cast<int>(name.length());
 	int len = WideCharToMultiByte(CP_UTF8, 0, name.c_str(), name_len, nullptr, 0, nullptr, nullptr);
 	if (len <= 0) return std::string();
 	std::string utf8_buf(len, '\0'); // len includes terminating null
@@ -353,7 +353,7 @@ std::string FS2OTTD(const std::wstring &name)
  */
 std::wstring OTTD2FS(const std::string &name)
 {
-	int name_len = (name.length() >= INT_MAX) ? INT_MAX : (int)name.length();
+	int name_len = (name.length() >= INT_MAX) ? INT_MAX : static_cast<int>(name.length());
 	int len = MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name_len, nullptr, 0);
 	if (len <= 0) return std::wstring();
 	std::wstring system_buf(len, L'\0'); // len includes terminating null

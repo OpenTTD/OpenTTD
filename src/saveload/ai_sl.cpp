@@ -85,7 +85,7 @@ struct AIPLChunkHandler : ChunkHandler {
 		}
 
 		CompanyID index;
-		while ((index = (CompanyID)SlIterateArray()) != (CompanyID)-1) {
+		while ((index = CompanyID(SlIterateArray())) != CompanyID(-1)) {
 			if (index >= MAX_COMPANIES) SlErrorCorrupt("Too many AI configs");
 
 			_ai_saveload_is_random = false;

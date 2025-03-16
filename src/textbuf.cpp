@@ -65,11 +65,11 @@ bool Textbuf::DeleteChar(uint16_t keycode)
 		/* Delete a complete word. */
 		if (backspace) {
 			/* Delete whitespace and word in front of the caret. */
-			len = this->caretpos - (uint16_t)this->char_iter->Prev(StringIterator::ITER_WORD);
+			len = this->caretpos - static_cast<uint16_t>(this->char_iter->Prev(StringIterator::ITER_WORD));
 			s -= len;
 		} else {
 			/* Delete word and following whitespace following the caret. */
-			len = (uint16_t)this->char_iter->Next(StringIterator::ITER_WORD) - this->caretpos;
+			len = static_cast<uint16_t>(this->char_iter->Next(StringIterator::ITER_WORD)) - this->caretpos;
 		}
 		/* Update character count. */
 		for (auto ss = s; ss < s + len; Utf8Consume(ss)) {
@@ -81,11 +81,11 @@ bool Textbuf::DeleteChar(uint16_t keycode)
 			/* Delete the last code point in front of the caret. */
 			s = Utf8PrevChar(s);
 			char32_t c;
-			len = (uint16_t)Utf8Decode(&c, s);
+			len = static_cast<uint16_t>(Utf8Decode(&c, s));
 			this->chars--;
 		} else {
 			/* Delete the complete character following the caret. */
-			len = (uint16_t)this->char_iter->Next(StringIterator::ITER_CHARACTER) - this->caretpos;
+			len = static_cast<uint16_t>(this->char_iter->Next(StringIterator::ITER_CHARACTER)) - this->caretpos;
 			/* Update character count. */
 			for (auto ss = s; ss < s + len; Utf8Consume(ss)) {
 				this->chars--;
@@ -127,7 +127,7 @@ void Textbuf::DeleteAll()
  */
 bool Textbuf::InsertChar(char32_t key)
 {
-	uint16_t len = (uint16_t)Utf8CharLen(key);
+	uint16_t len = static_cast<uint16_t>(Utf8CharLen(key));
 	if (this->buf.size() + len < this->max_bytes && this->chars + 1 <= this->max_chars) {
 		/* Make space in the string, then overwrite it with the Utf8 encoded character. */
 		auto pos = this->buf.begin() + this->caretpos;
@@ -293,7 +293,7 @@ void Textbuf::UpdateStringIter()
 {
 	this->char_iter->SetString(this->buf.c_str());
 	size_t pos = this->char_iter->SetCurPosition(this->caretpos);
-	this->caretpos = pos == StringIterator::END ? 0 : (uint16_t)pos;
+	this->caretpos = pos == StringIterator::END ? 0 : static_cast<uint16_t>(pos);
 }
 
 /** Update pixel width of the text. */

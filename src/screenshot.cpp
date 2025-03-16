@@ -87,7 +87,7 @@ static void CurrentScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
  */
 static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
-	Viewport *vp = (Viewport *)userdata;
+	Viewport *vp = static_cast<Viewport *>(userdata);
 	DrawPixelInfo dpi;
 	int wx, left;
 
@@ -293,7 +293,7 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
  */
 static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
 {
-	uint8_t *buf = (uint8_t *)buffer;
+	uint8_t *buf = static_cast<uint8_t *>(buffer);
 	while (n > 0) {
 		TileIndex ti = TileXY(Map::MaxX(), y);
 		for (uint x = Map::MaxX(); true; x--) {
@@ -473,10 +473,10 @@ bool MakeScreenshot(ScreenshotType t, const std::string &name, uint32_t width, u
 
 static void MinimapScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
 {
-	uint32_t *ubuf = (uint32_t *)buf;
+	uint32_t *ubuf = static_cast<uint32_t *>(buf);
 	uint num = (pitch * n);
 	for (uint i = 0; i < num; i++) {
-		uint row = y + (int)(i / pitch);
+		uint row = y + static_cast<int>(i / pitch);
 		uint col = (Map::SizeX() - 1) - (i % pitch);
 
 		TileIndex tile = TileXY(col, row);

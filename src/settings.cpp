@@ -174,7 +174,7 @@ enum IniFileVersion : uint32_t {
 	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
 };
 
-const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
+const uint16_t INIFILE_VERSION = static_cast<IniFileVersion>(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
 
 /**
  * Find the index value of a ONEofMANY type in a string separated by |
@@ -235,7 +235,7 @@ static size_t LookupManyOfMany(const std::vector<std::string> &many, const char 
 		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many);
 		if (r == SIZE_MAX) return r;
 
-		SetBit(res, (uint8_t)r); // value found, set it
+		SetBit(res, static_cast<uint8_t>(r)); // value found, set it
 		if (*s == 0) break;
 		str = s + 1;
 	}
@@ -301,7 +301,7 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 	}
 
 	auto opt_items = ParseIntList(str);
-	if (!opt_items.has_value() || opt_items->size() != (size_t)nelems) return false;
+	if (!opt_items.has_value() || opt_items->size() != static_cast<size_t>(nelems)) return false;
 
 	char *p = static_cast<char *>(array);
 	for (auto item : *opt_items) {
@@ -329,12 +329,12 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 		int64_t v;
 		switch (GetVarMemType(this->save.conv)) {
 			case SLE_VAR_BL:
-			case SLE_VAR_I8:  v = *(const   int8_t *)p; p += 1; break;
-			case SLE_VAR_U8:  v = *(const  uint8_t *)p; p += 1; break;
-			case SLE_VAR_I16: v = *(const  int16_t *)p; p += 2; break;
-			case SLE_VAR_U16: v = *(const uint16_t *)p; p += 2; break;
-			case SLE_VAR_I32: v = *(const  int32_t *)p; p += 4; break;
-			case SLE_VAR_U32: v = *(const uint32_t *)p; p += 4; break;
+			case SLE_VAR_I8:  v = *reinterpret_cast<const   int8_t *>(p); p += 1; break;
+			case SLE_VAR_U8:  v = *p; p += 1; break;
+			case SLE_VAR_I16: v = *reinterpret_cast<const  int16_t *>(p); p += 2; break;
+			case SLE_VAR_U16: v = *reinterpret_cast<const uint16_t *>(p); p += 2; break;
+			case SLE_VAR_I32: v = *reinterpret_cast<const  int32_t *>(p); p += 4; break;
+			case SLE_VAR_U32: v = *reinterpret_cast<const uint32_t *>(p); p += 4; break;
 			default: NOT_REACHED();
 		}
 		if (i != 0) result += ',';
@@ -353,13 +353,13 @@ std::string OneOfManySettingDesc::FormatSingleValue(uint id) const
 
 std::string OneOfManySettingDesc::FormatValue(const void *object) const
 {
-	uint id = (uint)this->Read(object);
+	uint id = static_cast<uint>(this->Read(object));
 	return this->FormatSingleValue(id);
 }
 
 std::string ManyOfManySettingDesc::FormatValue(const void *object) const
 {
-	uint bitmask = (uint)this->Read(object);
+	uint bitmask = static_cast<uint>(this->Read(object));
 	if (bitmask == 0) {
 		return {};
 	}
@@ -568,7 +568,7 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 void IntSettingDesc::Write(const void *object, int32_t val) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	WriteValue(ptr, this->save.conv, (int64_t)val);
+	WriteValue(ptr, this->save.conv, static_cast<int64_t>(val));
 }
 
 /**
@@ -579,7 +579,7 @@ void IntSettingDesc::Write(const void *object, int32_t val) const
 int32_t IntSettingDesc::Read(const void *object) const
 {
 	void *ptr = GetVariableAddress(object, this->save);
-	return (int32_t)ReadValue(ptr, this->save.conv);
+	return static_cast<int32_t>(ReadValue(ptr, this->save.conv));
 }
 
 /**
@@ -673,7 +673,7 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
 	size_t val = (item == nullptr) ? this->GetDefaultValue() : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
-	this->MakeValueValidAndWrite(object, (int32_t)val);
+	this->MakeValueValidAndWrite(object, static_cast<int32_t>(val));
 }
 
 void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
@@ -746,7 +746,7 @@ std::string IntSettingDesc::FormatValue(const void *object) const
 	if (IsSignedVarMemType(this->save.conv)) {
 		i = this->Read(object);
 	} else {
-		i = (uint32_t)this->Read(object);
+		i = static_cast<uint32_t>(this->Read(object));
 	}
 	return std::to_string(i);
 }
@@ -759,7 +759,7 @@ std::string BoolSettingDesc::FormatValue(const void *object) const
 
 bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
 {
-	int32_t item_value = (int32_t)this->ParseValue(item->value->c_str());
+	int32_t item_value = static_cast<int32_t>(this->ParseValue(item->value->c_str()));
 	int32_t object_value = this->Read(object);
 	return item_value == object_value;
 }
@@ -1833,8 +1833,8 @@ void SyncCompanySettings()
 	const void *new_object = &_settings_client.company;
 	for (auto &desc : _company_settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
-		uint32_t old_value = (uint32_t)sd->AsIntSetting()->Read(old_object);
-		uint32_t new_value = (uint32_t)sd->AsIntSetting()->Read(new_object);
+		uint32_t old_value = static_cast<uint32_t>(sd->AsIntSetting()->Read(old_object));
+		uint32_t new_value = static_cast<uint32_t>(sd->AsIntSetting()->Read(new_object));
 		/*
 		 * This is called from a command, and since it contains local configuration information
 		 * that the rest of the clients do not know about, we need to circumvent the normal ::Post
@@ -1903,7 +1903,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 			_settings_error_list.clear();
 			return;
 		}
-		success = SetSettingValue(isd, (int32_t)val, force_newgame);
+		success = SetSettingValue(isd, static_cast<int32_t>(val), force_newgame);
 	}
 
 	if (!success) {

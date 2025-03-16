@@ -221,7 +221,7 @@ SpriteID GetMaxSpriteID()
 
 static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src, ZoomLevel tgt)
 {
-	uint8_t scaled_1 = ScaleByZoom(1, (ZoomLevel)(src - tgt));
+	uint8_t scaled_1 = ScaleByZoom(1, static_cast<ZoomLevel>(src - tgt));
 
 	/* Check for possible memory overflow. */
 	if (sprite[src].width * scaled_1 > UINT16_MAX || sprite[src].height * scaled_1 > UINT16_MAX) return false;
@@ -495,7 +495,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	if (sprite_avail == 0) {
 		if (sprite_type == SpriteType::MapGen) return nullptr;
 		if (id == SPR_IMG_QUERY) UserError("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
-		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
+		return GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
 	}
 
 	if (sprite_type == SpriteType::MapGen) {
@@ -528,7 +528,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 	if (!ResizeSprites(sprite, sprite_avail, encoder)) {
 		if (id == SPR_IMG_QUERY) UserError("Okay... something went horribly wrong. I couldn't resize the fallback sprite. What should I do?");
-		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
+		return GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
 	}
 
 	if (sprite[ZOOM_LVL_MIN].type == SpriteType::Font && _font_zoom != ZOOM_LVL_MIN) {
@@ -723,7 +723,7 @@ static_assert((sizeof(size_t) & (sizeof(size_t) - 1)) == 0);
 
 static inline MemBlock *NextBlock(MemBlock *block)
 {
-	return (MemBlock*)((uint8_t*)block + (block->size & ~S_FREE_MASK));
+	return reinterpret_cast<MemBlock*>(reinterpret_cast<uint8_t*>(block) + (block->size & ~S_FREE_MASK));
 }
 
 static size_t GetSpriteCacheUsage()

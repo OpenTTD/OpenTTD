@@ -102,5 +102,5 @@ bool ScriptPriorityQueue::IsEmpty()
 
 SQInteger ScriptPriorityQueue::Count()
 {
-	return (SQInteger)this->queue.size();
+	return static_cast<SQInteger>(this->queue.size());
 }

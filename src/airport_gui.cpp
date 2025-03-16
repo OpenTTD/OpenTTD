@@ -264,7 +264,7 @@ public:
 		this->OnInvalidateData();
 
 		/* Ensure airport class is valid (changing NewGRFs). */
-		_selected_airport_class = Clamp(_selected_airport_class, APC_BEGIN, (AirportClassID)(AirportClass::GetClassCount() - 1));
+		_selected_airport_class = Clamp(_selected_airport_class, APC_BEGIN, static_cast<AirportClassID>(AirportClass::GetClassCount() - 1));
 		const AirportClass *ac = AirportClass::Get(_selected_airport_class);
 		this->vscroll->SetCount(ac->GetSpecCount());
 
@@ -425,7 +425,7 @@ public:
 
 		if (_selected_airport_index != -1) {
 			const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
-			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
+			int rad = _settings_game.station.modified_catchment ? as->catchment : CA_UNMODIFIED;
 
 			/* only show the station (airport) noise, if the noise option is activated */
 			if (_settings_game.economy.station_noise_level) {
@@ -482,7 +482,7 @@ public:
 			this->SetWidgetDisabledState(WID_AP_LAYOUT_DECREASE, _selected_airport_layout == 0);
 			this->SetWidgetDisabledState(WID_AP_LAYOUT_INCREASE, _selected_airport_layout + 1U >= as->layouts.size());
 
-			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
+			int rad = _settings_game.station.modified_catchment ? as->catchment : CA_UNMODIFIED;
 			if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		}
 	}
@@ -562,7 +562,7 @@ public:
 	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		if (widget == WID_AP_CLASS_DROPDOWN) {
-			_selected_airport_class = (AirportClassID)index;
+			_selected_airport_class = static_cast<AirportClassID>(index);
 			this->vscroll->SetCount(AirportClass::Get(_selected_airport_class)->GetSpecCount());
 			this->SelectFirstAvailableAirport(false);
 		}

@@ -766,7 +766,7 @@ void UpdateTrainGroupID(Train *v)
 {
 	assert(v->IsFrontEngine() || v->IsFreeWagon());
 
-	GroupID new_g = v->IsFrontEngine() ? v->group_id : (GroupID)DEFAULT_GROUP;
+	GroupID new_g = v->IsFrontEngine() ? v->group_id : GroupID(DEFAULT_GROUP);
 	for (Vehicle *u = v; u != nullptr; u = u->Next()) {
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 

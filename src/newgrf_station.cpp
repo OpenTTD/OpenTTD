@@ -446,9 +446,9 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 			case 0x64: return ge->HasVehicleEverTriedLoading() ? ge->last_speed | (ge->last_age << 8) : 0xFF00;
 			case 0x65: return GB(ge->status, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
 			case 0x69: {
-				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 1 == (int)GoodsEntry::GES_LAST_MONTH);
-				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 2 == (int)GoodsEntry::GES_CURRENT_MONTH);
-				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 3 == (int)GoodsEntry::GES_ACCEPTED_BIGTICK);
+				static_assert(static_cast<int>(GoodsEntry::GES_EVER_ACCEPTED) + 1 == static_cast<int>(GoodsEntry::GES_LAST_MONTH));
+				static_assert(static_cast<int>(GoodsEntry::GES_EVER_ACCEPTED) + 2 == static_cast<int>(GoodsEntry::GES_CURRENT_MONTH));
+				static_assert(static_cast<int>(GoodsEntry::GES_EVER_ACCEPTED) + 3 == static_cast<int>(GoodsEntry::GES_ACCEPTED_BIGTICK));
 				return GB(ge->status, GoodsEntry::GES_EVER_ACCEPTED, 4);
 			}
 		}
@@ -542,12 +542,12 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 	if (cargo > this->station_scope.statspec->cargo_threshold) {
 		if (!group->loading.empty()) {
-			uint set = ((cargo - this->station_scope.statspec->cargo_threshold) * (uint)group->loading.size()) / (4096 - this->station_scope.statspec->cargo_threshold);
+			uint set = ((cargo - this->station_scope.statspec->cargo_threshold) * static_cast<uint>(group->loading.size())) / (4096 - this->station_scope.statspec->cargo_threshold);
 			return group->loading[set];
 		}
 	} else {
 		if (!group->loaded.empty()) {
-			uint set = (cargo * (uint)group->loaded.size()) / (this->station_scope.statspec->cargo_threshold + 1);
+			uint set = (cargo * static_cast<uint>(group->loaded.size())) / (this->station_scope.statspec->cargo_threshold + 1);
 			return group->loaded[set];
 		}
 	}
@@ -811,7 +811,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	if (statspec->renderdata.empty()) {
 		sprites = GetStationTileLayout(StationType::Rail, tile + axis);
 	} else {
-		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + axis : (uint)axis];
+		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + axis : static_cast<uint>(axis)];
 		if (!layout->NeedsPreprocessing()) {
 			sprites = layout;
 			layout = nullptr;
@@ -918,7 +918,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 				} else {
 					cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 				}
-				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), (uint8_t)trigger | (cargo << 8));
+				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), static_cast<uint8_t>(trigger) | (cargo << 8));
 			}
 		}
 	}

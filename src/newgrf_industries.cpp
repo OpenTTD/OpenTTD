@@ -551,7 +551,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	ind.location.tile = tile;
 	ind.location.w = 0; // important to mark the industry invalid
 	ind.type = type;
-	ind.selected_layout = (uint8_t)layout;
+	ind.selected_layout = static_cast<uint8_t>(layout);
 	ind.town = ClosestTownFromTile(tile, UINT_MAX);
 	ind.random = initial_random_bits;
 	ind.founder = founder;
@@ -598,7 +598,7 @@ uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityC
 
 static int32_t DerefIndProd(int field, bool use_register)
 {
-	return use_register ? (int32_t)GetRegister(field) : field;
+	return use_register ? static_cast<int32_t>(GetRegister(field)) : field;
 }
 
 /**

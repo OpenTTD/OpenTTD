@@ -64,7 +64,7 @@ struct GenericResolverObject : public ResolverObject {
 
 	GrfSpecFeature GetFeature() const override
 	{
-		return (GrfSpecFeature)this->generic_scope.feature;
+		return static_cast<GrfSpecFeature>(this->generic_scope.feature);
 	}
 
 	uint32_t GetDebugID() const override

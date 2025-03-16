@@ -275,7 +275,7 @@ static bool SearchNearbyHouseID(TileIndex tile, void *user_data)
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
 		if (hs->grf_prop.HasGrfFile()) { // must be one from a grf file
-			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
+			SearchNearbyHouseData *nbhd = static_cast<SearchNearbyHouseData *>(user_data);
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
 			if (north_tile == nbhd->north_tile) return false; // Always ignore origin house
@@ -299,7 +299,7 @@ static bool SearchNearbyHouseClass(TileIndex tile, void *user_data)
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
 		if (hs->grf_prop.HasGrfFile()) { // must be one from a grf file
-			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
+			SearchNearbyHouseData *nbhd = static_cast<SearchNearbyHouseData *>(user_data);
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
 			if (north_tile == nbhd->north_tile) return false; // Always ignore origin house
@@ -323,7 +323,7 @@ static bool SearchNearbyHouseGRFID(TileIndex tile, void *user_data)
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
 		if (hs->grf_prop.HasGrfFile()) { // must be one from a grf file
-			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
+			SearchNearbyHouseData *nbhd = static_cast<SearchNearbyHouseData *>(user_data);
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
 			if (north_tile == nbhd->north_tile) return false; // Always ignore origin house
@@ -746,7 +746,7 @@ void TriggerHouse(TileIndex t, HouseTrigger trigger)
 void DoWatchedCargoCallback(TileIndex tile, TileIndex origin, CargoTypes trigger_cargoes, uint16_t random)
 {
 	TileIndexDiffC diff = TileIndexToTileIndexDiffC(origin, tile);
-	uint32_t cb_info = random << 16 | (uint8_t)diff.y << 8 | (uint8_t)diff.x;
+	uint32_t cb_info = random << 16 | static_cast<uint8_t>(diff.y) << 8 | static_cast<uint8_t>(diff.x);
 	HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_WATCHED_CARGO_ACCEPTED, HouseSpec::Get(GetHouseType(tile)), Town::GetByTile(tile), tile, 0, cb_info, trigger_cargoes);
 }
 

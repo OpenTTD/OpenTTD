@@ -56,7 +56,7 @@ void NewGRFMappingChunkHandler::Load() const
 
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		if ((uint)index >= max_id) SlErrorCorrupt("Too many NewGRF entity mappings");
+		if (static_cast<uint>(index) >= max_id) SlErrorCorrupt("Too many NewGRF entity mappings");
 		SlObject(&this->mapping.mappings[index], slt);
 	}
 }

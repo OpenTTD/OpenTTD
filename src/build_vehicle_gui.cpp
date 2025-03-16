@@ -293,8 +293,8 @@ static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUI
 	/* Using double for more precision when comparing close values.
 	 * This shouldn't have any major effects in performance nor in keeping
 	 * the game in sync between players since it's used in GUI only in client side */
-	double v_a = (double)p_a / (double)r_a;
-	double v_b = (double)p_b / (double)r_b;
+	double v_a = static_cast<double>(p_a) / (double)r_a;
+	double v_b = static_cast<double>(p_b) / (double)r_b;
 	/* Use EngineID to sort if both have same power/running cost,
 	 * since we want consistent sorting.
 	 * Also if both have no power then sort with reverse of running cost to simulate
@@ -1168,7 +1168,7 @@ struct BuildVehicleWindow : Window {
 	{
 		this->vehicle_type = type;
 		this->listview_mode = tile == INVALID_TILE;
-		this->window_number = this->listview_mode ? (int)type : tile.base();
+		this->window_number = this->listview_mode ? static_cast<int>(type) : tile.base();
 
 		this->sort_criteria         = _engine_sort_last_criteria[type];
 		this->descending_sort_order = _engine_sort_last_order[type];
@@ -1901,7 +1901,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 	 *  so if tile == INVALID_TILE (Available XXX Window), use 'type' as unique number.
 	 *  As it always is a low value, it won't collide with any real tile
 	 *  number. */
-	uint num = (tile == INVALID_TILE) ? (int)type : tile.base();
+	uint num = (tile == INVALID_TILE) ? static_cast<int>(type) : tile.base();
 
 	assert(IsCompanyBuildableVehicleType(type));
 

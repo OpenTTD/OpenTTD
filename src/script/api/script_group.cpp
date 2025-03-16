@@ -33,7 +33,7 @@
 /* static */ GroupID ScriptGroup::CreateGroup(ScriptVehicle::VehicleType vehicle_type, GroupID parent_group_id)
 {
 	EnforceCompanyModeValid(GROUP_INVALID);
-	if (!ScriptObject::Command<CMD_CREATE_GROUP>::Do(&ScriptInstance::DoCommandReturnGroupID, (::VehicleType)vehicle_type, parent_group_id)) return GROUP_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_GROUP>::Do(&ScriptInstance::DoCommandReturnGroupID, static_cast<::VehicleType>(vehicle_type), parent_group_id)) return GROUP_INVALID;
 
 	/* In case of test-mode, we return GroupID 0 */
 	return GroupID::Begin();
@@ -51,7 +51,7 @@
 {
 	if (!IsValidGroup(group_id)) return ScriptVehicle::VT_INVALID;
 
-	return (ScriptVehicle::VehicleType)((::VehicleType)::Group::Get(group_id)->vehicle_type);
+	return static_cast<ScriptVehicle::VehicleType>(::Group::Get(group_id)->vehicle_type);
 }
 
 /* static */ bool ScriptGroup::SetName(GroupID group_id, Text *name)
@@ -125,7 +125,7 @@
 	if (!valid_group && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
 	if (!valid_group && (vehicle_type < ScriptVehicle::VT_RAIL || vehicle_type > ScriptVehicle::VT_AIR)) return -1;
 
-	return GetGroupNumVehicle(ScriptObject::GetCompany(), group_id, valid_group ? ::Group::Get(group_id)->vehicle_type : (::VehicleType)vehicle_type);
+	return GetGroupNumVehicle(ScriptObject::GetCompany(), group_id, valid_group ? ::Group::Get(group_id)->vehicle_type : static_cast<::VehicleType>(vehicle_type));
 }
 
 /* static */ bool ScriptGroup::MoveVehicle(GroupID group_id, VehicleID vehicle_id)
@@ -224,7 +224,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::Command<CMD_SET_GROUP_LIVERY>::Do(group_id, true, (::Colours)colour);
+	return ScriptObject::Command<CMD_SET_GROUP_LIVERY>::Do(group_id, true, static_cast<::Colours>(colour));
 }
 
 /* static */ bool ScriptGroup::SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour)
@@ -232,7 +232,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::Command<CMD_SET_GROUP_LIVERY>::Do(group_id, false, (::Colours)colour);
+	return ScriptObject::Command<CMD_SET_GROUP_LIVERY>::Do(group_id, false, static_cast<::Colours>(colour));
 }
 
 /* static */ ScriptCompany::Colours ScriptGroup::GetPrimaryColour(GroupID group_id)
@@ -241,7 +241,7 @@
 
 	const Group *g = ::Group::Get(group_id);
 	if (!HasBit(g->livery.in_use, 0)) return ScriptCompany::Colours::COLOUR_INVALID;
-	return (ScriptCompany::Colours)g->livery.colour1;
+	return static_cast<ScriptCompany::Colours>(g->livery.colour1);
 }
 
 /* static */ ScriptCompany::Colours ScriptGroup::GetSecondaryColour(GroupID group_id)
@@ -250,5 +250,5 @@
 
 	const Group *g = ::Group::Get(group_id);
 	if (!HasBit(g->livery.in_use, 1)) return ScriptCompany::Colours::COLOUR_INVALID;
-	return (ScriptCompany::Colours)g->livery.colour2;
+	return static_cast<ScriptCompany::Colours>(g->livery.colour2);
 }

@@ -141,7 +141,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 
 	switch (mode) {
 		default: // FILLRECT_OPAQUE
-			blitter->DrawRect(dst, right, bottom, (uint8_t)colour);
+			blitter->DrawRect(dst, right, bottom, static_cast<uint8_t>(colour));
 			break;
 
 		case FILLRECT_RECOLOUR:
@@ -151,7 +151,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 		case FILLRECT_CHECKER: {
 			uint8_t bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
 			do {
-				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8_t)colour);
+				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, static_cast<uint8_t>(colour));
 				dst = blitter->MoveTo(dst, 0, 1);
 			} while (--bottom > 0);
 			break;
@@ -277,7 +277,7 @@ void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mo
 			void *dst = blitter->MoveTo(dpi->dst_ptr, x1, y);
 			switch (mode) {
 				default: // FILLRECT_OPAQUE
-					blitter->DrawRect(dst, x2 - x1, 1, (uint8_t)colour);
+					blitter->DrawRect(dst, x2 - x1, 1, static_cast<uint8_t>(colour));
 					break;
 				case FILLRECT_RECOLOUR:
 					blitter->DrawColourMappingRect(dst, x2 - x1, 1, GB(colour, 0, PALETTE_WIDTH));
@@ -286,7 +286,7 @@ void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mo
 					/* Fill every other pixel, offset such that the sum of filled pixels' X and Y coordinates is odd.
 					 * This creates a checkerboard effect. */
 					for (int x = (x1 + y) & 1; x < x2 - x1; x += 2) {
-						blitter->SetPixel(dst, x, 0, (uint8_t)colour);
+						blitter->SetPixel(dst, x, 0, static_cast<uint8_t>(colour));
 					}
 					break;
 			}
@@ -327,7 +327,7 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 	int grade_x = x2 - x;
 
 	/* Clipping rectangle. Slightly extended so we can ignore the width of the line. */
-	int extra = (int)CeilDiv(3 * width, 4); // not less then "width * sqrt(2) / 2"
+	int extra = static_cast<int>(CeilDiv(3 * width, 4)); // not less then "width * sqrt(2) / 2"
 	Rect clip = { -extra, -extra, screen_width - 1 + extra, screen_height - 1 + extra };
 
 	/* prevent integer overflows. */
@@ -476,7 +476,7 @@ static void SetColourRemap(TextColour colour)
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
 	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
 
-	_string_colourremap[1] = raw_colour ? (uint8_t)colour : _string_colourmap[colour];
+	_string_colourremap[1] = raw_colour ? static_cast<uint8_t>(colour) : _string_colourmap[colour];
 	_string_colourremap[2] = no_shade ? 0 : 1;
 	_colour_remap_ptr = _string_colourremap;
 }
@@ -729,7 +729,7 @@ int GetStringHeight(StringID str, int maxw)
 int GetStringLineCount(std::string_view str, int maxw)
 {
 	Layouter layout(str, maxw);
-	return (uint)layout.size();
+	return static_cast<uint>(layout.size());
 }
 
 /**
@@ -740,7 +740,7 @@ int GetStringLineCount(std::string_view str, int maxw)
  */
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion)
 {
-	Dimension box = {suggestion.width, (uint)GetStringHeight(str, suggestion.width)};
+	Dimension box = {suggestion.width, static_cast<uint>(GetStringHeight(str, suggestion.width))};
 	return box;
 }
 
@@ -752,7 +752,7 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  */
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion, FontSize fontsize)
 {
-	Dimension box = {suggestion.width, (uint)GetStringHeight(str, suggestion.width, fontsize)};
+	Dimension box = {suggestion.width, static_cast<uint>(GetStringHeight(str, suggestion.width, fontsize))};
 	return box;
 }
 
@@ -967,7 +967,7 @@ void DrawSpriteViewport(SpriteID img, PaletteID pal, int x, int y, const SubSpri
 		GfxMainBlitterViewport(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BlitterMode::Transparent : BlitterMode::TransparentRemap, sub, real_sprite);
 	} else if (pal != PAL_NONE) {
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
-			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
+			SetColourRemap(static_cast<TextColour>(GB(pal, 0, PALETTE_WIDTH)));
 		} else {
 			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
 		}
@@ -995,7 +995,7 @@ void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub,
 		GfxMainBlitter(GetSprite(real_sprite, SpriteType::Normal), x, y, pal == PALETTE_TO_TRANSPARENT ? BlitterMode::Transparent : BlitterMode::TransparentRemap, sub, real_sprite, zoom);
 	} else if (pal != PAL_NONE) {
 		if (HasBit(pal, PALETTE_TEXT_RECOLOUR)) {
-			SetColourRemap((TextColour)GB(pal, 0, PALETTE_WIDTH));
+			SetColourRemap(static_cast<TextColour>(GB(pal, 0, PALETTE_WIDTH)));
 		} else {
 			_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), SpriteType::Recolour) + 1;
 		}
@@ -1126,7 +1126,7 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 
 		if (topleft <= clicked && clicked <= bottomright) {
 			uint offset = (((size_t)clicked - (size_t)topleft) / (blitter->GetScreenDepth() / 8)) % bp.pitch;
-			if (offset < (uint)bp.width) {
+			if (offset < static_cast<uint>(bp.width)) {
 				include(_newgrf_debug_sprite_picker.sprites, sprite_id);
 			}
 		}

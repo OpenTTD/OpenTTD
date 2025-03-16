@@ -81,7 +81,7 @@ AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Directi
 {
 	AirportMovingData amd;
 	amd.flags = orig->flags;
-	amd.direction = ChangeDir(orig->direction, (DirDiff)rotation);
+	amd.direction = ChangeDir(orig->direction, static_cast<DirDiff>(rotation));
 	switch (rotation) {
 		case DIR_N:
 			amd.x = orig->x;

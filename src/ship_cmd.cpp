@@ -605,10 +605,10 @@ static int ShipTestUpDownOnLock(const Ship *v)
 
 	if (DirToDiagDir(v->direction) == diagdir) {
 		/* Move up */
-		return (v->z_pos < GetTileMaxZ(v->tile) * (int)TILE_HEIGHT) ? 1 : 0;
+		return (v->z_pos < GetTileMaxZ(v->tile) * static_cast<int>(TILE_HEIGHT)) ? 1 : 0;
 	} else {
 		/* Move down */
-		return (v->z_pos > GetTileZ(v->tile) * (int)TILE_HEIGHT) ? -1 : 0;
+		return (v->z_pos > GetTileZ(v->tile) * static_cast<int>(TILE_HEIGHT)) ? -1 : 0;
 	}
 }
 

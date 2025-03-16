@@ -399,10 +399,10 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 					road_rt = GetRoadTypeRoad(start);
 					tram_rt = GetRoadTypeTram(start);
 				}
-				if (RoadTypeIsRoad((RoadType)road_rail_type)) {
-					road_rt = (RoadType)road_rail_type;
+				if (RoadTypeIsRoad(static_cast<RoadType>(road_rail_type))) {
+					road_rt = static_cast<RoadType>(road_rail_type);
 				} else {
-					tram_rt = (RoadType)road_rail_type;
+					tram_rt = static_cast<RoadType>(road_rail_type);
 				}
 
 				if (road_rt != INVALID_ROADTYPE) infra_cost += (bridge_len + 2) * 2 * RoadBuildCost(road_rt);
@@ -410,7 +410,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 
 				break;
 			}
-			case TRANSPORT_RAIL: infra_cost = (bridge_len + 2) * RailBuildCost((RailType)road_rail_type); break;
+			case TRANSPORT_RAIL: infra_cost = (bridge_len + 2) * RailBuildCost(static_cast<RailType>(road_rail_type)); break;
 			default: break;
 		}
 
@@ -426,7 +426,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 				item.spec = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DoCommandFlag::QueryCost) */
-				item.cost = ret.GetCost() + (((int64_t)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;
+				item.cost = ret.GetCost() + ((static_cast<int64_t>(tot_bridgedata_len) * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;
 				any_available = true;
 			}
 		}

@@ -69,9 +69,9 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 			if (!IsValidTile(tile)) return false;
 			break;
 		case SPET_GOAL:
-			if (!Goal::IsValidID((GoalID)reference)) return false;
+			if (!Goal::IsValidID(GoalID(reference))) return false;
 			/* Reject company specific goals on global pages */
-			if (StoryPage::Get(page_id)->company == CompanyID::Invalid() && Goal::Get((GoalID)reference)->company != CompanyID::Invalid()) return false;
+			if (StoryPage::Get(page_id)->company == CompanyID::Invalid() && Goal::Get(GoalID(reference))->company != CompanyID::Invalid()) return false;
 			break;
 		case SPET_BUTTON_PUSH:
 			if (!button_data.ValidateColour()) return false;
@@ -162,13 +162,13 @@ Colours StoryPageButtonData::GetColour() const
 
 StoryPageButtonFlags StoryPageButtonData::GetFlags() const
 {
-	return (StoryPageButtonFlags)GB(this->referenced_id, 24, 8);
+	return static_cast<StoryPageButtonFlags>(GB(this->referenced_id, 24, 8));
 }
 
 /** Get the mouse cursor used while waiting for input for the button. */
 StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 {
-	StoryPageButtonCursor cursor = (StoryPageButtonCursor)GB(this->referenced_id, 8, 8);
+	StoryPageButtonCursor cursor = static_cast<StoryPageButtonCursor>(GB(this->referenced_id, 8, 8));
 	if (!IsValidStoryPageButtonCursor(cursor)) return INVALID_SPBC;
 	return cursor;
 }
@@ -176,7 +176,7 @@ StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 /** Get the type of vehicles that are accepted by the button */
 VehicleType StoryPageButtonData::GetVehicleType() const
 {
-	return (VehicleType)GB(this->referenced_id, 16, 8);
+	return static_cast<VehicleType>(GB(this->referenced_id, 16, 8));
 }
 
 /** Verify that the data stored a valid Colour value */

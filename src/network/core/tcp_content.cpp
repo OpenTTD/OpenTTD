@@ -100,7 +100,7 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
  */
 bool NetworkContentSocketHandler::HandlePacket(Packet &p)
 {
-	PacketContentType type = (PacketContentType)p.Recv_uint8();
+	PacketContentType type = static_cast<PacketContentType>(p.Recv_uint8());
 
 	switch (this->HasClientQuit() ? PACKET_CONTENT_END : type) {
 		case PACKET_CONTENT_CLIENT_INFO_LIST:      return this->Receive_CLIENT_INFO_LIST(p);

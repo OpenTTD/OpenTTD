@@ -52,7 +52,7 @@
 	EnforcePrecondition(GOAL_INVALID, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(GOAL_INVALID, IsValidGoalDestination(company, type, destination));
 
-	if (!ScriptObject::Command<CMD_CREATE_GOAL>::Do(&ScriptInstance::DoCommandReturnGoalID, ScriptCompany::FromScriptCompanyID(company), (::GoalType)type, destination, text)) return GOAL_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_GOAL>::Do(&ScriptInstance::DoCommandReturnGoalID, ScriptCompany::FromScriptCompanyID(company), static_cast<::GoalType>(type), destination, text)) return GOAL_INVALID;
 
 	/* In case of test-mode, we return GoalID 0 */
 	return GoalID::Begin();
@@ -73,7 +73,7 @@
 	const Goal *g = Goal::Get(goal_id);
 	EnforcePrecondition(false, IsValidGoalDestination(ScriptCompany::ToScriptCompanyID(g->company), type, destination));
 
-	return ScriptObject::Command<CMD_SET_GOAL_DESTINATION>::Do(goal_id, (::GoalType)type, destination);
+	return ScriptObject::Command<CMD_SET_GOAL_DESTINATION>::Do(goal_id, static_cast<::GoalType>(type), destination);
 }
 
 /* static */ bool ScriptGoal::SetText(GoalID goal_id, Text *goal)
@@ -130,7 +130,7 @@
 	EnforcePrecondition(false, (int)type < ::GQT_END);
 	EnforcePrecondition(false, uniqueid >= 0 && uniqueid <= UINT16_MAX);
 
-	return ScriptObject::Command<CMD_GOAL_QUESTION>::Do(uniqueid, target, is_client, buttons, (::GoalQuestionType)type, text);
+	return ScriptObject::Command<CMD_GOAL_QUESTION>::Do(uniqueid, target, is_client, buttons, static_cast<::GoalQuestionType>(type), text);
 }
 
 /* static */ bool ScriptGoal::Question(SQInteger uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, SQInteger buttons)

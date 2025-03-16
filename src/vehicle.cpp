@@ -527,7 +527,7 @@ bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
  */
 static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
-	int z = *(int*)data;
+	int z = *static_cast<int*>(data);
 
 	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return nullptr;
 	if (v->z_pos > z) return nullptr;
@@ -557,7 +557,7 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
 {
 	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return nullptr;
-	if (v == (const Vehicle *)data) return nullptr;
+	if (v == static_cast<const Vehicle *>(data)) return nullptr;
 
 	return v;
 }
@@ -584,7 +584,7 @@ CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle 
 
 static Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 {
-	TrackBits rail_bits = *(TrackBits *)data;
+	TrackBits rail_bits = *static_cast<TrackBits *>(data);
 
 	if (v->type != VEH_TRAIN) return nullptr;
 
@@ -1082,9 +1082,9 @@ void CallVehicleTicks()
 		int z = v->z_pos;
 
 		const Company *c = Company::Get(_current_company);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->settings.engine_renew_money));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, Money(c->settings.engine_renew_money)));
 		CommandCost res = Command<CMD_AUTOREPLACE_VEHICLE>::Do(DoCommandFlag::Execute, v->index);
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->settings.engine_renew_money));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -Money(c->settings.engine_renew_money)));
 
 		if (!IsLocalCompany()) continue;
 
@@ -1244,7 +1244,7 @@ Vehicle *CheckClickOnVehicle(const Viewport *vp, int x, int y)
 	Vehicle *found = nullptr;
 	uint dist, best_dist = UINT_MAX;
 
-	if ((uint)(x -= vp->left) >= (uint)vp->width || (uint)(y -= vp->top) >= (uint)vp->height) return nullptr;
+	if (static_cast<uint>(x -= vp->left) >= static_cast<uint>(vp->width) || static_cast<uint>(y -= vp->top) >= static_cast<uint>(vp->height)) return nullptr;
 
 	x = ScaleByZoom(x, vp->zoom) + vp->virtual_left;
 	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
@@ -2109,7 +2109,7 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 
 	bool twocc = e->info.misc_flags.Test(EngineMiscFlag::Uses2CC);
 
-	if (map == PAL_NONE) map = twocc ? (PaletteID)SPR_2CCMAP_BASE : (PaletteID)PALETTE_RECOLOUR_START;
+	if (map == PAL_NONE) map = twocc ? static_cast<PaletteID>(SPR_2CCMAP_BASE) : PALETTE_RECOLOUR_START;
 
 	/* Spectator has news shown too, but has invalid company ID - as well as dedicated server */
 	if (!Company::IsValidID(company)) return map;
@@ -2732,7 +2732,7 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 	int8_t l_center = 0;
 	if (auto_center) {
 		/* For road vehicles: Compute offset from vehicle position to vehicle center */
-		if (v->type == VEH_ROAD) l_center = -(int)(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
+		if (v->type == VEH_ROAD) l_center = -static_cast<int>(VEHICLE_LENGTH - RoadVehicle::From(v)->gcache.cached_veh_length) / 2;
 	} else {
 		/* For trains: Compute offset from vehicle position to sprite position */
 		if (v->type == VEH_TRAIN) l_center = (VEHICLE_LENGTH - Train::From(v)->gcache.cached_veh_length) / 2;
@@ -2815,14 +2815,14 @@ void Vehicle::ShowVisualEffect() const
 		VisualEffectSpawnModel effect_model = VESM_NONE;
 		if (advanced) {
 			effect_offset = VE_OFFSET_CENTRE;
-			effect_model = (VisualEffectSpawnModel)GB(v->vcache.cached_vis_effect, 0, VE_ADVANCED_EFFECT);
+			effect_model = static_cast<VisualEffectSpawnModel>(GB(v->vcache.cached_vis_effect, 0, VE_ADVANCED_EFFECT));
 			if (effect_model >= VESM_END) effect_model = VESM_NONE; // unknown spawning model
 		} else {
-			effect_model = (VisualEffectSpawnModel)GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT);
+			effect_model = static_cast<VisualEffectSpawnModel>(GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT));
 			assert(effect_model != (VisualEffectSpawnModel)VE_TYPE_DEFAULT); // should have been resolved by UpdateVisualEffect
-			static_assert((uint)VESM_STEAM    == (uint)VE_TYPE_STEAM);
-			static_assert((uint)VESM_DIESEL   == (uint)VE_TYPE_DIESEL);
-			static_assert((uint)VESM_ELECTRIC == (uint)VE_TYPE_ELECTRIC);
+			static_assert(static_cast<uint>(VESM_STEAM)    == static_cast<uint>(VE_TYPE_STEAM));
+			static_assert(static_cast<uint>(VESM_DIESEL)   == static_cast<uint>(VE_TYPE_DIESEL));
+			static_assert(static_cast<uint>(VESM_ELECTRIC) == static_cast<uint>(VE_TYPE_ELECTRIC));
 		}
 
 		/* Show no smoke when:

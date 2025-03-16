@@ -282,10 +282,10 @@ void Win32FontCache::ClearFontCache()
 	/* Convert characters outside of the BMP into surrogate pairs. */
 	WCHAR chars[2];
 	if (key >= 0x010000U) {
-		chars[0] = (wchar_t)(((key - 0x010000U) >> 10) + 0xD800);
-		chars[1] = (wchar_t)(((key - 0x010000U) & 0x3FF) + 0xDC00);
+		chars[0] = static_cast<wchar_t>(((key - 0x010000U) >> 10) + 0xD800);
+		chars[1] = static_cast<wchar_t>(((key - 0x010000U) & 0x3FF) + 0xDC00);
 	} else {
-		chars[0] = (wchar_t)(key & 0xFFFF);
+		chars[0] = static_cast<wchar_t>(key & 0xFFFF);
 	}
 
 	WORD glyphs[2] = { 0, 0 };

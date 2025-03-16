@@ -64,7 +64,7 @@ static Dimension GetMaxTreeSpriteSize()
 	offset.y = 0;
 
 	for (int i = base; i < base + count; i++) {
-		if (i >= (int)lengthof(tree_sprites)) return size;
+		if (i >= static_cast<int>lengthof(tree_sprites)) return size;
 		this_size = GetSpriteSize(tree_sprites[i].sprite, &offset);
 		size.width = std::max<int>(size.width, 2 * std::max<int>(this_size.width, -offset.x));
 		size.height = std::max<int>(size.height, std::max<int>(this_size.height, -offset.y));
@@ -128,9 +128,9 @@ class BuildTreesWindow : public Window
 
 	void DoPlantForest(TileIndex tile)
 	{
-		TreeType treetype = (TreeType)this->tree_to_plant;
+		TreeType treetype = static_cast<TreeType>(this->tree_to_plant);
 		if (this->tree_to_plant == TREE_INVALID) {
-			treetype = (TreeType)(InteractiveRandomRange(_tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]) + _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)]);
+			treetype = static_cast<TreeType>(InteractiveRandomRange(_tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]) + _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)]);
 		}
 		const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
 		const uint count = this->mode == PM_FOREST_LG ? 12 : 5;

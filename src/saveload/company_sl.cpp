@@ -365,7 +365,7 @@ public:
 	void Load(CompanyProperties *c) const override
 	{
 		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
-			c->num_valid_stat_ent = (uint8_t)SlGetStructListLength(UINT8_MAX);
+			c->num_valid_stat_ent = static_cast<uint8_t>(SlGetStructListLength(UINT8_MAX));
 		}
 		if (c->num_valid_stat_ent > std::size(c->old_economy)) SlErrorCorrupt("Too many old economy entries");
 

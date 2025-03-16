@@ -226,7 +226,7 @@ static void HandleLinkClick(Link link)
 			break;
 
 		case LT_COMPANY:
-			ShowCompany((CompanyID)link.target);
+			ShowCompany(CompanyID(link.target));
 			return;
 
 		case LT_STORY_PAGE: {

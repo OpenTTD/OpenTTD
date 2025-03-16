@@ -34,7 +34,7 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	/* Make sure the instance stays alive over time */
 	sq_addref(vm, &info->SQ_instance);
 
-	info->scanner = (ScriptScanner *)Squirrel::GetGlobalPointer(vm);
+	info->scanner = static_cast<ScriptScanner *>(Squirrel::GetGlobalPointer(vm));
 	info->engine = info->scanner->GetEngine();
 
 	/* Ensure the mandatory functions exist */
@@ -148,7 +148,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (key == "flags") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.flags = (ScriptConfigFlags)res;
+			config.flags = ScriptConfigFlags(res);
 			items |= 0x100;
 		} else {
 			this->engine->ThrowError(fmt::format("unknown setting property '{}'", key));

@@ -712,7 +712,7 @@ public:
 		/* We do not need to protect ourselves against "Random Many Industries" in this mode */
 		const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
 		uint32_t seed = InteractiveRandom();
-		uint32_t layout_index = InteractiveRandomRange((uint32_t)indsp->layouts.size());
+		uint32_t layout_index = InteractiveRandomRange(static_cast<uint32_t>(indsp->layouts.size()));
 
 		if (_game_mode == GM_EDITOR) {
 			/* Show error if no town exists at all */
@@ -1030,7 +1030,7 @@ public:
 								if (!IsValidCargoType(itp->cargo)) continue;
 								row--;
 								if (row < 0) {
-									line = (InfoLine)(IL_RATE1 + (itp - std::begin(i->produced)));
+									line = static_cast<InfoLine>(IL_RATE1 + (itp - std::begin(i->produced)));
 									break;
 								}
 							}
@@ -2312,7 +2312,7 @@ struct CargoesField {
 		uint col;
 		for (col = 0; col < this->u.cargo.num_cargoes; col++) {
 			if (pt.x < cpos) break;
-			if (pt.x < cpos + (int)CargoesField::cargo_line.width) return this->u.cargo.vertical_cargoes[col];
+			if (pt.x < cpos + static_cast<int>(CargoesField::cargo_line.width)) return this->u.cargo.vertical_cargoes[col];
 			cpos += CargoesField::cargo_line.width + CargoesField::cargo_space.width;
 		}
 		/* col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col. */
@@ -3033,7 +3033,7 @@ struct IndustryCargoesWindow : public Window {
 		if (pt.y < vpos) return false;
 
 		int row = (pt.y - vpos) / CargoesField::normal_height; // row is relative to row 1.
-		if (row + 1 >= (int)this->fields.size()) return false;
+		if (row + 1 >= static_cast<int>(this->fields.size())) return false;
 		vpos = pt.y - vpos - row * CargoesField::normal_height; // Position in the row + 1 field
 		row++; // rebase row to match index of this->fields.
 
@@ -3113,7 +3113,7 @@ struct IndustryCargoesWindow : public Window {
 					lst.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index()));
 				}
 				if (!lst.empty()) {
-					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
+					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? static_cast<int>(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
 					ShowDropDownList(this, std::move(lst), selected, WID_IC_CARGO_DROPDOWN);
 				}
 				break;
@@ -3127,7 +3127,7 @@ struct IndustryCargoesWindow : public Window {
 					lst.push_back(MakeDropDownListStringItem(indsp->name, ind));
 				}
 				if (!lst.empty()) {
-					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
+					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? static_cast<int>(this->ind_cargo) : -1;
 					ShowDropDownList(this, std::move(lst), selected, WID_IC_IND_DROPDOWN);
 				}
 				break;

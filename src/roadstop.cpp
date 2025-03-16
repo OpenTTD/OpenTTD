@@ -325,7 +325,7 @@ struct RoadStopEntryRebuilderHelper {
  */
 Vehicle *FindVehiclesInRoadStop(Vehicle *v, void *data)
 {
-	RoadStopEntryRebuilderHelper *rserh = (RoadStopEntryRebuilderHelper*)data;
+	RoadStopEntryRebuilderHelper *rserh = static_cast<RoadStopEntryRebuilderHelper*>(data);
 	/* Not a RV or not in the right direction or crashed :( */
 	if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != rserh->dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) return nullptr;
 

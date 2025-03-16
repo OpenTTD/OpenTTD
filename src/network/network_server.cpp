@@ -176,7 +176,7 @@ struct PacketWriter : SaveFilter {
 
 		/* Fast-track the size to the client. */
 		auto p = std::make_unique<Packet>(this->cs, PACKET_SERVER_MAP_SIZE);
-		p->Send_uint32((uint32_t)this->total_size);
+		p->Send_uint32(static_cast<uint32_t>(this->total_size));
 		this->packets.push_front(std::move(p));
 	}
 };
@@ -874,7 +874,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_IDENTIFY(Packet
 	Debug(net, 9, "client[{}] Receive_CLIENT_IDENTIFY()", this->client_id);
 
 	std::string client_name = p.Recv_string(NETWORK_CLIENT_NAME_LENGTH);
-	CompanyID playas = (Owner)p.Recv_uint8();
+	CompanyID playas = Owner(p.Recv_uint8());
 
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
@@ -1138,7 +1138,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet &p
 {
 	/* This packets means a client noticed an error and is reporting this
 	 *  to us. Display the error and report it to the other clients */
-	NetworkErrorCode errorno = (NetworkErrorCode)p.Recv_uint8();
+	NetworkErrorCode errorno = static_cast<NetworkErrorCode>(p.Recv_uint8());
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_ERROR(): errorno={}", this->client_id, errorno);
 
@@ -1255,7 +1255,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 	switch (desttype) {
 		case DESTTYPE_CLIENT:
 			/* Are we sending to the server? */
-			if ((ClientID)dest == CLIENT_ID_SERVER) {
+			if (static_cast<ClientID>(dest) == CLIENT_ID_SERVER) {
 				ci = NetworkClientInfo::GetByClientID(from_id);
 				/* Display the text locally, and that is it */
 				if (ci != nullptr) {
@@ -1268,7 +1268,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			} else {
 				/* Else find the client to send the message to */
 				for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-					if (cs->client_id == (ClientID)dest && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
+					if (cs->client_id == static_cast<ClientID>(dest) && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
 						cs->SendChat(action, from_id, false, msg, data);
 						break;
 					}
@@ -1276,17 +1276,17 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			}
 
 			/* Display the message locally (so you know you have sent it) */
-			if (from_id != (ClientID)dest) {
+			if (from_id != static_cast<ClientID>(dest)) {
 				if (from_id == CLIENT_ID_SERVER) {
 					ci = NetworkClientInfo::GetByClientID(from_id);
-					ci_to = NetworkClientInfo::GetByClientID((ClientID)dest);
+					ci_to = NetworkClientInfo::GetByClientID(static_cast<ClientID>(dest));
 					if (ci != nullptr && ci_to != nullptr) {
 						NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), true, ci_to->client_name, msg, data);
 					}
 				} else {
 					for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 						if (cs->client_id == from_id && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
-							cs->SendChat(action, (ClientID)dest, true, msg, data);
+							cs->SendChat(action, static_cast<ClientID>(dest), true, msg, data);
 							break;
 						}
 					}
@@ -1300,7 +1300,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			ci_to = nullptr;
 			for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 				ci = cs->GetInfo();
-				if (ci != nullptr && ci->client_playas == (CompanyID)dest && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
+				if (ci != nullptr && ci->client_playas == CompanyID(dest) && cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
 					cs->SendChat(action, from_id, false, msg, data);
 					if (cs->client_id == from_id) show_local = false;
 					ci_to = ci; // Remember a client that is in the company for company-name
@@ -1308,7 +1308,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			}
 
 			/* if the server can read it, let the admin network read it, too. */
-			if (_local_company == (CompanyID)dest && _settings_client.network.server_admin_chat) {
+			if (_local_company == CompanyID(dest) && _settings_client.network.server_admin_chat) {
 				NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
 			}
 
@@ -1380,8 +1380,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet &p)
 		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
-	NetworkAction action = (NetworkAction)p.Recv_uint8();
-	DestType desttype = (DestType)p.Recv_uint8();
+	NetworkAction action = static_cast<NetworkAction>(p.Recv_uint8());
+	DestType desttype = static_cast<DestType>(p.Recv_uint8());
 	int dest = p.Recv_uint32();
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_CHAT(): action={}, desttype={}, dest={}", this->client_id, action, desttype, dest);
@@ -1467,7 +1467,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet &p)
 {
 	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	CompanyID company_id = (Owner)p.Recv_uint8();
+	CompanyID company_id = Owner(p.Recv_uint8());
 
 	Debug(net, 9, "client[{}] Receive_CLIENT_MOVE(): company_id={}", this->client_id, company_id);
 
@@ -1719,7 +1719,7 @@ void NetworkServer_Tick(bool send_frame)
 				 * did not receive a packet, then the client is not just
 				 * slow, but the connection is likely severed. Mentioning
 				 * frame_freq is not useful in this case. */
-				if (lag > (uint)Ticks::DAY_TICKS && cs->lag_test == 0 && cs->last_packet + std::chrono::seconds(2) > std::chrono::steady_clock::now()) {
+				if (lag > static_cast<uint>(Ticks::DAY_TICKS) && cs->lag_test == 0 && cs->last_packet + std::chrono::seconds(2) > std::chrono::steady_clock::now()) {
 					IConsolePrint(CC_WARNING, "[{}] Client #{} is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
 					cs->lag_test = 1;
 				}
@@ -1943,7 +1943,7 @@ void NetworkServerShowStatusToConsole()
 		uint lag = NetworkCalculateLag(cs);
 		const char *status;
 
-		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
+		status = (cs->status < static_cast<ptrdiff_t>lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),

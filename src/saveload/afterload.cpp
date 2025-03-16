@@ -208,7 +208,7 @@ static void UpdateVoidTiles()
 
 static inline RailType UpdateRailType(RailType rt, RailType min)
 {
-	return rt >= min ? (RailType)(rt + 1): rt;
+	return rt >= min ? static_cast<RailType>(rt + 1): rt;
 }
 
 /**
@@ -998,7 +998,7 @@ bool AfterLoadGame()
 
 				case MP_ROAD:
 					t.m4() |= (t.m2() << 4);
-					if ((GB(t.m5(), 4, 2) == ROAD_TILE_CROSSING ? (Owner)t.m3() : GetTileOwner(t)) == OWNER_TOWN) {
+					if ((GB(t.m5(), 4, 2) == ROAD_TILE_CROSSING ? Owner(t.m3()) : GetTileOwner(t)) == OWNER_TOWN) {
 						SetTownIndex(t, CalcClosestTownFromTile(t)->index);
 					} else {
 						SetTownIndex(t, TownID::Begin());
@@ -1100,7 +1100,7 @@ bool AfterLoadGame()
 				case MP_TUNNELBRIDGE:
 					/* Middle part of "old" bridges */
 					if (old_bridge && IsBridge(t) && HasBit(t.m5(), 6)) break;
-					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(t.m5(), 1, 2) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
+					if (((old_bridge && IsBridge(t)) ? static_cast<TransportType>(GB(t.m5(), 1, 2)) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
 						SB(t.m7(), 6, 2, 1); // Set pre-NRT road type bits for conversion later.
 					}
 					break;
@@ -1117,7 +1117,7 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case MP_ROAD:
-					if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m7(), 5, 3));
+					if (fix_roadtypes) SB(t.m7(), 6, 2, static_cast<RoadTypes>(GB(t.m7(), 5, 3)));
 					SB(t.m7(), 5, 1, GB(t.m3(), 7, 1)); // snow/desert
 					switch (GetRoadTileType(t)) {
 						default: SlErrorCorrupt("Invalid road tile type");
@@ -1150,7 +1150,7 @@ bool AfterLoadGame()
 				case MP_STATION:
 					if (!IsStationRoadStop(t)) break;
 
-					if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m3(), 0, 3));
+					if (fix_roadtypes) SB(t.m7(), 6, 2, static_cast<RoadTypes>(GB(t.m3(), 0, 3)));
 					SB(t.m7(), 0, 5, (HasBit(t.m6(), 2) ? OWNER_TOWN : GetTileOwner(t)).base());
 					SB(t.m3(), 4, 4, t.m1());
 					t.m4() = 0;
@@ -1158,8 +1158,8 @@ bool AfterLoadGame()
 
 				case MP_TUNNELBRIDGE:
 					if (old_bridge && IsBridge(t) && HasBit(t.m5(), 6)) break;
-					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(t.m5(), 1, 2) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
-						if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m3(), 0, 3));
+					if (((old_bridge && IsBridge(t)) ? static_cast<TransportType>(GB(t.m5(), 1, 2)) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
+						if (fix_roadtypes) SB(t.m7(), 6, 2, static_cast<RoadTypes>(GB(t.m3(), 0, 3)));
 
 						Owner o = GetTileOwner(t);
 						SB(t.m7(), 0, 5, o.base()); // road owner
@@ -1182,24 +1182,24 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
-					SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+					SetRailType(t, static_cast<RailType>(GB(t.m3(), 0, 4)));
 					break;
 
 				case MP_ROAD:
 					if (IsLevelCrossing(t)) {
-						SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+						SetRailType(t, static_cast<RailType>(GB(t.m3(), 0, 4)));
 					}
 					break;
 
 				case MP_STATION:
 					if (HasStationRail(t)) {
-						SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+						SetRailType(t, static_cast<RailType>(GB(t.m3(), 0, 4)));
 					}
 					break;
 
 				case MP_TUNNELBRIDGE:
 					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-						SetRailType(t, (RailType)GB(t.m3(), 0, 4));
+						SetRailType(t, static_cast<RailType>(GB(t.m3(), 0, 4)));
 					}
 					break;
 
@@ -1214,7 +1214,7 @@ bool AfterLoadGame()
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
 			if (IsBridgeTile(t)) {
 				if (HasBit(t.m5(), 6)) { // middle part
-					Axis axis = (Axis)GB(t.m5(), 0, 1);
+					Axis axis = static_cast<Axis>(GB(t.m5(), 0, 1));
 
 					if (HasBit(t.m5(), 5)) { // transport route under bridge?
 						if (GB(t.m5(), 3, 2) == TRANSPORT_RAIL) {
@@ -1253,10 +1253,10 @@ bool AfterLoadGame()
 					}
 					SetBridgeMiddle(t, axis);
 				} else { // ramp
-					Axis axis = (Axis)GB(t.m5(), 0, 1);
+					Axis axis = static_cast<Axis>(GB(t.m5(), 0, 1));
 					uint north_south = GB(t.m5(), 5, 1);
 					DiagDirection dir = ReverseDiagDir(XYNSToDiagDir(axis, north_south));
-					TransportType type = (TransportType)GB(t.m5(), 1, 2);
+					TransportType type = static_cast<TransportType>(GB(t.m5(), 1, 2));
 
 					t.m5() = 1 << 7 | type << 2 | dir;
 				}
@@ -1767,7 +1767,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_81)) {
 		for (auto t : Map::Iterate()) {
 			if (GetTileType(t) == MP_TREES) {
-				TreeGround groundType = (TreeGround)GB(t.m2(), 4, 2);
+				TreeGround groundType = static_cast<TreeGround>(GB(t.m2(), 4, 2));
 				if (groundType != TREE_GROUND_SNOW_DESERT) SB(t.m2(), 6, 2, 3);
 			}
 		}
@@ -1808,12 +1808,12 @@ bool AfterLoadGame()
 		/* OrderDepotActionFlags were moved, instead of starting at bit 4 they now start at bit 3. */
 		for (Order *order : Order::Iterate()) {
 			if (!order->IsType(OT_GOTO_DEPOT)) continue;
-			order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() >> 1));
+			order->SetDepotActionType(static_cast<OrderDepotActionFlags>(order->GetDepotActionType() >> 1));
 		}
 
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (!v->current_order.IsType(OT_GOTO_DEPOT)) continue;
-			v->current_order.SetDepotActionType((OrderDepotActionFlags)(v->current_order.GetDepotActionType() >> 1));
+			v->current_order.SetDepotActionType(static_cast<OrderDepotActionFlags>(v->current_order.GetDepotActionType() >> 1));
 		}
 	}
 
@@ -1826,7 +1826,7 @@ bool AfterLoadGame()
 						case StationType::Oilrig:
 						case StationType::Dock:
 						case StationType::Buoy:
-							SetWaterClass(t, (WaterClass)GB(t.m3(), 0, 2));
+							SetWaterClass(t, static_cast<WaterClass>(GB(t.m3(), 0, 2)));
 							SB(t.m3(), 0, 2, 0);
 							break;
 
@@ -1837,7 +1837,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_WATER:
-					SetWaterClass(t, (WaterClass)GB(t.m3(), 0, 2));
+					SetWaterClass(t, static_cast<WaterClass>(GB(t.m3(), 0, 2)));
 					SB(t.m3(), 0, 2, 0);
 					break;
 
@@ -1865,7 +1865,7 @@ bool AfterLoadGame()
 							MakeCanal(t, o, Random());
 						}
 					} else if (IsShipDepot(t)) {
-						Owner o = (Owner)t.m4(); // Original water owner
+						Owner o = Owner(t.m4()); // Original water owner
 						SetWaterClass(t, o == OWNER_WATER ? WATER_CLASS_SEA : WATER_CLASS_CANAL);
 					}
 				}
@@ -2113,7 +2113,7 @@ bool AfterLoadGame()
 					}
 
 					Object *o = new Object();
-					o->location.tile = (TileIndex)t;
+					o->location.tile = TileIndex(t);
 					o->location.w    = size;
 					o->location.h    = size;
 					o->build_date    = TimerGameCalendar::date;
@@ -3129,10 +3129,10 @@ bool AfterLoadGame()
 			/* Heading up slope == passed half way */
 			if ((shipdiagdir == slopediagdir) == second_half) {
 				/* On top half of lock */
-				s->z_pos = GetTileMaxZ(s->tile) * (int)TILE_HEIGHT;
+				s->z_pos = GetTileMaxZ(s->tile) * static_cast<int>(TILE_HEIGHT);
 			} else {
 				/* On lower half of lock */
-				s->z_pos = GetTileZ(s->tile) * (int)TILE_HEIGHT;
+				s->z_pos = GetTileZ(s->tile) * static_cast<int>(TILE_HEIGHT);
 			}
 		}
 	}

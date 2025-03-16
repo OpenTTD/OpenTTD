@@ -960,7 +960,7 @@ struct RefitWindow : public Window {
 
 		/* Calculate sprite position. */
 		NWidgetCore *vehicle_panel_display = this->GetWidget<NWidgetCore>(WID_VR_VEHICLE_PANEL_DISPLAY);
-		int sprite_width = std::max(0, ((int)vehicle_panel_display->current_x - this->vehicle_width) / 2);
+		int sprite_width = std::max(0, (static_cast<int>(vehicle_panel_display->current_x) - this->vehicle_width) / 2);
 		this->sprite_left = vehicle_panel_display->pos_x;
 		this->sprite_right = vehicle_panel_display->pos_x + vehicle_panel_display->current_x - 1;
 		if (_current_text_dir == TD_RTL) {
@@ -2296,7 +2296,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 	 * if _ctrl_pressed, do the opposite action (Advanced list x Normal list)
 	 */
 
-	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != _ctrl_pressed) {
+	if ((_settings_client.gui.advanced_vehicle_list > static_cast<uint>(company != _local_company)) != _ctrl_pressed) {
 		ShowCompanyGroup(company, vehicle_type);
 	} else {
 		ShowVehicleListWindowLocal(company, VL_STANDARD, vehicle_type, company.base());
@@ -2747,7 +2747,7 @@ struct VehicleDetailsWindow : Window {
 					WID_VD_DETAILS_CAPACITY_OF_EACH,
 					WID_VD_DETAILS_TOTAL_CARGO);
 
-				this->tab = (TrainDetailsWindowTabs)(widget - WID_VD_DETAILS_CARGO_CARRIED);
+				this->tab = static_cast<TrainDetailsWindowTabs>(widget - WID_VD_DETAILS_CARGO_CARRIED);
 				this->SetDirty();
 				break;
 		}
@@ -3062,7 +3062,7 @@ public:
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		switch (widget) {
 			case WID_VV_START_STOP:
-				size.height = std::max<uint>({size.height, (uint)GetCharacterHeight(FS_NORMAL), GetScaledSpriteSize(SPR_WARNING_SIGN).height, GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED).height, GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING).height}) + padding.height;
+				size.height = std::max<uint>({size.height, static_cast<uint>(GetCharacterHeight(FS_NORMAL)), GetScaledSpriteSize(SPR_WARNING_SIGN).height, GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED).height, GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING).height}) + padding.height;
 				break;
 
 			case WID_VV_FORCE_PROCEED:
@@ -3555,7 +3555,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 	bool is_ground_vehicle = v->IsGroundVehicle();
 
 	while (v != nullptr) {
-		if (total_width >= ScaleSpriteTrad(2 * (int)VEHICLEINFO_FULL_VEHICLE_WIDTH)) break;
+		if (total_width >= ScaleSpriteTrad(2 * static_cast<int>(VEHICLEINFO_FULL_VEHICLE_WIDTH))) break;
 
 		PaletteID pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(v);
 		VehicleSpriteSeq seq;

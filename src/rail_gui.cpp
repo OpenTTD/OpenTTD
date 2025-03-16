@@ -410,7 +410,7 @@ static void HandleAutodirPlacement()
  */
 static void HandleAutoSignalPlacement()
 {
-	Track track = (Track)GB(_thd.drawstyle, 0, 3); // 0..5
+	Track track = static_cast<Track>(GB(_thd.drawstyle, 0, 3)); // 0..5
 
 	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_RECT) { // one tile case
 		GenericPlaceSignals(TileVirtXY(_thd.selend.x, _thd.selend.y));
@@ -1234,7 +1234,7 @@ public:
 			case WID_BRAS_PLATFORM_DIR_X:
 			case WID_BRAS_PLATFORM_DIR_Y:
 				this->RaiseWidget(WID_BRAS_PLATFORM_DIR_X + _station_gui.axis);
-				_station_gui.axis = (Axis)(widget - WID_BRAS_PLATFORM_DIR_X);
+				_station_gui.axis = static_cast<Axis>(widget - WID_BRAS_PLATFORM_DIR_X);
 				this->LowerWidget(WID_BRAS_PLATFORM_DIR_X + _station_gui.axis);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
@@ -1565,7 +1565,7 @@ public:
 			case WID_BS_ELECTRIC_PBS_OWAY:
 				this->RaiseWidget((_cur_signal_variant == SIG_ELECTRIC ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + _cur_signal_type);
 
-				_cur_signal_type = (SignalType)((uint)((widget - WID_BS_SEMAPHORE_NORM) % (SIGTYPE_LAST + 1)));
+				_cur_signal_type = static_cast<SignalType>(static_cast<uint>((widget - WID_BS_SEMAPHORE_NORM) % (SIGTYPE_LAST + 1)));
 				_cur_signal_variant = widget >= WID_BS_ELECTRIC_NORM ? SIG_ELECTRIC : SIG_SEMAPHORE;
 
 				/* Update default (last-used) signal type in config file. */
@@ -1745,7 +1745,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 			case WID_BRAD_DEPOT_SW:
 			case WID_BRAD_DEPOT_NW:
 				this->RaiseWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
-				_build_depot_direction = (DiagDirection)(widget - WID_BRAD_DEPOT_NE);
+				_build_depot_direction = static_cast<DiagDirection>(widget - WID_BRAD_DEPOT_NE);
 				this->LowerWidget(WID_BRAD_DEPOT_NE + _build_depot_direction);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->SetDirty();

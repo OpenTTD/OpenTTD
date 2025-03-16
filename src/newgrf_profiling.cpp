@@ -47,7 +47,7 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 	using namespace std::chrono;
 	this->cur_call.root_sprite = resolver.root_spritegroup->nfo_line;
 	this->cur_call.subs = 0;
-	this->cur_call.time = (uint32_t)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count();
+	this->cur_call.time = static_cast<uint32_t>(time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count());
 	this->cur_call.tick = TimerGameTick::counter;
 	this->cur_call.cb = resolver.callback;
 	this->cur_call.feat = resolver.GetFeature();
@@ -60,7 +60,7 @@ void NewGRFProfiler::BeginResolve(const ResolverObject &resolver)
 void NewGRFProfiler::EndResolve(const SpriteGroup *result)
 {
 	using namespace std::chrono;
-	this->cur_call.time = (uint32_t)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count() - this->cur_call.time;
+	this->cur_call.time = static_cast<uint32_t>(time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count()) - this->cur_call.time;
 
 	if (result == nullptr) {
 		this->cur_call.result = 0;
@@ -113,7 +113,7 @@ uint32_t NewGRFProfiler::Finish()
 	} else {
 		fmt::print(*f, "Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n");
 		for (const Call &c : this->calls) {
-			fmt::print(*f, "{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
+			fmt::print(*f, "{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, static_cast<uint>(c.cb), c.time, c.subs, c.result);
 			total_microseconds += c.time;
 		}
 	}

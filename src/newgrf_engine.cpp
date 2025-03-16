@@ -621,7 +621,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			if (object->ro.callback == CBID_NO_CALLBACK || object->ro.callback == CBID_RANDOM_TRIGGER || object->ro.callback == CBID_TRAIN_ALLOW_WAGON_ATTACH ||
 					object->ro.callback == CBID_VEHICLE_START_STOP_CHECK || object->ro.callback == CBID_VEHICLE_32DAY_CALLBACK || object->ro.callback == CBID_VEHICLE_COLOUR_MAPPING ||
 					object->ro.callback == CBID_VEHICLE_SPAWN_VISUAL_EFFECT) {
-				Vehicle *u = v->Move((int32_t)GetRegister(0x10F));
+				Vehicle *u = v->Move(static_cast<int32_t>(GetRegister(0x10F)));
 				if (u == nullptr) return 0; // available, but zero
 
 				if (parameter == 0x5F) {
@@ -644,11 +644,11 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			 */
 			if (!v->IsGroundVehicle()) return 0;
 
-			const Vehicle *u = v->Move((int8_t)parameter);
+			const Vehicle *u = v->Move(static_cast<int8_t>(parameter));
 			if (u == nullptr) return 0;
 
 			/* Get direction difference. */
-			bool prev = (int8_t)parameter < 0;
+			bool prev = static_cast<int8_t>(parameter) < 0;
 			uint32_t ret = prev ? DirDifference(u->direction, v->direction) : DirDifference(v->direction, u->direction);
 			if (ret > DIRDIFF_REVERSE) ret |= 0x08;
 
@@ -1012,7 +1012,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 	bool not_loading = (order.GetUnloadType() & OUFB_NO_UNLOAD) && (order.GetLoadType() & OLFB_NO_LOAD);
 	bool in_motion = !order.IsType(OT_LOADING) || not_loading;
 
-	uint totalsets = in_motion ? (uint)group->loaded.size() : (uint)group->loading.size();
+	uint totalsets = in_motion ? static_cast<uint>(group->loaded.size()) : static_cast<uint>(group->loading.size());
 
 	if (totalsets == 0) return nullptr;
 

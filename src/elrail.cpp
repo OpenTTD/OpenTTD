@@ -74,7 +74,7 @@
  */
 static inline TLG GetTLG(TileIndex t)
 {
-	return (TLG)((HasBit(TileX(t), 0) << 1) + HasBit(TileY(t), 0));
+	return static_cast<TLG>((HasBit(TileX(t), 0) << 1) + HasBit(TileY(t), 0));
 }
 
 /**
@@ -151,7 +151,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 	if (tracks == TRACK_BIT_CROSS || !TracksOverlap(tracks)) {
 		/* If the tracks form either a diagonal crossing or don't overlap, both
 		 * trackdirs have to be marked to mask the corresponding track bit. */
-		mask = ~(TrackBits)((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_MASK);
+		mask = ~static_cast<TrackBits>((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_MASK);
 		/* If that results in no masked tracks and it is not a diagonal crossing,
 		 * require only one marked trackdir to mask. */
 		if (tracks != TRACK_BIT_CROSS && (mask & TRACK_BIT_MASK) == TRACK_BIT_MASK) mask = ~TrackdirBitsToTrackBits(neighbour_tdb);
@@ -163,7 +163,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 			if ((neighbour_tdb & TRACKDIR_BIT_X_NE) == 0 || (neighbour_tdb & TRACKDIR_BIT_X_SW) == 0) mask |= TRACK_BIT_X;
 			if ((neighbour_tdb & TRACKDIR_BIT_Y_NW) == 0 || (neighbour_tdb & TRACKDIR_BIT_Y_SE) == 0) mask |= TRACK_BIT_Y;
 			/* If that still is not enough, require both trackdirs for any track. */
-			if ((tracks & mask) == TRACK_BIT_NONE) mask = ~(TrackBits)((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_MASK);
+			if ((tracks & mask) == TRACK_BIT_NONE) mask = ~static_cast<TrackBits>((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_MASK);
 		}
 	}
 
@@ -516,7 +516,7 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 	Axis axis = GetBridgeAxis(ti->tile);
 	TLG tlg = GetTLG(ti->tile);
 
-	RailCatenarySprite offset = (RailCatenarySprite)(axis == AXIS_X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH);
+	RailCatenarySprite offset = static_cast<RailCatenarySprite>(axis == AXIS_X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH);
 
 	if ((length % 2) && num == length) {
 		/* Draw the "short" wire on the southern end of the bridge

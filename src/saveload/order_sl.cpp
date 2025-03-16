@@ -70,7 +70,7 @@ void Order::ConvertFromOldSavegame()
 		/* Finally fix the depot type flags */
 		uint t = ((old_flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
 		if ((old_flags & 2) != 0) t |= ODTFB_PART_OF_ORDERS;
-		this->SetDepotOrderType((OrderDepotTypeFlags)t);
+		this->SetDepotOrderType(static_cast<OrderDepotTypeFlags>(t));
 	}
 }
 

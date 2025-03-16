@@ -155,7 +155,7 @@ public:
 
 			/* write them to png */
 			for (i = 0; i != n; i++) {
-				png_write_row(png_ptr, (png_bytep)buff.data() + i * w * bpp);
+				png_write_row(png_ptr, static_cast<png_bytep>(buff.data()) + i * w * bpp);
 			}
 		} while (y != h);
 

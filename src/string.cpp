@@ -828,11 +828,11 @@ public:
 
 			char32_t c = Utf8Consume(&s);
 			if (c < 0x10000) {
-				this->utf16_str.push_back((UChar)c);
+				this->utf16_str.push_back(static_cast<UChar>(c));
 			} else {
 				/* Make a surrogate pair. */
-				this->utf16_str.push_back((UChar)(0xD800 + ((c - 0x10000) >> 10)));
-				this->utf16_str.push_back((UChar)(0xDC00 + ((c - 0x10000) & 0x3FF)));
+				this->utf16_str.push_back(static_cast<UChar>(0xD800 + ((c - 0x10000) >> 10)));
+				this->utf16_str.push_back(static_cast<UChar>(0xDC00 + ((c - 0x10000) & 0x3FF)));
 				this->utf16_to_utf8.push_back(idx);
 			}
 			this->utf16_to_utf8.push_back(idx);
@@ -881,7 +881,7 @@ public:
 				 * break point, but we only want word starts. Move to the next location in
 				 * case the new position points to whitespace. */
 				while (pos != icu::BreakIterator::DONE &&
-						IsWhitespace(Utf16DecodeChar((const uint16_t *)&this->utf16_str[pos]))) {
+						IsWhitespace(Utf16DecodeChar(reinterpret_cast<const uint16_t *>(&this->utf16_str[pos])))) {
 					int32_t new_pos = this->word_itr->next();
 					/* Don't set it to DONE if it was valid before. Otherwise we'll return END
 					 * even though the iterator wasn't at the end of the string before. */
@@ -913,7 +913,7 @@ public:
 				 * break point, but we only want word starts. Move to the previous location in
 				 * case the new position points to whitespace. */
 				while (pos != icu::BreakIterator::DONE &&
-						IsWhitespace(Utf16DecodeChar((const uint16_t *)&this->utf16_str[pos]))) {
+						IsWhitespace(Utf16DecodeChar(reinterpret_cast<const uint16_t *>(&this->utf16_str[pos])))) {
 					int32_t new_pos = this->word_itr->previous();
 					/* Don't set it to DONE if it was valid before. Otherwise we'll return END
 					 * even though the iterator wasn't at the start of the string before. */

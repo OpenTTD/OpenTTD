@@ -356,7 +356,7 @@ protected:
 
 		/* show highlighted item with a different colour */
 		if (highlight) {
-			Rect r = {std::min(name.left, info.left), y, std::max(name.right, info.right), y + (int)this->resize.step_height - 1};
+			Rect r = {std::min(name.left, info.left), y, std::max(name.right, info.right), y + static_cast<int>(this->resize.step_height) - 1};
 			GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_GREY);
 		}
 
@@ -476,13 +476,13 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				resize.height = std::max(GetSpriteSize(SPR_BLOT).height, static_cast<uint>(GetCharacterHeight(FS_NORMAL))) + padding.height;
 				fill.height = resize.height;
 				size.height = 12 * resize.height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
+				size.height = std::max(GetSpriteSize(SPR_BLOT).height, static_cast<uint>(GetCharacterHeight(FS_NORMAL))) + WidgetDimensions::scaled.matrix.Vertical();
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
@@ -683,7 +683,7 @@ public:
 			case WID_NG_INFO:    // Connectivity (green dot)
 				if (this->servers.SortType() == widget - WID_NG_NAME) {
 					this->servers.ToggleSortOrder();
-					if (this->list_pos != SLP_INVALID) this->list_pos = (ServerListPosition)this->servers.size() - this->list_pos - 1;
+					if (this->list_pos != SLP_INVALID) this->list_pos = static_cast<ServerListPosition>(this->servers.size()) - this->list_pos - 1;
 				} else {
 					this->servers.SetSortType(widget - WID_NG_NAME);
 					this->servers.ForceResort();
@@ -1091,7 +1091,7 @@ struct NetworkStartServerWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
-				_settings_client.network.server_game_type = (ServerGameType)index;
+				_settings_client.network.server_game_type = static_cast<ServerGameType>(index);
 				break;
 			default:
 				NOT_REACHED();
@@ -1657,7 +1657,7 @@ public:
 			case WID_CL_MATRIX: {
 				uint height = std::max({GetSpriteSize(SPR_COMPANY_ICON).height, GetSpriteSize(SPR_JOIN).height, GetSpriteSize(SPR_ADMIN).height, GetSpriteSize(SPR_CHAT).height});
 				height += WidgetDimensions::scaled.framerect.Vertical();
-				this->line_height = std::max(height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				this->line_height = std::max(height, static_cast<uint>(GetCharacterHeight(FS_NORMAL))) + padding.height;
 
 				resize.width = 1;
 				resize.height = this->line_height;
@@ -1786,7 +1786,7 @@ public:
 			case WID_CL_SERVER_VISIBILITY:
 				if (!_network_server) break;
 
-				_settings_client.network.server_game_type = (ServerGameType)index;
+				_settings_client.network.server_game_type = static_cast<ServerGameType>(index);
 				NetworkUpdateServerGameType();
 				break;
 

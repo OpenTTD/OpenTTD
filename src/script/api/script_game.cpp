@@ -34,7 +34,7 @@
 
 /* static */ ScriptGame::LandscapeType ScriptGame::GetLandscape()
 {
-	return (ScriptGame::LandscapeType)_settings_game.game_creation.landscape;
+	return static_cast<ScriptGame::LandscapeType>(_settings_game.game_creation.landscape);
 }
 
 /* static */ bool ScriptGame::IsMultiplayer()

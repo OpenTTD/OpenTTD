@@ -239,9 +239,9 @@ struct SelectGameWindow : public Window {
 			size_t next_command_index = (this->cur_viewport_command_index + 1) % intro_viewport_commands.size();
 			IntroGameViewportCommand &nvc = intro_viewport_commands[next_command_index];
 			Point pos2 = nvc.PositionForViewport(vp);
-			const double t = this->cur_viewport_command_time / (double)vc.delay;
-			pos.x = pos.x + (int)(t * (pos2.x - pos.x));
-			pos.y = pos.y + (int)(t * (pos2.y - pos.y));
+			const double t = this->cur_viewport_command_time / static_cast<double>(vc.delay);
+			pos.x = pos.x + static_cast<int>(t * (pos2.x - pos.x));
+			pos.y = pos.y + static_cast<int>(t * (pos2.y - pos.y));
 		}
 
 		/* Update the viewport position. */

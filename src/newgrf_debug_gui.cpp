@@ -230,7 +230,7 @@ struct NIFeature {
  */
 static inline GrfSpecFeature GetFeatureNum(uint window_number)
 {
-	return (GrfSpecFeature)GB(window_number, 24, 8);
+	return static_cast<GrfSpecFeature>(GB(window_number, 24, 8));
 }
 
 /**
@@ -355,7 +355,7 @@ struct NewGRFInspectWindow : Window {
 			case WID_NGRFI_VEH_CHAIN: {
 				assert(this->HasChainIndex());
 				GrfSpecFeature f = GetFeatureNum(this->window_number);
-				size.height = std::max(size.height, GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
+				size.height = std::max(size.height, GetVehicleImageCellSize(static_cast<VehicleType>(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height + 2 + WidgetDimensions::scaled.bevel.Vertical());
 				break;
 			}
 
@@ -411,7 +411,7 @@ struct NewGRFInspectWindow : Window {
 		}
 
 		GrfSpecFeature f = GetFeatureNum(this->window_number);
-		int h = GetVehicleImageCellSize((VehicleType)(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
+		int h = GetVehicleImageCellSize(static_cast<VehicleType>(VEH_TRAIN + (f - GSF_TRAINS)), EIT_IN_DEPOT).height;
 		int y = CenterBounds(br.top, br.bottom, h);
 		DrawVehicleImage(v->First(), br, VehicleID::Invalid(), EIT_IN_DETAILS, skip);
 
@@ -490,9 +490,9 @@ struct NewGRFInspectWindow : Window {
 				const void *ptr = nip.offset_proc(base);
 				uint value;
 				switch (nip.read_size) {
-					case 1: value = *(const uint8_t  *)ptr; break;
-					case 2: value = *(const uint16_t *)ptr; break;
-					case 4: value = *(const uint32_t *)ptr; break;
+					case 1: value = *static_cast<const uint8_t  *>(ptr); break;
+					case 2: value = *static_cast<const uint16_t *>(ptr); break;
+					case 4: value = *static_cast<const uint32_t *>(ptr); break;
 					default: NOT_REACHED();
 				}
 
@@ -507,9 +507,9 @@ struct NewGRFInspectWindow : Window {
 					const void *ptr = nic.offset_proc(base_spec);
 					uint value;
 					switch (nic.read_size) {
-						case 1: value = *(const uint8_t  *)ptr; break;
-						case 2: value = *(const uint16_t *)ptr; break;
-						case 4: value = *(const uint32_t *)ptr; break;
+						case 1: value = *static_cast<const uint8_t  *>(ptr); break;
+						case 2: value = *static_cast<const uint16_t *>(ptr); break;
+						case 4: value = *static_cast<const uint32_t *>(ptr); break;
 						default: NOT_REACHED();
 					}
 

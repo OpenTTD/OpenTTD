@@ -59,7 +59,7 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	/* Get the AIInfo */
 	SQUserPointer instance = nullptr;
 	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, nullptr)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of AIInfo to RegisterAI");
-	AIInfo *info = (AIInfo *)instance;
+	AIInfo *info = static_cast<AIInfo *>(instance);
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);
 	if (res != 0) return res;
@@ -98,7 +98,7 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	/* Get the AIInfo */
 	SQUserPointer instance;
 	sq_getinstanceup(vm, 2, &instance, nullptr);
-	AIInfo *info = (AIInfo *)instance;
+	AIInfo *info = static_cast<AIInfo *>(instance);
 	info->api_version = *std::rbegin(AIInfo::ApiVersions);
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);

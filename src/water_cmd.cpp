@@ -1041,7 +1041,7 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 
 		case VEH_TRAIN:
 		case VEH_ROAD: {
-			int z = *(int*)data;
+			int z = *static_cast<int*>(data);
 			if (v->z_pos > z) break;
 			FloodVehicle(v->First());
 			break;

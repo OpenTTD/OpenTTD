@@ -189,7 +189,7 @@ struct BuildDocksToolbarWindow : Window {
 
 			default: return;
 		}
-		this->last_clicked_widget = (DockToolbarWidgets)widget;
+		this->last_clicked_widget = static_cast<DockToolbarWidgets>(widget);
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override

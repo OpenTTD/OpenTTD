@@ -445,7 +445,7 @@ int Train::GetCursorImageOffset() const
 			reference_width = e->GetGRF()->traininfo_vehicle_width;
 		}
 
-		return ScaleSpriteTrad((this->gcache.cached_veh_length - (int)VEHICLE_LENGTH) * reference_width / (int)VEHICLE_LENGTH);
+		return ScaleSpriteTrad((this->gcache.cached_veh_length - static_cast<int>(VEHICLE_LENGTH)) * reference_width / static_cast<int>(VEHICLE_LENGTH));
 	}
 	return 0;
 }
@@ -468,7 +468,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 
 	if (offset != nullptr) {
 		if (HasBit(this->flags, VRF_REVERSE_DIRECTION) && !EngInfo(this->engine_type)->misc_flags.Test(EngineMiscFlag::RailFlips)) {
-			offset->x = ScaleSpriteTrad(((int)this->gcache.cached_veh_length - (int)VEHICLE_LENGTH / 2) * reference_width / (int)VEHICLE_LENGTH);
+			offset->x = ScaleSpriteTrad((static_cast<int>(this->gcache.cached_veh_length) - static_cast<int>(VEHICLE_LENGTH) / 2) * reference_width / static_cast<int>(VEHICLE_LENGTH));
 		} else {
 			offset->x = ScaleSpriteTrad(reference_width) / 2;
 		}
@@ -1701,7 +1701,7 @@ static Vehicle *TrainApproachingCrossingEnum(Vehicle *v, void *data)
 	Train *t = Train::From(v);
 	if (!t->IsFrontEngine()) return nullptr;
 
-	TileIndex tile = *(TileIndex *)data;
+	TileIndex tile = *static_cast<TileIndex *>(data);
 
 	if (TrainApproachingCrossingTile(t) != tile) return nullptr;
 
@@ -2703,7 +2703,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 	if (got_reservation != nullptr) *got_reservation = false;
 
 	/* Don't use tracks here as the setting to forbid 90 deg turns might have been switched between reservation and now. */
-	TrackBits res_tracks = (TrackBits)(GetReservedTrackbits(tile) & DiagdirReachesTracks(enterdir));
+	TrackBits res_tracks = (GetReservedTrackbits(tile) & DiagdirReachesTracks(enterdir));
 	/* Do we have a suitable reserved track? */
 	if (res_tracks != TRACK_BIT_NONE) return FindFirstTrack(res_tracks);
 
@@ -2808,7 +2808,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 		/* Extend reservation until we have found a safe position. */
 		DiagDirection exitdir = TrackdirToExitdir(res_dest.trackdir);
 		TileIndex     next_tile = TileAddByDiagDir(res_dest.tile, exitdir);
-		TrackBits     reachable = TrackdirBitsToTrackBits((TrackdirBits)(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, 0))) & DiagdirReachesTracks(exitdir);
+		TrackBits     reachable = TrackdirBitsToTrackBits(static_cast<TrackdirBits>(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, 0))) & DiagdirReachesTracks(exitdir);
 		if (Rail90DegTurnDisallowed(GetTileRailType(res_dest.tile), GetTileRailType(next_tile))) {
 			reachable &= ~TrackCrossesTracks(TrackdirToTrack(res_dest.trackdir));
 		}
@@ -3177,7 +3177,7 @@ struct TrainCollideChecker {
  */
 static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 {
-	TrainCollideChecker *tcc = (TrainCollideChecker*)data;
+	TrainCollideChecker *tcc = static_cast<TrainCollideChecker*>(data);
 
 	/* not a train or in depot */
 	if (v->type != VEH_TRAIN || Train::From(v)->track == TRACK_BIT_DEPOT) return nullptr;
@@ -3256,7 +3256,7 @@ static Vehicle *CheckTrainAtSignal(Vehicle *v, void *data)
 	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return nullptr;
 
 	Train *t = Train::From(v);
-	DiagDirection exitdir = *(DiagDirection *)data;
+	DiagDirection exitdir = *static_cast<DiagDirection *>(data);
 
 	/* not front engine of a train, inside wormhole or depot, crashed */
 	if (!t->IsFrontEngine() || !(t->track & TRACK_BIT_MASK)) return nullptr;
@@ -3443,7 +3443,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 				const uint8_t *b = _initial_tile_subcoord[FindFirstBit(chosen_track)][enterdir];
 				gp.x = (gp.x & ~0xF) | b[0];
 				gp.y = (gp.y & ~0xF) | b[1];
-				Direction chosen_dir = (Direction)b[2];
+				Direction chosen_dir = static_cast<Direction>(b[2]);
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
 				uint32_t r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
@@ -3596,7 +3596,7 @@ reverse_train_direction:
  */
 static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
 {
-	TrackBits *trackbits = (TrackBits *)data;
+	TrackBits *trackbits = static_cast<TrackBits *>(data);
 
 	if (v->type == VEH_TRAIN && v->vehstatus.Test(VehState::Crashed)) {
 		TrackBits train_tbits = Train::From(v)->track;

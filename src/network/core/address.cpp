@@ -25,7 +25,7 @@ const std::string &NetworkAddress::GetHostname()
 	if (this->hostname.empty() && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
 		char buffer[NETWORK_HOSTNAME_LENGTH];
-		getnameinfo((struct sockaddr *)&this->address, this->address_length, buffer, sizeof(buffer), nullptr, 0, NI_NUMERICHOST);
+		getnameinfo(reinterpret_cast<struct sockaddr *>(&this->address), this->address_length, buffer, sizeof(buffer), nullptr, 0, NI_NUMERICHOST);
 		this->hostname = buffer;
 	}
 	return this->hostname;
@@ -40,10 +40,10 @@ uint16_t NetworkAddress::GetPort() const
 	switch (this->address.ss_family) {
 		case AF_UNSPEC:
 		case AF_INET:
-			return ntohs(((const struct sockaddr_in *)&this->address)->sin_port);
+			return ntohs((reinterpret_cast<const struct sockaddr_in *>(&this->address))->sin_port);
 
 		case AF_INET6:
-			return ntohs(((const struct sockaddr_in6 *)&this->address)->sin6_port);
+			return ntohs((reinterpret_cast<const struct sockaddr_in6 *>(&this->address))->sin6_port);
 
 		default:
 			NOT_REACHED();
@@ -59,11 +59,11 @@ void NetworkAddress::SetPort(uint16_t port)
 	switch (this->address.ss_family) {
 		case AF_UNSPEC:
 		case AF_INET:
-			((struct sockaddr_in*)&this->address)->sin_port = htons(port);
+			(reinterpret_cast<struct sockaddr_in*>(&this->address))->sin_port = htons(port);
 			break;
 
 		case AF_INET6:
-			((struct sockaddr_in6*)&this->address)->sin6_port = htons(port);
+			(reinterpret_cast<struct sockaddr_in6*>(&this->address))->sin6_port = htons(port);
 			break;
 
 		default:
@@ -172,13 +172,13 @@ bool NetworkAddress::IsInNetmask(const std::string &netmask)
 	uint32_t *mask;
 	switch (this->address.ss_family) {
 		case AF_INET:
-			ip = (uint32_t*)&((struct sockaddr_in*)&this->address)->sin_addr.s_addr;
-			mask = (uint32_t*)&((struct sockaddr_in*)&mask_address.address)->sin_addr.s_addr;
+			ip = static_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in*>(&this->address))->sin_addr.s_addr);
+			mask = static_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in*>(&mask_address.address))->sin_addr.s_addr);
 			break;
 
 		case AF_INET6:
-			ip = (uint32_t*)&((struct sockaddr_in6*)&this->address)->sin6_addr;
-			mask = (uint32_t*)&((struct sockaddr_in6*)&mask_address.address)->sin6_addr;
+			ip = reinterpret_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in6*>(&this->address))->sin6_addr);
+			mask = reinterpret_cast<uint32_t*>(&(reinterpret_cast<struct sockaddr_in6*>(&mask_address.address))->sin6_addr);
 			break;
 
 		default:
@@ -186,7 +186,7 @@ bool NetworkAddress::IsInNetmask(const std::string &netmask)
 	}
 
 	while (cidr > 0) {
-		uint32_t msk = cidr >= 32 ? (uint32_t)-1 : htonl(-(1 << (32 - cidr)));
+		uint32_t msk = cidr >= 32 ? static_cast<uint32_t>(-1) : htonl(-(1 << (32 - cidr)));
 		if ((*mask++ & msk) != (*ip++ & msk)) return false;
 
 		cidr -= 32;
@@ -256,14 +256,14 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		 * connect to one with exactly the same address twice. That's
 		 * of course totally unneeded ;) */
 		if (sockets != nullptr) {
-			NetworkAddress address(runp->ai_addr, (int)runp->ai_addrlen);
+			NetworkAddress address(runp->ai_addr, static_cast<int>(runp->ai_addrlen));
 			if (std::any_of(sockets->begin(), sockets->end(), [&address](const auto &p) { return p.second == address; })) continue;
 		}
 		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;
 
 		if (sockets == nullptr) {
-			this->address_length = (int)runp->ai_addrlen;
+			this->address_length = static_cast<int>(runp->ai_addrlen);
 			assert(sizeof(this->address) >= runp->ai_addrlen);
 			memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
 #ifdef __EMSCRIPTEN__
@@ -281,7 +281,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 			break;
 		}
 
-		NetworkAddress addr(runp->ai_addr, (int)runp->ai_addrlen);
+		NetworkAddress addr(runp->ai_addr, static_cast<int>(runp->ai_addrlen));
 		(*sockets)[sock] = std::move(addr);
 		sock = INVALID_SOCKET;
 	}
@@ -297,7 +297,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
  */
 static SOCKET ListenLoopProc(addrinfo *runp)
 {
-	std::string address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
+	std::string address = NetworkAddress(runp->ai_addr, static_cast<int>(runp->ai_addrlen)).GetAddressAsString();
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
@@ -317,11 +317,11 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 
 	int on = 1;
 	if (runp->ai_family == AF_INET6 &&
-			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
+			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, reinterpret_cast<const char*>(&on), sizeof(on)) == -1) {
 		Debug(net, 3, "Could not disable IPv4 over IPv6: {}", NetworkError::GetLast().AsString());
 	}
 
-	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
+	if (bind(sock, runp->ai_addr, static_cast<int>(runp->ai_addrlen)) != 0) {
 		Debug(net, 0, "Could not bind socket on {}: {}", address, NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
@@ -404,7 +404,7 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
 	sockaddr_storage addr = {};
 	socklen_t addr_len = sizeof(addr);
-	if (getpeername(sock, (sockaddr *)&addr, &addr_len) != 0) {
+	if (getpeername(sock, reinterpret_cast<sockaddr *>(&addr), &addr_len) != 0) {
 		Debug(net, 0, "Failed to get address of the peer: {}", NetworkError::GetLast().AsString());
 		return NetworkAddress();
 	}
@@ -420,7 +420,7 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
 	sockaddr_storage addr = {};
 	socklen_t addr_len = sizeof(addr);
-	if (getsockname(sock, (sockaddr *)&addr, &addr_len) != 0) {
+	if (getsockname(sock, reinterpret_cast<sockaddr *>(&addr), &addr_len) != 0) {
 		Debug(net, 0, "Failed to get address of the socket: {}", NetworkError::GetLast().AsString());
 		return NetworkAddress();
 	}

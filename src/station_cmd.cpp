@@ -238,7 +238,7 @@ struct StationNameInformation {
 static bool FindNearIndustryName(TileIndex tile, void *user_data)
 {
 	/* All already found industry types */
-	StationNameInformation *sni = (StationNameInformation*)user_data;
+	StationNameInformation *sni = static_cast<StationNameInformation*>(user_data);
 	if (!IsTileType(tile, MP_INDUSTRY)) return false;
 
 	/* If the station name is undefined it means that it doesn't name a station */
@@ -2074,8 +2074,8 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 				/* Update company infrastructure counts. If the current tile is a normal road tile, remove the old
 				 * bits first. */
 				if (IsNormalRoadTile(cur_tile)) {
-					UpdateCompanyRoadInfrastructure(road_rt, road_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_ROAD)));
-					UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -(int)CountBits(GetRoadBits(cur_tile, RTT_TRAM)));
+					UpdateCompanyRoadInfrastructure(road_rt, road_owner, -static_cast<int>(CountBits(GetRoadBits(cur_tile, RTT_ROAD))));
+					UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, -static_cast<int>(CountBits(GetRoadBits(cur_tile, RTT_TRAM))));
 				}
 
 				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
@@ -2224,7 +2224,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlags flags, int repl
 		if (replacement_spec_index < 0) st->AfterStationTileSetChange(false, is_truck ? StationType::Truck: StationType::Bus);
 
 		st->RemoveRoadStopTileData(tile);
-		if ((int)specindex != replacement_spec_index) DeallocateSpecFromRoadStop(st, specindex);
+		if (static_cast<int>(specindex) != replacement_spec_index) DeallocateSpecFromRoadStop(st, specindex);
 
 		/* Update the tile area of the truck/bus stop */
 		if (is_truck) {
@@ -2283,7 +2283,7 @@ CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int rep
 		wp->rect.AfterRemoveTile(wp, tile);
 
 		wp->RemoveRoadStopTileData(tile);
-		if ((int)specindex != replacement_spec_index) DeallocateSpecFromRoadStop(wp, specindex);
+		if (static_cast<int>(specindex) != replacement_spec_index) DeallocateSpecFromRoadStop(wp, specindex);
 
 		if (replacement_spec_index < 0) {
 			MakeRoadWaypointStationAreaSmaller(wp, wp->road_waypoint_area);
@@ -3062,7 +3062,7 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 		/* Decide snow/desert from tile */
 		switch (_settings_game.game_creation.landscape) {
 			case LandscapeType::Arctic:
-				snow_desert = (uint)ti->z > GetSnowLine() * TILE_HEIGHT;
+				snow_desert = static_cast<uint>(ti->z) > GetSnowLine() * TILE_HEIGHT;
 				break;
 
 			case LandscapeType::Tropic:
@@ -3110,7 +3110,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 				/* Ensure the chosen tile layout is valid for this custom station */
 				if (!statspec->renderdata.empty()) {
-					layout = &statspec->renderdata[tile_layout < statspec->renderdata.size() ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
+					layout = &statspec->renderdata[tile_layout < statspec->renderdata.size() ? tile_layout : static_cast<uint>(GetRailStationAxis(ti->tile))];
 					if (!layout->NeedsPreprocessing()) {
 						t = layout;
 						layout = nullptr;
@@ -3711,7 +3711,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		 * begin of the platform to the stop location is longer than the length
 		 * of the platform. Station ahead 'includes' the current tile where the
 		 * vehicle is on, so we need to subtract that. */
-		if (stop + station_ahead - (int)TILE_SIZE >= station_length) return VETSB_CONTINUE;
+		if (stop + station_ahead - static_cast<int>(TILE_SIZE) >= station_length) return VETSB_CONTINUE;
 
 		DiagDirection dir = DirToDiagDir(v->direction);
 
@@ -3733,7 +3733,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		}
 	} else if (v->type == VEH_ROAD) {
 		RoadVehicle *rv = RoadVehicle::From(v);
-		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
+		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir(static_cast<Trackdir>(rv->state)) && rv->frame == 0) {
 			if (IsStationRoadStop(tile) && rv->IsFrontEngine()) {
 				/* Attempt to allocate a parking bay in a road stop */
 				return RoadStop::GetByTile(tile, GetRoadStopType(tile))->Enter(rv) ? VETSB_CONTINUE : VETSB_CANNOT_ENTER;
@@ -3938,9 +3938,9 @@ static void UpdateStationRating(Station *st)
 				/* if rating is <= 127 and there are any items waiting, maybe remove some goods. */
 				if (rating <= 127 && waiting != 0) {
 					uint32_t r = Random();
-					if (rating <= (int)GB(r, 0, 7)) {
+					if (rating <= static_cast<int>(GB(r, 0, 7))) {
 						/* Need to have int, otherwise it will just overflow etc. */
-						waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+						waiting = std::max(static_cast<int>(waiting) - static_cast<int>((GB(r, 8, 2) - 1) * num_dests), 0);
 						waiting_changed = true;
 					}
 				}
@@ -4877,16 +4877,16 @@ void FlowStat::ChangeShare(StationID st, int flow)
 		if (it.second == st) {
 			if (flow < 0) {
 				uint share = it.first - last_share;
-				if (flow == INT_MIN || (uint)(-flow) >= share) {
+				if (flow == INT_MIN || static_cast<uint>(-flow) >= share) {
 					removed_shares += share;
 					if (it.first <= this->unrestricted) this->unrestricted -= share;
 					if (flow != INT_MIN) flow += share;
 					last_share = it.first;
 					continue; // remove the whole share
 				}
-				removed_shares += (uint)(-flow);
+				removed_shares += static_cast<uint>(-flow);
 			} else {
-				added_shares += (uint)(flow);
+				added_shares += static_cast<uint>(flow);
 			}
 			if (it.first <= this->unrestricted) this->unrestricted += flow;
 
@@ -4898,7 +4898,7 @@ void FlowStat::ChangeShare(StationID st, int flow)
 		last_share = it.first;
 	}
 	if (flow > 0) {
-		new_shares[last_share + (uint)flow] = st;
+		new_shares[last_share + static_cast<uint>(flow)] = st;
 		if (this->unrestricted < last_share) {
 			this->ReleaseShare(st);
 		} else {
@@ -5047,8 +5047,8 @@ void FlowStatMap::FinalizeLocalConsumption(StationID self)
 			fs.ChangeShare(StationID::Invalid(), -INT_MAX);
 			local -= INT_MAX;
 		}
-		fs.ChangeShare(self, -(int)local);
-		fs.ChangeShare(StationID::Invalid(), -(int)local);
+		fs.ChangeShare(self, -static_cast<int>(local));
+		fs.ChangeShare(StationID::Invalid(), -static_cast<int>(local));
 
 		/* If the local share is used up there must be a share for some
 		 * remote station. */

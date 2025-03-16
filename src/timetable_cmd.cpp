@@ -314,7 +314,7 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 {
 	VehicleOrderID a_order = a->cur_real_order_index;
 	VehicleOrderID b_order = b->cur_real_order_index;
-	int j = (int)b_order - (int)a_order;
+	int j = static_cast<int>(b_order) - static_cast<int>(a_order);
 
 	/* Are we currently at an ordered station (un)loading? */
 	bool a_load = a->current_order.IsType(OT_LOADING) && a->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
@@ -328,7 +328,7 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 	if (!b_load) b_order--;
 
 	/* First check the order index that accounted for loading, then just the raw one. */
-	int i = (int)b_order - (int)a_order;
+	int i = static_cast<int>(b_order) - static_cast<int>(a_order);
 	if (i != 0) return i < 0;
 	if (j != 0) return j < 0;
 
@@ -385,7 +385,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool ti
 			vehs.push_back(v);
 		}
 
-		int num_vehs = (uint)vehs.size();
+		int num_vehs = static_cast<uint>(vehs.size());
 
 		if (num_vehs >= 2) {
 			std::sort(vehs.begin(), vehs.end(), &VehicleTimetableSorter);

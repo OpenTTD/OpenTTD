@@ -294,10 +294,10 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags,
 			TileIndex t = it.first;
 			int height = it.second;
 
-			SetTileHeight(t, (uint)height);
+			SetTileHeight(t, static_cast<uint>(height));
 		}
 
-		if (c != nullptr) c->terraform_limit -= (uint32_t)ts.tile_to_new_height.size() << 16;
+		if (c != nullptr) c->terraform_limit -= static_cast<uint32_t>(ts.tile_to_new_height.size()) << 16;
 	}
 	return { total_cost, 0, total_cost.Succeeded() ? tile : INVALID_TILE };
 }

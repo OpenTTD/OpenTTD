@@ -141,7 +141,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			/* Draw the % complete with a bar and a text */
 			DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
-			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
+			DrawFrameRect(ir.WithWidth(static_cast<uint64_t>(ir.Width()) * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
 			DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)),
 				GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, this->downloaded_bytes, this->total_bytes, this->downloaded_bytes * 100LL / this->total_bytes),
 				TC_FROMSTRING, SA_HOR_CENTER);
@@ -593,7 +593,7 @@ public:
 			}
 
 			case WID_NCL_MATRIX:
-				resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				resize.height = std::max(this->checkbox_size.height, static_cast<uint>(GetCharacterHeight(FS_NORMAL))) + padding.height;
 				size.height = 10 * resize.height;
 				break;
 		}
@@ -775,7 +775,7 @@ public:
 		if (widget >= WID_NCL_TEXTFILE && widget < WID_NCL_TEXTFILE + TFT_CONTENT_END) {
 			if (this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE) return;
 
-			ShowContentTextfileWindow((TextfileType)(widget - WID_NCL_TEXTFILE), this->selected);
+			ShowContentTextfileWindow(static_cast<TextfileType>(widget - WID_NCL_TEXTFILE), this->selected);
 			return;
 		}
 
@@ -807,7 +807,7 @@ public:
 			case WID_NCL_NAME:
 				if (this->content.SortType() == widget - WID_NCL_CHECKBOX) {
 					this->content.ToggleSortOrder();
-					if (!this->content.empty()) this->list_pos = (int)this->content.size() - this->list_pos - 1;
+					if (!this->content.empty()) this->list_pos = static_cast<int>(this->content.size()) - this->list_pos - 1;
 				} else {
 					this->content.SetSortType(widget - WID_NCL_CHECKBOX);
 					this->content.ForceResort();

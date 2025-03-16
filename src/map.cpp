@@ -63,8 +63,8 @@
 TileIndex TileAdd(TileIndex tile, TileIndexDiff offset)
 {
 	int dx = offset & Map::MaxX();
-	if (dx >= (int)Map::SizeX() / 2) dx -= Map::SizeX();
-	int dy = (offset - dx) / (int)Map::SizeX();
+	if (dx >= static_cast<int>(Map::SizeX()) / 2) dx -= Map::SizeX();
+	int dy = (offset - dx) / static_cast<int>(Map::SizeX());
 
 	uint32_t x = TileX(tile) + dx;
 	uint32_t y = TileY(tile) + dy;

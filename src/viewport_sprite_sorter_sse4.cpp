@@ -99,8 +99,8 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 			prev = x++;
 
 			/* Check that p->xmin <= s->xmax && p->ymin <= s->ymax && p->zmin <= s->zmax */
-			__m128i s_max = LOAD_128((__m128i*) &s->xmax);
-			__m128i p_min = LOAD_128((__m128i*) &p->xmin);
+			__m128i s_max = LOAD_128(reinterpret_cast<__m128i*>(&s->xmax));
+			__m128i p_min = LOAD_128(reinterpret_cast<__m128i*>(&p->xmin));
 			__m128i r1 = _mm_cmplt_epi32(s_max, p_min);
 			if (!_mm_testz_si128(mask_ptest, r1))
 				continue;
@@ -108,8 +108,8 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 			/* Check if sprites overlap, i.e.
 			 * s->xmin <= p->xmax && s->ymin <= p->ymax && s->zmin <= p->zmax
 			 */
-			__m128i s_min = LOAD_128((__m128i*) &s->xmin);
-			__m128i p_max = LOAD_128((__m128i*) &p->xmax);
+			__m128i s_min = LOAD_128(reinterpret_cast<__m128i*>(&s->xmin));
+			__m128i p_max = LOAD_128(reinterpret_cast<__m128i*>(&p->xmax));
 			__m128i r2 = _mm_cmplt_epi32(p_max, s_min);
 			if (_mm_testz_si128(mask_ptest, r2)) {
 				/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of

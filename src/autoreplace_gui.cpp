@@ -634,7 +634,7 @@ public:
 				break;
 
 			case WID_RV_RAIL_TYPE_DROPDOWN: {
-				RailType temp = (RailType)index;
+				RailType temp = static_cast<RailType>(index);
 				if (temp == this->sel_railtype) return; // we didn't select a new one. No need to change anything
 				this->sel_railtype = temp;
 				this->OnRailRoadTypeChange();
@@ -642,7 +642,7 @@ public:
 			}
 
 			case WID_RV_ROAD_TYPE_DROPDOWN: {
-				RoadType temp = (RoadType)index;
+				RoadType temp = static_cast<RoadType>(index);
 				if (temp == this->sel_roadtype) return; // we didn't select a new one. No need to change anything
 				this->sel_roadtype = temp;
 				this->OnRailRoadTypeChange();

@@ -640,19 +640,19 @@ struct GameOptionsWindow : Window {
 		if (widget >= WID_GO_BASE_GRF_TEXTFILE && widget < WID_GO_BASE_GRF_TEXTFILE + TFT_CONTENT_END) {
 			if (BaseGraphics::GetUsedSet() == nullptr) return;
 
-			ShowBaseSetTextfileWindow((TextfileType)(widget - WID_GO_BASE_GRF_TEXTFILE), BaseGraphics::GetUsedSet(), STR_CONTENT_TYPE_BASE_GRAPHICS);
+			ShowBaseSetTextfileWindow(static_cast<TextfileType>(widget - WID_GO_BASE_GRF_TEXTFILE), BaseGraphics::GetUsedSet(), STR_CONTENT_TYPE_BASE_GRAPHICS);
 			return;
 		}
 		if (widget >= WID_GO_BASE_SFX_TEXTFILE && widget < WID_GO_BASE_SFX_TEXTFILE + TFT_CONTENT_END) {
 			if (BaseSounds::GetUsedSet() == nullptr) return;
 
-			ShowBaseSetTextfileWindow((TextfileType)(widget - WID_GO_BASE_SFX_TEXTFILE), BaseSounds::GetUsedSet(), STR_CONTENT_TYPE_BASE_SOUNDS);
+			ShowBaseSetTextfileWindow(static_cast<TextfileType>(widget - WID_GO_BASE_SFX_TEXTFILE), BaseSounds::GetUsedSet(), STR_CONTENT_TYPE_BASE_SOUNDS);
 			return;
 		}
 		if (widget >= WID_GO_BASE_MUSIC_TEXTFILE && widget < WID_GO_BASE_MUSIC_TEXTFILE + TFT_CONTENT_END) {
 			if (BaseMusic::GetUsedSet() == nullptr) return;
 
-			ShowBaseSetTextfileWindow((TextfileType)(widget - WID_GO_BASE_MUSIC_TEXTFILE), BaseMusic::GetUsedSet(), STR_CONTENT_TYPE_BASE_MUSIC);
+			ShowBaseSetTextfileWindow(static_cast<TextfileType>(widget - WID_GO_BASE_MUSIC_TEXTFILE), BaseMusic::GetUsedSet(), STR_CONTENT_TYPE_BASE_MUSIC);
 			return;
 		}
 		switch (widget) {
@@ -899,7 +899,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_RESOLUTION_DROPDOWN: // Change resolution
-				if ((uint)index < _resolutions.size() && ChangeResInGame(_resolutions[index].width, _resolutions[index].height)) {
+				if (static_cast<uint>(index) < _resolutions.size() && ChangeResInGame(_resolutions[index].width, _resolutions[index].height)) {
 					this->SetDirty();
 				}
 				break;
@@ -1227,7 +1227,7 @@ struct GameSettingsWindow : Window {
 
 	GameSettingsWindow(WindowDesc &desc) : Window(desc), filter_editbox(50)
 	{
-		this->filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
+		this->filter.mode = static_cast<RestrictionMode>(_settings_client.gui.settings_restriction_mode);
 		this->filter.min_cat = RM_ALL;
 		this->filter.type = ST_ALL;
 		this->filter.type_hides = false;
@@ -1255,7 +1255,7 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL:
-				resize.height = SETTING_HEIGHT = std::max({(int)_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
+				resize.height = SETTING_HEIGHT = std::max({static_cast<int>(_circle_size.height), SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
 				resize.width = 1;
 
 				size.height = 5 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
@@ -1635,7 +1635,7 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
-				this->filter.mode = (RestrictionMode)index;
+				this->filter.mode = static_cast<RestrictionMode>(index);
 				if (this->filter.mode == RM_CHANGED_AGAINST_DEFAULT ||
 						this->filter.mode == RM_CHANGED_AGAINST_NEW) {
 
@@ -1652,7 +1652,7 @@ struct GameSettingsWindow : Window {
 				break;
 
 			case WID_GS_TYPE_DROPDOWN:
-				this->filter.type = (SettingType)index;
+				this->filter.type = static_cast<SettingType>(index);
 				this->InvalidateData();
 				break;
 
@@ -1807,8 +1807,8 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 	int colour = GetColourGradient(button_colour, SHADE_DARKER);
 	Dimension dim = NWidgetScrollbar::GetHorizontalDimension();
 
-	Rect lr = {x,                  y, x + (int)dim.width     - 1, y + (int)dim.height - 1};
-	Rect rr = {x + (int)dim.width, y, x + (int)dim.width * 2 - 1, y + (int)dim.height - 1};
+	Rect lr = {x,                  y, x + static_cast<int>(dim.width)     - 1, y + static_cast<int>(dim.height) - 1};
+	Rect rr = {x + static_cast<int>(dim.width), y, x + static_cast<int>(dim.width) * 2 - 1, y + static_cast<int>(dim.height) - 1};
 
 	DrawFrameRect(lr, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
 	DrawFrameRect(rr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
@@ -1906,14 +1906,14 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_RATE_UP:
 			case WID_CC_YEAR_DOWN:
 			case WID_CC_YEAR_UP:
-				size = maxdim(size, {(uint)SETTING_BUTTON_WIDTH / 2, (uint)SETTING_BUTTON_HEIGHT});
+				size = maxdim(size, {static_cast<uint>SETTING_BUTTON_WIDTH / 2, static_cast<uint>SETTING_BUTTON_HEIGHT});
 				break;
 
 			/* Set the appropriate width for the edit buttons. */
 			case WID_CC_SEPARATOR_EDIT:
 			case WID_CC_PREFIX_EDIT:
 			case WID_CC_SUFFIX_EDIT:
-				size = maxdim(size, {(uint)SETTING_BUTTON_WIDTH, (uint)SETTING_BUTTON_HEIGHT});
+				size = maxdim(size, {static_cast<uint>SETTING_BUTTON_WIDTH, static_cast<uint>SETTING_BUTTON_HEIGHT});
 				break;
 
 			/* Make sure the window is wide enough for the widest exchange rate */

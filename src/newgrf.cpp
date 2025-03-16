@@ -760,7 +760,7 @@ static TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, 
 {
 	grf_sprite->sprite = buf.ReadWord();
 	grf_sprite->pal = buf.ReadWord();
-	TileLayoutFlags flags = read_flags ? (TileLayoutFlags)buf.ReadWord() : TLF_NOTHING;
+	TileLayoutFlags flags = read_flags ? static_cast<TileLayoutFlags>(buf.ReadWord()) : TLF_NOTHING;
 
 	MapSpriteMappingRecolour(grf_sprite);
 
@@ -993,7 +993,7 @@ static void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_locatio
 		return;
 	}
 
-	*index = (Price)((base_pointer - start) / size);
+	*index = static_cast<Price>((base_pointer - start) / size);
 }
 
 /** Possible return values for the FeatureChangeInfo functions */
@@ -2186,7 +2186,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				if (_cur.grffile->grf_version >= 7) {
 					statspec->cargo_triggers = TranslateRefitMask(buf.ReadDWord());
 				} else {
-					statspec->cargo_triggers = (CargoTypes)buf.ReadDWord();
+					statspec->cargo_triggers = static_cast<CargoTypes>(buf.ReadDWord());
 				}
 				break;
 
@@ -2582,7 +2582,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 			}
 
 			case 0x09: // Building flags
-				housespec->building_flags = (BuildingFlags)buf.ReadByte();
+				housespec->building_flags = BuildingFlags(buf.ReadByte());
 				break;
 
 			case 0x0A: { // Availability years
@@ -2635,7 +2635,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				break;
 
 			case 0x13: // Building availability mask
-				housespec->building_availability = (HouseZones)buf.ReadWord();
+				housespec->building_availability = static_cast<HouseZones>(buf.ReadWord());
 				break;
 
 			case 0x14: { // House callback mask
@@ -3500,7 +3500,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 			}
 
 			case 0x0D: // Land shape flags
-				tsp->slopes_refused = (Slope)buf.ReadByte();
+				tsp->slopes_refused = static_cast<Slope>(buf.ReadByte());
 				break;
 
 			case 0x0E: // Callback mask
@@ -3535,7 +3535,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 					if (i < num_cargoes) {
 						tsp->accepts_cargo[i] = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
 						/* Tile acceptance can be negative to counteract the IndustryTileSpecialFlag::AcceptsAllCargo flag */
-						tsp->acceptance[i] = (int8_t)buf.ReadByte();
+						tsp->acceptance[i] = static_cast<int8_t>(buf.ReadByte());
 					} else {
 						tsp->accepts_cargo[i] = INVALID_CARGO;
 						tsp->acceptance[i] = 0;
@@ -3825,8 +3825,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 								it.gfx = tempid;
 							}
 						} else if (it.gfx == GFX_WATERTILE_SPECIALCHECK) {
-							it.ti.x = (int8_t)GB(it.ti.x, 0, 8);
-							it.ti.y = (int8_t)GB(it.ti.y, 0, 8);
+							it.ti.x = static_cast<int8_t>(GB(it.ti.x, 0, 8));
+							it.ti.y = static_cast<int8_t>(GB(it.ti.y, 0, 8));
 
 							/* When there were only 256x256 maps, TileIndex was a uint16_t and
 							 * it.ti was just a TileIndexDiff that was added to it.
@@ -4184,7 +4184,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 				break;
 
 			case 0x0D:
-				as->ttd_airport_type = (TTDPAirportType)buf.ReadByte();
+				as->ttd_airport_type = static_cast<TTDPAirportType>(buf.ReadByte());
 				break;
 
 			case 0x0E:
@@ -4345,7 +4345,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x10: // Flags
-				spec->flags = (ObjectFlags)buf.ReadWord();
+				spec->flags = ObjectFlags(buf.ReadWord());
 				_loaded_newgrf_features.has_2CC |= spec->flags.Test(ObjectFlag::Uses2CC);
 				break;
 
@@ -5062,7 +5062,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 			}
 
 			case 0x09: // Road stop type
-				rs->stop_type = (RoadStopAvailabilityType)buf.ReadByte();
+				rs->stop_type = static_cast<RoadStopAvailabilityType>(buf.ReadByte());
 				break;
 
 			case 0x0A: // Road Stop Name
@@ -5487,7 +5487,7 @@ static void NewSpriteGroup(ByteReader &buf)
 				DeterministicSpriteGroupAdjust &adjust = group->adjusts.emplace_back();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust.operation = group->adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf.ReadByte();
+				adjust.operation = group->adjusts.size() == 1 ? DSGA_OP_ADD : static_cast<DeterministicSpriteGroupAdjustOperation>(buf.ReadByte());
 				adjust.variable  = buf.ReadByte();
 				if (adjust.variable == 0x7E) {
 					/* Link subroutine group */
@@ -5498,7 +5498,7 @@ static void NewSpriteGroup(ByteReader &buf)
 
 				varadjust = buf.ReadByte();
 				adjust.shift_num = GB(varadjust, 0, 5);
-				adjust.type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
+				adjust.type      = static_cast<DeterministicSpriteGroupAdjustType>(GB(varadjust, 6, 2));
 				adjust.and_mask  = buf.ReadVarSize(varsize);
 
 				if (adjust.type != DSGA_TYPE_NONE) {
@@ -5693,7 +5693,7 @@ static void NewSpriteGroup(ByteReader &buf)
 				case GSF_OBJECTS:
 				case GSF_INDUSTRYTILES:
 				case GSF_ROADSTOPS: {
-					uint8_t num_building_sprites = std::max((uint8_t)1, type);
+					uint8_t num_building_sprites = std::max(static_cast<uint8_t>(1), type);
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
@@ -5719,7 +5719,7 @@ static void NewSpriteGroup(ByteReader &buf)
 					if (type == 0) {
 						group->num_input = INDUSTRY_ORIGINAL_NUM_INPUTS;
 						for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_INPUTS; i++) {
-							group->subtract_input[i] = (int16_t)buf.ReadWord(); // signed
+							group->subtract_input[i] = static_cast<int16_t>(buf.ReadWord()); // signed
 						}
 						group->num_output = INDUSTRY_ORIGINAL_NUM_OUTPUTS;
 						for (uint i = 0; i < INDUSTRY_ORIGINAL_NUM_OUTPUTS; i++) {
@@ -5878,7 +5878,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, uint8_t feature, uint8_t idco
 	std::vector<EngineID> engines;
 	engines.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, buf.ReadExtendedByte());
+		Engine *e = GetNewEngine(_cur.grffile, static_cast<VehicleType>(feature), buf.ReadExtendedByte());
 		if (e == nullptr) {
 			/* No engine could be allocated?!? Deal with it. Okay,
 			 * this might look bad. Also make sure this NewGRF
@@ -6608,7 +6608,7 @@ static void FeatureNewName(ByteReader &buf)
 			case GSF_SHIPS:
 			case GSF_AIRCRAFT:
 				if (!generic) {
-					Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, id, _cur.grfconfig->flags.Test(GRFConfigFlag::Static));
+					Engine *e = GetNewEngine(_cur.grffile, static_cast<VehicleType>(feature), id, _cur.grfconfig->flags.Test(GRFConfigFlag::Static));
 					if (e == nullptr) break;
 					StringID string = AddGRFString(_cur.grffile->grfid, GRFStringID{feature_overlay | e->index.base()}, lang, new_scheme, false, name, e->info.string_id);
 					e->info.string_id = string;
@@ -7909,22 +7909,22 @@ static void ParamSet(ByteReader &buf)
 			break;
 
 		case 0x04:
-			res = (int32_t)src1 * (int32_t)src2;
+			res = static_cast<int32_t>(src1) * static_cast<int32_t>(src2);
 			break;
 
 		case 0x05:
-			if ((int32_t)src2 < 0) {
-				res = src1 >> -(int32_t)src2;
+			if (static_cast<int32_t>(src2) < 0) {
+				res = src1 >> -static_cast<int32_t>(src2);
 			} else {
 				res = src1 << (src2 & 0x1F); // Same behaviour as in EvalAdjustT, mask 'value' to 5 bits, which should behave the same on all architectures.
 			}
 			break;
 
 		case 0x06:
-			if ((int32_t)src2 < 0) {
-				res = (int32_t)src1 >> -(int32_t)src2;
+			if (static_cast<int32_t>(src2) < 0) {
+				res = static_cast<int32_t>(src1) >> -static_cast<int32_t>(src2);
 			} else {
-				res = (int32_t)src1 << (src2 & 0x1F); // Same behaviour as in EvalAdjustT, mask 'value' to 5 bits, which should behave the same on all architectures.
+				res = static_cast<int32_t>(src1) << (src2 & 0x1F); // Same behaviour as in EvalAdjustT, mask 'value' to 5 bits, which should behave the same on all architectures.
 			}
 			break;
 
@@ -7948,7 +7948,7 @@ static void ParamSet(ByteReader &buf)
 			if (src2 == 0) {
 				res = src1;
 			} else {
-				res = (int32_t)src1 / (int32_t)src2;
+				res = static_cast<int32_t>(src1) / static_cast<int32_t>(src2);
 			}
 			break;
 
@@ -7964,7 +7964,7 @@ static void ParamSet(ByteReader &buf)
 			if (src2 == 0) {
 				res = src1;
 			} else {
-				res = (int32_t)src1 % (int32_t)src2;
+				res = static_cast<int32_t>(src1) % static_cast<int32_t>(src2);
 			}
 			break;
 
@@ -8342,7 +8342,7 @@ static void LoadFontGlyph(ByteReader &buf)
 	uint8_t num_def = buf.ReadByte();
 
 	for (uint i = 0; i < num_def; i++) {
-		FontSize size    = (FontSize)buf.ReadByte();
+		FontSize size    = static_cast<FontSize>(buf.ReadByte());
 		uint8_t  num_char  = buf.ReadByte();
 		uint16_t base_char = buf.ReadWord();
 
@@ -8576,7 +8576,7 @@ static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 		GrfMsg(2, "StaticGRFInfo: expected 1 byte for 'INFO'->'PARA'->'TYPE' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
-		GRFParameterType type = (GRFParameterType)buf.ReadByte();
+		GRFParameterType type = static_cast<GRFParameterType>(buf.ReadByte());
 		if (type < PTYPE_END) {
 			_cur_parameter->type = type;
 		} else {
@@ -9449,7 +9449,7 @@ static void CalculateRefitMasks()
 
 			if (!IsValidCargoType(ei->cargo_type)) {
 				/* Use first refittable cargo slot */
-				ei->cargo_type = (CargoType)FindFirstBit(ei->refit_mask);
+				ei->cargo_type = static_cast<CargoType>(FindFirstBit(ei->refit_mask));
 			}
 		}
 		if (!IsValidCargoType(ei->cargo_type) && e->type == VEH_TRAIN && e->u.rail.railveh_type != RAILVEH_WAGON && e->u.rail.capacity == 0) {
@@ -9712,7 +9712,7 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	HouseZones climate_mask = (HouseZones)(1 << (to_underlying(_settings_game.game_creation.landscape) + 12));
+	HouseZones climate_mask = static_cast<HouseZones>(1 << (to_underlying(_settings_game.game_creation.landscape) + 12));
 	EnsureEarlyHouse(HZ_ZON1 | climate_mask);
 	EnsureEarlyHouse(HZ_ZON2 | climate_mask);
 	EnsureEarlyHouse(HZ_ZON3 | climate_mask);
@@ -10096,7 +10096,7 @@ static void FinalisePriceBaseMultipliers()
 	static const uint32_t override_features = (1 << GSF_TRAINS) | (1 << GSF_ROADVEHICLES) | (1 << GSF_SHIPS) | (1 << GSF_AIRCRAFT);
 
 	/* Evaluate grf overrides */
-	int num_grfs = (uint)_grf_files.size();
+	int num_grfs = static_cast<uint>(_grf_files.size());
 	std::vector<int> grf_overrides(num_grfs, -1);
 	for (int i = 0; i < num_grfs; i++) {
 		GRFFile *source = _grf_files[i];

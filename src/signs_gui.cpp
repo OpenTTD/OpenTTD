@@ -264,7 +264,7 @@ struct SignListWindow : Window, SignList {
 				Dimension spr_dim = GetSpriteSize(SPR_COMPANY_ICON);
 				this->text_offset = WidgetDimensions::scaled.frametext.left + spr_dim.width + 2; // 2 pixels space between icon and the sign text.
 				resize.height = std::max<uint>(GetCharacterHeight(FS_NORMAL), spr_dim.height + 2);
-				Dimension d = {(uint)(this->text_offset + WidgetDimensions::scaled.frametext.right), padding.height + 5 * resize.height};
+				Dimension d = {static_cast<uint>(this->text_offset + WidgetDimensions::scaled.frametext.right), padding.height + 5 * resize.height};
 				size = maxdim(size, d);
 				break;
 			}

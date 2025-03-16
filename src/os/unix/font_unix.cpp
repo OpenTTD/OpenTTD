@@ -79,13 +79,13 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 				FcPatternGetInteger(fs->fonts[i], FC_INDEX, 0, &index) == FcResultMatch) {
 
 				/* The correct style? */
-				if (!font_style.empty() && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
+				if (!font_style.empty() && !StrEqualsIgnoreCase(font_style, reinterpret_cast<char *>(style))) continue;
 
 				/* Font config takes the best shot, which, if the family name is spelled
 				 * wrongly a 'random' font, so check whether the family name is the
 				 * same as the supplied name */
-				if (StrEqualsIgnoreCase(font_family, (char *)family)) {
-					err = FT_New_Face(_library, (char *)file, index, face);
+				if (StrEqualsIgnoreCase(font_family, reinterpret_cast<char *>(family))) {
+					err = FT_New_Face(_library, reinterpret_cast<char *>(file), index, face);
 				}
 			}
 		}
@@ -113,7 +113,7 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	std::string lang = fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
 
 	/* First create a pattern to match the wanted language. */
-	FcPattern *pat = FcNameParse((const FcChar8 *)lang.c_str());
+	FcPattern *pat = FcNameParse(reinterpret_cast<const FcChar8 *>(lang.c_str()));
 	/* We only want to know these attributes. */
 	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_INDEX, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
 	/* Get the list of filenames matching the wanted language. */
@@ -155,14 +155,14 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 			res = FcPatternGetInteger(font, FC_INDEX, 0, &index);
 			if (res != FcResultMatch) continue;
 
-			callback->SetFontNames(settings, (const char *)file, &index);
+			callback->SetFontNames(settings, reinterpret_cast<const char *>(file), &index);
 
 			bool missing = callback->FindMissingGlyphs();
 			Debug(fontcache, 1, "Font \"{}\" misses{} glyphs", (char *)file, missing ? "" : " no");
 
 			if (!missing) {
 				best_weight = value;
-				best_font = (const char *)file;
+				best_font = reinterpret_cast<const char *>(file);
 				best_index = index;
 			}
 		}

@@ -84,16 +84,16 @@
 	Backup<CompanyID> cur_company(_current_company);
 	for (const Company *c : Company::Iterate()) {
 		if (c->is_ai) {
-			PerformanceMeasurer framerate((PerformanceElement)(PFE_AI0 + c->index));
+			PerformanceMeasurer framerate(static_cast<PerformanceElement>(PFE_AI0 + c->index));
 			cur_company.Change(c->index);
 			c->ai_instance->GameLoop();
 			/* Occasionally collect garbage; every 255 ticks do one company.
 			 * Effectively collecting garbage once every two months per AI. */
-			if ((AI::frame_counter & 255) == 0 && (CompanyID)GB(AI::frame_counter, 8, 4) == c->index) {
+			if ((AI::frame_counter & 255) == 0 && CompanyID(GB(AI::frame_counter, 8, 4)) == c->index) {
 				c->ai_instance->CollectGarbage();
 			}
 		} else {
-			PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + c->index));
+			PerformanceMeasurer::SetInactive(static_cast<PerformanceElement>(PFE_AI0 + c->index));
 		}
 	}
 	cur_company.Restore();
@@ -107,7 +107,7 @@
 /* static */ void AI::Stop(CompanyID company)
 {
 	if (_networking && !_network_server) return;
-	PerformanceMeasurer::SetInactive((PerformanceElement)(PFE_AI0 + company));
+	PerformanceMeasurer::SetInactive(static_cast<PerformanceElement>(PFE_AI0 + company));
 
 	Backup<CompanyID> cur_company(_current_company, company);
 	Company *c = Company::Get(company);

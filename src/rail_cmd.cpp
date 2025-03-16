@@ -103,8 +103,8 @@ void ResolveRailTypeGUISprites(RailTypeInfo *rti)
 		 SPR_IMG_SIGNAL_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_PBS,   SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY},
 	};
 
-	for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = (SignalType)(type + 1)) {
-		for (SignalVariant var = SIG_ELECTRIC; var <= SIG_SEMAPHORE; var = (SignalVariant)(var + 1)) {
+	for (SignalType type = SIGTYPE_BLOCK; type < SIGTYPE_END; type = static_cast<SignalType>(type + 1)) {
+		for (SignalVariant var = SIG_ELECTRIC; var <= SIG_SEMAPHORE; var = static_cast<SignalVariant>(var + 1)) {
 			SpriteID red   = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_RED, true);
 			SpriteID green = GetCustomSignalSprite(rti, INVALID_TILE, type, var, SIGNAL_STATE_GREEN, true);
 			rti->gui_sprites.signals[type][var][0] = (red != 0)   ? red + SIGNAL_TO_SOUTH   : _signal_lookup[var][type];
@@ -159,11 +159,11 @@ RailType AllocateRailType(RailTypeLabel label)
 			rti->alternate_labels.clear();
 
 			/* Make us compatible with ourself. */
-			rti->powered_railtypes    = (RailTypes)(1LL << rt);
-			rti->compatible_railtypes = (RailTypes)(1LL << rt);
+			rti->powered_railtypes    = static_cast<RailTypes>(1LL << rt);
+			rti->compatible_railtypes = static_cast<RailTypes>(1LL << rt);
 
 			/* We also introduce ourself. */
-			rti->introduces_railtypes = (RailTypes)(1LL << rt);
+			rti->introduces_railtypes = static_cast<RailTypes>(1LL << rt);
 
 			/* Default sort order; order of allocation, but with some
 			 * offsets so it's easier for NewGRF to pick a spot without
@@ -405,7 +405,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	}
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
-	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price[PR_BUILD_FOUNDATION] : (Money)0);
+	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price[PR_BUILD_FOUNDATION] : Money(0));
 }
 
 /* Validate functions for rail building */
@@ -1053,7 +1053,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 	if (sigtype > SIGTYPE_LAST || sigvar > SIG_SEMAPHORE) return CMD_ERROR;
 	if (cycle_start > cycle_stop || cycle_stop > SIGTYPE_LAST) return CMD_ERROR;
 
-	if (ctrl_pressed) sigvar = (SignalVariant)(sigvar ^ SIG_SEMAPHORE);
+	if (ctrl_pressed) sigvar = static_cast<SignalVariant>(sigvar ^ SIG_SEMAPHORE);
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
@@ -1148,7 +1148,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 
 				} else if (ctrl_pressed) {
 					/* cycle between cycle_start and cycle_end */
-					sigtype = (SignalType)(GetSignalType(tile, track) + 1);
+					sigtype = static_cast<SignalType>(GetSignalType(tile, track) + 1);
 
 					if (sigtype < cycle_start || sigtype > cycle_stop) sigtype = cycle_start;
 
@@ -2356,10 +2356,10 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 				DrawGroundSprite(_track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
 			}
 		}
-		if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_N ? -(int)TILE_HEIGHT : 0);
-		if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_S ? -(int)TILE_HEIGHT : 0);
-		if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_W ? -(int)TILE_HEIGHT : 0);
-		if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_E ? -(int)TILE_HEIGHT : 0);
+		if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_N ? -static_cast<int>(TILE_HEIGHT) : 0);
+		if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_S ? -static_cast<int>(TILE_HEIGHT) : 0);
+		if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_W ? -static_cast<int>(TILE_HEIGHT) : 0);
+		if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_E ? -static_cast<int>(TILE_HEIGHT) : 0);
 	}
 
 	if (IsValidCorner(halftile_corner)) {
@@ -2379,7 +2379,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasReservedTracks(ti->tile, CornerToTrackBits(halftile_corner))) {
 			static const uint8_t _corner_to_track_sprite[] = {3, 1, 2, 0};
-			DrawGroundSprite(_corner_to_track_sprite[halftile_corner] + rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, -(int)TILE_HEIGHT);
+			DrawGroundSprite(_corner_to_track_sprite[halftile_corner] + rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, -static_cast<int>(TILE_HEIGHT));
 		}
 	}
 }
@@ -2921,10 +2921,10 @@ int TicksToLeaveDepot(const Train *v)
 	int length = v->CalcNextVehicleOffset();
 
 	switch (dir) {
-		case DIAGDIR_NE: return  ((int)(v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) - (length + 1)));
-		case DIAGDIR_SE: return -((int)(v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   + (length + 1)));
-		case DIAGDIR_SW: return -((int)(v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) + (length + 1)));
-		case DIAGDIR_NW: return  ((int)(v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   - (length + 1)));
+		case DIAGDIR_NE: return  ((v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) - (length + 1)));
+		case DIAGDIR_SE: return -((v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   + (length + 1)));
+		case DIAGDIR_SW: return -((v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) + (length + 1)));
+		case DIAGDIR_NW: return  ((v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   - (length + 1)));
 		default: NOT_REACHED();
 	}
 }
@@ -3070,7 +3070,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int
 		if (tileh_old != SLOPE_NS && tileh_old != SLOPE_EW && IsSpecialRailFoundation(f_old)) return autoslope_result;
 
 		/* Everything is valid, which only changes allowed_corner */
-		for (Corner corner = (Corner)0; corner < CORNER_END; corner = (Corner)(corner + 1)) {
+		for (Corner corner = static_cast<Corner>(0); corner < CORNER_END; corner = static_cast<Corner>(corner + 1)) {
 			if (allowed_corner == corner) continue;
 			if (z_old + GetSlopeZInCorner(tileh_old, corner) != z_new + GetSlopeZInCorner(tileh_new, corner)) return autoslope_result;
 		}
@@ -3079,7 +3079,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int
 		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RAIL_GROUND_BARREN);
 
 		/* allow terraforming */
-		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[PR_CLEAR_WATER] : (Money)0);
+		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price[PR_CLEAR_WATER] : Money(0));
 	} else if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() &&
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
 		return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);

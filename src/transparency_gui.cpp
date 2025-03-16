@@ -75,11 +75,11 @@ public:
 		if (widget >= WID_TT_BEGIN && widget < WID_TT_END) {
 			if (_ctrl_pressed) {
 				/* toggle the bit of the transparencies lock variable */
-				ToggleTransparencyLock((TransparencyOption)(widget - WID_TT_BEGIN));
+				ToggleTransparencyLock(static_cast<TransparencyOption>(widget - WID_TT_BEGIN));
 				this->SetDirty();
 			} else {
 				/* toggle the bit of the transparencies variable and play a sound */
-				ToggleTransparency((TransparencyOption)(widget - WID_TT_BEGIN));
+				ToggleTransparency(static_cast<TransparencyOption>(widget - WID_TT_BEGIN));
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				MarkWholeScreenDirty();
 			}
@@ -93,11 +93,11 @@ public:
 			}
 			if (i == WID_TT_TEXT|| i == WID_TT_END) return;
 
-			ToggleInvisibility((TransparencyOption)(i - WID_TT_BEGIN));
+			ToggleInvisibility(static_cast<TransparencyOption>(i - WID_TT_BEGIN));
 			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 
 			/* Redraw whole screen only if transparency is set */
-			if (IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN))) {
+			if (IsTransparencySet(static_cast<TransparencyOption>(i - WID_TT_BEGIN))) {
 				MarkWholeScreenDirty();
 			} else {
 				this->SetWidgetDirty(WID_TT_BUTTONS);
@@ -121,7 +121,7 @@ public:
 	{
 		if (!gui_scope) return;
 		for (WidgetID i = WID_TT_BEGIN; i < WID_TT_END; i++) {
-			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - WID_TT_BEGIN)));
+			this->SetWidgetLoweredState(i, IsTransparencySet(static_cast<TransparencyOption>(i - WID_TT_BEGIN)));
 		}
 	}
 };

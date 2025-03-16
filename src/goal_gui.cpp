@@ -105,7 +105,7 @@ struct GoalListWindow : public Window {
 			case GT_COMPANY:
 				/* s->dst here is not a tile, but a CompanyID.
 				 * Show the window with the overview of the company instead. */
-				ShowCompany((CompanyID)s->dst);
+				ShowCompany(CompanyID(s->dst));
 				return;
 
 			case GT_TILE:
@@ -310,7 +310,7 @@ static WindowDesc _goals_list_desc(
  */
 void ShowGoalsList(CompanyID company)
 {
-	if (!Company::IsValidID(company)) company = (CompanyID)CompanyID::Invalid();
+	if (!Company::IsValidID(company)) company = static_cast<CompanyID>(CompanyID::Invalid());
 
 	AllocateWindowDescFront<GoalListWindow>(_goals_list_desc, company);
 }

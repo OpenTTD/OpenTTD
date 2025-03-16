@@ -52,7 +52,7 @@
 {
 	const Industry *i = Industry::GetIfValid(industry_id);
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
-	return (ScriptDate::Date)i->construction_date.base();
+	return static_cast<ScriptDate::Date>(i->construction_date.base());
 }
 
 /* static */ bool ScriptIndustry::SetText(IndustryID industry_id, Text *text)
@@ -232,11 +232,11 @@
 
 	if (!::IsValidCargoType(cargo_type)) {
 		auto it = std::max_element(std::begin(i->accepted), std::end(i->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
-		return (ScriptDate::Date)it->last_accepted.base();
+		return static_cast<ScriptDate::Date>(it->last_accepted.base());
 	} else {
 		auto it = i->GetCargoAccepted(cargo_type);
 		if (it == std::end(i->accepted)) return ScriptDate::DATE_INVALID;
-		return (ScriptDate::Date)it->last_accepted.base();
+		return static_cast<ScriptDate::Date>(it->last_accepted.base());
 	}
 }
 
@@ -271,7 +271,7 @@
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
 
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
-	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
+	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : ::Owner(company));
 	return ScriptObject::Command<CMD_INDUSTRY_SET_EXCLUSIVITY>::Do(industry_id, owner, false);
 }
 
@@ -291,7 +291,7 @@
 	EnforcePrecondition(false, IsValidIndustry(industry_id));
 
 	auto company = ScriptCompany::ResolveCompanyID(company_id);
-	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
+	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : ::Owner(company));
 	return ScriptObject::Command<CMD_INDUSTRY_SET_EXCLUSIVITY>::Do(industry_id, owner, true);
 }
 

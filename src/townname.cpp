@@ -653,7 +653,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		}
 
 		/* Localize the array segment containing a good gender */
-		for (ending = 0; ending < (int)std::size(_name_czech_subst_ending); ending++) {
+		for (ending = 0; ending < static_cast<int>(std::size(_name_czech_subst_ending)); ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
 			if (gender == CZG_FREE ||
@@ -684,7 +684,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		assert(i > 0);
 
 		/* Load the ending */
-		ending = map[SeedModChance(16, (int)i, seed)];
+		ending = map[SeedModChance(16, static_cast<int>(i), seed)];
 		/* Override possible CZG_*FREE; this must be a real gender,
 		 * otherwise we get overflow when modifying the adjectivum. */
 		gender = _name_czech_subst_ending[ending].gender;

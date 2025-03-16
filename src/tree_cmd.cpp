@@ -179,7 +179,7 @@ static void PlaceTree(TileIndex tile, uint32_t r)
 		/* Rerandomize ground, if neither snow nor shore */
 		TreeGround ground = GetTreeGround(tile);
 		if (ground != TREE_GROUND_SNOW_DESERT && ground != TREE_GROUND_ROUGH_SNOW && ground != TREE_GROUND_SHORE) {
-			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
+			SetTreeGroundDensity(tile, static_cast<TreeGround>(GB(r, 28, 1)), 3);
 		}
 	}
 }
@@ -559,7 +559,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 					continue;
 				}
 
-				TreeType treetype = (TreeType)tree_to_plant;
+				TreeType treetype = static_cast<TreeType>(tree_to_plant);
 				/* Be a bit picky about which trees go where. */
 				if (_settings_game.game_creation.landscape == LandscapeType::Tropic && treetype != TREE_INVALID && (
 						/* No cacti outside the desert */
@@ -693,7 +693,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		uint mi = 0;
 
 		for (uint i = 1; i < trees; i++) {
-			if ((uint)(te[i].x + te[i].y) < min) {
+			if (static_cast<uint>(te[i].x + te[i].y) < min) {
 				min = te[i].x + te[i].y;
 				mi = i;
 			}

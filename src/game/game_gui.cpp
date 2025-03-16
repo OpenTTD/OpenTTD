@@ -226,19 +226,19 @@ struct GSConfigWindow : public Window {
 		if (widget >= WID_GSC_TEXTFILE && widget < WID_GSC_TEXTFILE + TFT_CONTENT_END) {
 			if (GameConfig::GetConfig() == nullptr) return;
 
-			ShowScriptTextfileWindow((TextfileType)(widget - WID_GSC_TEXTFILE), (CompanyID)OWNER_DEITY);
+			ShowScriptTextfileWindow(static_cast<TextfileType>(widget - WID_GSC_TEXTFILE), CompanyID(OWNER_DEITY));
 			return;
 		}
 
 		switch (widget) {
 			case WID_GSC_GSLIST: {
 				this->InvalidateData();
-				if (click_count > 1 && _game_mode != GM_NORMAL) ShowScriptListWindow((CompanyID)OWNER_DEITY, _ctrl_pressed);
+				if (click_count > 1 && _game_mode != GM_NORMAL) ShowScriptListWindow(CompanyID(OWNER_DEITY), _ctrl_pressed);
 				break;
 			}
 
 			case WID_GSC_CHANGE:  // choose other Game Script
-				ShowScriptListWindow((CompanyID)OWNER_DEITY, _ctrl_pressed);
+				ShowScriptListWindow(CompanyID(OWNER_DEITY), _ctrl_pressed);
 				break;
 
 			case WID_GSC_CONTENT_DOWNLOAD:
@@ -394,7 +394,7 @@ struct GSConfigWindow : public Window {
 		const GameConfig *config = GameConfig::GetConfig();
 		this->SetWidgetDisabledState(WID_GSC_OPEN_URL, config->GetInfo() == nullptr || config->GetInfo()->GetURL().empty());
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
-			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !config->GetTextfile(tft, (CompanyID)OWNER_DEITY).has_value());
+			this->SetWidgetDisabledState(WID_GSC_TEXTFILE + tft, !config->GetTextfile(tft, CompanyID(OWNER_DEITY)).has_value());
 		}
 		this->RebuildVisibleSettings();
 		this->CloseChildWindows(WC_DROPDOWN_MENU);

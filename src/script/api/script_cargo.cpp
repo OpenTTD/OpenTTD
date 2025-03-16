@@ -24,7 +24,7 @@
 
 /* static */ bool ScriptCargo::IsValidTownEffect(TownEffect towneffect_type)
 {
-	return (towneffect_type >= (TownEffect)TAE_BEGIN && towneffect_type < (TownEffect)TAE_END);
+	return (towneffect_type >= static_cast<TownEffect>(TAE_BEGIN) && towneffect_type < static_cast<TownEffect>(TAE_END));
 }
 
 /* static */ std::optional<std::string> ScriptCargo::GetName(CargoType cargo_type)
@@ -43,7 +43,7 @@
 	 * like "PASS", "COAL", "OIL_". New ones can be defined by NewGRFs */
 	std::string cargo_label;
 	for (uint i = 0; i < sizeof(cargo->label); i++) {
-		cargo_label.push_back(GB(cargo->label.base(), (uint8_t)(sizeof(cargo->label) - i - 1) * 8, 8));
+		cargo_label.push_back(GB(cargo->label.base(), static_cast<uint8_t>(sizeof(cargo->label) - i - 1) * 8, 8));
 	}
 	return cargo_label;
 }
@@ -65,7 +65,7 @@
 {
 	if (!IsValidCargo(cargo_type)) return TE_NONE;
 
-	return (ScriptCargo::TownEffect)::CargoSpec::Get(cargo_type)->town_acceptance_effect;
+	return static_cast<ScriptCargo::TownEffect>(::CargoSpec::Get(cargo_type)->town_acceptance_effect);
 }
 
 /* static */ Money ScriptCargo::GetCargoIncome(CargoType cargo_type, SQInteger distance, SQInteger days_in_transit)
@@ -80,7 +80,7 @@
 /* static */ ScriptCargo::DistributionType ScriptCargo::GetDistributionType(CargoType cargo_type)
 {
 	if (!ScriptCargo::IsValidCargo(cargo_type)) return INVALID_DISTRIBUTION_TYPE;
-	return (ScriptCargo::DistributionType)_settings_game.linkgraph.GetDistributionType(cargo_type);
+	return static_cast<ScriptCargo::DistributionType>(_settings_game.linkgraph.GetDistributionType(cargo_type));
 }
 
 /* static */ SQInteger ScriptCargo::GetWeight(CargoType cargo_type, SQInteger amount)

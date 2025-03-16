@@ -22,8 +22,8 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 	uint8_t *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
-	src_line = (const uint8_t *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
-	dst_line = (uint8_t *)bp->dst + bp->top * bp->pitch + bp->left;
+	src_line = static_cast<const uint8_t *>(bp->sprite) + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	dst_line = static_cast<uint8_t *>(bp->dst) + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
 		dst = dst_line;
