@@ -30,15 +30,24 @@
 
 /* static */ bool ScriptGoal::IsValidGoalDestination(ScriptCompany::CompanyID company, GoalType type, SQInteger destination)
 {
-	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
-	StoryPage *story_page = nullptr;
-	if (type == GT_STORY_PAGE && ScriptStoryPage::IsValidStoryPage(static_cast<StoryPageID>(destination))) story_page = ::StoryPage::Get(static_cast<StoryPageID>(destination));
-	return (type == GT_NONE && destination == 0) ||
-			(type == GT_TILE && ScriptMap::IsValidTile(::TileIndex(destination))) ||
-			(type == GT_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(destination))) ||
-			(type == GT_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(destination))) ||
-			(type == GT_COMPANY && ScriptCompany::ResolveCompanyID(ScriptCompany::ToScriptCompanyID(static_cast<::CompanyID>(destination))) != ScriptCompany::COMPANY_INVALID) ||
-			(type == GT_STORY_PAGE && story_page != nullptr && (c == CompanyID::Invalid() ? story_page->company == CompanyID::Invalid() : story_page->company == CompanyID::Invalid() || story_page->company == c));
+	switch (type) {
+		case GT_NONE: return destination == 0;
+		case GT_TILE: return ScriptMap::IsValidTile(::TileIndex(destination));
+		case GT_INDUSTRY: return ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(destination));
+		case GT_TOWN: return ScriptTown::IsValidTown(static_cast<TownID>(destination));
+		case GT_COMPANY: return ScriptCompany::ResolveCompanyID(ScriptCompany::ToScriptCompanyID(static_cast<::CompanyID>(destination))) != ScriptCompany::COMPANY_INVALID;
+		case GT_STORY_PAGE: {
+			if (!ScriptStoryPage::IsValidStoryPage(static_cast<StoryPageID>(destination))) return false;
+
+			StoryPage *story_page = ::StoryPage::Get(static_cast<StoryPageID>(destination));
+			if (story_page->company == CompanyID::Invalid()) return true;
+
+			::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
+			return c != CompanyID::Invalid() && story_page->company == c;
+		}
+
+		default: return false;
+	}
 }
 
 /* static */ GoalID ScriptGoal::New(ScriptCompany::CompanyID company, Text *goal, GoalType type, SQInteger destination)
