@@ -207,12 +207,11 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 		case OT_GOTO_STATION:
 			return (order_flags & ~(OF_NON_STOP_FLAGS | OF_UNLOAD_FLAGS | OF_LOAD_FLAGS)) == 0 &&
 					/* Test the different mutual exclusive flags. */
-					((order_flags & OF_TRANSFER)      == 0 || (order_flags & OF_UNLOAD)    == 0) &&
-					((order_flags & OF_TRANSFER)      == 0 || (order_flags & OF_NO_UNLOAD) == 0) &&
-					((order_flags & OF_UNLOAD)        == 0 || (order_flags & OF_NO_UNLOAD) == 0) &&
-					((order_flags & OF_UNLOAD)        == 0 || (order_flags & OF_NO_UNLOAD) == 0) &&
-					((order_flags & OF_NO_UNLOAD)     == 0 || (order_flags & OF_NO_LOAD)   == 0) &&
-					((order_flags & OF_FULL_LOAD_ANY) == 0 || (order_flags & OF_NO_LOAD)   == 0);
+					HasAtMostOneBit(order_flags & (OF_TRANSFER | OF_UNLOAD | OF_NO_UNLOAD)) &&
+					HasAtMostOneBit(order_flags & (OF_NO_UNLOAD | OF_NO_LOAD)) &&
+					HasAtMostOneBit(order_flags & (OF_FULL_LOAD | OF_NO_LOAD)) &&
+					/* "Full load any" is "Full load" plus a bit. On its own that bit is invalid. */
+					((order_flags & OF_FULL_LOAD_ANY) != (OF_FULL_LOAD_ANY & ~OF_FULL_LOAD));
 
 		case OT_GOTO_DEPOT:
 			return (order_flags & ~(OF_NON_STOP_FLAGS | OF_DEPOT_FLAGS)) == 0 &&

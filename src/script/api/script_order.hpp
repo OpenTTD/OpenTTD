@@ -57,9 +57,9 @@ public:
 		/** Never unload the vehicle; only for stations. Cannot be set when OF_UNLOAD, OF_TRANSFER or OF_NO_LOAD is set. */
 		OF_NO_UNLOAD         = 1 << 4,
 
-		/** Wt till the vehicle is fully loaded; only for stations. Cannot be set when OF_NO_LOAD is set. */
+		/** Wait till the vehicle is fully loaded; only for stations. Cannot be set when OF_NO_LOAD is set. */
 		OF_FULL_LOAD         = 2 << 5,
-		/** Wt till at least one cargo of the vehicle is fully loaded; only for stations. Cannot be set when OF_NO_LOAD is set. */
+		/** Wait till at least one cargo of the vehicle is fully loaded; only for stations. Cannot be set when OF_NO_LOAD is set. */
 		OF_FULL_LOAD_ANY     = 3 << 5,
 		/** Do not load any cargo; only for stations. Cannot be set when OF_NO_UNLOAD, OF_FULL_LOAD or OF_FULL_LOAD_ANY is set. */
 		OF_NO_LOAD           = 1 << 7,
