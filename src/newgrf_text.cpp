@@ -711,7 +711,7 @@ struct TextRefStack {
 		uint16_t val = this->PopUnsignedByte();
 		return val | (this->PopUnsignedByte() << 8);
 	}
-	int16_t  PopSignedWord()    { return static_cast<int32_t>(this->PopUnsignedWord()); }
+	int16_t  PopSignedWord()    { return static_cast<int16_t>(this->PopUnsignedWord()); }
 
 	uint32_t PopUnsignedDWord()
 	{
