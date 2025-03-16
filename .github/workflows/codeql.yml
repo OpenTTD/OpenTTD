@@ -87,6 +87,7 @@ jobs:
       with:
         languages: cpp
         config-file: ./.github/codeql/codeql-config.yml
+        trap-caching: false
 
     - name: Build
       run: |
