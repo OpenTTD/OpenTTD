@@ -1133,6 +1133,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					} else {
 						str_stack.push(ptr);
 					}
+					case_index = next_substr_case_index;
+					next_substr_case_index = 0;
 					break;
 				}
 
