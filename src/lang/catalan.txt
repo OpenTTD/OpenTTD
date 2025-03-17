@@ -2651,7 +2651,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha canviat el seu nom a {STRING}.
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha donat {CURRENCY_LONG} a {STRING}.
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha tancat la sessió
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor està reiniciant...{}Espera un moment...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor es reinicia...{}{}Espereu un moment...
 STR_NETWORK_MESSAGE_KICKED                                      :*** S'ha expulsat {STRING}. Motiu: {STRING}
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}El registre al servidor ha fallat.
@@ -4796,12 +4796,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Segons fins que
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la durada desitjada de l'ordre. Amb Ctrl+clic, s'estableix el mateix temps a totes les ordres.
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Canvia el temps
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Esborra Temps
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra la quantitat de temps de l'ordre marcada. Amb Ctrl+clic, s'esborra el temps per a totes les ordres.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Canvia el límit de velocitat
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Canvia la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic, s'estableix la velocitat per a totes les ordres.
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Canvia el límit de velocitat
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Esborra el límit de velocitat
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada. Amb Ctrl+clic, s'esborra la velocitat per a totes les ordres.
@@ -4906,8 +4908,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de pantalla del minimapa
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de la partida
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Paràmetres d'IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Paràmetres de l'script de partida
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Restableix
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4968,7 +4970,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partida es va desar amb una versió sense suport de tramvies. S'han eliminat tots els tramvies
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}... no hi ha llocs adequats per a poblacions
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}{}... no hi ha llocs adequats per a les poblacions.
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hi ha poblacions en aquest escenari
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossible carregar un terreny des del PNG...
