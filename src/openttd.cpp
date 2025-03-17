@@ -872,9 +872,7 @@ static void MakeNewGameDone()
 	 * COLOUR_END corresponds to Random colour */
 
 	if (_settings_client.gui.starting_colour != COLOUR_END) {
-		c->colour = _settings_client.gui.starting_colour;
-		ResetCompanyLivery(c);
-		_company_colours[c->index] = c->colour;
+		Command<CMD_SET_COMPANY_COLOUR>::Post(LS_DEFAULT, true, _settings_client.gui.starting_colour);
 	}
 
 	if (_settings_client.gui.starting_colour_secondary != COLOUR_END && HasBit(_loaded_newgrf_features.used_liveries, LS_DEFAULT)) {
