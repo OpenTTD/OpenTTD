@@ -744,7 +744,7 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 			/* When we're at the clearing limit we better bail (unneed) testing as well. */
 			if (ret.GetCost() != 0 && --limit <= 0) break;
 		}
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 	}
 
 	return { had_success ? cost : last_error, 0 };

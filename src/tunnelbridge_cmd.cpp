@@ -402,16 +402,16 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		cost = ret;
 
 		if (terraform_cost_north.Failed() || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost.AddCost(terraform_cost_north);
+		cost.AddCost(terraform_cost_north.GetCost());
 
 		/* Try and clear the end landscape */
 		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_end);
 		if (ret.Failed()) return ret;
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 
 		/* false - end tile slope check */
 		if (terraform_cost_south.Failed() || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost.AddCost(terraform_cost_south);
+		cost.AddCost(terraform_cost_south.GetCost());
 
 		const TileIndex heads[] = {tile_start, tile_end};
 		for (int i = 0; i < 2; i++) {
@@ -479,7 +479,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 					/* try and clear the middle landscape */
 					ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 					if (ret.Failed()) return ret;
-					cost.AddCost(ret);
+					cost.AddCost(ret.GetCost());
 					break;
 			}
 
@@ -697,7 +697,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 
 	/* Add the cost of the entrance */
 	cost.AddCost(_price[PR_BUILD_TUNNEL]);
-	cost.AddCost(ret);
+	cost.AddCost(ret.GetCost());
 
 	/* if the command fails from here on we want the end tile to be highlighted */
 	_build_tunnel_endtile = end_tile;
@@ -709,7 +709,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 	/* Clear the tile in any case */
 	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, end_tile);
 	if (ret.Failed()) return CommandCost(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
-	cost.AddCost(ret);
+	cost.AddCost(ret.GetCost());
 
 	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {
@@ -742,7 +742,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		ret = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(flags, end_tile, end_tileh & start_tileh, false));
 		_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
 		if (ret.Failed()) return CommandCost(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 	}
 	cost.AddCost(_price[PR_BUILD_TUNNEL]);
 

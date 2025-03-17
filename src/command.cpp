@@ -398,11 +398,12 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
  * Also takes a possible error message when it is set.
  * @param ret The command to add the cost of.
  */
-void CommandCost::AddCost(const CommandCost &ret)
+void CommandCost::AddCost(CommandCost &&ret)
 {
 	this->AddCost(ret.cost);
 	if (this->success && !ret.success) {
 		this->message = ret.message;
+		this->encoded_message = std::move(ret.encoded_message);
 		this->success = false;
 	}
 }

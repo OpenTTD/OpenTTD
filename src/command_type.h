@@ -100,7 +100,7 @@ public:
 		this->cost += cost;
 	}
 
-	void AddCost(const CommandCost &cmd_cost);
+	void AddCost(CommandCost &&cmd_cost);
 
 	/**
 	 * Multiplies the cost of the command by the given factor.

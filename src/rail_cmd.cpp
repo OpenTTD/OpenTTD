@@ -447,7 +447,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 
 			ret = CheckRailSlope(tileh, trackbit, GetTrackBits(tile), tile);
 			if (ret.Failed()) return ret;
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 
 			if (HasSignals(tile) && TracksOverlap(GetTrackBits(tile) | TrackToTrackBits(track))) {
 				/* If adding the new track causes any overlap, all signals must be removed first */
@@ -457,7 +457,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 					if (HasTrack(tile, track_it) && HasSignalOnTrack(tile, track_it)) {
 						CommandCost ret_remove_signals = Command<CMD_REMOVE_SINGLE_SIGNAL>::Do(flags, tile, track_it);
 						if (ret_remove_signals.Failed()) return ret_remove_signals;
-						cost.AddCost(ret_remove_signals);
+						cost.AddCost(ret_remove_signals.GetCost());
 					}
 				}
 			}
@@ -469,7 +469,7 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 				if (HasPowerOnRail(GetRailType(tile), railtype)) {
 					ret = Command<CMD_CONVERT_RAIL>::Do(flags, tile, tile, railtype, false);
 					if (ret.Failed()) return ret;
-					cost.AddCost(ret);
+					cost.AddCost(ret.GetCost());
 				} else {
 					return CMD_ERROR;
 				}
@@ -571,11 +571,11 @@ CommandCost CmdBuildSingleRail(DoCommandFlags flags, TileIndex tile, RailType ra
 
 			CommandCost ret = CheckRailSlope(tileh, trackbit, TRACK_BIT_NONE, tile);
 			if (ret.Failed()) return ret;
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 
 			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 			if (ret.Failed()) return ret;
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 
 			if (water_ground) {
 				cost.AddCost(-_price[PR_CLEAR_WATER]);
@@ -901,7 +901,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 			if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
 		} else {
 			had_success = true;
-			total_cost.AddCost(ret);
+			total_cost.AddCost(ret.GetCost());
 		}
 
 		if (tile == end_tile) break;
@@ -1330,7 +1330,7 @@ static CommandCost CmdSignalTrackHelper(DoCommandFlags flags, TileIndex tile, Ti
 
 		if (ret.Succeeded()) {
 			had_success = true;
-			total_cost.AddCost(ret);
+			total_cost.AddCost(ret.GetCost());
 		} else {
 			/* The "No railway" error is the least important one. */
 			if (ret.GetErrorMessage() != STR_ERROR_THERE_IS_NO_RAILROAD_TRACK ||
@@ -1824,7 +1824,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlags flags)
 				Track track = RemoveFirstTrack(&tracks);
 				CommandCost ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, track);
 				if (ret.Failed()) return ret;
-				cost.AddCost(ret);
+				cost.AddCost(ret.GetCost());
 			}
 
 			/* When bankrupting, don't make water dirty, there could be a ship on lower halftile.
