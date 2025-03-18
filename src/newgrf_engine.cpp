@@ -1100,7 +1100,7 @@ void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction directio
 	result->Clear();
 
 	bool sprite_stack = EngInfo(engine)->misc_flags.Test(EngineMiscFlag::SpriteStack);
-	uint max_stack = sprite_stack ? lengthof(result->seq) : 1;
+	uint max_stack = sprite_stack ? static_cast<uint>(std::size(result->seq)) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
 		object.ResetState();
 		object.callback_param1 = image_type | (stack << 8);
@@ -1134,7 +1134,7 @@ void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, EngineIma
 	uint rotor_pos = v == nullptr || rotor_in_gui ? 0 : v->Next()->Next()->state;
 
 	bool sprite_stack = e->info.misc_flags.Test(EngineMiscFlag::SpriteStack);
-	uint max_stack = sprite_stack ? lengthof(result->seq) : 1;
+	uint max_stack = sprite_stack ? static_cast<uint>(std::size(result->seq)) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
 		object.ResetState();
 		object.callback_param1 = image_type | (stack << 8);

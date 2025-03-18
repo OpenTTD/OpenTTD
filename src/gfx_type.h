@@ -22,6 +22,8 @@ typedef uint32_t CursorID;  ///< The number of the cursor (sprite)
 struct PalSpriteID {
 	SpriteID sprite{};  ///< The 'real' sprite
 	PaletteID pal{};    ///< The palette (use \c PAL_NONE) if not needed)
+
+	auto operator<=>(const PalSpriteID&) const = default;
 };
 
 enum WindowKeyCodes : uint16_t {
