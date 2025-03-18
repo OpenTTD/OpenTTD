@@ -171,7 +171,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 			/* Refit only one vehicle. If we purchased an engine, it may have gained free wagons. */
 			CommandCost cc;
 			std::tie(cc, refitted_capacity, refitted_mail_capacity, cargo_capacities) = CmdRefitVehicle(flags, v->index, cargo, 0, false, false, 1);
-			value.AddCost(cc);
+			value.AddCost(std::move(cc));
 		} else {
 			/* Fill in non-refitted capacities */
 			if (e->type == VEH_TRAIN || e->type == VEH_ROAD) {
@@ -452,7 +452,7 @@ static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle 
 			}
 			continue;
 		}
-		cost.AddCost(refit_cost);
+		cost.AddCost(std::move(refit_cost));
 
 		/* Record the refitting.
 		 * Do not execute the refitting immediately, so DetermineCapacity and GetRefitCost do the same in test and exec run.
@@ -720,7 +720,7 @@ CommandCost CmdDepotSellAllVehicles(DoCommandFlags flags, TileIndex tile, Vehicl
 	for (const Vehicle *v : list) {
 		CommandCost ret = Command<CMD_SELL_VEHICLE>::Do(flags, v->index, true, false, INVALID_CLIENT_ID);
 		if (ret.Succeeded()) {
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 			had_success = true;
 		} else {
 			last_error = std::move(ret);
@@ -754,7 +754,7 @@ CommandCost CmdDepotMassAutoReplace(DoCommandFlags flags, TileIndex tile, Vehicl
 
 		CommandCost ret = Command<CMD_AUTOREPLACE_VEHICLE>::Do(flags, v->index);
 
-		if (ret.Succeeded()) cost.AddCost(ret);
+		if (ret.Succeeded()) cost.AddCost(ret.GetCost());
 	}
 	return cost;
 }
@@ -900,7 +900,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 			return { cost, VehicleID::Invalid() };
 		}
 
-		total_cost.AddCost(cost);
+		total_cost.AddCost(cost.GetCost());
 
 		if (flags.Test(DoCommandFlag::Execute)) {
 			w = Vehicle::Get(new_veh_id);
@@ -961,7 +961,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 				uint8_t subtype = GetBestFittingSubType(v, w, v->cargo_type);
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
 					CommandCost cost = std::get<0>(Command<CMD_REFIT_VEHICLE>::Do(flags, w->index, v->cargo_type, subtype, false, true, 0));
-					if (cost.Succeeded()) total_cost.AddCost(cost);
+					if (cost.Succeeded()) total_cost.AddCost(cost.GetCost());
 				}
 
 				if (w->IsGroundVehicle() && w->HasArticulatedPart()) {

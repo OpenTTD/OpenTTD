@@ -538,10 +538,10 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlags flags, bool wago
 			ReplaceChainItem &replacement = replacements.emplace_back(w, nullptr, 0);
 
 			CommandCost ret = BuildReplacementVehicle(replacement.old_veh, &replacement.new_veh, true, flags);
-			cost.AddCost(ret);
+			replacement.cost = ret.GetCost();
+			cost.AddCost(std::move(ret));
 			if (cost.Failed()) break;
 
-			replacement.cost = ret.GetCost();
 			if (replacement.new_veh != nullptr) *nothing_to_do = false;
 		}
 		Vehicle *new_head = replacements.front().GetVehicle();
@@ -602,7 +602,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlags flags, bool wago
 							break;
 						}
 
-						cost.AddCost(res);
+						cost.AddCost(std::move(res));
 						if (cost.Failed()) break;
 					} else {
 						/* We have reached 'last_engine', continue with the next engine towards the front */

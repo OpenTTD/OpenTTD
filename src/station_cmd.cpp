@@ -853,11 +853,11 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 	for (; tile_iter != INVALID_TILE; ++tile_iter) {
 		CommandCost ret = CheckBuildableTile(tile_iter, 0, allowed_z, true);
 		if (ret.Failed()) return ret;
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 
 		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_iter);
 		if (ret.Failed()) return ret;
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 	}
 
 	return cost;
@@ -889,7 +889,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 
 	CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z, false);
 	if (ret.Failed()) return ret;
-	cost.AddCost(ret);
+	cost.AddCost(ret.GetCost());
 
 	if (slope_cb) {
 		/* Do slope check if requested. */
@@ -934,7 +934,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 					}
 					ret = Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile_cur, track);
 					if (ret.Failed()) return ret;
-					cost.AddCost(ret);
+					cost.AddCost(ret.GetCost());
 					/* With DoCommandFlags{flags}.Reset(DoCommandFlag::Execute) CmdLandscapeClear would fail since the rail still exists */
 					return cost;
 				}
@@ -942,7 +942,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 		}
 		ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur);
 		if (ret.Failed()) return ret;
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 	}
 
 	return cost;
@@ -967,7 +967,7 @@ CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoCommandF
 
 	CommandCost ret = CheckBuildableTile(cur_tile, invalid_dirs, allowed_z, !is_drive_through);
 	if (ret.Failed()) return ret;
-	cost.AddCost(ret);
+	cost.AddCost(ret.GetCost());
 
 	/* If station is set, then we have special handling to allow building on top of already existing stations.
 	 * Station points to StationID::Invalid() if we can build on any station.
@@ -1060,7 +1060,7 @@ CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoCommandF
 		} else {
 			ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, cur_tile);
 			if (ret.Failed()) return ret;
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 			cost.AddCost(RoadBuildCost(rt) * 2);
 		}
 	}
@@ -1283,7 +1283,7 @@ static CommandCost CalculateRailStationCost(TileArea tile_area, DoCommandFlags f
 
 		/* AddCost for new or rotated rail stations. */
 		if (!IsRailStationTile(cur_tile) || (IsRailStationTile(cur_tile) && GetRailStationAxis(cur_tile) != axis)) {
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 			cost.AddCost(_price[PR_BUILD_STATION_RAIL]);
 			cost.AddCost(RailBuildCost(rt));
 
@@ -1652,8 +1652,8 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 
 		/* If there is a vehicle on ground, do not allow to remove (flood) the tile */
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
-		error.AddCost(ret);
-		if (ret.Failed()) continue;
+		error.AddCost(std::move(ret));
+		if (error.Failed()) continue;
 
 		/* Check ownership of station */
 		T *st = T::GetByTile(tile);
@@ -1661,8 +1661,8 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, std::vector<T *> &affected_st
 
 		if (_current_company != OWNER_WATER) {
 			ret = CheckOwnership(st->owner);
-			error.AddCost(ret);
-			if (ret.Failed()) continue;
+			error.AddCost(std::move(ret));
+			if (error.Failed()) continue;
 		}
 
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
@@ -1817,7 +1817,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlags flags, Money removal_cost)
 			std::vector<T*> affected_stations; // dummy
 			CommandCost ret = RemoveFromRailBaseStation(TileArea(tile, 1, 1), affected_stations, flags, removal_cost, false);
 			if (ret.Failed()) return ret;
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 		}
 	}
 
@@ -1933,7 +1933,7 @@ CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool
 
 		/* Only add costs if a stop doesn't already exist in the location */
 		if (!is_preexisting_roadstop) {
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 			cost.AddCost(unit_cost);
 		}
 	}
@@ -2346,7 +2346,7 @@ static CommandCost RemoveGenericRoadStop(DoCommandFlags flags, const TileArea &r
 			last_error = std::move(ret);
 			continue;
 		}
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 		had_success = true;
 
 		/* Restore roads. */
@@ -2806,7 +2806,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
 	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 	if (ret.Failed()) return ret;
-	cost.AddCost(ret);
+	cost.AddCost(ret.GetCost());
 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
@@ -2822,7 +2822,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 	bool add_cost = !IsWaterTile(tile_cur);
 	ret = Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile_cur);
 	if (ret.Failed()) return ret;
-	if (add_cost) cost.AddCost(ret);
+	if (add_cost) cost.AddCost(ret.GetCost());
 
 	tile_cur += TileOffsByDiagDir(direction);
 	if (!IsTileType(tile_cur, MP_WATER) || !IsTileFlat(tile_cur)) {

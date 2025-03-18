@@ -422,7 +422,7 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 			if (ret.GetCost() > 0 && money < 0) break;
 			Command<CMD_BUILD_OBJECT>::Do(flags, t, type, view);
 		}
-		cost.AddCost(ret);
+		cost.AddCost(ret.GetCost());
 	}
 
 	return had_success ? cost : last_error;

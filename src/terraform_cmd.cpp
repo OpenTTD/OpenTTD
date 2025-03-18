@@ -151,7 +151,7 @@ static std::tuple<CommandCost, TileIndex> TerraformTileHeight(TerraformerState *
 			height_diff += (height_diff < 0 ? 1 : -1);
 			auto [cost, err_tile] = TerraformTileHeight(ts, neighbour_tile, r + height_diff);
 			if (cost.Failed()) return { cost, err_tile };
-			total_cost.AddCost(cost);
+			total_cost.AddCost(cost.GetCost());
 		}
 	}
 
@@ -177,28 +177,28 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags,
 		TileIndex t = tile + TileDiffXY(1, 0);
 		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
 		if (cost.Failed()) return { cost, 0, err_tile };
-		total_cost.AddCost(cost);
+		total_cost.AddCost(cost.GetCost());
 	}
 
 	if ((slope & SLOPE_S) != 0 && tile + TileDiffXY(1, 1) < Map::Size()) {
 		TileIndex t = tile + TileDiffXY(1, 1);
 		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
 		if (cost.Failed()) return { cost, 0, err_tile };
-		total_cost.AddCost(cost);
+		total_cost.AddCost(cost.GetCost());
 	}
 
 	if ((slope & SLOPE_E) != 0 && tile + TileDiffXY(0, 1) < Map::Size()) {
 		TileIndex t = tile + TileDiffXY(0, 1);
 		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
 		if (cost.Failed()) return { cost, 0, err_tile };
-		total_cost.AddCost(cost);
+		total_cost.AddCost(cost.GetCost());
 	}
 
 	if ((slope & SLOPE_N) != 0) {
 		TileIndex t = tile + TileDiffXY(0, 0);
 		auto [cost, err_tile] = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
 		if (cost.Failed()) return { cost, 0, err_tile };
-		total_cost.AddCost(cost);
+		total_cost.AddCost(cost.GetCost());
 	}
 
 	/* Check if the terraforming is valid wrt. tunnels, bridges and objects on the surface
@@ -271,7 +271,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags,
 			if (cost.Failed()) {
 				return { cost, 0, t };
 			}
-			if (pass == 1) total_cost.AddCost(cost);
+			if (pass == 1) total_cost.AddCost(cost.GetCost());
 		}
 	}
 
@@ -374,7 +374,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 				}
 			}
 
-			cost.AddCost(ret);
+			cost.AddCost(ret.GetCost());
 			curh += (curh > h) ? -1 : 1;
 			had_success = true;
 		}
