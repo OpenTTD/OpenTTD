@@ -23,7 +23,6 @@
 #include "network/network.h"
 #include "saveload/saveload.h"
 #include "timer/timer_game_calendar.h"
-#include "core/mem_func.hpp"
 
 const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
 const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
@@ -120,12 +119,12 @@ struct VehicleCache {
 
 /** Sprite sequence for a vehicle part. */
 struct VehicleSpriteSeq {
-	PalSpriteID seq[8];
+	std::array<PalSpriteID, 8> seq;
 	uint count;
 
 	bool operator==(const VehicleSpriteSeq &other) const
 	{
-		return this->count == other.count && MemCmpT<PalSpriteID>(this->seq, other.seq, this->count) == 0;
+		return std::ranges::equal(std::span(this->seq.data(), this->count), std::span(other.seq.data(), other.count));
 	}
 
 	/**

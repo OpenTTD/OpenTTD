@@ -12,7 +12,6 @@
 #include "../fileio_type.h"
 #include "../string_func.h"
 #include "../core/endian_func.hpp"
-#include "../core/mem_func.hpp"
 #include "../base_media_base.h"
 #include "midi.h"
 
@@ -427,7 +426,7 @@ bool MidiFile::ReadSMFHeader(FileHandle &file, SMFHeader &header)
 
 	/* Check magic, 'MThd' followed by 4 byte length indicator (always = 6 in SMF) */
 	const uint8_t magic[] = { 'M', 'T', 'h', 'd', 0x00, 0x00, 0x00, 0x06 };
-	if (MemCmpT(buffer, magic, sizeof(magic)) != 0) {
+	if (std::ranges::equal(std::span(buffer, std::size(magic)), magic)) {
 		return false;
 	}
 
