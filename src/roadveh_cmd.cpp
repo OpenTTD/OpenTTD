@@ -617,8 +617,8 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 
 	RoadVehFindData *rvf = (RoadVehFindData*)data;
 
-	short x_diff = v->x_pos - rvf->x;
-	short y_diff = v->y_pos - rvf->y;
+	int x_diff = v->x_pos - rvf->x;
+	int y_diff = v->y_pos - rvf->y;
 
 	/* Not a close Road vehicle when it's not a road vehicle, in the depot, or ourself. */
 	if (v->type != VEH_ROAD || v->IsInDepot() || rvf->veh->First() == v->First()) return nullptr;
@@ -630,7 +630,7 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 	uint diff = abs(x_diff) + abs(y_diff);
 	if (diff > rvf->best_diff || (diff == rvf->best_diff && v->index > rvf->best->index)) return nullptr;
 
-	auto IsCloseOnAxis = [](short dist, short diff) {
+	auto IsCloseOnAxis = [](int dist, int diff) {
 		if (dist < 0) return diff > dist && diff <= 0;
 		return diff < dist && diff >= 0;
 	};
