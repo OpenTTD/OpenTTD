@@ -12,6 +12,7 @@
 - Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)
 - Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op
 - Tyler Trahan (2TallTyler) - General / Time Lord (since 13)
+- Richard Wheeler (zephyris) - Precision pixel production (since 15)
 
 ### Inactive Developers:
 

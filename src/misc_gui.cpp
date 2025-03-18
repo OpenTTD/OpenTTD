@@ -362,6 +362,7 @@ static const std::initializer_list<const std::string_view> _credits = {
 	"  Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)",
 	"  Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op",
 	"  Tyler Trahan (2TallTyler) - General / Time Lord (since 13)",
+	"  Richard Wheeler (zephyris) - Precision pixel production (since 15)",
 	"",
 	"Inactive Developers:",
 	"  Grzegorz Duczy\u0144ski (adf88) - General coding (1.7 - 1.8)",
