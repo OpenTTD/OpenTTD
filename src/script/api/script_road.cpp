@@ -111,7 +111,7 @@
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
 	/* Tiles not neighbouring */
-	if ((abs((int)::TileX(t1) - (int)::TileX(t2)) + abs((int)::TileY(t1) - (int)::TileY(t2))) != 1) return false;
+	if (::DistanceManhattan(t1, t2) != 1) return false;
 
 	RoadTramType rtt = ::GetRoadTramType(ScriptObject::GetRoadType());
 	RoadBits r1 = ::GetAnyRoadBits(t1, rtt); // TODO
