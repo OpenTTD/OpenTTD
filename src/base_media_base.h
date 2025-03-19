@@ -38,21 +38,25 @@ struct MD5File {
 	ChecksumResult CheckMD5(Subdirectory subdir, size_t max_size) const;
 };
 
+/** Defines the traits of a BaseSet type. */
+template <class T> struct BaseSetTraits;
+
 /**
  * Information about a single base set.
  * @tparam T the real class we're going to be
- * @tparam Tnum_files the number of files in the set
- * @tparam Tsearch_in_tars whether to search in the tars or not
  */
-template <class T, size_t Tnum_files, bool Tsearch_in_tars>
+template <class T>
 struct BaseSet {
 	typedef std::unordered_map<std::string, std::string> TranslatedStrings;
 
 	/** Number of files in this set */
-	static const size_t NUM_FILES = Tnum_files;
+	static constexpr size_t NUM_FILES = BaseSetTraits<T>::num_files;
 
 	/** Whether to search in the tars or not. */
-	static const bool SEARCH_IN_TARS = Tsearch_in_tars;
+	static constexpr bool SEARCH_IN_TARS = BaseSetTraits<T>::search_in_tars;
+
+	/** BaseSet type name. */
+	static constexpr std::string_view SET_TYPE = BaseSetTraits<T>::set_type;
 
 	/** Internal names of the files in this set. */
 	static const char * const *file_names;
@@ -64,7 +68,7 @@ struct BaseSet {
 	uint32_t version;                ///< The version of this base set
 	bool fallback;                 ///< This set is a fallback set, i.e. it should be used only as last resort
 
-	MD5File files[NUM_FILES];      ///< All files part of this set
+	MD5File files[BaseSet<T>::NUM_FILES]; ///< All files part of this set
 	uint found_files;              ///< Number of the files that could be found
 	uint valid_files;              ///< Number of the files that could be found and are valid
 
@@ -82,7 +86,7 @@ struct BaseSet {
 	 */
 	int GetNumMissing() const
 	{
-		return Tnum_files - this->found_files;
+		return BaseSet<T>::NUM_FILES - this->found_files;
 	}
 
 	/**
@@ -92,7 +96,7 @@ struct BaseSet {
 	 */
 	int GetNumInvalid() const
 	{
-		return Tnum_files - this->valid_files;
+		return BaseSet<T>::NUM_FILES - this->valid_files;
 	}
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);

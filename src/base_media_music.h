@@ -43,12 +43,18 @@ struct MusicSongInfo {
 	int override_end;        ///< MIDI tick to end the song at (0 if no override)
 };
 
+template <> struct BaseSetTraits<struct MusicSet> {
+	static constexpr size_t num_files = NUM_SONGS_AVAILABLE;
+	static constexpr bool search_in_tars = false;
+	static constexpr std::string_view set_type = "music";
+};
+
 /** All data of a music set. */
-struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
+struct MusicSet : BaseSet<MusicSet> {
 	/** Data about individual songs in set. */
 	MusicSongInfo songinfo[NUM_SONGS_AVAILABLE];
 	/** Number of valid songs in set. */
-	uint8_t num_available;
+	uint8_t num_available = 0;
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
 };

@@ -17,9 +17,6 @@
 #include "window_func.h"
 #include "window_gui.h"
 #include "vehicle_base.h"
-
-/* The type of set we're replacing */
-#define SET_TYPE "sounds"
 #include "base_media_func.h"
 #include "base_media_sounds.h"
 
@@ -256,8 +253,8 @@ INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<SoundsSet>, SoundsSet)
 static const char * const _sound_file_names[] = { "samples" };
 
 
-template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _sound_file_names;
+template <class T>
+/* static */ const char * const *BaseSet<T>::file_names = _sound_file_names;
 
 template <class Tbase_set>
 /* static */ const char *BaseMedia<Tbase_set>::GetExtension()
