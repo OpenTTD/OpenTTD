@@ -552,12 +552,12 @@ static GUIEngineList::FilterFunction * const _engine_filter_funcs[] = {
 static uint GetCargoWeight(const CargoArray &cap, VehicleType vtype)
 {
 	uint weight = 0;
-	for (CargoType c = 0; c < NUM_CARGO; c++) {
-		if (cap[c] != 0) {
+	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		if (cap[cargo] != 0) {
 			if (vtype == VEH_TRAIN) {
-				weight += CargoSpec::Get(c)->WeightOfNUnitsInTrain(cap[c]);
+				weight += CargoSpec::Get(cargo)->WeightOfNUnitsInTrain(cap[cargo]);
 			} else {
-				weight += CargoSpec::Get(c)->WeightOfNUnits(cap[c]);
+				weight += CargoSpec::Get(cargo)->WeightOfNUnits(cap[cargo]);
 			}
 		}
 	}

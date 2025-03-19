@@ -2761,11 +2761,11 @@ int WhoCanServiceIndustry(Industry *ind)
 /**
  * Report news that industry production has changed significantly
  *
- * @param ind: Industry with changed production
- * @param type: Cargo type that has changed
- * @param percent: Percentage of change (>0 means increase, <0 means decrease)
+ * @param ind Industry with changed production
+ * @param cargo Cargo type that has changed
+ * @param percent Percentage of change (>0 means increase, <0 means decrease)
  */
-static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType type, int percent)
+static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType cargo, int percent)
 {
 	NewsType nt;
 
@@ -2777,7 +2777,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType type, in
 	}
 	AddIndustryNewsItem(
 		GetEncodedString(percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
-			CargoSpec::Get(type)->name, ind->index, abs(percent)
+			CargoSpec::Get(cargo)->name, ind->index, abs(percent)
 		),
 		nt,
 		ind->index

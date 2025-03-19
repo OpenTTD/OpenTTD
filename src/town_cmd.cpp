@@ -535,7 +535,7 @@ static void AdvanceHouseConstruction(TileIndex tile)
  * @param stations Available stations for this house.
  * @param affected_by_recession Is this cargo halved during recessions?
  */
-static void TownGenerateCargo(Town *t, CargoType ct, uint amount, StationFinder &stations, bool affected_by_recession)
+static void TownGenerateCargo(Town *t, CargoType cargo, uint amount, StationFinder &stations, bool affected_by_recession)
 {
 	if (amount == 0) return;
 
@@ -548,8 +548,8 @@ static void TownGenerateCargo(Town *t, CargoType ct, uint amount, StationFinder 
 	amount = ScaleByCargoScale(amount, true);
 
 	/* Actually generate cargo and update town statistics. */
-	t->supplied[ct].new_max += amount;
-	t->supplied[ct].new_act += MoveGoodsToStation(ct, amount, {t->index, SourceType::Town}, stations.GetStations());;
+	t->supplied[cargo].new_max += amount;
+	t->supplied[cargo].new_act += MoveGoodsToStation(cargo, amount, {t->index, SourceType::Town}, stations.GetStations());;
 }
 
 /**
