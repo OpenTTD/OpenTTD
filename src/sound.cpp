@@ -21,6 +21,7 @@
 /* The type of set we're replacing */
 #define SET_TYPE "sounds"
 #include "base_media_func.h"
+#include "base_media_sounds.h"
 
 #include "safeguards.h"
 

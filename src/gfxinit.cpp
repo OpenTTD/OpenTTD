@@ -22,6 +22,8 @@
 /* The type of set we're replacing */
 #define SET_TYPE "graphics"
 #include "base_media_func.h"
+#include "base_media_graphics.h"
+#include "base_media_sounds.h"
 
 #include "table/sprites.h"
 
