@@ -251,10 +251,7 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 	while (matcher != std::sregex_iterator()) {
 		std::smatch match = *matcher;
 
-		Hyperlink link{};
-		link.line = line_index;
-		link.destination = match[2].str();
-		this->links.push_back(link);
+		Hyperlink &link = this->links.emplace_back(line_index, 0, 0, match[2].str());
 
 		HyperlinkType link_type = ClassifyHyperlink(link.destination, this->trusted);
 		StringControlCode link_colour;
@@ -277,11 +274,11 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 		if (link_colour != SCC_CONTROL_END) {
 			/* Format the link to look like a link. */
 			fixed_line += std::string(last_match_end, match[0].first);
-			this->links.back().begin = fixed_line.length();
+			link.begin = fixed_line.length();
 			fixed_line += std::string(ccbuf, Utf8Encode(ccbuf, SCC_PUSH_COLOUR));
 			fixed_line += std::string(ccbuf, Utf8Encode(ccbuf, link_colour));
 			fixed_line += match[1].str();
-			this->links.back().end = fixed_line.length();
+			link.end = fixed_line.length();
 			fixed_line += std::string(ccbuf, Utf8Encode(ccbuf, SCC_POP_COLOUR));
 			last_match_end = match[0].second;
 		}
@@ -358,7 +355,7 @@ void TextfileWindow::AppendHistory(const std::string &filepath)
 {
 	this->history.erase(this->history.begin() + this->history_pos + 1, this->history.end());
 	this->UpdateHistoryScrollpos();
-	this->history.push_back(HistoryEntry{ filepath, 0 });
+	this->history.emplace_back(filepath, 0);
 	this->EnableWidget(WID_TF_NAVBACK);
 	this->DisableWidget(WID_TF_NAVFORWARD);
 	this->history_pos = this->history.size() - 1;
@@ -519,7 +516,7 @@ void TextfileWindow::AfterLoadMarkdown()
 		if (!line.text.empty() && line.text[0] == '#') {
 			this->jumplist.push_back(line_index);
 			this->lines[line_index].colour = TC_GOLD;
-			this->link_anchors.emplace_back(Hyperlink{ line_index, 0, 0, MakeAnchorSlug(line.text) });
+			this->link_anchors.emplace_back(line_index, 0, 0, MakeAnchorSlug(line.text));
 		}
 	}
 }
@@ -791,7 +788,7 @@ static std::vector<char> Xunzip(std::span<char> input)
 	this->filepath = textfile;
 	this->filename = this->filepath.substr(this->filepath.find_last_of(PATHSEP) + 1);
 	/* If it's the first file being loaded, add to history. */
-	if (this->history.empty()) this->history.push_back(HistoryEntry{ this->filepath, 0 });
+	if (this->history.empty()) this->history.emplace_back(this->filepath, 0);
 
 	/* Process the loaded text into lines, and do any further parsing needed. */
 	this->LoadText(sv_buf);

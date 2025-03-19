@@ -558,7 +558,7 @@ ParsedCommandStruct ExtractCommandString(const char *s, bool)
 
 			p.consuming_commands[argidx++] = ar;
 		} else if (!ar->flags.Test(CmdFlag::DontCount)) { // Ignore some of them
-			p.non_consuming_commands.emplace_back(CmdPair{ar, std::move(param)});
+			p.non_consuming_commands.emplace_back(ar, std::move(param));
 		}
 	}
 

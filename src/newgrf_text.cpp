@@ -492,7 +492,7 @@ static void AddGRFTextToList(GRFTextList &list, uint8_t langid, std::string_view
 	}
 
 	/* If a string wasn't replaced, then we must append the new string */
-	list.push_back(GRFText{ langid, std::string(text_to_add) });
+	list.emplace_back(langid, std::string{text_to_add});
 }
 
 /**
