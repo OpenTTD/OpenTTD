@@ -26,6 +26,8 @@
 #include "newgrf_animation_base.h"
 #include "newgrf_sound.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 template <>

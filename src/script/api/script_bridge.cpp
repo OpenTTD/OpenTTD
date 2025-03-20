@@ -17,6 +17,7 @@
 #include "../../road_cmd.h"
 #include "../../tunnelbridge_cmd.h"
 #include "../../timer/timer_game_calendar.h"
+
 #include "table/strings.h"
 
 #include "../../safeguards.h"

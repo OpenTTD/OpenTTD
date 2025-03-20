@@ -37,6 +37,8 @@
 #include <mutex>
 #include <condition_variable>
 
+#include "table/strings.h"
+
 #include "../safeguards.h"
 
 

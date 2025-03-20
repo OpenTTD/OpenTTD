@@ -18,6 +18,8 @@
 #include "../../fios.h"
 #include "tcp_content.h"
 
+#include "table/strings.h"
+
 #include "../../safeguards.h"
 
 /**

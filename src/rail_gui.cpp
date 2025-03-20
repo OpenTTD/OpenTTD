@@ -48,6 +48,8 @@
 
 #include "widgets/rail_widget.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 

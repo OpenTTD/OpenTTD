@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "station_base.h"
+
 #include "table/strings.h"
 #include "table/airport_movement.h"
 #include "table/airporttile_ids.h"

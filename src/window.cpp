@@ -39,6 +39,8 @@
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 /** Values for _settings_client.gui.auto_scrolling */

@@ -19,6 +19,7 @@
 #include "../../autoreplace_cmd.h"
 #include "../../group_cmd.h"
 #include "../../settings_cmd.h"
+
 #include "table/strings.h"
 
 #include "../../safeguards.h"

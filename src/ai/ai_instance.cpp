@@ -10,6 +10,8 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../error.h"
+#include "../company_base.h"
+#include "../company_func.h"
 
 #include "../script/squirrel_class.hpp"
 
@@ -22,14 +24,13 @@
 #include "ai_info.hpp"
 #include "ai_instance.hpp"
 
+#include "table/strings.h"
+
 /* Manually include the Text glue. */
 #include "../script/api/template/template_text.hpp.sq"
 
 /* Convert all AI related classes to Squirrel data. */
 #include "../script/api/ai/ai_includes.hpp"
-
-#include "../company_base.h"
-#include "../company_func.h"
 
 #include "../safeguards.h"
 

@@ -18,6 +18,8 @@
 #include "../console_func.h"
 #include "../console_internal.h"
 
+#include "table/strings.h"
+
 /* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
 
 

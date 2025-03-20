@@ -46,6 +46,8 @@
 #include "hotkeys.h"
 #include "group_cmd.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 

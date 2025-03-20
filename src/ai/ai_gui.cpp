@@ -21,6 +21,7 @@
 #include "ai_config.hpp"
 #include "ai_info.hpp"
 #include "../script/script_gui.h"
+
 #include "table/strings.h"
 
 #include "../safeguards.h"

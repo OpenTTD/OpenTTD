@@ -43,6 +43,8 @@
 #include "thread.h"
 #include "tgp.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 

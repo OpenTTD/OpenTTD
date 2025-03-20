@@ -16,6 +16,8 @@
 #include "../string_func.h"
 #include <charconv>
 
+#include "table/strings.h"
+
 #include "../safeguards.h"
 
 void ScriptConfig::Change(std::optional<std::string> name, int version, bool force_exact_match)

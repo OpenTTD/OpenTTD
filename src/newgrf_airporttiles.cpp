@@ -18,9 +18,10 @@
 #include "landscape.h"
 #include "company_base.h"
 #include "town.h"
+#include "newgrf_animation_base.h"
+
 #include "table/strings.h"
 #include "table/airporttiles.h"
-#include "newgrf_animation_base.h"
 
 #include "safeguards.h"
 

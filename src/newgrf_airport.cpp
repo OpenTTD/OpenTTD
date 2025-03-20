@@ -17,6 +17,8 @@
 #include "newgrf_class_func.h"
 #include "town.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 /**

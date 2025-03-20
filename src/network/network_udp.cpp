@@ -26,6 +26,7 @@
 #include "../rev.h"
 #include "../newgrf_text.h"
 #include "../strings_func.h"
+
 #include "table/strings.h"
 
 #include "core/udp.h"

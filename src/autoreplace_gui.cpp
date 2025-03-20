@@ -33,6 +33,8 @@
 
 #include "widgets/autoreplace_widget.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)

@@ -20,6 +20,8 @@
 #include "widgets/help_widget.h"
 #include "widgets/misc_widget.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 static const std::string README_FILENAME = "README.md";

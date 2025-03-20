@@ -24,6 +24,8 @@
 #include <signal.h>
 #include <sys/stat.h>
 
+#include "table/strings.h"
+
 #include "../safeguards.h"
 
 #ifndef EXTERNAL_PLAYER
