@@ -18,6 +18,7 @@
 #include "../../station_base.h"
 #include "../../landscape.h"
 #include "../../town_cmd.h"
+
 #include "table/strings.h"
 
 #include "../../safeguards.h"

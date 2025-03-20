@@ -15,10 +15,9 @@
 #include "../town.h"
 #include "../newgrf.h"
 #include "../timer/timer_game_calendar.h"
+#include "saveload_internal.h"
 
 #include "table/strings.h"
-
-#include "saveload_internal.h"
 
 #include "../safeguards.h"
 

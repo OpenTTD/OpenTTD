@@ -45,6 +45,8 @@
 #include "../strings_type.h"
 #include "../newgrf_railtype.h"
 #include "../newgrf_roadtype.h"
+#include "saveload_internal.h"
+#include "saveload_filter.h"
 
 #include <atomic>
 #ifdef __EMSCRIPTEN__
@@ -52,9 +54,6 @@
 #endif
 
 #include "table/strings.h"
-
-#include "saveload_internal.h"
-#include "saveload_filter.h"
 
 #include "../safeguards.h"
 

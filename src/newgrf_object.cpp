@@ -24,6 +24,8 @@
 #include "water.h"
 #include "newgrf_animation_base.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 /** The override manager for our objects. */

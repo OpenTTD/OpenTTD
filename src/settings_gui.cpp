@@ -52,6 +52,8 @@
 #include "sound_func.h"
 #include "settingentry_gui.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 

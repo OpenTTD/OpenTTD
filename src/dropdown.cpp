@@ -20,6 +20,8 @@
 
 #include "widgets/dropdown_widget.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem()

@@ -67,6 +67,8 @@
 #include "network/network_gui.h"
 #include "network/network_func.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 

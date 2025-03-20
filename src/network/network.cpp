@@ -44,6 +44,8 @@
 #include <sstream>
 #include <iomanip>
 
+#include "table/strings.h"
+
 #include "../safeguards.h"
 
 #ifdef DEBUG_DUMP_COMMANDS

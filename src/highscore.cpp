@@ -15,8 +15,9 @@
 #include "fileio_func.h"
 #include "string_func.h"
 #include "strings_func.h"
-#include "table/strings.h"
 #include "debug.h"
+
+#include "table/strings.h"
 
 #include "safeguards.h"
 

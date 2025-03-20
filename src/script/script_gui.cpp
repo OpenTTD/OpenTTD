@@ -38,6 +38,7 @@
 #include "../game/game_config.hpp"
 #include "../game/game_info.hpp"
 #include "../game/game_instance.hpp"
+
 #include "table/strings.h"
 
 #include "../safeguards.h"

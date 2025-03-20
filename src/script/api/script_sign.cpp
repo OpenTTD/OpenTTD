@@ -9,13 +9,14 @@
 
 #include "../../stdafx.h"
 #include "script_sign.hpp"
-#include "table/strings.h"
 #include "../script_instance.hpp"
 #include "../../signs_base.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../tile_map.h"
 #include "../../signs_cmd.h"
+
+#include "table/strings.h"
 
 #include "../../safeguards.h"
 

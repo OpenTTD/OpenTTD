@@ -27,6 +27,8 @@
 #include "../network_internal.h"
 #include "packet.h"
 
+#include "table/strings.h"
+
 #include "../../safeguards.h"
 
 

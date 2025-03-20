@@ -71,6 +71,8 @@
 
 #include <signal.h>
 
+#include "table/strings.h"
+
 #include "../safeguards.h"
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());

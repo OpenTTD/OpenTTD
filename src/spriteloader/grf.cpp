@@ -12,13 +12,14 @@
 #include "../debug.h"
 #include "../settings_type.h"
 #include "../strings_func.h"
-#include "table/strings.h"
 #include "../error.h"
 #include "../core/math_func.hpp"
 #include "../core/alloc_type.hpp"
 #include "../core/bitmath_func.hpp"
 #include "../spritecache.h"
 #include "grf.hpp"
+
+#include "table/strings.h"
 
 #include "../safeguards.h"
 

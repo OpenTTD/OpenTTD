@@ -19,6 +19,7 @@
 #include "../../articulated_vehicles.h"
 #include "../../engine_cmd.h"
 #include "../../timer/timer_game_calendar.h"
+
 #include "table/strings.h"
 
 #include "../../safeguards.h"

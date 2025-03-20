@@ -23,6 +23,8 @@
 #include "../rev.h"
 #include "../game/game.hpp"
 
+#include "table/strings.h"
+
 #include "../safeguards.h"
 
 
