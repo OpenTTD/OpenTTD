@@ -24,7 +24,6 @@
 #include "strings_func.h"
 #include "timer/timer_game_economy.h"
 #include "dropdown_type.h"
-#include "dropdown_common_type.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
 #include "core/geometry_func.hpp"
@@ -50,6 +49,8 @@
 #include "widgets/company_widget.h"
 
 #include "table/strings.h"
+
+#include "dropdown_common_type.h"
 
 #include "safeguards.h"
 

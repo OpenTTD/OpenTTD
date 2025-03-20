@@ -23,10 +23,11 @@
 #include "company_func.h"
 #include "tunnelbridge_map.h"
 #include "newgrf_animation_base.h"
-#include "newgrf_class_func.h"
 #include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
+
+#include "newgrf_class_func.h"
 
 #include "safeguards.h"
 

@@ -9,8 +9,6 @@
 
 #include "newgrf_class.h"
 
-#include "table/strings.h"
-
 /** Reset the classes, i.e. clear everything. */
 template <typename Tspec, typename Tindex, Tindex Tmax>
 void NewGRFClass<Tspec, Tindex, Tmax>::Reset()

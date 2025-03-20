@@ -14,10 +14,11 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
 #include "station_base.h"
-#include "newgrf_class_func.h"
 #include "town.h"
 
 #include "table/strings.h"
+
+#include "newgrf_class_func.h"
 
 #include "safeguards.h"
 
