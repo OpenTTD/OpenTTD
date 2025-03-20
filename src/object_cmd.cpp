@@ -605,7 +605,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 			break;
 	}
 
-	_cleared_object_areas.push_back({tile, ta});
+	_cleared_object_areas.emplace_back(tile, ta);
 
 	if (flags.Test(DoCommandFlag::Execute)) ReallyClearObjectTile(o);
 

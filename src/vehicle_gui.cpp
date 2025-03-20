@@ -795,7 +795,7 @@ struct RefitWindow : public Window {
 				bool first_vehicle = list.empty();
 				if (first_vehicle) {
 					/* Keeping the current subtype is always an option. It also serves as the option in case of no subtypes */
-					list.push_back({cargo_type, UINT8_MAX, STR_EMPTY});
+					list.emplace_back(cargo_type, UINT8_MAX, STR_EMPTY);
 				}
 
 				/* Check the vehicle's callback mask for cargo suffixes.
@@ -823,10 +823,7 @@ struct RefitWindow : public Window {
 							/* Append new subtype (don't add duplicates though) */
 							if (subtype == STR_EMPTY) break;
 
-							RefitOption option;
-							option.cargo   = cargo_type;
-							option.subtype = refit_cyc;
-							option.string  = subtype;
+							RefitOption option{cargo_type, static_cast<uint8_t>(refit_cyc), subtype};
 							include(list, option);
 						} else {
 							/* Intersect the subtypes of earlier vehicles with the subtypes of this vehicle */
@@ -835,7 +832,7 @@ struct RefitWindow : public Window {
 								/* UINT8_MAX item is in front, other subtypes are sorted. So just truncate the list in the right spot */
 								for (uint i = 1; i < list.size(); i++) {
 									if (list[i].subtype >= refit_cyc) {
-										list.resize(i);
+										list.erase(list.begin() + i, list.end());
 										break;
 									}
 								}

@@ -237,7 +237,7 @@ void SetCurrentRailTypeLabelList()
 	_railtype_list.clear();
 
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		_railtype_list.push_back({GetRailTypeInfo(rt)->label, 0});
+		_railtype_list.emplace_back(GetRailTypeInfo(rt)->label, 0);
 	}
 }
 

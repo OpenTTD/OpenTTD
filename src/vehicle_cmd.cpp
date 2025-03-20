@@ -463,7 +463,7 @@ static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle 
 		 *  - We have to call the refit cost callback with the pre-refit configuration of the chain because we want refit and
 		 *    autorefit to behave the same, and we need its result for auto_refit_allowed.
 		 */
-		refit_result.push_back({v, amount, mail_capacity, actual_subtype});
+		refit_result.emplace_back(v, amount, mail_capacity, actual_subtype);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
