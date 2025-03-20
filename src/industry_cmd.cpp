@@ -3072,7 +3072,7 @@ static IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEco
 
 void InitializeIndustries()
 {
-	Industry::industries = {};
+	Industry::industries.fill({});
 	_industry_sound_tile = TileIndex{};
 
 	_industry_builder.Reset();
