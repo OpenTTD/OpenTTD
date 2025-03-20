@@ -19,7 +19,6 @@
 #include "fios.h"
 #include "string_func.h"
 #include "dropdown_type.h"
-#include "dropdown_common_type.h"
 #include "dropdown_func.h"
 #include "querystring_gui.h"
 #include "town.h"
@@ -38,6 +37,8 @@
 #include "widgets/genworld_widget.h"
 
 #include "table/strings.h"
+
+#include "dropdown_common_type.h"
 
 #include "safeguards.h"
 

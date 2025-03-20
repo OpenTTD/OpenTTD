@@ -15,7 +15,6 @@
 #include "command_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
-#include "dropdown_common_type.h"
 #include "house.h"
 #include "vehicle_gui.h"
 #include "rail_gui.h"
@@ -68,6 +67,8 @@
 #include "network/network_func.h"
 
 #include "table/strings.h"
+
+#include "dropdown_common_type.h"
 
 #include "safeguards.h"
 

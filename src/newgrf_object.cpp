@@ -14,7 +14,6 @@
 #include "genworld.h"
 #include "newgrf_badge.h"
 #include "newgrf_object.h"
-#include "newgrf_class_func.h"
 #include "newgrf_sound.h"
 #include "object_base.h"
 #include "object_map.h"
@@ -25,6 +24,8 @@
 #include "newgrf_animation_base.h"
 
 #include "table/strings.h"
+
+#include "newgrf_class_func.h"
 
 #include "safeguards.h"
 

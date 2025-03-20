@@ -13,7 +13,6 @@
 #include "roadstop_base.h"
 #include "newgrf_badge.h"
 #include "newgrf_roadstop.h"
-#include "newgrf_class_func.h"
 #include "newgrf_cargo.h"
 #include "newgrf_roadtype.h"
 #include "gfx_type.h"
@@ -27,6 +26,8 @@
 #include "newgrf_sound.h"
 
 #include "table/strings.h"
+
+#include "newgrf_class_func.h"
 
 #include "safeguards.h"
 

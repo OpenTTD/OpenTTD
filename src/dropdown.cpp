@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
-#include "dropdown_common_type.h"
 #include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
@@ -21,6 +20,8 @@
 #include "widgets/dropdown_widget.h"
 
 #include "table/strings.h"
+
+#include "dropdown_common_type.h"
 
 #include "safeguards.h"
 
