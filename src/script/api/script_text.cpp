@@ -20,6 +20,10 @@
 
 #include "../../safeguards.h"
 
+EncodedString RawText::GetEncodedText()
+{
+	return ::GetEncodedString(STR_JUST_RAW_STRING, this->text);
+}
 
 ScriptText::ScriptText(HSQUIRRELVM vm)
 {

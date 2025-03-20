@@ -44,7 +44,7 @@ class RawText : public Text {
 public:
 	RawText(const std::string &text) : text(text) {}
 
-	EncodedString GetEncodedText() override { return ::GetEncodedString(STR_JUST_RAW_STRING, this->text); }
+	EncodedString GetEncodedText() override;
 private:
 	const std::string text;
 };
