@@ -123,19 +123,6 @@ struct BaseSet {
 	}
 
 	/**
-	 * Get string to use when listing this set in the settings window.
-	 * If there are no invalid files, then this is just the set name,
-	 * otherwise a string is formatted including the number of invalid files.
-	 * @return the string to display.
-	 */
-	std::string GetListLabel() const
-	{
-		if (this->GetNumInvalid() == 0) return GetString(STR_JUST_RAW_STRING, this->name);
-
-		return GetString(STR_BASESET_STATUS, this->name, this->GetNumInvalid());
-	}
-
-	/**
 	 * Calculate and check the MD5 hash of the supplied file.
 	 * @param file The file get the hash of.
 	 * @param subdir The sub directory to get the files from.

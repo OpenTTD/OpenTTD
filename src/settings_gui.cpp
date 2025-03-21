@@ -125,6 +125,19 @@ void ShowBaseSetTextfileWindow(TextfileType file_type, const TBaseSet *baseset, 
 	new BaseSetTextfileWindow(file_type, baseset->name, *baseset->GetTextfile(file_type), content_type);
 }
 
+/**
+ * Get string to use when listing this set in the settings window.
+ * If there are no invalid files, then this is just the set name,
+ * otherwise a string is formatted including the number of invalid files.
+ * @return the string to display.
+ */
+template <typename TBaseSet>
+static std::string GetListLabel(const TBaseSet *baseset)
+{
+	if (baseset->GetNumInvalid() == 0) return GetString(STR_JUST_RAW_STRING, baseset->name);
+	return GetString(STR_BASESET_STATUS, baseset->name, baseset->GetNumInvalid());
+}
+
 template <class T>
 DropDownList BuildSetDropDownList(int *selected_index)
 {
@@ -132,7 +145,7 @@ DropDownList BuildSetDropDownList(int *selected_index)
 	*selected_index = T::GetIndexOfUsedSet();
 	DropDownList list;
 	for (int i = 0; i < n; i++) {
-		list.push_back(MakeDropDownListStringItem(T::GetSet(i)->GetListLabel(), i));
+		list.push_back(MakeDropDownListStringItem(GetListLabel(T::GetSet(i)), i));
 	}
 	return list;
 }
@@ -493,9 +506,9 @@ struct GameOptionsWindow : Window {
 			}
 
 			case WID_GO_LANG_DROPDOWN:         return _current_language->own_name;
-			case WID_GO_BASE_GRF_DROPDOWN:     return BaseGraphics::GetUsedSet()->GetListLabel();
-			case WID_GO_BASE_SFX_DROPDOWN:     return BaseSounds::GetUsedSet()->GetListLabel();
-			case WID_GO_BASE_MUSIC_DROPDOWN:   return BaseMusic::GetUsedSet()->GetListLabel();
+			case WID_GO_BASE_GRF_DROPDOWN:     return GetListLabel(BaseGraphics::GetUsedSet());
+			case WID_GO_BASE_SFX_DROPDOWN:     return GetListLabel(BaseSounds::GetUsedSet());
+			case WID_GO_BASE_MUSIC_DROPDOWN:   return GetListLabel(BaseMusic::GetUsedSet());
 			case WID_GO_REFRESH_RATE_DROPDOWN: return GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, _settings_client.gui.refresh_rate);
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
