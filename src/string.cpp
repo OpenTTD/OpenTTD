@@ -18,6 +18,7 @@
 
 #include <sstream>
 #include <iomanip>
+#include <charconv>
 
 #ifdef _MSC_VER
 #	define strncasecmp strnicmp
@@ -448,28 +449,29 @@ bool IsValidChar(char32_t key, CharSetFilter afilter)
  * @param s Character stream to retrieve character from.
  * @return Number of characters in the sequence.
  */
-size_t Utf8Decode(char32_t *c, const char *s)
+size_t Utf8Decode(char32_t *c, const char *s, size_t maxlen)
 {
 	assert(c != nullptr);
+	assert(maxlen > 0);
 
 	if (!HasBit(s[0], 7)) {
 		/* Single byte character: 0xxxxxxx */
 		*c = s[0];
 		return 1;
 	} else if (GB(s[0], 5, 3) == 6) {
-		if (IsUtf8Part(s[1])) {
+		if (maxlen >= 2 && IsUtf8Part(s[1])) {
 			/* Double byte character: 110xxxxx 10xxxxxx */
 			*c = GB(s[0], 0, 5) << 6 | GB(s[1], 0, 6);
 			if (*c >= 0x80) return 2;
 		}
 	} else if (GB(s[0], 4, 4) == 14) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2])) {
+		if (maxlen >= 3 && IsUtf8Part(s[1]) && IsUtf8Part(s[2])) {
 			/* Triple byte character: 1110xxxx 10xxxxxx 10xxxxxx */
 			*c = GB(s[0], 0, 4) << 12 | GB(s[1], 0, 6) << 6 | GB(s[2], 0, 6);
 			if (*c >= 0x800) return 3;
 		}
 	} else if (GB(s[0], 3, 5) == 30) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2]) && IsUtf8Part(s[3])) {
+		if (maxlen >= 4 && IsUtf8Part(s[1]) && IsUtf8Part(s[2]) && IsUtf8Part(s[3])) {
 			/* 4 byte character: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx */
 			*c = GB(s[0], 0, 3) << 18 | GB(s[1], 0, 6) << 12 | GB(s[2], 0, 6) << 6 | GB(s[3], 0, 6);
 			if (*c >= 0x10000 && *c <= 0x10FFFF) return 4;
@@ -1072,3 +1074,45 @@ public:
 #endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
 
 #endif
+
+/**
+ * Consume and return a UTF-8 character.
+ */
+char32_t StringConsumer::Utf8Consume()
+{
+	if (this->empty()) {
+		assert(false);
+		return '?';
+	}
+	char32_t res;
+	size_t len = Utf8Decode(&res, this->data(), this->size());
+	*this += len;
+	return res;
+}
+
+template<class T>
+static T ParseInt(std::string_view& str, int base)
+{
+	T res;
+	const char *begin = str.data();
+	const char *end = begin + str.size();
+	const char *next = std::from_chars(begin, end, res, base).ptr;
+	assert(begin <= next && next <= end);
+	str.remove_prefix(next - begin);
+	return next == begin ? 0 : res;
+}
+
+/**
+ * Parse string to integer, and consume the involved characters.
+ * @param base Number base.
+ * @return parsed value
+ */
+uint32_t StringConsumer::Uint32Parse(int base)
+{
+	return ParseInt<uint32_t>(this->string, base);
+}
+
+uint64_t StringConsumer::Uint64Parse(int base)
+{
+	return ParseInt<uint64_t>(this->string, base);
+}

@@ -28,6 +28,7 @@
 #include "engine_base.h"
 #include "language.h"
 #include "townname_func.h"
+#include "string_base.h"
 #include "string_func.h"
 #include "company_base.h"
 #include "smallmap_gui.h"
@@ -776,22 +777,25 @@ static int DeterminePluralForm(int64_t count, int plural_form)
 	}
 }
 
-static const char *ParseStringChoice(const char *b, uint form, StringBuilder &builder)
+static void ParseStringChoice(StringConsumer& str, uint form, StringBuilder &builder)
 {
 	/* <NUM> {Length of each string} {each string} */
-	uint n = (uint8_t)*b++;
-	size_t form_offset = 0, form_len = 0, total_len = 0;
+	uint n = str.Uint8Consume();
+	size_t form_pre = 0, form_len = 0, form_post = 0;
 	for (uint i = 0; i != n; i++) {
-		uint len = (uint8_t)*b++;
-		if (i == form) {
-			form_offset = total_len;
+		uint len = str.Uint8Consume();
+		if (i < form) {
+			form_pre += len;
+		} else if (i > form) {
+			form_post += len;
+		} else {
 			form_len = len;
 		}
-		total_len += len;
 	}
 
-	builder += std::string_view(b + form_offset, form_len);
-	return b + total_len;
+	str += form_pre;
+	builder += str.StrConsume(form_len);
+	str += form_post;
 }
 
 /** Helper for unit conversion. */
@@ -998,62 +1002,59 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
  * @param builder The string builder to write the string to.
  * @returns Updated position position in input buffer.
  */
-static const char *DecodeEncodedString(const char *str, bool game_script, StringBuilder &builder)
+static void DecodeEncodedString(StringConsumer &str, bool game_script, StringBuilder &builder)
 {
 	std::vector<StringParameter> sub_args;
 
-	char *p;
-	StringIndexInTab id(std::strtoul(str, &p, 16));
-	if (*p != SCC_RECORD_SEPARATOR && *p != '\0') {
-		while (*p != '\0') p++;
+	StringIndexInTab id(str.Uint32Parse(16));
+	if (!str.empty() && *str != SCC_RECORD_SEPARATOR) {
+		str.clear();
 		builder += "(invalid SCC_ENCODED)";
-		return p;
+		return;
 	}
 	if (game_script && id >= TAB_SIZE_GAMESCRIPT) {
-		while (*p != '\0') p++;
+		str.clear();
 		builder += "(invalid StringID)";
-		return p;
+		return;
 	}
 
-	while (*p != '\0') {
+	while (!str.empty()) {
 		/* The start of parameter. */
-		const char *s = ++p;
+		++str;
 
 		/* Find end of the parameter. */
-		for (; *p != '\0' && *p != SCC_RECORD_SEPARATOR; ++p) {}
-
-		if (s == p) {
+		StringConsumer record{str.StrConsume(str.find(SCC_RECORD_SEPARATOR))};
+		if (record.empty()) {
 			/* This is an empty parameter. */
 			sub_args.emplace_back(std::monostate{});
 			continue;
 		}
 
 		/* Get the parameter type. */
-		char32_t parameter_type;
-		size_t len = Utf8Decode(&parameter_type, s);
-		s += len;
-
+		char32_t parameter_type = record.Utf8Consume();
 		switch (parameter_type) {
 			case SCC_ENCODED: {
-				uint64_t param = std::strtoull(s, &p, 16);
+				uint64_t param = record.Uint64Parse(16);
 				if (param >= TAB_SIZE_GAMESCRIPT) {
-					while (*p != '\0') p++;
+					str.clear();
 					builder += "(invalid sub-StringID)";
-					return p;
+					return;
 				}
+				assert(record.empty());
 				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
 				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_NUMERIC: {
-				uint64_t param = std::strtoull(s, &p, 16);
+				uint64_t param = record.Uint64Parse(16);
+				assert(record.empty());
 				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				sub_args.emplace_back(std::string(s, p - s));
+				sub_args.push_back(std::string(record.str()));
 				break;
 			}
 
@@ -1066,8 +1067,6 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 
 	StringID stringid = game_script ? MakeStringID(TEXT_TAB_GAMESCRIPT_START, id) : StringID{id.base()};
 	GetStringWithArgs(builder, stringid, sub_args, true);
-
-	return p;
 }
 
 /**
@@ -1098,33 +1097,28 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 	}
 	uint next_substr_case_index = 0;
 	struct StrStackItem {
-		const char *str;
-		const char *end;
+		StringConsumer str;
 		size_t first_param_offset;
 		uint case_index;
-
-		StrStackItem(std::string_view view, size_t first_param_offset, uint case_index)
-			: str(view.data()), end(view.data() + view.size()), first_param_offset(first_param_offset), case_index(case_index)
-		{}
 	};
 	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
-	str_stack.emplace(str_arg, orig_first_param_offset, orig_case_index);
+	str_stack.emplace(StringConsumer(str_arg), orig_first_param_offset, orig_case_index);
 
 	for (;;) {
 		try {
-			while (!str_stack.empty() && str_stack.top().str >= str_stack.top().end) {
+			while (!str_stack.empty() && str_stack.top().str.empty()) {
 				str_stack.pop();
 			}
 			if (str_stack.empty()) break;
-			const char *&str = str_stack.top().str;
+			StringConsumer &str = str_stack.top().str;
 			const size_t ref_param_offset = str_stack.top().first_param_offset;
 			const uint case_index = str_stack.top().case_index;
-			char32_t b = Utf8Consume(&str);
+			char32_t b = str.Utf8Consume();
 			assert(b != 0);
 
 			if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 				/* We need to pass some stuff as it might be modified. */
-				b = RemapNewGRFStringControlCode(b, &str);
+				b = RemapNewGRFStringControlCode(b, str);
 				if (b == 0) continue;
 			}
 
@@ -1137,13 +1131,13 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			switch (b) {
 				case SCC_ENCODED:
 				case SCC_ENCODED_INTERNAL:
-					str = DecodeEncodedString(str, b == SCC_ENCODED, builder);
+					DecodeEncodedString(str, b == SCC_ENCODED, builder);
 					break;
 
 				case SCC_NEWGRF_STRINL: {
-					StringID substr = Utf8Consume(&str);
+					StringID substr = str.Utf8Consume();
 					std::string_view ptr = GetStringPtr(substr);
-					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
+					str_stack.emplace(StringConsumer(ptr), args.GetOffset(), next_substr_case_index); // this may invalidate "str"
 					next_substr_case_index = 0;
 					break;
 				}
@@ -1151,14 +1145,14 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 					StringID substr = args.GetNextParameter<StringID>();
 					std::string_view ptr = GetStringPtr(substr);
-					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
+					str_stack.emplace(StringConsumer(ptr), args.GetOffset(), next_substr_case_index); // this may invalidate "str"
 					next_substr_case_index = 0;
 					break;
 				}
 
 				case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 					/* First read the meta data from the language file. */
-					size_t offset = ref_param_offset + (uint8_t)*str++;
+					size_t offset = ref_param_offset + str.Uint8Consume();
 					int gender = 0;
 					if (offset >= args.GetNumParameters()) {
 						/* The offset may come from an external NewGRF, and be invalid. */
@@ -1167,50 +1161,54 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						/* Now we need to figure out what text to resolve, i.e.
 						 * what do we need to draw? So get the actual raw string
 						 * first using the control code to get said string. */
-						char input[4 + 1];
-						char *p = input + Utf8Encode(input, args.GetTypeAtOffset(offset));
-						*p = '\0';
+						std::string input;
+						{
+							StringBuilder tmp_builder(input);
+							tmp_builder.Utf8Encode(args.GetTypeAtOffset(offset));
+						}
 
 						/* The gender is stored at the start of the formatted string. */
-						bool old_sgd = _scan_for_gender_data;
-						_scan_for_gender_data = true;
 						std::string buffer;
-						StringBuilder tmp_builder(buffer);
-						StringParameters tmp_params = args.GetRemainingParameters(offset);
-						FormatString(tmp_builder, input, tmp_params);
-						_scan_for_gender_data = old_sgd;
+						{
+							bool old_sgd = _scan_for_gender_data;
+							_scan_for_gender_data = true;
+							StringBuilder tmp_builder(buffer);
+							StringParameters tmp_params = args.GetRemainingParameters(offset);
+							FormatString(tmp_builder, input, tmp_params);
+							_scan_for_gender_data = old_sgd;
+						}
 
 						/* And determine the string. */
-						const char *s = buffer.c_str();
-						char32_t c = Utf8Consume(&s);
+						StringConsumer tmp_consumer(buffer);
+						char32_t c = tmp_consumer.Utf8Consume();
 						/* Does this string have a gender, if so, set it */
-						if (c == SCC_GENDER_INDEX) gender = (uint8_t)s[0];
+						if (c == SCC_GENDER_INDEX) gender = tmp_consumer.Uint8Consume();
 					}
-					str = ParseStringChoice(str, gender, builder);
+					ParseStringChoice(str, gender, builder);
 					break;
 				}
 
 				/* This sets up the gender for the string.
 				 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
-				case SCC_GENDER_INDEX: // {GENDER 0}
+				case SCC_GENDER_INDEX: { // {GENDER 0}
+					uint8_t gender = str.Uint8Consume();
 					if (_scan_for_gender_data) {
 						builder.Utf8Encode(SCC_GENDER_INDEX);
-						builder += *str++;
-					} else {
-						str++;
+						builder += gender;
 					}
 					break;
+				}
 
 				case SCC_PLURAL_LIST: { // {P}
-					int plural_form = *str++;          // contains the plural form for this string
-					size_t offset = ref_param_offset + (uint8_t)*str++;
+					int plural_form = str.Uint8Consume(); // contains the plural form for this string
+					size_t offset = ref_param_offset + str.Uint8Consume();
 					const uint64_t *v = nullptr;
 					/* The offset may come from an external NewGRF, and be invalid. */
 					if (offset < args.GetNumParameters()) {
 						v = std::get_if<uint64_t>(&args.GetParam(offset)); // contains the number that determines plural
 					}
 					if (v != nullptr) {
-						str = ParseStringChoice(str, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
+						ParseStringChoice(str, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
 					} else {
 						builder += "(invalid PLURAL parameter)";
 					}
@@ -1218,38 +1216,34 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				}
 
 				case SCC_ARG_INDEX: { // Move argument pointer
-					args.SetOffset(ref_param_offset + (uint8_t)*str++);
+					args.SetOffset(ref_param_offset + str.Uint8Consume());
 					break;
 				}
 
 				case SCC_SET_CASE: { // {SET_CASE}
 					/* This is a pseudo command, it's outputted when someone does {STRING.ack}
 					 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */
-					next_substr_case_index = (uint8_t)*str++;
+					next_substr_case_index = str.Uint8Consume();
 					break;
 				}
 
 				case SCC_SWITCH_CASE: { // {Used to implement case switching}
 					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <LENDEFAULT> <STRINGDEFAULT>
 					 * Each LEN is printed using 2 bytes in little endian order. */
-					uint num = (uint8_t)*str++;
+					uint num = str.Uint8Consume();
 					std::optional<std::string_view> found;
 					for (; num > 0; --num) {
-						uint8_t index = static_cast<uint8_t>(str[0]);
-						uint16_t len = static_cast<uint8_t>(str[1]) + (static_cast<uint8_t>(str[2]) << 8);
-						str += 3;
+						uint8_t index = str.Uint8Consume();
+						uint16_t len = str.Uint16LEConsume();
+						std::string_view case_data = str.StrConsume(len);
 						if (index == case_index) {
 							/* Found the case */
-							found.emplace(str, len);
+							found = case_data;
 						}
-						str += len;
 					}
-					uint16_t default_len = static_cast<uint8_t>(str[0]) + (static_cast<uint8_t>(str[1]) << 8);
-					str += 2;
-					if (!found.has_value()) found.emplace(str, default_len);
-					str += default_len;
-					assert(str <= str_stack.top().end);
-					str_stack.emplace(*found, ref_param_offset, case_index); // this may invalidate "str"
+					uint16_t default_len = str.Uint16LEConsume();
+					std::string_view default_data = str.StrConsume(default_len);
+					str_stack.emplace(StringConsumer(found.value_or(default_data)), ref_param_offset, case_index); // this may invalidate "str"
 					break;
 				}
 
