@@ -611,18 +611,18 @@ StringID GetGRFStringID(uint32_t grfid, GRFStringID stringid)
  * current language nullptr is returned.
  * @param text_list The GRFTextList to get the string from.
  */
-const char *GetGRFStringFromGRFText(const GRFTextList &text_list)
+std::optional<std::string_view> GetGRFStringFromGRFText(const GRFTextList &text_list)
 {
-	const char *default_text = nullptr;
+	std::optional<std::string_view> default_text;
 
 	/* Search the list of lang-strings of this stringid for current lang */
 	for (const auto &text : text_list) {
-		if (text.langid == _currentLangID) return text.text.c_str();
+		if (text.langid == _currentLangID) return text.text;
 
 		/* If the current string is English or American, set it as the
 		 * fallback language if the specific language isn't available. */
-		if (text.langid == GRFLX_UNSPECIFIED || (default_text == nullptr && (text.langid == GRFLX_ENGLISH || text.langid == GRFLX_AMERICAN))) {
-			default_text = text.text.c_str();
+		if (text.langid == GRFLX_UNSPECIFIED || (!default_text && (text.langid == GRFLX_ENGLISH || text.langid == GRFLX_AMERICAN))) {
+			default_text = text.text;
 		}
 	}
 
@@ -636,21 +636,21 @@ const char *GetGRFStringFromGRFText(const GRFTextList &text_list)
  * current language nullptr is returned.
  * @param text The GRFTextList to get the string from.
  */
-const char *GetGRFStringFromGRFText(const GRFTextWrapper &text)
+std::optional<std::string_view> GetGRFStringFromGRFText(const GRFTextWrapper &text)
 {
-	return text ? GetGRFStringFromGRFText(*text) : nullptr;
+	return text ? GetGRFStringFromGRFText(*text) : std::nullopt;
 }
 
 /**
- * Get a C-string from a stringid set by a newgrf.
+ * Get the raw string from a stringid set by a newgrf.
  */
-const char *GetGRFStringPtr(StringIndexInTab stringid)
+std::string_view GetGRFStringPtr(StringIndexInTab stringid)
 {
 	assert(stringid.base() < _grf_text.size());
 	assert(_grf_text[stringid].grfid != 0);
 
-	const char *str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
-	if (str != nullptr) return str;
+	std::optional<std::string_view> str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
+	if (str) return *str;
 
 	/* Use the default string ID if the fallback string isn't available */
 	return GetStringPtr(_grf_text[stringid].def_string);
