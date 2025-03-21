@@ -128,8 +128,8 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 	if (c.flags.Test(GRFConfigFlag::Compatible)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
-	if (!StrEmpty(c.GetDescription())) {
-		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, c.GetDescription()), TC_BLACK);
+	if (std::optional<std::string> desc = c.GetDescription(); desc.has_value()) {
+		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, *desc), TC_BLACK);
 	} else {
 		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
@@ -854,7 +854,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int i = 0;
 				for (const auto &c : this->actives) {
 					if (this->vscroll->IsVisible(i)) {
-						const char *text = c->GetName();
+						std::string text = c->GetName();
 						bool h = (this->active_sel == c.get());
 						PaletteID pal = this->GetPalette(*c);
 
@@ -894,7 +894,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				for (auto it = first; it != last; ++it) {
 					const GRFConfig *c = *it;
 					bool h = (c == this->avail_sel);
-					const char *text = c->GetName();
+					std::string text = c->GetName();
 
 					if (h) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 					DrawString(tr.left, tr.right, tr.top + offset_y, text, h ? TC_WHITE : TC_SILVER);
@@ -948,8 +948,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_OPEN_URL: {
 				const GRFConfig *c = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
-
-				OpenBrowser(c->GetURL());
+				std::optional<std::string> url = c->GetURL();
+				if (url) OpenBrowser(*url);
 				break;
 			}
 
@@ -1263,7 +1263,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || !selected_config->GetTextfile(tft).has_value());
 		}
-		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || StrEmpty(selected_config->GetURL()));
+		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || !selected_config->GetURL());
 
 		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
@@ -1413,7 +1413,7 @@ private:
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());
 		filter.AddLine((*a)->filename);
-		filter.AddLine((*a)->GetDescription());
+		filter.AddLine((*a)->GetDescription().value_or(""));
 		return filter.GetState();;
 	}
 
@@ -2209,13 +2209,9 @@ struct ScanProgressWindow : public Window {
 	 * @param num  The number of NewGRFs scanned so far.
 	 * @param name The name of the last scanned NewGRF.
 	 */
-	void UpdateNewGRFScanStatus(uint num, const char *name)
+	void UpdateNewGRFScanStatus(uint num, std::string_view name)
 	{
-		if (name == nullptr) {
-			this->last_name = GetString(STR_NEWGRF_SCAN_ARCHIVES);
-		} else {
-			this->last_name = name;
-		}
+		this->last_name = name;
 		this->scanned = num;
 		if (num > _settings_client.gui.last_newgrf_count) _settings_client.gui.last_newgrf_count = num;
 
@@ -2228,7 +2224,7 @@ struct ScanProgressWindow : public Window {
  * @param num  The number of NewGRFs scanned so far.
  * @param name The name of the last scanned NewGRF.
  */
-void UpdateNewGRFScanStatus(uint num, const char *name)
+void UpdateNewGRFScanStatus(uint num, std::string_view name)
 {
 	ScanProgressWindow *w  = dynamic_cast<ScanProgressWindow *>(FindWindowByClass(WC_MODAL_PROGRESS));
 	if (w == nullptr) w = new ScanProgressWindow();

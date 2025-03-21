@@ -190,9 +190,9 @@ struct GRFConfig {
 	void SetValue(const GRFParameterInfo &info, uint32_t value);
 
 	std::optional<std::string> GetTextfile(TextfileType type) const;
-	const char *GetName() const;
-	const char *GetDescription() const;
-	const char *GetURL() const;
+	std::string GetName() const;
+	std::optional<std::string> GetDescription() const;
+	std::optional<std::string> GetURL() const;
 
 	void SetParameterDefaults();
 	void SetSuitablePalette();
@@ -242,7 +242,7 @@ std::string GRFBuildParamList(const GRFConfig &c);
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfigList &config);
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig &c, bool editable);
 
-void UpdateNewGRFScanStatus(uint num, const char *name);
+void UpdateNewGRFScanStatus(uint num, std::string_view name);
 void UpdateNewGRFConfigPalette(int32_t new_value = 0);
 
 #endif /* NEWGRF_CONFIG_H */
