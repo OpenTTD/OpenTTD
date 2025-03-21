@@ -57,8 +57,8 @@ public:
 	bool IsEmpty() const { return this->word_index.empty(); }
 
 	void ResetState();
-	void AddLine(const char *str);
-	void AddLine(const std::string &str) { this->AddLine(str.c_str()); }
+	void AddLine(const char *) = delete; // prevent implicit construction of string_view from potential nullptr
+	void AddLine(std::string_view str);
 
 	/**
 	 * Get the matching state of the current item.
