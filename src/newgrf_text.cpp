@@ -840,6 +840,13 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 			params.emplace_back(stack.PopUnsignedWord());
 			break;
 
+		case SCC_NEWGRF_STRINL: {
+			StringID stringid = Utf8Consume(str);
+			/* We also need to handle the substring's stack usage. */
+			HandleNewGRFStringControlCodes(GetStringPtr(stringid), stack, params);
+			break;
+		}
+
 		case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 			StringID stringid = MapGRFStringID(stack.grffile->grfid, GRFStringID{stack.PopUnsignedWord()});
 			params.emplace_back(stringid);
@@ -883,9 +890,6 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
 		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
 			return SCC_CURRENCY_LONG;
-
-		case SCC_NEWGRF_PRINT_WORD_STRING_ID:
-			return SCC_NEWGRF_PRINT_WORD_STRING_ID;
 
 		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
 		case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
