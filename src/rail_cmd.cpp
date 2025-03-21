@@ -898,7 +898,7 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 				redundant_track = true; // Either above tunnel or below bridge and perpendicular, which means unnecessary to build.
 				skip = true;
 			} else if (redundant_track) {
-				redundand_track = false; // The tunnel/bridge has ended, the next track should be built.
+				redundant_track = false; // The tunnel/bridge has ended, the next track should be built.
 			} else if (!first_tile && GetTunnelBridgeDirection(tile) == TrackdirToExitdir(ReverseTrackdir(trackdir))) {
 				break; // Upon running into a bridge ramp from the underside, we should stop building tracks.
 			}
