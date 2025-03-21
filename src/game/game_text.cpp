@@ -311,14 +311,14 @@ void GameStrings::Compile()
 GameStrings *_current_data = nullptr;
 
 /**
- * Get the string pointer of a particular game string.
+ * Get the raw string of a particular game string.
  * @param id The ID of the game string.
  * @return The encoded string.
  */
-const char *GetGameStringPtr(StringIndexInTab id)
+std::string_view GetGameStringPtr(StringIndexInTab id)
 {
 	if (_current_data == nullptr || _current_data->cur_language == nullptr || id.base() >= _current_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
-	return _current_data->cur_language->lines[id].c_str();
+	return _current_data->cur_language->lines[id];
 }
 
 /**

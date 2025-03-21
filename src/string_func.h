@@ -76,7 +76,7 @@ inline size_t ttd_strnlen(const char *str, size_t maxlen)
 
 bool IsValidChar(char32_t key, CharSetFilter afilter);
 
-size_t Utf8Decode(char32_t *c, const char *s);
+size_t Utf8Decode(char32_t *c, const char *s, size_t maxlen = 4);
 /* std::string_view::iterator might be char *, in which case we do not want this templated variant to be taken. */
 template <typename T> requires (!std::is_same_v<T, char *> && (std::is_same_v<std::string_view::iterator, T> || std::is_same_v<std::string::iterator, T>))
 inline size_t Utf8Decode(char32_t *c, T &s) { return Utf8Decode(c, &*s); }

@@ -320,13 +320,12 @@ static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words,
 
 	buffer->AppendByte(nw);
 	for (uint i = 0; i < nw; i++) {
-		size_t len = strlen(words[i]) + 1;
+		size_t len = strlen(words[i]);
 		if (len >= UINT8_MAX) StrgenFatal("WordList {}/{} string '{}' too long, max bytes {}", i + 1, nw, words[i], MAX_WORD_LENGTH);
 		buffer->AppendByte(static_cast<uint8_t>(len));
 	}
 	for (uint i = 0; i < nw; i++) {
 		for (uint j = 0; words[i][j] != '\0'; j++) buffer->AppendByte(words[i][j]);
-		buffer->AppendByte(0);
 	}
 }
 
@@ -950,10 +949,11 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 			_translated = cmdp != &ls->english;
 
+			std::optional<uint> default_case_pos;
 			if (!ls->translated_cases.empty()) {
 				/* Need to output a case-switch.
 				 * It has this format
-				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <LENDEFAULT> <STRINGDEFAULT>
 				 * Each LEN is printed using 2 bytes in big endian order. */
 				buffer.AppendUtf8(SCC_SWITCH_CASE);
 				buffer.AppendByte((uint8_t)ls->translated_cases.size());
@@ -967,15 +967,24 @@ void LanguageWriter::WriteLang(const StringData &data)
 					buffer.AppendByte(0);
 					/* Write string */
 					PutCommandString(&buffer, c.string.c_str());
-					buffer.AppendByte(0); // terminate with a zero
 					/* Fill in the length */
 					uint size = (uint)buffer.size() - (pos + 2);
 					buffer[pos + 0] = GB(size, 8, 8);
 					buffer[pos + 1] = GB(size, 0, 8);
 				}
+
+				default_case_pos = (uint)buffer.size();
+				buffer.AppendByte(0);
+				buffer.AppendByte(0);
 			}
 
 			if (!cmdp->empty()) PutCommandString(&buffer, cmdp->c_str());
+
+			if (default_case_pos.has_value()) {
+					uint size = (uint)buffer.size() - (*default_case_pos + 2);
+					buffer[*default_case_pos + 0] = GB(size, 8, 8);
+					buffer[*default_case_pos + 1] = GB(size, 0, 8);
+			}
 
 			this->WriteLength((uint)buffer.size());
 			this->Write(buffer.data(), buffer.size());

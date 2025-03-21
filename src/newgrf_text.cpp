@@ -23,6 +23,7 @@
 #include "newgrf_storage.h"
 #include "newgrf_text.h"
 #include "newgrf_cargo.h"
+#include "string_base.h"
 #include "string_func.h"
 #include "timer/timer_game_calendar.h"
 #include "debug.h"
@@ -152,7 +153,7 @@ struct UnmappedChoiceList {
 		if (this->type == SCC_SWITCH_CASE) {
 			/*
 			 * Format for case switch:
-			 * <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+			 * <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <LENDEFAULT> <STRINGDEFAULT>
 			 * Each LEN is printed using 2 bytes in big endian order.
 			 */
 
@@ -164,6 +165,16 @@ struct UnmappedChoiceList {
 			}
 			*d++ = count;
 
+			auto add_case = [&](std::string_view str) {
+				/* "<LENn>" */
+				uint16_t len = ClampTo<uint16_t>(str.size());
+				*d++ = GB(len, 8, 8);
+				*d++ = GB(len, 0, 8);
+
+				/* "<STRINGn>" */
+				dest.write(str.data(), len);
+			};
+
 			for (uint8_t i = 0; i < _current_language->num_cases; i++) {
 				/* Resolve the string we're looking for. */
 				int idx = lm->GetReverseMapping(i, false);
@@ -173,18 +184,11 @@ struct UnmappedChoiceList {
 				/* "<CASEn>" */
 				*d++ = i + 1;
 
-				/* "<LENn>": Limit the length of the string to 0xFFFE to leave space for the '\0'. */
-				size_t len = std::min<size_t>(0xFFFE, str.size());
-				*d++ = GB(len + 1, 8, 8);
-				*d++ = GB(len + 1, 0, 8);
-
-				/* "<STRINGn>" */
-				dest.write(str.c_str(), len);
-				*d++ = '\0';
+				add_case(str);
 			}
 
 			/* "<STRINGDEFAULT>" */
-			dest << this->strings[0].rdbuf() << '\0';
+			add_case(this->strings[0].view());
 		} else {
 			if (this->type == SCC_PLURAL_LIST) {
 				*d++ = lm->plural_form;
@@ -206,9 +210,9 @@ struct UnmappedChoiceList {
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
-				size_t len = str.size() + 1;
+				size_t len = str.size();
 				if (len > 0xFF) GrfMsg(1, "choice list string is too long");
-				*d++ = GB(len, 0, 8);
+				*d++ = ClampTo<uint8_t>(len);
 			}
 
 			/* "<STRINGs>" */
@@ -217,9 +221,8 @@ struct UnmappedChoiceList {
 				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
 				/* Limit the length of the string we copy to 0xFE. The length is written above
 				 * as a byte and we need room for the final '\0'. */
-				size_t len = std::min<size_t>(0xFE, str.size());
+				uint8_t len = ClampTo<uint8_t>(str.size());
 				dest.write(str.c_str(), len);
-				*d++ = '\0';
 			}
 		}
 	}
@@ -758,7 +761,7 @@ struct TextRefStack {
 	}
 };
 
-static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack, std::vector<StringParameter> &params);
+static void HandleNewGRFStringControlCodes(std::string_view str, TextRefStack &stack, std::vector<StringParameter> &params);
 
 /**
  * Process NewGRF string control code instructions.
@@ -767,7 +770,7 @@ static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack,
  * @param stack The TextRefStack.
  * @param[out] params Output parameters
  */
-static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextRefStack &stack, std::vector<StringParameter> &params)
+static void RemapNewGRFStringControlCode(char32_t scc, StringConsumer &str, TextRefStack &stack, std::vector<StringParameter> &params)
 {
 	/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
 	 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
@@ -775,15 +778,15 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 		default: return;
 
 		case SCC_PLURAL_LIST:
-			++str; // plural form
+			(void)str.Uint8Consume(); // plural form
 			[[fallthrough]];
 		case SCC_GENDER_LIST: {
-			++str; // offset
+			(void)str.Uint8Consume(); // offset
 			/* plural and gender choices cannot contain any string commands, so just skip the whole thing */
-			uint num = static_cast<uint8_t>(*str++);
+			uint num = str.Uint8Consume();
 			uint total_len = 0;
 			for (uint i = 0; i != num; i++) {
-				total_len += static_cast<uint8_t>(*str++);
+				total_len += str.Uint8Consume();
 			}
 			str += total_len;
 			break;
@@ -791,16 +794,18 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 
 		case SCC_SWITCH_CASE: {
 			/* skip all cases and continue with default case */
-			uint num = static_cast<uint8_t>(*str++);
+			uint num = str.Uint8Consume();
 			for (uint i = 0; i != num; i++) {
-				str += 3 + (static_cast<uint8_t>(str[1]) << 8) + static_cast<uint8_t>(str[2]);
+				(void)str.Uint8Consume(); // case index
+				str += str.Uint16BEConsume();;
 			}
+			(void)str.Uint16BEConsume(); // default case length
 			break;
 		}
 
 		case SCC_GENDER_INDEX:
 		case SCC_SET_CASE:
-			++str;
+			(void)str.Uint8Consume();
 			break;
 
 		case SCC_ARG_INDEX:
@@ -840,7 +845,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 		case SCC_NEWGRF_DISCARD_WORD:           stack.PopUnsignedWord(); break;
 
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     stack.RotateTop4Words(); break;
-		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(Utf8Consume(&str)); break;
+		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(str.Utf8Consume()); break;
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
@@ -850,7 +855,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 			break;
 
 		case SCC_NEWGRF_STRINL: {
-			StringID stringid = Utf8Consume(str);
+			StringID stringid = str.Utf8Consume();
 			/* We also need to handle the substring's stack usage. */
 			HandleNewGRFStringControlCodes(GetStringPtr(stringid), stack, params);
 			break;
@@ -878,7 +883,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
  * @param[in,out] str String iterator, moved forward if SCC_NEWGRF_PUSH_WORD is found.
  * @returns String code to use.
  */
-char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
+char32_t RemapNewGRFStringControlCode(char32_t scc, StringConsumer &str)
 {
 	switch (scc) {
 		default:
@@ -946,7 +951,7 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
 
 		/* These NewGRF string codes modify the NewGRF stack or otherwise do not map to OpenTTD string codes. */
 		case SCC_NEWGRF_PUSH_WORD:
-			Utf8Consume(str);
+			(void)str.Utf8Consume();
 			return 0;
 
 		case SCC_NEWGRF_DISCARD_WORD:
@@ -961,14 +966,12 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
  * @param[in,out] stack Stack to use.
  * @param[out] params Parameters to fill.
  */
-static void HandleNewGRFStringControlCodes(const char *str, TextRefStack &stack, std::vector<StringParameter> &params)
+static void HandleNewGRFStringControlCodes(std::string_view str, TextRefStack &stack, std::vector<StringParameter> &params)
 {
-	if (str == nullptr) return;
-
-	for (const char *p = str; *p != '\0'; /* nothing */) {
-		char32_t scc;
-		p += Utf8Decode(&scc, p);
-		ProcessNewGRFStringControlCode(scc, p, stack, params);
+	StringConsumer p(str);
+	while (!p.empty()) {
+		char32_t scc = p.Utf8Consume();
+		RemapNewGRFStringControlCode(scc, p, stack, params);
 	}
 }
 
@@ -983,14 +986,14 @@ std::vector<StringParameter> GetGRFSringTextStackParameters(const GRFFile *grffi
 {
 	if (stringid == INVALID_STRING_ID) return {};
 
-	const char *str = GetStringPtr(stringid);
-	if (str == nullptr) return {};
+	std::optional<std::string_view> str = GetStringPtr(stringid);
+	if (!str) return {};
 
 	std::vector<StringParameter> params;
 	params.reserve(20);
 
 	TextRefStack stack{grffile, num_entries};
-	HandleNewGRFStringControlCodes(str, stack, params);
+	HandleNewGRFStringControlCodes(*str, stack, params);
 
 	return params;
 }

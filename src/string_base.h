@@ -61,4 +61,55 @@ protected:
 	StringIterator() {}
 };
 
+/**
+ * Input iterator from std::string_view.
+ */
+class StringConsumer {
+	std::string_view string;
+
+public:
+	using size_type = std::string_view::size_type;
+
+	explicit StringConsumer(std::string_view string) : string(string) {}
+
+	[[nodiscard]] bool operator==(const StringConsumer &) const noexcept = default;
+	[[nodiscard]] bool empty() const noexcept { return this->string.empty(); }
+	[[nodiscard]] size_type size() const noexcept { return this->string.size(); }
+
+	StringConsumer &operator++() { *this += 1; return *this; }
+	StringConsumer operator++(int) { auto res = *this; *this += 1; return res; }
+	StringConsumer &operator+=(size_type count) { assert(count <= this->string.size()); this->string.remove_prefix(count); return *this; }
+
+	[[nodiscard]] char operator*() const { assert(!this->string.empty()); return this->string.front(); }
+	[[nodiscard]] const char &operator[](size_type index) const { assert(index < this->string.size()); return this->string[index]; }
+	[[nodiscard]] const char *data() const { assert(!this->string.empty()); return this->string.data(); }
+	[[nodiscard]] std::string_view str() const noexcept { return this->string; }
+
+	[[nodiscard]] size_type find(char c) const { return this->string.find(c); }
+	static constexpr size_type npos = std::string_view::npos;
+
+	[[nodiscard]] char32_t Utf8Consume();
+	[[nodiscard]] uint8_t Uint8Consume() { uint8_t res = **this; *this += 1; return res; }
+	[[nodiscard]] uint16_t Uint16LEConsume() { uint16_t res = static_cast<uint8_t>((*this)[0]) | static_cast<uint8_t>((*this)[1]) << 8; *this += 2; return res; }
+	[[nodiscard]] uint16_t Uint16BEConsume() { uint16_t res = static_cast<uint8_t>((*this)[0]) << 8 | static_cast<uint8_t>((*this)[1]); *this += 2; return res; }
+	[[nodiscard]] std::string_view StrConsume(size_type len)
+	{
+		if (len == npos) {
+			std::string_view res = this->string;
+			this->string.remove_prefix(this->string.size());
+			return res;
+		} else {
+			assert(len <= this->string.size());
+			std::string_view res = this->string.substr(0, len);
+			this->string.remove_prefix(len);
+			return res;
+		}
+	}
+
+	[[nodiscard]] uint32_t Uint32Parse(int base);
+	[[nodiscard]] uint64_t Uint64Parse(int base);
+
+	void clear() { this->string.remove_prefix(this->string.size()); }
+};
+
 #endif /* STRING_BASE_H */
