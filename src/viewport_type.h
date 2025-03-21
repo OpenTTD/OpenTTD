@@ -12,8 +12,6 @@
 
 #include "core/enum_type.hpp"
 #include "zoom_type.h"
-#include "strings_type.h"
-#include "table/strings.h"
 
 class LinkGraphOverlay;
 
