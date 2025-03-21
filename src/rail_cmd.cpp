@@ -886,25 +886,21 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 	if (ret.Failed()) return ret;
 
 	bool had_success = false;
-	bool redundant_track = false;
-	bool skip = false;
 	bool first_tile = true;
+	TileIndex wormhole_end = INVALID_TILE;
 	CommandCost last_error = CMD_ERROR;
 	for (;;) {
 		/* Check if hopping bridge/tunnel (#11528). */
-		if (IsDiagonalTrackdir(trackdir) && GetTileType(tile) == MP_TUNNELBRIDGE && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+		if (!first_tile && wormhole_end == INVALID_TILE && IsDiagonalTrackdir(trackdir) && GetTileType(tile) == MP_TUNNELBRIDGE && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 			/* If the building direction is the same as the bridge/tunnel direction, skip building tracks until the bridge/tunnel ends. */
 			if (GetTunnelBridgeDirection(tile) == TrackdirToExitdir(trackdir)) {
-				redundant_track = true; // Either above tunnel or below bridge and perpendicular, which means unnecessary to build.
-				skip = true;
-			} else if (redundant_track) {
-				redundant_track = false; // The tunnel/bridge has ended, the next track should be built.
-			} else if (!first_tile && GetTunnelBridgeDirection(tile) == TrackdirToExitdir(ReverseTrackdir(trackdir))) {
+				wormhole_end = GetOtherTunnelBridgeEnd(tile);
+			} else if (GetTunnelBridgeDirection(tile) == TrackdirToExitdir(ReverseTrackdir(trackdir))) {
 				break; // Upon running into a bridge ramp from the underside, we should stop building tracks.
 			}
 		}
 
-		if (!skip) {
+		if (wormhole_end == INVALID_TILE) {
 			ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
 
 			if (ret.Failed()) {
@@ -924,15 +920,16 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 
 		if (tile == end_tile) break;
 
+		/* Reset skip flag for the next tile after tunnel/bridge ending. */
+		if (wormhole_end == tile) {
+			wormhole_end = INVALID_TILE;
+		}
+
 		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 
 		/* toggle railbit for the non-diagonal tracks */
 		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 
-		/* Reset skip flag for the next tile after tunnel/bridge ending. */
-		if (skip && !redundant_track) {
-			skip = false;
-		}
 		first_tile = false;
 	}
 
