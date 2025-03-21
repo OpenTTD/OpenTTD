@@ -9860,16 +9860,14 @@ static void DecodeSpecialSprite(uint8_t *buf, uint num, GrfLoadingStage stage)
 		/* 0x14 */ { StaticGRFInfo, nullptr,        nullptr,         nullptr,         nullptr,           nullptr, },
 	};
 
-	GRFLocation location(_cur.grfconfig->ident.grfid, _cur.nfo_line);
-
-	GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.find(location);
+	auto it = _grf_line_to_action6_sprite_override.find({_cur.grfconfig->ident.grfid, _cur.nfo_line});
 	if (it == _grf_line_to_action6_sprite_override.end()) {
 		/* No preloaded sprite to work with; read the
 		 * pseudo sprite content. */
 		_cur.file->ReadBlock(buf, num);
 	} else {
 		/* Use the preloaded sprite data. */
-		buf = _grf_line_to_action6_sprite_override[location].data();
+		buf = it->second.data();
 		GrfMsg(7, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
 		/* Skip the real (original) content of this action. */
