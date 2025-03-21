@@ -886,22 +886,40 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 	if (ret.Failed()) return ret;
 
 	bool had_success = false;
+	bool redundant_track = false;
+	bool skip = false;
+	bool first_tile = true;
 	CommandCost last_error = CMD_ERROR;
 	for (;;) {
-		ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
-
-		if (ret.Failed()) {
-			last_error = std::move(ret);
-			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
-				if (fail_on_obstacle) return last_error;
-				if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
+		/* Check if hopping bridge/tunnel (#11528). */
+		if (IsDiagonalTrackdir(trackdir) && GetTileType(tile) == MP_TUNNELBRIDGE && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+			/* If the building direction is the same as the bridge/tunnel direction, skip building tracks until the bridge/tunnel ends. */
+			if (GetTunnelBridgeDirection(tile) == TrackdirToExitdir(trackdir)) {
+				redundant_track = true; // Either above tunnel or below bridge and perpendicular, which means unnecessary to build.
+				skip = true;
+			} else if (redundant_track) {
+				redundand_track = false; // The tunnel/bridge has ended, the next track should be built.
+			} else if (!first_tile && GetTunnelBridgeDirection(tile) == TrackdirToExitdir(ReverseTrackdir(trackdir))) {
+				break; // Upon running into a bridge ramp from the underside, we should stop building tracks.
 			}
+		}
 
-			/* Ownership errors are more important. */
-			if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
-		} else {
-			had_success = true;
-			total_cost.AddCost(ret.GetCost());
+		if (!skip) {
+			ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
+
+			if (ret.Failed()) {
+				last_error = std::move(ret);
+				if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
+					if (fail_on_obstacle) return last_error;
+					if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
+				}
+
+				/* Ownership errors are more important. */
+				if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
+			} else {
+				had_success = true;
+				total_cost.AddCost(ret.GetCost());
+			}
 		}
 
 		if (tile == end_tile) break;
@@ -910,6 +928,12 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 
 		/* toggle railbit for the non-diagonal tracks */
 		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
+
+		/* Reset skip flag for the next tile after tunnel/bridge ending. */
+		if (skip && !redundant_track) {
+			skip = false;
+		}
+		first_tile = false;
 	}
 
 	if (had_success) return total_cost;
