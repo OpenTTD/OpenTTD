@@ -197,7 +197,7 @@ protected:
 	/* These values are used if the graph is being plotted against values
 	 * rather than the dates specified by month and year. */
 	uint16_t x_values_start = 0;
-	uint16_t x_values_increment = 0;
+	int16_t x_values_increment = 0;
 
 	StringID format_str_y_axis{};
 
