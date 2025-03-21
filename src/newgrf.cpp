@@ -54,6 +54,7 @@
 #include "vehicle_base.h"
 #include "road.h"
 #include "newgrf_roadstop.h"
+#include "newgrf/newgrf_bytereader.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -212,102 +213,6 @@ static inline bool IsValidNewGRFImageIndex(uint8_t image_index)
 {
 	return image_index == 0xFD || IsValidImageIndex<T>(image_index);
 }
-
-class OTTDByteReaderSignal { };
-
-/** Class to read from a NewGRF file */
-class ByteReader {
-protected:
-	uint8_t *data;
-	uint8_t *end;
-
-public:
-	ByteReader(uint8_t *data, uint8_t *end) : data(data), end(end) { }
-
-	inline uint8_t *ReadBytes(size_t size)
-	{
-		if (data + size >= end) {
-			/* Put data at the end, as would happen if every byte had been individually read. */
-			data = end;
-			throw OTTDByteReaderSignal();
-		}
-
-		uint8_t *ret = data;
-		data += size;
-		return ret;
-	}
-
-	inline uint8_t ReadByte()
-	{
-		if (data < end) return *(data)++;
-		throw OTTDByteReaderSignal();
-	}
-
-	uint16_t ReadWord()
-	{
-		uint16_t val = ReadByte();
-		return val | (ReadByte() << 8);
-	}
-
-	uint16_t ReadExtendedByte()
-	{
-		uint16_t val = ReadByte();
-		return val == 0xFF ? ReadWord() : val;
-	}
-
-	uint32_t ReadDWord()
-	{
-		uint32_t val = ReadWord();
-		return val | (ReadWord() << 16);
-	}
-
-	uint32_t PeekDWord()
-	{
-		AutoRestoreBackup backup(this->data, this->data);
-		return this->ReadDWord();
-	}
-
-	uint32_t ReadVarSize(uint8_t size)
-	{
-		switch (size) {
-			case 1: return ReadByte();
-			case 2: return ReadWord();
-			case 4: return ReadDWord();
-			default:
-				NOT_REACHED();
-				return 0;
-		}
-	}
-
-	std::string_view ReadString()
-	{
-		char *string = reinterpret_cast<char *>(data);
-		size_t string_length = ttd_strnlen(string, Remaining());
-
-		/* Skip past the terminating NUL byte if it is present, but not more than remaining. */
-		Skip(std::min(string_length + 1, Remaining()));
-
-		return std::string_view(string, string_length);
-	}
-
-	inline size_t Remaining() const
-	{
-		return end - data;
-	}
-
-	inline bool HasData(size_t count = 1) const
-	{
-		return data + count <= end;
-	}
-
-	inline void Skip(size_t len)
-	{
-		data += len;
-		/* It is valid to move the buffer to exactly the end of the data,
-		 * as there may not be any more data read. */
-		if (data > end) throw OTTDByteReaderSignal();
-	}
-};
 
 typedef void (*SpecialSpriteHandler)(ByteReader &buf);
 
