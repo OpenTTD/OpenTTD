@@ -80,30 +80,32 @@ void GRFConfig::CopyParams(const GRFConfig &src)
 /**
  * Get the name of this grf. In case the name isn't known
  * the filename is returned.
- * @return The name of filename of this grf.
+ * @return The name or filename of this grf.
  */
-const char *GRFConfig::GetName() const
+std::string GRFConfig::GetName() const
 {
-	const char *name = GetGRFStringFromGRFText(this->name);
-	return StrEmpty(name) ? this->filename.c_str() : name;
+	auto view = GetGRFStringFromGRFText(this->name);
+	return view ? std::string(*view) : this->filename;
 }
 
 /**
  * Get the grf info.
  * @return A string with a description of this grf.
  */
-const char *GRFConfig::GetDescription() const
+std::optional<std::string> GRFConfig::GetDescription() const
 {
-	return GetGRFStringFromGRFText(this->info);
+	auto view = GetGRFStringFromGRFText(this->info);
+	return view ? std::optional<std::string>(*view) : std::nullopt;
 }
 
 /**
  * Get the grf url.
  * @return A string with an url of this grf.
  */
-const char *GRFConfig::GetURL() const
+std::optional<std::string> GRFConfig::GetURL() const
 {
-	return GetGRFStringFromGRFText(this->url);
+	auto view = GetGRFStringFromGRFText(this->url);
+	return view ? std::optional<std::string>(*view) : std::nullopt;
 }
 
 /** Set the default value for all parameters as specified by action14. */
@@ -532,9 +534,7 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 
 	this->num_scanned++;
 
-	const char *name = nullptr;
-	if (grfconfig->name != nullptr) name = GetGRFStringFromGRFText(grfconfig->name);
-	if (name == nullptr) name = grfconfig->filename.c_str();
+	std::string name = grfconfig->GetName();
 	UpdateNewGRFScanStatus(this->num_scanned, name);
 	VideoDriver::GetInstance()->GameLoopPause();
 

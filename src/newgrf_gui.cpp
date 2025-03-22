@@ -128,8 +128,8 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 	if (c.flags.Test(GRFConfigFlag::Compatible)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
-	if (!StrEmpty(c.GetDescription())) {
-		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, c.GetDescription()), TC_BLACK);
+	if (std::optional<std::string> desc = c.GetDescription(); desc.has_value()) {
+		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, *desc), TC_BLACK);
 	} else {
 		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
@@ -232,9 +232,9 @@ struct NewGRFParametersWindow : public Window {
 				Dimension suggestion = {500U - WidgetDimensions::scaled.frametext.Horizontal(), (uint)GetCharacterHeight(FS_NORMAL) * 4 + WidgetDimensions::scaled.frametext.Vertical()};
 				for (const auto &par_info : this->grf_config.param_info) {
 					if (!par_info.has_value()) continue;
-					const char *desc = GetGRFStringFromGRFText(par_info->desc);
-					if (desc == nullptr) continue;
-					Dimension d = GetStringMultiLineBoundingBox(desc, suggestion);
+					std::optional<std::string_view> desc = GetGRFStringFromGRFText(par_info->desc);
+					if (!desc) continue;
+					Dimension d = GetStringMultiLineBoundingBox(*desc, suggestion);
 					d.height += WidgetDimensions::scaled.frametext.Vertical();
 					suggestion = maxdim(d, suggestion);
 				}
@@ -260,7 +260,7 @@ struct NewGRFParametersWindow : public Window {
 
 		auto it = std::ranges::lower_bound(par_info.value_names, value, std::less{}, &GRFParameterInfo::ValueName::first);
 		if (it != std::end(par_info.value_names) && it->first == value) {
-			if (const char *label = GetGRFStringFromGRFText(it->second); label != nullptr) return {STR_JUST_RAW_STRING, label};
+			if (std::optional<std::string_view> label = GetGRFStringFromGRFText(it->second); label.has_value()) return {STR_JUST_RAW_STRING, std::string(*label)};
 		}
 
 		return {STR_JUST_INT, value};
@@ -269,10 +269,10 @@ struct NewGRFParametersWindow : public Window {
 	std::string GetSettingString(const GRFParameterInfo &par_info, int i, uint32_t value) const
 	{
 		auto [param1, param2] = this->GetValueParams(par_info, value);
-		const char *name = GetGRFStringFromGRFText(par_info.name);
-		return name == nullptr
+		std::optional<std::string_view> name = GetGRFStringFromGRFText(par_info.name);
+		return !name.has_value()
 			? GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, i + 1, param1, param2)
-			: GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_JUST_RAW_STRING, name, param1, param2);
+			: GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_JUST_RAW_STRING, std::string(*name), param1, param2);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -280,9 +280,9 @@ struct NewGRFParametersWindow : public Window {
 		if (widget == WID_NP_DESCRIPTION) {
 			if (!this->HasParameterInfo(this->clicked_row)) return;
 			const GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
-			const char *desc = GetGRFStringFromGRFText(par_info.desc);
-			if (desc == nullptr) return;
-			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect), desc, TC_BLACK);
+			std::optional<std::string_view> desc = GetGRFStringFromGRFText(par_info.desc);
+			if (!desc) return;
+			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect), *desc, TC_BLACK);
 			return;
 		} else if (widget != WID_NP_BACKGROUND) {
 			return;
@@ -385,7 +385,9 @@ struct NewGRFParametersWindow : public Window {
 
 							DropDownList list;
 							for (const auto &[value, name] : par_info.value_names) {
-								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, GetGRFStringFromGRFText(name)), value));
+								std::optional<std::string_view> str = GetGRFStringFromGRFText(name);
+								assert(str.has_value());
+								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, std::string(*str)), value));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_NP_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
@@ -854,7 +856,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int i = 0;
 				for (const auto &c : this->actives) {
 					if (this->vscroll->IsVisible(i)) {
-						const char *text = c->GetName();
+						std::string text = c->GetName();
 						bool h = (this->active_sel == c.get());
 						PaletteID pal = this->GetPalette(*c);
 
@@ -894,7 +896,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				for (auto it = first; it != last; ++it) {
 					const GRFConfig *c = *it;
 					bool h = (c == this->avail_sel);
-					const char *text = c->GetName();
+					std::string text = c->GetName();
 
 					if (h) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
 					DrawString(tr.left, tr.right, tr.top + offset_y, text, h ? TC_WHITE : TC_SILVER);
@@ -948,8 +950,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_OPEN_URL: {
 				const GRFConfig *c = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
-
-				OpenBrowser(c->GetURL());
+				std::optional<std::string> url = c->GetURL();
+				if (url) OpenBrowser(*url);
 				break;
 			}
 
@@ -1263,7 +1265,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || !selected_config->GetTextfile(tft).has_value());
 		}
-		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || StrEmpty(selected_config->GetURL()));
+		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || !selected_config->GetURL());
 
 		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
@@ -1413,7 +1415,7 @@ private:
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());
 		filter.AddLine((*a)->filename);
-		filter.AddLine((*a)->GetDescription());
+		filter.AddLine((*a)->GetDescription().value_or(""));
 		return filter.GetState();;
 	}
 
@@ -2209,13 +2211,9 @@ struct ScanProgressWindow : public Window {
 	 * @param num  The number of NewGRFs scanned so far.
 	 * @param name The name of the last scanned NewGRF.
 	 */
-	void UpdateNewGRFScanStatus(uint num, const char *name)
+	void UpdateNewGRFScanStatus(uint num, std::string_view name)
 	{
-		if (name == nullptr) {
-			this->last_name = GetString(STR_NEWGRF_SCAN_ARCHIVES);
-		} else {
-			this->last_name = name;
-		}
+		this->last_name = name;
 		this->scanned = num;
 		if (num > _settings_client.gui.last_newgrf_count) _settings_client.gui.last_newgrf_count = num;
 
@@ -2228,7 +2226,7 @@ struct ScanProgressWindow : public Window {
  * @param num  The number of NewGRFs scanned so far.
  * @param name The name of the last scanned NewGRF.
  */
-void UpdateNewGRFScanStatus(uint num, const char *name)
+void UpdateNewGRFScanStatus(uint num, std::string_view name)
 {
 	ScanProgressWindow *w  = dynamic_cast<ScanProgressWindow *>(FindWindowByClass(WC_MODAL_PROGRESS));
 	if (w == nullptr) w = new ScanProgressWindow();

@@ -102,10 +102,8 @@ void StringFilter::ResetState()
  *
  * @param str Another line from the item.
  */
-void StringFilter::AddLine(const char *str)
+void StringFilter::AddLine(std::string_view str)
 {
-	if (str == nullptr) return;
-
 	bool match_case = this->case_sensitive != nullptr && *this->case_sensitive;
 	for (WordState &ws : this->word_index) {
 		if (!ws.match) {
@@ -115,7 +113,7 @@ void StringFilter::AddLine(const char *str)
 					this->word_matches++;
 				}
 			} else {
-				if ((match_case ? strstr(str, ws.word.c_str()) : strcasestr(str, ws.word.c_str())) != nullptr) {
+				if (match_case ? str.find(ws.word) != str.npos : StrContainsIgnoreCase(str, ws.word)) {
 					ws.match = true;
 					this->word_matches++;
 				}
