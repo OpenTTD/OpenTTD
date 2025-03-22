@@ -197,7 +197,7 @@ protected:
 	/* These values are used if the graph is being plotted against values
 	 * rather than the dates specified by month and year. */
 	uint16_t x_values_start = 0;
-	uint16_t x_values_increment = 0;
+	int16_t x_values_increment = 0;
 
 	StringID format_str_y_axis{};
 
@@ -1486,10 +1486,20 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
 		this->month_increment = 1;
-		this->x_values_start = ECONOMY_MONTH_MINUTES;
-		this->x_values_increment = ECONOMY_MONTH_MINUTES;
-		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 		this->ranges = RANGE_LABELS;
+
+		StringID widgetFooterText;
+		if (TimerGameEconomy::UsingWallclockUnits()) {
+			this->x_values_start = GRAPH_NUM_MONTHS;
+			this->x_values_increment = -1 * ECONOMY_MONTH_MINUTES;
+			this->draw_dates = false;
+			widgetFooterText = STR_GRAPH_LAST_24_MINUTES_TIME_LABEL;
+		} else {
+			this->x_values_start = ECONOMY_MONTH_MINUTES;
+			this->x_values_increment = ECONOMY_MONTH_MINUTES;
+			this->draw_dates = true;
+			widgetFooterText = STR_EMPTY;
+		}
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GRAPH_MATRIX_SCROLLBAR);
@@ -1503,7 +1513,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		this->vscroll->SetCount(count);
 
 		auto *wid = this->GetWidget<NWidgetCore>(WID_GRAPH_FOOTER);
-		wid->SetString(TimerGameEconomy::UsingWallclockUnits() ? STR_GRAPH_LAST_24_MINUTES_TIME_LABEL : STR_EMPTY);
+		wid->SetString(widgetFooterText);
 
 		this->FinishInitNested(window_number);
 
