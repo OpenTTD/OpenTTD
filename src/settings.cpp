@@ -955,6 +955,26 @@ static void ValidateSettings()
 	}
 }
 
+static std::pair<std::string, std::optional<int>> TryReadScriptNameWithVersion(std::string item_name)
+{
+	std::string name = item_name;
+	std::optional<int> version = std::nullopt;
+	auto sc = item_name.rfind('.');
+	if (sc != std::string::npos) {
+		std::string ver = item_name.substr(sc + 1);
+		if (!ver.empty()) {
+			auto it = std::begin(ver);
+			if (*it == '-' && ver.size() > 1) ++it;
+			if (std::all_of(it, std::end(ver), isdigit)) {
+				name = item_name.substr(0, sc);
+				version = std::atoi(ver.c_str());
+			}
+		}
+	}
+
+	return { name, version };
+}
+
 static void AILoadConfig(const IniFile &ini, const char *grpname)
 {
 	const IniGroup *group = ini.GetGroup(grpname);
@@ -973,9 +993,14 @@ static void AILoadConfig(const IniFile &ini, const char *grpname)
 
 		config->Change(item.name);
 		if (!config->HasScript()) {
-			if (item.name != "none") {
-				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
-				continue;
+			auto [name, version] = TryReadScriptNameWithVersion(item.name);
+			config->Change(name, version.has_value() ? version.value() : -1, version.has_value());
+
+			if (!config->HasScript()) {
+				if (name != "none") {
+					Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", name);
+					continue;
+				}
 			}
 		}
 		if (item.value.has_value()) config->StringToSettings(*item.value);
@@ -1000,9 +1025,14 @@ static void GameLoadConfig(const IniFile &ini, const char *grpname)
 
 	config->Change(item.name);
 	if (!config->HasScript()) {
-		if (item.name != "none") {
-			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);
-			return;
+		auto [name, version] = TryReadScriptNameWithVersion(item.name);
+		config->Change(name, version.has_value() ? version.value() : -1, version.has_value());
+
+		if (!config->HasScript()) {
+			if (name != "none") {
+				Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", name);
+				return;
+			}
 		}
 	}
 	if (item.value.has_value()) config->StringToSettings(*item.value);
@@ -1175,13 +1205,12 @@ static void AISaveConfig(IniFile &ini, const char *grpname)
 
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		AIConfig *config = AIConfig::GetConfig(c, AIConfig::SSS_FORCE_NEWGAME);
-		std::string name;
+		std::string name = "none";
 		std::string value = config->SettingsToString();
 
 		if (config->HasScript()) {
 			name = config->GetName();
-		} else {
-			name = "none";
+			if (config->GetForceExactMatch()) name = fmt::format("{}.{}", name, config->GetVersion());
 		}
 
 		group.CreateItem(name).SetValue(value);
@@ -1194,13 +1223,12 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
 	group.Clear();
 
 	GameConfig *config = GameConfig::GetConfig(AIConfig::SSS_FORCE_NEWGAME);
-	std::string name;
+	std::string name = "none";
 	std::string value = config->SettingsToString();
 
 	if (config->HasScript()) {
 		name = config->GetName();
-	} else {
-		name = "none";
+		if (config->GetForceExactMatch()) name = fmt::format("{}.{}", name, config->GetVersion());
 	}
 
 	group.CreateItem(name).SetValue(value);

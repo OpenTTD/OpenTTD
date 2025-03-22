@@ -166,8 +166,11 @@ struct GSConfigWindow : public Window {
 	 */
 	std::string GetText() const
 	{
-		if (const GameInfo *info = GameConfig::GetConfig()->GetInfo(); info != nullptr) return info->GetName();
-		return GetString(STR_AI_CONFIG_NONE);
+		const GameConfig *config = GameConfig::GetConfig();
+		const GameInfo *info = config->GetInfo();
+		if (info == nullptr) return GetString(STR_AI_CONFIG_NONE);
+		if (config->GetForceExactMatch()) return GetString(STR_AI_CONFIG_NAME_VERSION, info->GetName(), info->GetVersion());
+		return info->GetName();
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
