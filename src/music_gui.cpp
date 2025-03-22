@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "base_media_base.h"
+#include "base_media_music.h"
 #include "music/music_driver.hpp"
 #include "window_gui.h"
 #include "strings_func.h"

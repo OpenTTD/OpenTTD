@@ -21,6 +21,7 @@
 #include "ai/ai_info.hpp"
 #include "company_base.h"
 #include "base_media_base.h"
+#include "base_media_graphics.h"
 #endif /* PNG_TEXT_SUPPORTED */
 
 #include "safeguards.h"

@@ -46,6 +46,7 @@
 #include "newgrf_config.h"
 #include "picker_func.h"
 #include "base_media_base.h"
+#include "base_media_graphics.h"
 #include "fios.h"
 #include "fileio_func.h"
 #include "settings_cmd.h"

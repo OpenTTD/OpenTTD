@@ -11,7 +11,6 @@
 #define BASE_MEDIA_BASE_H
 
 #include "fileio_func.h"
-#include "gfx_type.h"
 #include "textfile_type.h"
 #include "textfile_gui.h"
 #include "3rdparty/md5/md5.h"
@@ -39,21 +38,25 @@ struct MD5File {
 	ChecksumResult CheckMD5(Subdirectory subdir, size_t max_size) const;
 };
 
+/** Defines the traits of a BaseSet type. */
+template <class T> struct BaseSetTraits;
+
 /**
  * Information about a single base set.
  * @tparam T the real class we're going to be
- * @tparam Tnum_files the number of files in the set
- * @tparam Tsearch_in_tars whether to search in the tars or not
  */
-template <class T, size_t Tnum_files, bool Tsearch_in_tars>
+template <class T>
 struct BaseSet {
 	typedef std::unordered_map<std::string, std::string> TranslatedStrings;
 
 	/** Number of files in this set */
-	static const size_t NUM_FILES = Tnum_files;
+	static constexpr size_t NUM_FILES = BaseSetTraits<T>::num_files;
 
 	/** Whether to search in the tars or not. */
-	static const bool SEARCH_IN_TARS = Tsearch_in_tars;
+	static constexpr bool SEARCH_IN_TARS = BaseSetTraits<T>::search_in_tars;
+
+	/** BaseSet type name. */
+	static constexpr std::string_view SET_TYPE = BaseSetTraits<T>::set_type;
 
 	/** Internal names of the files in this set. */
 	static const char * const *file_names;
@@ -61,15 +64,15 @@ struct BaseSet {
 	std::string name;              ///< The name of the base set
 	std::string url;               ///< URL for information about the base set
 	TranslatedStrings description; ///< Description of the base set
-	uint32_t shortname;              ///< Four letter short variant of the name
-	uint32_t version;                ///< The version of this base set
-	bool fallback;                 ///< This set is a fallback set, i.e. it should be used only as last resort
+	uint32_t shortname = 0; ///< Four letter short variant of the name
+	uint32_t version = 0; ///< The version of this base set
+	bool fallback = false; ///< This set is a fallback set, i.e. it should be used only as last resort
 
-	MD5File files[NUM_FILES];      ///< All files part of this set
-	uint found_files;              ///< Number of the files that could be found
-	uint valid_files;              ///< Number of the files that could be found and are valid
+	std::array<MD5File, BaseSet<T>::NUM_FILES> files{}; ///< All files part of this set
+	uint found_files = 0; ///< Number of the files that could be found
+	uint valid_files = 0; ///< Number of the files that could be found and are valid
 
-	T *next;                       ///< The next base set in this list
+	T *next = nullptr; ///< The next base set in this list
 
 	/** Free everything we allocated */
 	~BaseSet()
@@ -83,7 +86,7 @@ struct BaseSet {
 	 */
 	int GetNumMissing() const
 	{
-		return Tnum_files - this->found_files;
+		return BaseSet<T>::NUM_FILES - this->found_files;
 	}
 
 	/**
@@ -93,7 +96,7 @@ struct BaseSet {
 	 */
 	int GetNumInvalid() const
 	{
-		return Tnum_files - this->valid_files;
+		return BaseSet<T>::NUM_FILES - this->valid_files;
 	}
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
@@ -160,9 +163,9 @@ struct BaseSet {
 template <class Tbase_set>
 class BaseMedia : FileScanner {
 protected:
-	static Tbase_set *available_sets; ///< All available sets
-	static Tbase_set *duplicate_sets; ///< All sets that aren't available, but needed for not downloading base sets when a newer version than the one on BaNaNaS is loaded.
-	static const Tbase_set *used_set; ///< The currently used set
+	static inline Tbase_set *available_sets = nullptr; ///< All available sets
+	static inline Tbase_set *duplicate_sets = nullptr; ///< All sets that aren't available, but needed for not downloading base sets when a newer version than the one on BaNaNaS is loaded.
+	static inline const Tbase_set *used_set = nullptr; ///< The currently used set
 
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
 
@@ -208,10 +211,6 @@ public:
 	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
 
-template <class Tbase_set> /* static */ const Tbase_set *BaseMedia<Tbase_set>::used_set;
-template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::available_sets;
-template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplicate_sets;
-
 /**
  * Check whether there's a base set matching some information.
  * @param ci The content info to compare it to.
@@ -221,119 +220,5 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplica
  */
 template <class Tbase_set>
 const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s);
-
-/** Types of graphics in the base graphics set */
-enum GraphicsFileType : uint8_t {
-	GFT_BASE,     ///< Base sprites for all climates
-	GFT_LOGOS,    ///< Logos, landscape icons and original terrain generator sprites
-	GFT_ARCTIC,   ///< Landscape replacement sprites for arctic
-	GFT_TROPICAL, ///< Landscape replacement sprites for tropical
-	GFT_TOYLAND,  ///< Landscape replacement sprites for toyland
-	GFT_EXTRA,    ///< Extra sprites that were not part of the original sprites
-	MAX_GFT,      ///< We are looking for this amount of GRFs
-};
-
-/** Blitter type for base graphics sets. */
-enum BlitterType : uint8_t {
-	BLT_8BPP,       ///< Base set has 8 bpp sprites only.
-	BLT_32BPP,      ///< Base set has both 8 bpp and 32 bpp sprites.
-};
-
-struct GRFConfig;
-
-/** All data of a graphics set. */
-struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
-private:
-	mutable std::unique_ptr<GRFConfig> extra_cfg; ///< Parameters for extra GRF
-public:
-	PaletteType palette;       ///< Palette of this graphics set
-	BlitterType blitter;       ///< Blitter of this graphics set
-
-	GraphicsSet();
-	~GraphicsSet();
-
-	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
-	GRFConfig *GetExtraConfig() const { return this->extra_cfg.get(); }
-	GRFConfig &GetOrCreateExtraConfig() const;
-	bool IsConfigurable() const;
-	void CopyCompatibleConfig(const GraphicsSet &src);
-
-	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir);
-};
-
-/** All data/functions related with replacing the base graphics. */
-class BaseGraphics : public BaseMedia<GraphicsSet> {
-public:
-	/** Values loaded from config file. */
-	struct Ini {
-		std::string name;
-		uint32_t shortname;                 ///< unique key for base set
-		uint32_t extra_version;             ///< version of the extra GRF
-		std::vector<uint32_t> extra_params; ///< parameters for the extra GRF
-	};
-	static inline Ini ini_data;
-
-};
-
-/** All data of a sounds set. */
-struct SoundsSet : BaseSet<SoundsSet, 1, true> {
-};
-
-/** All data/functions related with replacing the base sounds */
-class BaseSounds : public BaseMedia<SoundsSet> {
-public:
-	/** The set as saved in the config file. */
-	static inline std::string ini_set;
-
-};
-
-/** Maximum number of songs in the 'class' playlists. */
-static const uint NUM_SONGS_CLASS     = 10;
-/** Number of classes for songs */
-static const uint NUM_SONG_CLASSES    = 3;
-/** Maximum number of songs in the full playlist; theme song + the classes */
-static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
-
-/** Maximum number of songs in the (custom) playlist */
-static const uint NUM_SONGS_PLAYLIST  = 32;
-
-/* Functions to read DOS music CAT files, similar to but not quite the same as sound effect CAT files */
-std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum);
-std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &filename, size_t entrynum);
-
-enum MusicTrackType : uint8_t {
-	MTT_STANDARDMIDI, ///< Standard MIDI file
-	MTT_MPSMIDI,      ///< MPS GM driver MIDI format (contained in a CAT file)
-};
-
-/** Metadata about a music track. */
-struct MusicSongInfo {
-	std::string songname;    ///< name of song displayed in UI
-	uint8_t tracknr;            ///< track number of song displayed in UI
-	std::string filename;    ///< file on disk containing song (when used in MusicSet class)
-	MusicTrackType filetype; ///< decoder required for song file
-	int cat_index;           ///< entry index in CAT file, for filetype==MTT_MPSMIDI
-	bool loop;               ///< song should play in a tight loop if possible, never ending
-	int override_start;      ///< MIDI ticks to skip over in beginning
-	int override_end;        ///< MIDI tick to end the song at (0 if no override)
-};
-
-/** All data of a music set. */
-struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false> {
-	/** Data about individual songs in set. */
-	MusicSongInfo songinfo[NUM_SONGS_AVAILABLE];
-	/** Number of valid songs in set. */
-	uint8_t num_available;
-
-	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
-};
-
-/** All data/functions related with replacing the base music */
-class BaseMusic : public BaseMedia<MusicSet> {
-public:
-	/** The set as saved in the config file. */
-	static inline std::string ini_set;
-
-};
 
 #endif /* BASE_MEDIA_BASE_H */

@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "base_media_base.h"
+#include "base_media_graphics.h"
 #include "blitter/factory.hpp"
 #include "error_func.h"
 

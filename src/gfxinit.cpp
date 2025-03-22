@@ -18,10 +18,9 @@
 #include "video/video_driver.hpp"
 #include "window_func.h"
 #include "palette_func.h"
-
-/* The type of set we're replacing */
-#define SET_TYPE "graphics"
 #include "base_media_func.h"
+#include "base_media_graphics.h"
+#include "base_media_sounds.h"
 
 #include "table/sprites.h"
 
@@ -138,7 +137,7 @@ void CheckExternalFiles()
 		static_assert(SoundsSet::NUM_FILES == 1);
 		/* No need to loop each file, as long as there is only a single
 		 * sound file. */
-		fmt::format_to(output_iterator, "\t{} is {} ({})\n", sounds_set->files->filename, SoundsSet::CheckMD5(sounds_set->files, BASESET_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning);
+		fmt::format_to(output_iterator, "\t{} is {} ({})\n", sounds_set->files[0].filename, SoundsSet::CheckMD5(&sounds_set->files[0], BASESET_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files[0].missing_warning);
 	}
 
 	if (!error_msg.empty()) ShowInfoI(error_msg);
@@ -348,7 +347,6 @@ void GfxLoadSprites()
 }
 
 GraphicsSet::GraphicsSet()
-	: BaseSet<GraphicsSet, MAX_GFT, true>{}, palette{}, blitter{}
 {
 	// instantiate here, because unique_ptr needs a complete type
 }
@@ -360,7 +358,7 @@ GraphicsSet::~GraphicsSet()
 
 bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)
 {
-	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, true>::FillSetDetails(ini, path, full_filename, false);
+	bool ret = this->BaseSet<GraphicsSet>::FillSetDetails(ini, path, full_filename, false);
 	if (ret) {
 		const IniGroup *metadata = ini.GetGroup("metadata");
 		assert(metadata != nullptr); /* ret can't be true if metadata isn't present. */
@@ -472,15 +470,15 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 static const char * const _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
 
 /** Implementation */
-template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _graphics_file_names;
+template <>
+/* static */ const char * const *BaseSet<GraphicsSet>::file_names = _graphics_file_names;
 
-template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
+template <>
+/* static */ bool BaseMedia<GraphicsSet>::DetermineBestSet()
 {
-	if (BaseMedia<Tbase_set>::used_set != nullptr) return true;
+	if (BaseMedia<GraphicsSet>::used_set != nullptr) return true;
 
-	const Tbase_set *best = nullptr;
+	const GraphicsSet *best = nullptr;
 
 	auto IsBetter = [&best] (const auto *current) {
 		/* Nothing chosen yet. */
@@ -497,21 +495,21 @@ template <class Tbase_set>
 		return best->palette != PAL_DOS && current->palette == PAL_DOS;
 	};
 
-	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
+	for (const GraphicsSet *c = BaseMedia<GraphicsSet>::available_sets; c != nullptr; c = c->next) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
 		if (IsBetter(c)) best = c;
 	}
 
-	BaseMedia<Tbase_set>::used_set = best;
-	return BaseMedia<Tbase_set>::used_set != nullptr;
+	BaseMedia<GraphicsSet>::used_set = best;
+	return BaseMedia<GraphicsSet>::used_set != nullptr;
 }
 
-template <class Tbase_set>
-/* static */ const char *BaseMedia<Tbase_set>::GetExtension()
+template <>
+/* static */ const char *BaseMedia<GraphicsSet>::GetExtension()
 {
 	return ".obg"; // OpenTTD Base Graphics
 }
 
-INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<GraphicsSet>, GraphicsSet)
+template class BaseMedia<GraphicsSet>;

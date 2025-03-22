@@ -17,10 +17,8 @@
 #include "window_func.h"
 #include "window_gui.h"
 #include "vehicle_base.h"
-
-/* The type of set we're replacing */
-#define SET_TYPE "sounds"
 #include "base_media_func.h"
+#include "base_media_sounds.h"
 
 #include "safeguards.h"
 
@@ -92,7 +90,7 @@ static bool SetBankSource(MixerChannel *mc, SoundEntry *sound, SoundID sound_id)
 void InitializeSound()
 {
 	Debug(misc, 1, "Loading sound effects...");
-	OpenBankFile(BaseSounds::GetUsedSet()->files->filename);
+	OpenBankFile(BaseSounds::GetUsedSet()->files[0].filename);
 }
 
 
@@ -249,28 +247,25 @@ void SndPlayFx(SoundID sound)
 	StartSound(sound, 0.5, UINT8_MAX);
 }
 
-INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<SoundsSet>, SoundsSet)
-
 /** Names corresponding to the sound set's files */
 static const char * const _sound_file_names[] = { "samples" };
 
+template <>
+/* static */ const char * const *BaseSet<SoundsSet>::file_names = _sound_file_names;
 
-template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _sound_file_names;
-
-template <class Tbase_set>
-/* static */ const char *BaseMedia<Tbase_set>::GetExtension()
+template <>
+/* static */ const char *BaseMedia<SoundsSet>::GetExtension()
 {
 	return ".obs"; // OpenTTD Base Sounds
 }
 
-template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
+template <>
+/* static */ bool BaseMedia<SoundsSet>::DetermineBestSet()
 {
-	if (BaseMedia<Tbase_set>::used_set != nullptr) return true;
+	if (BaseMedia<SoundsSet>::used_set != nullptr) return true;
 
-	const Tbase_set *best = nullptr;
-	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
+	const SoundsSet *best = nullptr;
+	for (const SoundsSet *c = BaseMedia<SoundsSet>::available_sets; c != nullptr; c = c->next) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
@@ -283,7 +278,8 @@ template <class Tbase_set>
 		}
 	}
 
-	BaseMedia<Tbase_set>::used_set = best;
-	return BaseMedia<Tbase_set>::used_set != nullptr;
+	BaseMedia<SoundsSet>::used_set = best;
+	return BaseMedia<SoundsSet>::used_set != nullptr;
 }
 
+template class BaseMedia<SoundsSet>;
