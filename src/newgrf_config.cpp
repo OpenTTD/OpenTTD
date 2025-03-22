@@ -84,8 +84,8 @@ void GRFConfig::CopyParams(const GRFConfig &src)
  */
 std::string GRFConfig::GetName() const
 {
-	const char *name = GetGRFStringFromGRFText(this->name);
-	return StrEmpty(name) ? this->filename : name;
+	auto name = GetGRFStringFromGRFText(this->name);
+	return name.has_value() ? std::string(*name) : this->filename;
 }
 
 /**
@@ -94,9 +94,9 @@ std::string GRFConfig::GetName() const
  */
 std::optional<std::string> GRFConfig::GetDescription() const
 {
-	const char *str = GetGRFStringFromGRFText(this->info);
-	if (StrEmpty(str)) return std::nullopt;
-	return std::string(str);
+	auto str = GetGRFStringFromGRFText(this->info);
+	if (!str.has_value()) return std::nullopt;
+	return std::string(*str);
 }
 
 /**
@@ -105,9 +105,9 @@ std::optional<std::string> GRFConfig::GetDescription() const
  */
 std::optional<std::string> GRFConfig::GetURL() const
 {
-	const char *str = GetGRFStringFromGRFText(this->url);
-	if (StrEmpty(str)) return std::nullopt;
-	return std::string(str);
+	auto str = GetGRFStringFromGRFText(this->url);
+	if (!str.has_value()) return std::nullopt;
+	return std::string(*str);
 }
 
 /** Set the default value for all parameters as specified by action14. */

@@ -232,9 +232,9 @@ struct NewGRFParametersWindow : public Window {
 				Dimension suggestion = {500U - WidgetDimensions::scaled.frametext.Horizontal(), (uint)GetCharacterHeight(FS_NORMAL) * 4 + WidgetDimensions::scaled.frametext.Vertical()};
 				for (const auto &par_info : this->grf_config.param_info) {
 					if (!par_info.has_value()) continue;
-					const char *desc = GetGRFStringFromGRFText(par_info->desc);
-					if (desc == nullptr) continue;
-					Dimension d = GetStringMultiLineBoundingBox(desc, suggestion);
+					auto desc = GetGRFStringFromGRFText(par_info->desc);
+					if (!desc.has_value()) continue;
+					Dimension d = GetStringMultiLineBoundingBox(*desc, suggestion);
 					d.height += WidgetDimensions::scaled.frametext.Vertical();
 					suggestion = maxdim(d, suggestion);
 				}
@@ -260,7 +260,7 @@ struct NewGRFParametersWindow : public Window {
 
 		auto it = std::ranges::lower_bound(par_info.value_names, value, std::less{}, &GRFParameterInfo::ValueName::first);
 		if (it != std::end(par_info.value_names) && it->first == value) {
-			if (const char *label = GetGRFStringFromGRFText(it->second); label != nullptr) return {STR_JUST_RAW_STRING, label};
+			if (auto label = GetGRFStringFromGRFText(it->second); label.has_value()) return {STR_JUST_RAW_STRING, std::string(*label)};
 		}
 
 		return {STR_JUST_INT, value};
@@ -269,10 +269,10 @@ struct NewGRFParametersWindow : public Window {
 	std::string GetSettingString(const GRFParameterInfo &par_info, int i, uint32_t value) const
 	{
 		auto [param1, param2] = this->GetValueParams(par_info, value);
-		const char *name = GetGRFStringFromGRFText(par_info.name);
-		return name == nullptr
-			? GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, i + 1, param1, param2)
-			: GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_JUST_RAW_STRING, name, param1, param2);
+		auto name = GetGRFStringFromGRFText(par_info.name);
+		return name.has_value()
+			? GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_JUST_RAW_STRING, std::string(*name), param1, param2)
+			: GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, i + 1, param1, param2);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -280,9 +280,9 @@ struct NewGRFParametersWindow : public Window {
 		if (widget == WID_NP_DESCRIPTION) {
 			if (!this->HasParameterInfo(this->clicked_row)) return;
 			const GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
-			const char *desc = GetGRFStringFromGRFText(par_info.desc);
-			if (desc == nullptr) return;
-			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect), desc, TC_BLACK);
+			auto desc = GetGRFStringFromGRFText(par_info.desc);
+			if (!desc.has_value()) return;
+			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect), *desc, TC_BLACK);
 			return;
 		} else if (widget != WID_NP_BACKGROUND) {
 			return;
@@ -385,7 +385,9 @@ struct NewGRFParametersWindow : public Window {
 
 							DropDownList list;
 							for (const auto &[value, name] : par_info.value_names) {
-								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, GetGRFStringFromGRFText(name)), value));
+								auto text = GetGRFStringFromGRFText(name);
+								assert(text.has_value()); // ensured by "complete_labels"
+								list.push_back(MakeDropDownListStringItem(GetString(STR_JUST_RAW_STRING, std::string(*text)), value));
 							}
 
 							ShowDropDownListAt(this, std::move(list), old_val, WID_NP_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
