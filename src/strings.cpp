@@ -1075,9 +1075,9 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
  * @param args    Pointer to extra arguments used by various string codes.
  * @param dry_run True when the args' type data is not yet initialized.
  */
-static void FormatString(StringBuilder &builder, const char *str_arg, StringParameters &args, uint case_index, bool game_script, bool dry_run)
+static void FormatString(StringBuilder &builder, const char *str_arg, StringParameters &args, uint orig_case_index, bool game_script, bool dry_run)
 {
-	size_t orig_offset = args.GetOffset();
+	size_t orig_first_param_offset = args.GetOffset();
 
 	if (!dry_run) {
 		/*
@@ -1090,22 +1090,29 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		 */
 		std::string buffer;
 		StringBuilder dry_run_builder(buffer);
-		FormatString(dry_run_builder, str_arg, args, case_index, game_script, true);
+		FormatString(dry_run_builder, str_arg, args, orig_case_index, game_script, true);
 		/* We have to restore the original offset here to to read the correct values. */
-		args.SetOffset(orig_offset);
+		args.SetOffset(orig_first_param_offset);
 	}
 	char32_t b = '\0';
 	uint next_substr_case_index = 0;
-	std::stack<const char *, std::vector<const char *>> str_stack;
-	str_stack.push(str_arg);
+	struct StrStackItem {
+		const char *str;
+		size_t first_param_offset;
+		uint case_index;
+	};
+	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
+	str_stack.emplace(str_arg, orig_first_param_offset, orig_case_index);
 
 	for (;;) {
 		try {
-			while (!str_stack.empty() && (b = Utf8Consume(&str_stack.top())) == '\0') {
+			while (!str_stack.empty() && (b = Utf8Consume(&str_stack.top().str)) == '\0') {
 				str_stack.pop();
 			}
 			if (str_stack.empty()) break;
-			const char *&str = str_stack.top();
+			const char *&str = str_stack.top().str;
+			const size_t ref_param_offset = str_stack.top().first_param_offset;
+			const uint case_index = str_stack.top().case_index;
 
 			if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 				/* We need to pass some stuff as it might be modified. */
@@ -1131,9 +1138,8 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					if (ptr == nullptr) {
 						builder += "(invalid NewGRF string)";
 					} else {
-						str_stack.push(ptr);
+						str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
 					}
-					case_index = next_substr_case_index;
 					next_substr_case_index = 0;
 					break;
 				}
@@ -1144,17 +1150,15 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					if (ptr == nullptr) {
 						builder += "(invalid NewGRF string)";
 					} else {
-						str_stack.push(ptr);
+						str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
 					}
-					case_index = next_substr_case_index;
 					next_substr_case_index = 0;
 					break;
 				}
 
-
 				case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 					/* First read the meta data from the language file. */
-					size_t offset = orig_offset + (uint8_t)*str++;
+					size_t offset = ref_param_offset + (uint8_t)*str++;
 					int gender = 0;
 					if (!dry_run && args.GetTypeAtOffset(offset) != 0) {
 						/* Now we need to figure out what text to resolve, i.e.
@@ -1196,7 +1200,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_PLURAL_LIST: { // {P}
 					int plural_form = *str++;          // contains the plural form for this string
-					size_t offset = orig_offset + (uint8_t)*str++;
+					size_t offset = ref_param_offset + (uint8_t)*str++;
 					const uint64_t *v = std::get_if<uint64_t>(&args.GetParam(offset)); // contains the number that determines plural
 					if (v != nullptr) {
 						str = ParseStringChoice(str, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
@@ -1207,7 +1211,7 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 				}
 
 				case SCC_ARG_INDEX: { // Move argument pointer
-					args.SetOffset(orig_offset + (uint8_t)*str++);
+					args.SetOffset(ref_param_offset + (uint8_t)*str++);
 					break;
 				}
 
