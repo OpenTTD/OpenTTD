@@ -128,8 +128,8 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 	if (c.flags.Test(GRFConfigFlag::Compatible)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
-	if (!StrEmpty(c.GetDescription())) {
-		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, c.GetDescription()), TC_BLACK);
+	if (auto desc = c.GetDescription(); desc.has_value()) {
+		tr.top = DrawStringMultiLine(tr, GetString(STR_JUST_RAW_STRING, std::move(*desc)), TC_BLACK);
 	} else {
 		tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NO_INFO);
 	}
@@ -854,7 +854,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int i = 0;
 				for (const auto &c : this->actives) {
 					if (this->vscroll->IsVisible(i)) {
-						const char *text = c->GetName();
+						std::string text = c->GetName();
 						bool h = (this->active_sel == c.get());
 						PaletteID pal = this->GetPalette(*c);
 
@@ -871,7 +871,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
 						if (c->error.has_value()) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
 						uint txtoffset = !c->error.has_value() ? 0 : warning.width;
-						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, text, h ? TC_WHITE : TC_ORANGE);
+						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, std::move(text), h ? TC_WHITE : TC_ORANGE);
 						tr.top += step_height;
 					}
 					i++;
@@ -894,10 +894,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				for (auto it = first; it != last; ++it) {
 					const GRFConfig *c = *it;
 					bool h = (c == this->avail_sel);
-					const char *text = c->GetName();
+					std::string text = c->GetName();
 
 					if (h) GfxFillRect(br.left, tr.top, br.right, tr.top + step_height - 1, PC_DARK_BLUE);
-					DrawString(tr.left, tr.right, tr.top + offset_y, text, h ? TC_WHITE : TC_SILVER);
+					DrawString(tr.left, tr.right, tr.top + offset_y, std::move(text), h ? TC_WHITE : TC_SILVER);
 					tr.top += step_height;
 				}
 				break;
@@ -948,8 +948,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_OPEN_URL: {
 				const GRFConfig *c = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
-
-				OpenBrowser(c->GetURL());
+				auto url = c->GetURL();
+				if (url.has_value()) OpenBrowser(std::move(*url));
 				break;
 			}
 
@@ -1263,7 +1263,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
 			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || !selected_config->GetTextfile(tft).has_value());
 		}
-		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || StrEmpty(selected_config->GetURL()));
+		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || !selected_config->GetURL().has_value());
 
 		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
@@ -1413,7 +1413,7 @@ private:
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());
 		filter.AddLine((*a)->filename);
-		filter.AddLine((*a)->GetDescription());
+		if (auto desc = (*a)->GetDescription(); desc.has_value()) filter.AddLine(*desc);
 		return filter.GetState();;
 	}
 

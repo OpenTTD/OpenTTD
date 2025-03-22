@@ -262,8 +262,8 @@ public:
 		}
 
 		/* NewGRF name */
-		if (td.grf != nullptr) {
-			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_NEWGRF_NAME, td.grf));
+		if (td.grf.has_value()) {
+			this->landinfo_data.push_back(GetString(STR_LAND_AREA_INFORMATION_NEWGRF_NAME, std::move(*td.grf)));
 		}
 
 		/* Cargo acceptance is displayed in a extra multiline */
