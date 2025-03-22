@@ -2209,13 +2209,9 @@ struct ScanProgressWindow : public Window {
 	 * @param num  The number of NewGRFs scanned so far.
 	 * @param name The name of the last scanned NewGRF.
 	 */
-	void UpdateNewGRFScanStatus(uint num, const char *name)
+	void UpdateNewGRFScanStatus(uint num, std::string &&name)
 	{
-		if (name == nullptr) {
-			this->last_name = GetString(STR_NEWGRF_SCAN_ARCHIVES);
-		} else {
-			this->last_name = name;
-		}
+		this->last_name = std::move(name);
 		this->scanned = num;
 		if (num > _settings_client.gui.last_newgrf_count) _settings_client.gui.last_newgrf_count = num;
 
@@ -2228,9 +2224,9 @@ struct ScanProgressWindow : public Window {
  * @param num  The number of NewGRFs scanned so far.
  * @param name The name of the last scanned NewGRF.
  */
-void UpdateNewGRFScanStatus(uint num, const char *name)
+void UpdateNewGRFScanStatus(uint num, std::string &&name)
 {
 	ScanProgressWindow *w  = dynamic_cast<ScanProgressWindow *>(FindWindowByClass(WC_MODAL_PROGRESS));
 	if (w == nullptr) w = new ScanProgressWindow();
-	w->UpdateNewGRFScanStatus(num, name);
+	w->UpdateNewGRFScanStatus(num, std::move(name));
 }
