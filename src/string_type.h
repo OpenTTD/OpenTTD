@@ -41,19 +41,19 @@ static const char32_t CHAR_TD_RLO = 0x202E; ///< Force the following characters 
 static const char32_t CHAR_TD_PDF = 0x202C; ///< Restore the text-direction state to before the last LRE, RLE, LRO or RLO.
 
 /** Settings for the string validation. */
-enum StringValidationSettings : uint8_t {
-	SVS_NONE                       = 0,      ///< Allow nothing and replace nothing.
-	SVS_REPLACE_WITH_QUESTION_MARK = 1 << 0, ///< Replace the unknown/bad bits with question marks.
-	SVS_ALLOW_NEWLINE              = 1 << 1, ///< Allow newlines; replaces '\r\n' with '\n' during processing.
-	SVS_ALLOW_CONTROL_CODE         = 1 << 2, ///< Allow the special control codes.
+enum class StringValidationSetting : uint8_t {
+	ReplaceWithQuestionMark, ///< Replace the unknown/bad bits with question marks.
+	AllowNewline, ///< Allow newlines; replaces '\r\n' with '\n' during processing.
+	AllowControlCode, ///< Allow the special control codes.
 	/**
 	 * Replace tabs ('\t'), carriage returns ('\r') and newlines ('\n') with spaces.
-	 * When #SVS_ALLOW_NEWLINE is set, a '\n' or '\r\n' combination are not replaced with a space. A lone '\r' is replaced with a space.
-	 * When #SVS_REPLACE_WITH_QUESTION_MARK is set, this replacement runs first.
+	 * When #StringValidationSetting::AllowNewline is set, a '\n' or '\r\n' combination are not replaced with a space. A lone '\r' is replaced with a space.
+	 * When #StringValidationSetting::ReplaceWithQuestionMark is set, this replacement runs first.
 	 */
-	SVS_REPLACE_TAB_CR_NL_WITH_SPACE = 1 << 3,
+	ReplaceTabCrNlWithSpace,
 };
-DECLARE_ENUM_AS_BIT_SET(StringValidationSettings)
+
+using StringValidationSettings = EnumBitSet<StringValidationSetting, uint8_t>;
 
 
 /** Type for a list of strings. */

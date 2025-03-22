@@ -204,7 +204,7 @@ void ScriptText::ParamCheck::Encode(std::back_insert_iterator<std::string> &outp
 		void operator()(std::string value)
 		{
 			Utf8Encode(this->output, SCC_ENCODED_STRING);
-			StrMakeValidInPlace(value, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE | SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+			StrMakeValidInPlace(value, {StringValidationSetting::ReplaceWithQuestionMark, StringValidationSetting::AllowNewline, StringValidationSetting::ReplaceTabCrNlWithSpace});
 			fmt::format_to(this->output, "{}", value);
 		}
 

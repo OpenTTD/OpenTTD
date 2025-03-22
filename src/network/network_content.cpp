@@ -68,7 +68,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	ci->name        = p.Recv_string(NETWORK_CONTENT_NAME_LENGTH);
 	ci->version     = p.Recv_string(NETWORK_CONTENT_VERSION_LENGTH);
 	ci->url         = p.Recv_string(NETWORK_CONTENT_URL_LENGTH);
-	ci->description = p.Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
+	ci->description = p.Recv_string(NETWORK_CONTENT_DESC_LENGTH, {StringValidationSetting::ReplaceWithQuestionMark, StringValidationSetting::AllowNewline});
 
 	ci->unique_id = p.Recv_uint32();
 	p.Recv_bytes(ci->md5sum);

@@ -39,7 +39,7 @@
 static bool DrawScrollingStatusText(const NewsItem &ni, int scroll_pos, int left, int right, int top, int bottom)
 {
 	/* Replace newlines and the likes with spaces. */
-	std::string message = StrMakeValid(ni.GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string message = StrMakeValid(ni.GetStatusText(), StringValidationSetting::ReplaceTabCrNlWithSpace);
 
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
