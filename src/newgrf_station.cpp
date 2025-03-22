@@ -430,16 +430,16 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 
 	/* Handle cargo variables with parameter, 0x60 to 0x65 and 0x69 */
 	if ((variable >= 0x60 && variable <= 0x65) || variable == 0x69) {
-		CargoType c = GetCargoTranslation(parameter, object.grffile);
+		CargoType cargo = GetCargoTranslation(parameter, object.grffile);
 
-		if (!IsValidCargoType(c)) {
+		if (!IsValidCargoType(cargo)) {
 			switch (variable) {
 				case 0x62: return 0xFFFFFFFF;
 				case 0x64: return 0xFF00;
 				default:   return 0;
 			}
 		}
-		const GoodsEntry *ge = &this->goods[c];
+		const GoodsEntry *ge = &this->goods[cargo];
 
 		switch (variable) {
 			case 0x60: return ge->HasData() ? std::min(ge->GetData().cargo.TotalCount(), 4095u) : 0;

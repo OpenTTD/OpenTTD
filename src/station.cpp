@@ -99,20 +99,20 @@ Station::~Station()
 		if (a->targetairport == this->index) a->targetairport = StationID::Invalid();
 	}
 
-	for (CargoType c = 0; c < NUM_CARGO; ++c) {
-		LinkGraph *lg = LinkGraph::GetIfValid(this->goods[c].link_graph);
+	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		LinkGraph *lg = LinkGraph::GetIfValid(this->goods[cargo].link_graph);
 		if (lg == nullptr) continue;
 
 		for (NodeID node = 0; node < lg->Size(); ++node) {
 			Station *st = Station::Get((*lg)[node].station);
-			if (!st->goods[c].HasData()) continue;
-			st->goods[c].GetData().flows.erase(this->index);
-			if ((*lg)[node].HasEdgeTo(this->goods[c].node) && (*lg)[node][this->goods[c].node].LastUpdate() != EconomyTime::INVALID_DATE) {
-				st->goods[c].GetData().flows.DeleteFlows(this->index);
-				RerouteCargo(st, c, this->index, st->index);
+			if (!st->goods[cargo].HasData()) continue;
+			st->goods[cargo].GetData().flows.erase(this->index);
+			if ((*lg)[node].HasEdgeTo(this->goods[cargo].node) && (*lg)[node][this->goods[cargo].node].LastUpdate() != EconomyTime::INVALID_DATE) {
+				st->goods[cargo].GetData().flows.DeleteFlows(this->index);
+				RerouteCargo(st, cargo, this->index, st->index);
 			}
 		}
-		lg->RemoveNode(this->goods[c].node);
+		lg->RemoveNode(this->goods[cargo].node);
 		if (lg->Size() == 0) {
 			LinkGraphSchedule::instance.Unqueue(lg);
 			delete lg;

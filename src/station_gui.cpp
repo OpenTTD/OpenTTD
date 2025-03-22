@@ -211,16 +211,16 @@ void CheckRedrawRoadWaypointCoverage(const Window *)
  * @param left   left most coordinate to draw the box at
  * @param right  right most coordinate to draw the box at
  * @param y      coordinate to draw the box at
- * @param type   Cargo type
+ * @param cargo  Cargo type
  * @param amount Cargo amount
  * @param rating ratings data for that particular cargo
  */
-static void StationsWndShowStationRating(int left, int right, int y, CargoType type, uint amount, uint8_t rating)
+static void StationsWndShowStationRating(int left, int right, int y, CargoType cargo, uint amount, uint8_t rating)
 {
 	static const uint units_full  = 576; ///< number of units to show station as 'full'
 	static const uint rating_full = 224; ///< rating needed so it is shown as 'full'
 
-	const CargoSpec *cs = CargoSpec::Get(type);
+	const CargoSpec *cs = CargoSpec::Get(cargo);
 	if (!cs->IsValid()) return;
 
 	int padding = ScaleGUITrad(1);
@@ -851,19 +851,19 @@ static constexpr NWidgetPart _nested_station_view_widgets[] = {
 /**
  * Draws icons of waiting cargo in the StationView window
  *
- * @param i type of cargo
+ * @param cargo type of cargo
  * @param waiting number of waiting units
  * @param left  left most coordinate to draw on
  * @param right right most coordinate to draw on
  * @param y y coordinate
  */
-static void DrawCargoIcons(CargoType i, uint waiting, int left, int right, int y)
+static void DrawCargoIcons(CargoType cargo, uint waiting, int left, int right, int y)
 {
 	int width = ScaleSpriteTrad(10);
 	uint num = std::min<uint>((waiting + (width / 2)) / width, (right - left) / width); // maximum is width / 10 icons so it won't overflow
 	if (num == 0) return;
 
-	SpriteID sprite = CargoSpec::Get(i)->GetCargoIcon();
+	SpriteID sprite = CargoSpec::Get(cargo)->GetCargoIcon();
 
 	int x = _current_text_dir == TD_RTL ? left : right - num * width;
 	do {
@@ -1030,9 +1030,9 @@ public:
 private:
 
 	CargoDataEntry(StationID st, uint c, CargoDataEntry *p);
-	CargoDataEntry(CargoType car, uint c, CargoDataEntry *p);
+	CargoDataEntry(CargoType cargo, uint c, CargoDataEntry *p);
 	CargoDataEntry(StationID st);
-	CargoDataEntry(CargoType car);
+	CargoDataEntry(CargoType cargo);
 
 	CargoDataEntry *Retrieve(CargoDataSet::iterator i) const;
 
@@ -1518,15 +1518,15 @@ struct StationViewWindow : public Window {
 	 * even if we actually don't know the destination of a certain packet from just looking at it.
 	 * @param i Cargo to recalculate the cache for.
 	 */
-	void RecalcDestinations(CargoType i)
+	void RecalcDestinations(CargoType cargo_type)
 	{
 		const Station *st = Station::Get(this->window_number);
-		CargoDataEntry *cargo_entry = cached_destinations.InsertOrRetrieve(i);
+		CargoDataEntry *cargo_entry = cached_destinations.InsertOrRetrieve(cargo_type);
 		cargo_entry->Clear();
 
-		if (!st->goods[i].HasData()) return;
+		if (!st->goods[cargo_type].HasData()) return;
 
-		for (const auto &it : st->goods[i].GetData().flows) {
+		for (const auto &it : st->goods[cargo_type].GetData().flows) {
 			StationID from = it.first;
 			CargoDataEntry *source_entry = cargo_entry->InsertOrRetrieve(from);
 			uint32_t prev_count = 0;
@@ -1536,7 +1536,7 @@ struct StationViewWindow : public Window {
 				if (via == this->window_number) {
 					via_entry->InsertOrRetrieve(via)->Update(flow_it.first - prev_count);
 				} else {
-					EstimateDestinations(i, from, via, flow_it.first - prev_count, via_entry);
+					EstimateDestinations(cargo_type, from, via, flow_it.first - prev_count, via_entry);
 				}
 				prev_count = flow_it.first;
 			}
@@ -1604,13 +1604,13 @@ struct StationViewWindow : public Window {
 
 	/**
 	 * Build up the cargo view for PLANNED mode and a specific cargo.
-	 * @param i Cargo to show.
+	 * @param cargo_type Cargo to show.
 	 * @param flows The current station's flows for that cargo.
 	 * @param cargo The CargoDataEntry to save the results in.
 	 */
-	void BuildFlowList(CargoType i, const FlowStatMap &flows, CargoDataEntry *cargo)
+	void BuildFlowList(CargoType cargo_type, const FlowStatMap &flows, CargoDataEntry *cargo)
 	{
-		const CargoDataEntry *source_dest = this->cached_destinations.Retrieve(i);
+		const CargoDataEntry *source_dest = this->cached_destinations.Retrieve(cargo_type);
 		for (FlowStatMap::const_iterator it = flows.begin(); it != flows.end(); ++it) {
 			StationID from = it->first;
 			const CargoDataEntry *source_entry = source_dest->Retrieve(from);
@@ -1619,7 +1619,7 @@ struct StationViewWindow : public Window {
 				const CargoDataEntry *via_entry = source_entry->Retrieve(flow_it->second);
 				for (CargoDataSet::iterator dest_it = via_entry->Begin(); dest_it != via_entry->End(); ++dest_it) {
 					CargoDataEntry *dest_entry = *dest_it;
-					ShowCargo(cargo, i, from, flow_it->second, dest_entry->GetStation(), dest_entry->GetCount());
+					ShowCargo(cargo, cargo_type, from, flow_it->second, dest_entry->GetStation(), dest_entry->GetCount());
 				}
 			}
 		}
@@ -1627,26 +1627,26 @@ struct StationViewWindow : public Window {
 
 	/**
 	 * Build up the cargo view for WAITING mode and a specific cargo.
-	 * @param i Cargo to show.
+	 * @param cargo_type Cargo to show.
 	 * @param packets The current station's cargo list for that cargo.
 	 * @param cargo The CargoDataEntry to save the result in.
 	 */
-	void BuildCargoList(CargoType i, const StationCargoList &packets, CargoDataEntry *cargo)
+	void BuildCargoList(CargoType cargo_type, const StationCargoList &packets, CargoDataEntry *cargo)
 	{
-		const CargoDataEntry *source_dest = this->cached_destinations.Retrieve(i);
+		const CargoDataEntry *source_dest = this->cached_destinations.Retrieve(cargo_type);
 		for (StationCargoList::ConstIterator it = packets.Packets()->begin(); it != packets.Packets()->end(); it++) {
 			const CargoPacket *cp = *it;
 			StationID next = it.GetKey();
 
 			const CargoDataEntry *source_entry = source_dest->Retrieve(cp->GetFirstStation());
 			if (source_entry == nullptr) {
-				this->ShowCargo(cargo, i, cp->GetFirstStation(), next, StationID::Invalid(), cp->Count());
+				this->ShowCargo(cargo, cargo_type, cp->GetFirstStation(), next, StationID::Invalid(), cp->Count());
 				continue;
 			}
 
 			const CargoDataEntry *via_entry = source_entry->Retrieve(next);
 			if (via_entry == nullptr) {
-				this->ShowCargo(cargo, i, cp->GetFirstStation(), next, StationID::Invalid(), cp->Count());
+				this->ShowCargo(cargo, cargo_type, cp->GetFirstStation(), next, StationID::Invalid(), cp->Count());
 				continue;
 			}
 
@@ -1667,10 +1667,10 @@ struct StationViewWindow : public Window {
 					val = std::min<uint>(remaining, DivideApprox(cp->Count() * dest_entry->GetCount(), via_entry->GetCount()));
 					remaining -= val;
 				}
-				this->ShowCargo(cargo, i, cp->GetFirstStation(), next, dest_entry->GetStation(), val);
+				this->ShowCargo(cargo, cargo_type, cp->GetFirstStation(), next, dest_entry->GetStation(), val);
 			}
 		}
-		this->ShowCargo(cargo, i, NEW_STATION, NEW_STATION, NEW_STATION, packets.ReservedCount());
+		this->ShowCargo(cargo, cargo_type, NEW_STATION, NEW_STATION, NEW_STATION, packets.ReservedCount());
 	}
 
 	/**
