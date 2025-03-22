@@ -55,15 +55,17 @@ enum GrfLoadingStage : uint8_t {
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(GrfLoadingStage)
 
-enum GrfMiscBit : uint8_t {
-	GMB_DESERT_TREES_FIELDS    = 0, // Unsupported.
-	GMB_DESERT_PAVED_ROADS     = 1,
-	GMB_FIELD_BOUNDING_BOX     = 2, // Unsupported.
-	GMB_TRAIN_WIDTH_32_PIXELS  = 3, ///< Use 32 pixels per train vehicle in depot gui and vehicle details. Never set in the global variable; @see GRFFile::traininfo_vehicle_width
-	GMB_AMBIENT_SOUND_CALLBACK = 4,
-	GMB_CATENARY_ON_3RD_TRACK  = 5, // Unsupported.
-	GMB_SECOND_ROCKY_TILE_SET  = 6,
+enum class GrfMiscBit : uint8_t {
+	DesertTreesFields = 0, // Unsupported.
+	DesertPavedRoads = 1,
+	FieldBoundingBox = 2, // Unsupported.
+	TrainWidth32Pixels = 3, ///< Use 32 pixels per train vehicle in depot gui and vehicle details. Never set in the global variable; @see GRFFile::traininfo_vehicle_width
+	AmbientSoundCallback = 4,
+	CatenaryOn3rdTrack = 5, // Unsupported.
+	SecondRockyTileSet = 6,
 };
+
+using GrfMiscBits = EnumBitSet<GrfMiscBit, uint8_t>;
 
 enum GrfSpecFeature : uint8_t {
 	GSF_TRAINS,
@@ -192,8 +194,8 @@ struct GRFLoadedFeatures {
  */
 inline bool HasGrfMiscBit(GrfMiscBit bit)
 {
-	extern uint8_t _misc_grf_features;
-	return HasBit(_misc_grf_features, bit);
+	extern GrfMiscBits _misc_grf_features;
+	return _misc_grf_features.Test(bit);
 }
 
 /* Indicates which are the newgrf features currently loaded ingame */

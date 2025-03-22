@@ -78,7 +78,7 @@ const std::vector<GRFFile *> &GetAllGRFFiles()
 }
 
 /** Miscellaneous GRF features, set by Action 0x0D, parameter 0x9E */
-uint8_t _misc_grf_features = 0;
+GrfMiscBits _misc_grf_features{};
 
 /** 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32_t _ttdpatch_flags[8];
@@ -6953,13 +6953,16 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 			*value = 1;
 			return true;
 
-		case 0x1E: // Miscellaneous GRF features
-			*value = _misc_grf_features;
+		case 0x1E: { // Miscellaneous GRF features
+			GrfMiscBits bits = _misc_grf_features;
 
 			/* Add the local flags */
-			assert(!HasBit(*value, GMB_TRAIN_WIDTH_32_PIXELS));
-			if (_cur.grffile->traininfo_vehicle_width == VEHICLEINFO_FULL_VEHICLE_WIDTH) SetBit(*value, GMB_TRAIN_WIDTH_32_PIXELS);
+			assert(!bits.Test(GrfMiscBit::TrainWidth32Pixels));
+			if (_cur.grffile->traininfo_vehicle_width == VEHICLEINFO_FULL_VEHICLE_WIDTH) bits.Set(GrfMiscBit::TrainWidth32Pixels);
+
+			*value = bits.base();
 			return true;
+		}
 
 		/* case 0x1F: // locale dependent settings not implemented to avoid desync */
 
@@ -8000,22 +8003,25 @@ static void ParamSet(ByteReader &buf)
 			GrfMsg(7, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
 			break;
 
-		case 0x9E: // Miscellaneous GRF features
+		case 0x9E: { // Miscellaneous GRF features
+			GrfMiscBits bits(res);
+
 			/* Set train list engine width */
-			_cur.grffile->traininfo_vehicle_width = HasBit(res, GMB_TRAIN_WIDTH_32_PIXELS) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
+			_cur.grffile->traininfo_vehicle_width = bits.Test(GrfMiscBit::TrainWidth32Pixels) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
 			/* Remove the local flags from the global flags */
-			ClrBit(res, GMB_TRAIN_WIDTH_32_PIXELS);
+			bits.Reset(GrfMiscBit::TrainWidth32Pixels);
 
 			/* Only copy safe bits for static grfs */
 			if (_cur.grfconfig->flags.Test(GRFConfigFlag::Static)) {
-				uint32_t safe_bits = 0;
-				SetBit(safe_bits, GMB_SECOND_ROCKY_TILE_SET);
+				GrfMiscBits safe_bits = GrfMiscBit::SecondRockyTileSet;
 
-				_misc_grf_features = (_misc_grf_features & ~safe_bits) | (res & safe_bits);
+				_misc_grf_features.Reset(safe_bits);
+				_misc_grf_features.Set(bits & safe_bits);
 			} else {
-				_misc_grf_features = res;
+				_misc_grf_features = bits;
 			}
 			break;
+		}
 
 		case 0x9F: // locale-dependent settings
 			GrfMsg(7, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
@@ -9134,7 +9140,7 @@ void ResetNewGRFData()
 	SetupCargoForClimate(_settings_game.game_creation.landscape);
 
 	/* Reset misc GRF features and train list display variables */
-	_misc_grf_features = 0;
+	_misc_grf_features = {};
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;

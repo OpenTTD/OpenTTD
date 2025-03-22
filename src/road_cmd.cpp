@@ -1362,7 +1362,7 @@ static uint GetRoadSpriteOffset(Slope slope, RoadBits bits)
 static bool DrawRoadAsSnowDesert(bool snow_or_desert, Roadside roadside)
 {
 	return (snow_or_desert &&
-			!(_settings_game.game_creation.landscape == LandscapeType::Tropic && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
+			!(_settings_game.game_creation.landscape == LandscapeType::Tropic && HasGrfMiscBit(GrfMiscBit::DesertPavedRoads) &&
 				roadside != ROADSIDE_BARREN && roadside != ROADSIDE_GRASS && roadside != ROADSIDE_GRASS_ROAD_WORKS));
 }
 
