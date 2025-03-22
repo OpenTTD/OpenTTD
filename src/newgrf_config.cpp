@@ -536,10 +536,8 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 
 	this->num_scanned++;
 
-	const char *name = nullptr;
-	if (grfconfig->name != nullptr) name = GetGRFStringFromGRFText(grfconfig->name);
-	if (name == nullptr) name = grfconfig->filename.c_str();
-	UpdateNewGRFScanStatus(this->num_scanned, name);
+	std::string name = grfconfig->GetName();
+	UpdateNewGRFScanStatus(this->num_scanned, std::move(name));
 	VideoDriver::GetInstance()->GameLoopPause();
 
 	return added;
