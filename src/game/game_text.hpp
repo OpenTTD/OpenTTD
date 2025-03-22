@@ -29,7 +29,7 @@ struct StringParam {
 using StringParams = std::vector<StringParam>;
 using StringParamsList = std::vector<StringParams>;
 
-const char *GetGameStringPtr(StringIndexInTab id);
+std::string_view GetGameStringPtr(StringIndexInTab id);
 const StringParams &GetGameStringParams(StringIndexInTab id);
 const std::string &GetGameStringName(StringIndexInTab id);
 void RegisterGameTranslation(class Squirrel *engine);
