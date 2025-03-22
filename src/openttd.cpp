@@ -626,6 +626,7 @@ int openttd_main(std::span<char * const> arguments)
 					InitializeLanguagePacks(); // A language pack is needed for GetString()
 					fmt::print(stderr, "{}\n", GetString(_load_check_data.error, _load_check_data.error_msg));
 				}
+				ret = 1;
 				return ret;
 			}
 
@@ -641,14 +642,12 @@ int openttd_main(std::span<char * const> arguments)
 		case 'c': _config_file = mgo.opt; break;
 		case 'x': scanner->save_config = false; break;
 		case 'X': only_local_path = true; break;
-		case 'h':
-			i = -2; // Force printing of help.
-			break;
+		case 'h': break; // handled below
 		}
-		if (i == -2) break;
+		if (i == 'h' || i == -2) break;
 	}
 
-	if (i == -2 || !mgo.arguments.empty()) {
+	if (i == 'h' || i == -2 || !mgo.arguments.empty()) {
 		/* Either the user typed '-h', they made an error, or they added unrecognized command line arguments.
 		 * In all cases, print the help, and exit.
 		 *
@@ -660,6 +659,7 @@ int openttd_main(std::span<char * const> arguments)
 		BaseSounds::FindSets();
 		BaseMusic::FindSets();
 		ShowHelp();
+		if (i != 'h') ret = 1;
 		return ret;
 	}
 
