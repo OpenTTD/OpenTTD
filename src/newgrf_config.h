@@ -190,9 +190,9 @@ struct GRFConfig {
 	void SetValue(const GRFParameterInfo &info, uint32_t value);
 
 	std::optional<std::string> GetTextfile(TextfileType type) const;
-	const char *GetName() const;
-	const char *GetDescription() const;
-	const char *GetURL() const;
+	std::string GetName() const;
+	std::optional<std::string> GetDescription() const;
+	std::optional<std::string> GetURL() const;
 
 	void SetParameterDefaults();
 	void SetSuitablePalette();
