@@ -258,7 +258,7 @@ uint64_t GetParamMaxValue(uint64_t max_value, uint min_count, FontSize size)
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x);
 static bool GetSpecialNameString(StringBuilder &builder, StringID string, StringParameters &args);
 
-static void FormatString(StringBuilder &builder, const char *str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
+static void FormatString(StringBuilder &builder, std::string_view str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
 
 /**
  * Parse most format codes within a string and write the result to a buffer.
@@ -270,7 +270,7 @@ static void FormatString(StringBuilder &builder, const char *str, StringParamete
  * @param game_script True when doing GameScript text processing.
  * @param dry_run True when the args' type data is not yet initialized.
  */
-static void FormatString(StringBuilder &builder, const char *str, std::span<StringParameter> params, uint case_index = 0, bool game_script = false, bool dry_run = false)
+static void FormatString(StringBuilder &builder, std::string_view str, std::span<StringParameter> params, uint case_index = 0, bool game_script = false, bool dry_run = false)
 {
 	StringParameters tmp_params{params};
 	FormatString(builder, str, tmp_params, case_index, game_script, dry_run);
@@ -291,7 +291,7 @@ struct LanguagePackDeleter {
 struct LoadedLanguagePack {
 	std::unique_ptr<LanguagePack, LanguagePackDeleter> langpack;
 
-	std::vector<char *> offsets;
+	std::vector<std::string_view> strings;
 
 	std::array<uint, TEXT_TAB_END> langtab_num;   ///< Offset into langpack offs
 	std::array<uint, TEXT_TAB_END> langtab_start; ///< Offset into langpack offs
@@ -312,7 +312,7 @@ std::string_view GetListSeparator()
 	return _langpack.list_separator;
 }
 
-const char *GetStringPtr(StringID string)
+std::string_view GetStringPtr(StringID string)
 {
 	switch (GetStringTab(string)) {
 		case TEXT_TAB_GAMESCRIPT_START: return GetGameStringPtr(GetStringIndex(string));
@@ -321,8 +321,8 @@ const char *GetStringPtr(StringID string)
 		case TEXT_TAB_NEWGRF_START: return GetGRFStringPtr(GetStringIndex(string));
 		default: {
 			const size_t offset = _langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string).base();
-			if (offset < _langpack.offsets.size()) return _langpack.offsets[offset];
-			return nullptr;
+			if (offset < _langpack.strings.size()) return _langpack.strings[offset];
+			return "(undefined string)";
 		}
 	}
 }
@@ -780,16 +780,19 @@ static const char *ParseStringChoice(const char *b, uint form, StringBuilder &bu
 {
 	/* <NUM> {Length of each string} {each string} */
 	uint n = (uint8_t)*b++;
-	uint pos, i, mypos = 0;
-
-	for (i = pos = 0; i != n; i++) {
+	size_t form_offset = 0, form_len = 0, total_len = 0;
+	for (uint i = 0; i != n; i++) {
 		uint len = (uint8_t)*b++;
-		if (i == form) mypos = pos;
-		pos += len;
+		if (i == form) {
+			form_offset = total_len;
+			form_len = len;
+		}
+		total_len += len;
 	}
 
-	builder += b + mypos;
-	return b + pos;
+	assert(form_len > 0); // len includes a null terminator
+	builder += std::string_view(b + form_offset, form_len - 1);
+	return b + total_len;
 }
 
 /** Helper for unit conversion. */
@@ -1075,7 +1078,7 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
  * @param args    Pointer to extra arguments used by various string codes.
  * @param dry_run True when the args' type data is not yet initialized.
  */
-static void FormatString(StringBuilder &builder, const char *str_arg, StringParameters &args, uint orig_case_index, bool game_script, bool dry_run)
+static void FormatString(StringBuilder &builder, std::string_view str_arg, StringParameters &args, uint orig_case_index, bool game_script, bool dry_run)
 {
 	size_t orig_first_param_offset = args.GetOffset();
 
@@ -1094,25 +1097,31 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 		/* We have to restore the original offset here to to read the correct values. */
 		args.SetOffset(orig_first_param_offset);
 	}
-	char32_t b = '\0';
 	uint next_substr_case_index = 0;
 	struct StrStackItem {
 		const char *str;
+		const char *end;
 		size_t first_param_offset;
 		uint case_index;
+
+		StrStackItem(std::string_view view, size_t first_param_offset, uint case_index)
+			: str(view.data()), end(view.data() + view.size()), first_param_offset(first_param_offset), case_index(case_index)
+		{}
 	};
 	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
 	str_stack.emplace(str_arg, orig_first_param_offset, orig_case_index);
 
 	for (;;) {
 		try {
-			while (!str_stack.empty() && (b = Utf8Consume(&str_stack.top().str)) == '\0') {
+			while (!str_stack.empty() && str_stack.top().str >= str_stack.top().end) {
 				str_stack.pop();
 			}
 			if (str_stack.empty()) break;
 			const char *&str = str_stack.top().str;
 			const size_t ref_param_offset = str_stack.top().first_param_offset;
 			const uint case_index = str_stack.top().case_index;
+			char32_t b = Utf8Consume(&str);
+			assert(b != 0);
 
 			if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 				/* We need to pass some stuff as it might be modified. */
@@ -1134,24 +1143,16 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 
 				case SCC_NEWGRF_STRINL: {
 					StringID substr = Utf8Consume(&str);
-					const char *ptr = GetStringPtr(substr);
-					if (ptr == nullptr) {
-						builder += "(invalid NewGRF string)";
-					} else {
-						str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
-					}
+					std::string_view ptr = GetStringPtr(substr);
+					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
 					next_substr_case_index = 0;
 					break;
 				}
 
 				case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 					StringID substr = args.GetNextParameter<StringID>();
-					const char *ptr = GetStringPtr(substr);
-					if (ptr == nullptr) {
-						builder += "(invalid NewGRF string)";
-					} else {
-						str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
-					}
+					std::string_view ptr = GetStringPtr(substr);
+					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
 					next_substr_case_index = 0;
 					break;
 				}
@@ -1226,16 +1227,22 @@ static void FormatString(StringBuilder &builder, const char *str_arg, StringPara
 					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 					 * Each LEN is printed using 2 bytes in big endian order. */
 					uint num = (uint8_t)*str++;
-					while (num) {
-						if ((uint8_t)str[0] == case_index) {
-							/* Found the case, adjust str pointer and continue */
-							str += 3;
-							break;
+					std::optional<std::string_view> found;
+					for (; num > 0; --num) {
+						uint8_t index = static_cast<uint8_t>(str[0]);
+						uint16_t len = (static_cast<uint8_t>(str[1]) << 8) + static_cast<uint8_t>(str[2]);
+						assert(len > 0); // len includes a null terminator
+						str += 3;
+						if (index == case_index) {
+							/* Found the case */
+							found.emplace(str, len - 1);
 						}
-						/* Otherwise skip to the next case */
-						str += 3 + (static_cast<uint8_t>(str[1]) << 8) + static_cast<uint8_t>(str[2]);
-						num--;
+						str += len;
 					}
+					const char *end = str_stack.top().end;
+					if (!found.has_value()) found.emplace(str, end - str);
+					str = end;
+					str_stack.emplace(*found, ref_param_offset, case_index); // this may invalidate "str"
 					break;
 				}
 
@@ -1990,12 +1997,12 @@ bool LanguagePackHeader::IsReasonablyFinished() const
 bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
-	size_t len = 0;
-	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file), len, 1U << 20).release()));
+	size_t total_len = 0;
+	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file), total_len, 1U << 20).release()));
 	if (!lang_pack) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
-	const char *end = (char *)lang_pack.get() + len + 1;
+	const char *end = (char *)lang_pack.get() + total_len + 1;
 
 	/* We need at least one byte of lang_pack->data */
 	if (end <= lang_pack->data || !lang_pack->IsValid()) {
@@ -2015,26 +2022,25 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	}
 
 	/* Allocate offsets */
-	std::vector<char *> offs(count);
+	std::vector<std::string_view> strings;
 
 	/* Fill offsets */
 	char *s = lang_pack->data;
-	len = (uint8_t)*s++;
 	for (uint i = 0; i < count; i++) {
+		size_t len = static_cast<uint8_t>(*s++);
 		if (s + len >= end) return false;
 
 		if (len >= 0xC0) {
-			len = ((len & 0x3F) << 8) + (uint8_t)*s++;
+			len = ((len & 0x3F) << 8) + static_cast<uint8_t>(*s++);
 			if (s + len >= end) return false;
 		}
-		offs[i] = s;
+		strings.emplace_back(s, len);
 		s += len;
-		len = (uint8_t)*s;
-		*s++ = '\0'; // zero terminate the string
 	}
+	assert(strings.size() == count);
 
 	_langpack.langpack = std::move(lang_pack);
-	_langpack.offsets = std::move(offs);
+	_langpack.strings = std::move(strings);
 	_langpack.langtab_num = tab_num;
 	_langpack.langtab_start = tab_start;
 
@@ -2298,7 +2304,7 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 	{
 		if (this->i >= TEXT_TAB_END) return std::nullopt;
 
-		const char *ret = _langpack.offsets[_langpack.langtab_start[this->i] + this->j];
+		std::string_view ret = _langpack.strings[_langpack.langtab_start[this->i] + this->j];
 
 		this->j++;
 		while (this->i < TEXT_TAB_END && this->j >= _langpack.langtab_num[this->i]) {
