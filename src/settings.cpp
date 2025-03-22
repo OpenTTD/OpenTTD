@@ -1661,6 +1661,35 @@ void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &s
 }
 
 /**
+ * Create a single table with all settings that should be stored/loaded
+ * in the savegame.
+ */
+SettingTable GetSaveLoadSettingTable()
+{
+	static const SettingTable saveload_settings_tables[] = {
+		_difficulty_settings,
+		_economy_settings,
+		_game_settings,
+		_linkgraph_settings,
+		_locale_settings,
+		_pathfinding_settings,
+		_script_settings,
+		_world_settings,
+	};
+	static std::vector<SettingVariant> settings_table;
+
+	if (settings_table.empty()) {
+		for (auto &saveload_settings_table : saveload_settings_tables) {
+			for (auto &saveload_setting : saveload_settings_table) {
+				settings_table.push_back(saveload_setting);
+			}
+		}
+	}
+
+	return settings_table;
+}
+
+/**
  * Given a name of setting, return a company setting description of it.
  * @param name  Name of the company setting to return a setting description of.
  * @return Pointer to the setting description of setting \a name if it can be found,
