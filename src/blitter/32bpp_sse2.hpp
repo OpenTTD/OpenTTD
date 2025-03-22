@@ -56,12 +56,13 @@ public:
 	 *  - calculations (alpha blending),
 	 *  - heavy branching (remap lookups and animation buffer handling).
 	 */
-	enum SpriteFlags : uint8_t {
-		SF_NONE        = 0,
-		SF_TRANSLUCENT = 1 << 1, ///< The sprite has at least 1 translucent pixel.
-		SF_NO_REMAP    = 1 << 2, ///< The sprite has no remappable colour pixel.
-		SF_NO_ANIM     = 1 << 3, ///< The sprite has no palette animated pixel.
+	enum class SpriteFlag : uint8_t {
+		Translucent, ///< The sprite has at least 1 translucent pixel.
+		NoRemap, ///< The sprite has no remappable colour pixel.
+		NoAnim, ///< The sprite has no palette animated pixel.
 	};
+
+	using SpriteFlags = EnumBitSet<SpriteFlag, uint8_t>;
 
 	/** Data stored about a (single) sprite. */
 	struct SpriteInfo {
@@ -78,8 +79,6 @@ public:
 
 	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
 };
-
-DECLARE_ENUM_AS_BIT_SET(Blitter_32bppSSE_Base::SpriteFlags);
 
 /** The SSE2 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSE2 : public Blitter_32bppSimple, public Blitter_32bppSSE_Base {
