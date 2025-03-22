@@ -891,11 +891,11 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 	CommandCost last_error = CMD_ERROR;
 	for (;;) {
 		/* Check if hopping bridge/tunnel (#11528). */
-		if (!first_tile && wormhole_end == INVALID_TILE && IsDiagonalTrackdir(trackdir) && GetTileType(tile) == MP_TUNNELBRIDGE && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+		if (wormhole_end == INVALID_TILE && IsDiagonalTrackdir(trackdir) && GetTileType(tile) == MP_TUNNELBRIDGE && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 			/* If the building direction is the same as the bridge/tunnel direction, skip building tracks until the bridge/tunnel ends. */
 			if (GetTunnelBridgeDirection(tile) == TrackdirToExitdir(trackdir)) {
 				wormhole_end = GetOtherTunnelBridgeEnd(tile);
-			} else if (GetTunnelBridgeDirection(tile) == TrackdirToExitdir(ReverseTrackdir(trackdir))) {
+			} else if (!first_tile && GetTunnelBridgeDirection(tile) == TrackdirToExitdir(ReverseTrackdir(trackdir))) {
 				break; // Upon running into a bridge ramp from the underside, we should stop building tracks.
 			}
 		}
