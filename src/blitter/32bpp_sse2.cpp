@@ -128,10 +128,10 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 	}
 
 	/* Store sprite flags. */
-	sd.flags = SF_NONE;
-	if (has_translucency) sd.flags |= SF_TRANSLUCENT;
-	if (!has_remap) sd.flags |= SF_NO_REMAP;
-	if (!has_anim) sd.flags |= SF_NO_ANIM;
+	sd.flags = {};
+	if (has_translucency) sd.flags.Set(SpriteFlag::Translucent);
+	if (!has_remap) sd.flags.Set(SpriteFlag::NoRemap);
+	if (!has_anim) sd.flags.Set(SpriteFlag::NoAnim);
 	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
 
 	return dst_sprite;

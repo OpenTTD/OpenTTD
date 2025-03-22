@@ -473,7 +473,7 @@ bm_normal:
 					case BT_ODD: Draw<BlitterMode::Normal, RM_WITH_SKIP, BT_ODD, true>(bp, zoom); return;
 				}
 			} else {
-				if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags & SF_TRANSLUCENT) {
+				if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags.Test(SpriteFlag::Translucent)) {
 					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, true>(bp, zoom);
 				} else {
 					Draw<BlitterMode::Normal, RM_WITH_MARGIN, BT_NONE, false>(bp, zoom);
@@ -483,7 +483,7 @@ bm_normal:
 			break;
 		}
 		case BlitterMode::ColourRemap:
-			if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags & SF_NO_REMAP) goto bm_normal;
+			if (((const Blitter_32bppSSE_Base::SpriteData *) bp->sprite)->flags.Test(SpriteFlag::NoRemap)) goto bm_normal;
 			if (bp->skip_left != 0 || bp->width <= MARGIN_REMAP_THRESHOLD) {
 				Draw<BlitterMode::ColourRemap, RM_WITH_SKIP, BT_NONE, true>(bp, zoom); return;
 			} else {
