@@ -45,7 +45,7 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int valu
 	const uint shadow = GetColourGradient(COLOUR_GREY, SHADE_DARK);
 	const uint fill = GetColourGradient(COLOUR_GREY, SHADE_LIGHTER);
 	const uint light = GetColourGradient(COLOUR_GREY, SHADE_LIGHTEST);
-	const std::vector<Point> wedge{ Point{wx1, r.bottom - ha}, Point{wx2, r.top + ha}, Point{wx2, r.bottom - ha} };
+	const std::array<Point, 3> wedge{ Point{wx1, r.bottom - ha}, Point{wx2, r.top + ha}, Point{wx2, r.bottom - ha} };
 	GfxFillPolygon(wedge, fill);
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[2].x, wedge[2].y, light, t);
 	GfxDrawLine(wedge[1].x, wedge[1].y, wedge[2].x, wedge[2].y, _current_text_dir == TD_RTL ? shadow : light, t);
