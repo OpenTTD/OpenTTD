@@ -153,6 +153,12 @@ public:
 		return this->parameters.size() - this->offset;
 	}
 
+	/** Return the number of parameters. */
+	size_t GetNumParameters() const
+	{
+		return this->parameters.size();
+	}
+
 	/** Get the type of a specific element. */
 	char32_t GetTypeAtOffset(size_t offset) const
 	{
