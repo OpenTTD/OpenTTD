@@ -675,8 +675,8 @@ static void UpdateVehicleViewportHash(Vehicle *v, int x, int y, int old_x, int o
 void ResetVehicleHash()
 {
 	for (Vehicle *v : Vehicle::Iterate()) { v->hash_tile_current = nullptr; }
-	_vehicle_viewport_hash = {};
-	_vehicle_tile_hash = {};
+	_vehicle_viewport_hash.fill(nullptr);
+	_vehicle_tile_hash.fill(nullptr);
 }
 
 void ResetVehicleColourMap()

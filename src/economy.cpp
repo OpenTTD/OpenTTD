@@ -204,7 +204,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 	Owner owner = c->index;
 	int score = 0;
 
-	_score_part[owner] = {};
+	_score_part[owner].fill(0);
 
 	/* Count vehicles */
 	{
