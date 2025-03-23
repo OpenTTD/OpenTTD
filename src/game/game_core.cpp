@@ -117,14 +117,8 @@
 		Game::scanner_info = nullptr;
 		Game::scanner_library = nullptr;
 
-		if (_settings_game.game_config != nullptr) {
-			delete _settings_game.game_config;
-			_settings_game.game_config = nullptr;
-		}
-		if (_settings_newgame.game_config != nullptr) {
-			delete _settings_newgame.game_config;
-			_settings_newgame.game_config = nullptr;
-		}
+		_settings_game.script_config.game.reset();
+		_settings_newgame.script_config.game.reset();
 	}
 }
 
@@ -167,23 +161,23 @@
 {
 	/* Check for both newgame as current game if we can reload the GameInfo inside
 	 *  the GameConfig. If not, remove the Game from the list. */
-	if (_settings_game.game_config != nullptr && _settings_game.game_config->HasScript()) {
-		if (!_settings_game.game_config->ResetInfo(true)) {
-			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_game.game_config->GetName());
-			_settings_game.game_config->Change(std::nullopt);
+	if (_settings_game.script_config.game != nullptr && _settings_game.script_config.game->HasScript()) {
+		if (!_settings_game.script_config.game->ResetInfo(true)) {
+			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.game->GetName());
+			_settings_game.script_config.game->Change(std::nullopt);
 			if (Game::instance != nullptr) {
 				delete Game::instance;
 				Game::instance = nullptr;
 				Game::info = nullptr;
 			}
 		} else if (Game::instance != nullptr) {
-			Game::info = _settings_game.game_config->GetInfo();
+			Game::info = _settings_game.script_config.game->GetInfo();
 		}
 	}
-	if (_settings_newgame.game_config != nullptr && _settings_newgame.game_config->HasScript()) {
-		if (!_settings_newgame.game_config->ResetInfo(false)) {
-			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_newgame.game_config->GetName());
-			_settings_newgame.game_config->Change(std::nullopt);
+	if (_settings_newgame.script_config.game != nullptr && _settings_newgame.script_config.game->HasScript()) {
+		if (!_settings_newgame.script_config.game->ResetInfo(false)) {
+			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_newgame.script_config.game->GetName());
+			_settings_newgame.script_config.game->Change(std::nullopt);
 		}
 	}
 }

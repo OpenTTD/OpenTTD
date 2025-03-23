@@ -23,7 +23,7 @@ public:
 		ScriptConfig()
 	{}
 
-	GameConfig(const GameConfig *config) :
+	GameConfig(const GameConfig &config) :
 		ScriptConfig(config)
 	{}
 
