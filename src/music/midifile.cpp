@@ -786,8 +786,8 @@ struct MpsMachine {
 		this->tempo_ticks = this->current_tempo;
 
 		/* Always reset percussion channel to program 0 */
-		this->target.blocks.push_back(MidiFile::DataBlock());
-		AddMidiData(this->target.blocks.back(), MIDIST_PROGCHG + 9, 0x00);
+		auto &data_block = this->target.blocks.emplace_back();
+		AddMidiData(data_block, MIDIST_PROGCHG + 9, 0x00);
 
 		/* Technically should be an endless loop, but having
 		 * a maximum (about 10 minutes) avoids getting stuck,

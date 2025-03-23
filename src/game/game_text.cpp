@@ -301,8 +301,8 @@ void GameStrings::Compile()
 		translation_reader.ParseFile();
 		if (_errors != 0) throw std::exception();
 
-		this->compiled_strings.emplace_back(p.language);
-		TranslationWriter writer(this->compiled_strings.back().lines);
+		auto &strings = this->compiled_strings.emplace_back(p.language);
+		TranslationWriter writer(strings.lines);
 		writer.WriteLang(data);
 	}
 }
