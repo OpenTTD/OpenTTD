@@ -1161,7 +1161,10 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					/* First read the meta data from the language file. */
 					size_t offset = ref_param_offset + (uint8_t)*str++;
 					int gender = 0;
-					if (!dry_run && args.GetTypeAtOffset(offset) != 0) {
+					if (offset >= args.GetNumParameters()) {
+						/* The offset may come from an external NewGRF, and be invalid. */
+						builder += "(invalid GENDER parameter)";
+					} else if (!dry_run && args.GetTypeAtOffset(offset) != 0) {
 						/* Now we need to figure out what text to resolve, i.e.
 						 * what do we need to draw? So get the actual raw string
 						 * first using the control code to get said string. */
@@ -1202,7 +1205,11 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				case SCC_PLURAL_LIST: { // {P}
 					int plural_form = *str++;          // contains the plural form for this string
 					size_t offset = ref_param_offset + (uint8_t)*str++;
-					const uint64_t *v = std::get_if<uint64_t>(&args.GetParam(offset)); // contains the number that determines plural
+					const uint64_t *v = nullptr;
+					/* The offset may come from an external NewGRF, and be invalid. */
+					if (offset < args.GetNumParameters()) {
+						v = std::get_if<uint64_t>(&args.GetParam(offset)); // contains the number that determines plural
+					}
 					if (v != nullptr) {
 						str = ParseStringChoice(str, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
 					} else {
