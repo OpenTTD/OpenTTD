@@ -65,14 +65,14 @@ public:
 
 	/** Data stored about a (single) sprite. */
 	struct SpriteInfo {
-		uint32_t sprite_offset;    ///< The offset to the sprite data.
-		uint32_t mv_offset;        ///< The offset to the map value data.
-		uint16_t sprite_line_size; ///< The size of a single line (pitch).
-		uint16_t sprite_width;     ///< The width of the sprite.
+		uint32_t sprite_offset = 0;    ///< The offset to the sprite data.
+		uint32_t mv_offset = 0;        ///< The offset to the map value data.
+		uint16_t sprite_line_size = 0; ///< The size of a single line (pitch).
+		uint16_t sprite_width = 0;     ///< The width of the sprite.
 	};
 	struct SpriteData {
-		SpriteFlags flags;
-		SpriteInfo infos[ZOOM_LVL_END];
+		SpriteFlags flags{};
+		std::array<SpriteInfo, ZOOM_LVL_END> infos{};
 		uint8_t data[]; ///< Data, all zoomlevels.
 	};
 
