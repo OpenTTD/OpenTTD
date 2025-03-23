@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li AIEventVehicleCrashed::GetVictims
+ * \li AIEventVehicleCrashed::GetVehicleOwner
  * \li AIEventCompanyRenamed
  * \li AIEventPresidentRenamed
  * \li AICargo::CC_OVERSIZED
