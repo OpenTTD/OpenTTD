@@ -45,6 +45,7 @@
 #include "../strings_type.h"
 #include "../newgrf_railtype.h"
 #include "../newgrf_roadtype.h"
+#include "../settings_internal.h"
 #include "saveload_internal.h"
 #include "saveload_filter.h"
 
@@ -2853,6 +2854,22 @@ extern bool AfterLoadGame();
 extern bool LoadOldSaveGame(const std::string &file);
 
 /**
+ * Reset all settings to their default, so any settings missing in the savegame
+ * are their default, and not "value of last game". AfterLoad might still fix
+ * up values to become non-default, depending on the saveload version.
+ */
+static void ResetSettings()
+{
+	for (auto &desc : GetSaveLoadSettingTable()) {
+		const SettingDesc *sd = GetSettingDesc(desc);
+		if (sd->flags.Test(SettingFlag::NotInSave)) continue;
+		if (sd->flags.Test(SettingFlag::NoNetworkSync) && _networking && !_network_server) continue;
+
+		sd->ResetToDefault(&_settings_game);
+	}
+}
+
+/**
  * Clear temporary data that is passed between various saveload phases.
  */
 static void ResetSaveloadData()
@@ -2861,6 +2878,7 @@ static void ResetSaveloadData()
 	ClearRailTypeLabelList();
 	ClearRoadTypeLabelList();
 	ResetOldWaypoints();
+	ResetSettings();
 }
 
 /**

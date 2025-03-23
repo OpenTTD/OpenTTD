@@ -390,6 +390,7 @@ typedef std::span<const SettingVariant> SettingTable;
 
 const SettingDesc *GetSettingFromName(const std::string_view name);
 void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads);
+SettingTable GetSaveLoadSettingTable();
 bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame = false);
 bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
 

@@ -14,6 +14,7 @@
 
 #include "../settings_type.h"
 #include "../settings_table.h"
+#include "../settings_internal.h"
 #include "../network/network.h"
 #include "../fios.h"
 
@@ -156,61 +157,19 @@ struct OPTSChunkHandler : ChunkHandler {
 struct PATSChunkHandler : ChunkHandler {
 	PATSChunkHandler() : ChunkHandler('PATS', CH_TABLE) {}
 
-	/**
-	 * Create a single table with all settings that should be stored/loaded
-	 * in the savegame.
-	 */
-	SettingTable GetSettingTable() const
-	{
-		static const SettingTable saveload_settings_tables[] = {
-			_difficulty_settings,
-			_economy_settings,
-			_game_settings,
-			_linkgraph_settings,
-			_locale_settings,
-			_pathfinding_settings,
-			_script_settings,
-			_world_settings,
-		};
-		static std::vector<SettingVariant> settings_table;
-
-		if (settings_table.empty()) {
-			for (auto &saveload_settings_table : saveload_settings_tables) {
-				for (auto &saveload_setting : saveload_settings_table) {
-					settings_table.push_back(saveload_setting);
-				}
-			}
-		}
-
-		return settings_table;
-	}
-
 	void Load() const override
 	{
-		const auto settings_table = this->GetSettingTable();
-
-		/* Reset all settings to their default, so any settings missing in the savegame
-		 * are their default, and not "value of last game". AfterLoad might still fix
-		 * up values to become non-default, depending on the saveload version. */
-		for (auto &desc : settings_table) {
-			const SettingDesc *sd = GetSettingDesc(desc);
-			if (sd->flags.Test(SettingFlag::NotInSave)) continue;
-			if (sd->flags.Test(SettingFlag::NoNetworkSync) && _networking && !_network_server) continue;
-
-			sd->ResetToDefault(&_settings_game);
-		}
-
-		LoadSettings(settings_table, &_settings_game, _settings_sl_compat);
+		LoadSettings(GetSaveLoadSettingTable(), &_settings_game, _settings_sl_compat);
 	}
 
 	void LoadCheck(size_t) const override
 	{
-		LoadSettings(this->GetSettingTable(), &_load_check_data.settings, _settings_sl_compat);
+		LoadSettings(GetSaveLoadSettingTable(), &_load_check_data.settings, _settings_sl_compat);
 	}
 
 	void Save() const override
 	{
-		SaveSettings(this->GetSettingTable(), &_settings_game);
+		SaveSettings(GetSaveLoadSettingTable(), &_settings_game);
 	}
 };
 
