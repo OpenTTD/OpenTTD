@@ -84,9 +84,6 @@ BEGIN {
 			api_selected = "false"
 		}
 		public = "false"
-		cls_param[0] = ""
-		cls_param[1] = 1
-		cls_param[2] = "x"
 		cls_in_api = api_selected
 		api_selected = ""
 		cls = $2
@@ -275,8 +272,10 @@ BEGIN {
 /^.*\(.*\).*$/ {
 	if (cls_level != 1) next
 	if (!match($0, ";")) {
-		gsub(/ :$/, ";")
-		skip_function_body = "true"
+		if (!match($0, "}$")) {
+			skip_function_body = "true"
+		}
+		gsub(/ :.*$/, ";")
 	}
 	if (match($0, "~")) {
 		if (api_selected != "") {
