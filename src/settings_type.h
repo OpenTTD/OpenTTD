@@ -595,6 +595,19 @@ struct CompanySettings {
 	VehicleDefaultSettings vehicle{}; ///< default settings for vehicles
 };
 
+/** Container for AI and Game script configuration. */
+struct ScriptConfigSettings
+{
+	ReferenceThroughBaseContainer<std::array<std::unique_ptr<class AIConfig>, MAX_COMPANIES>> ai; ///< settings per company
+	std::unique_ptr<class GameConfig> game; ///< settings for gamescript
+
+	ScriptConfigSettings();
+	~ScriptConfigSettings();
+
+	ScriptConfigSettings(const ScriptConfigSettings &other);
+	ScriptConfigSettings &operator=(const ScriptConfigSettings &other);
+};
+
 /** All settings together for the game. */
 struct GameSettings {
 	DifficultySettings   difficulty;         ///< settings related to the difficulty
@@ -602,8 +615,7 @@ struct GameSettings {
 	ConstructionSettings construction;       ///< construction of things in-game
 	AISettings           ai;                 ///< what may the AI do?
 	ScriptSettings       script;             ///< settings for scripts
-	ReferenceThroughBaseContainer<std::array<class AIConfig *, MAX_COMPANIES>> ai_config; ///< settings per company
-	class GameConfig    *game_config;        ///< settings for gamescript
+	ScriptConfigSettings script_config;      ///< AI and Gamescript configuration.
 	PathfinderSettings   pf;                 ///< settings for all pathfinders
 	OrderSettings        order;              ///< settings related to orders
 	VehicleSettings      vehicle;            ///< options for vehicles

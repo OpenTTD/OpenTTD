@@ -45,7 +45,7 @@
 
 	AIConfig *config = c->ai_config.get();
 	if (config == nullptr) {
-		c->ai_config = std::make_unique<AIConfig>(AIConfig::GetConfig(company, AIConfig::SSS_FORCE_GAME));
+		c->ai_config = std::make_unique<AIConfig>(*AIConfig::GetConfig(company, AIConfig::SSS_FORCE_GAME));
 		config = c->ai_config.get();
 	}
 
@@ -189,14 +189,8 @@
 		AI::scanner_library.reset();
 
 		for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
-			if (_settings_game.ai_config[c] != nullptr) {
-				delete _settings_game.ai_config[c];
-				_settings_game.ai_config[c] = nullptr;
-			}
-			if (_settings_newgame.ai_config[c] != nullptr) {
-				delete _settings_newgame.ai_config[c];
-				_settings_newgame.ai_config[c] = nullptr;
-			}
+			_settings_game.script_config.ai[c].reset();
+			_settings_newgame.script_config.ai[c].reset();
 		}
 	}
 }
@@ -207,17 +201,17 @@
 	 *  the AIConfig. If not, remove the AI from the list (which will assign
 	 *  a random new AI on reload). */
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
-		if (_settings_game.ai_config[c] != nullptr && _settings_game.ai_config[c]->HasScript()) {
-			if (!_settings_game.ai_config[c]->ResetInfo(true)) {
-				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.ai_config[c]->GetName());
-				_settings_game.ai_config[c]->Change(std::nullopt);
+		if (_settings_game.script_config.ai[c] != nullptr && _settings_game.script_config.ai[c]->HasScript()) {
+			if (!_settings_game.script_config.ai[c]->ResetInfo(true)) {
+				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.ai[c]->GetName());
+				_settings_game.script_config.ai[c]->Change(std::nullopt);
 			}
 		}
 
-		if (_settings_newgame.ai_config[c] != nullptr && _settings_newgame.ai_config[c]->HasScript()) {
-			if (!_settings_newgame.ai_config[c]->ResetInfo(false)) {
-				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.ai_config[c]->GetName());
-				_settings_newgame.ai_config[c]->Change(std::nullopt);
+		if (_settings_newgame.script_config.ai[c] != nullptr && _settings_newgame.script_config.ai[c]->HasScript()) {
+			if (!_settings_newgame.script_config.ai[c]->ResetInfo(false)) {
+				Debug(script, 0, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.script_config.ai[c]->GetName());
+				_settings_newgame.script_config.ai[c]->Change(std::nullopt);
 			}
 		}
 

@@ -21,18 +21,18 @@
 {
 	assert(company < MAX_COMPANIES);
 
-	AIConfig **config;
+	std::unique_ptr<AIConfig> *config;
 	if (source == SSS_FORCE_NEWGAME || (source == SSS_DEFAULT && _game_mode == GM_MENU)) {
-		config = &_settings_newgame.ai_config[company];
+		config = &_settings_newgame.script_config.ai[company];
 	} else {
 		if (source != SSS_FORCE_GAME) {
 			Company *c = Company::GetIfValid(company);
 			if (c != nullptr && c->ai_config != nullptr) return c->ai_config.get();
 		}
-		config = &_settings_game.ai_config[company];
+		config = &_settings_game.script_config.ai[company];
 	}
-	if (*config == nullptr) *config = new AIConfig();
-	return *config;
+	if (*config == nullptr) *config = std::make_unique<AIConfig>();
+	return config->get();
 }
 
 class AIInfo *AIConfig::GetInfo() const

@@ -344,29 +344,14 @@ static void LoadIntroGame(bool load_newgrfs = true)
 void MakeNewgameSettingsLive()
 {
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
-		if (_settings_game.ai_config[c] != nullptr) {
-			delete _settings_game.ai_config[c];
-		}
+		_settings_game.script_config.ai[c].reset();
 	}
-	if (_settings_game.game_config != nullptr) {
-		delete _settings_game.game_config;
-	}
+	_settings_game.script_config.game.reset();
 
 	/* Copy newgame settings to active settings.
 	 * Also initialise old settings needed for savegame conversion. */
 	_settings_game = _settings_newgame;
 	_old_vds = _settings_client.company.vehicle;
-
-	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
-		_settings_game.ai_config[c] = nullptr;
-		if (_settings_newgame.ai_config[c] != nullptr) {
-			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
-		}
-	}
-	_settings_game.game_config = nullptr;
-	if (_settings_newgame.game_config != nullptr) {
-		_settings_game.game_config = new GameConfig(_settings_newgame.game_config);
-	}
 }
 
 void OpenBrowser(const std::string &url)

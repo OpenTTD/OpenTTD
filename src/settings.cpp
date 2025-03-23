@@ -2009,3 +2009,31 @@ void IConsoleListSettings(const char *prefilter)
 
 	IConsolePrint(CC_HELP, "Use 'setting' command to change a value.");
 }
+
+ScriptConfigSettings::ScriptConfigSettings()
+{
+	/* Instantiate here, because unique_ptr needs a complete type. */
+}
+
+ScriptConfigSettings::~ScriptConfigSettings()
+{
+	/* Instantiate here, because unique_ptr needs a complete type. */
+}
+
+ScriptConfigSettings::ScriptConfigSettings(const ScriptConfigSettings &other)
+{
+	*this = other;
+}
+
+ScriptConfigSettings &ScriptConfigSettings::operator=(const ScriptConfigSettings &other)
+{
+	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
+		if (other.ai[c] != nullptr) {
+			this->ai[c] = std::make_unique<AIConfig>(*other.ai[c]);
+		}
+	}
+	if (other.game != nullptr) {
+		this->game = std::make_unique<GameConfig>(*other.game);
+	}
+	return *this;
+}

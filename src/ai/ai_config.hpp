@@ -24,7 +24,7 @@ public:
 		ScriptConfig()
 	{}
 
-	AIConfig(const AIConfig *config) :
+	AIConfig(const AIConfig &config) :
 		ScriptConfig(config)
 	{}
 

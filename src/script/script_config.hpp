@@ -66,7 +66,7 @@ public:
 	 * Create a new Script config that is a copy of an existing config.
 	 * @param config The object to copy.
 	 */
-	ScriptConfig(const ScriptConfig *config);
+	ScriptConfig(const ScriptConfig &config);
 
 	/** Delete an Script configuration. */
 	virtual ~ScriptConfig();

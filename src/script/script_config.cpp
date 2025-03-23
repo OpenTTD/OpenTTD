@@ -35,14 +35,14 @@ void ScriptConfig::Change(std::optional<std::string> name, int version, bool for
 	this->ClearConfigList();
 }
 
-ScriptConfig::ScriptConfig(const ScriptConfig *config)
+ScriptConfig::ScriptConfig(const ScriptConfig &config)
 {
-	this->name = config->name;
-	this->info = config->info;
-	this->version = config->version;
+	this->name = config.name;
+	this->info = config.info;
+	this->version = config.version;
 	this->to_load_data.reset();
 
-	for (const auto &item : config->settings) {
+	for (const auto &item : config.settings) {
 		this->settings[item.first] = item.second;
 	}
 }
