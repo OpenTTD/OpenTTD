@@ -101,7 +101,7 @@ public:
 	inline void SwapShares(FlowStat &other)
 	{
 		this->shares.swap(other.shares);
-		Swap(this->unrestricted, other.unrestricted);
+		std::swap(this->unrestricted, other.unrestricted);
 	}
 
 	/**

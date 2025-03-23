@@ -418,7 +418,7 @@ TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets, 
 
 	/* Swap width and height depending on axis for railway stations */
 	if (axis == INVALID_AXIS && HasStationTileRail(tile)) axis = GetRailStationAxis(tile);
-	if (axis == AXIS_Y) Swap(x, y);
+	if (axis == AXIS_Y) std::swap(x, y);
 
 	/* Make sure we never roam outside of the map, better wrap in that case */
 	return Map::WrapToMap(tile + TileDiffXY(x, y));

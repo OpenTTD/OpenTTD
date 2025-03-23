@@ -103,7 +103,7 @@ bool AirportSpec::IsWithinMapBounds(uint8_t table, TileIndex tile) const
 
 	uint8_t w = this->size_x;
 	uint8_t h = this->size_y;
-	if (this->layouts[table].rotation == DIR_E || this->layouts[table].rotation == DIR_W) Swap(w, h);
+	if (this->layouts[table].rotation == DIR_E || this->layouts[table].rotation == DIR_W) std::swap(w, h);
 
 	return TileX(tile) + w < Map::SizeX() &&
 		TileY(tile) + h < Map::SizeY();

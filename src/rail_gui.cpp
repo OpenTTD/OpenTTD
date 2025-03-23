@@ -208,7 +208,7 @@ static void PlaceRail_Station(TileIndex tile)
 	} else {
 		int w = _settings_client.gui.station_numtracks;
 		int h = _settings_client.gui.station_platlength;
-		if (!_station_gui.axis) Swap(w, h);
+		if (!_station_gui.axis) std::swap(w, h);
 
 		StationPickerSelection params = _station_gui;
 		RailType rt = _cur_railtype;
@@ -372,7 +372,7 @@ static void BuildRailClick_Remove(Window *w)
 			if (!_settings_client.gui.station_dragdrop) {
 				int x = _settings_client.gui.station_numtracks;
 				int y = _settings_client.gui.station_platlength;
-				if (_station_gui.axis == 0) Swap(x, y);
+				if (_station_gui.axis == 0) std::swap(x, y);
 				SetTileSelectSize(x, y);
 			} else {
 				VpSetPlaceSizingLimit(_settings_game.station.station_spread);
@@ -935,7 +935,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	uint numtracks = ta.w;
 	uint platlength = ta.h;
 
-	if (_station_gui.axis == AXIS_X) Swap(numtracks, platlength);
+	if (_station_gui.axis == AXIS_X) std::swap(numtracks, platlength);
 
 	StationPickerSelection params = _station_gui;
 	RailType rt = _cur_railtype;
@@ -1132,7 +1132,7 @@ public:
 		} else {
 			int x = _settings_client.gui.station_numtracks;
 			int y = _settings_client.gui.station_platlength;
-			if (_station_gui.axis == AXIS_X) Swap(x, y);
+			if (_station_gui.axis == AXIS_X) std::swap(x, y);
 			if (!_remove_button_clicked) {
 				SetTileSelectSize(x, y);
 			}

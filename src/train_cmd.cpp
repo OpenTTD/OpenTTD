@@ -1643,12 +1643,12 @@ void ReverseTrainSwapVeh(Train *v, int l, int r)
 			a->vehstatus.Set(VehState::Hidden, b_hidden);
 		}
 
-		Swap(a->track, b->track);
-		Swap(a->direction, b->direction);
-		Swap(a->x_pos, b->x_pos);
-		Swap(a->y_pos, b->y_pos);
-		Swap(a->tile,  b->tile);
-		Swap(a->z_pos, b->z_pos);
+		std::swap(a->track, b->track);
+		std::swap(a->direction, b->direction);
+		std::swap(a->x_pos, b->x_pos);
+		std::swap(a->y_pos, b->y_pos);
+		std::swap(a->tile,  b->tile);
+		std::swap(a->z_pos, b->z_pos);
 
 		SwapTrainFlags(&a->gv_flags, &b->gv_flags);
 

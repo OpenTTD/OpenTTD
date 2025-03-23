@@ -28,8 +28,8 @@ OrthogonalTileArea::OrthogonalTileArea(TileIndex start, TileIndex end)
 	uint ex = TileX(end);
 	uint ey = TileY(end);
 
-	if (sx > ex) Swap(sx, ex);
-	if (sy > ey) Swap(sy, ey);
+	if (sx > ex) std::swap(sx, ex);
+	if (sy > ey) std::swap(sy, ey);
 
 	this->tile = TileXY(sx, sy);
 	this->w    = ex - sx + 1;
