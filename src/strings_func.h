@@ -70,7 +70,7 @@ static inline void PrepareArgsForNextRun(std::span<StringParameter> args)
 
 std::string GetStringWithArgs(StringID string, std::span<StringParameter> args);
 std::string GetString(StringID string);
-const char *GetStringPtr(StringID string);
+std::string_view GetStringPtr(StringID string);
 void AppendStringInPlace(std::string &result, StringID string);
 void AppendStringWithArgsInPlace(std::string &result, StringID string, std::span<StringParameter> params);
 
