@@ -86,10 +86,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 					RailType resolved_rt = GetRailTypeByLabel(std::byteswap(label), false);
 					if (resolved_rt != INVALID_RAILTYPE) {
 						switch (prop) {
-							case 0x0F: SetBit(rti->powered_railtypes, resolved_rt);               [[fallthrough]]; // Powered implies compatible.
-							case 0x0E: SetBit(rti->compatible_railtypes, resolved_rt);            break;
-							case 0x18: SetBit(rti->introduction_required_railtypes, resolved_rt); break;
-							case 0x19: SetBit(rti->introduces_railtypes, resolved_rt);            break;
+							case 0x0F: rti->powered_railtypes.Set(resolved_rt);               [[fallthrough]]; // Powered implies compatible.
+							case 0x0E: rti->compatible_railtypes.Set(resolved_rt);            break;
+							case 0x18: rti->introduction_required_railtypes.Set(resolved_rt); break;
+							case 0x19: rti->introduces_railtypes.Set(resolved_rt);            break;
 						}
 					}
 				}

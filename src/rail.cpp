@@ -185,7 +185,7 @@ RailType GetTileRailType(Tile tile)
  */
 bool HasRailTypeAvail(const CompanyID company, const RailType railtype)
 {
-	return !HasBit(_railtypes_hidden_mask, railtype) && HasBit(Company::Get(company)->avail_railtypes, railtype);
+	return !_railtypes_hidden_mask.Test(railtype) && Company::Get(company)->avail_railtypes.Test(railtype);
 }
 
 /**
@@ -195,7 +195,9 @@ bool HasRailTypeAvail(const CompanyID company, const RailType railtype)
  */
 bool HasAnyRailTypesAvail(const CompanyID company)
 {
-	return (Company::Get(company)->avail_railtypes & ~_railtypes_hidden_mask) != 0;
+	RailTypes avail = Company::Get(company)->avail_railtypes;
+	avail.Reset(_railtypes_hidden_mask);
+	return avail.Any();
 }
 
 /**
@@ -234,7 +236,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
 		RailTypes required = rti->introduction_required_railtypes;
 		if ((rts & required) != required) continue;
 
-		rts |= rti->introduces_railtypes;
+		rts.Set(rti->introduces_railtypes);
 	}
 
 	/* When we added railtypes we need to run this method again; the added
@@ -250,7 +252,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, TimerGameCalendar::Date 
  */
 RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
 {
-	RailTypes rts = RAILTYPES_NONE;
+	RailTypes rts{};
 
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
@@ -262,9 +264,9 @@ RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				assert(rvi->railtype < RAILTYPE_END);
 				if (introduces) {
-					rts |= GetRailTypeInfo(rvi->railtype)->introduces_railtypes;
+					rts.Set(GetRailTypeInfo(rvi->railtype)->introduces_railtypes);
 				} else {
-					SetBit(rts, rvi->railtype);
+					rts.Set(rvi->railtype);
 				}
 			}
 		}
@@ -281,7 +283,7 @@ RailTypes GetCompanyRailTypes(CompanyID company, bool introduces)
  */
 RailTypes GetRailTypes(bool introduces)
 {
-	RailTypes rts = RAILTYPES_NONE;
+	RailTypes rts{};
 
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
@@ -291,9 +293,9 @@ RailTypes GetRailTypes(bool introduces)
 		if (rvi->railveh_type != RAILVEH_WAGON) {
 			assert(rvi->railtype < RAILTYPE_END);
 			if (introduces) {
-				rts |= GetRailTypeInfo(rvi->railtype)->introduces_railtypes;
+				rts.Set(GetRailTypeInfo(rvi->railtype)->introduces_railtypes);
 			} else {
-				SetBit(rts, rvi->railtype);
+				rts.Set(rvi->railtype);
 			}
 		}
 	}

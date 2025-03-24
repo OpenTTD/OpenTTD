@@ -64,12 +64,12 @@ enum SignalOffsets {
  */
 void ResetRailTypes()
 {
-	static_assert(lengthof(_original_railtypes) <= lengthof(_railtypes));
+	static_assert(std::size(_original_railtypes) <= std::size(_railtypes));
 
 	auto insert = std::copy(std::begin(_original_railtypes), std::end(_original_railtypes), std::begin(_railtypes));
 	std::fill(insert, std::end(_railtypes), RailTypeInfo{});
 
-	_railtypes_hidden_mask = RAILTYPES_NONE;
+	_railtypes_hidden_mask = {};
 }
 
 void ResolveRailTypeGUISprites(RailTypeInfo *rti)
@@ -132,7 +132,7 @@ void InitRailTypes()
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 		RailTypeInfo *rti = &_railtypes[rt];
 		ResolveRailTypeGUISprites(rti);
-		if (rti->flags.Test(RailTypeFlag::Hidden)) SetBit(_railtypes_hidden_mask, rt);
+		if (rti->flags.Test(RailTypeFlag::Hidden)) _railtypes_hidden_mask.Set(rt);
 	}
 
 	_sorted_railtypes.clear();
@@ -158,11 +158,11 @@ RailType AllocateRailType(RailTypeLabel label)
 			rti->alternate_labels.clear();
 
 			/* Make us compatible with ourself. */
-			rti->powered_railtypes    = (RailTypes)(1LL << rt);
-			rti->compatible_railtypes = (RailTypes)(1LL << rt);
+			rti->powered_railtypes    = rt;
+			rti->compatible_railtypes = rt;
 
 			/* We also introduce ourself. */
-			rti->introduces_railtypes = (RailTypes)(1LL << rt);
+			rti->introduces_railtypes = rt;
 
 			/* Default sort order; order of allocation, but with some
 			 * offsets so it's easier for NewGRF to pick a spot without

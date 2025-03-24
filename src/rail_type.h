@@ -21,8 +21,6 @@ static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = 'MGLV';
 
 /**
  * Enumeration for all possible railtypes.
- *
- * This enumeration defines all 4 possible railtypes.
  */
 enum RailType : uint8_t {
 	RAILTYPE_BEGIN    = 0,          ///< Used for iterations
@@ -37,18 +35,8 @@ enum RailType : uint8_t {
 /** Allow incrementing of Track variables */
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RailType)
 
-/**
- * The different railtypes we support, but then a bitmask of them.
- * @note Must be treated as a uint64_t type, narrowing it causes bit membership tests to give wrong results, as in bug #6951.
- */
-enum RailTypes : uint64_t {
-	RAILTYPES_NONE     = 0,                      ///< No rail types
-	RAILTYPES_RAIL     = 1 << RAILTYPE_RAIL,     ///< Non-electrified rails
-	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails
-	RAILTYPES_MONO     = 1 << RAILTYPE_MONO,     ///< Monorail!
-	RAILTYPES_MAGLEV   = 1 << RAILTYPE_MAGLEV,   ///< Ever fast maglev
-	INVALID_RAILTYPES  = UINT64_MAX,             ///< Invalid railtypes
-};
-DECLARE_ENUM_AS_BIT_SET(RailTypes)
+using RailTypes = EnumBitSet<RailType, uint64_t>;
+
+static constexpr RailTypes INVALID_RAILTYPES{UINT64_MAX};
 
 #endif /* RAIL_TYPE_H */
