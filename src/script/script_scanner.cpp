@@ -53,7 +53,7 @@ void ScriptScanner::ResetEngine()
 {
 	this->engine->Reset();
 	this->engine->SetGlobalPointer(this);
-	this->RegisterAPI(this->engine);
+	this->RegisterAPI(*this->engine);
 }
 
 void ScriptScanner::Initialize(std::string_view name)

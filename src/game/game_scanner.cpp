@@ -28,7 +28,7 @@ std::string GameScannerInfo::GetScriptName(ScriptInfo *info)
 	return info->GetName();
 }
 
-void GameScannerInfo::RegisterAPI(class Squirrel *engine)
+void GameScannerInfo::RegisterAPI(class Squirrel &engine)
 {
 	GameInfo::RegisterAPI(engine);
 }
@@ -81,7 +81,7 @@ std::string GameScannerLibrary::GetScriptName(ScriptInfo *info)
 	return fmt::format("{}.{}", library->GetCategory(), library->GetInstanceName());
 }
 
-void GameScannerLibrary::RegisterAPI(class Squirrel *engine)
+void GameScannerLibrary::RegisterAPI(class Squirrel &engine)
 {
 	GameLibrary::RegisterAPI(engine);
 }

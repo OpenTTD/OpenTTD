@@ -27,7 +27,7 @@ static bool CheckAPIVersion(const std::string &api_version)
 
 template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSInfo", -1); return 1; }
 
-/* static */ void GameInfo::RegisterAPI(Squirrel *engine)
+/* static */ void GameInfo::RegisterAPI(Squirrel &engine)
 {
 	/* Create the GSInfo class, and add the RegisterGS function */
 	DefSQClass<GameInfo, ScriptType::GS> SQGSInfo("GSInfo");
@@ -42,7 +42,7 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	SQGSInfo.DefSQConst(engine, ScriptConfigFlags{ScriptConfigFlag::Developer}.base(), "CONFIG_DEVELOPER");
 
 	SQGSInfo.PostRegister(engine);
-	engine->AddMethod("RegisterGS", &GameInfo::Constructor, "tx");
+	engine.AddMethod("RegisterGS", &GameInfo::Constructor, "tx");
 }
 
 /* static */ SQInteger GameInfo::Constructor(HSQUIRRELVM vm)
@@ -95,12 +95,12 @@ bool GameInfo::CanLoadFromVersion(int version) const
 }
 
 
-/* static */ void GameLibrary::RegisterAPI(Squirrel *engine)
+/* static */ void GameLibrary::RegisterAPI(Squirrel &engine)
 {
 	/* Create the GameLibrary class, and add the RegisterLibrary function */
-	engine->AddClassBegin("GSLibrary");
-	engine->AddClassEnd();
-	engine->AddMethod("RegisterLibrary", &GameLibrary::Constructor, "tx");
+	engine.AddClassBegin("GSLibrary");
+	engine.AddClassEnd();
+	engine.AddMethod("RegisterLibrary", &GameLibrary::Constructor, "tx");
 }
 
 /* static */ SQInteger GameLibrary::Constructor(HSQUIRRELVM vm)

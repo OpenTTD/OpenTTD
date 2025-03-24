@@ -44,7 +44,7 @@ protected:
 	std::string_view GetFileName() const override { return PATHSEP "info.nut"; }
 	Subdirectory GetDirectory() const override { return AI_DIR; }
 	std::string_view GetScannerName() const override { return "AIs"; }
-	void RegisterAPI(class Squirrel *engine) override;
+	void RegisterAPI(class Squirrel &engine) override;
 
 private:
 	AIInfo *info_dummy; ///< The dummy AI.
@@ -67,7 +67,7 @@ protected:
 	std::string_view GetFileName() const override { return PATHSEP "library.nut"; }
 	Subdirectory GetDirectory() const override { return AI_LIBRARY_DIR; }
 	std::string_view GetScannerName() const override { return "AI Libraries"; }
-	void RegisterAPI(class Squirrel *engine) override;
+	void RegisterAPI(class Squirrel &engine) override;
 };
 
 #endif /* AI_SCANNER_HPP */

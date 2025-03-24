@@ -356,12 +356,12 @@ const std::string &GetGameStringName(StringIndexInTab id)
  * Register the current translation to the Squirrel engine.
  * @param engine The engine to update/
  */
-void RegisterGameTranslation(Squirrel *engine)
+void RegisterGameTranslation(Squirrel &engine)
 {
 	_current_gamestrings_data = LoadTranslations();
 	if (_current_gamestrings_data == nullptr) return;
 
-	HSQUIRRELVM vm = engine->GetVM();
+	HSQUIRRELVM vm = engine.GetVM();
 	sq_pushroottable(vm);
 	sq_pushstring(vm, "GSText", -1);
 	if (SQ_FAILED(sq_get(vm, -2))) return;

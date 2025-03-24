@@ -43,7 +43,7 @@ void AIInstance::Initialize(AIInfo *info)
 	this->api_version = info->GetAPIVersion();
 
 	/* Register the AIController (including the "import" command) */
-	SQAIController_Register(this->engine);
+	SQAIController_Register(*this->engine);
 
 	ScriptInstance::Initialize(info->GetMainScript(), info->GetInstanceName(), _current_company);
 }
@@ -53,7 +53,7 @@ void AIInstance::RegisterAPI()
 	ScriptInstance::RegisterAPI();
 
 	/* Register all classes */
-	SQAI_RegisterAll(this->engine);
+	SQAI_RegisterAll(*this->engine);
 
 	if (!this->LoadCompatibilityScripts(AI_DIR, AIInfo::ApiVersions)) this->Died();
 }

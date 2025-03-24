@@ -115,7 +115,7 @@ protected:
 	/**
 	 * Register the API for this ScriptInfo.
 	 */
-	virtual void RegisterAPI(class Squirrel *engine) = 0;
+	virtual void RegisterAPI(class Squirrel &engine) = 0;
 
 	/**
 	 * Get the type of the script, in plural.
