@@ -152,7 +152,7 @@ void StrgenErrorI(const std::string &msg);
 #define StrgenWarning(format_string, ...) StrgenWarningI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 #define StrgenError(format_string, ...) StrgenErrorI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 #define StrgenFatal(format_string, ...) StrgenFatalI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
-char *ParseWord(char **buf);
+std::optional<std::string_view> ParseWord(const char **buf);
 
 extern const char *_file;
 extern size_t _cur_line;

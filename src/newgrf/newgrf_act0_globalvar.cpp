@@ -302,14 +302,14 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					LanguageMap::Mapping map;
 					map.newgrf_id = newgrf_id;
 					if (prop == 0x13) {
-						map.openttd_id = lang->GetGenderIndex(name.data());
+						map.openttd_id = lang->GetGenderIndex(name);
 						if (map.openttd_id >= MAX_NUM_GENDERS) {
 							GrfMsg(1, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", StrMakeValid(name));
 						} else {
 							_cur.grffile->language_map[curidx].gender_map.push_back(map);
 						}
 					} else {
-						map.openttd_id = lang->GetCaseIndex(name.data());
+						map.openttd_id = lang->GetCaseIndex(name);
 						if (map.openttd_id >= MAX_NUM_CASES) {
 							GrfMsg(1, "GlobalVarChangeInfo: Case name {} is not known, ignoring", StrMakeValid(name));
 						} else {
