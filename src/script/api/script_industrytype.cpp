@@ -71,8 +71,8 @@
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
 	ScriptList *list = new ScriptList();
-	for (const CargoType &c : ins->produced_cargo) {
-		if (::IsValidCargoType(c)) list->AddItem(c);
+	for (const CargoType &cargo : ins->produced_cargo) {
+		if (::IsValidCargoType(cargo)) list->AddItem(cargo);
 	}
 
 	return list;
@@ -85,8 +85,8 @@
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
 	ScriptList *list = new ScriptList();
-	for (const CargoType &c : ins->accepts_cargo) {
-		if (::IsValidCargoType(c)) list->AddItem(c);
+	for (const CargoType &cargo : ins->accepts_cargo) {
+		if (::IsValidCargoType(cargo)) list->AddItem(cargo);
 	}
 
 	return list;

@@ -86,12 +86,12 @@ void LinkGraphOverlay::RebuildCache()
 		StationLinkMap &seen_links = this->cached_links[from];
 
 		uint supply = 0;
-		for (CargoType c : SetCargoBitIterator(this->cargo_mask)) {
-			if (!CargoSpec::Get(c)->IsValid()) continue;
-			if (!LinkGraph::IsValidID(sta->goods[c].link_graph)) continue;
-			const LinkGraph &lg = *LinkGraph::Get(sta->goods[c].link_graph);
+		for (CargoType cargo : SetCargoBitIterator(this->cargo_mask)) {
+			if (!CargoSpec::Get(cargo)->IsValid()) continue;
+			if (!LinkGraph::IsValidID(sta->goods[cargo].link_graph)) continue;
+			const LinkGraph &lg = *LinkGraph::Get(sta->goods[cargo].link_graph);
 
-			ConstNode &from_node = lg[sta->goods[c].node];
+			ConstNode &from_node = lg[sta->goods[cargo].node];
 			supply += lg.Monthly(from_node.supply);
 			for (const Edge &edge : from_node.edges) {
 				StationID to = lg[edge.dest_node].station;
@@ -212,17 +212,17 @@ inline bool LinkGraphOverlay::IsLinkVisible(Point pta, Point ptb, const DrawPixe
  */
 void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 {
-	for (CargoType c : SetCargoBitIterator(this->cargo_mask)) {
-		if (!CargoSpec::Get(c)->IsValid()) continue;
-		const GoodsEntry &ge = from->goods[c];
+	for (CargoType cargo : SetCargoBitIterator(this->cargo_mask)) {
+		if (!CargoSpec::Get(cargo)->IsValid()) continue;
+		const GoodsEntry &ge = from->goods[cargo];
 		if (!LinkGraph::IsValidID(ge.link_graph) ||
-				ge.link_graph != to->goods[c].link_graph) {
+				ge.link_graph != to->goods[cargo].link_graph) {
 			continue;
 		}
 		const LinkGraph &lg = *LinkGraph::Get(ge.link_graph);
-		if (lg[ge.node].HasEdgeTo(to->goods[c].node)) {
-			ConstEdge &edge = lg[ge.node][to->goods[c].node];
-			this->AddStats(c, lg.Monthly(edge.capacity), lg.Monthly(edge.usage),
+		if (lg[ge.node].HasEdgeTo(to->goods[cargo].node)) {
+			ConstEdge &edge = lg[ge.node][to->goods[cargo].node];
+			this->AddStats(cargo, lg.Monthly(edge.capacity), lg.Monthly(edge.usage),
 					ge.HasData() ? ge.GetData().flows.GetFlowVia(to->index) : 0,
 					edge.TravelTime() / Ticks::DAY_TICKS,
 					from->owner == OWNER_NONE || to->owner == OWNER_NONE,
