@@ -65,10 +65,10 @@ struct LanguagePackHeader {
 	 * @param gender_str The string representation of the gender.
 	 * @return The index of the gender, or MAX_NUM_GENDERS when the gender is unknown.
 	 */
-	uint8_t GetGenderIndex(const char *gender_str) const
+	uint8_t GetGenderIndex(std::string_view gender_str) const
 	{
 		for (uint8_t i = 0; i < MAX_NUM_GENDERS; i++) {
-			if (strcmp(gender_str, this->genders[i]) == 0) return i;
+			if (gender_str.compare(this->genders[i]) == 0) return i;
 		}
 		return MAX_NUM_GENDERS;
 	}
@@ -78,10 +78,10 @@ struct LanguagePackHeader {
 	 * @param case_str The string representation of the case.
 	 * @return The index of the case, or MAX_NUM_CASES when the case is unknown.
 	 */
-	uint8_t GetCaseIndex(const char *case_str) const
+	uint8_t GetCaseIndex(std::string_view case_str) const
 	{
 		for (uint8_t i = 0; i < MAX_NUM_CASES; i++) {
-			if (strcmp(case_str, this->cases[i]) == 0) return i;
+			if (case_str.compare(this->cases[i]) == 0) return i;
 		}
 		return MAX_NUM_CASES;
 	}

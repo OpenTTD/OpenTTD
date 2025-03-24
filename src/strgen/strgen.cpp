@@ -146,26 +146,26 @@ void FileStringReader::HandlePragma(char *str)
 		_lang.newgrflangid = static_cast<uint8_t>(langid);
 	} else if (!memcmp(str, "gender ", 7)) {
 		if (this->master) FatalError("Genders are not allowed in the base translation.");
-		char *buf = str + 7;
+		const char *buf = str + 7;
 
 		for (;;) {
-			const char *s = ParseWord(&buf);
+			auto s = ParseWord(&buf);
 
-			if (s == nullptr) break;
+			if (!s.has_value()) break;
 			if (_lang.num_genders >= MAX_NUM_GENDERS) FatalError("Too many genders, max {}", MAX_NUM_GENDERS);
-			strecpy(_lang.genders[_lang.num_genders], s);
+			s->copy(_lang.genders[_lang.num_genders], CASE_GENDER_LEN - 1);
 			_lang.num_genders++;
 		}
 	} else if (!memcmp(str, "case ", 5)) {
 		if (this->master) FatalError("Cases are not allowed in the base translation.");
-		char *buf = str + 5;
+		const char *buf = str + 5;
 
 		for (;;) {
-			const char *s = ParseWord(&buf);
+			auto s = ParseWord(&buf);
 
-			if (s == nullptr) break;
+			if (!s.has_value()) break;
 			if (_lang.num_cases >= MAX_NUM_CASES) FatalError("Too many cases, max {}", MAX_NUM_CASES);
-			strecpy(_lang.cases[_lang.num_cases], s);
+			s->copy(_lang.cases[_lang.num_cases], CASE_GENDER_LEN - 1);
 			_lang.num_cases++;
 		}
 	} else {
@@ -344,7 +344,7 @@ int CDECL main(int argc, char *argv[])
 					} else {
 						flags = '0'; // Command needs no parameters
 					}
-					fmt::print("{}\t{:c}\t\"{}\"\t\"{}\"\n", cs.consumes, flags, cs.cmd, strstr(cs.cmd, "STRING") ? "STRING" : cs.cmd);
+					fmt::print("{}\t{:c}\t\"{}\"\t\"{}\"\n", cs.consumes, flags, cs.cmd, cs.cmd.find("STRING") != std::string::npos ? "STRING" : cs.cmd);
 				}
 				return 0;
 

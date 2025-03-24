@@ -193,9 +193,9 @@ void ScriptText::_FillParamList(ParamList &params, ScriptTextList &seen_texts)
 	}
 }
 
-void ScriptText::ParamCheck::Encode(std::back_insert_iterator<std::string> &output, const char *cmd)
+void ScriptText::ParamCheck::Encode(std::back_insert_iterator<std::string> &output, std::string_view cmd)
 {
-	if (this->cmd == nullptr) this->cmd = cmd;
+	if (this->cmd.empty()) this->cmd = cmd;
 	if (this->used) return;
 
 	struct visitor {
@@ -286,7 +286,7 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 				default:
 					for (int i = 0; i < cur_param.consumes; i++) {
 						ParamCheck &p = *get_next_arg();
-						p.Encode(output, i == 0 ? cur_param.cmd : nullptr);
+						p.Encode(output, i == 0 ? cur_param.cmd : "");
 						if (i == 0 && p.cmd != cur_param.cmd) throw 1;
 						if (!std::holds_alternative<SQInteger>(*p.param)) ScriptLog::Error(fmt::format("{}({}): {{{}}} expects an integer", name, param_count + i + 1, cur_param.cmd));
 					}

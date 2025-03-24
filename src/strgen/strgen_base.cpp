@@ -118,10 +118,10 @@ LangString *StringData::Find(const std::string &s)
  * @param s    The string hash.
  * @return The new hash.
  */
-static uint32_t VersionHashStr(uint32_t hash, const char *s)
+static uint32_t VersionHashStr(uint32_t hash, std::string_view s)
 {
-	for (; *s != '\0'; s++) {
-		hash = std::rotl(hash, 3) ^ *s;
+	for (auto c : s) {
+		hash = std::rotl(hash, 3) ^ c;
 		hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
 	}
 	return hash;
@@ -139,12 +139,11 @@ uint32_t StringData::Version() const
 		const LangString *ls = this->strings[i].get();
 
 		if (ls != nullptr) {
-			const char *s = ls->name.c_str();
 			hash ^= i * 0x717239;
 			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
-			hash = VersionHashStr(hash, s + 1);
+			hash = VersionHashStr(hash, ls->name);
 
-			s = ls->english.c_str();
+			const char *s = ls->english.c_str();
 			ParsedCommandString cs;
 			while ((cs = ParseCommandString(&s)).cmd != nullptr) {
 				if (cs.cmd->flags.Test(CmdFlag::DontCount)) continue;
@@ -230,7 +229,7 @@ static size_t Utf8Validate(const char *s)
 	return 0;
 }
 
-void EmitSingleChar(Buffer *buffer, char *buf, char32_t value)
+void EmitSingleChar(Buffer *buffer, const char *buf, char32_t value)
 {
 	if (*buf != '\0') StrgenWarning("Ignoring trailing letters in command");
 	buffer->AppendUtf8(value);
@@ -238,7 +237,7 @@ void EmitSingleChar(Buffer *buffer, char *buf, char32_t value)
 
 /* The plural specifier looks like
  * {NUM} {PLURAL <ARG#> passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
-static std::pair<std::optional<size_t>, std::optional<size_t>> ParseRelNum(char **buf)
+static std::pair<std::optional<size_t>, std::optional<size_t>> ParseRelNum(const char **buf)
 {
 	const char *s = *buf;
 	char *end;
@@ -258,65 +257,58 @@ static std::pair<std::optional<size_t>, std::optional<size_t>> ParseRelNum(char 
 }
 
 /* Parse out the next word, or nullptr */
-char *ParseWord(char **buf)
+std::optional<std::string_view> ParseWord(const char **buf)
 {
-	char *s = *buf, *r;
+	const char *s = *buf;
 
 	while (*s == ' ' || *s == '\t') s++;
-	if (*s == '\0') return nullptr;
+	if (*s == '\0') return {};
 
 	if (*s == '"') {
-		r = ++s;
+		const char *begin = ++s;
 		/* parse until next " or NUL */
 		for (;;) {
-			if (*s == '\0') break;
+			if (*s == '\0') StrgenFatal("Unterminated quotes");
 			if (*s == '"') {
-				*s++ = '\0';
-				break;
+				*buf = s + 1;
+				return std::string_view(begin, s - begin);
 			}
 			s++;
 		}
 	} else {
 		/* proceed until whitespace or NUL */
-		r = s;
+		const char *begin = s;
 		for (;;) {
-			if (*s == '\0') break;
-			if (*s == ' ' || *s == '\t') {
-				*s++ = '\0';
-				break;
+			if (*s == '\0' || *s == ' ' || *s == '\t') {
+				*buf = s;
+				return std::string_view(begin, s - begin);
 			}
 			s++;
 		}
 	}
-	*buf = s;
-	return r;
 }
 
 /* This is encoded like
  *  CommandByte <ARG#> <NUM> {Length of each string} {each string} */
-static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words, size_t nw)
+static void EmitWordList(Buffer *buffer, const std::vector<std::string> &words)
 {
 	/* Maximum word length in bytes, excluding trailing NULL. */
 	constexpr size_t MAX_WORD_LENGTH = UINT8_MAX - 2;
 
-	buffer->AppendByte(static_cast<uint8_t>(nw));
-	for (size_t i = 0; i < nw; i++) {
-		size_t len = strlen(words[i]) + 1;
-		if (len >= UINT8_MAX) StrgenFatal("WordList {}/{} string '{}' too long, max bytes {}", i + 1, nw, words[i], MAX_WORD_LENGTH);
+	buffer->AppendByte(static_cast<uint8_t>(words.size()));
+	for (size_t i = 0; i < words.size(); i++) {
+		size_t len = words[i].size() + 1;
+		if (len >= UINT8_MAX) StrgenFatal("WordList {}/{} string '{}' too long, max bytes {}", i + 1, words.size(), words[i], MAX_WORD_LENGTH);
 		buffer->AppendByte(static_cast<uint8_t>(len));
 	}
-	for (size_t i = 0; i < nw; i++) {
+	for (size_t i = 0; i < words.size(); i++) {
 		buffer->append(words[i]);
 		buffer->AppendByte(0);
 	}
 }
 
-void EmitPlural(Buffer *buffer, char *buf, char32_t)
+void EmitPlural(Buffer *buffer, const char *buf, char32_t)
 {
-	size_t expected = _plural_forms[_lang.plural_form].plural_count;
-	std::vector<const char *> words(std::max(expected, MAX_PLURALS), nullptr);
-	size_t nw = 0;
-
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
 	auto [argidx, offset] = ParseRelNum(&buf);
 	if (!argidx.has_value()) {
@@ -334,26 +326,29 @@ void EmitPlural(Buffer *buffer, char *buf, char32_t)
 	}
 
 	/* Parse each string */
-	for (nw = 0; nw < MAX_PLURALS; nw++) {
-		words[nw] = ParseWord(&buf);
-		if (words[nw] == nullptr) break;
+	std::vector<std::string> words;
+	for (;;) {
+		auto word = ParseWord(&buf);
+		if (!word.has_value()) break;
+		words.emplace_back(*word);
 	}
 
-	if (nw == 0) {
+	if (words.empty()) {
 		StrgenFatal("{}: No plural words", _cur_ident);
 	}
 
-	if (expected != nw) {
+	size_t expected = _plural_forms[_lang.plural_form].plural_count;
+	if (expected != words.size()) {
 		if (_translated) {
 			StrgenFatal("{}: Invalid number of plural forms. Expecting {}, found {}.", _cur_ident,
-				expected, nw);
+				expected, words.size());
 		} else {
 			if (_show_warnings) StrgenWarning("'{}' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
-			if (nw > expected) {
-				nw = expected;
+			if (words.size() > expected) {
+				words.resize(expected);
 			} else {
-				for (; nw < expected; nw++) {
-					words[nw] = words[nw - 1];
+				while (words.size() < expected) {
+					words.push_back(words.back());
 				}
 			}
 		}
@@ -362,24 +357,22 @@ void EmitPlural(Buffer *buffer, char *buf, char32_t)
 	buffer->AppendUtf8(SCC_PLURAL_LIST);
 	buffer->AppendByte(_lang.plural_form);
 	buffer->AppendByte(static_cast<uint8_t>(TranslateArgumentIdx(*argidx, *offset)));
-	EmitWordList(buffer, words, nw);
+	EmitWordList(buffer, words);
 }
 
-void EmitGender(Buffer *buffer, char *buf, char32_t)
+void EmitGender(Buffer *buffer, const char *buf, char32_t)
 {
 	if (buf[0] == '=') {
 		buf++;
 
 		/* This is a {G=DER} command */
-		uint nw = _lang.GetGenderIndex(buf);
+		auto nw = _lang.GetGenderIndex(buf);
 		if (nw >= MAX_NUM_GENDERS) StrgenFatal("G argument '{}' invalid", buf);
 
 		/* now nw contains the gender index */
 		buffer->AppendUtf8(SCC_GENDER_INDEX);
 		buffer->AppendByte(nw);
 	} else {
-		std::vector<const char *> words(MAX_NUM_GENDERS, nullptr);
-
 		/* This is a {G 0 foo bar two} command.
 		 * If no relative number exists, default to +0 */
 		auto [argidx, offset] = ParseRelNum(&buf);
@@ -391,38 +384,33 @@ void EmitGender(Buffer *buffer, char *buf, char32_t)
 			StrgenFatal("Command '{}' can't have a gender", cmd == nullptr ? "<empty>" : cmd->cmd);
 		}
 
-		size_t nw;
-		for (nw = 0; nw < MAX_NUM_GENDERS; nw++) {
-			words[nw] = ParseWord(&buf);
-			if (words[nw] == nullptr) break;
+		std::vector<std::string> words;
+		for (;;) {
+			auto word = ParseWord(&buf);
+			if (!word.has_value()) break;
+			words.emplace_back(*word);
 		}
-		if (nw != _lang.num_genders) StrgenFatal("Bad # of arguments for gender command");
+		if (words.size() != _lang.num_genders) StrgenFatal("Bad # of arguments for gender command");
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		buffer->AppendUtf8(SCC_GENDER_LIST);
 		buffer->AppendByte(static_cast<uint8_t>(TranslateArgumentIdx(*argidx, *offset)));
-		EmitWordList(buffer, words, nw);
+		EmitWordList(buffer, words);
 	}
 }
 
-static const CmdStruct *FindCmd(const char *s, size_t len)
+static const CmdStruct *FindCmd(std::string_view s)
 {
 	for (const auto &cs : _cmd_structs) {
-		if (strncmp(cs.cmd, s, len) == 0 && cs.cmd[len] == '\0') return &cs;
+		if (cs.cmd == s) return &cs;
 	}
 	return nullptr;
 }
 
-static uint ResolveCaseName(const char *str, size_t len)
+static uint ResolveCaseName(std::string_view str)
 {
-	/* First get a clean copy of only the case name, then resolve it. */
-	char case_str[CASE_GENDER_LEN];
-	len = std::min(lengthof(case_str) - 1, len);
-	memcpy(case_str, str, len);
-	case_str[len] = '\0';
-
-	uint case_idx = _lang.GetCaseIndex(case_str);
-	if (case_idx >= MAX_NUM_CASES) StrgenFatal("Invalid case-name '{}'", case_str);
+	uint case_idx = _lang.GetCaseIndex(str);
+	if (case_idx >= MAX_NUM_CASES) StrgenFatal("Invalid case-name '{}'", str);
 	return case_idx + 1;
 }
 
@@ -453,9 +441,9 @@ static ParsedCommandString ParseCommandString(const char **str)
 		c = *s++;
 	} while (c != '}' && c != ' ' && c != '=' && c != '.' && c != 0);
 
-	result.cmd = FindCmd(start, s - start - 1);
+	std::string_view command(start, s - start - 1);
+	result.cmd = FindCmd(command);
 	if (result.cmd == nullptr) {
-		std::string command(start, s - start - 1);
 		StrgenError("Undefined command '{}'", command);
 		return {};
 	}
@@ -470,7 +458,7 @@ static ParsedCommandString ParseCommandString(const char **str)
 		do {
 			c = *s++;
 		} while (c != '}' && c != ' ' && c != '\0');
-		result.casei = ResolveCaseName(casep, s - casep - 1);
+		result.casei = ResolveCaseName(std::string_view(casep, s - casep - 1));
 	}
 
 	if (c == '\0') {
@@ -542,15 +530,15 @@ const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 {
 	if (a == nullptr) return nullptr;
 
-	if (strcmp(a->cmd, "STRING1") == 0 ||
-			strcmp(a->cmd, "STRING2") == 0 ||
-			strcmp(a->cmd, "STRING3") == 0 ||
-			strcmp(a->cmd, "STRING4") == 0 ||
-			strcmp(a->cmd, "STRING5") == 0 ||
-			strcmp(a->cmd, "STRING6") == 0 ||
-			strcmp(a->cmd, "STRING7") == 0 ||
-			strcmp(a->cmd, "RAW_STRING") == 0) {
-		return FindCmd("STRING", 6);
+	if (a->cmd == "STRING1" ||
+			a->cmd == "STRING2" ||
+			a->cmd == "STRING3" ||
+			a->cmd == "STRING4" ||
+			a->cmd == "STRING5" ||
+			a->cmd == "STRING6" ||
+			a->cmd == "STRING7" ||
+			a->cmd == "RAW_STRING") {
+		return FindCmd("STRING");
 	}
 
 	return a;
@@ -689,7 +677,7 @@ void StringReader::HandleString(char *str)
 		if (!CheckCommandsMatch(s, ent->english.c_str(), str)) return;
 
 		if (casep != nullptr) {
-			ent->translated_cases.emplace_back(ResolveCaseName(casep, strlen(casep)), s);
+			ent->translated_cases.emplace_back(ResolveCaseName(casep), s);
 		} else {
 			ent->translated = s;
 			/* If the string was translated, use the line from the
@@ -827,7 +815,7 @@ static void PutCommandString(Buffer *buffer, const char *str)
 			}
 		}
 
-		cmd->proc(buffer, cs.param.data(), cmd->value);
+		cmd->proc(buffer, cs.param.c_str(), cmd->value);
 	}
 }
 

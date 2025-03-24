@@ -17,10 +17,10 @@ enum class CmdFlag : uint8_t {
 using CmdFlags = EnumBitSet<CmdFlag, uint8_t>;
 
 struct Buffer;
-typedef void (*ParseCmdProc)(Buffer *buffer, char *buf, char32_t value);
+typedef void (*ParseCmdProc)(Buffer *buffer, const char *buf, char32_t value);
 
 struct CmdStruct {
-	const char *cmd;
+	std::string_view cmd;
 	ParseCmdProc proc;
 	char32_t value;
 	uint8_t consumes;
@@ -28,9 +28,9 @@ struct CmdStruct {
 	CmdFlags flags;
 };
 
-extern void EmitSingleChar(Buffer *buffer, char *buf, char32_t value);
-extern void EmitPlural(Buffer *buffer, char *buf, char32_t value);
-extern void EmitGender(Buffer *buffer, char *buf, char32_t value);
+extern void EmitSingleChar(Buffer *buffer, const char *buf, char32_t value);
+extern void EmitPlural(Buffer *buffer, const char *buf, char32_t value);
+extern void EmitGender(Buffer *buffer, const char *buf, char32_t value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */

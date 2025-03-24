@@ -137,11 +137,11 @@ private:
 		int idx;
 		Param *param;
 		bool used = false;
-		const char *cmd = nullptr;
+		std::string_view cmd;
 
 		ParamCheck(StringIndexInTab owner, int idx, Param *param) : owner(owner), idx(idx), param(param) {}
 
-		void Encode(std::back_insert_iterator<std::string> &output, const char *cmd);
+		void Encode(std::back_insert_iterator<std::string> &output, std::string_view cmd);
 	};
 
 	using ParamList = std::vector<ParamCheck>;
