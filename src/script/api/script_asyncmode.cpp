@@ -49,7 +49,7 @@ void ScriptAsyncMode::FinalRelease()
 {
 	if (this->GetDoCommandAsyncModeInstance() != this) {
 		/* Ignore this error if the script is not alive. */
-		if (ScriptObject::GetActiveInstance()->IsAlive()) {
+		if (ScriptObject::GetActiveInstance().IsAlive()) {
 			throw Script_FatalError("Asyncmode object was removed while it was not the latest *Mode object created.");
 		}
 	}

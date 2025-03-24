@@ -75,7 +75,7 @@ protected:
 	class ActiveInstance {
 	friend class ScriptObject;
 	public:
-		ActiveInstance(ScriptInstance *instance);
+		ActiveInstance(ScriptInstance &instance);
 		~ActiveInstance();
 	private:
 		ScriptInstance *last_active;    ///< The active instance before we go instantiated.
@@ -117,7 +117,7 @@ public:
 	 * Get the currently active instance.
 	 * @return The instance.
 	 */
-	static class ScriptInstance *GetActiveInstance();
+	static class ScriptInstance &GetActiveInstance();
 
 	/**
 	 * Get a reference of the randomizer that brings this script random values.

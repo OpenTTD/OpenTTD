@@ -37,7 +37,7 @@
 class TestScriptController {
 public:
 	GameInstance game{};
-	ScriptObject::ActiveInstance active{&game};
+	ScriptObject::ActiveInstance active{game};
 
 	Squirrel engine{"test"};
 	ScriptAllocatorScope scope{&engine};
