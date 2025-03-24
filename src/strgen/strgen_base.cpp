@@ -21,10 +21,11 @@
 #include "../safeguards.h"
 
 static bool _translated;              ///< Whether the current language is not the master language
-static bool _translation;             ///< Is the current file actually a translation or not
+bool _translation;                    ///< Is the current file actually a translation or not
 const char *_file = "(unknown file)"; ///< The filename of the input, so we can refer to it in errors/warnings
 int _cur_line;                        ///< The current line we're parsing in the input file
-int _errors, _warnings, _show_todo;
+int _errors, _warnings;
+bool _show_warnings = false, _annotate_todos = false;
 LanguagePackHeader _lang;             ///< Header information about a language.
 static const char *_cur_ident;
 static ParsedCommandStruct _cur_pcs;
@@ -344,7 +345,7 @@ void EmitPlural(Buffer *buffer, char *buf, int)
 			StrgenFatal("{}: Invalid number of plural forms. Expecting {}, found {}.", _cur_ident,
 				expected, nw);
 		} else {
-			if ((_show_todo & 2) != 0) StrgenWarning("'{}' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
+			if (_show_warnings) StrgenWarning("'{}' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
 			if (nw > expected) {
 				nw = expected;
 			} else {
@@ -728,10 +729,6 @@ void StringReader::ParseFile()
 	_translation = this->translation;
 	_file = this->file.c_str();
 
-	/* Abusing _show_todo to replace "warning" with "info" for translations. */
-	_show_todo &= 3;
-	if (!this->translation) _show_todo |= 4;
-
 	/* For each new file we parse, reset the genders, and language codes. */
 	MemSetT(&_lang, 0);
 	strecpy(_lang.digit_group_separator, ",");
@@ -903,11 +900,11 @@ void LanguageWriter::WriteLang(const StringData &data)
 			_cur_line = ls->line;
 
 			/* Produce a message if a string doesn't have a translation. */
-			if (_show_todo > 0 && ls->translated.empty()) {
-				if ((_show_todo & 2) != 0) {
+			if (ls->translated.empty()) {
+				if (_show_warnings) {
 					StrgenWarning("'{}' is untranslated", ls->name);
 				}
-				if ((_show_todo & 1) != 0) {
+				if (_annotate_todos) {
 					const char *s = "<TODO> ";
 					while (*s != '\0') buffer.AppendByte(*s++);
 				}

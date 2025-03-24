@@ -35,10 +35,10 @@
 
 void StrgenWarningI(const std::string &msg)
 {
-	if (_show_todo > 0) {
-		fmt::print(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, msg);
-	} else {
+	if (_translation) {
 		fmt::print(stderr, LINE_NUM_FMT("info"), _file, _cur_line, msg);
+	} else {
+		fmt::print(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, msg);
 	}
 	_warnings++;
 }
@@ -364,11 +364,11 @@ int CDECL main(int argc, char *argv[])
 				return 0;
 
 			case 't':
-				_show_todo |= 1;
+				_annotate_todos = true;
 				break;
 
 			case 'w':
-				_show_todo |= 2;
+				_show_warnings = true;
 				break;
 
 			case 'h':
@@ -455,7 +455,7 @@ int CDECL main(int argc, char *argv[])
 				writer.Finalise();
 
 				/* if showing warnings, print a summary of the language */
-				if ((_show_todo & 2) != 0) {
+				if (_show_warnings) {
 					fmt::print("{} warnings and {} errors for {}\n", _warnings, _errors, output_file);
 				}
 			}
