@@ -156,7 +156,8 @@ char *ParseWord(char **buf);
 
 extern const char *_file;
 extern int _cur_line;
-extern int _errors, _warnings, _show_todo;
+extern int _errors, _warnings;
+extern bool _show_warnings, _annotate_todos, _translation;
 extern LanguagePackHeader _lang;
 
 #endif /* STRGEN_H */
