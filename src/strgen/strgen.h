@@ -18,10 +18,10 @@
 
 /** Container for the different cases of a string. */
 struct Case {
-	int caseidx;        ///< The index of the case.
+	uint8_t caseidx;       ///< The index of the case.
 	std::string string; ///< The translation of the case.
 
-	Case(int caseidx, const std::string &string);
+	Case(uint8_t caseidx, const std::string &string);
 };
 
 /** Information about a single string. */
@@ -30,10 +30,10 @@ struct LangString {
 	std::string english;    ///< English text.
 	std::string translated; ///< Translated text.
 	size_t index;           ///< The index in the language file.
-	int line;               ///< Line of string in source-file.
+	size_t line;            ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
 
-	LangString(const std::string &name, const std::string &english, size_t index, int line);
+	LangString(const std::string &name, const std::string &english, size_t index, size_t line);
 	void FreeTranslation();
 };
 
@@ -49,8 +49,8 @@ struct StringData {
 	void FreeTranslation();
 	void Add(std::shared_ptr<LangString> ls);
 	LangString *Find(const std::string &s);
-	uint Version() const;
-	uint CountInUse(uint tab) const;
+	uint32_t Version() const;
+	size_t CountInUse(size_t tab) const;
 };
 
 /** Helper for reading strings. */
@@ -89,7 +89,7 @@ struct HeaderWriter {
 	 * @param name     The name of the string.
 	 * @param stringid The ID of the string.
 	 */
-	virtual void WriteStringID(const std::string &name, int stringid) = 0;
+	virtual void WriteStringID(const std::string &name, size_t stringid) = 0;
 
 	/**
 	 * Finalise writing the file.
@@ -117,7 +117,7 @@ struct LanguageWriter {
 	 * @param buffer The buffer to write.
 	 * @param length The amount of byte to write.
 	 */
-	virtual void Write(const uint8_t *buffer, size_t length) = 0;
+	virtual void Write(const char *buffer, size_t length) = 0;
 
 	/**
 	 * Finalise writing the file.
@@ -127,7 +127,7 @@ struct LanguageWriter {
 	/** Especially destroy the subclasses. */
 	virtual ~LanguageWriter() = default;
 
-	virtual void WriteLength(uint length);
+	virtual void WriteLength(size_t length);
 	virtual void WriteLang(const StringData &data);
 };
 
@@ -155,8 +155,8 @@ void StrgenErrorI(const std::string &msg);
 char *ParseWord(char **buf);
 
 extern const char *_file;
-extern int _cur_line;
-extern int _errors, _warnings;
+extern size_t _cur_line;
+extern size_t _errors, _warnings;
 extern bool _show_warnings, _annotate_todos, _translation;
 extern LanguagePackHeader _lang;
 

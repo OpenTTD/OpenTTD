@@ -17,20 +17,20 @@ enum class CmdFlag : uint8_t {
 using CmdFlags = EnumBitSet<CmdFlag, uint8_t>;
 
 struct Buffer;
-typedef void (*ParseCmdProc)(Buffer *buffer, char *buf, int value);
+typedef void (*ParseCmdProc)(Buffer *buffer, char *buf, char32_t value);
 
 struct CmdStruct {
 	const char *cmd;
 	ParseCmdProc proc;
-	long value;
+	char32_t value;
 	uint8_t consumes;
-	std::optional<int> default_plural_offset;
+	std::optional<size_t> default_plural_offset;
 	CmdFlags flags;
 };
 
-extern void EmitSingleChar(Buffer *buffer, char *buf, int value);
-extern void EmitPlural(Buffer *buffer, char *buf, int value);
-extern void EmitGender(Buffer *buffer, char *buf, int value);
+extern void EmitSingleChar(Buffer *buffer, char *buf, char32_t value);
+extern void EmitPlural(Buffer *buffer, char *buf, char32_t value);
+extern void EmitGender(Buffer *buffer, char *buf, char32_t value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */
@@ -159,13 +159,13 @@ static const CmdStruct _cmd_structs[] = {
 
 /** Description of a plural form */
 struct PluralForm {
-	int plural_count;        ///< The number of plural forms
+	size_t plural_count;     ///< The number of plural forms
 	const char *description; ///< Human readable description of the form
 	const char *names;       ///< Plural names
 };
 
 /** The maximum number of plurals. */
-static const int MAX_PLURALS = 5;
+static const size_t MAX_PLURALS = 5;
 
 /** All plural forms used */
 static const PluralForm _plural_forms[] = {

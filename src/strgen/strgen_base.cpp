@@ -23,29 +23,29 @@
 static bool _translated;              ///< Whether the current language is not the master language
 bool _translation;                    ///< Is the current file actually a translation or not
 const char *_file = "(unknown file)"; ///< The filename of the input, so we can refer to it in errors/warnings
-int _cur_line;                        ///< The current line we're parsing in the input file
-int _errors, _warnings;
+size_t _cur_line;                     ///< The current line we're parsing in the input file
+size_t _errors, _warnings;
 bool _show_warnings = false, _annotate_todos = false;
 LanguagePackHeader _lang;             ///< Header information about a language.
 static const char *_cur_ident;
 static ParsedCommandStruct _cur_pcs;
-static int _cur_argidx;
+static size_t _cur_argidx;
 
 struct ParsedCommandString {
 	const CmdStruct *cmd = nullptr;
 	std::string param;
-	std::optional<int> argno;
-	std::optional<int> casei;
+	std::optional<size_t> argno;
+	std::optional<uint8_t> casei;
 };
 static ParsedCommandString ParseCommandString(const char **str);
-static int TranslateArgumentIdx(int arg, int offset = 0);
+static size_t TranslateArgumentIdx(size_t arg, size_t offset = 0);
 
 /**
  * Create a new case.
  * @param caseidx The index of the case.
  * @param string  The translation of the case.
  */
-Case::Case(int caseidx, const std::string &string) :
+Case::Case(uint8_t caseidx, const std::string &string) :
 		caseidx(caseidx), string(string)
 {
 }
@@ -57,7 +57,7 @@ Case::Case(int caseidx, const std::string &string) :
  * @param index   The index in the string table.
  * @param line    The line this string was found on.
  */
-LangString::LangString(const std::string &name, const std::string &english, size_t index, int line) :
+LangString::LangString(const std::string &name, const std::string &english, size_t index, size_t line) :
 		name(name), english(english), index(index), line(line)
 {
 }
@@ -118,7 +118,7 @@ LangString *StringData::Find(const std::string &s)
  * @param s    The string hash.
  * @return The new hash.
  */
-static uint VersionHashStr(uint hash, const char *s)
+static uint32_t VersionHashStr(uint32_t hash, const char *s)
 {
 	for (; *s != '\0'; s++) {
 		hash = std::rotl(hash, 3) ^ *s;
@@ -131,9 +131,9 @@ static uint VersionHashStr(uint hash, const char *s)
  * Make a hash of the file to get a unique "version number"
  * @return The version number.
  */
-uint StringData::Version() const
+uint32_t StringData::Version() const
 {
-	uint hash = 0;
+	uint32_t hash = 0;
 
 	for (size_t i = 0; i < this->max_strings; i++) {
 		const LangString *ls = this->strings[i].get();
@@ -162,29 +162,29 @@ uint StringData::Version() const
  * Count the number of tab elements that are in use.
  * @param tab The tab to count the elements of.
  */
-uint StringData::CountInUse(uint tab) const
+size_t StringData::CountInUse(size_t tab) const
 {
-	int i;
-	for (i = TAB_SIZE; --i >= 0;) if (this->strings[(tab * TAB_SIZE) + i] != nullptr) break;
-	return i + 1;
+	size_t count = TAB_SIZE;
+	while (count > 0 && this->strings[(tab * TAB_SIZE) + count - 1] == nullptr) --count;
+	return count;
 }
 
 /** The buffer for writing a single string. */
-struct Buffer : std::vector<uint8_t> {
+struct Buffer : std::string {
 	/**
 	 * Convenience method for adding a byte.
 	 * @param value The value to add.
 	 */
 	void AppendByte(uint8_t value)
 	{
-		this->push_back(value);
+		this->push_back(static_cast<char>(value));
 	}
 
 	/**
 	 * Add an Unicode character encoded in UTF-8 to the buffer.
 	 * @param value The character to add.
 	 */
-	void AppendUtf8(uint32_t value)
+	void AppendUtf8(char32_t value)
 	{
 		if (value < 0x80) {
 			this->push_back(value);
@@ -201,14 +201,14 @@ struct Buffer : std::vector<uint8_t> {
 			this->push_back(0x80 + GB(value,  6, 6));
 			this->push_back(0x80 + GB(value,  0, 6));
 		} else {
-			StrgenWarning("Invalid unicode value U+0x{:X}", value);
+			StrgenWarning("Invalid unicode value U+{:04X}", static_cast<uint32_t>(value));
 		}
 	}
 };
 
 static size_t Utf8Validate(const char *s)
 {
-	uint32_t c;
+	char32_t c;
 
 	if (!HasBit(s[0], 7)) {
 		/* 1 byte */
@@ -230,7 +230,7 @@ static size_t Utf8Validate(const char *s)
 	return 0;
 }
 
-void EmitSingleChar(Buffer *buffer, char *buf, int value)
+void EmitSingleChar(Buffer *buffer, char *buf, char32_t value)
 {
 	if (*buf != '\0') StrgenWarning("Ignoring trailing letters in command");
 	buffer->AppendUtf8(value);
@@ -238,19 +238,19 @@ void EmitSingleChar(Buffer *buffer, char *buf, int value)
 
 /* The plural specifier looks like
  * {NUM} {PLURAL <ARG#> passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
-static std::pair<std::optional<int>, std::optional<int>> ParseRelNum(char **buf)
+static std::pair<std::optional<size_t>, std::optional<size_t>> ParseRelNum(char **buf)
 {
 	const char *s = *buf;
 	char *end;
 
 	while (*s == ' ' || *s == '\t') s++;
-	int v = std::strtol(s, &end, 0);
+	size_t v = std::strtoul(s, &end, 0);
 	if (end == s) return {};
-	std::optional<int> offset;
+	std::optional<size_t> offset;
 	if (*end == ':') {
 		/* Take the Nth within */
 		s = end + 1;
-		offset = std::strtol(s, &end, 0);
+		offset = std::strtoul(s, &end, 0);
 		if (end == s) return {};
 	}
 	*buf = end;
@@ -294,28 +294,28 @@ char *ParseWord(char **buf)
 
 /* This is encoded like
  *  CommandByte <ARG#> <NUM> {Length of each string} {each string} */
-static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words, uint nw)
+static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words, size_t nw)
 {
 	/* Maximum word length in bytes, excluding trailing NULL. */
-	constexpr uint MAX_WORD_LENGTH = UINT8_MAX - 2;
+	constexpr size_t MAX_WORD_LENGTH = UINT8_MAX - 2;
 
-	buffer->AppendByte(nw);
-	for (uint i = 0; i < nw; i++) {
+	buffer->AppendByte(static_cast<uint8_t>(nw));
+	for (size_t i = 0; i < nw; i++) {
 		size_t len = strlen(words[i]) + 1;
 		if (len >= UINT8_MAX) StrgenFatal("WordList {}/{} string '{}' too long, max bytes {}", i + 1, nw, words[i], MAX_WORD_LENGTH);
 		buffer->AppendByte(static_cast<uint8_t>(len));
 	}
-	for (uint i = 0; i < nw; i++) {
-		for (uint j = 0; words[i][j] != '\0'; j++) buffer->AppendByte(words[i][j]);
+	for (size_t i = 0; i < nw; i++) {
+		buffer->append(words[i]);
 		buffer->AppendByte(0);
 	}
 }
 
-void EmitPlural(Buffer *buffer, char *buf, int)
+void EmitPlural(Buffer *buffer, char *buf, char32_t)
 {
-	int expected = _plural_forms[_lang.plural_form].plural_count;
+	size_t expected = _plural_forms[_lang.plural_form].plural_count;
 	std::vector<const char *> words(std::max(expected, MAX_PLURALS), nullptr);
-	int nw = 0;
+	size_t nw = 0;
 
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
 	auto [argidx, offset] = ParseRelNum(&buf);
@@ -361,11 +361,11 @@ void EmitPlural(Buffer *buffer, char *buf, int)
 
 	buffer->AppendUtf8(SCC_PLURAL_LIST);
 	buffer->AppendByte(_lang.plural_form);
-	buffer->AppendByte(TranslateArgumentIdx(*argidx, *offset));
+	buffer->AppendByte(static_cast<uint8_t>(TranslateArgumentIdx(*argidx, *offset)));
 	EmitWordList(buffer, words, nw);
 }
 
-void EmitGender(Buffer *buffer, char *buf, int)
+void EmitGender(Buffer *buffer, char *buf, char32_t)
 {
 	if (buf[0] == '=') {
 		buf++;
@@ -391,7 +391,7 @@ void EmitGender(Buffer *buffer, char *buf, int)
 			StrgenFatal("Command '{}' can't have a gender", cmd == nullptr ? "<empty>" : cmd->cmd);
 		}
 
-		uint nw;
+		size_t nw;
 		for (nw = 0; nw < MAX_NUM_GENDERS; nw++) {
 			words[nw] = ParseWord(&buf);
 			if (words[nw] == nullptr) break;
@@ -400,12 +400,12 @@ void EmitGender(Buffer *buffer, char *buf, int)
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		buffer->AppendUtf8(SCC_GENDER_LIST);
-		buffer->AppendByte(TranslateArgumentIdx(*argidx, *offset));
+		buffer->AppendByte(static_cast<uint8_t>(TranslateArgumentIdx(*argidx, *offset)));
 		EmitWordList(buffer, words, nw);
 	}
 }
 
-static const CmdStruct *FindCmd(const char *s, int len)
+static const CmdStruct *FindCmd(const char *s, size_t len)
 {
 	for (const auto &cs : _cmd_structs) {
 		if (strncmp(cs.cmd, s, len) == 0 && cs.cmd[len] == '\0') return &cs;
@@ -421,7 +421,7 @@ static uint ResolveCaseName(const char *str, size_t len)
 	memcpy(case_str, str, len);
 	case_str[len] = '\0';
 
-	uint8_t case_idx = _lang.GetCaseIndex(case_str);
+	uint case_idx = _lang.GetCaseIndex(case_str);
 	if (case_idx >= MAX_NUM_CASES) StrgenFatal("Invalid case-name '{}'", case_str);
 	return case_idx + 1;
 }
@@ -514,7 +514,7 @@ ParsedCommandStruct ExtractCommandString(const char *s, bool)
 {
 	ParsedCommandStruct p;
 
-	int argidx = 0;
+	size_t argidx = 0;
 	for (;;) {
 		/* read until next command from a. */
 		auto cs = ParseCommandString(&s);
@@ -526,7 +526,7 @@ ParsedCommandStruct ExtractCommandString(const char *s, bool)
 
 		if (cs.cmd->consumes > 0) {
 			if (cs.argno.has_value()) argidx = *cs.argno;
-			if ((uint)argidx >= p.consuming_commands.max_size()) StrgenFatal("invalid param idx {}", argidx);
+			if (argidx >= p.consuming_commands.max_size()) StrgenFatal("invalid param idx {}", argidx);
 			if (p.consuming_commands[argidx] != nullptr && p.consuming_commands[argidx] != cs.cmd) StrgenFatal("duplicate param idx {}", argidx);
 
 			p.consuming_commands[argidx++] = cs.cmd;
@@ -595,7 +595,7 @@ static bool CheckCommandsMatch(const char *a, const char *b, const char *name)
 
 	/* if we reach here, all non consumer commands match up.
 	 * Check if the non consumer commands match up also. */
-	for (uint i = 0; i < templ.consuming_commands.max_size(); i++) {
+	for (size_t i = 0; i < templ.consuming_commands.max_size(); i++) {
 		if (TranslateCmdForCompare(templ.consuming_commands[i]) != lang.consuming_commands[i]) {
 			StrgenWarning("{}: Param idx #{} '{}' doesn't match with template command '{}'", name, i,
 				lang.consuming_commands[i]  == nullptr ? "<empty>" : TranslateCmdForCompare(lang.consuming_commands[i])->cmd,
@@ -642,7 +642,7 @@ void StringReader::HandleString(char *str)
 				c == 0x200B || // Zero width space
 				(c >= 0xE000 && c <= 0xF8FF) || // Private range
 				(c >= 0xFFF0 && c <= 0xFFFF)) { // Specials range
-			StrgenFatal("Unwanted UTF-8 character U+{:04X} in sequence '{}'", (int)c, s);
+			StrgenFatal("Unwanted UTF-8 character U+{:04X} in sequence '{}'", static_cast<uint32_t>(c), s);
 		}
 
 		tmp += len;
@@ -751,22 +751,20 @@ void StringReader::ParseFile()
  */
 void HeaderWriter::WriteHeader(const StringData &data)
 {
-	int last = 0;
+	size_t last = 0;
 	for (size_t i = 0; i < data.max_strings; i++) {
 		if (data.strings[i] != nullptr) {
-			this->WriteStringID(data.strings[i]->name, (int)i);
-			last = (int)i;
+			this->WriteStringID(data.strings[i]->name, i);
+			last = i;
 		}
 	}
 
 	this->WriteStringID("STR_LAST_STRINGID", last);
 }
 
-static int TranslateArgumentIdx(int argidx, int offset)
+static size_t TranslateArgumentIdx(size_t argidx, size_t offset)
 {
-	int sum;
-
-	if (argidx < 0 || (uint)argidx >= _cur_pcs.consuming_commands.max_size()) {
+	if (argidx >= _cur_pcs.consuming_commands.max_size()) {
 		StrgenFatal("invalid argidx {}", argidx);
 	}
 	const CmdStruct *cs = _cur_pcs.consuming_commands[argidx];
@@ -778,7 +776,8 @@ static int TranslateArgumentIdx(int argidx, int offset)
 		StrgenFatal("no command for this argidx {}", argidx);
 	}
 
-	for (int i = sum = 0; i < argidx; i++) {
+	size_t sum = 0;
+	for (size_t i = 0; i < argidx; i++) {
 		cs = _cur_pcs.consuming_commands[i];
 
 		sum += (cs != nullptr) ? cs->consumes : 1;
@@ -790,7 +789,7 @@ static int TranslateArgumentIdx(int argidx, int offset)
 static void PutArgidxCommand(Buffer *buffer)
 {
 	buffer->AppendUtf8(SCC_ARG_INDEX);
-	buffer->AppendByte(TranslateArgumentIdx(_cur_argidx));
+	buffer->AppendByte(static_cast<uint8_t>(TranslateArgumentIdx(_cur_argidx)));
 }
 
 static void PutCommandString(Buffer *buffer, const char *str)
@@ -800,7 +799,7 @@ static void PutCommandString(Buffer *buffer, const char *str)
 	while (*str != '\0') {
 		/* Process characters as they are until we encounter a { */
 		if (*str != '{') {
-			buffer->AppendByte(*str++);
+			buffer->append(1, *str++);
 			continue;
 		}
 
@@ -836,19 +835,19 @@ static void PutCommandString(Buffer *buffer, const char *str)
  * Write the length as a simple gamma.
  * @param length The number to write.
  */
-void LanguageWriter::WriteLength(uint length)
+void LanguageWriter::WriteLength(size_t length)
 {
 	char buffer[2];
-	int offs = 0;
+	size_t offs = 0;
 	if (length >= 0x4000) {
 		StrgenFatal("string too long");
 	}
 
 	if (length >= 0xC0) {
-		buffer[offs++] = (length >> 8) | 0xC0;
+		buffer[offs++] = static_cast<char>(static_cast<uint8_t>((length >> 8) | 0xC0));
 	}
-	buffer[offs++] = length & 0xFF;
-	this->Write((uint8_t*)buffer, offs);
+	buffer[offs++] = static_cast<char>(static_cast<uint8_t>(length & 0xFF));
+	this->Write(buffer, offs);
 }
 
 /**
@@ -857,14 +856,14 @@ void LanguageWriter::WriteLength(uint length)
  */
 void LanguageWriter::WriteLang(const StringData &data)
 {
-	std::vector<uint> in_use;
+	std::vector<size_t> in_use;
 	for (size_t tab = 0; tab < data.tabs; tab++) {
-		uint n = data.CountInUse((uint)tab);
+		size_t n = data.CountInUse(tab);
 
 		in_use.push_back(n);
-		_lang.offsets[tab] = TO_LE16(n);
+		_lang.offsets[tab] = TO_LE16(static_cast<uint16_t>(n));
 
-		for (uint j = 0; j != in_use[tab]; j++) {
+		for (size_t j = 0; j != in_use[tab]; j++) {
 			const LangString *ls = data.strings[(tab * TAB_SIZE) + j].get();
 			if (ls != nullptr && ls->translated.empty()) _lang.missing++;
 		}
@@ -879,7 +878,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 	Buffer buffer;
 
 	for (size_t tab = 0; tab < data.tabs; tab++) {
-		for (uint j = 0; j != in_use[tab]; j++) {
+		for (size_t j = 0; j != in_use[tab]; j++) {
 			const LangString *ls = data.strings[(tab * TAB_SIZE) + j].get();
 			const std::string *cmdp;
 
@@ -898,8 +897,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 					StrgenWarning("'{}' is untranslated", ls->name);
 				}
 				if (_annotate_todos) {
-					const char *s = "<TODO> ";
-					while (*s != '\0') buffer.AppendByte(*s++);
+					buffer.append("<TODO> ");
 				}
 			}
 
@@ -920,20 +918,20 @@ void LanguageWriter::WriteLang(const StringData &data)
 				 * <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 				 * Each LEN is printed using 2 bytes in big endian order. */
 				buffer.AppendUtf8(SCC_SWITCH_CASE);
-				buffer.AppendByte((uint8_t)ls->translated_cases.size());
+				buffer.AppendByte(static_cast<uint8_t>(ls->translated_cases.size()));
 
 				/* Write each case */
 				for (const Case &c : ls->translated_cases) {
 					buffer.AppendByte(c.caseidx);
 					/* Make some space for the 16-bit length */
-					uint pos = (uint)buffer.size();
+					size_t pos = buffer.size();
 					buffer.AppendByte(0);
 					buffer.AppendByte(0);
 					/* Write string */
 					PutCommandString(&buffer, c.string.c_str());
 					buffer.AppendByte(0); // terminate with a zero
 					/* Fill in the length */
-					uint size = (uint)buffer.size() - (pos + 2);
+					size_t size = buffer.size() - (pos + 2);
 					buffer[pos + 0] = GB(size, 8, 8);
 					buffer[pos + 1] = GB(size, 0, 8);
 				}
@@ -941,7 +939,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 
 			if (!cmdp->empty()) PutCommandString(&buffer, cmdp->c_str());
 
-			this->WriteLength((uint)buffer.size());
+			this->WriteLength(buffer.size());
 			this->Write(buffer.data(), buffer.size());
 			buffer.clear();
 		}
