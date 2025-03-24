@@ -130,11 +130,6 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 	}
 }
 
-static RoadTypes GetMaskForRoadTramType(RoadTramType rtt)
-{
-	return rtt == RTT_TRAM ? _roadtypes_type : ~_roadtypes_type;
-}
-
 /**
  * Test if any buildable RoadType is available for a company.
  * @param company the company in question

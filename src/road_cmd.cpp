@@ -53,13 +53,9 @@ typedef std::vector<RoadVehicle *> RoadVehicleList;
 
 RoadTypeInfo _roadtypes[ROADTYPE_END];
 std::vector<RoadType> _sorted_roadtypes; ///< Sorted list of road types.
-RoadTypes _roadtypes_hidden_mask;
-
-/**
- * Bitmap of road/tram types.
- * Bit if set if a roadtype is tram.
- */
-RoadTypes _roadtypes_type;
+RoadTypes _roadtypes_hidden_mask; ///< Bitset of hidden roadtypes.
+RoadTypes _roadtypes_road; ///< Bitset of road roadtypes.
+RoadTypes _roadtypes_tram; ///< Bitset of tram roadtypes.
 
 /**
  * Reset all road type information to its default values.
@@ -72,7 +68,8 @@ void ResetRoadTypes()
 	std::fill(insert, std::end(_roadtypes), RoadTypeInfo{});
 
 	_roadtypes_hidden_mask = ROADTYPES_NONE;
-	_roadtypes_type        = ROADTYPES_TRAM;
+	_roadtypes_road = ROADTYPES_ROAD;
+	_roadtypes_tram = ROADTYPES_TRAM;
 }
 
 void ResolveRoadTypeGUISprites(RoadTypeInfo *rti)
@@ -159,9 +156,9 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 
 			/* Set bitmap of road/tram types */
 			if (rtt == RTT_TRAM) {
-				SetBit(_roadtypes_type, rt);
+				SetBit(_roadtypes_tram, rt);
 			} else {
-				ClrBit(_roadtypes_type, rt);
+				SetBit(_roadtypes_road, rt);
 			}
 
 			return rt;

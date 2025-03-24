@@ -190,16 +190,26 @@ public:
 	}
 };
 
-extern RoadTypes _roadtypes_type;
+/**
+ * Get the mask for road types of the given RoadTramType.
+ * @param rtt RoadTramType.
+ * @return Mask of road types for RoadTramType.
+ */
+inline RoadTypes GetMaskForRoadTramType(RoadTramType rtt)
+{
+	extern RoadTypes _roadtypes_road;
+	extern RoadTypes _roadtypes_tram;
+	return rtt == RTT_ROAD ? _roadtypes_road : _roadtypes_tram;
+}
 
 inline bool RoadTypeIsRoad(RoadType roadtype)
 {
-	return !HasBit(_roadtypes_type, roadtype);
+	return HasBit(GetMaskForRoadTramType(RTT_ROAD), roadtype);
 }
 
 inline bool RoadTypeIsTram(RoadType roadtype)
 {
-	return HasBit(_roadtypes_type, roadtype);
+	return HasBit(GetMaskForRoadTramType(RTT_TRAM), roadtype);
 }
 
 inline RoadTramType GetRoadTramType(RoadType roadtype)
