@@ -173,7 +173,7 @@ void FileStringReader::HandlePragma(char *str)
 	}
 }
 
-bool CompareFiles(const std::filesystem::path &path1, const std::filesystem::path &path2)
+static bool CompareFiles(const std::filesystem::path &path1, const std::filesystem::path &path2)
 {
 	/* Check for equal size, but ignore the error code for cases when a file does not exist. */
 	std::error_code error_code;
