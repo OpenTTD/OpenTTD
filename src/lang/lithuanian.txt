@@ -3725,7 +3725,6 @@ STR_INVALID_VEHICLE                                             :<neteisinga tra
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tikrinami plėtiniai
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Nuskaitomi plėtiniai. Tai gali užtrukti, priklausomai nuo kiekio...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Nuskaityti {NUM} plėtin{P ys iai ių} iš {NUM}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Ieškoma archyvuose
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}

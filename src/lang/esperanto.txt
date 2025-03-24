@@ -3489,7 +3489,6 @@ STR_INVALID_VEHICLE                                             :<malvalida vetu
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Trovas NewGRF-oj
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Trovas NewGRF-oj. Dependa de la sumo ĝi povas esti longetempe...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF-o{P "" j} trovis da estimata {NUM} NewGRF-o{P "" j}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Trovas por arĥivoj
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ŝildolisto - {COMMA} ŝildo{P "" j}

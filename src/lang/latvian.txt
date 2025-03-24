@@ -3663,7 +3663,6 @@ STR_INVALID_VEHICLE                                             :<nederīgs tran
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skenē NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skenē NewGRF. Atkarībā no apjoma, tas var aizņemt kādu brīdi...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF noskenēja apmēram {NUM} NewGRF
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skenē arhīvus
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zīmju saraksts - {COMMA} zīm{P e es ju}

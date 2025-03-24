@@ -3640,7 +3640,6 @@ STR_INVALID_VEHICLE                                             :<neplatné vozi
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skenovanie NewGRFov
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skenovanie NewGRFs. Môže chvíľu trvať v závislosti od množstva...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P o a ""} má naskenované z odhadovaných {NUM} NewGRF{P o a ""}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skenovanie archívov
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}

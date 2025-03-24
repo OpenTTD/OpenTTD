@@ -3721,7 +3721,6 @@ STR_INVALID_VEHICLE                                             :<érvénytelen 
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ek beolvasása
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF-ek beolvasása. Mennyiségtől függően eltarthat egy ideig...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF beolvasva kb. {NUM} NewGRF közül
-STR_NEWGRF_SCAN_ARCHIVES                                        :Archív fájlok keresése
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)

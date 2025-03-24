@@ -2023,9 +2023,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :停用
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :最高放大倍數：{STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :定義視野可達到的最高放大倍數。請注意：較高的值需要較多記憶體以保持遊戲運作暢順。
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :畫面的最高放大倍數。注意：提高放大倍數會增加記憶體需求
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最遠縮小倍數：{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :定義視野可達到的最高縮小倍數。請注意：較高的值可能會令遊戲速度變慢。
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :畫面的最高縮小倍數，過度的縮放等級會令遊戲速度變慢
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
@@ -3119,7 +3119,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}選擇�
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}土地資訊
-STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}將區塊置於畫面正中央。按住 <Ctrl> 點選可於區塊位置開啟新視野視窗
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}將區塊置於畫面正中央。按住 <Ctrl> 點選可於區塊位置開啟新檢視視窗
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}整地費用：{LTBLUE}不適用
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}整地費用：{RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}清除時獲得收入：{LTBLUE}{CURRENCY_LONG}
@@ -3657,7 +3657,6 @@ STR_INVALID_VEHICLE                                             :<不明車輛>
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}正在掃描 NewGRF 套件
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}正在掃描 NewGRF 套件。如 NewGRF 套件較多，可能需要較長時間完成...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}估計共有 {1:NUM} 個 NewGRF 套件，現已掃描 {0:NUM} 個...
-STR_NEWGRF_SCAN_ARCHIVES                                        :審視檔案中
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
@@ -3666,7 +3665,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}切換�
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}編輯標誌文字
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}將號誌置於畫面正中央。按住 <Ctrl> 點選可於號誌位置開啟新視野視窗
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}將號誌置於畫面正中央。按住 <Ctrl> 點選可於號誌位置開啟新檢視視窗
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}前往下個標誌
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前往上個標誌
 
@@ -3677,7 +3676,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}市鎮�
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 無 -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (城市){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}市鎮名稱 - 點選名稱可將市鎮置於畫面正中央。按住 <Ctrl> 點選可於市鎮位置開啟新視野視窗
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}市鎮名稱 - 點選名稱可將市鎮置於畫面正中央。按住 <Ctrl> 點選可於市鎮位置開啟新檢視視窗
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 
 # Town view window
@@ -3696,7 +3695,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}該市�
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}該市鎮每隔 {ORANGE}{UNITS_DAYS_OR_SECONDS}{BLACK}擴張一次（正接受資助）
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}市鎮{RED}不在{BLACK}成長
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}市鎮噪音限制：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市鎮置於畫面正中央。按住 <Ctrl> 點選可於市鎮位置開啟新視野視窗
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}將市鎮置於畫面正中央。按住 <Ctrl> 點選可於市鎮位置開啟新檢視視窗
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}顯示地方政府資訊
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改市鎮名稱
@@ -3753,7 +3752,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- 當前無目標 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}點選目標可將有關工業或市鎮又或是方格置於畫面正中央。按下 <Ctrl> 點選目標可於有關工業或市鎮又或是方格位置開啟新視野視窗
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}點選目標可將有關工業或市鎮又或是方格置於畫面正中央。按下 <Ctrl> 點選目標可於有關工業或市鎮又或是方格位置開啟新檢視視窗
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}問題
@@ -3789,7 +3788,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}將 {ST
 STR_SUBSIDIES_NONE                                              :{ORANGE}- 無 -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已獲補助的服務：
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW}（{COMPANY}{YELLOW}，{STRING}）
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業或市鎮置於畫面正中央。按住 <Ctrl> 點選可於工業或市鎮位置開啟新視野視窗
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業或市鎮置於畫面正中央。按住 <Ctrl> 點選可於工業或市鎮位置開啟新檢視視窗
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :在 {DATE_SHORT} 之前
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :剩餘時間︰{UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :直到{DATE_SHORT}
@@ -3809,7 +3808,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}前往�
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}無效的目標參照
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}車站名稱 - 點選名稱可將車站置於畫面正中央。按住 <Ctrl> 點選可於車站位置開啟新視野視窗
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}車站名稱 - 點選名稱可將車站置於畫面正中央。按住 <Ctrl> 點選可於車站位置開啟新檢視視窗
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}按住 <Ctrl> 點選可選擇多個項目
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - 車站 {COMMA} 座
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3875,7 +3874,7 @@ STR_CARGO_RATING_VERY_GOOD                                      :十分不錯
 STR_CARGO_RATING_EXCELLENT                                      :極佳
 STR_CARGO_RATING_OUTSTANDING                                    :傑出
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}將車站置於畫面正中央。按住 <Ctrl> 點選可於車站位置開啟新視野視窗
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}將車站置於畫面正中央。按住 <Ctrl> 點選可於車站位置開啟新檢視視窗
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}修改車站名稱
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}顯示所有指令內包含這個車站的列車
@@ -3890,9 +3889,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}防止�
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將號誌站置於畫面正中央。按住 <Ctrl> 點選可於號誌站位置開啟新視野視窗
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}將號誌站置於畫面正中央。按住 <Ctrl> 點選可於號誌站位置開啟新檢視視窗
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}修改號誌站名稱
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}將浮標置於畫面正中央。按住 <Ctrl> 點選可於浮標位置開啟新視野視窗
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}將浮標置於畫面正中央。按住 <Ctrl> 點選可於浮標位置開啟新檢視視窗
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}修改浮標名稱
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}編輯號誌站名稱
@@ -4016,7 +4015,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}、{STRING}、{STRING}……（尚有 {NUM} 個未顯示）
-STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新視野視窗
+STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新檢視視窗
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接受貨物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}產出的貨物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :所有貨物種類
@@ -4027,7 +4026,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月產量：
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}上分鐘產量︰
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (運送了 {COMMA}%)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新視野視窗
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新檢視視窗
 STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}產量圖表
 STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}顯示工業產量歷史圖表
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}產出等級：{YELLOW}{COMMA}%
@@ -4299,10 +4298,10 @@ STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}購買�
 STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}購買一架相同的飛機。按下此鈕之後再點選機棚內或外的飛機。按住 <Ctrl> 點選可共享指令。按住 <Shift> 則可顯示預估成本
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵道機廠置於畫面正中央。按住 <Ctrl> 點選可於鐵道機廠位置開啟新視野視窗
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車廠置於畫面正中央。按住 <Ctrl> 點選可於車廠位置開啟新視野視窗
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}將船塢置於畫面正中央。按住 <Ctrl> 點選可於船塢位置開啟新視野視窗
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機棚置於畫面正中央。按住 <Ctrl> 點選可於機棚位置開啟新視野視窗
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}將鐵道機廠置於畫面正中央。按住 <Ctrl> 點選可於鐵道機廠位置開啟新檢視視窗
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}將車廠置於畫面正中央。按住 <Ctrl> 點選可於車廠位置開啟新檢視視窗
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}將船塢置於畫面正中央。按住 <Ctrl> 點選可於船塢位置開啟新檢視視窗
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}將機棚置於畫面正中央。按住 <Ctrl> 點選可於機棚位置開啟新檢視視窗
 
 ###length VEHICLE_TYPES
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}取得所有指令內有這個機廠的列車
@@ -4406,10 +4405,10 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. 按�
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}將列車置於畫面正中央。雙擊將會使視野跟隨列車。按住 <Ctrl> 點選可於列車開啟新視野視窗
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}將車輛置於畫面正中央。雙擊將會使視野跟隨車輛。按住 <Ctrl> 點選可於車輛位置開啟新視野視窗
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}將船舶置於畫面正中央。雙擊將會使視野跟隨船舶。按住 <Ctrl> 點選可於船舶位置開啟新視野視窗
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}將飛機置於畫面正中央。雙擊將會使視野跟隨飛機。按住 <Ctrl> 點選可於飛機位置開啟新視野視窗
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}將列車置於畫面正中央。雙擊將會使主畫面跟隨列車。按住 <Ctrl> 點選可於列車開啟新檢視視窗
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}將車輛置於畫面正中央。雙擊將會使主畫面跟隨車輛。按住 <Ctrl> 點選可於車輛位置開啟新檢視視窗
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}將船舶置於畫面正中央。雙擊將會使主畫面跟隨船舶。按住 <Ctrl> 點選可於船舶位置開啟新檢視視窗
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}將飛機置於畫面正中央。雙擊將會使主畫面跟隨飛機。按住 <Ctrl> 點選可於飛機位置開啟新檢視視窗
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}將列車送回機廠，按住 <Ctrt> 點選機廠則只做維護
@@ -4426,7 +4425,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}購買�
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}強制列車前進，不等待號誌允許
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}倒轉列車方向
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}強制車輛掉頭
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}將調度任務終點置於畫面正中央。按住 <Ctrl> 點選可於調度任務終點位置開啟新視野視窗
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}將任務目的地置於畫面正中央。按住 <Ctrl> 點選可於任務目標位置開啟新檢視視窗
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}改裝列車以運輸不同的貨物種類

@@ -3657,7 +3657,6 @@ STR_INVALID_VEHICLE                                             :<ongeldig voert
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen van NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF's worden ingelezen. Afhankelijk van het aantal kan dit even duren...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} gescand van een geschatte {NUM} NewGRF{P "" s}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Zoeken naar archieven
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjeslijst - {COMMA} bordje{P "" s}

@@ -3753,7 +3753,6 @@ STR_INVALID_VEHICLE                                             :<невірни
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Шукаю NewGRF'и
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Шукаю NewGRF'и. Якщо їх багато, це може зайняти деякий час...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF проскановано з {NUM} NewGRF
-STR_NEWGRF_SCAN_ARCHIVES                                        :Шукаю архіви
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}

@@ -2755,7 +2755,6 @@ STR_INVALID_VEHICLE                                             :وسیله نق
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}چک کردن برای فایل های NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}چک کردن فایل های NewGRF. زمان انجام، به تعداد فایلها بسته است...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" ها} از حدود تعداد {NUM} NewGRF{P "" ها}
-STR_NEWGRF_SCAN_ARCHIVES                                        :جستجوی در بایگانی
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}لیست امضاء - {COMMA} امضاء{P "" "ها"}

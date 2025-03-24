@@ -3080,7 +3080,6 @@ STR_INVALID_VEHICLE                                             :<ongeldige voer
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skandeer NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skandeer NewGRFs. Na mate van die hoeveelheid, kan dit 'n tydtjie neem
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} van omtrend {NUM} NewGRF{P "" s} is geskandeer
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skandering van argiewe
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}

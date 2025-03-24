@@ -3239,7 +3239,6 @@ STR_INVALID_VEHICLE                                             :<vehiculum irri
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Fasciculos NewGRF inspiciens
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Fasciculos NewGRF inspiciens. Fortasse diu erit si multi fasciculi adsunt...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF inspecta ex fere {NUM} NewGRF
-STR_NEWGRF_SCAN_ARCHIVES                                        :Fasciculos compressos inspiciens
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Index Signorum - {COMMA} Sign{P um a}

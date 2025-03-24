@@ -3750,7 +3750,6 @@ STR_INVALID_VEHICLE                                             :<μη έγκυ�
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Σαρώνονται ΝewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Σαρώνονται τα NewGRF. Ανάλογα με το μέγεθος, αυτό μπορεί να απαιτήσει κάποιο χρόνο...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF σαρώθηκαν από {NUM} υπολογισμένα NewGRF
-STR_NEWGRF_SCAN_ARCHIVES                                        :Σάρωση για αρχεία
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα Πινακίδων - {COMMA} Πινακίδ{P α ες}

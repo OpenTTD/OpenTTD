@@ -3657,7 +3657,6 @@ STR_INVALID_VEHICLE                                             :<cerbyd annilys
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Yn sganio NewGRFau
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Yn sganio NewGRFau. Gall gymeryd peth amser yn ddibynnol ar eu nifer...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF wedi ei sganio allan o gyfanswm o {NUM} rhagdybiedig
-STR_NEWGRF_SCAN_ARCHIVES                                        :Sganio am archifau
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Rhestr Arwyddion - {COMMA} Arwydd

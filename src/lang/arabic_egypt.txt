@@ -2999,7 +2999,6 @@ STR_INVALID_VEHICLE                                             :<مركبه غ�
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}بحث اضافات جديدة
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}تحديث الاضافات. وقت البحث يعتمدعلى عدد الاضافات. من الممكن ان يستغرق وقتا اطول...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM}الاضافات الجديدة من {NUM}مجموع الاضافات
-STR_NEWGRF_SCAN_ARCHIVES                                        :البحث للارشيفات
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات - {COMMA} علامة

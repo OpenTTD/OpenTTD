@@ -2745,7 +2745,6 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industry tidak
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Imbasan NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Imbasan NewGRFs. Bergantung kepada jumlah, ini akan mengambil sedikit masa...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF diimbas daripada anggaran {NUM} NewGRF
-STR_NEWGRF_SCAN_ARCHIVES                                        :Mengimbas arkib
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Senarai Papan Tanda - {COMMA} Papan Tanda

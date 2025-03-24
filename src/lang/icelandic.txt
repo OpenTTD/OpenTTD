@@ -2841,7 +2841,6 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid indust
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanna NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanna NewGRF. Tíminn fer eftir fjölda...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF af sirka {NUM} skönnuð
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skanna eftir skjalasöfnum
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} Merki

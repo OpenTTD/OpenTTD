@@ -3658,7 +3658,6 @@ STR_INVALID_VEHICLE                                             :<veiculo invál
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Procurar NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Procurar NewGRFs. Dependendo da quantidade, isto pode demorar algum tempo...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} investigados num total estimado de {NUM} NewGRF{P "" s}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Procurar por arquivos
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Letreiros - {COMMA} Letreiro{P "" s}

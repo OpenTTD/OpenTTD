@@ -3630,7 +3630,6 @@ STR_INVALID_VEHICLE                                             :<невалид
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Търси NewGRF-и
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Търси NewGRF-и. Може да отнеме време, в зависимост от количеството...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" -и} сканирани от общо {NUM} NewGRF{P "" -и}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Търси за архиви
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}

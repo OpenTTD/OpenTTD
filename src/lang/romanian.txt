@@ -3604,7 +3604,6 @@ STR_INVALID_VEHICLE                                             :<vehicul nevali
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanez resursele NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Se scanează resursele NewGRF. În funcție de numărul acestora, această operație poate dura un timp...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} {P 0 resursă resurse "de resurse"} NewGRF scanat{P "ă" "e" "e"} din aproximativ {NUM} {P 0 resursă resurse "de resurse"} NewGRF disponibil{P "ă" "e" "e"}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Scanez pentru arhive
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne

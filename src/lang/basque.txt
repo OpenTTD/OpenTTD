@@ -2909,7 +2909,6 @@ STR_INVALID_VEHICLE                                             :<ibilgailu ezeg
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE} NewGRF berriak bilatzen.
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK} NewGRFak bilatzen. Zenbatekoaren arabera tartetxo baterako luza litzateke...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF eskaneatuak {NUM} NewGRF kopurutik kanpo
-STR_NEWGRF_SCAN_ARCHIVES                                        :Fitxategiak bilatzen
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seinale zerrenda - {COMMA} Seinaleak

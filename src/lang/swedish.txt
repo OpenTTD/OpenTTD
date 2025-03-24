@@ -3653,7 +3653,6 @@ STR_INVALID_VEHICLE                                             :<ogiltigt fordo
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannar NewGRFer
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannar NewGRFer. Beroende på antal kan det ta en stund...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" er} skannade utav uppskattningsvis {NUM} NewGRF{P "" er} totalt
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skannar efter arkiv
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} skylt{P "" ar}

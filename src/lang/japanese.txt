@@ -3423,7 +3423,6 @@ STR_INVALID_VEHICLE                                             :<無効な輸�
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFをスキャンしています
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFをスキャンしています。NewGRFの数によっては時間がかかります
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}総数{1:NUM}個中{0:NUM}個のNewGRFをスキャンしました
-STR_NEWGRF_SCAN_ARCHIVES                                        :アーカイブをスキャン中
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標識リスト - {COMMA}個の標識

@@ -2939,7 +2939,6 @@ STR_INVALID_VEHICLE                                             :<ugyldig køyre
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannar NewGRF-er
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannar NewGRF-er. Avhengig av antalet kan dette ta ei stund...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" -er} skanna, ut av {NUM} NewGRF{P "" -er} totalt
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skannar arkiv
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt{P "" er}

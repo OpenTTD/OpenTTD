@@ -3253,7 +3253,6 @@ STR_INVALID_VEHICLE                                             :<nepostojeće v
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Tražim NewGRFove
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Tražim NewGRFove. Ovisno o količini ovo može malo potrajati...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF skeniran iz procijenjenog {NUM} NewGRF
-STR_NEWGRF_SCAN_ARCHIVES                                        :Tražim arhive
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} znak{P "" a ova}

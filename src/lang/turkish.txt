@@ -3597,7 +3597,6 @@ STR_INVALID_VEHICLE                                             :<geçersiz ara�
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF'ler taranıyor
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF'ler taranıyor. Sayıya bağlı olarak bu işlem biraz zaman alabilir...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{1:NUM} NewGRF'den tahminen {0:NUM} NewGRF tarandı
-STR_NEWGRF_SCAN_ARCHIVES                                        :Arşivler taranıyor
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela

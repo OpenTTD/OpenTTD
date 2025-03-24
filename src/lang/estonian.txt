@@ -3638,7 +3638,6 @@ STR_INVALID_VEHICLE                                             :<kõlbmatu sõi
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF-ide skanneerimine
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRF-de skanneerimine. Olenevalt failide arvust võib selleks kuluda mõni aeg...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Skanneeritud {NUM} NewGRF{P "" i} {NUM} NewGRF-ist
-STR_NEWGRF_SCAN_ARCHIVES                                        :Arhiivide otsimine
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide register - {COMMA} silt{P "" i}

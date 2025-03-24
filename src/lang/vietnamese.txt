@@ -3635,7 +3635,6 @@ STR_INVALID_VEHICLE                                             :<p.tiện bất
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Đang Quét NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Đang quét các NewGRF. Thời gian hoàn tất phụ thuộc vào số lượng hiện có...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Đã quét được {NUM} NewGRF trong tổng số {NUM} NewGRF dự tính
-STR_NEWGRF_SCAN_ARCHIVES                                        :Đang quét tập tin nén
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh Sách Biển Hiệu - {COMMA} Biển Hiệu

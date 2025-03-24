@@ -2687,7 +2687,6 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ógildigur íd
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannar NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannar NewGRFs. Treytað av nøgdini kann hetta taka eina løtu...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} skannað{P ur ir} út av meting á {NUM} NewGRF{P "" s}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skannar eftir skjalagoymslum
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skelta yvirlit - {COMMA} Skelt{P i ir}

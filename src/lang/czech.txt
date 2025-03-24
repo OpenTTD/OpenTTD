@@ -3733,7 +3733,6 @@ STR_INVALID_VEHICLE                                             :<neplatné vozi
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Prohledávání grafik
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Prohledávám grafiky. Toto může chvíli trvat...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Prohledáno {NUM} grafik z {NUM}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Hledám archivy
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}

@@ -3290,7 +3290,6 @@ STR_INVALID_VEHICLE                                             :<כלי תחב�
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}סורק NewGRF-ים
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}סורק NewGRF-ים. כתלות בכמות זה עלול לארוך זמן מה...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" "-ים"} נסרק {P 0 "" "ו"} מתוך כ-{NUM} NewGRF{P "" "-ים"}
-STR_NEWGRF_SCAN_ARCHIVES                                        :סורק עבור ארכיונים
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות

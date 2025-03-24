@@ -3267,7 +3267,6 @@ STR_INVALID_VEHICLE                                             :<carbad mì-dhl
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}A' sganadh NewGRFan
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}A' sganadh NewGRFan. A' crochaidh air na tha dhiubh ann, dh'fhaoidte gun toir seo greis...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Chaidh {NUM} NewGRF{P "" "" an ""} a-mach à mu {NUM} NewGRF{P "" "" an ""} a sganadh
-STR_NEWGRF_SCAN_ARCHIVES                                        :A' sganadh airson tasglannan
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta nan sanasan - {COMMA} {P sanas shanas sanasan sanas}

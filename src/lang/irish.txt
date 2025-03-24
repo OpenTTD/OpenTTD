@@ -3286,7 +3286,6 @@ STR_INVALID_VEHICLE                                             :<feithicil neam
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFanna á scanadh
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFanna á scanadh. Ag brath ar an líon acu atá ann, seans go dtógfaidh sé tamall...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Scanadh {NUM} NewGRF as líon measta {NUM} NewGRF{P "" anna anna anna anna}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Cartlanna á scanadh
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta Comhartaí - {COMMA} {P Ch Ch Ch gC C}omhartha

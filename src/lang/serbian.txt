@@ -3686,7 +3686,6 @@ STR_INVALID_VEHICLE                                             :<nevažeće voz
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Pregledanje NewGRF-ova
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Pregledanje NewGRF-ova. U zavisnosti od količine ovo može i da potraje...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" -a -ova} pregledano od odprilike procenjeno {NUM} NewGRF{P -a -a -ova}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Pretraživanje arhiva
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}

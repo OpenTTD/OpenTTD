@@ -3497,7 +3497,6 @@ STR_INVALID_VEHICLE                                             :<kendaraan tida
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Memindai NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Memindai berkas NewGRF. Lamanya waktu tergantung dari jumlah berkas...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF dipindai dari kira2 {NUM} NewGRF
-STR_NEWGRF_SCAN_ARCHIVES                                        :Memindai arsip
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda

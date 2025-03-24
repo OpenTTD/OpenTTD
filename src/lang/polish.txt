@@ -4037,7 +4037,6 @@ STR_INVALID_VEHICLE                                             :<nieprawidłowy
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanowanie NewGRF-ów
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanuję NewGRF-y. Może to zająć chwilę w zależności od ich ilości...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Przeskanowano {NUM} NewGRF{P "" -y -ów} z około {NUM} NewGRF{P "" -y -ów}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Skanowanie w poszukiwaniu archiwum
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista napisów - {COMMA} napis{P "" y ów}

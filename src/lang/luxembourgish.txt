@@ -3631,7 +3631,6 @@ STR_INVALID_VEHICLE                                             :<invalid Gefier
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scannen NewGRFen
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scannen NewGRFen. Dest kann eng Weil dauern...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" en} gescanned vun ongeféier {NUM} NewGRF{P "" en}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Archiver scannen
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schëlderlëscht - {COMMA} Schëld{P "" er}

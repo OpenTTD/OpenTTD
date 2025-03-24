@@ -3636,7 +3636,6 @@ STR_INVALID_VEHICLE                                             :<utilgængeligt
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanner NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Scanner NewGRFs. Afhængig af mængden, vil dette tage noget tid...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" er} scannet, ud af ca. {NUM} NewGRF{P "" er}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Scanner for arkiver
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste over skilte - {COMMA} Skilt{P "" e}

@@ -3162,7 +3162,6 @@ STR_INVALID_VEHICLE                                             :<neveljavno voz
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Preiskava NewGRF-jev
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Preiskujem NewGRF-je. Odvisno od količine lahko traja nekaj časa...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" ja ji jev} preiskanih od ocenjenih {NUM} NewGRF{P "" ja ji jev}
-STR_NEWGRF_SCAN_ARCHIVES                                        :Iskanje arhivov
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}

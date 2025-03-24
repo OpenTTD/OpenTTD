@@ -3658,7 +3658,6 @@ STR_INVALID_VEHICLE                                             :<vehicle invàl
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escanejant fitxers NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Escanejant NewGRF. Depenent de la quantitat, pot trigar una estona...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} escanejats de {NUM} NewGRF{P "" s} estimats
-STR_NEWGRF_SCAN_ARCHIVES                                        :Escanejant arxius
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} senyal{P "" s}
