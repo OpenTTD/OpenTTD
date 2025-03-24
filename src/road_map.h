@@ -184,10 +184,10 @@ inline RoadType GetRoadType(Tile t, RoadTramType rtt)
  */
 inline RoadTypes GetPresentRoadTypes(Tile t)
 {
-	RoadTypes result = ROADTYPES_NONE;
+	RoadTypes result{};
 	if (MayHaveRoad(t)) {
-		if (GetRoadTypeRoad(t) != INVALID_ROADTYPE) SetBit(result, GetRoadTypeRoad(t));
-		if (GetRoadTypeTram(t) != INVALID_ROADTYPE) SetBit(result, GetRoadTypeTram(t));
+		if (GetRoadTypeRoad(t) != INVALID_ROADTYPE) result.Set(GetRoadTypeRoad(t));
+		if (GetRoadTypeTram(t) != INVALID_ROADTYPE) result.Set(GetRoadTypeTram(t));
 	}
 	return result;
 }
@@ -222,7 +222,7 @@ inline bool HasTileRoadType(Tile t, RoadTramType rtt)
 inline bool HasTileAnyRoadType(Tile t, RoadTypes rts)
 {
 	if (!MayHaveRoad(t)) return false;
-	return (GetPresentRoadTypes(t) & rts);
+	return GetPresentRoadTypes(t).Any(rts);
 }
 
 /**

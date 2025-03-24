@@ -83,13 +83,13 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 						switch (prop) {
 							case 0x0F:
 								if (GetRoadTramType(resolved_rt) == rtt) {
-									SetBit(rti->powered_roadtypes, resolved_rt);
+									rti->powered_roadtypes.Set(resolved_rt);
 								} else {
 									GrfMsg(1, "RoadTypeChangeInfo: Powered road type list: Road type {} road/tram type does not match road type {}, ignoring", resolved_rt, rt);
 								}
 								break;
-							case 0x18: SetBit(rti->introduction_required_roadtypes, resolved_rt); break;
-							case 0x19: SetBit(rti->introduces_roadtypes, resolved_rt);            break;
+							case 0x18: rti->introduction_required_roadtypes.Set(resolved_rt); break;
+							case 0x19: rti->introduces_roadtypes.Set(resolved_rt);            break;
 						}
 					}
 				}

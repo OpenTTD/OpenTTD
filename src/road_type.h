@@ -19,8 +19,6 @@ static const RoadTypeLabel ROADTYPE_LABEL_TRAM = 'ELRL';
 
 /**
  * The different roadtypes we support
- *
- * @note currently only ROADTYPE_ROAD and ROADTYPE_TRAM are supported.
  */
 enum RoadType : uint8_t {
 	ROADTYPE_BEGIN   = 0,    ///< Used for iterations
@@ -31,17 +29,7 @@ enum RoadType : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadType)
 
-/**
- * The different roadtypes we support, but then a bitmask of them.
- * @note Must be treated as a uint64_t type, narrowing it causes bit membership tests to give wrong results.
- */
-enum RoadTypes : uint64_t {
-	ROADTYPES_NONE     = 0,                                ///< No roadtypes
-	ROADTYPES_ROAD     = 1 << ROADTYPE_ROAD,               ///< Road
-	ROADTYPES_TRAM     = 1 << ROADTYPE_TRAM,               ///< Trams
-	INVALID_ROADTYPES  = UINT64_MAX,                       ///< Invalid roadtypes
-};
-DECLARE_ENUM_AS_BIT_SET(RoadTypes)
+using RoadTypes = EnumBitSet<RoadType, uint64_t>;
 
 /**
  * Enumeration for the road parts on a tile.

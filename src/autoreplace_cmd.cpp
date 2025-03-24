@@ -80,7 +80,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 
 		case VEH_ROAD:
 			/* make sure the roadtypes are compatible */
-			if ((GetRoadTypeInfo(e_from->u.road.roadtype)->powered_roadtypes & GetRoadTypeInfo(e_to->u.road.roadtype)->powered_roadtypes) == ROADTYPES_NONE) return false;
+			if (!GetRoadTypeInfo(e_from->u.road.roadtype)->powered_roadtypes.Any(GetRoadTypeInfo(e_to->u.road.roadtype)->powered_roadtypes)) return false;
 
 			/* make sure that we do not replace a tram with a normal road vehicles or vice versa */
 			if (e_from->info.misc_flags.Test(EngineMiscFlag::RoadIsTram) != e_to->info.misc_flags.Test(EngineMiscFlag::RoadIsTram)) return false;

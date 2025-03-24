@@ -843,7 +843,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case GM_EDITOR:
-				if ((GetRoadTypes(true) & GetMaskForRoadTramType(rtt)) == ROADTYPES_NONE) return ES_NOT_HANDLED;
+				if (!GetRoadTypes(true).Any(GetMaskForRoadTramType(rtt))) return ES_NOT_HANDLED;
 				w = ShowBuildRoadScenToolbar(last_build);
 				break;
 
@@ -1767,8 +1767,8 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	}
 
 	/* Filter listed road types */
-	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_ROAD);
-	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_TRAM);
+	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes.Reset(GetMaskForRoadTramType(RTT_ROAD));
+	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes.Reset(GetMaskForRoadTramType(RTT_TRAM));
 
 	DropDownList list;
 
@@ -1779,9 +1779,9 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	Dimension d = { 0, 0 };
 	/* Get largest icon size, to ensure text is aligned on each menu item. */
 	if (!for_replacement) {
-		used_roadtypes &= ~_roadtypes_hidden_mask;
+		used_roadtypes.Reset(_roadtypes_hidden_mask);
 		for (const auto &rt : _sorted_roadtypes) {
-			if (!HasBit(used_roadtypes, rt)) continue;
+			if (!used_roadtypes.Test(rt)) continue;
 			const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 			d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_road));
 		}
@@ -1792,17 +1792,17 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 
 	for (const auto &rt : _sorted_roadtypes) {
 		/* If it's not used ever, don't show it to the user. */
-		if (!HasBit(used_roadtypes, rt)) continue;
+		if (!used_roadtypes.Test(rt)) continue;
 
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		if (for_replacement) {
-			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !HasBit(avail_roadtypes, rt)));
+			list.push_back(MakeDropDownListBadgeItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, GetString(rti->strings.replace_text), rt, !avail_roadtypes.Test(rt)));
 		} else {
 			std::string str = rti->max_speed > 0
 				? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
 				: GetString(rti->strings.menu_text);
-			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !HasBit(avail_roadtypes, rt)));
+			list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt)));
 		}
 	}
 
@@ -1821,16 +1821,16 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 	RoadTypes used_roadtypes = GetRoadTypes(true);
 
 	/* Filter listed road types */
-	used_roadtypes &= ~_roadtypes_hidden_mask;
-	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_ROAD);
-	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_TRAM);
+	used_roadtypes.Reset(_roadtypes_hidden_mask);
+	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes.Reset(GetMaskForRoadTramType(RTT_ROAD));
+	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes.Reset(GetMaskForRoadTramType(RTT_TRAM));
 
 	DropDownList list;
 
 	/* If it's not used ever, don't show it to the user. */
 	Dimension d = { 0, 0 };
 	for (const auto &rt : _sorted_roadtypes) {
-		if (!HasBit(used_roadtypes, rt)) continue;
+		if (!used_roadtypes.Test(rt)) continue;
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_road));
 	}
@@ -1839,14 +1839,14 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 	auto badge_class_list = std::make_shared<GUIBadgeClasses>(GSF_ROADTYPES);
 
 	for (const auto &rt : _sorted_roadtypes) {
-		if (!HasBit(used_roadtypes, rt)) continue;
+		if (!used_roadtypes.Test(rt)) continue;
 
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 
 		std::string str = rti->max_speed > 0
 			? GetString(STR_TOOLBAR_RAILTYPE_VELOCITY, rti->strings.menu_text, rti->max_speed / 2)
 			: GetString(rti->strings.menu_text);
-		list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !HasBit(avail_roadtypes, rt)));
+		list.push_back(MakeDropDownListBadgeIconItem(badge_class_list, rti->badges, GSF_ROADTYPES, rti->introduction_date, d, rti->gui_sprites.build_x_road, PAL_NONE, std::move(str), rt, !avail_roadtypes.Test(rt)));
 	}
 
 	if (list.empty()) {

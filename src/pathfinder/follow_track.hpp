@@ -344,7 +344,7 @@ protected:
 		if (IsRoadTT()) {
 			const RoadVehicle *v = RoadVehicle::From(this->veh);
 			RoadType roadtype = GetRoadType(this->new_tile, GetRoadTramType(v->roadtype));
-			if (!HasBit(v->compatible_roadtypes, roadtype)) {
+			if (!v->compatible_roadtypes.Test(roadtype)) {
 				/* incompatible road type */
 				this->err = EC_RAIL_ROAD_TYPE;
 				return false;
