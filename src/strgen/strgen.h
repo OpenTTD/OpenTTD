@@ -49,7 +49,6 @@ struct StringData {
 	void FreeTranslation();
 	void Add(std::shared_ptr<LangString> ls);
 	LangString *Find(const std::string &s);
-	uint VersionHashStr(uint hash, const char *s) const;
 	uint Version() const;
 	uint CountInUse(uint tab) const;
 };

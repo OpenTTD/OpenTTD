@@ -16,12 +16,9 @@
 
 #include "strgen.h"
 
-
 #include "../table/strgen_tables.h"
 
 #include "../safeguards.h"
-
-/* Compiles a list of strings into a compiled string list */
 
 static bool _translated;              ///< Whether the current language is not the master language
 static bool _translation;             ///< Is the current file actually a translation or not
@@ -29,8 +26,12 @@ const char *_file = "(unknown file)"; ///< The filename of the input, so we can 
 int _cur_line;                        ///< The current line we're parsing in the input file
 int _errors, _warnings, _show_todo;
 LanguagePackHeader _lang;             ///< Header information about a language.
+static const char *_cur_ident;
+static ParsedCommandStruct _cur_pcs;
+static int _cur_argidx;
 
 static const CmdStruct *ParseCommandString(const char **str, std::string &param, int *argno, int *casei);
+static int TranslateArgumentIdx(int arg, int offset = 0);
 
 /**
  * Create a new case.
@@ -110,7 +111,7 @@ LangString *StringData::Find(const std::string &s)
  * @param s    The string hash.
  * @return The new hash.
  */
-uint StringData::VersionHashStr(uint hash, const char *s) const
+static uint VersionHashStr(uint hash, const char *s)
 {
 	for (; *s != '\0'; s++) {
 		hash = std::rotl(hash, 3) ^ *s;
@@ -140,7 +141,7 @@ uint StringData::Version() const
 			s = ls->name.c_str();
 			hash ^= i * 0x717239;
 			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
-			hash = this->VersionHashStr(hash, s + 1);
+			hash = VersionHashStr(hash, s + 1);
 
 			s = ls->english.c_str();
 			while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != nullptr) {
@@ -165,12 +166,6 @@ uint StringData::CountInUse(uint tab) const
 	for (i = TAB_SIZE; --i >= 0;) if (this->strings[(tab * TAB_SIZE) + i] != nullptr) break;
 	return i + 1;
 }
-
-static const char *_cur_ident;
-
-/* Used when generating some advanced commands. */
-static ParsedCommandStruct _cur_pcs;
-static int _cur_argidx;
 
 /** The buffer for writing a single string. */
 struct Buffer : std::vector<uint8_t> {
@@ -209,7 +204,7 @@ struct Buffer : std::vector<uint8_t> {
 	}
 };
 
-size_t Utf8Validate(const char *s)
+static size_t Utf8Validate(const char *s)
 {
 	uint32_t c;
 
@@ -233,21 +228,15 @@ size_t Utf8Validate(const char *s)
 	return 0;
 }
 
-
 void EmitSingleChar(Buffer *buffer, char *buf, int value)
 {
 	if (*buf != '\0') StrgenWarning("Ignoring trailing letters in command");
 	buffer->AppendUtf8(value);
 }
 
-
 /* The plural specifier looks like
  * {NUM} {PLURAL -1 passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
-
-/* This is encoded like
- *  CommandByte <ARG#> <NUM> {Length of each string} {each string} */
-
-bool ParseRelNum(char **buf, int *value, int *offset)
+static bool ParseRelNum(char **buf, int *value, int *offset)
 {
 	const char *s = *buf;
 	char *end;
@@ -310,9 +299,8 @@ char *ParseWord(char **buf)
 	return r;
 }
 
-/* Forward declaration */
-static int TranslateArgumentIdx(int arg, int offset = 0);
-
+/* This is encoded like
+ *  CommandByte <ARG#> <NUM> {Length of each string} {each string} */
 static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words, uint nw)
 {
 	/* Maximum word length in bytes, excluding trailing NULL. */
@@ -444,7 +432,6 @@ static uint ResolveCaseName(const char *str, size_t len)
 	return case_idx + 1;
 }
 
-
 /* returns nullptr on eof
  * else returns command struct */
 static const CmdStruct *ParseCommandString(const char **str, std::string &param, int *argno, int *casei)
@@ -499,7 +486,6 @@ static const CmdStruct *ParseCommandString(const char **str, std::string &param,
 		StrgenError("Missing }} from command '{}'", start);
 		return nullptr;
 	}
-
 
 	if (c != '}') {
 		if (c == '=') s--;
@@ -565,7 +551,6 @@ ParsedCommandStruct ExtractCommandString(const char *s, bool)
 	return p;
 }
 
-
 const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 {
 	if (a == nullptr) return nullptr;
@@ -583,7 +568,6 @@ const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 
 	return a;
 }
-
 
 static bool CheckCommandsMatch(const char *a, const char *b, const char *name)
 {
@@ -825,7 +809,6 @@ static void PutArgidxCommand(Buffer *buffer)
 	buffer->AppendUtf8(SCC_ARG_INDEX);
 	buffer->AppendByte(TranslateArgumentIdx(_cur_argidx));
 }
-
 
 static void PutCommandString(Buffer *buffer, const char *str)
 {
