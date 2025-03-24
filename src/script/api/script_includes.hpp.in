@@ -21,7 +21,7 @@ static SQInteger ${APIUC}ObjectCloned(HSQUIRRELVM)
 	throw Script_FatalError("This instance is not cloneable");
 }
 
-void SQ${APIUC}_RegisterAll(Squirrel *engine)
+void SQ${APIUC}_RegisterAll(Squirrel &engine)
 {
 	DefSQClass<ScriptObject, ScriptType::${APIUC}> SQ${APIUC}Object("${APIUC}Object");
 	SQ${APIUC}Object.PreRegister(engine);

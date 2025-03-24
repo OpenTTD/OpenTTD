@@ -54,7 +54,7 @@ std::string AIScannerInfo::GetScriptName(ScriptInfo *info)
 	return info->GetName();
 }
 
-void AIScannerInfo::RegisterAPI(class Squirrel *engine)
+void AIScannerInfo::RegisterAPI(class Squirrel &engine)
 {
 	AIInfo::RegisterAPI(engine);
 }
@@ -131,7 +131,7 @@ std::string AIScannerLibrary::GetScriptName(ScriptInfo *info)
 	return fmt::format("{}.{}", library->GetCategory(), library->GetInstanceName());
 }
 
-void AIScannerLibrary::RegisterAPI(class Squirrel *engine)
+void AIScannerLibrary::RegisterAPI(class Squirrel &engine)
 {
 	AILibrary::RegisterAPI(engine);
 }

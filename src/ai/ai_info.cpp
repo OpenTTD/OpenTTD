@@ -29,7 +29,7 @@ static bool CheckAPIVersion(const std::string &api_version)
 
 template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIInfo", -1); return 1; }
 
-/* static */ void AIInfo::RegisterAPI(Squirrel *engine)
+/* static */ void AIInfo::RegisterAPI(Squirrel &engine)
 {
 	/* Create the AIInfo class, and add the RegisterAI function */
 	DefSQClass<AIInfo, ScriptType::AI> SQAIInfo("AIInfo");
@@ -50,8 +50,8 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	SQAIInfo.DefSQConst(engine, ScriptConfigFlags{ScriptConfigFlag::InGame}.base(), "AICONFIG_INGAME");
 
 	SQAIInfo.PostRegister(engine);
-	engine->AddMethod("RegisterAI", &AIInfo::Constructor, "tx");
-	engine->AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, "tx");
+	engine.AddMethod("RegisterAI", &AIInfo::Constructor, "tx");
+	engine.AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, "tx");
 }
 
 /* static */ SQInteger AIInfo::Constructor(HSQUIRRELVM vm)
@@ -125,12 +125,12 @@ bool AIInfo::CanLoadFromVersion(int version) const
 }
 
 
-/* static */ void AILibrary::RegisterAPI(Squirrel *engine)
+/* static */ void AILibrary::RegisterAPI(Squirrel &engine)
 {
 	/* Create the AILibrary class, and add the RegisterLibrary function */
-	engine->AddClassBegin("AILibrary");
-	engine->AddClassEnd();
-	engine->AddMethod("RegisterLibrary", &AILibrary::Constructor, "tx");
+	engine.AddClassBegin("AILibrary");
+	engine.AddClassEnd();
+	engine.AddMethod("RegisterLibrary", &AILibrary::Constructor, "tx");
 }
 
 /* static */ SQInteger AILibrary::Constructor(HSQUIRRELVM vm)

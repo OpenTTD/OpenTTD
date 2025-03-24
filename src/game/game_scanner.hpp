@@ -30,7 +30,7 @@ protected:
 	std::string_view GetFileName() const override { return PATHSEP "info.nut"; }
 	Subdirectory GetDirectory() const override { return GAME_DIR; }
 	std::string_view GetScannerName() const override { return "Game Scripts"; }
-	void RegisterAPI(class Squirrel *engine) override;
+	void RegisterAPI(class Squirrel &engine) override;
 };
 
 
@@ -51,7 +51,7 @@ protected:
 	std::string_view GetFileName() const override { return PATHSEP "library.nut"; }
 	Subdirectory GetDirectory() const override { return GAME_LIBRARY_DIR; }
 	std::string_view GetScannerName() const override { return "GS Libraries"; }
-	void RegisterAPI(class Squirrel *engine) override;
+	void RegisterAPI(class Squirrel &engine) override;
 };
 
 #endif /* GAME_SCANNER_HPP */

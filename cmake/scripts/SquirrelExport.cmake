@@ -345,7 +345,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
         string(APPEND SQUIRREL_EXPORT "\n")
 
         # Then do the registration functions of the class.
-        string(APPEND SQUIRREL_EXPORT "\nvoid SQ${API_CLS}_Register(Squirrel *engine)")
+        string(APPEND SQUIRREL_EXPORT "\nvoid SQ${API_CLS}_Register(Squirrel &engine)")
         string(APPEND SQUIRREL_EXPORT "\n{")
         string(APPEND SQUIRREL_EXPORT "\n	DefSQClass<${CLS}, ScriptType::${APIUC}> SQ${API_CLS}(\"${API_CLS}\");")
         if("${SUPER_CLS}" STREQUAL "Text")
