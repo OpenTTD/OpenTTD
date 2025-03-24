@@ -133,17 +133,17 @@ void FileStringReader::HandlePragma(char *str)
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = std::strtol(buf, nullptr, 16);
-		if (langid > (long)UINT16_MAX || langid < 0) {
+		if (langid > UINT16_MAX || langid < 0) {
 			FatalError("Invalid winlangid {}", buf);
 		}
-		_lang.winlangid = (uint16_t)langid;
+		_lang.winlangid = static_cast<uint16_t>(langid);
 	} else if (!memcmp(str, "grflangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = std::strtol(buf, nullptr, 16);
 		if (langid >= 0x7F || langid < 0) {
 			FatalError("Invalid grflangid {}", buf);
 		}
-		_lang.newgrflangid = (uint8_t)langid;
+		_lang.newgrflangid = static_cast<uint8_t>(langid);
 	} else if (!memcmp(str, "gender ", 7)) {
 		if (this->master) FatalError("Genders are not allowed in the base translation.");
 		char *buf = str + 7;
@@ -223,8 +223,8 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 	/** The real path we eventually want to write to. */
 	const std::filesystem::path real_path;
 	/** The previous string ID that was printed. */
-	int prev;
-	uint total_strings;
+	size_t prev;
+	size_t total_strings;
 
 	/**
 	 * Open a file to write to.
@@ -238,7 +238,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		this->output_stream << "#define TABLE_STRINGS_H\n";
 	}
 
-	void WriteStringID(const std::string &name, int stringid) override
+	void WriteStringID(const std::string &name, size_t stringid) override
 	{
 		if (prev + 1 != stringid) this->output_stream << "\n";
 		fmt::print(this->output_stream, "static const StringID {} = 0x{:X};\n", name, stringid);
@@ -249,7 +249,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 	void Finalise(const StringData &data) override
 	{
 		/* Find the plural form with the most amount of cases. */
-		int max_plural_forms = 0;
+		size_t max_plural_forms = 0;
 		for (const auto &pf : _plural_forms) {
 			max_plural_forms = std::max(max_plural_forms, pf.plural_count);
 		}
@@ -292,7 +292,7 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 
 	void WriteHeader(const LanguagePackHeader *header) override
 	{
-		this->Write((const uint8_t *)header, sizeof(*header));
+		this->Write(reinterpret_cast<const char *>(header), sizeof(*header));
 	}
 
 	void Finalise() override
@@ -301,9 +301,9 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 		this->FileWriter::Finalise();
 	}
 
-	void Write(const uint8_t *buffer, size_t length) override
+	void Write(const char *buffer, size_t length) override
 	{
-		this->output_stream.write((const char *)buffer, length);
+		this->output_stream.write(buffer, length);
 	}
 };
 
