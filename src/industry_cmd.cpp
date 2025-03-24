@@ -455,20 +455,20 @@ static void AddAcceptedCargo_Industry(TileIndex tile, CargoArray &acceptance, Ca
 	}
 
 	for (uint8_t i = 0; i < std::size(itspec->accepts_cargo); i++) {
-		CargoType a = accepts_cargo[i];
-		if (!IsValidCargoType(a) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
+		CargoType cargo = accepts_cargo[i];
+		if (!IsValidCargoType(cargo) || cargo_acceptance[i] <= 0) continue; // work only with valid cargoes
 
 		/* Add accepted cargo */
-		acceptance[a] += cargo_acceptance[i];
+		acceptance[cargo] += cargo_acceptance[i];
 
 		/* Maybe set 'always accepted' bit (if it's not set already) */
-		if (HasBit(always_accepted, a)) continue;
+		if (HasBit(always_accepted, cargo)) continue;
 
 		/* Test whether the industry itself accepts the cargo type */
-		if (ind->IsCargoAccepted(a)) continue;
+		if (ind->IsCargoAccepted(cargo)) continue;
 
 		/* If the industry itself doesn't accept this cargo, set 'always accepted' bit */
-		SetBit(always_accepted, a);
+		SetBit(always_accepted, cargo);
 	}
 }
 
@@ -2761,11 +2761,11 @@ int WhoCanServiceIndustry(Industry *ind)
 /**
  * Report news that industry production has changed significantly
  *
- * @param ind: Industry with changed production
- * @param type: Cargo type that has changed
- * @param percent: Percentage of change (>0 means increase, <0 means decrease)
+ * @param ind Industry with changed production
+ * @param cargo Cargo type that has changed
+ * @param percent Percentage of change (>0 means increase, <0 means decrease)
  */
-static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType type, int percent)
+static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType cargo, int percent)
 {
 	NewsType nt;
 
@@ -2777,7 +2777,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType type, in
 	}
 	AddIndustryNewsItem(
 		GetEncodedString(percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
-			CargoSpec::Get(type)->name, ind->index, abs(percent)
+			CargoSpec::Get(cargo)->name, ind->index, abs(percent)
 		),
 		nt,
 		ind->index

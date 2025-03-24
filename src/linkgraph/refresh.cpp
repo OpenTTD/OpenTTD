@@ -202,17 +202,17 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 	Station *st = Station::GetIfValid(cur->GetDestination().ToStationID());
 	if (st != nullptr && next_station != StationID::Invalid() && next_station != st->index) {
 		Station *st_to = Station::Get(next_station);
-		for (CargoType c = 0; c < NUM_CARGO; c++) {
+		for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
 			/* Refresh the link and give it a minimum capacity. */
 
-			uint cargo_quantity = this->capacities[c];
+			uint cargo_quantity = this->capacities[cargo];
 			if (cargo_quantity == 0) continue;
 
 			if (this->vehicle->GetDisplayMaxSpeed() == 0) continue;
 
 			/* If not allowed to merge link graphs, make sure the stations are
 			 * already in the same link graph. */
-			if (!this->allow_merge && st->goods[c].link_graph != st_to->goods[c].link_graph) {
+			if (!this->allow_merge && st->goods[cargo].link_graph != st_to->goods[cargo].link_graph) {
 				continue;
 			}
 
@@ -234,16 +234,16 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 					this->vehicle->orders->GetTotalDuration() > this->vehicle->current_order_time) {
 				uint effective_capacity = cargo_quantity * this->vehicle->load_unload_ticks;
 				if (effective_capacity > (uint)this->vehicle->orders->GetTotalDuration()) {
-					IncreaseStats(st, c, next_station, effective_capacity /
+					IncreaseStats(st, cargo, next_station, effective_capacity /
 							this->vehicle->orders->GetTotalDuration(), 0, 0,
 							{EdgeUpdateMode::Increase, restricted_mode});
 				} else if (RandomRange(this->vehicle->orders->GetTotalDuration()) < effective_capacity) {
-					IncreaseStats(st, c, next_station, 1, 0, 0, {EdgeUpdateMode::Increase, restricted_mode});
+					IncreaseStats(st, cargo, next_station, 1, 0, 0, {EdgeUpdateMode::Increase, restricted_mode});
 				} else {
-					IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, {EdgeUpdateMode::Refresh, restricted_mode});
+					IncreaseStats(st, cargo, next_station, cargo_quantity, 0, time_estimate, {EdgeUpdateMode::Refresh, restricted_mode});
 				}
 			} else {
-				IncreaseStats(st, c, next_station, cargo_quantity, 0, time_estimate, {EdgeUpdateMode::Refresh, restricted_mode});
+				IncreaseStats(st, cargo, next_station, cargo_quantity, 0, time_estimate, {EdgeUpdateMode::Refresh, restricted_mode});
 			}
 		}
 	}
@@ -271,8 +271,8 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8_t fl
 			} else if (!HasBit(flags, IN_AUTOREFIT)) {
 				SetBit(flags, IN_AUTOREFIT);
 				LinkRefresher backup(*this);
-				for (CargoType c = 0; c != NUM_CARGO; ++c) {
-					if (CargoSpec::Get(c)->IsValid() && this->HandleRefit(c)) {
+				for (CargoType cargo = 0; cargo != NUM_CARGO; ++cargo) {
+					if (CargoSpec::Get(cargo)->IsValid() && this->HandleRefit(cargo)) {
 						this->RefreshLinks(cur, next, flags, num_hops);
 						*this = backup;
 					}

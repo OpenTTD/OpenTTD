@@ -229,13 +229,13 @@ extern std::span<const CargoSpec *> _sorted_standard_cargo_specs;
 
 /**
  * Does cargo \a c have cargo class \a cc?
- * @param c  Cargo type.
+ * @param cargo Cargo type.
  * @param cc Cargo class.
  * @return The type fits in the class.
  */
-inline bool IsCargoInClass(CargoType c, CargoClasses cc)
+inline bool IsCargoInClass(CargoType cargo, CargoClasses cc)
 {
-	return CargoSpec::Get(c)->classes.Any(cc);
+	return CargoSpec::Get(cargo)->classes.Any(cc);
 }
 
 using SetCargoBitIterator = SetBitIterator<CargoType, CargoTypes>;
