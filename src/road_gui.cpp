@@ -843,7 +843,7 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case GM_EDITOR:
-				if ((GetRoadTypes(true) & ((rtt == RTT_ROAD) ? ~_roadtypes_type : _roadtypes_type)) == ROADTYPES_NONE) return ES_NOT_HANDLED;
+				if ((GetRoadTypes(true) & GetMaskForRoadTramType(rtt)) == ROADTYPES_NONE) return ES_NOT_HANDLED;
 				w = ShowBuildRoadScenToolbar(last_build);
 				break;
 
@@ -1767,8 +1767,8 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	}
 
 	/* Filter listed road types */
-	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes &= _roadtypes_type;
-	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes &= ~_roadtypes_type;
+	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_ROAD);
+	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_TRAM);
 
 	DropDownList list;
 
@@ -1822,8 +1822,8 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 
 	/* Filter listed road types */
 	used_roadtypes &= ~_roadtypes_hidden_mask;
-	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes &= _roadtypes_type;
-	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes &= ~_roadtypes_type;
+	if (!HasBit(rtts, RTT_ROAD)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_ROAD);
+	if (!HasBit(rtts, RTT_TRAM)) used_roadtypes &= ~GetMaskForRoadTramType(RTT_TRAM);
 
 	DropDownList list;
 
