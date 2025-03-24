@@ -26,9 +26,9 @@ static bool operator==(const ScriptPriorityQueue::PriorityItem &lhs, const HSQOB
 ScriptPriorityQueue::~ScriptPriorityQueue()
 {
 	/* Release reference to stored objects. */
-	auto inst = ScriptObject::GetActiveInstance();
-	if (!inst->InShutdown()) {
-		for (auto &i : this->queue) inst->ReleaseSQObject(const_cast<HSQOBJECT *>(&i.second));
+	auto &inst = ScriptObject::GetActiveInstance();
+	if (!inst.InShutdown()) {
+		for (auto &i : this->queue) inst.ReleaseSQObject(const_cast<HSQOBJECT *>(&i.second));
 	}
 }
 

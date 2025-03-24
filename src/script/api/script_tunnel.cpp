@@ -51,7 +51,7 @@
  * Helper function to connect a just built tunnel to nearby roads.
  * @param instance The script instance we have to built the road for.
  */
-static void _DoCommandReturnBuildTunnel2(class ScriptInstance *instance)
+static void _DoCommandReturnBuildTunnel2(class ScriptInstance &instance)
 {
 	if (!ScriptTunnel::_BuildTunnelRoad2()) {
 		ScriptInstance::DoCommandReturn(instance);
@@ -67,7 +67,7 @@ static void _DoCommandReturnBuildTunnel2(class ScriptInstance *instance)
  * Helper function to connect a just built tunnel to nearby roads.
  * @param instance The script instance we have to built the road for.
  */
-static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
+static void _DoCommandReturnBuildTunnel1(class ScriptInstance &instance)
 {
 	if (!ScriptTunnel::_BuildTunnelRoad1()) {
 		ScriptInstance::DoCommandReturn(instance);

@@ -579,7 +579,7 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
  * between the wanted and the current order.
  * @param instance The script instance we are doing the callback for.
  */
-static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
+static void _DoCommandReturnSetOrderFlags(class ScriptInstance &instance)
 {
 	ScriptObject::SetLastCommandRes(ScriptOrder::_SetOrderFlags());
 	ScriptInstance::DoCommandReturn(instance);

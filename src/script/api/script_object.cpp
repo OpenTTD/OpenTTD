@@ -46,16 +46,16 @@ void SimpleCountedObject::Release()
  */
 static ScriptStorage *GetStorage()
 {
-	return ScriptObject::GetActiveInstance()->GetStorage();
+	return ScriptObject::GetActiveInstance().GetStorage();
 }
 
 
 /* static */ ScriptInstance *ScriptObject::ActiveInstance::active = nullptr;
 
-ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance *instance) : alc_scope(instance->engine)
+ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance &instance) : alc_scope(instance.engine)
 {
 	this->last_active = ScriptObject::ActiveInstance::active;
-	ScriptObject::ActiveInstance::active = instance;
+	ScriptObject::ActiveInstance::active = &instance;
 }
 
 ScriptObject::ActiveInstance::~ActiveInstance()
@@ -63,10 +63,10 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	ScriptObject::ActiveInstance::active = this->last_active;
 }
 
-/* static */ ScriptInstance *ScriptObject::GetActiveInstance()
+/* static */ ScriptInstance &ScriptObject::GetActiveInstance()
 {
 	assert(ScriptObject::ActiveInstance::active != nullptr);
-	return ScriptObject::ActiveInstance::active;
+	return *ScriptObject::ActiveInstance::active;
 }
 
 
@@ -235,7 +235,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 /* static */ bool ScriptObject::CanSuspend()
 {
-	Squirrel *squirrel = ScriptObject::GetActiveInstance()->engine;
+	Squirrel *squirrel = ScriptObject::GetActiveInstance().engine;
 	return GetStorage()->allow_do_command && squirrel->CanSuspend();
 }
 
@@ -262,7 +262,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 
 /* static */ CommandCallbackData *ScriptObject::GetDoCommandCallback()
 {
-	return ScriptObject::GetActiveInstance()->GetDoCommandCallback();
+	return ScriptObject::GetActiveInstance().GetDoCommandCallback();
 }
 
 std::tuple<bool, bool, bool, bool> ScriptObject::DoCommandPrep()
@@ -315,7 +315,7 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 		IncreaseDoCommandCosts(res.GetCost());
 		if (!_generating_world) {
 			/* Charge a nominal fee for asynchronously executed commands */
-			Squirrel *engine = ScriptObject::GetActiveInstance()->engine;
+			Squirrel *engine = ScriptObject::GetActiveInstance().engine;
 			Squirrel::DecreaseOps(engine->GetVM(), 100);
 		}
 		if (callback != nullptr) {
