@@ -388,11 +388,11 @@ public:
 			case WID_RV_CAPTION:
 				switch (this->sel_group.base()) {
 					case ALL_GROUP.base():
-						return GetString(STR_REPLACE_VEHICLES_WHITE, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_ALL_TRAINS + this->window_number);
+						return GetString(STR_REPLACE_VEHICLES_WHITE, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_ALL_TRAINS + this->window_number, std::monostate{});
 						break;
 
 					case DEFAULT_GROUP.base():
-						return GetString(STR_REPLACE_VEHICLES_WHITE, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_DEFAULT_TRAINS + this->window_number);
+						return GetString(STR_REPLACE_VEHICLES_WHITE, STR_REPLACE_VEHICLE_TRAIN + this->window_number, STR_GROUP_DEFAULT_TRAINS + this->window_number, std::monostate{});
 						break;
 
 					default:
