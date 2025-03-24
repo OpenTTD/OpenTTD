@@ -1119,7 +1119,7 @@ bool AfterLoadGame()
 		for (auto t : Map::Iterate()) {
 			switch (GetTileType(t)) {
 				case MP_ROAD:
-					if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m7(), 5, 3));
+					if (fix_roadtypes) SB(t.m7(), 6, 2, GB(t.m7(), 5, 3));
 					SB(t.m7(), 5, 1, GB(t.m3(), 7, 1)); // snow/desert
 					switch (GetRoadTileType(t)) {
 						default: SlErrorCorrupt("Invalid road tile type");
@@ -1152,7 +1152,7 @@ bool AfterLoadGame()
 				case MP_STATION:
 					if (!IsStationRoadStop(t)) break;
 
-					if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m3(), 0, 3));
+					if (fix_roadtypes) SB(t.m7(), 6, 2, GB(t.m3(), 0, 3));
 					SB(t.m7(), 0, 5, (HasBit(t.m6(), 2) ? OWNER_TOWN : GetTileOwner(t)).base());
 					SB(t.m3(), 4, 4, t.m1());
 					t.m4() = 0;
@@ -1161,7 +1161,7 @@ bool AfterLoadGame()
 				case MP_TUNNELBRIDGE:
 					if (old_bridge && IsBridge(t) && HasBit(t.m5(), 6)) break;
 					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(t.m5(), 1, 2) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
-						if (fix_roadtypes) SB(t.m7(), 6, 2, (RoadTypes)GB(t.m3(), 0, 3));
+						if (fix_roadtypes) SB(t.m7(), 6, 2, GB(t.m3(), 0, 3));
 
 						Owner o = GetTileOwner(t);
 						SB(t.m7(), 0, 5, o.base()); // road owner

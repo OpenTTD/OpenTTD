@@ -58,7 +58,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		},
 
 		/* Powered roadtypes */
-		ROADTYPES_ROAD,
+		{ROADTYPE_ROAD},
 
 		/* flags */
 		{RoadTypeFlag::TownBuild},
@@ -85,10 +85,10 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		CalendarTime::MIN_DATE,
 
 		/* roadtypes required for this to be introduced */
-		ROADTYPES_NONE,
+		{},
 
 		/* introduction road types */
-		ROADTYPES_ROAD,
+		{ROADTYPE_ROAD},
 
 		/* sort order */
 		0x07,
@@ -139,7 +139,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		},
 
 		/* Powered roadtypes */
-		ROADTYPES_TRAM,
+		{ROADTYPE_TRAM},
 
 		/* flags */
 		{RoadTypeFlag::Catenary, RoadTypeFlag::NoHouses},
@@ -166,10 +166,10 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		CalendarTime::INVALID_DATE,
 
 		/* roadtypes required for this to be introduced */
-		ROADTYPES_NONE,
+		{},
 
 		/* introduction road types */
-		ROADTYPES_TRAM,
+		{ROADTYPE_TRAM},
 
 		/* sort order */
 		0x17,

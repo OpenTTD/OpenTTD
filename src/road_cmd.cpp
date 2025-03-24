@@ -62,14 +62,14 @@ RoadTypes _roadtypes_tram; ///< Bitset of tram roadtypes.
  */
 void ResetRoadTypes()
 {
-	static_assert(lengthof(_original_roadtypes) <= lengthof(_roadtypes));
+	static_assert(std::size(_original_roadtypes) <= std::size(_roadtypes));
 
 	auto insert = std::copy(std::begin(_original_roadtypes), std::end(_original_roadtypes), std::begin(_roadtypes));
 	std::fill(insert, std::end(_roadtypes), RoadTypeInfo{});
 
-	_roadtypes_hidden_mask = ROADTYPES_NONE;
-	_roadtypes_road = ROADTYPES_ROAD;
-	_roadtypes_tram = ROADTYPES_TRAM;
+	_roadtypes_hidden_mask = {};
+	_roadtypes_road = {ROADTYPE_ROAD};
+	_roadtypes_tram = {ROADTYPE_TRAM};
 }
 
 void ResolveRoadTypeGUISprites(RoadTypeInfo *rti)
@@ -113,7 +113,7 @@ void InitRoadTypes()
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		RoadTypeInfo *rti = &_roadtypes[rt];
 		ResolveRoadTypeGUISprites(rti);
-		if (rti->flags.Test(RoadTypeFlag::Hidden)) SetBit(_roadtypes_hidden_mask, rt);
+		if (rti->flags.Test(RoadTypeFlag::Hidden)) _roadtypes_hidden_mask.Set(rt);
 	}
 
 	_sorted_roadtypes.clear();
@@ -141,10 +141,10 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 			rti->introduction_date = CalendarTime::INVALID_DATE;
 
 			/* Make us compatible with ourself. */
-			rti->powered_roadtypes = (RoadTypes)(1ULL << rt);
+			rti->powered_roadtypes = rt;
 
 			/* We also introduce ourself. */
-			rti->introduces_roadtypes = (RoadTypes)(1ULL << rt);
+			rti->introduces_roadtypes = rt;
 
 			/* Default sort order; order of allocation, but with some
 			 * offsets so it's easier for NewGRF to pick a spot without
@@ -156,9 +156,9 @@ RoadType AllocateRoadType(RoadTypeLabel label, RoadTramType rtt)
 
 			/* Set bitmap of road/tram types */
 			if (rtt == RTT_TRAM) {
-				SetBit(_roadtypes_tram, rt);
+				_roadtypes_tram.Set(rt);
 			} else {
-				SetBit(_roadtypes_road, rt);
+				_roadtypes_road.Set(rt);
 			}
 
 			return rt;

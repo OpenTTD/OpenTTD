@@ -1281,7 +1281,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	if (type == VEH_ROAD && company != OWNER_DEITY) {
 		/* Check if the road type is available to this company */
 		const Company *c = Company::Get(company);
-		if ((GetRoadTypeInfo(e->u.road.roadtype)->powered_roadtypes & c->avail_roadtypes) == ROADTYPES_NONE) return false;
+		if (!GetRoadTypeInfo(e->u.road.roadtype)->powered_roadtypes.Any(c->avail_roadtypes)) return false;
 	}
 
 	return true;
