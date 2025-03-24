@@ -1024,12 +1024,12 @@ CommandCost CmdBuildLongRoad(DoCommandFlags flags, TileIndex end_tile, TileIndex
 		}
 
 		CommandCost ret = Command<CMD_BUILD_ROAD>::Do(flags, tile, bits, rt, drd, TownID::Invalid());
+		if (ret.Failed() && ret.GetErrorMessage() == STR_ERROR_ALREADY_BUILT) ret = CommandCost(); // Treat "already built" as success
+
 		if (ret.Failed()) {
 			last_error = std::move(ret);
-			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
-				if (is_ai) return last_error;
-				if (had_success) break; // Keep going if we haven't constructed any road yet, skipping the start of the drag
-			}
+			if (is_ai) return last_error;
+			if (had_success) break; // Keep going if we haven't constructed any road yet, skipping the start of the drag
 		} else {
 			had_success = true;
 			/* Only pay for the upgrade on one side of the bridges and tunnels */
