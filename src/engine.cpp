@@ -1276,7 +1276,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	if (type == VEH_TRAIN && company != OWNER_DEITY) {
 		/* Check if the rail type is available to this company */
 		const Company *c = Company::Get(company);
-		if (((GetRailTypeInfo(e->u.rail.railtype))->compatible_railtypes & c->avail_railtypes) == 0) return false;
+		if (!GetRailTypeInfo(e->u.rail.railtype)->compatible_railtypes.Any(c->avail_railtypes)) return false;
 	}
 	if (type == VEH_ROAD && company != OWNER_DEITY) {
 		/* Check if the road type is available to this company */

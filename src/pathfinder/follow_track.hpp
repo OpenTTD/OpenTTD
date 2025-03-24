@@ -333,7 +333,7 @@ protected:
 		/* rail transport is possible only on compatible rail types */
 		if (IsRailTT()) {
 			RailType rail_type = GetTileRailType(this->new_tile);
-			if (!HasBit(this->railtypes, rail_type)) {
+			if (!this->railtypes.Test(rail_type)) {
 				/* incompatible rail type */
 				this->err = EC_RAIL_ROAD_TYPE;
 				return false;

@@ -1780,19 +1780,19 @@ struct CompanyInfrastructureWindow : Window
 
 	void UpdateRailRoadTypes()
 	{
-		this->railtypes = RAILTYPES_NONE;
+		this->railtypes = {};
 		this->roadtypes = {};
 
 		/* Find the used railtypes. */
 		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 			if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
-			this->railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
+			this->railtypes.Set(GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes);
 		}
 
 		/* Get the date introduced railtypes as well. */
 		this->railtypes = AddDateIntroducedRailTypes(this->railtypes, CalendarTime::MAX_DATE);
-		this->railtypes &= ~_railtypes_hidden_mask;
+		this->railtypes.Reset(_railtypes_hidden_mask);
 
 		/* Find the used roadtypes. */
 		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
@@ -1814,7 +1814,7 @@ struct CompanyInfrastructureWindow : Window
 
 		uint32_t rail_total = c->infrastructure.GetRailTotal();
 		for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-			if (HasBit(this->railtypes, rt)) total += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
+			if (this->railtypes.Test(rt)) total += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
 		}
 		total += SignalMaintenanceCost(c->infrastructure.signal);
 
@@ -1853,12 +1853,12 @@ struct CompanyInfrastructureWindow : Window
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width + padding.width);
 
 				for (const auto &rt : _sorted_railtypes) {
-					if (HasBit(this->railtypes, rt)) {
+					if (this->railtypes.Test(rt)) {
 						lines++;
 						size.width = std::max(size.width, GetStringBoundingBox(GetRailTypeInfo(rt)->strings.name).width + padding.width + WidgetDimensions::scaled.hsep_indent);
 					}
 				}
-				if (this->railtypes != RAILTYPES_NONE) {
+				if (this->railtypes.Any()) {
 					lines++;
 					size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS).width + padding.width + WidgetDimensions::scaled.hsep_indent);
 				}
@@ -1978,10 +1978,10 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_RAIL_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT);
 
-				if (this->railtypes != RAILTYPES_NONE) {
+				if (this->railtypes.Any()) {
 					/* Draw name of each valid railtype. */
 					for (const auto &rt : _sorted_railtypes) {
-						if (HasBit(this->railtypes, rt)) {
+						if (this->railtypes.Test(rt)) {
 							DrawString(ir.left, ir.right, y += GetCharacterHeight(FS_NORMAL), GetRailTypeInfo(rt)->strings.name, TC_WHITE);
 						}
 					}
@@ -1997,11 +1997,11 @@ struct CompanyInfrastructureWindow : Window
 				/* Draw infrastructure count for each valid railtype. */
 				uint32_t rail_total = c->infrastructure.GetRailTotal();
 				for (const auto &rt : _sorted_railtypes) {
-					if (HasBit(this->railtypes, rt)) {
+					if (this->railtypes.Test(rt)) {
 						this->DrawCountLine(r, y, c->infrastructure.rail[rt], RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
 					}
 				}
-				if (this->railtypes != RAILTYPES_NONE) {
+				if (this->railtypes.Any()) {
 					this->DrawCountLine(r, y, c->infrastructure.signal, SignalMaintenanceCost(c->infrastructure.signal));
 				}
 				break;

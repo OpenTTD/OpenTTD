@@ -114,7 +114,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 	const RailVehicleInfo *rvi_v = RailVehInfo(this->engine_type);
 	EngineID first_engine = this->IsFrontEngine() ? this->engine_type : EngineID::Invalid();
 	this->gcache.cached_total_length = 0;
-	this->compatible_railtypes = RAILTYPES_NONE;
+	this->compatible_railtypes = {};
 
 	bool train_can_tilt = true;
 	int16_t min_curve_speed_mod = INT16_MAX;
@@ -172,14 +172,14 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 			/* Do not count powered wagons for the compatible railtypes, as wagons always
 			   have railtype normal */
 			if (rvi_u->power > 0) {
-				this->compatible_railtypes |= GetRailTypeInfo(u->railtype)->powered_railtypes;
+				this->compatible_railtypes.Set(GetRailTypeInfo(u->railtype)->powered_railtypes);
 			}
 
 			/* Some electric engines can be allowed to run on normal rail. It happens to all
 			 * existing electric engines when elrails are disabled and then re-enabled */
 			if (HasBit(u->flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL)) {
 				u->railtype = RAILTYPE_RAIL;
-				u->compatible_railtypes |= RAILTYPES_RAIL;
+				u->compatible_railtypes.Set(RAILTYPE_RAIL);
 			}
 
 			/* max speed is the minimum of the speed limits of all vehicles in the consist */
@@ -3031,7 +3031,7 @@ static void TrainEnterStation(Train *v, StationID station)
 static inline bool CheckCompatibleRail(const Train *v, TileIndex tile)
 {
 	return IsTileOwner(tile, v->owner) &&
-			(!v->IsFrontEngine() || HasBit(v->compatible_railtypes, GetRailType(tile)));
+			(!v->IsFrontEngine() || v->compatible_railtypes.Test(GetRailType(tile)));
 }
 
 /** Data structure for storing engine speed changes of an acceleration type. */
