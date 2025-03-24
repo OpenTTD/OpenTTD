@@ -24,7 +24,7 @@ struct CmdStruct {
 	ParseCmdProc proc;
 	long value;
 	uint8_t consumes;
-	int8_t default_plural_offset;
+	std::optional<int> default_plural_offset;
 	CmdFlags flags;
 };
 
@@ -34,49 +34,49 @@ extern void EmitGender(Buffer *buffer, char *buf, int value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */
-	{"NORMAL_FONT",       EmitSingleChar, SCC_NORMALFONT,         0, -1, {}},
-	{"TINY_FONT",         EmitSingleChar, SCC_TINYFONT,           0, -1, {}},
-	{"BIG_FONT",          EmitSingleChar, SCC_BIGFONT,            0, -1, {}},
-	{"MONO_FONT",         EmitSingleChar, SCC_MONOFONT,           0, -1, {}},
+	{"NORMAL_FONT",       EmitSingleChar, SCC_NORMALFONT,         0, std::nullopt, {}},
+	{"TINY_FONT",         EmitSingleChar, SCC_TINYFONT,           0, std::nullopt, {}},
+	{"BIG_FONT",          EmitSingleChar, SCC_BIGFONT,            0, std::nullopt, {}},
+	{"MONO_FONT",         EmitSingleChar, SCC_MONOFONT,           0, std::nullopt, {}},
 
 	/* Colours */
-	{"BLUE",              EmitSingleChar, SCC_BLUE,               0, -1, {CmdFlag::DontCount}},
-	{"SILVER",            EmitSingleChar, SCC_SILVER,             0, -1, {CmdFlag::DontCount}},
-	{"GOLD",              EmitSingleChar, SCC_GOLD,               0, -1, {CmdFlag::DontCount}},
-	{"RED",               EmitSingleChar, SCC_RED,                0, -1, {CmdFlag::DontCount}},
-	{"PURPLE",            EmitSingleChar, SCC_PURPLE,             0, -1, {CmdFlag::DontCount}},
-	{"LTBROWN",           EmitSingleChar, SCC_LTBROWN,            0, -1, {CmdFlag::DontCount}},
-	{"ORANGE",            EmitSingleChar, SCC_ORANGE,             0, -1, {CmdFlag::DontCount}},
-	{"GREEN",             EmitSingleChar, SCC_GREEN,              0, -1, {CmdFlag::DontCount}},
-	{"YELLOW",            EmitSingleChar, SCC_YELLOW,             0, -1, {CmdFlag::DontCount}},
-	{"DKGREEN",           EmitSingleChar, SCC_DKGREEN,            0, -1, {CmdFlag::DontCount}},
-	{"CREAM",             EmitSingleChar, SCC_CREAM,              0, -1, {CmdFlag::DontCount}},
-	{"BROWN",             EmitSingleChar, SCC_BROWN,              0, -1, {CmdFlag::DontCount}},
-	{"WHITE",             EmitSingleChar, SCC_WHITE,              0, -1, {CmdFlag::DontCount}},
-	{"LTBLUE",            EmitSingleChar, SCC_LTBLUE,             0, -1, {CmdFlag::DontCount}},
-	{"GRAY",              EmitSingleChar, SCC_GRAY,               0, -1, {CmdFlag::DontCount}},
-	{"DKBLUE",            EmitSingleChar, SCC_DKBLUE,             0, -1, {CmdFlag::DontCount}},
-	{"BLACK",             EmitSingleChar, SCC_BLACK,              0, -1, {CmdFlag::DontCount}},
-	{"COLOUR",            EmitSingleChar, SCC_COLOUR,             1, -1, {}},
-	{"PUSH_COLOUR",       EmitSingleChar, SCC_PUSH_COLOUR,        0, -1, {CmdFlag::DontCount}},
-	{"POP_COLOUR",        EmitSingleChar, SCC_POP_COLOUR,         0, -1, {CmdFlag::DontCount}},
+	{"BLUE",              EmitSingleChar, SCC_BLUE,               0, std::nullopt, {CmdFlag::DontCount}},
+	{"SILVER",            EmitSingleChar, SCC_SILVER,             0, std::nullopt, {CmdFlag::DontCount}},
+	{"GOLD",              EmitSingleChar, SCC_GOLD,               0, std::nullopt, {CmdFlag::DontCount}},
+	{"RED",               EmitSingleChar, SCC_RED,                0, std::nullopt, {CmdFlag::DontCount}},
+	{"PURPLE",            EmitSingleChar, SCC_PURPLE,             0, std::nullopt, {CmdFlag::DontCount}},
+	{"LTBROWN",           EmitSingleChar, SCC_LTBROWN,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"ORANGE",            EmitSingleChar, SCC_ORANGE,             0, std::nullopt, {CmdFlag::DontCount}},
+	{"GREEN",             EmitSingleChar, SCC_GREEN,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"YELLOW",            EmitSingleChar, SCC_YELLOW,             0, std::nullopt, {CmdFlag::DontCount}},
+	{"DKGREEN",           EmitSingleChar, SCC_DKGREEN,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"CREAM",             EmitSingleChar, SCC_CREAM,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"BROWN",             EmitSingleChar, SCC_BROWN,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"WHITE",             EmitSingleChar, SCC_WHITE,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"LTBLUE",            EmitSingleChar, SCC_LTBLUE,             0, std::nullopt, {CmdFlag::DontCount}},
+	{"GRAY",              EmitSingleChar, SCC_GRAY,               0, std::nullopt, {CmdFlag::DontCount}},
+	{"DKBLUE",            EmitSingleChar, SCC_DKBLUE,             0, std::nullopt, {CmdFlag::DontCount}},
+	{"BLACK",             EmitSingleChar, SCC_BLACK,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"COLOUR",            EmitSingleChar, SCC_COLOUR,             1, std::nullopt, {}},
+	{"PUSH_COLOUR",       EmitSingleChar, SCC_PUSH_COLOUR,        0, std::nullopt, {CmdFlag::DontCount}},
+	{"POP_COLOUR",        EmitSingleChar, SCC_POP_COLOUR,         0, std::nullopt, {CmdFlag::DontCount}},
 
-	{"REV",               EmitSingleChar, SCC_REVISION,           0, -1, {}}, // openttd revision string
+	{"REV",               EmitSingleChar, SCC_REVISION,           0, std::nullopt, {}}, // openttd revision string
 
-	{"STRING1",           EmitSingleChar, SCC_STRING1,            2, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and ONE argument
-	{"STRING2",           EmitSingleChar, SCC_STRING2,            3, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and TWO arguments
-	{"STRING3",           EmitSingleChar, SCC_STRING3,            4, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and THREE arguments
-	{"STRING4",           EmitSingleChar, SCC_STRING4,            5, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and FOUR arguments
-	{"STRING5",           EmitSingleChar, SCC_STRING5,            6, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and FIVE arguments
-	{"STRING6",           EmitSingleChar, SCC_STRING6,            7, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and SIX arguments
-	{"STRING7",           EmitSingleChar, SCC_STRING7,            8, -1, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and SEVEN arguments
+	{"STRING1",           EmitSingleChar, SCC_STRING1,            2, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and ONE argument
+	{"STRING2",           EmitSingleChar, SCC_STRING2,            3, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and TWO arguments
+	{"STRING3",           EmitSingleChar, SCC_STRING3,            4, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and THREE arguments
+	{"STRING4",           EmitSingleChar, SCC_STRING4,            5, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and FOUR arguments
+	{"STRING5",           EmitSingleChar, SCC_STRING5,            6, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and FIVE arguments
+	{"STRING6",           EmitSingleChar, SCC_STRING6,            7, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and SIX arguments
+	{"STRING7",           EmitSingleChar, SCC_STRING7,            8, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and SEVEN arguments
 
-	{"STATION_FEATURES",  EmitSingleChar, SCC_STATION_FEATURES,   1, -1, {}}, // station features string, icons of the features
-	{"INDUSTRY",          EmitSingleChar, SCC_INDUSTRY_NAME,      1, -1, {CmdFlag::Case, CmdFlag::Gender}}, // industry, takes an industry #, can have cases
+	{"STATION_FEATURES",  EmitSingleChar, SCC_STATION_FEATURES,   1, std::nullopt, {}}, // station features string, icons of the features
+	{"INDUSTRY",          EmitSingleChar, SCC_INDUSTRY_NAME,      1, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // industry, takes an industry #, can have cases
 	{"CARGO_LONG",        EmitSingleChar, SCC_CARGO_LONG,         2,  1, {CmdFlag::Gender}},
 	{"CARGO_SHORT",       EmitSingleChar, SCC_CARGO_SHORT,        2,  1, {CmdFlag::Gender}}, // short cargo description, only ### tons, or ### litres
 	{"CARGO_TINY",        EmitSingleChar, SCC_CARGO_TINY,         2,  1, {}}, // tiny cargo description with only the amount, not a specifier for the amount or the actual cargo name
-	{"CARGO_LIST",        EmitSingleChar, SCC_CARGO_LIST,         1, -1, {CmdFlag::Case}},
+	{"CARGO_LIST",        EmitSingleChar, SCC_CARGO_LIST,         1, std::nullopt, {CmdFlag::Case}},
 	{"POWER",             EmitSingleChar, SCC_POWER,              1,  0, {}},
 	{"POWER_TO_WEIGHT",   EmitSingleChar, SCC_POWER_TO_WEIGHT,    1,  0, {}},
 	{"VOLUME_LONG",       EmitSingleChar, SCC_VOLUME_LONG,        1,  0, {}},
@@ -92,16 +92,16 @@ static const CmdStruct _cmd_structs[] = {
 	{"UNITS_YEARS_OR_PERIODS",  EmitSingleChar, SCC_UNITS_YEARS_OR_PERIODS,  1,  0, {CmdFlag::Gender}},
 	{"UNITS_YEARS_OR_MINUTES",  EmitSingleChar, SCC_UNITS_YEARS_OR_MINUTES,  1,  0, {CmdFlag::Gender}},
 
-	{"P",                 EmitPlural,     0,                      0, -1, {CmdFlag::DontCount}}, // plural specifier
-	{"G",                 EmitGender,     0,                      0, -1, {CmdFlag::DontCount}}, // gender specifier
+	{"P",                 EmitPlural,     0,                      0, std::nullopt, {CmdFlag::DontCount}}, // plural specifier
+	{"G",                 EmitGender,     0,                      0, std::nullopt, {CmdFlag::DontCount}}, // gender specifier
 
-	{"DATE_TINY",         EmitSingleChar, SCC_DATE_TINY,          1, -1, {}},
-	{"DATE_SHORT",        EmitSingleChar, SCC_DATE_SHORT,         1, -1, {CmdFlag::Case}},
-	{"DATE_LONG",         EmitSingleChar, SCC_DATE_LONG,          1, -1, {CmdFlag::Case}},
-	{"DATE_ISO",          EmitSingleChar, SCC_DATE_ISO,           1, -1, {}},
+	{"DATE_TINY",         EmitSingleChar, SCC_DATE_TINY,          1, std::nullopt, {}},
+	{"DATE_SHORT",        EmitSingleChar, SCC_DATE_SHORT,         1, std::nullopt, {CmdFlag::Case}},
+	{"DATE_LONG",         EmitSingleChar, SCC_DATE_LONG,          1, std::nullopt, {CmdFlag::Case}},
+	{"DATE_ISO",          EmitSingleChar, SCC_DATE_ISO,           1, std::nullopt, {}},
 
-	{"STRING",            EmitSingleChar, SCC_STRING,             1, -1, {CmdFlag::Case, CmdFlag::Gender}},
-	{"RAW_STRING",        EmitSingleChar, SCC_RAW_STRING_POINTER, 1, -1, {CmdFlag::Gender}},
+	{"STRING",            EmitSingleChar, SCC_STRING,             1, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
+	{"RAW_STRING",        EmitSingleChar, SCC_RAW_STRING_POINTER, 1, std::nullopt, {CmdFlag::Gender}},
 
 	/* Numbers */
 	{"COMMA",             EmitSingleChar, SCC_COMMA,              1,  0, {}}, // Number with comma
@@ -114,47 +114,47 @@ static const CmdStruct _cmd_structs[] = {
 	{"CURRENCY_LONG",     EmitSingleChar, SCC_CURRENCY_LONG,      1,  0, {}},
 	{"CURRENCY_SHORT",    EmitSingleChar, SCC_CURRENCY_SHORT,     1,  0, {}}, // compact currency
 
-	{"WAYPOINT",          EmitSingleChar, SCC_WAYPOINT_NAME,      1, -1, {CmdFlag::Gender}}, // waypoint name
-	{"STATION",           EmitSingleChar, SCC_STATION_NAME,       1, -1, {CmdFlag::Gender}},
-	{"DEPOT",             EmitSingleChar, SCC_DEPOT_NAME,         2, -1, {CmdFlag::Gender}},
-	{"TOWN",              EmitSingleChar, SCC_TOWN_NAME,          1, -1, {CmdFlag::Gender}},
-	{"GROUP",             EmitSingleChar, SCC_GROUP_NAME,         1, -1, {CmdFlag::Gender}},
-	{"SIGN",              EmitSingleChar, SCC_SIGN_NAME,          1, -1, {CmdFlag::Gender}},
-	{"ENGINE",            EmitSingleChar, SCC_ENGINE_NAME,        1, -1, {CmdFlag::Gender}},
-	{"VEHICLE",           EmitSingleChar, SCC_VEHICLE_NAME,       1, -1, {CmdFlag::Gender}},
-	{"COMPANY",           EmitSingleChar, SCC_COMPANY_NAME,       1, -1, {CmdFlag::Gender}},
-	{"COMPANY_NUM",       EmitSingleChar, SCC_COMPANY_NUM,        1, -1, {}},
-	{"PRESIDENT_NAME",    EmitSingleChar, SCC_PRESIDENT_NAME,     1, -1, {CmdFlag::Gender}},
+	{"WAYPOINT",          EmitSingleChar, SCC_WAYPOINT_NAME,      1, std::nullopt, {CmdFlag::Gender}}, // waypoint name
+	{"STATION",           EmitSingleChar, SCC_STATION_NAME,       1, std::nullopt, {CmdFlag::Gender}},
+	{"DEPOT",             EmitSingleChar, SCC_DEPOT_NAME,         2, std::nullopt, {CmdFlag::Gender}},
+	{"TOWN",              EmitSingleChar, SCC_TOWN_NAME,          1, std::nullopt, {CmdFlag::Gender}},
+	{"GROUP",             EmitSingleChar, SCC_GROUP_NAME,         1, std::nullopt, {CmdFlag::Gender}},
+	{"SIGN",              EmitSingleChar, SCC_SIGN_NAME,          1, std::nullopt, {CmdFlag::Gender}},
+	{"ENGINE",            EmitSingleChar, SCC_ENGINE_NAME,        1, std::nullopt, {CmdFlag::Gender}},
+	{"VEHICLE",           EmitSingleChar, SCC_VEHICLE_NAME,       1, std::nullopt, {CmdFlag::Gender}},
+	{"COMPANY",           EmitSingleChar, SCC_COMPANY_NAME,       1, std::nullopt, {CmdFlag::Gender}},
+	{"COMPANY_NUM",       EmitSingleChar, SCC_COMPANY_NUM,        1, std::nullopt, {}},
+	{"PRESIDENT_NAME",    EmitSingleChar, SCC_PRESIDENT_NAME,     1, std::nullopt, {CmdFlag::Gender}},
 
-	{"SPACE",             EmitSingleChar, ' ',                    0, -1, {CmdFlag::DontCount}},
-	{"",                  EmitSingleChar, '\n',                   0, -1, {CmdFlag::DontCount}},
-	{"{",                 EmitSingleChar, '{',                    0, -1, {CmdFlag::DontCount}},
-	{"UP_ARROW",          EmitSingleChar, SCC_UP_ARROW,           0, -1, {CmdFlag::DontCount}},
-	{"SMALL_UP_ARROW",    EmitSingleChar, SCC_SMALL_UP_ARROW,     0, -1, {CmdFlag::DontCount}},
-	{"SMALL_DOWN_ARROW",  EmitSingleChar, SCC_SMALL_DOWN_ARROW,   0, -1, {CmdFlag::DontCount}},
-	{"TRAIN",             EmitSingleChar, SCC_TRAIN,              0, -1, {CmdFlag::DontCount}},
-	{"LORRY",             EmitSingleChar, SCC_LORRY,              0, -1, {CmdFlag::DontCount}},
-	{"BUS",               EmitSingleChar, SCC_BUS,                0, -1, {CmdFlag::DontCount}},
-	{"PLANE",             EmitSingleChar, SCC_PLANE,              0, -1, {CmdFlag::DontCount}},
-	{"SHIP",              EmitSingleChar, SCC_SHIP,               0, -1, {CmdFlag::DontCount}},
-	{"NBSP",              EmitSingleChar, 0xA0,                   0, -1, {CmdFlag::DontCount}},
-	{"COPYRIGHT",         EmitSingleChar, 0xA9,                   0, -1, {CmdFlag::DontCount}},
-	{"DOWN_ARROW",        EmitSingleChar, SCC_DOWN_ARROW,         0, -1, {CmdFlag::DontCount}},
-	{"CHECKMARK",         EmitSingleChar, SCC_CHECKMARK,          0, -1, {CmdFlag::DontCount}},
-	{"CROSS",             EmitSingleChar, SCC_CROSS,              0, -1, {CmdFlag::DontCount}},
-	{"RIGHT_ARROW",       EmitSingleChar, SCC_RIGHT_ARROW,        0, -1, {CmdFlag::DontCount}},
-	{"SMALL_LEFT_ARROW",  EmitSingleChar, SCC_LESS_THAN,          0, -1, {CmdFlag::DontCount}},
-	{"SMALL_RIGHT_ARROW", EmitSingleChar, SCC_GREATER_THAN,       0, -1, {CmdFlag::DontCount}},
+	{"SPACE",             EmitSingleChar, ' ',                    0, std::nullopt, {CmdFlag::DontCount}},
+	{"",                  EmitSingleChar, '\n',                   0, std::nullopt, {CmdFlag::DontCount}},
+	{"{",                 EmitSingleChar, '{',                    0, std::nullopt, {CmdFlag::DontCount}},
+	{"UP_ARROW",          EmitSingleChar, SCC_UP_ARROW,           0, std::nullopt, {CmdFlag::DontCount}},
+	{"SMALL_UP_ARROW",    EmitSingleChar, SCC_SMALL_UP_ARROW,     0, std::nullopt, {CmdFlag::DontCount}},
+	{"SMALL_DOWN_ARROW",  EmitSingleChar, SCC_SMALL_DOWN_ARROW,   0, std::nullopt, {CmdFlag::DontCount}},
+	{"TRAIN",             EmitSingleChar, SCC_TRAIN,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"LORRY",             EmitSingleChar, SCC_LORRY,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"BUS",               EmitSingleChar, SCC_BUS,                0, std::nullopt, {CmdFlag::DontCount}},
+	{"PLANE",             EmitSingleChar, SCC_PLANE,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"SHIP",              EmitSingleChar, SCC_SHIP,               0, std::nullopt, {CmdFlag::DontCount}},
+	{"NBSP",              EmitSingleChar, 0xA0,                   0, std::nullopt, {CmdFlag::DontCount}},
+	{"COPYRIGHT",         EmitSingleChar, 0xA9,                   0, std::nullopt, {CmdFlag::DontCount}},
+	{"DOWN_ARROW",        EmitSingleChar, SCC_DOWN_ARROW,         0, std::nullopt, {CmdFlag::DontCount}},
+	{"CHECKMARK",         EmitSingleChar, SCC_CHECKMARK,          0, std::nullopt, {CmdFlag::DontCount}},
+	{"CROSS",             EmitSingleChar, SCC_CROSS,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"RIGHT_ARROW",       EmitSingleChar, SCC_RIGHT_ARROW,        0, std::nullopt, {CmdFlag::DontCount}},
+	{"SMALL_LEFT_ARROW",  EmitSingleChar, SCC_LESS_THAN,          0, std::nullopt, {CmdFlag::DontCount}},
+	{"SMALL_RIGHT_ARROW", EmitSingleChar, SCC_GREATER_THAN,       0, std::nullopt, {CmdFlag::DontCount}},
 
 	/* The following are directional formatting codes used to get the RTL strings right:
 	 * http://www.unicode.org/unicode/reports/tr9/#Directional_Formatting_Codes */
-	{"LRM",               EmitSingleChar, CHAR_TD_LRM,            0, -1, {CmdFlag::DontCount}},
-	{"RLM",               EmitSingleChar, CHAR_TD_RLM,            0, -1, {CmdFlag::DontCount}},
-	{"LRE",               EmitSingleChar, CHAR_TD_LRE,            0, -1, {CmdFlag::DontCount}},
-	{"RLE",               EmitSingleChar, CHAR_TD_RLE,            0, -1, {CmdFlag::DontCount}},
-	{"LRO",               EmitSingleChar, CHAR_TD_LRO,            0, -1, {CmdFlag::DontCount}},
-	{"RLO",               EmitSingleChar, CHAR_TD_RLO,            0, -1, {CmdFlag::DontCount}},
-	{"PDF",               EmitSingleChar, CHAR_TD_PDF,            0, -1, {CmdFlag::DontCount}},
+	{"LRM",               EmitSingleChar, CHAR_TD_LRM,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"RLM",               EmitSingleChar, CHAR_TD_RLM,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"LRE",               EmitSingleChar, CHAR_TD_LRE,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"RLE",               EmitSingleChar, CHAR_TD_RLE,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"LRO",               EmitSingleChar, CHAR_TD_LRO,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"RLO",               EmitSingleChar, CHAR_TD_RLO,            0, std::nullopt, {CmdFlag::DontCount}},
+	{"PDF",               EmitSingleChar, CHAR_TD_PDF,            0, std::nullopt, {CmdFlag::DontCount}},
 };
 
 /** Description of a plural form */
