@@ -31,7 +31,13 @@ static const char *_cur_ident;
 static ParsedCommandStruct _cur_pcs;
 static int _cur_argidx;
 
-static const CmdStruct *ParseCommandString(const char **str, std::string &param, int *argno, int *casei);
+struct ParsedCommandString {
+	const CmdStruct *cmd = nullptr;
+	std::string param;
+	std::optional<int> argno;
+	std::optional<int> casei;
+};
+static ParsedCommandString ParseCommandString(const char **str);
 static int TranslateArgumentIdx(int arg, int offset = 0);
 
 /**
@@ -133,22 +139,17 @@ uint StringData::Version() const
 		const LangString *ls = this->strings[i].get();
 
 		if (ls != nullptr) {
-			const CmdStruct *cs;
-			const char *s;
-			std::string buf;
-			int argno;
-			int casei;
-
-			s = ls->name.c_str();
+			const char *s = ls->name.c_str();
 			hash ^= i * 0x717239;
 			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
 			hash = VersionHashStr(hash, s + 1);
 
 			s = ls->english.c_str();
-			while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != nullptr) {
-				if (cs->flags.Test(CmdFlag::DontCount)) continue;
+			ParsedCommandString cs;
+			while ((cs = ParseCommandString(&s)).cmd != nullptr) {
+				if (cs.cmd->flags.Test(CmdFlag::DontCount)) continue;
 
-				hash ^= (cs - _cmd_structs) * 0x1234567;
+				hash ^= (cs.cmd - _cmd_structs) * 0x1234567;
 				hash = (hash & 1 ? hash >> 1 ^ 0xF00BAA4 : hash >> 1);
 			}
 		}
@@ -237,23 +238,23 @@ void EmitSingleChar(Buffer *buffer, char *buf, int value)
 
 /* The plural specifier looks like
  * {NUM} {PLURAL <ARG#> passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
-static bool ParseRelNum(char **buf, int *value, int *offset)
+static std::pair<std::optional<int>, std::optional<int>> ParseRelNum(char **buf)
 {
 	const char *s = *buf;
 	char *end;
 
 	while (*s == ' ' || *s == '\t') s++;
 	int v = std::strtol(s, &end, 0);
-	if (end == s) return false;
-	*value = v;
-	if (offset != nullptr && *end == ':') {
+	if (end == s) return {};
+	std::optional<int> offset;
+	if (*end == ':') {
 		/* Take the Nth within */
 		s = end + 1;
-		*offset = std::strtol(s, &end, 0);
-		if (end == s) return false;
+		offset = std::strtol(s, &end, 0);
+		if (end == s) return {};
 	}
 	*buf = end;
-	return true;
+	return {v, offset};
 }
 
 /* Parse out the next word, or nullptr */
@@ -312,19 +313,21 @@ static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words,
 
 void EmitPlural(Buffer *buffer, char *buf, int)
 {
-	int argidx = _cur_argidx;
-	int offset = -1;
 	int expected = _plural_forms[_lang.plural_form].plural_count;
 	std::vector<const char *> words(std::max(expected, MAX_PLURALS), nullptr);
 	int nw = 0;
 
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
-	if (!ParseRelNum(&buf, &argidx, &offset)) argidx--;
+	auto [argidx, offset] = ParseRelNum(&buf);
+	if (!argidx.has_value()) {
+		if (_cur_argidx == 0) StrgenFatal("Plural choice needs positional reference");
+		argidx = _cur_argidx - 1;
+	}
 
-	const CmdStruct *cmd = _cur_pcs.consuming_commands[argidx];
-	if (offset == -1) {
+	const CmdStruct *cmd = _cur_pcs.consuming_commands[*argidx];
+	if (!offset.has_value()) {
 		/* Use default offset */
-		if (cmd == nullptr || cmd->default_plural_offset < 0) {
+		if (cmd == nullptr || !cmd->default_plural_offset.has_value()) {
 			StrgenFatal("Command '{}' has no (default) plural position", cmd == nullptr ? "<empty>" : cmd->cmd);
 		}
 		offset = cmd->default_plural_offset;
@@ -358,21 +361,17 @@ void EmitPlural(Buffer *buffer, char *buf, int)
 
 	buffer->AppendUtf8(SCC_PLURAL_LIST);
 	buffer->AppendByte(_lang.plural_form);
-	buffer->AppendByte(TranslateArgumentIdx(argidx, offset));
+	buffer->AppendByte(TranslateArgumentIdx(*argidx, *offset));
 	EmitWordList(buffer, words, nw);
 }
 
 void EmitGender(Buffer *buffer, char *buf, int)
 {
-	int argidx = _cur_argidx;
-	int offset = 0;
-	uint nw;
-
 	if (buf[0] == '=') {
 		buf++;
 
 		/* This is a {G=DER} command */
-		nw = _lang.GetGenderIndex(buf);
+		uint nw = _lang.GetGenderIndex(buf);
 		if (nw >= MAX_NUM_GENDERS) StrgenFatal("G argument '{}' invalid", buf);
 
 		/* now nw contains the gender index */
@@ -383,13 +382,16 @@ void EmitGender(Buffer *buffer, char *buf, int)
 
 		/* This is a {G 0 foo bar two} command.
 		 * If no relative number exists, default to +0 */
-		ParseRelNum(&buf, &argidx, &offset);
+		auto [argidx, offset] = ParseRelNum(&buf);
+		if (!argidx.has_value()) argidx = _cur_argidx;
+		if (!offset.has_value()) offset = 0;
 
-		const CmdStruct *cmd = _cur_pcs.consuming_commands[argidx];
+		const CmdStruct *cmd = _cur_pcs.consuming_commands[*argidx];
 		if (cmd == nullptr || !cmd->flags.Test(CmdFlag::Gender)) {
 			StrgenFatal("Command '{}' can't have a gender", cmd == nullptr ? "<empty>" : cmd->cmd);
 		}
 
+		uint nw;
 		for (nw = 0; nw < MAX_NUM_GENDERS; nw++) {
 			words[nw] = ParseWord(&buf);
 			if (words[nw] == nullptr) break;
@@ -398,7 +400,7 @@ void EmitGender(Buffer *buffer, char *buf, int)
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		buffer->AppendUtf8(SCC_GENDER_LIST);
-		buffer->AppendByte(TranslateArgumentIdx(argidx, offset));
+		buffer->AppendByte(TranslateArgumentIdx(*argidx, *offset));
 		EmitWordList(buffer, words, nw);
 	}
 }
@@ -424,59 +426,56 @@ static uint ResolveCaseName(const char *str, size_t len)
 	return case_idx + 1;
 }
 
-/* returns nullptr on eof
- * else returns command struct */
-static const CmdStruct *ParseCommandString(const char **str, std::string &param, int *argno, int *casei)
+/* returns cmd == nullptr on eof */
+static ParsedCommandString ParseCommandString(const char **str)
 {
-	const char *s = *str, *start;
-	char c;
-
-	*argno = -1;
-	*casei = -1;
+	ParsedCommandString result;
+	const char *s = *str;
 
 	/* Scan to the next command, exit if there's no next command. */
 	for (; *s != '{'; s++) {
-		if (*s == '\0') return nullptr;
+		if (*s == '\0') return {};
 	}
 	s++; // Skip past the {
 
 	if (*s >= '0' && *s <= '9') {
 		char *end;
 
-		*argno = std::strtoul(s, &end, 0);
+		result.argno = std::strtoul(s, &end, 0);
 		if (*end != ':') StrgenFatal("missing arg #");
 		s = end + 1;
 	}
 
 	/* parse command name */
-	start = s;
+	const char *start = s;
+	char c;
 	do {
 		c = *s++;
 	} while (c != '}' && c != ' ' && c != '=' && c != '.' && c != 0);
 
-	const CmdStruct *cmd = FindCmd(start, s - start - 1);
-	if (cmd == nullptr) {
+	result.cmd = FindCmd(start, s - start - 1);
+	if (result.cmd == nullptr) {
 		std::string command(start, s - start - 1);
 		StrgenError("Undefined command '{}'", command);
-		return nullptr;
+		return {};
 	}
 
 	if (c == '.') {
 		const char *casep = s;
 
-		if (!cmd->flags.Test(CmdFlag::Case)) {
-			StrgenFatal("Command '{}' can't have a case", cmd->cmd);
+		if (!result.cmd->flags.Test(CmdFlag::Case)) {
+			StrgenFatal("Command '{}' can't have a case", result.cmd->cmd);
 		}
 
 		do {
 			c = *s++;
 		} while (c != '}' && c != ' ' && c != '\0');
-		*casei = ResolveCaseName(casep, s - casep - 1);
+		result.casei = ResolveCaseName(casep, s - casep - 1);
 	}
 
 	if (c == '\0') {
 		StrgenError("Missing }} from command '{}'", start);
-		return nullptr;
+		return {};
 	}
 
 	if (c != '}') {
@@ -488,15 +487,15 @@ static const CmdStruct *ParseCommandString(const char **str, std::string &param,
 			if (c == '}') break;
 			if (c == '\0') {
 				StrgenError("Missing }} from command '{}'", start);
-				return nullptr;
+				return {};
 			}
-			param += c;
+			result.param += c;
 		}
 	}
 
 	*str = s;
 
-	return cmd;
+	return result;
 }
 
 /**
@@ -513,30 +512,26 @@ StringReader::StringReader(StringData &data, const std::string &file, bool maste
 
 ParsedCommandStruct ExtractCommandString(const char *s, bool)
 {
-	int argno;
-	int argidx = 0;
-	int casei;
-
 	ParsedCommandStruct p;
 
+	int argidx = 0;
 	for (;;) {
 		/* read until next command from a. */
-		std::string param;
-		const CmdStruct *ar = ParseCommandString(&s, param, &argno, &casei);
+		auto cs = ParseCommandString(&s);
 
-		if (ar == nullptr) break;
+		if (cs.cmd == nullptr) break;
 
 		/* Sanity checking */
-		if (argno != -1 && ar->consumes == 0) StrgenFatal("Non consumer param can't have a paramindex");
+		if (cs.argno.has_value() && cs.cmd->consumes == 0) StrgenFatal("Non consumer param can't have a paramindex");
 
-		if (ar->consumes) {
-			if (argno != -1) argidx = argno;
-			if (argidx < 0 || (uint)argidx >= p.consuming_commands.max_size()) StrgenFatal("invalid param idx {}", argidx);
-			if (p.consuming_commands[argidx] != nullptr && p.consuming_commands[argidx] != ar) StrgenFatal("duplicate param idx {}", argidx);
+		if (cs.cmd->consumes > 0) {
+			if (cs.argno.has_value()) argidx = *cs.argno;
+			if ((uint)argidx >= p.consuming_commands.max_size()) StrgenFatal("invalid param idx {}", argidx);
+			if (p.consuming_commands[argidx] != nullptr && p.consuming_commands[argidx] != cs.cmd) StrgenFatal("duplicate param idx {}", argidx);
 
-			p.consuming_commands[argidx++] = ar;
-		} else if (!ar->flags.Test(CmdFlag::DontCount)) { // Ignore some of them
-			p.non_consuming_commands.emplace_back(ar, std::move(param));
+			p.consuming_commands[argidx++] = cs.cmd;
+		} else if (!cs.cmd->flags.Test(CmdFlag::DontCount)) { // Ignore some of them
+			p.non_consuming_commands.emplace_back(cs.cmd, std::move(cs.param));
 		}
 	}
 
@@ -809,33 +804,31 @@ static void PutCommandString(Buffer *buffer, const char *str)
 			continue;
 		}
 
-		std::string param;
-		int argno;
-		int casei;
-		const CmdStruct *cs = ParseCommandString(&str, param, &argno, &casei);
-		if (cs == nullptr) break;
+		auto cs = ParseCommandString(&str);
+		auto *cmd = cs.cmd;
+		if (cmd == nullptr) break;
 
-		if (casei != -1) {
+		if (cs.casei.has_value()) {
 			buffer->AppendUtf8(SCC_SET_CASE); // {SET_CASE}
-			buffer->AppendByte(casei);
+			buffer->AppendByte(*cs.casei);
 		}
 
 		/* For params that consume values, we need to handle the argindex properly */
-		if (cs->consumes > 0) {
+		if (cmd->consumes > 0) {
 			/* Check if we need to output a move-param command */
-			if (argno != -1 && argno != _cur_argidx) {
-				_cur_argidx = argno;
+			if (cs.argno.has_value() && *cs.argno != _cur_argidx) {
+				_cur_argidx = *cs.argno;
 				PutArgidxCommand(buffer);
 			}
 
 			/* Output the one from the master string... it's always accurate. */
-			cs = _cur_pcs.consuming_commands[_cur_argidx++];
-			if (cs == nullptr) {
+			cmd = _cur_pcs.consuming_commands[_cur_argidx++];
+			if (cmd == nullptr) {
 				StrgenFatal("{}: No argument exists at position {}", _cur_ident, _cur_argidx - 1);
 			}
 		}
 
-		cs->proc(buffer, param.data(), cs->value);
+		cmd->proc(buffer, cs.param.data(), cmd->value);
 	}
 }
 
