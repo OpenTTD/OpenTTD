@@ -299,7 +299,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		return CommandCost(STR_ERROR_START_AND_END_MUST_BE_IN);
 	}
 
-	if (tile_end < tile_start) Swap(tile_start, tile_end);
+	if (tile_end < tile_start) std::swap(tile_start, tile_end);
 
 	uint bridge_len = GetTunnelBridgeLength(tile_start, tile_end);
 	if (transport_type != TRANSPORT_WATER) {

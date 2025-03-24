@@ -110,8 +110,8 @@ uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int
 	uint32_t retval = 0;
 
 	if (axis == AXIS_X) {
-		Swap(platforms, length);
-		Swap(x, y);
+		std::swap(platforms, length);
+		std::swap(x, y);
 	}
 
 	if (centred) {

@@ -2539,7 +2539,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 	Direction rotation = as->layouts[layout].rotation;
 	int w = as->size_x;
 	int h = as->size_y;
-	if (rotation == DIR_E || rotation == DIR_W) Swap(w, h);
+	if (rotation == DIR_E || rotation == DIR_W) std::swap(w, h);
 	TileArea airport_area = TileArea(tile, w, h);
 
 	if (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread) {
@@ -3718,7 +3718,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		x &= 0xF;
 		y &= 0xF;
 
-		if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
+		if (DiagDirToAxis(dir) != AXIS_X) std::swap(x, y);
 		if (y == TILE_SIZE / 2) {
 			if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
 			stop &= TILE_SIZE - 1;
@@ -4822,9 +4822,9 @@ StationID FlowStat::GetVia(StationID excluded, StationID excluded2) const
 	if (interval2 >= new_max) return StationID::Invalid(); // Only the two excluded stations in the map.
 	new_max -= interval2;
 	if (begin > begin2) {
-		Swap(begin, begin2);
-		Swap(end, end2);
-		Swap(interval, interval2);
+		std::swap(begin, begin2);
+		std::swap(end, end2);
+		std::swap(interval, interval2);
 	}
 	rand = RandomRange(new_max);
 	SharesMap::const_iterator it3 = this->shares.upper_bound(this->unrestricted);

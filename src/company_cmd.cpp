@@ -476,14 +476,14 @@ static Colours GenerateCompanyColour()
 	/* And randomize it */
 	for (uint i = 0; i < 100; i++) {
 		uint r = Random();
-		Swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
+		std::swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
 	}
 
 	/* Bubble sort it according to the values in table 1 */
 	for (uint i = 0; i < COLOUR_END; i++) {
 		for (uint j = 1; j < COLOUR_END; j++) {
 			if (_colour_sort[colours[j - 1]] < _colour_sort[colours[j]]) {
-				Swap(colours[j - 1], colours[j]);
+				std::swap(colours[j - 1], colours[j]);
 			}
 		}
 	}
@@ -504,7 +504,7 @@ static Colours GenerateCompanyColour()
 			if (similar == INVALID_COLOUR) break;
 
 			for (uint i = 1; i < COLOUR_END; i++) {
-				if (colours[i - 1] == similar) Swap(colours[i - 1], colours[i]);
+				if (colours[i - 1] == similar) std::swap(colours[i - 1], colours[i]);
 			}
 		}
 	}

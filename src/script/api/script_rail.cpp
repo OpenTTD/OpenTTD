@@ -272,7 +272,7 @@
 	if (!IsRailTile(tile)) return false;
 	if (from == to || ScriptMap::DistanceManhattan(from, tile) != 1 || ScriptMap::DistanceManhattan(tile, to) != 1) return false;
 
-	if (to < from) ::Swap(from, to);
+	if (to < from) std::swap(from, to);
 
 	if (tile - from == 1) {
 		if (to - tile == 1) return (GetRailTracks(tile) & RAILTRACK_NE_SW) != 0;

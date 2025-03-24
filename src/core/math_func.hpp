@@ -272,19 +272,6 @@ constexpr bool IsInsideMM(const size_t x, const size_t min, const size_t max) no
 constexpr bool IsInsideMM(const ConvertibleThroughBase auto x, const size_t min, const size_t max) noexcept { return IsInsideMM(x.base(), min, max); }
 
 /**
- * Type safe swap operation
- * @param a variable to swap with b
- * @param b variable to swap with a
- */
-template <typename T>
-constexpr void Swap(T &a, T &b)
-{
-	T t = a;
-	a = b;
-	b = t;
-}
-
-/**
  * Converts a "fract" value 0..255 to "percent" value 0..100
  * @param i value to convert, range 0..255
  * @return value in range 0..100
