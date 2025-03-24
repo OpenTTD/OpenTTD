@@ -235,25 +235,16 @@ void EmitSingleChar(Buffer *buffer, char *buf, int value)
 }
 
 /* The plural specifier looks like
- * {NUM} {PLURAL -1 passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
+ * {NUM} {PLURAL <ARG#> passenger passengers} then it picks either passenger/passengers depending on the count in NUM */
 static bool ParseRelNum(char **buf, int *value, int *offset)
 {
 	const char *s = *buf;
 	char *end;
-	bool rel = false;
 
 	while (*s == ' ' || *s == '\t') s++;
-	if (*s == '+') {
-		rel = true;
-		s++;
-	}
 	int v = std::strtol(s, &end, 0);
 	if (end == s) return false;
-	if (rel || v < 0) {
-		*value += v;
-	} else {
-		*value = v;
-	}
+	*value = v;
 	if (offset != nullptr && *end == ':') {
 		/* Take the Nth within */
 		s = end + 1;
