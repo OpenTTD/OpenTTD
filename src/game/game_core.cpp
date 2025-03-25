@@ -24,9 +24,9 @@
 
 /* static */ uint Game::frame_counter = 0;
 /* static */ GameInfo *Game::info = nullptr;
-/* static */ GameInstance *Game::instance = nullptr;
-/* static */ GameScannerInfo *Game::scanner_info = nullptr;
-/* static */ GameScannerLibrary *Game::scanner_library = nullptr;
+/* static */ std::unique_ptr<GameInstance> Game::instance = nullptr;
+/* static */ std::unique_ptr<GameScannerInfo> Game::scanner_info = nullptr;
+/* static */ std::unique_ptr<GameScannerLibrary> Game::scanner_library = nullptr;
 
 /* static */ void Game::GameLoop()
 {
@@ -62,9 +62,9 @@
 
 	if (Game::scanner_info == nullptr) {
 		TarScanner::DoScan(TarScanner::Mode::Game);
-		Game::scanner_info = new GameScannerInfo();
+		Game::scanner_info = std::make_unique<GameScannerInfo>();
 		Game::scanner_info->Initialize();
-		Game::scanner_library = new GameScannerLibrary();
+		Game::scanner_library = std::make_unique<GameScannerLibrary>();
 		Game::scanner_library->Initialize();
 	}
 }
@@ -89,7 +89,7 @@
 	cur_company.Change(OWNER_DEITY);
 
 	Game::info = info;
-	Game::instance = new GameInstance();
+	Game::instance = std::make_unique<GameInstance>();
 	Game::instance->Initialize(info);
 	Game::instance->LoadOnStack(config->GetToLoadData());
 	config->SetToLoadData(nullptr);
@@ -103,8 +103,7 @@
 {
 	Backup<CompanyID> cur_company(_current_company);
 
-	delete Game::instance;
-	Game::instance = nullptr;
+	Game::instance.reset();
 	Game::info = nullptr;
 
 	cur_company.Restore();
@@ -112,10 +111,8 @@
 	if (keepConfig) {
 		Rescan();
 	} else {
-		delete Game::scanner_info;
-		delete Game::scanner_library;
-		Game::scanner_info = nullptr;
-		Game::scanner_library = nullptr;
+		Game::scanner_info.reset();
+		Game::scanner_library.reset();
 
 		if (_settings_game.game_config != nullptr) {
 			delete _settings_game.game_config;
@@ -172,8 +169,7 @@
 			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_game.game_config->GetName());
 			_settings_game.game_config->Change(std::nullopt);
 			if (Game::instance != nullptr) {
-				delete Game::instance;
-				Game::instance = nullptr;
+				Game::instance.reset();
 				Game::info = nullptr;
 			}
 		} else if (Game::instance != nullptr) {
@@ -262,9 +258,9 @@
 
 /* static */ GameScannerInfo *Game::GetScannerInfo()
 {
-	return Game::scanner_info;
+	return Game::scanner_info.get();
 }
 /* static */ GameScannerLibrary *Game::GetScannerLibrary()
 {
-	return Game::scanner_library;
+	return Game::scanner_library.get();
 }

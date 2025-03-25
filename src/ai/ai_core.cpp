@@ -24,8 +24,8 @@
 #include "../safeguards.h"
 
 /* static */ uint AI::frame_counter = 0;
-/* static */ AIScannerInfo *AI::scanner_info = nullptr;
-/* static */ AIScannerLibrary *AI::scanner_library = nullptr;
+/* static */ std::unique_ptr<AIScannerInfo> AI::scanner_info = nullptr;
+/* static */ std::unique_ptr<AIScannerLibrary> AI::scanner_library = nullptr;
 
 /* static */ bool AI::CanStartNew()
 {
@@ -169,9 +169,9 @@
 	AI::frame_counter = 0;
 	if (AI::scanner_info == nullptr) {
 		TarScanner::DoScan(TarScanner::Mode::AI);
-		AI::scanner_info = new AIScannerInfo();
+		AI::scanner_info = std::make_unique<AIScannerInfo>();
 		AI::scanner_info->Initialize();
-		AI::scanner_library = new AIScannerLibrary();
+		AI::scanner_library = std::make_unique<AIScannerLibrary>();
 		AI::scanner_library->Initialize();
 	}
 }
@@ -185,10 +185,8 @@
 		 *  still load all the AIS, while keeping the configs in place */
 		Rescan();
 	} else {
-		delete AI::scanner_info;
-		delete AI::scanner_library;
-		AI::scanner_info = nullptr;
-		AI::scanner_library = nullptr;
+		AI::scanner_info.reset();
+		AI::scanner_library.reset();
 
 		for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 			if (_settings_game.ai_config[c] != nullptr) {
@@ -354,11 +352,11 @@
 
 /* static */ AIScannerInfo *AI::GetScannerInfo()
 {
-	return AI::scanner_info;
+	return AI::scanner_info.get();
 }
 
 /* static */ AIScannerLibrary *AI::GetScannerLibrary()
 {
-	return AI::scanner_library;
+	return AI::scanner_library.get();
 }
 
