@@ -390,13 +390,13 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
 	auto process_tile = [&](TileIndex cur_tile) {
 		const RoadStopSpec *ss = GetRoadStopSpec(cur_tile);
 		if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
-			CargoType cargo;
+			uint8_t local_cargo;
 			if (!IsValidCargoType(cargo_type)) {
-				cargo = INVALID_CARGO;
+				local_cargo = UINT8_MAX;
 			} else {
-				cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
+				local_cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 			}
-			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, cur_tile, (random_bits << 16) | Random(), (uint8_t)trigger | (cargo << 8));
+			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, cur_tile, (random_bits << 16) | Random(), (uint8_t)trigger | (local_cargo << 8));
 		}
 	};
 

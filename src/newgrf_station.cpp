@@ -915,13 +915,13 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
-				CargoType cargo;
+				uint8_t local_cargo;
 				if (!IsValidCargoType(cargo_type)) {
-					cargo = INVALID_CARGO;
+					local_cargo = UINT8_MAX;
 				} else {
-					cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
+					local_cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 				}
-				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), (uint8_t)trigger | (cargo << 8));
+				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), (uint8_t)trigger | (local_cargo << 8));
 			}
 		}
 	}
