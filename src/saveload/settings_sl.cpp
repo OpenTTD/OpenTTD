@@ -164,7 +164,11 @@ struct PATSChunkHandler : ChunkHandler {
 
 	void LoadCheck(size_t) const override
 	{
-		LoadSettings(GetSaveLoadSettingTable(), &_load_check_data.settings, _settings_sl_compat);
+		GameSettings settings{};
+		LoadSettings(GetSaveLoadSettingTable(), &settings, _settings_sl_compat);
+		/* We're only interested in landscape and starting year. */
+		_load_check_data.landscape = settings.game_creation.landscape;
+		_load_check_data.starting_year = settings.game_creation.starting_year;
 	}
 
 	void Save() const override
