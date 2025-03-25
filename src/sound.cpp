@@ -268,7 +268,7 @@ template <>
 	if (BaseMedia<SoundsSet>::used_set != nullptr) return true;
 
 	const SoundsSet *best = nullptr;
-	for (const SoundsSet *c = BaseMedia<SoundsSet>::available_sets; c != nullptr; c = c->next) {
+	for (const auto &c : BaseMedia<SoundsSet>::available_sets) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
@@ -277,7 +277,7 @@ template <>
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files &&
 					(best->shortname == c->shortname && best->version < c->version))) {
-			best = c;
+			best = c.get();
 		}
 	}
 
