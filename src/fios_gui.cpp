@@ -54,7 +54,8 @@ void LoadCheckData::Clear()
 
 	this->map_size_x = this->map_size_y = 256; // Default for old savegames which do not store mapsize.
 	this->current_date = CalendarTime::MIN_DATE;
-	this->settings = {};
+	this->landscape = {};
+	this->starting_year = {};
 
 	companies.clear();
 
@@ -558,9 +559,8 @@ public:
 			if (tr.top > tr.bottom) return;
 
 			/* Climate */
-			LandscapeType landscape = _load_check_data.settings.game_creation.landscape;
-			if (to_underlying(landscape) < NUM_LANDSCAPE) {
-				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(landscape)));
+			if (to_underlying(_load_check_data.landscape) < NUM_LANDSCAPE) {
+				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(_load_check_data.landscape)));
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 
@@ -568,8 +568,8 @@ public:
 			if (tr.top > tr.bottom) return;
 
 			/* Start date (if available) */
-			if (_load_check_data.settings.game_creation.starting_year != 0) {
-				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_START_DATE, TimerGameCalendar::ConvertYMDToDate(_load_check_data.settings.game_creation.starting_year, 0, 1)));
+			if (_load_check_data.starting_year != 0) {
+				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_START_DATE, TimerGameCalendar::ConvertYMDToDate(_load_check_data.starting_year, 0, 1)));
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 			if (tr.top > tr.bottom) return;

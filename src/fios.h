@@ -39,7 +39,8 @@ struct LoadCheckData {
 	uint32_t map_size_y = 0;
 	TimerGameCalendar::Date current_date{};
 
-	GameSettings settings{};
+	LandscapeType landscape{}; ///< Landscape type.
+	TimerGameCalendar::Year starting_year{}; ///< Starting date.
 
 	CompanyPropertiesMap companies{}; ///< Company information.
 
