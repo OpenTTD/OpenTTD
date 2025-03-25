@@ -19,6 +19,7 @@
  *
  * API additions:
  * \li GSEventVehicleCrashed::GetVictims
+ * \li GSEventVehicleCrashed::GetVehicleOwner
  * \li GSEventCompanyRenamed
  * \li GSEventPresidentRenamed
  * \li GSCargo::CC_OVERSIZED
