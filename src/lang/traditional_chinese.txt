@@ -384,7 +384,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}暫停�
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}快轉遊戲
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}選項和設定
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}儲存遊戲、載入遊戲、放棄遊戲、離開
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}開啟地圖、額外視野、貨物流或標誌清單
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}開啟地圖、新增檢視視窗、貨物流或標誌清單
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}開啟市鎮名單或建立市鎮
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}開啟補助項目
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}開啟各公司車站清單
@@ -419,7 +419,7 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}場景�
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}將開始時間往前 1 年
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}將開始時間往後 1 年
 STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}點選可輸入開始年份
-STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}開啟地圖、額外視野、標誌清單、市鎮或工業目錄
+STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}開啟地圖、新增檢視視窗、標誌清單、市鎮或工業目錄
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}修改或產生地形
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}建立或產生市鎮
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}建立或產生工業
@@ -463,7 +463,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :顯示標誌
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :顯示競手對手的標誌和車站名稱
 STR_SETTINGS_MENU_FULL_ANIMATION                                :完整動畫
 STR_SETTINGS_MENU_FULL_DETAIL                                   :完整細節
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :視野穿透建築物
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :透明建築物
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :半透明標籤
 
 # File menu
@@ -474,7 +474,7 @@ STR_FILE_MENU_EXIT                                              :離開
 
 # Map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界地圖
-STR_MAP_MENU_EXTRA_VIEWPORT                                     :打開新視野
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :新增檢視視窗
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物流程索引
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
 
@@ -949,11 +949,11 @@ STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}{TOWN} 地方政府與 {STRING} 簽署了 12 分鐘專屬營運權合約！
 
 # Extra view window
-STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}視野 {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}複製至本視野
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}將主視野的位置複製到此視窗
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}貼上至主視野
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}將主視野位置移到此視窗的中央位置
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}檢視 {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}複製至本視窗
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TOOLTIP                        :{BLACK}將主畫面的位置複製到此視窗
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}貼上至主畫面
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}將主畫面位置移到此視窗的中央位置
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}遊戲選項
@@ -1425,13 +1425,13 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中間
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :遠端
 
-STR_CONFIG_SETTING_AUTOSCROLL                                   :滑鼠在視窗邊緣時移動視窗：{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :如啟用此選項，額外視野的畫面會在游標接近其視窗邊緣時捲動。
+STR_CONFIG_SETTING_AUTOSCROLL                                   :滑鼠在視窗邊緣時移動畫面：{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :啟用後，檢視視窗的畫面會在游標接近其視窗邊緣時捲動
 ###length 4
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :停用
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :主視野，僅限全螢幕模式
-STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :主視野
-STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :所有視野
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :主畫面，僅限全螢幕模式
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :主畫面
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :所有畫面視窗
 
 STR_CONFIG_SETTING_BRIBE                                        :可向地方政府行賄：{STRING}
 ###length 2
@@ -1651,16 +1651,16 @@ STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_BLUE              :將綠色換為
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREY_TO_RED                :灰色至紅色
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREYSCALE                  :灰階
 
-STR_CONFIG_SETTING_SCROLLMODE                                   :視野捲動方式：{STRING}
+STR_CONFIG_SETTING_SCROLLMODE                                   :畫面捲動方式：{STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :捲動地圖時的行為。「滑鼠位置鎖定」選項不適用於所有平台系統，例如基於網頁的版本、觸控螢幕、帶有 Wayland 的 Linux 等
 ###length 4
-STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :使用右鍵移動視角，固定滑鼠游標的位置
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :使用右鍵移動畫面，固定滑鼠游標的位置
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :使用右鍵移動地圖，固定滑鼠游標的位置
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :使用右鍵移動地圖
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :使用左鍵移動地圖
 
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :視野平滑移動：{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主視野的顯示反應。如啟用此選項，影像會移動直至到達點選的位置；否則影像會直接跳到點選的位置。
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :畫面平滑移動：{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主畫面的顯示反應。如啟用此選項，影像會移動直至到達點選的位置；否則影像會直接跳到點選的位置。
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :當點選建造工具後拖曳滑鼠時，是否顯示兩端的方格距離及高度差異。
@@ -3788,7 +3788,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}將 {ST
 STR_SUBSIDIES_NONE                                              :{ORANGE}- 無 -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}已獲補助的服務：
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}{YELLOW}（{COMPANY}{YELLOW}，{STRING}）
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選運送服務可將工業或市鎮置於畫面正中央。按住 <Ctrl> 點選可於工業或市鎮位置開啟新檢視視窗
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}點選當前的工業或市鎮可將畫面置於正中央。按住 <Ctrl> 點選可於工業或市鎮位置開啟新檢視視窗
 STR_SUBSIDIES_OFFERED_EXPIRY_DATE                               :在 {DATE_SHORT} 之前
 STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :剩餘時間︰{UNITS_MONTHS_OR_MINUTES}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :直到{DATE_SHORT}
@@ -4900,7 +4900,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改�
 STR_SCREENSHOT_CAPTION                                          :{WHITE}螢幕截圖
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}普通截圖
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}完整放大截圖
-STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}預設視野截圖
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}預設縮放比例截圖
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}截圖整張地圖
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}高度圖截圖
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}小地圖截圖

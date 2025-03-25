@@ -690,11 +690,11 @@ STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rakomán
 STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}Napok szállítás közben
 STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}Másodpercek szállítás közben
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Fizetség 10 egységnyi (vagy 10000 liter) rakomány 20 négyzet távolságra való szállítsa esetén
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Bekapcsol mind
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kikapcsol mind
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Mind
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Egyik sem
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK})Összes rakomány megjelenítése a rakományok szállítási díja grafikonon
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne mutasson rakományokat a rakományok szállítási díja grafikonon
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Az adott rakomány grafikonjának mutatása be/ki
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Adott rakomány grafikonjának mutatása be/ki
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_INDUSTRY_PRODUCTION_CAPTION                           :{WHITE}{INDUSTRY} - Termelési előzmények
@@ -705,7 +705,7 @@ STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részlet
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Jelmagyarázat a grafikonokhoz
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}A vállalat adatainak mutatása/elrejtése a grafikonon
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}A vállalat grafikon mutatása/elrejtése
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}A vállalatok helyezése
@@ -986,7 +986,7 @@ STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nem tud elmenni a következő repülőtérig, mert az túl messze van
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Hibás átalakítási utasítás miatt {VEHICLE} megállt
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Az automatikus járműfelújítás sikertelen volt {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Az automatikus járműfelújítás sikertelen volt: {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Új {STRING} elérhető!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -1281,7 +1281,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
 STR_CITY_APPROVAL_HOSTILE                                       :Ellenséges
 STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny (nincs hatással a cég tevékenységére)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen megfelelő MI...{}Letölthetsz néhány MI-t a tartalomletöltő rendszeren keresztül
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen megfelelő elérhető MI...{}{}Letölthetsz néhány MI-t a tartalomletöltő rendszeren keresztül
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Beállítások
@@ -1350,7 +1350,7 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Végtelen pénz
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Végtelen költés engedélyezése és vállalatok csődhelyzet-lehetőségének kikapcsolása
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maximális kezdeti hitelkeret: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan kölcsönözhető összeg (az inflációtól eltekintve). Ha a "Nincs kölcsön" értékre van állítva, akkor nem lesz elérhető pénz, kivéve, ha azt egy játékszkript vagy a "Végtelen pénz" beállítás biztosítja.
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximálisan kölcsönözhető összeg (az inflációtól eltekintve). Ha a "Nincs kölcsön" értékre van állítva, akkor nem lesz elérhető pénz, kivéve, ha azt egy játékszkript vagy a "Végtelen pénz" beállítás biztosítja
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Nincs kölcsön
@@ -1573,13 +1573,13 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sose
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Bekapcsolva minden járműmodell örökké elérhető marad bevezetése után
 
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Időszámítás: {STRING}
-STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Válaszd ki a játék időszámítási egységeit. Ez később nem módosítható.{}{}A naptár alapú a klasszikus OpenTTD-élmény, ahol egy év 12 hónapból, és minden hónap 28-31 napból áll.{}{}A faliórás időszámításban a rakománytermelés és a pénzügyek ehelyett egyperces lépéseken alapulnak, ami nagyjából annyi idő, mint amennyi egy 30 napos hónap tart a naptár alapú módban. Ezek 12 perces időszakokba vannak csoportosítva, ami egy évnek felel meg a naptáralapú időben.{}{}Mindkét módban mindig van egy klasszikus naptár, amelyet a járművek, házak és egyéb infrastruktúra bevezetési dátumaihoz használnak.
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Válaszd ki a játék időszámítási egységeit. Ez később nem módosítható.{}{}A naptár alapú a klasszikus OpenTTD-élmény, ahol egy év 12 hónapból, és minden hónap 28-31 napból áll.{}{}A faliórás időszámításban a rakománytermelés és a pénzügyek ehelyett egyperces lépéseken alapulnak, ami nagyjából annyi idő, mint amennyi egy 30 napos hónap tart a naptár alapú módban. Ezek 12 perces időszakokba vannak csoportosítva, ami egy évnek felel meg a naptáralapú időben.{}{}Mindkét módban mindig van egy klasszikus naptár, amelyet a járművek, házak és egyéb infrastruktúra bevezetési dátumaihoz használnak
 ###length 2
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :Naptár
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :Falióra
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :Perc évenként: {STRING}
-STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Válaszd ki, hogy hány perc feleljen meg egy játékbeli évnek. Az alapértelmezett 12 perc. Állítsd 0-ra, ha nem szeretnéd hogy a naptári idő változzon. A beállítàs nem befolyásolja a gazdasági szimulációkat és csak akkor elérhető ha falióraszerű időkövetést használsz.
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :Válaszd ki, hogy hány perc feleljen meg egy játékbeli évnek. Az alapértelmezett 12 perc. Állítsd 0-ra, ha nem szeretnéd hogy a naptári idő változzon. A beállítàs nem befolyásolja a gazdasági szimulációkat és csak akkor elérhető, ha falióraszerű időkövetést használsz
 
 STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
@@ -1607,7 +1607,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Hibaüzenetek i
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :A piros ablakban megjelenő hibaüzenetek kijelzésének időtartama. Bizonyos (kritikus) hibaüzenetek nem záródnak be automatikusan egy idő után, hanem kézzel kell őket bezárni
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Leírás megjelenítése: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Késleltetés, mielőtt megjelenne az eszközleírás az egér ráhúzása után egy felületi elemen. A leírás elérhető még az egér jobb gombjával is, ha ennek értéke 0-ra van állítva.
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Késleltetés, mielőtt megjelenne az eszközleírás az egér fölé húzása után egy felületi elemen. A leírás elérhető még az egér jobb gombjával is, ha ennek értéke 0-ra van állítva.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} ezredmásodperc után
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Jobb klikk
@@ -1619,7 +1619,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :A vonalak vasta
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Vonalak szélessége a grafikonokon. A vékony vonal precízebben olvasható, míg a vastagabb jobban látható és a színek jobban megkülönböztethetőek
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :NewGRF nevének mutatása a járművásárlási ablakban: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :A járművásárlási ablakban egy külön sorban legyen kiírva a NewGRF neve, amiből a kiválasztott jármű jön.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :A járművásárlási ablakban egy külön sorban legyen kiírva a NewGRF neve, amiből a kiválasztott jármű jön
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Megmutatja az összes rakományt amit a járművek képesek szállítania lista ablakban: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Ha be van kapcsolva, a jármű szállítható rakománya megjelenik fölötte a jármű listában.
 
@@ -1645,7 +1645,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hóhatár magas
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Ez a beállítás szabályozza szub-arktikus táj hóhatárát. A hó befolyással lehet a gazdasági épületek generálására és a települések növekedésére. Csak a pályaszerkesztőben lehet állítani, más esetben a havas terület százalékos kiterjedéséből kerül kiszámításra.
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Havas terület kiterjedése: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Beállíthatod, hogy a szub-arktikus tájon a térkép mekkora részét fedje hó. A hó befolyással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti. A tengerszintet és a partokat szintet sosem fedheti hó.
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Beállíthatod, hogy a szub-arktikus tájon a térkép mekkora részét fedje hó. A hó befolyással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti. A tengerszintet és a partokat sosem fedheti hó
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Sivatag kiterjedése: {STRING}
@@ -1653,7 +1653,7 @@ STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Beállíthatod,
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :A terep durvasága: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :A dombok mennyiségének beállítása. A sima térképeken kevesebb, de nagyobb dombok vannak, míg a durva térképeken sok kisebb domb van, amik kissé ismétlődőnek tűnhetnek.
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :A dombok formájának és mennyiségének beállítása. A sima térképeken kevesebb, de nagyobb dombok vannak, míg a durva térképeken sok kisebb domb van.
 ###length 4
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sima
@@ -1661,7 +1661,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Durva
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Nagyon durva
 
 STR_CONFIG_SETTING_VARIETY                                      :Változatosság eloszlása: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Bekapcsolása esetén a térképen lesznek hegyvidékes és sík területek is. Nagyobb változatosság esetén nagyobb lesz a magasságkülönbség a sík és hegyvidékes területek között.
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Bekapcsolása esetén a térképen lesznek hegyvidékes és sík területek is. Nagyobb változatosság esetén nagyobb lesz a magasságkülönbség a sík és hegyvidékes területek között
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :A folyók mennyisége: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Mennyi folyó legyen a térképen
@@ -1832,7 +1832,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Jelzők automat
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatikusan eltávolítja a jelzőket vasúti pálya építésekor, ha útban vannak. Potenciálisan vasúti baleseteket okozhat!
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :A játék gyorsításának maximális értéke: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Megadja, hogy milyen gyorsan fusson a játék, ha a gyorsítás be van kapcsolva. 0 esetén nincs korlát, olyan gyorsan fog futni, ahogyan a számítógéped bírja. 100% alatt a játék lassabb lesz. A felső határ a számítógéped teljesítményétől és magától a játéktól is függ.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Megadja, hogy milyen gyorsan fusson a játék, ha a gyorsítás be van kapcsolva. 0 esetén nincs korlát, olyan gyorsan fog futni, ahogyan a számítógéped bírja. 100% alatt a játék lassabb lesz. A felső határ a számítógéped teljesítményétől és magától a játéktól is függ
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :A normál sebesség {NUM}%-a
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Nincs korlát (ahogyan a számítógéped bírja)
@@ -1922,7 +1922,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Ne legyen javí
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Bekapcsolva a járművek nem kerülnek javításra, ha nem tudnak lerobbanni
 
 STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :Berakodási sebesség csökkentve büntetésként az állomásnál hosszabb vonatoknak: {STRING}
-STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ha bekapcsolva, az állomás méretét meghaladó vonatok lassabban leszne képesek berakodni, mint azok a vonatok, amelyek beférnek az állomásra. A beállítás az útvonalkeresést nem befolyásolja.
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Ha bekapcsolva, az állomás méretét meghaladó vonatok lassabban lesznek képesek berakodni, mint azok a vonatok, amelyek beférnek az állomásra. A beállítás az útvonalkeresést nem befolyásolja.
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :A vagonok sebessége korlátozható: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Bekapcsolva a szerelvényben lévő vasúti kocsik maximális sebessége is korlátozza a vonat maximális sebességét
@@ -1987,7 +1987,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Az év, melytő
 STR_CONFIG_SETTING_STARTING_YEAR                                :Játék induló dátuma: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Játék végi pontozás ebben az évben: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :A játék ebben az évben ér véget pontozás szempontjából. Ennek az évnek a végén a vállalat teljesítménypontszáma rögzítésre kerül, és adott esetben megjelenik a rekord táblán, de a játékosok ezután folytathatják a játékot.{}Ha ez a kezdő év elé van állítva, akkor a rekord tábla sosem jelenik meg.
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :A játék ebben az évben ér véget pontozás szempontjából. Ennek az évnek a végén a vállalat teljesítménypontszáma rögzítésre kerül, és adott esetben megjelenik a rekord táblán, de a játékosok ezután folytathatják a játékot.{}Ha ez a kezdő év elé van állítva, akkor a rekord tábla sosem jelenik meg
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Soha
@@ -2058,7 +2058,7 @@ STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Engedélyezett
 STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Engedélyezett, teljesen felépített
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Termelés a településeken: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Azt adja meg, hogy mennyi rakományt termelnek a városi épületek a település lakosságának függvényében.{}Négyzetes növekedés: Egy kétszer nagyobb település négyszer több utast termel.{}Lineáris növekedés: Egy kétszer nagyobb település kétszer több utast termel.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Azt adja meg, hogy mennyi rakományt termelnek a városi épületek a település lakosságának függvényében.{}Négyzetes növekedés: Egy kétszer nagyobb település négyszer több utast termel.{}Lineáris növekedés: Egy kétszer nagyobb település kétszer több utast termel
 ###length 2
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Négyzetes (eredeti)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineáris
@@ -2067,7 +2067,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Játékbeli fae
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Fák véletlenszerű megjelenésének szabályozása a játék során. Ez befolyásolhatja a gazdasági épületeket, melyek a fák növekedésétől függnek, mint a favágók
 ###length 4
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Növekedjenek, de ne terjedjenek {RED}(favágók ellehetetlenítése)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Növekedjenek és esőerdőkben terjedjenek
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Növekedjenek, de csak esőerdőkben terjedjenek
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Növekedjenek és mindenhol terjedjenek
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Ne növekedjenek és ne terjedjenek {RED}(favágók ellehetetlenítése)
 
@@ -2149,7 +2149,7 @@ STR_CONFIG_SETTING_DEMAND_SIZE                                  :Szimmetrikus es
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :100%-nál kisebb beállítás esetén a szimmetrikus szétosztás jobban fog hasonlítani az aszimmetrikusra. Adott mennyiségű rakomány küldése esetén kevesebb lesz automatikusan visszaküldve. 0% esetén a szimmetrikus szétosztás pontosan úgy fog viselkedni, mint az aszimmetrikus szétosztás.
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :A rövidebb utak telítettsége a szabad utak felhasználása előtt: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Gyakran több útvonal is van két adott állomás között. A Cargodist először a legrövidebb útvonalat telíti be, majd a második legrövidebb útvonalat, miután az első útvonal már telített, és így tovább. A telítettséget a kapacitás becslése és a tervezett kihasználtság határozza meg. Amennyiben az összes útvonal telített, és még mindig van igény, az összes útvonalat terhelni fogja, elsősorban a legnagyobb kapacitásúakat. Viszont a legtöbb esetben az algoritmus nem fogja pontosan megbecsülni a kapacitást. Ezen opció segítségével beállíthatjuk, hogy milyen telítettségi szintig legyen kihasználva a rövidebb útvonal a hosszabb útvonal használatba vétele előtt. Állítsd 100%-nál kisebbre, hogy elkerüld a túlterhelődő állomásokat abban az esetben, ha a kapacitás túl lenne becsülve!
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Gyakran több útvonal is van két adott állomás között. A Cargodist először a legrövidebb útvonalat telíti be, majd a második legrövidebb útvonalat, miután az első útvonal már telített, és így tovább. A telítettséget a kapacitás becslése és a tervezett kihasználtság határozza meg. Amennyiben az összes útvonal telített, és még mindig van igény, az összes útvonalat terhelni fogja, elsősorban a legnagyobb kapacitásúakat. Viszont a legtöbb esetben az algoritmus nem fogja pontosan megbecsülni a kapacitást. Ezen opció segítségével beállíthatjuk, hogy milyen telítettségi szintig legyen kihasználva a rövidebb útvonal a hosszabb útvonal használatba vétele előtt. Állítsd 100%-nál kisebbre, hogy elkerüld a túlterhelődő állomásokat abban az esetben, ha a kapacitás túl lenne becsülve
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Sebesség mértékegysége (szárazföldi): {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_NAUTICAL         :Sebesség mértékegységei (tengeri): {STRING}
@@ -2465,7 +2465,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Az aktu�
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM} óra {NUM} perc
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Játékidő
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Játékidő{}amíg a játék nem volt szünetben
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Nyelv, szerver verzió stb.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Szerver kompatibilitás és autentikációs információ
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kattintással a listában szereplő játék kiválasztása
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}A szerver amihez legutóbb csatlakoztál:
@@ -2714,7 +2714,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ki
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nevet változtatott. Új neve: {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} a következő összeget utalta {2:STRING} részére: {1:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}A szerver leállította a játékot
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}A szerver újraindul...{}Türelem...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}A szerver újraindul...{}{}Kérjük várj...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ki lett rúgva. Oka: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}A szerver regisztrációja sikertelen
@@ -3026,7 +3026,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Tehervil
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vízi utak építése
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vízi utak
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Csatorna építése. Ctrl+Click+húzás a terület átlós kijelöléséhez. Shift-et nyomva csak a becsült költséget jeleníti meg
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Csatorna építése. Ctrl+kattintás+húzás a terület átlós kijelöléséhez. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Zsilip építése. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dokk építése (hajók vételére és karbantartására). Shift+kattintással csak a becsült költséget jeleníti meg
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Kikötő építése. Ctrl+kattintással egyesíthető más állomásokkal. Shift+kattintással csak a becsült költséget jeleníti meg
@@ -3092,7 +3092,7 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletle
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Véletlenszerű fák
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Véletlenszerűen fákat ültet a térképre
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normál
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}A tájon való húzással egyesével fákat ültet.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}A tájon való húzással egyesével fákat ültet
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Liget
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}A tájon való húzással kis erdőket, ligeteket ültet.
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Erdő
@@ -3696,16 +3696,16 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}A NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' viselkedése valószínűleg deszinkronizációt és/vagy összeomlást okoz
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' meghajtott vagon állapotát mikor nem volt bent a járműtelepen
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megváltoztatta a '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' jármű kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztattad '{1:ENGINE}' motorkocsi állapotát mikor nem volt bent a járműtelepen
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztattad '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megváltoztattad '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' jármű kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}' jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat vagy lefagyhat
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' helytelen információt biztosít
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' végtelen ciklust okozott a termelés folyamatnál
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}{1:HEX} visszatérő érték ismeretlen/érvénytelen {2:HEX} értékkel tért vissza
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' érvénytelen rakománytípussal tért vissza a termelési callback-ben: {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' érvénytelen rakománytípussal tért vissza a termelési callback-ben: {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
@@ -3864,7 +3864,7 @@ STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globáli
 STR_STORY_BOOK_SPECTATOR                                        :Globális napló
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :{NUM}. oldal
-STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Ugrás tetszőleges oldalra
+STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Ugrás egy adott oldalra ebből a lenyíló listából kiválasztással
 STR_STORY_BOOK_PREV_PAGE                                        :{BLACK}Előző
 STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Előző oldal
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Következő
@@ -4117,10 +4117,10 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} repülőgépei - {COMMA}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vonatok - kattints egy vonatra az adataihoz
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Közúti járművek - kattints egy járműre az adataihoz
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Hajók - kattints egy hajóra az adataihoz
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vonatok - kattints egy vonatra az adataihoz. Tartsd nyomva a Ctrl+Shift billentyűkombinációt a rakomány típusának felfedéséhez.
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Közúti járművek - kattints egy járműre az adataihoz. Tartsd nyomva a Ctrl+Shift billentyű kombinációt a rakomány típusának felfedéséhez
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Hajók - kattints egy hajóra az adataihoz. Tartsd nyomva a Ctrl+Shift billentyűkombinációt a rakomány típusának felfedéséhez.
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz. Tartsd nyomva a Ctrl+Shift billentyű kombinációt a rakomány típusának felfedéséhez.
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Elérhető vonatok
@@ -4169,7 +4169,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Csoport 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Kijelölt csoport törlése
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Kijelölt csoport átnevezése
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}A kiválasztott csoport színsémájának megváltoztatása
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Csoport teljes listás automata csere alóli mentessége. Ctrl+kattintással az alárendelt csoportokat is mentesítheted.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kattints a csoport globális automata csere alóli mentességéhez. Ctrl+kattintással az alárendelt csoportokat is mentesítheted.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Csoport törlése
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Biztosan törölni akarod ezt a csoportot minden alcsoportjával együtt?
@@ -4486,7 +4486,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Egy köz
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ide kattintva a hajó másolatát készítheted el. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ide kattintva a repülőgép másolatát készítheted el. Ctrl+kattintás az utasítások megosztásához. Shift+kattintással csak a becsült költséget jeleníti meg
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}A vonat rákényszerítése a megállj jelzés meghaladására
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}A vonat rákényszerítése a megállj jelzésen tovább haladására
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Vonat megfordítása
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Jármű rákényszerítése megfordulásra
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Közelítés a célpontra. Ctrl+kattintással új nézet nyílik a célpont helyénél.
@@ -4766,28 +4766,28 @@ STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} a legk
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} a legközelebbi {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Átalakít erre: {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(átalakít erre: {STRING}, és megáll)
-STR_ORDER_STOP_ORDER                                            :(megáll)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Átalakít erre: {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(átalakít erre: {STRING}, és megáll)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(megáll)
 
 STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Várakozás csoportbontásra)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Az állomás nem használható){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Automata)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Automata)
 
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Telerakodás)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Bármiből teljes berakodás)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Nincs berakodás)
-STR_ORDER_UNLOAD                                                :(Kirakodás és rakományfelvétel)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Kirakodás és mindenből teljes berakodás)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Kirakodás és bármiből teljes berakodás)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Kirakodás és üresen indulás)
+STR_ORDER_UNLOAD                                                :{SPACE}(Kirakodás és rakományfelvétel)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Kirakodás és mindenből teljes berakodás)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Kirakodás és bármiből teljes berakodás)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Kirakodás és üresen indulás)
 STR_ORDER_TRANSFER                                              :(Elszállítás és rakományfelvétel)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Elszállítás és mindenből teljes berakodás)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Elszállítás és bármiből teljes berakodás)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Elszállítás és üresen indulás)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Elszállítás és mindenből teljes berakodás)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Elszállítás és bármiből teljes berakodás)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Elszállítás és üresen indulás)
 STR_ORDER_NO_UNLOAD                                             :{SPACE}(Nincs kirakodás és rakományfelvétel)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nincs kirakodás és várakozás a teljes berakodásra)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Nincs kirakodás és várakozás a teljes berakodásra)
@@ -4796,22 +4796,22 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Nincs k
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Átalakítás {STRING} szállítására)
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Mindenből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Bármiből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_REFIT                                          :(Kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_TRANSFER_REFIT                                        :(Elszállítás, rakományfelvétel és átalakítás {STRING} rakományra)
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Elszállítás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Elszállítás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ki nem rakodás, rakományfelvétel és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Elszállítás, rakományfelvétel és átalakítás {STRING} rakományra)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Elszállítás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Elszállítás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nincs kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Nincs kirakodás és várakozás a teljes berakodásra, átalakítással {STRING} rakományra)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Nincs kirakodás és várakozás a bármiből teljes berakodásra, átalakítással {STRING} rakományra)
 
 STR_ORDER_AUTO_REFIT_ANY                                        :elérhető rakomány
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[eleje]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[közép]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[végén]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[near end]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[middle]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[far end]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (A következő állomás túl messze van)
 
@@ -4836,7 +4836,7 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Menetidő: {STR
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Menetidő: {STRING} {VELOCITY} max. sebességgel
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Menet ({STRING}ig, időzítetlen)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Menet ({STRING}ig, időzítetlen) {VELOCITY} max. sebességgel
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(ottmarad {STRING}ig, időzítetlen)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(ottmarad {STRING}ig, időzítetlen)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(utazás {STRING} városba, időzítetlen)
 STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING}ig
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :és a menetidő: {STRING}
@@ -5032,7 +5032,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nem elérhető
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat. Az összes villamos el lett távolítva
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}A térkép generálása meghiúsult...{}... nincs városépítésre alkalmas hely
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}A térkép generálása meghiúsult...{}{}... nincs városépítésre alkalmas hely
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... nincs település ezen a pályán
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nem tudom a térképet betölteni a PNG-ből...
@@ -5967,7 +5967,7 @@ STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STR
 STR_SAVEGAME_NAME_SPECTATOR                                     :Megfigyelő, {1:STRING}
 
 # Viewport strings
-STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN_POP                                           :{TOWN} ({COMMA})
 STR_VIEWPORT_STATION                                            :{STATION} {STATION_FEATURES}
 
 # Simple strings to get specific types of data
