@@ -152,7 +152,7 @@ struct UnmappedChoiceList {
 		if (this->type == SCC_SWITCH_CASE) {
 			/*
 			 * Format for case switch:
-			 * <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+			 * <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <LENDEFAULT> <STRINGDEFAULT>
 			 * Each LEN is printed using 2 bytes in big endian order.
 			 */
 
@@ -164,6 +164,16 @@ struct UnmappedChoiceList {
 			}
 			*d++ = count;
 
+			auto add_case = [&](std::string_view str) {
+				/* "<LENn>" */
+				uint16_t len = ClampTo<uint16_t>(str.size());
+				*d++ = GB(len, 0, 8);
+				*d++ = GB(len, 8, 8);
+
+				/* "<STRINGn>" */
+				dest.write(str.data(), len);
+			};
+
 			for (uint8_t i = 0; i < _current_language->num_cases; i++) {
 				/* Resolve the string we're looking for. */
 				int idx = lm->GetReverseMapping(i, false);
@@ -173,18 +183,11 @@ struct UnmappedChoiceList {
 				/* "<CASEn>" */
 				*d++ = i + 1;
 
-				/* "<LENn>": Limit the length of the string to 0xFFFE to leave space for the '\0'. */
-				size_t len = std::min<size_t>(0xFFFE, str.size());
-				*d++ = GB(len + 1, 8, 8);
-				*d++ = GB(len + 1, 0, 8);
-
-				/* "<STRINGn>" */
-				dest.write(str.c_str(), len);
-				*d++ = '\0';
+				add_case(str);
 			}
 
 			/* "<STRINGDEFAULT>" */
-			dest << this->strings[0].rdbuf();
+			add_case(this->strings[0].view());
 		} else {
 			if (this->type == SCC_PLURAL_LIST) {
 				*d++ = lm->plural_form;
@@ -206,20 +209,17 @@ struct UnmappedChoiceList {
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
-				size_t len = str.size() + 1;
-				if (len > 0xFF) GrfMsg(1, "choice list string is too long");
-				*d++ = GB(len, 0, 8);
+				size_t len = str.size();
+				if (len > UINT8_MAX) GrfMsg(1, "choice list string is too long");
+				*d++ = ClampTo<uint8_t>(len);
 			}
 
 			/* "<STRINGs>" */
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
-				/* Limit the length of the string we copy to 0xFE. The length is written above
-				 * as a byte and we need room for the final '\0'. */
-				size_t len = std::min<size_t>(0xFE, str.size());
+				uint8_t len = ClampTo<uint8_t>(str.size());
 				dest.write(str.c_str(), len);
-				*d++ = '\0';
 			}
 		}
 	}
@@ -793,8 +793,9 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 			/* skip all cases and continue with default case */
 			uint num = static_cast<uint8_t>(*str++);
 			for (uint i = 0; i != num; i++) {
-				str += 3 + (static_cast<uint8_t>(str[1]) << 8) + static_cast<uint8_t>(str[2]);
+				str += 3 + static_cast<uint8_t>(str[1]) + (static_cast<uint8_t>(str[2]) << 8);
 			}
+			str += 2; // length of default
 			break;
 		}
 

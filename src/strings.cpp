@@ -790,8 +790,7 @@ static const char *ParseStringChoice(const char *b, uint form, StringBuilder &bu
 		total_len += len;
 	}
 
-	assert(form_len > 0); // len includes a null terminator
-	builder += std::string_view(b + form_offset, form_len - 1);
+	builder += std::string_view(b + form_offset, form_len);
 	return b + total_len;
 }
 
@@ -1231,24 +1230,25 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				}
 
 				case SCC_SWITCH_CASE: { // {Used to implement case switching}
-					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
-					 * Each LEN is printed using 2 bytes in big endian order. */
+					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <LENDEFAULT> <STRINGDEFAULT>
+					 * Each LEN is printed using 2 bytes in little endian order. */
 					uint num = (uint8_t)*str++;
 					std::optional<std::string_view> found;
 					for (; num > 0; --num) {
 						uint8_t index = static_cast<uint8_t>(str[0]);
-						uint16_t len = (static_cast<uint8_t>(str[1]) << 8) + static_cast<uint8_t>(str[2]);
-						assert(len > 0); // len includes a null terminator
+						uint16_t len = static_cast<uint8_t>(str[1]) + (static_cast<uint8_t>(str[2]) << 8);
 						str += 3;
 						if (index == case_index) {
 							/* Found the case */
-							found.emplace(str, len - 1);
+							found.emplace(str, len);
 						}
 						str += len;
 					}
-					const char *end = str_stack.top().end;
-					if (!found.has_value()) found.emplace(str, end - str);
-					str = end;
+					uint16_t default_len = static_cast<uint8_t>(str[0]) + (static_cast<uint8_t>(str[1]) << 8);
+					str += 2;
+					if (!found.has_value()) found.emplace(str, default_len);
+					str += default_len;
+					assert(str <= str_stack.top().end);
 					str_stack.emplace(*found, ref_param_offset, case_index); // this may invalidate "str"
 					break;
 				}
