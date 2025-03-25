@@ -108,9 +108,9 @@ const FiosItem *FileList::FindItem(const std::string_view file)
 	}
 
 	/* If no name matches, try to parse it as number */
-	char *endptr;
-	int i = std::strtol(file.data(), &endptr, 10);
-	if (file.data() == endptr || *endptr != '\0') i = -1;
+	int i;
+	const char *endptr = std::from_chars(file.data(), file.data() + file.size(), i, 10).ptr;
+	if (file.data() == endptr || endptr != file.data() + file.size()) i = -1;
 
 	if (IsInsideMM(i, 0, this->size())) return &this->at(i);
 

@@ -494,7 +494,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			char *crashlog_dos_nl = reinterpret_cast<char *>(filename_buf + filename_buf_length * filename_count);
 
 			/* Convert unix -> dos newlines because the edit box only supports that properly. */
-			const char *crashlog_unix_nl = crashlog.data();
+			const char *crashlog_unix_nl = crashlog.c_str();
 			char *p = crashlog_dos_nl;
 			char32_t c;
 			while ((c = Utf8Consume(&crashlog_unix_nl))) {

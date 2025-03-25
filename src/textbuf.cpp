@@ -444,7 +444,7 @@ void Textbuf::Assign(const std::string_view text)
  */
 void Textbuf::UpdateSize()
 {
-	this->chars = static_cast<uint16_t>(Utf8StringLength(this->buf.data()) + 1); // terminating zero
+	this->chars = static_cast<uint16_t>(Utf8StringLength(this->buf.c_str()) + 1); // terminating zero
 	assert(this->buf.size() < this->max_bytes);
 	assert(this->chars <= this->max_chars);
 

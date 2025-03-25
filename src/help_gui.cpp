@@ -51,7 +51,8 @@ static std::optional<std::string> FindGameManualFilePath(std::string_view filena
 	};
 
 	for (Searchpath sp : searchpaths) {
-		auto file_path = FioGetDirectory(sp, subdir) + filename.data();
+		std::string file_path = FioGetDirectory(sp, subdir);
+		file_path.append(filename);
 		if (FioCheckFileExists(file_path, NO_DIRECTORY)) return file_path;
 	}
 
