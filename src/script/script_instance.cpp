@@ -128,7 +128,7 @@ bool ScriptInstance::LoadCompatibilityScript(std::string_view api_version, Subdi
 bool ScriptInstance::LoadCompatibilityScripts(Subdirectory dir, std::span<const std::string_view> api_versions)
 {
 	/* Don't try to load compatibility scripts for the current version. */
-	if (this->versionAPI == std::rbegin(api_versions)->data()) return true;
+	if (this->versionAPI == api_versions.back()) return true;
 
 	ScriptLog::Info(fmt::format("Downgrading API to be compatible with version {}", this->versionAPI));
 

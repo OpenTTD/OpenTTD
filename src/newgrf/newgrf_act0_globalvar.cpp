@@ -297,7 +297,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					 * such as Cyrillic. Thus we will simply assume they're all UTF8. */
 					char32_t c;
 					size_t len = Utf8Decode(&c, name.data());
-					if (c == NFO_UTF8_IDENTIFIER) name = name.substr(len);
+					if (len <= name.size() && c == NFO_UTF8_IDENTIFIER) name = name.substr(len);
 
 					LanguageMap::Mapping map;
 					map.newgrf_id = newgrf_id;

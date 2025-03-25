@@ -1699,7 +1699,7 @@ static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const
 
 		int child_idx = ps->first_child;
 		while (child_idx >= 0) {
-			const ChildScreenSpriteToDraw *cs = csstdv->data() + child_idx;
+			const ChildScreenSpriteToDraw *cs = &(*csstdv)[child_idx];
 			child_idx = cs->next;
 			if (cs->relative) {
 				DrawSpriteViewport(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
