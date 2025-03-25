@@ -2052,6 +2052,7 @@ DropDownList GetRailTypeDropDownList(bool for_replacement, bool all_option)
 	Dimension d = { 0, 0 };
 	/* Get largest icon size, to ensure text is aligned on each menu item. */
 	if (!for_replacement) {
+		used_railtypes &= ~_railtypes_hidden_mask;
 		for (const auto &rt : _sorted_railtypes) {
 			if (!HasBit(used_railtypes, rt)) continue;
 			const RailTypeInfo *rti = GetRailTypeInfo(rt);

@@ -52,7 +52,7 @@
 typedef std::vector<RoadVehicle *> RoadVehicleList;
 
 RoadTypeInfo _roadtypes[ROADTYPE_END];
-std::vector<RoadType> _sorted_roadtypes;
+std::vector<RoadType> _sorted_roadtypes; ///< Sorted list of road types.
 RoadTypes _roadtypes_hidden_mask;
 
 /**
@@ -121,9 +121,8 @@ void InitRoadTypes()
 
 	_sorted_roadtypes.clear();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
-		if (_roadtypes[rt].label != 0 && !HasBit(_roadtypes_hidden_mask, rt)) {
-			_sorted_roadtypes.push_back(rt);
-		}
+		if (_roadtypes[rt].label == 0) continue;
+		_sorted_roadtypes.push_back(rt);
 	}
 	std::sort(_sorted_roadtypes.begin(), _sorted_roadtypes.end(), CompareRoadTypes);
 }
