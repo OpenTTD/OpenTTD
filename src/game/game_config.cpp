@@ -17,14 +17,12 @@
 
 /* static */ GameConfig *GameConfig::GetConfig(ScriptSettingSource source)
 {
-	std::unique_ptr<GameConfig> *config;
-	if (source == SSS_FORCE_NEWGAME || (source == SSS_DEFAULT && _game_mode == GM_MENU)) {
-		config = &_settings_newgame.script_config.game;
-	} else {
-		config = &_settings_game.script_config.game;
-	}
-	if (*config == nullptr) *config = std::make_unique<GameConfig>();
-	return config->get();
+	if (_game_mode == GM_MENU) source = SSS_FORCE_NEWGAME;
+
+	auto &config = (source == SSS_FORCE_NEWGAME) ? _settings_newgame.script_config.game : _settings_game.script_config.game;
+	if (config == nullptr) config = std::make_unique<GameConfig>();
+
+	return config.get();
 }
 
 class GameInfo *GameConfig::GetInfo() const
