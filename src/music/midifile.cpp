@@ -13,6 +13,7 @@
 #include "../string_func.h"
 #include "../core/endian_func.hpp"
 #include "../base_media_base.h"
+#include "../base_media_music.h"
 #include "midi.h"
 
 #include "../console_func.h"

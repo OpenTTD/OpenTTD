@@ -17,6 +17,7 @@
 #include "midifile.hpp"
 #include "midi.h"
 #include "../base_media_base.h"
+#include "../base_media_music.h"
 #include "../core/mem_func.hpp"
 #include <mutex>
 

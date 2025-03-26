@@ -21,6 +21,9 @@
 #include "gui.h"
 
 #include "base_media_base.h"
+#include "base_media_graphics.h"
+#include "base_media_music.h"
+#include "base_media_sounds.h"
 #include "saveload/saveload.h"
 #include "company_cmd.h"
 #include "company_func.h"

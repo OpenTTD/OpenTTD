@@ -32,6 +32,9 @@
 #include "video/video_driver.hpp"
 
 #include "base_media_base.h"
+#include "base_media_graphics.h"
+#include "base_media_music.h"
+#include "base_media_sounds.h"
 #include "blitter/factory.hpp"
 
 #include "social_integration.h"
