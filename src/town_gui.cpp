@@ -400,7 +400,7 @@ public:
 		for (auto tpe : {TPE_PASSENGERS, TPE_MAIL}) {
 			for (const CargoSpec *cs : CargoSpec::town_production_cargoes[tpe]) {
 				CargoType cargo_type = cs->Index();
-				DrawString(tr, GetString(str_last_period, 1ULL << cargo_type, this->town->supplied[cargo_type].old_act, this->town->supplied[cargo_type].old_max));
+				DrawString(tr, GetString(str_last_period, CargoTypes{cargo_type}, this->town->supplied[cargo_type].old_act, this->town->supplied[cargo_type].old_max));
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
 		}
@@ -1597,12 +1597,12 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
 
-			SetBit(produced, cargo);
+			produced.Set(cargo);
 		}
 	} else {
 		/* Cargo is not controlled by NewGRF, town production effect is used instead. */
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) SetBit(produced, cs->Index());
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) SetBit(produced, cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) produced.Set(cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) produced.Set(cs->Index());
 	}
 	return produced;
 }
@@ -1688,7 +1688,7 @@ struct BuildHouseWindow : public PickerWindow {
 		}
 
 		CargoTypes produced = GetProducedCargoOfHouse(hs);
-		if (produced != 0) {
+		if (produced.Any()) {
 			line << "\n";
 			line << GetString(STR_HOUSE_PICKER_CARGO_PRODUCED, produced);
 		}

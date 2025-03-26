@@ -107,7 +107,7 @@ struct CargoSpec {
 	 */
 	inline CargoType Index() const
 	{
-		return this - CargoSpec::array;
+		return static_cast<CargoType>(this - CargoSpec::array.data());
 	}
 
 	/**
@@ -126,7 +126,7 @@ struct CargoSpec {
 	 */
 	static inline size_t GetArraySize()
 	{
-		return lengthof(CargoSpec::array);
+		return std::size(CargoSpec::array);
 	}
 
 	/**
@@ -134,9 +134,9 @@ struct CargoSpec {
 	 * @param index ID of cargo
 	 * @pre index is a valid cargo type
 	 */
-	static inline CargoSpec *Get(size_t index)
+	static inline CargoSpec *Get(CargoType index)
 	{
-		assert(index < lengthof(CargoSpec::array));
+		assert(index < std::size(CargoSpec::array));
 		return &CargoSpec::array[index];
 	}
 
@@ -169,7 +169,7 @@ struct CargoSpec {
 		Iterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
 
 	private:
-		size_t index;
+		CargoType index;
 		void ValidateIndex() { while (this->index < CargoSpec::GetArraySize() && !(CargoSpec::Get(this->index)->IsValid())) this->index++; }
 	};
 
@@ -195,7 +195,7 @@ struct CargoSpec {
 	static std::array<std::vector<const CargoSpec *>, NUM_TPE> town_production_cargoes;
 
 private:
-	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs
+	static ReferenceThroughBaseContainer<std::array<CargoSpec, NUM_CARGO>> array; ///< Array holding all CargoSpecs
 	static inline std::map<CargoLabel, CargoType> label_map{}; ///< Translation map from CargoLabel to Cargo type.
 
 	friend void SetupCargoForClimate(LandscapeType l);
@@ -223,7 +223,7 @@ inline CargoType GetCargoTypeByLabel(CargoLabel label)
 Dimension GetLargestCargoIconSize();
 
 void InitializeSortedCargoSpecs();
-extern std::array<uint8_t, NUM_CARGO> _sorted_cargo_types;
+extern ReferenceThroughBaseContainer<std::array<uint8_t, NUM_CARGO>> _sorted_cargo_types;
 extern std::vector<const CargoSpec *> _sorted_cargo_specs;
 extern std::span<const CargoSpec *> _sorted_standard_cargo_specs;
 
@@ -237,8 +237,6 @@ inline bool IsCargoInClass(CargoType cargo, CargoClasses cc)
 {
 	return CargoSpec::Get(cargo)->classes.Any(cc);
 }
-
-using SetCargoBitIterator = SetBitIterator<CargoType, CargoTypes>;
 
 /** Comparator to sort CargoType by according to desired order. */
 struct CargoTypeComparator {

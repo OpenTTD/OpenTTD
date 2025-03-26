@@ -1094,7 +1094,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	void UpdateExcludedData()
 	{
-		this->excluded_data = _legend_excluded_cargo_payment_rates;
+		this->excluded_data = _legend_excluded_cargo_payment_rates.base();
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -1135,7 +1135,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		for (auto it = first; it != last; ++it) {
 			const CargoSpec *cs = *it;
 
-			bool lowered = !HasBit(_legend_excluded_cargo_payment_rates, cs->Index());
+			bool lowered = !_legend_excluded_cargo_payment_rates.Test(cs->Index());
 
 			/* Redraw frame if lowered */
 			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
@@ -1159,7 +1159,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		switch (widget) {
 			case WID_GRAPH_ENABLE_CARGOES:
 				/* Remove all cargoes from the excluded lists. */
-				_legend_excluded_cargo_payment_rates = 0;
+				_legend_excluded_cargo_payment_rates.Reset();
 				this->excluded_data = 0;
 				this->SetDirty();
 				break;
@@ -1167,8 +1167,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			case WID_GRAPH_DISABLE_CARGOES: {
 				/* Add all cargoes to the excluded lists. */
 				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					SetBit(_legend_excluded_cargo_payment_rates, cs->Index());
-					SetBit(this->excluded_data, cs->Index());
+					_legend_excluded_cargo_payment_rates.Set(cs->Index());
+					SetBit(this->excluded_data, cs->Index().base());
 				}
 				this->SetDirty();
 				break;
@@ -1177,7 +1177,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			case WID_GRAPH_MATRIX: {
 				auto it = this->vscroll->GetScrolledItemFromWidget(_sorted_standard_cargo_specs, pt.y, this, WID_GRAPH_MATRIX);
 				if (it != _sorted_standard_cargo_specs.end()) {
-					ToggleBit(_legend_excluded_cargo_payment_rates, (*it)->Index());
+					_legend_excluded_cargo_payment_rates.Flip((*it)->Index());
 					this->UpdateExcludedData();
 					this->SetDirty();
 				}
@@ -1227,7 +1227,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			DataSet &dataset = this->data.emplace_back();
 			dataset.colour = cs->legend_colour;
-			dataset.exclude_bit = cs->Index();
+			dataset.exclude_bit = cs->Index().base();
 
 			for (uint j = 0; j != this->num_on_x_axis; j++) {
 				dataset.values[j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
@@ -1567,7 +1567,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		const Industry *i = Industry::Get(this->window_number);
 		for (const auto &p : i->produced) {
 			if (!IsValidCargoType(p.cargo)) continue;
-			if (HasBit(_legend_excluded_cargo_production_history, p.cargo)) SetBit(this->excluded_data, p.cargo);
+			if (_legend_excluded_cargo_production_history.Test(p.cargo)) SetBit(this->excluded_data, p.cargo.base());
 		}
 	}
 
@@ -1621,7 +1621,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 			cs = CargoSpec::Get(p.cargo);
 
-			bool lowered = !HasBit(_legend_excluded_cargo_production_history, p.cargo);
+			bool lowered = !_legend_excluded_cargo_production_history.Test(p.cargo);
 
 			/* Redraw frame if lowered */
 			if (lowered) DrawFrameRect(line, COLOUR_BROWN, FrameFlag::Lowered);
@@ -1645,7 +1645,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		switch (widget) {
 			case WID_GRAPH_ENABLE_CARGOES:
 				/* Remove all cargoes from the excluded lists. */
-				_legend_excluded_cargo_production_history = 0;
+				_legend_excluded_cargo_production_history.Reset();
 				this->excluded_data = 0;
 				this->SetDirty();
 				break;
@@ -1656,8 +1656,8 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 				for (const auto &p : i->produced) {
 					if (!IsValidCargoType(p.cargo)) continue;
 
-					SetBit(_legend_excluded_cargo_production_history, p.cargo);
-					SetBit(this->excluded_data, p.cargo);
+					_legend_excluded_cargo_production_history.Set(p.cargo);
+					SetBit(this->excluded_data, p.cargo.base());
 				}
 				this->SetDirty();
 				break;
@@ -1672,7 +1672,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 					if (!IsValidCargoType(p.cargo)) continue;
 					if (row-- > 0) continue;
 
-					ToggleBit(_legend_excluded_cargo_production_history, p.cargo);
+					_legend_excluded_cargo_production_history.Flip(p.cargo);
 					this->UpdateExcludedData();
 					this->SetDirty();
 					break;
@@ -1700,7 +1700,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 	void UpdateStatistics(bool initialize) override
 	{
-		CargoTypes excluded_cargo = this->excluded_data;
+		CargoTypes excluded_cargo{this->excluded_data};
 		this->UpdateExcludedData();
 
 		int mo = TimerGameEconomy::month - this->num_vert_lines;
@@ -1710,7 +1710,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 			mo += 12;
 		}
 
-		if (!initialize && this->excluded_data == excluded_cargo && this->num_on_x_axis == this->num_vert_lines && this->year == yr && this->month == mo) {
+		if (!initialize && this->excluded_data == excluded_cargo.base() && this->num_on_x_axis == this->num_vert_lines && this->year == yr && this->month == mo) {
 			/* There's no reason to get new stats */
 			return;
 		}
@@ -1727,7 +1727,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 			DataSet &produced = this->data.emplace_back();
 			produced.colour = cs->legend_colour;
-			produced.exclude_bit = cs->Index();
+			produced.exclude_bit = cs->Index().base();
 			produced.range_bit = 0;
 
 			for (uint j = 0; j < GRAPH_NUM_MONTHS; j++) {
@@ -1736,7 +1736,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 
 			DataSet &transported = this->data.emplace_back();
 			transported.colour = cs->legend_colour;
-			transported.exclude_bit = cs->Index();
+			transported.exclude_bit = cs->Index().base();
 			transported.range_bit = 1;
 			transported.dash = 2;
 
@@ -1864,6 +1864,6 @@ void ShowPerformanceRatingDetail()
 void InitializeGraphGui()
 {
 	_legend_excluded_companies = CompanyMask{};
-	_legend_excluded_cargo_payment_rates = 0;
-	_legend_excluded_cargo_production_history = 0;
+	_legend_excluded_cargo_payment_rates.Reset();
+	_legend_excluded_cargo_production_history.Reset();
 }

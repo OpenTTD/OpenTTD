@@ -383,7 +383,7 @@ public:
 	{
 		Station *st = Station::From(bst);
 
-		SlSetStructListLength(NUM_CARGO);
+		SlSetStructListLength(std::size(st->goods));
 
 		for (GoodsEntry &ge : st->goods) {
 			SlStationGoods::cargo_reserved_count = ge.HasData() ? ge.GetData().cargo.reserved_count : 0;

@@ -270,8 +270,8 @@ static const NIFeature _nif_industrytile = {
 
 
 /*** NewGRF industries ***/
-#define NIP_PRODUCED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetProduced(slot).cargo; }, prop, type }
-#define NIP_ACCEPTED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetAccepted(slot).cargo; }, prop, type }
+#define NIP_PRODUCED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetProduced(slot).cargo.base(); }, prop, type }
+#define NIP_ACCEPTED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetAccepted(slot).cargo.base(); }, prop, type }
 
 static const NIProperty _nip_industries[] = {
 	NIP_PRODUCED_CARGO(0x25, Industry,  0, NIT_CARGO, "produced cargo 0"),
