@@ -31,13 +31,19 @@ enum BlitterType : uint8_t {
 
 struct GRFConfig;
 
+template <> struct BaseSetTraits<struct GraphicsSet> {
+	static constexpr size_t num_files = MAX_GFT;
+	static constexpr bool search_in_tars = true;
+	static constexpr std::string_view set_type = "graphics";
+};
+
 /** All data of a graphics set. */
-struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
+struct GraphicsSet : BaseSet<GraphicsSet> {
 private:
-	mutable std::unique_ptr<GRFConfig> extra_cfg; ///< Parameters for extra GRF
+	mutable std::unique_ptr<GRFConfig> extra_cfg = nullptr; ///< Parameters for extra GRF
 public:
-	PaletteType palette;       ///< Palette of this graphics set
-	BlitterType blitter;       ///< Blitter of this graphics set
+	PaletteType palette{}; ///< Palette of this graphics set
+	BlitterType blitter{}; ///< Blitter of this graphics set
 
 	GraphicsSet();
 	~GraphicsSet();

@@ -12,16 +12,20 @@
 
 #include "base_media_base.h"
 
-/** All data of a sounds set. */
-struct SoundsSet : BaseSet<SoundsSet, 1, true> {
+template <> struct BaseSetTraits<struct SoundsSet> {
+	static constexpr size_t num_files = 1;
+	static constexpr bool search_in_tars = true;
+	static constexpr std::string_view set_type = "sounds";
 };
+
+/** All data of a sounds set. */
+struct SoundsSet : BaseSet<SoundsSet> {};
 
 /** All data/functions related with replacing the base sounds */
 class BaseSounds : public BaseMedia<SoundsSet> {
 public:
 	/** The set as saved in the config file. */
 	static inline std::string ini_set;
-
 };
 
 #endif /* BASE_MEDIA_SOUNDS_H */

@@ -9,10 +9,6 @@
 
 #include "stdafx.h"
 #include "string_func.h"
-
-
-/** The type of set we're replacing */
-#define SET_TYPE "music"
 #include "base_media_func.h"
 #include "base_media_music.h"
 #include "random_access_file_type.h"
@@ -82,8 +78,8 @@ static const char * const _music_file_names[] = {
 /** Make sure we aren't messing things up. */
 static_assert(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
 
-template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _music_file_names;
+template <class T>
+/* static */ const char * const *BaseSet<T>::file_names = _music_file_names;
 
 template <class Tbase_set>
 /* static */ const char *BaseMedia<Tbase_set>::GetExtension()
@@ -115,7 +111,7 @@ template <class Tbase_set>
 
 bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)
 {
-	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, false>::FillSetDetails(ini, path, full_filename);
+	bool ret = this->BaseSet<MusicSet>::FillSetDetails(ini, path, full_filename);
 	if (ret) {
 		this->num_available = 0;
 		const IniGroup *names = ini.GetGroup("names");
