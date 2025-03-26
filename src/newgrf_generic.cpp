@@ -36,7 +36,7 @@ struct GenericScopeResolver : public ScopeResolver {
 	 * @param ai_callback Callback comes from the AI.
 	 */
 	GenericScopeResolver(ResolverObject &ro, bool ai_callback)
-		: ScopeResolver(ro), cargo_type(0), default_selection(0), src_industry(0), dst_industry(0), distance(0),
+		: ScopeResolver(ro), cargo_type(INVALID_CARGO), default_selection(0), src_industry(0), dst_industry(0), distance(0),
 		event(), count(0), station_size(0), feature(GSF_INVALID), ai_callback(ai_callback)
 	{
 	}
@@ -124,7 +124,7 @@ void AddGenericCallback(GrfSpecFeature feature, const GRFFile *file, const Sprit
 		switch (variable) {
 			case 0x40: return this->ro.grffile->cargo_map[this->cargo_type];
 
-			case 0x80: return this->cargo_type;
+			case 0x80: return this->cargo_type.base();
 			case 0x81: return CargoSpec::Get(this->cargo_type)->bitnum;
 			case 0x82: return this->default_selection;
 			case 0x83: return this->src_industry;
