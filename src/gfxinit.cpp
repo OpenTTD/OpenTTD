@@ -137,7 +137,7 @@ void CheckExternalFiles()
 		static_assert(SoundsSet::NUM_FILES == 1);
 		/* No need to loop each file, as long as there is only a single
 		 * sound file. */
-		fmt::format_to(output_iterator, "\t{} is {} ({})\n", sounds_set->files->filename, SoundsSet::CheckMD5(sounds_set->files, BASESET_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files->missing_warning);
+		fmt::format_to(output_iterator, "\t{} is {} ({})\n", sounds_set->files[0].filename, SoundsSet::CheckMD5(&sounds_set->files[0], BASESET_DIR) == MD5File::CR_MISMATCH ? "corrupt" : "missing", sounds_set->files[0].missing_warning);
 	}
 
 	if (!error_msg.empty()) ShowInfoI(error_msg);
@@ -346,15 +346,11 @@ void GfxLoadSprites()
 	UpdateCursorSize();
 }
 
-GraphicsSet::GraphicsSet()
-{
-	// instantiate here, because unique_ptr needs a complete type
-}
+// instantiate here, because unique_ptr needs a complete type
+GraphicsSet::GraphicsSet() = default;
 
-GraphicsSet::~GraphicsSet()
-{
-	// instantiate here, because unique_ptr needs a complete type
-}
+// instantiate here, because unique_ptr needs a complete type
+GraphicsSet::~GraphicsSet() = default;
 
 bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)
 {
@@ -467,18 +463,21 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 }
 
 /** Names corresponding to the GraphicsFileType */
-static const char * const _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
+static const std::string_view _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
 
 /** Implementation */
-template <class T>
-/* static */ const char * const *BaseSet<T>::file_names = _graphics_file_names;
-
-template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
+template <>
+/* static */ std::span<const std::string_view> BaseSet<GraphicsSet>::GetFilenames()
 {
-	if (BaseMedia<Tbase_set>::used_set != nullptr) return true;
+	return _graphics_file_names;
+}
 
-	const Tbase_set *best = nullptr;
+template <>
+/* static */ bool BaseMedia<GraphicsSet>::DetermineBestSet()
+{
+	if (BaseMedia<GraphicsSet>::used_set != nullptr) return true;
+
+	const GraphicsSet *best = nullptr;
 
 	auto IsBetter = [&best] (const auto *current) {
 		/* Nothing chosen yet. */
@@ -495,21 +494,21 @@ template <class Tbase_set>
 		return best->palette != PAL_DOS && current->palette == PAL_DOS;
 	};
 
-	for (const Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
+	for (const GraphicsSet *c = BaseMedia<GraphicsSet>::available_sets; c != nullptr; c = c->next) {
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
 		if (IsBetter(c)) best = c;
 	}
 
-	BaseMedia<Tbase_set>::used_set = best;
-	return BaseMedia<Tbase_set>::used_set != nullptr;
+	BaseMedia<GraphicsSet>::used_set = best;
+	return BaseMedia<GraphicsSet>::used_set != nullptr;
 }
 
-template <class Tbase_set>
-/* static */ const char *BaseMedia<Tbase_set>::GetExtension()
+template <>
+/* static */ const char *BaseMedia<GraphicsSet>::GetExtension()
 {
 	return ".obg"; // OpenTTD Base Graphics
 }
 
-INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<GraphicsSet>, GraphicsSet)
+template class BaseMedia<GraphicsSet>;

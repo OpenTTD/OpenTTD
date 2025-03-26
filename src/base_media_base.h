@@ -58,21 +58,18 @@ struct BaseSet {
 	/** BaseSet type name. */
 	static constexpr std::string_view SET_TYPE = BaseSetTraits<T>::set_type;
 
-	/** Internal names of the files in this set. */
-	static const char * const *file_names;
-
 	std::string name;              ///< The name of the base set
 	std::string url;               ///< URL for information about the base set
 	TranslatedStrings description; ///< Description of the base set
-	uint32_t shortname;              ///< Four letter short variant of the name
-	uint32_t version;                ///< The version of this base set
-	bool fallback;                 ///< This set is a fallback set, i.e. it should be used only as last resort
+	uint32_t shortname = 0; ///< Four letter short variant of the name
+	uint32_t version = 0; ///< The version of this base set
+	bool fallback = false; ///< This set is a fallback set, i.e. it should be used only as last resort
 
-	MD5File files[BaseSet<T>::NUM_FILES]; ///< All files part of this set
-	uint found_files;              ///< Number of the files that could be found
-	uint valid_files;              ///< Number of the files that could be found and are valid
+	std::array<MD5File, BaseSet<T>::NUM_FILES> files{}; ///< All files part of this set
+	uint found_files = 0; ///< Number of the files that could be found
+	uint valid_files = 0; ///< Number of the files that could be found and are valid
 
-	T *next;                       ///< The next base set in this list
+	T *next = nullptr; ///< The next base set in this list
 
 	/** Free everything we allocated */
 	~BaseSet()
@@ -154,6 +151,12 @@ struct BaseSet {
 		}
 		return std::nullopt;
 	}
+
+	/**
+	 * Get the internal names of the files in this set.
+	 * @return the internal filenames
+	 */
+	static std::span<const std::string_view> GetFilenames();
 };
 
 /**
@@ -163,9 +166,9 @@ struct BaseSet {
 template <class Tbase_set>
 class BaseMedia : FileScanner {
 protected:
-	static Tbase_set *available_sets; ///< All available sets
-	static Tbase_set *duplicate_sets; ///< All sets that aren't available, but needed for not downloading base sets when a newer version than the one on BaNaNaS is loaded.
-	static const Tbase_set *used_set; ///< The currently used set
+	static inline Tbase_set *available_sets = nullptr; ///< All available sets
+	static inline Tbase_set *duplicate_sets = nullptr; ///< All sets that aren't available, but needed for not downloading base sets when a newer version than the one on BaNaNaS is loaded.
+	static inline const Tbase_set *used_set = nullptr; ///< The currently used set
 
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
 
@@ -210,10 +213,6 @@ public:
 	 */
 	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
-
-template <class Tbase_set> /* static */ const Tbase_set *BaseMedia<Tbase_set>::used_set;
-template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::available_sets;
-template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplicate_sets;
 
 /**
  * Check whether there's a base set matching some information.
