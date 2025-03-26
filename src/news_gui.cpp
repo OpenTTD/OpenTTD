@@ -1187,10 +1187,10 @@ void ShowLastNewsMessage()
  * @param colour the colour the string will be shown in
  * @param *ni NewsItem being printed
  */
-static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem *ni)
+static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem &ni)
 {
 	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
-	std::string message = StrMakeValid(ni->GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string message = StrMakeValid(ni.GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
 	/* Truncate and show string; postfixed by '...' if necessary */
 	DrawString(left, right, y, message, colour);
@@ -1239,7 +1239,7 @@ struct MessageHistoryWindow : Window {
 		for (auto ni = first; ni != last; ++ni) {
 			DrawString(date.left, date.right, y, GetString(STR_JUST_DATE_TINY, ni->date), TC_WHITE);
 
-			DrawNewsString(news.left, news.right, y, TC_WHITE, &*ni);
+			DrawNewsString(news.left, news.right, y, TC_WHITE, *ni);
 			y += this->line_height;
 		}
 	}
