@@ -36,10 +36,10 @@
 
 #include "safeguards.h"
 
-static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left, int right, int top, int bottom)
+static bool DrawScrollingStatusText(const NewsItem &ni, int scroll_pos, int left, int right, int top, int bottom)
 {
 	/* Replace newlines and the likes with spaces. */
-	std::string message = StrMakeValid(ni->GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string message = StrMakeValid(ni.GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
 
 	DrawPixelInfo tmp_dpi;
 	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
@@ -139,7 +139,7 @@ struct StatusBarWindow : Window {
 					DrawString(tr, msg, TC_FROMSTRING, SA_HOR_CENTER);
 				} else if (this->ticker_scroll < TICKER_STOP && GetStatusbarNews() != nullptr && !GetStatusbarNews()->headline.empty()) {
 					/* Draw the scrolling news text */
-					if (!DrawScrollingStatusText(GetStatusbarNews(), ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
+					if (!DrawScrollingStatusText(*GetStatusbarNews(), ScaleGUITrad(this->ticker_scroll), tr.left, tr.right, tr.top, tr.bottom)) {
 						InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED);
 						if (Company::IsValidID(_local_company)) {
 							/* This is the default text */
