@@ -40,7 +40,7 @@ template <> struct BaseSetTraits<struct GraphicsSet> {
 /** All data of a graphics set. */
 struct GraphicsSet : BaseSet<GraphicsSet> {
 private:
-	mutable std::unique_ptr<GRFConfig> extra_cfg = nullptr; ///< Parameters for extra GRF
+	mutable std::unique_ptr<GRFConfig> extra_cfg; ///< Parameters for extra GRF
 public:
 	PaletteType palette{}; ///< Palette of this graphics set
 	BlitterType blitter{}; ///< Blitter of this graphics set

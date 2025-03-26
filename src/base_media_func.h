@@ -79,12 +79,14 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 	const IniGroup *files  = ini.GetGroup("files");
 	const IniGroup *md5s   = ini.GetGroup("md5s");
 	const IniGroup *origin = ini.GetGroup("origin");
+	auto file_names = BaseSet<T>::GetFilenames();
+
 	for (uint i = 0; i < BaseSet<T>::NUM_FILES; i++) {
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */
-		item = files != nullptr ? files->GetItem(BaseSet<T>::file_names[i]) : nullptr;
+		item = files != nullptr ? files->GetItem(file_names[i]) : nullptr;
 		if (item == nullptr || (!item->value.has_value() && !allow_empty_filename)) {
-			Debug(grf, 0, "No {} file for: {} (in {})", BaseSet<T>::SET_TYPE, BaseSet<T>::file_names[i], full_filename);
+			Debug(grf, 0, "No {} file for: {} (in {})", BaseSet<T>::SET_TYPE, file_names[i], full_filename);
 			return false;
 		}
 
@@ -406,25 +408,3 @@ template <class Tbase_set>
 {
 	return BaseMedia<Tbase_set>::available_sets;
 }
-
-/**
- * Force instantiation of methods so we don't get linker errors.
- * @param repl_type the type of the BaseMedia to instantiate
- * @param set_type  the type of the BaseSet to instantiate
- */
-#define INSTANTIATE_BASE_MEDIA_METHODS(repl_type, set_type) \
-	template const char *repl_type::GetExtension(); \
-	template bool repl_type::AddFile(const std::string &filename, size_t pathlength, const std::string &tar_filename); \
-	template bool repl_type::HasSet(const struct ContentInfo *ci, bool md5sum); \
-	template bool repl_type::SetSet(const set_type *set); \
-	template bool repl_type::SetSetByName(const std::string &name); \
-	template bool repl_type::SetSetByShortname(uint32_t shortname); \
-	template void repl_type::GetSetsList(std::back_insert_iterator<std::string> &output_iterator); \
-	template int repl_type::GetNumSets(); \
-	template int repl_type::GetIndexOfUsedSet(); \
-	template const set_type *repl_type::GetSet(int index); \
-	template const set_type *repl_type::GetUsedSet(); \
-	template bool repl_type::DetermineBestSet(); \
-	template set_type *repl_type::GetAvailableSets(); \
-	template const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const set_type *s);
-
