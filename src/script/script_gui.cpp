@@ -1311,7 +1311,7 @@ void ShowScriptDebugWindowIfScriptError()
 		}
 	}
 
-	GameInstance *g = Game::GetGameInstance();
+	GameInstance *g = Game::GetInstance();
 	if (g != nullptr && g->IsDead()) {
 		ShowScriptDebugWindow(OWNER_DEITY);
 	}

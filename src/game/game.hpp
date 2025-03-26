@@ -65,11 +65,6 @@ public:
 	static void NewEvent(class ScriptEvent *event);
 
 	/**
-	 * Get the current GameScript instance.
-	 */
-	static class GameInstance *GetGameInstance() { return Game::instance.get(); }
-
-	/**
 	 * Get the current GameInfo.
 	 */
 	static class GameInfo *GetInfo() { return Game::info; }
