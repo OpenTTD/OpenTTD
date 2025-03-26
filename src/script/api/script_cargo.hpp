@@ -60,9 +60,9 @@ public:
 	 */
 	enum SpecialCargoType {
 		/* Note: these values represent part of the in-game CargoTypes enum */
-		CT_AUTO_REFIT = ::CARGO_AUTO_REFIT, ///< Automatically choose cargo type when doing auto-refitting.
-		CT_NO_REFIT   = ::CARGO_NO_REFIT, ///< Do not refit cargo of a vehicle.
-		CT_INVALID    = ::INVALID_CARGO, ///< An invalid cargo type.
+		CT_AUTO_REFIT = ::CARGO_AUTO_REFIT.base(), ///< Automatically choose cargo type when doing auto-refitting.
+		CT_NO_REFIT   = ::CARGO_NO_REFIT.base(), ///< Do not refit cargo of a vehicle.
+		CT_INVALID    = ::INVALID_CARGO.base(), ///< An invalid cargo type.
 	};
 
 	/**

@@ -486,10 +486,10 @@ void ClearAllStationCachedNames()
  */
 CargoTypes GetAcceptanceMask(const Station *st)
 {
-	CargoTypes mask = 0;
+	CargoTypes mask{};
 
 	for (auto it = std::begin(st->goods); it != std::end(st->goods); ++it) {
-		if (it->status.Test(GoodsEntry::State::Acceptance)) SetBit(mask, std::distance(std::begin(st->goods), it));
+		if (it->status.Test(GoodsEntry::State::Acceptance)) mask.Set(static_cast<CargoType>(std::distance(std::begin(st->goods), it)));
 	}
 	return mask;
 }
@@ -501,10 +501,10 @@ CargoTypes GetAcceptanceMask(const Station *st)
  */
 CargoTypes GetEmptyMask(const Station *st)
 {
-	CargoTypes mask = 0;
+	CargoTypes mask{};
 
 	for (auto it = std::begin(st->goods); it != std::end(st->goods); ++it) {
-		if (!it->HasData() || it->GetData().cargo.TotalCount() == 0) SetBit(mask, std::distance(std::begin(st->goods), it));
+		if (!it->HasData() || it->GetData().cargo.TotalCount() == 0) mask.Set(static_cast<CargoType>(std::distance(std::begin(st->goods), it)));
 	}
 	return mask;
 }
@@ -569,7 +569,7 @@ CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
 CargoArray GetAcceptanceAroundTiles(TileIndex center_tile, int w, int h, int rad, CargoTypes *always_accepted)
 {
 	CargoArray acceptance{};
-	if (always_accepted != nullptr) *always_accepted = 0;
+	if (always_accepted != nullptr) always_accepted->Reset();
 
 	TileArea ta = TileArea(center_tile, w, h).Expand(rad);
 
@@ -591,7 +591,7 @@ CargoArray GetAcceptanceAroundTiles(TileIndex center_tile, int w, int h, int rad
 static CargoArray GetAcceptanceAroundStation(const Station *st, CargoTypes *always_accepted)
 {
 	CargoArray acceptance{};
-	if (always_accepted != nullptr) *always_accepted = 0;
+	if (always_accepted != nullptr) always_accepted->Reset();
 
 	BitmapTileIterator it(st->catchment_tiles);
 	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
@@ -618,7 +618,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	/* Adjust in case our station only accepts fewer kinds of goods */
-	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+	for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 		uint amt = acceptance[cargo];
 
 		/* Make sure the station can accept the goods type. */
@@ -642,12 +642,12 @@ void UpdateStationAcceptance(Station *st, bool show_msg)
 	/* show a message to report that the acceptance was changed? */
 	if (show_msg && st->owner == _local_company && st->IsInUse()) {
 		/* Combine old and new masks to get changes */
-		CargoTypes accepts = new_acc & ~old_acc;
-		CargoTypes rejects = ~new_acc & old_acc;
+		CargoTypes accepts = new_acc & CargoTypes{old_acc}.Flip();
+		CargoTypes rejects = CargoTypes{new_acc}.Flip() & old_acc;
 
 		/* Show news message if there are any changes */
-		if (accepts != 0) ShowRejectOrAcceptNews(st, accepts, false);
-		if (rejects != 0) ShowRejectOrAcceptNews(st, rejects, true);
+		if (accepts.Any()) ShowRejectOrAcceptNews(st, accepts, false);
+		if (rejects.Any()) ShowRejectOrAcceptNews(st, rejects, true);
 	}
 
 	/* redraw the station view since acceptance changed */
@@ -3872,13 +3872,13 @@ static VehicleEnterTileStates VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 void TriggerWatchedCargoCallbacks(Station *st)
 {
 	/* Collect cargoes accepted since the last big tick. */
-	CargoTypes cargoes = 0;
-	for (CargoType cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-		if (st->goods[cargo_type].status.Test(GoodsEntry::State::AcceptedBigtick)) SetBit(cargoes, cargo_type);
+	CargoTypes cargoes{};
+	for (CargoType cargo_type{}; cargo_type < NUM_CARGO; ++cargo_type) {
+		if (st->goods[cargo_type].status.Test(GoodsEntry::State::AcceptedBigtick)) cargoes.Set(cargo_type);
 	}
 
 	/* Anything to do? */
-	if (cargoes == 0) return;
+	if (cargoes.None()) return;
 
 	/* Loop over all houses in the catchment. */
 	BitmapTileIterator it(st->catchment_tiles);
@@ -4139,7 +4139,7 @@ void RerouteCargo(Station *st, CargoType cargo, StationID avoid, StationID avoid
  */
 void DeleteStaleLinks(Station *from)
 {
-	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+	for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 		const bool auto_distributed = (_settings_game.linkgraph.GetDistributionType(cargo) != DT_MANUAL);
 		GoodsEntry &ge = from->goods[cargo];
 		LinkGraph *lg = LinkGraph::GetIfValid(ge.link_graph);

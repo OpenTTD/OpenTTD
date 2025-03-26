@@ -55,7 +55,7 @@ struct HouseResolverObject : public SpecializedResolverObject<HouseRandomTrigger
 
 	HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0,
-			bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0, int view = 0);
+			bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = {}, int view = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
@@ -105,7 +105,7 @@ void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile, bool first_c
 void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigger_cargoes);
 
 uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile, std::span<int32_t> regs100 = {},
-		bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0, int view = 0);
+		bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = {}, int view = 0);
 
 bool CanDeleteHouse(TileIndex tile);
 

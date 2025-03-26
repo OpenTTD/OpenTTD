@@ -36,7 +36,7 @@ void DrawRoadVehDetails(const Vehicle *v, const Rect &r)
 
 	if (v->HasArticulatedPart()) {
 		CargoArray max_cargo{};
-		std::array<StringID, NUM_CARGO> subtype_text{};
+		TypedIndexContainer<std::array<StringID, NUM_CARGO>, CargoType> subtype_text{};
 
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			max_cargo[u->cargo_type] += u->cargo_cap;

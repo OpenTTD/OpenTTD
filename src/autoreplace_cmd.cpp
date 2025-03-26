@@ -47,7 +47,7 @@ static bool EnginesHaveCargoInCommon(EngineID engine_a, EngineID engine_b)
 {
 	CargoTypes available_cargoes_a = GetUnionOfArticulatedRefitMasks(engine_a, true);
 	CargoTypes available_cargoes_b = GetUnionOfArticulatedRefitMasks(engine_b, true);
-	return (available_cargoes_a == 0 || available_cargoes_b == 0 || (available_cargoes_a & available_cargoes_b) != 0);
+	return available_cargoes_a.None() || available_cargoes_b.None() || available_cargoes_a.Any(available_cargoes_b);
 }
 
 /**
@@ -189,8 +189,8 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
 		if (!o.IsRefit() || o.IsAutoRefit()) continue;
 		CargoType cargo_type = o.GetRefitCargo();
 
-		if (!HasBit(union_refit_mask_a, cargo_type)) continue;
-		if (!HasBit(union_refit_mask_b, cargo_type)) return false;
+		if (!union_refit_mask_a.Test(cargo_type)) continue;
+		if (!union_refit_mask_b.Test(cargo_type)) return false;
 	}
 
 	return true;
@@ -213,7 +213,7 @@ static int GetIncompatibleRefitOrderIdForAutoreplace(const Vehicle *v, EngineID 
 	for (VehicleOrderID i = 0; i < orders->GetNumOrders(); i++) {
 		const Order *o = orders->GetOrderAt(i);
 		if (!o->IsRefit()) continue;
-		if (!HasBit(union_refit_mask, o->GetRefitCargo())) return i;
+		if (!union_refit_mask.Test(o->GetRefitCargo())) return i;
 	}
 
 	return -1;
@@ -233,11 +233,11 @@ static CargoType GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, boo
 	CargoTypes available_cargo_types, union_mask;
 	GetArticulatedRefitMasks(engine_type, true, &union_mask, &available_cargo_types);
 
-	if (union_mask == 0) return CARGO_NO_REFIT; // Don't try to refit an engine with no cargo capacity
+	if (union_mask.None()) return CARGO_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
 	CargoType cargo_type;
 	CargoTypes cargo_mask = GetCargoTypesOfArticulatedVehicle(v, &cargo_type);
-	if (!HasAtMostOneBit(cargo_mask)) {
+	if (!HasAtMostOneBit(cargo_mask.base())) {
 		CargoTypes new_engine_default_cargoes = GetCargoTypesOfArticulatedParts(engine_type);
 		if ((cargo_mask & new_engine_default_cargoes) == cargo_mask) {
 			return CARGO_NO_REFIT; // engine_type is already a mixed cargo type which matches the incoming vehicle by default, no refit required
@@ -257,12 +257,12 @@ static CargoType GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, boo
 		for (v = v->First(); v != nullptr; v = v->Next()) {
 			if (!v->GetEngine()->CanCarryCargo()) continue;
 			/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
-			if (HasBit(available_cargo_types, v->cargo_type)) return v->cargo_type;
+			if (available_cargo_types.Test(v->cargo_type)) return v->cargo_type;
 		}
 
 		return CARGO_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
 	} else {
-		if (!HasBit(available_cargo_types, cargo_type)) return INVALID_CARGO; // We can't refit the vehicle to carry the cargo we want
+		if (!available_cargo_types.Test(cargo_type)) return INVALID_CARGO; // We can't refit the vehicle to carry the cargo we want
 
 		if (part_of_chain && !VerifyAutoreplaceRefitForOrders(v, engine_type)) return INVALID_CARGO; // Some refit orders lose their effect
 

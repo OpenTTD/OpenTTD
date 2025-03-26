@@ -253,7 +253,7 @@ struct CargoMapSpriteGroupHandler : MapSpriteGroupHandler {
 		if (local_id >= NUM_CARGO) {
 			GrfMsg(1, "CargoMapSpriteGroup: Cargo type {} out of range, skipping", local_id);
 		} else {
-			CargoSpec *cs = CargoSpec::Get(local_id);
+			CargoSpec *cs = CargoSpec::Get(static_cast<CargoType>(local_id));
 			cs->grffile = _cur_gps.grffile;
 			cs->group = group;
 		}

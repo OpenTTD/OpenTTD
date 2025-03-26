@@ -526,7 +526,7 @@ public:
 
 	uint8_t last_vehicle_type = 0;
 	std::list<Vehicle *> loading_vehicles{};
-	std::array<GoodsEntry, NUM_CARGO> goods; ///< Goods at this station
+	TypedIndexContainer<std::array<GoodsEntry, NUM_CARGO>, CargoType> goods; ///< Goods at this station
 	CargoTypes always_accepted{}; ///< Bitmask of always accepted cargo types (by houses, HQs, industry tiles when industry doesn't accept cargo)
 
 	IndustryList industries_near{}; ///< Cached list of industries near the station that can accept cargo, @see DeliverGoodsToIndustry()

@@ -708,7 +708,7 @@ public:
 				return;
 
 			case WID_GL_FILTER_BY_CARGO: // Select filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(false), this->cargo_filter_criteria.base(), widget);
 				break;
 
 			case WID_GL_ALL_VEHICLES: // All vehicles button
@@ -999,7 +999,7 @@ public:
 				break;
 
 			case WID_GL_FILTER_BY_CARGO: // Select a cargo filter criteria
-				this->SetCargoFilter(index);
+				this->SetCargoFilter(static_cast<CargoType>(index));
 				break;
 
 			case WID_GL_MANAGE_VEHICLES_DROPDOWN:

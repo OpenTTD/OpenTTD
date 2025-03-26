@@ -371,7 +371,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		case 0x87: return this->industry->location.h;// xy dimensions
 
 		case 0x88:
-		case 0x89: return this->industry->GetProduced(variable - 0x88).cargo;
+		case 0x89: return this->industry->GetProduced(variable - 0x88).cargo.base();
 		case 0x8A: return this->industry->GetProduced(0).waiting;
 		case 0x8B: return GB(this->industry->GetProduced(0).waiting, 8, 8);
 		case 0x8C: return this->industry->GetProduced(1).waiting;
@@ -380,7 +380,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		case 0x8F: return this->industry->GetProduced(variable - 0x8E).rate;
 		case 0x90:
 		case 0x91:
-		case 0x92: return this->industry->GetAccepted(variable - 0x90).cargo;
+		case 0x92: return this->industry->GetAccepted(variable - 0x90).cargo.base();
 		case 0x93: return this->industry->prod_level;
 		/* amount of cargo produced so far THIS month. */
 		case 0x94: return this->industry->GetProduced(0).history[THIS_MONTH].production;

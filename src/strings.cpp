@@ -1341,10 +1341,10 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					/* Tiny description of cargotypes. Layout:
 					 * param 1: cargo type
 					 * param 2: cargo count */
-					CargoType cargo = args.GetNextParameter<CargoType>();
+					CargoType cargo{args.GetNextParameter<CargoType::BaseType>()};
 					int64_t amount = args.GetNextParameter<int64_t>();
 
-					if (cargo >= CargoSpec::GetArraySize()) {
+					if (cargo.base() >= CargoSpec::GetArraySize()) {
 						builder += "(invalid cargo type)";
 						break;
 					}
@@ -1370,10 +1370,10 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					/* Short description of cargotypes. Layout:
 					 * param 1: cargo type
 					 * param 2: cargo count */
-					CargoType cargo = args.GetNextParameter<CargoType>();
+					CargoType cargo{args.GetNextParameter<CargoType::BaseType>()};
 					int64_t amount = args.GetNextParameter<int64_t>();
 
-					if (cargo >= CargoSpec::GetArraySize()) {
+					if (cargo.base() >= CargoSpec::GetArraySize()) {
 						builder += "(invalid cargo type)";
 						break;
 					}
@@ -1407,9 +1407,9 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_CARGO_LONG: { // {CARGO_LONG}
 					/* First parameter is cargo type, second parameter is cargo count */
-					CargoType cargo = args.GetNextParameter<CargoType>();
+					CargoType cargo{args.GetNextParameter<CargoType::BaseType>()};
 					int64_t amount = args.GetNextParameter<int64_t>();
-					if (cargo < CargoSpec::GetArraySize()) {
+					if (cargo.base() < CargoSpec::GetArraySize()) {
 						auto tmp_args = MakeParameters(amount);
 						GetStringWithArgs(builder, CargoSpec::Get(cargo)->quantifier, tmp_args);
 					} else if (!IsValidCargoType(cargo)) {
@@ -1426,7 +1426,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 					std::string_view list_separator = GetListSeparator();
 					for (const auto &cs : _sorted_cargo_specs) {
-						if (!HasBit(cmask, cs->Index())) continue;
+						if (!cmask.Test(cs->Index())) continue;
 
 						if (first) {
 							first = false;

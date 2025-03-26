@@ -404,9 +404,9 @@ public:
 				CargoType cargo_type = cs->Index();
 				auto it = this->town->GetCargoSupplied(cargo_type);
 				if (it == std::end(this->town->supplied)) {
-					DrawString(tr, GetString(str_last_period, 1ULL << cargo_type, 0, 0));
+					DrawString(tr, GetString(str_last_period, CargoTypes{cargo_type}, 0, 0));
 				} else {
-					DrawString(tr, GetString(str_last_period, 1ULL << cargo_type, it->history[LAST_MONTH].transported, it->history[LAST_MONTH].production));
+					DrawString(tr, GetString(str_last_period, CargoTypes{cargo_type}, it->history[LAST_MONTH].transported, it->history[LAST_MONTH].production));
 				}
 				tr.top += GetCharacterHeight(FS_NORMAL);
 			}
@@ -1629,12 +1629,12 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
 
-			SetBit(produced, cargo);
+			produced.Set(cargo);
 		}
 	} else {
 		/* Cargo is not controlled by NewGRF, town production effect is used instead. */
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) SetBit(produced, cs->Index());
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) SetBit(produced, cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_PASSENGERS]) produced.Set(cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TPE_MAIL]) produced.Set(cs->Index());
 	}
 	return produced;
 }
@@ -1720,7 +1720,7 @@ struct BuildHouseWindow : public PickerWindow {
 		}
 
 		CargoTypes produced = GetProducedCargoOfHouse(hs);
-		if (produced != 0) {
+		if (produced.Any()) {
 			line << "\n";
 			line << GetString(STR_HOUSE_PICKER_CARGO_PRODUCED, produced);
 		}

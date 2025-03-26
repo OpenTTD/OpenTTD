@@ -72,7 +72,7 @@
 
 	ScriptList *list = new ScriptList();
 	for (const CargoType &cargo : ins->produced_cargo) {
-		if (::IsValidCargoType(cargo)) list->AddItem(cargo);
+		if (::IsValidCargoType(cargo)) list->AddItem(cargo.base());
 	}
 
 	return list;
@@ -86,7 +86,7 @@
 
 	ScriptList *list = new ScriptList();
 	for (const CargoType &cargo : ins->accepts_cargo) {
-		if (::IsValidCargoType(cargo)) list->AddItem(cargo);
+		if (::IsValidCargoType(cargo)) list->AddItem(cargo.base());
 	}
 
 	return list;

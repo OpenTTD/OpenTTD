@@ -546,7 +546,7 @@ static bool CargoAndEngineFilter(const GUIEngineListItem *item, const CargoType 
 		return Engine::Get(item->engine_id)->GetPower() != 0;
 	} else {
 		CargoTypes refit_mask = GetUnionOfArticulatedRefitMasks(item->engine_id, true) & _standard_cargo_mask;
-		return (cargo_type == CargoFilterCriteria::CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cargo_type));
+		return (cargo_type == CargoFilterCriteria::CF_NONE ? refit_mask.None() : refit_mask.Test(cargo_type));
 	}
 }
 
@@ -557,7 +557,7 @@ static GUIEngineList::FilterFunction * const _engine_filter_funcs[] = {
 static uint GetCargoWeight(const CargoArray &cap, VehicleType vtype)
 {
 	uint weight = 0;
-	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+	for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 		if (cap[cargo] != 0) {
 			if (vtype == VEH_TRAIN) {
 				weight += CargoSpec::Get(cargo)->WeightOfNUnitsInTrain(cap[cargo]);
@@ -1280,10 +1280,10 @@ struct BuildVehicleWindow : Window {
 
 	StringID GetCargoFilterLabel(CargoType cargo_type) const
 	{
-		switch (cargo_type) {
-			case CargoFilterCriteria::CF_ANY: return STR_PURCHASE_INFO_ALL_TYPES;
-			case CargoFilterCriteria::CF_ENGINES: return STR_PURCHASE_INFO_ENGINES_ONLY;
-			case CargoFilterCriteria::CF_NONE: return STR_PURCHASE_INFO_NONE;
+		switch (cargo_type.base()) {
+			case CargoFilterCriteria::CF_ANY.base(): return STR_PURCHASE_INFO_ALL_TYPES;
+			case CargoFilterCriteria::CF_ENGINES.base(): return STR_PURCHASE_INFO_ENGINES_ONLY;
+			case CargoFilterCriteria::CF_NONE.base(): return STR_PURCHASE_INFO_NONE;
 			default: return CargoSpec::Get(cargo_type)->name;
 		}
 	}
@@ -1293,7 +1293,7 @@ struct BuildVehicleWindow : Window {
 	{
 		/* Set the last cargo filter criteria. */
 		this->cargo_filter_criteria = _engine_sort_last_cargo_criteria[this->vehicle_type];
-		if (this->cargo_filter_criteria < NUM_CARGO && !HasBit(_standard_cargo_mask, this->cargo_filter_criteria)) this->cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
+		if (this->cargo_filter_criteria < NUM_CARGO && !_standard_cargo_mask.Test(this->cargo_filter_criteria)) this->cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
 
 		this->eng_list.SetFilterFuncs(_engine_filter_funcs);
 		this->eng_list.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
@@ -1595,20 +1595,20 @@ struct BuildVehicleWindow : Window {
 		DropDownList list;
 
 		/* Add item for disabling filtering. */
-		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY));
+		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY.base()));
 		/* Specific filters for trains. */
 		if (this->vehicle_type == VEH_TRAIN) {
 			/* Add item for locomotives only in case of trains. */
-			list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ENGINES), CargoFilterCriteria::CF_ENGINES));
+			list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ENGINES), CargoFilterCriteria::CF_ENGINES.base()));
 			/* Add item for vehicles not carrying anything, e.g. train engines.
 			 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
-			list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE));
+			list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_NONE), CargoFilterCriteria::CF_NONE.base()));
 		}
 
 		/* Add cargos */
 		Dimension d = GetLargestCargoIconSize();
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-			list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index()));
+			list.push_back(MakeDropDownListIconItem(d, cs->GetCargoIcon(), PAL_NONE, cs->name, cs->Index().base()));
 		}
 
 		return list;
@@ -1700,7 +1700,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria.base(), widget);
 				break;
 
 			case WID_BV_CONFIGURE_BADGES:
@@ -1909,7 +1909,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select a cargo filter criteria
 				if (this->cargo_filter_criteria != index) {
-					this->cargo_filter_criteria = index;
+					this->cargo_filter_criteria = static_cast<CargoType>(index);
 					_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter_criteria;
 					/* deactivate filter if criteria is 'Show All', activate it otherwise */
 					this->eng_list.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
