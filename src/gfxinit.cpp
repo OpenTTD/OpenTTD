@@ -18,9 +18,6 @@
 #include "video/video_driver.hpp"
 #include "window_func.h"
 #include "palette_func.h"
-
-/* The type of set we're replacing */
-#define SET_TYPE "graphics"
 #include "base_media_func.h"
 #include "base_media_graphics.h"
 #include "base_media_sounds.h"
@@ -350,7 +347,6 @@ void GfxLoadSprites()
 }
 
 GraphicsSet::GraphicsSet()
-	: BaseSet<GraphicsSet, MAX_GFT, true>{}, palette{}, blitter{}
 {
 	// instantiate here, because unique_ptr needs a complete type
 }
@@ -362,7 +358,7 @@ GraphicsSet::~GraphicsSet()
 
 bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)
 {
-	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, true>::FillSetDetails(ini, path, full_filename, false);
+	bool ret = this->BaseSet<GraphicsSet>::FillSetDetails(ini, path, full_filename, false);
 	if (ret) {
 		const IniGroup *metadata = ini.GetGroup("metadata");
 		assert(metadata != nullptr); /* ret can't be true if metadata isn't present. */
@@ -474,8 +470,8 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 static const char * const _graphics_file_names[] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
 
 /** Implementation */
-template <class T, size_t Tnum_files, bool Tsearch_in_tars>
-/* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _graphics_file_names;
+template <class T>
+/* static */ const char * const *BaseSet<T>::file_names = _graphics_file_names;
 
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::DetermineBestSet()
