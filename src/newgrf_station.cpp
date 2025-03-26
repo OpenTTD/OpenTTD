@@ -53,6 +53,20 @@ template class NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
 
 static const uint NUM_STATIONSSPECS_PER_STATION = 255; ///< Maximum number of parts per station.
 
+/**
+ * Convert GoodsEntry status to the form required for NewGRF variables.
+ * @return NewGRF representation of GoodsEntry state.
+ */
+uint8_t GoodsEntry::ConvertState() const
+{
+	uint8_t res = 0;
+	if (this->status.Test(GoodsEntry::State::EverAccepted))    SetBit(res, 0);
+	if (this->status.Test(GoodsEntry::State::LastMonth))       SetBit(res, 1);
+	if (this->status.Test(GoodsEntry::State::CurrentMonth))    SetBit(res, 2);
+	if (this->status.Test(GoodsEntry::State::AcceptedBigtick)) SetBit(res, 3);
+	return res;
+}
+
 enum TriggerArea : uint8_t {
 	TA_TILE,
 	TA_PLATFORM,
@@ -447,13 +461,8 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 			case 0x62: return ge->HasRating() ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->HasData() ? ge->GetData().cargo.PeriodsInTransit() : 0;
 			case 0x64: return ge->HasVehicleEverTriedLoading() ? ge->last_speed | (ge->last_age << 8) : 0xFF00;
-			case 0x65: return GB(ge->status, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
-			case 0x69: {
-				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 1 == (int)GoodsEntry::GES_LAST_MONTH);
-				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 2 == (int)GoodsEntry::GES_CURRENT_MONTH);
-				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 3 == (int)GoodsEntry::GES_ACCEPTED_BIGTICK);
-				return GB(ge->status, GoodsEntry::GES_EVER_ACCEPTED, 4);
-			}
+			case 0x65: return ge->status.Test(GoodsEntry::State::Acceptance) ? (1U << 3) : 0;
+			case 0x69: return ge->ConvertState();
 		}
 	}
 
@@ -462,7 +471,7 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
 			case 0: return g->HasData() ? g->GetData().cargo.TotalCount() : 0;
-			case 1: return GB(g->HasData() ? std::min(g->GetData().cargo.TotalCount(), 4095u) : 0, 0, 4) | (GB(g->status, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
+			case 1: return GB(g->HasData() ? std::min(g->GetData().cargo.TotalCount(), 4095u) : 0, 0, 4) | (g->status.Test(GoodsEntry::State::Acceptance) ? (1U << 7) : 0);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
 			case 4: return (g->HasData() ? g->GetData().cargo.GetFirstStation() : StationID::Invalid()).base();

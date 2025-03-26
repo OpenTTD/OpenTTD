@@ -724,8 +724,8 @@ static bool LoadOldGood(LoadgameState &ls, int num)
 
 	if (!LoadChunk(ls, ge, goods_chunk)) return false;
 
-	AssignBit(ge->status, GoodsEntry::GES_ACCEPTANCE, HasBit(_waiting_acceptance, 15));
-	AssignBit(ge->status, GoodsEntry::GES_RATING, _cargo_source != 0xFF);
+	ge->status.Set(GoodsEntry::State::Acceptance, HasBit(_waiting_acceptance, 15));
+	ge->status.Set(GoodsEntry::State::Rating, _cargo_source != 0xFF);
 	if (GB(_waiting_acceptance, 0, 12) != 0 && CargoPacket::CanAllocateItem()) {
 		ge->GetOrCreateData().cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_periods, (_cargo_source == 0xFF) ? StationID::Invalid() : StationID{_cargo_source}, INVALID_TILE, 0),
 				StationID::Invalid());

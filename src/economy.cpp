@@ -1107,9 +1107,7 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 
 	/* Update station statistics */
 	if (accepted_total > 0) {
-		SetBit(st->goods[cargo_type].status, GoodsEntry::GES_EVER_ACCEPTED);
-		SetBit(st->goods[cargo_type].status, GoodsEntry::GES_CURRENT_MONTH);
-		SetBit(st->goods[cargo_type].status, GoodsEntry::GES_ACCEPTED_BIGTICK);
+		st->goods[cargo_type].status.Set({GoodsEntry::State::EverAccepted, GoodsEntry::State::CurrentMonth, GoodsEntry::State::AcceptedBigtick});
 	}
 
 	/* Update company statistics */
@@ -1285,7 +1283,7 @@ void PrepareUnload(Vehicle *front_v)
 			const GoodsEntry *ge = &st->goods[v->cargo_type];
 			if (v->cargo_cap > 0 && v->cargo.TotalCount() > 0) {
 				v->cargo.Stage(
-						HasBit(ge->status, GoodsEntry::GES_ACCEPTANCE),
+						ge->status.Test(GoodsEntry::State::Acceptance),
 						front_v->last_station_visited, next_station,
 						front_v->current_order.GetUnloadType(), ge,
 						v->cargo_type, front_v->cargo_payment,
@@ -1676,7 +1674,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			uint amount_unloaded = _settings_game.order.gradual_loading ? std::min(cargo_count, GetLoadAmount(v)) : cargo_count;
 			bool remaining = false; // Are there cargo entities in this vehicle that can still be unloaded here?
 
-			if (!HasBit(ge->status, GoodsEntry::GES_ACCEPTANCE) && v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER) > 0) {
+			if (!ge->status.Test(GoodsEntry::State::Acceptance) && v->cargo.ActionCount(VehicleCargoList::MTA_DELIVER) > 0) {
 				/* The station does not accept our goods anymore. */
 				if (front->current_order.GetUnloadType() & (OUFB_TRANSFER | OUFB_UNLOAD)) {
 					/* Transfer instead of delivering. */
@@ -1709,7 +1707,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 					/* Upon transferring cargo, make sure the station has a rating. Fake a pickup for the
 					 * first unload to prevent the cargo from quickly decaying after the initial drop. */
 					ge->time_since_pickup = 0;
-					SetBit(ge->status, GoodsEntry::GES_RATING);
+					ge->status.Set(GoodsEntry::State::Rating);
 				}
 			}
 
