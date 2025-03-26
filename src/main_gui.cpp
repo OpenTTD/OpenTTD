@@ -221,14 +221,14 @@ struct MainWindow : Window
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 		nvp->InitializeViewport(this, TileXY(32, 32), ScaleZoomGUI(ZoomLevel::Viewport));
 
-		this->viewport->overlay = std::make_shared<LinkGraphOverlay>(this, WID_M_VIEWPORT, 0, CompanyMask{}, 2);
+		this->viewport->overlay = std::make_shared<LinkGraphOverlay>(this, WID_M_VIEWPORT, CargoTypes{}, CompanyMask{}, 2);
 		this->refresh_timeout.Reset();
 	}
 
 	/** Refresh the link-graph overlay. */
 	void RefreshLinkGraph()
 	{
-		if (this->viewport->overlay->GetCargoMask() == 0 ||
+		if (this->viewport->overlay->GetCargoMask().None() ||
 				this->viewport->overlay->GetCompanyMask().None()) {
 			return;
 		}

@@ -71,7 +71,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		}
 	};
 	struct ProducedCargo {
-		CargoType cargo = 0; ///< Cargo type
+		CargoType cargo = INVALID_CARGO; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo produced
 		uint8_t rate = 0; ///< Production rate
 		HistoryData<ProducedHistory> history{}; ///< History of cargo produced and transported for this month and 24 previous months
@@ -83,7 +83,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	};
 
 	struct AcceptedCargo {
-		CargoType cargo = 0; ///< Cargo type
+		CargoType cargo = INVALID_CARGO; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo waiting to processed
 		uint32_t accumulated_waiting = 0; ///< Accumulated waiting total over the last month, used to calculate average.
 		TimerGameEconomy::Date last_accepted{}; ///< Last day cargo was accepted by this industry

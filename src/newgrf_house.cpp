@@ -400,7 +400,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 			}
 
 			/* Cargo triggered CB 148? */
-			if (HasBit(this->watched_cargo_triggers, cargo_type)) SetBit(res, 4);
+			if (this->watched_cargo_triggers.Test(cargo_type)) SetBit(res, 4);
 
 			return res;
 		}
@@ -451,6 +451,21 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 	return UINT_MAX;
 }
 
+/**
+ * Get the result of a house callback.
+ * @param callback Callback ID.
+ * @param param1 First parameter (var 10) of the callback.
+ * @param param2 Second parameter (var 18) of the callback.
+ * @param house_id House to query.
+ * @param town %Town containing the house.
+ * @param tile %Tile containing the house.
+ * @param[out] regs100 Additional result values from registers 100+.
+ * @param not_yet_constructed House is still under construction.
+ * @param initial_random_bits Random bits during construction checks.
+ * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
+ * @param view The house's 'view'.
+ * @return The NewGRF result of the callback.
+ */
 uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile, std::span<int32_t> regs100,
 		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
 {
@@ -737,9 +752,9 @@ void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigg
 	HouseID id = GetHouseType(tile);
 	const HouseSpec *hs = HouseSpec::Get(id);
 
-	trigger_cargoes &= hs->watched_cargoes;
+	trigger_cargoes = trigger_cargoes & hs->watched_cargoes;
 	/* None of the trigger cargoes is watched? */
-	if (trigger_cargoes == 0) return;
+	if (trigger_cargoes.None()) return;
 
 	/* Same random value for all tiles of a multi-tile house. */
 	uint16_t r = Random();

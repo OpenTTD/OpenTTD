@@ -239,7 +239,7 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 		/* Pick the first cargo that we have waiting */
 		for (const auto &[cargo, spritegroup] : roadstopspec->grf_prop.spritegroups) {
 			if (cargo < NUM_CARGO && station->goods[cargo].TotalCount() > 0) {
-				ctype = cargo;
+				ctype = static_cast<CargoType>(cargo);
 				this->root_spritegroup = spritegroup;
 				break;
 			}
@@ -449,8 +449,8 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 	/* Check the cached cargo trigger bitmask to see if we need
 	 * to bother with any further processing.
 	 * Note: cached_roadstop_cargo_triggers must be non-zero even for cargo-independent triggers. */
-	if (st->cached_roadstop_cargo_triggers == 0) return;
-	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_roadstop_cargo_triggers, cargo_type)) return;
+	if (st->cached_roadstop_cargo_triggers.None()) return;
+	if (IsValidCargoType(cargo_type) && !st->cached_roadstop_cargo_triggers.Test(cargo_type)) return;
 
 	TriggerArea ta = tas[to_underlying(trigger)];
 	if (ta == TA_WHOLE) st->waiting_random_triggers.Set(trigger);
@@ -458,10 +458,9 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 
 	uint32_t whole_reseed = 0;
 
-	/* Bitmask of completely empty cargo types to be matched. */
-	CargoTypes empty_mask{};
+	CargoTypes cargo_waiting{};
 	if (trigger == StationRandomTrigger::CargoTaken) {
-		empty_mask = GetEmptyMask(Station::From(st));
+		cargo_waiting = GetCargoWaitingMask(Station::From(st));
 	}
 
 	auto process_tile = [&](TileIndex cur_tile) {
@@ -473,10 +472,10 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 		/* Cargo taken "will only be triggered if all of those
 		 * cargo types have no more cargo waiting." */
 		if (trigger == StationRandomTrigger::CargoTaken) {
-			if ((ss->cargo_triggers & ~empty_mask) != 0) return;
+			if (ss->cargo_triggers.Any(cargo_waiting)) return;
 		}
 
-		if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
+		if (!IsValidCargoType(cargo_type) || ss->cargo_triggers.Test(cargo_type)) {
 			RoadStopResolverObject object(ss, st, cur_tile, INVALID_ROADTYPE, GetStationType(cur_tile), GetStationGfx(cur_tile));
 			object.SetWaitingRandomTriggers(st->waiting_random_triggers | st->tile_waiting_random_triggers[tile]);
 
@@ -675,7 +674,7 @@ void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex)
 		} else {
 			st->roadstop_speclist.clear();
 			st->cached_roadstop_anim_triggers = {};
-			st->cached_roadstop_cargo_triggers = 0;
+			st->cached_roadstop_cargo_triggers.Reset();
 			return;
 		}
 	}
@@ -690,13 +689,13 @@ void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex)
 void RoadStopUpdateCachedTriggers(BaseStation *st)
 {
 	st->cached_roadstop_anim_triggers = {};
-	st->cached_roadstop_cargo_triggers = 0;
+	st->cached_roadstop_cargo_triggers.Reset();
 
 	/* Combine animation trigger bitmask for all road stop specs
 	 * of this station. */
 	for (const auto &sm : GetStationSpecList<RoadStopSpec>(st)) {
 		if (sm.spec == nullptr) continue;
 		st->cached_roadstop_anim_triggers.Set(sm.spec->animation.triggers);
-		st->cached_roadstop_cargo_triggers |= sm.spec->cargo_triggers;
+		st->cached_roadstop_cargo_triggers.Set(sm.spec->cargo_triggers);
 	}
 }
