@@ -108,7 +108,7 @@ struct CargoSpec {
 	 */
 	inline CargoType Index() const
 	{
-		return this - CargoSpec::array;
+		return static_cast<CargoType>(this - CargoSpec::array);
 	}
 
 	/**
@@ -237,8 +237,6 @@ inline bool IsCargoInClass(CargoType cargo, CargoClasses cc)
 {
 	return CargoSpec::Get(cargo)->classes.Any(cc);
 }
-
-using SetCargoBitIterator = SetBitIterator<CargoType, CargoTypes>;
 
 /** Comparator to sort CargoType by according to desired order. */
 struct CargoTypeComparator {

@@ -1641,12 +1641,12 @@ static CargoTypes GetProducedCargoOfHouse(const HouseSpec *hs)
 			uint amt = GB(callback, 0, 8);
 			if (amt == 0) continue;
 
-			SetBit(produced, cargo);
+			produced.Set(cargo);
 		}
 	} else {
 		/* Cargo is not controlled by NewGRF, town production effect is used instead. */
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Passengers]) SetBit(produced, cs->Index());
-		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Mail]) SetBit(produced, cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Passengers]) produced.Set(cs->Index());
+		for (const CargoSpec *cs : CargoSpec::town_production_cargoes[TownProductionEffect::Mail]) produced.Set(cs->Index());
 	}
 	return produced;
 }
@@ -1733,7 +1733,7 @@ struct BuildHouseWindow : public PickerWindow {
 		}
 
 		CargoTypes produced = GetProducedCargoOfHouse(hs);
-		if (produced != 0) {
+		if (produced.Any()) {
 			line << "\n";
 			line << GetString(STR_HOUSE_PICKER_CARGO_PRODUCED, produced);
 		}

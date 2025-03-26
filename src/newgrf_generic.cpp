@@ -36,7 +36,7 @@ struct GenericScopeResolver : public ScopeResolver {
 	 * @param ai_callback Callback comes from the AI.
 	 */
 	GenericScopeResolver(ResolverObject &ro, bool ai_callback)
-		: ScopeResolver(ro), cargo_type(0), default_selection(0), src_industry(0), dst_industry(0), distance(0),
+		: ScopeResolver(ro), cargo_type(INVALID_CARGO), default_selection(0), src_industry(0), dst_industry(0), distance(0),
 		event(), count(0), station_size(0), feature(GrfSpecFeature::Invalid), ai_callback(ai_callback)
 	{
 	}

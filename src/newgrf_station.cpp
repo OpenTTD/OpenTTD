@@ -427,7 +427,7 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 {
 	switch (variable) {
 		case 0x48: { // Accepted cargo types
-			uint32_t value = GetAcceptanceMask(this);
+			uint32_t value = GetAcceptanceMask(this).base();
 			return value;
 		}
 
@@ -607,7 +607,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 		/* Pick the first cargo that we have waiting */
 		for (const auto &[cargo, spritegroup] : statspec->grf_prop.spritegroups) {
 			if (cargo < NUM_CARGO && st->goods[cargo].TotalCount() > 0) {
-				ctype = cargo;
+				ctype = static_cast<CargoType>(cargo);
 				break;
 			}
 		}
@@ -804,7 +804,7 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 		} else {
 			st->speclist.clear();
 			st->cached_anim_triggers = {};
-			st->cached_cargo_triggers = 0;
+			st->cached_cargo_triggers.Reset();
 			return;
 		}
 	}
@@ -989,15 +989,14 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	/* Check the cached cargo trigger bitmask to see if we need
 	 * to bother with any further processing.
 	 * Note: cached_cargo_triggers must be non-zero even for cargo-independent triggers. */
-	if (st->cached_cargo_triggers == 0) return;
-	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
+	if (st->cached_cargo_triggers.None()) return;
+	if (IsValidCargoType(cargo_type) && !st->cached_cargo_triggers.Test(cargo_type)) return;
 
 	uint32_t whole_reseed = 0;
 
-	/* Bitmask of completely empty cargo types to be matched. */
-	CargoTypes empty_mask{};
+	CargoTypes cargo_waiting{};
 	if (trigger == StationRandomTrigger::CargoTaken) {
-		empty_mask = GetEmptyMask(Station::From(st));
+		cargo_waiting = GetCargoWaitingMask(Station::From(st));
 	}
 
 	/* Store triggers now for var 5F */
@@ -1017,10 +1016,10 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 			/* Cargo taken "will only be triggered if all of those
 			 * cargo types have no more cargo waiting." */
 			if (trigger == StationRandomTrigger::CargoTaken) {
-				if ((ss->cargo_triggers & ~empty_mask) != 0) continue;
+				if (ss->cargo_triggers.Any(cargo_waiting)) continue;
 			}
 
-			if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
+			if (!IsValidCargoType(cargo_type) || ss->cargo_triggers.Test(cargo_type)) {
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
 				object.SetWaitingRandomTriggers(st->waiting_random_triggers | st->tile_waiting_random_triggers[tile]);
 
@@ -1061,14 +1060,14 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 void StationUpdateCachedTriggers(BaseStation *st)
 {
 	st->cached_anim_triggers = {};
-	st->cached_cargo_triggers = 0;
+	st->cached_cargo_triggers.Reset();
 
 	/* Combine animation trigger bitmask for all station specs
 	 * of this station. */
 	for (const auto &sm : GetStationSpecList<StationSpec>(st)) {
 		if (sm.spec == nullptr) continue;
 		st->cached_anim_triggers.Set(sm.spec->animation.triggers);
-		st->cached_cargo_triggers |= sm.spec->cargo_triggers;
+		st->cached_cargo_triggers.Set(sm.spec->cargo_triggers);
 	}
 }
 

@@ -77,7 +77,7 @@ using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, TileType::Road>;
 int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	CargoTypes cargo_mask = 0;
+	CargoTypes cargo_mask{};
 	if (_thd.drawstyle == HT_RECT && tile < Map::Size()) {
 		CargoArray cargoes;
 		if (supplies) {
@@ -87,14 +87,14 @@ int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad,
 		}
 
 		/* Convert cargo counts to a set of cargo bits, and draw the result. */
-		for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 			switch (sct) {
 				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
 				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
 				case SCT_ALL: break;
 				default: NOT_REACHED();
 			}
-			if (cargoes[cargo] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, cargo);
+			if (cargoes[cargo] >= (supplies ? 1U : 8U)) cargo_mask.Set(cargo);
 		}
 	}
 	return DrawStringMultiLine(r, GetString(supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO, cargo_mask));
@@ -315,13 +315,13 @@ protected:
 				if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
 					bool has_rating = false;
 					/* Add to the station/cargo counts. */
-					for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+					for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 						if (st->goods[cargo].HasRating()) this->stations_per_cargo_type[cargo]++;
 					}
-					for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+					for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 						if (st->goods[cargo].HasRating()) {
 							has_rating = true;
-							if (HasBit(this->filter.cargoes, cargo)) {
+							if (this->filter.cargoes.Test(cargo)) {
 								this->stations.push_back(st);
 								break;
 							}
@@ -360,7 +360,7 @@ protected:
 	{
 		int diff = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(filter)) {
+		for (CargoType cargo : filter) {
 			diff += a->goods[cargo].TotalCount() - b->goods[cargo].TotalCount();
 		}
 
@@ -372,7 +372,7 @@ protected:
 	{
 		int diff = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(filter)) {
+		for (CargoType cargo : filter) {
 			diff += a->goods[cargo].AvailableCount() - b->goods[cargo].AvailableCount();
 		}
 
@@ -385,7 +385,7 @@ protected:
 		uint8_t maxr1 = 0;
 		uint8_t maxr2 = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(filter)) {
+		for (CargoType cargo : filter) {
 			if (a->goods[cargo].HasRating()) maxr1 = std::max(maxr1, a->goods[cargo].rating);
 			if (b->goods[cargo].HasRating()) maxr2 = std::max(maxr2, b->goods[cargo].rating);
 		}
@@ -399,7 +399,7 @@ protected:
 		uint8_t minr1 = 255;
 		uint8_t minr2 = 255;
 
-		for (CargoType cargo : SetCargoBitIterator(filter)) {
+		for (CargoType cargo : filter) {
 			if (a->goods[cargo].HasRating()) minr1 = std::min(minr1, a->goods[cargo].rating);
 			if (b->goods[cargo].HasRating()) minr2 = std::min(minr2, b->goods[cargo].rating);
 		}
@@ -560,9 +560,9 @@ public:
 		}
 
 		if (widget == WID_STL_CARGODROPDOWN) {
-			if (this->filter.cargoes == 0) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
+			if (this->filter.cargoes.None()) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
 			if (this->filter.cargoes == _cargo_mask) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
-			if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) return GetString(CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
+			if (this->filter.cargoes.Count() == 1 && !this->filter.include_no_rating) return GetString(CargoSpec::Get(*this->filter.cargoes.begin())->name);
 			return GetString(STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
 		}
 
@@ -593,7 +593,7 @@ public:
 			if (count == 0 && !expanded) {
 				any_hidden = true;
 			} else {
-				list.push_back(std::make_unique<DropDownListCargoItem>(HasBit(this->filter.cargoes, cs->Index()), fmt::format("{}", count), d, cs->GetCargoIcon(), PAL_NONE, GetString(cs->name), cs->Index(), false, count == 0));
+				list.push_back(std::make_unique<DropDownListCargoItem>(this->filter.cargoes.Test(cs->Index()), fmt::format("{}", count), d, cs->GetCargoIcon(), PAL_NONE, GetString(cs->name), cs->Index(), false, count == 0));
 			}
 		}
 
@@ -690,9 +690,9 @@ public:
 
 			if (index >= 0 && index < NUM_CARGO) {
 				if (_ctrl_pressed) {
-					ToggleBit(this->filter.cargoes, index);
+					this->filter.cargoes.Flip(static_cast<CargoType>(index));
 				} else {
-					this->filter.cargoes = 1ULL << index;
+					this->filter.cargoes = static_cast<CargoType>(index);
 					this->filter.include_no_rating = false;
 				}
 			} else if (index == CargoFilterCriteria::CF_NO_RATING) {
@@ -700,7 +700,7 @@ public:
 					this->filter.include_no_rating = !this->filter.include_no_rating;
 				} else {
 					this->filter.include_no_rating = true;
-					this->filter.cargoes = 0;
+					this->filter.cargoes.Reset();
 				}
 			} else if (index == CargoFilterCriteria::CF_SELECT_ALL) {
 				this->filter.cargoes = _cargo_mask;
@@ -1666,7 +1666,7 @@ struct StationViewWindow : public Window {
 	 */
 	void BuildCargoList(CargoDataEntry *entry, const Station *st)
 	{
-		for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
 
 			if (this->cached_destinations.Retrieve(cargo) == nullptr) {
 				this->RecalcDestinations(cargo);

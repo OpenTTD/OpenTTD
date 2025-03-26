@@ -19,6 +19,7 @@
 #include "viewport_func.h"
 #include "industry.h"
 #include "town.h"
+#include "cargo_type.h"
 #include "cheat_type.h"
 #include "newgrf_badge.h"
 #include "newgrf_badge_gui.h"
@@ -1832,13 +1833,13 @@ public:
 			}
 
 			case WID_ID_FILTER_BY_ACC_CARGO: {
-				this->SetAcceptedCargoFilter(index);
+				this->SetAcceptedCargoFilter(static_cast<CargoType>(index));
 				this->BuildSortIndustriesList();
 				break;
 			}
 
 			case WID_ID_FILTER_BY_PROD_CARGO: {
-				this->SetProducedCargoFilter(index);
+				this->SetProducedCargoFilter(static_cast<CargoType>(index));
 				this->BuildSortIndustriesList();
 				break;
 			}
@@ -3118,7 +3119,7 @@ struct IndustryCargoesWindow : public Window {
 
 		switch (widget) {
 			case WID_IC_CARGO_DROPDOWN:
-				this->ComputeCargoDisplay(index);
+				this->ComputeCargoDisplay(static_cast<CargoType>(index));
 				break;
 
 			case WID_IC_IND_DROPDOWN:
