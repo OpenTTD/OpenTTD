@@ -52,7 +52,7 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, nullptr)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of GameInfo to RegisterGame");
 	GameInfo *info = (GameInfo *)instance;
 
-	SQInteger res = ScriptInfo::Constructor(vm, info);
+	SQInteger res = ScriptInfo::Constructor(vm, *info);
 	if (res != 0) return res;
 
 	if (info->engine->MethodExists(info->SQ_instance, "MinVersionToLoad")) {
@@ -108,7 +108,7 @@ bool GameInfo::CanLoadFromVersion(int version) const
 	/* Create a new library */
 	GameLibrary *library = new GameLibrary();
 
-	SQInteger res = ScriptInfo::Constructor(vm, library);
+	SQInteger res = ScriptInfo::Constructor(vm, *library);
 	if (res != 0) {
 		delete library;
 		return res;
