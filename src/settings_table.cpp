@@ -39,6 +39,8 @@
 #include "music/music_driver.hpp"
 #include "blitter/factory.hpp"
 #include "base_media_base.h"
+#include "base_media_music.h"
+#include "base_media_sounds.h"
 #include "ai/ai_config.hpp"
 #include "ai/ai.hpp"
 #include "game/game_config.hpp"

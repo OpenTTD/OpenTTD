@@ -79,6 +79,9 @@ add_files(
     base_consist.h
     base_media_base.h
     base_media_func.h
+    base_media_graphics.h
+    base_media_music.h
+    base_media_sounds.h
     base_station_base.h
     bitmap_type.h
     bmp.cpp
