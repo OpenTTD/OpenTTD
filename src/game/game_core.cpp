@@ -103,8 +103,7 @@
 {
 	Backup<CompanyID> cur_company(_current_company);
 
-	Game::instance.reset();
-	Game::info = nullptr;
+	Game::ResetInstance();
 
 	cur_company.Restore();
 
@@ -162,10 +161,7 @@
 		if (!_settings_game.script_config.game->ResetInfo(true)) {
 			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.game->GetName());
 			_settings_game.script_config.game->Change(std::nullopt);
-			if (Game::instance != nullptr) {
-				Game::instance.reset();
-				Game::info = nullptr;
-			}
+			if (Game::instance != nullptr) Game::ResetInstance();
 		} else if (Game::instance != nullptr) {
 			Game::info = _settings_game.script_config.game->GetInfo();
 		}
@@ -232,6 +228,12 @@
 /* static */ GameLibrary *Game::FindLibrary(const std::string &library, int version)
 {
 	return Game::scanner_library->FindLibrary(library, version);
+}
+
+/* static */ void Game::ResetInstance()
+{
+	Game::instance.reset();
+	Game::info = nullptr;
 }
 
 /**
