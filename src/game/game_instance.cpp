@@ -94,8 +94,8 @@ void GameInstance::Died()
  */
 void CcGame(Commands cmd, const CommandCost &result, const CommandDataBuffer &data, CommandDataBuffer result_data)
 {
-	if (Game::GetGameInstance()->DoCommandCallback(result, data, std::move(result_data), cmd)) {
-		Game::GetGameInstance()->Continue();
+	if (Game::GetInstance()->DoCommandCallback(result, data, std::move(result_data), cmd)) {
+		Game::GetInstance()->Continue();
 	}
 }
 
