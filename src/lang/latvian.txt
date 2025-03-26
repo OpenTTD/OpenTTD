@@ -940,7 +940,7 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Pakalpojuma subsīdijas piedāvājums:{}{}Pirmais {STRING} no {STRING} līdz {STRING} saņems {UNITS_YEARS_OR_MINUTES} subsīdiju no vietējās pašvaldības!
 ###length 4
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Pakalpojuma subsīdija piešķirta uzņēmumam {STRING}!{}{} Pārvadājot {STRING} no {STRING} līdz {STRING} saņems 50% piemaksu par nākamo {UNITS_YEARS_OR_MINUTES}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Pakalpojuma subsīdija piešķirta uzņēmumam {STRING}!{}{}Pārvadājot {STRING} no {STRING} līdz {STRING} saņems dubultās likmes nākamos {UNITS_YEARS_OR_MINUTES}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Pakalpojuma subsīdija piešķirta uzņēmumam {STRING}!{}{}{STRING} no{STRING} uz{STRING} saņems dubultās likmes nākamos {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Pakalpojuma subsīdija piešķirta uzņēmumam {STRING}!{}{}Pārvadājot{STRING} no {STRING} līdz {STRING} saņems trīskāršu maksu nākamo {UNITS_YEARS_OR_MINUTES}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Pakalpojuma subsīdija piešķirta uzņēmumam {STRING}!{}{}Pārvadājot {STRING} no {STRING} līdz {STRING} saņems četrkāršu tarifu par nākamo {UNITS_YEARS_OR_MINUTES}!
 
@@ -1219,7 +1219,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :iecietīga
 STR_CITY_APPROVAL_HOSTILE                                       :naidīga
 STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujoša (neietekmē uzņēmuma darbības)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot sistēmu 'Tiešsaistes saturs'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}{}Jūs varat lejuplādēt dažādus MI, izmantojot pogu 'Tiešsaistes saturs'
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Iestatījumi
@@ -2654,7 +2654,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ir
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ir mainījis nosaukumu uz {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} piešķīra {CURRENCY_LONG} uz {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris beidza sesiju
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris pārstartējas...{}Lūdzu uzgaidiet...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris pārstartējas...{}{}Lūdzu uzgaidiet...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} tika izmests. Iemesls: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Notikusi kļūda servera reģistrācijā
@@ -2907,6 +2907,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Izvēlē
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Tiltu izvēle - klikšķināt uz vēlamo tiltu, lai to uzbūvētu
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Vanšu, tērauda
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Siju, tērauda
@@ -3637,17 +3638,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Atrasti
 STR_NEWGRF_LIST_MISSING                                         :{RED}Trūkst faili
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF uzvedība '{0:STRING}' visticamāk izraisīs desinhronizācijas vai avārijas
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Tas mainīja '{1:ENGINE}' vilcējvagona stāvokli ārpus depo
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tas mainīja transportlīdzekļa '{1:ENGINE}' garumu, kad tas neatradās depo
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Tas mainīja transportlīdzekļa ietilpību '{1:ENGINE}', kad neatrodas depo vai netiek pielāgots
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF uzvedība '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' visticamāk izraisīs desinhronizācijas vai avārijas
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Tas mainīja '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' vilcējvagona stāvokli ārpus depo
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tas mainīja transportlīdzekļa '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' garumu, kad tas neatradās depo
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Tas mainīja transportlīdzekļa ietilpību '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' kad neatrodas depo vai netiek pielāgots
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vilciens '{VEHICLE}', kas pieder '{COMPANY}' ir ar nepareizu garumu. Iespējams, vainīga problēma ar NewGRF. Spēle var desinhronizēties vai avarēt
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sniedz nepareizu informāciju
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' kravas pielāgošanas informācija pēc izbūves atšķiras no pārdošanas sarakstā norādītās. Tas var liegt automātiskai atjaunošanai/aizvietošanai pareizi pielāgot kravas
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' izraisīja bezgalīgu ražošanas izsaukumu ciklu
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' sniedz nepareizu informāciju
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}kravas pielāgošanas informācija pēc izbūves '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' atšķiras no pārdošanas sarakstā norādītās. Tas var liegt automātiskai atjaunošanai/aizvietošanai pareizi pielāgot kravas
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' izraisīja bezgalīgu ražošanas izsaukumu ciklu
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Izsaukums {1:HEX} atgrieza nezināmu vai nederīgu rezultātu {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}“{1:STRING}” atgrieza nederīgu kravas veidu ražošanas atgriezeniskajā funkcijā punktā {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' atgrieza nederīgu kravas veidu ražošanas atgriezeniskajā funkcijā punktā {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nederīga krava>
@@ -4712,52 +4713,52 @@ STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} tuvāk
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} tuvākais {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Pielāgot uz {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Pielāgot uz {STRING} un apstāties)
-STR_ORDER_STOP_ORDER                                            :(Apstādināt)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Pielāgot uz {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Pielāgot uz {STRING} un apstāties)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Apstādināt)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(gaida atdalīšanu)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(gaida atdalīšanu)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nevar izmantot staciju){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Netieši)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Netieši)
 
-STR_ORDER_FULL_LOAD                                             :(Piekraut pilnu)
-STR_ORDER_FULL_LOAD_ANY                                         :(Piekraut pilnu ar jebkuru kravu)
-STR_ORDER_NO_LOAD                                               :(Bez iekraušanas)
-STR_ORDER_UNLOAD                                                :(Izkraut un paņemt kravu)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Izkraut un gaidīt pilnu piekraušanu)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Izkraut un gaidīt jebkuru pilnu piekraušanu)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Izkraut un atstāt tukšu)
-STR_ORDER_TRANSFER                                              :(Pārkraut un paņemt kravu)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Pārkraut un gaidīt pilnu piekraušanu)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Pārcelt un gaidīt jebkuru pilnu piekraušanu)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Pārkraut un atstāt tukšu)
-STR_ORDER_NO_UNLOAD                                             :(Neizkraut un paņemt kravu)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Neizkraut un gaidīt pilnu kravu)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Neizkraut un gaidīt jebkuru pilnu kravu)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Bez izkraušanas un bez iekraušanas)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Piekraut pilnu)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Piekraut pilnu ar jebkuru kravu)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Bez iekraušanas)
+STR_ORDER_UNLOAD                                                :{SPACE}(Izkraut un paņemt kravu)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Izkraut un gaidīt pilnu piekraušanu)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Izkraut un gaidīt jebkuru pilnu piekraušanu)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Izkraut un atstāt tukšu)
+STR_ORDER_TRANSFER                                              :{SPACE}(Pārkraut un paņemt kravu)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Pārkraut un gaidīt pilnu piekraušanu)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Pārcelt un gaidīt jebkuru pilnu piekraušanu)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Pārkraut un atstāt tukšu)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Neizkraut un paņemt kravu)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Neizkraut un gaidīt pilnu kravu)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Neizkraut un gaidīt jebkuru pilnu kravu)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Bez izkraušanas un bez iekraušanas)
 
-STR_ORDER_AUTO_REFIT                                            :(Automātiski pielāgot uz {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Piekraut pilnu, ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Piekraut pilnu ar jebkuru kravu, ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Izkraut un paņemt kravu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Izkraut un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Izkraut un gaidīt jebkuru pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Pārsūtīt un paņemt kravu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Pārsūtīt un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Izkraut un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Neizkraut un ņemt kravu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Neizkraut un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Neizkraut un gaidīt jebkuru pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Automātiski pielāgot uz {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Piekraut pilnu, ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Piekraut pilnu ar jebkuru kravu, ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Izkraut un paņemt kravu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Izkraut un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Izkraut un gaidīt jebkuru pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Pārsūtīt un paņemt kravu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Pārsūtīt un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Izkraut un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Neizkraut un ņemt kravu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Neizkraut un gaidīt pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Neizkraut un gaidīt jebkuru pilnu iekraušanu ar automātisku pielāgošanu uz {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :pieejamā krava
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[tuvākais gals]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[vidus]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[tālākais gals]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[tuvākais gals]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[vidus]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[tālākais gals]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nākamais galamērķis ir ārpus apgabala)
 
@@ -4782,8 +4783,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Braukt līdz {S
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Braukt uz {STRING} ar ne vairāk kā {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Ceļot (priekš {STRING}, nav sarakstā)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ceļot (ilgums {STRING}, nav sarakstā) ne ātrāk kā {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(stāvēt {STRING}, nav sarakstā)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(ceļot uz {STRING}, nav sarakstā)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(stāvēt {STRING}, nav sarakstā)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(ceļot uz {STRING}, nav sarakstā)
 STR_TIMETABLE_STAY_FOR                                          :un palikt līdz {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :un braukt līdz {STRING}
 
@@ -4916,8 +4917,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Augstumk
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikartes ekrānuzņēmums
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :MI (mākslīgais intelekts)
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spēles skripts
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}MI (mākslīgā intelekta) parametri
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spēles Skripta Parametri
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atiestatīt
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4978,7 +4979,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nav pieejams>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spēle tika saglabāta bez tramvaju atbalsta. Visi tramvaji tika aizvākti.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartes radīšana ir pārtraukta...{}... nav piemērotas atrašanās vietas pilsētām
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartes radīšana ir pārtraukta...{}{}... nav piemērotas atrašanās vietas pilsētām
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... šajā scenārijā nav pilsētu
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nevar ielādēt ainavu no PNG...
@@ -5069,7 +5070,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... pār
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... pārāk daudz pilsētu
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... uz kartes nav vairāk vietas
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Notiek ceļa remonts
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Šo pilsētu nevar dzēst...{}Kāda stacija vai depo attiecas uz pilsētu. Vai pilsētai pieder nenoņemams lauciņš
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Šo pilsētu nevar dzēst...{}{}Kāda stacija vai depo attiecas uz pilsētu. Vai pilsētai pieder nenoņemams lauciņš
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... šās pilsētas centrā statujai nav piemērotas vietas
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Nevar uzcelt māju...
 
