@@ -52,7 +52,7 @@ private:
 class FVideoDriver_SDL_OpenGL : public DriverFactoryBase {
 public:
 	FVideoDriver_SDL_OpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 8, "sdl-opengl", "SDL OpenGL Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const override { return new VideoDriver_SDL_OpenGL(); }
+	/* virtual */ std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_SDL_OpenGL>(); }
 
 protected:
 	bool UsesHardwareAcceleration() const override { return true; }

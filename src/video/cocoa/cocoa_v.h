@@ -129,7 +129,7 @@ protected:
 class FVideoDriver_CocoaQuartz : public DriverFactoryBase {
 public:
 	FVideoDriver_CocoaQuartz() : DriverFactoryBase(Driver::DT_VIDEO, 8, "cocoa", "Cocoa Video Driver") {}
-	Driver *CreateInstance() const override { return new VideoDriver_CocoaQuartz(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_CocoaQuartz>(); }
 };
 
 #endif /* VIDEO_COCOA_H */

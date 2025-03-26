@@ -110,7 +110,7 @@ public:
 class FVideoDriver_Win32GDI : public DriverFactoryBase {
 public:
 	FVideoDriver_Win32GDI() : DriverFactoryBase(Driver::DT_VIDEO, 9, "win32", "Win32 GDI Video Driver") {}
-	Driver *CreateInstance() const override { return new VideoDriver_Win32GDI(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Win32GDI>(); }
 };
 
 #ifdef WITH_OPENGL
@@ -168,7 +168,7 @@ protected:
 class FVideoDriver_Win32OpenGL : public DriverFactoryBase {
 public:
 	FVideoDriver_Win32OpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 10, "win32-opengl", "Win32 OpenGL Video Driver") {}
-	/* virtual */ Driver *CreateInstance() const override { return new VideoDriver_Win32OpenGL(); }
+	/* virtual */ std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Win32OpenGL>(); }
 
 protected:
 	bool UsesHardwareAcceleration() const override { return true; }

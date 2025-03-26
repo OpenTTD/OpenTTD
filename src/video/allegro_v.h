@@ -46,7 +46,7 @@ protected:
 class FVideoDriver_Allegro : public DriverFactoryBase {
 public:
 	FVideoDriver_Allegro() : DriverFactoryBase(Driver::DT_VIDEO, 4, "allegro", "Allegro Video Driver") {}
-	Driver *CreateInstance() const override { return new VideoDriver_Allegro(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Allegro>(); }
 };
 
 #endif /* VIDEO_ALLEGRO_H */
