@@ -93,7 +93,7 @@ void ScriptScanner::Reset()
 
 void ScriptScanner::RegisterScript(ScriptInfo *info)
 {
-	std::string script_original_name = this->GetScriptName(info);
+	std::string script_original_name = this->GetScriptName(*info);
 	std::string script_name = fmt::format("{}.{}", script_original_name, info->GetVersion());
 
 	/* Check if GetShortName follows the rules */

@@ -87,7 +87,7 @@ public:
 	/**
 	 * Process the creation of a FileInfo object.
 	 */
-	static SQInteger Constructor(HSQUIRRELVM vm, ScriptInfo *info);
+	static SQInteger Constructor(HSQUIRRELVM vm, ScriptInfo &info);
 
 	/**
 	 * Get the scanner which has found this ScriptInfo.
