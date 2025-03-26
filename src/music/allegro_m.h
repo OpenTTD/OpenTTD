@@ -41,7 +41,7 @@ public:
 	static const int PRIORITY = 2;
 #endif
 	FMusicDriver_Allegro() : DriverFactoryBase(Driver::DT_MUSIC, PRIORITY, "allegro", "Allegro MIDI Driver") {}
-	Driver *CreateInstance() const override { return new MusicDriver_Allegro(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_Allegro>(); }
 };
 
 #endif /* MUSIC_ALLEGRO_H */

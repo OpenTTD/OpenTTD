@@ -39,7 +39,7 @@ public:
 class FMusicDriver_ExtMidi : public DriverFactoryBase {
 public:
 	FMusicDriver_ExtMidi() : DriverFactoryBase(Driver::DT_MUSIC, 3, "extmidi", "External MIDI Driver") {}
-	Driver *CreateInstance() const override { return new MusicDriver_ExtMidi(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_ExtMidi>(); }
 };
 
 #endif /* MUSIC_EXTERNAL_H */

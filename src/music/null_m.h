@@ -33,7 +33,7 @@ public:
 class FMusicDriver_Null : public DriverFactoryBase {
 public:
 	FMusicDriver_Null() : DriverFactoryBase(Driver::DT_MUSIC, 1, "null", "Null Music Driver") {}
-	Driver *CreateInstance() const override { return new MusicDriver_Null(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_Null>(); }
 };
 
 #endif /* MUSIC_NULL_H */

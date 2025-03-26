@@ -23,7 +23,7 @@ public:
 class FSoundDriver_Cocoa : public DriverFactoryBase {
 public:
 	FSoundDriver_Cocoa() : DriverFactoryBase(Driver::DT_SOUND, 10, "cocoa", "Cocoa Sound Driver (param hz)") {}
-	Driver *CreateInstance() const override { return new SoundDriver_Cocoa(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_Cocoa>(); }
 };
 
 #endif /* SOUND_COCOA_H */

@@ -35,7 +35,7 @@ public:
 class FMusicDriver_DMusic : public DriverFactoryBase {
 public:
 	FMusicDriver_DMusic() : DriverFactoryBase(Driver::DT_MUSIC, 10, "dmusic", "DirectMusic MIDI Driver") {}
-	Driver *CreateInstance() const override { return new MusicDriver_DMusic(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_DMusic>(); }
 };
 
 #endif /* MUSIC_DMUSIC_H */

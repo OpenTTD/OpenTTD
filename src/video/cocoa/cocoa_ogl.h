@@ -58,7 +58,7 @@ protected:
 class FVideoDriver_CocoaOpenGL : public DriverFactoryBase {
 public:
 	FVideoDriver_CocoaOpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 9, "cocoa-opengl", "Cocoa OpenGL Video Driver") {}
-	Driver *CreateInstance() const override { return new VideoDriver_CocoaOpenGL(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_CocoaOpenGL>(); }
 
 protected:
 	bool UsesHardwareAcceleration() const override { return true; }

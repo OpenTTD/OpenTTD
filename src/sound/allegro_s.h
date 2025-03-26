@@ -27,7 +27,7 @@ public:
 class FSoundDriver_Allegro : public DriverFactoryBase {
 public:
 	FSoundDriver_Allegro() : DriverFactoryBase(Driver::DT_SOUND, 4, "allegro", "Allegro Sound Driver (param hz,samples)") {}
-	Driver *CreateInstance() const override { return new SoundDriver_Allegro(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_Allegro>(); }
 };
 
 #endif /* SOUND_ALLEGRO_H */

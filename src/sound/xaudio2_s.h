@@ -25,7 +25,7 @@ public:
 class FSoundDriver_XAudio2 : public DriverFactoryBase {
 public:
 	FSoundDriver_XAudio2() : DriverFactoryBase(Driver::DT_SOUND, 10, "xaudio2", "XAudio2 Sound Driver (param hz,samples)") {}
-	Driver *CreateInstance() const override { return new SoundDriver_XAudio2(); }
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_XAudio2>(); }
 };
 
 #endif /* SOUND_XAUDIO2_H */

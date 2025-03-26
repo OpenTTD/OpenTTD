@@ -200,7 +200,7 @@ public:
 	 */
 	static VideoDriver *GetInstance()
 	{
-		return static_cast<VideoDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO));
+		return static_cast<VideoDriver *>(DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO).get());
 	}
 
 	static std::string GetCaption();
