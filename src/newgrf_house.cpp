@@ -462,10 +462,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 			/* Collect acceptance stats. */
 			uint32_t res = 0;
 			for (Station *st : stations.GetStations()) {
-				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_EVER_ACCEPTED))    SetBit(res, 0);
-				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_LAST_MONTH))       SetBit(res, 1);
-				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_CURRENT_MONTH))    SetBit(res, 2);
-				if (HasBit(st->goods[cargo_type].status, GoodsEntry::GES_ACCEPTED_BIGTICK)) SetBit(res, 3);
+				res |= st->goods[cargo_type].ConvertState();
 			}
 
 			/* Cargo triggered CB 148? */

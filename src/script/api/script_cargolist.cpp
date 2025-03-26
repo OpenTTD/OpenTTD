@@ -54,6 +54,6 @@ ScriptCargoList_StationAccepting::ScriptCargoList_StationAccepting(StationID sta
 
 	const Station *st = ::Station::Get(station_id);
 	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
-		if (HasBit(st->goods[cargo].status, GoodsEntry::GES_ACCEPTANCE)) this->AddItem(cargo);
+		if (st->goods[cargo].status.Test(GoodsEntry::State::Acceptance)) this->AddItem(cargo);
 	}
 }
