@@ -18,6 +18,8 @@
 #include <sqstdaux.h>
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
+#include "../core/math_func.hpp"
+#include "../core/string_consumer.hpp"
 
 #include "../safeguards.h"
 
@@ -544,52 +546,73 @@ private:
 	FileHandle file;
 	size_t size;
 	size_t pos;
+	std::string buffer;
+	StringConsumer consumer;
+
+	size_t ReadInternal(std::span<char> buf)
+	{
+		size_t count = buf.size();
+		if (this->pos + count > this->size) {
+			count = this->size - this->pos;
+		}
+		if (count > 0) count = fread(buf.data(), 1, count, this->file);
+		this->pos += count;
+		return count;
+	}
 
 public:
-	SQFile(FileHandle file, size_t size) : file(std::move(file)), size(size), pos(0) {}
+	SQFile(FileHandle file, size_t size) : file(std::move(file)), size(size), pos(0), consumer(buffer) {}
 
-	size_t Read(void *buf, size_t elemsize, size_t count)
+	StringConsumer &GetConsumer(size_t min_size = 64)
 	{
-		assert(elemsize != 0);
-		if (this->pos + (elemsize * count) > this->size) {
-			count = (this->size - this->pos) / elemsize;
+		if (this->consumer.GetBytesLeft() < min_size && this->pos < this->size) {
+			this->buffer.erase(0, this->consumer.GetBytesRead());
+
+			size_t buffer_size = this->buffer.size();
+			size_t read_size = Align(min_size - buffer_size, 4096); // read pages of 4096 bytes
+			// TODO C++23: use std::string::resize_and_overwrite()
+			this->buffer.resize(buffer_size + read_size);
+			auto dest = std::span(this->buffer.data(), this->buffer.size()).subspan(buffer_size);
+			buffer_size += this->ReadInternal(dest);
+			this->buffer.resize(buffer_size);
+
+			this->consumer = StringConsumer(this->buffer);
 		}
-		if (count == 0) return 0;
-		size_t ret = fread(buf, elemsize, count, this->file);
-		this->pos += ret * elemsize;
-		return ret;
+		return this->consumer;
+	}
+
+	size_t Read(void *buf, size_t max_size)
+	{
+		std::span<char> dest(reinterpret_cast<char *>(buf), max_size);
+
+		auto view = this->consumer.Read(max_size);
+		std::copy(view.data(), view.data() + view.size(), dest.data());
+		size_t result_size = view.size();
+
+		if (result_size < max_size) {
+			assert(!this->consumer.AnyBytesLeft());
+			result_size += this->ReadInternal(dest.subspan(result_size));
+		}
+
+		return result_size;
 	}
 };
 
 static char32_t _io_file_lexfeed_ASCII(SQUserPointer file)
 {
-	unsigned char c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return c;
-	return 0;
+	StringConsumer &consumer = reinterpret_cast<SQFile *>(file)->GetConsumer();
+	return consumer.TryReadUint8().value_or(0); // read as unsigned, otherwise integer promotion breaks it
 }
 
 static char32_t _io_file_lexfeed_UTF8(SQUserPointer file)
 {
-	char buffer[5];
-
-	/* Read the first character, and get the length based on UTF-8 specs. If invalid, bail out. */
-	if (((SQFile *)file)->Read(buffer, sizeof(buffer[0]), 1) != 1) return 0;
-	uint len = Utf8EncodedCharLen(buffer[0]);
-	if (len == 0) return -1;
-
-	/* Read the remaining bits. */
-	if (len > 1 && ((SQFile *)file)->Read(buffer + 1, sizeof(buffer[0]), len - 1) != len - 1) return 0;
-
-	/* Convert the character, and when definitely invalid, bail out as well. */
-	char32_t c;
-	if (Utf8Decode(&c, buffer) != len) return -1;
-
-	return c;
+	StringConsumer &consumer = reinterpret_cast<SQFile *>(file)->GetConsumer();
+	return consumer.AnyBytesLeft() ? consumer.ReadUtf8(-1) : 0;
 }
 
 static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger size)
 {
-	SQInteger ret = ((SQFile *)file)->Read(buf, 1, size);
+	SQInteger ret = reinterpret_cast<SQFile *>(file)->Read(buf, size);
 	if (ret == 0) return -1;
 	return ret;
 }
