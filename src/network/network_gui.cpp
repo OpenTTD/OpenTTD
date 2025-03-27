@@ -78,7 +78,7 @@ static DropDownList BuildVisibilityDropDownList()
 	return list;
 }
 
-typedef GUIList<NetworkGameList*, std::nullptr_t, StringFilter&> GUIGameServerList;
+typedef GUIList<NetworkGame*, std::nullptr_t, StringFilter&> GUIGameServerList;
 typedef int ServerListPosition;
 static const ServerListPosition SLP_INVALID = -1;
 
@@ -181,8 +181,8 @@ protected:
 	static const std::initializer_list<GUIGameServerList::SortFunction * const> sorter_funcs;
 	static const std::initializer_list<GUIGameServerList::FilterFunction * const> filter_funcs;
 
-	NetworkGameList *server = nullptr; ///< Selected server.
-	NetworkGameList *last_joined = nullptr; ///< The last joined server.
+	NetworkGame *server = nullptr; ///< Selected server.
+	NetworkGame *last_joined = nullptr; ///< The last joined server.
 	GUIGameServerList servers{}; ///< List with game servers.
 	ServerListPosition list_pos = SLP_INVALID; ///< Position of the selected server.
 	Scrollbar *vscroll = nullptr; ///< Vertical scrollbar of the list of servers.
@@ -207,12 +207,12 @@ protected:
 
 		bool found_current_server = false;
 		bool found_last_joined = false;
-		for (NetworkGameList *ngl = _network_game_list; ngl != nullptr; ngl = ngl->next) {
-			this->servers.push_back(ngl);
-			if (ngl == this->server) {
+		for (const auto &ngl : _network_game_list) {
+			this->servers.push_back(ngl.get());
+			if (ngl.get() == this->server) {
 				found_current_server = true;
 			}
-			if (ngl == this->last_joined) {
+			if (ngl.get() == this->last_joined) {
 				found_last_joined = true;
 			}
 		}
@@ -245,7 +245,7 @@ protected:
 	}
 
 	/** Sort servers by name. */
-	static bool NGameNameSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	static bool NGameNameSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		int r = StrNaturalCompare(a->info.server_name, b->info.server_name, true); // Sort by name (natural sorting).
 		if (r == 0) r = a->connection_string.compare(b->connection_string);
@@ -258,7 +258,7 @@ protected:
 	 * server. If the two servers have the same amount, the one with the
 	 * higher maximum is preferred.
 	 */
-	static bool NGameClientSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	static bool NGameClientSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		/* Reverse as per default we are interested in most-clients first */
 		int r = a->info.clients_on - b->info.clients_on;
@@ -270,7 +270,7 @@ protected:
 	}
 
 	/** Sort servers by map size */
-	static bool NGameMapSizeSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	static bool NGameMapSizeSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		/* Sort by the area of the map. */
 		int r = (a->info.map_height) * (a->info.map_width) - (b->info.map_height) * (b->info.map_width);
@@ -280,14 +280,14 @@ protected:
 	}
 
 	/** Sort servers by calendar date. */
-	static bool NGameCalendarDateSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	static bool NGameCalendarDateSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		auto r = a->info.calendar_date - b->info.calendar_date;
 		return (r != 0) ? r < 0 : NGameClientSorter(a, b);
 	}
 
 	/** Sort servers by the number of ticks the game is running. */
-	static bool NGameTicksPlayingSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	static bool NGameTicksPlayingSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		if (a->info.ticks_playing == b->info.ticks_playing) {
 			return NGameClientSorter(a, b);
@@ -299,7 +299,7 @@ protected:
 	 * Sort servers by joinability. If both servers are the
 	 * same, prefer the non-passworded server first.
 	 */
-	static bool NGameAllowedSorter(NetworkGameList * const &a, NetworkGameList * const &b)
+	static bool NGameAllowedSorter(NetworkGame * const &a, NetworkGame * const &b)
 	{
 		/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */
 		int r = a->info.server_revision.empty() - b->info.server_revision.empty();
@@ -332,7 +332,7 @@ protected:
 		}
 	}
 
-	static bool NGameSearchFilter(NetworkGameList * const *item, StringFilter &sf)
+	static bool NGameSearchFilter(NetworkGame * const *item, StringFilter &sf)
 	{
 		assert(item != nullptr);
 		assert((*item) != nullptr);
@@ -348,7 +348,7 @@ protected:
 	 * @param y         from where to draw?
 	 * @param highlight does the line need to be highlighted?
 	 */
-	void DrawServerLine(const NetworkGameList *cur_item, int y, bool highlight) const
+	void DrawServerLine(const NetworkGame *cur_item, int y, bool highlight) const
 	{
 		Rect name = this->GetWidget<NWidgetBase>(WID_NG_NAME)->GetCurrentRect();
 		Rect info = this->GetWidget<NWidgetBase>(WID_NG_INFO)->GetCurrentRect();
@@ -528,7 +528,7 @@ public:
 
 				auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->servers);
 				for (auto it = first; it != last; ++it) {
-					const NetworkGameList *ngl = *it;
+					const NetworkGame *ngl = *it;
 					this->DrawServerLine(ngl, y, ngl == this->server);
 					y += this->resize.step_height;
 				}
@@ -565,7 +565,7 @@ public:
 			this->SortNetworkGameList();
 		}
 
-		NetworkGameList *sel = this->server;
+		NetworkGame *sel = this->server;
 		/* 'Refresh' button invisible if no server selected */
 		this->SetWidgetDisabledState(WID_NG_REFRESH, sel == nullptr);
 		/* 'Join' button disabling conditions */
@@ -610,7 +610,7 @@ public:
 
 	void DrawDetails(const Rect &r) const
 	{
-		NetworkGameList *sel = this->server;
+		NetworkGame *sel = this->server;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
 		StringID header_msg = this->GetHeaderString();

@@ -151,7 +151,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet &p)
 			}
 
 			/* Mark the server as offline. */
-			NetworkGameList *item = NetworkGameListAddItem(detail);
+			NetworkGame *item = NetworkGameListAddItem(detail);
 			item->status = NGLS_OFFLINE;
 
 			UpdateNetworkGameWindow();
@@ -247,7 +247,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet &p)
 		std::string connection_string = p.Recv_string(NETWORK_HOSTNAME_PORT_LENGTH);
 
 		/* Now we know the connection string, we can add it to our list. */
-		NetworkGameList *item = NetworkGameListAddItem(connection_string);
+		NetworkGame *item = NetworkGameListAddItem(connection_string);
 
 		/* Clear any existing GRFConfig chain. */
 		ClearGRFConfigList(item->info.grfconfig);
