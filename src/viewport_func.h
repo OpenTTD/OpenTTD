@@ -24,7 +24,7 @@ void SetSelectionRed(bool);
 void DeleteWindowViewport(Window *w);
 void InitializeWindowViewport(Window *w, int x, int y, int width, int height, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom);
 Viewport *IsPtInWindowViewport(const Window *w, int x, int y);
-Point TranslateXYToTileCoord(const Viewport *vp, int x, int y, bool clamp_to_map = true);
+Point TranslateXYToTileCoord(const Viewport &vp, int x, int y, bool clamp_to_map = true);
 Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w, uint32_t delta_ms);
 
@@ -35,7 +35,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window * w);
 void ConstrainAllViewportsZoom();
 Point GetTileZoomCenterWindow(bool in, Window * w);
 void FixTitleGameZoom(int zoom_adjust = 0);
-void HandleZoomMessage(Window *w, const Viewport *vp, WidgetID widget_zoom_in, WidgetID widget_zoom_out);
+void HandleZoomMessage(Window *w, const Viewport &vp, WidgetID widget_zoom_in, WidgetID widget_zoom_out);
 
 /**
  * Zoom a viewport as far as possible in the given direction.
@@ -60,12 +60,12 @@ std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sig
 void StartSpriteCombine();
 void EndSpriteCombine();
 
-bool HandleViewportClicked(const Viewport *vp, int x, int y);
+bool HandleViewportClicked(const Viewport &vp, int x, int y);
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
-void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom);
+void ViewportDoDraw(const Viewport &vp, int left, int top, int right, int bottom);
 
 bool ScrollWindowToTile(TileIndex tile, Window *w, bool instant = false);
 bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant = false);
@@ -93,7 +93,7 @@ inline void MarkTileDirtyByTile(TileIndex tile, int bridge_level_offset = 0)
 	MarkTileDirtyByTile(tile, bridge_level_offset, TileHeight(tile));
 }
 
-Point GetViewportStationMiddle(const Viewport *vp, const Station *st);
+Point GetViewportStationMiddle(const Viewport &vp, const Station *st);
 
 struct Station;
 struct Waypoint;

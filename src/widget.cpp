@@ -2423,16 +2423,16 @@ void NWidgetViewport::InitializeViewport(Window *w, std::variant<TileIndex, Vehi
  */
 void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 {
-	Viewport *vp = w->viewport;
-	if (vp != nullptr) {
-		vp->left = w->left + this->pos_x;
-		vp->top  = w->top + this->pos_y;
-		vp->width  = this->current_x;
-		vp->height = this->current_y;
+	if (w->viewport == nullptr) return;
 
-		vp->virtual_width  = ScaleByZoom(vp->width, vp->zoom);
-		vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
-	}
+	Viewport &vp = *w->viewport;
+	vp.left = w->left + this->pos_x;
+	vp.top  = w->top + this->pos_y;
+	vp.width  = this->current_x;
+	vp.height = this->current_y;
+
+	vp.virtual_width  = ScaleByZoom(vp.width, vp.zoom);
+	vp.virtual_height = ScaleByZoom(vp.height, vp.zoom);
 }
 
 /**

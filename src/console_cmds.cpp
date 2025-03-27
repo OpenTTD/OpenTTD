@@ -335,9 +335,9 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
 					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming out beyond level {}.", _settings_client.gui.zoom_max);
 				} else {
 					Window *w = GetMainWindow();
-					Viewport *vp = w->viewport;
-					while (vp->zoom > level) DoZoomInOutWindow(ZOOM_IN, w);
-					while (vp->zoom < level) DoZoomInOutWindow(ZOOM_OUT, w);
+					Viewport &vp = *w->viewport;
+					while (vp.zoom > level) DoZoomInOutWindow(ZOOM_IN, w);
+					while (vp.zoom < level) DoZoomInOutWindow(ZOOM_OUT, w);
 				}
 				return true;
 			}

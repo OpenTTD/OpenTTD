@@ -1239,15 +1239,17 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
  * @param y  Y coordinate in the viewport.
  * @return Closest vehicle, or \c nullptr if none found.
  */
-Vehicle *CheckClickOnVehicle(const Viewport *vp, int x, int y)
+Vehicle *CheckClickOnVehicle(const Viewport &vp, int x, int y)
 {
 	Vehicle *found = nullptr;
 	uint dist, best_dist = UINT_MAX;
 
-	if ((uint)(x -= vp->left) >= (uint)vp->width || (uint)(y -= vp->top) >= (uint)vp->height) return nullptr;
+	x -= vp.left;
+	y -= vp.top;
+	if (!IsInsideMM(x, 0, vp.width) || !IsInsideMM(y, 0, vp.height)) return nullptr;
 
-	x = ScaleByZoom(x, vp->zoom) + vp->virtual_left;
-	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
+	x = ScaleByZoom(x, vp.zoom) + vp.virtual_left;
+	y = ScaleByZoom(y, vp.zoom) + vp.virtual_top;
 
 	/* Border size of MAX_VEHICLE_PIXEL_xy */
 	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_BASE;

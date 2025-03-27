@@ -75,7 +75,7 @@ struct IntroGameViewportCommand {
 	 * @param vp Viewport to calculate position for.
 	 * @return Calculated position in the viewport.
 	 */
-	Point PositionForViewport(const Viewport *vp)
+	Point PositionForViewport(const Viewport &vp)
 	{
 		if (this->vehicle != VehicleID::Invalid()) {
 			const Vehicle *v = Vehicle::Get(this->vehicle);
@@ -85,13 +85,13 @@ struct IntroGameViewportCommand {
 		Point p;
 		switch (this->align_h) {
 			case LEFT: p.x = this->position.x; break;
-			case CENTRE: p.x = this->position.x - vp->virtual_width / 2; break;
-			case RIGHT: p.x = this->position.x - vp->virtual_width; break;
+			case CENTRE: p.x = this->position.x - vp.virtual_width / 2; break;
+			case RIGHT: p.x = this->position.x - vp.virtual_width; break;
 		}
 		switch (this->align_v) {
 			case TOP: p.y = this->position.y; break;
-			case MIDDLE: p.y = this->position.y - vp->virtual_height / 2; break;
-			case BOTTOM: p.y = this->position.y - vp->virtual_height; break;
+			case MIDDLE: p.y = this->position.y - vp.virtual_height / 2; break;
+			case BOTTOM: p.y = this->position.y - vp.virtual_height; break;
 		}
 		return p;
 	}
@@ -220,7 +220,6 @@ struct SelectGameWindow : public Window {
 
 		IntroGameViewportCommand &vc = intro_viewport_commands[this->cur_viewport_command_index];
 		Window *mw = GetMainWindow();
-		Viewport *vp = mw->viewport;
 
 		/* Early exit if the current command hasn't elapsed and isn't animated. */
 		if (!changed_command && !vc.pan_to_next && vc.vehicle == VehicleID::Invalid()) return;
@@ -232,13 +231,13 @@ struct SelectGameWindow : public Window {
 		if (changed_command) FixTitleGameZoom(vc.zoom_adjust);
 
 		/* Calculate current command position (updates followed vehicle coordinates). */
-		Point pos = vc.PositionForViewport(vp);
+		Point pos = vc.PositionForViewport(*mw->viewport);
 
 		/* Calculate panning (linear interpolation between current and next command position). */
 		if (vc.pan_to_next) {
 			size_t next_command_index = (this->cur_viewport_command_index + 1) % intro_viewport_commands.size();
 			IntroGameViewportCommand &nvc = intro_viewport_commands[next_command_index];
-			Point pos2 = nvc.PositionForViewport(vp);
+			Point pos2 = nvc.PositionForViewport(*mw->viewport);
 			const double t = this->cur_viewport_command_time / (double)vc.delay;
 			pos.x = pos.x + (int)(t * (pos2.x - pos.x));
 			pos.y = pos.y + (int)(t * (pos2.y - pos.y));

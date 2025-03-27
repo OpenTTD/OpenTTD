@@ -117,7 +117,7 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 		wx = std::min(vp->width - left, 1600);
 		left += wx;
 
-		ViewportDoDraw(vp,
+		ViewportDoDraw(*vp,
 			ScaleByZoom(left - wx - vp->left, vp->zoom) + vp->virtual_left,
 			ScaleByZoom(y - vp->top, vp->zoom) + vp->virtual_top,
 			ScaleByZoom(left - vp->left, vp->zoom) + vp->virtual_left,

@@ -92,44 +92,48 @@ void CcPlaySound_EXPLOSION(Commands, const CommandCost &result, TileIndex tile)
  */
 bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 {
-	Viewport *vp;
-
 	assert(w != nullptr);
-	vp = w->viewport;
 
 	switch (how) {
 		case ZOOM_NONE:
 			/* On initialisation of the viewport we don't do anything. */
 			break;
 
-		case ZOOM_IN:
-			if (vp->zoom <= _settings_client.gui.zoom_min) return false;
-			vp->zoom = (ZoomLevel)((int)vp->zoom - 1);
-			vp->virtual_width >>= 1;
-			vp->virtual_height >>= 1;
+		case ZOOM_IN: {
+			ViewportData &vp = *w->viewport;
+			if (vp.zoom <= _settings_client.gui.zoom_min) return false;
+			--vp.zoom;
+			vp.virtual_width >>= 1;
+			vp.virtual_height >>= 1;
 
-			w->viewport->scrollpos_x += vp->virtual_width >> 1;
-			w->viewport->scrollpos_y += vp->virtual_height >> 1;
-			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
-			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
+			vp.scrollpos_x += vp.virtual_width >> 1;
+			vp.scrollpos_y += vp.virtual_height >> 1;
+			vp.dest_scrollpos_x = vp.scrollpos_x;
+			vp.dest_scrollpos_y = vp.scrollpos_y;
 			break;
-		case ZOOM_OUT:
-			if (vp->zoom >= _settings_client.gui.zoom_max) return false;
-			vp->zoom = (ZoomLevel)((int)vp->zoom + 1);
+		}
 
-			w->viewport->scrollpos_x -= vp->virtual_width >> 1;
-			w->viewport->scrollpos_y -= vp->virtual_height >> 1;
-			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
-			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
+		case ZOOM_OUT: {
+			ViewportData &vp = *w->viewport;
+			if (vp.zoom >= _settings_client.gui.zoom_max) return false;
+			++vp.zoom;
 
-			vp->virtual_width <<= 1;
-			vp->virtual_height <<= 1;
+			vp.scrollpos_x -= vp.virtual_width >> 1;
+			vp.scrollpos_y -= vp.virtual_height >> 1;
+			vp.dest_scrollpos_x = vp.scrollpos_x;
+			vp.dest_scrollpos_y = vp.scrollpos_y;
+
+			vp.virtual_width <<= 1;
+			vp.virtual_height <<= 1;
 			break;
+		}
 	}
-	if (vp != nullptr) { // the vp can be null when how == ZOOM_NONE
-		vp->virtual_left = w->viewport->scrollpos_x;
-		vp->virtual_top = w->viewport->scrollpos_y;
+
+	if (w->viewport != nullptr) { // the viewport can be null when how == ZOOM_NONE
+		w->viewport->virtual_left = w->viewport->scrollpos_x;
+		w->viewport->virtual_top = w->viewport->scrollpos_y;
 	}
+
 	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
 	w->InvalidateData();
 	return true;
@@ -140,8 +144,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	assert(w != nullptr);
 
 	if (_game_mode != GM_MENU) {
-		Viewport *vp = w->viewport;
-		if ((in && vp->zoom <= _settings_client.gui.zoom_min) || (!in && vp->zoom >= _settings_client.gui.zoom_max)) return;
+		if ((in && w->viewport->zoom <= _settings_client.gui.zoom_min) || (!in && w->viewport->zoom >= _settings_client.gui.zoom_max)) return;
 
 		Point pt = GetTileZoomCenterWindow(in, w);
 		if (pt.x != -1) {
@@ -156,22 +159,22 @@ void FixTitleGameZoom(int zoom_adjust)
 {
 	if (_game_mode != GM_MENU) return;
 
-	Viewport *vp = GetMainWindow()->viewport;
+	Viewport &vp = *GetMainWindow()->viewport;
 
 	/* Adjust the zoom in/out.
 	 * Can't simply add, since operator+ is not defined on the ZoomLevel type. */
-	vp->zoom = _gui_zoom;
-	while (zoom_adjust < 0 && vp->zoom != _settings_client.gui.zoom_min) {
-		vp->zoom--;
+	vp.zoom = _gui_zoom;
+	while (zoom_adjust < 0 && vp.zoom != _settings_client.gui.zoom_min) {
+		vp.zoom--;
 		zoom_adjust++;
 	}
-	while (zoom_adjust > 0 && vp->zoom != _settings_client.gui.zoom_max) {
-		vp->zoom++;
+	while (zoom_adjust > 0 && vp.zoom != _settings_client.gui.zoom_max) {
+		vp.zoom++;
 		zoom_adjust--;
 	}
 
-	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
-	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+	vp.virtual_width = ScaleByZoom(vp.width, vp.zoom);
+	vp.virtual_height = ScaleByZoom(vp.height, vp.zoom);
 }
 
 static constexpr NWidgetPart _nested_main_window_widgets[] = {
