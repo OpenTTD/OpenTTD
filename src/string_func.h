@@ -70,20 +70,6 @@ inline bool StrEmpty(const char *s)
 	return s == nullptr || s[0] == '\0';
 }
 
-/**
- * Get the length of a string, within a limited buffer.
- *
- * @param str The pointer to the first element of the buffer
- * @param maxlen The maximum size of the buffer
- * @return The length of the string
- */
-inline size_t ttd_strnlen(const char *str, size_t maxlen)
-{
-	const char *t;
-	for (t = str; static_cast<size_t>(t - str) < maxlen && *t != '\0'; t++) {}
-	return t - str;
-}
-
 bool IsValidChar(char32_t key, CharSetFilter afilter);
 
 size_t Utf8Decode(char32_t *c, const char *s);
