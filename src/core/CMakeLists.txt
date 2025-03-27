@@ -25,6 +25,8 @@ add_files(
     smallstack_type.hpp
     string_builder.cpp
     string_builder.hpp
+    string_consumer.cpp
+    string_consumer.hpp
     strong_typedef_type.hpp
     utf8.cpp
     utf8.hpp
