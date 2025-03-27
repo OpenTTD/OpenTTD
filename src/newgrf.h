@@ -157,6 +157,9 @@ struct GRFFile {
 	PriceMultipliers price_base_multipliers{}; ///< Price base multipliers as set by the grf.
 
 	GRFFile(const struct GRFConfig &config);
+	GRFFile();
+	GRFFile(GRFFile &&other);
+	~GRFFile();
 
 	/** Get GRF Parameter with range checking */
 	uint32_t GetParam(uint number) const
