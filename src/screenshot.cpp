@@ -189,34 +189,36 @@ static bool MakeSmallScreenshot(bool crashlog)
  * @param t Screenshot type
  * @param width the width of the screenshot, or 0 for current viewport width (needs to be 0 with SC_VIEWPORT, SC_CRASHLOG, and SC_WORLD).
  * @param height the height of the screenshot, or 0 for current viewport height (needs to be 0 with SC_VIEWPORT, SC_CRASHLOG, and SC_WORLD).
- * @param[out] vp Result viewport
+ * @return Viewport
  */
-void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32_t width, uint32_t height)
+static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, uint32_t height = 0)
 {
+	Viewport vp{};
+
 	switch(t) {
 		case SC_VIEWPORT:
 		case SC_CRASHLOG: {
 			assert(width == 0 && height == 0);
 
 			Window *w = GetMainWindow();
-			vp->virtual_left   = w->viewport->virtual_left;
-			vp->virtual_top    = w->viewport->virtual_top;
-			vp->virtual_width  = w->viewport->virtual_width;
-			vp->virtual_height = w->viewport->virtual_height;
+			vp.virtual_left   = w->viewport->virtual_left;
+			vp.virtual_top    = w->viewport->virtual_top;
+			vp.virtual_width  = w->viewport->virtual_width;
+			vp.virtual_height = w->viewport->virtual_height;
 
 			/* Compute pixel coordinates */
-			vp->left = 0;
-			vp->top = 0;
-			vp->width = _screen.width;
-			vp->height = _screen.height;
-			vp->overlay = w->viewport->overlay;
+			vp.left = 0;
+			vp.top = 0;
+			vp.width = _screen.width;
+			vp.height = _screen.height;
+			vp.overlay = w->viewport->overlay;
 			break;
 		}
 		case SC_WORLD: {
 			assert(width == 0 && height == 0);
 
 			/* Determine world coordinates of screenshot */
-			vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
+			vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 
 			TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
 			TileIndex south_tile{Map::Size() - 1};
@@ -226,43 +228,45 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32_t width, uin
 			/* If there is a hill at the bottom don't create a large black area. */
 			int reclaim_height_bottom = TilePixelHeight(south_tile);
 
-			vp->virtual_left   = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, 0).x;
-			vp->virtual_top    = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
-			vp->virtual_width  = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x                     - vp->virtual_left + 1;
-			vp->virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp->virtual_top  + 1;
+			vp.virtual_left   = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, 0).x;
+			vp.virtual_top    = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
+			vp.virtual_width  = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x                     - vp.virtual_left + 1;
+			vp.virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp.virtual_top  + 1;
 
 			/* Compute pixel coordinates */
-			vp->left = 0;
-			vp->top = 0;
-			vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
-			vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
-			vp->overlay = nullptr;
+			vp.left = 0;
+			vp.top = 0;
+			vp.width  = UnScaleByZoom(vp.virtual_width,  vp.zoom);
+			vp.height = UnScaleByZoom(vp.virtual_height, vp.zoom);
+			vp.overlay = nullptr;
 			break;
 		}
 		default: {
-			vp->zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
+			vp.zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
 
 			Window *w = GetMainWindow();
-			vp->virtual_left   = w->viewport->virtual_left;
-			vp->virtual_top    = w->viewport->virtual_top;
+			vp.virtual_left   = w->viewport->virtual_left;
+			vp.virtual_top    = w->viewport->virtual_top;
 
 			if (width == 0 || height == 0) {
-				vp->virtual_width  = w->viewport->virtual_width;
-				vp->virtual_height = w->viewport->virtual_height;
+				vp.virtual_width  = w->viewport->virtual_width;
+				vp.virtual_height = w->viewport->virtual_height;
 			} else {
-				vp->virtual_width = width << vp->zoom;
-				vp->virtual_height = height << vp->zoom;
+				vp.virtual_width = width << vp.zoom;
+				vp.virtual_height = height << vp.zoom;
 			}
 
 			/* Compute pixel coordinates */
-			vp->left = 0;
-			vp->top = 0;
-			vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
-			vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
-			vp->overlay = nullptr;
+			vp.left = 0;
+			vp.top = 0;
+			vp.width  = UnScaleByZoom(vp.virtual_width,  vp.zoom);
+			vp.height = UnScaleByZoom(vp.virtual_height, vp.zoom);
+			vp.overlay = nullptr;
 			break;
 		}
 	}
+
+	return vp;
 }
 
 /**
@@ -277,8 +281,7 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
 	auto provider = GetScreenshotProvider();
 	if (provider == nullptr) return false;
 
-	Viewport vp;
-	SetupScreenshotViewport(t, &vp, width, height);
+	Viewport vp = SetupScreenshotViewport(t, width, height);
 
 	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()), LargeWorldCallback, &vp, vp.width, vp.height,
 			BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
@@ -352,8 +355,7 @@ static void ScreenshotConfirmationCallback(Window *, bool confirmed)
  */
 void MakeScreenshotWithConfirm(ScreenshotType t)
 {
-	Viewport vp;
-	SetupScreenshotViewport(t, &vp);
+	Viewport vp = SetupScreenshotViewport(t);
 
 	bool heightmap_or_minimap = t == SC_HEIGHTMAP || t == SC_MINIMAP;
 	uint64_t width = (heightmap_or_minimap ? Map::SizeX() : vp.width);
