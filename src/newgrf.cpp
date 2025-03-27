@@ -1218,23 +1218,26 @@ struct InvokeGrfActionHandler {
  * XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
-static void DecodeSpecialSprite(uint8_t *buf, uint num, GrfLoadingStage stage)
+static void DecodeSpecialSprite(ReusableBuffer<uint8_t> &allocator, uint num, GrfLoadingStage stage)
 {
+	uint8_t *buf;
 	auto it = _grf_line_to_action6_sprite_override.find({_cur_gps.grfconfig->ident.grfid, _cur_gps.nfo_line});
 	if (it == _grf_line_to_action6_sprite_override.end()) {
 		/* No preloaded sprite to work with; read the
 		 * pseudo sprite content. */
+		buf = allocator.Allocate(num);
 		_cur_gps.file->ReadBlock(buf, num);
 	} else {
 		/* Use the preloaded sprite data. */
 		buf = it->second.data();
+		assert(it->second.size() == num);
 		GrfMsg(7, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
 		/* Skip the real (original) content of this action. */
 		_cur_gps.file->SeekTo(num, SEEK_CUR);
 	}
 
-	ByteReader br(buf, buf + num);
+	ByteReader br(buf, num);
 
 	try {
 		uint8_t action = br.ReadByte();
@@ -1302,7 +1305,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 
 	_cur_gps.ClearDataForNextFile();
 
-	ReusableBuffer<uint8_t> buf;
+	ReusableBuffer<uint8_t> allocator;
 
 	while ((num = (grf_container_version >= 2 ? file.ReadDword() : file.ReadWord())) != 0) {
 		uint8_t type = file.ReadByte();
@@ -1317,7 +1320,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 					break;
 				}
 
-				DecodeSpecialSprite(buf.Allocate(num), num, stage);
+				DecodeSpecialSprite(allocator, num, stage);
 
 				/* Stop all processing if we are to skip the remaining sprites */
 				if (_cur_gps.skip_sprites == -1) break;
