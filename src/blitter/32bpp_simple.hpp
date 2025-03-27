@@ -35,7 +35,7 @@ public:
 class FBlitter_32bppSimple : public BlitterFactory {
 public:
 	FBlitter_32bppSimple() : BlitterFactory("32bpp-simple", "32bpp Simple Blitter (no palette animation)") {}
-	Blitter *CreateInstance() override { return new Blitter_32bppSimple(); }
+	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppSimple>(); }
 };
 
 #endif /* BLITTER_32BPP_SIMPLE_HPP */

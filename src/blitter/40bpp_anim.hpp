@@ -54,7 +54,7 @@ protected:
 
 public:
 	FBlitter_40bppAnim() : BlitterFactory("40bpp-anim", "40bpp Animation Blitter (OpenGL)") {}
-	Blitter *CreateInstance() override { return new Blitter_40bppAnim(); }
+	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_40bppAnim>(); }
 };
 
 #endif /* BLITTER_40BPP_OPTIMIZED_HPP */

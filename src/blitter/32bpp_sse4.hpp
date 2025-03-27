@@ -39,7 +39,7 @@ public:
 class FBlitter_32bppSSE4: public BlitterFactory {
 public:
 	FBlitter_32bppSSE4() : BlitterFactory("32bpp-sse4", "32bpp SSE4 Blitter (no palette animation)", HasCPUIDFlag(1, 2, 19)) {}
-	Blitter *CreateInstance() override { return new Blitter_32bppSSE4(); }
+	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppSSE4>(); }
 };
 
 #endif /* WITH_SSE */

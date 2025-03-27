@@ -37,7 +37,7 @@ protected:
 class FBlitter_32bppOptimized : public BlitterFactory {
 public:
 	FBlitter_32bppOptimized() : BlitterFactory("32bpp-optimized", "32bpp Optimized Blitter (no palette animation)") {}
-	Blitter *CreateInstance() override { return new Blitter_32bppOptimized(); }
+	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppOptimized>(); }
 };
 
 #endif /* BLITTER_32BPP_OPTIMIZED_HPP */
