@@ -3,6 +3,7 @@ add_files(
     backup_type.hpp
     base_bitset_type.hpp
     bitmath_func.hpp
+    container_func.hpp
     convertible_through_base.hpp
     endian_func.hpp
     enum_type.hpp
@@ -22,7 +23,8 @@ add_files(
     random_func.cpp
     random_func.hpp
     smallstack_type.hpp
-    container_func.hpp
+    string_builder.cpp
+    string_builder.hpp
     strong_typedef_type.hpp
     utf8.cpp
     utf8.hpp
