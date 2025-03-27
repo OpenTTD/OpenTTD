@@ -60,16 +60,16 @@ void ResetViewportAfterLoadGame()
 	w->viewport->dest_scrollpos_x = _saved_scrollpos_x;
 	w->viewport->dest_scrollpos_y = _saved_scrollpos_y;
 
-	Viewport *vp = w->viewport;
-	vp->zoom = std::min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
-	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
-	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+	Viewport &vp = *w->viewport;
+	vp.zoom = std::min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
+	vp.virtual_width = ScaleByZoom(vp.width, vp.zoom);
+	vp.virtual_height = ScaleByZoom(vp.height, vp.zoom);
 
 	/* If zoom_max is ZOOM_LVL_MIN then the setting has not been loaded yet, therefore all levels are allowed. */
 	if (_settings_client.gui.zoom_max != ZOOM_LVL_MIN) {
 		/* Ensure zoom level is allowed */
-		while (vp->zoom < _settings_client.gui.zoom_min) DoZoomInOutWindow(ZOOM_OUT, w);
-		while (vp->zoom > _settings_client.gui.zoom_max) DoZoomInOutWindow(ZOOM_IN, w);
+		while (vp.zoom < _settings_client.gui.zoom_min) DoZoomInOutWindow(ZOOM_OUT, w);
+		while (vp.zoom > _settings_client.gui.zoom_max) DoZoomInOutWindow(ZOOM_IN, w);
 	}
 
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
