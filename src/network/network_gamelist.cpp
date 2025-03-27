@@ -20,7 +20,7 @@
 
 #include "../safeguards.h"
 
-NetworkGameList *_network_game_list = nullptr; ///< Game list of this client.
+std::vector<std::unique_ptr<NetworkGame>> _network_game_list; ///< Game list of this client.
 int _network_game_list_version = 0; ///< Current version of all items in the list.
 
 /**
@@ -29,56 +29,36 @@ int _network_game_list_version = 0; ///< Current version of all items in the lis
  * @param connection_string the address of the to-be added item
  * @return a point to the newly added or already existing item
  */
-NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
+NetworkGame *NetworkGameListAddItem(const std::string &connection_string)
 {
-	NetworkGameList *item, *prev_item;
-
 	/* Parse the connection string to ensure the default port is there. */
 	const std::string resolved_connection_string = ServerAddress::Parse(connection_string, NETWORK_DEFAULT_PORT).connection_string;
 
-	prev_item = nullptr;
-	for (item = _network_game_list; item != nullptr; item = item->next) {
-		if (item->connection_string == resolved_connection_string) return item;
-		prev_item = item;
-	}
+	/* Check if it's already added. */
+	auto it = std::ranges::find(_network_game_list, resolved_connection_string, &NetworkGame::connection_string);
+	if (it != std::end(_network_game_list)) return it->get();
 
-	item = new NetworkGameList(resolved_connection_string);
+	auto &item = _network_game_list.emplace_back(std::make_unique<NetworkGame>(resolved_connection_string));
 	item->info.gamescript_version = -1;
 	item->version = _network_game_list_version;
 
-	if (prev_item == nullptr) {
-		_network_game_list = item;
-	} else {
-		prev_item->next = item;
-	}
-
 	UpdateNetworkGameWindow();
 
-	return item;
+	return item.get();
 }
 
 /**
  * Remove an item from the gamelist linked list
  * @param remove pointer to the item to be removed
  */
-void NetworkGameListRemoveItem(NetworkGameList *remove)
+void NetworkGameListRemoveItem(NetworkGame *remove)
 {
-	NetworkGameList *prev_item = nullptr;
-	for (NetworkGameList *item = _network_game_list; item != nullptr; item = item->next) {
-		if (remove == item) {
-			if (prev_item == nullptr) {
-				_network_game_list = remove->next;
-			} else {
-				prev_item->next = remove->next;
-			}
+	auto it = std::ranges::find_if(_network_game_list, [&remove](const auto &item) { return item.get() == remove; });
+	if (it != std::end(_network_game_list)) {
+		_network_game_list.erase(it);
 
-			delete remove;
-
-			NetworkRebuildHostList();
-			UpdateNetworkGameWindow();
-			return;
-		}
-		prev_item = item;
+		NetworkRebuildHostList();
+		UpdateNetworkGameWindow();
 	}
 }
 
@@ -89,20 +69,8 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
  */
 void NetworkGameListRemoveExpired()
 {
-	NetworkGameList **prev_item = &_network_game_list;
-
-	for (NetworkGameList *item = _network_game_list; item != nullptr;) {
-		if (!item->manually && item->version < _network_game_list_version) {
-			NetworkGameList *remove = item;
-			item = item->next;
-			*prev_item = item;
-
-			delete remove;
-		} else {
-			prev_item = &item->next;
-			item = item->next;
-		}
-	}
+	auto it = std::remove_if(std::begin(_network_game_list), std::end(_network_game_list), [](const auto &item) { return !item->manually && item->version < _network_game_list_version; });
+	_network_game_list.erase(it, std::end(_network_game_list));
 
 	UpdateNetworkGameWindow();
 }
@@ -113,7 +81,7 @@ void NetworkGameListRemoveExpired()
  */
 void NetworkAfterNewGRFScan()
 {
-	for (NetworkGameList *item = _network_game_list; item != nullptr; item = item->next) {
+	for (const auto &item : _network_game_list) {
 		/* Reset compatibility state */
 		item->info.compatible = item->info.version_compatible;
 

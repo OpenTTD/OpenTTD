@@ -25,7 +25,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::CloseConnection(NetworkRecvStat
 	assert(this->sock != INVALID_SOCKET);
 
 	/* Connection is closed, but we never received a packet. Must be offline. */
-	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 	if (item->refreshing) {
 		item->status = NGLS_OFFLINE;
 		item->refreshing = false;
@@ -91,7 +91,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_FULL(Packet &)
 {
 	Debug(net, 9, "Query::Receive_SERVER_FULL()");
 
-	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_FULL;
 	item->refreshing = false;
 
@@ -104,7 +104,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet &)
 {
 	Debug(net, 9, "Query::Receive_SERVER_BANNED()");
 
-	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NGLS_BANNED;
 	item->refreshing = false;
 
@@ -117,7 +117,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet
 {
 	Debug(net, 9, "Query::Receive_SERVER_GAME_INFO()");
 
-	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 
 	/* Clear any existing GRFConfig chain. */
 	ClearGRFConfigList(item->info.grfconfig);
@@ -140,7 +140,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet &p)
 
 	Debug(net, 9, "Query::Receive_SERVER_ERROR(): error={}", error);
 
-	NetworkGameList *item = NetworkGameListAddItem(this->connection_string);
+	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 
 	if (error == NETWORK_ERROR_NOT_EXPECTED) {
 		/* If we query a server that is 1.11.1 or older, we get an
