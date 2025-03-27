@@ -18,6 +18,7 @@
 #include "sqfuncstate.h"
 #include "sqclass.h"
 
+#include "../../../core/string_consumer.hpp"
 #include "../../../string_func.h"
 
 #include "../../../safeguards.h"
@@ -1253,44 +1254,16 @@ SQRESULT sq_next(HSQUIRRELVM v,SQInteger idx)
 	return SQ_ERROR;
 }
 
-struct BufState{
-	const SQChar *buf;
-	SQInteger ptr;
-	SQInteger size;
-};
-
 char32_t buf_lexfeed(SQUserPointer file)
 {
 	/* Convert an UTF-8 character into a char32_t */
-	BufState *buf = (BufState *)file;
-	const char *p = &buf->buf[buf->ptr];
-
-	if (buf->size < buf->ptr + 1) return 0;
-
-	/* Read the first character, and get the length based on UTF-8 specs. If invalid, bail out. */
-	uint len = Utf8EncodedCharLen(*p);
-	if (len == 0) {
-		buf->ptr++;
-		return -1;
-	}
-
-	/* Read the remaining bits. */
-	if (buf->size < buf->ptr + len) return 0;
-	buf->ptr += len;
-
-	/* Convert the character, and when definitely invalid, bail out as well. */
-	char32_t c;
-	if (Utf8Decode(&c, p) != len) return -1;
-
-	return c;
+	StringConsumer &consumer = *reinterpret_cast<StringConsumer *>(file);
+	return consumer.AnyBytesLeft() ? consumer.ReadUtf8(-1) : 0;
 }
 
 SQRESULT sq_compilebuffer(HSQUIRRELVM v,const SQChar *s,SQInteger size,const SQChar *sourcename,SQBool raiseerror) {
-	BufState buf;
-	buf.buf = s;
-	buf.size = size;
-	buf.ptr = 0;
-	return sq_compile(v, buf_lexfeed, &buf, sourcename, raiseerror);
+	StringConsumer consumer(s, size);
+	return sq_compile(v, buf_lexfeed, &consumer, sourcename, raiseerror);
 }
 
 void sq_move(HSQUIRRELVM dest,HSQUIRRELVM src,SQInteger idx)
