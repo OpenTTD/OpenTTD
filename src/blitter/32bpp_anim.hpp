@@ -71,7 +71,7 @@ public:
 class FBlitter_32bppAnim : public BlitterFactory {
 public:
 	FBlitter_32bppAnim() : BlitterFactory("32bpp-anim", "32bpp Animation Blitter (palette animation)") {}
-	Blitter *CreateInstance() override { return new Blitter_32bppAnim(); }
+	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppAnim>(); }
 };
 
 #endif /* BLITTER_32BPP_ANIM_HPP */

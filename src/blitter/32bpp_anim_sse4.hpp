@@ -50,7 +50,7 @@ public:
 class FBlitter_32bppSSE4_Anim: public BlitterFactory {
 public:
 	FBlitter_32bppSSE4_Anim() : BlitterFactory("32bpp-sse4-anim", "32bpp SSE4 Blitter (palette animation)", HasCPUIDFlag(1, 2, 19)) {}
-	Blitter *CreateInstance() override { return static_cast<Blitter_32bppSSE2_Anim *>(new Blitter_32bppSSE4_Anim()); }
+	std::unique_ptr<Blitter> CreateInstance() override { return std::unique_ptr<Blitter>(static_cast<Blitter_32bppSSE2_Anim *>(new Blitter_32bppSSE4_Anim())); }
 };
 
 #endif /* WITH_SSE */

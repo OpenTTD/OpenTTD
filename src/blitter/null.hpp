@@ -38,7 +38,7 @@ public:
 class FBlitter_Null : public BlitterFactory {
 public:
 	FBlitter_Null() : BlitterFactory("null", "Null Blitter (does nothing)") {}
-	Blitter *CreateInstance() override { return new Blitter_Null(); }
+	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_Null>(); }
 };
 
 #endif /* BLITTER_NULL_HPP */
