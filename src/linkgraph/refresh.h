@@ -73,7 +73,8 @@ protected:
 		 * @param cargo Cargo the consist is probably carrying when passing the hop.
 		 */
 		Hop(OrderID from, OrderID to, CargoType cargo) : from(from), to(to), cargo(cargo) {}
-		bool operator<(const Hop &other) const;
+
+		constexpr auto operator<=>(const Hop &) const noexcept = default;
 	};
 
 	typedef std::vector<RefitDesc> RefitList;
