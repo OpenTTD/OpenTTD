@@ -489,7 +489,7 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 	int thousands_offset = (max_digits - 1) % 3;
 
 	if (number < 0) {
-		builder += '-';
+		builder.PutChar('-');
 		number = -number;
 	}
 
@@ -502,7 +502,7 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 			num = num % divisor;
 		}
 		if ((tot |= quot) || i == max_digits - 1) {
-			builder += '0' + quot; // quot is a single digit
+			builder.PutChar('0' + quot); // quot is a single digit
 			if ((i % 3) == thousands_offset && i < max_digits - 1) builder += separator;
 		}
 
@@ -519,17 +519,17 @@ static void FormatCommaNumber(StringBuilder &builder, int64_t number)
 
 static void FormatNoCommaNumber(StringBuilder &builder, int64_t number)
 {
-	fmt::format_to(builder, "{}", number);
+	fmt::format_to(builder.back_inserter(), "{}", number);
 }
 
 static void FormatZerofillNumber(StringBuilder &builder, int64_t number, int count)
 {
-	fmt::format_to(builder, "{:0{}d}", number, count);
+	fmt::format_to(builder.back_inserter(), "{:0{}d}", number, count);
 }
 
 static void FormatHexNumber(StringBuilder &builder, uint64_t number)
 {
-	fmt::format_to(builder, "0x{:X}", number);
+	fmt::format_to(builder.back_inserter(), "0x{:X}", number);
 }
 
 /**
@@ -551,18 +551,18 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 
 	if (number < 1024) {
 		id = 0;
-		fmt::format_to(builder, "{}", number);
+		fmt::format_to(builder.back_inserter(), "{}", number);
 	} else if (number < 1024 * 10) {
-		fmt::format_to(builder, "{}{}{:02}", number / 1024, GetDecimalSeparator(), (number % 1024) * 100 / 1024);
+		fmt::format_to(builder.back_inserter(), "{}{}{:02}", number / 1024, GetDecimalSeparator(), (number % 1024) * 100 / 1024);
 	} else if (number < 1024 * 100) {
-		fmt::format_to(builder, "{}{}{:01}", number / 1024, GetDecimalSeparator(), (number % 1024) * 10 / 1024);
+		fmt::format_to(builder.back_inserter(), "{}{}{:01}", number / 1024, GetDecimalSeparator(), (number % 1024) * 10 / 1024);
 	} else {
 		assert(number < 1024 * 1024);
-		fmt::format_to(builder, "{}", number / 1024);
+		fmt::format_to(builder.back_inserter(), "{}", number / 1024);
 	}
 
 	assert(id < lengthof(iec_prefixes));
-	fmt::format_to(builder, NBSP "{}B", iec_prefixes[id]);
+	fmt::format_to(builder.back_inserter(), NBSP "{}B", iec_prefixes[id]);
 }
 
 static void FormatYmdString(StringBuilder &builder, TimerGameCalendar::Date date, uint case_index)
@@ -600,9 +600,9 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 
 	/* convert from negative */
 	if (number < 0) {
-		builder.Utf8Encode(SCC_PUSH_COLOUR);
-		builder.Utf8Encode(SCC_RED);
-		builder += '-';
+		builder.PutUtf8(SCC_PUSH_COLOUR);
+		builder.PutUtf8(SCC_RED);
+		builder.PutChar('-');
 		number = -number;
 	}
 
@@ -646,7 +646,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	if (spec->symbol_pos != 0) builder += spec->suffix;
 
 	if (negative) {
-		builder.Utf8Encode(SCC_POP_COLOUR);
+		builder.PutUtf8(SCC_POP_COLOUR);
 	}
 }
 
@@ -1130,7 +1130,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			}
 
 			if (b < SCC_CONTROL_START || b > SCC_CONTROL_END) {
-				builder.Utf8Encode(b);
+				builder.PutUtf8(b);
 				continue;
 			}
 
@@ -1195,8 +1195,8 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
 				case SCC_GENDER_INDEX: // {GENDER 0}
 					if (_scan_for_gender_data) {
-						builder.Utf8Encode(SCC_GENDER_INDEX);
-						builder += *str++;
+						builder.PutUtf8(SCC_GENDER_INDEX);
+						builder.PutUint8(*str++);
 					} else {
 						str++;
 					}
@@ -1317,7 +1317,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					int64_t fractional = number % divisor;
 					number /= divisor;
 					FormatCommaNumber(builder, number);
-					fmt::format_to(builder, "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
+					fmt::format_to(builder.back_inserter(), "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
 					break;
 				}
 
@@ -1810,12 +1810,12 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_COLOUR: { // {COLOUR}
 					StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
-					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.Utf8Encode(scc);
+					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.PutUtf8(scc);
 					break;
 				}
 
 				default:
-					builder.Utf8Encode(b);
+					builder.PutUtf8(b);
 					break;
 			}
 		} catch (std::out_of_range &e) {
@@ -1828,11 +1828,11 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x)
 {
-	if (x.Test(StationFacility::Train)) builder.Utf8Encode(SCC_TRAIN);
-	if (x.Test(StationFacility::TruckStop)) builder.Utf8Encode(SCC_LORRY);
-	if (x.Test(StationFacility::BusStop)) builder.Utf8Encode(SCC_BUS);
-	if (x.Test(StationFacility::Dock)) builder.Utf8Encode(SCC_SHIP);
-	if (x.Test(StationFacility::Airport)) builder.Utf8Encode(SCC_PLANE);
+	if (x.Test(StationFacility::Train)) builder.PutUtf8(SCC_TRAIN);
+	if (x.Test(StationFacility::TruckStop)) builder.PutUtf8(SCC_LORRY);
+	if (x.Test(StationFacility::BusStop)) builder.PutUtf8(SCC_BUS);
+	if (x.Test(StationFacility::Dock)) builder.PutUtf8(SCC_SHIP);
+	if (x.Test(StationFacility::Airport)) builder.PutUtf8(SCC_PLANE);
 }
 
 static const char * const _silly_company_names[] = {
@@ -1928,13 +1928,13 @@ static void GenAndCoName(StringBuilder &builder, uint32_t seed)
 
 static void GenPresidentName(StringBuilder &builder, uint32_t seed)
 {
-	builder += _initial_name_letters[std::size(_initial_name_letters) * GB(seed, 0, 8) >> 8];
+	builder.PutChar(_initial_name_letters[std::size(_initial_name_letters) * GB(seed, 0, 8) >> 8]);
 	builder += ". ";
 
 	/* The second initial is optional. */
 	size_t index = (std::size(_initial_name_letters) + 35) * GB(seed, 8, 8) >> 8;
 	if (index < std::size(_initial_name_letters)) {
-		builder += _initial_name_letters[index];
+		builder.PutChar(_initial_name_letters[index]);
 		builder += ". ";
 	}
 

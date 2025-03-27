@@ -250,7 +250,7 @@ static void ReplaceEnglishWords(std::string &str, size_t start, bool original)
  */
 static void MakeEnglishOriginalTownName(StringBuilder &builder, uint32_t seed)
 {
-	size_t start = builder.GetString().size();
+	size_t start = builder.GetBytesWritten();
 
 	/* optional first segment */
 	int i = SeedChanceBias(0, std::size(_name_original_english_1), seed, 50);
@@ -696,7 +696,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 
 		builder += _name_czech_adj[prefix].name;
 		builder += _name_czech_patmod[gender][pattern];
-		builder += ' ';
+		builder.PutChar(' ');
 	}
 
 	if (dynamic_subst) {
