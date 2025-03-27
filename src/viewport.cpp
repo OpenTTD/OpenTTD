@@ -205,12 +205,6 @@ static Point MapXYZToViewport(const Viewport &vp, int x, int y, int z)
 	return p;
 }
 
-void DeleteWindowViewport(Window *w)
-{
-	delete w->viewport;
-	w->viewport = nullptr;
-}
-
 /**
  * Initialize viewport of the window for use.
  * @param w Window to use/display the viewport in
@@ -226,7 +220,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 {
 	assert(w->viewport == nullptr);
 
-	ViewportData *vp = new ViewportData();
+	auto vp = std::make_unique<ViewportData>();
 
 	vp->left = x + w->left;
 	vp->top = y + w->top;
@@ -272,9 +266,10 @@ void InitializeWindowViewport(Window *w, int x, int y,
 
 	vp->overlay = nullptr;
 
-	w->viewport = vp;
 	vp->virtual_left = 0;
 	vp->virtual_top = 0;
+
+	w->viewport = std::move(vp);
 }
 
 static Point _vp_move_offs;
@@ -415,7 +410,7 @@ Viewport *IsPtInWindowViewport(const Window *w, int x, int y)
 	if (w->viewport == nullptr) return nullptr;
 
 	const Viewport &vp = *w->viewport;
-	if (IsInsideMM(x, vp.left, vp.left + vp.width) && IsInsideMM(y, vp.top, vp.top + vp.height)) return w->viewport;
+	if (IsInsideMM(x, vp.left, vp.left + vp.width) && IsInsideMM(y, vp.top, vp.top + vp.height)) return w->viewport.get();
 
 	return nullptr;
 }

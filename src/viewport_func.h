@@ -21,7 +21,6 @@ static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference i
 
 void SetSelectionRed(bool);
 
-void DeleteWindowViewport(Window *w);
 void InitializeWindowViewport(Window *w, int x, int y, int width, int height, std::variant<TileIndex, VehicleID> focus, ZoomLevel zoom);
 Viewport *IsPtInWindowViewport(const Window *w, int x, int y);
 Point TranslateXYToTileCoord(const Viewport &vp, int x, int y, bool clamp_to_map = true);

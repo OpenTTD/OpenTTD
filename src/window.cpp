@@ -1090,8 +1090,6 @@ Window::~Window()
 {
 	/* Make sure the window is closed, deletion is allowed only in Window::DeleteClosedWindows(). */
 	assert(*this->z_position == nullptr);
-
-	if (this->viewport != nullptr) DeleteWindowViewport(this);
 }
 
 /**
