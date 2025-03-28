@@ -1406,14 +1406,14 @@ void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
 		/* Add a house on top of the ground? */
 		if (dcts.building.sprite != 0) {
 			Point pt = RemapCoords(dcts.subtile_x, dcts.subtile_y, 0);
-			DrawSprite(dcts.building.sprite, dcts.building.pal, x + UnScaleGUI(pt.x), y + UnScaleGUI(pt.y));
+			DrawSprite(dcts.building.sprite, dcts.building.pal, x + ScaleSpriteTrad(pt.x), y + ScaleSpriteTrad(pt.y));
 		}
 	};
 
 	/* Houses can have 1x1, 1x2, 2x1 and 2x2 layouts which are individual HouseIDs. For the GUI we need
 	 * draw all of the tiles with appropriate positions. */
-	int x_delta = ScaleGUITrad(TILE_PIXELS);
-	int y_delta = ScaleGUITrad(TILE_PIXELS / 2);
+	int x_delta = ScaleSpriteTrad(TILE_PIXELS);
+	int y_delta = ScaleSpriteTrad(TILE_PIXELS / 2);
 
 	const HouseSpec *hs = HouseSpec::Get(house_id);
 	if (hs->building_flags.Test(BuildingFlag::Size2x2)) {
