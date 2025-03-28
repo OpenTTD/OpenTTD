@@ -2144,24 +2144,23 @@ void Vehicle::DeleteUnreachedImplicitOrders()
 		}
 	}
 
-	const Order *order = this->GetOrder(this->cur_implicit_order_index);
-	while (order != nullptr) {
+	auto orders = this->Orders();
+	VehicleOrderID cur = this->cur_implicit_order_index;
+	while (cur != INVALID_VEH_ORDER_ID) {
 		if (this->cur_implicit_order_index == this->cur_real_order_index) break;
 
-		if (order->IsType(OT_IMPLICIT)) {
+		if (orders[cur].IsType(OT_IMPLICIT)) {
 			DeleteOrder(this, this->cur_implicit_order_index);
 			/* DeleteOrder does various magic with order_indices, so resync 'order' with 'cur_implicit_order_index' */
-			order = this->GetOrder(this->cur_implicit_order_index);
 		} else {
 			/* Skip non-implicit orders, e.g. service-orders */
-			order = order->next;
-			this->cur_implicit_order_index++;
-		}
-
-		/* Wrap around */
-		if (order == nullptr) {
-			order = this->GetOrder(0);
-			this->cur_implicit_order_index = 0;
+			if (cur < this->orders->GetNext(cur)) {
+				this->cur_implicit_order_index++;
+			} else {
+				/* Wrapped around. */
+				this->cur_implicit_order_index = 0;
+			}
+			cur = this->orders->GetNext(cur);
 		}
 	}
 }
@@ -2201,7 +2200,7 @@ void Vehicle::BeginLoading()
 				in_list->GetDestination() != this->last_station_visited)) {
 			bool suppress_implicit_orders = HasBit(this->GetGroundVehicleFlags(), GVF_SUPPRESS_IMPLICIT_ORDERS);
 			/* Do not create consecutive duplicates of implicit orders */
-			Order *prev_order = this->cur_implicit_order_index > 0 ? this->GetOrder(this->cur_implicit_order_index - 1) : (this->GetNumOrders() > 1 ? this->GetLastOrder() : nullptr);
+			const Order *prev_order = this->cur_implicit_order_index > 0 ? this->GetOrder(this->cur_implicit_order_index - 1) : (this->GetNumOrders() > 1 ? this->GetLastOrder() : nullptr);
 			if (prev_order == nullptr ||
 					(!prev_order->IsType(OT_IMPLICIT) && !prev_order->IsType(OT_GOTO_STATION)) ||
 					prev_order->GetDestination() != this->last_station_visited) {
@@ -2238,33 +2237,30 @@ void Vehicle::BeginLoading()
 						InvalidateVehicleOrder(this, 0);
 					} else {
 						/* Delete all implicit orders up to the station we just reached */
-						const Order *order = this->GetOrder(this->cur_implicit_order_index);
-						while (!order->IsType(OT_IMPLICIT) || order->GetDestination() != this->last_station_visited) {
-							if (order->IsType(OT_IMPLICIT)) {
+						VehicleOrderID cur = this->cur_implicit_order_index;
+						auto orders = this->Orders();
+						while (!orders[cur].IsType(OT_IMPLICIT) || orders[cur].GetDestination() != this->last_station_visited) {
+							if (orders[cur].IsType(OT_IMPLICIT)) {
 								DeleteOrder(this, this->cur_implicit_order_index);
 								/* DeleteOrder does various magic with order_indices, so resync 'order' with 'cur_implicit_order_index' */
-								order = this->GetOrder(this->cur_implicit_order_index);
 							} else {
 								/* Skip non-implicit orders, e.g. service-orders */
-								order = order->next;
-								this->cur_implicit_order_index++;
+								if (cur < this->orders->GetNext(cur)) {
+									this->cur_implicit_order_index++;
+								} else {
+									/* Wrapped around. */
+									this->cur_implicit_order_index = 0;
+								}
+								cur = this->orders->GetNext(cur);
 							}
-
-							/* Wrap around */
-							if (order == nullptr) {
-								order = this->GetOrder(0);
-								this->cur_implicit_order_index = 0;
-							}
-							assert(order != nullptr);
 						}
 					}
 				} else if (!suppress_implicit_orders &&
-						((this->orders == nullptr ? OrderList::CanAllocateItem() : this->orders->GetNumOrders() < MAX_VEH_ORDER_ID)) &&
-						Order::CanAllocateItem()) {
+						(this->orders == nullptr ? OrderList::CanAllocateItem() : this->orders->GetNumOrders() < MAX_VEH_ORDER_ID)) {
 					/* Insert new implicit order */
-					Order *implicit_order = new Order();
-					implicit_order->MakeImplicit(this->last_station_visited);
-					InsertOrder(this, implicit_order, this->cur_implicit_order_index);
+					Order implicit_order{};
+					implicit_order.MakeImplicit(this->last_station_visited);
+					InsertOrder(this, std::move(implicit_order), this->cur_implicit_order_index);
 					if (this->cur_implicit_order_index > 0) --this->cur_implicit_order_index;
 
 					/* InsertOrder disabled creation of implicit orders for all vehicles with the same implicit order.
@@ -2434,10 +2430,9 @@ void Vehicle::HandleLoading(bool mode)
  */
 bool Vehicle::HasFullLoadOrder() const
 {
-	for (Order *o : this->Orders()) {
-		if (o->IsType(OT_GOTO_STATION) && o->GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)) return true;
-	}
-	return false;
+	return std::ranges::any_of(this->Orders(), [](const Order &o) {
+		return o.IsType(OT_GOTO_STATION) && o.GetLoadType() & (OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY);
+	});
 }
 
 /**
@@ -2446,10 +2441,7 @@ bool Vehicle::HasFullLoadOrder() const
  */
 bool Vehicle::HasConditionalOrder() const
 {
-	for (Order *o : this->Orders()) {
-		if (o->IsType(OT_CONDITIONAL)) return true;
-	}
-	return false;
+	return std::ranges::any_of(this->Orders(), [](const Order &o) { return o.IsType(OT_CONDITIONAL); });
 }
 
 /**
@@ -2458,10 +2450,9 @@ bool Vehicle::HasConditionalOrder() const
  */
 bool Vehicle::HasUnbunchingOrder() const
 {
-	for (Order *o : this->Orders()) {
-		if (o->IsType(OT_GOTO_DEPOT) && o->GetDepotActionType() & ODATFB_UNBUNCH) return true;
-	}
-	return false;
+	return std::ranges::any_of(this->Orders(), [](const Order &o) {
+		return o.IsType(OT_GOTO_DEPOT) && (o.GetDepotActionType() & ODATFB_UNBUNCH);
+	});
 }
 
 /**
@@ -2472,7 +2463,7 @@ static bool PreviousOrderIsUnbunching(const Vehicle *v)
 {
 	/* If we are headed for the first order, we must wrap around back to the last order. */
 	bool is_first_order = (v->GetOrder(v->cur_implicit_order_index) == v->GetFirstOrder());
-	Order *previous_order = (is_first_order) ? v->GetLastOrder() : v->GetOrder(v->cur_implicit_order_index - 1);
+	const Order *previous_order = (is_first_order) ? v->GetLastOrder() : v->GetOrder(v->cur_implicit_order_index - 1);
 
 	if (previous_order == nullptr || !previous_order->IsType(OT_GOTO_DEPOT)) return false;
 	return (previous_order->GetDepotActionType() & ODATFB_UNBUNCH) != 0;
@@ -2942,7 +2933,7 @@ void Vehicle::AddToShared(Vehicle *shared_chain)
 	if (shared_chain->orders == nullptr) {
 		assert(shared_chain->previous_shared == nullptr);
 		assert(shared_chain->next_shared == nullptr);
-		this->orders = shared_chain->orders = new OrderList(nullptr, shared_chain);
+		this->orders = shared_chain->orders = new OrderList(shared_chain);
 	}
 
 	this->next_shared     = shared_chain->next_shared;
@@ -3258,13 +3249,5 @@ bool VehiclesHaveSameEngineList(const Vehicle *v1, const Vehicle *v2)
  */
 bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2)
 {
-	const Order *o1 = v1->GetFirstOrder();
-	const Order *o2 = v2->GetFirstOrder();
-	while (true) {
-		if (o1 == nullptr && o2 == nullptr) return true;
-		if (o1 == nullptr || o2 == nullptr) return false;
-		if (!o1->Equals(*o2)) return false;
-		o1 = o1->next;
-		o2 = o2->next;
-	}
+	return std::ranges::equal(v1->Orders(), v2->Orders(), [](const Order &o1, const Order &o2) { return o1.Equals(o2); });
 }
