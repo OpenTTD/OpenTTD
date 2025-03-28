@@ -1180,7 +1180,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Duplikált
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Nem támogatott verzió
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Érvénytelen aláírás
 
-STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} hiányzó/sérült fájl
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} hiányzó/sérült fájl)
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nem sikerült a támogatott felbontások lekérdezése
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljes képernyős módra váltás sikertelen
@@ -3699,7 +3699,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}A NewGRF
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztattad '{1:ENGINE}' motorkocsi állapotát mikor nem volt bent a járműtelepen
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztattad '{1:ENGINE}' jármű hosszát mikor nem volt a járműtelepen
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Megváltoztattad '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' jármű kapacitását, amikor az nem a garázsban vagy átalakítás alatt áll
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}' jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat vagy lefagyhat
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}' vállalat '{0:VEHICLE}' jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat vagy lefagyhat
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' helytelen információt biztosít
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
@@ -4054,7 +4054,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Elnök neve
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Mennyi pénzt szeretnél adományozni?
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vállalatunk vagyontárgyait eladásra kínáljuk: járművek, terület és hálózat tulajdonok, bankszámla{}{}Megveszed {COMPANY} vállalatot {CURRENCY_LONG}-ért?
-STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}A {COMPANY} erőszakos átvételével megvásárolod minden vagyonát, visszafizeted minden adósságát és kifizeted 2 évi nyereségét.{}{}Mindezek becsült értéke {CURRENCY_LONG}.{}{}Biztosan folytatni akarod ezt az átvételt?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}{COMPANY} erőszakos átvételével megvásárolod minden vagyonát, visszafizeted minden adósságát és kifizeted 2 évi nyereségét.{}{}Mindezek becsült értéke {CURRENCY_LONG}.{}{}Biztosan folytatni akarod ezt az átvételt?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} infrastruktúrája
