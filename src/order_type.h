@@ -16,7 +16,6 @@
 #include "station_type.h"
 
 typedef uint8_t VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
-using OrderID = PoolID<uint32_t, struct OrderIDTag, 0xFF0000, 0xFFFFFF>;
 using OrderListID = PoolID<uint16_t, struct OrderListIDTag, 64000, 0xFFFF>;
 
 struct DestinationID {

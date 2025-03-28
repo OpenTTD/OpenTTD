@@ -56,8 +56,8 @@ protected:
 	 * line.
 	 */
 	struct Hop {
-		OrderID from;  ///< Last order where vehicle could interact with cargo or absolute first order.
-		OrderID to;    ///< Next order to be processed.
+		VehicleOrderID from;  ///< Last order where vehicle could interact with cargo or absolute first order.
+		VehicleOrderID to;    ///< Next order to be processed.
 		CargoType cargo; ///< Cargo the consist is probably carrying or INVALID_CARGO if unknown.
 
 		/**
@@ -72,7 +72,7 @@ protected:
 		 * @param to Second order of the hop.
 		 * @param cargo Cargo the consist is probably carrying when passing the hop.
 		 */
-		Hop(OrderID from, OrderID to, CargoType cargo) : from(from), to(to), cargo(cargo) {}
+		Hop(VehicleOrderID from, VehicleOrderID to, CargoType cargo) : from(from), to(to), cargo(cargo) {}
 
 		constexpr auto operator<=>(const Hop &) const noexcept = default;
 	};
@@ -92,10 +92,10 @@ protected:
 
 	bool HandleRefit(CargoType refit_cargo);
 	void ResetRefit();
-	void RefreshStats(const Order *cur, const Order *next);
-	const Order *PredictNextOrder(const Order *cur, const Order *next, RefreshFlags flags, uint num_hops = 0);
+	void RefreshStats(VehicleOrderID cur, VehicleOrderID next);
+	VehicleOrderID PredictNextOrder(VehicleOrderID cur, VehicleOrderID next, RefreshFlags flags, uint num_hops = 0);
 
-	void RefreshLinks(const Order *cur, const Order *next, RefreshFlags flags, uint num_hops = 0);
+	void RefreshLinks(VehicleOrderID cur, VehicleOrderID next, RefreshFlags flags, uint num_hops = 0);
 };
 
 #endif /* REFRESH_H */

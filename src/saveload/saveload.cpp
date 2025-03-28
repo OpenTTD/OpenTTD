@@ -1222,7 +1222,6 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
 		case REF_STATION:   return ((const  Station*)obj)->index + 1;
 		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
-		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
 		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
 		case REF_ENGINE_RENEWS:  return ((const       EngineRenew*)obj)->index + 1;
 		case REF_CARGO_PACKET:   return ((const       CargoPacket*)obj)->index + 1;
@@ -1267,12 +1266,6 @@ static void *IntToReference(size_t index, SLRefType rt)
 		case REF_ORDERLIST:
 			if (OrderList::IsValidID(index)) return OrderList::Get(index);
 			SlErrorCorrupt("Referencing invalid OrderList");
-
-		case REF_ORDER:
-			if (Order::IsValidID(index)) return Order::Get(index);
-			/* in old versions, invalid order was used to mark end of order list */
-			if (IsSavegameVersionBefore(SLV_5, 2)) return nullptr;
-			SlErrorCorrupt("Referencing invalid Order");
 
 		case REF_VEHICLE_OLD:
 		case REF_VEHICLE:
@@ -2907,11 +2900,14 @@ static void ResetSettings()
 	}
 }
 
+extern void ClearOldOrders();
+
 /**
  * Clear temporary data that is passed between various saveload phases.
  */
 static void ResetSaveloadData()
 {
+	ClearOldOrders();
 	ResetTempEngineData();
 	ClearRailTypeLabelList();
 	ClearRoadTypeLabelList();
