@@ -746,11 +746,11 @@ static void HandleNewGRFStringControlCodes(std::string_view str, TextRefStack &s
 /**
  * Process NewGRF string control code instructions.
  * @param scc The string control code that has been read.
- * @param str The string that we are reading from.
+ * @param consumer The string that we are reading from.
  * @param stack The TextRefStack.
  * @param[out] params Output parameters
  */
-static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextRefStack &stack, std::vector<StringParameter> &params)
+static void ProcessNewGRFStringControlCode(char32_t scc, StringConsumer &consumer, TextRefStack &stack, std::vector<StringParameter> &params)
 {
 	/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
 	 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
@@ -758,33 +758,35 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 		default: return;
 
 		case SCC_PLURAL_LIST:
-			++str; // plural form
+			consumer.SkipUint8(); // plural form
 			[[fallthrough]];
 		case SCC_GENDER_LIST: {
-			++str; // offset
+			consumer.SkipUint8(); // offset
 			/* plural and gender choices cannot contain any string commands, so just skip the whole thing */
-			uint num = static_cast<uint8_t>(*str++);
+			uint num = consumer.ReadUint8();
 			uint total_len = 0;
 			for (uint i = 0; i != num; i++) {
-				total_len += static_cast<uint8_t>(*str++);
+				total_len += consumer.ReadUint8();
 			}
-			str += total_len;
+			consumer.Skip(total_len);
 			break;
 		}
 
 		case SCC_SWITCH_CASE: {
 			/* skip all cases and continue with default case */
-			uint num = static_cast<uint8_t>(*str++);
+			uint num = consumer.ReadUint8();
 			for (uint i = 0; i != num; i++) {
-				str += 3 + static_cast<uint8_t>(str[1]) + (static_cast<uint8_t>(str[2]) << 8);
+				consumer.SkipUint8();
+				auto len = consumer.ReadUint16LE();
+				consumer.Skip(len);
 			}
-			str += 2; // length of default
+			consumer.SkipUint16LE(); // length of default
 			break;
 		}
 
 		case SCC_GENDER_INDEX:
 		case SCC_SET_CASE:
-			++str;
+			consumer.SkipUint8();
 			break;
 
 		case SCC_ARG_INDEX:
@@ -824,7 +826,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 		case SCC_NEWGRF_DISCARD_WORD:           stack.PopUnsignedWord(); break;
 
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     stack.RotateTop4Words(); break;
-		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(Utf8Consume(&str)); break;
+		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(consumer.ReadUtf8(0)); break;
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
@@ -834,7 +836,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 			break;
 
 		case SCC_NEWGRF_STRINL: {
-			StringID stringid = Utf8Consume(str);
+			StringID stringid = consumer.ReadUtf8(STR_NULL);
 			/* We also need to handle the substring's stack usage. */
 			HandleNewGRFStringControlCodes(GetStringPtr(stringid), stack, params);
 			break;
@@ -947,10 +949,10 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
  */
 static void HandleNewGRFStringControlCodes(std::string_view str, TextRefStack &stack, std::vector<StringParameter> &params)
 {
-	for (const char *p = str.data(), *end = str.data() + str.size(); p < end; /* nothing */) {
-		char32_t scc;
-		p += Utf8Decode(&scc, p);
-		ProcessNewGRFStringControlCode(scc, p, stack, params);
+	StringConsumer consumer(str);
+	while (consumer.AnyBytesLeft()) {
+		char32_t scc = consumer.ReadUtf8();
+		ProcessNewGRFStringControlCode(scc, consumer, stack, params);
 	}
 }
 
