@@ -28,6 +28,7 @@
 #include "debug.h"
 #include "core/alloc_type.hpp"
 #include "core/string_builder.hpp"
+#include "core/string_consumer.hpp"
 #include "language.h"
 
 #include "table/strings.h"
@@ -238,17 +239,10 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 	/* Empty input string? Nothing to do here. */
 	if (str.empty()) return {};
 
-	std::string_view::const_iterator src = str.cbegin();
+	StringConsumer consumer(str);
 
 	/* Is this an unicode string? */
-	bool unicode = false;
-	char32_t marker;
-	size_t len = Utf8Decode(&marker, &*src);
-
-	if (marker == NFO_UTF8_IDENTIFIER) {
-		unicode = true;
-		src += len;
-	}
+	bool unicode = consumer.ReadUtf8If(NFO_UTF8_IDENTIFIER);
 
 	/* Helper variable for a possible (string) mapping of plural/gender and cases. */
 	std::optional<UnmappedChoiceList> mapping_pg, mapping_c;
@@ -256,29 +250,27 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 
 	std::string dest;
 	StringBuilder builder(dest);
-	while (src != str.cend()) {
+	while (consumer.AnyBytesLeft()) {
 		char32_t c;
-
-		if (unicode && Utf8EncodedCharLen(*src) != 0) {
-			c = Utf8Consume(src);
+		if (auto u = unicode ? consumer.TryReadUtf8() : std::nullopt; u.has_value()) {
+			c = *u;
 			/* 'Magic' range of control codes. */
-			if (GB(c, 8, 8) == 0xE0) {
-				c = GB(c, 0, 8);
+			if (0xE000 <= c && c <= 0xE0FF) {
+				c -= 0xE000;
 			} else if (c >= 0x20) {
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
 				builder.PutUtf8(c);
 				continue;
 			}
 		} else {
-			c = static_cast<uint8_t>(*src++);
+			c = consumer.ReadUint8(); // read as unsigned, otherwise integer promotion breaks it
 		}
-
+		assert(c <= 0xFF);
 		if (c == '\0') break;
 
 		switch (c) {
 			case 0x01:
-				if (*src == '\0') goto string_end;
-				src++;
+				consumer.SkipUint8();
 				builder.PutChar(' ');
 				break;
 			case 0x0A: break;
@@ -292,8 +284,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 			case 0x0E: builder.PutUtf8(SCC_TINYFONT); break;
 			case 0x0F: builder.PutUtf8(SCC_BIGFONT); break;
 			case 0x1F:
-				if (src[0] == '\0' || src[1] == '\0') goto string_end;
-				src += 2;
+				consumer.SkipUint8();
+				consumer.SkipUint8();
 				builder.PutChar(' ');
 				break;
 			case 0x7B:
@@ -304,10 +296,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 			case 0x80: builder.PutUtf8(byte80); break;
 			case 0x81:
 			{
-				if (src[0] == '\0' || src[1] == '\0') goto string_end;
-				uint16_t string;
-				string = static_cast<uint8_t>(*src++);
-				string |= static_cast<uint8_t>(*src++) << 8;
+				uint16_t string = consumer.ReadUint16LE();
 				builder.PutUtf8(SCC_NEWGRF_STRINL);
 				builder.PutUtf8(MapGRFStringID(grfid, GRFStringID{string}));
 				break;
@@ -337,7 +326,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 			case 0x98: builder.PutUtf8(SCC_BLACK);   break;
 			case 0x9A:
 			{
-				int code = *src++;
+				uint8_t code = consumer.ReadUint8();
 				switch (code) {
 					case 0x00: goto string_end;
 					case 0x01: builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
@@ -350,9 +339,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 						 * support this. As such it is not implemented in OpenTTD. */
 					case 0x03:
 					{
-						if (src[0] == '\0' || src[1] == '\0') goto string_end;
-						uint16_t tmp = static_cast<uint8_t>(*src++);
-						tmp |= static_cast<uint8_t>(*src++) << 8;
+						uint16_t tmp = consumer.ReadUint16LE();
 						builder.PutUtf8(SCC_NEWGRF_PUSH_WORD);
 						builder.PutUtf8(tmp);
 						break;
@@ -367,9 +354,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x0E:
 					case 0x0F:
 					{
-						if (str[0] == '\0') goto string_end;
 						const LanguageMap *lm = LanguageMap::GetLanguageMap(grfid, language_id);
-						int index = *src++;
+						int index = consumer.ReadUint8();
 						int mapped = lm != nullptr ? lm->GetMapping(index, code == 0x0E) : -1;
 						if (mapped >= 0) {
 							builder.PutUtf8(code == 0x0E ? SCC_GENDER_INDEX : SCC_SET_CASE);
@@ -380,14 +366,13 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 
 					case 0x10:
 					case 0x11:
-						if (str[0] == '\0') goto string_end;
 						if (!mapping_pg.has_value() && !mapping_c.has_value()) {
-							if (code == 0x10) src++; // Skip the index
+							if (code == 0x10) consumer.SkipUint8(); // Skip the index
 							GrfMsg(1, "choice list {} marker found when not expected", code == 0x10 ? "next" : "default");
 							break;
 						} else {
 							auto &mapping = mapping_pg ? mapping_pg : mapping_c;
-							int index = (code == 0x10 ? *src++ : 0);
+							int index = (code == 0x10 ? consumer.ReadUint8() : 0);
 							if (mapping->strings.find(index) != mapping->strings.end()) {
 								GrfMsg(1, "duplicate choice list string, ignoring");
 							} else {
@@ -416,14 +401,13 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x14:
 					case 0x15: {
 						auto &mapping = code == 0x14 ? mapping_c : mapping_pg;
-						if (src[0] == '\0') goto string_end;
 						/* Case mapping can have nested plural/gender mapping. Otherwise nesting is invalid. */
 						if (mapping.has_value() || mapping_pg.has_value()) {
 							GrfMsg(1, "choice lists can't be stacked, it's going to get messy now...");
-							if (code != 0x14) src++;
+							if (code != 0x14) consumer.SkipUint8();
 						} else {
 							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST };
-							mapping.emplace(mp[code - 0x13], code == 0x14 ? 0 : *src++);
+							mapping.emplace(mp[code - 0x13], code == 0x14 ? 0 : consumer.ReadUint8());
 						}
 						break;
 					}
