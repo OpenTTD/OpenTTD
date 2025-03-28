@@ -113,7 +113,7 @@ struct GSDTChunkHandler : ChunkHandler {
 	}
 };
 
-extern GameStrings *_current_data;
+extern std::shared_ptr<GameStrings> _current_data;
 
 static std::string _game_saveload_string;
 static uint32_t _game_saveload_strings;
@@ -159,8 +159,7 @@ struct GSTRChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_game_language_desc, _game_language_sl_compat);
 
-		delete _current_data;
-		_current_data = new GameStrings();
+		_current_data = std::make_shared<GameStrings>();
 
 		while (SlIterateArray() != -1) {
 			LanguageStrings ls;
@@ -170,8 +169,7 @@ struct GSTRChunkHandler : ChunkHandler {
 
 		/* If there were no strings in the savegame, set GameStrings to nullptr */
 		if (_current_data->raw_strings.empty()) {
-			delete _current_data;
-			_current_data = nullptr;
+			_current_data.reset();
 			return;
 		}
 
