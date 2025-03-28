@@ -16,6 +16,7 @@
 #include "querystring_gui.h"
 #include "video/video_driver.hpp"
 #include "zoom_func.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/osk_widget.h"
 
@@ -358,17 +359,10 @@ void GetKeyboardLayout()
 	keyboard[1] = _keyboard_opt[1].empty() ? GetString(STR_OSK_KEYBOARD_LAYOUT_CAPS) : _keyboard_opt[1];
 
 	for (uint j = 0; j < 2; j++) {
-		auto kbd = keyboard[j].begin();
-		bool ended = false;
+		StringConsumer consumer(keyboard[j]);
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
-			_keyboard[j][i] = Utf8Consume(kbd);
-
 			/* Be lenient when the last characters are missing (is quite normal) */
-			if (_keyboard[j][i] == '\0' || ended) {
-				ended = true;
-				_keyboard[j][i] = ' ';
-				continue;
-			}
+			_keyboard[j][i] = consumer.AnyBytesLeft() ? consumer.ReadUtf8() : ' ';
 
 			if (IsPrintable(_keyboard[j][i])) {
 				errormark[j] += ' ';
