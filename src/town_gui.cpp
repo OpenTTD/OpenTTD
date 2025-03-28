@@ -1745,9 +1745,7 @@ struct BuildHouseWindow : public PickerWindow {
 
 	void OnInit() override
 	{
-		this->SetWidgetLoweredState(WID_BH_PROTECT_OFF, !this->house_protected);
-		this->SetWidgetLoweredState(WID_BH_PROTECT_ON, this->house_protected);
-
+		this->InvalidateData(PickerInvalidation::Position);
 		this->PickerWindow::OnInit();
 	}
 
