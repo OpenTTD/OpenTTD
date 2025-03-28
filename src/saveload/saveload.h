@@ -400,6 +400,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_ENCODED_STRING_FORMAT,              ///< 350  PR#13499 Encoded String format changed.
 	SLV_PROTECT_PLACED_HOUSES,              ///< 351  PR#13270 Houses individually placed by players can be protected from town/AI removal.
 	SLV_SCRIPT_SAVE_INSTANCES,              ///< 352  PR#13556 Scripts are allowed to save instances.
+	SLV_ORDERS_OWNED_BY_ORDERLIST,          ///< 353  PR#..... Orders stored in OrderList, pool removed.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -603,7 +604,6 @@ public:
 
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
 enum SLRefType : uint8_t {
-	REF_ORDER          =  0, ///< Load/save a reference to an order.
 	REF_VEHICLE        =  1, ///< Load/save a reference to a vehicle.
 	REF_STATION        =  2, ///< Load/save a reference to a station.
 	REF_TOWN           =  3, ///< Load/save a reference to a town.
