@@ -861,10 +861,10 @@ static void ProcessNewGRFStringControlCode(char32_t scc, StringConsumer &consume
 /**
  * Emit OpenTTD's internal string code for the different NewGRF string codes.
  * @param scc NewGRF string code.
- * @param[in,out] str String iterator, moved forward if SCC_NEWGRF_PUSH_WORD is found.
+ * @param consumer String consumer, moved forward if SCC_NEWGRF_PUSH_WORD is found.
  * @returns String code to use.
  */
-char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
+char32_t RemapNewGRFStringControlCode(char32_t scc, StringConsumer &consumer)
 {
 	switch (scc) {
 		default:
@@ -932,7 +932,7 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
 
 		/* These NewGRF string codes modify the NewGRF stack or otherwise do not map to OpenTTD string codes. */
 		case SCC_NEWGRF_PUSH_WORD:
-			Utf8Consume(str);
+			consumer.SkipUtf8();
 			return 0;
 
 		case SCC_NEWGRF_DISCARD_WORD:
