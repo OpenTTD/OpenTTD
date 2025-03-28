@@ -28,14 +28,14 @@
  * Update the buoy orders to be waypoint orders.
  * @param o the order 'list' to check.
  */
-static void UpdateWaypointOrder(Order *o)
+static void UpdateWaypointOrder(Order &o)
 {
-	if (!o->IsType(OT_GOTO_STATION)) return;
+	if (!o.IsType(OT_GOTO_STATION)) return;
 
-	const Station *st = Station::Get(o->GetDestination().ToStationID());
+	const Station *st = Station::Get(o.GetDestination().ToStationID());
 	if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) return;
 
-	o->MakeGoToWaypoint(o->GetDestination().ToStationID());
+	o.MakeGoToWaypoint(o.GetDestination().ToStationID());
 }
 
 /**
@@ -49,14 +49,14 @@ void MoveBuoysToWaypoints()
 		VehicleType vt = ol->GetFirstSharedVehicle()->type;
 		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 
-		for (Order *o = ol->GetFirstOrder(); o != nullptr; o = o->next) UpdateWaypointOrder(o);
+		for (Order &o : ol->GetOrders()) UpdateWaypointOrder(o);
 	}
 
 	for (Vehicle *v : Vehicle::Iterate()) {
 		VehicleType vt = v->type;
 		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 
-		UpdateWaypointOrder(&v->current_order);
+		UpdateWaypointOrder(v->current_order);
 	}
 
 	/* Now make the stations waypoints */
