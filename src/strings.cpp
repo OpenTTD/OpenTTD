@@ -40,7 +40,6 @@
 #include "gfx_layout.h"
 #include "core/utf8.hpp"
 #include <stack>
-#include <charconv>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -153,48 +152,39 @@ EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&data) 
 	if (this->empty()) return {};
 
 	std::vector<StringParameter> params;
+	StringConsumer consumer(this->string);
 
-	/* We need char * for std::from_chars. Iterate the underlying data, as string's own iterators may interfere. */
-	const char *p = this->string.data();
-	const char *e = this->string.data() + this->string.length();
-
-	char32_t c = Utf8Consume(p);
-	if (c != SCC_ENCODED_INTERNAL) return {};
+	if (!consumer.ReadUtf8If(SCC_ENCODED_INTERNAL)) return {};
 
 	StringID str;
-	auto result = std::from_chars(p, e, str, 16);
-	if (result.ec != std::errc()) return {};
-	if (result.ptr != e && *result.ptr != SCC_RECORD_SEPARATOR) return {};
-	p = result.ptr;
+	if (auto r = consumer.TryReadIntegerBase<uint32_t>(16); r.has_value()) {
+		str = *r;
+	} else {
+		return {};
+	}
+	if (consumer.AnyBytesLeft() && !consumer.ReadUtf8If(SCC_RECORD_SEPARATOR)) return {};
 
-	while (p != e) {
-		auto s = ++p;
+	while (consumer.AnyBytesLeft()) {
+		StringConsumer record(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::SKIP_ONE_SEPARATOR));
 
-		/* Find end of the parameter. */
-		for (; p != e && *p != SCC_RECORD_SEPARATOR; ++p) {}
-
-		if (s == p) {
+		if (!record.AnyBytesLeft()) {
 			/* This is an empty parameter. */
 			params.emplace_back(std::monostate{});
 			continue;
 		}
 
 		/* Get the parameter type. */
-		char32_t parameter_type;
-		size_t len = Utf8Decode(&parameter_type, s);
-		s += len;
-
+		char32_t parameter_type = record.ReadUtf8();
 		switch (parameter_type) {
 			case SCC_ENCODED_NUMERIC: {
-				uint64_t value;
-				result = std::from_chars(s, p, value, 16);
-				if (result.ec != std::errc() || result.ptr != p) return {};
+				uint64_t value = record.ReadIntegerBase<uint64_t>(16);
+				assert(!record.AnyBytesLeft());
 				params.emplace_back(value);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				params.emplace_back(std::string(s, p));
+				params.emplace_back(std::string(record.Read(StringConsumer::npos)));
 				break;
 			}
 

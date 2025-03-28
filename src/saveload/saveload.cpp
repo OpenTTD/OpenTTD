@@ -30,6 +30,7 @@
 #include "../strings_func.h"
 #include "../core/endian_func.hpp"
 #include "../core/string_builder.hpp"
+#include "../core/string_consumer.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
 #include "../timer/timer_game_economy.h"
@@ -935,13 +936,14 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 	bool in_string = false; // Set if we in a string, between double-quotes.
 	bool need_type = true; // Set if a parameter type needs to be emitted.
 
-	for (auto it = std::begin(str); it != std::end(str); /* nothing */) {
-		size_t len = Utf8EncodedCharLen(*it);
-		if (len == 0 || it + len > std::end(str)) break;
-
+	StringConsumer consumer(str);
+	while (consumer.AnyBytesLeft()) {
 		char32_t c;
-		Utf8Decode(&c, &*it);
-		it += len;
+		if (auto r = consumer.TryReadUtf8(); r.has_value()) {
+			c = *r;
+		} else {
+			break;
+		}
 		if (c == SCC_ENCODED || (fix_code && (c == 0xE028 || c == 0xE02A))) {
 			builder.PutUtf8(SCC_ENCODED);
 			need_type = false;
