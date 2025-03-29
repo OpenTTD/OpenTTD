@@ -193,6 +193,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 		/* Get airport tile ID at offset */
 		case 0x62: return GetAirportTileIDAtOffset(GetNearbyTile(parameter, this->tile), this->st, this->ro.grffile->grfid);
 
+		case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), GetRegister(0x100), GrfSpecFeatures{GetRegister(0x101)});
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->ats->badges, parameter);
 	}
 
