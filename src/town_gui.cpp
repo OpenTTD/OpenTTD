@@ -382,7 +382,8 @@ public:
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_TV_VIEWPORT);
 		nvp->InitializeViewport(this, this->town->xy, ScaleZoomGUI(ZOOM_LVL_TOWN));
 
-		/* disable renaming town in network games if you are not the server */
+		/* disable renaming town in network games if you are not the server, unless
+		 * town renaming is explicitly allowed */
 		bool renaming_disabled = _networking && !_network_server;
 		if (_settings_game.economy.town_renaming_allowed) {
 			renaming_disabled = false;
