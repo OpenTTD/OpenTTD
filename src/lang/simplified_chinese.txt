@@ -375,7 +375,7 @@ STR_GROUP_BY_NONE                                               :无
 STR_GROUP_BY_SHARED_ORDERS                                      :共享调度计划
 
 # Order button in shared orders vehicle list
-STR_GOTO_ORDER_VIEW                                             :{BLACK}命令
+STR_GOTO_ORDER_VIEW                                             :{BLACK}调度计划
 STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}打开调度计划视图
 
 # Tooltips for the main toolbar
@@ -906,7 +906,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 ###next-name-looks-similar
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} 的调度计划太少
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} 的命令太少
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}的调度计划中有无效调度命令
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} 有重复调度命令
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}的调度计划有无效的车站
@@ -2145,7 +2145,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :财务管理
 STR_CONFIG_SETTING_VEHICLES                                     :载具
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :物理
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :经由
-STR_CONFIG_SETTING_VEHICLES_ORDERS                              :调度命令
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :调度计划
 STR_CONFIG_SETTING_LIMITATIONS                                  :限制
 STR_CONFIG_SETTING_ACCIDENTS                                    :灾难/事故
 STR_CONFIG_SETTING_GENWORLD                                     :地图生成
@@ -4464,7 +4464,7 @@ STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}等待�
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}距离下一目的地过远
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - 正前往 {0:STATION}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 没有目标
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 没有调度计划
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - 正前往 {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - 正前往 {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - 正在前往 {0:DEPOT} 以进行维护
@@ -4592,7 +4592,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}时刻表
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换到时刻表视图
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表 - 点击命令以选定命令。按 <Ctrl> 键操作以跳至命令目标在地图上的位置
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度计划 - 点选可选择命令，按 <Ctrl> 键操作以跳至命令目标在地图上的位置
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 调度计划结束 - -
@@ -4768,13 +4768,13 @@ STR_TIMETABLE_NO_TRAVEL                                         :原地待命
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行驶（自动；由下个手动命令指定时间）
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶（无时刻表）
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY}（无时刻表）
-STR_TIMETABLE_TRAVEL_FOR                                        :途中行驶 {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :开往{STRING} ，限速为 {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR                                        :行驶 {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行驶 {STRING}，限速 {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行驶（{STRING}，无时刻表）
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :前往 {STRING}，以最大速度 {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING}，未指定时间）
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（驶往 {STRING}，未指定时间）
-STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
+STR_TIMETABLE_STAY_FOR                                          :，停留 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}完成该时刻表大约需要 {STRING}
@@ -5371,8 +5371,8 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆�
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}飞机正在飞行
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}无法新增指令
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}调度计划过多
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}无法新增命令
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}命令太多
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}不能插入新的调度计划……
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}不能删除调度计划……
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}不能执行这个命令……

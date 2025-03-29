@@ -4795,12 +4795,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Nombre de secon
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné. Ctrl-clic pour définir la durée pour tous les ordres
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Modifier la durée
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler la durée
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné. Ctrl-clic pour annuler la durée de tous les ordres
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modifier la vitesse limite
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Modifier la vitesse maximale de déplacement de l'ordre sélectionné. Ctrl-Clic pour définir la vitesse pour tous les ordres
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Modifier la vitesse limite
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Annuler la vitesse limite
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Annuler la vitesse maximale de déplacement de l'ordre sélectionné. Ctrl-clic pour annuler la vitesse de tous les ordres

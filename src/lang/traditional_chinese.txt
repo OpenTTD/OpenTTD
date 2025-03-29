@@ -460,7 +460,7 @@ STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :機場
 STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :廢置
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :顯示號誌站名稱
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :顯示標誌
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :顯示競手對手的標誌和車站名稱
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :顯示競爭對手的標誌和車站名稱
 STR_SETTINGS_MENU_FULL_ANIMATION                                :完整動畫
 STR_SETTINGS_MENU_FULL_DETAIL                                   :完整細節
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :透明建築物
