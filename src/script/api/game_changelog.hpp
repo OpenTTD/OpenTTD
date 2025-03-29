@@ -27,6 +27,11 @@
  * \li GSCargo::CC_NON_POURABLE
  * \li GSCargo::CC_POTABLE
  * \li GSCargo::CC_NON_POTABLE
+ * \li GSRoad::IsRoadWaypointTile
+ * \li GSRoad::BuildRoadWaypoint
+ * \li GSRoad::RemoveRoadWaypointTileRectangle
+ * \li GSWaypoint::WAYPOINT_ROAD
+ * \li GSRoad::BT_WAYPOINT
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
