@@ -536,6 +536,7 @@ struct EconomySettings {
 	TownCargoGenMode town_cargogen_mode;     ///< algorithm for generating cargo from houses, @see TownCargoGenMode
 	bool   allow_town_roads;                 ///< towns are allowed to build roads (always allowed when generating world / in SE)
 	TownFounding found_town;                 ///< town founding.
+	bool     town_renaming_allowed;            ///< users can rename towns, even in multiplayer
 	PlaceHouses place_houses;                ///< players are allowed to place town houses.
 	bool   station_noise_level;              ///< build new airports when the town noise level is still within accepted limits
 	uint16_t town_noise_population[4];         ///< population to base decision on noise evaluation (@see town_council_tolerance)

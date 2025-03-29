@@ -383,7 +383,11 @@ public:
 		nvp->InitializeViewport(this, this->town->xy, ScaleZoomGUI(ZOOM_LVL_TOWN));
 
 		/* disable renaming town in network games if you are not the server */
-		this->SetWidgetDisabledState(WID_TV_CHANGE_NAME, _networking && !_network_server);
+		bool renaming_disabled = _networking && !_network_server;
+		if (_settings_game.economy.town_renaming_allowed) {
+			renaming_disabled = false;
+		}
+		this->SetWidgetDisabledState(WID_TV_CHANGE_NAME, renaming_disabled);
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
