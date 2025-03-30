@@ -429,7 +429,7 @@ bool MidiFile::ReadSMFHeader(FileHandle &file, SMFHeader &header)
 
 	/* Check magic, 'MThd' followed by 4 byte length indicator (always = 6 in SMF) */
 	const uint8_t magic[] = { 'M', 'T', 'h', 'd', 0x00, 0x00, 0x00, 0x06 };
-	if (std::ranges::equal(std::span(buffer, std::size(magic)), magic)) {
+	if (!std::ranges::equal(std::span(buffer, std::size(magic)), magic)) {
 		return false;
 	}
 
