@@ -535,6 +535,10 @@ static std::optional<std::string_view> InitializeSDL()
 	/* Check if the video-driver is already initialized. */
 	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return std::nullopt;
 
+#ifdef SDL_HINT_APP_NAME
+	SDL_SetHint(SDL_HINT_APP_NAME, "OpenTTD");
+#endif
+
 	if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) return SDL_GetError();
 	return std::nullopt;
 }
@@ -566,10 +570,6 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 		 */
 		if (!SDL_SetHint(SDL_HINT_MOUSE_AUTO_CAPTURE, "0")) return SDL_GetError();
 	}
-#endif
-
-#ifdef SDL_HINT_APP_NAME
-	SDL_SetHint(SDL_HINT_APP_NAME, "OpenTTD");
 #endif
 
 	this->startup_display = FindStartupDisplay(GetDriverParamInt(param, "display", -1));
