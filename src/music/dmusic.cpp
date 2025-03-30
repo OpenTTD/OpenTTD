@@ -1195,7 +1195,10 @@ void MusicDriver_DMusic::Stop()
 		_music = nullptr;
 	}
 
-	CloseHandle(_thread_event);
+	if (_thread_event != nullptr) {
+		CloseHandle(_thread_event);
+		_thread_event = nullptr;
+	}
 
 	CoUninitialize();
 }
