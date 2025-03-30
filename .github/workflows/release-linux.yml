@@ -71,10 +71,10 @@ jobs:
         # dependencies as possible. We do it before anything else is installed,
         # to make sure it doesn't pick up on any of the drivers.
         echo "::group::Install fluidsynth"
-        wget https://github.com/FluidSynth/fluidsynth/archive/v2.3.3.tar.gz
-        tar xf v2.3.3.tar.gz
+        wget https://github.com/FluidSynth/fluidsynth/archive/v2.4.4.tar.gz
+        tar xf v2.4.4.tar.gz
         (
-          cd fluidsynth-2.3.3
+          cd fluidsynth-2.4.4
           mkdir build
           cd build
           cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
