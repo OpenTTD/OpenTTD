@@ -2701,7 +2701,6 @@ static void ConDumpCargoTypes()
 
 	std::map<uint32_t, const GRFFile *> grfs;
 	for (const CargoSpec *spec : CargoSpec::Iterate()) {
-		if (!spec->IsValid()) continue;
 		uint32_t grfid = 0;
 		const GRFFile *grf = spec->grffile;
 		if (grf != nullptr) {
