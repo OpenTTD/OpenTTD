@@ -375,8 +375,8 @@ STR_GROUP_BY_NONE                                               :無
 STR_GROUP_BY_SHARED_ORDERS                                      :共享指令
 
 # Order button in shared orders vehicle list
-STR_GOTO_ORDER_VIEW                                             :{BLACK}指令
-STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}打開調度規劃視窗
+STR_GOTO_ORDER_VIEW                                             :{BLACK}指令清單
+STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}開啟指令清單視窗
 
 # Tooltips for the main toolbar
 ###length 31
@@ -906,7 +906,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 ###next-name-looks-similar
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} 的調度任務太少
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} 的指令太少
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} 有錯誤的計劃指令
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} 有重複的指令
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} 有無法到達的車站
@@ -2145,7 +2145,7 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :財務
 STR_CONFIG_SETTING_VEHICLES                                     :車輛
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :物理
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :路線
-STR_CONFIG_SETTING_VEHICLES_ORDERS                              :調度指令
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :指令清單
 STR_CONFIG_SETTING_LIMITATIONS                                  :遊戲限制
 STR_CONFIG_SETTING_ACCIDENTS                                    :災難／事故
 STR_CONFIG_SETTING_GENWORLD                                     :地圖的產生
@@ -4464,7 +4464,7 @@ STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}正在�
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}與下個目的地相距太遠
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - 正前往 {0:STATION}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 沒有指令
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 沒有指令清單
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - 正前往 {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - 正前往 {0:DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - 正前往 {0:DEPOT} 以進行維護
@@ -4592,7 +4592,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}時刻表
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切換至時刻表檢視模式
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令清單 - 點選可選擇該指令，按住 <Ctrl> 點選可跳到指令車站位置
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令清單 - 點選可選擇指令，按住 <Ctrl> 點選可跳到指令目標在地圖上的位置
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 指令結束 - -
@@ -4769,7 +4769,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行駛（自動
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行駛（無時刻表）
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} 行駛（無時刻表）
 STR_TIMETABLE_TRAVEL_FOR                                        :行駛需時 {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :開往 {STRING} ，限速為 {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :行駛 {STRING} ，限速 {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :開往（{STRING} ，無時刻表）
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :開往（{STRING} ，無時刻表）以最高速度 {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING} ，無時刻表）
