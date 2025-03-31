@@ -25,19 +25,19 @@
 
 void CDECL StrgenWarningI(const std::string &msg)
 {
-	Debug(script, 0, "{}:{}: warning: {}", _file, _cur_line, msg);
-	_warnings++;
+	Debug(script, 0, "{}:{}: warning: {}", _strgen.file, _strgen.cur_line, msg);
+	_strgen.warnings++;
 }
 
 void CDECL StrgenErrorI(const std::string &msg)
 {
-	Debug(script, 0, "{}:{}: error: {}", _file, _cur_line, msg);
-	_errors++;
+	Debug(script, 0, "{}:{}: error: {}", _strgen.file, _strgen.cur_line, msg);
+	_strgen.errors++;
 }
 
 void CDECL StrgenFatalI(const std::string &msg)
 {
-	Debug(script, 0, "{}:{}: FATAL: {}", _file, _cur_line, msg);
+	Debug(script, 0, "{}:{}: FATAL: {}", _strgen.file, _strgen.cur_line, msg);
 	throw std::exception();
 }
 
@@ -289,7 +289,7 @@ void GameStrings::Compile()
 	StringData data(32);
 	StringListReader master_reader(data, this->raw_strings[0], true, false);
 	master_reader.ParseFile();
-	if (_errors != 0) throw std::exception();
+	if (_strgen.errors != 0) throw std::exception();
 
 	this->version = data.Version();
 
@@ -302,7 +302,7 @@ void GameStrings::Compile()
 		data.FreeTranslation();
 		StringListReader translation_reader(data, p, false, p.language != "english");
 		translation_reader.ParseFile();
-		if (_errors != 0) throw std::exception();
+		if (_strgen.errors != 0) throw std::exception();
 
 		auto &strings = this->compiled_strings.emplace_back(p.language);
 		TranslationWriter writer(strings.lines);
