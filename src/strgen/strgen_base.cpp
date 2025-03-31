@@ -41,7 +41,7 @@ static size_t TranslateArgumentIdx(size_t arg, size_t offset = 0);
  * @param caseidx The index of the case.
  * @param string  The translation of the case.
  */
-Case::Case(uint8_t caseidx, const std::string &string) :
+Case::Case(uint8_t caseidx, std::string_view string) :
 		caseidx(caseidx), string(string)
 {
 }
@@ -53,7 +53,7 @@ Case::Case(uint8_t caseidx, const std::string &string) :
  * @param index   The index in the string table.
  * @param line    The line this string was found on.
  */
-LangString::LangString(const std::string &name, const std::string &english, size_t index, size_t line) :
+LangString::LangString(std::string_view name, std::string_view english, size_t index, size_t line) :
 		name(name), english(english), index(index), line(line)
 {
 }
@@ -162,30 +162,6 @@ size_t StringData::CountInUse(size_t tab) const
 	size_t count = TAB_SIZE;
 	while (count > 0 && this->strings[(tab * TAB_SIZE) + count - 1] == nullptr) --count;
 	return count;
-}
-
-static size_t Utf8Validate(const char *s)
-{
-	char32_t c;
-
-	if (!HasBit(s[0], 7)) {
-		/* 1 byte */
-		return 1;
-	} else if (GB(s[0], 5, 3) == 6 && IsUtf8Part(s[1])) {
-		/* 2 bytes */
-		c = GB(s[0], 0, 5) << 6 | GB(s[1], 0, 6);
-		if (c >= 0x80) return 2;
-	} else if (GB(s[0], 4, 4) == 14 && IsUtf8Part(s[1]) && IsUtf8Part(s[2])) {
-		/* 3 bytes */
-		c = GB(s[0], 0, 4) << 12 | GB(s[1], 0, 6) << 6 | GB(s[2], 0, 6);
-		if (c >= 0x800) return 3;
-	} else if (GB(s[0], 3, 5) == 30 && IsUtf8Part(s[1]) && IsUtf8Part(s[2]) && IsUtf8Part(s[3])) {
-		/* 4 bytes */
-		c = GB(s[0], 0, 3) << 18 | GB(s[1], 0, 6) << 12 | GB(s[2], 0, 6) << 6 | GB(s[3], 0, 6);
-		if (c >= 0x10000 && c <= 0x10FFFF) return 4;
-	}
-
-	return 0;
 }
 
 void EmitSingleChar(StringBuilder &builder, std::string_view param, char32_t value)
@@ -503,91 +479,92 @@ static bool CheckCommandsMatch(std::string_view a, std::string_view b, std::stri
 	return result;
 }
 
-void StringReader::HandleString(char *str)
+[[nodiscard]] static std::string_view StripTrailingWhitespace(std::string_view str)
 {
-	if (*str == '#') {
-		if (str[1] == '#' && str[2] != '#') this->HandlePragma(str + 2, _strgen.lang);
-		return;
+	auto len = str.find_last_not_of("\r\n ");
+	if (len == std::string_view::npos) return {};
+	return str.substr(0, len + 1);
+}
+
+void StringReader::HandleString(std::string_view src)
+{
+	/* Ignore blank lines */
+	if (src.empty()) return;
+
+	StringConsumer consumer(src);
+	if (consumer.ReadCharIf('#')) {
+		if (consumer.ReadCharIf('#') && !consumer.ReadCharIf('#')) this->HandlePragma(consumer.Read(StringConsumer::npos), _strgen.lang);
+		return; // ignore comments
 	}
 
-	/* Ignore comments & blank lines */
-	if (*str == ';' || *str == ' ' || *str == '\0') return;
-
-	char *s = strchr(str, ':');
-	if (s == nullptr) {
+	/* Read string name */
+	std::string_view str_name = StripTrailingWhitespace(consumer.ReadUntilChar(':', StringConsumer::KEEP_SEPARATOR));
+	if (!consumer.ReadCharIf(':')) {
 		StrgenError("Line has no ':' delimiter");
 		return;
 	}
 
-	char *t;
-	/* Trim spaces.
-	 * After this str points to the command name, and s points to the command contents */
-	for (t = s; t > str && (t[-1] == ' ' || t[-1] == '\t'); t--) {}
-	*t = 0;
-	s++;
-
-	/* Check string is valid UTF-8 */
-	const char *tmp;
-	for (tmp = s; *tmp != '\0';) {
-		size_t len = Utf8Validate(tmp);
-		if (len == 0) StrgenFatal("Invalid UTF-8 sequence in '{}'", s);
-
-		char32_t c;
-		Utf8Decode(&c, tmp);
-		if (c <= 0x001F || // ASCII control character range
-				c == 0x200B || // Zero width space
-				(c >= 0xE000 && c <= 0xF8FF) || // Private range
-				(c >= 0xFFF0 && c <= 0xFFFF)) { // Specials range
-			StrgenFatal("Unwanted UTF-8 character U+{:04X} in sequence '{}'", static_cast<uint32_t>(c), s);
-		}
-
-		tmp += len;
+	/* Read string case */
+	std::optional<std::string_view> casep;
+	if (auto index = str_name.find("."); index != std::string_view::npos) {
+		casep = str_name.substr(index + 1);
+		str_name = str_name.substr(0, index);
 	}
 
-	/* Check if the string has a case..
-	 * The syntax for cases is IDENTNAME.case */
-	char *casep = strchr(str, '.');
-	if (casep != nullptr) *casep++ = '\0';
+	/* Read string data */
+	std::string_view value = consumer.Read(StringConsumer::npos);
+
+	/* Check string is valid UTF-8 */
+	for (StringConsumer validation_consumer(value); validation_consumer.AnyBytesLeft(); ) {
+		auto c = validation_consumer.TryReadUtf8();
+		if (!c.has_value()) StrgenFatal("Invalid UTF-8 sequence in '{}'", value);
+		if (*c <= 0x001F || // ASCII control character range
+				*c == 0x200B || // Zero width space
+				(*c >= 0xE000 && *c <= 0xF8FF) || // Private range
+				(*c >= 0xFFF0 && *c <= 0xFFFF)) { // Specials range
+			StrgenFatal("Unwanted UTF-8 character U+{:04X} in sequence '{}'", static_cast<uint32_t>(*c), value);
+		}
+	}
 
 	/* Check if this string already exists.. */
-	LangString *ent = this->data.Find(str);
+	LangString *ent = this->data.Find(std::string(str_name));
 
 	if (this->master) {
-		if (casep != nullptr) {
+		if (casep.has_value()) {
 			StrgenError("Cases in the base translation are not supported.");
 			return;
 		}
 
 		if (ent != nullptr) {
-			StrgenError("String name '{}' is used multiple times", str);
+			StrgenError("String name '{}' is used multiple times", str_name);
 			return;
 		}
 
 		if (this->data.strings[this->data.next_string_id] != nullptr) {
-			StrgenError("String ID 0x{:X} for '{}' already in use by '{}'", this->data.next_string_id, str, this->data.strings[this->data.next_string_id]->name);
+			StrgenError("String ID 0x{:X} for '{}' already in use by '{}'", this->data.next_string_id, str_name, this->data.strings[this->data.next_string_id]->name);
 			return;
 		}
 
 		/* Allocate a new LangString */
-		this->data.Add(std::make_unique<LangString>(str, s, this->data.next_string_id++, _strgen.cur_line));
+		this->data.Add(std::make_unique<LangString>(str_name, value, this->data.next_string_id++, _strgen.cur_line));
 	} else {
 		if (ent == nullptr) {
-			StrgenWarning("String name '{}' does not exist in master file", str);
+			StrgenWarning("String name '{}' does not exist in master file", str_name);
 			return;
 		}
 
-		if (!ent->translated.empty() && casep == nullptr) {
-			StrgenError("String name '{}' is used multiple times", str);
+		if (!ent->translated.empty() && !casep.has_value()) {
+			StrgenError("String name '{}' is used multiple times", str_name);
 			return;
 		}
 
 		/* make sure that the commands match */
-		if (!CheckCommandsMatch(s, ent->english, str)) return;
+		if (!CheckCommandsMatch(value, ent->english, str_name)) return;
 
-		if (casep != nullptr) {
-			ent->translated_cases.emplace_back(ResolveCaseName(casep), s);
+		if (casep.has_value()) {
+			ent->translated_cases.emplace_back(ResolveCaseName(*casep), value);
 		} else {
-			ent->translated = s;
+			ent->translated = value;
 			/* If the string was translated, use the line from the
 			 * translated language so errors in the translated file
 			 * are properly referenced to. */
@@ -596,21 +573,18 @@ void StringReader::HandleString(char *str)
 	}
 }
 
-void StringReader::HandlePragma(char *str, LanguagePackHeader &lang)
+void StringReader::HandlePragma(std::string_view str, LanguagePackHeader &lang)
 {
-	if (!memcmp(str, "plural ", 7)) {
-		lang.plural_form = atoi(str + 7);
+	StringConsumer consumer(str);
+	auto name = consumer.ReadUntilChar(' ', StringConsumer::SKIP_ALL_SEPARATORS);
+	if (name == "plural") {
+		lang.plural_form = consumer.ReadIntegerBase<uint32_t>(10);
 		if (lang.plural_form >= lengthof(_plural_forms)) {
 			StrgenFatal("Invalid pluralform {}", lang.plural_form);
 		}
 	} else {
-		StrgenFatal("unknown pragma '{}'", str);
+		StrgenFatal("unknown pragma '{}'", name);
 	}
-}
-
-static void StripTrailingWhitespace(std::string &str)
-{
-	str.erase(str.find_last_not_of("\r\n ") + 1);
 }
 
 void StringReader::ParseFile()
@@ -631,8 +605,7 @@ void StringReader::ParseFile()
 		std::optional<std::string> line = this->ReadLine();
 		if (!line.has_value()) return;
 
-		StripTrailingWhitespace(line.value());
-		this->HandleString(line.value().data());
+		this->HandleString(StripTrailingWhitespace(line.value()));
 		_strgen.cur_line++;
 	}
 
