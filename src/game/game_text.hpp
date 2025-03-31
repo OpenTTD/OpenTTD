@@ -24,7 +24,7 @@ struct StringParam {
 	uint8_t consumes;
 	std::string_view cmd;
 
-	StringParam(ParamType type, uint8_t consumes, std::string_view cmd) : type(type), consumes(consumes), cmd(cmd) {}
+	StringParam(ParamType type, uint8_t consumes, std::string_view cmd = {}) : type(type), consumes(consumes), cmd(cmd) {}
 };
 using StringParams = std::vector<StringParam>;
 using StringParamsList = std::vector<StringParams>;
