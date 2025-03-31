@@ -22,7 +22,7 @@ struct Case {
 	uint8_t caseidx;       ///< The index of the case.
 	std::string string; ///< The translation of the case.
 
-	Case(uint8_t caseidx, const std::string &string);
+	Case(uint8_t caseidx, std::string_view string);
 };
 
 /** Information about a single string. */
@@ -34,7 +34,7 @@ struct LangString {
 	size_t line;            ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
 
-	LangString(const std::string &name, const std::string &english, size_t index, size_t line);
+	LangString(std::string_view name, std::string_view english, size_t index, size_t line);
 	void FreeTranslation();
 };
 
@@ -63,7 +63,7 @@ struct StringReader {
 
 	StringReader(StringData &data, const std::string &file, bool master, bool translation);
 	virtual ~StringReader() = default;
-	void HandleString(char *str);
+	void HandleString(std::string_view str);
 
 	/**
 	 * Read a single line from the source of strings.
@@ -75,7 +75,7 @@ struct StringReader {
 	 * Handle the pragma of the file.
 	 * @param str    The pragma string to parse.
 	 */
-	virtual void HandlePragma(char *str, LanguagePackHeader &lang);
+	virtual void HandlePragma(std::string_view str, LanguagePackHeader &lang);
 
 	/**
 	 * Start parsing the file.
