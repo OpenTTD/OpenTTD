@@ -91,7 +91,7 @@ struct FileStringReader : StringReader {
 		return result;
 	}
 
-	void HandlePragma(char *str, LanguagePackHeader &lang) override;
+	void HandlePragma(std::string_view str, LanguagePackHeader &lang) override;
 
 	void ParseFile() override
 	{
@@ -103,51 +103,50 @@ struct FileStringReader : StringReader {
 	}
 };
 
-void FileStringReader::HandlePragma(char *str, LanguagePackHeader &lang)
+void FileStringReader::HandlePragma(std::string_view str, LanguagePackHeader &lang)
 {
-	if (!memcmp(str, "id ", 3)) {
-		this->data.next_string_id = std::strtoul(str + 3, nullptr, 0);
-	} else if (!memcmp(str, "name ", 5)) {
-		strecpy(lang.name, str + 5);
-	} else if (!memcmp(str, "ownname ", 8)) {
-		strecpy(lang.own_name, str + 8);
-	} else if (!memcmp(str, "isocode ", 8)) {
-		strecpy(lang.isocode, str + 8);
-	} else if (!memcmp(str, "textdir ", 8)) {
-		if (!memcmp(str + 8, "ltr", 3)) {
+	StringConsumer consumer(str);
+	auto name = consumer.ReadUntilChar(' ', StringConsumer::SKIP_ALL_SEPARATORS);
+	if (name == "id") {
+		this->data.next_string_id = consumer.ReadIntegerBase<uint32_t>(0);
+	} else if (name == "name") {
+		strecpy(lang.name, consumer.Read(StringConsumer::npos));
+	} else if (name == "ownname") {
+		strecpy(lang.own_name, consumer.Read(StringConsumer::npos));
+	} else if (name == "isocode") {
+		strecpy(lang.isocode, consumer.Read(StringConsumer::npos));
+	} else if (name == "textdir") {
+		auto dir = consumer.Read(StringConsumer::npos);
+		if (dir == "ltr") {
 			lang.text_dir = TD_LTR;
-		} else if (!memcmp(str + 8, "rtl", 3)) {
+		} else if (dir == "rtl") {
 			lang.text_dir = TD_RTL;
 		} else {
-			FatalError("Invalid textdir {}", str + 8);
+			FatalError("Invalid textdir {}", dir);
 		}
-	} else if (!memcmp(str, "digitsep ", 9)) {
-		str += 9;
-		strecpy(lang.digit_group_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str);
-	} else if (!memcmp(str, "digitsepcur ", 12)) {
-		str += 12;
-		strecpy(lang.digit_group_separator_currency, strcmp(str, "{NBSP}") == 0 ? NBSP : str);
-	} else if (!memcmp(str, "decimalsep ", 11)) {
-		str += 11;
-		strecpy(lang.digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str);
-	} else if (!memcmp(str, "winlangid ", 10)) {
-		const char *buf = str + 10;
-		long langid = std::strtol(buf, nullptr, 16);
+	} else if (name == "digitsep") {
+		auto sep = consumer.Read(StringConsumer::npos);
+		strecpy(lang.digit_group_separator, sep == "{NBSP}" ? NBSP : sep);
+	} else if (name == "digitsepcur") {
+		auto sep = consumer.Read(StringConsumer::npos);
+		strecpy(lang.digit_group_separator_currency, sep == "{NBSP}" ? NBSP : sep);
+	} else if (name == "decimalsep") {
+		auto sep = consumer.Read(StringConsumer::npos);
+		strecpy(lang.digit_decimal_separator, sep == "{NBSP}" ? NBSP : sep);
+	} else if (name == "winlangid") {
+		auto langid = consumer.ReadIntegerBase<int32_t>(0);
 		if (langid > UINT16_MAX || langid < 0) {
-			FatalError("Invalid winlangid {}", buf);
+			FatalError("Invalid winlangid {}", langid);
 		}
 		lang.winlangid = static_cast<uint16_t>(langid);
-	} else if (!memcmp(str, "grflangid ", 10)) {
-		const char *buf = str + 10;
-		long langid = std::strtol(buf, nullptr, 16);
+	} else if (name == "grflangid") {
+		auto langid = consumer.ReadIntegerBase<int32_t>(0);
 		if (langid >= 0x7F || langid < 0) {
-			FatalError("Invalid grflangid {}", buf);
+			FatalError("Invalid grflangid {}", langid);
 		}
 		lang.newgrflangid = static_cast<uint8_t>(langid);
-	} else if (!memcmp(str, "gender ", 7)) {
+	} else if (name == "gender") {
 		if (this->master) FatalError("Genders are not allowed in the base translation.");
-		StringConsumer consumer(std::string_view(str + 7));
-
 		for (;;) {
 			auto s = ParseWord(consumer);
 
@@ -156,10 +155,8 @@ void FileStringReader::HandlePragma(char *str, LanguagePackHeader &lang)
 			s->copy(lang.genders[lang.num_genders], CASE_GENDER_LEN - 1);
 			lang.num_genders++;
 		}
-	} else if (!memcmp(str, "case ", 5)) {
+	} else if (name == "case") {
 		if (this->master) FatalError("Cases are not allowed in the base translation.");
-		StringConsumer consumer(std::string_view(str + 5));
-
 		for (;;) {
 			auto s = ParseWord(consumer);
 
