@@ -8,6 +8,7 @@
 /** @file ai_scanner.cpp allows scanning AI scripts */
 
 #include "../stdafx.h"
+#include <ranges>
 #include "../debug.h"
 #include "../network/network.h"
 #include "../openttd.h"
@@ -65,31 +66,21 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 		return this->info_dummy;
 	}
 
-	uint num_random_ais = 0;
-	for (const auto &item : info_single_list) {
-		AIInfo *i = static_cast<AIInfo *>(item.second);
-		if (i->UseAsRandomAI()) num_random_ais++;
-	}
+	/* Filter for AIs suitable as Random AI. */
+	auto random_ais = info_single_list | std::views::filter([](const auto &item) { return static_cast<AIInfo *>(item.second)->UseAsRandomAI(); });
 
+	uint num_random_ais = std::ranges::distance(random_ais);
 	if (num_random_ais == 0) {
 		Debug(script, 0, "No suitable AI found, loading 'dummy' AI.");
 		return this->info_dummy;
 	}
 
-	/* Find a random AI */
+	/* Pick a random AI */
 	uint pos = ScriptObject::GetRandomizer(OWNER_NONE).Next(num_random_ais);
+	auto it = std::ranges::next(std::begin(random_ais), pos, std::end(random_ais));
+	assert(it != std::end(random_ais));
 
-	/* Find the Nth item from the array */
-	ScriptInfoList::const_iterator it = this->info_single_list.begin();
-
-#define GetAIInfo(it) static_cast<AIInfo *>((*it).second)
-	while (!GetAIInfo(it)->UseAsRandomAI()) it++;
-	for (; pos > 0; pos--) {
-		it++;
-		while (!GetAIInfo(it)->UseAsRandomAI()) it++;
-	}
-	return GetAIInfo(it);
-#undef GetAIInfo
+	return static_cast<AIInfo *>(it->second);
 }
 
 AIInfo *AIScannerInfo::FindInfo(const std::string &name, int version, bool force_exact_match)
