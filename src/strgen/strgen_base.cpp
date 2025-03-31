@@ -403,9 +403,9 @@ static const CmdStruct *FindCmd(std::string_view s)
 	return nullptr;
 }
 
-static uint ResolveCaseName(std::string_view str)
+static uint8_t ResolveCaseName(std::string_view str)
 {
-	uint case_idx = _lang.GetCaseIndex(str);
+	uint8_t case_idx = _lang.GetCaseIndex(str);
 	if (case_idx >= MAX_NUM_CASES) StrgenFatal("Invalid case-name '{}'", str);
 	return case_idx + 1;
 }
