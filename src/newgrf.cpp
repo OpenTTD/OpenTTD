@@ -370,55 +370,6 @@ void GRFUnsafe(ByteReader &)
 	_cur.skip_sprites = -1;
 }
 
-/** Reset and clear all NewGRF stations */
-static void ResetCustomStations()
-{
-	for (GRFFile * const file : _grf_files) {
-		file->stations.clear();
-	}
-}
-
-/** Reset and clear all NewGRF houses */
-static void ResetCustomHouses()
-{
-	for (GRFFile * const file : _grf_files) {
-		file->housespec.clear();
-	}
-}
-
-/** Reset and clear all NewGRF airports */
-static void ResetCustomAirports()
-{
-	for (GRFFile * const file : _grf_files) {
-		file->airportspec.clear();
-		file->airtspec.clear();
-	}
-}
-
-/** Reset and clear all NewGRF industries */
-static void ResetCustomIndustries()
-{
-	for (GRFFile * const file : _grf_files) {
-		file->industryspec.clear();
-		file->indtspec.clear();
-	}
-}
-
-/** Reset and clear all NewObjects */
-static void ResetCustomObjects()
-{
-	for (GRFFile * const file : _grf_files) {
-		file->objectspec.clear();
-	}
-}
-
-static void ResetCustomRoadStops()
-{
-	for (auto file : _grf_files) {
-		file->roadstops.clear();
-	}
-}
-
 /** Reset and clear all NewGRFs */
 static void ResetNewGRF()
 {
@@ -484,31 +435,25 @@ void ResetNewGRFData()
 	ResetCurrencies();
 
 	/* Reset the house array */
-	ResetCustomHouses();
 	ResetHouses();
 
 	/* Reset the industries structures*/
-	ResetCustomIndustries();
 	ResetIndustries();
 
 	/* Reset the objects. */
 	ObjectClass::Reset();
-	ResetCustomObjects();
 	ResetObjects();
 
 	/* Reset station classes */
 	StationClass::Reset();
-	ResetCustomStations();
 
 	/* Reset airport-related structures */
 	AirportClass::Reset();
-	ResetCustomAirports();
 	AirportSpec::ResetAirports();
 	AirportTileSpec::ResetAirportTiles();
 
 	/* Reset road stop classes */
 	RoadStopClass::Reset();
-	ResetCustomRoadStops();
 
 	/* Reset canal sprite groups and flags */
 	_water_feature.fill({});
