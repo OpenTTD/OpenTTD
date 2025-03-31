@@ -273,7 +273,7 @@ static void ExtractStringParams(const StringData &data, StringParamsList &params
 				if (*it == nullptr) {
 					/* Skip empty param unless a non empty param exist after it. */
 					if (std::all_of(it, pcs.consuming_commands.end(), [](auto cs) { return cs == nullptr; })) break;
-					param.emplace_back(StringParam::UNUSED, 1, nullptr);
+					param.emplace_back(StringParam::UNUSED, 1);
 					continue;
 				}
 				const CmdStruct *cs = *it;
