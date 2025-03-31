@@ -62,9 +62,10 @@ jobs:
 
         echo "::group::Unpack OpenGFX"
         unzip opengfx-all.zip
+        tar xf opengfx-*.tar
         echo "::endgroup::"
 
-        rm -f opengfx-all.zip
+        rm -f opengfx-all.zip opengfx-*.tar
 
     - name: Install OpenMSX
       shell: bash
