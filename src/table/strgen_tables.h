@@ -17,7 +17,7 @@ enum class CmdFlag : uint8_t {
 using CmdFlags = EnumBitSet<CmdFlag, uint8_t>;
 
 class StringBuilder;
-typedef void (*ParseCmdProc)(StringBuilder &builder, const char *buf, char32_t value);
+typedef void (*ParseCmdProc)(StringBuilder &builder, std::string_view param, char32_t value);
 
 struct CmdStruct {
 	std::string_view cmd;
@@ -28,9 +28,9 @@ struct CmdStruct {
 	CmdFlags flags;
 };
 
-extern void EmitSingleChar(StringBuilder &builder, const char *buf, char32_t value);
-extern void EmitPlural(StringBuilder &builder, const char *buf, char32_t value);
-extern void EmitGender(StringBuilder &builder, const char *buf, char32_t value);
+extern void EmitSingleChar(StringBuilder &builder, std::string_view param, char32_t value);
+extern void EmitPlural(StringBuilder &builder, std::string_view param, char32_t value);
+extern void EmitGender(StringBuilder &builder, std::string_view param, char32_t value);
 
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */
