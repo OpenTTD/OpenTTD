@@ -11,6 +11,7 @@
 #include "core/container_func.hpp"
 #include "debug.h"
 #include "newgrf_railtype.h"
+#include "newgrf_roadtype.h"
 #include "timer/timer_game_calendar.h"
 #include "depot_base.h"
 #include "town.h"
@@ -33,6 +34,12 @@
 			case 0x42: return 0;
 			case 0x43: return TimerGameCalendar::date.base();
 			case 0x44: return HZB_TOWN_EDGE;
+			case 0x45: {
+				auto rt = GetRailTypeInfoIndex(this->rti);
+				uint8_t local = GetReverseRailTypeTranslation(rt, this->ro.grffile);
+				if (local == 0xFF) local = 0xFE;
+				return 0xFFFF | local << 16;
+			}
 		}
 	}
 
@@ -52,6 +59,8 @@
 			}
 			return t != nullptr ? GetTownRadiusGroup(t, this->tile) : HZB_TOWN_EDGE;
 		}
+		case 0x45:
+			return GetTrackTypes(this->tile, ro.grffile);
 	}
 
 	Debug(grf, 1, "Unhandled rail type tile variable 0x{:X}", variable);

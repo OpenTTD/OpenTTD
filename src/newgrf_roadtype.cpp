@@ -11,12 +11,47 @@
 #include "core/container_func.hpp"
 #include "debug.h"
 #include "newgrf_roadtype.h"
+#include "newgrf_railtype.h"
 #include "timer/timer_game_calendar.h"
 #include "depot_base.h"
 #include "town.h"
 #include "tunnelbridge_map.h"
 
 #include "safeguards.h"
+
+/**
+ * Variable 0x45 of road-/tram-/rail-types to query track types on a tile.
+ *
+ * Format: __RRttrr
+ * - rr: Translated roadtype.
+ * - tt: Translated tramtype.
+ * - RR: Translated railtype.
+ *
+ * Special values for rr, tt, RR:
+ * - 0xFF: Track not present on tile.
+ * - 0xFE: Track present, but no matching entry in translation table.
+ */
+uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
+{
+	uint8_t road = 0xFF;
+	uint8_t tram = 0xFF;
+	if (MayHaveRoad(tile)) {
+		if (auto tt = GetRoadTypeRoad(tile); tt != INVALID_ROADTYPE) {
+			road = GetReverseRoadTypeTranslation(tt, grffile);
+			if (road == 0xFF) road = 0xFE;
+		}
+		if (auto tt = GetRoadTypeTram(tile); tt != INVALID_ROADTYPE) {
+			tram = GetReverseRoadTypeTranslation(tt, grffile);
+			if (tram == 0xFF) tram = 0xFE;
+		}
+	}
+	uint8_t rail = 0xFF;
+	if (auto tt = GetTileRailType(tile); tt != INVALID_RAILTYPE) {
+		rail = GetReverseRailTypeTranslation(tt, grffile);
+		if (rail == 0xFF) rail = 0xFE;
+	}
+	return road | tram << 8 | rail << 16;
+}
 
 /* virtual */ uint32_t RoadTypeScopeResolver::GetRandomBits() const
 {
@@ -33,6 +68,16 @@
 			case 0x42: return 0;
 			case 0x43: return TimerGameCalendar::date.base();
 			case 0x44: return HZB_TOWN_EDGE;
+			case 0x45: {
+				auto rt = GetRoadTypeInfoIndex(this->rti);
+				uint8_t local = GetReverseRoadTypeTranslation(rt, this->ro.grffile);
+				if (local == 0xFF) local = 0xFE;
+				if (RoadTypeIsRoad(rt)) {
+					return 0xFFFF00 | local;
+				} else {
+					return 0xFF00FF | local << 8;
+				}
+			}
 		}
 	}
 
@@ -52,6 +97,8 @@
 			}
 			return t != nullptr ? GetTownRadiusGroup(t, this->tile) : HZB_TOWN_EDGE;
 		}
+		case 0x45:
+			return GetTrackTypes(this->tile, ro.grffile);
 	}
 
 	Debug(grf, 1, "Unhandled road type tile variable 0x{:X}", variable);
