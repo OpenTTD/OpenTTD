@@ -35,7 +35,7 @@
 	HopSet seen_hops;
 	LinkRefresher refresher(v, &seen_hops, allow_merge, is_full_loading);
 
-	refresher.RefreshLinks(first, first, v->last_loading_station != StationID::Invalid() ? 1 << HAS_CARGO : 0);
+	refresher.RefreshLinks(first, first, v->last_loading_station != StationID::Invalid() ? RefreshFlags{RefreshFlag::HasCargo} : RefreshFlags{});
 }
 
 /**
@@ -158,17 +158,17 @@ void LinkRefresher::ResetRefit()
  * @param num_hops Number of hops already taken by recursive calls to this method.
  * @return new next Order.
  */
-const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, uint8_t flags, uint num_hops)
+const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next, RefreshFlags flags, uint num_hops)
 {
 	/* next is good if it's either nullptr (then the caller will stop the
 	 * evaluation) or if it's not conditional and the caller allows it to be
-	 * chosen (by setting USE_NEXT). */
-	while (next != nullptr && (!HasBit(flags, USE_NEXT) || next->IsType(OT_CONDITIONAL))) {
+	 * chosen (by setting RefreshFlag::UseNext). */
+	while (next != nullptr && (!flags.Test(RefreshFlag::UseNext) || next->IsType(OT_CONDITIONAL))) {
 
 		/* After the first step any further non-conditional order is good,
-		 * regardless of previous USE_NEXT settings. The case of cur and next or
+		 * regardless of previous RefreshFlag::UseNext settings. The case of cur and next or
 		 * their respective stations being equal is handled elsewhere. */
-		SetBit(flags, USE_NEXT);
+		flags.Set(RefreshFlag::UseNext);
 
 		if (next->IsType(OT_CONDITIONAL)) {
 			const Order *skip_to = this->vehicle->orders->GetNextDecisionNode(
@@ -260,16 +260,16 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
  * @param flags RefreshFlags to give hints about the previous link and state carried over from that.
  * @param num_hops Number of hops already taken by recursive calls to this method.
  */
-void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8_t flags, uint num_hops)
+void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, RefreshFlags flags, uint num_hops)
 {
 	while (next != nullptr) {
 
 		if ((next->IsType(OT_GOTO_DEPOT) || next->IsType(OT_GOTO_STATION)) && next->IsRefit()) {
-			SetBit(flags, WAS_REFIT);
+			flags.Set(RefreshFlag::WasRefit);
 			if (!next->IsAutoRefit()) {
 				this->HandleRefit(next->GetRefitCargo());
-			} else if (!HasBit(flags, IN_AUTOREFIT)) {
-				SetBit(flags, IN_AUTOREFIT);
+			} else if (!flags.Test(RefreshFlag::InAutorefit)) {
+				flags.Set(RefreshFlag::InAutorefit);
 				LinkRefresher backup(*this);
 				for (CargoType cargo = 0; cargo != NUM_CARGO; ++cargo) {
 					if (CargoSpec::Get(cargo)->IsValid() && this->HandleRefit(cargo)) {
@@ -283,10 +283,10 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8_t fl
 		/* Only reset the refit capacities if the "previous" next is a station,
 		 * meaning that either the vehicle was refit at the previous station or
 		 * it wasn't at all refit during the current hop. */
-		if (HasBit(flags, WAS_REFIT) && (next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT))) {
-			SetBit(flags, RESET_REFIT);
+		if (flags.Test(RefreshFlag::WasRefit) && (next->IsType(OT_GOTO_STATION) || next->IsType(OT_IMPLICIT))) {
+			flags.Set(RefreshFlag::ResetRefit);
 		} else {
-			ClrBit(flags, RESET_REFIT);
+			flags.Reset(RefreshFlag::ResetRefit);
 		}
 
 		next = this->PredictNextOrder(cur, next, flags, num_hops);
@@ -299,23 +299,22 @@ void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, uint8_t fl
 		}
 
 		/* Don't use the same order again, but choose a new one in the next round. */
-		ClrBit(flags, USE_NEXT);
+		flags.Reset(RefreshFlag::UseNext);
 
 		/* Skip resetting and link refreshing if next order won't do anything with cargo. */
 		if (!next->IsType(OT_GOTO_STATION) && !next->IsType(OT_IMPLICIT)) continue;
 
-		if (HasBit(flags, RESET_REFIT)) {
+		if (flags.Test(RefreshFlag::ResetRefit)) {
 			this->ResetRefit();
-			ClrBit(flags, RESET_REFIT);
-			ClrBit(flags, WAS_REFIT);
+			flags.Reset({RefreshFlag::ResetRefit, RefreshFlag::WasRefit});
 		}
 
 		if (cur->IsType(OT_GOTO_STATION) || cur->IsType(OT_IMPLICIT)) {
-			if (cur->CanLeaveWithCargo(HasBit(flags, HAS_CARGO))) {
-				SetBit(flags, HAS_CARGO);
+			if (cur->CanLeaveWithCargo(flags.Test(RefreshFlag::HasCargo))) {
+				flags.Set(RefreshFlag::HasCargo);
 				this->RefreshStats(cur, next);
 			} else {
-				ClrBit(flags, HAS_CARGO);
+				flags.Reset(RefreshFlag::HasCargo);
 			}
 		}
 
