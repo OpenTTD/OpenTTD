@@ -738,7 +738,7 @@ struct MusicWindow : public Window {
 	{
 		switch (widget) {
 			case WID_M_TRACK_NR: {
-				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel.left, WidgetDimensions::scaled.bevel.top, 0, WidgetDimensions::scaled.bevel.bottom), PC_BLACK);
+				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK);
 				if (BaseMusic::GetUsedSet()->num_available == 0) {
 					break;
 				}
@@ -752,7 +752,7 @@ struct MusicWindow : public Window {
 			}
 
 			case WID_M_TRACK_NAME: {
-				GfxFillRect(r.Shrink(0, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, WidgetDimensions::scaled.bevel.bottom), PC_BLACK);
+				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK);
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				MusicSystem::PlaylistEntry entry(_music.GetCurrentSong());
