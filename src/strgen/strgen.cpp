@@ -146,10 +146,10 @@ void FileStringReader::HandlePragma(char *str, LanguagePackHeader &lang)
 		lang.newgrflangid = static_cast<uint8_t>(langid);
 	} else if (!memcmp(str, "gender ", 7)) {
 		if (this->master) FatalError("Genders are not allowed in the base translation.");
-		const char *buf = str + 7;
+		StringConsumer consumer(std::string_view(str + 7));
 
 		for (;;) {
-			auto s = ParseWord(&buf);
+			auto s = ParseWord(consumer);
 
 			if (!s.has_value()) break;
 			if (lang.num_genders >= MAX_NUM_GENDERS) FatalError("Too many genders, max {}", MAX_NUM_GENDERS);
@@ -158,10 +158,10 @@ void FileStringReader::HandlePragma(char *str, LanguagePackHeader &lang)
 		}
 	} else if (!memcmp(str, "case ", 5)) {
 		if (this->master) FatalError("Cases are not allowed in the base translation.");
-		const char *buf = str + 5;
+		StringConsumer consumer(std::string_view(str + 5));
 
 		for (;;) {
-			auto s = ParseWord(&buf);
+			auto s = ParseWord(consumer);
 
 			if (!s.has_value()) break;
 			if (lang.num_cases >= MAX_NUM_CASES) FatalError("Too many cases, max {}", MAX_NUM_CASES);
