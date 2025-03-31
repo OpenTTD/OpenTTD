@@ -25,13 +25,15 @@ protected:
 	 * Various flags about properties of the last examined link that might have
 	 * an influence on the next one.
 	 */
-	enum RefreshFlags : uint8_t {
-		USE_NEXT,     ///< There was a conditional jump. Try to use the given next order when looking for a new one.
-		HAS_CARGO,    ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
-		WAS_REFIT,    ///< Consist was refit since the last stop where it could interact with cargo.
-		RESET_REFIT,  ///< Consist had a chance to load since the last refit and the refit capacities can be reset.
-		IN_AUTOREFIT, ///< Currently doing an autorefit loop. Ignore the first autorefit order.
+	enum class RefreshFlag : uint8_t {
+		UseNext,     ///< There was a conditional jump. Try to use the given next order when looking for a new one.
+		HasCargo,    ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
+		WasRefit,    ///< Consist was refit since the last stop where it could interact with cargo.
+		ResetRefit,  ///< Consist had a chance to load since the last refit and the refit capacities can be reset.
+		InAutorefit, ///< Currently doing an autorefit loop. Ignore the first autorefit order.
 	};
+
+	using RefreshFlags = EnumBitSet<RefreshFlag, uint8_t>;
 
 	/**
 	 * Simulated cargo type and capacity for prediction of future links.
@@ -90,9 +92,9 @@ protected:
 	bool HandleRefit(CargoType refit_cargo);
 	void ResetRefit();
 	void RefreshStats(const Order *cur, const Order *next);
-	const Order *PredictNextOrder(const Order *cur, const Order *next, uint8_t flags, uint num_hops = 0);
+	const Order *PredictNextOrder(const Order *cur, const Order *next, RefreshFlags flags, uint num_hops = 0);
 
-	void RefreshLinks(const Order *cur, const Order *next, uint8_t flags, uint num_hops = 0);
+	void RefreshLinks(const Order *cur, const Order *next, RefreshFlags flags, uint num_hops = 0);
 };
 
 #endif /* REFRESH_H */
