@@ -75,7 +75,7 @@ struct StringReader {
 	 * Handle the pragma of the file.
 	 * @param str    The pragma string to parse.
 	 */
-	virtual void HandlePragma(std::string_view str);
+	virtual void HandlePragma(std::string_view str, LanguagePackHeader &lang);
 
 	/**
 	 * Start parsing the file.
@@ -155,10 +155,17 @@ void StrgenErrorI(const std::string &msg);
 #define StrgenFatal(format_string, ...) StrgenFatalI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 std::optional<std::string_view> ParseWord(StringConsumer &consumer);
 
-extern const char *_file;
-extern size_t _cur_line;
-extern size_t _errors, _warnings;
-extern bool _show_warnings, _annotate_todos, _translation;
-extern LanguagePackHeader _lang;
+/** Global state shared between strgen.cpp and strgen_base.cpp */
+struct StrgenState {
+	std::string file = "(unknown file)"; ///< The filename of the input, so we can refer to it in errors/warnings
+	size_t cur_line = 0; ///< The current line we're parsing in the input file
+	size_t errors = 0;
+	size_t warnings = 0;
+	bool show_warnings = false;
+	bool annotate_todos = false;
+	bool translation = false; ///< Is the current file actually a translation or not
+	LanguagePackHeader lang; ///< Header information about a language.
+};
+extern StrgenState _strgen;
 
 #endif /* STRGEN_H */

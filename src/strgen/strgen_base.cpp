@@ -21,13 +21,8 @@
 
 #include "../safeguards.h"
 
+StrgenState _strgen;
 static bool _translated;              ///< Whether the current language is not the master language
-bool _translation;                    ///< Is the current file actually a translation or not
-const char *_file = "(unknown file)"; ///< The filename of the input, so we can refer to it in errors/warnings
-size_t _cur_line;                     ///< The current line we're parsing in the input file
-size_t _errors, _warnings;
-bool _show_warnings = false, _annotate_todos = false;
-LanguagePackHeader _lang;             ///< Header information about a language.
 static const char *_cur_ident;
 static ParsedCommandStruct _cur_pcs;
 static size_t _cur_argidx;
@@ -254,13 +249,13 @@ void EmitPlural(StringBuilder &builder, std::string_view param, char32_t)
 		StrgenFatal("{}: No plural words", _cur_ident);
 	}
 
-	size_t expected = _plural_forms[_lang.plural_form].plural_count;
+	size_t expected = _plural_forms[_strgen.lang.plural_form].plural_count;
 	if (expected != words.size()) {
 		if (_translated) {
 			StrgenFatal("{}: Invalid number of plural forms. Expecting {}, found {}.", _cur_ident,
 				expected, words.size());
 		} else {
-			if (_show_warnings) StrgenWarning("'{}' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
+			if (_strgen.show_warnings) StrgenWarning("'{}' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
 			if (words.size() > expected) {
 				words.resize(expected);
 			} else {
@@ -272,7 +267,7 @@ void EmitPlural(StringBuilder &builder, std::string_view param, char32_t)
 	}
 
 	builder.PutUtf8(SCC_PLURAL_LIST);
-	builder.PutUint8(_lang.plural_form);
+	builder.PutUint8(_strgen.lang.plural_form);
 	builder.PutUint8(static_cast<uint8_t>(TranslateArgumentIdx(*argidx, *offset)));
 	EmitWordList(builder, words);
 }
@@ -283,7 +278,7 @@ void EmitGender(StringBuilder &builder, std::string_view param, char32_t)
 	if (consumer.ReadCharIf('=')) {
 		/* This is a {G=DER} command */
 		auto gender = consumer.Read(StringConsumer::npos);
-		auto nw = _lang.GetGenderIndex(gender);
+		auto nw = _strgen.lang.GetGenderIndex(gender);
 		if (nw >= MAX_NUM_GENDERS) StrgenFatal("G argument '{}' invalid", gender);
 
 		/* now nw contains the gender index */
@@ -307,7 +302,7 @@ void EmitGender(StringBuilder &builder, std::string_view param, char32_t)
 			if (!word.has_value()) break;
 			words.emplace_back(*word);
 		}
-		if (words.size() != _lang.num_genders) StrgenFatal("Bad # of arguments for gender command");
+		if (words.size() != _strgen.lang.num_genders) StrgenFatal("Bad # of arguments for gender command");
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		builder.PutUtf8(SCC_GENDER_LIST);
@@ -326,7 +321,7 @@ static const CmdStruct *FindCmd(std::string_view s)
 
 static uint8_t ResolveCaseName(std::string_view str)
 {
-	uint8_t case_idx = _lang.GetCaseIndex(str);
+	uint8_t case_idx = _strgen.lang.GetCaseIndex(str);
 	if (case_idx >= MAX_NUM_CASES) StrgenFatal("Invalid case-name '{}'", str);
 	return case_idx + 1;
 }
@@ -439,7 +434,7 @@ static bool CheckCommandsMatch(std::string_view a, std::string_view b, std::stri
 	 * it is pointless to do all these checks as it'll always be correct.
 	 * After all, all checks are based on the base language.
 	 */
-	if (!_translation) return true;
+	if (!_strgen.translation) return true;
 
 	bool result = true;
 
@@ -501,7 +496,7 @@ void StringReader::HandleString(std::string_view src)
 
 	StringConsumer consumer(src);
 	if (consumer.ReadCharIf('#')) {
-		if (consumer.ReadCharIf('#') && !consumer.ReadCharIf('#')) this->HandlePragma(consumer.Read(StringConsumer::npos));
+		if (consumer.ReadCharIf('#') && !consumer.ReadCharIf('#')) this->HandlePragma(consumer.Read(StringConsumer::npos), _strgen.lang);
 		return;
 	}
 
@@ -558,7 +553,7 @@ void StringReader::HandleString(std::string_view src)
 		}
 
 		/* Allocate a new LangString */
-		this->data.Add(std::make_unique<LangString>(str_name, value, this->data.next_string_id++, _cur_line));
+		this->data.Add(std::make_unique<LangString>(str_name, value, this->data.next_string_id++, _strgen.cur_line));
 	} else {
 		if (ent == nullptr) {
 			StrgenWarning("String name '{}' does not exist in master file", str_name);
@@ -580,19 +575,19 @@ void StringReader::HandleString(std::string_view src)
 			/* If the string was translated, use the line from the
 			 * translated language so errors in the translated file
 			 * are properly referenced to. */
-			ent->line = _cur_line;
+			ent->line = _strgen.cur_line;
 		}
 	}
 }
 
-void StringReader::HandlePragma(std::string_view str)
+void StringReader::HandlePragma(std::string_view str, LanguagePackHeader &lang)
 {
 	StringConsumer consumer(str);
 	auto name = consumer.ReadUntilChar(' ', StringConsumer::SKIP_ALL_SEPARATORS);
 	if (name == "plural") {
-		_lang.plural_form = consumer.ReadIntegerBase<uint32_t>(10);
-		if (_lang.plural_form >= lengthof(_plural_forms)) {
-			StrgenFatal("Invalid pluralform {}", _lang.plural_form);
+		lang.plural_form = consumer.ReadIntegerBase<uint32_t>(10);
+		if (lang.plural_form >= lengthof(_plural_forms)) {
+			StrgenFatal("Invalid pluralform {}", lang.plural_form);
 		}
 	} else {
 		StrgenFatal("unknown pragma '{}'", name);
@@ -601,24 +596,24 @@ void StringReader::HandlePragma(std::string_view str)
 
 void StringReader::ParseFile()
 {
-	_warnings = _errors = 0;
+	_strgen.warnings = _strgen.errors = 0;
 
-	_translation = this->translation;
-	_file = this->file.c_str();
+	_strgen.translation = this->translation;
+	_strgen.file = this->file;
 
 	/* For each new file we parse, reset the genders, and language codes. */
-	MemSetT(&_lang, 0);
-	strecpy(_lang.digit_group_separator, ",");
-	strecpy(_lang.digit_group_separator_currency, ",");
-	strecpy(_lang.digit_decimal_separator, ".");
+	MemSetT(&_strgen.lang, 0);
+	strecpy(_strgen.lang.digit_group_separator, ",");
+	strecpy(_strgen.lang.digit_group_separator_currency, ",");
+	strecpy(_strgen.lang.digit_decimal_separator, ".");
 
-	_cur_line = 1;
+	_strgen.cur_line = 1;
 	while (this->data.next_string_id < this->data.max_strings) {
 		std::optional<std::string> line = this->ReadLine();
 		if (!line.has_value()) return;
 
 		this->HandleString(StripTrailingWhitespace(line.value()));
-		_cur_line++;
+		_strgen.cur_line++;
 	}
 
 	if (this->data.next_string_id == this->data.max_strings) {
@@ -744,20 +739,20 @@ void LanguageWriter::WriteLang(const StringData &data)
 		size_t n = data.CountInUse(tab);
 
 		in_use.push_back(n);
-		_lang.offsets[tab] = TO_LE16(static_cast<uint16_t>(n));
+		_strgen.lang.offsets[tab] = TO_LE16(static_cast<uint16_t>(n));
 
 		for (size_t j = 0; j != in_use[tab]; j++) {
 			const LangString *ls = data.strings[(tab * TAB_SIZE) + j].get();
-			if (ls != nullptr && ls->translated.empty()) _lang.missing++;
+			if (ls != nullptr && ls->translated.empty()) _strgen.lang.missing++;
 		}
 	}
 
-	_lang.ident = TO_LE32(LanguagePackHeader::IDENT);
-	_lang.version = TO_LE32(data.Version());
-	_lang.missing = TO_LE16(_lang.missing);
-	_lang.winlangid = TO_LE16(_lang.winlangid);
+	_strgen.lang.ident = TO_LE32(LanguagePackHeader::IDENT);
+	_strgen.lang.version = TO_LE32(data.Version());
+	_strgen.lang.missing = TO_LE16(_strgen.lang.missing);
+	_strgen.lang.winlangid = TO_LE16(_strgen.lang.winlangid);
 
-	this->WriteHeader(&_lang);
+	this->WriteHeader(&_strgen.lang);
 
 	for (size_t tab = 0; tab < data.tabs; tab++) {
 		for (size_t j = 0; j != in_use[tab]; j++) {
@@ -772,14 +767,14 @@ void LanguageWriter::WriteLang(const StringData &data)
 			std::string output;
 			StringBuilder builder(output);
 			_cur_ident = ls->name.c_str();
-			_cur_line = ls->line;
+			_strgen.cur_line = ls->line;
 
 			/* Produce a message if a string doesn't have a translation. */
 			if (ls->translated.empty()) {
-				if (_show_warnings) {
+				if (_strgen.show_warnings) {
 					StrgenWarning("'{}' is untranslated", ls->name);
 				}
-				if (_annotate_todos) {
+				if (_strgen.annotate_todos) {
 					builder.Put("<TODO> ");
 				}
 			}
