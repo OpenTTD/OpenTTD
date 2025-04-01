@@ -41,7 +41,6 @@
 #ifdef DEBUG_DUMP_COMMANDS
 #	include "../fileio_func.h"
 #endif
-#include <charconv>
 
 #include "table/strings.h"
 
