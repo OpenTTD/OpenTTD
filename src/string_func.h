@@ -174,8 +174,7 @@ inline std::string::iterator Utf8PrevChar(std::string::iterator &s)
 	return cur;
 }
 
-size_t Utf8StringLength(const char *s);
-size_t Utf8StringLength(const std::string &str);
+size_t Utf8StringLength(std::string_view str);
 
 /**
  * Is the given character a lead surrogate code point?
