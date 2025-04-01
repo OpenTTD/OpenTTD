@@ -28,7 +28,6 @@
 #include "debug.h"
 #include "core/alloc_type.hpp"
 #include "language.h"
-#include <sstream>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
