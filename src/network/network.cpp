@@ -37,6 +37,7 @@
 #include "../gfx_func.h"
 #include "../error.h"
 #include "../misc_cmd.h"
+#include "../core/string_builder.hpp"
 #ifdef DEBUG_DUMP_COMMANDS
 #	include "../fileio_func.h"
 #endif
@@ -233,49 +234,48 @@ uint8_t NetworkSpectatorCount()
  * If 'self_send' is true, this is the client who is sending the message */
 void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const std::string &name, const std::string &str, StringParameter &&data)
 {
-	std::string string;
-	switch (action) {
-		case NETWORK_ACTION_SERVER_MESSAGE:
-			/* Ignore invalid messages */
-			string = GetString(STR_NETWORK_SERVER_MESSAGE, str);
-			colour = CC_DEFAULT;
-			break;
-		case NETWORK_ACTION_COMPANY_SPECTATOR:
-			colour = CC_DEFAULT;
-			string = GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE, name);
-			break;
-		case NETWORK_ACTION_COMPANY_JOIN:
-			colour = CC_DEFAULT;
-			string = GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN, name, str);
-			break;
-		case NETWORK_ACTION_COMPANY_NEW:
-			colour = CC_DEFAULT;
-			string = GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW, name, std::move(data));
-			break;
-		case NETWORK_ACTION_JOIN:
-			/* Show the Client ID for the server but not for the client. */
-			string = _network_server ?
-					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED_ID, name, std::move(data)) :
-					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED, name);
-			break;
-		case NETWORK_ACTION_LEAVE:          string = GetString(STR_NETWORK_MESSAGE_CLIENT_LEFT, name, std::move(data)); break;
-		case NETWORK_ACTION_NAME_CHANGE:    string = GetString(STR_NETWORK_MESSAGE_NAME_CHANGE, name, str); break;
-		case NETWORK_ACTION_GIVE_MONEY:     string = GetString(STR_NETWORK_MESSAGE_GIVE_MONEY, name, std::move(data), str); break;
-		case NETWORK_ACTION_KICKED:         string = GetString(STR_NETWORK_MESSAGE_KICKED, name, str); break;
-		case NETWORK_ACTION_CHAT_COMPANY:   string = GetString(self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, name, str); break;
-		case NETWORK_ACTION_CHAT_CLIENT:    string = GetString(self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT, name, str);  break;
-		case NETWORK_ACTION_EXTERNAL_CHAT:  string = GetString(STR_NETWORK_CHAT_EXTERNAL, std::move(data), name, str); break;
-		default:                            string = GetString(STR_NETWORK_CHAT_ALL, name, str); break;
-	}
+	std::string message;
+	StringBuilder builder(message);
 
 	/* All of these strings start with "***". These characters are interpreted as both left-to-right and
 	 * right-to-left characters depending on the context. As the next text might be an user's name, the
 	 * user name's characters will influence the direction of the "***" instead of the language setting
 	 * of the game. Manually set the direction of the "***" by inserting a text-direction marker. */
-	std::ostringstream stream;
-	std::ostreambuf_iterator<char> iterator(stream);
-	Utf8Encode(iterator, _current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
-	std::string message = stream.str() + string;
+	builder.PutUtf8(_current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
+
+	switch (action) {
+		case NETWORK_ACTION_SERVER_MESSAGE:
+			/* Ignore invalid messages */
+			builder += GetString(STR_NETWORK_SERVER_MESSAGE, str);
+			colour = CC_DEFAULT;
+			break;
+		case NETWORK_ACTION_COMPANY_SPECTATOR:
+			colour = CC_DEFAULT;
+			builder += GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE, name);
+			break;
+		case NETWORK_ACTION_COMPANY_JOIN:
+			colour = CC_DEFAULT;
+			builder += GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN, name, str);
+			break;
+		case NETWORK_ACTION_COMPANY_NEW:
+			colour = CC_DEFAULT;
+			builder += GetString(STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW, name, std::move(data));
+			break;
+		case NETWORK_ACTION_JOIN:
+			/* Show the Client ID for the server but not for the client. */
+			builder += _network_server ?
+					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED_ID, name, std::move(data)) :
+					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED, name);
+			break;
+		case NETWORK_ACTION_LEAVE:          builder += GetString(STR_NETWORK_MESSAGE_CLIENT_LEFT, name, std::move(data)); break;
+		case NETWORK_ACTION_NAME_CHANGE:    builder += GetString(STR_NETWORK_MESSAGE_NAME_CHANGE, name, str); break;
+		case NETWORK_ACTION_GIVE_MONEY:     builder += GetString(STR_NETWORK_MESSAGE_GIVE_MONEY, name, std::move(data), str); break;
+		case NETWORK_ACTION_KICKED:         builder += GetString(STR_NETWORK_MESSAGE_KICKED, name, str); break;
+		case NETWORK_ACTION_CHAT_COMPANY:   builder += GetString(self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, name, str); break;
+		case NETWORK_ACTION_CHAT_CLIENT:    builder += GetString(self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT, name, str);  break;
+		case NETWORK_ACTION_EXTERNAL_CHAT:  builder += GetString(STR_NETWORK_CHAT_EXTERNAL, std::move(data), name, str); break;
+		default:                            builder += GetString(STR_NETWORK_CHAT_ALL, name, str); break;
+	}
 
 	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, message);
 	IConsolePrint(colour, message);

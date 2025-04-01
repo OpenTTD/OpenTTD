@@ -2371,13 +2371,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		if (!bad_font && any_font_configured) {
 			/* If the user configured a bad font, and we found a better one,
 			 * show that we loaded the better font instead of the configured one.
-			 * The colour 'character' might change in the
-			 * future, so for safety we just Utf8 Encode it into the string,
-			 * which takes exactly three characters, so it replaces the "XXX"
-			 * with the colour marker. */
-			static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
-			Utf8Encode(err_str.data(), SCC_YELLOW);
-			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
+			 */
+			std::string err_str;
+			StringBuilder builder(err_str);
+			builder.PutUtf8(SCC_YELLOW);
+			builder.Put("The current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
+			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 		}
 
 		if (bad_font && base_font) {
@@ -2393,11 +2392,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		/* All attempts have failed. Display an error. As we do not want the string to be translated by
 		 * the translators, we 'force' it into the binary and 'load' it via a BindCString. To do this
 		 * properly we have to set the colour of the string, otherwise we end up with a lot of artifacts.
-		 * The colour 'character' might change in the future, so for safety we just Utf8 Encode it into
-		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
-		static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
-		Utf8Encode(err_str.data(), SCC_YELLOW);
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
+		 */
+		std::string err_str;
+		StringBuilder builder(err_str);
+		builder.PutUtf8(SCC_YELLOW);
+		builder.Put("The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 
 		/* Reset the font width */
 		LoadStringWidthTable(searcher->Monospace());
@@ -2415,16 +2415,14 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	 * be translated by the translators, we 'force' it into the
 	 * binary and 'load' it via a BindCString. To do this
 	 * properly we have to set the colour of the string,
-	 * otherwise we end up with a lot of artifacts. The colour
-	 * 'character' might change in the future, so for safety
-	 * we just Utf8 Encode it into the string, which takes
-	 * exactly three characters, so it replaces the "XXX" with
-	 * the colour marker.
+	 * otherwise we end up with a lot of artifacts.
 	 */
 	if (_current_text_dir != TD_LTR) {
-		static std::string err_str("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
-		Utf8Encode(err_str.data(), SCC_YELLOW);
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_ERROR);
+		std::string err_str;
+		StringBuilder builder(err_str);
+		builder.PutUtf8(SCC_YELLOW);
+		builder.Put("This version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_ERROR);
 	}
 #endif /* !(WITH_ICU_I18N && WITH_HARFBUZZ) && !WITH_UNISCRIBE && !WITH_COCOA */
 }
