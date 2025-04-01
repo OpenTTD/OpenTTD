@@ -291,7 +291,7 @@ const char *Textbuf::GetText() const
 /** Update the character iter after the text has changed. */
 void Textbuf::UpdateStringIter()
 {
-	this->char_iter->SetString(this->buf.c_str());
+	this->char_iter->SetString(this->buf);
 	size_t pos = this->char_iter->SetCurPosition(this->caretpos);
 	this->caretpos = pos == StringIterator::END ? 0 : (uint16_t)pos;
 }

@@ -35,7 +35,7 @@ public:
 	 * changed. The cursor is reset to the start of the string.
 	 * @param s New string.
 	 */
-	virtual void SetString(const char *s) = 0;
+	virtual void SetString(std::string_view s) = 0;
 
 	/**
 	 * Change the current string cursor.
