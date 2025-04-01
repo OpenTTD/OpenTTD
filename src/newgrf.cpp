@@ -528,8 +528,6 @@ static void BuildCargoTranslationMap()
 	auto cargo_list = GetCargoTranslationTable(*_cur.grffile);
 
 	for (const CargoSpec *cs : CargoSpec::Iterate()) {
-		if (!cs->IsValid()) continue;
-
 		/* Check the translation table for this cargo's label */
 		int idx = find_index(cargo_list, cs->label);
 		if (idx >= 0) _cur.grffile->cargo_map[cs->Index()] = idx;

@@ -2619,7 +2619,6 @@ struct IndustryCargoesWindow : public Window {
 		this->cargo_textsize.width = 0;
 		this->cargo_textsize.height = 0;
 		for (const CargoSpec *csp : CargoSpec::Iterate()) {
-			if (!csp->IsValid()) continue;
 			this->cargo_textsize = maxdim(this->cargo_textsize, GetStringBoundingBox(csp->name));
 		}
 		d = maxdim(d, this->cargo_textsize); // Box must also be wide enough to hold any cargo label.
