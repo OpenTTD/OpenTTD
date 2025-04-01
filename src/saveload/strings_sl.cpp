@@ -66,8 +66,9 @@ std::string CopyFromOldName(StringID id)
 
 		std::ostringstream tmp;
 		std::ostreambuf_iterator<char> strto(tmp);
-		for (char32_t c : strfrom) {
-			if (c == '\0') break;
+		for (char s : strfrom) {
+			if (s == '\0') break;
+			char32_t c = static_cast<uint8_t>(s); // cast to unsigned before integer promotion
 
 			/* Map from non-ISO8859-15 characters to UTF-8. */
 			switch (c) {
