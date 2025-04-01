@@ -43,10 +43,7 @@ jobs:
         cd ${GITHUB_WORKSPACE}/build
 
         echo "::group::CMake"
-        # CMake 4.0.0 deprecated < 3.5, but some vcpkg packages still use it.
-        # Yet, they are fully compatible with 3.5, and so there is no problem
-        # forcing them to upgrade.
-        CMAKE_POLICY_VERSION_MINIMUM=3.5 cmake ${GITHUB_WORKSPACE} \
+        cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DOPTION_DOCS_ONLY=ON \
           # EOF
