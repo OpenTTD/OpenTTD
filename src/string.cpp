@@ -377,48 +377,6 @@ bool IsValidChar(char32_t key, CharSetFilter afilter)
 	}
 }
 
-
-/* UTF-8 handling routines */
-
-
-/**
- * Decode and consume the next UTF-8 encoded character.
- * @param c Buffer to place decoded character.
- * @param s Character stream to retrieve character from.
- * @return Number of characters in the sequence.
- */
-size_t Utf8Decode(char32_t *c, const char *s)
-{
-	assert(c != nullptr);
-
-	if (!HasBit(s[0], 7)) {
-		/* Single byte character: 0xxxxxxx */
-		*c = s[0];
-		return 1;
-	} else if (GB(s[0], 5, 3) == 6) {
-		if (IsUtf8Part(s[1])) {
-			/* Double byte character: 110xxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 5) << 6 | GB(s[1], 0, 6);
-			if (*c >= 0x80) return 2;
-		}
-	} else if (GB(s[0], 4, 4) == 14) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2])) {
-			/* Triple byte character: 1110xxxx 10xxxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 4) << 12 | GB(s[1], 0, 6) << 6 | GB(s[2], 0, 6);
-			if (*c >= 0x800) return 3;
-		}
-	} else if (GB(s[0], 3, 5) == 30) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2]) && IsUtf8Part(s[3])) {
-			/* 4 byte character: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 3) << 18 | GB(s[1], 0, 6) << 12 | GB(s[2], 0, 6) << 6 | GB(s[3], 0, 6);
-			if (*c >= 0x10000 && *c <= 0x10FFFF) return 4;
-		}
-	}
-
-	*c = '?';
-	return 1;
-}
-
 /**
  * Test if a unicode character is considered garbage to be skipped.
  * @param c Character to test.

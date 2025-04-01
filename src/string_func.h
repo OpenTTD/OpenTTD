@@ -72,44 +72,6 @@ inline bool StrEmpty(const char *s)
 
 bool IsValidChar(char32_t key, CharSetFilter afilter);
 
-size_t Utf8Decode(char32_t *c, const char *s);
-/* std::string_view::iterator might be char *, in which case we do not want this templated variant to be taken. */
-template <typename T> requires (!std::is_same_v<T, char *> && (std::is_same_v<std::string_view::iterator, T> || std::is_same_v<std::string::iterator, T>))
-inline size_t Utf8Decode(char32_t *c, T &s) { return Utf8Decode(c, &*s); }
-
-inline char32_t Utf8Consume(const char **s)
-{
-	char32_t c;
-	*s += Utf8Decode(&c, *s);
-	return c;
-}
-
-template <class Titr>
-inline char32_t Utf8Consume(Titr &s)
-{
-	char32_t c;
-	s += Utf8Decode(&c, &*s);
-	return c;
-}
-
-/**
- * Return the length of an UTF-8 encoded value based on a single char. This
- * char should be the first byte of the UTF-8 encoding. If not, or encoding
- * is invalid, return value is 0
- * @param c char to query length of
- * @return requested size
- */
-inline int8_t Utf8EncodedCharLen(char c)
-{
-	if (GB(c, 3, 5) == 0x1E) return 4;
-	if (GB(c, 4, 4) == 0x0E) return 3;
-	if (GB(c, 5, 3) == 0x06) return 2;
-	if (GB(c, 7, 1) == 0x00) return 1;
-
-	/* Invalid UTF8 start encoding */
-	return 0;
-}
-
 
 /* Check if the given character is part of a UTF8 sequence */
 inline bool IsUtf8Part(char c)
