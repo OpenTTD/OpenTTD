@@ -24,4 +24,6 @@ add_files(
     smallstack_type.hpp
     container_func.hpp
     strong_typedef_type.hpp
+    utf8.cpp
+    utf8.hpp
 )
