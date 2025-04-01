@@ -389,23 +389,10 @@ bool StrContainsIgnoreCase(const std::string_view str, const std::string_view va
  * @param s The string to get the length for.
  * @return The length of the string in characters.
  */
-size_t Utf8StringLength(const char *s)
+size_t Utf8StringLength(std::string_view str)
 {
-	size_t len = 0;
-	const char *t = s;
-	while (Utf8Consume(&t) != 0) len++;
-	return len;
-}
-
-/**
- * Get the length of an UTF-8 encoded string in number of characters
- * and thus not the number of bytes that the encoded string contains.
- * @param s The string to get the length for.
- * @return The length of the string in characters.
- */
-size_t Utf8StringLength(const std::string &str)
-{
-	return Utf8StringLength(str.c_str());
+	Utf8View view(str);
+	return std::distance(view.begin(), view.end());
 }
 
 bool strtolower(std::string &str, std::string::size_type offs)
