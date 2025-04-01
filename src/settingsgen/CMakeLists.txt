@@ -10,6 +10,7 @@ if (NOT HOST_BINARY_DIR)
             ../error.cpp
             ../ini_load.cpp
             ../string.cpp
+            ../core/utf8.cpp
     )
     add_definitions(-DSETTINGSGEN)
     add_executable(settingsgen ${sourcefiles})

@@ -12,6 +12,7 @@ if (NOT HOST_BINARY_DIR)
             ../misc/getoptdata.cpp
             ../error.cpp
             ../string.cpp
+            ../core/utf8.cpp
     )
     add_definitions(-DSTRGEN)
     add_executable(strgen ${sourcefiles})
