@@ -11,6 +11,7 @@
 #include "string_osx.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
+#include "../../core/utf8.hpp"
 #include "../../table/control_codes.h"
 #include "../../fontcache.h"
 #include "../../zoom_func.h"
@@ -368,10 +369,8 @@ int MacOSStringContains(const std::string_view str, const std::string_view value
 }
 
 
-/* virtual */ void OSXStringIterator::SetString(const char *s)
+/* virtual */ void OSXStringIterator::SetString(std::string_view s)
 {
-	const char *string_base = s;
-
 	this->utf16_to_utf8.clear();
 	this->str_info.clear();
 	this->cur_pos = 0;
@@ -379,10 +378,10 @@ int MacOSStringContains(const std::string_view str, const std::string_view value
 	/* CoreText operates on UTF-16, thus we have to convert the input string.
 	 * To be able to return proper offsets, we have to create a mapping at the same time. */
 	std::vector<UniChar> utf16_str;     ///< UTF-16 copy of the string.
-	while (*s != '\0') {
-		size_t idx = s - string_base;
-
-		char32_t c = Utf8Consume(&s);
+	Utf8View view(s);
+	for (auto it = view.begin(), end = view.end(); it != end; ++it) {
+		size_t idx = it.GetByteOffset();
+		char32_t c = *it;
 		if (c < 0x10000) {
 			utf16_str.push_back((UniChar)c);
 		} else {
@@ -393,7 +392,7 @@ int MacOSStringContains(const std::string_view str, const std::string_view value
 		}
 		this->utf16_to_utf8.push_back(idx);
 	}
-	this->utf16_to_utf8.push_back(s - string_base);
+	this->utf16_to_utf8.push_back(s.size());
 
 	/* Query CoreText for word and cluster break information. */
 	this->str_info.resize(utf16_to_utf8.size());

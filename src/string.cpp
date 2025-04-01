@@ -13,6 +13,7 @@
 #include "error_func.h"
 #include "string_func.h"
 #include "string_base.h"
+#include "core/utf8.hpp"
 
 #include "table/control_codes.h"
 
@@ -826,10 +827,8 @@ public:
 		delete this->word_itr;
 	}
 
-	void SetString(const char *s) override
+	void SetString(std::string_view s) override
 	{
-		const char *string_base = s;
-
 		/* Unfortunately current ICU versions only provide rudimentary support
 		 * for word break iterators (especially for CJK languages) in combination
 		 * with UTF-8 input. As a work around we have to convert the input to
@@ -837,10 +836,10 @@ public:
 		this->utf16_str.clear();
 		this->utf16_to_utf8.clear();
 
-		while (*s != '\0') {
-			size_t idx = s - string_base;
-
-			char32_t c = Utf8Consume(&s);
+		Utf8View view(s);
+		for (auto it = view.begin(), end = view.end(); it != end; ++it) {
+			size_t idx = it.GetByteOffset();
+			char32_t c = *it;
 			if (c < 0x10000) {
 				this->utf16_str.push_back((UChar)c);
 			} else {
@@ -852,7 +851,7 @@ public:
 			this->utf16_to_utf8.push_back(idx);
 		}
 		this->utf16_str.push_back('\0');
-		this->utf16_to_utf8.push_back(s - string_base);
+		this->utf16_to_utf8.push_back(s.size());
 
 		UText text = UTEXT_INITIALIZER;
 		UErrorCode status = U_ZERO_ERROR;
@@ -956,60 +955,43 @@ public:
 /** Fallback simple string iterator. */
 class DefaultStringIterator : public StringIterator
 {
-	const char *string; ///< Current string.
-	size_t len;         ///< String length.
-	size_t cur_pos;     ///< Current iteration position.
+	Utf8View string; ///< Current string.
+	Utf8View::iterator cur_pos; //< Current iteration position.
 
 public:
-	DefaultStringIterator() : string(nullptr), len(0), cur_pos(0)
-	{
-	}
-
-	void SetString(const char *s) override
+	void SetString(std::string_view s) override
 	{
 		this->string = s;
-		this->len = strlen(s);
-		this->cur_pos = 0;
+		this->cur_pos = this->string.begin();
 	}
 
 	size_t SetCurPosition(size_t pos) override
 	{
-		assert(this->string != nullptr && pos <= this->len);
-		/* Sanitize in case we get a position inside an UTF-8 sequence. */
-		while (pos > 0 && IsUtf8Part(this->string[pos])) pos--;
-		return this->cur_pos = pos;
+		this->cur_pos = this->string.GetIterAtByte(pos);
+		return this->cur_pos.GetByteOffset();
 	}
 
 	size_t Next(IterType what) override
 	{
-		assert(this->string != nullptr);
-
+		const auto end = this->string.end();
 		/* Already at the end? */
-		if (this->cur_pos >= this->len) return END;
+		if (this->cur_pos >= end) return END;
 
 		switch (what) {
-			case ITER_CHARACTER: {
-				char32_t c;
-				this->cur_pos += Utf8Decode(&c, this->string + this->cur_pos);
-				return this->cur_pos;
-			}
+			case ITER_CHARACTER:
+				++this->cur_pos;
+				return this->cur_pos.GetByteOffset();
 
-			case ITER_WORD: {
-				char32_t c;
+			case ITER_WORD:
 				/* Consume current word. */
-				size_t offs = Utf8Decode(&c, this->string + this->cur_pos);
-				while (this->cur_pos < this->len && !IsWhitespace(c)) {
-					this->cur_pos += offs;
-					offs = Utf8Decode(&c, this->string + this->cur_pos);
+				while (this->cur_pos != end && !IsWhitespace(*this->cur_pos)) {
+					++this->cur_pos;
 				}
 				/* Consume whitespace to the next word. */
-				while (this->cur_pos < this->len && IsWhitespace(c)) {
-					this->cur_pos += offs;
-					offs = Utf8Decode(&c, this->string + this->cur_pos);
+				while (this->cur_pos != end && IsWhitespace(*this->cur_pos)) {
+					++this->cur_pos;
 				}
-
-				return this->cur_pos;
-			}
+				return this->cur_pos.GetByteOffset();
 
 			default:
 				NOT_REACHED();
@@ -1020,33 +1002,27 @@ public:
 
 	size_t Prev(IterType what) override
 	{
-		assert(this->string != nullptr);
-
+		const auto begin = this->string.begin();
 		/* Already at the beginning? */
-		if (this->cur_pos == 0) return END;
+		if (this->cur_pos == begin) return END;
 
 		switch (what) {
 			case ITER_CHARACTER:
-				return this->cur_pos = Utf8PrevChar(this->string + this->cur_pos) - this->string;
+				--this->cur_pos;
+				return this->cur_pos.GetByteOffset();
 
-			case ITER_WORD: {
-				const char *s = this->string + this->cur_pos;
-				char32_t c;
+			case ITER_WORD:
 				/* Consume preceding whitespace. */
 				do {
-					s = Utf8PrevChar(s);
-					Utf8Decode(&c, s);
-				} while (s > this->string && IsWhitespace(c));
+					--this->cur_pos;
+				} while (this->cur_pos != begin && IsWhitespace(*this->cur_pos));
 				/* Consume preceding word. */
-				while (s > this->string && !IsWhitespace(c)) {
-					s = Utf8PrevChar(s);
-					Utf8Decode(&c, s);
+				while (this->cur_pos != begin && !IsWhitespace(*this->cur_pos)) {
+					--this->cur_pos;
 				}
 				/* Move caret back to the beginning of the word. */
-				if (IsWhitespace(c)) Utf8Consume(&s);
-
-				return this->cur_pos = s - this->string;
-			}
+				if (IsWhitespace(*this->cur_pos)) ++this->cur_pos;
+				return this->cur_pos.GetByteOffset();
 
 			default:
 				NOT_REACHED();

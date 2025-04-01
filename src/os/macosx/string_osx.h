@@ -27,7 +27,7 @@ class OSXStringIterator : public StringIterator {
 	size_t cur_pos; ///< Current iteration position.
 
 public:
-	void SetString(const char *s) override;
+	void SetString(std::string_view s) override;
 	size_t SetCurPosition(size_t pos) override;
 	size_t Next(IterType what) override;
 	size_t Prev(IterType what) override;
