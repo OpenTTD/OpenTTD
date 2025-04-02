@@ -13,6 +13,27 @@
 
 #include "safeguards.h"
 
+/**
+ * Test whether a tile can have road/tram types.
+ * @param t Tile to query.
+ * @return true if tile can be queried about road/tram types.
+ */
+bool MayHaveRoad(Tile t)
+{
+	switch (GetTileType(t)) {
+		case MP_ROAD:
+			return true;
+
+		case MP_STATION:
+			return IsAnyRoadStop(t);
+
+		case MP_TUNNELBRIDGE:
+			return GetTunnelBridgeTransportType(t) == TRANSPORT_ROAD;
+
+		default:
+			return false;
+	}
+}
 
 /**
  * Returns the RoadBits on an arbitrary tile
@@ -44,12 +65,12 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
 			}
 
 		case MP_STATION:
-			if (!IsAnyRoadStopTile(tile)) return ROAD_NONE;
+			assert(IsAnyRoadStopTile(tile)); // ensured by MayHaveRoad
 			if (IsDriveThroughStopTile(tile)) return AxisToRoadBits(GetDriveThroughStopAxis(tile));
 			return DiagDirToRoadBits(GetBayRoadStopDir(tile));
 
 		case MP_TUNNELBRIDGE:
-			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
+			assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD); // ensured by MayHaveRoad
 			return straight_tunnel_bridge_entrance ?
 					AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) :
 					DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));

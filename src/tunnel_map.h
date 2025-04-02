@@ -82,7 +82,6 @@ inline void MakeRailTunnel(Tile t, Owner o, DiagDirection d, RailType r)
 	t.m7() = 0;
 	t.m8() = 0;
 	SetRailType(t, r);
-	SetRoadTypes(t, INVALID_ROADTYPE, INVALID_ROADTYPE);
 }
 
 #endif /* TUNNEL_MAP_H */
