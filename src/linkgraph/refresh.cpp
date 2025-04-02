@@ -39,26 +39,6 @@
 }
 
 /**
- * Comparison operator to allow hops to be used in a std::set.
- * @param other Other hop to be compared with.
- * @return If this hop is "smaller" than the other (defined by from, to and cargo in this order).
- */
-bool LinkRefresher::Hop::operator<(const Hop &other) const
-{
-	if (this->from < other.from) {
-		return true;
-	} else if (this->from > other.from) {
-		return false;
-	}
-	if (this->to < other.to) {
-		return true;
-	} else if (this->to > other.to) {
-		return false;
-	}
-	return this->cargo < other.cargo;
-}
-
-/**
  * Constructor for link refreshing algorithm.
  * @param vehicle Vehicle to refresh links for.
  * @param seen_hops Set of hops already seen. This is shared between this
