@@ -17,6 +17,7 @@
 #include "../core/math_func.hpp"
 #include "../core/mem_func.hpp"
 #include "../core/geometry_func.hpp"
+#include "../core/utf8.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
 #include "../window_func.h"
@@ -497,9 +498,8 @@ bool VideoDriver_SDL_Base::PollEvent()
 			uint keycode = ConvertSdlKeycodeIntoMy(kc);
 
 			if (keycode == WKC_BACKQUOTE && FocusedWindowIsConsole()) {
-				char32_t character;
-				Utf8Decode(&character, ev.text.text);
-				HandleKeypress(keycode, character);
+				auto [len, c] = DecodeUtf8(ev.text.text);
+				if (len > 0) HandleKeypress(keycode, c);
 			} else {
 				HandleTextInput(ev.text.text);
 			}

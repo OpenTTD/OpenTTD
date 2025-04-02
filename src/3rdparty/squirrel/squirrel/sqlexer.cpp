@@ -11,7 +11,7 @@
 #include "sqcompiler.h"
 #include "sqlexer.h"
 
-#include "../../../string_func.h"
+#include "../../../core/utf8.hpp"
 
 #include "../../../safeguards.h"
 
@@ -28,8 +28,7 @@ SQLexer::~SQLexer()
 
 void SQLexer::APPEND_CHAR(char32_t c)
 {
-	char buf[4];
-	size_t chars = Utf8Encode(buf, c);
+	auto [buf, chars] = EncodeUtf8(c);
 	for (size_t i = 0; i < chars; i++) {
 		_longstr.push_back(buf[i]);
 	}

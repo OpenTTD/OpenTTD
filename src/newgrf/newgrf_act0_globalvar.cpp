@@ -14,6 +14,7 @@
 #include "../language.h"
 #include "../rev.h"
 #include "../string_func.h"
+#include "../core/utf8.hpp"
 #include "../newgrf.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
@@ -295,9 +296,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					 * safe as OpenTTD's strings gender/cases are usually in ASCII which
 					 * is just a subset of UTF8, or they need the bigger UTF8 characters
 					 * such as Cyrillic. Thus we will simply assume they're all UTF8. */
-					char32_t c;
-					size_t len = Utf8Decode(&c, name.data());
-					if (len <= name.size() && c == NFO_UTF8_IDENTIFIER) name = name.substr(len);
+					auto [len, c] = DecodeUtf8(name);
+					if (c == NFO_UTF8_IDENTIFIER) name.remove_prefix(len);
 
 					LanguageMap::Mapping map;
 					map.newgrf_id = newgrf_id;
