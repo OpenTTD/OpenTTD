@@ -332,12 +332,14 @@ protected:
 		static_assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
 		assert(this->num_vert_lines > 0);
 
+		bool rtl = _current_text_dir == TD_RTL;
+
 		/* Rect r will be adjusted to contain just the graph, with labels being
 		 * placed outside the area. */
 		r.top    += ScaleGUITrad(5) + GetCharacterHeight(FS_SMALL) / 2;
 		r.bottom -= (this->draw_dates ? 2 : 1) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4);
-		r.left   += ScaleGUITrad(9);
-		r.right  -= ScaleGUITrad(5);
+		r.left   += ScaleGUITrad(rtl ? 5 : 9);
+		r.right  -= ScaleGUITrad(rtl ? 9 : 5);
 
 		/* Initial number of horizontal lines. */
 		int num_hori_lines = 160 / ScaleGUITrad(MIN_GRID_PIXEL_SIZE);
@@ -349,14 +351,22 @@ protected:
 
 		int label_width = GetYLabelWidth(interval, num_hori_lines);
 
-		r.left += label_width;
+		if (rtl) {
+			r.right -= label_width;
+		} else {
+			r.left += label_width;
+		}
 
 		int x_sep = (r.right - r.left) / this->num_vert_lines;
 		int y_sep = (r.bottom - r.top) / num_hori_lines;
 
 		/* Redetermine right and bottom edge of graph to fit with the integer
 		 * separation values. */
-		r.right = r.left + x_sep * this->num_vert_lines;
+		if (rtl) {
+			r.left = r.right - x_sep * this->num_vert_lines;
+		} else {
+			r.right = r.left + x_sep * this->num_vert_lines;
+		}
 		r.bottom = r.top + y_sep * num_hori_lines;
 
 		OverflowSafeInt64 interval_size = interval.highest + abs(interval.lowest);
@@ -369,7 +379,12 @@ protected:
 		/* Draw the vertical grid lines. */
 
 		/* Don't draw the first line, as that's where the axis will be. */
-		x = r.left + x_sep;
+		if (rtl) {
+			x_sep = -x_sep;
+			x = r.right + x_sep;
+		} else {
+			x = r.left + x_sep;
+		}
 
 		int grid_colour = GRAPH_GRID_COLOUR;
 		for (int i = 1; i < this->num_vert_lines + 1; i++) {
@@ -385,7 +400,11 @@ protected:
 		y = r.bottom;
 
 		for (int i = 0; i < (num_hori_lines + 1); i++) {
-			GfxFillRect(r.left - ScaleGUITrad(3), y, r.left - 1, y, GRAPH_AXIS_LINE_COLOUR);
+			if (rtl) {
+				GfxFillRect(r.right + 1, y, r.right + ScaleGUITrad(3), y, GRAPH_AXIS_LINE_COLOUR);
+			} else {
+				GfxFillRect(r.left - ScaleGUITrad(3), y, r.left - 1, y, GRAPH_AXIS_LINE_COLOUR);
+			}
 			GfxFillRect(r.left, y, r.right, y, GRAPH_GRID_COLOUR);
 			y -= y_sep;
 		}
@@ -409,9 +428,15 @@ protected:
 		y = r.top - GetCharacterHeight(FS_SMALL) / 2;
 
 		for (int i = 0; i < (num_hori_lines + 1); i++) {
-			DrawString(r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y,
-				GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
-				GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
+			if (rtl) {
+				DrawString(r.right + ScaleGUITrad(4), r.right + label_width + ScaleGUITrad(4), y,
+					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
+					GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
+			} else {
+				DrawString(r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y,
+					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
+					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
+			}
 
 			y_label -= y_label_separation;
 			y += y_sep;
@@ -419,14 +444,20 @@ protected:
 
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 		if (this->draw_dates) {
-			x = r.left;
+			x = rtl ? r.right : r.left;
 			y = r.bottom + ScaleGUITrad(2);
 			TimerGameEconomy::Month month = this->month;
 			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
-				DrawStringMultiLine(x, x + x_sep, y, this->height,
-					GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
-					GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
+				if (rtl) {
+					DrawStringMultiLine(x + x_sep, x, y, this->height,
+						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
+						GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
+				} else {
+					DrawStringMultiLine(x, x + x_sep, y, this->height,
+						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
+						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
+				}
 
 				month += this->month_increment;
 				if (month >= 12) {
@@ -440,7 +471,7 @@ protected:
 			}
 		} else {
 			/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates, and all graphs when using wallclock units). */
-			x = r.left;
+			x = rtl ? r.right : r.left;
 			y = r.bottom + ScaleGUITrad(2);
 
 			int16_t iterator;
@@ -454,7 +485,11 @@ protected:
 			}
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
-				DrawString(x + 1, x + x_sep - 1, y, GetString(STR_GRAPH_Y_LABEL_NUMBER, label), GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
+				if (rtl) {
+					DrawString(x + x_sep + 1, x - 1, y, GetString(STR_GRAPH_Y_LABEL_NUMBER, label), GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
+				} else {
+					DrawString(x + 1, x + x_sep - 1, y, GetString(STR_GRAPH_Y_LABEL_NUMBER, label), GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
+				}
 
 				label += iterator;
 				x += x_sep;
@@ -471,7 +506,11 @@ protected:
 			if (HasBit(this->excluded_range, dataset.range_bit)) continue;
 
 			/* Centre the dot between the grid lines. */
-			x = r.left + (x_sep / 2);
+			if (rtl) {
+				x = r.right + (x_sep / 2);
+			} else {
+				x = r.left + (x_sep / 2);
+			}
 
 			uint prev_x = INVALID_DATAPOINT_POS;
 			uint prev_y = INVALID_DATAPOINT_POS;
