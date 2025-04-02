@@ -275,15 +275,6 @@ public:
 	}
 
 	/**
-	 * Remove the given amount of characters from the back of the string.
-	 * @param amount The amount of characters to remove.
-	 */
-	void RemoveElementsFromBack(size_t amount)
-	{
-		this->string->erase(this->string->size() - std::min(amount, this->string->size()));
-	}
-
-	/**
 	 * Get the current index in the string.
 	 * @return The index.
 	 */

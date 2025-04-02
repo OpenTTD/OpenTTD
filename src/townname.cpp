@@ -702,11 +702,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 
 		builder += _name_czech_adj[prefix].name;
 
-		size_t endpos = builder.CurrentIndex() - 1;
-		/* Find the first character in a UTF-8 sequence */
-		while (GB(builder[endpos], 6, 2) == 2) endpos--;
-		builder.RemoveElementsFromBack(builder.CurrentIndex() - endpos);
-
+		size_t endpos = builder.CurrentIndex();
 		if (gender == CZG_SMASC && pattern == CZP_PRIVL) {
 			/* -ovX -> -uv */
 			builder[endpos - 2] = 'u';
