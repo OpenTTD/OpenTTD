@@ -172,6 +172,7 @@ protected:
 	static const int GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
 	static const int GRAPH_YEAR_LINE_COLOUR =  GREY_SCALE(5);
 	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
+	static const int GRAPH_PAYMENT_RATE_STEPS = 20; ///< Number of steps on Payment rate graph.
 	static const int PAYMENT_GRAPH_X_STEP_DAYS    = 10; ///< X-axis step label for cargo payment rates "Days in transit".
 	static const int PAYMENT_GRAPH_X_STEP_SECONDS = 20; ///< X-axis step label for cargo payment rates "Seconds in transit".
 	static const int ECONOMY_QUARTER_MINUTES = 3;  ///< Minutes per economic quarter.
@@ -196,8 +197,8 @@ protected:
 
 	/* These values are used if the graph is being plotted against values
 	 * rather than the dates specified by month and year. */
-	uint16_t x_values_start = 0;
-	uint16_t x_values_increment = 0;
+	bool x_values_reversed = true;
+	int16_t x_values_increment = ECONOMY_QUARTER_MINUTES;
 
 	StringID format_str_y_axis{};
 
@@ -441,12 +442,21 @@ protected:
 			/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates, and all graphs when using wallclock units). */
 			x = r.left;
 			y = r.bottom + ScaleGUITrad(2);
-			uint16_t label = this->x_values_start;
+
+			int16_t iterator;
+			uint16_t label;
+			if (this->x_values_reversed) {
+				label = this->x_values_increment * this->num_on_x_axis;
+				iterator = -this->x_values_increment;
+			} else {
+				label = this->x_values_increment;
+				iterator = this->x_values_increment;
+			}
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				DrawString(x + 1, x + x_sep - 1, y, GetString(STR_GRAPH_Y_LABEL_NUMBER, label), GRAPH_AXIS_LABEL_COLOUR, SA_HOR_CENTER);
 
-				label += this->x_values_increment;
+				label += iterator;
 				x += x_sep;
 			}
 		}
@@ -569,7 +579,7 @@ public:
 					}
 				} else {
 					/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates). */
-					uint64_t max_value = GetParamMaxValue(this->x_values_start + this->num_on_x_axis * this->x_values_increment, 0, FS_SMALL);
+					uint64_t max_value = GetParamMaxValue((this->num_on_x_axis + 1) * this->x_values_increment, 0, FS_SMALL);
 					x_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL_NUMBER, max_value)).width;
 				}
 
@@ -726,8 +736,6 @@ struct OperatingProfitGraphWindow : BaseGraphWindow {
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
-		this->x_values_start = ECONOMY_QUARTER_MINUTES;
-		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 
 		this->InitializeWindow(window_number);
@@ -785,8 +793,6 @@ struct IncomeGraphWindow : BaseGraphWindow {
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
-		this->x_values_start = ECONOMY_QUARTER_MINUTES;
-		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 
 		this->InitializeWindow(window_number);
@@ -842,8 +848,6 @@ struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
-		this->x_values_start = ECONOMY_QUARTER_MINUTES;
-		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 
 		this->InitializeWindow(window_number);
@@ -899,8 +903,6 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
-		this->x_values_start = ECONOMY_QUARTER_MINUTES;
-		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 
 		this->InitializeWindow(window_number);
@@ -963,8 +965,6 @@ struct CompanyValueGraphWindow : BaseGraphWindow {
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
-		this->x_values_start = ECONOMY_QUARTER_MINUTES;
-		this->x_values_increment = ECONOMY_QUARTER_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 
 		this->InitializeWindow(window_number);
@@ -1022,11 +1022,12 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	PaymentRatesGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
-		this->num_on_x_axis = 20;
-		this->num_vert_lines = 20;
+		this->num_on_x_axis = GRAPH_PAYMENT_RATE_STEPS;
+		this->num_vert_lines = GRAPH_PAYMENT_RATE_STEPS;
 		this->draw_dates = false;
+
+		this->x_values_reversed = false;
 		/* The x-axis is labeled in either seconds or days. A day is two seconds, so we adjust the label if needed. */
-		this->x_values_start     = (TimerGameEconomy::UsingWallclockUnits() ? PAYMENT_GRAPH_X_STEP_SECONDS : PAYMENT_GRAPH_X_STEP_DAYS);
 		this->x_values_increment = (TimerGameEconomy::UsingWallclockUnits() ? PAYMENT_GRAPH_X_STEP_SECONDS : PAYMENT_GRAPH_X_STEP_DAYS);
 
 		this->CreateNestedTree();
@@ -1486,7 +1487,6 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
 		this->month_increment = 1;
-		this->x_values_start = ECONOMY_MONTH_MINUTES;
 		this->x_values_increment = ECONOMY_MONTH_MINUTES;
 		this->draw_dates = !TimerGameEconomy::UsingWallclockUnits();
 		this->ranges = RANGE_LABELS;
