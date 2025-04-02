@@ -701,15 +701,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		CzechPattern pattern = _name_czech_adj[prefix].pattern;
 
 		builder += _name_czech_adj[prefix].name;
-
-		size_t endpos = builder.CurrentIndex();
-		if (gender == CZG_SMASC && pattern == CZP_PRIVL) {
-			/* -ovX -> -uv */
-			builder[endpos - 2] = 'u';
-		} else {
-			builder += _name_czech_patmod[gender][pattern];
-		}
-
+		builder += _name_czech_patmod[gender][pattern];
 		builder += ' ';
 	}
 
