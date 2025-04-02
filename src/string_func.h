@@ -72,13 +72,6 @@ inline bool StrEmpty(const char *s)
 
 bool IsValidChar(char32_t key, CharSetFilter afilter);
 
-
-/* Check if the given character is part of a UTF8 sequence */
-inline bool IsUtf8Part(char c)
-{
-	return GB(c, 6, 2) == 2;
-}
-
 size_t Utf8StringLength(std::string_view str);
 
 /**
