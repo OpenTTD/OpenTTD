@@ -1715,16 +1715,14 @@ enum CzechPattern : uint8_t {
 	CZP_PRIVL
 };
 
-/* [CzechGender][CzechPattern] - replaces the last character of the adjective
- * by this.
- * XXX: [CZG_SMASC][CZP_PRIVL] needs special handling: -ovX -> -uv. */
+/* [CzechGender][CzechPattern] - suffixes for adjectives */
 static const char * const _name_czech_patmod[][3] = {
-	/* CZG_SMASC */ { "\u00ed", "\u00fd", "X" },
-	/* CZG_SFEM */  { "\u00ed", "\u00e1", "a" },
-	/* CZG_SNEUT */ { "\u00ed", "\u00e9", "o" },
-	/* CZG_PMASC */ { "\u00ed", "\u00e9", "y" },
-	/* CZG_PFEM */  { "\u00ed", "\u00e9", "y" },
-	/* CZG_PNEUT */ { "\u00ed", "\u00e1", "a" }
+	/* CZG_SMASC */ { "\u00ed", "\u00fd", "uv" },
+	/* CZG_SFEM */  { "\u00ed", "\u00e1", "ova" },
+	/* CZG_SNEUT */ { "\u00ed", "\u00e9", "ovo" },
+	/* CZG_PMASC */ { "\u00ed", "\u00e9", "ovy" },
+	/* CZG_PFEM */  { "\u00ed", "\u00e9", "ovy" },
+	/* CZG_PNEUT */ { "\u00ed", "\u00e1", "ova" }
 };
 
 /* This way the substantive can choose only some adjectives/endings:
@@ -1805,13 +1803,13 @@ static const CzechNameAdj _name_czech_adj[] = {
 	{ CZP_MLADY, CZC_COLOR, "Modr" },
 	{ CZP_MLADY, CZC_COLOR, "R\u016f\u017eov" },
 	{ CZP_MLADY, CZC_COLOR, "\u010cern" },
-	{ CZP_PRIVL, CZC_ANY, "Kr\u00e1lov" },
-	{ CZP_PRIVL, CZC_ANY, "Janov" },
-	{ CZP_PRIVL, CZC_ANY, "Karlov" },
-	{ CZP_PRIVL, CZC_ANY, "Kry\u0161tofov" },
-	{ CZP_PRIVL, CZC_ANY, "Ji\u0159\u00edkov" },
-	{ CZP_PRIVL, CZC_ANY, "Petrov" },
-	{ CZP_PRIVL, CZC_ANY, "Sudov" },
+	{ CZP_PRIVL, CZC_ANY, "Kr\u00e1l" },
+	{ CZP_PRIVL, CZC_ANY, "Jan" },
+	{ CZP_PRIVL, CZC_ANY, "Karl" },
+	{ CZP_PRIVL, CZC_ANY, "Kry\u0161tof" },
+	{ CZP_PRIVL, CZC_ANY, "Ji\u0159\u00edk" },
+	{ CZP_PRIVL, CZC_ANY, "Petr" },
+	{ CZP_PRIVL, CZC_ANY, "Sud" },
 };
 
 /* Considered a stem for choose/allow matching purposes. */
