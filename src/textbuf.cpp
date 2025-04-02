@@ -127,12 +127,10 @@ void Textbuf::DeleteAll()
  */
 bool Textbuf::InsertChar(char32_t key)
 {
-	uint16_t len = (uint16_t)Utf8CharLen(key);
+	auto [src, len] = EncodeUtf8(key);
 	if (this->buf.size() + len < this->max_bytes && this->chars + 1 <= this->max_chars) {
 		/* Make space in the string, then overwrite it with the Utf8 encoded character. */
-		auto pos = this->buf.begin() + this->caretpos;
-		pos = this->buf.insert(pos, len, '\0');
-		Utf8Encode(pos, key);
+		this->buf.insert(this->caretpos, src, len);
 		this->chars++;
 		this->caretpos += len;
 
