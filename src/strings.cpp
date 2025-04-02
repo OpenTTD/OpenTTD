@@ -38,6 +38,7 @@
 #include "newgrf_engine.h"
 #include "core/backup_type.hpp"
 #include "gfx_layout.h"
+#include "core/utf8.hpp"
 #include <stack>
 #include <charconv>
 
@@ -2261,13 +2262,9 @@ bool MissingGlyphSearcher::FindMissingGlyphs()
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
-		auto src = text->cbegin();
-
 		FontSize size = this->DefaultSize();
 		FontCache *fc = FontCache::Get(size);
-		while (src != text->cend()) {
-			char32_t c = Utf8Consume(src);
-
+		for (char32_t c : Utf8View(*text)) {
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 				size = (FontSize)(c - SCC_FIRST_FONT);
 				fc = FontCache::Get(size);

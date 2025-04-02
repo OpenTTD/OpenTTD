@@ -587,15 +587,11 @@ static bool IsGarbageCharacter(char32_t c)
  */
 static std::string_view SkipGarbage(std::string_view str)
 {
-	auto first = std::begin(str);
-	auto last = std::end(str);
-	while (first < last) {
-		char32_t c;
-		size_t len = Utf8Decode(&c, &*first);
-		if (!IsGarbageCharacter(c)) break;
-		first += len;
-	}
-	return {first, last};
+	Utf8View view(str);
+	auto it = view.begin();
+	const auto end = view.end();
+	while (it != end && IsGarbageCharacter(*it)) ++it;
+	return str.substr(it.GetByteOffset());
 }
 
 /**
