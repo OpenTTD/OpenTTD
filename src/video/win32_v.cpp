@@ -23,6 +23,7 @@
 #include "../window_func.h"
 #include "../framerate_type.h"
 #include "../library_loader.h"
+#include "../core/utf8.hpp"
 #include "win32_v.h"
 #include <windows.h>
 #include <imm.h>
@@ -367,17 +368,19 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 
 				/* Convert caret position from bytes in the input string to a position in the UTF-8 encoded string. */
 				LONG caret_bytes = ImmGetCompositionString(hIMC, GCS_CURSORPOS, nullptr, 0);
-				const char *caret = utf8_buf;
-				for (const wchar_t *c = str.c_str(); *c != '\0' && *caret != '\0' && caret_bytes > 0; c++, caret_bytes--) {
+				Utf8View view(utf8_buf);
+				auto caret = view.begin();
+				const auto end = view.end();
+				for (const wchar_t *c = str.c_str(); *c != '\0' && caret != end && caret_bytes > 0; c++, caret_bytes--) {
 					/* Skip DBCS lead bytes or leading surrogates. */
 					if (Utf16IsLeadSurrogate(*c)) {
 						c++;
 						caret_bytes--;
 					}
-					Utf8Consume(&caret);
+					++caret;
 				}
 
-				HandleTextInput(utf8_buf, true, caret);
+				HandleTextInput(utf8_buf, true, utf8_buf + caret.GetByteOffset());
 			} else {
 				HandleTextInput(nullptr, true);
 			}

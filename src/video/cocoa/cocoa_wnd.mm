@@ -34,6 +34,7 @@
 #include "../../spritecache.h"
 #include "../../textbuf_type.h"
 #include "../../toolbar_gui.h"
+#include "../../core/utf8.hpp"
 
 #include "../../table/sprites.h"
 
@@ -104,14 +105,9 @@ static OTTDMain *_ottd_main;
 static NSUInteger CountUtf16Units(const char *from, const char *to)
 {
 	NSUInteger i = 0;
-
-	while (from < to) {
-		char32_t c;
-		size_t len = Utf8Decode(&c, from);
-		i += len < 4 ? 1 : 2; // Watch for surrogate pairs.
-		from += len;
+	for (char32_t c : Utf8View(std::string_view(from, to))) {
+		i += c < 0x10000 ? 1 : 2; // Watch for surrogate pairs.
 	}
-
 	return i;
 }
 
@@ -123,14 +119,13 @@ static NSUInteger CountUtf16Units(const char *from, const char *to)
  */
 static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 {
-	for (NSUInteger i = 0; i < count && *str != '\0'; ) {
-		char32_t c;
-		size_t len = Utf8Decode(&c, str);
-		i += len < 4 ? 1 : 2; // Watch for surrogates.
-		str += len;
+	Utf8View view(str);
+	auto it = view.begin();
+	const auto end = view.end();
+	for (NSUInteger i = 0; it != end && i < count; ++it) {
+		i += *it < 0x10000 ? 1 : 2; // Watch for surrogate pairs.
 	}
-
-	return str;
+	return str + it.GetByteOffset();
 }
 
 /**
