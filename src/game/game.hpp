@@ -95,6 +95,11 @@ public:
 	 */
 	static class GameInstance *GetInstance() { return Game::instance.get(); }
 
+	/**
+	 * Reset the current active instance.
+	 */
+	static void ResetInstance();
+
 	/** Wrapper function for GameScanner::HasGame */
 	static bool HasGame(const struct ContentInfo *ci, bool md5sum);
 	static bool HasGameLibrary(const ContentInfo *ci, bool md5sum);

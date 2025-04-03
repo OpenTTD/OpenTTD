@@ -173,8 +173,21 @@ struct ScriptListWindow : public Window {
 			std::advance(it, this->selected);
 			GetConfig(slot)->Change(it->second->GetName(), it->second->GetVersion());
 		}
+		if (_game_mode == GM_EDITOR) {
+			if (slot == OWNER_DEITY) {
+				if (Game::GetInstance() != nullptr) Game::ResetInstance();
+				Game::StartNew();
+			} else {
+				Company *c = Company::GetIfValid(slot);
+				if (c != nullptr && c->ai_instance != nullptr) {
+					c->ai_instance.reset();
+					AI::StartNew(slot);
+				}
+			}
+		}
 		InvalidateWindowData(WC_GAME_OPTIONS, slot == OWNER_DEITY ? WN_GAME_OPTIONS_GS : WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
+		InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
 		CloseWindowByClass(WC_QUERY_STRING);
 		InvalidateWindowClassesData(WC_TEXTFILE);
 	}
