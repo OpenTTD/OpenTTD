@@ -431,7 +431,7 @@ protected:
 			if (rtl) {
 				DrawString(r.right + ScaleGUITrad(4), r.right + label_width + ScaleGUITrad(4), y,
 					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
-					GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
+					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
 			} else {
 				DrawString(r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y,
 					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
