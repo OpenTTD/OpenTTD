@@ -277,7 +277,9 @@ void ScriptText::_GetEncodedText(std::back_insert_iterator<std::string> &output,
 					if (++count != cur_param.consumes) {
 						ScriptLog::Warning(fmt::format("{}({}): {{{}}} expects {} to be consumed, but {} consumes {}", name, param_count + 1, cur_param.cmd, cur_param.consumes - 1, GetGameStringName(ref->string), count - 1));
 						/* Fill missing params if needed. */
-						for (int i = count; i < cur_param.consumes; i++) fmt::format_to(output, ":0");
+						for (int i = count; i < cur_param.consumes; i++) {
+							Utf8Encode(output, SCC_RECORD_SEPARATOR);
+						}
 					}
 					skip_args(cur_param.consumes - 1);
 					break;
