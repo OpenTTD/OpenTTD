@@ -431,11 +431,11 @@ protected:
 			if (rtl) {
 				DrawString(r.right + ScaleGUITrad(4), r.right + label_width + ScaleGUITrad(4), y,
 					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
-					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
+					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT | SA_FORCE);
 			} else {
 				DrawString(r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y,
 					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
-					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
+					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT | SA_FORCE);
 			}
 
 			y_label -= y_label_separation;
@@ -452,7 +452,7 @@ protected:
 				if (rtl) {
 					DrawStringMultiLine(x + x_sep, x, y, this->height,
 						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
-						GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT);
+						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 				} else {
 					DrawStringMultiLine(x, x + x_sep, y, this->height,
 						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
