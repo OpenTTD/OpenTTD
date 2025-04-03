@@ -82,12 +82,6 @@
 #	define CDECL
 #endif /* __GNUC__ || __clang__ */
 
-#if __GNUC__ > 11 || (__GNUC__ == 11 && __GNUC_MINOR__ >= 1)
-#      define NOACCESS(args) __attribute__ ((access (none, args)))
-#else
-#      define NOACCESS(args)
-#endif
-
 #if defined(_WIN32)
 #	define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 #endif
