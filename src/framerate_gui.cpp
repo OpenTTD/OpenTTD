@@ -570,7 +570,7 @@ struct FramerateWindow : Window {
 			if (skip > 0) {
 				skip--;
 			} else {
-				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TC_FROMSTRING, SA_RIGHT);
+				DrawString(r.left, r.right, y, GetString(values[e].strid, values[e].GetValue(), values[e].GetDecimals()), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 				y += GetCharacterHeight(FS_NORMAL);
 				drawable--;
 				if (drawable == 0) break;
@@ -592,12 +592,12 @@ struct FramerateWindow : Window {
 				skip--;
 			} else if (e == PFE_GAMESCRIPT || e >= PFE_AI0) {
 				uint64_t value = e == PFE_GAMESCRIPT ? Game::GetInstance()->GetAllocatedMemory() : Company::Get(e - PFE_AI0)->ai_instance->GetAllocatedMemory();
-				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TC_FROMSTRING, SA_RIGHT);
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, value), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 				y += GetCharacterHeight(FS_NORMAL);
 				drawable--;
 				if (drawable == 0) break;
 			} else if (e == PFE_SOUND) {
-				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, GetSoundPoolAllocatedMemory()), TC_FROMSTRING, SA_RIGHT);
+				DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_BYTES_GOOD, GetSoundPoolAllocatedMemory()), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 				y += GetCharacterHeight(FS_NORMAL);
 				drawable--;
 				if (drawable == 0) break;
