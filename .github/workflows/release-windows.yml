@@ -84,10 +84,7 @@ jobs:
         cd build-host
 
         echo "::group::CMake"
-        # CMake 4.0.0 deprecated < 3.5, but some vcpkg packages still use it.
-        # Yet, they are fully compatible with 3.5, and so there is no problem
-        # forcing them to upgrade.
-        CMAKE_POLICY_VERSION_MINIMUM=3.5 cmake ${GITHUB_WORKSPACE} \
+        cmake ${GITHUB_WORKSPACE} \
           -GNinja \
           -DOPTION_TOOLS_ONLY=ON \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -111,10 +108,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        # CMake 4.0.0 deprecated < 3.5, but some vcpkg packages still use it.
-        # Yet, they are fully compatible with 3.5, and so there is no problem
-        # forcing them to upgrade.
-        CMAKE_POLICY_VERSION_MINIMUM=3.5 cmake ${GITHUB_WORKSPACE} \
+        cmake ${GITHUB_WORKSPACE} \
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
           -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
@@ -144,10 +138,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        # CMake 4.0.0 deprecated < 3.5, but some vcpkg packages still use it.
-        # Yet, they are fully compatible with 3.5, and so there is no problem
-        # forcing them to upgrade.
-        CMAKE_POLICY_VERSION_MINIMUM=3.5 cmake ${GITHUB_WORKSPACE} \
+        cmake ${GITHUB_WORKSPACE} \
           -GNinja \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
           -DCMAKE_TOOLCHAIN_FILE="${{ runner.temp }}\vcpkg\scripts\buildsystems\vcpkg.cmake" \
