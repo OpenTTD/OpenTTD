@@ -9,6 +9,7 @@ add_test_files(
     mock_spritecache.h
     string_builder.cpp
     string_consumer.cpp
+    string_inplace.cpp
     string_func.cpp
     test_main.cpp
     test_network_crypto.cpp
