@@ -103,41 +103,38 @@ EncodedString GetEncodedString(StringID str)
 EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params)
 {
 	std::string result;
-	auto output = std::back_inserter(result);
-	Utf8Encode(output, SCC_ENCODED_INTERNAL);
-	fmt::format_to(output, "{:X}", str);
+	StringBuilder builder(result);
+	builder.PutUtf8(SCC_ENCODED_INTERNAL);
+	builder.PutIntegerBase(str, 16);
 
 	struct visitor {
-		std::back_insert_iterator<std::string> &output;
+		StringBuilder &builder;
 
 		void operator()(const std::monostate &) {}
 
 		void operator()(const uint64_t &arg)
 		{
-			Utf8Encode(output, SCC_ENCODED_NUMERIC);
-			fmt::format_to(this->output, "{:X}", arg);
+			this->builder.PutUtf8(SCC_ENCODED_NUMERIC);
+			this->builder.PutIntegerBase(arg, 16);
 		}
 
 		void operator()(const std::string &value)
 		{
 #ifdef WITH_ASSERT
 			/* Don't allow an encoded string to contain another encoded string. */
-			if (!value.empty()) {
-				char32_t c;
-				const char *p = value.data();
-				if (Utf8Decode(&c, p)) {
-					assert(c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL && c != SCC_RECORD_SEPARATOR);
-				}
+			{
+				auto [len, c] = DecodeUtf8(value);
+				assert(len == 0 || (c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL && c != SCC_RECORD_SEPARATOR));
 			}
 #endif /* WITH_ASSERT */
-			Utf8Encode(output, SCC_ENCODED_STRING);
-			fmt::format_to(this->output, "{}", value);
+			this->builder.PutUtf8(SCC_ENCODED_STRING);
+			this->builder += value;
 		}
 	};
 
-	visitor v{output};
+	visitor v{builder};
 	for (const auto &param : params) {
-		*output = SCC_RECORD_SEPARATOR;
+		builder.PutUtf8(SCC_RECORD_SEPARATOR);
 		std::visit(v, param.data);
 	}
 
