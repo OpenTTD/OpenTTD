@@ -166,6 +166,8 @@ static void _GenerateWorld()
 		StartupDisasters();
 		_generating_world = false;
 
+		Game::StartNew();
+
 		/* No need to run the tile loop in the scenario editor. */
 		if (GenWorldInfo::mode != GWM_EMPTY) {
 			uint i;
@@ -178,8 +180,6 @@ static void _GenerateWorld()
 			}
 
 			if (_game_mode != GM_EDITOR) {
-				Game::StartNew();
-
 				if (Game::GetInstance() != nullptr) {
 					SetGeneratingWorldProgress(GWP_RUNSCRIPT, 2500);
 					_generating_world = true;
