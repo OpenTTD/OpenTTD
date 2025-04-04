@@ -10,6 +10,8 @@
 #include "stdafx.h"
 #include "string_func.h"
 #include "strings_func.h"
+#include "core/utf8.hpp"
+#include "core/string_builder.hpp"
 #include "stringfilter_type.h"
 #include "gfx_func.h"
 
@@ -31,22 +33,14 @@ void StringFilter::SetFilterTerm(std::string_view str)
 	this->word_matches = 0;
 
 	char32_t state = STATE_WHITESPACE;
-	auto pos = str.begin();
-	auto word_begin = str.end();
-	auto word_end = pos;
-
-	/* Helper to prevent duplicating code. */
-	auto add_word = [&] () {
-		if (word_begin != str.end()) {
-			this->word_index.emplace_back(std::string(word_begin, word_end + 1), false);
-			word_begin = str.end();
-		}
+	std::string word;
+	StringBuilder builder(word);
+	auto add_word = [this, &word]() {
+		if (!word.empty()) this->word_index.emplace_back(std::move(word), false);
+		word.clear();
 	};
 
-	for (size_t len; pos < str.end(); pos += len) {
-		char32_t c;
-		len = Utf8Decode(&c, pos);
-
+	for (char32_t c : Utf8View(str)) {
 		if (state == STATE_WORD && IsWhitespace(c)) {
 			/* Finish word */
 			add_word();
@@ -73,10 +67,7 @@ void StringFilter::SetFilterTerm(std::string_view str)
 		}
 
 		/* Add to word */
-		if (word_begin == str.end()) {
-			word_begin = pos;
-		}
-		word_end = pos;
+		builder.PutUtf8(c);
 	}
 
 	/* Add the last word of the string. */
