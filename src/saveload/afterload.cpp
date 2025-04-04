@@ -3190,15 +3190,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBeforeOrAt(SLV_ENDING_YEAR)) {
-		/* Reset roadtype/streetcartype info for non-road bridges. */
-		for (const auto t : Map::Iterate()) {
-			if (IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) != TRANSPORT_ROAD) {
-				SetRoadTypes(t, INVALID_ROADTYPE, INVALID_ROADTYPE);
-			}
-		}
-	}
-
 	/* Make sure all industries exclusive supplier/consumer set correctly. */
 	if (IsSavegameVersionBefore(SLV_GS_INDUSTRY_CONTROL)) {
 		for (Industry *i : Industry::Iterate()) {

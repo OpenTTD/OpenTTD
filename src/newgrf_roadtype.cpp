@@ -200,7 +200,7 @@ void ConvertRoadTypes()
 				break;
 
 			case MP_STATION:
-				if (IsStationRoadStop(t) || IsRoadWaypoint(t)) {
+				if (IsAnyRoadStop(t)) {
 					if (RoadType rt = GetRoadTypeRoad(t); rt != INVALID_ROADTYPE) SetRoadTypeRoad(t, roadtype_conversion_map[rt]);
 					if (RoadType rt = GetRoadTypeTram(t); rt != INVALID_ROADTYPE) SetRoadTypeTram(t, roadtype_conversion_map[rt]);
 				}

@@ -25,23 +25,7 @@ enum RoadTileType : uint8_t {
 	ROAD_TILE_DEPOT,    ///< Depot (one entrance)
 };
 
-/**
- * Test whether a tile can have road/tram types.
- * @param t Tile to query.
- * @return true if tile can be queried about road/tram types.
- */
-inline bool MayHaveRoad(Tile t)
-{
-	switch (GetTileType(t)) {
-		case MP_ROAD:
-		case MP_STATION:
-		case MP_TUNNELBRIDGE:
-			return true;
-
-		default:
-			return false;
-	}
-}
+bool MayHaveRoad(Tile t);
 
 /**
  * Get the type of the road tile.
