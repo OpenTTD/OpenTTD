@@ -330,7 +330,7 @@ struct DepotWindow : Window {
 				Rect count = text.WithWidth(this->count_width - WidgetDimensions::scaled.hsep_normal, !rtl);
 				DrawString(count.left, count.right, count.bottom - GetCharacterHeight(FS_SMALL) + 1,
 						GetString(STR_JUST_DECIMAL, CeilDiv(u->gcache.cached_total_length * 10, TILE_SIZE), 1),
-						TC_BLACK, SA_RIGHT, false, FS_SMALL); // Draw the counter
+						TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL); // Draw the counter
 				break;
 			}
 

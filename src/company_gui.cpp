@@ -225,7 +225,7 @@ static void DrawPrice(Money amount, int left, int right, int top, TextColour col
 		amount = -amount;
 		str = STR_FINANCES_POSITIVE_INCOME;
 	}
-	DrawString(left, right, top, GetString(str, amount), colour, SA_RIGHT);
+	DrawString(left, right, top, GetString(str, amount), colour, SA_RIGHT | SA_FORCE);
 }
 
 /**
@@ -267,7 +267,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	Money sum;
 
 	/* Year header */
-	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TC_FROMSTRING, SA_RIGHT, true);
+	DrawString(r.left, r.right, y, GetString(STR_FINANCES_YEAR, year), TC_FROMSTRING, SA_RIGHT | SA_FORCE, true);
 	y += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 	/* Categories */
@@ -310,10 +310,10 @@ static constexpr NWidgetPart _nested_company_finances_widgets[] = {
 				NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_FINANCES_BANK_BALANCE_TITLE), SetPadding(WidgetDimensions::unscaled.vsep_normal, 0, 0, 0),
 			EndContainer(),
 			NWidget(NWID_VERTICAL), // Vertical column with bank balance amount, loan amount, and total.
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_CF_OWN_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_CF_LOAN_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_CF_OWN_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT | SA_FORCE),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_CF_LOAN_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT | SA_FORCE),
 				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_CF_BALANCE_LINE), SetMinimalSize(0, WidgetDimensions::unscaled.vsep_normal),
-				NWidget(WWT_TEXT, INVALID_COLOUR, WID_CF_BALANCE_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				NWidget(WWT_TEXT, INVALID_COLOUR, WID_CF_BALANCE_VALUE), SetAlignment(SA_VERT_CENTER | SA_RIGHT | SA_FORCE),
 			EndContainer(),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_CF_SEL_MAXLOAN),
 				NWidget(NWID_VERTICAL), SetPIPRatio(0, 0, 1), // Max loan information
@@ -1957,13 +1957,14 @@ struct CompanyInfrastructureWindow : Window
 	 */
 	void DrawCountLine(const Rect &r, int &y, int count, Money monthly_cost) const
 	{
-		DrawString(r.left, r.right, y += GetCharacterHeight(FS_NORMAL), GetString(STR_JUST_COMMA, count), TC_WHITE, SA_RIGHT);
+		Rect cr = r.Indent(this->total_width, _current_text_dir == TD_RTL);
+		DrawString(cr.left, cr.right, y += GetCharacterHeight(FS_NORMAL), GetString(STR_JUST_COMMA, count), TC_WHITE, SA_RIGHT | SA_FORCE);
 
 		if (_settings_game.economy.infrastructure_maintenance) {
 			Rect tr = r.WithWidth(this->total_width, _current_text_dir == TD_RTL);
 			DrawString(tr.left, tr.right, y,
 				GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, monthly_cost * 12),
-				TC_FROMSTRING, SA_RIGHT);
+				TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 		}
 	}
 
@@ -2048,7 +2049,7 @@ struct CompanyInfrastructureWindow : Window
 					y += WidgetDimensions::scaled.vsep_normal;
 					DrawString(tr.left, tr.right, y,
 						GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, this->GetTotalMaintenanceCost() * 12),
-						TC_FROMSTRING, SA_RIGHT);
+						TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 				}
 				break;
 
