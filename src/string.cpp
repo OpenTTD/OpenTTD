@@ -470,22 +470,6 @@ size_t Utf8Decode(char32_t *c, const char *s)
 	return 1;
 }
 
-#ifdef DEFINE_STRCASESTR
-char *strcasestr(const char *haystack, const char *needle)
-{
-	size_t hay_len = strlen(haystack);
-	size_t needle_len = strlen(needle);
-	while (hay_len >= needle_len) {
-		if (strncasecmp(haystack, needle, needle_len) == 0) return const_cast<char *>(haystack);
-
-		haystack++;
-		hay_len--;
-	}
-
-	return nullptr;
-}
-#endif /* DEFINE_STRCASESTR */
-
 /**
  * Test if a unicode character is considered garbage to be skipped.
  * @param c Character to test.
