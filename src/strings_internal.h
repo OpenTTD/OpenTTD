@@ -274,23 +274,7 @@ public:
 		::Utf8Encode(iterator, c);
 	}
 
-	/**
-	 * Get the current index in the string.
-	 * @return The index.
-	 */
-	size_t CurrentIndex()
-	{
-		return this->string->size();
-	}
-
-	/**
-	 * Get the reference to the character at the given index.
-	 * @return The reference to the character.
-	 */
-	char &operator[](size_t index)
-	{
-		return (*this->string)[index];
-	}
+	std::string &GetString() { return *this->string; }
 };
 
 void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters &args, uint case_index = 0, bool game_script = false);
