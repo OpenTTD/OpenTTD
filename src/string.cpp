@@ -470,56 +470,6 @@ size_t Utf8Decode(char32_t *c, const char *s)
 	return 1;
 }
 
-
-/**
- * Encode a unicode character and place it in the buffer.
- * @tparam T Type of the buffer.
- * @param buf Buffer to place character.
- * @param c   Unicode character to encode.
- * @return Number of characters in the encoded sequence.
- */
-template <class T>
-inline size_t Utf8Encode(T buf, char32_t c)
-{
-	if (c < 0x80) {
-		*buf = c;
-		return 1;
-	} else if (c < 0x800) {
-		*buf++ = 0xC0 + GB(c,  6, 5);
-		*buf   = 0x80 + GB(c,  0, 6);
-		return 2;
-	} else if (c < 0x10000) {
-		*buf++ = 0xE0 + GB(c, 12, 4);
-		*buf++ = 0x80 + GB(c,  6, 6);
-		*buf   = 0x80 + GB(c,  0, 6);
-		return 3;
-	} else if (c < 0x110000) {
-		*buf++ = 0xF0 + GB(c, 18, 3);
-		*buf++ = 0x80 + GB(c, 12, 6);
-		*buf++ = 0x80 + GB(c,  6, 6);
-		*buf   = 0x80 + GB(c,  0, 6);
-		return 4;
-	}
-
-	*buf = '?';
-	return 1;
-}
-
-size_t Utf8Encode(char *buf, char32_t c)
-{
-	return Utf8Encode<char *>(buf, c);
-}
-
-size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, char32_t c)
-{
-	return Utf8Encode<std::ostreambuf_iterator<char> &>(buf, c);
-}
-
-size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, char32_t c)
-{
-	return Utf8Encode<std::back_insert_iterator<std::string> &>(buf, c);
-}
-
 /**
  * Properly terminate an UTF8 string to some maximum length
  * @param s string to check if it needs additional trimming

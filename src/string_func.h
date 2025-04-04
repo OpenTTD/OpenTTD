@@ -90,10 +90,7 @@ size_t Utf8Decode(char32_t *c, const char *s);
 /* std::string_view::iterator might be char *, in which case we do not want this templated variant to be taken. */
 template <typename T> requires (!std::is_same_v<T, char *> && (std::is_same_v<std::string_view::iterator, T> || std::is_same_v<std::string::iterator, T>))
 inline size_t Utf8Decode(char32_t *c, T &s) { return Utf8Decode(c, &*s); }
-size_t Utf8Encode(char *buf, char32_t c);
-size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, char32_t c);
-size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, char32_t c);
-inline size_t Utf8Encode(std::string::iterator &s, char32_t c) { return Utf8Encode(&*s, c); }
+
 size_t Utf8TrimString(char *s, size_t maxlen);
 
 
