@@ -188,30 +188,17 @@ static void StrMakeValid(T &dst, const char *str, const char *last, StringValida
 }
 
 /**
- * Scans the string for invalid characters and replaces then with a
+ * Scans the string for invalid characters and replaces them with a
  * question mark '?' (if not ignored).
  * @param str The string to validate.
- * @param last The last valid character of str.
  * @param settings The settings for the string validation.
- */
-void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings)
-{
-	char *dst = str;
-	StrMakeValid(dst, str, last, settings);
-	*dst = '\0';
-}
-
-/**
- * Scans the string for invalid characters and replaces then with a
- * question mark '?' (if not ignored).
- * Only use this function when you are sure the string ends with a '\0';
- * otherwise use StrMakeValidInPlace(str, last, settings) variant.
- * @param str The string (of which you are sure ends with '\0') to validate.
+ * @note The string must be properly NUL terminated.
  */
 void StrMakeValidInPlace(char *str, StringValidationSettings settings)
 {
-	/* We know it is '\0' terminated. */
-	StrMakeValidInPlace(str, str + strlen(str), settings);
+	char *dst = str;
+	StrMakeValid(dst, str, str + strlen(str), settings);
+	*dst = '\0';
 }
 
 /**
