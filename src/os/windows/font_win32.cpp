@@ -337,7 +337,7 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 				_wsplitpath(fontPath, nullptr, nullptr, fname, nullptr);
 
 				wcsncpy_s(logfont.lfFaceName, lengthof(logfont.lfFaceName), fname, _TRUNCATE);
-				logfont.lfWeight = strcasestr(font_name.c_str(), " bold") != nullptr || strcasestr(font_name.c_str(), "-bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+				logfont.lfWeight = StrContainsIgnoreCase(font_name, " bold") || StrContainsIgnoreCase(font_name, "-bold") ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
 			}
 		}
 	}
@@ -345,7 +345,7 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 	return logfont.lfFaceName[0] != 0;
 }
 
-static void LoadWin32Font(FontSize fs, const LOGFONT &logfont, uint size, const char *font_name)
+static void LoadWin32Font(FontSize fs, const LOGFONT &logfont, uint size, std::string_view font_name)
 {
 	HFONT font = CreateFontIndirect(&logfont);
 	if (font == nullptr) {
@@ -369,7 +369,6 @@ void LoadWin32Font(FontSize fs)
 	std::string font = GetFontCacheFontName(fs);
 	if (font.empty()) return;
 
-	const char *font_name = font.c_str();
 	LOGFONT logfont;
 	MemSetT(&logfont, 0);
 	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
@@ -379,7 +378,7 @@ void LoadWin32Font(FontSize fs)
 
 	if (settings->os_handle != nullptr) {
 		logfont = *(const LOGFONT *)settings->os_handle;
-	} else if (strchr(font_name, '.') != nullptr) {
+	} else if (font.find('.') != std::string::npos) {
 		/* Might be a font file name, try load it. */
 		if (!TryLoadFontFromFile(font, logfont)) {
 			ShowInfo("Unable to load file '{}' for {} font, using default windows font selection instead", font, FontSizeToName(fs));
@@ -387,9 +386,9 @@ void LoadWin32Font(FontSize fs)
 	}
 
 	if (logfont.lfFaceName[0] == 0) {
-		logfont.lfWeight = strcasestr(font_name, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-		convert_to_fs(font_name, logfont.lfFaceName);
+		logfont.lfWeight = StrContainsIgnoreCase(font, " bold") ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+		convert_to_fs(font, logfont.lfFaceName);
 	}
 
-	LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font_name);
+	LoadWin32Font(fs, logfont, GetFontCacheFontSize(fs), font);
 }

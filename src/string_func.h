@@ -243,12 +243,4 @@ inline bool IsWhitespace(char32_t c)
 #include <sys/param.h>
 #endif
 
-/* strcasestr is available for _GNU_SOURCE, BSD and some Apple */
-#if defined(_GNU_SOURCE) || (defined(__BSD_VISIBLE) && __BSD_VISIBLE) || (defined(__APPLE__) && (!defined(_POSIX_C_SOURCE) || defined(_DARWIN_C_SOURCE))) || defined(_NETBSD_SOURCE)
-#	undef DEFINE_STRCASESTR
-#else
-#	define DEFINE_STRCASESTR
-char *strcasestr(const char *haystack, const char *needle);
-#endif /* strcasestr is available */
-
 #endif /* STRING_FUNC_H */
