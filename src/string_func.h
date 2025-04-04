@@ -107,23 +107,6 @@ inline char32_t Utf8Consume(Titr &s)
 }
 
 /**
- * Return the length of a UTF-8 encoded character.
- * @param c Unicode character.
- * @return Length of UTF-8 encoding for character.
- */
-inline int8_t Utf8CharLen(char32_t c)
-{
-	if (c < 0x80)       return 1;
-	if (c < 0x800)      return 2;
-	if (c < 0x10000)    return 3;
-	if (c < 0x110000)   return 4;
-
-	/* Invalid valid, we encode as a '?' */
-	return 1;
-}
-
-
-/**
  * Return the length of an UTF-8 encoded value based on a single char. This
  * char should be the first byte of the UTF-8 encoding. If not, or encoding
  * is invalid, return value is 0
