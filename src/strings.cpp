@@ -1165,20 +1165,21 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						/* Now we need to figure out what text to resolve, i.e.
 						 * what do we need to draw? So get the actual raw string
 						 * first using the control code to get said string. */
-						char input[4 + 1];
-						char *p = input + Utf8Encode(input, args.GetTypeAtOffset(offset));
-						*p = '\0';
+						std::string input;
+						{
+							StringBuilder tmp_builder(input);
+							tmp_builder.PutUtf8(args.GetTypeAtOffset(offset));
+						}
+
+						std::string buffer;
+						{
+							AutoRestoreBackup sgd_backup(_scan_for_gender_data, true);
+							StringBuilder tmp_builder(buffer);
+							StringParameters tmp_params = args.GetRemainingParameters(offset);
+							FormatString(tmp_builder, input, tmp_params);
+						}
 
 						/* The gender is stored at the start of the formatted string. */
-						bool old_sgd = _scan_for_gender_data;
-						_scan_for_gender_data = true;
-						std::string buffer;
-						StringBuilder tmp_builder(buffer);
-						StringParameters tmp_params = args.GetRemainingParameters(offset);
-						FormatString(tmp_builder, input, tmp_params);
-						_scan_for_gender_data = old_sgd;
-
-						/* And determine the string. */
 						const char *s = buffer.c_str();
 						char32_t c = Utf8Consume(&s);
 						/* Does this string have a gender, if so, set it */
