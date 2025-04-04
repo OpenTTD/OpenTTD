@@ -1795,18 +1795,22 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	 * don't want to update the infrastructure counts twice. */
 	uint num_pieces = tile < other_end ? (GetTunnelBridgeLength(tile, other_end) + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR : 0;
 
-	for (RoadTramType rtt : _roadtramtypes) {
-		/* Update all roadtypes, no matter if they are present */
-		if (GetRoadOwner(tile, rtt) == old_owner) {
-			RoadType rt = GetRoadType(tile, rtt);
-			if (rt != INVALID_ROADTYPE) {
-				/* Update company infrastructure counts. A full diagonal road tile has two road bits.
-				 * No need to dirty windows here, we'll redraw the whole screen anyway. */
-				Company::Get(old_owner)->infrastructure.road[rt] -= num_pieces * 2;
-				if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += num_pieces * 2;
-			}
+	TransportType tt = GetTunnelBridgeTransportType(tile);
 
-			SetRoadOwner(tile, rtt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
+	if (tt == TRANSPORT_ROAD) {
+		for (RoadTramType rtt : _roadtramtypes) {
+			/* Update all roadtypes, no matter if they are present */
+			if (GetRoadOwner(tile, rtt) == old_owner) {
+				RoadType rt = GetRoadType(tile, rtt);
+				if (rt != INVALID_ROADTYPE) {
+					/* Update company infrastructure counts. A full diagonal road tile has two road bits.
+					 * No need to dirty windows here, we'll redraw the whole screen anyway. */
+					Company::Get(old_owner)->infrastructure.road[rt] -= num_pieces * 2;
+					if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.road[rt] += num_pieces * 2;
+				}
+
+				SetRoadOwner(tile, rtt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
+			}
 		}
 	}
 
@@ -1814,7 +1818,6 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 
 	/* Update company infrastructure counts for rail and water as well.
 	 * No need to dirty windows here, we'll redraw the whole screen anyway. */
-	TransportType tt = GetTunnelBridgeTransportType(tile);
 	Company *old = Company::Get(old_owner);
 	if (tt == TRANSPORT_RAIL) {
 		old->infrastructure.rail[GetRailType(tile)] -= num_pieces;
