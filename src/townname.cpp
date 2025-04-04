@@ -230,6 +230,8 @@ static void ReplaceWords(const char *org, const char *rep, StringBuilder &builde
  */
 static void ReplaceEnglishWords(StringBuilder &builder, size_t start, bool original)
 {
+	if (original) ReplaceWords("Ce", "Ke", builder, start);
+	if (original) ReplaceWords("Ci", "Ki", builder, start);
 	ReplaceWords("Cunt", "East", builder, start);
 	ReplaceWords("Slag", "Pits", builder, start);
 	ReplaceWords("Slut", "Edin", builder, start);
@@ -264,11 +266,6 @@ static void MakeEnglishOriginalTownName(StringBuilder &builder, uint32_t seed)
 	/* optional last segment */
 	i = SeedChanceBias(15, std::size(_name_original_english_6), seed, 60);
 	if (i >= 0) builder += _name_original_english_6[i];
-
-	/* Ce, Ci => Ke, Ki */
-	if (builder[start] == 'C' && (builder[start + 1] == 'e' || builder[start + 1] == 'i')) {
-		builder[start] = 'K';
-	}
 
 	assert(builder.CurrentIndex() - start >= 4);
 	ReplaceEnglishWords(builder, start, true);
