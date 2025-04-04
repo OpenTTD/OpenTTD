@@ -470,33 +470,6 @@ size_t Utf8Decode(char32_t *c, const char *s)
 	return 1;
 }
 
-/**
- * Properly terminate an UTF8 string to some maximum length
- * @param s string to check if it needs additional trimming
- * @param maxlen the maximum length the buffer can have.
- * @return the new length in bytes of the string (eg. strlen(new_string))
- * @note maxlen is the string length _INCLUDING_ the terminating '\0'
- */
-size_t Utf8TrimString(char *s, size_t maxlen)
-{
-	size_t length = 0;
-
-	for (const char *ptr = strchr(s, '\0'); *s != '\0';) {
-		size_t len = Utf8EncodedCharLen(*s);
-		/* Silently ignore invalid UTF8 sequences, our only concern trimming */
-		if (len == 0) len = 1;
-
-		/* Take care when a hard cutoff was made for the string and
-		 * the last UTF8 sequence is invalid */
-		if (length + len >= maxlen || (s + len > ptr)) break;
-		s += len;
-		length += len;
-	}
-
-	*s = '\0';
-	return length;
-}
-
 #ifdef DEFINE_STRCASESTR
 char *strcasestr(const char *haystack, const char *needle)
 {
