@@ -885,30 +885,51 @@ static CommandCost CmdRailTrackHelper(DoCommandFlags flags, TileIndex tile, Tile
 	if (ret.Failed()) return ret;
 
 	bool had_success = false;
+	bool first_tile = true;
+	TileIndex wormhole_end = INVALID_TILE;
 	CommandCost last_error = CMD_ERROR;
 	for (;;) {
-		ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
-
-		if (ret.Failed()) {
-			last_error = std::move(ret);
-			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
-				if (fail_on_obstacle) return last_error;
-				if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
+		/* Check if hopping bridge/tunnel (#11528). */
+		if (wormhole_end == INVALID_TILE && IsDiagonalTrackdir(trackdir) && GetTileType(tile) == MP_TUNNELBRIDGE && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+			/* If the building direction is the same as the bridge/tunnel direction, skip building tracks until the bridge/tunnel ends. */
+			if (GetTunnelBridgeDirection(tile) == TrackdirToExitdir(trackdir)) {
+				wormhole_end = GetOtherTunnelBridgeEnd(tile);
+			} else if (!first_tile && GetTunnelBridgeDirection(tile) == TrackdirToExitdir(ReverseTrackdir(trackdir))) {
+				break; // Upon running into a bridge ramp from the underside, we should stop building tracks.
 			}
+		}
 
-			/* Ownership errors are more important. */
-			if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
-		} else {
-			had_success = true;
-			total_cost.AddCost(ret.GetCost());
+		if (wormhole_end == INVALID_TILE) {
+			ret = remove ? Command<CMD_REMOVE_SINGLE_RAIL>::Do(flags, tile, TrackdirToTrack(trackdir)) : Command<CMD_BUILD_SINGLE_RAIL>::Do(flags, tile, railtype, TrackdirToTrack(trackdir), auto_remove_signals);
+
+			if (ret.Failed()) {
+				last_error = std::move(ret);
+				if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
+					if (fail_on_obstacle) return last_error;
+					if (had_success) break; // Keep going if we haven't constructed any rail yet, skipping the start of the drag
+				}
+
+				/* Ownership errors are more important. */
+				if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
+			} else {
+				had_success = true;
+				total_cost.AddCost(ret.GetCost());
+			}
 		}
 
 		if (tile == end_tile) break;
+
+		/* Reset skip flag for the next tile after tunnel/bridge ending. */
+		if (wormhole_end == tile) {
+			wormhole_end = INVALID_TILE;
+		}
 
 		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 
 		/* toggle railbit for the non-diagonal tracks */
 		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
+
+		first_tile = false;
 	}
 
 	if (had_success) return total_cost;
