@@ -28,7 +28,7 @@ bool strtolower(std::string &str, std::string::size_type offs = 0);
 
 [[nodiscard]] bool StrValid(std::span<const char> str);
 void StrTrimInPlace(std::string &str);
-std::string_view StrTrimView(std::string_view str);
+[[nodiscard]] std::string_view StrTrimView(std::string_view str);
 
 [[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix);
 [[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix);
@@ -83,8 +83,6 @@ size_t Utf8Encode(char *buf, char32_t c);
 size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, char32_t c);
 size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, char32_t c);
 inline size_t Utf8Encode(std::string::iterator &s, char32_t c) { return Utf8Encode(&*s, c); }
-size_t Utf8TrimString(char *s, size_t maxlen);
-
 
 inline char32_t Utf8Consume(const char **s)
 {
@@ -141,36 +139,6 @@ inline int8_t Utf8EncodedCharLen(char c)
 inline bool IsUtf8Part(char c)
 {
 	return GB(c, 6, 2) == 2;
-}
-
-/**
- * Retrieve the previous UNICODE character in an UTF-8 encoded string.
- * @param s char pointer pointing to (the first char of) the next character
- * @return a pointer in 's' to the previous UNICODE character's first byte
- * @note The function should not be used to determine the length of the previous
- * encoded char because it might be an invalid/corrupt start-sequence
- */
-inline char *Utf8PrevChar(char *s)
-{
-	char *ret = s;
-	while (IsUtf8Part(*--ret)) {}
-	return ret;
-}
-
-inline const char *Utf8PrevChar(const char *s)
-{
-	const char *ret = s;
-	while (IsUtf8Part(*--ret)) {}
-	return ret;
-}
-
-inline std::string::iterator Utf8PrevChar(std::string::iterator &s)
-{
-	auto cur = s;
-	do {
-		cur = std::prev(cur);
-	} while (IsUtf8Part(*cur));
-	return cur;
 }
 
 size_t Utf8StringLength(std::string_view str);
