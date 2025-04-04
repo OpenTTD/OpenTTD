@@ -2253,15 +2253,17 @@ void NWidgetBackground::SetupSmallestSize(Window *w)
 		if (w == nullptr) return;
 
 		if (this->type == WWT_FRAME) {
+			std::string text = GetStringForWidget(w, this);
+			Dimension text_size = text.empty() ? Dimension{0, 0} : GetStringBoundingBox(text, this->text_size);
+
 			/* Account for the size of the frame's text if that exists */
 			this->child->padding     = WidgetDimensions::scaled.frametext;
-			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, this->GetString() != STR_NULL ? GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.frametext.top / 2 : 0);
+			this->child->padding.top = std::max<uint8_t>(WidgetDimensions::scaled.frametext.top, text_size.height != 0 ? text_size.height + WidgetDimensions::scaled.frametext.top / 2 : 0);
 
 			this->smallest_x += this->child->padding.Horizontal();
 			this->smallest_y += this->child->padding.Vertical();
 
-			std::string text = GetStringForWidget(w, this);
-			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(text, this->text_size).width + WidgetDimensions::scaled.frametext.Horizontal());
+			this->smallest_x = std::max(this->smallest_x, text_size.width + WidgetDimensions::scaled.frametext.Horizontal());
 		} else if (this->type == WWT_INSET) {
 			/* Apply automatic padding for bevel thickness. */
 			this->child->padding = WidgetDimensions::scaled.bevel;
