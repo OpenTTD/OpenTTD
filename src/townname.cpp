@@ -210,38 +210,37 @@ static inline int32_t SeedChanceBias(uint8_t shift_by, size_t max, uint32_t seed
 
 /**
  * Replaces a string beginning in 'org' with 'rep'.
- * @param org     string to replace, has to be 4 characters long
- * @param rep     string to be replaced with, has to be 4 characters long
- * @param builder string builder of the town name
- * @param start   the start index within the builder for the town name
+ * @param org     string to replace
+ * @param rep     string to be replaced with
+ * @param str     string of the town name
+ * @param start   the start index within the string for the town name
  */
-static void ReplaceWords(const char *org, const char *rep, StringBuilder &builder, size_t start)
+static void ReplaceWords(std::string_view org, std::string_view rep, std::string &str, size_t start)
 {
-	assert(strlen(org) == 4 && strlen(rep) == 4 && builder.CurrentIndex() - start >= 4);
-	if (strncmp(&builder[start], org, 4) == 0) memcpy(&builder[start], rep, 4); // Safe as the string in buf is always more than 4 characters long.
+	if (str.compare(start, org.size(), org) == 0) str.replace(start, org.size(), rep);
 }
 
 
 /**
  * Replaces english curses and ugly letter combinations by nicer ones.
- * @param builder  The builder with the town name
- * @param start    The start index into the builder for the first town name
+ * @param str      The string with the town name
+ * @param start    The start index into the string for the first town name
  * @param original English (Original) generator was used
  */
-static void ReplaceEnglishWords(StringBuilder &builder, size_t start, bool original)
+static void ReplaceEnglishWords(std::string &str, size_t start, bool original)
 {
-	if (original) ReplaceWords("Ce", "Ke", builder, start);
-	if (original) ReplaceWords("Ci", "Ki", builder, start);
-	ReplaceWords("Cunt", "East", builder, start);
-	ReplaceWords("Slag", "Pits", builder, start);
-	ReplaceWords("Slut", "Edin", builder, start);
-	if (!original) ReplaceWords("Fart", "Boot", builder, start); // never happens with 'English (Original)'
-	ReplaceWords("Drar", "Quar", builder, start);
-	ReplaceWords("Dreh", "Bash", builder, start);
-	ReplaceWords("Frar", "Shor", builder, start);
-	ReplaceWords("Grar", "Aber", builder, start);
-	ReplaceWords("Brar", "Over", builder, start);
-	ReplaceWords("Wrar", original ? "Inve" : "Stan", builder, start);
+	if (original) ReplaceWords("Ce", "Ke", str, start);
+	if (original) ReplaceWords("Ci", "Ki", str, start);
+	ReplaceWords("Cunt", "East", str, start);
+	ReplaceWords("Slag", "Pits", str, start);
+	ReplaceWords("Slut", "Edin", str, start);
+	if (!original) ReplaceWords("Fart", "Boot", str, start); // never happens with 'English (Original)'
+	ReplaceWords("Drar", "Quar", str, start);
+	ReplaceWords("Dreh", "Bash", str, start);
+	ReplaceWords("Frar", "Shor", str, start);
+	ReplaceWords("Grar", "Aber", str, start);
+	ReplaceWords("Brar", "Over", str, start);
+	ReplaceWords("Wrar", original ? "Inve" : "Stan", str, start);
 }
 
 /**
@@ -251,7 +250,7 @@ static void ReplaceEnglishWords(StringBuilder &builder, size_t start, bool origi
  */
 static void MakeEnglishOriginalTownName(StringBuilder &builder, uint32_t seed)
 {
-	size_t start = builder.CurrentIndex();
+	size_t start = builder.GetString().size();
 
 	/* optional first segment */
 	int i = SeedChanceBias(0, std::size(_name_original_english_1), seed, 50);
@@ -267,8 +266,7 @@ static void MakeEnglishOriginalTownName(StringBuilder &builder, uint32_t seed)
 	i = SeedChanceBias(15, std::size(_name_original_english_6), seed, 60);
 	if (i >= 0) builder += _name_original_english_6[i];
 
-	assert(builder.CurrentIndex() - start >= 4);
-	ReplaceEnglishWords(builder, start, true);
+	ReplaceEnglishWords(builder.GetString(), start, true);
 }
 
 
@@ -279,7 +277,7 @@ static void MakeEnglishOriginalTownName(StringBuilder &builder, uint32_t seed)
  */
 static void MakeEnglishAdditionalTownName(StringBuilder &builder, uint32_t seed)
 {
-	size_t start = builder.CurrentIndex();
+	size_t start = builder.GetString().size();
 
 	/* optional first segment */
 	int i = SeedChanceBias(0, std::size(_name_additional_english_prefix), seed, 50);
@@ -303,8 +301,7 @@ static void MakeEnglishAdditionalTownName(StringBuilder &builder, uint32_t seed)
 	i = SeedChanceBias(15, std::size(_name_additional_english_3), seed, 60);
 	if (i >= 0) builder += _name_additional_english_3[i];
 
-	assert(builder.CurrentIndex() - start >= 4);
-	ReplaceEnglishWords(builder, start, false);
+	ReplaceEnglishWords(builder.GetString(), start, false);
 }
 
 
@@ -477,7 +474,7 @@ static void MakeDutchTownName(StringBuilder &builder, uint32_t seed)
  */
 static void MakeFinnishTownName(StringBuilder &builder, uint32_t seed)
 {
-	size_t start = builder.CurrentIndex();
+	size_t start = builder.GetString().size();
 
 	/* Select randomly if town name should consists of one or two parts. */
 	if (SeedChance(0, 15, seed) >= 10) {
@@ -491,11 +488,11 @@ static void MakeFinnishTownName(StringBuilder &builder, uint32_t seed)
 		 * that the ones in _name_finnish_2 are not good for this purpose. */
 		uint sel = SeedChance( 0, std::size(_name_finnish_1), seed);
 		builder += _name_finnish_1[sel];
-		size_t last = builder.CurrentIndex() - 1;
-		if (builder[last] == 'i') builder[last] = 'e';
 
-		std::string_view view(&builder[start], builder.CurrentIndex() - start);
-		if (view.find_first_of("aouAOU") != std::string_view::npos) {
+		std::string &str = builder.GetString();
+		if (str.back() == 'i') str.back() = 'e';
+
+		if (str.find_first_of("aouAOU", start) != std::string_view::npos) {
 			builder += "la";
 		} else {
 			builder += "l\u00e4";
@@ -720,10 +717,10 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 
 				/* k-i -> c-i, h-i -> z-i */
 				if (endstr[0] == 'i') {
-					size_t last = builder.CurrentIndex() - 1;
-					switch (builder[last]) {
-						case 'k': builder[last] = 'c'; break;
-						case 'h': builder[last] = 'z'; break;
+					std::string &str = builder.GetString();
+					switch (str.back()) {
+						case 'k': str.back() = 'c'; break;
+						case 'h': str.back() = 'z'; break;
 						default: break;
 					}
 				}
