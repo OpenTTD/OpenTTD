@@ -1028,7 +1028,7 @@ static void SlStdString(void *ptr, VarType conv)
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;
 			}
-			*str = StrMakeValid(*str, settings);
+			StrMakeValidInPlace(*str, settings);
 		}
 
 		case SLA_PTRS: break;
