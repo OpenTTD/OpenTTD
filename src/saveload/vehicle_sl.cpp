@@ -274,10 +274,10 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 		 * a) both next_shared and previous_shared are not set for pre 5,2 games
 		 * b) both next_shared and previous_shared are set for later games
 		 */
-		std::map<Order*, OrderList*> mapping;
+		std::map<uint32_t, OrderList *> mapping;
 
 		for (Vehicle *v : Vehicle::Iterate()) {
-			if (v->old_orders != nullptr) {
+			if (v->orders != nullptr) {
 				if (IsSavegameVersionBefore(SLV_105)) { // Pre-105 didn't save an OrderList
 					if (mapping[v->old_orders] == nullptr) {
 						/* This adds the whole shared vehicle chain for case b */
@@ -286,7 +286,11 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 						 * allowed in these savegames matches the number of OrderLists. As
 						 * such each vehicle can get an OrderList and it will (still) fit. */
 						assert(OrderList::CanAllocateItem());
-						v->orders = mapping[v->old_orders] = new OrderList(v->old_orders, v);
+						std::vector<Order> orders;
+						for (const OldOrderSaveLoadItem *old_order = GetOldOrder(v->old_orders); old_order != nullptr; old_order = GetOldOrder(old_order->next)) {
+							orders.push_back(std::move(old_order->order));
+						}
+						v->orders = mapping[v->old_orders] = new OrderList(std::move(orders), v);
 					} else {
 						v->orders = mapping[v->old_orders];
 						/* For old games (case a) we must create the shared vehicle chain */
@@ -296,7 +300,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 					}
 				} else { // OrderList was saved as such, only recalculate not saved values
 					if (v->PreviousShared() == nullptr) {
-						v->orders->Initialize(v->orders->first, v);
+						v->orders->Initialize(v);
 					}
 				}
 			}
@@ -320,7 +324,8 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 
 				/* As above, allocating OrderList here is safe. */
 				assert(OrderList::CanAllocateItem());
-				v->orders = new OrderList(nullptr, v);
+				v->orders = new OrderList();
+				v->orders->first_shared = v;
 				for (Vehicle *u = v; u != nullptr; u = u->next_shared) {
 					u->orders = v->orders;
 				}
@@ -715,7 +720,8 @@ public:
 		SLE_CONDVAR(Vehicle, timetable_start,       SLE_FILE_I32 | SLE_VAR_U64, SLV_129, SLV_TIMETABLE_START_TICKS),
 		SLE_CONDVAR(Vehicle, timetable_start,       SLE_UINT64,                 SLV_TIMETABLE_START_TICKS, SL_MAX_VERSION),
 
-		SLE_CONDREF(Vehicle, orders,                REF_ORDER,                    SL_MIN_VERSION, SLV_105),
+		SLE_CONDVARNAME(Vehicle, old_orders, "orders", SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_69),
+		SLE_CONDVARNAME(Vehicle, old_orders, "orders", SLE_UINT32,                 SLV_69, SLV_105),
 		SLE_CONDREF(Vehicle, orders,                REF_ORDERLIST,              SLV_105, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
