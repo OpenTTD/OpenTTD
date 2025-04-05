@@ -12,7 +12,6 @@
 #include "../strings_func.h"
 #include "../core/string_builder.hpp"
 #include "saveload_internal.h"
-#include <sstream>
 
 #include "table/strings.h"
 

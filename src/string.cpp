@@ -17,9 +17,6 @@
 
 #include "table/control_codes.h"
 
-#include <sstream>
-#include <iomanip>
-
 #ifdef _MSC_VER
 #	define strncasecmp strnicmp
 #endif
