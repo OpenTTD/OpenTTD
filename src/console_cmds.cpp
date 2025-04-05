@@ -45,8 +45,6 @@
 #include "company_cmd.h"
 #include "misc_cmd.h"
 
-#include <sstream>
-
 #include "table/strings.h"
 
 #include "safeguards.h"

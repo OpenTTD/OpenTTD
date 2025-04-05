@@ -11,7 +11,6 @@
 #include "../string_func.h"
 #include "../strings_func.h"
 #include "saveload_internal.h"
-#include <sstream>
 
 #include "table/strings.h"
 

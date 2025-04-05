@@ -50,8 +50,6 @@
 
 #include "table/strings.h"
 
-#include <sstream>
-
 #include "safeguards.h"
 
 TownKdtree _town_local_authority_kdtree{};
