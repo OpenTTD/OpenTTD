@@ -414,7 +414,7 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 Point LinkGraphOverlay::GetStationMiddle(const Station *st) const
 {
 	if (this->window->viewport != nullptr) {
-		return GetViewportStationMiddle(this->window->viewport, st);
+		return GetViewportStationMiddle(*this->window->viewport, st);
 	} else {
 		/* assume this is a smallmap */
 		return GetSmallMapStationMiddle(this->window, st);

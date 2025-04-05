@@ -203,19 +203,19 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 {
 	/* Iterate from back, so that main viewport is checked first */
 	for (const Window *w : Window::IterateFromBack()) {
-		const Viewport *vp = w->viewport;
+		if (w->viewport == nullptr) continue;
 
-		if (vp != nullptr &&
-				left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
-				top < vp->virtual_top + vp->virtual_height && bottom > vp->virtual_top) {
-			int screen_x = (left + right) / 2 - vp->virtual_left;
-			int width = (vp->virtual_width == 0 ? 1 : vp->virtual_width);
+		const Viewport &vp = *w->viewport;
+		if (left < vp.virtual_left + vp.virtual_width && right > vp.virtual_left &&
+				top < vp.virtual_top + vp.virtual_height && bottom > vp.virtual_top) {
+			int screen_x = (left + right) / 2 - vp.virtual_left;
+			int width = (vp.virtual_width == 0 ? 1 : vp.virtual_width);
 			float panning = (float)screen_x / width;
 
 			StartSound(
 				sound,
 				panning,
-				_vol_factor_by_zoom[vp->zoom]
+				_vol_factor_by_zoom[vp.zoom]
 			);
 			return;
 		}

@@ -112,7 +112,7 @@ bool VehicleClicked(VehicleList::const_iterator begin, VehicleList::const_iterat
 bool VehicleClicked(const GUIVehicleGroup &vehgroup);
 void StartStopVehicle(const Vehicle *v, bool texteffect);
 
-Vehicle *CheckClickOnVehicle(const struct Viewport *vp, int x, int y);
+Vehicle *CheckClickOnVehicle(const struct Viewport &vp, int x, int y);
 void StopGlobalFollowVehicle(const Vehicle *v);
 
 void DrawVehicleImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineImageType image_type, int skip);

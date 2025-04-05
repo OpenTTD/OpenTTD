@@ -316,7 +316,7 @@ public:
 
 	Owner owner = INVALID_OWNER; ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
-	ViewportData *viewport = nullptr; ///< Pointer to viewport data, if present.
+	std::unique_ptr<ViewportData> viewport; ///< Pointer to viewport data, if present.
 	const NWidgetCore *nested_focus = nullptr; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
 	std::map<WidgetID, QueryString*> querystrings{}; ///< QueryString associated to WWT_EDITBOX widgets.
 	std::unique_ptr<NWidgetBase> nested_root{}; ///< Root of the nested tree.
