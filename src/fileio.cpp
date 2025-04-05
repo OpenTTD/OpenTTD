@@ -25,7 +25,6 @@
 #endif
 #include <charconv>
 #include <sys/stat.h>
-#include <sstream>
 #include <filesystem>
 
 #include "safeguards.h"

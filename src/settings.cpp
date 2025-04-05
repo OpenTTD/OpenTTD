@@ -597,8 +597,8 @@ void StringSettingDesc::MakeValueValid(std::string &str) const
 	/* In case a maximum length is imposed by the setting, the length
 	 * includes the '\0' termination for network transfer purposes.
 	 * Also ensure the string is valid after chopping of some bytes. */
-	std::string stdstr(str, 0, this->max_length - 1);
-	str.assign(StrMakeValid(stdstr, SVS_NONE));
+	str.erase(this->max_length - 1, std::string::npos);
+	StrMakeValidInPlace(str, SVS_NONE);
 }
 
 /**

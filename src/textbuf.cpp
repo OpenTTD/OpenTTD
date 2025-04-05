@@ -170,23 +170,29 @@ bool Textbuf::InsertString(const char *str, bool marked, const char *caret, cons
 
 	if (str == nullptr) return false;
 
-	uint16_t bytes = 0, chars = 0;
-	char32_t c;
-	for (const char *ptr = str; (c = Utf8Consume(&ptr)) != '\0';) {
-		if (!IsValidChar(c, this->afilter)) break;
+	uint16_t chars = 0;
+	uint16_t bytes;
+	{
+		Utf8View view(str);
+		auto cur = view.begin();
+		const auto end = view.end();
+		while (cur != end) {
+			if (!IsValidChar(*cur, this->afilter)) break;
 
-		uint8_t len = Utf8CharLen(c);
-		if (this->buf.size() + bytes + len >= this->max_bytes) break;
-		if (this->chars + chars + 1   > this->max_chars) break;
+			auto next = cur;
+			++next;
+			if (this->buf.size() + next.GetByteOffset() >= this->max_bytes) break;
+			if (this->chars + chars + 1 > this->max_chars) break;
 
-		bytes += len;
-		chars++;
-
-		/* Move caret if needed. */
-		if (ptr == caret) this->caretpos = insertpos + bytes;
+			cur = next;
+			chars++;
+		}
+		bytes = static_cast<uint16_t>(cur.GetByteOffset());
 	}
-
 	if (bytes == 0) return false;
+
+	/* Move caret if needed. */
+	if (str <= caret && caret <= str + bytes) this->caretpos = insertpos + (caret - str);
 
 	if (marked) {
 		this->markpos = insertpos;

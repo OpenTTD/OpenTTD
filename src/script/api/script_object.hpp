@@ -353,7 +353,7 @@ namespace ScriptObjectInternal {
 		if constexpr (std::is_same_v<std::string, T>) {
 			/* The string must be valid, i.e. not contain special codes. Since some
 			 * can be made with GSText, make sure the control codes are removed. */
-			data = ::StrMakeValid(data, SVS_NONE);
+			::StrMakeValidInPlace(data, SVS_NONE);
 		}
 	}
 

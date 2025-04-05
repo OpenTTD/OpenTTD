@@ -45,8 +45,6 @@
 #include "company_cmd.h"
 #include "misc_cmd.h"
 
-#include <sstream>
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -2207,7 +2205,7 @@ DEF_CONSOLE_CMD(ConContent)
 	if (StrEqualsIgnoreCase(argv[1], "state")) {
 		IConsolePrint(CC_WHITE, "id, type, state, name");
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
-			if (argc > 2 && strcasestr((*iter)->name.c_str(), argv[2]) == nullptr) continue;
+			if (argc > 2 && !StrContainsIgnoreCase((*iter)->name, argv[2])) continue;
 			OutputContentState(*iter);
 		}
 		return true;

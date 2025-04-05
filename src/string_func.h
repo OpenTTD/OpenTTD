@@ -21,14 +21,25 @@ void strecpy(std::span<char> dst, std::string_view src);
 
 std::string FormatArrayAsHex(std::span<const uint8_t> data);
 
-[[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 void StrMakeValidInPlace(char *str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+void StrMakeValidInPlace(std::string &str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+
+[[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+[[nodiscard]] inline std::string StrMakeValid(const char *str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK)
+{
+	return StrMakeValid(std::string_view(str), settings);
+}
+[[nodiscard]] inline std::string StrMakeValid(std::string &&str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK)
+{
+	StrMakeValidInPlace(str, settings);
+	return std::move(str);
+}
 
 bool strtolower(std::string &str, std::string::size_type offs = 0);
 
 [[nodiscard]] bool StrValid(std::span<const char> str);
 void StrTrimInPlace(std::string &str);
-std::string_view StrTrimView(std::string_view str);
+[[nodiscard]] std::string_view StrTrimView(std::string_view str);
 
 [[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix);
 [[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix);
@@ -59,119 +70,7 @@ inline bool StrEmpty(const char *s)
 	return s == nullptr || s[0] == '\0';
 }
 
-/**
- * Get the length of a string, within a limited buffer.
- *
- * @param str The pointer to the first element of the buffer
- * @param maxlen The maximum size of the buffer
- * @return The length of the string
- */
-inline size_t ttd_strnlen(const char *str, size_t maxlen)
-{
-	const char *t;
-	for (t = str; static_cast<size_t>(t - str) < maxlen && *t != '\0'; t++) {}
-	return t - str;
-}
-
 bool IsValidChar(char32_t key, CharSetFilter afilter);
-
-size_t Utf8Decode(char32_t *c, const char *s);
-/* std::string_view::iterator might be char *, in which case we do not want this templated variant to be taken. */
-template <typename T> requires (!std::is_same_v<T, char *> && (std::is_same_v<std::string_view::iterator, T> || std::is_same_v<std::string::iterator, T>))
-inline size_t Utf8Decode(char32_t *c, T &s) { return Utf8Decode(c, &*s); }
-size_t Utf8Encode(char *buf, char32_t c);
-size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, char32_t c);
-size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, char32_t c);
-inline size_t Utf8Encode(std::string::iterator &s, char32_t c) { return Utf8Encode(&*s, c); }
-size_t Utf8TrimString(char *s, size_t maxlen);
-
-
-inline char32_t Utf8Consume(const char **s)
-{
-	char32_t c;
-	*s += Utf8Decode(&c, *s);
-	return c;
-}
-
-template <class Titr>
-inline char32_t Utf8Consume(Titr &s)
-{
-	char32_t c;
-	s += Utf8Decode(&c, &*s);
-	return c;
-}
-
-/**
- * Return the length of a UTF-8 encoded character.
- * @param c Unicode character.
- * @return Length of UTF-8 encoding for character.
- */
-inline int8_t Utf8CharLen(char32_t c)
-{
-	if (c < 0x80)       return 1;
-	if (c < 0x800)      return 2;
-	if (c < 0x10000)    return 3;
-	if (c < 0x110000)   return 4;
-
-	/* Invalid valid, we encode as a '?' */
-	return 1;
-}
-
-
-/**
- * Return the length of an UTF-8 encoded value based on a single char. This
- * char should be the first byte of the UTF-8 encoding. If not, or encoding
- * is invalid, return value is 0
- * @param c char to query length of
- * @return requested size
- */
-inline int8_t Utf8EncodedCharLen(char c)
-{
-	if (GB(c, 3, 5) == 0x1E) return 4;
-	if (GB(c, 4, 4) == 0x0E) return 3;
-	if (GB(c, 5, 3) == 0x06) return 2;
-	if (GB(c, 7, 1) == 0x00) return 1;
-
-	/* Invalid UTF8 start encoding */
-	return 0;
-}
-
-
-/* Check if the given character is part of a UTF8 sequence */
-inline bool IsUtf8Part(char c)
-{
-	return GB(c, 6, 2) == 2;
-}
-
-/**
- * Retrieve the previous UNICODE character in an UTF-8 encoded string.
- * @param s char pointer pointing to (the first char of) the next character
- * @return a pointer in 's' to the previous UNICODE character's first byte
- * @note The function should not be used to determine the length of the previous
- * encoded char because it might be an invalid/corrupt start-sequence
- */
-inline char *Utf8PrevChar(char *s)
-{
-	char *ret = s;
-	while (IsUtf8Part(*--ret)) {}
-	return ret;
-}
-
-inline const char *Utf8PrevChar(const char *s)
-{
-	const char *ret = s;
-	while (IsUtf8Part(*--ret)) {}
-	return ret;
-}
-
-inline std::string::iterator Utf8PrevChar(std::string::iterator &s)
-{
-	auto cur = s;
-	do {
-		cur = std::prev(cur);
-	} while (IsUtf8Part(*cur));
-	return cur;
-}
 
 size_t Utf8StringLength(std::string_view str);
 
@@ -267,13 +166,5 @@ inline bool IsWhitespace(char32_t c)
 #if defined(__NetBSD__) || defined(__FreeBSD__)
 #include <sys/param.h>
 #endif
-
-/* strcasestr is available for _GNU_SOURCE, BSD and some Apple */
-#if defined(_GNU_SOURCE) || (defined(__BSD_VISIBLE) && __BSD_VISIBLE) || (defined(__APPLE__) && (!defined(_POSIX_C_SOURCE) || defined(_DARWIN_C_SOURCE))) || defined(_NETBSD_SOURCE)
-#	undef DEFINE_STRCASESTR
-#else
-#	define DEFINE_STRCASESTR
-char *strcasestr(const char *haystack, const char *needle);
-#endif /* strcasestr is available */
 
 #endif /* STRING_FUNC_H */

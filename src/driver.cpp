@@ -17,7 +17,6 @@
 #include "video/video_driver.hpp"
 #include "string_func.h"
 #include "fileio_func.h"
-#include <sstream>
 
 #include "table/strings.h"
 

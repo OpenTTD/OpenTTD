@@ -40,7 +40,6 @@
 #include "gfx_layout.h"
 #include "core/utf8.hpp"
 #include <stack>
-#include <charconv>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -103,41 +102,38 @@ EncodedString GetEncodedString(StringID str)
 EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params)
 {
 	std::string result;
-	auto output = std::back_inserter(result);
-	Utf8Encode(output, SCC_ENCODED_INTERNAL);
-	fmt::format_to(output, "{:X}", str);
+	StringBuilder builder(result);
+	builder.PutUtf8(SCC_ENCODED_INTERNAL);
+	builder.PutIntegerBase(str, 16);
 
 	struct visitor {
-		std::back_insert_iterator<std::string> &output;
+		StringBuilder &builder;
 
 		void operator()(const std::monostate &) {}
 
 		void operator()(const uint64_t &arg)
 		{
-			Utf8Encode(output, SCC_ENCODED_NUMERIC);
-			fmt::format_to(this->output, "{:X}", arg);
+			this->builder.PutUtf8(SCC_ENCODED_NUMERIC);
+			this->builder.PutIntegerBase(arg, 16);
 		}
 
 		void operator()(const std::string &value)
 		{
 #ifdef WITH_ASSERT
 			/* Don't allow an encoded string to contain another encoded string. */
-			if (!value.empty()) {
-				char32_t c;
-				const char *p = value.data();
-				if (Utf8Decode(&c, p)) {
-					assert(c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL);
-				}
+			{
+				auto [len, c] = DecodeUtf8(value);
+				assert(len == 0 || (c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL));
 			}
 #endif /* WITH_ASSERT */
-			Utf8Encode(output, SCC_ENCODED_STRING);
-			fmt::format_to(this->output, "{}", value);
+			this->builder.PutUtf8(SCC_ENCODED_STRING);
+			this->builder += value;
 		}
 	};
 
-	visitor v{output};
+	visitor v{builder};
 	for (const auto &param : params) {
-		*output = SCC_RECORD_SEPARATOR;
+		builder.PutUtf8(SCC_RECORD_SEPARATOR);
 		std::visit(v, param.data);
 	}
 
@@ -156,48 +152,39 @@ EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&data) 
 	if (this->empty()) return {};
 
 	std::vector<StringParameter> params;
+	StringConsumer consumer(this->string);
 
-	/* We need char * for std::from_chars. Iterate the underlying data, as string's own iterators may interfere. */
-	const char *p = this->string.data();
-	const char *e = this->string.data() + this->string.length();
-
-	char32_t c = Utf8Consume(p);
-	if (c != SCC_ENCODED_INTERNAL) return {};
+	if (!consumer.ReadUtf8If(SCC_ENCODED_INTERNAL)) return {};
 
 	StringID str;
-	auto result = std::from_chars(p, e, str, 16);
-	if (result.ec != std::errc()) return {};
-	if (result.ptr != e && *result.ptr != SCC_RECORD_SEPARATOR) return {};
-	p = result.ptr;
+	if (auto r = consumer.TryReadIntegerBase<uint32_t>(16); r.has_value()) {
+		str = *r;
+	} else {
+		return {};
+	}
+	if (consumer.AnyBytesLeft() && !consumer.ReadUtf8If(SCC_RECORD_SEPARATOR)) return {};
 
-	while (p != e) {
-		auto s = ++p;
+	while (consumer.AnyBytesLeft()) {
+		StringConsumer record(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::SKIP_ONE_SEPARATOR));
 
-		/* Find end of the parameter. */
-		for (; p != e && *p != SCC_RECORD_SEPARATOR; ++p) {}
-
-		if (s == p) {
+		if (!record.AnyBytesLeft()) {
 			/* This is an empty parameter. */
 			params.emplace_back(std::monostate{});
 			continue;
 		}
 
 		/* Get the parameter type. */
-		char32_t parameter_type;
-		size_t len = Utf8Decode(&parameter_type, s);
-		s += len;
-
+		char32_t parameter_type = record.ReadUtf8();
 		switch (parameter_type) {
 			case SCC_ENCODED_NUMERIC: {
-				uint64_t value;
-				result = std::from_chars(s, p, value, 16);
-				if (result.ec != std::errc() || result.ptr != p) return {};
+				uint64_t value = record.ReadIntegerBase<uint64_t>(16);
+				assert(!record.AnyBytesLeft());
 				params.emplace_back(value);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				params.emplace_back(std::string(s, p));
+				params.emplace_back(std::string(record.Read(StringConsumer::npos)));
 				break;
 			}
 
@@ -489,7 +476,7 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 	int thousands_offset = (max_digits - 1) % 3;
 
 	if (number < 0) {
-		builder += '-';
+		builder.PutChar('-');
 		number = -number;
 	}
 
@@ -502,7 +489,7 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 			num = num % divisor;
 		}
 		if ((tot |= quot) || i == max_digits - 1) {
-			builder += '0' + quot; // quot is a single digit
+			builder.PutChar('0' + quot); // quot is a single digit
 			if ((i % 3) == thousands_offset && i < max_digits - 1) builder += separator;
 		}
 
@@ -519,17 +506,17 @@ static void FormatCommaNumber(StringBuilder &builder, int64_t number)
 
 static void FormatNoCommaNumber(StringBuilder &builder, int64_t number)
 {
-	fmt::format_to(builder, "{}", number);
+	fmt::format_to(builder.back_inserter(), "{}", number);
 }
 
 static void FormatZerofillNumber(StringBuilder &builder, int64_t number, int count)
 {
-	fmt::format_to(builder, "{:0{}d}", number, count);
+	fmt::format_to(builder.back_inserter(), "{:0{}d}", number, count);
 }
 
 static void FormatHexNumber(StringBuilder &builder, uint64_t number)
 {
-	fmt::format_to(builder, "0x{:X}", number);
+	fmt::format_to(builder.back_inserter(), "0x{:X}", number);
 }
 
 /**
@@ -551,18 +538,18 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 
 	if (number < 1024) {
 		id = 0;
-		fmt::format_to(builder, "{}", number);
+		fmt::format_to(builder.back_inserter(), "{}", number);
 	} else if (number < 1024 * 10) {
-		fmt::format_to(builder, "{}{}{:02}", number / 1024, GetDecimalSeparator(), (number % 1024) * 100 / 1024);
+		fmt::format_to(builder.back_inserter(), "{}{}{:02}", number / 1024, GetDecimalSeparator(), (number % 1024) * 100 / 1024);
 	} else if (number < 1024 * 100) {
-		fmt::format_to(builder, "{}{}{:01}", number / 1024, GetDecimalSeparator(), (number % 1024) * 10 / 1024);
+		fmt::format_to(builder.back_inserter(), "{}{}{:01}", number / 1024, GetDecimalSeparator(), (number % 1024) * 10 / 1024);
 	} else {
 		assert(number < 1024 * 1024);
-		fmt::format_to(builder, "{}", number / 1024);
+		fmt::format_to(builder.back_inserter(), "{}", number / 1024);
 	}
 
 	assert(id < lengthof(iec_prefixes));
-	fmt::format_to(builder, NBSP "{}B", iec_prefixes[id]);
+	fmt::format_to(builder.back_inserter(), NBSP "{}B", iec_prefixes[id]);
 }
 
 static void FormatYmdString(StringBuilder &builder, TimerGameCalendar::Date date, uint case_index)
@@ -600,9 +587,9 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 
 	/* convert from negative */
 	if (number < 0) {
-		builder.Utf8Encode(SCC_PUSH_COLOUR);
-		builder.Utf8Encode(SCC_RED);
-		builder += '-';
+		builder.PutUtf8(SCC_PUSH_COLOUR);
+		builder.PutUtf8(SCC_RED);
+		builder.PutChar('-');
 		number = -number;
 	}
 
@@ -646,7 +633,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	if (spec->symbol_pos != 0) builder += spec->suffix;
 
 	if (negative) {
-		builder.Utf8Encode(SCC_POP_COLOUR);
+		builder.PutUtf8(SCC_POP_COLOUR);
 	}
 }
 
@@ -656,7 +643,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
  * @param plural_form The plural form we want an index for.
  * @return The plural index for the given form.
  */
-static int DeterminePluralForm(int64_t count, int plural_form)
+static int DeterminePluralForm(int64_t count, uint plural_form)
 {
 	/* The absolute value determines plurality */
 	uint64_t n = abs(count);
@@ -777,22 +764,25 @@ static int DeterminePluralForm(int64_t count, int plural_form)
 	}
 }
 
-static const char *ParseStringChoice(const char *b, uint form, StringBuilder &builder)
+static void ParseStringChoice(StringConsumer &consumer, uint form, StringBuilder &builder)
 {
 	/* <NUM> {Length of each string} {each string} */
-	uint n = (uint8_t)*b++;
-	size_t form_offset = 0, form_len = 0, total_len = 0;
+	uint n = consumer.ReadUint8();
+	size_t form_pre = 0, form_len = 0, form_post = 0;
 	for (uint i = 0; i != n; i++) {
-		uint len = (uint8_t)*b++;
-		if (i == form) {
-			form_offset = total_len;
+		uint len = consumer.ReadUint8();
+		if (i < form) {
+			form_pre += len;
+		} else if (i > form) {
+			form_post += len;
+		} else {
 			form_len = len;
 		}
-		total_len += len;
 	}
 
-	builder += std::string_view(b + form_offset, form_len);
-	return b + total_len;
+	consumer.Skip(form_pre);
+	builder += consumer.Read(form_len);
+	consumer.Skip(form_post);
 }
 
 /** Helper for unit conversion. */
@@ -994,67 +984,59 @@ uint ConvertDisplaySpeedToKmhishSpeed(uint speed, VehicleType type)
 
 /**
  * Decodes an encoded string during FormatString.
- * @param str The buffer of the encoded string.
+ * @param consumer The encoded string.
  * @param game_script Set if decoding a GameScript-encoded string. This affects how string IDs are handled.
  * @param builder The string builder to write the string to.
- * @returns Updated position position in input buffer.
  */
-static const char *DecodeEncodedString(const char *str, bool game_script, StringBuilder &builder)
+static void DecodeEncodedString(StringConsumer &consumer, bool game_script, StringBuilder &builder)
 {
 	std::vector<StringParameter> sub_args;
 
-	char *p;
-	StringIndexInTab id(std::strtoul(str, &p, 16));
-	if (*p != SCC_RECORD_SEPARATOR && *p != '\0') {
-		while (*p != '\0') p++;
+	StringIndexInTab id(consumer.ReadIntegerBase<uint32_t>(16));
+	if (consumer.AnyBytesLeft() && !consumer.ReadUtf8If(SCC_RECORD_SEPARATOR)) {
+		consumer.SkipAll();
 		builder += "(invalid SCC_ENCODED)";
-		return p;
+		return;
 	}
 	if (game_script && id >= TAB_SIZE_GAMESCRIPT) {
-		while (*p != '\0') p++;
+		consumer.SkipAll();
 		builder += "(invalid StringID)";
-		return p;
+		return;
 	}
 
-	while (*p != '\0') {
-		/* The start of parameter. */
-		const char *s = ++p;
+	while (consumer.AnyBytesLeft()) {
+		StringConsumer record(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::SKIP_ONE_SEPARATOR));
 
-		/* Find end of the parameter. */
-		for (; *p != '\0' && *p != SCC_RECORD_SEPARATOR; ++p) {}
-
-		if (s == p) {
+		if (!record.AnyBytesLeft()) {
 			/* This is an empty parameter. */
 			sub_args.emplace_back(std::monostate{});
 			continue;
 		}
 
 		/* Get the parameter type. */
-		char32_t parameter_type;
-		size_t len = Utf8Decode(&parameter_type, s);
-		s += len;
-
+		char32_t parameter_type = record.ReadUtf8();
 		switch (parameter_type) {
 			case SCC_ENCODED: {
-				uint64_t param = std::strtoull(s, &p, 16);
+				uint64_t param = record.ReadIntegerBase<uint64_t>(16);
 				if (param >= TAB_SIZE_GAMESCRIPT) {
-					while (*p != '\0') p++;
 					builder += "(invalid sub-StringID)";
-					return p;
+					return;
 				}
+				assert(!record.AnyBytesLeft());
 				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
 				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_NUMERIC: {
-				uint64_t param = std::strtoull(s, &p, 16);
+				uint64_t param = record.ReadIntegerBase<uint64_t>(16);
+				assert(!record.AnyBytesLeft());
 				sub_args.emplace_back(param);
 				break;
 			}
 
 			case SCC_ENCODED_STRING: {
-				sub_args.emplace_back(std::string(s, p - s));
+				sub_args.emplace_back(std::string(record.Read(StringConsumer::npos)));
 				break;
 			}
 
@@ -1067,8 +1049,6 @@ static const char *DecodeEncodedString(const char *str, bool game_script, String
 
 	StringID stringid = game_script ? MakeStringID(TEXT_TAB_GAMESCRIPT_START, id) : StringID{id.base()};
 	GetStringWithArgs(builder, stringid, sub_args, true);
-
-	return p;
 }
 
 /**
@@ -1099,13 +1079,12 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 	}
 	uint next_substr_case_index = 0;
 	struct StrStackItem {
-		const char *str;
-		const char *end;
+		StringConsumer consumer;
 		size_t first_param_offset;
 		uint case_index;
 
 		StrStackItem(std::string_view view, size_t first_param_offset, uint case_index)
-			: str(view.data()), end(view.data() + view.size()), first_param_offset(first_param_offset), case_index(case_index)
+			: consumer(view), first_param_offset(first_param_offset), case_index(case_index)
 		{}
 	};
 	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
@@ -1113,24 +1092,24 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 	for (;;) {
 		try {
-			while (!str_stack.empty() && str_stack.top().str >= str_stack.top().end) {
+			while (!str_stack.empty() && !str_stack.top().consumer.AnyBytesLeft()) {
 				str_stack.pop();
 			}
 			if (str_stack.empty()) break;
-			const char *&str = str_stack.top().str;
+			StringConsumer &consumer = str_stack.top().consumer;
 			const size_t ref_param_offset = str_stack.top().first_param_offset;
 			const uint case_index = str_stack.top().case_index;
-			char32_t b = Utf8Consume(&str);
+			char32_t b = consumer.ReadUtf8();
 			assert(b != 0);
 
 			if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 				/* We need to pass some stuff as it might be modified. */
-				b = RemapNewGRFStringControlCode(b, &str);
+				b = RemapNewGRFStringControlCode(b, consumer);
 				if (b == 0) continue;
 			}
 
 			if (b < SCC_CONTROL_START || b > SCC_CONTROL_END) {
-				builder.Utf8Encode(b);
+				builder.PutUtf8(b);
 				continue;
 			}
 
@@ -1138,13 +1117,13 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			switch (b) {
 				case SCC_ENCODED:
 				case SCC_ENCODED_INTERNAL:
-					str = DecodeEncodedString(str, b == SCC_ENCODED, builder);
+					DecodeEncodedString(consumer, b == SCC_ENCODED, builder);
 					break;
 
 				case SCC_NEWGRF_STRINL: {
-					StringID substr = Utf8Consume(&str);
+					StringID substr = consumer.ReadUtf8(STR_NULL);
 					std::string_view ptr = GetStringPtr(substr);
-					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
+					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "consumer"
 					next_substr_case_index = 0;
 					break;
 				}
@@ -1152,15 +1131,15 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 					StringID substr = args.GetNextParameter<StringID>();
 					std::string_view ptr = GetStringPtr(substr);
-					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "str"
+					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "consumer"
 					next_substr_case_index = 0;
 					break;
 				}
 
 				case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 					/* First read the meta data from the language file. */
-					size_t offset = ref_param_offset + (uint8_t)*str++;
-					int gender = 0;
+					size_t offset = ref_param_offset + consumer.ReadUint8();
+					uint8_t gender = 0;
 					if (offset >= args.GetNumParameters()) {
 						/* The offset may come from an external NewGRF, and be invalid. */
 						builder += "(invalid GENDER parameter)";
@@ -1168,50 +1147,54 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						/* Now we need to figure out what text to resolve, i.e.
 						 * what do we need to draw? So get the actual raw string
 						 * first using the control code to get said string. */
-						char input[4 + 1];
-						char *p = input + Utf8Encode(input, args.GetTypeAtOffset(offset));
-						*p = '\0';
+						std::string input;
+						{
+							StringBuilder tmp_builder(input);
+							tmp_builder.PutUtf8(args.GetTypeAtOffset(offset));
+						}
+
+						std::string buffer;
+						{
+							AutoRestoreBackup sgf_backup(_scan_for_gender_data, true);
+							StringBuilder tmp_builder(buffer);
+							StringParameters tmp_params = args.GetRemainingParameters(offset);
+							FormatString(tmp_builder, input, tmp_params);
+						}
 
 						/* The gender is stored at the start of the formatted string. */
-						bool old_sgd = _scan_for_gender_data;
-						_scan_for_gender_data = true;
-						std::string buffer;
-						StringBuilder tmp_builder(buffer);
-						StringParameters tmp_params = args.GetRemainingParameters(offset);
-						FormatString(tmp_builder, input, tmp_params);
-						_scan_for_gender_data = old_sgd;
-
-						/* And determine the string. */
-						const char *s = buffer.c_str();
-						char32_t c = Utf8Consume(&s);
-						/* Does this string have a gender, if so, set it */
-						if (c == SCC_GENDER_INDEX) gender = (uint8_t)s[0];
+						{
+							StringConsumer tmp_consumer(buffer);
+							/* Does this string have a gender, if so, set it */
+							if (tmp_consumer.ReadUtf8If(SCC_GENDER_INDEX)) {
+								gender = tmp_consumer.ReadUint8();
+							}
+						}
 					}
-					str = ParseStringChoice(str, gender, builder);
+					ParseStringChoice(consumer, gender, builder);
 					break;
 				}
 
 				/* This sets up the gender for the string.
 				 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
-				case SCC_GENDER_INDEX: // {GENDER 0}
+				case SCC_GENDER_INDEX: { // {GENDER 0}
+					uint8_t gender = consumer.ReadUint8();
 					if (_scan_for_gender_data) {
-						builder.Utf8Encode(SCC_GENDER_INDEX);
-						builder += *str++;
-					} else {
-						str++;
+						builder.PutUtf8(SCC_GENDER_INDEX);
+						builder.PutUint8(gender);
 					}
 					break;
+				}
 
 				case SCC_PLURAL_LIST: { // {P}
-					int plural_form = *str++;          // contains the plural form for this string
-					size_t offset = ref_param_offset + (uint8_t)*str++;
+					uint8_t plural_form = consumer.ReadUint8();  // contains the plural form for this string
+					size_t offset = ref_param_offset + consumer.ReadUint8();
 					const uint64_t *v = nullptr;
 					/* The offset may come from an external NewGRF, and be invalid. */
 					if (offset < args.GetNumParameters()) {
 						v = std::get_if<uint64_t>(&args.GetParam(offset)); // contains the number that determines plural
 					}
 					if (v != nullptr) {
-						str = ParseStringChoice(str, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
+						ParseStringChoice(consumer, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
 					} else {
 						builder += "(invalid PLURAL parameter)";
 					}
@@ -1219,38 +1202,35 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				}
 
 				case SCC_ARG_INDEX: { // Move argument pointer
-					args.SetOffset(ref_param_offset + (uint8_t)*str++);
+					args.SetOffset(ref_param_offset + consumer.ReadUint8());
 					break;
 				}
 
 				case SCC_SET_CASE: { // {SET_CASE}
 					/* This is a pseudo command, it's outputted when someone does {STRING.ack}
 					 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */
-					next_substr_case_index = (uint8_t)*str++;
+					next_substr_case_index = consumer.ReadUint8();
 					break;
 				}
 
 				case SCC_SWITCH_CASE: { // {Used to implement case switching}
 					/* <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <LENDEFAULT> <STRINGDEFAULT>
 					 * Each LEN is printed using 2 bytes in little endian order. */
-					uint num = (uint8_t)*str++;
+					uint num = consumer.ReadUint8();
 					std::optional<std::string_view> found;
 					for (; num > 0; --num) {
-						uint8_t index = static_cast<uint8_t>(str[0]);
-						uint16_t len = static_cast<uint8_t>(str[1]) + (static_cast<uint8_t>(str[2]) << 8);
-						str += 3;
+						uint8_t index = consumer.ReadUint8();
+						uint16_t len = consumer.ReadUint16LE();
+						auto case_str = consumer.Read(len);
 						if (index == case_index) {
 							/* Found the case */
-							found.emplace(str, len);
+							found = case_str;
 						}
-						str += len;
 					}
-					uint16_t default_len = static_cast<uint8_t>(str[0]) + (static_cast<uint8_t>(str[1]) << 8);
-					str += 2;
-					if (!found.has_value()) found.emplace(str, default_len);
-					str += default_len;
-					assert(str <= str_stack.top().end);
-					str_stack.emplace(*found, ref_param_offset, case_index); // this may invalidate "str"
+					uint16_t default_len = consumer.ReadUint16LE();
+					auto default_str = consumer.Read(default_len);
+					if (!found.has_value()) found = default_str;
+					str_stack.emplace(*found, ref_param_offset, case_index); // this may invalidate "consumer"
 					break;
 				}
 
@@ -1317,7 +1297,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					int64_t fractional = number % divisor;
 					number /= divisor;
 					FormatCommaNumber(builder, number);
-					fmt::format_to(builder, "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
+					fmt::format_to(builder.back_inserter(), "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
 					break;
 				}
 
@@ -1810,12 +1790,12 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_COLOUR: { // {COLOUR}
 					StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
-					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.Utf8Encode(scc);
+					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.PutUtf8(scc);
 					break;
 				}
 
 				default:
-					builder.Utf8Encode(b);
+					builder.PutUtf8(b);
 					break;
 			}
 		} catch (std::out_of_range &e) {
@@ -1828,11 +1808,11 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x)
 {
-	if (x.Test(StationFacility::Train)) builder.Utf8Encode(SCC_TRAIN);
-	if (x.Test(StationFacility::TruckStop)) builder.Utf8Encode(SCC_LORRY);
-	if (x.Test(StationFacility::BusStop)) builder.Utf8Encode(SCC_BUS);
-	if (x.Test(StationFacility::Dock)) builder.Utf8Encode(SCC_SHIP);
-	if (x.Test(StationFacility::Airport)) builder.Utf8Encode(SCC_PLANE);
+	if (x.Test(StationFacility::Train)) builder.PutUtf8(SCC_TRAIN);
+	if (x.Test(StationFacility::TruckStop)) builder.PutUtf8(SCC_LORRY);
+	if (x.Test(StationFacility::BusStop)) builder.PutUtf8(SCC_BUS);
+	if (x.Test(StationFacility::Dock)) builder.PutUtf8(SCC_SHIP);
+	if (x.Test(StationFacility::Airport)) builder.PutUtf8(SCC_PLANE);
 }
 
 static const char * const _silly_company_names[] = {
@@ -1928,13 +1908,13 @@ static void GenAndCoName(StringBuilder &builder, uint32_t seed)
 
 static void GenPresidentName(StringBuilder &builder, uint32_t seed)
 {
-	builder += _initial_name_letters[std::size(_initial_name_letters) * GB(seed, 0, 8) >> 8];
+	builder.PutChar(_initial_name_letters[std::size(_initial_name_letters) * GB(seed, 0, 8) >> 8]);
 	builder += ". ";
 
 	/* The second initial is optional. */
 	size_t index = (std::size(_initial_name_letters) + 35) * GB(seed, 8, 8) >> 8;
 	if (index < std::size(_initial_name_letters)) {
-		builder += _initial_name_letters[index];
+		builder.PutChar(_initial_name_letters[index]);
 		builder += ". ";
 	}
 
@@ -2373,13 +2353,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		if (!bad_font && any_font_configured) {
 			/* If the user configured a bad font, and we found a better one,
 			 * show that we loaded the better font instead of the configured one.
-			 * The colour 'character' might change in the
-			 * future, so for safety we just Utf8 Encode it into the string,
-			 * which takes exactly three characters, so it replaces the "XXX"
-			 * with the colour marker. */
-			static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
-			Utf8Encode(err_str.data(), SCC_YELLOW);
-			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
+			 */
+			std::string err_str;
+			StringBuilder builder(err_str);
+			builder.PutUtf8(SCC_YELLOW);
+			builder.Put("The current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
+			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 		}
 
 		if (bad_font && base_font) {
@@ -2395,11 +2374,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		/* All attempts have failed. Display an error. As we do not want the string to be translated by
 		 * the translators, we 'force' it into the binary and 'load' it via a BindCString. To do this
 		 * properly we have to set the colour of the string, otherwise we end up with a lot of artifacts.
-		 * The colour 'character' might change in the future, so for safety we just Utf8 Encode it into
-		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
-		static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
-		Utf8Encode(err_str.data(), SCC_YELLOW);
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
+		 */
+		std::string err_str;
+		StringBuilder builder(err_str);
+		builder.PutUtf8(SCC_YELLOW);
+		builder.Put("The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 
 		/* Reset the font width */
 		LoadStringWidthTable(searcher->Monospace());
@@ -2417,16 +2397,14 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	 * be translated by the translators, we 'force' it into the
 	 * binary and 'load' it via a BindCString. To do this
 	 * properly we have to set the colour of the string,
-	 * otherwise we end up with a lot of artifacts. The colour
-	 * 'character' might change in the future, so for safety
-	 * we just Utf8 Encode it into the string, which takes
-	 * exactly three characters, so it replaces the "XXX" with
-	 * the colour marker.
+	 * otherwise we end up with a lot of artifacts.
 	 */
 	if (_current_text_dir != TD_LTR) {
-		static std::string err_str("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
-		Utf8Encode(err_str.data(), SCC_YELLOW);
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_ERROR);
+		std::string err_str;
+		StringBuilder builder(err_str);
+		builder.PutUtf8(SCC_YELLOW);
+		builder.Put("This version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_ERROR);
 	}
 #endif /* !(WITH_ICU_I18N && WITH_HARFBUZZ) && !WITH_UNISCRIBE && !WITH_COCOA */
 }

@@ -29,6 +29,8 @@
 #include "../window_func.h"
 #include "../strings_func.h"
 #include "../core/endian_func.hpp"
+#include "../core/string_builder.hpp"
+#include "../core/string_consumer.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
 #include "../timer/timer_game_economy.h"
@@ -928,23 +930,24 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 	 * `:"<STRING>"`              becomes `<RS><SCC_ENCODED_STRING><STRING>`
 	 */
 	std::string result;
-	auto output = std::back_inserter(result);
+	StringBuilder builder(result);
 
 	bool is_encoded = false; // Set if we determine by the presence of SCC_ENCODED that the string is an encoded string.
 	bool in_string = false; // Set if we in a string, between double-quotes.
 	bool need_type = true; // Set if a parameter type needs to be emitted.
 
-	for (auto it = std::begin(str); it != std::end(str); /* nothing */) {
-		size_t len = Utf8EncodedCharLen(*it);
-		if (len == 0 || it + len > std::end(str)) break;
-
+	StringConsumer consumer(str);
+	while (consumer.AnyBytesLeft()) {
 		char32_t c;
-		Utf8Decode(&c, &*it);
+		if (auto r = consumer.TryReadUtf8(); r.has_value()) {
+			c = *r;
+		} else {
+			break;
+		}
 		if (c == SCC_ENCODED || (fix_code && (c == 0xE028 || c == 0xE02A))) {
-			Utf8Encode(output, SCC_ENCODED);
+			builder.PutUtf8(SCC_ENCODED);
 			need_type = false;
 			is_encoded = true;
-			it += len;
 			continue;
 		}
 
@@ -955,27 +958,24 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 			in_string = !in_string;
 			if (in_string && need_type) {
 				/* Started a new string parameter. */
-				Utf8Encode(output, SCC_ENCODED_STRING);
+				builder.PutUtf8(SCC_ENCODED_STRING);
 				need_type = false;
 			}
-			it += len;
 			continue;
 		}
 
 		if (!in_string && c == ':') {
-			*output = SCC_RECORD_SEPARATOR;
+			builder.PutUtf8(SCC_RECORD_SEPARATOR);
 			need_type = true;
-			it += len;
 			continue;
 		}
 		if (need_type) {
 			/* Started a new numeric parameter. */
-			Utf8Encode(output, SCC_ENCODED_NUMERIC);
+			builder.PutUtf8(SCC_ENCODED_NUMERIC);
 			need_type = false;
 		}
 
-		Utf8Encode(output, c);
-		it += len;
+		builder.PutUtf8(c);
 	}
 
 	str = std::move(result);
@@ -1028,7 +1028,7 @@ static void SlStdString(void *ptr, VarType conv)
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;
 			}
-			*str = StrMakeValid(*str, settings);
+			StrMakeValidInPlace(*str, settings);
 		}
 
 		case SLA_PTRS: break;

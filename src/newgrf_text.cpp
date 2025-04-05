@@ -27,8 +27,9 @@
 #include "timer/timer_game_calendar.h"
 #include "debug.h"
 #include "core/alloc_type.hpp"
+#include "core/string_builder.hpp"
+#include "core/string_consumer.hpp"
 #include "language.h"
-#include <sstream>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -121,33 +122,33 @@ struct UnmappedChoiceList {
 	int offset;             ///< The offset for the plural/gender form.
 
 	/** Mapping of NewGRF supplied ID to the different strings in the choice list. */
-	std::map<int, std::stringstream> strings;
+	std::map<int, std::string> strings;
 
 	/**
 	 * Flush this choice list into the destination string.
 	 * @param lm The current language mapping.
 	 * @param dest Target to write to.
 	 */
-	void Flush(const LanguageMap *lm, std::stringstream &dest)
+	void Flush(const LanguageMap *lm, std::string &dest)
 	{
 		if (this->strings.find(0) == this->strings.end()) {
 			/* In case of a (broken) NewGRF without a default,
 			 * assume an empty string. */
 			GrfMsg(1, "choice list misses default value");
-			this->strings[0] = std::stringstream();
+			this->strings[0] = std::string();
 		}
 
-		std::ostreambuf_iterator<char> d(dest);
+		StringBuilder builder(dest);
 
 		if (lm == nullptr) {
 			/* In case there is no mapping, just ignore everything but the default.
 			 * A probable cause for this happening is when the language file has
 			 * been removed by the user and as such no mapping could be made. */
-			dest << this->strings[0].rdbuf();
+			builder += this->strings[0];
 			return;
 		}
 
-		Utf8Encode(d, this->type);
+		builder.PutUtf8(this->type);
 
 		if (this->type == SCC_SWITCH_CASE) {
 			/*
@@ -162,35 +163,34 @@ struct UnmappedChoiceList {
 				/* Count the ones we have a mapped string for. */
 				if (this->strings.find(lm->GetReverseMapping(i, false)) != this->strings.end()) count++;
 			}
-			*d++ = count;
+			builder.PutUint8(count);
 
 			auto add_case = [&](std::string_view str) {
 				/* "<LENn>" */
 				uint16_t len = ClampTo<uint16_t>(str.size());
-				*d++ = GB(len, 0, 8);
-				*d++ = GB(len, 8, 8);
+				builder.PutUint16LE(len);
 
 				/* "<STRINGn>" */
-				dest.write(str.data(), len);
+				builder += str.substr(0, len);
 			};
 
 			for (uint8_t i = 0; i < _current_language->num_cases; i++) {
 				/* Resolve the string we're looking for. */
 				int idx = lm->GetReverseMapping(i, false);
 				if (this->strings.find(idx) == this->strings.end()) continue;
-				auto str = this->strings[idx].str();
+				auto &str = this->strings[idx];
 
 				/* "<CASEn>" */
-				*d++ = i + 1;
+				builder.PutUint8(i + 1);
 
 				add_case(str);
 			}
 
 			/* "<STRINGDEFAULT>" */
-			add_case(this->strings[0].view());
+			add_case(this->strings[0]);
 		} else {
 			if (this->type == SCC_PLURAL_LIST) {
-				*d++ = lm->plural_form;
+				builder.PutUint8(lm->plural_form);
 			}
 
 			/*
@@ -199,27 +199,27 @@ struct UnmappedChoiceList {
 			 */
 
 			/* "<OFFSET>" */
-			*d++ = this->offset - 0x80;
+			builder.PutUint8(this->offset - 0x80);
 
 			/* "<NUM CHOICES>" */
 			int count = (this->type == SCC_GENDER_LIST ? _current_language->num_genders : LANGUAGE_MAX_PLURAL_FORMS);
-			*d++ = count;
+			builder.PutUint8(count);
 
 			/* "<LENs>" */
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
-				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
+				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0];
 				size_t len = str.size();
 				if (len > UINT8_MAX) GrfMsg(1, "choice list string is too long");
-				*d++ = ClampTo<uint8_t>(len);
+				builder.PutUint8(ClampTo<uint8_t>(len));
 			}
 
 			/* "<STRINGs>" */
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
-				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
+				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0];
 				uint8_t len = ClampTo<uint8_t>(str.size());
-				dest.write(str.c_str(), len);
+				builder += str.substr(0, len);
 			}
 		}
 	}
@@ -239,109 +239,97 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 	/* Empty input string? Nothing to do here. */
 	if (str.empty()) return {};
 
-	std::string_view::const_iterator src = str.cbegin();
+	StringConsumer consumer(str);
 
 	/* Is this an unicode string? */
-	bool unicode = false;
-	char32_t marker;
-	size_t len = Utf8Decode(&marker, &*src);
-
-	if (marker == NFO_UTF8_IDENTIFIER) {
-		unicode = true;
-		src += len;
-	}
+	bool unicode = consumer.ReadUtf8If(NFO_UTF8_IDENTIFIER);
 
 	/* Helper variable for a possible (string) mapping of plural/gender and cases. */
 	std::optional<UnmappedChoiceList> mapping_pg, mapping_c;
-	std::optional<std::reference_wrapper<std::stringstream>> dest_c;
+	std::optional<std::reference_wrapper<std::string>> dest_c;
 
-	std::stringstream dest;
-	std::ostreambuf_iterator<char> d(dest);
-	while (src != str.cend()) {
+	std::string dest;
+	StringBuilder builder(dest);
+	while (consumer.AnyBytesLeft()) {
 		char32_t c;
-
-		if (unicode && Utf8EncodedCharLen(*src) != 0) {
-			c = Utf8Consume(src);
+		if (auto u = unicode ? consumer.TryReadUtf8() : std::nullopt; u.has_value()) {
+			c = *u;
 			/* 'Magic' range of control codes. */
-			if (GB(c, 8, 8) == 0xE0) {
-				c = GB(c, 0, 8);
+			if (0xE000 <= c && c <= 0xE0FF) {
+				c -= 0xE000;
 			} else if (c >= 0x20) {
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
-				Utf8Encode(d, c);
+				builder.PutUtf8(c);
 				continue;
 			}
 		} else {
-			c = static_cast<uint8_t>(*src++);
+			c = consumer.ReadUint8(); // read as unsigned, otherwise integer promotion breaks it
 		}
-
+		assert(c <= 0xFF);
 		if (c == '\0') break;
 
 		switch (c) {
 			case 0x01:
-				if (*src == '\0') goto string_end;
-				Utf8Encode(d, ' ');
-				src++;
+				consumer.SkipUint8();
+				builder.PutChar(' ');
 				break;
 			case 0x0A: break;
 			case 0x0D:
 				if (allow_newlines) {
-					*d++ = 0x0A;
+					builder.PutChar(0x0A);
 				} else {
 					GrfMsg(1, "Detected newline in string that does not allow one");
 				}
 				break;
-			case 0x0E: Utf8Encode(d, SCC_TINYFONT); break;
-			case 0x0F: Utf8Encode(d, SCC_BIGFONT); break;
+			case 0x0E: builder.PutUtf8(SCC_TINYFONT); break;
+			case 0x0F: builder.PutUtf8(SCC_BIGFONT); break;
 			case 0x1F:
-				if (src[0] == '\0' || src[1] == '\0') goto string_end;
-				Utf8Encode(d, ' ');
-				src += 2;
+				consumer.SkipUint8();
+				consumer.SkipUint8();
+				builder.PutChar(' ');
 				break;
 			case 0x7B:
 			case 0x7C:
 			case 0x7D:
 			case 0x7E:
-			case 0x7F: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
-			case 0x80: Utf8Encode(d, byte80); break;
+			case 0x7F: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
+			case 0x80: builder.PutUtf8(byte80); break;
 			case 0x81:
 			{
-				if (src[0] == '\0' || src[1] == '\0') goto string_end;
-				uint16_t string;
-				string = static_cast<uint8_t>(*src++);
-				string |= static_cast<uint8_t>(*src++) << 8;
-				Utf8Encode(d, SCC_NEWGRF_STRINL);
-				Utf8Encode(d, MapGRFStringID(grfid, GRFStringID{string}));
+				uint16_t string = consumer.ReadUint16LE();
+				builder.PutUtf8(SCC_NEWGRF_STRINL);
+				builder.PutUtf8(MapGRFStringID(grfid, GRFStringID{string}));
 				break;
 			}
 			case 0x82:
 			case 0x83:
-			case 0x84: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_DATE_LONG + c - 0x82); break;
-			case 0x85: Utf8Encode(d, SCC_NEWGRF_DISCARD_WORD);       break;
-			case 0x86: Utf8Encode(d, SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
-			case 0x87: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_VOLUME_LONG);  break;
-			case 0x88: Utf8Encode(d, SCC_BLUE);    break;
-			case 0x89: Utf8Encode(d, SCC_SILVER);  break;
-			case 0x8A: Utf8Encode(d, SCC_GOLD);    break;
-			case 0x8B: Utf8Encode(d, SCC_RED);     break;
-			case 0x8C: Utf8Encode(d, SCC_PURPLE);  break;
-			case 0x8D: Utf8Encode(d, SCC_LTBROWN); break;
-			case 0x8E: Utf8Encode(d, SCC_ORANGE);  break;
-			case 0x8F: Utf8Encode(d, SCC_GREEN);   break;
-			case 0x90: Utf8Encode(d, SCC_YELLOW);  break;
-			case 0x91: Utf8Encode(d, SCC_DKGREEN); break;
-			case 0x92: Utf8Encode(d, SCC_CREAM);   break;
-			case 0x93: Utf8Encode(d, SCC_BROWN);   break;
-			case 0x94: Utf8Encode(d, SCC_WHITE);   break;
-			case 0x95: Utf8Encode(d, SCC_LTBLUE);  break;
-			case 0x96: Utf8Encode(d, SCC_GRAY);    break;
-			case 0x97: Utf8Encode(d, SCC_DKBLUE);  break;
-			case 0x98: Utf8Encode(d, SCC_BLACK);   break;
+			case 0x84: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_DATE_LONG + c - 0x82); break;
+			case 0x85: builder.PutUtf8(SCC_NEWGRF_DISCARD_WORD);       break;
+			case 0x86: builder.PutUtf8(SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
+			case 0x87: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_VOLUME_LONG);  break;
+			case 0x88: builder.PutUtf8(SCC_BLUE);    break;
+			case 0x89: builder.PutUtf8(SCC_SILVER);  break;
+			case 0x8A: builder.PutUtf8(SCC_GOLD);    break;
+			case 0x8B: builder.PutUtf8(SCC_RED);     break;
+			case 0x8C: builder.PutUtf8(SCC_PURPLE);  break;
+			case 0x8D: builder.PutUtf8(SCC_LTBROWN); break;
+			case 0x8E: builder.PutUtf8(SCC_ORANGE);  break;
+			case 0x8F: builder.PutUtf8(SCC_GREEN);   break;
+			case 0x90: builder.PutUtf8(SCC_YELLOW);  break;
+			case 0x91: builder.PutUtf8(SCC_DKGREEN); break;
+			case 0x92: builder.PutUtf8(SCC_CREAM);   break;
+			case 0x93: builder.PutUtf8(SCC_BROWN);   break;
+			case 0x94: builder.PutUtf8(SCC_WHITE);   break;
+			case 0x95: builder.PutUtf8(SCC_LTBLUE);  break;
+			case 0x96: builder.PutUtf8(SCC_GRAY);    break;
+			case 0x97: builder.PutUtf8(SCC_DKBLUE);  break;
+			case 0x98: builder.PutUtf8(SCC_BLACK);   break;
 			case 0x9A:
 			{
-				int code = *src++;
+				uint8_t code = consumer.ReadUint8();
 				switch (code) {
 					case 0x00: goto string_end;
-					case 0x01: Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
+					case 0x01: builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
 						/* 0x02: ignore next colour byte is not supported. It works on the final
 						 * string and as such hooks into the string drawing routine. At that
 						 * point many things already happened, such as splitting up of strings
@@ -351,48 +339,44 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 						 * support this. As such it is not implemented in OpenTTD. */
 					case 0x03:
 					{
-						if (src[0] == '\0' || src[1] == '\0') goto string_end;
-						uint16_t tmp = static_cast<uint8_t>(*src++);
-						tmp |= static_cast<uint8_t>(*src++) << 8;
-						Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
-						Utf8Encode(d, tmp);
+						uint16_t tmp = consumer.ReadUint16LE();
+						builder.PutUtf8(SCC_NEWGRF_PUSH_WORD);
+						builder.PutUtf8(tmp);
 						break;
 					}
-					case 0x06: Utf8Encode(d, SCC_NEWGRF_PRINT_BYTE_HEX);          break;
-					case 0x07: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_HEX);          break;
-					case 0x08: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_HEX);         break;
+					case 0x06: builder.PutUtf8(SCC_NEWGRF_PRINT_BYTE_HEX);          break;
+					case 0x07: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_HEX);          break;
+					case 0x08: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_HEX);         break;
 					/* 0x09, 0x0A are TTDPatch internal use only string codes. */
-					case 0x0B: Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_HEX);         break;
-					case 0x0C: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
-					case 0x0D: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG);  break;
+					case 0x0B: builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_HEX);         break;
+					case 0x0C: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
+					case 0x0D: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG);  break;
 					case 0x0E:
 					case 0x0F:
 					{
-						if (str[0] == '\0') goto string_end;
 						const LanguageMap *lm = LanguageMap::GetLanguageMap(grfid, language_id);
-						int index = *src++;
+						int index = consumer.ReadUint8();
 						int mapped = lm != nullptr ? lm->GetMapping(index, code == 0x0E) : -1;
 						if (mapped >= 0) {
-							Utf8Encode(d, code == 0x0E ? SCC_GENDER_INDEX : SCC_SET_CASE);
-							Utf8Encode(d, code == 0x0E ? mapped : mapped + 1);
+							builder.PutUtf8(code == 0x0E ? SCC_GENDER_INDEX : SCC_SET_CASE);
+							builder.PutUtf8(code == 0x0E ? mapped : mapped + 1);
 						}
 						break;
 					}
 
 					case 0x10:
 					case 0x11:
-						if (str[0] == '\0') goto string_end;
 						if (!mapping_pg.has_value() && !mapping_c.has_value()) {
-							if (code == 0x10) src++; // Skip the index
+							if (code == 0x10) consumer.SkipUint8(); // Skip the index
 							GrfMsg(1, "choice list {} marker found when not expected", code == 0x10 ? "next" : "default");
 							break;
 						} else {
 							auto &mapping = mapping_pg ? mapping_pg : mapping_c;
-							int index = (code == 0x10 ? *src++ : 0);
+							int index = (code == 0x10 ? consumer.ReadUint8() : 0);
 							if (mapping->strings.find(index) != mapping->strings.end()) {
 								GrfMsg(1, "duplicate choice list string, ignoring");
 							} else {
-								d = std::ostreambuf_iterator<char>(mapping->strings[index]);
+								builder = StringBuilder(mapping->strings[index]);
 								if (!mapping_pg) dest_c = mapping->strings[index];
 							}
 						}
@@ -409,7 +393,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 							if (!mapping_pg) dest_c.reset();
 							mapping.reset();
 
-							d = std::ostreambuf_iterator<char>(new_dest);
+							builder = StringBuilder(new_dest);
 						}
 						break;
 
@@ -417,14 +401,13 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x14:
 					case 0x15: {
 						auto &mapping = code == 0x14 ? mapping_c : mapping_pg;
-						if (src[0] == '\0') goto string_end;
 						/* Case mapping can have nested plural/gender mapping. Otherwise nesting is invalid. */
 						if (mapping.has_value() || mapping_pg.has_value()) {
 							GrfMsg(1, "choice lists can't be stacked, it's going to get messy now...");
-							if (code != 0x14) src++;
+							if (code != 0x14) consumer.SkipUint8();
 						} else {
 							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST };
-							mapping.emplace(mp[code - 0x13], code == 0x14 ? 0 : *src++);
+							mapping.emplace(mp[code - 0x13], code == 0x14 ? 0 : consumer.ReadUint8());
 						}
 						break;
 					}
@@ -438,13 +421,13 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x1C:
 					case 0x1D:
 					case 0x1E:
-						Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
+						builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
 						break;
 
-					case 0x1F: Utf8Encode(d, SCC_PUSH_COLOUR); break;
-					case 0x20: Utf8Encode(d, SCC_POP_COLOUR);  break;
+					case 0x1F: builder.PutUtf8(SCC_PUSH_COLOUR); break;
+					case 0x20: builder.PutUtf8(SCC_POP_COLOUR);  break;
 
-					case 0x21: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_FORCE); break;
+					case 0x21: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_FORCE); break;
 
 					default:
 						GrfMsg(1, "missing handler for extended format code");
@@ -453,25 +436,25 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				break;
 			}
 
-			case 0x9E: Utf8Encode(d, 0x20AC);               break; // Euro
-			case 0x9F: Utf8Encode(d, 0x0178);               break; // Y with diaeresis
-			case 0xA0: Utf8Encode(d, SCC_UP_ARROW);         break;
-			case 0xAA: Utf8Encode(d, SCC_DOWN_ARROW);       break;
-			case 0xAC: Utf8Encode(d, SCC_CHECKMARK);        break;
-			case 0xAD: Utf8Encode(d, SCC_CROSS);            break;
-			case 0xAF: Utf8Encode(d, SCC_RIGHT_ARROW);      break;
-			case 0xB4: Utf8Encode(d, SCC_TRAIN);            break;
-			case 0xB5: Utf8Encode(d, SCC_LORRY);            break;
-			case 0xB6: Utf8Encode(d, SCC_BUS);              break;
-			case 0xB7: Utf8Encode(d, SCC_PLANE);            break;
-			case 0xB8: Utf8Encode(d, SCC_SHIP);             break;
-			case 0xB9: Utf8Encode(d, SCC_SUPERSCRIPT_M1);   break;
-			case 0xBC: Utf8Encode(d, SCC_SMALL_UP_ARROW);   break;
-			case 0xBD: Utf8Encode(d, SCC_SMALL_DOWN_ARROW); break;
+			case 0x9E: builder.PutUtf8(0x20AC);               break; // Euro
+			case 0x9F: builder.PutUtf8(0x0178);               break; // Y with diaeresis
+			case 0xA0: builder.PutUtf8(SCC_UP_ARROW);         break;
+			case 0xAA: builder.PutUtf8(SCC_DOWN_ARROW);       break;
+			case 0xAC: builder.PutUtf8(SCC_CHECKMARK);        break;
+			case 0xAD: builder.PutUtf8(SCC_CROSS);            break;
+			case 0xAF: builder.PutUtf8(SCC_RIGHT_ARROW);      break;
+			case 0xB4: builder.PutUtf8(SCC_TRAIN);            break;
+			case 0xB5: builder.PutUtf8(SCC_LORRY);            break;
+			case 0xB6: builder.PutUtf8(SCC_BUS);              break;
+			case 0xB7: builder.PutUtf8(SCC_PLANE);            break;
+			case 0xB8: builder.PutUtf8(SCC_SHIP);             break;
+			case 0xB9: builder.PutUtf8(SCC_SUPERSCRIPT_M1);   break;
+			case 0xBC: builder.PutUtf8(SCC_SMALL_UP_ARROW);   break;
+			case 0xBD: builder.PutUtf8(SCC_SMALL_DOWN_ARROW); break;
 			default:
 				/* Validate any unhandled character */
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
-				Utf8Encode(d, c);
+				builder.PutUtf8(c);
 				break;
 		}
 	}
@@ -481,7 +464,7 @@ string_end:
 		GrfMsg(1, "choice list was incomplete, the whole list is ignored");
 	}
 
-	return dest.str();
+	return dest;
 }
 
 /**
@@ -763,11 +746,11 @@ static void HandleNewGRFStringControlCodes(std::string_view str, TextRefStack &s
 /**
  * Process NewGRF string control code instructions.
  * @param scc The string control code that has been read.
- * @param str The string that we are reading from.
+ * @param consumer The string that we are reading from.
  * @param stack The TextRefStack.
  * @param[out] params Output parameters
  */
-static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextRefStack &stack, std::vector<StringParameter> &params)
+static void ProcessNewGRFStringControlCode(char32_t scc, StringConsumer &consumer, TextRefStack &stack, std::vector<StringParameter> &params)
 {
 	/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
 	 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
@@ -775,33 +758,35 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 		default: return;
 
 		case SCC_PLURAL_LIST:
-			++str; // plural form
+			consumer.SkipUint8(); // plural form
 			[[fallthrough]];
 		case SCC_GENDER_LIST: {
-			++str; // offset
+			consumer.SkipUint8(); // offset
 			/* plural and gender choices cannot contain any string commands, so just skip the whole thing */
-			uint num = static_cast<uint8_t>(*str++);
+			uint num = consumer.ReadUint8();
 			uint total_len = 0;
 			for (uint i = 0; i != num; i++) {
-				total_len += static_cast<uint8_t>(*str++);
+				total_len += consumer.ReadUint8();
 			}
-			str += total_len;
+			consumer.Skip(total_len);
 			break;
 		}
 
 		case SCC_SWITCH_CASE: {
 			/* skip all cases and continue with default case */
-			uint num = static_cast<uint8_t>(*str++);
+			uint num = consumer.ReadUint8();
 			for (uint i = 0; i != num; i++) {
-				str += 3 + static_cast<uint8_t>(str[1]) + (static_cast<uint8_t>(str[2]) << 8);
+				consumer.SkipUint8();
+				auto len = consumer.ReadUint16LE();
+				consumer.Skip(len);
 			}
-			str += 2; // length of default
+			consumer.SkipUint16LE(); // length of default
 			break;
 		}
 
 		case SCC_GENDER_INDEX:
 		case SCC_SET_CASE:
-			++str;
+			consumer.SkipUint8();
 			break;
 
 		case SCC_ARG_INDEX:
@@ -841,7 +826,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 		case SCC_NEWGRF_DISCARD_WORD:           stack.PopUnsignedWord(); break;
 
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     stack.RotateTop4Words(); break;
-		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(Utf8Consume(&str)); break;
+		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(consumer.ReadUtf8(0)); break;
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
@@ -851,7 +836,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 			break;
 
 		case SCC_NEWGRF_STRINL: {
-			StringID stringid = Utf8Consume(str);
+			StringID stringid = consumer.ReadUtf8(STR_NULL);
 			/* We also need to handle the substring's stack usage. */
 			HandleNewGRFStringControlCodes(GetStringPtr(stringid), stack, params);
 			break;
@@ -876,10 +861,10 @@ static void ProcessNewGRFStringControlCode(char32_t scc, const char *&str, TextR
 /**
  * Emit OpenTTD's internal string code for the different NewGRF string codes.
  * @param scc NewGRF string code.
- * @param[in,out] str String iterator, moved forward if SCC_NEWGRF_PUSH_WORD is found.
+ * @param consumer String consumer, moved forward if SCC_NEWGRF_PUSH_WORD is found.
  * @returns String code to use.
  */
-char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
+char32_t RemapNewGRFStringControlCode(char32_t scc, StringConsumer &consumer)
 {
 	switch (scc) {
 		default:
@@ -947,7 +932,7 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
 
 		/* These NewGRF string codes modify the NewGRF stack or otherwise do not map to OpenTTD string codes. */
 		case SCC_NEWGRF_PUSH_WORD:
-			Utf8Consume(str);
+			consumer.SkipUtf8();
 			return 0;
 
 		case SCC_NEWGRF_DISCARD_WORD:
@@ -964,10 +949,10 @@ char32_t RemapNewGRFStringControlCode(char32_t scc, const char **str)
  */
 static void HandleNewGRFStringControlCodes(std::string_view str, TextRefStack &stack, std::vector<StringParameter> &params)
 {
-	for (const char *p = str.data(), *end = str.data() + str.size(); p < end; /* nothing */) {
-		char32_t scc;
-		p += Utf8Decode(&scc, p);
-		ProcessNewGRFStringControlCode(scc, p, stack, params);
+	StringConsumer consumer(str);
+	while (consumer.AnyBytesLeft()) {
+		char32_t scc = consumer.ReadUtf8();
+		ProcessNewGRFStringControlCode(scc, consumer, stack, params);
 	}
 }
 

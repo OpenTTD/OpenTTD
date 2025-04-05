@@ -36,9 +36,6 @@
 
 #include "table/strings.h"
 
-#include <sstream>
-#include <iomanip>
-
 #include "safeguards.h"
 
 /** Method to open the OSK. */

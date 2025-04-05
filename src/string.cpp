@@ -14,11 +14,9 @@
 #include "string_func.h"
 #include "string_base.h"
 #include "core/utf8.hpp"
+#include "core/string_inplace.hpp"
 
 #include "table/control_codes.h"
-
-#include <sstream>
-#include <iomanip>
 
 #ifdef _MSC_VER
 #	define strncasecmp strnicmp
@@ -111,75 +109,42 @@ static bool IsSccEncodedCode(char32_t c)
 }
 
 /**
- * Copies the valid (UTF-8) characters from \c str up to \c last to the \c dst.
+ * Copies the valid (UTF-8) characters from \c consumer to the \c builder.
  * Depending on the \c settings invalid characters can be replaced with a
  * question mark, as well as determining what characters are deemed invalid.
  *
- * It is allowed for \c dst to be the same as \c src, in which case the string
- * is make valid in place.
- * @param dst The destination to write to.
- * @param str The string to validate.
- * @param last The last valid character of str.
+ * @param builder The destination to write to.
+ * @param consumer The string to validate.
  * @param settings The settings for the string validation.
  */
-template <class T>
-static void StrMakeValid(T &dst, const char *str, const char *last, StringValidationSettings settings)
+template<class Builder>
+static void StrMakeValid(Builder &builder, StringConsumer &consumer, StringValidationSettings settings)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
-
-	while (str <= last && *str != '\0') {
-		size_t len = Utf8EncodedCharLen(*str);
-		char32_t c;
-		/* If the first byte does not look like the first byte of an encoded
-		 * character, i.e. encoded length is 0, then this byte is definitely bad
-		 * and it should be skipped.
-		 * When the first byte looks like the first byte of an encoded character,
-		 * then the remaining bytes in the string are checked whether the whole
-		 * encoded character can be there. If that is not the case, this byte is
-		 * skipped.
-		 * Finally we attempt to decode the encoded character, which does certain
-		 * extra validations to see whether the correct number of bytes were used
-		 * to encode the character. If that is not the case, the byte is probably
-		 * invalid and it is skipped. We could emit a question mark, but then the
-		 * logic below cannot just copy bytes, it would need to re-encode the
-		 * decoded characters as the length in bytes may have changed.
-		 *
-		 * The goals here is to get as much valid Utf8 encoded characters from the
-		 * source string to the destination string.
-		 *
-		 * Note: a multi-byte encoded termination ('\0') will trigger the encoded
-		 * char length and the decoded length to differ, so it will be ignored as
-		 * invalid character data. If it were to reach the termination, then we
-		 * would also reach the "last" byte of the string and a normal '\0'
-		 * termination will be placed after it.
-		 */
-		if (len == 0 || str + len > last + 1 || len != Utf8Decode(&c, str)) {
+	while (consumer.AnyBytesLeft()) {
+		auto c = consumer.TryReadUtf8();
+		if (!c.has_value()) {
 			/* Maybe the next byte is still a valid character? */
-			str++;
+			consumer.Skip(1);
 			continue;
 		}
+		if (*c == 0) break;
 
-		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && IsSccEncodedCode(c))) {
-			/* Copy the character back. Even if dst is current the same as str
-			 * (i.e. no characters have been changed) this is quicker than
-			 * moving the pointers ahead by len */
-			do {
-				*dst++ = *str++;
-			} while (--len != 0);
-		} else if ((settings & SVS_ALLOW_NEWLINE) != 0 && c == '\n') {
-			*dst++ = *str++;
+		if ((IsPrintable(*c) && (*c < SCC_SPRITE_START || *c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && IsSccEncodedCode(*c))) {
+			builder.PutUtf8(*c);
+		} else if ((settings & SVS_ALLOW_NEWLINE) != 0 && *c == '\n') {
+			builder.PutUtf8(*c);
 		} else {
-			if ((settings & SVS_ALLOW_NEWLINE) != 0 && c == '\r' && str[1] == '\n') {
-				str += len;
+			if ((settings & SVS_ALLOW_NEWLINE) != 0 && *c == '\r' && consumer.PeekCharIf('\n')) {
+				/* Skip \r, if followed by \n */
 				continue;
 			}
-			str += len;
-			if ((settings & SVS_REPLACE_TAB_CR_NL_WITH_SPACE) != 0 && (c == '\r' || c == '\n' || c == '\t')) {
+			if ((settings & SVS_REPLACE_TAB_CR_NL_WITH_SPACE) != 0 && (*c == '\r' || *c == '\n' || *c == '\t')) {
 				/* Replace the tab, carriage return or newline with a space. */
-				*dst++ = ' ';
+				builder.PutChar(' ');
 			} else if ((settings & SVS_REPLACE_WITH_QUESTION_MARK) != 0) {
 				/* Replace the undesirable character with a question mark */
-				*dst++ = '?';
+				builder.PutChar('?');
 			}
 		}
 	}
@@ -196,9 +161,26 @@ static void StrMakeValid(T &dst, const char *str, const char *last, StringValida
  */
 void StrMakeValidInPlace(char *str, StringValidationSettings settings)
 {
-	char *dst = str;
-	StrMakeValid(dst, str, str + strlen(str), settings);
-	*dst = '\0';
+	InPlaceReplacement inplace(std::span(str, strlen(str)));
+	StrMakeValid(inplace.builder, inplace.consumer, settings);
+	/* Add NUL terminator, if we ended up with less bytes than before */
+	if (inplace.builder.AnyBytesUnused()) inplace.builder.PutChar(0);
+}
+
+/**
+ * Scans the string for invalid characters and replaces them with a
+ * question mark '?' (if not ignored).
+ * @param str The string to validate.
+ * @param settings The settings for the string validation.
+ * @note The string must be properly NUL terminated.
+ */
+void StrMakeValidInPlace(std::string &str, StringValidationSettings settings)
+{
+	if (str.empty()) return;
+
+	InPlaceReplacement inplace(std::span(str.data(), str.size()));
+	StrMakeValid(inplace.builder, inplace.consumer, settings);
+	str.erase(inplace.builder.GetBytesWritten(), std::string::npos);
 }
 
 /**
@@ -210,16 +192,11 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings)
  */
 std::string StrMakeValid(std::string_view str, StringValidationSettings settings)
 {
-	if (str.empty()) return {};
-
-	auto buf = str.data();
-	auto last = buf + str.size() - 1;
-
-	std::ostringstream dst;
-	std::ostreambuf_iterator<char> dst_iter(dst);
-	StrMakeValid(dst_iter, buf, last, settings);
-
-	return dst.str();
+	std::string result;
+	StringBuilder builder(result);
+	StringConsumer consumer(str);
+	StrMakeValid(builder, consumer, settings);
+	return result;
 }
 
 /**
@@ -233,27 +210,17 @@ std::string StrMakeValid(std::string_view str, StringValidationSettings settings
 bool StrValid(std::span<const char> str)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
-	auto it = std::begin(str);
-	auto last = std::prev(std::end(str));
-
-	while (it <= last && *it != '\0') {
-		size_t len = Utf8EncodedCharLen(*it);
-		/* Encoded length is 0 if the character isn't known.
-		 * The length check is needed to prevent Utf8Decode to read
-		 * over the terminating '\0' if that happens to be placed
-		 * within the encoding of an UTF8 character. */
-		if (len == 0 || it + len > last) return false;
-
-		char32_t c;
-		len = Utf8Decode(&c, &*it);
-		if (!IsPrintable(c) || (c >= SCC_SPRITE_START && c <= SCC_SPRITE_END)) {
+	StringConsumer consumer(str);
+	while (consumer.AnyBytesLeft()) {
+		auto c = consumer.TryReadUtf8();
+		if (!c.has_value()) return false; // invalid codepoint
+		if (*c == 0) return true; // NUL termination
+		if (!IsPrintable(*c) || (*c >= SCC_SPRITE_START && *c <= SCC_SPRITE_END)) {
 			return false;
 		}
-
-		it += len;
 	}
 
-	return *it == '\0';
+	return false; // missing NUL termination
 }
 
 /**
@@ -412,141 +379,6 @@ bool IsValidChar(char32_t key, CharSetFilter afilter)
 		default: NOT_REACHED();
 	}
 }
-
-
-/* UTF-8 handling routines */
-
-
-/**
- * Decode and consume the next UTF-8 encoded character.
- * @param c Buffer to place decoded character.
- * @param s Character stream to retrieve character from.
- * @return Number of characters in the sequence.
- */
-size_t Utf8Decode(char32_t *c, const char *s)
-{
-	assert(c != nullptr);
-
-	if (!HasBit(s[0], 7)) {
-		/* Single byte character: 0xxxxxxx */
-		*c = s[0];
-		return 1;
-	} else if (GB(s[0], 5, 3) == 6) {
-		if (IsUtf8Part(s[1])) {
-			/* Double byte character: 110xxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 5) << 6 | GB(s[1], 0, 6);
-			if (*c >= 0x80) return 2;
-		}
-	} else if (GB(s[0], 4, 4) == 14) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2])) {
-			/* Triple byte character: 1110xxxx 10xxxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 4) << 12 | GB(s[1], 0, 6) << 6 | GB(s[2], 0, 6);
-			if (*c >= 0x800) return 3;
-		}
-	} else if (GB(s[0], 3, 5) == 30) {
-		if (IsUtf8Part(s[1]) && IsUtf8Part(s[2]) && IsUtf8Part(s[3])) {
-			/* 4 byte character: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx */
-			*c = GB(s[0], 0, 3) << 18 | GB(s[1], 0, 6) << 12 | GB(s[2], 0, 6) << 6 | GB(s[3], 0, 6);
-			if (*c >= 0x10000 && *c <= 0x10FFFF) return 4;
-		}
-	}
-
-	*c = '?';
-	return 1;
-}
-
-
-/**
- * Encode a unicode character and place it in the buffer.
- * @tparam T Type of the buffer.
- * @param buf Buffer to place character.
- * @param c   Unicode character to encode.
- * @return Number of characters in the encoded sequence.
- */
-template <class T>
-inline size_t Utf8Encode(T buf, char32_t c)
-{
-	if (c < 0x80) {
-		*buf = c;
-		return 1;
-	} else if (c < 0x800) {
-		*buf++ = 0xC0 + GB(c,  6, 5);
-		*buf   = 0x80 + GB(c,  0, 6);
-		return 2;
-	} else if (c < 0x10000) {
-		*buf++ = 0xE0 + GB(c, 12, 4);
-		*buf++ = 0x80 + GB(c,  6, 6);
-		*buf   = 0x80 + GB(c,  0, 6);
-		return 3;
-	} else if (c < 0x110000) {
-		*buf++ = 0xF0 + GB(c, 18, 3);
-		*buf++ = 0x80 + GB(c, 12, 6);
-		*buf++ = 0x80 + GB(c,  6, 6);
-		*buf   = 0x80 + GB(c,  0, 6);
-		return 4;
-	}
-
-	*buf = '?';
-	return 1;
-}
-
-size_t Utf8Encode(char *buf, char32_t c)
-{
-	return Utf8Encode<char *>(buf, c);
-}
-
-size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, char32_t c)
-{
-	return Utf8Encode<std::ostreambuf_iterator<char> &>(buf, c);
-}
-
-size_t Utf8Encode(std::back_insert_iterator<std::string> &buf, char32_t c)
-{
-	return Utf8Encode<std::back_insert_iterator<std::string> &>(buf, c);
-}
-
-/**
- * Properly terminate an UTF8 string to some maximum length
- * @param s string to check if it needs additional trimming
- * @param maxlen the maximum length the buffer can have.
- * @return the new length in bytes of the string (eg. strlen(new_string))
- * @note maxlen is the string length _INCLUDING_ the terminating '\0'
- */
-size_t Utf8TrimString(char *s, size_t maxlen)
-{
-	size_t length = 0;
-
-	for (const char *ptr = strchr(s, '\0'); *s != '\0';) {
-		size_t len = Utf8EncodedCharLen(*s);
-		/* Silently ignore invalid UTF8 sequences, our only concern trimming */
-		if (len == 0) len = 1;
-
-		/* Take care when a hard cutoff was made for the string and
-		 * the last UTF8 sequence is invalid */
-		if (length + len >= maxlen || (s + len > ptr)) break;
-		s += len;
-		length += len;
-	}
-
-	*s = '\0';
-	return length;
-}
-
-#ifdef DEFINE_STRCASESTR
-char *strcasestr(const char *haystack, const char *needle)
-{
-	size_t hay_len = strlen(haystack);
-	size_t needle_len = strlen(needle);
-	while (hay_len >= needle_len) {
-		if (strncasecmp(haystack, needle, needle_len) == 0) return const_cast<char *>(haystack);
-
-		haystack++;
-		hay_len--;
-	}
-
-	return nullptr;
-}
-#endif /* DEFINE_STRCASESTR */
 
 /**
  * Test if a unicode character is considered garbage to be skipped.
