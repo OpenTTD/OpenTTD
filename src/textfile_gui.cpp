@@ -14,6 +14,7 @@
 #include "gfx_type.h"
 #include "gfx_func.h"
 #include "string_func.h"
+#include "core/string_builder.hpp"
 #include "textfile_gui.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
@@ -245,7 +246,7 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 {
 	std::string::const_iterator last_match_end = line.text.cbegin();
 	std::string fixed_line;
-	char ccbuf[5];
+	StringBuilder builder(fixed_line);
 
 	std::sregex_iterator matcher{ line.text.cbegin(), line.text.cend(), _markdown_link_regex};
 	while (matcher != std::sregex_iterator()) {
@@ -273,13 +274,13 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 
 		if (link_colour != SCC_CONTROL_END) {
 			/* Format the link to look like a link. */
-			fixed_line += std::string(last_match_end, match[0].first);
+			builder += std::string_view(last_match_end, match[0].first);
 			link.begin = fixed_line.length();
-			fixed_line += std::string(ccbuf, Utf8Encode(ccbuf, SCC_PUSH_COLOUR));
-			fixed_line += std::string(ccbuf, Utf8Encode(ccbuf, link_colour));
-			fixed_line += match[1].str();
+			builder.PutUtf8(SCC_PUSH_COLOUR);
+			builder.PutUtf8(link_colour);
+			builder += match[1].str();
 			link.end = fixed_line.length();
-			fixed_line += std::string(ccbuf, Utf8Encode(ccbuf, SCC_POP_COLOUR));
+			builder.PutUtf8(SCC_POP_COLOUR);
 			last_match_end = match[0].second;
 		}
 

@@ -13,6 +13,7 @@
 
 #include "../string_func.h"
 #include "../strings_func.h"
+#include "../core/string_builder.hpp"
 #include "../table/control_codes.h"
 
 #include "table/strings.h"
@@ -423,15 +424,15 @@ static std::string FixSCCEncodedWrapper(const std::string &str, bool fix_code)
 }
 
 /* Helper to compose a string part from a unicode character */
-static void ComposePart(std::back_insert_iterator<std::string> &output, char32_t c)
+static void ComposePart(StringBuilder &builder, char32_t c)
 {
-	Utf8Encode(output, c);
+	builder.PutUtf8(c);
 }
 
 /* Helper to compose a string part from a string. */
-static void ComposePart(std::back_insert_iterator<std::string> &output, const std::string &value)
+static void ComposePart(StringBuilder &builder, const std::string &value)
 {
-	for (const auto &c : value) *output = c;
+	builder += value;
 }
 
 /* Helper to compose a string from unicode or string parts. */
@@ -439,8 +440,8 @@ template <typename... Args>
 static std::string Compose(Args &&... args)
 {
 	std::string result;
-	auto output = std::back_inserter(result);
-	(ComposePart(output, args), ...);
+	StringBuilder builder(result);
+	(ComposePart(builder, args), ...);
 	return result;
 }
 

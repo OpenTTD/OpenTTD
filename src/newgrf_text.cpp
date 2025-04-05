@@ -27,6 +27,7 @@
 #include "timer/timer_game_calendar.h"
 #include "debug.h"
 #include "core/alloc_type.hpp"
+#include "core/string_builder.hpp"
 #include "language.h"
 #include <sstream>
 
@@ -121,33 +122,33 @@ struct UnmappedChoiceList {
 	int offset;             ///< The offset for the plural/gender form.
 
 	/** Mapping of NewGRF supplied ID to the different strings in the choice list. */
-	std::map<int, std::stringstream> strings;
+	std::map<int, std::string> strings;
 
 	/**
 	 * Flush this choice list into the destination string.
 	 * @param lm The current language mapping.
 	 * @param dest Target to write to.
 	 */
-	void Flush(const LanguageMap *lm, std::stringstream &dest)
+	void Flush(const LanguageMap *lm, std::string &dest)
 	{
 		if (this->strings.find(0) == this->strings.end()) {
 			/* In case of a (broken) NewGRF without a default,
 			 * assume an empty string. */
 			GrfMsg(1, "choice list misses default value");
-			this->strings[0] = std::stringstream();
+			this->strings[0] = std::string();
 		}
 
-		std::ostreambuf_iterator<char> d(dest);
+		StringBuilder builder(dest);
 
 		if (lm == nullptr) {
 			/* In case there is no mapping, just ignore everything but the default.
 			 * A probable cause for this happening is when the language file has
 			 * been removed by the user and as such no mapping could be made. */
-			dest << this->strings[0].rdbuf();
+			builder += this->strings[0];
 			return;
 		}
 
-		Utf8Encode(d, this->type);
+		builder.PutUtf8(this->type);
 
 		if (this->type == SCC_SWITCH_CASE) {
 			/*
@@ -162,35 +163,34 @@ struct UnmappedChoiceList {
 				/* Count the ones we have a mapped string for. */
 				if (this->strings.find(lm->GetReverseMapping(i, false)) != this->strings.end()) count++;
 			}
-			*d++ = count;
+			builder.PutUint8(count);
 
 			auto add_case = [&](std::string_view str) {
 				/* "<LENn>" */
 				uint16_t len = ClampTo<uint16_t>(str.size());
-				*d++ = GB(len, 0, 8);
-				*d++ = GB(len, 8, 8);
+				builder.PutUint16LE(len);
 
 				/* "<STRINGn>" */
-				dest.write(str.data(), len);
+				builder += str.substr(0, len);
 			};
 
 			for (uint8_t i = 0; i < _current_language->num_cases; i++) {
 				/* Resolve the string we're looking for. */
 				int idx = lm->GetReverseMapping(i, false);
 				if (this->strings.find(idx) == this->strings.end()) continue;
-				auto str = this->strings[idx].str();
+				auto &str = this->strings[idx];
 
 				/* "<CASEn>" */
-				*d++ = i + 1;
+				builder.PutUint8(i + 1);
 
 				add_case(str);
 			}
 
 			/* "<STRINGDEFAULT>" */
-			add_case(this->strings[0].view());
+			add_case(this->strings[0]);
 		} else {
 			if (this->type == SCC_PLURAL_LIST) {
-				*d++ = lm->plural_form;
+				builder.PutUint8(lm->plural_form);
 			}
 
 			/*
@@ -199,27 +199,27 @@ struct UnmappedChoiceList {
 			 */
 
 			/* "<OFFSET>" */
-			*d++ = this->offset - 0x80;
+			builder.PutUint8(this->offset - 0x80);
 
 			/* "<NUM CHOICES>" */
 			int count = (this->type == SCC_GENDER_LIST ? _current_language->num_genders : LANGUAGE_MAX_PLURAL_FORMS);
-			*d++ = count;
+			builder.PutUint8(count);
 
 			/* "<LENs>" */
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
-				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
+				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0];
 				size_t len = str.size();
 				if (len > UINT8_MAX) GrfMsg(1, "choice list string is too long");
-				*d++ = ClampTo<uint8_t>(len);
+				builder.PutUint8(ClampTo<uint8_t>(len));
 			}
 
 			/* "<STRINGs>" */
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
-				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
+				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0];
 				uint8_t len = ClampTo<uint8_t>(str.size());
-				dest.write(str.c_str(), len);
+				builder += str.substr(0, len);
 			}
 		}
 	}
@@ -253,10 +253,10 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 
 	/* Helper variable for a possible (string) mapping of plural/gender and cases. */
 	std::optional<UnmappedChoiceList> mapping_pg, mapping_c;
-	std::optional<std::reference_wrapper<std::stringstream>> dest_c;
+	std::optional<std::reference_wrapper<std::string>> dest_c;
 
-	std::stringstream dest;
-	std::ostreambuf_iterator<char> d(dest);
+	std::string dest;
+	StringBuilder builder(dest);
 	while (src != str.cend()) {
 		char32_t c;
 
@@ -267,7 +267,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				c = GB(c, 0, 8);
 			} else if (c >= 0x20) {
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
-				Utf8Encode(d, c);
+				builder.PutUtf8(c);
 				continue;
 			}
 		} else {
@@ -279,69 +279,69 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 		switch (c) {
 			case 0x01:
 				if (*src == '\0') goto string_end;
-				Utf8Encode(d, ' ');
 				src++;
+				builder.PutChar(' ');
 				break;
 			case 0x0A: break;
 			case 0x0D:
 				if (allow_newlines) {
-					*d++ = 0x0A;
+					builder.PutChar(0x0A);
 				} else {
 					GrfMsg(1, "Detected newline in string that does not allow one");
 				}
 				break;
-			case 0x0E: Utf8Encode(d, SCC_TINYFONT); break;
-			case 0x0F: Utf8Encode(d, SCC_BIGFONT); break;
+			case 0x0E: builder.PutUtf8(SCC_TINYFONT); break;
+			case 0x0F: builder.PutUtf8(SCC_BIGFONT); break;
 			case 0x1F:
 				if (src[0] == '\0' || src[1] == '\0') goto string_end;
-				Utf8Encode(d, ' ');
 				src += 2;
+				builder.PutChar(' ');
 				break;
 			case 0x7B:
 			case 0x7C:
 			case 0x7D:
 			case 0x7E:
-			case 0x7F: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
-			case 0x80: Utf8Encode(d, byte80); break;
+			case 0x7F: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
+			case 0x80: builder.PutUtf8(byte80); break;
 			case 0x81:
 			{
 				if (src[0] == '\0' || src[1] == '\0') goto string_end;
 				uint16_t string;
 				string = static_cast<uint8_t>(*src++);
 				string |= static_cast<uint8_t>(*src++) << 8;
-				Utf8Encode(d, SCC_NEWGRF_STRINL);
-				Utf8Encode(d, MapGRFStringID(grfid, GRFStringID{string}));
+				builder.PutUtf8(SCC_NEWGRF_STRINL);
+				builder.PutUtf8(MapGRFStringID(grfid, GRFStringID{string}));
 				break;
 			}
 			case 0x82:
 			case 0x83:
-			case 0x84: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_DATE_LONG + c - 0x82); break;
-			case 0x85: Utf8Encode(d, SCC_NEWGRF_DISCARD_WORD);       break;
-			case 0x86: Utf8Encode(d, SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
-			case 0x87: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_VOLUME_LONG);  break;
-			case 0x88: Utf8Encode(d, SCC_BLUE);    break;
-			case 0x89: Utf8Encode(d, SCC_SILVER);  break;
-			case 0x8A: Utf8Encode(d, SCC_GOLD);    break;
-			case 0x8B: Utf8Encode(d, SCC_RED);     break;
-			case 0x8C: Utf8Encode(d, SCC_PURPLE);  break;
-			case 0x8D: Utf8Encode(d, SCC_LTBROWN); break;
-			case 0x8E: Utf8Encode(d, SCC_ORANGE);  break;
-			case 0x8F: Utf8Encode(d, SCC_GREEN);   break;
-			case 0x90: Utf8Encode(d, SCC_YELLOW);  break;
-			case 0x91: Utf8Encode(d, SCC_DKGREEN); break;
-			case 0x92: Utf8Encode(d, SCC_CREAM);   break;
-			case 0x93: Utf8Encode(d, SCC_BROWN);   break;
-			case 0x94: Utf8Encode(d, SCC_WHITE);   break;
-			case 0x95: Utf8Encode(d, SCC_LTBLUE);  break;
-			case 0x96: Utf8Encode(d, SCC_GRAY);    break;
-			case 0x97: Utf8Encode(d, SCC_DKBLUE);  break;
-			case 0x98: Utf8Encode(d, SCC_BLACK);   break;
+			case 0x84: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_DATE_LONG + c - 0x82); break;
+			case 0x85: builder.PutUtf8(SCC_NEWGRF_DISCARD_WORD);       break;
+			case 0x86: builder.PutUtf8(SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
+			case 0x87: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_VOLUME_LONG);  break;
+			case 0x88: builder.PutUtf8(SCC_BLUE);    break;
+			case 0x89: builder.PutUtf8(SCC_SILVER);  break;
+			case 0x8A: builder.PutUtf8(SCC_GOLD);    break;
+			case 0x8B: builder.PutUtf8(SCC_RED);     break;
+			case 0x8C: builder.PutUtf8(SCC_PURPLE);  break;
+			case 0x8D: builder.PutUtf8(SCC_LTBROWN); break;
+			case 0x8E: builder.PutUtf8(SCC_ORANGE);  break;
+			case 0x8F: builder.PutUtf8(SCC_GREEN);   break;
+			case 0x90: builder.PutUtf8(SCC_YELLOW);  break;
+			case 0x91: builder.PutUtf8(SCC_DKGREEN); break;
+			case 0x92: builder.PutUtf8(SCC_CREAM);   break;
+			case 0x93: builder.PutUtf8(SCC_BROWN);   break;
+			case 0x94: builder.PutUtf8(SCC_WHITE);   break;
+			case 0x95: builder.PutUtf8(SCC_LTBLUE);  break;
+			case 0x96: builder.PutUtf8(SCC_GRAY);    break;
+			case 0x97: builder.PutUtf8(SCC_DKBLUE);  break;
+			case 0x98: builder.PutUtf8(SCC_BLACK);   break;
 			case 0x9A:
 			{
 				int code = *src++;
 				switch (code) {
 					case 0x00: goto string_end;
-					case 0x01: Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
+					case 0x01: builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
 						/* 0x02: ignore next colour byte is not supported. It works on the final
 						 * string and as such hooks into the string drawing routine. At that
 						 * point many things already happened, such as splitting up of strings
@@ -354,17 +354,17 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 						if (src[0] == '\0' || src[1] == '\0') goto string_end;
 						uint16_t tmp = static_cast<uint8_t>(*src++);
 						tmp |= static_cast<uint8_t>(*src++) << 8;
-						Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
-						Utf8Encode(d, tmp);
+						builder.PutUtf8(SCC_NEWGRF_PUSH_WORD);
+						builder.PutUtf8(tmp);
 						break;
 					}
-					case 0x06: Utf8Encode(d, SCC_NEWGRF_PRINT_BYTE_HEX);          break;
-					case 0x07: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_HEX);          break;
-					case 0x08: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_HEX);         break;
+					case 0x06: builder.PutUtf8(SCC_NEWGRF_PRINT_BYTE_HEX);          break;
+					case 0x07: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_HEX);          break;
+					case 0x08: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_HEX);         break;
 					/* 0x09, 0x0A are TTDPatch internal use only string codes. */
-					case 0x0B: Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_HEX);         break;
-					case 0x0C: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
-					case 0x0D: Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG);  break;
+					case 0x0B: builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_HEX);         break;
+					case 0x0C: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
+					case 0x0D: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG);  break;
 					case 0x0E:
 					case 0x0F:
 					{
@@ -373,8 +373,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 						int index = *src++;
 						int mapped = lm != nullptr ? lm->GetMapping(index, code == 0x0E) : -1;
 						if (mapped >= 0) {
-							Utf8Encode(d, code == 0x0E ? SCC_GENDER_INDEX : SCC_SET_CASE);
-							Utf8Encode(d, code == 0x0E ? mapped : mapped + 1);
+							builder.PutUtf8(code == 0x0E ? SCC_GENDER_INDEX : SCC_SET_CASE);
+							builder.PutUtf8(code == 0x0E ? mapped : mapped + 1);
 						}
 						break;
 					}
@@ -392,7 +392,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 							if (mapping->strings.find(index) != mapping->strings.end()) {
 								GrfMsg(1, "duplicate choice list string, ignoring");
 							} else {
-								d = std::ostreambuf_iterator<char>(mapping->strings[index]);
+								builder = StringBuilder(mapping->strings[index]);
 								if (!mapping_pg) dest_c = mapping->strings[index];
 							}
 						}
@@ -409,7 +409,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 							if (!mapping_pg) dest_c.reset();
 							mapping.reset();
 
-							d = std::ostreambuf_iterator<char>(new_dest);
+							builder = StringBuilder(new_dest);
 						}
 						break;
 
@@ -438,13 +438,13 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					case 0x1C:
 					case 0x1D:
 					case 0x1E:
-						Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
+						builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
 						break;
 
-					case 0x1F: Utf8Encode(d, SCC_PUSH_COLOUR); break;
-					case 0x20: Utf8Encode(d, SCC_POP_COLOUR);  break;
+					case 0x1F: builder.PutUtf8(SCC_PUSH_COLOUR); break;
+					case 0x20: builder.PutUtf8(SCC_POP_COLOUR);  break;
 
-					case 0x21: Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_FORCE); break;
+					case 0x21: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_FORCE); break;
 
 					default:
 						GrfMsg(1, "missing handler for extended format code");
@@ -453,25 +453,25 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				break;
 			}
 
-			case 0x9E: Utf8Encode(d, 0x20AC);               break; // Euro
-			case 0x9F: Utf8Encode(d, 0x0178);               break; // Y with diaeresis
-			case 0xA0: Utf8Encode(d, SCC_UP_ARROW);         break;
-			case 0xAA: Utf8Encode(d, SCC_DOWN_ARROW);       break;
-			case 0xAC: Utf8Encode(d, SCC_CHECKMARK);        break;
-			case 0xAD: Utf8Encode(d, SCC_CROSS);            break;
-			case 0xAF: Utf8Encode(d, SCC_RIGHT_ARROW);      break;
-			case 0xB4: Utf8Encode(d, SCC_TRAIN);            break;
-			case 0xB5: Utf8Encode(d, SCC_LORRY);            break;
-			case 0xB6: Utf8Encode(d, SCC_BUS);              break;
-			case 0xB7: Utf8Encode(d, SCC_PLANE);            break;
-			case 0xB8: Utf8Encode(d, SCC_SHIP);             break;
-			case 0xB9: Utf8Encode(d, SCC_SUPERSCRIPT_M1);   break;
-			case 0xBC: Utf8Encode(d, SCC_SMALL_UP_ARROW);   break;
-			case 0xBD: Utf8Encode(d, SCC_SMALL_DOWN_ARROW); break;
+			case 0x9E: builder.PutUtf8(0x20AC);               break; // Euro
+			case 0x9F: builder.PutUtf8(0x0178);               break; // Y with diaeresis
+			case 0xA0: builder.PutUtf8(SCC_UP_ARROW);         break;
+			case 0xAA: builder.PutUtf8(SCC_DOWN_ARROW);       break;
+			case 0xAC: builder.PutUtf8(SCC_CHECKMARK);        break;
+			case 0xAD: builder.PutUtf8(SCC_CROSS);            break;
+			case 0xAF: builder.PutUtf8(SCC_RIGHT_ARROW);      break;
+			case 0xB4: builder.PutUtf8(SCC_TRAIN);            break;
+			case 0xB5: builder.PutUtf8(SCC_LORRY);            break;
+			case 0xB6: builder.PutUtf8(SCC_BUS);              break;
+			case 0xB7: builder.PutUtf8(SCC_PLANE);            break;
+			case 0xB8: builder.PutUtf8(SCC_SHIP);             break;
+			case 0xB9: builder.PutUtf8(SCC_SUPERSCRIPT_M1);   break;
+			case 0xBC: builder.PutUtf8(SCC_SMALL_UP_ARROW);   break;
+			case 0xBD: builder.PutUtf8(SCC_SMALL_DOWN_ARROW); break;
 			default:
 				/* Validate any unhandled character */
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
-				Utf8Encode(d, c);
+				builder.PutUtf8(c);
 				break;
 		}
 	}
@@ -481,7 +481,7 @@ string_end:
 		GrfMsg(1, "choice list was incomplete, the whole list is ignored");
 	}
 
-	return dest.str();
+	return dest;
 }
 
 /**

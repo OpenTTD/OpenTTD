@@ -29,6 +29,7 @@
 #include "../window_func.h"
 #include "../strings_func.h"
 #include "../core/endian_func.hpp"
+#include "../core/string_builder.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
 #include "../timer/timer_game_economy.h"
@@ -928,7 +929,7 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 	 * `:"<STRING>"`              becomes `<RS><SCC_ENCODED_STRING><STRING>`
 	 */
 	std::string result;
-	auto output = std::back_inserter(result);
+	StringBuilder builder(result);
 
 	bool is_encoded = false; // Set if we determine by the presence of SCC_ENCODED that the string is an encoded string.
 	bool in_string = false; // Set if we in a string, between double-quotes.
@@ -940,11 +941,11 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 
 		char32_t c;
 		Utf8Decode(&c, &*it);
+		it += len;
 		if (c == SCC_ENCODED || (fix_code && (c == 0xE028 || c == 0xE02A))) {
-			Utf8Encode(output, SCC_ENCODED);
+			builder.PutUtf8(SCC_ENCODED);
 			need_type = false;
 			is_encoded = true;
-			it += len;
 			continue;
 		}
 
@@ -955,27 +956,24 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 			in_string = !in_string;
 			if (in_string && need_type) {
 				/* Started a new string parameter. */
-				Utf8Encode(output, SCC_ENCODED_STRING);
+				builder.PutUtf8(SCC_ENCODED_STRING);
 				need_type = false;
 			}
-			it += len;
 			continue;
 		}
 
 		if (!in_string && c == ':') {
-			*output = SCC_RECORD_SEPARATOR;
+			builder.PutUtf8(SCC_RECORD_SEPARATOR);
 			need_type = true;
-			it += len;
 			continue;
 		}
 		if (need_type) {
 			/* Started a new numeric parameter. */
-			Utf8Encode(output, SCC_ENCODED_NUMERIC);
+			builder.PutUtf8(SCC_ENCODED_NUMERIC);
 			need_type = false;
 		}
 
-		Utf8Encode(output, c);
-		it += len;
+		builder.PutUtf8(c);
 	}
 
 	str = std::move(result);

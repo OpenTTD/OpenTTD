@@ -103,41 +103,38 @@ EncodedString GetEncodedString(StringID str)
 EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParameter> params)
 {
 	std::string result;
-	auto output = std::back_inserter(result);
-	Utf8Encode(output, SCC_ENCODED_INTERNAL);
-	fmt::format_to(output, "{:X}", str);
+	StringBuilder builder(result);
+	builder.PutUtf8(SCC_ENCODED_INTERNAL);
+	builder.PutIntegerBase(str, 16);
 
 	struct visitor {
-		std::back_insert_iterator<std::string> &output;
+		StringBuilder &builder;
 
 		void operator()(const std::monostate &) {}
 
 		void operator()(const uint64_t &arg)
 		{
-			Utf8Encode(output, SCC_ENCODED_NUMERIC);
-			fmt::format_to(this->output, "{:X}", arg);
+			this->builder.PutUtf8(SCC_ENCODED_NUMERIC);
+			this->builder.PutIntegerBase(arg, 16);
 		}
 
 		void operator()(const std::string &value)
 		{
 #ifdef WITH_ASSERT
 			/* Don't allow an encoded string to contain another encoded string. */
-			if (!value.empty()) {
-				char32_t c;
-				const char *p = value.data();
-				if (Utf8Decode(&c, p)) {
-					assert(c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL);
-				}
+			{
+				auto [len, c] = DecodeUtf8(value);
+				assert(len == 0 || (c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL));
 			}
 #endif /* WITH_ASSERT */
-			Utf8Encode(output, SCC_ENCODED_STRING);
-			fmt::format_to(this->output, "{}", value);
+			this->builder.PutUtf8(SCC_ENCODED_STRING);
+			this->builder += value;
 		}
 	};
 
-	visitor v{output};
+	visitor v{builder};
 	for (const auto &param : params) {
-		*output = SCC_RECORD_SEPARATOR;
+		builder.PutUtf8(SCC_RECORD_SEPARATOR);
 		std::visit(v, param.data);
 	}
 
@@ -489,7 +486,7 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 	int thousands_offset = (max_digits - 1) % 3;
 
 	if (number < 0) {
-		builder += '-';
+		builder.PutChar('-');
 		number = -number;
 	}
 
@@ -502,7 +499,7 @@ static void FormatNumber(StringBuilder &builder, int64_t number, const char *sep
 			num = num % divisor;
 		}
 		if ((tot |= quot) || i == max_digits - 1) {
-			builder += '0' + quot; // quot is a single digit
+			builder.PutChar('0' + quot); // quot is a single digit
 			if ((i % 3) == thousands_offset && i < max_digits - 1) builder += separator;
 		}
 
@@ -519,17 +516,17 @@ static void FormatCommaNumber(StringBuilder &builder, int64_t number)
 
 static void FormatNoCommaNumber(StringBuilder &builder, int64_t number)
 {
-	fmt::format_to(builder, "{}", number);
+	fmt::format_to(builder.back_inserter(), "{}", number);
 }
 
 static void FormatZerofillNumber(StringBuilder &builder, int64_t number, int count)
 {
-	fmt::format_to(builder, "{:0{}d}", number, count);
+	fmt::format_to(builder.back_inserter(), "{:0{}d}", number, count);
 }
 
 static void FormatHexNumber(StringBuilder &builder, uint64_t number)
 {
-	fmt::format_to(builder, "0x{:X}", number);
+	fmt::format_to(builder.back_inserter(), "0x{:X}", number);
 }
 
 /**
@@ -551,18 +548,18 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 
 	if (number < 1024) {
 		id = 0;
-		fmt::format_to(builder, "{}", number);
+		fmt::format_to(builder.back_inserter(), "{}", number);
 	} else if (number < 1024 * 10) {
-		fmt::format_to(builder, "{}{}{:02}", number / 1024, GetDecimalSeparator(), (number % 1024) * 100 / 1024);
+		fmt::format_to(builder.back_inserter(), "{}{}{:02}", number / 1024, GetDecimalSeparator(), (number % 1024) * 100 / 1024);
 	} else if (number < 1024 * 100) {
-		fmt::format_to(builder, "{}{}{:01}", number / 1024, GetDecimalSeparator(), (number % 1024) * 10 / 1024);
+		fmt::format_to(builder.back_inserter(), "{}{}{:01}", number / 1024, GetDecimalSeparator(), (number % 1024) * 10 / 1024);
 	} else {
 		assert(number < 1024 * 1024);
-		fmt::format_to(builder, "{}", number / 1024);
+		fmt::format_to(builder.back_inserter(), "{}", number / 1024);
 	}
 
 	assert(id < lengthof(iec_prefixes));
-	fmt::format_to(builder, NBSP "{}B", iec_prefixes[id]);
+	fmt::format_to(builder.back_inserter(), NBSP "{}B", iec_prefixes[id]);
 }
 
 static void FormatYmdString(StringBuilder &builder, TimerGameCalendar::Date date, uint case_index)
@@ -600,9 +597,9 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 
 	/* convert from negative */
 	if (number < 0) {
-		builder.Utf8Encode(SCC_PUSH_COLOUR);
-		builder.Utf8Encode(SCC_RED);
-		builder += '-';
+		builder.PutUtf8(SCC_PUSH_COLOUR);
+		builder.PutUtf8(SCC_RED);
+		builder.PutChar('-');
 		number = -number;
 	}
 
@@ -646,7 +643,7 @@ static void FormatGenericCurrency(StringBuilder &builder, const CurrencySpec *sp
 	if (spec->symbol_pos != 0) builder += spec->suffix;
 
 	if (negative) {
-		builder.Utf8Encode(SCC_POP_COLOUR);
+		builder.PutUtf8(SCC_POP_COLOUR);
 	}
 }
 
@@ -1130,7 +1127,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			}
 
 			if (b < SCC_CONTROL_START || b > SCC_CONTROL_END) {
-				builder.Utf8Encode(b);
+				builder.PutUtf8(b);
 				continue;
 			}
 
@@ -1168,20 +1165,21 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						/* Now we need to figure out what text to resolve, i.e.
 						 * what do we need to draw? So get the actual raw string
 						 * first using the control code to get said string. */
-						char input[4 + 1];
-						char *p = input + Utf8Encode(input, args.GetTypeAtOffset(offset));
-						*p = '\0';
+						std::string input;
+						{
+							StringBuilder tmp_builder(input);
+							tmp_builder.PutUtf8(args.GetTypeAtOffset(offset));
+						}
+
+						std::string buffer;
+						{
+							AutoRestoreBackup sgf_backup(_scan_for_gender_data, true);
+							StringBuilder tmp_builder(buffer);
+							StringParameters tmp_params = args.GetRemainingParameters(offset);
+							FormatString(tmp_builder, input, tmp_params);
+						}
 
 						/* The gender is stored at the start of the formatted string. */
-						bool old_sgd = _scan_for_gender_data;
-						_scan_for_gender_data = true;
-						std::string buffer;
-						StringBuilder tmp_builder(buffer);
-						StringParameters tmp_params = args.GetRemainingParameters(offset);
-						FormatString(tmp_builder, input, tmp_params);
-						_scan_for_gender_data = old_sgd;
-
-						/* And determine the string. */
 						const char *s = buffer.c_str();
 						char32_t c = Utf8Consume(&s);
 						/* Does this string have a gender, if so, set it */
@@ -1195,8 +1193,8 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
 				case SCC_GENDER_INDEX: // {GENDER 0}
 					if (_scan_for_gender_data) {
-						builder.Utf8Encode(SCC_GENDER_INDEX);
-						builder += *str++;
+						builder.PutUtf8(SCC_GENDER_INDEX);
+						builder.PutUint8(*str++);
 					} else {
 						str++;
 					}
@@ -1317,7 +1315,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					int64_t fractional = number % divisor;
 					number /= divisor;
 					FormatCommaNumber(builder, number);
-					fmt::format_to(builder, "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
+					fmt::format_to(builder.back_inserter(), "{}{:0{}d}", GetDecimalSeparator(), fractional, digits);
 					break;
 				}
 
@@ -1810,12 +1808,12 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_COLOUR: { // {COLOUR}
 					StringControlCode scc = (StringControlCode)(SCC_BLUE + args.GetNextParameter<Colours>());
-					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.Utf8Encode(scc);
+					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.PutUtf8(scc);
 					break;
 				}
 
 				default:
-					builder.Utf8Encode(b);
+					builder.PutUtf8(b);
 					break;
 			}
 		} catch (std::out_of_range &e) {
@@ -1828,11 +1826,11 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x)
 {
-	if (x.Test(StationFacility::Train)) builder.Utf8Encode(SCC_TRAIN);
-	if (x.Test(StationFacility::TruckStop)) builder.Utf8Encode(SCC_LORRY);
-	if (x.Test(StationFacility::BusStop)) builder.Utf8Encode(SCC_BUS);
-	if (x.Test(StationFacility::Dock)) builder.Utf8Encode(SCC_SHIP);
-	if (x.Test(StationFacility::Airport)) builder.Utf8Encode(SCC_PLANE);
+	if (x.Test(StationFacility::Train)) builder.PutUtf8(SCC_TRAIN);
+	if (x.Test(StationFacility::TruckStop)) builder.PutUtf8(SCC_LORRY);
+	if (x.Test(StationFacility::BusStop)) builder.PutUtf8(SCC_BUS);
+	if (x.Test(StationFacility::Dock)) builder.PutUtf8(SCC_SHIP);
+	if (x.Test(StationFacility::Airport)) builder.PutUtf8(SCC_PLANE);
 }
 
 static const char * const _silly_company_names[] = {
@@ -1928,13 +1926,13 @@ static void GenAndCoName(StringBuilder &builder, uint32_t seed)
 
 static void GenPresidentName(StringBuilder &builder, uint32_t seed)
 {
-	builder += _initial_name_letters[std::size(_initial_name_letters) * GB(seed, 0, 8) >> 8];
+	builder.PutChar(_initial_name_letters[std::size(_initial_name_letters) * GB(seed, 0, 8) >> 8]);
 	builder += ". ";
 
 	/* The second initial is optional. */
 	size_t index = (std::size(_initial_name_letters) + 35) * GB(seed, 8, 8) >> 8;
 	if (index < std::size(_initial_name_letters)) {
-		builder += _initial_name_letters[index];
+		builder.PutChar(_initial_name_letters[index]);
 		builder += ". ";
 	}
 
@@ -2373,13 +2371,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		if (!bad_font && any_font_configured) {
 			/* If the user configured a bad font, and we found a better one,
 			 * show that we loaded the better font instead of the configured one.
-			 * The colour 'character' might change in the
-			 * future, so for safety we just Utf8 Encode it into the string,
-			 * which takes exactly three characters, so it replaces the "XXX"
-			 * with the colour marker. */
-			static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
-			Utf8Encode(err_str.data(), SCC_YELLOW);
-			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
+			 */
+			std::string err_str;
+			StringBuilder builder(err_str);
+			builder.PutUtf8(SCC_YELLOW);
+			builder.Put("The current font is missing some of the characters used in the texts for this language. Using system fallback font instead.");
+			ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 		}
 
 		if (bad_font && base_font) {
@@ -2395,11 +2392,12 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		/* All attempts have failed. Display an error. As we do not want the string to be translated by
 		 * the translators, we 'force' it into the binary and 'load' it via a BindCString. To do this
 		 * properly we have to set the colour of the string, otherwise we end up with a lot of artifacts.
-		 * The colour 'character' might change in the future, so for safety we just Utf8 Encode it into
-		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
-		static std::string err_str("XXXThe current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
-		Utf8Encode(err_str.data(), SCC_YELLOW);
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_WARNING);
+		 */
+		std::string err_str;
+		StringBuilder builder(err_str);
+		builder.PutUtf8(SCC_YELLOW);
+		builder.Put("The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 
 		/* Reset the font width */
 		LoadStringWidthTable(searcher->Monospace());
@@ -2417,16 +2415,14 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	 * be translated by the translators, we 'force' it into the
 	 * binary and 'load' it via a BindCString. To do this
 	 * properly we have to set the colour of the string,
-	 * otherwise we end up with a lot of artifacts. The colour
-	 * 'character' might change in the future, so for safety
-	 * we just Utf8 Encode it into the string, which takes
-	 * exactly three characters, so it replaces the "XXX" with
-	 * the colour marker.
+	 * otherwise we end up with a lot of artifacts.
 	 */
 	if (_current_text_dir != TD_LTR) {
-		static std::string err_str("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
-		Utf8Encode(err_str.data(), SCC_YELLOW);
-		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, err_str), {}, WL_ERROR);
+		std::string err_str;
+		StringBuilder builder(err_str);
+		builder.PutUtf8(SCC_YELLOW);
+		builder.Put("This version of OpenTTD does not support right-to-left languages. Recompile with ICU + Harfbuzz enabled.");
+		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_ERROR);
 	}
 #endif /* !(WITH_ICU_I18N && WITH_HARFBUZZ) && !WITH_UNISCRIBE && !WITH_COCOA */
 }
