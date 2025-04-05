@@ -1292,7 +1292,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :无贷款
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :贷款利率：{STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :贷款利率；如果通货膨胀启用，将同时影响通货膨胀率
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :贷款利率。启用通货膨胀时将同时影响通货膨胀率
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :运营费用：{STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :设置载具的营运与维护成本水平
@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :检查所有载
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :若线路亏损时发出提示：{STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :“打开”，当一辆车在一年内总体亏损，发出提示
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :启用时，若某载具在一年内总体亏损，发出提示
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :启用时，若某载具在一周期内总体亏损，发出提示
 
 STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :载具老化时发出提示：{STRING}
@@ -4467,7 +4467,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELO
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 没有调度计划
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - 正前往 {0:WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - 正前往 {0:DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - 正在前往 {0:DEPOT} 以进行维护
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - 正前往 {0:DEPOT} 以进行维护
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - 正前往 {0:DEPOT} 以维护与调节班次
 
 STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - 无法前往 {0:STATION}

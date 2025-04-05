@@ -1205,6 +1205,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}रफ�
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}भार : {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 
 ###length 3
+STR_CARGO_TYPE_FILTER_FREIGHT                                   :परिवहन
 
 ###length VEHICLE_TYPES
 
