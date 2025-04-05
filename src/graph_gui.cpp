@@ -442,10 +442,14 @@ protected:
 			y += y_sep;
 		}
 
+		x = rtl ? r.right : r.left;
+		y = r.bottom + ScaleGUITrad(2);
+
+		// if there are not enough datapoints to fill the graph, align to the right
+		x += (this->num_vert_lines - this->num_on_x_axis) * x_sep;
+
 		/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 		if (this->draw_dates) {
-			x = rtl ? r.right : r.left;
-			y = r.bottom + ScaleGUITrad(2);
 			TimerGameEconomy::Month month = this->month;
 			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
@@ -471,9 +475,6 @@ protected:
 			}
 		} else {
 			/* Draw x-axis labels for graphs not based on quarterly performance (cargo payment rates, and all graphs when using wallclock units). */
-			x = rtl ? r.right : r.left;
-			y = r.bottom + ScaleGUITrad(2);
-
 			int16_t iterator;
 			uint16_t label;
 			if (this->x_values_reversed) {
@@ -511,6 +512,9 @@ protected:
 			} else {
 				x = r.left + (x_sep / 2);
 			}
+
+			// if there are not enough datapoints to fill the graph, align to the right
+			x += (this->num_vert_lines - this->num_on_x_axis) * x_sep;
 
 			uint prev_x = INVALID_DATAPOINT_POS;
 			uint prev_y = INVALID_DATAPOINT_POS;
