@@ -396,7 +396,7 @@ static std::string GetFileTitle(const std::string &file, Subdirectory subdir)
 	size_t read = fread(title, 1, lengthof(title), *f);
 
 	assert(read <= lengthof(title));
-	return StrMakeValid({title, read});
+	return StrMakeValid(std::string_view{title, read});
 }
 
 /**

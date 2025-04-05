@@ -21,8 +21,19 @@ void strecpy(std::span<char> dst, std::string_view src);
 
 std::string FormatArrayAsHex(std::span<const uint8_t> data);
 
-[[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 void StrMakeValidInPlace(char *str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+void StrMakeValidInPlace(std::string &str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+
+[[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+[[nodiscard]] inline std::string StrMakeValid(const char *str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK)
+{
+	return StrMakeValid(std::string_view(str), settings);
+}
+[[nodiscard]] inline std::string StrMakeValid(std::string &&str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK)
+{
+	StrMakeValidInPlace(str, settings);
+	return std::move(str);
+}
 
 bool strtolower(std::string &str, std::string::size_type offs = 0);
 
