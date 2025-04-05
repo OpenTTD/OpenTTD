@@ -202,6 +202,24 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings)
 }
 
 /**
+ * Scans the string for invalid characters and replaces them with a
+ * question mark '?' (if not ignored).
+ * @param str The string to validate.
+ * @param settings The settings for the string validation.
+ * @note The string must be properly NUL terminated.
+ */
+void StrMakeValidInPlace(std::string &str, StringValidationSettings settings)
+{
+	if (str.empty()) return;
+
+	char *buf = str.data();
+	char *last = buf + str.size() - 1;
+	char *dst = buf;
+	StrMakeValid(dst, buf, last, settings);
+	str.erase(dst - buf, std::string::npos);
+}
+
+/**
  * Copies the valid (UTF-8) characters from \c str to the returned string.
  * Depending on the \c settings invalid characters can be replaced with a
  * question mark, as well as determining what characters are deemed invalid.
