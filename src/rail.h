@@ -305,6 +305,19 @@ inline const RailTypeInfo *GetRailTypeInfo(RailType railtype)
 }
 
 /**
+ * Returns the railtype for a Railtype information.
+ * @param rti Pointer to static RailTypeInfo
+ * @return Railtype in static railtype definitions
+ */
+inline RailType GetRailTypeInfoIndex(const RailTypeInfo *rti)
+{
+	extern RailTypeInfo _railtypes[RAILTYPE_END];
+	size_t index = rti - _railtypes;
+	assert(index < RAILTYPE_END && rti == _railtypes + index);
+	return static_cast<RailType>(index);
+}
+
+/**
  * Checks if an engine of the given RailType can drive on a tile with a given
  * RailType. This would normally just be an equality check, but for electric
  * rails (which also support non-electric engines).
