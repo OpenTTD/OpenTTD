@@ -28,8 +28,7 @@
 #include "effectvehicle_func.h"
 #include "tunnelbridge_map.h"
 #include "station_base.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "timer/timer_game_calendar.h"
@@ -1005,8 +1004,7 @@ static void FloodVehicle(Vehicle *v)
 {
 	uint victims = v->Crash(true);
 
-	AI::NewEvent(v->owner, new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_FLOODED, victims, v->owner));
-	Game::NewEvent(new ScriptEventVehicleCrashed(v->index, v->tile, ScriptEventVehicleCrashed::CRASH_FLOODED, victims, v->owner));
+	ScriptTrigger::NewEvent<ScriptEventVehicleCrashed>(v->owner, v->index, v->tile, ScriptEventVehicleCrashed::CRASH_FLOODED, victims, v->owner);
 	AddTileNewsItem(GetEncodedString(STR_NEWS_DISASTER_FLOOD_VEHICLE, victims), NewsType::Accident, v->tile);
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_12_EXPLOSION, v);

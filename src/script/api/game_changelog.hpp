@@ -27,6 +27,17 @@
  * \li GSCargo::CC_NON_POURABLE
  * \li GSCargo::CC_POTABLE
  * \li GSCargo::CC_NON_POTABLE
+ * \li GSGroup::GetOwner
+ * \li GSEventVehicleLost
+ * \li GSEventVehicleWaitingInDepot
+ * \li GSEventVehicleUnprofitable
+ * \li GSEventEngineAvailable
+ * \li GSEventDisasterZeppelinerCrashed
+ * \li GSEventDisasterZeppelinerCleared
+ * \li GSEventAircraftDestTooFar
+ * \li GSEventVehicleAutoReplaced
+ * \li GSEventCompanyAskMerger
+ * \li GSEventEnginePreview
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
