@@ -33,7 +33,6 @@
 #include "engine_base.h"
 #include "terraform_gui.h"
 #include "terraform_cmd.h"
-#include "zoom_func.h"
 #include "rail_cmd.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"
@@ -384,113 +383,36 @@ Window *ShowTerraformToolbar(Window *link)
 	return w;
 }
 
-static uint8_t _terraform_size = 1;
-
-/**
- * Raise/Lower a bigger chunk of land at the same time in the editor. When
- * raising get the lowest point, when lowering the highest point, and set all
- * tiles in the selection to that height.
- * @todo : Incorporate into game itself to allow for ingame raising/lowering of
- *         larger chunks at the same time OR remove altogether, as we have 'level land' ?
- * @param tile The top-left tile where the terraforming will start
- * @param mode true for raising, false for lowering land
- */
-static void CommonRaiseLowerBigLand(TileIndex tile, bool mode)
-{
-	if (_terraform_size == 1) {
-		StringID msg =
-			mode ? STR_ERROR_CAN_T_RAISE_LAND_HERE : STR_ERROR_CAN_T_LOWER_LAND_HERE;
-
-		Command<CMD_TERRAFORM_LAND>::Post(msg, CcTerraform, tile, SLOPE_N, mode);
-	} else {
-		assert(_terraform_size != 0);
-		TileArea ta(tile, _terraform_size, _terraform_size);
-		ta.ClampToMap();
-
-		if (ta.w == 0 || ta.h == 0) return;
-
-		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
-
-		uint h;
-		if (mode != 0) {
-			/* Raise land */
-			h = MAX_TILE_HEIGHT;
-			for (TileIndex tile2 : ta) {
-				h = std::min(h, TileHeight(tile2));
-			}
-		} else {
-			/* Lower land */
-			h = 0;
-			for (TileIndex tile2 : ta) {
-				h = std::max(h, TileHeight(tile2));
-			}
-		}
-
-		for (TileIndex tile2 : ta) {
-			if (TileHeight(tile2) == h) {
-				Command<CMD_TERRAFORM_LAND>::Post(tile2, SLOPE_N, mode);
-			}
-		}
-	}
-}
-
-static const int8_t _multi_terraform_coords[][2] = {
-	{  0, -2},
-	{  4,  0}, { -4,  0}, {  0,  2},
-	{ -8,  2}, { -4,  4}, {  0,  6}, {  4,  4}, {  8,  2},
-	{-12,  0}, { -8, -2}, { -4, -4}, {  0, -6}, {  4, -4}, {  8, -2}, { 12,  0},
-	{-16,  2}, {-12,  4}, { -8,  6}, { -4,  8}, {  0, 10}, {  4,  8}, {  8,  6}, { 12,  4}, { 16,  2},
-	{-20,  0}, {-16, -2}, {-12, -4}, { -8, -6}, { -4, -8}, {  0,-10}, {  4, -8}, {  8, -6}, { 12, -4}, { 16, -2}, { 20,  0},
-	{-24,  2}, {-20,  4}, {-16,  6}, {-12,  8}, { -8, 10}, { -4, 12}, {  0, 14}, {  4, 12}, {  8, 10}, { 12,  8}, { 16,  6}, { 20,  4}, { 24,  2},
-	{-28,  0}, {-24, -2}, {-20, -4}, {-16, -6}, {-12, -8}, { -8,-10}, { -4,-12}, {  0,-14}, {  4,-12}, {  8,-10}, { 12, -8}, { 16, -6}, { 20, -4}, { 24, -2}, { 28,  0},
-};
-
 static constexpr NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-		NWidget(NWID_HORIZONTAL), SetPadding(2, 2, 7, 2),
-			NWidget(NWID_SPACER), SetFill(1, 0),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_DEMOLISH), SetMinimalSize(22, 22),
-										SetFill(0, 1), SetSpriteTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_LOWER_LAND), SetMinimalSize(22, 22),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ETT_LOWER_LAND), SetMinimalSize(22, 22),
 										SetFill(0, 1), SetSpriteTip(SPR_IMG_TERRAFORM_DOWN, STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_RAISE_LAND), SetMinimalSize(22, 22),
+			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ETT_RAISE_LAND), SetMinimalSize(22, 22),
 										SetFill(0, 1), SetSpriteTip(SPR_IMG_TERRAFORM_UP, STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_LEVEL_LAND), SetMinimalSize(22, 22),
+			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ETT_LEVEL_LAND), SetMinimalSize(22, 22),
 										SetFill(0, 1), SetSpriteTip(SPR_IMG_LEVEL_LAND, STR_LANDSCAPING_LEVEL_LAND_TOOLTIP),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_PLACE_ROCKS), SetMinimalSize(22, 22),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), EndContainer(),
+			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ETT_DEMOLISH), SetMinimalSize(22, 22),
+										SetFill(0, 1), SetSpriteTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
+			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ETT_PLACE_ROCKS), SetMinimalSize(22, 22),
 										SetFill(0, 1), SetSpriteTip(SPR_IMG_ROCKS, STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_ETT_SHOW_PLACE_DESERT),
-				NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_PLACE_DESERT), SetMinimalSize(22, 22),
+				NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_ETT_PLACE_DESERT), SetMinimalSize(22, 22),
 											SetFill(0, 1), SetSpriteTip(SPR_IMG_DESERT, STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA),
 			EndContainer(),
-			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_ETT_PLACE_OBJECT), SetMinimalSize(23, 22),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_DARK_GREEN, WID_ETT_PLACE_OBJECT), SetMinimalSize(23, 22),
 										SetFill(0, 1), SetSpriteTip(SPR_IMG_TRANSMITTER, STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP),
-			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetFill(1, 0),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_ETT_DOTS), SetMinimalSize(59, 31), SetStringTip(STR_EMPTY),
-			NWidget(NWID_SPACER), SetFill(1, 0),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_SPACER), SetFill(0, 1),
-				NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_INCREASE_SIZE), SetMinimalSize(12, 12), SetSpriteTip(SPR_ARROW_UP, STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_IMGBTN, COLOUR_GREY, WID_ETT_DECREASE_SIZE), SetMinimalSize(12, 12), SetSpriteTip(SPR_ARROW_DOWN, STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA),
-				NWidget(NWID_SPACER), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 6),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_ETT_NEW_SCENARIO), SetMinimalSize(160, 12),
-								SetFill(1, 0), SetStringTip(STR_TERRAFORM_SE_NEW_WORLD, STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND), SetPadding(0, 2, 0, 2),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_ETT_RESET_LANDSCAPE), SetMinimalSize(160, 12),
-								SetFill(1, 0), SetStringTip(STR_TERRAFORM_RESET_LANDSCAPE, STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP), SetPadding(1, 2, 2, 2),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_ETT_NEW_SCENARIO), SetMinimalSize(160, 12),
+								SetFill(1, 0), SetStringTip(STR_TERRAFORM_SE_NEW_WORLD, STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_ETT_RESET_LANDSCAPE), SetMinimalSize(160, 12),
+								SetFill(1, 0), SetStringTip(STR_TERRAFORM_RESET_LANDSCAPE, STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP),
 	EndContainer(),
 };
 
@@ -539,40 +461,6 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		this->FinishInitNested(window_number);
 	}
 
-	void OnPaint() override
-	{
-		this->DrawWidgets();
-
-		if (this->IsWidgetLowered(WID_ETT_LOWER_LAND) || this->IsWidgetLowered(WID_ETT_RAISE_LAND)) { // change area-size if raise/lower corner is selected
-			SetTileSelectSize(_terraform_size, _terraform_size);
-		}
-	}
-
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
-	{
-		if (widget != WID_ETT_DOTS) return;
-
-		size.width  = std::max<uint>(size.width,  ScaleGUITrad(59));
-		size.height = std::max<uint>(size.height, ScaleGUITrad(31));
-	}
-
-	void DrawWidget(const Rect &r, WidgetID widget) const override
-	{
-		if (widget != WID_ETT_DOTS) return;
-
-		int center_x = RoundDivSU(r.left + r.right, 2);
-		int center_y = RoundDivSU(r.top + r.bottom, 2);
-
-		int n = _terraform_size * _terraform_size;
-		const int8_t *coords = &_multi_terraform_coords[0][0];
-
-		assert(n != 0);
-		do {
-			DrawSprite(SPR_WHITE_POINT, PAL_NONE, center_x + ScaleGUITrad(coords[0]), center_y + ScaleGUITrad(coords[1]));
-			coords += 2;
-		} while (--n);
-	}
-
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		if (widget < WID_ETT_BUTTONS_START) return;
@@ -584,12 +472,12 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 
 			case WID_ETT_LOWER_LAND: // Lower land button
-				HandlePlacePushButton(this, WID_ETT_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT);
+				HandlePlacePushButton(this, WID_ETT_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
 			case WID_ETT_RAISE_LAND: // Raise land button
-				HandlePlacePushButton(this, WID_ETT_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT);
+				HandlePlacePushButton(this, WID_ETT_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
@@ -611,20 +499,6 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			case WID_ETT_PLACE_OBJECT: // Place transmitter button
 				ShowBuildObjectPicker();
 				break;
-
-			case WID_ETT_INCREASE_SIZE:
-			case WID_ETT_DECREASE_SIZE: { // Increase/Decrease terraform size
-				int size = (widget == WID_ETT_INCREASE_SIZE) ? 1 : -1;
-				this->HandleButtonClick(widget);
-				size += _terraform_size;
-
-				if (!IsInsideMM(size, 1, 8 + 1)) return;
-				_terraform_size = size;
-
-				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
-				this->SetDirty();
-				break;
-			}
 
 			case WID_ETT_NEW_SCENARIO: // gen random land
 				this->HandleButtonClick(widget);
@@ -658,11 +532,11 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 
 			case WID_ETT_LOWER_LAND: // Lower land button
-				CommonRaiseLowerBigLand(tile, false);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
 				break;
 
 			case WID_ETT_RAISE_LAND: // Raise land button
-				CommonRaiseLowerBigLand(tile, true);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_RAISE_AND_LEVEL_AREA);
 				break;
 
 			case WID_ETT_LEVEL_LAND: // Level land button

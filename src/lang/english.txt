@@ -3038,8 +3038,6 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant la
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Place rocky areas on landscape
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define desert area.{}Ctrl+Click to remove desert area
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Increase area of land to lower/raise
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Decrease area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generate random land
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Create new scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reset landscape
