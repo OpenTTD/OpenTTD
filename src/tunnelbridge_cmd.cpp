@@ -1697,8 +1697,8 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc &td)
 
 	Owner road_owner = INVALID_OWNER;
 	Owner tram_owner = INVALID_OWNER;
-	RoadType road_rt = GetRoadTypeRoad(tile);
-	RoadType tram_rt = GetRoadTypeTram(tile);
+	RoadType road_rt = (tt == TRANSPORT_ROAD) ? GetRoadTypeRoad(tile) : INVALID_ROADTYPE;
+	RoadType tram_rt = (tt == TRANSPORT_ROAD) ? GetRoadTypeTram(tile) : INVALID_ROADTYPE;
 	if (road_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(road_rt);
 		td.roadtype = rti->strings.name;
