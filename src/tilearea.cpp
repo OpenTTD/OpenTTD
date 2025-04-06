@@ -127,8 +127,8 @@ OrthogonalTileArea &OrthogonalTileArea::Expand(int rad)
 
 	int sx = std::max<int>(x - rad, 0);
 	int sy = std::max<int>(y - rad, 0);
-	int ex = std::min<int>(x + this->w + rad, Map::SizeX());
-	int ey = std::min<int>(y + this->h + rad, Map::SizeY());
+	int ex = std::min<int>(x + this->w + rad, Map::MaxX());
+	int ey = std::min<int>(y + this->h + rad, Map::MaxY());
 
 	this->tile = TileXY(sx, sy);
 	this->w    = ex - sx;
