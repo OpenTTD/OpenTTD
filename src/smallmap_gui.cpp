@@ -463,7 +463,7 @@ static inline uint32_t GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
  *
  * @param tile The tile of which we would like to get the colour.
  * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
- * @return The colour of tile  in the small map in mode "Routes"
+ * @return The colour of tile in the small map in mode "Routes"
  */
 static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 {
@@ -489,22 +489,15 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 		}
 
 		case MP_ROAD: {
-			const RoadTypeInfo *rti = nullptr;
-			if (GetRoadTypeRoad(tile) != INVALID_ROADTYPE) {
-				rti = GetRoadTypeInfo(GetRoadTypeRoad(tile));
-			} else {
-				rti = GetRoadTypeInfo(GetRoadTypeTram(tile));
-			}
-			if (rti != nullptr) {
-				AndOr andor = {
-					MKCOLOUR_0XX0(rti->map_colour),
-					_smallmap_contours_andor[t].mand
-				};
+			RoadType rt_road = GetRoadTypeRoad(tile);
 
-				const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-				return ApplyMask(cs->default_colour, &andor);
-			}
-			[[fallthrough]];
+			AndOr andor = {
+				MKCOLOUR_0XX0(GetRoadTypeInfo(rt_road != INVALID_ROADTYPE ? rt_road : GetRoadTypeTram(tile))->map_colour),
+				_smallmap_contours_andor[t].mand
+			};
+
+			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+			return ApplyMask(cs->default_colour, &andor);
 		}
 
 		default:
