@@ -2020,7 +2020,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximum number 
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Number of non-sticky open windows before old windows get automatically closed to make room for new windows
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :disabled
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Disabled
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximum zoom in level: {STRING2}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :The maximum zoom-in level for viewports. Note that enabling higher zoom-in levels increases memory requirements
