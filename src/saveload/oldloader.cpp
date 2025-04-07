@@ -219,11 +219,11 @@ static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(Fil
 	}
 
 	if (VerifyOldNameChecksum(buffer, TTO_HEADER_SIZE) && fseek(f, pos + TTO_HEADER_SIZE, SEEK_SET) == 0) {
-		return { SGT_TTO, "(TTO)" + StrMakeValid({buffer, TTO_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
+		return { SGT_TTO, "(TTO)" + StrMakeValid(std::string_view{buffer, TTO_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
 	if (VerifyOldNameChecksum(buffer, TTD_HEADER_SIZE) && fseek(f, pos + TTD_HEADER_SIZE, SEEK_SET) == 0) {
-		return { SGT_TTD, "(TTD)" + StrMakeValid({buffer, TTD_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
+		return { SGT_TTD, "(TTD)" + StrMakeValid(std::string_view{buffer, TTD_HEADER_SIZE - HEADER_CHECKSUM_SIZE}) };
 	}
 
 	return { SGT_INVALID, "(broken) Unknown" };

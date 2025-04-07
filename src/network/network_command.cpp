@@ -441,7 +441,7 @@ template <class T>
 static inline void SanitizeSingleStringHelper([[maybe_unused]] CommandFlags cmd_flags, T &data)
 {
 	if constexpr (std::is_same_v<std::string, T>) {
-		data = StrMakeValid(data, (!_network_server && cmd_flags.Test(CommandFlag::StrCtrl)) ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
+		StrMakeValidInPlace(data, (!_network_server && cmd_flags.Test(CommandFlag::StrCtrl)) ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
 	}
 }
 
