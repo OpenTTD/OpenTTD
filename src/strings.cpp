@@ -126,7 +126,7 @@ EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParam
 				char32_t c;
 				const char *p = value.data();
 				if (Utf8Decode(&c, p)) {
-					assert(c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL);
+					assert(c != SCC_ENCODED && c != SCC_ENCODED_INTERNAL && c != SCC_RECORD_SEPARATOR);
 				}
 			}
 #endif /* WITH_ASSERT */
