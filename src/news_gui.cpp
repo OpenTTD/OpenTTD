@@ -1190,7 +1190,7 @@ void ShowLastNewsMessage()
 static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem &ni)
 {
 	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
-	std::string message = StrMakeValid(ni.GetStatusText(), SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string message = StrMakeValid(ni.GetStatusText(), StringValidationSetting::ReplaceTabCrNlWithSpace);
 
 	/* Truncate and show string; postfixed by '...' if necessary */
 	DrawString(left, right, y, message, colour);

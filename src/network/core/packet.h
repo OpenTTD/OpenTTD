@@ -87,7 +87,7 @@ public:
 	uint64_t Recv_uint64();
 	std::vector<uint8_t> Recv_buffer();
 	size_t Recv_bytes(std::span<uint8_t> span);
-	std::string Recv_string(size_t length, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+	std::string Recv_string(size_t length, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark);
 
 	size_t RemainingBytesToTransfer() const;
 

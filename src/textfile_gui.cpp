@@ -803,7 +803,7 @@ static std::vector<char> Xunzip(std::span<char> input)
  */
 void TextfileWindow::LoadText(std::string_view buf)
 {
-	std::string text = StrMakeValid(buf, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE | SVS_REPLACE_TAB_CR_NL_WITH_SPACE);
+	std::string text = StrMakeValid(buf, {StringValidationSetting::ReplaceWithQuestionMark, StringValidationSetting::AllowNewline, StringValidationSetting::ReplaceTabCrNlWithSpace});
 	this->lines.clear();
 
 	/* Split the string on newlines. */

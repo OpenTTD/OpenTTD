@@ -159,25 +159,25 @@ static void StrMakeValid(T &dst, const char *str, const char *last, StringValida
 			continue;
 		}
 
-		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && IsSccEncodedCode(c))) {
+		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || (settings.Test(StringValidationSetting::AllowControlCode) && IsSccEncodedCode(c))) {
 			/* Copy the character back. Even if dst is current the same as str
 			 * (i.e. no characters have been changed) this is quicker than
 			 * moving the pointers ahead by len */
 			do {
 				*dst++ = *str++;
 			} while (--len != 0);
-		} else if ((settings & SVS_ALLOW_NEWLINE) != 0 && c == '\n') {
+		} else if (settings.Test(StringValidationSetting::AllowNewline) && c == '\n') {
 			*dst++ = *str++;
 		} else {
-			if ((settings & SVS_ALLOW_NEWLINE) != 0 && c == '\r' && str[1] == '\n') {
+			if (settings.Test(StringValidationSetting::AllowNewline) && c == '\r' && str[1] == '\n') {
 				str += len;
 				continue;
 			}
 			str += len;
-			if ((settings & SVS_REPLACE_TAB_CR_NL_WITH_SPACE) != 0 && (c == '\r' || c == '\n' || c == '\t')) {
+			if (settings.Test(StringValidationSetting::ReplaceTabCrNlWithSpace) && (c == '\r' || c == '\n' || c == '\t')) {
 				/* Replace the tab, carriage return or newline with a space. */
 				*dst++ = ' ';
-			} else if ((settings & SVS_REPLACE_WITH_QUESTION_MARK) != 0) {
+			} else if (settings.Test(StringValidationSetting::ReplaceWithQuestionMark)) {
 				/* Replace the undesirable character with a question mark */
 				*dst++ = '?';
 			}

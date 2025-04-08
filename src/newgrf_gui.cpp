@@ -1398,8 +1398,8 @@ private:
 	/** Sort grfs by name. */
 	static bool NameSorter(const GRFConfig * const &a, const GRFConfig * const &b)
 	{
-		std::string name_a = StrMakeValid(a->GetName(), SVS_NONE); // Make a copy without control codes.
-		std::string name_b = StrMakeValid(b->GetName(), SVS_NONE); // Make a copy without control codes.
+		std::string name_a = StrMakeValid(a->GetName(), {}); // Make a copy without control codes.
+		std::string name_b = StrMakeValid(b->GetName(), {}); // Make a copy without control codes.
 		int i = StrNaturalCompare(name_a, name_b, true); // Sort by name (natural sorting).
 		if (i != 0) return i < 0;
 
