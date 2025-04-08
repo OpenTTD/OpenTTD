@@ -237,7 +237,7 @@ CommandCost CmdBulkChangeTimetable(DoCommandFlags flags, VehicleID veh, ModifyTi
 
 	if (v->GetNumOrders() == 0) return CMD_ERROR;
 
-        ModifyTimetableFlags mtf_compare = (mtf == MTF_TRAVEL_TIME) ? MTF_WAIT_TIME : MTF_TRAVEL_TIME, data);
+        ModifyTimetableFlags mtf_compare = (mtf == MTF_TRAVEL_TIME) ? MTF_WAIT_TIME : MTF_TRAVEL_TIME);
 	if (flags.Test(DoCommandFlag::Execute)) {
 		for (VehicleOrderID order_number = 0; order_number < v->GetNumOrders(); order_number++) {
 			Order *order = v->GetOrder(order_number);
