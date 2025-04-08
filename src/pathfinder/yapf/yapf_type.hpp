@@ -10,9 +10,6 @@
 #ifndef YAPF_TYPE_HPP
 #define YAPF_TYPE_HPP
 
-#include <iomanip>
-#include <sstream>
-
 #include "../../core/enum_type.hpp"
 #include "../../misc/dbg_helpers.h"
 
@@ -75,10 +72,7 @@ inline std::string ValueStr(EndSegmentReasons flags)
 		"PATH_TOO_LONG", "FIRST_TWO_WAY_RED", "LOOK_AHEAD_END", "TARGET_REACHED"
 	};
 
-	std::stringstream ss;
-	ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << flags.base(); // 0x%04X
-	ss << " (" << ComposeNameT(flags, end_segment_reason_names, "UNK") << ")";
-	return ss.str();
+	return fmt::format("0x{:04X} ({})", flags.base(), ComposeNameT(flags, end_segment_reason_names, "UNK"));
 }
 
 #endif /* YAPF_TYPE_HPP */

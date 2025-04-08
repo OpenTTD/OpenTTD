@@ -11,9 +11,6 @@
 #include "../rail_map.h"
 #include "dbg_helpers.h"
 
-#include <sstream>
-#include <iomanip>
-
 #include "../safeguards.h"
 
 /** Trackdir & TrackdirBits short names. */
@@ -62,10 +59,7 @@ std::string ValueStr(SignalType t)
 /** Translate TileIndex into string. */
 std::string TileStr(TileIndex tile)
 {
-	std::stringstream ss;
-	ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << tile.base(); // 0x%04X
-	ss << " (" << TileX(tile) << ", " << TileY(tile) << ")";
-	return ss.str();
+	return fmt::format("0x{:04X} ({}, {})", tile.base(), TileX(tile), TileY(tile));
 }
 
 /**

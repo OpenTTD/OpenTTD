@@ -37,8 +37,7 @@
 #include "roadveh_cmd.h"
 #include "train_cmd.h"
 #include "ship_cmd.h"
-#include <sstream>
-#include <iomanip>
+#include <charconv>
 
 #include "table/strings.h"
 
@@ -803,23 +802,19 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 		/* Found digits, parse them and start at the next number. */
 		buf = src->name.substr(0, number_position);
 
-		auto num_str = src->name.substr(number_position);
+		auto num_str = std::string_view(src->name).substr(number_position);
 		padding = (uint8_t)num_str.length();
 
-		std::istringstream iss(num_str);
-		iss >> num;
+		[[maybe_unused]] auto err = std::from_chars(num_str.data(), num_str.data() + num_str.size(), num, 10).ec;
+		assert(err == std::errc());
 		num++;
 	}
 
 	/* Check if this name is already taken. */
 	for (int max_iterations = 1000; max_iterations > 0; max_iterations--, num++) {
-		std::ostringstream oss;
-
-		/* Attach the number to the temporary name. */
-		oss << buf << std::setw(padding) << std::setfill('0') << std::internal << num;
+		std::string new_name = fmt::format("{}{:0{}}", buf, num, padding);
 
 		/* Check the name is unique. */
-		auto new_name = oss.str();
 		if (IsUniqueVehicleName(new_name)) {
 			dst->name = std::move(new_name);
 			break;

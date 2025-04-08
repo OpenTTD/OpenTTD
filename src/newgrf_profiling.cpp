@@ -113,7 +113,7 @@ uint32_t NewGRFProfiler::Finish()
 	} else {
 		fmt::print(*f, "Tick,Sprite,Feature,Item,CallbackID,Microseconds,Depth,Result\n");
 		for (const Call &c : this->calls) {
-			fmt::print(*f, "{},{},{:#X},{},{:#X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
+			fmt::print(*f, "{},{},0x{:X},{},0x{:X},{},{},{}\n", c.tick, c.root_sprite, c.feat, c.item, (uint)c.cb, c.time, c.subs, c.result);
 			total_microseconds += c.time;
 		}
 	}

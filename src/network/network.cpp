@@ -41,8 +41,6 @@
 #	include "../fileio_func.h"
 #endif
 #include <charconv>
-#include <sstream>
-#include <iomanip>
 
 #include "table/strings.h"
 
