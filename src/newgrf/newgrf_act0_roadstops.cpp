@@ -70,10 +70,10 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 		return CIR_INVALID_ID;
 	}
 
-	if (_cur.grffile->roadstops.size() < last) _cur.grffile->roadstops.resize(last);
+	if (_cur_gps.grffile->roadstops.size() < last) _cur_gps.grffile->roadstops.resize(last);
 
 	for (uint id = first; id < last; ++id) {
-		auto &rs = _cur.grffile->roadstops[id];
+		auto &rs = _cur_gps.grffile->roadstops[id];
 
 		if (rs == nullptr && prop != 0x08) {
 			GrfMsg(1, "RoadStopChangeInfo: Attempt to modify undefined road stop {}, ignoring", id);

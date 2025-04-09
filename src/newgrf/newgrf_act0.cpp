@@ -92,12 +92,12 @@ std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature)
 
 	while (count-- > 0) {
 		uint16_t local_index = buf.ReadWord();
-		if (local_index >= std::size(_cur.grffile->badge_list)) {
-			GrfMsg(1, "ReadBadgeList: Badge label {} out of range (max {}), skipping.", local_index, std::size(_cur.grffile->badge_list) - 1);
+		if (local_index >= std::size(_cur_gps.grffile->badge_list)) {
+			GrfMsg(1, "ReadBadgeList: Badge label {} out of range (max {}), skipping.", local_index, std::size(_cur_gps.grffile->badge_list) - 1);
 			continue;
 		}
 
-		BadgeID index = _cur.grffile->badge_list[local_index];
+		BadgeID index = _cur_gps.grffile->badge_list[local_index];
 
 		/* Is badge already present? */
 		if (std::ranges::find(badges, index) != std::end(badges)) continue;
@@ -204,7 +204,7 @@ static void FeatureChangeInfo(ByteReader &buf)
 	}
 
 	/* Mark the feature as used by the grf */
-	SetBit(_cur.grffile->grf_features, feature);
+	SetBit(_cur_gps.grffile->grf_features, feature);
 
 	while (numprops-- && buf.HasData()) {
 		uint8_t prop = buf.ReadByte();

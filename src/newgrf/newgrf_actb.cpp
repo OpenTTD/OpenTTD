@@ -56,12 +56,12 @@ static void GRFLoadError(ByteReader &buf)
 	uint8_t message_id = buf.ReadByte();
 
 	/* Skip the error if it isn't valid for the current language. */
-	if (!CheckGrfLangID(lang, _cur.grffile->grf_version)) return;
+	if (!CheckGrfLangID(lang, _cur_gps.grffile->grf_version)) return;
 
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
-	if (!HasBit(severity, 7) && _cur.stage == GLS_INIT) {
-		GrfMsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage {}", _cur.stage);
+	if (!HasBit(severity, 7) && _cur_gps.stage == GLS_INIT) {
+		GrfMsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage {}", _cur_gps.stage);
 		return;
 	}
 	ClrBit(severity, 7);
@@ -75,7 +75,7 @@ static void GRFLoadError(ByteReader &buf)
 		DisableGrf();
 
 		/* Make sure we show fatal errors, instead of silly infos from before */
-		_cur.grfconfig->error.reset();
+		_cur_gps.grfconfig->error.reset();
 	}
 
 	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
@@ -89,17 +89,17 @@ static void GRFLoadError(ByteReader &buf)
 	}
 
 	/* For now we can only show one message per newgrf file. */
-	if (_cur.grfconfig->error.has_value()) return;
+	if (_cur_gps.grfconfig->error.has_value()) return;
 
-	_cur.grfconfig->error = {sevstr[severity]};
-	GRFError *error = &_cur.grfconfig->error.value();
+	_cur_gps.grfconfig->error = {sevstr[severity]};
+	GRFError *error = &_cur_gps.grfconfig->error.value();
 
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
 		if (buf.HasData()) {
 			std::string_view message = buf.ReadString();
 
-			error->custom_message = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER);
+			error->custom_message = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER);
 		} else {
 			GrfMsg(7, "GRFLoadError: No custom message supplied.");
 			error->custom_message.clear();
@@ -111,7 +111,7 @@ static void GRFLoadError(ByteReader &buf)
 	if (buf.HasData()) {
 		std::string_view data = buf.ReadString();
 
-		error->data = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, data);
+		error->data = TranslateTTDPatchCodes(_cur_gps.grffile->grfid, lang, true, data);
 	} else {
 		GrfMsg(7, "GRFLoadError: No message data supplied.");
 		error->data.clear();
@@ -120,7 +120,7 @@ static void GRFLoadError(ByteReader &buf)
 	/* Only two parameter numbers can be used in the string. */
 	for (uint i = 0; i < error->param_value.size() && buf.HasData(); i++) {
 		uint param_number = buf.ReadByte();
-		error->param_value[i] = _cur.grffile->GetParam(param_number);
+		error->param_value[i] = _cur_gps.grffile->GetParam(param_number);
 	}
 }
 

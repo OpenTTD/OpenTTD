@@ -35,10 +35,10 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 	}
 
 	/* Allocate industry specs if they haven't been allocated already. */
-	if (_cur.grffile->airportspec.size() < last) _cur.grffile->airportspec.resize(last);
+	if (_cur_gps.grffile->airportspec.size() < last) _cur_gps.grffile->airportspec.resize(last);
 
 	for (uint id = first; id < last; ++id) {
-		auto &as = _cur.grffile->airportspec[id];
+		auto &as = _cur_gps.grffile->airportspec[id];
 
 		if (as == nullptr && prop != 0x08 && prop != 0x09) {
 			GrfMsg(2, "AirportChangeInfo: Attempt to modify undefined airport {}, ignoring", id);
@@ -68,9 +68,9 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 					as->enabled = true;
 					as->grf_prop.local_id = id;
 					as->grf_prop.subst_id = subs_id;
-					as->grf_prop.SetGRFFile(_cur.grffile);
+					as->grf_prop.SetGRFFile(_cur_gps.grffile);
 					/* override the default airport */
-					_airport_mngr.Add(id, _cur.grffile->grfid, subs_id);
+					_airport_mngr.Add(id, _cur_gps.grffile->grfid, subs_id);
 				}
 				break;
 			}
@@ -107,7 +107,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 							int local_tile_id = buf.ReadWord();
 
 							/* Read the ID from the _airporttile_mngr. */
-							uint16_t tempid = _airporttile_mngr.GetID(local_tile_id, _cur.grffile->grfid);
+							uint16_t tempid = _airporttile_mngr.GetID(local_tile_id, _cur_gps.grffile->grfid);
 
 							if (tempid == INVALID_AIRPORTTILE) {
 								GrfMsg(2, "AirportChangeInfo: Attempt to use airport tile {} with airport id {}, not yet defined. Ignoring.", local_tile_id, id);
@@ -185,10 +185,10 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 	}
 
 	/* Allocate airport tile specs if they haven't been allocated already. */
-	if (_cur.grffile->airtspec.size() < last) _cur.grffile->airtspec.resize(last);
+	if (_cur_gps.grffile->airtspec.size() < last) _cur_gps.grffile->airtspec.resize(last);
 
 	for (uint id = first; id < last; ++id) {
-		auto &tsp = _cur.grffile->airtspec[id];
+		auto &tsp = _cur_gps.grffile->airtspec[id];
 
 		if (prop != 0x08 && tsp == nullptr) {
 			GrfMsg(2, "AirportTileChangeInfo: Attempt to modify undefined airport tile {}. Ignoring.", id);
@@ -214,8 +214,8 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 
 					tsp->grf_prop.local_id = id;
 					tsp->grf_prop.subst_id = subs_id;
-					tsp->grf_prop.SetGRFFile(_cur.grffile);
-					_airporttile_mngr.AddEntityID(id, _cur.grffile->grfid, subs_id); // pre-reserve the tile slot
+					tsp->grf_prop.SetGRFFile(_cur_gps.grffile);
+					_airporttile_mngr.AddEntityID(id, _cur_gps.grffile->grfid, subs_id); // pre-reserve the tile slot
 				}
 				break;
 			}
@@ -229,7 +229,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 					continue;
 				}
 
-				_airporttile_mngr.Add(id, _cur.grffile->grfid, override_id);
+				_airporttile_mngr.Add(id, _cur_gps.grffile->grfid, override_id);
 				break;
 			}
 

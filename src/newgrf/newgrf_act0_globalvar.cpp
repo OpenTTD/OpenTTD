@@ -49,7 +49,7 @@ static ChangeInfoResult LoadTranslationTable(uint first, uint last, ByteReader &
 		return CIR_INVALID_ID;
 	}
 
-	std::vector<T> &translation_table = gettable(*_cur.grffile);
+	std::vector<T> &translation_table = gettable(*_cur_gps.grffile);
 	translation_table.clear();
 	translation_table.reserve(last);
 	for (uint id = first; id < last; ++id) {
@@ -122,7 +122,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 			return LoadTranslationTable<RoadTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
 
 		case 0x18: // Badge translation table
-			return LoadBadgeTranslationTable(first, last, buf, _cur.grffile->badge_list, "Badge");
+			return LoadBadgeTranslationTable(first, last, buf, _cur_gps.grffile->badge_list, "Badge");
 
 		default:
 			break;
@@ -136,7 +136,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				int factor = buf.ReadByte();
 
 				if (id < PR_END) {
-					_cur.grffile->price_base_multipliers[id] = std::min<int>(factor - 8, MAX_PRICE_MODIFIER);
+					_cur_gps.grffile->price_base_multipliers[id] = std::min<int>(factor - 8, MAX_PRICE_MODIFIER);
 				} else {
 					GrfMsg(1, "GlobalVarChangeInfo: Price {} out of range, ignoring", id);
 				}
@@ -235,7 +235,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 						for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
 							uint8_t &level = snow_line->table[i][j];
 							level = buf.ReadByte();
-							if (_cur.grffile->grf_version >= 8) {
+							if (_cur_gps.grffile->grf_version >= 8) {
 								if (level != 0xFF) level = level * (1 + _settings_game.construction.map_height_limit) / 256;
 							} else {
 								if (level >= 128) {
@@ -283,7 +283,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					if (plural_form >= LANGUAGE_MAX_PLURAL) {
 						GrfMsg(1, "GlobalVarChanceInfo: Plural form {} is out of range, ignoring", plural_form);
 					} else {
-						_cur.grffile->language_map[curidx].plural_form = plural_form;
+						_cur_gps.grffile->language_map[curidx].plural_form = plural_form;
 					}
 					break;
 				}
@@ -306,14 +306,14 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 						if (map.openttd_id >= MAX_NUM_GENDERS) {
 							GrfMsg(1, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", StrMakeValid(name));
 						} else {
-							_cur.grffile->language_map[curidx].gender_map.push_back(map);
+							_cur_gps.grffile->language_map[curidx].gender_map.push_back(map);
 						}
 					} else {
 						map.openttd_id = lang->GetCaseIndex(name);
 						if (map.openttd_id >= MAX_NUM_CASES) {
 							GrfMsg(1, "GlobalVarChangeInfo: Case name {} is not known, ignoring", StrMakeValid(name));
 						} else {
-							_cur.grffile->language_map[curidx].case_map.push_back(map);
+							_cur_gps.grffile->language_map[curidx].case_map.push_back(map);
 						}
 					}
 					newgrf_id = buf.ReadByte();
@@ -347,7 +347,7 @@ static ChangeInfoResult GlobalVarReserveInfo(uint first, uint last, int prop, By
 			return LoadTranslationTable<RoadTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
 
 		case 0x18: // Badge translation table
-			return LoadBadgeTranslationTable(first, last, buf, _cur.grffile->badge_list, "Badge");
+			return LoadBadgeTranslationTable(first, last, buf, _cur_gps.grffile->badge_list, "Badge");
 
 		default:
 			break;

@@ -42,7 +42,7 @@ static std::vector<StringIDMapping> _string_to_grf_mapping;
 void AddStringForMapping(GRFStringID source, std::function<void(StringID)> &&func)
 {
 	func(STR_UNDEFINED);
-	_string_to_grf_mapping.emplace_back(_cur.grffile->grfid, source, std::move(func));
+	_string_to_grf_mapping.emplace_back(_cur_gps.grffile->grfid, source, std::move(func));
 }
 
 /**

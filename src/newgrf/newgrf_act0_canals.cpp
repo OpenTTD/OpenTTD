@@ -32,7 +32,7 @@ static ChangeInfoResult CanalChangeInfo(uint first, uint last, int prop, ByteRea
 	}
 
 	for (uint id = first; id < last; ++id) {
-		CanalProperties *cp = &_cur.grffile->canal_local_properties[id];
+		CanalProperties *cp = &_cur_gps.grffile->canal_local_properties[id];
 
 		switch (prop) {
 			case 0x08:

@@ -30,7 +30,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	std::array<RoadType, ROADTYPE_END> &type_map = (rtt == RTT_TRAM) ? _cur.grffile->tramtype_map : _cur.grffile->roadtype_map;
+	std::array<RoadType, ROADTYPE_END> &type_map = (rtt == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 
 	if (last > ROADTYPE_END) {
 		GrfMsg(1, "RoadTypeChangeInfo: Road type {} is invalid, max {}, ignoring", last, ROADTYPE_END);
@@ -151,7 +151,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	std::array<RoadType, ROADTYPE_END> &type_map = (rtt == RTT_TRAM) ? _cur.grffile->tramtype_map : _cur.grffile->roadtype_map;
+	std::array<RoadType, ROADTYPE_END> &type_map = (rtt == RTT_TRAM) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 
 	if (last > ROADTYPE_END) {
 		GrfMsg(1, "RoadTypeReserveInfo: Road type {} is invalid, max {}, ignoring", last, ROADTYPE_END);

@@ -30,7 +30,7 @@ static void SafeGRFInhibit(ByteReader &buf)
 		uint32_t grfid = buf.ReadDWord();
 
 		/* GRF is unsafe it if tries to deactivate other GRFs */
-		if (grfid != _cur.grfconfig->ident.grfid) {
+		if (grfid != _cur_gps.grfconfig->ident.grfid) {
 			GRFUnsafe(buf);
 			return;
 		}
@@ -52,10 +52,10 @@ static void GRFInhibit(ByteReader &buf)
 		GRFConfig *file = GetGRFConfig(grfid);
 
 		/* Unset activation flag */
-		if (file != nullptr && file != _cur.grfconfig) {
+		if (file != nullptr && file != _cur_gps.grfconfig) {
 			GrfMsg(2, "GRFInhibit: Deactivating file '{}'", file->filename);
 			GRFError *error = DisableGrf(STR_NEWGRF_ERROR_FORCEFULLY_DISABLED, file);
-			error->data = _cur.grfconfig->GetName();
+			error->data = _cur_gps.grfconfig->GetName();
 		}
 	}
 }

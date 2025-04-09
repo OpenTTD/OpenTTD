@@ -18,21 +18,21 @@
 /** Callback function for 'INFO'->'NAME' to add a translation to the newgrf name. */
 static bool ChangeGRFName(uint8_t langid, std::string_view str)
 {
-	AddGRFTextToList(_cur.grfconfig->name, langid, _cur.grfconfig->ident.grfid, false, str);
+	AddGRFTextToList(_cur_gps.grfconfig->name, langid, _cur_gps.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'DESC' to add a translation to the newgrf description. */
 static bool ChangeGRFDescription(uint8_t langid, std::string_view str)
 {
-	AddGRFTextToList(_cur.grfconfig->info, langid, _cur.grfconfig->ident.grfid, true, str);
+	AddGRFTextToList(_cur_gps.grfconfig->info, langid, _cur_gps.grfconfig->ident.grfid, true, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'URL_' to set the newgrf url. */
 static bool ChangeGRFURL(uint8_t langid, std::string_view str)
 {
-	AddGRFTextToList(_cur.grfconfig->url, langid, _cur.grfconfig->ident.grfid, false, str);
+	AddGRFTextToList(_cur_gps.grfconfig->url, langid, _cur_gps.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
@@ -43,7 +43,7 @@ static bool ChangeGRFNumUsedParams(size_t len, ByteReader &buf)
 		GrfMsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'NPAR' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
-		_cur.grfconfig->num_valid_params = std::min(buf.ReadByte(), GRFConfig::MAX_NUM_PARAMS);
+		_cur_gps.grfconfig->num_valid_params = std::min(buf.ReadByte(), GRFConfig::MAX_NUM_PARAMS);
 	}
 	return true;
 }
@@ -67,8 +67,8 @@ static bool ChangeGRFPalette(size_t len, ByteReader &buf)
 				break;
 		}
 		if (pal != GRFP_GRF_UNSET) {
-			_cur.grfconfig->palette &= ~GRFP_GRF_MASK;
-			_cur.grfconfig->palette |= pal;
+			_cur_gps.grfconfig->palette &= ~GRFP_GRF_MASK;
+			_cur_gps.grfconfig->palette |= pal;
 		}
 	}
 	return true;
@@ -90,8 +90,8 @@ static bool ChangeGRFBlitter(size_t len, ByteReader &buf)
 				GrfMsg(2, "StaticGRFInfo: unexpected value '{:02X}' for 'INFO'->'BLTR', ignoring this field", data);
 				return true;
 		}
-		_cur.grfconfig->palette &= ~GRFP_BLT_MASK;
-		_cur.grfconfig->palette |= pal;
+		_cur_gps.grfconfig->palette &= ~GRFP_BLT_MASK;
+		_cur_gps.grfconfig->palette |= pal;
 	}
 	return true;
 }
@@ -104,7 +104,7 @@ static bool ChangeGRFVersion(size_t len, ByteReader &buf)
 		buf.Skip(len);
 	} else {
 		/* Set min_loadable_version as well (default to minimal compatibility) */
-		_cur.grfconfig->version = _cur.grfconfig->min_loadable_version = buf.ReadDWord();
+		_cur_gps.grfconfig->version = _cur_gps.grfconfig->min_loadable_version = buf.ReadDWord();
 	}
 	return true;
 }
@@ -116,14 +116,14 @@ static bool ChangeGRFMinVersion(size_t len, ByteReader &buf)
 		GrfMsg(2, "StaticGRFInfo: expected 4 bytes for 'INFO'->'MINV' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
-		_cur.grfconfig->min_loadable_version = buf.ReadDWord();
-		if (_cur.grfconfig->version == 0) {
+		_cur_gps.grfconfig->min_loadable_version = buf.ReadDWord();
+		if (_cur_gps.grfconfig->version == 0) {
 			GrfMsg(2, "StaticGRFInfo: 'MINV' defined before 'VRSN' or 'VRSN' set to 0, ignoring this field");
-			_cur.grfconfig->min_loadable_version = 0;
+			_cur_gps.grfconfig->min_loadable_version = 0;
 		}
-		if (_cur.grfconfig->version < _cur.grfconfig->min_loadable_version) {
-			GrfMsg(2, "StaticGRFInfo: 'MINV' defined as {}, limiting it to 'VRSN'", _cur.grfconfig->min_loadable_version);
-			_cur.grfconfig->min_loadable_version = _cur.grfconfig->version;
+		if (_cur_gps.grfconfig->version < _cur_gps.grfconfig->min_loadable_version) {
+			GrfMsg(2, "StaticGRFInfo: 'MINV' defined as {}, limiting it to 'VRSN'", _cur_gps.grfconfig->min_loadable_version);
+			_cur_gps.grfconfig->min_loadable_version = _cur_gps.grfconfig->version;
 		}
 	}
 	return true;
@@ -134,14 +134,14 @@ static GRFParameterInfo *_cur_parameter; ///< The parameter which info is curren
 /** Callback function for 'INFO'->'PARAM'->param_num->'NAME' to set the name of a parameter. */
 static bool ChangeGRFParamName(uint8_t langid, std::string_view str)
 {
-	AddGRFTextToList(_cur_parameter->name, langid, _cur.grfconfig->ident.grfid, false, str);
+	AddGRFTextToList(_cur_parameter->name, langid, _cur_gps.grfconfig->ident.grfid, false, str);
 	return true;
 }
 
 /** Callback function for 'INFO'->'PARAM'->param_num->'DESC' to set the description of a parameter. */
 static bool ChangeGRFParamDescription(uint8_t langid, std::string_view str)
 {
-	AddGRFTextToList(_cur_parameter->desc, langid, _cur.grfconfig->ident.grfid, true, str);
+	AddGRFTextToList(_cur_parameter->desc, langid, _cur_gps.grfconfig->ident.grfid, true, str);
 	return true;
 }
 
@@ -214,7 +214,7 @@ static bool ChangeGRFParamDefault(size_t len, ByteReader &buf)
 	} else {
 		_cur_parameter->def_value = buf.ReadDWord();
 	}
-	_cur.grfconfig->has_param_defaults = true;
+	_cur_gps.grfconfig->has_param_defaults = true;
 	return true;
 }
 
@@ -265,7 +265,7 @@ static bool ChangeGRFParamValueNames(ByteReader &buf)
 		if (it == std::end(_cur_parameter->value_names) || it->first != id) {
 			it = _cur_parameter->value_names.emplace(it, id, GRFTextList{});
 		}
-		AddGRFTextToList(it->second, langid, _cur.grfconfig->ident.grfid, false, name_string);
+		AddGRFTextToList(it->second, langid, _cur_gps.grfconfig->ident.grfid, false, name_string);
 
 		type = buf.ReadByte();
 	}
@@ -294,20 +294,20 @@ static bool HandleParameterInfo(ByteReader &buf)
 	uint8_t type = buf.ReadByte();
 	while (type != 0) {
 		uint32_t id = buf.ReadDWord();
-		if (type != 'C' || id >= _cur.grfconfig->num_valid_params) {
+		if (type != 'C' || id >= _cur_gps.grfconfig->num_valid_params) {
 			GrfMsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA' should have type 'C' and their parameter number as id");
 			if (!SkipUnknownInfo(buf, type)) return false;
 			type = buf.ReadByte();
 			continue;
 		}
 
-		if (id >= _cur.grfconfig->param_info.size()) {
-			_cur.grfconfig->param_info.resize(id + 1);
+		if (id >= _cur_gps.grfconfig->param_info.size()) {
+			_cur_gps.grfconfig->param_info.resize(id + 1);
 		}
-		if (!_cur.grfconfig->param_info[id].has_value()) {
-			_cur.grfconfig->param_info[id] = GRFParameterInfo(id);
+		if (!_cur_gps.grfconfig->param_info[id].has_value()) {
+			_cur_gps.grfconfig->param_info[id] = GRFParameterInfo(id);
 		}
-		_cur_parameter = &_cur.grfconfig->param_info[id].value();
+		_cur_parameter = &_cur_gps.grfconfig->param_info[id].value();
 		/* Read all parameter-data and process each node. */
 		if (!HandleNodes(buf, _tags_parameters)) return false;
 		type = buf.ReadByte();
