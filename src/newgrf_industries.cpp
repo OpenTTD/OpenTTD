@@ -107,47 +107,47 @@ static uint32_t GetClosestIndustry(TileIndex tile, IndustryType type, const Indu
  * Implementation of both var 67 and 68
  * since the mechanism is almost the same, it is easier to regroup them on the same
  * function.
- * @param param_setID parameter given to the callback, which is the set id, or the local id, in our terminology
+ * @param param_set_id parameter given to the callback, which is the set id, or the local id, in our terminology
  * @param layout_filter on what layout do we filter?
  * @param town_filter Do we filter on the same town as the current industry?
  * @param current Industry for which the inquiry is made
  * @return the formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_setID, uint8_t layout_filter, bool town_filter, const Industry *current)
+static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8_t layout_filter, bool town_filter, const Industry *current)
 {
-	uint32_t GrfID = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
-	IndustryType ind_index;
+	uint32_t grf_id = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
+	IndustryType industry_type;
 	uint32_t closest_dist = UINT32_MAX;
 	uint8_t count = 0;
 
 	/* Determine what will be the industry type to look for */
-	switch (GrfID) {
+	switch (grf_id) {
 		case 0:  // this is a default industry type
-			ind_index = param_setID;
+			industry_type = param_set_id;
 			break;
 
 		case 0xFFFFFFFF: // current grf
-			GrfID = GetIndustrySpec(current->type)->grf_prop.grfid;
+			grf_id = GetIndustrySpec(current->type)->grf_prop.grfid;
 			[[fallthrough]];
 
 		default: // use the grfid specified in register 100h
-			SetBit(param_setID, 7); // bit 7 means it is not an old type
-			ind_index = MapNewGRFIndustryType(param_setID, GrfID);
+			SetBit(param_set_id, 7); // bit 7 means it is not an old type
+			industry_type = MapNewGRFIndustryType(param_set_id, grf_id);
 			break;
 	}
 
 	/* If the industry type is invalid, there is none and the closest is far away. */
-	if (ind_index >= NUM_INDUSTRYTYPES) return 0 | 0xFFFF;
+	if (industry_type >= NUM_INDUSTRYTYPES) return 0 | 0xFFFF;
 
 	if (layout_filter == 0 && !town_filter) {
 		/* If the filter is 0, it could be because none was specified as well as being really a 0.
 		 * In either case, just do the regular var67 */
-		closest_dist = GetClosestIndustry(current->location.tile, ind_index, current);
-		count = ClampTo<uint8_t>(Industry::GetIndustryTypeCount(ind_index));
+		closest_dist = GetClosestIndustry(current->location.tile, industry_type, current);
+		count = ClampTo<uint8_t>(Industry::GetIndustryTypeCount(industry_type));
 	} else {
 		/* Count only those who match the same industry type and layout filter
 		 * Unfortunately, we have to do it manually */
-		for (const IndustryID &industry : Industry::industries[ind_index]) {
+		for (const IndustryID &industry : Industry::industries[industry_type]) {
 			if (industry == current->index) continue;
 
 			const Industry *i = Industry::Get(industry);

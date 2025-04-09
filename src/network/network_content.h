@@ -74,11 +74,11 @@ protected:
 	std::vector<char> http_response;              ///< The HTTP response to the requests we've been doing
 	int http_response_index;                      ///< Where we are, in the response, with handling it
 
-	std::optional<FileHandle> curFile; ///< Currently downloaded file
-	ContentInfo *curInfo; ///< Information about the currently downloaded file
-	bool isConnecting;    ///< Whether we're connecting
-	bool isCancelled;     ///< Whether the download has been cancelled
-	std::chrono::steady_clock::time_point lastActivity;  ///< The last time there was network activity
+	std::optional<FileHandle> cur_file; ///< Currently downloaded file
+	ContentInfo *cur_info; ///< Information about the currently downloaded file
+	bool is_connecting;    ///< Whether we're connecting
+	bool is_cancelled;     ///< Whether the download has been cancelled
+	std::chrono::steady_clock::time_point last_activity;  ///< The last time there was network activity
 
 	friend class NetworkContentConnecter;
 

@@ -295,10 +295,10 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	}
 
 	TLG tlg = GetTLG(ti->tile);
-	uint8_t PCPstatus = 0;
-	uint8_t OverridePCP = 0;
-	uint8_t PPPpreferred[DIAGDIR_END];
-	uint8_t PPPallowed[DIAGDIR_END];
+	uint8_t pcp_status = 0;
+	uint8_t override_pcp = 0;
+	uint8_t ppp_preferred[DIAGDIR_END];
+	uint8_t ppp_allowed[DIAGDIR_END];
 
 	/* Find which rail bits are present, and select the override points.
 	 * We don't draw a pylon:
@@ -306,7 +306,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	 * 2) on the "far" end of a bridge head (the one that connects to bridge middle),
 	 *    because that one is drawn on the bridge. Exception is for length 0 bridges
 	 *    which have no middle tiles */
-	trackconfig[TS_HOME] = GetRailTrackBitsUniversal(ti->tile, &OverridePCP);
+	trackconfig[TS_HOME] = GetRailTrackBitsUniversal(ti->tile, &override_pcp);
 	wireconfig[TS_HOME] = MaskWireBits(ti->tile, trackconfig[TS_HOME]);
 	/* If a track bit is present that is not in the main direction, the track is level */
 	isflat[TS_HOME] = ((trackconfig[TS_HOME] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
@@ -343,8 +343,8 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 
 		isflat[TS_NEIGHBOUR] = ((trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
-		PPPpreferred[i] = 0xFF; // We start with preferring everything (end-of-line in any direction)
-		PPPallowed[i] = AllowedPPPonPCP[i];
+		ppp_preferred[i] = 0xFF; // We start with preferring everything (end-of-line in any direction)
+		ppp_allowed[i] = AllowedPPPonPCP[i];
 
 		/* We cycle through all the existing tracks at a PCP and see what
 		 * PPPs we want to have, or may not have at all */
@@ -358,24 +358,24 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 
 			/* We check whether the track in question (k) is present in the tile
 			 * (TrackSourceTile) */
-			DiagDirection PCPpos = i;
+			DiagDirection pcp_pos = i;
 			if (HasBit(wireconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
 				/* track found, if track is in the neighbour tile, adjust the number
 				 * of the PCP for preferred/allowed determination*/
-				PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
-				SetBit(PCPstatus, i); // This PCP is in use
-				PPPpreferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
+				pcp_pos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
+				SetBit(pcp_status, i); // This PCP is in use
+				ppp_preferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][pcp_pos];
 			}
 
 			if (HasBit(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
-				PPPallowed[i] &= ~DisallowedPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
+				ppp_allowed[i] &= ~DisallowedPPPofTrackAtPCP[TracksAtPCP[i][k]][pcp_pos];
 			}
 		}
 
 		/* Deactivate all PPPs if PCP is not used */
-		if (!HasBit(PCPstatus, i)) {
-			PPPpreferred[i] = 0;
-			PPPallowed[i] = 0;
+		if (!HasBit(pcp_status, i)) {
+			ppp_preferred[i] = 0;
+			ppp_allowed[i] = 0;
 		}
 
 		Foundation foundation = FOUNDATION_NONE;
@@ -402,7 +402,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		 * Level means that the slope is the same, or the track is flat */
 		if (tileh[TS_HOME] == tileh[TS_NEIGHBOUR] || (isflat[TS_HOME] && isflat[TS_NEIGHBOUR])) {
 			for (uint k = 0; k < NUM_IGNORE_GROUPS; k++) {
-				if (PPPpreferred[i] == IgnoredPCP[k][tlg][i]) ClrBit(PCPstatus, i);
+				if (ppp_preferred[i] == IgnoredPCP[k][tlg][i]) ClrBit(pcp_status, i);
 			}
 		}
 
@@ -410,7 +410,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		 * In that case, we try the any of the allowed ones. if they don't exist either, don't draw
 		 * anything. Note that the preferred PPPs still contain the end-of-line markers.
 		 * Remove those (simply by ANDing with allowed, since these markers are never allowed) */
-		if ((PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
+		if ((ppp_allowed[i] & ppp_preferred[i]) != 0) ppp_allowed[i] &= ppp_preferred[i];
 
 		if (IsBridgeAbove(ti->tile)) {
 			Track bridgetrack = GetBridgeAxis(ti->tile) == AXIS_X ? TRACK_X : TRACK_Y;
@@ -418,16 +418,16 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 
 			if ((height <= GetTileMaxZ(ti->tile) + 1) &&
 					(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) {
-				SetBit(OverridePCP, i);
+				SetBit(override_pcp, i);
 			}
 		}
 
-		if (PPPallowed[i] != 0 && HasBit(PCPstatus, i) && !HasBit(OverridePCP, i) &&
+		if (ppp_allowed[i] != 0 && HasBit(pcp_status, i) && !HasBit(override_pcp, i) &&
 				(!IsRailStationTile(ti->tile) || CanStationTileHavePylons(ti->tile))) {
 			for (Direction k = DIR_BEGIN; k < DIR_END; k++) {
 				uint8_t temp = PPPorder[i][GetTLG(ti->tile)][k];
 
-				if (HasBit(PPPallowed[i], temp)) {
+				if (HasBit(ppp_allowed[i], temp)) {
 					uint x  = ti->x + x_pcp_offsets[i] + x_ppp_offsets[temp];
 					uint y  = ti->y + y_pcp_offsets[i] + y_ppp_offsets[temp];
 
@@ -474,15 +474,15 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	/* Drawing of pylons is finished, now draw the wires */
 	for (Track t : SetTrackBitIterator(wireconfig[TS_HOME])) {
 		SpriteID wire_base = (t == halftile_track) ? wire_halftile : wire_normal;
-		uint8_t PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
-			(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
+		uint8_t pcp_config = HasBit(pcp_status, PCPpositions[t][0]) +
+			(HasBit(pcp_status, PCPpositions[t][1]) << 1);
 
 		const SortableSpriteStruct *sss;
 		int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; // tileh for the slopes, 0 otherwise
 
-		assert(PCPconfig != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
+		assert(pcp_config != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
 		assert(!IsSteepSlope(tileh[TS_HOME]));
-		sss = &RailCatenarySpriteData[Wires[tileh_selector][t][PCPconfig]];
+		sss = &RailCatenarySpriteData[Wires[tileh_selector][t][pcp_config]];
 
 		/*
 		 * The "wire"-sprite position is inside the tile, i.e. 0 <= sss->?_offset < TILE_SIZE.
@@ -541,22 +541,22 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 	/* Finished with wires, draw pylons
 	 * every other tile needs a pylon on the northern end */
 	if (num % 2) {
-		DiagDirection PCPpos = (axis == AXIS_X ? DIAGDIR_NE : DIAGDIR_NW);
-		Direction PPPpos = (axis == AXIS_X ? DIR_NW : DIR_NE);
-		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
-		uint x = ti->x + x_pcp_offsets[PCPpos] + x_ppp_offsets[PPPpos];
-		uint y = ti->y + y_pcp_offsets[PCPpos] + y_ppp_offsets[PPPpos];
-		AddSortableSpriteToDraw(pylon_base + pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, IsTransparencySet(TO_CATENARY), -1, -1);
+		DiagDirection pcp_pos = (axis == AXIS_X ? DIAGDIR_NE : DIAGDIR_NW);
+		Direction ppp_pos = (axis == AXIS_X ? DIR_NW : DIR_NE);
+		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
+		uint x = ti->x + x_pcp_offsets[pcp_pos] + x_ppp_offsets[ppp_pos];
+		uint y = ti->y + y_pcp_offsets[pcp_pos] + y_ppp_offsets[ppp_pos];
+		AddSortableSpriteToDraw(pylon_base + pylon_sprites[ppp_pos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, IsTransparencySet(TO_CATENARY), -1, -1);
 	}
 
 	/* need a pylon on the southern end of the bridge */
 	if (GetTunnelBridgeLength(ti->tile, start) + 1 == length) {
-		DiagDirection PCPpos = (axis == AXIS_X ? DIAGDIR_SW : DIAGDIR_SE);
-		Direction PPPpos = (axis == AXIS_X ? DIR_NW : DIR_NE);
-		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
-		uint x = ti->x + x_pcp_offsets[PCPpos] + x_ppp_offsets[PPPpos];
-		uint y = ti->y + y_pcp_offsets[PCPpos] + y_ppp_offsets[PPPpos];
-		AddSortableSpriteToDraw(pylon_base + pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, IsTransparencySet(TO_CATENARY), -1, -1);
+		DiagDirection pcp_pos = (axis == AXIS_X ? DIAGDIR_SW : DIAGDIR_SE);
+		Direction ppp_pos = (axis == AXIS_X ? DIR_NW : DIR_NE);
+		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) ppp_pos = ReverseDir(ppp_pos);
+		uint x = ti->x + x_pcp_offsets[pcp_pos] + x_ppp_offsets[ppp_pos];
+		uint y = ti->y + y_pcp_offsets[pcp_pos] + y_ppp_offsets[ppp_pos];
+		AddSortableSpriteToDraw(pylon_base + pylon_sprites[ppp_pos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, IsTransparencySet(TO_CATENARY), -1, -1);
 	}
 }
 

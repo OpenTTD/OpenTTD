@@ -2011,21 +2011,21 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth, bool
 				if (v->dest_tile == 0 && TimerGameEconomy::date_fract != (v->index % Ticks::DAY_TICKS)) break;
 
 				/* We need to search for the nearest depot (hangar). */
-				ClosestDepot closestDepot = v->FindClosestDepot();
+				ClosestDepot closest_depot = v->FindClosestDepot();
 
-				if (closestDepot.found) {
+				if (closest_depot.found) {
 					/* PBS reservations cannot reverse */
-					if (pbs_look_ahead && closestDepot.reverse) return false;
+					if (pbs_look_ahead && closest_depot.reverse) return false;
 
-					v->SetDestTile(closestDepot.location);
-					v->current_order.SetDestination(closestDepot.destination);
+					v->SetDestTile(closest_depot.location);
+					v->current_order.SetDestination(closest_depot.destination);
 
 					/* If there is no depot in front, reverse automatically (trains only) */
-					if (v->type == VEH_TRAIN && closestDepot.reverse) Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, v->index, false);
+					if (v->type == VEH_TRAIN && closest_depot.reverse) Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, v->index, false);
 
 					if (v->type == VEH_AIRCRAFT) {
 						Aircraft *a = Aircraft::From(v);
-						if (a->state == FLYING && a->targetairport != closestDepot.destination) {
+						if (a->state == FLYING && a->targetairport != closest_depot.destination) {
 							/* The aircraft is now heading for a different hangar than the next in the orders */
 							AircraftNextAirportPos_and_Order(a);
 						}

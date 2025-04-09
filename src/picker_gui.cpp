@@ -175,11 +175,11 @@ void PickerWindow::ConstructWindow()
 	this->CreateNestedTree();
 
 	/* Test if pickers should be active.*/
-	bool isActive = this->callbacks.IsActive();
+	bool is_active = this->callbacks.IsActive();
 
 	/* Functionality depends on widgets being present, not window class. */
-	this->has_class_picker = isActive && this->GetWidget<NWidgetBase>(WID_PW_CLASS_LIST) != nullptr && this->callbacks.HasClassChoice();
-	this->has_type_picker = isActive && this->GetWidget<NWidgetBase>(WID_PW_TYPE_MATRIX) != nullptr;
+	this->has_class_picker = is_active && this->GetWidget<NWidgetBase>(WID_PW_CLASS_LIST) != nullptr && this->callbacks.HasClassChoice();
+	this->has_type_picker = is_active && this->GetWidget<NWidgetBase>(WID_PW_TYPE_MATRIX) != nullptr;
 
 	if (this->has_class_picker) {
 		this->GetWidget<NWidgetCore>(WID_PW_CLASS_LIST)->SetToolTip(this->callbacks.GetClassTooltip());

@@ -1769,8 +1769,8 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_81)) {
 		for (auto t : Map::Iterate()) {
 			if (GetTileType(t) == MP_TREES) {
-				TreeGround groundType = (TreeGround)GB(t.m2(), 4, 2);
-				if (groundType != TREE_GROUND_SNOW_DESERT) SB(t.m2(), 6, 2, 3);
+				TreeGround ground_type = (TreeGround)GB(t.m2(), 4, 2);
+				if (ground_type != TREE_GROUND_SNOW_DESERT) SB(t.m2(), 6, 2, 3);
 			}
 		}
 	}
@@ -3242,15 +3242,15 @@ bool AfterLoadGame()
 			TileIndex cur_tile = rv->tile;
 			if (!IsLevelCrossingTile(cur_tile)) continue;
 
-			ClosestDepot closestDepot = rv->FindClosestDepot();
+			ClosestDepot closest_depot = rv->FindClosestDepot();
 
 			/* Try to find a depot with a distance limit of 512 tiles (Manhattan distance). */
-			if (closestDepot.found && DistanceManhattan(rv->tile, closestDepot.location) < 512u) {
+			if (closest_depot.found && DistanceManhattan(rv->tile, closest_depot.location) < 512u) {
 				/* Teleport all parts of articulated vehicles. */
 				for (RoadVehicle *u = rv; u != nullptr; u = u->Next()) {
-					u->tile = closestDepot.location;
-					int x = TileX(closestDepot.location) * TILE_SIZE + TILE_SIZE / 2;
-					int y = TileY(closestDepot.location) * TILE_SIZE + TILE_SIZE / 2;
+					u->tile = closest_depot.location;
+					int x = TileX(closest_depot.location) * TILE_SIZE + TILE_SIZE / 2;
+					int y = TileY(closest_depot.location) * TILE_SIZE + TILE_SIZE / 2;
 					u->x_pos = x;
 					u->y_pos = y;
 					u->z_pos = GetSlopePixelZ(x, y, true);

@@ -35,7 +35,7 @@ GameInstance::GameInstance() :
 
 void GameInstance::Initialize(GameInfo *info)
 {
-	this->versionAPI = info->GetAPIVersion();
+	this->api_version = info->GetAPIVersion();
 
 	/* Register the GameController */
 	SQGSController_Register(this->engine);

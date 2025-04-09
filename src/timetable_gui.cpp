@@ -501,7 +501,7 @@ struct TimetableWindow : Window {
 		std::vector<TimetableArrivalDeparture> arr_dep(v->GetNumOrders());
 		const VehicleOrderID cur_order = v->cur_real_order_index % v->GetNumOrders();
 
-		VehicleOrderID earlyID = BuildArrivalDepartureList(v, arr_dep) ? cur_order : (VehicleOrderID)INVALID_VEH_ORDER_ID;
+		VehicleOrderID early_id = BuildArrivalDepartureList(v, arr_dep) ? cur_order : (VehicleOrderID)INVALID_VEH_ORDER_ID;
 		int selected = this->sel_index;
 
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
@@ -519,7 +519,7 @@ struct TimetableWindow : Window {
 				if (arr_dep[i / 2].arrival != Ticks::INVALID_TICKS) {
 					/* First set the offset and text colour based on the expected/scheduled mode and some other things. */
 					TimerGameTick::Ticks this_offset;
-					if (this->show_expected && i / 2 == earlyID) {
+					if (this->show_expected && i / 2 == early_id) {
 						/* Show expected arrival. */
 						this_offset = 0;
 						tc = TC_GREEN;

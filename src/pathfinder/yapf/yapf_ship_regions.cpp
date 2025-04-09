@@ -164,13 +164,13 @@ protected:
 public:
 	inline void PfFollowNode(Node &old_node)
 	{
-		TVisitWaterRegionPatchCallBack visitFunc = [&](const WaterRegionPatchDesc &water_region_patch)
+		TVisitWaterRegionPatchCallBack visit_func = [&](const WaterRegionPatchDesc &water_region_patch)
 		{
 			Node &node = Yapf().CreateNewNode();
 			node.Set(&old_node, water_region_patch);
 			Yapf().AddNewNode(node, TrackFollower{});
 		};
-		VisitWaterRegionPatchNeighbours(old_node.key.water_region_patch, visitFunc);
+		VisitWaterRegionPatchNeighbours(old_node.key.water_region_patch, visit_func);
 	}
 
 	inline char TransportTypeChar() const { return '^'; }

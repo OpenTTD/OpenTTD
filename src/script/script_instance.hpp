@@ -253,7 +253,7 @@ public:
 
 protected:
 	class Squirrel *engine = nullptr; ///< A wrapper around the squirrel vm.
-	std::string versionAPI{}; ///< Current API used by this script.
+	std::string api_version{}; ///< Current API used by this script.
 
 	/**
 	 * Register all API functions to the VM.

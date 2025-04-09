@@ -128,16 +128,16 @@ bool ScriptInstance::LoadCompatibilityScript(std::string_view api_version, Subdi
 bool ScriptInstance::LoadCompatibilityScripts(Subdirectory dir, std::span<const std::string_view> api_versions)
 {
 	/* Don't try to load compatibility scripts for the current version. */
-	if (this->versionAPI == api_versions.back()) return true;
+	if (this->api_version == api_versions.back()) return true;
 
-	ScriptLog::Info(fmt::format("Downgrading API to be compatible with version {}", this->versionAPI));
+	ScriptLog::Info(fmt::format("Downgrading API to be compatible with version {}", this->api_version));
 
 	/* Downgrade the API till we are the same version as the script. The last
 	 * entry in the list is always the current version, so skip that one. */
 	for (auto it = std::rbegin(api_versions) + 1; it != std::rend(api_versions); ++it) {
 		if (!this->LoadCompatibilityScript(*it, dir)) return false;
 
-		if (*it == this->versionAPI) break;
+		if (*it == this->api_version) break;
 	}
 
 	return true;

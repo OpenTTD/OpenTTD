@@ -274,18 +274,18 @@ public:
 		_selected_airport_index = Clamp(_selected_airport_index, -1, ac->GetSpecCount() - 1);
 
 		/* Only when no valid airport was selected, we want to select the first airport. */
-		bool selectFirstAirport = true;
+		bool select_first_airport = true;
 		if (_selected_airport_index != -1) {
 			const AirportSpec *as = ac->GetSpec(_selected_airport_index);
 			if (as->IsAvailable()) {
 				/* Ensure the airport layout is valid. */
 				_selected_airport_layout = Clamp(_selected_airport_layout, 0, static_cast<uint8_t>(as->layouts.size() - 1));
-				selectFirstAirport = false;
+				select_first_airport = false;
 				this->UpdateSelectSize();
 			}
 		}
 
-		if (selectFirstAirport) this->SelectFirstAvailableAirport(true);
+		if (select_first_airport) this->SelectFirstAvailableAirport(true);
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
