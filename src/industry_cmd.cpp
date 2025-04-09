@@ -1321,7 +1321,7 @@ static CommandCost CheckNewIndustry_OilRefinery(TileIndex tile)
 	return CommandCost(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
 
-extern bool _ignore_restrictions;
+extern bool _ignore_industry_restrictions;
 
 /**
  * Check the conditions of #CHECK_OIL_RIG (Industries at sea should be positioned near edge of the map).
@@ -1330,7 +1330,7 @@ extern bool _ignore_restrictions;
  */
 static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 {
-	if (_game_mode == GM_EDITOR && _ignore_restrictions) return CommandCost();
+	if (_game_mode == GM_EDITOR && _ignore_industry_restrictions) return CommandCost();
 
 	if (TileHeight(tile) == 0 &&
 			CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
@@ -1566,7 +1566,7 @@ static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileL
 	/* It is almost impossible to have a fully flat land in TG, so what we
 	 *  do is that we check if we can make the land flat later on. See
 	 *  CheckIfCanLevelIndustryPlatform(). */
-	if (!refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions)) {
+	if (!refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_industry_restrictions)) {
 		return CommandCost();
 	}
 	return CommandCost(STR_ERROR_SITE_UNSUITABLE);
@@ -2023,7 +2023,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	if (ret.Failed()) return ret;
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world &&
-			!_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DoCommandFlag::NoWater, layout)) {
+			!_ignore_industry_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DoCommandFlag::NoWater, layout)) {
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
