@@ -1450,9 +1450,9 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		auto it = _grf_id_overrides.find(source.grfid);
 		if (it == std::end(_grf_id_overrides)) continue;
-		uint32_t override = it->second;
+		uint32_t override_grfid = it->second;
 
-		auto dest = std::ranges::find(_grf_files, override, &GRFFile::grfid);
+		auto dest = std::ranges::find(_grf_files, override_grfid, &GRFFile::grfid);
 		if (dest == std::end(_grf_files)) continue;
 
 		grf_overrides[i] = static_cast<int>(std::ranges::distance(std::begin(_grf_files), dest));
