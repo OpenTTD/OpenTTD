@@ -221,15 +221,15 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 			}
 
 			case 0x09: { // Airport tile override
-				uint8_t override = buf.ReadByte();
+				uint8_t override_id = buf.ReadByte();
 
 				/* The airport tile being overridden must be an original airport tile. */
-				if (override >= NEW_AIRPORTTILE_OFFSET) {
-					GrfMsg(2, "AirportTileChangeInfo: Attempt to override new airport tile {} with airport tile id {}. Ignoring.", override, id);
+				if (override_id >= NEW_AIRPORTTILE_OFFSET) {
+					GrfMsg(2, "AirportTileChangeInfo: Attempt to override new airport tile {} with airport tile id {}. Ignoring.", override_id, id);
 					continue;
 				}
 
-				_airporttile_mngr.Add(id, _cur.grffile->grfid, override);
+				_airporttile_mngr.Add(id, _cur.grffile->grfid, override_id);
 				break;
 			}
 

@@ -225,15 +225,15 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 			}
 
 			case 0x15: { // House override byte
-				uint8_t override = buf.ReadByte();
+				uint8_t override_id = buf.ReadByte();
 
 				/* The house being overridden must be an original house. */
-				if (override >= NEW_HOUSE_OFFSET) {
-					GrfMsg(2, "TownHouseChangeInfo: Attempt to override new house {} with house id {}. Ignoring.", override, id);
+				if (override_id >= NEW_HOUSE_OFFSET) {
+					GrfMsg(2, "TownHouseChangeInfo: Attempt to override new house {} with house id {}. Ignoring.", override_id, id);
 					continue;
 				}
 
-				_house_mngr.Add(id, _cur.grffile->grfid, override);
+				_house_mngr.Add(id, _cur.grffile->grfid, override_id);
 				break;
 			}
 
