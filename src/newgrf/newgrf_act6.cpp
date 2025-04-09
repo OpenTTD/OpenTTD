@@ -32,7 +32,7 @@ static void CfgApply(ByteReader &buf)
 	 *                 to place where parameter is to be stored. */
 
 	/* Preload the next sprite */
-	SpriteFile &file = *_cur.file;
+	SpriteFile &file = *_cur_gps.file;
 	size_t pos = file.GetPos();
 	uint32_t num = file.GetContainerVersion() >= 2 ? file.ReadDword() : file.ReadWord();
 	uint8_t type = file.ReadByte();
@@ -47,7 +47,7 @@ static void CfgApply(ByteReader &buf)
 	}
 
 	/* Get (or create) the override for the next sprite. */
-	GRFLocation location(_cur.grfconfig->ident.grfid, _cur.nfo_line + 1);
+	GRFLocation location(_cur_gps.grfconfig->ident.grfid, _cur_gps.nfo_line + 1);
 	std::vector<uint8_t> &preload_sprite = _grf_line_to_action6_sprite_override[location];
 
 	/* Load new sprite data if it hasn't already been loaded. */
@@ -85,7 +85,7 @@ static void CfgApply(ByteReader &buf)
 
 		/* If the parameter is a GRF parameter (not an internal variable) check
 		 * if it (and all further sequential parameters) has been defined. */
-		if (param_num < 0x80 && (param_num + (param_size - 1) / 4) >= std::size(_cur.grffile->param)) {
+		if (param_num < 0x80 && (param_num + (param_size - 1) / 4) >= std::size(_cur_gps.grffile->param)) {
 			GrfMsg(2, "CfgApply: Ignoring (param {} not set)", (param_num + (param_size - 1) / 4));
 			break;
 		}

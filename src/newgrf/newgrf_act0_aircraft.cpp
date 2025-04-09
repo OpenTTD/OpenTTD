@@ -31,7 +31,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur.grffile, VEH_AIRCRAFT, id);
+		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_AIRCRAFT, id);
 		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
@@ -93,14 +93,14 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				break;
 
 			case 0x12: // SFX
-				avi->sfx = GetNewGRFSoundID(_cur.grffile, buf.ReadByte());
+				avi->sfx = GetNewGRFSoundID(_cur_gps.grffile, buf.ReadByte());
 				break;
 
 			case 0x13: { // Cargoes available for refitting
 				uint32_t mask = buf.ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 			}
 
@@ -127,7 +127,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 
 			case 0x19: // Cargo classes disallowed
@@ -151,11 +151,11 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 			case 0x1E: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1D && count != 0);
-				if (prop == 0x1D) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				if (prop == 0x1D) _gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				CargoTypes &ctt = prop == 0x1D ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
-					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
+					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 					if (IsValidCargoType(ctype)) SetBit(ctt, ctype);
 				}
 				break;

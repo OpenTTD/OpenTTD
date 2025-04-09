@@ -139,11 +139,11 @@ static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, 
 
 	if (op == 6) {
 		/* Return GRFID of set that reserved ID */
-		return grm[_cur.grffile->GetParam(target)];
+		return grm[_cur_gps.grffile->GetParam(target)];
 	}
 
 	/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
-	if (op == 2 || op == 3) start = _cur.grffile->GetParam(target);
+	if (op == 2 || op == 3) start = _cur_gps.grffile->GetParam(target);
 
 	for (uint i = start; i < std::size(grm); i++) {
 		if (grm[i] == 0) {
@@ -161,7 +161,7 @@ static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, 
 		/* Got the slot... */
 		if (op == 0 || op == 3) {
 			GrfMsg(2, "ParamSet: GRM: Reserving {} {} at {}", count, type, start);
-			for (uint i = 0; i < count; i++) grm[start + i] = _cur.grffile->grfid;
+			for (uint i = 0; i < count; i++) grm[start + i] = _cur_gps.grffile->grfid;
 		}
 		return start;
 	}
@@ -218,7 +218,7 @@ static void ParamSet(ByteReader &buf)
 	 * - it OR A PARAMETER WITH HIGHER NUMBER has been set to any value by
 	 *   an earlier action D */
 	if (HasBit(oper, 7)) {
-		if (target < 0x80 && target < std::size(_cur.grffile->param)) {
+		if (target < 0x80 && target < std::size(_cur_gps.grffile->param)) {
 			GrfMsg(7, "ParamSet: Param {} already defined, skipping", target);
 			return;
 		}
@@ -237,26 +237,26 @@ static void ParamSet(ByteReader &buf)
 				uint8_t  feature = GB(data, 8, 8);
 				uint16_t count   = GB(data, 16, 16);
 
-				if (_cur.stage == GLS_RESERVE) {
+				if (_cur_gps.stage == GLS_RESERVE) {
 					if (feature == 0x08) {
 						/* General sprites */
 						if (op == 0) {
 							/* Check if the allocated sprites will fit below the original sprite limit */
-							if (_cur.spriteid + count >= 16384) {
+							if (_cur_gps.spriteid + count >= 16384) {
 								GrfMsg(0, "ParamSet: GRM: Unable to allocate {} sprites; try changing NewGRF order", count);
 								DisableGrf(STR_NEWGRF_ERROR_GRM_FAILED);
 								return;
 							}
 
 							/* Reserve space at the current sprite ID */
-							GrfMsg(4, "ParamSet: GRM: Allocated {} sprites at {}", count, _cur.spriteid);
-							_grm_sprites[GRFLocation(_cur.grffile->grfid, _cur.nfo_line)] = std::make_pair(_cur.spriteid, count);
-							_cur.spriteid += count;
+							GrfMsg(4, "ParamSet: GRM: Allocated {} sprites at {}", count, _cur_gps.spriteid);
+							_grm_sprites[GRFLocation(_cur_gps.grffile->grfid, _cur_gps.nfo_line)] = std::make_pair(_cur_gps.spriteid, count);
+							_cur_gps.spriteid += count;
 						}
 					}
 					/* Ignore GRM result during reservation */
 					src1 = 0;
-				} else if (_cur.stage == GLS_ACTIVATION) {
+				} else if (_cur_gps.stage == GLS_ACTIVATION) {
 					switch (feature) {
 						case 0x00: // Trains
 						case 0x01: // Road Vehicles
@@ -264,13 +264,13 @@ static void ParamSet(ByteReader &buf)
 						case 0x03: // Aircraft
 							if (!_settings_game.vehicle.dynamic_engines) {
 								src1 = PerformGRM({std::begin(_grm_engines) + _engine_offsets[feature], _engine_counts[feature]}, count, op, target, "vehicles");
-								if (_cur.skip_sprites == -1) return;
+								if (_cur_gps.skip_sprites == -1) return;
 							} else {
 								/* GRM does not apply for dynamic engine allocation. */
 								switch (op) {
 									case 2:
 									case 3:
-										src1 = _cur.grffile->GetParam(target);
+										src1 = _cur_gps.grffile->GetParam(target);
 										break;
 
 									default:
@@ -284,12 +284,12 @@ static void ParamSet(ByteReader &buf)
 							switch (op) {
 								case 0:
 									/* Return space reserved during reservation stage */
-									src1 = _grm_sprites[GRFLocation(_cur.grffile->grfid, _cur.nfo_line)].first;
+									src1 = _grm_sprites[GRFLocation(_cur_gps.grffile->grfid, _cur_gps.nfo_line)].first;
 									GrfMsg(4, "ParamSet: GRM: Using pre-allocated sprites at {}", src1);
 									break;
 
 								case 1:
-									src1 = _cur.spriteid;
+									src1 = _cur_gps.spriteid;
 									break;
 
 								default:
@@ -301,7 +301,7 @@ static void ParamSet(ByteReader &buf)
 						case 0x0B: // Cargo
 							/* There are two ranges: one for cargo IDs and one for cargo bitmasks */
 							src1 = PerformGRM(_grm_cargoes, count, op, target, "cargoes");
-							if (_cur.skip_sprites == -1) return;
+							if (_cur_gps.skip_sprites == -1) return;
 							break;
 
 						default: GrfMsg(1, "ParamSet: GRM: Unsupported feature 0x{:X}", feature); return;
@@ -315,7 +315,7 @@ static void ParamSet(ByteReader &buf)
 			/* Read another GRF File's parameter */
 			const GRFFile *file = GetFileByGRFID(data);
 			GRFConfig *c = GetGRFConfig(data);
-			if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
+			if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
 				/* Disable the read GRF if it is a static NewGRF. */
 				DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 				src1 = 0;
@@ -420,7 +420,7 @@ static void ParamSet(ByteReader &buf)
 
 	switch (target) {
 		case 0x8E: // Y-Offset for train sprites
-			_cur.grffile->traininfo_vehicle_pitch = res;
+			_cur_gps.grffile->traininfo_vehicle_pitch = res;
 			break;
 
 		case 0x8F: { // Rail track type cost factors
@@ -451,12 +451,12 @@ static void ParamSet(ByteReader &buf)
 			GrfMiscBits bits(res);
 
 			/* Set train list engine width */
-			_cur.grffile->traininfo_vehicle_width = bits.Test(GrfMiscBit::TrainWidth32Pixels) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
+			_cur_gps.grffile->traininfo_vehicle_width = bits.Test(GrfMiscBit::TrainWidth32Pixels) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
 			/* Remove the local flags from the global flags */
 			bits.Reset(GrfMiscBit::TrainWidth32Pixels);
 
 			/* Only copy safe bits for static grfs */
-			if (_cur.grfconfig->flags.Test(GRFConfigFlag::Static)) {
+			if (_cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static)) {
 				GrfMiscBits safe_bits = GrfMiscBit::SecondRockyTileSet;
 
 				_misc_grf_features.Reset(safe_bits);
@@ -474,8 +474,8 @@ static void ParamSet(ByteReader &buf)
 		default:
 			if (target < 0x80) {
 				/* Resize (and fill with zeroes) if needed. */
-				if (target >= std::size(_cur.grffile->param)) _cur.grffile->param.resize(target + 1);
-				_cur.grffile->param[target] = res;
+				if (target >= std::size(_cur_gps.grffile->param)) _cur_gps.grffile->param.resize(target + 1);
+				_cur_gps.grffile->param[target] = res;
 			} else {
 				GrfMsg(7, "ParamSet: Skipping unknown target 0x{:02X}", target);
 			}

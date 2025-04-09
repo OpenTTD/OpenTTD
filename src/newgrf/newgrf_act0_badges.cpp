@@ -26,8 +26,8 @@ static ChangeInfoResult BadgeChangeInfo(uint first, uint last, int prop, ByteRea
 	}
 
 	for (uint id = first; id < last; ++id) {
-		auto it = _cur.grffile->badge_map.find(id);
-		if (prop != 0x08 && it == std::end(_cur.grffile->badge_map)) {
+		auto it = _cur_gps.grffile->badge_map.find(id);
+		if (prop != 0x08 && it == std::end(_cur_gps.grffile->badge_map)) {
 			GrfMsg(1, "BadgeChangeInfo: Attempt to modify undefined tag {}, ignoring", id);
 			return CIR_INVALID_ID;
 		}
@@ -38,7 +38,7 @@ static ChangeInfoResult BadgeChangeInfo(uint first, uint last, int prop, ByteRea
 		switch (prop) {
 			case 0x08: { // Label
 				std::string_view label = buf.ReadString();
-				_cur.grffile->badge_map[id] = GetOrCreateBadge(label).index;
+				_cur_gps.grffile->badge_map[id] = GetOrCreateBadge(label).index;
 				break;
 			}
 

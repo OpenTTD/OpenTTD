@@ -40,7 +40,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 			case 0x08: // Bit number of cargo
 				cs->bitnum = buf.ReadByte();
 				if (cs->IsValid()) {
-					cs->grffile = _cur.grffile;
+					cs->grffile = _cur_gps.grffile;
 					SetBit(_cargo_mask, id);
 				} else {
 					ClrBit(_cargo_mask, id);

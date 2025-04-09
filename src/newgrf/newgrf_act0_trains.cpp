@@ -31,7 +31,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (uint id = first; id < last; ++id) {
-		Engine *e = GetNewEngine(_cur.grffile, VEH_TRAIN, id);
+		Engine *e = GetNewEngine(_cur_gps.grffile, VEH_TRAIN, id);
 		if (e == nullptr) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
 
 		EngineInfo *ei = &e->info;
@@ -41,8 +41,8 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 			case 0x05: { // Track type
 				uint8_t tracktype = buf.ReadByte();
 
-				if (tracktype < _cur.grffile->railtype_list.size()) {
-					_gted[e->index].railtypelabel = _cur.grffile->railtype_list[tracktype];
+				if (tracktype < _cur_gps.grffile->railtype_list.size()) {
+					_gted[e->index].railtypelabel = _cur_gps.grffile->railtype_list[tracktype];
 					break;
 				}
 
@@ -126,7 +126,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				break;
 
 			case 0x15: { // Cargo type
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				uint8_t ctype = buf.ReadByte();
 
 				if (ctype == 0xFF) {
@@ -134,7 +134,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 					ei->cargo_type = INVALID_CARGO;
 				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
-					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
+					ei->cargo_type = GetCargoTranslation(ctype, _cur_gps.grffile);
 					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
@@ -179,7 +179,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 					break;
 				}
 
-				if (_cur.grffile->railtype_list.empty()) {
+				if (_cur_gps.grffile->railtype_list.empty()) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
 					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_RAIL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_ELECTRIC;
@@ -206,7 +206,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				uint32_t mask = buf.ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 			}
 
@@ -270,7 +270,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 			case 0x28: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = CargoClasses{buf.ReadWord()};
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed.Any());
-				_gted[e->index].defaultcargo_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				break;
 
 			case 0x29: // Cargo classes disallowed
@@ -290,11 +290,11 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 			case 0x2D: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x2C && count != 0);
-				if (prop == 0x2C) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				if (prop == 0x2C) _gted[e->index].defaultcargo_grf = _cur_gps.grffile;
 				CargoTypes &ctt = prop == 0x2C ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
 				ctt = 0;
 				while (count--) {
-					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur.grffile);
+					CargoType ctype = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 					if (IsValidCargoType(ctype)) SetBit(ctt, ctype);
 				}
 				break;

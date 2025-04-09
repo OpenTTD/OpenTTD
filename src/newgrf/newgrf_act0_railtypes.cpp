@@ -36,7 +36,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 	}
 
 	for (uint id = first; id < last; ++id) {
-		RailType rt = _cur.grffile->railtype_map[id];
+		RailType rt = _cur_gps.grffile->railtype_map[id];
 		if (rt == INVALID_RAILTYPE) return CIR_INVALID_ID;
 
 		RailTypeInfo *rti = &_railtypes[rt];
@@ -50,7 +50,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 			case 0x09: { // Toolbar caption of railtype (sets name as well for backwards compatibility for grf ver < 8)
 				GRFStringID str{buf.ReadWord()};
 				AddStringForMapping(str, &rti->strings.toolbar_caption);
-				if (_cur.grffile->grf_version < 8) {
+				if (_cur_gps.grffile->grf_version < 8) {
 					AddStringForMapping(str, &rti->strings.name);
 				}
 				break;
@@ -182,7 +182,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 					rt = AllocateRailType(rtl);
 				}
 
-				_cur.grffile->railtype_map[id] = rt;
+				_cur_gps.grffile->railtype_map[id] = rt;
 				break;
 			}
 
@@ -199,10 +199,10 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 				break;
 
 			case 0x1D: // Alternate rail type label list
-				if (_cur.grffile->railtype_map[id] != INVALID_RAILTYPE) {
+				if (_cur_gps.grffile->railtype_map[id] != INVALID_RAILTYPE) {
 					int n = buf.ReadByte();
 					for (int j = 0; j != n; j++) {
-						_railtypes[_cur.grffile->railtype_map[id]].alternate_labels.push_back(std::byteswap(buf.ReadDWord()));
+						_railtypes[_cur_gps.grffile->railtype_map[id]].alternate_labels.push_back(std::byteswap(buf.ReadDWord()));
 					}
 					break;
 				}

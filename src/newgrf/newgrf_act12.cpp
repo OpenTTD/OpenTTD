@@ -39,9 +39,9 @@ static void LoadFontGlyph(ByteReader &buf)
 		GrfMsg(7, "LoadFontGlyph: Loading {} glyph(s) at 0x{:04X} for size {}", num_char, base_char, size);
 
 		for (uint c = 0; c < num_char; c++) {
-			if (size < FS_END) SetUnicodeGlyph(size, base_char + c, _cur.spriteid);
-			_cur.nfo_line++;
-			LoadNextSprite(_cur.spriteid++, *_cur.file, _cur.nfo_line);
+			if (size < FS_END) SetUnicodeGlyph(size, base_char + c, _cur_gps.spriteid);
+			_cur_gps.nfo_line++;
+			LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, _cur_gps.nfo_line);
 		}
 	}
 }
@@ -63,13 +63,13 @@ static void SkipAct12(ByteReader &buf)
 		buf.ReadByte();
 
 		/* Sum up number of characters */
-		_cur.skip_sprites += buf.ReadByte();
+		_cur_gps.skip_sprites += buf.ReadByte();
 
 		/* Ignore 'base_char' word */
 		buf.ReadWord();
 	}
 
-	GrfMsg(3, "SkipAct12: Skipping {} sprites", _cur.skip_sprites);
+	GrfMsg(3, "SkipAct12: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
 template <> void GrfActionHandler<0x12>::FileScan(ByteReader &buf) { SkipAct12(buf); }

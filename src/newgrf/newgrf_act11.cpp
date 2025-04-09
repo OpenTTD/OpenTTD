@@ -24,8 +24,8 @@
 static void ImportGRFSound(SoundEntry *sound)
 {
 	const GRFFile *file;
-	uint32_t grfid = _cur.file->ReadDword();
-	SoundID sound_id = _cur.file->ReadWord();
+	uint32_t grfid = _cur_gps.file->ReadDword();
+	SoundID sound_id = _cur_gps.file->ReadWord();
 
 	file = GetFileByGRFID(grfid);
 	if (file == nullptr || file->sound_offset == 0) {
@@ -60,10 +60,10 @@ static void LoadGRFSound(size_t offs, SoundEntry *sound)
 
 	if (offs != SIZE_MAX) {
 		/* Sound is present in the NewGRF. */
-		sound->file = _cur.file;
+		sound->file = _cur_gps.file;
 		sound->file_offset = offs;
 		sound->source = SoundSource::NewGRF;
-		sound->grf_container_ver = _cur.file->GetContainerVersion();
+		sound->grf_container_ver = _cur_gps.file->GetContainerVersion();
 	}
 }
 
@@ -78,22 +78,22 @@ static void GRFSound(ByteReader &buf)
 	if (num == 0) return;
 
 	SoundEntry *sound;
-	if (_cur.grffile->sound_offset == 0) {
-		_cur.grffile->sound_offset = GetNumSounds();
-		_cur.grffile->num_sounds = num;
+	if (_cur_gps.grffile->sound_offset == 0) {
+		_cur_gps.grffile->sound_offset = GetNumSounds();
+		_cur_gps.grffile->num_sounds = num;
 		sound = AllocateSound(num);
 	} else {
-		sound = GetSound(_cur.grffile->sound_offset);
+		sound = GetSound(_cur_gps.grffile->sound_offset);
 	}
 
-	SpriteFile &file = *_cur.file;
+	SpriteFile &file = *_cur_gps.file;
 	uint8_t grf_container_version = file.GetContainerVersion();
 	for (int i = 0; i < num; i++) {
-		_cur.nfo_line++;
+		_cur_gps.nfo_line++;
 
 		/* Check whether the index is in range. This might happen if multiple action 11 are present.
 		 * While this is invalid, we do not check for this. But we should prevent it from causing bigger trouble */
-		bool invalid = i >= _cur.grffile->num_sounds;
+		bool invalid = i >= _cur_gps.grffile->num_sounds;
 
 		size_t offs = file.GetPos();
 
@@ -110,7 +110,7 @@ static void GRFSound(ByteReader &buf)
 				file.SkipBytes(len);
 			} else {
 				uint32_t id = file.ReadDword();
-				if (_cur.stage == GLS_INIT) LoadGRFSound(GetGRFSpriteOffset(id), sound + i);
+				if (_cur_gps.stage == GLS_INIT) LoadGRFSound(GetGRFSpriteOffset(id), sound + i);
 			}
 			continue;
 		}
@@ -118,7 +118,7 @@ static void GRFSound(ByteReader &buf)
 		if (type != 0xFF) {
 			GrfMsg(1, "GRFSound: Unexpected RealSprite found, skipping");
 			file.SkipBytes(7);
-			SkipSpriteData(*_cur.file, type, len - 8);
+			SkipSpriteData(*_cur_gps.file, type, len - 8);
 			continue;
 		}
 
@@ -131,7 +131,7 @@ static void GRFSound(ByteReader &buf)
 		switch (action) {
 			case 0xFF:
 				/* Allocate sound only in init stage. */
-				if (_cur.stage == GLS_INIT) {
+				if (_cur_gps.stage == GLS_INIT) {
 					if (grf_container_version >= 2) {
 						GrfMsg(1, "GRFSound: Inline sounds are not supported for container version >= 2");
 					} else {
@@ -142,7 +142,7 @@ static void GRFSound(ByteReader &buf)
 				break;
 
 			case 0xFE:
-				if (_cur.stage == GLS_ACTIVATION) {
+				if (_cur_gps.stage == GLS_ACTIVATION) {
 					/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
 					 * importing sounds, so this is probably all wrong... */
 					if (file.ReadByte() != 0) GrfMsg(1, "GRFSound: Import type mismatch");
@@ -167,9 +167,9 @@ static void SkipAct11(ByteReader &buf)
 	 *
 	 * W num      Number of sound files that follow */
 
-	_cur.skip_sprites = buf.ReadWord();
+	_cur_gps.skip_sprites = buf.ReadWord();
 
-	GrfMsg(3, "SkipAct11: Skipping {} sprites", _cur.skip_sprites);
+	GrfMsg(3, "SkipAct11: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
 template <> void GrfActionHandler<0x11>::FileScan(ByteReader &buf) { SkipAct11(buf); }
