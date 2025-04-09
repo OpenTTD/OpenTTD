@@ -51,8 +51,8 @@
 #include "safeguards.h"
 
 
-std::array<std::array<BaseVehicleListWindow::GroupBy, VEH_COMPANY_END>, VLT_END> _grouping{};
-std::array<Sorting, BaseVehicleListWindow::GB_END> _sorting{};
+static std::array<std::array<BaseVehicleListWindow::GroupBy, VEH_COMPANY_END>, VLT_END> _grouping{};
+static std::array<Sorting, BaseVehicleListWindow::GB_END> _sorting{};
 
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleNumberSorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleNameSorter;
