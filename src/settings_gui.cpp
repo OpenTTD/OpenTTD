@@ -83,7 +83,7 @@ static const uint32_t _autosave_dropdown_to_minutes[] = {
 	120,
 };
 
-Dimension _circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.
+Dimension _setting_circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.
 
 /**
  * Get index of the current screen resolution.
@@ -1267,14 +1267,14 @@ struct GameSettingsWindow : Window {
 
 	void OnInit() override
 	{
-		_circle_size = maxdim(GetSpriteSize(SPR_CIRCLE_FOLDED), GetSpriteSize(SPR_CIRCLE_UNFOLDED));
+		_setting_circle_size = maxdim(GetSpriteSize(SPR_CIRCLE_FOLDED), GetSpriteSize(SPR_CIRCLE_UNFOLDED));
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL:
-				resize.height = SETTING_HEIGHT = std::max({(int)_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
+				resize.height = SETTING_HEIGHT = std::max({(int)_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
 				resize.width = 1;
 
 				size.height = 5 * resize.height + WidgetDimensions::scaled.framerect.Vertical();

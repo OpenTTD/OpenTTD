@@ -14,7 +14,7 @@
 #include "settings_internal.h"
 #include "stringfilter_type.h"
 
-extern Dimension _circle_size;
+extern Dimension _setting_circle_size;
 extern int SETTING_HEIGHT;
 
 /**
