@@ -200,7 +200,7 @@ inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
 	if (gfx != 0xFF) {
 		assert(gfx < NUM_INDUSTRYTILES);
 		const IndustryTileSpec *it = &_industry_tile_specs[gfx];
-		return it->grf_prop.override == INVALID_INDUSTRYTILE ? gfx : it->grf_prop.override;
+		return it->grf_prop.override_id == INVALID_INDUSTRYTILE ? gfx : it->grf_prop.override_id;
 	} else {
 		return gfx;
 	}

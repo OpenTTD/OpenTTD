@@ -66,11 +66,11 @@ uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_g
 
 	if (gfx < NEW_INDUSTRYTILEOFFSET) { // Does it belongs to an old type?
 		/* It is an old tile.  We have to see if it's been overridden */
-		if (indtsp->grf_prop.override == INVALID_INDUSTRYTILE) { // has it been overridden?
+		if (indtsp->grf_prop.override_id == INVALID_INDUSTRYTILE) { // has it been overridden?
 			return 0xFF << 8 | gfx; // no. Tag FF + the gfx id of that tile
 		}
 		/* Overridden */
-		const IndustryTileSpec *tile_ovr = GetIndustryTileSpec(indtsp->grf_prop.override);
+		const IndustryTileSpec *tile_ovr = GetIndustryTileSpec(indtsp->grf_prop.override_id);
 
 		if (tile_ovr->grf_prop.grfid == cur_grfid) {
 			return tile_ovr->grf_prop.local_id; // same grf file

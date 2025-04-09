@@ -178,7 +178,7 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 
 		if (this->entity_overrides[i] != hs->grf_prop.local_id || this->grfid_overrides[i] != hs->grf_prop.grfid) continue;
 
-		overridden_hs->grf_prop.override = house_id;
+		overridden_hs->grf_prop.override_id = house_id;
 		this->entity_overrides[i] = this->invalid_id;
 		this->grfid_overrides[i] = 0;
 	}
@@ -256,7 +256,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
 		ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grfid, inds->grf_prop.subst_id);
-		inds->grf_prop.override = this->invalid_id;  // make sure it will not be detected as overridden
+		inds->grf_prop.override_id = this->invalid_id;  // make sure it will not be detected as overridden
 	}
 
 	if (ind_id == this->invalid_id) {
@@ -287,7 +287,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 
 		if (this->entity_overrides[i] != its->grf_prop.local_id || this->grfid_overrides[i] != its->grf_prop.grfid) continue;
 
-		overridden_its->grf_prop.override = indt_id;
+		overridden_its->grf_prop.override_id = indt_id;
 		overridden_its->enabled = false;
 		this->entity_overrides[i] = this->invalid_id;
 		this->grfid_overrides[i] = 0;

@@ -135,7 +135,7 @@ struct HouseSpec {
 inline HouseID GetTranslatedHouseID(HouseID hid)
 {
 	const HouseSpec *hs = HouseSpec::Get(hid);
-	return hs->grf_prop.override == INVALID_HOUSE_ID ? hid : hs->grf_prop.override;
+	return hs->grf_prop.override_id == INVALID_HOUSE_ID ? hid : hs->grf_prop.override_id;
 }
 
 void ShowBuildHousePicker(struct Window *);
