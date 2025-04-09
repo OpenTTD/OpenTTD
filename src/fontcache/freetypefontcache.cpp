@@ -46,7 +46,7 @@ public:
 	const void *GetOSHandle() override { return &face; }
 };
 
-FT_Library _library = nullptr;
+FT_Library _ft_library = nullptr;
 
 
 /**
@@ -163,8 +163,8 @@ void LoadFreeTypeFont(FontSize fs)
 	std::string font = GetFontCacheFontName(fs);
 	if (font.empty()) return;
 
-	if (_library == nullptr) {
-		if (FT_Init_FreeType(&_library) != FT_Err_Ok) {
+	if (_ft_library == nullptr) {
+		if (FT_Init_FreeType(&_ft_library) != FT_Err_Ok) {
 			ShowInfo("Unable to initialize FreeType, using sprite fonts instead");
 			return;
 		}
@@ -178,13 +178,13 @@ void LoadFreeTypeFont(FontSize fs)
 	/* If font is an absolute path to a ttf, try loading that first. */
 	int32_t index = 0;
 	if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
-	FT_Error error = FT_New_Face(_library, font_name, index, &face);
+	FT_Error error = FT_New_Face(_ft_library, font_name, index, &face);
 
 	if (error != FT_Err_Ok) {
 		/* Check if font is a relative filename in one of our search-paths. */
 		std::string full_font = FioFindFullPath(BASE_DIR, font_name);
 		if (!full_font.empty()) {
-			error = FT_New_Face(_library, full_font.c_str(), 0, &face);
+			error = FT_New_Face(_ft_library, full_font.c_str(), 0, &face);
 		}
 	}
 
@@ -303,8 +303,8 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
  */
 void UninitFreeType()
 {
-	FT_Done_FreeType(_library);
-	_library = nullptr;
+	FT_Done_FreeType(_ft_library);
+	_ft_library = nullptr;
 }
 
 #if !defined(WITH_FONTCONFIG)
