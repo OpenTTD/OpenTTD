@@ -340,10 +340,10 @@ struct VariableGRFFileProps : GRFFilePropsBase {
 /** Data related to the handling of grf files. */
 struct GRFFileProps : FixedGRFFileProps<1> {
 	/** Set all default data constructor for the props. */
-	constexpr GRFFileProps(uint16_t subst_id = 0) : subst_id(subst_id), override(subst_id) {}
+	constexpr GRFFileProps(uint16_t subst_id = 0) : subst_id(subst_id), override_id(subst_id) {}
 
 	uint16_t subst_id;
-	uint16_t override; ///< id of the entity been replaced by
+	uint16_t override_id; ///< id of the entity been replaced by
 };
 
 /** Container for a label for rail or road type conversion. */

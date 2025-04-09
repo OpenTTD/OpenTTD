@@ -83,7 +83,7 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
 
 		if (this->entity_overrides[i] != airpts->grf_prop.local_id || this->grfid_overrides[i] != airpts->grf_prop.grfid) continue;
 
-		overridden_airpts->grf_prop.override = airpt_id;
+		overridden_airpts->grf_prop.override_id = airpt_id;
 		overridden_airpts->enabled = false;
 		this->entity_overrides[i] = this->invalid_id;
 		this->grfid_overrides[i] = 0;
@@ -98,7 +98,7 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
 StationGfx GetTranslatedAirportTileID(StationGfx gfx)
 {
 	const AirportTileSpec *it = AirportTileSpec::Get(gfx);
-	return it->grf_prop.override == INVALID_AIRPORTTILE ? gfx : it->grf_prop.override;
+	return it->grf_prop.override_id == INVALID_AIRPORTTILE ? gfx : it->grf_prop.override_id;
 }
 
 /**
@@ -137,11 +137,11 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 
 	if (gfx < NEW_AIRPORTTILE_OFFSET) { // Does it belongs to an old type?
 		/* It is an old tile.  We have to see if it's been overridden */
-		if (ats->grf_prop.override == INVALID_AIRPORTTILE) { // has it been overridden?
+		if (ats->grf_prop.override_id == INVALID_AIRPORTTILE) { // has it been overridden?
 			return 0xFF << 8 | gfx; // no. Tag FF + the gfx id of that tile
 		}
 		/* Overridden */
-		const AirportTileSpec *tile_ovr = AirportTileSpec::Get(ats->grf_prop.override);
+		const AirportTileSpec *tile_ovr = AirportTileSpec::Get(ats->grf_prop.override_id);
 
 		if (tile_ovr->grf_prop.grfid == cur_grfid) {
 			return tile_ovr->grf_prop.local_id; // same grf file

@@ -394,7 +394,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 					GrfMsg(2, "IndustriesChangeInfo: Attempt to override new industry {} with industry id {}. Ignoring.", ovrid, id);
 					continue;
 				}
-				indsp->grf_prop.override = ovrid;
+				indsp->grf_prop.override_id = ovrid;
 				_industry_mngr.Add(id, _cur.grffile->grfid, ovrid);
 				break;
 			}

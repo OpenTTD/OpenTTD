@@ -66,7 +66,7 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
 		if (subst_id == AT_INVALID) return as;
 		as = &AirportSpec::specs[subst_id];
 	}
-	if (as->grf_prop.override != AT_INVALID) return &AirportSpec::specs[as->grf_prop.override];
+	if (as->grf_prop.override_id != AT_INVALID) return &AirportSpec::specs[as->grf_prop.override_id];
 	return as;
 }
 
@@ -151,7 +151,7 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 
 		if (this->entity_overrides[i] != as->grf_prop.local_id || this->grfid_overrides[i] != as->grf_prop.grfid) continue;
 
-		overridden_as->grf_prop.override = airport_id;
+		overridden_as->grf_prop.override_id = airport_id;
 		overridden_as->enabled = false;
 		this->entity_overrides[i] = this->invalid_id;
 		this->grfid_overrides[i] = 0;

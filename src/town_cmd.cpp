@@ -2797,7 +2797,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 	/* Generate a list of all possible houses that can be built. */
 	for (const auto &hs : HouseSpec::Specs()) {
 		/* Verify that the candidate house spec matches the current tile status */
-		if ((~hs.building_availability & bitmask) != 0 || !hs.enabled || hs.grf_prop.override != INVALID_HOUSE_ID) continue;
+		if ((~hs.building_availability & bitmask) != 0 || !hs.enabled || hs.grf_prop.override_id != INVALID_HOUSE_ID) continue;
 
 		/* Don't let these counters overflow. Global counters are 32bit, there will never be that many houses. */
 		if (hs.class_id != HOUSE_NO_CLASS) {
