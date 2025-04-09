@@ -2020,7 +2020,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :窗口数量上
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :设定窗口数量上限。超出此限值时游戏会自动关闭最早打开的窗口。已固定的窗口不受此项限制
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :关闭
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :禁用
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :最大视角放大倍数：{STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :画面的最大放大倍数，注意：提高放大倍数增加内存需求

@@ -2113,7 +2113,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο 
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Αριθμός μη μόνιμων ανοικτών παράθυρων πριν παλαιότερα παράθυρα κλείσουν αυτόματα για να κάνουν χώρα για τα νεότερα
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :απενεργοποιημένο
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Απενεργοποιημένο
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Μέγιστο επίπεδο μεγέθυνσης: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Το μέγιστο επίπεδο μεγέθυνσης στα παράθυρα προβολών. Σημειώστε ότι ενεργοποιώντας υψηλότερα επίπεδα μεγεθύνσεων αυξάνονται οι απαιτήσεις σε μνήμη

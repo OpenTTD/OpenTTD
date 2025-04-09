@@ -2021,7 +2021,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas abertas, que não estão fixadas, antes que as janelas antigas sejam automaticamente fechadas para liberar espaço para novas janelas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desativado
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Desativado
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível máximo de ampliação: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Limite de ampliação para visualizações. Níveis de ampliação muito grandes aumentam o uso de memória

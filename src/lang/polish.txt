@@ -2392,15 +2392,15 @@ STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pozioma pozycja
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Pozycja paska stanu: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Pozioma pozycja paska statusu na dole ekranu
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Promień przyciągania okna: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Odległość między okienkami zanim przesuwane okno zostanie automatycznie dosunięte do sąsiedniego okna
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Odległość między oknami, zanim przesuwane okno zostanie automatycznie wyrównane do sąsiedniego okna
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P "" e i}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Wyłączone
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksymalna liczba nie przyszpilonych okien: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Liczba nie przyklejonych okienek zanim stare okienka zostaną automatycznie zamknięte, by zrobić miejsce dla nowych
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksymalna liczba nieprzypiętych okien: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Liczba nieprzypiętych okien, zanim stare okna zostaną automatycznie zamknięte, aby zrobić miejsce dla nowych
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :wyłączone
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Wyłączone
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksymalne przybliżenie: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksymalne zbliżenie w dodatkowych oknach podglądu. Wyższa wartość oznacza większe zużycie pamięci

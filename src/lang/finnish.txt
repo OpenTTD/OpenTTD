@@ -2020,7 +2020,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Suurin sallittu
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Suurin sallittu ei-säilyvien ikkunoiden määrä ennen vanhojen ikkunoiden sulkemista uusien ikkunoiden tieltä
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :pois käytöstä
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Pois käytöstä
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Suurin sallittu suurennustaso: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Suurin mahdollinen lähennystaso näkymille. Huomioi, että suuret lähennystasot vaativat enemmän muistia
