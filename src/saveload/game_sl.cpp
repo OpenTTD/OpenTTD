@@ -113,7 +113,7 @@ struct GSDTChunkHandler : ChunkHandler {
 	}
 };
 
-extern std::shared_ptr<GameStrings> _current_data;
+extern std::shared_ptr<GameStrings> _current_gamestrings_data;
 
 static std::string _game_saveload_string;
 static uint32_t _game_saveload_strings;
@@ -159,21 +159,21 @@ struct GSTRChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_game_language_desc, _game_language_sl_compat);
 
-		_current_data = std::make_shared<GameStrings>();
+		_current_gamestrings_data = std::make_shared<GameStrings>();
 
 		while (SlIterateArray() != -1) {
 			LanguageStrings ls;
 			SlObject(&ls, slt);
-			_current_data->raw_strings.push_back(std::move(ls));
+			_current_gamestrings_data->raw_strings.push_back(std::move(ls));
 		}
 
 		/* If there were no strings in the savegame, set GameStrings to nullptr */
-		if (_current_data->raw_strings.empty()) {
-			_current_data.reset();
+		if (_current_gamestrings_data->raw_strings.empty()) {
+			_current_gamestrings_data.reset();
 			return;
 		}
 
-		_current_data->Compile();
+		_current_gamestrings_data->Compile();
 		ReconsiderGameScriptLanguage();
 	}
 
@@ -181,11 +181,11 @@ struct GSTRChunkHandler : ChunkHandler {
 	{
 		SlTableHeader(_game_language_desc);
 
-		if (_current_data == nullptr) return;
+		if (_current_gamestrings_data == nullptr) return;
 
-		for (uint i = 0; i < _current_data->raw_strings.size(); i++) {
+		for (uint i = 0; i < _current_gamestrings_data->raw_strings.size(); i++) {
 			SlSetArrayIndex(i);
-			SlObject(&_current_data->raw_strings[i], _game_language_desc);
+			SlObject(&_current_gamestrings_data->raw_strings[i], _game_language_desc);
 		}
 	}
 };
