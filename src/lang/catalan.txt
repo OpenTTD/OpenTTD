@@ -2021,7 +2021,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nombre màxim d
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Nombre de finestres no-enganxoses obertes abans que les finestres antigues es tanquin automàticament per fer lloc a les noves finestres
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desactivat
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Desactivat
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Zoom màxim d'apropament: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivell de zoom d'apropament màxim a les vistes. Un major nivell de zoom d'apropament incrementa les necessitats de memòria

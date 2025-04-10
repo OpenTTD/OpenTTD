@@ -1429,7 +1429,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo long
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o rato está na borda do mapa: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando ativo, os visualizadores começam a deslocar-se logo que o rato esteja no extremo da janela
 ###length 4
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desligado
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desativado
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Visualizador principal, só ecrã cheio
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Visualizador principal
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todos os visualizadores
@@ -2021,7 +2021,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas abertas não-coladas antes que as janelas antigas sejam automaticamente fechadas para dar lugar a novas janelas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desligado
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Desativado
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível maximo de ampliação: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :O nível máximo de zoom para visualizadores. Níveis máximos de zoom superiores aumenterão os requisitos de memória
