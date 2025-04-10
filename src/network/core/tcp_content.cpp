@@ -63,16 +63,16 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 	switch (this->type) {
 		default: NOT_REACHED();
 		case CONTENT_TYPE_AI:
-			tmp = AI::GetScannerInfo()->FindMainScript(this, true);
+			tmp = AI::GetScannerInfo()->FindMainScript(*this, true);
 			break;
 		case CONTENT_TYPE_AI_LIBRARY:
-			tmp = AI::GetScannerLibrary()->FindMainScript(this, true);
+			tmp = AI::GetScannerLibrary()->FindMainScript(*this, true);
 			break;
 		case CONTENT_TYPE_GAME:
-			tmp = Game::GetScannerInfo()->FindMainScript(this, true);
+			tmp = Game::GetScannerInfo()->FindMainScript(*this, true);
 			break;
 		case CONTENT_TYPE_GAME_LIBRARY:
-			tmp = Game::GetScannerLibrary()->FindMainScript(this, true);
+			tmp = Game::GetScannerLibrary()->FindMainScript(*this, true);
 			break;
 		case CONTENT_TYPE_NEWGRF: {
 			const GRFConfig *gc = FindGRFConfig(std::byteswap(this->unique_id), FGCM_EXACT, &this->md5sum);
@@ -80,17 +80,17 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 			break;
 		}
 		case CONTENT_TYPE_BASE_GRAPHICS:
-			tmp = TryGetBaseSetFile(this, true, BaseGraphics::GetAvailableSets());
+			tmp = TryGetBaseSetFile(*this, true, BaseGraphics::GetAvailableSets());
 			break;
 		case CONTENT_TYPE_BASE_SOUNDS:
-			tmp = TryGetBaseSetFile(this, true, BaseSounds::GetAvailableSets());
+			tmp = TryGetBaseSetFile(*this, true, BaseSounds::GetAvailableSets());
 			break;
 		case CONTENT_TYPE_BASE_MUSIC:
-			tmp = TryGetBaseSetFile(this, true, BaseMusic::GetAvailableSets());
+			tmp = TryGetBaseSetFile(*this, true, BaseMusic::GetAvailableSets());
 			break;
 		case CONTENT_TYPE_SCENARIO:
 		case CONTENT_TYPE_HEIGHTMAP:
-			tmp = FindScenario(this, true);
+			tmp = FindScenario(*this, true);
 			break;
 	}
 	if (tmp == nullptr) return std::nullopt;

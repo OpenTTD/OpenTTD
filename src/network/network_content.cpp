@@ -38,15 +38,15 @@
 
 #include "../safeguards.h"
 
-extern bool HasScenario(const ContentInfo *ci, bool md5sum);
+extern bool HasScenario(const ContentInfo &ci, bool md5sum);
 
 /** The client we use to connect to the server. */
 ClientNetworkContentSocketHandler _network_content_client;
 
 /** Wrapper function for the HasProc */
-static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
+static bool HasGRFConfig(const ContentInfo &ci, bool md5sum)
 {
-	return FindGRFConfig(std::byteswap(ci->unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci->md5sum : nullptr) != nullptr;
+	return FindGRFConfig(std::byteswap(ci.unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci.md5sum : nullptr) != nullptr;
 }
 
 /**
@@ -56,7 +56,7 @@ static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
  * @param md5sum also match the MD5 checksum?
  * @return true iff it's known
  */
-using HasContentProc = bool(const ContentInfo *ci, bool md5sum);
+using HasContentProc = bool(const ContentInfo &ci, bool md5sum);
 
 /**
  * Get the has-content check function for the given content type.
@@ -115,11 +115,11 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 
 	HasContentProc *proc = GetHasContentProcforContentType(ci->type);
 	if (proc != nullptr) {
-		if (proc(ci, true)) {
+		if (proc(*ci, true)) {
 			ci->state = ContentInfo::ALREADY_HERE;
 		} else {
 			ci->state = ContentInfo::UNSELECTED;
-			if (proc(ci, false)) ci->upgrade = true;
+			if (proc(*ci, false)) ci->upgrade = true;
 		}
 	} else {
 		ci->state = ContentInfo::UNSELECTED;
@@ -143,7 +143,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 			*ici = *ci;
 			delete ci;
 
-			this->OnReceiveContentInfo(ici);
+			this->OnReceiveContentInfo(*ici);
 			return true;
 		}
 	}
@@ -160,10 +160,10 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	ConstContentVector parents;
 	this->ReverseLookupTreeDependency(parents, ci);
 	for (const ContentInfo *ici : parents) {
-		this->CheckDependencyState(ici);
+		this->CheckDependencyState(*ici);
 	}
 
-	this->OnReceiveContentInfo(ci);
+	this->OnReceiveContentInfo(*ci);
 
 	return true;
 }
@@ -489,7 +489,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 			return false;
 		}
 
-		this->OnDownloadProgress(this->cur_info, (int)to_read);
+		this->OnDownloadProgress(*this->cur_info, (int)to_read);
 
 		if (to_read == 0) this->AfterDownload();
 	}
@@ -574,7 +574,7 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	this->http_response_index = -2;
 
 	if (this->cur_file.has_value()) {
-		this->OnDownloadProgress(this->cur_info, -1);
+		this->OnDownloadProgress(*this->cur_info, -1);
 
 		this->cur_file.reset();
 	}
@@ -617,7 +617,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 			this->OnFailure();
 		} else {
 			/* Just received the data. */
-			this->OnDownloadProgress(this->cur_info, (int)length);
+			this->OnDownloadProgress(*this->cur_info, (int)length);
 		}
 
 		/* Nothing more to do now. */
@@ -861,7 +861,7 @@ void ClientNetworkContentSocketHandler::Select(ContentID cid)
 	if (ci == nullptr || ci->state != ContentInfo::UNSELECTED) return;
 
 	ci->state = ContentInfo::SELECTED;
-	this->CheckDependencyState(ci);
+	this->CheckDependencyState(*ci);
 }
 
 /**
@@ -874,7 +874,7 @@ void ClientNetworkContentSocketHandler::Unselect(ContentID cid)
 	if (ci == nullptr || !ci->IsSelected()) return;
 
 	ci->state = ContentInfo::UNSELECTED;
-	this->CheckDependencyState(ci);
+	this->CheckDependencyState(*ci);
 }
 
 /** Select everything we can select */
@@ -883,7 +883,7 @@ void ClientNetworkContentSocketHandler::SelectAll()
 	for (ContentInfo *ci : this->infos) {
 		if (ci->state == ContentInfo::UNSELECTED) {
 			ci->state = ContentInfo::SELECTED;
-			this->CheckDependencyState(ci);
+			this->CheckDependencyState(*ci);
 		}
 	}
 }
@@ -894,7 +894,7 @@ void ClientNetworkContentSocketHandler::SelectUpgrade()
 	for (ContentInfo *ci : this->infos) {
 		if (ci->state == ContentInfo::UNSELECTED && ci->upgrade) {
 			ci->state = ContentInfo::SELECTED;
-			this->CheckDependencyState(ci);
+			this->CheckDependencyState(*ci);
 		}
 	}
 }
@@ -908,16 +908,16 @@ void ClientNetworkContentSocketHandler::UnselectAll()
 }
 
 /** Toggle the state of a content info and check its dependencies */
-void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *ci)
+void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo &ci)
 {
-	switch (ci->state) {
+	switch (ci.state) {
 		case ContentInfo::SELECTED:
 		case ContentInfo::AUTOSELECTED:
-			this->Unselect(ci->id);
+			this->Unselect(ci.id);
 			break;
 
 		case ContentInfo::UNSELECTED:
-			this->Select(ci->id);
+			this->Select(ci.id);
 			break;
 
 		default:
@@ -930,9 +930,9 @@ void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *c
  * @param parents list to store all parents in (is not cleared)
  * @param child   the child to search the parents' dependencies for
  */
-void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const
+void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo &child) const
 {
-	auto range = this->reverse_dependency_map.equal_range(child->id);
+	auto range = this->reverse_dependency_map.equal_range(child.id);
 
 	for (auto iter = range.first; iter != range.second; ++iter) {
 		parents.push_back(GetContent(iter->second));
@@ -954,7 +954,7 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
 	 * pointer gets invalid. So fall back to the indices. */
 	for (uint i = 0; i < tree.size(); i++) {
 		ConstContentVector parents;
-		this->ReverseLookupDependency(parents, tree[i]);
+		this->ReverseLookupDependency(parents, *tree[i]);
 
 		for (const ContentInfo *ci : parents) {
 			include(tree, ci);
@@ -966,25 +966,25 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
  * Check the dependencies (recursively) of this content info
  * @param ci the content info to check the dependencies of
  */
-void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *ci)
+void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &ci)
 {
-	if (ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) {
+	if (ci.IsSelected() || ci.state == ContentInfo::ALREADY_HERE) {
 		/* Selection is easy; just walk all children and set the
 		 * autoselected state. That way we can see what we automatically
 		 * selected and thus can unselect when a dependency is removed. */
-		for (auto &dependency : ci->dependencies) {
+		for (auto &dependency : ci.dependencies) {
 			ContentInfo *c = this->GetContent(dependency);
 			if (c == nullptr) {
 				this->DownloadContentInfo(dependency);
 			} else if (c->state == ContentInfo::UNSELECTED) {
 				c->state = ContentInfo::AUTOSELECTED;
-				this->CheckDependencyState(c);
+				this->CheckDependencyState(*c);
 			}
 		}
 		return;
 	}
 
-	if (ci->state != ContentInfo::UNSELECTED) return;
+	if (ci.state != ContentInfo::UNSELECTED) return;
 
 	/* For unselection we need to find the parents of us. We need to
 	 * unselect them. After that we unselect all children that we
@@ -998,7 +998,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *
 		this->Unselect(c->id);
 	}
 
-	for (auto &dependency : ci->dependencies) {
+	for (auto &dependency : ci.dependencies) {
 		const ContentInfo *c = this->GetContent(dependency);
 		if (c == nullptr) {
 			DownloadContentInfo(dependency);
@@ -1008,7 +1008,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *
 
 		/* Only unselect when WE are the only parent. */
 		parents.clear();
-		this->ReverseLookupDependency(parents, c);
+		this->ReverseLookupDependency(parents, *c);
 
 		/* First check whether anything depends on us */
 		int sel_count = 0;
@@ -1048,7 +1048,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *
 			if (parent->state == ContentInfo::AUTOSELECTED) this->Unselect(parent->id);
 		}
 		for (const ContentInfo *parent : parents) {
-			this->CheckDependencyState(this->GetContent(parent->id));
+			this->CheckDependencyState(*this->GetContent(parent->id));
 		}
 	}
 }
@@ -1084,7 +1084,7 @@ void ClientNetworkContentSocketHandler::OnDisconnect()
 	}
 }
 
-void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *ci)
+void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo &ci)
 {
 	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
 		ContentCallback *cb = this->callbacks[i];
@@ -1094,7 +1094,7 @@ void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *
 	}
 }
 
-void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo *ci, int bytes)
+void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo &ci, int bytes)
 {
 	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
 		ContentCallback *cb = this->callbacks[i];

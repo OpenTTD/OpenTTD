@@ -101,8 +101,8 @@ public:
 	static void ResetInstance();
 
 	/** Wrapper function for GameScanner::HasGame */
-	static bool HasGame(const struct ContentInfo *ci, bool md5sum);
-	static bool HasGameLibrary(const ContentInfo *ci, bool md5sum);
+	static bool HasGame(const ContentInfo &ci, bool md5sum);
+	static bool HasGameLibrary(const ContentInfo &ci, bool md5sum);
 	/** Gets the ScriptScanner instance that is used to find Game scripts */
 	static GameScannerInfo *GetScannerInfo();
 	/** Gets the ScriptScanner instance that is used to find Game Libraries */

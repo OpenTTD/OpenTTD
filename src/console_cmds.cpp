@@ -2128,14 +2128,14 @@ struct ConsoleContentCallback : public ContentCallback {
  * Outputs content state information to console
  * @param ci the content info
  */
-static void OutputContentState(const ContentInfo *const ci)
+static void OutputContentState(const ContentInfo &ci)
 {
 	static const char * const types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
 	static_assert(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
 	static const char * const states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
-	IConsolePrint(state_to_colour[ci->state], "{}, {}, {}, {}, {:08X}, {}", ci->id, types[ci->type - 1], states[ci->state], ci->name, ci->unique_id, FormatArrayAsHex(ci->md5sum));
+	IConsolePrint(state_to_colour[ci.state], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[ci.state], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
 DEF_CONSOLE_CMD(ConContent)
@@ -2173,7 +2173,7 @@ DEF_CONSOLE_CMD(ConContent)
 			IConsolePrint(CC_WHITE, "id, type, state, name");
 			for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 				if ((*iter)->state != ContentInfo::SELECTED && (*iter)->state != ContentInfo::AUTOSELECTED) continue;
-				OutputContentState(*iter);
+				OutputContentState(**iter);
 			}
 		} else if (StrEqualsIgnoreCase(argv[2], "all")) {
 			/* The intention of this function was that you could download
@@ -2206,7 +2206,7 @@ DEF_CONSOLE_CMD(ConContent)
 		IConsolePrint(CC_WHITE, "id, type, state, name");
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 			if (argc > 2 && !StrContainsIgnoreCase((*iter)->name, argv[2])) continue;
-			OutputContentState(*iter);
+			OutputContentState(**iter);
 		}
 		return true;
 	}
