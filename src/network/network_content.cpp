@@ -56,7 +56,29 @@ static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
  * @param md5sum also match the MD5 checksum?
  * @return true iff it's known
  */
-typedef bool (*HasProc)(const ContentInfo *ci, bool md5sum);
+using HasContentProc = bool(const ContentInfo *ci, bool md5sum);
+
+/**
+ * Get the has-content check function for the given content type.
+ * @param type Content type to get check function for.
+ * @return Check function pointer.
+ */
+static HasContentProc *GetHasContentProcforContentType(ContentType type)
+{
+	switch (type) {
+		case CONTENT_TYPE_NEWGRF: return HasGRFConfig;
+		case CONTENT_TYPE_BASE_GRAPHICS: return BaseGraphics::HasSet;
+		case CONTENT_TYPE_BASE_MUSIC: return BaseMusic::HasSet;
+		case CONTENT_TYPE_BASE_SOUNDS: return BaseSounds::HasSet;
+		case CONTENT_TYPE_AI: return AI::HasAI;
+		case CONTENT_TYPE_AI_LIBRARY: return AI::HasAILibrary;
+		case CONTENT_TYPE_GAME: return Game::HasGame;
+		case CONTENT_TYPE_GAME_LIBRARY: return Game::HasGameLibrary;
+		case CONTENT_TYPE_SCENARIO: return HasScenario;
+		case CONTENT_TYPE_HEIGHTMAP: return HasScenario;
+		default: return nullptr;
+	}
+}
 
 bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 {
@@ -91,50 +113,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 		return false;
 	}
 
-	/* Find the appropriate check function */
-	HasProc proc = nullptr;
-	switch (ci->type) {
-		case CONTENT_TYPE_NEWGRF:
-			proc = HasGRFConfig;
-			break;
-
-		case CONTENT_TYPE_BASE_GRAPHICS:
-			proc = BaseGraphics::HasSet;
-			break;
-
-		case CONTENT_TYPE_BASE_MUSIC:
-			proc = BaseMusic::HasSet;
-			break;
-
-		case CONTENT_TYPE_BASE_SOUNDS:
-			proc = BaseSounds::HasSet;
-			break;
-
-		case CONTENT_TYPE_AI:
-			proc = AI::HasAI; break;
-			break;
-
-		case CONTENT_TYPE_AI_LIBRARY:
-			proc = AI::HasAILibrary; break;
-			break;
-
-		case CONTENT_TYPE_GAME:
-			proc = Game::HasGame; break;
-			break;
-
-		case CONTENT_TYPE_GAME_LIBRARY:
-			proc = Game::HasGameLibrary; break;
-			break;
-
-		case CONTENT_TYPE_SCENARIO:
-		case CONTENT_TYPE_HEIGHTMAP:
-			proc = HasScenario;
-			break;
-
-		default:
-			break;
-	}
-
+	HasContentProc *proc = GetHasContentProcforContentType(ci->type);
 	if (proc != nullptr) {
 		if (proc(ci, true)) {
 			ci->state = ContentInfo::ALREADY_HERE;
