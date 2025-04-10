@@ -116,7 +116,7 @@ public:
 	void Cancel();
 
 	void RequestContentList(ContentType type);
-	void RequestContentList(uint count, const ContentID *content_ids);
+	void RequestContentList(ContentID content_id);
 	void RequestContentList(ContentVector *cv, bool send_md5sum = true);
 
 	void DownloadSelectedContent(uint &files, uint &bytes, bool fallback = false);

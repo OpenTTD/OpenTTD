@@ -232,32 +232,17 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 }
 
 /**
- * Request the content list for a given number of content IDs.
- * @param count The number of IDs to request.
- * @param content_ids The unique identifiers of the content to request information about.
+ * Request the content list for a given content ID.
+ * @param content_id The unique identifier of the content to request information about.
  */
-void ClientNetworkContentSocketHandler::RequestContentList(uint count, const ContentID *content_ids)
+void ClientNetworkContentSocketHandler::RequestContentList(ContentID content_id)
 {
 	this->Connect();
 
-	while (count > 0) {
-		/* We can "only" send a limited number of IDs in a single packet.
-		 * A packet begins with the packet size and a byte for the type.
-		 * Then this packet adds a uint16_t for the count in this packet.
-		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t));
-
-		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
-		p->Send_uint16(p_count);
-
-		for (uint i = 0; i < p_count; i++) {
-			p->Send_uint32(content_ids[i]);
-		}
-
-		this->SendPacket(std::move(p));
-		count -= p_count;
-		content_ids += p_count;
-	}
+	auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
+	p->Send_uint16(1); // Number of content IDs. We only ever send one.
+	p->Send_uint32(content_id);
+	this->SendPacket(std::move(p));
 }
 
 /**
@@ -855,7 +840,7 @@ void ClientNetworkContentSocketHandler::DownloadContentInfo(ContentID cid)
 	if (std::ranges::find(this->requested, cid) != this->requested.end()) return;
 
 	this->requested.push_back(cid);
-	this->RequestContentList(1, &cid);
+	this->RequestContentList(cid);
 }
 
 /**
