@@ -1517,13 +1517,13 @@ void ShowMissingContentWindow(const GRFConfigList &list)
 	for (const auto &c : list) {
 		if (c->status != GCS_NOT_FOUND && !c->flags.Test(GRFConfigFlag::Compatible)) continue;
 
-		ContentInfo *ci = new ContentInfo();
+		auto ci = std::make_unique<ContentInfo>();
 		ci->type = CONTENT_TYPE_NEWGRF;
 		ci->state = ContentInfo::DOES_NOT_EXIST;
 		ci->name = c->GetName();
 		ci->unique_id = std::byteswap(c->ident.grfid);
 		ci->md5sum = c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum;
-		cv.push_back(ci);
+		cv.push_back(std::move(ci));
 	}
 	ShowNetworkContentListWindow(cv.empty() ? nullptr : &cv, CONTENT_TYPE_NEWGRF);
 }
