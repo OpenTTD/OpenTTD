@@ -680,13 +680,13 @@ static ScenarioScanner _scanner;
  * @param md5sum Whether to look at the md5sum or the id.
  * @return The filename of the file, else \c nullptr.
  */
-const char *FindScenario(const ContentInfo *ci, bool md5sum)
+const char *FindScenario(const ContentInfo &ci, bool md5sum)
 {
 	_scanner.Scan(false);
 
 	for (ScenarioIdentifier &id : _scanner) {
-		if (md5sum ? (id.md5sum == ci->md5sum)
-		           : (id.scenid == ci->unique_id)) {
+		if (md5sum ? (id.md5sum == ci.md5sum)
+		           : (id.scenid == ci.unique_id)) {
 			return id.filename.c_str();
 		}
 	}
@@ -700,7 +700,7 @@ const char *FindScenario(const ContentInfo *ci, bool md5sum)
  * @param md5sum Whether to look at the md5sum or the id.
  * @return True iff we've got the scenario.
  */
-bool HasScenario(const ContentInfo *ci, bool md5sum)
+bool HasScenario(const ContentInfo &ci, bool md5sum)
 {
 	return (FindScenario(ci, md5sum) != nullptr);
 }

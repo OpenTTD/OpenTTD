@@ -42,14 +42,14 @@ struct ContentCallback {
 	 * We received a content info.
 	 * @param ci the content info
 	 */
-	virtual void OnReceiveContentInfo([[maybe_unused]] const ContentInfo *ci) {}
+	virtual void OnReceiveContentInfo([[maybe_unused]] const ContentInfo &ci) {}
 
 	/**
 	 * We have progress in the download of a file
 	 * @param ci the content info of the file
 	 * @param bytes the number of bytes downloaded since the previous call
 	 */
-	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo *ci, [[maybe_unused]] int bytes) {}
+	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo &ci, [[maybe_unused]] int bytes) {}
 
 	/**
 	 * We have finished downloading a file
@@ -90,8 +90,8 @@ protected:
 
 	void OnConnect(bool success) override;
 	void OnDisconnect() override;
-	void OnReceiveContentInfo(const ContentInfo *ci) override;
-	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;
+	void OnReceiveContentInfo(const ContentInfo &ci) override;
+	void OnDownloadProgress(const ContentInfo &ci, int bytes) override;
 	void OnDownloadComplete(ContentID cid) override;
 
 	void OnFailure() override;
@@ -126,11 +126,11 @@ public:
 	void SelectAll();
 	void SelectUpgrade();
 	void UnselectAll();
-	void ToggleSelectedState(const ContentInfo *ci);
+	void ToggleSelectedState(const ContentInfo &ci);
 
-	void ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const;
+	void ReverseLookupDependency(ConstContentVector &parents, const ContentInfo &child) const;
 	void ReverseLookupTreeDependency(ConstContentVector &tree, const ContentInfo *child) const;
-	void CheckDependencyState(const ContentInfo *ci);
+	void CheckDependencyState(const ContentInfo &ci);
 
 	/** Get the number of content items we know locally. */
 	uint Length() const { return (uint)this->infos.size(); }

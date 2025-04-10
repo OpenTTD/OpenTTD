@@ -211,7 +211,7 @@ public:
 	 * @param md5sum whether to check the MD5 checksum
 	 * @return true iff we have an set matching.
 	 */
-	static bool HasSet(const ContentInfo *ci, bool md5sum);
+	static bool HasSet(const ContentInfo &ci, bool md5sum);
 };
 
 /**
@@ -222,6 +222,6 @@ public:
  * @return The filename of the first file of the base set, or \c nullptr if there is no match.
  */
 template <class Tbase_set>
-const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s);
+const char *TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const Tbase_set *s);
 
 #endif /* BASE_MEDIA_BASE_H */

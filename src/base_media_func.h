@@ -319,25 +319,25 @@ template <class Tbase_set>
 
 #include "network/core/tcp_content_type.h"
 
-template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
+template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const Tbase_set *s)
 {
 	for (; s != nullptr; s = s->next) {
 		if (s->GetNumMissing() != 0) continue;
 
-		if (s->shortname != ci->unique_id) continue;
+		if (s->shortname != ci.unique_id) continue;
 		if (!md5sum) return s->files[0].filename.c_str();
 
 		MD5Hash md5;
 		for (const auto &file : s->files) {
 			md5 ^= file.hash;
 		}
-		if (md5 == ci->md5sum) return s->files[0].filename.c_str();
+		if (md5 == ci.md5sum) return s->files[0].filename.c_str();
 	}
 	return nullptr;
 }
 
 template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo *ci, bool md5sum)
+/* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo &ci, bool md5sum)
 {
 	return (TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::available_sets) != nullptr) ||
 			(TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets) != nullptr);
