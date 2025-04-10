@@ -410,9 +410,9 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 		bool all_available = true;
 
-		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
-			if ((*iter)->state == ContentInfo::DOES_NOT_EXIST) all_available = false;
-			this->content.push_back(*iter);
+		for (const ContentInfo &ci : _network_content_client.Info()) {
+			if (ci.state == ContentInfo::DOES_NOT_EXIST) all_available = false;
+			this->content.push_back(&ci);
 		}
 
 		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select && all_available);
@@ -732,13 +732,11 @@ public:
 			std::string buf;
 			for (auto &cid : this->selected->dependencies) {
 				/* Try to find the dependency */
-				ConstContentIterator iter = _network_content_client.Begin();
-				for (; iter != _network_content_client.End(); iter++) {
-					const ContentInfo *ci = *iter;
-					if (ci->id != cid) continue;
+				for (const ContentInfo &ci : _network_content_client.Info()) {
+					if (ci.id != cid) continue;
 
 					if (!buf.empty()) buf += list_separator;
-					buf += (*iter)->name;
+					buf += ci.name;
 					break;
 				}
 			}
@@ -1138,9 +1136,5 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 		GetEncodedString(STR_CONTENT_NO_ZLIB),
 		GetEncodedString(STR_CONTENT_NO_ZLIB_SUB),
 		WL_ERROR);
-	/* Connection failed... clean up the mess */
-	if (cv != nullptr) {
-		for (ContentInfo *ci : *cv) delete ci;
-	}
 #endif /* WITH_ZLIB */
 }

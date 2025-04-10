@@ -10,20 +10,16 @@
 #ifndef NETWORK_CONTENT_H
 #define NETWORK_CONTENT_H
 
+#include <ranges>
 #include "core/tcp_content.h"
 #include "core/http.h"
 #include <unordered_map>
 #include "../core/container_func.hpp"
 
 /** Vector with content info */
-typedef std::vector<ContentInfo *> ContentVector;
+using ContentVector = std::vector<std::unique_ptr<ContentInfo>>;
 /** Vector with constant content info */
-typedef std::vector<const ContentInfo *> ConstContentVector;
-
-/** Iterator for the content vector */
-typedef ContentInfo **ContentIterator;
-/** Iterator for the constant content vector */
-typedef const ContentInfo * const * ConstContentIterator;
+using ConstContentVector = std::vector<const ContentInfo *>;
 
 /** Callbacks for notifying others about incoming data */
 struct ContentCallback {
@@ -66,7 +62,7 @@ struct ContentCallback {
  */
 class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback, HTTPCallback {
 protected:
-	typedef std::vector<ContentID> ContentIDList; ///< List of content IDs to (possibly) select.
+	using ContentIDList = std::vector<ContentID>; ///< List of content IDs to (possibly) select.
 	std::vector<ContentCallback *> callbacks;     ///< Callbacks to notify "the world"
 	ContentIDList requested;                      ///< ContentIDs we already requested (so we don't do it again)
 	ContentVector infos;                          ///< All content info we received
@@ -75,7 +71,7 @@ protected:
 	int http_response_index;                      ///< Where we are, in the response, with handling it
 
 	std::optional<FileHandle> cur_file; ///< Currently downloaded file
-	ContentInfo *cur_info; ///< Information about the currently downloaded file
+	std::unique_ptr<ContentInfo> cur_info; ///< Information about the currently downloaded file
 	bool is_connecting;    ///< Whether we're connecting
 	bool is_cancelled;     ///< Whether the download has been cancelled
 	std::chrono::steady_clock::time_point last_activity;  ///< The last time there was network activity
@@ -132,14 +128,11 @@ public:
 	void ReverseLookupTreeDependency(ConstContentVector &tree, const ContentInfo *child) const;
 	void CheckDependencyState(const ContentInfo &ci);
 
-	/** Get the number of content items we know locally. */
-	uint Length() const { return (uint)this->infos.size(); }
-	/** Get the begin of the content inf iterator. */
-	ConstContentIterator Begin() const { return this->infos.data(); }
-	/** Get the nth position of the content inf iterator. */
-	ConstContentIterator Get(uint32_t index) const { return this->infos.data() + index; }
-	/** Get the end of the content inf iterator. */
-	ConstContentIterator End() const { return this->Begin() + this->Length(); }
+	/**
+	 * Get a read-only view of content info for iterating externally.
+	 * @return Read-only view of content info.
+	 */
+	auto Info() const { return this->infos | std::views::transform([](const auto &ci) -> const ContentInfo & { return *ci; }); }
 
 	void Clear();
 

@@ -2171,9 +2171,9 @@ DEF_CONSOLE_CMD(ConContent)
 		if (argc <= 2) {
 			/* List selected content */
 			IConsolePrint(CC_WHITE, "id, type, state, name");
-			for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
-				if ((*iter)->state != ContentInfo::SELECTED && (*iter)->state != ContentInfo::AUTOSELECTED) continue;
-				OutputContentState(**iter);
+			for (const ContentInfo &ci : _network_content_client.Info()) {
+				if (ci.state != ContentInfo::SELECTED && ci.state != ContentInfo::AUTOSELECTED) continue;
+				OutputContentState(ci);
 			}
 		} else if (StrEqualsIgnoreCase(argv[2], "all")) {
 			/* The intention of this function was that you could download
@@ -2204,9 +2204,9 @@ DEF_CONSOLE_CMD(ConContent)
 
 	if (StrEqualsIgnoreCase(argv[1], "state")) {
 		IConsolePrint(CC_WHITE, "id, type, state, name");
-		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
-			if (argc > 2 && !StrContainsIgnoreCase((*iter)->name, argv[2])) continue;
-			OutputContentState(**iter);
+		for (const ContentInfo &ci : _network_content_client.Info()) {
+			if (argc > 2 && !StrContainsIgnoreCase(ci.name, argv[2])) continue;
+			OutputContentState(ci);
 		}
 		return true;
 	}
