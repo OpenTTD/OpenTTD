@@ -823,17 +823,17 @@ static void MoveToNextNewsItem()
 /** Delete a news item from the queue */
 static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterator ni)
 {
-	bool updateCurrentNews = (_forced_news == ni || _current_news == ni);
-	bool updateStatusbarNews = (_statusbar_news == ni);
+	bool update_current_news = (_forced_news == ni || _current_news == ni);
+	bool update_statusbar_news = (_statusbar_news == ni);
 
-	if (updateCurrentNews) {
+	if (update_current_news) {
 		/* When we're the current news, go to the next older item first;
 		 * we just possibly made that the last news item. */
 		if (_current_news == ni) ++_current_news;
 		if (_forced_news == ni) _forced_news = std::end(_news);
 	}
 
-	if (updateStatusbarNews) {
+	if (update_statusbar_news) {
 		/* When we're the current news, go to the next older item first;
 		 * we just possibly made that the last news item. */
 		++_statusbar_news;
@@ -842,13 +842,13 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
 	/* Delete the news from the news queue. */
 	ni = _news.erase(ni);
 
-	if (updateCurrentNews) {
+	if (update_current_news) {
 		/* About to remove the currently forced item (shown as newspapers) ||
 		 * about to remove the currently displayed item (newspapers) */
 		MoveToNextNewsItem();
 	}
 
-	if (updateStatusbarNews) {
+	if (update_statusbar_news) {
 		/* About to remove the currently displayed item (ticker, or just a reminder) */
 		InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 		MoveToNextTickerItem();

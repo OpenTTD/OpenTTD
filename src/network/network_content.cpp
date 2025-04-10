@@ -327,7 +327,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
 
-	this->isCancelled = false;
+	this->is_cancelled = false;
 
 	if (fallback) {
 		this->DownloadSelectedContentFallback(content);
@@ -482,14 +482,14 @@ static inline ssize_t TransferOutFWrite(std::optional<FileHandle> &file, const c
 
 bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 {
-	if (!this->curFile.has_value()) {
-		delete this->curInfo;
+	if (!this->cur_file.has_value()) {
+		delete this->cur_info;
 		/* When we haven't opened a file this must be our first packet with metadata. */
-		this->curInfo = new ContentInfo;
-		this->curInfo->type     = (ContentType)p.Recv_uint8();
-		this->curInfo->id       = (ContentID)p.Recv_uint32();
-		this->curInfo->filesize = p.Recv_uint32();
-		this->curInfo->filename = p.Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
+		this->cur_info = new ContentInfo;
+		this->cur_info->type     = (ContentType)p.Recv_uint8();
+		this->cur_info->id       = (ContentID)p.Recv_uint32();
+		this->cur_info->filesize = p.Recv_uint32();
+		this->cur_info->filename = p.Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
 
 		if (!this->BeforeDownload()) {
 			this->CloseConnection();
@@ -497,22 +497,22 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 		}
 	} else {
 		/* We have a file opened, thus are downloading internal content */
-		size_t toRead = p.RemainingBytesToTransfer();
-		if (toRead != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, std::ref(this->curFile))) != toRead) {
+		size_t to_read = p.RemainingBytesToTransfer();
+		if (to_read != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, std::ref(this->cur_file))) != to_read) {
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(
 				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD),
 				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE),
 				WL_ERROR);
 			this->CloseConnection();
-			this->curFile.reset();
+			this->cur_file.reset();
 
 			return false;
 		}
 
-		this->OnDownloadProgress(this->curInfo, (int)toRead);
+		this->OnDownloadProgress(this->cur_info, (int)to_read);
 
-		if (toRead == 0) this->AfterDownload();
+		if (to_read == 0) this->AfterDownload();
 	}
 
 	return true;
@@ -524,16 +524,16 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
  */
 bool ClientNetworkContentSocketHandler::BeforeDownload()
 {
-	if (!this->curInfo->IsValid()) {
-		delete this->curInfo;
-		this->curInfo = nullptr;
+	if (!this->cur_info->IsValid()) {
+		delete this->cur_info;
+		this->cur_info = nullptr;
 		return false;
 	}
 
-	if (this->curInfo->filesize != 0) {
+	if (this->cur_info->filesize != 0) {
 		/* The filesize is > 0, so we are going to download it */
-		std::string filename = GetFullFilename(this->curInfo, true);
-		if (filename.empty() || !(this->curFile = FileHandle::Open(filename, "wb")).has_value()) {
+		std::string filename = GetFullFilename(this->cur_info, true);
+		if (filename.empty() || !(this->cur_file = FileHandle::Open(filename, "wb")).has_value()) {
 			/* Unless that fails of course... */
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(
@@ -554,19 +554,19 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 {
 	/* We read nothing; that's our marker for end-of-stream.
 	 * Now gunzip the tar and make it known. */
-	this->curFile.reset();
+	this->cur_file.reset();
 
-	if (GunzipFile(this->curInfo)) {
-		FioRemove(GetFullFilename(this->curInfo, true));
+	if (GunzipFile(this->cur_info)) {
+		FioRemove(GetFullFilename(this->cur_info, true));
 
-		Subdirectory sd = GetContentInfoSubDir(this->curInfo->type);
+		Subdirectory sd = GetContentInfoSubDir(this->cur_info->type);
 		if (sd == NO_DIRECTORY) NOT_REACHED();
 
 		TarScanner ts;
-		std::string fname = GetFullFilename(this->curInfo, false);
+		std::string fname = GetFullFilename(this->cur_info, false);
 		ts.AddFile(sd, fname);
 
-		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
+		if (this->cur_info->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
 			ExtractTar(fname, BASESET_DIR);
 			FioRemove(fname);
@@ -576,7 +576,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 		EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
 #endif
 
-		this->OnDownloadComplete(this->curInfo->id);
+		this->OnDownloadComplete(this->cur_info->id);
 	} else {
 		ShowErrorMessage(GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_EXTRACT), {}, WL_ERROR);
 	}
@@ -584,7 +584,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 bool ClientNetworkContentSocketHandler::IsCancelled() const
 {
-	return this->isCancelled;
+	return this->is_cancelled;
 }
 
 /* Also called to just clean up the mess. */
@@ -594,14 +594,14 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	this->http_response.shrink_to_fit();
 	this->http_response_index = -2;
 
-	if (this->curFile.has_value()) {
-		this->OnDownloadProgress(this->curInfo, -1);
+	if (this->cur_file.has_value()) {
+		this->OnDownloadProgress(this->cur_info, -1);
 
-		this->curFile.reset();
+		this->cur_file.reset();
 	}
 
 	/* If we fail, download the rest via the 'old' system. */
-	if (!this->isCancelled) {
+	if (!this->is_cancelled) {
 		uint files, bytes;
 
 		this->DownloadSelectedContent(files, bytes, true);
@@ -633,19 +633,19 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 
 	if (data != nullptr) {
 		/* We have data, so write it to the file. */
-		if (fwrite(data.get(), 1, length, *this->curFile) != length) {
+		if (fwrite(data.get(), 1, length, *this->cur_file) != length) {
 			/* Writing failed somehow, let try via the old method. */
 			this->OnFailure();
 		} else {
 			/* Just received the data. */
-			this->OnDownloadProgress(this->curInfo, (int)length);
+			this->OnDownloadProgress(this->cur_info, (int)length);
 		}
 
 		/* Nothing more to do now. */
 		return;
 	}
 
-	if (this->curFile.has_value()) {
+	if (this->cur_file.has_value()) {
 		/* We've finished downloading a file. */
 		this->AfterDownload();
 	}
@@ -658,9 +658,9 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		return;
 	}
 
-	delete this->curInfo;
+	delete this->cur_info;
 	/* When we haven't opened a file this must be our first packet with metadata. */
-	this->curInfo = new ContentInfo;
+	this->cur_info = new ContentInfo;
 
 /** Check p for not being null and return calling OnFailure if that's not the case. */
 #define check_not_null(p) { if ((p) == nullptr) { this->OnFailure(); return; } }
@@ -678,19 +678,19 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		/* Read the ID */
 		p = strchr(str, ',');
 		check_and_terminate(p);
-		this->curInfo->id = (ContentID)atoi(str);
+		this->cur_info->id = (ContentID)atoi(str);
 
 		/* Read the type */
 		str = p + 1;
 		p = strchr(str, ',');
 		check_and_terminate(p);
-		this->curInfo->type = (ContentType)atoi(str);
+		this->cur_info->type = (ContentType)atoi(str);
 
 		/* Read the file size */
 		str = p + 1;
 		p = strchr(str, ',');
 		check_and_terminate(p);
-		this->curInfo->filesize = atoi(str);
+		this->cur_info->filesize = atoi(str);
 
 		/* Read the URL */
 		str = p + 1;
@@ -720,7 +720,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		}
 
 		/* Copy the string, without extension, to the filename. */
-		this->curInfo->filename = std::move(filename);
+		this->cur_info->filename = std::move(filename);
 
 		/* Request the next file. */
 		if (!this->BeforeDownload()) {
@@ -742,18 +742,18 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	NetworkContentSocketHandler(),
 	http_response_index(-2),
-	curFile(std::nullopt),
-	curInfo(nullptr),
-	isConnecting(false),
-	isCancelled(false)
+	cur_file(std::nullopt),
+	cur_info(nullptr),
+	is_connecting(false),
+	is_cancelled(false)
 {
-	this->lastActivity = std::chrono::steady_clock::now();
+	this->last_activity = std::chrono::steady_clock::now();
 }
 
 /** Clear up the mess ;) */
 ClientNetworkContentSocketHandler::~ClientNetworkContentSocketHandler()
 {
-	delete this->curInfo;
+	delete this->cur_info;
 
 	for (ContentInfo *ci : this->infos) delete ci;
 }
@@ -769,15 +769,15 @@ public:
 
 	void OnFailure() override
 	{
-		_network_content_client.isConnecting = false;
+		_network_content_client.is_connecting = false;
 		_network_content_client.OnConnect(false);
 	}
 
 	void OnConnect(SOCKET s) override
 	{
 		assert(_network_content_client.sock == INVALID_SOCKET);
-		_network_content_client.lastActivity = std::chrono::steady_clock::now();
-		_network_content_client.isConnecting = false;
+		_network_content_client.last_activity = std::chrono::steady_clock::now();
+		_network_content_client.is_connecting = false;
 		_network_content_client.sock = s;
 		_network_content_client.Reopen();
 		_network_content_client.OnConnect(true);
@@ -789,10 +789,10 @@ public:
  */
 void ClientNetworkContentSocketHandler::Connect()
 {
-	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
+	if (this->sock != INVALID_SOCKET || this->is_connecting) return;
 
-	this->isCancelled = false;
-	this->isConnecting = true;
+	this->is_cancelled = false;
+	this->is_connecting = true;
 
 	TCPConnecter::Create<NetworkContentConnecter>(NetworkContentServerConnectionString());
 }
@@ -817,7 +817,7 @@ NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool)
  */
 void ClientNetworkContentSocketHandler::Cancel(void)
 {
-	this->isCancelled = true;
+	this->is_cancelled = true;
 	this->CloseConnection();
 }
 
@@ -827,10 +827,10 @@ void ClientNetworkContentSocketHandler::Cancel(void)
  */
 void ClientNetworkContentSocketHandler::SendReceive()
 {
-	if (this->sock == INVALID_SOCKET || this->isConnecting) return;
+	if (this->sock == INVALID_SOCKET || this->is_connecting) return;
 
 	/* Close the connection to the content server after inactivity; there can still be downloads pending via HTTP. */
-	if (std::chrono::steady_clock::now() > this->lastActivity + IDLE_TIMEOUT) {
+	if (std::chrono::steady_clock::now() > this->last_activity + IDLE_TIMEOUT) {
 		this->CloseConnection();
 		return;
 	}
@@ -838,7 +838,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 	if (this->CanSendReceive()) {
 		if (this->ReceivePackets()) {
 			/* Only update activity once a packet is received, instead of every time we try it. */
-			this->lastActivity = std::chrono::steady_clock::now();
+			this->last_activity = std::chrono::steady_clock::now();
 		}
 	}
 

@@ -168,8 +168,8 @@ static void AddCustomRefreshRates()
 	_refresh_rates.insert(_settings_client.gui.refresh_rate);
 
 	/* Add all the refresh rates of all monitors connected to the machine.  */
-	std::vector<int> monitorRates = VideoDriver::GetInstance()->GetListOfMonitorRefreshRates();
-	std::copy(monitorRates.begin(), monitorRates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
+	std::vector<int> monitor_rates = VideoDriver::GetInstance()->GetListOfMonitorRefreshRates();
+	std::copy(monitor_rates.begin(), monitor_rates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
 }
 
 static const int SCALE_NMARKS = (MAX_INTERFACE_SCALE - MIN_INTERFACE_SCALE) / 25 + 1; // Show marks at 25% increments

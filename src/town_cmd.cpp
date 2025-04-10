@@ -2813,7 +2813,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 		probs.emplace_back(hs.Index(), cur_prob);
 	}
 
-	TileIndex baseTile = tile;
+	TileIndex base_tile = tile;
 
 	while (probability_max > 0) {
 		/* Building a multitile building can change the location of tile.
@@ -2821,7 +2821,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile)
 		 * its northern tile would be elsewhere. However, if the callback
 		 * fails we would be basing further work from the changed tile.
 		 * So a next 1x1 tile building could be built on the wrong tile. */
-		tile = baseTile;
+		tile = base_tile;
 
 		uint r = RandomRange(probability_max);
 		uint i;

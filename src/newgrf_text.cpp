@@ -73,7 +73,7 @@ struct GRFTextEntry {
 
 
 static ReferenceThroughBaseContainer<std::vector<GRFTextEntry>> _grf_text;
-static uint8_t _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
+static uint8_t _current_lang_id = GRFLX_ENGLISH;  ///< by default, english is used.
 
 /**
  * Get the mapping from the NewGRF supplied ID to OpenTTD's internal ID.
@@ -616,7 +616,7 @@ std::optional<std::string_view> GetGRFStringFromGRFText(const GRFTextList &text_
 
 	/* Search the list of lang-strings of this stringid for current lang */
 	for (const auto &text : text_list) {
-		if (text.langid == _currentLangID) return text.text;
+		if (text.langid == _current_lang_id) return text.text;
 
 		/* If the current string is English or American, set it as the
 		 * fallback language if the specific language isn't available. */
@@ -665,13 +665,13 @@ std::string_view GetGRFStringPtr(StringIndexInTab stringid)
  */
 void SetCurrentGrfLangID(uint8_t language_id)
 {
-	_currentLangID = language_id;
+	_current_lang_id = language_id;
 }
 
 bool CheckGrfLangID(uint8_t lang_id, uint8_t grf_version)
 {
 	if (grf_version < 7) {
-		switch (_currentLangID) {
+		switch (_current_lang_id) {
 			case GRFLX_GERMAN:  return (lang_id & GRFLB_GERMAN)  != 0;
 			case GRFLX_FRENCH:  return (lang_id & GRFLB_FRENCH)  != 0;
 			case GRFLX_SPANISH: return (lang_id & GRFLB_SPANISH) != 0;
@@ -679,7 +679,7 @@ bool CheckGrfLangID(uint8_t lang_id, uint8_t grf_version)
 		}
 	}
 
-	return (lang_id == _currentLangID || lang_id == GRFLX_UNSPECIFIED);
+	return (lang_id == _current_lang_id || lang_id == GRFLX_UNSPECIFIED);
 }
 
 /**

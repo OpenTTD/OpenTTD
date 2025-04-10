@@ -40,7 +40,7 @@ AIInstance::AIInstance() :
 
 void AIInstance::Initialize(AIInfo *info)
 {
-	this->versionAPI = info->GetAPIVersion();
+	this->api_version = info->GetAPIVersion();
 
 	/* Register the AIController (including the "import" command) */
 	SQAIController_Register(this->engine);

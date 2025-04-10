@@ -2615,9 +2615,9 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 		return CommandCost();
 	}
 
-	ClosestDepot closestDepot = this->FindClosestDepot();
+	ClosestDepot closest_depot = this->FindClosestDepot();
 	static const StringID no_depot[] = {STR_ERROR_UNABLE_TO_FIND_ROUTE_TO, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT, STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR};
-	if (!closestDepot.found) return CommandCost(no_depot[this->type]);
+	if (!closest_depot.found) return CommandCost(no_depot[this->type]);
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (this->current_order.IsType(OT_LOADING)) this->LeaveStation();
@@ -2627,19 +2627,19 @@ CommandCost Vehicle::SendToDepot(DoCommandFlags flags, DepotCommandFlags command
 			SetBit(gv_flags, GVF_SUPPRESS_IMPLICIT_ORDERS);
 		}
 
-		this->SetDestTile(closestDepot.location);
-		this->current_order.MakeGoToDepot(closestDepot.destination.ToDepotID(), ODTF_MANUAL);
+		this->SetDestTile(closest_depot.location);
+		this->current_order.MakeGoToDepot(closest_depot.destination.ToDepotID(), ODTF_MANUAL);
 		if (!command.Test(DepotCommandFlag::Service)) this->current_order.SetDepotActionType(ODATFB_HALT);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
 
 		/* If there is no depot in front and the train is not already reversing, reverse automatically (trains only) */
-		if (this->type == VEH_TRAIN && (closestDepot.reverse ^ HasBit(Train::From(this)->flags, VRF_REVERSING))) {
+		if (this->type == VEH_TRAIN && (closest_depot.reverse ^ HasBit(Train::From(this)->flags, VRF_REVERSING))) {
 			Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(DoCommandFlag::Execute, this->index, false);
 		}
 
 		if (this->type == VEH_AIRCRAFT) {
 			Aircraft *a = Aircraft::From(this);
-			if (a->state == FLYING && a->targetairport != closestDepot.destination) {
+			if (a->state == FLYING && a->targetairport != closest_depot.destination) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
 				AircraftNextAirportPos_and_Order(a);
 			}
