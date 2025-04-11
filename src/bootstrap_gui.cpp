@@ -273,10 +273,10 @@ public:
 		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
 	}
 
-	void OnReceiveContentInfo(const ContentInfo *ci) override
+	void OnReceiveContentInfo(const ContentInfo &ci) override
 	{
 		/* And once the meta data is received, start downloading it. */
-		_network_content_client.Select(ci->id);
+		_network_content_client.Select(ci.id);
 		new BootstrapContentDownloadStatusWindow();
 		this->Close();
 	}
@@ -320,19 +320,19 @@ public:
 		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
 	}
 
-	void OnReceiveContentInfo(const ContentInfo *ci) override
+	void OnReceiveContentInfo(const ContentInfo &ci) override
 	{
 		if (this->downloading) return;
 
 		/* And once the metadata is received, start downloading it. */
-		_network_content_client.Select(ci->id);
+		_network_content_client.Select(ci.id);
 		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
 		this->downloading = true;
 
 		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
 	}
 
-	void OnDownloadProgress(const ContentInfo *, int bytes) override
+	void OnDownloadProgress(const ContentInfo &, int bytes) override
 	{
 		/* A negative value means we are resetting; for example, when retrying or using a fallback. */
 		if (bytes < 0) {

@@ -35,7 +35,7 @@ public:
 	void Close([[maybe_unused]] int data = 0) override;
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
-	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;
+	void OnDownloadProgress(const ContentInfo &ci, int bytes) override;
 };
 
 void BuildContentTypeStringList();

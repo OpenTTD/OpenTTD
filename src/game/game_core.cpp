@@ -242,12 +242,12 @@
  * @param md5sum whether to check the MD5 checksum
  * @return true iff we have an Game (library) matching.
  */
-/* static */ bool Game::HasGame(const ContentInfo *ci, bool md5sum)
+/* static */ bool Game::HasGame(const ContentInfo &ci, bool md5sum)
 {
 	return Game::scanner_info->HasScript(ci, md5sum);
 }
 
-/* static */ bool Game::HasGameLibrary(const ContentInfo *ci, bool md5sum)
+/* static */ bool Game::HasGameLibrary(const ContentInfo &ci, bool md5sum)
 {
 	return Game::scanner_library->HasScript(ci, md5sum);
 }

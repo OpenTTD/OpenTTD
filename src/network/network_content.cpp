@@ -38,15 +38,15 @@
 
 #include "../safeguards.h"
 
-extern bool HasScenario(const ContentInfo *ci, bool md5sum);
+extern bool HasScenario(const ContentInfo &ci, bool md5sum);
 
 /** The client we use to connect to the server. */
 ClientNetworkContentSocketHandler _network_content_client;
 
 /** Wrapper function for the HasProc */
-static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
+static bool HasGRFConfig(const ContentInfo &ci, bool md5sum)
 {
-	return FindGRFConfig(std::byteswap(ci->unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci->md5sum : nullptr) != nullptr;
+	return FindGRFConfig(std::byteswap(ci.unique_id), md5sum ? FGCM_EXACT : FGCM_ANY, md5sum ? &ci.md5sum : nullptr) != nullptr;
 }
 
 /**
@@ -56,7 +56,7 @@ static bool HasGRFConfig(const ContentInfo *ci, bool md5sum)
  * @param md5sum also match the MD5 checksum?
  * @return true iff it's known
  */
-using HasContentProc = bool(const ContentInfo *ci, bool md5sum);
+using HasContentProc = bool(const ContentInfo &ci, bool md5sum);
 
 /**
  * Get the has-content check function for the given content type.
@@ -82,7 +82,7 @@ static HasContentProc *GetHasContentProcforContentType(ContentType type)
 
 bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 {
-	ContentInfo *ci = new ContentInfo();
+	auto ci = std::make_unique<ContentInfo>();
 	ci->type     = (ContentType)p.Recv_uint8();
 	ci->id       = (ContentID)p.Recv_uint32();
 	ci->filesize = p.Recv_uint32();
@@ -108,18 +108,17 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	for (uint i = 0; i < tag_count; i++) ci->tags.push_back(p.Recv_string(NETWORK_CONTENT_TAG_LENGTH));
 
 	if (!ci->IsValid()) {
-		delete ci;
 		this->CloseConnection();
 		return false;
 	}
 
 	HasContentProc *proc = GetHasContentProcforContentType(ci->type);
 	if (proc != nullptr) {
-		if (proc(ci, true)) {
+		if (proc(*ci, true)) {
 			ci->state = ContentInfo::ALREADY_HERE;
 		} else {
 			ci->state = ContentInfo::UNSELECTED;
-			if (proc(ci, false)) ci->upgrade = true;
+			if (proc(*ci, false)) ci->upgrade = true;
 		}
 	} else {
 		ci->state = ContentInfo::UNSELECTED;
@@ -129,7 +128,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	if (ci->state == ContentInfo::UNSELECTED && ci->filesize == 0) ci->state = ContentInfo::DOES_NOT_EXIST;
 
 	/* Do we already have a stub for this? */
-	for (ContentInfo *ici : this->infos) {
+	for (const auto &ici : this->infos) {
 		if (ici->type == ci->type && ici->unique_id == ci->unique_id && ci->md5sum == ici->md5sum) {
 			/* Preserve the name if possible */
 			if (ci->name.empty()) ci->name = ici->name;
@@ -141,29 +140,27 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 			 * we (just) already preserved.
 			 */
 			*ici = *ci;
-			delete ci;
 
-			this->OnReceiveContentInfo(ici);
+			this->OnReceiveContentInfo(*ici);
 			return true;
 		}
 	}
 
 	/* Missing content info? Don't list it */
 	if (ci->filesize == 0) {
-		delete ci;
 		return true;
 	}
 
-	this->infos.push_back(ci);
+	ContentInfo *info = this->infos.emplace_back(std::move(ci)).get();
 
 	/* Incoming data means that we might need to reconsider dependencies */
 	ConstContentVector parents;
-	this->ReverseLookupTreeDependency(parents, ci);
+	this->ReverseLookupTreeDependency(parents, info);
 	for (const ContentInfo *ici : parents) {
-		this->CheckDependencyState(ici);
+		this->CheckDependencyState(*ici);
 	}
 
-	this->OnReceiveContentInfo(ci);
+	this->OnReceiveContentInfo(*info);
 
 	return true;
 }
@@ -257,7 +254,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	auto p = std::make_unique<Packet>(this, send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
 	p->Send_uint8((uint8_t)cv->size());
 
-	for (const ContentInfo *ci : *cv) {
+	for (const auto &ci : *cv) {
 		p->Send_uint8((uint8_t)ci->type);
 		p->Send_uint32(ci->unique_id);
 		if (!send_md5sum) continue;
@@ -266,9 +263,9 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 
 	this->SendPacket(std::move(p));
 
-	for (ContentInfo *ci : *cv) {
+	for (auto &ci : *cv) {
 		bool found = false;
-		for (ContentInfo *ci2 : this->infos) {
+		for (const auto &ci2 : this->infos) {
 			if (ci->type == ci2->type && ci->unique_id == ci2->unique_id &&
 					(!send_md5sum || ci->md5sum == ci2->md5sum)) {
 				found = true;
@@ -276,9 +273,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 			}
 		}
 		if (!found) {
-			this->infos.push_back(ci);
-		} else {
-			delete ci;
+			this->infos.push_back(std::move(ci));
 		}
 	}
 }
@@ -294,7 +289,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 	bytes = 0;
 
 	ContentIDList content;
-	for (const ContentInfo *ci : this->infos) {
+	for (const auto &ci : this->infos) {
 		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
 
 		content.push_back(ci->id);
@@ -368,13 +363,13 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
  * @return a statically allocated buffer with the filename or
  *         nullptr when no filename could be made.
  */
-static std::string GetFullFilename(const ContentInfo *ci, bool compressed)
+static std::string GetFullFilename(const ContentInfo &ci, bool compressed)
 {
-	Subdirectory dir = GetContentInfoSubDir(ci->type);
+	Subdirectory dir = GetContentInfoSubDir(ci.type);
 	if (dir == NO_DIRECTORY) return {};
 
 	std::string buf = FioGetDirectory(SP_AUTODOWNLOAD_DIR, dir);
-	buf += ci->filename;
+	buf += ci.filename;
 	buf += compressed ? ".tar.gz" : ".tar";
 
 	return buf;
@@ -385,7 +380,7 @@ static std::string GetFullFilename(const ContentInfo *ci, bool compressed)
  * @param ci container with filename
  * @return true if the gunzip completed
  */
-static bool GunzipFile(const ContentInfo *ci)
+static bool GunzipFile(const ContentInfo &ci)
 {
 #if defined(WITH_ZLIB)
 	bool ret = true;
@@ -462,9 +457,8 @@ static inline ssize_t TransferOutFWrite(std::optional<FileHandle> &file, const c
 bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 {
 	if (!this->cur_file.has_value()) {
-		delete this->cur_info;
 		/* When we haven't opened a file this must be our first packet with metadata. */
-		this->cur_info = new ContentInfo;
+		this->cur_info = std::make_unique<ContentInfo>();
 		this->cur_info->type     = (ContentType)p.Recv_uint8();
 		this->cur_info->id       = (ContentID)p.Recv_uint32();
 		this->cur_info->filesize = p.Recv_uint32();
@@ -489,7 +483,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 			return false;
 		}
 
-		this->OnDownloadProgress(this->cur_info, (int)to_read);
+		this->OnDownloadProgress(*this->cur_info, (int)to_read);
 
 		if (to_read == 0) this->AfterDownload();
 	}
@@ -504,14 +498,13 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 bool ClientNetworkContentSocketHandler::BeforeDownload()
 {
 	if (!this->cur_info->IsValid()) {
-		delete this->cur_info;
-		this->cur_info = nullptr;
+		this->cur_info.reset();
 		return false;
 	}
 
 	if (this->cur_info->filesize != 0) {
 		/* The filesize is > 0, so we are going to download it */
-		std::string filename = GetFullFilename(this->cur_info, true);
+		std::string filename = GetFullFilename(*this->cur_info, true);
 		if (filename.empty() || !(this->cur_file = FileHandle::Open(filename, "wb")).has_value()) {
 			/* Unless that fails of course... */
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
@@ -535,14 +528,14 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	 * Now gunzip the tar and make it known. */
 	this->cur_file.reset();
 
-	if (GunzipFile(this->cur_info)) {
-		FioRemove(GetFullFilename(this->cur_info, true));
+	if (GunzipFile(*this->cur_info)) {
+		FioRemove(GetFullFilename(*this->cur_info, true));
 
 		Subdirectory sd = GetContentInfoSubDir(this->cur_info->type);
 		if (sd == NO_DIRECTORY) NOT_REACHED();
 
 		TarScanner ts;
-		std::string fname = GetFullFilename(this->cur_info, false);
+		std::string fname = GetFullFilename(*this->cur_info, false);
 		ts.AddFile(sd, fname);
 
 		if (this->cur_info->type == CONTENT_TYPE_BASE_MUSIC) {
@@ -574,7 +567,7 @@ void ClientNetworkContentSocketHandler::OnFailure()
 	this->http_response_index = -2;
 
 	if (this->cur_file.has_value()) {
-		this->OnDownloadProgress(this->cur_info, -1);
+		this->OnDownloadProgress(*this->cur_info, -1);
 
 		this->cur_file.reset();
 	}
@@ -617,7 +610,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 			this->OnFailure();
 		} else {
 			/* Just received the data. */
-			this->OnDownloadProgress(this->cur_info, (int)length);
+			this->OnDownloadProgress(*this->cur_info, (int)length);
 		}
 
 		/* Nothing more to do now. */
@@ -637,9 +630,8 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 		return;
 	}
 
-	delete this->cur_info;
 	/* When we haven't opened a file this must be our first packet with metadata. */
-	this->cur_info = new ContentInfo;
+	this->cur_info = std::make_unique<ContentInfo>();
 
 /** Check p for not being null and return calling OnFailure if that's not the case. */
 #define check_not_null(p) { if ((p) == nullptr) { this->OnFailure(); return; } }
@@ -713,28 +705,6 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 
 #undef check
 #undef check_and_terminate
-}
-
-/**
- * Create a socket handler to handle the connection.
- */
-ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
-	NetworkContentSocketHandler(),
-	http_response_index(-2),
-	cur_file(std::nullopt),
-	cur_info(nullptr),
-	is_connecting(false),
-	is_cancelled(false)
-{
-	this->last_activity = std::chrono::steady_clock::now();
-}
-
-/** Clear up the mess ;) */
-ClientNetworkContentSocketHandler::~ClientNetworkContentSocketHandler()
-{
-	delete this->cur_info;
-
-	for (ContentInfo *ci : this->infos) delete ci;
 }
 
 /** Connect to the content server. */
@@ -844,8 +814,8 @@ void ClientNetworkContentSocketHandler::DownloadContentInfo(ContentID cid)
  */
 ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid) const
 {
-	for (ContentInfo *ci : this->infos) {
-		if (ci->id == cid) return ci;
+	for (const auto &ci : this->infos) {
+		if (ci->id == cid) return ci.get();
 	}
 	return nullptr;
 }
@@ -861,7 +831,7 @@ void ClientNetworkContentSocketHandler::Select(ContentID cid)
 	if (ci == nullptr || ci->state != ContentInfo::UNSELECTED) return;
 
 	ci->state = ContentInfo::SELECTED;
-	this->CheckDependencyState(ci);
+	this->CheckDependencyState(*ci);
 }
 
 /**
@@ -874,16 +844,16 @@ void ClientNetworkContentSocketHandler::Unselect(ContentID cid)
 	if (ci == nullptr || !ci->IsSelected()) return;
 
 	ci->state = ContentInfo::UNSELECTED;
-	this->CheckDependencyState(ci);
+	this->CheckDependencyState(*ci);
 }
 
 /** Select everything we can select */
 void ClientNetworkContentSocketHandler::SelectAll()
 {
-	for (ContentInfo *ci : this->infos) {
+	for (const auto &ci : this->infos) {
 		if (ci->state == ContentInfo::UNSELECTED) {
 			ci->state = ContentInfo::SELECTED;
-			this->CheckDependencyState(ci);
+			this->CheckDependencyState(*ci);
 		}
 	}
 }
@@ -891,10 +861,10 @@ void ClientNetworkContentSocketHandler::SelectAll()
 /** Select everything that's an update for something we've got */
 void ClientNetworkContentSocketHandler::SelectUpgrade()
 {
-	for (ContentInfo *ci : this->infos) {
+	for (const auto &ci : this->infos) {
 		if (ci->state == ContentInfo::UNSELECTED && ci->upgrade) {
 			ci->state = ContentInfo::SELECTED;
-			this->CheckDependencyState(ci);
+			this->CheckDependencyState(*ci);
 		}
 	}
 }
@@ -902,22 +872,22 @@ void ClientNetworkContentSocketHandler::SelectUpgrade()
 /** Unselect everything that we've not downloaded so far. */
 void ClientNetworkContentSocketHandler::UnselectAll()
 {
-	for (ContentInfo *ci : this->infos) {
+	for (const auto &ci : this->infos) {
 		if (ci->IsSelected() && ci->state != ContentInfo::ALREADY_HERE) ci->state = ContentInfo::UNSELECTED;
 	}
 }
 
 /** Toggle the state of a content info and check its dependencies */
-void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *ci)
+void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo &ci)
 {
-	switch (ci->state) {
+	switch (ci.state) {
 		case ContentInfo::SELECTED:
 		case ContentInfo::AUTOSELECTED:
-			this->Unselect(ci->id);
+			this->Unselect(ci.id);
 			break;
 
 		case ContentInfo::UNSELECTED:
-			this->Select(ci->id);
+			this->Select(ci.id);
 			break;
 
 		default:
@@ -930,9 +900,9 @@ void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *c
  * @param parents list to store all parents in (is not cleared)
  * @param child   the child to search the parents' dependencies for
  */
-void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const
+void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo &child) const
 {
-	auto range = this->reverse_dependency_map.equal_range(child->id);
+	auto range = this->reverse_dependency_map.equal_range(child.id);
 
 	for (auto iter = range.first; iter != range.second; ++iter) {
 		parents.push_back(GetContent(iter->second));
@@ -952,9 +922,9 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
 	 * we are including stuff into the vector and as such the vector's data
 	 * store can be reallocated (and thus move), which means out iterating
 	 * pointer gets invalid. So fall back to the indices. */
-	for (uint i = 0; i < tree.size(); i++) {
+	for (const ContentInfo *ci : tree) {
 		ConstContentVector parents;
-		this->ReverseLookupDependency(parents, tree[i]);
+		this->ReverseLookupDependency(parents, *ci);
 
 		for (const ContentInfo *ci : parents) {
 			include(tree, ci);
@@ -966,25 +936,25 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
  * Check the dependencies (recursively) of this content info
  * @param ci the content info to check the dependencies of
  */
-void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *ci)
+void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &ci)
 {
-	if (ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) {
+	if (ci.IsSelected() || ci.state == ContentInfo::ALREADY_HERE) {
 		/* Selection is easy; just walk all children and set the
 		 * autoselected state. That way we can see what we automatically
 		 * selected and thus can unselect when a dependency is removed. */
-		for (auto &dependency : ci->dependencies) {
+		for (auto &dependency : ci.dependencies) {
 			ContentInfo *c = this->GetContent(dependency);
 			if (c == nullptr) {
 				this->DownloadContentInfo(dependency);
 			} else if (c->state == ContentInfo::UNSELECTED) {
 				c->state = ContentInfo::AUTOSELECTED;
-				this->CheckDependencyState(c);
+				this->CheckDependencyState(*c);
 			}
 		}
 		return;
 	}
 
-	if (ci->state != ContentInfo::UNSELECTED) return;
+	if (ci.state != ContentInfo::UNSELECTED) return;
 
 	/* For unselection we need to find the parents of us. We need to
 	 * unselect them. After that we unselect all children that we
@@ -998,7 +968,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *
 		this->Unselect(c->id);
 	}
 
-	for (auto &dependency : ci->dependencies) {
+	for (auto &dependency : ci.dependencies) {
 		const ContentInfo *c = this->GetContent(dependency);
 		if (c == nullptr) {
 			DownloadContentInfo(dependency);
@@ -1008,7 +978,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *
 
 		/* Only unselect when WE are the only parent. */
 		parents.clear();
-		this->ReverseLookupDependency(parents, c);
+		this->ReverseLookupDependency(parents, *c);
 
 		/* First check whether anything depends on us */
 		int sel_count = 0;
@@ -1048,7 +1018,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *
 			if (parent->state == ContentInfo::AUTOSELECTED) this->Unselect(parent->id);
 		}
 		for (const ContentInfo *parent : parents) {
-			this->CheckDependencyState(this->GetContent(parent->id));
+			this->CheckDependencyState(*this->GetContent(parent->id));
 		}
 	}
 }
@@ -1056,8 +1026,6 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo *
 /** Clear all downloaded content information. */
 void ClientNetworkContentSocketHandler::Clear()
 {
-	for (ContentInfo *c : this->infos) delete c;
-
 	this->infos.clear();
 	this->requested.clear();
 	this->reverse_dependency_map.clear();
@@ -1084,7 +1052,7 @@ void ClientNetworkContentSocketHandler::OnDisconnect()
 	}
 }
 
-void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *ci)
+void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo &ci)
 {
 	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
 		ContentCallback *cb = this->callbacks[i];
@@ -1094,7 +1062,7 @@ void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *
 	}
 }
 
-void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo *ci, int bytes)
+void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo &ci, int bytes)
 {
 	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
 		ContentCallback *cb = this->callbacks[i];
