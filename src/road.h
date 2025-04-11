@@ -235,6 +235,19 @@ inline const RoadTypeInfo *GetRoadTypeInfo(RoadType roadtype)
 }
 
 /**
+ * Returns the railtype for a Railtype information.
+ * @param rti Pointer to static RailTypeInfo
+ * @return Railtype in static railtype definitions
+ */
+inline RoadType GetRoadTypeInfoIndex(const RoadTypeInfo *rti)
+{
+	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
+	size_t index = rti - _roadtypes;
+	assert(index < ROADTYPE_END && rti == _roadtypes + index);
+	return static_cast<RoadType>(index);
+}
+
+/**
  * Checks if an engine of the given RoadType got power on a tile with a given
  * RoadType. This would normally just be an equality check, but for electrified
  * roads (which also support non-electric vehicles).
