@@ -60,7 +60,7 @@ class ScriptVehicleList_Station : public ScriptList {
 public:
 	/**
 	 * @param station_id The station to get the list of vehicles from, which have orders to it.
-	 * @pre ScriptBaseStation::IsValidBaseStation(station_id)
+	 * @pre ScriptStation::IsValidStation(station_id)
 	 */
 	ScriptVehicleList_Station(StationID station_id);
 };
