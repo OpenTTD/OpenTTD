@@ -707,25 +707,6 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 #undef check_and_terminate
 }
 
-/**
- * Create a socket handler to handle the connection.
- */
-ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
-	NetworkContentSocketHandler(),
-	http_response_index(-2),
-	cur_file(std::nullopt),
-	cur_info(nullptr),
-	is_connecting(false),
-	is_cancelled(false)
-{
-	this->last_activity = std::chrono::steady_clock::now();
-}
-
-/** Clear up the mess ;) */
-ClientNetworkContentSocketHandler::~ClientNetworkContentSocketHandler()
-{
-}
-
 /** Connect to the content server. */
 class NetworkContentConnecter : public TCPConnecter {
 public:

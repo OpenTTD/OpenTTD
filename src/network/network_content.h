@@ -63,18 +63,18 @@ struct ContentCallback {
 class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback, HTTPCallback {
 protected:
 	using ContentIDList = std::vector<ContentID>; ///< List of content IDs to (possibly) select.
-	std::vector<ContentCallback *> callbacks;     ///< Callbacks to notify "the world"
-	ContentIDList requested;                      ///< ContentIDs we already requested (so we don't do it again)
-	ContentVector infos;                          ///< All content info we received
+	std::vector<ContentCallback *> callbacks; ///< Callbacks to notify "the world"
+	ContentIDList requested; ///< ContentIDs we already requested (so we don't do it again)
+	ContentVector infos; ///< All content info we received
 	std::unordered_multimap<ContentID, ContentID> reverse_dependency_map; ///< Content reverse dependency map
-	std::vector<char> http_response;              ///< The HTTP response to the requests we've been doing
-	int http_response_index;                      ///< Where we are, in the response, with handling it
+	std::vector<char> http_response; ///< The HTTP response to the requests we've been doing
+	int http_response_index = -2; ///< Where we are, in the response, with handling it
 
 	std::optional<FileHandle> cur_file; ///< Currently downloaded file
 	std::unique_ptr<ContentInfo> cur_info; ///< Information about the currently downloaded file
-	bool is_connecting;    ///< Whether we're connecting
-	bool is_cancelled;     ///< Whether the download has been cancelled
-	std::chrono::steady_clock::time_point last_activity;  ///< The last time there was network activity
+	bool is_connecting = false; ///< Whether we're connecting
+	bool is_cancelled = false; ///< Whether the download has been cancelled
+	std::chrono::steady_clock::time_point last_activity = std::chrono::steady_clock::now(); ///< The last time there was network activity
 
 	friend class NetworkContentConnecter;
 
@@ -102,9 +102,6 @@ protected:
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
 	static constexpr std::chrono::seconds IDLE_TIMEOUT = std::chrono::seconds(60);
-
-	ClientNetworkContentSocketHandler();
-	~ClientNetworkContentSocketHandler();
 
 	void Connect();
 	void SendReceive();
