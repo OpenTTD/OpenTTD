@@ -195,13 +195,13 @@ struct ScriptFileChecksumCreator : FileScanner {
  * @param info The script to get the shortname and md5 sum from.
  * @return True iff they're the same.
  */
-static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
+static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
 {
 	uint32_t id = 0;
 	const char *str = info->GetShortName().c_str();
 	for (int j = 0; j < 4 && *str != '\0'; j++, str++) id |= *str << (8 * j);
 
-	if (id != ci->unique_id) return false;
+	if (id != ci.unique_id) return false;
 	if (!md5sum) return true;
 
 	ScriptFileChecksumCreator checksum(dir);
@@ -229,10 +229,10 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 		checksum.Scan(".nut", path);
 	}
 
-	return ci->md5sum == checksum.md5sum;
+	return ci.md5sum == checksum.md5sum;
 }
 
-bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)
+bool ScriptScanner::HasScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
 		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return true;
@@ -240,7 +240,7 @@ bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)
 	return false;
 }
 
-const char *ScriptScanner::FindMainScript(const ContentInfo *ci, bool md5sum)
+const char *ScriptScanner::FindMainScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
 		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript().c_str();

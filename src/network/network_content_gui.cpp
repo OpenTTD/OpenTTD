@@ -165,11 +165,11 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 	}
 }
 
-void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInfo *ci, int bytes)
+void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInfo &ci, int bytes)
 {
-	if (ci->id != this->cur_id) {
-		this->name = ci->filename;
-		this->cur_id = ci->id;
+	if (ci.id != this->cur_id) {
+		this->name = ci.filename;
+		this->cur_id = ci.id;
 		this->downloaded_files++;
 	}
 
@@ -298,10 +298,10 @@ public:
 		}
 	}
 
-	void OnDownloadProgress(const ContentInfo *ci, int bytes) override
+	void OnDownloadProgress(const ContentInfo &ci, int bytes) override
 	{
 		BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(ci, bytes);
-		include(this->receivedTypes, ci->type);
+		include(this->receivedTypes, ci.type);
 
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {
@@ -410,9 +410,9 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 		bool all_available = true;
 
-		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
-			if ((*iter)->state == ContentInfo::DOES_NOT_EXIST) all_available = false;
-			this->content.push_back(*iter);
+		for (const ContentInfo &ci : _network_content_client.Info()) {
+			if (ci.state == ContentInfo::DOES_NOT_EXIST) all_available = false;
+			this->content.push_back(&ci);
 		}
 
 		this->SetWidgetDisabledState(WID_NCL_SEARCH_EXTERNAL, this->auto_select && all_available);
@@ -732,13 +732,11 @@ public:
 			std::string buf;
 			for (auto &cid : this->selected->dependencies) {
 				/* Try to find the dependency */
-				ConstContentIterator iter = _network_content_client.Begin();
-				for (; iter != _network_content_client.End(); iter++) {
-					const ContentInfo *ci = *iter;
-					if (ci->id != cid) continue;
+				for (const ContentInfo &ci : _network_content_client.Info()) {
+					if (ci.id != cid) continue;
 
 					if (!buf.empty()) buf += list_separator;
-					buf += (*iter)->name;
+					buf += ci.name;
 					break;
 				}
 			}
@@ -792,7 +790,7 @@ public:
 
 				const NWidgetBase *checkbox = this->GetWidget<NWidgetBase>(WID_NCL_CHECKBOX);
 				if (click_count > 1 || IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {
-					_network_content_client.ToggleSelectedState(this->selected);
+					_network_content_client.ToggleSelectedState(*this->selected);
 					this->content.ForceResort();
 					this->content.ForceRebuild();
 				}
@@ -870,7 +868,7 @@ public:
 				case WKC_RETURN:
 					if (keycode == WKC_RETURN || !IsWidgetFocused(WID_NCL_FILTER)) {
 						if (this->selected != nullptr) {
-							_network_content_client.ToggleSelectedState(this->selected);
+							_network_content_client.ToggleSelectedState(*this->selected);
 							this->content.ForceResort();
 							this->InvalidateData();
 						}
@@ -925,9 +923,9 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_NCL_MATRIX);
 	}
 
-	void OnReceiveContentInfo(const ContentInfo *rci) override
+	void OnReceiveContentInfo(const ContentInfo &rci) override
 	{
-		if (this->auto_select && !rci->IsSelected()) _network_content_client.ToggleSelectedState(rci);
+		if (this->auto_select && !rci.IsSelected()) _network_content_client.ToggleSelectedState(rci);
 		this->content.ForceRebuild();
 		this->InvalidateData(0, false);
 	}
@@ -1138,9 +1136,5 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 		GetEncodedString(STR_CONTENT_NO_ZLIB),
 		GetEncodedString(STR_CONTENT_NO_ZLIB_SUB),
 		WL_ERROR);
-	/* Connection failed... clean up the mess */
-	if (cv != nullptr) {
-		for (ContentInfo *ci : *cv) delete ci;
-	}
 #endif /* WITH_ZLIB */
 }
