@@ -857,7 +857,7 @@ do_clear:;
 				if (HasPowerOnRoad(rt, existing_rt)) {
 					rt = existing_rt;
 				} else if (HasPowerOnRoad(existing_rt, rt)) {
-					ret = Command<CMD_CONVERT_ROAD>::Do(flags, tile, tile, rt);
+					ret = Command<CMD_CONVERT_ROAD>::Do(flags, tile, tile, rt, false);
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret.GetCost());
 				} else {
@@ -2434,7 +2434,7 @@ static void ConvertRoadTypeOwner(TileIndex tile, uint num_pieces, Owner owner, R
  * @param to_type new roadtype to convert to.
  * @return the cost of this operation or an error
  */
-CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_start, RoadType to_type)
+CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_start, RoadType to_type, bool diagonal)
 {
 	TileIndex area_end = tile;
 
@@ -2448,7 +2448,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	CommandCost error = CommandCost((rtt == RTT_TRAM) ? STR_ERROR_NO_SUITABLE_TRAMWAY : STR_ERROR_NO_SUITABLE_ROAD); // by default, there is no road to convert.
 	bool found_convertible_road = false; // whether we actually did convert any road/tram (see bug #7633)
 
-	std::unique_ptr<TileIterator> iter = std::make_unique<OrthogonalTileIterator>(area_start, area_end);
+	std::unique_ptr<TileIterator> iter = TileIterator::Create(area_start, area_end, diagonal);
 	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
 		/* Is road present on tile? */
 		if (!MayHaveRoad(tile)) continue;
@@ -2551,7 +2551,11 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			/* If both ends of tunnel/bridge are in the range, do not try to convert twice -
 			 * it would cause assert because of different test and exec runs */
 			if (endtile < tile) {
-				if (OrthogonalTileArea(area_start, area_end).Contains(endtile)) continue;
+				if (diagonal) {
+					if (DiagonalTileArea(area_start, area_end).Contains(endtile)) continue;
+				} else {
+					if (OrthogonalTileArea(area_start, area_end).Contains(endtile)) continue;
+				}
 			}
 
 			/* When not converting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
