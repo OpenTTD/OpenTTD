@@ -10,6 +10,7 @@
 #ifndef STRGEN_H
 #define STRGEN_H
 
+#include "../core/string_consumer.hpp"
 #include "../language.h"
 #include "../3rdparty/fmt/format.h"
 
@@ -21,7 +22,7 @@ struct Case {
 	uint8_t caseidx;       ///< The index of the case.
 	std::string string; ///< The translation of the case.
 
-	Case(uint8_t caseidx, const std::string &string);
+	Case(uint8_t caseidx, std::string_view string);
 };
 
 /** Information about a single string. */
@@ -33,7 +34,7 @@ struct LangString {
 	size_t line;            ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
 
-	LangString(const std::string &name, const std::string &english, size_t index, size_t line);
+	LangString(std::string_view name, std::string_view english, size_t index, size_t line);
 	void FreeTranslation();
 };
 
@@ -48,7 +49,7 @@ struct StringData {
 	StringData(size_t tabs);
 	void FreeTranslation();
 	void Add(std::shared_ptr<LangString> ls);
-	LangString *Find(const std::string &s);
+	LangString *Find(const std::string& s);
 	uint32_t Version() const;
 	size_t CountInUse(size_t tab) const;
 };
@@ -62,7 +63,7 @@ struct StringReader {
 
 	StringReader(StringData &data, const std::string &file, bool master, bool translation);
 	virtual ~StringReader() = default;
-	void HandleString(char *str);
+	void HandleString(std::string_view str);
 
 	/**
 	 * Read a single line from the source of strings.
@@ -74,7 +75,7 @@ struct StringReader {
 	 * Handle the pragma of the file.
 	 * @param str    The pragma string to parse.
 	 */
-	virtual void HandlePragma(char *str, LanguagePackHeader &lang);
+	virtual void HandlePragma(std::string_view str, LanguagePackHeader &lang);
 
 	/**
 	 * Start parsing the file.
@@ -144,7 +145,7 @@ struct ParsedCommandStruct {
 };
 
 const CmdStruct *TranslateCmdForCompare(const CmdStruct *a);
-ParsedCommandStruct ExtractCommandString(const char *s, bool warnings);
+ParsedCommandStruct ExtractCommandString(std::string_view s, bool warnings);
 
 void StrgenWarningI(const std::string &msg);
 void StrgenErrorI(const std::string &msg);
@@ -152,7 +153,7 @@ void StrgenErrorI(const std::string &msg);
 #define StrgenWarning(format_string, ...) StrgenWarningI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 #define StrgenError(format_string, ...) StrgenErrorI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 #define StrgenFatal(format_string, ...) StrgenFatalI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
-std::optional<std::string_view> ParseWord(const char **buf);
+std::optional<std::string_view> ParseWord(StringConsumer &consumer);
 
 /** Global state shared between strgen.cpp, game_text.cpp and strgen_base.cpp */
 struct StrgenState {

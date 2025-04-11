@@ -13,6 +13,8 @@ if (NOT HOST_BINARY_DIR)
             ../error.cpp
             ../string.cpp
             ../core/string_builder.cpp
+            ../core/string_consumer.cpp
+            ../core/string_inplace.cpp
             ../core/utf8.cpp
     )
     add_definitions(-DSTRGEN)
