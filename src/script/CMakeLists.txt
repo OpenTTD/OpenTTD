@@ -20,6 +20,7 @@ add_files(
     script_scanner.hpp
     script_storage.hpp
     script_suspend.hpp
+    script_trigger.hpp
     squirrel.cpp
     squirrel.hpp
     squirrel_class.hpp
