@@ -248,10 +248,7 @@ CommandCost CmdSellVehicle(DoCommandFlags flags, VehicleID v_id, bool sell_chain
 	if (!front->IsStoppedInDepot()) return CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 
 	/* Can we actually make the order backup, i.e. are there enough orders? */
-	if (backup_order &&
-			front->orders != nullptr &&
-			!front->orders->IsShared() &&
-			!Order::CanAllocateItem(front->orders->GetNumOrders())) {
+	if (backup_order && front->orders != nullptr && !front->orders->IsShared()) {
 		/* Only happens in exceptional cases when there aren't enough orders anyhow.
 		 * Thus it should be safe to just drop the orders in that case. */
 		backup_order = false;

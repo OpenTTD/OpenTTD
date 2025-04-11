@@ -2921,6 +2921,13 @@ CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, b
 
 	int maxz = GetTileMaxZ(tile);
 
+	/* Above snow? */
+	int land = to_underlying(_settings_game.game_creation.landscape);
+	if (_settings_game.game_creation.landscape == LandscapeType::Arctic && maxz > HighestSnowLine()) land = -1;
+
+	uint bitmask = HZ_ZONALL | (1 << (land + 12));
+	if ((hs->building_availability & bitmask) != 0) return CommandCost();
+
 	/* Make sure there is no slope? */
 	bool noslope = hs->building_flags.Test(BuildingFlag::NotSloped);
 	if (noslope && slope != SLOPE_FLAT) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
