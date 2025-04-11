@@ -2020,7 +2020,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximumaantal (
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal niet-blijvende open vensters voordat oude vensters automatisch worden gesloten om ruimte voor nieuwe vensters te maken
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :uitgeschakeld
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Uitgeschakeld
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximaal inzoomniveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Het maximale inzoomniveau voor kijkvensters. Merk op dat hogere inzoomniveaus hogere eisen stellen aan het geheugen.
