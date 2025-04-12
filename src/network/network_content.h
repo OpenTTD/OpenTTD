@@ -65,6 +65,7 @@ protected:
 	using ContentIDList = std::vector<ContentID>; ///< List of content IDs to (possibly) select.
 	std::vector<ContentCallback *> callbacks; ///< Callbacks to notify "the world"
 	ContentIDList requested; ///< ContentIDs we already requested (so we don't do it again)
+	ContentIDList queued; ///< ContentID queue to be requested.
 	ContentVector infos; ///< All content info we received
 	std::unordered_multimap<ContentID, ContentID> reverse_dependency_map; ///< Content reverse dependency map
 	std::vector<char> http_response; ///< The HTTP response to the requests we've been doing
@@ -109,10 +110,11 @@ public:
 	void Cancel();
 
 	void RequestContentList(ContentType type);
-	void RequestContentList(uint count, const ContentID *content_ids);
+	void RequestContentList(std::span<const ContentID> content_ids);
 	void RequestContentList(ContentVector *cv, bool send_md5sum = true);
 
 	void DownloadSelectedContent(uint &files, uint &bytes, bool fallback = false);
+	void RequestQueuedContentInfo();
 
 	void Select(ContentID cid);
 	void Unselect(ContentID cid);

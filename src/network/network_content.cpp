@@ -20,6 +20,8 @@
 #include "../base_media_sounds.h"
 #include "../settings_type.h"
 #include "../strings_func.h"
+#include "../timer/timer.h"
+#include "../timer/timer_window.h"
 #include "network_content.h"
 
 #include "table/strings.h"
@@ -212,27 +214,29 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
  * @param count The number of IDs to request.
  * @param content_ids The unique identifiers of the content to request information about.
  */
-void ClientNetworkContentSocketHandler::RequestContentList(uint count, const ContentID *content_ids)
+void ClientNetworkContentSocketHandler::RequestContentList(std::span<const ContentID> content_ids)
 {
+	/* We can "only" send a limited number of IDs in a single packet.
+	 * A packet begins with the packet size and a byte for the type.
+	 * Then this packet adds a uint16_t for the count in this packet.
+	 * The rest of the packet can be used for the IDs. */
+	static constexpr size_t MAX_CONTENT_IDS_PER_PACKET = (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t);
+
+	if (content_ids.empty()) return;
+
 	this->Connect();
 
-	while (count > 0) {
-		/* We can "only" send a limited number of IDs in a single packet.
-		 * A packet begins with the packet size and a byte for the type.
-		 * Then this packet adds a uint16_t for the count in this packet.
-		 * The rest of the packet can be used for the IDs. */
-		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint16_t)) / sizeof(uint32_t));
+	for (auto it = std::begin(content_ids); it != std::end(content_ids); /* nothing */) {
+		auto last = std::ranges::next(it, MAX_CONTENT_IDS_PER_PACKET, std::end(content_ids));
 
 		auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
-		p->Send_uint16(p_count);
+		p->Send_uint16(std::distance(it, last));
 
-		for (uint i = 0; i < p_count; i++) {
-			p->Send_uint32(content_ids[i]);
+		for (; it != last; ++it) {
+			p->Send_uint32(*it);
 		}
 
 		this->SendPacket(std::move(p));
-		count -= p_count;
-		content_ids += p_count;
 	}
 }
 
@@ -794,6 +798,13 @@ void ClientNetworkContentSocketHandler::SendReceive()
 	this->SendPackets();
 }
 
+/** Timeout after queueing content for it to try to be requested. */
+static constexpr auto CONTENT_QUEUE_TIMEOUT = std::chrono::milliseconds(100);
+
+static TimeoutTimer<TimerWindow> _request_queue_timeout = {CONTENT_QUEUE_TIMEOUT, []() {
+	_network_content_client.RequestQueuedContentInfo();
+}};
+
 /**
  * Download information of a given Content ID if not already tried
  * @param cid the ID to try
@@ -804,7 +815,33 @@ void ClientNetworkContentSocketHandler::DownloadContentInfo(ContentID cid)
 	if (std::ranges::find(this->requested, cid) != this->requested.end()) return;
 
 	this->requested.push_back(cid);
-	this->RequestContentList(1, &cid);
+	this->queued.push_back(cid);
+	_request_queue_timeout.Reset();
+}
+
+/**
+ * Send a content request for queued content info download.
+ */
+void ClientNetworkContentSocketHandler::RequestQueuedContentInfo()
+{
+	if (this->queued.empty()) return;
+
+	/* Wait until we've briefly stopped receiving data (which will contain more content) before making the request. */
+	if (std::chrono::steady_clock::now() <= this->last_activity + CONTENT_QUEUE_TIMEOUT) {
+		_request_queue_timeout.Reset();
+		return;
+	}
+
+	/* Move the queue locally so more ids can be queued for later. */
+	ContentIDList queue;
+	queue.swap(this->queued);
+
+	/* Remove ids that have since been received since the request was queued. */
+	queue.erase(std::remove_if(std::begin(queue), std::end(queue), [this](ContentID content_id) {
+		return std::ranges::find(this->infos, content_id, &ContentInfo::id) != std::end(this->infos);
+	}), std::end(queue));
+
+	this->RequestContentList(queue);
 }
 
 /**
@@ -1028,6 +1065,7 @@ void ClientNetworkContentSocketHandler::Clear()
 {
 	this->infos.clear();
 	this->requested.clear();
+	this->queued.clear();
 	this->reverse_dependency_map.clear();
 }
 

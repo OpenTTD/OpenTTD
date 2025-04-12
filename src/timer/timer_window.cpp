@@ -43,8 +43,8 @@ void TimeoutTimer<TimerWindow>::Elapsed(TimerWindow::TElapsed delta)
 	this->storage.elapsed += delta;
 
 	if (this->storage.elapsed >= this->period) {
-		this->callback();
 		this->fired = true;
+		this->callback();
 	}
 }
 
