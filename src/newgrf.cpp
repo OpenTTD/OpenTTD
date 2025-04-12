@@ -87,7 +87,11 @@ ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted;  ///< Tempo
  */
 void GrfMsgI(int severity, const std::string &msg)
 {
-	Debug(grf, severity, "[{}:{}] {}", _cur_gps.grfconfig->filename, _cur_gps.nfo_line, msg);
+	if (_cur_gps.grfconfig == nullptr) {
+		Debug(grf, severity, "{}", msg);
+	} else {
+		Debug(grf, severity, "[{}:{}] {}", _cur_gps.grfconfig->filename, _cur_gps.nfo_line, msg);
+	}
 }
 
 /**
@@ -371,6 +375,7 @@ void GRFUnsafe(ByteReader &)
 /** Reset and clear all NewGRFs */
 static void ResetNewGRF()
 {
+	_cur_gps.grfconfig = nullptr;
 	_cur_gps.grffile = nullptr;
 	_grf_files.clear();
 
@@ -1822,6 +1827,10 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 			}
 		}
 	}
+
+	/* We've finished reading files. */
+	_cur_gps.grfconfig = nullptr;
+	_cur_gps.grffile = nullptr;
 
 	/* Pseudo sprite processing is finished; free temporary stuff */
 	_cur_gps.ClearDataForNextFile();
