@@ -333,7 +333,11 @@ static void BadgeClassToggleVisibility(GrfSpecFeature feature, Badge &class_badg
 	auto it = std::ranges::find(config, class_badge.label, &BadgeClassConfigItem::label);
 	if (it == std::end(config)) return;
 
-	it->show_icon = !it->show_icon;
+	if (_ctrl_pressed) {
+		it->show_filter = !it->show_filter;
+	} else {
+		it->show_icon = !it->show_icon;
+	}
 }
 
 /**

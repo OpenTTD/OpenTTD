@@ -19,6 +19,7 @@ public:
 	int column = -1; ///< UI column, feature-dependent.
 	int sort_order = -1; ///< Position within list, populated only by GetBadgeClassConfigItem.
 	bool show_icon = false; ///< Set if the badge icons should be displayed for this class.
+	bool show_filter = false;
 };
 
 void BadgeClassLoadConfig(const struct IniFile &ini);
