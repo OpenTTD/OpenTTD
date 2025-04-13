@@ -44,15 +44,15 @@ Badge *GetClassBadge(BadgeClassID class_index);
 class GUIBadgeClasses {
 public:
 	struct Element {
-		BadgeClassID badge_class; ///< Badge class index.
+		BadgeClassID class_index; ///< Badge class index.
 		uint8_t column_group; ///< Column group in UI. 0 = left, 1 = centre, 2 = right.
 		bool visible; ///< Whether this element is visible.
 		uint sort_order; ///< Order of element.
 		Dimension size; ///< Maximal size of this element.
 		std::string_view label; ///< Class label (string owned by the class badge)
 
-		constexpr Element(BadgeClassID badge_class, uint8_t column_group, bool visible, uint sort_order, Dimension size, std::string_view label) :
-			badge_class(badge_class), column_group(column_group), visible(visible), sort_order(sort_order), size(size), label(label) {}
+		constexpr Element(BadgeClassID class_index, uint8_t column_group, bool visible, uint sort_order, Dimension size, std::string_view label) :
+			class_index(class_index), column_group(column_group), visible(visible), sort_order(sort_order), size(size), label(label) {}
 	};
 
 	GUIBadgeClasses() = default;
@@ -70,7 +70,7 @@ private:
 };
 
 int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature feature);
-void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap);
+void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap);
 
 uint32_t GetBadgeVariableResult(const struct GRFFile &grffile, std::span<const BadgeID> badges, uint32_t parameter);
 

@@ -285,7 +285,7 @@ static PalSpriteID GetBadgeSprite(const Badge &badge, GrfSpecFeature feature, st
 
 /**
  * Get the largest badge size (within limits) for a badge class.
- * @param badge_class Badge class.
+ * @param class_index Badge class.
  * @param feature Feature being used.
  * @returns Largest base size of the badge class for the feature.
  */
@@ -439,11 +439,11 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
 {
 	if (badges.empty()) return r.top;
 
-	std::set<BadgeClassID> classes;
-	for (const BadgeID &index : badges) classes.insert(GetBadge(index)->class_index);
+	std::set<BadgeClassID> class_indexes;
+	for (const BadgeID &index : badges) class_indexes.insert(GetBadge(index)->class_index);
 
 	std::string_view list_separator = GetListSeparator();
-	for (const BadgeClassID &class_index : classes) {
+	for (const BadgeClassID &class_index : class_indexes) {
 		const Badge *class_badge = GetClassBadge(class_index);
 		if (class_badge == nullptr || class_badge->name == STR_NULL) continue;
 
@@ -473,23 +473,23 @@ int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature)
  * Draw a badge column group.
  * @param r rect to draw within.
  * @param column_group column to draw.
- * @param badge_classes badge classes.
+ * @param gui_classes gui badge classes.
  * @param badges badges to draw.
  * @param feature feature being used.
  * @param introduction_date introduction date of item.
  * @param remap palette remap to for company-coloured badges.
  */
-void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap)
+void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap)
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	for (const auto &badge_class : badge_classes.GetClasses()) {
-		if (badge_class.column_group != column_group) continue;
-		if (!badge_class.visible) continue;
+	for (const auto &gc : gui_classes.GetClasses()) {
+		if (gc.column_group != column_group) continue;
+		if (!gc.visible) continue;
 
-		int width = ScaleGUITrad(badge_class.size.width);
+		int width = ScaleGUITrad(gc.size.width);
 		for (const BadgeID &index : badges) {
 			const Badge &badge = *GetBadge(index);
-			if (badge.class_index != badge_class.badge_class) continue;
+			if (badge.class_index != gc.class_index) continue;
 
 			PalSpriteID ps = GetBadgeSprite(badge, feature, introduction_date, remap);
 			if (ps.sprite == 0) continue;
@@ -507,13 +507,13 @@ template <class TBase, bool TEnd = true, FontSize TFs = FS_NORMAL>
 class DropDownBadges : public TBase {
 public:
 	template <typename... Args>
-	explicit DropDownBadges(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Args&&... args)
-		: TBase(std::forward<Args>(args)...), badge_classes(badge_classes), badges(badges), feature(feature), introduction_date(introduction_date)
+	explicit DropDownBadges(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, Args&&... args)
+		: TBase(std::forward<Args>(args)...), gui_classes(gui_classes), badges(badges), feature(feature), introduction_date(introduction_date)
 	{
-		for (const auto &badge_class : badge_classes->GetClasses()) {
-			if (badge_class.column_group != 0) continue;
-			dim.width += badge_class.size.width + WidgetDimensions::scaled.hsep_normal;
-			dim.height = std::max(dim.height, badge_class.size.height);
+		for (const auto &gc : gui_classes->GetClasses()) {
+			if (gc.column_group != 0) continue;
+			dim.width += gc.size.width + WidgetDimensions::scaled.hsep_normal;
+			dim.height = std::max(dim.height, gc.size.height);
 		}
 	}
 
@@ -524,13 +524,13 @@ public:
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 
-		DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->badge_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
+		DrawBadgeColumn(r.WithWidth(this->dim.width, rtl), 0, *this->gui_classes, this->badges, this->feature, this->introduction_date, PAL_NONE);
 
 		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, bg_colour);
 	}
 
 private:
-	std::shared_ptr<GUIBadgeClasses> badge_classes;
+	std::shared_ptr<GUIBadgeClasses> gui_classes;
 
 	const std::span<const BadgeID> badges;
 	const GrfSpecFeature feature;
@@ -543,12 +543,12 @@ private:
 using DropDownListBadgeItem = DropDownBadges<DropDownListStringItem>;
 using DropDownListBadgeIconItem = DropDownBadges<DropDownListIconItem>;
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked, bool shaded)
 {
-	return std::make_unique<DropDownListBadgeItem>(badge_classes, badges, feature, introduction_date, std::move(str), value, masked, shaded);
+	return std::make_unique<DropDownListBadgeItem>(gui_classes, badges, feature, introduction_date, std::move(str), value, masked, shaded);
 }
 
-std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &badge_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked, bool shaded)
 {
-	return std::make_unique<DropDownListBadgeIconItem>(badge_classes, badges, feature, introduction_date, dim, sprite, palette, std::move(str), value, masked, shaded);
+	return std::make_unique<DropDownListBadgeIconItem>(gui_classes, badges, feature, introduction_date, dim, sprite, palette, std::move(str), value, masked, shaded);
 }
