@@ -353,6 +353,9 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
 
 	uint max_column = 0;
 	for (BadgeClassID class_index : used.Classes()) {
+		const Badge *class_badge = GetClassBadge(class_index);
+		if (class_badge->name == STR_NULL) continue;
+
 		Dimension size = GetBadgeMaximalDimension(class_index, feature);
 		if (size.width == 0) continue;
 
@@ -360,9 +363,7 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
 		bool visible = true;
 		uint sort_order = UINT_MAX;
 
-		std::string_view label = GetClassBadge(class_index)->label;
-
-		this->gui_classes.emplace_back(class_index, column, visible, sort_order, size, label);
+		this->gui_classes.emplace_back(class_index, column, visible, sort_order, size, class_badge->label);
 		if (visible) max_column = std::max<uint>(max_column, column);
 	}
 
