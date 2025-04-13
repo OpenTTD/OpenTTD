@@ -587,23 +587,6 @@ static char32_t _io_file_lexfeed_UTF8(SQUserPointer file)
 	return c;
 }
 
-static char32_t _io_file_lexfeed_UCS2_no_swap(SQUserPointer file)
-{
-	unsigned short c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) return (char32_t)c;
-	return 0;
-}
-
-static char32_t _io_file_lexfeed_UCS2_swap(SQUserPointer file)
-{
-	unsigned short c;
-	if (((SQFile *)file)->Read(&c, sizeof(c), 1) > 0) {
-		c = ((c >> 8) & 0x00FF)| ((c << 8) & 0xFF00);
-		return (char32_t)c;
-	}
-	return 0;
-}
-
 static SQInteger _io_file_read(SQUserPointer file, SQUserPointer buf, SQInteger size)
 {
 	SQInteger ret = ((SQFile *)file)->Read(buf, 1, size);
@@ -648,17 +631,6 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 			}
 			return sq_throwerror(vm, "Couldn't read bytecode");
 		}
-		case 0xFFFE:
-			/* Either this file is encoded as big-endian and we're on a little-endian
-			 * machine, or this file is encoded as little-endian and we're on a big-endian
-			 * machine. Either way, swap the bytes of every word we read. */
-			func = _io_file_lexfeed_UCS2_swap;
-			size -= 2; // Skip BOM
-			break;
-		case 0xFEFF:
-			func = _io_file_lexfeed_UCS2_no_swap;
-			size -= 2; // Skip BOM
-			break;
 		case 0xBBEF:   // UTF-8
 		case 0xEFBB: { // UTF-8 on big-endian machine
 			/* Similarly, check the file is actually big enough to finish checking BOM */
