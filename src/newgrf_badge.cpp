@@ -318,10 +318,7 @@ BadgeTextFilter::BadgeTextFilter(StringFilter &filter, GrfSpecFeature feature)
 		filter.AddLine(GetString(badge.name));
 		if (!filter.GetState()) continue;
 
-		auto it = std::ranges::lower_bound(this->badges, badge.index);
-		if (it != std::end(this->badges) && *it == badge.index) continue;
-
-		this->badges.insert(it, badge.index);
+		this->badges.insert(badge.index);
 	}
 }
 
