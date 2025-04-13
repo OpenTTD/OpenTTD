@@ -10,6 +10,7 @@
 #ifndef NEWGRF_BADGE_H
 #define NEWGRF_BADGE_H
 
+#include "core/flatset_type.hpp"
 #include "newgrf.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_commons.h"
@@ -65,7 +66,7 @@ public:
 	bool Filter(std::span<const BadgeID> badges) const;
 
 private:
-	std::vector<BadgeID> badges{};
+	FlatSet<BadgeID> badges{};
 };
 
 #endif /* NEWGRF_BADGE_H */
