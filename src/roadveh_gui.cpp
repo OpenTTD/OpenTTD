@@ -152,6 +152,6 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 	if (v->index == selection) {
 		int height = ScaleSpriteTrad(12);
 		Rect hr = {(rtl ? px : 0), 0, (rtl ? max_width : px) - 1, height - 1};
-		DrawFrameRect(hr.Translate(r.left, CenterBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
+		DrawFrameRect(hr.Translate(r.left, CentreBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
 	}
 }

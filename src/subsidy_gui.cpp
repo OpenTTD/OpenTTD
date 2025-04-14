@@ -150,7 +150,7 @@ struct SubsidyListWindow : Window {
 		SpriteID icon = CargoSpec::Get(cargo_type)->GetCargoIcon();
 		Dimension d = GetSpriteSize(icon);
 		Rect ir = r.WithWidth(this->cargo_icon_size.width, rtl).WithHeight(GetCharacterHeight(FS_NORMAL));
-		DrawSprite(icon, PAL_NONE, CenterBounds(ir.left, ir.right, d.width), CenterBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
+		DrawSprite(icon, PAL_NONE, CentreBounds(ir.left, ir.right, d.width), CentreBounds(ir.top, ir.bottom, this->cargo_icon_size.height) + y_offset);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

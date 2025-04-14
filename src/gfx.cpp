@@ -907,8 +907,8 @@ void DrawCharCentered(char32_t c, const Rect &r, TextColour colour)
 {
 	SetColourRemap(colour);
 	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
-		CenterBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
-		CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
+		CentreBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
+		CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
 		BlitterMode::ColourRemap);
 }
 

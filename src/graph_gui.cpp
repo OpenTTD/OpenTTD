@@ -73,10 +73,10 @@ struct GraphLegendWindow : Window {
 
 		const Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, rtl ? ir.right - d.width : ir.left, CenterBounds(ir.top, ir.bottom, d.height));
+		DrawCompanyIcon(cid, rtl ? ir.right - d.width : ir.left, CentreBounds(ir.top, ir.bottom, d.height));
 
 		const Rect tr = ir.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
-		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_COMPANY_NAME_COMPANY_NUM, cid, cid), _legend_excluded_companies.Test(cid) ? TC_BLACK : TC_WHITE);
+		DrawString(tr.left, tr.right, CentreBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_COMPANY_NAME_COMPANY_NUM, cid, cid), _legend_excluded_companies.Test(cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -1385,7 +1385,7 @@ struct PerformanceRatingDetailWindow : Window {
 			if (this->IsWidgetDisabled(widget)) return;
 			CompanyID cid = (CompanyID)(widget - WID_PRD_COMPANY_FIRST);
 			Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-			DrawCompanyIcon(cid, CenterBounds(r.left, r.right, sprite_size.width), CenterBounds(r.top, r.bottom, sprite_size.height));
+			DrawCompanyIcon(cid, CentreBounds(r.left, r.right, sprite_size.width), CentreBounds(r.top, r.bottom, sprite_size.height));
 			return;
 		}
 
@@ -1408,8 +1408,8 @@ struct PerformanceRatingDetailWindow : Window {
 			needed = SCORE_MAX;
 		}
 
-		uint bar_top  = CenterBounds(r.top, r.bottom, this->bar_height);
-		uint text_top = CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
+		uint bar_top  = CentreBounds(r.top, r.bottom, this->bar_height);
+		uint text_top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 
 		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
 

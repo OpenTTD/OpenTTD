@@ -123,13 +123,13 @@ static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, String
 	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
 	switch (align & SA_HOR_MASK) {
 		case SA_LEFT:       p.x = r.left; break;
-		case SA_HOR_CENTER: p.x = CenterBounds(r.left, r.right, d.width); break;
+		case SA_HOR_CENTER: p.x = CentreBounds(r.left, r.right, d.width); break;
 		case SA_RIGHT:      p.x = r.right + 1 - d.width; break;
 		default: NOT_REACHED();
 	}
 	switch (align & SA_VERT_MASK) {
 		case SA_TOP:         p.y = r.top; break;
-		case SA_VERT_CENTER: p.y = CenterBounds(r.top, r.bottom, d.height); break;
+		case SA_VERT_CENTER: p.y = CentreBounds(r.top, r.bottom, d.height); break;
 		case SA_BOTTOM:      p.y = r.bottom + 1 - d.height; break;
 		default: NOT_REACHED();
 	}
@@ -676,7 +676,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
 	d.width  -= offset.x;
 	d.height -= offset.y;
 	int s = ScaleSpriteTrad(1); /* Offset to account for shadow of SPR_CLOSEBOX */
-	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CenterBounds(r.left, r.right, d.width - s) - offset.x, CenterBounds(r.top, r.bottom, d.height - s) - offset.y);
+	DrawSprite(SPR_CLOSEBOX, (colour != COLOUR_WHITE ? TC_BLACK : TC_SILVER) | (1U << PALETTE_TEXT_RECOLOUR), CentreBounds(r.left, r.right, d.width - s) - offset.x, CentreBounds(r.top, r.bottom, d.height - s) - offset.y);
 }
 
 /**
@@ -727,13 +727,13 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FrameFlag::Lowered : FrameFlags{});
 		DrawImageButtons(r.WithWidth(dd_width, true), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (!str.empty()) {
-			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
+			DrawString(r.left + WidgetDimensions::scaled.dropdowntext.left, r.right - dd_width - WidgetDimensions::scaled.dropdowntext.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
 		}
 	} else {
 		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FrameFlag::Lowered : FrameFlags{});
 		DrawImageButtons(r.WithWidth(dd_width, false), WWT_DROPDOWN, colour, clicked_dropdown, SPR_ARROW_DOWN, SA_CENTER);
 		if (!str.empty()) {
-			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left, r.right - WidgetDimensions::scaled.dropdowntext.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
+			DrawString(r.left + dd_width + WidgetDimensions::scaled.dropdowntext.left, r.right - WidgetDimensions::scaled.dropdowntext.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), str, TC_BLACK, align);
 		}
 	}
 }

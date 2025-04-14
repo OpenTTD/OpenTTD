@@ -1058,7 +1058,7 @@ struct RefitWindow : public Window {
 
 						/* Determine top & bottom position of the highlight.*/
 						const int height = ScaleSpriteTrad(12);
-						const int highlight_top = CenterBounds(r.top, r.bottom, height);
+						const int highlight_top = CentreBounds(r.top, r.bottom, height);
 						const int highlight_bottom = highlight_top + height - 1;
 
 						for (Train *u = Train::From(v); u != nullptr; u = u->Next()) {
@@ -2667,14 +2667,14 @@ struct VehicleDetailsWindow : Window {
 				/* We're using wallclock units. Show minutes since last serviced. */
 				if (TimerGameEconomy::UsingWallclockUnits()) {
 					int minutes_since_serviced = (TimerGameEconomy::date - v->date_of_last_service).base() / EconomyTime::DAYS_IN_ECONOMY_MONTH;
-					DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
+					DrawString(tr.left, tr.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
 							GetString(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES,
 									v->GetServiceInterval(), STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO, minutes_since_serviced));
 					break;
 				}
 
 				/* We're using calendar dates. Show the date of last service. */
-				DrawString(tr.left, tr.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
+				DrawString(tr.left, tr.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)),
 						GetString(v->ServiceIntervalIsPercent() ? STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT : STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS,
 								v->GetServiceInterval(), STR_VEHICLE_DETAILS_LAST_SERVICE_DATE, v->date_of_last_service));
 				break;
@@ -3212,7 +3212,7 @@ public:
 
 		TextColour text_colour = TC_FROMSTRING;
 		std::string str = GetVehicleStatusString(v, text_colour);
-		DrawString(tr.left, tr.right, CenterBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), str, text_colour, SA_HOR_CENTER);
+		DrawString(tr.left, tr.right, CentreBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), str, text_colour, SA_HOR_CENTER);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

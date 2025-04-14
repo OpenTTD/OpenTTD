@@ -908,7 +908,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_NEWGRF_INFO_TITLE: {
 				/* Create the nice grayish rectangle at the details top. */
 				GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_DARK_BLUE);
-				DrawString(r.left, r.right, CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left, r.right, CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL)), STR_NEWGRF_SETTINGS_INFO_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
@@ -2194,7 +2194,7 @@ struct ScanProgressWindow : public Window {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				uint percent = scanned * 100 / std::max(1U, _settings_client.gui.last_newgrf_count);
 				DrawFrameRect(ir.WithWidth(ir.Width() * percent / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_GENERATION_PROGRESS, percent), TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_GENERATION_PROGRESS, percent), TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 

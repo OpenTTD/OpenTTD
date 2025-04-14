@@ -1900,10 +1900,10 @@ public:
 	void DrawCompany(CompanyID company_id, const Rect &r, uint &line) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		int text_y_offset = CenterBounds(0, this->line_height, GetCharacterHeight(FS_NORMAL));
+		int text_y_offset = CentreBounds(0, this->line_height, GetCharacterHeight(FS_NORMAL));
 
 		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-		int offset = CenterBounds(0, this->line_height, d.height);
+		int offset = CentreBounds(0, this->line_height, d.height);
 
 		uint line_start = this->vscroll->GetPosition();
 		uint line_end = line_start + this->vscroll->GetCapacity();
@@ -1961,7 +1961,7 @@ public:
 
 				if (player_icon != 0) {
 					Dimension d2 = GetSpriteSize(player_icon);
-					int offset_y = CenterBounds(0, this->line_height, d2.height);
+					int offset_y = CentreBounds(0, this->line_height, d2.height);
 					DrawSprite(player_icon, PALETTE_TO_GREY, rtl ? tr.right - d2.width : tr.left, y + offset_y);
 					tr = tr.Indent(d2.width + WidgetDimensions::scaled.hsep_normal, rtl);
 				}
@@ -2075,7 +2075,7 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-				DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)), STR_NETWORK_CONNECTING_1 + _network_join_status, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 

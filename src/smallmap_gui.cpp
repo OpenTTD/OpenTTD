@@ -1495,8 +1495,8 @@ public:
 	 */
 	Point GetStationMiddle(const Station *st) const
 	{
-		int x = CenterBounds(st->rect.left, st->rect.right, 0);
-		int y = CenterBounds(st->rect.top, st->rect.bottom, 0);
+		int x = CentreBounds(st->rect.left, st->rect.right, 0);
+		int y = CentreBounds(st->rect.top, st->rect.bottom, 0);
 		Point ret = this->RemapTile(x, y);
 
 		/* Same magic 3 as in DrawVehicles; that's where I got it from.

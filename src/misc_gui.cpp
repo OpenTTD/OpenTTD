@@ -767,14 +767,14 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 	/* If we have a marked area, draw a background highlight. */
 	if (tb->marklength != 0) GfxFillRect(fr.left + tb->markxoffs, fr.top, fr.left + tb->markxoffs + tb->marklength - 1, fr.bottom, PC_GREY);
 
-	DrawString(fr.left, fr.right, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), tb->GetText(), TC_YELLOW);
+	DrawString(fr.left, fr.right, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), tb->GetText(), TC_YELLOW);
 	bool focussed = w->IsWidgetGloballyFocused(wid) || IsOSKOpenedFor(w, wid);
 	if (focussed && tb->caret) {
 		int caret_width = GetCaretWidth();
 		if (rtl) {
-			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+			DrawString(fr.right - tb->pixels + tb->caretxoffs - caret_width, fr.right - tb->pixels + tb->caretxoffs, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
 		} else {
-			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CenterBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
+			DrawString(fr.left + tb->caretxoffs, fr.left + tb->caretxoffs + caret_width, CentreBounds(fr.top, fr.bottom, GetCharacterHeight(FS_NORMAL)), "_", TC_WHITE);
 		}
 	}
 }

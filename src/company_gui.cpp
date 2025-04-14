@@ -1127,8 +1127,8 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 
 	/* Determine offset from centre of drawing rect. */
 	Dimension d = GetSpriteSize(SPR_GRADIENT);
-	int x = CenterBounds(r.left, r.right, d.width);
-	int y = CenterBounds(r.top, r.bottom, d.height);
+	int x = CentreBounds(r.left, r.right, d.width);
+	int y = CentreBounds(r.top, r.bottom, d.height);
 
 	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
 	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
@@ -2373,7 +2373,7 @@ struct CompanyWindow : Window
 				Point offset;
 				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
 				d.height -= offset.y;
-				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r.left - offset.x, CenterBounds(r.top, r.bottom, d.height) - offset.y);
+				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r.left - offset.x, CentreBounds(r.top, r.bottom, d.height) - offset.y);
 				break;
 			}
 
