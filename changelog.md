@@ -20,6 +20,7 @@
 - Add: Ukrainian Hryvnia currency (#12877)
 - Add: Convert 32bpp-only sprites to 8bpp when needed (#11602)
 - Change: [Script] Start GS (but don't run it) when generating world in scenario editor (#13961)
+- Change: [Script] Add vehicle owner to crash event (#13878)
 - Change: Make tree placement at world generation look more organic (#13515)
 - Change: [MacOS] Put the icon in a rounded rectangle (#13446)
 - Change: [Script] GetWaypointID to return the StationID of any waypoint (#13407)
