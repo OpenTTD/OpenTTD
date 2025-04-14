@@ -995,7 +995,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 				if (lvl < item.indent) tx += level_width;
 			}
 			/* Draw our node in the tree. */
-			int ycentre = CenterBounds(textr.top, textr.bottom, WidgetDimensions::scaled.fullbevel.top);
+			int ycentre = CentreBounds(textr.top, textr.bottom, WidgetDimensions::scaled.fullbevel.top);
 			if (!HasBit(item.level_mask, item.indent)) GfxDrawLine(tx, ir.top, tx, ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
 			GfxDrawLine(tx, ycentre, tx + offset - (rtl ? -1 : 1), ycentre, linecolour, WidgetDimensions::scaled.fullbevel.top);
 		}

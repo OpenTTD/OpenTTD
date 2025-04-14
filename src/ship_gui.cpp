@@ -41,7 +41,7 @@ void DrawShipImage(const Vehicle *v, const Rect &r, VehicleID selection, EngineI
 	int x_offs = UnScaleGUI(rect.left);
 	int x = rtl ? r.right - width - x_offs : r.left - x_offs;
 	/* This magic -1 offset is related to the sprite_y_offsets in build_vehicle_gui.cpp */
-	int y = ScaleSpriteTrad(-1) + CenterBounds(r.top, r.bottom, 0);
+	int y = ScaleSpriteTrad(-1) + CentreBounds(r.top, r.bottom, 0);
 
 	seq.Draw(x, y, GetVehiclePalette(v), false);
 	if (v->cargo_cap > 0) DrawCargoIconOverlay(x, y, v->cargo_type);

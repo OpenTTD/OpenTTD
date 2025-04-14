@@ -604,7 +604,7 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 		if (this->IsWidgetDisabled(widget)) return;
 		CompanyID cid = (CompanyID)(widget - WID_LGL_COMPANY_FIRST);
 		Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-		DrawCompanyIcon(cid, CenterBounds(br.left, br.right, sprite_size.width), CenterBounds(br.top, br.bottom, sprite_size.height));
+		DrawCompanyIcon(cid, CentreBounds(br.left, br.right, sprite_size.width), CentreBounds(br.top, br.bottom, sprite_size.height));
 	}
 	if (IsInsideMM(widget, WID_LGL_SATURATION_FIRST, WID_LGL_SATURATION_LAST + 1)) {
 		uint8_t colour = LinkGraphOverlay::LINK_COLOURS[_settings_client.gui.linkgraph_colours][widget - WID_LGL_SATURATION_FIRST];
@@ -618,13 +618,13 @@ void LinkGraphLegendWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			str = STR_LINKGRAPH_LEGEND_SATURATED;
 		}
 		if (str != STR_NULL) {
-			DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER, false, FS_SMALL);
+			DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), str, GetContrastColour(colour) | TC_FORCED, SA_HOR_CENTER, false, FS_SMALL);
 		}
 	}
 	if (IsInsideMM(widget, WID_LGL_CARGO_FIRST, WID_LGL_CARGO_LAST + 1)) {
 		const CargoSpec *cargo = _sorted_cargo_specs[widget - WID_LGL_CARGO_FIRST];
 		GfxFillRect(br, cargo->legend_colour);
-		DrawString(br.left, br.right, CenterBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER, false, FS_SMALL);
+		DrawString(br.left, br.right, CentreBounds(br.top, br.bottom, GetCharacterHeight(FS_SMALL)), cargo->abbrev, GetContrastColour(cargo->legend_colour, 73), SA_HOR_CENTER, false, FS_SMALL);
 	}
 }
 

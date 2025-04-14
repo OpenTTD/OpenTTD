@@ -145,7 +145,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			DrawFrameRect(r, COLOUR_GREY, {FrameFlag::BorderOnly, FrameFlag::Lowered});
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
-			DrawString(ir.left, ir.right, CenterBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)),
+			DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)),
 				GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, this->downloaded_bytes, this->total_bytes, this->downloaded_bytes * 100LL / this->total_bytes),
 				TC_FROMSTRING, SA_HOR_CENTER);
 			break;

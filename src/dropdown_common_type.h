@@ -36,7 +36,7 @@ public:
 		uint8_t c1 = GetColourGradient(bg_colour, SHADE_DARK);
 		uint8_t c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
 
-		int mid = CenterBounds(full.top, full.bottom, 0);
+		int mid = CentreBounds(full.top, full.bottom, 0);
 		GfxFillRect(full.left, mid - WidgetDimensions::scaled.bevel.bottom, full.right, mid - 1, c1);
 		GfxFillRect(full.left, mid, full.right, mid + WidgetDimensions::scaled.bevel.top - 1, c2);
 	}
@@ -126,7 +126,7 @@ public:
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		Rect ir = r.WithWidth(this->dbounds.width, rtl);
-		DrawSprite(this->sprite, this->palette, CenterBounds(ir.left, ir.right, this->dsprite.width), CenterBounds(r.top, r.bottom, this->dsprite.height));
+		DrawSprite(this->sprite, this->palette, CentreBounds(ir.left, ir.right, this->dsprite.width), CentreBounds(r.top, r.bottom, this->dsprite.height));
 		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, bg_colour);
 	}
 };

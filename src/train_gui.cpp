@@ -167,7 +167,7 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 		 * the next engine after the highlight could overlap it. */
 		int height = ScaleSpriteTrad(12);
 		Rect hr = {highlight_l, 0, highlight_r, height - 1};
-		DrawFrameRect(hr.Translate(r.left, CenterBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
+		DrawFrameRect(hr.Translate(r.left, CentreBounds(r.top, r.bottom, height)).Expand(WidgetDimensions::scaled.bevel), COLOUR_WHITE, FrameFlag::BorderOnly);
 	}
 }
 

@@ -106,7 +106,7 @@ struct StatusBarWindow : Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
-		tr.top = CenterBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
+		tr.top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 		switch (widget) {
 			case WID_S_LEFT:
 				/* Draw the date */
@@ -155,7 +155,7 @@ struct StatusBarWindow : Window {
 
 				if (!this->reminder_timeout.HasFired()) {
 					Dimension icon_size = GetSpriteSize(SPR_UNREAD_NEWS);
-					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, tr.right - icon_size.width, CenterBounds(r.top, r.bottom, icon_size.height));
+					DrawSprite(SPR_UNREAD_NEWS, PAL_NONE, tr.right - icon_size.width, CentreBounds(r.top, r.bottom, icon_size.height));
 				}
 				break;
 		}
