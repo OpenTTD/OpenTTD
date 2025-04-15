@@ -103,7 +103,7 @@ struct AnimationBase {
 		if (!frame_set_by_callback) {
 			if (frame < num_frames) {
 				frame++;
-			} else if (frame == num_frames && spec->animation.status == ANIM_STATUS_LOOPING) {
+			} else if (frame == num_frames && spec->animation.status == AnimationStatus::Looping) {
 				/* This animation loops, so start again from the beginning */
 				frame = 0;
 			} else {

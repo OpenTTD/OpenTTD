@@ -152,7 +152,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 
 			case 0x0F: // Animation information
 				tsp->animation.frames = buf.ReadByte();
-				tsp->animation.status = buf.ReadByte();
+				tsp->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
 				break;
 
 			case 0x10: // Animation speed

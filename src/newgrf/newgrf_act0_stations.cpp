@@ -235,7 +235,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 
 			case 0x16: // Animation info
 				statspec->animation.frames = buf.ReadByte();
-				statspec->animation.status = buf.ReadByte();
+				statspec->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
 				break;
 
 			case 0x17: // Animation speed

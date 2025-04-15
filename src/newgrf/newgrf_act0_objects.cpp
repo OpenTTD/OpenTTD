@@ -151,7 +151,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 
 			case 0x11: // Animation info
 				spec->animation.frames = buf.ReadByte();
-				spec->animation.status = buf.ReadByte();
+				spec->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
 				break;
 
 			case 0x12: // Animation speed

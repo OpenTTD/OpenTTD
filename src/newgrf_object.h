@@ -60,7 +60,8 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(ObjectClassID)
 struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	/* 2 because of the "normal" and "buy" sprite stacks. */
 	FixedGRFFileProps<2> grf_prop; ///< Properties related the the grf file
-	AnimationInfo animation;      ///< Information about the animation.
+	/* Animation speed default differs from other features */
+	AnimationInfo animation{0, AnimationStatus::NoAnimation, 0, 0};  ///< Information about the animation.
 	StringID name;                ///< The name for this object.
 
 	LandscapeTypes climate; ///< In which climates is this object available?

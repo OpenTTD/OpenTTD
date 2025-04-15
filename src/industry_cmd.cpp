@@ -696,7 +696,7 @@ static void AnimateTile_Industry(TileIndex tile)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
 
-	if (GetIndustryTileSpec(gfx)->animation.status != ANIM_STATUS_NO_ANIMATION) {
+	if (GetIndustryTileSpec(gfx)->animation.status != AnimationStatus::NoAnimation) {
 		AnimateNewIndustryTile(tile);
 		return;
 	}
@@ -1955,7 +1955,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			/* it->gfx is stored in the map. But the translated ID cur_gfx is the interesting one */
 			IndustryGfx cur_gfx = GetTranslatedIndustryTileID(it.gfx);
 			const IndustryTileSpec *its = GetIndustryTileSpec(cur_gfx);
-			if (its->animation.status != ANIM_STATUS_NO_ANIMATION) AddAnimatedTile(cur_tile);
+			if (its->animation.status != AnimationStatus::NoAnimation) AddAnimatedTile(cur_tile);
 		}
 	}
 
