@@ -53,7 +53,7 @@ public:
 	/**
 	 * Append integer 'value' in given number 'base'.
 	 */
-	template<class T>
+	template <class T>
 	void PutIntegerBase(T value, int base)
 	{
 		std::array<char, 32> buf;
@@ -67,8 +67,7 @@ public:
 /**
  * Compose data into a growing std::string.
  */
-class StringBuilder final : public BaseStringBuilder
-{
+class StringBuilder final : public BaseStringBuilder {
 	std::string *dest;
 public:
 	/**

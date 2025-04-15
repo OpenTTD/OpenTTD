@@ -18,8 +18,7 @@
 /**
  * Builder implementation for InPlaceReplacement.
  */
-class InPlaceBuilder final : public BaseStringBuilder
-{
+class InPlaceBuilder final : public BaseStringBuilder {
 	std::span<char> dest;
 	size_type position = 0;
 	const StringConsumer &consumer;
@@ -90,8 +89,7 @@ public:
  * - The Builder writes data to the buffer, replacing already consumed data.
  * - The Builder asserts, if it overtakes the consumer.
  */
-class InPlaceReplacement
-{
+class InPlaceReplacement {
 public:
 	StringConsumer consumer; ///< Consumer from shared buffer
 	InPlaceBuilder builder; ///< Builder into shared buffer
