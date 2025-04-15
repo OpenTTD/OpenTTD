@@ -119,7 +119,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 		disallowed_platforms(0), disallowed_lengths(0),
 		cargo_threshold(0), cargo_triggers(0),
 		callback_mask(0), flags(0),
-		animation({0, 0, 0, 0}) {}
+		animation({0, 0, 2, 0}) {}
 	/**
 	 * Properties related the the grf file.
 	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
