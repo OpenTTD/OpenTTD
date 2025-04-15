@@ -72,7 +72,7 @@ enum IndustryTileTrigger : uint8_t {
 	INDUSTRY_TRIGGER_INDUSTRY_TICK  = 0x02, ///< The industry has been triggered via its tick.
 	INDUSTRY_TRIGGER_RECEIVED_CARGO = 0x04, ///< Cargo has been delivered.
 };
-void TriggerIndustryTile(TileIndex t, IndustryTileTrigger trigger);
-void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger);
+void TriggerIndustryTileRandomisation(TileIndex t, IndustryTileTrigger trigger);
+void TriggerIndustryRandomisation(Industry *ind, IndustryTileTrigger trigger);
 
 #endif /* NEWGRF_INDUSTRYTILES_H */

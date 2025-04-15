@@ -310,7 +310,7 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
  * @param ind Industry of the tile.
  * @param[in,out] reseed_industry Collects bits to reseed for the industry.
  */
-static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, Industry *ind, uint32_t &reseed_industry)
+static void DoTriggerIndustryTileRandomisation(TileIndex tile, IndustryTileTrigger trigger, Industry *ind, uint32_t &reseed_industry)
 {
 	assert(IsValidTile(tile) && IsTileType(tile, MP_INDUSTRY));
 
@@ -359,11 +359,11 @@ static void DoReseedIndustry(Industry *ind, uint32_t reseed)
  * @param tile Industry tile to trigger.
  * @param trigger Trigger to trigger.
  */
-void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
+void TriggerIndustryTileRandomisation(TileIndex tile, IndustryTileTrigger trigger)
 {
 	uint32_t reseed_industry = 0;
 	Industry *ind = Industry::GetByTile(tile);
-	DoTriggerIndustryTile(tile, trigger, ind, reseed_industry);
+	DoTriggerIndustryTileRandomisation(tile, trigger, ind, reseed_industry);
 	DoReseedIndustry(ind, reseed_industry);
 }
 
@@ -372,12 +372,12 @@ void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
  * @param ind Industry to trigger.
  * @param trigger Trigger to trigger.
  */
-void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
+void TriggerIndustryRandomisation(Industry *ind, IndustryTileTrigger trigger)
 {
 	uint32_t reseed_industry = 0;
 	for (TileIndex tile : ind->location) {
 		if (ind->TileBelongsToIndustry(tile)) {
-			DoTriggerIndustryTile(tile, trigger, ind, reseed_industry);
+			DoTriggerIndustryTileRandomisation(tile, trigger, ind, reseed_industry);
 		}
 	}
 	DoReseedIndustry(ind, reseed_industry);

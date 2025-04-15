@@ -118,6 +118,6 @@ enum HouseTrigger : uint8_t {
 	 */
 	HOUSE_TRIGGER_TILE_LOOP_TOP = 0x02,
 };
-void TriggerHouse(TileIndex t, HouseTrigger trigger);
+void TriggerHouseRandomisation(TileIndex t, HouseTrigger trigger);
 
 #endif /* NEWGRF_HOUSE_H */
