@@ -44,7 +44,7 @@ struct VehicleScopeResolver : public ScopeResolver {
 };
 
 /** Resolver for a vehicle (chain) */
-struct VehicleResolverObject : public ResolverObject {
+struct VehicleResolverObject : public SpecializedResolverObject<VehicleRandomTriggers> {
 	/** Application of 'wagon overrides'. */
 	enum WagonOverride : uint8_t {
 		WO_NONE,     //!< Resolve no wagon overrides.
@@ -107,18 +107,7 @@ enum class BuildProbabilityType : uint8_t {
 
 bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type);
 
-enum VehicleTrigger : uint8_t {
-	VEHICLE_TRIGGER_NEW_CARGO     = 0x01,
-	/* Externally triggered only for the first vehicle in chain */
-	VEHICLE_TRIGGER_DEPOT         = 0x02,
-	/* Externally triggered only for the first vehicle in chain, only if whole chain is empty */
-	VEHICLE_TRIGGER_EMPTY         = 0x04,
-	/* Not triggered externally (called for the whole chain if we got NEW_CARGO) */
-	VEHICLE_TRIGGER_ANY_NEW_CARGO = 0x08,
-	/* Externally triggered for each vehicle in chain */
-	VEHICLE_TRIGGER_CALLBACK_32   = 0x10,
-};
-void TriggerVehicleRandomisation(Vehicle *veh, VehicleTrigger trigger);
+void TriggerVehicleRandomisation(Vehicle *veh, VehicleRandomTrigger trigger);
 
 void AlterVehicleListOrder(EngineID engine, uint16_t target);
 void CommitVehicleListOrderChanges();

@@ -844,7 +844,7 @@ static void TileLoop_Industry(TileIndex tile)
 	 * returning from TileLoop_Water. */
 	if (!IsTileType(tile, MP_INDUSTRY)) return;
 
-	TriggerIndustryTileRandomisation(tile, INDTILE_TRIGGER_TILE_LOOP);
+	TriggerIndustryTileRandomisation(tile, IndustryRandomTrigger::TileLoop);
 
 	if (!IsIndustryCompleted(tile)) {
 		MakeIndustryTileBigger(tile);
@@ -1222,7 +1222,7 @@ static void ProduceIndustryGoods(Industry *i)
 			if (cut) ChopLumberMillTrees(i);
 		}
 
-		TriggerIndustryRandomisation(i, INDUSTRY_TRIGGER_INDUSTRY_TICK);
+		TriggerIndustryRandomisation(i, IndustryRandomTrigger::IndustryTick);
 		TriggerIndustryAnimation(i, IAT_INDUSTRY_TICK);
 	}
 }

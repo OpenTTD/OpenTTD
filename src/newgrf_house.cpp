@@ -107,7 +107,7 @@ void ResetHouses()
 HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 		CallbackID callback, uint32_t param1, uint32_t param2,
 		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
-	: ResolverObject(GetHouseSpecGrf(house_id), callback, param1, param2),
+	: SpecializedResolverObject<HouseRandomTriggers>(GetHouseSpecGrf(house_id), callback, param1, param2),
 	house_scope(*this, house_id, tile, town, not_yet_constructed, initial_random_bits, watched_cargo_triggers, view),
 	town_scope(*this, town, not_yet_constructed) // Don't access StorePSA if house is not yet constructed.
 {
@@ -229,7 +229,7 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 /* virtual */ uint32_t HouseScopeResolver::GetRandomTriggers() const
 {
 	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
-	return this->not_yet_constructed ? 0 : GetHouseRandomTriggers(this->tile);
+	return this->not_yet_constructed ? 0 : GetHouseRandomTriggers(this->tile).base();
 }
 
 static uint32_t GetNumHouses(HouseID house_id, const Town *town)
@@ -591,8 +591,8 @@ bool NewHouseTileLoop(TileIndex tile)
 		return true;
 	}
 
-	TriggerHouseRandomisation(tile, HOUSE_TRIGGER_TILE_LOOP);
-	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) TriggerHouseRandomisation(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
+	TriggerHouseRandomisation(tile, HouseRandomTrigger::TileLoop);
+	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) TriggerHouseRandomisation(tile, HouseRandomTrigger::TileLoopNorth);
 
 	/* Call the unsynchronized tile loop trigger */
 	TriggerHouseAnimation_TileLoop(tile, false, 0);
@@ -620,7 +620,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	return true;
 }
 
-static void DoTriggerHouseRandomisation(TileIndex tile, HouseTrigger trigger, uint8_t base_random, bool first)
+static void DoTriggerHouseRandomisation(TileIndex tile, HouseRandomTrigger trigger, uint8_t base_random, bool first)
 {
 	/* We can't trigger a non-existent building... */
 	assert(IsTileType(tile, MP_HOUSE));
@@ -631,14 +631,17 @@ static void DoTriggerHouseRandomisation(TileIndex tile, HouseTrigger trigger, ui
 	if (hs->grf_prop.GetSpriteGroup() == nullptr) return;
 
 	HouseResolverObject object(hid, tile, Town::GetByTile(tile), CBID_RANDOM_TRIGGER);
-	object.waiting_random_triggers = GetHouseRandomTriggers(tile) | trigger;
-	SetHouseRandomTriggers(tile, object.waiting_random_triggers); // store now for var 5F
+	auto waiting_random_triggers = GetHouseRandomTriggers(tile);
+	waiting_random_triggers.Set(trigger);
+	SetHouseRandomTriggers(tile, waiting_random_triggers); // store now for var 5F
+	object.SetWaitingRandomTriggers(waiting_random_triggers);
 
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return;
 
 	/* Store remaining triggers. */
-	SetHouseRandomTriggers(tile, object.GetRemainingRandomTriggers());
+	waiting_random_triggers.Reset(object.GetUsedRandomTriggers());
+	SetHouseRandomTriggers(tile, waiting_random_triggers);
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for houses. For bug-to-bug-compatibility with TTDP we ignore the scope. */
 	uint8_t new_random_bits = Random();
@@ -649,11 +652,11 @@ static void DoTriggerHouseRandomisation(TileIndex tile, HouseTrigger trigger, ui
 	SetHouseRandomBits(tile, random_bits);
 
 	switch (trigger) {
-		case HOUSE_TRIGGER_TILE_LOOP:
+		case HouseRandomTrigger::TileLoop:
 			/* Random value already set. */
 			break;
 
-		case HOUSE_TRIGGER_TILE_LOOP_TOP:
+		case HouseRandomTrigger::TileLoopNorth:
 			if (!first) {
 				/* The top tile is marked dirty by the usual TileLoop */
 				MarkTileDirtyByTile(tile);
@@ -667,7 +670,7 @@ static void DoTriggerHouseRandomisation(TileIndex tile, HouseTrigger trigger, ui
 	}
 }
 
-void TriggerHouseRandomisation(TileIndex t, HouseTrigger trigger)
+void TriggerHouseRandomisation(TileIndex t, HouseRandomTrigger trigger)
 {
 	DoTriggerHouseRandomisation(t, trigger, 0, true);
 }

@@ -246,7 +246,7 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 
 /* virtual */ uint32_t StationScopeResolver::GetRandomTriggers() const
 {
-	return this->st == nullptr ? 0 : this->st->waiting_random_triggers;
+	return this->st == nullptr ? 0 : this->st->waiting_random_triggers.base();
 }
 
 
@@ -588,7 +588,7 @@ uint32_t StationResolverObject::GetDebugID() const
  */
 StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseStation *base_station, TileIndex tile,
 		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-	: ResolverObject(statspec->grf_prop.grffile, callback, callback_param1, callback_param2),
+	: SpecializedResolverObject<StationRandomTriggers>(statspec->grf_prop.grffile, callback, callback_param1, callback_param2),
 	station_scope(*this, statspec, base_station, tile)
 {
 	/* Invalidate all cached vars */
@@ -959,14 +959,14 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_cargo_triggers, cargo_type)) return;
 
 	uint32_t whole_reseed = 0;
-	ETileArea area = ETileArea(st, trigger_tile, tas[trigger]);
+	ETileArea area = ETileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)]);
 
 	/* Bitmask of completely empty cargo types to be matched. */
-	CargoTypes empty_mask = (trigger == SRT_CARGO_TAKEN) ? GetEmptyMask(st) : 0;
+	CargoTypes empty_mask = (trigger == StationRandomTrigger::CargoTaken) ? GetEmptyMask(st) : 0;
 
 	/* Store triggers now for var 5F */
-	SetBit(st->waiting_random_triggers, trigger);
-	uint32_t used_random_triggers = 0;
+	st->waiting_random_triggers.Set(trigger);
+	StationRandomTriggers used_random_triggers;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
 	for (TileIndex tile : area) {
@@ -976,18 +976,18 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 
 			/* Cargo taken "will only be triggered if all of those
 			 * cargo types have no more cargo waiting." */
-			if (trigger == SRT_CARGO_TAKEN) {
+			if (trigger == StationRandomTrigger::CargoTaken) {
 				if ((ss->cargo_triggers & ~empty_mask) != 0) continue;
 			}
 
 			if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
-				object.waiting_random_triggers = st->waiting_random_triggers;
+				object.SetWaitingRandomTriggers(st->waiting_random_triggers);
 
 				const SpriteGroup *group = object.Resolve();
 				if (group == nullptr) continue;
 
-				used_random_triggers |= object.used_random_triggers;
+				used_random_triggers.Set(object.GetUsedRandomTriggers());
 
 				uint32_t reseed = object.GetReseedSum();
 				if (reseed != 0) {
@@ -1007,7 +1007,7 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 	}
 
 	/* Update whole station random bits */
-	st->waiting_random_triggers &= ~used_random_triggers;
+	st->waiting_random_triggers.Reset(used_random_triggers);
 	if ((whole_reseed & 0xFFFF) != 0) {
 		st->random_bits &= ~whole_reseed;
 		st->random_bits |= Random() & whole_reseed;

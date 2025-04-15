@@ -318,8 +318,10 @@ struct ResolverObject {
 
 	uint32_t last_value = 0; ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
 
+protected:
 	uint32_t waiting_random_triggers = 0; ///< Waiting triggers to be used by any rerandomisation. (scope independent)
 	uint32_t used_random_triggers = 0; ///< Subset of cur_triggers, which actually triggered some rerandomisation. (scope independent)
+public:
 	std::array<uint32_t, VSG_END> reseed; ///< Collects bits to rerandomise while triggering triggers.
 
 	const GRFFile *grffile = nullptr; ///< GRFFile the resolved SpriteGroup belongs to
@@ -349,11 +351,19 @@ struct ResolverObject {
 	virtual ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0);
 
 	/**
-	 * Returns the waiting triggers that did not trigger any rerandomisation.
+	 * Used by RandomizedSpriteGroup: Triggers for rerandomisation
 	 */
-	uint32_t GetRemainingRandomTriggers() const
+	uint32_t GetWaitingRandomTriggers() const
 	{
-		return this->waiting_random_triggers & ~this->used_random_triggers;
+		return this->waiting_random_triggers;
+	}
+
+	/**
+	 * Used by RandomizedSpriteGroup: Consume triggers.
+	 */
+	void AddUsedRandomTriggers(uint32_t triggers)
+	{
+		this->used_random_triggers |= triggers;
 	}
 
 	/**
@@ -393,6 +403,32 @@ struct ResolverObject {
 	 * and should return an identifier recognisable by the NewGRF developer.
 	 */
 	virtual uint32_t GetDebugID() const { return 0; }
+};
+
+/**
+ * Specialization of ResolverObject with type-safe access to RandomTriggers.
+ */
+template <class RandomTriggers>
+struct SpecializedResolverObject : public ResolverObject {
+	using ResolverObject::ResolverObject;
+
+	/**
+	 * Set waiting triggers for rerandomisation.
+	 * This is scope independent, even though this is broken-by-design in most cases.
+	 */
+	void SetWaitingRandomTriggers(RandomTriggers triggers)
+	{
+		this->waiting_random_triggers = triggers.base();
+	}
+
+	/**
+	 * Get the triggers, which were "consumed" by some rerandomisation.
+	 * This is scope independent, even though this is broken-by-design in most cases.
+	 */
+	RandomTriggers GetUsedRandomTriggers() const
+	{
+		return static_cast<RandomTriggers>(this->used_random_triggers);
+	}
 };
 
 #endif /* NEWGRF_SPRITEGROUP_H */

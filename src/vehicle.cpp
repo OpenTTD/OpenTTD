@@ -972,7 +972,7 @@ static void RunEconomyVehicleDayProc()
 			uint16_t callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 			if (callback != CALLBACK_FAILED) {
 				if (HasBit(callback, 0)) {
-					TriggerVehicleRandomisation(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+					TriggerVehicleRandomisation(v, VehicleRandomTrigger::Callback32); // Trigger vehicle trigger 10
 				}
 
 				/* After a vehicle trigger, the graphics and properties of the vehicle could change.
@@ -1614,7 +1614,7 @@ void VehicleEnterDepot(Vehicle *v)
 	VehicleEnteredDepotThisTick(v);
 
 	/* After a vehicle trigger, the graphics and properties of the vehicle could change. */
-	TriggerVehicleRandomisation(v, VEHICLE_TRIGGER_DEPOT);
+	TriggerVehicleRandomisation(v, VehicleRandomTrigger::Depot);
 	v->MarkDirty();
 
 	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
@@ -2394,7 +2394,7 @@ void Vehicle::LeaveStation()
 	if (this->type == VEH_TRAIN && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger station animation (trains only) */
 		if (IsTileType(this->tile, MP_STATION)) {
-			TriggerStationRandomisation(st, this->tile, SRT_TRAIN_DEPARTS);
+			TriggerStationRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
 			TriggerStationAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
 		}
 
@@ -2403,7 +2403,7 @@ void Vehicle::LeaveStation()
 	if (this->type == VEH_ROAD && !this->vehstatus.Test(VehState::Crashed)) {
 		/* Trigger road stop animation */
 		if (IsStationRoadStopTile(this->tile)) {
-			TriggerRoadStopRandomisation(st, this->tile, RSRT_VEH_DEPARTS);
+			TriggerRoadStopRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
 			TriggerRoadStopAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
 		}
 	}

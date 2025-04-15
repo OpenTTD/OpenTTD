@@ -311,7 +311,7 @@ static uint8_t MapAircraftMovementAction(const Aircraft *v)
 
 /* virtual */ uint32_t VehicleScopeResolver::GetRandomTriggers() const
 {
-	return this->v == nullptr ? 0 : this->v->waiting_random_triggers;
+	return this->v == nullptr ? 0 : this->v->waiting_random_triggers.base();
 }
 
 
@@ -626,7 +626,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 				if (parameter == 0x5F) {
 					/* This seems to be the only variable that makes sense to access via var 61, but is not handled by VehicleGetVariable */
-					return (u->random_bits << 8) | u->waiting_random_triggers;
+					return (u->random_bits << 8) | u->waiting_random_triggers.base();
 				} else {
 					return VehicleGetVariable(u, object, parameter, GetRegister(0x10E), available);
 				}
@@ -891,7 +891,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x78: break; // not implemented
 		case 0x79: break; // not implemented
 		case 0x7A: return v->random_bits;
-		case 0x7B: return v->waiting_random_triggers;
+		case 0x7B: return v->waiting_random_triggers.base();
 		case 0x7C: break; // vehicle specific, see below
 		case 0x7D: break; // vehicle specific, see below
 		case 0x7E: break; // not implemented
@@ -1061,7 +1061,7 @@ static const GRFFile *GetEngineGrfFile(EngineID engine_type)
  */
 VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle *v, WagonOverride wagon_override, bool rotor_in_gui,
 		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-	: ResolverObject(GetEngineGrfFile(engine_type), callback, callback_param1, callback_param2),
+	: SpecializedResolverObject<VehicleRandomTriggers>(GetEngineGrfFile(engine_type), callback, callback_param1, callback_param2),
 	self_scope(*this, engine_type, v, rotor_in_gui),
 	parent_scope(*this, engine_type, ((v != nullptr) ? v->First() : v), rotor_in_gui),
 	relative_scope(*this, engine_type, v, rotor_in_gui),
@@ -1247,20 +1247,20 @@ bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityTy
 	return p + RandomRange(PROBABILITY_RANGE) >= PROBABILITY_RANGE;
 }
 
-static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger, uint16_t base_random_bits, bool first)
+static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleRandomTrigger trigger, uint16_t base_random_bits, bool first)
 {
 	/* We can't trigger a non-existent vehicle... */
 	assert(v != nullptr);
 
 	VehicleResolverObject object(v->engine_type, v, VehicleResolverObject::WO_CACHED, false, CBID_RANDOM_TRIGGER);
-	object.waiting_random_triggers = v->waiting_random_triggers | trigger;
-	v->waiting_random_triggers = object.waiting_random_triggers; // store now for var 5F
+	v->waiting_random_triggers.Set(trigger); // store now for var 5F
+	object.SetWaitingRandomTriggers(v->waiting_random_triggers);
 
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return;
 
 	/* Store remaining triggers. */
-	v->waiting_random_triggers = object.GetRemainingRandomTriggers();
+	v->waiting_random_triggers.Reset(object.GetUsedRandomTriggers());
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for rerandomisation. For bug-to-bug-compatibility with TTDP we ignore the scope. */
 	uint16_t new_random_bits = Random();
@@ -1269,7 +1269,7 @@ static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger, ui
 	v->random_bits |= (first ? new_random_bits : base_random_bits) & reseed;
 
 	switch (trigger) {
-		case VEHICLE_TRIGGER_NEW_CARGO:
+		case VehicleRandomTrigger::NewCargo:
 			/* All vehicles in chain get ANY_NEW_CARGO trigger now.
 			 * So we call it for the first one and they will recurse.
 			 * Indexing part of vehicle random bits needs to be
@@ -1278,17 +1278,17 @@ static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger, ui
 			 * i.e.), so we give them all the NEW_CARGO triggered
 			 * vehicle's portion of random bits. */
 			assert(first);
-			DoTriggerVehicleRandomisation(v->First(), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			DoTriggerVehicleRandomisation(v->First(), VehicleRandomTrigger::AnyNewCargo, new_random_bits, false);
 			break;
 
-		case VEHICLE_TRIGGER_DEPOT:
+		case VehicleRandomTrigger::Depot:
 			/* We now trigger the next vehicle in chain recursively.
 			 * The random bits portions may be different for each
 			 * vehicle in chain. */
 			if (v->Next() != nullptr) DoTriggerVehicleRandomisation(v->Next(), trigger, 0, true);
 			break;
 
-		case VEHICLE_TRIGGER_EMPTY:
+		case VehicleRandomTrigger::Empty:
 			/* We now trigger the next vehicle in chain
 			 * recursively.  The random bits portions must be same
 			 * for each vehicle in chain, so we give them all
@@ -1296,20 +1296,20 @@ static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger, ui
 			if (v->Next() != nullptr) DoTriggerVehicleRandomisation(v->Next(), trigger, first ? new_random_bits : base_random_bits, false);
 			break;
 
-		case VEHICLE_TRIGGER_ANY_NEW_CARGO:
+		case VehicleRandomTrigger::AnyNewCargo:
 			/* Now pass the trigger recursively to the next vehicle
 			 * in chain. */
 			assert(!first);
-			if (v->Next() != nullptr) DoTriggerVehicleRandomisation(v->Next(), VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
+			if (v->Next() != nullptr) DoTriggerVehicleRandomisation(v->Next(), trigger, base_random_bits, false);
 			break;
 
-		case VEHICLE_TRIGGER_CALLBACK_32:
+		case VehicleRandomTrigger::Callback32:
 			/* Do not do any recursion */
 			break;
 	}
 }
 
-void TriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger)
+void TriggerVehicleRandomisation(Vehicle *v, VehicleRandomTrigger trigger)
 {
 	v->InvalidateNewGRFCacheOfChain();
 	DoTriggerVehicleRandomisation(v, trigger, 0, true);

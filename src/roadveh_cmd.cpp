@@ -1455,7 +1455,7 @@ again:
 				v->last_station_visited = st->index;
 				RoadVehArrivesAt(v, st);
 				v->BeginLoading();
-				TriggerRoadStopRandomisation(st, v->tile, RSRT_VEH_ARRIVES);
+				TriggerRoadStopRandomisation(st, v->tile, StationRandomTrigger::VehicleArrives);
 				TriggerRoadStopAnimation(st, v->tile, SAT_TRAIN_ARRIVES);
 			}
 			return false;
@@ -1519,7 +1519,7 @@ again:
 			if (IsDriveThroughStopTile(v->tile) || (v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetDestination() == st->index)) {
 				RoadVehArrivesAt(v, st);
 				v->BeginLoading();
-				TriggerRoadStopRandomisation(st, v->tile, RSRT_VEH_ARRIVES);
+				TriggerRoadStopRandomisation(st, v->tile, StationRandomTrigger::VehicleArrives);
 				TriggerRoadStopAnimation(st, v->tile, SAT_TRAIN_ARRIVES);
 				return false;
 			}
