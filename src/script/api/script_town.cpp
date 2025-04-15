@@ -37,7 +37,7 @@
 {
 	if (!IsValidTown(town_id)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(STR_TOWN_NAME, town_id));
+	return ::StrMakeValid(::GetString(STR_TOWN_NAME, town_id), {});
 }
 
 /* static */ bool ScriptTown::SetName(TownID town_id, Text *name)

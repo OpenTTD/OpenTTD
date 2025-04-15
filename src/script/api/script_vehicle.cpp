@@ -304,7 +304,7 @@
 {
 	if (!IsPrimaryVehicle(vehicle_id)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(STR_VEHICLE_NAME, vehicle_id));
+	return ::StrMakeValid(::GetString(STR_VEHICLE_NAME, vehicle_id), {});
 }
 
 /* static */ SQInteger ScriptVehicle::GetAge(VehicleID vehicle_id)

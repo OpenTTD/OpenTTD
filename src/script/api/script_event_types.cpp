@@ -34,7 +34,7 @@ std::optional<std::string> ScriptEventEnginePreview::GetName()
 {
 	if (!this->IsEngineValid()) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(STR_ENGINE_NAME, this->engine));
+	return ::StrMakeValid(::GetString(STR_ENGINE_NAME, this->engine), {});
 }
 
 CargoType ScriptEventEnginePreview::GetCargoType()
