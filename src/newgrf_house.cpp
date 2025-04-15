@@ -537,12 +537,12 @@ void AnimateNewHouseTile(TileIndex tile)
 	HouseAnimationBase::AnimateTile(hs, Town::GetByTile(tile), tile, hs->extra_flags.Test(HouseExtraFlag::Callback1ARandomBits));
 }
 
-void AnimateNewHouseConstruction(TileIndex tile)
+void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
-	if (hs->callback_mask.Test(HouseCallbackMask::ConstructionStageChange)) {
-		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_CONSTRUCTION_STAGE_CHANGE, hs, Town::GetByTile(tile), tile, 0, 0);
+	if (hs->callback_mask.Test(HouseCallbackMask::AnimationTriggerConstructionStageChanged)) {
+		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED, hs, Town::GetByTile(tile), tile, 0, 0);
 	}
 }
 
@@ -570,15 +570,15 @@ bool CanDeleteHouse(TileIndex tile)
  * @param sync Whether to call the synchronized or the unsynchronized trigger.
  * @param random_bits Shared random bits for the synchronized trigger.
  */
-static void AnimationControl(TileIndex tile, bool sync, uint16_t random_bits)
+static void TriggerHouseAnimation_TileLoop(TileIndex tile, bool sync, uint16_t random_bits)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	/* Check whether the matching trigger is enabled */
-	if (hs->callback_mask.Test(HouseCallbackMask::AnimationStartStop) &&
+	if (hs->callback_mask.Test(HouseCallbackMask::AnimationTriggerTileLoop) &&
 			hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B) == sync) {
 		uint32_t param = sync ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
-		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_START_STOP, hs, Town::GetByTile(tile), tile, param, 0);
+		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_TILE_LOOP, hs, Town::GetByTile(tile), tile, param, 0);
 	}
 }
 
@@ -595,15 +595,15 @@ bool NewHouseTileLoop(TileIndex tile)
 	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) TriggerHouseRandomisation(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
 
 	/* Call the unsynchronized tile loop trigger */
-	AnimationControl(tile, false, 0);
+	TriggerHouseAnimation_TileLoop(tile, false, 0);
 
 	/* Call the synchronized tile loop trigger, if this is the north tile */
 	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) {
 		uint16_t random = GB(Random(), 0, 16);
-		AnimationControl(tile, true, random);
-		if (hs->building_flags.Any(BUILDING_2_TILES_Y)) AnimationControl(TileAddXY(tile, 0, 1), true, random);
-		if (hs->building_flags.Any(BUILDING_2_TILES_X)) AnimationControl(TileAddXY(tile, 1, 0), true, random);
-		if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) AnimationControl(TileAddXY(tile, 1, 1), true, random);
+		TriggerHouseAnimation_TileLoop(tile, true, random);
+		if (hs->building_flags.Any(BUILDING_2_TILES_Y)) TriggerHouseAnimation_TileLoop(TileAddXY(tile, 0, 1), true, random);
+		if (hs->building_flags.Any(BUILDING_2_TILES_X)) TriggerHouseAnimation_TileLoop(TileAddXY(tile, 1, 0), true, random);
+		if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) TriggerHouseAnimation_TileLoop(TileAddXY(tile, 1, 1), true, random);
 	}
 
 	/* Check callback 21, which determines if a house should be destroyed. */
@@ -679,11 +679,11 @@ void TriggerHouseRandomisation(TileIndex t, HouseTrigger trigger)
  * @param trigger_cargoes Cargo types that triggered the callback.
  * @param random Random bits.
  */
-void DoWatchedCargoCallback(TileIndex tile, TileIndex origin, CargoTypes trigger_cargoes, uint16_t random)
+static void DoTriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, TileIndex origin, CargoTypes trigger_cargoes, uint16_t random)
 {
 	TileIndexDiffC diff = TileIndexToTileIndexDiffC(origin, tile);
 	uint32_t cb_info = random << 16 | (uint8_t)diff.y << 8 | (uint8_t)diff.x;
-	HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_WATCHED_CARGO_ACCEPTED, HouseSpec::Get(GetHouseType(tile)), Town::GetByTile(tile), tile, 0, cb_info, trigger_cargoes);
+	HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_WATCHED_CARGO_ACCEPTED, HouseSpec::Get(GetHouseType(tile)), Town::GetByTile(tile), tile, 0, cb_info, trigger_cargoes);
 }
 
 /**
@@ -692,7 +692,7 @@ void DoWatchedCargoCallback(TileIndex tile, TileIndex origin, CargoTypes trigger
  * @param trigger_cargoes Triggering cargo types.
  * @pre IsTileType(t, MP_HOUSE)
  */
-void WatchedCargoCallback(TileIndex tile, CargoTypes trigger_cargoes)
+void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigger_cargoes)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 	HouseID id = GetHouseType(tile);
@@ -709,9 +709,9 @@ void WatchedCargoCallback(TileIndex tile, CargoTypes trigger_cargoes)
 	TileIndex north = tile + GetHouseNorthPart(id);
 	hs = HouseSpec::Get(id);
 
-	DoWatchedCargoCallback(north, tile, trigger_cargoes, r);
-	if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoWatchedCargoCallback(TileAddXY(north, 0, 1), tile, trigger_cargoes, r);
-	if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoWatchedCargoCallback(TileAddXY(north, 1, 0), tile, trigger_cargoes, r);
-	if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoWatchedCargoCallback(TileAddXY(north, 1, 1), tile, trigger_cargoes, r);
+	DoTriggerHouseAnimation_WatchedCargoAccepted(north, tile, trigger_cargoes, r);
+	if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 0, 1), tile, trigger_cargoes, r);
+	if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 1, 0), tile, trigger_cargoes, r);
+	if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 1, 1), tile, trigger_cargoes, r);
 }
 

@@ -503,7 +503,7 @@ static void AdvanceSingleHouseConstruction(TileIndex tile)
 	IncHouseConstructionTick(tile);
 	if (GetHouseConstructionTick(tile) != 0) return;
 
-	AnimateNewHouseConstruction(tile);
+	TriggerHouseAnimation_ConstructionStageChanged(tile);
 
 	if (IsHouseCompleted(tile)) {
 		/* Now that construction is complete, we can add the population of the

@@ -763,7 +763,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	uint8_t stage = GetIndustryConstructionStage(tile) + 1;
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
-	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STAGE_CHANGE);
+	TriggerIndustryTileAnimation(tile, IAT_CONSTRUCTION_STAGE_CHANGE);
 	if (stage == INDUSTRY_COMPLETED) SetIndustryCompleted(tile);
 
 	MarkTileDirtyByTile(tile);
@@ -853,7 +853,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 	if (_game_mode == GM_EDITOR) return;
 
-	if (TransportIndustryGoods(tile) && !StartStopIndustryTileAnimation(Industry::GetByTile(tile), IAT_INDUSTRY_DISTRIBUTES_CARGO)) {
+	if (TransportIndustryGoods(tile) && !TriggerIndustryAnimation(Industry::GetByTile(tile), IAT_INDUSTRY_DISTRIBUTES_CARGO)) {
 		uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
 		if (newgfx != INDUSTRYTILE_NOANIM) {
@@ -865,7 +865,7 @@ static void TileLoop_Industry(TileIndex tile)
 		}
 	}
 
-	if (StartStopIndustryTileAnimation(tile, IAT_TILELOOP)) return;
+	if (TriggerIndustryTileAnimation(tile, IAT_TILELOOP)) return;
 
 	IndustryGfx newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
 	if (newgfx != INDUSTRYTILE_NOANIM) {
@@ -1223,7 +1223,7 @@ static void ProduceIndustryGoods(Industry *i)
 		}
 
 		TriggerIndustryRandomisation(i, INDUSTRY_TRIGGER_INDUSTRY_TICK);
-		StartStopIndustryTileAnimation(i, IAT_INDUSTRY_TICK);
+		TriggerIndustryAnimation(i, IAT_INDUSTRY_TICK);
 	}
 }
 
