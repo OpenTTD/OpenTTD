@@ -97,8 +97,8 @@ static const NICallback _nic_stations[] = {
 	NICS(CBID_STATION_AVAILABILITY,     StationCallbackMask::Avail),
 	NICS(CBID_STATION_DRAW_TILE_LAYOUT, StationCallbackMask::DrawTileLayout),
 	NICS(CBID_STATION_BUILD_TILE_LAYOUT,std::monostate{}),
-	NICS(CBID_STATION_ANIM_START_STOP,  std::monostate{}),
-	NICS(CBID_STATION_ANIM_NEXT_FRAME,  StationCallbackMask::AnimationNextFrame),
+	NICS(CBID_STATION_ANIMATION_TRIGGER, std::monostate{}),
+	NICS(CBID_STATION_ANIMATION_NEXT_FRAME, StationCallbackMask::AnimationNextFrame),
 	NICS(CBID_STATION_ANIMATION_SPEED,  StationCallbackMask::AnimationSpeed),
 	NICS(CBID_STATION_LAND_SLOPE_CHECK, StationCallbackMask::SlopeCheck),
 };
@@ -160,8 +160,8 @@ static const NIFeature _nif_station = {
 static const NICallback _nic_house[] = {
 	NICH(CBID_HOUSE_ALLOW_CONSTRUCTION,        HouseCallbackMask::AllowConstruction),
 	NICH(CBID_HOUSE_ANIMATION_NEXT_FRAME,      HouseCallbackMask::AnimationNextFrame),
-	NICH(CBID_HOUSE_ANIMATION_START_STOP,      HouseCallbackMask::AnimationStartStop),
-	NICH(CBID_HOUSE_CONSTRUCTION_STAGE_CHANGE, HouseCallbackMask::ConstructionStageChange),
+	NICH(CBID_HOUSE_ANIMATION_TRIGGER_TILE_LOOP, HouseCallbackMask::AnimationTriggerTileLoop),
+	NICH(CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED, HouseCallbackMask::AnimationTriggerConstructionStageChanged),
 	NICH(CBID_HOUSE_COLOUR,                    HouseCallbackMask::Colour),
 	NICH(CBID_HOUSE_CARGO_ACCEPTANCE,          HouseCallbackMask::CargoAcceptance),
 	NICH(CBID_HOUSE_ANIMATION_SPEED,           HouseCallbackMask::AnimationSpeed),
@@ -169,7 +169,7 @@ static const NICallback _nic_house[] = {
 	NICH(CBID_HOUSE_ACCEPT_CARGO,              HouseCallbackMask::AcceptCargo),
 	NICH(CBID_HOUSE_PRODUCE_CARGO,             HouseCallbackMask::ProduceCargo),
 	NICH(CBID_HOUSE_DENY_DESTRUCTION,          HouseCallbackMask::DenyDestruction),
-	NICH(CBID_HOUSE_WATCHED_CARGO_ACCEPTED,    std::monostate{}),
+	NICH(CBID_HOUSE_ANIMATION_TRIGGER_WATCHED_CARGO_ACCEPTED, std::monostate{}),
 	NICH(CBID_HOUSE_CUSTOM_NAME,               std::monostate{}),
 	NICH(CBID_HOUSE_DRAW_FOUNDATIONS,          HouseCallbackMask::DrawFoundations),
 	NICH(CBID_HOUSE_AUTOSLOPE,                 HouseCallbackMask::Autoslope),
@@ -223,8 +223,8 @@ static const NIFeature _nif_house = {
 
 #define NICIT(cb_id, bit) NIC(cb_id, IndustryTileSpec, callback_mask, bit)
 static const NICallback _nic_industrytiles[] = {
-	NICIT(CBID_INDTILE_ANIM_START_STOP,  std::monostate{}),
-	NICIT(CBID_INDTILE_ANIM_NEXT_FRAME,  IndustryTileCallbackMask::AnimationNextFrame),
+	NICIT(CBID_INDTILE_ANIMATION_TRIGGER, std::monostate{}),
+	NICIT(CBID_INDTILE_ANIMATION_NEXT_FRAME, IndustryTileCallbackMask::AnimationNextFrame),
 	NICIT(CBID_INDTILE_ANIMATION_SPEED,  IndustryTileCallbackMask::AnimationSpeed),
 	NICIT(CBID_INDTILE_CARGO_ACCEPTANCE, IndustryTileCallbackMask::CargoAcceptance),
 	NICIT(CBID_INDTILE_ACCEPT_CARGO,     IndustryTileCallbackMask::AcceptCargo),
@@ -394,7 +394,7 @@ static const NIFeature _nif_industry = {
 static const NICallback _nic_objects[] = {
 	NICO(CBID_OBJECT_LAND_SLOPE_CHECK,     ObjectCallbackMask::SlopeCheck),
 	NICO(CBID_OBJECT_ANIMATION_NEXT_FRAME, ObjectCallbackMask::AnimationNextFrame),
-	NICO(CBID_OBJECT_ANIMATION_START_STOP, std::monostate{}),
+	NICO(CBID_OBJECT_ANIMATION_TRIGGER, std::monostate{}),
 	NICO(CBID_OBJECT_ANIMATION_SPEED,      ObjectCallbackMask::AnimationSpeed),
 	NICO(CBID_OBJECT_COLOUR,               ObjectCallbackMask::Colour),
 	NICO(CBID_OBJECT_FUND_MORE_TEXT,       ObjectCallbackMask::FundMoreText),
@@ -485,8 +485,8 @@ static const NIFeature _nif_railtype = {
 #define NICAT(cb_id, bit) NIC(cb_id, AirportTileSpec, callback_mask, bit)
 static const NICallback _nic_airporttiles[] = {
 	NICAT(CBID_AIRPTILE_DRAW_FOUNDATIONS, AirportTileCallbackMask::DrawFoundations),
-	NICAT(CBID_AIRPTILE_ANIM_START_STOP,  std::monostate{}),
-	NICAT(CBID_AIRPTILE_ANIM_NEXT_FRAME,  AirportTileCallbackMask::AnimationNextFrame),
+	NICAT(CBID_AIRPTILE_ANIMATION_TRIGGER, std::monostate{}),
+	NICAT(CBID_AIRPTILE_ANIMATION_NEXT_FRAME, AirportTileCallbackMask::AnimationNextFrame),
 	NICAT(CBID_AIRPTILE_ANIMATION_SPEED,  AirportTileCallbackMask::AnimationSpeed),
 };
 
@@ -665,8 +665,8 @@ static const NIFeature _nif_tramtype = {
 #define NICRS(cb_id, bit) NIC(cb_id, RoadStopSpec, callback_mask, bit)
 static const NICallback _nic_roadstops[] = {
 	NICRS(CBID_STATION_AVAILABILITY,     RoadStopCallbackMask::Avail),
-	NICRS(CBID_STATION_ANIM_START_STOP,  std::monostate{}),
-	NICRS(CBID_STATION_ANIM_NEXT_FRAME,  RoadStopCallbackMask::AnimationNextFrame),
+	NICRS(CBID_STATION_ANIMATION_TRIGGER, std::monostate{}),
+	NICRS(CBID_STATION_ANIMATION_NEXT_FRAME, RoadStopCallbackMask::AnimationNextFrame),
 	NICRS(CBID_STATION_ANIMATION_SPEED,  RoadStopCallbackMask::AnimationSpeed),
 };
 

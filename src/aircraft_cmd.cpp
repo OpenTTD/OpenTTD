@@ -1430,7 +1430,7 @@ static void AircraftLandAirplane(Aircraft *v)
 
 	v->UpdateDeltaXY();
 
-	AirportTileAnimationTrigger(st, vt, AAT_STATION_AIRPLANE_LAND);
+	TriggerAirportTileAnimation(st, vt, AAT_STATION_AIRPLANE_LAND);
 
 	if (!PlayVehicleSound(v, VSE_TOUCHDOWN)) {
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);

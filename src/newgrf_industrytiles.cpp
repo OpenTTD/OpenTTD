@@ -262,7 +262,7 @@ uint16_t GetSimpleIndustryCallback(CallbackID callback, uint32_t param1, uint32_
 /** Helper class for animation control. */
 struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, int, GetSimpleIndustryCallback, TileAnimationFrameAnimationHelper<Industry> > {
 	static constexpr CallbackID cb_animation_speed      = CBID_INDTILE_ANIMATION_SPEED;
-	static constexpr CallbackID cb_animation_next_frame = CBID_INDTILE_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_next_frame = CBID_INDTILE_ANIMATION_NEXT_FRAME;
 
 	static constexpr IndustryTileCallbackMask cbm_animation_speed      = IndustryTileCallbackMask::AnimationSpeed;
 	static constexpr IndustryTileCallbackMask cbm_animation_next_frame = IndustryTileCallbackMask::AnimationNextFrame;
@@ -276,23 +276,23 @@ void AnimateNewIndustryTile(TileIndex tile)
 	IndustryAnimationBase::AnimateTile(itspec, Industry::GetByTile(tile), tile, itspec->special_flags.Test(IndustryTileSpecialFlag::NextFrameRandomBits));
 }
 
-bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random)
+bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random)
 {
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
 
 	if (!HasBit(itspec->animation.triggers, iat)) return false;
 
-	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIM_START_STOP, itspec, Industry::GetByTile(tile), tile, random, iat);
+	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, iat);
 	return true;
 }
 
-bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigger iat)
+bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat)
 {
 	bool ret = true;
 	uint32_t random = Random();
 	for (TileIndex tile : ind->location) {
 		if (ind->TileBelongsToIndustry(tile)) {
-			if (StartStopIndustryTileAnimation(tile, iat, random)) {
+			if (TriggerIndustryTileAnimation(tile, iat, random)) {
 				SB(random, 0, 16, Random());
 			} else {
 				ret = false;

@@ -99,11 +99,12 @@ std::span<const uint> GetBuildingHouseIDCounts();
 
 void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
 void AnimateNewHouseTile(TileIndex tile);
-void AnimateNewHouseConstruction(TileIndex tile);
+/* see also: void TriggerHouseAnimation_TileLoop(TileIndex tile, uint16_t random_bits) */
+void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile);
+void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigger_cargoes);
 
 uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
 		bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0, int view = 0);
-void WatchedCargoCallback(TileIndex tile, CargoTypes trigger_cargoes);
 
 bool CanDeleteHouse(TileIndex tile);
 

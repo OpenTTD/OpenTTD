@@ -363,7 +363,7 @@ struct RoadStopAnimationFrameAnimationHelper {
 /** Helper class for animation control. */
 struct RoadStopAnimationBase : public AnimationBase<RoadStopAnimationBase, RoadStopSpec, BaseStation, int, GetAnimRoadStopCallback, RoadStopAnimationFrameAnimationHelper> {
 	static constexpr CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
-	static constexpr CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_next_frame = CBID_STATION_ANIMATION_NEXT_FRAME;
 
 	static constexpr RoadStopCallbackMask cbm_animation_speed      = RoadStopCallbackMask::AnimationSpeed;
 	static constexpr RoadStopCallbackMask cbm_animation_next_frame = RoadStopCallbackMask::AnimationNextFrame;
@@ -396,7 +396,7 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
 			} else {
 				local_cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 			}
-			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, cur_tile, (random_bits << 16) | Random(), (uint8_t)trigger | (local_cargo << 8));
+			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, cur_tile, (random_bits << 16) | Random(), (uint8_t)trigger | (local_cargo << 8));
 		}
 	};
 
