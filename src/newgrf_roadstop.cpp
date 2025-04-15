@@ -65,7 +65,7 @@ uint32_t RoadStopScopeResolver::GetRandomBits() const
 
 uint32_t RoadStopScopeResolver::GetRandomTriggers() const
 {
-	return this->st == nullptr ? 0 : this->st->waiting_random_triggers;
+	return this->st == nullptr ? 0 : this->st->waiting_random_triggers.base();
 }
 
 uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
@@ -226,7 +226,7 @@ const SpriteGroup *RoadStopResolverObject::ResolveReal(const RealSpriteGroup *gr
 
 RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view,
 		CallbackID callback, uint32_t param1, uint32_t param2)
-	: ResolverObject(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
+	: SpecializedResolverObject<StationRandomTriggers>(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
 {
 	CargoType ctype = SpriteGroupCargo::SG_DEFAULT_NA;
 
@@ -417,7 +417,7 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
  * @param trigger trigger type
  * @param cargo_type cargo type causing the trigger
  */
-void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTrigger trigger, CargoType cargo_type)
+void TriggerRoadStopRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoType cargo_type)
 {
 	if (st == nullptr) st = Station::GetByTile(tile);
 
@@ -426,32 +426,32 @@ void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTri
 	if (st->cached_roadstop_cargo_triggers == 0) return;
 	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_roadstop_cargo_triggers, cargo_type)) return;
 
-	SetBit(st->waiting_random_triggers, trigger);
+	st->waiting_random_triggers.Set(trigger);
 
 	uint32_t whole_reseed = 0;
 
 	/* Bitmask of completely empty cargo types to be matched. */
-	CargoTypes empty_mask = (trigger == RSRT_CARGO_TAKEN) ? GetEmptyMask(st) : 0;
+	CargoTypes empty_mask = (trigger == StationRandomTrigger::CargoTaken) ? GetEmptyMask(st) : 0;
 
-	uint32_t used_random_triggers = 0;
+	StationRandomTriggers used_random_triggers;
 	auto process_tile = [&](TileIndex cur_tile) {
 		const RoadStopSpec *ss = GetRoadStopSpec(cur_tile);
 		if (ss == nullptr) return;
 
 		/* Cargo taken "will only be triggered if all of those
 		 * cargo types have no more cargo waiting." */
-		if (trigger == RSRT_CARGO_TAKEN) {
+		if (trigger == StationRandomTrigger::CargoTaken) {
 			if ((ss->cargo_triggers & ~empty_mask) != 0) return;
 		}
 
 		if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
 			RoadStopResolverObject object(ss, st, cur_tile, INVALID_ROADTYPE, GetStationType(cur_tile), GetStationGfx(cur_tile));
-			object.waiting_random_triggers = st->waiting_random_triggers;
+			object.SetWaitingRandomTriggers(st->waiting_random_triggers);
 
 			const SpriteGroup *group = object.Resolve();
 			if (group == nullptr) return;
 
-			used_random_triggers |= object.used_random_triggers;
+			used_random_triggers.Set(object.GetUsedRandomTriggers());
 
 			uint32_t reseed = object.GetReseedSum();
 			if (reseed != 0) {
@@ -468,7 +468,7 @@ void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTri
 			}
 		}
 	};
-	if (trigger == RSRT_NEW_CARGO || trigger == RSRT_CARGO_TAKEN) {
+	if (trigger == StationRandomTrigger::NewCargo || trigger == StationRandomTrigger::CargoTaken) {
 		for (const RoadStopTileData &tile_data : st->custom_roadstop_tile_data) {
 			process_tile(tile_data.tile);
 		}
@@ -477,7 +477,7 @@ void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTri
 	}
 
 	/* Update whole station random bits */
-	st->waiting_random_triggers &= ~used_random_triggers;
+	st->waiting_random_triggers.Reset(used_random_triggers);
 	if ((whole_reseed & 0xFFFF) != 0) {
 		st->random_bits &= ~whole_reseed;
 		st->random_bits |= Random() & whole_reseed;

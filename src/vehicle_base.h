@@ -311,7 +311,7 @@ public:
 	uint32_t motion_counter = 0; ///< counter to occasionally play a vehicle sound.
 	uint8_t progress = 0; ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
 
-	uint8_t waiting_random_triggers = 0; ///< Triggers to be yet matched before rerandomizing the random bits.
+	VehicleRandomTriggers waiting_random_triggers; ///< Triggers to be yet matched before rerandomizing the random bits.
 	uint16_t random_bits = 0; ///< Bits used for randomized variational spritegroups.
 
 	StationID last_station_visited = StationID::Invalid(); ///< The last station we stopped at.

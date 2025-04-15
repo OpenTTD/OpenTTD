@@ -49,7 +49,7 @@ struct HouseScopeResolver : public ScopeResolver {
 };
 
 /** Resolver object to be used for houses (feature 07 spritegroups). */
-struct HouseResolverObject : public ResolverObject {
+struct HouseResolverObject : public SpecializedResolverObject<HouseRandomTriggers> {
 	HouseScopeResolver house_scope;
 	TownScopeResolver  town_scope;
 
@@ -110,15 +110,6 @@ bool CanDeleteHouse(TileIndex tile);
 
 bool NewHouseTileLoop(TileIndex tile);
 
-enum HouseTrigger : uint8_t {
-	/* The tile of the house has been triggered during the tileloop. */
-	HOUSE_TRIGGER_TILE_LOOP     = 0x01,
-	/*
-	 * The top tile of a (multitile) building has been triggered during and all
-	 * the tileloop other tiles of the same building get the same random value.
-	 */
-	HOUSE_TRIGGER_TILE_LOOP_TOP = 0x02,
-};
-void TriggerHouseRandomisation(TileIndex t, HouseTrigger trigger);
+void TriggerHouseRandomisation(TileIndex t, HouseRandomTrigger trigger);
 
 #endif /* NEWGRF_HOUSE_H */

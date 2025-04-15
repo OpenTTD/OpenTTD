@@ -49,7 +49,7 @@ struct StationScopeResolver : public ScopeResolver {
 };
 
 /** Station resolver. */
-struct StationResolverObject : public ResolverObject {
+struct StationResolverObject : public SpecializedResolverObject<StationRandomTriggers> {
 	StationScopeResolver station_scope; ///< The station scope resolver.
 	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
@@ -102,16 +102,6 @@ enum class StationSpecFlag : uint8_t {
 	ExtendedFoundations = 4, ///< Extended foundation block instead of simple.
 };
 using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
-
-/** Randomisation triggers for stations */
-enum StationRandomTrigger : uint8_t {
-	SRT_NEW_CARGO,        ///< Trigger station on new cargo arrival.
-	SRT_CARGO_TAKEN,      ///< Trigger station when cargo is completely taken.
-	SRT_TRAIN_ARRIVES,    ///< Trigger platform when train arrives.
-	SRT_TRAIN_DEPARTS,    ///< Trigger platform when train leaves.
-	SRT_TRAIN_LOADS,      ///< Trigger platform when train loads/unloads.
-	SRT_PATH_RESERVATION, ///< Trigger platform when train reserves path.
-};
 
 /** Station specification. */
 struct StationSpec : NewGRFSpecBase<StationClassID> {

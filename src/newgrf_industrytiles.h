@@ -36,7 +36,7 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 };
 
 /** Resolver for industry tiles. */
-struct IndustryTileResolverObject : public ResolverObject {
+struct IndustryTileResolverObject : public SpecializedResolverObject<IndustryRandomTriggers> {
 	IndustryTileScopeResolver indtile_scope; ///< Scope resolver for the industry tile.
 	IndustriesScopeResolver ind_scope;       ///< Scope resolver for the industry owning the tile.
 	IndustryGfx gfx;
@@ -65,14 +65,7 @@ void AnimateNewIndustryTile(TileIndex tile);
 bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random = Random());
 bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat);
 
-
-/** Available industry tile triggers. */
-enum IndustryTileTrigger : uint8_t {
-	INDTILE_TRIGGER_TILE_LOOP       = 0x01, ///< The tile of the industry has been triggered during the tileloop.
-	INDUSTRY_TRIGGER_INDUSTRY_TICK  = 0x02, ///< The industry has been triggered via its tick.
-	INDUSTRY_TRIGGER_RECEIVED_CARGO = 0x04, ///< Cargo has been delivered.
-};
-void TriggerIndustryTileRandomisation(TileIndex t, IndustryTileTrigger trigger);
-void TriggerIndustryRandomisation(Industry *ind, IndustryTileTrigger trigger);
+void TriggerIndustryTileRandomisation(TileIndex t, IndustryRandomTrigger trigger);
+void TriggerIndustryRandomisation(Industry *ind, IndustryRandomTrigger trigger);
 
 #endif /* NEWGRF_INDUSTRYTILES_H */

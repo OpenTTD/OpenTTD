@@ -76,6 +76,17 @@ enum StationHadVehicleOfType : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType)
 
+/** Randomisation triggers for stations and roadstops */
+enum class StationRandomTrigger : uint8_t {
+	NewCargo, ///< Trigger station on new cargo arrival.
+	CargoTaken, ///< Trigger station when cargo is completely taken.
+	VehicleArrives, ///< Trigger platform when train arrives.
+	VehicleDeparts, ///< Trigger platform when train leaves.
+	VehicleLoads, ///< Trigger platform when train loads/unloads.
+	PathReservation, ///< Trigger platform when train reserves path.
+};
+using StationRandomTriggers = EnumBitSet<StationRandomTrigger, uint8_t>;
+
 /* The different catchment area sizes. */
 static constexpr uint CA_NONE = 0; ///< Catchment when the station has no facilities
 static constexpr uint CA_BUS = 3; ///< Catchment for bus stops with "modified catchment" enabled
