@@ -247,7 +247,7 @@ inline void SetIndustryRandomBits(Tile tile, uint8_t bits)
  * @pre IsTileType(tile, MP_INDUSTRY)
  * @return requested triggers
  */
-inline uint8_t GetIndustryTriggers(Tile tile)
+inline uint8_t GetIndustryRandomTriggers(Tile tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
 	return GB(tile.m6(), 3, 3);
@@ -261,7 +261,7 @@ inline uint8_t GetIndustryTriggers(Tile tile)
  * @param triggers the triggers to set
  * @pre IsTileType(tile, MP_INDUSTRY)
  */
-inline void SetIndustryTriggers(Tile tile, uint8_t triggers)
+inline void SetIndustryRandomTriggers(Tile tile, uint8_t triggers)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
 	SB(tile.m6(), 3, 3, triggers);
@@ -283,7 +283,7 @@ inline void MakeIndustry(Tile t, IndustryID index, IndustryGfx gfx, uint8_t rand
 	SetIndustryRandomBits(t, random); // m3
 	t.m4() = 0;
 	SetIndustryGfx(t, gfx); // m5, part of m6
-	SetIndustryTriggers(t, 0); // rest of m6
+	SetIndustryRandomTriggers(t, 0); // rest of m6
 	SetWaterClass(t, wc);
 	t.m7() = 0;
 }

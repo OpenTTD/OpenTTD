@@ -62,7 +62,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 		case 0x18: return object.callback_param2;
 		case 0x1C: return object.last_value;
 
-		case 0x5F: return (scope->GetRandomBits() << 8) | scope->GetTriggers();
+		case 0x5F: return (scope->GetRandomBits() << 8) | scope->GetRandomTriggers();
 
 		case 0x7D: return _temp_store.GetValue(parameter);
 
@@ -91,7 +91,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * Get the triggers. Base class returns \c 0 to prevent trouble.
  * @return The triggers.
  */
-/* virtual */ uint32_t ScopeResolver::GetTriggers() const
+/* virtual */ uint32_t ScopeResolver::GetRandomTriggers() const
 {
 	return 0;
 }
@@ -258,11 +258,11 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 	ScopeResolver *scope = object.GetScope(this->var_scope, this->count);
 	if (object.callback == CBID_RANDOM_TRIGGER) {
 		/* Handle triggers */
-		uint8_t match = this->triggers & object.waiting_triggers;
+		uint8_t match = this->triggers & object.waiting_random_triggers;
 		bool res = (this->cmp_mode == RSG_CMP_ANY) ? (match != 0) : (match == this->triggers);
 
 		if (res) {
-			object.used_triggers |= match;
+			object.used_random_triggers |= match;
 			object.reseed[this->var_scope] |= (this->groups.size() - 1) << this->lowest_randbit;
 		}
 	}

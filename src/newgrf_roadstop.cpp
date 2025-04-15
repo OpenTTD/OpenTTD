@@ -63,9 +63,9 @@ uint32_t RoadStopScopeResolver::GetRandomBits() const
 	return bits;
 }
 
-uint32_t RoadStopScopeResolver::GetTriggers() const
+uint32_t RoadStopScopeResolver::GetRandomTriggers() const
 {
-	return this->st == nullptr ? 0 : this->st->waiting_triggers;
+	return this->st == nullptr ? 0 : this->st->waiting_random_triggers;
 }
 
 uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
@@ -426,14 +426,14 @@ void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTri
 	if (st->cached_roadstop_cargo_triggers == 0) return;
 	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_roadstop_cargo_triggers, cargo_type)) return;
 
-	SetBit(st->waiting_triggers, trigger);
+	SetBit(st->waiting_random_triggers, trigger);
 
 	uint32_t whole_reseed = 0;
 
 	/* Bitmask of completely empty cargo types to be matched. */
 	CargoTypes empty_mask = (trigger == RSRT_CARGO_TAKEN) ? GetEmptyMask(st) : 0;
 
-	uint32_t used_triggers = 0;
+	uint32_t used_random_triggers = 0;
 	auto process_tile = [&](TileIndex cur_tile) {
 		const RoadStopSpec *ss = GetRoadStopSpec(cur_tile);
 		if (ss == nullptr) return;
@@ -446,12 +446,12 @@ void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTri
 
 		if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
 			RoadStopResolverObject object(ss, st, cur_tile, INVALID_ROADTYPE, GetStationType(cur_tile), GetStationGfx(cur_tile));
-			object.waiting_triggers = st->waiting_triggers;
+			object.waiting_random_triggers = st->waiting_random_triggers;
 
 			const SpriteGroup *group = object.Resolve();
 			if (group == nullptr) return;
 
-			used_triggers |= object.used_triggers;
+			used_random_triggers |= object.used_random_triggers;
 
 			uint32_t reseed = object.GetReseedSum();
 			if (reseed != 0) {
@@ -477,7 +477,7 @@ void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTri
 	}
 
 	/* Update whole station random bits */
-	st->waiting_triggers &= ~used_triggers;
+	st->waiting_random_triggers &= ~used_random_triggers;
 	if ((whole_reseed & 0xFFFF) != 0) {
 		st->random_bits &= ~whole_reseed;
 		st->random_bits |= Random() & whole_reseed;

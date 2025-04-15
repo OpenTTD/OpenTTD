@@ -110,12 +110,12 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 	return (this->industry->index != IndustryID::Invalid()) ? GetIndustryRandomBits(this->tile) : 0;
 }
 
-/* virtual */ uint32_t IndustryTileScopeResolver::GetTriggers() const
+/* virtual */ uint32_t IndustryTileScopeResolver::GetRandomTriggers() const
 {
 	assert(this->industry != nullptr && IsValidTile(this->tile));
 	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, MP_INDUSTRY));
 	if (this->industry->index == IndustryID::Invalid()) return 0;
-	return GetIndustryTriggers(this->tile);
+	return GetIndustryRandomTriggers(this->tile);
 }
 
 /**
@@ -320,14 +320,14 @@ static void DoTriggerIndustryTileRandomisation(TileIndex tile, IndustryTileTrigg
 	if (itspec->grf_prop.GetSpriteGroup() == nullptr) return;
 
 	IndustryTileResolverObject object(gfx, tile, ind, CBID_RANDOM_TRIGGER);
-	object.waiting_triggers = GetIndustryTriggers(tile) | trigger;
-	SetIndustryTriggers(tile, object.waiting_triggers); // store now for var 5F
+	object.waiting_random_triggers = GetIndustryRandomTriggers(tile) | trigger;
+	SetIndustryRandomTriggers(tile, object.waiting_random_triggers); // store now for var 5F
 
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return;
 
 	/* Store remaining triggers. */
-	SetIndustryTriggers(tile, object.GetRemainingTriggers());
+	SetIndustryRandomTriggers(tile, object.GetRemainingRandomTriggers());
 
 	/* Rerandomise tile bits */
 	uint8_t new_random_bits = Random();
