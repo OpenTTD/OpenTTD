@@ -286,7 +286,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 /** Helper class for animation control. */
 struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, int, GetAirportTileCallback, TileAnimationFrameAnimationHelper<Station> > {
 	static constexpr CallbackID cb_animation_speed      = CBID_AIRPTILE_ANIMATION_SPEED;
-	static constexpr CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIMATION_NEXT_FRAME;
 
 	static constexpr AirportTileCallbackMask cbm_animation_speed      = AirportTileCallbackMask::AnimationSpeed;
 	static constexpr AirportTileCallbackMask cbm_animation_next_frame = AirportTileCallbackMask::AnimationNextFrame;
@@ -300,20 +300,20 @@ void AnimateAirportTile(TileIndex tile)
 	AirportTileAnimationBase::AnimateTile(ats, Station::GetByTile(tile), tile, HasBit(ats->animation_special_flags, 0));
 }
 
-void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoType cargo_type)
+void TriggerAirportTileAnimation(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoType cargo_type)
 {
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
 	if (!HasBit(ats->animation.triggers, trigger)) return;
 
-	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIM_START_STOP, ats, st, tile, Random(), (uint8_t)trigger | (cargo_type << 8));
+	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIMATION_TRIGGER, ats, st, tile, Random(), (uint8_t)trigger | (cargo_type << 8));
 }
 
-void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoType cargo_type)
+void TriggerAirportAnimation(Station *st, AirpAnimationTrigger trigger, CargoType cargo_type)
 {
 	if (st->airport.tile == INVALID_TILE) return;
 
 	for (TileIndex tile : st->airport) {
-		if (st->TileBelongsToAirport(tile)) AirportTileAnimationTrigger(st, tile, trigger, cargo_type);
+		if (st->TileBelongsToAirport(tile)) TriggerAirportTileAnimation(st, tile, trigger, cargo_type);
 	}
 }
 

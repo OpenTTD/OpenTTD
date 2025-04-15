@@ -2622,7 +2622,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 
 		/* Only call the animation trigger after all tiles have been built */
 		for (AirportTileTableIterator iter(as->layouts[layout].tiles.data(), tile); iter != INVALID_TILE; ++iter) {
-			AirportTileAnimationTrigger(st, iter, AAT_BUILT);
+			TriggerAirportTileAnimation(st, iter, AAT_BUILT);
 		}
 
 		UpdateAirplanesOnNewStation(st);
@@ -3609,7 +3609,7 @@ static void TileLoop_Station(TileIndex tile)
 {
 	switch (GetStationType(tile)) {
 		case StationType::Airport:
-			AirportTileAnimationTrigger(Station::GetByTile(tile), tile, AAT_TILELOOP);
+			TriggerAirportTileAnimation(Station::GetByTile(tile), tile, AAT_TILELOOP);
 			break;
 
 		case StationType::Dock:
@@ -3764,7 +3764,7 @@ void TriggerWatchedCargoCallbacks(Station *st)
 	BitmapTileIterator it(st->catchment_tiles);
 	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
 		if (IsTileType(tile, MP_HOUSE)) {
-			WatchedCargoCallback(tile, cargoes);
+			TriggerHouseAnimation_WatchedCargoAccepted(tile, cargoes);
 		}
 	}
 }
@@ -4213,7 +4213,7 @@ void OnTick_Station()
 		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
 			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);
 			TriggerRoadStopAnimation(st, st->xy, SAT_250_TICKS);
-			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_TICKS);
+			if (Station::IsExpected(st)) TriggerAirportAnimation(Station::From(st), AAT_STATION_250_TICKS);
 		}
 	}
 }
@@ -4280,7 +4280,7 @@ static uint UpdateStationWaiting(Station *st, CargoType cargo, uint amount, Sour
 
 	TriggerStationRandomisation(st, st->xy, SRT_NEW_CARGO, cargo);
 	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, cargo);
-	AirportAnimationTrigger(st, AAT_STATION_NEW_CARGO, cargo);
+	TriggerAirportAnimation(st, AAT_STATION_NEW_CARGO, cargo);
 	TriggerRoadStopRandomisation(st, st->xy, RSRT_NEW_CARGO, cargo);
 	TriggerRoadStopAnimation(st, st->xy, SAT_NEW_CARGO, cargo);
 

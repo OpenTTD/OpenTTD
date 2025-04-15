@@ -888,7 +888,7 @@ uint16_t GetAnimStationCallback(CallbackID callback, uint32_t param1, uint32_t p
 /** Helper class for animation control. */
 struct StationAnimationBase : public AnimationBase<StationAnimationBase, StationSpec, BaseStation, int, GetAnimStationCallback, TileAnimationFrameAnimationHelper<BaseStation> > {
 	static constexpr CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
-	static constexpr CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_next_frame = CBID_STATION_ANIMATION_NEXT_FRAME;
 
 	static constexpr StationCallbackMask cbm_animation_speed      = StationCallbackMask::AnimationSpeed;
 	static constexpr StationCallbackMask cbm_animation_next_frame = StationCallbackMask::AnimationNextFrame;
@@ -930,7 +930,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 				} else {
 					local_cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 				}
-				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), (uint8_t)trigger | (local_cargo << 8));
+				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), (uint8_t)trigger | (local_cargo << 8));
 			}
 		}
 	}

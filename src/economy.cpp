@@ -1168,7 +1168,7 @@ static void TriggerIndustryProduction(Industry *i)
 	}
 
 	TriggerIndustryRandomisation(i, INDUSTRY_TRIGGER_RECEIVED_CARGO);
-	StartStopIndustryTileAnimation(i, IAT_INDUSTRY_RECEIVED_CARGO);
+	TriggerIndustryAnimation(i, IAT_INDUSTRY_RECEIVED_CARGO);
 }
 
 /**
@@ -1813,7 +1813,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 					if (ge->GetData().cargo.TotalCount() == 0) {
 						TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
 						TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
-						AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
+						TriggerAirportAnimation(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
 						TriggerRoadStopRandomisation(st, st->xy, RSRT_CARGO_TAKEN, v->cargo_type);
 						TriggerRoadStopAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
 					}
