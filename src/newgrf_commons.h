@@ -210,7 +210,7 @@ public:
 	HouseOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	void SetEntitySpec(const HouseSpec *hs);
+	void SetEntitySpec(HouseSpec &&hs);
 };
 
 
@@ -223,7 +223,7 @@ public:
 	uint16_t AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id) override;
 	uint16_t GetID(uint16_t grf_local_id, uint32_t grfid) const override;
 
-	void SetEntitySpec(IndustrySpec *inds);
+	void SetEntitySpec(IndustrySpec &&inds);
 };
 
 
@@ -235,7 +235,7 @@ public:
 	IndustryTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	void SetEntitySpec(const IndustryTileSpec *indts);
+	void SetEntitySpec(IndustryTileSpec &&indts);
 };
 
 struct AirportSpec;
@@ -244,7 +244,7 @@ public:
 	AirportOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	void SetEntitySpec(AirportSpec *inds);
+	void SetEntitySpec(AirportSpec &&inds);
 };
 
 struct AirportTileSpec;
@@ -255,7 +255,7 @@ public:
 	AirportTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	void SetEntitySpec(const AirportTileSpec *ats);
+	void SetEntitySpec(AirportTileSpec &&ats);
 };
 
 struct ObjectSpec;
@@ -266,7 +266,7 @@ public:
 	ObjectOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
 
-	void SetEntitySpec(ObjectSpec *spec);
+	void SetEntitySpec(ObjectSpec &&spec);
 };
 
 extern HouseOverrideManager _house_mngr;

@@ -1027,12 +1027,12 @@ static void FinaliseHouseArray()
 	 * On the other hand, why 1930? Just 'fix' the houses with the lowest
 	 * minimum introduction date to 0.
 	 */
-	for (const auto &file : _grf_files) {
+	for (auto &file : _grf_files) {
 		if (file.housespec.empty()) continue;
 
 		size_t num_houses = file.housespec.size();
 		for (size_t i = 0; i < num_houses; i++) {
-			HouseSpec *hs = file.housespec[i].get();
+			auto &hs = file.housespec[i];
 
 			if (hs == nullptr) continue;
 
@@ -1042,8 +1042,12 @@ static void FinaliseHouseArray()
 
 			if (!IsHouseSpecValid(*hs, next1, next2, next3, file.filename)) continue;
 
-			_house_mngr.SetEntitySpec(hs);
+			_house_mngr.SetEntitySpec(std::move(*hs));
 		}
+
+		/* Won't be used again */
+		file.housespec.clear();
+		file.housespec.shrink_to_fit();
 	}
 
 	for (size_t i = 0; i < HouseSpec::Specs().size(); i++) {
@@ -1096,18 +1100,24 @@ static void FinaliseHouseArray()
  */
 static void FinaliseIndustriesArray()
 {
-	for (const auto &file : _grf_files) {
-		for (const auto &indsp : file.industryspec) {
+	for (auto &file : _grf_files) {
+		for (auto &indsp : file.industryspec) {
 			if (indsp == nullptr || !indsp->enabled) continue;
 
-			_industry_mngr.SetEntitySpec(indsp.get());
+			_industry_mngr.SetEntitySpec(std::move(*indsp));
 		}
 
-		for (const auto &indtsp : file.indtspec) {
+		for (auto &indtsp : file.indtspec) {
 			if (indtsp != nullptr) {
-				_industile_mngr.SetEntitySpec(indtsp.get());
+				_industile_mngr.SetEntitySpec(std::move(*indtsp));
 			}
 		}
+
+		/* Won't be used again */
+		file.industryspec.clear();
+		file.industryspec.shrink_to_fit();
+		file.indtspec.clear();
+		file.indtspec.shrink_to_fit();
 	}
 
 	for (auto &indsp : _industry_specs) {
@@ -1144,12 +1154,16 @@ static void FinaliseIndustriesArray()
  */
 static void FinaliseObjectsArray()
 {
-	for (const auto &file : _grf_files) {
+	for (auto &file : _grf_files) {
 		for (auto &objectspec : file.objectspec) {
 			if (objectspec != nullptr && objectspec->grf_prop.HasGrfFile() && objectspec->IsEnabled()) {
-				_object_mngr.SetEntitySpec(objectspec.get());
+				_object_mngr.SetEntitySpec(std::move(*objectspec));
 			}
 		}
+
+		/* Won't be used again */
+		file.objectspec.clear();
+		file.objectspec.shrink_to_fit();
 	}
 
 	ObjectSpec::BindToClasses();
@@ -1162,18 +1176,24 @@ static void FinaliseObjectsArray()
  */
 static void FinaliseAirportsArray()
 {
-	for (const auto &file : _grf_files) {
+	for (auto &file : _grf_files) {
 		for (auto &as : file.airportspec) {
 			if (as != nullptr && as->enabled) {
-				_airport_mngr.SetEntitySpec(as.get());
+				_airport_mngr.SetEntitySpec(std::move(*as));
 			}
 		}
 
 		for (auto &ats : file.airtspec) {
 			if (ats != nullptr && ats->enabled) {
-				_airporttile_mngr.SetEntitySpec(ats.get());
+				_airporttile_mngr.SetEntitySpec(std::move(*ats));
 			}
 		}
+
+		/* Won't be used again */
+		file.airportspec.clear();
+		file.airportspec.shrink_to_fit();
+		file.airtspec.clear();
+		file.airtspec.shrink_to_fit();
 	}
 }
 
