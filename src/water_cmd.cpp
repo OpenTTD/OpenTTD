@@ -1403,9 +1403,9 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 	}
 }
 
-static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *, TileIndex, int, int)
+static VehicleEnterTileStates VehicleEnter_Water(Vehicle *, TileIndex, int, int)
 {
-	return VETSB_CONTINUE;
+	return {};
 }
 
 static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlags flags, int, Slope)

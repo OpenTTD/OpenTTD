@@ -17,27 +17,13 @@
 #include "tile_map.h"
 #include "timer/timer_game_calendar.h"
 
-/** The returned bits of VehicleEnterTile. */
-enum VehicleEnterTileStatus : uint32_t {
-	VETS_ENTERED_STATION  = 1, ///< The vehicle entered a station
-	VETS_ENTERED_WORMHOLE = 2, ///< The vehicle either entered a bridge, tunnel or depot tile (this includes the last tile of the bridge/tunnel)
-	VETS_CANNOT_ENTER     = 3, ///< The vehicle cannot enter the tile
-
-	/**
-	 * Shift the VehicleEnterTileStatus this many bits
-	 * to the right to get the station ID when
-	 * VETS_ENTERED_STATION is set
-	 */
-	VETS_STATION_ID_OFFSET = 8,
-	VETS_STATION_MASK      = 0xFFFF << VETS_STATION_ID_OFFSET,
-
-	/** Bit sets of the above specified bits */
-	VETSB_CONTINUE         = 0,                          ///< The vehicle can continue normally
-	VETSB_ENTERED_STATION  = 1 << VETS_ENTERED_STATION,  ///< The vehicle entered a station
-	VETSB_ENTERED_WORMHOLE = 1 << VETS_ENTERED_WORMHOLE, ///< The vehicle either entered a bridge, tunnel or depot tile (this includes the last tile of the bridge/tunnel)
-	VETSB_CANNOT_ENTER     = 1 << VETS_CANNOT_ENTER,     ///< The vehicle cannot enter the tile
+enum class VehicleEnterTileState : uint8_t {
+	EnteredStation, ///< The vehicle entered a station
+	EnteredWormhole, ///< The vehicle either entered a bridge, tunnel or depot tile (this includes the last tile of the bridge/tunnel)
+	CannotEnter, ///< The vehicle cannot enter the tile
 };
-DECLARE_ENUM_AS_BIT_SET(VehicleEnterTileStatus)
+
+using VehicleEnterTileStates = EnumBitSet<VehicleEnterTileState, uint8_t>;
 
 /** Tile information, used while rendering the tile */
 struct TileInfo {
@@ -131,8 +117,7 @@ typedef void AnimateTileProc(TileIndex tile);
 typedef void TileLoopProc(TileIndex tile);
 typedef void ChangeTileOwnerProc(TileIndex tile, Owner old_owner, Owner new_owner);
 
-/** @see VehicleEnterTileStatus to see what the return values mean */
-typedef VehicleEnterTileStatus VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
+typedef VehicleEnterTileStates VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
 
 /**
@@ -176,7 +161,7 @@ struct TileTypeProcs {
 extern const TileTypeProcs * const _tile_type_procs[16];
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
-VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
+VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void GetTileDesc(TileIndex tile, TileDesc &td);
 

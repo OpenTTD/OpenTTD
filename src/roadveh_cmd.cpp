@@ -1163,7 +1163,7 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 			}
 		}
 
-		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
 			/* Vehicle has just entered a bridge or tunnel */
 			v->x_pos = gp.x;
 			v->y_pos = gp.y;
@@ -1283,8 +1283,8 @@ again:
 			}
 		}
 
-		uint32_t r = VehicleEnterTile(v, tile, x, y);
-		if (HasBit(r, VETS_CANNOT_ENTER)) {
+		auto vets = VehicleEnterTile(v, tile, x, y);
+		if (vets.Test(VehicleEnterTileState::CannotEnter)) {
 			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
 				return false;
@@ -1320,7 +1320,7 @@ again:
 			}
 		}
 
-		if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
+		if (!vets.Test(VehicleEnterTileState::EnteredWormhole)) {
 			TileIndex old_tile = v->tile;
 
 			v->tile = tile;
@@ -1398,8 +1398,8 @@ again:
 			}
 		}
 
-		uint32_t r = VehicleEnterTile(v, v->tile, x, y);
-		if (HasBit(r, VETS_CANNOT_ENTER)) {
+		auto vets = VehicleEnterTile(v, v->tile, x, y);
+		if (vets.Test(VehicleEnterTileState::CannotEnter)) {
 			v->cur_speed = 0;
 			return false;
 		}
@@ -1540,8 +1540,8 @@ again:
 
 	/* Check tile position conditions - i.e. stop position in depot,
 	 * entry onto bridge or into tunnel */
-	uint32_t r = VehicleEnterTile(v, v->tile, x, y);
-	if (HasBit(r, VETS_CANNOT_ENTER)) {
+	auto vets = VehicleEnterTile(v, v->tile, x, y);
+	if (vets.Test(VehicleEnterTileState::CannotEnter)) {
 		v->cur_speed = 0;
 		return false;
 	}
@@ -1552,7 +1552,7 @@ again:
 
 	/* Move to next frame unless vehicle arrived at a stop position
 	 * in a depot or entered a tunnel/bridge */
-	if (!HasBit(r, VETS_ENTERED_WORMHOLE)) v->frame++;
+	if (!vets.Test(VehicleEnterTileState::EnteredWormhole)) v->frame++;
 	v->x_pos = x;
 	v->y_pos = y;
 	v->UpdatePosition();

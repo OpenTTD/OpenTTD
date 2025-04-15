@@ -3712,12 +3712,12 @@ static bool ClickTile_Station(TileIndex tile)
 	return true;
 }
 
-static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStates VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (v->type == VEH_TRAIN) {
 		StationID station_id = GetStationIndex(tile);
-		if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
-		if (!IsRailStation(tile) || !v->IsFrontEngine()) return VETSB_CONTINUE;
+		if (!v->current_order.ShouldStopAtStation(v, station_id)) return {};
+		if (!IsRailStation(tile) || !v->IsFrontEngine()) return {};
 
 		int station_ahead;
 		int station_length;
@@ -3727,7 +3727,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		 * begin of the platform to the stop location is longer than the length
 		 * of the platform. Station ahead 'includes' the current tile where the
 		 * vehicle is on, so we need to subtract that. */
-		if (stop + station_ahead - (int)TILE_SIZE >= station_length) return VETSB_CONTINUE;
+		if (stop + station_ahead - (int)TILE_SIZE >= station_length) return {};
 
 		DiagDirection dir = DirToDiagDir(v->direction);
 
@@ -3740,7 +3740,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 			stop &= TILE_SIZE - 1;
 
 			if (x == stop) {
-				return VETSB_ENTERED_STATION | static_cast<VehicleEnterTileStatus>(station_id.base() << VETS_STATION_ID_OFFSET); // enter station
+				return VehicleEnterTileState::EnteredStation; // enter station
 			} else if (x < stop) {
 				v->vehstatus.Set(VehState::TrainSlowing);
 				uint16_t spd = std::max(0, (stop - x) * 20 - 15);
@@ -3752,12 +3752,13 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 		if (rv->state < RVSB_IN_ROAD_STOP && !IsReversingRoadTrackdir((Trackdir)rv->state) && rv->frame == 0) {
 			if (IsStationRoadStop(tile) && rv->IsFrontEngine()) {
 				/* Attempt to allocate a parking bay in a road stop */
-				return RoadStop::GetByTile(tile, GetRoadStopType(tile))->Enter(rv) ? VETSB_CONTINUE : VETSB_CANNOT_ENTER;
+				if (RoadStop::GetByTile(tile, GetRoadStopType(tile))->Enter(rv)) return {};
+				return VehicleEnterTileState::CannotEnter;
 			}
 		}
 	}
 
-	return VETSB_CONTINUE;
+	return {};
 }
 
 /**
