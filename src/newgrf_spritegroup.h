@@ -282,7 +282,7 @@ struct ScopeResolver {
 	virtual ~ScopeResolver() = default;
 
 	virtual uint32_t GetRandomBits() const;
-	virtual uint32_t GetTriggers() const;
+	virtual uint32_t GetRandomTriggers() const;
 
 	virtual uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const;
 	virtual void StorePSA(uint reg, int32_t value);
@@ -318,8 +318,8 @@ struct ResolverObject {
 
 	uint32_t last_value = 0; ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
 
-	uint32_t waiting_triggers = 0; ///< Waiting triggers to be used by any rerandomisation. (scope independent)
-	uint32_t used_triggers = 0; ///< Subset of cur_triggers, which actually triggered some rerandomisation. (scope independent)
+	uint32_t waiting_random_triggers = 0; ///< Waiting triggers to be used by any rerandomisation. (scope independent)
+	uint32_t used_random_triggers = 0; ///< Subset of cur_triggers, which actually triggered some rerandomisation. (scope independent)
 	std::array<uint32_t, VSG_END> reseed; ///< Collects bits to rerandomise while triggering triggers.
 
 	const GRFFile *grffile = nullptr; ///< GRFFile the resolved SpriteGroup belongs to
@@ -351,9 +351,9 @@ struct ResolverObject {
 	/**
 	 * Returns the waiting triggers that did not trigger any rerandomisation.
 	 */
-	uint32_t GetRemainingTriggers() const
+	uint32_t GetRemainingRandomTriggers() const
 	{
-		return this->waiting_triggers & ~this->used_triggers;
+		return this->waiting_random_triggers & ~this->used_random_triggers;
 	}
 
 	/**
@@ -377,8 +377,8 @@ struct ResolverObject {
 	void ResetState()
 	{
 		this->last_value = 0;
-		this->waiting_triggers = 0;
-		this->used_triggers = 0;
+		this->waiting_random_triggers = 0;
+		this->used_random_triggers = 0;
 		this->reseed.fill(0);
 	}
 
