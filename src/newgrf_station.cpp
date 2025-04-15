@@ -244,9 +244,9 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 }
 
 
-/* virtual */ uint32_t StationScopeResolver::GetTriggers() const
+/* virtual */ uint32_t StationScopeResolver::GetRandomTriggers() const
 {
-	return this->st == nullptr ? 0 : this->st->waiting_triggers;
+	return this->st == nullptr ? 0 : this->st->waiting_random_triggers;
 }
 
 
@@ -965,8 +965,8 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 	CargoTypes empty_mask = (trigger == SRT_CARGO_TAKEN) ? GetEmptyMask(st) : 0;
 
 	/* Store triggers now for var 5F */
-	SetBit(st->waiting_triggers, trigger);
-	uint32_t used_triggers = 0;
+	SetBit(st->waiting_random_triggers, trigger);
+	uint32_t used_random_triggers = 0;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
 	for (TileIndex tile : area) {
@@ -982,12 +982,12 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 
 			if (!IsValidCargoType(cargo_type) || HasBit(ss->cargo_triggers, cargo_type)) {
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
-				object.waiting_triggers = st->waiting_triggers;
+				object.waiting_random_triggers = st->waiting_random_triggers;
 
 				const SpriteGroup *group = object.Resolve();
 				if (group == nullptr) continue;
 
-				used_triggers |= object.used_triggers;
+				used_random_triggers |= object.used_random_triggers;
 
 				uint32_t reseed = object.GetReseedSum();
 				if (reseed != 0) {
@@ -1007,7 +1007,7 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
 	}
 
 	/* Update whole station random bits */
-	st->waiting_triggers &= ~used_triggers;
+	st->waiting_random_triggers &= ~used_random_triggers;
 	if ((whole_reseed & 0xFFFF) != 0) {
 		st->random_bits &= ~whole_reseed;
 		st->random_bits |= Random() & whole_reseed;

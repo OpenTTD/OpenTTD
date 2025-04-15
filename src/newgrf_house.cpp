@@ -226,10 +226,10 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 	return this->not_yet_constructed ? this->initial_random_bits : GetHouseRandomBits(this->tile);
 }
 
-/* virtual */ uint32_t HouseScopeResolver::GetTriggers() const
+/* virtual */ uint32_t HouseScopeResolver::GetRandomTriggers() const
 {
 	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
-	return this->not_yet_constructed ? 0 : GetHouseTriggers(this->tile);
+	return this->not_yet_constructed ? 0 : GetHouseRandomTriggers(this->tile);
 }
 
 static uint32_t GetNumHouses(HouseID house_id, const Town *town)
@@ -631,14 +631,14 @@ static void DoTriggerHouseRandomisation(TileIndex tile, HouseTrigger trigger, ui
 	if (hs->grf_prop.GetSpriteGroup() == nullptr) return;
 
 	HouseResolverObject object(hid, tile, Town::GetByTile(tile), CBID_RANDOM_TRIGGER);
-	object.waiting_triggers = GetHouseTriggers(tile) | trigger;
-	SetHouseTriggers(tile, object.waiting_triggers); // store now for var 5F
+	object.waiting_random_triggers = GetHouseRandomTriggers(tile) | trigger;
+	SetHouseRandomTriggers(tile, object.waiting_random_triggers); // store now for var 5F
 
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return;
 
 	/* Store remaining triggers. */
-	SetHouseTriggers(tile, object.GetRemainingTriggers());
+	SetHouseRandomTriggers(tile, object.GetRemainingRandomTriggers());
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for houses. For bug-to-bug-compatibility with TTDP we ignore the scope. */
 	uint8_t new_random_bits = Random();

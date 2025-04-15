@@ -309,9 +309,9 @@ static uint8_t MapAircraftMovementAction(const Aircraft *v)
 	return this->v == nullptr ? 0 : this->v->random_bits;
 }
 
-/* virtual */ uint32_t VehicleScopeResolver::GetTriggers() const
+/* virtual */ uint32_t VehicleScopeResolver::GetRandomTriggers() const
 {
-	return this->v == nullptr ? 0 : this->v->waiting_triggers;
+	return this->v == nullptr ? 0 : this->v->waiting_random_triggers;
 }
 
 
@@ -626,7 +626,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 				if (parameter == 0x5F) {
 					/* This seems to be the only variable that makes sense to access via var 61, but is not handled by VehicleGetVariable */
-					return (u->random_bits << 8) | u->waiting_triggers;
+					return (u->random_bits << 8) | u->waiting_random_triggers;
 				} else {
 					return VehicleGetVariable(u, object, parameter, GetRegister(0x10E), available);
 				}
@@ -891,7 +891,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x78: break; // not implemented
 		case 0x79: break; // not implemented
 		case 0x7A: return v->random_bits;
-		case 0x7B: return v->waiting_triggers;
+		case 0x7B: return v->waiting_random_triggers;
 		case 0x7C: break; // vehicle specific, see below
 		case 0x7D: break; // vehicle specific, see below
 		case 0x7E: break; // not implemented
@@ -1253,14 +1253,14 @@ static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger, ui
 	assert(v != nullptr);
 
 	VehicleResolverObject object(v->engine_type, v, VehicleResolverObject::WO_CACHED, false, CBID_RANDOM_TRIGGER);
-	object.waiting_triggers = v->waiting_triggers | trigger;
-	v->waiting_triggers = object.waiting_triggers; // store now for var 5F
+	object.waiting_random_triggers = v->waiting_random_triggers | trigger;
+	v->waiting_random_triggers = object.waiting_random_triggers; // store now for var 5F
 
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return;
 
 	/* Store remaining triggers. */
-	v->waiting_triggers = object.GetRemainingTriggers();
+	v->waiting_random_triggers = object.GetRemainingRandomTriggers();
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for rerandomisation. For bug-to-bug-compatibility with TTDP we ignore the scope. */
 	uint16_t new_random_bits = Random();
