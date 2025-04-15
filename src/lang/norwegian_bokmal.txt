@@ -2022,7 +2022,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Største antall
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antall ikke-klebrige åpne vinduer før gamle vinduer automatisk blir lukket for å gi plass til nye vinduer
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktivert
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Deaktivert
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Største zoom-inn nivå: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Største forstørrelsesnivå for synsfelt. Vær oppmerksom på at aktivering av høyere forstørrelsesnivå øker minnekravet
