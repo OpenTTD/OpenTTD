@@ -603,7 +603,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 	/* The select criteria. */
 	CzechGender gender;
 	CzechChoose choose;
-	CzechAllow allow;
+	CzechAllowFlags allow;
 
 	if (do_prefix) prefix = SeedModChance(5, std::size(_name_czech_adj) * 12, seed) / 12;
 	if (do_suffix) suffix = SeedModChance(7, std::size(_name_czech_suffix), seed);
@@ -671,7 +671,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		for (ending = ending_start; ending <= ending_stop; ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
-			if ((e->choose & choose) == choose && (e->allow & allow) != 0) {
+			if ((e->choose & choose) == choose && e->allow.Any(allow)) {
 				map[i++] = ending;
 			}
 		}
