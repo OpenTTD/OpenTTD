@@ -602,7 +602,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 
 	/* The select criteria. */
 	CzechGender gender;
-	CzechChoose choose;
+	CzechChooseFlags choose;
 	CzechAllowFlags allow;
 
 	if (do_prefix) prefix = SeedModChance(5, std::size(_name_czech_adj) * 12, seed) / 12;
@@ -632,18 +632,18 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		/* Load the postfix (1:1 chance that a postfix will be inserted) */
 		postfix = SeedModChance(14, std::size(_name_czech_subst_postfix) * 2, seed);
 
-		if (choose & CZC_POSTFIX) {
+		if (choose.Test(CzechChooseFlag::Postfix)) {
 			/* Always get a real postfix. */
 			postfix %= std::size(_name_czech_subst_postfix);
 		}
-		if (choose & CZC_NOPOSTFIX) {
+		if (choose.Test(CzechChooseFlag::NoPostfix)) {
 			/* Always drop a postfix. */
 			postfix += std::size(_name_czech_subst_postfix);
 		}
 		if (postfix < std::size(_name_czech_subst_postfix)) {
-			choose |= CZC_POSTFIX;
+			choose.Set(CzechChooseFlag::Postfix);
 		} else {
-			choose |= CZC_NOPOSTFIX;
+			choose.Set(CzechChooseFlag::NoPostfix);
 		}
 
 		/* Localize the array segment containing a good gender */
