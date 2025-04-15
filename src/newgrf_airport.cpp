@@ -134,22 +134,22 @@ void BindAirportSpecs()
 }
 
 
-void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
+void AirportOverrideManager::SetEntitySpec(AirportSpec &&as)
 {
-	uint8_t airport_id = this->AddEntityID(as->grf_prop.local_id, as->grf_prop.grfid, as->grf_prop.subst_id);
+	uint8_t airport_id = this->AddEntityID(as.grf_prop.local_id, as.grf_prop.grfid, as.grf_prop.subst_id);
 
 	if (airport_id == this->invalid_id) {
 		GrfMsg(1, "Airport.SetEntitySpec: Too many airports allocated. Ignoring.");
 		return;
 	}
 
-	*AirportSpec::GetWithoutOverride(airport_id) = *as;
+	AirportSpec::specs[airport_id] = std::move(as);
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
 		AirportSpec *overridden_as = AirportSpec::GetWithoutOverride(i);
 
-		if (this->entity_overrides[i] != as->grf_prop.local_id || this->grfid_overrides[i] != as->grf_prop.grfid) continue;
+		if (this->entity_overrides[i] != AirportSpec::specs[airport_id].grf_prop.local_id || this->grfid_overrides[i] != AirportSpec::specs[airport_id].grf_prop.grfid) continue;
 
 		overridden_as->grf_prop.override_id = airport_id;
 		overridden_as->enabled = false;

@@ -84,7 +84,7 @@ struct AirportTileSpec {
 private:
 	static AirportTileSpec tiles[NUM_AIRPORTTILES];
 
-	friend void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts);
+	friend void AirportTileOverrideManager::SetEntitySpec(AirportTileSpec &&airpts);
 };
 
 void AnimateAirportTile(TileIndex tile);

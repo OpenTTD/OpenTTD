@@ -141,6 +141,8 @@ struct AirportSpec : NewGRFSpecBase<AirportClassID> {
 
 private:
 	static AirportSpec specs[NUM_AIRPORTS]; ///< Specs of the airports.
+
+	friend void AirportOverrideManager::SetEntitySpec(AirportSpec &&as);
 };
 
 /** Information related to airport classes. */
