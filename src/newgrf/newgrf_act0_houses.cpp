@@ -253,11 +253,12 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				housespec->extra_flags = static_cast<HouseExtraFlags>(buf.ReadByte());
 				break;
 
-			case 0x1A: // Animation frames
-				housespec->animation.frames = buf.ReadByte();
-				housespec->animation.status = GB(housespec->animation.frames, 7, 1);
-				SB(housespec->animation.frames, 7, 1, 0);
+			case 0x1A: { // Animation frames
+				uint8_t info = buf.ReadByte();
+				housespec->animation.frames = GB(info, 0, 7);
+				housespec->animation.status = HasBit(info, 7) ? AnimationStatus::Looping : AnimationStatus::NonLooping;
 				break;
+			}
 
 			case 0x1B: // Animation speed
 				housespec->animation.speed = Clamp(buf.ReadByte(), 2, 16);

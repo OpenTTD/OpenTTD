@@ -210,7 +210,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 
 					tsp->enabled = true;
 
-					tsp->animation.status = ANIM_STATUS_NO_ANIMATION;
+					tsp->animation = AnimationInfo{};
 
 					tsp->grf_prop.local_id = id;
 					tsp->grf_prop.subst_id = subs_id;
@@ -239,7 +239,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 
 			case 0x0F: // Animation information
 				tsp->animation.frames = buf.ReadByte();
-				tsp->animation.status = buf.ReadByte();
+				tsp->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
 				break;
 
 			case 0x10: // Animation speed

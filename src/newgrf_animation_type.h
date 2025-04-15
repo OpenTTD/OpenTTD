@@ -10,16 +10,18 @@
 #ifndef NEWGRF_ANIMATION_TYPE_H
 #define NEWGRF_ANIMATION_TYPE_H
 
-static const uint8_t ANIM_STATUS_NON_LOOPING  = 0x00; ///< Animation is not looping.
-static const uint8_t ANIM_STATUS_LOOPING      = 0x01; ///< Animation is looping.
-static const uint8_t ANIM_STATUS_NO_ANIMATION = 0xFF; ///< There is no animation.
+enum class AnimationStatus : uint8_t {
+	NonLooping = 0x00, ///< Animation is not looping.
+	Looping = 0x01, ///< Animation is looping.
+	NoAnimation = 0xFF, ///< There is no animation.
+};
 
 /** Information about animation. */
 struct AnimationInfo {
-	uint8_t  frames;   ///< The number of frames.
-	uint8_t  status;   ///< Status; 0: no looping, 1: looping, 0xFF: no animation.
-	uint8_t  speed;    ///< The speed, i.e. the amount of time between frames.
-	uint16_t triggers; ///< The triggers that trigger animation.
+	uint8_t frames = 0; ///< The number of frames.
+	AnimationStatus status = AnimationStatus::NoAnimation; ///< Status.
+	uint8_t speed = 2; ///< The speed: time between frames = 2^speed ticks.
+	uint16_t triggers = 0; ///< The triggers that trigger animation.
 };
 
 /** Animation triggers for station. */
