@@ -117,7 +117,7 @@ static bool IsSccEncodedCode(char32_t c)
  * @param consumer The string to validate.
  * @param settings The settings for the string validation.
  */
-template<class Builder>
+template <class Builder>
 static void StrMakeValid(Builder &builder, StringConsumer &consumer, StringValidationSettings settings)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */

@@ -800,7 +800,7 @@ public:
 	void SkipUntilUtf8(char32_t c, SeparatorUsage sep);
 
 private:
-	template<class T>
+	template <class T>
 	[[nodiscard]] static std::pair<size_type, T> ParseIntegerBase(std::string_view src, int base, bool log_errors)
 	{
 		if (base == 0) {
@@ -850,7 +850,7 @@ public:
 	 * @return Length of string match, and parsed value.
 	 * @note The parser rejects leading whitespace and unary plus.
 	 */
-	template<class T>
+	template <class T>
 	[[nodiscard]] std::pair<size_type, T> PeekIntegerBase(int base) const
 	{
 		return ParseIntegerBase<T>(this->src.substr(this->position), base, false);
@@ -861,7 +861,7 @@ public:
 	 * @return Parsed value, if valid.
 	 * @note The parser rejects leading whitespace and unary plus.
 	 */
-	template<class T>
+	template <class T>
 	[[nodiscard]] std::optional<T> TryReadIntegerBase(int base)
 	{
 		auto [len, value] = this->PeekIntegerBase<T>(base);
@@ -876,7 +876,7 @@ public:
 	 * @note The reader is advanced, even if no valid data was present.
 	 * @note The parser rejects leading whitespace and unary plus.
 	 */
-	template<class T>
+	template <class T>
 	[[nodiscard]] T ReadIntegerBase(int base, T def = 0)
 	{
 		auto [len, value] = ParseIntegerBase<T>(this->src.substr(this->position), base, true);
