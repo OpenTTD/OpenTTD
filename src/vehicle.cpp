@@ -972,7 +972,7 @@ static void RunEconomyVehicleDayProc()
 			uint16_t callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 			if (callback != CALLBACK_FAILED) {
 				if (HasBit(callback, 0)) {
-					TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+					TriggerVehicleRandomisation(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
 				}
 
 				/* After a vehicle trigger, the graphics and properties of the vehicle could change.
@@ -1614,7 +1614,7 @@ void VehicleEnterDepot(Vehicle *v)
 	VehicleEnteredDepotThisTick(v);
 
 	/* After a vehicle trigger, the graphics and properties of the vehicle could change. */
-	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
+	TriggerVehicleRandomisation(v, VEHICLE_TRIGGER_DEPOT);
 	v->MarkDirty();
 
 	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);

@@ -591,8 +591,8 @@ bool NewHouseTileLoop(TileIndex tile)
 		return true;
 	}
 
-	TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP);
-	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
+	TriggerHouseRandomisation(tile, HOUSE_TRIGGER_TILE_LOOP);
+	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) TriggerHouseRandomisation(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
 
 	/* Call the unsynchronized tile loop trigger */
 	AnimationControl(tile, false, 0);
@@ -620,7 +620,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	return true;
 }
 
-static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, uint8_t base_random, bool first)
+static void DoTriggerHouseRandomisation(TileIndex tile, HouseTrigger trigger, uint8_t base_random, bool first)
 {
 	/* We can't trigger a non-existent building... */
 	assert(IsTileType(tile, MP_HOUSE));
@@ -660,16 +660,16 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, uint8_t base_ra
 				break;
 			}
 			/* Random value of first tile already set. */
-			if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoTriggerHouse(TileAddXY(tile, 0, 1), trigger, random_bits, false);
-			if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoTriggerHouse(TileAddXY(tile, 1, 0), trigger, random_bits, false);
-			if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoTriggerHouse(TileAddXY(tile, 1, 1), trigger, random_bits, false);
+			if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoTriggerHouseRandomisation(TileAddXY(tile, 0, 1), trigger, random_bits, false);
+			if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoTriggerHouseRandomisation(TileAddXY(tile, 1, 0), trigger, random_bits, false);
+			if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoTriggerHouseRandomisation(TileAddXY(tile, 1, 1), trigger, random_bits, false);
 			break;
 	}
 }
 
-void TriggerHouse(TileIndex t, HouseTrigger trigger)
+void TriggerHouseRandomisation(TileIndex t, HouseTrigger trigger)
 {
-	DoTriggerHouse(t, trigger, 0, true);
+	DoTriggerHouseRandomisation(t, trigger, 0, true);
 }
 
 /**

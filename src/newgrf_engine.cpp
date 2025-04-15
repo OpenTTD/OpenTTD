@@ -1247,7 +1247,7 @@ bool TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityTy
 	return p + RandomRange(PROBABILITY_RANGE) >= PROBABILITY_RANGE;
 }
 
-static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, uint16_t base_random_bits, bool first)
+static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger, uint16_t base_random_bits, bool first)
 {
 	/* We can't trigger a non-existent vehicle... */
 	assert(v != nullptr);
@@ -1278,14 +1278,14 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, uint16_t base_r
 			 * i.e.), so we give them all the NEW_CARGO triggered
 			 * vehicle's portion of random bits. */
 			assert(first);
-			DoTriggerVehicle(v->First(), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			DoTriggerVehicleRandomisation(v->First(), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_DEPOT:
 			/* We now trigger the next vehicle in chain recursively.
 			 * The random bits portions may be different for each
 			 * vehicle in chain. */
-			if (v->Next() != nullptr) DoTriggerVehicle(v->Next(), trigger, 0, true);
+			if (v->Next() != nullptr) DoTriggerVehicleRandomisation(v->Next(), trigger, 0, true);
 			break;
 
 		case VEHICLE_TRIGGER_EMPTY:
@@ -1293,14 +1293,14 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, uint16_t base_r
 			 * recursively.  The random bits portions must be same
 			 * for each vehicle in chain, so we give them all
 			 * first chained vehicle's portion of random bits. */
-			if (v->Next() != nullptr) DoTriggerVehicle(v->Next(), trigger, first ? new_random_bits : base_random_bits, false);
+			if (v->Next() != nullptr) DoTriggerVehicleRandomisation(v->Next(), trigger, first ? new_random_bits : base_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_ANY_NEW_CARGO:
 			/* Now pass the trigger recursively to the next vehicle
 			 * in chain. */
 			assert(!first);
-			if (v->Next() != nullptr) DoTriggerVehicle(v->Next(), VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
+			if (v->Next() != nullptr) DoTriggerVehicleRandomisation(v->Next(), VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_CALLBACK_32:
@@ -1309,10 +1309,10 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, uint16_t base_r
 	}
 }
 
-void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
+void TriggerVehicleRandomisation(Vehicle *v, VehicleTrigger trigger)
 {
 	v->InvalidateNewGRFCacheOfChain();
-	DoTriggerVehicle(v, trigger, 0, true);
+	DoTriggerVehicleRandomisation(v, trigger, 0, true);
 	v->InvalidateNewGRFCacheOfChain();
 }
 

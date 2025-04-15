@@ -118,7 +118,7 @@ enum VehicleTrigger : uint8_t {
 	/* Externally triggered for each vehicle in chain */
 	VEHICLE_TRIGGER_CALLBACK_32   = 0x10,
 };
-void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
+void TriggerVehicleRandomisation(Vehicle *veh, VehicleTrigger trigger);
 
 void AlterVehicleListOrder(EngineID engine, uint16_t target);
 void CommitVehicleListOrderChanges();
