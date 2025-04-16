@@ -511,6 +511,7 @@ struct VehicleSettings {
 	uint8_t  freight_trains;                   ///< value to multiply the weight of cargo by
 	bool   dynamic_engines;                  ///< enable dynamic allocation of engine data
 	bool   never_expire_vehicles;            ///< never expire vehicles
+	bool   vehicle_intro_randomisation;      ///< randomise the introduction dates of vehicles
 	uint8_t extend_vehicle_life;              ///< extend vehicle life by this many years
 	uint8_t road_side;                        ///< the side of the road vehicles drive on
 	uint8_t  plane_crashes;                    ///< number of plane crashes, 0 = none, 1 = reduced, 2 = normal

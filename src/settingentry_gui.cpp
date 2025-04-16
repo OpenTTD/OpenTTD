@@ -807,6 +807,8 @@ SettingsContainer &GetSettingsTree()
 				orders->Add(new SettingEntry("gui.quick_goto"));
 				orders->Add(new SettingEntry("gui.stop_location"));
 			}
+
+			vehicles->Add(new SettingEntry("vehicle.vehicle_intro_randomisation"));
 		}
 
 		SettingsPage *limitations = main->Add(new SettingsPage(STR_CONFIG_SETTING_LIMITATIONS));

@@ -737,7 +737,12 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
 	 * Note: TTDP uses fixed 1922 */
-	e->intro_date = ei->base_intro <= TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (TimerGameCalendar::Date)GB(r, 0, 9) + ei->base_intro;
+	TimerGameCalendar::Date begin_random_date = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1);
+	if (_settings_game.vehicle.vehicle_intro_randomisation && ei->base_intro > begin_random_date) {
+		e->intro_date = ei->base_intro + GB(r, 0, 9);
+	} else {
+		e->intro_date = ei->base_intro;
+	}
 	if (e->intro_date <= TimerGameCalendar::date) {
 		TimerGameCalendar::YearMonthDay intro_ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
 		int aging_months = aging_ymd.year.base() * 12 + aging_ymd.month;
