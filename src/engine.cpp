@@ -966,6 +966,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_engines_daily({TimerGameCalend
 		c->avail_roadtypes = AddDateIntroducedRoadTypes(c->avail_roadtypes, TimerGameCalendar::date);
 	}
 
+	if (!_settings_game.vehicle.offer_vehicle_preview) return;
 	if (TimerGameCalendar::year >= _year_engine_aging_stops) return;
 
 	for (Engine *e : Engine::Iterate()) {
@@ -1160,7 +1161,7 @@ void CalendarEnginesMonthlyLoop()
 			/* Do not introduce invalid engines */
 			if (!e->IsEnabled()) continue;
 
-			if (!e->flags.Test(EngineFlag::Available) && TimerGameCalendar::date >= (e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
+			if (!e->flags.Test(EngineFlag::Available) && TimerGameCalendar::date >= (e->intro_date + (_settings_game.vehicle.offer_vehicle_preview ? CalendarTime::DAYS_IN_YEAR : 0))) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
 			} else if (!e->flags.Any({EngineFlag::Available, EngineFlag::ExclusivePreview}) && TimerGameCalendar::date >= e->intro_date) {
