@@ -1455,7 +1455,7 @@ again:
 				RoadVehArrivesAt(v, st);
 				v->BeginLoading();
 				TriggerRoadStopRandomisation(st, v->tile, StationRandomTrigger::VehicleArrives);
-				TriggerRoadStopAnimation(st, v->tile, SAT_TRAIN_ARRIVES);
+				TriggerRoadStopAnimation(st, v->tile, StationAnimationTrigger::VehicleArrives);
 			}
 			return false;
 		}
@@ -1519,7 +1519,7 @@ again:
 				RoadVehArrivesAt(v, st);
 				v->BeginLoading();
 				TriggerRoadStopRandomisation(st, v->tile, StationRandomTrigger::VehicleArrives);
-				TriggerRoadStopAnimation(st, v->tile, SAT_TRAIN_ARRIVES);
+				TriggerRoadStopAnimation(st, v->tile, StationAnimationTrigger::VehicleArrives);
 				return false;
 			}
 		} else {

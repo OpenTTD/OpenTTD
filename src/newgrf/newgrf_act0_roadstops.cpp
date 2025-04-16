@@ -123,7 +123,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x10: // Animation triggers
-				rs->animation.triggers = buf.ReadWord();
+				rs->animation.triggers = static_cast<StationAnimationTriggers>(buf.ReadWord());
 				break;
 
 			case 0x11: // Callback mask

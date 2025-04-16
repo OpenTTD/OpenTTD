@@ -68,7 +68,7 @@ struct AirportTileResolverObject : public ResolverObject {
  * Defines the data structure of each individual tile of an airport.
  */
 struct AirportTileSpec {
-	AnimationInfo animation;              ///< Information about the animation.
+	AnimationInfo<AirportAnimationTriggers> animation; ///< Information about the animation.
 	StringID name;                        ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
 	AirportTileCallbackMasks callback_mask;                  ///< Bitmask telling which grf callback is set
 	uint8_t animation_special_flags;        ///< Extra flags to influence the animation
@@ -88,8 +88,8 @@ private:
 };
 
 void AnimateAirportTile(TileIndex tile);
-void TriggerAirportTileAnimation(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
-void TriggerAirportAnimation(Station *st, AirpAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+void TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+void TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts);
 
 #endif /* NEWGRF_AIRPORTTILES_H */

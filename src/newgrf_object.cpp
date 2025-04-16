@@ -564,9 +564,9 @@ void AnimateNewObjectTile(TileIndex tile)
  */
 void TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {
-	if (!HasBit(spec->animation.triggers, trigger)) return;
+	if (!spec->animation.triggers.Test(trigger)) return;
 
-	ObjectAnimationBase::ChangeAnimationFrame(CBID_OBJECT_ANIMATION_TRIGGER, spec, o, tile, Random(), trigger);
+	ObjectAnimationBase::ChangeAnimationFrame(CBID_OBJECT_ANIMATION_TRIGGER, spec, o, tile, Random(), to_underlying(trigger));
 }
 
 /**
@@ -577,7 +577,7 @@ void TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigge
  */
 void TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {
-	if (!HasBit(spec->animation.triggers, trigger)) return;
+	if (!spec->animation.triggers.Test(trigger)) return;
 
 	for (TileIndex tile : o->location) {
 		TriggerObjectTileAnimation(o, tile, trigger, spec);

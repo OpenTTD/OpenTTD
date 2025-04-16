@@ -142,7 +142,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing
 
-	AnimationInfo animation;
+	AnimationInfo<StationAnimationTriggers> animation;
 
 	uint8_t bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
 	uint8_t bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above

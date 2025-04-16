@@ -160,7 +160,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
 	std::vector<TileFlags> tileflags; ///< List of tile flags.
 
-	AnimationInfo animation;
+	AnimationInfo<StationAnimationTriggers> animation;
 
 	/** Custom platform layouts, keyed by platform and length combined. */
 	std::unordered_map<uint16_t, std::vector<uint8_t>> layouts;

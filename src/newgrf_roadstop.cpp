@@ -384,23 +384,23 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
 
 	/* Check the cached animation trigger bitmask to see if we need
 	 * to bother with any further processing. */
-	if (!HasBit(st->cached_roadstop_anim_triggers, trigger)) return;
+	if (!st->cached_roadstop_anim_triggers.Test(trigger)) return;
 
 	uint16_t random_bits = Random();
 	auto process_tile = [&](TileIndex cur_tile) {
 		const RoadStopSpec *ss = GetRoadStopSpec(cur_tile);
-		if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
+		if (ss != nullptr && ss->animation.triggers.Test(trigger)) {
 			uint8_t local_cargo;
 			if (!IsValidCargoType(cargo_type)) {
 				local_cargo = UINT8_MAX;
 			} else {
 				local_cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 			}
-			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, cur_tile, (random_bits << 16) | Random(), (uint8_t)trigger | (local_cargo << 8));
+			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, cur_tile, (random_bits << 16) | Random(), to_underlying(trigger) | (local_cargo << 8));
 		}
 	};
 
-	if (trigger == SAT_NEW_CARGO || trigger == SAT_CARGO_TAKEN || trigger == SAT_250_TICKS) {
+	if (trigger == StationAnimationTrigger::NewCargo || trigger == StationAnimationTrigger::CargoTaken || trigger == StationAnimationTrigger::AcceptanceTick) {
 		for (const RoadStopTileData &tile_data : st->custom_roadstop_tile_data) {
 			process_tile(tile_data.tile);
 		}
@@ -619,7 +619,7 @@ void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex)
 			st->roadstop_speclist.resize(num_specs + 1);
 		} else {
 			st->roadstop_speclist.clear();
-			st->cached_roadstop_anim_triggers = 0;
+			st->cached_roadstop_anim_triggers = {};
 			st->cached_roadstop_cargo_triggers = 0;
 			return;
 		}
@@ -634,14 +634,14 @@ void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex)
  */
 void RoadStopUpdateCachedTriggers(BaseStation *st)
 {
-	st->cached_roadstop_anim_triggers = 0;
+	st->cached_roadstop_anim_triggers = {};
 	st->cached_roadstop_cargo_triggers = 0;
 
 	/* Combine animation trigger bitmask for all road stop specs
 	 * of this station. */
 	for (const auto &sm : GetStationSpecList<RoadStopSpec>(st)) {
 		if (sm.spec == nullptr) continue;
-		st->cached_roadstop_anim_triggers |= sm.spec->animation.triggers;
+		st->cached_roadstop_anim_triggers.Set(sm.spec->animation.triggers);
 		st->cached_roadstop_cargo_triggers |= sm.spec->cargo_triggers;
 	}
 }
