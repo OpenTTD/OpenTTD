@@ -161,7 +161,7 @@ static const NICallback _nic_house[] = {
 	NICH(CBID_HOUSE_ALLOW_CONSTRUCTION,        HouseCallbackMask::AllowConstruction),
 	NICH(CBID_HOUSE_ANIMATION_NEXT_FRAME,      HouseCallbackMask::AnimationNextFrame),
 	NICH(CBID_HOUSE_ANIMATION_START_STOP,      HouseCallbackMask::AnimationStartStop),
-	NICH(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, HouseCallbackMask::ConstructionStateChange),
+	NICH(CBID_HOUSE_CONSTRUCTION_STAGE_CHANGE, HouseCallbackMask::ConstructionStageChange),
 	NICH(CBID_HOUSE_COLOUR,                    HouseCallbackMask::Colour),
 	NICH(CBID_HOUSE_CARGO_ACCEPTANCE,          HouseCallbackMask::CargoAcceptance),
 	NICH(CBID_HOUSE_ANIMATION_SPEED,           HouseCallbackMask::AnimationSpeed),
@@ -176,7 +176,7 @@ static const NICallback _nic_house[] = {
 };
 
 static const NIVariable _niv_house[] = {
-	NIV(0x40, "construction state of tile and pseudo-random value"),
+	NIV(0x40, "construction stage of tile and pseudo-random value"),
 	NIV(0x41, "age of building in years"),
 	NIV(0x42, "town zone"),
 	NIV(0x43, "terrain type"),
@@ -234,7 +234,7 @@ static const NICallback _nic_industrytiles[] = {
 };
 
 static const NIVariable _niv_industrytiles[] = {
-	NIV(0x40, "construction state of tile"),
+	NIV(0x40, "construction stage of tile"),
 	NIV(0x41, "ground type"),
 	NIV(0x42, "current town zone in nearest town"),
 	NIV(0x43, "relative position"),

@@ -763,7 +763,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	uint8_t stage = GetIndustryConstructionStage(tile) + 1;
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
-	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STATE_CHANGE);
+	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STAGE_CHANGE);
 	if (stage == INDUSTRY_COMPLETED) SetIndustryCompleted(tile);
 
 	MarkTileDirtyByTile(tile);

@@ -67,8 +67,8 @@ enum CallbackID : uint16_t {
 	/** Called for periodically starting or stopping the animation. */
 	CBID_HOUSE_ANIMATION_START_STOP      = 0x1B, // 15 bit callback
 
-	/** Called whenever the construction state of a house changes. */
-	CBID_HOUSE_CONSTRUCTION_STATE_CHANGE = 0x1C, // 15 bit callback
+	/** Called whenever the construction stage of a house changes. */
+	CBID_HOUSE_CONSTRUCTION_STAGE_CHANGE = 0x1C, // 15 bit callback
 
 	/** Determine whether a wagon can be attached to an already existing train. */
 	CBID_TRAIN_ALLOW_WAGON_ATTACH        = 0x1D,
@@ -342,7 +342,7 @@ enum class HouseCallbackMask : uint8_t {
 	AllowConstruction       =  0, ///< decide whether the house can be built on a given tile
 	AnimationNextFrame      =  1, ///< decides next animation frame
 	AnimationStartStop      =  2, ///< periodically start/stop the animation
-	ConstructionStateChange =  3, ///< change animation when construction state changes
+	ConstructionStageChange =  3, ///< change animation when construction stage changes
 	Colour                  =  4, ///< decide the colour of the building
 	CargoAcceptance         =  5, ///< decides amount of cargo acceptance
 	AnimationSpeed          =  6, ///< decides animation speed
