@@ -453,6 +453,12 @@ STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Opciones sandbo
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de municipios
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Ver nombres de estaciones
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :Estaciones de tren
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Estaciones de camión
+STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Estaciones de autobús
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Muelles
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Aeropuertos
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Vestigios
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Ver puntos de ruta
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Ver letreros
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Letreros y nombres de competidor mostrados
@@ -928,7 +934,7 @@ STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abre la 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION} ya no acepta: {CARGO_LIST}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION} ahora acepta: {CARGO_LIST}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvención terminada:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvención vencida:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvención retirada:{}{}El servicio de {STRING} desde {STRING} a {STRING} ya no está subvencionado
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Se ofrece subvención:{}{}¡Al primer servicio de {STRING} que cubra la línea desde {STRING} a {STRING} se le otorgará una subvención durante {UNITS_YEARS_OR_MINUTES} por parte de las autoridades locales!
 ###length 4
@@ -1018,6 +1024,7 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
 STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letón
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugués
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :Grivna ucraniana
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre guardados automáticos del juego
@@ -1211,7 +1218,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (sin efecto sobre las acciones de las compañías)
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se han encontrado IA apropiadas...{}Puedes descargar IA a través del sistema de 'Contenido Online'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se han encontrado IA apropiadas...{}Puedes descargar IA a través del sistema de 'Contenido en línea'
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
@@ -1980,7 +1987,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, patrón de carreteras personalizado
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :Colocación individual de casas: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Activar esta opción permite a los jugadores colocar casas manualmente
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Prohibido
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Permitido
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :Permitido, construcción completa
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generación de carga en municipios: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cantidad de carga que es producida por las casas del municipio, en relación a la población total del municipio.{}Crecimiento cuadrático: Un municipio de doble tamaño genera el cuádruple de pasajeros.{}Crecimiento lineal: Un municipio de doble tamaño genera el doble de pasajeros
@@ -2009,7 +2021,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Máximo número
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número máximo de ventanas sin anclar que pueden estar abiertas antes de que las más antiguas se cierren automáticamente para dejar paso a las nuevas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deshabilitado
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Deshabilitado
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Máximo acercamiento: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivel máximo de acercamiento para las ventanas de vista y la vista principal. Los niveles altos de acercamiento incrementan el consumo de memoria del juego
@@ -2194,7 +2206,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Tabla de
 STR_INTRO_HELP                                                  :{BLACK}Ayuda y Manuales
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configuración
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido Online
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido en línea
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración de IA
 STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Scripts de Juego
 STR_INTRO_QUIT                                                  :{BLACK}Salir
@@ -2243,6 +2255,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Léeme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}Registro de cambios
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}Fallos conocidos
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}Licencia
+STR_HELP_WINDOW_FONTS                                           :{BLACK}Fuentes
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}Manual / Wiki
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Informar de un problema
@@ -2631,13 +2644,14 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :esperando actua
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abandonando
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se ha unido a la partida
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} se ha unido a la partida (Cliente #{NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} se ha unido a {STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se ha unido como espectador
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha creado una empresa nueva (#{NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha abandonado el juego ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiado su nombre a {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha transferido {CURRENCY_LONG} a {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor está reiniciando...{}Espera por favor...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor se está reiniciando...{}{}Espera por favor...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}El registro del servidor ha fallado
@@ -2646,7 +2660,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Tu servi
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Los demás jugadores no podrán conectarse a tu servidor
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Descarga de contenido
+STR_CONTENT_TITLE                                               :{WHITE}Contenido en línea
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipo
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipo de contenido
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nombre
@@ -2845,6 +2859,7 @@ STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}Años: {
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}Años: {ORANGE}Hasta {NUM}
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}Tamaño: {ORANGE}{NUM}x{NUM} casillas
 STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}Carga aceptada: {ORANGE}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}Carga producida: {ORANGE}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :Afueras
 STR_HOUSE_PICKER_CLASS_ZONE2                                    :Periferia
@@ -2852,6 +2867,10 @@ STR_HOUSE_PICKER_CLASS_ZONE3                                    :Suburbios exter
 STR_HOUSE_PICKER_CLASS_ZONE4                                    :Suburbios interiores
 STR_HOUSE_PICKER_CLASS_ZONE5                                    :Centro urbano
 
+STR_HOUSE_PICKER_PROTECT_TITLE                                  :Evitar mejoras
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :Selecciona si esta casa estará protegida de reemplazos cuando el municipio crezca
+STR_HOUSE_PICKER_PROTECT_OFF                                    :No
+STR_HOUSE_PICKER_PROTECT_ON                                     :Sí
 
 STR_STATION_CLASS_DFLT                                          :Por defecto
 STR_STATION_CLASS_DFLT_STATION                                  :Estación por defecto
@@ -2885,6 +2904,7 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecci�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de puente - Clica en el puente elegido para construirlo
 STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
+STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Colgante, Acero
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Tirantes, Acero
@@ -2943,7 +2963,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccio
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcción de Canales
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canales
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construye canales. Con Mayús sólo muestra una estimación del coste
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construye canales. Ctrl+clic+arrastrar permite seleccionar un área diagonalmente. Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construye esclusas. Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Contruye un astillero (para comprar y dar mantenimiento a barcos). Con Mayús sólo muestra una estimación del coste
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construye muelles. Ctrl+clic para seleccionar otra estación a la que unirlo. Con Mayús sólo muestra una estimación del coste
@@ -3128,6 +3148,8 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tipo de 
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límite de velocidad de ferrocarril: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Límite de velocidad de carretera: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Límite de velocidad de tranvía: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}El municipio puede reemplazarlo: {LTBLUE}Sí
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}El municipio puede reemplazarlo: {LTBLUE}No
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocas
@@ -3136,6 +3158,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreno desnudo
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Pastos
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Desierto
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rocas cubiertas con nieve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Terreno irregular cubierto con nieve
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Hierba cubierta de nieve
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Vía de ferrocarril
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Vía de ferrocarril con señales de bloque
@@ -3607,17 +3632,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Archivo
 STR_NEWGRF_LIST_MISSING                                         :{RED}Faltan archivos
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Es probable que el funcionamiento del NewGRF '{0:STRING}' cause desincronizaciones o fallos
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha cambiado el estado 'vagón motorizado' '{1:ENGINE}' cuando no estaba dentro de un depósito
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha cambiado la longitud del vehículo '{1:ENGINE}' cuando no estaba dentro de un depósito
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ha cambiado la capacidad del vehículo '{1:ENGINE}' fuera de un depósito o mientras no se estaba reformando
+STR_NEWGRF_BROKEN                                               :{WHITE}Es probable que el funcionamiento del NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' cause desincronizaciones o fallos
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha cambiado el estado 'vagón motorizado' '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' cuando no estaba dentro de un depósito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha cambiado la longitud del vehículo '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' cuando no estaba dentro de un depósito
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ha cambiado la capacidad del vehículo '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' cuando no estaba dentro de un depósito o mientras no se estaba reformando
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Esto puede deberse a problemas con los NewGRF. El juego puede desincronizarse o fallar por completo
 
-STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga/reforma para '{1:ENGINE}' difiere de la de lista de compra después de la construcción. Esto puede causar que la renovación/reemplazo automático no haga la reforma correcta
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causado un bucle sin fin en la 'callback' de producción
+STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{PUSH_COLOUR}{0:STRING}{POP_COLOUR}' da información incorrecta
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga/reforma para '{PUSH_COLOUR}{1:ENGINE}{POP_COLOUR}' difiere de la de lista de compra después de la construcción. Esto puede causar que la renovación/reemplazo automático no haga la reforma correcta
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' ha causado un bucle sin fin en la 'callback' de producción
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Callback' {1:HEX} ha devuelto el resultado desconocido o inválido {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' ha devuelto tipo de carga inválida en el 'callback' de producción en {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{PUSH_COLOUR}{1:STRING}{POP_COLOUR}' ha devuelto tipo de carga inválida en el 'callback' de producción en {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<carga incorrecta>
@@ -4013,6 +4038,10 @@ STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}Produce:
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesita:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} esperando{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} en espera
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción (múltiplos de 8, máximo 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Cambiar nivel de producción (porcentaje, hasta un máximo de 800%)
@@ -4670,54 +4699,56 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de ve
 STR_ORDER_SHIP_DEPOT                                            :Astillero de barcos
 ###next-name-looks-similar
 
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING}l hangar más cercano
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING}l {STRING} más cercano
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Reformar a {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Reformar a {STRING} y detenerse)
-STR_ORDER_STOP_ORDER                                            :(Detenerse)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Reformar a {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Reformar a {STRING} y detenerse)
+STR_ORDER_STOP_ORDER                                            :{SPACE}(Detenerse)
 
-STR_ORDER_WAIT_TO_UNBUNCH                                       :(Esperar para distanciarse)
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(Esperar para distanciarse)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No puede usar la estación){POP_COLOUR} {STRING} {STATION}
 
-STR_ORDER_IMPLICIT                                              :(Implícita)
+STR_ORDER_IMPLICIT                                              :{SPACE}(Implícita)
 
-STR_ORDER_FULL_LOAD                                             :(Carga completa)
-STR_ORDER_FULL_LOAD_ANY                                         :(Carga completa cualquier carga)
-STR_ORDER_NO_LOAD                                               :(Sin carga)
-STR_ORDER_UNLOAD                                                :(Descargar y tomar carga)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descargar y esperar a carga completa)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descargar y esperar a cualquier carga completa)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Descargar y dejar vacío)
-STR_ORDER_TRANSFER                                              :(Transferir y tomar carga)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir y esperar a carga completa)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir y esperar a cualquier carga completa)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir y dejar vacío)
-STR_ORDER_NO_UNLOAD                                             :(No descargar y tomar carga)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descargar y esperar a carga completa)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y esperar a cualquier carga completa)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descargar y no cargar)
+STR_ORDER_FULL_LOAD                                             :{SPACE}(Carga completa)
+STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Carga completa cualquier carga)
+STR_ORDER_NO_LOAD                                               :{SPACE}(Sin carga)
+STR_ORDER_UNLOAD                                                :{SPACE}(Descargar y tomar carga)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Descargar y esperar a carga completa)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Descargar y esperar a cualquier carga completa)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Descargar y dejar vacío)
+STR_ORDER_TRANSFER                                              :{SPACE}(Transferir y cargar)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transferir y esperar a carga completa)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transferir y esperar a cualquier carga completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transferir y dejar vacío)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(No descargar y tomar carga)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(No descargar y esperar a carga completa)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(No descargar y esperar a cualquier carga completa)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(No descargar y no cargar)
 
-STR_ORDER_AUTO_REFIT                                            :(Reforma a {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Carga completa con reforma a {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Cualquier carga completa con reforma a {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Descargar y tomar carga con reforma a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descargar y esperar carga completa con reforma a {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descargar y esperar a cualquier carga completa con reforma a {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Transferir y tomar carga con reforma a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferir y esperar a carga completa con reforma a {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferir y esperar a cualquier carga completa con reforma a {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(No descargar y tomar carga con reforma a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descargar y esperar a carga completa con reforma a {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y esperar a cualquier carga completa con reforma a {STRING})
+STR_ORDER_AUTO_REFIT                                            :{SPACE}(Reforma a {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Carga completa con reforma a {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Cualquier carga completa con reforma a {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Descargar y tomar carga con reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Descargar y esperar carga completa con reforma a {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Descargar y esperar a cualquier carga completa con reforma a {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transferir y cargar con reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transferir y esperar a carga completa con reforma a {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transferir y esperar a cualquier carga completa con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(No descargar y tomar carga con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(No descargar y esperar a carga completa con reforma a {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(No descargar y esperar a cualquier carga completa con reforma a {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :carga disponible
 
 ###length 3
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[extremo cercano]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[centro]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[extremo lejano]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :{SPACE}[extremo cercano]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :{SPACE}[centro]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :{SPACE}[extremo lejano]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (El próximo destino está fuera de alcance)
 
@@ -4742,8 +4773,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante 
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} a {VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante {STRING}, sin programar)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, sin programar) a {VELOCITY} como máximo
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permanecer {STRING}, sin programar)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajar durante {STRING}, sin programar)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(permanecer {STRING}, sin programar)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar durante {STRING}, sin programar)
 STR_TIMETABLE_STAY_FOR                                          :y permanecer {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 
@@ -4764,12 +4795,14 @@ STR_TIMETABLE_START_SECONDS_QUERY                               :Segundos hasta 
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modificar duración
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifica la duración esperada de la orden seleccionada. Ctrl+clic establece la duración para todas las órdenes
+STR_TIMETABLE_CHANGE_TIME_QUERY                                 :Cambiar duración
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Borrar duración
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Borra la duración de la orden resaltada.Ctrl+clic borra la duración de todas las órdenes
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modificar límite de velocidad
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia el límite de velocidad de la orden resaltada. Ctrl+clic establece el límite para todas las órdenes
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :Cambiar límite de velocidad
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Borrar límite de velocidad
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Borra el límite de velocidad de la orden resaltada. Ctrl+clic borra el límite de todas las órdenes
@@ -4819,7 +4852,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Muestra 
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de Juego
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Analizar el registro del script de juego. Ctrl+click para abrir en una nueva ventana
 
-STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró ninguna IA apropiada para cargar.{}Ésta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IA mediante el sistema de 'Contenido Online'
+STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró ninguna IA apropiada para cargar.{}Ésta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IA mediante el sistema de 'Contenido en línea'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno de los scripts ejecutados ha fallado. Por favor, informa del fallo al autor del script con una captura de la ventana de depuración de script/IA
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
 
@@ -4874,8 +4907,8 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de 
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimapa
 
 # Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de juego
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parámetros de IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parámetros del script de juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4936,7 +4969,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partida se guardó en una versión sin soporte para tranvías. Todos los tranvías han sido eliminados
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}... no hay localizaciones apropiadas para municipios
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}{}... no hay localizaciones apropiadas para municipios
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hay municipios en el escenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}No se pudo cargar mapa de alturas PNG...
@@ -4965,6 +4998,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}¡Captur
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mensaje
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensaje de {COMPANY}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fuera del borde del mapa
@@ -4983,6 +5017,7 @@ STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... lím
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... límite de casillas despejadas alcanzado
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantación de árboles alcanzado
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nombre debe ser único
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} en medio
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No permitido en pausa
 
 # Local authority errors
@@ -5025,7 +5060,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... dema
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiados municipios
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no hay más espacio en el mapa
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este municipio...{}Quedan estaciones o depósitos relacionados con él, o una propiedad suya no puede ser retirada
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este municipio...{}{}Quedan estaciones o depósitos relacionados con él, o una propiedad suya no puede ser retirada
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no existe un lugar apropiado para una estatua en el centro de este municipio
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}No se puede construir edificio...
 
@@ -5299,8 +5334,16 @@ STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No se pu
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No se puede vender la aeronave...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}No se pueden vender todos los trenes...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}No se pueden vender todos los vehículos de carretera...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}No se pueden vender todos los barcos...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}No se pueden vender todas las aeronaves...
 
 ###length VEHICLE_TYPES
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}No se pueden reemplazar automáticamente los trenes...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}No se pueden reemplazar automáticamente los vehículos de carretera...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}No se pueden reemplazar automáticamente los barcos...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}No se pueden reemplazar automáticamente las aeronaves...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Demasiados vehículos en el juego
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No se puede cambiar intervalo de mantenimiento...
@@ -5882,3 +5925,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
+STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{STRING}
