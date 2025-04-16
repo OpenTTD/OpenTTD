@@ -541,8 +541,8 @@ void AnimateNewHouseConstruction(TileIndex tile)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
-	if (hs->callback_mask.Test(HouseCallbackMask::ConstructionStateChange)) {
-		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, hs, Town::GetByTile(tile), tile, 0, 0);
+	if (hs->callback_mask.Test(HouseCallbackMask::ConstructionStageChange)) {
+		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_CONSTRUCTION_STAGE_CHANGE, hs, Town::GetByTile(tile), tile, 0, 0);
 	}
 }
 

@@ -157,7 +157,7 @@ struct IndustryTileSpec {
 	uint8_t anim_next;                       ///< Next frame in an animation
 	/**
 	 * When true, the tile has to be drawn using the animation
-	 * state instead of the construction state
+	 * state instead of the construction stage
 	 */
 	bool anim_state;
 	/* Newgrf data */
