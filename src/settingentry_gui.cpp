@@ -821,6 +821,7 @@ SettingsContainer &GetSettingsTree()
 			limitations->Add(new SettingEntry("station.never_expire_airports"));
 			limitations->Add(new SettingEntry("vehicle.never_expire_vehicles"));
 			limitations->Add(new SettingEntry("vehicle.offer_vehicle_preview"));
+			limitations->Add(new SettingEntry("vehicle.vehicle_intro_randomisation"));
 			limitations->Add(new SettingEntry("vehicle.max_trains"));
 			limitations->Add(new SettingEntry("vehicle.max_roadveh"));
 			limitations->Add(new SettingEntry("vehicle.max_aircraft"));
