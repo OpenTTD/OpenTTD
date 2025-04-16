@@ -617,7 +617,7 @@ uint32_t NewGRFSpriteLayout::PrepareLayout(uint32_t orig_offset, uint32_t newgrf
 	 * and apply the default sprite offsets (unless disabled). */
 	const TileLayoutRegisters *regs = this->registers.empty() ? nullptr : this->registers.data();
 	bool ground = true;
-	for (DrawTileSeqStruct result : result_seq) {
+	for (DrawTileSeqStruct &result : result_seq) {
 		TileLayoutFlags flags = TLF_NOTHING;
 		if (regs != nullptr) flags = regs->flags;
 
