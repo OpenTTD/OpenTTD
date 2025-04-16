@@ -1511,6 +1511,9 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, a
 STR_CONFIG_SETTING_OFFER_VEHICLE_PREVIEW                        :Show vehicle previews: {STRING2}
 STR_CONFIG_SETTING_OFFER_VEHICLE_PREVIEW_HELPTEXT               :When enabled, the top performing company is sometimes offered a 1 year exclusive preview of a vehicle
 
+STR_CONFIG_SETTING_VEHICLE_INTRO_RANDOMISATION                  :Randomise vehicle introduction dates: {STRING2}
+STR_CONFIG_SETTING_VEHICLE_INTRO_RANDOMISATION_HELPTEXT         :When enabled, randomises vehicle introduction dates by up to 511 extra days from their original date
+
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :Timekeeping: {STRING2}
 STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :Select the timekeeping units of the game. This cannot be changed later.{}{}Calendar-based is the classic OpenTTD experience, with a year consisting of 12 months, and each month having 28-31 days.{}{}In Wallclock-based time, cargo production and financials are instead based on one-minute increments, which is about as long as a 30 day month takes in Calendar-based mode. These are grouped into 12-minute periods, equivalent to a year in Calendar-based mode.{}{}In either mode there is always a classic calendar, which is used for introduction dates of vehicles, houses, and other infrastructure
 ###length 2
