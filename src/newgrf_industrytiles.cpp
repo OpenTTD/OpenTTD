@@ -280,9 +280,9 @@ bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, 
 {
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
 
-	if (!HasBit(itspec->animation.triggers, iat)) return false;
+	if (!itspec->animation.triggers.Test(iat)) return false;
 
-	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, iat);
+	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, to_underlying(iat));
 	return true;
 }
 

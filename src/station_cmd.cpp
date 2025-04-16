@@ -1419,7 +1419,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 		if (statspec != nullptr) {
 			/* Include this station spec's animation trigger bitmask
 			 * in the station's cached copy. */
-			st->cached_anim_triggers |= statspec->animation.triggers;
+			st->cached_anim_triggers.Set(statspec->animation.triggers);
 		}
 
 		TileIndexDiff tile_delta = TileOffsByAxis(axis); // offset to go to the next platform tile
@@ -1480,7 +1480,7 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 					}
 
 					/* Trigger station animation -- after building? */
-					TriggerStationAnimation(st, tile, SAT_BUILT);
+					TriggerStationAnimation(st, tile, StationAnimationTrigger::Built);
 				}
 
 				SetRailStationTileFlags(tile, statspec);
@@ -2050,7 +2050,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 			if (roadstopspec != nullptr) {
 				/* Include this road stop spec's animation trigger bitmask
 				 * in the station's cached copy. */
-				st->cached_roadstop_anim_triggers |= roadstopspec->animation.triggers;
+				st->cached_roadstop_anim_triggers.Set(roadstopspec->animation.triggers);
 			}
 
 			RoadStop *road_stop = new RoadStop(cur_tile);
@@ -2095,7 +2095,7 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 			SetCustomRoadStopSpecIndex(cur_tile, specindex);
 			if (roadstopspec != nullptr) {
 				st->SetRoadStopRandomBits(cur_tile, GB(Random(), 0, 8));
-				TriggerRoadStopAnimation(st, cur_tile, SAT_BUILT);
+				TriggerRoadStopAnimation(st, cur_tile, StationAnimationTrigger::Built);
 			}
 
 			MarkTileDirtyByTile(cur_tile);
@@ -2622,7 +2622,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 
 		/* Only call the animation trigger after all tiles have been built */
 		for (AirportTileTableIterator iter(as->layouts[layout].tiles.data(), tile); iter != INVALID_TILE; ++iter) {
-			TriggerAirportTileAnimation(st, iter, AAT_BUILT);
+			TriggerAirportTileAnimation(st, iter, AirportAnimationTrigger::Built);
 		}
 
 		UpdateAirplanesOnNewStation(st);
@@ -3609,7 +3609,7 @@ static void TileLoop_Station(TileIndex tile)
 {
 	switch (GetStationType(tile)) {
 		case StationType::Airport:
-			TriggerAirportTileAnimation(Station::GetByTile(tile), tile, AAT_TILELOOP);
+			TriggerAirportTileAnimation(Station::GetByTile(tile), tile, AirportAnimationTrigger::TileLoop);
 			break;
 
 		case StationType::Dock:
@@ -4211,9 +4211,9 @@ void OnTick_Station()
 
 		/* Spread out station animation over STATION_ACCEPTANCE_TICKS ticks. */
 		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
-			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);
-			TriggerRoadStopAnimation(st, st->xy, SAT_250_TICKS);
-			if (Station::IsExpected(st)) TriggerAirportAnimation(Station::From(st), AAT_STATION_250_TICKS);
+			TriggerStationAnimation(st, st->xy, StationAnimationTrigger::AcceptanceTick);
+			TriggerRoadStopAnimation(st, st->xy, StationAnimationTrigger::AcceptanceTick);
+			if (Station::IsExpected(st)) TriggerAirportAnimation(Station::From(st), AirportAnimationTrigger::AcceptanceTick);
 		}
 	}
 }
@@ -4279,10 +4279,10 @@ static uint UpdateStationWaiting(Station *st, CargoType cargo, uint amount, Sour
 	}
 
 	TriggerStationRandomisation(st, st->xy, StationRandomTrigger::NewCargo, cargo);
-	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, cargo);
-	TriggerAirportAnimation(st, AAT_STATION_NEW_CARGO, cargo);
+	TriggerStationAnimation(st, st->xy, StationAnimationTrigger::NewCargo, cargo);
+	TriggerAirportAnimation(st, AirportAnimationTrigger::NewCargo, cargo);
 	TriggerRoadStopRandomisation(st, st->xy, StationRandomTrigger::NewCargo, cargo);
-	TriggerRoadStopAnimation(st, st->xy, SAT_NEW_CARGO, cargo);
+	TriggerRoadStopAnimation(st, st->xy, StationAnimationTrigger::NewCargo, cargo);
 
 
 	SetWindowDirty(WC_STATION_VIEW, st->index);

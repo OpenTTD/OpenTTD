@@ -1535,7 +1535,7 @@ static const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
  */
 #define MT(ca1, c1, ca2, c2, ca3, c3, sl, a1, a2, a3) { \
 	{INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO}, \
-	{ca1, ca2, ca3}, sl, a1, a2, a3, IndustryTileCallbackMasks{}, AnimationInfo{}, IndustryTileSpecialFlags{}, true, GRFFileProps(INVALID_INDUSTRYTILE), {}, {c1, c2, c3} \
+	{ca1, ca2, ca3}, sl, a1, a2, a3, IndustryTileCallbackMasks{}, AnimationInfo<IndustryAnimationTriggers>{}, IndustryTileSpecialFlags{}, true, GRFFileProps(INVALID_INDUSTRYTILE), {}, {c1, c2, c3} \
 }
 static const IndustryTileSpec _origin_industry_tile_specs[NEW_INDUSTRYTILEOFFSET] = {
 	/* Coal Mine */

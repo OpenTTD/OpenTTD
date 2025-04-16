@@ -780,7 +780,7 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 			st->speclist.resize(num_specs + 1);
 		} else {
 			st->speclist.clear();
-			st->cached_anim_triggers = 0;
+			st->cached_anim_triggers = {};
 			st->cached_cargo_triggers = 0;
 			return;
 		}
@@ -914,23 +914,23 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 
 	/* Check the cached animation trigger bitmask to see if we need
 	 * to bother with any further processing. */
-	if (!HasBit(st->cached_anim_triggers, trigger)) return;
+	if (!st->cached_anim_triggers.Test(trigger)) return;
 
 	uint16_t random_bits = Random();
-	ETileArea area = ETileArea(st, trigger_tile, tas[trigger]);
+	ETileArea area = ETileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)]);
 
 	/* Check all tiles over the station to check if the specindex is still in use */
 	for (TileIndex tile : area) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
-			if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
+			if (ss != nullptr && ss->animation.triggers.Test(trigger)) {
 				uint8_t local_cargo;
 				if (!IsValidCargoType(cargo_type)) {
 					local_cargo = UINT8_MAX;
 				} else {
 					local_cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 				}
-				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), (uint8_t)trigger | (local_cargo << 8));
+				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), to_underlying(trigger) | (local_cargo << 8));
 			}
 		}
 	}
@@ -1020,14 +1020,14 @@ void TriggerStationRandomisation(Station *st, TileIndex trigger_tile, StationRan
  */
 void StationUpdateCachedTriggers(BaseStation *st)
 {
-	st->cached_anim_triggers = 0;
+	st->cached_anim_triggers = {};
 	st->cached_cargo_triggers = 0;
 
 	/* Combine animation trigger bitmask for all station specs
 	 * of this station. */
 	for (const auto &sm : GetStationSpecList<StationSpec>(st)) {
 		if (sm.spec == nullptr) continue;
-		st->cached_anim_triggers |= sm.spec->animation.triggers;
+		st->cached_anim_triggers.Set(sm.spec->animation.triggers);
 		st->cached_cargo_triggers |= sm.spec->cargo_triggers;
 	}
 }

@@ -300,15 +300,15 @@ void AnimateAirportTile(TileIndex tile)
 	AirportTileAnimationBase::AnimateTile(ats, Station::GetByTile(tile), tile, HasBit(ats->animation_special_flags, 0));
 }
 
-void TriggerAirportTileAnimation(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoType cargo_type)
+void TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, CargoType cargo_type)
 {
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
-	if (!HasBit(ats->animation.triggers, trigger)) return;
+	if (!ats->animation.triggers.Test(trigger)) return;
 
-	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIMATION_TRIGGER, ats, st, tile, Random(), (uint8_t)trigger | (cargo_type << 8));
+	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIMATION_TRIGGER, ats, st, tile, Random(), to_underlying(trigger) | (cargo_type << 8));
 }
 
-void TriggerAirportAnimation(Station *st, AirpAnimationTrigger trigger, CargoType cargo_type)
+void TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type)
 {
 	if (st->airport.tile == INVALID_TILE) return;
 

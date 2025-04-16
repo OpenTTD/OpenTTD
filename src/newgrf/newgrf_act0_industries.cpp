@@ -160,7 +160,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 				break;
 
 			case 0x11: // Triggers for callback 25
-				tsp->animation.triggers = buf.ReadByte();
+				tsp->animation.triggers = static_cast<IndustryAnimationTriggers>(buf.ReadByte());
 				break;
 
 			case 0x12: // Special flags
