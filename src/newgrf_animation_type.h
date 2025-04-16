@@ -37,7 +37,7 @@ enum StationAnimationTrigger : uint8_t {
 
 /** Animation triggers of the industries. */
 enum IndustryAnimationTrigger : uint8_t {
-	IAT_CONSTRUCTION_STATE_CHANGE,  ///< Trigger whenever the construction state changes.
+	IAT_CONSTRUCTION_STAGE_CHANGE,  ///< Trigger whenever the construction stage changes.
 	IAT_TILELOOP,                   ///< Trigger in the periodic tile loop.
 	IAT_INDUSTRY_TICK,              ///< Trigger every tick.
 	IAT_INDUSTRY_RECEIVED_CARGO,    ///< Trigger when cargo is received .
