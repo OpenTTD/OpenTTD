@@ -309,10 +309,10 @@ static void SortSaveGameList(FileList &file_list)
 	 * Only sort savegames/scenarios, not directories
 	 */
 	for (const auto &item : file_list) {
-		switch (item.type) {
-			case FIOS_TYPE_DIR:    sort_start++; break;
-			case FIOS_TYPE_PARENT: sort_start++; break;
-			case FIOS_TYPE_DRIVE:  sort_end++;   break;
+		switch (item.type.detailed) {
+			case DFT_FIOS_DIR:    sort_start++; break;
+			case DFT_FIOS_PARENT: sort_start++; break;
+			case DFT_FIOS_DRIVE:  sort_end++;   break;
 			default: break;
 		}
 	}
@@ -514,7 +514,7 @@ public:
 					} else if (item == this->highlighted) {
 						GfxFillRect(br.left, tr.top, br.right, tr.bottom, PC_VERY_DARK_BLUE);
 					}
-					DrawString(tr, item->title, _fios_colours[GetDetailedFileType(item->type)]);
+					DrawString(tr, item->title, _fios_colours[item->type.detailed]);
 					tr = tr.Translate(0, this->resize.step_height);
 				}
 				break;
@@ -719,7 +719,7 @@ public:
 						this->selected = file;
 						_load_check_data.Clear();
 
-						if (GetDetailedFileType(file->type) == DFT_GAME_FILE) {
+						if (file->type.detailed == DFT_GAME_FILE) {
 							/* Other detailed file types cannot be checked before. */
 							SaveOrLoad(file->name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
 						}

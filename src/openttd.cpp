@@ -579,14 +579,14 @@ int openttd_main(std::span<char * const> arguments)
 				}
 
 				/* Allow for '-e' before or after '-g'. */
-				switch (GetAbstractFileType(ft)) {
+				switch (ft.abstract) {
 					case FT_SAVEGAME: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
 					case FT_SCENARIO: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME); break;
 					case FT_HEIGHTMAP: _switch_mode = (_switch_mode == SM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP); break;
 					default: break;
 				}
 
-				_file_to_saveload.SetMode(SLO_LOAD, GetAbstractFileType(ft), GetDetailedFileType(ft));
+				_file_to_saveload.SetMode(ft, SLO_LOAD);
 				break;
 			}
 
@@ -886,7 +886,7 @@ static void MakeNewGame(bool from_heightmap, bool reset_settings)
 	_game_mode = GM_NORMAL;
 	if (!from_heightmap) {
 		/* "reload" command needs to know what mode we were in. */
-		_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);
+		_file_to_saveload.SetMode(FIOS_TYPE_INVALID, SLO_INVALID);
 	}
 
 	ResetGRFConfig(true);
@@ -904,7 +904,7 @@ static void MakeNewEditorWorld()
 {
 	_game_mode = GM_EDITOR;
 	/* "reload" command needs to know what mode we were in. */
-	_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);
+	_file_to_saveload.SetMode(FIOS_TYPE_INVALID, SLO_INVALID);
 
 	ResetGRFConfig(true);
 
@@ -1054,12 +1054,12 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_RELOADGAME: // Reload with what-ever started the game
-			if (_file_to_saveload.abstract_ftype == FT_SAVEGAME || _file_to_saveload.abstract_ftype == FT_SCENARIO) {
+			if (_file_to_saveload.ftype.abstract == FT_SAVEGAME || _file_to_saveload.ftype.abstract == FT_SCENARIO) {
 				/* Reload current savegame/scenario */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 				SwitchToMode(_switch_mode);
 				break;
-			} else if (_file_to_saveload.abstract_ftype == FT_HEIGHTMAP) {
+			} else if (_file_to_saveload.ftype.abstract == FT_HEIGHTMAP) {
 				/* Restart current heightmap */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_HEIGHTMAP : SM_RESTART_HEIGHTMAP;
 				SwitchToMode(_switch_mode);
@@ -1084,10 +1084,10 @@ void SwitchToMode(SwitchMode new_mode)
 			ResetGRFConfig(true);
 			ResetWindowSystem();
 
-			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, NO_DIRECTORY)) {
+			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.ftype.detailed, GM_NORMAL, NO_DIRECTORY)) {
 				ShowErrorMessage(GetSaveLoadErrorType(), GetSaveLoadErrorMessage(), WL_CRITICAL);
 			} else {
-				if (_file_to_saveload.abstract_ftype == FT_SCENARIO) {
+				if (_file_to_saveload.ftype.abstract == FT_SCENARIO) {
 					OnStartScenario();
 				}
 				OnStartGame(_network_dedicated);
@@ -1120,7 +1120,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
-			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_EDITOR, NO_DIRECTORY)) {
+			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.ftype.detailed, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalCompany(OWNER_NONE);
 				GenerateSavegameId();
 				_settings_newgame.game_creation.starting_year = TimerGameCalendar::year;
