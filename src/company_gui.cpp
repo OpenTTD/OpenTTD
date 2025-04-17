@@ -589,7 +589,8 @@ static const LiveryClass _livery_class[LS_END] = {
 template <SpriteID TSprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
-	DropDownListColourItem(int colour, bool masked) : DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GENERAL_SPRITE_COLOUR(colour % COLOUR_END), GetString(colour < COLOUR_END ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
+	DropDownListColourItem(int colour, bool masked) :
+			DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GetColourPalette(static_cast<Colours>(colour % COLOUR_END)), GetString(colour < COLOUR_END ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
 	{
 	}
 };
@@ -878,12 +879,12 @@ public:
 			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TC_WHITE : TC_BLACK);
 
 			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(livery.colour1), pri_squ.left, y + square_offs);
+			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour1), pri_squ.left, y + square_offs);
 			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + livery.colour1 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOUR(livery.colour2), sec_squ.left, y + square_offs);
+				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour2), sec_squ.left, y + square_offs);
 				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + livery.colour2 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 			}
 
@@ -1148,7 +1149,7 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 	}
 
 	/* Draw the gradient (background) */
-	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOUR(colour), x, y);
+	DrawSprite(SPR_GRADIENT, GetColourPalette(colour), x, y);
 
 	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
 		switch (cmfv) {
@@ -2373,7 +2374,7 @@ struct CompanyWindow : Window
 				Point offset;
 				Dimension d = GetSpriteSize(SPR_VEH_BUS_SW_VIEW, &offset);
 				d.height -= offset.y;
-				DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOUR(c->index), r.left - offset.x, CentreBounds(r.top, r.bottom, d.height) - offset.y);
+				DrawSprite(SPR_VEH_BUS_SW_VIEW, GetCompanyPalette(c->index), r.left - offset.x, CentreBounds(r.top, r.bottom, d.height) - offset.y);
 				break;
 			}
 

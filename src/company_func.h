@@ -38,6 +38,7 @@ extern CompanyID _current_company;
 
 extern ReferenceThroughBaseContainer<std::array<Colours, MAX_COMPANIES>> _company_colours;
 extern CompanyManagerFace _company_manager_face;
+PaletteID GetCompanyPalette(CompanyID company);
 
 /**
  * Is the current company the local company?

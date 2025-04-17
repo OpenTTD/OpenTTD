@@ -14,9 +14,6 @@
 
 #include "table/sprites.h"
 
-#define GENERAL_SPRITE_COLOUR(colour) ((colour) + PALETTE_RECOLOUR_START)
-#define COMPANY_SPRITE_COLOUR(owner) (GENERAL_SPRITE_COLOUR(_company_colours[owner]))
-
 /* The following describes bunch of sprites to be drawn together in a single 3D
  * bounding box. Used especially for various multi-sprite buildings (like
  * depots or stations): */
@@ -179,5 +176,12 @@ inline PaletteID GroundSpritePaletteTransform(SpriteID image, PaletteID pal, Pal
 		return PAL_NONE;
 	}
 }
+
+/**
+ * Get recolour palette for a colour.
+ * @param colour Colour.
+ * @return Recolour palette.
+ */
+static inline PaletteID GetColourPalette(Colours colour) { return PALETTE_RECOLOUR_START + colour; }
 
 #endif /* SPRITE_H */

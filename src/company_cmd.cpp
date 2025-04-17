@@ -152,6 +152,16 @@ TextColour GetDrawStringCompanyColour(CompanyID company)
 }
 
 /**
+ * Get the palette for recolouring with a company colour.
+ * @param company Company to get the colour of.
+ * @return Palette for recolouring.
+ */
+PaletteID GetCompanyPalette(CompanyID company)
+{
+	return GetColourPalette(_company_colours[company]);
+}
+
+/**
  * Draw the icon of a company.
  * @param c Company that needs its icon drawn.
  * @param x Horizontal coordinate of the icon.
@@ -159,7 +169,7 @@ TextColour GetDrawStringCompanyColour(CompanyID company)
  */
 void DrawCompanyIcon(CompanyID c, int x, int y)
 {
-	DrawSprite(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(c), x, y);
+	DrawSprite(SPR_COMPANY_ICON, GetCompanyPalette(c), x, y);
 }
 
 /**

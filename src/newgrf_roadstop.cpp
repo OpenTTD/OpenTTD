@@ -301,7 +301,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
 	const DrawTileSprites *dts = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(nullptr);
 
-	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
+	PaletteID palette = GetCompanyPalette(_local_company);
 
 	SpriteID image = dts->ground.sprite;
 	PaletteID pal  = dts->ground.pal;

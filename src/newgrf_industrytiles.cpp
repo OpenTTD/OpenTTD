@@ -158,7 +158,7 @@ uint32_t IndustryTileResolverObject::GetDebugID() const
 	return GetIndustryTileSpec(gfx)->grf_prop.local_id;
 }
 
-static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, uint8_t rnd_colour, uint8_t stage)
+static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, Colours rnd_colour, uint8_t stage)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(&stage);
 
@@ -174,11 +174,11 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGro
 		if (image == SPR_FLAT_WATER_TILE && IsTileOnWater(ti->tile)) {
 			DrawWaterClassGround(ti);
 		} else {
-			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GENERAL_SPRITE_COLOUR(rnd_colour)));
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GetColourPalette(rnd_colour)));
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, dts, TO_INDUSTRIES, stage, GENERAL_SPRITE_COLOUR(rnd_colour));
+	DrawNewGRFTileSeq(ti, dts, TO_INDUSTRIES, stage, GetColourPalette(rnd_colour));
 }
 
 uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile)

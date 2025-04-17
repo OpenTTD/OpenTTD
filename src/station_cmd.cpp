@@ -3158,7 +3158,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	PaletteID palette;
 	if (Company::IsValidID(owner)) {
-		palette = COMPANY_SPRITE_COLOUR(owner);
+		palette = GetCompanyPalette(owner);
 	} else {
 		/* Some stations are not owner by a company, namely oil rigs */
 		palette = PALETTE_TO_GREY;
@@ -3390,7 +3390,7 @@ draw_default_foundation:
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
 {
 	int32_t total_offset = 0;
-	PaletteID pal = COMPANY_SPRITE_COLOUR(_local_company);
+	PaletteID pal = GetCompanyPalette(_local_company);
 	const DrawTileSprites *t = GetStationTileLayout(st, image);
 	const RailTypeInfo *railtype_info = nullptr;
 

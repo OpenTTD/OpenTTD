@@ -450,7 +450,7 @@ static void DrawTile_Object(TileInfo *ti)
 	if (type < NEW_OBJECT_OFFSET) {
 		const DrawTileSprites *dts = nullptr;
 		Owner to = GetTileOwner(ti->tile);
-		PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
+		PaletteID palette = to == OWNER_NONE ? PAL_NONE : GetCompanyPalette(to);
 
 		if (type == OBJECT_HQ) {
 			TileIndex diff = ti->tile - Object::GetByTile(ti->tile)->location.tile;

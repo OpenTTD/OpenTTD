@@ -241,7 +241,7 @@ uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t p
 	return object.ResolveCallback();
 }
 
-static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, uint8_t colour)
+static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, Colours colour)
 {
 	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 
@@ -252,11 +252,11 @@ static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGrou
 		if (image == SPR_FLAT_WATER_TILE && IsTileOnWater(ti->tile)) {
 			DrawWaterClassGround(ti);
 		} else {
-			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GENERAL_SPRITE_COLOUR(colour)));
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GetColourPalette(colour)));
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, dts, TO_BUILDINGS, 0, GENERAL_SPRITE_COLOUR(colour));
+	DrawNewGRFTileSeq(ti, dts, TO_BUILDINGS, 0, GetColourPalette(colour));
 }
 
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
