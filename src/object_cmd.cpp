@@ -134,22 +134,29 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 }
 
 /**
- * Increase the animation stage of a whole structure.
- * @param tile The tile of the structure.
+ * Increase the HQ size.
+ * @param tile The (northern) tile of the company HQ.
  */
-static void IncreaseAnimationStage(TileIndex tile)
+static void IncreaseCompanyHQSize(TileIndex tile)
 {
 	TileArea ta = Object::GetByTile(tile)->location;
 	for (TileIndex t : ta) {
+		/* We encode the company HQ size in the animation state. */
 		SetAnimationFrame(t, GetAnimationFrame(t) + 1);
 		MarkTileDirtyByTile(t);
 	}
 }
 
-/** We encode the company HQ size in the animation stage. */
-#define GetCompanyHQSize GetAnimationFrame
-/** We encode the company HQ size in the animation stage. */
-#define IncreaseCompanyHQSize IncreaseAnimationStage
+/**
+ * Get the size of the HQ.
+ * @param tile The (northern) tile of the company HQ.
+ * @return HQ size.
+ */
+static uint8_t GetCompanyHQSize(TileIndex tile)
+{
+	/* We encode the company HQ size in the animation state. */
+	return GetAnimationFrame(tile);
+}
 
 /**
  * Update the CompanyHQ to the state associated with the given score
