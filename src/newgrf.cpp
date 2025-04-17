@@ -909,7 +909,7 @@ static void FinaliseEngineArray()
 		}
 
 		if (e->info.variant_id != EngineID::Invalid()) {
-			Engine::Get(e->info.variant_id)->display_flags.Set(EngineDisplayFlag::HasVariants).Set(EngineDisplayFlag::IsFolded);
+			Engine::Get(e->info.variant_id)->display_flags.Set({EngineDisplayFlag::HasVariants, EngineDisplayFlag::IsFolded});
 		}
 	}
 }

@@ -144,8 +144,8 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 	if ((station_type & ScriptStation::STATION_TRAIN) != 0)      station_types.Set(::StationType::Rail);
 	if ((station_type & ScriptStation::STATION_TRUCK_STOP) != 0) station_types.Set(::StationType::Truck);
 	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0)   station_types.Set(::StationType::Bus);
-	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_types.Set(::StationType::Airport).Set(::StationType::Oilrig);
-	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_types.Set(::StationType::Dock).Set(::StationType::Oilrig);
+	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_types.Set({::StationType::Airport, ::StationType::Oilrig});
+	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_types.Set({::StationType::Dock, ::StationType::Oilrig});
 
 	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
 	for (TileIndex cur_tile : ta) {
