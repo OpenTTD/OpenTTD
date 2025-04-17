@@ -108,10 +108,12 @@ static void FixTTDDepots()
 	}
 }
 
-#define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
-
 static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_type)
 {
+	auto fix_num = [](uint32_t i, uint32_t n, uint8_t s) -> uint32_t {
+		return ((i << 16) / n + 1) << s;
+	};
+
 	switch (old_town_name_type) {
 		case 0: case 3: // English, American
 			/* Already OK */
@@ -120,7 +122,7 @@ static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_t
 		case 1: // French
 			/* For some reason 86 needs to be subtracted from townnameparts
 			 * 0000 0000 0000 0000 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts - 86, lengthof(_name_french_real), 0);
+			return fix_num(townnameparts - 86, lengthof(_name_french_real), 0);
 
 		case 2: // German
 			Debug(misc, 0, "German Townnames are buggy ({})", townnameparts);
@@ -128,18 +130,16 @@ static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_t
 
 		case 4: // Latin-American
 			/* 0000 0000 0000 0000 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts, lengthof(_name_spanish_real), 0);
+			return fix_num(townnameparts, lengthof(_name_spanish_real), 0);
 
 		case 5: // Silly
 			/* NUM_SILLY_1 - lower 16 bits
 			 * NUM_SILLY_2 - upper 16 bits without leading 1 (first 8 bytes)
 			 * 1000 0000 2222 2222 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts, lengthof(_name_silly_1), 0) | FIXNUM(GB(townnameparts, 16, 8), lengthof(_name_silly_2), 16);
+			return fix_num(townnameparts, lengthof(_name_silly_1), 0) | fix_num(GB(townnameparts, 16, 8), lengthof(_name_silly_2), 16);
 	}
 	return 0;
 }
-
-#undef FIXNUM
 
 static void FixOldTowns()
 {
