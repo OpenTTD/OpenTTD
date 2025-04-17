@@ -83,7 +83,7 @@ static void GetShipIcon(EngineID engine, EngineImageType image_type, VehicleSpri
 	const Engine *e = Engine::Get(engine);
 	uint8_t spritenum = e->u.ship.image_index;
 
-	if (is_custom_sprite(spritenum)) {
+	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
 		if (result->IsValid()) return;
 
@@ -137,7 +137,7 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 
 	if (image_type == EIT_ON_MAP) direction = this->rotation;
 
-	if (is_custom_sprite(spritenum)) {
+	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleSprite(this, direction, image_type, result);
 		if (result->IsValid()) return;
 

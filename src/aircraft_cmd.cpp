@@ -175,7 +175,7 @@ void Aircraft::GetImage(Direction direction, EngineImageType image_type, Vehicle
 {
 	uint8_t spritenum = this->spritenum;
 
-	if (is_custom_sprite(spritenum)) {
+	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleSprite(this, direction, image_type, result);
 		if (result->IsValid()) return;
 
@@ -191,7 +191,7 @@ void GetRotorImage(const Aircraft *v, EngineImageType image_type, VehicleSpriteS
 	assert(v->subtype == AIR_HELICOPTER);
 
 	const Aircraft *w = v->Next()->Next();
-	if (is_custom_sprite(v->spritenum)) {
+	if (IsCustomVehicleSpriteNum(v->spritenum)) {
 		GetCustomRotorSprite(v, image_type, result);
 		if (result->IsValid()) return;
 	}
@@ -205,7 +205,7 @@ static void GetAircraftIcon(EngineID engine, EngineImageType image_type, Vehicle
 	const Engine *e = Engine::Get(engine);
 	uint8_t spritenum = e->u.air.image_index;
 
-	if (is_custom_sprite(spritenum)) {
+	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
 		if (result->IsValid()) return;
 

@@ -43,9 +43,9 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				uint8_t orig_spriteid = spriteid;
 
 				/* aircraft have different custom id in the GRF file */
-				if (spriteid == 0xFF) spriteid = 0xFD;
+				if (spriteid == 0xFF) spriteid = CUSTOM_VEHICLE_SPRITENUM;
 
-				if (spriteid < 0xFD) spriteid >>= 1;
+				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
 				if (IsValidNewGRFImageIndex<VEH_AIRCRAFT>(spriteid)) {
 					avi->image_index = spriteid;

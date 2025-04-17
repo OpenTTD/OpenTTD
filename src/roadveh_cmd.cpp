@@ -107,7 +107,7 @@ static void GetRoadVehIcon(EngineID engine, EngineImageType image_type, VehicleS
 	const Engine *e = Engine::Get(engine);
 	uint8_t spritenum = e->u.road.image_index;
 
-	if (is_custom_sprite(spritenum)) {
+	if (IsCustomVehicleSpriteNum(spritenum)) {
 		GetCustomVehicleIcon(engine, DIR_W, image_type, result);
 		if (result->IsValid()) return;
 
@@ -122,8 +122,9 @@ void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, Vehi
 {
 	uint8_t spritenum = this->spritenum;
 
-	if (is_custom_sprite(spritenum)) {
-		GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)), image_type, result);
+	if (IsCustomVehicleSpriteNum(spritenum)) {
+		if (spritenum == CUSTOM_VEHICLE_SPRITENUM_REVERSED) direction = ReverseDir(direction);
+		GetCustomVehicleSprite(this, direction, image_type, result);
 		if (result->IsValid()) return;
 
 		spritenum = this->GetEngine()->original_image_index;

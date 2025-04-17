@@ -58,12 +58,12 @@ void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_location, Pric
  * Helper to check whether an image index is valid for a particular NewGRF vehicle.
  * @tparam T The type of vehicle.
  * @param image_index The image index to check.
- * @return True iff the image index is valid, or 0xFD (use new graphics).
+ * @return True iff the image index is valid, or CUSTOM_VEHICLE_SPRITENUM (use new graphics).
  */
 template <VehicleType T>
 static inline bool IsValidNewGRFImageIndex(uint8_t image_index)
 {
-	 return image_index == 0xFD || IsValidImageIndex<T>(image_index);
+	return image_index == CUSTOM_VEHICLE_SPRITENUM || IsValidImageIndex<T>(image_index);
 }
 
 ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteReader &buf);
