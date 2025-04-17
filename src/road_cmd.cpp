@@ -1628,7 +1628,7 @@ static void DrawRoadBits(TileInfo *ti)
 		/* DrawFoundation() modifies ti. */
 	}
 
-	DrawRoadGroundSprites(ti, road, tram, road_rti, tram_rti, GetRoadside(ti->tile), IsOnSnow(ti->tile));
+	DrawRoadGroundSprites(ti, road, tram, road_rti, tram_rti, GetRoadside(ti->tile), IsOnSnowOrDesert(ti->tile));
 
 	/* Draw one way */
 	if (road_rti != nullptr) {
@@ -1720,7 +1720,7 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID image = SPR_ROAD_Y + axis;
 
 				Roadside roadside = GetRoadside(ti->tile);
-				if (DrawRoadAsSnowOrDesert(IsOnSnow(ti->tile), roadside)) {
+				if (DrawRoadAsSnowOrDesert(IsOnSnowOrDesert(ti->tile), roadside)) {
 					image += 19;
 				} else {
 					switch (roadside) {
@@ -1736,7 +1736,7 @@ static void DrawTile_Road(TileInfo *ti)
 				if (IsCrossingBarred(ti->tile)) image += 2;
 
 				Roadside roadside = GetRoadside(ti->tile);
-				if (DrawRoadAsSnowOrDesert(IsOnSnow(ti->tile), roadside)) {
+				if (DrawRoadAsSnowOrDesert(IsOnSnowOrDesert(ti->tile), roadside)) {
 					image += 8;
 				} else {
 					switch (roadside) {
@@ -1975,16 +1975,16 @@ static void TileLoop_Road(TileIndex tile)
 		case LandscapeType::Arctic: {
 			/* Roads on flat foundations use the snow level of the height they are elevated to. All others use the snow level of their minimum height. */
 			int tile_z = (std::get<Slope>(GetFoundationSlope(tile)) == SLOPE_FLAT) ? GetTileMaxZ(tile) : GetTileZ(tile);
-			if (IsOnSnow(tile) != (tile_z > GetSnowLine())) {
-				ToggleSnow(tile);
+			if (IsOnSnowOrDesert(tile) != (tile_z > GetSnowLine())) {
+				ToggleSnowOrDesert(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 		}
 
 		case LandscapeType::Tropic:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT && !IsOnDesert(tile)) {
-				ToggleDesert(tile);
+			if (GetTropicZone(tile) == TROPICZONE_DESERT && !IsOnSnowOrDesert(tile)) {
+				ToggleSnowOrDesert(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			break;

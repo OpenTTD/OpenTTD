@@ -357,7 +357,7 @@ uint32_t GetTerrainType(TileIndex tile, TileContext context)
 				case MP_ROAD:
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld; // we do not care about foundations here
-					has_snow = IsOnSnow(tile);
+					has_snow = IsOnSnowOrDesert(tile);
 					break;
 
 				case MP_TREES: {
