@@ -105,11 +105,6 @@ static ConsoleFileList _console_file_list_savegame{FT_SAVEGAME, true}; ///< File
 static ConsoleFileList _console_file_list_scenario{FT_SCENARIO, false}; ///< File storage cache for scenarios.
 static ConsoleFileList _console_file_list_heightmap{FT_HEIGHTMAP, false}; ///< File storage cache for heightmaps.
 
-/* console command defines */
-#define DEF_CONSOLE_CMD(function) static bool function([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
-#define DEF_CONSOLE_HOOK(function) static ConsoleHookResult function(bool echo)
-
-
 /****************
  * command hooks
  ****************/
@@ -131,7 +126,7 @@ static inline bool NetworkAvailable(bool echo)
  * Check whether we are a server.
  * @return Are we a server? True when yes, false otherwise.
  */
-DEF_CONSOLE_HOOK(ConHookServerOnly)
+static ConsoleHookResult ConHookServerOnly(bool echo)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
@@ -146,7 +141,7 @@ DEF_CONSOLE_HOOK(ConHookServerOnly)
  * Check whether we are a client in a network game.
  * @return Are we a client in a network game? True when yes, false otherwise.
  */
-DEF_CONSOLE_HOOK(ConHookClientOnly)
+static ConsoleHookResult ConHookClientOnly(bool echo)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
@@ -161,7 +156,7 @@ DEF_CONSOLE_HOOK(ConHookClientOnly)
  * Check whether we are in a multiplayer game.
  * @return True when we are client or server in a network game.
  */
-DEF_CONSOLE_HOOK(ConHookNeedNetwork)
+static ConsoleHookResult ConHookNeedNetwork(bool echo)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
@@ -176,7 +171,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
  * Check whether we are in a multiplayer game and are playing, i.e. we are not the dedicated server.
  * @return Are we a client or non-dedicated server in a network game? True when yes, false otherwise.
  */
-DEF_CONSOLE_HOOK(ConHookNeedNonDedicatedNetwork)
+static ConsoleHookResult ConHookNeedNonDedicatedNetwork(bool echo)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
@@ -191,7 +186,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNonDedicatedNetwork)
  * Check whether we are in singleplayer mode.
  * @return True when no network is active.
  */
-DEF_CONSOLE_HOOK(ConHookNoNetwork)
+static ConsoleHookResult ConHookNoNetwork(bool echo)
 {
 	if (_networking) {
 		if (echo) IConsolePrint(CC_ERROR, "This command is forbidden in multiplayer.");
@@ -204,7 +199,7 @@ DEF_CONSOLE_HOOK(ConHookNoNetwork)
  * Check if are either in singleplayer or a server.
  * @return True iff we are either in singleplayer or a server.
  */
-DEF_CONSOLE_HOOK(ConHookServerOrNoNetwork)
+static ConsoleHookResult ConHookServerOrNoNetwork(bool echo)
 {
 	if (_networking && !_network_server) {
 		if (echo) IConsolePrint(CC_ERROR, "This command is only available to a network server.");
@@ -213,7 +208,7 @@ DEF_CONSOLE_HOOK(ConHookServerOrNoNetwork)
 	return CHR_ALLOW;
 }
 
-DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
+static ConsoleHookResult ConHookNewGRFDeveloperTool(bool echo)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
 		if (_game_mode == GM_MENU) {
@@ -229,7 +224,7 @@ DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
  * Reset status of all engines.
  * @return Will always succeed.
  */
-DEF_CONSOLE_CMD(ConResetEngines)
+static bool ConResetEngines([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reset status data of all engines. This might solve some issues with 'lost' engines. Usage: 'resetengines'.");
@@ -245,7 +240,7 @@ DEF_CONSOLE_CMD(ConResetEngines)
  * @return Will always return true.
  * @note Resetting the pool only succeeds when there are no vehicles ingame.
  */
-DEF_CONSOLE_CMD(ConResetEnginePool)
+static bool ConResetEnginePool([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reset NewGRF allocations of engine slots. This will remove invalid engine definitions, and might make default engines available again.");
@@ -271,7 +266,7 @@ DEF_CONSOLE_CMD(ConResetEnginePool)
  * param tile number.
  * @return True when the tile is reset or the help on usage was printed (0 or two parameters).
  */
-DEF_CONSOLE_CMD(ConResetTile)
+static bool ConResetTile([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reset a tile to bare land. Usage: 'resettile <tile>'.");
@@ -296,7 +291,7 @@ DEF_CONSOLE_CMD(ConResetTile)
  * param level As defined by ZoomLevel and as limited by zoom_min/zoom_max from GUISettings.
  * @return True when either console help was shown or a proper amount of parameters given.
  */
-DEF_CONSOLE_CMD(ConZoomToLevel)
+static bool ConZoomToLevel([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	switch (argc) {
 		case 0:
@@ -355,7 +350,7 @@ DEF_CONSOLE_CMD(ConZoomToLevel)
  *       and y coordinates.
  * @return True when either console help was shown or a proper amount of parameters given.
  */
-DEF_CONSOLE_CMD(ConScrollToTile)
+static bool ConScrollToTile([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Center the screen on a given tile.");
@@ -409,7 +404,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
  * param filename the filename to save the map to.
  * @return True when help was displayed or the file attempted to be saved.
  */
-DEF_CONSOLE_CMD(ConSave)
+static bool ConSave([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Save the current game. Usage: 'save <filename>'.");
@@ -436,7 +431,7 @@ DEF_CONSOLE_CMD(ConSave)
  * Explicitly save the configuration.
  * @return True.
  */
-DEF_CONSOLE_CMD(ConSaveConfig)
+static bool ConSaveConfig([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Saves the configuration for new games to the configuration file, typically 'openttd.cfg'.");
@@ -449,7 +444,7 @@ DEF_CONSOLE_CMD(ConSaveConfig)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConLoad)
+static bool ConLoad([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Load a game by name or index. Usage: 'load <file | number>'.");
@@ -475,7 +470,7 @@ DEF_CONSOLE_CMD(ConLoad)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConLoadScenario)
+static bool ConLoadScenario([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Load a scenario by name or index. Usage: 'load_scenario <file | number>'.");
@@ -501,7 +496,7 @@ DEF_CONSOLE_CMD(ConLoadScenario)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConLoadHeightmap)
+static bool ConLoadHeightmap([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Load a heightmap by name or index. Usage: 'load_heightmap <file | number>'.");
@@ -527,7 +522,7 @@ DEF_CONSOLE_CMD(ConLoadHeightmap)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConRemove)
+static bool ConRemove([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Remove a savegame by name or index. Usage: 'rm <file | number>'.");
@@ -553,7 +548,7 @@ DEF_CONSOLE_CMD(ConRemove)
 
 
 /* List all the files in the current dir via console */
-DEF_CONSOLE_CMD(ConListFiles)
+static bool ConListFiles([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List all loadable savegames and directories in the current dir via console. Usage: 'ls | dir'.");
@@ -569,7 +564,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 }
 
 /* List all the scenarios */
-DEF_CONSOLE_CMD(ConListScenarios)
+static bool ConListScenarios([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List all loadable scenarios. Usage: 'list_scenarios'.");
@@ -585,7 +580,7 @@ DEF_CONSOLE_CMD(ConListScenarios)
 }
 
 /* List all the heightmaps */
-DEF_CONSOLE_CMD(ConListHeightmaps)
+static bool ConListHeightmaps([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List all loadable heightmaps. Usage: 'list_heightmaps'.");
@@ -601,7 +596,7 @@ DEF_CONSOLE_CMD(ConListHeightmaps)
 }
 
 /* Change the dir via console */
-DEF_CONSOLE_CMD(ConChangeDirectory)
+static bool ConChangeDirectory([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Change the dir via console. Usage: 'cd <directory | number>'.");
@@ -630,7 +625,7 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
+static bool ConPrintWorkingDirectory([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Print out the current working directory. Usage: 'pwd'.");
@@ -645,7 +640,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConClearBuffer)
+static bool ConClearBuffer([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Clear the console buffer. Usage: 'clear'.");
@@ -705,7 +700,7 @@ static bool ConKickOrBan(const char *argv, bool ban, const std::string &reason)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConKick)
+static bool ConKick([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Kick a client from a network game. Usage: 'kick <ip | client-id> [<kick-reason>]'.");
@@ -728,7 +723,7 @@ DEF_CONSOLE_CMD(ConKick)
 	}
 }
 
-DEF_CONSOLE_CMD(ConBan)
+static bool ConBan([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Ban a client from a network game. Usage: 'ban <ip | client-id> [<ban-reason>]'.");
@@ -752,7 +747,7 @@ DEF_CONSOLE_CMD(ConBan)
 	}
 }
 
-DEF_CONSOLE_CMD(ConUnBan)
+static bool ConUnBan([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Unban a client from a network game. Usage: 'unban <ip | banlist-index>'.");
@@ -784,7 +779,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConBanList)
+static bool ConBanList([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List the IP's of banned clients: Usage 'banlist'.");
@@ -802,7 +797,7 @@ DEF_CONSOLE_CMD(ConBanList)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConPauseGame)
+static bool ConPauseGame([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Pause a network game. Usage: 'pause'.");
@@ -824,7 +819,7 @@ DEF_CONSOLE_CMD(ConPauseGame)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConUnpauseGame)
+static bool ConUnpauseGame([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Unpause a network game. Usage: 'unpause'.");
@@ -850,7 +845,7 @@ DEF_CONSOLE_CMD(ConUnpauseGame)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConRcon)
+static bool ConRcon([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Remote control the server from another client. Usage: 'rcon <password> <command>'.");
@@ -869,7 +864,7 @@ DEF_CONSOLE_CMD(ConRcon)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConStatus)
+static bool ConStatus([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List the status of all clients connected to the server. Usage 'status'.");
@@ -880,7 +875,7 @@ DEF_CONSOLE_CMD(ConStatus)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConServerInfo)
+static bool ConServerInfo([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List current and maximum client/company limits. Usage 'server_info'.");
@@ -896,7 +891,7 @@ DEF_CONSOLE_CMD(ConServerInfo)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConClientNickChange)
+static bool ConClientNickChange([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc != 3) {
 		IConsolePrint(CC_HELP, "Change the nickname of a connected client. Usage: 'client_name <client-id> <new-name>'.");
@@ -930,7 +925,7 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConJoinCompany)
+static bool ConJoinCompany([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc < 2) {
 		IConsolePrint(CC_HELP, "Request joining another company. Usage: 'join <company-id>'.");
@@ -977,7 +972,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConMoveClient)
+static bool ConMoveClient([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc < 3) {
 		IConsolePrint(CC_HELP, "Move a client to another company. Usage: 'move <client-id> <company-id>'.");
@@ -1020,7 +1015,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConResetCompany)
+static bool ConResetCompany([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Remove an idle company from the game. Usage: 'reset_company <company-id>'.");
@@ -1061,7 +1056,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConNetworkClients)
+static bool ConNetworkClients([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Get a list of connected clients including their ID, name, company-id, and IP. Usage: 'clients'.");
@@ -1073,7 +1068,7 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConNetworkReconnect)
+static bool ConNetworkReconnect([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reconnect to server to which you were connected last time. Usage: 'reconnect [<company>]'.");
@@ -1104,7 +1099,7 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 	return NetworkClientConnectGame(_settings_client.network.last_joined, playas);
 }
 
-DEF_CONSOLE_CMD(ConNetworkConnect)
+static bool ConNetworkConnect([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'.");
@@ -1122,7 +1117,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
  *  script file console commands
  *********************************/
 
-DEF_CONSOLE_CMD(ConExec)
+static bool ConExec([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Execute a local script file. Usage: 'exec <script> <?>'.");
@@ -1171,7 +1166,7 @@ DEF_CONSOLE_CMD(ConExec)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSchedule)
+static bool ConSchedule([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc < 3 || std::string_view(argv[1]) != "on-next-calendar-month") {
 		IConsolePrint(CC_HELP, "Schedule a local script to execute later. Usage: 'schedule on-next-calendar-month <script>'.");
@@ -1200,7 +1195,7 @@ DEF_CONSOLE_CMD(ConSchedule)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConReturn)
+static bool ConReturn([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Stop executing a running script. Usage: 'return'.");
@@ -1219,7 +1214,7 @@ extern std::span<const GRFFile> GetAllGRFFiles();
 extern void ConPrintFramerate(); // framerate_gui.cpp
 extern void ShowFramerateWindow();
 
-DEF_CONSOLE_CMD(ConScript)
+static bool ConScript([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	extern std::optional<FileHandle> _iconsole_output_file;
 
@@ -1243,8 +1238,7 @@ DEF_CONSOLE_CMD(ConScript)
 	return true;
 }
 
-
-DEF_CONSOLE_CMD(ConEcho)
+static bool ConEcho([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Print back the first argument to the console. Usage: 'echo <arg>'.");
@@ -1256,7 +1250,7 @@ DEF_CONSOLE_CMD(ConEcho)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConEchoC)
+static bool ConEchoC([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Print back the first argument to the console in a given colour. Usage: 'echoc <colour> <arg2>'.");
@@ -1268,7 +1262,7 @@ DEF_CONSOLE_CMD(ConEchoC)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConNewGame)
+static bool ConNewGame([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Start a new game. Usage: 'newgame [seed]'.");
@@ -1280,7 +1274,7 @@ DEF_CONSOLE_CMD(ConNewGame)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConRestart)
+static bool ConRestart([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0 || argc > 2) {
 		IConsolePrint(CC_HELP, "Restart game. Usage: 'restart [current|newgame]'.");
@@ -1301,7 +1295,7 @@ DEF_CONSOLE_CMD(ConRestart)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConReload)
+static bool ConReload([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reload game. Usage: 'reload'.");
@@ -1345,7 +1339,7 @@ bool PrintList(F list_function, Args... args)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConListAILibs)
+static bool ConListAILibs([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List installed AI libraries. Usage: 'list_ai_libs'.");
@@ -1355,7 +1349,7 @@ DEF_CONSOLE_CMD(ConListAILibs)
 	return PrintList(AI::GetConsoleLibraryList);
 }
 
-DEF_CONSOLE_CMD(ConListAI)
+static bool ConListAI([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List installed AIs. Usage: 'list_ai'.");
@@ -1365,7 +1359,7 @@ DEF_CONSOLE_CMD(ConListAI)
 	return PrintList(AI::GetConsoleList, false);
 }
 
-DEF_CONSOLE_CMD(ConListGameLibs)
+static bool ConListGameLibs([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List installed Game Script libraries. Usage: 'list_game_libs'.");
@@ -1375,7 +1369,7 @@ DEF_CONSOLE_CMD(ConListGameLibs)
 	return PrintList(Game::GetConsoleLibraryList);
 }
 
-DEF_CONSOLE_CMD(ConListGame)
+static bool ConListGame([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List installed Game Scripts. Usage: 'list_game'.");
@@ -1385,7 +1379,7 @@ DEF_CONSOLE_CMD(ConListGame)
 	return PrintList(Game::GetConsoleList, false);
 }
 
-DEF_CONSOLE_CMD(ConStartAI)
+static bool ConStartAI([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0 || argc > 3) {
 		IConsolePrint(CC_HELP, "Start a new AI. Usage: 'start_ai [<AI>] [<settings>]'.");
@@ -1457,7 +1451,7 @@ DEF_CONSOLE_CMD(ConStartAI)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConReloadAI)
+static bool ConReloadAI([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc != 2) {
 		IConsolePrint(CC_HELP, "Reload an AI. Usage: 'reload_ai <company-id>'.");
@@ -1495,7 +1489,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConStopAI)
+static bool ConStopAI([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc != 2) {
 		IConsolePrint(CC_HELP, "Stop an AI. Usage: 'stop_ai <company-id>'.");
@@ -1532,7 +1526,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConRescanAI)
+static bool ConRescanAI([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Rescan the AI dir for scripts. Usage: 'rescan_ai'.");
@@ -1549,7 +1543,7 @@ DEF_CONSOLE_CMD(ConRescanAI)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConRescanGame)
+static bool ConRescanGame([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Rescan the Game Script dir for scripts. Usage: 'rescan_game'.");
@@ -1566,7 +1560,7 @@ DEF_CONSOLE_CMD(ConRescanGame)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConRescanNewGRF)
+static bool ConRescanNewGRF([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Rescan the data dir for NewGRFs. Usage: 'rescan_newgrf'.");
@@ -1580,7 +1574,7 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConGetSeed)
+static bool ConGetSeed([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Returns the seed used to create this game. Usage: 'getseed'.");
@@ -1592,7 +1586,7 @@ DEF_CONSOLE_CMD(ConGetSeed)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConGetDate)
+static bool ConGetDate([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Returns the current date (year-month-day) of the game. Usage: 'getdate'.");
@@ -1604,7 +1598,7 @@ DEF_CONSOLE_CMD(ConGetDate)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConGetSysDate)
+static bool ConGetSysDate([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Returns the current date (year-month-day) of your system. Usage: 'getsysdate'.");
@@ -1615,8 +1609,7 @@ DEF_CONSOLE_CMD(ConGetSysDate)
 	return true;
 }
 
-
-DEF_CONSOLE_CMD(ConAlias)
+static bool ConAlias([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	IConsoleAlias *alias;
 
@@ -1636,7 +1629,7 @@ DEF_CONSOLE_CMD(ConAlias)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConScreenShot)
+static bool ConScreenShot([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Create a screenshot of the game. Usage: 'screenshot [viewport | normal | big | giant | heightmap | minimap] [no_con] [size <width> <height>] [<filename>]'.");
@@ -1717,7 +1710,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConInfoCmd)
+static bool ConInfoCmd([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Print out debugging information about a command. Usage: 'info_cmd <cmd>'.");
@@ -1739,7 +1732,7 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConDebugLevel)
+static bool ConDebugLevel([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Get/set the default debugging level for the game. Usage: 'debug_level [<level>]'.");
@@ -1758,7 +1751,7 @@ DEF_CONSOLE_CMD(ConDebugLevel)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConExit)
+static bool ConExit([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Exit the game. Usage: 'exit'.");
@@ -1771,7 +1764,7 @@ DEF_CONSOLE_CMD(ConExit)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConPart)
+static bool ConPart([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Leave the currently joined/running game (only ingame). Usage: 'part'.");
@@ -1789,7 +1782,7 @@ DEF_CONSOLE_CMD(ConPart)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConHelp)
+static bool ConHelp([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 2) {
 		const IConsoleCmd *cmd;
@@ -1828,7 +1821,7 @@ DEF_CONSOLE_CMD(ConHelp)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConListCommands)
+static bool ConListCommands([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List all registered commands. Usage: 'list_cmds [<pre-filter>]'.");
@@ -1845,7 +1838,7 @@ DEF_CONSOLE_CMD(ConListCommands)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConListAliases)
+static bool ConListAliases([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List all registered aliases. Usage: 'list_aliases [<pre-filter>]'.");
@@ -1862,7 +1855,7 @@ DEF_CONSOLE_CMD(ConListAliases)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConCompanies)
+static bool ConCompanies([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List the details of all companies in the game. Usage 'companies'.");
@@ -1887,7 +1880,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSay)
+static bool ConSay([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Chat to your fellow players in a multiplayer game. Usage: 'say \"<msg>\"'.");
@@ -1906,7 +1899,7 @@ DEF_CONSOLE_CMD(ConSay)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSayCompany)
+static bool ConSayCompany([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Chat to a certain company in a multiplayer game. Usage: 'say_company <company-no> \"<msg>\"'.");
@@ -1932,7 +1925,7 @@ DEF_CONSOLE_CMD(ConSayCompany)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSayClient)
+static bool ConSayClient([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Chat to a certain client in a multiplayer game. Usage: 'say_client <client-no> \"<msg>\"'.");
@@ -2005,7 +1998,7 @@ static void PerformNetworkAuthorizedKeyAction(std::string_view name, NetworkAuth
 	}
 }
 
-DEF_CONSOLE_CMD(ConNetworkAuthorizedKey)
+static bool ConNetworkAuthorizedKey([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc <= 2) {
 		IConsolePrint(CC_HELP, "List and update authorized keys. Usage: 'authorized_key list [type]|add [type] [key]|remove [type] [key]'.");
@@ -2140,7 +2133,7 @@ static void OutputContentState(const ContentInfo &ci)
 	IConsolePrint(state_to_colour[ci.state], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[ci.state], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
-DEF_CONSOLE_CMD(ConContent)
+static bool ConContent([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	static ContentCallback *cb = nullptr;
 	if (cb == nullptr) {
@@ -2225,7 +2218,7 @@ DEF_CONSOLE_CMD(ConContent)
 }
 #endif /* defined(WITH_ZLIB) */
 
-DEF_CONSOLE_CMD(ConFont)
+static bool ConFont([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Manage the fonts configuration.");
@@ -2289,7 +2282,7 @@ DEF_CONSOLE_CMD(ConFont)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSetting)
+static bool ConSetting([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Change setting for all clients. Usage: 'setting <name> [<value>]'.");
@@ -2308,7 +2301,7 @@ DEF_CONSOLE_CMD(ConSetting)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSettingNewgame)
+static bool ConSettingNewgame([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Change setting for the next game. Usage: 'setting_newgame <name> [<value>]'.");
@@ -2327,7 +2320,7 @@ DEF_CONSOLE_CMD(ConSettingNewgame)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConListSettings)
+static bool ConListSettings([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "List settings. Usage: 'list_settings [<pre-filter>]'.");
@@ -2340,7 +2333,7 @@ DEF_CONSOLE_CMD(ConListSettings)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConGamelogPrint)
+static bool ConGamelogPrint([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Print logged fundamental changes to the game since the start. Usage: 'gamelog'.");
@@ -2351,7 +2344,7 @@ DEF_CONSOLE_CMD(ConGamelogPrint)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConNewGRFReload)
+static bool ConNewGRFReload([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Reloads all active NewGRFs from disk. Equivalent to reapplying NewGRFs via the settings, but without asking for confirmation. This might crash OpenTTD!");
@@ -2362,7 +2355,7 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConListDirs)
+static bool ConListDirs([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	struct SubdirNameMap {
 		Subdirectory subdir; ///< Index of subdirectory type
@@ -2428,7 +2421,7 @@ DEF_CONSOLE_CMD(ConListDirs)
 	return false;
 }
 
-DEF_CONSOLE_CMD(ConNewGRFProfile)
+static bool ConNewGRFProfile([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Collect performance data about NewGRF sprite requests and callbacks. Sub-commands can be abbreviated.");
@@ -2561,7 +2554,7 @@ static void IConsoleDebugLibRegister()
 }
 #endif
 
-DEF_CONSOLE_CMD(ConFramerate)
+static bool ConFramerate([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Show frame rate and game speed information.");
@@ -2572,7 +2565,7 @@ DEF_CONSOLE_CMD(ConFramerate)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConFramerateWindow)
+static bool ConFramerateWindow([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
 		IConsolePrint(CC_HELP, "Open the frame rate window.");
@@ -2737,8 +2730,7 @@ static void ConDumpCargoTypes()
 	}
 }
 
-
-DEF_CONSOLE_CMD(ConDumpInfo)
+static bool ConDumpInfo([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc != 2) {
 		IConsolePrint(CC_HELP, "Dump debugging information.");
