@@ -540,7 +540,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlags flags, RoadBits pie
 static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existing, RoadBits other)
 {
 	/* Remove already build pieces */
-	CLRBITS(*pieces, existing);
+	*pieces &= ~existing;
 
 	/* If we can't build anything stop here */
 	if (*pieces == ROAD_NONE) return CMD_ERROR;
