@@ -628,12 +628,20 @@ bool CanDeleteHouse(TileIndex tile)
 	}
 }
 
-static void AnimationControl(TileIndex tile, uint16_t random_bits)
+/**
+ * Call the tile loop animation trigger for houses, if enabled.
+ * @param tile House tile
+ * @param sync Whether to call the synchronized or the unsynchronized trigger.
+ * @param random_bits Shared random bits for the synchronized trigger.
+ */
+static void AnimationControl(TileIndex tile, bool sync, uint16_t random_bits)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
-	if (hs->callback_mask.Test(HouseCallbackMask::AnimationStartStop)) {
-		uint32_t param = hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
+	/* Check whether the matching trigger is enabled */
+	if (hs->callback_mask.Test(HouseCallbackMask::AnimationStartStop) &&
+			hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B) == sync) {
+		uint32_t param = sync ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
 		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_START_STOP, hs, Town::GetByTile(tile), tile, param, 0);
 	}
 }
@@ -650,21 +658,16 @@ bool NewHouseTileLoop(TileIndex tile)
 	TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP);
 	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
 
-	if (hs->callback_mask.Test(HouseCallbackMask::AnimationStartStop)) {
-		/* If this house is marked as having a synchronised callback, all the
-		 * tiles will have the callback called at once, rather than when the
-		 * tile loop reaches them. This should only be enabled for the northern
-		 * tile, or strange things will happen (here, and in TTDPatch). */
-		if (hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B)) {
-			uint16_t random = GB(Random(), 0, 16);
+	/* Call the unsynchronized tile loop trigger */
+	AnimationControl(tile, false, 0);
 
-			if (hs->building_flags.Any(BUILDING_HAS_1_TILE))  AnimationControl(tile, random);
-			if (hs->building_flags.Any(BUILDING_2_TILES_Y))   AnimationControl(TileAddXY(tile, 0, 1), random);
-			if (hs->building_flags.Any(BUILDING_2_TILES_X))   AnimationControl(TileAddXY(tile, 1, 0), random);
-			if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) AnimationControl(TileAddXY(tile, 1, 1), random);
-		} else {
-			AnimationControl(tile, 0);
-		}
+	/* Call the synchronized tile loop trigger, if this is the north tile */
+	if (hs->building_flags.Any(BUILDING_HAS_1_TILE)) {
+		uint16_t random = GB(Random(), 0, 16);
+		AnimationControl(tile, true, random);
+		if (hs->building_flags.Any(BUILDING_2_TILES_Y)) AnimationControl(TileAddXY(tile, 0, 1), true, random);
+		if (hs->building_flags.Any(BUILDING_2_TILES_X)) AnimationControl(TileAddXY(tile, 1, 0), true, random);
+		if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) AnimationControl(TileAddXY(tile, 1, 1), true, random);
 	}
 
 	/* Check callback 21, which determines if a house should be destroyed. */
