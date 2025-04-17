@@ -433,25 +433,21 @@ inline void BarCrossing(Tile t)
 	SetCrossingBarred(t, true);
 }
 
-/** Check if a road tile has snow/desert. */
-#define IsOnDesert IsOnSnow
 /**
  * Check if a road tile has snow/desert.
  * @param t The tile to query.
  * @return True if the tile has snow/desert.
  */
-inline bool IsOnSnow(Tile t)
+inline bool IsOnSnowOrDesert(Tile t)
 {
 	return HasBit(t.m7(), 5);
 }
 
-/** Toggle the snow/desert state of a road tile. */
-#define ToggleDesert ToggleSnow
 /**
  * Toggle the snow/desert state of a road tile.
  * @param t The tile to change.
  */
-inline void ToggleSnow(Tile t)
+inline void ToggleSnowOrDesert(Tile t)
 {
 	ToggleBit(t.m7(), 5);
 }
