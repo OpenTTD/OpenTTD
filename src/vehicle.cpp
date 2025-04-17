@@ -74,17 +74,28 @@ static const uint GEN_HASHX_BUCKET_BITS = 7;
 static const uint GEN_HASHY_BUCKET_BITS = 6;
 
 /* Compute hash for vehicle coord */
-#define GEN_HASHX(x)    GB((x), GEN_HASHX_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHX_BITS)
-#define GEN_HASHY(y)   (GB((y), GEN_HASHY_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHY_BITS) << GEN_HASHX_BITS)
-#define GEN_HASH(x, y) (GEN_HASHY(y) + GEN_HASHX(x))
+static inline uint GetViewportHashX(int x)
+{
+	return GB(x, GEN_HASHX_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHX_BITS);
+}
+
+static inline uint GetViewportHashY(int y)
+{
+	return GB(y, GEN_HASHY_BUCKET_BITS + ZOOM_BASE_SHIFT, GEN_HASHY_BITS) << GEN_HASHX_BITS;
+}
+
+static inline uint GetViewportHash(int x, int y)
+{
+	return GetViewportHashX(x) + GetViewportHashY(y);
+}
 
 /* Maximum size until hash repeats */
-static const int GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_BASE_SHIFT);
-static const int GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_BASE_SHIFT);
+static const uint GEN_HASHX_SIZE = 1 << (GEN_HASHX_BUCKET_BITS + GEN_HASHX_BITS + ZOOM_BASE_SHIFT);
+static const uint GEN_HASHY_SIZE = 1 << (GEN_HASHY_BUCKET_BITS + GEN_HASHY_BITS + ZOOM_BASE_SHIFT);
 
 /* Increments to reach next bucket in hash table */
-static const int GEN_HASHX_INC = 1;
-static const int GEN_HASHY_INC = 1 << GEN_HASHX_BITS;
+static const uint GEN_HASHX_INC = 1;
+static const uint GEN_HASHY_INC = 1 << GEN_HASHX_BITS;
 
 /* Mask to wrap-around buckets */
 static const uint GEN_HASHX_MASK =  (1 << GEN_HASHX_BITS) - 1;
@@ -652,8 +663,8 @@ static void UpdateVehicleViewportHash(Vehicle *v, int x, int y, int old_x, int o
 {
 	Vehicle **old_hash, **new_hash;
 
-	new_hash = (x == INVALID_COORD) ? nullptr : &_vehicle_viewport_hash[GEN_HASH(x, y)];
-	old_hash = (old_x == INVALID_COORD) ? nullptr : &_vehicle_viewport_hash[GEN_HASH(old_x, old_y)];
+	new_hash = (x == INVALID_COORD) ? nullptr : &_vehicle_viewport_hash[GetViewportHash(x, y)];
+	old_hash = (old_x == INVALID_COORD) ? nullptr : &_vehicle_viewport_hash[GetViewportHash(old_x, old_y)];
 
 	if (old_hash == new_hash) return;
 
@@ -1158,28 +1169,28 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_BASE;
 
 	/* The hash area to scan */
-	int xl, xu, yl, yu;
+	uint xl, xu, yl, yu;
 
-	if (dpi->width + xb < GEN_HASHX_SIZE) {
-		xl = GEN_HASHX(l - xb);
-		xu = GEN_HASHX(r);
+	if (static_cast<uint>(dpi->width + xb) < GEN_HASHX_SIZE) {
+		xl = GetViewportHashX(l - xb);
+		xu = GetViewportHashX(r);
 	} else {
 		/* scan whole hash row */
 		xl = 0;
 		xu = GEN_HASHX_MASK;
 	}
 
-	if (dpi->height + yb < GEN_HASHY_SIZE) {
-		yl = GEN_HASHY(t - yb);
-		yu = GEN_HASHY(b);
+	if (static_cast<uint>(dpi->height + yb) < GEN_HASHY_SIZE) {
+		yl = GetViewportHashY(t - yb);
+		yu = GetViewportHashY(b);
 	} else {
 		/* scan whole column */
 		yl = 0;
 		yu = GEN_HASHY_MASK;
 	}
 
-	for (int y = yl;; y = (y + GEN_HASHY_INC) & GEN_HASHY_MASK) {
-		for (int x = xl;; x = (x + GEN_HASHX_INC) & GEN_HASHX_MASK) {
+	for (uint y = yl;; y = (y + GEN_HASHY_INC) & GEN_HASHY_MASK) {
+		for (uint x = xl;; x = (x + GEN_HASHX_INC) & GEN_HASHX_MASK) {
 			const Vehicle *v = _vehicle_viewport_hash[x + y]; // already masked & 0xFFF
 
 			while (v != nullptr) {
@@ -1256,13 +1267,13 @@ Vehicle *CheckClickOnVehicle(const Viewport &vp, int x, int y)
 	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_BASE;
 
 	/* The hash area to scan */
-	int xl = GEN_HASHX(x - xb);
-	int xu = GEN_HASHX(x);
-	int yl = GEN_HASHY(y - yb);
-	int yu = GEN_HASHY(y);
+	uint xl = GetViewportHashX(x - xb);
+	uint xu = GetViewportHashX(x);
+	uint yl = GetViewportHashY(y - yb);
+	uint yu = GetViewportHashY(y);
 
-	for (int hy = yl;; hy = (hy + GEN_HASHY_INC) & GEN_HASHY_MASK) {
-		for (int hx = xl;; hx = (hx + GEN_HASHX_INC) & GEN_HASHX_MASK) {
+	for (uint hy = yl;; hy = (hy + GEN_HASHY_INC) & GEN_HASHY_MASK) {
+		for (uint hx = xl;; hx = (hx + GEN_HASHX_INC) & GEN_HASHX_MASK) {
 			Vehicle *v = _vehicle_viewport_hash[hx + hy]; // already masked & 0xFFF
 
 			while (v != nullptr) {
