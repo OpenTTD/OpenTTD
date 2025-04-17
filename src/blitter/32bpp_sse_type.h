@@ -31,15 +31,7 @@
 #define MARGIN_NORMAL_THRESHOLD (zoom == ZOOM_LVL_OUT_8X ? 8 : 4) ///< Minimum width to use margins with BlitterMode::Normal.
 #define MARGIN_REMAP_THRESHOLD 4 ///< Minimum width to use margins with BlitterMode::ColourRemap.
 
-#undef ALIGN
-
-#ifdef _MSC_VER
-	#define ALIGN(n) __declspec(align(n))
-#else
-	#define ALIGN(n) __attribute__ ((aligned (n)))
-#endif
-
-typedef union ALIGN(16) um128i {
+typedef union alignas(16) um128i {
 	__m128i m128i;
 	uint8_t m128i_u8[16];
 	uint16_t m128i_u16[8];
