@@ -18,10 +18,6 @@
 
 #include "table/control_codes.h"
 
-#ifdef _MSC_VER
-#	define strncasecmp strnicmp
-#endif
-
 #ifdef _WIN32
 #	include "os/windows/win32.h"
 #endif
