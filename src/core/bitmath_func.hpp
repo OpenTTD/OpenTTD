@@ -142,18 +142,6 @@ constexpr T ClrBit(T &x, const uint8_t y)
 }
 
 /**
- * Clears several bits in a variable.
- *
- * This macro clears several bits in a variable. The bits to clear are
- * provided by a value. The new value is also returned.
- *
- * @param x The variable to clear some bits
- * @param y The value with set bits for clearing them in the variable
- * @return The new value of x
- */
-#define CLRBITS(x, y) ((x) &= ~(y))
-
-/**
  * Toggles a bit in a variable.
  *
  * This function toggles a bit in a variable. The variable is
