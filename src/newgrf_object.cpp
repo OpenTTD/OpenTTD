@@ -502,7 +502,7 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 			const Livery &l = Company::Get(_local_company)->livery[0];
 			palette = SPR_2CCMAP_BASE + l.colour1 + l.colour2 * 16;
 		} else {
-			palette = COMPANY_SPRITE_COLOUR(_local_company);
+			palette = GetCompanyPalette(_local_company);
 		}
 	} else {
 		/* There's no company, so just take the base palette. */

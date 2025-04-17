@@ -201,7 +201,7 @@ public:
 				DrawCompanyIcon(c->index, icon.left, text.top + icon_y_offset);
 
 				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive.left, text.top + exclusive_y_offset);
+					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, GetCompanyPalette(c->index), exclusive.left, text.top + exclusive_y_offset);
 				}
 
 				int rating = this->town->ratings[c->index];
@@ -1352,7 +1352,7 @@ void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id
 	uint8_t stage = TOWN_HOUSE_COMPLETED;
 	const DrawTileSprites *dts = reinterpret_cast<const TileLayoutSpriteGroup *>(group)->ProcessRegisters(&stage);
 
-	PaletteID palette = GENERAL_SPRITE_COLOUR(spec->random_colour[0]);
+	PaletteID palette = GetColourPalette(spec->random_colour[0]);
 	if (spec->callback_mask.Test(HouseCallbackMask::Colour)) {
 		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, true, view);
 		if (callback != CALLBACK_FAILED) {

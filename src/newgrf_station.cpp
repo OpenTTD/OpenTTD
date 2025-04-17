@@ -803,7 +803,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 {
 	const DrawTileSprites *sprites = nullptr;
 	const RailTypeInfo *rti = GetRailTypeInfo(railtype);
-	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
+	PaletteID palette = GetCompanyPalette(_local_company);
 	uint tile = 2;
 
 	const StationSpec *statspec = StationClass::Get(sclass)->GetSpec(station);
