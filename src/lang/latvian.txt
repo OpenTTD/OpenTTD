@@ -2022,7 +2022,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimālais lo
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Atvērtu nepielipušo logu skaits, pirms tie tiek automātiski aizvērti lai atbrīvotu vietu jauniem logiem
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :izslēgts
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Izslēgts
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimālais pietuvinājuma līmenis: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksimālais pietuvinājuma līmenis skatvietām. Ir jāievēro ka paaugstinot pietuvinājuma līmeni, pieaug operatīvās atmiņas izlietojums
