@@ -602,8 +602,8 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 
 	/* The select criteria. */
 	CzechGender gender;
-	CzechChoose choose;
-	CzechAllow allow;
+	CzechChooseFlags choose;
+	CzechAllowFlags allow;
 
 	if (do_prefix) prefix = SeedModChance(5, std::size(_name_czech_adj) * 12, seed) / 12;
 	if (do_suffix) suffix = SeedModChance(7, std::size(_name_czech_suffix), seed);
@@ -632,18 +632,18 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		/* Load the postfix (1:1 chance that a postfix will be inserted) */
 		postfix = SeedModChance(14, std::size(_name_czech_subst_postfix) * 2, seed);
 
-		if (choose & CZC_POSTFIX) {
+		if (choose.Test(CzechChooseFlag::Postfix)) {
 			/* Always get a real postfix. */
 			postfix %= std::size(_name_czech_subst_postfix);
 		}
-		if (choose & CZC_NOPOSTFIX) {
+		if (choose.Test(CzechChooseFlag::NoPostfix)) {
 			/* Always drop a postfix. */
 			postfix += std::size(_name_czech_subst_postfix);
 		}
 		if (postfix < std::size(_name_czech_subst_postfix)) {
-			choose |= CZC_POSTFIX;
+			choose.Set(CzechChooseFlag::Postfix);
 		} else {
-			choose |= CZC_NOPOSTFIX;
+			choose.Set(CzechChooseFlag::NoPostfix);
 		}
 
 		/* Localize the array segment containing a good gender */
@@ -671,7 +671,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		for (ending = ending_start; ending <= ending_stop; ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
-			if ((e->choose & choose) == choose && (e->allow & allow) != 0) {
+			if ((e->choose & choose) == choose && e->allow.Any(allow)) {
 				map[i++] = ending;
 			}
 		}

@@ -157,9 +157,9 @@ uint16_t OverrideManagerBase::GetSubstituteID(uint16_t entity_id) const
  * It will find itself the proper slot on which it will go
  * @param hs HouseSpec read from the grf file, ready for inclusion
  */
-void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
+void HouseOverrideManager::SetEntitySpec(HouseSpec &&hs)
 {
-	HouseID house_id = this->AddEntityID(hs->grf_prop.local_id, hs->grf_prop.grfid, hs->grf_prop.subst_id);
+	HouseID house_id = this->AddEntityID(hs.grf_prop.local_id, hs.grf_prop.grfid, hs.grf_prop.subst_id);
 
 	if (house_id == this->invalid_id) {
 		GrfMsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
@@ -170,13 +170,13 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 
 	/* Now that we know we can use the given id, copy the spec to its final destination. */
 	if (house_id >= house_specs.size()) house_specs.resize(house_id + 1);
-	house_specs[house_id] = *hs;
+	house_specs[house_id] = std::move(hs);
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
 		HouseSpec *overridden_hs = HouseSpec::Get(i);
 
-		if (this->entity_overrides[i] != hs->grf_prop.local_id || this->grfid_overrides[i] != hs->grf_prop.grfid) continue;
+		if (this->entity_overrides[i] != house_specs[house_id].grf_prop.local_id || this->grfid_overrides[i] != house_specs[house_id].grf_prop.grfid) continue;
 
 		overridden_hs->grf_prop.override_id = house_id;
 		this->entity_overrides[i] = this->invalid_id;
@@ -245,18 +245,18 @@ uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, uint32_t gr
  * checking what is available
  * @param inds Industryspec that comes from the grf decoding process
  */
-void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
+void IndustryOverrideManager::SetEntitySpec(IndustrySpec &&inds)
 {
 	/* First step : We need to find if this industry is already specified in the savegame data. */
-	IndustryType ind_id = this->GetID(inds->grf_prop.local_id, inds->grf_prop.grfid);
+	IndustryType ind_id = this->GetID(inds.grf_prop.local_id, inds.grf_prop.grfid);
 
 	if (ind_id == this->invalid_id) {
 		/* Not found.
 		 * Or it has already been overridden, so you've lost your place.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
-		ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grfid, inds->grf_prop.subst_id);
-		inds->grf_prop.override_id = this->invalid_id;  // make sure it will not be detected as overridden
+		ind_id = this->AddEntityID(inds.grf_prop.local_id, inds.grf_prop.grfid, inds.grf_prop.subst_id);
+		inds.grf_prop.override_id = this->invalid_id;  // make sure it will not be detected as overridden
 	}
 
 	if (ind_id == this->invalid_id) {
@@ -265,27 +265,27 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 	}
 
 	/* Now that we know we can use the given id, copy the spec to its final destination... */
-	_industry_specs[ind_id] = *inds;
+	_industry_specs[ind_id] = std::move(inds);
 	/* ... and mark it as usable*/
 	_industry_specs[ind_id].enabled = true;
 }
 
-void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
+void IndustryTileOverrideManager::SetEntitySpec(IndustryTileSpec &&its)
 {
-	IndustryGfx indt_id = this->AddEntityID(its->grf_prop.local_id, its->grf_prop.grfid, its->grf_prop.subst_id);
+	IndustryGfx indt_id = this->AddEntityID(its.grf_prop.local_id, its.grf_prop.grfid, its.grf_prop.subst_id);
 
 	if (indt_id == this->invalid_id) {
 		GrfMsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
 		return;
 	}
 
-	_industry_tile_specs[indt_id] = *its;
+	_industry_tile_specs[indt_id] = std::move(its);
 
 	/* Now add the overrides. */
 	for (int i = 0; i < this->max_offset; i++) {
 		IndustryTileSpec *overridden_its = &_industry_tile_specs[i];
 
-		if (this->entity_overrides[i] != its->grf_prop.local_id || this->grfid_overrides[i] != its->grf_prop.grfid) continue;
+		if (this->entity_overrides[i] != _industry_tile_specs[indt_id].grf_prop.local_id || this->grfid_overrides[i] != _industry_tile_specs[indt_id].grf_prop.grfid) continue;
 
 		overridden_its->grf_prop.override_id = indt_id;
 		overridden_its->enabled = false;
@@ -300,17 +300,17 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
  * checking what is available
  * @param spec ObjectSpec that comes from the grf decoding process
  */
-void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
+void ObjectOverrideManager::SetEntitySpec(ObjectSpec &&spec)
 {
 	/* First step : We need to find if this object is already specified in the savegame data. */
-	ObjectType type = this->GetID(spec->grf_prop.local_id, spec->grf_prop.grfid);
+	ObjectType type = this->GetID(spec.grf_prop.local_id, spec.grf_prop.grfid);
 
 	if (type == this->invalid_id) {
 		/* Not found.
 		 * Or it has already been overridden, so you've lost your place.
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
-		type = this->AddEntityID(spec->grf_prop.local_id, spec->grf_prop.grfid, OBJECT_TRANSMITTER);
+		type = this->AddEntityID(spec.grf_prop.local_id, spec.grf_prop.grfid, OBJECT_TRANSMITTER);
 	}
 
 	if (type == this->invalid_id) {
@@ -322,7 +322,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 
 	/* Now that we know we can use the given id, copy the spec to its final destination. */
 	if (type >= _object_specs.size()) _object_specs.resize(type + 1);
-	_object_specs[type] = *spec;
+	_object_specs[type] = std::move(spec);
 }
 
 /**
@@ -617,7 +617,7 @@ uint32_t NewGRFSpriteLayout::PrepareLayout(uint32_t orig_offset, uint32_t newgrf
 	 * and apply the default sprite offsets (unless disabled). */
 	const TileLayoutRegisters *regs = this->registers.empty() ? nullptr : this->registers.data();
 	bool ground = true;
-	for (DrawTileSeqStruct result : result_seq) {
+	for (DrawTileSeqStruct &result : result_seq) {
 		TileLayoutFlags flags = TLF_NOTHING;
 		if (regs != nullptr) flags = regs->flags;
 
