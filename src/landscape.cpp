@@ -1207,103 +1207,92 @@ static bool FlowsDown(TileIndex begin, TileIndex end)
 	return slope_end == SLOPE_FLAT || slope_begin == SLOPE_FLAT;
 }
 
-/** Parameters for river generation to pass as AyStar user data. */
-struct River_UserData {
-	TileIndex spring; ///< The current spring during river generation.
-	bool main_river;  ///< Whether the current river is a big river that others flow into.
-};
-
-/* AyStar callback for checking whether we reached our destination. */
-static AyStarStatus River_EndNodeCheck(const AyStar *aystar, const PathNode *current)
-{
-	return current->GetTile() == *static_cast<TileIndex *>(aystar->user_target) ? AyStarStatus::FoundEndNode : AyStarStatus::Done;
-}
-
-/* AyStar callback for getting the cost of the current node. */
-static int32_t River_CalculateG(AyStar *, AyStarNode *, PathNode *)
-{
-	return 1 + RandomRange(_settings_game.game_creation.river_route_random);
-}
-
-/* AyStar callback for getting the estimated cost to the destination. */
-static int32_t River_CalculateH(AyStar *aystar, AyStarNode *current, PathNode *)
-{
-	return DistanceManhattan(*static_cast<TileIndex *>(aystar->user_target), current->tile);
-}
-
-/* AyStar callback for getting the neighbouring nodes of the given node. */
-static void River_GetNeighbours(AyStar *aystar, PathNode *current)
-{
-	TileIndex tile = current->GetTile();
-
-	aystar->neighbours.clear();
-	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
-		TileIndex t = tile + TileOffsByDiagDir(d);
-		if (IsValidTile(t) && FlowsDown(tile, t)) {
-			auto &neighbour = aystar->neighbours.emplace_back();
-			neighbour.tile = t;
-			neighbour.td = INVALID_TRACKDIR;
-		}
+/** Search path and build river */
+class RiverBuilder : public AyStar {
+protected:
+	AyStarStatus EndNodeCheck(const PathNode &current) const override
+	{
+		return current.GetTile() == this->end ? AyStarStatus::FoundEndNode : AyStarStatus::Done;
 	}
-}
 
-/* AyStar callback when an route has been found. */
-static void River_FoundEndNode(AyStar *aystar, PathNode *current)
-{
-	River_UserData *data = static_cast<River_UserData *>(aystar->user_data);
+	int32_t CalculateG(const AyStarNode &, const PathNode &) const override
+	{
+		return 1 + RandomRange(_settings_game.game_creation.river_route_random);
+	}
 
-	/* First, build the river without worrying about its width. */
-	for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
-		TileIndex tile = path->GetTile();
-		if (!IsWaterTile(tile)) {
-			MakeRiverAndModifyDesertZoneAround(tile);
+	int32_t CalculateH(const AyStarNode &current, const PathNode &) const override
+	{
+		return DistanceManhattan(this->end, current.tile);
+	}
+
+	void GetNeighbours(const PathNode &current, std::vector<AyStarNode> &neighbours) const override
+	{
+		TileIndex tile = current.GetTile();
+
+		neighbours.clear();
+		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+			TileIndex t = tile + TileOffsByDiagDir(d);
+			if (IsValidTile(t) && FlowsDown(tile, t)) {
+				auto &neighbour = neighbours.emplace_back();
+				neighbour.tile = t;
+				neighbour.td = INVALID_TRACKDIR;
+			}
 		}
 	}
 
-	/* If the river is a main river, go back along the path to widen it.
-	 * Don't make wide rivers if we're using the original landscape generator.
-	 */
-	if (_settings_game.game_creation.land_generator != LG_ORIGINAL && data->main_river) {
-		const uint long_river_length = _settings_game.game_creation.min_river_length * 4;
-
-		for (PathNode *path = current->parent; path != nullptr; path = path->parent) {
+	void FoundEndNode(const PathNode &current) override
+	{
+		/* First, build the river without worrying about its width. */
+		for (PathNode *path = current.parent; path != nullptr; path = path->parent) {
 			TileIndex tile = path->GetTile();
+			if (!IsWaterTile(tile)) {
+				MakeRiverAndModifyDesertZoneAround(tile);
+			}
+		}
 
-			/* Check if we should widen river depending on how far we are away from the source. */
-			uint current_river_length = DistanceManhattan(data->spring, tile);
-			uint radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
+		/* If the river is a main river, go back along the path to widen it.
+		 * Don't make wide rivers if we're using the original landscape generator.
+		 */
+		if (_settings_game.game_creation.land_generator != LG_ORIGINAL && this->main_river) {
+			const uint long_river_length = _settings_game.game_creation.min_river_length * 4;
 
-			if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, &path->key.tile);
+			for (PathNode *path = current.parent; path != nullptr; path = path->parent) {
+				TileIndex tile = path->GetTile();
+
+				/* Check if we should widen river depending on how far we are away from the source. */
+				uint current_river_length = DistanceManhattan(this->spring, tile);
+				uint radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
+
+				if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, &path->key.tile);
+			}
 		}
 	}
-}
 
-/**
- * Actually build the river between the begin and end tiles using AyStar.
- * @param begin The begin of the river.
- * @param end The end of the river.
- * @param spring The springing point of the river.
- * @param main_river Whether the current river is a big river that others flow into.
- */
-static void BuildRiver(TileIndex begin, TileIndex end, TileIndex spring, bool main_river)
-{
-	River_UserData user_data = { spring, main_river };
+	RiverBuilder(TileIndex end, TileIndex spring, bool main_river) : end(end), spring(spring), main_river(main_river) {}
 
-	AyStar finder = {};
-	finder.CalculateG = River_CalculateG;
-	finder.CalculateH = River_CalculateH;
-	finder.GetNeighbours = River_GetNeighbours;
-	finder.EndNodeCheck = River_EndNodeCheck;
-	finder.FoundEndNode = River_FoundEndNode;
-	finder.user_target = &end;
-	finder.user_data = &user_data;
+private:
+	TileIndex end; ///< Destination for the river.
+	TileIndex spring; ///< The current spring during river generation.
+	bool main_river; ///< Whether the current river is a big river that others flow into.
 
-	AyStarNode start;
-	start.tile = begin;
-	start.td = INVALID_TRACKDIR;
-	finder.AddStartNode(&start, 0);
-	finder.Main();
-}
+public:
+	/**
+	 * Actually build the river between the begin and end tiles using AyStar.
+	 * @param begin The begin of the river.
+	 * @param end The end of the river.
+	 * @param spring The springing point of the river.
+	 * @param main_river Whether the current river is a big river that others flow into.
+	 */
+	static void Exec(TileIndex begin, TileIndex end, TileIndex spring, bool main_river)
+	{
+		RiverBuilder builder(end, spring, main_river);
+		AyStarNode start;
+		start.tile = begin;
+		start.td = INVALID_TRACKDIR;
+		builder.AddStartNode(&start, 0);
+		builder.Main();
+	}
+};
 
 /**
  * Try to flow the river down from a given begin.
@@ -1383,7 +1372,7 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 	}
 
 	marks.clear();
-	if (found) BuildRiver(begin, end, spring, main_river);
+	if (found) RiverBuilder::Exec(begin, end, spring, main_river);
 	return { found, main_river };
 }
 
