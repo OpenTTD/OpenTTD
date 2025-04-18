@@ -41,7 +41,7 @@ void AyStar::CheckTile(AyStarNode *current, PathNode *parent)
 	if (this->nodes.FindClosedNode(*current) != nullptr) return;
 
 	/* Calculate the G-value for this node */
-	int new_g = this->CalculateG(this, current, parent);
+	int new_g = this->CalculateG(*current, *parent);
 	/* If the value was INVALID_NODE, we don't do anything with this node */
 	if (new_g == AYSTAR_INVALID_NODE) return;
 
@@ -51,7 +51,7 @@ void AyStar::CheckTile(AyStarNode *current, PathNode *parent)
 	new_g += parent->cost;
 
 	/* Calculate the h-value */
-	int new_h = this->CalculateH(this, current, parent);
+	int new_h = this->CalculateH(*current, *parent);
 	/* There should not be given any error-code.. */
 	assert(new_h >= 0);
 
@@ -96,10 +96,8 @@ AyStarStatus AyStar::Loop()
 	if (current == nullptr) return AyStarStatus::EmptyOpenList;
 
 	/* Check for end node and if found, return that code */
-	if (this->EndNodeCheck(this, current) == AyStarStatus::FoundEndNode && current->parent != nullptr) {
-		if (this->FoundEndNode != nullptr) {
-			this->FoundEndNode(this, current);
-		}
+	if (this->EndNodeCheck(*current) == AyStarStatus::FoundEndNode && current->parent != nullptr) {
+		this->FoundEndNode(*current);
 		return AyStarStatus::FoundEndNode;
 	}
 
@@ -107,7 +105,7 @@ AyStarStatus AyStar::Loop()
 	this->nodes.InsertClosedNode(*current);
 
 	/* Load the neighbours */
-	this->GetNeighbours(this, current);
+	this->GetNeighbours(*current, this->neighbours);
 
 	/* Go through all neighbours */
 	for (auto &neighbour : this->neighbours) {
