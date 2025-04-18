@@ -22,13 +22,16 @@ static const int SLIDER_WIDTH = 3;
 /**
  * Draw a slider widget with knob at given value
  * @param r Rectangle to draw the widget in
+ * @param wedge_colour Colour to draw wedge.
+ * @param handle_colour Colour to draw handle.
+ * @param text_colour Colour of text.
  * @param min_value Minimum value of slider
  * @param max_value Maximum value of slider
  * @param nmarks Number of marks to display (when mark_func is provided.)
  * @param value Value to put the slider at
  * @param mark_func Callback function to get the StringID to draw on a mark.
  */
-void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func)
+void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextColour text_colour, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func)
 {
 	/* Allow space for labels. We assume they are in the small font. */
 	if (mark_func != nullptr) r.bottom -= GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.hsep_normal;
@@ -42,9 +45,9 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int valu
 	int wx1 = r.left  + sw / 2;
 	int wx2 = r.right - sw / 2;
 	if (_current_text_dir == TD_RTL) std::swap(wx1, wx2);
-	const uint shadow = GetColourGradient(COLOUR_GREY, SHADE_DARK);
-	const uint fill = GetColourGradient(COLOUR_GREY, SHADE_LIGHTER);
-	const uint light = GetColourGradient(COLOUR_GREY, SHADE_LIGHTEST);
+	const uint shadow = GetColourGradient(wedge_colour, SHADE_DARK);
+	const uint fill = GetColourGradient(wedge_colour, SHADE_LIGHTER);
+	const uint light = GetColourGradient(wedge_colour, SHADE_LIGHTEST);
 	const std::array<Point, 3> wedge{ Point{wx1, r.bottom - ha}, Point{wx2, r.top + ha}, Point{wx2, r.bottom - ha} };
 	GfxFillPolygon(wedge, fill);
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[2].x, wedge[2].y, light, t);
@@ -67,7 +70,7 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int valu
 
 			Dimension d = GetStringBoundingBox(*str, FS_SMALL);
 			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
-			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, TC_BLACK, SA_CENTER, false, FS_SMALL);
+			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, SA_CENTER, false, FS_SMALL);
 		}
 	}
 
@@ -75,7 +78,7 @@ void DrawSliderWidget(Rect r, int min_value, int max_value, int nmarks, int valu
 	value -= min_value;
 	if (_current_text_dir == TD_RTL) value = max_value - value;
 	x = r.left + (value * (r.right - r.left - sw) / max_value);
-	DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, {});
+	DrawFrameRect(x, r.top, x + sw, r.bottom, handle_colour, {});
 }
 
 /**
