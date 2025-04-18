@@ -409,7 +409,7 @@ CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		}
 
 		wp->delete_ctr = 0;
-		wp->facilities.Set(StationFacility::BusStop).Set(StationFacility::TruckStop);
+		wp->facilities.Set({StationFacility::BusStop, StationFacility::TruckStop});
 		wp->build_date = TimerGameCalendar::date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
 

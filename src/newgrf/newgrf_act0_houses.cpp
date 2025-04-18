@@ -145,7 +145,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 					housespec->random_colour[3] = COLOUR_GREEN;
 
 					/* House flags 40 and 80 are exceptions; these flags are never set automatically. */
-					housespec->building_flags.Reset(BuildingFlag::IsChurch).Reset(BuildingFlag::IsStadium);
+					housespec->building_flags.Reset({BuildingFlag::IsChurch, BuildingFlag::IsStadium});
 
 					/* Make sure that the third cargo type is valid in this
 					 * climate. This can cause problems when copying the properties
