@@ -80,7 +80,7 @@ BEGIN {
 /^(	*)class/     {
 	if (cls_level == 0) {
 		if (api_selected == "") {
-			print "Class '"$2"' has no @api. It won't be published to any API." > "/dev/stderr"
+			printf "%s:%d: %s\n", FILENAME, NR, "Class '"$2"' has no @api. It won't be published to any API." > "/dev/stderr"
 			api_selected = "false"
 		}
 		public = "false"
@@ -105,7 +105,7 @@ BEGIN {
 		}
 		api_selected = ""
 	} else {
-		print "Classes nested too deep" > "/dev/stderr"
+		printf "%s:%d: %s\n", FILENAME, NR, "Classes nested too deep" > "/dev/stderr"
 		exit 1
 	}
 	cls_level++
@@ -279,7 +279,7 @@ BEGIN {
 	}
 	if (match($0, "~")) {
 		if (api_selected != "") {
-			print "Destructor for '"cls"' has @api. Tag ignored." > "/dev/stderr"
+			printf "%s:%d: %s\n", FILENAME, NR, "Destructor for '"cls"' has @api. Tag ignored." > "/dev/stderr"
 			api_selected = ""
 		}
 		next
