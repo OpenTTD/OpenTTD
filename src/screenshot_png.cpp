@@ -30,7 +30,7 @@ class ScreenshotProvider_Png : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Png() : ScreenshotProvider("png", "PNG", 0) {}
 
-	bool MakeImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(const char *name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
 	{
 		png_color rq[256];
 		uint i, y, n;
@@ -151,7 +151,7 @@ public:
 			n = std::min(h - y, maxlines);
 
 			/* render the pixels into the buffer */
-			callb(userdata, buff.data(), y, w, n);
+			callb(buff.data(), y, w, n);
 			y += n;
 
 			/* write them to png */

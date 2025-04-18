@@ -43,7 +43,7 @@ class ScreenshotProvider_Bmp : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Bmp() : ScreenshotProvider("bmp", "BMP", 10) {}
 
-	bool MakeImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(const char *name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
 	{
 		uint bpp; // bytes per pixel
 		switch (pixelformat) {
@@ -117,7 +117,7 @@ public:
 			h -= n;
 
 			/* Render the pixels */
-			callb(userdata, buff.data(), h, w, n);
+			callb(buff.data(), h, w, n);
 
 			/* Write each line */
 			while (n-- != 0) {
