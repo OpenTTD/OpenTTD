@@ -27,7 +27,7 @@ enum class AyStarStatus : uint8_t {
 	EmptyOpenList, ///< All items are tested, and no path has been found.
 	StillBusy, ///< Some checking was done, but no path found yet, and there are still items left to try.
 	NoPath, ///< No path to the goal was found.
-	LimitReached, ///< The #AyStar::max_search_nodes limit has been reached, aborting search.
+	LimitReached, ///< The AYSTAR_DEF_MAX_SEARCH_NODES limit has been reached, aborting search.
 	Done, ///< Not an end-tile, or wrong direction.
 };
 
@@ -112,10 +112,6 @@ struct AyStar {
 	 * everything */
 	void *user_target;
 	void *user_data;
-
-	uint8_t loops_per_tick;   ///< How many loops are there called before Main() gives control back to the caller. 0 = until done.
-	int max_path_cost;    ///< If the g-value goes over this number, it stops searching, 0 = infinite.
-	int max_search_nodes = AYSTAR_DEF_MAX_SEARCH_NODES; ///< The maximum number of nodes that will be expanded, 0 = infinite.
 
 	/* These should be filled with the neighbours of a tile by GetNeighbours */
 	std::vector<AyStarNode> neighbours;
