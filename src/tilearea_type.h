@@ -253,4 +253,122 @@ public:
 	}
 };
 
+/**
+ * Helper class for SpiralTileSequence.
+ */
+class SpiralTileIterator {
+public:
+	using value_type = TileIndex;
+	using difference_type = std::ptrdiff_t;
+	using iterator_category = std::forward_iterator_tag;
+	using pointer = void;
+	using reference = void;
+
+	SpiralTileIterator(TileIndex center, uint diameter);
+	SpiralTileIterator(TileIndex start_north, uint radius, uint w, uint h);
+
+	bool operator==(const SpiralTileIterator &rhs) const { return this->x == rhs.x && this->y == rhs.y; }
+	bool operator==(const std::default_sentinel_t &) const { return this->IsEnd(); }
+
+	TileIndex operator*() const { return TileXY(this->x, this->y); }
+
+	SpiralTileIterator &operator++()
+	{
+		this->Increment();
+		this->SkipOutsideMap();
+		return *this;
+	}
+
+	SpiralTileIterator operator++(int)
+	{
+		SpiralTileIterator result = *this;
+		++*this;
+		return result;
+	}
+
+private:
+	/* set by constructor, const afterwards */
+	uint max_radius;
+	std::array<uint, DIAGDIR_END> extent;
+
+	/* mutable iterator state */
+	uint cur_radius;
+	DiagDirection dir;
+	uint position;
+	uint x, y;
+
+	void SkipOutsideMap();
+	void InitPosition();
+	void Increment();
+
+	/**
+	 * Test whether the iterator reached the end.
+	 */
+	bool IsEnd() const
+	{
+		return this->cur_radius == this->max_radius && this->dir != INVALID_DIAGDIR;
+	}
+};
+
+/**
+ * Generate TileIndices around a center tile or tile area, with increasing distance.
+ */
+class SpiralTileSequence {
+public:
+	/**
+	 * Generate TileIndices for a square area around a center tile.
+	 *
+	 * The size of the square is given by the length of the edge.
+	 * If the size is even, the south extent will be larger than the north extent.
+	 *
+	 * Example for diameter=4, [ ] is the "center":
+	 *        1
+	 *      1   1
+	 *    1  [0]  1
+	 *  1   0   0   1
+	 *    1   0   1
+	 *      1   1
+	 *        1
+	 * The sequence starts with the "0" tiles, and continues with the shells around it.
+	 *
+	 * @param center Center of the square area.
+	 * @param diameter Edge length of the square.
+	 * @pre diameter > 0
+	 * @note This constructor uses a "diameter", unlike the other constructor using a "radius".
+	 */
+	SpiralTileSequence(TileIndex center, uint diameter) : start(center, diameter) {}
+
+	/**
+	 * Generate TileIndices for a rectangular area with an optional rectangular hole in the center.
+	 * The TileIndices will be sorted by increasing distance from the center (hole).
+	 *
+	 * Example for radius=2, w=2, h=1, [ ] is "start_north":
+	 *            1
+	 *          1   1
+	 *        1  [0]  1
+	 *      1   0   0   1
+	 *    1   0   H   0   1
+	 *  1   0   H   0   1
+	 *    1   0   0   1
+	 *      1   0   1
+	 *        1   1
+	 *          1
+	 * The sequence starts with the "0" tiles, and continues with the shells around it.
+	 *
+	 * @param start_north Tile directly north from the center hole.
+	 * @param radius Radial distance between outer rectangle and center hole.
+	 * @param w Width of the inner rectangular hole.
+	 * @param h Height of the inner rectangular hole.
+	 * @pre radius > 0
+	 * @note This constructor uses a "radius", unlike the other constructor using a "diameter".
+	 */
+	SpiralTileSequence(TileIndex start_north, uint radius, uint w, uint h) : start(start_north, radius, w, h) {}
+
+	SpiralTileIterator begin() const { return start; }
+	std::default_sentinel_t end() const { return std::default_sentinel_t(); }
+
+private:
+	SpiralTileIterator start;
+};
+
 #endif /* TILEAREA_TYPE_H */

@@ -249,6 +249,7 @@ bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, v
 		/* If the length of the side is uneven, the center has to be checked
 		 * separately, as the pattern of uneven sides requires to go around the center */
 		if (proc(*tile, user_data)) return true;
+		if (size < 2) return false;
 
 		/* If tile test is not successful, get one tile up,
 		 * ready for a test in first circle around center tile */
