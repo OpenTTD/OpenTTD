@@ -1261,9 +1261,9 @@ protected:
 
 				/* Check if we should widen river depending on how far we are away from the source. */
 				uint current_river_length = DistanceManhattan(this->spring, tile);
-				uint radius = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
+				uint diameter = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
 
-				if (radius > 1) CircularTileSearch(&tile, radius, RiverMakeWider, &path->key.tile);
+				if (diameter > 1) CircularTileSearch(&tile, diameter, RiverMakeWider, &path->key.tile);
 			}
 		}
 	}
@@ -1362,11 +1362,11 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 				DistanceManhattan(spring, lake_centre) > min_river_length) {
 			end = lake_centre;
 			MakeRiverAndModifyDesertZoneAround(lake_centre);
-			uint range = RandomRange(8) + 3;
-			CircularTileSearch(&lake_centre, range, MakeLake, &height_begin);
+			uint diameter = RandomRange(8) + 3;
+			CircularTileSearch(&lake_centre, diameter, MakeLake, &height_begin);
 			/* Call the search a second time so artefacts from going circular in one direction get (mostly) hidden. */
 			lake_centre = end;
-			CircularTileSearch(&lake_centre, range, MakeLake, &height_begin);
+			CircularTileSearch(&lake_centre, diameter, MakeLake, &height_begin);
 			found = true;
 		}
 	}
