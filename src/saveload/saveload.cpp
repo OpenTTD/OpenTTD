@@ -3371,32 +3371,20 @@ std::string GenerateDefaultSaveName()
 }
 
 /**
- * Set the mode and file type of the file to save or load based on the type of file entry at the file system.
- * @param ft Type of file entry of the file system.
- */
-void FileToSaveLoad::SetMode(FiosType ft)
-{
-	this->SetMode(SLO_LOAD, GetAbstractFileType(ft), GetDetailedFileType(ft));
-}
-
-/**
  * Set the mode and file type of the file to save or load.
+ * @param ft File type.
  * @param fop File operation being performed.
- * @param aft Abstract file type.
- * @param dft Detailed file type.
  */
-void FileToSaveLoad::SetMode(SaveLoadOperation fop, AbstractFileType aft, DetailedFileType dft)
+void FileToSaveLoad::SetMode(const FiosType &ft, SaveLoadOperation fop)
 {
-	if (aft == FT_INVALID || aft == FT_NONE) {
+	if (ft.abstract == FT_INVALID || ft.abstract == FT_NONE) {
 		this->file_op = SLO_INVALID;
-		this->detail_ftype = DFT_INVALID;
-		this->abstract_ftype = FT_INVALID;
+		this->ftype = FIOS_TYPE_INVALID;
 		return;
 	}
 
 	this->file_op = fop;
-	this->detail_ftype = dft;
-	this->abstract_ftype = aft;
+	this->ftype = ft;
 }
 
 /**

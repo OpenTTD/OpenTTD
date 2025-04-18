@@ -414,13 +414,11 @@ enum SaveOrLoadResult : uint8_t {
 /** Deals with the type of the savegame, independent of extension */
 struct FileToSaveLoad {
 	SaveLoadOperation file_op;       ///< File operation to perform.
-	DetailedFileType detail_ftype;   ///< Concrete file type (PNG, BMP, old save, etc).
-	AbstractFileType abstract_ftype; ///< Abstract type of file (scenario, heightmap, etc).
+	FiosType ftype;                  ///< File type.
 	std::string name;                ///< Name of the file.
 	std::string title;               ///< Internal name of the game.
 
-	void SetMode(FiosType ft);
-	void SetMode(SaveLoadOperation fop, AbstractFileType aft, DetailedFileType dft);
+	void SetMode(const FiosType &ft, SaveLoadOperation fop = SLO_LOAD);
 	void Set(const FiosItem &item);
 };
 

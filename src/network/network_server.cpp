@@ -1814,7 +1814,7 @@ void NetworkServer_Tick(bool send_frame)
 static void NetworkRestartMap()
 {
 	_settings_newgame.game_creation.generation_seed = GENERATE_NEW_SEED;
-	switch (_file_to_saveload.abstract_ftype) {
+	switch (_file_to_saveload.ftype.abstract) {
 		case FT_SAVEGAME:
 		case FT_SCENARIO:
 			_switch_mode = SM_LOAD_GAME;

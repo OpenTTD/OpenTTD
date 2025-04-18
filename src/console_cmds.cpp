@@ -462,7 +462,7 @@ DEF_CONSOLE_CMD(ConLoad)
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		if (GetAbstractFileType(item->type) == FT_SAVEGAME) {
+		if (item->type.abstract == FT_SAVEGAME) {
 			_switch_mode = SM_LOAD_GAME;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -488,7 +488,7 @@ DEF_CONSOLE_CMD(ConLoadScenario)
 	_console_file_list_scenario.ValidateFileList();
 	const FiosItem *item = _console_file_list_scenario.FindItem(file);
 	if (item != nullptr) {
-		if (GetAbstractFileType(item->type) == FT_SCENARIO) {
+		if (item->type.abstract == FT_SCENARIO) {
 			_switch_mode = SM_LOAD_GAME;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -514,7 +514,7 @@ DEF_CONSOLE_CMD(ConLoadHeightmap)
 	_console_file_list_heightmap.ValidateFileList();
 	const FiosItem *item = _console_file_list_heightmap.FindItem(file);
 	if (item != nullptr) {
-		if (GetAbstractFileType(item->type) == FT_HEIGHTMAP) {
+		if (item->type.abstract == FT_HEIGHTMAP) {
 			_switch_mode = SM_START_HEIGHTMAP;
 			_file_to_saveload.Set(*item);
 		} else {
@@ -614,8 +614,10 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	_console_file_list_savegame.ValidateFileList(true);
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
-		switch (item->type) {
-			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
+		switch (item->type.detailed) {
+			case DFT_FIOS_DIR:
+			case DFT_FIOS_DRIVE:
+			case DFT_FIOS_PARENT:
 				FiosBrowseTo(item);
 				break;
 			default: IConsolePrint(CC_ERROR, "{}: Not a directory.", file);
@@ -1307,7 +1309,7 @@ DEF_CONSOLE_CMD(ConReload)
 		return true;
 	}
 
-	if (_file_to_saveload.abstract_ftype == FT_NONE || _file_to_saveload.abstract_ftype == FT_INVALID) {
+	if (_file_to_saveload.ftype.abstract == FT_NONE || _file_to_saveload.ftype.abstract == FT_INVALID) {
 		IConsolePrint(CC_ERROR, "No game loaded to reload.");
 		return true;
 	}
