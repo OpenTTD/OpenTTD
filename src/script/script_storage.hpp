@@ -10,6 +10,8 @@
 #ifndef SCRIPT_STORAGE_HPP
 #define SCRIPT_STORAGE_HPP
 
+#include <queue>
+
 #include "../signs_func.h"
 #include "../vehicle_func.h"
 #include "../road_type.h"
@@ -19,6 +21,13 @@
 
 #include "script_types.hpp"
 #include "script_log_types.hpp"
+#include "script_object.hpp"
+
+class ScriptEvent;
+
+/* This is a "struct", so we can forward declare it, and use as incomplete type. */
+struct ScriptEventQueue : std::queue<ScriptObjectRef<ScriptEvent>> {
+};
 
 /**
  * The callback function for Mode-classes.
@@ -60,7 +69,7 @@ private:
 	RoadType road_type = INVALID_ROADTYPE; ///< The current roadtype we build.
 	RailType rail_type = INVALID_RAILTYPE; ///< The current railtype we build.
 
-	void *event_data = nullptr; ///< Event queue for this script.
+	ScriptEventQueue event_queue; ///< Event queue for this script.
 	ScriptLogTypes::LogData log_data; ///< Log data storage.
 
 public:
