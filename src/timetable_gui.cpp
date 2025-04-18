@@ -176,18 +176,6 @@ static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID 
 	}
 }
 
-
-/**
- * Callback for when a time has been chosen to start the time table
- * @param w the window related to the setting of the date
- * @param date the actually chosen date
- */
-static void ChangeTimetableStartCallback(const Window *w, TimerGameEconomy::Date date, void *data)
-{
-	Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, w->window_number, reinterpret_cast<std::uintptr_t>(data) != 0, GetStartTickFromDate(date));
-}
-
-
 struct TimetableWindow : Window {
 	int sel_index = -1;
 	VehicleTimetableWidgets query_widget{}; ///< Which button was clicked to open the query text input?
@@ -661,7 +649,11 @@ struct TimetableWindow : Window {
 					this->change_timetable_all = _ctrl_pressed;
 					ShowQueryString({}, STR_TIMETABLE_START_SECONDS_QUERY, 6, this, CS_NUMERAL, QueryStringFlag::AcceptUnchanged);
 				} else {
-					ShowSetDateWindow(this, v->index.base(), TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS, ChangeTimetableStartCallback, reinterpret_cast<void*>(static_cast<uintptr_t>(_ctrl_pressed)));
+					ShowSetDateWindow(this, v->index.base(), TimerGameEconomy::date, TimerGameEconomy::year, TimerGameEconomy::year + MAX_TIMETABLE_START_YEARS,
+						[ctrl=_ctrl_pressed](const Window *w, TimerGameEconomy::Date date) {
+							Command<CMD_SET_TIMETABLE_START>::Post(STR_ERROR_CAN_T_TIMETABLE_VEHICLE, w->window_number, ctrl, GetStartTickFromDate(date));
+						}
+					);
 				}
 				break;
 
