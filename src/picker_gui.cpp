@@ -14,6 +14,7 @@
 #include "hotkeys.h"
 #include "ini_type.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "picker_gui.h"
 #include "querystring_gui.h"
 #include "settings_type.h"

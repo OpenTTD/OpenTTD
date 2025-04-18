@@ -18,6 +18,7 @@
 #include "company_func.h"
 #include "vehicle_gui.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "group.h"

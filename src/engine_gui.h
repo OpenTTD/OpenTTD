@@ -12,7 +12,7 @@
 
 #include "engine_type.h"
 #include "group_type.h"
-#include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "sortlist_type.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
