@@ -838,8 +838,8 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x46: return v->GetEngine()->grf_prop.local_id;
 		case 0x47: return GB(v->GetEngine()->grf_prop.local_id, 8, 8);
 		case 0x48:
-			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
-			return HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
+			if (v->type != VEH_TRAIN || v->spritenum != CUSTOM_VEHICLE_SPRITENUM) return v->spritenum;
+			return HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION) ? CUSTOM_VEHICLE_SPRITENUM_REVERSED : CUSTOM_VEHICLE_SPRITENUM;
 
 		case 0x49: return v->day_counter;
 		case 0x4A: return v->breakdowns_since_last_service;

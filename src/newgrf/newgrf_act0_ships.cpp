@@ -45,9 +45,9 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				uint8_t orig_spriteid = spriteid;
 
 				/* ships have different custom id in the GRF file */
-				if (spriteid == 0xFF) spriteid = 0xFD;
+				if (spriteid == 0xFF) spriteid = CUSTOM_VEHICLE_SPRITENUM;
 
-				if (spriteid < 0xFD) spriteid >>= 1;
+				if (spriteid < CUSTOM_VEHICLE_SPRITENUM) spriteid >>= 1;
 
 				if (IsValidNewGRFImageIndex<VEH_SHIP>(spriteid)) {
 					svi->image_index = spriteid;
