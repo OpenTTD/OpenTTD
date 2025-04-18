@@ -39,7 +39,7 @@
 #include "waypoint_cmd.h"
 #include "road_cmd.h"
 #include "tunnelbridge_cmd.h"
-#include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "newgrf_roadstop.h"
 #include "picker_gui.h"
 #include "timer/timer.h"

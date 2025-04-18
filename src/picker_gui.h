@@ -11,6 +11,7 @@
 #define PICKER_GUI_H
 
 #include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "querystring_gui.h"
 #include "sortlist_type.h"
 #include "stringfilter_type.h"

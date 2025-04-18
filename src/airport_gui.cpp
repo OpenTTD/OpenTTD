@@ -21,7 +21,7 @@
 #include "company_base.h"
 #include "station_type.h"
 #include "newgrf_airport.h"
-#include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "newgrf_callbacks.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"

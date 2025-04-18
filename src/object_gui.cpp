@@ -12,7 +12,7 @@
 #include "company_func.h"
 #include "hotkeys.h"
 #include "newgrf.h"
-#include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "newgrf_object.h"
 #include "newgrf_text.h"
 #include "object.h"

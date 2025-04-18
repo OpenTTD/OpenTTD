@@ -21,6 +21,7 @@
 #include "town.h"
 #include "cheat_type.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_gui.h"
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
 #include "newgrf_debug.h"
