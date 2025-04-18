@@ -5917,3 +5917,4 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
 
 STR_BADGE_NAME_LIST                                             :{STRING}: {GOLD}{RAW_STRING}
+STR_BADGE_CONFIG_RESET                                          :Reset
