@@ -72,6 +72,7 @@ private:
 int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature feature);
 void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap);
 
+uint32_t GetNearbyBadgeVariableResult(const GRFFile &grffile, TileIndex tile, uint32_t parameter, GrfSpecFeatures features);
 uint32_t GetBadgeVariableResult(const struct GRFFile &grffile, std::span<const BadgeID> badges, uint32_t parameter);
 
 class BadgeTextFilter {

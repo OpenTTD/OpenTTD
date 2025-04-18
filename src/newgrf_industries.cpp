@@ -167,6 +167,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 		/* Variables available during construction check. */
 
 		switch (variable) {
+			case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), GetRegister(0x100), GrfSpecFeatures{GetRegister(0x101)});
 			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
 
 			case 0x80: return this->tile.base();
@@ -353,6 +354,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			NOT_REACHED();
 		}
 
+		case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), GetRegister(0x100), GrfSpecFeatures{GetRegister(0x101)});
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
 
 		/* Get a variable from the persistent storage */

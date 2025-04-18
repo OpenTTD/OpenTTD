@@ -508,6 +508,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex tile, Ho
 			return _house_mngr.GetGRFID(house_id);
 		}
 
+		case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), GetRegister(0x100), GrfSpecFeatures{GetRegister(0x101)});
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, HouseSpec::Get(this->house_id)->badges, parameter);
 	}
 
