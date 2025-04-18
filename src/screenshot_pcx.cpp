@@ -41,7 +41,7 @@ class ScreenshotProvider_Pcx : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Pcx() : ScreenshotProvider("pcx", "PCX", 20) {}
 
-	bool MakeImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(const char *name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
 	{
 		uint maxlines;
 		uint y;
@@ -93,7 +93,7 @@ public:
 			uint i;
 
 			/* render the pixels into the buffer */
-			callb(userdata, buff.data(), y, w, n);
+			callb(buff.data(), y, w, n);
 			y += n;
 
 			/* write them to pcx */

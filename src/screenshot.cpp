@@ -70,7 +70,7 @@ std::string_view GetCurrentScreenshotExtension()
  * Callback of the screenshot generator that dumps the current video buffer.
  * @see ScreenshotCallback
  */
-static void CurrentScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
+static void CurrentScreenCallback(void *buf, uint y, uint pitch, uint n)
 {
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	void *src = blitter->MoveTo(_screen.dst_ptr, 0, y);
@@ -79,55 +79,50 @@ static void CurrentScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
 
 /**
  * generate a large piece of the world
- * @param userdata Viewport area to draw
+ * @param vp Viewport area to draw
  * @param buf Videobuffer with same bitdepth as current blitter
  * @param y First line to render
  * @param pitch Pitch of the videobuffer
  * @param n Number of lines to render
  */
-static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
+static void LargeWorldCallback(Viewport &vp, void *buf, uint y, uint pitch, uint n)
 {
-	Viewport *vp = (Viewport *)userdata;
-	DrawPixelInfo dpi;
-	int wx, left;
+	DrawPixelInfo dpi{
+		.dst_ptr = buf,
+		.left = 0,
+		.top = static_cast<int>(y),
+		.width = vp.width,
+		.height = static_cast<int>(n),
+		.pitch = static_cast<int>(pitch),
+		.zoom = ZOOM_LVL_WORLD_SCREENSHOT
+	};
 
 	/* We are no longer rendering to the screen */
-	DrawPixelInfo old_screen = _screen;
-	bool old_disable_anim = _screen_disable_anim;
-
-	_screen.dst_ptr = buf;
-	_screen.width = pitch;
-	_screen.height = n;
-	_screen.pitch = pitch;
-	_screen_disable_anim = true;
-
+	AutoRestoreBackup screen_backup(_screen, {
+		.dst_ptr = buf,
+		.left = 0,
+		.top = 0,
+		.width = static_cast<int>(pitch),
+		.height = static_cast<int>(n),
+		.pitch = static_cast<int>(pitch),
+		.zoom = ZOOM_LVL_MIN
+	});
+	AutoRestoreBackup disable_anim_backup(_screen_disable_anim, true);
 	AutoRestoreBackup dpi_backup(_cur_dpi, &dpi);
 
-	dpi.dst_ptr = buf;
-	dpi.height = n;
-	dpi.width = vp->width;
-	dpi.pitch = pitch;
-	dpi.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
-	dpi.left = 0;
-	dpi.top = y;
-
 	/* Render viewport in blocks of 1600 pixels width */
-	left = 0;
-	while (vp->width - left != 0) {
-		wx = std::min(vp->width - left, 1600);
+	int left = 0;
+	while (vp.width - left != 0) {
+		int wx = std::min(vp.width - left, 1600);
 		left += wx;
 
-		ViewportDoDraw(*vp,
-			ScaleByZoom(left - wx - vp->left, vp->zoom) + vp->virtual_left,
-			ScaleByZoom(y - vp->top, vp->zoom) + vp->virtual_top,
-			ScaleByZoom(left - vp->left, vp->zoom) + vp->virtual_left,
-			ScaleByZoom((y + n) - vp->top, vp->zoom) + vp->virtual_top
+		ViewportDoDraw(vp,
+			ScaleByZoom(left - wx - vp.left, vp.zoom) + vp.virtual_left,
+			ScaleByZoom(y - vp.top, vp.zoom) + vp.virtual_top,
+			ScaleByZoom(left - vp.left, vp.zoom) + vp.virtual_left,
+			ScaleByZoom((y + n) - vp.top, vp.zoom) + vp.virtual_top
 		);
 	}
-
-	/* Switch back to rendering to the screen */
-	_screen = old_screen;
-	_screen_disable_anim = old_disable_anim;
 }
 
 /**
@@ -180,7 +175,7 @@ static bool MakeSmallScreenshot(bool crashlog)
 	auto provider = GetScreenshotProvider();
 	if (provider == nullptr) return false;
 
-	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName(), crashlog), CurrentScreenCallback, nullptr, _screen.width, _screen.height,
+	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName(), crashlog), CurrentScreenCallback, _screen.width, _screen.height,
 			BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
@@ -283,8 +278,10 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
 
 	Viewport vp = SetupScreenshotViewport(t, width, height);
 
-	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()), LargeWorldCallback, &vp, vp.width, vp.height,
-			BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
+	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()),
+			[&](void *buf, uint y, uint pitch, uint n) {
+				LargeWorldCallback(vp, buf, y, pitch, n);
+			}, vp.width, vp.height, BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
 /**
@@ -294,7 +291,7 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
  * @param n        Number of lines to write.
  * @see ScreenshotCallback
  */
-static void HeightmapCallback(void *, void *buffer, uint y, uint, uint n)
+static void HeightmapCallback(void *buffer, uint y, uint, uint n)
 {
 	uint8_t *buf = (uint8_t *)buffer;
 	while (n > 0) {
@@ -333,7 +330,7 @@ bool MakeHeightmapScreenshot(const char *filename)
 		_heightmap_highest_peak = std::max(h, _heightmap_highest_peak);
 	}
 
-	return provider->MakeImage(filename, HeightmapCallback, nullptr, Map::SizeX(), Map::SizeY(), 8, palette);
+	return provider->MakeImage(filename, HeightmapCallback, Map::SizeX(), Map::SizeY(), 8, palette);
 }
 
 static ScreenshotType _confirmed_screenshot_type; ///< Screenshot type the current query is about to confirm.
@@ -473,7 +470,7 @@ bool MakeScreenshot(ScreenshotType t, const std::string &name, uint32_t width, u
 }
 
 
-static void MinimapScreenCallback(void *, void *buf, uint y, uint pitch, uint n)
+static void MinimapScreenCallback(void *buf, uint y, uint pitch, uint n)
 {
 	uint32_t *ubuf = (uint32_t *)buf;
 	uint num = (pitch * n);
@@ -502,5 +499,5 @@ bool MakeMinimapWorldScreenshot()
 	auto provider = GetScreenshotProvider();
 	if (provider == nullptr) return false;
 
-	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()), MinimapScreenCallback, nullptr, Map::SizeX(), Map::SizeY(), 32, _cur_palette.palette);
+	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()), MinimapScreenCallback, Map::SizeX(), Map::SizeY(), 32, _cur_palette.palette);
 }
