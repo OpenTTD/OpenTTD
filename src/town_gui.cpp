@@ -1743,7 +1743,7 @@ struct BuildHouseWindow : public PickerWindow {
 
 	void OnInit() override
 	{
-		this->InvalidateData(PickerInvalidation::Position);
+		this->InvalidateData(PICKER_INVALIDATION_ALL);
 		this->PickerWindow::OnInit();
 	}
 
