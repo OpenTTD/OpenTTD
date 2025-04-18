@@ -32,6 +32,7 @@
 
 #include "../safeguards.h"
 
+ScriptStorage::ScriptStorage() = default;
 ScriptStorage::~ScriptStorage()
 {
 	/* Free our pointers */
