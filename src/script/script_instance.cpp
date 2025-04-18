@@ -33,11 +33,7 @@
 #include "../safeguards.h"
 
 ScriptStorage::ScriptStorage() = default;
-ScriptStorage::~ScriptStorage()
-{
-	/* Free our pointers */
-	if (event_data != nullptr) ScriptEventController::FreeEventPointer();
-}
+ScriptStorage::~ScriptStorage() = default;
 
 /**
  * Callback called by squirrel when a script uses "print" and for error messages.

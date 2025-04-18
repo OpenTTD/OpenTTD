@@ -239,9 +239,9 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	return GetStorage()->allow_do_command && squirrel->CanSuspend();
 }
 
-/* static */ void *&ScriptObject::GetEventPointer()
+/* static */ ScriptEventQueue &ScriptObject::GetEventQueue()
 {
-	return GetStorage()->event_data;
+	return GetStorage()->event_queue;
 }
 
 /* static */ ScriptLogTypes::LogData &ScriptObject::GetLogData()
