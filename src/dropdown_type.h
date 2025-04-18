@@ -60,6 +60,6 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
 
 Dimension GetDropDownListDimension(const DropDownList &list);
 
-void ReplaceDropDownList(Window *parent, DropDownList &&list);
+void ReplaceDropDownList(Window *parent, DropDownList &&list, std::optional<int> selected_result = std::nullopt);
 
 #endif /* DROPDOWN_TYPE_H */
