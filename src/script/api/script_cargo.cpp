@@ -32,7 +32,7 @@
 {
 	if (!IsValidCargo(cargo_type)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(STR_JUST_CARGO_LIST, 1ULL << cargo_type));
+	return ::StrMakeValid(::GetString(STR_JUST_CARGO_LIST, 1ULL << cargo_type), {});
 }
 
 /* static */ std::optional<std::string> ScriptCargo::GetCargoLabel(CargoType cargo_type)

@@ -46,7 +46,7 @@
 {
 	if (!IsValidIndustry(industry_id)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(STR_INDUSTRY_NAME, industry_id));
+	return ::StrMakeValid(::GetString(STR_INDUSTRY_NAME, industry_id), {});
 }
 
 /* static */ ScriptDate::Date ScriptIndustry::GetConstructionDate(IndustryID industry_id)

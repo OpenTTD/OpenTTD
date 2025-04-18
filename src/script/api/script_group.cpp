@@ -73,7 +73,7 @@
 {
 	if (!IsValidGroup(group_id)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(STR_GROUP_NAME, group_id));
+	return ::StrMakeValid(::GetString(STR_GROUP_NAME, group_id), {});
 }
 
 /* static */ bool ScriptGroup::SetParent(GroupID group_id, GroupID parent_group_id)
