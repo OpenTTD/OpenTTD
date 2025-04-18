@@ -15,6 +15,7 @@
 #include "newgrf_config.h"
 
 struct IniFile;
+struct WindowDesc;
 
 void IConsoleSetSetting(const char *name, const char *value, bool force_newgame = false);
 void IConsoleSetSetting(const char *name, int32_t value);
@@ -24,8 +25,8 @@ void IConsoleListSettings(const char *prefilter);
 void LoadFromConfig(bool minimal = false);
 void SaveToConfig();
 
-void IniLoadWindowSettings(IniFile &ini, const char *grpname, void *desc);
-void IniSaveWindowSettings(IniFile &ini, const char *grpname, void *desc);
+void IniLoadWindowSettings(IniFile &ini, const char *grpname, WindowDesc *desc);
+void IniSaveWindowSettings(IniFile &ini, const char *grpname, WindowDesc *desc);
 
 StringList GetGRFPresetList();
 GRFConfigList LoadGRFPresetFromConfig(const char *config_name);
