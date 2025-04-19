@@ -7,6 +7,8 @@
 
 /** @file water_land.h Sprites to use and how to display them for water tiles (depots/locks). */
 
+/* clang-format off */
+
 /**
  * Constructor macro for an image without a palette in a DrawTileSeqStruct array.
  * @param dx  Offset in x direction
@@ -140,3 +142,5 @@ static const DrawTileSpriteSpan _lock_display_data[][DIAGDIR_END] = {
 
 #undef TILE_SEQ_LINE
 #undef TILE_SPRITE_LINE
+
+/* clang-format on */

@@ -14,6 +14,8 @@
  * is to be displayed.
  */
 
+/* clang-format off */
+
 /**
  * Creates two array entries that define one
  *  status of the cursor.
@@ -89,3 +91,5 @@ static const AnimCursor * const _animcursors[] = {
 	_order_goto_animcursor,
 	_build_signals_animcursor
 };
+
+/* clang-format on */

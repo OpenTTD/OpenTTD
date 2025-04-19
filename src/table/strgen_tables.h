@@ -32,6 +32,8 @@ extern void EmitSingleChar(StringBuilder &builder, std::string_view param, char3
 extern void EmitPlural(StringBuilder &builder, std::string_view param, char32_t value);
 extern void EmitGender(StringBuilder &builder, std::string_view param, char32_t value);
 
+/* clang-format off */
+
 static const CmdStruct _cmd_structs[] = {
 	/* Font size */
 	{"NORMAL_FONT",       EmitSingleChar, SCC_NORMALFONT,         0, std::nullopt, {}},
@@ -157,6 +159,8 @@ static const CmdStruct _cmd_structs[] = {
 	{"PDF",               EmitSingleChar, CHAR_TD_PDF,            0, std::nullopt, {CmdFlag::DontCount}},
 };
 
+/* clang-format on */
+
 /** Description of a plural form */
 struct PluralForm {
 	size_t plural_count;     ///< The number of plural forms
@@ -166,6 +170,8 @@ struct PluralForm {
 
 /** The maximum number of plurals. */
 static const size_t MAX_PLURALS = 5;
+
+/* clang-format off */
 
 /** All plural forms used */
 static const PluralForm _plural_forms[] = {
@@ -214,3 +220,5 @@ static const char * const _pragmas[][4] = {
 	{ "gender",      "tag", "",       "List of genders" },
 	{ "case",        "tac", "",       "List of cases" },
 };
+
+/* clang-format on */

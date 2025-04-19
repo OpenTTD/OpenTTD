@@ -15,6 +15,8 @@
 
 #include "table/strings.h"
 
+/* clang-format off */
+
 /**
  * Global Roadtype definition
  */
@@ -181,5 +183,7 @@ static const RoadTypeInfo _original_roadtypes[] = {
 		{},
 	},
 };
+
+/* clang-format on */
 
 #endif /* ROADTYPES_H */

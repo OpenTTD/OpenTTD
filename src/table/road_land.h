@@ -7,6 +7,8 @@
 
 /** @file road_land.h Sprite constructs for road depots. */
 
+/* clang-format off */
+
 #define TILE_SEQ_LINE(img, pal, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 20, {img, pal} },
 
 static const DrawTileSeqStruct _road_depot_NE[] = {
@@ -287,3 +289,5 @@ static const DrawRoadTileStruct * const * const _road_display_table[] = {
 	_roadside_none,
 	_roadside_trees,
 };
+
+/* clang-format on */

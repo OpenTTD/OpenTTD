@@ -15,6 +15,8 @@
 
 #include "table/strings.h"
 
+/* clang-format off */
+
 /**
  * Writes the properties of a train into the EngineInfo struct.
  * @see EngineInfo
@@ -766,5 +768,7 @@ static constexpr RoadVehicleInfo _orig_road_vehicle_info[] = {
 	ROV( 62, 157, 240, SND_40_DEPARTURE_TRUCK_TOYLAND_2, 224, 22,  69, 45), // 87 Wizzowow Bubble Truck
 };
 #undef ROV
+
+/* clang-format on */
 
 #endif /* ENGINES_H */
