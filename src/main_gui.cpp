@@ -177,9 +177,11 @@ void FixTitleGameZoom(int zoom_adjust)
 	vp.virtual_height = ScaleByZoom(vp.height, vp.zoom);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_main_window_widgets[] = {
 	NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_M_VIEWPORT), SetResize(1, 1),
 };
+/* clang-format on */
 
 enum GlobalHotKeys : int32_t {
 	GHK_QUIT,

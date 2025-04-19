@@ -132,9 +132,11 @@ static inline void IConsoleResetHistoryPos()
 static const char *IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_console_window_widgets[] = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
 };
+/* clang-format on */
 
 static WindowDesc _console_window_desc(
 	WDP_MANUAL, nullptr, 0, 0,

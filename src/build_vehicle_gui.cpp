@@ -57,6 +57,7 @@ uint GetEngineListHeight(VehicleType type)
 	return std::max<uint>(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.matrix.Vertical(), GetVehicleImageCellSize(type, EIT_PURCHASE).height);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -95,6 +96,7 @@ static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 
 bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.

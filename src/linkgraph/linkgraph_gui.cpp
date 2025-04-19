@@ -496,6 +496,7 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 }
 
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_linkgraph_legend_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -525,6 +526,7 @@ static constexpr NWidgetPart _nested_linkgraph_legend_widgets[] = {
 		EndContainer(),
 	EndContainer()
 };
+/* clang-format on */
 
 static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
 		lengthof(LinkGraphOverlay::LINK_COLOURS[0]) - 1);

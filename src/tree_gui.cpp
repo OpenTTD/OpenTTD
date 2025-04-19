@@ -285,6 +285,7 @@ static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 	return vstack;
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -309,6 +310,7 @@ static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_trees_desc(
 	WDP_AUTO, "build_tree", 0, 0,

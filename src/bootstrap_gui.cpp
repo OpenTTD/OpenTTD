@@ -33,10 +33,12 @@
 #include "safeguards.h"
 
 /** Widgets for the background window to prevent smearing. */
+/* clang-format off */
 static constexpr NWidgetPart _background_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_DARK_BLUE, WID_BB_BACKGROUND), SetResize(1, 1),
 	EndContainer(),
 };
+/* clang-format on */
 
 /**
  * Window description for the background window to prevent smearing.
@@ -66,6 +68,7 @@ public:
 };
 
 /** Nested widgets for the error window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE),
@@ -75,6 +78,7 @@ static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BEM_QUIT), SetStringTip(STR_MISSING_GRAPHICS_ERROR_QUIT), SetFill(1, 0),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window description for the error window. */
 static WindowDesc _bootstrap_errmsg_desc(
@@ -123,6 +127,7 @@ public:
 };
 
 /** Nested widgets for the download window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_bootstrap_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -132,6 +137,7 @@ static constexpr NWidgetPart _nested_bootstrap_download_status_window_widgets[] 
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window description for the download window */
 static WindowDesc _bootstrap_download_status_window_desc(
@@ -174,6 +180,7 @@ public:
 };
 
 /** The widgets for the query. It has no close box as that sprite does not exist yet. */
+/* clang-format off */
 static constexpr NWidgetPart _bootstrap_query_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_MISSING_GRAPHICS_SET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -184,6 +191,7 @@ static constexpr NWidgetPart _bootstrap_query_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_NO), SetStringTip(STR_MISSING_GRAPHICS_NO_QUIT),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** The window description for the query. */
 static WindowDesc _bootstrap_query_desc(

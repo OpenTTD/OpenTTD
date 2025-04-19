@@ -40,6 +40,7 @@
 #include "safeguards.h"
 
 /** Widgets for the textfile window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_textfile_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -74,6 +75,7 @@ static constexpr NWidgetPart _nested_textfile_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the textfile window */
 static WindowDesc _textfile_desc(

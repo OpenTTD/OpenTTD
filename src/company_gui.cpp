@@ -284,6 +284,7 @@ static void DrawYearColumn(const Rect &r, TimerGameEconomy::Year year, const Exp
 	DrawPrice(sum, r.left, r.right, y, TC_WHITE);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_company_finances_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -331,6 +332,7 @@ static constexpr NWidgetPart _nested_company_finances_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window class displaying the company finances. */
 struct CompanyFinancesWindow : Window {
@@ -1067,6 +1069,7 @@ public:
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_select_company_livery_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1098,6 +1101,7 @@ static constexpr NWidgetPart _nested_select_company_livery_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _select_company_livery_desc(
 	WDP_AUTO, "company_color_scheme", 0, 0,
@@ -1165,6 +1169,7 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 }
 
 /** Nested widget description for the company manager face selection dialog */
+/* clang-format off */
 static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1320,6 +1325,7 @@ static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_ACCEPT), SetFill(1, 0), SetStringTip(STR_BUTTON_OK, STR_FACE_OK_TOOLTIP),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Management class for customizing the face of the company manager. */
 class SelectCompanyManagerFaceWindow : public Window
@@ -1724,6 +1730,7 @@ static void DoSelectCompanyManagerFace(Window *parent)
 	new SelectCompanyManagerFaceWindow(_select_company_manager_face_desc, parent);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1742,6 +1749,7 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /**
  * Window with detailed information about the company's infrastructure.
@@ -2028,6 +2036,7 @@ static void ShowCompanyInfrastructure(CompanyID company)
 	AllocateWindowDescFront<CompanyInfrastructureWindow>(_company_infrastructure_desc, company);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -2103,6 +2112,7 @@ static constexpr NWidgetPart _nested_company_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Strings for the company vehicle counts */
 static const StringID _company_view_vehicle_count_strings[] = {
@@ -2591,6 +2601,7 @@ private:
 	Money company_value{}; ///< The value of the company for which the user can buy it.
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_buy_company_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
@@ -2609,6 +2620,7 @@ static constexpr NWidgetPart _nested_buy_company_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _buy_company_desc(
 	WDP_AUTO, nullptr, 0, 0,
