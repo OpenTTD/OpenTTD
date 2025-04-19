@@ -7,6 +7,8 @@
 
 /** @file genland.h Table used to generate deserts and/or rainforests. */
 
+/* clang-format off */
+
 #define M(x, y) {x,  y}
 
 static const TileIndexDiffC _make_desert_or_rainforest_data[] = {

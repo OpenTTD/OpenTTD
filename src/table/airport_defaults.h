@@ -12,6 +12,8 @@
 
 #include "../timer/timer_game_calendar.h"
 
+/* clang-format off */
+
 /**
  * Definition of an airport tiles layout.
  * @param x offset x of this tile

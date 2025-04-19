@@ -13,6 +13,8 @@
 #ifndef RAILTYPES_H
 #define RAILTYPES_H
 
+/* clang-format off */
+
 /**
  * Global Railtype definition
  */

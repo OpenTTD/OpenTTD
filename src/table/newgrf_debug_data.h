@@ -12,6 +12,8 @@
 #include "../newgrf_roadtype.h"
 #include "../newgrf_roadstop.h"
 
+/* clang-format off */
+
 /* Helper for filling property tables */
 #define NIP(prop, base, variable, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), prop, type }
 

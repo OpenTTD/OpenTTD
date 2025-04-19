@@ -7,6 +7,8 @@
 
 /** @file autorail.h Highlight/sprite information for autorail. */
 
+/* clang-format off */
+
 /* Rail selection types (directions):
  *  / \    / \    / \    / \   / \   / \
  * /  /\  /\  \  /===\  /   \ /|  \ /  |\

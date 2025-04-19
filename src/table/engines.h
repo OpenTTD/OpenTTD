@@ -13,6 +13,8 @@
 #ifndef ENGINES_H
 #define ENGINES_H
 
+/* clang-format off */
+
 /**
  * Writes the properties of a train into the EngineInfo struct.
  * @see EngineInfo

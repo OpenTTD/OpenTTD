@@ -7,6 +7,8 @@
 
 /** @file pricebase.h Price Bases */
 
+/* clang-format off */
+
 extern const PriceBaseSpec _price_base_specs[] = {
 	{    100, PCAT_NONE,         GSF_END,          INVALID_PRICE         }, ///< PR_STATION_VALUE
 	{    100, PCAT_CONSTRUCTION, GSF_END,          INVALID_PRICE         }, ///< PR_BUILD_RAIL

@@ -7,6 +7,8 @@
 
 /** @file table/roadveh_movement.h Data about how a road vehicle must drive on a tile */
 
+/* clang-format off */
+
 static const RoadDriveEntry _roadveh_drive_data_0[] = {
 	{15, 5},
 	{14, 5},
