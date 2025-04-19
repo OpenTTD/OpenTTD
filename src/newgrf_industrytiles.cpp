@@ -110,12 +110,12 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 	return (this->industry->index != IndustryID::Invalid()) ? GetIndustryRandomBits(this->tile) : 0;
 }
 
-/* virtual */ uint32_t IndustryTileScopeResolver::GetTriggers() const
+/* virtual */ uint32_t IndustryTileScopeResolver::GetRandomTriggers() const
 {
 	assert(this->industry != nullptr && IsValidTile(this->tile));
 	assert(this->industry->index == IndustryID::Invalid() || IsTileType(this->tile, MP_INDUSTRY));
 	if (this->industry->index == IndustryID::Invalid()) return 0;
-	return GetIndustryTriggers(this->tile);
+	return GetIndustryRandomTriggers(this->tile).base();
 }
 
 /**
@@ -140,7 +140,7 @@ static const GRFFile *GetIndTileGrffile(IndustryGfx gfx)
  */
 IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
 			CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-	: ResolverObject(GetIndTileGrffile(gfx), callback, callback_param1, callback_param2),
+	: SpecializedResolverObject<IndustryRandomTriggers>(GetIndTileGrffile(gfx), callback, callback_param1, callback_param2),
 	indtile_scope(*this, indus, tile),
 	ind_scope(*this, tile, indus, indus->type),
 	gfx(gfx)
@@ -262,7 +262,7 @@ uint16_t GetSimpleIndustryCallback(CallbackID callback, uint32_t param1, uint32_
 /** Helper class for animation control. */
 struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, int, GetSimpleIndustryCallback, TileAnimationFrameAnimationHelper<Industry> > {
 	static constexpr CallbackID cb_animation_speed      = CBID_INDTILE_ANIMATION_SPEED;
-	static constexpr CallbackID cb_animation_next_frame = CBID_INDTILE_ANIM_NEXT_FRAME;
+	static constexpr CallbackID cb_animation_next_frame = CBID_INDTILE_ANIMATION_NEXT_FRAME;
 
 	static constexpr IndustryTileCallbackMask cbm_animation_speed      = IndustryTileCallbackMask::AnimationSpeed;
 	static constexpr IndustryTileCallbackMask cbm_animation_next_frame = IndustryTileCallbackMask::AnimationNextFrame;
@@ -276,23 +276,23 @@ void AnimateNewIndustryTile(TileIndex tile)
 	IndustryAnimationBase::AnimateTile(itspec, Industry::GetByTile(tile), tile, itspec->special_flags.Test(IndustryTileSpecialFlag::NextFrameRandomBits));
 }
 
-bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random)
+bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random)
 {
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
 
-	if (!HasBit(itspec->animation.triggers, iat)) return false;
+	if (!itspec->animation.triggers.Test(iat)) return false;
 
-	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIM_START_STOP, itspec, Industry::GetByTile(tile), tile, random, iat);
+	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, to_underlying(iat));
 	return true;
 }
 
-bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigger iat)
+bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat)
 {
 	bool ret = true;
 	uint32_t random = Random();
 	for (TileIndex tile : ind->location) {
 		if (ind->TileBelongsToIndustry(tile)) {
-			if (StartStopIndustryTileAnimation(tile, iat, random)) {
+			if (TriggerIndustryTileAnimation(tile, iat, random)) {
 				SB(random, 0, 16, Random());
 			} else {
 				ret = false;
@@ -310,7 +310,7 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
  * @param ind Industry of the tile.
  * @param[in,out] reseed_industry Collects bits to reseed for the industry.
  */
-static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, Industry *ind, uint32_t &reseed_industry)
+static void DoTriggerIndustryTileRandomisation(TileIndex tile, IndustryRandomTrigger trigger, Industry *ind, uint32_t &reseed_industry)
 {
 	assert(IsValidTile(tile) && IsTileType(tile, MP_INDUSTRY));
 
@@ -320,14 +320,17 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 	if (itspec->grf_prop.GetSpriteGroup() == nullptr) return;
 
 	IndustryTileResolverObject object(gfx, tile, ind, CBID_RANDOM_TRIGGER);
-	object.waiting_triggers = GetIndustryTriggers(tile) | trigger;
-	SetIndustryTriggers(tile, object.waiting_triggers); // store now for var 5F
+	auto waiting_random_triggers = GetIndustryRandomTriggers(tile);
+	waiting_random_triggers.Set(trigger);
+	SetIndustryRandomTriggers(tile, waiting_random_triggers); // store now for var 5F
+	object.SetWaitingRandomTriggers(waiting_random_triggers);
 
 	const SpriteGroup *group = object.Resolve();
 	if (group == nullptr) return;
 
 	/* Store remaining triggers. */
-	SetIndustryTriggers(tile, object.GetRemainingTriggers());
+	waiting_random_triggers.Reset(object.GetUsedRandomTriggers());
+	SetIndustryRandomTriggers(tile, waiting_random_triggers);
 
 	/* Rerandomise tile bits */
 	uint8_t new_random_bits = Random();
@@ -359,11 +362,11 @@ static void DoReseedIndustry(Industry *ind, uint32_t reseed)
  * @param tile Industry tile to trigger.
  * @param trigger Trigger to trigger.
  */
-void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
+void TriggerIndustryTileRandomisation(TileIndex tile, IndustryRandomTrigger trigger)
 {
 	uint32_t reseed_industry = 0;
 	Industry *ind = Industry::GetByTile(tile);
-	DoTriggerIndustryTile(tile, trigger, ind, reseed_industry);
+	DoTriggerIndustryTileRandomisation(tile, trigger, ind, reseed_industry);
 	DoReseedIndustry(ind, reseed_industry);
 }
 
@@ -372,12 +375,12 @@ void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
  * @param ind Industry to trigger.
  * @param trigger Trigger to trigger.
  */
-void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
+void TriggerIndustryRandomisation(Industry *ind, IndustryRandomTrigger trigger)
 {
 	uint32_t reseed_industry = 0;
 	for (TileIndex tile : ind->location) {
 		if (ind->TileBelongsToIndustry(tile)) {
-			DoTriggerIndustryTile(tile, trigger, ind, reseed_industry);
+			DoTriggerIndustryTileRandomisation(tile, trigger, ind, reseed_industry);
 		}
 	}
 	DoReseedIndustry(ind, reseed_industry);

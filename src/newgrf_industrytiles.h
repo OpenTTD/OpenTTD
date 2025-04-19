@@ -32,11 +32,11 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 
 	uint32_t GetRandomBits() const override;
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
-	uint32_t GetTriggers() const override;
+	uint32_t GetRandomTriggers() const override;
 };
 
 /** Resolver for industry tiles. */
-struct IndustryTileResolverObject : public ResolverObject {
+struct IndustryTileResolverObject : public SpecializedResolverObject<IndustryRandomTriggers> {
 	IndustryTileScopeResolver indtile_scope; ///< Scope resolver for the industry tile.
 	IndustriesScopeResolver ind_scope;       ///< Scope resolver for the industry owning the tile.
 	IndustryGfx gfx;
@@ -62,17 +62,10 @@ uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t 
 CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, size_t layout_index, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type);
 
 void AnimateNewIndustryTile(TileIndex tile);
-bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random = Random());
-bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigger iat);
+bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random = Random());
+bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat);
 
-
-/** Available industry tile triggers. */
-enum IndustryTileTrigger : uint8_t {
-	INDTILE_TRIGGER_TILE_LOOP       = 0x01, ///< The tile of the industry has been triggered during the tileloop.
-	INDUSTRY_TRIGGER_INDUSTRY_TICK  = 0x02, ///< The industry has been triggered via its tick.
-	INDUSTRY_TRIGGER_RECEIVED_CARGO = 0x04, ///< Cargo has been delivered.
-};
-void TriggerIndustryTile(TileIndex t, IndustryTileTrigger trigger);
-void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger);
+void TriggerIndustryTileRandomisation(TileIndex t, IndustryRandomTrigger trigger);
+void TriggerIndustryRandomisation(Industry *ind, IndustryRandomTrigger trigger);
 
 #endif /* NEWGRF_INDUSTRYTILES_H */

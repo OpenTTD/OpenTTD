@@ -35,15 +35,6 @@ enum RoadStopClassID : uint16_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadStopClassID)
 
-/* Some Triggers etc. */
-enum RoadStopRandomTrigger : uint8_t {
-	RSRT_NEW_CARGO,       ///< Trigger roadstop on arrival of new cargo.
-	RSRT_CARGO_TAKEN,     ///< Trigger roadstop when cargo is completely taken.
-	RSRT_VEH_ARRIVES,     ///< Trigger roadstop when road vehicle arrives.
-	RSRT_VEH_DEPARTS,     ///< Trigger roadstop when road vehicle leaves.
-	RSRT_VEH_LOADS,       ///< Trigger roadstop when road vehicle loads.
-};
-
 /**
  * Various different options for availability, restricting
  * the roadstop to be only for busses or for trucks.
@@ -103,13 +94,13 @@ struct RoadStopScopeResolver : public ScopeResolver {
 	}
 
 	uint32_t GetRandomBits() const override;
-	uint32_t GetTriggers() const override;
+	uint32_t GetRandomTriggers() const override;
 
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 };
 
 /** Road stop resolver. */
-struct RoadStopResolverObject : public ResolverObject {
+struct RoadStopResolverObject : public SpecializedResolverObject<StationRandomTriggers> {
 	RoadStopScopeResolver roadstop_scope; ///< The stop scope resolver.
 	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
@@ -151,7 +142,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 	CargoTypes cargo_triggers = 0; ///< Bitmask of cargo types which cause trigger re-randomizing
 
-	AnimationInfo animation;
+	AnimationInfo<StationAnimationTriggers> animation;
 
 	uint8_t bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
 	uint8_t bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
@@ -185,7 +176,7 @@ uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t para
 void AnimateRoadStopTile(TileIndex tile);
 uint8_t GetRoadStopTileAnimationSpeed(TileIndex tile);
 void TriggerRoadStopAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
-void TriggerRoadStopRandomisation(Station *st, TileIndex tile, RoadStopRandomTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+void TriggerRoadStopRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 
 bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype);
 bool GetIfClassHasNewStopsByType(const RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype);

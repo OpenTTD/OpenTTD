@@ -1167,8 +1167,8 @@ static void TriggerIndustryProduction(Industry *i)
 		}
 	}
 
-	TriggerIndustry(i, INDUSTRY_TRIGGER_RECEIVED_CARGO);
-	StartStopIndustryTileAnimation(i, IAT_INDUSTRY_RECEIVED_CARGO);
+	TriggerIndustryRandomisation(i, IndustryRandomTrigger::CargoReceived);
+	TriggerIndustryAnimation(i, IndustryAnimationTrigger::CargoReceived);
 }
 
 /**
@@ -1779,7 +1779,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 			/* If there's goods waiting at the station, and the vehicle
 			 * has capacity for it, load it on the vehicle. */
 			if ((v->cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0 || (ge->HasData() && ge->GetData().cargo.AvailableCount() > 0)) && MayLoadUnderExclusiveRights(st, v)) {
-				if (v->cargo.StoredCount() == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
+				if (v->cargo.StoredCount() == 0) TriggerVehicleRandomisation(v, VehicleRandomTrigger::NewCargo);
 				if (_settings_game.order.gradual_loading) cap_left = std::min(cap_left, GetLoadAmount(v));
 
 				uint loaded = ge->GetOrCreateData().cargo.Load(cap_left, &v->cargo, next_station, v->GetCargoTile());
@@ -1811,11 +1811,11 @@ static void LoadUnloadVehicle(Vehicle *front)
 					st->last_vehicle_type = v->type;
 
 					if (ge->GetData().cargo.TotalCount() == 0) {
-						TriggerStationRandomisation(st, st->xy, SRT_CARGO_TAKEN, v->cargo_type);
-						TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
-						AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
-						TriggerRoadStopRandomisation(st, st->xy, RSRT_CARGO_TAKEN, v->cargo_type);
-						TriggerRoadStopAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
+						TriggerStationRandomisation(st, st->xy, StationRandomTrigger::CargoTaken, v->cargo_type);
+						TriggerStationAnimation(st, st->xy, StationAnimationTrigger::CargoTaken, v->cargo_type);
+						TriggerAirportAnimation(st, AirportAnimationTrigger::CargoTaken, v->cargo_type);
+						TriggerRoadStopRandomisation(st, st->xy, StationRandomTrigger::CargoTaken, v->cargo_type);
+						TriggerRoadStopAnimation(st, st->xy, StationAnimationTrigger::CargoTaken, v->cargo_type);
 					}
 
 					new_load_unload_ticks += loaded;
@@ -1834,11 +1834,11 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 	if (anything_loaded || anything_unloaded) {
 		if (front->type == VEH_TRAIN) {
-			TriggerStationRandomisation(st, front->tile, SRT_TRAIN_LOADS);
-			TriggerStationAnimation(st, front->tile, SAT_TRAIN_LOADS);
+			TriggerStationRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
+			TriggerStationAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
 		} else if (front->type == VEH_ROAD) {
-			TriggerRoadStopRandomisation(st, front->tile, RSRT_VEH_LOADS);
-			TriggerRoadStopAnimation(st, front->tile, SAT_TRAIN_LOADS);
+			TriggerRoadStopRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
+			TriggerRoadStopAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
 		}
 	}
 
@@ -1910,7 +1910,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 		/* Make sure the vehicle is marked dirty, since we need to update the NewGRF
 		 * properties such as weight, power and TE whenever the trigger runs. */
 		dirty_vehicle = true;
-		TriggerVehicle(front, VEHICLE_TRIGGER_EMPTY);
+		TriggerVehicleRandomisation(front, VehicleRandomTrigger::Empty);
 	}
 
 	if (dirty_vehicle) {

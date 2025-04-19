@@ -763,7 +763,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	uint8_t stage = GetIndustryConstructionStage(tile) + 1;
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
-	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STATE_CHANGE);
+	TriggerIndustryTileAnimation(tile, IndustryAnimationTrigger::ConstructionStageChanged);
 	if (stage == INDUSTRY_COMPLETED) SetIndustryCompleted(tile);
 
 	MarkTileDirtyByTile(tile);
@@ -844,7 +844,7 @@ static void TileLoop_Industry(TileIndex tile)
 	 * returning from TileLoop_Water. */
 	if (!IsTileType(tile, MP_INDUSTRY)) return;
 
-	TriggerIndustryTile(tile, INDTILE_TRIGGER_TILE_LOOP);
+	TriggerIndustryTileRandomisation(tile, IndustryRandomTrigger::TileLoop);
 
 	if (!IsIndustryCompleted(tile)) {
 		MakeIndustryTileBigger(tile);
@@ -853,7 +853,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 	if (_game_mode == GM_EDITOR) return;
 
-	if (TransportIndustryGoods(tile) && !StartStopIndustryTileAnimation(Industry::GetByTile(tile), IAT_INDUSTRY_DISTRIBUTES_CARGO)) {
+	if (TransportIndustryGoods(tile) && !TriggerIndustryAnimation(Industry::GetByTile(tile), IndustryAnimationTrigger::CargoDistributed)) {
 		uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
 		if (newgfx != INDUSTRYTILE_NOANIM) {
@@ -865,7 +865,7 @@ static void TileLoop_Industry(TileIndex tile)
 		}
 	}
 
-	if (StartStopIndustryTileAnimation(tile, IAT_TILELOOP)) return;
+	if (TriggerIndustryTileAnimation(tile, IndustryAnimationTrigger::TileLoop)) return;
 
 	IndustryGfx newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
 	if (newgfx != INDUSTRYTILE_NOANIM) {
@@ -1235,8 +1235,8 @@ static void ProduceIndustryGoods(Industry *i)
 			if (cut) ChopLumberMillTrees(i);
 		}
 
-		TriggerIndustry(i, INDUSTRY_TRIGGER_INDUSTRY_TICK);
-		StartStopIndustryTileAnimation(i, IAT_INDUSTRY_TICK);
+		TriggerIndustryRandomisation(i, IndustryRandomTrigger::IndustryTick);
+		TriggerIndustryAnimation(i, IndustryAnimationTrigger::IndustryTick);
 	}
 }
 

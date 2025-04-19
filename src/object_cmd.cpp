@@ -130,7 +130,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 	}
 
 	Object::IncTypeCount(type);
-	if (spec->flags.Test(ObjectFlag::Animation)) TriggerObjectAnimation(o, OAT_BUILT, spec);
+	if (spec->flags.Test(ObjectFlag::Animation)) TriggerObjectAnimation(o, ObjectAnimationTrigger::Built, spec);
 }
 
 /**
@@ -676,8 +676,8 @@ static void TileLoop_Object(TileIndex tile)
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
 	if (spec->flags.Test(ObjectFlag::Animation)) {
 		Object *o = Object::GetByTile(tile);
-		TriggerObjectTileAnimation(o, tile, OAT_TILELOOP, spec);
-		if (o->location.tile == tile) TriggerObjectAnimation(o, OAT_256_TICKS, spec);
+		TriggerObjectTileAnimation(o, tile, ObjectAnimationTrigger::TileLoop, spec);
+		if (o->location.tile == tile) TriggerObjectAnimation(o, ObjectAnimationTrigger::TileLoopNorth, spec);
 	}
 
 	if (IsTileOnWater(tile)) TileLoop_Water(tile);

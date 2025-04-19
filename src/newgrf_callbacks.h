@@ -65,10 +65,10 @@ enum CallbackID : uint16_t {
 	CBID_HOUSE_ANIMATION_NEXT_FRAME      = 0x1A, // 15 bit callback
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_HOUSE_ANIMATION_START_STOP      = 0x1B, // 15 bit callback
+	CBID_HOUSE_ANIMATION_TRIGGER_TILE_LOOP = 0x1B, // 15 bit callback
 
-	/** Called whenever the construction state of a house changes. */
-	CBID_HOUSE_CONSTRUCTION_STATE_CHANGE = 0x1C, // 15 bit callback
+	/** Called whenever the construction stage of a house changes. */
+	CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED = 0x1C, // 15 bit callback
 
 	/** Determine whether a wagon can be attached to an already existing train. */
 	CBID_TRAIN_ALLOW_WAGON_ATTACH        = 0x1D,
@@ -98,10 +98,10 @@ enum CallbackID : uint16_t {
 	CBID_STATION_BUILD_TILE_LAYOUT       = 0x24, // 15 bit callback
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_INDTILE_ANIM_START_STOP         = 0x25, // 15 bit callback
+	CBID_INDTILE_ANIMATION_TRIGGER       = 0x25, // 15 bit callback
 
 	/** Called to determine industry tile next animation frame. */
-	CBID_INDTILE_ANIM_NEXT_FRAME         = 0x26, // 15 bit callback
+	CBID_INDTILE_ANIMATION_NEXT_FRAME    = 0x26, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
 	CBID_INDTILE_ANIMATION_SPEED         = 0x27, // 8 bit callback
@@ -184,10 +184,10 @@ enum CallbackID : uint16_t {
 	/* There are no callbacks 0x3E - 0x13F */
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_STATION_ANIM_START_STOP         = 0x140, // 15 bit callback
+	CBID_STATION_ANIMATION_TRIGGER       = 0x140, // 15 bit callback
 
 	/** Called to determine station tile next animation frame. */
-	CBID_STATION_ANIM_NEXT_FRAME         = 0x141, // 15 bit callback
+	CBID_STATION_ANIMATION_NEXT_FRAME    = 0x141, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
 	CBID_STATION_ANIMATION_SPEED         = 0x142, // 8 bit callback
@@ -208,7 +208,7 @@ enum CallbackID : uint16_t {
 	CBID_CANALS_SPRITE_OFFSET            = 0x147, // 15 bit callback
 
 	/** Called when a cargo type specified in property 20 is accepted. */
-	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // 15 bit callback
+	CBID_HOUSE_ANIMATION_TRIGGER_WATCHED_CARGO_ACCEPTED = 0x148, // 15 bit callback
 
 	/** Callback done for each tile of a station to check the slope. */
 	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // 15 bit callback
@@ -235,10 +235,10 @@ enum CallbackID : uint16_t {
 	CBID_AIRPTILE_DRAW_FOUNDATIONS       = 0x150, // 15 bit callback
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_AIRPTILE_ANIM_START_STOP        = 0x152, // 15 bit callback
+	CBID_AIRPTILE_ANIMATION_TRIGGER      = 0x152, // 15 bit callback
 
 	/** Called to determine airport tile next animation frame. */
-	CBID_AIRPTILE_ANIM_NEXT_FRAME        = 0x153, // 15 bit callback
+	CBID_AIRPTILE_ANIMATION_NEXT_FRAME   = 0x153, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
 	CBID_AIRPTILE_ANIMATION_SPEED        = 0x154, // 8 bit callback
@@ -259,7 +259,7 @@ enum CallbackID : uint16_t {
 	CBID_OBJECT_ANIMATION_NEXT_FRAME     = 0x158, // 15 bit callback
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_OBJECT_ANIMATION_START_STOP     = 0x159, // 15 bit callback
+	CBID_OBJECT_ANIMATION_TRIGGER        = 0x159, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
 	CBID_OBJECT_ANIMATION_SPEED          = 0x15A, // 8 bit callback
@@ -341,8 +341,8 @@ using RoadStopCallbackMasks = EnumBitSet<RoadStopCallbackMask, uint8_t>;
 enum class HouseCallbackMask : uint8_t {
 	AllowConstruction       =  0, ///< decide whether the house can be built on a given tile
 	AnimationNextFrame      =  1, ///< decides next animation frame
-	AnimationStartStop      =  2, ///< periodically start/stop the animation
-	ConstructionStateChange =  3, ///< change animation when construction state changes
+	AnimationTriggerTileLoop = 2, ///< periodically start/stop the animation
+	AnimationTriggerConstructionStageChanged = 3, ///< change animation when construction stage changes
 	Colour                  =  4, ///< decide the colour of the building
 	CargoAcceptance         =  5, ///< decides amount of cargo acceptance
 	AnimationSpeed          =  6, ///< decides animation speed

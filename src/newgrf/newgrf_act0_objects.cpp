@@ -159,7 +159,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x13: // Animation triggers
-				spec->animation.triggers = buf.ReadWord();
+				spec->animation.triggers = static_cast<ObjectAnimationTriggers>(buf.ReadWord());
 				break;
 
 			case 0x14: // Removal cost multiplier

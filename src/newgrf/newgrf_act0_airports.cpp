@@ -210,7 +210,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 
 					tsp->enabled = true;
 
-					tsp->animation = AnimationInfo{};
+					tsp->animation = {};
 
 					tsp->grf_prop.local_id = id;
 					tsp->grf_prop.subst_id = subs_id;
@@ -247,7 +247,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 				break;
 
 			case 0x11: // Animation triggers
-				tsp->animation.triggers = buf.ReadByte();
+				tsp->animation.triggers = static_cast<AirportAnimationTriggers>(buf.ReadByte());
 				break;
 
 			case 0x12: // Badge list

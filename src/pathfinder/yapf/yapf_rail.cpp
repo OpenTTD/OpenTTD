@@ -80,7 +80,7 @@ private:
 			tile = TileAdd(tile, diff);
 		} while (IsCompatibleTrainStationTile(tile, start) && tile != this->origin_tile);
 
-		TriggerStationRandomisation(nullptr, start, SRT_PATH_RESERVATION);
+		TriggerStationRandomisation(nullptr, start, StationRandomTrigger::PathReservation);
 
 		return true;
 	}

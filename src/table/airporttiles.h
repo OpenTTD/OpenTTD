@@ -11,9 +11,9 @@
 #define AIRPORTTILES_H
 
 /** Writes all airport tile properties in the AirportTile struct */
-#define AT(num_frames, anim_speed) {{num_frames, AnimationStatus::Looping, anim_speed, 0}, STR_NULL, AirportTileCallbackMasks{}, 0, true, GRFFileProps(INVALID_AIRPORTTILE), {}}
+#define AT(num_frames, anim_speed) {{num_frames, AnimationStatus::Looping, anim_speed, {}}, STR_NULL, AirportTileCallbackMasks{}, 0, true, GRFFileProps(INVALID_AIRPORTTILE), {}}
 /** Writes an airport tile without animation in the AirportTile struct */
-#define AT_NOANIM {AnimationInfo{}, STR_NULL, AirportTileCallbackMasks{}, 0, true, GRFFileProps(INVALID_AIRPORTTILE), {}}
+#define AT_NOANIM {AnimationInfo<AirportAnimationTriggers>{}, STR_NULL, AirportTileCallbackMasks{}, 0, true, GRFFileProps(INVALID_AIRPORTTILE), {}}
 
 /**
  * All default airport tiles.
