@@ -1104,30 +1104,6 @@ void PlantRandomFarmField(const Industry *i)
 }
 
 /**
- * Search callback function for ChopLumberMillTrees
- * @param tile to test
- * @return the result of the test
- */
-static bool SearchLumberMillTrees(TileIndex tile, void *)
-{
-	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) >= TreeGrowthStage::Grown) {
-		/* found a tree */
-
-		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
-
-		_industry_sound_ctr = 1;
-		_industry_sound_tile = tile;
-		if (_settings_client.sound.ambient) SndPlayTileFx(SND_38_LUMBER_MILL_1, tile);
-
-		Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, tile);
-
-		cur_company.Restore();
-		return true;
-	}
-	return false;
-}
-
-/**
  * Perform a circular search around the Lumber Mill in order to find trees to cut
  * @param i industry
  */
@@ -1144,9 +1120,20 @@ static void ChopLumberMillTrees(Industry *i)
 		}
 	}
 
-	TileIndex tile = i->location.tile;
-	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, nullptr)) { // 40x40 tiles  to search.
-		itp->waiting = ClampTo<uint16_t>(itp->waiting + ScaleByCargoScale(45, false)); // Found a tree, add according value to waiting cargo.
+	for (auto tile : SpiralTileSequence(i->location.tile, 40)) { // 40x40 tiles  to search.
+		if (!IsTileType(tile, MP_TREES) || GetTreeGrowth(tile) < TreeGrowthStage::Grown) continue;
+
+		/* found a tree */
+		_industry_sound_ctr = 1;
+		_industry_sound_tile = tile;
+		if (_settings_client.sound.ambient) SndPlayTileFx(SND_38_LUMBER_MILL_1, tile);
+
+		AutoRestoreBackup<CompanyID> cur_company(_current_company, OWNER_NONE);
+		Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, tile);
+
+		/* Add according value to waiting cargo. */
+		itp->waiting = ClampTo<uint16_t>(itp->waiting + ScaleByCargoScale(45, false));
+		break;
 	}
 }
 
