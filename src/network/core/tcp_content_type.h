@@ -14,6 +14,9 @@
 
 #include "../../3rdparty/md5/md5.h"
 
+#include "../../string_type.h"
+#include "../../textfile_type.h"
+
 /** The values in the enum are important; they are used as database 'keys' */
 enum ContentType : uint8_t {
 	CONTENT_TYPE_BEGIN         = 1, ///< Helper to mark the begin of the types

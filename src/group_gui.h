@@ -11,6 +11,8 @@
 #define GROUP_GUI_H
 
 #include "company_type.h"
+#include "group_type.h"
+#include "sortlist_type.h"
 #include "vehicle_type.h"
 
 void ShowCompanyGroup(CompanyID company, VehicleType veh, GroupID group = GroupID::Invalid());

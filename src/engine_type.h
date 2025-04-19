@@ -10,6 +10,7 @@
 #ifndef ENGINE_TYPE_H
 #define ENGINE_TYPE_H
 
+#include "core/pool_type.hpp"
 #include "economy_type.h"
 #include "landscape_type.h"
 #include "newgrf_callbacks.h"

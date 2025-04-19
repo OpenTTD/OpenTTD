@@ -16,9 +16,9 @@
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
 
-#include "../safeguards.h"
+#include "table/strings.h"
 
-#include "../table/strings.h"
+#include "../safeguards.h"
 
 /**
  * Information for mapping static StringIDs.

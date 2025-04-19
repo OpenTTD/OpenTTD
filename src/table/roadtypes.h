@@ -13,6 +13,8 @@
 #ifndef ROADTYPES_H
 #define ROADTYPES_H
 
+#include "table/strings.h"
+
 /**
  * Global Roadtype definition
  */

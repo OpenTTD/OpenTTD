@@ -13,6 +13,8 @@
 #ifndef RAILTYPES_H
 #define RAILTYPES_H
 
+#include "table/strings.h"
+
 /**
  * Global Railtype definition
  */

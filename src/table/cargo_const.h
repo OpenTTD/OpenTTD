@@ -7,6 +7,11 @@
 
 /** @file cargo_const.h Table of all default cargo types */
 
+#include "../table/sprites.h"
+#ifndef CHECK_UNUSED_STRINGS
+#include "table/strings.h"
+#endif
+
 /** Construction macros for the #CargoSpec StringID entries. */
 #define MK_STR_CARGO_PLURAL(label_plural) STR_CARGO_PLURAL_ ## label_plural
 #define MK_STR_CARGO_SINGULAR(label_singular) STR_CARGO_SINGULAR_ ## label_singular

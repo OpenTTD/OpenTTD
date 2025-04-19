@@ -5,6 +5,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "table/strings.h"
+
 /**
  * @file bridge_land.h This file contains all the sprites for bridges
  * It consists of a number of arrays.

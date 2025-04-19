@@ -13,6 +13,8 @@
 #include "../company_type.h"
 #include "../textfile_type.h"
 
+struct Window;
+
 void ShowScriptListWindow(CompanyID slot, bool show_all);
 Window *ShowScriptDebugWindow(CompanyID show_company = CompanyID::Invalid(), bool new_window = false);
 void ShowScriptSettingsWindow(CompanyID slot);
