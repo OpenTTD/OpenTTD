@@ -24,6 +24,8 @@ struct AirportFTAbuildup {
 	uint8_t next;     ///< Next position from this position.
 };
 
+/* clang-format off */
+
 ///////////////////////////////////////////////////////////////////////
 /////*********Movement Positions on Airports********************///////
 

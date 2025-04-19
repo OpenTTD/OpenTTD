@@ -638,6 +638,7 @@ struct NewGRFInspectWindow : Window {
 
 /* static */ uint32_t NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_inspect_chain_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -661,7 +662,9 @@ static constexpr NWidgetPart _nested_newgrf_inspect_chain_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_inspect_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -679,6 +682,7 @@ static constexpr NWidgetPart _nested_newgrf_inspect_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _newgrf_inspect_chain_desc(
 	WDP_AUTO, "newgrf_inspect_chain", 400, 300,
@@ -1132,6 +1136,7 @@ private:
 bool SpriteAlignerWindow::centre = true;
 bool SpriteAlignerWindow::crosshair = true;
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1201,6 +1206,7 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _sprite_aligner_desc(
 	WDP_AUTO, "sprite_aligner", 400, 300,

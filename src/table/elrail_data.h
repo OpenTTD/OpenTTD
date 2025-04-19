@@ -13,6 +13,8 @@
 #ifndef ELRAIL_DATA_H
 #define ELRAIL_DATA_H
 
+/* clang-format off */
+
 /**
  * Tile Location group.
  * This defines whether the X and or Y coordinate of a tile is even

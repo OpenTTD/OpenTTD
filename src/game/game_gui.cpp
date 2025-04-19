@@ -32,6 +32,7 @@
 
 
 /** Widgets for the configure GS window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_gs_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -73,6 +74,7 @@ static constexpr NWidgetPart _nested_gs_config_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the configure GS window. */
 static WindowDesc _gs_config_desc(

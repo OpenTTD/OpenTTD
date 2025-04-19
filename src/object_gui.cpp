@@ -379,6 +379,7 @@ public:
 	}, BuildObjectGlobalHotkeys};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_object_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -406,6 +407,7 @@ static constexpr NWidgetPart _nested_build_object_widgets[] = {
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_object_desc(
 	WDP_AUTO, "build_object", 0, 0,

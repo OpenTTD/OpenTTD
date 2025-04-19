@@ -9,6 +9,8 @@
 
 #include "../core/enum_type.hpp"
 
+/* clang-format off */
+
 static const char * const _name_original_english_1[] = {
 	"Great ",
 	"Little ",

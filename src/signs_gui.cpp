@@ -349,6 +349,7 @@ struct SignListWindow : Window, SignList {
 	}, SignListGlobalHotkeys};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_sign_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -375,6 +376,7 @@ static constexpr NWidgetPart _nested_sign_list_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _sign_list_desc(
 	WDP_AUTO, "list_signs", 358, 138,
@@ -524,6 +526,7 @@ struct SignWindow : Window, SignList {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_query_sign_edit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -542,6 +545,7 @@ static constexpr NWidgetPart _nested_query_sign_edit_widgets[] = {
 		NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_QES_NEXT), SetMinimalSize(11, 12), SetArrowWidgetTypeTip(AWV_INCREASE, STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _query_sign_edit_desc(
 	WDP_CENTER, nullptr, 0, 0,

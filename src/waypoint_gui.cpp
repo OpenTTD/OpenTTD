@@ -187,6 +187,7 @@ public:
 };
 
 /** The widgets of the waypoint view. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -208,6 +209,7 @@ static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** The description of the waypoint view. */
 static WindowDesc _waypoint_view_desc(

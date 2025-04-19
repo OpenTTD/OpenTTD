@@ -699,6 +699,7 @@ public:
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -755,6 +756,7 @@ static constexpr NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _replace_rail_vehicle_desc(
 	WDP_AUTO, "replace_vehicle_train", 500, 140,
@@ -763,6 +765,7 @@ static WindowDesc _replace_rail_vehicle_desc(
 	_nested_replace_rail_vehicle_widgets
 );
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_replace_road_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -813,6 +816,7 @@ static constexpr NWidgetPart _nested_replace_road_vehicle_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _replace_road_vehicle_desc(
 	WDP_AUTO, "replace_vehicle_road", 500, 140,
@@ -821,6 +825,7 @@ static WindowDesc _replace_road_vehicle_desc(
 	_nested_replace_road_vehicle_widgets
 );
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_replace_vehicle_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -867,6 +872,7 @@ static constexpr NWidgetPart _nested_replace_vehicle_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _replace_vehicle_desc(
 	WDP_AUTO, "replace_vehicle", 456, 118,

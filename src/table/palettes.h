@@ -7,6 +7,8 @@
 
 /** @file palettes.h The colour translation of the GRF palettes. */
 
+/* clang-format off */
+
 #define M(r, g, b) Colour(r, g, b)
 
 /** Colour palette (DOS) */

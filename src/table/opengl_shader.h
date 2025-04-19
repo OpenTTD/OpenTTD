@@ -7,6 +7,8 @@
 
 /** @file opengl_shader.h OpenGL shader programs. */
 
+/* clang-format off */
+
 /** Vertex shader that positions a sprite on screen.. */
 static const char *_vertex_shader_sprite[] = {
 	"#version 110\n",

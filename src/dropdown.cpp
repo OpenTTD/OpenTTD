@@ -55,6 +55,7 @@ std::unique_ptr<DropDownListItem> MakeDropDownListCheckedItem(bool checked, Stri
 	return std::make_unique<DropDownListCheckedItem>(indent, checked, GetString(str), value, masked, shaded);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_END, WID_DM_ITEMS), SetScrollbar(WID_DM_SCROLL), EndContainer(),
@@ -63,6 +64,7 @@ static constexpr NWidgetPart _nested_dropdown_menu_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _dropdown_desc(
 	WDP_MANUAL, nullptr, 0, 0,

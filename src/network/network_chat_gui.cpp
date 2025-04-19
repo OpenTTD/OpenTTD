@@ -411,6 +411,7 @@ struct NetworkChatWindow : public Window {
 };
 
 /** The widgets of the chat window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_chat_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WID_NC_CLOSE),
@@ -424,6 +425,7 @@ static constexpr NWidgetPart _nested_chat_window_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** The description of the chat window. */
 static WindowDesc _chat_window_desc(

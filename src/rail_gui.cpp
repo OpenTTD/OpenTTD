@@ -858,6 +858,7 @@ struct BuildRailToolbarWindow : Window {
 	}, RailToolbarGlobalHotkeys};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -898,6 +899,7 @@ static constexpr NWidgetPart _nested_build_rail_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetSpriteTip(SPR_IMG_CONVERT_RAIL, STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_rail_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_rail", 0, 0,
@@ -1384,6 +1386,7 @@ public:
 	}, BuildRailStationGlobalHotkeys};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_station_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1436,6 +1439,7 @@ static constexpr NWidgetPart _nested_station_builder_widgets[] = {
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** High level window description of the station-build window (default & newGRF) */
 static WindowDesc _station_builder_desc(
@@ -1630,6 +1634,7 @@ public:
 };
 
 /** Nested widget definition of the build signal window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_signal_builder_widgets[] = {
 	/* Title bar and buttons. */
 	NWidget(NWID_HORIZONTAL),
@@ -1694,6 +1699,7 @@ static constexpr NWidgetPart _nested_signal_builder_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Signal selection window description */
 static WindowDesc _signal_builder_desc(
@@ -1758,6 +1764,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 };
 
 /** Nested widget definition of the build rail depot window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1776,6 +1783,7 @@ static constexpr NWidgetPart _nested_build_depot_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_depot_desc(
 	WDP_AUTO, nullptr, 0, 0,
@@ -1883,6 +1891,7 @@ struct BuildRailWaypointWindow : public PickerWindow {
 };
 
 /** Nested widget definition for the build NewGRF rail waypoint window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_waypoint_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1895,6 +1904,7 @@ static constexpr NWidgetPart _nested_build_waypoint_widgets[] = {
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_waypoint_desc(
 	WDP_AUTO, "build_waypoint", 0, 0,

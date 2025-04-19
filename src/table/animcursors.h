@@ -14,6 +14,8 @@
  * is to be displayed.
  */
 
+/* clang-format off */
+
 /**
  * Creates two array entries that define one
  *  status of the cursor.

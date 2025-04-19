@@ -899,6 +899,7 @@ struct BuildRoadToolbarWindow : Window {
 	}, TramToolbarGlobalHotkeys};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_road_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -935,6 +936,7 @@ static constexpr NWidgetPart _nested_build_road_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetSpriteTip(SPR_IMG_CONVERT_ROAD, STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_road_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_road", 0, 0,
@@ -944,6 +946,7 @@ static WindowDesc _build_road_desc(
 	&BuildRoadToolbarWindow::road_hotkeys
 );
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_tramway_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -978,6 +981,7 @@ static constexpr NWidgetPart _nested_build_tramway_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetSpriteTip(SPR_IMG_CONVERT_ROAD, STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_tramway_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_tramway", 0, 0,
@@ -1005,6 +1009,7 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_desc : _build_tramway_desc, TRANSPORT_ROAD);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_road_scen_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1033,6 +1038,7 @@ static constexpr NWidgetPart _nested_build_road_scen_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetSpriteTip(SPR_IMG_CONVERT_ROAD, STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_road_scen_desc(
 	WDP_AUTO, "toolbar_road_scen", 0, 0,
@@ -1042,6 +1048,7 @@ static WindowDesc _build_road_scen_desc(
 	&BuildRoadToolbarWindow::road_hotkeys
 );
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_tramway_scen_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1068,6 +1075,7 @@ static constexpr NWidgetPart _nested_build_tramway_scen_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetSpriteTip(SPR_IMG_CONVERT_ROAD, STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_tramway_scen_desc(
 	WDP_AUTO, "toolbar_tram_scen", 0, 0,
@@ -1147,6 +1155,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_road_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1165,6 +1174,7 @@ static constexpr NWidgetPart _nested_build_road_depot_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_road_depot_desc(
 	WDP_AUTO, nullptr, 0, 0,
@@ -1505,6 +1515,7 @@ public:
 };
 
 /** Widget definition of the build road station window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_road_station_picker_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1557,6 +1568,7 @@ static constexpr NWidgetPart _nested_road_station_picker_widgets[] = {
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _road_station_picker_desc(
 	WDP_AUTO, "build_station_road", 0, 0,
@@ -1567,6 +1579,7 @@ static WindowDesc _road_station_picker_desc(
 );
 
 /** Widget definition of the build tram station window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_tram_station_picker_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1597,6 +1610,7 @@ static constexpr NWidgetPart _nested_tram_station_picker_widgets[] = {
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _tram_station_picker_desc(
 	WDP_AUTO, "build_station_tram", 0, 0,
@@ -1706,6 +1720,7 @@ struct BuildRoadWaypointWindow : public PickerWindow {
 };
 
 /** Nested widget definition for the build NewGRF road waypoint window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_road_waypoint_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1718,6 +1733,7 @@ static constexpr NWidgetPart _nested_build_road_waypoint_widgets[] = {
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_road_waypoint_desc(
 	WDP_AUTO, "build_road_waypoint", 0, 0,

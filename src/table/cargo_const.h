@@ -7,6 +7,8 @@
 
 /** @file cargo_const.h Table of all default cargo types */
 
+/* clang-format off */
+
 /** Construction macros for the #CargoSpec StringID entries. */
 #define MK_STR_CARGO_PLURAL(label_plural) STR_CARGO_PLURAL_ ## label_plural
 #define MK_STR_CARGO_SINGULAR(label_singular) STR_CARGO_SINGULAR_ ## label_singular

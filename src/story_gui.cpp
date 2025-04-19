@@ -937,6 +937,7 @@ const std::initializer_list<GUIStoryPageElementList::SortFunction * const> Story
 	&PageElementOrderSorter,
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_story_book_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -957,6 +958,7 @@ static constexpr NWidgetPart _nested_story_book_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _story_book_desc(
 	WDP_AUTO, "view_story", 400, 300,

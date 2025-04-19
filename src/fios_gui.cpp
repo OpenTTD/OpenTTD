@@ -65,6 +65,7 @@ void LoadCheckData::Clear()
 }
 
 /** Load game/scenario with optional content download */
+/* clang-format off */
 static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -126,8 +127,10 @@ static constexpr NWidgetPart _nested_load_dialog_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Load heightmap with content download */
+/* clang-format off */
 static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -173,8 +176,10 @@ static constexpr NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Load town data */
+/* clang-format off */
 static constexpr NWidgetPart _nested_load_town_data_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -215,8 +220,10 @@ static constexpr NWidgetPart _nested_load_town_data_dialog_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Save game/scenario */
+/* clang-format off */
 static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -279,6 +286,7 @@ static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Text colours of #DetailedFileType fios entries in the window. */
 static const TextColour _fios_colours[] = {

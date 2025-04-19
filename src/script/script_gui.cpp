@@ -247,6 +247,7 @@ struct ScriptListWindow : public Window {
 };
 
 /** Widgets for the AI list window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_script_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -267,6 +268,7 @@ static constexpr NWidgetPart _nested_script_list_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the ai list window. */
 static WindowDesc _script_list_desc(
@@ -565,6 +567,7 @@ private:
 };
 
 /** Widgets for the Script settings window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_script_settings_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -583,6 +586,7 @@ static constexpr NWidgetPart _nested_script_settings_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the Script settings window. */
 static WindowDesc _script_settings_desc(
@@ -1211,6 +1215,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsScriptDebug()
 }
 
 /** Widgets for the Script debug window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_script_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1257,6 +1262,7 @@ static constexpr NWidgetPart _nested_script_debug_widgets[] = {
 	EndContainer(),
 EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the Script debug window. */
 static WindowDesc _script_debug_desc(

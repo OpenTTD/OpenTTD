@@ -51,6 +51,7 @@ StringID GetEngineCategoryName(EngineID engine)
 	}
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_engine_preview_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
@@ -66,6 +67,7 @@ static constexpr NWidgetPart _nested_engine_preview_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 struct EnginePreviewWindow : Window {
 	int vehicle_space = 0; // The space to show the vehicle image

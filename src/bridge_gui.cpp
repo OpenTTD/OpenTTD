@@ -309,6 +309,7 @@ const std::initializer_list<GUIBridgeList::SortFunction * const> BuildBridgeWind
 };
 
 /** Widgets of the bridge gui. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_bridge_widgets[] = {
 	/* Header */
 	NWidget(NWID_HORIZONTAL),
@@ -335,6 +336,7 @@ static constexpr NWidgetPart _nested_build_bridge_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the rail bridge selection window. */
 static WindowDesc _build_bridge_desc(

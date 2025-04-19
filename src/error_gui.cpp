@@ -33,6 +33,7 @@
 
 #include "safeguards.h"
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
@@ -42,6 +43,7 @@ static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_EM_MESSAGE), SetPadding(WidgetDimensions::unscaled.modalpopup), SetFill(1, 0), SetMinimalSize(236, 0),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _errmsg_desc(
 	WDP_MANUAL, nullptr, 0, 0,
@@ -50,6 +52,7 @@ static WindowDesc _errmsg_desc(
 	_nested_errmsg_widgets
 );
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
@@ -62,6 +65,7 @@ static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _errmsg_face_desc(
 	WDP_MANUAL, nullptr, 0, 0,

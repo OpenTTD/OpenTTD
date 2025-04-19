@@ -13,6 +13,8 @@
 #ifndef ROADTYPES_H
 #define ROADTYPES_H
 
+/* clang-format off */
+
 /**
  * Global Roadtype definition
  */

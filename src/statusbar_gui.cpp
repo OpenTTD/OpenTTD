@@ -210,6 +210,7 @@ struct StatusBarWindow : Window {
 	}};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_main_status_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_S_LEFT), SetMinimalSize(140, 12), EndContainer(),
@@ -217,6 +218,7 @@ static constexpr NWidgetPart _nested_main_status_widgets[] = {
 		NWidget(WWT_PUSHBTN, COLOUR_GREY, WID_S_RIGHT), SetMinimalSize(140, 12),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _main_status_desc(
 	WDP_MANUAL, nullptr, 0, 0,
