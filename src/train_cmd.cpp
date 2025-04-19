@@ -3300,13 +3300,13 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					/* Reverse when we are at the end of the track already, do not move to the new position */
 					if (v->IsFrontEngine() && !TrainCheckIfLineEnds(v, reverse)) return false;
 
-					uint32_t r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-					if (HasBit(r, VETS_CANNOT_ENTER)) {
+					auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+					if (vets.Test(VehicleEnterTileState::CannotEnter)) {
 						goto invalid_rail;
 					}
-					if (HasBit(r, VETS_ENTERED_STATION)) {
+					if (vets.Test(VehicleEnterTileState::EnteredStation)) {
 						/* The new position is the end of the platform */
-						TrainEnterStation(v, StationID(r >> VETS_STATION_ID_OFFSET));
+						TrainEnterStation(v, GetStationIndex(gp.new_tile));
 					}
 				}
 			} else {
@@ -3447,12 +3447,12 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 				Direction chosen_dir = (Direction)b[2];
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
-				uint32_t r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-				if (HasBit(r, VETS_CANNOT_ENTER)) {
+				auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+				if (vets.Test(VehicleEnterTileState::CannotEnter)) {
 					goto invalid_rail;
 				}
 
-				if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
+				if (!vets.Test(VehicleEnterTileState::EnteredWormhole)) {
 					Track track = FindFirstTrack(chosen_track);
 					Trackdir tdir = TrackDirectionToTrackdir(track, chosen_dir);
 					if (v->IsFrontEngine() && HasPbsSignalOnTrackdir(gp.new_tile, tdir)) {
@@ -3498,13 +3498,13 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					CheckNextTrainTile(v);
 				}
 
-				if (HasBit(r, VETS_ENTERED_STATION)) {
+				if (vets.Test(VehicleEnterTileState::EnteredStation)) {
 					/* The new position is the location where we want to stop */
-					TrainEnterStation(v, StationID(r >> VETS_STATION_ID_OFFSET));
+					TrainEnterStation(v, GetStationIndex(gp.new_tile));
 				}
 			}
 		} else {
-			if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+			if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
 				/* Perform look-ahead on tunnel exit. */
 				if (v->IsFrontEngine()) {
 					TryReserveRailTrack(gp.new_tile, DiagDirToDiagTrack(GetTunnelBridgeDirection(gp.new_tile)));

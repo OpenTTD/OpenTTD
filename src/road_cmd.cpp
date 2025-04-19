@@ -2250,7 +2250,7 @@ static const uint8_t _roadveh_enter_depot_dir[4] = {
 	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 
-static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int, int)
+static VehicleEnterTileStates VehicleEnter_Road(Vehicle *v, TileIndex tile, int, int)
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_DEPOT: {
@@ -2266,14 +2266,14 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int,
 				rv->tile = tile;
 
 				InvalidateWindowData(WC_VEHICLE_DEPOT, rv->tile);
-				return VETSB_ENTERED_WORMHOLE;
+				return VehicleEnterTileState::EnteredWormhole;
 			}
 			break;
 		}
 
 		default: break;
 	}
-	return VETSB_CONTINUE;
+	return {};
 }
 
 
