@@ -1960,7 +1960,7 @@ STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Show signal typ
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Choose which signal types are shown in the signal toolbar
 ###length 2
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Path signals only
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :All signals
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Path signals and legacy signals
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Road layout for new towns: {STRING2}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout for the road network of towns
@@ -2879,17 +2879,17 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Default waypoin
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signal Selection
-STR_BUILD_SIGNAL_TOGGLE_ADVANCED_SIGNAL_TOOLTIP                 :{BLACK}Toggle showing advanced signal types
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Block Signal (semaphore){}This is the most basic type of signal, allowing only one train to be in the same block at the same time
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Entry Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Exit Signal (semaphore){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combo Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals
+STR_BUILD_SIGNAL_TOGGLE_LEGACY_SIGNAL_TOOLTIP                   :{BLACK}Toggle showing legacy signal types
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Legacy Block Signal (semaphore){}This is the most basic type of legacy signal, allowing only one train to be in the same block at the same time
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Legacy Entry Signal (semaphore){}Green as long as there is one or more green legacy exit-signal from the following section of track. Otherwise it shows red
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Legacy Exit Signal (semaphore){}Behaves in the same way as a legacy signal but is necessary to trigger the correct colour on legacy entry & legacy combo pre-signals
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Legacy Combo Signal (semaphore){}The legacy combo signal simply acts as both a legacy entry and legacy exit signal. This allows you to build large "trees" of legacy pre-signals
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}One-way Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Block Signal (electric){}This is the most basic type of signal, allowing only one train to be in the same block at the same time
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Entry Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Exit Signal (electric){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Legacy Block Signal (electric){}This is the most basic type of legacy signal, allowing only one train to be in the same block at the same time
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Legacy Entry Signal (electric){}Green as long as there is one or more green legacy exit-signal from the following section of track. Otherwise it shows red
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Legacy Exit Signal (electric){}Behaves in the same way as a legacy signal but is necessary to trigger the correct colour on legacy entry & legacy combo pre-signals
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Legacy Combo Signal (electric){}The legacy combo signal simply acts as both an legacy entry and legacy exit signal. This allows you to build large "trees" of legacy pre-signals
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Convert{}Click an existing signal to convert it to the selected signal type and variant. Ctrl+Click to toggle the existing variant. Shift+Click shows estimated conversion cost
@@ -3162,26 +3162,26 @@ STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Snow-covered ro
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Snow-covered grass
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Railway track
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Railway track with block signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Railway track with pre-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Railway track with exit-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Railway track with combo-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Railway track with legacy block signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Railway track with legacy pre-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Railway track with legacy exit-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Railway track with legacy combo-signals
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Railway track with path signals
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Railway track with one-way path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Railway track with block and pre-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Railway track with block and exit-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Railway track with block and combo-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Railway track with block and path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Railway track with block and one-way path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Railway track with pre- and exit-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Railway track with pre- and combo-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Railway track with pre- and path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Railway track with pre- and one-way path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Railway track with exit- and combo-signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Railway track with exit- and path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Railway track with exit- and one-way path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Railway track with combo- and path signals
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Railway track with combo- and one-way path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Railway track with legacy block and pre-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Railway track with legacy block and exit-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Railway track with legacy block and combo-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Railway track with legacy block and path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Railway track with legacy block and one-way path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Railway track with legacy pre- and exit-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Railway track with legacy pre- and combo-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Railway track with legacy pre- and path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Railway track with legacy pre- and one-way path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Railway track with legacy exit- and combo-signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Railway track with legacy exit- and path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Railway track with legacy exit- and one-way path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Railway track with legacy combo- and path signals
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Railway track with legacy combo- and one-way path signals
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Railway track with path and one-way path signals
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Railway train depot
 
