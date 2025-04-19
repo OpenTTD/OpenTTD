@@ -33,18 +33,6 @@ static void TestSpiralTileSequence(TileCoord center, uint diameter, std::span<Ti
 		CHECK(TileX(result[i]) == expected[i].x);
 		CHECK(TileY(result[i]) == expected[i].y);
 	}
-
-	result.clear();
-	CircularTileSearch(&tile, diameter,
-		+[](TileIndex tile, void *user_data) -> bool {
-			reinterpret_cast<std::vector<TileIndex> *>(user_data)->push_back(tile);
-			return false;
-		}, &result);
-	REQUIRE(result.size() == expected.size());
-	for (size_t i = 0; i < result.size(); ++i) {
-		CHECK(TileX(result[i]) == expected[i].x);
-		CHECK(TileY(result[i]) == expected[i].y);
-	}
 }
 
 static void TestSpiralTileSequence(TileCoord start_north, uint radius, uint w, uint h, std::span<TileCoord> expected)
@@ -55,18 +43,6 @@ static void TestSpiralTileSequence(TileCoord start_north, uint radius, uint w, u
 	for (auto ti : SpiralTileSequence(tile, radius, w, h)) {
 		result.push_back(ti);
 	}
-	REQUIRE(result.size() == expected.size());
-	for (size_t i = 0; i < result.size(); ++i) {
-		CHECK(TileX(result[i]) == expected[i].x);
-		CHECK(TileY(result[i]) == expected[i].y);
-	}
-
-	result.clear();
-	CircularTileSearch(&tile, radius, w, h,
-		+[](TileIndex tile, void *user_data) -> bool {
-			reinterpret_cast<std::vector<TileIndex> *>(user_data)->push_back(tile);
-			return false;
-		}, &result);
 	REQUIRE(result.size() == expected.size());
 	for (size_t i = 0; i < result.size(); ++i) {
 		CHECK(TileX(result[i]) == expected[i].x);
