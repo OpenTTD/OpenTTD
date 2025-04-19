@@ -295,3 +295,105 @@ TileIterator &DiagonalTileIterator::operator++()
 	}
 	return std::make_unique<OrthogonalTileIterator>(corner1, corner2);
 }
+
+/**
+ * See SpiralTileSequence constructor for description.
+ */
+SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) :
+	max_radius(diameter / 2),
+	cur_radius(0),
+	dir(DIAGDIR_BEGIN)
+{
+	assert(diameter > 0);
+
+	if (diameter % 2 == 1) {
+		this->extent.fill(1);
+		this->dir = INVALID_DIAGDIR; // special case for odd diameters, see Increment()
+		this->position = 0;
+
+		this->x = TileX(center);
+		this->y = TileY(center);
+	} else {
+		this->extent.fill(0);
+		this->dir = DIAGDIR_BEGIN;
+		this->InitPosition();
+
+		/* Start with the west corner of the center 2x2 rect */
+		this->x = TileX(center) + 1;
+		this->y = TileY(center);
+	}
+	this->SkipOutsideMap();
+}
+
+/**
+ * See SpiralTileSequence constructor for description.
+ */
+SpiralTileIterator::SpiralTileIterator(TileIndex start_north, uint radius, uint w, uint h) :
+	max_radius(radius),
+	extent{w, h, w, h},
+	cur_radius(0),
+	dir(DIAGDIR_BEGIN),
+	/* first tile is the west corner */
+	x(TileX(start_north) + w + 1),
+	y(TileY(start_north))
+{
+	assert(max_radius > 0);
+	this->InitPosition();
+	this->SkipOutsideMap();
+}
+
+/**
+ * Advance the internal state until it reaches a valid tile or the end.
+ */
+void SpiralTileIterator::SkipOutsideMap()
+{
+	while (!this->IsEnd() && (this->x >= Map::SizeX() || this->y >= Map::SizeY())) this->Increment();
+}
+
+/**
+ * Initialise "position" after "dir" was changed.
+ */
+void SpiralTileIterator::InitPosition()
+{
+	this->position = this->extent[this->dir] + this->cur_radius * 2 + 1;
+}
+
+/**
+ * Advance the internal state to the next potential tile.
+ * The tile may be outside the map though.
+ */
+void SpiralTileIterator::Increment()
+{
+	assert(!this->IsEnd());
+
+	/* Special value for first tile in areas with odd diameter */
+	if (this->dir == INVALID_DIAGDIR) {
+		const auto west = TileIndexDiffCByDir(DIR_W);
+		this->x += west.x;
+		this->y += west.y;
+		this->dir = DIAGDIR_BEGIN;
+		this->InitPosition();
+		return;
+	}
+
+	/* Step to the next 'neighbour' in the circular line */
+	const auto diff = TileIndexDiffCByDiagDir(this->dir);
+	this->x += diff.x;
+	this->y += diff.y;
+	--this->position;
+	if (this->position > 0) return;
+
+	/* Corner reached, switch direction */
+	++this->dir;
+
+	if (this->dir == DIAGDIR_END) {
+		/* Jump to next circle */
+		const auto west = TileIndexDiffCByDir(DIR_W);
+		this->x += west.x;
+		this->y += west.y;
+		++this->cur_radius;
+		this->dir = DIAGDIR_BEGIN;
+	}
+
+	this->InitPosition();
+}

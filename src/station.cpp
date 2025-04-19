@@ -387,7 +387,7 @@ Rect Station::GetCatchmentRect() const
  */
 void Station::AddIndustryToDeliver(Industry *ind, TileIndex tile)
 {
-	/* Using DistanceMax to get about the same order as with previously used CircularTileSearch. */
+	/* Using DistanceMax to get about the same order as with previously used SpiralTileSequence. */
 	uint distance = DistanceMax(this->xy, tile);
 
 	/* Don't check further if this industry is already in the list but update the distance if it's closer */

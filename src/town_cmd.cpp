@@ -1308,27 +1308,6 @@ static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, con
 }
 
 /**
- * CircularTileSearch proc which checks for a nearby parallel bridge to avoid building redundant bridges.
- * @param tile The tile to search.
- * @param user_data Reference to the valid direction of the proposed bridge.
- * @return true if another bridge exists, else false.
- */
-static bool RedundantBridgeExistsNearby(TileIndex tile, void *user_data)
-{
-	/* Don't look into the void. */
-	if (!IsValidTile(tile)) return false;
-
-	/* Only consider bridge head tiles. */
-	if (!IsBridgeTile(tile)) return false;
-
-	/* Only consider road bridges. */
-	if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return false;
-
-	/* If the bridge is facing the same direction as the proposed bridge, we've found a redundant bridge. */
-	return (GetTileSlope(tile) & InclinedSlope(ReverseDiagDir(*(DiagDirection *)user_data)));
-}
-
-/**
  * Grows the town with a bridge.
  *  At first we check if a bridge is reasonable.
  *  If so we check if we are able to build it.
@@ -1390,9 +1369,18 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	if (!CanRoadContinueIntoNextTile(t, bridge_tile, bridge_dir)) return false;
 
 	/* If another parallel bridge exists nearby, this one would be redundant and shouldn't be built. We don't care about flat bridges. */
-	TileIndex search = tile;
-	DiagDirection direction_to_match = bridge_dir;
-	if (slope != SLOPE_FLAT && CircularTileSearch(&search, bridge_length, 0, 0, RedundantBridgeExistsNearby, &direction_to_match)) return false;
+	if (slope != SLOPE_FLAT) {
+		for (auto search : SpiralTileSequence(tile, bridge_length, 0, 0)) {
+			/* Only consider bridge head tiles. */
+			if (!IsBridgeTile(search)) continue;
+
+			/* Only consider road bridges. */
+			if (GetTunnelBridgeTransportType(search) != TRANSPORT_ROAD) continue;
+
+			/* If the bridge is facing the same direction as the proposed bridge, we've found a redundant bridge. */
+			if (GetTileSlope(search) & InclinedSlope(ReverseDiagDir(bridge_dir))) return false;
+		}
+	}
 
 	for (uint8_t times = 0; times <= 22; times++) {
 		uint8_t bridge_type = RandomRange(MAX_BRIDGES - 1);
@@ -2281,56 +2269,6 @@ static bool IsTileAlignedToGrid(TileIndex tile, TownLayout layout)
 }
 
 /**
- * Used as the user_data for FindFurthestFromWater
- */
-struct SpotData {
-	TileIndex tile; ///< holds the tile that was found
-	uint max_dist;  ///< holds the distance that tile is from the water
-	TownLayout layout; ///< tells us what kind of town we're building
-};
-
-/**
- * CircularTileSearch callback; finds the tile furthest from any
- * water. slightly bit tricky, since it has to do a search of its own
- * in order to find the distance to the water from each square in the
- * radius.
- *
- * Also, this never returns true, because it needs to take into
- * account all locations being searched before it knows which is the
- * furthest.
- *
- * @param tile Start looking from this tile
- * @param user_data Storage area for data that must last across calls;
- * must be a pointer to struct SpotData
- *
- * @return always false
- */
-static bool FindFurthestFromWater(TileIndex tile, void *user_data)
-{
-	SpotData *sp = (SpotData*)user_data;
-	uint dist = GetClosestWaterDistance(tile, true);
-
-	if (IsTileType(tile, MP_CLEAR) &&
-			IsTileFlat(tile) &&
-			IsTileAlignedToGrid(tile, sp->layout) &&
-			dist > sp->max_dist) {
-		sp->tile = tile;
-		sp->max_dist = dist;
-	}
-
-	return false;
-}
-
-/**
- * CircularTileSearch callback to find the nearest land tile.
- * @param tile Start looking from this tile
- */
-static bool FindNearestEmptyLand(TileIndex tile, void *)
-{
-	return IsTileType(tile, MP_CLEAR);
-}
-
-/**
  * Given a spot on the map (presumed to be a water tile), find a good
  * coastal spot to build a city. We don't want to build too close to
  * the edge if we can help it (since that inhibits city growth) hence
@@ -2344,12 +2282,22 @@ static bool FindNearestEmptyLand(TileIndex tile, void *)
  */
 static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layout)
 {
-	SpotData sp = { INVALID_TILE, 0, layout };
+	for (auto coast : SpiralTileSequence(tile, 40)) {
+		/* Find nearest land tile */
+		if (!IsTileType(tile, MP_CLEAR)) continue;
 
-	TileIndex coast = tile;
-	if (CircularTileSearch(&coast, 40, FindNearestEmptyLand, nullptr)) {
-		CircularTileSearch(&coast, 10, FindFurthestFromWater, &sp);
-		return sp.tile;
+		TileIndex furthest = INVALID_TILE;
+		uint max_dist = 0;
+		for (auto test : SpiralTileSequence(coast, 10)) {
+			if (!IsTileType(test, MP_CLEAR) || !IsTileFlat(test) || !IsTileAlignedToGrid(test, layout)) continue;
+
+			uint dist = GetClosestWaterDistance(test, true);
+			if (dist > max_dist) {
+				furthest = test;
+				max_dist = dist;
+			}
+		}
+		return furthest;
 	}
 
 	/* if we get here just give up */
@@ -3428,56 +3376,6 @@ static bool CheckClearTile(TileIndex tile)
 	return r.Succeeded();
 }
 
-/** Structure for storing data while searching the best place to build a statue. */
-struct StatueBuildSearchData {
-	TileIndex best_position; ///< Best position found so far.
-	int tile_count;          ///< Number of tiles tried.
-
-	StatueBuildSearchData(TileIndex best_pos, int count) : best_position(best_pos), tile_count(count) { }
-};
-
-/**
- * Search callback function for #TownActionBuildStatue.
- * @param tile Tile on which to perform the search.
- * @param user_data Reference to the statue search data.
- * @return Result of the test.
- */
-static bool SearchTileForStatue(TileIndex tile, void *user_data)
-{
-	static const int STATUE_NUMBER_INNER_TILES = 25; // Number of tiles int the center of the city, where we try to protect houses.
-
-	StatueBuildSearchData *statue_data = (StatueBuildSearchData *)user_data;
-	statue_data->tile_count++;
-
-	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
-	if (IsSteepSlope(GetTileSlope(tile))) return false;
-	/* Don't build statues under bridges. */
-	if (IsBridgeAbove(tile)) return false;
-
-	/* A clear-able open space is always preferred. */
-	if ((IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) && CheckClearTile(tile)) {
-		statue_data->best_position = tile;
-		return true;
-	}
-
-	bool house = IsTileType(tile, MP_HOUSE);
-
-	/* Searching inside the inner circle. */
-	if (statue_data->tile_count <= STATUE_NUMBER_INNER_TILES) {
-		/* Save first house in inner circle. */
-		if (house && statue_data->best_position == INVALID_TILE && CheckClearTile(tile)) {
-			statue_data->best_position = tile;
-		}
-
-		/* If we have reached the end of the inner circle, and have a saved house, terminate the search. */
-		return statue_data->tile_count == STATUE_NUMBER_INNER_TILES && statue_data->best_position != INVALID_TILE;
-	}
-
-	/* Searching outside the circle, just pick the first possible spot. */
-	statue_data->best_position = tile; // Is optimistic, the condition below must also hold.
-	return house && CheckClearTile(tile);
-}
-
 /**
  * Perform a 9x9 tiles circular search from the center of the town
  * in order to find a free tile to place a statue
@@ -3489,17 +3387,51 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlags flags)
 {
 	if (!Object::CanAllocateItem()) return CommandCost(STR_ERROR_TOO_MANY_OBJECTS);
 
-	TileIndex tile = t->xy;
-	StatueBuildSearchData statue_data(INVALID_TILE, 0);
-	if (!CircularTileSearch(&tile, 9, SearchTileForStatue, &statue_data)) return CommandCost(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
+	static const int STATUE_NUMBER_INNER_TILES = 25; // Number of tiles int the center of the city, where we try to protect houses.
+
+	TileIndex best_position = INVALID_TILE; ///< Best position found so far.
+	uint tile_count = 0; ///< Number of tiles tried.
+	for (auto tile : SpiralTileSequence(t->xy, 9)) {
+		tile_count++;
+
+		/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
+		if (IsSteepSlope(GetTileSlope(tile))) continue;
+		/* Don't build statues under bridges. */
+		if (IsBridgeAbove(tile)) continue;
+
+		/* A clear-able open space is always preferred. */
+		if ((IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) && CheckClearTile(tile)) {
+			best_position = tile;
+			break;
+		}
+
+		bool house = IsTileType(tile, MP_HOUSE);
+
+		/* Searching inside the inner circle. */
+		if (tile_count <= STATUE_NUMBER_INNER_TILES) {
+			/* Save first house in inner circle. */
+			if (house && best_position == INVALID_TILE && CheckClearTile(tile)) {
+				best_position = tile;
+			}
+
+			/* If we have reached the end of the inner circle, and have a saved house, terminate the search. */
+			if (tile_count == STATUE_NUMBER_INNER_TILES && best_position != INVALID_TILE) break;
+		}
+
+		/* Searching outside the circle, just pick the first possible spot. */
+		if (!house || !CheckClearTile(tile)) continue;
+		best_position = tile;
+		break;
+	}
+	if (best_position == INVALID_TILE) return CommandCost(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
-		Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, statue_data.best_position);
+		Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, best_position);
 		cur_company.Restore();
-		BuildObject(OBJECT_STATUE, statue_data.best_position, _current_company, t);
+		BuildObject(OBJECT_STATUE, best_position, _current_company, t);
 		t->statues.Set(_current_company); // Once found and built, "inform" the Town.
-		MarkTileDirtyByTile(statue_data.best_position);
+		MarkTileDirtyByTile(best_position);
 	}
 	return CommandCost();
 }
