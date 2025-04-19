@@ -348,7 +348,8 @@ struct ScriptSettingsWindow : public Window {
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
-		this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
+		const Dimension setting_button = GetSettingButtonSize();
+		this->line_height = std::max<int>(setting_button.height, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 		resize.width = 1;
 		resize.height = this->line_height;
@@ -359,13 +360,14 @@ struct ScriptSettingsWindow : public Window {
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
+		const Dimension setting_button = GetSettingButtonSize();
 		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
 		bool rtl = _current_text_dir == TD_RTL;
-		Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
-		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
+		Rect br = ir.WithWidth(setting_button.width, rtl);
+		Rect tr = ir.Indent(setting_button.width + WidgetDimensions::scaled.hsep_wide, rtl);
 
 		int y = r.top;
-		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
+		int button_y_offset = (this->line_height - setting_button.height) / 2;
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		const auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->visible_settings);
@@ -419,13 +421,14 @@ struct ScriptSettingsWindow : public Window {
 
 				bool bool_item = config_item.flags.Test(ScriptConfigFlag::Boolean);
 
+				const Dimension setting_button = GetSettingButtonSize();
 				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
 				int x = pt.x - r.left;
 				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
 				int old_val = this->script_config->GetSetting(config_item.name);
-				if (!bool_item && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && config_item.complete_labels) {
+				if (!bool_item && IsInsideMM(x, 0, setting_button.width) && config_item.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
 						this->CloseChildWindows(WC_DROPDOWN_MENU);
@@ -435,10 +438,10 @@ struct ScriptSettingsWindow : public Window {
 						int rel_y = (pt.y - r.top) % this->line_height;
 
 						Rect wi_rect;
-						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
-						wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
-						wi_rect.top = pt.y - rel_y + (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-						wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
+						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? setting_button.width - 1 - x : x);
+						wi_rect.right = wi_rect.left + setting_button.width - 1;
+						wi_rect.top = pt.y - rel_y + (this->line_height - setting_button.height) / 2;
+						wi_rect.bottom = wi_rect.top + setting_button.height - 1;
 
 						/* If the mouse is still held but dragged outside of the dropdown list, keep the dropdown open */
 						if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
@@ -453,11 +456,11 @@ struct ScriptSettingsWindow : public Window {
 							ShowDropDownListAt(this, std::move(list), old_val, WID_SCRS_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
 						}
 					}
-				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
+				} else if (IsInsideMM(x, 0, setting_button.width)) {
 					int new_val = old_val;
 					if (bool_item) {
 						new_val = !new_val;
-					} else if (x >= SETTING_BUTTON_WIDTH / 2) {
+					} else if (x >= static_cast<int>(setting_button.width) / 2) {
 						/* Increase button clicked */
 						new_val += config_item.step_size;
 						if (new_val > config_item.max_value) new_val = config_item.max_value;

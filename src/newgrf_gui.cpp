@@ -206,8 +206,9 @@ struct NewGRFParametersWindow : public Window {
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
 			case WID_NP_NUMPAR_INC: {
-				size.width  = std::max(SETTING_BUTTON_WIDTH / 2, GetCharacterHeight(FS_NORMAL));
-				size.height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL));
+				const Dimension setting_button = GetSettingButtonSize();
+				size.width  = std::max<int>(setting_button.width / 2, GetCharacterHeight(FS_NORMAL));
+				size.height = std::max<int>(setting_button.height, GetCharacterHeight(FS_NORMAL));
 				break;
 			}
 
@@ -219,13 +220,15 @@ struct NewGRFParametersWindow : public Window {
 				break;
 			}
 
-			case WID_NP_BACKGROUND:
-				this->line_height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)) + padding.height;
+			case WID_NP_BACKGROUND: {
+				const Dimension setting_button = GetSettingButtonSize();
+				this->line_height = std::max<int>(setting_button.height, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize.width = 1;
 				resize.height = this->line_height;
 				size.height = 5 * this->line_height;
 				break;
+			}
 
 			case WID_NP_DESCRIPTION:
 				/* Minimum size of 4 lines. The 500 is the default size of the window. */
@@ -288,12 +291,13 @@ struct NewGRFParametersWindow : public Window {
 			return;
 		}
 
+		const Dimension setting_button = GetSettingButtonSize();
 		Rect ir = r.Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero);
 		bool rtl = _current_text_dir == TD_RTL;
-		uint buttons_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
-		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
+		uint buttons_left = rtl ? ir.right - setting_button.width : ir.left;
+		Rect tr = ir.Indent(setting_button.width + WidgetDimensions::scaled.hsep_wide, rtl);
 
-		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
+		int button_y_offset = (this->line_height - setting_button.height) / 2;
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		for (int32_t i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 			GRFParameterInfo &par_info = this->GetParameterInfo(i);
@@ -355,6 +359,7 @@ struct NewGRFParametersWindow : public Window {
 					this->clicked_dropdown = false;
 				}
 
+				const Dimension setting_button = GetSettingButtonSize();
 				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero);
 				int x = pt.x - r.left;
 				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
@@ -363,7 +368,7 @@ struct NewGRFParametersWindow : public Window {
 
 				/* One of the arrows is clicked */
 				uint32_t old_val = this->grf_config.GetValue(par_info);
-				if (par_info.type != PTYPE_BOOL && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info.complete_labels) {
+				if (par_info.type != PTYPE_BOOL && IsInsideMM(x, 0, setting_button.width) && par_info.complete_labels) {
 					if (this->clicked_dropdown) {
 						/* unclick the dropdown */
 						this->CloseChildWindows(WC_DROPDOWN_MENU);
@@ -373,10 +378,10 @@ struct NewGRFParametersWindow : public Window {
 						int rel_y = (pt.y - r.top) % this->line_height;
 
 						Rect wi_rect;
-						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);;
-						wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
-						wi_rect.top = pt.y - rel_y + (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
-						wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
+						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? setting_button.width - 1 - x : x);;
+						wi_rect.right = wi_rect.left + setting_button.width - 1;
+						wi_rect.top = pt.y - rel_y + (this->line_height - setting_button.height) / 2;
+						wi_rect.bottom = wi_rect.top + setting_button.height - 1;
 
 						/* For dropdowns we also have to check the y position thoroughly, the mouse may not above the just opening dropdown */
 						if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
@@ -393,12 +398,12 @@ struct NewGRFParametersWindow : public Window {
 							ShowDropDownListAt(this, std::move(list), old_val, WID_NP_SETTING_DROPDOWN, wi_rect, COLOUR_ORANGE);
 						}
 					}
-				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
+				} else if (IsInsideMM(x, 0, setting_button.width)) {
 					uint32_t val = old_val;
 					if (par_info.type == PTYPE_BOOL) {
 						val = !val;
 					} else {
-						if (x >= SETTING_BUTTON_WIDTH / 2) {
+						if (x >= static_cast<int>(setting_button.width) / 2) {
 							/* Increase button clicked */
 							if (val < par_info.max_value) val++;
 							this->clicked_increase = true;

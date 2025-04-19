@@ -839,8 +839,9 @@ public:
 
 	void OnInit() override
 	{
+		const Dimension setting_button = GetSettingButtonSize();
 		/* This only used when the cheat to alter industry production is enabled */
-		this->cheat_line_height = std::max(SETTING_BUTTON_HEIGHT + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
+		this->cheat_line_height = std::max<int>(setting_button.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
 		this->cargo_icon_size = GetLargestCargoIconSize();
 	}
 
@@ -926,9 +927,10 @@ public:
 			ir.top += GetCharacterHeight(FS_NORMAL);
 		}
 
+		const Dimension setting_button = GetSettingButtonSize();
 		int line_height = this->editable == EA_RATE ? this->cheat_line_height : GetCharacterHeight(FS_NORMAL);
 		int text_y_offset = (line_height - GetCharacterHeight(FS_NORMAL)) / 2;
-		int button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
+		int button_y_offset = (line_height - setting_button.height) / 2;
 		first = true;
 		for (const auto &p : i->produced) {
 			if (!IsValidCargoType(p.cargo)) continue;
@@ -945,11 +947,11 @@ public:
 			CargoSuffix suffix;
 			GetCargoSuffix(CARGOSUFFIX_OUT, CST_VIEW, i, i->type, ind, p.cargo, &p - i->produced.data(), suffix);
 
-			DrawString(ir.Indent(label_indent + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset),
+			DrawString(ir.Indent(label_indent + (this->editable == EA_RATE ? setting_button.width + WidgetDimensions::scaled.hsep_normal : 0), rtl).Translate(0, text_y_offset),
 				GetString(STR_INDUSTRY_VIEW_TRANSPORTED, p.cargo, p.history[LAST_MONTH].production, suffix.text, ToPercent8(p.history[LAST_MONTH].PctTransported())));
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
-				DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + (&p - i->produced.data())) ? this->clicked_button : 0,
+				DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(setting_button.width, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + (&p - i->produced.data())) ? this->clicked_button : 0,
 						p.rate > 0, p.rate < 255);
 			}
 			ir.top += line_height;
@@ -959,12 +961,12 @@ public:
 		if (this->editable == EA_MULTIPLIER) {
 			line_height = this->cheat_line_height;
 			text_y_offset = (line_height - GetCharacterHeight(FS_NORMAL)) / 2;
-			button_y_offset = (line_height - SETTING_BUTTON_HEIGHT) / 2;
+			button_y_offset = (line_height - setting_button.height) / 2;
 			ir.top += WidgetDimensions::scaled.vsep_wide;
 			this->production_offset_y = ir.top;
-			DrawString(ir.Indent(label_indent + SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Translate(0, text_y_offset),
+			DrawString(ir.Indent(label_indent + setting_button.width + WidgetDimensions::scaled.hsep_normal, rtl).Translate(0, text_y_offset),
 					GetString(STR_INDUSTRY_VIEW_PRODUCTION_LEVEL, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT)));
-			DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(SETTING_BUTTON_WIDTH, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
+			DrawArrowButtons(ir.Indent(label_indent, rtl).WithWidth(setting_button.width, rtl).left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
 					i->prod_level > PRODLEVEL_MINIMUM, i->prod_level < PRODLEVEL_MAXIMUM);
 			ir.top += line_height;
 		}
@@ -1039,9 +1041,10 @@ public:
 				bool rtl = _current_text_dir == TD_RTL;
 				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect).Indent(this->cargo_icon_size.width + WidgetDimensions::scaled.hsep_normal, rtl);
 
-				if (r.WithWidth(SETTING_BUTTON_WIDTH, rtl).Contains(pt)) {
+				const Dimension setting_button = GetSettingButtonSize();
+				if (r.WithWidth(setting_button.width, rtl).Contains(pt)) {
 					/* Clicked buttons, decrease or increase production */
-					bool decrease = r.WithWidth(SETTING_BUTTON_WIDTH / 2, rtl).Contains(pt);
+					bool decrease = r.WithWidth(setting_button.width / 2, rtl).Contains(pt);
 					switch (this->editable) {
 						case EA_MULTIPLIER:
 							if (decrease) {
@@ -1073,7 +1076,7 @@ public:
 					this->SetTimeout();
 					this->clicked_line = line;
 					this->clicked_button = (decrease ^ rtl) ? 1 : 2;
-				} else if (r.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_normal, rtl).Contains(pt)) {
+				} else if (r.Indent(setting_button.width + WidgetDimensions::scaled.hsep_normal, rtl).Contains(pt)) {
 					/* clicked the text */
 					this->editbox_line = line;
 					switch (this->editable) {
