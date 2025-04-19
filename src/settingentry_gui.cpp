@@ -277,14 +277,15 @@ const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc
  */
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
+	const Dimension setting_button = GetSettingButtonSize();
 	const IntSettingDesc *sd = this->setting;
 	int state = (this->flags & SEF_BUTTONS_MASK).base();
 
 	bool rtl = _current_text_dir == TD_RTL;
-	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
-	uint text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide);
-	uint text_right = right - (rtl ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide : 0);
-	uint button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
+	uint buttons_left = rtl ? right + 1 - setting_button.width : left;
+	uint text_left  = left + (rtl ? 0 : setting_button.width + WidgetDimensions::scaled.hsep_wide);
+	uint text_right = right - (rtl ? setting_button.width + WidgetDimensions::scaled.hsep_wide : 0);
+	uint button_y = y + (SETTING_HEIGHT - setting_button.height) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
 	bool editable = sd->IsEditable();

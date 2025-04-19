@@ -89,6 +89,10 @@ struct Rect {
 	int right = 0;
 	int bottom = 0;
 
+	constexpr Rect() {}
+	constexpr Rect(int left, int top, int right, int bottom) : left(left), top(top), right(right), bottom(bottom) {}
+	constexpr Rect(int left, int top, const Dimension &dim) : left(left), top(top), right(left + dim.width - 1), bottom(top + dim.height - 1) {}
+
 	/**
 	 * Get width of Rect.
 	 * @return width of Rect.

@@ -13,10 +13,15 @@
 #include "gfx_type.h"
 #include "dropdown_type.h"
 
-/** Width of setting buttons */
-#define SETTING_BUTTON_WIDTH  ((int)NWidgetScrollbar::GetHorizontalDimension().width * 2)
-/** Height of setting buttons */
-#define SETTING_BUTTON_HEIGHT ((int)NWidgetScrollbar::GetHorizontalDimension().height)
+/**
+ * Get dimension of setting buttons.
+ * @return Dimension of setting buttons.
+ * @note returns pair instead of Dimension due to signed comparisons.
+ */
+static inline Dimension GetSettingButtonSize()
+{
+	return {NWidgetScrollbar::GetHorizontalDimension().width * 2, NWidgetScrollbar::GetHorizontalDimension().height};
+}
 
 void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_left, bool clickable_right);
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable);
