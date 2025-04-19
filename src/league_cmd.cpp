@@ -8,15 +8,17 @@
 /** @file league_cmd.cpp Handling of league tables. */
 
 #include "stdafx.h"
+
 #include "league_cmd.h"
-#include "league_base.h"
-#include "command_type.h"
+
+#include "core/pool_func.hpp"
 #include "command_func.h"
+#include "command_type.h"
 #include "industry.h"
+#include "league_base.h"
 #include "story_base.h"
 #include "town.h"
 #include "window_func.h"
-#include "core/pool_func.hpp"
 
 #include "safeguards.h"
 
@@ -34,13 +36,20 @@ INSTANTIATE_POOL_METHODS(LeagueTable)
 bool IsValidLink(Link link)
 {
 	switch (link.type) {
-		case LT_NONE: return (link.target == 0);
-		case LT_TILE: return IsValidTile(link.target);
-		case LT_INDUSTRY: return Industry::IsValidID(link.target);
-		case LT_TOWN: return Town::IsValidID(link.target);
-		case LT_COMPANY: return Company::IsValidID(link.target);
-		case LT_STORY_PAGE: return StoryPage::IsValidID(link.target);
-		default: return false;
+		case LT_NONE:
+			return (link.target == 0);
+		case LT_TILE:
+			return IsValidTile(link.target);
+		case LT_INDUSTRY:
+			return Industry::IsValidID(link.target);
+		case LT_TOWN:
+			return Town::IsValidID(link.target);
+		case LT_COMPANY:
+			return Company::IsValidID(link.target);
+		case LT_STORY_PAGE:
+			return StoryPage::IsValidID(link.target);
+		default:
+			return false;
 	}
 	return false;
 }
@@ -55,18 +64,17 @@ bool IsValidLink(Link link)
  */
 std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags, const EncodedString &title, const EncodedString &header, const EncodedString &footer)
 {
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, LeagueTableID::Invalid() };
-	if (!LeagueTable::CanAllocateItem()) return { CMD_ERROR, LeagueTableID::Invalid() };
-	if (title.empty()) return { CMD_ERROR, LeagueTableID::Invalid() };
+	if (_current_company != OWNER_DEITY) return {CMD_ERROR, LeagueTableID::Invalid()};
+	if (!LeagueTable::CanAllocateItem()) return {CMD_ERROR, LeagueTableID::Invalid()};
+	if (title.empty()) return {CMD_ERROR, LeagueTableID::Invalid()};
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		LeagueTable *lt = new LeagueTable(title, header, footer);
-		return { CommandCost(), lt->index };
+		return {CommandCost(), lt->index};
 	}
 
-	return { CommandCost(), LeagueTableID::Invalid() };
+	return {CommandCost(), LeagueTableID::Invalid()};
 }
-
 
 /**
  * Create a new element in a league table.
@@ -80,20 +88,21 @@ std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags
  * @param link_target Id of the referenced object
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, LeagueTableElementID> CmdCreateLeagueTableElement(DoCommandFlags flags, LeagueTableID table, int64_t rating, CompanyID company, const EncodedString &text, const EncodedString &score, LinkType link_type, LinkTargetID link_target)
+std::tuple<CommandCost, LeagueTableElementID> CmdCreateLeagueTableElement(
+	DoCommandFlags flags, LeagueTableID table, int64_t rating, CompanyID company, const EncodedString &text, const EncodedString &score, LinkType link_type, LinkTargetID link_target)
 {
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, LeagueTableElementID::Invalid() };
-	if (!LeagueTableElement::CanAllocateItem()) return { CMD_ERROR, LeagueTableElementID::Invalid() };
+	if (_current_company != OWNER_DEITY) return {CMD_ERROR, LeagueTableElementID::Invalid()};
+	if (!LeagueTableElement::CanAllocateItem()) return {CMD_ERROR, LeagueTableElementID::Invalid()};
 	Link link{link_type, link_target};
-	if (!IsValidLink(link)) return { CMD_ERROR, LeagueTableElementID::Invalid() };
-	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return { CMD_ERROR, LeagueTableElementID::Invalid() };
+	if (!IsValidLink(link)) return {CMD_ERROR, LeagueTableElementID::Invalid()};
+	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return {CMD_ERROR, LeagueTableElementID::Invalid()};
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		LeagueTableElement *lte = new LeagueTableElement(table, rating, company, text, score, link);
 		InvalidateWindowData(WC_COMPANY_LEAGUE, table);
-		return { CommandCost(), lte->index };
+		return {CommandCost(), lte->index};
 	}
-	return { CommandCost(), LeagueTableElementID::Invalid() };
+	return {CommandCost(), LeagueTableElementID::Invalid()};
 }
 
 /**

@@ -10,28 +10,27 @@
 #ifndef SCRIPT_OBJECT_HPP
 #define SCRIPT_OBJECT_HPP
 
-#include "../../road_type.h"
-#include "../../rail_type.h"
-#include "../../string_func.h"
-#include "../../command_func.h"
-#include "../../core/random_func.hpp"
+#include <utility>
 
-#include "script_types.hpp"
-#include "script_log_types.hpp"
+#include "../../core/random_func.hpp"
+#include "../../command_func.h"
+#include "../../rail_type.h"
+#include "../../road_type.h"
+#include "../../string_func.h"
 #include "../script_suspend.hpp"
 #include "../squirrel.hpp"
-
-#include <utility>
+#include "script_log_types.hpp"
+#include "script_types.hpp"
 
 /**
  * The callback function for Mode-classes.
  */
-typedef bool (ScriptModeProc)();
+typedef bool(ScriptModeProc)();
 
 /**
  * The callback function for Async Mode-classes.
  */
-typedef bool (ScriptAsyncModeProc)();
+typedef bool(ScriptAsyncModeProc)();
 
 /**
  * Simple counted object. Use it as base of your struct/class if you want to use
@@ -44,9 +43,14 @@ typedef bool (ScriptAsyncModeProc)();
 class SimpleCountedObject {
 public:
 	SimpleCountedObject() : ref_count(0) {}
+
 	virtual ~SimpleCountedObject() = default;
 
-	inline void AddRef() { ++this->ref_count; }
+	inline void AddRef()
+	{
+		++this->ref_count;
+	}
+
 	void Release();
 	virtual void FinalRelease() {};
 
@@ -62,9 +66,10 @@ private:
  * @api none
  */
 class ScriptObject : public SimpleCountedObject {
-friend class ScriptInstance;
-friend class ScriptController;
-friend class TestScriptController;
+	friend class ScriptInstance;
+	friend class ScriptController;
+	friend class TestScriptController;
+
 protected:
 	/**
 	 * A class that handles the current active instance. By instantiating it at
@@ -73,15 +78,17 @@ protected:
 	 *  reverts to the active instance it was before instantiating.
 	 */
 	class ActiveInstance {
-	friend class ScriptObject;
+		friend class ScriptObject;
+
 	public:
 		ActiveInstance(ScriptInstance *instance);
 		~ActiveInstance();
+
 	private:
-		ScriptInstance *last_active;    ///< The active instance before we go instantiated.
+		ScriptInstance *last_active; ///< The active instance before we go instantiated.
 		ScriptAllocatorScope alc_scope; ///< Keep the correct allocator for the script instance activated
 
-		static ScriptInstance *active;  ///< The global current active instance.
+		static ScriptInstance *active; ///< The global current active instance.
 	};
 
 	/**
@@ -91,14 +98,20 @@ protected:
 	 *  - the data for the object (any supported types)
 	 * @return True iff saving this type is supported.
 	 */
-	virtual bool SaveObject(HSQUIRRELVM) { return false; }
+	virtual bool SaveObject(HSQUIRRELVM)
+	{
+		return false;
+	}
 
 	/**
 	 * Load this object.
 	 * The data for the object must be pushed on the stack before the call.
 	 * @return True iff loading this type is supported.
 	 */
-	virtual bool LoadObject(HSQUIRRELVM) { return false; }
+	virtual bool LoadObject(HSQUIRRELVM)
+	{
+		return false;
+	}
 
 public:
 	/**
@@ -132,7 +145,8 @@ public:
 	static void InitializeRandomizers();
 
 protected:
-	template <Commands TCmd, typename T> struct ScriptDoCommandHelper;
+	template <Commands TCmd, typename T>
+	struct ScriptDoCommandHelper;
 
 	/**
 	 * Templated wrapper that exposes the command parameter arguments
@@ -142,7 +156,7 @@ protected:
 	 * @tparam Targs The command parameter types.
 	 */
 	template <Commands Tcmd, typename Tret, typename... Targs>
-	struct ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)> {
+	struct ScriptDoCommandHelper<Tcmd, Tret (*)(DoCommandFlags, Targs...)> {
 		static bool Do(Script_SuspendCallbackProc *callback, Targs... args)
 		{
 			return Execute(callback, std::forward_as_tuple(args...));
@@ -384,12 +398,16 @@ namespace ScriptObjectInternal {
 	template <template <typename...> typename Tt, typename T1, typename... Ts>
 	static inline Tt<Ts...> RemoveFirstTupleElement(const Tt<T1, Ts...> &tuple)
 	{
-		return std::apply([](auto &&, const auto&... args) { return std::tie(args...); }, tuple);
+		return std::apply(
+			[](auto &&, const auto &...args) {
+				return std::tie(args...);
+			},
+			tuple);
 	}
 }
 
 template <Commands Tcmd, typename Tret, typename... Targs>
-bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
+bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret (*)(DoCommandFlags, Targs...)>::Execute(Script_SuspendCallbackProc *callback, std::tuple<Targs...> args)
 {
 	auto [err, estimate_only, asynchronous, networking] = ScriptObject::DoCommandPrep();
 	if (err) return false;
@@ -445,15 +463,13 @@ public:
 	ScriptObjectRef(const ScriptObjectRef<T> &ref) = delete;
 
 	/* Move constructor. */
-	ScriptObjectRef(ScriptObjectRef<T> &&ref) noexcept : data(std::exchange(ref.data, nullptr))
-	{
-	}
+	ScriptObjectRef(ScriptObjectRef<T> &&ref) noexcept : data(std::exchange(ref.data, nullptr)) {}
 
 	/* No copy assignment. */
-	ScriptObjectRef& operator=(const ScriptObjectRef<T> &other) = delete;
+	ScriptObjectRef &operator=(const ScriptObjectRef<T> &other) = delete;
 
 	/* Move assignment. */
-	ScriptObjectRef& operator=(ScriptObjectRef<T> &&other) noexcept
+	ScriptObjectRef &operator=(ScriptObjectRef<T> &&other) noexcept
 	{
 		std::swap(this->data, other.data);
 		return *this;

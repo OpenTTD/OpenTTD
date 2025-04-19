@@ -8,13 +8,14 @@
 /** @file script_info.cpp Implementation of ScriptInfo. */
 
 #include "../stdafx.h"
-#include "../settings_type.h"
-
-#include "squirrel_helper.hpp"
 
 #include "script_info.hpp"
-#include "script_scanner.hpp"
+
 #include "../3rdparty/fmt/format.h"
+
+#include "../settings_type.h"
+#include "script_scanner.hpp"
+#include "squirrel_helper.hpp"
 
 #include "../safeguards.h"
 
@@ -38,7 +39,7 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	info->engine = info->scanner->GetEngine();
 
 	/* Ensure the mandatory functions exist */
-	static const char * const required_functions[] = {
+	static const char *const required_functions[] = {
 		"GetAuthor",
 		"GetName",
 		"GetShortName",
@@ -102,7 +103,9 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
-			auto replace_with_underscore = [](auto c) { return c == '=' || c == ','; };
+			auto replace_with_underscore = [](auto c) {
+				return c == '=' || c == ',';
+			};
 			config.name = StrMakeValid(sqvalue);
 			std::replace_if(config.name.begin(), config.name.end(), replace_with_underscore, '_');
 			items |= 0x001;

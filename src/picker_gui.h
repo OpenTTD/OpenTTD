@@ -41,7 +41,7 @@ public:
 	explicit PickerCallbacks(const std::string &ini_group);
 	virtual ~PickerCallbacks();
 
-	virtual void Close(int) { }
+	virtual void Close(int) {}
 
 	virtual GrfSpecFeature GetFeature() const = 0;
 	/** Should picker class/type selection be enabled? */
@@ -87,11 +87,11 @@ public:
 	/** Update link between grfid/localidx and class_index/index in saved items. */
 	virtual std::set<PickerItem> UpdateSavedItems(const std::set<PickerItem> &src) = 0;
 
-	Listing class_last_sorting = { false, 0 }; ///< Default sorting of #PickerClassList.
-	Filtering class_last_filtering = { false, 0 }; ///< Default filtering of #PickerClassList.
+	Listing class_last_sorting = {false, 0}; ///< Default sorting of #PickerClassList.
+	Filtering class_last_filtering = {false, 0}; ///< Default filtering of #PickerClassList.
 
-	Listing type_last_sorting = { false, 0 }; ///< Default sorting of #PickerTypeList.
-	Filtering type_last_filtering = { false, 0 }; ///< Default filtering of #PickerTypeList.
+	Listing type_last_sorting = {false, 0}; ///< Default sorting of #PickerTypeList.
+	Filtering type_last_filtering = {false, 0}; ///< Default filtering of #PickerTypeList.
 
 	const std::string ini_group; ///< Ini Group for saving favourites.
 	uint8_t mode = 0; ///< Bitmask of \c PickerFilterModes.
@@ -106,14 +106,35 @@ class PickerCallbacksNewGRFClass : public PickerCallbacks {
 public:
 	explicit PickerCallbacksNewGRFClass(const std::string &ini_group) : PickerCallbacks(ini_group) {}
 
-	inline typename T::index_type GetClassIndex(int cls_id) const { return static_cast<typename T::index_type>(cls_id); }
-	inline const T *GetClass(int cls_id) const { return T::Get(this->GetClassIndex(cls_id)); }
-	inline const typename T::spec_type *GetSpec(int cls_id, int id) const { return this->GetClass(cls_id)->GetSpec(id); }
+	inline typename T::index_type GetClassIndex(int cls_id) const
+	{
+		return static_cast<typename T::index_type>(cls_id);
+	}
 
-	bool HasClassChoice() const override { return T::GetUIClassCount() > 1; }
+	inline const T *GetClass(int cls_id) const
+	{
+		return T::Get(this->GetClassIndex(cls_id));
+	}
 
-	int GetClassCount() const override { return T::GetClassCount(); }
-	int GetTypeCount(int cls_id) const override { return this->GetClass(cls_id)->GetSpecCount(); }
+	inline const typename T::spec_type *GetSpec(int cls_id, int id) const
+	{
+		return this->GetClass(cls_id)->GetSpec(id);
+	}
+
+	bool HasClassChoice() const override
+	{
+		return T::GetUIClassCount() > 1;
+	}
+
+	int GetClassCount() const override
+	{
+		return T::GetClassCount();
+	}
+
+	int GetTypeCount(int cls_id) const override
+	{
+		return this->GetClass(cls_id)->GetSpecCount();
+	}
 
 	PickerItem GetPickerItem(const typename T::spec_type *spec, int cls_id = -1, int id = -1) const
 	{
@@ -195,7 +216,10 @@ public:
 		PCWHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
 	};
 
-	void InvalidateData(PickerInvalidations data) { this->Window::InvalidateData(data.base()); }
+	void InvalidateData(PickerInvalidations data)
+	{
+		this->Window::InvalidateData(data.base());
+	}
 
 protected:
 	void ConstructWindow();
@@ -223,12 +247,12 @@ private:
 	GUIBadgeClasses badge_classes;
 
 	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
-		this->SetDirty();
-	}};
+															this->SetDirty();
+														}};
 
 	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(3), [this](auto) {
-		RefreshUsedTypeList();
-	}};
+													   RefreshUsedTypeList();
+												   }};
 };
 
 class NWidgetBase;

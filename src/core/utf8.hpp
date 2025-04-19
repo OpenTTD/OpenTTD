@@ -13,6 +13,7 @@
 #define UTF8_HPP
 
 #include <iterator>
+
 #include "bitmath_func.hpp"
 
 [[nodiscard]] std::pair<char[4], size_t> EncodeUtf8(char32_t c);
@@ -29,8 +30,10 @@ inline bool IsUtf8Part(char c)
  */
 class Utf8View {
 	std::string_view src;
+
 public:
 	Utf8View() = default;
+
 	Utf8View(std::string_view src) : src(src) {}
 
 	/**
@@ -43,6 +46,7 @@ public:
 	class iterator {
 		std::string_view src;
 		size_t position = 0;
+
 	public:
 		using value_type = char32_t;
 		using difference_type = std::ptrdiff_t;
@@ -51,6 +55,7 @@ public:
 		using reference = void;
 
 		iterator() = default;
+
 		iterator(std::string_view src, size_t position) : src(src), position(position) {}
 
 		size_t GetByteOffset() const
@@ -77,7 +82,7 @@ public:
 			return len > 0 ? c : '?';
 		}
 
-		iterator& operator++()
+		iterator &operator++()
 		{
 			auto size = this->src.size();
 			assert(this->position < size);
@@ -94,7 +99,7 @@ public:
 			return result;
 		}
 
-		iterator& operator--()
+		iterator &operator--()
 		{
 			assert(this->position > 0);
 			do {

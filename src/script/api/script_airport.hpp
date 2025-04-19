@@ -10,9 +10,9 @@
 #ifndef SCRIPT_AIRPORT_HPP
 #define SCRIPT_AIRPORT_HPP
 
-#include "script_object.hpp"
 #include "../../airport.h"
 #include "../../station_type.h"
+#include "script_object.hpp"
 
 /**
  * Class that handles all airport related functions.
@@ -25,16 +25,16 @@ public:
 	 */
 	enum AirportType {
 		/* Note: these values represent part of the in-game AirportTypes enum */
-		AT_SMALL         = ::AT_SMALL,         ///< The small airport.
-		AT_LARGE         = ::AT_LARGE,         ///< The large airport.
-		AT_METROPOLITAN  = ::AT_METROPOLITAN,  ///< The metropolitan airport.
+		AT_SMALL = ::AT_SMALL, ///< The small airport.
+		AT_LARGE = ::AT_LARGE, ///< The large airport.
+		AT_METROPOLITAN = ::AT_METROPOLITAN, ///< The metropolitan airport.
 		AT_INTERNATIONAL = ::AT_INTERNATIONAL, ///< The international airport.
-		AT_COMMUTER      = ::AT_COMMUTER,      ///< The commuter airport.
-		AT_INTERCON      = ::AT_INTERCON,      ///< The intercontinental airport.
-		AT_HELIPORT      = ::AT_HELIPORT,      ///< The heliport.
-		AT_HELISTATION   = ::AT_HELISTATION,   ///< The helistation.
-		AT_HELIDEPOT     = ::AT_HELIDEPOT,     ///< The helidepot.
-		AT_INVALID       = ::AT_INVALID,       ///< Invalid airport.
+		AT_COMMUTER = ::AT_COMMUTER, ///< The commuter airport.
+		AT_INTERCON = ::AT_INTERCON, ///< The intercontinental airport.
+		AT_HELIPORT = ::AT_HELIPORT, ///< The heliport.
+		AT_HELISTATION = ::AT_HELISTATION, ///< The helistation.
+		AT_HELIDEPOT = ::AT_HELIDEPOT, ///< The helidepot.
+		AT_INVALID = ::AT_INVALID, ///< Invalid airport.
 	};
 
 	/**
@@ -42,11 +42,11 @@ public:
 	 */
 	enum PlaneType {
 		/* Note: these values represent part of the in-game values, which are not defined in an enum */
-		PT_HELICOPTER    =   0, ///< A helicopter.
-		PT_SMALL_PLANE   =   1, ///< A small plane.
-		PT_BIG_PLANE     =   3, ///< A big plane.
+		PT_HELICOPTER = 0, ///< A helicopter.
+		PT_SMALL_PLANE = 1, ///< A small plane.
+		PT_BIG_PLANE = 3, ///< A big plane.
 
-		PT_INVALID       =  -1, ///< An invalid PlaneType
+		PT_INVALID = -1, ///< An invalid PlaneType
 	};
 
 	/**

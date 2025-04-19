@@ -8,12 +8,14 @@
 /** @file newgrf_roadtype.cpp NewGRF handling of road types. */
 
 #include "stdafx.h"
+
+#include "newgrf_roadtype.h"
+
 #include "core/container_func.hpp"
 #include "debug.h"
-#include "newgrf_roadtype.h"
+#include "depot_base.h"
 #include "newgrf_railtype.h"
 #include "timer/timer_game_calendar.h"
-#include "depot_base.h"
 #include "town.h"
 #include "tunnelbridge_map.h"
 
@@ -63,11 +65,16 @@ uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
 {
 	if (this->tile == INVALID_TILE) {
 		switch (variable) {
-			case 0x40: return 0;
-			case 0x41: return 0;
-			case 0x42: return 0;
-			case 0x43: return TimerGameCalendar::date.base();
-			case 0x44: return HZB_TOWN_EDGE;
+			case 0x40:
+				return 0;
+			case 0x41:
+				return 0;
+			case 0x42:
+				return 0;
+			case 0x43:
+				return TimerGameCalendar::date.base();
+			case 0x44:
+				return HZB_TOWN_EDGE;
 			case 0x45: {
 				auto rt = GetRoadTypeInfoIndex(this->rti);
 				uint8_t local = GetReverseRoadTypeTranslation(rt, this->ro.grffile);
@@ -82,9 +89,12 @@ uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
 	}
 
 	switch (variable) {
-		case 0x40: return GetTerrainType(this->tile, this->context);
-		case 0x41: return 0;
-		case 0x42: return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
+		case 0x40:
+			return GetTerrainType(this->tile, this->context);
+		case 0x41:
+			return 0;
+		case 0x42:
+			return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
 		case 0x43:
 			if (IsRoadDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date.base();
 			return TimerGameCalendar::date.base();
@@ -111,9 +121,12 @@ GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 {
 	RoadType rt = GetRoadTypeByLabel(this->roadtype_scope.rti->label, false);
 	switch (GetRoadTramType(rt)) {
-		case RTT_ROAD: return GSF_ROADTYPES;
-		case RTT_TRAM: return GSF_TRAMTYPES;
-		default: return GSF_INVALID;
+		case RTT_ROAD:
+			return GSF_ROADTYPES;
+		case RTT_TRAM:
+			return GSF_TRAMTYPES;
+		default:
+			return GSF_INVALID;
 	}
 }
 
@@ -131,8 +144,8 @@ uint32_t RoadTypeResolverObject::GetDebugID() const
  * @param param1 Extra parameter (first parameter of the callback, except roadtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except roadtypes do not have callbacks).
  */
-RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2)
-	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, rti, tile, context)
+RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2) :
+	ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
 }

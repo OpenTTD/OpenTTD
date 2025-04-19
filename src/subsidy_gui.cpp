@@ -8,19 +8,19 @@
 /** @file subsidy_gui.cpp GUI for subsidies. */
 
 #include "stdafx.h"
-#include "industry.h"
-#include "town.h"
-#include "window_gui.h"
-#include "strings_func.h"
-#include "timer/timer_game_calendar.h"
-#include "viewport_func.h"
-#include "gui.h"
-#include "subsidy_func.h"
-#include "subsidy_base.h"
+
 #include "core/geometry_func.hpp"
+#include "gui.h"
+#include "industry.h"
+#include "strings_func.h"
+#include "subsidy_base.h"
+#include "subsidy_func.h"
+#include "timer/timer_game_calendar.h"
+#include "town.h"
+#include "viewport_func.h"
+#include "window_gui.h"
 
 #include "widgets/subsidy_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -83,9 +83,14 @@ struct SubsidyListWindow : Window {
 		/* determine src coordinate for subsidy and try to scroll to it */
 		TileIndex xy;
 		switch (s->src.type) {
-			case SourceType::Industry: xy = Industry::Get(s->src.ToIndustryID())->location.tile; break;
-			case SourceType::Town:     xy =     Town::Get(s->src.ToTownID())->xy; break;
-			default: NOT_REACHED();
+			case SourceType::Industry:
+				xy = Industry::Get(s->src.ToIndustryID())->location.tile;
+				break;
+			case SourceType::Town:
+				xy = Town::Get(s->src.ToTownID())->xy;
+				break;
+			default:
+				NOT_REACHED();
 		}
 
 		if (_ctrl_pressed || !ScrollMainWindowToTile(xy)) {
@@ -93,9 +98,14 @@ struct SubsidyListWindow : Window {
 
 			/* otherwise determine dst coordinate for subsidy and scroll to it */
 			switch (s->dst.type) {
-				case SourceType::Industry: xy = Industry::Get(s->dst.ToIndustryID())->location.tile; break;
-				case SourceType::Town:     xy =     Town::Get(s->dst.ToTownID())->xy; break;
-				default: NOT_REACHED();
+				case SourceType::Industry:
+					xy = Industry::Get(s->dst.ToIndustryID())->location.tile;
+					break;
+				case SourceType::Town:
+					xy = Town::Get(s->dst.ToTownID())->xy;
+					break;
+				default:
+					NOT_REACHED();
 			}
 
 			if (_ctrl_pressed) {
@@ -124,7 +134,7 @@ struct SubsidyListWindow : Window {
 		}
 
 		/* Count the 'none' lines */
-		if (num_awarded     == 0) num_awarded = 1;
+		if (num_awarded == 0) num_awarded = 1;
 		if (num_not_awarded == 0) num_not_awarded = 1;
 
 		/* Offered, accepted and an empty line before the accepted ones. */
@@ -179,14 +189,10 @@ struct SubsidyListWindow : Window {
 
 					/* If using wallclock units, show minutes remaining. Otherwise show the date when the subsidy ends. */
 					if (TimerGameEconomy::UsingWallclockUnits()) {
-						text = GetString(STR_SUBSIDIES_OFFERED_FROM_TO,
-							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							STR_SUBSIDIES_OFFERED_EXPIRY_TIME,
+						text = GetString(STR_SUBSIDIES_OFFERED_FROM_TO, cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id, STR_SUBSIDIES_OFFERED_EXPIRY_TIME,
 							s->remaining + 1); // We get the rest of the current economy month for free, since the expiration is checked on each new month.
 					} else {
-						text = GetString(STR_SUBSIDIES_OFFERED_FROM_TO,
-							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							STR_SUBSIDIES_OFFERED_EXPIRY_DATE,
+						text = GetString(STR_SUBSIDIES_OFFERED_FROM_TO, cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id, STR_SUBSIDIES_OFFERED_EXPIRY_DATE,
 							TimerGameEconomy::date.base() - ymd.day + s->remaining * 32);
 					}
 
@@ -217,17 +223,12 @@ struct SubsidyListWindow : Window {
 
 					/* If using wallclock units, show minutes remaining. Otherwise show the date when the subsidy ends. */
 					if (TimerGameEconomy::UsingWallclockUnits()) {
-						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO,
-							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							GetString(STR_COMPANY_NAME, s->awarded),
+						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO, cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id, GetString(STR_COMPANY_NAME, s->awarded),
 							STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME,
 							s->remaining + 1); // We get the rest of the current economy month for free, since the expiration is checked on each new month.
 					} else {
-						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO,
-							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							GetString(STR_COMPANY_NAME, s->awarded),
-							STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE,
-							TimerGameEconomy::date.base() - ymd.day + s->remaining * 32);
+						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO, cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id, GetString(STR_COMPANY_NAME, s->awarded),
+							STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE, TimerGameEconomy::date.base() - ymd.day + s->remaining * 32);
 					}
 
 					/* Displays the two connected stations */
@@ -281,13 +282,7 @@ static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _subsidies_list_desc(
-	WDP_AUTO, "list_subsidies", 500, 127,
-	WC_SUBSIDIES_LIST, WC_NONE,
-	{},
-	_nested_subsidies_list_widgets
-);
-
+static WindowDesc _subsidies_list_desc(WDP_AUTO, "list_subsidies", 500, 127, WC_SUBSIDIES_LIST, WC_NONE, {}, _nested_subsidies_list_widgets);
 
 void ShowSubsidiesList()
 {

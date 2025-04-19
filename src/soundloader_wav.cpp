@@ -8,6 +8,7 @@
 /** @file soundloader_wav.cpp Loading of wav sounds. */
 
 #include "stdafx.h"
+
 #include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
 #include "random_access_file_type.h"
@@ -48,7 +49,7 @@ public:
 				if (!new_format) sound.rate = DEFAULT_SAMPLE_RATE; // All old samples should be played at 11025 Hz.
 
 				file.ReadDword(); // avg bytes per second
-				file.ReadWord();  // alignment
+				file.ReadWord(); // alignment
 
 				sound.bits_per_sample = file.ReadWord();
 				if (sound.bits_per_sample != 8 && sound.bits_per_sample != 16) return false; // File must be 8 or 16 BPS.
@@ -84,7 +85,8 @@ public:
 						}
 						break;
 
-					default: NOT_REACHED();
+					default:
+						NOT_REACHED();
 				}
 
 				return true;

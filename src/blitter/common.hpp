@@ -10,10 +10,10 @@
 #ifndef BLITTER_COMMON_HPP
 #define BLITTER_COMMON_HPP
 
-#include "base.hpp"
-#include "../core/math_func.hpp"
-
 #include <utility>
+
+#include "../core/math_func.hpp"
+#include "base.hpp"
 
 template <typename SetPixelT>
 void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel)
@@ -50,11 +50,11 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		/* compute frac_diff = width * sqrt(dx*dx + dy*dy)
 		 * Start interval:
 		 *    max(dx, dy) <= sqrt(dx*dx + dy*dy) <= sqrt(2) * max(dx, dy) <= 3/2 * max(dx, dy) */
-		int64_t frac_sq = ((int64_t) width) * ((int64_t) width) * (((int64_t) dx) * ((int64_t) dx) + ((int64_t) dy) * ((int64_t) dy));
+		int64_t frac_sq = ((int64_t)width) * ((int64_t)width) * (((int64_t)dx) * ((int64_t)dx) + ((int64_t)dy) * ((int64_t)dy));
 		int frac_max = 3 * frac_diff / 2;
 		while (frac_diff < frac_max) {
 			int frac_test = (frac_diff + frac_max) / 2;
-			if (((int64_t) frac_test) * ((int64_t) frac_test) < frac_sq) {
+			if (((int64_t)frac_test) * ((int64_t)frac_test) < frac_sq) {
 				frac_diff = frac_test + 1;
 			} else {
 				frac_max = frac_test - 1;
@@ -73,9 +73,9 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		}
 		if (x2 < 0 || x1 >= screen_width) return;
 
-		int y_low     = y1;
-		int y_high    = y1;
-		int frac_low  = dy - frac_diff / 2;
+		int y_low = y1;
+		int y_high = y1;
+		int frac_low = dy - frac_diff / 2;
 		int frac_high = dy + frac_diff / 2;
 
 		while (frac_low < -(dx / 2)) {
@@ -90,7 +90,7 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		if (x1 < 0) {
 			dash_count = (-x1) % (dash + gap);
 			auto adjust_frac = [&](int64_t frac, int &y_bound) -> int {
-				frac -= ((int64_t) dy) * ((int64_t) x1);
+				frac -= ((int64_t)dy) * ((int64_t)x1);
 				if (frac >= 0) {
 					int quotient = frac / dx;
 					int remainder = frac % dx;
@@ -135,9 +135,9 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		}
 		if (y2 < 0 || y1 >= screen_height) return;
 
-		int x_low     = x1;
-		int x_high    = x1;
-		int frac_low  = dx - frac_diff / 2;
+		int x_low = x1;
+		int x_high = x1;
+		int frac_low = dx - frac_diff / 2;
 		int frac_high = dx + frac_diff / 2;
 
 		while (frac_low < -(dy / 2)) {
@@ -152,7 +152,7 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 		if (y1 < 0) {
 			dash_count = (-y1) % (dash + gap);
 			auto adjust_frac = [&](int64_t frac, int &x_bound) -> int {
-				frac -= ((int64_t) dx) * ((int64_t) y1);
+				frac -= ((int64_t)dx) * ((int64_t)y1);
 				if (frac >= 0) {
 					int quotient = frac / dy;
 					int remainder = frac % dy;

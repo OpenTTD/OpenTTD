@@ -12,42 +12,42 @@
 
 /** Widgets of the #MusicTrackSelectionWindow class. */
 enum MusicTrackSelectionWidgets : WidgetID {
-	WID_MTS_CAPTION,    ///< Window caption.
-	WID_MTS_LIST_LEFT,  ///< Left button.
-	WID_MTS_PLAYLIST,   ///< Playlist.
+	WID_MTS_CAPTION, ///< Window caption.
+	WID_MTS_LIST_LEFT, ///< Left button.
+	WID_MTS_PLAYLIST, ///< Playlist.
 	WID_MTS_LIST_RIGHT, ///< Right button.
-	WID_MTS_MUSICSET,   ///< Music set selection.
-	WID_MTS_ALL,        ///< All button.
-	WID_MTS_OLD,        ///< Old button.
-	WID_MTS_NEW,        ///< New button.
-	WID_MTS_EZY,        ///< Ezy button.
-	WID_MTS_CUSTOM1,    ///< Custom1 button.
-	WID_MTS_CUSTOM2,    ///< Custom2 button.
-	WID_MTS_CLEAR,      ///< Clear button.
+	WID_MTS_MUSICSET, ///< Music set selection.
+	WID_MTS_ALL, ///< All button.
+	WID_MTS_OLD, ///< Old button.
+	WID_MTS_NEW, ///< New button.
+	WID_MTS_EZY, ///< Ezy button.
+	WID_MTS_CUSTOM1, ///< Custom1 button.
+	WID_MTS_CUSTOM2, ///< Custom2 button.
+	WID_MTS_CLEAR, ///< Clear button.
 };
 
 /** Widgets of the #MusicWindow class. */
 enum MusicWidgets : WidgetID {
-	WID_M_PREV,        ///< Previous button.
-	WID_M_NEXT,        ///< Next button.
-	WID_M_STOP,        ///< Stop button.
-	WID_M_PLAY,        ///< Play button.
-	WID_M_SLIDERS,     ///< Sliders.
-	WID_M_MUSIC_VOL,   ///< Music volume.
-	WID_M_EFFECT_VOL,  ///< Effect volume.
-	WID_M_BACKGROUND,  ///< Background of the window.
-	WID_M_TRACK,       ///< Track playing.
-	WID_M_TRACK_NR,    ///< Track number.
+	WID_M_PREV, ///< Previous button.
+	WID_M_NEXT, ///< Next button.
+	WID_M_STOP, ///< Stop button.
+	WID_M_PLAY, ///< Play button.
+	WID_M_SLIDERS, ///< Sliders.
+	WID_M_MUSIC_VOL, ///< Music volume.
+	WID_M_EFFECT_VOL, ///< Effect volume.
+	WID_M_BACKGROUND, ///< Background of the window.
+	WID_M_TRACK, ///< Track playing.
+	WID_M_TRACK_NR, ///< Track number.
 	WID_M_TRACK_TITLE, ///< Track title.
-	WID_M_TRACK_NAME,  ///< Track name.
-	WID_M_SHUFFLE,     ///< Shuffle button.
-	WID_M_PROGRAMME,   ///< Program button.
-	WID_M_ALL,         ///< All button.
-	WID_M_OLD,         ///< Old button.
-	WID_M_NEW,         ///< New button.
-	WID_M_EZY,         ///< Ezy button.
-	WID_M_CUSTOM1,     ///< Custom1 button.
-	WID_M_CUSTOM2,     ///< Custom2 button.
+	WID_M_TRACK_NAME, ///< Track name.
+	WID_M_SHUFFLE, ///< Shuffle button.
+	WID_M_PROGRAMME, ///< Program button.
+	WID_M_ALL, ///< All button.
+	WID_M_OLD, ///< Old button.
+	WID_M_NEW, ///< New button.
+	WID_M_EZY, ///< Ezy button.
+	WID_M_CUSTOM1, ///< Custom1 button.
+	WID_M_CUSTOM2, ///< Custom2 button.
 };
 
 #endif /* WIDGETS_MUSIC_WIDGET_H */

@@ -10,8 +10,8 @@
 #ifndef SCRIPT_NEWS_HPP
 #define SCRIPT_NEWS_HPP
 
-#include "script_company.hpp"
 #include "../../news_type.h"
+#include "script_company.hpp"
 
 /**
  * Class that handles news messages.
@@ -24,13 +24,13 @@ public:
 	 */
 	enum NewsType {
 		/* Arbitrary selection of NewsTypes which might make sense for scripts */
-		NT_ACCIDENT          = to_underlying(::NewsType::Accident),         ///< Category accidents.
-		NT_COMPANY_INFO      = to_underlying(::NewsType::CompanyInfo),      ///< Category company info.
-		NT_ECONOMY           = to_underlying(::NewsType::Economy),          ///< Category economy.
-		NT_ADVICE            = to_underlying(::NewsType::Advice),           ///< Category vehicle advice.
-		NT_ACCEPTANCE        = to_underlying(::NewsType::Acceptance),       ///< Category acceptance changes.
-		NT_SUBSIDIES         = to_underlying(::NewsType::Subsidies),        ///< Category subsidies.
-		NT_GENERAL           = to_underlying(::NewsType::General),          ///< Category general.
+		NT_ACCIDENT = to_underlying(::NewsType::Accident), ///< Category accidents.
+		NT_COMPANY_INFO = to_underlying(::NewsType::CompanyInfo), ///< Category company info.
+		NT_ECONOMY = to_underlying(::NewsType::Economy), ///< Category economy.
+		NT_ADVICE = to_underlying(::NewsType::Advice), ///< Category vehicle advice.
+		NT_ACCEPTANCE = to_underlying(::NewsType::Acceptance), ///< Category acceptance changes.
+		NT_SUBSIDIES = to_underlying(::NewsType::Subsidies), ///< Category subsidies.
+		NT_GENERAL = to_underlying(::NewsType::General), ///< Category general.
 	};
 
 	/**

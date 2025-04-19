@@ -10,8 +10,8 @@
 #ifndef AI_CONFIG_HPP
 #define AI_CONFIG_HPP
 
-#include "../script/script_config.hpp"
 #include "../company_type.h"
+#include "../script/script_config.hpp"
 
 class AIConfig : public ScriptConfig {
 public:
@@ -20,13 +20,9 @@ public:
 	 */
 	static AIConfig *GetConfig(CompanyID company, ScriptSettingSource source = SSS_DEFAULT);
 
-	AIConfig() :
-		ScriptConfig()
-	{}
+	AIConfig() : ScriptConfig() {}
 
-	AIConfig(const AIConfig &config) :
-		ScriptConfig(config)
-	{}
+	AIConfig(const AIConfig &config) : ScriptConfig(config) {}
 
 	class AIInfo *GetInfo() const;
 

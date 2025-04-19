@@ -10,9 +10,9 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "tile_type.h"
 #include "company_type.h"
 #include "object_type.h"
+#include "tile_type.h"
 
 void UpdateCompanyHQ(TileIndex tile, uint score);
 

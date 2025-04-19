@@ -10,8 +10,10 @@
  */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
+
 #include "tcp_stun.h"
+
+#include "../../debug.h"
 
 #include "../../safeguards.h"
 
@@ -26,4 +28,7 @@ bool NetworkStunSocketHandler::ReceiveInvalidPacket(PacketStunType type)
 	return false;
 }
 
-bool NetworkStunSocketHandler::Receive_SERCLI_STUN(Packet &) { return this->ReceiveInvalidPacket(PACKET_STUN_SERCLI_STUN); }
+bool NetworkStunSocketHandler::Receive_SERCLI_STUN(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_STUN_SERCLI_STUN);
+}

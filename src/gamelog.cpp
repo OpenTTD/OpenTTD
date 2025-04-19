@@ -8,25 +8,26 @@
 /** @file gamelog.cpp Definition of functions used for logging of fundamental changes to the game */
 
 #include "stdafx.h"
-#include "saveload/saveload.h"
-#include "string_func.h"
-#include "settings_type.h"
-#include "gamelog_internal.h"
+
 #include "console_func.h"
 #include "debug.h"
+#include "gamelog_internal.h"
+#include "rev.h"
+#include "saveload/saveload.h"
+#include "settings_type.h"
+#include "string_func.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_tick.h"
-#include "rev.h"
 
 #include "safeguards.h"
 
-extern const SaveLoadVersion SAVEGAME_VERSION;  ///< current savegame version
+extern const SaveLoadVersion SAVEGAME_VERSION; ///< current savegame version
 
 extern SavegameType _savegame_type; ///< type of savegame we are loading
 
-extern uint32_t _ttdp_version;        ///< version of TTDP savegame (if applicable)
+extern uint32_t _ttdp_version; ///< version of TTDP savegame (if applicable)
 extern SaveLoadVersion _sl_version; ///< the major savegame version identifier
-extern uint8_t   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
+extern uint8_t _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
 Gamelog _gamelog; ///< Gamelog instance
 
@@ -37,9 +38,7 @@ Gamelog::Gamelog()
 	this->current_action = nullptr;
 }
 
-Gamelog::~Gamelog()
-{
-}
+Gamelog::~Gamelog() {}
 
 /**
  * Return the revision string for the current client version, for use in gamelog.
@@ -53,8 +52,8 @@ static std::string GetGamelogRevisionString()
 	/* Prefix character indication revision status */
 	assert(_openttd_revision_modified < 3);
 	return fmt::format("{}{}",
-			"gum"[_openttd_revision_modified], // g = "git", u = "unknown", m = "modified"
-			_openttd_revision_hash);
+		"gum"[_openttd_revision_modified], // g = "git", u = "unknown", m = "modified"
+		_openttd_revision_hash);
 }
 
 /**
@@ -95,7 +94,7 @@ void Gamelog::Reset()
 {
 	assert(this->action_type == GLAT_NONE);
 	this->data->action.clear();
-	this->current_action  = nullptr;
+	this->current_action = nullptr;
 }
 
 /**
@@ -126,9 +125,8 @@ static void AddGrfInfo(std::back_insert_iterator<std::string> &output_iterator, 
 	}
 }
 
-
 /** Text messages for various logged actions */
-static const char * const la_text[] = {
+static const char *const la_text[] = {
 	"new game started",
 	"game loaded",
 	"GRF config changed",
@@ -167,7 +165,6 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	proc("---- gamelog end ----");
 }
 
-
 /* virtual */ void LoggedChangeMode::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
 	/* Changing landscape, or going from scenario editor to game or back. */
@@ -177,13 +174,17 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 /* virtual */ void LoggedChangeRevision::FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &, GamelogActionType)
 {
 	/* The game was loaded in a different version than before. */
-	fmt::format_to(output_iterator, "Revision text changed to {}, savegame version {}, ",
-		this->text, this->slver);
+	fmt::format_to(output_iterator, "Revision text changed to {}, savegame version {}, ", this->text, this->slver);
 
 	switch (this->modified) {
-		case 0: fmt::format_to(output_iterator, "not "); break;
-		case 1: fmt::format_to(output_iterator, "maybe "); break;
-		default: break;
+		case 0:
+			fmt::format_to(output_iterator, "not ");
+			break;
+		case 1:
+			fmt::format_to(output_iterator, "maybe ");
+			break;
+		default:
+			break;
 	}
 
 	fmt::format_to(output_iterator, "modified, _openttd_newgrf_version = 0x{:08x}", this->newgrf);
@@ -194,10 +195,10 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 	/* The game was loaded from before 0.7.0-beta1. */
 	fmt::format_to(output_iterator, "Conversion from ");
 	switch (this->type) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case SGT_OTTD:
-			fmt::format_to(output_iterator, "OTTD savegame without gamelog: version {}, {}",
-				GB(this->version, 8, 16), GB(this->version, 0, 8));
+			fmt::format_to(output_iterator, "OTTD savegame without gamelog: version {}, {}", GB(this->version, 8, 16), GB(this->version, 0, 8));
 			break;
 
 		case SGT_TTO:
@@ -210,12 +211,9 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 
 		case SGT_TTDP1:
 		case SGT_TTDP2:
-			fmt::format_to(output_iterator, "TTDP savegame, {} format",
-				this->type == SGT_TTDP1 ? "old" : "new");
+			fmt::format_to(output_iterator, "TTDP savegame, {} format", this->type == SGT_TTDP1 ? "old" : "new");
 			if (this->version != 0) {
-				fmt::format_to(output_iterator, ", TTDP version {}.{}.{}.{}",
-					GB(this->version, 24, 8), GB(this->version, 20, 4),
-					GB(this->version, 16, 4), GB(this->version, 0, 16));
+				fmt::format_to(output_iterator, ", TTDP version {}.{}.{}.{}", GB(this->version, 24, 8), GB(this->version, 20, 4), GB(this->version, 16, 4), GB(this->version, 0, 16));
 			}
 			break;
 	}
@@ -283,8 +281,7 @@ void Gamelog::Print(std::function<void(const std::string &)> proc)
 {
 	/* The order of NewGRFs got changed, which might cause some other NewGRFs to behave differently. */
 	auto gm = grf_names.find(this->grfid);
-	fmt::format_to(output_iterator, "GRF order changed: {:08X} moved {} places {}",
-		std::byteswap(this->grfid), abs(this->offset), this->offset >= 0 ? "down" : "up" );
+	fmt::format_to(output_iterator, "GRF order changed: {:08X} moved {} places {}", std::byteswap(this->grfid), abs(this->offset), this->offset >= 0 ? "down" : "up");
 	AddGrfInfo(output_iterator, this->grfid, nullptr, gm != grf_names.end() ? gm->second.gc : nullptr);
 	if (gm == grf_names.end()) fmt::format_to(output_iterator, ". Gamelog inconsistency: GrfID was never added!");
 }
@@ -327,7 +324,6 @@ void Gamelog::PrintDebug(int level)
 	});
 }
 
-
 /**
  * Allocates a new LoggedAction if needed, and add the change when action is active.
  * @param change The actual change.
@@ -344,7 +340,6 @@ void Gamelog::Change(std::unique_ptr<LoggedChange> &&change)
 
 	this->current_action->change.push_back(std::move(change));
 }
-
 
 /**
  * Logs a emergency savegame
@@ -379,8 +374,7 @@ void Gamelog::Revision()
 {
 	assert(this->action_type == GLAT_START || this->action_type == GLAT_LOAD);
 
-	this->Change(std::make_unique<LoggedChangeRevision>(
-		GetGamelogRevisionString(), _openttd_newgrf_version, SAVEGAME_VERSION, _openttd_revision_modified));
+	this->Change(std::make_unique<LoggedChangeRevision>(GetGamelogRevisionString(), _openttd_newgrf_version, SAVEGAME_VERSION, _openttd_revision_modified));
 }
 
 /**
@@ -400,8 +394,7 @@ void Gamelog::Oldver()
 {
 	assert(this->action_type == GLAT_LOAD);
 
-	this->Change(std::make_unique<LoggedChangeOldVersion>(_savegame_type,
-		(_savegame_type == SGT_OTTD ? ((uint32_t)_sl_version << 8 | _sl_minor_version) : _ttdp_version)));
+	this->Change(std::make_unique<LoggedChangeOldVersion>(_savegame_type, (_savegame_type == SGT_OTTD ? ((uint32_t)_sl_version << 8 | _sl_minor_version) : _ttdp_version)));
 }
 
 /**
@@ -417,7 +410,6 @@ void Gamelog::Setting(const std::string &name, int32_t oldval, int32_t newval)
 	this->Change(std::make_unique<LoggedChangeSettingChanged>(name, oldval, newval));
 }
 
-
 /**
  * Finds out if current revision is different than last revision stored in the savegame.
  * Appends GLCT_REVISION when the revision string changed
@@ -432,9 +424,7 @@ void Gamelog::TestRevision()
 		}
 	}
 
-	if (rev == nullptr || rev->text != GetGamelogRevisionString() ||
-			rev->modified != _openttd_revision_modified ||
-			rev->newgrf != _openttd_newgrf_version) {
+	if (rev == nullptr || rev->text != GetGamelogRevisionString() || rev->modified != _openttd_revision_modified || rev->newgrf != _openttd_newgrf_version) {
 		this->Revision();
 	}
 }
@@ -455,7 +445,6 @@ void Gamelog::TestMode()
 
 	if (mode == nullptr || mode->mode != _game_mode || mode->landscape != _settings_game.game_creation.landscape) this->Mode();
 }
-
 
 /**
  * Logs triggered GRF bug.
@@ -498,7 +487,6 @@ bool Gamelog::GRFBugReverse(uint32_t grfid, uint16_t internal_id)
 
 	return true;
 }
-
 
 /**
  * Decides if GRF should be logged
@@ -673,7 +661,7 @@ void Gamelog::GRFUpdate(const GRFConfigList &oldc, const GRFConfigList &newc)
 	}
 
 	while (o < ol.size()) this->GRFRemove(ol[o++]->ident.grfid); // remaining GRFs were removed ...
-	while (n < nl.size()) this->GRFAdd   (*nl[n++]);              // ... or added
+	while (n < nl.size()) this->GRFAdd(*nl[n++]); // ... or added
 }
 
 /**
@@ -687,7 +675,8 @@ void Gamelog::Info(uint32_t *last_ottd_rev, uint8_t *ever_modified, bool *remove
 	for (const LoggedAction &la : this->data->action) {
 		for (const auto &lc : la.change) {
 			switch (lc->ct) {
-				default: break;
+				default:
+					break;
 
 				case GLCT_REVISION: {
 					const LoggedChangeRevision *rev = static_cast<const LoggedChangeRevision *>(lc.get());

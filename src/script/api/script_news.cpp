@@ -8,27 +8,35 @@
 /** @file script_news.cpp Implementation of ScriptNews. */
 
 #include "../../stdafx.h"
+
 #include "script_news.hpp"
-#include "script_industry.hpp"
-#include "script_station.hpp"
-#include "script_map.hpp"
-#include "script_town.hpp"
-#include "script_error.hpp"
+
 #include "../../command_type.h"
-#include "../../string_func.h"
 #include "../../news_cmd.h"
+#include "../../string_func.h"
+#include "script_error.hpp"
+#include "script_industry.hpp"
+#include "script_map.hpp"
+#include "script_station.hpp"
+#include "script_town.hpp"
 
 #include "../../safeguards.h"
 
 static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQInteger reference)
 {
 	switch (ref_type) {
-		case ScriptNews::NR_NONE: return {};
-		case ScriptNews::NR_TILE: return ::TileIndex(reference);
-		case ScriptNews::NR_STATION: return static_cast<StationID>(reference);
-		case ScriptNews::NR_INDUSTRY: return static_cast<IndustryID>(reference);
-		case ScriptNews::NR_TOWN: return static_cast<TownID>(reference);
-		default: NOT_REACHED();
+		case ScriptNews::NR_NONE:
+			return {};
+		case ScriptNews::NR_TILE:
+			return ::TileIndex(reference);
+		case ScriptNews::NR_STATION:
+			return static_cast<StationID>(reference);
+		case ScriptNews::NR_INDUSTRY:
+			return static_cast<IndustryID>(reference);
+		case ScriptNews::NR_TOWN:
+			return static_cast<TownID>(reference);
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -42,11 +50,10 @@ static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQI
 	EnforcePreconditionEncodedText(false, encoded);
 	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
-	EnforcePrecondition(false, (ref_type == NR_NONE) ||
-	                           (ref_type == NR_TILE     && ScriptMap::IsValidTile(::TileIndex(reference))) ||
-	                           (ref_type == NR_STATION  && ScriptStation::IsValidStation(static_cast<StationID>(reference))) ||
-	                           (ref_type == NR_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(reference))) ||
-	                           (ref_type == NR_TOWN     && ScriptTown::IsValidTown(static_cast<TownID>(reference))));
+	EnforcePrecondition(false,
+		(ref_type == NR_NONE) || (ref_type == NR_TILE && ScriptMap::IsValidTile(::TileIndex(reference))) ||
+			(ref_type == NR_STATION && ScriptStation::IsValidStation(static_cast<StationID>(reference))) ||
+			(ref_type == NR_INDUSTRY && ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(reference))) || (ref_type == NR_TOWN && ScriptTown::IsValidTown(static_cast<TownID>(reference))));
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 

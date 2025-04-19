@@ -10,13 +10,13 @@
 #ifndef STORY_BASE_H
 #define STORY_BASE_H
 
+#include "core/pool_type.hpp"
 #include "company_type.h"
+#include "gfx_type.h"
 #include "story_type.h"
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"
-#include "gfx_type.h"
 #include "vehicle_type.h"
-#include "core/pool_type.hpp"
 
 using StoryPageElementPool = Pool<StoryPageElement, StoryPageElementID, 64>;
 using StoryPagePool = Pool<StoryPage, StoryPageID, 64>;
@@ -29,11 +29,11 @@ extern uint32_t _story_page_next_sort_value;
  * Each story page element is one of these types.
  */
 enum StoryPageElementType : uint8_t {
-	SPET_TEXT = 0,       ///< A text element.
-	SPET_LOCATION,       ///< An element that references a tile along with a one-line text.
-	SPET_GOAL,           ///< An element that references a goal.
-	SPET_BUTTON_PUSH,    ///< A push button that triggers an immediate event.
-	SPET_BUTTON_TILE,    ///< A button that allows the player to select a tile, and triggers an event with the tile.
+	SPET_TEXT = 0, ///< A text element.
+	SPET_LOCATION, ///< An element that references a tile along with a one-line text.
+	SPET_GOAL, ///< An element that references a goal.
+	SPET_BUTTON_PUSH, ///< A push button that triggers an immediate event.
+	SPET_BUTTON_TILE, ///< A button that allows the player to select a tile, and triggers an event with the tile.
 	SPET_BUTTON_VEHICLE, ///< A button that allows the player to select a vehicle, and triggers an event with the vehicle.
 	SPET_END,
 	INVALID_SPET = 0xFF,
@@ -41,8 +41,8 @@ enum StoryPageElementType : uint8_t {
 
 /** Flags available for buttons */
 enum StoryPageButtonFlags : uint8_t {
-	SPBF_NONE        = 0,
-	SPBF_FLOAT_LEFT  = 1 << 0,
+	SPBF_NONE = 0,
+	SPBF_FLOAT_LEFT = 1 << 0,
 	SPBF_FLOAT_RIGHT = 1 << 1,
 };
 DECLARE_ENUM_AS_BIT_SET(StoryPageButtonFlags)
@@ -153,14 +153,14 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	StoryPageElement() { }
-	StoryPageElement(uint32_t sort_value, StoryPageElementType type, StoryPageID page) :
-		sort_value(sort_value), page(page), type(type) { }
+	StoryPageElement() {}
+
+	StoryPageElement(uint32_t sort_value, StoryPageElementType type, StoryPageID page) : sort_value(sort_value), page(page), type(type) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	~StoryPageElement() { }
+	~StoryPageElement() {}
 };
 
 /** Struct about stories, current and completed */
@@ -174,12 +174,11 @@ struct StoryPage : StoryPagePool::PoolItem<&_story_page_pool> {
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	StoryPage() { }
-	StoryPage(uint32_t sort_value, TimerGameCalendar::Date date, CompanyID company, const EncodedString &title) :
-		sort_value(sort_value), date(date), company(company), title(title) {}
+	StoryPage() {}
+
+	StoryPage(uint32_t sort_value, TimerGameCalendar::Date date, CompanyID company, const EncodedString &title) : sort_value(sort_value), date(date), company(company), title(title) {}
 
 	~StoryPage();
 };
 
 #endif /* STORY_BASE_H */
-

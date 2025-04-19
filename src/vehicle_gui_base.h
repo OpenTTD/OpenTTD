@@ -11,22 +11,21 @@
 #define VEHICLE_GUI_BASE_H
 
 #include "cargo_type.h"
-#include "timer/timer_game_calendar.h"
+#include "dropdown_type.h"
 #include "economy_type.h"
 #include "sortlist_type.h"
+#include "timer/timer_game_calendar.h"
 #include "vehicle_base.h"
 #include "vehiclelist.h"
 #include "window_gui.h"
-#include "dropdown_type.h"
 
-typedef GUIList<const Vehicle*, std::nullptr_t, CargoType> GUIVehicleList;
+typedef GUIList<const Vehicle *, std::nullptr_t, CargoType> GUIVehicleList;
 
 struct GUIVehicleGroup {
-	VehicleList::const_iterator vehicles_begin;    ///< Pointer to beginning element of this vehicle group.
-	VehicleList::const_iterator vehicles_end;      ///< Pointer to past-the-end element of this vehicle group.
+	VehicleList::const_iterator vehicles_begin; ///< Pointer to beginning element of this vehicle group.
+	VehicleList::const_iterator vehicles_end; ///< Pointer to past-the-end element of this vehicle group.
 
-	GUIVehicleGroup(VehicleList::const_iterator vehicles_begin, VehicleList::const_iterator vehicles_end)
-		: vehicles_begin(vehicles_begin), vehicles_end(vehicles_end) {}
+	GUIVehicleGroup(VehicleList::const_iterator vehicles_begin, VehicleList::const_iterator vehicles_end) : vehicles_begin(vehicles_begin), vehicles_end(vehicles_end) {}
 
 	std::ptrdiff_t NumVehicles() const
 	{
@@ -65,7 +64,6 @@ struct GUIVehicleGroup {
 typedef GUIList<GUIVehicleGroup, std::nullptr_t, CargoType> GUIVehicleGroupList;
 
 struct BaseVehicleListWindow : public Window {
-
 	enum GroupBy : uint8_t {
 		GB_NONE,
 		GB_SHARED_ORDERS,
@@ -103,8 +101,8 @@ struct BaseVehicleListWindow : public Window {
 	static const std::initializer_list<const StringID> vehicle_group_none_sorter_names_wallclock;
 	static const std::initializer_list<const StringID> vehicle_group_shared_orders_sorter_names_calendar;
 	static const std::initializer_list<const StringID> vehicle_group_shared_orders_sorter_names_wallclock;
-	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_none_sorter_funcs;
-	static const std::initializer_list<VehicleGroupSortFunction * const> vehicle_group_shared_orders_sorter_funcs;
+	static const std::initializer_list<VehicleGroupSortFunction *const> vehicle_group_none_sorter_funcs;
+	static const std::initializer_list<VehicleGroupSortFunction *const> vehicle_group_shared_orders_sorter_funcs;
 
 	BaseVehicleListWindow(WindowDesc &desc, const VehicleListIdentifier &vli);
 
@@ -126,7 +124,7 @@ struct BaseVehicleListWindow : public Window {
 
 	std::span<const StringID> GetVehicleSorterNames() const;
 
-	std::span<VehicleGroupSortFunction * const> GetVehicleSorterFuncs() const
+	std::span<VehicleGroupSortFunction *const> GetVehicleSorterFuncs() const
 	{
 		switch (this->grouping) {
 			case GB_NONE:
@@ -145,9 +143,7 @@ struct CargoIconOverlay {
 	CargoType cargo_type;
 	uint cargo_cap;
 
-	constexpr CargoIconOverlay(int left, int right, CargoType cargo_type, uint cargo_cap)
-		: left(left), right(right), cargo_type(cargo_type), cargo_cap(cargo_cap)
-	{ }
+	constexpr CargoIconOverlay(int left, int right, CargoType cargo_type, uint cargo_cap) : left(left), right(right), cargo_type(cargo_type), cargo_cap(cargo_cap) {}
 };
 
 bool ShowCargoIconOverlay();

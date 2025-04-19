@@ -10,9 +10,9 @@
 #ifndef SCRIPT_WAYPOINT_HPP
 #define SCRIPT_WAYPOINT_HPP
 
+#include "../../station_type.h"
 #include "script_basestation.hpp"
 #include "script_error.hpp"
-#include "../../station_type.h"
 
 /**
  * Class that handles all waypoint related functions.
@@ -33,7 +33,7 @@ public:
 		ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT, // [STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT]
 
 		/** The waypoint would join more than one existing waypoint together. */
-		ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS,    // [STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING]
+		ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS, // [STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING]
 	};
 
 	/**
@@ -41,9 +41,9 @@ public:
 	 */
 	enum WaypointType {
 		/* Note: these values represent part of the in-game StationFacilities enum */
-		WAYPOINT_RAIL      = ::StationFacilities{::StationFacility::Train}.base(), ///< Rail waypoint
-		WAYPOINT_BUOY      = ::StationFacilities{::StationFacility::Dock}.base(),  ///< Buoy
-		WAYPOINT_ANY       = WAYPOINT_RAIL | WAYPOINT_BUOY, ///< All waypoint types
+		WAYPOINT_RAIL = ::StationFacilities{::StationFacility::Train}.base(), ///< Rail waypoint
+		WAYPOINT_BUOY = ::StationFacilities{::StationFacility::Dock}.base(), ///< Buoy
+		WAYPOINT_ANY = WAYPOINT_RAIL | WAYPOINT_BUOY, ///< All waypoint types
 	};
 
 	/**

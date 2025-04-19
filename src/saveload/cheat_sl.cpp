@@ -9,10 +9,9 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/cheat_sl_compat.h"
-
 #include "../cheat_type.h"
+#include "compat/cheat_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
@@ -36,7 +35,6 @@ static const SaveLoad _cheats_desc[] = {
 	SLE_CONDVAR(Cheats, station_rating.been_used, SLE_BOOL, SLV_STATION_RATING_CHEAT, SL_MAX_VERSION),
 	SLE_CONDVAR(Cheats, station_rating.value, SLE_BOOL, SLV_STATION_RATING_CHEAT, SL_MAX_VERSION),
 };
-
 
 struct CHTSChunkHandler : ChunkHandler {
 	CHTSChunkHandler() : ChunkHandler('CHTS', CH_TABLE) {}

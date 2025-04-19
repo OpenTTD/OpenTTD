@@ -20,8 +20,8 @@ static const int INT32_DIGITS_WITH_SIGN_AND_TERMINATION = 10 + 1 + 1;
 /** Flags for Script settings. */
 enum class ScriptConfigFlag : uint8_t {
 	/* Unused flag 0x1. */
-	Boolean   = 1, ///< This value is a boolean (either 0 (false) or 1 (true) ).
-	InGame    = 2, ///< This setting can be changed while the Script is running.
+	Boolean = 1, ///< This value is a boolean (either 0 (false) or 1 (true) ).
+	InGame = 2, ///< This setting can be changed while the Script is running.
 	Developer = 3, ///< This setting will only be visible when the Script development tools are active.
 };
 
@@ -31,14 +31,14 @@ typedef std::map<int, std::string> LabelMapping; ///< Map-type used to map the s
 
 /** Info about a single Script setting. */
 struct ScriptConfigItem {
-	std::string name;             ///< The name of the configuration setting.
-	std::string description;      ///< The description of the configuration setting.
-	int min_value = 0;            ///< The minimal value this configuration setting can have.
-	int max_value = 1;            ///< The maximal value this configuration setting can have.
-	int default_value = 0;        ///< The default value of this configuration setting.
-	int step_size = 1;            ///< The step size in the gui.
-	ScriptConfigFlags flags{};    ///< Flags for the configuration setting.
-	LabelMapping labels;          ///< Text labels for the integer values.
+	std::string name; ///< The name of the configuration setting.
+	std::string description; ///< The description of the configuration setting.
+	int min_value = 0; ///< The minimal value this configuration setting can have.
+	int max_value = 1; ///< The maximal value this configuration setting can have.
+	int default_value = 0; ///< The default value of this configuration setting.
+	int step_size = 1; ///< The step size in the gui.
+	ScriptConfigFlags flags{}; ///< Flags for the configuration setting.
+	LabelMapping labels; ///< Text labels for the integer values.
 	bool complete_labels = false; ///< True if all values have a label.
 
 	std::string GetString(int value) const;
@@ -56,11 +56,7 @@ protected:
 	typedef std::map<std::string, int> SettingValueList;
 
 public:
-	ScriptConfig() :
-		version(-1),
-		info(nullptr),
-		to_load_data(nullptr)
-	{}
+	ScriptConfig() : version(-1), info(nullptr), to_load_data(nullptr) {}
 
 	/**
 	 * Create a new Script config that is a copy of an existing config.
@@ -95,9 +91,9 @@ public:
 	 * mode) or force either newgame or normal
 	 */
 	enum ScriptSettingSource : uint8_t {
-		SSS_DEFAULT,       ///< Get the Script config from the current game mode
+		SSS_DEFAULT, ///< Get the Script config from the current game mode
 		SSS_FORCE_NEWGAME, ///< Get the newgame Script config
-		SSS_FORCE_GAME,    ///< Get the Script config from the current game
+		SSS_FORCE_GAME, ///< Get the Script config from the current game
 	};
 
 	/**
@@ -174,11 +170,11 @@ public:
 	ScriptInstance::ScriptData *GetToLoadData();
 
 protected:
-	std::string name;                                         ///< Name of the Script
-	int version;                                              ///< Version of the Script
-	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
-	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
-	std::unique_ptr<ScriptConfigItemList> config_list;        ///< List with all settings defined by this Script
+	std::string name; ///< Name of the Script
+	int version; ///< Version of the Script
+	class ScriptInfo *info; ///< ScriptInfo object for related to this Script version
+	SettingValueList settings; ///< List with all setting=>value pairs that are configure for this Script
+	std::unique_ptr<ScriptConfigItemList> config_list; ///< List with all settings defined by this Script
 	std::unique_ptr<ScriptInstance::ScriptData> to_load_data; ///< Data to load after the Script start.
 
 	/**

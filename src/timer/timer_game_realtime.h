@@ -39,18 +39,20 @@ public:
 
 		TPeriod(std::chrono::milliseconds period, PeriodFlags flag) : period(period), flag(flag) {}
 
-		bool operator < (const TPeriod &other) const
+		bool operator<(const TPeriod &other) const
 		{
 			if (this->flag != other.flag) return this->flag < other.flag;
 			return this->period < other.period;
 		}
 
-		bool operator == (const TPeriod &other) const
+		bool operator==(const TPeriod &other) const
 		{
 			return this->flag == other.flag && this->period == other.period;
 		}
 	};
+
 	using TElapsed = std::chrono::milliseconds;
+
 	struct TStorage {
 		std::chrono::milliseconds elapsed;
 	};

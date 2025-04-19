@@ -8,13 +8,15 @@
 /** @file win32_main.cpp Implementation main for Windows. */
 
 #include "../../stdafx.h"
+
 #include <windows.h>
 #include <mmsystem.h>
-#include "../../openttd.h"
+
 #include "../../core/random_func.hpp"
-#include "../../string_func.h"
 #include "../../crashlog.h"
 #include "../../debug.h"
+#include "../../openttd.h"
+#include "../../string_func.h"
 
 #include "../../safeguards.h"
 

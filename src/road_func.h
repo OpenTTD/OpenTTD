@@ -11,8 +11,8 @@
 #define ROAD_FUNC_H
 
 #include "core/bitmath_func.hpp"
-#include "road.h"
 #include "economy_func.h"
+#include "road.h"
 #include "transparency.h"
 
 /**
@@ -113,7 +113,6 @@ inline RoadBits AxisToRoadBits(Axis a)
 	assert(IsValidAxis(a));
 	return a == AXIS_X ? ROAD_X : ROAD_Y;
 }
-
 
 /**
  * Calculates the maintenance cost of a number of road bits.

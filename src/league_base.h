@@ -10,10 +10,10 @@
 #ifndef LEAGUE_BASE_H
 #define LEAGUE_BASE_H
 
+#include "core/pool_type.hpp"
 #include "company_type.h"
 #include "goal_type.h"
 #include "league_type.h"
-#include "core/pool_type.hpp"
 #include "strings_type.h"
 
 bool IsValidLink(Link link);
@@ -23,7 +23,6 @@ extern LeagueTableElementPool _league_table_element_pool;
 
 using LeagueTablePool = Pool<LeagueTable, LeagueTableID, 4>;
 extern LeagueTablePool _league_table_pool;
-
 
 /**
  * Struct about league table elements.
@@ -40,16 +39,18 @@ struct LeagueTableElement : LeagueTableElementPool::PoolItem<&_league_table_elem
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	LeagueTableElement() { }
+	LeagueTableElement() {}
+
 	LeagueTableElement(LeagueTableID table, int64_t rating, CompanyID company, const EncodedString &text, const EncodedString &score, const Link &link) :
-		table(table), rating(rating), company(company), text(text), score(score), link(link) {}
+		table(table), rating(rating), company(company), text(text), score(score), link(link)
+	{
+	}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	~LeagueTableElement() { }
+	~LeagueTableElement() {}
 };
-
 
 /** Struct about custom league tables */
 struct LeagueTable : LeagueTablePool::PoolItem<&_league_table_pool> {
@@ -60,13 +61,14 @@ struct LeagueTable : LeagueTablePool::PoolItem<&_league_table_pool> {
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	LeagueTable() { }
-	LeagueTable(const EncodedString &title, const EncodedString &header, const EncodedString &footer) : title(title), header(header), footer(footer) { }
+	LeagueTable() {}
+
+	LeagueTable(const EncodedString &title, const EncodedString &header, const EncodedString &footer) : title(title), header(header), footer(footer) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	~LeagueTable() { }
+	~LeagueTable() {}
 };
 
 #endif /* LEAGUE_BASE_H */

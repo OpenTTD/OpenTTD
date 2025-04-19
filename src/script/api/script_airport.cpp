@@ -8,12 +8,14 @@
 /** @file script_airport.cpp Implementation of ScriptAirport. */
 
 #include "../../stdafx.h"
+
 #include "script_airport.hpp"
-#include "script_station.hpp"
-#include "../../station_base.h"
-#include "../../town.h"
+
 #include "../../landscape_cmd.h"
+#include "../../station_base.h"
 #include "../../station_cmd.h"
+#include "../../town.h"
+#include "script_station.hpp"
 
 #include "../../safeguards.h"
 
@@ -77,14 +79,14 @@
 	EnforcePrecondition(false, IsValidAirportType(type));
 	EnforcePrecondition(false, station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id));
 
-	return ScriptObject::Command<CMD_BUILD_AIRPORT>::Do(tile, type, 0, (ScriptStation::IsValidStation(station_id) ? station_id : StationID::Invalid()), station_id != ScriptStation::STATION_JOIN_ADJACENT);
+	return ScriptObject::Command<CMD_BUILD_AIRPORT>::Do(
+		tile, type, 0, (ScriptStation::IsValidStation(station_id) ? station_id : StationID::Invalid()), station_id != ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptAirport::RemoveAirport(TileIndex tile)
 {
 	EnforceCompanyModeValid(false);
-	EnforcePrecondition(false, ::IsValidTile(tile))
-	EnforcePrecondition(false, IsAirportTile(tile) || IsHangarTile(tile));
+	EnforcePrecondition(false, ::IsValidTile(tile)) EnforcePrecondition(false, IsAirportTile(tile) || IsHangarTile(tile));
 
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
@@ -126,7 +128,6 @@
 
 	return (AirportType)::Station::Get(station_id)->airport.type;
 }
-
 
 /* static */ SQInteger ScriptAirport::GetNoiseLevelIncrease(TileIndex tile, AirportType type)
 {

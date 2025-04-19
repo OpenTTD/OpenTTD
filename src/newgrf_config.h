@@ -10,86 +10,88 @@
 #ifndef NEWGRF_CONFIG_H
 #define NEWGRF_CONFIG_H
 
-#include "strings_type.h"
-#include "fileio_type.h"
-#include "textfile_type.h"
-#include "newgrf_text.h"
 #include "3rdparty/md5/md5.h"
+
+#include "fileio_type.h"
+#include "newgrf_text.h"
+#include "strings_type.h"
+#include "textfile_type.h"
 
 /** GRF config bit flags */
 enum GRFConfigFlag : uint8_t {
-	System,     ///< GRF file is an openttd-internal system grf
-	Unsafe,     ///< GRF file is unsafe for static usage
-	Static,     ///< GRF file is used statically (can be used in any MP game)
+	System, ///< GRF file is an openttd-internal system grf
+	Unsafe, ///< GRF file is unsafe for static usage
+	Static, ///< GRF file is used statically (can be used in any MP game)
 	Compatible, ///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
-	Copy,       ///< The data is copied from a grf in _all_grfs
-	InitOnly,   ///< GRF file is processed up to GLS_INIT
-	Reserved,   ///< GRF file passed GLS_RESERVE stage
-	Invalid,    ///< GRF is unusable with this version of OpenTTD
+	Copy, ///< The data is copied from a grf in _all_grfs
+	InitOnly, ///< GRF file is processed up to GLS_INIT
+	Reserved, ///< GRF file passed GLS_RESERVE stage
+	Invalid, ///< GRF is unusable with this version of OpenTTD
 };
+
 using GRFConfigFlags = EnumBitSet<GRFConfigFlag, uint8_t>;
 
 /** Status of GRF */
 enum GRFStatus : uint8_t {
-	GCS_UNKNOWN,      ///< The status of this grf file is unknown
-	GCS_DISABLED,     ///< GRF file is disabled
-	GCS_NOT_FOUND,    ///< GRF file was not found in the local cache
-	GCS_INITIALISED,  ///< GRF file has been initialised
-	GCS_ACTIVATED,    ///< GRF file has been activated
+	GCS_UNKNOWN, ///< The status of this grf file is unknown
+	GCS_DISABLED, ///< GRF file is disabled
+	GCS_NOT_FOUND, ///< GRF file was not found in the local cache
+	GCS_INITIALISED, ///< GRF file has been initialised
+	GCS_ACTIVATED, ///< GRF file has been activated
 };
 
 /** Encountered GRF bugs */
 enum class GRFBug : uint8_t {
-	VehLength       = 0, ///< Length of rail vehicle changes when not inside a depot
-	VehRefit        = 1, ///< Articulated vehicles carry different cargoes resp. are differently refittable than specified in purchase list
+	VehLength = 0, ///< Length of rail vehicle changes when not inside a depot
+	VehRefit = 1, ///< Articulated vehicles carry different cargoes resp. are differently refittable than specified in purchase list
 	VehPoweredWagon = 2, ///< Powered wagon changed poweredness state when not inside a depot
 	UnknownCbResult = 3, ///< A callback returned an unknown/invalid result
-	VehCapacity     = 4, ///< Capacity of vehicle changes when not refitting or arranging
+	VehCapacity = 4, ///< Capacity of vehicle changes when not refitting or arranging
 };
 using GRFBugs = EnumBitSet<GRFBug, uint8_t>;
 
 /** Status of post-gameload GRF compatibility check */
 enum GRFListCompatibility : uint8_t {
-	GLC_ALL_GOOD,   ///< All GRF needed by game are present
+	GLC_ALL_GOOD, ///< All GRF needed by game are present
 	GLC_COMPATIBLE, ///< Compatible (eg. the same ID, but different checksum) GRF found in at least one case
-	GLC_NOT_FOUND,  ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
+	GLC_NOT_FOUND, ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
 };
 
 /** Information that can/has to be stored about a GRF's palette. */
 enum GRFPalette : uint8_t {
-	GRFP_USE_BIT     = 0,   ///< The bit used for storing the palette to use.
-	GRFP_GRF_OFFSET  = 2,   ///< The offset of the GRFP_GRF data.
-	GRFP_GRF_SIZE    = 2,   ///< The size of the GRFP_GRF data.
-	GRFP_BLT_OFFSET  = 4,   ///< The offset of the GRFP_BLT data.
-	GRFP_BLT_SIZE    = 1,   ///< The size of the GRFP_BLT data.
+	GRFP_USE_BIT = 0, ///< The bit used for storing the palette to use.
+	GRFP_GRF_OFFSET = 2, ///< The offset of the GRFP_GRF data.
+	GRFP_GRF_SIZE = 2, ///< The size of the GRFP_GRF data.
+	GRFP_BLT_OFFSET = 4, ///< The offset of the GRFP_BLT data.
+	GRFP_BLT_SIZE = 1, ///< The size of the GRFP_BLT data.
 
-	GRFP_USE_DOS     = 0x0, ///< The palette state is set to use the DOS palette.
+	GRFP_USE_DOS = 0x0, ///< The palette state is set to use the DOS palette.
 	GRFP_USE_WINDOWS = 0x1, ///< The palette state is set to use the Windows palette.
-	GRFP_USE_MASK    = 0x1, ///< Bitmask to get only the use palette use states.
+	GRFP_USE_MASK = 0x1, ///< Bitmask to get only the use palette use states.
 
-	GRFP_GRF_UNSET   = 0x0 << GRFP_GRF_OFFSET,          ///< The NewGRF provided no information.
-	GRFP_GRF_DOS     = 0x1 << GRFP_GRF_OFFSET,          ///< The NewGRF says the DOS palette can be used.
-	GRFP_GRF_WINDOWS = 0x2 << GRFP_GRF_OFFSET,          ///< The NewGRF says the Windows palette can be used.
-	GRFP_GRF_ANY     = GRFP_GRF_DOS | GRFP_GRF_WINDOWS, ///< The NewGRF says any palette can be used.
-	GRFP_GRF_MASK    = GRFP_GRF_ANY,                    ///< Bitmask to get only the NewGRF supplied information.
+	GRFP_GRF_UNSET = 0x0 << GRFP_GRF_OFFSET, ///< The NewGRF provided no information.
+	GRFP_GRF_DOS = 0x1 << GRFP_GRF_OFFSET, ///< The NewGRF says the DOS palette can be used.
+	GRFP_GRF_WINDOWS = 0x2 << GRFP_GRF_OFFSET, ///< The NewGRF says the Windows palette can be used.
+	GRFP_GRF_ANY = GRFP_GRF_DOS | GRFP_GRF_WINDOWS, ///< The NewGRF says any palette can be used.
+	GRFP_GRF_MASK = GRFP_GRF_ANY, ///< Bitmask to get only the NewGRF supplied information.
 
-	GRFP_BLT_UNSET   = 0x0 << GRFP_BLT_OFFSET,          ///< The NewGRF provided no information or doesn't care about a 32 bpp blitter.
-	GRFP_BLT_32BPP   = 0x1 << GRFP_BLT_OFFSET,          ///< The NewGRF prefers a 32 bpp blitter.
-	GRFP_BLT_MASK    = GRFP_BLT_32BPP,                  ///< Bitmask to only get the blitter information.
+	GRFP_BLT_UNSET = 0x0 << GRFP_BLT_OFFSET, ///< The NewGRF provided no information or doesn't care about a 32 bpp blitter.
+	GRFP_BLT_32BPP = 0x1 << GRFP_BLT_OFFSET, ///< The NewGRF prefers a 32 bpp blitter.
+	GRFP_BLT_MASK = GRFP_BLT_32BPP, ///< Bitmask to only get the blitter information.
 };
-
 
 /** Basic data to distinguish a GRF. Used in the server list window */
 struct GRFIdentifier {
-	uint32_t grfid;     ///< GRF ID (defined by Action 0x08)
-	MD5Hash md5sum;   ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
+	uint32_t grfid; ///< GRF ID (defined by Action 0x08)
+	MD5Hash md5sum; ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
 
 	GRFIdentifier() = default;
 	GRFIdentifier(const GRFIdentifier &other) = default;
 	GRFIdentifier(GRFIdentifier &&other) = default;
+
 	GRFIdentifier(uint32_t grfid, const MD5Hash &md5sum) : grfid(grfid), md5sum(md5sum) {}
 
-	GRFIdentifier& operator =(const GRFIdentifier &other) = default;
+	GRFIdentifier &operator=(const GRFIdentifier &other) = default;
 
 	/**
 	 * Does the identification match the provided values?
@@ -119,8 +121,8 @@ struct GRFError {
 /** The possible types of a newgrf parameter. */
 enum GRFParameterType : uint8_t {
 	PTYPE_UINT_ENUM, ///< The parameter allows a range of numbers, each of which can have a special name
-	PTYPE_BOOL,      ///< The parameter is either 0 or 1
-	PTYPE_END,       ///< Invalid parameter type
+	PTYPE_BOOL, ///< The parameter is either 0 or 1
+	PTYPE_END, ///< Invalid parameter type
 };
 
 /** Information about one grf parameter. */
@@ -157,7 +159,9 @@ struct GRFConfig {
 	static constexpr uint8_t MAX_NUM_PARAMS = 0x80;
 
 	GRFConfig() = default;
+
 	GRFConfig(const std::string &filename) : filename(filename) {}
+
 	GRFConfig(const GRFConfig &config);
 
 	/* Remove the copy assignment, as the default implementation will not do the right thing. */
@@ -203,18 +207,18 @@ using GRFConfigList = std::vector<std::unique_ptr<GRFConfig>>;
 
 /** Method to find GRFs using FindGRFConfig */
 enum FindGRFConfigMode : uint8_t {
-	FGCM_EXACT,       ///< Only find Grfs matching md5sum
-	FGCM_COMPATIBLE,  ///< Find best compatible Grf wrt. desired_version
-	FGCM_NEWEST,      ///< Find newest Grf
-	FGCM_NEWEST_VALID,///< Find newest Grf, ignoring Grfs with GRFConfigFlag::Invalid set
-	FGCM_ANY,         ///< Use first found
+	FGCM_EXACT, ///< Only find Grfs matching md5sum
+	FGCM_COMPATIBLE, ///< Find best compatible Grf wrt. desired_version
+	FGCM_NEWEST, ///< Find newest Grf
+	FGCM_NEWEST_VALID, ///< Find newest Grf, ignoring Grfs with GRFConfigFlag::Invalid set
+	FGCM_ANY, ///< Use first found
 };
 
-extern GRFConfigList _all_grfs;          ///< First item in list of all scanned NewGRFs
-extern GRFConfigList _grfconfig;         ///< First item in list of current GRF set up
+extern GRFConfigList _all_grfs; ///< First item in list of all scanned NewGRFs
+extern GRFConfigList _grfconfig; ///< First item in list of current GRF set up
 extern GRFConfigList _grfconfig_newgame; ///< First item in list of default GRF set up
-extern GRFConfigList _grfconfig_static;  ///< First item in list of static GRF set up
-extern uint _missing_extra_graphics;  ///< Number of sprites provided by the fallback extra GRF, i.e. missing in the baseset.
+extern GRFConfigList _grfconfig_static; ///< First item in list of static GRF set up
+extern uint _missing_extra_graphics; ///< Number of sprites provided by the fallback extra GRF, i.e. missing in the baseset.
 
 /** Callback for NewGRF scanning. */
 struct NewGRFScanCallback {

@@ -8,14 +8,16 @@
 /** @file timetable_cmd.cpp Commands related to time tabling. */
 
 #include "stdafx.h"
+
+#include "timetable_cmd.h"
+
 #include "command_func.h"
 #include "company_func.h"
-#include "timer/timer_game_tick.h"
 #include "timer/timer_game_economy.h"
-#include "window_func.h"
-#include "vehicle_base.h"
-#include "timetable_cmd.h"
+#include "timer/timer_game_tick.h"
 #include "timetable.h"
+#include "vehicle_base.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -143,9 +145,9 @@ CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrder
 
 	if (mtf >= MTF_END) return CMD_ERROR;
 
-	int wait_time   = order->GetWaitTime();
+	int wait_time = order->GetWaitTime();
 	int travel_time = order->GetTravelTime();
-	int max_speed   = order->GetMaxSpeed();
+	int max_speed = order->GetMaxSpeed();
 	switch (mtf) {
 		case MTF_WAIT_TIME:
 			wait_time = data;
@@ -173,7 +175,8 @@ CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrder
 			case OT_CONDITIONAL:
 				break;
 
-			default: return CommandCost(STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
+			default:
+				return CommandCost(STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
 		}
 	}
 
@@ -310,7 +313,7 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
  * @param b Second Vehicle pointer.
  * @return Comparison value.
  */
-static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
+static bool VehicleTimetableSorter(Vehicle *const &a, Vehicle *const &b)
 {
 	VehicleOrderID a_order = a->cur_real_order_index;
 	VehicleOrderID b_order = b->cur_real_order_index;
@@ -405,12 +408,10 @@ CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool ti
 			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
 			++idx;
 		}
-
 	}
 
 	return CommandCost();
 }
-
 
 /**
  * Start or stop filling the timetable automatically from the time the vehicle
@@ -505,8 +506,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) return;
 
 	bool autofilling = v->vehicle_flags.Test(VehicleFlag::AutofillTimetable);
-	bool remeasure_wait_time = !real_current_order->IsWaitTimetabled() ||
-			(autofilling && !v->vehicle_flags.Test(VehicleFlag::AutofillPreserveWaitTime));
+	bool remeasure_wait_time = !real_current_order->IsWaitTimetabled() || (autofilling && !v->vehicle_flags.Test(VehicleFlag::AutofillPreserveWaitTime));
 
 	if (travelling && remeasure_wait_time) {
 		/* We just finished travelling and want to remeasure the loading time,
@@ -517,8 +517,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	if (just_started) return;
 
 	/* Before modifying waiting times, check whether we want to preserve bigger ones. */
-	if (!real_current_order->IsType(OT_CONDITIONAL) &&
-			(travelling || time_taken > real_current_order->GetWaitTime() || remeasure_wait_time)) {
+	if (!real_current_order->IsType(OT_CONDITIONAL) && (travelling || time_taken > real_current_order->GetWaitTime() || remeasure_wait_time)) {
 		/* Round up to the unit currently shown in the GUI for days and seconds.
 		 * Round up to seconds if currently used display style is ticks.
 		 * Players timetabling in Ticks can adjust later.
@@ -548,8 +547,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (autofilling) return;
 
-	TimerGameTick::Ticks timetabled = travelling ? real_current_order->GetTimetabledTravel() :
-			real_current_order->GetTimetabledWait();
+	TimerGameTick::Ticks timetabled = travelling ? real_current_order->GetTimetabledTravel() : real_current_order->GetTimetabledWait();
 
 	/* Vehicles will wait at stations if they arrive early even if they are not
 	 * timetabled to wait there, so make sure the lateness counter is updated

@@ -9,35 +9,36 @@
 
 #include "../stdafx.h"
 
-#include "../strings_func.h"
+#include "../3rdparty/md5/md5.h"
+
+#include "../core/pool_func.hpp"
+#include "../core/random_func.hpp"
+#include "../core/string_builder.hpp"
+#include "core/host.h"
+#include "core/udp.h"
 #include "../command_func.h"
-#include "../timer/timer_game_tick.h"
+#include "../company_base.h"
+#include "../company_func.h"
+#include "../console_func.h"
+#include "../error.h"
+#include "../gfx_func.h"
+#include "../landscape_type.h"
+#include "../misc_cmd.h"
+#include "../rev.h"
+#include "../strings_func.h"
 #include "../timer/timer_game_economy.h"
+#include "../timer/timer_game_tick.h"
+#include "../window_func.h"
 #include "network_admin.h"
+#include "network_base.h"
 #include "network_client.h"
+#include "network_content.h"
+#include "network_coordinator.h"
+#include "network_gamelist.h"
+#include "network_gui.h"
 #include "network_query.h"
 #include "network_server.h"
-#include "network_content.h"
 #include "network_udp.h"
-#include "network_gamelist.h"
-#include "network_base.h"
-#include "network_coordinator.h"
-#include "core/udp.h"
-#include "core/host.h"
-#include "network_gui.h"
-#include "../console_func.h"
-#include "../3rdparty/md5/md5.h"
-#include "../core/random_func.hpp"
-#include "../window_func.h"
-#include "../company_func.h"
-#include "../company_base.h"
-#include "../landscape_type.h"
-#include "../rev.h"
-#include "../core/pool_func.hpp"
-#include "../gfx_func.h"
-#include "../error.h"
-#include "../misc_cmd.h"
-#include "../core/string_builder.hpp"
 #ifdef DEBUG_DUMP_COMMANDS
 #	include "../fileio_func.h"
 #endif
@@ -63,28 +64,28 @@ static_assert(NetworkClientInfoPool::MAX_SIZE == NetworkClientSocketPool::MAX_SI
 NetworkClientInfoPool _networkclientinfo_pool("NetworkClientInfo");
 INSTANTIATE_POOL_METHODS(NetworkClientInfo)
 
-bool _networking;         ///< are we in networking mode?
-bool _network_server;     ///< network-server is active
-bool _network_available;  ///< is network mode available?
-bool _network_dedicated;  ///< are we a dedicated server?
-bool _is_network_server;  ///< Does this client wants to be a network-server?
-ClientID _network_own_client_id;      ///< Our client identifier.
+bool _networking; ///< are we in networking mode?
+bool _network_server; ///< network-server is active
+bool _network_available; ///< is network mode available?
+bool _network_dedicated; ///< are we a dedicated server?
+bool _is_network_server; ///< Does this client wants to be a network-server?
+ClientID _network_own_client_id; ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
-uint8_t _network_reconnect;             ///< Reconnect timeout
-StringList _network_bind_list;        ///< The addresses to bind on.
-StringList _network_host_list;        ///< The servers we know.
-StringList _network_ban_list;         ///< The banned clients.
-uint32_t _frame_counter_server;         ///< The frame_counter of the server, if in network-mode
-uint32_t _frame_counter_max;            ///< To where we may go with our clients
-uint32_t _frame_counter;                ///< The current frame.
-uint32_t _last_sync_frame;              ///< Used in the server to store the last time a sync packet was sent to clients.
-NetworkAddressList _broadcast_list;   ///< List of broadcast addresses.
-uint32_t _sync_seed_1;                  ///< Seed to compare during sync checks.
+uint8_t _network_reconnect; ///< Reconnect timeout
+StringList _network_bind_list; ///< The addresses to bind on.
+StringList _network_host_list; ///< The servers we know.
+StringList _network_ban_list; ///< The banned clients.
+uint32_t _frame_counter_server; ///< The frame_counter of the server, if in network-mode
+uint32_t _frame_counter_max; ///< To where we may go with our clients
+uint32_t _frame_counter; ///< The current frame.
+uint32_t _last_sync_frame; ///< Used in the server to store the last time a sync packet was sent to clients.
+NetworkAddressList _broadcast_list; ///< List of broadcast addresses.
+uint32_t _sync_seed_1; ///< Seed to compare during sync checks.
 #ifdef NETWORK_SEND_DOUBLE_SEED
-uint32_t _sync_seed_2;                  ///< Second part of the seed.
+uint32_t _sync_seed_2; ///< Second part of the seed.
 #endif
-uint32_t _sync_frame;                   ///< The frame to perform the sync check.
-bool _network_first_time;             ///< Whether we have finished joining or not.
+uint32_t _sync_frame; ///< The frame to perform the sync check.
+bool _network_first_time; ///< Whether we have finished joining or not.
 
 /** The amount of clients connected */
 uint8_t _network_clients_connected = 0;
@@ -159,7 +160,6 @@ bool NetworkCanJoinCompany(CompanyID company_id)
 	return nullptr;
 }
 
-
 /**
  * Simple helper to find the location of the given authorized key in the authorized keys.
  * @param authorized_keys The keys to look through.
@@ -168,7 +168,9 @@ bool NetworkCanJoinCompany(CompanyID company_id)
  */
 static auto FindKey(auto *authorized_keys, std::string_view authorized_key)
 {
-	return std::ranges::find_if(*authorized_keys, [authorized_key](auto &value) { return StrEqualsIgnoreCase(value, authorized_key); });
+	return std::ranges::find_if(*authorized_keys, [authorized_key](auto &value) {
+		return StrEqualsIgnoreCase(value, authorized_key);
+	});
 }
 
 /**
@@ -211,7 +213,6 @@ bool NetworkAuthorizedKeys::Remove(std::string_view key)
 	return true;
 }
 
-
 uint8_t NetworkSpectatorCount()
 {
 	uint8_t count = 0;
@@ -225,7 +226,6 @@ uint8_t NetworkSpectatorCount()
 
 	return count;
 }
-
 
 /* This puts a text-message to the console, or in the future, the chat-box,
  *  (to keep it all a bit more general)
@@ -261,18 +261,32 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 			break;
 		case NETWORK_ACTION_JOIN:
 			/* Show the Client ID for the server but not for the client. */
-			builder += _network_server ?
-					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED_ID, name, std::move(data)) :
-					GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED, name);
+			builder += _network_server ? GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED_ID, name, std::move(data)) : GetString(STR_NETWORK_MESSAGE_CLIENT_JOINED, name);
 			break;
-		case NETWORK_ACTION_LEAVE:          builder += GetString(STR_NETWORK_MESSAGE_CLIENT_LEFT, name, std::move(data)); break;
-		case NETWORK_ACTION_NAME_CHANGE:    builder += GetString(STR_NETWORK_MESSAGE_NAME_CHANGE, name, str); break;
-		case NETWORK_ACTION_GIVE_MONEY:     builder += GetString(STR_NETWORK_MESSAGE_GIVE_MONEY, name, std::move(data), str); break;
-		case NETWORK_ACTION_KICKED:         builder += GetString(STR_NETWORK_MESSAGE_KICKED, name, str); break;
-		case NETWORK_ACTION_CHAT_COMPANY:   builder += GetString(self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, name, str); break;
-		case NETWORK_ACTION_CHAT_CLIENT:    builder += GetString(self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT, name, str);  break;
-		case NETWORK_ACTION_EXTERNAL_CHAT:  builder += GetString(STR_NETWORK_CHAT_EXTERNAL, std::move(data), name, str); break;
-		default:                            builder += GetString(STR_NETWORK_CHAT_ALL, name, str); break;
+		case NETWORK_ACTION_LEAVE:
+			builder += GetString(STR_NETWORK_MESSAGE_CLIENT_LEFT, name, std::move(data));
+			break;
+		case NETWORK_ACTION_NAME_CHANGE:
+			builder += GetString(STR_NETWORK_MESSAGE_NAME_CHANGE, name, str);
+			break;
+		case NETWORK_ACTION_GIVE_MONEY:
+			builder += GetString(STR_NETWORK_MESSAGE_GIVE_MONEY, name, std::move(data), str);
+			break;
+		case NETWORK_ACTION_KICKED:
+			builder += GetString(STR_NETWORK_MESSAGE_KICKED, name, str);
+			break;
+		case NETWORK_ACTION_CHAT_COMPANY:
+			builder += GetString(self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, name, str);
+			break;
+		case NETWORK_ACTION_CHAT_CLIENT:
+			builder += GetString(self_send ? STR_NETWORK_CHAT_TO_CLIENT : STR_NETWORK_CHAT_CLIENT, name, str);
+			break;
+		case NETWORK_ACTION_EXTERNAL_CHAT:
+			builder += GetString(STR_NETWORK_CHAT_EXTERNAL, std::move(data), name, str);
+			break;
+		default:
+			builder += GetString(STR_NETWORK_CHAT_ALL, name, str);
+			break;
 	}
 
 	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, message);
@@ -292,7 +306,6 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
 	}
 	return lag;
 }
-
 
 /* There was a non-recoverable error, drop back to the main menu with a nice
  *  error */
@@ -366,21 +379,32 @@ void NetworkHandlePauseChange(PauseModes prev_mode, PauseMode changed_mode)
 			if (!changed) {
 				std::array<StringParameter, 5> params{};
 				auto it = params.begin();
-				if (_pause_mode.Test(PauseMode::Normal))        *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL;
-				if (_pause_mode.Test(PauseMode::Join))          *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS;
-				if (_pause_mode.Test(PauseMode::GameScript))    *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT;
+				if (_pause_mode.Test(PauseMode::Normal)) *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL;
+				if (_pause_mode.Test(PauseMode::Join)) *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS;
+				if (_pause_mode.Test(PauseMode::GameScript)) *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT;
 				if (_pause_mode.Test(PauseMode::ActiveClients)) *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS;
-				if (_pause_mode.Test(PauseMode::LinkGraph))     *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH;
+				if (_pause_mode.Test(PauseMode::LinkGraph)) *it++ = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH;
 				str = GetStringWithArgs(STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1 + std::distance(params.begin(), it) - 1, {params.begin(), it});
 			} else {
 				StringID reason;
 				switch (changed_mode) {
-					case PauseMode::Normal:        reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL; break;
-					case PauseMode::Join:          reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS; break;
-					case PauseMode::GameScript:    reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT; break;
-					case PauseMode::ActiveClients: reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS; break;
-					case PauseMode::LinkGraph:     reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH; break;
-					default: NOT_REACHED();
+					case PauseMode::Normal:
+						reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL;
+						break;
+					case PauseMode::Join:
+						reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS;
+						break;
+					case PauseMode::GameScript:
+						reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT;
+						break;
+					case PauseMode::ActiveClients:
+						reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS;
+						break;
+					case PauseMode::LinkGraph:
+						reason = STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH;
+						break;
+					default:
+						NOT_REACHED();
 				}
 				str = GetString(paused ? STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED : STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED, reason);
 			}
@@ -393,7 +417,6 @@ void NetworkHandlePauseChange(PauseModes prev_mode, PauseMode changed_mode)
 			return;
 	}
 }
-
 
 /**
  * Helper function for the pause checkers. If pause is true and the
@@ -433,9 +456,7 @@ static uint NetworkCountActiveClients()
  */
 static void CheckMinActiveClients()
 {
-	if (_pause_mode.Test(PauseMode::Error) ||
-			!_network_dedicated ||
-			(_settings_client.network.min_active_clients == 0 && !_pause_mode.Test(PauseMode::ActiveClients))) {
+	if (_pause_mode.Test(PauseMode::Error) || !_network_dedicated || (_settings_client.network.min_active_clients == 0 && !_pause_mode.Test(PauseMode::ActiveClients))) {
 		return;
 	}
 	CheckPauseHelper(NetworkCountActiveClients() < _settings_client.network.min_active_clients, PauseMode::ActiveClients);
@@ -459,8 +480,7 @@ static bool NetworkHasJoiningClient()
  */
 static void CheckPauseOnJoin()
 {
-	if (_pause_mode.Test(PauseMode::Error) ||
-			(!_settings_client.network.pause_on_join && !_pause_mode.Test(PauseMode::Join))) {
+	if (_pause_mode.Test(PauseMode::Error) || (!_settings_client.network.pause_on_join && !_pause_mode.Test(PauseMode::Join))) {
 		return;
 	}
 	CheckPauseHelper(NetworkHasJoiningClient(), PauseMode::Join);
@@ -1125,7 +1145,8 @@ void NetworkGameLoop()
 			if (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)_current_company, cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)_current_company, cp->cmd,
+						FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
@@ -1133,8 +1154,8 @@ void NetworkGameLoop()
 					if (sync_state[0] == _random.state[0] && sync_state[1] == _random.state[1]) {
 						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", TimerGameEconomy::date, TimerGameEconomy::date_fract);
 					} else {
-						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{{:08x}, {:08x}}}, got {{{:08x}, {:08x}}}",
-									TimerGameEconomy::date, TimerGameEconomy::date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
+						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{{:08x}, {:08x}}}, got {{{:08x}, {:08x}}}", TimerGameEconomy::date, TimerGameEconomy::date_fract,
+							sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
 						NOT_REACHED();
 					}
 					check_sync_state = false;
@@ -1165,10 +1186,10 @@ void NetworkGameLoop()
 			}
 
 			if (strncmp(p, "cmd: ", 5) == 0
-#ifdef DEBUG_FAILED_DUMP_COMMANDS
+#	ifdef DEBUG_FAILED_DUMP_COMMANDS
 				|| strncmp(p, "cmdf: ", 6) == 0
-#endif
-				) {
+#	endif
+			) {
 				p += 5;
 				if (*p == ' ') p++;
 				cp = new CommandPacket();
@@ -1201,7 +1222,7 @@ void NetworkGameLoop()
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
-				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PauseMode::Normal, true });
+				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{PauseMode::Normal, true});
 				_ddc_fastforward = false;
 			} else if (strncmp(p, "sync: ", 6) == 0) {
 				uint32_t next_date_raw;
@@ -1209,14 +1230,12 @@ void NetworkGameLoop()
 				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
 				assert(ret == 4);
 				check_sync_state = true;
-			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||
-						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0 ||
-						strncmp(p, "warning: ", 9) == 0) {
+			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 || strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0 || strncmp(p, "warning: ", 9) == 0) {
 				/* A message that is not very important to the log playback, but part of the log. */
-#ifndef DEBUG_FAILED_DUMP_COMMANDS
+#	ifndef DEBUG_FAILED_DUMP_COMMANDS
 			} else if (strncmp(p, "cmdf: ", 6) == 0) {
 				Debug(desync, 0, "Skipping replay of failed command: {}", p + 6);
-#endif
+#	endif
 			} else {
 				/* Can't parse a line; what's wrong here? */
 				Debug(desync, 0, "Trying to parse: {}", p);
@@ -1314,10 +1333,9 @@ void NetworkShutDown()
 #ifdef __EMSCRIPTEN__
 extern "C" {
 
-void CDECL em_openttd_add_server(const char *connection_string)
-{
-	NetworkAddServer(connection_string, false, true);
-}
-
+	void CDECL em_openttd_add_server(const char *connection_string)
+	{
+		NetworkAddServer(connection_string, false, true);
+	}
 }
 #endif

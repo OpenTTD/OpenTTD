@@ -29,9 +29,10 @@ public:
 	static constexpr Tstorage MASK = Tmask; ///< Mask of valid values.
 
 	constexpr BaseBitSet() : data(0) {}
+
 	explicit constexpr BaseBitSet(Tstorage data) : data(data & Tmask) {}
 
-	constexpr auto operator <=>(const BaseBitSet &) const noexcept = default;
+	constexpr auto operator<=>(const BaseBitSet &) const noexcept = default;
 
 	/**
 	 * Set all bits.
@@ -40,7 +41,7 @@ public:
 	inline constexpr Timpl &Set()
 	{
 		this->data = Tmask;
-		return static_cast<Timpl&>(*this);
+		return static_cast<Timpl &>(*this);
 	}
 
 	/**
@@ -51,7 +52,7 @@ public:
 	inline constexpr Timpl &Set(Tvalue_type value)
 	{
 		this->data |= (1ULL << Timpl::DecayValueType(value));
-		return static_cast<Timpl&>(*this);
+		return static_cast<Timpl &>(*this);
 	}
 
 	/**
@@ -62,7 +63,7 @@ public:
 	inline constexpr Timpl &Set(const Timpl &other)
 	{
 		this->data |= other.data;
-		return static_cast<Timpl&>(*this);
+		return static_cast<Timpl &>(*this);
 	}
 
 	/**
@@ -84,7 +85,7 @@ public:
 	inline constexpr Timpl &Reset(Tvalue_type value)
 	{
 		this->data &= ~(1ULL << Timpl::DecayValueType(value));
-		return static_cast<Timpl&>(*this);
+		return static_cast<Timpl &>(*this);
 	}
 
 	/**
@@ -95,7 +96,7 @@ public:
 	inline constexpr Timpl &Reset(const Timpl &other)
 	{
 		this->data &= ~other.data;
-		return static_cast<Timpl&>(*this);
+		return static_cast<Timpl &>(*this);
 	}
 
 	/**
@@ -120,7 +121,7 @@ public:
 	inline constexpr Timpl &Flip(const Timpl &other)
 	{
 		this->data ^= other.data;
-		return static_cast<Timpl&>(*this);
+		return static_cast<Timpl &>(*this);
 	}
 
 	/**
@@ -180,12 +181,12 @@ public:
 		return this->data == 0;
 	}
 
-	inline constexpr Timpl operator |(const Timpl &other) const
+	inline constexpr Timpl operator|(const Timpl &other) const
 	{
 		return Timpl{static_cast<Tstorage>(this->data | other.data)};
 	}
 
-	inline constexpr Timpl operator &(const Timpl &other) const
+	inline constexpr Timpl operator&(const Timpl &other) const
 	{
 		return Timpl{static_cast<Tstorage>(this->data & other.data)};
 	}
@@ -208,8 +209,15 @@ public:
 		return (this->base() & Tmask) == this->base();
 	}
 
-	auto begin() const { return SetBitIterator<Tvalue_type>(this->data).begin(); }
-	auto end() const { return SetBitIterator<Tvalue_type>(this->data).end(); }
+	auto begin() const
+	{
+		return SetBitIterator<Tvalue_type>(this->data).begin();
+	}
+
+	auto end() const
+	{
+		return SetBitIterator<Tvalue_type>(this->data).end();
+	}
 
 private:
 	Tstorage data; ///< Bitmask of values.

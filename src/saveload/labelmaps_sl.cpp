@@ -9,14 +9,13 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/labelmaps_sl_compat.h"
-
-#include "saveload_internal.h"
-#include "../rail.h"
-#include "../road.h"
 #include "../newgrf_railtype.h"
 #include "../newgrf_roadtype.h"
+#include "../rail.h"
+#include "../road.h"
+#include "compat/labelmaps_sl_compat.h"
+#include "saveload.h"
+#include "saveload_internal.h"
 
 #include "../safeguards.h"
 
@@ -115,4 +114,3 @@ static const ChunkHandlerRef labelmaps_chunk_handlers[] = {
 };
 
 extern const ChunkHandlerTable _labelmaps_chunk_handlers(labelmaps_chunk_handlers);
-

@@ -8,25 +8,25 @@
 /** @file network_admin.cpp Server part of the admin network protocol. */
 
 #include "../stdafx.h"
-#include "../strings_func.h"
-#include "../timer/timer_game_calendar.h"
-#include "../timer/timer_game_calendar.h"
-#include "core/network_game_info.h"
+
 #include "network_admin.h"
-#include "network_base.h"
-#include "network_server.h"
+
+#include "../core/pool_func.hpp"
+#include "core/network_game_info.h"
 #include "../command_func.h"
 #include "../company_base.h"
 #include "../console_func.h"
-#include "../core/pool_func.hpp"
+#include "../game/game.hpp"
 #include "../map_func.h"
 #include "../rev.h"
-#include "../game/game.hpp"
+#include "../strings_func.h"
+#include "../timer/timer_game_calendar.h"
+#include "network_base.h"
+#include "network_server.h"
 
 #include "table/strings.h"
 
 #include "../safeguards.h"
-
 
 /* This file handles all the admin network commands. */
 
@@ -38,24 +38,41 @@ NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
 INSTANTIATE_POOL_METHODS(NetworkAdminSocket)
 
 static NetworkAuthenticationDefaultPasswordProvider _admin_password_provider(_settings_client.network.admin_password); ///< Provides the password validation for the game's password.
-static NetworkAuthenticationDefaultAuthorizedKeyHandler _admin_authorized_key_handler(_settings_client.network.admin_authorized_keys); ///< Provides the authorized key handling for the game authentication.
+static NetworkAuthenticationDefaultAuthorizedKeyHandler _admin_authorized_key_handler(
+	_settings_client.network.admin_authorized_keys); ///< Provides the authorized key handling for the game authentication.
 
 /** The timeout for authorisation of the client. */
 static const std::chrono::seconds ADMIN_AUTHORISATION_TIMEOUT(10);
 
-
 /** Frequencies, which may be registered for a certain update type. */
 static const AdminUpdateFrequencies _admin_update_type_frequencies[] = {
-	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Daily, AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_DATE
-	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CLIENT_INFO
-	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_COMPANY_INFO
-	{AdminUpdateFrequency::Poll,                              AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_COMPANY_ECONOMY
-	{AdminUpdateFrequency::Poll,                              AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_COMPANY_STATS
-	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CHAT
-	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CONSOLE
-	{AdminUpdateFrequency::Poll,                                                                                                                                                          }, // ADMIN_UPDATE_CMD_NAMES
-	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_CMD_LOGGING
-	{                            AdminUpdateFrequency::Automatic,                                                                                                                         }, // ADMIN_UPDATE_GAMESCRIPT
+	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Daily, AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly,
+		AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_DATE
+	{
+		AdminUpdateFrequency::Poll,
+		AdminUpdateFrequency::Automatic,
+	}, // ADMIN_UPDATE_CLIENT_INFO
+	{
+		AdminUpdateFrequency::Poll,
+		AdminUpdateFrequency::Automatic,
+	}, // ADMIN_UPDATE_COMPANY_INFO
+	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_COMPANY_ECONOMY
+	{AdminUpdateFrequency::Poll, AdminUpdateFrequency::Weekly, AdminUpdateFrequency::Monthly, AdminUpdateFrequency::Quarterly, AdminUpdateFrequency::Annually}, // ADMIN_UPDATE_COMPANY_STATS
+	{
+		AdminUpdateFrequency::Automatic,
+	}, // ADMIN_UPDATE_CHAT
+	{
+		AdminUpdateFrequency::Automatic,
+	}, // ADMIN_UPDATE_CONSOLE
+	{
+		AdminUpdateFrequency::Poll,
+	}, // ADMIN_UPDATE_CMD_NAMES
+	{
+		AdminUpdateFrequency::Automatic,
+	}, // ADMIN_UPDATE_CMD_LOGGING
+	{
+		AdminUpdateFrequency::Automatic,
+	}, // ADMIN_UPDATE_GAMESCRIPT
 };
 /** Sanity check. */
 static_assert(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
@@ -155,7 +172,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 	p->Send_uint8(NETWORK_GAME_ADMIN_VERSION);
 
 	for (int i = 0; i < ADMIN_UPDATE_END; i++) {
-		p->Send_bool  (true);
+		p->Send_bool(true);
 		p->Send_uint16(i);
 		p->Send_uint16(_admin_update_type_frequencies[i].base());
 	}
@@ -173,11 +190,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 
 	p->Send_string(_settings_client.network.server_name);
 	p->Send_string(GetNetworkRevisionString());
-	p->Send_bool  (_network_dedicated);
+	p->Send_bool(_network_dedicated);
 
 	p->Send_string(""); // Used to be map-name.
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
-	p->Send_uint8 (to_underlying(_settings_game.game_creation.landscape));
+	p->Send_uint8(to_underlying(_settings_game.game_creation.landscape));
 	p->Send_uint32(TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1).base());
 	p->Send_uint16(Map::SizeX());
 	p->Send_uint16(Map::SizeY());
@@ -243,15 +260,14 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkC
 	p->Send_uint32(ci->client_id);
 	p->Send_string(cs == nullptr ? "" : const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);
-	p->Send_uint8 (0); // Used to be language
+	p->Send_uint8(0); // Used to be language
 	p->Send_uint32(ci->join_date.base());
-	p->Send_uint8 (ci->client_playas);
+	p->Send_uint8(ci->client_playas);
 
 	this->SendPacket(std::move(p));
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
-
 
 /**
  * Send an update for some client's information.
@@ -263,7 +279,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientUpdate(const Networ
 
 	p->Send_uint32(ci->client_id);
 	p->Send_string(ci->client_name);
-	p->Send_uint8 (ci->client_playas);
+	p->Send_uint8(ci->client_playas);
 
 	this->SendPacket(std::move(p));
 
@@ -294,7 +310,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientError(ClientID clie
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_CLIENT_ERROR);
 
 	p->Send_uint32(client_id);
-	p->Send_uint8 (error);
+	p->Send_uint8(error);
 	this->SendPacket(std::move(p));
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -322,20 +338,19 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 {
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_COMPANY_INFO);
 
-	p->Send_uint8 (c->index);
+	p->Send_uint8(c->index);
 	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
 	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
-	p->Send_uint8 (c->colour);
-	p->Send_bool  (true);
+	p->Send_uint8(c->colour);
+	p->Send_bool(true);
 	p->Send_uint32(c->inaugurated_year.base());
-	p->Send_bool  (c->is_ai);
-	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
+	p->Send_bool(c->is_ai);
+	p->Send_uint8(CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
 
 	this->SendPacket(std::move(p));
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
-
 
 /**
  * Send an update about a company.
@@ -345,12 +360,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 {
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_COMPANY_UPDATE);
 
-	p->Send_uint8 (c->index);
+	p->Send_uint8(c->index);
 	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
 	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
-	p->Send_uint8 (c->colour);
-	p->Send_bool  (true);
-	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
+	p->Send_uint8(c->colour);
+	p->Send_bool(true);
+	p->Send_uint8(CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
 
 	this->SendPacket(std::move(p));
 
@@ -401,7 +416,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 		this->SendPacket(std::move(p));
 	}
 
-
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -444,8 +458,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
 {
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_CHAT);
 
-	p->Send_uint8 (action);
-	p->Send_uint8 (desttype);
+	p->Send_uint8(action);
+	p->Send_uint8(desttype);
 	p->Send_uint32(client_id);
 	p->Send_string(msg);
 	p->Send_uint64(data);
@@ -608,7 +622,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID clien
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_CMD_LOGGING);
 
 	p->Send_uint32(client_id);
-	p->Send_uint8 (cp.company);
+	p->Send_uint8(cp.company);
 	p->Send_uint16(cp.cmd);
 	p->Send_buffer(cp.data);
 	p->Send_uint32(cp.frame);
@@ -633,8 +647,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet &p)
 
 	std::string password = p.Recv_string(NETWORK_PASSWORD_LENGTH);
 
-	if (_settings_client.network.admin_password.empty() ||
-			_settings_client.network.admin_password.compare(password) != 0) {
+	if (_settings_client.network.admin_password.empty() || _settings_client.network.admin_password.compare(password) != 0) {
 		/* Password is invalid */
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
@@ -976,7 +989,6 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 	}
 }
 
-
 /**
  * Send chat to the admin network (if they did opt in for the respective update).
  */
@@ -1078,7 +1090,8 @@ void NetworkAdminUpdate(AdminUpdateFrequency freq)
 						as->SendCompanyStats();
 						break;
 
-					default: NOT_REACHED();
+					default:
+						NOT_REACHED();
 				}
 			}
 		}

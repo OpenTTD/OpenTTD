@@ -8,19 +8,21 @@
 /** @file video_driver.cpp Common code between video driver implementations. */
 
 #include "../stdafx.h"
+
+#include "video_driver.hpp"
+
 #include "../core/random_func.hpp"
-#include "../network/network.h"
 #include "../blitter/factory.hpp"
 #include "../debug.h"
 #include "../driver.h"
 #include "../fontcache.h"
 #include "../gfx_func.h"
 #include "../gfxinit.h"
+#include "../network/network.h"
 #include "../progress.h"
 #include "../rev.h"
 #include "../thread.h"
 #include "../window_func.h"
-#include "video_driver.hpp"
 
 #include "../safeguards.h"
 

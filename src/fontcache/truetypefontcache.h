@@ -12,7 +12,6 @@
 
 #include "../fontcache.h"
 
-
 static const int MAX_FONT_SIZE = 72; ///< Maximum font size.
 
 static const uint8_t FACE_COLOUR = 1;
@@ -21,7 +20,7 @@ static const uint8_t SHADOW_COLOUR = 2;
 /** Font cache for fonts that are based on a TrueType font. */
 class TrueTypeFontCache : public FontCache {
 protected:
-	static constexpr int MAX_GLYPH_DIM = 256;          ///< Maximum glyph dimensions.
+	static constexpr int MAX_GLYPH_DIM = 256; ///< Maximum glyph dimensions.
 	static constexpr uint MAX_FONT_MIN_REC_SIZE = 20u; ///< Upper limit for the recommended font size in case a font file contains nonsensical values.
 
 	int req_size = 0; ///< Requested font size.
@@ -32,7 +31,10 @@ protected:
 		std::unique_ptr<uint8_t[]> data; ///< The loaded sprite.
 		uint8_t width = 0; ///< The width of the glyph.
 
-		Sprite *GetSprite() { return reinterpret_cast<Sprite *>(data.get()); }
+		Sprite *GetSprite()
+		{
+			return reinterpret_cast<Sprite *>(data.get());
+		}
 	};
 
 	std::unordered_map<GlyphID, GlyphEntry> glyph_to_sprite_map{};
@@ -45,14 +47,31 @@ protected:
 public:
 	TrueTypeFontCache(FontSize fs, int pixels);
 	virtual ~TrueTypeFontCache();
-	int GetFontSize() const override { return this->used_size; }
-	void SetUnicodeGlyph(char32_t key, SpriteID sprite) override { this->parent->SetUnicodeGlyph(key, sprite); }
-	void InitializeUnicodeGlyphMap() override { this->parent->InitializeUnicodeGlyphMap(); }
+
+	int GetFontSize() const override
+	{
+		return this->used_size;
+	}
+
+	void SetUnicodeGlyph(char32_t key, SpriteID sprite) override
+	{
+		this->parent->SetUnicodeGlyph(key, sprite);
+	}
+
+	void InitializeUnicodeGlyphMap() override
+	{
+		this->parent->InitializeUnicodeGlyphMap();
+	}
+
 	const Sprite *GetGlyph(GlyphID key) override;
 	void ClearFontCache() override;
 	uint GetGlyphWidth(GlyphID key) override;
 	bool GetDrawGlyphShadow() override;
-	bool IsBuiltInFont() override { return false; }
+
+	bool IsBuiltInFont() override
+	{
+		return false;
+	}
 };
 
 #endif /* TRUETYPEFONTCACHE_H */

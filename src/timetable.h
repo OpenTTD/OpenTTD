@@ -11,8 +11,8 @@
 #define TIMETABLE_H
 
 #include "strings_type.h"
-#include "timer/timer_game_tick.h"
 #include "timer/timer_game_economy.h"
+#include "timer/timer_game_tick.h"
 #include "vehicle_type.h"
 
 static const TimerGameEconomy::Year MAX_TIMETABLE_START_YEARS{15}; ///< The maximum start date offset, in economy years.

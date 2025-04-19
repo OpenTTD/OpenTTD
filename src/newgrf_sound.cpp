@@ -8,22 +8,23 @@
 /** @file newgrf_sound.cpp Handling NewGRF provided sounds. */
 
 #include "stdafx.h"
+
+#include "newgrf_sound.h"
+
+#include "debug.h"
 #include "engine_base.h"
 #include "newgrf.h"
 #include "newgrf_engine.h"
-#include "newgrf_sound.h"
-#include "vehicle_base.h"
+#include "random_access_file_type.h"
+#include "settings_type.h"
 #include "sound_func.h"
 #include "soundloader_func.h"
 #include "string_func.h"
-#include "random_access_file_type.h"
-#include "debug.h"
-#include "settings_type.h"
+#include "vehicle_base.h"
 
 #include "safeguards.h"
 
 static std::vector<SoundEntry> _sounds;
-
 
 /**
  * Allocate sound slots.
@@ -37,7 +38,6 @@ SoundEntry *AllocateSound(uint num)
 	return &_sounds[pos];
 }
 
-
 void InitializeSoundPool()
 {
 	_sounds.clear();
@@ -46,13 +46,11 @@ void InitializeSoundPool()
 	SndCopyToPool();
 }
 
-
 SoundEntry *GetSound(SoundID index)
 {
 	if (index >= _sounds.size()) return nullptr;
 	return &_sounds[index];
 }
-
 
 uint GetNumSounds()
 {
@@ -130,7 +128,7 @@ SoundID GetNewGRFSoundID(const GRFFile *file, SoundID sound_id)
 	sound_id -= ORIGINAL_SAMPLE_COUNT;
 	if (file == nullptr || sound_id >= file->num_sounds) return INVALID_SOUND;
 
-	return file->sound_offset  + sound_id;
+	return file->sound_offset + sound_id;
 }
 
 /**

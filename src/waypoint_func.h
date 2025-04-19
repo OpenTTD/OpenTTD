@@ -10,8 +10,8 @@
 #ifndef WAYPOINT_FUNC_H
 #define WAYPOINT_FUNC_H
 
-#include "rail_type.h"
 #include "command_type.h"
+#include "rail_type.h"
 #include "station_type.h"
 
 enum StationClassID : uint16_t;

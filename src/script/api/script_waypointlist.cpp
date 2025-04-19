@@ -8,10 +8,12 @@
 /** @file script_waypointlist.cpp Implementation of ScriptWaypointList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_waypointlist.hpp"
-#include "script_vehicle.hpp"
+
 #include "../../vehicle_base.h"
 #include "../../waypoint_base.h"
+#include "script_vehicle.hpp"
 
 #include "../../safeguards.h"
 
@@ -21,11 +23,9 @@ ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_typ
 
 	bool is_deity = ScriptCompanyMode::IsDeity();
 	::CompanyID owner = ScriptObject::GetCompany();
-	ScriptList::FillList<Waypoint>(this,
-		[is_deity, owner, waypoint_type](const Waypoint *wp) {
-			return (is_deity || wp->owner == owner || wp->owner == OWNER_NONE) && wp->facilities.Any(static_cast<StationFacilities>(waypoint_type));
-		}
-	);
+	ScriptList::FillList<Waypoint>(this, [is_deity, owner, waypoint_type](const Waypoint *wp) {
+		return (is_deity || wp->owner == owner || wp->owner == OWNER_NONE) && wp->facilities.Any(static_cast<StationFacilities>(waypoint_type));
+	});
 }
 
 ScriptWaypointList_Vehicle::ScriptWaypointList_Vehicle(VehicleID vehicle_id)

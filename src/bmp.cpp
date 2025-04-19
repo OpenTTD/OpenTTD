@@ -8,9 +8,11 @@
 /** @file bmp.cpp Read and write support for bmps. */
 
 #include "stdafx.h"
-#include "random_access_file_type.h"
+
 #include "bmp.h"
+
 #include "core/bitmath_func.hpp"
+#include "random_access_file_type.h"
 
 #include "safeguards.h"
 
@@ -49,7 +51,7 @@ static inline bool BmpRead4(RandomAccessFile &file, BmpInfo &info, BmpData &data
 		uint x = 0;
 		uint8_t *pixel_row = &data.bitmap[(y - 1) * static_cast<size_t>(info.width)];
 		while (x < info.width) {
-			if (file.AtEndOfFile()) return false;  // the file is shorter than expected
+			if (file.AtEndOfFile()) return false; // the file is shorter than expected
 			uint8_t b = file.ReadByte();
 			*pixel_row++ = GB(b, 4, 4);
 			x++;
@@ -229,7 +231,7 @@ static inline bool BmpRead24(RandomAccessFile &file, BmpInfo &info, BmpData &dat
 			if (file.AtEndOfFile()) return false; // the file is shorter than expected
 			*(pixel_row + 2) = file.ReadByte(); // green
 			*(pixel_row + 1) = file.ReadByte(); // blue
-			*pixel_row       = file.ReadByte(); // red
+			*pixel_row = file.ReadByte(); // red
 			pixel_row += 3;
 		}
 		/* Padding for 32 bit align */
@@ -286,9 +288,9 @@ bool BmpReadHeader(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 	if (info.bpp <= 8) {
 		/* Reads number of colours if available in info header */
 		if (header_size >= 16) {
-			file.SkipBytes(12);                  // skip image size and resolution
+			file.SkipBytes(12); // skip image size and resolution
 			info.palette_size = file.ReadDword(); // number of colours in palette
-			file.SkipBytes(header_size - 16);    // skip the end of info header
+			file.SkipBytes(header_size - 16); // skip the end of info header
 		}
 
 		uint maximum_palette_size = 1U << info.bpp;
@@ -323,16 +325,24 @@ bool BmpReadBitmap(RandomAccessFile &file, BmpInfo &info, BmpData &data)
 	switch (info.compression) {
 		case 0: // no compression
 			switch (info.bpp) {
-				case 1: return BmpRead1(file, info, data);
-				case 4: return BmpRead4(file, info, data);
-				case 8: return BmpRead8(file, info, data);
-				case 24: return BmpRead24(file, info, data);
-				default: NOT_REACHED();
+				case 1:
+					return BmpRead1(file, info, data);
+				case 4:
+					return BmpRead4(file, info, data);
+				case 8:
+					return BmpRead8(file, info, data);
+				case 24:
+					return BmpRead24(file, info, data);
+				default:
+					NOT_REACHED();
 			}
 			break;
 
-		case 1: return BmpRead8Rle(file, info, data); // 8-bit RLE compression
-		case 2: return BmpRead4Rle(file, info, data); // 4-bit RLE compression
-		default: NOT_REACHED();
+		case 1:
+			return BmpRead8Rle(file, info, data); // 8-bit RLE compression
+		case 2:
+			return BmpRead4Rle(file, info, data); // 4-bit RLE compression
+		default:
+			NOT_REACHED();
 	}
 }

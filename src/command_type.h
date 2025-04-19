@@ -22,10 +22,10 @@ struct GRFFile;
  * a possible error message/state together.
  */
 class CommandCost {
-	Money cost;                                 ///< The cost of this action
-	StringID message;                           ///< Warning message for when success is unset
-	ExpensesType expense_type;                  ///< the type of expence as shown on the finances view
-	bool success;                               ///< Whether the command went fine up to this moment
+	Money cost; ///< The cost of this action
+	StringID message; ///< Warning message for when success is unset
+	ExpensesType expense_type; ///< the type of expence as shown on the finances view
+	bool success; ///< Whether the command went fine up to this moment
 	Owner owner = CompanyID::Invalid(); ///< Originator owner of error.
 	StringID extra_message = INVALID_STRING_ID; ///< Additional warning message for when success is unset
 	EncodedString encoded_message{}; ///< Encoded error message, used if the error message includes parameters.
@@ -181,7 +181,11 @@ public:
 };
 
 CommandCost CommandCostWithParam(StringID str, uint64_t value);
-CommandCost CommandCostWithParam(StringID str, ConvertibleThroughBase auto value) { return CommandCostWithParam(str, value.base()); }
+
+CommandCost CommandCostWithParam(StringID str, ConvertibleThroughBase auto value)
+{
+	return CommandCostWithParam(str, value.base());
+}
 
 /**
  * List of commands.
@@ -194,185 +198,185 @@ CommandCost CommandCostWithParam(StringID str, ConvertibleThroughBase auto value
  * @see _command_proc_table
  */
 enum Commands : uint8_t {
-	CMD_BUILD_RAILROAD_TRACK,         ///< build a rail track
-	CMD_REMOVE_RAILROAD_TRACK,        ///< remove a rail track
-	CMD_BUILD_SINGLE_RAIL,            ///< build a single rail track
-	CMD_REMOVE_SINGLE_RAIL,           ///< remove a single rail track
-	CMD_LANDSCAPE_CLEAR,              ///< demolish a tile
-	CMD_BUILD_BRIDGE,                 ///< build a bridge
-	CMD_BUILD_RAIL_STATION,           ///< build a rail station
-	CMD_BUILD_TRAIN_DEPOT,            ///< build a train depot
-	CMD_BUILD_SINGLE_SIGNAL,          ///< build a signal
-	CMD_REMOVE_SINGLE_SIGNAL,         ///< remove a signal
-	CMD_TERRAFORM_LAND,               ///< terraform a tile
-	CMD_BUILD_OBJECT,                 ///< build an object
-	CMD_BUILD_OBJECT_AREA,            ///< build an area of objects
-	CMD_BUILD_TUNNEL,                 ///< build a tunnel
+	CMD_BUILD_RAILROAD_TRACK, ///< build a rail track
+	CMD_REMOVE_RAILROAD_TRACK, ///< remove a rail track
+	CMD_BUILD_SINGLE_RAIL, ///< build a single rail track
+	CMD_REMOVE_SINGLE_RAIL, ///< remove a single rail track
+	CMD_LANDSCAPE_CLEAR, ///< demolish a tile
+	CMD_BUILD_BRIDGE, ///< build a bridge
+	CMD_BUILD_RAIL_STATION, ///< build a rail station
+	CMD_BUILD_TRAIN_DEPOT, ///< build a train depot
+	CMD_BUILD_SINGLE_SIGNAL, ///< build a signal
+	CMD_REMOVE_SINGLE_SIGNAL, ///< remove a signal
+	CMD_TERRAFORM_LAND, ///< terraform a tile
+	CMD_BUILD_OBJECT, ///< build an object
+	CMD_BUILD_OBJECT_AREA, ///< build an area of objects
+	CMD_BUILD_TUNNEL, ///< build a tunnel
 
-	CMD_REMOVE_FROM_RAIL_STATION,     ///< remove a (rectangle of) tiles from a rail station
-	CMD_CONVERT_RAIL,                 ///< convert a rail type
+	CMD_REMOVE_FROM_RAIL_STATION, ///< remove a (rectangle of) tiles from a rail station
+	CMD_CONVERT_RAIL, ///< convert a rail type
 
-	CMD_BUILD_RAIL_WAYPOINT,          ///< build a waypoint
-	CMD_RENAME_WAYPOINT,              ///< rename a waypoint
-	CMD_REMOVE_FROM_RAIL_WAYPOINT,    ///< remove a (rectangle of) tiles from a rail waypoint
+	CMD_BUILD_RAIL_WAYPOINT, ///< build a waypoint
+	CMD_RENAME_WAYPOINT, ///< rename a waypoint
+	CMD_REMOVE_FROM_RAIL_WAYPOINT, ///< remove a (rectangle of) tiles from a rail waypoint
 
-	CMD_BUILD_ROAD_WAYPOINT,          ///< build a road waypoint
-	CMD_REMOVE_FROM_ROAD_WAYPOINT,    ///< remove a (rectangle of) tiles from a road waypoint
+	CMD_BUILD_ROAD_WAYPOINT, ///< build a road waypoint
+	CMD_REMOVE_FROM_ROAD_WAYPOINT, ///< remove a (rectangle of) tiles from a road waypoint
 
-	CMD_BUILD_ROAD_STOP,              ///< build a road stop
-	CMD_REMOVE_ROAD_STOP,             ///< remove a road stop
-	CMD_BUILD_LONG_ROAD,              ///< build a complete road (not a "half" one)
-	CMD_REMOVE_LONG_ROAD,             ///< remove a complete road (not a "half" one)
-	CMD_BUILD_ROAD,                   ///< build a "half" road
-	CMD_BUILD_ROAD_DEPOT,             ///< build a road depot
-	CMD_CONVERT_ROAD,                 ///< convert a road type
+	CMD_BUILD_ROAD_STOP, ///< build a road stop
+	CMD_REMOVE_ROAD_STOP, ///< remove a road stop
+	CMD_BUILD_LONG_ROAD, ///< build a complete road (not a "half" one)
+	CMD_REMOVE_LONG_ROAD, ///< remove a complete road (not a "half" one)
+	CMD_BUILD_ROAD, ///< build a "half" road
+	CMD_BUILD_ROAD_DEPOT, ///< build a road depot
+	CMD_CONVERT_ROAD, ///< convert a road type
 
-	CMD_BUILD_AIRPORT,                ///< build an airport
+	CMD_BUILD_AIRPORT, ///< build an airport
 
-	CMD_BUILD_DOCK,                   ///< build a dock
+	CMD_BUILD_DOCK, ///< build a dock
 
-	CMD_BUILD_SHIP_DEPOT,             ///< build a ship depot
-	CMD_BUILD_BUOY,                   ///< build a buoy
+	CMD_BUILD_SHIP_DEPOT, ///< build a ship depot
+	CMD_BUILD_BUOY, ///< build a buoy
 
-	CMD_PLANT_TREE,                   ///< plant a tree
+	CMD_PLANT_TREE, ///< plant a tree
 
-	CMD_BUILD_VEHICLE,                ///< build a vehicle
-	CMD_SELL_VEHICLE,                 ///< sell a vehicle
-	CMD_REFIT_VEHICLE,                ///< refit the cargo space of a vehicle
-	CMD_SEND_VEHICLE_TO_DEPOT,        ///< send a vehicle to a depot
-	CMD_SET_VEHICLE_VISIBILITY,       ///< hide or unhide a vehicle in the build vehicle and autoreplace GUIs
+	CMD_BUILD_VEHICLE, ///< build a vehicle
+	CMD_SELL_VEHICLE, ///< sell a vehicle
+	CMD_REFIT_VEHICLE, ///< refit the cargo space of a vehicle
+	CMD_SEND_VEHICLE_TO_DEPOT, ///< send a vehicle to a depot
+	CMD_SET_VEHICLE_VISIBILITY, ///< hide or unhide a vehicle in the build vehicle and autoreplace GUIs
 
-	CMD_MOVE_RAIL_VEHICLE,            ///< move a rail vehicle (in the depot)
-	CMD_FORCE_TRAIN_PROCEED,          ///< proceed a train to pass a red signal
-	CMD_REVERSE_TRAIN_DIRECTION,      ///< turn a train around
+	CMD_MOVE_RAIL_VEHICLE, ///< move a rail vehicle (in the depot)
+	CMD_FORCE_TRAIN_PROCEED, ///< proceed a train to pass a red signal
+	CMD_REVERSE_TRAIN_DIRECTION, ///< turn a train around
 
-	CMD_CLEAR_ORDER_BACKUP,           ///< clear the order backup of a given user/tile
-	CMD_MODIFY_ORDER,                 ///< modify an order (like set full-load)
-	CMD_SKIP_TO_ORDER,                ///< skip an order to the next of specific one
-	CMD_DELETE_ORDER,                 ///< delete an order
-	CMD_INSERT_ORDER,                 ///< insert a new order
+	CMD_CLEAR_ORDER_BACKUP, ///< clear the order backup of a given user/tile
+	CMD_MODIFY_ORDER, ///< modify an order (like set full-load)
+	CMD_SKIP_TO_ORDER, ///< skip an order to the next of specific one
+	CMD_DELETE_ORDER, ///< delete an order
+	CMD_INSERT_ORDER, ///< insert a new order
 
-	CMD_CHANGE_SERVICE_INT,           ///< change the server interval of a vehicle
+	CMD_CHANGE_SERVICE_INT, ///< change the server interval of a vehicle
 
-	CMD_BUILD_INDUSTRY,               ///< build a new industry
-	CMD_INDUSTRY_SET_FLAGS,           ///< change industry control flags
-	CMD_INDUSTRY_SET_EXCLUSIVITY,     ///< change industry exclusive consumer/supplier
-	CMD_INDUSTRY_SET_TEXT,            ///< change additional text for the industry
-	CMD_INDUSTRY_SET_PRODUCTION,      ///< change industry production
+	CMD_BUILD_INDUSTRY, ///< build a new industry
+	CMD_INDUSTRY_SET_FLAGS, ///< change industry control flags
+	CMD_INDUSTRY_SET_EXCLUSIVITY, ///< change industry exclusive consumer/supplier
+	CMD_INDUSTRY_SET_TEXT, ///< change additional text for the industry
+	CMD_INDUSTRY_SET_PRODUCTION, ///< change industry production
 
-	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
-	CMD_SET_COMPANY_COLOUR,           ///< set the colour of the company
+	CMD_SET_COMPANY_MANAGER_FACE, ///< set the manager's face of the company
+	CMD_SET_COMPANY_COLOUR, ///< set the colour of the company
 
-	CMD_INCREASE_LOAN,                ///< increase the loan from the bank
-	CMD_DECREASE_LOAN,                ///< decrease the loan from the bank
-	CMD_SET_COMPANY_MAX_LOAN,         ///< sets the max loan for the company
+	CMD_INCREASE_LOAN, ///< increase the loan from the bank
+	CMD_DECREASE_LOAN, ///< decrease the loan from the bank
+	CMD_SET_COMPANY_MAX_LOAN, ///< sets the max loan for the company
 
-	CMD_WANT_ENGINE_PREVIEW,          ///< confirm the preview of an engine
-	CMD_ENGINE_CTRL,                  ///< control availability of the engine for companies
+	CMD_WANT_ENGINE_PREVIEW, ///< confirm the preview of an engine
+	CMD_ENGINE_CTRL, ///< control availability of the engine for companies
 
-	CMD_RENAME_VEHICLE,               ///< rename a whole vehicle
-	CMD_RENAME_ENGINE,                ///< rename a engine (in the engine list)
-	CMD_RENAME_COMPANY,               ///< change the company name
-	CMD_RENAME_PRESIDENT,             ///< change the president name
-	CMD_RENAME_STATION,               ///< rename a station
-	CMD_RENAME_DEPOT,                 ///< rename a depot
+	CMD_RENAME_VEHICLE, ///< rename a whole vehicle
+	CMD_RENAME_ENGINE, ///< rename a engine (in the engine list)
+	CMD_RENAME_COMPANY, ///< change the company name
+	CMD_RENAME_PRESIDENT, ///< change the president name
+	CMD_RENAME_STATION, ///< rename a station
+	CMD_RENAME_DEPOT, ///< rename a depot
 
-	CMD_PLACE_SIGN,                   ///< place a sign
-	CMD_RENAME_SIGN,                  ///< rename a sign
+	CMD_PLACE_SIGN, ///< place a sign
+	CMD_RENAME_SIGN, ///< rename a sign
 
-	CMD_TURN_ROADVEH,                 ///< turn a road vehicle around
+	CMD_TURN_ROADVEH, ///< turn a road vehicle around
 
-	CMD_PAUSE,                        ///< pause the game
+	CMD_PAUSE, ///< pause the game
 
-	CMD_BUY_COMPANY,                  ///< buy a company which is bankrupt
+	CMD_BUY_COMPANY, ///< buy a company which is bankrupt
 
-	CMD_FOUND_TOWN,                   ///< found a town
-	CMD_RENAME_TOWN,                  ///< rename a town
-	CMD_DO_TOWN_ACTION,               ///< do a action from the town detail window (like advertises or bribe)
-	CMD_TOWN_CARGO_GOAL,              ///< set the goal of a cargo for a town
-	CMD_TOWN_GROWTH_RATE,             ///< set the town growth rate
-	CMD_TOWN_RATING,                  ///< set rating of a company in a town
-	CMD_TOWN_SET_TEXT,                ///< set the custom text of a town
-	CMD_EXPAND_TOWN,                  ///< expand a town
-	CMD_DELETE_TOWN,                  ///< delete a town
-	CMD_PLACE_HOUSE,                  ///< place a house
+	CMD_FOUND_TOWN, ///< found a town
+	CMD_RENAME_TOWN, ///< rename a town
+	CMD_DO_TOWN_ACTION, ///< do a action from the town detail window (like advertises or bribe)
+	CMD_TOWN_CARGO_GOAL, ///< set the goal of a cargo for a town
+	CMD_TOWN_GROWTH_RATE, ///< set the town growth rate
+	CMD_TOWN_RATING, ///< set rating of a company in a town
+	CMD_TOWN_SET_TEXT, ///< set the custom text of a town
+	CMD_EXPAND_TOWN, ///< expand a town
+	CMD_DELETE_TOWN, ///< delete a town
+	CMD_PLACE_HOUSE, ///< place a house
 
-	CMD_ORDER_REFIT,                  ///< change the refit information of an order (for "goto depot" )
-	CMD_CLONE_ORDER,                  ///< clone (and share) an order
-	CMD_CLEAR_AREA,                   ///< clear an area
+	CMD_ORDER_REFIT, ///< change the refit information of an order (for "goto depot" )
+	CMD_CLONE_ORDER, ///< clone (and share) an order
+	CMD_CLEAR_AREA, ///< clear an area
 
-	CMD_MONEY_CHEAT,                  ///< do the money cheat
-	CMD_CHANGE_BANK_BALANCE,          ///< change bank balance to charge costs or give money from a GS
-	CMD_BUILD_CANAL,                  ///< build a canal
+	CMD_MONEY_CHEAT, ///< do the money cheat
+	CMD_CHANGE_BANK_BALANCE, ///< change bank balance to charge costs or give money from a GS
+	CMD_BUILD_CANAL, ///< build a canal
 
-	CMD_CREATE_SUBSIDY,               ///< create a new subsidy
-	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
+	CMD_CREATE_SUBSIDY, ///< create a new subsidy
+	CMD_COMPANY_CTRL, ///< used in multiplayer to create a new companies etc.
 	CMD_COMPANY_ALLOW_LIST_CTRL, ///< Used in multiplayer to add/remove a client's public key to/from the company's allow list.
-	CMD_CUSTOM_NEWS_ITEM,             ///< create a custom news message
-	CMD_CREATE_GOAL,                  ///< create a new goal
-	CMD_REMOVE_GOAL,                  ///< remove a goal
-	CMD_SET_GOAL_DESTINATION,         ///< update goal destination of a goal
-	CMD_SET_GOAL_TEXT,                ///< update goal text of a goal
-	CMD_SET_GOAL_PROGRESS,            ///< update goal progress text of a goal
-	CMD_SET_GOAL_COMPLETED,           ///< update goal completed status of a goal
-	CMD_GOAL_QUESTION,                ///< ask a goal related question
-	CMD_GOAL_QUESTION_ANSWER,         ///< answer(s) to CMD_GOAL_QUESTION
-	CMD_CREATE_STORY_PAGE,            ///< create a new story page
-	CMD_CREATE_STORY_PAGE_ELEMENT,    ///< create a new story page element
-	CMD_UPDATE_STORY_PAGE_ELEMENT,    ///< update a story page element
-	CMD_SET_STORY_PAGE_TITLE,         ///< update title of a story page
-	CMD_SET_STORY_PAGE_DATE,          ///< update date of a story page
-	CMD_SHOW_STORY_PAGE,              ///< show a story page
-	CMD_REMOVE_STORY_PAGE,            ///< remove a story page
-	CMD_REMOVE_STORY_PAGE_ELEMENT,    ///< remove a story page element
-	CMD_SCROLL_VIEWPORT,              ///< scroll main viewport of players
-	CMD_STORY_PAGE_BUTTON,            ///< selection via story page button
+	CMD_CUSTOM_NEWS_ITEM, ///< create a custom news message
+	CMD_CREATE_GOAL, ///< create a new goal
+	CMD_REMOVE_GOAL, ///< remove a goal
+	CMD_SET_GOAL_DESTINATION, ///< update goal destination of a goal
+	CMD_SET_GOAL_TEXT, ///< update goal text of a goal
+	CMD_SET_GOAL_PROGRESS, ///< update goal progress text of a goal
+	CMD_SET_GOAL_COMPLETED, ///< update goal completed status of a goal
+	CMD_GOAL_QUESTION, ///< ask a goal related question
+	CMD_GOAL_QUESTION_ANSWER, ///< answer(s) to CMD_GOAL_QUESTION
+	CMD_CREATE_STORY_PAGE, ///< create a new story page
+	CMD_CREATE_STORY_PAGE_ELEMENT, ///< create a new story page element
+	CMD_UPDATE_STORY_PAGE_ELEMENT, ///< update a story page element
+	CMD_SET_STORY_PAGE_TITLE, ///< update title of a story page
+	CMD_SET_STORY_PAGE_DATE, ///< update date of a story page
+	CMD_SHOW_STORY_PAGE, ///< show a story page
+	CMD_REMOVE_STORY_PAGE, ///< remove a story page
+	CMD_REMOVE_STORY_PAGE_ELEMENT, ///< remove a story page element
+	CMD_SCROLL_VIEWPORT, ///< scroll main viewport of players
+	CMD_STORY_PAGE_BUTTON, ///< selection via story page button
 
-	CMD_LEVEL_LAND,                   ///< level land
+	CMD_LEVEL_LAND, ///< level land
 
-	CMD_BUILD_LOCK,                   ///< build a lock
+	CMD_BUILD_LOCK, ///< build a lock
 
-	CMD_BUILD_SIGNAL_TRACK,           ///< add signals along a track (by dragging)
-	CMD_REMOVE_SIGNAL_TRACK,          ///< remove signals along a track (by dragging)
+	CMD_BUILD_SIGNAL_TRACK, ///< add signals along a track (by dragging)
+	CMD_REMOVE_SIGNAL_TRACK, ///< remove signals along a track (by dragging)
 
-	CMD_GIVE_MONEY,                   ///< give money to another company
-	CMD_CHANGE_SETTING,               ///< change a setting
-	CMD_CHANGE_COMPANY_SETTING,       ///< change a company setting
+	CMD_GIVE_MONEY, ///< give money to another company
+	CMD_CHANGE_SETTING, ///< change a setting
+	CMD_CHANGE_COMPANY_SETTING, ///< change a company setting
 
-	CMD_SET_AUTOREPLACE,              ///< set an autoreplace entry
+	CMD_SET_AUTOREPLACE, ///< set an autoreplace entry
 
-	CMD_CLONE_VEHICLE,                ///< clone a vehicle
-	CMD_START_STOP_VEHICLE,           ///< start or stop a vehicle
-	CMD_MASS_START_STOP,              ///< start/stop all vehicles (in a depot)
-	CMD_AUTOREPLACE_VEHICLE,          ///< replace/renew a vehicle while it is in a depot
-	CMD_DEPOT_SELL_ALL_VEHICLES,      ///< sell all vehicles which are in a given depot
-	CMD_DEPOT_MASS_AUTOREPLACE,       ///< force the autoreplace to take action in a given depot
+	CMD_CLONE_VEHICLE, ///< clone a vehicle
+	CMD_START_STOP_VEHICLE, ///< start or stop a vehicle
+	CMD_MASS_START_STOP, ///< start/stop all vehicles (in a depot)
+	CMD_AUTOREPLACE_VEHICLE, ///< replace/renew a vehicle while it is in a depot
+	CMD_DEPOT_SELL_ALL_VEHICLES, ///< sell all vehicles which are in a given depot
+	CMD_DEPOT_MASS_AUTOREPLACE, ///< force the autoreplace to take action in a given depot
 
-	CMD_CREATE_GROUP,                 ///< create a new group
-	CMD_DELETE_GROUP,                 ///< delete a group
-	CMD_ALTER_GROUP,                  ///< alter a group
-	CMD_ADD_VEHICLE_GROUP,            ///< add a vehicle to a group
-	CMD_ADD_SHARED_VEHICLE_GROUP,     ///< add all other shared vehicles to a group which are missing
-	CMD_REMOVE_ALL_VEHICLES_GROUP,    ///< remove all vehicles from a group
-	CMD_SET_GROUP_FLAG,               ///< set/clear a flag for a group
-	CMD_SET_GROUP_LIVERY,             ///< set the livery for a group
+	CMD_CREATE_GROUP, ///< create a new group
+	CMD_DELETE_GROUP, ///< delete a group
+	CMD_ALTER_GROUP, ///< alter a group
+	CMD_ADD_VEHICLE_GROUP, ///< add a vehicle to a group
+	CMD_ADD_SHARED_VEHICLE_GROUP, ///< add all other shared vehicles to a group which are missing
+	CMD_REMOVE_ALL_VEHICLES_GROUP, ///< remove all vehicles from a group
+	CMD_SET_GROUP_FLAG, ///< set/clear a flag for a group
+	CMD_SET_GROUP_LIVERY, ///< set the livery for a group
 
-	CMD_MOVE_ORDER,                   ///< move an order
-	CMD_CHANGE_TIMETABLE,             ///< change the timetable for a vehicle
-	CMD_BULK_CHANGE_TIMETABLE,        ///< change the timetable for all orders of a vehicle
-	CMD_SET_VEHICLE_ON_TIME,          ///< set the vehicle on time feature (timetable)
-	CMD_AUTOFILL_TIMETABLE,           ///< autofill the timetable
-	CMD_SET_TIMETABLE_START,          ///< set the date that a timetable should start
+	CMD_MOVE_ORDER, ///< move an order
+	CMD_CHANGE_TIMETABLE, ///< change the timetable for a vehicle
+	CMD_BULK_CHANGE_TIMETABLE, ///< change the timetable for all orders of a vehicle
+	CMD_SET_VEHICLE_ON_TIME, ///< set the vehicle on time feature (timetable)
+	CMD_AUTOFILL_TIMETABLE, ///< autofill the timetable
+	CMD_SET_TIMETABLE_START, ///< set the date that a timetable should start
 
-	CMD_OPEN_CLOSE_AIRPORT,           ///< open/close an airport to incoming aircraft
+	CMD_OPEN_CLOSE_AIRPORT, ///< open/close an airport to incoming aircraft
 
-	CMD_CREATE_LEAGUE_TABLE,               ///< create a new league table
-	CMD_CREATE_LEAGUE_TABLE_ELEMENT,       ///< create a new element in a league table
-	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA,  ///< update the data fields of a league table element
+	CMD_CREATE_LEAGUE_TABLE, ///< create a new league table
+	CMD_CREATE_LEAGUE_TABLE_ELEMENT, ///< create a new element in a league table
+	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA, ///< update the data fields of a league table element
 	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, ///< update the score of a league table element
-	CMD_REMOVE_LEAGUE_TABLE_ELEMENT,       ///< remove a league table element
+	CMD_REMOVE_LEAGUE_TABLE_ELEMENT, ///< remove a league table element
 
-	CMD_END,                          ///< Must ALWAYS be on the end of this list!! (period)
+	CMD_END, ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /**
@@ -393,6 +397,7 @@ enum DoCommandFlag : uint8_t {
 	NoModifyTownRating, ///< do not change town rating
 	ForceClearTile, ///< do not only remove the object on the tile, but also clear any water left on it
 };
+
 using DoCommandFlags = EnumBitSet<DoCommandFlag, uint16_t>;
 
 /**
@@ -419,45 +424,48 @@ using CommandFlags = EnumBitSet<CommandFlag, uint16_t>;
 /** Types of commands we have. */
 enum CommandType : uint8_t {
 	CMDT_LANDSCAPE_CONSTRUCTION, ///< Construction and destruction of objects on the map.
-	CMDT_VEHICLE_CONSTRUCTION,   ///< Construction, modification (incl. refit) and destruction of vehicles.
-	CMDT_MONEY_MANAGEMENT,       ///< Management of money, i.e. loans.
-	CMDT_VEHICLE_MANAGEMENT,     ///< Stopping, starting, sending to depot, turning around, replace orders etc.
-	CMDT_ROUTE_MANAGEMENT,       ///< Modifications to route management (orders, groups, etc).
-	CMDT_OTHER_MANAGEMENT,       ///< Renaming stuff, changing company colours, placing signs, etc.
-	CMDT_COMPANY_SETTING,        ///< Changing settings related to a company.
-	CMDT_SERVER_SETTING,         ///< Pausing/removing companies/server settings.
-	CMDT_CHEAT,                  ///< A cheat of some sorts.
+	CMDT_VEHICLE_CONSTRUCTION, ///< Construction, modification (incl. refit) and destruction of vehicles.
+	CMDT_MONEY_MANAGEMENT, ///< Management of money, i.e. loans.
+	CMDT_VEHICLE_MANAGEMENT, ///< Stopping, starting, sending to depot, turning around, replace orders etc.
+	CMDT_ROUTE_MANAGEMENT, ///< Modifications to route management (orders, groups, etc).
+	CMDT_OTHER_MANAGEMENT, ///< Renaming stuff, changing company colours, placing signs, etc.
+	CMDT_COMPANY_SETTING, ///< Changing settings related to a company.
+	CMDT_SERVER_SETTING, ///< Pausing/removing companies/server settings.
+	CMDT_CHEAT, ///< A cheat of some sorts.
 
-	CMDT_END,                    ///< Magic end marker.
+	CMDT_END, ///< Magic end marker.
 };
 
 /** Different command pause levels. */
 enum CommandPauseLevel : uint8_t {
-	CMDPL_NO_ACTIONS,      ///< No user actions may be executed.
+	CMDPL_NO_ACTIONS, ///< No user actions may be executed.
 	CMDPL_NO_CONSTRUCTION, ///< No construction actions may be executed.
-	CMDPL_NO_LANDSCAPING,  ///< No landscaping actions may be executed.
-	CMDPL_ALL_ACTIONS,     ///< All actions may be executed.
+	CMDPL_NO_LANDSCAPING, ///< No landscaping actions may be executed.
+	CMDPL_ALL_ACTIONS, ///< All actions may be executed.
 };
 
+template <typename T>
+struct CommandFunctionTraitHelper;
 
-template <typename T> struct CommandFunctionTraitHelper;
 template <typename... Targs>
-struct CommandFunctionTraitHelper<CommandCost(*)(DoCommandFlags, Targs...)> {
+struct CommandFunctionTraitHelper<CommandCost (*)(DoCommandFlags, Targs...)> {
 	using Args = std::tuple<std::decay_t<Targs>...>;
 	using RetTypes = void;
 	using CbArgs = Args;
-	using CbProcType = void(*)(Commands, const CommandCost &);
+	using CbProcType = void (*)(Commands, const CommandCost &);
 };
+
 template <template <typename...> typename Tret, typename... Tretargs, typename... Targs>
-struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...>(*)(DoCommandFlags, Targs...)> {
+struct CommandFunctionTraitHelper<Tret<CommandCost, Tretargs...> (*)(DoCommandFlags, Targs...)> {
 	using Args = std::tuple<std::decay_t<Targs>...>;
 	using RetTypes = std::tuple<std::decay_t<Tretargs>...>;
 	using CbArgs = std::tuple<std::decay_t<Tretargs>..., std::decay_t<Targs>...>;
-	using CbProcType = void(*)(Commands, const CommandCost &, Tretargs...);
+	using CbProcType = void (*)(Commands, const CommandCost &, Tretargs...);
 };
 
 /** Defines the traits of a command. */
-template <Commands Tcmd> struct CommandTraits;
+template <Commands Tcmd>
+struct CommandTraits;
 
 #define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_) \
 	template <> struct CommandTraits<cmd_> { \

@@ -8,18 +8,18 @@
 /** @file string_consumer.cpp Implementation of string parsing. */
 
 #include "../stdafx.h"
+
 #include "string_consumer.hpp"
 
-#include "bitmath_func.hpp"
-#include "utf8.hpp"
-#include "string_builder.hpp"
-
 #include "../string_func.h"
+#include "bitmath_func.hpp"
+#include "string_builder.hpp"
+#include "utf8.hpp"
 
 #if defined(STRGEN) || defined(SETTINGSGEN)
-#include "../error_func.h"
+#	include "../error_func.h"
 #else
-#include "../debug.h"
+#	include "../debug.h"
 #endif
 
 #include "../safeguards.h"
@@ -45,30 +45,23 @@ std::optional<uint8_t> StringConsumer::PeekUint8() const
 std::optional<uint16_t> StringConsumer::PeekUint16LE() const
 {
 	if (this->GetBytesLeft() < 2) return std::nullopt;
-	return static_cast<uint8_t>(this->src[this->position]) |
-		static_cast<uint8_t>(this->src[this->position + 1]) << 8;
+	return static_cast<uint8_t>(this->src[this->position]) | static_cast<uint8_t>(this->src[this->position + 1]) << 8;
 }
 
 std::optional<uint32_t> StringConsumer::PeekUint32LE() const
 {
 	if (this->GetBytesLeft() < 4) return std::nullopt;
-	return static_cast<uint8_t>(this->src[this->position]) |
-		static_cast<uint8_t>(this->src[this->position + 1]) << 8 |
-		static_cast<uint8_t>(this->src[this->position + 2]) << 16 |
+	return static_cast<uint8_t>(this->src[this->position]) | static_cast<uint8_t>(this->src[this->position + 1]) << 8 | static_cast<uint8_t>(this->src[this->position + 2]) << 16 |
 		static_cast<uint8_t>(this->src[this->position + 3]) << 24;
 }
 
 std::optional<uint64_t> StringConsumer::PeekUint64LE() const
 {
 	if (this->GetBytesLeft() < 8) return std::nullopt;
-	return static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position])) |
-		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 1])) << 8 |
-		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 2])) << 16 |
-		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 3])) << 24 |
-		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 4])) << 32 |
-		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 5])) << 40 |
-		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 6])) << 48 |
-		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 7])) << 56;
+	return static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position])) | static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 1])) << 8 |
+		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 2])) << 16 | static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 3])) << 24 |
+		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 4])) << 32 | static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 5])) << 40 |
+		static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 6])) << 48 | static_cast<uint64_t>(static_cast<uint8_t>(this->src[this->position + 7])) << 56;
 }
 
 std::optional<char> StringConsumer::PeekChar() const

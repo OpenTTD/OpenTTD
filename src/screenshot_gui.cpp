@@ -5,16 +5,16 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file screenshot_gui.cpp GUI functions related to screenshots. */
+/** @file screenshot_gui.cpp GUI functions related to screenshots. */
 
 #include "stdafx.h"
+
+#include "gfx_func.h"
+#include "screenshot.h"
 #include "window_func.h"
 #include "window_gui.h"
-#include "screenshot.h"
-#include "gfx_func.h"
 
 #include "widgets/screenshot_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -35,13 +35,26 @@ struct ScreenshotWindow : Window {
 	{
 		ScreenshotType st;
 		switch (widget) {
-			default: return;
-			case WID_SC_TAKE:             st = SC_VIEWPORT;    break;
-			case WID_SC_TAKE_ZOOMIN:      st = SC_ZOOMEDIN;    break;
-			case WID_SC_TAKE_DEFAULTZOOM: st = SC_DEFAULTZOOM; break;
-			case WID_SC_TAKE_WORLD:       st = SC_WORLD;       break;
-			case WID_SC_TAKE_HEIGHTMAP:   st = SC_HEIGHTMAP;   break;
-			case WID_SC_TAKE_MINIMAP:     st = SC_MINIMAP;     break;
+			default:
+				return;
+			case WID_SC_TAKE:
+				st = SC_VIEWPORT;
+				break;
+			case WID_SC_TAKE_ZOOMIN:
+				st = SC_ZOOMEDIN;
+				break;
+			case WID_SC_TAKE_DEFAULTZOOM:
+				st = SC_DEFAULTZOOM;
+				break;
+			case WID_SC_TAKE_WORLD:
+				st = SC_WORLD;
+				break;
+			case WID_SC_TAKE_HEIGHTMAP:
+				st = SC_HEIGHTMAP;
+				break;
+			case WID_SC_TAKE_MINIMAP:
+				st = SC_MINIMAP;
+				break;
 		}
 		MakeScreenshotWithConfirm(st);
 	}
@@ -66,12 +79,7 @@ static constexpr NWidgetPart _nested_screenshot[] = {
 };
 /* clang-format on */
 
-static WindowDesc _screenshot_window_desc(
-	WDP_AUTO, "take_a_screenshot", 200, 100,
-	WC_SCREENSHOT, WC_NONE,
-	{},
-	_nested_screenshot
-);
+static WindowDesc _screenshot_window_desc(WDP_AUTO, "take_a_screenshot", 200, 100, WC_SCREENSHOT, WC_NONE, {}, _nested_screenshot);
 
 void ShowScreenshotWindow()
 {

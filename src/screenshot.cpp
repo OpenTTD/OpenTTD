@@ -8,38 +8,40 @@
 /** @file screenshot.cpp The creation of screenshots! */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
-#include "fileio_func.h"
-#include "viewport_func.h"
-#include "gfx_func.h"
+
 #include "screenshot.h"
-#include "screenshot_gui.h"
+
+#include "core/backup_type.hpp"
 #include "blitter/factory.hpp"
-#include "zoom_func.h"
-#include "saveload/saveload.h"
 #include "company_func.h"
-#include "strings_func.h"
 #include "error.h"
-#include "textbuf_gui.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "tile_map.h"
+#include "fileio_func.h"
+#include "gfx_func.h"
 #include "landscape.h"
-#include "video/video_driver.hpp"
-#include "smallmap_gui.h"
+#include "saveload/saveload.h"
+#include "screenshot_gui.h"
 #include "screenshot_type.h"
+#include "smallmap_gui.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "tile_map.h"
+#include "video/video_driver.hpp"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
 
-static const char * const SCREENSHOT_NAME = "screenshot"; ///< Default filename of a saved screenshot.
-static const char * const HEIGHTMAP_NAME  = "heightmap";  ///< Default filename of a saved heightmap.
+static const char *const SCREENSHOT_NAME = "screenshot"; ///< Default filename of a saved screenshot.
+static const char *const HEIGHTMAP_NAME = "heightmap"; ///< Default filename of a saved heightmap.
 
-std::string _screenshot_format_name;  ///< Extension of the current screenshot format.
-static std::string _screenshot_name;  ///< Filename of the screenshot file.
-std::string _full_screenshot_path;    ///< Pathname of the screenshot file.
-uint _heightmap_highest_peak;         ///< When saving a heightmap, this contains the highest peak on the map.
+std::string _screenshot_format_name; ///< Extension of the current screenshot format.
+static std::string _screenshot_name; ///< Filename of the screenshot file.
+std::string _full_screenshot_path; ///< Pathname of the screenshot file.
+uint _heightmap_highest_peak; ///< When saving a heightmap, this contains the highest peak on the map.
 
 /**
  * Get the screenshot provider for the selected format.
@@ -51,7 +53,9 @@ static ScreenshotProvider *GetScreenshotProvider()
 	auto providers = ProviderManager<ScreenshotProvider>::GetProviders();
 	if (providers.empty()) return nullptr;
 
-	auto it = std::ranges::find_if(providers, [](const auto &p) { return p->GetName() == _screenshot_format_name; });
+	auto it = std::ranges::find_if(providers, [](const auto &p) {
+		return p->GetName() == _screenshot_format_name;
+	});
 	if (it != std::end(providers)) return *it;
 
 	return providers.front();
@@ -87,26 +91,11 @@ static void CurrentScreenCallback(void *buf, uint y, uint pitch, uint n)
  */
 static void LargeWorldCallback(Viewport &vp, void *buf, uint y, uint pitch, uint n)
 {
-	DrawPixelInfo dpi{
-		.dst_ptr = buf,
-		.left = 0,
-		.top = static_cast<int>(y),
-		.width = vp.width,
-		.height = static_cast<int>(n),
-		.pitch = static_cast<int>(pitch),
-		.zoom = ZOOM_LVL_WORLD_SCREENSHOT
-	};
+	DrawPixelInfo dpi{.dst_ptr = buf, .left = 0, .top = static_cast<int>(y), .width = vp.width, .height = static_cast<int>(n), .pitch = static_cast<int>(pitch), .zoom = ZOOM_LVL_WORLD_SCREENSHOT};
 
 	/* We are no longer rendering to the screen */
-	AutoRestoreBackup screen_backup(_screen, {
-		.dst_ptr = buf,
-		.left = 0,
-		.top = 0,
-		.width = static_cast<int>(pitch),
-		.height = static_cast<int>(n),
-		.pitch = static_cast<int>(pitch),
-		.zoom = ZOOM_LVL_MIN
-	});
+	AutoRestoreBackup screen_backup(
+		_screen, {.dst_ptr = buf, .left = 0, .top = 0, .width = static_cast<int>(pitch), .height = static_cast<int>(n), .pitch = static_cast<int>(pitch), .zoom = ZOOM_LVL_MIN});
 	AutoRestoreBackup disable_anim_backup(_screen_disable_anim, true);
 	AutoRestoreBackup dpi_backup(_cur_dpi, &dpi);
 
@@ -116,12 +105,8 @@ static void LargeWorldCallback(Viewport &vp, void *buf, uint y, uint pitch, uint
 		int wx = std::min(vp.width - left, 1600);
 		left += wx;
 
-		ViewportDoDraw(vp,
-			ScaleByZoom(left - wx - vp.left, vp.zoom) + vp.virtual_left,
-			ScaleByZoom(y - vp.top, vp.zoom) + vp.virtual_top,
-			ScaleByZoom(left - vp.left, vp.zoom) + vp.virtual_left,
-			ScaleByZoom((y + n) - vp.top, vp.zoom) + vp.virtual_top
-		);
+		ViewportDoDraw(vp, ScaleByZoom(left - wx - vp.left, vp.zoom) + vp.virtual_left, ScaleByZoom(y - vp.top, vp.zoom) + vp.virtual_top, ScaleByZoom(left - vp.left, vp.zoom) + vp.virtual_left,
+			ScaleByZoom((y + n) - vp.top, vp.zoom) + vp.virtual_top);
 	}
 }
 
@@ -176,7 +161,7 @@ static bool MakeSmallScreenshot(bool crashlog)
 	if (provider == nullptr) return false;
 
 	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName(), crashlog), CurrentScreenCallback, _screen.width, _screen.height,
-			BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
+		BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
 /**
@@ -190,15 +175,15 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 {
 	Viewport vp{};
 
-	switch(t) {
+	switch (t) {
 		case SC_VIEWPORT:
 		case SC_CRASHLOG: {
 			assert(width == 0 && height == 0);
 
 			Window *w = GetMainWindow();
-			vp.virtual_left   = w->viewport->virtual_left;
-			vp.virtual_top    = w->viewport->virtual_top;
-			vp.virtual_width  = w->viewport->virtual_width;
+			vp.virtual_left = w->viewport->virtual_left;
+			vp.virtual_top = w->viewport->virtual_top;
+			vp.virtual_width = w->viewport->virtual_width;
 			vp.virtual_height = w->viewport->virtual_height;
 
 			/* Compute pixel coordinates */
@@ -223,15 +208,15 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 			/* If there is a hill at the bottom don't create a large black area. */
 			int reclaim_height_bottom = TilePixelHeight(south_tile);
 
-			vp.virtual_left   = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, 0).x;
-			vp.virtual_top    = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
-			vp.virtual_width  = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x                     - vp.virtual_left + 1;
-			vp.virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp.virtual_top  + 1;
+			vp.virtual_left = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, 0).x;
+			vp.virtual_top = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(north_tile) * TILE_SIZE, extra_height_top).y;
+			vp.virtual_width = RemapCoords(TileX(north_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, 0).x - vp.virtual_left + 1;
+			vp.virtual_height = RemapCoords(TileX(south_tile) * TILE_SIZE, TileY(south_tile) * TILE_SIZE, reclaim_height_bottom).y - vp.virtual_top + 1;
 
 			/* Compute pixel coordinates */
 			vp.left = 0;
 			vp.top = 0;
-			vp.width  = UnScaleByZoom(vp.virtual_width,  vp.zoom);
+			vp.width = UnScaleByZoom(vp.virtual_width, vp.zoom);
 			vp.height = UnScaleByZoom(vp.virtual_height, vp.zoom);
 			vp.overlay = nullptr;
 			break;
@@ -240,11 +225,11 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 			vp.zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
 
 			Window *w = GetMainWindow();
-			vp.virtual_left   = w->viewport->virtual_left;
-			vp.virtual_top    = w->viewport->virtual_top;
+			vp.virtual_left = w->viewport->virtual_left;
+			vp.virtual_top = w->viewport->virtual_top;
 
 			if (width == 0 || height == 0) {
-				vp.virtual_width  = w->viewport->virtual_width;
+				vp.virtual_width = w->viewport->virtual_width;
 				vp.virtual_height = w->viewport->virtual_height;
 			} else {
 				vp.virtual_width = width << vp.zoom;
@@ -254,7 +239,7 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 			/* Compute pixel coordinates */
 			vp.left = 0;
 			vp.top = 0;
-			vp.width  = UnScaleByZoom(vp.virtual_width,  vp.zoom);
+			vp.width = UnScaleByZoom(vp.virtual_width, vp.zoom);
 			vp.height = UnScaleByZoom(vp.virtual_height, vp.zoom);
 			vp.overlay = nullptr;
 			break;
@@ -278,10 +263,12 @@ static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32_t width = 0, uint3
 
 	Viewport vp = SetupScreenshotViewport(t, width, height);
 
-	return provider->MakeImage(MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()),
-			[&](void *buf, uint y, uint pitch, uint n) {
-				LargeWorldCallback(vp, buf, y, pitch, n);
-			}, vp.width, vp.height, BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
+	return provider->MakeImage(
+		MakeScreenshotName(SCREENSHOT_NAME, provider->GetName()),
+		[&](void *buf, uint y, uint pitch, uint n) {
+			LargeWorldCallback(vp, buf, y, pitch, n);
+		},
+		vp.width, vp.height, BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette);
 }
 
 /**
@@ -361,9 +348,7 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
 	if (width * height > 8192 * 8192) {
 		/* Ask for confirmation */
 		_confirmed_screenshot_type = t;
-		ShowQuery(
-			GetEncodedString(STR_WARNING_SCREENSHOT_SIZE_CAPTION),
-			GetEncodedString(STR_WARNING_SCREENSHOT_SIZE_MESSAGE, width, height), nullptr, ScreenshotConfirmationCallback);
+		ShowQuery(GetEncodedString(STR_WARNING_SCREENSHOT_SIZE_CAPTION), GetEncodedString(STR_WARNING_SCREENSHOT_SIZE_MESSAGE, width, height), nullptr, ScreenshotConfirmationCallback);
 	} else {
 		/* Less than 64M pixels, just do it */
 		MakeScreenshot(t, {});
@@ -469,7 +454,6 @@ bool MakeScreenshot(ScreenshotType t, const std::string &name, uint32_t width, u
 	return true;
 }
 
-
 static void MinimapScreenCallback(void *buf, uint y, uint pitch, uint n)
 {
 	uint32_t *ubuf = (uint32_t *)buf;
@@ -482,12 +466,12 @@ static void MinimapScreenCallback(void *buf, uint y, uint pitch, uint n)
 		uint8_t val = GetSmallMapOwnerPixels(tile, GetTileType(tile), IncludeHeightmap::Never) & 0xFF;
 
 		uint32_t colour_buf = 0;
-		colour_buf  = (_cur_palette.palette[val].b << 0);
+		colour_buf = (_cur_palette.palette[val].b << 0);
 		colour_buf |= (_cur_palette.palette[val].g << 8);
 		colour_buf |= (_cur_palette.palette[val].r << 16);
 
 		*ubuf = colour_buf;
-		ubuf++;   // Skip alpha
+		ubuf++; // Skip alpha
 	}
 }
 

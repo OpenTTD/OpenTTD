@@ -14,9 +14,9 @@
 
 /** The different abstract types of files that the system knows about. */
 enum AbstractFileType : uint8_t {
-	FT_NONE,      ///< nothing to do
-	FT_SAVEGAME,  ///< old or new savegame
-	FT_SCENARIO,  ///< old or new scenario
+	FT_NONE, ///< nothing to do
+	FT_SAVEGAME, ///< old or new savegame
+	FT_SCENARIO, ///< old or new scenario
 	FT_HEIGHTMAP, ///< heightmap file
 	FT_TOWN_DATA, ///< town data file
 
@@ -27,31 +27,31 @@ enum AbstractFileType : uint8_t {
 enum DetailedFileType : uint8_t {
 	/* Save game and scenario files. */
 	DFT_OLD_GAME_FILE, ///< Old save game or scenario file.
-	DFT_GAME_FILE,     ///< Save game or scenario file.
+	DFT_GAME_FILE, ///< Save game or scenario file.
 
 	/* Heightmap files. */
 	DFT_HEIGHTMAP_BMP, ///< BMP file.
 	DFT_HEIGHTMAP_PNG, ///< PNG file.
 
 	/* Town data files. */
-	DFT_TOWN_DATA_JSON,  ///< JSON file.
+	DFT_TOWN_DATA_JSON, ///< JSON file.
 
 	/* fios 'files' */
-	DFT_FIOS_DRIVE,  ///< A drive (letter) entry.
+	DFT_FIOS_DRIVE, ///< A drive (letter) entry.
 	DFT_FIOS_PARENT, ///< A parent directory entry.
-	DFT_FIOS_DIR,    ///< A directory entry.
+	DFT_FIOS_DIR, ///< A directory entry.
 	DFT_FIOS_DIRECT, ///< Direct filename.
 
-	DFT_END,         ///< End of this enum. Supports a compile time size check against _fios_colours in fios_gui.cpp
+	DFT_END, ///< End of this enum. Supports a compile time size check against _fios_colours in fios_gui.cpp
 
 	DFT_INVALID = 255, ///< Unknown or invalid file.
 };
 
 /** Operation performed on the file. */
 enum SaveLoadOperation : uint8_t {
-	SLO_CHECK,   ///< Load file for checking and/or preview.
-	SLO_LOAD,    ///< File is being loaded.
-	SLO_SAVE,    ///< File is being saved.
+	SLO_CHECK, ///< Load file for checking and/or preview.
+	SLO_LOAD, ///< File is being loaded.
+	SLO_SAVE, ///< File is being saved.
 
 	SLO_INVALID, ///< Unknown file operation.
 };
@@ -85,25 +85,25 @@ constexpr FiosType FIOS_TYPE_INVALID{FT_INVALID, DFT_INVALID};
  * The different kinds of subdirectories OpenTTD uses
  */
 enum Subdirectory : uint8_t {
-	BASE_DIR,      ///< Base directory for all subdirectories
-	SAVE_DIR,      ///< Base directory for all savegames
-	AUTOSAVE_DIR,  ///< Subdirectory of save for autosaves
-	SCENARIO_DIR,  ///< Base directory for all scenarios
+	BASE_DIR, ///< Base directory for all subdirectories
+	SAVE_DIR, ///< Base directory for all savegames
+	AUTOSAVE_DIR, ///< Subdirectory of save for autosaves
+	SCENARIO_DIR, ///< Base directory for all scenarios
 	HEIGHTMAP_DIR, ///< Subdirectory of scenario for heightmaps
-	OLD_GM_DIR,    ///< Old subdirectory for the music
-	OLD_DATA_DIR,  ///< Old subdirectory for the data.
-	BASESET_DIR,   ///< Subdirectory for all base data (base sets, intro game)
-	NEWGRF_DIR,    ///< Subdirectory for all NewGRFs
-	LANG_DIR,      ///< Subdirectory for all translation files
-	AI_DIR,        ///< Subdirectory for all %AI files
-	AI_LIBRARY_DIR,///< Subdirectory for all %AI libraries
-	GAME_DIR,      ///< Subdirectory for all game scripts
+	OLD_GM_DIR, ///< Old subdirectory for the music
+	OLD_DATA_DIR, ///< Old subdirectory for the data.
+	BASESET_DIR, ///< Subdirectory for all base data (base sets, intro game)
+	NEWGRF_DIR, ///< Subdirectory for all NewGRFs
+	LANG_DIR, ///< Subdirectory for all translation files
+	AI_DIR, ///< Subdirectory for all %AI files
+	AI_LIBRARY_DIR, ///< Subdirectory for all %AI libraries
+	GAME_DIR, ///< Subdirectory for all game scripts
 	GAME_LIBRARY_DIR, ///< Subdirectory for all GS libraries
-	SCREENSHOT_DIR,   ///< Subdirectory for all screenshots
+	SCREENSHOT_DIR, ///< Subdirectory for all screenshots
 	SOCIAL_INTEGRATION_DIR, ///< Subdirectory for all social integration plugins
-	DOCS_DIR,      ///< Subdirectory for documentation
-	NUM_SUBDIRS,   ///< Number of subdirectories
-	NO_DIRECTORY,  ///< A path without any base directory
+	DOCS_DIR, ///< Subdirectory for documentation
+	NUM_SUBDIRS, ///< Number of subdirectories
+	NO_DIRECTORY, ///< A path without any base directory
 };
 
 /**
@@ -113,15 +113,15 @@ enum Searchpath : uint8_t {
 	SP_FIRST_DIR,
 	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
 #ifdef USE_XDG
-	SP_PERSONAL_DIR_XDG,           ///< Search in the personal directory from the XDG specification
+	SP_PERSONAL_DIR_XDG, ///< Search in the personal directory from the XDG specification
 #endif
-	SP_PERSONAL_DIR,               ///< Search in the personal directory
-	SP_SHARED_DIR,                 ///< Search in the shared directory, like 'Shared Files' under Windows
-	SP_BINARY_DIR,                 ///< Search in the directory where the binary resides
-	SP_INSTALLATION_DIR,           ///< Search in the installation directory
-	SP_APPLICATION_BUNDLE_DIR,     ///< Search within the application bundle
-	SP_AUTODOWNLOAD_DIR,           ///< Search within the autodownload directory
-	SP_AUTODOWNLOAD_PERSONAL_DIR,  ///< Search within the autodownload directory located in the personal directory
+	SP_PERSONAL_DIR, ///< Search in the personal directory
+	SP_SHARED_DIR, ///< Search in the shared directory, like 'Shared Files' under Windows
+	SP_BINARY_DIR, ///< Search in the directory where the binary resides
+	SP_INSTALLATION_DIR, ///< Search in the installation directory
+	SP_APPLICATION_BUNDLE_DIR, ///< Search within the application bundle
+	SP_AUTODOWNLOAD_DIR, ///< Search within the autodownload directory
+	SP_AUTODOWNLOAD_PERSONAL_DIR, ///< Search within the autodownload directory located in the personal directory
 	SP_AUTODOWNLOAD_PERSONAL_DIR_XDG, ///< Search within the autodownload directory located in the personal directory (XDG variant)
 	NUM_SEARCHPATHS
 };
@@ -132,7 +132,10 @@ class FileHandle {
 public:
 	static std::optional<FileHandle> Open(const std::string &filename, const std::string &mode);
 
-	inline void Close() { this->f.reset(); }
+	inline void Close()
+	{
+		this->f.reset();
+	}
 
 	inline operator FILE *()
 	{
@@ -143,7 +146,7 @@ public:
 private:
 	/** Helper to close a FILE * with a \c std::unique_ptr. */
 	struct FileDeleter {
-		void operator ()(FILE *f)
+		void operator()(FILE *f)
 		{
 			if (f != nullptr) fclose(f);
 		}
@@ -151,10 +154,14 @@ private:
 
 	std::unique_ptr<FILE, FileDeleter> f;
 
-	FileHandle(FILE *f) : f(f) { assert(this->f != nullptr); }
+	FileHandle(FILE *f) : f(f)
+	{
+		assert(this->f != nullptr);
+	}
 };
 
 /* Ensure has_value() is used consistently. */
-template <> constexpr std::optional<FileHandle>::operator bool() const noexcept = delete;
+template <>
+constexpr std::optional<FileHandle>::operator bool() const noexcept = delete;
 
 #endif /* FILEIO_TYPE_H */

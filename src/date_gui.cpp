@@ -8,21 +8,21 @@
 /** @file date_gui.cpp Graphical selection of a date. */
 
 #include "stdafx.h"
+
+#include "date_gui.h"
+
+#include "core/geometry_func.hpp"
+#include "dropdown_func.h"
+#include "dropdown_type.h"
 #include "strings_func.h"
 #include "timer/timer_game_economy.h"
 #include "window_func.h"
 #include "window_gui.h"
-#include "date_gui.h"
-#include "core/geometry_func.hpp"
-#include "dropdown_type.h"
-#include "dropdown_func.h"
 
 #include "widgets/date_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
-
 
 /** Window to select a date graphically by using dropdowns */
 struct SetDateWindow : Window {
@@ -41,11 +41,8 @@ struct SetDateWindow : Window {
 	 * @param max_year the maximum year (inclusive) to show in the year dropdown
 	 * @param callback the callback to call once a date has been selected
 	 */
-	SetDateWindow(WindowDesc &desc, WindowNumber window_number, Window *parent, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year, SetDateCallback &&callback) :
-			Window(desc),
-			callback(std::move(callback)),
-			min_year(std::max(EconomyTime::MIN_YEAR, min_year)),
-			max_year(std::min(EconomyTime::MAX_YEAR, max_year))
+	SetDateWindow(WindowDesc &desc, WindowNumber window_number, Window *parent, TimerGameEconomy::Date initial_date, TimerGameEconomy::Year min_year, TimerGameEconomy::Year max_year,
+		SetDateCallback &&callback) : Window(desc), callback(std::move(callback)), min_year(std::max(EconomyTime::MIN_YEAR, min_year)), max_year(std::min(EconomyTime::MAX_YEAR, max_year))
 	{
 		assert(this->min_year <= this->max_year);
 		this->parent = parent;
@@ -58,7 +55,7 @@ struct SetDateWindow : Window {
 
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
-		Point pt = { this->parent->left + this->parent->width / 2 - sm_width / 2, this->parent->top + this->parent->height / 2 - sm_height / 2 };
+		Point pt = {this->parent->left + this->parent->width / 2 - sm_width / 2, this->parent->top + this->parent->height / 2 - sm_height / 2};
 		return pt;
 	}
 
@@ -72,7 +69,8 @@ struct SetDateWindow : Window {
 		DropDownList list;
 
 		switch (widget) {
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 
 			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
@@ -103,7 +101,8 @@ struct SetDateWindow : Window {
 	{
 		Dimension d = {0, 0};
 		switch (widget) {
-			default: return;
+			default:
+				return;
 
 			case WID_SD_DAY:
 				for (uint i = 0; i < 31; i++) {
@@ -130,10 +129,14 @@ struct SetDateWindow : Window {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_SD_DAY:   return GetString(STR_DAY_NUMBER_1ST + this->date.day - 1);
-			case WID_SD_MONTH: return GetString(STR_MONTH_JAN + this->date.month);
-			case WID_SD_YEAR:  return GetString(STR_JUST_INT, this->date.year);
-			default: return this->Window::GetWidgetString(widget, stringid);
+			case WID_SD_DAY:
+				return GetString(STR_DAY_NUMBER_1ST + this->date.day - 1);
+			case WID_SD_MONTH:
+				return GetString(STR_MONTH_JAN + this->date.month);
+			case WID_SD_YEAR:
+				return GetString(STR_JUST_INT, this->date.year);
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
 
@@ -197,12 +200,7 @@ static constexpr NWidgetPart _nested_set_date_widgets[] = {
 /* clang-format on */
 
 /** Description of the date setting window. */
-static WindowDesc _set_date_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_SET_DATE, WC_NONE,
-	{},
-	_nested_set_date_widgets
-);
+static WindowDesc _set_date_desc(WDP_CENTER, nullptr, 0, 0, WC_SET_DATE, WC_NONE, {}, _nested_set_date_widgets);
 
 /**
  * Create the new 'set date' window

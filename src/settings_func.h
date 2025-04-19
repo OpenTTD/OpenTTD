@@ -11,8 +11,8 @@
 #define SETTINGS_FUNC_H
 
 #include "company_type.h"
-#include "string_type.h"
 #include "newgrf_config.h"
+#include "string_type.h"
 
 struct IniFile;
 struct WindowDesc;

@@ -46,30 +46,47 @@ public:
 	using index_type = Tindex;
 
 	uint32_t global_id; ///< Global ID for class, e.g. 'DFLT', 'WAYP', etc.
-	StringID name;    ///< Name of this class.
+	StringID name; ///< Name of this class.
 
 	/* Public constructor as emplace_back needs access. */
-	NewGRFClass(uint32_t global_id, StringID name) : global_id(global_id), name(name) { }
+	NewGRFClass(uint32_t global_id, StringID name) : global_id(global_id), name(name) {}
 
 	/**
 	 * Get read-only span of specs of this class.
 	 * @return Read-only span of specs.
 	 */
-	std::span<Tspec * const> Specs() const { return this->spec; }
+	std::span<Tspec *const> Specs() const
+	{
+		return this->spec;
+	}
 
 	/**
 	 * Get read-only span of all classes of this type.
 	 * @return Read-only span of classes.
 	 */
-	static std::span<NewGRFClass<Tspec, Tindex, Tmax> const> Classes() { return NewGRFClass::classes; }
+	static std::span<const NewGRFClass<Tspec, Tindex, Tmax>> Classes()
+	{
+		return NewGRFClass::classes;
+	}
 
 	void Insert(Tspec *spec);
 
-	Tindex Index() const { return this->index; }
+	Tindex Index() const
+	{
+		return this->index;
+	}
+
 	/** Get the number of allocated specs within the class. */
-	uint GetSpecCount() const { return static_cast<uint>(this->spec.size()); }
+	uint GetSpecCount() const
+	{
+		return static_cast<uint>(this->spec.size());
+	}
+
 	/** Get the number of potentially user-available specs within the class. */
-	uint GetUISpecCount() const { return this->ui_count; }
+	uint GetUISpecCount() const
+	{
+		return this->ui_count;
+	}
 
 	const Tspec *GetSpec(uint index) const;
 

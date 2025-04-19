@@ -18,14 +18,22 @@ public:
 	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
-	std::string_view GetName() const override { return "xaudio2"; }
+
+	std::string_view GetName() const override
+	{
+		return "xaudio2";
+	}
 };
 
 /** Factory for the XAudio2 sound driver. */
 class FSoundDriver_XAudio2 : public DriverFactoryBase {
 public:
 	FSoundDriver_XAudio2() : DriverFactoryBase(Driver::DT_SOUND, 10, "xaudio2", "XAudio2 Sound Driver (param hz,samples)") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_XAudio2>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<SoundDriver_XAudio2>();
+	}
 };
 
 #endif /* SOUND_XAUDIO2_H */

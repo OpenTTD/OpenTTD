@@ -11,33 +11,32 @@
 #define TRAIN_H
 
 #include "core/enum_type.hpp"
-
-#include "newgrf_engine.h"
 #include "cargotype.h"
-#include "rail.h"
 #include "engine_base.h"
-#include "rail_map.h"
 #include "ground_vehicle.hpp"
+#include "newgrf_engine.h"
+#include "rail.h"
+#include "rail_map.h"
 
 struct Train;
 
 /** Rail vehicle flags. */
 enum VehicleRailFlags : uint8_t {
-	VRF_REVERSING                     = 0,
-	VRF_POWEREDWAGON                  = 3, ///< Wagon is powered.
-	VRF_REVERSE_DIRECTION             = 4, ///< Reverse the visible direction of the vehicle.
+	VRF_REVERSING = 0,
+	VRF_POWEREDWAGON = 3, ///< Wagon is powered.
+	VRF_REVERSE_DIRECTION = 4, ///< Reverse the visible direction of the vehicle.
 
 	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6, ///< Electric train engine is allowed to run on normal rail. */
-	VRF_TOGGLE_REVERSE                = 7, ///< Used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only).
-	VRF_TRAIN_STUCK                   = 8, ///< Train can't get a path reservation.
-	VRF_LEAVING_STATION               = 9, ///< Train is just leaving a station.
+	VRF_TOGGLE_REVERSE = 7, ///< Used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only).
+	VRF_TRAIN_STUCK = 8, ///< Train can't get a path reservation.
+	VRF_LEAVING_STATION = 9, ///< Train is just leaving a station.
 };
 
 /** Modes for ignoring signals. */
 enum TrainForceProceeding : uint8_t {
-	TFP_NONE   = 0,    ///< Normal operation.
-	TFP_STUCK  = 1,    ///< Proceed till next signal, but ignore being stuck till then. This includes force leaving depots.
-	TFP_SIGNAL = 2,    ///< Ignore next signal, after the signal ignore being stuck.
+	TFP_NONE = 0, ///< Normal operation.
+	TFP_STUCK = 1, ///< Proceed till next signal, but ignore being stuck till then. This includes force leaving depots.
+	TFP_SIGNAL = 2, ///< Ignore next signal, after the signal ignore being stuck.
 };
 
 /** Flags for Train::ConsistChanged */
@@ -105,23 +104,51 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Train() : GroundVehicleBase() {}
+
 	/** We want to 'destruct' the right class. */
-	virtual ~Train() { this->PreDestructor(); }
+	virtual ~Train()
+	{
+		this->PreDestructor();
+	}
 
 	friend struct GroundVehicle<Train, VEH_TRAIN>; // GroundVehicle needs to use the acceleration functions defined at Train.
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
+
+	ExpensesType GetExpenseType(bool income) const override
+	{
+		return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN;
+	}
+
 	void PlayLeaveStationSound(bool force = false) const override;
-	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
+
+	bool IsPrimaryVehicle() const override
+	{
+		return this->IsFrontEngine();
+	}
+
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
-	int GetDisplaySpeed() const override { return this->gcache.last_speed; }
-	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed; }
+
+	int GetDisplaySpeed() const override
+	{
+		return this->gcache.last_speed;
+	}
+
+	int GetDisplayMaxSpeed() const override
+	{
+		return this->vcache.cached_max_speed;
+	}
+
 	Money GetRunningCost() const override;
 	int GetCursorImageOffset() const;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
+
+	bool IsInDepot() const override
+	{
+		return this->track == TRACK_BIT_DEPOT;
+	}
+
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;
@@ -180,7 +207,6 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	}
 
 protected: // These functions should not be called outside acceleration code.
-
 	/**
 	 * Allows to know the power value that this vehicle will use.
 	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.

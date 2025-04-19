@@ -8,24 +8,25 @@
 /** @file newgrf_act0_globalvar.cpp NewGRF Action 0x00 handler for global variables. */
 
 #include "../stdafx.h"
-#include "../debug.h"
+
+#include "../core/utf8.hpp"
 #include "../currency.h"
+#include "../debug.h"
 #include "../landscape.h"
 #include "../language.h"
-#include "../rev.h"
-#include "../string_func.h"
-#include "../core/utf8.hpp"
 #include "../newgrf.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
 #include "../newgrf_cargo.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_sound.h"
-#include "../vehicle_base.h"
 #include "../rail.h"
+#include "../rev.h"
+#include "../string_func.h"
+#include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
-#include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
+#include "newgrf_internal_vehicle.h"
 #include "newgrf_stringmapping.h"
 
 #include "table/strings.h"
@@ -110,16 +111,36 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 	/* Properties which are handled as a whole */
 	switch (prop) {
 		case 0x09: // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
-			return LoadTranslationTable<CargoLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<CargoLabel> & { return grf.cargo_list; }, "Cargo");
+			return LoadTranslationTable<CargoLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<CargoLabel> & {
+					return grf.cargo_list;
+				},
+				"Cargo");
 
 		case 0x12: // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
-			return LoadTranslationTable<RailTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RailTypeLabel> & { return grf.railtype_list; }, "Rail type");
+			return LoadTranslationTable<RailTypeLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<RailTypeLabel> & {
+					return grf.railtype_list;
+				},
+				"Rail type");
 
 		case 0x16: // Road type translation table; loading during both reservation and activation stage (in case it is selected depending on defined roadtypes)
-			return LoadTranslationTable<RoadTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.roadtype_list; }, "Road type");
+			return LoadTranslationTable<RoadTypeLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<RoadTypeLabel> & {
+					return grf.roadtype_list;
+				},
+				"Road type");
 
 		case 0x17: // Tram type translation table; loading during both reservation and activation stage (in case it is selected depending on defined tramtypes)
-			return LoadTranslationTable<RoadTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
+			return LoadTranslationTable<RoadTypeLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<RoadTypeLabel> & {
+					return grf.tramtype_list;
+				},
+				"Tram type");
 
 		case 0x18: // Badge translation table
 			return LoadBadgeTranslationTable(first, last, buf, _cur_gps.grffile->badge_list, "Badge");
@@ -260,8 +281,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				buf.Skip(8);
 				break;
 
-			case 0x13:   // Gender translation table
-			case 0x14:   // Case translation table
+			case 0x13: // Gender translation table
+			case 0x14: // Case translation table
 			case 0x15: { // Plural form translation
 				uint curidx = id; // The current index, i.e. language.
 				const LanguageMetadata *lang = curidx < MAX_LANG ? GetLanguage(curidx) : nullptr;
@@ -335,16 +356,36 @@ static ChangeInfoResult GlobalVarReserveInfo(uint first, uint last, int prop, By
 	/* Properties which are handled as a whole */
 	switch (prop) {
 		case 0x09: // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
-			return LoadTranslationTable<CargoLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<CargoLabel> & { return grf.cargo_list; }, "Cargo");
+			return LoadTranslationTable<CargoLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<CargoLabel> & {
+					return grf.cargo_list;
+				},
+				"Cargo");
 
 		case 0x12: // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
-			return LoadTranslationTable<RailTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RailTypeLabel> & { return grf.railtype_list; }, "Rail type");
+			return LoadTranslationTable<RailTypeLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<RailTypeLabel> & {
+					return grf.railtype_list;
+				},
+				"Rail type");
 
 		case 0x16: // Road type translation table; loading during both reservation and activation stage (in case it is selected depending on defined roadtypes)
-			return LoadTranslationTable<RoadTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.roadtype_list; }, "Road type");
+			return LoadTranslationTable<RoadTypeLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<RoadTypeLabel> & {
+					return grf.roadtype_list;
+				},
+				"Road type");
 
 		case 0x17: // Tram type translation table; loading during both reservation and activation stage (in case it is selected depending on defined tramtypes)
-			return LoadTranslationTable<RoadTypeLabel>(first, last, buf, [](GRFFile &grf) -> std::vector<RoadTypeLabel> & { return grf.tramtype_list; }, "Tram type");
+			return LoadTranslationTable<RoadTypeLabel>(
+				first, last, buf,
+				[](GRFFile &grf) -> std::vector<RoadTypeLabel> & {
+					return grf.tramtype_list;
+				},
+				"Tram type");
 
 		case 0x18: // Badge translation table
 			return LoadBadgeTranslationTable(first, last, buf, _cur_gps.grffile->badge_list, "Badge");
@@ -402,7 +443,6 @@ static ChangeInfoResult GlobalVarReserveInfo(uint first, uint last, int prop, By
 	return ret;
 }
 
-
 /**
  * Reads a variable common to VarAction2 and Action7/9/D.
  *
@@ -449,10 +489,10 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 			return true;
 
 		case 0x0B: { // TTDPatch version
-			uint major    = 2;
-			uint minor    = 6;
+			uint major = 2;
+			uint minor = 6;
 			uint revision = 1; // special case: 2.0.1 is 2.0.10
-			uint build    = 1382;
+			uint build = 1382;
 			*value = (major << 24) | (minor << 20) | (revision << 16) | build;
 			return true;
 		}
@@ -486,11 +526,11 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 			*value = _game_mode;
 			return true;
 
-		/* case 0x13: // Tile refresh offset to left    not implemented */
-		/* case 0x14: // Tile refresh offset to right   not implemented */
-		/* case 0x15: // Tile refresh offset upwards    not implemented */
-		/* case 0x16: // Tile refresh offset downwards  not implemented */
-		/* case 0x17: // temperate snow line            not implemented */
+			/* case 0x13: // Tile refresh offset to left    not implemented */
+			/* case 0x14: // Tile refresh offset to right   not implemented */
+			/* case 0x15: // Tile refresh offset upwards    not implemented */
+			/* case 0x16: // Tile refresh offset downwards  not implemented */
+			/* case 0x17: // temperate snow line            not implemented */
 
 		case 0x1A: // Always -1
 			*value = UINT_MAX;
@@ -515,7 +555,7 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 			return true;
 		}
 
-		/* case 0x1F: // locale dependent settings not implemented to avoid desync */
+			/* case 0x1F: // locale dependent settings not implemented to avoid desync */
 
 		case 0x20: { // snow line height
 			uint8_t snowline = GetSnowLine();
@@ -544,9 +584,19 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 			*value = TimerGameCalendar::year.base();
 			return true;
 
-		default: return false;
+		default:
+			return false;
 	}
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_GLOBALVAR>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return GlobalVarReserveInfo(first, last, prop, buf); }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_GLOBALVAR>::Activation(uint first, uint last, int prop, ByteReader &buf) { return GlobalVarChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_GLOBALVAR>::Reserve(uint first, uint last, int prop, ByteReader &buf)
+{
+	return GlobalVarReserveInfo(first, last, prop, buf);
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_GLOBALVAR>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return GlobalVarChangeInfo(first, last, prop, buf);
+}

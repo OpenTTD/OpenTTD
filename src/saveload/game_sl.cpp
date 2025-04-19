@@ -8,28 +8,27 @@
 /** @file game_sl.cpp Handles the saveload part of the GameScripts */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-
-#include "saveload.h"
-#include "compat/game_sl_compat.h"
-
-#include "../string_func.h"
 #include "../game/game.hpp"
 #include "../game/game_config.hpp"
-#include "../network/network.h"
 #include "../game/game_instance.hpp"
 #include "../game/game_text.hpp"
+#include "../network/network.h"
+#include "../string_func.h"
+#include "compat/game_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
 static std::string _game_saveload_name;
-static int         _game_saveload_version;
+static int _game_saveload_version;
 static std::string _game_saveload_settings;
 
 static const SaveLoad _game_script_desc[] = {
-	   SLEG_SSTR("name",      _game_saveload_name,         SLE_STR),
-	   SLEG_SSTR("settings",  _game_saveload_settings,     SLE_STR),
-	    SLEG_VAR("version",   _game_saveload_version,   SLE_UINT32),
+	SLEG_SSTR("name", _game_saveload_name, SLE_STR),
+	SLEG_SSTR("settings", _game_saveload_settings, SLE_STR),
+	SLEG_VAR("version", _game_saveload_version, SLE_UINT32),
 };
 
 static void SaveReal_GSDT(int)
@@ -120,10 +119,10 @@ static uint32_t _game_saveload_strings;
 
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLEG_SSTR("string", _game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
 	};
-	inline const static SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
 
 	void Save(LanguageStrings *ls) const override
 	{

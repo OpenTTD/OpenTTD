@@ -8,27 +8,25 @@
 /** @file script_instance.cpp Implementation of ScriptInstance. */
 
 #include "../stdafx.h"
-#include "../debug.h"
-#include "../saveload/saveload.h"
 
-#include "../script/squirrel_class.hpp"
-#include "../script/squirrel_std.hpp"
-
-#include "script_fatalerror.hpp"
-#include "script_storage.hpp"
-#include "script_info.hpp"
 #include "script_instance.hpp"
 
+#include "../company_base.h"
+#include "../company_func.h"
+#include "../debug.h"
+#include "../fileio_func.h"
+#include "../league_type.h"
+#include "../misc/endian_buffer.hpp"
+#include "../saveload/saveload.h"
+#include "../script/squirrel_class.hpp"
+#include "../script/squirrel_std.hpp"
 #include "api/script_controller.hpp"
 #include "api/script_error.hpp"
 #include "api/script_event.hpp"
 #include "api/script_log.hpp"
-
-#include "../company_base.h"
-#include "../company_func.h"
-#include "../fileio_func.h"
-#include "../league_type.h"
-#include "../misc/endian_buffer.hpp"
+#include "script_fatalerror.hpp"
+#include "script_info.hpp"
+#include "script_storage.hpp"
 
 #include "../safeguards.h"
 
@@ -49,7 +47,7 @@ static void PrintFunc(bool error_msg, const std::string &message)
 ScriptInstance::ScriptInstance(const char *APIName)
 {
 	this->storage = new ScriptStorage();
-	this->engine  = new Squirrel(APIName);
+	this->engine = new Squirrel(APIName);
 	this->engine->SetPrintFunction(&PrintFunc);
 }
 
@@ -186,9 +184,9 @@ void ScriptInstance::GameLoop()
 	if (this->is_paused) return;
 	this->controller->ticks++;
 
-	if (this->suspend   < -1) this->suspend++; // Multiplayer suspend, increase up to -1.
-	if (this->suspend   < 0)  return;          // Multiplayer suspend, wait for Continue().
-	if (--this->suspend > 0)  return;          // Singleplayer suspend, decrease to 0.
+	if (this->suspend < -1) this->suspend++; // Multiplayer suspend, increase up to -1.
+	if (this->suspend < 0) return; // Multiplayer suspend, wait for Continue().
+	if (--this->suspend > 0) return; // Singleplayer suspend, decrease to 0.
 
 	_current_company = ScriptObject::GetCompany();
 
@@ -201,14 +199,14 @@ void ScriptInstance::GameLoop()
 		try {
 			this->callback(this);
 		} catch (Script_Suspend &e) {
-			this->suspend  = e.GetSuspendTime();
+			this->suspend = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
 
 			return;
 		}
 	}
 
-	this->suspend  = 0;
+	this->suspend = 0;
 	this->callback = nullptr;
 
 	if (!this->is_started) {
@@ -229,9 +227,9 @@ void ScriptInstance::GameLoop()
 			}
 			ScriptObject::SetAllowDoCommand(true);
 			/* Start the script by calling Start() */
-			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.script.script_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
+			if (!this->engine->CallMethod(*this->instance, "Start", _settings_game.script.script_max_opcode_till_suspend) || !this->engine->IsSuspended()) this->Died();
 		} catch (Script_Suspend &e) {
-			this->suspend  = e.GetSuspendTime();
+			this->suspend = e.GetSuspendTime();
 			this->callback = e.GetSuspendCallback();
 		} catch (Script_FatalError &e) {
 			this->is_dead = true;
@@ -252,7 +250,7 @@ void ScriptInstance::GameLoop()
 	try {
 		if (!this->engine->Resume(_settings_game.script.script_max_opcode_till_suspend)) this->Died();
 	} catch (Script_Suspend &e) {
-		this->suspend  = e.GetSuspendTime();
+		this->suspend = e.GetSuspendTime();
 		this->callback = e.GetSuspendCallback();
 	} catch (Script_FatalError &e) {
 		this->is_dead = true;
@@ -314,7 +312,6 @@ void ScriptInstance::CollectGarbage()
 {
 	instance->engine->InsertResult(EndianBufferReader::ToValue<LeagueTableID>(ScriptObject::GetLastCommandResData()));
 }
-
 
 ScriptStorage *ScriptInstance::GetStorage()
 {
@@ -466,7 +463,7 @@ static const SaveLoad _script_byte[] = {
 			return true;
 		}
 
-		case OT_INSTANCE:{
+		case OT_INSTANCE: {
 			if (!test) {
 				_script_sl_byte = SQSL_INSTANCE;
 				SlObject(nullptr, _script_byte);
@@ -635,7 +632,8 @@ bool ScriptInstance::IsPaused()
 			return false;
 		}
 
-		default: SlErrorCorrupt("Invalid script data type");
+		default:
+			SlErrorCorrupt("Invalid script data type");
 	}
 }
 
@@ -648,9 +646,24 @@ bool ScriptInstance::IsPaused()
 		HSQUIRRELVM vm;
 		ScriptData *data;
 
-		bool operator()(const SQInteger &value) { sq_pushinteger(this->vm, value); return true; }
-		bool operator()(const std::string &value) { sq_pushstring(this->vm, value, -1); return true; }
-		bool operator()(const SQBool &value) { sq_pushbool(this->vm, value); return true; }
+		bool operator()(const SQInteger &value)
+		{
+			sq_pushinteger(this->vm, value);
+			return true;
+		}
+
+		bool operator()(const std::string &value)
+		{
+			sq_pushstring(this->vm, value, -1);
+			return true;
+		}
+
+		bool operator()(const SQBool &value)
+		{
+			sq_pushbool(this->vm, value);
+			return true;
+		}
+
 		bool operator()(const SQSaveLoadType &type)
 		{
 			switch (type) {
@@ -703,7 +716,8 @@ bool ScriptInstance::IsPaused()
 				case SQSL_ARRAY_TABLE_END:
 					return false;
 
-				default: NOT_REACHED();
+				default:
+					NOT_REACHED();
 			}
 		}
 	};

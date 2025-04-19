@@ -8,21 +8,21 @@
 /** @file strgen_base.cpp Tool to create computer readable (stand-alone) translation files. */
 
 #include "../stdafx.h"
+
 #include "../core/endian_func.hpp"
 #include "../core/mem_func.hpp"
+#include "../core/string_builder.hpp"
 #include "../error_func.h"
 #include "../string_func.h"
-#include "../core/string_builder.hpp"
-#include "../table/control_codes.h"
-
 #include "strgen.h"
 
+#include "../table/control_codes.h"
 #include "../table/strgen_tables.h"
 
 #include "../safeguards.h"
 
 StrgenState _strgen;
-static bool _translated;              ///< Whether the current language is not the master language
+static bool _translated; ///< Whether the current language is not the master language
 static const char *_cur_ident;
 static ParsedCommandStruct _cur_pcs;
 static size_t _cur_argidx;
@@ -33,6 +33,7 @@ struct ParsedCommandString {
 	std::optional<size_t> argno;
 	std::optional<uint8_t> casei;
 };
+
 static ParsedCommandString ParseCommandString(StringConsumer &consumer);
 static size_t TranslateArgumentIdx(size_t arg, size_t offset = 0);
 
@@ -41,10 +42,7 @@ static size_t TranslateArgumentIdx(size_t arg, size_t offset = 0);
  * @param caseidx The index of the case.
  * @param string  The translation of the case.
  */
-Case::Case(uint8_t caseidx, std::string_view string) :
-		caseidx(caseidx), string(string)
-{
-}
+Case::Case(uint8_t caseidx, std::string_view string) : caseidx(caseidx), string(string) {}
 
 /**
  * Create a new string.
@@ -53,10 +51,7 @@ Case::Case(uint8_t caseidx, std::string_view string) :
  * @param index   The index in the string table.
  * @param line    The line this string was found on.
  */
-LangString::LangString(std::string_view name, std::string_view english, size_t index, size_t line) :
-		name(name), english(english), index(index), line(line)
-{
-}
+LangString::LangString(std::string_view name, std::string_view english, size_t index, size_t line) : name(name), english(english), index(index), line(line) {}
 
 /** Free all data related to the translation. */
 void LangString::FreeTranslation()
@@ -252,8 +247,7 @@ void EmitPlural(StringBuilder &builder, std::string_view param, char32_t)
 	size_t expected = _plural_forms[_strgen.lang.plural_form].plural_count;
 	if (expected != words.size()) {
 		if (_translated) {
-			StrgenFatal("{}: Invalid number of plural forms. Expecting {}, found {}.", _cur_ident,
-				expected, words.size());
+			StrgenFatal("{}: Invalid number of plural forms. Expecting {}, found {}.", _cur_ident, expected, words.size());
 		} else {
 			if (_strgen.show_warnings) StrgenWarning("'{}' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
 			if (words.size() > expected) {
@@ -376,10 +370,7 @@ static ParsedCommandString ParseCommandString(StringConsumer &consumer)
  * @param master      Are we reading the master file?
  * @param translation Are we reading a translation?
  */
-StringReader::StringReader(StringData &data, const std::string &file, bool master, bool translation) :
-		data(data), file(file), master(master), translation(translation)
-{
-}
+StringReader::StringReader(StringData &data, const std::string &file, bool master, bool translation) : data(data), file(file), master(master), translation(translation) {}
 
 ParsedCommandStruct ExtractCommandString(std::string_view s, bool)
 {
@@ -414,14 +405,7 @@ const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 {
 	if (a == nullptr) return nullptr;
 
-	if (a->cmd == "STRING1" ||
-			a->cmd == "STRING2" ||
-			a->cmd == "STRING3" ||
-			a->cmd == "STRING4" ||
-			a->cmd == "STRING5" ||
-			a->cmd == "STRING6" ||
-			a->cmd == "STRING7" ||
-			a->cmd == "RAW_STRING") {
+	if (a->cmd == "STRING1" || a->cmd == "STRING2" || a->cmd == "STRING3" || a->cmd == "STRING4" || a->cmd == "STRING5" || a->cmd == "STRING6" || a->cmd == "STRING7" || a->cmd == "RAW_STRING") {
 		return FindCmd("STRING");
 	}
 
@@ -470,7 +454,7 @@ static bool CheckCommandsMatch(std::string_view a, std::string_view b, std::stri
 	for (size_t i = 0; i < templ.consuming_commands.max_size(); i++) {
 		if (TranslateCmdForCompare(templ.consuming_commands[i]) != lang.consuming_commands[i]) {
 			StrgenWarning("{}: Param idx #{} '{}' doesn't match with template command '{}'", name, i,
-				lang.consuming_commands[i]  == nullptr ? "<empty>" : TranslateCmdForCompare(lang.consuming_commands[i])->cmd,
+				lang.consuming_commands[i] == nullptr ? "<empty>" : TranslateCmdForCompare(lang.consuming_commands[i])->cmd,
 				templ.consuming_commands[i] == nullptr ? "<empty>" : templ.consuming_commands[i]->cmd);
 			result = false;
 		}
@@ -515,13 +499,13 @@ void StringReader::HandleString(std::string_view src)
 	std::string_view value = consumer.Read(StringConsumer::npos);
 
 	/* Check string is valid UTF-8 */
-	for (StringConsumer validation_consumer(value); validation_consumer.AnyBytesLeft(); ) {
+	for (StringConsumer validation_consumer(value); validation_consumer.AnyBytesLeft();) {
 		auto c = validation_consumer.TryReadUtf8();
 		if (!c.has_value()) StrgenFatal("Invalid UTF-8 sequence in '{}'", value);
 		if (*c <= 0x001F || // ASCII control character range
-				*c == 0x200B || // Zero width space
-				(*c >= 0xE000 && *c <= 0xF8FF) || // Private range
-				(*c >= 0xFFF0 && *c <= 0xFFFF)) { // Specials range
+			*c == 0x200B || // Zero width space
+			(*c >= 0xE000 && *c <= 0xF8FF) || // Private range
+			(*c >= 0xFFF0 && *c <= 0xFFFF)) { // Specials range
 			StrgenFatal("Unwanted UTF-8 character U+{:04X} in sequence '{}'", static_cast<uint32_t>(*c), value);
 		}
 	}

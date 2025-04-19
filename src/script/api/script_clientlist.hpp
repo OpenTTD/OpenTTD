@@ -10,9 +10,8 @@
 #ifndef SCRIPT_CLIENTLIST_HPP
 #define SCRIPT_CLIENTLIST_HPP
 
-#include "script_list.hpp"
 #include "script_company.hpp"
-
+#include "script_list.hpp"
 
 /**
  * Creates a list of clients that are currently in game.

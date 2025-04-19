@@ -8,18 +8,20 @@
 /** @file ini.cpp Definition of the IniItem class, related to reading/writing '*.ini' files. */
 
 #include "stdafx.h"
+
+#include <fstream>
+
 #include "debug.h"
+#include "fileio_func.h"
 #include "ini_type.h"
 #include "string_func.h"
-#include "fileio_func.h"
-#include <fstream>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #endif
 
 #if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 199309L) || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE >= 500)
-# include <unistd.h>
-# include <fcntl.h>
+#	include <fcntl.h>
+#	include <unistd.h>
 #endif
 
 #include <filesystem>
@@ -30,9 +32,7 @@
  * Create a new ini file with given group names.
  * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
  */
-IniFile::IniFile(const IniGroupNameList &list_group_names) : IniLoadFile(list_group_names)
-{
-}
+IniFile::IniFile(const IniGroupNameList &list_group_names) : IniLoadFile(list_group_names) {}
 
 /**
  * Save the Ini file's data to the disk.
@@ -46,7 +46,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	 * that file. This to prevent that when OpenTTD crashes during the save
 	 * you end up with a truncated configuration file.
 	 */
-	std::string file_new{ filename };
+	std::string file_new{filename};
 	file_new.append(".new");
 
 	std::ofstream os(OTTD2FS(file_new).c_str());
@@ -58,8 +58,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 			os << item.comment;
 
 			/* protect item->name with quotes if needed */
-			if (item.name.find(' ') != std::string::npos ||
-				item.name[0] == '[') {
+			if (item.name.find(' ') != std::string::npos || item.name[0] == '[') {
 				os << "\"" << item.name << "\"";
 			} else {
 				os << item.name;
@@ -108,7 +107,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	return FioFOpenFile(filename, "rb", subdir, size);
 }
 
-/* virtual */ void IniFile::ReportFileError(const char * const pre, const char * const buffer, const char * const post)
+/* virtual */ void IniFile::ReportFileError(const char *const pre, const char *const buffer, const char *const post)
 {
 	ShowInfo("{}{}{}", pre, buffer, post);
 }

@@ -51,8 +51,7 @@ inline bool AutoslopeCheckForEntranceEdge(TileIndex tile, int z_new, Slope tileh
 inline bool AutoslopeCheckForAxis(TileIndex tile, int z_new, Slope tileh_new, Axis axis)
 {
 	DiagDirection direction = AxisToDiagDir(axis);
-	return AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction) &&
-		AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction));
+	return AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction) && AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction));
 }
 
 /**
@@ -64,9 +63,7 @@ inline bool AutoslopeCheckForAxis(TileIndex tile, int z_new, Slope tileh_new, Ax
  */
 inline bool AutoslopeEnabled()
 {
-	return (_settings_game.construction.autoslope &&
-	        (_current_company < MAX_COMPANIES ||
-	         (_current_company == OWNER_NONE && _game_mode == GM_EDITOR)));
+	return (_settings_game.construction.autoslope && (_current_company < MAX_COMPANIES || (_current_company == OWNER_NONE && _game_mode == GM_EDITOR)));
 }
 
 #endif /* AUTOSLOPE_H */

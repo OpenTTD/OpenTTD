@@ -14,24 +14,25 @@
 
 /** Types of graphics in the base graphics set */
 enum GraphicsFileType : uint8_t {
-	GFT_BASE,     ///< Base sprites for all climates
-	GFT_LOGOS,    ///< Logos, landscape icons and original terrain generator sprites
-	GFT_ARCTIC,   ///< Landscape replacement sprites for arctic
+	GFT_BASE, ///< Base sprites for all climates
+	GFT_LOGOS, ///< Logos, landscape icons and original terrain generator sprites
+	GFT_ARCTIC, ///< Landscape replacement sprites for arctic
 	GFT_TROPICAL, ///< Landscape replacement sprites for tropical
-	GFT_TOYLAND,  ///< Landscape replacement sprites for toyland
-	GFT_EXTRA,    ///< Extra sprites that were not part of the original sprites
-	MAX_GFT,      ///< We are looking for this amount of GRFs
+	GFT_TOYLAND, ///< Landscape replacement sprites for toyland
+	GFT_EXTRA, ///< Extra sprites that were not part of the original sprites
+	MAX_GFT, ///< We are looking for this amount of GRFs
 };
 
 /** Blitter type for base graphics sets. */
 enum BlitterType : uint8_t {
-	BLT_8BPP,       ///< Base set has 8 bpp sprites only.
-	BLT_32BPP,      ///< Base set has both 8 bpp and 32 bpp sprites.
+	BLT_8BPP, ///< Base set has 8 bpp sprites only.
+	BLT_32BPP, ///< Base set has both 8 bpp and 32 bpp sprites.
 };
 
 struct GRFConfig;
 
-template <> struct BaseSetTraits<struct GraphicsSet> {
+template <>
+struct BaseSetTraits<struct GraphicsSet> {
 	static constexpr size_t num_files = MAX_GFT;
 	static constexpr bool search_in_tars = true;
 	static constexpr std::string_view set_type = "graphics";
@@ -49,7 +50,12 @@ public:
 	~GraphicsSet();
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename);
-	GRFConfig *GetExtraConfig() const { return this->extra_cfg.get(); }
+
+	GRFConfig *GetExtraConfig() const
+	{
+		return this->extra_cfg.get();
+	}
+
 	GRFConfig &GetOrCreateExtraConfig() const;
 	bool IsConfigurable() const;
 	void CopyCompatibleConfig(const GraphicsSet &src);
@@ -63,10 +69,11 @@ public:
 	/** Values loaded from config file. */
 	struct Ini {
 		std::string name;
-		uint32_t shortname;                 ///< unique key for base set
-		uint32_t extra_version;             ///< version of the extra GRF
+		uint32_t shortname; ///< unique key for base set
+		uint32_t extra_version; ///< version of the extra GRF
 		std::vector<uint32_t> extra_params; ///< parameters for the extra GRF
 	};
+
 	static inline Ini ini_data;
 };
 

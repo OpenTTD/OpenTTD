@@ -8,11 +8,13 @@
 /** @file script_gamesettings.cpp Implementation of ScriptGameSettings. */
 
 #include "../../stdafx.h"
+
 #include "script_gamesettings.hpp"
-#include "../../settings_internal.h"
-#include "../../settings_type.h"
+
 #include "../../command_type.h"
 #include "../../settings_cmd.h"
+#include "../../settings_internal.h"
+#include "../../settings_type.h"
 
 #include "../../safeguards.h"
 
@@ -49,10 +51,15 @@
 /* static */ bool ScriptGameSettings::IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type)
 {
 	switch (vehicle_type) {
-		case ScriptVehicle::VT_RAIL:  return _settings_game.ai.ai_disable_veh_train;
-		case ScriptVehicle::VT_ROAD:  return _settings_game.ai.ai_disable_veh_roadveh;
-		case ScriptVehicle::VT_WATER: return _settings_game.ai.ai_disable_veh_ship;
-		case ScriptVehicle::VT_AIR:   return _settings_game.ai.ai_disable_veh_aircraft;
-		default:                       return true;
+		case ScriptVehicle::VT_RAIL:
+			return _settings_game.ai.ai_disable_veh_train;
+		case ScriptVehicle::VT_ROAD:
+			return _settings_game.ai.ai_disable_veh_roadveh;
+		case ScriptVehicle::VT_WATER:
+			return _settings_game.ai.ai_disable_veh_ship;
+		case ScriptVehicle::VT_AIR:
+			return _settings_game.ai.ai_disable_veh_aircraft;
+		default:
+			return true;
 	}
 }

@@ -12,11 +12,12 @@
 #ifndef NETWORK_CORE_TCP_GAME_H
 #define NETWORK_CORE_TCP_GAME_H
 
+#include <chrono>
+
+#include "../../core/pool_type.hpp"
+#include "../network_type.h"
 #include "os_abstraction.h"
 #include "tcp.h"
-#include "../network_type.h"
-#include "../../core/pool_type.hpp"
-#include <chrono>
 
 /**
  * Enum with all types of TCP packets.
@@ -30,24 +31,24 @@ enum PacketGameType : uint8_t {
 	 */
 
 	/* Packets sent by socket accepting code without ever constructing a client socket instance. */
-	PACKET_SERVER_FULL,                  ///< The server is full and has no place for you.
-	PACKET_SERVER_BANNED,                ///< The server has banned you.
+	PACKET_SERVER_FULL, ///< The server is full and has no place for you.
+	PACKET_SERVER_BANNED, ///< The server has banned you.
 
 	/* Packets used by the client to join and an error message when the revision is wrong. */
-	PACKET_CLIENT_JOIN,                  ///< The client telling the server it wants to join.
-	PACKET_SERVER_ERROR,                 ///< Server sending an error message to the client.
+	PACKET_CLIENT_JOIN, ///< The client telling the server it wants to join.
+	PACKET_SERVER_ERROR, ///< Server sending an error message to the client.
 
 	/* Unused packet types, formerly used for the pre-game lobby. */
-	PACKET_CLIENT_UNUSED,                ///< Unused.
-	PACKET_SERVER_UNUSED,                ///< Unused.
+	PACKET_CLIENT_UNUSED, ///< Unused.
+	PACKET_SERVER_UNUSED, ///< Unused.
 
 	/* Packets used to get the game info. */
-	PACKET_SERVER_GAME_INFO,             ///< Information about the server.
-	PACKET_CLIENT_GAME_INFO,             ///< Request information about the server.
+	PACKET_SERVER_GAME_INFO, ///< Information about the server.
+	PACKET_CLIENT_GAME_INFO, ///< Request information about the server.
 
 	/* A server quitting this game. */
-	PACKET_SERVER_NEWGAME,               ///< The server is preparing to start a new game.
-	PACKET_SERVER_SHUTDOWN,              ///< The server is shutting down.
+	PACKET_SERVER_NEWGAME, ///< The server is preparing to start a new game.
+	PACKET_SERVER_SHUTDOWN, ///< The server is shutting down.
 
 	/*
 	 * Packets after here assume that the client
@@ -60,31 +61,31 @@ enum PacketGameType : uint8_t {
 	 */
 
 	/* After the join step, the first perform game authentication and enabling encryption. */
-	PACKET_SERVER_AUTH_REQUEST,          ///< The server requests the client to authenticate using a number of methods.
-	PACKET_CLIENT_AUTH_RESPONSE,         ///< The client responds to the authentication request.
-	PACKET_SERVER_ENABLE_ENCRYPTION,     ///< The server tells that authentication has completed and requests to enable encryption with the keys of the last \c PACKET_CLIENT_AUTH_RESPONSE.
+	PACKET_SERVER_AUTH_REQUEST, ///< The server requests the client to authenticate using a number of methods.
+	PACKET_CLIENT_AUTH_RESPONSE, ///< The client responds to the authentication request.
+	PACKET_SERVER_ENABLE_ENCRYPTION, ///< The server tells that authentication has completed and requests to enable encryption with the keys of the last \c PACKET_CLIENT_AUTH_RESPONSE.
 
 	/* After the authentication is done, the next step is identification. */
-	PACKET_CLIENT_IDENTIFY,              ///< Client telling the server the client's name and requested company.
+	PACKET_CLIENT_IDENTIFY, ///< Client telling the server the client's name and requested company.
 
 	/* After the identify step, the next is checking NewGRFs. */
-	PACKET_SERVER_CHECK_NEWGRFS,         ///< Server sends NewGRF IDs and MD5 checksums for the client to check.
-	PACKET_CLIENT_NEWGRFS_CHECKED,       ///< Client acknowledges that it has all required NewGRFs.
+	PACKET_SERVER_CHECK_NEWGRFS, ///< Server sends NewGRF IDs and MD5 checksums for the client to check.
+	PACKET_CLIENT_NEWGRFS_CHECKED, ///< Client acknowledges that it has all required NewGRFs.
 
 	/* The server welcomes the authenticated client and sends information of other clients. */
-	PACKET_SERVER_WELCOME,               ///< Server welcomes you and gives you your #ClientID.
-	PACKET_SERVER_CLIENT_INFO,           ///< Server sends you information about a client.
+	PACKET_SERVER_WELCOME, ///< Server welcomes you and gives you your #ClientID.
+	PACKET_SERVER_CLIENT_INFO, ///< Server sends you information about a client.
 
 	/* Getting the savegame/map. */
-	PACKET_CLIENT_GETMAP,                ///< Client requests the actual map.
-	PACKET_SERVER_WAIT,                  ///< Server tells the client there are some people waiting for the map as well.
-	PACKET_SERVER_MAP_BEGIN,             ///< Server tells the client that it is beginning to send the map.
-	PACKET_SERVER_MAP_SIZE,              ///< Server tells the client what the (compressed) size of the map is.
-	PACKET_SERVER_MAP_DATA,              ///< Server sends bits of the map to the client.
-	PACKET_SERVER_MAP_DONE,              ///< Server tells it has just sent the last bits of the map to the client.
-	PACKET_CLIENT_MAP_OK,                ///< Client tells the server that it received the whole map.
+	PACKET_CLIENT_GETMAP, ///< Client requests the actual map.
+	PACKET_SERVER_WAIT, ///< Server tells the client there are some people waiting for the map as well.
+	PACKET_SERVER_MAP_BEGIN, ///< Server tells the client that it is beginning to send the map.
+	PACKET_SERVER_MAP_SIZE, ///< Server tells the client what the (compressed) size of the map is.
+	PACKET_SERVER_MAP_DATA, ///< Server sends bits of the map to the client.
+	PACKET_SERVER_MAP_DONE, ///< Server tells it has just sent the last bits of the map to the client.
+	PACKET_CLIENT_MAP_OK, ///< Client tells the server that it received the whole map.
 
-	PACKET_SERVER_JOIN,                  ///< Tells clients that a new client has joined.
+	PACKET_SERVER_JOIN, ///< Tells clients that a new client has joined.
 
 	/*
 	 * At this moment the client has the map and
@@ -93,38 +94,38 @@ enum PacketGameType : uint8_t {
 	 */
 
 	/* Game progress monitoring. */
-	PACKET_SERVER_FRAME,                 ///< Server tells the client what frame it is in, and thus to where the client may progress.
-	PACKET_CLIENT_ACK,                   ///< The client tells the server which frame it has executed.
-	PACKET_SERVER_SYNC,                  ///< Server tells the client what the random state should be.
+	PACKET_SERVER_FRAME, ///< Server tells the client what frame it is in, and thus to where the client may progress.
+	PACKET_CLIENT_ACK, ///< The client tells the server which frame it has executed.
+	PACKET_SERVER_SYNC, ///< Server tells the client what the random state should be.
 
 	/* Sending commands around. */
-	PACKET_CLIENT_COMMAND,               ///< Client executed a command and sends it to the server.
-	PACKET_SERVER_COMMAND,               ///< Server distributes a command to (all) the clients.
+	PACKET_CLIENT_COMMAND, ///< Client executed a command and sends it to the server.
+	PACKET_SERVER_COMMAND, ///< Server distributes a command to (all) the clients.
 
 	/* Human communication! */
-	PACKET_CLIENT_CHAT,                  ///< Client said something that should be distributed.
-	PACKET_SERVER_CHAT,                  ///< Server distributing the message of a client (or itself).
-	PACKET_SERVER_EXTERNAL_CHAT,         ///< Server distributing the message from external source.
+	PACKET_CLIENT_CHAT, ///< Client said something that should be distributed.
+	PACKET_SERVER_CHAT, ///< Server distributing the message of a client (or itself).
+	PACKET_SERVER_EXTERNAL_CHAT, ///< Server distributing the message from external source.
 
 	/* Remote console. */
-	PACKET_CLIENT_RCON,                  ///< Client asks the server to execute some command.
-	PACKET_SERVER_RCON,                  ///< Response of the executed command on the server.
+	PACKET_CLIENT_RCON, ///< Client asks the server to execute some command.
+	PACKET_SERVER_RCON, ///< Response of the executed command on the server.
 
 	/* Moving a client.*/
-	PACKET_CLIENT_MOVE,                  ///< A client would like to be moved to another company.
-	PACKET_SERVER_MOVE,                  ///< Server tells everyone that someone is moved to another company.
+	PACKET_CLIENT_MOVE, ///< A client would like to be moved to another company.
+	PACKET_SERVER_MOVE, ///< Server tells everyone that someone is moved to another company.
 
 	/* Configuration updates. */
-	PACKET_CLIENT_SET_NAME,              ///< A client changes its name.
-	PACKET_SERVER_CONFIG_UPDATE,         ///< Some network configuration important to the client changed.
+	PACKET_CLIENT_SET_NAME, ///< A client changes its name.
+	PACKET_SERVER_CONFIG_UPDATE, ///< Some network configuration important to the client changed.
 
 	/* A client quitting. */
-	PACKET_CLIENT_QUIT,                  ///< A client tells the server it is going to quit.
-	PACKET_SERVER_QUIT,                  ///< A server tells that a client has quit.
-	PACKET_CLIENT_ERROR,                 ///< A client reports an error to the server.
-	PACKET_SERVER_ERROR_QUIT,            ///< A server tells that a client has hit an error and did quit.
+	PACKET_CLIENT_QUIT, ///< A client tells the server it is going to quit.
+	PACKET_SERVER_QUIT, ///< A server tells that a client has quit.
+	PACKET_CLIENT_ERROR, ///< A client reports an error to the server.
+	PACKET_SERVER_ERROR_QUIT, ///< A server tells that a client has hit an error and did quit.
 
-	PACKET_END,                          ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_END, ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Packet that wraps a command */
@@ -139,7 +140,7 @@ using CommandQueue = std::vector<CommandPacket>;
 
 /** Base socket handler for all TCP sockets */
 class NetworkGameSocketHandler : public NetworkTCPSocketHandler {
-/* TODO: rewrite into a proper class */
+	/* TODO: rewrite into a proper class */
 private:
 	NetworkClientInfo *info = nullptr; ///< Client info related to this socket
 	bool is_pending_deletion = false; ///< Whether this socket is pending deletion
@@ -482,6 +483,7 @@ protected:
 	NetworkRecvStatus HandlePacket(Packet &p);
 
 	NetworkGameSocketHandler(SOCKET s);
+
 public:
 	ClientID client_id = INVALID_CLIENT_ID; ///< Client identifier
 	uint32_t last_frame = 0; ///< Last frame we have executed
@@ -522,7 +524,10 @@ public:
 	const char *ReceiveCommand(Packet &p, CommandPacket &cp);
 	void SendCommand(Packet &p, const CommandPacket &cp);
 
-	bool IsPendingDeletion() const { return this->is_pending_deletion; }
+	bool IsPendingDeletion() const
+	{
+		return this->is_pending_deletion;
+	}
 
 	void DeferDeletion();
 	static void ProcessDeferredDeletions();

@@ -8,28 +8,28 @@
 /** @file game_gui.cpp %Window for configuring the Game Script */
 
 #include "../stdafx.h"
+
+#include "game_gui.hpp"
+
+#include "../dropdown_func.h"
+#include "../dropdown_type.h"
 #include "../error.h"
-#include "../settings_gui.h"
-#include "../querystring_gui.h"
-#include "../window_func.h"
 #include "../network/network.h"
 #include "../network/network_content.h"
-#include "../dropdown_type.h"
-#include "../dropdown_func.h"
-#include "../timer/timer.h"
-#include "../timer/timer_window.h"
-
-#include "game.hpp"
-#include "game_gui.hpp"
-#include "game_config.hpp"
-#include "game_info.hpp"
+#include "../querystring_gui.h"
 #include "../script/script_gui.h"
 #include "../script_config.hpp"
+#include "../settings_gui.h"
+#include "../timer/timer.h"
+#include "../timer/timer_window.h"
+#include "../window_func.h"
+#include "game.hpp"
+#include "game_config.hpp"
+#include "game_info.hpp"
 
 #include "table/strings.h"
 
 #include "../safeguards.h"
-
 
 /** Widgets for the configure GS window. */
 /* clang-format off */
@@ -77,12 +77,7 @@ static constexpr NWidgetPart _nested_gs_config_widgets[] = {
 /* clang-format on */
 
 /** Window definition for the configure GS window. */
-static WindowDesc _gs_config_desc(
-	WDP_CENTER, "settings_gs_config", 500, 350,
-	WC_GAME_OPTIONS, WC_NONE,
-	{},
-	_nested_gs_config_widgets
-);
+static WindowDesc _gs_config_desc(WDP_CENTER, "settings_gs_config", 500, 350, WC_GAME_OPTIONS, WC_NONE, {}, _nested_gs_config_widgets);
 
 /**
  * Window to configure which GSs will start.
@@ -203,7 +198,8 @@ struct GSConfigWindow : public Window {
 						if (config_item.complete_labels) {
 							DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
 						} else {
-							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+							DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0,
+								editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 						}
 					}
 
@@ -240,7 +236,7 @@ struct GSConfigWindow : public Window {
 				break;
 			}
 
-			case WID_GSC_CHANGE:  // choose other Game Script
+			case WID_GSC_CHANGE: // choose other Game Script
 				ShowScriptListWindow((CompanyID)OWNER_DEITY, _ctrl_pressed);
 				break;
 
@@ -379,9 +375,9 @@ struct GSConfigWindow : public Window {
 
 	/** When reset, unclick the button after a small timeout. */
 	TimeoutTimer<TimerWindow> unclick_timeout = {std::chrono::milliseconds(150), [this]() {
-		this->clicked_button = -1;
-		this->SetDirty();
-	}};
+													 this->clicked_button = -1;
+													 this->SetDirty();
+												 }};
 
 	/**
 	 * Some data on this window has become invalid.
@@ -403,13 +399,11 @@ struct GSConfigWindow : public Window {
 		this->CloseChildWindows(WC_DROPDOWN_MENU);
 		this->CloseChildWindows(WC_QUERY_STRING);
 	}
+
 private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
 	{
-		return _game_mode == GM_MENU
-			|| _game_mode == GM_EDITOR
-			|| config_item.flags.Test(ScriptConfigFlag::InGame)
-			|| _settings_client.gui.ai_developer_tools;
+		return _game_mode == GM_MENU || _game_mode == GM_EDITOR || config_item.flags.Test(ScriptConfigFlag::InGame) || _settings_client.gui.ai_developer_tools;
 	}
 
 	void SetValue(int value)

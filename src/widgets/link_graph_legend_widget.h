@@ -15,16 +15,16 @@
 /** Widgets of the WC_LINKGRAPH_LEGEND. */
 
 enum LinkGraphLegendWidgets : WidgetID {
-	WID_LGL_CAPTION,           ///< Caption widget.
-	WID_LGL_SATURATION,        ///< Saturation legend.
+	WID_LGL_CAPTION, ///< Caption widget.
+	WID_LGL_SATURATION, ///< Saturation legend.
 	WID_LGL_SATURATION_FIRST,
 	WID_LGL_SATURATION_LAST = WID_LGL_SATURATION_FIRST + 11,
-	WID_LGL_COMPANIES,         ///< Company selection widget.
+	WID_LGL_COMPANIES, ///< Company selection widget.
 	WID_LGL_COMPANY_FIRST,
 	WID_LGL_COMPANY_LAST = WID_LGL_COMPANY_FIRST + MAX_COMPANIES - 1,
 	WID_LGL_COMPANIES_ALL,
 	WID_LGL_COMPANIES_NONE,
-	WID_LGL_CARGOES,           ///< Cargo selection widget.
+	WID_LGL_CARGOES, ///< Cargo selection widget.
 	WID_LGL_CARGO_FIRST,
 	WID_LGL_CARGO_LAST = WID_LGL_CARGO_FIRST + NUM_CARGO - 1,
 	WID_LGL_CARGOES_ALL,

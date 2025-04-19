@@ -8,13 +8,14 @@
 /** @file waypoint_sl.cpp Code handling saving and loading of waypoints */
 
 #include "../stdafx.h"
-#include "../waypoint_base.h"
+
 #include "../debug.h"
-#include "../newgrf_station.h"
-#include "../vehicle_base.h"
-#include "../town.h"
 #include "../newgrf.h"
+#include "../newgrf_station.h"
 #include "../timer/timer_game_calendar.h"
+#include "../town.h"
+#include "../vehicle_base.h"
+#include "../waypoint_base.h"
 #include "saveload_internal.h"
 
 #include "table/strings.h"
@@ -88,7 +89,9 @@ void MoveWaypointsToBaseStations()
 		 * from the GRF ID / station index. */
 		for (OldWaypoint &wp : _old_waypoints) {
 			const auto specs = StationClass::Get(STAT_CLASS_WAYP)->Specs();
-			auto found = std::ranges::find_if(specs, [&wp](const StationSpec *spec) { return spec != nullptr && spec->grf_prop.grfid == wp.grfid && spec->grf_prop.local_id == wp.localidx; });
+			auto found = std::ranges::find_if(specs, [&wp](const StationSpec *spec) {
+				return spec != nullptr && spec->grf_prop.grfid == wp.grfid && spec->grf_prop.local_id == wp.localidx;
+			});
 			if (found != std::end(specs)) wp.spec = *found;
 		}
 	}
@@ -116,13 +119,13 @@ void MoveWaypointsToBaseStations()
 		}
 
 		Waypoint *new_wp = new Waypoint(t);
-		new_wp->town       = wp.town;
-		new_wp->town_cn    = wp.town_cn;
-		new_wp->name       = wp.name;
+		new_wp->town = wp.town;
+		new_wp->town_cn = wp.town_cn;
+		new_wp->name = wp.name;
 		new_wp->delete_ctr = 0; // Just reset delete counter for once.
 		new_wp->build_date = wp.build_date;
-		new_wp->owner      = wp.owner;
-		new_wp->string_id  = STR_SV_STNAME_WAYPOINT;
+		new_wp->owner = wp.owner;
+		new_wp->string_id = STR_SV_STNAME_WAYPOINT;
 
 		/* The tile might've been reserved! */
 		Tile tile(t);
@@ -166,21 +169,21 @@ void ResetOldWaypoints()
 }
 
 static const SaveLoad _old_waypoint_desc[] = {
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
-	SLE_CONDVAR(OldWaypoint, xy,         SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16,                 SLV_12, SLV_122),
-	SLE_CONDREF(OldWaypoint, town,       REF_TOWN,                  SLV_122, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_12, SLV_89),
-	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 SLV_89, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                SL_MIN_VERSION, SLV_84),
-	SLE_CONDSSTR(OldWaypoint, name,      SLE_STR,                    SLV_84, SL_MAX_VERSION),
-	    SLE_VAR(OldWaypoint, delete_ctr, SLE_UINT8),
+	SLE_CONDVAR(OldWaypoint, xy, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
+	SLE_CONDVAR(OldWaypoint, xy, SLE_UINT32, SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, town_index, SLE_UINT16, SLV_12, SLV_122),
+	SLE_CONDREF(OldWaypoint, town, REF_TOWN, SLV_122, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, town_cn, SLE_FILE_U8 | SLE_VAR_U16, SLV_12, SLV_89),
+	SLE_CONDVAR(OldWaypoint, town_cn, SLE_UINT16, SLV_89, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, string_id, SLE_STRINGID, SL_MIN_VERSION, SLV_84),
+	SLE_CONDSSTR(OldWaypoint, name, SLE_STR, SLV_84, SL_MAX_VERSION),
+	SLE_VAR(OldWaypoint, delete_ctr, SLE_UINT8),
 
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  SLV_3, SLV_31),
-	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32,                  SLV_31, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, localidx,   SLE_UINT8,                   SLV_3, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, grfid,      SLE_UINT32,                 SLV_17, SL_MAX_VERSION),
-	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_101, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32, SLV_3, SLV_31),
+	SLE_CONDVAR(OldWaypoint, build_date, SLE_INT32, SLV_31, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, localidx, SLE_UINT8, SLV_3, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, grfid, SLE_UINT32, SLV_17, SL_MAX_VERSION),
+	SLE_CONDVAR(OldWaypoint, owner, SLE_UINT8, SLV_101, SL_MAX_VERSION),
 };
 
 struct CHKPChunkHandler : ChunkHandler {

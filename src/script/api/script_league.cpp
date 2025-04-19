@@ -11,13 +11,12 @@
 
 #include "script_league.hpp"
 
-#include "../script_instance.hpp"
-#include "script_error.hpp"
 #include "../../league_base.h"
 #include "../../league_cmd.h"
+#include "../script_instance.hpp"
+#include "script_error.hpp"
 
 #include "../../safeguards.h"
-
 
 /* static */ bool ScriptLeagueTable::IsValidLeagueTable(LeagueTableID table_id)
 {
@@ -49,7 +48,8 @@
 	return ::LeagueTableElement::IsValidID(element_id);
 }
 
-/* static */ LeagueTableElementID ScriptLeagueTable::NewElement(LeagueTableID table, SQInteger rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, SQInteger link_target)
+/* static */ LeagueTableElementID ScriptLeagueTable::NewElement(
+	LeagueTableID table, SQInteger rating, ScriptCompany::CompanyID company, Text *text, Text *score, LinkType link_type, SQInteger link_target)
 {
 	ScriptObjectRef text_counter(text);
 	ScriptObjectRef score_counter(score);
@@ -71,7 +71,9 @@
 
 	EnforcePrecondition(LEAGUE_TABLE_ELEMENT_INVALID, IsValidLink(Link((::LinkType)link_type, link_target)));
 
-	if (!ScriptObject::Command<CMD_CREATE_LEAGUE_TABLE_ELEMENT>::Do(&ScriptInstance::DoCommandReturnLeagueTableElementID, table, rating, c, encoded_text, encoded_score, (::LinkType)link_type, (::LinkTargetID)link_target)) return LEAGUE_TABLE_ELEMENT_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_LEAGUE_TABLE_ELEMENT>::Do(
+			&ScriptInstance::DoCommandReturnLeagueTableElementID, table, rating, c, encoded_text, encoded_score, (::LinkType)link_type, (::LinkTargetID)link_target))
+		return LEAGUE_TABLE_ELEMENT_INVALID;
 
 	/* In case of test-mode, we return LeagueTableElementID 0 */
 	return LeagueTableElementID::Begin();

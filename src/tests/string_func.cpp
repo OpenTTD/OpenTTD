@@ -9,13 +9,14 @@
 
 #include "../stdafx.h"
 
+#include "../string_func.h"
+
 #include "../3rdparty/catch2/catch.hpp"
 
-#include "../string_func.h"
-#include "../strings_func.h"
 #include "../core/string_builder.hpp"
-#include "../table/control_codes.h"
+#include "../strings_func.h"
 
+#include "../table/control_codes.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -342,7 +343,6 @@ TEST_CASE("StrEndsWithIgnoreCase - std::string_view")
 	CHECK(!StrEndsWithIgnoreCase(base.substr(0, 1), base.substr(0, 2)));
 }
 
-
 TEST_CASE("FormatArrayAsHex")
 {
 	CHECK(FormatArrayAsHex(std::array<uint8_t, 0>{}) == "");
@@ -392,14 +392,7 @@ TEST_CASE("ConvertHexToBytes")
 	CHECK(bytes3[7] == 0xf0);
 }
 
-static const std::vector<std::pair<std::string, std::string>> _str_trim_testcases = {
-	{"a", "a"},
-	{"  a", "a"},
-	{"a  ", "a"},
-	{"  a   ", "a"},
-	{"  a  b  c  ", "a  b  c"},
-	{"   ", ""}
-};
+static const std::vector<std::pair<std::string, std::string>> _str_trim_testcases = {{"a", "a"}, {"  a", "a"}, {"a  ", "a"}, {"  a   ", "a"}, {"  a  b  c  ", "a  b  c"}, {"   ", ""}};
 
 TEST_CASE("StrTrimInPlace")
 {
@@ -409,8 +402,9 @@ TEST_CASE("StrTrimInPlace")
 	}
 }
 
-TEST_CASE("StrTrimView") {
-	for (const auto& [input, expected] : _str_trim_testcases) {
+TEST_CASE("StrTrimView")
+{
+	for (const auto &[input, expected] : _str_trim_testcases) {
 		CHECK(StrTrimView(input) == expected);
 	}
 }
@@ -439,7 +433,7 @@ static void ComposePart(StringBuilder &builder, const std::string &value)
 
 /* Helper to compose a string from unicode or string parts. */
 template <typename... Args>
-static std::string Compose(Args &&... args)
+static std::string Compose(Args &&...args)
 {
 	std::string result;
 	StringBuilder builder(result);
@@ -477,10 +471,12 @@ TEST_CASE("FixSCCEncoded")
 	CHECK(FixSCCEncodedWrapper("\uE00055:\"Foo\":\"Bar\"", false) == Compose(SCC_ENCODED, "55", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Foo", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Bar"));
 
 	/* Test conversion with two string parameters surrounding a numeric parameter. */
-	CHECK(FixSCCEncodedWrapper("\uE0006:\"Foo\":7CA:\"Bar\"", false) == Compose(SCC_ENCODED, "6", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Foo", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "7CA", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Bar"));
+	CHECK(FixSCCEncodedWrapper("\uE0006:\"Foo\":7CA:\"Bar\"", false) ==
+		Compose(SCC_ENCODED, "6", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Foo", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "7CA", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Bar"));
 
 	/* Test conversion with one sub-string and two string parameters. */
-	CHECK(FixSCCEncodedWrapper("\uE000777:\uE0008888:\"Foo\":\"BarBaz\"", false) == Compose(SCC_ENCODED, "777", SCC_RECORD_SEPARATOR, SCC_ENCODED, "8888", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Foo", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "BarBaz"));
+	CHECK(FixSCCEncodedWrapper("\uE000777:\uE0008888:\"Foo\":\"BarBaz\"", false) ==
+		Compose(SCC_ENCODED, "777", SCC_RECORD_SEPARATOR, SCC_ENCODED, "8888", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Foo", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "BarBaz"));
 }
 
 extern void FixSCCEncodedNegative(std::string &str);

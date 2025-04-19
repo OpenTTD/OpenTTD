@@ -16,7 +16,7 @@
  * @tparam T The type under consideration.
  */
 template <typename T>
-concept ConvertibleThroughBase = requires(T const a) {
+concept ConvertibleThroughBase = requires(const T a) {
 	typename T::BaseType;
 	{ a.base() } noexcept -> std::convertible_to<int64_t>;
 };
@@ -36,17 +36,45 @@ concept ConvertibleThroughBaseOrTo = std::is_convertible_v<T, TTo> || Convertibl
 template <typename Container>
 class ReferenceThroughBaseContainer : public Container {
 public:
-	Container::reference at(size_t pos) { return this->Container::at(pos); }
-	Container::reference at(const ConvertibleThroughBase auto &pos) { return this->Container::at(pos.base()); }
+	Container::reference at(size_t pos)
+	{
+		return this->Container::at(pos);
+	}
 
-	Container::const_reference at(size_t pos) const { return this->Container::at(pos); }
-	Container::const_reference at(const ConvertibleThroughBase auto &pos) const { return this->Container::at(pos.base()); }
+	Container::reference at(const ConvertibleThroughBase auto &pos)
+	{
+		return this->Container::at(pos.base());
+	}
 
-	Container::reference operator[](size_t pos) { return this->Container::operator[](pos); }
-	Container::reference operator[](const ConvertibleThroughBase auto &pos) { return this->Container::operator[](pos.base()); }
+	Container::const_reference at(size_t pos) const
+	{
+		return this->Container::at(pos);
+	}
 
-	Container::const_reference operator[](size_t pos) const { return this->Container::operator[](pos); }
-	Container::const_reference operator[](const ConvertibleThroughBase auto &pos) const { return this->Container::operator[](pos.base()); }
+	Container::const_reference at(const ConvertibleThroughBase auto &pos) const
+	{
+		return this->Container::at(pos.base());
+	}
+
+	Container::reference operator[](size_t pos)
+	{
+		return this->Container::operator[](pos);
+	}
+
+	Container::reference operator[](const ConvertibleThroughBase auto &pos)
+	{
+		return this->Container::operator[](pos.base());
+	}
+
+	Container::const_reference operator[](size_t pos) const
+	{
+		return this->Container::operator[](pos);
+	}
+
+	Container::const_reference operator[](const ConvertibleThroughBase auto &pos) const
+	{
+		return this->Container::operator[](pos.base());
+	}
 };
 
 #endif /* CONVERTIBLE_THROUGH_BASE_HPP */

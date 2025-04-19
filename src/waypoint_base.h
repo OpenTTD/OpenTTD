@@ -16,7 +16,7 @@
  * Flags for Waypoint::waypoint_flags.
  */
 enum WaypointFlags : uint8_t {
-	WPF_ROAD                    = 0, ///< This is a road waypoint
+	WPF_ROAD = 0, ///< This is a road waypoint
 };
 
 /** Representation of a waypoint. */
@@ -29,7 +29,8 @@ struct Waypoint final : SpecializedStation<Waypoint, true> {
 	 * Create a waypoint at the given tile.
 	 * @param tile The location of the waypoint.
 	 */
-	Waypoint(TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(tile) { }
+	Waypoint(TileIndex tile = INVALID_TILE) : SpecializedStation<Waypoint, true>(tile) {}
+
 	~Waypoint();
 
 	void UpdateVirtCoord() override;

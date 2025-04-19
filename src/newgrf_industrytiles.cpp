@@ -8,16 +8,18 @@
 /** @file newgrf_industrytiles.cpp NewGRF handling of industry tiles. */
 
 #include "stdafx.h"
-#include "debug.h"
-#include "landscape.h"
-#include "newgrf_badge.h"
+
 #include "newgrf_industrytiles.h"
-#include "newgrf_sound.h"
-#include "industry.h"
-#include "town.h"
+
 #include "command_func.h"
-#include "water.h"
+#include "debug.h"
+#include "industry.h"
+#include "landscape.h"
 #include "newgrf_animation_base.h"
+#include "newgrf_badge.h"
+#include "newgrf_sound.h"
+#include "town.h"
+#include "water.h"
 
 #include "table/strings.h"
 
@@ -63,23 +65,29 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 {
 	switch (variable) {
 		/* Construction state of the tile: a value between 0 and 3 */
-		case 0x40: return (IsTileType(this->tile, MP_INDUSTRY)) ? GetIndustryConstructionStage(this->tile) : 0;
+		case 0x40:
+			return (IsTileType(this->tile, MP_INDUSTRY)) ? GetIndustryConstructionStage(this->tile) : 0;
 
 		/* Terrain type */
-		case 0x41: return GetTerrainType(this->tile);
+		case 0x41:
+			return GetTerrainType(this->tile);
 
 		/* Current town zone of the tile in the nearest town */
-		case 0x42: return GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile);
+		case 0x42:
+			return GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile);
 
 		/* Relative position */
-		case 0x43: return GetRelativePosition(this->tile, this->industry->location.tile);
+		case 0x43:
+			return GetRelativePosition(this->tile, this->industry->location.tile);
 
 		/* Animation frame. Like house variable 46 but can contain anything 0..FF. */
-		case 0x44: return IsTileType(this->tile, MP_INDUSTRY) ? GetAnimationFrame(this->tile) : 0;
+		case 0x44:
+			return IsTileType(this->tile, MP_INDUSTRY) ? GetAnimationFrame(this->tile) : 0;
 
 		/* Land info of nearby tiles */
-		case 0x60: return GetNearbyIndustryTileInformation(parameter, this->tile,
-				this->industry == nullptr ? (IndustryID)IndustryID::Invalid() : this->industry->index, true, this->ro.grffile->grf_version >= 8);
+		case 0x60:
+			return GetNearbyIndustryTileInformation(
+				parameter, this->tile, this->industry == nullptr ? (IndustryID)IndustryID::Invalid() : this->industry->index, true, this->ro.grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x61: {
@@ -91,9 +99,11 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 		}
 
 		/* Get industry tile ID at offset */
-		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->tile), this->industry, this->ro.grffile->grfid);
+		case 0x62:
+			return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->tile), this->industry, this->ro.grffile->grfid);
 
-		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustryTileSpec(GetIndustryGfx(this->tile))->badges, parameter);
+		case 0x7A:
+			return GetBadgeVariableResult(*this->ro.grffile, GetIndustryTileSpec(GetIndustryGfx(this->tile))->badges, parameter);
 	}
 
 	Debug(grf, 1, "Unhandled industry tile variable 0x{:X}", variable);
@@ -138,12 +148,9 @@ static const GRFFile *GetIndTileGrffile(IndustryGfx gfx)
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
-IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
-			CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-	: SpecializedResolverObject<IndustryRandomTriggers>(GetIndTileGrffile(gfx), callback, callback_param1, callback_param2),
-	indtile_scope(*this, indus, tile),
-	ind_scope(*this, tile, indus, indus->type),
-	gfx(gfx)
+IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2) :
+	SpecializedResolverObject<IndustryRandomTriggers>(GetIndTileGrffile(gfx), callback, callback_param1, callback_param2), indtile_scope(*this, indus, tile),
+	ind_scope(*this, tile, indus, indus->type), gfx(gfx)
 {
 	this->root_spritegroup = GetIndustryTileSpec(gfx)->grf_prop.GetSpriteGroup();
 }
@@ -163,7 +170,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGro
 	const DrawTileSprites *dts = group->ProcessRegisters(&stage);
 
 	SpriteID image = dts->ground.sprite;
-	PaletteID pal  = dts->ground.pal;
+	PaletteID pal = dts->ground.pal;
 
 	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) image += stage;
 	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += stage;
@@ -230,7 +237,8 @@ extern bool IsSlopeRefused(Slope current, Slope refused);
  * @param creation_type The circumstances the industry is created under.
  * @return Succeeded or failed command.
  */
-CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, size_t layout_index, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type)
+CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, size_t layout_index,
+	uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type)
 {
 	Industry ind;
 	ind.index = IndustryID::Invalid();
@@ -260,11 +268,11 @@ uint16_t GetSimpleIndustryCallback(CallbackID callback, uint32_t param1, uint32_
 }
 
 /** Helper class for animation control. */
-struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, int, GetSimpleIndustryCallback, TileAnimationFrameAnimationHelper<Industry> > {
-	static constexpr CallbackID cb_animation_speed      = CBID_INDTILE_ANIMATION_SPEED;
+struct IndustryAnimationBase : public AnimationBase<IndustryAnimationBase, IndustryTileSpec, Industry, int, GetSimpleIndustryCallback, TileAnimationFrameAnimationHelper<Industry>> {
+	static constexpr CallbackID cb_animation_speed = CBID_INDTILE_ANIMATION_SPEED;
 	static constexpr CallbackID cb_animation_next_frame = CBID_INDTILE_ANIMATION_NEXT_FRAME;
 
-	static constexpr IndustryTileCallbackMask cbm_animation_speed      = IndustryTileCallbackMask::AnimationSpeed;
+	static constexpr IndustryTileCallbackMask cbm_animation_speed = IndustryTileCallbackMask::AnimationSpeed;
 	static constexpr IndustryTileCallbackMask cbm_animation_next_frame = IndustryTileCallbackMask::AnimationNextFrame;
 };
 
@@ -385,4 +393,3 @@ void TriggerIndustryRandomisation(Industry *ind, IndustryRandomTrigger trigger)
 	}
 	DoReseedIndustry(ind, reseed_industry);
 }
-

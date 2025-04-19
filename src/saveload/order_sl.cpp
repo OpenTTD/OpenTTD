@@ -9,13 +9,12 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/order_sl_compat.h"
-
-#include "saveload_internal.h"
+#include "../network/network.h"
 #include "../order_backup.h"
 #include "../settings_type.h"
-#include "../network/network.h"
+#include "compat/order_sl_compat.h"
+#include "saveload.h"
+#include "saveload_internal.h"
 
 #include "../safeguards.h"
 
@@ -38,8 +37,12 @@ void Order::ConvertFromOldSavegame()
 
 	switch (this->GetType()) {
 		/* Only a few types need the other savegame conversions. */
-		case OT_GOTO_DEPOT: case OT_GOTO_STATION: case OT_LOADING: break;
-		default: return;
+		case OT_GOTO_DEPOT:
+		case OT_GOTO_STATION:
+		case OT_LOADING:
+			break;
+		default:
+			return;
 	}
 
 	if (this->GetType() != OT_GOTO_DEPOT) {
@@ -105,14 +108,14 @@ Order UnpackOldOrder(uint16_t packed)
 SaveLoadTable GetOrderDescription()
 {
 	static const SaveLoad _order_desc[] = {
-		     SLE_VAR(Order, type,           SLE_UINT8),
-		     SLE_VAR(Order, flags,          SLE_UINT8),
-		     SLE_VAR(Order, dest,           SLE_UINT16),
-		     SLE_REF(Order, next,           REF_ORDER),
-		 SLE_CONDVAR(Order, refit_cargo,    SLE_UINT8,   SLV_36, SL_MAX_VERSION),
-		 SLE_CONDVAR(Order, wait_time,      SLE_UINT16,  SLV_67, SL_MAX_VERSION),
-		 SLE_CONDVAR(Order, travel_time,    SLE_UINT16,  SLV_67, SL_MAX_VERSION),
-		 SLE_CONDVAR(Order, max_speed,      SLE_UINT16, SLV_172, SL_MAX_VERSION),
+		SLE_VAR(Order, type, SLE_UINT8),
+		SLE_VAR(Order, flags, SLE_UINT8),
+		SLE_VAR(Order, dest, SLE_UINT16),
+		SLE_REF(Order, next, REF_ORDER),
+		SLE_CONDVAR(Order, refit_cargo, SLE_UINT8, SLV_36, SL_MAX_VERSION),
+		SLE_CONDVAR(Order, wait_time, SLE_UINT16, SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Order, travel_time, SLE_UINT16, SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Order, max_speed, SLE_UINT16, SLV_172, SL_MAX_VERSION),
 	};
 
 	return _order_desc;
@@ -201,7 +204,7 @@ struct ORDRChunkHandler : ChunkHandler {
 SaveLoadTable GetOrderListDescription()
 {
 	static const SaveLoad _orderlist_desc[] = {
-		SLE_REF(OrderList, first,              REF_ORDER),
+		SLE_REF(OrderList, first, REF_ORDER),
 	};
 
 	return _orderlist_desc;
@@ -232,7 +235,6 @@ struct ORDLChunkHandler : ChunkHandler {
 			OrderList *list = new (OrderListID(index)) OrderList(0);
 			SlObject(list, slt);
 		}
-
 	}
 
 	void FixPointers() const override
@@ -246,22 +248,22 @@ struct ORDLChunkHandler : ChunkHandler {
 SaveLoadTable GetOrderBackupDescription()
 {
 	static const SaveLoad _order_backup_desc[] = {
-		     SLE_VAR(OrderBackup, user,                     SLE_UINT32),
-		     SLE_VAR(OrderBackup, tile,                     SLE_UINT32),
-		     SLE_VAR(OrderBackup, group,                    SLE_UINT16),
-		 SLE_CONDVAR(OrderBackup, service_interval,         SLE_FILE_U32 | SLE_VAR_U16,  SL_MIN_VERSION, SLV_192),
-		 SLE_CONDVAR(OrderBackup, service_interval,         SLE_UINT16,                SLV_192, SL_MAX_VERSION),
-		    SLE_SSTR(OrderBackup, name,                     SLE_STR),
-		 SLE_CONDREF(OrderBackup, clone,                    REF_VEHICLE,               SLV_192, SL_MAX_VERSION),
-		     SLE_VAR(OrderBackup, cur_real_order_index,     SLE_UINT8),
-		 SLE_CONDVAR(OrderBackup, cur_implicit_order_index, SLE_UINT8,                 SLV_176, SL_MAX_VERSION),
-		 SLE_CONDVAR(OrderBackup, current_order_time,       SLE_UINT32,                SLV_176, SL_MAX_VERSION),
-		 SLE_CONDVAR(OrderBackup, lateness_counter,         SLE_INT32,                 SLV_176, SL_MAX_VERSION),
-		 SLE_CONDVAR(OrderBackup, timetable_start,          SLE_FILE_I32 | SLE_VAR_U64, SLV_176, SLV_TIMETABLE_START_TICKS_FIX),
-		 SLE_CONDVAR(OrderBackup, timetable_start,          SLE_UINT64,                 SLV_TIMETABLE_START_TICKS_FIX, SL_MAX_VERSION),
-		 SLE_CONDVAR(OrderBackup, vehicle_flags,            SLE_FILE_U8 | SLE_VAR_U16, SLV_176, SLV_180),
-		 SLE_CONDVAR(OrderBackup, vehicle_flags,            SLE_UINT16,                SLV_180, SL_MAX_VERSION),
-		     SLE_REF(OrderBackup, orders,                   REF_ORDER),
+		SLE_VAR(OrderBackup, user, SLE_UINT32),
+		SLE_VAR(OrderBackup, tile, SLE_UINT32),
+		SLE_VAR(OrderBackup, group, SLE_UINT16),
+		SLE_CONDVAR(OrderBackup, service_interval, SLE_FILE_U32 | SLE_VAR_U16, SL_MIN_VERSION, SLV_192),
+		SLE_CONDVAR(OrderBackup, service_interval, SLE_UINT16, SLV_192, SL_MAX_VERSION),
+		SLE_SSTR(OrderBackup, name, SLE_STR),
+		SLE_CONDREF(OrderBackup, clone, REF_VEHICLE, SLV_192, SL_MAX_VERSION),
+		SLE_VAR(OrderBackup, cur_real_order_index, SLE_UINT8),
+		SLE_CONDVAR(OrderBackup, cur_implicit_order_index, SLE_UINT8, SLV_176, SL_MAX_VERSION),
+		SLE_CONDVAR(OrderBackup, current_order_time, SLE_UINT32, SLV_176, SL_MAX_VERSION),
+		SLE_CONDVAR(OrderBackup, lateness_counter, SLE_INT32, SLV_176, SL_MAX_VERSION),
+		SLE_CONDVAR(OrderBackup, timetable_start, SLE_FILE_I32 | SLE_VAR_U64, SLV_176, SLV_TIMETABLE_START_TICKS_FIX),
+		SLE_CONDVAR(OrderBackup, timetable_start, SLE_UINT64, SLV_TIMETABLE_START_TICKS_FIX, SL_MAX_VERSION),
+		SLE_CONDVAR(OrderBackup, vehicle_flags, SLE_FILE_U8 | SLE_VAR_U16, SLV_176, SLV_180),
+		SLE_CONDVAR(OrderBackup, vehicle_flags, SLE_UINT16, SLV_180, SL_MAX_VERSION),
+		SLE_REF(OrderBackup, orders, REF_ORDER),
 	};
 
 	return _order_backup_desc;

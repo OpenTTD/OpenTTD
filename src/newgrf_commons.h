@@ -13,52 +13,52 @@
 #ifndef NEWGRF_COMMONS_H
 #define NEWGRF_COMMONS_H
 
-#include "sprite.h"
 #include "core/alloc_type.hpp"
 #include "command_type.h"
-#include "direction_type.h"
 #include "company_type.h"
+#include "direction_type.h"
+#include "sprite.h"
 
 /** Context for tile accesses */
 enum TileContext : uint8_t {
-	TCX_NORMAL,         ///< Nothing special.
+	TCX_NORMAL, ///< Nothing special.
 	TCX_UPPER_HALFTILE, ///< Querying information about the upper part of a tile with halftile foundation.
-	TCX_ON_BRIDGE,      ///< Querying information about stuff on the bridge (via some bridgehead).
+	TCX_ON_BRIDGE, ///< Querying information about stuff on the bridge (via some bridgehead).
 };
 
 /**
  * Flags to enable register usage in sprite layouts.
  */
 enum TileLayoutFlags : uint8_t {
-	TLF_NOTHING           = 0x00,
+	TLF_NOTHING = 0x00,
 
-	TLF_DODRAW            = 0x01,   ///< Only draw sprite if value of register TileLayoutRegisters::dodraw is non-zero.
-	TLF_SPRITE            = 0x02,   ///< Add signed offset to sprite from register TileLayoutRegisters::sprite.
-	TLF_PALETTE           = 0x04,   ///< Add signed offset to palette from register TileLayoutRegisters::palette.
-	TLF_CUSTOM_PALETTE    = 0x08,   ///< Palette is from Action 1 (moved to SPRITE_MODIFIER_CUSTOM_SPRITE in palette during loading).
+	TLF_DODRAW = 0x01, ///< Only draw sprite if value of register TileLayoutRegisters::dodraw is non-zero.
+	TLF_SPRITE = 0x02, ///< Add signed offset to sprite from register TileLayoutRegisters::sprite.
+	TLF_PALETTE = 0x04, ///< Add signed offset to palette from register TileLayoutRegisters::palette.
+	TLF_CUSTOM_PALETTE = 0x08, ///< Palette is from Action 1 (moved to SPRITE_MODIFIER_CUSTOM_SPRITE in palette during loading).
 
-	TLF_BB_XY_OFFSET      = 0x10,   ///< Add signed offset to bounding box X and Y positions from register TileLayoutRegisters::delta.parent[0..1].
-	TLF_BB_Z_OFFSET       = 0x20,   ///< Add signed offset to bounding box Z positions from register TileLayoutRegisters::delta.parent[2].
+	TLF_BB_XY_OFFSET = 0x10, ///< Add signed offset to bounding box X and Y positions from register TileLayoutRegisters::delta.parent[0..1].
+	TLF_BB_Z_OFFSET = 0x20, ///< Add signed offset to bounding box Z positions from register TileLayoutRegisters::delta.parent[2].
 
-	TLF_CHILD_X_OFFSET    = 0x10,   ///< Add signed offset to child sprite X positions from register TileLayoutRegisters::delta.child[0].
-	TLF_CHILD_Y_OFFSET    = 0x20,   ///< Add signed offset to child sprite Y positions from register TileLayoutRegisters::delta.child[1].
+	TLF_CHILD_X_OFFSET = 0x10, ///< Add signed offset to child sprite X positions from register TileLayoutRegisters::delta.child[0].
+	TLF_CHILD_Y_OFFSET = 0x20, ///< Add signed offset to child sprite Y positions from register TileLayoutRegisters::delta.child[1].
 
-	TLF_SPRITE_VAR10      = 0x40,   ///< Resolve sprite with a specific value in variable 10.
-	TLF_PALETTE_VAR10     = 0x80,   ///< Resolve palette with a specific value in variable 10.
+	TLF_SPRITE_VAR10 = 0x40, ///< Resolve sprite with a specific value in variable 10.
+	TLF_PALETTE_VAR10 = 0x80, ///< Resolve palette with a specific value in variable 10.
 
-	TLF_KNOWN_FLAGS       = 0xFF,   ///< Known flags. Any unknown set flag will disable the GRF.
+	TLF_KNOWN_FLAGS = 0xFF, ///< Known flags. Any unknown set flag will disable the GRF.
 
 	/** Flags which are still required after loading the GRF. */
-	TLF_DRAWING_FLAGS     = TLF_KNOWN_FLAGS & ~TLF_CUSTOM_PALETTE,
+	TLF_DRAWING_FLAGS = TLF_KNOWN_FLAGS & ~TLF_CUSTOM_PALETTE,
 
 	/** Flags which do not work for the (first) ground sprite. */
-	TLF_NON_GROUND_FLAGS  = TLF_BB_XY_OFFSET | TLF_BB_Z_OFFSET | TLF_CHILD_X_OFFSET | TLF_CHILD_Y_OFFSET,
+	TLF_NON_GROUND_FLAGS = TLF_BB_XY_OFFSET | TLF_BB_Z_OFFSET | TLF_CHILD_X_OFFSET | TLF_CHILD_Y_OFFSET,
 
 	/** Flags which refer to using multiple action-1-2-3 chains. */
-	TLF_VAR10_FLAGS       = TLF_SPRITE_VAR10 | TLF_PALETTE_VAR10,
+	TLF_VAR10_FLAGS = TLF_SPRITE_VAR10 | TLF_PALETTE_VAR10,
 
 	/** Flags which require resolving the action-1-2-3 chain for the sprite, even if it is no action-1 sprite. */
-	TLF_SPRITE_REG_FLAGS  = TLF_DODRAW | TLF_SPRITE | TLF_BB_XY_OFFSET | TLF_BB_Z_OFFSET | TLF_CHILD_X_OFFSET | TLF_CHILD_Y_OFFSET,
+	TLF_SPRITE_REG_FLAGS = TLF_DODRAW | TLF_SPRITE | TLF_BB_XY_OFFSET | TLF_BB_Z_OFFSET | TLF_CHILD_X_OFFSET | TLF_CHILD_Y_OFFSET,
 
 	/** Flags which require resolving the action-1-2-3 chain for the palette, even if it is no action-1 palette. */
 	TLF_PALETTE_REG_FLAGS = TLF_PALETTE,
@@ -76,11 +76,16 @@ inline uint GetConstructionStageOffset(uint construction_stage, uint num_sprites
 	assert(num_sprites > 0);
 	if (num_sprites > 4) num_sprites = 4;
 	switch (construction_stage) {
-		case 0: return 0;
-		case 1: return num_sprites > 2 ? 1 : 0;
-		case 2: return num_sprites > 2 ? num_sprites - 2 : 0;
-		case 3: return num_sprites - 1;
-		default: NOT_REACHED();
+		case 0:
+			return 0;
+		case 1:
+			return num_sprites > 2 ? 1 : 0;
+		case 2:
+			return num_sprites > 2 ? num_sprites - 2 : 0;
+		case 3:
+			return num_sprites - 1;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -89,17 +94,19 @@ inline uint GetConstructionStageOffset(uint construction_stage, uint num_sprites
  */
 struct TileLayoutRegisters {
 	TileLayoutFlags flags; ///< Flags defining which members are valid and to be used.
-	uint8_t dodraw;          ///< Register deciding whether the sprite shall be drawn at all. Non-zero means drawing.
-	uint8_t sprite;          ///< Register specifying a signed offset for the sprite.
-	uint8_t palette;         ///< Register specifying a signed offset for the palette.
-	uint16_t max_sprite_offset;  ///< Maximum offset to add to the sprite. (limited by size of the spriteset)
+	uint8_t dodraw; ///< Register deciding whether the sprite shall be drawn at all. Non-zero means drawing.
+	uint8_t sprite; ///< Register specifying a signed offset for the sprite.
+	uint8_t palette; ///< Register specifying a signed offset for the palette.
+	uint16_t max_sprite_offset; ///< Maximum offset to add to the sprite. (limited by size of the spriteset)
 	uint16_t max_palette_offset; ///< Maximum offset to add to the palette. (limited by size of the spriteset)
+
 	union {
-		uint8_t parent[3];   ///< Registers for signed offsets for the bounding box position of parent sprites.
-		uint8_t child[2];    ///< Registers for signed offsets for the position of child sprites.
+		uint8_t parent[3]; ///< Registers for signed offsets for the bounding box position of parent sprites.
+		uint8_t child[2]; ///< Registers for signed offsets for the position of child sprites.
 	} delta;
-	uint8_t sprite_var10;    ///< Value for variable 10 when resolving the sprite.
-	uint8_t palette_var10;   ///< Value for variable 10 when resolving the palette.
+
+	uint8_t sprite_var10; ///< Value for variable 10 when resolving the sprite.
+	uint8_t palette_var10; ///< Value for variable 10 when resolving the palette.
 };
 
 static const uint TLR_MAX_VAR10 = 7; ///< Maximum value for var 10.
@@ -147,8 +154,10 @@ struct NewGRFSpriteLayout : DrawTileSprites {
 		return {++result_seq.begin(), result_seq.end()};
 	}
 
-	std::span<const DrawTileSeqStruct> GetSequence() const override { return {this->seq.begin(), this->seq.end()}; }
-
+	std::span<const DrawTileSeqStruct> GetSequence() const override
+	{
+		return {this->seq.begin(), this->seq.end()};
+	}
 
 private:
 	static std::vector<DrawTileSeqStruct> result_seq; ///< Temporary storage when preprocessing spritelayouts.
@@ -167,7 +176,7 @@ private:
  * if the GRF containing the new entity is not available.
  */
 struct EntityIDMapping {
-	uint32_t grfid;          ///< The GRF ID of the file the entity belongs to
+	uint32_t grfid; ///< The GRF ID of the file the entity belongs to
 	uint16_t entity_id; ///< The entity ID within the GRF file
 	uint16_t substitute_id; ///< The (original) entity ID to use if this GRF is not available
 };
@@ -177,11 +186,15 @@ protected:
 	std::vector<uint16_t> entity_overrides;
 	std::vector<uint32_t> grfid_overrides;
 
-	uint16_t max_offset;   ///< what is the length of the original entity's array of specs
+	uint16_t max_offset; ///< what is the length of the original entity's array of specs
 	uint16_t max_entities; ///< what is the amount of entities, old and new summed
 
-	uint16_t invalid_id;   ///< ID used to detected invalid entities
-	virtual bool CheckValidNewID([[maybe_unused]] uint16_t testid) { return true; }
+	uint16_t invalid_id; ///< ID used to detected invalid entities
+
+	virtual bool CheckValidNewID([[maybe_unused]] uint16_t testid)
+	{
+		return true;
+	}
 
 public:
 	std::vector<EntityIDMapping> mappings; ///< mapping of ids from grf files.  Public out of convenience
@@ -199,26 +212,31 @@ public:
 	uint16_t GetSubstituteID(uint16_t entity_id) const;
 	virtual uint16_t GetID(uint16_t grf_local_id, uint32_t grfid) const;
 
-	inline uint16_t GetMaxMapping() const { return this->max_entities; }
-	inline uint16_t GetMaxOffset() const { return this->max_offset; }
+	inline uint16_t GetMaxMapping() const
+	{
+		return this->max_entities;
+	}
+
+	inline uint16_t GetMaxOffset() const
+	{
+		return this->max_offset;
+	}
 };
 
-
 struct HouseSpec;
+
 class HouseOverrideManager : public OverrideManagerBase {
 public:
-	HouseOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
-			OverrideManagerBase(offset, maximum, invalid) {}
+	HouseOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) : OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(HouseSpec &&hs);
 };
 
-
 struct IndustrySpec;
+
 class IndustryOverrideManager : public OverrideManagerBase {
 public:
-	IndustryOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
-			OverrideManagerBase(offset, maximum, invalid) {}
+	IndustryOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) : OverrideManagerBase(offset, maximum, invalid) {}
 
 	uint16_t AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id) override;
 	uint16_t GetID(uint16_t grf_local_id, uint32_t grfid) const override;
@@ -226,45 +244,56 @@ public:
 	void SetEntitySpec(IndustrySpec &&inds);
 };
 
-
 struct IndustryTileSpec;
+
 class IndustryTileOverrideManager : public OverrideManagerBase {
 protected:
-	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override
+	{
+		return testid != 0xFF;
+	}
+
 public:
-	IndustryTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
-			OverrideManagerBase(offset, maximum, invalid) {}
+	IndustryTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) : OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(IndustryTileSpec &&indts);
 };
 
 struct AirportSpec;
+
 class AirportOverrideManager : public OverrideManagerBase {
 public:
-	AirportOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
-			OverrideManagerBase(offset, maximum, invalid) {}
+	AirportOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) : OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(AirportSpec &&inds);
 };
 
 struct AirportTileSpec;
+
 class AirportTileOverrideManager : public OverrideManagerBase {
 protected:
-	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override
+	{
+		return testid != 0xFF;
+	}
+
 public:
-	AirportTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
-			OverrideManagerBase(offset, maximum, invalid) {}
+	AirportTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) : OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(AirportTileSpec &&ats);
 };
 
 struct ObjectSpec;
+
 class ObjectOverrideManager : public OverrideManagerBase {
 protected:
-	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
+	bool CheckValidNewID(uint16_t testid) override
+	{
+		return testid != 0xFF;
+	}
+
 public:
-	ObjectOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
-			OverrideManagerBase(offset, maximum, invalid) {}
+	ObjectOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) : OverrideManagerBase(offset, maximum, invalid) {}
 
 	void SetEntitySpec(ObjectSpec &&spec);
 };
@@ -300,7 +329,10 @@ struct GRFFilePropsBase {
 	 * Test if this entity was introduced by NewGRF.
 	 * @returns true iff the grfid property is set.
 	 */
-	inline bool HasGrfFile() const { return this->grffile != nullptr; }
+	inline bool HasGrfFile() const
+	{
+		return this->grffile != nullptr;
+	}
 };
 
 /**
@@ -316,14 +348,20 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 	 * @param index Index to get.
 	 * @returns SpriteGroup at index, or nullptr if not present.
 	 */
-	const struct SpriteGroup *GetSpriteGroup(size_t index = 0) const { return this->spritegroups[index]; }
+	const struct SpriteGroup *GetSpriteGroup(size_t index = 0) const
+	{
+		return this->spritegroups[index];
+	}
 
 	/**
 	 * Set the SpriteGroup at the specified index.
 	 * @param index Index to set.
 	 * @param spritegroup SpriteGroup to set.
 	 */
-	void SetSpriteGroup(size_t index, const struct SpriteGroup *spritegroup) { this->spritegroups[index] = spritegroup; }
+	void SetSpriteGroup(size_t index, const struct SpriteGroup *spritegroup)
+	{
+		this->spritegroups[index] = spritegroup;
+	}
 };
 
 /**

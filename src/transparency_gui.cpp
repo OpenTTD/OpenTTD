@@ -8,26 +8,25 @@
 /** @file transparency_gui.cpp The transparency GUI. */
 
 #include "stdafx.h"
-#include "window_gui.h"
-#include "transparency.h"
-#include "sound_func.h"
+
 #include "settings_type.h"
+#include "sound_func.h"
+#include "transparency.h"
+#include "window_gui.h"
 
 #include "widgets/transparency_widget.h"
-
 #include "table/sprites.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
 
-TransparencyOptionBits _transparency_opt;  ///< The bits that should be transparent.
+TransparencyOptionBits _transparency_opt; ///< The bits that should be transparent.
 TransparencyOptionBits _transparency_lock; ///< Prevent these bits from flipping with X.
-TransparencyOptionBits _invisibility_opt;  ///< The bits that should be invisible.
+TransparencyOptionBits _invisibility_opt; ///< The bits that should be invisible.
 uint8_t _display_opt; ///< What do we want to draw/do?
 StationFacilities _facility_display_opt; ///< What station facilities to draw.
 
-class TransparenciesWindow : public Window
-{
+class TransparenciesWindow : public Window {
 public:
 	TransparenciesWindow(WindowDesc &desc, int window_number) : Window(desc)
 	{
@@ -62,8 +61,7 @@ public:
 					if (i == WID_TT_TEXT) continue; // Loading and cost/income text has no invisibility button.
 
 					const Rect wr = this->GetWidget<NWidgetBase>(i)->GetCurrentRect().Shrink(WidgetDimensions::scaled.fullbevel);
-					DrawFrameRect(wr.left, fr.top, wr.right, fr.bottom, COLOUR_PALE_GREEN,
-							HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FrameFlag::Lowered : FrameFlags{});
+					DrawFrameRect(wr.left, fr.top, wr.right, fr.bottom, COLOUR_PALE_GREEN, HasBit(_invisibility_opt, i - WID_TT_BEGIN) ? FrameFlag::Lowered : FrameFlags{});
 				}
 				break;
 			}
@@ -91,7 +89,7 @@ public:
 					break;
 				}
 			}
-			if (i == WID_TT_TEXT|| i == WID_TT_END) return;
+			if (i == WID_TT_TEXT || i == WID_TT_END) return;
 
 			ToggleInvisibility((TransparencyOption)(i - WID_TT_BEGIN));
 			if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
@@ -151,12 +149,7 @@ static constexpr NWidgetPart _nested_transparency_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _transparency_desc(
-	WDP_MANUAL, "toolbar_transparency", 0, 0,
-	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
-	{},
-	_nested_transparency_widgets
-);
+static WindowDesc _transparency_desc(WDP_MANUAL, "toolbar_transparency", 0, 0, WC_TRANSPARENCY_TOOLBAR, WC_NONE, {}, _nested_transparency_widgets);
 
 /**
  * Show the transparency toolbar.

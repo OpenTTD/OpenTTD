@@ -8,6 +8,7 @@
 /** @file newgrf_actb.cpp NewGRF Action 0x0B handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
@@ -44,15 +45,10 @@ static void GRFLoadError(ByteReader &buf)
 		STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER,
 	};
 
-	static const StringID sevstr[] = {
-		STR_NEWGRF_ERROR_MSG_INFO,
-		STR_NEWGRF_ERROR_MSG_WARNING,
-		STR_NEWGRF_ERROR_MSG_ERROR,
-		STR_NEWGRF_ERROR_MSG_FATAL
-	};
+	static const StringID sevstr[] = {STR_NEWGRF_ERROR_MSG_INFO, STR_NEWGRF_ERROR_MSG_WARNING, STR_NEWGRF_ERROR_MSG_ERROR, STR_NEWGRF_ERROR_MSG_FATAL};
 
-	uint8_t severity   = buf.ReadByte();
-	uint8_t lang       = buf.ReadByte();
+	uint8_t severity = buf.ReadByte();
+	uint8_t lang = buf.ReadByte();
 	uint8_t message_id = buf.ReadByte();
 
 	/* Skip the error if it isn't valid for the current language. */
@@ -124,9 +120,35 @@ static void GRFLoadError(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x0B>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0B>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0B>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0B>::Init(ByteReader &buf) { GRFLoadError(buf); }
-template <> void GrfActionHandler<0x0B>::Reserve(ByteReader &buf) { GRFLoadError(buf); }
-template <> void GrfActionHandler<0x0B>::Activation(ByteReader &buf) { GRFLoadError(buf); }
+template <>
+void GrfActionHandler<0x0B>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0B>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0B>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0B>::Init(ByteReader &buf)
+{
+	GRFLoadError(buf);
+}
+
+template <>
+void GrfActionHandler<0x0B>::Reserve(ByteReader &buf)
+{
+	GRFLoadError(buf);
+}
+
+template <>
+void GrfActionHandler<0x0B>::Activation(ByteReader &buf)
+{
+	GRFLoadError(buf);
+}

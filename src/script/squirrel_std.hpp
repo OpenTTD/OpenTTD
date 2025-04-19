@@ -14,7 +14,7 @@
 
 #if defined(__APPLE__)
 /* Which idiotic system makes 'require' a macro? :s Oh well.... */
-#undef require
+#	undef require
 #endif /* __APPLE__ */
 
 /**
@@ -25,7 +25,6 @@
  */
 class SquirrelStd {
 public:
-
 	/**
 	 * Get the lowest of two integers.
 	 */

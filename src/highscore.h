@@ -10,9 +10,9 @@
 #ifndef HIGHSCORE_H
 #define HIGHSCORE_H
 
-#include "strings_type.h"
 #include "company_type.h"
 #include "settings_type.h"
+#include "strings_type.h"
 
 struct HighScore {
 	std::string name; ///< The name of the companyy and president.

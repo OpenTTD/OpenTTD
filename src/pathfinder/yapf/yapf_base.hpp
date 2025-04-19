@@ -11,8 +11,8 @@
 #define YAPF_BASE_HPP
 
 #include "../../debug.h"
-#include "../../settings_type.h"
 #include "../../misc/dbg_helpers.h"
+#include "../../settings_type.h"
 #include "yapf_type.hpp"
 
 /**
@@ -132,9 +132,8 @@ public:
 			const int cost = destination_found ? this->best_dest_node->cost : -1;
 			const int dist = destination_found ? this->best_dest_node->estimate - this->best_dest_node->cost : -1;
 
-			Debug(yapf, 3, "[YAPF{}]{}{:4d} - {} rounds - {} open - {} closed - CHR {:4.1f}% - C {} D {}",
-				ttc, destination_found ? '-' : '!', veh_idx, this->num_steps, this->nodes.OpenCount(), this->nodes.ClosedCount(), cache_hit_ratio, cost, dist
-			);
+			Debug(yapf, 3, "[YAPF{}]{}{:4d} - {} rounds - {} open - {} closed - CHR {:4.1f}% - C {} D {}", ttc, destination_found ? '-' : '!', veh_idx, this->num_steps, this->nodes.OpenCount(),
+				this->nodes.ClosedCount(), cache_hit_ratio, cost, dist);
 		}
 
 		return destination_found;
@@ -226,7 +225,8 @@ public:
 
 		/* The new node can be set as the best intermediate node only once we're
 		 * certain it will be finalized by being inserted into the open list. */
-		bool set_intermediate = this->max_search_nodes > 0 && (this->best_intermediate_node == nullptr || (this->best_intermediate_node->GetCostEstimate() - this->best_intermediate_node->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
+		bool set_intermediate = this->max_search_nodes > 0 &&
+			(this->best_intermediate_node == nullptr || (this->best_intermediate_node->GetCostEstimate() - this->best_intermediate_node->GetCost()) > (n.GetCostEstimate() - n.GetCost()));
 
 		/* check new node against open list */
 		Node *open_node = this->nodes.FindOpenNode(n.GetKey());
@@ -268,7 +268,7 @@ public:
 		if (set_intermediate) this->best_intermediate_node = &n;
 	}
 
-	const VehicleType * GetVehicle() const
+	const VehicleType *GetVehicle() const
 	{
 		return this->vehicle;
 	}

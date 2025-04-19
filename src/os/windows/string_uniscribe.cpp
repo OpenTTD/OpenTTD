@@ -8,25 +8,27 @@
 /** @file string_uniscribe.cpp Functions related to laying out text on Win32. */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
+
 #include "string_uniscribe.h"
-#include "../../language.h"
-#include "../../strings_func.h"
-#include "../../string_func.h"
-#include "../../core/utf8.hpp"
-#include "../../table/control_codes.h"
-#include "../../zoom_func.h"
-#include "win32.h"
 
 #include <windows.h>
 #include <usp10.h>
+
+#include "../../core/utf8.hpp"
+#include "../../debug.h"
+#include "../../language.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
+#include "../../zoom_func.h"
+#include "win32.h"
+
+#include "../../table/control_codes.h"
 
 #include "../../safeguards.h"
 
 #ifdef _MSC_VER
 #	pragma comment(lib, "usp10")
 #endif
-
 
 /** Uniscribe cache for internal font information, cleared when OTTD changes fonts. */
 static SCRIPT_CACHE _script_cache[FS_END];
@@ -89,14 +91,37 @@ public:
 		UniscribeVisualRun(const UniscribeRun &range, int x);
 		UniscribeVisualRun(UniscribeVisualRun &&other) noexcept;
 
-		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
-		std::span<const Position> GetPositions() const override { return this->positions; }
+		std::span<const GlyphID> GetGlyphs() const override
+		{
+			return this->glyphs;
+		}
+
+		std::span<const Position> GetPositions() const override
+		{
+			return this->positions;
+		}
+
 		std::span<const int> GetGlyphToCharMap() const override;
 
-		const Font *GetFont() const override { return this->font;  }
-		int GetLeading() const override { return this->font->fc->GetHeight(); }
-		int GetGlyphCount() const override { return this->num_glyphs; }
-		int GetAdvance() const { return this->total_advance; }
+		const Font *GetFont() const override
+		{
+			return this->font;
+		}
+
+		int GetLeading() const override
+		{
+			return this->font->fc->GetHeight();
+		}
+
+		int GetGlyphCount() const override
+		{
+			return this->num_glyphs;
+		}
+
+		int GetAdvance() const
+		{
+			return this->total_advance;
+		}
 	};
 
 	/** A single line worth of VisualRuns. */
@@ -104,8 +129,16 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override { return (uint)this->size();  }
-		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
+
+		int CountRuns() const override
+		{
+			return (uint)this->size();
+		}
+
+		const VisualRun &GetVisualRun(int run) const override
+		{
+			return this->at(run);
+		}
 
 		int GetInternalCharLength(char32_t c) const override
 		{
@@ -170,7 +203,8 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 	while (true) {
 		/* Shape the text run by determining the glyphs needed for display. */
 		int glyphs_used = 0;
-		HRESULT hr = ScriptShape(temp_dc, &_script_cache[range.font->fc->GetSize()], buff + range.pos, range.len, (int)range.glyphs.size(), &range.sa, &range.glyphs[0], &range.char_to_glyph[0], &range.vis_attribs[0], &glyphs_used);
+		HRESULT hr = ScriptShape(temp_dc, &_script_cache[range.font->fc->GetSize()], buff + range.pos, range.len, (int)range.glyphs.size(), &range.sa, &range.glyphs[0], &range.char_to_glyph[0],
+			&range.vis_attribs[0], &glyphs_used);
 
 		if (SUCCEEDED(hr)) {
 			range.glyphs.resize(glyphs_used);
@@ -180,7 +214,8 @@ static bool UniscribeShapeRun(const UniscribeParagraphLayoutFactory::CharType *b
 			ABC abc;
 			range.advances.resize(range.glyphs.size());
 			range.offsets.resize(range.glyphs.size());
-			hr = ScriptPlace(temp_dc, &_script_cache[range.font->fc->GetSize()], &range.glyphs[0], (int)range.glyphs.size(), &range.vis_attribs[0], &range.sa, &range.advances[0], &range.offsets[0], &abc);
+			hr = ScriptPlace(
+				temp_dc, &_script_cache[range.font->fc->GetSize()], &range.glyphs[0], (int)range.glyphs.size(), &range.vis_attribs[0], &range.sa, &range.advances[0], &range.offsets[0], &abc);
 			if (SUCCEEDED(hr)) {
 				/* We map our special sprite chars to values that don't fit into a WORD. Copy the glyphs
 				 * into a new vector and query the real glyph to use for these special chars. */
@@ -284,7 +319,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	if (length == 0) return nullptr;
 
 	/* Can't layout our in-built sprite fonts. */
-	for (auto const &[position, font] : font_mapping) {
+	for (const auto &[position, font] : font_mapping) {
 		if (font->fc->IsBuiltInFont()) return nullptr;
 	}
 
@@ -298,7 +333,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 
 	int cur_pos = 0;
 	std::vector<SCRIPT_ITEM>::iterator cur_item = items.begin();
-	for (auto const &[position, font] : font_mapping) {
+	for (const auto &[position, font] : font_mapping) {
 		while (cur_pos < position && cur_item != items.end() - 1) {
 			/* Add a range that spans the intersection of the remaining item and font run. */
 			int stop_pos = std::min(position, (cur_item + 1)->iCharPos);
@@ -472,7 +507,8 @@ int UniscribeParagraphLayout::UniscribeLine::GetWidth() const
 	return length;
 }
 
-UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const UniscribeRun &range, int x) : glyphs(range.ft_glyphs), char_to_glyph(range.char_to_glyph), start_pos(range.pos), total_advance(range.total_advance), font(range.font)
+UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const UniscribeRun &range, int x) :
+	glyphs(range.ft_glyphs), char_to_glyph(range.char_to_glyph), start_pos(range.pos), total_advance(range.total_advance), font(range.font)
 {
 	this->num_glyphs = (int)glyphs.size();
 	this->positions.reserve(this->num_glyphs);
@@ -486,10 +522,9 @@ UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(const Uniscribe
 	}
 }
 
-UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisualRun&& other) noexcept
-								: glyphs(std::move(other.glyphs)), positions(std::move(other.positions)), char_to_glyph(std::move(other.char_to_glyph)),
-								  start_pos(other.start_pos), total_advance(other.total_advance), num_glyphs(other.num_glyphs), font(other.font),
-								  glyph_to_char(std::move(other.glyph_to_char))
+UniscribeParagraphLayout::UniscribeVisualRun::UniscribeVisualRun(UniscribeVisualRun &&other) noexcept :
+	glyphs(std::move(other.glyphs)), positions(std::move(other.positions)), char_to_glyph(std::move(other.char_to_glyph)), start_pos(other.start_pos), total_advance(other.total_advance),
+	num_glyphs(other.num_glyphs), font(other.font), glyph_to_char(std::move(other.glyph_to_char))
 {
 }
 
@@ -516,7 +551,6 @@ std::span<const int> UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCha
 	return this->glyph_to_char;
 }
 
-
 /* virtual */ void UniscribeStringIterator::SetString(std::string_view s)
 {
 	this->utf16_to_utf8.clear();
@@ -525,7 +559,7 @@ std::span<const int> UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCha
 
 	/* Uniscribe operates on UTF-16, thus we have to convert the input string.
 	 * To be able to return proper offsets, we have to create a mapping at the same time. */
-	std::vector<wchar_t> utf16_str;     ///< UTF-16 copy of the string.
+	std::vector<wchar_t> utf16_str; ///< UTF-16 copy of the string.
 	Utf8View view(s);
 	for (auto it = view.begin(), end = view.end(); it != end; ++it) {
 		size_t idx = it.GetByteOffset();
@@ -596,7 +630,7 @@ std::span<const int> UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCha
 
 	do {
 		this->cur_pos++;
-	} while (this->cur_pos < this->utf16_to_utf8.size() && (what  == ITER_WORD ? !this->str_info[this->cur_pos].word_stop : !this->str_info[this->cur_pos].char_stop));
+	} while (this->cur_pos < this->utf16_to_utf8.size() && (what == ITER_WORD ? !this->str_info[this->cur_pos].word_stop : !this->str_info[this->cur_pos].char_stop));
 
 	return this->cur_pos == this->utf16_to_utf8.size() ? END : this->utf16_to_utf8[this->cur_pos];
 }

@@ -24,7 +24,7 @@ struct CYapfCostBase {
 	 * @param td   The track direction to check.
 	 * @return True if there's a slope, otherwise false.
 	 */
-	inline static bool stSlopeCost(TileIndex tile, Trackdir td)
+	static inline bool stSlopeCost(TileIndex tile, Trackdir td)
 	{
 		if (IsDiagonalTrackdir(td)) {
 			if (IsBridgeTile(tile)) {

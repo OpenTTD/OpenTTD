@@ -8,26 +8,28 @@
 /** @file autoreplace_cmd.cpp Deals with autoreplace execution but not the setup */
 
 #include "stdafx.h"
-#include "company_func.h"
-#include "train.h"
-#include "command_func.h"
-#include "engine_func.h"
-#include "vehicle_func.h"
-#include "autoreplace_func.h"
-#include "autoreplace_gui.h"
-#include "articulated_vehicles.h"
+
+#include "autoreplace_cmd.h"
+
 #include "core/bitmath_func.hpp"
 #include "core/random_func.hpp"
-#include "vehiclelist.h"
-#include "road.h"
 #include "ai/ai.hpp"
-#include "news_func.h"
-#include "strings_func.h"
-#include "autoreplace_cmd.h"
+#include "articulated_vehicles.h"
+#include "autoreplace_func.h"
+#include "autoreplace_gui.h"
+#include "command_func.h"
+#include "company_func.h"
+#include "engine_func.h"
 #include "group_cmd.h"
+#include "news_func.h"
 #include "order_cmd.h"
+#include "road.h"
+#include "strings_func.h"
+#include "train.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
+#include "vehicle_func.h"
+#include "vehiclelist.h"
 
 #include "table/strings.h"
 
@@ -91,7 +93,8 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 			if ((e_from->u.air.subtype & AIR_CTOL) != (e_to->u.air.subtype & AIR_CTOL)) return false;
 			break;
 
-		default: break;
+		default:
+			break;
 	}
 
 	/* the engines needs to be able to carry the same cargo */
@@ -340,16 +343,11 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
 		if (order_id != -1) {
 			/* Orders contained a refit order that is incompatible with the new vehicle. */
-			headline = GetEncodedString(STR_NEWS_VEHICLE_AUTORENEW_FAILED,
-				old_veh_id,
-				STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT,
+			headline = GetEncodedString(STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh_id, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT,
 				order_id + 1); // 1-based indexing for display
 		} else {
 			/* Current cargo is incompatible with the new vehicle. */
-			headline = GetEncodedString(STR_NEWS_VEHICLE_AUTORENEW_FAILED,
-				old_veh_id,
-				STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO,
-				CargoSpec::Get(old_veh->cargo_type)->name);
+			headline = GetEncodedString(STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh_id, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO, CargoSpec::Get(old_veh->cargo_type)->name);
 		}
 
 		AddVehicleAdviceNewsItem(AdviceType::AutorenewFailed, std::move(headline), old_veh_id);
@@ -358,7 +356,8 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 
 	/* Build the new vehicle */
 	VehicleID new_veh_id;
-	std::tie(cost, new_veh_id, std::ignore, std::ignore, std::ignore) = Command<CMD_BUILD_VEHICLE>::Do({DoCommandFlag::Execute, DoCommandFlag::AutoReplace}, old_veh->tile, e, true, INVALID_CARGO, INVALID_CLIENT_ID);
+	std::tie(cost, new_veh_id, std::ignore, std::ignore, std::ignore) =
+		Command<CMD_BUILD_VEHICLE>::Do({DoCommandFlag::Execute, DoCommandFlag::AutoReplace}, old_veh->tile, e, true, INVALID_CARGO, INVALID_CLIENT_ID);
 	if (cost.Failed()) return cost;
 
 	Vehicle *new_veh = Vehicle::Get(new_veh_id);
@@ -418,7 +417,8 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 	if (cost.Succeeded() && old_head != new_head) cost.AddCost(Command<CMD_CLONE_ORDER>::Do(DoCommandFlag::Execute, CO_SHARE, new_head->index, old_head->index));
 
 	/* Copy group membership */
-	if (cost.Succeeded() && old_head != new_head) cost.AddCost(std::get<0>(Command<CMD_ADD_VEHICLE_GROUP>::Do(DoCommandFlag::Execute, old_head->group_id, new_head->index, false, VehicleListIdentifier{})));
+	if (cost.Succeeded() && old_head != new_head)
+		cost.AddCost(std::get<0>(Command<CMD_ADD_VEHICLE_GROUP>::Do(DoCommandFlag::Execute, old_head->group_id, new_head->index, false, VehicleListIdentifier{})));
 
 	/* Perform start/stop check whether the new vehicle suits newgrf restrictions etc. */
 	if (cost.Succeeded()) {
@@ -502,13 +502,16 @@ struct ReplaceChainItem {
 	Vehicle *new_veh; ///< Replacement vehicle, or nullptr if no replacement.
 	Money cost; /// Cost of buying and refitting replacement.
 
-	ReplaceChainItem(Vehicle *old_veh, Vehicle *new_veh, Money cost) : old_veh(old_veh), new_veh(new_veh), cost(cost) { }
+	ReplaceChainItem(Vehicle *old_veh, Vehicle *new_veh, Money cost) : old_veh(old_veh), new_veh(new_veh), cost(cost) {}
 
 	/**
 	 * Get vehicle to use for this position.
 	 * @return Either the new vehicle, or the old vehicle if there is no replacement.
 	 */
-	Vehicle *GetVehicle() const { return new_veh == nullptr ? old_veh : new_veh; }
+	Vehicle *GetVehicle() const
+	{
+		return new_veh == nullptr ? old_veh : new_veh;
+	}
 };
 
 /**
@@ -852,4 +855,3 @@ CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_e
 
 	return cost;
 }
-

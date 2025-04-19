@@ -22,16 +22,16 @@ private:
 
 	/** Status of the connection with the server. */
 	enum ServerStatus : uint8_t {
-		STATUS_INACTIVE,      ///< The client is not connected nor active.
-		STATUS_JOIN,          ///< We are trying to join a server.
-		STATUS_AUTH_GAME,     ///< Last action was requesting game (server) password.
-		STATUS_ENCRYPTED,     ///< The game authentication has completed and from here on the connection to the server is encrypted.
+		STATUS_INACTIVE, ///< The client is not connected nor active.
+		STATUS_JOIN, ///< We are trying to join a server.
+		STATUS_AUTH_GAME, ///< Last action was requesting game (server) password.
+		STATUS_ENCRYPTED, ///< The game authentication has completed and from here on the connection to the server is encrypted.
 		STATUS_NEWGRFS_CHECK, ///< Last action was checking NewGRFs.
-		STATUS_AUTHORIZED,    ///< The client is authorized at the server.
-		STATUS_MAP_WAIT,      ///< The client is waiting as someone else is downloading the map.
-		STATUS_MAP,           ///< The client is downloading the map.
-		STATUS_ACTIVE,        ///< The client is active within in the game.
-		STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period)
+		STATUS_AUTHORIZED, ///< The client is authorized at the server.
+		STATUS_MAP_WAIT, ///< The client is waiting as someone else is downloading the map.
+		STATUS_MAP, ///< The client is downloading the map.
+		STATUS_ACTIVE, ///< The client is active within in the game.
+		STATUS_END, ///< Must ALWAYS be on the end of this list!! (period)
 	};
 
 	ServerStatus status = STATUS_INACTIVE; ///< Status of the connection with the server.
@@ -73,6 +73,7 @@ protected:
 	static NetworkRecvStatus SendMapOk();
 	static NetworkRecvStatus SendIdentify();
 	void CheckConnection();
+
 public:
 	ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string);
 	~ClientNetworkGameSocketHandler();
@@ -108,9 +109,10 @@ void NetworkClient_Connected();
 /** Information required to join a server. */
 struct NetworkJoinInfo {
 	NetworkJoinInfo() : company(COMPANY_SPECTATOR) {}
+
 	std::string connection_string; ///< The address of the server to join.
-	CompanyID company;             ///< The company to join.
-	std::string server_password;   ///< The password of the server to join.
+	CompanyID company; ///< The company to join.
+	std::string server_password; ///< The password of the server to join.
 };
 
 extern NetworkJoinInfo _network_join;

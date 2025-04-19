@@ -8,15 +8,31 @@
 /** @file dbg_helpers.cpp Helpers for outputting debug information. */
 
 #include "../stdafx.h"
-#include "../rail_map.h"
+
 #include "dbg_helpers.h"
+
+#include "../rail_map.h"
 
 #include "../safeguards.h"
 
 /** Trackdir & TrackdirBits short names. */
-static const char * const trackdir_names[] = {
-	"NE", "SE", "UE", "LE", "LS", "RS", "rne", "rse",
-	"SW", "NW", "UW", "LW", "LN", "RN", "rsw", "rnw",
+static const char *const trackdir_names[] = {
+	"NE",
+	"SE",
+	"UE",
+	"LE",
+	"LS",
+	"RS",
+	"rne",
+	"rse",
+	"SW",
+	"NW",
+	"UW",
+	"LW",
+	"LN",
+	"RN",
+	"rsw",
+	"rnw",
 };
 
 /** Return name of given Trackdir. */
@@ -31,10 +47,12 @@ std::string ValueStr(TrackdirBits td_bits)
 	return std::to_string(td_bits) + " (" + ComposeNameT(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV") + ")";
 }
 
-
 /** DiagDirection short names. */
-static const char * const diagdir_names[] = {
-	"NE", "SE", "SW", "NW",
+static const char *const diagdir_names[] = {
+	"NE",
+	"SE",
+	"SW",
+	"NW",
 };
 
 /** Return name of given DiagDirection. */
@@ -43,10 +61,14 @@ std::string ValueStr(DiagDirection dd)
 	return std::to_string(dd) + " (" + ItemAtT(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV") + ")";
 }
 
-
 /** SignalType short names. */
-static const char * const signal_type_names[] = {
-	"NORMAL", "ENTRY", "EXIT", "COMBO", "PBS", "NOENTRY",
+static const char *const signal_type_names[] = {
+	"NORMAL",
+	"ENTRY",
+	"EXIT",
+	"COMBO",
+	"PBS",
+	"NOENTRY",
 };
 
 /** Return name of given SignalType. */
@@ -54,7 +76,6 @@ std::string ValueStr(SignalType t)
 {
 	return std::to_string(t) + " (" + ItemAtT(t, signal_type_names, "UNK") + ")";
 }
-
 
 /** Translate TileIndex into string. */
 std::string TileStr(TileIndex tile)
@@ -64,7 +85,8 @@ std::string TileStr(TileIndex tile)
 
 /**
  * Keep track of the last assigned type_id. Used for anti-recursion.
- *static*/ size_t& DumpTarget::LastTypeId()
+ *static*/
+size_t &DumpTarget::LastTypeId()
 {
 	static size_t last_type_id = 0;
 	return last_type_id;

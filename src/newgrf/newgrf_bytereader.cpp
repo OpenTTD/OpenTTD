@@ -8,9 +8,11 @@
 /** @file newgrf_bytereader.cpp NewGRF byte buffer reader implementation. */
 
 #include "../stdafx.h"
+
+#include "newgrf_bytereader.h"
+
 #include "../core/backup_type.hpp"
 #include "../string_func.h"
-#include "newgrf_bytereader.h"
 
 #include "../safeguards.h"
 
@@ -21,9 +23,12 @@
 uint32_t ByteReader::ReadVarSize(uint8_t size)
 {
 	switch (size) {
-		case 1: return this->ReadByte();
-		case 2: return this->ReadWord();
-		case 4: return this->ReadDWord();
+		case 1:
+			return this->ReadByte();
+		case 2:
+			return this->ReadWord();
+		case 4:
+			return this->ReadDWord();
 		default:
 			NOT_REACHED();
 			return 0;

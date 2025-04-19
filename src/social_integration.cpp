@@ -10,14 +10,15 @@
 #include "stdafx.h"
 
 #include "social_integration.h"
+
 #include "3rdparty/openttd_social_integration_api/openttd_social_integration_api.h"
 
 #include "debug.h"
 #include "fileio_func.h"
 #include "library_loader.h"
 #include "rev.h"
-#include "string_func.h"
 #include "signature.h"
+#include "string_func.h"
 
 #include "safeguards.h"
 

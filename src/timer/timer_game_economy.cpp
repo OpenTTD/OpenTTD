@@ -24,12 +24,14 @@
  */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "timer.h"
+
 #include "timer_game_economy.h"
-#include "timer_game_tick.h"
-#include "../vehicle_base.h"
+
 #include "../linkgraph/linkgraph.h"
+#include "../openttd.h"
+#include "../vehicle_base.h"
+#include "timer.h"
+#include "timer_game_tick.h"
 
 #include "../safeguards.h"
 

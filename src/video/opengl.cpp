@@ -27,20 +27,18 @@
 #endif
 #include "../3rdparty/opengl/glext.h"
 
-#include "opengl.h"
 #include "../core/geometry_func.hpp"
 #include "../core/math_func.hpp"
-#include "../gfx_func.h"
-#include "../debug.h"
 #include "../blitter/factory.hpp"
+#include "../debug.h"
+#include "../gfx_func.h"
 #include "../zoom_func.h"
+#include "opengl.h"
 
 #include "../table/opengl_shader.h"
 #include "../table/sprites.h"
 
-
 #include "../safeguards.h"
-
 
 /* Define function pointers of all OpenGL functions that we load dynamically. */
 
@@ -117,7 +115,6 @@ GL(glVertexAttribPointer);
 GL(glBindFragDataLocation);
 
 #undef GL
-
 
 /** A simple 2D vertex with just position and texture. */
 struct Simple2DVertex {
@@ -403,24 +400,41 @@ static bool BindPersistentBufferExtensions()
 }
 
 /** Callback to receive OpenGL debug messages. */
-void APIENTRY DebugOutputCallback([[maybe_unused]] GLenum source, GLenum type, [[maybe_unused]] GLuint id, GLenum severity, [[maybe_unused]] GLsizei length, const GLchar *message, [[maybe_unused]] const void *userParam)
+void APIENTRY DebugOutputCallback(
+	[[maybe_unused]] GLenum source, GLenum type, [[maybe_unused]] GLuint id, GLenum severity, [[maybe_unused]] GLsizei length, const GLchar *message, [[maybe_unused]] const void *userParam)
 {
 	/* Make severity human readable. */
 	const char *severity_str = "";
 	switch (severity) {
-		case GL_DEBUG_SEVERITY_HIGH:   severity_str = "high"; break;
-		case GL_DEBUG_SEVERITY_MEDIUM: severity_str = "medium"; break;
-		case GL_DEBUG_SEVERITY_LOW:    severity_str = "low"; break;
+		case GL_DEBUG_SEVERITY_HIGH:
+			severity_str = "high";
+			break;
+		case GL_DEBUG_SEVERITY_MEDIUM:
+			severity_str = "medium";
+			break;
+		case GL_DEBUG_SEVERITY_LOW:
+			severity_str = "low";
+			break;
 	}
 
 	/* Make type human readable.*/
 	const char *type_str = "Other";
 	switch (type) {
-		case GL_DEBUG_TYPE_ERROR:               type_str = "Error"; break;
-		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: type_str = "Deprecated"; break;
-		case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:  type_str = "Undefined behaviour"; break;
-		case GL_DEBUG_TYPE_PERFORMANCE:         type_str = "Performance"; break;
-		case GL_DEBUG_TYPE_PORTABILITY:         type_str = "Portability"; break;
+		case GL_DEBUG_TYPE_ERROR:
+			type_str = "Error";
+			break;
+		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
+			type_str = "Deprecated";
+			break;
+		case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
+			type_str = "Undefined behaviour";
+			break;
+		case GL_DEBUG_TYPE_PERFORMANCE:
+			type_str = "Performance";
+			break;
+		case GL_DEBUG_TYPE_PORTABILITY:
+			type_str = "Portability";
+			break;
 	}
 
 	Debug(driver, 6, "OpenGL: {} ({}) - {}", type_str, severity_str, message);
@@ -484,9 +498,7 @@ void SetupDebugOutput()
 /**
  * Construct OpenGL back-end class.
  */
-OpenGLBackend::OpenGLBackend() : cursor_cache(MAX_CACHED_CURSORS)
-{
-}
+OpenGLBackend::OpenGLBackend() : cursor_cache(MAX_CACHED_CURSORS) {}
 
 /**
  * Free allocated resources.
@@ -566,10 +578,13 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	/* Check for pixel buffer objects. */
 	if (!IsOpenGLVersionAtLeast(2, 1) && !IsOpenGLExtensionSupported("GL_ARB_pixel_buffer_object")) return "Pixel buffer objects not supported";
 	/* Check for vertex array objects. */
-	if (!IsOpenGLVersionAtLeast(3, 0) && (!IsOpenGLExtensionSupported("GL_ARB_vertex_array_object") || !IsOpenGLExtensionSupported("GL_APPLE_vertex_array_object"))) return "Vertex array objects not supported";
+	if (!IsOpenGLVersionAtLeast(3, 0) && (!IsOpenGLExtensionSupported("GL_ARB_vertex_array_object") || !IsOpenGLExtensionSupported("GL_APPLE_vertex_array_object")))
+		return "Vertex array objects not supported";
 	if (!BindVBAExtension()) return "Failed to bind VBA extension functions";
 	/* Check for shader objects. */
-	if (!IsOpenGLVersionAtLeast(2, 0) && (!IsOpenGLExtensionSupported("GL_ARB_shader_objects") || !IsOpenGLExtensionSupported("GL_ARB_fragment_shader") || !IsOpenGLExtensionSupported("GL_ARB_vertex_shader"))) return "No shader support";
+	if (!IsOpenGLVersionAtLeast(2, 0) &&
+		(!IsOpenGLExtensionSupported("GL_ARB_shader_objects") || !IsOpenGLExtensionSupported("GL_ARB_fragment_shader") || !IsOpenGLExtensionSupported("GL_ARB_vertex_shader")))
+		return "No shader support";
 	if (!BindShaderExtensions()) return "Failed to bind shader extension functions";
 	if (IsOpenGLVersionAtLeast(3, 2) && _glBindFragDataLocation == nullptr) return "OpenGL claims to support version 3.2 but doesn't have glBindFragDataLocation";
 
@@ -638,7 +653,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	GLint sprite_location = _glGetUniformLocation(this->vid_program, "sprite");
 	GLint screen_location = _glGetUniformLocation(this->vid_program, "screen");
 	_glUseProgram(this->vid_program);
-	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(tex_location, 0); // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
 	/* Values that result in no transform. */
 	_glUniform4f(sprite_location, 0.0f, 0.0f, 1.0f, 1.0f);
@@ -650,7 +665,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	sprite_location = _glGetUniformLocation(this->pal_program, "sprite");
 	screen_location = _glGetUniformLocation(this->pal_program, "screen");
 	_glUseProgram(this->pal_program);
-	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(tex_location, 0); // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
 	_glUniform4f(sprite_location, 0.0f, 0.0f, 1.0f, 1.0f);
 	_glUniform2f(screen_location, 1.0f, 1.0f);
@@ -664,9 +679,9 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	this->remap_zoom_loc = _glGetUniformLocation(this->remap_program, "zoom");
 	this->remap_rgb_loc = _glGetUniformLocation(this->remap_program, "rgb");
 	_glUseProgram(this->remap_program);
-	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(tex_location, 0); // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
-	_glUniform1i(remap_location, 2);   // Texture unit 2.
+	_glUniform1i(remap_location, 2); // Texture unit 2.
 
 	/* Bind uniforms in sprite shader program. */
 	tex_location = _glGetUniformLocation(this->sprite_program, "colour_tex");
@@ -679,10 +694,10 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	this->sprite_rgb_loc = _glGetUniformLocation(this->sprite_program, "rgb");
 	this->sprite_crash_loc = _glGetUniformLocation(this->sprite_program, "crash");
 	_glUseProgram(this->sprite_program);
-	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(tex_location, 0); // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
-	_glUniform1i(remap_location, 2);   // Texture unit 2.
-	_glUniform1i(pal_location, 3);     // Texture unit 3.
+	_glUniform1i(remap_location, 2); // Texture unit 2.
+	_glUniform1i(pal_location, 3); // Texture unit 3.
 	(void)_glGetError(); // Clear errors.
 
 	/* Create pixel buffer object as video buffer storage. */
@@ -696,10 +711,10 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	 * the corresponding state in a vertex array object. */
 	static const Simple2DVertex vert_array[] = {
 		/*  x     y    u    v */
-		{  1.f, -1.f, 1.f, 1.f },
-		{  1.f,  1.f, 1.f, 0.f },
-		{ -1.f, -1.f, 0.f, 1.f },
-		{ -1.f,  1.f, 0.f, 0.f },
+		{1.f, -1.f, 1.f, 1.f},
+		{1.f, 1.f, 1.f, 0.f},
+		{-1.f, -1.f, 0.f, 1.f},
+		{-1.f, 1.f, 0.f, 0.f},
 	};
 
 	/* Create VAO. */
@@ -804,7 +819,7 @@ bool OpenGLBackend::InitShaders()
 	const char *ver = (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION);
 	if (ver == nullptr) return false;
 
-	int glsl_major  = ver[0] - '0';
+	int glsl_major = ver[0] - '0';
 	int glsl_minor = ver[2] - '0';
 
 	bool glsl_150 = (IsOpenGLVersionAtLeast(3, 2) || glsl_major > 1 || (glsl_major == 1 && glsl_minor >= 5)) && _glBindFragDataLocation != nullptr;
@@ -829,13 +844,15 @@ bool OpenGLBackend::InitShaders()
 
 	/* Sprite remap fragment shader. */
 	GLuint remap_shader = _glCreateShader(GL_FRAGMENT_SHADER);
-	_glShaderSource(remap_shader, glsl_150 ? lengthof(_frag_shader_rgb_mask_blend_150) : lengthof(_frag_shader_rgb_mask_blend), glsl_150 ? _frag_shader_rgb_mask_blend_150 : _frag_shader_rgb_mask_blend, nullptr);
+	_glShaderSource(
+		remap_shader, glsl_150 ? lengthof(_frag_shader_rgb_mask_blend_150) : lengthof(_frag_shader_rgb_mask_blend), glsl_150 ? _frag_shader_rgb_mask_blend_150 : _frag_shader_rgb_mask_blend, nullptr);
 	_glCompileShader(remap_shader);
 	if (!VerifyShader(remap_shader)) return false;
 
 	/* Sprite fragment shader. */
 	GLuint sprite_shader = _glCreateShader(GL_FRAGMENT_SHADER);
-	_glShaderSource(sprite_shader, glsl_150 ? lengthof(_frag_shader_sprite_blend_150) : lengthof(_frag_shader_sprite_blend), glsl_150 ? _frag_shader_sprite_blend_150 : _frag_shader_sprite_blend, nullptr);
+	_glShaderSource(
+		sprite_shader, glsl_150 ? lengthof(_frag_shader_sprite_blend_150) : lengthof(_frag_shader_sprite_blend), glsl_150 ? _frag_shader_sprite_blend_150 : _frag_shader_sprite_blend, nullptr);
 	_glCompileShader(sprite_shader);
 	if (!VerifyShader(sprite_shader)) return false;
 
@@ -1077,10 +1094,8 @@ void OpenGLBackend::DrawMouseCursor()
 		if (this->cursor_cache.Contains(cs.image.sprite)) {
 			OpenGLSprite *spr = this->cursor_cache.Get(cs.image.sprite);
 
-			this->RenderOglSprite(spr, cs.image.pal,
-					this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
-					this->cursor_pos.y + cs.pos.y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
-					ZOOM_LVL_GUI);
+			this->RenderOglSprite(
+				spr, cs.image.pal, this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI), this->cursor_pos.y + cs.pos.y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI), ZOOM_LVL_GUI);
 		}
 	}
 }
@@ -1091,8 +1106,12 @@ public:
 	SpriteID sprite;
 
 	OpenGLSpriteAllocator(LRUCache<SpriteID, OpenGLSprite> &lru, SpriteID sprite) : lru(lru), sprite(sprite) {}
+
 protected:
-	void *AllocatePtr(size_t) override { NOT_REACHED(); }
+	void *AllocatePtr(size_t) override
+	{
+		NOT_REACHED();
+	}
 };
 
 void OpenGLBackend::PopulateCursorCache()
@@ -1155,7 +1174,8 @@ void *OpenGLBackend::GetVideoBuffer()
 		this->vid_buffer = _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
 	} else if (this->vid_buffer == nullptr) {
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
-		this->vid_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, static_cast<GLsizeiptr>(_screen.pitch) * _screen.height * BlitterFactory::GetCurrentBlitter()->GetScreenDepth() / 8, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+		this->vid_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, static_cast<GLsizeiptr>(_screen.pitch) * _screen.height * BlitterFactory::GetCurrentBlitter()->GetScreenDepth() / 8,
+			GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
 	}
 
 	return this->vid_buffer;
@@ -1178,7 +1198,8 @@ uint8_t *OpenGLBackend::GetAnimBuffer()
 		this->anim_buffer = _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
 	} else if (this->anim_buffer == nullptr) {
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-		this->anim_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, static_cast<GLsizeiptr>(_screen.pitch) * _screen.height, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+		this->anim_buffer =
+			_glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, static_cast<GLsizeiptr>(_screen.pitch) * _screen.height, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
 	}
 
 	return (uint8_t *)this->anim_buffer;
@@ -1211,9 +1232,11 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 		_glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 		_glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
 		if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8) {
-			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid*)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE,
+				(GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
 		} else {
-			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid*)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
+			_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV,
+				(GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
 		}
 
 #ifndef NO_GL_BUFFER_SYNC
@@ -1248,7 +1271,8 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 		_glActiveTexture(GL_TEXTURE0);
 		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
 		_glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
-		_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+		_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE,
+			(GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
 
 #ifndef NO_GL_BUFFER_SYNC
 		if (this->persistent_mapping_supported) this->sync_anim_mapping = _glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
@@ -1259,7 +1283,7 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 /* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* This encoding is only called for mouse cursors. We don't need real sprites but OpenGLSprites to show as cursor. These need to be put in the LRU cache. */
-	OpenGLSpriteAllocator &gl_allocator = static_cast<OpenGLSpriteAllocator&>(allocator);
+	OpenGLSpriteAllocator &gl_allocator = static_cast<OpenGLSpriteAllocator &>(allocator);
 	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite));
 
 	return nullptr;
@@ -1311,7 +1335,6 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
 	_glBindVertexArray(this->vao_quad);
 	_glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
-
 
 /* static */ std::array<GLuint, OpenGLSprite::NUM_TEX> OpenGLSprite::dummy_tex{};
 /* static */ GLuint OpenGLSprite::pal_identity = 0;
@@ -1452,7 +1475,7 @@ OpenGLSprite::~OpenGLSprite()
  * @param level Mip-map level.
  * @param data New pixel data.
  */
-void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel * data)
+void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel *data)
 {
 	static ReusableBuffer<Colour> buf_rgba;
 	static ReusableBuffer<uint8_t> buf_pal;
@@ -1502,7 +1525,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
  */
 inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
 {
-	Dimension sd = { (uint)UnScaleByZoomLower(this->dim.width, level), (uint)UnScaleByZoomLower(this->dim.height, level) };
+	Dimension sd = {(uint)UnScaleByZoomLower(this->dim.width, level), (uint)UnScaleByZoomLower(this->dim.height, level)};
 	return sd;
 }
 

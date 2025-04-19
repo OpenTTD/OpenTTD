@@ -18,8 +18,8 @@
  */
 typedef uint32_t StringID;
 static const StringID INVALID_STRING_ID = 0xFFFF; ///< Constant representing an invalid string (16bit in case it is used in savegames)
-static const int MAX_CHAR_LENGTH        = 4;      ///< Max. length of UTF-8 encoded unicode character
-static const uint MAX_LANG              = 0x7F;   ///< Maximum number of languages supported by the game, and the NewGRF specs
+static const int MAX_CHAR_LENGTH = 4; ///< Max. length of UTF-8 encoded unicode character
+static const uint MAX_LANG = 0x7F; ///< Maximum number of languages supported by the game, and the NewGRF specs
 
 /** Directions a text can go to */
 enum TextDirection : uint8_t {
@@ -30,32 +30,32 @@ enum TextDirection : uint8_t {
 /** StringTabs to group StringIDs */
 enum StringTab : uint8_t {
 	/* Tabs 0..1 for regular strings */
-	TEXT_TAB_TOWN             =  4,
-	TEXT_TAB_INDUSTRY         =  9,
-	TEXT_TAB_STATION          = 12,
-	TEXT_TAB_SPECIAL          = 14,
-	TEXT_TAB_OLD_CUSTOM       = 15,
-	TEXT_TAB_VEHICLE          = 16,
+	TEXT_TAB_TOWN = 4,
+	TEXT_TAB_INDUSTRY = 9,
+	TEXT_TAB_STATION = 12,
+	TEXT_TAB_SPECIAL = 14,
+	TEXT_TAB_OLD_CUSTOM = 15,
+	TEXT_TAB_VEHICLE = 16,
 	/* Tab 17 for regular strings */
-	TEXT_TAB_OLD_NEWGRF       = 26,
-	TEXT_TAB_END              = 32, ///< End of language files.
+	TEXT_TAB_OLD_NEWGRF = 26,
+	TEXT_TAB_END = 32, ///< End of language files.
 	TEXT_TAB_GAMESCRIPT_START = 32, ///< Start of GameScript supplied strings.
-	TEXT_TAB_NEWGRF_START     = 64, ///< Start of NewGRF supplied strings.
+	TEXT_TAB_NEWGRF_START = 64, ///< Start of NewGRF supplied strings.
 };
 
 /** The index/offset of a string within a #StringTab. */
 using StringIndexInTab = StrongType::Typedef<uint32_t, struct StringIndexInTabTag, StrongType::Compare, StrongType::Integer>;
 
 /** Number of bits for the StringIndex within a StringTab */
-static const uint TAB_SIZE_BITS       = 11;
+static const uint TAB_SIZE_BITS = 11;
 /** Number of strings per StringTab */
-static const uint TAB_SIZE            = 1 << TAB_SIZE_BITS;
+static const uint TAB_SIZE = 1 << TAB_SIZE_BITS;
 
 /** Number of strings for GameScripts */
 static const uint TAB_SIZE_GAMESCRIPT = TAB_SIZE * 32;
 
 /** Number of strings for NewGRFs */
-static const uint TAB_SIZE_NEWGRF     = TAB_SIZE * 256;
+static const uint TAB_SIZE_NEWGRF = TAB_SIZE * 256;
 
 /** The number of builtin generators for town names. */
 static constexpr uint32_t BUILTIN_TOWNNAME_GENERATOR_COUNT = 21;
@@ -80,14 +80,19 @@ struct StringParameter {
 	char32_t type; ///< The #StringControlCode to interpret this data with when it's the first parameter, otherwise '\0'.
 
 	StringParameter() = default;
+
 	inline StringParameter(StringParameterData &&data) : data(std::move(data)), type(0) {}
 
 	inline StringParameter(const std::monostate &data) : data(data), type(0) {}
+
 	inline StringParameter(uint64_t data) : data(data), type(0) {}
 
 	inline StringParameter(const char *data) : data(std::string{data}), type(0) {}
+
 	inline StringParameter(std::string_view data) : data(std::string{data}), type(0) {}
+
 	inline StringParameter(std::string &&data) : data(std::move(data)), type(0) {}
+
 	inline StringParameter(const std::string &data) : data(data), type(0) {}
 
 	inline StringParameter(const ConvertibleThroughBase auto &data) : data(static_cast<uint64_t>(data.base())), type(0) {}
@@ -105,8 +110,15 @@ public:
 	std::string GetDecodedString() const;
 	EncodedString ReplaceParam(size_t param, StringParameter &&value) const;
 
-	inline void clear() { this->string.clear(); }
-	inline bool empty() const { return this->string.empty(); }
+	inline void clear()
+	{
+		this->string.clear();
+	}
+
+	inline bool empty() const
+	{
+		return this->string.empty();
+	}
 
 private:
 	std::string string; ///< The encoded string.

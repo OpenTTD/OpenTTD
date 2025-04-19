@@ -8,9 +8,11 @@
 /** @file script_execmode.cpp Implementation of ScriptExecMode. */
 
 #include "../../stdafx.h"
+
 #include "script_execmode.hpp"
-#include "../script_instance.hpp"
+
 #include "../script_fatalerror.hpp"
+#include "../script_instance.hpp"
 
 #include "../../safeguards.h"
 
@@ -23,7 +25,7 @@ bool ScriptExecMode::ModeProc()
 
 ScriptExecMode::ScriptExecMode()
 {
-	this->last_mode     = this->GetDoCommandMode();
+	this->last_mode = this->GetDoCommandMode();
 	this->last_instance = this->GetDoCommandModeInstance();
 	this->SetDoCommandMode(&ScriptExecMode::ModeProc, this);
 }

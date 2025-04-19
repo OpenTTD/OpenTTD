@@ -8,9 +8,11 @@
 /** @file randomizer_sl.cpp Code handling saving and loading of script randomizers */
 
 #include "../stdafx.h"
+
 #include "../script/api/script_object.hpp"
 #include "saveload.h"
 #include "saveload_internal.h"
+
 #include "../safeguards.h"
 
 static const SaveLoad _randomizer_desc[] = {
@@ -19,8 +21,7 @@ static const SaveLoad _randomizer_desc[] = {
 };
 
 struct SRNDChunkHandler : ChunkHandler {
-	SRNDChunkHandler() : ChunkHandler('SRND', CH_TABLE)
-	{}
+	SRNDChunkHandler() : ChunkHandler('SRND', CH_TABLE) {}
 
 	void Save() const override
 	{

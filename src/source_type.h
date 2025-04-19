@@ -37,18 +37,49 @@ public:
 	SourceType type; ///< Type of \c source_id.
 
 	Source() = default;
+
 	Source(ConvertibleThroughBase auto id, SourceType type) : id(id.base()), type(type) {}
+
 	Source(SourceID id, SourceType type) : id(id), type(type) {}
 
-	constexpr CompanyID ToCompanyID() const { assert(this->type == SourceType::Headquarters); return static_cast<CompanyID>(this->id); }
-	constexpr IndustryID ToIndustryID() const { assert(this->type == SourceType::Industry); return static_cast<IndustryID>(this->id); }
-	constexpr TownID ToTownID() const { assert(this->type == SourceType::Town); return static_cast<TownID>(this->id); }
+	constexpr CompanyID ToCompanyID() const
+	{
+		assert(this->type == SourceType::Headquarters);
+		return static_cast<CompanyID>(this->id);
+	}
 
-	constexpr void MakeInvalid() { this->id = Source::Invalid; }
-	constexpr void SetIndex(SourceID index) { this->id = index; }
-	constexpr void SetIndex(ConvertibleThroughBase auto index) { this->id = index.base(); }
+	constexpr IndustryID ToIndustryID() const
+	{
+		assert(this->type == SourceType::Industry);
+		return static_cast<IndustryID>(this->id);
+	}
 
-	constexpr bool IsValid() const noexcept { return this->id != Source::Invalid; }
+	constexpr TownID ToTownID() const
+	{
+		assert(this->type == SourceType::Town);
+		return static_cast<TownID>(this->id);
+	}
+
+	constexpr void MakeInvalid()
+	{
+		this->id = Source::Invalid;
+	}
+
+	constexpr void SetIndex(SourceID index)
+	{
+		this->id = index;
+	}
+
+	constexpr void SetIndex(ConvertibleThroughBase auto index)
+	{
+		this->id = index.base();
+	}
+
+	constexpr bool IsValid() const noexcept
+	{
+		return this->id != Source::Invalid;
+	}
+
 	auto operator<=>(const Source &source) const = default;
 
 	NewsReference GetNewsReference() const;

@@ -8,9 +8,11 @@
 /** @file script_railtypelist.cpp Implementation of ScriptRailTypeList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_railtypelist.hpp"
-#include "script_error.hpp"
+
 #include "../../rail.h"
+#include "script_error.hpp"
 
 #include "../../safeguards.h"
 

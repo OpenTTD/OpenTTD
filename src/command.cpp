@@ -8,46 +8,49 @@
 /** @file command.cpp Handling of commands. */
 
 #include "stdafx.h"
-#include "landscape.h"
-#include "error.h"
-#include "gui.h"
-#include "command_func.h"
-#include "network/network_type.h"
-#include "network/network.h"
-#include "genworld.h"
-#include "strings_func.h"
-#include "texteff.hpp"
-#include "town.h"
-#include "timer/timer_game_economy.h"
-#include "company_func.h"
-#include "company_base.h"
-#include "signal_func.h"
+
 #include "core/backup_type.hpp"
-#include "object_base.h"
 #include "autoreplace_cmd.h"
+#include "command_func.h"
+#include "company_base.h"
 #include "company_cmd.h"
+#include "company_func.h"
 #include "depot_cmd.h"
 #include "economy_cmd.h"
 #include "engine_cmd.h"
+#include "error.h"
+#include "genworld.h"
 #include "goal_cmd.h"
 #include "group_cmd.h"
+#include "gui.h"
 #include "industry_cmd.h"
-#include "league_cmd.h"
+#include "landscape.h"
 #include "landscape_cmd.h"
+#include "league_cmd.h"
+#include "misc/endian_buffer.hpp"
 #include "misc_cmd.h"
+#include "network/network.h"
+#include "network/network_type.h"
 #include "news_cmd.h"
+#include "object_base.h"
 #include "object_cmd.h"
 #include "order_cmd.h"
 #include "rail_cmd.h"
 #include "road_cmd.h"
 #include "roadveh_cmd.h"
 #include "settings_cmd.h"
+#include "signal_func.h"
 #include "signs_cmd.h"
 #include "station_cmd.h"
 #include "story_cmd.h"
+#include "string_func.h"
+#include "strings_func.h"
 #include "subsidy_cmd.h"
 #include "terraform_cmd.h"
+#include "texteff.hpp"
+#include "timer/timer_game_economy.h"
 #include "timetable_cmd.h"
+#include "town.h"
 #include "town_cmd.h"
 #include "train_cmd.h"
 #include "tree_cmd.h"
@@ -56,16 +59,12 @@
 #include "viewport_cmd.h"
 #include "water_cmd.h"
 #include "waypoint_cmd.h"
-#include "misc/endian_buffer.hpp"
-#include "string_func.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
 
-
 int RecursiveCommandCounter::_counter = 0;
-
 
 /**
  * Define a command with the flags which belongs to it.
@@ -74,17 +73,22 @@ int RecursiveCommandCounter::_counter = 0;
  * the #CommandFlag::Auto, #CommandFlag::Offline and #CommandFlag::Server values.
  */
 struct CommandInfo {
-	const char *name;   ///< A human readable name for the procedure
+	const char *name; ///< A human readable name for the procedure
 	CommandFlags flags; ///< The (command) flags to that apply to this command
-	CommandType type;   ///< The type of command.
+	CommandType type; ///< The type of command.
 };
+
 /* Helpers to generate the master command table from the command traits. */
 template <typename T>
-inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::flags, T::type }; };
+inline constexpr CommandInfo CommandFromTrait() noexcept
+{
+	return {T::name, T::flags, T::type};
+};
 
 template <typename T, T... i>
-inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
-	return std::array<CommandInfo, sizeof...(i)>{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }};
+inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept
+{
+	return std::array<CommandInfo, sizeof...(i)>{{CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()...}};
 }
 
 /**
@@ -95,7 +99,6 @@ inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noe
  * as the value from the CMD_* enums.
  */
 static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
-
 
 /**
  * This function range-checks a cmd.
@@ -145,15 +148,15 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 {
 	/* Lookup table for the command types that are allowed for a given pause level setting. */
 	static const int command_type_lookup[] = {
-		CMDPL_ALL_ACTIONS,     ///< CMDT_LANDSCAPE_CONSTRUCTION
-		CMDPL_NO_LANDSCAPING,  ///< CMDT_VEHICLE_CONSTRUCTION
-		CMDPL_NO_LANDSCAPING,  ///< CMDT_MONEY_MANAGEMENT
+		CMDPL_ALL_ACTIONS, ///< CMDT_LANDSCAPE_CONSTRUCTION
+		CMDPL_NO_LANDSCAPING, ///< CMDT_VEHICLE_CONSTRUCTION
+		CMDPL_NO_LANDSCAPING, ///< CMDT_MONEY_MANAGEMENT
 		CMDPL_NO_CONSTRUCTION, ///< CMDT_VEHICLE_MANAGEMENT
 		CMDPL_NO_CONSTRUCTION, ///< CMDT_ROUTE_MANAGEMENT
 		CMDPL_NO_CONSTRUCTION, ///< CMDT_OTHER_MANAGEMENT
-		CMDPL_NO_ACTIONS,      ///< CMDT_COMPANY_SETTING
-		CMDPL_NO_ACTIONS,      ///< CMDT_SERVER_SETTING
-		CMDPL_NO_ACTIONS,      ///< CMDT_CHEAT
+		CMDPL_NO_ACTIONS, ///< CMDT_COMPANY_SETTING
+		CMDPL_NO_ACTIONS, ///< CMDT_SERVER_SETTING
+		CMDPL_NO_ACTIONS, ///< CMDT_CHEAT
 	};
 	static_assert(lengthof(command_type_lookup) == CMDT_END);
 
@@ -218,11 +221,10 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
 	bool only_sending = _networking && !network_command;
 
 	if (_pause_mode.Any() && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
-		ShowErrorMessage(GetEncodedString(err_message), GetEncodedString(STR_ERROR_NOT_ALLOWED_WHILE_PAUSED),
-			WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
-		return { true, estimate_only, only_sending };
+		ShowErrorMessage(GetEncodedString(err_message), GetEncodedString(STR_ERROR_NOT_ALLOWED_WHILE_PAUSED), WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
+		return {true, estimate_only, only_sending};
 	} else {
-		return { false, estimate_only, only_sending };
+		return {false, estimate_only, only_sending};
 	}
 }
 
@@ -260,7 +262,8 @@ void CommandHelperBase::InternalPostResult(CommandCost &res, TileIndex tile, boo
 /** Helper to make a desync log for a command. */
 void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
-	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, _current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
+	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, _current_company, cmd,
+		err_message, FormatArrayAsHex(args), GetCommandName(cmd));
 }
 
 /**
@@ -299,7 +302,8 @@ bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileInde
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, [[maybe_unused]] Backup<CompanyID> &cur_company)
+std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPrepExec(
+	CommandCost &res, CommandFlags cmd_flags, bool estimate_only, bool network_command, [[maybe_unused]] Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_TESTMODE);
 	SetTownRatingTestMode(false);
@@ -314,7 +318,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
 	 * we bail out here. */
 	bool test_and_exec_can_differ = cmd_flags.Test(CommandFlag::NoTest);
 	if (res.Failed() || estimate_only || (!test_and_exec_can_differ && !CheckCompanyHasMoney(res))) {
-		return { true, !_networking || _generating_world || network_command, false };
+		return {true, !_networking || _generating_world || network_command, false};
 	}
 
 	bool send_net = _networking && !_generating_world && !network_command;
@@ -325,7 +329,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_COMMAND);
 	}
 
-	return { false, _debug_desync_level >= 1, send_net };
+	return {false, _debug_desync_level >= 1, send_net};
 }
 
 /**
@@ -339,7 +343,8 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return Final command result.
  */
-CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, CommandFlags cmd_flags, [[maybe_unused]] const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
+CommandCost CommandHelperBase::InternalExecuteProcessResult(
+	Commands cmd, CommandFlags cmd_flags, [[maybe_unused]] const CommandCost &res_test, const CommandCost &res_exec, Money extra_cash, TileIndex tile, Backup<CompanyID> &cur_company)
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
@@ -391,7 +396,6 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 
 	return res_exec;
 }
-
 
 /**
  * Adds the cost of the given command return value to this cost.

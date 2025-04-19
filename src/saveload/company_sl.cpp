@@ -9,16 +9,15 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/company_sl_compat.h"
-
 #include "../company_func.h"
 #include "../company_manager_face.h"
 #include "../fios.h"
-#include "../tunnelbridge_map.h"
-#include "../tunnelbridge.h"
 #include "../station_base.h"
 #include "../strings_func.h"
+#include "../tunnelbridge.h"
+#include "../tunnelbridge_map.h"
+#include "compat/company_sl_compat.h"
+#include "saveload.h"
 
 #include "table/strings.h"
 
@@ -50,20 +49,20 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32_t face)
 	if (HasBit(face, 31)) SetBit(ge, GENDER_FEMALE);
 	if (HasBit(face, 27) && (HasBit(face, 26) == HasBit(face, 19))) SetBit(ge, ETHNICITY_BLACK);
 
-	SetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN,    ge, ge);
+	SetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, ge, ge);
 	SetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge, GB(face, 28, 3) <= 1);
-	SetCompanyManagerFaceBits(cmf, CMFV_EYE_COLOUR,  ge, HasBit(ge, ETHNICITY_BLACK) ? 0 : ClampU(GB(face, 20, 3), 5, 7) - 5);
-	SetCompanyManagerFaceBits(cmf, CMFV_CHIN,        ge, ScaleCompanyManagerFaceValue(CMFV_CHIN,     ge, GB(face,  4, 2)));
-	SetCompanyManagerFaceBits(cmf, CMFV_EYEBROWS,    ge, ScaleCompanyManagerFaceValue(CMFV_EYEBROWS, ge, GB(face,  6, 4)));
-	SetCompanyManagerFaceBits(cmf, CMFV_HAIR,        ge, ScaleCompanyManagerFaceValue(CMFV_HAIR,     ge, GB(face, 16, 4)));
-	SetCompanyManagerFaceBits(cmf, CMFV_JACKET,      ge, ScaleCompanyManagerFaceValue(CMFV_JACKET,   ge, GB(face, 20, 2)));
-	SetCompanyManagerFaceBits(cmf, CMFV_COLLAR,      ge, ScaleCompanyManagerFaceValue(CMFV_COLLAR,   ge, GB(face, 22, 2)));
-	SetCompanyManagerFaceBits(cmf, CMFV_GLASSES,     ge, GB(face, 28, 1));
+	SetCompanyManagerFaceBits(cmf, CMFV_EYE_COLOUR, ge, HasBit(ge, ETHNICITY_BLACK) ? 0 : ClampU(GB(face, 20, 3), 5, 7) - 5);
+	SetCompanyManagerFaceBits(cmf, CMFV_CHIN, ge, ScaleCompanyManagerFaceValue(CMFV_CHIN, ge, GB(face, 4, 2)));
+	SetCompanyManagerFaceBits(cmf, CMFV_EYEBROWS, ge, ScaleCompanyManagerFaceValue(CMFV_EYEBROWS, ge, GB(face, 6, 4)));
+	SetCompanyManagerFaceBits(cmf, CMFV_HAIR, ge, ScaleCompanyManagerFaceValue(CMFV_HAIR, ge, GB(face, 16, 4)));
+	SetCompanyManagerFaceBits(cmf, CMFV_JACKET, ge, ScaleCompanyManagerFaceValue(CMFV_JACKET, ge, GB(face, 20, 2)));
+	SetCompanyManagerFaceBits(cmf, CMFV_COLLAR, ge, ScaleCompanyManagerFaceValue(CMFV_COLLAR, ge, GB(face, 22, 2)));
+	SetCompanyManagerFaceBits(cmf, CMFV_GLASSES, ge, GB(face, 28, 1));
 
 	uint lips = GB(face, 10, 4);
 	if (!HasBit(ge, GENDER_FEMALE) && lips < 4) {
 		SetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE, ge, true);
-		SetCompanyManagerFaceBits(cmf, CMFV_MOUSTACHE,     ge, std::max(lips, 1U) - 1);
+		SetCompanyManagerFaceBits(cmf, CMFV_MOUSTACHE, ge, std::max(lips, 1U) - 1);
 	} else {
 		if (!HasBit(ge, GENDER_FEMALE)) {
 			lips = lips * 15 / 16;
@@ -246,10 +245,13 @@ struct CompanyOldAI {
 
 class SlCompanyOldAIBuildRec : public DefaultSaveLoadHandler<SlCompanyOldAIBuildRec, CompanyOldAI> {
 public:
-	inline static const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
-	inline const static SaveLoadCompatTable compat_description = _company_old_ai_buildrec_compat;
+	static inline const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+	static inline const SaveLoadCompatTable compat_description = _company_old_ai_buildrec_compat;
 
-	SaveLoadTable GetDescription() const override { return {}; }
+	SaveLoadTable GetDescription() const override
+	{
+		return {};
+	}
 
 	void Load(CompanyOldAI *old_ai) const override
 	{
@@ -258,16 +260,19 @@ public:
 		}
 	}
 
-	void LoadCheck(CompanyOldAI *old_ai) const override { this->Load(old_ai); }
+	void LoadCheck(CompanyOldAI *old_ai) const override
+	{
+		this->Load(old_ai);
+	}
 };
 
 class SlCompanyOldAI : public DefaultSaveLoadHandler<SlCompanyOldAI, CompanyProperties> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(CompanyOldAI, num_build_rec, SLE_UINT8, SL_MIN_VERSION, SLV_107),
 		SLEG_STRUCTLIST("buildrec", SlCompanyOldAIBuildRec),
 	};
-	inline const static SaveLoadCompatTable compat_description = _company_old_ai_compat;
+	static inline const SaveLoadCompatTable compat_description = _company_old_ai_compat;
 
 	void Load(CompanyProperties *c) const override
 	{
@@ -277,27 +282,30 @@ public:
 		SlObject(&old_ai, this->GetLoadDescription());
 	}
 
-	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
+	void LoadCheck(CompanyProperties *c) const override
+	{
+		this->Load(c);
+	}
 };
 
 class SlCompanySettings : public DefaultSaveLoadHandler<SlCompanySettings, CompanyProperties> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		/* Engine renewal settings */
-		SLE_CONDREF(CompanyProperties, engine_renew_list,            REF_ENGINE_RENEWS,   SLV_19, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew,        SLE_BOOL,            SLV_16, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16,           SLV_16, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money,  SLE_UINT32,          SLV_16, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length,   SLE_BOOL,             SLV_2, SL_MAX_VERSION),
+		SLE_CONDREF(CompanyProperties, engine_renew_list, REF_ENGINE_RENEWS, SLV_19, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew, SLE_BOOL, SLV_16, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16, SLV_16, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money, SLE_UINT32, SLV_16, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.renew_keep_length, SLE_BOOL, SLV_2, SL_MAX_VERSION),
 
 		/* Default vehicle settings */
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ispercent,   SLE_BOOL,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_trains,    SLE_UINT16,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_roadveh,   SLE_UINT16,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_aircraft,  SLE_UINT16,     SLV_120, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ships,     SLE_UINT16,     SLV_120, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ispercent, SLE_BOOL, SLV_120, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_trains, SLE_UINT16, SLV_120, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_roadveh, SLE_UINT16, SLV_120, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_aircraft, SLE_UINT16, SLV_120, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ships, SLE_UINT16, SLV_120, SL_MAX_VERSION),
 	};
-	inline const static SaveLoadCompatTable compat_description = _company_settings_compat;
+	static inline const SaveLoadCompatTable compat_description = _company_settings_compat;
 
 	void Save(CompanyProperties *c) const override
 	{
@@ -314,25 +322,28 @@ public:
 		SlObject(c, this->GetDescription());
 	}
 
-	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
+	void LoadCheck(CompanyProperties *c) const override
+	{
+		this->Load(c);
+	}
 };
 
 class SlCompanyEconomy : public DefaultSaveLoadHandler<SlCompanyEconomy, CompanyProperties> {
 public:
-	inline static const SaveLoad description[] = {
-		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
-		SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_INT64,                  SLV_2, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
-		SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_INT64,                  SLV_2, SL_MAX_VERSION),
-		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
-		SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_INT64,                  SLV_2, SL_MAX_VERSION),
+	static inline const SaveLoad description[] = {
+		SLE_CONDVAR(CompanyEconomyEntry, income, SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
+		SLE_CONDVAR(CompanyEconomyEntry, income, SLE_INT64, SLV_2, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyEconomyEntry, expenses, SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
+		SLE_CONDVAR(CompanyEconomyEntry, expenses, SLE_INT64, SLV_2, SL_MAX_VERSION),
+		SLE_CONDVAR(CompanyEconomyEntry, company_value, SLE_FILE_I32 | SLE_VAR_I64, SL_MIN_VERSION, SLV_2),
+		SLE_CONDVAR(CompanyEconomyEntry, company_value, SLE_INT64, SLV_2, SL_MAX_VERSION),
 
-		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32,       SL_MIN_VERSION, SLV_170),
-		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, 32,           SLV_170, SLV_EXTEND_CARGOTYPES),
-		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, NUM_CARGO,    SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
-		    SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
+		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32, SL_MIN_VERSION, SLV_170),
+		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, SLE_UINT32, 32, SLV_170, SLV_EXTEND_CARGOTYPES),
+		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, SLE_UINT32, NUM_CARGO, SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
+		SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
 	};
-	inline const static SaveLoadCompatTable compat_description = _company_economy_compat;
+	static inline const SaveLoadCompatTable compat_description = _company_economy_compat;
 
 	void Save(CompanyProperties *c) const override
 	{
@@ -349,7 +360,10 @@ public:
 		SlObject(&c->cur_economy, this->GetDescription());
 	}
 
-	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
+	void LoadCheck(CompanyProperties *c) const override
+	{
+		this->Load(c);
+	}
 };
 
 class SlCompanyOldEconomy : public SlCompanyEconomy {
@@ -374,17 +388,20 @@ public:
 		}
 	}
 
-	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
+	void LoadCheck(CompanyProperties *c) const override
+	{
+		this->Load(c);
+	}
 };
 
 class SlCompanyLiveries : public DefaultSaveLoadHandler<SlCompanyLiveries, CompanyProperties> {
 public:
-	inline static const SaveLoad description[] = {
-		SLE_CONDVAR(Livery, in_use,  SLE_UINT8, SLV_34, SL_MAX_VERSION),
+	static inline const SaveLoad description[] = {
+		SLE_CONDVAR(Livery, in_use, SLE_UINT8, SLV_34, SL_MAX_VERSION),
 		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SLV_34, SL_MAX_VERSION),
 		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_34, SL_MAX_VERSION),
 	};
-	inline const static SaveLoadCompatTable compat_description = _company_liveries_compat;
+	static inline const SaveLoadCompatTable compat_description = _company_liveries_compat;
 
 	/**
 	 * Get the number of liveries used by this savegame version.
@@ -428,17 +445,20 @@ public:
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
 			memmove(&c->livery[LS_FREIGHT_WAGON], &c->livery[LS_PASSENGER_WAGON_MONORAIL], (LS_END - LS_FREIGHT_WAGON) * sizeof(c->livery[0]));
 			c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
-			c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
+			c->livery[LS_PASSENGER_WAGON_MAGLEV] = c->livery[LS_MAGLEV];
 		}
 
 		if (IsSavegameVersionBefore(SLV_63)) {
 			/* Copy bus/truck liveries over to trams */
 			c->livery[LS_PASSENGER_TRAM] = c->livery[LS_BUS];
-			c->livery[LS_FREIGHT_TRAM]   = c->livery[LS_TRUCK];
+			c->livery[LS_FREIGHT_TRAM] = c->livery[LS_TRUCK];
 		}
 	}
 
-	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
+	void LoadCheck(CompanyProperties *c) const override
+	{
+		this->Load(c);
+	}
 };
 
 class SlAllowListData : public VectorSaveLoadHandler<SlAllowListData, CompanyProperties, std::string> {
@@ -447,74 +467,80 @@ public:
 		std::string key;
 	};
 
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_SSTR(KeyWrapper, key, SLE_STR),
 	};
-	inline const static SaveLoadCompatTable compat_description = {};
+	static inline const SaveLoadCompatTable compat_description = {};
 
-	std::vector<std::string> &GetVector(CompanyProperties *cprops) const override { return cprops->allow_list; }
+	std::vector<std::string> &GetVector(CompanyProperties *cprops) const override
+	{
+		return cprops->allow_list;
+	}
 
-	void LoadCheck(CompanyProperties *cprops) const override { this->Load(cprops); }
+	void LoadCheck(CompanyProperties *cprops) const override
+	{
+		this->Load(cprops);
+	}
 };
 
 /* Save/load of companies */
 static const SaveLoad _company_desc[] = {
-	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
-	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),
-	SLE_CONDSSTR(CompanyProperties, name,            SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
+	SLE_VAR(CompanyProperties, name_2, SLE_UINT32),
+	SLE_VAR(CompanyProperties, name_1, SLE_STRINGID),
+	SLE_CONDSSTR(CompanyProperties, name, SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 
-	    SLE_VAR(CompanyProperties, president_name_1, SLE_STRINGID),
-	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
-	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
+	SLE_VAR(CompanyProperties, president_name_1, SLE_STRINGID),
+	SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
+	SLE_CONDSSTR(CompanyProperties, president_name, SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 
 	SLE_CONDVECTOR(CompanyProperties, allow_list, SLE_STR, SLV_COMPANY_ALLOW_LIST, SLV_COMPANY_ALLOW_LIST_V2),
 	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SLV_COMPANY_ALLOW_LIST_V2, SL_MAX_VERSION),
 
-	    SLE_VAR(CompanyProperties, face,            SLE_UINT32),
+	SLE_VAR(CompanyProperties, face, SLE_UINT32),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(CompanyProperties, money,                 SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_1),
-	SLE_CONDVAR(CompanyProperties, money,                 SLE_INT64,                   SLV_1, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, money, SLE_VAR_I64 | SLE_FILE_I32, SL_MIN_VERSION, SLV_1),
+	SLE_CONDVAR(CompanyProperties, money, SLE_INT64, SLV_1, SL_MAX_VERSION),
 
-	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
-	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  SLV_65, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, max_loan,              SLE_INT64, SLV_MAX_LOAN_FOR_COMPANY, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, current_loan, SLE_VAR_I64 | SLE_FILE_I32, SL_MIN_VERSION, SLV_65),
+	SLE_CONDVAR(CompanyProperties, current_loan, SLE_INT64, SLV_65, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, max_loan, SLE_INT64, SLV_MAX_LOAN_FOR_COMPANY, SL_MAX_VERSION),
 
-	    SLE_VAR(CompanyProperties, colour,                SLE_UINT8),
-	    SLE_VAR(CompanyProperties, money_fraction,        SLE_UINT8),
-	    SLE_VAR(CompanyProperties, block_preview,         SLE_UINT8),
+	SLE_VAR(CompanyProperties, colour, SLE_UINT8),
+	SLE_VAR(CompanyProperties, money_fraction, SLE_UINT8),
+	SLE_VAR(CompanyProperties, block_preview, SLE_UINT8),
 
-	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION,  SLV_6),
-	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION,  SLV_6),
-	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  SL_MIN_VERSION, SLV_31),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_INT32,                  SLV_31, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, inaugurated_year_calendar, SLE_INT32,               SLV_COMPANY_INAUGURATED_PERIOD_V2, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, location_of_HQ, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
+	SLE_CONDVAR(CompanyProperties, location_of_HQ, SLE_UINT32, SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
+	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_UINT32, SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year, SLE_FILE_U8 | SLE_VAR_I32, SL_MIN_VERSION, SLV_31),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year, SLE_INT32, SLV_31, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year_calendar, SLE_INT32, SLV_COMPANY_INAUGURATED_PERIOD_V2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8,                   SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
+	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent, SLE_UINT8, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 
-	    SLE_VAR(CompanyProperties, months_of_bankruptcy,  SLE_UINT8),
-	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
-	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_UINT16,                SLV_104, SL_MAX_VERSION),
-	    SLE_VAR(CompanyProperties, bankrupt_timeout,      SLE_INT16),
-	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  SL_MIN_VERSION, SLV_65),
-	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  SLV_65, SL_MAX_VERSION),
+	SLE_VAR(CompanyProperties, months_of_bankruptcy, SLE_UINT8),
+	SLE_CONDVAR(CompanyProperties, bankrupt_asked, SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_104),
+	SLE_CONDVAR(CompanyProperties, bankrupt_asked, SLE_UINT16, SLV_104, SL_MAX_VERSION),
+	SLE_VAR(CompanyProperties, bankrupt_timeout, SLE_INT16),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value, SLE_VAR_I64 | SLE_FILE_I32, SL_MIN_VERSION, SLV_65),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value, SLE_INT64, SLV_65, SL_MAX_VERSION),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
-	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, SL_MIN_VERSION, SLV_2),
-	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_INT64, 3 * 13,                  SLV_2, SL_MAX_VERSION),
+	SLE_CONDARR(CompanyProperties, yearly_expenses, SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, SL_MIN_VERSION, SLV_2),
+	SLE_CONDARR(CompanyProperties, yearly_expenses, SLE_INT64, 3 * 13, SLV_2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(CompanyProperties, is_ai,                 SLE_BOOL,                    SLV_2, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, is_ai, SLE_BOOL, SLV_2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SLV_156, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SLV_156, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyProperties, tree_limit,            SLE_UINT32,                SLV_175, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, terraform_limit, SLE_UINT32, SLV_156, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, clear_limit, SLE_UINT32, SLV_156, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, tree_limit, SLE_UINT32, SLV_175, SL_MAX_VERSION),
 	SLEG_STRUCT("settings", SlCompanySettings),
-	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SL_MIN_VERSION, SLV_107),
+	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI, SL_MIN_VERSION, SLV_107),
 	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
 	SLEG_STRUCTLIST("old_economy", SlCompanyOldEconomy),
-	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_34, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries, SLV_34, SL_MAX_VERSION),
 };
 
 struct PLYRChunkHandler : ChunkHandler {
@@ -542,7 +568,6 @@ struct PLYRChunkHandler : ChunkHandler {
 		}
 	}
 
-
 	void LoadCheck(size_t) const override
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_company_desc, _company_sl_compat);
@@ -563,10 +588,8 @@ struct PLYRChunkHandler : ChunkHandler {
 				}
 			}
 
-			if (cprops->name.empty() && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_END) &&
-				cprops->name_1 != STR_GAME_SAVELOAD_NOT_AVAILABLE && cprops->name_1 != STR_SV_UNNAMED &&
-				cprops->name_1 != SPECSTR_ANDCO_NAME && cprops->name_1 != SPECSTR_PRESIDENT_NAME &&
-				cprops->name_1 != SPECSTR_SILLY_NAME) {
+			if (cprops->name.empty() && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_END) && cprops->name_1 != STR_GAME_SAVELOAD_NOT_AVAILABLE &&
+				cprops->name_1 != STR_SV_UNNAMED && cprops->name_1 != SPECSTR_ANDCO_NAME && cprops->name_1 != SPECSTR_PRESIDENT_NAME && cprops->name_1 != SPECSTR_SILLY_NAME) {
 				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
 			}
 

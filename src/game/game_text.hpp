@@ -27,6 +27,7 @@ struct StringParam {
 
 	StringParam(ParamType type, uint8_t consumes, std::string_view cmd = {}) : type(type), consumes(consumes), cmd(cmd) {}
 };
+
 using StringParams = std::vector<StringParam>;
 using StringParamsList = std::vector<StringParams>;
 
@@ -42,19 +43,25 @@ struct LanguageStrings {
 	ReferenceThroughBaseContainer<StringList> lines; ///< The lines of the file to pass into the parser/encoder.
 
 	LanguageStrings() {}
+
 	LanguageStrings(const std::string &lang) : language(lang) {}
+
 	LanguageStrings(const LanguageStrings &other) : language(other.language), lines(other.lines) {}
+
 	LanguageStrings(LanguageStrings &&other) : language(std::move(other.language)), lines(std::move(other.lines)) {}
 
-	bool IsValid() const { return !this->language.empty(); }
+	bool IsValid() const
+	{
+		return !this->language.empty();
+	}
 };
 
 /** Container for all the game strings. */
 struct GameStrings {
-	uint version;                  ///< The version of the language strings.
+	uint version; ///< The version of the language strings.
 	LanguageStrings *cur_language; ///< The current (compiled) language.
 
-	std::vector<LanguageStrings> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
+	std::vector<LanguageStrings> raw_strings; ///< The raw strings per language, first must be English/the master language!.
 	std::vector<LanguageStrings> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
 	ReferenceThroughBaseContainer<StringList> string_names; ///< The names of the compiled strings.
 	ReferenceThroughBaseContainer<StringParamsList> string_params; ///< The parameters for the strings.

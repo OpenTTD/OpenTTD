@@ -8,24 +8,25 @@
 /** @file newgrf_config.cpp Finding NewGRFs and configuring them. */
 
 #include "stdafx.h"
-#include "debug.h"
+
+#include "newgrf_config.h"
+
 #include "3rdparty/md5/md5.h"
-#include "newgrf.h"
-#include "network/network_func.h"
+
+#include "debug.h"
+#include "fileio_func.h"
+#include "fios.h"
 #include "gfx_func.h"
+#include "network/network_func.h"
+#include "newgrf.h"
 #include "newgrf_text.h"
-#include "window_func.h"
 #include "progress.h"
-#include "video/video_driver.hpp"
 #include "string_func.h"
 #include "strings_func.h"
 #include "textfile_gui.h"
 #include "thread.h"
-#include "newgrf_config.h"
-#include "newgrf_text.h"
-
-#include "fileio_func.h"
-#include "fios.h"
+#include "video/video_driver.hpp"
+#include "window_func.h"
 
 #include "safeguards.h"
 
@@ -34,23 +35,9 @@
  * @param config The GRFConfig object to make a copy of.
  */
 GRFConfig::GRFConfig(const GRFConfig &config) :
-	ident(config.ident),
-	original_md5sum(config.original_md5sum),
-	filename(config.filename),
-	name(config.name),
-	info(config.info),
-	url(config.url),
-	error(config.error),
-	version(config.version),
-	min_loadable_version(config.min_loadable_version),
-	flags(config.flags),
-	status(config.status),
-	grf_bugs(config.grf_bugs),
-	num_valid_params(config.num_valid_params),
-	palette(config.palette),
-	has_param_defaults(config.has_param_defaults),
-	param_info(config.param_info),
-	param(config.param)
+	ident(config.ident), original_md5sum(config.original_md5sum), filename(config.filename), name(config.name), info(config.info), url(config.url), error(config.error), version(config.version),
+	min_loadable_version(config.min_loadable_version), flags(config.flags), status(config.status), grf_bugs(config.grf_bugs), num_valid_params(config.num_valid_params), palette(config.palette),
+	has_param_defaults(config.has_param_defaults), param_info(config.param_info), param(config.param)
 {
 	this->flags.Reset(GRFConfigFlag::Copy);
 }
@@ -132,9 +119,15 @@ void GRFConfig::SetSuitablePalette()
 {
 	PaletteType pal;
 	switch (this->palette & GRFP_GRF_MASK) {
-		case GRFP_GRF_DOS:     pal = PAL_DOS;      break;
-		case GRFP_GRF_WINDOWS: pal = PAL_WINDOWS;  break;
-		default:               pal = _settings_client.gui.newgrf_default_palette == 1 ? PAL_WINDOWS : PAL_DOS; break;
+		case GRFP_GRF_DOS:
+			pal = PAL_DOS;
+			break;
+		case GRFP_GRF_WINDOWS:
+			pal = PAL_WINDOWS;
+			break;
+		default:
+			pal = _settings_client.gui.newgrf_default_palette == 1 ? PAL_WINDOWS : PAL_DOS;
+			break;
 	}
 	SB(this->palette, GRFP_USE_BIT, 1, pal == PAL_WINDOWS ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
 }
@@ -161,9 +154,7 @@ uint _missing_extra_graphics = 0;
  * @param severity The severity of this error.
  * @param message The actual error-string.
  */
-GRFError::GRFError(StringID severity, StringID message) : message(message), severity(severity)
-{
-}
+GRFError::GRFError(StringID severity, StringID message) : message(message), severity(severity) {}
 
 /**
  * Get the value of the given user-changeable parameter.
@@ -209,8 +200,9 @@ void GRFConfig::SetValue(const GRFParameterInfo &info, uint32_t value)
 void GRFParameterInfo::Finalize()
 {
 	/* Remove value names outside of the permitted range of values. */
-	auto it = std::remove_if(std::begin(this->value_names), std::end(this->value_names),
-			[this](const ValueName &vn) { return vn.first < this->min_value || vn.first > this->max_value; });
+	auto it = std::remove_if(std::begin(this->value_names), std::end(this->value_names), [this](const ValueName &vn) {
+		return vn.first < this->min_value || vn.first > this->max_value;
+	});
 	this->value_names.erase(it, std::end(this->value_names));
 
 	/* Test if the number of named values matches the full ranges of values. -1 because the range is inclusive. */
@@ -224,8 +216,8 @@ void GRFParameterInfo::Finalize()
 void UpdateNewGRFConfigPalette(int32_t)
 {
 	for (const auto &c : _grfconfig_newgame) c->SetSuitablePalette();
-	for (const auto &c : _grfconfig_static ) c->SetSuitablePalette();
-	for (const auto &c : _all_grfs         ) c->SetSuitablePalette();
+	for (const auto &c : _grfconfig_static) c->SetSuitablePalette();
+	for (const auto &c : _all_grfs) c->SetSuitablePalette();
 }
 
 /**
@@ -290,7 +282,6 @@ static bool CalcGRFMD5Sum(GRFConfig &config, Subdirectory subdir)
 	return true;
 }
 
-
 /**
  * Find the GRFID of a given grf, and calculate its md5sum.
  * @param config    grf to fill.
@@ -323,7 +314,6 @@ bool FillGRFDetails(GRFConfig &config, bool is_static, Subdirectory subdir)
 
 	return CalcGRFMD5Sum(config, subdir);
 }
-
 
 /**
  * Clear a GRF Config list, freeing all nodes.
@@ -385,7 +375,9 @@ static void RemoveDuplicatesFromGRFConfigList(GRFConfigList &list)
 
 	auto last = std::end(list);
 	for (auto it = std::begin(list); it != last; ++it) {
-		auto remove = std::remove_if(std::next(it), last, [&grfid = (*it)->ident.grfid](const auto &c) { return grfid == c->ident.grfid; });
+		auto remove = std::remove_if(std::next(it), last, [&grfid = (*it)->ident.grfid](const auto &c) {
+			return grfid == c->ident.grfid;
+		});
 		last = list.erase(remove, last);
 	}
 }
@@ -411,14 +403,12 @@ void AppendToGRFConfigList(GRFConfigList &dst, std::unique_ptr<GRFConfig> &&el)
 	RemoveDuplicatesFromGRFConfigList(dst);
 }
 
-
 /** Reset the current GRF Config to either blank or newgame settings. */
 void ResetGRFConfig(bool defaults)
 {
 	CopyGRFConfigList(_grfconfig, _grfconfig_newgame, !defaults);
 	AppendStaticGRFConfigs(_grfconfig);
 }
-
 
 /**
  * Check if all GRFs in the GRF config from a savegame can be loaded.
@@ -460,7 +450,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 			c->status = GCS_NOT_FOUND;
 			res = GLC_NOT_FOUND;
 		} else {
-compatible_grf:
+		compatible_grf:
 			Debug(grf, 1, "Loading GRF {:08X} from {}", std::byteswap(f->ident.grfid), f->filename);
 			/* The filename could be the filename as in the savegame. As we need
 			 * to load the GRF here, we need the correct filename, so overwrite that
@@ -484,7 +474,6 @@ compatible_grf:
 
 	return res;
 }
-
 
 /** Set this flag to prevent any NewGRF scanning from being done. */
 int _skip_all_newgrf_scanning = 0;
@@ -528,7 +517,9 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 	auto c = std::make_unique<GRFConfig>(filename.substr(basepath_length));
 	GRFConfig *grfconfig = c.get();
 	if (FillGRFDetails(*c, false)) {
-		if (std::ranges::none_of(_all_grfs, [&c](const auto &gc) { return c->ident.grfid == gc->ident.grfid && c->ident.md5sum == gc->ident.md5sum; })) {
+		if (std::ranges::none_of(_all_grfs, [&c](const auto &gc) {
+				return c->ident.grfid == gc->ident.grfid && c->ident.md5sum == gc->ident.md5sum;
+			})) {
 			_all_grfs.push_back(std::move(c));
 			added = true;
 		}
@@ -549,7 +540,7 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
  * @param c2 the second GRFConfig *
  * @return true if the name of first NewGRF is before the name of the second.
  */
-static bool GRFSorter(std::unique_ptr<GRFConfig> const &c1, std::unique_ptr<GRFConfig> const &c2)
+static bool GRFSorter(const std::unique_ptr<GRFConfig> &c1, const std::unique_ptr<GRFConfig> &c2)
 {
 	return StrNaturalCompare(c1->GetName(), c2->GetName()) < 0;
 }
@@ -630,12 +621,13 @@ const GRFConfig *FindGRFConfig(uint32_t grfid, FindGRFConfigMode mode, const MD5
  */
 GRFConfig *GetGRFConfig(uint32_t grfid, uint32_t mask)
 {
-	auto it = std::ranges::find_if(_grfconfig, [grfid, mask](const auto &c) { return (c->ident.grfid & mask) == (grfid & mask); });
+	auto it = std::ranges::find_if(_grfconfig, [grfid, mask](const auto &c) {
+		return (c->ident.grfid & mask) == (grfid & mask);
+	});
 	if (it != std::end(_grfconfig)) return it->get();
 
 	return nullptr;
 }
-
 
 /** Build a string containing space separated parameter values, and terminate */
 std::string GRFBuildParamList(const GRFConfig &c)

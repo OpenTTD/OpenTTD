@@ -10,9 +10,9 @@
 #ifndef ROAD_CMD_H
 #define ROAD_CMD_H
 
+#include "command_type.h"
 #include "direction_type.h"
 #include "road_type.h"
-#include "command_type.h"
 #include "station_type.h"
 #include "town_type.h"
 
@@ -27,15 +27,17 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt, DiagDirection dir);
 CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_start, RoadType to_type, bool diagonal);
 
-DEF_CMD_TRAIT(CMD_BUILD_LONG_ROAD,  CmdBuildLongRoad,  CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_REMOVE_LONG_ROAD, CmdRemoveLongRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoTest}),              CMDT_LANDSCAPE_CONSTRUCTION) // towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
-DEF_CMD_TRAIT(CMD_BUILD_ROAD,       CmdBuildRoad,      CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_ROAD_DEPOT, CmdBuildRoadDepot, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}),             CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_CONVERT_ROAD,     CmdConvertRoad,    {},                                                                  CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_BUILD_LONG_ROAD, CmdBuildLongRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_REMOVE_LONG_ROAD, CmdRemoveLongRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoTest}),
+	CMDT_LANDSCAPE_CONSTRUCTION) // towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
+DEF_CMD_TRAIT(CMD_BUILD_ROAD, CmdBuildRoad, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater, CommandFlag::Deity}), CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_BUILD_ROAD_DEPOT, CmdBuildRoadDepot, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_CONVERT_ROAD, CmdConvertRoad, {}, CMDT_LANDSCAPE_CONSTRUCTION)
 
 CommandCallback CcPlaySound_CONSTRUCTION_OTHER;
 CommandCallback CcBuildRoadTunnel;
 void CcRoadDepot(Commands cmd, const CommandCost &result, TileIndex tile, RoadType rt, DiagDirection dir);
-void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8_t width, uint8_t length, RoadStopType, bool is_drive_through, DiagDirection dir, RoadType, RoadStopClassID spec_class, uint16_t spec_index, StationID, bool);
+void CcRoadStop(Commands cmd, const CommandCost &result, TileIndex tile, uint8_t width, uint8_t length, RoadStopType, bool is_drive_through, DiagDirection dir, RoadType, RoadStopClassID spec_class,
+	uint16_t spec_index, StationID, bool);
 
 #endif /* ROAD_CMD_H */

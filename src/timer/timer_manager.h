@@ -28,8 +28,8 @@ public:
 	using TElapsed = typename TTimerType::TElapsed;
 
 	/* Avoid copying this object; it is a singleton object. */
-	TimerManager(TimerManager const &) = delete;
-	TimerManager &operator=(TimerManager const &) = delete;
+	TimerManager(const TimerManager &) = delete;
+	TimerManager &operator=(const TimerManager &) = delete;
 
 	/**
 	 * Register a timer.
@@ -102,7 +102,7 @@ private:
 	 * same, it will sort based on the pointer value.
 	 */
 	struct base_timer_sorter {
-		bool operator() (BaseTimer<TTimerType> *a, BaseTimer<TTimerType> *b) const
+		bool operator()(BaseTimer<TTimerType> *a, BaseTimer<TTimerType> *b) const
 		{
 			if (a->period == b->period) return a < b;
 			return a->period < b->period;

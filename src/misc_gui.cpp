@@ -8,44 +8,43 @@
 /** @file misc_gui.cpp GUIs for a number of misc windows. */
 
 #include "stdafx.h"
-#include "debug.h"
-#include "landscape.h"
-#include "error.h"
-#include "gui.h"
-#include "gfx_layout.h"
-#include "command_func.h"
-#include "company_func.h"
-#include "town.h"
-#include "string_func.h"
-#include "company_base.h"
-#include "texteff.hpp"
-#include "strings_func.h"
-#include "window_func.h"
-#include "querystring_gui.h"
+
 #include "core/geometry_func.hpp"
-#include "newgrf_debug.h"
-#include "zoom_func.h"
-#include "viewport_func.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "debug.h"
+#include "error.h"
+#include "gfx_layout.h"
+#include "gui.h"
+#include "landscape.h"
 #include "landscape_cmd.h"
+#include "newgrf_debug.h"
+#include "pathfinder/water_regions.h"
+#include "querystring_gui.h"
 #include "rev.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "texteff.hpp"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
-#include "pathfinder/water_regions.h"
+#include "town.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "zoom_func.h"
 
 #include "widgets/misc_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
 
 /** Method to open the OSK. */
 enum OskActivation : uint8_t {
-	OSKA_DISABLED,           ///< The OSK shall not be activated at all.
-	OSKA_DOUBLE_CLICK,       ///< Double click on the edit box opens OSK.
-	OSKA_SINGLE_CLICK,       ///< Single click after focus click opens OSK.
-	OSKA_IMMEDIATELY,        ///< Focusing click already opens OSK.
+	OSKA_DISABLED, ///< The OSK shall not be activated at all.
+	OSKA_DOUBLE_CLICK, ///< Double click on the edit box opens OSK.
+	OSKA_SINGLE_CLICK, ///< Single click after focus click opens OSK.
+	OSKA_IMMEDIATELY, ///< Focusing click already opens OSK.
 };
-
 
 /* clang-format off */
 static constexpr NWidgetPart _nested_land_info_widgets[] = {
@@ -59,12 +58,7 @@ static constexpr NWidgetPart _nested_land_info_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _land_info_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_LAND_INFO, WC_NONE,
-	{},
-	_nested_land_info_widgets
-);
+static WindowDesc _land_info_desc(WDP_AUTO, nullptr, 0, 0, WC_LAND_INFO, WC_NONE, {}, _nested_land_info_widgets);
 
 class LandInfoWindow : public Window {
 	StringList landinfo_data{}; ///< Info lines to show.
@@ -339,80 +333,33 @@ static constexpr NWidgetPart _nested_about_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _about_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_GAME_OPTIONS, WC_NONE,
-	{},
-	_nested_about_widgets
-);
+static WindowDesc _about_desc(WDP_CENTER, nullptr, 0, 0, WC_GAME_OPTIONS, WC_NONE, {}, _nested_about_widgets);
 
-static const std::initializer_list<const std::string_view> _credits = {
-	"Original design by Chris Sawyer",
-	"Original graphics by Simon Foster",
-	"",
-	"The OpenTTD team (in alphabetical order):",
-	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, Debian port (since 0.3)",
-	"  Christoph Elsenhans (frosch) - General coding (since 0.6)",
-	"  Lo\u00efc Guilloux (glx) - General / Windows Expert (since 0.4.5)",
-	"  Koen Bussemaker (Kuhnovic) - General / Ship pathfinder (since 14)",
-	"  Charles Pigott (LordAro) - General / Correctness police (since 1.9)",
-	"  Michael Lutz (michi_cc) - Path based signals (since 0.7)",
-	"  Niels Martin Hansen (nielsm) - Music system, general coding (since 1.9)",
-	"  Owen Rudge (orudge) - Forum host, OS/2 port (since 0.1)",
-	"  Peter Nelson (peter1138) - Spiritual descendant from NewGRF gods (since 0.4.5)",
-	"  Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)",
-	"  Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op",
-	"  Tyler Trahan (2TallTyler) - General / Time Lord (since 13)",
-	"  Richard Wheeler (zephyris) - Precision pixel production (since 15)",
-	"",
-	"Inactive Developers:",
-	"  Grzegorz Duczy\u0144ski (adf88) - General coding (1.7 - 1.8)",
-	"  Albert Hofkamp (Alberth) - GUI expert (0.7 - 1.9)",
-	"  Jean-Fran\u00e7ois Claeys (Belugas) - GUI, NewGRF and more (0.4.5 - 1.0)",
-	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles (0.3 - 0.7)",
-	"  Victor Fischer (Celestar) - Programming everywhere you need him to (0.3 - 0.6)",
-	"  Ulf Hermann (fonsinchen) - Cargo Distribution (1.3 - 1.6)",
-	"  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;) (0.4.5 - 0.6)",
-	"  Jonathan Coome (Maedhros) - High priest of the NewGRF Temple (0.5 - 0.6)",
-	"  Attila B\u00e1n (MiHaMiX) - Developer WebTranslator 1 and 2 (0.3 - 0.5)",
-	"  Ingo von Borstel (planetmaker) - General coding, Support (1.1 - 1.9)",
-	"  Zden\u011bk Sojka (SmatZ) - Bug finder and fixer (0.6 - 1.3)",
-	"  Jos\u00e9 Soler (Terkhen) - General coding (1.0 - 1.4)",
-	"  Christoph Mallon (Tron) - Programmer, code correctness police (0.3 - 0.5)",
-	"  Thijs Marinussen (Yexo) - AI Framework, General (0.6 - 1.3)",
-	"  Leif Linse (Zuu) - AI/Game Script (1.2 - 1.6)",
-	"",
-	"Retired Developers:",
-	"  Tam\u00e1s Farag\u00f3 (Darkvater) - Ex-Lead coder (0.3 - 0.5)",
-	"  Dominik Scherer (dominik81) - Lead programmer, GUI expert (0.3 - 0.3)",
-	"  Emil Djupfeld (egladil) - MacOSX (0.4.5 - 0.6)",
-	"  Simon Sasburg (HackyKid) - Many bugfixes (0.4 - 0.4.5)",
-	"  Ludvig Strigeus (ludde) - Original author of OpenTTD, main coder (0.1 - 0.3)",
-	"  Cian Duffy (MYOB) - BeOS port / manual writing (0.1 - 0.3)",
-	"  Petr Baudi\u0161 (pasky) - Many patches, NewGRF support (0.3 - 0.3)",
-	"  Benedikt Br\u00fcggemeier (skidd13) - Bug fixer and code reworker (0.6 - 0.7)",
-	"  Serge Paquet (vurlix) - 2nd contributor after ludde (0.1 - 0.3)",
-	"",
-	"Special thanks go out to:",
-	"  Josef Drexler - For his great work on TTDPatch",
-	"  Marcin Grzegorczyk - Track foundations and for describing TTD internals",
-	"  Stefan Mei\u00dfner (sign_de) - For his work on the console",
-	"  Mike Ragsdale - OpenTTD installer",
-	"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
-	"  Richard Kempton (richK) - additional airports, initial TGP implementation",
-	"  Alberto Demichelis - Squirrel scripting language \u00a9 2003-2008",
-	"  L. Peter Deutsch - MD5 implementation \u00a9 1999, 2000, 2002",
-	"  Michael Blunck - Pre-signals and semaphores \u00a9 2003",
-	"  George - Canal/Lock graphics \u00a9 2003-2004",
-	"  Andrew Parkhouse (andythenorth) - River graphics",
-	"  David Dallaston (Pikka) - Tram tracks",
-	"  All Translators - Who made OpenTTD a truly international game",
-	"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",
-	"",
-	"",
-	"And last but not least:",
-	"  Chris Sawyer - For an amazing game!"
-};
+static const std::initializer_list<const std::string_view> _credits = {"Original design by Chris Sawyer", "Original graphics by Simon Foster", "",
+	"The OpenTTD team (in alphabetical order):", "  Matthijs Kooijman (blathijs) - Pathfinder-guru, Debian port (since 0.3)", "  Christoph Elsenhans (frosch) - General coding (since 0.6)",
+	"  Lo\u00efc Guilloux (glx) - General / Windows Expert (since 0.4.5)", "  Koen Bussemaker (Kuhnovic) - General / Ship pathfinder (since 14)",
+	"  Charles Pigott (LordAro) - General / Correctness police (since 1.9)", "  Michael Lutz (michi_cc) - Path based signals (since 0.7)",
+	"  Niels Martin Hansen (nielsm) - Music system, general coding (since 1.9)", "  Owen Rudge (orudge) - Forum host, OS/2 port (since 0.1)",
+	"  Peter Nelson (peter1138) - Spiritual descendant from NewGRF gods (since 0.4.5)", "  Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)",
+	"  Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op", "  Tyler Trahan (2TallTyler) - General / Time Lord (since 13)",
+	"  Richard Wheeler (zephyris) - Precision pixel production (since 15)", "", "Inactive Developers:", "  Grzegorz Duczy\u0144ski (adf88) - General coding (1.7 - 1.8)",
+	"  Albert Hofkamp (Alberth) - GUI expert (0.7 - 1.9)", "  Jean-Fran\u00e7ois Claeys (Belugas) - GUI, NewGRF and more (0.4.5 - 1.0)",
+	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles (0.3 - 0.7)", "  Victor Fischer (Celestar) - Programming everywhere you need him to (0.3 - 0.6)",
+	"  Ulf Hermann (fonsinchen) - Cargo Distribution (1.3 - 1.6)", "  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;) (0.4.5 - 0.6)",
+	"  Jonathan Coome (Maedhros) - High priest of the NewGRF Temple (0.5 - 0.6)", "  Attila B\u00e1n (MiHaMiX) - Developer WebTranslator 1 and 2 (0.3 - 0.5)",
+	"  Ingo von Borstel (planetmaker) - General coding, Support (1.1 - 1.9)", "  Zden\u011bk Sojka (SmatZ) - Bug finder and fixer (0.6 - 1.3)",
+	"  Jos\u00e9 Soler (Terkhen) - General coding (1.0 - 1.4)", "  Christoph Mallon (Tron) - Programmer, code correctness police (0.3 - 0.5)",
+	"  Thijs Marinussen (Yexo) - AI Framework, General (0.6 - 1.3)", "  Leif Linse (Zuu) - AI/Game Script (1.2 - 1.6)", "",
+	"Retired Developers:", "  Tam\u00e1s Farag\u00f3 (Darkvater) - Ex-Lead coder (0.3 - 0.5)", "  Dominik Scherer (dominik81) - Lead programmer, GUI expert (0.3 - 0.3)",
+	"  Emil Djupfeld (egladil) - MacOSX (0.4.5 - 0.6)", "  Simon Sasburg (HackyKid) - Many bugfixes (0.4 - 0.4.5)", "  Ludvig Strigeus (ludde) - Original author of OpenTTD, main coder (0.1 - 0.3)",
+	"  Cian Duffy (MYOB) - BeOS port / manual writing (0.1 - 0.3)", "  Petr Baudi\u0161 (pasky) - Many patches, NewGRF support (0.3 - 0.3)",
+	"  Benedikt Br\u00fcggemeier (skidd13) - Bug fixer and code reworker (0.6 - 0.7)", "  Serge Paquet (vurlix) - 2nd contributor after ludde (0.1 - 0.3)", "",
+	"Special thanks go out to:", "  Josef Drexler - For his great work on TTDPatch", "  Marcin Grzegorczyk - Track foundations and for describing TTD internals",
+	"  Stefan Mei\u00dfner (sign_de) - For his work on the console", "  Mike Ragsdale - OpenTTD installer", "  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
+	"  Richard Kempton (richK) - additional airports, initial TGP implementation", "  Alberto Demichelis - Squirrel scripting language \u00a9 2003-2008",
+	"  L. Peter Deutsch - MD5 implementation \u00a9 1999, 2000, 2002", "  Michael Blunck - Pre-signals and semaphores \u00a9 2003", "  George - Canal/Lock graphics \u00a9 2003-2004",
+	"  Andrew Parkhouse (andythenorth) - River graphics", "  David Dallaston (Pikka) - Tram tracks", "  All Translators - Who made OpenTTD a truly international game",
+	"  Bug Reporters - Without whom OpenTTD would still be full of bugs!", "", "", "And last but not least:", "  Chris Sawyer - For an amazing game!"};
 
 struct AboutWindow : public Window {
 	int text_position = 0; ///< The top of the scrolling text
@@ -470,13 +417,14 @@ struct AboutWindow : public Window {
 	 * The interval of 2100ms is chosen to maintain parity: 2100 / GetCharacterHeight(FS_NORMAL) = 150ms.
 	 */
 	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(2100) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
-		this->text_position -= count;
-		/* If the last text has scrolled start a new from the start */
-		if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - std::size(_credits) * this->line_height)) {
-			this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
-		}
-		this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
-	}};
+													  this->text_position -= count;
+													  /* If the last text has scrolled start a new from the start */
+													  if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - std::size(_credits) * this->line_height)) {
+														  this->text_position =
+															  this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
+													  }
+													  this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
+												  }};
 };
 
 void ShowAboutWindow()
@@ -596,16 +544,11 @@ static constexpr NWidgetPart _nested_tooltips_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _tool_tips_desc(
-	WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
-	WC_TOOLTIPS, WC_NONE,
-	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
-	_nested_tooltips_widgets
-);
+static WindowDesc _tool_tips_desc(WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
+	WC_TOOLTIPS, WC_NONE, {WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose}, _nested_tooltips_widgets);
 
 /** Window for displaying a tooltip. */
-struct TooltipsWindow : public Window
-{
+struct TooltipsWindow : public Window {
 	EncodedString text{}; ///< String to display as tooltip.
 	TooltipCloseCondition close_cond{}; ///< Condition for closing the window.
 
@@ -644,12 +587,12 @@ struct TooltipsWindow : public Window
 		if (widget != WID_TT_BACKGROUND) return;
 
 		auto str = this->text.GetDecodedString();
-		size.width  = std::min<uint>(GetStringBoundingBox(str).width, ScaleGUITrad(194));
+		size.width = std::min<uint>(GetStringBoundingBox(str).width, ScaleGUITrad(194));
 		size.height = GetStringHeight(str, size.width);
 
 		/* Increase slightly to have some space around the box. */
-		size.width  += WidgetDimensions::scaled.framerect.Horizontal()  + WidgetDimensions::scaled.fullbevel.Horizontal();
-		size.height += WidgetDimensions::scaled.framerect.Vertical()    + WidgetDimensions::scaled.fullbevel.Vertical();
+		size.width += WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.fullbevel.Horizontal();
+		size.height += WidgetDimensions::scaled.framerect.Vertical() + WidgetDimensions::scaled.fullbevel.Vertical();
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -672,9 +615,14 @@ struct TooltipsWindow : public Window
 		/* We can show tooltips while dragging tools. These are shown as long as
 		 * we are dragging the tool. Normal tooltips work with hover or rmb. */
 		switch (this->close_cond) {
-			case TCC_RIGHT_CLICK: if (!_right_button_down) this->Close(); break;
-			case TCC_HOVER: if (!_mouse_hovering) this->Close(); break;
-			case TCC_NONE: break;
+			case TCC_RIGHT_CLICK:
+				if (!_right_button_down) this->Close();
+				break;
+			case TCC_HOVER:
+				if (!_mouse_hovering) this->Close();
+				break;
+			case TCC_NONE:
+				break;
 
 			case TCC_EXIT_VIEWPORT: {
 				Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
@@ -839,7 +787,7 @@ Rect QueryString::GetBoundingRect(const Window *w, WidgetID wid, const char *fro
 	const auto p1 = GetCharPosInString(tb->GetText(), from, FS_NORMAL);
 	const auto p2 = from != to ? GetCharPosInString(tb->GetText(), to, FS_NORMAL) : p1;
 
-	return { Clamp(r.left + p1.left, r.left, r.right), r.top, Clamp(r.left + p2.right, r.left, r.right), r.bottom };
+	return {Clamp(r.left + p1.left, r.left, r.right), r.top, Clamp(r.left + p2.right, r.left, r.right), r.bottom};
 }
 
 /**
@@ -891,8 +839,7 @@ void QueryString::ClickEditBox(Window *w, Point pt, WidgetID wid, int click_coun
 		return;
 	}
 
-	if (w->window_class != WC_OSK && _settings_client.gui.osk_activation != OSKA_DISABLED &&
-		(!focus_changed || _settings_client.gui.osk_activation == OSKA_IMMEDIATELY) &&
+	if (w->window_class != WC_OSK && _settings_client.gui.osk_activation != OSKA_DISABLED && (!focus_changed || _settings_client.gui.osk_activation == OSKA_IMMEDIATELY) &&
 		(click_count == 2 || _settings_client.gui.osk_activation != OSKA_DOUBLE_CLICK)) {
 		/* Open the OSK window */
 		ShowOnScreenKeyboard(w, wid);
@@ -900,13 +847,12 @@ void QueryString::ClickEditBox(Window *w, Point pt, WidgetID wid, int click_coun
 }
 
 /** Class for the string query window. */
-struct QueryStringWindow : public Window
-{
+struct QueryStringWindow : public Window {
 	QueryString editbox; ///< Editbox.
 	QueryStringFlags flags{}; ///< Flags controlling behaviour of the window.
 
 	QueryStringWindow(std::string_view str, StringID caption, uint max_bytes, uint max_chars, WindowDesc &desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
-			Window(desc), editbox(max_bytes, max_chars)
+		Window(desc), editbox(max_bytes, max_chars)
 	{
 		this->editbox.text.Assign(str);
 
@@ -998,12 +944,7 @@ static constexpr NWidgetPart _nested_query_string_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _query_string_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_QUERY_STRING, WC_NONE,
-	{},
-	_nested_query_string_widgets
-);
+static WindowDesc _query_string_desc(WDP_CENTER, nullptr, 0, 0, WC_QUERY_STRING, WC_NONE, {}, _nested_query_string_widgets);
 
 /**
  * Show a query popup window with a textbox in it.
@@ -1030,8 +971,8 @@ struct QueryWindow : public Window {
 	EncodedString caption{}; ///< caption for query window.
 	EncodedString message{}; ///< message for query window.
 
-	QueryWindow(WindowDesc &desc, EncodedString &&caption, EncodedString &&message, Window *parent, QueryCallbackProc *callback)
-		: Window(desc), proc(callback), caption(std::move(caption)), message(std::move(message))
+	QueryWindow(WindowDesc &desc, EncodedString &&caption, EncodedString &&message, Window *parent, QueryCallbackProc *callback) :
+		Window(desc), proc(callback), caption(std::move(caption)), message(std::move(message))
 	{
 		this->parent = parent;
 
@@ -1139,12 +1080,7 @@ static constexpr NWidgetPart _nested_query_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _query_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_CONFIRM_POPUP_QUERY, WC_NONE,
-	WindowDefaultFlag::Modal,
-	_nested_query_widgets
-);
+static WindowDesc _query_desc(WDP_CENTER, nullptr, 0, 0, WC_CONFIRM_POPUP_QUERY, WC_NONE, WindowDefaultFlag::Modal, _nested_query_widgets);
 
 /**
  * Show a confirmation window with standard 'yes' and 'no' buttons

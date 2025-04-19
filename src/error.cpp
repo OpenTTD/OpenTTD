@@ -8,6 +8,7 @@
 /** @file error.cpp Reporting of errors. */
 
 #include "stdafx.h"
+
 #include "error_func.h"
 #include "safeguards.h"
 

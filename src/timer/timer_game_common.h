@@ -31,14 +31,16 @@ template <class T>
 class TimerGame {
 public:
 	/** The type to store our dates in. */
-	template <class ST> struct DateTag;
+	template <class ST>
+	struct DateTag;
 	using Date = StrongType::Typedef<int32_t, DateTag<T>, StrongType::Compare, StrongType::Integer>;
 
 	/** The fraction of a date we're in, i.e. the number of ticks since the last date changeover. */
 	using DateFract = uint16_t;
 
 	/** Type for the year, note: 0 based, i.e. starts at the year 0. */
-	template <class ST> struct YearTag;
+	template <class ST>
+	struct YearTag;
 	using Year = StrongType::Typedef<int32_t, struct YearTag<T>, StrongType::Compare, StrongType::Integer>;
 	/** Type for the month, note: 0 based, i.e. 0 = January, 11 = December. */
 	using Month = uint8_t;
@@ -50,9 +52,9 @@ public:
 	 * @see ConvertDateToYMD(), ConvertYMDToDate()
 	 */
 	struct YearMonthDay {
-		Year  year;   ///< Year (0...)
-		Month month;  ///< Month (0..11)
-		Day   day;    ///< Day (1..31)
+		Year year; ///< Year (0...)
+		Month month; ///< Month (0..11)
+		Day day; ///< Day (1..31)
 	};
 
 	/**
@@ -121,22 +123,22 @@ public:
 		Trigger trigger;
 		Priority priority;
 
-		TPeriod(Trigger trigger, Priority priority) : trigger(trigger), priority(priority)
-		{}
+		TPeriod(Trigger trigger, Priority priority) : trigger(trigger), priority(priority) {}
 
-		bool operator < (const TPeriod &other) const
+		bool operator<(const TPeriod &other) const
 		{
 			if (this->trigger != other.trigger) return this->trigger < other.trigger;
 			return this->priority < other.priority;
 		}
 
-		bool operator == (const TPeriod &other) const
+		bool operator==(const TPeriod &other) const
 		{
 			return this->trigger == other.trigger && this->priority == other.priority;
 		}
 	};
 
 	using TElapsed = uint;
+
 	struct TStorage {};
 };
 
@@ -150,7 +152,7 @@ public:
 	static constexpr int DAYS_IN_LEAP_YEAR = 366; ///< sometimes, you need one day more...
 	static constexpr int MONTHS_IN_YEAR = 12; ///< months per year
 
-	static constexpr int SECONDS_PER_DAY = 2;   ///< approximate seconds per day, not for precise calculations
+	static constexpr int SECONDS_PER_DAY = 2; ///< approximate seconds per day, not for precise calculations
 
 	/*
 	 * ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR and DAYS_TILL_ORIGINAL_BASE_YEAR are

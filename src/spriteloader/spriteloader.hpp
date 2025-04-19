@@ -19,8 +19,8 @@ struct Sprite;
 
 /** The different colour components a sprite can have. */
 enum class SpriteComponent : uint8_t {
-	RGB     = 0, ///< Sprite has RGB.
-	Alpha   = 1, ///< Sprite has alpha.
+	RGB = 0, ///< Sprite has RGB.
+	Alpha = 1, ///< Sprite has alpha.
 	Palette = 2, ///< Sprite has palette data.
 	End,
 };
@@ -31,11 +31,11 @@ class SpriteLoader {
 public:
 	/** Definition of a common pixel in OpenTTD's realm. */
 	struct CommonPixel {
-		uint8_t r = 0;  ///< Red-channel
-		uint8_t g = 0;  ///< Green-channel
-		uint8_t b = 0;  ///< Blue-channel
-		uint8_t a = 0;  ///< Alpha-channel
-		uint8_t m = 0;  ///< Remap-channel
+		uint8_t r = 0; ///< Red-channel
+		uint8_t g = 0; ///< Green-channel
+		uint8_t b = 0; ///< Blue-channel
+		uint8_t a = 0; ///< Alpha-channel
+		uint8_t m = 0; ///< Remap-channel
 	};
 
 	/**
@@ -45,12 +45,12 @@ public:
 	 * This to prevent thousands of malloc + frees just to load a sprite.
 	 */
 	struct Sprite {
-		uint16_t height;                   ///< Height of the sprite
-		uint16_t width;                    ///< Width of the sprite
-		int16_t x_offs;                    ///< The x-offset of where the sprite will be drawn
-		int16_t y_offs;                    ///< The y-offset of where the sprite will be drawn
-		SpriteType type;                 ///< The sprite type
-		SpriteComponents colours;   ///< The colour components of the sprite with useful information.
+		uint16_t height; ///< Height of the sprite
+		uint16_t width; ///< Width of the sprite
+		int16_t x_offs; ///< The x-offset of where the sprite will be drawn
+		int16_t y_offs; ///< The y-offset of where the sprite will be drawn
+		SpriteType type; ///< The sprite type
+		SpriteComponents colours; ///< The colour components of the sprite with useful information.
 		SpriteLoader::CommonPixel *data; ///< The sprite itself
 
 		/**
@@ -58,7 +58,11 @@ public:
 		 * @param zoom Zoom level to allocate the data for.
 		 * @param size the minimum size of the data field.
 		 */
-		void AllocateData(ZoomLevel zoom, size_t size) { this->data = Sprite::buffer[zoom].ZeroAllocate(size); }
+		void AllocateData(ZoomLevel zoom, size_t size)
+		{
+			this->data = Sprite::buffer[zoom].ZeroAllocate(size);
+		}
+
 	private:
 		/** Allocated memory to pass sprite data around */
 		static ReusableBuffer<SpriteLoader::CommonPixel> buffer[ZOOM_LVL_END];
@@ -79,7 +83,8 @@ public:
 	 * @param control_flags Control flags, see SpriteCacheCtrlFlags.
 	 * @return Bit mask of the zoom levels successfully loaded or 0 if no sprite could be loaded.
 	 */
-	virtual uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp) = 0;
+	virtual uint8_t LoadSprite(
+		SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp) = 0;
 
 	virtual ~SpriteLoader() = default;
 };
@@ -113,7 +118,6 @@ protected:
 /** Interface for something that can encode a sprite. */
 class SpriteEncoder {
 public:
-
 	virtual ~SpriteEncoder() = default;
 
 	/**

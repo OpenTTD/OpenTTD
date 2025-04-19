@@ -8,20 +8,22 @@
 /** @file misc_cmd.cpp Some misc functions that are better fitted in other files, but never got moved there... */
 
 #include "stdafx.h"
+
+#include "misc_cmd.h"
+
+#include "core/backup_type.hpp"
 #include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "company_gui.h"
 #include "economy_func.h"
-#include "window_func.h"
-#include "textbuf_gui.h"
 #include "network/network.h"
 #include "network/network_func.h"
 #include "strings_func.h"
-#include "company_func.h"
-#include "company_gui.h"
-#include "company_base.h"
-#include "tile_map.h"
+#include "textbuf_gui.h"
 #include "texteff.hpp"
-#include "core/backup_type.hpp"
-#include "misc_cmd.h"
+#include "tile_map.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -46,7 +48,8 @@ CommandCost CmdIncreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 
 	Money loan;
 	switch (cmd) {
-		default: return CMD_ERROR; // Invalid method
+		default:
+			return CMD_ERROR; // Invalid method
 		case LoanCommand::Interval: // Take some extra loan
 			loan = LOAN_INTERVAL;
 			break;
@@ -65,7 +68,7 @@ CommandCost CmdIncreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 	if (c->money > Money::max() - loan) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		c->money        += loan;
+		c->money += loan;
 		c->current_loan += loan;
 		InvalidateCompanyWindows(c);
 	}
@@ -90,7 +93,8 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 
 	Money loan;
 	switch (cmd) {
-		default: return CMD_ERROR; // Invalid method
+		default:
+			return CMD_ERROR; // Invalid method
 		case LoanCommand::Interval: // Pay back one step
 			loan = std::min(c->current_loan, (Money)LOAN_INTERVAL);
 			break;
@@ -109,7 +113,7 @@ CommandCost CmdDecreaseLoan(DoCommandFlags flags, LoanCommand cmd, Money amount)
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		c->money        -= loan;
+		c->money -= loan;
 		c->current_loan -= loan;
 		InvalidateCompanyWindows(c);
 	}
@@ -179,16 +183,12 @@ CommandCost CmdPause(DoCommandFlags flags, PauseMode mode, bool pause)
 			if (!_networking) return CMD_ERROR;
 			break;
 
-		default: return CMD_ERROR;
+		default:
+			return CMD_ERROR;
 	}
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (mode == PauseMode::Normal && _pause_mode.Test(PauseMode::Error)) {
-			ShowQuery(
-				GetEncodedString(STR_NEWGRF_UNPAUSE_WARNING_TITLE),
-				GetEncodedString(STR_NEWGRF_UNPAUSE_WARNING),
-				nullptr,
-				AskUnsafeUnpauseCallback
-			);
+			ShowQuery(GetEncodedString(STR_NEWGRF_UNPAUSE_WARNING_TITLE), GetEncodedString(STR_NEWGRF_UNPAUSE_WARNING), nullptr, AskUnsafeUnpauseCallback);
 		} else {
 			PauseModes prev_mode = _pause_mode;
 

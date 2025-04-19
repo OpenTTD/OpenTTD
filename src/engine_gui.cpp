@@ -8,26 +8,27 @@
 /** @file engine_gui.cpp GUI to show engine related information. */
 
 #include "stdafx.h"
-#include "window_gui.h"
-#include "engine_base.h"
-#include "command_func.h"
-#include "strings_func.h"
+
 #include "engine_gui.h"
+
+#include "aircraft.h"
 #include "articulated_vehicles.h"
-#include "vehicle_func.h"
+#include "command_func.h"
 #include "company_func.h"
+#include "engine_base.h"
+#include "engine_cmd.h"
 #include "rail.h"
 #include "road.h"
-#include "settings_type.h"
-#include "train.h"
 #include "roadveh.h"
+#include "settings_type.h"
 #include "ship.h"
-#include "aircraft.h"
-#include "engine_cmd.h"
+#include "strings_func.h"
+#include "train.h"
+#include "vehicle_func.h"
+#include "window_gui.h"
 #include "zoom_func.h"
 
 #include "widgets/engine_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -41,11 +42,14 @@ StringID GetEngineCategoryName(EngineID engine)
 {
 	const Engine *e = Engine::Get(engine);
 	switch (e->type) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case VEH_ROAD:
 			return GetRoadTypeInfo(e->u.road.roadtype)->strings.new_engine;
-		case VEH_AIRCRAFT:          return STR_ENGINE_PREVIEW_AIRCRAFT;
-		case VEH_SHIP:              return STR_ENGINE_PREVIEW_SHIP;
+		case VEH_AIRCRAFT:
+			return STR_ENGINE_PREVIEW_AIRCRAFT;
+		case VEH_SHIP:
+			return STR_ENGINE_PREVIEW_SHIP;
 		case VEH_TRAIN:
 			return GetRailTypeInfo(e->u.rail.railtype)->strings.new_loco;
 	}
@@ -92,16 +96,26 @@ struct EnginePreviewWindow : Window {
 
 		const Engine *e = Engine::Get(engine);
 		switch (e->type) {
-			default: NOT_REACHED();
-			case VEH_TRAIN:    GetTrainSpriteSize(   engine, x, y, x_offs, y_offs, image_type); break;
-			case VEH_ROAD:     GetRoadVehSpriteSize( engine, x, y, x_offs, y_offs, image_type); break;
-			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y, x_offs, y_offs, image_type); break;
-			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type); break;
+			default:
+				NOT_REACHED();
+			case VEH_TRAIN:
+				GetTrainSpriteSize(engine, x, y, x_offs, y_offs, image_type);
+				break;
+			case VEH_ROAD:
+				GetRoadVehSpriteSize(engine, x, y, x_offs, y_offs, image_type);
+				break;
+			case VEH_SHIP:
+				GetShipSpriteSize(engine, x, y, x_offs, y_offs, image_type);
+				break;
+			case VEH_AIRCRAFT:
+				GetAircraftSpriteSize(engine, x, y, x_offs, y_offs, image_type);
+				break;
 		}
 		this->vehicle_space = std::max<int>(ScaleSpriteTrad(40), y - y_offs);
 
 		size.width = std::max(size.width, x + std::abs(x_offs));
-		size.height = GetStringHeight(GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), size.width) + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) + this->vehicle_space;
+		size.height = GetStringHeight(GetString(STR_ENGINE_PREVIEW_MESSAGE, GetEngineCategoryName(engine)), size.width) + WidgetDimensions::scaled.vsep_wide + GetCharacterHeight(FS_NORMAL) +
+			this->vehicle_space;
 		size.height += GetStringHeight(GetEngineInfoString(engine), size.width);
 	}
 
@@ -142,13 +156,7 @@ struct EnginePreviewWindow : Window {
 	}
 };
 
-static WindowDesc _engine_preview_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_ENGINE_PREVIEW, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_engine_preview_widgets
-);
-
+static WindowDesc _engine_preview_desc(WDP_CENTER, nullptr, 0, 0, WC_ENGINE_PREVIEW, WC_NONE, WindowDefaultFlag::Construction, _nested_engine_preview_widgets);
 
 void ShowEnginePreviewWindow(EngineID engine)
 {
@@ -268,7 +276,6 @@ static std::string GetShipEngineInfoString(const Engine &e)
 	return res.str();
 }
 
-
 /**
  * Get a multi-line string with some technical data, describing the engine.
  * @param engine Engine to describe.
@@ -292,7 +299,8 @@ std::string GetEngineInfoString(EngineID engine)
 		case VEH_AIRCRAFT:
 			return GetAircraftEngineInfoString(e);
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -326,7 +334,8 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
 			DrawAircraftEngine(left, right, preferred_x, y, engine, pal, image_type);
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -355,4 +364,3 @@ void EngList_SortPartial(GUIEngineList &el, EngList_SortTypeFunction compare, si
 	assert(begin + num_items <= el.size());
 	std::sort(el.begin() + begin, el.begin() + begin + num_items, compare);
 }
-

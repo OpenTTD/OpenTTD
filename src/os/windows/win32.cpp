@@ -8,26 +8,29 @@
 /** @file win32.cpp Implementation of MS Windows system calls */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
-#include "../../gfx_func.h"
-#include "../../textbuf_gui.h"
-#include "../../fileio_func.h"
+
 #include <windows.h>
 #include <fcntl.h>
 #include <mmsystem.h>
 #include <regstr.h>
+
+#include "../../debug.h"
+#include "../../fileio_func.h"
+#include "../../gfx_func.h"
+#include "../../textbuf_gui.h"
 #define NO_SHOBJIDL_SORTDIRECTION // Avoid multiple definition of SORT_ASCENDING
-#include <shlobj.h> /* SHGetFolderPath */
-#include <shellapi.h>
-#include <winnls.h>
 #include <io.h>
-#include "win32.h"
-#include "../../fios.h"
-#include "../../string_func.h"
+#include <shellapi.h>
+#include <shlobj.h> /* SHGetFolderPath */
 #include <sys/stat.h>
+#include <winnls.h>
+
+#include "../../fios.h"
 #include "../../language.h"
-#include "../../thread.h"
 #include "../../library_loader.h"
+#include "../../string_func.h"
+#include "../../thread.h"
+#include "win32.h"
 
 #include "../../safeguards.h"
 
@@ -76,7 +79,8 @@ void FiosGetDrives(FileList &file_list)
 		fios->name += (char)(s[0] & 0xFF);
 		fios->name += ':';
 		fios->title = fios->name;
-		while (*s++ != '\0') { /* Nothing */ }
+		while (*s++ != '\0') { /* Nothing */
+		}
 	}
 }
 
@@ -93,7 +97,7 @@ bool FiosIsHiddenFile(const std::filesystem::path &path)
 
 std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path)
 {
-	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
+	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
 
 	ULARGE_INTEGER bytes_free;
 	bool retval = GetDiskFreeSpaceEx(OTTD2FS(path).c_str(), &bytes_free, nullptr, nullptr);
@@ -135,21 +139,21 @@ void CreateConsole()
 		return;
 	}
 
-#if defined(_MSC_VER)
+#	if defined(_MSC_VER)
 	freopen("CONOUT$", "a", stdout);
 	freopen("CONIN$", "r", stdin);
 	freopen("CONOUT$", "a", stderr);
-#else
+#	else
 	*stdout = *_fdopen(fd, "w");
-	*stdin = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r" );
-	*stderr = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w" );
-#endif
+	*stdin = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r");
+	*stderr = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w");
+#	endif
 
 #else
 	/* open_osfhandle is not in cygwin */
-	*stdout = *fdopen(1, "w" );
-	*stdin = *fdopen(0, "r" );
-	*stderr = *fdopen(2, "w" );
+	*stdout = *fdopen(1, "w");
+	*stdin = *fdopen(0, "r");
+	*stderr = *fdopen(2, "w");
 #endif
 
 	setvbuf(stdin, nullptr, _IONBF, 0);
@@ -186,7 +190,8 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 			std::wstring &msg = *reinterpret_cast<std::wstring *>(lParam);
 			SetDlgItemText(wnd, 11, msg.c_str());
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
-		} return TRUE;
+		}
+			return TRUE;
 
 		case WM_COMMAND:
 			if (wParam == 12) ExitProcess(0);
@@ -309,7 +314,6 @@ void DetermineBasePaths(const char *exe)
 	_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
 }
 
-
 std::optional<std::string> GetClipboardContents()
 {
 	if (!IsClipboardFormatAvailable(CF_UNICODETEXT)) return std::nullopt;
@@ -324,7 +328,6 @@ std::optional<std::string> GetClipboardContents()
 	if (result.empty()) return std::nullopt;
 	return result;
 }
-
 
 /**
  * Convert to OpenTTD's encoding from a wide string.
@@ -361,7 +364,6 @@ std::wstring OTTD2FS(const std::string &name)
 	return system_buf;
 }
 
-
 /**
  * Convert to OpenTTD's encoding from that of the environment in
  * UNICODE. OpenTTD encoding is UTF8, local is wide.
@@ -377,7 +379,6 @@ char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf)
 
 	return dst_buf.data();
 }
-
 
 /**
  * Convert from OpenTTD's encoding to that of the environment in
@@ -402,7 +403,7 @@ const char *GetCurrentLocale(const char *)
 
 	char lang[9], country[9];
 	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, static_cast<int>(std::size(lang))) == 0 ||
-	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, static_cast<int>(std::size(country))) == 0) {
+		GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, static_cast<int>(std::size(country))) == 0) {
 		/* Unable to retrieve the locale. */
 		return nullptr;
 	}
@@ -410,7 +411,6 @@ const char *GetCurrentLocale(const char *)
 	static char retbuf[6] = {lang[0], lang[1], '_', country[0], country[1], 0};
 	return retbuf;
 }
-
 
 static WCHAR _cur_iso_locale[16] = L"";
 
@@ -433,7 +433,7 @@ void Win32SetCurrentLocaleName(std::string iso_code)
 
 int OTTDStringCompare(std::string_view s1, std::string_view s2)
 {
-	typedef int (WINAPI *PFNCOMPARESTRINGEX)(LPCWSTR, DWORD, LPCWCH, int, LPCWCH, int, LPVOID, LPVOID, LPARAM);
+	typedef int(WINAPI * PFNCOMPARESTRINGEX)(LPCWSTR, DWORD, LPCWCH, int, LPCWCH, int, LPVOID, LPVOID, LPARAM);
 	static PFNCOMPARESTRINGEX _CompareStringEx = nullptr;
 	static bool first_time = true;
 
@@ -478,7 +478,7 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
  */
 int Win32StringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
 {
-	typedef int (WINAPI *PFNFINDNLSSTRINGEX)(LPCWSTR, DWORD, LPCWSTR, int, LPCWSTR, int, LPINT, LPNLSVERSIONINFO, LPVOID, LPARAM);
+	typedef int(WINAPI * PFNFINDNLSSTRINGEX)(LPCWSTR, DWORD, LPCWSTR, int, LPCWSTR, int, LPINT, LPNLSVERSIONINFO, LPVOID, LPARAM);
 	static PFNFINDNLSSTRINGEX _FindNLSStringEx = nullptr;
 	static bool first_time = true;
 
@@ -499,7 +499,10 @@ int Win32StringContains(const std::string_view str, const std::string_view value
 			MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), str_str.data(), len_str);
 			MultiByteToWideChar(CP_UTF8, 0, value.data(), (int)value.size(), str_value.data(), len_value);
 
-			return _FindNLSStringEx(_cur_iso_locale, FIND_FROMSTART | (case_insensitive ? LINGUISTIC_IGNORECASE : 0), str_str.data(), len_str, str_value.data(), len_value, nullptr, nullptr, nullptr, 0) >= 0 ? 1 : 0;
+			return _FindNLSStringEx(
+					   _cur_iso_locale, FIND_FROMSTART | (case_insensitive ? LINGUISTIC_IGNORECASE : 0), str_str.data(), len_str, str_value.data(), len_value, nullptr, nullptr, nullptr, 0) >= 0 ?
+				1 :
+				0;
 		}
 	}
 
@@ -510,12 +513,14 @@ int Win32StringContains(const std::string_view str, const std::string_view value
 /* Based on code from MSDN: https://msdn.microsoft.com/en-us/library/xcb2z8hs.aspx */
 const DWORD MS_VC_EXCEPTION = 0x406D1388;
 
-PACK_N(struct THREADNAME_INFO {
-	DWORD dwType;     ///< Must be 0x1000.
-	LPCSTR szName;    ///< Pointer to name (in user addr space).
-	DWORD dwThreadID; ///< Thread ID (-1=caller thread).
-	DWORD dwFlags;    ///< Reserved for future use, must be zero.
-}, 8);
+PACK_N(
+	struct THREADNAME_INFO {
+		DWORD dwType; ///< Must be 0x1000.
+		LPCSTR szName; ///< Pointer to name (in user addr space).
+		DWORD dwThreadID; ///< Thread ID (-1=caller thread).
+		DWORD dwFlags; ///< Reserved for future use, must be zero.
+	},
+	8);
 
 /**
  * Signal thread name to any attached debuggers.
@@ -528,13 +533,13 @@ void SetCurrentThreadName(const char *threadName)
 	info.dwThreadID = -1;
 	info.dwFlags = 0;
 
-#pragma warning(push)
-#pragma warning(disable: 6320 6322)
+#	pragma warning(push)
+#	pragma warning(disable : 6320 6322)
 	__try {
-		RaiseException(MS_VC_EXCEPTION, 0, sizeof(info) / sizeof(ULONG_PTR), (ULONG_PTR*)&info);
+		RaiseException(MS_VC_EXCEPTION, 0, sizeof(info) / sizeof(ULONG_PTR), (ULONG_PTR *)&info);
 	} __except (EXCEPTION_EXECUTE_HANDLER) {
 	}
-#pragma warning(pop)
+#	pragma warning(pop)
 }
 #else
 void SetCurrentThreadName(const char *) {}

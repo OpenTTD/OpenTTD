@@ -10,12 +10,12 @@
  */
 
 #include "../../stdafx.h"
+
 #include "../../debug.h"
 #include "os_abstraction.h"
 #include "packet.h"
 
 #include "../../safeguards.h"
-
 
 /**
  * Initializes the network core (as that is needed for some platforms

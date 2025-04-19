@@ -11,8 +11,8 @@
 #define SLOPE_FUNC_H
 
 #include "core/math_func.hpp"
-#include "slope_type.h"
 #include "direction_type.h"
+#include "slope_type.h"
 #include "tile_type.h"
 
 /**
@@ -25,7 +25,6 @@ static constexpr inline bool IsValidCorner(Corner corner)
 {
 	return IsInsideMM(corner, 0, CORNER_END);
 }
-
 
 /**
  * Checks if a slope is steep.
@@ -127,14 +126,19 @@ inline Corner GetHighestSlopeCorner(Slope s)
 {
 	switch (RemoveHalftileSlope(s)) {
 		case SLOPE_W:
-		case SLOPE_STEEP_W: return CORNER_W;
+		case SLOPE_STEEP_W:
+			return CORNER_W;
 		case SLOPE_S:
-		case SLOPE_STEEP_S: return CORNER_S;
+		case SLOPE_STEEP_S:
+			return CORNER_S;
 		case SLOPE_E:
-		case SLOPE_STEEP_E: return CORNER_E;
+		case SLOPE_STEEP_E:
+			return CORNER_E;
 		case SLOPE_N:
-		case SLOPE_STEEP_N: return CORNER_N;
-		default: NOT_REACHED();
+		case SLOPE_STEEP_N:
+			return CORNER_N;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -239,11 +243,16 @@ inline bool IsInclinedSlope(Slope s)
 inline DiagDirection GetInclinedSlopeDirection(Slope s)
 {
 	switch (s) {
-		case SLOPE_NE: return DIAGDIR_NE;
-		case SLOPE_SE: return DIAGDIR_SE;
-		case SLOPE_SW: return DIAGDIR_SW;
-		case SLOPE_NW: return DIAGDIR_NW;
-		default: return INVALID_DIAGDIR;
+		case SLOPE_NE:
+			return DIAGDIR_NE;
+		case SLOPE_SE:
+			return DIAGDIR_SE;
+		case SLOPE_SW:
+			return DIAGDIR_SW;
+		case SLOPE_NW:
+			return DIAGDIR_NW;
+		default:
+			return INVALID_DIAGDIR;
 	}
 }
 
@@ -256,11 +265,16 @@ inline DiagDirection GetInclinedSlopeDirection(Slope s)
 inline Slope InclinedSlope(DiagDirection dir)
 {
 	switch (dir) {
-		case DIAGDIR_NE: return SLOPE_NE;
-		case DIAGDIR_SE: return SLOPE_SE;
-		case DIAGDIR_SW: return SLOPE_SW;
-		case DIAGDIR_NW: return SLOPE_NW;
-		default: NOT_REACHED();
+		case DIAGDIR_NE:
+			return SLOPE_NE;
+		case DIAGDIR_SE:
+			return SLOPE_SE;
+		case DIAGDIR_SW:
+			return SLOPE_SW;
+		case DIAGDIR_NW:
+			return SLOPE_NW;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -276,7 +290,6 @@ static constexpr inline Slope HalftileSlope(Slope s, Corner corner)
 	assert(IsValidCorner(corner));
 	return (Slope)(s | SLOPE_HALFTILE | (corner << 6));
 }
-
 
 /**
  * Tests for FOUNDATION_NONE.

@@ -12,8 +12,8 @@
 
 #include "../core/geometry_type.hpp"
 #include "../gfx_type.h"
-#include "../spriteloader/spriteloader.hpp"
 #include "../misc/lrucache.hpp"
+#include "../spriteloader/spriteloader.hpp"
 
 typedef void (*OGLProc)();
 typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);
@@ -46,17 +46,17 @@ private:
 	GLuint anim_texture = 0; ///< Texture handle for the animation buffer texture.
 
 	GLuint remap_program = 0; ///< Shader program for blending and rendering a RGBA + remap texture.
-	GLint  remap_sprite_loc = 0; ///< Uniform location for sprite parameters.
-	GLint  remap_screen_loc = 0; ///< Uniform location for screen size.
-	GLint  remap_zoom_loc = 0; ///< Uniform location for sprite zoom.
-	GLint  remap_rgb_loc = 0; ///< Uniform location for RGB mode flag.
+	GLint remap_sprite_loc = 0; ///< Uniform location for sprite parameters.
+	GLint remap_screen_loc = 0; ///< Uniform location for screen size.
+	GLint remap_zoom_loc = 0; ///< Uniform location for sprite zoom.
+	GLint remap_rgb_loc = 0; ///< Uniform location for RGB mode flag.
 
 	GLuint sprite_program = 0; ///< Shader program for blending and rendering a sprite to the video buffer.
-	GLint  sprite_sprite_loc = 0; ///< Uniform location for sprite parameters.
-	GLint  sprite_screen_loc = 0; ///< Uniform location for screen size.
-	GLint  sprite_zoom_loc = 0; ///< Uniform location for sprite zoom.
-	GLint  sprite_rgb_loc = 0; ///< Uniform location for RGB mode flag.
-	GLint  sprite_crash_loc = 0; ///< Uniform location for crash remap mode flag.
+	GLint sprite_sprite_loc = 0; ///< Uniform location for sprite parameters.
+	GLint sprite_screen_loc = 0; ///< Uniform location for screen size.
+	GLint sprite_zoom_loc = 0; ///< Uniform location for sprite zoom.
+	GLint sprite_rgb_loc = 0; ///< Uniform location for RGB mode flag.
+	GLint sprite_crash_loc = 0; ///< Uniform location for crash remap mode flag.
 
 	LRUCache<SpriteID, OpenGLSprite> cursor_cache; ///< Cache of encoded cursor sprites.
 	PaletteID last_sprite_pal = (PaletteID)-1; ///< Last uploaded remap palette.
@@ -82,6 +82,7 @@ public:
 	{
 		return OpenGLBackend::instance;
 	}
+
 	static std::optional<std::string_view> Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res);
 	static void Destroy();
 
@@ -104,32 +105,39 @@ public:
 
 	/* SpriteEncoder */
 
-	bool Is32BppSupported() override { return true; }
-	uint GetSpriteAlignment() override { return 1u << (ZOOM_LVL_END - 1); }
+	bool Is32BppSupported() override
+	{
+		return true;
+	}
+
+	uint GetSpriteAlignment() override
+	{
+		return 1u << (ZOOM_LVL_END - 1);
+	}
+
 	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
 };
-
 
 /** Class that encapsulates a RGBA texture together with a paletted remap texture. */
 class OpenGLSprite {
 private:
 	/** Enum of all used OpenGL texture objects. */
 	enum Texture : uint8_t {
-		TEX_RGBA,    ///< RGBA texture part.
-		TEX_REMAP,   ///< Remap texture part.
+		TEX_RGBA, ///< RGBA texture part.
+		TEX_REMAP, ///< Remap texture part.
 		NUM_TEX
 	};
 
 	Dimension dim{};
 	std::array<GLuint, NUM_TEX> tex{}; ///< The texture objects.
-	int16_t x_offs = 0;  ///< Number of pixels to shift the sprite to the right.
-	int16_t y_offs = 0;  ///< Number of pixels to shift the sprite downwards.
+	int16_t x_offs = 0; ///< Number of pixels to shift the sprite to the right.
+	int16_t y_offs = 0; ///< Number of pixels to shift the sprite downwards.
 
 	static std::array<GLuint, NUM_TEX> dummy_tex; ///< 1x1 dummy textures to substitute for unused sprite components.
 
 	static GLuint pal_identity; ///< Identity texture mapping.
-	static GLuint pal_tex;      ///< Texture for palette remap.
-	static GLuint pal_pbo;      ///< Pixel buffer object for remap upload.
+	static GLuint pal_tex; ///< Texture for palette remap.
+	static GLuint pal_pbo; ///< Pixel buffer object for remap upload.
 
 	static bool Create();
 	static void Destroy();
@@ -140,10 +148,10 @@ public:
 	OpenGLSprite(const SpriteLoader::SpriteCollection &sprite);
 
 	/* No support for moving/copying the textures is implemented. */
-	OpenGLSprite(const OpenGLSprite&) = delete;
-	OpenGLSprite(OpenGLSprite&&) = delete;
-	OpenGLSprite& operator=(const OpenGLSprite&) = delete;
-	OpenGLSprite& operator=(OpenGLSprite&&) = delete;
+	OpenGLSprite(const OpenGLSprite &) = delete;
+	OpenGLSprite(OpenGLSprite &&) = delete;
+	OpenGLSprite &operator=(const OpenGLSprite &) = delete;
+	OpenGLSprite &operator=(OpenGLSprite &&) = delete;
 	~OpenGLSprite();
 
 	void Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel *data);

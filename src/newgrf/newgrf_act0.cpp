@@ -8,13 +8,14 @@
 /** @file newgrf_act0.cpp NewGRF Action 0x00 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "../newgrf_engine.h"
+#include "../error.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
 #include "../newgrf_cargo.h"
+#include "../newgrf_engine.h"
 #include "../timer/timer_game_calendar.h"
-#include "../error.h"
 #include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
@@ -112,7 +113,8 @@ std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature)
 bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uint8_t feature, uint8_t property)
 {
 	switch (cir) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 
 		case CIR_DISABLED:
 			/* Error has already been printed; just stop parsing */
@@ -144,20 +146,40 @@ struct InvokeGrfChangeInfoHandler {
 	static ChangeInfoResult Invoke(uint first, uint last, int prop, ByteReader &buf, GrfLoadingStage stage)
 	{
 		switch (stage) {
-			case GLS_RESERVE: return GrfChangeInfoHandler<TFeature>::Reserve(first, last, prop, buf);
-			case GLS_ACTIVATION: return GrfChangeInfoHandler<TFeature>::Activation(first, last, prop, buf);
-			default: NOT_REACHED();
+			case GLS_RESERVE:
+				return GrfChangeInfoHandler<TFeature>::Reserve(first, last, prop, buf);
+			case GLS_ACTIVATION:
+				return GrfChangeInfoHandler<TFeature>::Activation(first, last, prop, buf);
+			default:
+				NOT_REACHED();
 		}
 	}
 
-	using Invoker = ChangeInfoResult(*)(uint first, uint last, int prop, ByteReader &buf, GrfLoadingStage stage);
-	static constexpr Invoker funcs[] { // Must be listed in feature order.
-		Invoke<GSF_TRAINS>,    Invoke<GSF_ROADVEHICLES>,  Invoke<GSF_SHIPS>,         Invoke<GSF_AIRCRAFT>,
-		Invoke<GSF_STATIONS>,  Invoke<GSF_CANALS>,        Invoke<GSF_BRIDGES>,       Invoke<GSF_HOUSES>,
-		Invoke<GSF_GLOBALVAR>, Invoke<GSF_INDUSTRYTILES>, Invoke<GSF_INDUSTRIES>,    Invoke<GSF_CARGOES>,
-		Invoke<GSF_SOUNDFX>,   Invoke<GSF_AIRPORTS>,      nullptr /* GSF_SIGNALS */, Invoke<GSF_OBJECTS>,
-		Invoke<GSF_RAILTYPES>, Invoke<GSF_AIRPORTTILES>,  Invoke<GSF_ROADTYPES>,     Invoke<GSF_TRAMTYPES>,
-		Invoke<GSF_ROADSTOPS>, Invoke<GSF_BADGES>,
+	using Invoker = ChangeInfoResult (*)(uint first, uint last, int prop, ByteReader &buf, GrfLoadingStage stage);
+	static constexpr Invoker funcs[]{
+		// Must be listed in feature order.
+		Invoke<GSF_TRAINS>,
+		Invoke<GSF_ROADVEHICLES>,
+		Invoke<GSF_SHIPS>,
+		Invoke<GSF_AIRCRAFT>,
+		Invoke<GSF_STATIONS>,
+		Invoke<GSF_CANALS>,
+		Invoke<GSF_BRIDGES>,
+		Invoke<GSF_HOUSES>,
+		Invoke<GSF_GLOBALVAR>,
+		Invoke<GSF_INDUSTRYTILES>,
+		Invoke<GSF_INDUSTRIES>,
+		Invoke<GSF_CARGOES>,
+		Invoke<GSF_SOUNDFX>,
+		Invoke<GSF_AIRPORTS>,
+		nullptr /* GSF_SIGNALS */,
+		Invoke<GSF_OBJECTS>,
+		Invoke<GSF_RAILTYPES>,
+		Invoke<GSF_AIRPORTTILES>,
+		Invoke<GSF_ROADTYPES>,
+		Invoke<GSF_TRAMTYPES>,
+		Invoke<GSF_ROADSTOPS>,
+		Invoke<GSF_BADGES>,
 	};
 
 	static ChangeInfoResult Invoke(GrfSpecFeature feature, uint first, uint last, int prop, ByteReader &buf, GrfLoadingStage stage)
@@ -184,16 +206,15 @@ static void FeatureChangeInfo(ByteReader &buf)
 
 	GrfSpecFeature feature{buf.ReadByte()};
 	uint8_t numprops = buf.ReadByte();
-	uint numinfo  = buf.ReadByte();
-	uint engine   = buf.ReadExtendedByte();
+	uint numinfo = buf.ReadByte();
+	uint engine = buf.ReadExtendedByte();
 
 	if (feature >= GSF_END) {
 		GrfMsg(1, "FeatureChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
-	GrfMsg(6, "FeatureChangeInfo: Feature 0x{:02X}, {} properties, to apply to {}+{}",
-	               feature, numprops, engine, numinfo);
+	GrfMsg(6, "FeatureChangeInfo: Feature 0x{:02X}, {} properties, to apply to {}+{}", feature, numprops, engine, numinfo);
 
 	/* Test if feature handles change. */
 	ChangeInfoResult cir_test = InvokeGrfChangeInfoHandler::Invoke(feature, 0, 0, 0, buf, GLS_ACTIVATION);
@@ -273,9 +294,35 @@ static void ReserveChangeInfo(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x00>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x00>::SafetyScan(ByteReader &buf) { SafeChangeInfo(buf); }
-template <> void GrfActionHandler<0x00>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x00>::Init(ByteReader &) { }
-template <> void GrfActionHandler<0x00>::Reserve(ByteReader &buf) { ReserveChangeInfo(buf); }
-template <> void GrfActionHandler<0x00>::Activation(ByteReader &buf) { FeatureChangeInfo(buf); }
+template <>
+void GrfActionHandler<0x00>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x00>::SafetyScan(ByteReader &buf)
+{
+	SafeChangeInfo(buf);
+}
+
+template <>
+void GrfActionHandler<0x00>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x00>::Init(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x00>::Reserve(ByteReader &buf)
+{
+	ReserveChangeInfo(buf);
+}
+
+template <>
+void GrfActionHandler<0x00>::Activation(ByteReader &buf)
+{
+	FeatureChangeInfo(buf);
+}

@@ -31,11 +31,11 @@ static constexpr Owner INVALID_OWNER = Owner::Invalid(); ///< An invalid owner
 
 static const uint8_t MAX_COMPANIES = CompanyID::End().base();
 static const uint MAX_LENGTH_PRESIDENT_NAME_CHARS = 32; ///< The maximum length of a president name in characters including '\0'
-static const uint MAX_LENGTH_COMPANY_NAME_CHARS   = 32; ///< The maximum length of a company name in characters including '\0'
+static const uint MAX_LENGTH_COMPANY_NAME_CHARS = 32; ///< The maximum length of a company name in characters including '\0'
 
-static const uint MAX_HISTORY_QUARTERS            = 24; ///< The maximum number of quarters kept as performance's history
+static const uint MAX_HISTORY_QUARTERS = 24; ///< The maximum number of quarters kept as performance's history
 
-static const uint MIN_COMPETITORS_INTERVAL = 0;   ///< The minimum interval (in minutes) between competitors.
+static const uint MIN_COMPETITORS_INTERVAL = 0; ///< The minimum interval (in minutes) between competitors.
 static const uint MAX_COMPETITORS_INTERVAL = 500; ///< The maximum interval (in minutes) between competitors.
 
 typedef Owner CompanyID;
@@ -43,9 +43,13 @@ typedef Owner CompanyID;
 class CompanyMask : public BaseBitSet<CompanyMask, CompanyID, uint16_t> {
 public:
 	constexpr CompanyMask() : BaseBitSet<CompanyMask, CompanyID, uint16_t>() {}
-	static constexpr size_t DecayValueType(CompanyID value) { return value.base(); }
 
-	constexpr auto operator <=>(const CompanyMask &) const noexcept = default;
+	static constexpr size_t DecayValueType(CompanyID value)
+	{
+		return value.base();
+	}
+
+	constexpr auto operator<=>(const CompanyMask &) const noexcept = default;
 };
 
 struct Company;
@@ -53,22 +57,22 @@ typedef uint32_t CompanyManagerFace; ///< Company manager face bits, info see in
 
 /** The reason why the company was removed. */
 enum CompanyRemoveReason : uint8_t {
-	CRR_MANUAL,    ///< The company is manually removed.
+	CRR_MANUAL, ///< The company is manually removed.
 	CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
-	CRR_BANKRUPT,  ///< The company went belly-up.
+	CRR_BANKRUPT, ///< The company went belly-up.
 
-	CRR_END,       ///< Sentinel for end.
+	CRR_END, ///< Sentinel for end.
 
 	CRR_NONE = CRR_MANUAL, ///< Dummy reason for actions that don't need one.
 };
 
 /** The action to do with CMD_COMPANY_CTRL. */
 enum CompanyCtrlAction : uint8_t {
-	CCA_NEW,    ///< Create a new company.
+	CCA_NEW, ///< Create a new company.
 	CCA_NEW_AI, ///< Create a new AI company.
 	CCA_DELETE, ///< Delete a company.
 
-	CCA_END,    ///< Sentinel for end.
+	CCA_END, ///< Sentinel for end.
 };
 
 /** The action to do with CMD_COMPANY_ALLOW_LIST_CTRL. */
@@ -76,7 +80,7 @@ enum CompanyAllowListCtrlAction : uint8_t {
 	CALCA_ADD, ///< Create a public key.
 	CALCA_REMOVE, ///< Remove a public key.
 
-	CALCA_END,    ///< Sentinel for end.
+	CALCA_END, ///< Sentinel for end.
 };
 
 #endif /* COMPANY_TYPE_H */

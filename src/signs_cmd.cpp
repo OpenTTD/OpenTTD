@@ -8,16 +8,18 @@
 /** @file signs_cmd.cpp Handling of sign related commands. */
 
 #include "stdafx.h"
-#include "landscape.h"
+
+#include "signs_cmd.h"
+
+#include "command_func.h"
 #include "company_func.h"
+#include "landscape.h"
 #include "signs_base.h"
 #include "signs_func.h"
-#include "command_func.h"
+#include "string_func.h"
 #include "tilehighlight_func.h"
 #include "viewport_kdtree.h"
 #include "window_func.h"
-#include "string_func.h"
-#include "signs_cmd.h"
 
 #include "table/strings.h"
 
@@ -35,10 +37,10 @@
 std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex tile, const std::string &text)
 {
 	/* Try to locate a new sign */
-	if (!Sign::CanAllocateItem()) return { CommandCost(STR_ERROR_TOO_MANY_SIGNS), SignID::Invalid() };
+	if (!Sign::CanAllocateItem()) return {CommandCost(STR_ERROR_TOO_MANY_SIGNS), SignID::Invalid()};
 
 	/* Check sign text length if any */
-	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return { CMD_ERROR, SignID::Invalid() };
+	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return {CMD_ERROR, SignID::Invalid()};
 
 	/* When we execute, really make the sign */
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -49,10 +51,10 @@ std::tuple<CommandCost, SignID> CmdPlaceSign(DoCommandFlags flags, TileIndex til
 
 		si->UpdateVirtCoord();
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
-		return { CommandCost(), si->index };
+		return {CommandCost(), si->index};
 	}
 
-	return { CommandCost(), SignID::Invalid() };
+	return {CommandCost(), SignID::Invalid()};
 }
 
 /**

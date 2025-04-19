@@ -10,9 +10,9 @@
 #ifndef TIMER_GAME_TICK_H
 #define TIMER_GAME_TICK_H
 
-#include "../gfx_type.h"
-
 #include <chrono>
+
+#include "../gfx_type.h"
 
 /**
  * Timer that represents the game-ticks. It will pause when the game is paused.
@@ -36,23 +36,23 @@ public:
 		Priority priority;
 		uint value;
 
-		TPeriod(Priority priority, uint value) : priority(priority), value(value)
-		{}
+		TPeriod(Priority priority, uint value) : priority(priority), value(value) {}
 
-		bool operator < (const TPeriod &other) const
+		bool operator<(const TPeriod &other) const
 		{
 			/* Sort by priority before value, such that changes in value for priorities other than NONE do not change the container order */
 			if (this->priority != other.priority) return this->priority < other.priority;
 			return this->value < other.value;
 		}
 
-		bool operator == (const TPeriod &other) const
+		bool operator==(const TPeriod &other) const
 		{
 			return this->priority == other.priority && this->value == other.value;
 		}
 	};
 
 	using TElapsed = uint;
+
 	struct TStorage {
 		uint elapsed;
 	};
@@ -80,7 +80,7 @@ public:
 	static constexpr TimerGameTick::Ticks STATION_LINKGRAPH_TICKS = 504; ///< Cycle duration for cleaning dead links.
 	static constexpr TimerGameTick::Ticks CARGO_AGING_TICKS = 185; ///< Cycle duration for aging cargo.
 	static constexpr TimerGameTick::Ticks INDUSTRY_PRODUCE_TICKS = 256; ///< Cycle duration for industry production.
-	static constexpr TimerGameTick::Ticks TOWN_GROWTH_TICKS = 70;  ///< Cycle duration for towns trying to grow (this originates from the size of the town array in TTD).
+	static constexpr TimerGameTick::Ticks TOWN_GROWTH_TICKS = 70; ///< Cycle duration for towns trying to grow (this originates from the size of the town array in TTD).
 	static constexpr TimerGameTick::Ticks INDUSTRY_CUT_TREE_TICKS = INDUSTRY_PRODUCE_TICKS * 2; ///< Cycle duration for lumber mill's extra action.
 };
 

@@ -12,11 +12,11 @@
 
 /** What of the statusbar must be invalidated? */
 enum StatusBarInvalidate : uint8_t {
-	SBI_SAVELOAD_START,  ///< started saving
+	SBI_SAVELOAD_START, ///< started saving
 	SBI_SAVELOAD_FINISH, ///< finished saving
-	SBI_SHOW_TICKER,     ///< start scrolling news
-	SBI_SHOW_REMINDER,   ///< show a reminder (dot on the right side of the statusbar)
-	SBI_NEWS_DELETED,    ///< abort current news display (active news were deleted)
+	SBI_SHOW_TICKER, ///< start scrolling news
+	SBI_SHOW_REMINDER, ///< show a reminder (dot on the right side of the statusbar)
+	SBI_NEWS_DELETED, ///< abort current news display (active news were deleted)
 	SBI_END
 };
 

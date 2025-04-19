@@ -8,9 +8,11 @@
 /** @file script_grouplist.cpp Implementation of ScriptGroupList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_grouplist.hpp"
-#include "script_error.hpp"
+
 #include "../../group.h"
+#include "script_error.hpp"
 
 #include "../../safeguards.h"
 
@@ -18,7 +20,7 @@ ScriptGroupList::ScriptGroupList(HSQUIRRELVM vm)
 {
 	EnforceCompanyModeValid_Void();
 	::CompanyID owner = ScriptObject::GetCompany();
-	ScriptList::FillList<Group>(vm, this,
-		[owner](const Group *g) { return g->owner == owner; }
-	);
+	ScriptList::FillList<Group>(vm, this, [owner](const Group *g) {
+		return g->owner == owner;
+	});
 }

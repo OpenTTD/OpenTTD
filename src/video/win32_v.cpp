@@ -8,43 +8,46 @@
 /** @file win32_v.cpp Implementation of the Windows (GDI) video driver. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../error_func.h"
-#include "../gfx_func.h"
-#include "../os/windows/win32.h"
-#include "../blitter/factory.hpp"
-#include "../core/geometry_func.hpp"
-#include "../core/math_func.hpp"
-#include "../core/random_func.hpp"
-#include "../texteff.hpp"
-#include "../thread.h"
-#include "../progress.h"
-#include "../window_gui.h"
-#include "../window_func.h"
-#include "../framerate_type.h"
-#include "../library_loader.h"
-#include "../core/utf8.hpp"
+
 #include "win32_v.h"
+
 #include <windows.h>
 #include <imm.h>
 #include <versionhelpers.h>
+
+#include "../core/geometry_func.hpp"
+#include "../core/math_func.hpp"
+#include "../core/random_func.hpp"
+#include "../core/utf8.hpp"
+#include "../blitter/factory.hpp"
+#include "../error_func.h"
+#include "../framerate_type.h"
+#include "../gfx_func.h"
+#include "../library_loader.h"
+#include "../openttd.h"
+#include "../os/windows/win32.h"
+#include "../progress.h"
+#include "../texteff.hpp"
+#include "../thread.h"
+#include "../window_func.h"
+#include "../window_gui.h"
 #if defined(_MSC_VER) && defined(NTDDI_WIN10_RS4)
-#include <winrt/Windows.UI.ViewManagement.h>
+#	include <winrt/Windows.UI.ViewManagement.h>
 #endif
 
 #include "../safeguards.h"
 
 /* Missing define in MinGW headers. */
 #ifndef MAPVK_VK_TO_CHAR
-#define MAPVK_VK_TO_CHAR    (2)
+#	define MAPVK_VK_TO_CHAR    (2)
 #endif
 
 #ifndef PM_QS_INPUT
-#define PM_QS_INPUT 0x20000
+#	define PM_QS_INPUT 0x20000
 #endif
 
 #ifndef WM_DPICHANGED
-#define WM_DPICHANGED 0x02E0
+#	define WM_DPICHANGED 0x02E0
 #endif
 
 bool _window_maximize;
@@ -72,42 +75,22 @@ static const Win32VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AM(VK_PRIOR, VK_DOWN, WKC_PAGEUP, WKC_DOWN),
 	/* Map letters & digits */
-	AM('A', 'Z', 'A', 'Z'),
-	AM('0', '9', '0', '9'),
+	AM('A', 'Z', 'A', 'Z'), AM('0', '9', '0', '9'),
 
-	AS(VK_ESCAPE,   WKC_ESC),
-	AS(VK_PAUSE,    WKC_PAUSE),
-	AS(VK_BACK,     WKC_BACKSPACE),
-	AM(VK_INSERT,   VK_DELETE, WKC_INSERT, WKC_DELETE),
+	AS(VK_ESCAPE, WKC_ESC), AS(VK_PAUSE, WKC_PAUSE), AS(VK_BACK, WKC_BACKSPACE), AM(VK_INSERT, VK_DELETE, WKC_INSERT, WKC_DELETE),
 
-	AS(VK_SPACE,    WKC_SPACE),
-	AS(VK_RETURN,   WKC_RETURN),
-	AS(VK_TAB,      WKC_TAB),
+	AS(VK_SPACE, WKC_SPACE), AS(VK_RETURN, WKC_RETURN), AS(VK_TAB, WKC_TAB),
 
 	/* Function keys */
 	AM(VK_F1, VK_F12, WKC_F1, WKC_F12),
 
 	/* Numeric part */
-	AM(VK_NUMPAD0, VK_NUMPAD9, '0', '9'),
-	AS(VK_DIVIDE,   WKC_NUM_DIV),
-	AS(VK_MULTIPLY, WKC_NUM_MUL),
-	AS(VK_SUBTRACT, WKC_NUM_MINUS),
-	AS(VK_ADD,      WKC_NUM_PLUS),
-	AS(VK_DECIMAL,  WKC_NUM_DECIMAL),
+	AM(VK_NUMPAD0, VK_NUMPAD9, '0', '9'), AS(VK_DIVIDE, WKC_NUM_DIV), AS(VK_MULTIPLY, WKC_NUM_MUL), AS(VK_SUBTRACT, WKC_NUM_MINUS), AS(VK_ADD, WKC_NUM_PLUS), AS(VK_DECIMAL, WKC_NUM_DECIMAL),
 
 	/* Other non-letter keys */
-	AS(0xBF,  WKC_SLASH),
-	AS(0xBA,  WKC_SEMICOLON),
-	AS(0xBB,  WKC_EQUALS),
-	AS(0xDB,  WKC_L_BRACKET),
-	AS(0xDC,  WKC_BACKSLASH),
-	AS(0xDD,  WKC_R_BRACKET),
+	AS(0xBF, WKC_SLASH), AS(0xBA, WKC_SEMICOLON), AS(0xBB, WKC_EQUALS), AS(0xDB, WKC_L_BRACKET), AS(0xDC, WKC_BACKSLASH), AS(0xDD, WKC_R_BRACKET),
 
-	AS(0xDE,  WKC_SINGLEQUOTE),
-	AS(0xBC,  WKC_COMMA),
-	AS(0xBD,  WKC_MINUS),
-	AS(0xBE,  WKC_PERIOD)
-};
+	AS(0xDE, WKC_SINGLEQUOTE), AS(0xBC, WKC_COMMA), AS(0xBD, WKC_MINUS), AS(0xBE, WKC_PERIOD)};
 
 static uint MapWindowsKey(uint sym)
 {
@@ -120,9 +103,9 @@ static uint MapWindowsKey(uint sym)
 		}
 	}
 
-	if (GetAsyncKeyState(VK_SHIFT)   < 0) key |= WKC_SHIFT;
+	if (GetAsyncKeyState(VK_SHIFT) < 0) key |= WKC_SHIFT;
 	if (GetAsyncKeyState(VK_CONTROL) < 0) key |= WKC_CTRL;
-	if (GetAsyncKeyState(VK_MENU)    < 0) key |= WKC_ALT;
+	if (GetAsyncKeyState(VK_MENU) < 0) key |= WKC_ALT;
 	return key;
 }
 
@@ -156,12 +139,9 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 
 		memset(&settings, 0, sizeof(settings));
 		settings.dmSize = sizeof(settings);
-		settings.dmFields =
-			DM_BITSPERPEL |
-			DM_PELSWIDTH |
-			DM_PELSHEIGHT;
+		settings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
 		settings.dmBitsPerPel = this->GetFullscreenBpp();
-		settings.dmPelsWidth  = this->width_org;
+		settings.dmPelsWidth = this->width_org;
 		settings.dmPelsHeight = this->height_org;
 
 		/* Check for 8 bpp support. */
@@ -181,8 +161,8 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 		}
 
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
-			this->MakeWindow(false, resize);  // don't care about the result
-			return false;  // the request failed
+			this->MakeWindow(false, resize); // don't care about the result
+			return false; // the request failed
 		}
 	} else if (this->fullscreen) {
 		/* restore display? */
@@ -287,7 +267,7 @@ static void SetCompositionPos(HWND hwnd)
 			/* Get caret position. */
 			Point pt = _focused_window->GetCaretPosition();
 			cf.ptCurrentPos.x = _focused_window->left + pt.x;
-			cf.ptCurrentPos.y = _focused_window->top  + pt.y;
+			cf.ptCurrentPos.y = _focused_window->top + pt.y;
 		} else {
 			cf.ptCurrentPos.x = 0;
 			cf.ptCurrentPos.y = 0;
@@ -309,17 +289,17 @@ static void SetCandidatePos(HWND hwnd)
 		if (EditBoxInGlobalFocus()) {
 			Point pt = _focused_window->GetCaretPosition();
 			cf.ptCurrentPos.x = _focused_window->left + pt.x;
-			cf.ptCurrentPos.y = _focused_window->top  + pt.y;
+			cf.ptCurrentPos.y = _focused_window->top + pt.y;
 			if (_focused_window->window_class == WC_CONSOLE) {
-				cf.rcArea.left   = _focused_window->left;
-				cf.rcArea.top    = _focused_window->top;
-				cf.rcArea.right  = _focused_window->left + _focused_window->width;
-				cf.rcArea.bottom = _focused_window->top  + _focused_window->height;
+				cf.rcArea.left = _focused_window->left;
+				cf.rcArea.top = _focused_window->top;
+				cf.rcArea.right = _focused_window->left + _focused_window->width;
+				cf.rcArea.bottom = _focused_window->top + _focused_window->height;
 			} else {
-				cf.rcArea.left   = _focused_window->left + _focused_window->nested_focus->pos_x;
-				cf.rcArea.top    = _focused_window->top  + _focused_window->nested_focus->pos_y;
-				cf.rcArea.right  = cf.rcArea.left + _focused_window->nested_focus->current_x;
-				cf.rcArea.bottom = cf.rcArea.top  + _focused_window->nested_focus->current_y;
+				cf.rcArea.left = _focused_window->left + _focused_window->nested_focus->pos_x;
+				cf.rcArea.top = _focused_window->top + _focused_window->nested_focus->pos_y;
+				cf.rcArea.right = cf.rcArea.left + _focused_window->nested_focus->current_x;
+				cf.rcArea.bottom = cf.rcArea.top + _focused_window->nested_focus->current_y;
 			}
 		} else {
 			cf.ptCurrentPos.x = 0;
@@ -441,7 +421,7 @@ static void SetDarkModeForWindow(HWND hWnd, bool dark_mode)
 	/* This function is documented, but not supported on all Windows 10/11 SDK builds. For this
 	 * reason, the code uses dynamic loading and ignores any errors for a best-effort result. */
 	static LibraryLoader _dwmapi("dwmapi.dll");
-	typedef HRESULT(WINAPI *PFNDWMSETWINDOWATTRIBUTE)(HWND, DWORD, LPCVOID, DWORD);
+	typedef HRESULT(WINAPI * PFNDWMSETWINDOWATTRIBUTE)(HWND, DWORD, LPCVOID, DWORD);
 	static PFNDWMSETWINDOWATTRIBUTE DwmSetWindowAttribute = _dwmapi.GetFunction("DwmSetWindowAttribute");
 
 	if (DwmSetWindowAttribute != nullptr) {
@@ -694,7 +674,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			return 0;
 
 		case WM_SIZING: {
-			RECT *r = (RECT*)lParam;
+			RECT *r = (RECT *)lParam;
 			RECT r2;
 			int w, h;
 
@@ -756,13 +736,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			/* Resize the window to match the new DPI setting. */
 			RECT *prcNewWindow = (RECT *)lParam;
-			SetWindowPos(hwnd,
-				nullptr,
-				prcNewWindow->left,
-				prcNewWindow->top,
-				prcNewWindow->right - prcNewWindow->left,
-				prcNewWindow->bottom - prcNewWindow->top,
-				SWP_NOZORDER | SWP_NOACTIVATE);
+			SetWindowPos(hwnd, nullptr, prcNewWindow->left, prcNewWindow->top, prcNewWindow->right - prcNewWindow->left, prcNewWindow->bottom - prcNewWindow->top, SWP_NOZORDER | SWP_NOACTIVATE);
 
 			if (did_adjust) ReInitAllWindows(true);
 
@@ -771,14 +745,14 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 /* needed for wheel */
 #if !defined(WM_MOUSEWHEEL)
-# define WM_MOUSEWHEEL 0x020A
-#endif  /* WM_MOUSEWHEEL */
+#	define WM_MOUSEWHEEL 0x020A
+#endif /* WM_MOUSEWHEEL */
 #if !defined(WM_MOUSEHWHEEL)
-# define WM_MOUSEHWHEEL 0x020E
-#endif  /* WM_MOUSEHWHEEL */
+#	define WM_MOUSEHWHEEL 0x020E
+#endif /* WM_MOUSEHWHEEL */
 #if !defined(GET_WHEEL_DELTA_WPARAM)
-# define GET_WHEEL_DELTA_WPARAM(wparam) ((short)HIWORD(wparam))
-#endif  /* GET_WHEEL_DELTA_WPARAM */
+#	define GET_WHEEL_DELTA_WPARAM(wparam) ((short)HIWORD(wparam))
+#endif /* GET_WHEEL_DELTA_WPARAM */
 
 		case WM_MOUSEWHEEL: {
 			int delta = GET_WHEEL_DELTA_WPARAM(wParam);
@@ -846,36 +820,13 @@ static void RegisterWndClass()
 	if (registered) return;
 
 	HINSTANCE hinst = GetModuleHandle(nullptr);
-	WNDCLASS wnd = {
-		CS_OWNDC,
-		WndProcGdi,
-		0,
-		0,
-		hinst,
-		LoadIcon(hinst, MAKEINTRESOURCE(100)),
-		LoadCursor(nullptr, IDC_ARROW),
-		0,
-		0,
-		L"OTTD"
-	};
+	WNDCLASS wnd = {CS_OWNDC, WndProcGdi, 0, 0, hinst, LoadIcon(hinst, MAKEINTRESOURCE(100)), LoadCursor(nullptr, IDC_ARROW), 0, 0, L"OTTD"};
 
 	registered = true;
 	if (!RegisterClass(&wnd)) UserError("RegisterClass failed");
 }
 
-static const Dimension default_resolutions[] = {
-	{  640,  480 },
-	{  800,  600 },
-	{ 1024,  768 },
-	{ 1152,  864 },
-	{ 1280,  800 },
-	{ 1280,  960 },
-	{ 1280, 1024 },
-	{ 1400, 1050 },
-	{ 1600, 1200 },
-	{ 1680, 1050 },
-	{ 1920, 1200 }
-};
+static const Dimension default_resolutions[] = {{640, 480}, {800, 600}, {1024, 768}, {1152, 864}, {1280, 800}, {1280, 960}, {1280, 1024}, {1400, 1050}, {1600, 1200}, {1680, 1050}, {1920, 1200}};
 
 static void FindResolutions(uint8_t bpp)
 {
@@ -904,7 +855,7 @@ void VideoDriver_Win32Base::Initialize()
 	FindResolutions(this->GetFullscreenBpp());
 
 	/* fullscreen uses those */
-	this->width  = this->width_org  = _cur_resolution.width;
+	this->width = this->width_org = _cur_resolution.width;
 	this->height = this->height_org = _cur_resolution.height;
 
 	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
@@ -917,6 +868,7 @@ void VideoDriver_Win32Base::Stop()
 	if (this->fullscreen) ChangeDisplaySettings(nullptr, 0);
 	MyShowCursor(true);
 }
+
 void VideoDriver_Win32Base::MakeDirty(int left, int top, int width, int height)
 {
 	Rect r = {left, top, left + width, top + height};
@@ -942,11 +894,7 @@ void VideoDriver_Win32Base::InputLoop()
 
 	/* Determine which directional keys are down. */
 	if (this->has_focus) {
-		_dirkeys =
-			(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
-			(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
-			(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
-			(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
+		_dirkeys = (GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) + (GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) + (GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) + (GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
 	} else {
 		_dirkeys = 0;
 	}
@@ -1020,7 +968,7 @@ void VideoDriver_Win32Base::EditBoxLostFocus()
 
 static BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC, LPRECT, LPARAM data)
 {
-	auto &list = *reinterpret_cast<std::vector<int>*>(data);
+	auto &list = *reinterpret_cast<std::vector<int> *>(data);
 
 	MONITORINFOEX monitorInfo = {};
 	monitorInfo.cbSize = sizeof(MONITORINFOEX);
@@ -1044,14 +992,14 @@ std::vector<int> VideoDriver_Win32Base::GetListOfMonitorRefreshRates()
 
 Dimension VideoDriver_Win32Base::GetScreenSize() const
 {
-	return { static_cast<uint>(GetSystemMetrics(SM_CXSCREEN)), static_cast<uint>(GetSystemMetrics(SM_CYSCREEN)) };
+	return {static_cast<uint>(GetSystemMetrics(SM_CXSCREEN)), static_cast<uint>(GetSystemMetrics(SM_CYSCREEN))};
 }
 
 float VideoDriver_Win32Base::GetDPIScale()
 {
-	typedef UINT (WINAPI *PFNGETDPIFORWINDOW)(HWND hwnd);
-	typedef UINT (WINAPI *PFNGETDPIFORSYSTEM)(VOID);
-	typedef HRESULT (WINAPI *PFNGETDPIFORMONITOR)(HMONITOR hMonitor, int dpiType, UINT *dpiX, UINT *dpiY);
+	typedef UINT(WINAPI * PFNGETDPIFORWINDOW)(HWND hwnd);
+	typedef UINT(WINAPI * PFNGETDPIFORSYSTEM)(VOID);
+	typedef HRESULT(WINAPI * PFNGETDPIFORMONITOR)(HMONITOR hMonitor, int dpiType, UINT *dpiX, UINT *dpiY);
 
 	static PFNGETDPIFORWINDOW _GetDpiForWindow = nullptr;
 	static PFNGETDPIFORSYSTEM _GetDpiForSystem = nullptr;
@@ -1110,7 +1058,6 @@ void VideoDriver_Win32Base::UnlockVideoBuffer()
 
 	this->buffer_locked = false;
 }
-
 
 static FVideoDriver_Win32GDI iFVideoDriver_Win32GDI;
 
@@ -1193,11 +1140,10 @@ void VideoDriver_Win32GDI::MakePalette()
 	pal->palNumEntries = 256;
 
 	for (uint i = 0; i != 256; i++) {
-		pal->palPalEntry[i].peRed   = _local_palette.palette[i].r;
+		pal->palPalEntry[i].peRed = _local_palette.palette[i].r;
 		pal->palPalEntry[i].peGreen = _local_palette.palette[i].g;
-		pal->palPalEntry[i].peBlue  = _local_palette.palette[i].b;
+		pal->palPalEntry[i].peBlue = _local_palette.palette[i].b;
 		pal->palPalEntry[i].peFlags = 0;
-
 	}
 	this->gdi_palette = CreatePalette(pal);
 	delete[] pal;
@@ -1209,9 +1155,9 @@ void VideoDriver_Win32GDI::UpdatePalette(HDC dc, uint start, uint count)
 	RGBQUAD rgb[256];
 
 	for (uint i = 0; i != count; i++) {
-		rgb[i].rgbRed   = _local_palette.palette[start + i].r;
+		rgb[i].rgbRed = _local_palette.palette[start + i].r;
 		rgb[i].rgbGreen = _local_palette.palette[start + i].g;
-		rgb[i].rgbBlue  = _local_palette.palette[start + i].b;
+		rgb[i].rgbBlue = _local_palette.palette[start + i].b;
 		rgb[i].rgbReserved = 0;
 	}
 
@@ -1294,14 +1240,15 @@ void VideoDriver_Win32GDI::Paint()
 
 #ifdef WITH_OPENGL
 
-#include <GL/gl.h>
-#include "../3rdparty/opengl/glext.h"
-#include "../3rdparty/opengl/wglext.h"
-#include "opengl.h"
+#	include <GL/gl.h>
+#	include "../3rdparty/opengl/glext.h"
+#	include "../3rdparty/opengl/wglext.h"
 
-#ifndef PFD_SUPPORT_COMPOSITION
-#	define PFD_SUPPORT_COMPOSITION 0x00008000
-#endif
+#	include "opengl.h"
+
+#	ifndef PFD_SUPPORT_COMPOSITION
+#		define PFD_SUPPORT_COMPOSITION 0x00008000
+#	endif
 
 static PFNWGLCREATECONTEXTATTRIBSARBPROC _wglCreateContextAttribsARB = nullptr;
 static PFNWGLSWAPINTERVALEXTPROC _wglSwapIntervalEXT = nullptr;
@@ -1327,19 +1274,19 @@ static std::optional<std::string_view> SelectPixelFormat(HDC dc)
 {
 	PIXELFORMATDESCRIPTOR pfd = {
 		sizeof(PIXELFORMATDESCRIPTOR), // Size of this struct.
-		1,                             // Version of this struct.
-		PFD_DRAW_TO_WINDOW |           // Require window support.
-		PFD_SUPPORT_OPENGL |           // Require OpenGL support.
-		PFD_DOUBLEBUFFER   |           // Use double buffering.
-		PFD_DEPTH_DONTCARE,
-		PFD_TYPE_RGBA,                 // Request RGBA format.
-		24,                            // 24 bpp (excluding alpha).
-		0, 0, 0, 0, 0, 0, 0, 0,        // Colour bits and shift ignored.
-		0, 0, 0, 0, 0,                 // No accumulation buffer.
-		0, 0,                          // No depth/stencil buffer.
-		0,                             // No aux buffers.
-		PFD_MAIN_PLANE,                // Main layer.
-		0, 0, 0, 0                     // Ignored/reserved.
+		1, // Version of this struct.
+		PFD_DRAW_TO_WINDOW | // Require window support.
+			PFD_SUPPORT_OPENGL | // Require OpenGL support.
+			PFD_DOUBLEBUFFER | // Use double buffering.
+			PFD_DEPTH_DONTCARE,
+		PFD_TYPE_RGBA, // Request RGBA format.
+		24, // 24 bpp (excluding alpha).
+		0, 0, 0, 0, 0, 0, 0, 0, // Colour bits and shift ignored.
+		0, 0, 0, 0, 0, // No accumulation buffer.
+		0, 0, // No depth/stencil buffer.
+		0, // No aux buffers.
+		PFD_MAIN_PLANE, // Main layer.
+		0, 0, 0, 0 // Ignored/reserved.
 	};
 
 	pfd.dwFlags |= PFD_SUPPORT_COMPOSITION; // Make OpenTTD compatible with Aero.
@@ -1370,11 +1317,11 @@ static void LoadWGLExtensions()
 		if (rc != nullptr) {
 			wglMakeCurrent(dc, rc);
 
-#ifdef __MINGW32__
+#	ifdef __MINGW32__
 			/* GCC doesn't understand the expected usage of wglGetProcAddress(). */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wcast-function-type"
-#endif /* __MINGW32__ */
+#		pragma GCC diagnostic push
+#		pragma GCC diagnostic ignored "-Wcast-function-type"
+#	endif /* __MINGW32__ */
 
 			/* Get list of WGL extensions. */
 			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionsStringARB");
@@ -1390,9 +1337,9 @@ static void LoadWGLExtensions()
 				}
 			}
 
-#ifdef __MINGW32__
-#pragma GCC diagnostic pop
-#endif
+#	ifdef __MINGW32__
+#		pragma GCC diagnostic pop
+#	endif
 			wglMakeCurrent(nullptr, nullptr);
 			wglDeleteContext(rc);
 		}
@@ -1487,13 +1434,9 @@ std::optional<std::string_view> VideoDriver_Win32OpenGL::AllocateContext()
 	/* Create OpenGL device context. Try to get an 3.2+ context if possible. */
 	if (_wglCreateContextAttribsARB != nullptr) {
 		/* Try for OpenGL 4.5 first. */
-		int attribs[] = {
-			WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
-			WGL_CONTEXT_MINOR_VERSION_ARB, 5,
-			WGL_CONTEXT_FLAGS_ARB, _debug_driver_level >= 8 ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
+		int attribs[] = {WGL_CONTEXT_MAJOR_VERSION_ARB, 4, WGL_CONTEXT_MINOR_VERSION_ARB, 5, WGL_CONTEXT_FLAGS_ARB, _debug_driver_level >= 8 ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
 			_hasWGLARBCreateContextProfile ? WGL_CONTEXT_PROFILE_MASK_ARB : 0, WGL_CONTEXT_CORE_PROFILE_BIT_ARB, // Terminate list if WGL_ARB_create_context_profile isn't supported.
-			0
-		};
+			0};
 		rc = _wglCreateContextAttribsARB(this->dc, nullptr, attribs);
 
 		if (rc == nullptr) {

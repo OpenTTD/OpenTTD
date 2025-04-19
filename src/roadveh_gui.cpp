@@ -8,12 +8,13 @@
 /** @file roadveh_gui.cpp GUI for road vehicles. */
 
 #include "stdafx.h"
+
 #include "core/backup_type.hpp"
 #include "roadveh.h"
-#include "window_gui.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "string_func.h"
+#include "window_gui.h"
 #include "zoom_func.h"
 
 #include "table/strings.h"
@@ -128,8 +129,7 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 
 	int px = rtl ? max_width + skip : -skip;
 	int y = r.Height() / 2;
-	for (; u != nullptr && (rtl ? px > 0 : px < max_width); u = u->Next())
-	{
+	for (; u != nullptr && (rtl ? px > 0 : px < max_width); u = u->Next()) {
 		Point offset;
 		int width = u->GetDisplayImageWidth(&offset);
 

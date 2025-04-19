@@ -10,9 +10,9 @@
 #ifndef TEXTBUF_GUI_H
 #define TEXTBUF_GUI_H
 
-#include "window_type.h"
 #include "string_type.h"
 #include "strings_type.h"
+#include "window_type.h"
 
 /** Flags used in ShowQueryString() call */
 enum class QueryStringFlag : uint8_t {
@@ -24,7 +24,7 @@ enum class QueryStringFlag : uint8_t {
 using QueryStringFlags = EnumBitSet<QueryStringFlag, uint8_t>;
 
 /** Callback procedure for the ShowQuery method. */
-typedef void QueryCallbackProc(Window*, bool);
+typedef void QueryCallbackProc(Window *, bool);
 
 void ShowQueryString(std::string_view str, StringID caption, uint max_len, Window *parent, CharSetFilter afilter, QueryStringFlags flags);
 void ShowQuery(EncodedString &&caption, EncodedString &&message, Window *w, QueryCallbackProc *callback, bool focus = false);

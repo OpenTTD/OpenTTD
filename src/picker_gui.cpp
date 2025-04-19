@@ -8,6 +8,11 @@
 /** @file picker_gui.cpp %File for dealing with picker windows */
 
 #include "stdafx.h"
+
+#include "picker_gui.h"
+
+#include <charconv>
+
 #include "core/backup_type.hpp"
 #include "company_func.h"
 #include "gui.h"
@@ -15,7 +20,6 @@
 #include "ini_type.h"
 #include "newgrf_badge.h"
 #include "newgrf_badge_gui.h"
-#include "picker_gui.h"
 #include "querystring_gui.h"
 #include "settings_type.h"
 #include "sortlist_type.h"
@@ -31,11 +35,8 @@
 #include "zoom_func.h"
 
 #include "widgets/picker_widget.h"
-
 #include "table/sprites.h"
 #include "table/strings.h"
-
-#include <charconv>
 
 #include "safeguards.h"
 
@@ -125,13 +126,13 @@ void PickerSaveConfig(IniFile &ini)
 }
 
 /** Sort classes by id. */
-static bool ClassIDSorter(int const &a, int const &b)
+static bool ClassIDSorter(const int &a, const int &b)
 {
 	return a < b;
 }
 
 /** Filter classes by class name. */
-static bool ClassTagNameFilter(int const *item, PickerFilterData &filter)
+static bool ClassTagNameFilter(const int *item, PickerFilterData &filter)
 {
 	filter.ResetState();
 	filter.AddLine(GetString(filter.callbacks->GetClassName(*item)));
@@ -139,7 +140,7 @@ static bool ClassTagNameFilter(int const *item, PickerFilterData &filter)
 }
 
 /** Sort types by id. */
-static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
+static bool TypeIDSorter(const PickerItem &a, const PickerItem &b)
 {
 	int r = a.class_index - b.class_index;
 	if (r == 0) r = a.index - b.index;
@@ -147,7 +148,7 @@ static bool TypeIDSorter(PickerItem const &a, PickerItem const &b)
 }
 
 /** Filter types by class name. */
-static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
+static bool TypeTagNameFilter(const PickerItem *item, PickerFilterData &filter)
 {
 	if (filter.btf.has_value() && filter.btf->Filter(filter.callbacks->GetTypeBadges(item->class_index, item->index))) return true;
 
@@ -156,14 +157,13 @@ static bool TypeTagNameFilter(PickerItem const *item, PickerFilterData &filter)
 	return filter.GetState();
 }
 
-static const std::initializer_list<PickerClassList::SortFunction * const> _class_sorter_funcs = { &ClassIDSorter }; ///< Sort functions of the #PickerClassList
-static const std::initializer_list<PickerClassList::FilterFunction * const> _class_filter_funcs = { &ClassTagNameFilter }; ///< Filter functions of the #PickerClassList.
-static const std::initializer_list<PickerTypeList::SortFunction * const> _type_sorter_funcs = { TypeIDSorter }; ///< Sort functions of the #PickerTypeList.
-static const std::initializer_list<PickerTypeList::FilterFunction * const> _type_filter_funcs = { TypeTagNameFilter }; ///< Filter functions of the #PickerTypeList.
+static const std::initializer_list<PickerClassList::SortFunction *const> _class_sorter_funcs = {&ClassIDSorter}; ///< Sort functions of the #PickerClassList
+static const std::initializer_list<PickerClassList::FilterFunction *const> _class_filter_funcs = {&ClassTagNameFilter}; ///< Filter functions of the #PickerClassList.
+static const std::initializer_list<PickerTypeList::SortFunction *const> _type_sorter_funcs = {TypeIDSorter}; ///< Sort functions of the #PickerTypeList.
+static const std::initializer_list<PickerTypeList::FilterFunction *const> _type_filter_funcs = {TypeTagNameFilter}; ///< Filter functions of the #PickerTypeList.
 
-PickerWindow::PickerWindow(WindowDesc &desc, Window *parent, int window_number, PickerCallbacks &callbacks) : PickerWindowBase(desc, parent), callbacks(callbacks),
-	class_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE),
-	type_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE)
+PickerWindow::PickerWindow(WindowDesc &desc, Window *parent, int window_number, PickerCallbacks &callbacks) :
+	PickerWindowBase(desc, parent), callbacks(callbacks), class_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE), type_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE)
 {
 	this->window_number = window_number;
 
@@ -276,7 +276,7 @@ void PickerWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, const Dime
 
 		/* Type picker */
 		case WID_PW_TYPE_ITEM:
-			size.width  = ScaleGUITrad(PREVIEW_WIDTH) + WidgetDimensions::scaled.fullbevel.Horizontal();
+			size.width = ScaleGUITrad(PREVIEW_WIDTH) + WidgetDimensions::scaled.fullbevel.Horizontal();
 			size.height = ScaleGUITrad(PREVIEW_HEIGHT) + WidgetDimensions::scaled.fullbevel.Vertical();
 			break;
 	}
@@ -308,7 +308,7 @@ void PickerWindow::DrawWidget(const Rect &r, WidgetID widget) const
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 			if (FillDrawPixelInfo(&tmp_dpi, ir)) {
 				AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
-				int x = (ir.Width()  - ScaleSpriteTrad(PREVIEW_WIDTH)) / 2 + ScaleSpriteTrad(PREVIEW_LEFT);
+				int x = (ir.Width() - ScaleSpriteTrad(PREVIEW_WIDTH)) / 2 + ScaleSpriteTrad(PREVIEW_LEFT);
 				int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
 				this->callbacks.DrawType(x, y, item.class_index, item.index);
@@ -484,8 +484,14 @@ void PickerWindow::BuildPickerClassList()
 	bool filter_saved = HasBit(this->callbacks.mode, PFM_SAVED);
 	for (int i = 0; i < count; i++) {
 		if (this->callbacks.GetClassName(i) == INVALID_STRING_ID) continue;
-		if (filter_used && std::none_of(std::begin(this->callbacks.used), std::end(this->callbacks.used), [i](const PickerItem &item) { return item.class_index == i; })) continue;
-		if (filter_saved && std::none_of(std::begin(this->callbacks.saved), std::end(this->callbacks.saved), [i](const PickerItem &item) { return item.class_index == i; })) continue;
+		if (filter_used && std::none_of(std::begin(this->callbacks.used), std::end(this->callbacks.used), [i](const PickerItem &item) {
+				return item.class_index == i;
+			}))
+			continue;
+		if (filter_saved && std::none_of(std::begin(this->callbacks.saved), std::end(this->callbacks.saved), [i](const PickerItem &item) {
+				return item.class_index == i;
+			}))
+			continue;
 		this->classes.emplace_back(i);
 	}
 
@@ -606,7 +612,10 @@ void PickerWindow::EnsureSelectedTypeIsValid()
 {
 	int class_index = this->callbacks.GetSelectedClass();
 	int index = this->callbacks.GetSelectedType();
-	if (std::any_of(std::begin(this->types), std::end(this->types), [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; })) return;
+	if (std::any_of(std::begin(this->types), std::end(this->types), [class_index, index](const auto &item) {
+			return item.class_index == class_index && item.index == index;
+		}))
+		return;
 
 	if (!this->types.empty()) {
 		class_index = this->types.front().class_index;
@@ -635,7 +644,9 @@ void PickerWindow::EnsureSelectedTypeIsVisible()
 	int class_index = this->callbacks.GetSelectedClass();
 	int index = this->callbacks.GetSelectedType();
 
-	auto it = std::ranges::find_if(this->types, [class_index, index](const auto &item) { return item.class_index == class_index && item.index == index; });
+	auto it = std::ranges::find_if(this->types, [class_index, index](const auto &item) {
+		return item.class_index == class_index && item.index == index;
+	});
 	if (it == std::end(this->types)) return;
 
 	int pos = static_cast<int>(std::distance(std::begin(this->types), it));
@@ -647,18 +658,26 @@ std::unique_ptr<NWidgetBase> MakePickerClassWidgets()
 {
 	static constexpr NWidgetPart picker_class_widgets[] = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_CLASS_SEL),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-					NWidget(WWT_EDITBOX, COLOUR_DARK_GREEN, WID_PW_CLASS_FILTER), SetMinimalSize(144, 0), SetPadding(2), SetFill(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-						NWidget(WWT_MATRIX, COLOUR_GREY, WID_PW_CLASS_LIST), SetFill(1, 1), SetResize(1, 1), SetPadding(WidgetDimensions::unscaled.picker),
-								SetMatrixDataTip(1, 0), SetScrollbar(WID_PW_CLASS_SCROLL),
-					EndContainer(),
-					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_CLASS_SCROLL),
-				EndContainer(),
-			EndContainer(),
+		NWidget(NWID_VERTICAL),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_EDITBOX, COLOUR_DARK_GREEN, WID_PW_CLASS_FILTER),
+		SetMinimalSize(144, 0),
+		SetPadding(2),
+		SetFill(1, 0),
+		SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_MATRIX, COLOUR_GREY, WID_PW_CLASS_LIST),
+		SetFill(1, 1),
+		SetResize(1, 1),
+		SetPadding(WidgetDimensions::unscaled.picker),
+		SetMatrixDataTip(1, 0),
+		SetScrollbar(WID_PW_CLASS_SCROLL),
+		EndContainer(),
+		NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_CLASS_SCROLL),
+		EndContainer(),
+		EndContainer(),
 		EndContainer(),
 	};
 
@@ -670,31 +689,52 @@ std::unique_ptr<NWidgetBase> MakePickerTypeWidgets()
 {
 	static constexpr NWidgetPart picker_type_widgets[] = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_PW_TYPE_SEL),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-					NWidget(WWT_EDITBOX, COLOUR_DARK_GREEN, WID_PW_TYPE_FILTER), SetPadding(2), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
-					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_USED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
-					NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_SAVED), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_PICKER_MODE_SAVED, STR_PICKER_MODE_SAVED_TOOLTIP),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_PW_TYPE_SCROLL),
-						NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_PW_TYPE_MATRIX), SetPIP(0, 2, 0), SetPadding(WidgetDimensions::unscaled.picker),
-							NWidget(WWT_PANEL, COLOUR_GREY, WID_PW_TYPE_ITEM), SetScrollbar(WID_PW_TYPE_SCROLL),
-							EndContainer(),
-						EndContainer(),
-					EndContainer(),
-					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_TYPE_SCROLL),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_PW_TYPE_NAME), SetPadding(WidgetDimensions::unscaled.framerect), SetResize(1, 0), SetFill(1, 0), SetMinimalTextLines(1, 0),
-					EndContainer(),
-					NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, WID_PW_TYPE_RESIZE),
-				EndContainer(),
-			EndContainer(),
+		NWidget(NWID_VERTICAL),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_EDITBOX, COLOUR_DARK_GREEN, WID_PW_TYPE_FILTER),
+		SetPadding(2),
+		SetResize(1, 0),
+		SetFill(1, 0),
+		SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_ALL),
+		SetFill(1, 0),
+		SetResize(1, 0),
+		SetStringTip(STR_PICKER_MODE_ALL, STR_PICKER_MODE_ALL_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_USED),
+		SetFill(1, 0),
+		SetResize(1, 0),
+		SetStringTip(STR_PICKER_MODE_USED, STR_PICKER_MODE_USED_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_PW_MODE_SAVED),
+		SetFill(1, 0),
+		SetResize(1, 0),
+		SetStringTip(STR_PICKER_MODE_SAVED, STR_PICKER_MODE_SAVED_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		SetScrollbar(WID_PW_TYPE_SCROLL),
+		NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_PW_TYPE_MATRIX),
+		SetPIP(0, 2, 0),
+		SetPadding(WidgetDimensions::unscaled.picker),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_PW_TYPE_ITEM),
+		SetScrollbar(WID_PW_TYPE_SCROLL),
+		EndContainer(),
+		EndContainer(),
+		EndContainer(),
+		NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_PW_TYPE_SCROLL),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_PW_TYPE_NAME),
+		SetPadding(WidgetDimensions::unscaled.framerect),
+		SetResize(1, 0),
+		SetFill(1, 0),
+		SetMinimalTextLines(1, 0),
+		EndContainer(),
+		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN, WID_PW_TYPE_RESIZE),
+		EndContainer(),
+		EndContainer(),
 		EndContainer(),
 	};
 

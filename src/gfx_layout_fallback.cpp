@@ -10,6 +10,7 @@
 #include "stdafx.h"
 
 #include "gfx_layout_fallback.h"
+
 #include "string_func.h"
 #include "zoom_func.h"
 
@@ -43,16 +44,40 @@ public:
 		std::vector<Position> positions; ///< The positions of the glyphs.
 		std::vector<int> glyph_to_char; ///< The char index of the glyphs.
 
-		Font *font;       ///< The font used to layout these.
+		Font *font; ///< The font used to layout these.
 
 	public:
 		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
-		const Font *GetFont() const override { return this->font; }
-		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
-		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
-		std::span<const Position> GetPositions() const override { return this->positions; }
-		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
-		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
+
+		const Font *GetFont() const override
+		{
+			return this->font;
+		}
+
+		int GetGlyphCount() const override
+		{
+			return static_cast<int>(this->glyphs.size());
+		}
+
+		std::span<const GlyphID> GetGlyphs() const override
+		{
+			return this->glyphs;
+		}
+
+		std::span<const Position> GetPositions() const override
+		{
+			return this->positions;
+		}
+
+		int GetLeading() const override
+		{
+			return this->GetFont()->fc->GetHeight();
+		}
+
+		std::span<const int> GetGlyphToCharMap() const override
+		{
+			return this->glyph_to_char;
+		}
 	};
 
 	/** A single line worth of VisualRuns. */
@@ -63,12 +88,15 @@ public:
 		int CountRuns() const override;
 		const ParagraphLayouter::VisualRun &GetVisualRun(int run) const override;
 
-		int GetInternalCharLength(char32_t) const override { return 1; }
+		int GetInternalCharLength(char32_t) const override
+		{
+			return 1;
+		}
 	};
 
 	const char32_t *buffer_begin; ///< Begin of the buffer.
-	const char32_t *buffer;       ///< The current location in the buffer.
-	FontMap &runs;             ///< The fonts we have to use for this paragraph.
+	const char32_t *buffer; ///< The current location in the buffer.
+	FontMap &runs; ///< The fonts we have to use for this paragraph.
 
 	FallbackParagraphLayout(char32_t *buffer, int length, FontMap &runs);
 	void Reflow() override;
@@ -109,8 +137,7 @@ public:
  * @param char_offset This run's offset from the start of the layout input string.
  * @param x           The initial x position for this run.
  */
-FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const char32_t *chars, int char_count, int char_offset, int x) :
-		font(font)
+FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const char32_t *chars, int char_count, int char_offset, int x) : font(font)
 {
 	const bool isbuiltin = font->fc->IsBuiltInFont();
 
@@ -125,7 +152,8 @@ FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const 
 		if (isbuiltin) {
 			this->positions.emplace_back(advance, advance + x_advance - 1, font->fc->GetAscender()); // Apply sprite font's ascender.
 		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
-			this->positions.emplace_back(advance, advance + x_advance - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
+			this->positions.emplace_back(
+				advance, advance + x_advance - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
 		} else {
 			this->positions.emplace_back(advance, advance + x_advance - 1, 0); // No ascender adjustment.
 		}

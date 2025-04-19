@@ -8,6 +8,7 @@
 /** @file null.cpp A blitter that doesn't blit. */
 
 #include "../stdafx.h"
+
 #include "null.hpp"
 
 #include "../safeguards.h"
@@ -21,7 +22,7 @@ Sprite *Blitter_Null::Encode(const SpriteLoader::SpriteCollection &sprite, Sprit
 	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite));
 
 	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dest_sprite->width = sprite[ZOOM_LVL_MIN].width;
 	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
 	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 

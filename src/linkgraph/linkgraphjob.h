@@ -10,9 +10,10 @@
 #ifndef LINKGRAPHJOB_H
 #define LINKGRAPHJOB_H
 
+#include <atomic>
+
 #include "../thread.h"
 #include "linkgraph.h"
-#include <atomic>
 
 class LinkGraphJob;
 class Path;
@@ -26,7 +27,7 @@ extern LinkGraphJobPool _link_graph_job_pool;
 /**
  * Class for calculation jobs to be run on link graphs.
  */
-class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool>{
+class LinkGraphJob : public LinkGraphJobPool::PoolItem<&_link_graph_job_pool> {
 public:
 	/**
 	 * Demand between two nodes.
@@ -49,13 +50,19 @@ public:
 		 * Get the total flow on the edge.
 		 * @return Flow.
 		 */
-		uint Flow() const { return this->flow; }
+		uint Flow() const
+		{
+			return this->flow;
+		}
 
 		/**
 		 * Add some flow.
 		 * @param flow Flow to be added.
 		 */
-		void AddFlow(uint flow) { this->flow += flow; }
+		void AddFlow(uint flow)
+		{
+			this->flow += flow;
+		}
 
 		/**
 		 * Remove some flow.
@@ -67,7 +74,7 @@ public:
 			this->flow -= flow;
 		}
 
-		friend inline bool operator <(NodeID dest, const EdgeAnnotation &rhs)
+		friend inline bool operator<(NodeID dest, const EdgeAnnotation &rhs)
 		{
 			return dest < rhs.base.dest_node;
 		}
@@ -100,7 +107,9 @@ public:
 		 */
 		EdgeAnnotation &operator[](NodeID to)
 		{
-			auto it = std::ranges::find_if(this->edges, [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
+			auto it = std::ranges::find_if(this->edges, [=](const EdgeAnnotation &e) {
+				return e.base.dest_node == to;
+			});
 			assert(it != this->edges.end());
 			return *it;
 		}
@@ -112,7 +121,9 @@ public:
 		 */
 		const EdgeAnnotation &operator[](NodeID to) const
 		{
-			auto it = std::ranges::find_if(this->edges, [=] (const EdgeAnnotation &e) { return e.base.dest_node == to; });
+			auto it = std::ranges::find_if(this->edges, [=](const EdgeAnnotation &e) {
+				return e.base.dest_node == to;
+			});
 			assert(it != this->edges.end());
 			return *it;
 		}
@@ -121,13 +132,19 @@ public:
 		 * Get the transport demand between end the points of the edge.
 		 * @return Demand.
 		 */
-		uint DemandTo(NodeID to) const { return this->demands[to].demand; }
+		uint DemandTo(NodeID to) const
+		{
+			return this->demands[to].demand;
+		}
 
 		/**
 		 * Get the transport demand that hasn't been satisfied by flows, yet.
 		 * @return Unsatisfied demand.
 		 */
-		uint UnsatisfiedDemandTo(NodeID to) const { return this->demands[to].unsatisfied_demand; }
+		uint UnsatisfiedDemandTo(NodeID to) const
+		{
+			return this->demands[to].unsatisfied_demand;
+		}
 
 		/**
 		 * Satisfy some demand.
@@ -188,14 +205,20 @@ public:
 	 * This is allowed to spuriously return an incorrect value.
 	 * @return True if job has actually finished.
 	 */
-	inline bool IsJobCompleted() const { return this->job_completed.load(std::memory_order_acquire); }
+	inline bool IsJobCompleted() const
+	{
+		return this->job_completed.load(std::memory_order_acquire);
+	}
 
 	/**
 	 * Check if job has been aborted.
 	 * This is allowed to spuriously return false incorrectly, but is not allowed to incorrectly return true.
 	 * @return True if job has been aborted.
 	 */
-	inline bool IsJobAborted() const { return this->job_aborted.load(std::memory_order_acquire); }
+	inline bool IsJobAborted() const
+	{
+		return this->job_aborted.load(std::memory_order_acquire);
+	}
 
 	/**
 	 * Abort job.
@@ -203,68 +226,101 @@ public:
 	 * After this method has been called the state of the job is undefined, and the only valid operation
 	 * is to join the thread and discard the job data.
 	 */
-	inline void AbortJob() { this->job_aborted.store(true, std::memory_order_release); }
+	inline void AbortJob()
+	{
+		this->job_aborted.store(true, std::memory_order_release);
+	}
 
 	/**
 	 * Check if job is supposed to be finished.
 	 * @return True if job should be finished by now, false if not.
 	 */
-	inline bool IsScheduledToBeJoined() const { return this->join_date <= TimerGameEconomy::date; }
+	inline bool IsScheduledToBeJoined() const
+	{
+		return this->join_date <= TimerGameEconomy::date;
+	}
 
 	/**
 	 * Get the date when the job should be finished.
 	 * @return Join date.
 	 */
-	inline TimerGameEconomy::Date JoinDate() const { return join_date; }
+	inline TimerGameEconomy::Date JoinDate() const
+	{
+		return join_date;
+	}
 
 	/**
 	 * Change the join date on date cheating.
 	 * @param interval Number of days to add.
 	 */
-	inline void ShiftJoinDate(TimerGameEconomy::Date interval) { this->join_date += interval; }
+	inline void ShiftJoinDate(TimerGameEconomy::Date interval)
+	{
+		this->join_date += interval;
+	}
 
 	/**
 	 * Get the link graph settings for this component.
 	 * @return Settings.
 	 */
-	inline const LinkGraphSettings &Settings() const { return this->settings; }
+	inline const LinkGraphSettings &Settings() const
+	{
+		return this->settings;
+	}
 
 	/**
 	 * Get a node abstraction with the specified id.
 	 * @param num ID of the node.
 	 * @return the Requested node.
 	 */
-	inline NodeAnnotation &operator[](NodeID num) { return this->nodes[num]; }
+	inline NodeAnnotation &operator[](NodeID num)
+	{
+		return this->nodes[num];
+	}
 
 	/**
 	 * Get the size of the underlying link graph.
 	 * @return Size.
 	 */
-	inline NodeID Size() const { return this->link_graph.Size(); }
+	inline NodeID Size() const
+	{
+		return this->link_graph.Size();
+	}
 
 	/**
 	 * Get the cargo of the underlying link graph.
 	 * @return Cargo.
 	 */
-	inline CargoType Cargo() const { return this->link_graph.Cargo(); }
+	inline CargoType Cargo() const
+	{
+		return this->link_graph.Cargo();
+	}
 
 	/**
 	 * Get the date when the underlying link graph was last compressed.
 	 * @return Compression date.
 	 */
-	inline TimerGameEconomy::Date LastCompression() const { return this->link_graph.LastCompression(); }
+	inline TimerGameEconomy::Date LastCompression() const
+	{
+		return this->link_graph.LastCompression();
+	}
 
 	/**
 	 * Get the ID of the underlying link graph.
 	 * @return Link graph ID.
 	 */
-	inline LinkGraphID LinkGraphIndex() const { return this->link_graph.index; }
+	inline LinkGraphID LinkGraphIndex() const
+	{
+		return this->link_graph.index;
+	}
 
 	/**
 	 * Get a reference to the underlying link graph. Only use this for save/load.
 	 * @return Link graph.
 	 */
-	inline const LinkGraph &Graph() const { return this->link_graph; }
+	inline const LinkGraph &Graph() const
+	{
+		return this->link_graph;
+	}
 };
 
 /**
@@ -278,19 +334,34 @@ public:
 	virtual ~Path() = default;
 
 	/** Get the node this leg passes. */
-	inline NodeID GetNode() const { return this->node; }
+	inline NodeID GetNode() const
+	{
+		return this->node;
+	}
 
 	/** Get the overall origin of the path. */
-	inline NodeID GetOrigin() const { return this->origin; }
+	inline NodeID GetOrigin() const
+	{
+		return this->origin;
+	}
 
 	/** Get the parent leg of this one. */
-	inline Path *GetParent() { return this->parent; }
+	inline Path *GetParent()
+	{
+		return this->parent;
+	}
 
 	/** Get the overall capacity of the path. */
-	inline uint GetCapacity() const { return this->capacity; }
+	inline uint GetCapacity() const
+	{
+		return this->capacity;
+	}
 
 	/** Get the free capacity of the path. */
-	inline int GetFreeCapacity() const { return this->free_capacity; }
+	inline int GetFreeCapacity() const
+	{
+		return this->free_capacity;
+	}
 
 	/**
 	 * Get ratio of free * 16 (so that we get fewer 0) /
@@ -299,7 +370,7 @@ public:
 	 * @param total Total capacity.
 	 * @return free * 16 / max(total, 1).
 	 */
-	inline static int GetCapacityRatio(int free, uint total)
+	static inline int GetCapacityRatio(int free, uint total)
 	{
 		return Clamp(free, PATH_CAP_MIN_FREE, PATH_CAP_MAX_FREE) * PATH_CAP_MULTIPLIER / std::max(total, 1U);
 	}
@@ -314,19 +385,34 @@ public:
 	}
 
 	/** Get the overall distance of the path. */
-	inline uint GetDistance() const { return this->distance; }
+	inline uint GetDistance() const
+	{
+		return this->distance;
+	}
 
 	/** Reduce the flow on this leg only by the specified amount. */
-	inline void ReduceFlow(uint f) { this->flow -= f; }
+	inline void ReduceFlow(uint f)
+	{
+		this->flow -= f;
+	}
 
 	/** Increase the flow on this leg only by the specified amount. */
-	inline void AddFlow(uint f) { this->flow += f; }
+	inline void AddFlow(uint f)
+	{
+		this->flow += f;
+	}
 
 	/** Get the flow on this leg. */
-	inline uint GetFlow() const { return this->flow; }
+	inline uint GetFlow() const
+	{
+		return this->flow;
+	}
 
 	/** Get the number of "forked off" child legs of this one. */
-	inline uint GetNumChildren() const { return this->num_children; }
+	inline uint GetNumChildren() const
+	{
+		return this->num_children;
+	}
 
 	/**
 	 * Detach this path from its parent.
@@ -343,7 +429,6 @@ public:
 	void Fork(Path *base, uint cap, int free_cap, uint dist);
 
 protected:
-
 	/*
 	 * Some boundaries to clamp against in order to avoid integer overflows.
 	 */

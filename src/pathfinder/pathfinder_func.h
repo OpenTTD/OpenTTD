@@ -31,7 +31,7 @@ inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, Stati
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
 	if (ta.tile == INVALID_TILE) return st->xy;
 
-	uint minx = TileX(ta.tile);  // topmost corner of station
+	uint minx = TileX(ta.tile); // topmost corner of station
 	uint miny = TileY(ta.tile);
 	uint maxx = minx + ta.w - 1; // lowermost corner of station
 	uint maxy = miny + ta.h - 1;
@@ -75,7 +75,8 @@ inline TrackdirBits GetTrackdirBitsForRoad(TileIndex tile, RoadTramType rtt)
 					bits = TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_Y_SE;
 					break;
 
-				default: break;
+				default:
+					break;
 			}
 		}
 	}

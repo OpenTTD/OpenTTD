@@ -8,39 +8,39 @@
 /** @file terraform_gui.cpp GUI related to terraforming the map. */
 
 #include "stdafx.h"
+
+#include "terraform_gui.h"
+
 #include "core/backup_type.hpp"
-#include "clear_map.h"
-#include "company_func.h"
-#include "company_base.h"
-#include "house.h"
-#include "gui.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "viewport_func.h"
-#include "command_func.h"
-#include "signs_func.h"
-#include "sound_func.h"
 #include "base_station_base.h"
-#include "textbuf_gui.h"
+#include "clear_map.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "engine_base.h"
 #include "genworld.h"
-#include "tree_map.h"
+#include "gui.h"
+#include "hotkeys.h"
+#include "house.h"
+#include "landscape_cmd.h"
 #include "landscape_type.h"
-#include "tilehighlight_func.h"
-#include "strings_func.h"
 #include "newgrf_object.h"
 #include "object.h"
-#include "hotkeys.h"
-#include "engine_base.h"
-#include "terraform_gui.h"
-#include "terraform_cmd.h"
-#include "zoom_func.h"
-#include "rail_cmd.h"
-#include "landscape_cmd.h"
-#include "terraform_cmd.h"
 #include "object_cmd.h"
+#include "rail_cmd.h"
+#include "signs_func.h"
+#include "sound_func.h"
+#include "strings_func.h"
+#include "terraform_cmd.h"
+#include "textbuf_gui.h"
+#include "tilehighlight_func.h"
+#include "tree_map.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/terraform_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -53,7 +53,6 @@ void CcTerraform(Commands, const CommandCost &result, Money, TileIndex tile)
 		SetRedErrorSquare(tile);
 	}
 }
-
 
 /** Scenario editor command that generates desert areas */
 static void GenerateDesertArea(TileIndex end, TileIndex start)
@@ -214,7 +213,8 @@ struct TerraformToolbarWindow : Window {
 				ShowBuildObjectPicker();
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -245,7 +245,8 @@ struct TerraformToolbarWindow : Window {
 				PlaceProc_Sign(tile);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -265,7 +266,8 @@ struct TerraformToolbarWindow : Window {
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
-				default: NOT_REACHED();
+				default:
+					NOT_REACHED();
 				case DDSP_DEMOLISH_AREA:
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
@@ -279,8 +281,7 @@ struct TerraformToolbarWindow : Window {
 						if (TileX(end_tile) == Map::MaxX()) end_tile += TileDiffXY(-1, 0);
 						if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
 					}
-					Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL,
-						end_tile, start_tile, OBJECT_OWNED_LAND, 0, (_ctrl_pressed ? true : false));
+					Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_PURCHASE_THIS_LAND, CcPlaySound_CONSTRUCTION_RAIL, end_tile, start_tile, OBJECT_OWNED_LAND, 0, (_ctrl_pressed ? true : false));
 					break;
 			}
 		}
@@ -304,16 +305,18 @@ struct TerraformToolbarWindow : Window {
 		return w->OnHotkey(hotkey);
 	}
 
-	static inline HotkeyList hotkeys{"terraform", {
-		Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_TT_LOWER_LAND),
-		Hotkey('W' | WKC_GLOBAL_HOTKEY, "raise", WID_TT_RAISE_LAND),
-		Hotkey('E' | WKC_GLOBAL_HOTKEY, "level", WID_TT_LEVEL_LAND),
-		Hotkey('D' | WKC_GLOBAL_HOTKEY, "dynamite", WID_TT_DEMOLISH),
-		Hotkey('U', "buyland", WID_TT_BUY_LAND),
-		Hotkey('I', "trees", WID_TT_PLANT_TREES),
-		Hotkey('O', "placesign", WID_TT_PLACE_SIGN),
-		Hotkey('P', "placeobject", WID_TT_PLACE_OBJECT),
-	}, TerraformToolbarGlobalHotkeys};
+	static inline HotkeyList hotkeys{"terraform",
+		{
+			Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_TT_LOWER_LAND),
+			Hotkey('W' | WKC_GLOBAL_HOTKEY, "raise", WID_TT_RAISE_LAND),
+			Hotkey('E' | WKC_GLOBAL_HOTKEY, "level", WID_TT_LEVEL_LAND),
+			Hotkey('D' | WKC_GLOBAL_HOTKEY, "dynamite", WID_TT_DEMOLISH),
+			Hotkey('U', "buyland", WID_TT_BUY_LAND),
+			Hotkey('I', "trees", WID_TT_PLANT_TREES),
+			Hotkey('O', "placesign", WID_TT_PLACE_SIGN),
+			Hotkey('P', "placeobject", WID_TT_PLACE_OBJECT),
+		},
+		TerraformToolbarGlobalHotkeys};
 };
 
 /* clang-format off */
@@ -349,13 +352,7 @@ static constexpr NWidgetPart _nested_terraform_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _terraform_desc(
-	WDP_MANUAL, "toolbar_landscape", 0, 0,
-	WC_SCEN_LAND_GEN, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_terraform_widgets,
-	&TerraformToolbarWindow::hotkeys
-);
+static WindowDesc _terraform_desc(WDP_MANUAL, "toolbar_landscape", 0, 0, WC_SCEN_LAND_GEN, WC_NONE, WindowDefaultFlag::Construction, _nested_terraform_widgets, &TerraformToolbarWindow::hotkeys);
 
 /**
  * Show the toolbar for terraforming in the game.
@@ -380,7 +377,7 @@ Window *ShowTerraformToolbar(Window *link)
 	w->SetDirty();
 	/* Put the linked toolbar to the left / right of it. */
 	link->left = w->left + (_current_text_dir == TD_RTL ? w->width : -link->width);
-	link->top  = w->top;
+	link->top = w->top;
 	link->SetDirty();
 
 	return w;
@@ -400,8 +397,7 @@ static uint8_t _terraform_size = 1;
 static void CommonRaiseLowerBigLand(TileIndex tile, bool mode)
 {
 	if (_terraform_size == 1) {
-		StringID msg =
-			mode ? STR_ERROR_CAN_T_RAISE_LAND_HERE : STR_ERROR_CAN_T_LOWER_LAND_HERE;
+		StringID msg = mode ? STR_ERROR_CAN_T_RAISE_LAND_HERE : STR_ERROR_CAN_T_LOWER_LAND_HERE;
 
 		Command<CMD_TERRAFORM_LAND>::Post(msg, CcTerraform, tile, SLOPE_N, mode);
 	} else {
@@ -437,14 +433,70 @@ static void CommonRaiseLowerBigLand(TileIndex tile, bool mode)
 }
 
 static const int8_t _multi_terraform_coords[][2] = {
-	{  0, -2},
-	{  4,  0}, { -4,  0}, {  0,  2},
-	{ -8,  2}, { -4,  4}, {  0,  6}, {  4,  4}, {  8,  2},
-	{-12,  0}, { -8, -2}, { -4, -4}, {  0, -6}, {  4, -4}, {  8, -2}, { 12,  0},
-	{-16,  2}, {-12,  4}, { -8,  6}, { -4,  8}, {  0, 10}, {  4,  8}, {  8,  6}, { 12,  4}, { 16,  2},
-	{-20,  0}, {-16, -2}, {-12, -4}, { -8, -6}, { -4, -8}, {  0,-10}, {  4, -8}, {  8, -6}, { 12, -4}, { 16, -2}, { 20,  0},
-	{-24,  2}, {-20,  4}, {-16,  6}, {-12,  8}, { -8, 10}, { -4, 12}, {  0, 14}, {  4, 12}, {  8, 10}, { 12,  8}, { 16,  6}, { 20,  4}, { 24,  2},
-	{-28,  0}, {-24, -2}, {-20, -4}, {-16, -6}, {-12, -8}, { -8,-10}, { -4,-12}, {  0,-14}, {  4,-12}, {  8,-10}, { 12, -8}, { 16, -6}, { 20, -4}, { 24, -2}, { 28,  0},
+	{0, -2},
+	{4, 0},
+	{-4, 0},
+	{0, 2},
+	{-8, 2},
+	{-4, 4},
+	{0, 6},
+	{4, 4},
+	{8, 2},
+	{-12, 0},
+	{-8, -2},
+	{-4, -4},
+	{0, -6},
+	{4, -4},
+	{8, -2},
+	{12, 0},
+	{-16, 2},
+	{-12, 4},
+	{-8, 6},
+	{-4, 8},
+	{0, 10},
+	{4, 8},
+	{8, 6},
+	{12, 4},
+	{16, 2},
+	{-20, 0},
+	{-16, -2},
+	{-12, -4},
+	{-8, -6},
+	{-4, -8},
+	{0, -10},
+	{4, -8},
+	{8, -6},
+	{12, -4},
+	{16, -2},
+	{20, 0},
+	{-24, 2},
+	{-20, 4},
+	{-16, 6},
+	{-12, 8},
+	{-8, 10},
+	{-4, 12},
+	{0, 14},
+	{4, 12},
+	{8, 10},
+	{12, 8},
+	{16, 6},
+	{20, 4},
+	{24, 2},
+	{-28, 0},
+	{-24, -2},
+	{-20, -4},
+	{-16, -6},
+	{-12, -8},
+	{-8, -10},
+	{-4, -12},
+	{0, -14},
+	{4, -12},
+	{8, -10},
+	{12, -8},
+	{16, -6},
+	{20, -4},
+	{24, -2},
+	{28, 0},
 };
 
 /* clang-format off */
@@ -556,7 +608,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		if (widget != WID_ETT_DOTS) return;
 
-		size.width  = std::max<uint>(size.width,  ScaleGUITrad(59));
+		size.width = std::max<uint>(size.width, ScaleGUITrad(59));
 		size.height = std::max<uint>(size.height, ScaleGUITrad(31));
 	}
 
@@ -636,13 +688,11 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 
 			case WID_ETT_RESET_LANDSCAPE: // Reset landscape
-				ShowQuery(
-					GetEncodedString(STR_QUERY_RESET_LANDSCAPE_CAPTION),
-					GetEncodedString(STR_RESET_LANDSCAPE_CONFIRMATION_TEXT),
-					nullptr, ResetLandscapeConfirmationCallback);
+				ShowQuery(GetEncodedString(STR_QUERY_RESET_LANDSCAPE_CAPTION), GetEncodedString(STR_RESET_LANDSCAPE_CONFIRMATION_TEXT), nullptr, ResetLandscapeConfirmationCallback);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -681,7 +731,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -694,7 +745,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
-				default: NOT_REACHED();
+				default:
+					NOT_REACHED();
 				case DDSP_CREATE_ROCKS:
 				case DDSP_CREATE_DESERT:
 				case DDSP_RAISE_AND_LEVEL_AREA:
@@ -726,24 +778,21 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		return w->OnHotkey(hotkey);
 	}
 
-	static inline HotkeyList hotkeys{"terraform_editor", {
-		Hotkey('D' | WKC_GLOBAL_HOTKEY, "dynamite", WID_ETT_DEMOLISH),
-		Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_ETT_LOWER_LAND),
-		Hotkey('W' | WKC_GLOBAL_HOTKEY, "raise", WID_ETT_RAISE_LAND),
-		Hotkey('E' | WKC_GLOBAL_HOTKEY, "level", WID_ETT_LEVEL_LAND),
-		Hotkey('R', "rocky", WID_ETT_PLACE_ROCKS),
-		Hotkey('T', "desert", WID_ETT_PLACE_DESERT),
-		Hotkey('O', "object", WID_ETT_PLACE_OBJECT),
-	}, TerraformToolbarEditorGlobalHotkeys};
+	static inline HotkeyList hotkeys{"terraform_editor",
+		{
+			Hotkey('D' | WKC_GLOBAL_HOTKEY, "dynamite", WID_ETT_DEMOLISH),
+			Hotkey('Q' | WKC_GLOBAL_HOTKEY, "lower", WID_ETT_LOWER_LAND),
+			Hotkey('W' | WKC_GLOBAL_HOTKEY, "raise", WID_ETT_RAISE_LAND),
+			Hotkey('E' | WKC_GLOBAL_HOTKEY, "level", WID_ETT_LEVEL_LAND),
+			Hotkey('R', "rocky", WID_ETT_PLACE_ROCKS),
+			Hotkey('T', "desert", WID_ETT_PLACE_DESERT),
+			Hotkey('O', "object", WID_ETT_PLACE_OBJECT),
+		},
+		TerraformToolbarEditorGlobalHotkeys};
 };
 
 static WindowDesc _scen_edit_land_gen_desc(
-	WDP_AUTO, "toolbar_landscape_scen", 0, 0,
-	WC_SCEN_LAND_GEN, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_scen_edit_land_gen_widgets,
-	&ScenarioEditorLandscapeGenerationWindow::hotkeys
-);
+	WDP_AUTO, "toolbar_landscape_scen", 0, 0, WC_SCEN_LAND_GEN, WC_NONE, WindowDefaultFlag::Construction, _nested_scen_edit_land_gen_widgets, &ScenarioEditorLandscapeGenerationWindow::hotkeys);
 
 /**
  * Show the toolbar for terraforming in the scenario editor.

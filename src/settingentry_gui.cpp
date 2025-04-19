@@ -8,9 +8,11 @@
 /** @file settingentry_gui.cpp Definitions of classes for handling display of individual configuration settings. */
 
 #include "stdafx.h"
+
+#include "settingentry_gui.h"
+
 #include "company_base.h"
 #include "company_func.h"
-#include "settingentry_gui.h"
 #include "settings_gui.h"
 #include "settings_internal.h"
 #include "stringfilter_type.h"
@@ -20,7 +22,6 @@
 #include "table/strings.h"
 
 #include "safeguards.h"
-
 
 /* == BaseSettingEntry methods == */
 
@@ -282,7 +283,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 
 	bool rtl = _current_text_dir == TD_RTL;
 	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
-	uint text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide);
+	uint text_left = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide);
 	uint text_right = right - (rtl ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide : 0);
 	uint button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
 
@@ -299,11 +300,12 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
-		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
-				editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
+		DrawArrowButtons(
+			buttons_left, button_y, COLOUR_YELLOW, state, editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
 	auto [param1, param2] = sd->GetValueParams(value);
-	DrawString(text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	DrawString(
+		text_left, text_right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -373,7 +375,6 @@ bool SettingsContainer::UpdateFilterState(SettingFilter &filter, bool force_visi
 	return visible;
 }
 
-
 /**
  * Check whether an entry is visible and not folded or filtered away.
  * Note: This does not consider the scrolling range; it might still require scrolling to make the setting really visible.
@@ -429,7 +430,6 @@ uint SettingsContainer::GetMaxHelpHeight(int maxw)
 	}
 	return biggest;
 }
-
 
 /**
  * Draw a row in the settings panel.
@@ -622,7 +622,8 @@ void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - _setting_circle_size.width : left, y + (SETTING_HEIGHT - _setting_circle_size.height) / 2);
-	DrawString(rtl ? left : left + _setting_circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _setting_circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
+	DrawString(rtl ? left : left + _setting_circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - _setting_circle_size.width - WidgetDimensions::scaled.hsep_normal : right,
+		y + (SETTING_HEIGHT - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
 }
 
 /** Construct settings tree */
@@ -630,8 +631,7 @@ SettingsContainer &GetSettingsTree()
 {
 	static SettingsContainer *main = nullptr;
 
-	if (main == nullptr)
-	{
+	if (main == nullptr) {
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		main = new SettingsContainer();
 

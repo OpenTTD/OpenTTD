@@ -8,7 +8,9 @@
 /** @file script_newgrf.cpp Implementation of ScriptNewGRF and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_newgrf.hpp"
+
 #include "../../core/bitmath_func.hpp"
 #include "../../newgrf_config.h"
 #include "../../string_func.h"
@@ -28,14 +30,18 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
-	return std::ranges::any_of(_grfconfig, [grfid](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid; });
+	return std::ranges::any_of(_grfconfig, [grfid](const auto &c) {
+		return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid;
+	});
 }
 
 /* static */ SQInteger ScriptNewGRF::GetVersion(SQInteger grfid)
 {
 	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
-	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid; });
+	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) {
+		return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid;
+	});
 	if (it != std::end(_grfconfig)) return (*it)->version;
 
 	return 0;
@@ -45,7 +51,9 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	grfid = std::byteswap(GB(grfid, 0, 32)); // Match people's expectations.
 
-	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid; });
+	auto it = std::ranges::find_if(_grfconfig, [grfid](const auto &c) {
+		return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == grfid;
+	});
 	if (it != std::end(_grfconfig)) return (*it)->GetName();
 
 	return std::nullopt;

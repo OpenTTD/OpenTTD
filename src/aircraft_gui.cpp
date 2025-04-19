@@ -8,13 +8,14 @@
 /** @file aircraft_gui.cpp The GUI of aircraft. */
 
 #include "stdafx.h"
+
 #include "aircraft.h"
-#include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "spritecache.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "window_gui.h"
-#include "spritecache.h"
 #include "zoom_func.h"
 
 #include "table/strings.h"
@@ -60,7 +61,6 @@ void DrawAircraftDetails(const Aircraft *v, const Rect &r)
 	y += WidgetDimensions::scaled.vsep_normal;
 	DrawString(r.left, r.right, y, GetString(STR_VEHICLE_INFO_FEEDER_CARGO_VALUE, feeder_share));
 }
-
 
 /**
  * Draws an image of an aircraft

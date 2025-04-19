@@ -8,58 +8,57 @@
 /** @file settings_gui.cpp GUI for settings. */
 
 #include "stdafx.h"
-#include "currency.h"
-#include "error.h"
+
 #include "settings_gui.h"
-#include "textbuf_gui.h"
-#include "command_func.h"
-#include "network/network.h"
-#include "network/network_content.h"
-#include "town.h"
-#include "settings_internal.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "string_func.h"
-#include "dropdown_type.h"
-#include "dropdown_func.h"
-#include "slider_func.h"
-#include "highscore.h"
+
+#include "core/geometry_func.hpp"
+#include "network/core/config.h"
+#include "ai/ai.hpp"
 #include "base_media_base.h"
 #include "base_media_graphics.h"
 #include "base_media_music.h"
 #include "base_media_sounds.h"
+#include "blitter/factory.hpp"
+#include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "viewport_func.h"
-#include "core/geometry_func.hpp"
-#include "ai/ai.hpp"
-#include "blitter/factory.hpp"
-#include "language.h"
-#include "textfile_gui.h"
-#include "stringfilter_type.h"
-#include "querystring_gui.h"
+#include "currency.h"
+#include "dropdown_common_type.h"
+#include "dropdown_func.h"
+#include "dropdown_type.h"
+#include "error.h"
 #include "fontcache.h"
-#include "zoom_func.h"
-#include "rev.h"
-#include "video/video_driver.hpp"
-#include "music/music_driver.hpp"
 #include "gui.h"
+#include "highscore.h"
+#include "language.h"
 #include "mixer.h"
-#include "newgrf_config.h"
-#include "network/core/config.h"
+#include "music/music_driver.hpp"
+#include "network/network.h"
+#include "network/network_content.h"
 #include "network/network_gui.h"
 #include "network/network_survey.h"
-#include "video/video_driver.hpp"
+#include "newgrf_config.h"
+#include "querystring_gui.h"
+#include "rev.h"
+#include "settingentry_gui.h"
+#include "settings_internal.h"
+#include "slider_func.h"
 #include "social_integration.h"
 #include "sound_func.h"
-#include "settingentry_gui.h"
+#include "string_func.h"
+#include "stringfilter_type.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "textfile_gui.h"
+#include "town.h"
+#include "video/video_driver.hpp"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
-#include "dropdown_common_type.h"
-
 #include "safeguards.h"
-
 
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 #	define HAS_TRUETYPE_FONT
@@ -156,7 +155,7 @@ DropDownList BuildSetDropDownList(int *selected_index)
 	return list;
 }
 
-std::set<int> _refresh_rates = { 30, 60, 75, 90, 100, 120, 144, 240 };
+std::set<int> _refresh_rates = {30, 60, 75, 90, 100, 120, 144, 240};
 
 /**
  * Add the refresh rate from the config and the refresh rates from all the monitors to
@@ -296,13 +295,13 @@ public:
 
 			case WID_GO_SOCIAL_PLUGIN_STATE: {
 				static const std::pair<SocialIntegrationPlugin::State, StringID> state_to_string[] = {
-					{ SocialIntegrationPlugin::RUNNING, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING },
-					{ SocialIntegrationPlugin::FAILED, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED },
-					{ SocialIntegrationPlugin::PLATFORM_NOT_RUNNING, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING },
-					{ SocialIntegrationPlugin::UNLOADED, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED },
-					{ SocialIntegrationPlugin::DUPLICATE, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE },
-					{ SocialIntegrationPlugin::UNSUPPORTED_API, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API },
-					{ SocialIntegrationPlugin::INVALID_SIGNATURE, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE },
+					{SocialIntegrationPlugin::RUNNING, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING},
+					{SocialIntegrationPlugin::FAILED, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED},
+					{SocialIntegrationPlugin::PLATFORM_NOT_RUNNING, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING},
+					{SocialIntegrationPlugin::UNLOADED, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED},
+					{SocialIntegrationPlugin::DUPLICATE, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE},
+					{SocialIntegrationPlugin::UNSUPPORTED_API, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API},
+					{SocialIntegrationPlugin::INVALID_SIGNATURE, STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE},
 				};
 
 				/* For SetupSmallestSize, use the longest string we have. */
@@ -336,7 +335,8 @@ public:
 				return GetString(STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED, plugin->social_platform);
 			}
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -515,11 +515,16 @@ struct GameOptionsWindow : Window {
 				return GetString(_autosave_dropdown[index - 1]);
 			}
 
-			case WID_GO_LANG_DROPDOWN:         return _current_language->own_name;
-			case WID_GO_BASE_GRF_DROPDOWN:     return GetListLabel(BaseGraphics::GetUsedSet());
-			case WID_GO_BASE_SFX_DROPDOWN:     return GetListLabel(BaseSounds::GetUsedSet());
-			case WID_GO_BASE_MUSIC_DROPDOWN:   return GetListLabel(BaseMusic::GetUsedSet());
-			case WID_GO_REFRESH_RATE_DROPDOWN: return GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, _settings_client.gui.refresh_rate);
+			case WID_GO_LANG_DROPDOWN:
+				return _current_language->own_name;
+			case WID_GO_BASE_GRF_DROPDOWN:
+				return GetListLabel(BaseGraphics::GetUsedSet());
+			case WID_GO_BASE_SFX_DROPDOWN:
+				return GetListLabel(BaseSounds::GetUsedSet());
+			case WID_GO_BASE_MUSIC_DROPDOWN:
+				return GetListLabel(BaseMusic::GetUsedSet());
+			case WID_GO_REFRESH_RATE_DROPDOWN:
+				return GetString(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, _settings_client.gui.refresh_rate);
 			case WID_GO_RESOLUTION_DROPDOWN: {
 				auto current_resolution = GetCurrentResolutionIndex();
 
@@ -584,11 +589,20 @@ struct GameOptionsWindow : Window {
 
 		int pane;
 		switch (widget) {
-			case WID_GO_TAB_GENERAL: pane = 0; break;
-			case WID_GO_TAB_GRAPHICS: pane = 1; break;
-			case WID_GO_TAB_SOUND: pane = 2; break;
-			case WID_GO_TAB_SOCIAL: pane = 3; break;
-			default: NOT_REACHED();
+			case WID_GO_TAB_GENERAL:
+				pane = 0;
+				break;
+			case WID_GO_TAB_GRAPHICS:
+				pane = 1;
+				break;
+			case WID_GO_TAB_SOUND:
+				pane = 2;
+				break;
+			case WID_GO_TAB_SOCIAL:
+				pane = 3;
+				break;
+			default:
+				NOT_REACHED();
 		}
 
 		this->GetWidget<NWidgetStacked>(WID_GO_TAB_SELECTION)->SetDisplayedPlane(pane);
@@ -789,8 +803,7 @@ struct GameOptionsWindow : Window {
 				if (click_count > 0) this->mouse_capture_widget = widget;
 				break;
 
-			case WID_GO_GUI_SCALE_AUTO:
-			{
+			case WID_GO_GUI_SCALE_AUTO: {
 				if (_gui_scale_cfg == -1) {
 					_gui_scale_cfg = _gui_scale;
 					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
@@ -1185,12 +1198,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _game_options_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_GAME_OPTIONS, WC_NONE,
-	{},
-	_nested_game_options_widgets
-);
+static WindowDesc _game_options_desc(WDP_CENTER, nullptr, 0, 0, WC_GAME_OPTIONS, WC_NONE, {}, _nested_game_options_widgets);
 
 /** Open the game options window. */
 void ShowGameOptions()
@@ -1199,22 +1207,22 @@ void ShowGameOptions()
 	new GameOptionsWindow(_game_options_desc);
 }
 
-int SETTING_HEIGHT = 11;    ///< Height of a single setting in the tree view in pixels
+int SETTING_HEIGHT = 11; ///< Height of a single setting in the tree view in pixels
 
 static const StringID _game_settings_restrict_dropdown[] = {
-	STR_CONFIG_SETTING_RESTRICT_BASIC,                            // RM_BASIC
-	STR_CONFIG_SETTING_RESTRICT_ADVANCED,                         // RM_ADVANCED
-	STR_CONFIG_SETTING_RESTRICT_ALL,                              // RM_ALL
-	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT,          // RM_CHANGED_AGAINST_DEFAULT
-	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW,              // RM_CHANGED_AGAINST_NEW
+	STR_CONFIG_SETTING_RESTRICT_BASIC, // RM_BASIC
+	STR_CONFIG_SETTING_RESTRICT_ADVANCED, // RM_ADVANCED
+	STR_CONFIG_SETTING_RESTRICT_ALL, // RM_ALL
+	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT, // RM_CHANGED_AGAINST_DEFAULT
+	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW, // RM_CHANGED_AGAINST_NEW
 };
 static_assert(lengthof(_game_settings_restrict_dropdown) == RM_END);
 
 /** Warnings about hidden search results. */
 enum WarnHiddenResult : uint8_t {
-	WHR_NONE,          ///< Nothing was filtering matches away.
-	WHR_CATEGORY,      ///< Category setting filtered matches away.
-	WHR_TYPE,          ///< Type setting filtered matches away.
+	WHR_NONE, ///< Nothing was filtering matches away.
+	WHR_CATEGORY, ///< Category setting filtered matches away.
+	WHR_TYPE, ///< Type setting filtered matches away.
 	WHR_CATEGORY_TYPE, ///< Both category and type settings filtered matches away.
 };
 
@@ -1289,14 +1297,15 @@ struct GameSettingsWindow : Window {
 			case WID_GS_HELP_TEXT: {
 				static const StringID setting_types[] = {
 					STR_CONFIG_SETTING_TYPE_CLIENT,
-					STR_CONFIG_SETTING_TYPE_COMPANY_MENU, STR_CONFIG_SETTING_TYPE_COMPANY_INGAME,
-					STR_CONFIG_SETTING_TYPE_GAME_MENU, STR_CONFIG_SETTING_TYPE_GAME_INGAME,
+					STR_CONFIG_SETTING_TYPE_COMPANY_MENU,
+					STR_CONFIG_SETTING_TYPE_COMPANY_INGAME,
+					STR_CONFIG_SETTING_TYPE_GAME_MENU,
+					STR_CONFIG_SETTING_TYPE_GAME_INGAME,
 				};
 				for (const auto &setting_type : setting_types) {
 					size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_CONFIG_SETTING_TYPE, setting_type)).width + padding.width);
 				}
-				size.height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal +
-						std::max(size.height, GetSettingsTree().GetMaxHelpHeight(size.width));
+				size.height = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal + std::max(size.height, GetSettingsTree().GetMaxHelpHeight(size.width));
 				break;
 			}
 
@@ -1337,9 +1346,8 @@ struct GameSettingsWindow : Window {
 
 		/* Draw the 'some search results are hidden' notice. */
 		if (this->warn_missing != WHR_NONE) {
-			DrawStringMultiLine(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)),
-				GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]),
-				TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(
+				panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)), GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]), TC_FROMSTRING, SA_CENTER);
 		}
 	}
 
@@ -1351,10 +1359,14 @@ struct GameSettingsWindow : Window {
 
 			case WID_GS_TYPE_DROPDOWN:
 				switch (this->filter.type) {
-					case ST_GAME:    return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
-					case ST_COMPANY: return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
-					case ST_CLIENT:  return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
-					default:         return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
+					case ST_GAME:
+						return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME);
+					case ST_COMPANY:
+						return GetString(_game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME);
+					case ST_CLIENT:
+						return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT);
+					default:
+						return GetString(STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL);
 				}
 
 			default:
@@ -1393,8 +1405,7 @@ struct GameSettingsWindow : Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 				tr.top += this->warn_lines * SETTING_HEIGHT;
 				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
-				int next_row = GetSettingsTree().Draw(settings_ptr, tr.left, tr.right, tr.top,
-						this->vscroll->GetPosition(), last_row, this->last_clicked);
+				int next_row = GetSettingsTree().Draw(settings_ptr, tr.left, tr.right, tr.top, this->vscroll->GetPosition(), last_row, this->last_clicked);
 				if (next_row == 0) DrawString(tr, STR_CONFIG_SETTINGS_NONE);
 				break;
 			}
@@ -1406,10 +1417,17 @@ struct GameSettingsWindow : Window {
 					Rect tr = r;
 					std::string str;
 					switch (sd->GetType()) {
-						case ST_COMPANY: str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME); break;
-						case ST_CLIENT:  str = GetString(STR_CONFIG_SETTING_TYPE, STR_CONFIG_SETTING_TYPE_CLIENT); break;
-						case ST_GAME:    str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME); break;
-						default: NOT_REACHED();
+						case ST_COMPANY:
+							str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME);
+							break;
+						case ST_CLIENT:
+							str = GetString(STR_CONFIG_SETTING_TYPE, STR_CONFIG_SETTING_TYPE_CLIENT);
+							break;
+						case ST_GAME:
+							str = GetString(STR_CONFIG_SETTING_TYPE, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME);
+							break;
+						default:
+							NOT_REACHED();
 					}
 					DrawString(tr, str);
 					tr.top += GetCharacterHeight(FS_NORMAL);
@@ -1453,12 +1471,8 @@ struct GameSettingsWindow : Window {
 				break;
 
 			case WID_GS_RESET_ALL:
-				ShowQuery(
-					GetEncodedString(STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION),
-					GetEncodedString(STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT),
-					this,
-					ResetAllSettingsConfirmationCallback
-				);
+				ShowQuery(GetEncodedString(STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION), GetEncodedString(STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT), this,
+					ResetAllSettingsConfirmationCallback);
 				break;
 
 			case WID_GS_RESTRICT_DROPDOWN: {
@@ -1487,12 +1501,13 @@ struct GameSettingsWindow : Window {
 		uint cur_row = 0;
 		BaseSettingEntry *clicked_entry = GetSettingsTree().FindEntry(btn, &cur_row);
 
-		if (clicked_entry == nullptr) return;  // Clicked below the last setting of the page
+		if (clicked_entry == nullptr) return; // Clicked below the last setting of the page
 
-		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - WidgetDimensions::scaled.frametext.left - (clicked_entry->level + 1) * WidgetDimensions::scaled.hsep_indent;  // Shift x coordinate
-		if (x < 0) return;  // Clicked left of the entry
+		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - WidgetDimensions::scaled.frametext.left -
+			(clicked_entry->level + 1) * WidgetDimensions::scaled.hsep_indent; // Shift x coordinate
+		if (x < 0) return; // Clicked left of the entry
 
-		SettingsPage *clicked_page = dynamic_cast<SettingsPage*>(clicked_entry);
+		SettingsPage *clicked_page = dynamic_cast<SettingsPage *>(clicked_entry);
 		if (clicked_page != nullptr) {
 			this->SetDisplayedHelpText(nullptr);
 			clicked_page->folded = !clicked_page->folded; // Flip 'folded'-ness of the sub-page
@@ -1503,7 +1518,7 @@ struct GameSettingsWindow : Window {
 			return;
 		}
 
-		SettingEntry *pe = dynamic_cast<SettingEntry*>(clicked_entry);
+		SettingEntry *pe = dynamic_cast<SettingEntry *>(clicked_entry);
 		assert(pe != nullptr);
 		const IntSettingDesc *sd = pe->setting;
 
@@ -1661,9 +1676,7 @@ struct GameSettingsWindow : Window {
 		switch (widget) {
 			case WID_GS_RESTRICT_DROPDOWN:
 				this->filter.mode = (RestrictionMode)index;
-				if (this->filter.mode == RM_CHANGED_AGAINST_DEFAULT ||
-						this->filter.mode == RM_CHANGED_AGAINST_NEW) {
-
+				if (this->filter.mode == RM_CHANGED_AGAINST_DEFAULT || this->filter.mode == RM_CHANGED_AGAINST_NEW) {
 					if (!this->manually_changed_folding) {
 						/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
 						GetSettingsTree().UpdateFilterState(this->filter, false);
@@ -1805,12 +1818,7 @@ static constexpr NWidgetPart _nested_settings_selection_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _settings_selection_desc(
-	WDP_CENTER, "settings", 510, 450,
-	WC_GAME_OPTIONS, WC_NONE,
-	{},
-	_nested_settings_selection_widgets
-);
+static WindowDesc _settings_selection_desc(WDP_CENTER, "settings", 510, 450, WC_GAME_OPTIONS, WC_NONE, {}, _nested_settings_selection_widgets);
 
 /** Open advanced settings window. */
 void ShowGameSettings()
@@ -1818,7 +1826,6 @@ void ShowGameSettings()
 	CloseWindowByClass(WC_GAME_OPTIONS);
 	new GameSettingsWindow(_settings_selection_desc);
 }
-
 
 /**
  * Draw [<][>] boxes.
@@ -1834,12 +1841,12 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 	int colour = GetColourGradient(button_colour, SHADE_DARKER);
 	Dimension dim = NWidgetScrollbar::GetHorizontalDimension();
 
-	Rect lr = {x,                  y, x + (int)dim.width     - 1, y + (int)dim.height - 1};
+	Rect lr = {x, y, x + (int)dim.width - 1, y + (int)dim.height - 1};
 	Rect rr = {x + (int)dim.width, y, x + (int)dim.width * 2 - 1, y + (int)dim.height - 1};
 
 	DrawFrameRect(lr, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
 	DrawFrameRect(rr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
-	DrawSpriteIgnorePadding(SPR_ARROW_LEFT,  PAL_NONE, lr, SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_LEFT, PAL_NONE, lr, SA_CENTER);
 	DrawSpriteIgnorePadding(SPR_ARROW_RIGHT, PAL_NONE, rr, SA_CENTER);
 
 	/* Grey out the buttons that aren't clickable */
@@ -1915,10 +1922,14 @@ struct CustomCurrencyWindow : Window {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
-			case WID_CC_RATE:      return GetString(STR_CURRENCY_EXCHANGE_RATE, 1, 1);
-			case WID_CC_SEPARATOR: return GetString(STR_CURRENCY_SEPARATOR, GetCustomCurrency().separator);
-			case WID_CC_PREFIX:    return GetString(STR_CURRENCY_PREFIX, GetCustomCurrency().prefix);
-			case WID_CC_SUFFIX:    return GetString(STR_CURRENCY_SUFFIX, GetCustomCurrency().suffix);
+			case WID_CC_RATE:
+				return GetString(STR_CURRENCY_EXCHANGE_RATE, 1, 1);
+			case WID_CC_SEPARATOR:
+				return GetString(STR_CURRENCY_SEPARATOR, GetCustomCurrency().separator);
+			case WID_CC_PREFIX:
+				return GetString(STR_CURRENCY_PREFIX, GetCustomCurrency().prefix);
+			case WID_CC_SUFFIX:
+				return GetString(STR_CURRENCY_SUFFIX, GetCustomCurrency().suffix);
 			case WID_CC_YEAR:
 				return GetString((GetCustomCurrency().to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, GetCustomCurrency().to_euro);
 
@@ -2113,12 +2124,7 @@ static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _cust_currency_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_CUSTOM_CURRENCY, WC_NONE,
-	{},
-	_nested_cust_currency_widgets
-);
+static WindowDesc _cust_currency_desc(WDP_CENTER, nullptr, 0, 0, WC_CUSTOM_CURRENCY, WC_NONE, {}, _nested_cust_currency_widgets);
 
 /** Open custom currency window. */
 static void ShowCustCurrency()

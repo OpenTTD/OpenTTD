@@ -10,10 +10,10 @@
 #ifndef SCRIPT_ENGINE_HPP
 #define SCRIPT_ENGINE_HPP
 
-#include "script_vehicle.hpp"
-#include "script_rail.hpp"
 #include "script_airport.hpp"
 #include "script_date.hpp"
+#include "script_rail.hpp"
+#include "script_vehicle.hpp"
 
 /**
  * Class that handles all engine related functions.
@@ -310,7 +310,6 @@ public:
 	 * @api -ai
 	 */
 	static bool DisableForCompany(EngineID engine_id, ScriptCompany::CompanyID company_id);
-
 };
 
 #endif /* SCRIPT_ENGINE_HPP */

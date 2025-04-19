@@ -19,7 +19,8 @@
 inline bool IsDepotTypeTile(Tile tile, TransportType type)
 {
 	switch (type) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case TRANSPORT_RAIL:
 			return IsRailDepotTile(tile);
 
@@ -78,11 +79,16 @@ inline DestinationID GetDepotDestinationIndex(Tile t)
 inline VehicleType GetDepotVehicleType(Tile t)
 {
 	switch (GetTileType(t)) {
-		default: NOT_REACHED();
-		case MP_RAILWAY: return VEH_TRAIN;
-		case MP_ROAD:    return VEH_ROAD;
-		case MP_WATER:   return VEH_SHIP;
-		case MP_STATION: return VEH_AIRCRAFT;
+		default:
+			NOT_REACHED();
+		case MP_RAILWAY:
+			return VEH_TRAIN;
+		case MP_ROAD:
+			return VEH_ROAD;
+		case MP_WATER:
+			return VEH_SHIP;
+		case MP_STATION:
+			return VEH_AIRCRAFT;
 	}
 }
 

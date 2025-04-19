@@ -12,19 +12,19 @@
 
 #ifdef WITH_SSE
 
-#ifndef SSE_VERSION
-#define SSE_VERSION 2
-#endif
+#	ifndef SSE_VERSION
+#		define SSE_VERSION 2
+#	endif
 
-#ifndef SSE_TARGET
-#define SSE_TARGET "sse2"
-#endif
+#	ifndef SSE_TARGET
+#		define SSE_TARGET "sse2"
+#	endif
 
-#ifndef FULL_ANIMATION
-#define FULL_ANIMATION 0
-#endif
+#	ifndef FULL_ANIMATION
+#		define FULL_ANIMATION 0
+#	endif
 
-#include "32bpp_sse_type.h"
+#	include "32bpp_sse_type.h"
 
 /** Base methods for 32bpp SSE blitters. */
 class Blitter_32bppSSE_Base {
@@ -35,19 +35,20 @@ public:
 		uint8_t m;
 		uint8_t v;
 	};
+
 	static_assert(sizeof(MapValue) == 2);
 
 	/** Helper for creating specialised functions for specific optimisations. */
 	enum ReadMode : uint8_t {
-		RM_WITH_SKIP,   ///< Use normal code for skipping empty pixels.
+		RM_WITH_SKIP, ///< Use normal code for skipping empty pixels.
 		RM_WITH_MARGIN, ///< Use cached number of empty pixels at begin and end of line to reduce work.
-		RM_NONE,        ///< No specialisation.
+		RM_NONE, ///< No specialisation.
 	};
 
 	/** Helper for creating specialised functions for the case where the sprite width is odd or even. */
 	enum BlockType : uint8_t {
 		BT_EVEN, ///< An even number of pixels in the width; no need for a special case for the last pixel.
-		BT_ODD,  ///< An odd number of pixels in the width; special case for the last pixel.
+		BT_ODD, ///< An odd number of pixels in the width; special case for the last pixel.
 		BT_NONE, ///< No specialisation for either case.
 	};
 
@@ -66,11 +67,12 @@ public:
 
 	/** Data stored about a (single) sprite. */
 	struct SpriteInfo {
-		uint32_t sprite_offset = 0;    ///< The offset to the sprite data.
-		uint32_t mv_offset = 0;        ///< The offset to the map value data.
+		uint32_t sprite_offset = 0; ///< The offset to the sprite data.
+		uint32_t mv_offset = 0; ///< The offset to the map value data.
 		uint16_t sprite_line_size = 0; ///< The size of a single line (pitch).
-		uint16_t sprite_width = 0;     ///< The width of the sprite.
+		uint16_t sprite_width = 0; ///< The width of the sprite.
 	};
+
 	struct SpriteData {
 		SpriteFlags flags{};
 		std::array<SpriteInfo, ZOOM_LVL_END> infos{};
@@ -87,18 +89,26 @@ public:
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
-	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override {
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override
+	{
 		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
 	}
 
-	std::string_view GetName() override { return "32bpp-sse2"; }
+	std::string_view GetName() override
+	{
+		return "32bpp-sse2";
+	}
 };
 
 /** Factory for the SSE2 32 bpp blitter (without palette animation). */
 class FBlitter_32bppSSE2 : public BlitterFactory {
 public:
 	FBlitter_32bppSSE2() : BlitterFactory("32bpp-sse2", "32bpp SSE2 Blitter (no palette animation)", HasCPUIDFlag(1, 3, 26)) {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppSSE2>(); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::make_unique<Blitter_32bppSSE2>();
+	}
 };
 
 #endif /* WITH_SSE */

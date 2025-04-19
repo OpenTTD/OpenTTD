@@ -10,10 +10,12 @@
  */
 
 #include "../../stdafx.h"
-#include "../../timer/timer_game_calendar.h"
-#include "../../debug.h"
-#include "network_game_info.h"
+
 #include "udp.h"
+
+#include "../../debug.h"
+#include "../../timer/timer_game_calendar.h"
+#include "network_game_info.h"
 
 #include "../../safeguards.h"
 
@@ -35,7 +37,6 @@ NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
 		this->bind.emplace_back("", 0, AF_INET6);
 	}
 }
-
 
 /**
  * Start listening on the given host and port.
@@ -88,7 +89,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet &p, NetworkAddress &recv, bool a
 		if (broadcast) {
 			/* Enable broadcast */
 			unsigned long val = 1;
-			if (setsockopt(s.first, SOL_SOCKET, SO_BROADCAST, (char *) &val, sizeof(val)) < 0) {
+			if (setsockopt(s.first, SOL_SOCKET, SO_BROADCAST, (char *)&val, sizeof(val)) < 0) {
 				Debug(net, 1, "Setting broadcast mode failed: {}", NetworkError::GetLast().AsString());
 			}
 		}
@@ -123,7 +124,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			ssize_t nbytes = p.TransferIn<int>(recvfrom, s.first, 0, (struct sockaddr *)&client_addr, &client_len);
 
 			/* Did we get the bytes for the base header of the packet? */
-			if (nbytes <= 0) break;    // No data, i.e. no packet
+			if (nbytes <= 0) break; // No data, i.e. no packet
 			if (nbytes <= 2) continue; // Invalid data; try next packet
 #ifdef __EMSCRIPTEN__
 			client_len = FixAddrLenForEmscripten(client_addr);
@@ -163,8 +164,12 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet &p, NetworkAddress &client_
 	type = (PacketUDPType)p.Recv_uint8();
 
 	switch (this->HasClientQuit() ? PACKET_UDP_END : type) {
-		case PACKET_UDP_CLIENT_FIND_SERVER:   this->Receive_CLIENT_FIND_SERVER(p, client_addr);   break;
-		case PACKET_UDP_SERVER_RESPONSE:      this->Receive_SERVER_RESPONSE(p, client_addr);      break;
+		case PACKET_UDP_CLIENT_FIND_SERVER:
+			this->Receive_CLIENT_FIND_SERVER(p, client_addr);
+			break;
+		case PACKET_UDP_SERVER_RESPONSE:
+			this->Receive_SERVER_RESPONSE(p, client_addr);
+			break;
 
 		default:
 			if (this->HasClientQuit()) {
@@ -186,5 +191,12 @@ void NetworkUDPSocketHandler::ReceiveInvalidPacket(PacketUDPType type, NetworkAd
 	Debug(net, 0, "[udp] Received packet type {} on wrong port from {}", type, client_addr.GetAddressAsString());
 }
 
-void NetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, NetworkAddress &client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_FIND_SERVER, client_addr); }
-void NetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet &, NetworkAddress &client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_SERVER_RESPONSE, client_addr); }
+void NetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, NetworkAddress &client_addr)
+{
+	this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_FIND_SERVER, client_addr);
+}
+
+void NetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet &, NetworkAddress &client_addr)
+{
+	this->ReceiveInvalidPacket(PACKET_UDP_SERVER_RESPONSE, client_addr);
+}

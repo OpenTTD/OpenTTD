@@ -9,22 +9,24 @@
 
 #include "../stdafx.h"
 
-#include "../gfx_func.h"
-#include "../error_func.h"
-#include "../network/network.h"
-#include "../network/network_internal.h"
-#include "../console_func.h"
-#include "../genworld.h"
-#include "../fileio_type.h"
-#include "../fios.h"
+#include "dedicated_v.h"
+
+#include <iostream>
+
+#include "../core/random_func.hpp"
 #include "../blitter/factory.hpp"
 #include "../company_func.h"
-#include "../core/random_func.hpp"
+#include "../console_func.h"
+#include "../error_func.h"
+#include "../fileio_type.h"
+#include "../fios.h"
+#include "../genworld.h"
+#include "../gfx_func.h"
+#include "../network/network.h"
+#include "../network/network_internal.h"
 #include "../saveload/saveload.h"
 #include "../thread.h"
 #include "../window_func.h"
-#include <iostream>
-#include "dedicated_v.h"
 
 #if defined(UNIX)
 #	include <sys/time.h> /* gettimeofday */
@@ -43,11 +45,12 @@ static void DedicatedSignalHandler(int sig)
 #endif
 
 #if defined(_WIN32)
-# include <windows.h> /* GetTickCount */
-# include <conio.h>
-# include <time.h>
-# include <tchar.h>
-# include "../os/windows/win32.h"
+#	include <conio.h>
+#	include <tchar.h>
+#	include <time.h>
+#	include <windows.h> /* GetTickCount */
+
+#	include "../os/windows/win32.h"
 
 static HANDLE _hInputReady, _hWaitForInputHandling;
 static HANDLE _hThread; // Thread to close
@@ -92,7 +95,6 @@ static void CloseWindowsConsoleThread()
 
 #include "../safeguards.h"
 
-
 static std::unique_ptr<uint8_t[]> _dedicated_video_mem;
 
 /* Whether a fork has been done. */
@@ -102,7 +104,6 @@ extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, Detaile
 
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
-
 std::optional<std::string_view> VideoDriver_Dedicated::Start(const StringList &)
 {
 	this->UpdateAutoResolution();
@@ -110,7 +111,7 @@ std::optional<std::string_view> VideoDriver_Dedicated::Start(const StringList &)
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	if (bpp != 0) _dedicated_video_mem = std::make_unique<uint8_t[]>(static_cast<size_t>(_cur_resolution.width) * _cur_resolution.height * (bpp / 8));
 
-	_screen.width  = _screen.pitch = _cur_resolution.width;
+	_screen.width = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
 	_screen.dst_ptr = _dedicated_video_mem.get();
 	ScreenSizeChanged();
@@ -143,8 +144,16 @@ void VideoDriver_Dedicated::Stop()
 }
 
 void VideoDriver_Dedicated::MakeDirty(int, int, int, int) {}
-bool VideoDriver_Dedicated::ChangeResolution(int, int) { return false; }
-bool VideoDriver_Dedicated::ToggleFullscreen(bool) { return false; }
+
+bool VideoDriver_Dedicated::ChangeResolution(int, int)
+{
+	return false;
+}
+
+bool VideoDriver_Dedicated::ToggleFullscreen(bool)
+{
+	return false;
+}
 
 #if defined(UNIX)
 static bool InputWaiting()

@@ -8,6 +8,7 @@
 /** @file host.cpp Functions related to getting host specific data (IPs). */
 
 #include "../../stdafx.h"
+
 #include "../../debug.h"
 #include "address.h"
 
@@ -49,9 +50,12 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // Wi
 		sockaddr_storage address{};
 		/* iiBroadcast is unusable, because it always seems to be set to 255.255.255.255. */
 		memcpy(&address, &ifo.iiAddress.Address, sizeof(sockaddr));
-		reinterpret_cast<sockaddr_in*>(&address)->sin_addr.s_addr = ifo.iiAddress.AddressIn.sin_addr.s_addr | ~ifo.iiNetmask.AddressIn.sin_addr.s_addr;
+		reinterpret_cast<sockaddr_in *>(&address)->sin_addr.s_addr = ifo.iiAddress.AddressIn.sin_addr.s_addr | ~ifo.iiNetmask.AddressIn.sin_addr.s_addr;
 		NetworkAddress addr(address, sizeof(sockaddr));
-		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const &elem) -> bool { return elem == addr; })) broadcast->push_back(addr);
+		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](const NetworkAddress &elem) -> bool {
+				return elem == addr;
+			}))
+			broadcast->push_back(addr);
 	}
 
 	closesocket(sock);
@@ -70,7 +74,10 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast)
 		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
 
 		NetworkAddress addr(ifa->ifa_broadaddr, sizeof(sockaddr));
-		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](NetworkAddress const &elem) -> bool { return elem == addr; })) broadcast->push_back(std::move(addr));
+		if (std::none_of(broadcast->begin(), broadcast->end(), [&addr](const NetworkAddress &elem) -> bool {
+				return elem == addr;
+			}))
+			broadcast->push_back(std::move(addr));
 	}
 	freeifaddrs(ifap);
 }

@@ -10,9 +10,9 @@
 #ifndef SCRIPT_BASESTATION_HPP
 #define SCRIPT_BASESTATION_HPP
 
-#include "script_text.hpp"
-#include "script_date.hpp"
 #include "../../station_type.h"
+#include "script_date.hpp"
+#include "script_text.hpp"
 
 /**
  * Base class for stations and waypoints.

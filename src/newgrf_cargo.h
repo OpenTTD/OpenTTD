@@ -10,9 +10,9 @@
 #ifndef NEWGRF_CARGO_H
 #define NEWGRF_CARGO_H
 
-#include "newgrf_callbacks.h"
 #include "cargo_type.h"
 #include "gfx_type.h"
+#include "newgrf_callbacks.h"
 
 /**
  * Sprite Group Cargo types.
@@ -20,8 +20,8 @@
  * e.g. in purchase lists, or if no specific cargo type sprite group is supplied.
  */
 namespace SpriteGroupCargo {
-	static constexpr CargoType SG_DEFAULT    = NUM_CARGO;     ///< Default type used when no more-specific cargo matches.
-	static constexpr CargoType SG_PURCHASE   = NUM_CARGO + 1; ///< Used in purchase lists before an item exists.
+	static constexpr CargoType SG_DEFAULT = NUM_CARGO; ///< Default type used when no more-specific cargo matches.
+	static constexpr CargoType SG_PURCHASE = NUM_CARGO + 1; ///< Used in purchase lists before an item exists.
 	static constexpr CargoType SG_DEFAULT_NA = NUM_CARGO + 2; ///< Used only by stations and roads when no more-specific cargo matches.
 };
 

@@ -8,43 +8,41 @@
 /** @file main_gui.cpp Handling of the main viewport. */
 
 #include "stdafx.h"
-#include "currency.h"
-#include "spritecache.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "textbuf_gui.h"
-#include "viewport_func.h"
+
 #include "command_func.h"
-#include "console_gui.h"
-#include "progress.h"
-#include "transparency_gui.h"
-#include "map_func.h"
-#include "sound_func.h"
-#include "transparency.h"
-#include "strings_func.h"
-#include "zoom_func.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "toolbar_gui.h"
-#include "statusbar_gui.h"
-#include "linkgraph/linkgraph_gui.h"
-#include "tilehighlight_func.h"
-#include "hotkeys.h"
+#include "console_gui.h"
+#include "currency.h"
 #include "error.h"
-#include "news_gui.h"
+#include "hotkeys.h"
+#include "linkgraph/linkgraph_gui.h"
+#include "map_func.h"
 #include "misc_cmd.h"
-#include "timer/timer.h"
-#include "timer/timer_window.h"
-
-#include "saveload/saveload.h"
-
-#include "widgets/main_widget.h"
-
 #include "network/network.h"
+#include "network/network_base.h"
 #include "network/network_func.h"
 #include "network/network_gui.h"
-#include "network/network_base.h"
+#include "news_gui.h"
+#include "progress.h"
+#include "saveload/saveload.h"
+#include "sound_func.h"
+#include "spritecache.h"
+#include "statusbar_gui.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "tilehighlight_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
+#include "toolbar_gui.h"
+#include "transparency.h"
+#include "transparency_gui.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
+#include "widgets/main_widget.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -76,7 +74,6 @@ bool HandlePlacePushButton(Window *w, WidgetID widget, CursorID cursor, HighLigh
 	w->LowerWidget(widget);
 	return true;
 }
-
 
 void CcPlaySound_EXPLOSION(Commands, const CommandCost &result, TileIndex tile)
 {
@@ -212,8 +209,7 @@ enum GlobalHotKeys : int32_t {
 	GHK_CLOSE_ERROR,
 };
 
-struct MainWindow : Window
-{
+struct MainWindow : Window {
 	MainWindow(WindowDesc &desc) : Window(desc)
 	{
 		this->InitNested(0);
@@ -230,8 +226,7 @@ struct MainWindow : Window
 	/** Refresh the link-graph overlay. */
 	void RefreshLinkGraph()
 	{
-		if (this->viewport->overlay->GetCargoMask() == 0 ||
-				this->viewport->overlay->GetCompanyMask().None()) {
+		if (this->viewport->overlay->GetCargoMask() == 0 || this->viewport->overlay->GetCompanyMask().None()) {
 			return;
 		}
 
@@ -241,8 +236,8 @@ struct MainWindow : Window
 
 	/** Refresh the link-graph overlay on a regular interval. */
 	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(7650), [this](auto) {
-		RefreshLinkGraph();
-	}};
+													   RefreshLinkGraph();
+												   }};
 
 	/**
 	 * Sometimes when something happened, force an update to the link-graph a bit sooner.
@@ -252,8 +247,8 @@ struct MainWindow : Window
 	 * and only draw it once the scrolling settles down.
 	 */
 	TimeoutTimer<TimerWindow> refresh_timeout = {std::chrono::milliseconds(450), [this]() {
-		RefreshLinkGraph();
-	}};
+													 RefreshLinkGraph();
+												 }};
 
 	void OnPaint() override
 	{
@@ -331,11 +326,21 @@ struct MainWindow : Window
 				break;
 			}
 
-			case GHK_RESET_OBJECT_TO_PLACE: ResetObjectToPlace(); break;
-			case GHK_DELETE_WINDOWS: CloseNonVitalWindows(); break;
-			case GHK_DELETE_NONVITAL_WINDOWS: CloseAllNonVitalWindows(); break;
-			case GHK_DELETE_ALL_MESSAGES: DeleteAllMessages(); break;
-			case GHK_REFRESH_SCREEN: MarkWholeScreenDirty(); break;
+			case GHK_RESET_OBJECT_TO_PLACE:
+				ResetObjectToPlace();
+				break;
+			case GHK_DELETE_WINDOWS:
+				CloseNonVitalWindows();
+				break;
+			case GHK_DELETE_NONVITAL_WINDOWS:
+				CloseAllNonVitalWindows();
+				break;
+			case GHK_DELETE_ALL_MESSAGES:
+				DeleteAllMessages();
+				break;
+			case GHK_REFRESH_SCREEN:
+				MarkWholeScreenDirty();
+				break;
 
 			case GHK_CRASH: // Crash the game
 				*(volatile uint8_t *)nullptr = 0;
@@ -421,7 +426,8 @@ struct MainWindow : Window
 				if (!HideActiveErrorMessage()) return ES_NOT_HANDLED;
 				break;
 
-			default: return ES_NOT_HANDLED;
+			default:
+				return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
 	}
@@ -476,60 +482,55 @@ struct MainWindow : Window
 		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data, true);
 	}
 
-	static inline HotkeyList hotkeys{"global", {
-		Hotkey({'Q' | WKC_CTRL, 'Q' | WKC_META}, "quit", GHK_QUIT),
-		Hotkey({'W' | WKC_CTRL, 'W' | WKC_META}, "abandon", GHK_ABANDON),
-		Hotkey(WKC_BACKQUOTE, "console", GHK_CONSOLE),
-		Hotkey('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
-		Hotkey('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
-		Hotkey('O' | WKC_CTRL, "widget_outlines", GHK_WIDGET_OUTLINES),
-		Hotkey('C', "center", GHK_CENTER),
-		Hotkey('Z', "center_zoom", GHK_CENTER_ZOOM),
-		Hotkey(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
-		Hotkey(WKC_DELETE, "delete_windows", GHK_DELETE_WINDOWS),
-		Hotkey(WKC_DELETE | WKC_SHIFT, "delete_all_windows", GHK_DELETE_NONVITAL_WINDOWS),
-		Hotkey(WKC_DELETE | WKC_CTRL, "delete_all_messages", GHK_DELETE_ALL_MESSAGES),
-		Hotkey('R' | WKC_CTRL, "refresh_screen", GHK_REFRESH_SCREEN),
+	static inline HotkeyList hotkeys{"global",
+		{
+			Hotkey({'Q' | WKC_CTRL, 'Q' | WKC_META}, "quit", GHK_QUIT),
+			Hotkey({'W' | WKC_CTRL, 'W' | WKC_META}, "abandon", GHK_ABANDON),
+			Hotkey(WKC_BACKQUOTE, "console", GHK_CONSOLE),
+			Hotkey('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
+			Hotkey('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
+			Hotkey('O' | WKC_CTRL, "widget_outlines", GHK_WIDGET_OUTLINES),
+			Hotkey('C', "center", GHK_CENTER),
+			Hotkey('Z', "center_zoom", GHK_CENTER_ZOOM),
+			Hotkey(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
+			Hotkey(WKC_DELETE, "delete_windows", GHK_DELETE_WINDOWS),
+			Hotkey(WKC_DELETE | WKC_SHIFT, "delete_all_windows", GHK_DELETE_NONVITAL_WINDOWS),
+			Hotkey(WKC_DELETE | WKC_CTRL, "delete_all_messages", GHK_DELETE_ALL_MESSAGES),
+			Hotkey('R' | WKC_CTRL, "refresh_screen", GHK_REFRESH_SCREEN),
 #if defined(_DEBUG)
-		Hotkey('0' | WKC_ALT, "crash_game", GHK_CRASH),
-		Hotkey('1' | WKC_ALT, "money", GHK_MONEY),
-		Hotkey('2' | WKC_ALT, "update_coordinates", GHK_UPDATE_COORDS),
+			Hotkey('0' | WKC_ALT, "crash_game", GHK_CRASH),
+			Hotkey('1' | WKC_ALT, "money", GHK_MONEY),
+			Hotkey('2' | WKC_ALT, "update_coordinates", GHK_UPDATE_COORDS),
 #endif
-		Hotkey('1' | WKC_CTRL, "transparency_signs", GHK_TOGGLE_TRANSPARENCY),
-		Hotkey('2' | WKC_CTRL, "transparency_trees", GHK_TOGGLE_TRANSPARENCY + 1),
-		Hotkey('3' | WKC_CTRL, "transparency_houses", GHK_TOGGLE_TRANSPARENCY + 2),
-		Hotkey('4' | WKC_CTRL, "transparency_industries", GHK_TOGGLE_TRANSPARENCY + 3),
-		Hotkey('5' | WKC_CTRL, "transparency_buildings", GHK_TOGGLE_TRANSPARENCY + 4),
-		Hotkey('6' | WKC_CTRL, "transparency_bridges", GHK_TOGGLE_TRANSPARENCY + 5),
-		Hotkey('7' | WKC_CTRL, "transparency_structures", GHK_TOGGLE_TRANSPARENCY + 6),
-		Hotkey('8' | WKC_CTRL, "transparency_catenary", GHK_TOGGLE_TRANSPARENCY + 7),
-		Hotkey('9' | WKC_CTRL, "transparency_loading", GHK_TOGGLE_TRANSPARENCY + 8),
-		Hotkey('1' | WKC_CTRL | WKC_SHIFT, "invisibility_signs", GHK_TOGGLE_INVISIBILITY),
-		Hotkey('2' | WKC_CTRL | WKC_SHIFT, "invisibility_trees", GHK_TOGGLE_INVISIBILITY + 1),
-		Hotkey('3' | WKC_CTRL | WKC_SHIFT, "invisibility_houses", GHK_TOGGLE_INVISIBILITY + 2),
-		Hotkey('4' | WKC_CTRL | WKC_SHIFT, "invisibility_industries", GHK_TOGGLE_INVISIBILITY + 3),
-		Hotkey('5' | WKC_CTRL | WKC_SHIFT, "invisibility_buildings", GHK_TOGGLE_INVISIBILITY + 4),
-		Hotkey('6' | WKC_CTRL | WKC_SHIFT, "invisibility_bridges", GHK_TOGGLE_INVISIBILITY + 5),
-		Hotkey('7' | WKC_CTRL | WKC_SHIFT, "invisibility_structures", GHK_TOGGLE_INVISIBILITY + 6),
-		Hotkey('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
-		Hotkey('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
-		Hotkey('X', "toggle_transparency", GHK_TRANSPARANCY),
-		Hotkey({WKC_RETURN, 'T'}, "chat", GHK_CHAT),
-		Hotkey({WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T'}, "chat_all", GHK_CHAT_ALL),
-		Hotkey({WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T'}, "chat_company", GHK_CHAT_COMPANY),
-		Hotkey({WKC_CTRL | WKC_SHIFT | WKC_RETURN, WKC_CTRL | WKC_SHIFT | 'T'}, "chat_server", GHK_CHAT_SERVER),
-		Hotkey(WKC_SPACE, "close_news", GHK_CLOSE_NEWS),
-		Hotkey(WKC_SPACE, "close_error", GHK_CLOSE_ERROR),
-	}};
+			Hotkey('1' | WKC_CTRL, "transparency_signs", GHK_TOGGLE_TRANSPARENCY),
+			Hotkey('2' | WKC_CTRL, "transparency_trees", GHK_TOGGLE_TRANSPARENCY + 1),
+			Hotkey('3' | WKC_CTRL, "transparency_houses", GHK_TOGGLE_TRANSPARENCY + 2),
+			Hotkey('4' | WKC_CTRL, "transparency_industries", GHK_TOGGLE_TRANSPARENCY + 3),
+			Hotkey('5' | WKC_CTRL, "transparency_buildings", GHK_TOGGLE_TRANSPARENCY + 4),
+			Hotkey('6' | WKC_CTRL, "transparency_bridges", GHK_TOGGLE_TRANSPARENCY + 5),
+			Hotkey('7' | WKC_CTRL, "transparency_structures", GHK_TOGGLE_TRANSPARENCY + 6),
+			Hotkey('8' | WKC_CTRL, "transparency_catenary", GHK_TOGGLE_TRANSPARENCY + 7),
+			Hotkey('9' | WKC_CTRL, "transparency_loading", GHK_TOGGLE_TRANSPARENCY + 8),
+			Hotkey('1' | WKC_CTRL | WKC_SHIFT, "invisibility_signs", GHK_TOGGLE_INVISIBILITY),
+			Hotkey('2' | WKC_CTRL | WKC_SHIFT, "invisibility_trees", GHK_TOGGLE_INVISIBILITY + 1),
+			Hotkey('3' | WKC_CTRL | WKC_SHIFT, "invisibility_houses", GHK_TOGGLE_INVISIBILITY + 2),
+			Hotkey('4' | WKC_CTRL | WKC_SHIFT, "invisibility_industries", GHK_TOGGLE_INVISIBILITY + 3),
+			Hotkey('5' | WKC_CTRL | WKC_SHIFT, "invisibility_buildings", GHK_TOGGLE_INVISIBILITY + 4),
+			Hotkey('6' | WKC_CTRL | WKC_SHIFT, "invisibility_bridges", GHK_TOGGLE_INVISIBILITY + 5),
+			Hotkey('7' | WKC_CTRL | WKC_SHIFT, "invisibility_structures", GHK_TOGGLE_INVISIBILITY + 6),
+			Hotkey('8' | WKC_CTRL | WKC_SHIFT, "invisibility_catenary", GHK_TOGGLE_INVISIBILITY + 7),
+			Hotkey('X' | WKC_CTRL, "transparency_toolbar", GHK_TRANSPARENCY_TOOLBAR),
+			Hotkey('X', "toggle_transparency", GHK_TRANSPARANCY),
+			Hotkey({WKC_RETURN, 'T'}, "chat", GHK_CHAT),
+			Hotkey({WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T'}, "chat_all", GHK_CHAT_ALL),
+			Hotkey({WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T'}, "chat_company", GHK_CHAT_COMPANY),
+			Hotkey({WKC_CTRL | WKC_SHIFT | WKC_RETURN, WKC_CTRL | WKC_SHIFT | 'T'}, "chat_server", GHK_CHAT_SERVER),
+			Hotkey(WKC_SPACE, "close_news", GHK_CLOSE_NEWS),
+			Hotkey(WKC_SPACE, "close_error", GHK_CLOSE_ERROR),
+		}};
 };
 
-static WindowDesc _main_window_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_MAIN_WINDOW, WC_NONE,
-	WindowDefaultFlag::NoClose,
-	_nested_main_window_widgets,
-	&MainWindow::hotkeys
-);
+static WindowDesc _main_window_desc(WDP_MANUAL, nullptr, 0, 0, WC_MAIN_WINDOW, WC_NONE, WindowDefaultFlag::NoClose, _nested_main_window_widgets, &MainWindow::hotkeys);
 
 /**
  * Does the given keycode match one of the keycodes bound to 'quit game'?
@@ -541,7 +542,6 @@ bool IsQuitKey(uint16_t keycode)
 	int num = MainWindow::hotkeys.CheckMatch(keycode);
 	return num == GHK_QUIT;
 }
-
 
 void ShowSelectGameWindow();
 
@@ -562,7 +562,8 @@ void SetupColoursAndInitialWindow()
 
 	/* XXX: these are not done */
 	switch (_game_mode) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case GM_MENU:
 			ShowSelectGameWindow();
 			break;
@@ -593,7 +594,7 @@ void ShowVitalWindows()
  */
 void GameSizeChanged()
 {
-	_cur_resolution.width  = _screen.width;
+	_cur_resolution.width = _screen.width;
 	_cur_resolution.height = _screen.height;
 	ScreenSizeChanged();
 	RelocateAllWindows(_screen.width, _screen.height);

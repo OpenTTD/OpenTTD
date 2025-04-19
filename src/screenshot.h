@@ -14,13 +14,13 @@ std::string_view GetCurrentScreenshotExtension();
 
 /** Type of requested screenshot */
 enum ScreenshotType : uint8_t {
-	SC_VIEWPORT,    ///< Screenshot of viewport.
-	SC_CRASHLOG,    ///< Raw screenshot from blitter buffer.
-	SC_ZOOMEDIN,    ///< Fully zoomed in screenshot of the visible area.
+	SC_VIEWPORT, ///< Screenshot of viewport.
+	SC_CRASHLOG, ///< Raw screenshot from blitter buffer.
+	SC_ZOOMEDIN, ///< Fully zoomed in screenshot of the visible area.
 	SC_DEFAULTZOOM, ///< Zoomed to default zoom level screenshot of the visible area.
-	SC_WORLD,       ///< World screenshot.
-	SC_HEIGHTMAP,   ///< Heightmap of the world.
-	SC_MINIMAP,     ///< Minimap screenshot.
+	SC_WORLD, ///< World screenshot.
+	SC_HEIGHTMAP, ///< Heightmap of the world.
+	SC_MINIMAP, ///< Minimap screenshot.
 };
 
 bool MakeHeightmapScreenshot(const char *filename);

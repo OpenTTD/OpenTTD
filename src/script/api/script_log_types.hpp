@@ -18,10 +18,10 @@ namespace ScriptLogTypes {
 	 */
 	enum ScriptLogType {
 		LOG_SQ_ERROR = 0, ///< Squirrel printed an error.
-		LOG_ERROR = 1,    ///< User printed an error.
-		LOG_SQ_INFO = 2,  ///< Squirrel printed some info.
-		LOG_WARNING = 3,  ///< User printed some warning.
-		LOG_INFO = 4,     ///< User printed some info.
+		LOG_ERROR = 1, ///< User printed an error.
+		LOG_SQ_INFO = 2, ///< Squirrel printed some info.
+		LOG_WARNING = 3, ///< User printed some warning.
+		LOG_INFO = 4, ///< User printed some info.
 	};
 
 	/**

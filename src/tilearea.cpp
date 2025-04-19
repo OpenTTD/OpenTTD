@@ -32,8 +32,8 @@ OrthogonalTileArea::OrthogonalTileArea(TileIndex start, TileIndex end)
 	if (sy > ey) std::swap(sy, ey);
 
 	this->tile = TileXY(sx, sy);
-	this->w    = ex - sx + 1;
-	this->h    = ey - sy + 1;
+	this->w = ex - sx + 1;
+	this->h = ey - sy + 1;
 }
 
 /**
@@ -63,8 +63,8 @@ void OrthogonalTileArea::Add(TileIndex to_add)
 	ey = std::max(ay, ey);
 
 	this->tile = TileXY(sx, sy);
-	this->w    = ex - sx + 1;
-	this->h    = ey - sy + 1;
+	this->w = ex - sx + 1;
+	this->h = ey - sy + 1;
 }
 
 /**
@@ -78,22 +78,17 @@ bool OrthogonalTileArea::Intersects(const OrthogonalTileArea &ta) const
 
 	assert(ta.w != 0 && ta.h != 0 && this->w != 0 && this->h != 0);
 
-	uint left1   = TileX(this->tile);
-	uint top1    = TileY(this->tile);
-	uint right1  = left1 + this->w - 1;
-	uint bottom1 = top1  + this->h - 1;
+	uint left1 = TileX(this->tile);
+	uint top1 = TileY(this->tile);
+	uint right1 = left1 + this->w - 1;
+	uint bottom1 = top1 + this->h - 1;
 
-	uint left2   = TileX(ta.tile);
-	uint top2    = TileY(ta.tile);
-	uint right2  = left2 + ta.w - 1;
-	uint bottom2 = top2  + ta.h - 1;
+	uint left2 = TileX(ta.tile);
+	uint top2 = TileY(ta.tile);
+	uint right2 = left2 + ta.w - 1;
+	uint bottom2 = top2 + ta.h - 1;
 
-	return !(
-			left2   > right1  ||
-			right2  < left1   ||
-			top2    > bottom1 ||
-			bottom2 < top1
-		);
+	return !(left2 > right1 || right2 < left1 || top2 > bottom1 || bottom2 < top1);
 }
 
 /**
@@ -107,8 +102,8 @@ bool OrthogonalTileArea::Contains(TileIndex tile) const
 
 	assert(this->w != 0 && this->h != 0);
 
-	uint left   = TileX(this->tile);
-	uint top    = TileY(this->tile);
+	uint left = TileX(this->tile);
+	uint top = TileY(this->tile);
 	uint tile_x = TileX(tile);
 	uint tile_y = TileY(tile);
 
@@ -131,8 +126,8 @@ OrthogonalTileArea &OrthogonalTileArea::Expand(int rad)
 	int ey = std::min<int>(y + this->h + rad, Map::SizeY());
 
 	this->tile = TileXY(sx, sy);
-	this->w    = ex - sx;
-	this->h    = ey - sy;
+	this->w = ex - sx;
+	this->h = ey - sy;
 	return *this;
 }
 
@@ -299,10 +294,7 @@ TileIterator &DiagonalTileIterator::operator++()
 /**
  * See SpiralTileSequence constructor for description.
  */
-SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) :
-	max_radius(diameter / 2),
-	cur_radius(0),
-	dir(DIAGDIR_BEGIN)
+SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) : max_radius(diameter / 2), cur_radius(0), dir(DIAGDIR_BEGIN)
 {
 	assert(diameter > 0);
 
@@ -329,13 +321,9 @@ SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) :
  * See SpiralTileSequence constructor for description.
  */
 SpiralTileIterator::SpiralTileIterator(TileIndex start_north, uint radius, uint w, uint h) :
-	max_radius(radius),
-	extent{w, h, w, h},
-	cur_radius(0),
-	dir(DIAGDIR_BEGIN),
+	max_radius(radius), extent{w, h, w, h}, cur_radius(0), dir(DIAGDIR_BEGIN),
 	/* first tile is the west corner */
-	x(TileX(start_north) + w + 1),
-	y(TileY(start_north))
+	x(TileX(start_north) + w + 1), y(TileY(start_north))
 {
 	assert(max_radius > 0);
 	this->InitPosition();

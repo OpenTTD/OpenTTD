@@ -12,24 +12,24 @@
 
 /** Widgets of the #SaveLoadWindow class. */
 enum SaveLoadWidgets : WidgetID {
-	WID_SL_CAPTION,                 ///< Caption of the window.
-	WID_SL_SORT_BYNAME,             ///< Sort by name button.
-	WID_SL_SORT_BYDATE,             ///< Sort by date button.
-	WID_SL_FILTER,                  ///< Filter list of files
-	WID_SL_BACKGROUND,              ///< Background of window.
-	WID_SL_FILE_BACKGROUND,         ///< Background of file selection.
-	WID_SL_HOME_BUTTON,             ///< Home button.
+	WID_SL_CAPTION, ///< Caption of the window.
+	WID_SL_SORT_BYNAME, ///< Sort by name button.
+	WID_SL_SORT_BYDATE, ///< Sort by date button.
+	WID_SL_FILTER, ///< Filter list of files
+	WID_SL_BACKGROUND, ///< Background of window.
+	WID_SL_FILE_BACKGROUND, ///< Background of file selection.
+	WID_SL_HOME_BUTTON, ///< Home button.
 	WID_SL_DRIVES_DIRECTORIES_LIST, ///< Drives list.
-	WID_SL_SCROLLBAR,               ///< Scrollbar of the file list.
-	WID_SL_CONTENT_DOWNLOAD,        ///< Content download button, only available for play scenario/heightmap.
-	WID_SL_SAVE_OSK_TITLE,          ///< Title textbox, only available for save operations.
-	WID_SL_DELETE_SELECTION,        ///< Delete button, only available for save operations.
-	WID_SL_SAVE_GAME,               ///< Save button, only available for save operations.
-	WID_SL_CONTENT_DOWNLOAD_SEL,    ///< Selection 'stack' to 'hide' the content download.
-	WID_SL_DETAILS,                 ///< Panel with game details.
-	WID_SL_NEWGRF_INFO,             ///< Button to open NewGgrf configuration.
-	WID_SL_LOAD_BUTTON,             ///< Button to load game/scenario.
-	WID_SL_MISSING_NEWGRFS,         ///< Button to find missing NewGRFs online.
+	WID_SL_SCROLLBAR, ///< Scrollbar of the file list.
+	WID_SL_CONTENT_DOWNLOAD, ///< Content download button, only available for play scenario/heightmap.
+	WID_SL_SAVE_OSK_TITLE, ///< Title textbox, only available for save operations.
+	WID_SL_DELETE_SELECTION, ///< Delete button, only available for save operations.
+	WID_SL_SAVE_GAME, ///< Save button, only available for save operations.
+	WID_SL_CONTENT_DOWNLOAD_SEL, ///< Selection 'stack' to 'hide' the content download.
+	WID_SL_DETAILS, ///< Panel with game details.
+	WID_SL_NEWGRF_INFO, ///< Button to open NewGgrf configuration.
+	WID_SL_LOAD_BUTTON, ///< Button to load game/scenario.
+	WID_SL_MISSING_NEWGRFS, ///< Button to find missing NewGRFs online.
 };
 
 #endif /* WIDGETS_FIOS_WIDGET_H */

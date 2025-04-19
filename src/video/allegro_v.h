@@ -33,7 +33,10 @@ public:
 
 	std::vector<int> GetListOfMonitorRefreshRates() override;
 
-	std::string_view GetName() const override { return "allegro"; }
+	std::string_view GetName() const override
+	{
+		return "allegro";
+	}
 
 protected:
 	void InputLoop() override;
@@ -46,7 +49,11 @@ protected:
 class FVideoDriver_Allegro : public DriverFactoryBase {
 public:
 	FVideoDriver_Allegro() : DriverFactoryBase(Driver::DT_VIDEO, 4, "allegro", "Allegro Video Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Allegro>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<VideoDriver_Allegro>();
+	}
 };
 
 #endif /* VIDEO_ALLEGRO_H */

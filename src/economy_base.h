@@ -33,6 +33,7 @@ struct CargoPayment : CargoPaymentPool::PoolItem<&_cargo_payment_pool> {
 
 	/** Constructor for pool saveload */
 	CargoPayment() {}
+
 	CargoPayment(Vehicle *front);
 	~CargoPayment();
 

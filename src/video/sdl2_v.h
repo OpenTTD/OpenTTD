@@ -41,7 +41,10 @@ public:
 
 	std::vector<int> GetListOfMonitorRefreshRates() override;
 
-	std::string_view GetInfoString() const override { return this->driver_info; }
+	std::string_view GetInfoString() const override
+	{
+		return this->driver_info;
+	}
 
 protected:
 	struct SDL_Window *sdl_window = nullptr; ///< Main SDL window.
@@ -77,7 +80,10 @@ private:
 
 #ifdef __EMSCRIPTEN__
 	/* Convert a constant pointer back to a non-constant pointer to a member function. */
-	static void EmscriptenLoop(void *self) { ((VideoDriver_SDL_Base *)self)->LoopOnce(); }
+	static void EmscriptenLoop(void *self)
+	{
+		((VideoDriver_SDL_Base *)self)->LoopOnce();
+	}
 #endif
 
 	/**

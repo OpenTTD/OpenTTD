@@ -10,9 +10,9 @@
 #ifndef SCRIPT_SUBSIDY_HPP
 #define SCRIPT_SUBSIDY_HPP
 
+#include "../../subsidy_type.h"
 #include "script_company.hpp"
 #include "script_date.hpp"
-#include "../../subsidy_type.h"
 
 /**
  * Class that handles all subsidy related functions.
@@ -28,9 +28,9 @@ public:
 		/* Values are important, as they represent the internal state of the game.
 		 *  It is originally named SourceType. SourceType::Headquarters is intentionally
 		 *  left out, as it cannot be used for Subsidies. */
-		SPT_INDUSTRY =    0, ///< Subsidy participant is an industry
-		SPT_TOWN     =    1, ///< Subsidy participant is a town
-		SPT_INVALID  = 0xFF, ///< Invalid/unknown participant type
+		SPT_INDUSTRY = 0, ///< Subsidy participant is an industry
+		SPT_TOWN = 1, ///< Subsidy participant is a town
+		SPT_INVALID = 0xFF, ///< Invalid/unknown participant type
 	};
 
 	/**

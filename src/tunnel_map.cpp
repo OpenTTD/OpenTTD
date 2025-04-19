@@ -8,10 +8,10 @@
 /** @file tunnel_map.cpp Map accessors for tunnels. */
 
 #include "stdafx.h"
+
 #include "tunnelbridge_map.h"
 
 #include "safeguards.h"
-
 
 /**
  * Gets the other end of the tunnel. Where a vehicle would reappear when it
@@ -28,15 +28,10 @@ TileIndex GetOtherTunnelEnd(TileIndex tile)
 	dir = ReverseDiagDir(dir);
 	do {
 		tile += delta;
-	} while (
-		!IsTunnelTile(tile) ||
-		GetTunnelBridgeDirection(tile) != dir ||
-		GetTileZ(tile) != z
-	);
+	} while (!IsTunnelTile(tile) || GetTunnelBridgeDirection(tile) != dir || GetTileZ(tile) != z);
 
 	return tile;
 }
-
 
 /**
  * Is there a tunnel in the way in the given direction?
@@ -67,6 +62,5 @@ bool IsTunnelInWayDir(TileIndex tile, int z, DiagDirection dir)
  */
 bool IsTunnelInWay(TileIndex tile, int z)
 {
-	return IsTunnelInWayDir(tile, z, (TileX(tile) > (Map::MaxX() / 2)) ? DIAGDIR_NE : DIAGDIR_SW) ||
-			IsTunnelInWayDir(tile, z, (TileY(tile) > (Map::MaxY() / 2)) ? DIAGDIR_NW : DIAGDIR_SE);
+	return IsTunnelInWayDir(tile, z, (TileX(tile) > (Map::MaxX() / 2)) ? DIAGDIR_NE : DIAGDIR_SW) || IsTunnelInWayDir(tile, z, (TileY(tile) > (Map::MaxY() / 2)) ? DIAGDIR_NW : DIAGDIR_SE);
 }

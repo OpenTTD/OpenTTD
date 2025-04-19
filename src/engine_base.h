@@ -10,12 +10,12 @@
 #ifndef ENGINE_BASE_H
 #define ENGINE_BASE_H
 
-#include "engine_type.h"
-#include "vehicle_type.h"
 #include "core/enum_type.hpp"
 #include "core/pool_type.hpp"
+#include "engine_type.h"
 #include "newgrf_commons.h"
 #include "timer/timer_game_calendar.h"
+#include "vehicle_type.h"
 
 struct WagonOverride {
 	std::vector<EngineID> engines;
@@ -55,7 +55,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16_t duration_phase_3 = 0; ///< Third reliability phase in months, decaying to #reliability_final.
 	EngineFlags flags{}; ///< Flags of the engine. @see EngineFlags
 
-	CompanyID preview_company = CompanyID::Invalid();  ///< Company which is currently being offered a preview \c CompanyID::Invalid() means no company.
+	CompanyID preview_company = CompanyID::Invalid(); ///< Company which is currently being offered a preview \c CompanyID::Invalid() means no company.
 	uint8_t preview_wait = 0; ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	uint8_t original_image_index = 0; ///< Original vehicle image index, thus the image index of the overridden vehicle
 	VehicleType type = VEH_INVALID; ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
@@ -85,6 +85,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	std::vector<BadgeID> badges{};
 
 	Engine() {}
+
 	Engine(VehicleType type, uint16_t local_id);
 	bool IsEnabled() const;
 
@@ -180,7 +181,10 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	struct EngineTypeFilter {
 		VehicleType vt;
 
-		bool operator() (size_t index) { return Engine::Get(index)->type == this->vt; }
+		bool operator()(size_t index)
+		{
+			return Engine::Get(index)->type == this->vt;
+		}
 	};
 
 	/**
@@ -191,7 +195,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 */
 	static Pool::IterateWrapperFiltered<Engine, EngineTypeFilter> IterateType(VehicleType vt, size_t from = 0)
 	{
-		return Pool::IterateWrapperFiltered<Engine, EngineTypeFilter>(from, EngineTypeFilter{ vt });
+		return Pool::IterateWrapperFiltered<Engine, EngineTypeFilter>(from, EngineTypeFilter{vt});
 	}
 };
 
@@ -202,18 +206,30 @@ struct EngineIDMapping {
 	uint8_t substitute_id = 0; ///< The (original) entity ID to use if this GRF is not available (currently not used)
 	EngineID engine{};
 
-	static inline uint64_t Key(uint32_t grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
+	static inline uint64_t Key(uint32_t grfid, uint16_t internal_id)
+	{
+		return static_cast<uint64_t>(grfid) << 32 | internal_id;
+	}
 
-	inline uint64_t Key() const { return Key(this->grfid, this->internal_id); }
+	inline uint64_t Key() const
+	{
+		return Key(this->grfid, this->internal_id);
+	}
 
 	EngineIDMapping() {}
-	EngineIDMapping(uint32_t grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine)
-		: grfid(grfid), internal_id(internal_id), type(type), substitute_id(substitute_id), engine(engine) {}
+
+	EngineIDMapping(uint32_t grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine) :
+		grfid(grfid), internal_id(internal_id), type(type), substitute_id(substitute_id), engine(engine)
+	{
+	}
 };
 
 /** Projection to get a unique key of an EngineIDMapping, used for sorting in EngineOverrideManager. */
 struct EngineIDMappingKeyProjection {
-	inline uint64_t operator()(const EngineIDMapping &eid) const { return eid.Key(); }
+	inline uint64_t operator()(const EngineIDMapping &eid) const
+	{
+		return eid.Key();
+	}
 };
 
 /**

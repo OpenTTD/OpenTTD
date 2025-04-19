@@ -10,78 +10,79 @@
  */
 
 #include "stdafx.h"
+
 #include "settings_table.h"
+
+#include "network/core/config.h"
+#include "company_func.h"
 #include "currency.h"
-#include "screenshot.h"
+#include "genworld.h"
+#include "linkgraph/linkgraphschedule.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "network/core/config.h"
-#include "pathfinder/pathfinder_type.h"
-#include "pathfinder/aystar.h"
-#include "linkgraph/linkgraphschedule.h"
-#include "genworld.h"
-#include "train.h"
 #include "news_func.h"
-#include "window_func.h"
-#include "company_func.h"
+#include "pathfinder/aystar.h"
+#include "pathfinder/pathfinder_type.h"
+#include "screenshot.h"
 #include "timer/timer_game_calendar.h"
+#include "train.h"
+#include "window_func.h"
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
-#define HAS_TRUETYPE_FONT
-#include "fontcache.h"
+#	define HAS_TRUETYPE_FONT
+#	include "fontcache.h"
 #endif
-#include "textbuf_gui.h"
-#include "rail_gui.h"
-#include "elrail_func.h"
-#include "error.h"
-#include "town.h"
-#include "video/video_driver.hpp"
-#include "sound/sound_driver.hpp"
-#include "music/music_driver.hpp"
-#include "blitter/factory.hpp"
+#include "ai/ai.hpp"
+#include "ai/ai_config.hpp"
 #include "base_media_base.h"
 #include "base_media_music.h"
 #include "base_media_sounds.h"
-#include "ai/ai_config.hpp"
-#include "ai/ai.hpp"
+#include "blitter/factory.hpp"
+#include "elrail_func.h"
+#include "error.h"
 #include "game/game_config.hpp"
-#include "ship.h"
-#include "smallmap_gui.h"
+#include "music/music_driver.hpp"
+#include "rail_gui.h"
 #include "roadveh.h"
 #include "roadveh_cmd.h"
+#include "ship.h"
+#include "smallmap_gui.h"
+#include "sound/sound_driver.hpp"
+#include "station_base.h"
+#include "station_func.h"
+#include "textbuf_gui.h"
+#include "town.h"
 #include "vehicle_func.h"
+#include "video/video_driver.hpp"
 #include "viewport_func.h"
 #include "void_map.h"
-#include "station_func.h"
-#include "station_base.h"
 
-#include "table/strings.h"
 #include "table/settings.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
-SettingTable _company_settings{ _company_settings_table };
-SettingTable _currency_settings{ _currency_settings_table };
-SettingTable _difficulty_settings{ _difficulty_settings_table };
-SettingTable _multimedia_settings{ _multimedia_settings_table };
-SettingTable _economy_settings{ _economy_settings_table };
-SettingTable _game_settings{ _game_settings_table };
-SettingTable _gui_settings{ _gui_settings_table };
-SettingTable _linkgraph_settings{ _linkgraph_settings_table };
-SettingTable _locale_settings{ _locale_settings_table };
-SettingTable _misc_settings{ _misc_settings_table };
-SettingTable _network_private_settings{ _network_private_settings_table };
-SettingTable _network_secrets_settings{ _network_secrets_settings_table };
-SettingTable _network_settings{ _network_settings_table };
-SettingTable _news_display_settings{ _news_display_settings_table };
-SettingTable _old_gameopt_settings{ _old_gameopt_settings_table };
-SettingTable _pathfinding_settings{ _pathfinding_settings_table };
-SettingTable _script_settings{ _script_settings_table };
-SettingTable _window_settings{ _window_settings_table };
-SettingTable _world_settings{ _world_settings_table };
+SettingTable _company_settings{_company_settings_table};
+SettingTable _currency_settings{_currency_settings_table};
+SettingTable _difficulty_settings{_difficulty_settings_table};
+SettingTable _multimedia_settings{_multimedia_settings_table};
+SettingTable _economy_settings{_economy_settings_table};
+SettingTable _game_settings{_game_settings_table};
+SettingTable _gui_settings{_gui_settings_table};
+SettingTable _linkgraph_settings{_linkgraph_settings_table};
+SettingTable _locale_settings{_locale_settings_table};
+SettingTable _misc_settings{_misc_settings_table};
+SettingTable _network_private_settings{_network_private_settings_table};
+SettingTable _network_secrets_settings{_network_secrets_settings_table};
+SettingTable _network_settings{_network_settings_table};
+SettingTable _news_display_settings{_news_display_settings_table};
+SettingTable _old_gameopt_settings{_old_gameopt_settings_table};
+SettingTable _pathfinding_settings{_pathfinding_settings_table};
+SettingTable _script_settings{_script_settings_table};
+SettingTable _window_settings{_window_settings_table};
+SettingTable _world_settings{_world_settings_table};
 #if defined(_WIN32) && !defined(DEDICATED)
-SettingTable _win32_settings{ _win32_settings_table };
+SettingTable _win32_settings{_win32_settings_table};
 #endif /* _WIN32 */
-
 
 /* Begin - Callback Functions for the various settings. */
 
@@ -102,12 +103,24 @@ static std::pair<StringParameter, StringParameter> SettingsValueVelocityUnit(con
 {
 	StringID val;
 	switch (value) {
-		case 0: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL; break;
-		case 1: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC; break;
-		case 2: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI; break;
-		case 3: val = TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS : STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS; break;
-		case 4: val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS; break;
-		default: NOT_REACHED();
+		case 0:
+			val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL;
+			break;
+		case 1:
+			val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC;
+			break;
+		case 2:
+			val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI;
+			break;
+		case 3:
+			val = TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU) ? STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS :
+																				 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS;
+			break;
+		case 4:
+			val = STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS;
+			break;
+		default:
+			NOT_REACHED();
 	}
 	return {val, {}};
 }
@@ -119,7 +132,7 @@ static std::pair<StringParameter, StringParameter> SettingsValueAbsolute(const I
 }
 
 /** Service Interval Settings Default Value displays the correct units or as a percentage */
-static std::pair<StringParameter, StringParameter>  ServiceIntervalSettingsValueText(const IntSettingDesc &sd, int32_t value)
+static std::pair<StringParameter, StringParameter> ServiceIntervalSettingsValueText(const IntSettingDesc &sd, int32_t value)
 {
 	VehicleDefaultSettings *vds;
 	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
@@ -207,22 +220,22 @@ static void UpdateAllServiceInterval(int32_t new_value)
 
 	if (new_value != 0) {
 		/* Service intervals are in percents. */
-		vds->servint_trains   = DEF_SERVINT_PERCENT;
-		vds->servint_roadveh  = DEF_SERVINT_PERCENT;
+		vds->servint_trains = DEF_SERVINT_PERCENT;
+		vds->servint_roadveh = DEF_SERVINT_PERCENT;
 		vds->servint_aircraft = DEF_SERVINT_PERCENT;
-		vds->servint_ships    = DEF_SERVINT_PERCENT;
+		vds->servint_ships = DEF_SERVINT_PERCENT;
 	} else if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
 		/* Service intervals are in minutes. */
-		vds->servint_trains   = DEF_SERVINT_MINUTES_TRAINS;
-		vds->servint_roadveh  = DEF_SERVINT_MINUTES_ROADVEH;
+		vds->servint_trains = DEF_SERVINT_MINUTES_TRAINS;
+		vds->servint_roadveh = DEF_SERVINT_MINUTES_ROADVEH;
 		vds->servint_aircraft = DEF_SERVINT_MINUTES_AIRCRAFT;
-		vds->servint_ships    = DEF_SERVINT_MINUTES_SHIPS;
+		vds->servint_ships = DEF_SERVINT_MINUTES_SHIPS;
 	} else {
 		/* Service intervals are in days. */
-		vds->servint_trains   = DEF_SERVINT_DAYS_TRAINS;
-		vds->servint_roadveh  = DEF_SERVINT_DAYS_ROADVEH;
+		vds->servint_trains = DEF_SERVINT_DAYS_TRAINS;
+		vds->servint_roadveh = DEF_SERVINT_DAYS_ROADVEH;
 		vds->servint_aircraft = DEF_SERVINT_DAYS_AIRCRAFT;
-		vds->servint_ships    = DEF_SERVINT_DAYS_SHIPS;
+		vds->servint_ships = DEF_SERVINT_DAYS_SHIPS;
 	}
 
 	if (update_vehicles) {
@@ -281,11 +294,16 @@ static int32_t GetDefaultServiceInterval(const IntSettingDesc &sd, VehicleType t
 
 	if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
 		switch (type) {
-			case VEH_TRAIN:    return DEF_SERVINT_MINUTES_TRAINS;
-			case VEH_ROAD:     return DEF_SERVINT_MINUTES_ROADVEH;
-			case VEH_AIRCRAFT: return DEF_SERVINT_MINUTES_AIRCRAFT;
-			case VEH_SHIP:     return DEF_SERVINT_MINUTES_SHIPS;
-			default: NOT_REACHED();
+			case VEH_TRAIN:
+				return DEF_SERVINT_MINUTES_TRAINS;
+			case VEH_ROAD:
+				return DEF_SERVINT_MINUTES_ROADVEH;
+			case VEH_AIRCRAFT:
+				return DEF_SERVINT_MINUTES_AIRCRAFT;
+			case VEH_SHIP:
+				return DEF_SERVINT_MINUTES_SHIPS;
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -301,13 +319,13 @@ static std::tuple<int32_t, uint32_t> GetServiceIntervalRange(const IntSettingDes
 		vds = &Company::Get(_current_company)->settings.vehicle;
 	}
 
-	if (vds->servint_ispercent) return { MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT };
+	if (vds->servint_ispercent) return {MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT};
 
 	if (TimerGameEconomy::UsingWallclockUnits(_game_mode == GM_MENU)) {
-		return { MIN_SERVINT_MINUTES, MAX_SERVINT_MINUTES };
+		return {MIN_SERVINT_MINUTES, MAX_SERVINT_MINUTES};
 	}
 
-	return { MIN_SERVINT_DAYS, MAX_SERVINT_DAYS };
+	return {MIN_SERVINT_DAYS, MAX_SERVINT_DAYS};
 }
 
 static void TrainAccelerationModelChanged(int32_t)
@@ -420,9 +438,7 @@ static void DifficultyNoiseChange(int32_t)
 
 static void MaxNoAIsChange(int32_t)
 {
-	if (GetGameSettings().difficulty.max_no_competitors != 0 &&
-			AI::GetInfoList()->empty() &&
-			(!_networking || _network_server)) {
+	if (GetGameSettings().difficulty.max_no_competitors != 0 && AI::GetInfoList()->empty() && (!_networking || _network_server)) {
 		ShowErrorMessage(GetEncodedString(STR_WARNING_NO_SUITABLE_AI), {}, WL_CRITICAL);
 	}
 

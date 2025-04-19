@@ -10,8 +10,8 @@
 #ifndef SCRIPT_GROUP_HPP
 #define SCRIPT_GROUP_HPP
 
-#include "script_vehicle.hpp"
 #include "../../group_type.h"
+#include "script_vehicle.hpp"
 
 /**
  * Class that handles all group related functions.

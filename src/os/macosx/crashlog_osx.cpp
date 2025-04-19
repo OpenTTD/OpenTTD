@@ -8,20 +8,21 @@
 /** @file crashlog_osx.cpp OS X crash log handler */
 
 #include "../../stdafx.h"
-#include "../../crashlog.h"
-#include "../../fileio_func.h"
-#include "../../string_func.h"
-#include "../../gamelog.h"
-#include "../../saveload/saveload.h"
-#include "../../video/video_driver.hpp"
-#include "macos.h"
 
+#include <cxxabi.h>
+#include <dlfcn.h>
+#include <execinfo.h>
+#include <mach-o/arch.h>
 #include <setjmp.h>
 #include <signal.h>
-#include <mach-o/arch.h>
-#include <dlfcn.h>
-#include <cxxabi.h>
-#include <execinfo.h>
+
+#include "../../crashlog.h"
+#include "../../fileio_func.h"
+#include "../../gamelog.h"
+#include "../../saveload/saveload.h"
+#include "../../string_func.h"
+#include "../../video/video_driver.hpp"
+#include "macos.h"
 
 #ifdef WITH_UNOFFICIAL_BREAKPAD
 #	include <client/mac/handler/exception_handler.h>
@@ -29,18 +30,17 @@
 
 #include "../../safeguards.h"
 
-
 /* Macro testing a stack address for valid alignment. */
 #if defined(__i386__)
-#define IS_ALIGNED(addr) (((uintptr_t)(addr) & 0xf) == 8)
+#	define IS_ALIGNED(addr) (((uintptr_t)(addr) & 0xf) == 8)
 #else
-#define IS_ALIGNED(addr) (((uintptr_t)(addr) & 0xf) == 0)
+#	define IS_ALIGNED(addr) (((uintptr_t)(addr) & 0xf) == 0)
 #endif
 
 #define MAX_STACK_FRAMES 64
 
 /** The signals we want our crash handler to handle. */
-static constexpr int _signals_to_handle[] = { SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL, SIGSYS, SIGQUIT };
+static constexpr int _signals_to_handle[] = {SIGSEGV, SIGABRT, SIGFPE, SIGBUS, SIGILL, SIGSYS, SIGQUIT};
 
 /**
  * OSX implementation for the crash logger.
@@ -120,8 +120,7 @@ public:
 	/** Show a dialog with the crash information. */
 	void DisplayCrashDialog() const
 	{
-		static const char crash_title[] =
-			"A serious fault condition occurred in the game. The game will shut down.";
+		static const char crash_title[] = "A serious fault condition occurred in the game. The game will shut down.";
 
 		std::string message = fmt::format(
 				 "Please send crash.json.log, crash.dmp, and crash.sav to the developers. "
@@ -151,7 +150,7 @@ public:
  * @param handler The handler to use.
  * @return sigset_t A sigset_t containing all signals we want to capture.
  */
-static sigset_t SetSignals(void(*handler)(int))
+static sigset_t SetSignals(void (*handler)(int))
 {
 	sigset_t sigs;
 	sigemptyset(&sigs);
@@ -206,16 +205,13 @@ static void CDECL HandleCrash(int signum)
 	sigprocmask(SIG_UNBLOCK, &sigs, &old_sigset);
 
 	if (_gamelog.TestEmergency()) {
-		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
-				"As you loaded an emergency savegame no crash information will be generated.\n",
-				"Quit");
+		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.", "As you loaded an emergency savegame no crash information will be generated.\n", "Quit");
 		_exit(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
 		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
-				"As you loaded an savegame for which you do not have the required NewGRFs no crash information will be generated.\n",
-				"Quit");
+			"As you loaded an savegame for which you do not have the required NewGRFs no crash information will be generated.\n", "Quit");
 		_exit(3);
 	}
 
@@ -235,6 +231,4 @@ static void CDECL HandleCrash(int signum)
 	SetSignals(HandleCrash);
 }
 
-/* static */ void CrashLog::InitThread()
-{
-}
+/* static */ void CrashLog::InitThread() {}

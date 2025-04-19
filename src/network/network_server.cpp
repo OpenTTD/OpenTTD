@@ -8,39 +8,40 @@
 /** @file network_server.cpp Server part of the network protocol. */
 
 #include "../stdafx.h"
-#include "../strings_func.h"
-#include "core/network_game_info.h"
-#include "network_admin.h"
+
 #include "network_server.h"
-#include "network_udp.h"
-#include "network_base.h"
-#include "../console_func.h"
-#include "../company_base.h"
+
+#include <condition_variable>
+#include <mutex>
+
+#include "../core/pool_func.hpp"
+#include "../core/random_func.hpp"
+#include "core/network_game_info.h"
 #include "../command_func.h"
+#include "../company_base.h"
+#include "../company_cmd.h"
+#include "../company_func.h"
+#include "../company_gui.h"
+#include "../console_func.h"
+#include "../genworld.h"
+#include "../order_backup.h"
+#include "../rev.h"
+#include "../roadveh.h"
 #include "../saveload/saveload.h"
 #include "../saveload/saveload_filter.h"
 #include "../station_base.h"
-#include "../genworld.h"
-#include "../company_func.h"
-#include "../company_gui.h"
-#include "../company_cmd.h"
-#include "../roadveh.h"
-#include "../order_backup.h"
-#include "../core/pool_func.hpp"
-#include "../core/random_func.hpp"
-#include "../company_cmd.h"
-#include "../rev.h"
+#include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_economy.h"
 #include "../timer/timer_game_realtime.h"
-#include <mutex>
-#include <condition_variable>
+#include "network_admin.h"
+#include "network_base.h"
+#include "network_udp.h"
 
 #include "table/strings.h"
 
 #include "../safeguards.h"
-
 
 /* This file handles all the server-commands */
 
@@ -62,23 +63,21 @@ static NetworkAuthenticationDefaultPasswordProvider _password_provider(_settings
 static NetworkAuthenticationDefaultAuthorizedKeyHandler _authorized_key_handler(_settings_client.network.server_authorized_keys); ///< Provides the authorized key handling for the game authentication.
 static NetworkAuthenticationDefaultAuthorizedKeyHandler _rcon_authorized_key_handler(_settings_client.network.rcon_authorized_keys); ///< Provides the authorized key validation for rcon.
 
-
 /** Writing a savegame directly to a number of packets. */
 struct PacketWriter : SaveFilter {
 	ServerNetworkGameSocketHandler *cs; ///< Socket we are associated with.
 	std::unique_ptr<Packet> current; ///< The packet we're currently writing to.
-	size_t total_size;                  ///< Total size of the compressed savegame.
-	std::deque<std::unique_ptr<Packet>> packets; ///< Packet queue of the savegame; send these "slowly" to the client. Cannot be a std::queue as we want to push the map size packet in front of the data packets.
-	std::mutex mutex;                   ///< Mutex for making threaded saving safe.
-	std::condition_variable exit_sig;   ///< Signal for threaded destruction of this packet writer.
+	size_t total_size; ///< Total size of the compressed savegame.
+	std::deque<std::unique_ptr<Packet>>
+		packets; ///< Packet queue of the savegame; send these "slowly" to the client. Cannot be a std::queue as we want to push the map size packet in front of the data packets.
+	std::mutex mutex; ///< Mutex for making threaded saving safe.
+	std::condition_variable exit_sig; ///< Signal for threaded destruction of this packet writer.
 
 	/**
 	 * Create the packet writer.
 	 * @param cs The socket handler we're making the packets for.
 	 */
-	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(nullptr), cs(cs), total_size(0)
-	{
-	}
+	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(nullptr), cs(cs), total_size(0) {}
 
 	/** Make sure everything is cleaned up. */
 	~PacketWriter()
@@ -182,7 +181,6 @@ struct PacketWriter : SaveFilter {
 		this->packets.push_front(std::move(p));
 	}
 };
-
 
 /**
  * Create a new socket for the server side of the game connection.
@@ -329,7 +327,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientIn
 	if (ci->client_id != INVALID_CLIENT_ID) {
 		auto p = std::make_unique<Packet>(this, PACKET_SERVER_CLIENT_INFO);
 		p->Send_uint32(ci->client_id);
-		p->Send_uint8 (ci->client_playas);
+		p->Send_uint8(ci->client_playas);
 		p->Send_string(ci->client_name);
 		p->Send_string(ci->public_key);
 
@@ -418,8 +416,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_CHECK_NEWGRFS, TCP_MTU);
 
-	uint grf_count = std::ranges::count_if(_grfconfig, [](const auto &c){ return !c->flags.Test(GRFConfigFlag::Static); });
-	p->Send_uint8 (grf_count);
+	uint grf_count = std::ranges::count_if(_grfconfig, [](const auto &c) {
+		return !c->flags.Test(GRFConfigFlag::Static);
+	});
+	p->Send_uint8(grf_count);
 
 	for (const auto &c : _grfconfig) {
 		if (!c->flags.Test(GRFConfigFlag::Static)) SerializeGRFIdentifier(*p, c->ident);
@@ -620,9 +620,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendFrame()
 	p->Send_uint32(_frame_counter_max);
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	p->Send_uint32(_sync_seed_1);
-#ifdef NETWORK_SEND_DOUBLE_SEED
+#	ifdef NETWORK_SEND_DOUBLE_SEED
 	p->Send_uint32(_sync_seed_2);
-#endif
+#	endif
 #endif
 
 	/* If token equals 0, we need to make a new token and send that. */
@@ -663,7 +663,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
 
 	this->NetworkGameSocketHandler::SendCommand(*p, cp);
 	p->Send_uint32(cp.frame);
-	p->Send_bool  (cp.my_cmd);
+	p->Send_bool(cp.my_cmd);
 
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
@@ -685,9 +685,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
 
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_CHAT);
 
-	p->Send_uint8 (action);
+	p->Send_uint8(action);
 	p->Send_uint32(client_id);
-	p->Send_bool  (self_send);
+	p->Send_bool(self_send);
 	p->Send_string(msg);
 	p->Send_uint64(data);
 
@@ -731,7 +731,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendErrorQuit(ClientID client_
 	auto p = std::make_unique<Packet>(this, PACKET_SERVER_ERROR_QUIT);
 
 	p->Send_uint32(client_id);
-	p->Send_uint8 (errorno);
+	p->Send_uint8(errorno);
 
 	this->SendPacket(std::move(p));
 	return NETWORK_RECV_STATUS_OKAY;
@@ -1077,7 +1077,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-
 	if (GetCommandFlags(cp.cmd).Test(CommandFlag::Server) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a server only command {}.", ci->client_id, this->GetClientIP(), cp.cmd);
 		return this->SendError(NETWORK_ERROR_KICKED);
@@ -1095,8 +1094,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	 */
 	CompanyCtrlAction cca = cp.cmd == CMD_COMPANY_CTRL ? std::get<0>(EndianBufferReader::ToValue<CommandTraits<CMD_COMPANY_CTRL>::Args>(cp.data)) : CCA_NEW;
 	if (!(cp.cmd == CMD_COMPANY_CTRL && cca == CCA_NEW && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
-		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a command as another company {}.",
-		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
+		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a command as another company {}.", ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
 		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
@@ -1238,7 +1236,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet &p)
 	this->last_frame_server = _frame_counter;
 	return NETWORK_RECV_STATUS_OKAY;
 }
-
 
 /**
  * Send an actual chat message.
@@ -1498,11 +1495,20 @@ NetworkCompanyStatsArray NetworkGetCompanyStats()
 		if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
 		uint8_t type = 0;
 		switch (v->type) {
-			case VEH_TRAIN: type = NETWORK_VEH_TRAIN; break;
-			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? NETWORK_VEH_BUS : NETWORK_VEH_LORRY; break;
-			case VEH_AIRCRAFT: type = NETWORK_VEH_PLANE; break;
-			case VEH_SHIP: type = NETWORK_VEH_SHIP; break;
-			default: continue;
+			case VEH_TRAIN:
+				type = NETWORK_VEH_TRAIN;
+				break;
+			case VEH_ROAD:
+				type = RoadVehicle::From(v)->IsBus() ? NETWORK_VEH_BUS : NETWORK_VEH_LORRY;
+				break;
+			case VEH_AIRCRAFT:
+				type = NETWORK_VEH_PLANE;
+				break;
+			case VEH_SHIP:
+				type = NETWORK_VEH_SHIP;
+				break;
+			default:
+				continue;
 		}
 		stats[v->owner].num_vehicle[type]++;
 	}
@@ -1512,11 +1518,11 @@ NetworkCompanyStatsArray NetworkGetCompanyStats()
 		if (Company::IsValidID(s->owner)) {
 			NetworkCompanyStats *npi = &stats[s->owner];
 
-			if (s->facilities.Test(StationFacility::Train))     npi->num_station[NETWORK_VEH_TRAIN]++;
+			if (s->facilities.Test(StationFacility::Train)) npi->num_station[NETWORK_VEH_TRAIN]++;
 			if (s->facilities.Test(StationFacility::TruckStop)) npi->num_station[NETWORK_VEH_LORRY]++;
-			if (s->facilities.Test(StationFacility::BusStop))   npi->num_station[NETWORK_VEH_BUS]++;
-			if (s->facilities.Test(StationFacility::Airport))   npi->num_station[NETWORK_VEH_PLANE]++;
-			if (s->facilities.Test(StationFacility::Dock))      npi->num_station[NETWORK_VEH_SHIP]++;
+			if (s->facilities.Test(StationFacility::BusStop)) npi->num_station[NETWORK_VEH_BUS]++;
+			if (s->facilities.Test(StationFacility::Airport)) npi->num_station[NETWORK_VEH_PLANE]++;
+			if (s->facilities.Test(StationFacility::Dock)) npi->num_station[NETWORK_VEH_SHIP]++;
 		}
 	}
 
@@ -1569,7 +1575,10 @@ static void NetworkAutoCleanCompanies()
 
 	if (_settings_client.network.autoclean_novehicles != 0) {
 		for (const Company *c : Company::Iterate()) {
-			if (std::any_of(std::begin(c->group_all), std::end(c->group_all), [](const GroupStatistics &gs) { return gs.num_vehicle != 0; })) has_vehicles.Set(c->index);
+			if (std::any_of(std::begin(c->group_all), std::end(c->group_all), [](const GroupStatistics &gs) {
+					return gs.num_vehicle != 0;
+				}))
+				has_vehicles.Set(c->index);
 		}
 	}
 
@@ -1611,7 +1620,7 @@ bool NetworkMakeClientNameUnique(std::string &name)
 	bool is_name_unique = false;
 	std::string original_name = name;
 
-	for (uint number = 1; !is_name_unique && number <= MAX_CLIENTS; number++) {  // Something's really wrong when there're more names than clients
+	for (uint number = 1; !is_name_unique && number <= MAX_CLIENTS; number++) { // Something's really wrong when there're more names than clients
 		is_name_unique = true;
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 			if (ci->client_name == name) {
@@ -1695,8 +1704,7 @@ void NetworkServer_Tick(bool send_frame)
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		/* We allow a number of bytes per frame, but only to the burst amount
 		 * to be available for packet receiving at any particular time. */
-		cs->receive_limit = std::min<size_t>(cs->receive_limit + _settings_client.network.bytes_per_frame,
-				_settings_client.network.bytes_per_frame_burst);
+		cs->receive_limit = std::min<size_t>(cs->receive_limit + _settings_client.network.bytes_per_frame, _settings_client.network.bytes_per_frame_burst);
 
 		/* Check if the speed of the client is what we can expect from a client */
 		uint lag = NetworkCalculateLag(cs);
@@ -1741,7 +1749,8 @@ void NetworkServer_Tick(bool send_frame)
 				/* NewGRF check and authorized states should be handled almost instantly.
 				 * So give them some lee-way, likewise for the query with inactive. */
 				if (lag > _settings_client.network.max_init_time) {
-					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to start the joining process.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_init_time);
+					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to start the joining process.", cs->client_id, cs->GetClientIP(),
+						_settings_client.network.max_init_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
 				}
@@ -1765,7 +1774,8 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_MAP:
 				/* Downloading the map... this is the amount of time since starting the saving. */
 				if (lag > _settings_client.network.max_download_time) {
-					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to download the map.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_download_time);
+					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to download the map.", cs->client_id, cs->GetClientIP(),
+						_settings_client.network.max_download_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_MAP);
 					continue;
 				}
@@ -1784,7 +1794,8 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_AUTH_GAME:
 				/* These don't block? */
 				if (lag > _settings_client.network.max_password_time) {
-					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to enter the password.", cs->client_id, cs->GetClientIP(), _settings_client.network.max_password_time);
+					IConsolePrint(CC_WARNING, "Client #{} (IP: {}) is dropped because it took longer than {} ticks to enter the password.", cs->client_id, cs->GetClientIP(),
+						_settings_client.network.max_password_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_PASSWORD);
 					continue;
 				}
@@ -1830,8 +1841,7 @@ static void NetworkRestartMap()
 }
 
 /** Timer to restart a network server automatically based on real-time hours played. Initialized at zero to disable until settings are loaded. */
-static IntervalTimer<TimerGameRealtime> _network_restart_map_timer({std::chrono::hours::zero(), TimerGameRealtime::UNPAUSED}, [](auto)
-{
+static IntervalTimer<TimerGameRealtime> _network_restart_map_timer({std::chrono::hours::zero(), TimerGameRealtime::UNPAUSED}, [](auto) {
 	if (!_network_server) return;
 
 	/* If setting is 0, this feature is disabled. */
@@ -1849,7 +1859,7 @@ void ChangeNetworkRestartTime(bool reset)
 {
 	if (!_network_server) return;
 
-	_network_restart_map_timer.SetInterval({ std::chrono::hours(_settings_client.network.restart_hours), TimerGameRealtime::UNPAUSED }, reset);
+	_network_restart_map_timer.SetInterval({std::chrono::hours(_settings_client.network.restart_hours), TimerGameRealtime::UNPAUSED}, reset);
 }
 
 /** Check if we want to restart the map based on the year. */
@@ -1865,23 +1875,21 @@ static void NetworkCheckRestartMapYear()
 }
 
 /** Calendar yearly "callback". Called whenever the calendar year changes. */
-static IntervalTimer<TimerGameCalendar> _calendar_network_yearly({ TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE }, [](auto) {
+static IntervalTimer<TimerGameCalendar> _calendar_network_yearly({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto) {
 	if (!_network_server) return;
 
 	NetworkCheckRestartMapYear();
 });
 
 /** Economy yearly "callback". Called whenever the economy year changes. */
-static IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::NONE}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _economy_network_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::NONE}, [](auto) {
 	if (!_network_server) return;
 
 	NetworkAdminUpdate(AdminUpdateFrequency::Annually);
 });
 
 /** Quarterly "callback". Called whenever the economy quarter changes. */
-static IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUARTER, TimerGameEconomy::Priority::NONE}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUARTER, TimerGameEconomy::Priority::NONE}, [](auto) {
 	if (!_network_server) return;
 
 	NetworkAutoCleanCompanies();
@@ -1889,8 +1897,7 @@ static IntervalTimer<TimerGameEconomy> _network_quarterly({TimerGameEconomy::QUA
 });
 
 /** Economy monthly "callback". Called whenever the economy month changes. */
-static IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::NONE}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::NONE}, [](auto) {
 	if (!_network_server) return;
 
 	NetworkAutoCleanCompanies();
@@ -1898,16 +1905,14 @@ static IntervalTimer<TimerGameEconomy> _network_monthly({TimerGameEconomy::MONTH
 });
 
 /** Economy weekly "callback". Called whenever the economy week changes. */
-static IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, TimerGameEconomy::Priority::NONE}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _network_weekly({TimerGameEconomy::WEEK, TimerGameEconomy::Priority::NONE}, [](auto) {
 	if (!_network_server) return;
 
 	NetworkAdminUpdate(AdminUpdateFrequency::Weekly);
 });
 
 /** Daily "callback". Called whenever the economy date changes. */
-static IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::NONE}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::NONE}, [](auto) {
 	if (!_network_server) return;
 
 	NetworkAdminUpdate(AdminUpdateFrequency::Daily);
@@ -1925,18 +1930,7 @@ std::string_view ServerNetworkGameSocketHandler::GetClientIP()
 /** Show the status message of all clients on the console. */
 void NetworkServerShowStatusToConsole()
 {
-	static const char * const stat_str[] = {
-		"inactive",
-		"authorizing",
-		"identifying client",
-		"checking NewGRFs",
-		"authorized",
-		"waiting",
-		"loading map",
-		"map done",
-		"ready",
-		"active"
-	};
+	static const char *const stat_str[] = {"inactive", "authorizing", "identifying client", "checking NewGRFs", "authorized", "waiting", "loading map", "map done", "ready", "active"};
 	static_assert(lengthof(stat_str) == NetworkClientSocket::STATUS_END);
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
@@ -1946,10 +1940,8 @@ void NetworkServerShowStatusToConsole()
 		const char *status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
-		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}",
-			cs->client_id, ci->client_name, status, lag,
-			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-			cs->GetClientIP());
+		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}", cs->client_id, ci->client_name, status, lag,
+			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0), cs->GetClientIP());
 	}
 }
 
@@ -2097,7 +2089,6 @@ bool NetworkCompanyHasClients(CompanyID company)
 	return false;
 }
 
-
 /**
  * Get the name of the client, if the user did not send it yet, Client ID is used.
  * @param client_name The variable to write the name to.
@@ -2118,16 +2109,10 @@ void NetworkPrintClients()
 {
 	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (_network_server) {
-			IConsolePrint(CC_INFO, "Client #{}  name: '{}'  company: {}  IP: {}",
-					ci->client_id,
-					ci->client_name,
-					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-					ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP());
+			IConsolePrint(CC_INFO, "Client #{}  name: '{}'  company: {}  IP: {}", ci->client_id, ci->client_name, ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
+				ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP());
 		} else {
-			IConsolePrint(CC_INFO, "Client #{}  name: '{}'  company: {}",
-					ci->client_id,
-					ci->client_name,
-					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0));
+			IConsolePrint(CC_INFO, "Client #{}  name: '{}'  company: {}", ci->client_id, ci->client_name, ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0));
 		}
 	}
 }
@@ -2142,7 +2127,6 @@ std::string_view NetworkGetPublicKeyOfClient(ClientID client_id)
 	auto socket = NetworkClientSocket::GetByClientID(client_id);
 	return socket == nullptr ? "" : socket->GetPeerPublicKey();
 }
-
 
 /**
  * Perform all the server specific administration of a new company.

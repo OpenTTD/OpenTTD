@@ -8,6 +8,7 @@
 /** @file newgrf_acte.cpp NewGRF Action 0x0E handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
@@ -60,9 +61,36 @@ static void GRFInhibit(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x0E>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0E>::SafetyScan(ByteReader &buf) { SafeGRFInhibit(buf); }
-template <> void GrfActionHandler<0x0E>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0E>::Init(ByteReader &buf) { GRFInhibit(buf); }
-template <> void GrfActionHandler<0x0E>::Reserve(ByteReader &buf) { GRFInhibit(buf); }
-template <> void GrfActionHandler<0x0E>::Activation(ByteReader &buf) { GRFInhibit(buf); }
+template <>
+void GrfActionHandler<0x0E>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0E>::SafetyScan(ByteReader &buf)
+{
+	SafeGRFInhibit(buf);
+}
+
+template <>
+void GrfActionHandler<0x0E>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0E>::Init(ByteReader &buf)
+{
+	GRFInhibit(buf);
+}
+
+template <>
+void GrfActionHandler<0x0E>::Reserve(ByteReader &buf)
+{
+	GRFInhibit(buf);
+}
+
+template <>
+void GrfActionHandler<0x0E>::Activation(ByteReader &buf)
+{
+	GRFInhibit(buf);
+}

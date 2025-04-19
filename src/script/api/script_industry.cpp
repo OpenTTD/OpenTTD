@@ -8,19 +8,21 @@
 /** @file script_industry.cpp Implementation of ScriptIndustry. */
 
 #include "../../stdafx.h"
+
 #include "script_industry.hpp"
+
+#include "../../company_base.h"
+#include "../../industry.h"
+#include "../../industry_cmd.h"
+#include "../../newgrf_industries.h"
+#include "../../station_base.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
+#include "../../timer/timer_game_calendar.h"
 #include "script_cargo.hpp"
 #include "script_company.hpp"
 #include "script_error.hpp"
 #include "script_map.hpp"
-#include "../../company_base.h"
-#include "../../industry.h"
-#include "../../string_func.h"
-#include "../../strings_func.h"
-#include "../../station_base.h"
-#include "../../newgrf_industries.h"
-#include "../../industry_cmd.h"
-#include "../../timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 
@@ -232,7 +234,9 @@
 	if (i == nullptr) return ScriptDate::DATE_INVALID;
 
 	if (!::IsValidCargoType(cargo_type)) {
-		auto it = std::max_element(std::begin(i->accepted), std::end(i->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
+		auto it = std::max_element(std::begin(i->accepted), std::end(i->accepted), [](const auto &a, const auto &b) {
+			return a.last_accepted < b.last_accepted;
+		});
 		return (ScriptDate::Date)it->last_accepted.base();
 	} else {
 		auto it = i->GetCargoAccepted(cargo_type);

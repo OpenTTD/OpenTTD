@@ -21,13 +21,14 @@
 struct SpriteCache {
 	void *ptr;
 	size_t file_pos;
-	SpriteFile *file;    ///< The file the sprite in this entry can be found in.
+	SpriteFile *file; ///< The file the sprite in this entry can be found in.
 	uint32_t length; ///< Length of sprite data.
 	uint32_t id;
 	int16_t lru;
-	SpriteType type;     ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
-	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
-	uint8_t control_flags;  ///< Control flags, see SpriteCacheCtrlFlags
+	SpriteType
+		type; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
+	bool warned; ///< True iff the user has been warned about incorrect use of this sprite
+	uint8_t control_flags; ///< Control flags, see SpriteCacheCtrlFlags
 };
 
 /** SpriteAllocator that allocates memory from the sprite cache. */

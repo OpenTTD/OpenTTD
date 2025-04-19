@@ -8,12 +8,13 @@
 /** @file base_consist.cpp Properties for front vehicles/consists. */
 
 #include "stdafx.h"
+
 #include "base_consist.h"
-#include "vehicle_base.h"
+
 #include "string_func.h"
+#include "vehicle_base.h"
 
 #include "safeguards.h"
-
 
 /**
  * Copy properties of other BaseConsist.

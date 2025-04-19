@@ -27,14 +27,14 @@ struct Aircraft;
 /** An aircraft can be one of those types. */
 enum AircraftSubType : uint8_t {
 	AIR_HELICOPTER = 0, ///< an helicopter
-	AIR_AIRCRAFT   = 2, ///< an airplane
-	AIR_SHADOW     = 4, ///< shadow of the aircraft
-	AIR_ROTOR      = 6, ///< rotor of an helicopter
+	AIR_AIRCRAFT = 2, ///< an airplane
+	AIR_SHADOW = 4, ///< shadow of the aircraft
+	AIR_ROTOR = 6, ///< rotor of an helicopter
 };
 
 /** Flags for air vehicles; shared with disaster vehicles. */
 enum AirVehicleFlags : uint8_t {
-	VAF_DEST_TOO_FAR             = 0, ///< Next destination is too far away.
+	VAF_DEST_TOO_FAR = 0, ///< Next destination is too far away.
 
 	/* The next two flags are to prevent stair climbing of the aircraft. The idea is that the aircraft
 	 * will ascend or descend multiple flight levels at a time instead of following the contours of the
@@ -42,10 +42,10 @@ enum AirVehicleFlags : uint8_t {
 	VAF_IN_MAX_HEIGHT_CORRECTION = 1, ///< The vehicle is currently lowering its altitude because it hit the upper bound.
 	VAF_IN_MIN_HEIGHT_CORRECTION = 2, ///< The vehicle is currently raising its altitude because it hit the lower bound.
 
-	VAF_HELI_DIRECT_DESCENT      = 3, ///< The helicopter is descending directly at its destination (helipad or in front of hangar)
+	VAF_HELI_DIRECT_DESCENT = 3, ///< The helicopter is descending directly at its destination (helipad or in front of hangar)
 };
 
-static const int ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.
+static const int ROTOR_Z_OFFSET = 5; ///< Z Offset between helicopter- and rotorsprite.
 
 void HandleAircraftEnterHangar(Aircraft *v);
 void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
@@ -84,18 +84,48 @@ struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Aircraft() : SpecializedVehicleBase() {}
+
 	/** We want to 'destruct' the right class. */
-	virtual ~Aircraft() { this->PreDestructor(); }
+	virtual ~Aircraft()
+	{
+		this->PreDestructor();
+	}
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_AIRCRAFT_REVENUE : EXPENSES_AIRCRAFT_RUN; }
-	bool IsPrimaryVehicle() const override                  { return this->IsNormalAircraft(); }
+
+	ExpensesType GetExpenseType(bool income) const override
+	{
+		return income ? EXPENSES_AIRCRAFT_REVENUE : EXPENSES_AIRCRAFT_RUN;
+	}
+
+	bool IsPrimaryVehicle() const override
+	{
+		return this->IsNormalAircraft();
+	}
+
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
-	int GetDisplaySpeed() const override    { return this->cur_speed; }
-	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed; }
-	int GetSpeedOldUnits() const            { return this->vcache.cached_max_speed * 10 / 128; }
-	int GetCurrentMaxSpeed() const override { return this->GetSpeedOldUnits(); }
+
+	int GetDisplaySpeed() const override
+	{
+		return this->cur_speed;
+	}
+
+	int GetDisplayMaxSpeed() const override
+	{
+		return this->vcache.cached_max_speed;
+	}
+
+	int GetSpeedOldUnits() const
+	{
+		return this->vcache.cached_max_speed * 10 / 128;
+	}
+
+	int GetCurrentMaxSpeed() const override
+	{
+		return this->GetSpeedOldUnits();
+	}
+
 	Money GetRunningCost() const override;
 
 	bool IsInDepot() const override
@@ -109,7 +139,12 @@ struct Aircraft final : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	void OnNewEconomyDay() override;
 	uint Crash(bool flooded = false) override;
 	TileIndex GetOrderStationLocation(StationID station) override;
-	TileIndex GetCargoTile() const override { return this->First()->tile; }
+
+	TileIndex GetCargoTile() const override
+	{
+		return this->First()->tile;
+	}
+
 	ClosestDepot FindClosestDepot() override;
 
 	/**

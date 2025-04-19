@@ -10,11 +10,11 @@
 #ifndef DROPDOWN_TYPE_H
 #define DROPDOWN_TYPE_H
 
-#include "window_type.h"
 #include "gfx_func.h"
 #include "gfx_type.h"
 #include "palette_func.h"
 #include "window_gui.h"
+#include "window_type.h"
 
 /**
  * Base list item class from which others are derived.
@@ -26,11 +26,23 @@ public:
 	bool shaded; ///< Shaded item, affects text colour.
 
 	explicit DropDownListItem(int result, bool masked = false, bool shaded = false) : result(result), masked(masked), shaded(shaded) {}
+
 	virtual ~DropDownListItem() = default;
 
-	virtual bool Selectable() const { return true; }
-	virtual uint Height() const { return 0; }
-	virtual uint Width() const { return 0; }
+	virtual bool Selectable() const
+	{
+		return true;
+	}
+
+	virtual uint Height() const
+	{
+		return 0;
+	}
+
+	virtual uint Width() const
+	{
+		return 0;
+	}
 
 	virtual void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const
 	{

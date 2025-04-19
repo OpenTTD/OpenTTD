@@ -8,11 +8,13 @@
 /** @file truetypefontcache.cpp Common base implementation for font file based font caches. */
 
 #include "../stdafx.h"
+
+#include "truetypefontcache.h"
+
+#include "../core/bitmath_func.hpp"
 #include "../debug.h"
 #include "../fontcache.h"
-#include "../core/bitmath_func.hpp"
 #include "../gfx_layout.h"
-#include "truetypefontcache.h"
 
 #include "../safeguards.h"
 
@@ -21,9 +23,7 @@
  * @param fs     The font size that is going to be cached.
  * @param pixels The number of pixels this font should be high.
  */
-TrueTypeFontCache::TrueTypeFontCache(FontSize fs, int pixels) : FontCache(fs), req_size(pixels)
-{
-}
+TrueTypeFontCache::TrueTypeFontCache(FontSize fs, int pixels) : FontCache(fs), req_size(pixels) {}
 
 /**
  * Free everything that was allocated for this font cache.
@@ -42,7 +42,6 @@ void TrueTypeFontCache::ClearFontCache()
 	this->glyph_to_sprite_map.clear();
 	Layouter::ResetFontCache(this->fs);
 }
-
 
 TrueTypeFontCache::GlyphEntry *TrueTypeFontCache::GetGlyphPtr(GlyphID key)
 {

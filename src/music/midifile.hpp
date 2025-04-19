@@ -20,12 +20,15 @@ struct MidiFile {
 		uint32_t ticktime; ///< tick number since start of file this block should be triggered at
 		uint32_t realtime = 0; ///< real-time (microseconds) since start of file this block should be triggered at
 		std::vector<uint8_t> data; ///< raw midi data contained in block
-		DataBlock(uint32_t _ticktime = 0) : ticktime(_ticktime) { }
+
+		DataBlock(uint32_t _ticktime = 0) : ticktime(_ticktime) {}
 	};
+
 	struct TempoChange {
 		uint32_t ticktime; ///< tick number since start of file this tempo change occurs at
-		uint32_t tempo;    ///< new tempo in microseconds per tick
-		TempoChange(uint32_t _ticktime, uint32_t _tempo) : ticktime(_ticktime), tempo(_tempo) { }
+		uint32_t tempo; ///< new tempo in microseconds per tick
+
+		TempoChange(uint32_t _ticktime, uint32_t _tempo) : ticktime(_ticktime), tempo(_tempo) {}
 	};
 
 	std::vector<DataBlock> blocks{}; ///< sequential time-annotated data of file, merged to a single track

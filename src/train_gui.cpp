@@ -8,13 +8,14 @@
 /** @file train_gui.cpp GUI for trains. */
 
 #include "stdafx.h"
-#include "window_gui.h"
+
 #include "command_func.h"
-#include "train.h"
 #include "strings_func.h"
-#include "vehicle_func.h"
-#include "zoom_func.h"
+#include "train.h"
 #include "train_cmd.h"
+#include "vehicle_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
@@ -173,21 +174,21 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 
 /** Helper struct for the cargo details information */
 struct CargoSummaryItem {
-	CargoType cargo;    ///< The cargo that is carried
+	CargoType cargo; ///< The cargo that is carried
 	StringID subtype; ///< STR_EMPTY if none
-	uint capacity;    ///< Amount that can be carried
-	uint amount;      ///< Amount that is carried
+	uint capacity; ///< Amount that can be carried
+	uint amount; ///< Amount that is carried
 	StationID source; ///< One of the source stations
 
 	/** Used by std::find() and similar functions */
-	inline bool operator == (const CargoSummaryItem &other) const
+	inline bool operator==(const CargoSummaryItem &other) const
 	{
 		return !(this->cargo != other.cargo);
 	}
 };
 
-static const uint TRAIN_DETAILS_MIN_INDENT  = 32; ///< Minimum indent level in the train details window
-static const uint TRAIN_DETAILS_MAX_INDENT  = 72; ///< Maximum indent level in the train details window; wider than this and we start on a new line
+static const uint TRAIN_DETAILS_MIN_INDENT = 32; ///< Minimum indent level in the train details window
+static const uint TRAIN_DETAILS_MAX_INDENT = 72; ///< Maximum indent level in the train details window; wider than this and we start on a new line
 
 /** Container for the cargo summary information. */
 typedef std::vector<CargoSummaryItem> CargoSummary;
@@ -396,7 +397,8 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
 					int py = r.top - line_height * vscroll_pos + text_y_offset;
 					if (i > 0 || separate_sprite_row) {
-						if (vscroll_pos != 0) GfxFillRect(r.left, py - WidgetDimensions::scaled.matrix.top - 1, r.right, py - WidgetDimensions::scaled.matrix.top, GetColourGradient(COLOUR_GREY, SHADE_LIGHT));
+						if (vscroll_pos != 0)
+							GfxFillRect(r.left, py - WidgetDimensions::scaled.matrix.top - 1, r.right, py - WidgetDimensions::scaled.matrix.top, GetColourGradient(COLOUR_GREY, SHADE_LIGHT));
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:
@@ -419,7 +421,8 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 							}
 							break;
 
-						default: NOT_REACHED();
+						default:
+							NOT_REACHED();
 					}
 				}
 				vscroll_pos--;
@@ -434,7 +437,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			act_cargo[u->cargo_type] += u->cargo.StoredCount();
 			max_cargo[u->cargo_type] += u->cargo_cap;
-			feeder_share             += u->cargo.GetFeederShare();
+			feeder_share += u->cargo.GetFeederShare();
 		}
 
 		/* draw total cargo tab */

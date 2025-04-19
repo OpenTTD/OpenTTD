@@ -10,36 +10,35 @@
 #ifndef TEXTBUF_TYPE_H
 #define TEXTBUF_TYPE_H
 
+#include "string_base.h"
 #include "string_type.h"
 #include "strings_type.h"
-#include "string_base.h"
 
 /**
  * Return values for Textbuf::HandleKeypress
  */
-enum HandleKeyPressResult
-{
-	HKPR_EDITING,     ///< Textbuf content changed.
-	HKPR_CURSOR,      ///< Non-text change, e.g. cursor position.
-	HKPR_CONFIRM,     ///< Return or enter key pressed.
-	HKPR_CANCEL,      ///< Escape key pressed.
+enum HandleKeyPressResult {
+	HKPR_EDITING, ///< Textbuf content changed.
+	HKPR_CURSOR, ///< Non-text change, e.g. cursor position.
+	HKPR_CONFIRM, ///< Return or enter key pressed.
+	HKPR_CANCEL, ///< Escape key pressed.
 	HKPR_NOT_HANDLED, ///< Key does not affect editboxes.
 };
 
 /** Helper/buffer for input fields. */
 struct Textbuf {
-	CharSetFilter afilter;    ///< Allowed characters
-	uint16_t max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
-	uint16_t max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
-	uint16_t chars;             ///< the current size of the string in characters (including terminating '\0')
-	uint16_t pixels;            ///< the current size of the string in pixels
-	bool caret;               ///< is the caret ("_") visible or not
-	uint16_t caretpos;          ///< the current position of the caret in the buffer, in bytes
-	uint16_t caretxoffs;        ///< the current position of the caret in pixels
-	uint16_t markpos;           ///< the start position of the marked area in the buffer, in bytes
-	uint16_t markend;           ///< the end position of the marked area in the buffer, in bytes
-	uint16_t markxoffs;         ///< the start position of the marked area in pixels
-	uint16_t marklength;        ///< the length of the marked area in pixels
+	CharSetFilter afilter; ///< Allowed characters
+	uint16_t max_bytes; ///< the maximum size of the buffer in bytes (including terminating '\0')
+	uint16_t max_chars; ///< the maximum size of the buffer in characters (including terminating '\0')
+	uint16_t chars; ///< the current size of the string in characters (including terminating '\0')
+	uint16_t pixels; ///< the current size of the string in pixels
+	bool caret; ///< is the caret ("_") visible or not
+	uint16_t caretpos; ///< the current position of the caret in the buffer, in bytes
+	uint16_t caretxoffs; ///< the current position of the caret in pixels
+	uint16_t markpos; ///< the start position of the marked area in the buffer, in bytes
+	uint16_t markend; ///< the end position of the marked area in the buffer, in bytes
+	uint16_t markxoffs; ///< the start position of the marked area in pixels
+	uint16_t marklength; ///< the length of the marked area in pixels
 
 	explicit Textbuf(uint16_t max_bytes, uint16_t max_chars = UINT16_MAX);
 

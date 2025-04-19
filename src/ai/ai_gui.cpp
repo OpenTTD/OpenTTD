@@ -8,24 +8,24 @@
 /** @file ai_gui.cpp %Window for configuring the AIs */
 
 #include "../stdafx.h"
-#include "../error.h"
-#include "../company_base.h"
-#include "../window_func.h"
-#include "../network/network.h"
-#include "../settings_func.h"
-#include "../network/network_content.h"
-#include "../core/geometry_func.hpp"
 
-#include "ai.hpp"
 #include "ai_gui.hpp"
+
+#include "../core/geometry_func.hpp"
+#include "../company_base.h"
+#include "../error.h"
+#include "../network/network.h"
+#include "../network/network_content.h"
+#include "../script/script_gui.h"
+#include "../settings_func.h"
+#include "../window_func.h"
+#include "ai.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"
-#include "../script/script_gui.h"
 
 #include "table/strings.h"
 
 #include "../safeguards.h"
-
 
 /** Widgets for the configure AI window. */
 /* clang-format off */
@@ -85,12 +85,7 @@ static constexpr NWidgetPart _nested_ai_config_widgets[] = {
 /* clang-format on */
 
 /** Window definition for the configure AI window. */
-static WindowDesc _ai_config_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_GAME_OPTIONS, WC_NONE,
-	{},
-	_nested_ai_config_widgets
-);
+static WindowDesc _ai_config_desc(WDP_CENTER, nullptr, 0, 0, WC_GAME_OPTIONS, WC_NONE, {}, _nested_ai_config_widgets);
 
 /**
  * Window to configure which AIs will start.
@@ -283,7 +278,7 @@ struct AIConfigWindow : public Window {
 				break;
 			}
 
-			case WID_AIC_CHANGE:  // choose other AI
+			case WID_AIC_CHANGE: // choose other AI
 				if (IsEditable(this->selected_slot)) ShowScriptListWindow((CompanyID)this->selected_slot, _ctrl_pressed);
 				break;
 
@@ -338,4 +333,3 @@ void ShowAIConfigWindow()
 	CloseWindowByClass(WC_GAME_OPTIONS);
 	new AIConfigWindow();
 }
-

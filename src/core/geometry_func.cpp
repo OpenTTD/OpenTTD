@@ -8,7 +8,9 @@
 /** @file geometry_func.cpp Geometry functions. */
 
 #include "../stdafx.h"
+
 #include "geometry_func.hpp"
+
 #include "math_func.hpp"
 
 #include "../safeguards.h"
@@ -22,7 +24,7 @@
 Dimension maxdim(const Dimension &d1, const Dimension &d2)
 {
 	Dimension d;
-	d.width  = std::max(d1.width,  d2.width);
+	d.width = std::max(d1.width, d2.width);
 	d.height = std::max(d1.height, d2.height);
 	return d;
 }
@@ -41,10 +43,10 @@ Rect BoundingRect(const Rect &r1, const Rect &r2)
 
 	Rect r;
 
-	r.top    = std::min(r1.top,    r2.top);
+	r.top = std::min(r1.top, r2.top);
 	r.bottom = std::max(r1.bottom, r2.bottom);
-	r.left   = std::min(r1.left,   r2.left);
-	r.right  = std::max(r1.right,  r2.right);
+	r.left = std::min(r1.left, r2.left);
+	r.right = std::max(r1.right, r2.right);
 
 	return r;
 }

@@ -8,24 +8,24 @@
 /** @file map.cpp Base functions related to the map and distances on them. */
 
 #include "stdafx.h"
+
 #include "debug.h"
-#include "water_map.h"
 #include "error_func.h"
-#include "string_func.h"
 #include "pathfinder/water_regions.h"
+#include "string_func.h"
+#include "water_map.h"
 
 #include "safeguards.h"
 
-/* static */ uint Map::log_x;     ///< 2^_map_log_x == _map_size_x
-/* static */ uint Map::log_y;     ///< 2^_map_log_y == _map_size_y
-/* static */ uint Map::size_x;    ///< Size of the map along the X
-/* static */ uint Map::size_y;    ///< Size of the map along the Y
-/* static */ uint Map::size;      ///< The number of tiles on the map
+/* static */ uint Map::log_x; ///< 2^_map_log_x == _map_size_x
+/* static */ uint Map::log_y; ///< 2^_map_log_y == _map_size_y
+/* static */ uint Map::size_x; ///< Size of the map along the X
+/* static */ uint Map::size_y; ///< Size of the map along the Y
+/* static */ uint Map::size; ///< The number of tiles on the map
 /* static */ uint Map::tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
 /* static */ std::unique_ptr<Tile::TileBase[]> Tile::base_tiles; ///< Base tiles of the map
 /* static */ std::unique_ptr<Tile::TileExtended[]> Tile::extended_tiles; ///< Extended tiles of the map
-
 
 /**
  * (Re)allocates a map with the given dimension
@@ -36,10 +36,7 @@
 {
 	/* Make sure that the map size is within the limits and that
 	 * size of both axes is a power of 2. */
-	if (!IsInsideMM(size_x, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) ||
-			!IsInsideMM(size_y, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) ||
-			(size_x & (size_x - 1)) != 0 ||
-			(size_y & (size_y - 1)) != 0) {
+	if (!IsInsideMM(size_x, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) || !IsInsideMM(size_y, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) || (size_x & (size_x - 1)) != 0 || (size_y & (size_y - 1)) != 0) {
 		FatalError("Invalid map size");
 	}
 
@@ -57,7 +54,6 @@
 
 	AllocateWaterRegions();
 }
-
 
 #ifdef _DEBUG
 TileIndex TileAdd(TileIndex tile, TileIndexDiff offset)
@@ -106,28 +102,28 @@ TileIndex TileAddWrap(TileIndex tile, int addx, int addy)
 
 /** 'Lookup table' for tile offsets given an Axis */
 extern const TileIndexDiffC _tileoffs_by_axis[] = {
-	{ 1,  0}, ///< AXIS_X
-	{ 0,  1}, ///< AXIS_Y
+	{1, 0}, ///< AXIS_X
+	{0, 1}, ///< AXIS_Y
 };
 
 /** 'Lookup table' for tile offsets given a DiagDirection */
 extern const TileIndexDiffC _tileoffs_by_diagdir[] = {
-	{-1,  0}, ///< DIAGDIR_NE
-	{ 0,  1}, ///< DIAGDIR_SE
-	{ 1,  0}, ///< DIAGDIR_SW
-	{ 0, -1}  ///< DIAGDIR_NW
+	{-1, 0}, ///< DIAGDIR_NE
+	{0, 1}, ///< DIAGDIR_SE
+	{1, 0}, ///< DIAGDIR_SW
+	{0, -1} ///< DIAGDIR_NW
 };
 
 /** 'Lookup table' for tile offsets given a Direction */
 extern const TileIndexDiffC _tileoffs_by_dir[] = {
 	{-1, -1}, ///< DIR_N
-	{-1,  0}, ///< DIR_NE
-	{-1,  1}, ///< DIR_E
-	{ 0,  1}, ///< DIR_SE
-	{ 1,  1}, ///< DIR_S
-	{ 1,  0}, ///< DIR_SW
-	{ 1, -1}, ///< DIR_W
-	{ 0, -1}  ///< DIR_NW
+	{-1, 0}, ///< DIR_NE
+	{-1, 1}, ///< DIR_E
+	{0, 1}, ///< DIR_SE
+	{1, 1}, ///< DIR_S
+	{1, 0}, ///< DIR_SW
+	{1, -1}, ///< DIR_W
+	{0, -1} ///< DIR_NW
 };
 
 /**
@@ -146,7 +142,6 @@ uint DistanceManhattan(TileIndex t0, TileIndex t1)
 	return dx + dy;
 }
 
-
 /**
  * Gets the 'Square' distance between the two given tiles.
  * The 'Square' distance is the square of the shortest (straight line)
@@ -163,7 +158,6 @@ uint DistanceSquare(TileIndex t0, TileIndex t1)
 	return dx * dx + dy * dy;
 }
 
-
 /**
  * Gets the biggest distance component (x or y) between the two given tiles.
  * Also known as L-Infinity-Norm.
@@ -177,7 +171,6 @@ uint DistanceMax(TileIndex t0, TileIndex t1)
 	const uint dy = Delta(TileY(t0), TileY(t1));
 	return std::max(dx, dy);
 }
-
 
 /**
  * Gets the biggest distance component (x or y) between the two given tiles
@@ -219,11 +212,16 @@ uint DistanceFromEdge(TileIndex tile)
 uint DistanceFromEdgeDir(TileIndex tile, DiagDirection dir)
 {
 	switch (dir) {
-		case DIAGDIR_NE: return             TileX(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
-		case DIAGDIR_NW: return             TileY(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
-		case DIAGDIR_SW: return Map::MaxX() - TileX(tile) - 1;
-		case DIAGDIR_SE: return Map::MaxY() - TileY(tile) - 1;
-		default: NOT_REACHED();
+		case DIAGDIR_NE:
+			return TileX(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
+		case DIAGDIR_NW:
+			return TileY(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
+		case DIAGDIR_SW:
+			return Map::MaxX() - TileX(tile) - 1;
+		case DIAGDIR_SE:
+			return Map::MaxY() - TileY(tile) - 1;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -253,8 +251,8 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 		/* going counter-clockwise around this square */
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
-			static const int8_t ddx[DIAGDIR_END] = { -1,  1,  1, -1};
-			static const int8_t ddy[DIAGDIR_END] = {  1,  1, -1, -1};
+			static const int8_t ddx[DIAGDIR_END] = {-1, 1, 1, -1};
+			static const int8_t ddy[DIAGDIR_END] = {1, 1, -1, -1};
 
 			int dx = ddx[dir];
 			int dy = ddy[dir];

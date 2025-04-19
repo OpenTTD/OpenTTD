@@ -10,10 +10,10 @@
 #ifndef GFX_LAYOUT_ICU_H
 #define GFX_LAYOUT_ICU_H
 
-#include "gfx_layout.h"
-
 #include <unicode/brkiter.h>
 #include <unicode/ustring.h>
+
+#include "gfx_layout.h"
 
 /**
  * Helper class to construct a new #ICUParagraphLayout.
@@ -30,6 +30,7 @@ public:
 
 	static void InitializeLayouter();
 	static std::unique_ptr<icu::BreakIterator> GetBreakIterator();
+
 private:
 	static std::unique_ptr<icu::BreakIterator> break_iterator;
 };

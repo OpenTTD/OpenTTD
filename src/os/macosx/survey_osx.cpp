@@ -9,12 +9,12 @@
 
 #include "../../stdafx.h"
 
-#include "../../3rdparty/fmt/format.h"
-#include "../../survey.h"
-#include "macos.h"
-
 #include <mach-o/arch.h>
 #include <thread>
+#include "../../3rdparty/fmt/format.h"
+
+#include "../../survey.h"
+#include "macos.h"
 
 #include "../../safeguards.h"
 

@@ -8,9 +8,10 @@
 /** @file strings_sl.cpp Code handling saving and loading of strings */
 
 #include "../stdafx.h"
+
+#include "../core/string_builder.hpp"
 #include "../string_func.h"
 #include "../strings_func.h"
-#include "../core/string_builder.hpp"
 #include "saveload_internal.h"
 
 #include "table/strings.h"
@@ -28,14 +29,22 @@ static const size_t LEN_OLD_STRINGS = 32; ///< The number of characters per stri
 StringID RemapOldStringID(StringID s)
 {
 	switch (s) {
-		case 0x0006: return STR_SV_EMPTY;
-		case 0x7000: return STR_SV_UNNAMED;
-		case 0x70E4: return SPECSTR_COMPANY_NAME_START;
-		case 0x70E9: return SPECSTR_COMPANY_NAME_START;
-		case 0x8864: return STR_SV_TRAIN_NAME;
-		case 0x902B: return STR_SV_ROAD_VEHICLE_NAME;
-		case 0x9830: return STR_SV_SHIP_NAME;
-		case 0xA02F: return STR_SV_AIRCRAFT_NAME;
+		case 0x0006:
+			return STR_SV_EMPTY;
+		case 0x7000:
+			return STR_SV_UNNAMED;
+		case 0x70E4:
+			return SPECSTR_COMPANY_NAME_START;
+		case 0x70E9:
+			return SPECSTR_COMPANY_NAME_START;
+		case 0x8864:
+			return STR_SV_TRAIN_NAME;
+		case 0x902B:
+			return STR_SV_ROAD_VEHICLE_NAME;
+		case 0x9830:
+			return STR_SV_SHIP_NAME;
+		case 0xA02F:
+			return STR_SV_AIRCRAFT_NAME;
 
 		default:
 			if (IsInsideMM(s, 0x300F, 0x3030)) {
@@ -72,15 +81,32 @@ std::string CopyFromOldName(StringID id)
 
 			/* Map from non-ISO8859-15 characters to UTF-8. */
 			switch (c) {
-				case 0xA4: c = 0x20AC; break; // Euro
-				case 0xA6: c = 0x0160; break; // S with caron
-				case 0xA8: c = 0x0161; break; // s with caron
-				case 0xB4: c = 0x017D; break; // Z with caron
-				case 0xB8: c = 0x017E; break; // z with caron
-				case 0xBC: c = 0x0152; break; // OE ligature
-				case 0xBD: c = 0x0153; break; // oe ligature
-				case 0xBE: c = 0x0178; break; // Y with diaeresis
-				default: break;
+				case 0xA4:
+					c = 0x20AC;
+					break; // Euro
+				case 0xA6:
+					c = 0x0160;
+					break; // S with caron
+				case 0xA8:
+					c = 0x0161;
+					break; // s with caron
+				case 0xB4:
+					c = 0x017D;
+					break; // Z with caron
+				case 0xB8:
+					c = 0x017E;
+					break; // z with caron
+				case 0xBC:
+					c = 0x0152;
+					break; // OE ligature
+				case 0xBD:
+					c = 0x0153;
+					break; // oe ligature
+				case 0xBE:
+					c = 0x0178;
+					break; // Y with diaeresis
+				default:
+					break;
 			}
 
 			if (IsPrintable(c)) builder.PutUtf8(c);

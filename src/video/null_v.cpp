@@ -8,11 +8,13 @@
 /** @file null_v.cpp The video driver that doesn't blit. */
 
 #include "../stdafx.h"
-#include "../gfx_func.h"
+
+#include "null_v.h"
+
 #include "../blitter/factory.hpp"
+#include "../gfx_func.h"
 #include "../saveload/saveload.h"
 #include "../window_func.h"
-#include "null_v.h"
 
 #include "../safeguards.h"
 
@@ -31,7 +33,7 @@ std::optional<std::string_view> VideoDriver_Null::Start(const StringList &parm)
 	this->UpdateAutoResolution();
 
 	this->ticks = GetDriverParamInt(parm, "ticks", 1000);
-	_screen.width  = _screen.pitch = _cur_resolution.width;
+	_screen.width = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
 	_screen.dst_ptr = nullptr;
 	ScreenSizeChanged();
@@ -42,7 +44,7 @@ std::optional<std::string_view> VideoDriver_Null::Start(const StringList &parm)
 	return std::nullopt;
 }
 
-void VideoDriver_Null::Stop() { }
+void VideoDriver_Null::Stop() {}
 
 void VideoDriver_Null::MakeDirty(int, int, int, int) {}
 
@@ -63,6 +65,12 @@ void VideoDriver_Null::MainLoop()
 	}
 }
 
-bool VideoDriver_Null::ChangeResolution(int, int) { return false; }
+bool VideoDriver_Null::ChangeResolution(int, int)
+{
+	return false;
+}
 
-bool VideoDriver_Null::ToggleFullscreen(bool) { return false; }
+bool VideoDriver_Null::ToggleFullscreen(bool)
+{
+	return false;
+}

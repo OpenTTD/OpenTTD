@@ -13,9 +13,9 @@
 
 #include "../stdafx.h"
 
-#include "../core/enum_type.hpp"
-
 #include "../3rdparty/catch2/catch.hpp"
+
+#include "../core/enum_type.hpp"
 
 #include "../safeguards.h"
 

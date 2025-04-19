@@ -8,37 +8,36 @@
 /** @file network_content_gui.cpp Implementation of the Network Content related GUIs. */
 
 #include "../stdafx.h"
-#include "../strings_func.h"
-#include "../gfx_func.h"
-#include "../window_func.h"
-#include "../error.h"
+
+#include "network_content_gui.h"
+
+#include <bitset>
+
+#include "../core/geometry_func.hpp"
 #include "../ai/ai.hpp"
-#include "../game/game.hpp"
 #include "../base_media_base.h"
 #include "../base_media_graphics.h"
 #include "../base_media_music.h"
 #include "../base_media_sounds.h"
+#include "../error.h"
+#include "../fios.h"
+#include "../game/game.hpp"
+#include "../gfx_func.h"
 #include "../openttd.h"
+#include "../querystring_gui.h"
 #include "../sortlist_type.h"
 #include "../stringfilter_type.h"
-#include "../querystring_gui.h"
-#include "../core/geometry_func.hpp"
+#include "../strings_func.h"
 #include "../textfile_gui.h"
-#include "../fios.h"
-#include "network_content_gui.h"
+#include "../window_func.h"
 
-
-#include "table/strings.h"
 #include "../table/sprites.h"
-
-#include <bitset>
+#include "table/strings.h"
 
 #include "../safeguards.h"
 
-
 /** Whether the user accepted to enter external websites during this session. */
 static bool _accepted_external_search = false;
-
 
 /** Window for displaying the textfile of an item in the content list. */
 struct ContentTextfileWindow : public TextfileWindow {
@@ -55,17 +54,28 @@ struct ContentTextfileWindow : public TextfileWindow {
 	StringID GetTypeString() const
 	{
 		switch (this->ci->type) {
-			case CONTENT_TYPE_NEWGRF:        return STR_CONTENT_TYPE_NEWGRF;
-			case CONTENT_TYPE_BASE_GRAPHICS: return STR_CONTENT_TYPE_BASE_GRAPHICS;
-			case CONTENT_TYPE_BASE_SOUNDS:   return STR_CONTENT_TYPE_BASE_SOUNDS;
-			case CONTENT_TYPE_BASE_MUSIC:    return STR_CONTENT_TYPE_BASE_MUSIC;
-			case CONTENT_TYPE_AI:            return STR_CONTENT_TYPE_AI;
-			case CONTENT_TYPE_AI_LIBRARY:    return STR_CONTENT_TYPE_AI_LIBRARY;
-			case CONTENT_TYPE_GAME:          return STR_CONTENT_TYPE_GAME_SCRIPT;
-			case CONTENT_TYPE_GAME_LIBRARY:  return STR_CONTENT_TYPE_GS_LIBRARY;
-			case CONTENT_TYPE_SCENARIO:      return STR_CONTENT_TYPE_SCENARIO;
-			case CONTENT_TYPE_HEIGHTMAP:     return STR_CONTENT_TYPE_HEIGHTMAP;
-			default: NOT_REACHED();
+			case CONTENT_TYPE_NEWGRF:
+				return STR_CONTENT_TYPE_NEWGRF;
+			case CONTENT_TYPE_BASE_GRAPHICS:
+				return STR_CONTENT_TYPE_BASE_GRAPHICS;
+			case CONTENT_TYPE_BASE_SOUNDS:
+				return STR_CONTENT_TYPE_BASE_SOUNDS;
+			case CONTENT_TYPE_BASE_MUSIC:
+				return STR_CONTENT_TYPE_BASE_MUSIC;
+			case CONTENT_TYPE_AI:
+				return STR_CONTENT_TYPE_AI;
+			case CONTENT_TYPE_AI_LIBRARY:
+				return STR_CONTENT_TYPE_AI_LIBRARY;
+			case CONTENT_TYPE_GAME:
+				return STR_CONTENT_TYPE_GAME_SCRIPT;
+			case CONTENT_TYPE_GAME_LIBRARY:
+				return STR_CONTENT_TYPE_GS_LIBRARY;
+			case CONTENT_TYPE_SCENARIO:
+				return STR_CONTENT_TYPE_SCENARIO;
+			case CONTENT_TYPE_HEIGHTMAP:
+				return STR_CONTENT_TYPE_HEIGHTMAP;
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -101,11 +111,7 @@ static constexpr NWidgetPart _nested_network_content_download_status_window_widg
 
 /** Window description for the download window */
 static WindowDesc _network_content_download_status_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_NETWORK_STATUS_WINDOW, WC_NONE,
-	WindowDefaultFlag::Modal,
-	_nested_network_content_download_status_window_widgets
-);
+	WDP_CENTER, nullptr, 0, 0, WC_NETWORK_STATUS_WINDOW, WC_NONE, WindowDefaultFlag::Modal, _nested_network_content_download_status_window_widgets);
 
 BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(WindowDesc &desc) : Window(desc)
 {
@@ -121,7 +127,8 @@ void BaseNetworkContentDownloadStatusWindow::Close([[maybe_unused]] int data)
 	this->Window::Close();
 }
 
-void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize)
+void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(
+	WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize)
 {
 	switch (widget) {
 		case WID_NCDS_PROGRESS_BAR: {
@@ -129,7 +136,7 @@ void BaseNetworkContentDownloadStatusWindow::UpdateWidgetSize(WidgetID widget, D
 			size = GetStringBoundingBox(GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, max_value, max_value, max_value));
 			/* We need some spacing for the 'border' */
 			size.height += WidgetDimensions::scaled.frametext.Horizontal();
-			size.width  += WidgetDimensions::scaled.frametext.Vertical();
+			size.width += WidgetDimensions::scaled.frametext.Vertical();
 			break;
 		}
 
@@ -148,8 +155,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 			DrawFrameRect(ir.WithWidth((uint64_t)ir.Width() * this->downloaded_bytes / this->total_bytes, _current_text_dir == TD_RTL), COLOUR_MAUVE, {});
 			DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FS_NORMAL)),
-				GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, this->downloaded_bytes, this->total_bytes, this->downloaded_bytes * 100LL / this->total_bytes),
-				TC_FROMSTRING, SA_HOR_CENTER);
+				GetString(STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, this->downloaded_bytes, this->total_bytes, this->downloaded_bytes * 100LL / this->total_bytes), TC_FROMSTRING, SA_HOR_CENTER);
 			break;
 		}
 
@@ -157,9 +163,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 			if (this->downloaded_bytes == this->total_bytes) {
 				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_COMPLETE, TC_FROMSTRING, SA_CENTER);
 			} else if (!this->name.empty()) {
-				DrawStringMultiLine(r,
-					GetString(STR_CONTENT_DOWNLOAD_FILE, this->name, this->downloaded_files, this->total_files),
-					TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(STR_CONTENT_DOWNLOAD_FILE, this->name, this->downloaded_files, this->total_files), TC_FROMSTRING, SA_CENTER);
 			} else {
 				DrawStringMultiLine(r, STR_CONTENT_DOWNLOAD_INITIALISE, TC_FROMSTRING, SA_CENTER);
 			}
@@ -184,7 +188,6 @@ void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInf
 
 	this->SetDirty();
 }
-
 
 /** Window for showing the download status of content */
 struct NetworkContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
@@ -320,8 +323,8 @@ struct ContentListFilterData {
 
 /** Filter criteria for NetworkContentListWindow. */
 enum ContentListFilterCriteria : uint8_t {
-	CONTENT_FILTER_TEXT = 0,        ///< Filter by query string
-	CONTENT_FILTER_TYPE_OR_SELECTED,///< Filter by being of displayed type or selected for download
+	CONTENT_FILTER_TEXT = 0, ///< Filter by query string
+	CONTENT_FILTER_TYPE_OR_SELECTED, ///< Filter by being of displayed type or selected for download
 };
 
 /** Window that lists the content that's at the content server */
@@ -329,12 +332,12 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** List with content infos. */
 	typedef GUIList<const ContentInfo *, std::nullptr_t, ContentListFilterData &> GUIContentList;
 
-	static const uint EDITBOX_MAX_SIZE   =  50; ///< Maximum size of the editbox in characters.
+	static const uint EDITBOX_MAX_SIZE = 50; ///< Maximum size of the editbox in characters.
 
-	static Listing last_sorting;     ///< The last sorting setting.
+	static Listing last_sorting; ///< The last sorting setting.
 	static Filtering last_filtering; ///< The last filtering setting.
-	static const std::initializer_list<GUIContentList::SortFunction * const> sorter_funcs;   ///< Sorter functions
-	static const std::initializer_list<GUIContentList::FilterFunction * const> filter_funcs; ///< Filter functions.
+	static const std::initializer_list<GUIContentList::SortFunction *const> sorter_funcs; ///< Sorter functions
+	static const std::initializer_list<GUIContentList::FilterFunction *const> filter_funcs; ///< Filter functions.
 	GUIContentList content{}; ///< List with content
 	bool auto_select = false; ///< Automatically select all content when the meta-data becomes available
 	ContentListFilterData filter_data{}; ///< Filter for content list
@@ -395,7 +398,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	{
 		if (accepted) {
 			_accepted_external_search = true;
-			((NetworkContentListWindow*)w)->OpenExternalSearch();
+			((NetworkContentListWindow *)w)->OpenExternalSearch();
 		}
 	}
 
@@ -428,13 +431,13 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Sort content by name. */
-	static bool NameSorter(const ContentInfo * const &a, const ContentInfo * const &b)
+	static bool NameSorter(const ContentInfo *const &a, const ContentInfo *const &b)
 	{
 		return StrNaturalCompare(a->name, b->name, true) < 0; // Sort by name (natural sorting).
 	}
 
 	/** Sort content by type. */
-	static bool TypeSorter(const ContentInfo * const &a, const ContentInfo * const &b)
+	static bool TypeSorter(const ContentInfo *const &a, const ContentInfo *const &b)
 	{
 		int r = 0;
 		if (a->type != b->type) {
@@ -445,7 +448,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Sort content by state. */
-	static bool StateSorter(const ContentInfo * const &a, const ContentInfo * const &b)
+	static bool StateSorter(const ContentInfo *const &a, const ContentInfo *const &b)
 	{
 		int r = a->state - b->state;
 		if (r == 0) return TypeSorter(a, b);
@@ -462,7 +465,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by tags/name */
-	static bool TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TagNameFilter(const ContentInfo *const *a, ContentListFilterData &filter)
 	{
 		if ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED) return true;
 
@@ -474,7 +477,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	/** Filter content by type, but still show content selected for download. */
-	static bool TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
+	static bool TypeOrSelectedFilter(const ContentInfo *const *a, ContentListFilterData &filter)
 	{
 		if (filter.types.none()) return true;
 		if (filter.types[(*a)->type]) return true;
@@ -531,6 +534,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	}
 
 	friend void BuildContentTypeStringList();
+
 public:
 	/**
 	 * Create the content list window.
@@ -541,10 +545,7 @@ public:
 	 *   other types are only shown when content that depend on them are
 	 *   selected.
 	 */
-	NetworkContentListWindow(WindowDesc &desc, bool select_all, const std::bitset<CONTENT_TYPE_END> &types) :
-			Window(desc),
-			auto_select(select_all),
-			filter_editbox(EDITBOX_MAX_SIZE)
+	NetworkContentListWindow(WindowDesc &desc, bool select_all, const std::bitset<CONTENT_TYPE_END> &types) : Window(desc), auto_select(select_all), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_NCL_SCROLLBAR);
@@ -604,7 +605,6 @@ public:
 		}
 	}
 
-
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
@@ -629,9 +629,15 @@ public:
 		this->DrawWidgets();
 
 		switch (this->content.SortType()) {
-			case WID_NCL_CHECKBOX - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_CHECKBOX, arrow); break;
-			case WID_NCL_TYPE     - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_TYPE,     arrow); break;
-			case WID_NCL_NAME     - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_NAME,     arrow); break;
+			case WID_NCL_CHECKBOX - WID_NCL_CHECKBOX:
+				this->DrawSortButtonState(WID_NCL_CHECKBOX, arrow);
+				break;
+			case WID_NCL_TYPE - WID_NCL_CHECKBOX:
+				this->DrawSortButtonState(WID_NCL_TYPE, arrow);
+				break;
+			case WID_NCL_NAME - WID_NCL_CHECKBOX:
+				this->DrawSortButtonState(WID_NCL_NAME, arrow);
+				break;
 		}
 	}
 
@@ -659,12 +665,25 @@ public:
 			SpriteID sprite;
 			SpriteID pal = PAL_NONE;
 			switch (ci->state) {
-				case ContentInfo::UNSELECTED:     sprite = SPR_BOX_EMPTY;   break;
-				case ContentInfo::SELECTED:       sprite = SPR_BOX_CHECKED; break;
-				case ContentInfo::AUTOSELECTED:   sprite = SPR_BOX_CHECKED; break;
-				case ContentInfo::ALREADY_HERE:   sprite = SPR_BLOT; pal = PALETTE_TO_GREEN; break;
-				case ContentInfo::DOES_NOT_EXIST: sprite = SPR_BLOT; pal = PALETTE_TO_RED;   break;
-				default: NOT_REACHED();
+				case ContentInfo::UNSELECTED:
+					sprite = SPR_BOX_EMPTY;
+					break;
+				case ContentInfo::SELECTED:
+					sprite = SPR_BOX_CHECKED;
+					break;
+				case ContentInfo::AUTOSELECTED:
+					sprite = SPR_BOX_CHECKED;
+					break;
+				case ContentInfo::ALREADY_HERE:
+					sprite = SPR_BLOT;
+					pal = PALETTE_TO_GREEN;
+					break;
+				case ContentInfo::DOES_NOT_EXIST:
+					sprite = SPR_BLOT;
+					pal = PALETTE_TO_RED;
+					break;
+				default:
+					NOT_REACHED();
 			}
 			DrawSpriteIgnorePadding(sprite, pal, {checkbox.left, mr.top, checkbox.right, mr.bottom}, SA_CENTER);
 
@@ -853,10 +872,7 @@ public:
 				if (_accepted_external_search) {
 					this->OpenExternalSearch();
 				} else {
-					ShowQuery(
-						GetEncodedString(STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION),
-						GetEncodedString(STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER),
-						this, ExternalSearchDisclaimerCallback);
+					ShowQuery(GetEncodedString(STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION), GetEncodedString(STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER), this, ExternalSearchDisclaimerCallback);
 				}
 				break;
 		}
@@ -997,13 +1013,13 @@ public:
 Listing NetworkContentListWindow::last_sorting = {false, 1};
 Filtering NetworkContentListWindow::last_filtering = {false, 0};
 
-const std::initializer_list<NetworkContentListWindow::GUIContentList::SortFunction * const> NetworkContentListWindow::sorter_funcs = {
+const std::initializer_list<NetworkContentListWindow::GUIContentList::SortFunction *const> NetworkContentListWindow::sorter_funcs = {
 	&StateSorter,
 	&TypeSorter,
 	&NameSorter,
 };
 
-const std::initializer_list<NetworkContentListWindow::GUIContentList::FilterFunction * const> NetworkContentListWindow::filter_funcs = {
+const std::initializer_list<NetworkContentListWindow::GUIContentList::FilterFunction *const> NetworkContentListWindow::filter_funcs = {
 	&TagNameFilter,
 	&TypeOrSelectedFilter,
 };
@@ -1102,12 +1118,7 @@ static constexpr NWidgetPart _nested_network_content_list_widgets[] = {
 /* clang-format on */
 
 /** Window description of the content list */
-static WindowDesc _network_content_list_desc(
-	WDP_CENTER, "list_content", 630, 460,
-	WC_NETWORK_WINDOW, WC_NONE,
-	{},
-	_nested_network_content_list_widgets
-);
+static WindowDesc _network_content_list_desc(WDP_CENTER, "list_content", 630, 460, WC_NETWORK_WINDOW, WC_NONE, {}, _nested_network_content_list_widgets);
 
 /**
  * Show the content list window with a given set of content
@@ -1136,9 +1147,6 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
 	new NetworkContentListWindow(_network_content_list_desc, cv != nullptr, types);
 #else
-	ShowErrorMessage(
-		GetEncodedString(STR_CONTENT_NO_ZLIB),
-		GetEncodedString(STR_CONTENT_NO_ZLIB_SUB),
-		WL_ERROR);
+	ShowErrorMessage(GetEncodedString(STR_CONTENT_NO_ZLIB), GetEncodedString(STR_CONTENT_NO_ZLIB_SUB), WL_ERROR);
 #endif /* WITH_ZLIB */
 }

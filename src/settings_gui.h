@@ -10,8 +10,8 @@
 #ifndef SETTING_GUI_H
 #define SETTING_GUI_H
 
-#include "gfx_type.h"
 #include "dropdown_type.h"
+#include "gfx_type.h"
 
 /** Width of setting buttons */
 #define SETTING_BUTTON_WIDTH  ((int)NWidgetScrollbar::GetHorizontalDimension().width * 2)
@@ -29,4 +29,3 @@ DropDownList BuildSetDropDownList(int *selected_index);
 void ChangeMusicSet(int index);
 
 #endif /* SETTING_GUI_H */
-

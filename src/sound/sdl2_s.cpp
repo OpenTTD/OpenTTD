@@ -9,13 +9,14 @@
 
 #ifdef WITH_SDL2
 
-#include "../stdafx.h"
+#	include "../stdafx.h"
 
-#include "../mixer.h"
-#include "sdl_s.h"
-#include <SDL.h>
+#	include <SDL.h>
 
-#include "../safeguards.h"
+#	include "../mixer.h"
+#	include "sdl_s.h"
+
+#	include "../safeguards.h"
 
 /** Factory for the SDL sound driver. */
 static FSoundDriver_SDL iFSoundDriver_SDL;

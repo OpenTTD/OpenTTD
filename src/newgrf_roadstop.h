@@ -13,11 +13,11 @@
 #define NEWGRF_ROADSTATION_H
 
 #include "newgrf_animation_type.h"
-#include "newgrf_spritegroup.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
+#include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 #include "road.h"
 
@@ -40,9 +40,9 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(RoadStopClassID)
  * the roadstop to be only for busses or for trucks.
  */
 enum RoadStopAvailabilityType : uint8_t {
-	ROADSTOPTYPE_PASSENGER,    ///< This RoadStop is for passenger (bus) stops.
-	ROADSTOPTYPE_FREIGHT,      ///< This RoadStop is for freight (truck) stops.
-	ROADSTOPTYPE_ALL,          ///< This RoadStop is for both types of station road stops.
+	ROADSTOPTYPE_PASSENGER, ///< This RoadStop is for passenger (bus) stops.
+	ROADSTOPTYPE_FREIGHT, ///< This RoadStop is for freight (truck) stops.
+	ROADSTOPTYPE_ALL, ///< This RoadStop is for both types of station road stops.
 
 	ROADSTOPTYPE_END,
 };
@@ -70,12 +70,12 @@ enum class RoadStopSpecFlag : uint8_t {
 using RoadStopSpecFlags = EnumBitSet<RoadStopSpecFlag, uint8_t>;
 
 enum RoadStopView : uint8_t {
-	RSV_BAY_NE                  = 0, ///< Bay road stop, facing Northeast
-	RSV_BAY_SE                  = 1, ///< Bay road stop, facing Southeast
-	RSV_BAY_SW                  = 2, ///< Bay road stop, facing Southwest
-	RSV_BAY_NW                  = 3, ///< Bay road stop, facing Northwest
-	RSV_DRIVE_THROUGH_X         = 4, ///< Drive through road stop, X axis
-	RSV_DRIVE_THROUGH_Y         = 5, ///< Drive through road stop, Y axis
+	RSV_BAY_NE = 0, ///< Bay road stop, facing Northeast
+	RSV_BAY_SE = 1, ///< Bay road stop, facing Southeast
+	RSV_BAY_SW = 2, ///< Bay road stop, facing Southwest
+	RSV_BAY_NW = 3, ///< Bay road stop, facing Northwest
+	RSV_DRIVE_THROUGH_X = 4, ///< Drive through road stop, X axis
+	RSV_DRIVE_THROUGH_Y = 5, ///< Drive through road stop, Y axis
 };
 
 /** Scope resolver for road stops. */
@@ -88,8 +88,8 @@ struct RoadStopScopeResolver : public ScopeResolver {
 	uint8_t view = 0; ///< Station axis.
 	RoadType roadtype{}; ///< Road type (used when no tile)
 
-	RoadStopScopeResolver(ResolverObject &ro, BaseStation *st, const RoadStopSpec *roadstopspec, TileIndex tile, RoadType roadtype, StationType type, uint8_t view = 0)
-		: ScopeResolver(ro), tile(tile), st(st), roadstopspec(roadstopspec), type(type), view(view), roadtype(roadtype)
+	RoadStopScopeResolver(ResolverObject &ro, BaseStation *st, const RoadStopSpec *roadstopspec, TileIndex tile, RoadType roadtype, StationType type, uint8_t view = 0) :
+		ScopeResolver(ro), tile(tile), st(st), roadstopspec(roadstopspec), type(type), view(view), roadtype(roadtype)
 	{
 	}
 
@@ -104,18 +104,21 @@ struct RoadStopResolverObject : public SpecializedResolverObject<StationRandomTr
 	RoadStopScopeResolver roadstop_scope; ///< The stop scope resolver.
 	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
-	RoadStopResolverObject(const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view, CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0);
+	RoadStopResolverObject(const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view, CallbackID callback = CBID_NO_CALLBACK,
+		uint32_t param1 = 0, uint32_t param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->roadstop_scope;
+			case VSG_SCOPE_SELF:
+				return &this->roadstop_scope;
 			case VSG_SCOPE_PARENT: {
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != nullptr) return tsr;
 				[[fallthrough]];
 			}
-			default: return ResolverObject::GetScope(scope, relative);
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
@@ -133,7 +136,7 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	 * evaluating callbacks.
 	 */
 	VariableGRFFileProps grf_prop;
-	StringID name;              ///< Name of this stop
+	StringID name; ///< Name of this stop
 
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;
 	RoadStopDrawModes draw_mode = {RoadStopDrawMode::Road, RoadStopDrawMode::Overlay};
@@ -144,11 +147,11 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 
 	AnimationInfo<StationAnimationTriggers> animation;
 
-	uint8_t bridge_height[6];             ///< Minimum height for a bridge above, 0 for none
+	uint8_t bridge_height[6]; ///< Minimum height for a bridge above, 0 for none
 	uint8_t bridge_disallowed_pillars[6]; ///< Disallowed pillar flags for a bridge above
 
-	uint8_t build_cost_multiplier = 16;  ///< Build cost multiplier per tile.
-	uint8_t clear_cost_multiplier = 16;  ///< Clear cost multiplier per tile.
+	uint8_t build_cost_multiplier = 16; ///< Build cost multiplier per tile.
+	uint8_t clear_cost_multiplier = 16; ///< Clear cost multiplier per tile.
 
 	std::vector<BadgeID> badges;
 
@@ -156,13 +159,19 @@ struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
 	 * Get the cost for building a road stop of this type.
 	 * @return The cost for building.
 	 */
-	Money GetBuildCost(Price category) const { return GetPrice(category, this->build_cost_multiplier, this->grf_prop.grffile, -4); }
+	Money GetBuildCost(Price category) const
+	{
+		return GetPrice(category, this->build_cost_multiplier, this->grf_prop.grffile, -4);
+	}
 
 	/**
 	 * Get the cost for clearing a road stop of this type.
 	 * @return The cost for clearing.
 	 */
-	Money GetClearCost(Price category) const { return GetPrice(category, this->clear_cost_multiplier, this->grf_prop.grffile, -4); }
+	Money GetClearCost(Price category) const
+	{
+		return GetPrice(category, this->clear_cost_multiplier, this->grf_prop.grffile, -4);
+	}
 
 	static const RoadStopSpec *Get(uint16_t index);
 };
@@ -171,7 +180,8 @@ using RoadStopClass = NewGRFClass<RoadStopSpec, RoadStopClassID, ROADSTOP_CLASS_
 
 void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec, StationType type, int view);
 
-uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view);
+uint16_t GetRoadStopCallback(
+	CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view);
 
 void AnimateRoadStopTile(TileIndex tile);
 uint8_t GetRoadStopTileAnimationSpeed(TileIndex tile);

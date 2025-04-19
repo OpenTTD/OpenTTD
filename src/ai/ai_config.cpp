@@ -8,11 +8,13 @@
 /** @file ai_config.cpp Implementation of AIConfig. */
 
 #include "../stdafx.h"
+
+#include "ai_config.hpp"
+
 #include "../company_base.h"
 #include "../settings_type.h"
 #include "../string_func.h"
 #include "ai.hpp"
-#include "ai_config.hpp"
 #include "ai_info.hpp"
 
 #include "../safeguards.h"

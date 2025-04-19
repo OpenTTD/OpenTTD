@@ -42,8 +42,8 @@ enum ServerGameType : uint8_t {
 /** 'Unique' identifier to be given to clients */
 enum ClientID : uint32_t {
 	INVALID_CLIENT_ID = 0, ///< Client is not part of anything
-	CLIENT_ID_SERVER  = 1, ///< Servers always have this ID
-	CLIENT_ID_FIRST   = 2, ///< The first client ID
+	CLIENT_ID_SERVER = 1, ///< Servers always have this ID
+	CLIENT_ID_FIRST = 2, ///< The first client ID
 };
 
 /** Indices into the client related pools */
@@ -54,9 +54,9 @@ using AdminID = PoolID<uint8_t, struct AdminIDTag, 16, 0xFF>;
 
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
-	uint16_t num_vehicle[NETWORK_VEH_END];            ///< How many vehicles are there of this type?
-	uint16_t num_station[NETWORK_VEH_END];            ///< How many stations are there of this type?
-	bool ai;                                        ///< Is this company an AI
+	uint16_t num_vehicle[NETWORK_VEH_END]; ///< How many vehicles are there of this type?
+	uint16_t num_station[NETWORK_VEH_END]; ///< How many stations are there of this type?
+	bool ai; ///< Is this company an AI
 };
 
 struct NetworkClientInfo;
@@ -67,8 +67,8 @@ struct NetworkClientInfo;
  */
 enum DestType : uint8_t {
 	DESTTYPE_BROADCAST, ///< Send message/notice to all clients (All)
-	DESTTYPE_TEAM,      ///< Send message/notice to everyone playing the same company (Team)
-	DESTTYPE_CLIENT,    ///< Send message/notice to only a certain client (Private)
+	DESTTYPE_TEAM, ///< Send message/notice to everyone playing the same company (Team)
+	DESTTYPE_CLIENT, ///< Send message/notice to only a certain client (Private)
 };
 DECLARE_ENUM_AS_ADDABLE(DestType)
 

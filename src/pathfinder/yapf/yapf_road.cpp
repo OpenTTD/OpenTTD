@@ -8,16 +8,15 @@
 /** @file yapf_road.cpp The road pathfinding. */
 
 #include "../../stdafx.h"
+
+#include "../../roadstop_base.h"
 #include "yapf.hpp"
 #include "yapf_node_road.hpp"
-#include "../../roadstop_base.h"
 
 #include "../../safeguards.h"
 
-
 template <class Types>
-class CYapfCostRoadT
-{
+class CYapfCostRoadT {
 public:
 	typedef typename Types::Tpf Tpf; ///< pathfinder (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower; ///< track follower helper
@@ -182,10 +181,8 @@ public:
 	}
 };
 
-
 template <class Types>
-class CYapfDestinationAnyDepotRoadT
-{
+class CYapfDestinationAnyDepotRoadT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
@@ -220,10 +217,8 @@ public:
 	}
 };
 
-
 template <class Types>
-class CYapfDestinationTileRoadT
-{
+class CYapfDestinationTileRoadT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
@@ -281,10 +276,7 @@ public:
 	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
 		if (this->dest_station != StationID::Invalid()) {
-			return IsTileType(tile, MP_STATION) &&
-				GetStationIndex(tile) == this->dest_station &&
-				(this->station_type == GetStationType(tile)) &&
-				(this->non_artic || IsDriveThroughStopTile(tile));
+			return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == this->dest_station && (this->station_type == GetStationType(tile)) && (this->non_artic || IsDriveThroughStopTile(tile));
 		}
 
 		return tile == this->dest_tile && HasTrackdir(this->dest_trackdirs, trackdir);
@@ -320,11 +312,8 @@ public:
 	}
 };
 
-
-
 template <class Types>
-class CYapfFollowRoadT
-{
+class CYapfFollowRoadT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
@@ -339,7 +328,6 @@ protected:
 	}
 
 public:
-
 	/**
 	 * Called by YAPF to move from the given node to the next tile. For each
 	 *  reachable trackdir on the new tile creates new node, initializes it
@@ -422,7 +410,9 @@ public:
 					non_cached_area.Expand(YAPF_ROADVEH_PATH_CACHE_DESTINATION_LIMIT);
 
 					/* Find the first tile not contained by the non-cachable area, and remove from the cache. */
-					auto it = std::find_if(std::begin(path_cache), std::end(path_cache), [&non_cached_area](const auto &pc) { return !non_cached_area.Contains(pc.tile); });
+					auto it = std::find_if(std::begin(path_cache), std::end(path_cache), [&non_cached_area](const auto &pc) {
+						return !non_cached_area.Contains(pc.tile);
+					});
 					path_cache.erase(std::begin(path_cache), it);
 				}
 			}
@@ -503,34 +493,34 @@ public:
 };
 
 template <class Tpf_, class Tnode_list, template <class Types> class Tdestination>
-struct CYapfRoad_TypesT
-{
-	typedef CYapfRoad_TypesT<Tpf_, Tnode_list, Tdestination>  Types;
+struct CYapfRoad_TypesT {
+	typedef CYapfRoad_TypesT<Tpf_, Tnode_list, Tdestination> Types;
 
-	typedef Tpf_                              Tpf;
-	typedef CFollowTrackRoad                  TrackFollower;
-	typedef Tnode_list                        NodeList;
-	typedef RoadVehicle                       VehicleType;
-	typedef CYapfBaseT<Types>                 PfBase;
-	typedef CYapfFollowRoadT<Types>           PfFollow;
-	typedef CYapfOriginTileT<Types>           PfOrigin;
-	typedef Tdestination<Types>               PfDestination;
+	typedef Tpf_ Tpf;
+	typedef CFollowTrackRoad TrackFollower;
+	typedef Tnode_list NodeList;
+	typedef RoadVehicle VehicleType;
+	typedef CYapfBaseT<Types> PfBase;
+	typedef CYapfFollowRoadT<Types> PfFollow;
+	typedef CYapfOriginTileT<Types> PfOrigin;
+	typedef Tdestination<Types> PfDestination;
 	typedef CYapfSegmentCostCacheNoneT<Types> PfCache;
-	typedef CYapfCostRoadT<Types>             PfCost;
+	typedef CYapfCostRoadT<Types> PfCost;
 };
 
-struct CYapfRoad1         : CYapfT<CYapfRoad_TypesT<CYapfRoad1        , CRoadNodeListTrackDir, CYapfDestinationTileRoadT    > > {};
-struct CYapfRoad2         : CYapfT<CYapfRoad_TypesT<CYapfRoad2        , CRoadNodeListExitDir , CYapfDestinationTileRoadT    > > {};
+struct CYapfRoad1 : CYapfT<CYapfRoad_TypesT<CYapfRoad1, CRoadNodeListTrackDir, CYapfDestinationTileRoadT>> {};
 
-struct CYapfRoadAnyDepot1 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot1, CRoadNodeListTrackDir, CYapfDestinationAnyDepotRoadT> > {};
-struct CYapfRoadAnyDepot2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot2, CRoadNodeListExitDir , CYapfDestinationAnyDepotRoadT> > {};
+struct CYapfRoad2 : CYapfT<CYapfRoad_TypesT<CYapfRoad2, CRoadNodeListExitDir, CYapfDestinationTileRoadT>> {};
 
+struct CYapfRoadAnyDepot1 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot1, CRoadNodeListTrackDir, CYapfDestinationAnyDepotRoadT>> {};
+
+struct CYapfRoadAnyDepot2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot2, CRoadNodeListExitDir, CYapfDestinationAnyDepotRoadT>> {};
 
 Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found, RoadVehPathCache &path_cache)
 {
-	Trackdir td_ret = _settings_game.pf.yapf.disable_node_optimization
-		? CYapfRoad1::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache) // Trackdir
-		: CYapfRoad2::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache); // ExitDir, allow 90-deg
+	Trackdir td_ret = _settings_game.pf.yapf.disable_node_optimization ? CYapfRoad1::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache) // Trackdir
+																		 :
+																		 CYapfRoad2::stChooseRoadTrack(v, tile, enterdir, path_found, path_cache); // ExitDir, allow 90-deg
 
 	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit(trackdirs);
 }
@@ -544,7 +534,7 @@ FindDepotData YapfRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_dist
 		return FindDepotData();
 	}
 
-	return _settings_game.pf.yapf.disable_node_optimization
-		? CYapfRoadAnyDepot1::stFindNearestDepot(v, tile, trackdir, max_distance) // Trackdir
-		: CYapfRoadAnyDepot2::stFindNearestDepot(v, tile, trackdir, max_distance); // ExitDir
+	return _settings_game.pf.yapf.disable_node_optimization ? CYapfRoadAnyDepot1::stFindNearestDepot(v, tile, trackdir, max_distance) // Trackdir
+															  :
+															  CYapfRoadAnyDepot2::stFindNearestDepot(v, tile, trackdir, max_distance); // ExitDir
 }

@@ -8,13 +8,14 @@
 /** @file ship_gui.cpp GUI for ships. */
 
 #include "stdafx.h"
-#include "vehicle_base.h"
-#include "window_gui.h"
+
 #include "gfx_func.h"
-#include "vehicle_gui.h"
-#include "strings_func.h"
-#include "vehicle_func.h"
 #include "spritecache.h"
+#include "strings_func.h"
+#include "vehicle_base.h"
+#include "vehicle_func.h"
+#include "vehicle_gui.h"
+#include "window_gui.h"
 #include "zoom_func.h"
 
 #include "table/strings.h"

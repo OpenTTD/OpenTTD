@@ -22,32 +22,32 @@
  * </ol>
  */
 
-
 #include "stdafx.h"
 
-#include "aircraft.h"
 #include "disaster_vehicle.h"
-#include "industry.h"
-#include "station_base.h"
-#include "command_func.h"
-#include "news_func.h"
-#include "town.h"
-#include "company_func.h"
-#include "strings_func.h"
-#include "viewport_func.h"
-#include "vehicle_func.h"
-#include "sound_func.h"
-#include "effectvehicle_func.h"
-#include "roadveh.h"
-#include "train.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
-#include "company_base.h"
-#include "core/random_func.hpp"
+
 #include "core/backup_type.hpp"
+#include "core/random_func.hpp"
+#include "ai/ai.hpp"
+#include "aircraft.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "effectvehicle_func.h"
+#include "game/game.hpp"
+#include "industry.h"
 #include "landscape_cmd.h"
+#include "news_func.h"
+#include "roadveh.h"
+#include "sound_func.h"
+#include "station_base.h"
+#include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
+#include "town.h"
+#include "train.h"
+#include "vehicle_func.h"
+#include "viewport_func.h"
 
 #include "table/strings.h"
 
@@ -90,23 +90,26 @@ static void DisasterClearSquare(TileIndex tile)
 }
 
 static const SpriteID _disaster_images_1[] = {SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP};
-static const SpriteID _disaster_images_2[] = {SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT};
+static const SpriteID _disaster_images_2[] = {
+	SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT};
 static const SpriteID _disaster_images_3[] = {SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15};
 static const SpriteID _disaster_images_4[] = {SPR_SUB_SMALL_NE, SPR_SUB_SMALL_NE, SPR_SUB_SMALL_SE, SPR_SUB_SMALL_SE, SPR_SUB_SMALL_SW, SPR_SUB_SMALL_SW, SPR_SUB_SMALL_NW, SPR_SUB_SMALL_NW};
 static const SpriteID _disaster_images_5[] = {SPR_SUB_LARGE_NE, SPR_SUB_LARGE_NE, SPR_SUB_LARGE_SE, SPR_SUB_LARGE_SE, SPR_SUB_LARGE_SW, SPR_SUB_LARGE_SW, SPR_SUB_LARGE_NW, SPR_SUB_LARGE_NW};
 static const SpriteID _disaster_images_6[] = {SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER};
-static const SpriteID _disaster_images_7[] = {SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER};
+static const SpriteID _disaster_images_7[] = {
+	SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER};
 static const SpriteID _disaster_images_8[] = {SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A};
-static const SpriteID _disaster_images_9[] = {SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1};
+static const SpriteID _disaster_images_9[] = {
+	SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1};
 
-static const SpriteID * const _disaster_images[] = {
-	_disaster_images_1, _disaster_images_1,                     ///< zeppeliner and zeppeliner shadow
-	_disaster_images_2, _disaster_images_2,                     ///< small ufo and small ufo shadow
-	_disaster_images_3, _disaster_images_3,                     ///< combat aircraft and shadow
+static const SpriteID *const _disaster_images[] = {
+	_disaster_images_1, _disaster_images_1, ///< zeppeliner and zeppeliner shadow
+	_disaster_images_2, _disaster_images_2, ///< small ufo and small ufo shadow
+	_disaster_images_3, _disaster_images_3, ///< combat aircraft and shadow
 	_disaster_images_8, _disaster_images_8, _disaster_images_9, ///< combat helicopter, shadow and rotor
-	_disaster_images_6, _disaster_images_6,                     ///< big ufo and shadow
-	_disaster_images_7, _disaster_images_7,                     ///< skyranger and shadow
-	_disaster_images_4, _disaster_images_5,                     ///< small and big submarine sprites
+	_disaster_images_6, _disaster_images_6, ///< big ufo and shadow
+	_disaster_images_7, _disaster_images_7, ///< skyranger and shadow
+	_disaster_images_4, _disaster_images_5, ///< small and big submarine sprites
 };
 
 void DisasterVehicle::UpdateImage()
@@ -125,7 +128,7 @@ void DisasterVehicle::UpdateImage()
  * @param big_ufo_destroyer_target The target for the UFO destroyer.
  */
 DisasterVehicle::DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target) :
-		SpecializedVehicleBase(), big_ufo_destroyer_target(big_ufo_destroyer_target)
+	SpecializedVehicleBase(), big_ufo_destroyer_target(big_ufo_destroyer_target)
 {
 	this->vehstatus = VehState::Unclickable;
 
@@ -288,11 +291,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		if (GB(v->tick_counter, 0, 3) == 0) {
 			uint32_t r = Random();
 
-			CreateEffectVehicleRel(v,
-				GB(r, 0, 4) - 7,
-				GB(r, 4, 4) - 7,
-				GB(r, 8, 3) + 5,
-				EV_EXPLOSION_SMALL);
+			CreateEffectVehicleRel(v, GB(r, 0, 4) - 7, GB(r, 4, 4) - 7, GB(r, 8, 3) + 5, EV_EXPLOSION_SMALL);
 		}
 	} else if (v->age == 350) {
 		v->state = 3;
@@ -448,11 +447,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 			int y = TileY(i->location.tile) * TILE_SIZE;
 			uint32_t r = Random();
 
-			CreateEffectVehicleAbove(
-				GB(r,  0, 6) + x,
-				GB(r,  6, 6) + y,
-				GB(r, 12, 4),
-				EV_EXPLOSION_SMALL);
+			CreateEffectVehicleAbove(GB(r, 0, 6) + x, GB(r, 6, 6) + y, GB(r, 12, 4), EV_EXPLOSION_SMALL);
 
 			if (++v->age >= 55) v->state = 3;
 		}
@@ -645,11 +640,7 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 
 		for (int i = 0; i != 80; i++) {
 			uint32_t r = Random();
-			CreateEffectVehicleAbove(
-				GB(r, 0, 6) + v->x_pos - 32,
-				GB(r, 5, 6) + v->y_pos - 32,
-				0,
-				EV_EXPLOSION_SMALL);
+			CreateEffectVehicleAbove(GB(r, 0, 6) + v->x_pos - 32, GB(r, 5, 6) + v->y_pos - 32, 0, EV_EXPLOSION_SMALL);
 		}
 
 		for (int dy = -3; dy < 3; dy++) {
@@ -693,7 +684,6 @@ static bool DisasterTick_Submarine(DisasterVehicle *v)
 	return true;
 }
 
-
 static bool DisasterTick_NULL(DisasterVehicle *)
 {
 	return true;
@@ -701,17 +691,23 @@ static bool DisasterTick_NULL(DisasterVehicle *)
 
 typedef bool DisasterVehicleTickProc(DisasterVehicle *v);
 
-static DisasterVehicleTickProc * const _disastervehicle_tick_procs[] = {
-	DisasterTick_Zeppeliner, DisasterTick_NULL,
-	DisasterTick_Ufo,        DisasterTick_NULL,
-	DisasterTick_Airplane,   DisasterTick_NULL,
-	DisasterTick_Helicopter, DisasterTick_NULL, DisasterTick_Helicopter_Rotors,
-	DisasterTick_Big_Ufo,    DisasterTick_NULL, DisasterTick_Big_Ufo_Destroyer,
+static DisasterVehicleTickProc *const _disastervehicle_tick_procs[] = {
+	DisasterTick_Zeppeliner,
+	DisasterTick_NULL,
+	DisasterTick_Ufo,
+	DisasterTick_NULL,
+	DisasterTick_Airplane,
+	DisasterTick_NULL,
+	DisasterTick_Helicopter,
+	DisasterTick_NULL,
+	DisasterTick_Helicopter_Rotors,
+	DisasterTick_Big_Ufo,
+	DisasterTick_NULL,
+	DisasterTick_Big_Ufo_Destroyer,
 	DisasterTick_NULL,
 	DisasterTick_Submarine,
 	DisasterTick_Submarine,
 };
-
 
 bool DisasterVehicle::Tick()
 {
@@ -719,7 +715,6 @@ bool DisasterVehicle::Tick()
 }
 
 typedef void DisasterInitProc();
-
 
 /**
  * Zeppeliner which crashes on a small airport if one found,
@@ -745,7 +740,6 @@ static void Disaster_Zeppeliner_Init()
 	v->SetNext(u);
 }
 
-
 /**
  * Ufo which flies around aimlessly from the middle of the map a bit
  * until it locates a road vehicle which it targets and then destroys
@@ -763,7 +757,6 @@ static void Disaster_Small_Ufo_Init()
 	v->SetNext(u);
 }
 
-
 /* Combat airplane which destroys an oil refinery */
 static void Disaster_Airplane_Init()
 {
@@ -772,8 +765,7 @@ static void Disaster_Airplane_Init()
 	Industry *found = nullptr;
 
 	for (Industry *i : Industry::Iterate()) {
-		if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::AirplaneAttacks) &&
-				(found == nullptr || Chance16(1, 2))) {
+		if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::AirplaneAttacks) && (found == nullptr || Chance16(1, 2))) {
 			found = i;
 		}
 	}
@@ -789,7 +781,6 @@ static void Disaster_Airplane_Init()
 	v->SetNext(u);
 }
 
-
 /** Combat helicopter that destroys a factory */
 static void Disaster_Helicopter_Init()
 {
@@ -798,8 +789,7 @@ static void Disaster_Helicopter_Init()
 	Industry *found = nullptr;
 
 	for (Industry *i : Industry::Iterate()) {
-		if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::ChopperAttacks) &&
-				(found == nullptr || Chance16(1, 2))) {
+		if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::ChopperAttacks) && (found == nullptr || Chance16(1, 2))) {
 			found = i;
 		}
 	}
@@ -817,7 +807,6 @@ static void Disaster_Helicopter_Init()
 	u->SetNext(w);
 }
 
-
 /* Big Ufo which lands on a piece of rail and will consequently be shot
  * down by a combat airplane, destroying the surroundings */
 static void Disaster_Big_Ufo_Init()
@@ -834,7 +823,6 @@ static void Disaster_Big_Ufo_Init()
 	DisasterVehicle *u = new DisasterVehicle(x, y, DIR_NW, ST_BIG_UFO_SHADOW);
 	v->SetNext(u);
 }
-
 
 static void Disaster_Submarine_Init(DisasterSubType subtype)
 {
@@ -864,13 +852,11 @@ static void Disaster_Small_Submarine_Init()
 	Disaster_Submarine_Init(ST_SMALL_SUBMARINE);
 }
 
-
 /* Curious submarine #2, just floats around */
 static void Disaster_Big_Submarine_Init()
 {
 	Disaster_Submarine_Init(ST_BIG_SUBMARINE);
 }
-
 
 /**
  * Coal mine catastrophe, destroys a stretch of 30 tiles of
@@ -884,7 +870,8 @@ static void Disaster_CoalMine_Init()
 	for (m = 0; m < 15; m++) {
 		for (const Industry *i : Industry::Iterate()) {
 			if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::CanSubsidence) && --index < 0) {
-				AddTileNewsItem(GetEncodedString(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, i->town->index), NewsType::Accident, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
+				AddTileNewsItem(
+					GetEncodedString(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, i->town->index), NewsType::Accident, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
 
 				{
 					TileIndex tile = i->location.tile;
@@ -903,20 +890,20 @@ static void Disaster_CoalMine_Init()
 }
 
 struct Disaster {
-	DisasterInitProc *init_proc;      ///< The init function for this disaster.
+	DisasterInitProc *init_proc; ///< The init function for this disaster.
 	TimerGameCalendar::Year min_year; ///< The first year this disaster will occur.
 	TimerGameCalendar::Year max_year; ///< The last year this disaster will occur.
 };
 
 static const Disaster _disasters[] = {
-	{Disaster_Zeppeliner_Init,      TimerGameCalendar::Year{1930}, TimerGameCalendar::Year{1955}}, // zeppeliner
-	{Disaster_Small_Ufo_Init,       TimerGameCalendar::Year{1940}, TimerGameCalendar::Year{1970}}, // ufo {small}
-	{Disaster_Airplane_Init,        TimerGameCalendar::Year{1960}, TimerGameCalendar::Year{1990}}, // airplane
-	{Disaster_Helicopter_Init,      TimerGameCalendar::Year{1970}, TimerGameCalendar::Year{2000}}, // helicopter
-	{Disaster_Big_Ufo_Init,         TimerGameCalendar::Year{2000}, TimerGameCalendar::Year{2100}}, // ufo {big}
+	{Disaster_Zeppeliner_Init, TimerGameCalendar::Year{1930}, TimerGameCalendar::Year{1955}}, // zeppeliner
+	{Disaster_Small_Ufo_Init, TimerGameCalendar::Year{1940}, TimerGameCalendar::Year{1970}}, // ufo {small}
+	{Disaster_Airplane_Init, TimerGameCalendar::Year{1960}, TimerGameCalendar::Year{1990}}, // airplane
+	{Disaster_Helicopter_Init, TimerGameCalendar::Year{1970}, TimerGameCalendar::Year{2000}}, // helicopter
+	{Disaster_Big_Ufo_Init, TimerGameCalendar::Year{2000}, TimerGameCalendar::Year{2100}}, // ufo {big}
 	{Disaster_Small_Submarine_Init, TimerGameCalendar::Year{1940}, TimerGameCalendar::Year{1965}}, // submarine {small}
-	{Disaster_Big_Submarine_Init,   TimerGameCalendar::Year{1975}, TimerGameCalendar::Year{2010}}, // submarine {big}
-	{Disaster_CoalMine_Init,        TimerGameCalendar::Year{1950}, TimerGameCalendar::Year{1985}}, // coalmine
+	{Disaster_Big_Submarine_Init, TimerGameCalendar::Year{1975}, TimerGameCalendar::Year{2010}}, // submarine {big}
+	{Disaster_CoalMine_Init, TimerGameCalendar::Year{1950}, TimerGameCalendar::Year{1985}}, // coalmine
 };
 
 static void DoDisaster()
@@ -934,14 +921,12 @@ static void DoDisaster()
 	available_disasters[RandomRange(static_cast<uint32_t>(available_disasters.size()))]();
 }
 
-
 static void ResetDisasterDelay()
 {
 	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
-static IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::DISASTER}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::DISASTER}, [](auto) {
 	if (--_disaster_delay != 0) return;
 
 	ResetDisasterDelay();
@@ -992,9 +977,9 @@ void ReleaseDisasterVehicle(VehicleID vehicle)
 
 void DisasterVehicle::UpdateDeltaXY()
 {
-	this->x_offs        = -1;
-	this->y_offs        = -1;
-	this->x_extent      =  2;
-	this->y_extent      =  2;
-	this->z_extent      =  5;
+	this->x_offs = -1;
+	this->y_offs = -1;
+	this->x_extent = 2;
+	this->y_extent = 2;
+	this->z_extent = 5;
 }

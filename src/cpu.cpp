@@ -8,6 +8,7 @@
 /** @file cpu.cpp OS/CPU/compiler dependent CPU specific calls. */
 
 #include "stdafx.h"
+
 #include "core/bitmath_func.hpp"
 
 #include "safeguards.h"
@@ -31,7 +32,7 @@ void ottd_cpuid(int info[4], int type)
 #elif defined(__x86_64__) || defined(__i386)
 void ottd_cpuid(int info[4], int type)
 {
-#if defined(__i386) && defined(__PIC__)
+#	if defined(__i386) && defined(__PIC__)
 	/* The easy variant would be just cpuid, however... ebx is being used by the GOT (Global Offset Table)
 	 * in case of PIC;
 	 * clobbering ebx is no alternative: some compiler versions don't like this
@@ -48,13 +49,9 @@ void ottd_cpuid(int info[4], int type)
 			 */
 			: "a" (type)
 	);
-#else
-	__asm__ __volatile__ (
-			"cpuid           \n\t"
-			: "=a" (info[0]), "=b" (info[1]), "=c" (info[2]), "=d" (info[3])
-			: "a" (type)
-	);
-#endif /* i386 PIC */
+#	else
+	__asm__ __volatile__("cpuid           \n\t" : "=a"(info[0]), "=b"(info[1]), "=c"(info[2]), "=d"(info[3]) : "a"(type));
+#	endif /* i386 PIC */
 }
 #elif defined(__e2k__) /* MCST Elbrus 2000*/
 void ottd_cpuid(int info[4], int type)
@@ -63,15 +60,15 @@ void ottd_cpuid(int info[4], int type)
 	if (type == 0) {
 		info[0] = 1;
 	} else if (type == 1) {
-#if defined(__SSE4_1__)
-		info[2] |= (1<<19); /* HasCPUIDFlag(1, 2, 19) */
-#endif
-#if defined(__SSSE3__)
-		info[2] |= (1<<9); /* HasCPUIDFlag(1, 2, 9) */
-#endif
-#if defined(__SSE2__)
-		info[3] |= (1<<26); /* HasCPUIDFlag(1, 3, 26) */
-#endif
+#	if defined(__SSE4_1__)
+		info[2] |= (1 << 19); /* HasCPUIDFlag(1, 2, 19) */
+#	endif
+#	if defined(__SSSE3__)
+		info[2] |= (1 << 9); /* HasCPUIDFlag(1, 2, 9) */
+#	endif
+#	if defined(__SSE2__)
+		info[3] |= (1 << 26); /* HasCPUIDFlag(1, 3, 26) */
+#	endif
 	}
 }
 #else

@@ -19,14 +19,21 @@ public:
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
 	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
 
-	std::string_view GetName() override { return "8bpp-simple"; }
+	std::string_view GetName() override
+	{
+		return "8bpp-simple";
+	}
 };
 
 /** Factory for the most trivial 8bpp blitter. */
 class FBlitter_8bppSimple : public BlitterFactory {
 public:
 	FBlitter_8bppSimple() : BlitterFactory("8bpp-simple", "8bpp Simple Blitter (relative slow, but never wrong)") {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_8bppSimple>(); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::make_unique<Blitter_8bppSimple>();
+	}
 };
 
 #endif /* BLITTER_8BPP_SIMPLE_HPP */

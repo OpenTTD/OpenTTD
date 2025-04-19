@@ -8,6 +8,7 @@
 /** @file object_gui.cpp The GUI for objects. */
 
 #include "stdafx.h"
+
 #include "command_func.h"
 #include "company_func.h"
 #include "hotkeys.h"
@@ -17,20 +18,19 @@
 #include "newgrf_text.h"
 #include "object.h"
 #include "object_base.h"
+#include "object_cmd.h"
 #include "picker_gui.h"
+#include "road_cmd.h"
 #include "sound_func.h"
 #include "strings_func.h"
-#include "viewport_func.h"
-#include "tilehighlight_func.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "zoom_func.h"
 #include "terraform_cmd.h"
-#include "object_cmd.h"
-#include "road_cmd.h"
+#include "tilehighlight_func.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/object_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -40,16 +40,27 @@ struct ObjectPickerSelection {
 	uint16_t sel_type; ///< Selected object type within the class.
 	uint8_t sel_view; ///< Selected view of the object.
 };
+
 static ObjectPickerSelection _object_gui; ///< Settings of the object picker.
 
 class ObjectPickerCallbacks : public PickerCallbacksNewGRFClass<ObjectClass> {
 public:
 	ObjectPickerCallbacks() : PickerCallbacksNewGRFClass<ObjectClass>("fav_objects") {}
 
-	GrfSpecFeature GetFeature() const override { return GSF_OBJECTS; }
+	GrfSpecFeature GetFeature() const override
+	{
+		return GSF_OBJECTS;
+	}
 
-	StringID GetClassTooltip() const override { return STR_PICKER_OBJECT_CLASS_TOOLTIP; }
-	StringID GetTypeTooltip() const override { return STR_PICKER_OBJECT_TYPE_TOOLTIP; }
+	StringID GetClassTooltip() const override
+	{
+		return STR_PICKER_OBJECT_CLASS_TOOLTIP;
+	}
+
+	StringID GetTypeTooltip() const override
+	{
+		return STR_PICKER_OBJECT_TYPE_TOOLTIP;
+	}
 
 	bool IsActive() const override
 	{
@@ -61,8 +72,15 @@ public:
 		return false;
 	}
 
-	int GetSelectedClass() const override { return _object_gui.sel_class; }
-	void SetSelectedClass(int id) const override { _object_gui.sel_class = this->GetClassIndex(id); }
+	int GetSelectedClass() const override
+	{
+		return _object_gui.sel_class;
+	}
+
+	void SetSelectedClass(int id) const override
+	{
+		_object_gui.sel_class = this->GetClassIndex(id);
+	}
 
 	StringID GetClassName(int id) const override
 	{
@@ -71,8 +89,15 @@ public:
 		return objclass->name;
 	}
 
-	int GetSelectedType() const override { return _object_gui.sel_type; }
-	void SetSelectedType(int id) const override { _object_gui.sel_type = id; }
+	int GetSelectedType() const override
+	{
+		return _object_gui.sel_type;
+	}
+
+	void SetSelectedType(int id) const override
+	{
+		_object_gui.sel_type = id;
+	}
 
 	StringID GetTypeName(int cls_id, int id) const override
 	{
@@ -117,6 +142,7 @@ public:
 
 	static ObjectPickerCallbacks instance;
 };
+
 /* static */ ObjectPickerCallbacks ObjectPickerCallbacks::instance;
 
 /** The window used for building objects. */
@@ -164,7 +190,7 @@ public:
 				const ObjectClass *objclass = ObjectClass::Get(_object_gui.sel_class);
 				const ObjectSpec *spec = objclass->GetSpec(_object_gui.sel_type);
 				if (spec != nullptr) {
-					if (spec->views >= 2) size.width  += resize.width;
+					if (spec->views >= 2) size.width += resize.width;
 					if (spec->views >= 4) size.height += resize.height;
 				}
 				resize.width = 0;
@@ -176,7 +202,7 @@ public:
 				/* Get the right amount of buttons based on the current spec. */
 				const ObjectClass *objclass = ObjectClass::Get(_object_gui.sel_class);
 				const ObjectSpec *spec = objclass->GetSpec(_object_gui.sel_type);
-				size.width  = ScaleGUITrad(PREVIEW_WIDTH) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size.width = ScaleGUITrad(PREVIEW_WIDTH) + WidgetDimensions::scaled.fullbevel.Horizontal();
 				size.height = ScaleGUITrad(PREVIEW_HEIGHT) + WidgetDimensions::scaled.fullbevel.Vertical();
 				if (spec != nullptr) {
 					if (spec->views <= 1) size.width = size.width * 2 + WidgetDimensions::scaled.hsep_normal;
@@ -210,7 +236,7 @@ public:
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				if (FillDrawPixelInfo(&tmp_dpi, ir)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
-					int x = (ir.Width()  - ScaleSpriteTrad(PREVIEW_WIDTH)) / 2 + ScaleSpriteTrad(PREVIEW_LEFT);
+					int x = (ir.Width() - ScaleSpriteTrad(PREVIEW_WIDTH)) / 2 + ScaleSpriteTrad(PREVIEW_LEFT);
 					int y = (ir.Height() + ScaleSpriteTrad(PREVIEW_HEIGHT)) / 2 - ScaleSpriteTrad(PREVIEW_BOTTOM);
 
 					if (!spec->grf_prop.HasGrfFile()) {
@@ -339,7 +365,8 @@ public:
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
+	void OnPlaceMouseUp(
+		[[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (pt.x == -1) return;
 
@@ -352,8 +379,7 @@ public:
 			if (TileY(end_tile) == Map::MaxY()) end_tile += TileDiffXY(0, -1);
 		}
 		const ObjectSpec *spec = ObjectClass::Get(_object_gui.sel_class)->GetSpec(_object_gui.sel_type);
-		Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
-			end_tile, start_tile, spec->Index(), _object_gui.sel_view, (_ctrl_pressed ? true : false));
+		Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER, end_tile, start_tile, spec->Index(), _object_gui.sel_view, (_ctrl_pressed ? true : false));
 	}
 
 	void OnPlaceObjectAbort() override
@@ -374,9 +400,11 @@ public:
 		return w->OnHotkey(hotkey);
 	}
 
-	static inline HotkeyList hotkeys{"buildobject", {
-		Hotkey('F', "focus_filter_box", PCWHK_FOCUS_FILTER_BOX),
-	}, BuildObjectGlobalHotkeys};
+	static inline HotkeyList hotkeys{"buildobject",
+		{
+			Hotkey('F', "focus_filter_box", PCWHK_FOCUS_FILTER_BOX),
+		},
+		BuildObjectGlobalHotkeys};
 };
 
 /* clang-format off */
@@ -409,13 +437,7 @@ static constexpr NWidgetPart _nested_build_object_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _build_object_desc(
-	WDP_AUTO, "build_object", 0, 0,
-	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
-	WindowDefaultFlag::Construction,
-	_nested_build_object_widgets,
-	&BuildObjectWindow::hotkeys
-);
+static WindowDesc _build_object_desc(WDP_AUTO, "build_object", 0, 0, WC_BUILD_OBJECT, WC_BUILD_TOOLBAR, WindowDefaultFlag::Construction, _nested_build_object_widgets, &BuildObjectWindow::hotkeys);
 
 /** Show our object picker.  */
 Window *ShowBuildObjectPicker()

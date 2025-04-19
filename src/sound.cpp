@@ -8,17 +8,18 @@
 /** @file sound.cpp Handling of playing sounds. */
 
 #include "stdafx.h"
+
+#include "base_media_func.h"
+#include "base_media_sounds.h"
 #include "landscape.h"
-#include "sound_type.h"
-#include "soundloader_func.h"
 #include "mixer.h"
 #include "newgrf_sound.h"
 #include "random_access_file_type.h"
+#include "sound_type.h"
+#include "soundloader_func.h"
+#include "vehicle_base.h"
 #include "window_func.h"
 #include "window_gui.h"
-#include "vehicle_base.h"
-#include "base_media_func.h"
-#include "base_media_sounds.h"
 
 #include "safeguards.h"
 
@@ -93,7 +94,6 @@ void InitializeSound()
 	OpenBankFile(BaseSounds::GetUsedSet()->files[0].filename);
 }
 
-
 /* Low level sound player */
 static void StartSound(SoundID sound_id, float pan, uint volume)
 {
@@ -120,33 +120,158 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 	MxActivateChannel(mc);
 }
 
-
 static const uint8_t _vol_factor_by_zoom[] = {255, 255, 255, 190, 134, 87};
 static_assert(lengthof(_vol_factor_by_zoom) == ZOOM_LVL_END);
 
 static const uint8_t _sound_base_vol[] = {
-	128,  90, 128, 128, 128, 128, 128, 128,
-	128,  90,  90, 128, 128, 128, 128, 128,
-	128, 128, 128,  80, 128, 128, 128, 128,
-	128, 128, 128, 128, 128, 128, 128, 128,
-	128, 128,  90,  90,  90, 128,  90, 128,
-	128,  90, 128, 128, 128,  90, 128, 128,
-	128, 128, 128, 128,  90, 128, 128, 128,
-	128,  90, 128, 128, 128, 128, 128, 128,
-	128, 128,  90,  90,  90, 128, 128, 128,
-	 90,
+	128,
+	90,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	90,
+	90,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	80,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	90,
+	90,
+	90,
+	128,
+	90,
+	128,
+	128,
+	90,
+	128,
+	128,
+	128,
+	90,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	90,
+	128,
+	128,
+	128,
+	128,
+	90,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	128,
+	90,
+	90,
+	90,
+	128,
+	128,
+	128,
+	90,
 };
 
 static const uint8_t _sound_idx[] = {
-	 2,  3,  4,  5,  6,  7,  8,  9,
-	10, 11, 12, 13, 14, 15, 16, 17,
-	18, 19, 20, 21, 22, 23, 24, 25,
-	26, 27, 28, 29, 30, 31, 32, 33,
-	34, 35, 36, 37, 38, 39, 40,  0,
-	 1, 41, 42, 43, 44, 45, 46, 47,
-	48, 49, 50, 51, 52, 53, 54, 55,
-	56, 57, 58, 59, 60, 61, 62, 63,
-	64, 65, 66, 67, 68, 69, 70, 71,
+	2,
+	3,
+	4,
+	5,
+	6,
+	7,
+	8,
+	9,
+	10,
+	11,
+	12,
+	13,
+	14,
+	15,
+	16,
+	17,
+	18,
+	19,
+	20,
+	21,
+	22,
+	23,
+	24,
+	25,
+	26,
+	27,
+	28,
+	29,
+	30,
+	31,
+	32,
+	33,
+	34,
+	35,
+	36,
+	37,
+	38,
+	39,
+	40,
+	0,
+	1,
+	41,
+	42,
+	43,
+	44,
+	45,
+	46,
+	47,
+	48,
+	49,
+	50,
+	51,
+	52,
+	53,
+	54,
+	55,
+	56,
+	57,
+	58,
+	59,
+	60,
+	61,
+	62,
+	63,
+	64,
+	65,
+	66,
+	67,
+	68,
+	69,
+	70,
+	71,
 	72,
 };
 
@@ -206,17 +331,12 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 		if (w->viewport == nullptr) continue;
 
 		const Viewport &vp = *w->viewport;
-		if (left < vp.virtual_left + vp.virtual_width && right > vp.virtual_left &&
-				top < vp.virtual_top + vp.virtual_height && bottom > vp.virtual_top) {
+		if (left < vp.virtual_left + vp.virtual_width && right > vp.virtual_left && top < vp.virtual_top + vp.virtual_height && bottom > vp.virtual_top) {
 			int screen_x = (left + right) / 2 - vp.virtual_left;
 			int width = (vp.virtual_width == 0 ? 1 : vp.virtual_width);
 			float panning = (float)screen_x / width;
 
-			StartSound(
-				sound,
-				panning,
-				_vol_factor_by_zoom[vp.zoom]
-			);
+			StartSound(sound, panning, _vol_factor_by_zoom[vp.zoom]);
 			return;
 		}
 	}
@@ -236,10 +356,7 @@ void SndPlayTileFx(SoundID sound, TileIndex tile)
 
 void SndPlayVehicleFx(SoundID sound, const Vehicle *v)
 {
-	SndPlayScreenCoordFx(sound,
-		v->coord.left, v->coord.right,
-		v->coord.top, v->coord.bottom
-	);
+	SndPlayScreenCoordFx(sound, v->coord.left, v->coord.right, v->coord.top, v->coord.bottom);
 }
 
 void SndPlayFx(SoundID sound)
@@ -248,7 +365,7 @@ void SndPlayFx(SoundID sound)
 }
 
 /** Names corresponding to the sound set's files */
-static const std::string_view _sound_file_names[] = { "samples" };
+static const std::string_view _sound_file_names[] = {"samples"};
 
 template <>
 /* static */ std::span<const std::string_view> BaseSet<SoundsSet>::GetFilenames()
@@ -272,11 +389,8 @@ template <>
 		/* Skip unusable sets */
 		if (c->GetNumMissing() != 0) continue;
 
-		if (best == nullptr ||
-				(best->fallback && !c->fallback) ||
-				best->valid_files < c->valid_files ||
-				(best->valid_files == c->valid_files &&
-					(best->shortname == c->shortname && best->version < c->version))) {
+		if (best == nullptr || (best->fallback && !c->fallback) || best->valid_files < c->valid_files ||
+			(best->valid_files == c->valid_files && (best->shortname == c->shortname && best->version < c->version))) {
 			best = c;
 		}
 	}

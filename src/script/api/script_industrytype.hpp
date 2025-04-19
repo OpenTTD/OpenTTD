@@ -10,8 +10,8 @@
 #ifndef SCRIPT_INDUSTRYTYPE_HPP
 #define SCRIPT_INDUSTRYTYPE_HPP
 
-#include "script_list.hpp"
 #include "../../industry_type.h"
+#include "script_list.hpp"
 
 /**
  * Class that handles all industry-type related functions.
@@ -24,7 +24,7 @@ public:
 	 */
 	enum SpecialIndustryType {
 		INDUSTRYTYPE_UNKNOWN = 0xFE, ///< Unknown/unspecific industrytype. (Usable for ScriptRail::BuildNewGRFRailStation())
-		INDUSTRYTYPE_TOWN    = 0xFF, ///< No industry, but town. (Usable for ScriptRail::BuildNewGRFRailStation())
+		INDUSTRYTYPE_TOWN = 0xFF, ///< No industry, but town. (Usable for ScriptRail::BuildNewGRFRailStation())
 	};
 
 	/**

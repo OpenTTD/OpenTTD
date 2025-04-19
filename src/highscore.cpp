@@ -8,14 +8,16 @@
 /** @file highscore.cpp Definition of functions used for highscore handling */
 
 #include "stdafx.h"
+
 #include "highscore.h"
+
+#include "cheat_func.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "cheat_func.h"
+#include "debug.h"
 #include "fileio_func.h"
 #include "string_func.h"
 #include "strings_func.h"
-#include "debug.h"
 
 #include "table/strings.h"
 
@@ -24,24 +26,11 @@
 HighScoresTable _highscore_table; ///< Table with all the high scores.
 std::string _highscore_file; ///< The file to store the highscore data in.
 
-static const StringID _endgame_perf_titles[] = {
-	STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL,
-	STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY
-};
+static const StringID _endgame_perf_titles[] = {STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN, STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN, STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN,
+	STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN, STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN, STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR, STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR,
+	STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST, STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST, STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST, STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST,
+	STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE, STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE, STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL, STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL,
+	STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY};
 
 StringID EndGameGetPerformanceTitleFromValue(uint value)
 {
@@ -60,7 +49,9 @@ int8_t SaveHighScoreValue(const Company *c)
 	auto &highscores = _highscore_table[SP_CUSTOM];
 	uint16_t score = c->old_economy[0].performance_history;
 
-	auto it = std::ranges::find_if(highscores, [&score](auto &highscore) { return highscore.score <= score; });
+	auto it = std::ranges::find_if(highscores, [&score](auto &highscore) {
+		return highscore.score <= score;
+	});
 
 	/* If we cannot find it, our score is not high enough. */
 	if (it == highscores.end()) return -1;
@@ -76,7 +67,7 @@ int8_t SaveHighScoreValue(const Company *c)
 }
 
 /** Sort all companies given their performance */
-static bool HighScoreSorter(const Company * const &a, const Company * const &b)
+static bool HighScoreSorter(const Company *const &a, const Company *const &b)
 {
 	return b->old_economy[0].performance_history < a->old_economy[0].performance_history;
 }
@@ -126,9 +117,8 @@ void SaveToHighScore()
 			/* This code is weird and old fashioned to keep compatibility with the old high score files. */
 			uint8_t name_length = ClampTo<uint8_t>(hs.name.size());
 			if (fwrite(&name_length, sizeof(name_length), 1, fp) != 1 || // Write the string length of the name
-					fwrite(hs.name.data(), name_length, 1, fp) > 1 || // Yes... could be 0 bytes too
-					fwrite(&hs.score, sizeof(hs.score), 1, fp) != 1 ||
-					fwrite("  ", 2, 1, fp) != 1) { // Used to be hs.title, not saved anymore; compatibility
+				fwrite(hs.name.data(), name_length, 1, fp) > 1 || // Yes... could be 0 bytes too
+				fwrite(&hs.score, sizeof(hs.score), 1, fp) != 1 || fwrite("  ", 2, 1, fp) != 1) { // Used to be hs.title, not saved anymore; compatibility
 				Debug(misc, 1, "Could not save highscore.");
 				return;
 			}
@@ -152,10 +142,8 @@ void LoadFromHighScore()
 			uint8_t name_length;
 			char buffer[std::numeric_limits<decltype(name_length)>::max() + 1];
 
-			if (fread(&name_length, sizeof(name_length), 1, fp) !=  1 ||
-					fread(buffer, name_length, 1, fp) > 1 || // Yes... could be 0 bytes too
-					fread(&hs.score, sizeof(hs.score), 1, fp) !=  1 ||
-					fseek(fp, 2, SEEK_CUR) == -1) { // Used to be hs.title, not saved anymore; compatibility
+			if (fread(&name_length, sizeof(name_length), 1, fp) != 1 || fread(buffer, name_length, 1, fp) > 1 || // Yes... could be 0 bytes too
+				fread(&hs.score, sizeof(hs.score), 1, fp) != 1 || fseek(fp, 2, SEEK_CUR) == -1) { // Used to be hs.title, not saved anymore; compatibility
 				Debug(misc, 1, "Highscore corrupted");
 				return;
 			}

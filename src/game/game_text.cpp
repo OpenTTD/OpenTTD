@@ -8,18 +8,20 @@
 /** @file game_text.cpp Implementation of handling translated strings. */
 
 #include "../stdafx.h"
-#include "../strgen/strgen.h"
+
+#include "game_text.hpp"
+
 #include "../debug.h"
 #include "../fileio_func.h"
-#include "../tar_type.h"
 #include "../script/squirrel_class.hpp"
+#include "../strgen/strgen.h"
 #include "../strings_func.h"
-#include "game_text.hpp"
+#include "../tar_type.h"
 #include "game.hpp"
 #include "game_info.hpp"
 
-#include "table/strings.h"
 #include "../table/strgen_tables.h"
+#include "table/strings.h"
 
 #include "../safeguards.h"
 
@@ -82,10 +84,9 @@ LanguageStrings ReadRawLanguageStrings(const std::string &file)
 	return ret;
 }
 
-
 /** A reader that simply reads using fopen. */
 struct StringListReader : StringReader {
-	StringList::const_iterator p;   ///< The current location of the iteration.
+	StringList::const_iterator p; ///< The current location of the iteration.
 	StringList::const_iterator end; ///< The end of the iteration.
 
 	/**
@@ -96,7 +97,7 @@ struct StringListReader : StringReader {
 	 * @param translation Are we reading a translation?
 	 */
 	StringListReader(StringData &data, const LanguageStrings &strings, bool master, bool translation) :
-			StringReader(data, strings.language.c_str(), master, translation), p(strings.lines.begin()), end(strings.lines.end())
+		StringReader(data, strings.language.c_str(), master, translation), p(strings.lines.begin()), end(strings.lines.end())
 	{
 	}
 
@@ -115,9 +116,7 @@ struct TranslationWriter : LanguageWriter {
 	 * Writer for the encoded data.
 	 * @param strings The string table to add the strings to.
 	 */
-	TranslationWriter(StringList &strings) : strings(strings)
-	{
-	}
+	TranslationWriter(StringList &strings) : strings(strings) {}
 
 	void WriteHeader(const LanguagePackHeader *) override
 	{
@@ -148,9 +147,7 @@ struct StringNameWriter : HeaderWriter {
 	 * Writer for the string names.
 	 * @param strings The string table to add the strings to.
 	 */
-	StringNameWriter(StringList &strings) : strings(strings)
-	{
-	}
+	StringNameWriter(StringList &strings) : strings(strings) {}
 
 	void WriteStringID(const std::string &name, size_t stringid) override
 	{
@@ -272,7 +269,10 @@ static void ExtractStringParams(const StringData &data, StringParamsList &params
 			for (auto it = pcs.consuming_commands.begin(); it != pcs.consuming_commands.end(); it++) {
 				if (*it == nullptr) {
 					/* Skip empty param unless a non empty param exist after it. */
-					if (std::all_of(it, pcs.consuming_commands.end(), [](auto cs) { return cs == nullptr; })) break;
+					if (std::all_of(it, pcs.consuming_commands.end(), [](auto cs) {
+							return cs == nullptr;
+						}))
+						break;
 					param.emplace_back(StringParam::UNUSED, 1);
 					continue;
 				}
@@ -320,7 +320,8 @@ std::shared_ptr<GameStrings> _current_gamestrings_data = nullptr;
  */
 std::string_view GetGameStringPtr(StringIndexInTab id)
 {
-	if (_current_gamestrings_data == nullptr || _current_gamestrings_data->cur_language == nullptr || id.base() >= _current_gamestrings_data->cur_language->lines.size()) return GetStringPtr(STR_UNDEFINED);
+	if (_current_gamestrings_data == nullptr || _current_gamestrings_data->cur_language == nullptr || id.base() >= _current_gamestrings_data->cur_language->lines.size())
+		return GetStringPtr(STR_UNDEFINED);
 	return _current_gamestrings_data->cur_language->lines[id];
 }
 

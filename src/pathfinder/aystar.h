@@ -35,8 +35,7 @@ static const int AYSTAR_INVALID_NODE = -1; ///< Item is not valid (for example, 
 
 using AyStarNode = CYapfNodeKeyTrackDir;
 
-struct PathNode : CYapfNodeT<AyStarNode, PathNode> {
-};
+struct PathNode : CYapfNodeT<AyStarNode, PathNode> {};
 
 /**
  * %AyStar search algorithm struct.
@@ -64,7 +63,7 @@ protected:
 	 */
 	virtual void GetNeighbours(const PathNode &current, std::vector<AyStarNode> &neighours) const = 0;
 
-	 /**
+	/**
 	 * Check whether the end-tile is found.
 	 * @param current Node to exam.
 	 * @return Status of the node:

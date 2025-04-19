@@ -12,10 +12,10 @@
 
 /** Widgets of the #ExtraViewportWindow class. */
 enum ExtraViewportWidgets : WidgetID {
-	WID_EV_CAPTION,      ///< Caption of window.
-	WID_EV_VIEWPORT,     ///< The viewport.
-	WID_EV_ZOOM_IN,      ///< Zoom in.
-	WID_EV_ZOOM_OUT,     ///< Zoom out.
+	WID_EV_CAPTION, ///< Caption of window.
+	WID_EV_VIEWPORT, ///< The viewport.
+	WID_EV_ZOOM_IN, ///< Zoom in.
+	WID_EV_ZOOM_OUT, ///< Zoom out.
 	WID_EV_MAIN_TO_VIEW, ///< Center the view of this viewport on the main view.
 	WID_EV_VIEW_TO_MAIN, ///< Center the main view on the view of this viewport.
 };

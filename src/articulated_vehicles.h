@@ -10,8 +10,8 @@
 #ifndef ARTICULATED_VEHICLES_H
 #define ARTICULATED_VEHICLES_H
 
-#include "vehicle_type.h"
 #include "engine_type.h"
+#include "vehicle_type.h"
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window);
 CargoArray GetCapacityOfArticulatedParts(EngineID engine);
@@ -23,6 +23,5 @@ CargoTypes GetCargoTypesOfArticulatedVehicle(const Vehicle *v, CargoType *cargo_
 bool IsArticulatedVehicleRefittable(EngineID engine);
 bool IsArticulatedEngine(EngineID engine_type);
 void CheckConsistencyOfArticulatedVehicle(const Vehicle *v);
-
 
 #endif /* ARTICULATED_VEHICLES_H */

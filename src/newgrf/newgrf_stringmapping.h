@@ -10,8 +10,8 @@
 #ifndef NEWGRF_STRINGMAPPING_H
 #define NEWGRF_STRINGMAPPING_H
 
-#include "../strings_type.h"
 #include "../newgrf_text_type.h"
+#include "../strings_type.h"
 
 void AddStringForMapping(GRFStringID source, std::function<void(StringID)> &&func);
 void AddStringForMapping(GRFStringID source, StringID *target);

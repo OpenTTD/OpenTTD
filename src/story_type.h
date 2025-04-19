@@ -20,4 +20,3 @@ struct StoryPage;
 enum StoryPageElementType : uint8_t;
 
 #endif /* STORY_TYPE_H */
-

@@ -8,7 +8,9 @@
 /** @file script_roadtypelist.cpp Implementation of ScriptRoadTypeList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_roadtypelist.hpp"
+
 #include "../../road_func.h"
 
 #include "../../safeguards.h"

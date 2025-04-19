@@ -10,8 +10,8 @@
 #ifndef OLDLOADER_H
 #define OLDLOADER_H
 
-#include "saveload.h"
 #include "../tile_type.h"
+#include "saveload.h"
 
 static const uint BUFFER_SIZE = 4096;
 static const uint OLD_MAP_SIZE = 256;
@@ -36,44 +36,44 @@ struct LoadgameState {
 
 /* OldChunk-Type */
 enum OldChunkType : uint32_t {
-	OC_SIMPLE    = 0,
-	OC_NULL      = 1,
-	OC_CHUNK     = 2,
-	OC_ASSERT    = 3,
+	OC_SIMPLE = 0,
+	OC_NULL = 1,
+	OC_CHUNK = 2,
+	OC_ASSERT = 3,
 	/* 4 bits allocated (16 max) */
 
-	OC_TTD       = 1 << 4, ///< chunk is valid ONLY for TTD savegames
-	OC_TTO       = 1 << 5, ///< -//- TTO (default is neither of these)
+	OC_TTD = 1 << 4, ///< chunk is valid ONLY for TTD savegames
+	OC_TTO = 1 << 5, ///< -//- TTO (default is neither of these)
 	/* 4 bits allocated */
 
-	OC_VAR_I8    = 1 << 8,
-	OC_VAR_U8    = 2 << 8,
-	OC_VAR_I16   = 3 << 8,
-	OC_VAR_U16   = 4 << 8,
-	OC_VAR_I32   = 5 << 8,
-	OC_VAR_U32   = 6 << 8,
-	OC_VAR_I64   = 7 << 8,
-	OC_VAR_U64   = 8 << 8,
+	OC_VAR_I8 = 1 << 8,
+	OC_VAR_U8 = 2 << 8,
+	OC_VAR_I16 = 3 << 8,
+	OC_VAR_U16 = 4 << 8,
+	OC_VAR_I32 = 5 << 8,
+	OC_VAR_U32 = 6 << 8,
+	OC_VAR_I64 = 7 << 8,
+	OC_VAR_U64 = 8 << 8,
 	/* 8 bits allocated (256 max) */
 
-	OC_FILE_I8   = 1 << 16,
-	OC_FILE_U8   = 2 << 16,
-	OC_FILE_I16  = 3 << 16,
-	OC_FILE_U16  = 4 << 16,
-	OC_FILE_I32  = 5 << 16,
-	OC_FILE_U32  = 6 << 16,
+	OC_FILE_I8 = 1 << 16,
+	OC_FILE_U8 = 2 << 16,
+	OC_FILE_I16 = 3 << 16,
+	OC_FILE_U16 = 4 << 16,
+	OC_FILE_I32 = 5 << 16,
+	OC_FILE_U32 = 6 << 16,
 	/* 8 bits allocated (256 max) */
 
-	OC_INT8      = OC_VAR_I8   | OC_FILE_I8,
-	OC_UINT8     = OC_VAR_U8   | OC_FILE_U8,
-	OC_INT16     = OC_VAR_I16  | OC_FILE_I16,
-	OC_UINT16    = OC_VAR_U16  | OC_FILE_U16,
-	OC_INT32     = OC_VAR_I32  | OC_FILE_I32,
-	OC_UINT32    = OC_VAR_U32  | OC_FILE_U32,
+	OC_INT8 = OC_VAR_I8 | OC_FILE_I8,
+	OC_UINT8 = OC_VAR_U8 | OC_FILE_U8,
+	OC_INT16 = OC_VAR_I16 | OC_FILE_I16,
+	OC_UINT16 = OC_VAR_U16 | OC_FILE_U16,
+	OC_INT32 = OC_VAR_I32 | OC_FILE_I32,
+	OC_UINT32 = OC_VAR_U32 | OC_FILE_U32,
 
-	OC_TILE      = OC_VAR_U32  | OC_FILE_U16,
+	OC_TILE = OC_VAR_U32 | OC_FILE_U16,
 
-	OC_END       = 0, ///< End of the whole chunk, all 32 bits set to zero
+	OC_END = 0, ///< End of the whole chunk, all 32 bits set to zero
 };
 
 DECLARE_ENUM_AS_BIT_SET(OldChunkType)
@@ -82,12 +82,12 @@ typedef bool OldChunkProc(LoadgameState &ls, int num);
 typedef void *OffsetProc(void *base);
 
 struct OldChunks {
-	OldChunkType type;   ///< Type of field
-	uint32_t amount;       ///< Amount of fields
+	OldChunkType type; ///< Type of field
+	uint32_t amount; ///< Amount of fields
 
-	void *ptr;           ///< Pointer where to save the data (takes precedence over #offset)
-	OffsetProc *offset;  ///< Pointer to function that returns the actual memory address of a member (ignored if #ptr is not nullptr)
-	OldChunkProc *proc;  ///< Pointer to function that is called with OC_CHUNK
+	void *ptr; ///< Pointer where to save the data (takes precedence over #offset)
+	OffsetProc *offset; ///< Pointer to function that returns the actual memory address of a member (ignored if #ptr is not nullptr)
+	OldChunkProc *proc; ///< Pointer to function that is called with OC_CHUNK
 };
 
 extern uint _bump_assert_value;

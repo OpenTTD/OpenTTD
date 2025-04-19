@@ -8,6 +8,7 @@
 /** @file flowmapper.cpp Definition of flowmapper. */
 
 #include "../stdafx.h"
+
 #include "flowmapper.h"
 
 #include "../safeguards.h"

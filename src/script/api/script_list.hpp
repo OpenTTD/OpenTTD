@@ -27,7 +27,7 @@ public:
 	/** Type of sorter */
 	enum SorterType {
 		SORT_BY_VALUE, ///< Sort the list based on the value of the item.
-		SORT_BY_ITEM,  ///< Sort the list based on the item itself.
+		SORT_BY_ITEM, ///< Sort the list based on the item itself.
 	};
 
 	/** Sort ascending */
@@ -37,17 +37,24 @@ public:
 
 private:
 	std::unique_ptr<ScriptListSorter> sorter; ///< Sorting algorithm
-	SorterType sorter_type;       ///< Sorting type
-	bool sort_ascending;          ///< Whether to sort ascending or descending
-	bool initialized;             ///< Whether an iteration has been started
-	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
+	SorterType sorter_type; ///< Sorting type
+	bool sort_ascending; ///< Whether to sort ascending or descending
+	bool initialized; ///< Whether an iteration has been started
+	int modifications; ///< Number of modification that has been done. To prevent changing data while valuating.
 
 protected:
 	/* Temporary helper functions to get the raw index from either strongly and non-strongly typed pool items. */
 	template <typename T>
-	static auto GetRawIndex(const T &index) { return index; }
+	static auto GetRawIndex(const T &index)
+	{
+		return index;
+	}
+
 	template <ConvertibleThroughBase T>
-	static auto GetRawIndex(const T &index) { return index.base(); }
+	static auto GetRawIndex(const T &index)
+	{
+		return index.base();
+	}
 
 	template <typename T, class ItemValid, class ItemFilter>
 	static void FillList(ScriptList *list, ItemValid item_valid, ItemFilter item_filter)
@@ -62,13 +69,17 @@ protected:
 	template <typename T, class ItemValid>
 	static void FillList(ScriptList *list, ItemValid item_valid)
 	{
-		ScriptList::FillList<T>(list, item_valid, [](const T *) { return true; });
+		ScriptList::FillList<T>(list, item_valid, [](const T *) {
+			return true;
+		});
 	}
 
 	template <typename T>
 	static void FillList(ScriptList *list)
 	{
-		ScriptList::FillList<T>(list, [](const T *) { return true; });
+		ScriptList::FillList<T>(list, [](const T *) {
+			return true;
+		});
 	}
 
 	template <typename T, class ItemValid>
@@ -93,48 +104,45 @@ protected:
 		bool backup_allow = ScriptObject::GetAllowDoCommand();
 		ScriptObject::SetAllowDoCommand(false);
 
-
 		if (nparam < 1) {
 			ScriptList::FillList<T>(list, item_valid);
 		} else {
 			/* Limit the total number of ops that can be consumed by a filter operation, if a filter function is present */
 			SQOpsLimiter limiter(vm, MAX_VALUATE_OPS, "list filter function");
 
-			ScriptList::FillList<T>(list, item_valid,
-				[vm, nparam, backup_allow](const T *item) {
-					/* Push the root table as instance object, this is what squirrel does for meta-functions. */
-					sq_pushroottable(vm);
-					/* Push all arguments for the valuator function. */
-					sq_pushinteger(vm, GetRawIndex(item->index));
-					for (int i = 0; i < nparam - 1; i++) {
-						sq_push(vm, i + 3);
-					}
-
-					/* Call the function. Squirrel pops all parameters and pushes the return value. */
-					if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
-						ScriptObject::SetAllowDoCommand(backup_allow);
-						throw sq_throwerror(vm, "failed to run filter");
-					}
-
-					SQBool add = SQFalse;
-
-					/* Retrieve the return value */
-					switch (sq_gettype(vm, -1)) {
-						case OT_BOOL:
-							sq_getbool(vm, -1, &add);
-							break;
-
-						default:
-							ScriptObject::SetAllowDoCommand(backup_allow);
-							throw sq_throwerror(vm, "return value of filter is not valid (not bool)");
-					}
-
-					/* Pop the return value. */
-					sq_poptop(vm);
-
-					return add;
+			ScriptList::FillList<T>(list, item_valid, [vm, nparam, backup_allow](const T *item) {
+				/* Push the root table as instance object, this is what squirrel does for meta-functions. */
+				sq_pushroottable(vm);
+				/* Push all arguments for the valuator function. */
+				sq_pushinteger(vm, GetRawIndex(item->index));
+				for (int i = 0; i < nparam - 1; i++) {
+					sq_push(vm, i + 3);
 				}
-			);
+
+				/* Call the function. Squirrel pops all parameters and pushes the return value. */
+				if (SQ_FAILED(sq_call(vm, nparam + 1, SQTrue, SQTrue))) {
+					ScriptObject::SetAllowDoCommand(backup_allow);
+					throw sq_throwerror(vm, "failed to run filter");
+				}
+
+				SQBool add = SQFalse;
+
+				/* Retrieve the return value */
+				switch (sq_gettype(vm, -1)) {
+					case OT_BOOL:
+						sq_getbool(vm, -1, &add);
+						break;
+
+					default:
+						ScriptObject::SetAllowDoCommand(backup_allow);
+						throw sq_throwerror(vm, "return value of filter is not valid (not bool)");
+				}
+
+				/* Pop the return value. */
+				sq_poptop(vm);
+
+				return add;
+			});
 
 			/* Pop the filter function */
 			sq_poptop(vm);
@@ -146,19 +154,21 @@ protected:
 	template <typename T>
 	static void FillList(HSQUIRRELVM vm, ScriptList *list)
 	{
-		ScriptList::FillList<T>(vm, list, [](const T *) { return true; });
+		ScriptList::FillList<T>(vm, list, [](const T *) {
+			return true;
+		});
 	}
 
 	virtual bool SaveObject(HSQUIRRELVM vm) override;
 	virtual bool LoadObject(HSQUIRRELVM vm) override;
 
 public:
-	typedef std::set<SQInteger> ScriptItemList;                   ///< The list of items inside the bucket
+	typedef std::set<SQInteger> ScriptItemList; ///< The list of items inside the bucket
 	typedef std::map<SQInteger, ScriptItemList> ScriptListBucket; ///< The bucket list per value
-	typedef std::map<SQInteger, SQInteger> ScriptListMap;         ///< List per item
+	typedef std::map<SQInteger, SQInteger> ScriptListMap; ///< List per item
 
-	ScriptListMap items;           ///< The items in the list
-	ScriptListBucket buckets;      ///< The items in the list, sorted by value
+	ScriptListMap items; ///< The items in the list
+	ScriptListBucket buckets; ///< The items in the list, sorted by value
 
 	ScriptList();
 	~ScriptList();

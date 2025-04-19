@@ -8,20 +8,22 @@
 /** @file newgrf_airporttiles.cpp NewGRF handling of airport tiles. */
 
 #include "stdafx.h"
-#include "debug.h"
-#include "newgrf_airporttiles.h"
-#include "newgrf_badge.h"
-#include "newgrf_spritegroup.h"
-#include "newgrf_sound.h"
-#include "station_base.h"
-#include "water.h"
-#include "landscape.h"
-#include "company_base.h"
-#include "town.h"
-#include "newgrf_animation_base.h"
 
-#include "table/strings.h"
+#include "newgrf_airporttiles.h"
+
+#include "company_base.h"
+#include "debug.h"
+#include "landscape.h"
+#include "newgrf_animation_base.h"
+#include "newgrf_badge.h"
+#include "newgrf_sound.h"
+#include "newgrf_spritegroup.h"
+#include "station_base.h"
+#include "town.h"
+#include "water.h"
+
 #include "table/airporttiles.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -117,7 +119,6 @@ static uint32_t GetNearbyAirportTileInformation(uint8_t parameter, TileIndex til
 	return GetNearbyTileInformation(tile, grf_version8) | (is_same_airport ? 1 : 0) << 8;
 }
 
-
 /**
  * Make an analysis of a tile and check whether it belongs to the same
  * airport, and/or the same grf file
@@ -167,19 +168,24 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 
 	switch (variable) {
 		/* Terrain type */
-		case 0x41: return GetTerrainType(this->tile);
+		case 0x41:
+			return GetTerrainType(this->tile);
 
 		/* Current town zone of the tile in the nearest town */
-		case 0x42: return GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile);
+		case 0x42:
+			return GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile);
 
 		/* Position relative to most northern airport tile. */
-		case 0x43: return GetRelativePosition(this->tile, this->st->airport.tile);
+		case 0x43:
+			return GetRelativePosition(this->tile, this->st->airport.tile);
 
 		/* Animation frame of tile */
-		case 0x44: return GetAnimationFrame(this->tile);
+		case 0x44:
+			return GetAnimationFrame(this->tile);
 
 		/* Land info of nearby tiles */
-		case 0x60: return GetNearbyAirportTileInformation(parameter, this->tile, this->st->index, this->ro.grffile->grf_version >= 8);
+		case 0x60:
+			return GetNearbyAirportTileInformation(parameter, this->tile, this->st->index, this->ro.grffile->grf_version >= 8);
 
 		/* Animation stage of nearby tiles */
 		case 0x61: {
@@ -191,9 +197,11 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
 		}
 
 		/* Get airport tile ID at offset */
-		case 0x62: return GetAirportTileIDAtOffset(GetNearbyTile(parameter, this->tile), this->st, this->ro.grffile->grfid);
+		case 0x62:
+			return GetAirportTileIDAtOffset(GetNearbyTile(parameter, this->tile), this->st, this->ro.grffile->grfid);
 
-		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->ats->badges, parameter);
+		case 0x7A:
+			return GetBadgeVariableResult(*this->ro.grffile, this->ats->badges, parameter);
 	}
 
 	Debug(grf, 1, "Unhandled airport tile variable 0x{:X}", variable);
@@ -216,11 +224,9 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
-AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
-		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-	: ResolverObject(ats->grf_prop.grffile, callback, callback_param1, callback_param2),
-		tiles_scope(*this, ats, tile, st),
-		airport_scope(*this, tile, st, st != nullptr ? AirportSpec::Get(st->airport.type) : nullptr, st != nullptr ? st->airport.layout : 0)
+AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2) :
+	ResolverObject(ats->grf_prop.grffile, callback, callback_param1, callback_param2), tiles_scope(*this, ats, tile, st),
+	airport_scope(*this, tile, st, st != nullptr ? AirportSpec::Get(st->airport.type) : nullptr, st != nullptr ? st->airport.layout : 0)
 {
 	this->root_spritegroup = ats->grf_prop.GetSpriteGroup();
 }
@@ -246,7 +252,7 @@ static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGrou
 	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 
 	SpriteID image = dts->ground.sprite;
-	SpriteID pal   = dts->ground.pal;
+	SpriteID pal = dts->ground.pal;
 
 	if (GB(image, 0, SPRITE_WIDTH) != 0) {
 		if (image == SPR_FLAT_WATER_TILE && IsTileOnWater(ti->tile)) {
@@ -284,11 +290,11 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 }
 
 /** Helper class for animation control. */
-struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, int, GetAirportTileCallback, TileAnimationFrameAnimationHelper<Station> > {
-	static constexpr CallbackID cb_animation_speed      = CBID_AIRPTILE_ANIMATION_SPEED;
+struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, int, GetAirportTileCallback, TileAnimationFrameAnimationHelper<Station>> {
+	static constexpr CallbackID cb_animation_speed = CBID_AIRPTILE_ANIMATION_SPEED;
 	static constexpr CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIMATION_NEXT_FRAME;
 
-	static constexpr AirportTileCallbackMask cbm_animation_speed      = AirportTileCallbackMask::AnimationSpeed;
+	static constexpr AirportTileCallbackMask cbm_animation_speed = AirportTileCallbackMask::AnimationSpeed;
 	static constexpr AirportTileCallbackMask cbm_animation_next_frame = AirportTileCallbackMask::AnimationNextFrame;
 };
 
@@ -316,4 +322,3 @@ void TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, Cargo
 		if (st->TileBelongsToAirport(tile)) TriggerAirportTileAnimation(st, tile, trigger, cargo_type);
 	}
 }
-

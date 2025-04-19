@@ -9,11 +9,11 @@
 
 #include "stdafx.h"
 
-#include "order_func.h"
-#include "window_func.h"
 #include "newgrf_station.h"
-#include "waypoint_base.h"
+#include "order_func.h"
 #include "viewport_kdtree.h"
+#include "waypoint_base.h"
+#include "window_func.h"
 
 #include "safeguards.h"
 
@@ -45,11 +45,12 @@ void Waypoint::GetTileArea(TileArea *ta, StationType type) const
 
 		case StationType::Buoy:
 			ta->tile = this->xy;
-			ta->w    = 1;
-			ta->h    = 1;
+			ta->w = 1;
+			ta->h = 1;
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 

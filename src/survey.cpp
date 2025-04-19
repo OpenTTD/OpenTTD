@@ -11,33 +11,28 @@
 
 #include "survey.h"
 
-#include "settings_table.h"
-#include "network/network.h"
-#include "rev.h"
-#include "settings_type.h"
-#include "timer/timer_game_tick.h"
-#include "timer/timer_game_calendar.h"
-#include "timer/timer_game_economy.h"
-
-#include "currency.h"
-#include "fontcache.h"
-#include "language.h"
-
 #include "ai/ai_info.hpp"
-#include "game/game.hpp"
-#include "game/game_info.hpp"
-
-#include "music/music_driver.hpp"
-#include "sound/sound_driver.hpp"
-#include "video/video_driver.hpp"
-
 #include "base_media_base.h"
 #include "base_media_graphics.h"
 #include "base_media_music.h"
 #include "base_media_sounds.h"
 #include "blitter/factory.hpp"
-
+#include "currency.h"
+#include "fontcache.h"
+#include "game/game.hpp"
+#include "game/game_info.hpp"
+#include "language.h"
+#include "music/music_driver.hpp"
+#include "network/network.h"
+#include "rev.h"
+#include "settings_table.h"
+#include "settings_type.h"
 #include "social_integration.h"
+#include "sound/sound_driver.hpp"
+#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
+#include "timer/timer_game_tick.h"
+#include "video/video_driver.hpp"
 
 #ifdef WITH_ALLEGRO
 #	include <allegro.h>
@@ -46,7 +41,7 @@
 #	include <fontconfig/fontconfig.h>
 #endif /* WITH_FONTCONFIG */
 #ifdef WITH_PNG
-	/* pngconf.h, included by png.h doesn't like something in the
+/* pngconf.h, included by png.h doesn't like something in the
 	 * freetype headers. As such it's not alphabetically sorted. */
 #	include <png.h>
 #endif /* WITH_PNG */
@@ -64,38 +59,39 @@
 #	include <lzma.h>
 #endif
 #ifdef WITH_LZO
-#include <lzo/lzo1x.h>
+#	include <lzo/lzo1x.h>
 #endif
 #ifdef WITH_SDL2
-#include <SDL.h>
+#	include <SDL.h>
 #endif /* WITH_SDL2 */
 #ifdef WITH_ZLIB
-# include <zlib.h>
+#	include <zlib.h>
 #endif
 #ifdef WITH_CURL
-# include <curl/curl.h>
+#	include <curl/curl.h>
 #endif
 
 #include "safeguards.h"
 
-NLOHMANN_JSON_SERIALIZE_ENUM(GRFStatus, {
-	{GRFStatus::GCS_UNKNOWN, "unknown"},
-	{GRFStatus::GCS_DISABLED, "disabled"},
-	{GRFStatus::GCS_NOT_FOUND, "not found"},
-	{GRFStatus::GCS_INITIALISED, "initialised"},
-	{GRFStatus::GCS_ACTIVATED, "activated"},
-})
+NLOHMANN_JSON_SERIALIZE_ENUM(GRFStatus,
+	{
+		{GRFStatus::GCS_UNKNOWN, "unknown"},
+		{GRFStatus::GCS_DISABLED, "disabled"},
+		{GRFStatus::GCS_NOT_FOUND, "not found"},
+		{GRFStatus::GCS_INITIALISED, "initialised"},
+		{GRFStatus::GCS_ACTIVATED, "activated"},
+	})
 
-NLOHMANN_JSON_SERIALIZE_ENUM(SocialIntegrationPlugin::State, {
-	{SocialIntegrationPlugin::State::RUNNING, "running"},
-	{SocialIntegrationPlugin::State::FAILED, "failed"},
-	{SocialIntegrationPlugin::State::PLATFORM_NOT_RUNNING, "platform_not_running"},
-	{SocialIntegrationPlugin::State::UNLOADED, "unloaded"},
-	{SocialIntegrationPlugin::State::DUPLICATE, "duplicate"},
-	{SocialIntegrationPlugin::State::UNSUPPORTED_API, "unsupported_api"},
-	{SocialIntegrationPlugin::State::INVALID_SIGNATURE, "invalid_signature"},
-})
-
+NLOHMANN_JSON_SERIALIZE_ENUM(SocialIntegrationPlugin::State,
+	{
+		{SocialIntegrationPlugin::State::RUNNING, "running"},
+		{SocialIntegrationPlugin::State::FAILED, "failed"},
+		{SocialIntegrationPlugin::State::PLATFORM_NOT_RUNNING, "platform_not_running"},
+		{SocialIntegrationPlugin::State::UNLOADED, "unloaded"},
+		{SocialIntegrationPlugin::State::DUPLICATE, "duplicate"},
+		{SocialIntegrationPlugin::State::UNSUPPORTED_API, "unsupported_api"},
+		{SocialIntegrationPlugin::State::INVALID_SIGNATURE, "invalid_signature"},
+	})
 
 /** Lookup table to convert a VehicleType to a string. */
 static const std::string _vehicle_type_to_string[] = {
@@ -187,7 +183,7 @@ void SurveyCompiler(nlohmann::json &survey)
 	survey["name"] = "ICC";
 	survey["version"] = __ICC;
 #	if defined(__GNUC__)
-		survey["extra"] = fmt::format("GCC {}.{}.{} mode", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+	survey["extra"] = fmt::format("GCC {}.{}.{} mode", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
 #	endif
 #elif defined(__GNUC__)
 	survey["name"] = "GCC";
@@ -217,18 +213,18 @@ void SurveyOpenTTD(nlohmann::json &survey)
 	survey["build_date"] = std::string(_openttd_build_date);
 	survey["bits"] =
 #ifdef POINTER_IS_64BIT
-			64
+		64
 #else
-			32
+		32
 #endif
 		;
 	if constexpr (std::endian::native == std::endian::little) survey["endian"] = "little";
 	if constexpr (std::endian::native == std::endian::big) survey["endian"] = "big";
 	survey["dedicated_build"] =
 #ifdef DEDICATED
-			"yes"
+		"yes"
 #else
-			"no"
+		"no"
 #endif
 		;
 }

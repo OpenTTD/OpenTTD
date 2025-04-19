@@ -11,12 +11,15 @@
  */
 
 #include "../stdafx.h"
+
+#include "network_gamelist.h"
+
+#include <atomic>
+
 #include "../debug.h"
 #include "../window_func.h"
 #include "network_internal.h"
 #include "network_udp.h"
-#include "network_gamelist.h"
-#include <atomic>
 
 #include "../safeguards.h"
 
@@ -53,7 +56,9 @@ NetworkGame *NetworkGameListAddItem(std::string_view connection_string)
  */
 void NetworkGameListRemoveItem(NetworkGame *remove)
 {
-	auto it = std::ranges::find_if(_network_game_list, [&remove](const auto &item) { return item.get() == remove; });
+	auto it = std::ranges::find_if(_network_game_list, [&remove](const auto &item) {
+		return item.get() == remove;
+	});
 	if (it != std::end(_network_game_list)) {
 		_network_game_list.erase(it);
 
@@ -69,7 +74,9 @@ void NetworkGameListRemoveItem(NetworkGame *remove)
  */
 void NetworkGameListRemoveExpired()
 {
-	auto it = std::remove_if(std::begin(_network_game_list), std::end(_network_game_list), [](const auto &item) { return !item->manually && item->version < _network_game_list_version; });
+	auto it = std::remove_if(std::begin(_network_game_list), std::end(_network_game_list), [](const auto &item) {
+		return !item->manually && item->version < _network_game_list_version;
+	});
 	_network_game_list.erase(it, std::end(_network_game_list));
 
 	UpdateNetworkGameWindow();

@@ -22,7 +22,6 @@ public:
 	ScriptNewGRFList();
 };
 
-
 /**
  * Class that handles all NewGRF related functions.
  * @api ai game

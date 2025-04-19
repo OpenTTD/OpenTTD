@@ -8,17 +8,17 @@
 /** @file viewport_gui.cpp Extra viewport window. */
 
 #include "stdafx.h"
+
 #include "landscape.h"
-#include "window_gui.h"
-#include "viewport_func.h"
 #include "strings_func.h"
-#include "zoom_func.h"
+#include "viewport_func.h"
 #include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/viewport_widget.h"
-
-#include "table/strings.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -78,8 +78,12 @@ public:
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_EV_ZOOM_IN: DoZoomInOutWindow(ZOOM_IN,  this); break;
-			case WID_EV_ZOOM_OUT: DoZoomInOutWindow(ZOOM_OUT, this); break;
+			case WID_EV_ZOOM_IN:
+				DoZoomInOutWindow(ZOOM_IN, this);
+				break;
+			case WID_EV_ZOOM_OUT:
+				DoZoomInOutWindow(ZOOM_OUT, this);
+				break;
 
 			case WID_EV_MAIN_TO_VIEW: { // location button (move main view to same spot as this view) 'Paste Location'
 				Window *w = GetMainWindow();
@@ -87,9 +91,9 @@ public:
 				int y = this->viewport->scrollpos_y;
 
 				/* set this view to same location. Based on the center, adjusting for zoom */
-				w->viewport->dest_scrollpos_x =  x - (w->viewport->virtual_width -  this->viewport->virtual_width) / 2;
-				w->viewport->dest_scrollpos_y =  y - (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
-				w->viewport->follow_vehicle   = VehicleID::Invalid();
+				w->viewport->dest_scrollpos_x = x - (w->viewport->virtual_width - this->viewport->virtual_width) / 2;
+				w->viewport->dest_scrollpos_y = y - (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
+				w->viewport->follow_vehicle = VehicleID::Invalid();
 				break;
 			}
 
@@ -98,8 +102,8 @@ public:
 				int x = w->viewport->scrollpos_x;
 				int y = w->viewport->scrollpos_y;
 
-				this->viewport->dest_scrollpos_x =  x + (w->viewport->virtual_width -  this->viewport->virtual_width) / 2;
-				this->viewport->dest_scrollpos_y =  y + (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
+				this->viewport->dest_scrollpos_x = x + (w->viewport->virtual_width - this->viewport->virtual_width) / 2;
+				this->viewport->dest_scrollpos_y = y + (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
 				break;
 			}
 		}
@@ -146,12 +150,7 @@ public:
 	}
 };
 
-static WindowDesc _extra_viewport_desc(
-	WDP_AUTO, "extra_viewport", 300, 268,
-	WC_EXTRA_VIEWPORT, WC_NONE,
-	{},
-	_nested_extra_viewport_widgets
-);
+static WindowDesc _extra_viewport_desc(WDP_AUTO, "extra_viewport", 300, 268, WC_EXTRA_VIEWPORT, WC_NONE, {}, _nested_extra_viewport_widgets);
 
 /**
  * Show a new Extra Viewport window.

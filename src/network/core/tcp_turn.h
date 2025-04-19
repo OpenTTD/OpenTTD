@@ -12,17 +12,17 @@
 #ifndef NETWORK_CORE_TCP_TURN_H
 #define NETWORK_CORE_TCP_TURN_H
 
-#include "os_abstraction.h"
-#include "tcp.h"
-#include "packet.h"
 #include "network_game_info.h"
+#include "os_abstraction.h"
+#include "packet.h"
+#include "tcp.h"
 
 /** Enum with all types of TCP TURN packets. The order MUST not be changed. **/
 enum PacketTurnType : uint8_t {
-	PACKET_TURN_TURN_ERROR,     ///< TURN server is unable to relay.
+	PACKET_TURN_TURN_ERROR, ///< TURN server is unable to relay.
 	PACKET_TURN_SERCLI_CONNECT, ///< Client or server is connecting to the TURN server.
 	PACKET_TURN_TURN_CONNECTED, ///< TURN server indicates the socket is now being relayed.
-	PACKET_TURN_END,            ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_TURN_END, ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Base socket handler for all TURN TCP sockets. */
@@ -65,6 +65,7 @@ protected:
 	virtual bool Receive_TURN_CONNECTED(Packet &p);
 
 	bool HandlePacket(Packet &p);
+
 public:
 	/**
 	 * Create a new cs socket handler for a given cs.

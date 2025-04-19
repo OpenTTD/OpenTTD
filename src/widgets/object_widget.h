@@ -12,10 +12,10 @@
 
 /** Widgets of the #BuildObjectWindow class. */
 enum BuildObjectWidgets : WidgetID {
-	WID_BO_OBJECT_MATRIX,  ///< The matrix with preview sprites.
-	WID_BO_OBJECT_SPRITE,  ///< A preview sprite of the object.
-	WID_BO_OBJECT_SIZE,    ///< The size of the selected object.
-	WID_BO_INFO,           ///< Other information about the object (from the NewGRF).
+	WID_BO_OBJECT_MATRIX, ///< The matrix with preview sprites.
+	WID_BO_OBJECT_SPRITE, ///< A preview sprite of the object.
+	WID_BO_OBJECT_SIZE, ///< The size of the selected object.
+	WID_BO_INFO, ///< Other information about the object (from the NewGRF).
 };
 
 #endif /* WIDGETS_OBJECT_WIDGET_H */

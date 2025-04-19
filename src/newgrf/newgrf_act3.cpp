@@ -10,28 +10,27 @@
 #include "../stdafx.h"
 
 #include "../debug.h"
+#include "../error.h"
 #include "../house.h"
-#include "../newgrf_engine.h"
+#include "../industrytype.h"
+#include "../newgrf_airport.h"
+#include "../newgrf_airporttiles.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
-#include "../newgrf_cargo.h"
-#include "../newgrf_house.h"
-#include "../newgrf_station.h"
-#include "../industrytype.h"
 #include "../newgrf_canal.h"
-#include "../newgrf_airporttiles.h"
-#include "../newgrf_airport.h"
+#include "../newgrf_cargo.h"
+#include "../newgrf_engine.h"
+#include "../newgrf_house.h"
 #include "../newgrf_object.h"
-#include "../error.h"
-#include "../vehicle_base.h"
-#include "../road.h"
 #include "../newgrf_roadstop.h"
+#include "../newgrf_station.h"
+#include "../road.h"
+#include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
-#include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
+#include "newgrf_internal_vehicle.h"
 
 #include "../safeguards.h"
-
 
 static CargoType TranslateCargo(uint8_t feature, uint8_t ctype)
 {
@@ -63,7 +62,6 @@ static CargoType TranslateCargo(uint8_t feature, uint8_t ctype)
 	GrfMsg(6, "TranslateCargo: Cargo '{:c}{:c}{:c}{:c}' mapped to cargo type {}.", GB(cl.base(), 24, 8), GB(cl.base(), 16, 8), GB(cl.base(), 8, 8), GB(cl.base(), 0, 8), cargo_type);
 	return cargo_type;
 }
-
 
 static bool IsValidGroupID(uint16_t groupid, const char *function)
 {
@@ -153,7 +151,6 @@ static void VehicleMapSpriteGroup(ByteReader &buf, uint8_t feature, uint8_t idco
 	}
 }
 
-
 static void CanalMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 {
 	std::vector<uint16_t> cfs;
@@ -178,7 +175,6 @@ static void CanalMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		_water_feature[cf].group = _cur_gps.spritegroups[groupid];
 	}
 }
-
 
 static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 {
@@ -236,7 +232,6 @@ static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		StationClass::Assign(statspec);
 	}
 }
-
 
 static void TownHouseMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 {
@@ -770,9 +765,34 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x03>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x03>::SafetyScan(ByteReader &buf) { GRFUnsafe(buf); }
-template <> void GrfActionHandler<0x03>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x03>::Init(ByteReader &) { }
-template <> void GrfActionHandler<0x03>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x03>::Activation(ByteReader &buf) { FeatureMapSpriteGroup(buf); }
+template <>
+void GrfActionHandler<0x03>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x03>::SafetyScan(ByteReader &buf)
+{
+	GRFUnsafe(buf);
+}
+
+template <>
+void GrfActionHandler<0x03>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x03>::Init(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x03>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x03>::Activation(ByteReader &buf)
+{
+	FeatureMapSpriteGroup(buf);
+}

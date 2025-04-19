@@ -10,9 +10,9 @@
 #ifndef SCRIPT_CONTROLLER_HPP
 #define SCRIPT_CONTROLLER_HPP
 
-#include "script_types.hpp"
-#include "../../string_func.h"
 #include "../../company_type.h"
+#include "../../string_func.h"
+#include "script_types.hpp"
 
 /**
  * The Controller, the class each Script should extend. It creates the Script,
@@ -206,9 +206,9 @@ public:
 private:
 	typedef std::map<std::string, std::string, CaseInsensitiveComparator> LoadedLibraryList; ///< The type for loaded libraries.
 
-	uint ticks;                       ///< The amount of ticks we're sleeping.
+	uint ticks; ///< The amount of ticks we're sleeping.
 	LoadedLibraryList loaded_library; ///< The libraries we loaded.
-	int loaded_library_count;         ///< The amount of libraries.
+	int loaded_library_count; ///< The amount of libraries.
 };
 
 #endif /* SCRIPT_CONTROLLER_HPP */

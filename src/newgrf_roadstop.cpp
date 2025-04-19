@@ -8,26 +8,27 @@
 /** @file command.cpp Handling of NewGRF road stops. */
 
 #include "stdafx.h"
-#include "debug.h"
-#include "station_base.h"
-#include "roadstop_base.h"
-#include "newgrf_badge.h"
+
 #include "newgrf_roadstop.h"
-#include "newgrf_cargo.h"
-#include "newgrf_roadtype.h"
-#include "gfx_type.h"
+
 #include "company_func.h"
+#include "debug.h"
+#include "gfx_type.h"
+#include "newgrf_animation_base.h"
+#include "newgrf_badge.h"
+#include "newgrf_cargo.h"
+#include "newgrf_class_func.h"
+#include "newgrf_roadtype.h"
+#include "newgrf_sound.h"
 #include "road.h"
-#include "window_type.h"
+#include "roadstop_base.h"
+#include "station_base.h"
 #include "timer/timer_game_calendar.h"
 #include "town.h"
 #include "viewport_func.h"
-#include "newgrf_animation_base.h"
-#include "newgrf_sound.h"
+#include "window_type.h"
 
 #include "table/strings.h"
-
-#include "newgrf_class_func.h"
 
 #include "safeguards.h"
 
@@ -86,7 +87,8 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 
 	switch (variable) {
 		/* View/rotation */
-		case 0x40: return this->view;
+		case 0x40:
+			return this->view;
 
 		/* Stop type: 0: bus, 1: truck, 2: waypoint */
 		case 0x41:
@@ -95,13 +97,16 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			return 2;
 
 		/* Terrain type */
-		case 0x42: return this->tile == INVALID_TILE ? 0 : (GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile, TCX_NORMAL));
+		case 0x42:
+			return this->tile == INVALID_TILE ? 0 : (GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile, TCX_NORMAL));
 
 		/* Road type */
-		case 0x43: return get_road_type_variable(RTT_ROAD);
+		case 0x43:
+			return get_road_type_variable(RTT_ROAD);
 
 		/* Tram type */
-		case 0x44: return get_road_type_variable(RTT_TRAM);
+		case 0x44:
+			return get_road_type_variable(RTT_TRAM);
 
 		/* Town zone and Manhattan distance of closest town */
 		case 0x45: {
@@ -118,10 +123,12 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 		}
 
 		/* Company information */
-		case 0x47: return GetCompanyInfo(this->st == nullptr ? _current_company : this->st->owner);
+		case 0x47:
+			return GetCompanyInfo(this->st == nullptr ? _current_company : this->st->owner);
 
 		/* Animation frame */
-		case 0x49: return this->tile == INVALID_TILE ? 0 : this->st->GetRoadStopAnimationFrame(this->tile);
+		case 0x49:
+			return this->tile == INVALID_TILE ? 0 : this->st->GetRoadStopAnimationFrame(this->tile);
 
 		/* Misc info */
 		case 0x50: {
@@ -204,11 +211,14 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 			return 0xFFFE;
 		}
 
-		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->roadstopspec->badges, parameter);
+		case 0x7A:
+			return GetBadgeVariableResult(*this->ro.grffile, this->roadstopspec->badges, parameter);
 
-		case 0xF0: return this->st == nullptr ? 0 : this->st->facilities.base(); // facilities
+		case 0xF0:
+			return this->st == nullptr ? 0 : this->st->facilities.base(); // facilities
 
-		case 0xFA: return ClampTo<uint16_t>((this->st == nullptr ? TimerGameCalendar::date : this->st->build_date) - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // build date
+		case 0xFA:
+			return ClampTo<uint16_t>((this->st == nullptr ? TimerGameCalendar::date : this->st->build_date) - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // build date
 	}
 
 	if (this->st != nullptr) return this->st->GetNewGRFVariable(this->ro, variable, parameter, available);
@@ -224,9 +234,9 @@ const SpriteGroup *RoadStopResolverObject::ResolveReal(const RealSpriteGroup *gr
 	return group->loading[0];
 }
 
-RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view,
-		CallbackID callback, uint32_t param1, uint32_t param2)
-	: SpecializedResolverObject<StationRandomTriggers>(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
+RoadStopResolverObject::RoadStopResolverObject(
+	const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view, CallbackID callback, uint32_t param1, uint32_t param2) :
+	SpecializedResolverObject<StationRandomTriggers>(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
 {
 	CargoType ctype = SpriteGroupCargo::SG_DEFAULT_NA;
 
@@ -275,7 +285,8 @@ TownScopeResolver *RoadStopResolverObject::GetTown()
 	return &*this->town_scope;
 }
 
-uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view)
+uint16_t GetRoadStopCallback(
+	CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view)
 {
 	RoadStopResolverObject object(roadstopspec, st, tile, roadtype, type, view, callback, param1, param2);
 	return object.ResolveCallback();
@@ -304,7 +315,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	PaletteID palette = GetCompanyPalette(_local_company);
 
 	SpriteID image = dts->ground.sprite;
-	PaletteID pal  = dts->ground.pal;
+	PaletteID pal = dts->ground.pal;
 
 	RoadStopDrawModes draw_mode;
 	if (spec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
@@ -356,16 +367,23 @@ uint16_t GetAnimRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t 
 }
 
 struct RoadStopAnimationFrameAnimationHelper {
-	static uint8_t Get(BaseStation *st, TileIndex tile) { return st->GetRoadStopAnimationFrame(tile); }
-	static bool Set(BaseStation *st, TileIndex tile, uint8_t frame) { return st->SetRoadStopAnimationFrame(tile, frame); }
+	static uint8_t Get(BaseStation *st, TileIndex tile)
+	{
+		return st->GetRoadStopAnimationFrame(tile);
+	}
+
+	static bool Set(BaseStation *st, TileIndex tile, uint8_t frame)
+	{
+		return st->SetRoadStopAnimationFrame(tile, frame);
+	}
 };
 
 /** Helper class for animation control. */
 struct RoadStopAnimationBase : public AnimationBase<RoadStopAnimationBase, RoadStopSpec, BaseStation, int, GetAnimRoadStopCallback, RoadStopAnimationFrameAnimationHelper> {
-	static constexpr CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
+	static constexpr CallbackID cb_animation_speed = CBID_STATION_ANIMATION_SPEED;
 	static constexpr CallbackID cb_animation_next_frame = CBID_STATION_ANIMATION_NEXT_FRAME;
 
-	static constexpr RoadStopCallbackMask cbm_animation_speed      = RoadStopCallbackMask::AnimationSpeed;
+	static constexpr RoadStopCallbackMask cbm_animation_speed = RoadStopCallbackMask::AnimationSpeed;
 	static constexpr RoadStopCallbackMask cbm_animation_next_frame = RoadStopCallbackMask::AnimationNextFrame;
 };
 
@@ -581,8 +599,8 @@ int AllocateSpecToRoadStop(const RoadStopSpec *statspec, BaseStation *st, bool e
 
 	if (exec) {
 		if (i >= st->roadstop_speclist.size()) st->roadstop_speclist.resize(i + 1);
-		st->roadstop_speclist[i].spec     = statspec;
-		st->roadstop_speclist[i].grfid    = statspec->grf_prop.grfid;
+		st->roadstop_speclist[i].spec = statspec;
+		st->roadstop_speclist[i].grfid = statspec->grf_prop.grfid;
 		st->roadstop_speclist[i].localidx = statspec->grf_prop.local_id;
 
 		RoadStopUpdateCachedTriggers(st);
@@ -604,8 +622,8 @@ void DeallocateSpecFromRoadStop(BaseStation *st, uint8_t specindex)
 	}
 
 	/* This specindex is no longer in use, so deallocate it */
-	st->roadstop_speclist[specindex].spec     = nullptr;
-	st->roadstop_speclist[specindex].grfid    = 0;
+	st->roadstop_speclist[specindex].spec = nullptr;
+	st->roadstop_speclist[specindex].grfid = 0;
 	st->roadstop_speclist[specindex].localidx = 0;
 
 	/* If this was the highest spec index, reallocate */

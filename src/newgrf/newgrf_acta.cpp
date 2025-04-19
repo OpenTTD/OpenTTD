@@ -8,6 +8,7 @@
 /** @file newgrf_acta.cpp NewGRF Action 0x0A handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../spritecache.h"
 #include "newgrf_bytereader.h"
@@ -49,15 +50,12 @@ static void SpriteReplace(ByteReader &buf)
 		uint8_t num_sprites = buf.ReadByte();
 		uint16_t first_sprite = buf.ReadWord();
 
-		GrfMsg(2, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}",
-			i, num_sprites, first_sprite
-		);
+		GrfMsg(2, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}", i, num_sprites, first_sprite);
 
 		if (first_sprite + num_sprites >= SPR_OPENTTD_BASE) {
 			/* Outside allowed range, check for GRM sprite reservations. */
 			if (!IsGRMReservedSprite(first_sprite, num_sprites)) {
-				GrfMsg(0, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}, above limit of {} and not within reserved range, ignoring.",
-					i, num_sprites, first_sprite, SPR_OPENTTD_BASE);
+				GrfMsg(0, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}, above limit of {} and not within reserved range, ignoring.", i, num_sprites, first_sprite, SPR_OPENTTD_BASE);
 
 				/* Load the sprites at the current location so they will do nothing instead of appearing to work. */
 				first_sprite = _cur_gps.spriteid;
@@ -94,9 +92,38 @@ static void SkipActA(ByteReader &buf)
 	GrfMsg(3, "SkipActA: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
-template <> void GrfActionHandler<0x0A>::FileScan(ByteReader &buf) { SkipActA(buf); }
-template <> void GrfActionHandler<0x0A>::SafetyScan(ByteReader &buf) { SkipActA(buf); }
-template <> void GrfActionHandler<0x0A>::LabelScan(ByteReader &buf) { SkipActA(buf); }
-template <> void GrfActionHandler<0x0A>::Init(ByteReader &buf) { SkipActA(buf); }
-template <> void GrfActionHandler<0x0A>::Reserve(ByteReader &buf) { SkipActA(buf); }
-template <> void GrfActionHandler<0x0A>::Activation(ByteReader &buf) { SpriteReplace(buf); }
+template <>
+void GrfActionHandler<0x0A>::FileScan(ByteReader &buf)
+{
+	SkipActA(buf);
+}
+
+template <>
+void GrfActionHandler<0x0A>::SafetyScan(ByteReader &buf)
+{
+	SkipActA(buf);
+}
+
+template <>
+void GrfActionHandler<0x0A>::LabelScan(ByteReader &buf)
+{
+	SkipActA(buf);
+}
+
+template <>
+void GrfActionHandler<0x0A>::Init(ByteReader &buf)
+{
+	SkipActA(buf);
+}
+
+template <>
+void GrfActionHandler<0x0A>::Reserve(ByteReader &buf)
+{
+	SkipActA(buf);
+}
+
+template <>
+void GrfActionHandler<0x0A>::Activation(ByteReader &buf)
+{
+	SpriteReplace(buf);
+}

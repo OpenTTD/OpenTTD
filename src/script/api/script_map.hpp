@@ -10,8 +10,8 @@
 #ifndef SCRIPT_MAP_HPP
 #define SCRIPT_MAP_HPP
 
-#include "script_object.hpp"
 #include "../../tile_type.h"
+#include "script_object.hpp"
 
 /**
  * Class that handles all map related functions.

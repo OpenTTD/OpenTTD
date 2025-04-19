@@ -7,16 +7,16 @@
 
 /** @file follow_track.hpp Template function for track followers */
 
-#ifndef  FOLLOW_TRACK_HPP
-#define  FOLLOW_TRACK_HPP
+#ifndef FOLLOW_TRACK_HPP
+#define FOLLOW_TRACK_HPP
 
+#include "../depot_map.h"
 #include "../pbs.h"
 #include "../roadveh.h"
 #include "../station_base.h"
 #include "../train.h"
 #include "../tunnelbridge.h"
 #include "../tunnelbridge_map.h"
-#include "../depot_map.h"
 #include "pathfinder_func.h"
 
 /**
@@ -25,8 +25,7 @@
  *  types w/ or w/o 90-deg turns allowed
  */
 template <TransportType Ttr_type_, typename VehicleType, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
-struct CFollowTrackT
-{
+struct CFollowTrackT {
 	enum ErrorCode : uint8_t {
 		EC_NONE,
 		EC_OWNER,
@@ -88,13 +87,40 @@ struct CFollowTrackT
 		this->railtypes = railtype_override;
 	}
 
-	[[debug_inline]] inline static TransportType TT() { return Ttr_type_; }
-	[[debug_inline]] inline static bool IsWaterTT() { return TT() == TRANSPORT_WATER; }
-	[[debug_inline]] inline static bool IsRailTT() { return TT() == TRANSPORT_RAIL; }
-	inline bool IsTram() { return IsRoadTT() && RoadTypeIsTram(RoadVehicle::From(this->veh)->roadtype); }
-	[[debug_inline]] inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
-	inline static bool Allow90degTurns() { return T90deg_turns_allowed_; }
-	inline static bool DoTrackMasking() { return Tmask_reserved_tracks; }
+	[[debug_inline]] inline static TransportType TT()
+	{
+		return Ttr_type_;
+	}
+
+	[[debug_inline]] inline static bool IsWaterTT()
+	{
+		return TT() == TRANSPORT_WATER;
+	}
+
+	[[debug_inline]] inline static bool IsRailTT()
+	{
+		return TT() == TRANSPORT_RAIL;
+	}
+
+	inline bool IsTram()
+	{
+		return IsRoadTT() && RoadTypeIsTram(RoadVehicle::From(this->veh)->roadtype);
+	}
+
+	[[debug_inline]] inline static bool IsRoadTT()
+	{
+		return TT() == TRANSPORT_ROAD;
+	}
+
+	static inline bool Allow90degTurns()
+	{
+		return T90deg_turns_allowed_;
+	}
+
+	static inline bool DoTrackMasking()
+	{
+		return Tmask_reserved_tracks;
+	}
 
 	/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
 	inline DiagDirection GetSingleTramBit(TileIndex tile)
@@ -104,11 +130,16 @@ struct CFollowTrackT
 		if (IsNormalRoadTile(tile)) {
 			RoadBits rb = GetRoadBits(tile, RTT_TRAM);
 			switch (rb) {
-				case ROAD_NW: return DIAGDIR_NW;
-				case ROAD_SW: return DIAGDIR_SW;
-				case ROAD_SE: return DIAGDIR_SE;
-				case ROAD_NE: return DIAGDIR_NE;
-				default: break;
+				case ROAD_NW:
+					return DIAGDIR_NW;
+				case ROAD_SW:
+					return DIAGDIR_SW;
+				case ROAD_SE:
+					return DIAGDIR_SE;
+				case ROAD_NE:
+					return DIAGDIR_NE;
+				default:
+					break;
 			}
 		}
 		return INVALID_DIAGDIR;
@@ -159,7 +190,7 @@ struct CFollowTrackT
 			return false;
 		}
 		if ((!IsRailTT() && !Allow90degTurns()) || (IsRailTT() && Rail90DegTurnDisallowed(GetTileRailType(this->old_tile), GetTileRailType(this->new_tile), !Allow90degTurns()))) {
-			this->new_td_bits &= (TrackdirBits)~(int)TrackdirCrossesTrackdirs(this->old_td);
+			this->new_td_bits &= (TrackdirBits) ~(int)TrackdirCrossesTrackdirs(this->old_td);
 			if (this->new_td_bits == TRACKDIR_BIT_NONE) {
 				this->err = EC_90DEG;
 				return false;
@@ -409,7 +440,8 @@ protected:
 		}
 
 		/* Single tram bits and standard road stops cause reversing. */
-		if (IsRoadTT() && ((this->IsTram() && GetSingleTramBit(this->old_tile) == ReverseDiagDir(this->exitdir)) ||
+		if (IsRoadTT() &&
+			((this->IsTram() && GetSingleTramBit(this->old_tile) == ReverseDiagDir(this->exitdir)) ||
 				(IsBayRoadStopTile(this->old_tile) && GetBayRoadStopDir(this->old_tile) == ReverseDiagDir(this->exitdir)))) {
 			/* reverse */
 			this->new_tile = this->old_tile;
@@ -475,13 +507,13 @@ public:
 	}
 };
 
-typedef CFollowTrackT<TRANSPORT_WATER, Ship,        true > CFollowTrackWater;
-typedef CFollowTrackT<TRANSPORT_ROAD,  RoadVehicle, true > CFollowTrackRoad;
-typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       true > CFollowTrackRail;
+typedef CFollowTrackT<TRANSPORT_WATER, Ship, true> CFollowTrackWater;
+typedef CFollowTrackT<TRANSPORT_ROAD, RoadVehicle, true> CFollowTrackRoad;
+typedef CFollowTrackT<TRANSPORT_RAIL, Train, true> CFollowTrackRail;
 
-typedef CFollowTrackT<TRANSPORT_RAIL,  Train,       false> CFollowTrackRailNo90;
+typedef CFollowTrackT<TRANSPORT_RAIL, Train, false> CFollowTrackRailNo90;
 
-typedef CFollowTrackT<TRANSPORT_RAIL, Train, true,  true > CFollowTrackFreeRail;
-typedef CFollowTrackT<TRANSPORT_RAIL, Train, false, true > CFollowTrackFreeRailNo90;
+typedef CFollowTrackT<TRANSPORT_RAIL, Train, true, true> CFollowTrackFreeRail;
+typedef CFollowTrackT<TRANSPORT_RAIL, Train, false, true> CFollowTrackFreeRailNo90;
 
 #endif /* FOLLOW_TRACK_HPP */

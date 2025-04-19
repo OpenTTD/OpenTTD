@@ -10,7 +10,9 @@
  */
 
 #include "../stdafx.h"
+
 #include "utf8.hpp"
+
 #include "../safeguards.h"
 
 /**
@@ -25,17 +27,17 @@
 	if (c < 0x80) {
 		buf[len++] = c;
 	} else if (c < 0x800) {
-		buf[len++] = 0xC0 + GB(c,  6, 5);
-		buf[len++] = 0x80 + GB(c,  0, 6);
+		buf[len++] = 0xC0 + GB(c, 6, 5);
+		buf[len++] = 0x80 + GB(c, 0, 6);
 	} else if (c < 0x10000) {
 		buf[len++] = 0xE0 + GB(c, 12, 4);
-		buf[len++] = 0x80 + GB(c,  6, 6);
-		buf[len++] = 0x80 + GB(c,  0, 6);
+		buf[len++] = 0x80 + GB(c, 6, 6);
+		buf[len++] = 0x80 + GB(c, 0, 6);
 	} else if (c < 0x110000) {
 		buf[len++] = 0xF0 + GB(c, 18, 3);
 		buf[len++] = 0x80 + GB(c, 12, 6);
-		buf[len++] = 0x80 + GB(c,  6, 6);
-		buf[len++] = 0x80 + GB(c,  0, 6);
+		buf[len++] = 0x80 + GB(c, 6, 6);
+		buf[len++] = 0x80 + GB(c, 0, 6);
 	}
 	return result;
 }

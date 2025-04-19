@@ -11,12 +11,14 @@
  */
 class InitHandler : public ComponentHandler {
 public:
-
 	/**
 	 * Initialize the link graph job.
 	 * @param job Job to be initialized.
 	 */
-	void Run(LinkGraphJob &job) const override { job.Init(); }
+	void Run(LinkGraphJob &job) const override
+	{
+		job.Init();
+	}
 };
 
 #endif /* INIT_H */

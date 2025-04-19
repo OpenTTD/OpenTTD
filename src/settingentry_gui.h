@@ -33,22 +33,22 @@ static constexpr SettingEntryFlags SEF_BUTTONS_MASK = {SettingEntryFlag::LeftDep
 
 /** How the list of advanced settings is filtered. */
 enum RestrictionMode : uint8_t {
-	RM_BASIC,                            ///< Display settings associated to the "basic" list.
-	RM_ADVANCED,                         ///< Display settings associated to the "advanced" list.
-	RM_ALL,                              ///< List all settings regardless of the default/newgame/... values.
-	RM_CHANGED_AGAINST_DEFAULT,          ///< Show only settings which are different compared to default values.
-	RM_CHANGED_AGAINST_NEW,              ///< Show only settings which are different compared to the user's new game setting values.
-	RM_END,                              ///< End for iteration.
+	RM_BASIC, ///< Display settings associated to the "basic" list.
+	RM_ADVANCED, ///< Display settings associated to the "advanced" list.
+	RM_ALL, ///< List all settings regardless of the default/newgame/... values.
+	RM_CHANGED_AGAINST_DEFAULT, ///< Show only settings which are different compared to default values.
+	RM_CHANGED_AGAINST_NEW, ///< Show only settings which are different compared to the user's new game setting values.
+	RM_END, ///< End for iteration.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(RestrictionMode)
 
 /** Filter for settings list. */
 struct SettingFilter {
-	StringFilter string;     ///< Filter string.
+	StringFilter string; ///< Filter string.
 	RestrictionMode min_cat; ///< Minimum category needed to display all filtered strings (#RM_BASIC, #RM_ADVANCED, or #RM_ALL).
-	bool type_hides;         ///< Whether the type hides filtered strings.
-	RestrictionMode mode;    ///< Filter based on category.
-	SettingType type;        ///< Filter based on type.
+	bool type_hides; ///< Whether the type hides filtered strings.
+	RestrictionMode mode; ///< Filter based on category.
+	SettingType type; ///< Filter based on type.
 };
 
 /** Data structure describing a single setting in a tab */
@@ -57,30 +57,46 @@ struct BaseSettingEntry {
 	uint8_t level; ///< Nesting level of this setting entry
 
 	BaseSettingEntry() : flags(), level(0) {}
+
 	virtual ~BaseSettingEntry() = default;
 
 	virtual void Init(uint8_t level = 0);
+
 	virtual void FoldAll() {}
+
 	virtual void UnFoldAll() {}
+
 	virtual void ResetAll() = 0;
 
 	/**
 	 * Set whether this is the last visible entry of the parent node.
 	 * @param last_field Value to set
 	 */
-	void SetLastField(bool last_field) { this->flags.Set(SettingEntryFlag::LastField, last_field); }
+	void SetLastField(bool last_field)
+	{
+		this->flags.Set(SettingEntryFlag::LastField, last_field);
+	}
 
 	virtual uint Length() const = 0;
+
 	virtual void GetFoldingState([[maybe_unused]] bool &all_folded, [[maybe_unused]] bool &all_unfolded) const {}
+
 	virtual bool IsVisible(const BaseSettingEntry *item) const;
 	virtual BaseSettingEntry *FindEntry(uint row, uint *cur_row);
-	virtual uint GetMaxHelpHeight([[maybe_unused]] int maxw) { return 0; }
+
+	virtual uint GetMaxHelpHeight([[maybe_unused]] int maxw)
+	{
+		return 0;
+	}
 
 	/**
 	 * Check whether an entry is hidden due to filters
 	 * @return true if hidden.
 	 */
-	bool IsFiltered() const { return this->flags.Test(SettingEntryFlag::Filtered); }
+	bool IsFiltered() const
+	{
+		return this->flags.Test(SettingEntryFlag::Filtered);
+	}
 
 	virtual bool UpdateFilterState(SettingFilter &filter, bool force_visible) = 0;
 
@@ -92,7 +108,7 @@ protected:
 
 /** Standard setting */
 struct SettingEntry : BaseSettingEntry {
-	const char *name;              ///< Name of the setting
+	const char *name; ///< Name of the setting
 	const IntSettingDesc *setting; ///< Setting description of the setting
 
 	SettingEntry(const char *name);
@@ -114,7 +130,7 @@ private:
 
 /** Containers for BaseSettingEntry */
 struct SettingsContainer {
-	typedef std::vector<BaseSettingEntry*> EntryVector;
+	typedef std::vector<BaseSettingEntry *> EntryVector;
 	EntryVector entries; ///< Settings on this page
 
 	template <typename T>
@@ -142,8 +158,8 @@ struct SettingsContainer {
 
 /** Data structure describing one page of settings in the settings window. */
 struct SettingsPage : BaseSettingEntry, SettingsContainer {
-	StringID title;     ///< Title of the sub-page
-	bool folded;        ///< Sub-page is folded (not visible except for its title)
+	StringID title; ///< Title of the sub-page
+	bool folded; ///< Sub-page is folded (not visible except for its title)
 
 	SettingsPage(StringID title);
 
@@ -156,7 +172,11 @@ struct SettingsPage : BaseSettingEntry, SettingsContainer {
 	void GetFoldingState(bool &all_folded, bool &all_unfolded) const override;
 	bool IsVisible(const BaseSettingEntry *item) const override;
 	BaseSettingEntry *FindEntry(uint row, uint *cur_row) override;
-	uint GetMaxHelpHeight(int maxw) override { return SettingsContainer::GetMaxHelpHeight(maxw); }
+
+	uint GetMaxHelpHeight(int maxw) override
+	{
+		return SettingsContainer::GetMaxHelpHeight(maxw);
+	}
 
 	bool UpdateFilterState(SettingFilter &filter, bool force_visible) override;
 
@@ -170,4 +190,3 @@ SettingsContainer &GetSettingsTree();
 const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd);
 
 #endif /* SETTINGENTRY_GUI_H */
-

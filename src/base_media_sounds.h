@@ -12,7 +12,8 @@
 
 #include "base_media_base.h"
 
-template <> struct BaseSetTraits<struct SoundsSet> {
+template <>
+struct BaseSetTraits<struct SoundsSet> {
 	static constexpr size_t num_files = 1;
 	static constexpr bool search_in_tars = true;
 	static constexpr std::string_view set_type = "sounds";

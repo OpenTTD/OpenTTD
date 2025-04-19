@@ -30,7 +30,7 @@ const SaveLoadCompat _engine_sl_compat[] = {
 	SLC_VAR("preview_asked"),
 	SLC_VAR("preview_company"),
 	SLC_VAR("preview_wait"),
-	SLC_NULL(1, SL_MIN_VERSION,  SLV_45),
+	SLC_NULL(1, SL_MIN_VERSION, SLV_45),
 	SLC_VAR("company_avail"),
 	SLC_VAR("company_hidden"),
 	SLC_VAR("name"),

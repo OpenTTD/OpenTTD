@@ -8,25 +8,27 @@
 /** @file crashlog.cpp Implementation of generic function to be called to log a crash */
 
 #include "stdafx.h"
+
 #include "crashlog.h"
-#include "survey.h"
+
+#include "3rdparty/fmt/chrono.h"
+#include "3rdparty/fmt/std.h"
+
+#include "core/format.hpp"
+#include "company_func.h"
+#include "fileio_func.h"
+#include "fileio_type.h"
 #include "gamelog.h"
 #include "map_func.h"
 #include "music/music_driver.hpp"
-#include "sound/sound_driver.hpp"
-#include "video/video_driver.hpp"
-#include "saveload/saveload.h"
-#include "screenshot.h"
 #include "network/network_survey.h"
 #include "news_func.h"
 #include "news_gui.h"
-#include "fileio_func.h"
-#include "fileio_type.h"
-
-#include "company_func.h"
-#include "3rdparty/fmt/chrono.h"
-#include "3rdparty/fmt/std.h"
-#include "core/format.hpp"
+#include "saveload/saveload.h"
+#include "screenshot.h"
+#include "sound/sound_driver.hpp"
+#include "survey.h"
+#include "video/video_driver.hpp"
 
 #include "safeguards.h"
 
@@ -59,10 +61,8 @@ static void SurveyRecentNews(nlohmann::json &json)
 	int i = 0;
 	for (const auto &news : GetNews()) {
 		TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(news.date);
-		json.push_back(fmt::format("({}-{:02}-{:02}) String: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}",
-		               ymd.year, ymd.month + 1, ymd.day, news.GetStatusText(), news.type,
-		               news.ref1.index(), SerialiseNewsReference(news.ref1),
-		               news.ref2.index(), SerialiseNewsReference(news.ref2)));
+		json.push_back(fmt::format("({}-{:02}-{:02}) String: {}, Type: {}, Ref1: {}, {}, Ref2: {}, {}", ymd.year, ymd.month + 1, ymd.day, news.GetStatusText(), news.type, news.ref1.index(),
+			SerialiseNewsReference(news.ref1), news.ref2.index(), SerialiseNewsReference(news.ref2)));
 		if (++i > 32) break;
 	}
 }
@@ -101,35 +101,62 @@ void CrashLog::FillCrashLog()
 		CrashLog::message.clear();
 	}
 
-	if (!this->TryExecute("stacktrace", [this]() { this->SurveyStacktrace(this->survey["stacktrace"]); return true; })) {
+	if (!this->TryExecute("stacktrace", [this]() {
+			this->SurveyStacktrace(this->survey["stacktrace"]);
+			return true;
+		})) {
 		this->survey["stacktrace"] = "crashed while gathering information";
 	}
 
-	if (!this->TryExecute("session", [this]() { SurveyGameSession(this->survey["session"]); return true; })) {
+	if (!this->TryExecute("session", [this]() {
+			SurveyGameSession(this->survey["session"]);
+			return true;
+		})) {
 		this->survey["session"] = "crashed while gathering information";
 	}
 
 	{
 		auto &info = this->survey["info"];
-		if (!this->TryExecute("os", [&info]() { SurveyOS(info["os"]); return true; })) {
+		if (!this->TryExecute("os", [&info]() {
+				SurveyOS(info["os"]);
+				return true;
+			})) {
 			info["os"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("openttd", [&info]() { SurveyOpenTTD(info["openttd"]); return true; })) {
+		if (!this->TryExecute("openttd", [&info]() {
+				SurveyOpenTTD(info["openttd"]);
+				return true;
+			})) {
 			info["openttd"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("configuration", [&info]() { SurveyConfiguration(info["configuration"]); return true; })) {
+		if (!this->TryExecute("configuration", [&info]() {
+				SurveyConfiguration(info["configuration"]);
+				return true;
+			})) {
 			info["configuration"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("font", [&info]() { SurveyFont(info["font"]); return true; })) {
+		if (!this->TryExecute("font", [&info]() {
+				SurveyFont(info["font"]);
+				return true;
+			})) {
 			info["font"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("compiler", [&info]() { SurveyCompiler(info["compiler"]); return true; })) {
+		if (!this->TryExecute("compiler", [&info]() {
+				SurveyCompiler(info["compiler"]);
+				return true;
+			})) {
 			info["compiler"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("libraries", [&info]() { SurveyLibraries(info["libraries"]); return true; })) {
+		if (!this->TryExecute("libraries", [&info]() {
+				SurveyLibraries(info["libraries"]);
+				return true;
+			})) {
 			info["libraries"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("plugins", [&info]() { SurveyPlugins(info["plugins"]); return true; })) {
+		if (!this->TryExecute("plugins", [&info]() {
+				SurveyPlugins(info["plugins"]);
+				return true;
+			})) {
 			info["plugins"] = "crashed while gathering information";
 		}
 	}
@@ -139,25 +166,46 @@ void CrashLog::FillCrashLog()
 		game["local_company"] = _local_company.base();
 		game["current_company"] = _current_company.base();
 
-		if (!this->TryExecute("timers", [&game]() { SurveyTimers(game["timers"]); return true; })) {
+		if (!this->TryExecute("timers", [&game]() {
+				SurveyTimers(game["timers"]);
+				return true;
+			})) {
 			game["libraries"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("companies", [&game]() { SurveyCompanies(game["companies"]); return true; })) {
+		if (!this->TryExecute("companies", [&game]() {
+				SurveyCompanies(game["companies"]);
+				return true;
+			})) {
 			game["companies"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("settings", [&game]() { SurveySettings(game["settings_changed"], true); return true; })) {
+		if (!this->TryExecute("settings", [&game]() {
+				SurveySettings(game["settings_changed"], true);
+				return true;
+			})) {
 			game["settings"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("grfs", [&game]() { SurveyGrfs(game["grfs"]); return true; })) {
+		if (!this->TryExecute("grfs", [&game]() {
+				SurveyGrfs(game["grfs"]);
+				return true;
+			})) {
 			game["grfs"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("game_script", [&game]() { SurveyGameScript(game["game_script"]); return true; })) {
+		if (!this->TryExecute("game_script", [&game]() {
+				SurveyGameScript(game["game_script"]);
+				return true;
+			})) {
 			game["game_script"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("gamelog", [&game]() { SurveyGamelog(game["gamelog"]); return true; })) {
+		if (!this->TryExecute("gamelog", [&game]() {
+				SurveyGamelog(game["gamelog"]);
+				return true;
+			})) {
 			game["gamelog"] = "crashed while gathering information";
 		}
-		if (!this->TryExecute("news", [&game]() { SurveyRecentNews(game["news"]); return true; })) {
+		if (!this->TryExecute("news", [&game]() {
+				SurveyRecentNews(game["news"]);
+				return true;
+			})) {
 			game["news"] = "crashed while gathering information";
 		}
 	}
@@ -281,10 +329,15 @@ void CrashLog::MakeCrashLog()
 	fmt::print("Crash log generated.\n\n");
 
 	fmt::print("Crash in summary:\n");
-	this->TryExecute("crashlog", [this]() { this->PrintCrashLog(); return true; });
+	this->TryExecute("crashlog", [this]() {
+		this->PrintCrashLog();
+		return true;
+	});
 
 	fmt::print("Writing crash log to disk...\n");
-	bool ret = this->TryExecute("crashlog", [this]() { return this->WriteCrashLog(); });
+	bool ret = this->TryExecute("crashlog", [this]() {
+		return this->WriteCrashLog();
+	});
 	if (ret) {
 		fmt::print("Crash log written to {}. Please add this file to any bug reports.\n\n", this->crashlog_filename);
 	} else {
@@ -293,7 +346,9 @@ void CrashLog::MakeCrashLog()
 	}
 
 	fmt::print("Writing crash dump to disk...\n");
-	ret = this->TryExecute("crashdump", [this]() { return this->WriteCrashDump(); });
+	ret = this->TryExecute("crashdump", [this]() {
+		return this->WriteCrashDump();
+	});
 	if (ret) {
 		fmt::print("Crash dump written to {}. Please add this file to any bug reports.\n\n", this->crashdump_filename);
 	} else {
@@ -302,7 +357,9 @@ void CrashLog::MakeCrashLog()
 	}
 
 	fmt::print("Writing crash savegame...\n");
-	ret = this->TryExecute("savegame", [this]() { return this->WriteSavegame(); });
+	ret = this->TryExecute("savegame", [this]() {
+		return this->WriteSavegame();
+	});
 	if (ret) {
 		fmt::print("Crash savegame written to {}. Please add this file and the last (auto)save to any bug reports.\n\n", this->savegame_filename);
 	} else {
@@ -311,7 +368,9 @@ void CrashLog::MakeCrashLog()
 	}
 
 	fmt::print("Writing crash screenshot...\n");
-	ret = this->TryExecute("screenshot", [this]() { return this->WriteScreenshot(); });
+	ret = this->TryExecute("screenshot", [this]() {
+		return this->WriteScreenshot();
+	});
 	if (ret) {
 		fmt::print("Crash screenshot written to {}. Please add this file to any bug reports.\n\n", this->screenshot_filename);
 	} else {
@@ -319,7 +378,10 @@ void CrashLog::MakeCrashLog()
 		this->screenshot_filename = "(failed to write crash screenshot)";
 	}
 
-	this->TryExecute("survey", [this]() { this->SendSurvey(); return true; });
+	this->TryExecute("survey", [this]() {
+		this->SendSurvey();
+		return true;
+	});
 }
 
 /**

@@ -8,31 +8,32 @@
 /** @file statusbar_gui.cpp The GUI for the bottom status bar. */
 
 #include "stdafx.h"
+
+#include "statusbar_gui.h"
+
 #include "core/backup_type.hpp"
+#include "core/geometry_func.hpp"
+#include "company_base.h"
+#include "company_func.h"
+#include "company_gui.h"
 #include "gfx_func.h"
 #include "news_func.h"
-#include "company_func.h"
+#include "news_gui.h"
+#include "saveload/saveload.h"
 #include "string_func.h"
 #include "strings_func.h"
-#include "company_base.h"
 #include "tilehighlight_func.h"
-#include "news_gui.h"
-#include "company_gui.h"
-#include "window_gui.h"
-#include "saveload/saveload.h"
-#include "window_func.h"
-#include "statusbar_gui.h"
-#include "toolbar_gui.h"
-#include "core/geometry_func.hpp"
-#include "zoom_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_window.h"
+#include "toolbar_gui.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/statusbar_widget.h"
-
-#include "table/strings.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -57,8 +58,8 @@ struct StatusBarWindow : Window {
 	bool saving = false;
 	int ticker_scroll = TICKER_STOP;
 
-	static const int TICKER_STOP    = 1640; ///< scrolling is finished when counter reaches this value
-	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
+	static const int TICKER_STOP = 1640; ///< scrolling is finished when counter reaches this value
+	static const int COUNTER_STEP = 2; ///< this is subtracted from active counters every tick
 	static constexpr auto REMINDER_START = std::chrono::milliseconds(1350); ///< time in ms for reminder notification (red dot on the right) to stay
 
 	StatusBarWindow(WindowDesc &desc) : Window(desc)
@@ -70,7 +71,7 @@ struct StatusBarWindow : Window {
 
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
-		Point pt = { 0, _screen.height - sm_height };
+		Point pt = {0, _screen.height - sm_height};
 		return pt;
 	}
 
@@ -170,13 +171,22 @@ struct StatusBarWindow : Window {
 	{
 		if (!gui_scope) return;
 		switch (data) {
-			default: NOT_REACHED();
-			case SBI_SAVELOAD_START:  this->saving = true;  break;
-			case SBI_SAVELOAD_FINISH: this->saving = false; break;
-			case SBI_SHOW_TICKER:     this->ticker_scroll = 0; break;
-			case SBI_SHOW_REMINDER:   this->reminder_timeout.Reset(); break;
+			default:
+				NOT_REACHED();
+			case SBI_SAVELOAD_START:
+				this->saving = true;
+				break;
+			case SBI_SAVELOAD_FINISH:
+				this->saving = false;
+				break;
+			case SBI_SHOW_TICKER:
+				this->ticker_scroll = 0;
+				break;
+			case SBI_SHOW_REMINDER:
+				this->reminder_timeout.Reset();
+				break;
 			case SBI_NEWS_DELETED:
-				this->ticker_scroll    =   TICKER_STOP; // reset ticker ...
+				this->ticker_scroll = TICKER_STOP; // reset ticker ...
 				this->reminder_timeout.Abort(); // ... and reminder
 				break;
 		}
@@ -185,29 +195,34 @@ struct StatusBarWindow : Window {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_S_MIDDLE: ShowLastNewsMessage(); break;
-			case WID_S_RIGHT:  if (_local_company != COMPANY_SPECTATOR) ShowCompanyFinances(_local_company); break;
-			default: ResetObjectToPlace();
+			case WID_S_MIDDLE:
+				ShowLastNewsMessage();
+				break;
+			case WID_S_RIGHT:
+				if (_local_company != COMPANY_SPECTATOR) ShowCompanyFinances(_local_company);
+				break;
+			default:
+				ResetObjectToPlace();
 		}
 	}
 
 	/** Move information on the ticker slowly from one side to the other. */
 	IntervalTimer<TimerWindow> ticker_scroll_interval = {std::chrono::milliseconds(15), [this](uint count) {
-		if (_pause_mode.Any()) return;
+															 if (_pause_mode.Any()) return;
 
-		if (this->ticker_scroll < TICKER_STOP) {
-			this->ticker_scroll += count;
-			this->SetWidgetDirty(WID_S_MIDDLE);
-		}
-	}};
+															 if (this->ticker_scroll < TICKER_STOP) {
+																 this->ticker_scroll += count;
+																 this->SetWidgetDirty(WID_S_MIDDLE);
+															 }
+														 }};
 
 	TimeoutTimer<TimerWindow> reminder_timeout = {REMINDER_START, [this]() {
-		this->SetWidgetDirty(WID_S_MIDDLE);
-	}};
+													  this->SetWidgetDirty(WID_S_MIDDLE);
+												  }};
 
 	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
-		this->SetWidgetDirty(WID_S_LEFT);
-	}};
+														   this->SetWidgetDirty(WID_S_LEFT);
+													   }};
 };
 
 /* clang-format off */
@@ -220,19 +235,14 @@ static constexpr NWidgetPart _nested_main_status_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _main_status_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_STATUS_BAR, WC_NONE,
-	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
-	_nested_main_status_widgets
-);
+static WindowDesc _main_status_desc(WDP_MANUAL, nullptr, 0, 0, WC_STATUS_BAR, WC_NONE, {WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose}, _nested_main_status_widgets);
 
 /**
  * Checks whether the news ticker is currently being used.
  */
 bool IsNewsTickerShown()
 {
-	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WC_STATUS_BAR, 0));
+	const StatusBarWindow *w = dynamic_cast<StatusBarWindow *>(FindWindowById(WC_STATUS_BAR, 0));
 	return w != nullptr && w->ticker_scroll < StatusBarWindow::TICKER_STOP;
 }
 

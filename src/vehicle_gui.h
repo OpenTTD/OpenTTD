@@ -10,39 +10,39 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
-#include "window_type.h"
-#include "vehicle_type.h"
-#include "vehicle_gui_base.h"
-#include "vehiclelist.h"
+#include "company_type.h"
+#include "engine_type.h"
 #include "order_type.h"
 #include "station_type.h"
-#include "engine_type.h"
-#include "company_type.h"
+#include "vehicle_gui_base.h"
+#include "vehicle_type.h"
+#include "vehiclelist.h"
+#include "window_type.h"
 
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit = false);
 
 /** The tabs in the train details window */
 enum TrainDetailsWindowTabs : uint8_t {
 	TDW_TAB_CARGO = 0, ///< Tab with cargo carried by the vehicles
-	TDW_TAB_INFO,      ///< Tab with name and value of the vehicles
-	TDW_TAB_CAPACITY,  ///< Tab with cargo capacity of the vehicles
-	TDW_TAB_TOTALS,    ///< Tab with sum of total cargo transported
+	TDW_TAB_INFO, ///< Tab with name and value of the vehicles
+	TDW_TAB_CAPACITY, ///< Tab with cargo capacity of the vehicles
+	TDW_TAB_TOTALS, ///< Tab with sum of total cargo transported
 };
 DECLARE_ENUM_AS_ADDABLE(TrainDetailsWindowTabs)
 
 /** Special values for vehicle-related windows for the data parameter of #InvalidateWindowData. */
 enum VehicleInvalidateWindowData : int {
 	VIWD_REMOVE_ALL_ORDERS = -1, ///< Removed / replaced all orders (after deleting / sharing).
-	VIWD_MODIFY_ORDERS     = -2, ///< Other order modifications.
-	VIWD_CONSIST_CHANGED   = -3, ///< Vehicle composition was changed.
-	VIWD_AUTOREPLACE       = -4, ///< Autoreplace replaced the vehicle.
+	VIWD_MODIFY_ORDERS = -2, ///< Other order modifications.
+	VIWD_CONSIST_CHANGED = -3, ///< Vehicle composition was changed.
+	VIWD_AUTOREPLACE = -4, ///< Autoreplace replaced the vehicle.
 };
 
 /** Extra information about refitted cargo and capacity */
 struct TestedEngineDetails {
-	Money cost;           ///< Refit cost
-	CargoType cargo;        ///< Cargo type
-	uint capacity;        ///< Cargo capacity
+	Money cost; ///< Refit cost
+	CargoType cargo; ///< Cargo type
+	uint capacity; ///< Cargo capacity
 	uint16_t mail_capacity; ///< Mail capacity if available
 	CargoArray all_capacities{}; ///< Capacities for all cargoes
 
@@ -81,8 +81,8 @@ int GetVehicleWidth(const Vehicle *v, EngineImageType image_type);
 
 /** Dimensions of a cell in the purchase/depot windows. */
 struct VehicleCellSize {
-	uint height;       ///< Vehicle cell height.
-	uint extend_left;  ///< Extend of the cell to the left.
+	uint height; ///< Vehicle cell height.
+	uint extend_left; ///< Extend of the cell to the left.
 	uint extend_right; ///< Extend of the cell to the right.
 };
 
@@ -97,11 +97,16 @@ VehicleCellSize GetVehicleImageCellSize(VehicleType type, EngineImageType image_
 inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 {
 	switch (vt) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:    return WC_TRAINS_LIST;
-		case VEH_ROAD:     return WC_ROADVEH_LIST;
-		case VEH_SHIP:     return WC_SHIPS_LIST;
-		case VEH_AIRCRAFT: return WC_AIRCRAFT_LIST;
+		default:
+			NOT_REACHED();
+		case VEH_TRAIN:
+			return WC_TRAINS_LIST;
+		case VEH_ROAD:
+			return WC_ROADVEH_LIST;
+		case VEH_SHIP:
+			return WC_SHIPS_LIST;
+		case VEH_AIRCRAFT:
+			return WC_AIRCRAFT_LIST;
 	}
 }
 

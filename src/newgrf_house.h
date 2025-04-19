@@ -10,19 +10,19 @@
 #ifndef NEWGRF_HOUSE_H
 #define NEWGRF_HOUSE_H
 
-#include "newgrf_callbacks.h"
-#include "tile_cmd.h"
 #include "house_type.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
+#include "tile_cmd.h"
 
 /** Scope resolver for houses. */
 struct HouseScopeResolver : public ScopeResolver {
-	HouseID house_id;              ///< Type of house being queried.
-	TileIndex tile;                ///< Tile of this house.
-	Town *town;                    ///< Town of this house.
-	bool not_yet_constructed;      ///< True for construction check.
-	uint16_t initial_random_bits;    ///< Random bits during construction checks.
+	HouseID house_id; ///< Type of house being queried.
+	TileIndex tile; ///< Tile of this house.
+	Town *town; ///< Town of this house.
+	bool not_yet_constructed; ///< True for construction check.
+	uint16_t initial_random_bits; ///< Random bits during construction checks.
 	CargoTypes watched_cargo_triggers; ///< Cargo types that triggered the watched cargo callback.
 	int view; ///< View when house does yet exist.
 
@@ -36,10 +36,9 @@ struct HouseScopeResolver : public ScopeResolver {
 	 * @param initial_random_bits Random bits during construction checks.
 	 * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
 	 */
-	HouseScopeResolver(ResolverObject &ro, HouseID house_id, TileIndex tile, Town *town,
-			bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
-		: ScopeResolver(ro), house_id(house_id), tile(tile), town(town), not_yet_constructed(not_yet_constructed),
-		initial_random_bits(initial_random_bits), watched_cargo_triggers(watched_cargo_triggers), view(view)
+	HouseScopeResolver(ResolverObject &ro, HouseID house_id, TileIndex tile, Town *town, bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view) :
+		ScopeResolver(ro), house_id(house_id), tile(tile), town(town), not_yet_constructed(not_yet_constructed), initial_random_bits(initial_random_bits),
+		watched_cargo_triggers(watched_cargo_triggers), view(view)
 	{
 	}
 
@@ -51,18 +50,20 @@ struct HouseScopeResolver : public ScopeResolver {
 /** Resolver object to be used for houses (feature 07 spritegroups). */
 struct HouseResolverObject : public SpecializedResolverObject<HouseRandomTriggers> {
 	HouseScopeResolver house_scope;
-	TownScopeResolver  town_scope;
+	TownScopeResolver town_scope;
 
-	HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
-			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0,
-			bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0, int view = 0);
+	HouseResolverObject(HouseID house_id, TileIndex tile, Town *town, CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0, bool not_yet_constructed = false,
+		uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0, int view = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF:   return &this->house_scope;
-			case VSG_SCOPE_PARENT: return &this->town_scope;
-			default: return ResolverObject::GetScope(scope, relative);
+			case VSG_SCOPE_SELF:
+				return &this->house_scope;
+			case VSG_SCOPE_PARENT:
+				return &this->town_scope;
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
@@ -84,8 +85,8 @@ struct HouseResolverObject : public SpecializedResolverObject<HouseRandomTrigger
  * need to be persistent; it just needs to keep class ids unique.
  */
 struct HouseClassMapping {
-	uint32_t grfid;     ///< The GRF ID of the file this class belongs to
-	uint8_t  class_id;  ///< The class id within the grf file
+	uint32_t grfid; ///< The GRF ID of the file this class belongs to
+	uint8_t class_id; ///< The class id within the grf file
 };
 
 void ResetHouseClassIDs();
@@ -103,8 +104,8 @@ void AnimateNewHouseTile(TileIndex tile);
 void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile);
 void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigger_cargoes);
 
-uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
-		bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0, int view = 0);
+uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed = false, uint8_t initial_random_bits = 0,
+	CargoTypes watched_cargo_triggers = 0, int view = 0);
 
 bool CanDeleteHouse(TileIndex tile);
 

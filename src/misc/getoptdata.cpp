@@ -8,6 +8,7 @@
 /** @file getoptdata.cpp Library for parsing command line options. */
 
 #include "../stdafx.h"
+
 #include "getoptdata.h"
 
 #include "../safeguards.h"
@@ -76,7 +77,7 @@ int GetOptData::GetOpt(const OptionData &option)
 			this->arguments = this->arguments.subspan(1);
 			return option.id;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
-

@@ -12,14 +12,14 @@
 #ifndef NETWORK_CORE_PACKET_H
 #define NETWORK_CORE_PACKET_H
 
-#include "os_abstraction.h"
-#include "config.h"
-#include "core.h"
 #include "../../core/convertible_through_base.hpp"
 #include "../../string_type.h"
+#include "config.h"
+#include "core.h"
+#include "os_abstraction.h"
 
 typedef uint16_t PacketSize; ///< Size of the whole packet.
-typedef uint8_t  PacketType; ///< Identifier for the packet
+typedef uint8_t PacketType; ///< Identifier for the packet
 
 /**
  * Internal entity of a packet. As everything is sent as a packet,
@@ -41,8 +41,16 @@ typedef uint8_t  PacketType; ///< Identifier for the packet
  *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
  */
 struct Packet {
-	static constexpr size_t EncodedLengthOfPacketSize() { return sizeof(PacketSize); }
-	static constexpr size_t EncodedLengthOfPacketType() { return sizeof(PacketType); }
+	static constexpr size_t EncodedLengthOfPacketSize()
+	{
+		return sizeof(PacketSize);
+	}
+
+	static constexpr size_t EncodedLengthOfPacketType()
+	{
+		return sizeof(PacketType);
+	}
+
 private:
 	/** The current read/write position in the packet */
 	PacketSize pos;
@@ -61,15 +69,20 @@ public:
 	/* Sending/writing of packets */
 	void PrepareToSend();
 
-	bool   CanWriteToPacket(size_t bytes_to_write);
-	void   Send_bool  (bool   data);
-	void   Send_uint8 (uint8_t  data);
-	void   Send_uint8 (const ConvertibleThroughBase auto &data) { this->Send_uint8(data.base()); }
-	void   Send_uint16(uint16_t data);
-	void   Send_uint32(uint32_t data);
-	void   Send_uint64(uint64_t data);
-	void   Send_string(const std::string_view data);
-	void   Send_buffer(const std::vector<uint8_t> &data);
+	bool CanWriteToPacket(size_t bytes_to_write);
+	void Send_bool(bool data);
+	void Send_uint8(uint8_t data);
+
+	void Send_uint8(const ConvertibleThroughBase auto &data)
+	{
+		this->Send_uint8(data.base());
+	}
+
+	void Send_uint16(uint16_t data);
+	void Send_uint32(uint32_t data);
+	void Send_uint64(uint64_t data);
+	void Send_string(const std::string_view data);
+	void Send_buffer(const std::vector<uint8_t> &data);
 	std::span<const uint8_t> Send_bytes(const std::span<const uint8_t> span);
 
 	/* Reading/receiving of packets */
@@ -79,9 +92,9 @@ public:
 	[[nodiscard]] bool PrepareToRead();
 	PacketType GetPacketType() const;
 
-	bool   CanReadFromPacket(size_t bytes_to_read, bool close_connection = false);
-	bool   Recv_bool  ();
-	uint8_t  Recv_uint8 ();
+	bool CanReadFromPacket(size_t bytes_to_read, bool close_connection = false);
+	bool Recv_bool();
+	uint8_t Recv_uint8();
 	uint16_t Recv_uint16();
 	uint32_t Recv_uint32();
 	uint64_t Recv_uint64();
@@ -103,12 +116,11 @@ public:
 	 * @param args              The fourth and further parameters to the transfer function, if any.
 	 * @return The return value of the transfer_function.
 	 */
-	template <
-		typename A = size_t, ///< The type for the amount to be passed, so it can be cast to the right type.
-		typename F,          ///< The type of the function.
-		typename D,          ///< The type of the destination.
-		typename ... Args>   ///< The types of the remaining arguments to the function.
-	ssize_t TransferOutWithLimit(F transfer_function, size_t limit, D destination, Args&& ... args)
+	template <typename A = size_t, ///< The type for the amount to be passed, so it can be cast to the right type.
+		typename F, ///< The type of the function.
+		typename D, ///< The type of the destination.
+		typename... Args> ///< The types of the remaining arguments to the function.
+	ssize_t TransferOutWithLimit(F transfer_function, size_t limit, D destination, Args &&...args)
 	{
 		size_t amount = std::min(this->RemainingBytesToTransfer(), limit);
 		if (amount == 0) return 0;
@@ -116,7 +128,7 @@ public:
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
 		/* Making buffer a char means casting a lot in the Recv/Send functions. */
-		const char *output_buffer = reinterpret_cast<const char*>(this->buffer.data() + this->pos);
+		const char *output_buffer = reinterpret_cast<const char *>(this->buffer.data() + this->pos);
 		ssize_t bytes = transfer_function(destination, output_buffer, static_cast<A>(amount), std::forward<Args>(args)...);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;
@@ -137,8 +149,8 @@ public:
 	 * @tparam Args The types of the remaining arguments to the function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <typename A = size_t, typename F, typename D, typename ... Args>
-	ssize_t TransferOut(F transfer_function, D destination, Args&& ... args)
+	template <typename A = size_t, typename F, typename D, typename... Args>
+	ssize_t TransferOut(F transfer_function, D destination, Args &&...args)
 	{
 		return TransferOutWithLimit<A>(transfer_function, std::numeric_limits<size_t>::max(), destination, std::forward<Args>(args)...);
 	}
@@ -172,8 +184,8 @@ public:
 	 * @tparam Args The types of the remaining arguments to the function.
 	 * @return The return value of the transfer_function.
 	 */
-	template <typename A = size_t, typename F, typename S, typename ... Args>
-	ssize_t TransferIn(F transfer_function, S source, Args&& ... args)
+	template <typename A = size_t, typename F, typename S, typename... Args>
+	ssize_t TransferIn(F transfer_function, S source, Args &&...args)
 	{
 		size_t amount = this->RemainingBytesToTransfer();
 		if (amount == 0) return 0;
@@ -181,7 +193,7 @@ public:
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
 		/* Making buffer a char means casting a lot in the Recv/Send functions. */
-		char *input_buffer = reinterpret_cast<char*>(this->buffer.data() + this->pos);
+		char *input_buffer = reinterpret_cast<char *>(this->buffer.data() + this->pos);
 		ssize_t bytes = transfer_function(source, input_buffer, static_cast<A>(amount), std::forward<Args>(args)...);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;

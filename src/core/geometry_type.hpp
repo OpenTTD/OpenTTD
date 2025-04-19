@@ -11,7 +11,7 @@
 #define GEOMETRY_TYPE_HPP
 
 #if defined(__APPLE__)
-	/* Mac OS X already has both Rect and Point declared */
+/* Mac OS X already has both Rect and Point declared */
 #	define Rect OTTD_Rect
 #	define Point OTTD_Point
 #endif /* __APPLE__ */
@@ -34,6 +34,7 @@ struct Point {
 	int y;
 
 	constexpr Point() : x(0), y(0) {}
+
 	constexpr Point(int x, int y) : x(x), y(y) {}
 };
 
@@ -43,16 +44,17 @@ struct Dimension {
 	uint height;
 
 	constexpr Dimension() : width(0), height(0) {}
+
 	constexpr Dimension(uint w, uint h) : width(w), height(h) {}
 
-	bool operator< (const Dimension &other) const
+	bool operator<(const Dimension &other) const
 	{
 		int x = (*this).width - other.width;
 		if (x != 0) return x < 0;
 		return (*this).height < other.height;
 	}
 
-	bool operator== (const Dimension &other) const
+	bool operator==(const Dimension &other) const
 	{
 		return (*this).width == other.width && (*this).height == other.height;
 	}
@@ -71,13 +73,19 @@ struct RectPadding {
 	 * Get total horizontal padding of RectPadding.
 	 * @return total horizontal padding.
 	 */
-	constexpr uint Horizontal() const { return this->left + this->right; }
+	constexpr uint Horizontal() const
+	{
+		return this->left + this->right;
+	}
 
 	/**
 	 * Get total vertical padding of RectPadding.
 	 * @return total vertical padding.
 	 */
-	constexpr uint Vertical() const { return this->top + this->bottom; }
+	constexpr uint Vertical() const
+	{
+		return this->top + this->bottom;
+	}
 };
 
 inline const RectPadding RectPadding::zero{};
@@ -93,13 +101,19 @@ struct Rect {
 	 * Get width of Rect.
 	 * @return width of Rect.
 	 */
-	inline int Width() const { return this->right - this->left + 1; }
+	inline int Width() const
+	{
+		return this->right - this->left + 1;
+	}
 
 	/**
 	 * Get height of Rect.
 	 * @return height of Rect.
 	 */
-	inline int Height() const { return this->bottom - this->top + 1; }
+	inline int Height() const
+	{
+		return this->bottom - this->top + 1;
+	}
 
 	/**
 	 * Copy and shrink Rect by s pixels.
@@ -195,9 +209,7 @@ struct Rect {
 	 */
 	[[nodiscard]] inline Rect WithWidth(int width, bool end) const
 	{
-		return end
-			? Rect {this->right - width + 1, this->top, this->right,            this->bottom}
-			: Rect {this->left,              this->top, this->left + width - 1, this->bottom};
+		return end ? Rect{this->right - width + 1, this->top, this->right, this->bottom} : Rect{this->left, this->top, this->left + width - 1, this->bottom};
 	}
 
 	/**
@@ -208,9 +220,7 @@ struct Rect {
 	 */
 	[[nodiscard]] inline Rect Indent(int indent, bool end) const
 	{
-		return end
-			? Rect {this->left,          this->top, this->right - indent, this->bottom}
-			: Rect {this->left + indent, this->top, this->right,          this->bottom};
+		return end ? Rect{this->left, this->top, this->right - indent, this->bottom} : Rect{this->left + indent, this->top, this->right, this->bottom};
 	}
 
 	/**
@@ -221,9 +231,7 @@ struct Rect {
 	 */
 	[[nodiscard]] inline Rect WithHeight(int height, bool end = false) const
 	{
-		return end
-			? Rect {this->left, this->bottom - height + 1, this->right, this->bottom}
-			: Rect {this->left, this->top,                 this->right, this->top + height - 1};
+		return end ? Rect{this->left, this->bottom - height + 1, this->right, this->bottom} : Rect{this->left, this->top, this->right, this->top + height - 1};
 	}
 
 	/**

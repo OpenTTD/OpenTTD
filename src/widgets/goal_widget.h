@@ -1,4 +1,3 @@
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -13,22 +12,22 @@
 
 /** Widgets of the #GoalListWindow class. */
 enum GoalListWidgets : WidgetID {
-	WID_GOAL_CAPTION,         ///< Caption of the window.
-	WID_GOAL_SELECT_BUTTONS,  ///< Selection widget for the title bar button.
-	WID_GOAL_GLOBAL_BUTTON,   ///< Button to show global goals.
-	WID_GOAL_COMPANY_BUTTON,  ///< Button to show company goals.
-	WID_GOAL_LIST,            ///< Goal list.
-	WID_GOAL_SCROLLBAR,       ///< Scrollbar of the goal list.
+	WID_GOAL_CAPTION, ///< Caption of the window.
+	WID_GOAL_SELECT_BUTTONS, ///< Selection widget for the title bar button.
+	WID_GOAL_GLOBAL_BUTTON, ///< Button to show global goals.
+	WID_GOAL_COMPANY_BUTTON, ///< Button to show company goals.
+	WID_GOAL_LIST, ///< Goal list.
+	WID_GOAL_SCROLLBAR, ///< Scrollbar of the goal list.
 };
 
 /** Widgets of the #GoalQuestionWindow class. */
 enum GoalQuestionWidgets : WidgetID {
-	WID_GQ_CAPTION,        ///< Caption of the window.
-	WID_GQ_QUESTION,       ///< Question text.
-	WID_GQ_BUTTONS,        ///< Buttons selection (between 1, 2 or 3).
-	WID_GQ_BUTTON_1,       ///< First button.
-	WID_GQ_BUTTON_2,       ///< Second button.
-	WID_GQ_BUTTON_3,       ///< Third button.
+	WID_GQ_CAPTION, ///< Caption of the window.
+	WID_GQ_QUESTION, ///< Question text.
+	WID_GQ_BUTTONS, ///< Buttons selection (between 1, 2 or 3).
+	WID_GQ_BUTTON_1, ///< First button.
+	WID_GQ_BUTTON_2, ///< Second button.
+	WID_GQ_BUTTON_3, ///< Third button.
 };
 
 #endif /* WIDGETS_GOAL_WIDGET_H */

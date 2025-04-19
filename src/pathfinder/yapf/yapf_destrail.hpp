@@ -95,8 +95,7 @@ public:
 	/** Called by YAPF to detect if node ends in the desired destination */
 	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
-		return IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns()) &&
-				IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, !TrackFollower::Allow90degTurns());
+		return IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns()) && IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, !TrackFollower::Allow90degTurns());
 	}
 
 	/**
@@ -146,7 +145,8 @@ public:
 				[[fallthrough]];
 
 			case OT_GOTO_STATION:
-				this->dest_tile = CalcClosestStationTile(v->current_order.GetDestination().ToStationID(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? StationType::Rail : StationType::RailWaypoint);
+				this->dest_tile =
+					CalcClosestStationTile(v->current_order.GetDestination().ToStationID(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? StationType::Rail : StationType::RailWaypoint);
 				this->dest_station_id = v->current_order.GetDestination().ToStationID();
 				this->dest_trackdirs = INVALID_TRACKDIR_BIT;
 				break;
@@ -176,9 +176,7 @@ public:
 	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		if (this->dest_station_id != StationID::Invalid()) {
-			return HasStationTileRail(tile)
-				&& (GetStationIndex(tile) == this->dest_station_id)
-				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
+			return HasStationTileRail(tile) && (GetStationIndex(tile) == this->dest_station_id) && (GetRailStationTrack(tile) == TrackdirToTrack(td));
 		}
 
 		if (this->any_depot) {

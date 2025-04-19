@@ -10,12 +10,13 @@
 #ifndef THREAD_H
 #define THREAD_H
 
-#include "debug.h"
-#include "crashlog.h"
-#include "error_func.h"
+#include <mutex>
 #include <system_error>
 #include <thread>
-#include <mutex>
+
+#include "crashlog.h"
+#include "debug.h"
+#include "error_func.h"
 
 /**
  * Sleep on the current thread for a defined time.
@@ -32,7 +33,6 @@ inline void CSleep(int milliseconds)
  */
 void SetCurrentThreadName(const char *name);
 
-
 /**
  * Start a new thread.
  * @tparam TFn Type of the function to call on the thread.
@@ -44,13 +44,14 @@ void SetCurrentThreadName(const char *name);
  * @return True if the thread was successfully started, false otherwise.
  */
 template <class TFn, class... TArgs>
-inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&&... _Ax)
+inline bool StartNewThread(std::thread *thr, const char *name, TFn &&_Fx, TArgs &&..._Ax)
 {
 	try {
 		static std::mutex thread_startup_mutex;
 		std::lock_guard<std::mutex> lock(thread_startup_mutex);
 
-		std::thread t([] (const char *name, TFn&& F, TArgs&&... A) {
+		std::thread t(
+			[](const char *name, TFn &&F, TArgs &&...A) {
 				/* Delay starting the thread till the main thread is finished
 				 * with the administration. This prevent race-conditions on
 				 * startup. */
@@ -68,7 +69,8 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 				} catch (...) {
 					NOT_REACHED();
 				}
-			}, name, std::forward<TFn>(_Fx), std::forward<TArgs>(_Ax)...);
+			},
+			name, std::forward<TFn>(_Fx), std::forward<TArgs>(_Ax)...);
 
 		if (thr != nullptr) {
 			*thr = std::move(t);

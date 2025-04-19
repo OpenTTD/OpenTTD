@@ -8,12 +8,14 @@
 /** @file newgrf_railtype.cpp NewGRF handling of rail types. */
 
 #include "stdafx.h"
+
+#include "newgrf_railtype.h"
+
 #include "core/container_func.hpp"
 #include "debug.h"
-#include "newgrf_railtype.h"
+#include "depot_base.h"
 #include "newgrf_roadtype.h"
 #include "timer/timer_game_calendar.h"
-#include "depot_base.h"
 #include "town.h"
 #include "tunnelbridge_map.h"
 
@@ -29,11 +31,16 @@
 {
 	if (this->tile == INVALID_TILE) {
 		switch (variable) {
-			case 0x40: return 0;
-			case 0x41: return 0;
-			case 0x42: return 0;
-			case 0x43: return TimerGameCalendar::date.base();
-			case 0x44: return HZB_TOWN_EDGE;
+			case 0x40:
+				return 0;
+			case 0x41:
+				return 0;
+			case 0x42:
+				return 0;
+			case 0x43:
+				return TimerGameCalendar::date.base();
+			case 0x44:
+				return HZB_TOWN_EDGE;
 			case 0x45: {
 				auto rt = GetRailTypeInfoIndex(this->rti);
 				uint8_t local = GetReverseRailTypeTranslation(rt, this->ro.grffile);
@@ -44,9 +51,12 @@
 	}
 
 	switch (variable) {
-		case 0x40: return GetTerrainType(this->tile, this->context);
-		case 0x41: return 0;
-		case 0x42: return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
+		case 0x40:
+			return GetTerrainType(this->tile, this->context);
+		case 0x41:
+			return 0;
+		case 0x42:
+			return IsLevelCrossingTile(this->tile) && IsCrossingBarred(this->tile);
 		case 0x43:
 			if (IsRailDepotTile(this->tile)) return Depot::GetByTile(this->tile)->build_date.base();
 			return TimerGameCalendar::date.base();
@@ -88,8 +98,8 @@ uint32_t RailTypeResolverObject::GetDebugID() const
  * @param param1 Extra parameter (first parameter of the callback, except railtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
-RailTypeResolverObject::RailTypeResolverObject(const RailTypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2)
-	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, rti, tile, context)
+RailTypeResolverObject::RailTypeResolverObject(const RailTypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2) :
+	ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
 }

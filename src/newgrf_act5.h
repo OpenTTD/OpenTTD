@@ -14,17 +14,17 @@
 
 /** The type of action 5 type. */
 enum Action5BlockType : uint8_t {
-	A5BLOCK_FIXED,                ///< Only allow replacing a whole block of sprites. (TTDP compatible)
-	A5BLOCK_ALLOW_OFFSET,         ///< Allow replacing any subset by specifiing an offset.
-	A5BLOCK_INVALID,              ///< unknown/not-implemented type
+	A5BLOCK_FIXED, ///< Only allow replacing a whole block of sprites. (TTDP compatible)
+	A5BLOCK_ALLOW_OFFSET, ///< Allow replacing any subset by specifiing an offset.
+	A5BLOCK_INVALID, ///< unknown/not-implemented type
 };
 
 /** Information about a single action 5 type. */
 struct Action5Type {
 	Action5BlockType block_type; ///< How is this Action5 type processed?
-	SpriteID sprite_base;        ///< Load the sprites starting from this sprite.
-	uint16_t min_sprites;        ///< If the Action5 contains less sprites, the whole block will be ignored.
-	uint16_t max_sprites;        ///< If the Action5 contains more sprites, only the first max_sprites sprites will be used.
+	SpriteID sprite_base; ///< Load the sprites starting from this sprite.
+	uint16_t min_sprites; ///< If the Action5 contains less sprites, the whole block will be ignored.
+	uint16_t max_sprites; ///< If the Action5 contains more sprites, only the first max_sprites sprites will be used.
 	const std::string_view name; ///< Name for error messages.
 };
 

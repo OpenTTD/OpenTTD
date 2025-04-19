@@ -8,32 +8,32 @@
 /** @file signs_gui.cpp The GUI for signs. */
 
 #include "stdafx.h"
-#include "company_gui.h"
-#include "company_func.h"
-#include "signs_base.h"
-#include "signs_func.h"
-#include "debug.h"
-#include "command_func.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "map_func.h"
-#include "viewport_func.h"
-#include "querystring_gui.h"
-#include "sortlist_type.h"
-#include "stringfilter_type.h"
-#include "string_func.h"
+
 #include "core/geometry_func.hpp"
-#include "hotkeys.h"
-#include "transparency.h"
+#include "command_func.h"
+#include "company_func.h"
+#include "company_gui.h"
+#include "debug.h"
 #include "gui.h"
+#include "hotkeys.h"
+#include "map_func.h"
+#include "querystring_gui.h"
+#include "signs_base.h"
 #include "signs_cmd.h"
+#include "signs_func.h"
+#include "sortlist_type.h"
+#include "string_func.h"
+#include "stringfilter_type.h"
+#include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "transparency.h"
+#include "viewport_func.h"
+#include "window_func.h"
 
 #include "widgets/sign_widget.h"
-
-#include "table/strings.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -45,16 +45,14 @@ struct SignList {
 
 	GUISignList signs;
 
-	StringFilter string_filter;                                       ///< The match string to be used when the GUIList is (re)-sorted.
-	static bool match_case;                                           ///< Should case sensitive matching be used?
-	static std::string default_name;                                  ///< Default sign name, used if Sign::name is nullptr.
+	StringFilter string_filter; ///< The match string to be used when the GUIList is (re)-sorted.
+	static bool match_case; ///< Should case sensitive matching be used?
+	static std::string default_name; ///< Default sign name, used if Sign::name is nullptr.
 
 	/**
 	 * Creates a SignList with filtering disabled by default.
 	 */
-	SignList() : string_filter(&match_case)
-	{
-	}
+	SignList() : string_filter(&match_case) {}
 
 	void BuildSignsList()
 	{
@@ -73,7 +71,7 @@ struct SignList {
 	}
 
 	/** Sort signs by their name */
-	static bool SignNameSorter(const Sign * const &a, const Sign * const &b)
+	static bool SignNameSorter(const Sign *const &a, const Sign *const &b)
 	{
 		/* Signs are very very rarely using the default text, but there can also be
 		 * a lot of them. Therefore a worthwhile performance gain can be made by
@@ -93,7 +91,7 @@ struct SignList {
 	}
 
 	/** Filter sign list by sign name */
-	static bool SignNameFilter(const Sign * const *a, StringFilter &filter)
+	static bool SignNameFilter(const Sign *const *a, StringFilter &filter)
 	{
 		/* Same performance benefit as above for sorting. */
 		const std::string &a_name = (*a)->name.empty() ? SignList::default_name : (*a)->name;
@@ -104,14 +102,14 @@ struct SignList {
 	}
 
 	/** Filter sign list excluding OWNER_DEITY */
-	static bool OwnerDeityFilter(const Sign * const *a, StringFilter &)
+	static bool OwnerDeityFilter(const Sign *const *a, StringFilter &)
 	{
 		/* You should never be able to edit signs of owner DEITY */
 		return (*a)->owner != OWNER_DEITY;
 	}
 
 	/** Filter sign list by owner */
-	static bool OwnerVisibilityFilter(const Sign * const *a, StringFilter &)
+	static bool OwnerVisibilityFilter(const Sign *const *a, StringFilter &)
 	{
 		assert(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS));
 		/* Hide sign if non-own signs are hidden in the viewport */
@@ -272,7 +270,7 @@ struct SignListWindow : Window, SignList {
 			case WID_SIL_CAPTION:
 				size = GetStringBoundingBox(GetString(STR_SIGN_LIST_CAPTION, GetParamMaxValue(Sign::GetPoolSize(), 3)));
 				size.height += padding.height;
-				size.width  += padding.width;
+				size.width += padding.width;
 				break;
 		}
 	}
@@ -309,9 +307,9 @@ struct SignListWindow : Window, SignList {
 
 	/** Resort the sign listing on a regular interval. */
 	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
-		this->BuildSortSignList();
-		this->SetDirty();
-	}};
+													   this->BuildSortSignList();
+													   this->SetDirty();
+												   }};
 
 	/**
 	 * Some data on this window has become invalid.
@@ -344,9 +342,11 @@ struct SignListWindow : Window, SignList {
 		return w->OnHotkey(hotkey);
 	}
 
-	static inline HotkeyList hotkeys{"signlist", {
-		Hotkey('F', "focus_filter_box", SLHK_FOCUS_FILTER_BOX),
-	}, SignListGlobalHotkeys};
+	static inline HotkeyList hotkeys{"signlist",
+		{
+			Hotkey('F', "focus_filter_box", SLHK_FOCUS_FILTER_BOX),
+		},
+		SignListGlobalHotkeys};
 };
 
 /* clang-format off */
@@ -378,13 +378,7 @@ static constexpr NWidgetPart _nested_sign_list_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _sign_list_desc(
-	WDP_AUTO, "list_signs", 358, 138,
-	WC_SIGN_LIST, WC_NONE,
-	{},
-	_nested_sign_list_widgets,
-	&SignListWindow::hotkeys
-);
+static WindowDesc _sign_list_desc(WDP_AUTO, "list_signs", 358, 138, WC_SIGN_LIST, WC_NONE, {}, _nested_sign_list_widgets, &SignListWindow::hotkeys);
 
 /**
  * Open the sign list window
@@ -547,12 +541,7 @@ static constexpr NWidgetPart _nested_query_sign_edit_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _query_sign_edit_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_QUERY_STRING, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_query_sign_edit_widgets
-);
+static WindowDesc _query_sign_edit_desc(WDP_CENTER, nullptr, 0, 0, WC_QUERY_STRING, WC_NONE, WindowDefaultFlag::Construction, _nested_query_sign_edit_widgets);
 
 /**
  * Handle clicking on a sign.

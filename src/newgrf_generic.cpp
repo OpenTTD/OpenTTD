@@ -8,11 +8,12 @@
 /** @file newgrf_generic.cpp Handling of generic feature callbacks. */
 
 #include "stdafx.h"
-#include "debug.h"
-#include "newgrf_spritegroup.h"
-#include "industrytype.h"
+
 #include "core/random_func.hpp"
+#include "debug.h"
+#include "industrytype.h"
 #include "newgrf_sound.h"
+#include "newgrf_spritegroup.h"
 #include "water_map.h"
 
 #include "safeguards.h"
@@ -21,8 +22,8 @@
 struct GenericScopeResolver : public ScopeResolver {
 	CargoType cargo_type;
 	uint8_t default_selection;
-	uint8_t src_industry;        ///< Source industry substitute type. 0xFF for "town", 0xFE for "unknown".
-	uint8_t dst_industry;        ///< Destination industry substitute type. 0xFF for "town", 0xFE for "unknown".
+	uint8_t src_industry; ///< Source industry substitute type. 0xFF for "town", 0xFE for "unknown".
+	uint8_t dst_industry; ///< Destination industry substitute type. 0xFF for "town", 0xFE for "unknown".
 	uint8_t distance;
 	AIConstructionEvent event;
 	uint8_t count;
@@ -35,9 +36,8 @@ struct GenericScopeResolver : public ScopeResolver {
 	 * @param ro Surrounding resolver.
 	 * @param ai_callback Callback comes from the AI.
 	 */
-	GenericScopeResolver(ResolverObject &ro, bool ai_callback)
-		: ScopeResolver(ro), cargo_type(0), default_selection(0), src_industry(0), dst_industry(0), distance(0),
-		event(), count(0), station_size(0), feature(GSF_INVALID), ai_callback(ai_callback)
+	GenericScopeResolver(ResolverObject &ro, bool ai_callback) :
+		ScopeResolver(ro), cargo_type(0), default_selection(0), src_industry(0), dst_industry(0), distance(0), event(), count(0), station_size(0), feature(GSF_INVALID), ai_callback(ai_callback)
 	{
 	}
 
@@ -46,7 +46,6 @@ struct GenericScopeResolver : public ScopeResolver {
 private:
 	bool ai_callback; ///< Callback comes from the AI.
 };
-
 
 /** Resolver object for generic objects/properties. */
 struct GenericResolverObject : public ResolverObject {
@@ -57,8 +56,10 @@ struct GenericResolverObject : public ResolverObject {
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->generic_scope;
-			default: return ResolverObject::GetScope(scope, relative);
+			case VSG_SCOPE_SELF:
+				return &this->generic_scope;
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
@@ -77,16 +78,12 @@ struct GenericCallback {
 	const GRFFile *file;
 	const SpriteGroup *group;
 
-	GenericCallback(const GRFFile *file, const SpriteGroup *group) :
-		file(file),
-		group(group)
-	{ }
+	GenericCallback(const GRFFile *file, const SpriteGroup *group) : file(file), group(group) {}
 };
 
 typedef std::list<GenericCallback> GenericCallbackList;
 
 static GenericCallbackList _gcl[GSF_END];
-
 
 /**
  * Reset all generic feature callback sprite groups.
@@ -97,7 +94,6 @@ void ResetGenericCallbacks()
 		gcl.clear();
 	}
 }
-
 
 /**
  * Add a generic feature callback sprite group to the appropriate feature list.
@@ -122,19 +118,30 @@ void AddGenericCallback(uint8_t feature, const GRFFile *file, const SpriteGroup 
 {
 	if (this->ai_callback) {
 		switch (variable) {
-			case 0x40: return this->ro.grffile->cargo_map[this->cargo_type];
+			case 0x40:
+				return this->ro.grffile->cargo_map[this->cargo_type];
 
-			case 0x80: return this->cargo_type;
-			case 0x81: return CargoSpec::Get(this->cargo_type)->bitnum;
-			case 0x82: return this->default_selection;
-			case 0x83: return this->src_industry;
-			case 0x84: return this->dst_industry;
-			case 0x85: return this->distance;
-			case 0x86: return this->event;
-			case 0x87: return this->count;
-			case 0x88: return this->station_size;
+			case 0x80:
+				return this->cargo_type;
+			case 0x81:
+				return CargoSpec::Get(this->cargo_type)->bitnum;
+			case 0x82:
+				return this->default_selection;
+			case 0x83:
+				return this->src_industry;
+			case 0x84:
+				return this->dst_industry;
+			case 0x85:
+				return this->distance;
+			case 0x86:
+				return this->event;
+			case 0x87:
+				return this->count;
+			case 0x88:
+				return this->station_size;
 
-			default: break;
+			default:
+				break;
 		}
 	}
 
@@ -149,10 +156,7 @@ void AddGenericCallback(uint8_t feature, const GRFFile *file, const SpriteGroup 
  * @param ai_callback Callback comes from the AI.
  * @param callback Callback ID.
  */
-GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(nullptr, callback), generic_scope(*this, ai_callback)
-{
-}
-
+GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(nullptr, callback), generic_scope(*this, ai_callback) {}
 
 /**
  * Follow a generic feature callback list and return the first successful
@@ -187,7 +191,6 @@ static uint16_t GetGenericCallbackResult(uint8_t feature, ResolverObject &object
 	return CALLBACK_FAILED;
 }
 
-
 /**
  * 'Execute' an AI purchase selection callback
  *
@@ -203,7 +206,8 @@ static uint16_t GetGenericCallbackResult(uint8_t feature, ResolverObject &object
  * @param[out] file Optionally returns the GRFFile which made the final decision for the callback result. May be nullptr if not required.
  * @return callback value if successful or CALLBACK_FAILED
  */
-uint16_t GetAiPurchaseCallbackResult(uint8_t feature, CargoType cargo_type, uint8_t default_selection, IndustryType src_industry, IndustryType dst_industry, uint8_t distance, AIConstructionEvent event, uint8_t count, uint8_t station_size, const GRFFile **file)
+uint16_t GetAiPurchaseCallbackResult(uint8_t feature, CargoType cargo_type, uint8_t default_selection, IndustryType src_industry, IndustryType dst_industry, uint8_t distance,
+	AIConstructionEvent event, uint8_t count, uint8_t station_size, const GRFFile **file)
 {
 	GenericResolverObject object(true, CBID_GENERIC_AI_PURCHASE_SELECTION);
 
@@ -219,21 +223,20 @@ uint16_t GetAiPurchaseCallbackResult(uint8_t feature, CargoType cargo_type, uint
 		if (is->grf_prop.subst_id != IT_INVALID) dst_industry = is->grf_prop.subst_id;
 	}
 
-	object.generic_scope.cargo_type        = cargo_type;
+	object.generic_scope.cargo_type = cargo_type;
 	object.generic_scope.default_selection = default_selection;
-	object.generic_scope.src_industry      = src_industry;
-	object.generic_scope.dst_industry      = dst_industry;
-	object.generic_scope.distance          = distance;
-	object.generic_scope.event             = event;
-	object.generic_scope.count             = count;
-	object.generic_scope.station_size      = station_size;
-	object.generic_scope.feature           = feature;
+	object.generic_scope.src_industry = src_industry;
+	object.generic_scope.dst_industry = dst_industry;
+	object.generic_scope.distance = distance;
+	object.generic_scope.event = event;
+	object.generic_scope.count = count;
+	object.generic_scope.station_size = station_size;
+	object.generic_scope.feature = feature;
 
 	uint16_t callback = GetGenericCallbackResult(feature, object, 0, 0, file);
 	if (callback != CALLBACK_FAILED) callback = GB(callback, 0, 8);
 	return callback;
 }
-
 
 /**
  * 'Execute' the ambient sound effect callback.

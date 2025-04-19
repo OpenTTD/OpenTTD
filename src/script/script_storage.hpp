@@ -12,38 +12,37 @@
 
 #include <queue>
 
-#include "../signs_func.h"
-#include "../vehicle_func.h"
-#include "../road_type.h"
-#include "../group.h"
 #include "../goal_type.h"
+#include "../group.h"
+#include "../road_type.h"
+#include "../signs_func.h"
 #include "../story_type.h"
-
-#include "script_types.hpp"
+#include "../vehicle_func.h"
 #include "script_log_types.hpp"
 #include "script_object.hpp"
+#include "script_types.hpp"
 
 class ScriptEvent;
 
 /* This is a "struct", so we can forward declare it, and use as incomplete type. */
-struct ScriptEventQueue : std::queue<ScriptObjectRef<ScriptEvent>> {
-};
+struct ScriptEventQueue : std::queue<ScriptObjectRef<ScriptEvent>> {};
 
 /**
  * The callback function for Mode-classes.
  */
-typedef bool (ScriptModeProc)();
+typedef bool(ScriptModeProc)();
 
 /**
  * The callback function for Async Mode-classes.
  */
-typedef bool (ScriptAsyncModeProc)();
+typedef bool(ScriptAsyncModeProc)();
 
 /**
  * The storage for each script. It keeps track of important information.
  */
 class ScriptStorage {
-friend class ScriptObject;
+	friend class ScriptObject;
+
 private:
 	ScriptModeProc *mode = nullptr; ///< The current build mode we are int.
 	class ScriptObject *mode_instance = nullptr; ///< The instance belonging to the current build mode.

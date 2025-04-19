@@ -11,8 +11,9 @@
 #ifndef SCRIPT_PRIORITYQUEUE_HPP
 #define SCRIPT_PRIORITYQUEUE_HPP
 
-#include "script_object.hpp"
 #include <utility>
+
+#include "script_object.hpp"
 
 /**
  * Class that creates a queue which keeps its items ordered by an item priority.
@@ -21,6 +22,7 @@
 class ScriptPriorityQueue : public ScriptObject {
 public:
 	typedef std::pair<SQInteger, HSQOBJECT> PriorityItem;
+
 private:
 	struct PriorityComparator {
 		bool operator()(const PriorityItem &lhs, const PriorityItem &rhs) const noexcept
@@ -29,8 +31,8 @@ private:
 		}
 	};
 
-	PriorityComparator        comp;
-	std::vector<PriorityItem> queue;  ///< The priority list
+	PriorityComparator comp;
+	std::vector<PriorityItem> queue; ///< The priority list
 
 public:
 	~ScriptPriorityQueue();

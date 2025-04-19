@@ -17,14 +17,13 @@
  * Ground types. Valid densities in comments after the enum.
  */
 enum ClearGround : uint8_t {
-	CLEAR_GRASS  = 0, ///< 0-3
-	CLEAR_ROUGH  = 1, ///< 3
-	CLEAR_ROCKS  = 2, ///< 3
+	CLEAR_GRASS = 0, ///< 0-3
+	CLEAR_ROUGH = 1, ///< 3
+	CLEAR_ROCKS = 2, ///< 3
 	CLEAR_FIELDS = 3, ///< 3
-	CLEAR_SNOW   = 4, ///< 0-3 (Not stored in map.)
+	CLEAR_SNOW = 4, ///< 0-3 (Not stored in map.)
 	CLEAR_DESERT = 5, ///< 1,3
 };
-
 
 /**
  * Test if a tile is covered with snow.
@@ -60,7 +59,6 @@ inline bool IsClearGround(Tile t, ClearGround ct)
 {
 	return GetClearGround(t) == ct;
 }
-
 
 /**
  * Get the density of a non-field clear tile.
@@ -98,7 +96,6 @@ inline void SetClearDensity(Tile t, uint d)
 	SB(t.m5(), 0, 2, d);
 }
 
-
 /**
  * Get the counter used to advance to the next clear density/field type.
  * @param t the tile to get the counter of
@@ -135,7 +132,6 @@ inline void SetClearCounter(Tile t, uint c)
 	SB(t.m5(), 5, 3, c);
 }
 
-
 /**
  * Sets ground type and density in one go, also sets the counter to 0
  * @param t       the tile to set the ground type and density for
@@ -148,7 +144,6 @@ inline void SetClearGroundDensity(Tile t, ClearGround type, uint density)
 	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
 	t.m5() = 0 << 5 | type << 2 | density;
 }
-
 
 /**
  * Get the field type (production stage) of the field
@@ -183,7 +178,7 @@ inline void SetFieldType(Tile t, uint f)
 inline IndustryID GetIndustryIndexOfField(Tile t)
 {
 	assert(GetClearGround(t) == CLEAR_FIELDS);
-	return(IndustryID) t.m2();
+	return (IndustryID)t.m2();
 }
 
 /**
@@ -198,7 +193,6 @@ inline void SetIndustryIndexOfField(Tile t, IndustryID i)
 	t.m2() = i.base();
 }
 
-
 /**
  * Is there a fence at the given border?
  * @param t the tile to check for fences
@@ -210,11 +204,16 @@ inline uint GetFence(Tile t, DiagDirection side)
 {
 	assert(IsClearGround(t, CLEAR_FIELDS));
 	switch (side) {
-		default: NOT_REACHED();
-		case DIAGDIR_SE: return GB(t.m4(), 2, 3);
-		case DIAGDIR_SW: return GB(t.m4(), 5, 3);
-		case DIAGDIR_NE: return GB(t.m3(), 5, 3);
-		case DIAGDIR_NW: return GB(t.m6(), 2, 3);
+		default:
+			NOT_REACHED();
+		case DIAGDIR_SE:
+			return GB(t.m4(), 2, 3);
+		case DIAGDIR_SW:
+			return GB(t.m4(), 5, 3);
+		case DIAGDIR_NE:
+			return GB(t.m3(), 5, 3);
+		case DIAGDIR_NW:
+			return GB(t.m6(), 2, 3);
 	}
 }
 
@@ -229,14 +228,22 @@ inline void SetFence(Tile t, DiagDirection side, uint h)
 {
 	assert(IsClearGround(t, CLEAR_FIELDS));
 	switch (side) {
-		default: NOT_REACHED();
-		case DIAGDIR_SE: SB(t.m4(), 2, 3, h); break;
-		case DIAGDIR_SW: SB(t.m4(), 5, 3, h); break;
-		case DIAGDIR_NE: SB(t.m3(), 5, 3, h); break;
-		case DIAGDIR_NW: SB(t.m6(), 2, 3, h); break;
+		default:
+			NOT_REACHED();
+		case DIAGDIR_SE:
+			SB(t.m4(), 2, 3, h);
+			break;
+		case DIAGDIR_SW:
+			SB(t.m4(), 5, 3, h);
+			break;
+		case DIAGDIR_NE:
+			SB(t.m3(), 5, 3, h);
+			break;
+		case DIAGDIR_NW:
+			SB(t.m6(), 2, 3, h);
+			break;
 	}
 }
-
 
 /**
  * Make a clear tile.
@@ -257,7 +264,6 @@ inline void MakeClear(Tile t, ClearGround g, uint density)
 	t.m7() = 0;
 	t.m8() = 0;
 }
-
 
 /**
  * Make a (farm) field tile.

@@ -10,10 +10,10 @@
 #ifndef SIGNS_BASE_H
 #define SIGNS_BASE_H
 
-#include "signs_type.h"
-#include "viewport_type.h"
 #include "core/pool_type.hpp"
 #include "company_type.h"
+#include "signs_type.h"
+#include "viewport_type.h"
 
 typedef Pool<Sign, SignID, 16> SignPool;
 extern SignPool _sign_pool;
@@ -27,7 +27,9 @@ struct Sign : SignPool::PoolItem<&_sign_pool> {
 	Owner owner = INVALID_OWNER; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
 	Sign() {}
+
 	Sign(Owner owner, int32_t x, int32_t y, int32_t z, const std::string &name) : name(name), x(x), y(y), z(z), owner(owner) {}
+
 	~Sign();
 
 	void UpdateVirtCoord();

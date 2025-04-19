@@ -8,15 +8,17 @@
 /** @file squirrel_std.cpp Implements the Squirrel Standard Function class */
 
 #include "../stdafx.h"
-#include <squirrel.h>
-#include <sqstdmath.h>
-#include "../debug.h"
+
 #include "squirrel_std.hpp"
+
+#include <sqstdmath.h>
+#include <squirrel.h>
+
 #include "../core/math_func.hpp"
+#include "../debug.h"
 #include "../string_func.h"
 
 #include "../safeguards.h"
-
 
 SQInteger SquirrelStd::min(HSQUIRRELVM vm)
 {
@@ -60,7 +62,9 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 	if (p != std::string::npos) path.erase(p + 1);
 	path += filename;
 #if (PATHSEPCHAR != '/')
-	std::transform(path.begin(), path.end(), path.begin(), [](char &c) { return c == '/' ? PATHSEPCHAR : c; });
+	std::transform(path.begin(), path.end(), path.begin(), [](char &c) {
+		return c == '/' ? PATHSEPCHAR : c;
+	});
 #endif
 
 	Squirrel *engine = (Squirrel *)sq_getforeignptr(vm);
@@ -90,7 +94,7 @@ void squirrel_register_global_std(Squirrel *engine)
 {
 	/* We don't use squirrel_helper here, as we want to register to the global
 	 *  scope and not to a class. */
-	engine->AddMethod("require",             &SquirrelStd::require,             2, ".s");
+	engine->AddMethod("require", &SquirrelStd::require, 2, ".s");
 	engine->AddMethod("notifyallexceptions", &SquirrelStd::notifyallexceptions, 2, ".b");
 }
 

@@ -8,11 +8,12 @@
 /** @file tgp.cpp OTTD Perlin Noise Landscape Generator, aka TerraGenesis Perlin */
 
 #include "stdafx.h"
-#include "clear_map.h"
-#include "void_map.h"
-#include "genworld.h"
+
 #include "core/random_func.hpp"
+#include "clear_map.h"
+#include "genworld.h"
 #include "landscape_type.h"
+#include "void_map.h"
 
 #include "safeguards.h"
 
@@ -158,14 +159,13 @@ using Amplitude = int;
 static const int AMPLITUDE_DECIMAL_BITS = 10;
 
 /** Height map - allocated array of heights (Map::SizeX() + 1) * (Map::SizeY() + 1) */
-struct HeightMap
-{
+struct HeightMap {
 	std::vector<Height> h; //< array of heights
 	/* Even though the sizes are always positive, there are many cases where
 	 * X and Y need to be signed integers due to subtractions. */
-	int      dim_x;      //< height map size_x Map::SizeX() + 1
-	int      size_x;     //< Map::SizeX()
-	int      size_y;     //< Map::SizeY()
+	int dim_x; //< height map size_x Map::SizeX() + 1
+	int size_x; //< Map::SizeX()
+	int size_y; //< Map::SizeY()
 
 	/**
 	 * Height map accessor
@@ -180,7 +180,7 @@ struct HeightMap
 };
 
 /** Global height map instance */
-static HeightMap _height_map = { {}, 0, 0, 0 };
+static HeightMap _height_map = {{}, 0, 0, 0};
 
 /** Conversion: int to Height */
 static Height I2H(int i)
@@ -235,11 +235,11 @@ static Height TGPGetMaxHeight()
 	 */
 	static const int max_height[5][MAX_MAP_SIZE_BITS - MIN_MAP_SIZE_BITS + 1] = {
 		/* 64  128  256  512 1024 2048 4096 */
-		{   3,   3,   3,   3,   4,   5,   7 }, ///< Very flat
-		{   5,   7,   8,   9,  14,  19,  31 }, ///< Flat
-		{   8,   9,  10,  15,  23,  37,  61 }, ///< Hilly
-		{  10,  11,  17,  19,  49,  63,  73 }, ///< Mountainous
-		{  12,  19,  25,  31,  67,  75,  87 }, ///< Alpinist
+		{3, 3, 3, 3, 4, 5, 7}, ///< Very flat
+		{5, 7, 8, 9, 14, 19, 31}, ///< Flat
+		{8, 9, 10, 15, 23, 37, 61}, ///< Hilly
+		{10, 11, 17, 19, 49, 63, 73}, ///< Mountainous
+		{12, 19, 25, 31, 67, 75, 87}, ///< Alpinist
 	};
 
 	int map_size_bucket = std::min(Map::LogX(), Map::LogY()) - MIN_MAP_SIZE_BITS;
@@ -272,10 +272,10 @@ static Amplitude GetAmplitude(int frequency)
 	/* Base noise amplitudes (multiplied by 1024) and indexed by "smoothness setting" and log2(frequency). */
 	static const Amplitude amplitudes[][7] = {
 		/* lowest frequency ...... highest (every corner) */
-		{16000,  5600,  1968,   688,   240,    16,    16}, ///< Very smooth
-		{24000, 12800,  6400,  2700,  1024,   128,    16}, ///< Smooth
-		{32000, 19200, 12800,  8000,  3200,   256,    64}, ///< Rough
-		{48000, 24000, 19200, 16000,  8000,   512,   320}, ///< Very rough
+		{16000, 5600, 1968, 688, 240, 16, 16}, ///< Very smooth
+		{24000, 12800, 6400, 2700, 1024, 128, 16}, ///< Smooth
+		{32000, 19200, 12800, 8000, 3200, 256, 64}, ///< Rough
+		{48000, 24000, 19200, 16000, 8000, 512, 320}, ///< Very rough
 	};
 	/*
 	 * Extrapolation factors for ranges before the table.
@@ -287,7 +287,7 @@ static Amplitude GetAmplitude(int frequency)
 	 * happen over much smaller areas; we basically double the "range" to give a similar
 	 * slope for every doubling of map height.
 	 */
-	static const double extrapolation_factors[] = { 3.3, 2.8, 2.3, 1.8 };
+	static const double extrapolation_factors[] = {3.3, 2.8, 2.3, 1.8};
 
 	int smoothness = _settings_game.game_creation.tgen_smoothness;
 
@@ -318,7 +318,6 @@ static inline bool IsValidXY(int x, int y)
 {
 	return x >= 0 && x < _height_map.size_x && y >= 0 && y < _height_map.size_y;
 }
-
 
 /**
  * Allocate array of (Map::SizeX() + 1) * (Map::SizeY() + 1) heights and init the _height_map structure members
@@ -478,47 +477,43 @@ static void HeightMapSineTransform(Height h_min, Height h_max)
 				fheight = 0.5 * (fheight + 1);
 				break;
 
-			case LandscapeType::Arctic:
-				{
-					/* Arctic terrain needs special height distribution.
+			case LandscapeType::Arctic: {
+				/* Arctic terrain needs special height distribution.
 					 * Redistribute heights to have more tiles at highest (75%..100%) range */
-					double sine_upper_limit = 0.75;
-					double linear_compression = 2;
-					if (fheight >= sine_upper_limit) {
-						/* Over the limit we do linear compression up */
-						fheight = 1.0 - (1.0 - fheight) / linear_compression;
-					} else {
-						double m = 1.0 - (1.0 - sine_upper_limit) / linear_compression;
-						/* Get 0..sine_upper_limit into -1..1 */
-						fheight = 2.0 * fheight / sine_upper_limit - 1.0;
-						/* Sine wave transform */
-						fheight = sin(fheight * M_PI_2);
-						/* Get -1..1 back to 0..(1 - (1 - sine_upper_limit) / linear_compression) == 0.0..m */
-						fheight = 0.5 * (fheight + 1.0) * m;
-					}
+				double sine_upper_limit = 0.75;
+				double linear_compression = 2;
+				if (fheight >= sine_upper_limit) {
+					/* Over the limit we do linear compression up */
+					fheight = 1.0 - (1.0 - fheight) / linear_compression;
+				} else {
+					double m = 1.0 - (1.0 - sine_upper_limit) / linear_compression;
+					/* Get 0..sine_upper_limit into -1..1 */
+					fheight = 2.0 * fheight / sine_upper_limit - 1.0;
+					/* Sine wave transform */
+					fheight = sin(fheight * M_PI_2);
+					/* Get -1..1 back to 0..(1 - (1 - sine_upper_limit) / linear_compression) == 0.0..m */
+					fheight = 0.5 * (fheight + 1.0) * m;
 				}
-				break;
+			} break;
 
-			case LandscapeType::Tropic:
-				{
-					/* Desert terrain needs special height distribution.
+			case LandscapeType::Tropic: {
+				/* Desert terrain needs special height distribution.
 					 * Half of tiles should be at lowest (0..25%) heights */
-					double sine_lower_limit = 0.5;
-					double linear_compression = 2;
-					if (fheight <= sine_lower_limit) {
-						/* Under the limit we do linear compression down */
-						fheight = fheight / linear_compression;
-					} else {
-						double m = sine_lower_limit / linear_compression;
-						/* Get sine_lower_limit..1 into -1..1 */
-						fheight = 2.0 * ((fheight - sine_lower_limit) / (1.0 - sine_lower_limit)) - 1.0;
-						/* Sine wave transform */
-						fheight = sin(fheight * M_PI_2);
-						/* Get -1..1 back to (sine_lower_limit / linear_compression)..1.0 */
-						fheight = 0.5 * ((1.0 - m) * fheight + (1.0 + m));
-					}
+				double sine_lower_limit = 0.5;
+				double linear_compression = 2;
+				if (fheight <= sine_lower_limit) {
+					/* Under the limit we do linear compression down */
+					fheight = fheight / linear_compression;
+				} else {
+					double m = sine_lower_limit / linear_compression;
+					/* Get sine_lower_limit..1 into -1..1 */
+					fheight = 2.0 * ((fheight - sine_lower_limit) / (1.0 - sine_lower_limit)) - 1.0;
+					/* Sine wave transform */
+					fheight = sin(fheight * M_PI_2);
+					/* Get -1..1 back to (sine_lower_limit / linear_compression)..1.0 */
+					fheight = 0.5 * ((1.0 - m) * fheight + (1.0 + m));
 				}
-				break;
+			} break;
 
 			default:
 				NOT_REACHED();
@@ -556,15 +551,16 @@ static void HeightMapCurves(uint level)
 		Height x; ///< The height to scale from.
 		Height y; ///< The height to scale to.
 	};
+
 	/* Scaled curve maps; value is in height_ts. */
 #define F(fraction) ((Height)(fraction * mh))
-	const ControlPoint curve_map_1[] = { { F(0.0), F(0.0) },                       { F(0.8), F(0.13) },                       { F(1.0), F(0.4)  } };
-	const ControlPoint curve_map_2[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.13) }, { F(0.8), F(0.27) },                       { F(1.0), F(0.6)  } };
-	const ControlPoint curve_map_3[] = { { F(0.0), F(0.0) }, { F(0.53), F(0.27) }, { F(0.8), F(0.57) },                       { F(1.0), F(0.8)  } };
-	const ControlPoint curve_map_4[] = { { F(0.0), F(0.0) }, { F(0.4),  F(0.3)  }, { F(0.7), F(0.8)  }, { F(0.92), F(0.99) }, { F(1.0), F(0.99) } };
+	const ControlPoint curve_map_1[] = {{F(0.0), F(0.0)}, {F(0.8), F(0.13)}, {F(1.0), F(0.4)}};
+	const ControlPoint curve_map_2[] = {{F(0.0), F(0.0)}, {F(0.53), F(0.13)}, {F(0.8), F(0.27)}, {F(1.0), F(0.6)}};
+	const ControlPoint curve_map_3[] = {{F(0.0), F(0.0)}, {F(0.53), F(0.27)}, {F(0.8), F(0.57)}, {F(1.0), F(0.8)}};
+	const ControlPoint curve_map_4[] = {{F(0.0), F(0.0)}, {F(0.4), F(0.3)}, {F(0.7), F(0.8)}, {F(0.92), F(0.99)}, {F(1.0), F(0.99)}};
 #undef F
 
-	const std::span<const ControlPoint> curve_maps[] = { curve_map_1, curve_map_2, curve_map_3, curve_map_4 };
+	const std::span<const ControlPoint> curve_maps[] = {curve_map_1, curve_map_2, curve_map_3, curve_map_4};
 
 	std::array<Height, std::size(curve_maps)> ht{};
 
@@ -580,7 +576,6 @@ static void HeightMapCurves(uint level)
 
 	/* Apply curves */
 	for (int x = 0; x < _height_map.size_x; x++) {
-
 		/* Get our X grid positions and bi-linear ratio */
 		float fx = (float)(sx * x) / _height_map.size_x + 1.0f;
 		uint x1 = (uint)fx;
@@ -597,7 +592,6 @@ static void HeightMapCurves(uint level)
 		}
 
 		for (int y = 0; y < _height_map.size_y; y++) {
-
 			/* Get our Y grid position and bi-linear ratio */
 			float fy = (float)(sy * y) / _height_map.size_y + 1.0f;
 			uint y1 = (uint)fy;
@@ -746,7 +740,7 @@ static void HeightMapCoastLines(BorderFlags water_borders)
 
 		if (water_borders.Test(BorderFlag::SouthWest)) {
 			/* Bottom left */
-			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45,  67) + 0.75) * 8);
+			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45, 67) + 0.75) * 8);
 			max_x = std::max((smallest_size * smallest_size / 64) + max_x, (smallest_size * smallest_size / 64) + margin - max_x);
 			if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
 			for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
@@ -864,7 +858,8 @@ static void HeightMapSmoothSlopes(Height dh_max)
  */
 static void HeightMapNormalize()
 {
-	const int64_t water_percent = _settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[_settings_game.difficulty.quantity_sea_lakes] : _settings_game.game_creation.custom_sea_level * WATER_PERCENT_FACTOR / 100;
+	const int64_t water_percent = _settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[_settings_game.difficulty.quantity_sea_lakes] :
+																													   _settings_game.game_creation.custom_sea_level * WATER_PERCENT_FACTOR / 100;
 	const Height h_max_new = TGPGetMaxHeight();
 	const Height roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
 
@@ -903,7 +898,6 @@ static double int_noise(const long x, const long y, const int prime)
 	return 1.0 - (double)((n * (n * n * 15731 + 789221) + 1376312589) & 0x7fffffff) / 1073741824.0;
 }
 
-
 /**
  * This routine determines the interpolated value between a and b
  */
@@ -911,7 +905,6 @@ static inline double linear_interpolate(const double a, const double b, const do
 {
 	return a + x * (b - a);
 }
-
 
 /**
  * This routine returns the smoothed interpolated noise for an x and y, using
@@ -925,9 +918,9 @@ static double interpolated_noise(const double x, const double y, const int prime
 	const double fractional_x = x - (double)integer_x;
 	const double fractional_y = y - (double)integer_y;
 
-	const double v1 = int_noise(integer_x,     integer_y,     prime);
-	const double v2 = int_noise(integer_x + 1, integer_y,     prime);
-	const double v3 = int_noise(integer_x,     integer_y + 1, prime);
+	const double v1 = int_noise(integer_x, integer_y, prime);
+	const double v2 = int_noise(integer_x + 1, integer_y, prime);
+	const double v3 = int_noise(integer_x, integer_y + 1, prime);
 	const double v4 = int_noise(integer_x + 1, integer_y + 1, prime);
 
 	const double i1 = linear_interpolate(v1, v2, fractional_x);
@@ -935,7 +928,6 @@ static double interpolated_noise(const double x, const double y, const int prime
 
 	return linear_interpolate(i1, i2, fractional_y);
 }
-
 
 /**
  * This is a similar function to the main perlin noise calculation, but uses
@@ -956,7 +948,6 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
 
 	return total;
 }
-
 
 /** A small helper function to initialize the terrain */
 static void TgenSetTileHeight(TileIndex tile, int height)

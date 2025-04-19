@@ -14,21 +14,21 @@
 
 /** Different sub types of disaster vehicles. */
 enum DisasterSubType : uint8_t {
-	ST_ZEPPELINER,               ///< Zeppelin, crashes at airports.
-	ST_ZEPPELINER_SHADOW,        ///< Shadow of the zeppelin.
-	ST_SMALL_UFO,                ///< Small UFO, tries to find a road vehicle to destroy.
-	ST_SMALL_UFO_SHADOW,         ///< Shadow of small UFO
-	ST_AIRPLANE,                 ///< Airplane destroying an oil refinery
-	ST_AIRPLANE_SHADOW,          ///< Shadow of airplane
-	ST_HELICOPTER,               ///< Helicopter destroying a factory.
-	ST_HELICOPTER_SHADOW,        ///< Shadow of helicopter.
-	ST_HELICOPTER_ROTORS,        ///< Rotors of helicopter.
-	ST_BIG_UFO,                  ///< Big UFO, finds a piece of railroad to "park" on
-	ST_BIG_UFO_SHADOW,           ///< Shadow of the big UFO
-	ST_BIG_UFO_DESTROYER,        ///< Aircraft the will bomb the big UFO
+	ST_ZEPPELINER, ///< Zeppelin, crashes at airports.
+	ST_ZEPPELINER_SHADOW, ///< Shadow of the zeppelin.
+	ST_SMALL_UFO, ///< Small UFO, tries to find a road vehicle to destroy.
+	ST_SMALL_UFO_SHADOW, ///< Shadow of small UFO
+	ST_AIRPLANE, ///< Airplane destroying an oil refinery
+	ST_AIRPLANE_SHADOW, ///< Shadow of airplane
+	ST_HELICOPTER, ///< Helicopter destroying a factory.
+	ST_HELICOPTER_SHADOW, ///< Shadow of helicopter.
+	ST_HELICOPTER_ROTORS, ///< Rotors of helicopter.
+	ST_BIG_UFO, ///< Big UFO, finds a piece of railroad to "park" on
+	ST_BIG_UFO_SHADOW, ///< Shadow of the big UFO
+	ST_BIG_UFO_DESTROYER, ///< Aircraft the will bomb the big UFO
 	ST_BIG_UFO_DESTROYER_SHADOW, ///< Shadow of the aircraft.
-	ST_SMALL_SUBMARINE,          ///< Small submarine, pops up in the oceans but doesn't do anything
-	ST_BIG_SUBMARINE,            ///< Big submarine, pops up in the oceans but doesn't do anything
+	ST_SMALL_SUBMARINE, ///< Small submarine, pops up in the oceans but doesn't do anything
+	ST_BIG_SUBMARINE, ///< Big submarine, pops up in the oceans but doesn't do anything
 };
 
 /**
@@ -42,6 +42,7 @@ struct DisasterVehicle final : public SpecializedVehicle<DisasterVehicle, VEH_DI
 
 	/** For use by saveload. */
 	DisasterVehicle() : SpecializedVehicleBase() {}
+
 	DisasterVehicle(int x, int y, Direction direction, DisasterSubType subtype, VehicleID big_ufo_destroyer_target = VehicleID::Invalid());
 	/** We want to 'destruct' the right class. */
 	virtual ~DisasterVehicle() = default;

@@ -11,10 +11,10 @@
 #define VIEWPORT_KDTREE_H
 
 #include "core/kdtree.hpp"
-#include "viewport_type.h"
+#include "signs_base.h"
 #include "station_base.h"
 #include "town_type.h"
-#include "signs_base.h"
+#include "viewport_type.h"
 
 struct ViewportSignKdtreeItem {
 	enum ItemType : uint16_t {
@@ -23,18 +23,19 @@ struct ViewportSignKdtreeItem {
 		VKI_TOWN,
 		VKI_SIGN,
 	};
+
 	ItemType type;
 	std::variant<StationID, TownID, SignID> id;
 	int32_t center;
 	int32_t top;
 
-	bool operator== (const ViewportSignKdtreeItem &other) const
+	bool operator==(const ViewportSignKdtreeItem &other) const
 	{
 		if (this->type != other.type) return false;
 		return this->id == other.id;
 	}
 
-	bool operator< (const ViewportSignKdtreeItem &other) const
+	bool operator<(const ViewportSignKdtreeItem &other) const
 	{
 		if (this->type != other.type) return this->type < other.type;
 		return this->id < other.id;

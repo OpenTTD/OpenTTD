@@ -8,6 +8,7 @@
 /** @file screenshot_pcx.cpp PCX screenshots provider. */
 
 #include "stdafx.h"
+
 #include "core/endian_func.hpp"
 #include "core/math_func.hpp"
 #include "debug.h"
@@ -15,7 +16,6 @@
 #include "screenshot_type.h"
 
 #include "safeguards.h"
-
 
 /** Definition of a PCX file header. */
 struct PcxHeader {
@@ -35,6 +35,7 @@ struct PcxHeader {
 	uint16_t height;
 	uint8_t filler[54];
 };
+
 static_assert(sizeof(PcxHeader) == 128);
 
 class ScreenshotProvider_Pcx : public ScreenshotProvider {

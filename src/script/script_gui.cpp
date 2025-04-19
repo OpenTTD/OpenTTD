@@ -5,44 +5,44 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file script_gui.cpp %Window for configuring the Scripts */
+/** @file script_gui.cpp %Window for configuring the Scripts */
 
 #include "../stdafx.h"
-#include "../table/sprites.h"
-#include "../error.h"
-#include "../settings_gui.h"
-#include "../querystring_gui.h"
-#include "../stringfilter_type.h"
-#include "../company_base.h"
-#include "../company_gui.h"
-#include "../dropdown_type.h"
-#include "../dropdown_func.h"
-#include "../window_func.h"
-#include "../network/network.h"
-#include "../hotkeys.h"
-#include "../company_cmd.h"
-#include "../misc_cmd.h"
-#include "../strings_func.h"
-#include "../timer/timer.h"
-#include "../timer/timer_window.h"
 
 #include "script_gui.h"
-#include "script_log.hpp"
-#include "script_scanner.hpp"
-#include "script_config.hpp"
+
 #include "../ai/ai.hpp"
 #include "../ai/ai_config.hpp"
 #include "../ai/ai_info.hpp"
 #include "../ai/ai_instance.hpp"
+#include "../company_base.h"
+#include "../company_cmd.h"
+#include "../company_gui.h"
+#include "../dropdown_func.h"
+#include "../dropdown_type.h"
+#include "../error.h"
 #include "../game/game.hpp"
 #include "../game/game_config.hpp"
 #include "../game/game_info.hpp"
 #include "../game/game_instance.hpp"
+#include "../hotkeys.h"
+#include "../misc_cmd.h"
+#include "../network/network.h"
+#include "../querystring_gui.h"
+#include "../settings_gui.h"
+#include "../stringfilter_type.h"
+#include "../strings_func.h"
+#include "../timer/timer.h"
+#include "../timer/timer_window.h"
+#include "../window_func.h"
+#include "script_config.hpp"
+#include "script_log.hpp"
+#include "script_scanner.hpp"
 
+#include "../table/sprites.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"
-
 
 static ScriptConfig *GetConfig(CompanyID slot)
 {
@@ -67,8 +67,7 @@ struct ScriptListWindow : public Window {
 	 * @param slot The company we're changing the Script for.
 	 * @param show_all Whether to show all available versions.
 	 */
-	ScriptListWindow(WindowDesc &desc, CompanyID slot, bool show_all) : Window(desc),
-		slot(slot), show_all(show_all)
+	ScriptListWindow(WindowDesc &desc, CompanyID slot, bool show_all) : Window(desc), slot(slot), show_all(show_all)
 	{
 		if (slot == OWNER_DEITY) {
 			this->info_list = this->show_all ? Game::GetInfoList() : Game::GetUniqueInfoList();
@@ -130,7 +129,8 @@ struct ScriptListWindow : public Window {
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->vscroll->IsVisible(i)) {
-						DrawString(tr, this->show_all ? GetString(STR_AI_CONFIG_NAME_VERSION, item.second->GetName(), item.second->GetVersion()) : item.second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						DrawString(tr, this->show_all ? GetString(STR_AI_CONFIG_NAME_VERSION, item.second->GetName(), item.second->GetVersion()) : item.second->GetName(),
+							(this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
 						tr.top += this->line_height;
 					}
 				}
@@ -271,12 +271,7 @@ static constexpr NWidgetPart _nested_script_list_widgets[] = {
 /* clang-format on */
 
 /** Window definition for the ai list window. */
-static WindowDesc _script_list_desc(
-	WDP_CENTER, "settings_script_list", 200, 234,
-	WC_SCRIPT_LIST, WC_NONE,
-	{},
-	_nested_script_list_widgets
-);
+static WindowDesc _script_list_desc(WDP_CENTER, "settings_script_list", 200, 234, WC_SCRIPT_LIST, WC_NONE, {}, _nested_script_list_widgets);
 
 /**
  * Open the Script list window to chose a script for the given company slot.
@@ -288,7 +283,6 @@ void ShowScriptListWindow(CompanyID slot, bool show_all)
 	CloseWindowByClass(WC_SCRIPT_LIST);
 	new ScriptListWindow(_script_list_desc, slot, show_all);
 }
-
 
 /**
  * Window for settings the parameters of an AI.
@@ -315,7 +309,7 @@ struct ScriptSettingsWindow : public Window {
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SCRS_SCROLLBAR);
-		this->FinishInitNested(slot);  // Initializes 'this->line_height' as side effect.
+		this->FinishInitNested(slot); // Initializes 'this->line_height' as side effect.
 
 		this->OnInvalidateData();
 	}
@@ -383,7 +377,8 @@ struct ScriptSettingsWindow : public Window {
 				if (config_item.complete_labels) {
 					DrawDropDownButton(br.left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
 				} else {
-					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+					DrawArrowButtons(br.left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0,
+						editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				}
 			}
 
@@ -529,9 +524,9 @@ struct ScriptSettingsWindow : public Window {
 
 	/** When reset, unclick the button after a small timeout. */
 	TimeoutTimer<TimerWindow> unclick_timeout = {std::chrono::milliseconds(150), [this]() {
-		this->clicked_button = -1;
-		this->SetDirty();
-	}};
+													 this->clicked_button = -1;
+													 this->SetDirty();
+												 }};
 
 	/**
 	 * Some data on this window has become invalid.
@@ -550,11 +545,8 @@ struct ScriptSettingsWindow : public Window {
 private:
 	bool IsEditableItem(const ScriptConfigItem &config_item) const
 	{
-		return _game_mode == GM_MENU
-			|| _game_mode == GM_EDITOR
-			|| ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot))
-			|| config_item.flags.Test(ScriptConfigFlag::InGame)
-			|| _settings_client.gui.ai_developer_tools;
+		return _game_mode == GM_MENU || _game_mode == GM_EDITOR || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)) || config_item.flags.Test(ScriptConfigFlag::InGame) ||
+			_settings_client.gui.ai_developer_tools;
 	}
 
 	void SetValue(int value)
@@ -589,12 +581,7 @@ static constexpr NWidgetPart _nested_script_settings_widgets[] = {
 /* clang-format on */
 
 /** Window definition for the Script settings window. */
-static WindowDesc _script_settings_desc(
-	WDP_CENTER, "settings_script", 500, 208,
-	WC_SCRIPT_SETTINGS, WC_NONE,
-	{},
-	_nested_script_settings_widgets
-);
+static WindowDesc _script_settings_desc(WDP_CENTER, "settings_script", 500, 208, WC_SCRIPT_SETTINGS, WC_NONE, {}, _nested_script_settings_widgets);
 
 /**
  * Open the Script settings window to change the Script settings for a Script.
@@ -606,7 +593,6 @@ void ShowScriptSettingsWindow(CompanyID slot)
 	CloseWindowByClass(WC_SCRIPT_SETTINGS);
 	new ScriptSettingsWindow(_script_settings_desc, slot);
 }
-
 
 /** Window for displaying the textfile of a AI. */
 struct ScriptTextfileWindow : public TextfileWindow {
@@ -649,7 +635,6 @@ void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot)
 	new ScriptTextfileWindow(file_type, slot);
 }
 
-
 /**
  * Set the widget colour of a button based on the
  * state of the script. (dead or alive)
@@ -662,8 +647,7 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
 {
 	/* Dead scripts are indicated with red background and
 	 * paused scripts are indicated with yellow background. */
-	Colours colour = dead ? COLOUR_RED :
-		(paused ? COLOUR_YELLOW : COLOUR_GREY);
+	Colours colour = dead ? COLOUR_RED : (paused ? COLOUR_YELLOW : COLOUR_GREY);
 	if (button.colour != colour) {
 		button.colour = colour;
 		return true;
@@ -675,7 +659,7 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
  * Window with everything an AI prints via ScriptLog.
  */
 struct ScriptDebugWindow : public Window {
-	static const uint MAX_BREAK_STR_STRING_LENGTH = 256;   ///< Maximum length of the break string.
+	static const uint MAX_BREAK_STR_STRING_LENGTH = 256; ///< Maximum length of the break string.
 
 	struct FilterState {
 		std::string break_string; ///< The string to match to the AI output
@@ -728,9 +712,12 @@ struct ScriptDebugWindow : public Window {
 	bool IsValidDebugCompany(CompanyID company) const
 	{
 		switch (company.base()) {
-			case CompanyID::Invalid().base(): return false;
-			case OWNER_DEITY.base(): return Game::GetInstance() != nullptr;
-			default:              return Company::IsValidAiID(company);
+			case CompanyID::Invalid().base():
+				return false;
+			case OWNER_DEITY.base():
+				return Game::GetInstance() != nullptr;
+			default:
+				return Company::IsValidAiID(company);
 		}
 	}
 
@@ -894,12 +881,24 @@ struct ScriptDebugWindow : public Window {
 
 			TextColour colour;
 			switch (line.type) {
-				case ScriptLogTypes::LOG_SQ_INFO:  colour = TC_BLACK;  break;
-				case ScriptLogTypes::LOG_SQ_ERROR: colour = TC_WHITE;  break;
-				case ScriptLogTypes::LOG_INFO:     colour = TC_BLACK;  break;
-				case ScriptLogTypes::LOG_WARNING:  colour = TC_YELLOW; break;
-				case ScriptLogTypes::LOG_ERROR:    colour = TC_RED;    break;
-				default:                           colour = TC_BLACK;  break;
+				case ScriptLogTypes::LOG_SQ_INFO:
+					colour = TC_BLACK;
+					break;
+				case ScriptLogTypes::LOG_SQ_ERROR:
+					colour = TC_WHITE;
+					break;
+				case ScriptLogTypes::LOG_INFO:
+					colour = TC_BLACK;
+					break;
+				case ScriptLogTypes::LOG_WARNING:
+					colour = TC_YELLOW;
+					break;
+				case ScriptLogTypes::LOG_ERROR:
+					colour = TC_RED;
+					break;
+				default:
+					colour = TC_BLACK;
+					break;
 			}
 
 			/* Check if the current line should be highlighted */
@@ -1101,9 +1100,8 @@ struct ScriptDebugWindow : public Window {
 
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
-		if (!gui_scope && data == this->filter.script_debug_company &&
-				this->IsValidDebugCompany(this->filter.script_debug_company) &&
-				this->filter.break_check_enabled && !this->break_string_filter.IsEmpty()) {
+		if (!gui_scope && data == this->filter.script_debug_company && this->IsValidDebugCompany(this->filter.script_debug_company) && this->filter.break_check_enabled &&
+			!this->break_string_filter.IsEmpty()) {
 			/* Get the log instance of the active company */
 			ScriptLogTypes::LogData &log = this->GetLogData();
 
@@ -1152,15 +1150,12 @@ struct ScriptDebugWindow : public Window {
 		this->SetWidgetLoweredState(WID_SCRD_BREAK_STR_ON_OFF_BTN, this->filter.break_check_enabled);
 		this->SetWidgetLoweredState(WID_SCRD_MATCH_CASE_BTN, this->filter.case_sensitive_break_check);
 
-		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, this->filter.script_debug_company == CompanyID::Invalid() ||
-			GetConfig(this->filter.script_debug_company)->GetConfigList()->empty());
+		this->SetWidgetDisabledState(WID_SCRD_SETTINGS, this->filter.script_debug_company == CompanyID::Invalid() || GetConfig(this->filter.script_debug_company)->GetConfigList()->empty());
 		extern CompanyID _local_company;
 		this->SetWidgetDisabledState(WID_SCRD_RELOAD_TOGGLE,
-				this->filter.script_debug_company == CompanyID::Invalid() ||
-				this->filter.script_debug_company == OWNER_DEITY ||
-				this->filter.script_debug_company == _local_company);
-		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN, this->filter.script_debug_company == CompanyID::Invalid() ||
-			(this->filter.script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(this->filter.script_debug_company)));
+			this->filter.script_debug_company == CompanyID::Invalid() || this->filter.script_debug_company == OWNER_DEITY || this->filter.script_debug_company == _local_company);
+		this->SetWidgetDisabledState(WID_SCRD_CONTINUE_BTN,
+			this->filter.script_debug_company == CompanyID::Invalid() || (this->filter.script_debug_company == OWNER_DEITY ? !Game::IsPaused() : !AI::IsPaused(this->filter.script_debug_company)));
 	}
 
 	void OnResize() override
@@ -1182,30 +1177,32 @@ struct ScriptDebugWindow : public Window {
 		return w->OnHotkey(hotkey);
 	}
 
-	static inline HotkeyList hotkeys{"aidebug", {
-		Hotkey('1', "company_1", WID_SCRD_COMPANY_BUTTON_START),
-		Hotkey('2', "company_2", WID_SCRD_COMPANY_BUTTON_START + 1),
-		Hotkey('3', "company_3", WID_SCRD_COMPANY_BUTTON_START + 2),
-		Hotkey('4', "company_4", WID_SCRD_COMPANY_BUTTON_START + 3),
-		Hotkey('5', "company_5", WID_SCRD_COMPANY_BUTTON_START + 4),
-		Hotkey('6', "company_6", WID_SCRD_COMPANY_BUTTON_START + 5),
-		Hotkey('7', "company_7", WID_SCRD_COMPANY_BUTTON_START + 6),
-		Hotkey('8', "company_8", WID_SCRD_COMPANY_BUTTON_START + 7),
-		Hotkey('9', "company_9", WID_SCRD_COMPANY_BUTTON_START + 8),
-		Hotkey(0, "company_10", WID_SCRD_COMPANY_BUTTON_START + 9),
-		Hotkey(0, "company_11", WID_SCRD_COMPANY_BUTTON_START + 10),
-		Hotkey(0, "company_12", WID_SCRD_COMPANY_BUTTON_START + 11),
-		Hotkey(0, "company_13", WID_SCRD_COMPANY_BUTTON_START + 12),
-		Hotkey(0, "company_14", WID_SCRD_COMPANY_BUTTON_START + 13),
-		Hotkey(0, "company_15", WID_SCRD_COMPANY_BUTTON_START + 14),
-		Hotkey('S', "settings", WID_SCRD_SETTINGS),
-		Hotkey('0', "game_script", WID_SCRD_SCRIPT_GAME),
-		Hotkey(0, "reload", WID_SCRD_RELOAD_TOGGLE),
-		Hotkey('B', "break_toggle", WID_SCRD_BREAK_STR_ON_OFF_BTN),
-		Hotkey('F', "break_string", WID_SCRD_BREAK_STR_EDIT_BOX),
-		Hotkey('C', "match_case", WID_SCRD_MATCH_CASE_BTN),
-		Hotkey(WKC_RETURN, "continue", WID_SCRD_CONTINUE_BTN),
-	}, ScriptDebugGlobalHotkeys};
+	static inline HotkeyList hotkeys{"aidebug",
+		{
+			Hotkey('1', "company_1", WID_SCRD_COMPANY_BUTTON_START),
+			Hotkey('2', "company_2", WID_SCRD_COMPANY_BUTTON_START + 1),
+			Hotkey('3', "company_3", WID_SCRD_COMPANY_BUTTON_START + 2),
+			Hotkey('4', "company_4", WID_SCRD_COMPANY_BUTTON_START + 3),
+			Hotkey('5', "company_5", WID_SCRD_COMPANY_BUTTON_START + 4),
+			Hotkey('6', "company_6", WID_SCRD_COMPANY_BUTTON_START + 5),
+			Hotkey('7', "company_7", WID_SCRD_COMPANY_BUTTON_START + 6),
+			Hotkey('8', "company_8", WID_SCRD_COMPANY_BUTTON_START + 7),
+			Hotkey('9', "company_9", WID_SCRD_COMPANY_BUTTON_START + 8),
+			Hotkey(0, "company_10", WID_SCRD_COMPANY_BUTTON_START + 9),
+			Hotkey(0, "company_11", WID_SCRD_COMPANY_BUTTON_START + 10),
+			Hotkey(0, "company_12", WID_SCRD_COMPANY_BUTTON_START + 11),
+			Hotkey(0, "company_13", WID_SCRD_COMPANY_BUTTON_START + 12),
+			Hotkey(0, "company_14", WID_SCRD_COMPANY_BUTTON_START + 13),
+			Hotkey(0, "company_15", WID_SCRD_COMPANY_BUTTON_START + 14),
+			Hotkey('S', "settings", WID_SCRD_SETTINGS),
+			Hotkey('0', "game_script", WID_SCRD_SCRIPT_GAME),
+			Hotkey(0, "reload", WID_SCRD_RELOAD_TOGGLE),
+			Hotkey('B', "break_toggle", WID_SCRD_BREAK_STR_ON_OFF_BTN),
+			Hotkey('F', "break_string", WID_SCRD_BREAK_STR_EDIT_BOX),
+			Hotkey('C', "match_case", WID_SCRD_MATCH_CASE_BTN),
+			Hotkey(WKC_RETURN, "continue", WID_SCRD_CONTINUE_BTN),
+		},
+		ScriptDebugGlobalHotkeys};
 };
 
 /** Make a number of rows with buttons for each company for the Script debug window. */
@@ -1265,13 +1262,7 @@ EndContainer(),
 /* clang-format on */
 
 /** Window definition for the Script debug window. */
-static WindowDesc _script_debug_desc(
-	WDP_AUTO, "script_debug", 600, 450,
-	WC_SCRIPT_DEBUG, WC_NONE,
-	{},
-	_nested_script_debug_widgets,
-	&ScriptDebugWindow::hotkeys
-);
+static WindowDesc _script_debug_desc(WDP_AUTO, "script_debug", 600, 450, WC_SCRIPT_DEBUG, WC_NONE, {}, _nested_script_debug_widgets, &ScriptDebugWindow::hotkeys);
 
 /**
  * Open the Script debug window and select the given company.

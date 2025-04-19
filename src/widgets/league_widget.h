@@ -17,7 +17,7 @@ enum PerformanceLeagueWidgets : WidgetID {
 
 /** Widget of the #ScriptLeagueWindow class. */
 enum ScriptLeagueWidgets : WidgetID {
-	WID_SLT_CAPTION,    ///< Caption of the window.
+	WID_SLT_CAPTION, ///< Caption of the window.
 	WID_SLT_BACKGROUND, ///< Background of the window.
 };
 

@@ -24,9 +24,7 @@ void *LibraryLoader::OpenLibrary(const std::string &)
 	return nullptr;
 }
 
-void LibraryLoader::CloseLibrary()
-{
-}
+void LibraryLoader::CloseLibrary() {}
 
 void *LibraryLoader::GetSymbol(const std::string &)
 {

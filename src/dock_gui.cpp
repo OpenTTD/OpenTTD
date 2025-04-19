@@ -8,33 +8,33 @@
 /** @file dock_gui.cpp GUI to create amazing water objects. */
 
 #include "stdafx.h"
-#include "terraform_gui.h"
-#include "window_gui.h"
-#include "station_gui.h"
+
 #include "command_func.h"
-#include "water.h"
-#include "window_func.h"
-#include "vehicle_func.h"
-#include "sound_func.h"
-#include "viewport_func.h"
-#include "gfx_func.h"
-#include "company_func.h"
-#include "slope_func.h"
-#include "tilehighlight_func.h"
 #include "company_base.h"
-#include "hotkeys.h"
-#include "gui.h"
-#include "zoom_func.h"
-#include "tunnelbridge_cmd.h"
+#include "company_func.h"
 #include "dock_cmd.h"
+#include "gfx_func.h"
+#include "gui.h"
+#include "hotkeys.h"
+#include "slope_func.h"
+#include "sound_func.h"
 #include "station_cmd.h"
-#include "water_cmd.h"
-#include "waypoint_cmd.h"
+#include "station_gui.h"
+#include "terraform_gui.h"
+#include "tilehighlight_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "tunnelbridge_cmd.h"
+#include "vehicle_func.h"
+#include "viewport_func.h"
+#include "water.h"
+#include "water_cmd.h"
+#include "waypoint_cmd.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/dock_widget.h"
-
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -57,7 +57,6 @@ void CcPlaySound_CONSTRUCTION_WATER(Commands, const CommandCost &result, TileInd
 {
 	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_02_CONSTRUCTION_WATER, tile);
 }
-
 
 /**
  * Gets the other end of the aqueduct, if possible.
@@ -124,10 +123,7 @@ struct BuildDocksToolbarWindow : Window {
 		if (!gui_scope) return;
 
 		bool can_build = CanBuildVehicleInfrastructure(VEH_SHIP);
-		this->SetWidgetsDisabledState(!can_build,
-			WID_DT_DEPOT,
-			WID_DT_STATION,
-			WID_DT_BUOY);
+		this->SetWidgetsDisabledState(!can_build, WID_DT_DEPOT, WID_DT_STATION, WID_DT_BUOY);
 		if (!can_build) {
 			CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
 			CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
@@ -187,7 +183,8 @@ struct BuildDocksToolbarWindow : Window {
 				HandlePlacePushButton(this, WID_DT_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_SPECIAL);
 				break;
 
-			default: return;
+			default:
+				return;
 		}
 		this->last_clicked_widget = (DockToolbarWidgets)widget;
 	}
@@ -241,7 +238,8 @@ struct BuildDocksToolbarWindow : Window {
 				Command<CMD_BUILD_BRIDGE>::Post(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE, CcBuildBridge, tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER, 0, 0);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -268,7 +266,8 @@ struct BuildDocksToolbarWindow : Window {
 					Command<CMD_BUILD_CANAL>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WATER_CLASS_RIVER, _ctrl_pressed);
 					break;
 
-				default: break;
+				default:
+					break;
 			}
 		}
 	}
@@ -317,16 +316,18 @@ struct BuildDocksToolbarWindow : Window {
 		return w->OnHotkey(hotkey);
 	}
 
-	static inline HotkeyList hotkeys{"dockstoolbar", {
-		Hotkey('1', "canal", WID_DT_CANAL),
-		Hotkey('2', "lock", WID_DT_LOCK),
-		Hotkey('3', "demolish", WID_DT_DEMOLISH),
-		Hotkey('4', "depot", WID_DT_DEPOT),
-		Hotkey('5', "dock", WID_DT_STATION),
-		Hotkey('6', "buoy", WID_DT_BUOY),
-		Hotkey('7', "river", WID_DT_RIVER),
-		Hotkey({'B', '8'}, "aqueduct", WID_DT_BUILD_AQUEDUCT),
-	}, DockToolbarGlobalHotkeys};
+	static inline HotkeyList hotkeys{"dockstoolbar",
+		{
+			Hotkey('1', "canal", WID_DT_CANAL),
+			Hotkey('2', "lock", WID_DT_LOCK),
+			Hotkey('3', "demolish", WID_DT_DEMOLISH),
+			Hotkey('4', "depot", WID_DT_DEPOT),
+			Hotkey('5', "dock", WID_DT_STATION),
+			Hotkey('6', "buoy", WID_DT_BUOY),
+			Hotkey('7', "river", WID_DT_RIVER),
+			Hotkey({'B', '8'}, "aqueduct", WID_DT_BUILD_AQUEDUCT),
+		},
+		DockToolbarGlobalHotkeys};
 };
 
 /**
@@ -354,12 +355,7 @@ static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 /* clang-format on */
 
 static WindowDesc _build_docks_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0,
-	WC_BUILD_TOOLBAR, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_build_docks_toolbar_widgets,
-	&BuildDocksToolbarWindow::hotkeys
-);
+	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0, WC_BUILD_TOOLBAR, WC_NONE, WindowDefaultFlag::Construction, _nested_build_docks_toolbar_widgets, &BuildDocksToolbarWindow::hotkeys);
 
 /**
  * Open the build water toolbar window
@@ -399,12 +395,7 @@ static constexpr NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 /* clang-format on */
 
 /** Window definition for the build docks in scenario editor window. */
-static WindowDesc _build_docks_scen_toolbar_desc(
-	WDP_AUTO, "toolbar_water_scen", 0, 0,
-	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_build_docks_scen_toolbar_widgets
-);
+static WindowDesc _build_docks_scen_toolbar_desc(WDP_AUTO, "toolbar_water_scen", 0, 0, WC_SCEN_BUILD_TOOLBAR, WC_NONE, WindowDefaultFlag::Construction, _nested_build_docks_scen_toolbar_widgets);
 
 /**
  * Open the build water toolbar window for the scenario editor.
@@ -419,9 +410,9 @@ Window *ShowBuildDocksScenToolbar()
 /** Widget numbers of the build-dock GUI. */
 enum BuildDockStationWidgets {
 	BDSW_BACKGROUND, ///< Background panel.
-	BDSW_LT_OFF,     ///< 'Off' button of coverage high light.
-	BDSW_LT_ON,      ///< 'On' button of coverage high light.
-	BDSW_INFO,       ///< 'Coverage highlight' label.
+	BDSW_LT_OFF, ///< 'Off' button of coverage high light.
+	BDSW_LT_ON, ///< 'On' button of coverage high light.
+	BDSW_INFO, ///< 'Coverage highlight' label.
 	BDSW_ACCEPTANCE, ///< Acceptance info.
 };
 
@@ -486,8 +477,8 @@ public:
 	}
 
 	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
-		this->InvalidateData();
-	}};
+															this->InvalidateData();
+														}};
 };
 
 /** Nested widget parts of a build dock station window. */
@@ -512,12 +503,7 @@ static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _build_dock_station_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
-	WindowDefaultFlag::Construction,
-	_nested_build_dock_station_widgets
-);
+static WindowDesc _build_dock_station_desc(WDP_AUTO, nullptr, 0, 0, WC_BUILD_STATION, WC_BUILD_TOOLBAR, WindowDefaultFlag::Construction, _nested_build_dock_station_widgets);
 
 static void ShowBuildDockStationPicker(Window *parent)
 {
@@ -548,7 +534,7 @@ public:
 		switch (widget) {
 			case WID_BDD_X:
 			case WID_BDD_Y:
-				size.width  = ScaleGUITrad(96) + WidgetDimensions::scaled.fullbevel.Horizontal();
+				size.width = ScaleGUITrad(96) + WidgetDimensions::scaled.fullbevel.Horizontal();
 				size.height = ScaleGUITrad(64) + WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
 		}
@@ -566,7 +552,7 @@ public:
 				Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 				if (FillDrawPixelInfo(&tmp_dpi, ir)) {
 					AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
-					int x = (ir.Width()  - ScaleSpriteTrad(96)) / 2;
+					int x = (ir.Width() - ScaleSpriteTrad(96)) / 2;
 					int y = (ir.Height() - ScaleSpriteTrad(64)) / 2;
 					int x1 = ScaleSpriteTrad(63);
 					int x2 = ScaleSpriteTrad(31);
@@ -609,19 +595,12 @@ static constexpr NWidgetPart _nested_build_docks_depot_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _build_docks_depot_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
-	WindowDefaultFlag::Construction,
-	_nested_build_docks_depot_widgets
-);
-
+static WindowDesc _build_docks_depot_desc(WDP_AUTO, nullptr, 0, 0, WC_BUILD_DEPOT, WC_BUILD_TOOLBAR, WindowDefaultFlag::Construction, _nested_build_docks_depot_widgets);
 
 static void ShowBuildDocksDepotPicker(Window *parent)
 {
 	new BuildDocksDepotWindow(_build_docks_depot_desc, parent);
 }
-
 
 void InitializeDockGui()
 {

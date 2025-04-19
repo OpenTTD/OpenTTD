@@ -11,8 +11,10 @@
  */
 
 #include "../stdafx.h"
-#include "timer.h"
+
 #include "timer_game_tick.h"
+
+#include "timer.h"
 
 #include "../safeguards.h"
 

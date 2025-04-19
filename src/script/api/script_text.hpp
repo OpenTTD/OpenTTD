@@ -10,11 +10,11 @@
 #ifndef SCRIPT_TEXT_HPP
 #define SCRIPT_TEXT_HPP
 
-#include "script_object.hpp"
-#include "../../strings_func.h"
-#include "../../core/string_builder.hpp"
-
 #include <variant>
+
+#include "../../core/string_builder.hpp"
+#include "../../strings_func.h"
+#include "script_object.hpp"
 
 /**
  * Internal parent object of all Text-like objects.
@@ -46,6 +46,7 @@ public:
 	RawText(const std::string &text) : text(text) {}
 
 	EncodedString GetEncodedText() override;
+
 private:
 	const std::string text;
 };

@@ -12,10 +12,10 @@
 #ifndef NETWORK_CORE_TCP_CONTENT_H
 #define NETWORK_CORE_TCP_CONTENT_H
 
-#include "os_abstraction.h"
-#include "tcp.h"
-#include "packet.h"
 #include "../../debug.h"
+#include "os_abstraction.h"
+#include "packet.h"
+#include "tcp.h"
 #include "tcp_content_type.h"
 
 /** Base socket handler for all Content TCP sockets */
@@ -114,16 +114,14 @@ protected:
 	virtual bool Receive_SERVER_CONTENT(Packet &p);
 
 	bool HandlePacket(Packet &p);
+
 public:
 	/**
 	 * Create a new cs socket handler for a given cs
 	 * @param s  the socket we are connected with
 	 * @param address IP etc. of the client
 	 */
-	NetworkContentSocketHandler(SOCKET s = INVALID_SOCKET) :
-		NetworkTCPSocketHandler(s)
-	{
-	}
+	NetworkContentSocketHandler(SOCKET s = INVALID_SOCKET) : NetworkTCPSocketHandler(s) {}
 
 	/** On destructing of this class, the socket needs to be closed */
 	virtual ~NetworkContentSocketHandler()

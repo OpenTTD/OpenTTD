@@ -8,44 +8,48 @@
 /** @file music_gui.cpp GUI for the music playback. */
 
 #include "stdafx.h"
-#include "openttd.h"
+
+#include "core/geometry_func.hpp"
+#include "core/mem_func.hpp"
+#include "core/random_func.hpp"
 #include "base_media_base.h"
 #include "base_media_music.h"
-#include "music/music_driver.hpp"
-#include "window_gui.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "sound_func.h"
-#include "gfx_func.h"
-#include "zoom_func.h"
-#include "core/random_func.hpp"
-#include "core/mem_func.hpp"
-#include "error.h"
-#include "core/geometry_func.hpp"
-#include "string_func.h"
-#include "settings_type.h"
-#include "settings_gui.h"
 #include "dropdown_func.h"
 #include "dropdown_type.h"
-#include "slider_func.h"
+#include "error.h"
+#include "gfx_func.h"
 #include "mixer.h"
+#include "music/music_driver.hpp"
+#include "openttd.h"
+#include "settings_gui.h"
+#include "settings_type.h"
+#include "slider_func.h"
+#include "sound_func.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/music_widget.h"
-
-#include "table/strings.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
-
 struct MusicSystem {
 	struct PlaylistEntry : MusicSongInfo {
-		const MusicSet *set;  ///< music set the song comes from
-		uint set_index;        ///< index of song in set
+		const MusicSet *set; ///< music set the song comes from
+		uint set_index; ///< index of song in set
 
-		PlaylistEntry(const MusicSet *set, uint set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) { }
-		bool IsValid() const { return !this->songname.empty(); }
+		PlaylistEntry(const MusicSet *set, uint set_index) : MusicSongInfo(set->songinfo[set_index]), set(set), set_index(set_index) {}
+
+		bool IsValid() const
+		{
+			return !this->songname.empty();
+		}
 	};
+
 	typedef std::vector<PlaylistEntry> Playlist;
 
 	enum PlaylistChoices : uint8_t {
@@ -99,7 +103,6 @@ private:
 };
 
 MusicSystem _music;
-
 
 /** Rebuild all playlists for the current music set */
 void MusicSystem::BuildPlaylists()
@@ -199,9 +202,7 @@ void MusicSystem::SetPositionBySetIndex(uint set_index)
  */
 uint MusicSystem::GetSetIndex()
 {
-	return static_cast<size_t>(this->playlist_position) < this->active_playlist.size()
-		? this->active_playlist[this->playlist_position].set_index
-		: UINT_MAX;
+	return static_cast<size_t>(this->playlist_position) < this->active_playlist.size() ? this->active_playlist[this->playlist_position].set_index : UINT_MAX;
 }
 
 /**
@@ -447,7 +448,6 @@ void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
 	}
 }
 
-
 /**
  * Check music playback status and start/stop/song-finished.
  * Called from main loop.
@@ -475,7 +475,6 @@ void InitializeMusic()
 {
 	_music.BuildPlaylists();
 }
-
 
 struct MusicTrackSelectionWindow : public Window {
 	MusicTrackSelectionWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
@@ -536,7 +535,8 @@ struct MusicTrackSelectionWindow : public Window {
 				break;
 			}
 
-			case WID_MTS_LIST_LEFT: case WID_MTS_LIST_RIGHT: {
+			case WID_MTS_LIST_LEFT:
+			case WID_MTS_LIST_RIGHT: {
 				Dimension d = {0, 0};
 
 				for (const auto &song : _music.music_set) {
@@ -604,8 +604,12 @@ struct MusicTrackSelectionWindow : public Window {
 				_music.PlaylistClear();
 				break;
 
-			case WID_MTS_ALL: case WID_MTS_OLD: case WID_MTS_NEW:
-			case WID_MTS_EZY: case WID_MTS_CUSTOM1: case WID_MTS_CUSTOM2: // set playlist
+			case WID_MTS_ALL:
+			case WID_MTS_OLD:
+			case WID_MTS_NEW:
+			case WID_MTS_EZY:
+			case WID_MTS_CUSTOM1:
+			case WID_MTS_CUSTOM2: // set playlist
 				_music.ChangePlaylist((MusicSystem::PlaylistChoices)(widget - WID_MTS_ALL));
 				break;
 		}
@@ -662,12 +666,7 @@ static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _music_track_selection_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_MUSIC_TRACK_SELECTION, WC_NONE,
-	{},
-	_nested_music_track_selection_widgets
-);
+static WindowDesc _music_track_selection_desc(WDP_AUTO, nullptr, 0, 0, WC_MUSIC_TRACK_SELECTION, WC_NONE, {}, _nested_music_track_selection_widgets);
 
 static void ShowMusicTrackSelection()
 {
@@ -689,10 +688,7 @@ struct MusicWindow : public Window {
 		/* Disable music control widgets if there is no music
 		 * -- except Programme button! So you can still select a music set. */
 		this->SetWidgetsDisabledState(
-			BaseMusic::GetUsedSet()->num_available == 0,
-			WID_M_PREV, WID_M_NEXT, WID_M_STOP, WID_M_PLAY, WID_M_SHUFFLE,
-			WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2
-			);
+			BaseMusic::GetUsedSet()->num_available == 0, WID_M_PREV, WID_M_NEXT, WID_M_STOP, WID_M_PLAY, WID_M_SHUFFLE, WID_M_ALL, WID_M_OLD, WID_M_NEW, WID_M_EZY, WID_M_CUSTOM1, WID_M_CUSTOM2);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
@@ -701,7 +697,8 @@ struct MusicWindow : public Window {
 			/* Make sure that WID_M_SHUFFLE and WID_M_PROGRAMME have the same size.
 			 * This can't be done by using NWidContainerFlag::EqualSize as the WID_M_INFO is
 			 * between those widgets and of different size. */
-			case WID_M_SHUFFLE: case WID_M_PROGRAMME: {
+			case WID_M_SHUFFLE:
+			case WID_M_PROGRAMME: {
 				Dimension d = maxdim(GetStringBoundingBox(STR_MUSIC_PROGRAM), GetStringBoundingBox(STR_MUSIC_SHUFFLE));
 				d.width += padding.width;
 				d.height += padding.height;
@@ -730,9 +727,15 @@ struct MusicWindow : public Window {
 
 			/* Hack-ish: set the proper widget data; only needs to be done once
 			 * per (Re)Init as that's the only time the language changes. */
-			case WID_M_PREV: this->GetWidget<NWidgetCore>(WID_M_PREV)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV); break;
-			case WID_M_NEXT: this->GetWidget<NWidgetCore>(WID_M_NEXT)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT); break;
-			case WID_M_PLAY: this->GetWidget<NWidgetCore>(WID_M_PLAY)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC); break;
+			case WID_M_PREV:
+				this->GetWidget<NWidgetCore>(WID_M_PREV)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV);
+				break;
+			case WID_M_NEXT:
+				this->GetWidget<NWidgetCore>(WID_M_NEXT)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT);
+				break;
+			case WID_M_PLAY:
+				this->GetWidget<NWidgetCore>(WID_M_PLAY)->SetSprite(_current_text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC);
+				break;
 		}
 	}
 
@@ -819,7 +822,8 @@ struct MusicWindow : public Window {
 				_music.Play();
 				break;
 
-			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
+			case WID_M_MUSIC_VOL:
+			case WID_M_EFFECT_VOL: { // volume sliders
 				uint8_t &vol = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, 0, INT8_MAX, 0, vol)) {
 					if (widget == WID_M_MUSIC_VOL) {
@@ -849,8 +853,12 @@ struct MusicWindow : public Window {
 				ShowMusicTrackSelection();
 				break;
 
-			case WID_M_ALL: case WID_M_OLD: case WID_M_NEW:
-			case WID_M_EZY: case WID_M_CUSTOM1: case WID_M_CUSTOM2: // playlist
+			case WID_M_ALL:
+			case WID_M_OLD:
+			case WID_M_NEW:
+			case WID_M_EZY:
+			case WID_M_CUSTOM1:
+			case WID_M_CUSTOM2: // playlist
 				_music.ChangePlaylist((MusicSystem::PlaylistChoices)(widget - WID_M_ALL));
 				break;
 		}
@@ -923,12 +931,7 @@ static constexpr NWidgetPart _nested_music_window_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _music_window_desc(
-	WDP_AUTO, "music", 0, 0,
-	WC_MUSIC_WINDOW, WC_NONE,
-	{},
-	_nested_music_window_widgets
-);
+static WindowDesc _music_window_desc(WDP_AUTO, "music", 0, 0, WC_MUSIC_WINDOW, WC_NONE, {}, _nested_music_window_widgets);
 
 void ShowMusicWindow()
 {

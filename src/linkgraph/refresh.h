@@ -26,10 +26,10 @@ protected:
 	 * an influence on the next one.
 	 */
 	enum class RefreshFlag : uint8_t {
-		UseNext,     ///< There was a conditional jump. Try to use the given next order when looking for a new one.
-		HasCargo,    ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
-		WasRefit,    ///< Consist was refit since the last stop where it could interact with cargo.
-		ResetRefit,  ///< Consist had a chance to load since the last refit and the refit capacities can be reset.
+		UseNext, ///< There was a conditional jump. Try to use the given next order when looking for a new one.
+		HasCargo, ///< Consist could leave the last stop where it could interact with cargo carrying cargo (i.e. not an "unload all" + "no loading" order).
+		WasRefit, ///< Consist was refit since the last stop where it could interact with cargo.
+		ResetRefit, ///< Consist had a chance to load since the last refit and the refit capacities can be reset.
 		InAutorefit, ///< Currently doing an autorefit loop. Ignore the first autorefit order.
 	};
 
@@ -39,11 +39,11 @@ protected:
 	 * Simulated cargo type and capacity for prediction of future links.
 	 */
 	struct RefitDesc {
-		CargoType cargo;    ///< Cargo type the vehicle will be carrying.
-		uint16_t capacity;  ///< Capacity the vehicle will have.
+		CargoType cargo; ///< Cargo type the vehicle will be carrying.
+		uint16_t capacity; ///< Capacity the vehicle will have.
 		uint16_t remaining; ///< Capacity remaining from before the previous refit.
-		RefitDesc(CargoType cargo, uint16_t capacity, uint16_t remaining) :
-				cargo(cargo), capacity(capacity), remaining(remaining) {}
+
+		RefitDesc(CargoType cargo, uint16_t capacity, uint16_t remaining) : cargo(cargo), capacity(capacity), remaining(remaining) {}
 	};
 
 	/**
@@ -56,15 +56,18 @@ protected:
 	 * line.
 	 */
 	struct Hop {
-		OrderID from;  ///< Last order where vehicle could interact with cargo or absolute first order.
-		OrderID to;    ///< Next order to be processed.
+		OrderID from; ///< Last order where vehicle could interact with cargo or absolute first order.
+		OrderID to; ///< Next order to be processed.
 		CargoType cargo; ///< Cargo the consist is probably carrying or INVALID_CARGO if unknown.
 
 		/**
 		 * Default constructor should not be called but has to be visible for
 		 * usage in std::set.
 		 */
-		Hop() {NOT_REACHED();}
+		Hop()
+		{
+			NOT_REACHED();
+		}
 
 		/**
 		 * Real constructor, only use this one.
@@ -80,13 +83,13 @@ protected:
 	typedef std::vector<RefitDesc> RefitList;
 	typedef std::set<Hop> HopSet;
 
-	Vehicle *vehicle;           ///< Vehicle for which the links should be refreshed.
+	Vehicle *vehicle; ///< Vehicle for which the links should be refreshed.
 	CargoArray capacities{}; ///< Current added capacities per cargo type in the consist.
 	RefitList refit_capacities; ///< Current state of capacity remaining from previous refits versus overall capacity per vehicle in the consist.
-	HopSet *seen_hops;          ///< Hops already seen. If the same hop is seen twice we stop the algorithm. This is shared between all Refreshers of the same run.
-	CargoType cargo;              ///< Cargo given in last refit order.
-	bool allow_merge;           ///< If the refresher is allowed to merge or extend link graphs.
-	bool is_full_loading;       ///< If the vehicle is full loading.
+	HopSet *seen_hops; ///< Hops already seen. If the same hop is seen twice we stop the algorithm. This is shared between all Refreshers of the same run.
+	CargoType cargo; ///< Cargo given in last refit order.
+	bool allow_merge; ///< If the refresher is allowed to merge or extend link graphs.
+	bool is_full_loading; ///< If the vehicle is full loading.
 
 	LinkRefresher(Vehicle *v, HopSet *seen_hops, bool allow_merge, bool is_full_loading);
 

@@ -10,19 +10,20 @@
 #ifndef COMPANY_MANAGER_FACE_H
 #define COMPANY_MANAGER_FACE_H
 
-#include "core/random_func.hpp"
 #include "core/bitmath_func.hpp"
-#include "table/sprites.h"
+#include "core/random_func.hpp"
 #include "company_type.h"
+
+#include "table/sprites.h"
 
 /** The gender/race combinations that we have faces for */
 enum GenderEthnicity : uint8_t {
-	GENDER_FEMALE    = 0, ///< This bit set means a female, otherwise male
-	ETHNICITY_BLACK  = 1, ///< This bit set means black, otherwise white
+	GENDER_FEMALE = 0, ///< This bit set means a female, otherwise male
+	ETHNICITY_BLACK = 1, ///< This bit set means black, otherwise white
 
-	GE_WM = 0,                                         ///< A male of Caucasian origin (white)
-	GE_WF = 1 << GENDER_FEMALE,                        ///< A female of Caucasian origin (white)
-	GE_BM = 1 << ETHNICITY_BLACK,                      ///< A male of African origin (black)
+	GE_WM = 0, ///< A male of Caucasian origin (white)
+	GE_WF = 1 << GENDER_FEMALE, ///< A female of Caucasian origin (white)
+	GE_BM = 1 << ETHNICITY_BLACK, ///< A male of African origin (black)
 	GE_BF = 1 << ETHNICITY_BLACK | 1 << GENDER_FEMALE, ///< A female of African origin (black)
 	GE_END,
 };
@@ -54,33 +55,34 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(CompanyManagerFaceVariable)
 
 /** Information about the valid values of CompanyManagerFace bitgroups as well as the sprites to draw */
 struct CompanyManagerFaceBitsInfo {
-	uint8_t     offset;               ///< Offset in bits into the CompanyManagerFace
-	uint8_t     length;               ///< Number of bits used in the CompanyManagerFace
-	uint8_t     valid_values[GE_END]; ///< The number of valid values per gender/ethnicity
+	uint8_t offset; ///< Offset in bits into the CompanyManagerFace
+	uint8_t length; ///< Number of bits used in the CompanyManagerFace
+	uint8_t valid_values[GE_END]; ///< The number of valid values per gender/ethnicity
 	SpriteID first_sprite[GE_END]; ///< The first sprite per gender/ethnicity
 };
 
 /** Lookup table for indices into the CompanyManagerFace, valid ranges and sprites */
 static const CompanyManagerFaceBitsInfo _cmf_info[] = {
 	/* Index                   off len   WM  WF  BM  BF         WM     WF     BM     BF
-	 * CMFV_GENDER          */ {  0, 1, {  2,  2,  2,  2 }, {     0,     0,     0,     0 } }, ///< 0 = male, 1 = female
-	/* CMFV_ETHNICITY       */ {  1, 2, {  2,  2,  2,  2 }, {     0,     0,     0,     0 } }, ///< 0 = (Western-)Caucasian, 1 = African(-American)/Black
-	/* CMFV_GEN_ETHN        */ {  0, 3, {  4,  4,  4,  4 }, {     0,     0,     0,     0 } }, ///< Shortcut to get/set gender _and_ ethnicity
-	/* CMFV_HAS_MOUSTACHE   */ {  3, 1, {  2,  0,  2,  0 }, {     0,     0,     0,     0 } }, ///< Females do not have a moustache
-	/* CMFV_HAS_TIE_EARRING */ {  3, 1, {  0,  2,  0,  2 }, {     0,     0,     0,     0 } }, ///< Draw the earring for females or not. For males the tie is always drawn.
-	/* CMFV_HAS_GLASSES     */ {  4, 1, {  2,  2,  2,  2 }, {     0,     0,     0,     0 } }, ///< Whether to draw glasses or not
-	/* CMFV_EYE_COLOUR      */ {  5, 2, {  3,  3,  1,  1 }, {     0,     0,     0,     0 } }, ///< Palette modification
-	/* CMFV_CHEEKS          */ {  0, 0, {  1,  1,  1,  1 }, { 0x325, 0x326, 0x390, 0x3B0 } }, ///< Cheeks are only indexed by their gender/ethnicity
-	/* CMFV_CHIN            */ {  7, 2, {  4,  1,  2,  2 }, { 0x327, 0x327, 0x391, 0x3B1 } },
-	/* CMFV_EYEBROWS        */ {  9, 4, { 12, 16, 11, 16 }, { 0x32B, 0x337, 0x39A, 0x3B8 } },
-	/* CMFV_MOUSTACHE       */ { 13, 2, {  3,  0,  3,  0 }, { 0x367,     0, 0x397,     0 } }, ///< Depends on CMFV_HAS_MOUSTACHE
-	/* CMFV_LIPS            */ { 13, 4, { 12, 10,  9,  9 }, { 0x35B, 0x351, 0x3A5, 0x3C8 } }, ///< Depends on !CMFV_HAS_MOUSTACHE
-	/* CMFV_NOSE            */ { 17, 3, {  8,  4,  4,  5 }, { 0x349, 0x34C, 0x393, 0x3B3 } }, ///< Depends on !CMFV_HAS_MOUSTACHE
-	/* CMFV_HAIR            */ { 20, 4, {  9,  5,  5,  5 }, { 0x382, 0x38B, 0x3D4, 0x3D9 } },
-	/* CMFV_COLLAR          */ { 26, 2, {  4,  4,  4,  4 }, { 0x36E, 0x37B, 0x36E, 0x37B } },
-	/* CMFV_JACKET          */ { 24, 2, {  3,  3,  3,  3 }, { 0x36B, 0x378, 0x36B, 0x378 } },
-	/* CMFV_TIE_EARRING     */ { 28, 3, {  6,  3,  6,  3 }, { 0x372, 0x37F, 0x372, 0x3D1 } }, ///< Depends on CMFV_HAS_TIE_EARRING
-	/* CMFV_GLASSES         */ { 31, 1, {  2,  2,  2,  2 }, { 0x347, 0x347, 0x3AE, 0x3AE } }  ///< Depends on CMFV_HAS_GLASSES
+	 * CMFV_GENDER          */
+	{0, 1, {2, 2, 2, 2}, {0, 0, 0, 0}}, ///< 0 = male, 1 = female
+	/* CMFV_ETHNICITY       */ {1, 2, {2, 2, 2, 2}, {0, 0, 0, 0}}, ///< 0 = (Western-)Caucasian, 1 = African(-American)/Black
+	/* CMFV_GEN_ETHN        */ {0, 3, {4, 4, 4, 4}, {0, 0, 0, 0}}, ///< Shortcut to get/set gender _and_ ethnicity
+	/* CMFV_HAS_MOUSTACHE   */ {3, 1, {2, 0, 2, 0}, {0, 0, 0, 0}}, ///< Females do not have a moustache
+	/* CMFV_HAS_TIE_EARRING */ {3, 1, {0, 2, 0, 2}, {0, 0, 0, 0}}, ///< Draw the earring for females or not. For males the tie is always drawn.
+	/* CMFV_HAS_GLASSES     */ {4, 1, {2, 2, 2, 2}, {0, 0, 0, 0}}, ///< Whether to draw glasses or not
+	/* CMFV_EYE_COLOUR      */ {5, 2, {3, 3, 1, 1}, {0, 0, 0, 0}}, ///< Palette modification
+	/* CMFV_CHEEKS          */ {0, 0, {1, 1, 1, 1}, {0x325, 0x326, 0x390, 0x3B0}}, ///< Cheeks are only indexed by their gender/ethnicity
+	/* CMFV_CHIN            */ {7, 2, {4, 1, 2, 2}, {0x327, 0x327, 0x391, 0x3B1}},
+	/* CMFV_EYEBROWS        */ {9, 4, {12, 16, 11, 16}, {0x32B, 0x337, 0x39A, 0x3B8}},
+	/* CMFV_MOUSTACHE       */ {13, 2, {3, 0, 3, 0}, {0x367, 0, 0x397, 0}}, ///< Depends on CMFV_HAS_MOUSTACHE
+	/* CMFV_LIPS            */ {13, 4, {12, 10, 9, 9}, {0x35B, 0x351, 0x3A5, 0x3C8}}, ///< Depends on !CMFV_HAS_MOUSTACHE
+	/* CMFV_NOSE            */ {17, 3, {8, 4, 4, 5}, {0x349, 0x34C, 0x393, 0x3B3}}, ///< Depends on !CMFV_HAS_MOUSTACHE
+	/* CMFV_HAIR            */ {20, 4, {9, 5, 5, 5}, {0x382, 0x38B, 0x3D4, 0x3D9}},
+	/* CMFV_COLLAR          */ {26, 2, {4, 4, 4, 4}, {0x36E, 0x37B, 0x36E, 0x37B}},
+	/* CMFV_JACKET          */ {24, 2, {3, 3, 3, 3}, {0x36B, 0x378, 0x36B, 0x378}},
+	/* CMFV_TIE_EARRING     */ {28, 3, {6, 3, 6, 3}, {0x372, 0x37F, 0x372, 0x3D1}}, ///< Depends on CMFV_HAS_TIE_EARRING
+	/* CMFV_GLASSES         */ {31, 1, {2, 2, 2, 2}, {0x347, 0x347, 0x3AE, 0x3AE}} ///< Depends on CMFV_HAS_GLASSES
 };
 /** Make sure the table's size is right. */
 static_assert(lengthof(_cmf_info) == CMFV_END);

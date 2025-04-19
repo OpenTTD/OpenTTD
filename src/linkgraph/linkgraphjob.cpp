@@ -8,9 +8,11 @@
 /** @file linkgraphjob.cpp Definition of link graph job classes used for cargo distribution. */
 
 #include "../stdafx.h"
+
+#include "linkgraphjob.h"
+
 #include "../core/pool_func.hpp"
 #include "../window_func.h"
-#include "linkgraphjob.h"
 #include "linkgraphschedule.h"
 
 #include "../safeguards.h"
@@ -33,11 +35,9 @@ INSTANTIATE_POOL_METHODS(LinkGraphJob)
  * @param orig Original LinkGraph to be copied.
  */
 LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
-		/* Copying the link graph here also copies its index member.
+	/* Copying the link graph here also copies its index member.
 		 * This is on purpose. */
-		link_graph(orig),
-		settings(_settings_game.linkgraph),
-		join_date(TimerGameEconomy::date + (_settings_game.linkgraph.recalc_time / EconomyTime::SECONDS_PER_DAY))
+	link_graph(orig), settings(_settings_game.linkgraph), join_date(TimerGameEconomy::date + (_settings_game.linkgraph.recalc_time / EconomyTime::SECONDS_PER_DAY))
 {
 }
 
@@ -127,10 +127,8 @@ LinkGraphJob::~LinkGraphJob()
 			NodeID dest_id = edge.base.dest_node;
 			StationID to = this->nodes[dest_id].base.station;
 			Station *st2 = Station::GetIfValid(to);
-			if (st2 == nullptr || st2->goods[this->Cargo()].link_graph != this->link_graph.index ||
-					st2->goods[this->Cargo()].node != dest_id ||
-					!(*lg)[node_id].HasEdgeTo(dest_id) ||
-					(*lg)[node_id][dest_id].LastUpdate() == EconomyTime::INVALID_DATE) {
+			if (st2 == nullptr || st2->goods[this->Cargo()].link_graph != this->link_graph.index || st2->goods[this->Cargo()].node != dest_id || !(*lg)[node_id].HasEdgeTo(dest_id) ||
+				(*lg)[node_id][dest_id].LastUpdate() == EconomyTime::INVALID_DATE) {
 				/* Edge has been removed. Delete flows. */
 				StationIDStack erased = flows.DeleteFlows(to);
 				/* Delete old flows for source stations which have been deleted
@@ -157,8 +155,7 @@ LinkGraphJob::~LinkGraphJob()
 					FlowStat shares(StationID::Invalid(), 1);
 					it->second.SwapShares(shares);
 					geflows.erase(it++);
-					for (FlowStat::SharesMap::const_iterator shares_it(shares.GetShares()->begin());
-							shares_it != shares.GetShares()->end(); ++shares_it) {
+					for (FlowStat::SharesMap::const_iterator shares_it(shares.GetShares()->begin()); shares_it != shares.GetShares()->end(); ++shares_it) {
 						RerouteCargo(st, this->Cargo(), shares_it->second, st->index);
 					}
 				}
@@ -246,10 +243,6 @@ uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
  * @param source If true, this is the first leg of the path.
  */
 Path::Path(NodeID n, bool source) :
-	distance(source ? 0 : UINT_MAX),
-	capacity(source ? UINT_MAX : 0),
-	free_capacity(source ? INT_MAX : INT_MIN),
-	flow(0), node(n), origin(source ? n : INVALID_NODE),
-	num_children(0), parent(nullptr)
-{}
-
+	distance(source ? 0 : UINT_MAX), capacity(source ? UINT_MAX : 0), free_capacity(source ? INT_MAX : INT_MIN), flow(0), node(n), origin(source ? n : INVALID_NODE), num_children(0), parent(nullptr)
+{
+}

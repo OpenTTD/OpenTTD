@@ -8,9 +8,11 @@
 /** @file script_asyncmode.cpp Implementation of ScriptAsyncMode. */
 
 #include "../../stdafx.h"
+
 #include "script_asyncmode.hpp"
-#include "../script_instance.hpp"
+
 #include "../script_fatalerror.hpp"
+#include "../script_instance.hpp"
 
 #include "../../safeguards.h"
 
@@ -39,7 +41,7 @@ ScriptAsyncMode::ScriptAsyncMode(HSQUIRRELVM vm)
 		throw sq_throwerror(vm, "Argument must be a boolean");
 	}
 
-	this->last_mode     = this->GetDoCommandAsyncMode();
+	this->last_mode = this->GetDoCommandAsyncMode();
 	this->last_instance = this->GetDoCommandAsyncModeInstance();
 
 	this->SetDoCommandAsyncMode(sqasync ? &ScriptAsyncMode::AsyncModeProc : &ScriptAsyncMode::NonAsyncModeProc, this);

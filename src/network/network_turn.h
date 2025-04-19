@@ -15,8 +15,8 @@
 /** Class for handling the client side of the TURN connection. */
 class ClientNetworkTurnSocketHandler : public NetworkTurnSocketHandler {
 private:
-	std::string token;             ///< Token of this connection.
-	uint8_t tracking_number;         ///< Tracking number of this connection.
+	std::string token; ///< Token of this connection.
+	uint8_t tracking_number; ///< Tracking number of this connection.
 	std::string connection_string; ///< The connection string of the TURN server we are connecting to.
 
 protected:
@@ -25,9 +25,12 @@ protected:
 
 public:
 	std::shared_ptr<TCPConnecter> connecter{}; ///< Connecter instance.
-	bool connect_started = false;      ///< Whether we started the connection.
+	bool connect_started = false; ///< Whether we started the connection.
 
-	ClientNetworkTurnSocketHandler(std::string_view token, uint8_t tracking_number, std::string_view connection_string) : token(token), tracking_number(tracking_number), connection_string(connection_string) {}
+	ClientNetworkTurnSocketHandler(std::string_view token, uint8_t tracking_number, std::string_view connection_string) :
+		token(token), tracking_number(tracking_number), connection_string(connection_string)
+	{
+	}
 
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 	~ClientNetworkTurnSocketHandler() override;

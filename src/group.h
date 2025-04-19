@@ -10,12 +10,12 @@
 #ifndef GROUP_H
 #define GROUP_H
 
-#include "group_type.h"
 #include "core/pool_type.hpp"
 #include "company_type.h"
-#include "vehicle_type.h"
 #include "engine_type.h"
+#include "group_type.h"
 #include "livery.h"
+#include "vehicle_type.h"
 
 using GroupPool = Pool<Group, GroupID, 16>;
 extern GroupPool _group_pool; ///< Pool of groups.
@@ -84,9 +84,9 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	uint16_t number = 0; ///< Per-company group number.
 
 	Group() {}
+
 	Group(CompanyID owner, VehicleType vehicle_type) : owner(owner), vehicle_type(vehicle_type) {}
 };
-
 
 inline bool IsDefaultGroupID(GroupID index)
 {
@@ -102,7 +102,6 @@ inline bool IsAllGroupID(GroupID id_g)
 {
 	return id_g == ALL_GROUP;
 }
-
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 uint GetGroupNumVehicle(CompanyID company, GroupID id_g, VehicleType type);

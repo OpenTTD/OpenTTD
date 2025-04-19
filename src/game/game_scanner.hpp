@@ -27,12 +27,24 @@ public:
 
 protected:
 	std::string GetScriptName(ScriptInfo *info) override;
-	const char *GetFileName() const override { return PATHSEP "info.nut"; }
-	Subdirectory GetDirectory() const override { return GAME_DIR; }
-	const char *GetScannerName() const override { return "Game Scripts"; }
+
+	const char *GetFileName() const override
+	{
+		return PATHSEP "info.nut";
+	}
+
+	Subdirectory GetDirectory() const override
+	{
+		return GAME_DIR;
+	}
+
+	const char *GetScannerName() const override
+	{
+		return "Game Scripts";
+	}
+
 	void RegisterAPI(class Squirrel *engine) override;
 };
-
 
 class GameScannerLibrary : public ScriptScanner {
 public:
@@ -48,9 +60,22 @@ public:
 
 protected:
 	std::string GetScriptName(ScriptInfo *info) override;
-	const char *GetFileName() const override { return PATHSEP "library.nut"; }
-	Subdirectory GetDirectory() const override { return GAME_LIBRARY_DIR; }
-	const char *GetScannerName() const override { return "GS Libraries"; }
+
+	const char *GetFileName() const override
+	{
+		return PATHSEP "library.nut";
+	}
+
+	Subdirectory GetDirectory() const override
+	{
+		return GAME_LIBRARY_DIR;
+	}
+
+	const char *GetScannerName() const override
+	{
+		return "GS Libraries";
+	}
+
 	void RegisterAPI(class Squirrel *engine) override;
 };
 

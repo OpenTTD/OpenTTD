@@ -8,9 +8,11 @@
 /** @file script_testmode.cpp Implementation of ScriptTestMode. */
 
 #include "../../stdafx.h"
+
 #include "script_testmode.hpp"
-#include "../script_instance.hpp"
+
 #include "../script_fatalerror.hpp"
+#include "../script_instance.hpp"
 
 #include "../../safeguards.h"
 
@@ -23,7 +25,7 @@ bool ScriptTestMode::ModeProc()
 
 ScriptTestMode::ScriptTestMode()
 {
-	this->last_mode     = this->GetDoCommandMode();
+	this->last_mode = this->GetDoCommandMode();
 	this->last_instance = this->GetDoCommandModeInstance();
 	this->SetDoCommandMode(&ScriptTestMode::ModeProc, this);
 }

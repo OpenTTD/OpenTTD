@@ -8,18 +8,19 @@
 /** @file ai_core.cpp Implementation of AI. */
 
 #include "../stdafx.h"
+
 #include "../core/backup_type.hpp"
 #include "../core/bitmath_func.hpp"
 #include "../company_base.h"
 #include "../company_func.h"
+#include "../framerate_type.h"
 #include "../network/network.h"
 #include "../window_func.h"
-#include "../framerate_type.h"
-#include "ai_scanner.hpp"
-#include "ai_instance.hpp"
+#include "ai.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"
-#include "ai.hpp"
+#include "ai_instance.hpp"
+#include "ai_scanner.hpp"
 
 #include "../safeguards.h"
 
@@ -292,7 +293,7 @@
 
 /* static */ void AI::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator)
 {
-	 AI::scanner_library->GetConsoleList(output_iterator, true);
+	AI::scanner_library->GetConsoleList(output_iterator, true);
 }
 
 /* static */ const ScriptInfoList *AI::GetInfoList()
@@ -353,4 +354,3 @@
 {
 	return AI::scanner_library.get();
 }
-

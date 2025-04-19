@@ -9,14 +9,13 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/settings_sl_compat.h"
-
-#include "../settings_type.h"
-#include "../settings_table.h"
-#include "../settings_internal.h"
-#include "../network/network.h"
 #include "../fios.h"
+#include "../network/network.h"
+#include "../settings_internal.h"
+#include "../settings_table.h"
+#include "../settings_type.h"
+#include "compat/settings_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 

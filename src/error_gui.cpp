@@ -8,27 +8,27 @@
 /** @file error_gui.cpp GUI related to errors. */
 
 #include "stdafx.h"
+
 #include "core/geometry_func.hpp"
 #include "core/mem_func.hpp"
-#include "landscape.h"
-#include "newgrf_text.h"
-#include "error.h"
-#include "viewport_func.h"
-#include "gfx_func.h"
-#include "string_func.h"
 #include "company_base.h"
 #include "company_func.h"
 #include "company_manager_face.h"
-#include "strings_func.h"
-#include "zoom_func.h"
-#include "window_func.h"
 #include "console_func.h"
-#include "window_gui.h"
+#include "error.h"
+#include "gfx_func.h"
+#include "landscape.h"
+#include "newgrf_text.h"
+#include "string_func.h"
+#include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/error_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -45,12 +45,7 @@ static constexpr NWidgetPart _nested_errmsg_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _errmsg_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_ERRMSG, WC_NONE,
-	{},
-	_nested_errmsg_widgets
-);
+static WindowDesc _errmsg_desc(WDP_MANUAL, nullptr, 0, 0, WC_ERRMSG, WC_NONE, {}, _nested_errmsg_widgets);
 
 /* clang-format off */
 static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
@@ -67,12 +62,7 @@ static constexpr NWidgetPart _nested_errmsg_face_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _errmsg_face_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_ERRMSG, WC_NONE,
-	{},
-	_nested_errmsg_face_widgets
-);
+static WindowDesc _errmsg_face_desc(WDP_MANUAL, nullptr, 0, 0, WC_ERRMSG, WC_NONE, {}, _nested_errmsg_face_widgets);
 
 /**
  * Display an error message in a window.
@@ -84,12 +74,7 @@ static WindowDesc _errmsg_face_desc(
  * @param extra_msg    Extra error message showed in third line. Can be empty.
  */
 ErrorMessageData::ErrorMessageData(EncodedString &&summary_msg, EncodedString &&detailed_msg, bool is_critical, int x, int y, EncodedString &&extra_msg, CompanyID company) :
-	is_critical(is_critical),
-	summary_msg(std::move(summary_msg)),
-	detailed_msg(std::move(detailed_msg)),
-	extra_msg(std::move(extra_msg)),
-	position(x, y),
-	company(company)
+	is_critical(is_critical), summary_msg(std::move(summary_msg)), detailed_msg(std::move(detailed_msg)), extra_msg(std::move(extra_msg)), position(x, y), company(company)
 {
 	assert(!this->summary_msg.empty());
 }
@@ -109,9 +94,7 @@ private:
 
 public:
 	ErrmsgWindow(const ErrorMessageData &data) :
-		Window(data.HasFace() ? _errmsg_face_desc : _errmsg_desc),
-		ErrorMessageData(data),
-		display_timeout(std::chrono::seconds(_settings_client.gui.errmsg_duration), [this]() {
+		Window(data.HasFace() ? _errmsg_face_desc : _errmsg_desc), ErrorMessageData(data), display_timeout(std::chrono::seconds(_settings_client.gui.errmsg_duration), [this]() {
 			this->Close();
 		})
 	{
@@ -213,7 +196,7 @@ public:
 					/* Note: NewGRF supplied error message often do not start with a colour code, so default to white. */
 					Rect top_section = r.WithHeight(this->height_summary + extra, false);
 					Rect bottom_section = r.WithHeight(this->height_extra + extra, true);
-					Rect middle_section = { top_section.left, top_section.bottom, top_section.right, bottom_section.top };
+					Rect middle_section = {top_section.left, top_section.bottom, top_section.right, bottom_section.top};
 					DrawStringMultiLine(top_section, this->summary_msg.GetDecodedString(), TC_WHITE, SA_CENTER);
 					DrawStringMultiLine(middle_section, this->detailed_msg.GetDecodedString(), TC_WHITE, SA_CENTER);
 					DrawStringMultiLine(bottom_section, this->extra_msg.GetDecodedString(), TC_WHITE, SA_CENTER);
@@ -296,8 +279,7 @@ void ShowErrorMessage(EncodedString &&summary_msg, int x, int y, CommandCost &cc
 	EncodedString error = std::move(cc.GetEncodedMessage());
 	if (error.empty()) error = GetEncodedStringIfValid(cc.GetErrorMessage());
 
-	ShowErrorMessage(std::move(summary_msg), std::move(error), WL_INFO, x, y,
-		GetEncodedStringIfValid(cc.GetExtraErrorMessage()), cc.GetErrorOwner());
+	ShowErrorMessage(std::move(summary_msg), std::move(error), WL_INFO, x, y, GetEncodedStringIfValid(cc.GetExtraErrorMessage()), cc.GetErrorOwner());
 }
 
 /**
@@ -350,7 +332,6 @@ void ShowErrorMessage(EncodedString &&summary_msg, EncodedString &&detailed_msg,
 	}
 	new ErrmsgWindow(data);
 }
-
 
 /**
  * Close active error message window

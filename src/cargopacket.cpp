@@ -8,12 +8,13 @@
 /** @file cargopacket.cpp Implementation of the cargo packets. */
 
 #include "stdafx.h"
-#include "station_base.h"
+
 #include "core/pool_func.hpp"
 #include "core/random_func.hpp"
-#include "economy_base.h"
 #include "cargoaction.h"
+#include "economy_base.h"
 #include "order_type.h"
+#include "station_base.h"
 
 #include "safeguards.h"
 
@@ -24,9 +25,7 @@ INSTANTIATE_POOL_METHODS(CargoPacket)
 /**
  * Create a new packet for savegame loading.
  */
-CargoPacket::CargoPacket()
-{
-}
+CargoPacket::CargoPacket() {}
 
 /**
  * Creates a new cargo packet.
@@ -36,10 +35,7 @@ CargoPacket::CargoPacket()
  * @param source        Source of the packet (for subsidies).
  * @pre count != 0
  */
-CargoPacket::CargoPacket(StationID first_station,uint16_t count, Source source) :
-		count(count),
-		source(source),
-		first_station(first_station)
+CargoPacket::CargoPacket(StationID first_station, uint16_t count, Source source) : count(count), source(source), first_station(first_station)
 {
 	assert(count != 0);
 }
@@ -54,11 +50,7 @@ CargoPacket::CargoPacket(StationID first_station,uint16_t count, Source source) 
  * @param feeder_share       Feeder share the packet has already accumulated.
  */
 CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share) :
-		count(count),
-		periods_in_transit(periods_in_transit),
-		feeder_share(feeder_share),
-		source_xy(source_xy),
-		first_station(first_station)
+	count(count), periods_in_transit(periods_in_transit), feeder_share(feeder_share), source_xy(source_xy), first_station(first_station)
 {
 	assert(count != 0);
 }
@@ -71,17 +63,11 @@ CargoPacket::CargoPacket(uint16_t count, uint16_t periods_in_transit, StationID 
  * @param original      The original packet we are splitting.
  */
 CargoPacket::CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original) :
-		count(count),
-		periods_in_transit(original.periods_in_transit),
-		feeder_share(feeder_share),
-		source_xy(original.source_xy),
-		travelled(original.travelled),
-		source(original.source),
+	count(count), periods_in_transit(original.periods_in_transit), feeder_share(feeder_share), source_xy(original.source_xy), travelled(original.travelled), source(original.source),
 #ifdef WITH_ASSERT
-		in_vehicle(original.in_vehicle),
+	in_vehicle(original.in_vehicle),
 #endif /* WITH_ASSERT */
-		first_station(original.first_station),
-		next_hop(original.next_hop)
+	first_station(original.first_station), next_hop(original.next_hop)
 {
 	assert(count != 0);
 }
@@ -222,8 +208,7 @@ void CargoList<Tinst, Tcont>::InvalidateCache()
 template <class Tinst, class Tcont>
 /* static */ bool CargoList<Tinst, Tcont>::TryMerge(CargoPacket *icp, CargoPacket *cp)
 {
-	if (Tinst::AreMergable(icp, cp) &&
-			icp->count + cp->count <= CargoPacket::MAX_COUNT) {
+	if (Tinst::AreMergable(icp, cp) && icp->count + cp->count <= CargoPacket::MAX_COUNT) {
 		icp->Merge(cp);
 		return true;
 	} else {
@@ -255,8 +240,7 @@ template <class Tinst, class Tcont>
 void VehicleCargoList::Append(CargoPacket *cp, MoveToAction action)
 {
 	assert(cp != nullptr);
-	assert(action == MTA_LOAD ||
-			(action == MTA_KEEP && this->action_counts[MTA_LOAD] == 0));
+	assert(action == MTA_LOAD || (action == MTA_KEEP && this->action_counts[MTA_LOAD] == 0));
 	this->AddToMeta(cp, action);
 
 	if (this->count == cp->count) {
@@ -403,8 +387,7 @@ void VehicleCargoList::AgeCargo()
  * @param next_station Next station(s) the vehicle may stop at.
  * @return MoveToAction to be performed.
  */
-/* static */ VehicleCargoList::MoveToAction VehicleCargoList::ChooseAction(const CargoPacket *cp, StationID cargo_next,
-		StationID current_station, bool accepted, StationIDStack next_station)
+/* static */ VehicleCargoList::MoveToAction VehicleCargoList::ChooseAction(const CargoPacket *cp, StationID cargo_next, StationID current_station, bool accepted, StationIDStack next_station)
 {
 	if (cargo_next == StationID::Invalid()) {
 		return (accepted && cp->first_station != current_station) ? MTA_DELIVER : MTA_KEEP;
@@ -432,7 +415,8 @@ void VehicleCargoList::AgeCargo()
  * @param current_tile Current tile the cargo handling is happening on.
  * return If any cargo will be unloaded.
  */
-bool VehicleCargoList::Stage(bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile)
+bool VehicleCargoList::Stage(
+	bool accepted, StationID current_station, StationIDStack next_station, uint8_t order_flags, const GoodsEntry *ge, CargoType cargo, CargoPayment *payment, TileIndex current_tile)
 {
 	this->AssertCountConsistency();
 	assert(this->action_counts[MTA_LOAD] == 0);
@@ -687,8 +671,7 @@ void StationCargoList::Append(CargoPacket *cp, StationID next)
 	this->AddToCache(cp);
 
 	StationCargoPacketMap::List &list = this->packets[next];
-	for (StationCargoPacketMap::List::reverse_iterator it(list.rbegin());
-			it != list.rend(); it++) {
+	for (StationCargoPacketMap::List::reverse_iterator it(list.rbegin()); it != list.rend(); it++) {
 		if (StationCargoList::TryMerge(*it, cp)) return;
 	}
 

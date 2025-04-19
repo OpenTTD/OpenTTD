@@ -8,23 +8,25 @@
 /** @file fontcache.cpp Cache for characters from fonts. */
 
 #include "stdafx.h"
+
 #include "fontcache.h"
-#include "fontdetection.h"
+
 #include "blitter/factory.hpp"
-#include "gfx_layout.h"
+#include "fileio_func.h"
 #include "fontcache/spritefontcache.h"
+#include "fontdetection.h"
+#include "gfx_layout.h"
 #include "openttd.h"
 #include "settings_func.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
-#include "fileio_func.h"
 
 #include "safeguards.h"
 
 /** Default heights for the different sizes of fonts. */
-static const int _default_font_height[FS_END]   = {10, 6, 18, 10};
-static const int _default_font_ascender[FS_END] = { 8, 5, 15,  8};
+static const int _default_font_height[FS_END] = {10, 6, 18, 10};
+static const int _default_font_ascender[FS_END] = {8, 5, 15, 8};
 
 FontCacheSettings _fcsettings;
 
@@ -32,8 +34,8 @@ FontCacheSettings _fcsettings;
  * Create a new font cache.
  * @param fs The size of the font.
  */
-FontCache::FontCache(FontSize fs) : parent(FontCache::Get(fs)), fs(fs), height(_default_font_height[fs]),
-		ascender(_default_font_ascender[fs]), descender(_default_font_ascender[fs] - _default_font_height[fs])
+FontCache::FontCache(FontSize fs) :
+	parent(FontCache::Get(fs)), fs(fs), height(_default_font_height[fs]), ascender(_default_font_ascender[fs]), descender(_default_font_ascender[fs] - _default_font_height[fs])
 {
 	assert(this->parent == nullptr || this->fs == this->parent->fs);
 	FontCache::caches[this->fs] = this;
@@ -68,7 +70,6 @@ std::string FontCache::GetName(FontSize fs)
 	}
 }
 
-
 /**
  * Get height of a character for a given font size.
  * @param size Font size to get height of
@@ -78,7 +79,6 @@ int GetCharacterHeight(FontSize size)
 {
 	return FontCache::Get(size)->GetHeight();
 }
-
 
 /* static */ FontCache *FontCache::caches[FS_END];
 
@@ -174,11 +174,16 @@ uint GetFontCacheFontSize(FontSize fs)
 static std::string GetDefaultTruetypeFont(FontSize fs)
 {
 	switch (fs) {
-		case FS_NORMAL: return "OpenTTD-Sans.ttf";
-		case FS_SMALL: return "OpenTTD-Small.ttf";
-		case FS_LARGE: return "OpenTTD-Serif.ttf";
-		case FS_MONO: return "OpenTTD-Mono.ttf";
-		default: NOT_REACHED();
+		case FS_NORMAL:
+			return "OpenTTD-Sans.ttf";
+		case FS_SMALL:
+			return "OpenTTD-Small.ttf";
+		case FS_LARGE:
+			return "OpenTTD-Serif.ttf";
+		case FS_MONO:
+			return "OpenTTD-Mono.ttf";
+		default:
+			NOT_REACHED();
 	}
 }
 #endif /* defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA) */
@@ -252,5 +257,8 @@ void UninitFontCache()
 
 #if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
 
-bool SetFallbackFont(FontCacheSettings *, const std::string &, MissingGlyphSearcher *) { return false; }
+bool SetFallbackFont(FontCacheSettings *, const std::string &, MissingGlyphSearcher *)
+{
+	return false;
+}
 #endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA) */

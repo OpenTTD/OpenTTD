@@ -24,25 +24,44 @@ class InPlaceBuilder final : public BaseStringBuilder {
 	const StringConsumer &consumer;
 
 	friend class InPlaceReplacement;
+
 	explicit InPlaceBuilder(std::span<char> dest, const StringConsumer &consumer) : dest(dest), consumer(consumer) {}
+
 	InPlaceBuilder(const InPlaceBuilder &src, const StringConsumer &consumer) : dest(src.dest), position(src.position), consumer(consumer) {}
-	void AssignBuffer(const InPlaceBuilder &src) { this->dest = src.dest; this->position = src.position; }
+
+	void AssignBuffer(const InPlaceBuilder &src)
+	{
+		this->dest = src.dest;
+		this->position = src.position;
+	}
+
 public:
 	InPlaceBuilder(const InPlaceBuilder &) = delete;
-	InPlaceBuilder& operator=(const InPlaceBuilder &) = delete;
+	InPlaceBuilder &operator=(const InPlaceBuilder &) = delete;
 
 	/**
 	 * Check whether any bytes have been written.
 	 */
-	[[nodiscard]] bool AnyBytesWritten() const noexcept { return this->position != 0; }
+	[[nodiscard]] bool AnyBytesWritten() const noexcept
+	{
+		return this->position != 0;
+	}
+
 	/**
 	 * Get number of already written bytes.
 	 */
-	[[nodiscard]] size_type GetBytesWritten() const noexcept { return this->position; }
+	[[nodiscard]] size_type GetBytesWritten() const noexcept
+	{
+		return this->position;
+	}
+
 	/**
 	 * Get already written data.
 	 */
-	[[nodiscard]] std::string_view GetWrittenData() const noexcept { return {this->dest.data(), this->position}; }
+	[[nodiscard]] std::string_view GetWrittenData() const noexcept
+	{
+		return {this->dest.data(), this->position};
+	}
 
 	[[nodiscard]] bool AnyBytesUnused() const noexcept;
 	[[nodiscard]] size_type GetBytesUnused() const noexcept;
@@ -55,6 +74,7 @@ public:
 	 */
 	class back_insert_iterator {
 		InPlaceBuilder *parent = nullptr;
+
 	public:
 		using value_type = void;
 		using difference_type = void;
@@ -64,9 +84,20 @@ public:
 
 		back_insert_iterator(InPlaceBuilder &parent) : parent(&parent) {}
 
-		back_insert_iterator &operator++() { return *this; }
-		back_insert_iterator operator++(int) { return *this; }
-		back_insert_iterator &operator*() { return *this; }
+		back_insert_iterator &operator++()
+		{
+			return *this;
+		}
+
+		back_insert_iterator operator++(int)
+		{
+			return *this;
+		}
+
+		back_insert_iterator &operator*()
+		{
+			return *this;
+		}
 
 		back_insert_iterator &operator=(char value)
 		{
@@ -74,6 +105,7 @@ public:
 			return *this;
 		}
 	};
+
 	/**
 	 * Create a back-insert-iterator.
 	 */
@@ -97,7 +129,7 @@ public:
 public:
 	InPlaceReplacement(std::span<char> buffer);
 	InPlaceReplacement(const InPlaceReplacement &src);
-	InPlaceReplacement& operator=(const InPlaceReplacement &src);
+	InPlaceReplacement &operator=(const InPlaceReplacement &src);
 };
 
 #endif /* STRING_INPLACE_HPP */

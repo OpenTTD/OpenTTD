@@ -10,14 +10,6 @@
  */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
-#include "../../fileio_func.h"
-#include "../../rev.h"
-#include "../../thread.h"
-#include "../network_internal.h"
-
-#include "http.h"
-#include "http_shared.h"
 
 #include <atomic>
 #include <condition_variable>
@@ -25,23 +17,31 @@
 #include <mutex>
 #include <queue>
 
+#include "../../debug.h"
+#include "../../fileio_func.h"
+#include "../../rev.h"
+#include "../../thread.h"
+#include "../network_internal.h"
+#include "http.h"
+#include "http_shared.h"
+
 #include "../../safeguards.h"
 
 #if defined(UNIX)
 /** List of certificate bundles, depending on OS. Taken from: https://go.dev/src/crypto/x509/root_linux.go. */
 static auto _certificate_files = {
-	"/etc/ssl/certs/ca-certificates.crt",                // Debian/Ubuntu/Gentoo etc.
-	"/etc/pki/tls/certs/ca-bundle.crt",                  // Fedora/RHEL 6
-	"/etc/ssl/ca-bundle.pem",                            // OpenSUSE
-	"/etc/pki/tls/cacert.pem",                           // OpenELEC
+	"/etc/ssl/certs/ca-certificates.crt", // Debian/Ubuntu/Gentoo etc.
+	"/etc/pki/tls/certs/ca-bundle.crt", // Fedora/RHEL 6
+	"/etc/ssl/ca-bundle.pem", // OpenSUSE
+	"/etc/pki/tls/cacert.pem", // OpenELEC
 	"/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem", // CentOS/RHEL 7
-	"/etc/ssl/cert.pem",                                 // Alpine Linux
+	"/etc/ssl/cert.pem", // Alpine Linux
 };
 /** List of certificate directories, depending on OS. Taken from: https://go.dev/src/crypto/x509/root_linux.go. */
 static auto _certificate_directories = {
-	"/etc/ssl/certs",                                    // SLES10/SLES11, https://golang.org/issue/12139
-	"/etc/pki/tls/certs",                                // Fedora/RHEL
-	"/system/etc/security/cacerts",                      // Android
+	"/etc/ssl/certs", // SLES10/SLES11, https://golang.org/issue/12139
+	"/etc/pki/tls/certs", // Fedora/RHEL
+	"/system/etc/security/cacerts", // Android
 };
 #endif /* UNIX */
 
@@ -60,10 +60,7 @@ public:
 	 * @param callback the callback to send data back on.
 	 * @param data     the data we want to send. When non-empty, this will be a POST request, otherwise a GET request.
 	 */
-	NetworkHTTPRequest(const std::string &uri, HTTPCallback *callback, const std::string &data) :
-		uri(uri),
-		callback(callback),
-		data(data)
+	NetworkHTTPRequest(const std::string &uri, HTTPCallback *callback, const std::string &data) : uri(uri), callback(callback), data(data)
 	{
 		std::lock_guard<std::mutex> lock(_new_http_callback_mutex);
 		_new_http_callbacks.push_back(&this->callback);
@@ -197,17 +194,18 @@ void HttpThread()
 		CurlSetOption(curl, CURLOPT_URL, request->uri.c_str());
 
 		/* Setup our (C-style) callback function which we pipe back into the callback. */
-		CurlSetOption(curl, CURLOPT_WRITEFUNCTION, +[](char *ptr, size_t size, size_t nmemb, void *userdata) -> size_t {
-			Debug(net, 6, "HTTP callback: {} bytes", size * nmemb);
-			HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
+		CurlSetOption(
+			curl, CURLOPT_WRITEFUNCTION, +[](char *ptr, size_t size, size_t nmemb, void *userdata) -> size_t {
+				Debug(net, 6, "HTTP callback: {} bytes", size * nmemb);
+				HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
 
-			/* Copy the buffer out of CURL. OnReceiveData() will free it when done. */
-			std::unique_ptr<char[]> buffer = std::make_unique<char[]>(size * nmemb);
-			memcpy(buffer.get(), ptr, size * nmemb);
-			callback->OnReceiveData(std::move(buffer), size * nmemb);
+				/* Copy the buffer out of CURL. OnReceiveData() will free it when done. */
+				std::unique_ptr<char[]> buffer = std::make_unique<char[]>(size * nmemb);
+				memcpy(buffer.get(), ptr, size * nmemb);
+				callback->OnReceiveData(std::move(buffer), size * nmemb);
 
-			return size * nmemb;
-		});
+				return size * nmemb;
+			});
 		CurlSetOption(curl, CURLOPT_WRITEDATA, &request->callback);
 
 		/* Create a callback from which we can cancel. Sadly, there is no other
@@ -215,10 +213,11 @@ void HttpThread()
 		 * up to a second before this callback is called. There is little we can
 		 * do about this. */
 		CurlSetOption(curl, CURLOPT_NOPROGRESS, 0L);
-		CurlSetOption(curl, CURLOPT_XFERINFOFUNCTION, +[](void *userdata, curl_off_t /*dltotal*/, curl_off_t /*dlnow*/, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) -> int {
-			const HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
-			return (callback->cancelled || _http_thread_exit) ? 1 : 0;
-		});
+		CurlSetOption(
+			curl, CURLOPT_XFERINFOFUNCTION, +[](void *userdata, curl_off_t /*dltotal*/, curl_off_t /*dlnow*/, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) -> int {
+				const HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
+				return (callback->cancelled || _http_thread_exit) ? 1 : 0;
+			});
 		CurlSetOption(curl, CURLOPT_XFERINFODATA, &request->callback);
 
 		/* Perform the request. */
@@ -234,7 +233,8 @@ void HttpThread()
 			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status_code);
 
 			/* No need to be verbose about rate limiting. */
-			Debug(net, (request->callback.cancelled || _http_thread_exit || status_code == HTTP_429_TOO_MANY_REQUESTS) ? 1 : 0, "HTTP request failed: status_code: {}, error: {}", status_code, curl_easy_strerror(res));
+			Debug(net, (request->callback.cancelled || _http_thread_exit || status_code == HTTP_429_TOO_MANY_REQUESTS) ? 1 : 0, "HTTP request failed: status_code: {}, error: {}", status_code,
+				curl_easy_strerror(res));
 			request->callback.OnFailure();
 		}
 

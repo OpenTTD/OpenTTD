@@ -11,11 +11,11 @@
 #define VIEWPORT_FUNC_H
 
 #include "gfx_type.h"
+#include "station_type.h"
+#include "tile_map.h"
+#include "vehicle_type.h"
 #include "viewport_type.h"
 #include "window_type.h"
-#include "tile_map.h"
-#include "station_type.h"
-#include "vehicle_type.h"
 
 static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference is displayed as 50m.
 
@@ -30,9 +30,9 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms);
 bool MarkAllViewportsDirty(int left, int top, int right, int bottom);
 
 bool DoZoomInOutWindow(ZoomStateChange how, Window *w);
-void ZoomInOrOutToCursorWindow(bool in, Window * w);
+void ZoomInOrOutToCursorWindow(bool in, Window *w);
 void ConstrainAllViewportsZoom();
-Point GetTileZoomCenterWindow(bool in, Window * w);
+Point GetTileZoomCenterWindow(bool in, Window *w);
 void FixTitleGameZoom(int zoom_adjust = 0);
 void HandleZoomMessage(Window *w, const Viewport &vp, WidgetID widget_zoom_in, WidgetID widget_zoom_out);
 
@@ -51,10 +51,10 @@ void OffsetGroundSprite(int x, int y);
 
 void DrawGroundSprite(SpriteID image, PaletteID pal, const SubSprite *sub = nullptr, int extra_offs_x = 0, int extra_offs_y = 0);
 void DrawGroundSpriteAt(SpriteID image, PaletteID pal, int32_t x, int32_t y, int z, const SubSprite *sub = nullptr, int extra_offs_x = 0, int extra_offs_y = 0);
-void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w, int h, int dz, int z, bool transparent = false, int bb_offset_x = 0, int bb_offset_y = 0, int bb_offset_z = 0, const SubSprite *sub = nullptr);
+void AddSortableSpriteToDraw(
+	SpriteID image, PaletteID pal, int x, int y, int w, int h, int dz, int z, bool transparent = false, int bb_offset_x = 0, int bb_offset_y = 0, int bb_offset_z = 0, const SubSprite *sub = nullptr);
 void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool transparent = false, const SubSprite *sub = nullptr, bool scale = true, bool relative = true);
 std::string *ViewportAddString(const DrawPixelInfo *dpi, const ViewportSign *sign, ViewportStringFlags flags, Colours colour);
-
 
 void StartSpriteCombine();
 void EndSpriteCombine();

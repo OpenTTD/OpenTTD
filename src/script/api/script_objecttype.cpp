@@ -11,10 +11,10 @@
 
 #include "script_objecttype.hpp"
 
-#include "script_error.hpp"
-#include "script_map.hpp"
 #include "../../object_cmd.h"
 #include "../../strings_func.h"
+#include "script_error.hpp"
+#include "script_map.hpp"
 
 #include "../../safeguards.h"
 

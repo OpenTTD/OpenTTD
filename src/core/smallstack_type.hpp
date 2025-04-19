@@ -24,7 +24,10 @@ public:
 	 * Get the item at position index.
 	 * @return Item at index.
 	 */
-	inline Titem &Get(Tindex index) { return this->data[index]; }
+	inline Titem &Get(Tindex index)
+	{
+		return this->data[index];
+	}
 
 	/**
 	 * Create a new item and return its index.
@@ -52,7 +55,6 @@ public:
 	}
 
 private:
-
 	inline Tindex FindFirstFree()
 	{
 		Tindex index = this->first_free;
@@ -90,8 +92,8 @@ struct SmallStackItem {
 	 * @param value Value of the item.
 	 * @param next Next item in the stack.
 	 */
-	inline SmallStackItem(const Titem &value, Tindex next) :
-		next(next), value(value) {}
+	inline SmallStackItem(const Titem &value, Tindex next) : next(next), value(value) {}
+
 	SmallStackItem() = default;
 };
 
@@ -120,7 +122,6 @@ struct SmallStackItem {
 template <typename Titem, typename Tindex, Titem Tinvalid, Tindex Tgrowth_step, Tindex Tmax_size>
 class SmallStack : public SmallStackItem<Titem, Tindex> {
 public:
-
 	typedef SmallStackItem<Titem, Tindex> Item;
 
 	/**
@@ -150,7 +151,10 @@ public:
 	 * Shallow copy the stack, marking the first item as branched.
 	 * @param other Stack to copy from
 	 */
-	inline SmallStack(const SmallStack &other) : Item(other) { this->Branch(); }
+	inline SmallStack(const SmallStack &other) : Item(other)
+	{
+		this->Branch();
+	}
 
 	/**
 	 * Shallow copy the stack, marking the first item as branched.
@@ -236,8 +240,7 @@ public:
 		if (this->next != Tmax_size) {
 			const SmallStack *in_list = this;
 			do {
-				in_list = static_cast<const SmallStack *>(
-						static_cast<const Item *>(&SmallStack::GetPool().Get(in_list->next)));
+				in_list = static_cast<const SmallStack *>(static_cast<const Item *>(&SmallStack::GetPool().Get(in_list->next)));
 				if (in_list->value == item) return true;
 			} while (in_list->next != Tmax_size);
 		}

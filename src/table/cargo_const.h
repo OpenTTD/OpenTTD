@@ -9,7 +9,7 @@
 
 #include "../table/sprites.h"
 #ifndef CHECK_UNUSED_STRINGS
-#include "table/strings.h"
+#	include "table/strings.h"
 #endif
 
 /* clang-format off */

@@ -8,15 +8,17 @@
 /** @file depot_cmd.cpp %Command Handling for depots. */
 
 #include "stdafx.h"
+
+#include "depot_cmd.h"
+
 #include "command_func.h"
-#include "depot_base.h"
 #include "company_func.h"
+#include "depot_base.h"
 #include "string_func.h"
 #include "town.h"
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
 #include "window_func.h"
-#include "depot_cmd.h"
 
 #include "table/strings.h"
 

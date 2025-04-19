@@ -8,21 +8,24 @@
 /** @file extmidi.cpp Playing music via an external player. */
 
 #include "../stdafx.h"
-#include "../debug.h"
-#include "../string_func.h"
-#include "../sound/sound_driver.hpp"
-#include "../video/video_driver.hpp"
-#include "../gfx_func.h"
+
 #include "extmidi.h"
-#include "../base_media_base.h"
-#include "../thread.h"
-#include "midifile.hpp"
+
 #include <fcntl.h>
+#include <signal.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <signal.h>
-#include <sys/stat.h>
+
+#include "../base_media_base.h"
+#include "../debug.h"
+#include "../gfx_func.h"
+#include "../sound/sound_driver.hpp"
+#include "../string_func.h"
+#include "../thread.h"
+#include "../video/video_driver.hpp"
+#include "midifile.hpp"
 
 #include "table/strings.h"
 
@@ -30,7 +33,7 @@
 
 #ifndef EXTERNAL_PLAYER
 /** The default external midi player. */
-#define EXTERNAL_PLAYER "timidity"
+#	define EXTERNAL_PLAYER "timidity"
 #endif
 
 /** Factory for the midi player that uses external players. */
@@ -38,8 +41,7 @@ static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
 std::optional<std::string_view> MusicDriver_ExtMidi::Start(const StringList &parm)
 {
-	if (VideoDriver::GetInstance()->GetName() == "allegro" ||
-			SoundDriver::GetInstance()->GetName() == "allegro") {
+	if (VideoDriver::GetInstance()->GetName() == "allegro" || SoundDriver::GetInstance()->GetName() == "allegro") {
 		return "the extmidi driver does not work when Allegro is loaded.";
 	}
 

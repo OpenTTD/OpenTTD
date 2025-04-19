@@ -8,11 +8,12 @@
 /** @file survey_unix.cpp Unix implementation of OS-specific survey information. */
 
 #include "../../stdafx.h"
-#include "../../survey.h"
 
 #include <sys/utsname.h>
 #include <thread>
 #include <unistd.h>
+
+#include "../../survey.h"
 
 #include "../../safeguards.h"
 

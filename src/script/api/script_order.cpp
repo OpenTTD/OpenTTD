@@ -8,17 +8,19 @@
 /** @file script_order.cpp Implementation of ScriptOrder. */
 
 #include "../../stdafx.h"
+
 #include "script_order.hpp"
+
+#include "../../debug.h"
+#include "../../depot_base.h"
+#include "../../order_cmd.h"
+#include "../../roadstop_base.h"
+#include "../../station_base.h"
+#include "../../vehicle_base.h"
+#include "../../waypoint_base.h"
+#include "../script_instance.hpp"
 #include "script_cargo.hpp"
 #include "script_map.hpp"
-#include "../script_instance.hpp"
-#include "../../debug.h"
-#include "../../vehicle_base.h"
-#include "../../roadstop_base.h"
-#include "../../depot_base.h"
-#include "../../station_base.h"
-#include "../../waypoint_base.h"
-#include "../../order_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -32,14 +34,19 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	if (!::IsValidTile(t)) return OT_END;
 
 	switch (::GetTileType(t)) {
-		default: break;
+		default:
+			break;
 		case MP_STATION:
 			if (IsBuoy(t) || IsRailWaypoint(t)) return OT_GOTO_WAYPOINT;
 			if (IsHangar(t)) return OT_GOTO_DEPOT;
 			return OT_GOTO_STATION;
 
-		case MP_WATER:   if (::IsShipDepot(t)) return OT_GOTO_DEPOT; break;
-		case MP_ROAD:    if (::GetRoadTileType(t) == ROAD_TILE_DEPOT) return OT_GOTO_DEPOT; break;
+		case MP_WATER:
+			if (::IsShipDepot(t)) return OT_GOTO_DEPOT;
+			break;
+		case MP_ROAD:
+			if (::GetRoadTileType(t) == ROAD_TILE_DEPOT) return OT_GOTO_DEPOT;
+			break;
 		case MP_RAILWAY:
 			if (IsRailDepot(t)) return OT_GOTO_DEPOT;
 			break;
@@ -199,26 +206,25 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 	return (order_position >= 0 && order_position < num_manual_orders) ? order_position : ORDER_INVALID;
 }
 
-
 /* static */ bool ScriptOrder::AreOrderFlagsValid(TileIndex destination, ScriptOrderFlags order_flags)
 {
 	OrderType ot = (order_flags & OF_GOTO_NEAREST_DEPOT) ? OT_GOTO_DEPOT : ::GetOrderTypeByTile(destination);
 	switch (ot) {
 		case OT_GOTO_STATION:
 			return (order_flags & ~(OF_NON_STOP_FLAGS | OF_UNLOAD_FLAGS | OF_LOAD_FLAGS)) == 0 &&
-					/* Test the different mutual exclusive flags. */
-					HasAtMostOneBit(order_flags & (OF_TRANSFER | OF_UNLOAD | OF_NO_UNLOAD)) &&
-					HasAtMostOneBit(order_flags & (OF_NO_UNLOAD | OF_NO_LOAD)) &&
-					HasAtMostOneBit(order_flags & (OF_FULL_LOAD | OF_NO_LOAD)) &&
-					/* "Full load any" is "Full load" plus a bit. On its own that bit is invalid. */
-					((order_flags & OF_FULL_LOAD_ANY) != (OF_FULL_LOAD_ANY & ~OF_FULL_LOAD));
+				/* Test the different mutual exclusive flags. */
+				HasAtMostOneBit(order_flags & (OF_TRANSFER | OF_UNLOAD | OF_NO_UNLOAD)) && HasAtMostOneBit(order_flags & (OF_NO_UNLOAD | OF_NO_LOAD)) &&
+				HasAtMostOneBit(order_flags & (OF_FULL_LOAD | OF_NO_LOAD)) &&
+				/* "Full load any" is "Full load" plus a bit. On its own that bit is invalid. */
+				((order_flags & OF_FULL_LOAD_ANY) != (OF_FULL_LOAD_ANY & ~OF_FULL_LOAD));
 
 		case OT_GOTO_DEPOT:
-			return (order_flags & ~(OF_NON_STOP_FLAGS | OF_DEPOT_FLAGS)) == 0 &&
-					((order_flags & OF_SERVICE_IF_NEEDED) == 0 || (order_flags & OF_STOP_IN_DEPOT) == 0);
+			return (order_flags & ~(OF_NON_STOP_FLAGS | OF_DEPOT_FLAGS)) == 0 && ((order_flags & OF_SERVICE_IF_NEEDED) == 0 || (order_flags & OF_STOP_IN_DEPOT) == 0);
 
-		case OT_GOTO_WAYPOINT: return (order_flags & ~(OF_NON_STOP_FLAGS)) == 0;
-		default:               return false;
+		case OT_GOTO_WAYPOINT:
+			return (order_flags & ~(OF_NON_STOP_FLAGS)) == 0;
+		default:
+			return false;
 	}
 }
 
@@ -239,7 +245,8 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 		case OC_UNCONDITIONALLY:
 			return true;
 
-		default: return false;
+		default:
+			return false;
 	}
 }
 
@@ -300,7 +307,8 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			/* If the waypoint has no rail waypoint tiles, it must have a buoy */
 			return wp->xy;
 		}
-		default:               return INVALID_TILE;
+		default:
+			return INVALID_TILE;
 	}
 }
 
@@ -321,11 +329,12 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			break;
 
 		case OT_GOTO_STATION:
-			order_flags |= (ScriptOrderFlags)(order->GetLoadType()   << 5);
+			order_flags |= (ScriptOrderFlags)(order->GetLoadType() << 5);
 			order_flags |= (ScriptOrderFlags)(order->GetUnloadType() << 2);
 			break;
 
-		default: break;
+		default:
+			break;
 	}
 
 	return order_flags;
@@ -635,7 +644,8 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 			}
 			break;
 
-		default: break;
+		default:
+			break;
 	}
 
 	assert(GetOrderFlags(vehicle_id, order_position) == order_flags);
@@ -656,7 +666,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 
 /* static */ bool ScriptOrder::MoveOrder(VehicleID vehicle_id, OrderPosition order_position_move, OrderPosition order_position_target)
 {
-	order_position_move   = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position_move);
+	order_position_move = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position_move);
 	order_position_target = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position_target);
 
 	EnforceCompanyModeValid(false);

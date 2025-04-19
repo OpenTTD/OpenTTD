@@ -10,9 +10,9 @@
 #ifndef SCRIPT_TILELIST_HPP
 #define SCRIPT_TILELIST_HPP
 
-#include "script_station.hpp"
-#include "script_list.hpp"
 #include "../../industry_type.h"
+#include "script_list.hpp"
+#include "script_station.hpp"
 
 /**
  * Creates an empty list, in which you can add tiles.
@@ -22,6 +22,7 @@
 class ScriptTileList : public ScriptList {
 protected:
 	virtual bool SaveObject(HSQUIRRELVM) override;
+
 public:
 	/**
 	 * Adds the rectangle between tile_from and tile_to to the to-be-evaluated tiles.

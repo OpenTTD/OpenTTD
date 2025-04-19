@@ -10,13 +10,14 @@
 #ifndef LINKGRAPH_H
 #define LINKGRAPH_H
 
-#include "../core/pool_type.hpp"
-#include "../station_base.h"
-#include "../cargotype.h"
-#include "../timer/timer_game_economy.h"
-#include "../saveload/saveload.h"
-#include "linkgraph_type.h"
 #include <utility>
+
+#include "../core/pool_type.hpp"
+#include "../cargotype.h"
+#include "../saveload/saveload.h"
+#include "../station_base.h"
+#include "../timer/timer_game_economy.h"
+#include "linkgraph_type.h"
 
 class LinkGraph;
 
@@ -53,30 +54,44 @@ public:
 		 * Get edge's average travel time.
 		 * @return Travel time, in ticks.
 		 */
-		uint32_t TravelTime() const { return this->travel_time_sum / this->capacity; }
+		uint32_t TravelTime() const
+		{
+			return this->travel_time_sum / this->capacity;
+		}
 
 		/**
 		 * Get the date of the last update to any part of the edge's capacity.
 		 * @return Last update.
 		 */
-		TimerGameEconomy::Date LastUpdate() const { return std::max(this->last_unrestricted_update, this->last_restricted_update); }
+		TimerGameEconomy::Date LastUpdate() const
+		{
+			return std::max(this->last_unrestricted_update, this->last_restricted_update);
+		}
 
 		void Update(uint capacity, uint usage, uint32_t time, EdgeUpdateModes modes);
-		void Restrict() { this->last_unrestricted_update = EconomyTime::INVALID_DATE; }
-		void Release() { this->last_restricted_update = EconomyTime::INVALID_DATE; }
+
+		void Restrict()
+		{
+			this->last_unrestricted_update = EconomyTime::INVALID_DATE;
+		}
+
+		void Release()
+		{
+			this->last_restricted_update = EconomyTime::INVALID_DATE;
+		}
 
 		/** Comparison operator based on \c dest_node. */
-		bool operator <(const BaseEdge &rhs) const
+		bool operator<(const BaseEdge &rhs) const
 		{
 			return this->dest_node < rhs.dest_node;
 		}
 
-		bool operator <(NodeID rhs) const
+		bool operator<(NodeID rhs) const
 		{
 			return this->dest_node < rhs;
 		}
 
-		friend inline bool operator <(NodeID lhs, const LinkGraph::BaseEdge &rhs)
+		friend inline bool operator<(NodeID lhs, const LinkGraph::BaseEdge &rhs)
 		{
 			return lhs < rhs.dest_node;
 		}
@@ -183,13 +198,14 @@ public:
 	 * @param orig_age Age of the original link graph.
 	 * @return scaled value.
 	 */
-	inline static uint Scale(uint val, TimerGameEconomy::Date target_age, TimerGameEconomy::Date orig_age)
+	static inline uint Scale(uint val, TimerGameEconomy::Date target_age, TimerGameEconomy::Date orig_age)
 	{
 		return val > 0 ? std::max(1U, val * target_age.base() / orig_age.base()) : 0;
 	}
 
 	/** Bare constructor, only for save/load. */
 	LinkGraph() {}
+
 	/**
 	 * Real constructor.
 	 * @param cargo Cargo the link graph is about.
@@ -214,32 +230,47 @@ public:
 	 * @param num ID of the node.
 	 * @return the Requested node.
 	 */
-	inline BaseNode &operator[](NodeID num) { return this->nodes[num]; }
+	inline BaseNode &operator[](NodeID num)
+	{
+		return this->nodes[num];
+	}
 
 	/**
 	 * Get a const reference to a node with the specified id.
 	 * @param num ID of the node.
 	 * @return the Requested node.
 	 */
-	inline const BaseNode &operator[](NodeID num) const { return this->nodes[num]; }
+	inline const BaseNode &operator[](NodeID num) const
+	{
+		return this->nodes[num];
+	}
 
 	/**
 	 * Get the current size of the component.
 	 * @return Size.
 	 */
-	inline NodeID Size() const { return (NodeID)this->nodes.size(); }
+	inline NodeID Size() const
+	{
+		return (NodeID)this->nodes.size();
+	}
 
 	/**
 	 * Get date of last compression.
 	 * @return Date of last compression.
 	 */
-	inline TimerGameEconomy::Date LastCompression() const { return this->last_compression; }
+	inline TimerGameEconomy::Date LastCompression() const
+	{
+		return this->last_compression;
+	}
 
 	/**
 	 * Get the cargo type this component's link graph refers to.
 	 * @return Cargo type.
 	 */
-	inline CargoType Cargo() const { return this->cargo; }
+	inline CargoType Cargo() const
+	{
+		return this->cargo;
+	}
 
 	/**
 	 * Scale a value to its monthly equivalent, based on last compression.

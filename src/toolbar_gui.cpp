@@ -8,70 +8,68 @@
 /** @file toolbar_gui.cpp Code related to the (main) toolbar. */
 
 #include "stdafx.h"
-#include "gui.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "viewport_func.h"
+
+#include "toolbar_gui.h"
+
+#include "ai/ai_gui.hpp"
+#include "cheat_func.h"
 #include "command_func.h"
-#include "dropdown_type.h"
+#include "company_func.h"
+#include "company_gui.h"
+#include "console_gui.h"
+#include "dropdown_common_type.h"
 #include "dropdown_func.h"
+#include "dropdown_type.h"
+#include "engine_base.h"
+#include "fios.h"
+#include "framerate_type.h"
+#include "game/game.hpp"
+#include "game/game_gui.hpp"
+#include "goal_base.h"
+#include "graph_gui.h"
+#include "gui.h"
+#include "help_gui.h"
+#include "highscore.h"
+#include "hotkeys.h"
 #include "house.h"
-#include "vehicle_gui.h"
+#include "league_base.h"
+#include "league_gui.h"
+#include "linkgraph/linkgraph_gui.h"
+#include "misc_cmd.h"
+#include "network/network.h"
+#include "network/network_func.h"
+#include "network/network_gui.h"
+#include "newgrf_debug.h"
+#include "news_gui.h"
 #include "rail_gui.h"
 #include "road.h"
 #include "road_gui.h"
-#include "vehicle_func.h"
-#include "sound_func.h"
-#include "terraform_gui.h"
-#include "strings_func.h"
-#include "company_func.h"
-#include "company_gui.h"
-#include "vehicle_base.h"
-#include "cheat_func.h"
-#include "transparency_gui.h"
 #include "screenshot.h"
-#include "signs_func.h"
-#include "fios.h"
-#include "console_gui.h"
-#include "news_gui.h"
-#include "ai/ai_gui.hpp"
-#include "game/game_gui.hpp"
-#include "script/script_gui.h"
-#include "tilehighlight_func.h"
-#include "smallmap_gui.h"
-#include "graph_gui.h"
-#include "textbuf_gui.h"
-#include "linkgraph/linkgraph_gui.h"
-#include "newgrf_debug.h"
-#include "hotkeys.h"
-#include "engine_base.h"
-#include "highscore.h"
-#include "game/game.hpp"
-#include "goal_base.h"
-#include "story_base.h"
-#include "toolbar_gui.h"
-#include "framerate_type.h"
 #include "screenshot_gui.h"
-#include "misc_cmd.h"
-#include "league_gui.h"
-#include "league_base.h"
+#include "script/script_gui.h"
+#include "signs_func.h"
+#include "smallmap_gui.h"
+#include "sound_func.h"
+#include "story_base.h"
+#include "strings_func.h"
+#include "terraform_gui.h"
+#include "textbuf_gui.h"
+#include "tilehighlight_func.h"
 #include "timer/timer.h"
-#include "timer/timer_window.h"
 #include "timer/timer_game_calendar.h"
-#include "help_gui.h"
+#include "timer/timer_window.h"
+#include "transparency_gui.h"
+#include "vehicle_base.h"
+#include "vehicle_func.h"
+#include "vehicle_gui.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
 
 #include "widgets/toolbar_widget.h"
-
-#include "network/network.h"
-#include "network/network_gui.h"
-#include "network/network_func.h"
-
 #include "table/strings.h"
 
-#include "dropdown_common_type.h"
-
 #include "safeguards.h"
-
 
 /** Width of the toolbar, shared by statusbar. */
 uint _toolbar_width = 0;
@@ -101,7 +99,9 @@ static CallBackFunction _last_started_action = CBF_NONE; ///< Last started user 
  */
 class DropDownListCompanyItem : public DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>> {
 public:
-	DropDownListCompanyItem(CompanyID company, bool shaded) : DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>>(SPR_COMPANY_ICON, GetCompanyPalette(company), NetworkCanJoinCompany(company) ? SPR_EMPTY : SPR_LOCK, PAL_NONE, GetString(STR_COMPANY_NAME_COMPANY_NUM, company, company), company.base(), false, shaded)
+	DropDownListCompanyItem(CompanyID company, bool shaded) :
+		DropDownIcon<DropDownIcon<DropDownString<DropDownListItem>, true>>(SPR_COMPANY_ICON, GetCompanyPalette(company), NetworkCanJoinCompany(company) ? SPR_EMPTY : SPR_LOCK, PAL_NONE,
+			GetString(STR_COMPANY_NAME_COMPANY_NUM, company, company), company.base(), false, shaded)
 	{
 	}
 };
@@ -142,8 +142,8 @@ static void PopupMainToolbarMenu(Window *w, WidgetID widget, const std::initiali
 
 /** Enum for the Company Toolbar's network related buttons */
 static const int CTMN_CLIENT_LIST = -1; ///< Show the client list
-static const int CTMN_SPECTATE    = -2; ///< Become spectator
-static const int CTMN_SPECTATOR   = -3; ///< Show a company window as spectator
+static const int CTMN_SPECTATE = -2; ///< Become spectator
+static const int CTMN_SPECTATOR = -3; ///< Show a company window as spectator
 
 /**
  * Pop up a generic company list menu.
@@ -260,20 +260,20 @@ enum OptionMenuEntries : uint8_t {
 static CallBackFunction ToolbarOptionsClick(Window *w)
 {
 	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS,             OME_GAMEOPTIONS));
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE,     OME_SETTINGS));
+	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS, OME_GAMEOPTIONS));
+	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE, OME_SETTINGS));
 	/* Changes to the per-AI settings don't get send from the server to the clients. Clients get
 	 * the settings once they join but never update it. As such don't show the window at all
 	 * to network clients. */
 	if (!_networking || _network_server) {
-		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_AI_SETTINGS,          OME_AI_SETTINGS));
-		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS,  OME_GAMESCRIPT_SETTINGS));
+		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_AI_SETTINGS, OME_AI_SETTINGS));
+		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS, OME_GAMESCRIPT_SETTINGS));
 	}
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS));
+	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_NEWGRF_SETTINGS, OME_NEWGRFSETTINGS));
 	if (_game_mode != GM_EDITOR && !_networking) {
-		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_SANDBOX_OPTIONS,      OME_SANDBOX));
+		list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_SANDBOX_OPTIONS, OME_SANDBOX));
 	}
-	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES));
+	list.push_back(MakeDropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS, OME_TRANSPARENCIES));
 	list.push_back(MakeDropDownListDividerItem());
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_TOWN_NAMES), STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED, OME_SHOW_TOWNNAMES));
 	list.push_back(MakeDropDownListCheckedItem(HasBit(_display_opt, DO_SHOW_STATION_NAMES), STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES));
@@ -305,32 +305,75 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 static CallBackFunction MenuClickSettings(int index)
 {
 	switch (index) {
-		case OME_GAMEOPTIONS:          ShowGameOptions();                               return CBF_NONE;
-		case OME_SETTINGS:             ShowGameSettings();                              return CBF_NONE;
-		case OME_AI_SETTINGS:          ShowAIConfigWindow();                            return CBF_NONE;
-		case OME_GAMESCRIPT_SETTINGS:  ShowGSConfigWindow();                            return CBF_NONE;
-		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, _grfconfig); return CBF_NONE;
-		case OME_SANDBOX:              ShowCheatWindow();                               break;
-		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                       break;
+		case OME_GAMEOPTIONS:
+			ShowGameOptions();
+			return CBF_NONE;
+		case OME_SETTINGS:
+			ShowGameSettings();
+			return CBF_NONE;
+		case OME_AI_SETTINGS:
+			ShowAIConfigWindow();
+			return CBF_NONE;
+		case OME_GAMESCRIPT_SETTINGS:
+			ShowGSConfigWindow();
+			return CBF_NONE;
+		case OME_NEWGRFSETTINGS:
+			ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, _grfconfig);
+			return CBF_NONE;
+		case OME_SANDBOX:
+			ShowCheatWindow();
+			break;
+		case OME_TRANSPARENCIES:
+			ShowTransparencyToolbar();
+			break;
 
-		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);     break;
-		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES);  break;
-		case OME_SHOW_STATIONNAMES_TRAIN: _facility_display_opt.Flip(StationFacility::Train); break;
-		case OME_SHOW_STATIONNAMES_LORRY: _facility_display_opt.Flip(StationFacility::TruckStop); break;
-		case OME_SHOW_STATIONNAMES_BUS: _facility_display_opt.Flip(StationFacility::BusStop); break;
-		case OME_SHOW_STATIONNAMES_SHIP: _facility_display_opt.Flip(StationFacility::Dock); break;
-		case OME_SHOW_STATIONNAMES_PLANE: _facility_display_opt.Flip(StationFacility::Airport); break;
-		case OME_SHOW_STATIONNAMES_GHOST: _facility_display_opt.Flip(STATION_FACILITY_GHOST); break;
-		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES); break;
-		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);          break;
+		case OME_SHOW_TOWNNAMES:
+			ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);
+			break;
+		case OME_SHOW_STATIONNAMES:
+			ToggleBit(_display_opt, DO_SHOW_STATION_NAMES);
+			break;
+		case OME_SHOW_STATIONNAMES_TRAIN:
+			_facility_display_opt.Flip(StationFacility::Train);
+			break;
+		case OME_SHOW_STATIONNAMES_LORRY:
+			_facility_display_opt.Flip(StationFacility::TruckStop);
+			break;
+		case OME_SHOW_STATIONNAMES_BUS:
+			_facility_display_opt.Flip(StationFacility::BusStop);
+			break;
+		case OME_SHOW_STATIONNAMES_SHIP:
+			_facility_display_opt.Flip(StationFacility::Dock);
+			break;
+		case OME_SHOW_STATIONNAMES_PLANE:
+			_facility_display_opt.Flip(StationFacility::Airport);
+			break;
+		case OME_SHOW_STATIONNAMES_GHOST:
+			_facility_display_opt.Flip(STATION_FACILITY_GHOST);
+			break;
+		case OME_SHOW_WAYPOINTNAMES:
+			ToggleBit(_display_opt, DO_SHOW_WAYPOINT_NAMES);
+			break;
+		case OME_SHOW_SIGNS:
+			ToggleBit(_display_opt, DO_SHOW_SIGNS);
+			break;
 		case OME_SHOW_COMPETITOR_SIGNS:
 			ToggleBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS);
 			InvalidateWindowClassesData(WC_SIGN_LIST, -1);
 			break;
-		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION); CheckBlitter(); break;
-		case OME_FULL_DETAILS:         ToggleBit(_display_opt, DO_FULL_DETAIL);         break;
-		case OME_TRANSPARENTBUILDINGS: ToggleTransparency(TO_HOUSES);                   break;
-		case OME_SHOW_STATIONSIGNS:    ToggleTransparency(TO_SIGNS);                    break;
+		case OME_FULL_ANIMATION:
+			ToggleBit(_display_opt, DO_FULL_ANIMATION);
+			CheckBlitter();
+			break;
+		case OME_FULL_DETAILS:
+			ToggleBit(_display_opt, DO_FULL_DETAIL);
+			break;
+		case OME_TRANSPARENTBUILDINGS:
+			ToggleTransparency(TO_HOUSES);
+			break;
+		case OME_SHOW_STATIONSIGNS:
+			ToggleTransparency(TO_SIGNS);
+			break;
 	}
 	MarkWholeScreenDirty();
 	return CBF_NONE;
@@ -366,8 +409,7 @@ enum SaveLoadNormalMenuEntries : uint8_t {
  */
 static CallBackFunction ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbarMenu(w, WID_TN_SAVE, {STR_FILE_MENU_SAVE_GAME, STR_FILE_MENU_LOAD_GAME, STR_FILE_MENU_QUIT_GAME,
-			STR_NULL, STR_FILE_MENU_EXIT});
+	PopupMainToolbarMenu(w, WID_TN_SAVE, {STR_FILE_MENU_SAVE_GAME, STR_FILE_MENU_LOAD_GAME, STR_FILE_MENU_QUIT_GAME, STR_NULL, STR_FILE_MENU_EXIT});
 	return CBF_NONE;
 }
 
@@ -379,9 +421,9 @@ static CallBackFunction ToolbarSaveClick(Window *w)
  */
 static CallBackFunction ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbarMenu(w, WID_TE_SAVE, {STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO,
-			STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP,
-			STR_SCENEDIT_FILE_MENU_QUIT_EDITOR, STR_NULL, STR_SCENEDIT_FILE_MENU_QUIT});
+	PopupMainToolbarMenu(w, WID_TE_SAVE,
+		{STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO, STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO, STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP, STR_SCENEDIT_FILE_MENU_QUIT_EDITOR,
+			STR_NULL, STR_SCENEDIT_FILE_MENU_QUIT});
 	return CBF_NONE;
 }
 
@@ -395,19 +437,39 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 {
 	if (_game_mode == GM_EDITOR) {
 		switch (index) {
-			case SLEME_SAVE_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, SLO_SAVE);  break;
-			case SLEME_LOAD_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD);  break;
-			case SLEME_SAVE_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_SAVE); break;
-			case SLEME_LOAD_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD); break;
-			case SLEME_EXIT_TOINTRO:   AskExitToGameMenu();                    break;
-			case SLEME_EXIT_GAME:      HandleExitGameRequest();                break;
+			case SLEME_SAVE_SCENARIO:
+				ShowSaveLoadDialog(FT_SCENARIO, SLO_SAVE);
+				break;
+			case SLEME_LOAD_SCENARIO:
+				ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD);
+				break;
+			case SLEME_SAVE_HEIGHTMAP:
+				ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_SAVE);
+				break;
+			case SLEME_LOAD_HEIGHTMAP:
+				ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD);
+				break;
+			case SLEME_EXIT_TOINTRO:
+				AskExitToGameMenu();
+				break;
+			case SLEME_EXIT_GAME:
+				HandleExitGameRequest();
+				break;
 		}
 	} else {
 		switch (index) {
-			case SLNME_SAVE_GAME:      ShowSaveLoadDialog(FT_SAVEGAME, SLO_SAVE); break;
-			case SLNME_LOAD_GAME:      ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
-			case SLNME_EXIT_TOINTRO:   AskExitToGameMenu();               break;
-			case SLNME_EXIT_GAME:      HandleExitGameRequest();           break;
+			case SLNME_SAVE_GAME:
+				ShowSaveLoadDialog(FT_SAVEGAME, SLO_SAVE);
+				break;
+			case SLNME_LOAD_GAME:
+				ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD);
+				break;
+			case SLNME_EXIT_TOINTRO:
+				AskExitToGameMenu();
+				break;
+			case SLNME_EXIT_GAME:
+				HandleExitGameRequest();
+				break;
 		}
 	}
 	return CBF_NONE;
@@ -416,7 +478,7 @@ static CallBackFunction MenuClickSaveLoad(int index = 0)
 /* --- Map button menu --- */
 
 enum MapMenuEntries : uint8_t {
-	MME_SHOW_SMALLMAP        = 0,
+	MME_SHOW_SMALLMAP = 0,
 	MME_SHOW_EXTRAVIEWPORTS,
 	MME_SHOW_LINKGRAPH,
 	MME_SHOW_SIGNLISTS,
@@ -427,10 +489,10 @@ enum MapMenuEntries : uint8_t {
 static CallBackFunction ToolbarMapClick(Window *w)
 {
 	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT,          MME_SHOW_EXTRAVIEWPORTS));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_LINGRAPH_LEGEND,         MME_SHOW_LINKGRAPH));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD, MME_SHOW_SMALLMAP));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT, MME_SHOW_EXTRAVIEWPORTS));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_LINGRAPH_LEGEND, MME_SHOW_LINKGRAPH));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST, MME_SHOW_SIGNLISTS));
 	PopupMainToolbarMenu(w, WID_TN_SMALL_MAP, std::move(list), 0);
 	return CBF_NONE;
 }
@@ -438,10 +500,10 @@ static CallBackFunction ToolbarMapClick(Window *w)
 static CallBackFunction ToolbarScenMapTownDir(Window *w)
 {
 	DropDownList list;
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT,          MME_SHOW_EXTRAVIEWPORTS));
-	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS));
-	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY,         MME_SHOW_TOWNDIRECTORY));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD, MME_SHOW_SMALLMAP));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT, MME_SHOW_EXTRAVIEWPORTS));
+	list.push_back(MakeDropDownListStringItem(STR_MAP_MENU_SIGN_LIST, MME_SHOW_SIGNLISTS));
+	list.push_back(MakeDropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY, MME_SHOW_TOWNDIRECTORY));
 	list.push_back(MakeDropDownListStringItem(STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, MME_SHOW_INDUSTRYDIRECTORY));
 	PopupMainToolbarMenu(w, WID_TE_SMALL_MAP, std::move(list), 0);
 	return CBF_NONE;
@@ -456,12 +518,24 @@ static CallBackFunction ToolbarScenMapTownDir(Window *w)
 static CallBackFunction MenuClickMap(int index)
 {
 	switch (index) {
-		case MME_SHOW_SMALLMAP:          ShowSmallMap();            break;
-		case MME_SHOW_EXTRAVIEWPORTS:    ShowExtraViewportWindow(); break;
-		case MME_SHOW_LINKGRAPH:         ShowLinkGraphLegend();     break;
-		case MME_SHOW_SIGNLISTS:         ShowSignList();            break;
-		case MME_SHOW_TOWNDIRECTORY:     ShowTownDirectory();       break;
-		case MME_SHOW_INDUSTRYDIRECTORY: ShowIndustryDirectory();   break;
+		case MME_SHOW_SMALLMAP:
+			ShowSmallMap();
+			break;
+		case MME_SHOW_EXTRAVIEWPORTS:
+			ShowExtraViewportWindow();
+			break;
+		case MME_SHOW_LINKGRAPH:
+			ShowLinkGraphLegend();
+			break;
+		case MME_SHOW_SIGNLISTS:
+			ShowSignList();
+			break;
+		case MME_SHOW_TOWNDIRECTORY:
+			ShowTownDirectory();
+			break;
+		case MME_SHOW_INDUSTRYDIRECTORY:
+			ShowIndustryDirectory();
+			break;
 	}
 	return CBF_NONE;
 }
@@ -495,7 +569,9 @@ static CallBackFunction ToolbarTownClick(Window *w)
 static CallBackFunction MenuClickTown(int index)
 {
 	switch (index) {
-		case TME_SHOW_DIRECTORY: ShowTownDirectory(); break;
+		case TME_SHOW_DIRECTORY:
+			ShowTownDirectory();
+			break;
 		case TME_SHOW_FOUND_TOWN: // Setting could be changed when the dropdown was open
 			if (_settings_game.economy.found_town != TF_FORBIDDEN) ShowFoundTownWindow();
 			break;
@@ -647,15 +723,15 @@ static CallBackFunction MenuClickGoal(int index)
  * Enum for the League Toolbar's and Graph Toolbar's related buttons.
  * Use continuous numbering as League Toolbar can be combined into the Graph Toolbar.
  */
-static const int GRMN_OPERATING_PROFIT_GRAPH = -1;    ///< Show operating profit graph
-static const int GRMN_INCOME_GRAPH = -2;              ///< Show income graph
-static const int GRMN_DELIVERED_CARGO_GRAPH = -3;     ///< Show delivered cargo graph
+static const int GRMN_OPERATING_PROFIT_GRAPH = -1; ///< Show operating profit graph
+static const int GRMN_INCOME_GRAPH = -2; ///< Show income graph
+static const int GRMN_DELIVERED_CARGO_GRAPH = -3; ///< Show delivered cargo graph
 static const int GRMN_PERFORMANCE_HISTORY_GRAPH = -4; ///< Show performance history graph
-static const int GRMN_COMPANY_VALUE_GRAPH = -5;       ///< Show company value graph
-static const int GRMN_CARGO_PAYMENT_RATES = -6;       ///< Show cargo payment rates graph
-static const int LTMN_PERFORMANCE_LEAGUE = -7;        ///< Show default league table
-static const int LTMN_PERFORMANCE_RATING = -8;        ///< Show detailed performance rating
-static const int LTMN_HIGHSCORE          = -9;        ///< Show highscrore table
+static const int GRMN_COMPANY_VALUE_GRAPH = -5; ///< Show company value graph
+static const int GRMN_CARGO_PAYMENT_RATES = -6; ///< Show cargo payment rates graph
+static const int LTMN_PERFORMANCE_LEAGUE = -7; ///< Show default league table
+static const int LTMN_PERFORMANCE_RATING = -8; ///< Show detailed performance rating
+static const int LTMN_HIGHSCORE = -9; ///< Show highscrore table
 
 static void AddDropDownLeagueTableOptions(DropDownList &list)
 {
@@ -713,15 +789,33 @@ static CallBackFunction ToolbarLeagueClick(Window *w)
 static CallBackFunction MenuClickGraphsOrLeague(int index)
 {
 	switch (index) {
-		case GRMN_OPERATING_PROFIT_GRAPH: ShowOperatingProfitGraph(); break;
-		case GRMN_INCOME_GRAPH: ShowIncomeGraph(); break;
-		case GRMN_DELIVERED_CARGO_GRAPH: ShowDeliveredCargoGraph(); break;
-		case GRMN_PERFORMANCE_HISTORY_GRAPH: ShowPerformanceHistoryGraph(); break;
-		case GRMN_COMPANY_VALUE_GRAPH: ShowCompanyValueGraph(); break;
-		case GRMN_CARGO_PAYMENT_RATES: ShowCargoPaymentRates(); break;
-		case LTMN_PERFORMANCE_LEAGUE: ShowPerformanceLeagueTable(); break;
-		case LTMN_PERFORMANCE_RATING: ShowPerformanceRatingDetail(); break;
-		case LTMN_HIGHSCORE: ShowHighscoreTable(); break;
+		case GRMN_OPERATING_PROFIT_GRAPH:
+			ShowOperatingProfitGraph();
+			break;
+		case GRMN_INCOME_GRAPH:
+			ShowIncomeGraph();
+			break;
+		case GRMN_DELIVERED_CARGO_GRAPH:
+			ShowDeliveredCargoGraph();
+			break;
+		case GRMN_PERFORMANCE_HISTORY_GRAPH:
+			ShowPerformanceHistoryGraph();
+			break;
+		case GRMN_COMPANY_VALUE_GRAPH:
+			ShowCompanyValueGraph();
+			break;
+		case GRMN_CARGO_PAYMENT_RATES:
+			ShowCargoPaymentRates();
+			break;
+		case LTMN_PERFORMANCE_LEAGUE:
+			ShowPerformanceLeagueTable();
+			break;
+		case LTMN_PERFORMANCE_RATING:
+			ShowPerformanceRatingDetail();
+			break;
+		case LTMN_HIGHSCORE:
+			ShowHighscoreTable();
+			break;
 		default: {
 			if (LeagueTable::IsValidID(index)) {
 				ShowScriptLeagueTable((LeagueTableID)index);
@@ -730,8 +824,6 @@ static CallBackFunction MenuClickGraphsOrLeague(int index)
 	}
 	return CBF_NONE;
 }
-
-
 
 /* --- Industries button menu --- */
 
@@ -755,9 +847,15 @@ static CallBackFunction ToolbarIndustryClick(Window *w)
 static CallBackFunction MenuClickIndustry(int index)
 {
 	switch (index) {
-		case 0: ShowIndustryDirectory();     break;
-		case 1: ShowIndustryCargoesWindow(); break;
-		case 2: ShowBuildIndustryWindow();   break;
+		case 0:
+			ShowIndustryDirectory();
+			break;
+		case 1:
+			ShowIndustryCargoesWindow();
+			break;
+		case 2:
+			ShowBuildIndustryWindow();
+			break;
 	}
 	return CBF_NONE;
 }
@@ -773,7 +871,6 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 	}
 	PopupMainCompanyToolbMenu(w, WID_TN_VEHICLE_START + veh, dis);
 }
-
 
 static CallBackFunction ToolbarTrainClick(Window *w)
 {
@@ -1007,9 +1104,14 @@ static CallBackFunction ToolbarForestClick(Window *w)
 static CallBackFunction MenuClickForest(int index)
 {
 	switch (index) {
-		case 0: ShowTerraformToolbar();  break;
-		case 1: ShowBuildTreesToolbar(); break;
-		case 2: return SelectSignTool();
+		case 0:
+			ShowTerraformToolbar();
+			break;
+		case 1:
+			ShowBuildTreesToolbar();
+			break;
+		case 2:
+			return SelectSignTool();
 	}
 	return CBF_NONE;
 }
@@ -1050,9 +1152,15 @@ static CallBackFunction ToolbarNewspaperClick(Window *w)
 static CallBackFunction MenuClickNewspaper(int index)
 {
 	switch (index) {
-		case 0: ShowLastNewsMessage(); break;
-		case 1: ShowMessageHistory();  break;
-		case 2: DeleteAllMessages();   break;
+		case 0:
+			ShowLastNewsMessage();
+			break;
+		case 1:
+			ShowMessageHistory();
+			break;
+		case 2:
+			DeleteAllMessages();
+			break;
 	}
 	return CBF_NONE;
 }
@@ -1073,15 +1181,13 @@ static CallBackFunction PlaceLandBlockInfo()
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
-				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
-				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD,
-				STR_ABOUT_MENU_SPRITE_ALIGNER, STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES, STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS,
-				STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES});
+		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP,
+			{STR_ABOUT_MENU_LAND_BLOCK_INFO, STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG, STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE,
+				STR_ABOUT_MENU_ABOUT_OPENTTD, STR_ABOUT_MENU_SPRITE_ALIGNER, STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES, STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS, STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES});
 	} else {
-		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP, {STR_ABOUT_MENU_LAND_BLOCK_INFO,
-				STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG,
-				STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE, STR_ABOUT_MENU_ABOUT_OPENTTD});
+		PopupMainToolbarMenu(w, _game_mode == GM_EDITOR ? (WidgetID)WID_TE_HELP : (WidgetID)WID_TN_HELP,
+			{STR_ABOUT_MENU_LAND_BLOCK_INFO, STR_ABOUT_MENU_HELP, STR_NULL, STR_ABOUT_MENU_TOGGLE_CONSOLE, STR_ABOUT_MENU_AI_DEBUG, STR_ABOUT_MENU_SCREENSHOT, STR_ABOUT_MENU_SHOW_FRAMERATE,
+				STR_ABOUT_MENU_ABOUT_OPENTTD});
 	}
 	return CBF_NONE;
 }
@@ -1163,17 +1269,38 @@ void SetStartingYear(TimerGameCalendar::Year year)
 static CallBackFunction MenuClickHelp(int index)
 {
 	switch (index) {
-		case  0: return PlaceLandBlockInfo();
-		case  1: ShowHelpWindow();                 break;
-		case  2: IConsoleSwitch();                 break;
-		case  3: ShowScriptDebugWindow(CompanyID::Invalid(), _ctrl_pressed); break;
-		case  4: ShowScreenshotWindow();           break;
-		case  5: ShowFramerateWindow();            break;
-		case  6: ShowAboutWindow();                break;
-		case  7: ShowSpriteAlignerWindow();        break;
-		case  8: ToggleBoundingBoxes();            break;
-		case  9: ToggleDirtyBlocks();              break;
-		case 10: ToggleWidgetOutlines();           break;
+		case 0:
+			return PlaceLandBlockInfo();
+		case 1:
+			ShowHelpWindow();
+			break;
+		case 2:
+			IConsoleSwitch();
+			break;
+		case 3:
+			ShowScriptDebugWindow(CompanyID::Invalid(), _ctrl_pressed);
+			break;
+		case 4:
+			ShowScreenshotWindow();
+			break;
+		case 5:
+			ShowFramerateWindow();
+			break;
+		case 6:
+			ShowAboutWindow();
+			break;
+		case 7:
+			ShowSpriteAlignerWindow();
+			break;
+		case 8:
+			ToggleBoundingBoxes();
+			break;
+		case 9:
+			ToggleDirtyBlocks();
+			break;
+		case 10:
+			ToggleWidgetOutlines();
+			break;
 	}
 	return CBF_NONE;
 }
@@ -1249,8 +1376,12 @@ static CallBackFunction ToolbarScenGenTownClick(Window *w)
 static CallBackFunction ToolbarScenGenTown(int index)
 {
 	switch (index) {
-		case 0: ShowFoundTownWindow(); break;
-		case 1: ShowBuildHousePicker(nullptr); break;
+		case 0:
+			ShowFoundTownWindow();
+			break;
+		case 1:
+			ShowBuildHousePicker(nullptr);
+			break;
 	}
 	return CBF_NONE;
 }
@@ -1333,37 +1464,37 @@ static CallBackFunction ToolbarBtn_NULL(Window *)
 
 typedef CallBackFunction MenuClickedProc(int index);
 
-static MenuClickedProc * const _menu_clicked_procs[] = {
-	nullptr,                 // 0
-	nullptr,                 // 1
-	MenuClickSettings,    // 2
-	MenuClickSaveLoad,    // 3
-	MenuClickMap,         // 4
-	MenuClickTown,        // 5
-	MenuClickSubsidies,   // 6
-	MenuClickStations,    // 7
-	MenuClickFinances,    // 8
-	MenuClickCompany,     // 9
-	MenuClickStory,       // 10
-	MenuClickGoal,        // 11
+static MenuClickedProc *const _menu_clicked_procs[] = {
+	nullptr, // 0
+	nullptr, // 1
+	MenuClickSettings, // 2
+	MenuClickSaveLoad, // 3
+	MenuClickMap, // 4
+	MenuClickTown, // 5
+	MenuClickSubsidies, // 6
+	MenuClickStations, // 7
+	MenuClickFinances, // 8
+	MenuClickCompany, // 9
+	MenuClickStory, // 10
+	MenuClickGoal, // 11
 	MenuClickGraphsOrLeague, // 12
 	MenuClickGraphsOrLeague, // 13
-	MenuClickIndustry,    // 14
-	MenuClickShowTrains,  // 15
-	MenuClickShowRoad,    // 16
-	MenuClickShowShips,   // 17
-	MenuClickShowAir,     // 18
-	MenuClickMap,         // 19
-	nullptr,                 // 20
-	MenuClickBuildRail,   // 21
-	MenuClickBuildRoad,   // 22
-	MenuClickBuildTram,   // 23
-	MenuClickBuildWater,  // 24
-	MenuClickBuildAir,    // 25
-	MenuClickForest,      // 26
+	MenuClickIndustry, // 14
+	MenuClickShowTrains, // 15
+	MenuClickShowRoad, // 16
+	MenuClickShowShips, // 17
+	MenuClickShowAir, // 18
+	MenuClickMap, // 19
+	nullptr, // 20
+	MenuClickBuildRail, // 21
+	MenuClickBuildRoad, // 22
+	MenuClickBuildTram, // 23
+	MenuClickBuildWater, // 24
+	MenuClickBuildAir, // 25
+	MenuClickForest, // 26
 	MenuClickMusicWindow, // 27
-	MenuClickNewspaper,   // 28
-	MenuClickHelp,        // 29
+	MenuClickNewspaper, // 28
+	MenuClickHelp, // 29
 };
 
 /** Full blown container to make it behave exactly as we want :) */
@@ -1372,9 +1503,7 @@ protected:
 	uint spacers = 0; ///< Number of spacer widgets in this toolbar
 
 public:
-	NWidgetToolbarContainer() : NWidgetContainer(NWID_HORIZONTAL)
-	{
-	}
+	NWidgetToolbarContainer() : NWidgetContainer(NWID_HORIZONTAL) {}
 
 	/**
 	 * Check whether the given widget type is a button for us.
@@ -1517,7 +1646,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 	const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
 	{
 		static const uint SMALLEST_ARRANGEMENT = 14;
-		static const uint BIGGEST_ARRANGEMENT  = 20;
+		static const uint BIGGEST_ARRANGEMENT = 20;
 
 		/* The number of buttons of each row of the toolbar should match the number of items which we want to be visible.
 		 * The total number of buttons should be equal to arrangable_count * 2.
@@ -1784,38 +1913,9 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
 		};
-		static const WidgetID arrange_all[] = {
-			WID_TN_PAUSE,
-			WID_TN_FAST_FORWARD,
-			WID_TN_SETTINGS,
-			WID_TN_SAVE,
-			WID_TN_SMALL_MAP,
-			WID_TN_TOWNS,
-			WID_TN_SUBSIDIES,
-			WID_TN_STATIONS,
-			WID_TN_FINANCES,
-			WID_TN_COMPANIES,
-			WID_TN_STORY,
-			WID_TN_GOAL,
-			WID_TN_GRAPHS,
-			WID_TN_LEAGUE,
-			WID_TN_INDUSTRIES,
-			WID_TN_TRAINS,
-			WID_TN_ROADVEHS,
-			WID_TN_SHIPS,
-			WID_TN_AIRCRAFT,
-			WID_TN_ZOOM_IN,
-			WID_TN_ZOOM_OUT,
-			WID_TN_RAILS,
-			WID_TN_ROADS,
-			WID_TN_TRAMS,
-			WID_TN_WATER,
-			WID_TN_AIR,
-			WID_TN_LANDSCAPE,
-			WID_TN_MUSIC_SOUND,
-			WID_TN_MESSAGES,
-			WID_TN_HELP
-		};
+		static const WidgetID arrange_all[] = {WID_TN_PAUSE, WID_TN_FAST_FORWARD, WID_TN_SETTINGS, WID_TN_SAVE, WID_TN_SMALL_MAP, WID_TN_TOWNS, WID_TN_SUBSIDIES, WID_TN_STATIONS, WID_TN_FINANCES,
+			WID_TN_COMPANIES, WID_TN_STORY, WID_TN_GOAL, WID_TN_GRAPHS, WID_TN_LEAGUE, WID_TN_INDUSTRIES, WID_TN_TRAINS, WID_TN_ROADVEHS, WID_TN_SHIPS, WID_TN_AIRCRAFT, WID_TN_ZOOM_IN,
+			WID_TN_ZOOM_OUT, WID_TN_RAILS, WID_TN_ROADS, WID_TN_TRAMS, WID_TN_WATER, WID_TN_AIR, WID_TN_LANDSCAPE, WID_TN_MUSIC_SOUND, WID_TN_MESSAGES, WID_TN_HELP};
 
 		/* If at least BIGGEST_ARRANGEMENT fit, just spread all the buttons nicely */
 		uint full_buttons = std::max(CeilDiv(width, this->smallest_x), SMALLEST_ARRANGEMENT);
@@ -1826,7 +1926,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		}
 
 		/* Introduce the split toolbar */
-		static const WidgetID * const arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19, arrange20 };
+		static const WidgetID *const arrangements[] = {arrange14, arrange15, arrange16, arrange17, arrange18, arrange19, arrange20};
 
 		button_count = arrangable_count = full_buttons;
 		spacer_count = this->spacers;
@@ -1956,7 +2056,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 
 typedef CallBackFunction ToolbarButtonProc(Window *w);
 
-static ToolbarButtonProc * const _toolbar_button_procs[] = {
+static ToolbarButtonProc *const _toolbar_button_procs[] = {
 	ToolbarPauseClick,
 	ToolbarFastForwardClick,
 	ToolbarOptionsClick,
@@ -2039,47 +2139,128 @@ struct MainToolbarWindow : Window {
 	{
 		CallBackFunction cbf = CBF_NONE;
 		switch (hotkey) {
-			case MTHK_PAUSE: ToolbarPauseClick(this); break;
-			case MTHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
-			case MTHK_SETTINGS: ShowGameOptions(); break;
-			case MTHK_SAVEGAME: MenuClickSaveLoad(); break;
-			case MTHK_LOADGAME: ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
-			case MTHK_SMALLMAP: ShowSmallMap(); break;
-			case MTHK_TOWNDIRECTORY: ShowTownDirectory(); break;
-			case MTHK_SUBSIDIES: ShowSubsidiesList(); break;
-			case MTHK_STATIONS: ShowCompanyStations(_local_company); break;
-			case MTHK_FINANCES: ShowCompanyFinances(_local_company); break;
-			case MTHK_COMPANIES: ShowCompany(_local_company); break;
-			case MTHK_STORY: ShowStoryBook(_local_company); break;
-			case MTHK_GOAL: ShowGoalsList(_local_company); break;
-			case MTHK_GRAPHS: ShowOperatingProfitGraph(); break;
-			case MTHK_LEAGUE: ShowFirstLeagueTable(); break;
-			case MTHK_INDUSTRIES: ShowBuildIndustryWindow(); break;
-			case MTHK_TRAIN_LIST: ShowVehicleListWindow(_local_company, VEH_TRAIN); break;
-			case MTHK_ROADVEH_LIST: ShowVehicleListWindow(_local_company, VEH_ROAD); break;
-			case MTHK_SHIP_LIST: ShowVehicleListWindow(_local_company, VEH_SHIP); break;
-			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VEH_AIRCRAFT); break;
-			case MTHK_ZOOM_IN: ToolbarZoomInClick(this); break;
-			case MTHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
-			case MTHK_BUILD_RAIL: ShowBuildRailToolbar(_last_built_railtype); break;
-			case MTHK_BUILD_ROAD: ShowBuildRoadToolbar(_last_built_roadtype); break;
-			case MTHK_BUILD_TRAM: ShowBuildRoadToolbar(_last_built_tramtype); break;
-			case MTHK_BUILD_DOCKS: ShowBuildDocksToolbar(); break;
-			case MTHK_BUILD_AIRPORT: ShowBuildAirToolbar(); break;
-			case MTHK_BUILD_TREES: ShowBuildTreesToolbar(); break;
-			case MTHK_MUSIC: ShowMusicWindow(); break;
-			case MTHK_SCRIPT_DEBUG: ShowScriptDebugWindow(); break;
-			case MTHK_SMALL_SCREENSHOT: MakeScreenshotWithConfirm(SC_VIEWPORT); break;
-			case MTHK_ZOOMEDIN_SCREENSHOT: MakeScreenshotWithConfirm(SC_ZOOMEDIN); break;
-			case MTHK_DEFAULTZOOM_SCREENSHOT: MakeScreenshotWithConfirm(SC_DEFAULTZOOM); break;
-			case MTHK_GIANT_SCREENSHOT: MakeScreenshotWithConfirm(SC_WORLD); break;
-			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
-			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
-			case MTHK_EXTRA_VIEWPORT: ShowExtraViewportWindowForTileUnderCursor(); break;
-			case MTHK_CLIENT_LIST: if (_networking) ShowClientList(); break;
-			case MTHK_SIGN_LIST: ShowSignList(); break;
-			case MTHK_LANDINFO: cbf = PlaceLandBlockInfo(); break;
-			default: return ES_NOT_HANDLED;
+			case MTHK_PAUSE:
+				ToolbarPauseClick(this);
+				break;
+			case MTHK_FASTFORWARD:
+				ToolbarFastForwardClick(this);
+				break;
+			case MTHK_SETTINGS:
+				ShowGameOptions();
+				break;
+			case MTHK_SAVEGAME:
+				MenuClickSaveLoad();
+				break;
+			case MTHK_LOADGAME:
+				ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD);
+				break;
+			case MTHK_SMALLMAP:
+				ShowSmallMap();
+				break;
+			case MTHK_TOWNDIRECTORY:
+				ShowTownDirectory();
+				break;
+			case MTHK_SUBSIDIES:
+				ShowSubsidiesList();
+				break;
+			case MTHK_STATIONS:
+				ShowCompanyStations(_local_company);
+				break;
+			case MTHK_FINANCES:
+				ShowCompanyFinances(_local_company);
+				break;
+			case MTHK_COMPANIES:
+				ShowCompany(_local_company);
+				break;
+			case MTHK_STORY:
+				ShowStoryBook(_local_company);
+				break;
+			case MTHK_GOAL:
+				ShowGoalsList(_local_company);
+				break;
+			case MTHK_GRAPHS:
+				ShowOperatingProfitGraph();
+				break;
+			case MTHK_LEAGUE:
+				ShowFirstLeagueTable();
+				break;
+			case MTHK_INDUSTRIES:
+				ShowBuildIndustryWindow();
+				break;
+			case MTHK_TRAIN_LIST:
+				ShowVehicleListWindow(_local_company, VEH_TRAIN);
+				break;
+			case MTHK_ROADVEH_LIST:
+				ShowVehicleListWindow(_local_company, VEH_ROAD);
+				break;
+			case MTHK_SHIP_LIST:
+				ShowVehicleListWindow(_local_company, VEH_SHIP);
+				break;
+			case MTHK_AIRCRAFT_LIST:
+				ShowVehicleListWindow(_local_company, VEH_AIRCRAFT);
+				break;
+			case MTHK_ZOOM_IN:
+				ToolbarZoomInClick(this);
+				break;
+			case MTHK_ZOOM_OUT:
+				ToolbarZoomOutClick(this);
+				break;
+			case MTHK_BUILD_RAIL:
+				ShowBuildRailToolbar(_last_built_railtype);
+				break;
+			case MTHK_BUILD_ROAD:
+				ShowBuildRoadToolbar(_last_built_roadtype);
+				break;
+			case MTHK_BUILD_TRAM:
+				ShowBuildRoadToolbar(_last_built_tramtype);
+				break;
+			case MTHK_BUILD_DOCKS:
+				ShowBuildDocksToolbar();
+				break;
+			case MTHK_BUILD_AIRPORT:
+				ShowBuildAirToolbar();
+				break;
+			case MTHK_BUILD_TREES:
+				ShowBuildTreesToolbar();
+				break;
+			case MTHK_MUSIC:
+				ShowMusicWindow();
+				break;
+			case MTHK_SCRIPT_DEBUG:
+				ShowScriptDebugWindow();
+				break;
+			case MTHK_SMALL_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_VIEWPORT);
+				break;
+			case MTHK_ZOOMEDIN_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_ZOOMEDIN);
+				break;
+			case MTHK_DEFAULTZOOM_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_DEFAULTZOOM);
+				break;
+			case MTHK_GIANT_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_WORLD);
+				break;
+			case MTHK_CHEATS:
+				if (!_networking) ShowCheatWindow();
+				break;
+			case MTHK_TERRAFORM:
+				ShowTerraformToolbar();
+				break;
+			case MTHK_EXTRA_VIEWPORT:
+				ShowExtraViewportWindowForTileUnderCursor();
+				break;
+			case MTHK_CLIENT_LIST:
+				if (_networking) ShowClientList();
+				break;
+			case MTHK_SIGN_LIST:
+				ShowSignList();
+				break;
+			case MTHK_LANDINFO:
+				cbf = PlaceLandBlockInfo();
+				break;
+			default:
+				return ES_NOT_HANDLED;
 		}
 		if (cbf != CBF_NONE) _last_started_action = cbf;
 		return ES_HANDLED;
@@ -2096,7 +2277,8 @@ struct MainToolbarWindow : Window {
 				ShowLandInfo(tile);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -2107,16 +2289,16 @@ struct MainToolbarWindow : Window {
 
 	/** Refresh the state of pause / game-speed on a regular interval.*/
 	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
-		if (this->IsWidgetLowered(WID_TN_PAUSE) != _pause_mode.Any()) {
-			this->ToggleWidgetLoweredState(WID_TN_PAUSE);
-			this->SetWidgetDirty(WID_TN_PAUSE);
-		}
+													   if (this->IsWidgetLowered(WID_TN_PAUSE) != _pause_mode.Any()) {
+														   this->ToggleWidgetLoweredState(WID_TN_PAUSE);
+														   this->SetWidgetDirty(WID_TN_PAUSE);
+													   }
 
-		if (this->IsWidgetLowered(WID_TN_FAST_FORWARD) != (_game_speed != 100)) {
-			this->ToggleWidgetLoweredState(WID_TN_FAST_FORWARD);
-			this->SetWidgetDirty(WID_TN_FAST_FORWARD);
-		}
-	}};
+													   if (this->IsWidgetLowered(WID_TN_FAST_FORWARD) != (_game_speed != 100)) {
+														   this->ToggleWidgetLoweredState(WID_TN_FAST_FORWARD);
+														   this->SetWidgetDirty(WID_TN_FAST_FORWARD);
+													   }
+												   }};
 
 	void OnTimeout() override
 	{
@@ -2138,85 +2320,86 @@ struct MainToolbarWindow : Window {
 		HandleZoomMessage(this, *GetMainWindow()->viewport, WID_TN_ZOOM_IN, WID_TN_ZOOM_OUT);
 	}
 
-	static inline HotkeyList hotkeys{"maintoolbar", {
-		Hotkey({WKC_F1, WKC_PAUSE}, "pause", MTHK_PAUSE),
-		Hotkey(0, "fastforward", MTHK_FASTFORWARD),
-		Hotkey(WKC_F2, "settings", MTHK_SETTINGS),
-		Hotkey(WKC_F3, "saveload", MTHK_SAVEGAME),
-		Hotkey(0, "load_game", MTHK_LOADGAME),
-		Hotkey({WKC_F4, 'M'}, "smallmap", MTHK_SMALLMAP),
-		Hotkey(WKC_F5, "town_list", MTHK_TOWNDIRECTORY),
-		Hotkey(WKC_F6, "subsidies", MTHK_SUBSIDIES),
-		Hotkey(WKC_F7, "station_list", MTHK_STATIONS),
-		Hotkey(WKC_F8, "finances", MTHK_FINANCES),
-		Hotkey(WKC_F9, "companies", MTHK_COMPANIES),
-		Hotkey(0, "story_book", MTHK_STORY),
-		Hotkey(0, "goal_list", MTHK_GOAL),
-		Hotkey(WKC_F10, "graphs", MTHK_GRAPHS),
-		Hotkey(WKC_F11, "league", MTHK_LEAGUE),
-		Hotkey(WKC_F12, "industry_list", MTHK_INDUSTRIES),
-		Hotkey(WKC_SHIFT | WKC_F1, "train_list", MTHK_TRAIN_LIST),
-		Hotkey(WKC_SHIFT | WKC_F2, "roadveh_list", MTHK_ROADVEH_LIST),
-		Hotkey(WKC_SHIFT | WKC_F3, "ship_list", MTHK_SHIP_LIST),
-		Hotkey(WKC_SHIFT | WKC_F4, "aircraft_list", MTHK_AIRCRAFT_LIST),
-		Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MTHK_ZOOM_IN),
-		Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MTHK_ZOOM_OUT),
-		Hotkey(WKC_SHIFT | WKC_F7, "build_rail", MTHK_BUILD_RAIL),
-		Hotkey(WKC_SHIFT | WKC_F8, "build_road", MTHK_BUILD_ROAD),
-		Hotkey(0, "build_tram", MTHK_BUILD_TRAM),
-		Hotkey(WKC_SHIFT | WKC_F9, "build_docks", MTHK_BUILD_DOCKS),
-		Hotkey(WKC_SHIFT | WKC_F10, "build_airport", MTHK_BUILD_AIRPORT),
-		Hotkey(WKC_SHIFT | WKC_F11, "build_trees", MTHK_BUILD_TREES),
-		Hotkey(WKC_SHIFT | WKC_F12, "music", MTHK_MUSIC),
-		Hotkey(0, "ai_debug", MTHK_SCRIPT_DEBUG),
-		Hotkey(WKC_CTRL  | 'S', "small_screenshot", MTHK_SMALL_SCREENSHOT),
-		Hotkey(WKC_CTRL  | 'P', "zoomedin_screenshot", MTHK_ZOOMEDIN_SCREENSHOT),
-		Hotkey(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTHK_DEFAULTZOOM_SCREENSHOT),
-		Hotkey(0, "giant_screenshot", MTHK_GIANT_SCREENSHOT),
-		Hotkey(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
-		Hotkey('L', "terraform", MTHK_TERRAFORM),
-		Hotkey('V', "extra_viewport", MTHK_EXTRA_VIEWPORT),
-		Hotkey(0, "client_list", MTHK_CLIENT_LIST),
-		Hotkey(0, "sign_list", MTHK_SIGN_LIST),
-		Hotkey(0, "land_info", MTHK_LANDINFO),
-	}};
+	static inline HotkeyList hotkeys{"maintoolbar",
+		{
+			Hotkey({WKC_F1, WKC_PAUSE}, "pause", MTHK_PAUSE),
+			Hotkey(0, "fastforward", MTHK_FASTFORWARD),
+			Hotkey(WKC_F2, "settings", MTHK_SETTINGS),
+			Hotkey(WKC_F3, "saveload", MTHK_SAVEGAME),
+			Hotkey(0, "load_game", MTHK_LOADGAME),
+			Hotkey({WKC_F4, 'M'}, "smallmap", MTHK_SMALLMAP),
+			Hotkey(WKC_F5, "town_list", MTHK_TOWNDIRECTORY),
+			Hotkey(WKC_F6, "subsidies", MTHK_SUBSIDIES),
+			Hotkey(WKC_F7, "station_list", MTHK_STATIONS),
+			Hotkey(WKC_F8, "finances", MTHK_FINANCES),
+			Hotkey(WKC_F9, "companies", MTHK_COMPANIES),
+			Hotkey(0, "story_book", MTHK_STORY),
+			Hotkey(0, "goal_list", MTHK_GOAL),
+			Hotkey(WKC_F10, "graphs", MTHK_GRAPHS),
+			Hotkey(WKC_F11, "league", MTHK_LEAGUE),
+			Hotkey(WKC_F12, "industry_list", MTHK_INDUSTRIES),
+			Hotkey(WKC_SHIFT | WKC_F1, "train_list", MTHK_TRAIN_LIST),
+			Hotkey(WKC_SHIFT | WKC_F2, "roadveh_list", MTHK_ROADVEH_LIST),
+			Hotkey(WKC_SHIFT | WKC_F3, "ship_list", MTHK_SHIP_LIST),
+			Hotkey(WKC_SHIFT | WKC_F4, "aircraft_list", MTHK_AIRCRAFT_LIST),
+			Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MTHK_ZOOM_IN),
+			Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MTHK_ZOOM_OUT),
+			Hotkey(WKC_SHIFT | WKC_F7, "build_rail", MTHK_BUILD_RAIL),
+			Hotkey(WKC_SHIFT | WKC_F8, "build_road", MTHK_BUILD_ROAD),
+			Hotkey(0, "build_tram", MTHK_BUILD_TRAM),
+			Hotkey(WKC_SHIFT | WKC_F9, "build_docks", MTHK_BUILD_DOCKS),
+			Hotkey(WKC_SHIFT | WKC_F10, "build_airport", MTHK_BUILD_AIRPORT),
+			Hotkey(WKC_SHIFT | WKC_F11, "build_trees", MTHK_BUILD_TREES),
+			Hotkey(WKC_SHIFT | WKC_F12, "music", MTHK_MUSIC),
+			Hotkey(0, "ai_debug", MTHK_SCRIPT_DEBUG),
+			Hotkey(WKC_CTRL | 'S', "small_screenshot", MTHK_SMALL_SCREENSHOT),
+			Hotkey(WKC_CTRL | 'P', "zoomedin_screenshot", MTHK_ZOOMEDIN_SCREENSHOT),
+			Hotkey(WKC_CTRL | 'D', "defaultzoom_screenshot", MTHK_DEFAULTZOOM_SCREENSHOT),
+			Hotkey(0, "giant_screenshot", MTHK_GIANT_SCREENSHOT),
+			Hotkey(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
+			Hotkey('L', "terraform", MTHK_TERRAFORM),
+			Hotkey('V', "extra_viewport", MTHK_EXTRA_VIEWPORT),
+			Hotkey(0, "client_list", MTHK_CLIENT_LIST),
+			Hotkey(0, "sign_list", MTHK_SIGN_LIST),
+			Hotkey(0, "land_info", MTHK_LANDINFO),
+		}};
 };
 
 static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 {
 	/** Sprites to use for the different toolbar buttons */
 	static const SpriteID toolbar_button_sprites[] = {
-		SPR_IMG_PAUSE,           // WID_TN_PAUSE
-		SPR_IMG_FASTFORWARD,     // WID_TN_FAST_FORWARD
-		SPR_IMG_SETTINGS,        // WID_TN_SETTINGS
-		SPR_IMG_SAVE,            // WID_TN_SAVE
-		SPR_IMG_SMALLMAP,        // WID_TN_SMALL_MAP
-		SPR_IMG_TOWN,            // WID_TN_TOWNS
-		SPR_IMG_SUBSIDIES,       // WID_TN_SUBSIDIES
-		SPR_IMG_COMPANY_LIST,    // WID_TN_STATIONS
+		SPR_IMG_PAUSE, // WID_TN_PAUSE
+		SPR_IMG_FASTFORWARD, // WID_TN_FAST_FORWARD
+		SPR_IMG_SETTINGS, // WID_TN_SETTINGS
+		SPR_IMG_SAVE, // WID_TN_SAVE
+		SPR_IMG_SMALLMAP, // WID_TN_SMALL_MAP
+		SPR_IMG_TOWN, // WID_TN_TOWNS
+		SPR_IMG_SUBSIDIES, // WID_TN_SUBSIDIES
+		SPR_IMG_COMPANY_LIST, // WID_TN_STATIONS
 		SPR_IMG_COMPANY_FINANCE, // WID_TN_FINANCES
 		SPR_IMG_COMPANY_GENERAL, // WID_TN_COMPANIES
-		SPR_IMG_STORY_BOOK,      // WID_TN_STORY
-		SPR_IMG_GOAL,            // WID_TN_GOAL
-		SPR_IMG_GRAPHS,          // WID_TN_GRAPHS
-		SPR_IMG_COMPANY_LEAGUE,  // WID_TN_LEAGUE
-		SPR_IMG_INDUSTRY,        // WID_TN_INDUSTRIES
-		SPR_IMG_TRAINLIST,       // WID_TN_TRAINS
-		SPR_IMG_TRUCKLIST,       // WID_TN_ROADVEHS
-		SPR_IMG_SHIPLIST,        // WID_TN_SHIPS
-		SPR_IMG_AIRPLANESLIST,   // WID_TN_AIRCRAFT
-		SPR_IMG_ZOOMIN,          // WID_TN_ZOOMIN
-		SPR_IMG_ZOOMOUT,         // WID_TN_ZOOMOUT
-		SPR_IMG_BUILDRAIL,       // WID_TN_RAILS
-		SPR_IMG_BUILDROAD,       // WID_TN_ROADS
-		SPR_IMG_BUILDTRAMS,      // WID_TN_TRAMS
-		SPR_IMG_BUILDWATER,      // WID_TN_WATER
-		SPR_IMG_BUILDAIR,        // WID_TN_AIR
-		SPR_IMG_LANDSCAPING,     // WID_TN_LANDSCAPE
-		SPR_IMG_MUSIC,           // WID_TN_MUSIC_SOUND
-		SPR_IMG_MESSAGES,        // WID_TN_MESSAGES
-		SPR_IMG_QUERY,           // WID_TN_HELP
-		SPR_IMG_SWITCH_TOOLBAR,  // WID_TN_SWITCH_BAR
+		SPR_IMG_STORY_BOOK, // WID_TN_STORY
+		SPR_IMG_GOAL, // WID_TN_GOAL
+		SPR_IMG_GRAPHS, // WID_TN_GRAPHS
+		SPR_IMG_COMPANY_LEAGUE, // WID_TN_LEAGUE
+		SPR_IMG_INDUSTRY, // WID_TN_INDUSTRIES
+		SPR_IMG_TRAINLIST, // WID_TN_TRAINS
+		SPR_IMG_TRUCKLIST, // WID_TN_ROADVEHS
+		SPR_IMG_SHIPLIST, // WID_TN_SHIPS
+		SPR_IMG_AIRPLANESLIST, // WID_TN_AIRCRAFT
+		SPR_IMG_ZOOMIN, // WID_TN_ZOOMIN
+		SPR_IMG_ZOOMOUT, // WID_TN_ZOOMOUT
+		SPR_IMG_BUILDRAIL, // WID_TN_RAILS
+		SPR_IMG_BUILDROAD, // WID_TN_ROADS
+		SPR_IMG_BUILDTRAMS, // WID_TN_TRAMS
+		SPR_IMG_BUILDWATER, // WID_TN_WATER
+		SPR_IMG_BUILDAIR, // WID_TN_AIR
+		SPR_IMG_LANDSCAPING, // WID_TN_LANDSCAPE
+		SPR_IMG_MUSIC, // WID_TN_MUSIC_SOUND
+		SPR_IMG_MESSAGES, // WID_TN_MESSAGES
+		SPR_IMG_QUERY, // WID_TN_HELP
+		SPR_IMG_SWITCH_TOOLBAR, // WID_TN_SWITCH_BAR
 	};
 
 	auto hor = std::make_unique<NWidgetMainToolbarContainer>();
@@ -2246,43 +2429,37 @@ static constexpr NWidgetPart _nested_toolbar_normal_widgets[] = {
 /* clang-format on */
 
 static WindowDesc _toolb_normal_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_MAIN_TOOLBAR, WC_NONE,
-	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
-	_nested_toolbar_normal_widgets,
-	&MainToolbarWindow::hotkeys
-);
-
+	WDP_MANUAL, nullptr, 0, 0, WC_MAIN_TOOLBAR, WC_NONE, {WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose}, _nested_toolbar_normal_widgets, &MainToolbarWindow::hotkeys);
 
 /* --- Toolbar handling for the scenario editor */
 
-static MenuClickedProc * const _scen_toolbar_dropdown_procs[] = {
-	nullptr,              // 0
-	nullptr,              // 1
-	MenuClickSettings,    // 2
-	MenuClickSaveLoad,    // 3
-	nullptr,              // 4
-	nullptr,              // 5
-	nullptr,              // 6
-	nullptr,              // 7
-	MenuClickMap,         // 8
-	nullptr,              // 9
-	nullptr,              // 10
-	nullptr,              // 11
-	ToolbarScenGenTown,   // 12
-	nullptr,              // 13
+static MenuClickedProc *const _scen_toolbar_dropdown_procs[] = {
+	nullptr, // 0
+	nullptr, // 1
+	MenuClickSettings, // 2
+	MenuClickSaveLoad, // 3
+	nullptr, // 4
+	nullptr, // 5
+	nullptr, // 6
+	nullptr, // 7
+	MenuClickMap, // 8
+	nullptr, // 9
+	nullptr, // 10
+	nullptr, // 11
+	ToolbarScenGenTown, // 12
+	nullptr, // 13
 	ToolbarScenBuildRoad, // 14
 	ToolbarScenBuildTram, // 15
-	nullptr,              // 16
-	nullptr,              // 17
-	nullptr,              // 18
-	nullptr,              // 19
+	nullptr, // 16
+	nullptr, // 17
+	nullptr, // 18
+	nullptr, // 19
 	MenuClickMusicWindow, // 20
-	MenuClickHelp,        // 21
-	nullptr,              // 22
+	MenuClickHelp, // 21
+	nullptr, // 22
 };
 
-static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
+static ToolbarButtonProc *const _scen_toolbar_button_procs[] = {
 	ToolbarPauseClick,
 	ToolbarFastForwardClick,
 	ToolbarOptionsClick,
@@ -2418,30 +2595,77 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		CallBackFunction cbf = CBF_NONE;
 		switch (hotkey) {
-			case MTEHK_PAUSE:                  ToolbarPauseClick(this); break;
-			case MTEHK_FASTFORWARD:            ToolbarFastForwardClick(this); break;
-			case MTEHK_SETTINGS:               ShowGameOptions(); break;
-			case MTEHK_SAVEGAME:               MenuClickSaveLoad(); break;
-			case MTEHK_GENLAND:                ToolbarScenGenLand(this); break;
-			case MTEHK_GENTOWN:                ToolbarScenGenTownClick(this); break;
-			case MTEHK_GENINDUSTRY:            ToolbarScenGenIndustry(this); break;
-			case MTEHK_BUILD_ROAD:             ToolbarScenBuildRoadClick(this); break;
-			case MTEHK_BUILD_TRAM:             ToolbarScenBuildTramClick(this); break;
-			case MTEHK_BUILD_DOCKS:            ToolbarScenBuildDocks(this); break;
-			case MTEHK_BUILD_TREES:            ToolbarScenPlantTrees(this); break;
-			case MTEHK_SIGN:                   cbf = ToolbarScenPlaceSign(this); break;
-			case MTEHK_MUSIC:                  ShowMusicWindow(); break;
-			case MTEHK_LANDINFO:               cbf = PlaceLandBlockInfo(); break;
-			case MTEHK_SMALL_SCREENSHOT:       MakeScreenshotWithConfirm(SC_VIEWPORT); break;
-			case MTEHK_ZOOMEDIN_SCREENSHOT:    MakeScreenshotWithConfirm(SC_ZOOMEDIN); break;
-			case MTEHK_DEFAULTZOOM_SCREENSHOT: MakeScreenshotWithConfirm(SC_DEFAULTZOOM); break;
-			case MTEHK_GIANT_SCREENSHOT:       MakeScreenshotWithConfirm(SC_WORLD); break;
-			case MTEHK_ZOOM_IN:                ToolbarZoomInClick(this); break;
-			case MTEHK_ZOOM_OUT:               ToolbarZoomOutClick(this); break;
-			case MTEHK_TERRAFORM:              ShowEditorTerraformToolbar(); break;
-			case MTEHK_SMALLMAP:               ShowSmallMap(); break;
-			case MTEHK_EXTRA_VIEWPORT:         ShowExtraViewportWindowForTileUnderCursor(); break;
-			default: return ES_NOT_HANDLED;
+			case MTEHK_PAUSE:
+				ToolbarPauseClick(this);
+				break;
+			case MTEHK_FASTFORWARD:
+				ToolbarFastForwardClick(this);
+				break;
+			case MTEHK_SETTINGS:
+				ShowGameOptions();
+				break;
+			case MTEHK_SAVEGAME:
+				MenuClickSaveLoad();
+				break;
+			case MTEHK_GENLAND:
+				ToolbarScenGenLand(this);
+				break;
+			case MTEHK_GENTOWN:
+				ToolbarScenGenTownClick(this);
+				break;
+			case MTEHK_GENINDUSTRY:
+				ToolbarScenGenIndustry(this);
+				break;
+			case MTEHK_BUILD_ROAD:
+				ToolbarScenBuildRoadClick(this);
+				break;
+			case MTEHK_BUILD_TRAM:
+				ToolbarScenBuildTramClick(this);
+				break;
+			case MTEHK_BUILD_DOCKS:
+				ToolbarScenBuildDocks(this);
+				break;
+			case MTEHK_BUILD_TREES:
+				ToolbarScenPlantTrees(this);
+				break;
+			case MTEHK_SIGN:
+				cbf = ToolbarScenPlaceSign(this);
+				break;
+			case MTEHK_MUSIC:
+				ShowMusicWindow();
+				break;
+			case MTEHK_LANDINFO:
+				cbf = PlaceLandBlockInfo();
+				break;
+			case MTEHK_SMALL_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_VIEWPORT);
+				break;
+			case MTEHK_ZOOMEDIN_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_ZOOMEDIN);
+				break;
+			case MTEHK_DEFAULTZOOM_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_DEFAULTZOOM);
+				break;
+			case MTEHK_GIANT_SCREENSHOT:
+				MakeScreenshotWithConfirm(SC_WORLD);
+				break;
+			case MTEHK_ZOOM_IN:
+				ToolbarZoomInClick(this);
+				break;
+			case MTEHK_ZOOM_OUT:
+				ToolbarZoomOutClick(this);
+				break;
+			case MTEHK_TERRAFORM:
+				ShowEditorTerraformToolbar();
+				break;
+			case MTEHK_SMALLMAP:
+				ShowSmallMap();
+				break;
+			case MTEHK_EXTRA_VIEWPORT:
+				ShowExtraViewportWindowForTileUnderCursor();
+				break;
+			default:
+				return ES_NOT_HANDLED;
 		}
 		if (cbf != CBF_NONE) _last_started_action = cbf;
 		return ES_HANDLED;
@@ -2458,7 +2682,8 @@ struct ScenarioEditorToolbarWindow : Window {
 				ShowLandInfo(tile);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -2476,16 +2701,16 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	/** Refresh the state of pause / game-speed on a regular interval.*/
 	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(30), [this](auto) {
-		if (this->IsWidgetLowered(WID_TE_PAUSE) != _pause_mode.Any()) {
-			this->ToggleWidgetLoweredState(WID_TE_PAUSE);
-			this->SetDirty();
-		}
+													   if (this->IsWidgetLowered(WID_TE_PAUSE) != _pause_mode.Any()) {
+														   this->ToggleWidgetLoweredState(WID_TE_PAUSE);
+														   this->SetDirty();
+													   }
 
-		if (this->IsWidgetLowered(WID_TE_FAST_FORWARD) != (_game_speed != 100)) {
-			this->ToggleWidgetLoweredState(WID_TE_FAST_FORWARD);
-			this->SetDirty();
-		}
-	}};
+													   if (this->IsWidgetLowered(WID_TE_FAST_FORWARD) != (_game_speed != 100)) {
+														   this->ToggleWidgetLoweredState(WID_TE_FAST_FORWARD);
+														   this->SetDirty();
+													   }
+												   }};
 
 	/**
 	 * Some data on this window has become invalid.
@@ -2515,31 +2740,32 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->SetDirty();
 	}
 
-	static inline HotkeyList hotkeys{"scenedit_maintoolbar", {
-		Hotkey({WKC_F1, WKC_PAUSE}, "pause", MTEHK_PAUSE),
-		Hotkey(0, "fastforward", MTEHK_FASTFORWARD),
-		Hotkey(WKC_F2, "settings", MTEHK_SETTINGS),
-		Hotkey(WKC_F3, "saveload", MTEHK_SAVEGAME),
-		Hotkey(WKC_F4, "gen_land", MTEHK_GENLAND),
-		Hotkey(WKC_F5, "gen_town", MTEHK_GENTOWN),
-		Hotkey(WKC_F6, "gen_industry", MTEHK_GENINDUSTRY),
-		Hotkey(WKC_F7, "build_road", MTEHK_BUILD_ROAD),
-		Hotkey(0, "build_tram", MTEHK_BUILD_TRAM),
-		Hotkey(WKC_F8, "build_docks", MTEHK_BUILD_DOCKS),
-		Hotkey(WKC_F9, "build_trees", MTEHK_BUILD_TREES),
-		Hotkey(WKC_F10, "build_sign", MTEHK_SIGN),
-		Hotkey(WKC_F11, "music", MTEHK_MUSIC),
-		Hotkey(WKC_F12, "land_info", MTEHK_LANDINFO),
-		Hotkey(WKC_CTRL  | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
-		Hotkey(WKC_CTRL  | 'P', "zoomedin_screenshot", MTEHK_ZOOMEDIN_SCREENSHOT),
-		Hotkey(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTEHK_DEFAULTZOOM_SCREENSHOT),
-		Hotkey(0, "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
-		Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MTEHK_ZOOM_IN),
-		Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MTEHK_ZOOM_OUT),
-		Hotkey('L', "terraform", MTEHK_TERRAFORM),
-		Hotkey('M', "smallmap", MTEHK_SMALLMAP),
-		Hotkey('V', "extra_viewport", MTEHK_EXTRA_VIEWPORT),
-	}};
+	static inline HotkeyList hotkeys{"scenedit_maintoolbar",
+		{
+			Hotkey({WKC_F1, WKC_PAUSE}, "pause", MTEHK_PAUSE),
+			Hotkey(0, "fastforward", MTEHK_FASTFORWARD),
+			Hotkey(WKC_F2, "settings", MTEHK_SETTINGS),
+			Hotkey(WKC_F3, "saveload", MTEHK_SAVEGAME),
+			Hotkey(WKC_F4, "gen_land", MTEHK_GENLAND),
+			Hotkey(WKC_F5, "gen_town", MTEHK_GENTOWN),
+			Hotkey(WKC_F6, "gen_industry", MTEHK_GENINDUSTRY),
+			Hotkey(WKC_F7, "build_road", MTEHK_BUILD_ROAD),
+			Hotkey(0, "build_tram", MTEHK_BUILD_TRAM),
+			Hotkey(WKC_F8, "build_docks", MTEHK_BUILD_DOCKS),
+			Hotkey(WKC_F9, "build_trees", MTEHK_BUILD_TREES),
+			Hotkey(WKC_F10, "build_sign", MTEHK_SIGN),
+			Hotkey(WKC_F11, "music", MTEHK_MUSIC),
+			Hotkey(WKC_F12, "land_info", MTEHK_LANDINFO),
+			Hotkey(WKC_CTRL | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
+			Hotkey(WKC_CTRL | 'P', "zoomedin_screenshot", MTEHK_ZOOMEDIN_SCREENSHOT),
+			Hotkey(WKC_CTRL | 'D', "defaultzoom_screenshot", MTEHK_DEFAULTZOOM_SCREENSHOT),
+			Hotkey(0, "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
+			Hotkey({WKC_NUM_PLUS, WKC_EQUALS, WKC_SHIFT | WKC_EQUALS, WKC_SHIFT | WKC_F5}, "zoomin", MTEHK_ZOOM_IN),
+			Hotkey({WKC_NUM_MINUS, WKC_MINUS, WKC_SHIFT | WKC_MINUS, WKC_SHIFT | WKC_F6}, "zoomout", MTEHK_ZOOM_OUT),
+			Hotkey('L', "terraform", MTEHK_TERRAFORM),
+			Hotkey('M', "smallmap", MTEHK_SMALLMAP),
+			Hotkey('V', "extra_viewport", MTEHK_EXTRA_VIEWPORT),
+		}};
 };
 
 /* clang-format off */
@@ -2591,12 +2817,7 @@ static constexpr NWidgetPart _nested_toolb_scen_widgets[] = {
 /* clang-format on */
 
 static WindowDesc _toolb_scen_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_MAIN_TOOLBAR, WC_NONE,
-	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
-	_nested_toolb_scen_widgets,
-	&ScenarioEditorToolbarWindow::hotkeys
-);
+	WDP_MANUAL, nullptr, 0, 0, WC_MAIN_TOOLBAR, WC_NONE, {WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose}, _nested_toolb_scen_widgets, &ScenarioEditorToolbarWindow::hotkeys);
 
 /** Allocate the toolbar. */
 void AllocateToolbar()

@@ -8,14 +8,16 @@
 /** @file texteff.cpp Handling of text effects. */
 
 #include "stdafx.h"
+
 #include "texteff.hpp"
-#include "transparency.h"
-#include "strings_func.h"
-#include "viewport_func.h"
-#include "settings_type.h"
+
 #include "command_type.h"
+#include "settings_type.h"
+#include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "transparency.h"
+#include "viewport_func.h"
 
 #include "safeguards.h"
 
@@ -33,7 +35,10 @@ struct TextEffect : public ViewportSign {
 		this->mode = TE_INVALID;
 	}
 
-	inline bool IsValid() const { return this->mode != TE_INVALID; }
+	inline bool IsValid() const
+	{
+		return this->mode != TE_INVALID;
+	}
 };
 
 static std::vector<TextEffect> _text_effects; ///< Text effects are stored there
@@ -43,7 +48,9 @@ TextEffectID AddTextEffect(EncodedString &&msg, int center, int y, uint8_t durat
 {
 	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
-	auto it = std::ranges::find_if(_text_effects, [](const TextEffect &te) { return !te.IsValid(); });
+	auto it = std::ranges::find_if(_text_effects, [](const TextEffect &te) {
+		return !te.IsValid();
+	});
 	if (it == std::end(_text_effects)) {
 		/* _text_effects.size() is the maximum ID + 1 that has been allocated. We should not allocate INVALID_TE_ID or beyond. */
 		if (_text_effects.size() >= INVALID_TE_ID) return INVALID_TE_ID;
@@ -90,23 +97,23 @@ void RemoveTextEffect(TextEffectID te_id)
 
 /** Slowly move text effects upwards. */
 IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::milliseconds(30), [](uint count) {
-	if (_pause_mode.Any() && _game_mode != GM_EDITOR && _settings_game.construction.command_pause_level <= CMDPL_NO_CONSTRUCTION) return;
+																 if (_pause_mode.Any() && _game_mode != GM_EDITOR && _settings_game.construction.command_pause_level <= CMDPL_NO_CONSTRUCTION) return;
 
-	for (TextEffect &te : _text_effects) {
-		if (!te.IsValid()) continue;
-		if (te.mode != TE_RISING) continue;
+																 for (TextEffect &te : _text_effects) {
+																	 if (!te.IsValid()) continue;
+																	 if (te.mode != TE_RISING) continue;
 
-		if (te.duration < count) {
-			te.Reset();
-			continue;
-		}
+																	 if (te.duration < count) {
+																		 te.Reset();
+																		 continue;
+																	 }
 
-		te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
-		te.duration -= count;
-		te.top -= count * ZOOM_BASE;
-		te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
-	}
-}};
+																	 te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
+																	 te.duration -= count;
+																	 te.top -= count * ZOOM_BASE;
+																	 te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
+																 }
+															 }};
 
 void InitTextEffects()
 {

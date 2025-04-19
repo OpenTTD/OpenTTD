@@ -13,32 +13,33 @@
  */
 
 #include "../stdafx.h"
-#include "../timer/timer_game_calendar.h"
-#include "../map_func.h"
-#include "../debug.h"
+
+#include "network_udp.h"
+
+#include "../core/endian_func.hpp"
 #include "core/network_game_info.h"
+#include "core/udp.h"
+#include "../company_base.h"
+#include "../debug.h"
+#include "../map_func.h"
+#include "../newgrf_text.h"
+#include "../rev.h"
+#include "../strings_func.h"
+#include "../timer/timer_game_calendar.h"
+#include "network.h"
 #include "network_gamelist.h"
 #include "network_internal.h"
-#include "network_udp.h"
-#include "network.h"
-#include "../core/endian_func.hpp"
-#include "../company_base.h"
-#include "../rev.h"
-#include "../newgrf_text.h"
-#include "../strings_func.h"
 
 #include "table/strings.h"
 
-#include "core/udp.h"
-
 #include "../safeguards.h"
 
-static bool _network_udp_server;         ///< Is the UDP server started?
-static uint16_t _network_udp_broadcast;    ///< Timeout for the UDP broadcasts.
+static bool _network_udp_server; ///< Is the UDP server started?
+static uint16_t _network_udp_broadcast; ///< Timeout for the UDP broadcasts.
 
 /** Some information about a socket, which exists before the actual socket has been created to provide locking and the likes. */
 struct UDPSocket {
-	const std::string name;                     ///< The name of the socket.
+	const std::string name; ///< The name of the socket.
 	std::unique_ptr<NetworkUDPSocketHandler> socket = nullptr; ///< The actual socket, which may be nullptr when not initialized yet.
 
 	UDPSocket(const std::string &name) : name(name) {}
@@ -64,12 +65,14 @@ static UDPSocket _udp_server("Server"); ///< udp server socket
 class ServerNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
 	void Receive_CLIENT_FIND_SERVER(Packet &p, NetworkAddress &client_addr) override;
+
 public:
 	/**
 	 * Create the socket.
 	 * @param addresses The addresses to bind on.
 	 */
 	ServerNetworkUDPSocketHandler(NetworkAddressList *addresses) : NetworkUDPSocketHandler(addresses) {}
+
 	virtual ~ServerNetworkUDPSocketHandler() = default;
 };
 
@@ -87,6 +90,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, Network
 class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
 protected:
 	void Receive_SERVER_RESPONSE(Packet &p, NetworkAddress &client_addr) override;
+
 public:
 	virtual ~ClientNetworkUDPSocketHandler() = default;
 };

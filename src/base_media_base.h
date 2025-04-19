@@ -10,11 +10,12 @@
 #ifndef BASE_MEDIA_BASE_H
 #define BASE_MEDIA_BASE_H
 
-#include "fileio_func.h"
-#include "textfile_type.h"
-#include "textfile_gui.h"
-#include "3rdparty/md5/md5.h"
 #include <unordered_map>
+#include "3rdparty/md5/md5.h"
+
+#include "fileio_func.h"
+#include "textfile_gui.h"
+#include "textfile_type.h"
 
 /* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
 struct IniFile;
@@ -24,14 +25,14 @@ struct ContentInfo;
 struct MD5File {
 	/** The result of a checksum check */
 	enum ChecksumResult : uint8_t {
-		CR_UNKNOWN,  ///< The file has not been checked yet
-		CR_MATCH,    ///< The file did exist and the md5 checksum did match
+		CR_UNKNOWN, ///< The file has not been checked yet
+		CR_MATCH, ///< The file did exist and the md5 checksum did match
 		CR_MISMATCH, ///< The file did exist, just the md5 checksum did not match
-		CR_NO_FILE,  ///< The file did not exist
+		CR_NO_FILE, ///< The file did not exist
 	};
 
-	std::string filename;        ///< filename
-	MD5Hash hash;                ///< md5 sum of the file
+	std::string filename; ///< filename
+	MD5Hash hash; ///< md5 sum of the file
 	std::string missing_warning; ///< warning when this file is missing
 	ChecksumResult check_result; ///< cached result of md5 check
 
@@ -39,7 +40,8 @@ struct MD5File {
 };
 
 /** Defines the traits of a BaseSet type. */
-template <class T> struct BaseSetTraits;
+template <class T>
+struct BaseSetTraits;
 
 /**
  * Information about a single base set.
@@ -58,8 +60,8 @@ struct BaseSet {
 	/** BaseSet type name. */
 	static constexpr std::string_view SET_TYPE = BaseSetTraits<T>::set_type;
 
-	std::string name;              ///< The name of the base set
-	std::string url;               ///< URL for information about the base set
+	std::string name; ///< The name of the base set
+	std::string url; ///< URL for information about the base set
 	TranslatedStrings description; ///< Description of the base set
 	uint32_t shortname = 0; ///< Four letter short variant of the name
 	uint32_t version = 0; ///< The version of this base set
@@ -97,6 +99,7 @@ struct BaseSet {
 	}
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
+
 	void CopyCompatibleConfig([[maybe_unused]] const T &src) {}
 
 	/**
@@ -177,6 +180,7 @@ protected:
 	 * @return the extension
 	 */
 	static const char *GetExtension();
+
 public:
 	/**
 	 * Determine the graphics pack that has to be used.

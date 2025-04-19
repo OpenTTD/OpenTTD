@@ -8,8 +8,10 @@
 /** @file linkgraph.cpp Definition of link graph classes used for cargo distribution. */
 
 #include "../stdafx.h"
-#include "../core/pool_func.hpp"
+
 #include "linkgraph.h"
+
+#include "../core/pool_func.hpp"
 
 #include "../safeguards.h"
 

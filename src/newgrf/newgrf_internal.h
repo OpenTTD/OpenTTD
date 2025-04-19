@@ -18,10 +18,10 @@
 
 /** Possible return values for the GrfChangeInfoHandler functions */
 enum ChangeInfoResult : uint8_t {
-	CIR_SUCCESS,    ///< Variable was parsed and read
-	CIR_DISABLED,   ///< GRF was disabled due to error
-	CIR_UNHANDLED,  ///< Variable was parsed but unread
-	CIR_UNKNOWN,    ///< Variable is unknown
+	CIR_SUCCESS, ///< Variable was parsed and read
+	CIR_DISABLED, ///< GRF was disabled due to error
+	CIR_UNHANDLED, ///< Variable was parsed but unread
+	CIR_UNKNOWN, ///< Variable is unknown
 	CIR_INVALID_ID, ///< Attempt to modify an invalid ID
 };
 
@@ -50,7 +50,7 @@ struct GrfProcessingState {
 private:
 	/** Definition of a single Action1 spriteset */
 	struct SpriteSet {
-		SpriteID sprite;  ///< SpriteID of the first sprite of the set.
+		SpriteID sprite; ///< SpriteID of the first sprite of the set.
 		uint num_sprites; ///< Number of sprites in the set.
 	};
 
@@ -59,17 +59,17 @@ private:
 
 public:
 	/* Global state */
-	GrfLoadingStage stage;    ///< Current loading stage
-	SpriteID spriteid;        ///< First available SpriteID for loading realsprites.
+	GrfLoadingStage stage; ///< Current loading stage
+	SpriteID spriteid; ///< First available SpriteID for loading realsprites.
 
 	/* Local state in the file */
-	SpriteFile *file;         ///< File of currently processed GRF file.
-	GRFFile *grffile;         ///< Currently processed GRF file.
-	GRFConfig *grfconfig;     ///< Config of the currently processed GRF file.
-	uint32_t nfo_line;          ///< Currently processed pseudo sprite number in the GRF.
+	SpriteFile *file; ///< File of currently processed GRF file.
+	GRFFile *grffile; ///< Currently processed GRF file.
+	GRFConfig *grfconfig; ///< Config of the currently processed GRF file.
+	uint32_t nfo_line; ///< Currently processed pseudo sprite number in the GRF.
 
 	/* Kind of return values when processing certain actions */
-	int skip_sprites;         ///< Number of pseudo sprites to skip before processing the next one. (-1 to skip to end of file)
+	int skip_sprites; ///< Number of pseudo sprites to skip before processing the next one. (-1 to skip to end of file)
 
 	/* Currently referenceable spritegroups */
 	std::array<const SpriteGroup *, MAX_SPRITEGROUP + 1> spritegroups{};
@@ -161,14 +161,14 @@ struct GRFLocation {
 	uint32_t grfid;
 	uint32_t nfoline;
 
-	GRFLocation(uint32_t grfid, uint32_t nfoline) : grfid(grfid), nfoline(nfoline) { }
+	GRFLocation(uint32_t grfid, uint32_t nfoline) : grfid(grfid), nfoline(nfoline) {}
 
-	bool operator <(const GRFLocation &other) const
+	bool operator<(const GRFLocation &other) const
 	{
 		return this->grfid < other.grfid || (this->grfid == other.grfid && this->nfoline < other.nfoline);
 	}
 
-	bool operator ==(const GRFLocation &other) const
+	bool operator==(const GRFLocation &other) const
 	{
 		return this->grfid == other.grfid && this->nfoline == other.nfoline;
 	}
@@ -192,7 +192,8 @@ void SkipBadgeList(ByteReader &buf);
 std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature);
 
 void MapSpriteMappingRecolour(PalSpriteID *grf_sprite);
-TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset = nullptr, uint16_t *max_palette_offset = nullptr);
+TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset = nullptr,
+	uint16_t *max_palette_offset = nullptr);
 bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_spritesets, uint8_t feature, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts);
 
 GRFFile *GetFileByGRFID(uint32_t grfid);

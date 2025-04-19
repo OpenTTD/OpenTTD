@@ -10,13 +10,13 @@
 #ifndef CARGOTYPE_H
 #define CARGOTYPE_H
 
-#include "economy_type.h"
+#include "core/bitmath_func.hpp"
 #include "cargo_type.h"
+#include "economy_type.h"
 #include "gfx_type.h"
+#include "landscape_type.h"
 #include "newgrf_callbacks.h"
 #include "strings_type.h"
-#include "landscape_type.h"
-#include "core/bitmath_func.hpp"
 
 /** Town growth effect when delivering cargo. */
 enum TownAcceptanceEffect : uint8_t {
@@ -47,22 +47,22 @@ enum TownProductionEffect : uint8_t {
 
 /** Cargo classes. */
 enum class CargoClass : uint8_t {
-	Passengers   =  0, ///< Passengers
-	Mail         =  1, ///< Mail
-	Express      =  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
-	Armoured     =  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
-	Bulk         =  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
-	PieceGoods   =  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
-	Liquid       =  6, ///< Liquids (Oil, Water, Rubber)
-	Refrigerated =  7, ///< Refrigerated cargo (Food, Fruit)
-	Hazardous    =  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
-	Covered      =  9, ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
-	Oversized    = 10, ///< Oversized (stake/flatbed wagon)
-	Powderized   = 11, ///< Powderized, moist protected (powder/silo wagon)
-	NotPourable  = 12, ///< Not Pourable (open wagon, but not hopper wagon)
-	Potable      = 13, ///< Potable / food / clean.
-	NonPotable   = 14, ///< Non-potable / non-food / dirty.
-	Special      = 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
+	Passengers = 0, ///< Passengers
+	Mail = 1, ///< Mail
+	Express = 2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
+	Armoured = 3, ///< Armoured cargo (Valuables, Gold, Diamonds)
+	Bulk = 4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
+	PieceGoods = 5, ///< Piece goods (Livestock, Wood, Steel, Paper)
+	Liquid = 6, ///< Liquids (Oil, Water, Rubber)
+	Refrigerated = 7, ///< Refrigerated cargo (Food, Fruit)
+	Hazardous = 8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
+	Covered = 9, ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
+	Oversized = 10, ///< Oversized (stake/flatbed wagon)
+	Powderized = 11, ///< Powderized, moist protected (powder/silo wagon)
+	NotPourable = 12, ///< Not Pourable (open wagon, but not hopper wagon)
+	Potable = 13, ///< Potable / food / clean.
+	NonPotable = 14, ///< Non-potable / non-food / dirty.
+	Special = 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 using CargoClasses = EnumBitSet<CargoClass, uint16_t>;
 
@@ -72,31 +72,31 @@ static const uint TOWN_PRODUCTION_DIVISOR = 256;
 
 /** Specification of a cargo type. */
 struct CargoSpec {
-	CargoLabel label;                ///< Unique label of the cargo type.
+	CargoLabel label; ///< Unique label of the cargo type.
 	uint8_t bitnum = INVALID_CARGO_BITNUM; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
 	uint8_t legend_colour;
 	uint8_t rating_colour;
-	uint8_t weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
+	uint8_t weight; ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
 	uint16_t multiplier = 0x100; ///< Capacity multiplier for vehicles. (8 fractional bits)
 	CargoClasses classes; ///< Classes of this cargo type. @see CargoClass
-	int32_t initial_payment;           ///< Initial payment rate before inflation is applied.
+	int32_t initial_payment; ///< Initial payment rate before inflation is applied.
 	uint8_t transit_periods[2];
 
-	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
+	bool is_freight; ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownAcceptanceEffect town_acceptance_effect; ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
 	TownProductionEffect town_production_effect = INVALID_TPE; ///< The effect on town cargo production.
 	uint16_t town_production_multiplier = TOWN_PRODUCTION_DIVISOR; ///< Town production multiplier, if commanded by TownProductionEffect.
-	CargoCallbackMasks callback_mask;             ///< Bitmask of cargo callbacks that have to be called
+	CargoCallbackMasks callback_mask; ///< Bitmask of cargo callbacks that have to be called
 
-	StringID name;                   ///< Name of this type of cargo.
-	StringID name_single;            ///< Name of a single entity of this type of cargo.
-	StringID units_volume;           ///< Name of a single unit of cargo of this type.
-	StringID quantifier;             ///< Text for multiple units of cargo of this type.
-	StringID abbrev;                 ///< Two letter abbreviation for this cargo type.
+	StringID name; ///< Name of this type of cargo.
+	StringID name_single; ///< Name of a single entity of this type of cargo.
+	StringID units_volume; ///< Name of a single unit of cargo of this type.
+	StringID quantifier; ///< Text for multiple units of cargo of this type.
+	StringID abbrev; ///< Two letter abbreviation for this cargo type.
 
-	SpriteID sprite;                 ///< Icon to display this cargo type, may be \c 0xFFF (which means to resolve an action123 chain).
+	SpriteID sprite; ///< Icon to display this cargo type, may be \c 0xFFF (which means to resolve an action123 chain).
 
-	const struct GRFFile *grffile;   ///< NewGRF where #group belongs to.
+	const struct GRFFile *grffile; ///< NewGRF where #group belongs to.
 	const struct SpriteGroup *group;
 
 	Money current_payment;
@@ -164,13 +164,30 @@ struct CargoSpec {
 			this->ValidateIndex();
 		};
 
-		bool operator==(const Iterator &other) const { return this->index == other.index; }
-		CargoSpec * operator*() const { return CargoSpec::Get(this->index); }
-		Iterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
+		bool operator==(const Iterator &other) const
+		{
+			return this->index == other.index;
+		}
+
+		CargoSpec *operator*() const
+		{
+			return CargoSpec::Get(this->index);
+		}
+
+		Iterator &operator++()
+		{
+			this->index++;
+			this->ValidateIndex();
+			return *this;
+		}
 
 	private:
 		size_t index;
-		void ValidateIndex() { while (this->index < CargoSpec::GetArraySize() && !(CargoSpec::Get(this->index)->IsValid())) this->index++; }
+
+		void ValidateIndex()
+		{
+			while (this->index < CargoSpec::GetArraySize() && !(CargoSpec::Get(this->index)->IsValid())) this->index++;
+		}
 	};
 
 	/*
@@ -178,10 +195,23 @@ struct CargoSpec {
 	 */
 	struct IterateWrapper {
 		size_t from;
+
 		IterateWrapper(size_t from = 0) : from(from) {}
-		Iterator begin() { return Iterator(this->from); }
-		Iterator end() { return Iterator(CargoSpec::GetArraySize()); }
-		bool empty() { return this->begin() == this->end(); }
+
+		Iterator begin()
+		{
+			return Iterator(this->from);
+		}
+
+		Iterator end()
+		{
+			return Iterator(CargoSpec::GetArraySize());
+		}
+
+		bool empty()
+		{
+			return this->begin() == this->end();
+		}
 	};
 
 	/**
@@ -189,7 +219,10 @@ struct CargoSpec {
 	 * @param from index of the first CargoSpec to consider
 	 * @return an iterable ensemble of all valid CargoSpec
 	 */
-	static IterateWrapper Iterate(size_t from = 0) { return IterateWrapper(from); }
+	static IterateWrapper Iterate(size_t from = 0)
+	{
+		return IterateWrapper(from);
+	}
 
 	/** List of cargo specs for each Town Product Effect. */
 	static std::array<std::vector<const CargoSpec *>, NUM_TPE> town_production_cargoes;
@@ -242,7 +275,10 @@ using SetCargoBitIterator = SetBitIterator<CargoType, CargoTypes>;
 
 /** Comparator to sort CargoType by according to desired order. */
 struct CargoTypeComparator {
-	bool operator() (const CargoType &lhs, const CargoType &rhs) const { return _sorted_cargo_types[lhs] < _sorted_cargo_types[rhs]; }
+	bool operator()(const CargoType &lhs, const CargoType &rhs) const
+	{
+		return _sorted_cargo_types[lhs] < _sorted_cargo_types[rhs];
+	}
 };
 
 #endif /* CARGOTYPE_H */

@@ -14,7 +14,7 @@
 #include "tile_cmd.h"
 
 static const uint SNOW_LINE_MONTHS = 12; ///< Number of months in the snow line table.
-static const uint SNOW_LINE_DAYS   = 32; ///< Number of days in each month in the snow line table.
+static const uint SNOW_LINE_DAYS = 32; ///< Number of days in each month in the snow line table.
 
 /**
  * Structure describing the height of the snow line each day of the year
@@ -115,6 +115,7 @@ inline Point InverseRemapCoords(int x, int y)
 Point InverseRemapCoords2(int x, int y, bool clamp_to_map = false, bool *clamped = nullptr);
 
 uint ApplyFoundationToSlope(Foundation f, Slope &s);
+
 /**
  * Applies a foundation to a slope.
  *

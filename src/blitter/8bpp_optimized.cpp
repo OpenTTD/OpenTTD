@@ -8,11 +8,13 @@
 /** @file 8bpp_optimized.cpp Implementation of the optimized 8 bpp blitter. */
 
 #include "../stdafx.h"
-#include "../zoom_func.h"
-#include "../settings_type.h"
+
+#include "8bpp_optimized.hpp"
+
 #include "../core/math_func.hpp"
 #include "../core/mem_func.hpp"
-#include "8bpp_optimized.hpp"
+#include "../settings_type.h"
+#include "../zoom_func.h"
 
 #include "../safeguards.h"
 
@@ -90,7 +92,8 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 					do {
 						uint m = remap[*src];
 						if (m != 0) *dst = m;
-						dst++; src++;
+						dst++;
+						src++;
 					} while (--pixels != 0);
 					break;
 				}
@@ -113,7 +116,8 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 
 				default:
 					MemCpyT(dst, src, pixels);
-					dst += pixels; src += pixels;
+					dst += pixels;
+					src += pixels;
 					break;
 			}
 		}
@@ -159,7 +163,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 
 		/* cache values, because compiler can't cache it */
 		int scaled_height = sprite[i].height;
-		int scaled_width  = sprite[i].width;
+		int scaled_width = sprite[i].width;
 
 		for (int y = 0; y < scaled_height; y++) {
 			uint trans = 0;
@@ -207,8 +211,10 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 			if (count_dst != nullptr) *count_dst = pixels;
 
 			/* Write line-ending */
-			*dst = 0; dst++;
-			*dst = 0; dst++;
+			*dst = 0;
+			dst++;
+			*dst = 0;
+			dst++;
 		}
 	}
 
@@ -221,7 +227,7 @@ Sprite *Blitter_8bppOptimized::Encode(const SpriteLoader::SpriteCollection &spri
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + size);
 
 	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dest_sprite->width = sprite[ZOOM_LVL_MIN].width;
 	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
 	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 	memcpy(dest_sprite->data, temp_dst, size);

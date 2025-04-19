@@ -8,38 +8,40 @@
 /** @file ship_cmd.cpp Handling of ships. */
 
 #include "stdafx.h"
-#include "ship.h"
-#include "landscape.h"
-#include "timetable.h"
-#include "news_func.h"
-#include "company_func.h"
-#include "depot_base.h"
-#include "station_base.h"
-#include "newgrf_engine.h"
-#include "pathfinder/yapf/yapf.h"
-#include "pathfinder/yapf/yapf_ship_regions.h"
-#include "newgrf_sound.h"
-#include "spritecache.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "timer/timer_game_calendar.h"
-#include "timer/timer_game_economy.h"
-#include "vehicle_func.h"
-#include "sound_func.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
-#include "engine_base.h"
-#include "company_base.h"
-#include "tunnelbridge_map.h"
-#include "zoom_func.h"
-#include "framerate_type.h"
-#include "industry.h"
-#include "industry_map.h"
+
 #include "ship_cmd.h"
 
-#include "table/strings.h"
-
 #include <unordered_set>
+
+#include "ai/ai.hpp"
+#include "company_base.h"
+#include "company_func.h"
+#include "depot_base.h"
+#include "engine_base.h"
+#include "framerate_type.h"
+#include "game/game.hpp"
+#include "industry.h"
+#include "industry_map.h"
+#include "landscape.h"
+#include "newgrf_engine.h"
+#include "newgrf_sound.h"
+#include "news_func.h"
+#include "pathfinder/yapf/yapf.h"
+#include "pathfinder/yapf/yapf_ship_regions.h"
+#include "ship.h"
+#include "sound_func.h"
+#include "spritecache.h"
+#include "station_base.h"
+#include "strings_func.h"
+#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
+#include "timetable.h"
+#include "tunnelbridge_map.h"
+#include "vehicle_func.h"
+#include "window_func.h"
+#include "zoom_func.h"
+
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -101,9 +103,7 @@ void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine
 
 	Rect rect;
 	seq.GetBounds(&rect);
-	preferred_x = Clamp(preferred_x,
-			left - UnScaleGUI(rect.left),
-			right - UnScaleGUI(rect.right));
+	preferred_x = Clamp(preferred_x, left - UnScaleGUI(rect.left), right - UnScaleGUI(rect.right));
 
 	seq.Draw(preferred_x, y, pal, pal == PALETTE_CRASH);
 }
@@ -125,10 +125,10 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, i
 	Rect rect;
 	seq.GetBounds(&rect);
 
-	width  = UnScaleGUI(rect.Width());
+	width = UnScaleGUI(rect.Width());
 	height = UnScaleGUI(rect.Height());
-	xoffs  = UnScaleGUI(rect.left);
-	yoffs  = UnScaleGUI(rect.top);
+	xoffs = UnScaleGUI(rect.left);
+	yoffs = UnScaleGUI(rect.top);
 }
 
 void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const
@@ -170,8 +170,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 		/* Add neighbours of the current patch to the search queue. */
 		TVisitWaterRegionPatchCallBack visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
 			/* Note that we check the max distance per axis, not the total distance. */
-			if (std::abs(water_region_patch.x - start_patch.x) > max_region_distance ||
-					std::abs(water_region_patch.y - start_patch.y) > max_region_distance) return;
+			if (std::abs(water_region_patch.x - start_patch.x) > max_region_distance || std::abs(water_region_patch.y - start_patch.y) > max_region_distance) return;
 
 			const int hash = CalculateWaterRegionPatchHash(water_region_patch);
 			if (visited_patch_hashes.count(hash) == 0) {
@@ -190,8 +189,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 		const TileIndex tile = depot->xy;
 		if (IsShipDepotTile(tile) && IsTileOwner(tile, v->owner)) {
 			const uint dist_sq = DistanceSquare(tile, v->tile);
-			if (dist_sq < best_dist_sq && dist_sq <= max_distance * max_distance &&
-					visited_patch_hashes.count(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(tile))) > 0) {
+			if (dist_sq < best_dist_sq && dist_sq <= max_distance * max_distance && visited_patch_hashes.count(CalculateWaterRegionPatchHash(GetWaterRegionPatchInfo(tile))) > 0) {
 				best_dist_sq = dist_sq;
 				best_depot = depot;
 			}
@@ -332,22 +330,22 @@ void Ship::UpdateDeltaXY()
 {
 	static const int8_t _delta_xy_table[8][4] = {
 		/* y_extent, x_extent, y_offs, x_offs */
-		{ 6,  6,  -3,  -3}, // N
-		{ 6, 32,  -3, -16}, // NE
-		{ 6,  6,  -3,  -3}, // E
-		{32,  6, -16,  -3}, // SE
-		{ 6,  6,  -3,  -3}, // S
-		{ 6, 32,  -3, -16}, // SW
-		{ 6,  6,  -3,  -3}, // W
-		{32,  6, -16,  -3}, // NW
+		{6, 6, -3, -3}, // N
+		{6, 32, -3, -16}, // NE
+		{6, 6, -3, -3}, // E
+		{32, 6, -16, -3}, // SE
+		{6, 6, -3, -3}, // S
+		{6, 32, -3, -16}, // SW
+		{6, 6, -3, -3}, // W
+		{32, 6, -16, -3}, // NW
 	};
 
 	const int8_t *bb = _delta_xy_table[this->rotation];
-	this->x_offs        = bb[3];
-	this->y_offs        = bb[2];
-	this->x_extent      = bb[1];
-	this->y_extent      = bb[0];
-	this->z_extent      = 6;
+	this->x_offs = bb[3];
+	this->y_offs = bb[2];
+	this->x_extent = bb[1];
+	this->y_extent = bb[0];
+	this->z_extent = 6;
 
 	if (this->direction != this->rotation) {
 		/* If we are rotating, then it is possible the ship was moved to its next position. In that
@@ -381,8 +379,7 @@ static bool CheckShipLeaveDepot(Ship *v)
 	if (v->IsWaitingForUnbunching()) return true;
 
 	/* We are leaving a depot, but have to go to the exact same one; re-enter */
-	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			IsShipDepotTile(v->tile) && GetDepotIndex(v->tile) == v->current_order.GetDestination()) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT) && IsShipDepotTile(v->tile) && GetDepotIndex(v->tile) == v->current_order.GetDestination()) {
 		VehicleEnterDepot(v);
 		return true;
 	}
@@ -471,17 +468,11 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 	if (!(st->had_vehicle_of_type & HVOT_SHIP)) {
 		st->had_vehicle_of_type |= HVOT_SHIP;
 
-		AddVehicleNewsItem(
-			GetEncodedString(STR_NEWS_FIRST_SHIP_ARRIVAL, st->index),
-			(v->owner == _local_company) ? NewsType::ArrivalCompany : NewsType::ArrivalOther,
-			v->index,
-			st->index
-		);
+		AddVehicleNewsItem(GetEncodedString(STR_NEWS_FIRST_SHIP_ARRIVAL, st->index), (v->owner == _local_company) ? NewsType::ArrivalCompany : NewsType::ArrivalOther, v->index, st->index);
 		AI::NewEvent(v->owner, new ScriptEventStationFirstVehicle(st->index, v->index));
 		Game::NewEvent(new ScriptEventStationFirstVehicle(st->index, v->index));
 	}
 }
-
 
 /**
  * Runs the pathfinder to choose a track to continue along.
@@ -541,8 +532,9 @@ static inline TrackBits GetAvailShipTracks(TileIndex tile, DiagDirection dir)
 struct ShipSubcoordData {
 	uint8_t x_subcoord; ///< New X sub-coordinate on the new tile
 	uint8_t y_subcoord; ///< New Y sub-coordinate on the new tile
-	Direction dir;   ///< New Direction to move in on the new track
+	Direction dir; ///< New Direction to move in on the new track
 };
+
 /** Ship sub-coordinate data for moving into a new tile via a Diagdir onto a Track.
  * Array indexes are Diagdir, Track.
  * There will always be three possible tracks going into an adjacent tile via a Diagdir,
@@ -551,41 +543,40 @@ struct ShipSubcoordData {
 static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 	/* DIAGDIR_NE */
 	{
-		{15,  8, DIR_NE},      // TRACK_X
-		{ 0,  0, INVALID_DIR}, // TRACK_Y
-		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
-		{15,  8, DIR_E},       // TRACK_LOWER
-		{15,  7, DIR_N},       // TRACK_LEFT
-		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
+		{15, 8, DIR_NE}, // TRACK_X
+		{0, 0, INVALID_DIR}, // TRACK_Y
+		{0, 0, INVALID_DIR}, // TRACK_UPPER
+		{15, 8, DIR_E}, // TRACK_LOWER
+		{15, 7, DIR_N}, // TRACK_LEFT
+		{0, 0, INVALID_DIR}, // TRACK_RIGHT
 	},
 	/* DIAGDIR_SE */
 	{
-		{ 0,  0, INVALID_DIR}, // TRACK_X
-		{ 8,  0, DIR_SE},      // TRACK_Y
-		{ 7,  0, DIR_E},       // TRACK_UPPER
-		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
-		{ 8,  0, DIR_S},       // TRACK_LEFT
-		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
+		{0, 0, INVALID_DIR}, // TRACK_X
+		{8, 0, DIR_SE}, // TRACK_Y
+		{7, 0, DIR_E}, // TRACK_UPPER
+		{0, 0, INVALID_DIR}, // TRACK_LOWER
+		{8, 0, DIR_S}, // TRACK_LEFT
+		{0, 0, INVALID_DIR}, // TRACK_RIGHT
 	},
 	/* DIAGDIR_SW */
 	{
-		{ 0,  8, DIR_SW},      // TRACK_X
-		{ 0,  0, INVALID_DIR}, // TRACK_Y
-		{ 0,  7, DIR_W},       // TRACK_UPPER
-		{ 0,  0, INVALID_DIR}, // TRACK_LOWER
-		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
-		{ 0,  8, DIR_S},       // TRACK_RIGHT
+		{0, 8, DIR_SW}, // TRACK_X
+		{0, 0, INVALID_DIR}, // TRACK_Y
+		{0, 7, DIR_W}, // TRACK_UPPER
+		{0, 0, INVALID_DIR}, // TRACK_LOWER
+		{0, 0, INVALID_DIR}, // TRACK_LEFT
+		{0, 8, DIR_S}, // TRACK_RIGHT
 	},
 	/* DIAGDIR_NW */
 	{
-		{ 0,  0, INVALID_DIR}, // TRACK_X
-		{ 8, 15, DIR_NW},      // TRACK_Y
-		{ 0,  0, INVALID_DIR}, // TRACK_UPPER
-		{ 8, 15, DIR_W},       // TRACK_LOWER
-		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
-		{ 7, 15, DIR_N},       // TRACK_RIGHT
-	}
-};
+		{0, 0, INVALID_DIR}, // TRACK_X
+		{8, 15, DIR_NW}, // TRACK_Y
+		{0, 0, INVALID_DIR}, // TRACK_UPPER
+		{8, 15, DIR_W}, // TRACK_LOWER
+		{0, 0, INVALID_DIR}, // TRACK_LEFT
+		{7, 15, DIR_N}, // TRACK_RIGHT
+	}};
 
 /**
  * Test if a ship is in the centre of a lock and should move up or down.
@@ -663,8 +654,22 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 static void ReverseShipIntoTrackdir(Ship *v, Trackdir trackdir)
 {
 	static constexpr Direction _trackdir_to_direction[] = {
-		DIR_NE, DIR_SE, DIR_E, DIR_E, DIR_S, DIR_S, INVALID_DIR, INVALID_DIR,
-		DIR_SW, DIR_NW, DIR_W, DIR_W, DIR_N, DIR_N, INVALID_DIR, INVALID_DIR,
+		DIR_NE,
+		DIR_SE,
+		DIR_E,
+		DIR_E,
+		DIR_S,
+		DIR_S,
+		INVALID_DIR,
+		INVALID_DIR,
+		DIR_SW,
+		DIR_NW,
+		DIR_W,
+		DIR_W,
+		DIR_N,
+		DIR_N,
+		INVALID_DIR,
+		INVALID_DIR,
 	};
 
 	v->direction = _trackdir_to_direction[trackdir];
@@ -756,15 +761,13 @@ static void ShipController(Ship *v)
 						if (TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0, exitdir)) == TRACK_BIT_NONE) return ReverseShip(v);
 					} else if (v->dest_tile != 0) {
 						/* We have a target, let's see if we reached it... */
-						if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
-								DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
+						if (v->current_order.IsType(OT_GOTO_WAYPOINT) && DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
 							/* We got within 3 tiles of our target buoy, so let's skip to our
 							 * next order */
 							UpdateVehicleTimetable(v, true);
 							v->IncrementRealOrderIndex();
 							v->current_order.MakeDummy();
-						} else if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-							v->dest_tile == gp.new_tile) {
+						} else if (v->current_order.IsType(OT_GOTO_DEPOT) && v->dest_tile == gp.new_tile) {
 							/* Depot orders really need to reach the tile */
 							if ((gp.x & 0xF) == 8 && (gp.y & 0xF) == 8) {
 								VehicleEnterDepot(v);

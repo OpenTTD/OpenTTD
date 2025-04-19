@@ -8,24 +8,24 @@
 /** @file goal_gui.cpp GUI for goals. */
 
 #include "stdafx.h"
-#include "industry.h"
-#include "town.h"
-#include "window_gui.h"
-#include "strings_func.h"
-#include "viewport_func.h"
-#include "gui.h"
-#include "goal_base.h"
+
 #include "core/geometry_func.hpp"
-#include "company_func.h"
-#include "company_base.h"
-#include "company_gui.h"
-#include "story_base.h"
 #include "command_func.h"
-#include "string_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "company_gui.h"
+#include "goal_base.h"
 #include "goal_cmd.h"
+#include "gui.h"
+#include "industry.h"
+#include "story_base.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "town.h"
+#include "viewport_func.h"
+#include "window_gui.h"
 
 #include "widgets/goal_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -100,7 +100,8 @@ struct GoalListWindow : public Window {
 		/* Determine dst coordinate for goal and try to scroll to it. */
 		TileIndex xy;
 		switch (s->type) {
-			case GT_NONE: return;
+			case GT_NONE:
+				return;
 
 			case GT_COMPANY:
 				/* s->dst here is not a tile, but a CompanyID.
@@ -138,7 +139,8 @@ struct GoalListWindow : public Window {
 				return;
 			}
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 
 		if (_ctrl_pressed) {
@@ -251,7 +253,6 @@ struct GoalListWindow : public Window {
 		/* Draw goal list. */
 		this->DrawListColumn(GC_PROGRESS, wid, progress_col_width);
 		this->DrawListColumn(GC_GOAL, wid, progress_col_width);
-
 	}
 
 	void OnResize() override
@@ -299,12 +300,7 @@ static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _goals_list_desc(
-	WDP_AUTO, "list_goals", 500, 127,
-	WC_GOALS_LIST, WC_NONE,
-	{},
-	_nested_goals_list_widgets
-);
+static WindowDesc _goals_list_desc(WDP_AUTO, "list_goals", 500, 127, WC_GOALS_LIST, WC_NONE, {}, _nested_goals_list_widgets);
 
 /**
  * Open a goal list window.
@@ -346,7 +342,6 @@ struct GoalQuestionWindow : public Window {
 		}
 		this->FinishInitNested(window_number);
 	}
-
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
@@ -410,58 +405,88 @@ template <Colours bg_colour, Colours btn_colour, StringID caption>
 struct NestedGoalWidgets {
 	static constexpr auto widgetparts = {
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_CLOSEBOX, bg_colour),
-			NWidget(WWT_CAPTION, bg_colour, WID_GQ_CAPTION), SetStringTip(STR_GOAL_QUESTION_CAPTION_QUESTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CLOSEBOX, bg_colour),
+		NWidget(WWT_CAPTION, bg_colour, WID_GQ_CAPTION),
+		SetStringTip(STR_GOAL_QUESTION_CAPTION_QUESTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		EndContainer(),
 		NWidget(WWT_PANEL, bg_colour),
-			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.modalpopup), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetFill(1, 0),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
-					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(85, WidgetDimensions::unscaled.hsep_wide, 85),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
-					EndContainer(),
-					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(65, WidgetDimensions::unscaled.hsep_wide, 65),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_2), SetFill(1, 0),
-					EndContainer(),
-					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(25, WidgetDimensions::unscaled.hsep_wide, 25),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_2), SetFill(1, 0),
-						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_3), SetFill(1, 0),
-					EndContainer(),
-				EndContainer(),
-			EndContainer(),
+		NWidget(NWID_VERTICAL),
+		SetPadding(WidgetDimensions::unscaled.modalpopup),
+		SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION),
+		SetMinimalSize(300, 0),
+		SetFill(1, 0),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
+		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		SetPIP(85, WidgetDimensions::unscaled.hsep_wide, 85),
+		NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1),
+		SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		SetPIP(65, WidgetDimensions::unscaled.hsep_wide, 65),
+		NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1),
+		SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_2),
+		SetFill(1, 0),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		SetPIP(25, WidgetDimensions::unscaled.hsep_wide, 25),
+		NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1),
+		SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_2),
+		SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_3),
+		SetFill(1, 0),
+		EndContainer(),
+		EndContainer(),
+		EndContainer(),
 		EndContainer(),
 	};
 };
 
 static constexpr auto _nested_goal_question_widgets_question = NestedGoalWidgets<COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, STR_GOAL_QUESTION_CAPTION_QUESTION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_info     = NestedGoalWidgets<COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, STR_GOAL_QUESTION_CAPTION_INFORMATION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets<COLOUR_YELLOW,     COLOUR_YELLOW,     STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<COLOUR_RED,        COLOUR_YELLOW,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_info = NestedGoalWidgets<COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, STR_GOAL_QUESTION_CAPTION_INFORMATION>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_warning = NestedGoalWidgets<COLOUR_YELLOW, COLOUR_YELLOW, STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_error = NestedGoalWidgets<COLOUR_RED, COLOUR_YELLOW, STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
 
 static WindowDesc _goal_question_list_desc[] = {
 	{
-		WDP_CENTER, nullptr, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WDP_CENTER,
+		nullptr,
+		0,
+		0,
+		WC_GOAL_QUESTION,
+		WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_question,
 	},
 	{
-		WDP_CENTER, nullptr, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WDP_CENTER,
+		nullptr,
+		0,
+		0,
+		WC_GOAL_QUESTION,
+		WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_info,
 	},
 	{
-		WDP_CENTER, nullptr, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WDP_CENTER,
+		nullptr,
+		0,
+		0,
+		WC_GOAL_QUESTION,
+		WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_warning,
 	},
 	{
-		WDP_CENTER, nullptr, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WDP_CENTER,
+		nullptr,
+		0,
+		0,
+		WC_GOAL_QUESTION,
+		WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_error,
 	},

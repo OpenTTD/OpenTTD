@@ -8,6 +8,7 @@
 /** @file newgrf_actc.cpp NewGRF Action 0x0C handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../string_func.h"
 #include "newgrf_bytereader.h"
@@ -28,9 +29,34 @@ static void GRFComment(ByteReader &buf)
 	GrfMsg(2, "GRFComment: {}", StrMakeValid(text));
 }
 
-template <> void GrfActionHandler<0x0C>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0C>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0C>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0C>::Init(ByteReader &buf) { GRFComment(buf); }
-template <> void GrfActionHandler<0x0C>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x0C>::Activation(ByteReader &buf) { GRFComment(buf); }
+template <>
+void GrfActionHandler<0x0C>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0C>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0C>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0C>::Init(ByteReader &buf)
+{
+	GRFComment(buf);
+}
+
+template <>
+void GrfActionHandler<0x0C>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0C>::Activation(ByteReader &buf)
+{
+	GRFComment(buf);
+}

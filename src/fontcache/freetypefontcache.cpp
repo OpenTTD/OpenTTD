@@ -8,14 +8,15 @@
 /** @file freetypefontcache.cpp FreeType font cache implementation. */
 
 #include "../stdafx.h"
+
+#include "../core/math_func.hpp"
+#include "../blitter/factory.hpp"
 #include "../debug.h"
+#include "../error_func.h"
+#include "../fileio_func.h"
 #include "../fontcache.h"
 #include "../fontdetection.h"
-#include "../blitter/factory.hpp"
-#include "../core/math_func.hpp"
 #include "../zoom_func.h"
-#include "../fileio_func.h"
-#include "../error_func.h"
 #include "truetypefontcache.h"
 
 #include "../table/control_codes.h"
@@ -23,15 +24,15 @@
 #include "../safeguards.h"
 
 #ifdef WITH_FREETYPE
-#include <ft2build.h>
-#include FT_FREETYPE_H
-#include FT_GLYPH_H
-#include FT_TRUETYPE_TABLES_H
+#	include <ft2build.h>
+#	include FT_FREETYPE_H
+#	include FT_GLYPH_H
+#	include FT_TRUETYPE_TABLES_H
 
 /** Font cache for fonts that are based on a freetype font. */
 class FreeTypeFontCache : public TrueTypeFontCache {
 private:
-	FT_Face face;  ///< The font face associated with this font.
+	FT_Face face; ///< The font face associated with this font.
 
 	void SetFontSize(int pixels);
 	const Sprite *InternalGetGlyph(GlyphID key, bool aa) override;
@@ -41,13 +42,24 @@ public:
 	~FreeTypeFontCache();
 	void ClearFontCache() override;
 	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
-	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
-	bool IsBuiltInFont() override { return false; }
-	const void *GetOSHandle() override { return &face; }
+
+	std::string GetFontName() override
+	{
+		return fmt::format("{}, {}", face->family_name, face->style_name);
+	}
+
+	bool IsBuiltInFont() override
+	{
+		return false;
+	}
+
+	const void *GetOSHandle() override
+	{
+		return &face;
+	}
 };
 
 FT_Library _ft_library = nullptr;
-
 
 /**
  * Create a new FreeTypeFontCache.
@@ -84,7 +96,6 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 
 	FT_Error err = FT_Set_Pixel_Sizes(this->face, 0, pixels);
 	if (err != FT_Err_Ok) {
-
 		/* Find nearest size to that requested */
 		FT_Bitmap_Size *bs = this->face->available_sizes;
 		int i = this->face->num_fixed_sizes;
@@ -104,9 +115,9 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 	}
 
 	if (err == FT_Err_Ok) {
-		this->ascender     = this->face->size->metrics.ascender >> 6;
-		this->descender    = this->face->size->metrics.descender >> 6;
-		this->height       = this->ascender - this->descender;
+		this->ascender = this->face->size->metrics.ascender >> 6;
+		this->descender = this->face->size->metrics.descender >> 6;
+		this->height = this->ascender - this->descender;
 	} else {
 		/* Both FT_Set_Pixel_Sizes and FT_Select_Size failed. */
 		Debug(fontcache, 0, "Font size selection failed. Using FontCache defaults.");
@@ -222,7 +233,6 @@ void FreeTypeFontCache::ClearFontCache()
 	this->TrueTypeFontCache::ClearFontCache();
 }
 
-
 const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 {
 	FT_GlyphSlot slot = this->face->glyph;
@@ -235,8 +245,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 
 	/* Add 1 scaled pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
 	uint shadow = (this->fs == FS_NORMAL) ? ScaleGUITrad(1) : 0;
-	uint width  = std::max(1U, (uint)slot->bitmap.width + shadow);
-	uint height = std::max(1U, (uint)slot->bitmap.rows  + shadow);
+	uint width = std::max(1U, (uint)slot->bitmap.width + shadow);
+	uint height = std::max(1U, (uint)slot->bitmap.rows + shadow);
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
@@ -284,7 +294,6 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
-
 GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 {
 	assert(IsPrintable(key));
@@ -307,10 +316,13 @@ void UninitFreeType()
 	_ft_library = nullptr;
 }
 
-#if !defined(WITH_FONTCONFIG)
+#	if !defined(WITH_FONTCONFIG)
 
-FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
+FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
+{
+	return FT_Err_Cannot_Open_Resource;
+}
 
-#endif /* !defined(WITH_FONTCONFIG) */
+#	endif /* !defined(WITH_FONTCONFIG) */
 
 #endif /* WITH_FREETYPE */

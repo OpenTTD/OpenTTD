@@ -27,10 +27,8 @@ struct WaterFeature {
 	uint8_t flags = 0; ///< Flags controlling display.
 };
 
-
 /** Table of canal 'feature' sprite groups */
 extern std::array<WaterFeature, CF_END> _water_feature;
-
 
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile);
 

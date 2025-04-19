@@ -10,10 +10,10 @@
 #ifndef SUBSIDY_FUNC_H
 #define SUBSIDY_FUNC_H
 
+#include "cargo_type.h"
+#include "company_type.h"
 #include "source_type.h"
 #include "station_type.h"
-#include "company_type.h"
-#include "cargo_type.h"
 
 void DeleteSubsidyWith(Source src);
 bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const Station *st);

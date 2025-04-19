@@ -9,24 +9,23 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/object_sl_compat.h"
-
 #include "../object_base.h"
 #include "../object_map.h"
+#include "compat/object_sl_compat.h"
 #include "newgrf_sl.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
 static const SaveLoad _object_desc[] = {
-	    SLE_VAR(Object, location.tile,              SLE_UINT32),
-	    SLE_VAR(Object, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_VAR(Object, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_REF(Object, town,                       REF_TOWN),
-	    SLE_VAR(Object, build_date,                 SLE_UINT32),
-	SLE_CONDVAR(Object, colour,                     SLE_UINT8,                  SLV_148, SL_MAX_VERSION),
-	SLE_CONDVAR(Object, view,                       SLE_UINT8,                  SLV_155, SL_MAX_VERSION),
-	SLE_CONDVAR(Object, type,                       SLE_UINT16,                 SLV_186, SL_MAX_VERSION),
+	SLE_VAR(Object, location.tile, SLE_UINT32),
+	SLE_VAR(Object, location.w, SLE_FILE_U8 | SLE_VAR_U16),
+	SLE_VAR(Object, location.h, SLE_FILE_U8 | SLE_VAR_U16),
+	SLE_REF(Object, town, REF_TOWN),
+	SLE_VAR(Object, build_date, SLE_UINT32),
+	SLE_CONDVAR(Object, colour, SLE_UINT8, SLV_148, SL_MAX_VERSION),
+	SLE_CONDVAR(Object, view, SLE_UINT8, SLV_155, SL_MAX_VERSION),
+	SLE_CONDVAR(Object, type, SLE_UINT16, SLV_186, SL_MAX_VERSION),
 };
 
 struct OBJSChunkHandler : ChunkHandler {

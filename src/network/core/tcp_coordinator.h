@@ -12,10 +12,10 @@
 #ifndef NETWORK_CORE_TCP_COORDINATOR_H
 #define NETWORK_CORE_TCP_COORDINATOR_H
 
-#include "os_abstraction.h"
-#include "tcp.h"
-#include "packet.h"
 #include "network_game_info.h"
+#include "os_abstraction.h"
+#include "packet.h"
+#include "tcp.h"
 
 /**
  * Enum with all types of TCP Game Coordinator packets. The order MUST not be changed.
@@ -26,44 +26,44 @@
  * SERCLI -> packets from either the Server or Client to Game Coordinator.
  **/
 enum PacketCoordinatorType : uint8_t {
-	PACKET_COORDINATOR_GC_ERROR,              ///< Game Coordinator indicates there was an error.
-	PACKET_COORDINATOR_SERVER_REGISTER,       ///< Server registration.
-	PACKET_COORDINATOR_GC_REGISTER_ACK,       ///< Game Coordinator accepts the registration.
-	PACKET_COORDINATOR_SERVER_UPDATE,         ///< Server sends an set intervals an update of the server.
-	PACKET_COORDINATOR_CLIENT_LISTING,        ///< Client is requesting a listing of all public servers.
-	PACKET_COORDINATOR_GC_LISTING,            ///< Game Coordinator returns a listing of all public servers.
-	PACKET_COORDINATOR_CLIENT_CONNECT,        ///< Client wants to connect to a server based on an invite code.
-	PACKET_COORDINATOR_GC_CONNECTING,         ///< Game Coordinator informs the client of the token assigned to the connection attempt.
+	PACKET_COORDINATOR_GC_ERROR, ///< Game Coordinator indicates there was an error.
+	PACKET_COORDINATOR_SERVER_REGISTER, ///< Server registration.
+	PACKET_COORDINATOR_GC_REGISTER_ACK, ///< Game Coordinator accepts the registration.
+	PACKET_COORDINATOR_SERVER_UPDATE, ///< Server sends an set intervals an update of the server.
+	PACKET_COORDINATOR_CLIENT_LISTING, ///< Client is requesting a listing of all public servers.
+	PACKET_COORDINATOR_GC_LISTING, ///< Game Coordinator returns a listing of all public servers.
+	PACKET_COORDINATOR_CLIENT_CONNECT, ///< Client wants to connect to a server based on an invite code.
+	PACKET_COORDINATOR_GC_CONNECTING, ///< Game Coordinator informs the client of the token assigned to the connection attempt.
 	PACKET_COORDINATOR_SERCLI_CONNECT_FAILED, ///< Client/server tells the Game Coordinator the current connection attempt failed.
-	PACKET_COORDINATOR_GC_CONNECT_FAILED,     ///< Game Coordinator informs client/server it has given up on the connection attempt.
-	PACKET_COORDINATOR_CLIENT_CONNECTED,      ///< Client informs the Game Coordinator the connection with the server is established.
-	PACKET_COORDINATOR_GC_DIRECT_CONNECT,     ///< Game Coordinator tells client to directly connect to the hostname:port of the server.
-	PACKET_COORDINATOR_GC_STUN_REQUEST,       ///< Game Coordinator tells client/server to initiate a STUN request.
-	PACKET_COORDINATOR_SERCLI_STUN_RESULT,    ///< Client/server informs the Game Coordinator of the result of the STUN request.
-	PACKET_COORDINATOR_GC_STUN_CONNECT,       ///< Game Coordinator tells client/server to connect() reusing the STUN local address.
-	PACKET_COORDINATOR_GC_NEWGRF_LOOKUP,      ///< Game Coordinator informs client about NewGRF lookup table updates needed for GC_LISTING.
-	PACKET_COORDINATOR_GC_TURN_CONNECT,       ///< Game Coordinator tells client/server to connect to a specific TURN server.
-	PACKET_COORDINATOR_END,                   ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_COORDINATOR_GC_CONNECT_FAILED, ///< Game Coordinator informs client/server it has given up on the connection attempt.
+	PACKET_COORDINATOR_CLIENT_CONNECTED, ///< Client informs the Game Coordinator the connection with the server is established.
+	PACKET_COORDINATOR_GC_DIRECT_CONNECT, ///< Game Coordinator tells client to directly connect to the hostname:port of the server.
+	PACKET_COORDINATOR_GC_STUN_REQUEST, ///< Game Coordinator tells client/server to initiate a STUN request.
+	PACKET_COORDINATOR_SERCLI_STUN_RESULT, ///< Client/server informs the Game Coordinator of the result of the STUN request.
+	PACKET_COORDINATOR_GC_STUN_CONNECT, ///< Game Coordinator tells client/server to connect() reusing the STUN local address.
+	PACKET_COORDINATOR_GC_NEWGRF_LOOKUP, ///< Game Coordinator informs client about NewGRF lookup table updates needed for GC_LISTING.
+	PACKET_COORDINATOR_GC_TURN_CONNECT, ///< Game Coordinator tells client/server to connect to a specific TURN server.
+	PACKET_COORDINATOR_END, ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /**
  * The type of connection the Game Coordinator can detect we have.
  */
 enum ConnectionType : uint8_t {
-	CONNECTION_TYPE_UNKNOWN,  ///< The Game Coordinator hasn't informed us yet what type of connection we have.
+	CONNECTION_TYPE_UNKNOWN, ///< The Game Coordinator hasn't informed us yet what type of connection we have.
 	CONNECTION_TYPE_ISOLATED, ///< The Game Coordinator failed to find a way to connect to your server. Nobody will be able to join.
-	CONNECTION_TYPE_DIRECT,   ///< The Game Coordinator can directly connect to your server.
-	CONNECTION_TYPE_STUN,     ///< The Game Coordinator can connect to your server via a STUN request.
-	CONNECTION_TYPE_TURN,     ///< The Game Coordinator needs you to connect to a relay.
+	CONNECTION_TYPE_DIRECT, ///< The Game Coordinator can directly connect to your server.
+	CONNECTION_TYPE_STUN, ///< The Game Coordinator can connect to your server via a STUN request.
+	CONNECTION_TYPE_TURN, ///< The Game Coordinator needs you to connect to a relay.
 };
 
 /**
  * The type of error from the Game Coordinator.
  */
 enum NetworkCoordinatorErrorType : uint8_t {
-	NETWORK_COORDINATOR_ERROR_UNKNOWN,              ///< There was an unknown error.
-	NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED,  ///< Your request for registration failed.
-	NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE,  ///< The invite code given is invalid.
+	NETWORK_COORDINATOR_ERROR_UNKNOWN, ///< There was an unknown error.
+	NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED, ///< Your request for registration failed.
+	NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE, ///< The invite code given is invalid.
 	NETWORK_COORDINATOR_ERROR_REUSE_OF_INVITE_CODE, ///< The invite code is used by another (newer) server.
 };
 
@@ -306,6 +306,7 @@ protected:
 	virtual bool Receive_GC_TURN_CONNECT(Packet &p);
 
 	bool HandlePacket(Packet &p);
+
 public:
 	/**
 	 * Create a new cs socket handler for a given cs.

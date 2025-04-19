@@ -12,9 +12,9 @@
 
 #include "core/pool_type.hpp"
 #include "command_type.h"
-#include "viewport_type.h"
 #include "station_map.h"
 #include "timer/timer_game_calendar.h"
+#include "viewport_type.h"
 
 typedef Pool<BaseStation, StationID, 32> StationPool;
 extern StationPool _station_pool;
@@ -51,7 +51,7 @@ struct StationRect : public Rect {
 
 	static bool ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a);
 
-	StationRect& operator = (const Rect &src);
+	StationRect &operator=(const Rect &src);
 };
 
 /** Base class for all station-ish types */
@@ -135,7 +135,6 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	 */
 	virtual void GetTileArea(TileArea *ta, StationType type) const = 0;
 
-
 	/**
 	 * Obtain the length of a platform
 	 * @pre tile must be a rail station tile
@@ -194,8 +193,16 @@ private:
 	bool SetRoadStopTileData(TileIndex tile, uint8_t data, bool animation);
 
 public:
-	inline void SetRoadStopRandomBits(TileIndex tile, uint8_t random_bits) { this->SetRoadStopTileData(tile, random_bits, false); }
-	inline bool SetRoadStopAnimationFrame(TileIndex tile, uint8_t frame) { return this->SetRoadStopTileData(tile, frame, true); }
+	inline void SetRoadStopRandomBits(TileIndex tile, uint8_t random_bits)
+	{
+		this->SetRoadStopTileData(tile, random_bits, false);
+	}
+
+	inline bool SetRoadStopAnimationFrame(TileIndex tile, uint8_t frame)
+	{
+		return this->SetRoadStopTileData(tile, frame, true);
+	}
+
 	void RemoveRoadStopTileData(TileIndex tile);
 
 	static void PostDestructor(size_t index);
@@ -216,8 +223,7 @@ struct SpecializedStation : public BaseStation {
 	 * Set station type correctly
 	 * @param tile The base tile of the station.
 	 */
-	inline SpecializedStation(TileIndex tile) :
-			BaseStation(tile)
+	inline SpecializedStation(TileIndex tile) : BaseStation(tile)
 	{
 		this->facilities = EXPECTED_FACIL;
 	}
@@ -297,7 +303,10 @@ struct SpecializedStation : public BaseStation {
 	 * @param from index of the first station to consider
 	 * @return an iterable ensemble of all valid stations of type T
 	 */
-	static Pool::IterateWrapper<T> Iterate(size_t from = 0) { return Pool::IterateWrapper<T>(from); }
+	static Pool::IterateWrapper<T> Iterate(size_t from = 0)
+	{
+		return Pool::IterateWrapper<T>(from);
+	}
 };
 
 /**
@@ -306,8 +315,19 @@ struct SpecializedStation : public BaseStation {
  * @param bst Station of custom spec list.
  * @return Speclist of custom spec type.
  */
-template <class T> std::vector<SpecMapping<T>> &GetStationSpecList(BaseStation *bst);
-template <> inline std::vector<SpecMapping<StationSpec>> &GetStationSpecList<StationSpec>(BaseStation *bst) { return bst->speclist; }
-template <> inline std::vector<SpecMapping<RoadStopSpec>> &GetStationSpecList<RoadStopSpec>(BaseStation *bst) { return bst->roadstop_speclist; }
+template <class T>
+std::vector<SpecMapping<T>> &GetStationSpecList(BaseStation *bst);
+
+template <>
+inline std::vector<SpecMapping<StationSpec>> &GetStationSpecList<StationSpec>(BaseStation *bst)
+{
+	return bst->speclist;
+}
+
+template <>
+inline std::vector<SpecMapping<RoadStopSpec>> &GetStationSpecList<RoadStopSpec>(BaseStation *bst)
+{
+	return bst->roadstop_speclist;
+}
 
 #endif /* BASE_STATION_BASE_H */

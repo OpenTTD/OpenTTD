@@ -268,7 +268,7 @@ constexpr bool HasAtMostOneBit(T value)
 	return (value & (value - 1)) == 0;
 }
 
- /**
+/**
  * Iterable ensemble of each set bit in a value.
  * @tparam Tbitpos Type of the position variable.
  * @tparam Tbitset Type of the bitset value.
@@ -291,12 +291,23 @@ struct SetBitIterator {
 		{
 			return this->bitset == other.bitset;
 		}
-		Tbitpos operator*() const { return this->bitpos; }
-		Iterator & operator++() { this->Next(); this->Validate(); return *this; }
+
+		Tbitpos operator*() const
+		{
+			return this->bitpos;
+		}
+
+		Iterator &operator++()
+		{
+			this->Next();
+			this->Validate();
+			return *this;
+		}
 
 	private:
 		Tbitset bitset;
 		Tbitpos bitpos;
+
 		void Validate()
 		{
 			if (this->bitset != 0) {
@@ -304,6 +315,7 @@ struct SetBitIterator {
 				this->bitpos = static_cast<Tbitpos>(FindFirstBit(unsigned_value));
 			}
 		}
+
 		void Next()
 		{
 			this->bitset = KillFirstBit(this->bitset);
@@ -311,9 +323,21 @@ struct SetBitIterator {
 	};
 
 	SetBitIterator(Tbitset bitset) : bitset(bitset) {}
-	Iterator begin() { return Iterator(this->bitset); }
-	Iterator end() { return Iterator(static_cast<Tbitset>(0)); }
-	bool empty() { return this->begin() == this->end(); }
+
+	Iterator begin()
+	{
+		return Iterator(this->bitset);
+	}
+
+	Iterator end()
+	{
+		return Iterator(static_cast<Tbitset>(0));
+	}
+
+	bool empty()
+	{
+		return this->begin() == this->end();
+	}
 
 private:
 	Tbitset bitset;

@@ -11,6 +11,7 @@
 #define SQUIRREL_HPP
 
 #include <squirrel.h>
+
 #include "../core/convertible_through_base.hpp"
 
 /** The type of script we're working with, i.e. for who is it? */
@@ -26,14 +27,14 @@ class Squirrel {
 	friend class ScriptInstance;
 
 private:
-	typedef void (SQPrintFunc)(bool error_msg, const std::string &message);
+	typedef void(SQPrintFunc)(bool error_msg, const std::string &message);
 
-	HSQUIRRELVM vm;          ///< The VirtualMachine instance for squirrel
-	void *global_pointer;    ///< Can be set by who ever initializes Squirrel
+	HSQUIRRELVM vm; ///< The VirtualMachine instance for squirrel
+	void *global_pointer; ///< Can be set by who ever initializes Squirrel
 	SQPrintFunc *print_func; ///< Points to either nullptr, or a custom print handler
-	bool crashed;            ///< True if the squirrel script made an error.
-	int overdrawn_ops;       ///< The amount of operations we have overdrawn.
-	const char *APIName;     ///< Name of the API used for this squirrel.
+	bool crashed; ///< True if the squirrel script made an error.
+	int overdrawn_ops; ///< The amount of operations we have overdrawn.
+	const char *APIName; ///< Name of the API used for this squirrel.
 	std::unique_ptr<ScriptAllocator> allocator; ///< Allocator object used by this script.
 
 	/**
@@ -44,7 +45,10 @@ private:
 	/**
 	 * Get the API name.
 	 */
-	const char *GetAPIName() { return this->APIName; }
+	const char *GetAPIName()
+	{
+		return this->APIName;
+	}
 
 	/** Perform all initialization steps to create the engine. */
 	void Initialize();
@@ -79,7 +83,10 @@ public:
 	/**
 	 * Get the squirrel VM. Try to avoid using this.
 	 */
-	HSQUIRRELVM GetVM() { return this->vm; }
+	HSQUIRRELVM GetVM()
+	{
+		return this->vm;
+	}
 
 	/**
 	 * Load a script.
@@ -110,9 +117,15 @@ public:
 	 * Adds a const to the stack. Depending on the current state this means
 	 *  either a const to a class or to the global space.
 	 */
-	void AddConst(const char *var_name, uint value) { this->AddConst(var_name, (int)value); }
+	void AddConst(const char *var_name, uint value)
+	{
+		this->AddConst(var_name, (int)value);
+	}
 
-	void AddConst(const char *var_name, const ConvertibleThroughBase auto &value) { this->AddConst(var_name, static_cast<int>(value.base())); }
+	void AddConst(const char *var_name, const ConvertibleThroughBase auto &value)
+	{
+		this->AddConst(var_name, static_cast<int>(value.base()));
+	}
 
 	/**
 	 * Adds a const to the stack. Depending on the current state this means
@@ -155,15 +168,28 @@ public:
 
 	void InsertResult(bool result);
 	void InsertResult(int result);
-	void InsertResult(uint result) { this->InsertResult((int)result); }
-	void InsertResult(ConvertibleThroughBase auto result) { this->InsertResult(static_cast<int>(result.base())); }
+
+	void InsertResult(uint result)
+	{
+		this->InsertResult((int)result);
+	}
+
+	void InsertResult(ConvertibleThroughBase auto result)
+	{
+		this->InsertResult(static_cast<int>(result.base()));
+	}
 
 	/**
 	 * Call a method of an instance, in various flavors.
 	 * @return False if the script crashed or returned a wrong type.
 	 */
 	bool CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend);
-	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend) { return this->CallMethod(instance, method_name, nullptr, suspend); }
+
+	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend)
+	{
+		return this->CallMethod(instance, method_name, nullptr, suspend);
+	}
+
 	bool CallStringMethod(HSQOBJECT instance, const char *method_name, std::string *res, int suspend);
 	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend);
 	bool CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend);
@@ -202,48 +228,78 @@ public:
 	 * @note This will only work just after a function-call from within Squirrel
 	 *  to your C++ function.
 	 */
-	static bool GetInstance(HSQUIRRELVM vm, HSQOBJECT *ptr, int pos = 1) { sq_getclass(vm, pos); sq_getstackobj(vm, pos, ptr); sq_pop(vm, 1); return true; }
+	static bool GetInstance(HSQUIRRELVM vm, HSQOBJECT *ptr, int pos = 1)
+	{
+		sq_getclass(vm, pos);
+		sq_getstackobj(vm, pos, ptr);
+		sq_pop(vm, 1);
+		return true;
+	}
 
 	/**
 	 * Convert a Squirrel-object to a string.
 	 */
-	static const char *ObjectToString(HSQOBJECT *ptr) { return sq_objtostring(ptr); }
+	static const char *ObjectToString(HSQOBJECT *ptr)
+	{
+		return sq_objtostring(ptr);
+	}
 
 	/**
 	 * Convert a Squirrel-object to an integer.
 	 */
-	static int ObjectToInteger(HSQOBJECT *ptr) { return sq_objtointeger(ptr); }
+	static int ObjectToInteger(HSQOBJECT *ptr)
+	{
+		return sq_objtointeger(ptr);
+	}
 
 	/**
 	 * Convert a Squirrel-object to a bool.
 	 */
-	static bool ObjectToBool(HSQOBJECT *ptr) { return sq_objtobool(ptr) == 1; }
+	static bool ObjectToBool(HSQOBJECT *ptr)
+	{
+		return sq_objtobool(ptr) == 1;
+	}
 
 	/**
 	 * Sets a pointer in the VM that is reachable from where ever you are in SQ.
 	 *  Useful to keep track of the main instance.
 	 */
-	void SetGlobalPointer(void *ptr) { this->global_pointer = ptr; }
+	void SetGlobalPointer(void *ptr)
+	{
+		this->global_pointer = ptr;
+	}
 
 	/**
 	 * Get the pointer as set by SetGlobalPointer.
 	 */
-	static void *GetGlobalPointer(HSQUIRRELVM vm) { return ((Squirrel *)sq_getforeignptr(vm))->global_pointer; }
+	static void *GetGlobalPointer(HSQUIRRELVM vm)
+	{
+		return ((Squirrel *)sq_getforeignptr(vm))->global_pointer;
+	}
 
 	/**
 	 * Set a custom print function, so you can handle outputs from SQ yourself.
 	 */
-	void SetPrintFunction(SQPrintFunc *func) { this->print_func = func; }
+	void SetPrintFunction(SQPrintFunc *func)
+	{
+		this->print_func = func;
+	}
 
 	/**
 	 * Throw a Squirrel error that will be nicely displayed to the user.
 	 */
-	void ThrowError(const std::string_view error) { sq_throwerror(this->vm, error); }
+	void ThrowError(const std::string_view error)
+	{
+		sq_throwerror(this->vm, error);
+	}
 
 	/**
 	 * Release a SQ object.
 	 */
-	void ReleaseObject(HSQOBJECT *ptr) { sq_release(this->vm, ptr); }
+	void ReleaseObject(HSQOBJECT *ptr)
+	{
+		sq_release(this->vm, ptr);
+	}
 
 	/**
 	 * Tell the VM to remove \c amount ops from the number of ops till suspend.
@@ -286,7 +342,6 @@ public:
 	 */
 	size_t GetAllocatedMemory() const noexcept;
 };
-
 
 extern ScriptAllocator *_squirrel_allocator;
 

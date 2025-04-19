@@ -8,6 +8,9 @@
 /** @file network_coordinator.cpp Game Coordinator sending/receiving part of the network protocol. */
 
 #include "../stdafx.h"
+
+#include "network_coordinator.h"
+
 #include "../debug.h"
 #include "../error.h"
 #include "../rev.h"
@@ -16,12 +19,12 @@
 #include "../window_func.h"
 #include "../window_type.h"
 #include "network.h"
-#include "network_coordinator.h"
 #include "network_gamelist.h"
 #include "network_gui.h"
 #include "network_internal.h"
 #include "network_server.h"
 #include "network_stun.h"
+
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -34,7 +37,7 @@ std::string _network_server_invite_code = ""; ///< Our invite code as indicated 
 /** Connect to a game server by IP:port. */
 class NetworkDirectConnecter : public TCPConnecter {
 private:
-	std::string token;     ///< Token of this connection.
+	std::string token; ///< Token of this connection.
 	uint8_t tracking_number; ///< Tracking number of this connection.
 
 public:
@@ -45,7 +48,10 @@ public:
 	 * @param token The token as given by the Game Coordinator to track this connection attempt.
 	 * @param tracking_number The tracking number as given by the Game Coordinator to track this connection attempt.
 	 */
-	NetworkDirectConnecter(std::string_view hostname, uint16_t port, std::string &&token, uint8_t tracking_number) : TCPConnecter(hostname, port), token(std::move(token)), tracking_number(tracking_number) {}
+	NetworkDirectConnecter(std::string_view hostname, uint16_t port, std::string &&token, uint8_t tracking_number) :
+		TCPConnecter(hostname, port), token(std::move(token)), tracking_number(tracking_number)
+	{
+	}
 
 	void OnFailure() override
 	{
@@ -62,9 +68,9 @@ public:
 /** Connecter used after STUN exchange to connect from both sides to each other. */
 class NetworkReuseStunConnecter : public TCPConnecter {
 private:
-	std::string token;     ///< Token of this connection.
+	std::string token; ///< Token of this connection.
 	uint8_t tracking_number; ///< Tracking number of this connection.
-	uint8_t family;          ///< Family of this connection.
+	uint8_t family; ///< Family of this connection.
 
 public:
 	/**
@@ -77,10 +83,7 @@ public:
 	 * @param family The family this connection is using.
 	 */
 	NetworkReuseStunConnecter(std::string_view hostname, uint16_t port, const NetworkAddress &bind_address, std::string &&token, uint8_t tracking_number, uint8_t family) :
-		TCPConnecter(hostname, port, bind_address),
-		token(std::move(token)),
-		tracking_number(tracking_number),
-		family(family)
+		TCPConnecter(hostname, port, bind_address), token(std::move(token)), tracking_number(tracking_number), family(family)
 	{
 	}
 
@@ -184,10 +187,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet &p)
 	_network_server_connection_type = (ConnectionType)p.Recv_uint8();
 
 	if (_network_server_connection_type == CONNECTION_TYPE_ISOLATED) {
-		ShowErrorMessage(
-			GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_ISOLATED),
-			GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL),
-			WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_ISOLATED), GetEncodedString(STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL), WL_ERROR);
 	}
 
 	/* Users can change the invite code in the settings, but this has no effect
@@ -202,22 +202,38 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet &p)
 	if (_network_dedicated) {
 		std::string connection_type;
 		switch (_network_server_connection_type) {
-			case CONNECTION_TYPE_ISOLATED: connection_type = "Remote players can't connect"; break;
-			case CONNECTION_TYPE_DIRECT:   connection_type = "Public"; break;
-			case CONNECTION_TYPE_STUN:     connection_type = "Behind NAT"; break;
-			case CONNECTION_TYPE_TURN:     connection_type = "Via relay"; break;
+			case CONNECTION_TYPE_ISOLATED:
+				connection_type = "Remote players can't connect";
+				break;
+			case CONNECTION_TYPE_DIRECT:
+				connection_type = "Public";
+				break;
+			case CONNECTION_TYPE_STUN:
+				connection_type = "Behind NAT";
+				break;
+			case CONNECTION_TYPE_TURN:
+				connection_type = "Via relay";
+				break;
 
 			case CONNECTION_TYPE_UNKNOWN: // Never returned from Game Coordinator.
-			default: connection_type = "Unknown"; break; // Should never happen, but don't fail if it does.
+			default:
+				connection_type = "Unknown";
+				break; // Should never happen, but don't fail if it does.
 		}
 
 		std::string game_type;
 		switch (_settings_client.network.server_game_type) {
-			case SERVER_GAME_TYPE_INVITE_ONLY: game_type = "Invite only"; break;
-			case SERVER_GAME_TYPE_PUBLIC: game_type = "Public"; break;
+			case SERVER_GAME_TYPE_INVITE_ONLY:
+				game_type = "Invite only";
+				break;
+			case SERVER_GAME_TYPE_PUBLIC:
+				game_type = "Public";
+				break;
 
 			case SERVER_GAME_TYPE_LOCAL: // Impossible to register local servers.
-			default: game_type = "Unknown"; break; // Should never happen, but don't fail if it does.
+			default:
+				game_type = "Unknown";
+				break; // Should never happen, but don't fail if it does.
 		}
 
 		Debug(net, 3, "----------------------------------------");
@@ -357,7 +373,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_NEWGRF_LOOKUP(Packet &p)
 	this->newgrf_lookup_table_cursor = p.Recv_uint32();
 
 	uint16_t newgrfs = p.Recv_uint16();
-	for (; newgrfs> 0; newgrfs--) {
+	for (; newgrfs > 0; newgrfs--) {
 		uint32_t index = p.Recv_uint32();
 		DeserializeGRFIdentifierWithName(p, this->newgrf_lookup_table[index]);
 	}

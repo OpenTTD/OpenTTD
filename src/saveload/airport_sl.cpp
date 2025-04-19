@@ -9,8 +9,8 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
 #include "newgrf_sl.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 

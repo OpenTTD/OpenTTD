@@ -10,12 +10,13 @@
 #ifndef LEAGUE_CMD_H
 #define LEAGUE_CMD_H
 
-#include "league_type.h"
 #include "command_type.h"
 #include "company_type.h"
+#include "league_type.h"
 
 std::tuple<CommandCost, LeagueTableID> CmdCreateLeagueTable(DoCommandFlags flags, const EncodedString &title, const EncodedString &header, const EncodedString &footer);
-std::tuple<CommandCost, LeagueTableElementID> CmdCreateLeagueTableElement(DoCommandFlags flags, LeagueTableID table, int64_t rating, CompanyID company, const EncodedString &text, const EncodedString &score, LinkType link_type, LinkTargetID link_target);
+std::tuple<CommandCost, LeagueTableElementID> CmdCreateLeagueTableElement(
+	DoCommandFlags flags, LeagueTableID table, int64_t rating, CompanyID company, const EncodedString &text, const EncodedString &score, LinkType link_type, LinkTargetID link_target);
 CommandCost CmdUpdateLeagueTableElementData(DoCommandFlags flags, LeagueTableElementID element, CompanyID company, const EncodedString &text, LinkType link_type, LinkTargetID link_target);
 CommandCost CmdUpdateLeagueTableElementScore(DoCommandFlags flags, LeagueTableElementID element, int64_t rating, const EncodedString &score);
 CommandCost CmdRemoveLeagueTableElement(DoCommandFlags flags, LeagueTableElementID element);

@@ -8,21 +8,21 @@
 /** @file gfx_layout_icu.cpp Handling of laying out with ICU / Harfbuzz. */
 
 #include "stdafx.h"
+
 #include "gfx_layout_icu.h"
 
-#include "debug.h"
-#include "strings_func.h"
-#include "language.h"
-#include "table/control_codes.h"
-#include "zoom_func.h"
-
+#include <hb-ft.h>
+#include <hb.h>
+#include <unicode/brkiter.h>
+#include <unicode/ubidi.h>
 #include "3rdparty/icu/scriptrun.h"
 
-#include <unicode/ubidi.h>
-#include <unicode/brkiter.h>
+#include "debug.h"
+#include "language.h"
+#include "strings_func.h"
+#include "zoom_func.h"
 
-#include <hb.h>
-#include <hb-ft.h>
+#include "table/control_codes.h"
 
 #include "safeguards.h"
 
@@ -71,14 +71,40 @@ public:
 	public:
 		ICUVisualRun(const ICURun &run, int x);
 
-		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
-		std::span<const Position> GetPositions() const override { return this->positions; }
-		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
+		std::span<const GlyphID> GetGlyphs() const override
+		{
+			return this->glyphs;
+		}
 
-		const Font *GetFont() const override { return this->font; }
-		int GetLeading() const override { return this->font->fc->GetHeight(); }
-		int GetGlyphCount() const override { return this->glyphs.size(); }
-		int GetAdvance() const { return this->total_advance; }
+		std::span<const Position> GetPositions() const override
+		{
+			return this->positions;
+		}
+
+		std::span<const int> GetGlyphToCharMap() const override
+		{
+			return this->glyph_to_char;
+		}
+
+		const Font *GetFont() const override
+		{
+			return this->font;
+		}
+
+		int GetLeading() const override
+		{
+			return this->font->fc->GetHeight();
+		}
+
+		int GetGlyphCount() const override
+		{
+			return this->glyphs.size();
+		}
+
+		int GetAdvance() const
+		{
+			return this->total_advance;
+		}
 	};
 
 	/** A single line worth of VisualRuns. */
@@ -86,8 +112,16 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override { return (uint)this->size();  }
-		const VisualRun &GetVisualRun(int run) const override { return this->at(run); }
+
+		int CountRuns() const override
+		{
+			return (uint)this->size();
+		}
+
+		const VisualRun &GetVisualRun(int run) const override
+		{
+			return this->at(run);
+		}
 
 		int GetInternalCharLength(char32_t c) const override
 		{
@@ -109,7 +143,7 @@ public:
 		this->Reflow();
 	}
 
-	~ICUParagraphLayout() override { }
+	~ICUParagraphLayout() override {}
 
 	void Reflow() override
 	{
@@ -128,8 +162,7 @@ public:
  * @param run The ICURun to base the visual run on.
  * @param x The offset of the run on the line.
  */
-ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) :
-	glyphs(run.glyphs), glyph_to_char(run.glyph_to_char), total_advance(run.total_advance), font(run.font)
+ICUParagraphLayout::ICUVisualRun::ICUVisualRun(const ICURun &run, int x) : glyphs(run.glyphs), glyph_to_char(run.glyph_to_char), total_advance(run.total_advance), font(run.font)
 {
 	/* If there are no positions, the ICURun was not Shaped; that should never happen. */
 	assert(!run.positions.empty());
@@ -191,7 +224,8 @@ void ICURun::Shape(UChar *buff, size_t buff_length)
 			auto glyph = this->font->fc->MapCharToGlyph(buff[glyph_info[i].cluster]);
 			x_advance = this->font->fc->GetGlyphWidth(glyph);
 			this->glyphs.push_back(glyph);
-			this->positions.emplace_back(advance, advance + x_advance - 1, (this->font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->font->fc->GetSize()))) / 2); // Align sprite font to centre
+			this->positions.emplace_back(
+				advance, advance + x_advance - 1, (this->font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(this->font->fc->GetSize()))) / 2); // Align sprite font to centre
 		} else {
 			x_advance = glyph_pos[i].x_advance / FONT_SCALE;
 			this->glyphs.push_back(glyph_info[i].codepoint);
@@ -338,7 +372,7 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 
 	int cur_pos = 0;
 	auto cur_run = runs_current.begin();
-	for (auto const &[position, font] : font_mapping) {
+	for (const auto &[position, font] : font_mapping) {
 		while (cur_pos < position && cur_run != runs_current.end()) {
 			int stop_pos = std::min(position, cur_run->start + cur_run->length);
 			assert(stop_pos - cur_pos > 0);
@@ -360,7 +394,7 @@ std::vector<ICURun> ItemizeStyle(std::vector<ICURun> &runs_current, FontMap &fon
 	if (length == 0) return nullptr;
 
 	/* Can't layout our in-built sprite fonts. */
-	for (auto const &[position, font] : font_mapping) {
+	for (const auto &[position, font] : font_mapping) {
 		if (font->fc->IsBuiltInFont()) return nullptr;
 	}
 
@@ -538,6 +572,6 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 	/* Transform from UTF-32 to internal ICU format of UTF-16. */
 	int32_t length = 0;
 	UErrorCode err = U_ZERO_ERROR;
-	u_strFromUTF32(buff, buffer_last - buff, &length, (UChar32*)&c, 1, &err);
+	u_strFromUTF32(buff, buffer_last - buff, &length, (UChar32 *)&c, 1, &err);
 	return length;
 }

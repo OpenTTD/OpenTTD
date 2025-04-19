@@ -13,7 +13,6 @@
 #include "rail_map.h"
 #include "road_map.h"
 
-
 /**
  * Is this a tunnel (entrance)?
  * @param t the tile that might be a tunnel

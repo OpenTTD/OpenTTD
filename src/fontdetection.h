@@ -14,8 +14,8 @@
 
 #ifdef WITH_FREETYPE
 
-#include <ft2build.h>
-#include FT_FREETYPE_H
+#	include <ft2build.h>
+#	include FT_FREETYPE_H
 
 /**
  * Load a freetype font face with the given font name.

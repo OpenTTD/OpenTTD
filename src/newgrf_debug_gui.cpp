@@ -8,48 +8,46 @@
 /** @file newgrf_debug_gui.cpp GUIs for debugging NewGRFs. */
 
 #include "stdafx.h"
+
 #include "core/backup_type.hpp"
 #include "core/geometry_func.hpp"
-#include "window_gui.h"
-#include "window_func.h"
-#include "random_access_file_type.h"
-#include "spritecache.h"
-#include "string_func.h"
-#include "strings_func.h"
-#include "textbuf_gui.h"
-#include "vehicle_gui.h"
-#include "zoom_func.h"
-
 #include "engine_base.h"
 #include "industry.h"
-#include "object_base.h"
-#include "station_base.h"
-#include "town.h"
-#include "vehicle_base.h"
-#include "train.h"
-#include "roadveh.h"
-
 #include "newgrf_act5.h"
 #include "newgrf_airport.h"
 #include "newgrf_airporttiles.h"
 #include "newgrf_badge.h"
 #include "newgrf_debug.h"
+#include "newgrf_industries.h"
+#include "newgrf_industrytiles.h"
 #include "newgrf_object.h"
+#include "newgrf_railtype.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_station.h"
 #include "newgrf_town.h"
-#include "newgrf_railtype.h"
-#include "newgrf_industries.h"
-#include "newgrf_industrytiles.h"
+#include "object_base.h"
+#include "random_access_file_type.h"
+#include "roadveh.h"
+#include "spritecache.h"
+#include "station_base.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "town.h"
+#include "train.h"
+#include "vehicle_base.h"
+#include "vehicle_gui.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/newgrf_debug_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
 
 /** The sprite picker. */
-NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, nullptr, std::vector<SpriteID>() };
+NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = {SPM_NONE, nullptr, std::vector<SpriteID>()};
 
 /**
  * Get the feature index related to the window number.
@@ -74,14 +72,17 @@ static inline uint GetInspectWindowNumber(GrfSpecFeature feature, uint index)
 	return (feature << 24) | index;
 }
 
-static inline uint GetInspectWindowNumber(GrfSpecFeature feature, ConvertibleThroughBase auto index) { return GetInspectWindowNumber(feature, index.base()); }
+static inline uint GetInspectWindowNumber(GrfSpecFeature feature, ConvertibleThroughBase auto index)
+{
+	return GetInspectWindowNumber(feature, index.base());
+}
 
 /**
  * The type of a property to show. This is used to
  * provide an appropriate representation in the GUI.
  */
 enum NIType : uint8_t {
-	NIT_INT,   ///< The property is a simple integer
+	NIT_INT, ///< The property is a simple integer
 	NIT_CARGO, ///< The property is a cargo
 };
 
@@ -89,35 +90,26 @@ typedef const void *NIOffsetProc(const void *b);
 
 /** Representation of the data from a NewGRF property. */
 struct NIProperty {
-	std::string_view name;          ///< A (human readable) name for the property
+	std::string_view name; ///< A (human readable) name for the property
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	uint8_t read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
-	uint8_t prop;                 ///< The number of the property
+	uint8_t read_size; ///< Number of bytes (i.e. byte, word, dword etc)
+	uint8_t prop; ///< The number of the property
 	uint8_t type;
 };
-
 
 /**
  * Representation of the available callbacks with
  * information on when they actually apply.
  */
 struct NICallback {
-	std::string_view name;          ///< The human readable name of the callback
+	std::string_view name; ///< The human readable name of the callback
 	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	uint8_t read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
-	std::variant<
-		std::monostate,
-		VehicleCallbackMask,
-		StationCallbackMask,
-		RoadStopCallbackMask,
-		HouseCallbackMask,
-		CanalCallbackMask,
-		CargoCallbackMask,
-		IndustryCallbackMask,
-		IndustryTileCallbackMask,
-		ObjectCallbackMask,
-		AirportTileCallbackMask> cb_bit; ///< The bit that needs to be set for this callback to be enabled
-	uint16_t cb_id;              ///< The number of the callback
+	uint8_t read_size; ///< The number of bytes (i.e. byte, word, dword etc) to read
+	std::variant<std::monostate, VehicleCallbackMask, StationCallbackMask, RoadStopCallbackMask, HouseCallbackMask, CanalCallbackMask, CargoCallbackMask, IndustryCallbackMask,
+		IndustryTileCallbackMask, ObjectCallbackMask,
+		AirportTileCallbackMask>
+		cb_bit; ///< The bit that needs to be set for this callback to be enabled
+	uint16_t cb_id; ///< The number of the callback
 };
 
 /** Representation on the NewGRF variables. */
@@ -210,7 +202,6 @@ public:
 		return {};
 	}
 };
-
 
 /** Container for all information for a given feature. */
 struct NIFeature {
@@ -361,7 +352,7 @@ struct NewGRFInspectWindow : Window {
 
 			case WID_NGRFI_MAINPANEL:
 				resize.height = std::max(11, GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal);
-				resize.width  = 1;
+				resize.width = 1;
 
 				size.height = 5 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
 				break;
@@ -395,9 +386,14 @@ struct NewGRFInspectWindow : Window {
 		for (const Vehicle *u = v->First(); u != nullptr; u = u->Next()) {
 			if (u == v) sel_start = total_width;
 			switch (u->type) {
-				case VEH_TRAIN: total_width += Train::From(u)->GetDisplayImageWidth(); break;
-				case VEH_ROAD:  total_width += RoadVehicle::From(u)->GetDisplayImageWidth(); break;
-				default: NOT_REACHED();
+				case VEH_TRAIN:
+					total_width += Train::From(u)->GetDisplayImageWidth();
+					break;
+				case VEH_ROAD:
+					total_width += RoadVehicle::From(u)->GetDisplayImageWidth();
+					break;
+				default:
+					NOT_REACHED();
 			}
 			if (u == v) sel_end = total_width;
 		}
@@ -426,9 +422,12 @@ struct NewGRFInspectWindow : Window {
 	std::string GetPropertyString(const NIProperty &nip, uint value) const
 	{
 		switch (nip.type) {
-			case NIT_INT: return GetString(STR_JUST_INT, value);
-			case NIT_CARGO: return GetString(IsValidCargoType(value) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
-			default: NOT_REACHED();
+			case NIT_INT:
+				return GetString(STR_JUST_INT, value);
+			case NIT_CARGO:
+				return GetString(IsValidCargoType(value) ? CargoSpec::Get(value)->name : STR_QUANTITY_N_A);
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -439,9 +438,9 @@ struct NewGRFInspectWindow : Window {
 	void DrawMainPanelWidget(const Rect &r) const
 	{
 		uint index = this->GetFeatureIndex();
-		const NIFeature *nif  = GetFeature(this->window_number);
-		const NIHelper &nih   = *nif->helper;
-		const void *base      = nih.GetInstance(index);
+		const NIFeature *nif = GetFeature(this->window_number);
+		const NIHelper &nih = *nif->helper;
+		const void *base = nih.GetInstance(index);
 		const void *base_spec = nih.GetSpec(index);
 
 		uint i = 0;
@@ -490,10 +489,17 @@ struct NewGRFInspectWindow : Window {
 				const void *ptr = nip.offset_proc(base);
 				uint value;
 				switch (nip.read_size) {
-					case 1: value = *(const uint8_t  *)ptr; break;
-					case 2: value = *(const uint16_t *)ptr; break;
-					case 4: value = *(const uint32_t *)ptr; break;
-					default: NOT_REACHED();
+					case 1:
+						value = *(const uint8_t *)ptr;
+						break;
+					case 2:
+						value = *(const uint16_t *)ptr;
+						break;
+					case 4:
+						value = *(const uint32_t *)ptr;
+						break;
+					default:
+						NOT_REACHED();
 				}
 
 				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip.prop, this->GetPropertyString(nip, value), nip.name));
@@ -507,26 +513,76 @@ struct NewGRFInspectWindow : Window {
 					const void *ptr = nic.offset_proc(base_spec);
 					uint value;
 					switch (nic.read_size) {
-						case 1: value = *(const uint8_t  *)ptr; break;
-						case 2: value = *(const uint16_t *)ptr; break;
-						case 4: value = *(const uint32_t *)ptr; break;
-						default: NOT_REACHED();
+						case 1:
+							value = *(const uint8_t *)ptr;
+							break;
+						case 2:
+							value = *(const uint16_t *)ptr;
+							break;
+						case 4:
+							value = *(const uint32_t *)ptr;
+							break;
+						default:
+							NOT_REACHED();
 					}
 
 					struct visitor {
 						uint value;
 
-						bool operator()(const std::monostate &) { return false; }
-						bool operator()(const VehicleCallbackMask &bit) { return static_cast<VehicleCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const StationCallbackMask &bit) { return static_cast<StationCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const RoadStopCallbackMask &bit) { return static_cast<RoadStopCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const HouseCallbackMask &bit) { return static_cast<HouseCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const CanalCallbackMask &bit) { return static_cast<CanalCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const CargoCallbackMask &bit) { return static_cast<CargoCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const IndustryCallbackMask &bit) { return static_cast<IndustryCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const IndustryTileCallbackMask &bit) { return static_cast<IndustryTileCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const ObjectCallbackMask &bit) { return static_cast<ObjectCallbackMasks>(this->value).Test(bit); }
-						bool operator()(const AirportTileCallbackMask &bit) { return static_cast<AirportTileCallbackMasks>(this->value).Test(bit); }
+						bool operator()(const std::monostate &)
+						{
+							return false;
+						}
+
+						bool operator()(const VehicleCallbackMask &bit)
+						{
+							return static_cast<VehicleCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const StationCallbackMask &bit)
+						{
+							return static_cast<StationCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const RoadStopCallbackMask &bit)
+						{
+							return static_cast<RoadStopCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const HouseCallbackMask &bit)
+						{
+							return static_cast<HouseCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const CanalCallbackMask &bit)
+						{
+							return static_cast<CanalCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const CargoCallbackMask &bit)
+						{
+							return static_cast<CargoCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const IndustryCallbackMask &bit)
+						{
+							return static_cast<IndustryCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const IndustryTileCallbackMask &bit)
+						{
+							return static_cast<IndustryTileCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const ObjectCallbackMask &bit)
+						{
+							return static_cast<ObjectCallbackMasks>(this->value).Test(bit);
+						}
+
+						bool operator()(const AirportTileCallbackMask &bit)
+						{
+							return static_cast<AirportTileCallbackMasks>(this->value).Test(bit);
+						}
 					};
 
 					if (!std::visit(visitor{value}, nic.cb_bit)) continue;
@@ -540,7 +596,7 @@ struct NewGRFInspectWindow : Window {
 		/* Not nice and certainly a hack, but it beats duplicating
 		 * this whole function just to count the actual number of
 		 * elements. Especially because they need to be redrawn. */
-		const_cast<NewGRFInspectWindow*>(this)->vscroll->SetCount(i);
+		const_cast<NewGRFInspectWindow *>(this)->vscroll->SetCount(i);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -586,7 +642,7 @@ struct NewGRFInspectWindow : Window {
 
 			case WID_NGRFI_MAINPANEL: {
 				/* Does this feature have variables? */
-				const NIFeature *nif  = GetFeature(this->window_number);
+				const NIFeature *nif = GetFeature(this->window_number);
 				if (nif->variables.empty()) return;
 
 				/* Get the line, make sure it's within the boundaries. */
@@ -636,7 +692,7 @@ struct NewGRFInspectWindow : Window {
 	}
 };
 
-/* static */ uint32_t NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
+/* static */ uint32_t NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = {{0}}; // Use spec to have 0s in whole array
 
 /* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_inspect_chain_widgets[] = {
@@ -684,19 +740,9 @@ static constexpr NWidgetPart _nested_newgrf_inspect_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _newgrf_inspect_chain_desc(
-	WDP_AUTO, "newgrf_inspect_chain", 400, 300,
-	WC_NEWGRF_INSPECT, WC_NONE,
-	{},
-	_nested_newgrf_inspect_chain_widgets
-);
+static WindowDesc _newgrf_inspect_chain_desc(WDP_AUTO, "newgrf_inspect_chain", 400, 300, WC_NEWGRF_INSPECT, WC_NONE, {}, _nested_newgrf_inspect_chain_widgets);
 
-static WindowDesc _newgrf_inspect_desc(
-	WDP_AUTO, "newgrf_inspect", 400, 300,
-	WC_NEWGRF_INSPECT, WC_NONE,
-	{},
-	_nested_newgrf_inspect_widgets
-);
+static WindowDesc _newgrf_inspect_desc(WDP_AUTO, "newgrf_inspect", 400, 300, WC_NEWGRF_INSPECT, WC_NONE, {}, _nested_newgrf_inspect_widgets);
 
 /**
  * Show the inspect window for a given feature and index.
@@ -778,20 +824,31 @@ bool IsNewGRFInspectable(GrfSpecFeature feature, uint index)
 GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
-		default:              return GSF_INVALID;
-		case MP_RAILWAY:      return GSF_RAILTYPES;
-		case MP_ROAD:         return IsLevelCrossing(tile) ? GSF_RAILTYPES : GSF_ROADTYPES;
-		case MP_HOUSE:        return GSF_HOUSES;
-		case MP_INDUSTRY:     return GSF_INDUSTRYTILES;
-		case MP_OBJECT:       return GSF_OBJECTS;
+		default:
+			return GSF_INVALID;
+		case MP_RAILWAY:
+			return GSF_RAILTYPES;
+		case MP_ROAD:
+			return IsLevelCrossing(tile) ? GSF_RAILTYPES : GSF_ROADTYPES;
+		case MP_HOUSE:
+			return GSF_HOUSES;
+		case MP_INDUSTRY:
+			return GSF_INDUSTRYTILES;
+		case MP_OBJECT:
+			return GSF_OBJECTS;
 
 		case MP_STATION:
 			switch (GetStationType(tile)) {
-				case StationType::Rail:    return GSF_STATIONS;
-				case StationType::Airport: return GSF_AIRPORTTILES;
-				case StationType::Bus:     return GSF_ROADSTOPS;
-				case StationType::Truck:   return GSF_ROADSTOPS;
-				default:              return GSF_INVALID;
+				case StationType::Rail:
+					return GSF_STATIONS;
+				case StationType::Airport:
+					return GSF_AIRPORTTILES;
+				case StationType::Bus:
+					return GSF_ROADSTOPS;
+				case StationType::Truck:
+					return GSF_ROADSTOPS;
+				default:
+					return GSF_INVALID;
 			}
 	}
 }
@@ -804,14 +861,18 @@ GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 {
 	switch (type) {
-		case VEH_TRAIN:    return GSF_TRAINS;
-		case VEH_ROAD:     return GSF_ROADVEHICLES;
-		case VEH_SHIP:     return GSF_SHIPS;
-		case VEH_AIRCRAFT: return GSF_AIRCRAFT;
-		default:           return GSF_INVALID;
+		case VEH_TRAIN:
+			return GSF_TRAINS;
+		case VEH_ROAD:
+			return GSF_ROADVEHICLES;
+		case VEH_SHIP:
+			return GSF_SHIPS;
+		case VEH_AIRCRAFT:
+			return GSF_AIRCRAFT;
+		default:
+			return GSF_INVALID;
 	}
 }
-
 
 /**** Sprite Aligner ****/
 
@@ -855,21 +916,13 @@ struct SpriteAlignerWindow : Window {
 		switch (widget) {
 			case WID_SA_CAPTION:
 				if (this->act5_type != nullptr) {
-					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTION5,
-						this->act5_type - GetAction5Types().data(),
-						this->current_sprite - this->act5_type->sprite_base,
-						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
-						GetSpriteLocalID(this->current_sprite));
+					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTION5, this->act5_type - GetAction5Types().data(), this->current_sprite - this->act5_type->sprite_base,
+						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(), GetSpriteLocalID(this->current_sprite));
 				}
 				if (this->current_sprite < SPR_OPENTTD_BASE) {
-					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTIONA,
-						this->current_sprite,
-						GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
-						GetSpriteLocalID(this->current_sprite));
+					return GetString(STR_SPRITE_ALIGNER_CAPTION_ACTIONA, this->current_sprite, GetOriginFile(this->current_sprite)->GetSimplifiedFilename(), GetSpriteLocalID(this->current_sprite));
 				}
-				return GetString(STR_SPRITE_ALIGNER_CAPTION_NO_ACTION,
-					GetOriginFile(this->current_sprite)->GetSimplifiedFilename(),
-					GetSpriteLocalID(this->current_sprite));
+				return GetString(STR_SPRITE_ALIGNER_CAPTION_NO_ACTION, GetOriginFile(this->current_sprite)->GetSimplifiedFilename(), GetSpriteLocalID(this->current_sprite));
 
 			case WID_SA_OFFSETS_ABS:
 				return GetString(STR_SPRITE_ALIGNER_OFFSETS_ABS, UnScaleByZoom(spr->x_offs, SpriteAlignerWindow::zoom), UnScaleByZoom(spr->y_offs, SpriteAlignerWindow::zoom));
@@ -880,8 +933,7 @@ struct SpriteAlignerWindow : Window {
 				 */
 				const auto key_offs_pair = this->offs_start_map.find(this->current_sprite);
 				if (key_offs_pair != this->offs_start_map.end()) {
-					return GetString(STR_SPRITE_ALIGNER_OFFSETS_REL,
-						UnScaleByZoom(spr->x_offs - key_offs_pair->second.first, SpriteAlignerWindow::zoom),
+					return GetString(STR_SPRITE_ALIGNER_OFFSETS_REL, UnScaleByZoom(spr->x_offs - key_offs_pair->second.first, SpriteAlignerWindow::zoom),
 						UnScaleByZoom(spr->y_offs - key_offs_pair->second.second, SpriteAlignerWindow::zoom));
 				}
 
@@ -981,7 +1033,7 @@ struct SpriteAlignerWindow : Window {
 		switch (widget) {
 			case WID_SA_PREVIOUS:
 				do {
-					this->current_sprite = (this->current_sprite == 0 ? GetMaxSpriteID() :  this->current_sprite) - 1;
+					this->current_sprite = (this->current_sprite == 0 ? GetMaxSpriteID() : this->current_sprite) - 1;
 				} while (GetSpriteType(this->current_sprite) != SpriteType::Normal);
 				this->SelectAction5Type();
 				this->SetDirty();
@@ -1042,10 +1094,18 @@ struct SpriteAlignerWindow : Window {
 				int amt = ScaleByZoom(_ctrl_pressed ? 8 : 1, SpriteAlignerWindow::zoom);
 				switch (widget) {
 					/* Move eight units at a time if ctrl is pressed. */
-					case WID_SA_UP:    spr->y_offs -= amt; break;
-					case WID_SA_DOWN:  spr->y_offs += amt; break;
-					case WID_SA_LEFT:  spr->x_offs -= amt; break;
-					case WID_SA_RIGHT: spr->x_offs += amt; break;
+					case WID_SA_UP:
+						spr->y_offs -= amt;
+						break;
+					case WID_SA_DOWN:
+						spr->y_offs += amt;
+						break;
+					case WID_SA_LEFT:
+						spr->x_offs -= amt;
+						break;
+					case WID_SA_RIGHT:
+						spr->x_offs += amt;
+						break;
 				}
 				/* Of course, we need to redraw the sprite, but where is it used?
 				 * Everywhere is a safe bet. */
@@ -1208,12 +1268,7 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _sprite_aligner_desc(
-	WDP_AUTO, "sprite_aligner", 400, 300,
-	WC_SPRITE_ALIGNER, WC_NONE,
-	{},
-	_nested_sprite_aligner_widgets
-);
+static WindowDesc _sprite_aligner_desc(WDP_AUTO, "sprite_aligner", 400, 300, WC_SPRITE_ALIGNER, WC_NONE, {}, _nested_sprite_aligner_widgets);
 
 /**
  * Show the window for aligning sprites.

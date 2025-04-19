@@ -10,10 +10,10 @@
 #ifndef SCRIPT_CLIENT_HPP
 #define SCRIPT_CLIENT_HPP
 
-#include "script_text.hpp"
-#include "script_date.hpp"
-#include "script_company.hpp"
 #include "../../network/network_type.h"
+#include "script_company.hpp"
+#include "script_date.hpp"
+#include "script_text.hpp"
 
 /**
  * Class that handles all client related functions.
@@ -22,12 +22,11 @@
  */
 class ScriptClient : public ScriptObject {
 public:
-
 	/** Different constants related to ClientID. */
 	enum ClientID : uint32_t {
-		CLIENT_INVALID = 0,  ///< Client is not part of anything
-		CLIENT_SERVER  = 1,  ///< Servers always have this ID
-		CLIENT_FIRST   = 2,  ///< The first client ID
+		CLIENT_INVALID = 0, ///< Client is not part of anything
+		CLIENT_SERVER = 1, ///< Servers always have this ID
+		CLIENT_FIRST = 2, ///< The first client ID
 	};
 
 	/**
@@ -64,6 +63,5 @@ public:
 	 */
 	static ScriptDate::Date GetJoinDate(ClientID client);
 };
-
 
 #endif /* SCRIPT_CLIENT_HPP */

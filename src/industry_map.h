@@ -13,45 +13,44 @@
 #include "industrytype.h"
 #include "water_map.h"
 
-
 /**
  * The following enums are indices used to know what to draw for this industry tile.
  * They all are pointing toward array _industry_draw_tile_data, in table/industry_land.h
  * How to calculate the correct position ? GFXid << 2 | IndustryStage (0 to 3)
  */
 enum IndustryGraphics : uint8_t {
-	GFX_COAL_MINE_TOWER_NOT_ANIMATED   =   0,
-	GFX_COAL_MINE_TOWER_ANIMATED       =   1,
-	GFX_POWERPLANT_CHIMNEY             =   8,
-	GFX_POWERPLANT_SPARKS              =  10,
-	GFX_OILRIG_1                       =  24,
-	GFX_OILRIG_2                       =  25,
-	GFX_OILRIG_3                       =  26,
-	GFX_OILRIG_4                       =  27,
-	GFX_OILRIG_5                       =  28,
-	GFX_OILWELL_NOT_ANIMATED           =  29,
-	GFX_OILWELL_ANIMATED_1             =  30,
-	GFX_OILWELL_ANIMATED_2             =  31,
-	GFX_OILWELL_ANIMATED_3             =  32,
-	GFX_COPPER_MINE_TOWER_NOT_ANIMATED =  47,
-	GFX_COPPER_MINE_TOWER_ANIMATED     =  48,
-	GFX_COPPER_MINE_CHIMNEY            =  49,
-	GFX_GOLD_MINE_TOWER_NOT_ANIMATED   =  79,
-	GFX_GOLD_MINE_TOWER_ANIMATED       =  88,
-	GFX_TOY_FACTORY                    = 143,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_1    = 148,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_2    = 149,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_3    = 150,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_4    = 151,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_5    = 152,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_6    = 153,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_7    = 154,
-	GFX_PLASTIC_FOUNTAIN_ANIMATED_8    = 155,
-	GFX_BUBBLE_GENERATOR               = 161,
-	GFX_BUBBLE_CATCHER                 = 162,
-	GFX_TOFFEE_QUARY                   = 165,
-	GFX_SUGAR_MINE_SIEVE               = 174,
-	GFX_WATERTILE_SPECIALCHECK         = 255,  ///< not really a tile, but rather a very special check
+	GFX_COAL_MINE_TOWER_NOT_ANIMATED = 0,
+	GFX_COAL_MINE_TOWER_ANIMATED = 1,
+	GFX_POWERPLANT_CHIMNEY = 8,
+	GFX_POWERPLANT_SPARKS = 10,
+	GFX_OILRIG_1 = 24,
+	GFX_OILRIG_2 = 25,
+	GFX_OILRIG_3 = 26,
+	GFX_OILRIG_4 = 27,
+	GFX_OILRIG_5 = 28,
+	GFX_OILWELL_NOT_ANIMATED = 29,
+	GFX_OILWELL_ANIMATED_1 = 30,
+	GFX_OILWELL_ANIMATED_2 = 31,
+	GFX_OILWELL_ANIMATED_3 = 32,
+	GFX_COPPER_MINE_TOWER_NOT_ANIMATED = 47,
+	GFX_COPPER_MINE_TOWER_ANIMATED = 48,
+	GFX_COPPER_MINE_CHIMNEY = 49,
+	GFX_GOLD_MINE_TOWER_NOT_ANIMATED = 79,
+	GFX_GOLD_MINE_TOWER_ANIMATED = 88,
+	GFX_TOY_FACTORY = 143,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_1 = 148,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_2 = 149,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_3 = 150,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_4 = 151,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_5 = 152,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_6 = 153,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_7 = 154,
+	GFX_PLASTIC_FOUNTAIN_ANIMATED_8 = 155,
+	GFX_BUBBLE_GENERATOR = 161,
+	GFX_BUBBLE_CATCHER = 162,
+	GFX_TOFFEE_QUARY = 165,
+	GFX_SUGAR_MINE_SIEVE = 174,
+	GFX_WATERTILE_SPECIALCHECK = 255, ///< not really a tile, but rather a very special check
 };
 
 /**
@@ -252,7 +251,6 @@ inline IndustryRandomTriggers GetIndustryRandomTriggers(Tile tile)
 	assert(IsTileType(tile, MP_INDUSTRY));
 	return static_cast<IndustryRandomTriggers>(GB(tile.m6(), 3, 3));
 }
-
 
 /**
  * Set the activated triggers bits for this industry tile

@@ -8,7 +8,9 @@
 /** @file script_townlist.cpp Implementation of ScriptTownList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_townlist.hpp"
+
 #include "../../town.h"
 
 #include "../../safeguards.h"

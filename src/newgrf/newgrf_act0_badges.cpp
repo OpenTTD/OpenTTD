@@ -8,6 +8,7 @@
 /** @file newgrf_act0_badges.cpp NewGRF Action 0x00 handler for badges. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
@@ -55,5 +56,14 @@ static ChangeInfoResult BadgeChangeInfo(uint first, uint last, int prop, ByteRea
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_BADGES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_BADGES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return BadgeChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_BADGES>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_BADGES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return BadgeChangeInfo(first, last, prop, buf);
+}

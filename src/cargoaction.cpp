@@ -8,8 +8,10 @@
 /** @file cargoaction.cpp Implementation of cargo actions. */
 
 #include "stdafx.h"
-#include "economy_base.h"
+
 #include "cargoaction.h"
+
+#include "economy_base.h"
 #include "station_base.h"
 
 #include "safeguards.h"

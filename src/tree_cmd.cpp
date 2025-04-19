@@ -8,28 +8,30 @@
 /** @file tree_cmd.cpp Handling of tree tiles. */
 
 #include "stdafx.h"
-#include "clear_map.h"
-#include "landscape.h"
-#include "tree_map.h"
-#include "viewport_func.h"
-#include "command_func.h"
-#include "town.h"
-#include "genworld.h"
-#include "clear_func.h"
-#include "company_func.h"
-#include "sound_func.h"
-#include "water.h"
-#include "company_base.h"
+
+#include "tree_cmd.h"
+
 #include "core/geometry_type.hpp"
 #include "core/random_func.hpp"
-#include "newgrf_generic.h"
-#include "timer/timer_game_tick.h"
-#include "tree_cmd.h"
+#include "clear_func.h"
+#include "clear_map.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "genworld.h"
+#include "landscape.h"
 #include "landscape_cmd.h"
+#include "newgrf_generic.h"
+#include "sound_func.h"
+#include "timer/timer_game_tick.h"
+#include "town.h"
+#include "tree_map.h"
+#include "viewport_func.h"
+#include "water.h"
 
+#include "table/clear_land.h"
 #include "table/strings.h"
 #include "table/tree_land.h"
-#include "table/clear_land.h"
 
 #include "safeguards.h"
 
@@ -39,25 +41,25 @@
  * This enumeration defines all possible tree placer algorithm in the game.
  */
 enum TreePlacer : uint8_t {
-	TP_NONE,     ///< No tree placer algorithm
+	TP_NONE, ///< No tree placer algorithm
 	TP_ORIGINAL, ///< The original algorithm
 	TP_IMPROVED, ///< A 'improved' algorithm
 };
 
 /** Where to place trees while in-game? */
 enum ExtraTreePlacement : uint8_t {
-	ETP_NO_SPREAD,           ///< Grow trees on tiles that have them but don't spread to new ones
-	ETP_SPREAD_RAINFOREST,   ///< Grow trees on tiles that have them, only spread to new ones in rainforests
-	ETP_SPREAD_ALL,          ///< Grow trees and spread them without restrictions
+	ETP_NO_SPREAD, ///< Grow trees on tiles that have them but don't spread to new ones
+	ETP_SPREAD_RAINFOREST, ///< Grow trees on tiles that have them, only spread to new ones in rainforests
+	ETP_SPREAD_ALL, ///< Grow trees and spread them without restrictions
 	ETP_NO_GROWTH_NO_SPREAD, ///< Don't grow trees and don't spread them at all
 };
 
 /** Determines when to consider building more trees. */
 uint8_t _trees_tick_ctr;
 
-static const uint16_t DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
+static const uint16_t DEFAULT_TREE_STEPS = 1000; ///< Default number of attempts for placing trees.
 static const uint16_t DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
-static const uint16_t EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
+static const uint16_t EDITOR_TREE_DIV = 5; ///< Game editor tree generation divisor factor.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -74,10 +76,10 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
 		case MP_CLEAR:
-			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
-			       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
+			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) && (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
 
-		default: return false;
+		default:
+			return false;
 	}
 }
 
@@ -112,16 +114,23 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 				ground = clearground == CLEAR_ROUGH ? TREE_GROUND_ROUGH_SNOW : TREE_GROUND_SNOW_DESERT;
 			} else {
 				switch (clearground) {
-					case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       break;
-					case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;       break;
-					default:           ground = TREE_GROUND_SNOW_DESERT; break;
+					case CLEAR_GRASS:
+						ground = TREE_GROUND_GRASS;
+						break;
+					case CLEAR_ROUGH:
+						ground = TREE_GROUND_ROUGH;
+						break;
+					default:
+						ground = TREE_GROUND_SNOW_DESERT;
+						break;
 				}
 			}
 			if (clearground != CLEAR_ROUGH) density = GetClearDensity(tile);
 			break;
 		}
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 
 	MakeTree(tile, treetype, count, growth, ground, density);
@@ -149,9 +158,12 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 
 		case LandscapeType::Tropic:
 			switch (GetTropicZone(tile)) {
-				case TROPICZONE_NORMAL:  return static_cast<TreeType>(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
-				case TROPICZONE_DESERT:  return static_cast<TreeType>((seed > 12) ? TREE_INVALID : TREE_CACTUS);
-				default:                 return static_cast<TreeType>(seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST);
+				case TROPICZONE_NORMAL:
+					return static_cast<TreeType>(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
+				case TROPICZONE_DESERT:
+					return static_cast<TreeType>((seed > 12) ? TREE_INVALID : TREE_CACTUS);
+				default:
+					return static_cast<TreeType>(seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST);
 			}
 
 		default:
@@ -204,7 +216,6 @@ static void CreateStarShapedPolygon(int radius, std::span<const BlobHarmonic> ha
 
 	/* Divide a circle into a number of equally spaced divisions. */
 	for (Point &vertex : shape) {
-
 		/* Add up the values of each harmonic at this segment.*/
 		float deviation = std::accumulate(std::begin(harmonics), std::end(harmonics), 0.f, [theta](float d, const BlobHarmonic &harmonic) -> float {
 			return d + sinf((theta + harmonic.phase) * harmonic.frequency) * harmonic.amplitude;
@@ -480,9 +491,14 @@ void GenerateTrees()
 	if (_settings_game.game_creation.tree_placer == TP_NONE) return;
 
 	switch (_settings_game.game_creation.tree_placer) {
-		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ? 15 : 6; break;
-		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LandscapeType::Arctic ?  4 : 2; break;
-		default: NOT_REACHED();
+		case TP_ORIGINAL:
+			i = _settings_game.game_creation.landscape == LandscapeType::Arctic ? 15 : 6;
+			break;
+		case TP_IMPROVED:
+			i = _settings_game.game_creation.landscape == LandscapeType::Arctic ? 4 : 2;
+			break;
+		default:
+			NOT_REACHED();
 	}
 
 	total = Map::ScaleBySize(DEFAULT_TREE_STEPS);
@@ -515,7 +531,9 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
-	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
+	if (tree_to_plant != TREE_INVALID &&
+		!IsInsideBS(tree_to_plant, _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]))
+		return CMD_ERROR;
 
 	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
@@ -561,7 +579,8 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 				TreeType treetype = (TreeType)tree_to_plant;
 				/* Be a bit picky about which trees go where. */
-				if (_settings_game.game_creation.landscape == LandscapeType::Tropic && treetype != TREE_INVALID && (
+				if (_settings_game.game_creation.landscape == LandscapeType::Tropic && treetype != TREE_INVALID &&
+					(
 						/* No cacti outside the desert */
 						(treetype == TREE_CACTUS && GetTropicZone(current_tile) != TROPICZONE_DESERT) ||
 						/* No rainforest trees outside the rainforest, except in the editor mode where it makes those tiles rainforest tile */
@@ -589,7 +608,8 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 							break;
 						}
 
-						default: break;
+						default:
+							break;
 					}
 				}
 
@@ -641,10 +661,18 @@ struct TreeListEnt : PalSpriteID {
 static void DrawTile_Trees(TileInfo *ti)
 {
 	switch (GetTreeGround(ti->tile)) {
-		case TREE_GROUND_SHORE: DrawShoreTile(ti->tileh); break;
-		case TREE_GROUND_GRASS: DrawClearLandTile(ti, GetTreeDensity(ti->tile)); break;
-		case TREE_GROUND_ROUGH: DrawHillyLandTile(ti); break;
-		default: DrawGroundSprite(_clear_land_sprites_snow_desert[GetTreeDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE); break;
+		case TREE_GROUND_SHORE:
+			DrawShoreTile(ti->tileh);
+			break;
+		case TREE_GROUND_GRASS:
+			DrawClearLandTile(ti, GetTreeDensity(ti->tile));
+			break;
+		case TREE_GROUND_ROUGH:
+			DrawHillyLandTile(ti);
+			break;
+		default:
+			DrawGroundSprite(_clear_land_sprites_snow_desert[GetTreeDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			break;
 	}
 
 	/* Do not draw trees when the invisible trees setting is set */
@@ -654,9 +682,8 @@ static void DrawTile_Trees(TileInfo *ti)
 	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
 
 	/* different tree styles above one of the grounds */
-	if ((GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT || GetTreeGround(ti->tile) == TREE_GROUND_ROUGH_SNOW) &&
-			GetTreeDensity(ti->tile) >= 2 &&
-			IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
+	if ((GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT || GetTreeGround(ti->tile) == TREE_GROUND_ROUGH_SNOW) && GetTreeDensity(ti->tile) >= 2 &&
+		IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
 		index += 164 - (TREE_SUB_ARCTIC << 2);
 	}
 
@@ -678,7 +705,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		PaletteID pal = s[0].pal;
 
 		te[i].sprite = sprite;
-		te[i].pal    = pal;
+		te[i].pal = pal;
 		te[i].x = d->x;
 		te[i].y = d->y;
 		s++;
@@ -707,7 +734,6 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	EndSpriteCombine();
 }
-
 
 static int GetSlopePixelZ_Trees(TileIndex tile, uint x, uint y, bool)
 {
@@ -762,19 +788,15 @@ static void TileLoopTreesDesert(TileIndex tile)
 			break;
 
 		case TROPICZONE_RAINFOREST: {
-			static const SoundFx forest_sounds[] = {
-				SND_42_RAINFOREST_1,
-				SND_43_RAINFOREST_2,
-				SND_44_RAINFOREST_3,
-				SND_48_RAINFOREST_4
-			};
+			static const SoundFx forest_sounds[] = {SND_42_RAINFOREST_1, SND_43_RAINFOREST_2, SND_44_RAINFOREST_3, SND_48_RAINFOREST_4};
 			uint32_t r = Random();
 
 			if (Chance16I(1, 200, r) && _settings_client.sound.ambient) SndPlayTileFx(forest_sounds[GB(r, 16, 2)], tile);
 			break;
 		}
 
-		default: break;
+		default:
+			break;
 	}
 }
 
@@ -784,9 +806,14 @@ static void TileLoopTreesAlps(TileIndex tile)
 
 	if (k < 0) {
 		switch (GetTreeGround(tile)) {
-			case TREE_GROUND_SNOW_DESERT: SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3); break;
-			case TREE_GROUND_ROUGH_SNOW:  SetTreeGroundDensity(tile, TREE_GROUND_ROUGH, 3); break;
-			default: return;
+			case TREE_GROUND_SNOW_DESERT:
+				SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3);
+				break;
+			case TREE_GROUND_ROUGH_SNOW:
+				SetTreeGroundDensity(tile, TREE_GROUND_ROUGH, 3);
+				break;
+			default:
+				return;
 		}
 	} else {
 		uint density = std::min<uint>(k, 3);
@@ -812,8 +839,8 @@ static void TileLoopTreesAlps(TileIndex tile)
 static bool CanPlantExtraTrees(TileIndex tile)
 {
 	return ((_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
-		(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
-		_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
+			(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
+			_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
 static void TileLoop_Trees(TileIndex tile)
@@ -822,9 +849,14 @@ static void TileLoop_Trees(TileIndex tile)
 		TileLoop_Water(tile);
 	} else {
 		switch (_settings_game.game_creation.landscape) {
-			case LandscapeType::Tropic: TileLoopTreesDesert(tile); break;
-			case LandscapeType::Arctic: TileLoopTreesAlps(tile);   break;
-			default: break;
+			case LandscapeType::Tropic:
+				TileLoopTreesDesert(tile);
+				break;
+			case LandscapeType::Arctic:
+				TileLoopTreesAlps(tile);
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -847,14 +879,12 @@ static void TileLoop_Trees(TileIndex tile)
 
 	if (_settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
 
-	static const uint32_t TREE_UPDATE_FREQUENCY = 16;  // How many tile updates happen for one tree update
+	static const uint32_t TREE_UPDATE_FREQUENCY = 16; // How many tile updates happen for one tree update
 	if (cycle % TREE_UPDATE_FREQUENCY != TREE_UPDATE_FREQUENCY - 1) return;
 
 	switch (GetTreeGrowth(tile)) {
 		case TreeGrowthStage::Grown: // regular sized tree
-			if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
-					GetTreeType(tile) != TREE_CACTUS &&
-					GetTropicZone(tile) == TROPICZONE_DESERT) {
+			if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTreeType(tile) != TREE_CACTUS && GetTropicZone(tile) == TROPICZONE_DESERT) {
 				AddTreeGrowth(tile, 1);
 			} else {
 				switch (GB(Random(), 0, 3)) {
@@ -905,9 +935,15 @@ static void TileLoop_Trees(TileIndex tile)
 			} else {
 				/* just one tree, change type into MP_CLEAR */
 				switch (GetTreeGround(tile)) {
-					case TREE_GROUND_SHORE: MakeShore(tile); break;
-					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
-					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
+					case TREE_GROUND_SHORE:
+						MakeShore(tile);
+						break;
+					case TREE_GROUND_GRASS:
+						MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile));
+						break;
+					case TREE_GROUND_ROUGH:
+						MakeClear(tile, CLEAR_ROUGH, 3);
+						break;
 					case TREE_GROUND_ROUGH_SNOW: {
 						uint density = GetTreeDensity(tile);
 						MakeClear(tile, CLEAR_ROUGH, 3);
@@ -1014,20 +1050,19 @@ static CommandCost TerraformTile_Trees(TileIndex tile, DoCommandFlags flags, int
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
-
 extern const TileTypeProcs _tile_type_trees_procs = {
-	DrawTile_Trees,           // draw_tile_proc
-	GetSlopePixelZ_Trees,     // get_slope_z_proc
-	ClearTile_Trees,          // clear_tile_proc
-	nullptr,                     // add_accepted_cargo_proc
-	GetTileDesc_Trees,        // get_tile_desc_proc
+	DrawTile_Trees, // draw_tile_proc
+	GetSlopePixelZ_Trees, // get_slope_z_proc
+	ClearTile_Trees, // clear_tile_proc
+	nullptr, // add_accepted_cargo_proc
+	GetTileDesc_Trees, // get_tile_desc_proc
 	GetTileTrackStatus_Trees, // get_tile_track_status_proc
-	nullptr,                     // click_tile_proc
-	nullptr,                     // animate_tile_proc
-	TileLoop_Trees,           // tile_loop_proc
-	ChangeTileOwner_Trees,    // change_tile_owner_proc
-	nullptr,                     // add_produced_cargo_proc
-	nullptr,                     // vehicle_enter_tile_proc
-	GetFoundation_Trees,      // get_foundation_proc
-	TerraformTile_Trees,      // terraform_tile_proc
+	nullptr, // click_tile_proc
+	nullptr, // animate_tile_proc
+	TileLoop_Trees, // tile_loop_proc
+	ChangeTileOwner_Trees, // change_tile_owner_proc
+	nullptr, // add_produced_cargo_proc
+	nullptr, // vehicle_enter_tile_proc
+	GetFoundation_Trees, // get_foundation_proc
+	TerraformTile_Trees, // terraform_tile_proc
 };

@@ -9,9 +9,9 @@
 
 #include "../stdafx.h"
 
-#include "../3rdparty/catch2/catch.hpp"
-
 #include "../core/math_func.hpp"
+
+#include "../3rdparty/catch2/catch.hpp"
 
 #include "../safeguards.h"
 
@@ -42,7 +42,6 @@ TEST_CASE("IntSqrtTest - FindSqRt")
 	CHECK(9 == IntSqrt(88));
 	CHECK(1696 == IntSqrt(2876278));
 }
-
 
 TEST_CASE("ClampTo")
 {
@@ -87,7 +86,6 @@ TEST_CASE("ClampTo")
 	/* max uint64_t gets clamped to max int64_t. */
 	CHECK(std::numeric_limits<int64_t>::max() == ClampTo<int64_t>(std::numeric_limits<uint64_t>::max()));
 }
-
 
 TEST_CASE("SoftClamp")
 {

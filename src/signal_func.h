@@ -10,10 +10,10 @@
 #ifndef SIGNAL_FUNC_H
 #define SIGNAL_FUNC_H
 
-#include "track_type.h"
-#include "tile_type.h"
-#include "direction_type.h"
 #include "company_type.h"
+#include "direction_type.h"
+#include "tile_type.h"
+#include "track_type.h"
 
 /**
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
@@ -47,9 +47,9 @@ inline uint8_t SignalOnTrack(Track track)
 
 /** State of the signal segment */
 enum SigSegState : uint8_t {
-	SIGSEG_FREE,    ///< Free and has no pre-signal exits or at least one green exit
-	SIGSEG_FULL,    ///< Occupied by a train
-	SIGSEG_PBS,     ///< Segment is a PBS segment
+	SIGSEG_FREE, ///< Free and has no pre-signal exits or at least one green exit
+	SIGSEG_FULL, ///< Occupied by a train
+	SIGSEG_PBS, ///< Segment is a PBS segment
 };
 
 SigSegState UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner);

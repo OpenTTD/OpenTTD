@@ -10,23 +10,22 @@
 #include "../stdafx.h"
 
 #include "midifile.hpp"
-#include "../fileio_func.h"
-#include "../fileio_type.h"
-#include "../string_func.h"
+
 #include "../core/endian_func.hpp"
 #include "../base_media_base.h"
 #include "../base_media_music.h"
-#include "midi.h"
-
 #include "../console_func.h"
 #include "../console_internal.h"
+#include "../fileio_func.h"
+#include "../fileio_type.h"
+#include "../string_func.h"
+#include "midi.h"
 
 #include "table/strings.h"
 
 #include "../safeguards.h"
 
 /* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
-
 
 static MidiFile *_midifile_instance = nullptr;
 
@@ -38,10 +37,10 @@ static MidiFile *_midifile_instance = nullptr;
  */
 const uint8_t *MidiGetStandardSysexMessage(MidiSysexMessage msg, size_t &length)
 {
-	static uint8_t reset_gm_sysex[] = { 0xF0, 0x7E, 0x7F, 0x09, 0x01, 0xF7 };
-	static uint8_t reset_gs_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x00, 0x7F, 0x00, 0x41, 0xF7 };
-	static uint8_t reset_xg_sysex[] = { 0xF0, 0x43, 0x10, 0x4C, 0x00, 0x00, 0x7E, 0x00, 0xF7 };
-	static uint8_t roland_reverb_sysex[] = { 0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7 };
+	static uint8_t reset_gm_sysex[] = {0xF0, 0x7E, 0x7F, 0x09, 0x01, 0xF7};
+	static uint8_t reset_gs_sysex[] = {0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x00, 0x7F, 0x00, 0x41, 0xF7};
+	static uint8_t reset_xg_sysex[] = {0xF0, 0x43, 0x10, 0x4C, 0x00, 0x00, 0x7E, 0x00, 0xF7};
+	static uint8_t roland_reverb_sysex[] = {0xF0, 0x41, 0x10, 0x42, 0x12, 0x40, 0x01, 0x30, 0x02, 0x04, 0x00, 0x40, 0x40, 0x00, 0x00, 0x09, 0xF7};
 
 	switch (msg) {
 		case MidiSysexMessage::ResetGM:
@@ -68,6 +67,7 @@ const uint8_t *MidiGetStandardSysexMessage(MidiSysexMessage msg, size_t &length)
 class ByteBuffer {
 	std::vector<uint8_t> buf{};
 	size_t pos = 0;
+
 public:
 	/**
 	 * Construct buffer from data in a file.
@@ -194,7 +194,7 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 {
 	uint8_t buf[4];
 
-	const uint8_t magic[] = { 'M', 'T', 'r', 'k' };
+	const uint8_t magic[] = {'M', 'T', 'r', 'k'};
 	if (fread(buf, sizeof(magic), 1, file) != 1) {
 		return false;
 	}
@@ -297,7 +297,7 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 					}
 					break;
 			}
-		} else if (status == MIDIST_SYSEX || (status == MIDIST_SMF_ESCAPE  && running_sysex)) {
+		} else if (status == MIDIST_SYSEX || (status == MIDIST_SMF_ESCAPE && running_sysex)) {
 			/* System exclusive message */
 			uint32_t length = 0;
 			if (!chunk.ReadVariableLength(length)) {
@@ -432,7 +432,7 @@ bool MidiFile::ReadSMFHeader(FileHandle &file, SMFHeader &header)
 	}
 
 	/* Check magic, 'MThd' followed by 4 byte length indicator (always = 6 in SMF) */
-	const uint8_t magic[] = { 'M', 'T', 'h', 'd', 0x00, 0x00, 0x00, 0x06 };
+	const uint8_t magic[] = {'M', 'T', 'h', 'd', 0x00, 0x00, 0x00, 0x06};
 	if (!std::ranges::equal(std::span(buffer, std::size(magic)), magic)) {
 		return false;
 	}
@@ -481,7 +481,6 @@ bool MidiFile::LoadFile(const std::string &filename)
 	return FixupMidiData(*this);
 }
 
-
 /**
  * Decoder for "MPS MIDI" format data.
  * This format for MIDI music is also used in a few other Microprose games contemporary with Transport Tycoon.
@@ -513,6 +512,7 @@ struct MpsMachine {
 		uint32_t startpos = 0; ///< start position of master track
 		uint32_t returnpos = 0; ///< next return position after playing a segment
 	};
+
 	std::array<Channel, 16> channels{}; ///< playback status for each MIDI channel
 	std::vector<uint32_t> segments{}; ///< pointers into songdata to repeatable data segments
 	int16_t tempo_ticks = 0; ///< ticker that increments when playing a frame, decrements before playing a frame
@@ -530,8 +530,8 @@ struct MpsMachine {
 	/** Overridden MIDI status codes used in the data format */
 	enum MpsMidiStatus : uint8_t {
 		MPSMIDIST_SEGMENT_RETURN = 0xFD, ///< resume playing master track from stored position
-		MPSMIDIST_SEGMENT_CALL   = 0xFE, ///< store current position of master track playback, and begin playback of a segment
-		MPSMIDIST_ENDSONG        = 0xFF, ///< immediately end the song
+		MPSMIDIST_SEGMENT_CALL = 0xFE, ///< store current position of master track playback, and begin playback of a segment
+		MPSMIDIST_ENDSONG = 0xFF, ///< immediately end the song
 	};
 
 	static void AddMidiData(MidiFile::DataBlock &block, uint8_t b1, uint8_t b2)
@@ -539,6 +539,7 @@ struct MpsMachine {
 		block.data.push_back(b1);
 		block.data.push_back(b2);
 	}
+
 	static void AddMidiData(MidiFile::DataBlock &block, uint8_t b1, uint8_t b2, uint8_t b3)
 	{
 		block.data.push_back(b1);
@@ -552,8 +553,7 @@ struct MpsMachine {
 	 * @param length Length of the data buffer in bytes
 	 * @param target MidiFile object to add decoded data to
 	 */
-	MpsMachine(const uint8_t *data, size_t length, MidiFile &target)
-		: songdata(data), songdatalen(length), target(target)
+	MpsMachine(const uint8_t *data, size_t length, MidiFile &target) : songdata(data), songdatalen(length), target(target)
 	{
 		uint32_t pos = 0;
 		int loopmax;
@@ -807,18 +807,139 @@ struct MpsMachine {
 		return true;
 	}
 };
+
 /** Frames/ticks per second for music playback */
 const int MpsMachine::TEMPO_RATE = 148;
 /** Base note velocities for various GM programs */
 const uint8_t MpsMachine::programvelocities[128] = {
-	100, 100, 100, 100, 100,  90, 100, 100, 100, 100, 100,  90, 100, 100, 100, 100,
-	100, 100,  85, 100, 100, 100, 100, 100, 100, 100, 100, 100,  90,  90, 110,  80,
-	100, 100, 100,  90,  70, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
-	100, 100,  90, 100, 100, 100, 100, 100, 100, 120, 100, 100, 100, 120, 100, 127,
-	100, 100,  90, 100, 100, 100, 100, 100, 100,  95, 100, 100, 100, 100, 100, 100,
-	100, 100, 100, 100, 100, 100, 100, 115, 100, 100, 100, 100, 100, 100, 100, 100,
-	100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
-	100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	90,
+	100,
+	100,
+	100,
+	100,
+	100,
+	90,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	85,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	90,
+	90,
+	110,
+	80,
+	100,
+	100,
+	100,
+	90,
+	70,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	90,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	120,
+	100,
+	100,
+	100,
+	120,
+	100,
+	127,
+	100,
+	100,
+	90,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	95,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	115,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
+	100,
 };
 
 /**
@@ -840,8 +961,7 @@ bool MidiFile::LoadSong(const MusicSongInfo &song)
 	switch (song.filetype) {
 		case MTT_STANDARDMIDI:
 			return this->LoadFile(song.filename);
-		case MTT_MPSMIDI:
-		{
+		case MTT_MPSMIDI: {
 			auto songdata = GetMusicCatEntryData(song.filename, song.cat_index);
 			if (songdata.has_value()) {
 				bool result = this->LoadMpsData(songdata->data(), songdata->size());
@@ -879,21 +999,30 @@ static void WriteVariableLen(FileHandle &f, uint32_t value)
 		fwrite(&tb, 1, 1, f);
 	} else if (value <= 0x3FFF) {
 		uint8_t tb[2];
-		tb[1] =  value & 0x7F;         value >>= 7;
-		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[1] = value & 0x7F;
+		value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80;
+		value >>= 7;
 		fwrite(tb, 1, sizeof(tb), f);
 	} else if (value <= 0x1FFFFF) {
 		uint8_t tb[3];
-		tb[2] =  value & 0x7F;         value >>= 7;
-		tb[1] = (value & 0x7F) | 0x80; value >>= 7;
-		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[2] = value & 0x7F;
+		value >>= 7;
+		tb[1] = (value & 0x7F) | 0x80;
+		value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80;
+		value >>= 7;
 		fwrite(tb, 1, sizeof(tb), f);
 	} else if (value <= 0x0FFFFFFF) {
 		uint8_t tb[4];
-		tb[3] =  value & 0x7F;         value >>= 7;
-		tb[2] = (value & 0x7F) | 0x80; value >>= 7;
-		tb[1] = (value & 0x7F) | 0x80; value >>= 7;
-		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[3] = value & 0x7F;
+		value >>= 7;
+		tb[2] = (value & 0x7F) | 0x80;
+		value >>= 7;
+		tb[1] = (value & 0x7F) | 0x80;
+		value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80;
+		value >>= 7;
 		fwrite(tb, 1, sizeof(tb), f);
 	}
 }
@@ -911,10 +1040,10 @@ bool MidiFile::WriteSMF(const std::string &filename)
 
 	/* SMF header */
 	const uint8_t fileheader[] = {
-		'M', 'T', 'h', 'd',     // block name
+		'M', 'T', 'h', 'd', // block name
 		0x00, 0x00, 0x00, 0x06, // BE32 block length, always 6 bytes
-		0x00, 0x00,             // writing format 0 (all in one track)
-		0x00, 0x01,             // containing 1 track (BE16)
+		0x00, 0x00, // writing format 0 (all in one track)
+		0x00, 0x01, // containing 1 track (BE16)
 		(uint8_t)(this->tickdiv >> 8), (uint8_t)this->tickdiv, // tickdiv in BE16
 	};
 	fwrite(fileheader, sizeof(fileheader), 1, f);
@@ -922,7 +1051,7 @@ bool MidiFile::WriteSMF(const std::string &filename)
 	/* Track header */
 	const uint8_t trackheader[] = {
 		'M', 'T', 'r', 'k', // block name
-		0, 0, 0, 0,         // BE32 block length, unknown at this time
+		0, 0, 0, 0, // BE32 block length, unknown at this time
 	};
 	fwrite(trackheader, sizeof(trackheader), 1, f);
 	/* Determine position to write the actual track block length at */
@@ -949,9 +1078,9 @@ bool MidiFile::WriteSMF(const std::string &filename)
 
 		/* Write tempo change if there is one */
 		if (nexttempo.ticktime <= block.ticktime) {
-			uint8_t tempobuf[6] = { MIDIST_SMF_META, 0x51, 0x03, 0, 0, 0 };
+			uint8_t tempobuf[6] = {MIDIST_SMF_META, 0x51, 0x03, 0, 0, 0};
 			tempobuf[3] = (nexttempo.tempo & 0x00FF0000) >> 16;
-			tempobuf[4] = (nexttempo.tempo & 0x0000FF00) >>  8;
+			tempobuf[4] = (nexttempo.tempo & 0x0000FF00) >> 8;
 			tempobuf[5] = (nexttempo.tempo & 0x000000FF);
 			fwrite(tempobuf, sizeof(tempobuf), 1, f);
 			nexttempoindex++;
@@ -1010,7 +1139,7 @@ bool MidiFile::WriteSMF(const std::string &filename)
 	}
 
 	/* End of track marker */
-	static const uint8_t track_end_marker[] = { 0x00, MIDIST_SMF_META, 0x2F, 0x00 };
+	static const uint8_t track_end_marker[] = {0x00, MIDIST_SMF_META, 0x2F, 0x00};
 	fwrite(&track_end_marker, sizeof(track_end_marker), 1, f);
 
 	/* Fill out the RIFF block length */
@@ -1087,7 +1216,6 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 	}
 }
 
-
 static bool CmdDumpSMF(uint8_t argc, char *argv[])
 {
 	if (argc == 0) {
@@ -1136,4 +1264,3 @@ MidiFile::~MidiFile()
 		_midifile_instance = nullptr;
 	}
 }
-

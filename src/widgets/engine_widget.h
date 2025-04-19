@@ -13,8 +13,8 @@
 /** Widgets of the #EnginePreviewWindow class. */
 enum EnginePreviewWidgets : WidgetID {
 	WID_EP_QUESTION, ///< The container for the question.
-	WID_EP_NO,       ///< No button.
-	WID_EP_YES,      ///< Yes button.
+	WID_EP_NO, ///< No button.
+	WID_EP_YES, ///< Yes button.
 };
 
 #endif /* WIDGETS_ENGINE_WIDGET_H */

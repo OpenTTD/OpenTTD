@@ -8,22 +8,22 @@
 /** @file unix.cpp Implementation of Unix specific file handling. */
 
 #include "../../stdafx.h"
-#include "../../textbuf_gui.h"
-#include "../../debug.h"
-#include "../../string_func.h"
-#include "../../fios.h"
-#include "../../thread.h"
-
 
 #include <dirent.h>
-#include <unistd.h>
+#include <pthread.h>
+#include <signal.h>
 #include <sys/stat.h>
 #include <time.h>
-#include <signal.h>
-#include <pthread.h>
+#include <unistd.h>
+
+#include "../../debug.h"
+#include "../../fios.h"
+#include "../../string_func.h"
+#include "../../textbuf_gui.h"
+#include "../../thread.h"
 
 #ifdef WITH_SDL2
-#include <SDL.h>
+#	include <SDL.h>
 #endif
 
 #ifdef __EMSCRIPTEN__
@@ -41,11 +41,11 @@
 #endif
 
 #ifdef HAS_STATVFS
-#include <sys/statvfs.h>
+#	include <sys/statvfs.h>
 #endif
 
 #ifdef HAS_SYSCTL
-#include <sys/sysctl.h>
+#	include <sys/sysctl.h>
 #endif
 
 #if defined(__APPLE__)
@@ -85,13 +85,14 @@ bool FiosIsHiddenFile(const std::filesystem::path &path)
 
 #ifdef WITH_ICONV
 
-#include <iconv.h>
-#include "../../debug.h"
-#include "../../string_func.h"
+#	include <iconv.h>
+
+#	include "../../debug.h"
+#	include "../../string_func.h"
 
 const char *GetCurrentLocale(const char *param);
 
-#define INTERNALCODE "UTF-8"
+#	define INTERNALCODE "UTF-8"
 
 /**
  * Try and try to decipher the current locale from environmental
@@ -100,15 +101,15 @@ const char *GetCurrentLocale(const char *param);
  */
 static const char *GetLocalCode()
 {
-#if defined(__APPLE__)
+#	if defined(__APPLE__)
 	return "UTF-8-MAC";
-#else
+#	else
 	/* Strip locale (eg en_US.UTF-8) to only have UTF-8 */
 	const char *locale = GetCurrentLocale("LC_CTYPE");
 	if (locale != nullptr) locale = strchr(locale, '.');
 
 	return (locale == nullptr) ? "" : locale + 1;
-#endif
+#	endif
 }
 
 /**
@@ -120,11 +121,11 @@ static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
 	/* There are different implementations of iconv. The older ones,
 	 * e.g. SUSv2, pass a const pointer, whereas the newer ones, e.g.
 	 * IEEE 1003.1 (2004), pass a non-const pointer. */
-#ifdef HAVE_NON_CONST_ICONV
-	char *inbuf = const_cast<char*>(name.data());
-#else
+#	ifdef HAVE_NON_CONST_ICONV
+	char *inbuf = const_cast<char *>(name.data());
+#	else
 	const char *inbuf = name.data();
-#endif
+#	endif
 
 	/* If the output is UTF-32, then 1 ASCII character becomes 4 bytes. */
 	size_t inlen = name.size();
@@ -204,7 +205,7 @@ void ShowOSErrorBox(const char *buf, bool)
 #ifndef WITH_COCOA
 std::optional<std::string> GetClipboardContents()
 {
-#ifdef WITH_SDL2
+#	ifdef WITH_SDL2
 	if (SDL_HasClipboardText() == SDL_FALSE) return std::nullopt;
 
 	char *clip = SDL_GetClipboardText();
@@ -213,20 +214,23 @@ std::optional<std::string> GetClipboardContents()
 		SDL_free(clip);
 		return result;
 	}
-#endif
+#	endif
 
 	return std::nullopt;
 }
 #endif
 
-
 #if defined(__EMSCRIPTEN__)
 void OSOpenBrowser(const std::string &url)
 {
 	/* Implementation in pre.js */
-	EM_ASM({ if (window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url.c_str(), url.size());
+	EM_ASM(
+		{
+			if (window["openttd_open_url"]) window.openttd_open_url($0, $1)
+		},
+		url.c_str(), url.size());
 }
-#elif !defined( __APPLE__)
+#elif !defined(__APPLE__)
 void OSOpenBrowser(const std::string &url)
 {
 	pid_t child_pid = fork();
@@ -236,7 +240,7 @@ void OSOpenBrowser(const std::string &url)
 	args[0] = "xdg-open";
 	args[1] = url.c_str();
 	args[2] = nullptr;
-	execvp(args[0], const_cast<char * const *>(args));
+	execvp(args[0], const_cast<char *const *>(args));
 	Debug(misc, 0, "Failed to open url: {}", url);
 	exit(0);
 }

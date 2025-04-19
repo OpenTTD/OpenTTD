@@ -8,14 +8,16 @@
 /** @file script_text.cpp Implementation of ScriptText. */
 
 #include "../../stdafx.h"
+
+#include "script_text.hpp"
+
+#include "../../game/game_text.hpp"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../game/game_text.hpp"
-#include "script_text.hpp"
-#include "script_log.hpp"
 #include "../script_fatalerror.hpp"
-#include "../../table/control_codes.h"
+#include "script_log.hpp"
 
+#include "../../table/control_codes.h"
 #include "table/strings.h"
 
 #include "../../safeguards.h"
@@ -98,7 +100,8 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 			break;
 		}
 
-		default: return SQ_ERROR;
+		default:
+			return SQ_ERROR;
 	}
 
 	if (this->paramc <= parameter) this->paramc = parameter + 1;
@@ -188,8 +191,7 @@ void ScriptText::_FillParamList(ParamList &params, ScriptTextList &seen_texts)
 	if (seen_texts.empty()) {
 		static Param dummy = 0;
 		int nb_extra = SCRIPT_TEXT_MAX_PARAMETERS - (int)params.size();
-		for (int i = 0; i < nb_extra; i++)
-			params.emplace_back(StringIndexInTab(-1), i, &dummy);
+		for (int i = 0; i < nb_extra; i++) params.emplace_back(StringIndexInTab(-1), i, &dummy);
 	}
 }
 
@@ -245,7 +247,9 @@ void ScriptText::_GetEncodedText(StringBuilder &builder, int &param_count, Param
 		if (pc.owner != this->string) ScriptLog::Warning(fmt::format("{}({}): Consumes {}({})", name, param_count + 1, GetGameStringName(pc.owner), pc.idx + 1));
 		return &pc;
 	};
-	auto skip_args = [&](size_t nb) { idx += nb; };
+	auto skip_args = [&](size_t nb) {
+		idx += nb;
+	};
 
 	for (const StringParam &cur_param : params) {
 		try {
@@ -254,8 +258,7 @@ void ScriptText::_GetEncodedText(StringBuilder &builder, int &param_count, Param
 					skip_args(cur_param.consumes);
 					break;
 
-				case StringParam::RAW_STRING:
-				{
+				case StringParam::RAW_STRING: {
 					ParamCheck &p = *get_next_arg();
 					p.Encode(builder, cur_param.cmd);
 					if (p.cmd != cur_param.cmd) throw 1;
@@ -263,8 +266,7 @@ void ScriptText::_GetEncodedText(StringBuilder &builder, int &param_count, Param
 					break;
 				}
 
-				case StringParam::STRING:
-				{
+				case StringParam::STRING: {
 					ParamCheck &p = *get_next_arg();
 					p.Encode(builder, cur_param.cmd);
 					if (p.cmd != cur_param.cmd) throw 1;
@@ -277,7 +279,8 @@ void ScriptText::_GetEncodedText(StringBuilder &builder, int &param_count, Param
 					ScriptTextRef &ref = std::get<ScriptTextRef>(*p.param);
 					ref->_GetEncodedText(builder, count, args.subspan(idx), false);
 					if (++count != cur_param.consumes) {
-						ScriptLog::Warning(fmt::format("{}({}): {{{}}} expects {} to be consumed, but {} consumes {}", name, param_count + 1, cur_param.cmd, cur_param.consumes - 1, GetGameStringName(ref->string), count - 1));
+						ScriptLog::Warning(fmt::format(
+							"{}({}): {{{}}} expects {} to be consumed, but {} consumes {}", name, param_count + 1, cur_param.cmd, cur_param.consumes - 1, GetGameStringName(ref->string), count - 1));
 						/* Fill missing params if needed. */
 						for (int i = count; i < cur_param.consumes; i++) {
 							builder.PutUtf8(SCC_RECORD_SEPARATOR);

@@ -8,37 +8,35 @@
 /** @file ai_sl.cpp Handles the saveload part of the AIs */
 
 #include "../stdafx.h"
-#include "../debug.h"
-
-#include "saveload.h"
-#include "compat/ai_sl_compat.h"
-
-#include "../company_base.h"
-#include "../string_func.h"
 
 #include "../ai/ai.hpp"
 #include "../ai/ai_config.hpp"
-#include "../network/network.h"
 #include "../ai/ai_instance.hpp"
+#include "../company_base.h"
+#include "../debug.h"
+#include "../network/network.h"
+#include "../string_func.h"
+#include "compat/ai_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
 static std::string _ai_saveload_name;
-static int         _ai_saveload_version;
+static int _ai_saveload_version;
 static std::string _ai_saveload_settings;
-static bool        _ai_saveload_is_random;
+static bool _ai_saveload_is_random;
 
 static const SaveLoad _ai_company_desc[] = {
-	   SLEG_SSTR("name",      _ai_saveload_name,         SLE_STR),
-	   SLEG_SSTR("settings",  _ai_saveload_settings,     SLE_STR),
-	SLEG_CONDVAR("version",   _ai_saveload_version,   SLE_UINT32, SLV_108, SL_MAX_VERSION),
-	SLEG_CONDVAR("is_random", _ai_saveload_is_random,   SLE_BOOL, SLV_136, SLV_AI_LOCAL_CONFIG),
+	SLEG_SSTR("name", _ai_saveload_name, SLE_STR),
+	SLEG_SSTR("settings", _ai_saveload_settings, SLE_STR),
+	SLEG_CONDVAR("version", _ai_saveload_version, SLE_UINT32, SLV_108, SL_MAX_VERSION),
+	SLEG_CONDVAR("is_random", _ai_saveload_is_random, SLE_BOOL, SLV_136, SLV_AI_LOCAL_CONFIG),
 };
 
 static const SaveLoad _ai_running_desc[] = {
-	SLEG_CONDSSTR("running_name",     _ai_saveload_name,        SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
-	SLEG_CONDSSTR("running_settings", _ai_saveload_settings,    SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
-	 SLEG_CONDVAR("running_version",  _ai_saveload_version,  SLE_UINT32, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
+	SLEG_CONDSSTR("running_name", _ai_saveload_name, SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
+	SLEG_CONDSSTR("running_settings", _ai_saveload_settings, SLE_STR, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
+	SLEG_CONDVAR("running_version", _ai_saveload_version, SLE_UINT32, SLV_AI_LOCAL_CONFIG, SL_MAX_VERSION),
 };
 
 static void SaveReal_AIPL(int arg)
@@ -69,7 +67,6 @@ static void SaveReal_AIPL(int arg)
 
 	SlObject(nullptr, _ai_running_desc);
 	AI::Save(index);
-
 }
 
 struct AIPLChunkHandler : ChunkHandler {

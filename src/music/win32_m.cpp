@@ -8,18 +8,21 @@
 /** @file win32_m.cpp Music playback for Windows. */
 
 #include "../stdafx.h"
-#include "../string_func.h"
+
 #include "win32_m.h"
+
 #include <windows.h>
 #include <mmsystem.h>
-#include "../os/windows/win32.h"
-#include "../debug.h"
-#include "midifile.hpp"
-#include "midi.h"
+#include <mutex>
+
+#include "../core/mem_func.hpp"
 #include "../base_media_base.h"
 #include "../base_media_music.h"
-#include "../core/mem_func.hpp"
-#include <mutex>
+#include "../debug.h"
+#include "../os/windows/win32.h"
+#include "../string_func.h"
+#include "midi.h"
+#include "midifile.hpp"
 
 #include "../safeguards.h"
 
@@ -30,35 +33,33 @@ struct PlaybackSegment {
 };
 
 static struct {
-	UINT time_period;    ///< obtained timer precision value
-	HMIDIOUT midi_out;   ///< handle to open midiOut
-	UINT timer_id;       ///< ID of active multimedia timer
-	std::mutex lock;     ///< synchronization for playback status fields
+	UINT time_period; ///< obtained timer precision value
+	HMIDIOUT midi_out; ///< handle to open midiOut
+	UINT timer_id; ///< ID of active multimedia timer
+	std::mutex lock; ///< synchronization for playback status fields
 
-	bool playing;        ///< flag indicating that playback is active
-	int do_start;        ///< flag for starting playback of next_file at next opportunity
-	bool do_stop;        ///< flag for stopping playback at next opportunity
+	bool playing; ///< flag indicating that playback is active
+	int do_start; ///< flag for starting playback of next_file at next opportunity
+	bool do_stop; ///< flag for stopping playback at next opportunity
 	uint8_t current_volume; ///< current effective volume setting
-	uint8_t new_volume;     ///< volume setting to change to
+	uint8_t new_volume; ///< volume setting to change to
 
-	MidiFile current_file;           ///< file currently being played from
+	MidiFile current_file; ///< file currently being played from
 	PlaybackSegment current_segment; ///< segment info for current playback
-	DWORD playback_start_time;       ///< timestamp current file began playback
-	size_t current_block;            ///< next block index to send
-	MidiFile next_file;              ///< upcoming file to play
-	PlaybackSegment next_segment;    ///< segment info for upcoming file
+	DWORD playback_start_time; ///< timestamp current file began playback
+	size_t current_block; ///< next block index to send
+	MidiFile next_file; ///< upcoming file to play
+	PlaybackSegment next_segment; ///< segment info for upcoming file
 
 	uint8_t channel_volumes[16]; ///< last seen volume controller values in raw data
 } _midi;
 
 static FMusicDriver_Win32 iFMusicDriver_Win32;
 
-
 static uint8_t ScaleVolume(uint8_t original, uint8_t scale)
 {
 	return original * scale / 127;
 }
-
 
 void CALLBACK MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR, DWORD_PTR dwParam1, DWORD_PTR)
 {
@@ -202,7 +203,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 			preload_bytes += block.data.size();
 			if (block.ticktime >= _midi.current_segment.start) {
 				if (_midi.current_segment.loop) {
-					Debug(driver, 2, "Win32-MIDI: timer: loop from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, ((int)block.realtime)/1000.0, preload_bytes);
+					Debug(driver, 2, "Win32-MIDI: timer: loop from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, ((int)block.realtime) / 1000.0, preload_bytes);
 					_midi.current_segment.start_block = bl;
 					break;
 				} else {
@@ -218,7 +219,6 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 			}
 		}
 	}
-
 
 	/* play pending blocks */
 	DWORD current_time = timeGetTime();

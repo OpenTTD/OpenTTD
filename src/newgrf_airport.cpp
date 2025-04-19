@@ -8,17 +8,17 @@
 /** @file newgrf_airport.cpp NewGRF handling of airports. */
 
 #include "stdafx.h"
+
 #include "debug.h"
-#include "timer/timer_game_calendar.h"
 #include "newgrf_badge.h"
+#include "newgrf_class_func.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
 #include "station_base.h"
+#include "timer/timer_game_calendar.h"
 #include "town.h"
 
 #include "table/strings.h"
-
-#include "newgrf_class_func.h"
 
 #include "safeguards.h"
 
@@ -44,7 +44,6 @@ bool AirportClass::IsUIAvailable(uint) const
 
 /* Instantiate AirportClass. */
 template class NewGRFClass<AirportSpec, AirportClassID, APC_MAX>;
-
 
 AirportOverrideManager _airport_mngr(NEW_AIRPORT_OFFSET, NUM_AIRPORTS, AT_INVALID);
 
@@ -105,8 +104,7 @@ bool AirportSpec::IsWithinMapBounds(uint8_t table, TileIndex tile) const
 	uint8_t h = this->size_y;
 	if (this->layouts[table].rotation == DIR_E || this->layouts[table].rotation == DIR_W) std::swap(w, h);
 
-	return TileX(tile) + w < Map::SizeX() &&
-		TileY(tile) + h < Map::SizeY();
+	return TileX(tile) + w < Map::SizeX() && TileY(tile) + h < Map::SizeY();
 }
 
 /**
@@ -132,7 +130,6 @@ void BindAirportSpecs()
 		if (as->enabled) AirportClass::Assign(as);
 	}
 }
-
 
 void AirportOverrideManager::SetEntitySpec(AirportSpec &&as)
 {
@@ -161,9 +158,11 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec &&as)
 /* virtual */ uint32_t AirportScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	switch (variable) {
-		case 0x40: return this->layout;
+		case 0x40:
+			return this->layout;
 
-		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
+		case 0x7A:
+			return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
 	}
 
 	if (this->st == nullptr) {
@@ -173,10 +172,13 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec &&as)
 
 	switch (variable) {
 		/* Get a variable from the persistent storage */
-		case 0x7C: return (this->st->airport.psa != nullptr) ? this->st->airport.psa->GetValue(parameter) : 0;
+		case 0x7C:
+			return (this->st->airport.psa != nullptr) ? this->st->airport.psa->GetValue(parameter) : 0;
 
-		case 0xF0: return this->st->facilities.base();
-		case 0xFA: return ClampTo<uint16_t>(this->st->build_date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR);
+		case 0xF0:
+			return this->st->facilities.base();
+		case 0xFA:
+			return ClampTo<uint16_t>(this->st->build_date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR);
 	}
 
 	return this->st->GetNewGRFVariable(this->ro, variable, parameter, available);
@@ -248,9 +250,8 @@ TownScopeResolver *AirportResolverObject::GetTown()
  * @param param1 First parameter (var 10) of the callback.
  * @param param2 Second parameter (var 18) of the callback.
  */
-AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, const AirportSpec *spec, uint8_t layout,
-		CallbackID callback, uint32_t param1, uint32_t param2)
-	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, spec, layout)
+AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, const AirportSpec *spec, uint8_t layout, CallbackID callback, uint32_t param1, uint32_t param2) :
+	ResolverObject(spec->grf_prop.grffile, callback, param1, param2), airport_scope(*this, tile, st, spec, layout)
 {
 	this->root_spritegroup = spec->grf_prop.GetSpriteGroup();
 }

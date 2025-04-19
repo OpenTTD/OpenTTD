@@ -12,11 +12,11 @@
 
 /** Widgets of the #NetworkChatWindow class. */
 enum NetWorkChatWidgets : WidgetID {
-	WID_NC_CLOSE,       ///< Close button.
-	WID_NC_BACKGROUND,  ///< Background of the window.
+	WID_NC_CLOSE, ///< Close button.
+	WID_NC_BACKGROUND, ///< Background of the window.
 	WID_NC_DESTINATION, ///< Destination.
-	WID_NC_TEXTBOX,     ///< Textbox.
-	WID_NC_SENDBUTTON,  ///< Send button.
+	WID_NC_TEXTBOX, ///< Textbox.
+	WID_NC_SENDBUTTON, ///< Send button.
 };
 
 #endif /* WIDGETS_NETWORK_CHAT_WIDGET_H */

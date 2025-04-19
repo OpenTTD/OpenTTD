@@ -8,11 +8,13 @@
 /** @file script_log.cpp Implementation of ScriptLog. */
 
 #include "../../stdafx.h"
-#include "script_log_types.hpp"
+
 #include "script_log.hpp"
+
 #include "../../debug.h"
-#include "../../window_func.h"
 #include "../../string_func.h"
+#include "../../window_func.h"
+#include "script_log_types.hpp"
 
 #include "../../safeguards.h"
 
@@ -47,12 +49,24 @@
 	char logc;
 
 	switch (level) {
-		case ScriptLogTypes::LOG_SQ_ERROR: logc = 'S'; break;
-		case ScriptLogTypes::LOG_ERROR:    logc = 'E'; break;
-		case ScriptLogTypes::LOG_SQ_INFO:  logc = 'P'; break;
-		case ScriptLogTypes::LOG_WARNING:  logc = 'W'; break;
-		case ScriptLogTypes::LOG_INFO:     logc = 'I'; break;
-		default:                           logc = '?'; break;
+		case ScriptLogTypes::LOG_SQ_ERROR:
+			logc = 'S';
+			break;
+		case ScriptLogTypes::LOG_ERROR:
+			logc = 'E';
+			break;
+		case ScriptLogTypes::LOG_SQ_INFO:
+			logc = 'P';
+			break;
+		case ScriptLogTypes::LOG_WARNING:
+			logc = 'W';
+			break;
+		case ScriptLogTypes::LOG_INFO:
+			logc = 'I';
+			break;
+		default:
+			logc = '?';
+			break;
 	}
 
 	/* Also still print to debug window */

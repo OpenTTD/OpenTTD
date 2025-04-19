@@ -17,12 +17,12 @@
  * Mode switches to the behaviour of persistent storage array.
  */
 enum PersistentStorageMode : uint8_t {
-	PSM_ENTER_GAMELOOP,   ///< Enter the gameloop, changes will be permanent.
-	PSM_LEAVE_GAMELOOP,   ///< Leave the gameloop, changes will be temporary.
-	PSM_ENTER_COMMAND,    ///< Enter command scope, changes will be permanent.
-	PSM_LEAVE_COMMAND,    ///< Leave command scope, revert to previous mode.
-	PSM_ENTER_TESTMODE,   ///< Enter command test mode, changes will be temporary.
-	PSM_LEAVE_TESTMODE,   ///< Leave command test mode, revert to previous mode.
+	PSM_ENTER_GAMELOOP, ///< Enter the gameloop, changes will be permanent.
+	PSM_LEAVE_GAMELOOP, ///< Leave the gameloop, changes will be temporary.
+	PSM_ENTER_COMMAND, ///< Enter command scope, changes will be permanent.
+	PSM_LEAVE_COMMAND, ///< Leave command scope, revert to previous mode.
+	PSM_ENTER_TESTMODE, ///< Enter command test mode, changes will be temporary.
+	PSM_LEAVE_TESTMODE, ///< Leave command test mode, revert to previous mode.
 };
 
 /**
@@ -48,7 +48,10 @@ protected:
 	 * Check whether currently changes to the storage shall be persistent or
 	 * temporary till the next call to ClearChanges().
 	 */
-	static bool AreChangesPersistent() { return (gameloop || command) && !testmode; }
+	static bool AreChangesPersistent()
+	{
+		return (gameloop || command) && !testmode;
+	}
 
 private:
 	static bool gameloop;
@@ -120,7 +123,6 @@ struct PersistentStorageArray : BasePersistentStorageArray {
 		}
 	}
 };
-
 
 /**
  * Class for temporary storage of data.

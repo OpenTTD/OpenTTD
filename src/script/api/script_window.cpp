@@ -8,10 +8,12 @@
 /** @file script_window.cpp Implementation of ScriptWindow. */
 
 #include "../../stdafx.h"
+
 #include "script_window.hpp"
-#include "script_game.hpp"
+
 #include "../../window_func.h"
 #include "../../window_gui.h"
+#include "script_game.hpp"
 
 #include "../../safeguards.h"
 

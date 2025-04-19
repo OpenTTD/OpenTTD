@@ -10,7 +10,6 @@
 #ifndef BITMAP_TYPE_HPP
 #define BITMAP_TYPE_HPP
 
-
 /** Represents a tile area containing containing individually set tiles.
  * Each tile must be contained within the preallocated area.
  * A std::vector<bool> is used to mark which tiles are contained.
@@ -19,9 +18,15 @@ class BitmapTileArea : public TileArea {
 protected:
 	std::vector<bool> data;
 
-	inline uint Index(uint x, uint y) const { return y * this->w + x; }
+	inline uint Index(uint x, uint y) const
+	{
+		return y * this->w + x;
+	}
 
-	inline uint Index(TileIndex tile) const { return Index(TileX(tile) - TileX(this->tile), TileY(tile) - TileY(this->tile)); }
+	inline uint Index(TileIndex tile) const
+	{
+		return Index(TileX(tile) - TileX(this->tile), TileY(tile) - TileY(this->tile));
+	}
 
 public:
 	BitmapTileArea()
@@ -106,6 +111,7 @@ public:
 class BitmapTileIterator : public OrthogonalTileIterator {
 protected:
 	const BitmapTileArea *bitmap;
+
 public:
 	/**
 	 * Construct the iterator.
@@ -116,7 +122,7 @@ public:
 		if (!this->bitmap->HasTile(TileIndex(this->tile))) ++(*this);
 	}
 
-	inline TileIterator& operator ++() override
+	inline TileIterator &operator++() override
 	{
 		(*this).OrthogonalTileIterator::operator++();
 		while (this->tile != INVALID_TILE && !this->bitmap->HasTile(TileIndex(this->tile))) {

@@ -78,7 +78,7 @@ public:
 	/** The idle timeout; when to close the connection because it's idle. */
 	static constexpr std::chrono::seconds IDLE_TIMEOUT = std::chrono::seconds(60);
 
-	std::chrono::steady_clock::time_point last_activity;  ///< The last time there was network activity.
+	std::chrono::steady_clock::time_point last_activity; ///< The last time there was network activity.
 	bool connecting; ///< Are we connecting to the Game Coordinator?
 
 	ClientNetworkCoordinatorSocketHandler() : connecting(false) {}

@@ -36,24 +36,23 @@
  * @see _screen
  */
 
-
 #ifndef GFX_FUNC_H
 #define GFX_FUNC_H
 
 #include "gfx_type.h"
-#include "strings_type.h"
 #include "string_type.h"
+#include "strings_type.h"
 
 void GameLoop();
 
 void CreateConsole();
 
-extern uint8_t _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
+extern uint8_t _dirkeys; ///< 1 = left, 2 = up, 4 = right, 8 = down
 extern bool _fullscreen;
 extern uint8_t _support8bpp;
 extern CursorVars _cursor;
-extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
-extern bool _shift_pressed;  ///< Is Shift pressed?
+extern bool _ctrl_pressed; ///< Is Ctrl pressed?
+extern bool _shift_pressed; ///< Is Shift pressed?
 extern uint16_t _game_speed;
 
 extern bool _left_button_down;
@@ -62,7 +61,7 @@ extern bool _right_button_down;
 extern bool _right_button_clicked;
 
 extern DrawPixelInfo _screen;
-extern bool _screen_disable_anim;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
+extern bool _screen_disable_anim; ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
 
 extern std::vector<Dimension> _resolutions;
 extern Dimension _cur_resolution;
@@ -95,8 +94,10 @@ std::unique_ptr<uint32_t[]> DrawSpriteToRgbaBuffer(SpriteID spriteId, ZoomLevel 
 
 int DrawString(int left, int right, int top, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
 int DrawString(int left, int right, int top, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false, FontSize fontsize = FS_NORMAL);
-int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
-int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
+int DrawStringMultiLine(int left, int right, int top, int bottom, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false,
+	FontSize fontsize = FS_NORMAL);
+int DrawStringMultiLine(
+	int left, int right, int top, int bottom, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL);
 
 void DrawCharCentered(char32_t c, const Rect &r, TextColour colour);
 
@@ -117,7 +118,8 @@ inline int DrawString(const Rect &r, StringID str, TextColour colour = TC_FROMST
 	return DrawString(r.left, r.right, r.top, str, colour, align, underline, fontsize);
 }
 
-inline int DrawStringMultiLine(const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
+inline int DrawStringMultiLine(
+	const Rect &r, std::string_view str, TextColour colour = TC_FROMSTRING, StringAlignment align = (SA_TOP | SA_LEFT), bool underline = false, FontSize fontsize = FS_NORMAL)
 {
 	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, str, colour, align, underline, fontsize);
 }

@@ -8,6 +8,7 @@
 /** @file soundloader_raw.cpp Loading of raw sounds. */
 
 #include "stdafx.h"
+
 #include "random_access_file_type.h"
 #include "sound_type.h"
 #include "soundloader_type.h"

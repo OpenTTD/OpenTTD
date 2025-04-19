@@ -8,7 +8,9 @@
 /** @file script_list.cpp Implementation of ScriptList. */
 
 #include "../../stdafx.h"
+
 #include "script_list.hpp"
+
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"
 
@@ -19,9 +21,9 @@
  */
 class ScriptListSorter {
 protected:
-	ScriptList *list;       ///< The list that's being sorted.
+	ScriptList *list; ///< The list that's being sorted.
 	bool has_no_more_items; ///< Whether we have more items to iterate over.
-	SQInteger item_next;    ///< The next item we will show.
+	SQInteger item_next; ///< The next item we will show.
 
 public:
 	/**
@@ -74,8 +76,8 @@ public:
  */
 class ScriptListSorterValueAscending : public ScriptListSorter {
 private:
-	ScriptList::ScriptListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
-	ScriptList::ScriptItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	ScriptList::ScriptListBucket::iterator bucket_iter; ///< The iterator over the list to find the buckets.
+	ScriptList::ScriptItemList *bucket_list; ///< The current bucket list we're iterator over.
 	ScriptList::ScriptItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
@@ -163,8 +165,8 @@ private:
 	/* Note: We cannot use reverse_iterator.
 	 *       The iterators must only be invalidated when the element they are pointing to is removed.
 	 *       This only holds for forward iterators. */
-	ScriptList::ScriptListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
-	ScriptList::ScriptItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	ScriptList::ScriptListBucket::iterator bucket_iter; ///< The iterator over the list to find the buckets.
+	ScriptList::ScriptItemList *bucket_list; ///< The current bucket list we're iterator over.
 	ScriptList::ScriptItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
@@ -401,8 +403,6 @@ public:
 	}
 };
 
-
-
 bool ScriptList::SaveObject(HSQUIRRELVM vm)
 {
 	sq_pushstring(vm, "List");
@@ -456,16 +456,14 @@ bool ScriptList::LoadObject(HSQUIRRELVM vm)
 ScriptList::ScriptList()
 {
 	/* Default sorter */
-	this->sorter         = std::make_unique<ScriptListSorterValueDescending>(this);
-	this->sorter_type    = SORT_BY_VALUE;
+	this->sorter = std::make_unique<ScriptListSorterValueDescending>(this);
+	this->sorter_type = SORT_BY_VALUE;
 	this->sort_ascending = false;
-	this->initialized    = false;
-	this->modifications  = 0;
+	this->initialized = false;
+	this->modifications = 0;
 }
 
-ScriptList::~ScriptList()
-{
-}
+ScriptList::~ScriptList() {}
 
 bool ScriptList::HasItem(SQInteger item)
 {
@@ -593,11 +591,12 @@ void ScriptList::Sort(SorterType sorter, bool ascending)
 			}
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
-	this->sorter_type    = sorter;
+	this->sorter_type = sorter;
 	this->sort_ascending = ascending;
-	this->initialized    = false;
+	this->initialized = false;
 }
 
 void ScriptList::AddList(ScriptList *list)
@@ -638,7 +637,8 @@ void ScriptList::RemoveAboveValue(SQInteger value)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second > value) this->RemoveItem((*iter).first);
 	}
 }
@@ -648,7 +648,8 @@ void ScriptList::RemoveBelowValue(SQInteger value)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second < value) this->RemoveItem((*iter).first);
 	}
 }
@@ -658,7 +659,8 @@ void ScriptList::RemoveBetweenValue(SQInteger start, SQInteger end)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second > start && (*iter).second < end) this->RemoveItem((*iter).first);
 	}
 }
@@ -668,7 +670,8 @@ void ScriptList::RemoveValue(SQInteger value)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second == value) this->RemoveItem((*iter).first);
 	}
 }
@@ -685,7 +688,8 @@ void ScriptList::RemoveTop(SQInteger count)
 	}
 
 	switch (this->sorter_type) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case SORT_BY_VALUE:
 			for (ScriptListBucket::iterator iter = this->buckets.begin(); iter != this->buckets.end(); iter = this->buckets.begin()) {
 				ScriptItemList *items = &(*iter).second;
@@ -722,7 +726,8 @@ void ScriptList::RemoveBottom(SQInteger count)
 	}
 
 	switch (this->sorter_type) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case SORT_BY_VALUE:
 			for (ScriptListBucket::reverse_iterator iter = this->buckets.rbegin(); iter != this->buckets.rend(); iter = this->buckets.rbegin()) {
 				ScriptItemList *items = &(*iter).second;
@@ -766,7 +771,8 @@ void ScriptList::KeepAboveValue(SQInteger value)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second <= value) this->RemoveItem((*iter).first);
 	}
 }
@@ -776,7 +782,8 @@ void ScriptList::KeepBelowValue(SQInteger value)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second >= value) this->RemoveItem((*iter).first);
 	}
 }
@@ -786,7 +793,8 @@ void ScriptList::KeepBetweenValue(SQInteger start, SQInteger end)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second <= start || (*iter).second >= end) this->RemoveItem((*iter).first);
 	}
 }
@@ -796,7 +804,8 @@ void ScriptList::KeepValue(SQInteger value)
 	this->modifications++;
 
 	for (ScriptListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
+		next_iter = iter;
+		next_iter++;
 		if ((*iter).second != value) this->RemoveItem((*iter).first);
 	}
 }

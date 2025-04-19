@@ -10,9 +10,9 @@
 #ifndef SCRIPT_SIGN_HPP
 #define SCRIPT_SIGN_HPP
 
+#include "../../signs_type.h"
 #include "script_company.hpp"
 #include "script_error.hpp"
-#include "../../signs_type.h"
 
 /**
  * Class that handles all sign related functions.
@@ -26,12 +26,11 @@ public:
 	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
-
 		/** Base for sign building related errors */
 		ERR_SIGN_BASE = ScriptError::ERR_CAT_SIGN << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Too many signs have been placed */
-		ERR_SIGN_TOO_MANY_SIGNS,             // [STR_ERROR_TOO_MANY_SIGNS]
+		ERR_SIGN_TOO_MANY_SIGNS, // [STR_ERROR_TOO_MANY_SIGNS]
 	};
 
 	/**

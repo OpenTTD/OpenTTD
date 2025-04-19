@@ -22,42 +22,44 @@
  */
 
 #include "stdafx.h"
+
 #include <charconv>
-#include "settings_table.h"
-#include "debug.h"
+
+#include "network/core/config.h"
+#include "ai/ai_config.hpp"
+#include "base_media_base.h"
+#include "base_media_graphics.h"
+#include "command_func.h"
+#include "company_func.h"
+#include "console_func.h"
 #include "currency.h"
+#include "debug.h"
+#include "error.h"
+#include "fileio_func.h"
+#include "fios.h"
+#include "game/game_config.hpp"
+#include "gamelog.h"
+#include "genworld.h"
+#include "ini_type.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "network/core/config.h"
-#include "command_func.h"
-#include "console_func.h"
-#include "genworld.h"
+#include "newgrf_config.h"
+#include "picker_func.h"
+#include "rev.h"
+#include "settings_cmd.h"
+#include "settings_func.h"
+#include "settings_table.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "company_func.h"
-#include "rev.h"
-#include "error.h"
-#include "gamelog.h"
-#include "settings_func.h"
-#include "ini_type.h"
-#include "ai/ai_config.hpp"
-#include "game/game_config.hpp"
-#include "newgrf_config.h"
-#include "picker_func.h"
-#include "base_media_base.h"
-#include "base_media_graphics.h"
-#include "fios.h"
-#include "fileio_func.h"
-#include "settings_cmd.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
 
 ClientSettings _settings_client;
-GameSettings _settings_game;     ///< Game settings of a running game or the scenario editor.
-GameSettings _settings_newgame;  ///< Game settings for new games (updated from the intro screen).
+GameSettings _settings_game; ///< Game settings of a running game or the scenario editor.
+GameSettings _settings_newgame; ///< Game settings for new games (updated from the intro screen).
 VehicleDefaultSettings _old_vds; ///< Used for loading default vehicles settings from old savegames.
 std::string _config_file; ///< Configuration file of OpenTTD.
 std::string _private_file; ///< Private configuration file of OpenTTD.
@@ -137,15 +139,7 @@ static bool IsSignedVarMemType(VarType vt)
  */
 class ConfigIniFile : public IniFile {
 private:
-	inline static const IniGroupNameList list_group_names = {
-		"bans",
-		"newgrf",
-		"servers",
-		"server_bind_addresses",
-		"server_authorized_keys",
-		"rcon_authorized_keys",
-		"admin_authorized_keys"
-	};
+	static inline const IniGroupNameList list_group_names = {"bans", "newgrf", "servers", "server_bind_addresses", "server_authorized_keys", "rcon_authorized_keys", "admin_authorized_keys"};
 
 public:
 	ConfigIniFile(const std::string &filename) : IniFile(list_group_names)
@@ -162,17 +156,17 @@ public:
  * location. These versions assist with situations like that.
  */
 enum IniFileVersion : uint32_t {
-	IFV_0,                                                 ///< 0  All versions prior to introduction.
-	IFV_PRIVATE_SECRETS,                                   ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
-	IFV_GAME_TYPE,                                         ///< 2  PR#9515  Convert server_advertise to server_game_type.
-	IFV_LINKGRAPH_SECONDS,                                 ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
-	IFV_NETWORK_PRIVATE_SETTINGS,                          ///< 4  PR#10762 Move use_relay_service to private settings.
+	IFV_0, ///< 0  All versions prior to introduction.
+	IFV_PRIVATE_SECRETS, ///< 1  PR#9298  Moving of settings from openttd.cfg to private.cfg / secrets.cfg.
+	IFV_GAME_TYPE, ///< 2  PR#9515  Convert server_advertise to server_game_type.
+	IFV_LINKGRAPH_SECONDS, ///< 3  PR#10610 Store linkgraph update intervals in seconds instead of days.
+	IFV_NETWORK_PRIVATE_SETTINGS, ///< 4  PR#10762 Move use_relay_service to private settings.
 
-	IFV_AUTOSAVE_RENAME,                                   ///< 5  PR#11143 Renamed values of autosave to be in minutes.
-	IFV_RIGHT_CLICK_CLOSE,                                 ///< 6  PR#10204 Add alternative right click to close windows setting.
-	IFV_REMOVE_GENERATION_SEED,                            ///< 7  PR#11927 Remove "generation_seed" from configuration.
+	IFV_AUTOSAVE_RENAME, ///< 5  PR#11143 Renamed values of autosave to be in minutes.
+	IFV_RIGHT_CLICK_CLOSE, ///< 6  PR#10204 Add alternative right click to close windows setting.
+	IFV_REMOVE_GENERATION_SEED, ///< 7  PR#11927 Remove "generation_seed" from configuration.
 
-	IFV_MAX_VERSION,       ///< Highest possible ini-file version.
+	IFV_MAX_VERSION, ///< Highest possible ini-file version.
 };
 
 const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Current ini-file version of OpenTTD.
@@ -330,13 +324,32 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 		int64_t v;
 		switch (GetVarMemType(this->save.conv)) {
 			case SLE_VAR_BL:
-			case SLE_VAR_I8:  v = *(const   int8_t *)p; p += 1; break;
-			case SLE_VAR_U8:  v = *(const  uint8_t *)p; p += 1; break;
-			case SLE_VAR_I16: v = *(const  int16_t *)p; p += 2; break;
-			case SLE_VAR_U16: v = *(const uint16_t *)p; p += 2; break;
-			case SLE_VAR_I32: v = *(const  int32_t *)p; p += 4; break;
-			case SLE_VAR_U32: v = *(const uint32_t *)p; p += 4; break;
-			default: NOT_REACHED();
+			case SLE_VAR_I8:
+				v = *(const int8_t *)p;
+				p += 1;
+				break;
+			case SLE_VAR_U8:
+				v = *(const uint8_t *)p;
+				p += 1;
+				break;
+			case SLE_VAR_I16:
+				v = *(const int16_t *)p;
+				p += 2;
+				break;
+			case SLE_VAR_U16:
+				v = *(const uint16_t *)p;
+				p += 2;
+				break;
+			case SLE_VAR_I32:
+				v = *(const int32_t *)p;
+				p += 4;
+				break;
+			case SLE_VAR_U32:
+				v = *(const uint32_t *)p;
+				p += 4;
+				break;
+			default:
+				NOT_REACHED();
 		}
 		if (i != 0) result += ',';
 		result += std::to_string(v);
@@ -383,15 +396,11 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 	char *end;
 	size_t val = std::strtoul(str, &end, 0);
 	if (end == str) {
-		_settings_error_list.emplace_back(
-			GetEncodedString(STR_CONFIG_ERROR),
-			GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
+		_settings_error_list.emplace_back(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 		return this->GetDefaultValue();
 	}
 	if (*end != '\0') {
-		_settings_error_list.emplace_back(
-			GetEncodedString(STR_CONFIG_ERROR),
-			GetEncodedString(STR_CONFIG_ERROR_TRAILING_CHARACTERS, this->GetName()));
+		_settings_error_list.emplace_back(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_TRAILING_CHARACTERS, this->GetName()));
 	}
 	return val;
 }
@@ -404,9 +413,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 	if (r == SIZE_MAX && this->many_cnvt != nullptr) r = this->many_cnvt(str);
 	if (r != SIZE_MAX) return r; // and here goes converted value
 
-	_settings_error_list.emplace_back(
-		GetEncodedString(STR_CONFIG_ERROR),
-		GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
+	_settings_error_list.emplace_back(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 	return this->GetDefaultValue();
 }
 
@@ -415,9 +422,7 @@ size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 	size_t r = LookupManyOfMany(this->many, str);
 	if (r != SIZE_MAX) return r;
 
-	_settings_error_list.emplace_back(
-		GetEncodedString(STR_CONFIG_ERROR),
-		GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
+	_settings_error_list.emplace_back(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 	return this->GetDefaultValue();
 }
 
@@ -426,9 +431,7 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
 	auto r = BoolSettingDesc::ParseSingleValue(str);
 	if (r.has_value()) return *r;
 
-	_settings_error_list.emplace_back(
-		GetEncodedString(STR_CONFIG_ERROR),
-		GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
+	_settings_error_list.emplace_back(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, str, this->GetName()));
 	return this->GetDefaultValue();
 }
 
@@ -521,7 +524,8 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 	 * 32-bit variable
 	 * TODO: Support 64-bit settings/variables; requires 64 bit over command protocol! */
 	switch (GetVarMemType(this->save.conv)) {
-		case SLE_VAR_NULL: return;
+		case SLE_VAR_NULL:
+			return;
 		case SLE_VAR_BL:
 		case SLE_VAR_I8:
 		case SLE_VAR_U8:
@@ -557,7 +561,8 @@ void IntSettingDesc::MakeValueValid(int32_t &val) const
 		}
 		case SLE_VAR_I64:
 		case SLE_VAR_U64:
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -641,7 +646,7 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 		if (sd->startup != only_startup) continue;
 
 		/* For settings.xx.yy load the settings from [xx] yy = ? */
-		std::string s{ sd->GetName() };
+		std::string s{sd->GetName()};
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
 			group = ini.GetGroup(s.substr(0, sc));
@@ -689,9 +694,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
 	void *ptr = GetVariableAddress(object, this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
-		_settings_error_list.emplace_back(
-			GetEncodedString(STR_CONFIG_ERROR),
-			GetEncodedString(STR_CONFIG_ERROR_ARRAY, this->GetName()));
+		_settings_error_list.emplace_back(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_ARRAY, this->GetName()));
 
 		/* Use default */
 		LoadIntList(this->def, ptr, this->save.length, GetVarMemType(this->save.conv));
@@ -722,7 +725,7 @@ static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, co
 		if (sd->flags.Test(SettingFlag::NotInConfig)) continue;
 
 		/* XXX - wtf is this?? (group override?) */
-		std::string s{ sd->GetName() };
+		std::string s{sd->GetName()};
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
 			group = &ini.GetOrCreateGroup(s.substr(0, sc));
@@ -780,7 +783,8 @@ std::string StringSettingDesc::FormatValue(const void *object) const
 {
 	const std::string &str = this->Read(object);
 	switch (GetVarMemType(this->save.conv)) {
-		case SLE_VAR_STR: return str;
+		case SLE_VAR_STR:
+			return str;
 
 		case SLE_VAR_STRQ:
 			if (str.empty()) {
@@ -788,7 +792,8 @@ std::string StringSettingDesc::FormatValue(const void *object) const
 			}
 			return fmt::format("\"{}\"", str);
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -905,9 +910,7 @@ bool SettingDesc::IsEditable(bool do_command) const
 	if (do_command && this->flags.Test(SettingFlag::NoNetworkSync)) return false;
 	if (this->flags.Test(SettingFlag::NetworkOnly) && !_networking && _game_mode != GM_MENU) return false;
 	if (this->flags.Test(SettingFlag::NoNetwork) && _networking) return false;
-	if (this->flags.Test(SettingFlag::NewgameOnly) &&
-			(_game_mode == GM_NORMAL ||
-			(_game_mode == GM_EDITOR && !this->flags.Test(SettingFlag::SceneditToo)))) return false;
+	if (this->flags.Test(SettingFlag::NewgameOnly) && (_game_mode == GM_NORMAL || (_game_mode == GM_EDITOR && !this->flags.Test(SettingFlag::SceneditToo)))) return false;
 	if (this->flags.Test(SettingFlag::SceneditOnly) && _game_mode != GM_EDITOR) return false;
 	return true;
 }
@@ -945,13 +948,11 @@ const StringSettingDesc *SettingDesc::AsStringSetting() const
 void PrepareOldDiffCustom();
 void HandleOldDiffCustom(bool savegame);
 
-
 /** Checks if any settings are set to incorrect values, and sets them to correct values in that case. */
 static void ValidateSettings()
 {
 	/* Do not allow a custom sea level with the original land generator. */
-	if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL &&
-			_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+	if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL && _settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
 		_settings_newgame.difficulty.quantity_sea_lakes = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE;
 	}
 }
@@ -1034,9 +1035,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 			if (params.has_value()) {
 				BaseGraphics::ini_data.extra_params = params.value();
 			} else {
-				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-					GetEncodedString(STR_CONFIG_ERROR_ARRAY, BaseGraphics::ini_data.name),
-					WL_CRITICAL);
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_ARRAY, BaseGraphics::ini_data.name), WL_CRITICAL);
 			}
 		}
 	}
@@ -1101,9 +1100,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 			if (params.has_value()) {
 				c->SetParams(params.value());
 			} else {
-				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-					GetEncodedString(STR_CONFIG_ERROR_ARRAY, filename),
-					WL_CRITICAL);
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_ARRAY, filename), WL_CRITICAL);
 			}
 		}
 
@@ -1122,18 +1119,16 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 				reason = STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN;
 			}
 
-			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-				GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name.c_str() : filename, reason),
-				WL_CRITICAL);
+			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name.c_str() : filename, reason), WL_CRITICAL);
 			continue;
 		}
 
 		/* Check for duplicate GRFID (will also check for duplicate filenames) */
-		auto found = std::ranges::find_if(list, [&c](const auto &gc) { return gc->ident.grfid == c->ident.grfid; });
+		auto found = std::ranges::find_if(list, [&c](const auto &gc) {
+			return gc->ident.grfid == c->ident.grfid;
+		});
 		if (found != std::end(list)) {
-			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-				GetEncodedString(STR_CONFIG_ERROR_DUPLICATE_GRFID, c->filename, (*found)->filename),
-				WL_CRITICAL);
+			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_DUPLICATE_GRFID, c->filename, (*found)->filename), WL_CRITICAL);
 			continue;
 		}
 
@@ -1142,8 +1137,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, const char *grpname, bool
 			c->flags.Set(GRFConfigFlag::Static);
 		} else if (++num_grfs > NETWORK_MAX_GRF_COUNT) {
 			/* Check we will not load more non-static NewGRFs than allowed. This could trigger issues for game servers. */
-			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-				GetEncodedString(STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED), WL_CRITICAL);
+			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED), WL_CRITICAL);
 			break;
 		}
 
@@ -1247,8 +1241,7 @@ static void GRFSaveConfig(IniFile &ini, const char *grpname, const GRFConfigList
 	group.Clear();
 
 	for (const auto &c : list) {
-		std::string key = fmt::format("{:08X}|{}|{}", std::byteswap(c->ident.grfid),
-				FormatArrayAsHex(c->ident.md5sum), c->filename);
+		std::string key = fmt::format("{:08X}|{}|{}", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
 		group.GetOrCreateItem(key).SetValue(GRFBuildParamList(*c));
 	}
 }
@@ -1301,7 +1294,7 @@ static void RemoveEntriesFromIni(IniFile &ini, const SettingTable &table)
 		const SettingDesc *sd = GetSettingDesc(desc);
 
 		/* For settings.xx.yy load the settings from [xx] yy = ? */
-		std::string s{ sd->GetName() };
+		std::string s{sd->GetName()};
 		auto sc = s.find('.');
 		if (sc == std::string::npos) continue;
 
@@ -1390,7 +1383,7 @@ void LoadFromConfig(bool startup)
 	if (!startup) {
 		if (generic_version < IFV_LINKGRAPH_SECONDS) {
 			_settings_newgame.linkgraph.recalc_interval *= CalendarTime::SECONDS_PER_DAY;
-			_settings_newgame.linkgraph.recalc_time     *= CalendarTime::SECONDS_PER_DAY;
+			_settings_newgame.linkgraph.recalc_time *= CalendarTime::SECONDS_PER_DAY;
 		}
 
 		/* Move use_relay_service from generic_ini to private_ini. */
@@ -1422,12 +1415,23 @@ void LoadFromConfig(bool startup)
 			auto old_value = OneOfManySettingDesc::ParseSingleValue(old_item->value->c_str(), old_item->value->size(), _old_autosave_interval);
 
 			switch (old_value) {
-				case 0: _settings_client.gui.autosave_interval = 0; break;
-				case 1: _settings_client.gui.autosave_interval = 10; break;
-				case 2: _settings_client.gui.autosave_interval = 30; break;
-				case 3: _settings_client.gui.autosave_interval = 60; break;
-				case 4: _settings_client.gui.autosave_interval = 120; break;
-				default: break;
+				case 0:
+					_settings_client.gui.autosave_interval = 0;
+					break;
+				case 1:
+					_settings_client.gui.autosave_interval = 10;
+					break;
+				case 2:
+					_settings_client.gui.autosave_interval = 30;
+					break;
+				case 3:
+					_settings_client.gui.autosave_interval = 60;
+					break;
+				case 4:
+					_settings_client.gui.autosave_interval = 120;
+					break;
+				default:
+					break;
 			}
 		}
 
@@ -1438,7 +1442,7 @@ void LoadFromConfig(bool startup)
 		}
 
 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
-		_grfconfig_static  = GRFLoadConfig(generic_ini, "newgrf-static", true);
+		_grfconfig_static = GRFLoadConfig(generic_ini, "newgrf-static", true);
 		AILoadConfig(generic_ini, "ai_players");
 		GameLoadConfig(generic_ini, "game_scripts");
 		PickerLoadConfig(favs_ini);
@@ -1471,7 +1475,9 @@ void SaveToConfig()
 	 * This to explain what the file is about. After doing it once, never touch
 	 * it again, as otherwise we might be reverting user changes. */
 	if (IniGroup *group = private_ini.GetGroup("private"); group != nullptr) group->comment = "; This file possibly contains private information which can identify you as person.\n";
-	if (IniGroup *group = secrets_ini.GetGroup("secrets"); group != nullptr) group->comment = "; Do not share this file with others, not even if they claim to be technical support.\n; This file contains saved passwords and other secrets that should remain private to you!\n";
+	if (IniGroup *group = secrets_ini.GetGroup("secrets"); group != nullptr)
+		group->comment =
+			"; Do not share this file with others, not even if they claim to be technical support.\n; This file contains saved passwords and other secrets that should remain private to you!\n";
 
 	if (generic_version == IFV_0) {
 		/* Remove some obsolete groups. These have all been loaded into other groups. */
@@ -1637,7 +1643,7 @@ static const SettingDesc *GetSettingFromName(const std::string_view name, const 
 	}
 
 	/* Then check the shortcut variant of the name. */
-	std::string short_name_suffix = std::string{ "." }.append(name);
+	std::string short_name_suffix = std::string{"."}.append(name);
 	for (auto &desc : settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
@@ -1975,8 +1981,8 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		auto [min_val, max_val] = int_setting->GetRange();
 		auto def_val = int_setting->GetDefaultValue();
-		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}, def: {}).",
-			sd->GetName(), value, sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? "(0) " : "", min_val, max_val, def_val);
+		IConsolePrint(
+			CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}, def: {}).", sd->GetName(), value, sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? "(0) " : "", min_val, max_val, def_val);
 	}
 }
 

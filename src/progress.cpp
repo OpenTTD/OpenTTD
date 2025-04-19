@@ -8,6 +8,7 @@
 /** @file progress.cpp Functions for modal progress windows. */
 
 #include "stdafx.h"
+
 #include "progress.h"
 
 #include "safeguards.h"

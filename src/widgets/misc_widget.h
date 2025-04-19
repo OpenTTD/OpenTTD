@@ -24,38 +24,38 @@ enum ToolTipsWidgets : WidgetID {
 /** Widgets of the #AboutWindow class. */
 enum AboutWidgets : WidgetID {
 	WID_A_SCROLLING_TEXT, ///< The actually scrolling text.
-	WID_A_WEBSITE,        ///< URL of OpenTTD website.
-	WID_A_COPYRIGHT,      ///< Copyright string
+	WID_A_WEBSITE, ///< URL of OpenTTD website.
+	WID_A_COPYRIGHT, ///< Copyright string
 };
 
 /** Widgets of the #QueryStringWindow class. */
 enum QueryStringWidgets : WidgetID {
 	WID_QS_CAPTION, ///< Caption of the window.
-	WID_QS_TEXT,    ///< Text of the query.
+	WID_QS_TEXT, ///< Text of the query.
 	WID_QS_DEFAULT, ///< Default button.
-	WID_QS_CANCEL,  ///< Cancel button.
-	WID_QS_OK,      ///< OK button.
+	WID_QS_CANCEL, ///< Cancel button.
+	WID_QS_OK, ///< OK button.
 };
 
 /** Widgets of the #QueryWindow class. */
 enum QueryWidgets : WidgetID {
 	WID_Q_CAPTION, ///< Caption of the window.
-	WID_Q_TEXT,    ///< Text of the query.
-	WID_Q_NO,      ///< Yes button.
-	WID_Q_YES,     ///< No button.
+	WID_Q_TEXT, ///< Text of the query.
+	WID_Q_NO, ///< Yes button.
+	WID_Q_YES, ///< No button.
 };
 
 /** Widgets of the #TextfileWindow class. */
 enum TextfileWidgets : WidgetID {
-	WID_TF_CAPTION,      ///< The caption of the window.
-	WID_TF_NAVBACK,      ///< Navigate back button.
-	WID_TF_NAVFORWARD,   ///< Navigate forward button.
-	WID_TF_WRAPTEXT,     ///< Whether or not to wrap the text.
-	WID_TF_JUMPLIST,     ///< List to jump around the file.
+	WID_TF_CAPTION, ///< The caption of the window.
+	WID_TF_NAVBACK, ///< Navigate back button.
+	WID_TF_NAVFORWARD, ///< Navigate forward button.
+	WID_TF_WRAPTEXT, ///< Whether or not to wrap the text.
+	WID_TF_JUMPLIST, ///< List to jump around the file.
 	WID_TF_SEL_JUMPLIST, ///< Selection to display the jump list or not.
-	WID_TF_BACKGROUND,   ///< Panel to draw the textfile on.
-	WID_TF_VSCROLLBAR,   ///< Vertical scrollbar to scroll through the textfile up-and-down.
-	WID_TF_HSCROLLBAR,   ///< Horizontal scrollbar to scroll through the textfile left-to-right.
+	WID_TF_BACKGROUND, ///< Panel to draw the textfile on.
+	WID_TF_VSCROLLBAR, ///< Vertical scrollbar to scroll through the textfile up-and-down.
+	WID_TF_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
 };
 
 #endif /* WIDGETS_MISC_WIDGET_H */

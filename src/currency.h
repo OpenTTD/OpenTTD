@@ -10,9 +10,9 @@
 #ifndef CURRENCY_H
 #define CURRENCY_H
 
-#include "timer/timer_game_calendar.h"
 #include "settings_type.h"
 #include "strings_type.h"
+#include "timer/timer_game_calendar.h"
 
 static constexpr TimerGameCalendar::Year CF_NOEURO{0}; ///< Currency never switches to the Euro (as far as known).
 static constexpr TimerGameCalendar::Year CF_ISEURO{1}; ///< Currency _is_ the Euro.
@@ -24,61 +24,61 @@ static constexpr TimerGameCalendar::Year MIN_EURO_YEAR{2000}; ///< The earliest 
  * for referencing the custom one.
  */
 enum Currencies : uint8_t {
-	CURRENCY_GBP,       ///< British Pound
-	CURRENCY_USD,       ///< US Dollar
-	CURRENCY_EUR,       ///< Euro
-	CURRENCY_JPY,       ///< Japanese Yen
-	CURRENCY_ATS,       ///< Austrian Schilling
-	CURRENCY_BEF,       ///< Belgian Franc
-	CURRENCY_CHF,       ///< Swiss Franc
-	CURRENCY_CZK,       ///< Czech Koruna
-	CURRENCY_DEM,       ///< Deutsche Mark
-	CURRENCY_DKK,       ///< Danish Krona
-	CURRENCY_ESP,       ///< Spanish Peseta
-	CURRENCY_FIM,       ///< Finish Markka
-	CURRENCY_FRF,       ///< French Franc
-	CURRENCY_GRD,       ///< Greek Drachma
-	CURRENCY_HUF,       ///< Hungarian Forint
-	CURRENCY_ISK,       ///< Icelandic Krona
-	CURRENCY_ITL,       ///< Italian Lira
-	CURRENCY_NLG,       ///< Dutch Gulden
-	CURRENCY_NOK,       ///< Norwegian Krone
-	CURRENCY_PLN,       ///< Polish Zloty
-	CURRENCY_RON,       ///< Romenian Leu
-	CURRENCY_RUR,       ///< Russian Rouble
-	CURRENCY_SIT,       ///< Slovenian Tolar
-	CURRENCY_SEK,       ///< Swedish Krona
-	CURRENCY_YTL,       ///< Turkish Lira
-	CURRENCY_SKK,       ///< Slovak Kornuna
-	CURRENCY_BRL,       ///< Brazilian Real
-	CURRENCY_EEK,       ///< Estonian Krooni
-	CURRENCY_LTL,       ///< Lithuanian Litas
-	CURRENCY_KRW,       ///< South Korean Won
-	CURRENCY_ZAR,       ///< South African Rand
-	CURRENCY_CUSTOM,    ///< Custom currency
-	CURRENCY_GEL,       ///< Georgian Lari
-	CURRENCY_IRR,       ///< Iranian Rial
-	CURRENCY_RUB,       ///< New Russian Ruble
-	CURRENCY_MXN,       ///< Mexican Peso
-	CURRENCY_NTD,       ///< New Taiwan Dollar
-	CURRENCY_CNY,       ///< Chinese Renminbi
-	CURRENCY_HKD,       ///< Hong Kong Dollar
-	CURRENCY_INR,       ///< Indian Rupee
-	CURRENCY_IDR,       ///< Indonesian Rupiah
-	CURRENCY_MYR,       ///< Malaysian Ringgit
-	CURRENCY_LVL,       ///< Latvian Lats
-	CURRENCY_PTE,       ///< Portuguese Escudo
-	CURRENCY_UAH,       ///< Ukrainian Hryvnia
-	CURRENCY_END,       ///< always the last item
+	CURRENCY_GBP, ///< British Pound
+	CURRENCY_USD, ///< US Dollar
+	CURRENCY_EUR, ///< Euro
+	CURRENCY_JPY, ///< Japanese Yen
+	CURRENCY_ATS, ///< Austrian Schilling
+	CURRENCY_BEF, ///< Belgian Franc
+	CURRENCY_CHF, ///< Swiss Franc
+	CURRENCY_CZK, ///< Czech Koruna
+	CURRENCY_DEM, ///< Deutsche Mark
+	CURRENCY_DKK, ///< Danish Krona
+	CURRENCY_ESP, ///< Spanish Peseta
+	CURRENCY_FIM, ///< Finish Markka
+	CURRENCY_FRF, ///< French Franc
+	CURRENCY_GRD, ///< Greek Drachma
+	CURRENCY_HUF, ///< Hungarian Forint
+	CURRENCY_ISK, ///< Icelandic Krona
+	CURRENCY_ITL, ///< Italian Lira
+	CURRENCY_NLG, ///< Dutch Gulden
+	CURRENCY_NOK, ///< Norwegian Krone
+	CURRENCY_PLN, ///< Polish Zloty
+	CURRENCY_RON, ///< Romenian Leu
+	CURRENCY_RUR, ///< Russian Rouble
+	CURRENCY_SIT, ///< Slovenian Tolar
+	CURRENCY_SEK, ///< Swedish Krona
+	CURRENCY_YTL, ///< Turkish Lira
+	CURRENCY_SKK, ///< Slovak Kornuna
+	CURRENCY_BRL, ///< Brazilian Real
+	CURRENCY_EEK, ///< Estonian Krooni
+	CURRENCY_LTL, ///< Lithuanian Litas
+	CURRENCY_KRW, ///< South Korean Won
+	CURRENCY_ZAR, ///< South African Rand
+	CURRENCY_CUSTOM, ///< Custom currency
+	CURRENCY_GEL, ///< Georgian Lari
+	CURRENCY_IRR, ///< Iranian Rial
+	CURRENCY_RUB, ///< New Russian Ruble
+	CURRENCY_MXN, ///< Mexican Peso
+	CURRENCY_NTD, ///< New Taiwan Dollar
+	CURRENCY_CNY, ///< Chinese Renminbi
+	CURRENCY_HKD, ///< Hong Kong Dollar
+	CURRENCY_INR, ///< Indian Rupee
+	CURRENCY_IDR, ///< Indonesian Rupiah
+	CURRENCY_MYR, ///< Malaysian Ringgit
+	CURRENCY_LVL, ///< Latvian Lats
+	CURRENCY_PTE, ///< Portuguese Escudo
+	CURRENCY_UAH, ///< Ukrainian Hryvnia
+	CURRENCY_END, ///< always the last item
 };
 
 /** Specification of a currency. */
 struct CurrencySpec {
-	uint16_t rate;           ///< The conversion rate compared to the base currency.
+	uint16_t rate; ///< The conversion rate compared to the base currency.
 	std::string separator; ///< The thousands separator for this currency.
 	TimerGameCalendar::Year to_euro; ///< Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
-	std::string prefix;    ///< Prefix to apply when formatting money in this currency.
-	std::string suffix;    ///< Suffix to apply when formatting money in this currency.
+	std::string prefix; ///< Prefix to apply when formatting money in this currency.
+	std::string suffix; ///< Suffix to apply when formatting money in this currency.
 	std::string code; ///< 3 letter untranslated code to identify the currency.
 	/**
 	 * The currency symbol is represented by two possible values, prefix and suffix

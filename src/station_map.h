@@ -10,12 +10,12 @@
 #ifndef STATION_MAP_H
 #define STATION_MAP_H
 
-#include "rail_map.h"
-#include "road_map.h"
-#include "water_map.h"
-#include "station_func.h"
 #include "rail.h"
+#include "rail_map.h"
 #include "road.h"
+#include "road_map.h"
+#include "station_func.h"
+#include "water_map.h"
 
 typedef uint8_t StationGfx; ///< Index of station graphics. @see _station_display_datas
 
@@ -31,9 +31,8 @@ inline StationID GetStationIndex(Tile t)
 	return (StationID)t.m2();
 }
 
-
-static const int GFX_DOCK_BASE_WATER_PART          =  4; ///< The offset for the water parts.
-static const int GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET =  4; ///< The offset for the drive through parts.
+static const int GFX_DOCK_BASE_WATER_PART = 4; ///< The offset for the water parts.
+static const int GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET = 4; ///< The offset for the drive through parts.
 
 /**
  * Get the station type of this tile
@@ -544,10 +543,8 @@ inline TrackBits GetRailStationTrackBits(Tile t)
 inline bool IsCompatibleTrainStationTile(Tile test_tile, Tile station_tile)
 {
 	assert(IsRailStationTile(station_tile));
-	return IsRailStationTile(test_tile) && !IsStationTileBlocked(test_tile) &&
-			IsCompatibleRail(GetRailType(test_tile), GetRailType(station_tile)) &&
-			GetRailStationAxis(test_tile) == GetRailStationAxis(station_tile) &&
-			GetStationIndex(test_tile) == GetStationIndex(station_tile);
+	return IsRailStationTile(test_tile) && !IsStationTileBlocked(test_tile) && IsCompatibleRail(GetRailType(test_tile), GetRailType(station_tile)) &&
+		GetRailStationAxis(test_tile) == GetRailStationAxis(station_tile) && GetStationIndex(test_tile) == GetStationIndex(station_tile);
 }
 
 /**

@@ -14,8 +14,8 @@
 #define TOWNNAME_TYPE_H
 
 #include "newgrf_townname.h"
-#include "town_type.h"
 #include "string_type.h"
+#include "town_type.h"
 
 typedef std::set<std::string> TownNames;
 
@@ -25,7 +25,7 @@ typedef std::set<std::string> TownNames;
  */
 struct TownNameParams {
 	uint32_t grfid; ///< newgrf ID (0 if not used)
-	uint16_t type;  ///< town name style
+	uint16_t type; ///< town name style
 
 	/**
 	 * Initializes this struct from language ID

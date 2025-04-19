@@ -12,14 +12,14 @@
 
 #include "gfx_type.h"
 
-static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in command
+static const uint ICON_CMDLN_SIZE = 1024; ///< maximum length of a typed in command
 static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
 
 /** Return values of console hooks (#IConsoleHook). */
 enum ConsoleHookResult : uint8_t {
-	CHR_ALLOW,    ///< Allow command execution.
+	CHR_ALLOW, ///< Allow command execution.
 	CHR_DISALLOW, ///< Disallow command execution.
-	CHR_HIDE,     ///< Hide the existence of the command.
+	CHR_HIDE, ///< Hide the existence of the command.
 };
 
 /**
@@ -32,12 +32,13 @@ enum ConsoleHookResult : uint8_t {
  */
 typedef bool IConsoleCmdProc(uint8_t argc, char *argv[]);
 typedef ConsoleHookResult IConsoleHook(bool echo);
+
 struct IConsoleCmd {
 	IConsoleCmd(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook) : name(name), proc(proc), hook(hook) {}
 
-	std::string name;         ///< name of command
-	IConsoleCmdProc *proc;    ///< process executed when command is typed
-	IConsoleHook *hook;       ///< any special trigger action that needs executing
+	std::string name; ///< name of command
+	IConsoleCmdProc *proc; ///< process executed when command is typed
+	IConsoleHook *hook; ///< any special trigger action that needs executing
 };
 
 /**
@@ -55,12 +56,11 @@ struct IConsoleCmd {
 struct IConsoleAlias {
 	IConsoleAlias(const std::string &name, const std::string &cmdline) : name(name), cmdline(cmdline) {}
 
-	std::string name;           ///< name of the alias
-	std::string cmdline;        ///< command(s) that is/are being aliased
+	std::string name; ///< name of the alias
+	std::string cmdline; ///< command(s) that is/are being aliased
 };
 
-struct IConsole
-{
+struct IConsole {
 	typedef std::map<std::string, IConsoleCmd> CommandList;
 	typedef std::map<std::string, IConsoleAlias> AliasList;
 

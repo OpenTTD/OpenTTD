@@ -21,10 +21,10 @@ static const NodeID INVALID_NODE = UINT16_MAX;
 enum DistributionType : uint8_t {
 	DT_BEGIN = 0,
 	DT_MIN = 0,
-	DT_MANUAL = 0,           ///< Manual distribution. No link graph calculations are run.
-	DT_ASYMMETRIC = 1,       ///< Asymmetric distribution. Usually cargo will only travel in one direction.
+	DT_MANUAL = 0, ///< Manual distribution. No link graph calculations are run.
+	DT_ASYMMETRIC = 1, ///< Asymmetric distribution. Usually cargo will only travel in one direction.
 	DT_MAX_NONSYMMETRIC = 1, ///< Maximum non-symmetric distribution.
-	DT_SYMMETRIC = 2,        ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
+	DT_SYMMETRIC = 2, ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
 	DT_MAX = 2,
 	DT_NUM = 3,
 	DT_END = 3

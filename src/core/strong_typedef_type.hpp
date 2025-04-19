@@ -19,11 +19,25 @@ namespace StrongType {
 	struct Compare {
 		template <typename TType, typename TBaseType>
 		struct mixin {
-			friend constexpr bool operator ==(const TType &lhs, const TType &rhs) { return lhs.value == rhs.value; }
-			friend constexpr bool operator ==(const TType &lhs, const TBaseType &rhs) { return lhs.value == rhs; }
+			friend constexpr bool operator==(const TType &lhs, const TType &rhs)
+			{
+				return lhs.value == rhs.value;
+			}
 
-			friend constexpr auto operator <=>(const TType &lhs, const TType &rhs) { return lhs.value <=> rhs.value; }
-			friend constexpr auto operator <=>(const TType &lhs, const TBaseType &rhs) { return lhs.value <=> rhs; }
+			friend constexpr bool operator==(const TType &lhs, const TBaseType &rhs)
+			{
+				return lhs.value == rhs;
+			}
+
+			friend constexpr auto operator<=>(const TType &lhs, const TType &rhs)
+			{
+				return lhs.value <=> rhs.value;
+			}
+
+			friend constexpr auto operator<=>(const TType &lhs, const TBaseType &rhs)
+			{
+				return lhs.value <=> rhs;
+			}
 		};
 	};
 
@@ -37,18 +51,63 @@ namespace StrongType {
 	struct Integer {
 		template <typename TType, typename TBaseType>
 		struct mixin {
-			friend constexpr TType &operator ++(TType &lhs) { lhs.value++; return lhs; }
-			friend constexpr TType &operator --(TType &lhs) { lhs.value--; return lhs; }
-			friend constexpr TType operator ++(TType &lhs, int) { TType res = lhs; lhs.value++; return res; }
-			friend constexpr TType operator --(TType &lhs, int) { TType res = lhs; lhs.value--; return res; }
+			friend constexpr TType &operator++(TType &lhs)
+			{
+				lhs.value++;
+				return lhs;
+			}
 
-			friend constexpr TType &operator +=(TType &lhs, const TType &rhs) { lhs.value += rhs.value; return lhs; }
-			friend constexpr TType operator +(const TType &lhs, const TType &rhs) { return TType(lhs.value + rhs.value); }
-			friend constexpr TType operator +(const TType &lhs, const TBaseType &rhs) { return TType(lhs.value + rhs); }
+			friend constexpr TType &operator--(TType &lhs)
+			{
+				lhs.value--;
+				return lhs;
+			}
 
-			friend constexpr TType &operator -=(TType &lhs, const TType &rhs) { lhs.value -= rhs.value; return lhs; }
-			friend constexpr TType operator -(const TType &lhs, const TType &rhs) { return TType(lhs.value - rhs.value); }
-			friend constexpr TType operator -(const TType &lhs, const TBaseType &rhs) { return TType(lhs.value - rhs); }
+			friend constexpr TType operator++(TType &lhs, int)
+			{
+				TType res = lhs;
+				lhs.value++;
+				return res;
+			}
+
+			friend constexpr TType operator--(TType &lhs, int)
+			{
+				TType res = lhs;
+				lhs.value--;
+				return res;
+			}
+
+			friend constexpr TType &operator+=(TType &lhs, const TType &rhs)
+			{
+				lhs.value += rhs.value;
+				return lhs;
+			}
+
+			friend constexpr TType operator+(const TType &lhs, const TType &rhs)
+			{
+				return TType(lhs.value + rhs.value);
+			}
+
+			friend constexpr TType operator+(const TType &lhs, const TBaseType &rhs)
+			{
+				return TType(lhs.value + rhs);
+			}
+
+			friend constexpr TType &operator-=(TType &lhs, const TType &rhs)
+			{
+				lhs.value -= rhs.value;
+				return lhs;
+			}
+
+			friend constexpr TType operator-(const TType &lhs, const TType &rhs)
+			{
+				return TType(lhs.value - rhs.value);
+			}
+
+			friend constexpr TType operator-(const TType &lhs, const TBaseType &rhs)
+			{
+				return TType(lhs.value - rhs);
+			}
 
 			/* For most new types, the rest of the operators make no sense. For example,
 			 * what does it actually mean to multiply a Year with a value. Or to do a
@@ -56,40 +115,40 @@ namespace StrongType {
 			 * don't really mean anything. So force the user to first cast it to the
 			 * base type, so the operation no longer returns the new Typedef. */
 
-			constexpr TType &operator *=(const TType &rhs) = delete;
-			constexpr TType operator *(const TType &rhs) = delete;
-			constexpr TType operator *(const TBaseType &rhs) = delete;
+			constexpr TType &operator*=(const TType &rhs) = delete;
+			constexpr TType operator*(const TType &rhs) = delete;
+			constexpr TType operator*(const TBaseType &rhs) = delete;
 
-			constexpr TType &operator /=(const TType &rhs) = delete;
-			constexpr TType operator /(const TType &rhs) = delete;
-			constexpr TType operator /(const TBaseType &rhs) = delete;
+			constexpr TType &operator/=(const TType &rhs) = delete;
+			constexpr TType operator/(const TType &rhs) = delete;
+			constexpr TType operator/(const TBaseType &rhs) = delete;
 
-			constexpr TType &operator %=(const TType &rhs) = delete;
-			constexpr TType operator %(const TType &rhs) = delete;
-			constexpr TType operator %(const TBaseType &rhs) = delete;
+			constexpr TType &operator%=(const TType &rhs) = delete;
+			constexpr TType operator%(const TType &rhs) = delete;
+			constexpr TType operator%(const TBaseType &rhs) = delete;
 
-			constexpr TType &operator &=(const TType &rhs) = delete;
-			constexpr TType operator &(const TType &rhs) = delete;
-			constexpr TType operator &(const TBaseType &rhs) = delete;
+			constexpr TType &operator&=(const TType &rhs) = delete;
+			constexpr TType operator&(const TType &rhs) = delete;
+			constexpr TType operator&(const TBaseType &rhs) = delete;
 
-			constexpr TType &operator |=(const TType &rhs) = delete;
-			constexpr TType operator |(const TType &rhs) = delete;
-			constexpr TType operator |(const TBaseType &rhs) = delete;
+			constexpr TType &operator|=(const TType &rhs) = delete;
+			constexpr TType operator|(const TType &rhs) = delete;
+			constexpr TType operator|(const TBaseType &rhs) = delete;
 
-			constexpr TType &operator ^=(const TType &rhs) = delete;
-			constexpr TType operator ^(const TType &rhs) = delete;
-			constexpr TType operator ^(const TBaseType &rhs) = delete;
+			constexpr TType &operator^=(const TType &rhs) = delete;
+			constexpr TType operator^(const TType &rhs) = delete;
+			constexpr TType operator^(const TBaseType &rhs) = delete;
 
-			constexpr TType &operator <<=(const TType &rhs) = delete;
-			constexpr TType operator <<(const TType &rhs) = delete;
-			constexpr TType operator <<(const TBaseType &rhs) = delete;
+			constexpr TType &operator<<=(const TType &rhs) = delete;
+			constexpr TType operator<<(const TType &rhs) = delete;
+			constexpr TType operator<<(const TBaseType &rhs) = delete;
 
-			constexpr TType &operator >>=(const TType &rhs) = delete;
-			constexpr TType operator >>(const TType &rhs) = delete;
-			constexpr TType operator >>(const TBaseType &rhs) = delete;
+			constexpr TType &operator>>=(const TType &rhs) = delete;
+			constexpr TType operator>>(const TType &rhs) = delete;
+			constexpr TType operator>>(const TBaseType &rhs) = delete;
 
-			constexpr TType operator ~() = delete;
-			constexpr TType operator -() = delete;
+			constexpr TType operator~() = delete;
+			constexpr TType operator-() = delete;
 		};
 	};
 
@@ -104,11 +163,25 @@ namespace StrongType {
 	struct Compatible {
 		template <typename TType, typename TBaseType>
 		struct mixin {
-			friend constexpr bool operator ==(const TType &lhs, TCompatibleType rhs) { return lhs.value == static_cast<TBaseType>(rhs); }
-			friend constexpr auto operator <=>(const TType &lhs, TCompatibleType rhs) { return lhs.value <=> static_cast<TBaseType>(rhs); }
+			friend constexpr bool operator==(const TType &lhs, TCompatibleType rhs)
+			{
+				return lhs.value == static_cast<TBaseType>(rhs);
+			}
 
-			friend constexpr TType operator +(const TType &lhs, TCompatibleType rhs) { return TType(lhs.value + rhs); }
-			friend constexpr TType operator -(const TType &lhs, TCompatibleType rhs) { return TType(lhs.value - rhs); }
+			friend constexpr auto operator<=>(const TType &lhs, TCompatibleType rhs)
+			{
+				return lhs.value <=> static_cast<TBaseType>(rhs);
+			}
+
+			friend constexpr TType operator+(const TType &lhs, TCompatibleType rhs)
+			{
+				return TType(lhs.value + rhs);
+			}
+
+			friend constexpr TType operator-(const TType &lhs, TCompatibleType rhs)
+			{
+				return TType(lhs.value - rhs);
+			}
 		};
 	};
 
@@ -136,16 +209,29 @@ namespace StrongType {
 
 		explicit constexpr Typedef(const TBaseType &value) : value(value) {}
 
-		constexpr Typedef &operator =(const Typedef &rhs) { this->value = rhs.value; return *this; }
-		constexpr Typedef &operator =(Typedef &&rhs) { this->value = std::move(rhs.value); return *this; }
+		constexpr Typedef &operator=(const Typedef &rhs)
+		{
+			this->value = rhs.value;
+			return *this;
+		}
+
+		constexpr Typedef &operator=(Typedef &&rhs)
+		{
+			this->value = std::move(rhs.value);
+			return *this;
+		}
 
 		/* Only allow conversion to BaseType via method. */
-		constexpr TBaseType base() const noexcept { return this->value; }
+		constexpr TBaseType base() const noexcept
+		{
+			return this->value;
+		}
 
 		/* Only allow TProperties classes access to the internal value. Everyone else needs to call .base(). */
 		friend struct Compare;
 		friend struct Integer;
-		template <typename TCompatibleType> friend struct Compatible;
+		template <typename TCompatibleType>
+		friend struct Compatible;
 
 /* GCC / MSVC don't pick up on the "friend struct" above, where CLang does.
  * As in our CI we compile for all three targets, it is sufficient to have one

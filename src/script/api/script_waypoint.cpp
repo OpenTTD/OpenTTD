@@ -8,10 +8,12 @@
 /** @file script_waypoint.cpp Implementation of ScriptWaypoint. */
 
 #include "../../stdafx.h"
+
 #include "script_waypoint.hpp"
-#include "script_rail.hpp"
-#include "script_marine.hpp"
+
 #include "../../waypoint_base.h"
+#include "script_marine.hpp"
+#include "script_rail.hpp"
 
 #include "../../safeguards.h"
 

@@ -8,6 +8,7 @@
 /** @file newgrf_act0_objects.cpp NewGRF Action 0x00 handler for objects. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_object.h"
 #include "newgrf_bytereader.h"
@@ -111,7 +112,9 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 			}
 
 			case 0x09: { // Class name
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, [spec = spec.get()](StringID str) { ObjectClass::Get(spec->class_index)->name = str; });
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, [spec = spec.get()](StringID str) {
+					ObjectClass::Get(spec->class_index)->name = str;
+				});
 				break;
 			}
 
@@ -199,5 +202,14 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_OBJECTS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_OBJECTS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ObjectChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_OBJECTS>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_OBJECTS>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return ObjectChangeInfo(first, last, prop, buf);
+}

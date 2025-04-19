@@ -8,17 +8,18 @@
 /** @file game_core.cpp Implementation of Game. */
 
 #include "../stdafx.h"
+
 #include "../core/backup_type.hpp"
 #include "../company_base.h"
 #include "../company_func.h"
+#include "../framerate_type.h"
 #include "../network/network.h"
 #include "../window_func.h"
-#include "../framerate_type.h"
 #include "game.hpp"
-#include "game_scanner.hpp"
 #include "game_config.hpp"
-#include "game_instance.hpp"
 #include "game_info.hpp"
+#include "game_instance.hpp"
+#include "game_scanner.hpp"
 
 #include "../safeguards.h"
 
@@ -130,7 +131,7 @@
 
 /* static */ bool Game::IsPaused()
 {
-	return Game::instance != nullptr? Game::instance->IsPaused() : false;
+	return Game::instance != nullptr ? Game::instance->IsPaused() : false;
 }
 
 /* static */ void Game::NewEvent(ScriptEvent *event)
@@ -187,7 +188,6 @@
 	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
 	InvalidateWindowClassesData(WC_GAME_OPTIONS);
 }
-
 
 /* static */ void Game::Save()
 {
@@ -256,6 +256,7 @@
 {
 	return Game::scanner_info.get();
 }
+
 /* static */ GameScannerLibrary *Game::GetScannerLibrary()
 {
 	return Game::scanner_library.get();

@@ -11,6 +11,7 @@
 #define SETTINGS_INTERNAL_H
 
 #include <variant>
+
 #include "saveload/saveload.h"
 
 enum class SettingFlag : uint8_t {
@@ -42,14 +43,14 @@ enum SettingCategory : uint8_t {
 	SC_NONE = 0,
 
 	/* Filters for the list */
-	SC_BASIC_LIST      = 1 << 0,    ///< Settings displayed in the list of basic settings.
-	SC_ADVANCED_LIST   = 1 << 1,    ///< Settings displayed in the list of advanced settings.
-	SC_EXPERT_LIST     = 1 << 2,    ///< Settings displayed in the list of expert settings.
+	SC_BASIC_LIST = 1 << 0, ///< Settings displayed in the list of basic settings.
+	SC_ADVANCED_LIST = 1 << 1, ///< Settings displayed in the list of advanced settings.
+	SC_EXPERT_LIST = 1 << 2, ///< Settings displayed in the list of expert settings.
 
 	/* Setting classification */
-	SC_BASIC           = SC_BASIC_LIST | SC_ADVANCED_LIST | SC_EXPERT_LIST,  ///< Basic settings are part of all lists.
-	SC_ADVANCED        = SC_ADVANCED_LIST | SC_EXPERT_LIST,                  ///< Advanced settings are part of advanced and expert list.
-	SC_EXPERT          = SC_EXPERT_LIST,                                     ///< Expert settings can only be seen in the expert list.
+	SC_BASIC = SC_BASIC_LIST | SC_ADVANCED_LIST | SC_EXPERT_LIST, ///< Basic settings are part of all lists.
+	SC_ADVANCED = SC_ADVANCED_LIST | SC_EXPERT_LIST, ///< Advanced settings are part of advanced and expert list.
+	SC_EXPERT = SC_EXPERT_LIST, ///< Expert settings can only be seen in the expert list.
 
 	SC_END,
 };
@@ -58,24 +59,24 @@ enum SettingCategory : uint8_t {
  * Type of settings for filtering.
  */
 enum SettingType : uint8_t {
-	ST_GAME,      ///< Game setting.
-	ST_COMPANY,   ///< Company setting.
-	ST_CLIENT,    ///< Client setting.
+	ST_GAME, ///< Game setting.
+	ST_COMPANY, ///< Company setting.
+	ST_CLIENT, ///< Client setting.
 
-	ST_ALL,       ///< Used in setting filter to match all types.
+	ST_ALL, ///< Used in setting filter to match all types.
 };
 
 struct IniItem;
 
 /** Properties of config file settings. */
 struct SettingDesc {
-	SettingDesc(const SaveLoad &save, SettingFlags flags, bool startup) :
-		flags(flags), startup(startup), save(save) {}
+	SettingDesc(const SaveLoad &save, SettingFlags flags, bool startup) : flags(flags), startup(startup), save(save) {}
+
 	virtual ~SettingDesc() = default;
 
-	SettingFlags flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
-	bool startup;       ///< Setting has to be loaded directly at startup?.
-	SaveLoad save;      ///< Internal structure (going to savegame, parts to config).
+	SettingFlags flags; ///< Handles how a setting would show up in the GUI (text/currency, etc.).
+	bool startup; ///< Setting has to be loaded directly at startup?.
+	SaveLoad save; ///< Internal structure (going to savegame, parts to config).
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
@@ -93,13 +94,19 @@ struct SettingDesc {
 	 * Check whether this setting is an integer type setting.
 	 * @return True when the underlying type is an integer.
 	 */
-	virtual bool IsIntSetting() const { return false; }
+	virtual bool IsIntSetting() const
+	{
+		return false;
+	}
 
 	/**
 	 * Check whether this setting is an string type setting.
 	 * @return True when the underlying type is a string.
 	 */
-	virtual bool IsStringSetting() const { return false; }
+	virtual bool IsStringSetting() const
+	{
+		return false;
+	}
 
 	const struct IntSettingDesc *AsIntSetting() const;
 	const struct StringSettingDesc *AsStringSetting() const;
@@ -168,16 +175,12 @@ struct IntSettingDesc : SettingDesc {
 	using PostChangeCallback = void(int32_t value);
 
 	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<int32_t> Tmin, ConvertibleThroughBaseOrTo<uint32_t> Tmax, ConvertibleThroughBaseOrTo<int32_t> Tinterval>
-	IntSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
-			Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val,
-			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback,
-			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
-			GetDefaultValueCallback get_def_cb, GetRangeCallback get_range_cb) :
-		SettingDesc(save, flags, startup),
-			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
-			post_callback(post_callback),
-			get_title_cb(get_title_cb), get_help_cb(get_help_cb), get_value_params_cb(get_value_params_cb),
-			get_def_cb(get_def_cb), get_range_cb(get_range_cb) {
+	IntSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def, Tmin min, Tmax max, Tinterval interval, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+		PreChangeCheck pre_check, PostChangeCallback post_callback, GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
+		GetDefaultValueCallback get_def_cb, GetRangeCallback get_range_cb) :
+		SettingDesc(save, flags, startup), str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check), post_callback(post_callback), get_title_cb(get_title_cb),
+		get_help_cb(get_help_cb), get_value_params_cb(get_value_params_cb), get_def_cb(get_def_cb), get_range_cb(get_range_cb)
+	{
 		if constexpr (ConvertibleThroughBase<Tdef>) {
 			this->def = def.base();
 		} else {
@@ -203,15 +206,15 @@ struct IntSettingDesc : SettingDesc {
 		}
 	}
 
-	int32_t def;              ///< default value given when none is present
-	int32_t min;              ///< minimum values
-	uint32_t max;             ///< maximum values
-	int32_t interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
-	StringID str;           ///< (translated) string with descriptive text; gui and console
-	StringID str_help;      ///< (Translated) string with help text; gui only.
-	StringID str_val;       ///< (Translated) first string describing the value.
-	SettingCategory cat;    ///< assigned categories of the setting
-	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
+	int32_t def; ///< default value given when none is present
+	int32_t min; ///< minimum values
+	uint32_t max; ///< maximum values
+	int32_t interval; ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
+	StringID str; ///< (translated) string with descriptive text; gui and console
+	StringID str_help; ///< (Translated) string with help text; gui only.
+	StringID str_val; ///< (Translated) first string describing the value.
+	SettingCategory cat; ///< assigned categories of the setting
+	PreChangeCheck *pre_check; ///< Callback to check for the validity of the setting.
 	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
 	GetTitleCallback *get_title_cb;
 	GetHelpCallback *get_help_cb;
@@ -229,8 +232,15 @@ struct IntSettingDesc : SettingDesc {
 	 * Check whether this setting is a boolean type setting.
 	 * @return True when the underlying type is an integer.
 	 */
-	virtual bool IsBoolSetting() const { return false; }
-	bool IsIntSetting() const override { return true; }
+	virtual bool IsBoolSetting() const
+	{
+		return false;
+	}
+
+	bool IsIntSetting() const override
+	{
+		return true;
+	}
 
 	void ChangeValue(const void *object, int32_t newvalue) const;
 	void MakeValueValidAndWrite(const void *object, int32_t value) const;
@@ -250,17 +260,19 @@ private:
 
 /** Boolean setting. */
 struct BoolSettingDesc : IntSettingDesc {
-	BoolSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, bool def,
-			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
-			PreChangeCheck pre_check, PostChangeCallback post_callback,
-			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
-			GetDefaultValueCallback get_def_cb) :
-		IntSettingDesc(save, flags, startup, def ? 1 : 0, 0, 1, 0, str, str_help, str_val, cat,
-			pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, nullptr) {}
+	BoolSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, bool def, StringID str, StringID str_help, StringID str_val, SettingCategory cat, PreChangeCheck pre_check,
+		PostChangeCallback post_callback, GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb, GetDefaultValueCallback get_def_cb) :
+		IntSettingDesc(save, flags, startup, def ? 1 : 0, 0, 1, 0, str, str_help, str_val, cat, pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, nullptr)
+	{
+	}
 
 	static std::optional<bool> ParseSingleValue(const char *str);
 
-	bool IsBoolSetting() const override { return true; }
+	bool IsBoolSetting() const override
+	{
+		return true;
+	}
+
 	size_t ParseValue(const char *str) const override;
 	std::string FormatValue(const void *object) const override;
 };
@@ -270,19 +282,17 @@ struct OneOfManySettingDesc : IntSettingDesc {
 	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
 	template <ConvertibleThroughBaseOrTo<int32_t> Tdef, ConvertibleThroughBaseOrTo<uint32_t> Tmax>
-	OneOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def,
-			Tmax max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
-			PreChangeCheck pre_check, PostChangeCallback post_callback,
-			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
-			GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
-		IntSettingDesc(save, flags, startup, def, 0, max, 0, str, str_help, str_val, cat,
-			pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, nullptr), many_cnvt(many_cnvt)
+	OneOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def, Tmax max, StringID str, StringID str_help, StringID str_val, SettingCategory cat, PreChangeCheck pre_check,
+		PostChangeCallback post_callback, GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb, GetDefaultValueCallback get_def_cb,
+		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		IntSettingDesc(save, flags, startup, def, 0, max, 0, str, str_help, str_val, cat, pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, nullptr),
+		many_cnvt(many_cnvt)
 	{
 		for (auto one : many) this->many.push_back(one);
 	}
 
 	std::vector<std::string> many; ///< possible values for this type
-	OnConvert *many_cnvt;          ///< callback procedure when loading value mechanism fails
+	OnConvert *many_cnvt; ///< callback procedure when loading value mechanism fails
 
 	static size_t ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many);
 	std::string FormatSingleValue(uint id) const;
@@ -294,13 +304,13 @@ struct OneOfManySettingDesc : IntSettingDesc {
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
 	template <ConvertibleThroughBaseOrTo<int32_t> Tdef>
-	ManyOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup,
-		Tdef def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
-		PreChangeCheck pre_check, PostChangeCallback post_callback,
-		GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
-		GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
-		OneOfManySettingDesc(save, flags, startup, def, (1 << many.size()) - 1, str, str_help,
-			str_val, cat, pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, many, many_cnvt) {}
+	ManyOfManySettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, Tdef def, StringID str, StringID str_help, StringID str_val, SettingCategory cat, PreChangeCheck pre_check,
+		PostChangeCallback post_callback, GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb, GetDefaultValueCallback get_def_cb,
+		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		OneOfManySettingDesc(
+			save, flags, startup, def, (1 << many.size()) - 1, str, str_help, str_val, cat, pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, many, many_cnvt)
+	{
+	}
 
 	size_t ParseValue(const char *str) const override;
 	std::string FormatValue(const void *object) const override;
@@ -323,17 +333,21 @@ struct StringSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(const std::string &value);
 
-	StringSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def,
-			uint32_t max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
-		SettingDesc(save, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
-			pre_check(pre_check), post_callback(post_callback) {}
+	StringSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def, uint32_t max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
+		SettingDesc(save, flags, startup), def(def == nullptr ? "" : def), max_length(max_length), pre_check(pre_check), post_callback(post_callback)
+	{
+	}
 
-	std::string def;                   ///< Default value given when none is present
-	uint32_t max_length;                 ///< Maximum length of the string, 0 means no maximum length
-	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
+	std::string def; ///< Default value given when none is present
+	uint32_t max_length; ///< Maximum length of the string, 0 means no maximum length
+	PreChangeCheck *pre_check; ///< Callback to check for the validity of the setting.
 	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
 
-	bool IsStringSetting() const override { return true; }
+	bool IsStringSetting() const override
+	{
+		return true;
+	}
+
 	void ChangeValue(const void *object, std::string &newval) const;
 
 	std::string FormatValue(const void *object) const override;
@@ -350,10 +364,9 @@ private:
 
 /** List/array settings. */
 struct ListSettingDesc : SettingDesc {
-	ListSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def) :
-		SettingDesc(save, flags, startup), def(def) {}
+	ListSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def) : SettingDesc(save, flags, startup), def(def) {}
 
-	const char *def;        ///< default value given when none is present
+	const char *def; ///< default value given when none is present
 
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
@@ -364,14 +377,32 @@ struct ListSettingDesc : SettingDesc {
 
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
 struct NullSettingDesc : SettingDesc {
-	NullSettingDesc(const SaveLoad &save) :
-		SettingDesc(save, SettingFlag::NotInConfig, false) {}
+	NullSettingDesc(const SaveLoad &save) : SettingDesc(save, SettingFlag::NotInConfig, false) {}
 
-	std::string FormatValue(const void *) const override { NOT_REACHED(); }
-	void ParseValue(const IniItem *, void *) const override { NOT_REACHED(); }
-	bool IsSameValue(const IniItem *, void *) const override { NOT_REACHED(); }
-	bool IsDefaultValue(void *) const override { NOT_REACHED(); }
-	void ResetToDefault(void *) const override { NOT_REACHED(); }
+	std::string FormatValue(const void *) const override
+	{
+		NOT_REACHED();
+	}
+
+	void ParseValue(const IniItem *, void *) const override
+	{
+		NOT_REACHED();
+	}
+
+	bool IsSameValue(const IniItem *, void *) const override
+	{
+		NOT_REACHED();
+	}
+
+	bool IsDefaultValue(void *) const override
+	{
+		NOT_REACHED();
+	}
+
+	void ResetToDefault(void *) const override
+	{
+		NOT_REACHED();
+	}
 };
 
 typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, ManyOfManySettingDesc, StringSettingDesc, ListSettingDesc, NullSettingDesc> SettingVariant;
@@ -383,7 +414,11 @@ typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, Many
  */
 static constexpr const SettingDesc *GetSettingDesc(const SettingVariant &desc)
 {
-	return std::visit([](auto&& arg) -> const SettingDesc * { return &arg; }, desc);
+	return std::visit(
+		[](auto &&arg) -> const SettingDesc * {
+			return &arg;
+		},
+		desc);
 }
 
 typedef std::span<const SettingVariant> SettingTable;

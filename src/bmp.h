@@ -15,11 +15,11 @@
 
 struct BmpInfo {
 	size_t offset; ///< offset of bitmap data from .bmp file beginning
-	uint32_t width;        ///< bitmap width
-	uint32_t height;       ///< bitmap height
-	bool os2_bmp;        ///< true if OS/2 1.x or windows 2.x bitmap
-	uint16_t bpp;          ///< bits per pixel
-	uint32_t compression;  ///< compression method (0 = none, 1 = 8-bit RLE, 2 = 4-bit RLE)
+	uint32_t width; ///< bitmap width
+	uint32_t height; ///< bitmap height
+	bool os2_bmp; ///< true if OS/2 1.x or windows 2.x bitmap
+	uint16_t bpp; ///< bits per pixel
+	uint32_t compression; ///< compression method (0 = none, 1 = 8-bit RLE, 2 = 4-bit RLE)
 	uint32_t palette_size; ///< number of colours in palette
 };
 

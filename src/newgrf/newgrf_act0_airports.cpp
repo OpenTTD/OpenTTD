@@ -8,9 +8,10 @@
 /** @file newgrf_act0_airports.cpp NewGRF Action 0x00 handler for airports. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "../newgrf_airporttiles.h"
 #include "../newgrf_airport.h"
+#include "../newgrf_airporttiles.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
@@ -263,8 +264,26 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return AirportChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTS>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTTILES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTTILES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return AirportTilesChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTS>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return AirportChangeInfo(first, last, prop, buf);
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTTILES>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_AIRPORTTILES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return AirportTilesChangeInfo(first, last, prop, buf);
+}

@@ -9,15 +9,14 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/linkgraph_sl_compat.h"
-
 #include "../linkgraph/linkgraph.h"
 #include "../linkgraph/linkgraphjob.h"
 #include "../linkgraph/linkgraphschedule.h"
 #include "../network/network.h"
 #include "../settings_internal.h"
 #include "../settings_table.h"
+#include "compat/linkgraph_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
@@ -30,16 +29,16 @@ static NodeID _linkgraph_from; ///< Contains the current "from" node being saved
 
 class SlLinkgraphEdge : public DefaultSaveLoadHandler<SlLinkgraphEdge, Node> {
 public:
-	inline static const SaveLoad description[] = {
-		    SLE_VAR(Edge, capacity,                 SLE_UINT32),
-		    SLE_VAR(Edge, usage,                    SLE_UINT32),
-		SLE_CONDVAR(Edge, travel_time_sum,          SLE_UINT64, SLV_LINKGRAPH_TRAVEL_TIME, SL_MAX_VERSION),
-		    SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
-		SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_187, SL_MAX_VERSION),
-		    SLE_VAR(Edge, dest_node,                SLE_UINT16),
+	static inline const SaveLoad description[] = {
+		SLE_VAR(Edge, capacity, SLE_UINT32),
+		SLE_VAR(Edge, usage, SLE_UINT32),
+		SLE_CONDVAR(Edge, travel_time_sum, SLE_UINT64, SLV_LINKGRAPH_TRAVEL_TIME, SL_MAX_VERSION),
+		SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
+		SLE_CONDVAR(Edge, last_restricted_update, SLE_INT32, SLV_187, SL_MAX_VERSION),
+		SLE_VAR(Edge, dest_node, SLE_UINT16),
 		SLE_CONDVARNAME(Edge, dest_node, "next_edge", SLE_UINT16, SL_MIN_VERSION, SLV_LINKGRAPH_EDGES),
 	};
-	inline const static SaveLoadCompatTable compat_description = _linkgraph_edge_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _linkgraph_edge_sl_compat;
 
 	void Save(Node *bn) const override
 	{
@@ -95,15 +94,15 @@ public:
 
 class SlLinkgraphNode : public DefaultSaveLoadHandler<SlLinkgraphNode, LinkGraph> {
 public:
-	inline static const SaveLoad description[] = {
-		SLE_CONDVAR(Node, xy,          SLE_UINT32, SLV_191, SL_MAX_VERSION),
-		    SLE_VAR(Node, supply,      SLE_UINT32),
-		    SLE_VAR(Node, demand,      SLE_UINT32),
-		    SLE_VAR(Node, station,     SLE_UINT16),
-		    SLE_VAR(Node, last_update, SLE_INT32),
+	static inline const SaveLoad description[] = {
+		SLE_CONDVAR(Node, xy, SLE_UINT32, SLV_191, SL_MAX_VERSION),
+		SLE_VAR(Node, supply, SLE_UINT32),
+		SLE_VAR(Node, demand, SLE_UINT32),
+		SLE_VAR(Node, station, SLE_UINT16),
+		SLE_VAR(Node, last_update, SLE_INT32),
 		SLEG_STRUCTLIST("edges", SlLinkgraphEdge),
 	};
-	inline const static SaveLoadCompatTable compat_description = _linkgraph_node_sl_compat;
+	static inline const SaveLoadCompatTable compat_description = _linkgraph_node_sl_compat;
 
 	void Save(LinkGraph *lg) const override
 	{
@@ -136,9 +135,9 @@ public:
 SaveLoadTable GetLinkGraphDesc()
 {
 	static const SaveLoad link_graph_desc[] = {
-		 SLE_VAR(LinkGraph, last_compression, SLE_INT32),
+		SLE_VAR(LinkGraph, last_compression, SLE_INT32),
 		SLEG_CONDVAR("num_nodes", _num_nodes, SLE_UINT16, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
-		 SLE_VAR(LinkGraph, cargo,            SLE_UINT8),
+		SLE_VAR(LinkGraph, cargo, SLE_UINT8),
 		SLEG_STRUCTLIST("nodes", SlLinkgraphNode),
 	};
 	return link_graph_desc;
@@ -153,9 +152,14 @@ SaveLoadTable GetLinkGraphDesc()
  */
 class SlLinkgraphJobProxy : public DefaultSaveLoadHandler<SlLinkgraphJobProxy, LinkGraphJob> {
 public:
-	inline static const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
-	SaveLoadTable GetDescription() const override { return GetLinkGraphDesc(); }
-	inline const static SaveLoadCompatTable compat_description = _linkgraph_sl_compat;
+	static inline const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+
+	SaveLoadTable GetDescription() const override
+	{
+		return GetLinkGraphDesc();
+	}
+
+	static inline const SaveLoadCompatTable compat_description = _linkgraph_sl_compat;
 
 	void Save(LinkGraphJob *lgj) const override
 	{
@@ -182,7 +186,7 @@ SaveLoadTable GetLinkGraphJobDesc()
 	static std::vector<SaveLoad> saveloads;
 
 	static const SaveLoad job_desc[] = {
-		SLE_VAR(LinkGraphJob, join_date,        SLE_INT32),
+		SLE_VAR(LinkGraphJob, join_date, SLE_INT32),
 		SLE_VAR(LinkGraphJob, link_graph.index, SLE_UINT16),
 		SLEG_STRUCT("linkgraph", SlLinkgraphJobProxy),
 	};
@@ -194,7 +198,9 @@ SaveLoadTable GetLinkGraphJobDesc()
 	/* We store the offset of each member of the #LinkGraphSettings in the
 	 * extra data of the saveload struct. Use it together with the address
 	 * of the settings struct inside the job to find the final memory address. */
-	static SaveLoadAddrProc * const proc = [](void *b, size_t extra) -> void * { return const_cast<void *>(static_cast<const void *>(reinterpret_cast<const char *>(std::addressof(static_cast<LinkGraphJob *>(b)->settings)) + extra)); };
+	static SaveLoadAddrProc *const proc = [](void *b, size_t extra) -> void * {
+		return const_cast<void *>(static_cast<const void *>(reinterpret_cast<const char *>(std::addressof(static_cast<LinkGraphJob *>(b)->settings)) + extra));
+	};
 
 	/* Build the SaveLoad array on first call and don't touch it later on */
 	if (saveloads.empty()) {
@@ -220,7 +226,7 @@ SaveLoadTable GetLinkGraphScheduleDesc()
 {
 	static const SaveLoad schedule_desc[] = {
 		SLE_REFLIST(LinkGraphSchedule, schedule, REF_LINK_GRAPH),
-		SLE_REFLIST(LinkGraphSchedule, running,  REF_LINK_GRAPH_JOB),
+		SLE_REFLIST(LinkGraphSchedule, running, REF_LINK_GRAPH_JOB),
 	};
 	return schedule_desc;
 }

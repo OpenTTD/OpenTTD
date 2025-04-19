@@ -9,10 +9,11 @@
 
 #include "../stdafx.h"
 
-#include "../script/squirrel_class.hpp"
 #include "game_info.hpp"
-#include "game_scanner.hpp"
+
 #include "../debug.h"
+#include "../script/squirrel_class.hpp"
+#include "game_scanner.hpp"
 
 #include "../safeguards.h"
 
@@ -25,7 +26,12 @@ static bool CheckAPIVersion(const std::string &api_version)
 	return std::ranges::find(GameInfo::ApiVersions, api_version) != std::end(GameInfo::ApiVersions);
 }
 
-template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSInfo", -1); return 1; }
+template <>
+SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm)
+{
+	sq_pushstring(vm, "GSInfo", -1);
+	return 1;
+}
 
 /* static */ void GameInfo::RegisterAPI(Squirrel *engine)
 {
@@ -81,18 +87,13 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	return 0;
 }
 
-GameInfo::GameInfo() :
-	min_loadable_version(0),
-	is_developer_only(false)
-{
-}
+GameInfo::GameInfo() : min_loadable_version(0), is_developer_only(false) {}
 
 bool GameInfo::CanLoadFromVersion(int version) const
 {
 	if (version == -1) return true;
 	return version >= this->min_loadable_version && version <= this->GetVersion();
 }
-
 
 /* static */ void GameLibrary::RegisterAPI(Squirrel *engine)
 {

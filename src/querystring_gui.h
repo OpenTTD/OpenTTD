@@ -10,8 +10,8 @@
 #ifndef QUERYSTRING_GUI_H
 #define QUERYSTRING_GUI_H
 
-#include "textbuf_type.h"
 #include "textbuf_gui.h"
+#include "textbuf_type.h"
 #include "window_gui.h"
 
 /**
@@ -19,9 +19,9 @@
  */
 struct QueryString {
 	/* Special actions when hitting ENTER or ESC. (only keyboard, not OSK) */
-	static const int ACTION_NOTHING  = -1; ///< Nothing.
+	static const int ACTION_NOTHING = -1; ///< Nothing.
 	static const int ACTION_DESELECT = -2; ///< Deselect editbox.
-	static const int ACTION_CLEAR    = -3; ///< Clear editbox.
+	static const int ACTION_CLEAR = -3; ///< Clear editbox.
 
 	StringID caption{};
 	int ok_button = ACTION_NOTHING; ///< Widget button of parent window to simulate when pressing OK in OSK.
@@ -35,9 +35,7 @@ struct QueryString {
 	 * @param size Maximum size in bytes.
 	 * @param chars Maximum size in chars.
 	 */
-	QueryString(uint16_t size, uint16_t chars = UINT16_MAX) : text(size, chars)
-	{
-	}
+	QueryString(uint16_t size, uint16_t chars = UINT16_MAX) : text(size, chars) {}
 
 public:
 	void DrawEditBox(const Window *w, WidgetID wid) const;

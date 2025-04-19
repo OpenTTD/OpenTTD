@@ -8,18 +8,18 @@
 /** @file osk_gui.cpp The On Screen Keyboard GUI */
 
 #include "stdafx.h"
-#include "string_func.h"
-#include "strings_func.h"
+
+#include "core/string_consumer.hpp"
 #include "debug.h"
-#include "window_func.h"
 #include "gfx_func.h"
 #include "querystring_gui.h"
+#include "string_func.h"
+#include "strings_func.h"
 #include "video/video_driver.hpp"
+#include "window_func.h"
 #include "zoom_func.h"
-#include "core/string_consumer.hpp"
 
 #include "widgets/osk_widget.h"
-
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -33,6 +33,7 @@ enum KeyStateBits : uint8_t {
 	KEYS_SHIFT,
 	KEYS_CAPS
 };
+
 static uint8_t _keystate = KEYS_NONE;
 
 struct OskWindow : public Window {
@@ -52,10 +53,10 @@ struct OskWindow : public Window {
 		assert(par_wid != nullptr);
 
 		assert(parent->querystrings.count(button) != 0);
-		this->qs         = parent->querystrings.find(button)->second;
+		this->qs = parent->querystrings.find(button)->second;
 		this->caption = (par_wid->GetString() != STR_NULL) ? par_wid->GetString() : this->qs->caption;
-		this->text_btn   = button;
-		this->text       = &this->qs->text;
+		this->text_btn = button;
+		this->text = &this->qs->text;
 		this->querystrings[WID_OSK_TEXT] = this->qs;
 
 		/* make a copy in case we need to reset later */
@@ -80,8 +81,7 @@ struct OskWindow : public Window {
 		this->shift = HasBit(_keystate, KEYS_CAPS) ^ HasBit(_keystate, KEYS_SHIFT);
 
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
-			this->SetWidgetDisabledState(WID_OSK_LETTERS + i,
-					!IsValidChar(_keyboard[this->shift][i], this->qs->text.afilter) || _keyboard[this->shift][i] == ' ');
+			this->SetWidgetDisabledState(WID_OSK_LETTERS + i, !IsValidChar(_keyboard[this->shift][i], this->qs->text.afilter) || _keyboard[this->shift][i] == ' ');
 		}
 		this->SetWidgetDisabledState(WID_OSK_SPACE, !IsValidChar(' ', this->qs->text.afilter));
 
@@ -209,11 +209,11 @@ struct OskWindow : public Window {
 	}
 };
 
-static const int HALF_KEY_WIDTH = 7;  // Width of 1/2 key in pixels.
+static const int HALF_KEY_WIDTH = 7; // Width of 1/2 key in pixels.
 static const int INTER_KEY_SPACE = 2; // Number of pixels between two keys.
 
 static const int TOP_KEY_PADDING = 2; // Vertical padding for the top row of keys.
-static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows.
+static const int KEY_PADDING = 6; // Vertical padding for remaining key rows.
 
 /**
  * Add a key widget to a row of the keyboard.
@@ -247,8 +247,8 @@ static std::unique_ptr<NWidgetBase> MakeTopKeys()
 	auto hor = std::make_unique<NWidgetHorizontal>();
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
-	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    WidgetData{.string = STR_BUTTON_CANCEL});
-	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        WidgetData{.string = STR_BUTTON_OK});
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN, WID_OSK_CANCEL, WidgetData{.string = STR_BUTTON_CANCEL});
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN, WID_OSK_OK, WidgetData{.string = STR_BUTTON_OK});
 	AddKey(hor, TOP_KEY_PADDING, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, WidgetData{.sprite = SPR_OSK_BACKSPACE});
 	return hor;
 }
@@ -312,14 +312,13 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 	auto hor = std::make_unique<NWidgetHorizontal>();
 	hor->SetPIP(0, INTER_KEY_SPACE, 0);
 
-	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, {});
+	AddKey(hor, KEY_PADDING, 8, NWID_SPACER, 0, {});
 	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, WidgetData{.string = STR_EMPTY});
-	AddKey(hor, KEY_PADDING,  3, NWID_SPACER, 0, {});
-	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  WidgetData{.sprite = SPR_OSK_LEFT});
-	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, WidgetData{.sprite = SPR_OSK_RIGHT});
+	AddKey(hor, KEY_PADDING, 3, NWID_SPACER, 0, {});
+	AddKey(hor, KEY_PADDING, 2, WWT_PUSHIMGBTN, WID_OSK_LEFT, WidgetData{.sprite = SPR_OSK_LEFT});
+	AddKey(hor, KEY_PADDING, 2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, WidgetData{.sprite = SPR_OSK_RIGHT});
 	return hor;
 }
-
 
 /* clang-format off */
 static constexpr NWidgetPart _nested_osk_widgets[] = {
@@ -340,12 +339,7 @@ static constexpr NWidgetPart _nested_osk_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _osk_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_OSK, WC_NONE,
-	{},
-	_nested_osk_widgets
-);
+static WindowDesc _osk_desc(WDP_CENTER, nullptr, 0, 0, WC_OSK, WC_NONE, {}, _nested_osk_widgets);
 
 /**
  * Retrieve keyboard layout from language string or (if set) config file.

@@ -8,13 +8,15 @@
 /** @file spritefontcache.cpp Sprite fontcache implementation. */
 
 #include "../stdafx.h"
+
+#include "spritefontcache.h"
+
 #include "../fontcache.h"
 #include "../gfx_layout.h"
 #include "../zoom_func.h"
-#include "spritefontcache.h"
 
-#include "../table/sprites.h"
 #include "../table/control_codes.h"
+#include "../table/sprites.h"
 #include "../table/unicode.h"
 
 #include "../safeguards.h"
@@ -66,11 +68,18 @@ void SpriteFontCache::InitializeUnicodeGlyphMap()
 
 	SpriteID base;
 	switch (this->fs) {
-		default: NOT_REACHED();
-		case FS_MONO:   // Use normal as default for mono spaced font
-		case FS_NORMAL: base = SPR_ASCII_SPACE;       break;
-		case FS_SMALL:  base = SPR_ASCII_SPACE_SMALL; break;
-		case FS_LARGE:  base = SPR_ASCII_SPACE_BIG;   break;
+		default:
+			NOT_REACHED();
+		case FS_MONO: // Use normal as default for mono spaced font
+		case FS_NORMAL:
+			base = SPR_ASCII_SPACE;
+			break;
+		case FS_SMALL:
+			base = SPR_ASCII_SPACE_SMALL;
+			break;
+		case FS_LARGE:
+			base = SPR_ASCII_SPACE_BIG;
+			break;
 	}
 
 	for (uint i = ASCII_LETTERSTART; i < 256; i++) {

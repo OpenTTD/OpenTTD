@@ -8,8 +8,10 @@
 /** @file script_companymode.cpp Implementation of ScriptCompanyMode. */
 
 #include "../../stdafx.h"
-#include "../../company_base.h"
+
 #include "script_companymode.hpp"
+
+#include "../../company_base.h"
 
 #include "../../safeguards.h"
 

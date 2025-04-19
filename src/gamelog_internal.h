@@ -25,12 +25,15 @@ struct GRFPresence {
 	bool was_missing = false; ///< Grf was missing during some gameload in the past
 
 	GRFPresence(const GRFConfig *gc) : gc(gc) {}
+
 	GRFPresence() = default;
 };
+
 using GrfIDMapping = std::map<uint32_t, GRFPresence>;
 
 struct LoggedChange {
 	LoggedChange(GamelogChangeType type = GLCT_NONE) : ct(type) {}
+
 	virtual ~LoggedChange() = default;
 	virtual void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) = 0;
 
@@ -39,8 +42,9 @@ struct LoggedChange {
 
 struct LoggedChangeMode : LoggedChange {
 	LoggedChangeMode() : LoggedChange(GLCT_MODE) {}
-	LoggedChangeMode(uint8_t mode, LandscapeType landscape) :
-		LoggedChange(GLCT_MODE), mode(mode), landscape(landscape) {}
+
+	LoggedChangeMode(uint8_t mode, LandscapeType landscape) : LoggedChange(GLCT_MODE), mode(mode), landscape(landscape) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint8_t mode = 0; ///< new game mode - Editor x Game
@@ -49,8 +53,9 @@ struct LoggedChangeMode : LoggedChange {
 
 struct LoggedChangeRevision : LoggedChange {
 	LoggedChangeRevision() : LoggedChange(GLCT_REVISION) {}
-	LoggedChangeRevision(const std::string &text, uint32_t newgrf, uint16_t slver, uint8_t modified) :
-		LoggedChange(GLCT_REVISION), text(text), newgrf(newgrf), slver(slver), modified(modified) {}
+
+	LoggedChangeRevision(const std::string &text, uint32_t newgrf, uint16_t slver, uint8_t modified) : LoggedChange(GLCT_REVISION), text(text), newgrf(newgrf), slver(slver), modified(modified) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	std::string text{}; ///< revision string, _openttd_revision
@@ -61,8 +66,9 @@ struct LoggedChangeRevision : LoggedChange {
 
 struct LoggedChangeOldVersion : LoggedChange {
 	LoggedChangeOldVersion() : LoggedChange(GLCT_OLDVER) {}
-	LoggedChangeOldVersion(uint32_t type, uint32_t version) :
-		LoggedChange(GLCT_OLDVER), type(type), version(version) {}
+
+	LoggedChangeOldVersion(uint32_t type, uint32_t version) : LoggedChange(GLCT_OLDVER), type(type), version(version) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint32_t type = 0; ///< type of savegame, @see SavegameType
@@ -71,15 +77,17 @@ struct LoggedChangeOldVersion : LoggedChange {
 
 struct LoggedChangeGRFAdd : LoggedChange, GRFIdentifier {
 	LoggedChangeGRFAdd() : LoggedChange(GLCT_GRFADD) {}
-	LoggedChangeGRFAdd(const GRFIdentifier &ident) :
-		LoggedChange(GLCT_GRFADD), GRFIdentifier(ident) {}
+
+	LoggedChangeGRFAdd(const GRFIdentifier &ident) : LoggedChange(GLCT_GRFADD), GRFIdentifier(ident) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 };
 
 struct LoggedChangeGRFRemoved : LoggedChange {
 	LoggedChangeGRFRemoved() : LoggedChange(GLCT_GRFREM) {}
-	LoggedChangeGRFRemoved(uint32_t grfid) :
-		LoggedChange(GLCT_GRFREM), grfid(grfid) {}
+
+	LoggedChangeGRFRemoved(uint32_t grfid) : LoggedChange(GLCT_GRFREM), grfid(grfid) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint32_t grfid = 0; ///< ID of removed GRF
@@ -87,15 +95,17 @@ struct LoggedChangeGRFRemoved : LoggedChange {
 
 struct LoggedChangeGRFChanged : LoggedChange, GRFIdentifier {
 	LoggedChangeGRFChanged() : LoggedChange(GLCT_GRFCOMPAT) {}
-	LoggedChangeGRFChanged(const GRFIdentifier &ident) :
-		LoggedChange(GLCT_GRFCOMPAT), GRFIdentifier(ident) {}
+
+	LoggedChangeGRFChanged(const GRFIdentifier &ident) : LoggedChange(GLCT_GRFCOMPAT), GRFIdentifier(ident) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 };
 
 struct LoggedChangeGRFParameterChanged : LoggedChange {
 	LoggedChangeGRFParameterChanged() : LoggedChange(GLCT_GRFPARAM) {}
-	LoggedChangeGRFParameterChanged(uint32_t grfid) :
-		LoggedChange(GLCT_GRFPARAM), grfid(grfid) {}
+
+	LoggedChangeGRFParameterChanged(uint32_t grfid) : LoggedChange(GLCT_GRFPARAM), grfid(grfid) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint32_t grfid = 0; ///< ID of GRF with changed parameters
@@ -103,8 +113,9 @@ struct LoggedChangeGRFParameterChanged : LoggedChange {
 
 struct LoggedChangeGRFMoved : LoggedChange {
 	LoggedChangeGRFMoved() : LoggedChange(GLCT_GRFMOVE) {}
-	LoggedChangeGRFMoved(uint32_t grfid, int32_t offset) :
-		LoggedChange(GLCT_GRFMOVE), grfid(grfid), offset(offset) {}
+
+	LoggedChangeGRFMoved(uint32_t grfid, int32_t offset) : LoggedChange(GLCT_GRFMOVE), grfid(grfid), offset(offset) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint32_t grfid = 0; ///< ID of moved GRF
@@ -113,8 +124,9 @@ struct LoggedChangeGRFMoved : LoggedChange {
 
 struct LoggedChangeSettingChanged : LoggedChange {
 	LoggedChangeSettingChanged() : LoggedChange(GLCT_SETTING) {}
-	LoggedChangeSettingChanged(const std::string &name, int32_t oldval, int32_t newval) :
-		LoggedChange(GLCT_SETTING), name(name), oldval(oldval), newval(newval) {}
+
+	LoggedChangeSettingChanged(const std::string &name, int32_t oldval, int32_t newval) : LoggedChange(GLCT_SETTING), name(name), oldval(oldval), newval(newval) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	std::string name{}; ///< name of the setting
@@ -124,8 +136,9 @@ struct LoggedChangeSettingChanged : LoggedChange {
 
 struct LoggedChangeGRFBug : LoggedChange {
 	LoggedChangeGRFBug() : LoggedChange(GLCT_GRFBUG) {}
-	LoggedChangeGRFBug(uint64_t data, uint32_t grfid, GRFBug bug) :
-		LoggedChange(GLCT_GRFBUG), data(data), grfid(grfid), bug(bug) {}
+
+	LoggedChangeGRFBug(uint64_t data, uint32_t grfid, GRFBug bug) : LoggedChange(GLCT_GRFBUG), data(data), grfid(grfid), bug(bug) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 
 	uint64_t data = 0; ///< additional data
@@ -135,9 +148,9 @@ struct LoggedChangeGRFBug : LoggedChange {
 
 struct LoggedChangeEmergencySave : LoggedChange {
 	LoggedChangeEmergencySave() : LoggedChange(GLCT_EMERGENCY) {}
+
 	void FormatTo(std::back_insert_iterator<std::string> &output_iterator, GrfIDMapping &grf_names, GamelogActionType action_type) override;
 };
-
 
 /** Contains information about one logged action that caused at least one logged change */
 struct LoggedAction {

@@ -9,28 +9,31 @@
 
 #ifdef WITH_SSE
 
-#include "stdafx.h"
-#include "cpu.h"
-#include "smmintrin.h"
-#include "viewport_sprite_sorter.h"
-#include <forward_list>
-#include <stack>
+#	include "stdafx.h"
 
-#include "safeguards.h"
+#	include <forward_list>
+#	include <stack>
 
-#ifdef POINTER_IS_64BIT
-	static_assert((sizeof(ParentSpriteToDraw) % 16) == 0);
-#	define LOAD_128 _mm_load_si128
-#else
-#	define LOAD_128 _mm_loadu_si128
-#endif
+#	include "cpu.h"
+#	include "smmintrin.h"
+#	include "viewport_sprite_sorter.h"
+
+#	include "safeguards.h"
+
+#	ifdef POINTER_IS_64BIT
+static_assert((sizeof(ParentSpriteToDraw) % 16) == 0);
+#		define LOAD_128 _mm_load_si128
+#	else
+#		define LOAD_128 _mm_loadu_si128
+#	endif
 
 GNU_TARGET("sse4.1")
+
 void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 {
 	if (psdv->size() < 2) return;
 
-	const __m128i mask_ptest = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0);
+	const __m128i mask_ptest = _mm_setr_epi8(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, 0);
 
 	/* We rely on sprites being, for the most part, already ordered.
 	 * So we don't need to move many of them and can keep track of their
@@ -44,7 +47,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 	std::stack<ParentSpriteToDraw *> sprite_order;
 	uint32_t next_order = 0;
 
-	std::forward_list<std::pair<int64_t, ParentSpriteToDraw *>> sprite_list;  // We store sprites in a list sorted by xmin+ymin
+	std::forward_list<std::pair<int64_t, ParentSpriteToDraw *>> sprite_list; // We store sprites in a list sorted by xmin+ymin
 
 	/* Initialize sprite list and order. */
 	for (auto p = psdv->rbegin(); p != psdv->rend(); p++) {
@@ -55,12 +58,11 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 
 	sprite_list.sort();
 
-	std::vector<ParentSpriteToDraw *> preceding;  // Temporarily stores sprites that precede current and their position in the list
+	std::vector<ParentSpriteToDraw *> preceding; // Temporarily stores sprites that precede current and their position in the list
 	auto preceding_prev = sprite_list.begin(); // Store iterator in case we need to delete a single preceding sprite
-	auto out = psdv->begin();  // Iterator to output sorted sprites
+	auto out = psdv->begin(); // Iterator to output sorted sprites
 
 	while (!sprite_order.empty()) {
-
 		auto s = sprite_order.top();
 		sprite_order.pop();
 
@@ -99,17 +101,16 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 			prev = x++;
 
 			/* Check that p->xmin <= s->xmax && p->ymin <= s->ymax && p->zmin <= s->zmax */
-			__m128i s_max = LOAD_128((__m128i*) &s->xmax);
-			__m128i p_min = LOAD_128((__m128i*) &p->xmin);
+			__m128i s_max = LOAD_128((__m128i *)&s->xmax);
+			__m128i p_min = LOAD_128((__m128i *)&p->xmin);
 			__m128i r1 = _mm_cmplt_epi32(s_max, p_min);
-			if (!_mm_testz_si128(mask_ptest, r1))
-				continue;
+			if (!_mm_testz_si128(mask_ptest, r1)) continue;
 
 			/* Check if sprites overlap, i.e.
 			 * s->xmin <= p->xmax && s->ymin <= p->ymax && s->zmin <= p->zmax
 			 */
-			__m128i s_min = LOAD_128((__m128i*) &s->xmin);
-			__m128i p_max = LOAD_128((__m128i*) &p->xmax);
+			__m128i s_min = LOAD_128((__m128i *)&s->xmin);
+			__m128i p_max = LOAD_128((__m128i *)&p->xmax);
 			__m128i r2 = _mm_cmplt_epi32(p_max, s_min);
 			if (_mm_testz_si128(mask_ptest, r2)) {
 				/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of
@@ -118,8 +119,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 				 * i.e. X=(left+right)/2, etc.
 				 * However, since we only care about order, don't actually divide / 2
 				 */
-				if (s->xmin + s->xmax + s->ymin + s->ymax + s->zmin + s->zmax <=
-						p->xmin + p->xmax + p->ymin + p->ymax + p->zmin + p->zmax) {
+				if (s->xmin + s->xmax + s->ymin + s->ymax + s->zmin + s->zmax <= p->xmin + p->xmax + p->ymin + p->ymax + p->zmin + p->zmax) {
 					continue;
 				}
 			}
@@ -155,15 +155,14 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 		});
 
 		s->order = ORDER_COMPARED;
-		sprite_order.push(s);  // Still need to output so push it back for now
+		sprite_order.push(s); // Still need to output so push it back for now
 
-		for (auto p: preceding) {
+		for (auto p : preceding) {
 			p->order = next_order++;
 			sprite_order.push(p);
 		}
 	}
 }
-
 
 /**
  * Check whether the current CPU supports SSE 4.1.

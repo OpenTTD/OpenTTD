@@ -17,10 +17,10 @@ using BadgeID = StrongType::Typedef<uint16_t, struct BadgeIDTag, StrongType::Com
 using BadgeClassID = StrongType::Typedef<uint16_t, struct BadgeClassIDTag, StrongType::Compare>;
 
 enum class BadgeFlag : uint8_t {
-	Copy              = 0, ///< Copy badge to related things.
-	NameListStop      = 1, ///< Stop adding names to the name list after this badge.
+	Copy = 0, ///< Copy badge to related things.
+	NameListStop = 1, ///< Stop adding names to the name list after this badge.
 	NameListFirstOnly = 2, ///< Don't add this name to the name list if not first.
-	UseCompanyColour  = 3, ///< Apply company colour palette to this badge.
+	UseCompanyColour = 3, ///< Apply company colour palette to this badge.
 };
 using BadgeFlags = EnumBitSet<BadgeFlag, uint8_t>;
 

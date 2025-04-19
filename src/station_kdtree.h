@@ -12,8 +12,8 @@
 
 #include "core/kdtree.hpp"
 #include "core/math_func.hpp"
-#include "station_base.h"
 #include "map_func.h"
+#include "station_base.h"
 
 struct Kdtree_StationXYFunc {
 	inline uint16_t operator()(StationID stid, int dim)

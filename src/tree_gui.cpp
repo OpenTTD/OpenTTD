@@ -8,21 +8,21 @@
 /** @file tree_gui.cpp GUIs for building trees. */
 
 #include "stdafx.h"
-#include "window_gui.h"
-#include "gfx_func.h"
-#include "tilehighlight_func.h"
-#include "company_func.h"
-#include "company_base.h"
-#include "command_func.h"
+
 #include "core/random_func.hpp"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "gfx_func.h"
 #include "sound_func.h"
 #include "strings_func.h"
-#include "zoom_func.h"
-#include "tree_map.h"
+#include "tilehighlight_func.h"
 #include "tree_cmd.h"
+#include "tree_map.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/tree_widget.h"
-
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "table/tree_land.h"
@@ -33,18 +33,15 @@ void PlaceTreesRandomly();
 uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
 
 /** Tree Sprites with their palettes */
-const PalSpriteID tree_sprites[] = {
-	{ 1621, PAL_NONE }, { 1635, PAL_NONE }, { 1656, PAL_NONE }, { 1579, PAL_NONE },
-	{ 1607, PAL_NONE }, { 1593, PAL_NONE }, { 1614, PAL_NONE }, { 1586, PAL_NONE },
-	{ 1663, PAL_NONE }, { 1677, PAL_NONE }, { 1691, PAL_NONE }, { 1705, PAL_NONE },
-	{ 1711, PAL_NONE }, { 1746, PAL_NONE }, { 1753, PAL_NONE }, { 1732, PAL_NONE },
-	{ 1739, PAL_NONE }, { 1718, PAL_NONE }, { 1725, PAL_NONE }, { 1760, PAL_NONE },
-	{ 1838, PAL_NONE }, { 1844, PAL_NONE }, { 1866, PAL_NONE }, { 1871, PAL_NONE },
-	{ 1899, PAL_NONE }, { 1935, PAL_NONE }, { 1928, PAL_NONE }, { 1915, PAL_NONE },
-	{ 1887, PAL_NONE }, { 1908, PAL_NONE }, { 1824, PAL_NONE }, { 1943, PAL_NONE },
-	{ 1950, PAL_NONE }, { 1957, PALETTE_TO_GREEN }, { 1964, PALETTE_TO_RED },        { 1971, PAL_NONE },
-	{ 1978, PAL_NONE }, { 1985, PALETTE_TO_RED, },  { 1992, PALETTE_TO_PALE_GREEN }, { 1999, PALETTE_TO_YELLOW }, { 2006, PALETTE_TO_RED }
-};
+const PalSpriteID tree_sprites[] = {{1621, PAL_NONE}, {1635, PAL_NONE}, {1656, PAL_NONE}, {1579, PAL_NONE}, {1607, PAL_NONE}, {1593, PAL_NONE}, {1614, PAL_NONE}, {1586, PAL_NONE}, {1663, PAL_NONE},
+	{1677, PAL_NONE}, {1691, PAL_NONE}, {1705, PAL_NONE}, {1711, PAL_NONE}, {1746, PAL_NONE}, {1753, PAL_NONE}, {1732, PAL_NONE}, {1739, PAL_NONE}, {1718, PAL_NONE}, {1725, PAL_NONE},
+	{1760, PAL_NONE}, {1838, PAL_NONE}, {1844, PAL_NONE}, {1866, PAL_NONE}, {1871, PAL_NONE}, {1899, PAL_NONE}, {1935, PAL_NONE}, {1928, PAL_NONE}, {1915, PAL_NONE}, {1887, PAL_NONE},
+	{1908, PAL_NONE}, {1824, PAL_NONE}, {1943, PAL_NONE}, {1950, PAL_NONE}, {1957, PALETTE_TO_GREEN}, {1964, PALETTE_TO_RED}, {1971, PAL_NONE}, {1978, PAL_NONE},
+	{
+		1985,
+		PALETTE_TO_RED,
+	},
+	{1992, PALETTE_TO_PALE_GREEN}, {1999, PALETTE_TO_YELLOW}, {2006, PALETTE_TO_RED}};
 
 /**
  * Calculate the maximum size of all tree sprites
@@ -73,12 +70,10 @@ static Dimension GetMaxTreeSpriteSize()
 	return size;
 }
 
-
 /**
  * The build trees window.
  */
-class BuildTreesWindow : public Window
-{
+class BuildTreesWindow : public Window {
 	/** Visual Y offset of tree root from the bottom of the tree type buttons */
 	static const int BUTTON_BOTTOM_OFFSET = 7;
 
@@ -117,10 +112,17 @@ class BuildTreesWindow : public Window
 		}
 
 		switch (this->mode) {
-			case PM_NORMAL: this->LowerWidget(WID_BT_MODE_NORMAL); break;
-			case PM_FOREST_SM: this->LowerWidget(WID_BT_MODE_FOREST_SM); break;
-			case PM_FOREST_LG: this->LowerWidget(WID_BT_MODE_FOREST_LG); break;
-			default: NOT_REACHED();
+			case PM_NORMAL:
+				this->LowerWidget(WID_BT_MODE_NORMAL);
+				break;
+			case PM_FOREST_SM:
+				this->LowerWidget(WID_BT_MODE_FOREST_SM);
+				break;
+			case PM_FOREST_LG:
+				this->LowerWidget(WID_BT_MODE_FOREST_LG);
+				break;
+			default:
+				NOT_REACHED();
 		}
 
 		this->SetDirty();
@@ -130,7 +132,8 @@ class BuildTreesWindow : public Window
 	{
 		TreeType treetype = (TreeType)this->tree_to_plant;
 		if (this->tree_to_plant == TREE_INVALID) {
-			treetype = (TreeType)(InteractiveRandomRange(_tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]) + _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)]);
+			treetype = (TreeType)(InteractiveRandomRange(_tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]) +
+				_tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)]);
 		}
 		const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
 		const uint count = this->mode == PM_FOREST_LG ? 12 : 5;
@@ -312,12 +315,7 @@ static constexpr NWidgetPart _nested_build_trees_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _build_trees_desc(
-	WDP_AUTO, "build_tree", 0, 0,
-	WC_BUILD_TREES, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_build_trees_widgets
-);
+static WindowDesc _build_trees_desc(WDP_AUTO, "build_tree", 0, 0, WC_BUILD_TREES, WC_NONE, WindowDefaultFlag::Construction, _nested_build_trees_widgets);
 
 void ShowBuildTreesToolbar()
 {

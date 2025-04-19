@@ -38,9 +38,9 @@ inline bool include(Container &container, typename Container::const_reference &i
  * @return Index of element if found, otherwise -1
  */
 template <typename Container>
-int find_index(Container const &container, typename Container::const_reference item)
+int find_index(const Container &container, typename Container::const_reference item)
 {
-	auto const it = std::ranges::find(container, item);
+	const auto it = std::ranges::find(container, item);
 	if (it != container.end()) return std::distance(container.begin(), it);
 
 	return -1;
@@ -56,9 +56,9 @@ int find_index(Container const &container, typename Container::const_reference i
 template <typename TIter>
 auto Slide(TIter first, TIter last, TIter position) -> std::pair<TIter, TIter>
 {
-	if (last < position) return { std::rotate(first, last, position), position };
-	if (position < first) return { position, std::rotate(position, first, last) };
-	return { first, last };
+	if (last < position) return {std::rotate(first, last, position), position};
+	if (position < first) return {position, std::rotate(position, first, last)};
+	return {first, last};
 }
 
 #endif /* CONTAINER_FUNC_HPP */

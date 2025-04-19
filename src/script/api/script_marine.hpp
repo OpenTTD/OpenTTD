@@ -10,8 +10,8 @@
 #ifndef SCRIPT_MARINE_HPP
 #define SCRIPT_MARINE_HPP
 
-#include "script_error.hpp"
 #include "../../station_type.h"
+#include "script_error.hpp"
 
 /**
  * Class that handles all marine related functions.
@@ -29,17 +29,17 @@ public:
 		ERR_MARINE_BASE = ScriptError::ERR_CAT_MARINE << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Infrastructure must be built on water */
-		ERR_MARINE_MUST_BE_BUILT_ON_WATER,                  // [STR_ERROR_MUST_BE_BUILT_ON_WATER]
+		ERR_MARINE_MUST_BE_BUILT_ON_WATER, // [STR_ERROR_MUST_BE_BUILT_ON_WATER]
 	};
 
 	/**
 	 * Types of water-related objects in the game.
 	 */
 	enum BuildType {
-		BT_DOCK,  ///< Build a dock
+		BT_DOCK, ///< Build a dock
 		BT_DEPOT, ///< Build a ship depot
-		BT_BUOY,  ///< Build a buoy
-		BT_LOCK,  ///< Build a lock
+		BT_BUOY, ///< Build a buoy
+		BT_LOCK, ///< Build a lock
 		BT_CANAL, ///< Build a canal
 	};
 

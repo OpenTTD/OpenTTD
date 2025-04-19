@@ -15,20 +15,22 @@
 
 #ifdef WITH_COCOA
 
-#include "../stdafx.h"
-#include "../os/macosx/macos.h"
-#include "../debug.h"
-#include "../driver.h"
-#include "../mixer.h"
-#include "cocoa_s.h"
+#	include "../stdafx.h"
 
-#define Rect        OTTDRect
-#define Point       OTTDPoint
-#include <AudioUnit/AudioUnit.h>
-#undef Rect
-#undef Point
+#	include "cocoa_s.h"
 
-#include "../safeguards.h"
+#	include "../debug.h"
+#	include "../driver.h"
+#	include "../mixer.h"
+#	include "../os/macosx/macos.h"
+
+#	define Rect        OTTDRect
+#	define Point       OTTDPoint
+#	include <AudioUnit/AudioUnit.h>
+#	undef Rect
+#	undef Point
+
+#	include "../safeguards.h"
 
 static FSoundDriver_Cocoa iFSoundDriver_Cocoa;
 
@@ -41,7 +43,6 @@ static OSStatus audioCallback(void *, AudioUnitRenderActionFlags *, const AudioT
 
 	return noErr;
 }
-
 
 std::optional<std::string_view> SoundDriver_Cocoa::Start(const StringList &parm)
 {
@@ -75,7 +76,7 @@ std::optional<std::string_view> SoundDriver_Cocoa::Start(const StringList &parm)
 	desc.componentFlags = 0;
 	desc.componentFlagsMask = 0;
 
-	AudioComponent comp = AudioComponentFindNext (nullptr, &desc);
+	AudioComponent comp = AudioComponentFindNext(nullptr, &desc);
 	if (comp == nullptr) {
 		return "cocoa_s: Failed to start CoreAudio: AudioComponentFindNext returned nullptr";
 	}
@@ -109,7 +110,6 @@ std::optional<std::string_view> SoundDriver_Cocoa::Start(const StringList &parm)
 	/* We're running! */
 	return std::nullopt;
 }
-
 
 void SoundDriver_Cocoa::Stop()
 {

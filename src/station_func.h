@@ -10,15 +10,15 @@
 #ifndef STATION_FUNC_H
 #define STATION_FUNC_H
 
-#include "sprite.h"
-#include "rail_type.h"
-#include "road_type.h"
-#include "vehicle_type.h"
 #include "economy_func.h"
-#include "rail.h"
-#include "road.h"
-#include "linkgraph/linkgraph_type.h"
 #include "industry_type.h"
+#include "linkgraph/linkgraph_type.h"
+#include "rail.h"
+#include "rail_type.h"
+#include "road.h"
+#include "road_type.h"
+#include "sprite.h"
+#include "vehicle_type.h"
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 

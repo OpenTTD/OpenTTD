@@ -8,14 +8,15 @@
 /** @file settingsgen.cpp Tool to create computer-readable settings. */
 
 #include "../stdafx.h"
-#include "../string_func.h"
-#include "../strings_type.h"
-#include "../misc/getoptdata.h"
-#include "../ini_type.h"
-#include "../core/mem_func.hpp"
-#include "../error_func.h"
 
 #include <filesystem>
+
+#include "../core/mem_func.hpp"
+#include "../error_func.h"
+#include "../ini_type.h"
+#include "../misc/getoptdata.h"
+#include "../string_func.h"
+#include "../strings_type.h"
 
 #include "../safeguards.h"
 
@@ -76,7 +77,7 @@ public:
 		return this->size < OUTPUT_BLOCK_SIZE;
 	}
 
-	size_t size;                  ///< Number of bytes stored in \a data.
+	size_t size; ///< Number of bytes stored in \a data.
 	char data[OUTPUT_BLOCK_SIZE]; ///< Stored data.
 };
 
@@ -143,7 +144,6 @@ private:
 	OutputBufferVector output_buffer; ///< Vector of blocks containing the stored output.
 };
 
-
 /** Derived class for loading INI files without going through Fio stuff. */
 struct SettingsIniFile : IniLoadFile {
 	/**
@@ -151,10 +151,7 @@ struct SettingsIniFile : IniLoadFile {
 	 * @param list_group_names A list with group names that should be loaded as lists instead of variables. @see IGT_LIST
 	 * @param seq_group_names  A list with group names that should be loaded as lists of names. @see IGT_SEQUENCE
 	 */
-	SettingsIniFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {}) :
-			IniLoadFile(list_group_names, seq_group_names)
-	{
-	}
+	SettingsIniFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {}) : IniLoadFile(list_group_names, seq_group_names) {}
 
 	std::optional<FileHandle> OpenFile(const std::string &filename, Subdirectory, size_t *size) override
 	{
@@ -170,7 +167,7 @@ struct SettingsIniFile : IniLoadFile {
 		return in;
 	}
 
-	void ReportFileError(const char * const pre, const char * const buffer, const char * const post) override
+	void ReportFileError(const char *const pre, const char *const buffer, const char *const post) override
 	{
 		FatalError("{}{}{}", pre, buffer, post);
 	}
@@ -179,18 +176,18 @@ struct SettingsIniFile : IniLoadFile {
 OutputStore _stored_output; ///< Temporary storage of the output, until all processing is done.
 OutputStore _post_amble_output; ///< Similar to _stored_output, but for the post amble.
 
-static const char *PREAMBLE_GROUP_NAME  = "pre-amble"; ///< Name of the group containing the pre amble.
+static const char *PREAMBLE_GROUP_NAME = "pre-amble"; ///< Name of the group containing the pre amble.
 static const char *POSTAMBLE_GROUP_NAME = "post-amble"; ///< Name of the group containing the post amble.
 static const char *TEMPLATES_GROUP_NAME = "templates"; ///< Name of the group containing the templates.
 static const char *VALIDATION_GROUP_NAME = "validation"; ///< Name of the group containing the validation statements.
-static const char *DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group containing default values for the template variables.
+static const char *DEFAULTS_GROUP_NAME = "defaults"; ///< Name of the group containing default values for the template variables.
 
 /**
  * Dump a #IGT_SEQUENCE group into #_stored_output.
  * @param ifile      Loaded INI data.
  * @param group_name Name of the group to copy.
  */
-static void DumpGroup(const IniLoadFile &ifile, const char * const group_name)
+static void DumpGroup(const IniLoadFile &ifile, const char *const group_name)
 {
 	const IniGroup *grp = ifile.GetGroup(group_name);
 	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
@@ -375,11 +372,11 @@ static bool CompareFiles(const char *n1, const char *n2)
 
 /** Options of settingsgen. */
 static const OptionData _opts[] = {
-	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = 'h', .longname = "--help" },
-	{ .type = ODF_NO_VALUE, .id = 'h', .shortname = '?' },
-	{ .type = ODF_HAS_VALUE, .id = 'o', .shortname = 'o', .longname = "--output" },
-	{ .type = ODF_HAS_VALUE, .id = 'b', .shortname = 'b', .longname = "--before" },
-	{ .type = ODF_HAS_VALUE, .id = 'a', .shortname = 'a', .longname = "--after" },
+	{.type = ODF_NO_VALUE, .id = 'h', .shortname = 'h', .longname = "--help"},
+	{.type = ODF_NO_VALUE, .id = 'h', .shortname = '?'},
+	{.type = ODF_HAS_VALUE, .id = 'o', .shortname = 'o', .longname = "--output"},
+	{.type = ODF_HAS_VALUE, .id = 'b', .shortname = 'b', .longname = "--before"},
+	{.type = ODF_HAS_VALUE, .id = 'a', .shortname = 'a', .longname = "--after"},
 };
 
 /**
@@ -471,7 +468,7 @@ int CDECL main(int argc, char *argv[])
 		_post_amble_output.Write(stdout);
 		AppendFile(after_file, stdout);
 	} else {
-		static const char * const tmp_output = "tmp2.xxx";
+		static const char *const tmp_output = "tmp2.xxx";
 
 		auto fp = FileHandle::Open(tmp_output, "w");
 		if (!fp.has_value()) {

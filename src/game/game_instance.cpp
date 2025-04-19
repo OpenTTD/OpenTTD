@@ -8,18 +8,18 @@
 /** @file game_instance.cpp Implementation of GameInstance. */
 
 #include "../stdafx.h"
+
+#include "game_instance.hpp"
+
 #include "../error.h"
-
-#include "../script/squirrel_class.hpp"
-
-#include "../script/script_storage.hpp"
 #include "../script/script_cmd.h"
 #include "../script/script_gui.h"
+#include "../script/script_storage.hpp"
+#include "../script/squirrel_class.hpp"
+#include "game.hpp"
 #include "game_config.hpp"
 #include "game_info.hpp"
-#include "game_instance.hpp"
 #include "game_text.hpp"
-#include "game.hpp"
 
 #include "table/strings.h"
 
@@ -28,10 +28,7 @@
 
 #include "../safeguards.h"
 
-
-GameInstance::GameInstance() :
-	ScriptInstance("GS")
-{}
+GameInstance::GameInstance() : ScriptInstance("GS") {}
 
 void GameInstance::Initialize(GameInfo *info)
 {

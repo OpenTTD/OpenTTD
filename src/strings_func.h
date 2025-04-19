@@ -10,11 +10,11 @@
 #ifndef STRINGS_FUNC_H
 #define STRINGS_FUNC_H
 
-#include "strings_type.h"
-#include "string_type.h"
-#include "gfx_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/convertible_through_base.hpp"
+#include "gfx_type.h"
+#include "string_type.h"
+#include "strings_type.h"
 #include "vehicle_type.h"
 
 /**
@@ -106,7 +106,7 @@ std::string_view GetListSeparator();
  * @return The constructed StringParameters.
  */
 template <typename... Args>
-auto MakeParameters(Args &&... args)
+auto MakeParameters(Args &&...args)
 {
 	return std::array<StringParameter, sizeof...(args)>({std::forward<StringParameter>(args)...});
 }
@@ -118,7 +118,7 @@ auto MakeParameters(Args &&... args)
  * @return The parsed string.
  */
 template <typename... Args>
-std::string GetString(StringID string, Args &&... args)
+std::string GetString(StringID string, Args &&...args)
 {
 	auto params = MakeParameters(std::forward<Args &&>(args)...);
 	return GetStringWithArgs(string, params);
@@ -146,9 +146,9 @@ static inline EncodedString GetEncodedStringIfValid(StringID str)
  * @return The encoded string.
  */
 template <typename... Args>
-EncodedString GetEncodedString(StringID string, const Args&... args)
+EncodedString GetEncodedString(StringID string, const Args &...args)
 {
-	auto params = MakeParameters(std::forward<const Args&>(args)...);
+	auto params = MakeParameters(std::forward<const Args &>(args)...);
 	return GetEncodedStringWithArgs(string, params);
 }
 

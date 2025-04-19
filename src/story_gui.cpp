@@ -8,35 +8,35 @@
 /** @file story_gui.cpp GUI for stories. */
 
 #include "stdafx.h"
-#include "window_gui.h"
-#include "strings_func.h"
-#include "gui.h"
-#include "story_base.h"
+
 #include "core/geometry_func.hpp"
-#include "company_func.h"
 #include "command_func.h"
-#include "dropdown_type.h"
-#include "dropdown_func.h"
-#include "sortlist_type.h"
-#include "goal_base.h"
-#include "viewport_func.h"
-#include "window_func.h"
 #include "company_base.h"
+#include "company_func.h"
+#include "dropdown_func.h"
+#include "dropdown_type.h"
+#include "goal_base.h"
+#include "gui.h"
+#include "sortlist_type.h"
+#include "story_base.h"
+#include "story_cmd.h"
+#include "strings_func.h"
 #include "tilehighlight_func.h"
 #include "vehicle_base.h"
-#include "story_cmd.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
 
 #include "widgets/story_widget.h"
-
-#include "table/strings.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
 static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor);
 
-typedef GUIList<const StoryPage*> GUIStoryPageList;
-typedef GUIList<const StoryPageElement*> GUIStoryPageElementList;
+typedef GUIList<const StoryPage *> GUIStoryPageList;
+typedef GUIList<const StoryPageElement *> GUIStoryPageElementList;
 
 struct StoryBookWindow : Window {
 protected:
@@ -44,6 +44,7 @@ protected:
 		const StoryPageElement *pe;
 		Rect bounds;
 	};
+
 	typedef std::vector<LayoutCacheElement> LayoutCache;
 
 	enum class ElementFloat : uint8_t {
@@ -62,8 +63,8 @@ protected:
 
 	StoryPageElementID active_button_id{}; ///< Which button element the player is currently using
 
-	static const std::initializer_list<GUIStoryPageList::SortFunction * const> page_sorter_funcs;
-	static const std::initializer_list<GUIStoryPageElementList::SortFunction * const> page_element_sorter_funcs;
+	static const std::initializer_list<GUIStoryPageList::SortFunction *const> page_sorter_funcs;
+	static const std::initializer_list<GUIStoryPageElementList::SortFunction *const> page_element_sorter_funcs;
 
 	/** (Re)Build story page list. */
 	void BuildStoryPageList()
@@ -84,7 +85,7 @@ protected:
 	}
 
 	/** Sort story pages by order value. */
-	static bool PageOrderSorter(const StoryPage * const &a, const StoryPage * const &b)
+	static bool PageOrderSorter(const StoryPage *const &a, const StoryPage *const &b)
 	{
 		return a->sort_value < b->sort_value;
 	}
@@ -112,7 +113,7 @@ protected:
 	}
 
 	/** Sort story page elements by order value. */
-	static bool PageElementOrderSorter(const StoryPageElement * const &a, const StoryPageElement * const &b)
+	static bool PageElementOrderSorter(const StoryPageElement *const &a, const StoryPageElement *const &b)
 	{
 		return a->sort_value < b->sort_value;
 	}
@@ -299,7 +300,7 @@ protected:
 	{
 		switch (pe.type) {
 			case SPET_GOAL: {
-				Goal *g = Goal::Get((GoalID) pe.referenced_id);
+				Goal *g = Goal::Get((GoalID)pe.referenced_id);
 				if (g == nullptr) return SPR_IMG_GOAL_BROKEN_REF;
 				return g->completed ? SPR_IMG_GOAL_COMPLETED : SPR_IMG_GOAL;
 			}
@@ -352,7 +353,7 @@ protected:
 			case SPET_BUTTON_PUSH:
 			case SPET_BUTTON_TILE:
 			case SPET_BUTTON_VEHICLE: {
-				StoryPageButtonFlags flags = StoryPageButtonData{ pe.referenced_id }.GetFlags();
+				StoryPageButtonFlags flags = StoryPageButtonData{pe.referenced_id}.GetFlags();
 				if (flags & SPBF_FLOAT_LEFT) return ElementFloat::Left;
 				if (flags & SPBF_FLOAT_RIGHT) return ElementFloat::Right;
 				return ElementFloat::None;
@@ -446,7 +447,7 @@ protected:
 					}
 				}
 				/* Position element in main column */
-				LayoutCacheElement ce{ pe, {} };
+				LayoutCacheElement ce{pe, {}};
 				ce.bounds.left = left_offset;
 				ce.bounds.right = max_width - right_offset;
 				ce.bounds.top = main_y;
@@ -466,7 +467,7 @@ protected:
 				std::vector<size_t> &cur_floats = (fl == ElementFloat::Left) ? left_floats : right_floats;
 				/* Position element */
 				cur_width = std::max(cur_width, this->GetPageElementFloatWidth(*pe));
-				LayoutCacheElement ce{ pe, {} };
+				LayoutCacheElement ce{pe, {}};
 				ce.bounds.left = (fl == ElementFloat::Left) ? 0 : (max_width - cur_width);
 				ce.bounds.right = (fl == ElementFloat::Left) ? cur_width : max_width;
 				ce.bounds.top = cur_y;
@@ -494,7 +495,9 @@ protected:
 		this->EnsureStoryPageElementLayout();
 
 		/* The largest bottom coordinate of any element is the height of the content */
-		int32_t max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](int32_t max_y, const LayoutCacheElement &ce) -> int32_t { return std::max<int32_t>(max_y, ce.bounds.bottom); });
+		int32_t max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](int32_t max_y, const LayoutCacheElement &ce) -> int32_t {
+			return std::max<int32_t>(max_y, ce.bounds.bottom);
+		});
 
 		return max_y;
 	}
@@ -561,7 +564,7 @@ protected:
 					ResetObjectToPlace();
 					this->active_button_id = StoryPageElementID::Invalid();
 				} else {
-					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
+					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{pe.referenced_id}.GetCursor());
 					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_RECT, this);
 					this->active_button_id = pe.index;
 				}
@@ -573,7 +576,7 @@ protected:
 					ResetObjectToPlace();
 					this->active_button_id = StoryPageElementID::Invalid();
 				} else {
-					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
+					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{pe.referenced_id}.GetCursor());
 					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_VEHICLE, this);
 					this->active_button_id = pe.index;
 				}
@@ -699,8 +702,8 @@ public:
 		y_offset += line_height;
 
 		/* Title */
-		y_offset = DrawStringMultiLine(0, fr.right, y_offset, fr.bottom,
-			GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), TC_BLACK, SA_TOP | SA_HOR_CENTER);
+		y_offset = DrawStringMultiLine(
+			0, fr.right, y_offset, fr.bottom, GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), TC_BLACK, SA_TOP | SA_HOR_CENTER);
 
 		/* Page elements */
 		this->EnsureStoryPageElementLayout();
@@ -712,20 +715,19 @@ public:
 
 			switch (ce.pe->type) {
 				case SPET_TEXT:
-					y_offset = DrawStringMultiLine(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos,
-						ce.pe->text.GetDecodedString(), TC_BLACK, SA_TOP | SA_LEFT);
+					y_offset =
+						DrawStringMultiLine(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos, ce.pe->text.GetDecodedString(), TC_BLACK, SA_TOP | SA_LEFT);
 					break;
 
 				case SPET_GOAL: {
-					Goal *g = Goal::Get((GoalID) ce.pe->referenced_id);
-					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe),
-						g == nullptr ? GetString(STR_STORY_BOOK_INVALID_GOAL_REF) : g->text.GetDecodedString());
+					Goal *g = Goal::Get((GoalID)ce.pe->referenced_id);
+					DrawActionElement(
+						y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe), g == nullptr ? GetString(STR_STORY_BOOK_INVALID_GOAL_REF) : g->text.GetDecodedString());
 					break;
 				}
 
 				case SPET_LOCATION:
-					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe),
-						ce.pe->text.GetDecodedString());
+					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe), ce.pe->text.GetDecodedString());
 					break;
 
 				case SPET_BUTTON_PUSH:
@@ -733,7 +735,7 @@ public:
 				case SPET_BUTTON_VEHICLE: {
 					const int tmargin = WidgetDimensions::scaled.bevel.top + WidgetDimensions::scaled.frametext.top;
 					const FrameFlags frame = this->active_button_id == ce.pe->index ? FrameFlag::Lowered : FrameFlags{};
-					const Colours bgcolour = StoryPageButtonData{ ce.pe->referenced_id }.GetColour();
+					const Colours bgcolour = StoryPageButtonData{ce.pe->referenced_id}.GetColour();
 
 					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);
 
@@ -742,7 +744,8 @@ public:
 					break;
 				}
 
-				default: NOT_REACHED();
+				default:
+					NOT_REACHED();
 			}
 		}
 	}
@@ -757,7 +760,6 @@ public:
 
 		switch (widget) {
 			case WID_SB_SEL_PAGE: {
-
 				/* Get max title width. */
 				for (size_t i = 0; i < this->story_pages.size(); i++) {
 					const StoryPage *s = this->story_pages[i];
@@ -781,7 +783,6 @@ public:
 				break;
 			}
 		}
-
 	}
 
 	void OnResize() override
@@ -913,7 +914,7 @@ public:
 		}
 
 		/* Check that the vehicle matches the requested type */
-		StoryPageButtonData data{ pe->referenced_id };
+		StoryPageButtonData data{pe->referenced_id};
 		VehicleType wanted_vehtype = data.GetVehicleType();
 		if (wanted_vehtype != VEH_INVALID && wanted_vehtype != v->type) return false;
 
@@ -929,11 +930,11 @@ public:
 	}
 };
 
-const std::initializer_list<GUIStoryPageList::SortFunction * const> StoryBookWindow::page_sorter_funcs = {
+const std::initializer_list<GUIStoryPageList::SortFunction *const> StoryBookWindow::page_sorter_funcs = {
 	&PageOrderSorter,
 };
 
-const std::initializer_list<GUIStoryPageElementList::SortFunction * const> StoryBookWindow::page_element_sorter_funcs = {
+const std::initializer_list<GUIStoryPageElementList::SortFunction *const> StoryBookWindow::page_element_sorter_funcs = {
 	&PageElementOrderSorter,
 };
 
@@ -960,79 +961,125 @@ static constexpr NWidgetPart _nested_story_book_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _story_book_desc(
-	WDP_AUTO, "view_story", 400, 300,
-	WC_STORY_BOOK, WC_NONE,
-	{},
-	_nested_story_book_widgets
-);
+static WindowDesc _story_book_desc(WDP_AUTO, "view_story", 400, 300, WC_STORY_BOOK, WC_NONE, {}, _nested_story_book_widgets);
 
-static WindowDesc _story_book_gs_desc(
-	WDP_CENTER, "view_story_gs", 400, 300,
-	WC_STORY_BOOK, WC_NONE,
-	{},
-	_nested_story_book_widgets
-);
+static WindowDesc _story_book_gs_desc(WDP_CENTER, "view_story_gs", 400, 300, WC_STORY_BOOK, WC_NONE, {}, _nested_story_book_widgets);
 
 static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
 {
 	switch (cursor) {
-		case SPBC_MOUSE:          return SPR_CURSOR_MOUSE;
-		case SPBC_ZZZ:            return SPR_CURSOR_ZZZ;
-		case SPBC_BUOY:           return SPR_CURSOR_BUOY;
-		case SPBC_QUERY:          return SPR_CURSOR_QUERY;
-		case SPBC_HQ:             return SPR_CURSOR_HQ;
-		case SPBC_SHIP_DEPOT:     return SPR_CURSOR_SHIP_DEPOT;
-		case SPBC_SIGN:           return SPR_CURSOR_SIGN;
-		case SPBC_TREE:           return SPR_CURSOR_TREE;
-		case SPBC_BUY_LAND:       return SPR_CURSOR_BUY_LAND;
-		case SPBC_LEVEL_LAND:     return SPR_CURSOR_LEVEL_LAND;
-		case SPBC_TOWN:           return SPR_CURSOR_TOWN;
-		case SPBC_INDUSTRY:       return SPR_CURSOR_INDUSTRY;
-		case SPBC_ROCKY_AREA:     return SPR_CURSOR_ROCKY_AREA;
-		case SPBC_DESERT:         return SPR_CURSOR_DESERT;
-		case SPBC_TRANSMITTER:    return SPR_CURSOR_TRANSMITTER;
-		case SPBC_AIRPORT:        return SPR_CURSOR_AIRPORT;
-		case SPBC_DOCK:           return SPR_CURSOR_DOCK;
-		case SPBC_CANAL:          return SPR_CURSOR_CANAL;
-		case SPBC_LOCK:           return SPR_CURSOR_LOCK;
-		case SPBC_RIVER:          return SPR_CURSOR_RIVER;
-		case SPBC_AQUEDUCT:       return SPR_CURSOR_AQUEDUCT;
-		case SPBC_BRIDGE:         return SPR_CURSOR_BRIDGE;
-		case SPBC_RAIL_STATION:   return SPR_CURSOR_RAIL_STATION;
-		case SPBC_TUNNEL_RAIL:    return SPR_CURSOR_TUNNEL_RAIL;
-		case SPBC_TUNNEL_ELRAIL:  return SPR_CURSOR_TUNNEL_ELRAIL;
-		case SPBC_TUNNEL_MONO:    return SPR_CURSOR_TUNNEL_MONO;
-		case SPBC_TUNNEL_MAGLEV:  return SPR_CURSOR_TUNNEL_MAGLEV;
-		case SPBC_AUTORAIL:       return SPR_CURSOR_AUTORAIL;
-		case SPBC_AUTOELRAIL:     return SPR_CURSOR_AUTOELRAIL;
-		case SPBC_AUTOMONO:       return SPR_CURSOR_AUTOMONO;
-		case SPBC_AUTOMAGLEV:     return SPR_CURSOR_AUTOMAGLEV;
-		case SPBC_WAYPOINT:       return SPR_CURSOR_WAYPOINT;
-		case SPBC_RAIL_DEPOT:     return SPR_CURSOR_RAIL_DEPOT;
-		case SPBC_ELRAIL_DEPOT:   return SPR_CURSOR_ELRAIL_DEPOT;
-		case SPBC_MONO_DEPOT:     return SPR_CURSOR_MONO_DEPOT;
-		case SPBC_MAGLEV_DEPOT:   return SPR_CURSOR_MAGLEV_DEPOT;
-		case SPBC_CONVERT_RAIL:   return SPR_CURSOR_CONVERT_RAIL;
-		case SPBC_CONVERT_ELRAIL: return SPR_CURSOR_CONVERT_ELRAIL;
-		case SPBC_CONVERT_MONO:   return SPR_CURSOR_CONVERT_MONO;
-		case SPBC_CONVERT_MAGLEV: return SPR_CURSOR_CONVERT_MAGLEV;
-		case SPBC_AUTOROAD:       return SPR_CURSOR_AUTOROAD;
-		case SPBC_AUTOTRAM:       return SPR_CURSOR_AUTOTRAM;
-		case SPBC_ROAD_DEPOT:     return SPR_CURSOR_ROAD_DEPOT;
-		case SPBC_BUS_STATION:    return SPR_CURSOR_BUS_STATION;
-		case SPBC_TRUCK_STATION:  return SPR_CURSOR_TRUCK_STATION;
-		case SPBC_ROAD_TUNNEL:    return SPR_CURSOR_ROAD_TUNNEL;
-		case SPBC_CLONE_TRAIN:    return SPR_CURSOR_CLONE_TRAIN;
-		case SPBC_CLONE_ROADVEH:  return SPR_CURSOR_CLONE_ROADVEH;
-		case SPBC_CLONE_SHIP:     return SPR_CURSOR_CLONE_SHIP;
-		case SPBC_CLONE_AIRPLANE: return SPR_CURSOR_CLONE_AIRPLANE;
-		case SPBC_DEMOLISH:       return ANIMCURSOR_DEMOLISH;
-		case SPBC_LOWERLAND:      return ANIMCURSOR_LOWERLAND;
-		case SPBC_RAISELAND:      return ANIMCURSOR_RAISELAND;
-		case SPBC_PICKSTATION:    return ANIMCURSOR_PICKSTATION;
-		case SPBC_BUILDSIGNALS:   return ANIMCURSOR_BUILDSIGNALS;
-		default: return SPR_CURSOR_QUERY;
+		case SPBC_MOUSE:
+			return SPR_CURSOR_MOUSE;
+		case SPBC_ZZZ:
+			return SPR_CURSOR_ZZZ;
+		case SPBC_BUOY:
+			return SPR_CURSOR_BUOY;
+		case SPBC_QUERY:
+			return SPR_CURSOR_QUERY;
+		case SPBC_HQ:
+			return SPR_CURSOR_HQ;
+		case SPBC_SHIP_DEPOT:
+			return SPR_CURSOR_SHIP_DEPOT;
+		case SPBC_SIGN:
+			return SPR_CURSOR_SIGN;
+		case SPBC_TREE:
+			return SPR_CURSOR_TREE;
+		case SPBC_BUY_LAND:
+			return SPR_CURSOR_BUY_LAND;
+		case SPBC_LEVEL_LAND:
+			return SPR_CURSOR_LEVEL_LAND;
+		case SPBC_TOWN:
+			return SPR_CURSOR_TOWN;
+		case SPBC_INDUSTRY:
+			return SPR_CURSOR_INDUSTRY;
+		case SPBC_ROCKY_AREA:
+			return SPR_CURSOR_ROCKY_AREA;
+		case SPBC_DESERT:
+			return SPR_CURSOR_DESERT;
+		case SPBC_TRANSMITTER:
+			return SPR_CURSOR_TRANSMITTER;
+		case SPBC_AIRPORT:
+			return SPR_CURSOR_AIRPORT;
+		case SPBC_DOCK:
+			return SPR_CURSOR_DOCK;
+		case SPBC_CANAL:
+			return SPR_CURSOR_CANAL;
+		case SPBC_LOCK:
+			return SPR_CURSOR_LOCK;
+		case SPBC_RIVER:
+			return SPR_CURSOR_RIVER;
+		case SPBC_AQUEDUCT:
+			return SPR_CURSOR_AQUEDUCT;
+		case SPBC_BRIDGE:
+			return SPR_CURSOR_BRIDGE;
+		case SPBC_RAIL_STATION:
+			return SPR_CURSOR_RAIL_STATION;
+		case SPBC_TUNNEL_RAIL:
+			return SPR_CURSOR_TUNNEL_RAIL;
+		case SPBC_TUNNEL_ELRAIL:
+			return SPR_CURSOR_TUNNEL_ELRAIL;
+		case SPBC_TUNNEL_MONO:
+			return SPR_CURSOR_TUNNEL_MONO;
+		case SPBC_TUNNEL_MAGLEV:
+			return SPR_CURSOR_TUNNEL_MAGLEV;
+		case SPBC_AUTORAIL:
+			return SPR_CURSOR_AUTORAIL;
+		case SPBC_AUTOELRAIL:
+			return SPR_CURSOR_AUTOELRAIL;
+		case SPBC_AUTOMONO:
+			return SPR_CURSOR_AUTOMONO;
+		case SPBC_AUTOMAGLEV:
+			return SPR_CURSOR_AUTOMAGLEV;
+		case SPBC_WAYPOINT:
+			return SPR_CURSOR_WAYPOINT;
+		case SPBC_RAIL_DEPOT:
+			return SPR_CURSOR_RAIL_DEPOT;
+		case SPBC_ELRAIL_DEPOT:
+			return SPR_CURSOR_ELRAIL_DEPOT;
+		case SPBC_MONO_DEPOT:
+			return SPR_CURSOR_MONO_DEPOT;
+		case SPBC_MAGLEV_DEPOT:
+			return SPR_CURSOR_MAGLEV_DEPOT;
+		case SPBC_CONVERT_RAIL:
+			return SPR_CURSOR_CONVERT_RAIL;
+		case SPBC_CONVERT_ELRAIL:
+			return SPR_CURSOR_CONVERT_ELRAIL;
+		case SPBC_CONVERT_MONO:
+			return SPR_CURSOR_CONVERT_MONO;
+		case SPBC_CONVERT_MAGLEV:
+			return SPR_CURSOR_CONVERT_MAGLEV;
+		case SPBC_AUTOROAD:
+			return SPR_CURSOR_AUTOROAD;
+		case SPBC_AUTOTRAM:
+			return SPR_CURSOR_AUTOTRAM;
+		case SPBC_ROAD_DEPOT:
+			return SPR_CURSOR_ROAD_DEPOT;
+		case SPBC_BUS_STATION:
+			return SPR_CURSOR_BUS_STATION;
+		case SPBC_TRUCK_STATION:
+			return SPR_CURSOR_TRUCK_STATION;
+		case SPBC_ROAD_TUNNEL:
+			return SPR_CURSOR_ROAD_TUNNEL;
+		case SPBC_CLONE_TRAIN:
+			return SPR_CURSOR_CLONE_TRAIN;
+		case SPBC_CLONE_ROADVEH:
+			return SPR_CURSOR_CLONE_ROADVEH;
+		case SPBC_CLONE_SHIP:
+			return SPR_CURSOR_CLONE_SHIP;
+		case SPBC_CLONE_AIRPLANE:
+			return SPR_CURSOR_CLONE_AIRPLANE;
+		case SPBC_DEMOLISH:
+			return ANIMCURSOR_DEMOLISH;
+		case SPBC_LOWERLAND:
+			return ANIMCURSOR_LOWERLAND;
+		case SPBC_RAISELAND:
+			return ANIMCURSOR_RAISELAND;
+		case SPBC_PICKSTATION:
+			return ANIMCURSOR_PICKSTATION;
+		case SPBC_BUILDSIGNALS:
+			return ANIMCURSOR_BUILDSIGNALS;
+		default:
+			return SPR_CURSOR_QUERY;
 	}
 }
 

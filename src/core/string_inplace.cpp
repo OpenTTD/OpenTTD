@@ -10,7 +10,9 @@
  */
 
 #include "../stdafx.h"
+
 #include "string_inplace.hpp"
+
 #include "../safeguards.h"
 
 /**
@@ -45,17 +47,11 @@ void InPlaceBuilder::PutBuffer(const char *str, size_type len)
  * @param buffer Data to consume and replace.
  * @note The lifetime of the buffer must exceed the lifetime of both the Consumer and the Builder.
  */
-InPlaceReplacement::InPlaceReplacement(std::span<char> buffer)
-	: consumer(buffer), builder(buffer, consumer)
-{
-}
+InPlaceReplacement::InPlaceReplacement(std::span<char> buffer) : consumer(buffer), builder(buffer, consumer) {}
 
-InPlaceReplacement::InPlaceReplacement(const InPlaceReplacement &src)
-	: consumer(src.consumer), builder(src.builder, consumer)
-{
-}
+InPlaceReplacement::InPlaceReplacement(const InPlaceReplacement &src) : consumer(src.consumer), builder(src.builder, consumer) {}
 
-InPlaceReplacement& InPlaceReplacement::operator=(const InPlaceReplacement &src)
+InPlaceReplacement &InPlaceReplacement::operator=(const InPlaceReplacement &src)
 {
 	this->consumer = src.consumer;
 	this->builder.AssignBuffer(src.builder);

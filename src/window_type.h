@@ -21,24 +21,24 @@ using WidgetID = int;
 
 /** %Window numbers. */
 enum WindowNumberEnum : uint8_t {
-	WN_GAME_OPTIONS_AI = 0,          ///< AI settings.
-	WN_GAME_OPTIONS_GS,              ///< GS settings.
-	WN_GAME_OPTIONS_ABOUT,           ///< About window.
-	WN_GAME_OPTIONS_NEWGRF_STATE,    ///< NewGRF settings.
-	WN_GAME_OPTIONS_GAME_OPTIONS,    ///< Game options.
-	WN_GAME_OPTIONS_GAME_SETTINGS,   ///< Game settings.
+	WN_GAME_OPTIONS_AI = 0, ///< AI settings.
+	WN_GAME_OPTIONS_GS, ///< GS settings.
+	WN_GAME_OPTIONS_ABOUT, ///< About window.
+	WN_GAME_OPTIONS_NEWGRF_STATE, ///< NewGRF settings.
+	WN_GAME_OPTIONS_GAME_OPTIONS, ///< Game options.
+	WN_GAME_OPTIONS_GAME_SETTINGS, ///< Game settings.
 
-	WN_QUERY_STRING = 0,  ///< Query string.
+	WN_QUERY_STRING = 0, ///< Query string.
 	WN_QUERY_STRING_SIGN, ///< Query string for signs.
 
-	WN_CONFIRM_POPUP_QUERY = 0,       ///< Query popup confirm.
+	WN_CONFIRM_POPUP_QUERY = 0, ///< Query popup confirm.
 	WN_CONFIRM_POPUP_QUERY_BOOTSTRAP, ///< Query popup confirm for bootstrap.
 
-	WN_NETWORK_WINDOW_GAME = 0,     ///< Network game window.
+	WN_NETWORK_WINDOW_GAME = 0, ///< Network game window.
 	WN_NETWORK_WINDOW_CONTENT_LIST, ///< Network content list.
-	WN_NETWORK_WINDOW_START,        ///< Network start server.
+	WN_NETWORK_WINDOW_START, ///< Network start server.
 
-	WN_NETWORK_STATUS_WINDOW_JOIN = 0,         ///< Network join status.
+	WN_NETWORK_STATUS_WINDOW_JOIN = 0, ///< Network join status.
 	WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD, ///< Network content download status.
 };
 
@@ -138,7 +138,6 @@ enum WindowClass : uint16_t {
 	 */
 	WC_GOAL_QUESTION,
 
-
 	/**
 	 * Saveload window; %Window numbers:
 	 *   - 0 = #SaveLoadWidgets
@@ -169,7 +168,6 @@ enum WindowClass : uint16_t {
 	 */
 	WC_SET_DATE,
 
-
 	/**
 	 * Script settings; %Window numbers:
 	 *   - 0 = #ScriptSettingsWidgets
@@ -187,7 +185,6 @@ enum WindowClass : uint16_t {
 	 *   - 0 = #TextfileWidgets
 	 */
 	WC_TEXTFILE,
-
 
 	/**
 	 * Town authority; %Window numbers:
@@ -327,7 +324,6 @@ enum WindowClass : uint16_t {
 	 */
 	WC_AIRCRAFT_LIST,
 
-
 	/**
 	 * Town view; %Window numbers:
 	 *   - #TownID = #TownViewWidgets
@@ -369,7 +365,6 @@ enum WindowClass : uint16_t {
 	 *   - #CompanyID = #CompanyWidgets
 	 */
 	WC_COMPANY,
-
 
 	/**
 	 * Build object; %Window numbers:
@@ -442,7 +437,6 @@ enum WindowClass : uint16_t {
 	 */
 	WC_BUILD_INDUSTRY,
 
-
 	/**
 	 * Select game window; %Window numbers:
 	 *   - 0 = #SelectGameIntroWidgets
@@ -469,7 +463,6 @@ enum WindowClass : uint16_t {
 	 *   - 1 = #ScanProgressWidgets
 	 */
 	WC_MODAL_PROGRESS,
-
 
 	/**
 	 * Network window; %Window numbers:
@@ -588,7 +581,6 @@ enum WindowClass : uint16_t {
 	 */
 	WC_COMPANY_INFRASTRUCTURE,
 
-
 	/**
 	 * Buyout company (merger); %Window numbers:
 	 *   - #CompanyID = #BuyCompanyWidgets
@@ -600,7 +592,6 @@ enum WindowClass : uint16_t {
 	 *   - #EngineID = #EnginePreviewWidgets
 	 */
 	WC_ENGINE_PREVIEW,
-
 
 	/**
 	 * Music window; %Window numbers:
@@ -643,7 +634,6 @@ enum WindowClass : uint16_t {
 	 */
 	WC_EXTRA_VIEWPORT,
 
-
 	/**
 	 * Console; %Window numbers:
 	 *   - 0 = #ConsoleWidgets
@@ -667,7 +657,6 @@ enum WindowClass : uint16_t {
 	 *   - 0 = #HighscoreWidgets
 	 */
 	WC_ENDSCREEN,
-
 
 	/**
 	 * Script debug window; %Window numbers:
@@ -729,10 +718,10 @@ enum WindowClass : uint16_t {
 /** Data value for #Window::OnInvalidateData() of windows with class #WC_GAME_OPTIONS. */
 enum GameOptionsInvalidationData : uint8_t {
 	GOID_DEFAULT = 0,
-	GOID_NEWGRF_RESCANNED,       ///< NewGRFs were just rescanned.
-	GOID_NEWGRF_CURRENT_LOADED,  ///< The current list of active NewGRF has been loaded.
-	GOID_NEWGRF_LIST_EDITED,     ///< List of active NewGRFs is being edited.
-	GOID_NEWGRF_CHANGES_MADE,    ///< Changes have been made to a given NewGRF either through the palette or its parameters.
+	GOID_NEWGRF_RESCANNED, ///< NewGRFs were just rescanned.
+	GOID_NEWGRF_CURRENT_LOADED, ///< The current list of active NewGRF has been loaded.
+	GOID_NEWGRF_LIST_EDITED, ///< List of active NewGRFs is being edited.
+	GOID_NEWGRF_CHANGES_MADE, ///< Changes have been made to a given NewGRF either through the palette or its parameters.
 	GOID_NEWGRF_CHANGES_APPLIED, ///< The active NewGRF list changes have been applied.
 };
 
@@ -752,25 +741,42 @@ struct Window;
 struct WindowNumber {
 private:
 	int32_t value = 0;
+
 public:
 	WindowNumber() = default;
+
 	WindowNumber(int32_t value) : value(value) {}
+
 	WindowNumber(ConvertibleThroughBase auto value) : value(value.base()) {}
 
 	/* Automatically convert to int32_t. */
-	operator int32_t() const { return value; }
+	operator int32_t() const
+	{
+		return value;
+	}
 
 	/* Automatically convert to any other type that might be requested. */
-	template <typename T> requires (std::is_enum_v<T> || std::is_class_v<T>)
-	operator T() const { return static_cast<T>(value); };
+	template <typename T>
+	requires(std::is_enum_v<T> || std::is_class_v<T>)
+	operator T() const
+	{
+		return static_cast<T>(value);
+	};
 
-	constexpr bool operator==(const std::integral auto &rhs) const { return this->value == static_cast<int32_t>(rhs); }
-	constexpr bool operator==(const ConvertibleThroughBase auto &rhs) const { return this->value == static_cast<int32_t>(rhs.base()); }
+	constexpr bool operator==(const std::integral auto &rhs) const
+	{
+		return this->value == static_cast<int32_t>(rhs);
+	}
+
+	constexpr bool operator==(const ConvertibleThroughBase auto &rhs) const
+	{
+		return this->value == static_cast<int32_t>(rhs.base());
+	}
 };
 
 /** State of handling an event. */
 enum EventState : uint8_t {
-	ES_HANDLED,     ///< The passed event is handled.
+	ES_HANDLED, ///< The passed event is handled.
 	ES_NOT_HANDLED, ///< The passed event is not handled.
 };
 

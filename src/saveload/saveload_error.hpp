@@ -11,6 +11,7 @@
 #define SAVELOAD_ERROR_HPP
 
 #include "../3rdparty/fmt/format.h"
+
 #include "../strings_type.h"
 
 [[noreturn]] void SlError(StringID string, const std::string &extra_msg = {});
@@ -24,8 +25,8 @@
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-template <typename ... Args>
-[[noreturn]] inline void SlErrorCorruptFmt(const fmt::format_string<Args...> format, Args&&... fmt_args)
+template <typename... Args>
+[[noreturn]] inline void SlErrorCorruptFmt(const fmt::format_string<Args...> format, Args &&...fmt_args)
 {
 	SlErrorCorrupt(fmt::format(format, std::forward<Args>(fmt_args)...));
 }

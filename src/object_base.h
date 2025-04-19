@@ -13,8 +13,8 @@
 #include "core/pool_type.hpp"
 #include "object_type.h"
 #include "tilearea_type.h"
-#include "town_type.h"
 #include "timer/timer_game_calendar.h"
+#include "town_type.h"
 
 using ObjectPool = Pool<Object, ObjectID, 64>;
 extern ObjectPool _object_pool;
@@ -30,8 +30,9 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 
 	/** Make sure the object isn't zeroed. */
 	Object() {}
-	Object(ObjectType type, Town *town, TileArea location, TimerGameCalendar::Date build_date, uint8_t view) :
-		type(type), town(town), location(location), build_date(build_date), view(view) {}
+
+	Object(ObjectType type, Town *town, TileArea location, TimerGameCalendar::Date build_date, uint8_t view) : type(type), town(town), location(location), build_date(build_date), view(view) {}
+
 	/** Make sure the right destructor is called as well! */
 	~Object() {}
 
@@ -84,8 +85,8 @@ protected:
  * Keeps track of removed objects during execution/testruns of commands.
  */
 struct ClearedObjectArea {
-	TileIndex first_tile;  ///< The first tile being cleared, which then causes the whole object to be cleared.
-	TileArea area;         ///< The area of the object.
+	TileIndex first_tile; ///< The first tile being cleared, which then causes the whole object to be cleared.
+	TileArea area; ///< The area of the object.
 };
 
 ClearedObjectArea *FindClearedObject(TileIndex tile);

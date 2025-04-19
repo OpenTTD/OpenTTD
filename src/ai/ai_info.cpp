@@ -9,12 +9,13 @@
 
 #include "../stdafx.h"
 
-#include "../script/squirrel_class.hpp"
 #include "ai_info.hpp"
-#include "ai_scanner.hpp"
+
 #include "../debug.h"
-#include "../string_func.h"
 #include "../rev.h"
+#include "../script/squirrel_class.hpp"
+#include "../string_func.h"
+#include "ai_scanner.hpp"
 
 #include "../safeguards.h"
 
@@ -27,7 +28,12 @@ static bool CheckAPIVersion(const std::string &api_version)
 	return std::ranges::find(AIInfo::ApiVersions, api_version) != std::end(AIInfo::ApiVersions);
 }
 
-template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIInfo", -1); return 1; }
+template <>
+SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm)
+{
+	sq_pushstring(vm, "AIInfo", -1);
+	return 1;
+}
 
 /* static */ void AIInfo::RegisterAPI(Squirrel *engine)
 {
@@ -111,18 +117,13 @@ template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq
 	return 0;
 }
 
-AIInfo::AIInfo() :
-	min_loadable_version(0),
-	use_as_random(false)
-{
-}
+AIInfo::AIInfo() : min_loadable_version(0), use_as_random(false) {}
 
 bool AIInfo::CanLoadFromVersion(int version) const
 {
 	if (version == -1) return true;
 	return version >= this->min_loadable_version && version <= this->GetVersion();
 }
-
 
 /* static */ void AILibrary::RegisterAPI(Squirrel *engine)
 {

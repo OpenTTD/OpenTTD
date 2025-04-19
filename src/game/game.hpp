@@ -10,9 +10,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "game_scanner.hpp"
-
 #include "../script/api/script_event_types.hpp"
+#include "game_scanner.hpp"
 
 /**
  * Main Game class. Contains all functions needed to start, stop, save and load Game Scripts.
@@ -67,7 +66,10 @@ public:
 	/**
 	 * Get the current GameInfo.
 	 */
-	static class GameInfo *GetInfo() { return Game::info; }
+	static class GameInfo *GetInfo()
+	{
+		return Game::info;
+	}
 
 	static void Rescan();
 	static void ResetConfig();
@@ -93,7 +95,10 @@ public:
 	/**
 	 * Get the current active instance.
 	 */
-	static class GameInstance *GetInstance() { return Game::instance.get(); }
+	static class GameInstance *GetInstance()
+	{
+		return Game::instance.get();
+	}
 
 	/**
 	 * Reset the current active instance.

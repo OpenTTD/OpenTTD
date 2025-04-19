@@ -8,11 +8,12 @@
 /** @file script_info_dummy.cpp Implementation of a dummy Script. */
 
 #include "../stdafx.h"
+
 #include <squirrel.h>
+#include "../3rdparty/fmt/format.h"
 
 #include "../string_func.h"
 #include "../strings_func.h"
-#include "../3rdparty/fmt/format.h"
 
 #include "../safeguards.h"
 

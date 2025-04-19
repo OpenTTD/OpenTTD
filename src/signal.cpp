@@ -8,41 +8,32 @@
 /** @file signal.cpp functions related to rail signals updating */
 
 #include "stdafx.h"
+
+#include "company_base.h"
 #include "debug.h"
+#include "pbs.h"
 #include "station_map.h"
+#include "train.h"
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
 #include "viewport_func.h"
-#include "train.h"
-#include "company_base.h"
-#include "pbs.h"
 
 #include "safeguards.h"
 
-
 /** these are the maximums used for updating signal blocks */
-static const uint SIG_TBU_SIZE    =  64; ///< number of signals entering to block
-static const uint SIG_TBD_SIZE    = 256; ///< number of intersections - open nodes in current block
-static const uint SIG_GLOB_SIZE   = 128; ///< number of open blocks (block can be opened more times until detected)
-static const uint SIG_GLOB_UPDATE =  64; ///< how many items need to be in _globset to force update
+static const uint SIG_TBU_SIZE = 64; ///< number of signals entering to block
+static const uint SIG_TBD_SIZE = 256; ///< number of intersections - open nodes in current block
+static const uint SIG_GLOB_SIZE = 128; ///< number of open blocks (block can be opened more times until detected)
+static const uint SIG_GLOB_UPDATE = 64; ///< how many items need to be in _globset to force update
 
 static_assert(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
 
 /** incidating trackbits with given enterdir */
-static const TrackBits _enterdir_to_trackbits[DIAGDIR_END] = {
-	TRACK_BIT_3WAY_NE,
-	TRACK_BIT_3WAY_SE,
-	TRACK_BIT_3WAY_SW,
-	TRACK_BIT_3WAY_NW
-};
+static const TrackBits _enterdir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
 
 /** incidating trackdirbits with given enterdir */
-static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
-	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S,
-	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_RIGHT_N,
-	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,
-	TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_LEFT_S
-};
+static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {TRACKDIR_BIT_X_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S, TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_RIGHT_N,
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N, TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E | TRACKDIR_BIT_LEFT_S};
 
 /**
  * Set containing 'items' items of 'tile and Tdir'
@@ -52,8 +43,8 @@ static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
 template <typename Tdir, uint items>
 struct SmallSet {
 private:
-	uint n;           // actual number of units
-	bool overflowed;  // did we try to overflow the set?
+	uint n; // actual number of units
+	bool overflowed; // did we try to overflow the set?
 	const char *name; // name, used for debugging purposes...
 
 	/** Element of set */
@@ -64,7 +55,7 @@ private:
 
 public:
 	/** Constructor - just set default values and 'name' */
-	SmallSet(const char *name) : n(0), overflowed(false), name(name) { }
+	SmallSet(const char *name) : n(0), overflowed(false), name(name) {}
 
 	/** Reset variables to default values */
 	void Reset()
@@ -108,7 +99,6 @@ public:
 	{
 		return this->n;
 	}
-
 
 	/**
 	 * Tries to remove first instance of given tile and dir
@@ -183,10 +173,9 @@ public:
 	}
 };
 
-static SmallSet<Trackdir, SIG_TBU_SIZE> _tbuset("_tbuset");         ///< set of signals that will be updated
-static SmallSet<DiagDirection, SIG_TBD_SIZE> _tbdset("_tbdset");    ///< set of open nodes in current signal block
+static SmallSet<Trackdir, SIG_TBU_SIZE> _tbuset("_tbuset"); ///< set of signals that will be updated
+static SmallSet<DiagDirection, SIG_TBD_SIZE> _tbdset("_tbdset"); ///< set of open nodes in current signal block
 static SmallSet<DiagDirection, SIG_GLOB_SIZE> _globset("_globset"); ///< set of places to be updated in following runs
-
 
 /** Check whether there is a train on rail, not in a depot */
 static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
@@ -195,7 +184,6 @@ static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
 
 	return v;
 }
-
 
 /**
  * Perform some operations before adding data into Todo set
@@ -220,7 +208,6 @@ static inline bool CheckAddToTodoSet(TileIndex t1, DiagDirection d1, TileIndex t
 	return !_tbdset.Remove(t2, d2);
 }
 
-
 /**
  * Perform some operations before adding data into Todo set
  * The new and reverse direction is removed from Global set, because we are sure
@@ -240,7 +227,6 @@ static inline bool MaybeAddToTodoSet(TileIndex t1, DiagDirection d1, TileIndex t
 
 	return _tbdset.Add(t1, d1);
 }
-
 
 /** Current signal block state flags */
 enum class SigFlag : uint8_t {
@@ -300,7 +286,7 @@ static SigFlags ExploreSegment(Owner owner)
 				if (tracks == TRACK_BIT_HORZ || tracks == TRACK_BIT_VERT) { // there is exactly one incidating track, no need to check
 					tracks = tracks_masked;
 					/* If no train detected yet, and there is not no train -> there is a train -> set the flag */
-					if (!flags.Test(SigFlag::Train) && EnsureNoTrainOnTrackBits(tile, tracks).Failed()) flags. Set(SigFlag::Train);
+					if (!flags.Test(SigFlag::Train) && EnsureNoTrainOnTrackBits(tile, tracks).Failed()) flags.Set(SigFlag::Train);
 				} else {
 					if (tracks_masked == TRACK_BIT_NONE) continue; // no incidating track
 					if (!flags.Test(SigFlag::Train) && HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum)) flags.Set(SigFlag::Train);
@@ -343,14 +329,14 @@ static SigFlags ExploreSegment(Owner owner)
 
 				for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) { // test all possible exit directions
 					if (dir != enterdir && (tracks & _enterdir_to_trackbits[dir])) { // any track incidating?
-						TileIndex newtile = tile + TileOffsByDiagDir(dir);  // new tile to check
+						TileIndex newtile = tile + TileOffsByDiagDir(dir); // new tile to check
 						DiagDirection newdir = ReverseDiagDir(dir); // direction we are entering from
 						if (!MaybeAddToTodoSet(newtile, newdir, tile, dir)) return flags | SigFlag::Full;
 					}
 				}
 
 				continue; // continue the while() loop
-				}
+			}
 
 			case MP_STATION:
 				if (!HasStationRail(tile)) continue;
@@ -388,8 +374,7 @@ static SigFlags ExploreSegment(Owner owner)
 					enterdir = INVALID_DIAGDIR;
 					exitdir = INVALID_DIAGDIR;
 				}
-				}
-				break;
+			} break;
 
 			default:
 				continue; // continue the while() loop
@@ -400,7 +385,6 @@ static SigFlags ExploreSegment(Owner owner)
 
 	return flags;
 }
-
 
 /**
  * Update signals around segment in _tbuset
@@ -434,8 +418,8 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 			if (sig == SIGTYPE_COMBO && HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
 				/* at least one more exit */
 				if (flags.Test(SigFlag::MultiExit) &&
-						/* no green exit */
-						(!flags.Test(SigFlag::Green) ||
+					/* no green exit */
+					(!flags.Test(SigFlag::Green) ||
 						/* only one green exit, and it is this one - so all other exits are red */
 						(!flags.Test(SigFlag::MultiGreen) && GetSignalStateByTrackdir(tile, ReverseTrackdir(trackdir)) == SIGNAL_STATE_GREEN))) {
 					newstate = SIGNAL_STATE_RED;
@@ -456,9 +440,7 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 			MarkTileDirtyByTile(tile);
 		}
 	}
-
 }
-
 
 /** Reset all sets after one set overflowed */
 static inline void ResetSets()
@@ -467,7 +449,6 @@ static inline void ResetSets()
 	_tbdset.Reset();
 	_globset.Reset();
 }
-
 
 /**
  * Updates blocks in _globset buffer
@@ -480,7 +461,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 {
 	assert(Company::IsValidID(owner));
 
-	bool first = true;  // first block?
+	bool first = true; // first block?
 	SigSegState state = SIGSEG_FREE; // value to return
 
 	TileIndex tile = INVALID_TILE; // Stop GCC from complaining about a possibly uninitialized variable (issue #8280).
@@ -500,7 +481,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 				/* 'optimization assert' - do not try to update signals when it is not needed */
 				assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL);
 				assert(dir == INVALID_DIAGDIR || dir == ReverseDiagDir(GetTunnelBridgeDirection(tile)));
-				_tbdset.Add(tile, INVALID_DIAGDIR);  // we can safely start from wormhole centre
+				_tbdset.Add(tile, INVALID_DIAGDIR); // we can safely start from wormhole centre
 				_tbdset.Add(GetOtherTunnelBridgeEnd(tile), INVALID_DIAGDIR);
 				break;
 
@@ -562,9 +543,7 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 	return state;
 }
 
-
 static Owner _last_owner = INVALID_OWNER; ///< last owner whose track was put into _globset
-
 
 /**
  * Update signals in buffer
@@ -578,7 +557,6 @@ void UpdateSignalsInBuffer()
 	}
 }
 
-
 /**
  * Add track to signal update buffer
  *
@@ -588,12 +566,8 @@ void UpdateSignalsInBuffer()
  */
 void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner)
 {
-	static const DiagDirection _search_dir_1[] = {
-		DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE
-	};
-	static const DiagDirection _search_dir_2[] = {
-		DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
-	};
+	static const DiagDirection _search_dir_1[] = {DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE};
+	static const DiagDirection _search_dir_2[] = {DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE};
 
 	/* do not allow signal updates for two companies in one run */
 	assert(_globset.IsEmpty() || owner == _last_owner);
@@ -609,7 +583,6 @@ void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner)
 		_last_owner = INVALID_OWNER;
 	}
 }
-
 
 /**
  * Add side of tile to signal update buffer
@@ -651,7 +624,6 @@ SigSegState UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner own
 
 	return UpdateSignalsInBuffer(owner);
 }
-
 
 /**
  * Update signals at segments that are at both ends of

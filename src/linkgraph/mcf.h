@@ -16,9 +16,7 @@ protected:
 	 * Constructor.
 	 * @param job Link graph job being executed.
 	 */
-	MultiCommodityFlow(LinkGraphJob &job) : job(job),
-			max_saturation(job.Settings().short_path_saturation)
-	{}
+	MultiCommodityFlow(LinkGraphJob &job) : job(job), max_saturation(job.Settings().short_path_saturation) {}
 
 	template <class Tannotation, class Tedge_iterator>
 	void Dijkstra(NodeID from, PathVector &paths);
@@ -27,7 +25,7 @@ protected:
 
 	void CleanupPaths(NodeID source, PathVector &paths);
 
-	LinkGraphJob &job;   ///< Job we're working with.
+	LinkGraphJob &job; ///< Job we're working with.
 	uint max_saturation; ///< Maximum saturation for edges.
 };
 
@@ -52,6 +50,7 @@ private:
 	bool EliminateCycles(PathVector &path, NodeID origin_id, NodeID next_id);
 	void EliminateCycle(PathVector &path, Path *cycle_begin, uint flow);
 	uint FindCycleFlow(const PathVector &path, const Path *cycle_begin);
+
 public:
 	MCF1stPass(LinkGraphJob &job);
 };
@@ -75,12 +74,14 @@ public:
 template <class Tpass>
 class MCFHandler : public ComponentHandler {
 public:
-
 	/**
 	 * Run the calculation.
 	 * @param graph Component to be calculated.
 	 */
-	void Run(LinkGraphJob &job) const override { Tpass pass(job); }
+	void Run(LinkGraphJob &job) const override
+	{
+		Tpass pass(job);
+	}
 };
 
 #endif /* MCF_H */

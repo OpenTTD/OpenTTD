@@ -51,12 +51,12 @@ enum class RoadStopType : uint8_t {
 
 /** The facilities a station might be having */
 enum class StationFacility : uint8_t {
-	Train     = 0, ///< Station with train station
+	Train = 0, ///< Station with train station
 	TruckStop = 1, ///< Station with truck stops
-	BusStop   = 2, ///< Station with bus stops
-	Airport   = 3, ///< Station with an airport
-	Dock      = 4, ///< Station with a dock
-	Waypoint  = 7, ///< Station is a waypoint
+	BusStop = 2, ///< Station with bus stops
+	Airport = 3, ///< Station with an airport
+	Dock = 4, ///< Station with a dock
+	Waypoint = 7, ///< Station is a waypoint
 };
 using StationFacilities = EnumBitSet<StationFacility, uint8_t>;
 
@@ -65,12 +65,12 @@ static constexpr StationFacility STATION_FACILITY_GHOST{6};
 
 /** The vehicles that may have visited a station */
 enum StationHadVehicleOfType : uint8_t {
-	HVOT_NONE     = 0,      ///< Station has seen no vehicles
-	HVOT_TRAIN    = 1 << 1, ///< Station has seen a train
-	HVOT_BUS      = 1 << 2, ///< Station has seen a bus
-	HVOT_TRUCK    = 1 << 3, ///< Station has seen a truck
+	HVOT_NONE = 0, ///< Station has seen no vehicles
+	HVOT_TRAIN = 1 << 1, ///< Station has seen a train
+	HVOT_BUS = 1 << 2, ///< Station has seen a bus
+	HVOT_TRUCK = 1 << 3, ///< Station has seen a truck
 	HVOT_AIRCRAFT = 1 << 4, ///< Station has seen an aircraft
-	HVOT_SHIP     = 1 << 5, ///< Station has seen a ship
+	HVOT_SHIP = 1 << 5, ///< Station has seen a ship
 
 	HVOT_WAYPOINT = 1 << 6, ///< Station is a waypoint (NewGRF only!)
 };
@@ -124,7 +124,7 @@ static constexpr uint MAX_CATCHMENT = 10; ///< Maximum catchment for airports wi
 static const uint MAX_LENGTH_STATION_NAME_CHARS = 32; ///< The maximum length of a station name in characters including '\0'
 
 struct StationCompare {
-	bool operator() (const Station *lhs, const Station *rhs) const;
+	bool operator()(const Station *lhs, const Station *rhs) const;
 };
 
 /** List of stations */
@@ -142,6 +142,7 @@ public:
 	 * @param area the area to search from
 	 */
 	StationFinder(const TileArea &area) : TileArea(area) {}
+
 	const StationList &GetStations();
 };
 

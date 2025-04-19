@@ -13,14 +13,14 @@
 #include "base_media_base.h"
 
 /** Maximum number of songs in the 'class' playlists. */
-static const uint NUM_SONGS_CLASS     = 10;
+static const uint NUM_SONGS_CLASS = 10;
 /** Number of classes for songs */
-static const uint NUM_SONG_CLASSES    = 3;
+static const uint NUM_SONG_CLASSES = 3;
 /** Maximum number of songs in the full playlist; theme song + the classes */
 static const uint NUM_SONGS_AVAILABLE = 1 + NUM_SONG_CLASSES * NUM_SONGS_CLASS;
 
 /** Maximum number of songs in the (custom) playlist */
-static const uint NUM_SONGS_PLAYLIST  = 32;
+static const uint NUM_SONGS_PLAYLIST = 32;
 
 /* Functions to read DOS music CAT files, similar to but not quite the same as sound effect CAT files */
 std::optional<std::string> GetMusicCatEntryName(const std::string &filename, size_t entrynum);
@@ -28,22 +28,23 @@ std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &file
 
 enum MusicTrackType : uint8_t {
 	MTT_STANDARDMIDI, ///< Standard MIDI file
-	MTT_MPSMIDI,      ///< MPS GM driver MIDI format (contained in a CAT file)
+	MTT_MPSMIDI, ///< MPS GM driver MIDI format (contained in a CAT file)
 };
 
 /** Metadata about a music track. */
 struct MusicSongInfo {
-	std::string songname;    ///< name of song displayed in UI
-	uint8_t tracknr;            ///< track number of song displayed in UI
-	std::string filename;    ///< file on disk containing song (when used in MusicSet class)
+	std::string songname; ///< name of song displayed in UI
+	uint8_t tracknr; ///< track number of song displayed in UI
+	std::string filename; ///< file on disk containing song (when used in MusicSet class)
 	MusicTrackType filetype; ///< decoder required for song file
-	int cat_index;           ///< entry index in CAT file, for filetype==MTT_MPSMIDI
-	bool loop;               ///< song should play in a tight loop if possible, never ending
-	int override_start;      ///< MIDI ticks to skip over in beginning
-	int override_end;        ///< MIDI tick to end the song at (0 if no override)
+	int cat_index; ///< entry index in CAT file, for filetype==MTT_MPSMIDI
+	bool loop; ///< song should play in a tight loop if possible, never ending
+	int override_start; ///< MIDI ticks to skip over in beginning
+	int override_end; ///< MIDI tick to end the song at (0 if no override)
 };
 
-template <> struct BaseSetTraits<struct MusicSet> {
+template <>
+struct BaseSetTraits<struct MusicSet> {
 	static constexpr size_t num_files = NUM_SONGS_AVAILABLE;
 	static constexpr bool search_in_tars = false;
 	static constexpr std::string_view set_type = "music";

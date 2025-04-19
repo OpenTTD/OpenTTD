@@ -10,8 +10,8 @@
 #ifndef LRUCACHE_HPP
 #define LRUCACHE_HPP
 
-#include <utility>
 #include <unordered_map>
+#include <utility>
 
 /**
  * Size limited cache with a least recently used eviction strategy.
@@ -25,7 +25,7 @@ private:
 	typedef typename std::list<Tpair>::iterator Titer;
 
 	std::list<Tpair> data; ///< Ordered list of all items.
-	std::unordered_map<Tkey, Titer> lookup;  ///< Map of keys to items.
+	std::unordered_map<Tkey, Titer> lookup; ///< Map of keys to items.
 
 	const size_t capacity; ///< Number of items to cache.
 

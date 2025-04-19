@@ -8,14 +8,15 @@
 /** @file sprite.cpp Handling of sprites */
 
 #include "stdafx.h"
+
 #include "sprite.h"
-#include "viewport_func.h"
+
 #include "landscape.h"
 #include "spritecache.h"
+#include "viewport_func.h"
 #include "zoom_func.h"
 
 #include "safeguards.h"
-
 
 /**
  * Draws a tile sprite sequence.
@@ -41,8 +42,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 		}
 
 		/* TTD sprite 0 means no sprite */
-		if ((GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) ||
-				(IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE))) {
+		if ((GB(image, 0, SPRITE_WIDTH) == 0 && !HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) || (IsInvisibilitySet(to) && !HasBit(image, SPRITE_MODIFIER_OPAQUE))) {
 			skip_childs = dtss.IsParentSprite();
 			continue;
 		}
@@ -55,12 +55,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 		if (dtss.IsParentSprite()) {
 			parent_sprite_encountered = true;
 			AddSortableSpriteToDraw(
-				image, pal,
-				ti->x + dtss.delta_x, ti->y + dtss.delta_y,
-				dtss.size_x, dtss.size_y,
-				dtss.size_z, ti->z + dtss.delta_z,
-				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to)
-			);
+				image, pal, ti->x + dtss.delta_x, ti->y + dtss.delta_y, dtss.size_x, dtss.size_y, dtss.size_z, ti->z + dtss.delta_z, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to));
 		} else {
 			int offs_x = child_offset_is_unsigned ? static_cast<uint8_t>(dtss.delta_x) : dtss.delta_x;
 			int offs_y = child_offset_is_unsigned ? static_cast<uint8_t>(dtss.delta_y) : dtss.delta_y;

@@ -8,18 +8,19 @@
 /** @file console.cpp Handling of the in-game console. */
 
 #include "stdafx.h"
-#include "console_internal.h"
-#include "network/network.h"
-#include "network/network_func.h"
-#include "network/network_admin.h"
-#include "debug.h"
+
 #include "console_func.h"
+#include "console_internal.h"
+#include "debug.h"
+#include "network/network.h"
+#include "network/network_admin.h"
+#include "network/network_func.h"
 #include "settings_type.h"
 
 #include "safeguards.h"
 
-static const uint ICON_TOKEN_COUNT = 20;     ///< Maximum number of tokens in one command
-static const uint ICON_MAX_RECURSE = 10;     ///< Maximum number of recursion
+static const uint ICON_TOKEN_COUNT = 20; ///< Maximum number of tokens in one command
+static const uint ICON_MAX_RECURSE = 10; ///< Maximum number of recursion
 
 /* console parser */
 /* static */ IConsole::CommandList &IConsole::Commands()
@@ -40,7 +41,7 @@ void IConsoleInit()
 {
 	_iconsole_output_file = std::nullopt;
 	_redirect_console_to_client = INVALID_CLIENT_ID;
-	_redirect_console_to_admin  = AdminID::Invalid();
+	_redirect_console_to_admin = AdminID::Invalid();
 
 	IConsoleGUIInit();
 
@@ -321,47 +322,47 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 		}
 
 		switch (*cmdptr) {
-		case ' ': // Token separator
-			if (!foundtoken) break;
+			case ' ': // Token separator
+				if (!foundtoken) break;
 
-			if (longtoken) {
-				tokenstream[tstream_i] = *cmdptr;
-			} else {
-				tokenstream[tstream_i] = '\0';
-				foundtoken = false;
-			}
-
-			tstream_i++;
-			break;
-		case '"': // Tokens enclosed in "" are one token
-			longtoken = !longtoken;
-			if (!foundtoken) {
-				if (t_index >= lengthof(tokens)) {
-					IConsolePrint(CC_ERROR, "Command line too long.");
-					return;
+				if (longtoken) {
+					tokenstream[tstream_i] = *cmdptr;
+				} else {
+					tokenstream[tstream_i] = '\0';
+					foundtoken = false;
 				}
-				tokens[t_index++] = &tokenstream[tstream_i];
-				foundtoken = true;
-			}
-			break;
-		case '\\': // Escape character for ""
-			if (cmdptr[1] == '"' && tstream_i + 1 < lengthof(tokenstream)) {
-				tokenstream[tstream_i++] = *++cmdptr;
+
+				tstream_i++;
 				break;
-			}
-			[[fallthrough]];
-		default: // Normal character
-			tokenstream[tstream_i++] = *cmdptr;
-
-			if (!foundtoken) {
-				if (t_index >= lengthof(tokens)) {
-					IConsolePrint(CC_ERROR, "Command line too long.");
-					return;
+			case '"': // Tokens enclosed in "" are one token
+				longtoken = !longtoken;
+				if (!foundtoken) {
+					if (t_index >= lengthof(tokens)) {
+						IConsolePrint(CC_ERROR, "Command line too long.");
+						return;
+					}
+					tokens[t_index++] = &tokenstream[tstream_i];
+					foundtoken = true;
 				}
-				tokens[t_index++] = &tokenstream[tstream_i - 1];
-				foundtoken = true;
-			}
-			break;
+				break;
+			case '\\': // Escape character for ""
+				if (cmdptr[1] == '"' && tstream_i + 1 < lengthof(tokenstream)) {
+					tokenstream[tstream_i++] = *++cmdptr;
+					break;
+				}
+				[[fallthrough]];
+			default: // Normal character
+				tokenstream[tstream_i++] = *cmdptr;
+
+				if (!foundtoken) {
+					if (t_index >= lengthof(tokens)) {
+						IConsolePrint(CC_ERROR, "Command line too long.");
+						return;
+					}
+					tokens[t_index++] = &tokenstream[tstream_i - 1];
+					foundtoken = true;
+				}
+				break;
 		}
 	}
 
@@ -384,8 +385,10 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 				}
 				return;
 
-			case CHR_DISALLOW: return;
-			case CHR_HIDE: break;
+			case CHR_DISALLOW:
+				return;
+			case CHR_HIDE:
+				break;
 		}
 	}
 

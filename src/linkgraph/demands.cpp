@@ -1,9 +1,12 @@
 /** @file demands.cpp Definition of demand calculating link graph handler. */
 
 #include "../stdafx.h"
+
 #include "demands.h"
-#include "../core/math_func.hpp"
+
 #include <queue>
+
+#include "../core/math_func.hpp"
 
 #include "../safeguards.h"
 
@@ -27,9 +30,7 @@ public:
 	 * @param mod_size Size modifier to be used. Determines how much demands
 	 *                 increase with the supply of the remote station.
 	 */
-	inline SymmetricScaler(uint mod_size) : mod_size(mod_size), supply_sum(0),
-		demand_per_node(0)
-	{}
+	inline SymmetricScaler(uint mod_size) : mod_size(mod_size), supply_sum(0), demand_per_node(0) {}
 
 	/**
 	 * Count a node's supply into the sum of supplies.
@@ -76,8 +77,8 @@ public:
 	void SetDemands(LinkGraphJob &job, NodeID from, NodeID to, uint demand_forw);
 
 private:
-	uint mod_size;        ///< Size modifier. Determines how much demands increase with the supply of the remote station.
-	uint supply_sum;      ///< Sum of all supplies in the component.
+	uint mod_size; ///< Size modifier. Determines how much demands increase with the supply of the remote station.
+	uint supply_sum; ///< Sum of all supplies in the component.
 	uint demand_per_node; ///< Mean demand associated with each node.
 };
 
@@ -90,17 +91,13 @@ public:
 	 * Nothing to do here.
 	 * @param unused.
 	 */
-	inline void AddNode(const Node &)
-	{
-	}
+	inline void AddNode(const Node &) {}
 
 	/**
 	 * Nothing to do here.
 	 * @param unused.
 	 */
-	inline void SetDemandPerNode(uint)
-	{
-	}
+	inline void SetDemandPerNode(uint) {}
 
 	/**
 	 * Get the effective supply of one node towards another one.
@@ -117,7 +114,10 @@ public:
 	 * nodes always accept as long as their demand > 0.
 	 * @param to The node to be checked.
 	 */
-	inline bool HasDemandLeft(const Node &to) { return to.base.demand > 0; }
+	inline bool HasDemandLeft(const Node &to)
+	{
+		return to.base.demand > 0;
+	}
 };
 
 /**
@@ -259,8 +259,7 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
  * Create the DemandCalculator and immediately do the calculation.
  * @param job Job to calculate the demands for.
  */
-DemandCalculator::DemandCalculator(LinkGraphJob &job) :
-	base_distance(IntSqrt(DistanceMaxPlusManhattan(TileXY(0,0), TileXY(Map::MaxX(), Map::MaxY()))))
+DemandCalculator::DemandCalculator(LinkGraphJob &job) : base_distance(IntSqrt(DistanceMaxPlusManhattan(TileXY(0, 0), TileXY(Map::MaxX(), Map::MaxY()))))
 {
 	const LinkGraphSettings &settings = job.Settings();
 	CargoType cargo = job.Cargo();

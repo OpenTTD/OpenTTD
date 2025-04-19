@@ -10,8 +10,8 @@
 #ifndef SCRIPT_DATE_HPP
 #define SCRIPT_DATE_HPP
 
-#include "script_object.hpp"
 #include "../../timer/timer_game_economy.h"
+#include "script_object.hpp"
 
 /**
  * Class that handles all date related (calculation) functions.

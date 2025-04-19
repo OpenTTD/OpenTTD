@@ -8,9 +8,11 @@
 /** @file bemidi.cpp Support for BeOS midi. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
+
 #include "bemidi.h"
+
 #include "../base_media_base.h"
+#include "../openttd.h"
 #include "midifile.hpp"
 
 #include "../safeguards.h"

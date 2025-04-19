@@ -8,10 +8,12 @@
 /** @file network_stun.cpp STUN sending/receiving part of the network protocol. */
 
 #include "../stdafx.h"
+
+#include "network_stun.h"
+
 #include "../debug.h"
 #include "network.h"
 #include "network_coordinator.h"
-#include "network_stun.h"
 
 #include "../safeguards.h"
 
@@ -29,10 +31,7 @@ public:
 	 * @param connection_string The address of the server.
 	 */
 	NetworkStunConnecter(ClientNetworkStunSocketHandler *stun_handler, std::string_view connection_string, std::string_view token, uint8_t family) :
-		TCPConnecter(connection_string, NETWORK_STUN_SERVER_PORT, NetworkAddress(), family),
-		stun_handler(stun_handler),
-		token(token),
-		family(family)
+		TCPConnecter(connection_string, NETWORK_STUN_SERVER_PORT, NetworkAddress(), family), stun_handler(stun_handler), token(token), family(family)
 	{
 	}
 

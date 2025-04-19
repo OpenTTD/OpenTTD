@@ -10,11 +10,11 @@
 #ifndef CARGOMONITOR_H
 #define CARGOMONITOR_H
 
+#include "core/overflowsafe_type.hpp"
 #include "cargo_type.h"
 #include "company_func.h"
 #include "industry.h"
 #include "town.h"
-#include "core/overflowsafe_type.hpp"
 
 struct Station;
 
@@ -34,7 +34,6 @@ typedef std::map<CargoMonitorID, OverflowSafeInt32> CargoMonitorMap;
 extern CargoMonitorMap _cargo_pickups;
 extern CargoMonitorMap _cargo_deliveries;
 
-
 /* Constants for encoding and extracting cargo monitors. */
 constexpr uint8_t CCB_TOWN_IND_NUMBER_START = 0; ///< Start bit of the town or industry number.
 constexpr uint8_t CCB_TOWN_IND_NUMBER_LENGTH = 16; ///< Number of bits of the town or industry number.
@@ -44,9 +43,8 @@ constexpr uint8_t CCB_CARGO_TYPE_LENGTH = 6; ///< Number of bits of the cargo ty
 constexpr uint8_t CCB_COMPANY_START = 25; ///< Start bit of the company field.
 constexpr uint8_t CCB_COMPANY_LENGTH = 4; ///< Number of bits of the company field.
 
-static_assert(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
+static_assert(NUM_CARGO <= (1 << CCB_CARGO_TYPE_LENGTH));
 static_assert(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
-
 
 /**
  * Encode a cargo monitor for pickup or delivery at an industry.

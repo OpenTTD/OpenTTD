@@ -26,7 +26,7 @@
 class ScriptAsyncMode : public ScriptObject {
 private:
 	ScriptAsyncModeProc *last_mode; ///< The previous mode we were in.
-	ScriptObject *last_instance;    ///< The previous instance of the mode.
+	ScriptObject *last_instance; ///< The previous instance of the mode.
 
 protected:
 	static bool AsyncModeProc();

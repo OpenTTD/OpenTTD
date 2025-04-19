@@ -25,10 +25,12 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings = StringVa
 void StrMakeValidInPlace(std::string &str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark);
 
 [[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark);
+
 [[nodiscard]] inline std::string StrMakeValid(const char *str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark)
 {
 	return StrMakeValid(std::string_view(str), settings);
 }
+
 [[nodiscard]] inline std::string StrMakeValid(std::string &&str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark)
 {
 	StrMakeValidInPlace(str, settings);
@@ -55,7 +57,10 @@ bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes);
 
 /** Case insensitive comparator for strings, for example for use in std::map. */
 struct CaseInsensitiveComparator {
-	bool operator()(const std::string_view s1, const std::string_view s2) const { return StrCompareIgnoreCase(s1, s2) < 0; }
+	bool operator()(const std::string_view s1, const std::string_view s2) const
+	{
+		return StrCompareIgnoreCase(s1, s2) < 0;
+	}
 };
 
 /**
@@ -144,7 +149,7 @@ inline bool IsTextDirectionChar(char32_t c)
 
 inline bool IsPrintable(char32_t c)
 {
-	if (c < 0x20)   return false;
+	if (c < 0x20) return false;
 	if (c < 0xE000) return true;
 	if (c < 0xE200) return false;
 	return true;
@@ -164,7 +169,7 @@ inline bool IsWhitespace(char32_t c)
 
 /* Needed for NetBSD version (so feature) testing */
 #if defined(__NetBSD__) || defined(__FreeBSD__)
-#include <sys/param.h>
+#	include <sys/param.h>
 #endif
 
 #endif /* STRING_FUNC_H */

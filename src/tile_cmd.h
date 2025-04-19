@@ -10,12 +10,12 @@
 #ifndef TILE_CMD_H
 #define TILE_CMD_H
 
-#include "command_type.h"
-#include "vehicle_type.h"
 #include "cargo_type.h"
-#include "track_type.h"
+#include "command_type.h"
 #include "tile_map.h"
 #include "timer/timer_game_calendar.h"
+#include "track_type.h"
+#include "vehicle_type.h"
 
 enum class VehicleEnterTileState : uint8_t {
 	EnteredStation, ///< The vehicle entered a station
@@ -27,11 +27,11 @@ using VehicleEnterTileStates = EnumBitSet<VehicleEnterTileState, uint8_t>;
 
 /** Tile information, used while rendering the tile */
 struct TileInfo {
-	int x;          ///< X position of the tile in unit coordinates
-	int y;          ///< Y position of the tile in unit coordinates
-	Slope tileh;    ///< Slope of the tile
+	int x; ///< X position of the tile in unit coordinates
+	int y; ///< Y position of the tile in unit coordinates
+	Slope tileh; ///< Slope of the tile
 	TileIndex tile; ///< Tile index
-	int z;          ///< Height
+	int z; ///< Height
 };
 
 /** Tile description for the 'land area information' tool */
@@ -142,23 +142,23 @@ typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlags flags, int 
  * @see TileType
  */
 struct TileTypeProcs {
-	DrawTileProc *draw_tile_proc;                  ///< Called to render the tile and its contents to the screen
+	DrawTileProc *draw_tile_proc; ///< Called to render the tile and its contents to the screen
 	GetSlopeZProc *get_slope_z_proc;
 	ClearTileProc *clear_tile_proc;
 	AddAcceptedCargoProc *add_accepted_cargo_proc; ///< Adds accepted cargo of the tile to cargo array supplied as parameter
-	GetTileDescProc *get_tile_desc_proc;           ///< Get a description of a tile (for the 'land area information' tool)
+	GetTileDescProc *get_tile_desc_proc; ///< Get a description of a tile (for the 'land area information' tool)
 	GetTileTrackStatusProc *get_tile_track_status_proc; ///< Get available tracks and status of a tile
-	ClickTileProc *click_tile_proc;                ///< Called when tile is clicked
+	ClickTileProc *click_tile_proc; ///< Called when tile is clicked
 	AnimateTileProc *animate_tile_proc;
 	TileLoopProc *tile_loop_proc;
 	ChangeTileOwnerProc *change_tile_owner_proc;
 	AddProducedCargoProc *add_produced_cargo_proc; ///< Adds produced cargo of the tile to cargo array supplied as parameter
 	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile
 	GetFoundationProc *get_foundation_proc;
-	TerraformTileProc *terraform_tile_proc;        ///< Called when a terraforming operation is about to take place
+	TerraformTileProc *terraform_tile_proc; ///< Called when a terraforming operation is about to take place
 };
 
-extern const TileTypeProcs * const _tile_type_procs[16];
+extern const TileTypeProcs *const _tile_type_procs[16];
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);

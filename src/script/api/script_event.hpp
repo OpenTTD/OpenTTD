@@ -65,15 +65,16 @@ public:
 	 * Constructor of ScriptEvent, to get the type of event.
 	 * @param type The type of event to construct.
 	 */
-	ScriptEvent(ScriptEvent::ScriptEventType type) :
-		type(type)
-	{}
+	ScriptEvent(ScriptEvent::ScriptEventType type) : type(type) {}
 
 	/**
 	 * Get the event-type.
 	 * @return The @c ScriptEventType.
 	 */
-	ScriptEventType GetEventType() { return this->type; }
+	ScriptEventType GetEventType()
+	{
+		return this->type;
+	}
 
 protected:
 	/**

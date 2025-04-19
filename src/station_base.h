@@ -12,12 +12,12 @@
 
 #include "core/random_func.hpp"
 #include "base_station_base.h"
-#include "newgrf_airport.h"
+#include "bitmap_type.h"
 #include "cargopacket.h"
 #include "industry_type.h"
 #include "linkgraph/linkgraph_type.h"
+#include "newgrf_airport.h"
 #include "newgrf_storage.h"
-#include "bitmap_type.h"
 
 static const uint8_t INITIAL_STATION_RATING = 175;
 static const uint8_t MAX_STATION_RATING = 255;
@@ -40,7 +40,10 @@ public:
 	 * empty. However, the constructor must be defined and reachable for
 	 * FlowStat to be used in a std::map.
 	 */
-	inline FlowStat() {NOT_REACHED();}
+	inline FlowStat()
+	{
+		NOT_REACHED();
+	}
 
 	/**
 	 * Create a FlowStat with an initial entry.
@@ -85,13 +88,19 @@ public:
 	 * over.
 	 * @return Actual shares.
 	 */
-	inline const SharesMap *GetShares() const { return &this->shares; }
+	inline const SharesMap *GetShares() const
+	{
+		return &this->shares;
+	}
 
 	/**
 	 * Return total amount of unrestricted shares.
 	 * @return Amount of unrestricted shares.
 	 */
-	inline uint GetUnrestricted() const { return this->unrestricted; }
+	inline uint GetUnrestricted() const
+	{
+		return this->unrestricted;
+	}
 
 	/**
 	 * Swap the shares maps, and thus the content of this FlowStat with the
@@ -130,9 +139,7 @@ public:
 	inline StationID GetVia() const
 	{
 		assert(!this->shares.empty());
-		return this->unrestricted > 0 ?
-				this->shares.upper_bound(RandomRange(this->unrestricted))->second :
-				StationID::Invalid();
+		return this->unrestricted > 0 ? this->shares.upper_bound(RandomRange(this->unrestricted))->second : StationID::Invalid();
 	}
 
 	StationID GetVia(StationID excluded, StationID excluded2 = StationID::Invalid()) const;
@@ -257,7 +264,10 @@ struct GoodsEntry {
 	 * This does not imply that there was cargo available for loading. Refer to GoodsEntry::State::Rating for that.
 	 * @return true if vehicle tried to load.
 	 */
-	bool HasVehicleEverTriedLoading() const { return this->last_speed != 0; }
+	bool HasVehicleEverTriedLoading() const
+	{
+		return this->last_speed != 0;
+	}
 
 	/**
 	 * Does this cargo have a rating at this station?
@@ -301,12 +311,18 @@ struct GoodsEntry {
 	 * Test if this goods entry has optional cargo packet/flow data.
 	 * @returns true iff optional data is present.
 	 */
-	[[debug_inline]] inline bool HasData() const { return this->data != nullptr; }
+	[[debug_inline]] inline bool HasData() const
+	{
+		return this->data != nullptr;
+	}
 
 	/**
 	 * Clear optional cargo packet/flow data.
 	 */
-	void ClearData() { this->data.reset(); }
+	void ClearData()
+	{
+		this->data.reset();
+	}
 
 	/**
 	 * Get optional cargo packet/flow data.
@@ -397,15 +413,20 @@ struct Airport : public TileArea {
 	{
 		const AirportSpec *as = this->GetSpec();
 		switch (this->rotation) {
-			case DIR_N: return this->tile + ToTileIndexDiff(tidc);
+			case DIR_N:
+				return this->tile + ToTileIndexDiff(tidc);
 
-			case DIR_E: return this->tile + TileDiffXY(tidc.y, as->size_x - 1 - tidc.x);
+			case DIR_E:
+				return this->tile + TileDiffXY(tidc.y, as->size_x - 1 - tidc.x);
 
-			case DIR_S: return this->tile + TileDiffXY(as->size_x - 1 - tidc.x, as->size_y - 1 - tidc.y);
+			case DIR_S:
+				return this->tile + TileDiffXY(as->size_x - 1 - tidc.x, as->size_y - 1 - tidc.y);
 
-			case DIR_W: return this->tile + TileDiffXY(as->size_y - 1 - tidc.y, tidc.x);
+			case DIR_W:
+				return this->tile + TileDiffXY(as->size_y - 1 - tidc.y, tidc.x);
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -486,11 +507,14 @@ struct IndustryListEntry {
 	uint distance = 0;
 	Industry *industry = nullptr;
 
-	bool operator== (const IndustryListEntry &other) const { return this->distance == other.distance && this->industry == other.industry; };
+	bool operator==(const IndustryListEntry &other) const
+	{
+		return this->distance == other.distance && this->industry == other.industry;
+	};
 };
 
 struct IndustryCompare {
-	bool operator() (const IndustryListEntry &lhs, const IndustryListEntry &rhs) const;
+	bool operator()(const IndustryListEntry &lhs, const IndustryListEntry &rhs) const;
 };
 
 typedef std::set<IndustryListEntry, IndustryCompare> IndustryList;
@@ -596,7 +620,7 @@ public:
 		if (!st->TileBelongsToAirport(this->tile)) ++(*this);
 	}
 
-	inline TileIterator& operator ++() override
+	inline TileIterator &operator++() override
 	{
 		(*this).OrthogonalTileIterator::operator++();
 		while (this->tile != INVALID_TILE && !st->TileBelongsToAirport(this->tile)) {

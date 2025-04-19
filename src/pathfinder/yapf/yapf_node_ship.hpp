@@ -17,8 +17,8 @@
 
 /** Yapf Node for ships */
 template <class Tkey_>
-struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > {
-	typedef CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > base;
+struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_>> {
+	typedef CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_>> base;
 
 	TileIndex segment_last_tile;
 	Trackdir segment_last_td;
@@ -27,16 +27,16 @@ struct CYapfShipNodeT : CYapfNodeT<Tkey_, CYapfShipNodeT<Tkey_> > {
 	{
 		this->base::Set(parent, tile, td, is_choice);
 		this->segment_last_tile = tile;
-		this->segment_last_td   = td;
+		this->segment_last_td = td;
 	}
 };
 
 /* now define two major node types (that differ by key type) */
-typedef CYapfShipNodeT<CYapfNodeKeyExitDir>  CYapfShipNodeExitDir;
+typedef CYapfShipNodeT<CYapfNodeKeyExitDir> CYapfShipNodeExitDir;
 typedef CYapfShipNodeT<CYapfNodeKeyTrackDir> CYapfShipNodeTrackDir;
 
 /* Default NodeList types */
-typedef NodeList<CYapfShipNodeExitDir , 10, 12> CShipNodeListExitDir;
+typedef NodeList<CYapfShipNodeExitDir, 10, 12> CShipNodeListExitDir;
 typedef NodeList<CYapfShipNodeTrackDir, 10, 12> CShipNodeListTrackDir;
 
 #endif /* YAPF_NODE_SHIP_HPP */

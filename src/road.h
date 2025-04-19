@@ -10,16 +10,15 @@
 #ifndef ROAD_H
 #define ROAD_H
 
-#include "road_type.h"
-#include "gfx_type.h"
 #include "core/bitmath_func.hpp"
-#include "strings_type.h"
-#include "timer/timer_game_calendar.h"
 #include "core/enum_type.hpp"
+#include "economy_func.h"
+#include "gfx_type.h"
 #include "newgrf.h"
 #include "newgrf_badge_type.h"
-#include "economy_func.h"
-
+#include "road_type.h"
+#include "strings_type.h"
+#include "timer/timer_game_calendar.h"
 
 enum RoadTramType : bool {
 	RTT_ROAD,
@@ -32,15 +31,15 @@ enum RoadTramTypes : uint8_t {
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTramTypes)
 
-static const RoadTramType _roadtramtypes[] = { RTT_ROAD, RTT_TRAM };
+static const RoadTramType _roadtramtypes[] = {RTT_ROAD, RTT_TRAM};
 
 /** Roadtype flag bit numbers. */
 enum class RoadTypeFlag : uint8_t {
-	Catenary        = 0, ///< Bit number for adding catenary
+	Catenary = 0, ///< Bit number for adding catenary
 	NoLevelCrossing = 1, ///< Bit number for disabling level crossing
-	NoHouses        = 2, ///< Bit number for setting this roadtype as not house friendly
-	Hidden          = 3, ///< Bit number for hidden from construction.
-	TownBuild       = 4, ///< Bit number for allowing towns to build this roadtype.
+	NoHouses = 2, ///< Bit number for setting this roadtype as not house friendly
+	Hidden = 3, ///< Bit number for hidden from construction.
+	TownBuild = 4, ///< Bit number for allowing towns to build this roadtype.
 };
 using RoadTypeFlags = EnumBitSet<RoadTypeFlag, uint8_t>;
 
@@ -48,18 +47,18 @@ struct SpriteGroup;
 
 /** Sprite groups for a roadtype. */
 enum RoadTypeSpriteGroup : uint8_t {
-	ROTSG_CURSORS,        ///< Optional: Cursor and toolbar icon images
-	ROTSG_OVERLAY,        ///< Optional: Images for overlaying track
-	ROTSG_GROUND,         ///< Required: Main group of ground images
-	ROTSG_TUNNEL,         ///< Optional: Ground images for tunnels
+	ROTSG_CURSORS, ///< Optional: Cursor and toolbar icon images
+	ROTSG_OVERLAY, ///< Optional: Images for overlaying track
+	ROTSG_GROUND, ///< Required: Main group of ground images
+	ROTSG_TUNNEL, ///< Optional: Ground images for tunnels
 	ROTSG_CATENARY_FRONT, ///< Optional: Catenary front
-	ROTSG_CATENARY_BACK,  ///< Optional: Catenary back
-	ROTSG_BRIDGE,         ///< Required: Bridge surface images
-	ROTSG_reserved2,      ///<           Placeholder, if we need specific level crossing sprites.
-	ROTSG_DEPOT,          ///< Optional: Depot images
-	ROTSG_reserved3,      ///<           Placeholder, if we add road fences (for highways).
-	ROTSG_ROADSTOP,       ///< Required: Bay stop surface
-	ROTSG_ONEWAY,         ///< Optional: One-way indicator images
+	ROTSG_CATENARY_BACK, ///< Optional: Catenary back
+	ROTSG_BRIDGE, ///< Required: Bridge surface images
+	ROTSG_reserved2, ///<           Placeholder, if we need specific level crossing sprites.
+	ROTSG_DEPOT, ///< Optional: Depot images
+	ROTSG_reserved3, ///<           Placeholder, if we add road fences (for highways).
+	ROTSG_ROADSTOP, ///< Required: Bay stop surface
+	ROTSG_ONEWAY, ///< Optional: One-way indicator images
 	ROTSG_END,
 };
 
@@ -73,41 +72,41 @@ public:
 	 * directly in the code are listed
 	 */
 	struct {
-		SpriteID build_x_road;        ///< button for building single rail in X direction
-		SpriteID build_y_road;        ///< button for building single rail in Y direction
-		SpriteID auto_road;           ///< button for the autoroad construction
-		SpriteID build_depot;         ///< button for building depots
-		SpriteID build_tunnel;        ///< button for building a tunnel
-		SpriteID convert_road;        ///< button for converting road types
+		SpriteID build_x_road; ///< button for building single rail in X direction
+		SpriteID build_y_road; ///< button for building single rail in Y direction
+		SpriteID auto_road; ///< button for the autoroad construction
+		SpriteID build_depot; ///< button for building depots
+		SpriteID build_tunnel; ///< button for building a tunnel
+		SpriteID convert_road; ///< button for converting road types
 	} gui_sprites;
 
 	struct {
-		CursorID road_swne;     ///< Cursor for building rail in X direction
-		CursorID road_nwse;     ///< Cursor for building rail in Y direction
-		CursorID autoroad;      ///< Cursor for autorail tool
-		CursorID depot;         ///< Cursor for building a depot
-		CursorID tunnel;        ///< Cursor for building a tunnel
-		SpriteID convert_road;  ///< Cursor for converting road types
-	} cursor;                       ///< Cursors associated with the road type.
+		CursorID road_swne; ///< Cursor for building rail in X direction
+		CursorID road_nwse; ///< Cursor for building rail in Y direction
+		CursorID autoroad; ///< Cursor for autorail tool
+		CursorID depot; ///< Cursor for building a depot
+		CursorID tunnel; ///< Cursor for building a tunnel
+		SpriteID convert_road; ///< Cursor for converting road types
+	} cursor; ///< Cursors associated with the road type.
 
 	struct {
-		StringID name;            ///< Name of this rail type.
+		StringID name; ///< Name of this rail type.
 		StringID toolbar_caption; ///< Caption in the construction toolbar GUI for this rail type.
-		StringID menu_text;       ///< Name of this rail type in the main toolbar dropdown.
-		StringID build_caption;   ///< Caption of the build vehicle GUI for this rail type.
-		StringID replace_text;    ///< Text used in the autoreplace GUI.
-		StringID new_engine;      ///< Name of an engine for this type of road in the engine preview GUI.
+		StringID menu_text; ///< Name of this rail type in the main toolbar dropdown.
+		StringID build_caption; ///< Caption of the build vehicle GUI for this rail type.
+		StringID replace_text; ///< Text used in the autoreplace GUI.
+		StringID new_engine; ///< Name of an engine for this type of road in the engine preview GUI.
 
-		StringID err_build_road;        ///< Building a normal piece of road
-		StringID err_remove_road;       ///< Removing a normal piece of road
-		StringID err_depot;             ///< Building a depot
-		StringID err_build_station[2];  ///< Building a bus or truck station
+		StringID err_build_road; ///< Building a normal piece of road
+		StringID err_remove_road; ///< Removing a normal piece of road
+		StringID err_depot; ///< Building a depot
+		StringID err_build_station[2]; ///< Building a bus or truck station
 		StringID err_remove_station[2]; ///< Removing of a bus or truck station
-		StringID err_convert_road;      ///< Converting a road type
+		StringID err_convert_road; ///< Converting a road type
 
-		StringID picker_title[2];       ///< Title for the station picker for bus or truck stations
-		StringID picker_tooltip[2];     ///< Tooltip for the station picker for bus or truck stations
-	} strings;                        ///< Strings associated with the rail type.
+		StringID picker_title[2]; ///< Title for the station picker for bus or truck stations
+		StringID picker_tooltip[2]; ///< Tooltip for the station picker for bus or truck stations
+	} strings; ///< Strings associated with the rail type.
 
 	/** bitmask to the OTHER roadtypes on which a vehicle of THIS roadtype generates power */
 	RoadTypes powered_roadtypes;

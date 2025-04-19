@@ -14,5 +14,4 @@
 
 void ShowCheatWindow();
 
-
 #endif /* CHEAT_FUNC_H */

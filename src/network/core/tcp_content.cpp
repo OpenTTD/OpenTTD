@@ -10,16 +10,18 @@
  */
 
 #include "../../stdafx.h"
-#include "../../textfile_gui.h"
-#include "../../newgrf_config.h"
+
+#include "tcp_content.h"
+
+#include "../../ai/ai.hpp"
 #include "../../base_media_base.h"
 #include "../../base_media_graphics.h"
 #include "../../base_media_music.h"
 #include "../../base_media_sounds.h"
-#include "../../ai/ai.hpp"
-#include "../../game/game.hpp"
 #include "../../fios.h"
-#include "tcp_content.h"
+#include "../../game/game.hpp"
+#include "../../newgrf_config.h"
+#include "../../textfile_gui.h"
 
 #include "table/strings.h"
 
@@ -61,7 +63,8 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 	if (this->state == INVALID) return std::nullopt;
 	const char *tmp;
 	switch (this->type) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case CONTENT_TYPE_AI:
 			tmp = AI::GetScannerInfo()->FindMainScript(*this, true);
 			break;
@@ -108,13 +111,20 @@ bool NetworkContentSocketHandler::HandlePacket(Packet &p)
 	PacketContentType type = (PacketContentType)p.Recv_uint8();
 
 	switch (this->HasClientQuit() ? PACKET_CONTENT_END : type) {
-		case PACKET_CONTENT_CLIENT_INFO_LIST:      return this->Receive_CLIENT_INFO_LIST(p);
-		case PACKET_CONTENT_CLIENT_INFO_ID:        return this->Receive_CLIENT_INFO_ID(p);
-		case PACKET_CONTENT_CLIENT_INFO_EXTID:     return this->Receive_CLIENT_INFO_EXTID(p);
-		case PACKET_CONTENT_CLIENT_INFO_EXTID_MD5: return this->Receive_CLIENT_INFO_EXTID_MD5(p);
-		case PACKET_CONTENT_SERVER_INFO:           return this->Receive_SERVER_INFO(p);
-		case PACKET_CONTENT_CLIENT_CONTENT:        return this->Receive_CLIENT_CONTENT(p);
-		case PACKET_CONTENT_SERVER_CONTENT:        return this->Receive_SERVER_CONTENT(p);
+		case PACKET_CONTENT_CLIENT_INFO_LIST:
+			return this->Receive_CLIENT_INFO_LIST(p);
+		case PACKET_CONTENT_CLIENT_INFO_ID:
+			return this->Receive_CLIENT_INFO_ID(p);
+		case PACKET_CONTENT_CLIENT_INFO_EXTID:
+			return this->Receive_CLIENT_INFO_EXTID(p);
+		case PACKET_CONTENT_CLIENT_INFO_EXTID_MD5:
+			return this->Receive_CLIENT_INFO_EXTID_MD5(p);
+		case PACKET_CONTENT_SERVER_INFO:
+			return this->Receive_SERVER_INFO(p);
+		case PACKET_CONTENT_CLIENT_CONTENT:
+			return this->Receive_CLIENT_CONTENT(p);
+		case PACKET_CONTENT_SERVER_CONTENT:
+			return this->Receive_SERVER_CONTENT(p);
 
 		default:
 			if (this->HasClientQuit()) {
@@ -162,7 +172,6 @@ bool NetworkContentSocketHandler::ReceivePackets()
 	return i != MAX_PACKETS_TO_RECEIVE - 1;
 }
 
-
 /**
  * Helper for logging receiving invalid packets.
  * @param type The received packet type.
@@ -174,13 +183,40 @@ bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 	return false;
 }
 
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID); }
-bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5); }
-bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO); }
-bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
-bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_LIST(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_LIST);
+}
+
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_ID(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_ID);
+}
+
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID);
+}
+
+bool NetworkContentSocketHandler::Receive_CLIENT_INFO_EXTID_MD5(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_INFO_EXTID_MD5);
+}
+
+bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_INFO);
+}
+
+bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT);
+}
+
+bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT);
+}
 
 /**
  * Helper to get the subdirectory a #ContentInfo is located in.
@@ -190,19 +226,27 @@ bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &) { return this
 Subdirectory GetContentInfoSubDir(ContentType type)
 {
 	switch (type) {
-		default: return NO_DIRECTORY;
-		case CONTENT_TYPE_AI:           return AI_DIR;
-		case CONTENT_TYPE_AI_LIBRARY:   return AI_LIBRARY_DIR;
-		case CONTENT_TYPE_GAME:         return GAME_DIR;
-		case CONTENT_TYPE_GAME_LIBRARY: return GAME_LIBRARY_DIR;
-		case CONTENT_TYPE_NEWGRF:       return NEWGRF_DIR;
+		default:
+			return NO_DIRECTORY;
+		case CONTENT_TYPE_AI:
+			return AI_DIR;
+		case CONTENT_TYPE_AI_LIBRARY:
+			return AI_LIBRARY_DIR;
+		case CONTENT_TYPE_GAME:
+			return GAME_DIR;
+		case CONTENT_TYPE_GAME_LIBRARY:
+			return GAME_LIBRARY_DIR;
+		case CONTENT_TYPE_NEWGRF:
+			return NEWGRF_DIR;
 
 		case CONTENT_TYPE_BASE_GRAPHICS:
 		case CONTENT_TYPE_BASE_SOUNDS:
 		case CONTENT_TYPE_BASE_MUSIC:
 			return BASESET_DIR;
 
-		case CONTENT_TYPE_SCENARIO:     return SCENARIO_DIR;
-		case CONTENT_TYPE_HEIGHTMAP:    return HEIGHTMAP_DIR;
+		case CONTENT_TYPE_SCENARIO:
+			return SCENARIO_DIR;
+		case CONTENT_TYPE_HEIGHTMAP:
+			return HEIGHTMAP_DIR;
 	}
 }

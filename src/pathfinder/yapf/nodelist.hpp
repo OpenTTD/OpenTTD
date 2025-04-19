@@ -10,8 +10,8 @@
 #ifndef NODELIST_HPP
 #define NODELIST_HPP
 
-#include "../../misc/hashtable.hpp"
 #include "../../misc/binaryheap.hpp"
+#include "../../misc/hashtable.hpp"
 
 /**
  * Hash table based node list multi-container class.

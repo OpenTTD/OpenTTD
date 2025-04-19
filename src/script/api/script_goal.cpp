@@ -8,18 +8,20 @@
 /** @file script_goal.cpp Implementation of ScriptGoal. */
 
 #include "../../stdafx.h"
-#include "script_game.hpp"
+
 #include "script_goal.hpp"
+
+#include "../../goal_base.h"
+#include "../../goal_cmd.h"
+#include "../../network/network_base.h"
+#include "../../string_func.h"
+#include "../script_instance.hpp"
 #include "script_error.hpp"
+#include "script_game.hpp"
 #include "script_industry.hpp"
 #include "script_map.hpp"
-#include "script_town.hpp"
 #include "script_story_page.hpp"
-#include "../script_instance.hpp"
-#include "../../goal_base.h"
-#include "../../string_func.h"
-#include "../../network/network_base.h"
-#include "../../goal_cmd.h"
+#include "script_town.hpp"
 
 #include "../../safeguards.h"
 
@@ -31,11 +33,16 @@
 /* static */ bool ScriptGoal::IsValidGoalDestination(ScriptCompany::CompanyID company, GoalType type, SQInteger destination)
 {
 	switch (type) {
-		case GT_NONE: return destination == 0;
-		case GT_TILE: return ScriptMap::IsValidTile(::TileIndex(destination));
-		case GT_INDUSTRY: return ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(destination));
-		case GT_TOWN: return ScriptTown::IsValidTown(static_cast<TownID>(destination));
-		case GT_COMPANY: return ScriptCompany::ResolveCompanyID(ScriptCompany::ToScriptCompanyID(static_cast<::CompanyID>(destination))) != ScriptCompany::COMPANY_INVALID;
+		case GT_NONE:
+			return destination == 0;
+		case GT_TILE:
+			return ScriptMap::IsValidTile(::TileIndex(destination));
+		case GT_INDUSTRY:
+			return ScriptIndustry::IsValidIndustry(static_cast<IndustryID>(destination));
+		case GT_TOWN:
+			return ScriptTown::IsValidTown(static_cast<TownID>(destination));
+		case GT_COMPANY:
+			return ScriptCompany::ResolveCompanyID(ScriptCompany::ToScriptCompanyID(static_cast<::CompanyID>(destination))) != ScriptCompany::COMPANY_INVALID;
 		case GT_STORY_PAGE: {
 			if (!ScriptStoryPage::IsValidStoryPage(static_cast<StoryPageID>(destination))) return false;
 
@@ -46,7 +53,8 @@
 			return c != CompanyID::Invalid() && story_page->company == c;
 		}
 
-		default: return false;
+		default:
+			return false;
 	}
 }
 

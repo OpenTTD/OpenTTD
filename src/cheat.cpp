@@ -8,6 +8,7 @@
 /** @file cheat.cpp Handling (loading/saving/initializing) of cheats. */
 
 #include "stdafx.h"
+
 #include "cheat_type.h"
 
 #include "safeguards.h"

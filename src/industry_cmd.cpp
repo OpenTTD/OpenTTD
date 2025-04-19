@@ -8,49 +8,51 @@
 /** @file industry_cmd.cpp Handling of industry tiles. */
 
 #include "stdafx.h"
-#include "clear_map.h"
-#include "industry.h"
-#include "station_base.h"
-#include "landscape.h"
-#include "viewport_func.h"
-#include "command_func.h"
-#include "town.h"
-#include "news_func.h"
+
+#include "industry_cmd.h"
+
+#include "core/backup_type.hpp"
+#include "core/pool_func.hpp"
+#include "ai/ai.hpp"
+#include "animated_tile_func.h"
+#include "autoslope.h"
 #include "cheat_type.h"
+#include "clear_map.h"
+#include "command_func.h"
 #include "company_base.h"
+#include "effectvehicle_base.h"
+#include "effectvehicle_func.h"
+#include "error.h"
+#include "game/game.hpp"
 #include "genworld.h"
-#include "tree_map.h"
+#include "industry.h"
+#include "landscape.h"
+#include "landscape_cmd.h"
 #include "newgrf_cargo.h"
 #include "newgrf_debug.h"
 #include "newgrf_industrytiles.h"
-#include "autoslope.h"
-#include "water.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "vehicle_func.h"
-#include "sound_func.h"
-#include "animated_tile_func.h"
-#include "effectvehicle_func.h"
-#include "effectvehicle_base.h"
-#include "ai/ai.hpp"
-#include "core/pool_func.hpp"
-#include "subsidy_func.h"
-#include "core/backup_type.hpp"
+#include "news_func.h"
 #include "object_base.h"
-#include "game/game.hpp"
-#include "error.h"
+#include "sound_func.h"
+#include "station_base.h"
 #include "string_func.h"
-#include "industry_cmd.h"
-#include "landscape_cmd.h"
+#include "strings_func.h"
+#include "subsidy_func.h"
 #include "terraform_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
+#include "town.h"
+#include "tree_map.h"
+#include "vehicle_func.h"
+#include "viewport_func.h"
+#include "water.h"
+#include "window_func.h"
 
-#include "table/strings.h"
-#include "table/industry_land.h"
 #include "table/build_industry.h"
+#include "table/industry_land.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -176,8 +178,7 @@ Industry::~Industry()
 
 		/* Remove the farmland and convert it to regular tiles over time. */
 		for (TileIndex tile_cur : ta) {
-			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
-					GetIndustryIndexOfField(tile_cur) == this->index) {
+			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) && GetIndustryIndexOfField(tile_cur) == this->index) {
 				SetIndustryIndexOfField(tile_cur, IndustryID::Invalid());
 			}
 		}
@@ -217,7 +218,6 @@ void Industry::PostDestructor(size_t)
 	SetWindowDirty(WC_BUILD_INDUSTRY, 0);
 }
 
-
 /**
  * Return a random valid industry.
  * @return random industry, nullptr if there are no industries
@@ -242,7 +242,6 @@ void Industry::PostDestructor(size_t)
 	return Industry::Get(index);
 }
 
-
 static void IndustryDrawSugarMine(const TileInfo *ti)
 {
 	if (!IsIndustryCompleted(ti->tile)) return;
@@ -256,8 +255,7 @@ static void IndustryDrawSugarMine(const TileInfo *ti)
 	}
 
 	if (d->image_3 != 0) {
-		AddChildSpriteScreen(SPR_IT_SUGAR_MINE_PILE + d->image_3 - 1, PAL_NONE,
-			_drawtile_proc1[d->image_3 - 1].x, _drawtile_proc1[d->image_3 - 1].y);
+		AddChildSpriteScreen(SPR_IT_SUGAR_MINE_PILE + d->image_3 - 1, PAL_NONE, _drawtile_proc1[d->image_3 - 1].x, _drawtile_proc1[d->image_3 - 1].y);
 	}
 }
 
@@ -276,7 +274,7 @@ static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_TOFFEE, PAL_NONE, 6, 14);
 }
 
-static void IndustryDrawBubbleGenerator( const TileInfo *ti)
+static void IndustryDrawBubbleGenerator(const TileInfo *ti)
 {
 	if (IsIndustryCompleted(ti->tile)) {
 		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, PAL_NONE, 5, _industry_anim_offs_bubbles[GetAnimationFrame(ti->tile)]);
@@ -306,17 +304,13 @@ static void IndustryDrawCoalPlantSparks(const TileInfo *ti)
 		uint8_t image = GetAnimationFrame(ti->tile);
 
 		if (image != 0 && image < 7) {
-			AddChildSpriteScreen(image + SPR_IT_POWER_PLANT_TRANSFORMERS,
-				PAL_NONE,
-				_coal_plant_sparks[image - 1].x,
-				_coal_plant_sparks[image - 1].y
-			);
+			AddChildSpriteScreen(image + SPR_IT_POWER_PLANT_TRANSFORMERS, PAL_NONE, _coal_plant_sparks[image - 1].x, _coal_plant_sparks[image - 1].y);
 		}
 	}
 }
 
 typedef void IndustryDrawTileProc(const TileInfo *ti);
-static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
+static IndustryDrawTileProc *const _industry_draw_tile_procs[5] = {
 	IndustryDrawSugarMine,
 	IndustryDrawToffeeQuarry,
 	IndustryDrawBubbleGenerator,
@@ -349,9 +343,7 @@ static void DrawTile_Industry(TileInfo *ti)
 		}
 	}
 
-	const DrawBuildingsTileStruct *dits = &_industry_draw_tile_data[gfx << 2 | (indts->anim_state ?
-			GetAnimationFrame(ti->tile) & INDUSTRY_COMPLETED :
-			GetIndustryConstructionStage(ti->tile))];
+	const DrawBuildingsTileStruct *dits = &_industry_draw_tile_data[gfx << 2 | (indts->anim_state ? GetAnimationFrame(ti->tile) & INDUSTRY_COMPLETED : GetIndustryConstructionStage(ti->tile))];
 
 	SpriteID image = dits->ground.sprite;
 
@@ -372,14 +364,8 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* Add industry on top of the ground? */
 	image = dits->building.sprite;
 	if (image != 0) {
-		AddSortableSpriteToDraw(image, SpriteLayoutPaletteTransform(image, dits->building.pal, GetColourPalette(ind->random_colour)),
-			ti->x + dits->subtile_x,
-			ti->y + dits->subtile_y,
-			dits->width,
-			dits->height,
-			dits->dz,
-			ti->z,
-			IsTransparencySet(TO_INDUSTRIES));
+		AddSortableSpriteToDraw(image, SpriteLayoutPaletteTransform(image, dits->building.pal, GetColourPalette(ind->random_colour)), ti->x + dits->subtile_x, ti->y + dits->subtile_y, dits->width,
+			dits->height, dits->dz, ti->z, IsTransparencySet(TO_INDUSTRIES));
 
 		if (IsTransparencySet(TO_INDUSTRIES)) return;
 	}
@@ -500,13 +486,8 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlags flags)
 	 * with magic_bulldozer cheat you can destroy industries
 	 * (area around OILRIG is water, so water shouldn't flood it
 	 */
-	if ((_current_company != OWNER_WATER && _game_mode != GM_EDITOR &&
-			!_cheats.magic_bulldozer.value) ||
-			flags.Test(DoCommandFlag::Auto) ||
-			(_current_company == OWNER_WATER &&
-				(indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) ||
-				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
-
+	if ((_current_company != OWNER_WATER && _game_mode != GM_EDITOR && !_cheats.magic_bulldozer.value) || flags.Test(DoCommandFlag::Auto) ||
+		(_current_company == OWNER_WATER && (indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater) || HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		if (flags.Test(DoCommandFlag::Auto)) {
 			return CommandCostWithParam(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY, indspec->name);
 		}
@@ -558,8 +539,12 @@ static void AnimateSugarSieve(TileIndex tile)
 
 	if (_settings_client.sound.ambient) {
 		switch (m & 7) {
-			case 2: SndPlayTileFx(SND_2D_SUGAR_MINE_1, tile); break;
-			case 6: SndPlayTileFx(SND_29_SUGAR_MINE_2, tile); break;
+			case 2:
+				SndPlayTileFx(SND_2D_SUGAR_MINE_1, tile);
+				break;
+			case 6:
+				SndPlayTileFx(SND_29_SUGAR_MINE_2, tile);
+				break;
 		}
 	}
 
@@ -619,9 +604,15 @@ static void AnimateToyFactory(TileIndex tile)
 	uint8_t m = GetAnimationFrame(tile) + 1;
 
 	switch (m) {
-		case  1: if (_settings_client.sound.ambient) SndPlayTileFx(SND_2C_TOY_FACTORY_1, tile); break;
-		case 23: if (_settings_client.sound.ambient) SndPlayTileFx(SND_2B_TOY_FACTORY_2, tile); break;
-		case 28: if (_settings_client.sound.ambient) SndPlayTileFx(SND_2A_TOY_FACTORY_3, tile); break;
+		case 1:
+			if (_settings_client.sound.ambient) SndPlayTileFx(SND_2C_TOY_FACTORY_1, tile);
+			break;
+		case 23:
+			if (_settings_client.sound.ambient) SndPlayTileFx(SND_2B_TOY_FACTORY_2, tile);
+			break;
+		case 28:
+			if (_settings_client.sound.ambient) SndPlayTileFx(SND_2A_TOY_FACTORY_3, tile);
+			break;
 		default:
 			if (m >= 50) {
 				int n = GetIndustryAnimationLoop(tile) + 1;
@@ -702,44 +693,48 @@ static void AnimateTile_Industry(TileIndex tile)
 	}
 
 	switch (gfx) {
-	case GFX_SUGAR_MINE_SIEVE:
-		if ((TimerGameTick::counter & 1) == 0) AnimateSugarSieve(tile);
-		break;
+		case GFX_SUGAR_MINE_SIEVE:
+			if ((TimerGameTick::counter & 1) == 0) AnimateSugarSieve(tile);
+			break;
 
-	case GFX_TOFFEE_QUARY:
-		if ((TimerGameTick::counter & 3) == 0) AnimateToffeeQuarry(tile);
-		break;
+		case GFX_TOFFEE_QUARY:
+			if ((TimerGameTick::counter & 3) == 0) AnimateToffeeQuarry(tile);
+			break;
 
-	case GFX_BUBBLE_CATCHER:
-		if ((TimerGameTick::counter & 1) == 0) AnimateBubbleCatcher(tile);
-		break;
+		case GFX_BUBBLE_CATCHER:
+			if ((TimerGameTick::counter & 1) == 0) AnimateBubbleCatcher(tile);
+			break;
 
-	case GFX_POWERPLANT_SPARKS:
-		if ((TimerGameTick::counter & 3) == 0) AnimatePowerPlantSparks(tile);
-		break;
+		case GFX_POWERPLANT_SPARKS:
+			if ((TimerGameTick::counter & 3) == 0) AnimatePowerPlantSparks(tile);
+			break;
 
-	case GFX_TOY_FACTORY:
-		if ((TimerGameTick::counter & 1) == 0) AnimateToyFactory(tile);
-		break;
+		case GFX_TOY_FACTORY:
+			if ((TimerGameTick::counter & 1) == 0) AnimateToyFactory(tile);
+			break;
 
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_1: case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_3: case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5: case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7: case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
-		if ((TimerGameTick::counter & 3) == 0) AnimatePlasticFountain(tile, gfx);
-		break;
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_1:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_3:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_5:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_7:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
+			if ((TimerGameTick::counter & 3) == 0) AnimatePlasticFountain(tile, gfx);
+			break;
 
-	case GFX_OILWELL_ANIMATED_1:
-	case GFX_OILWELL_ANIMATED_2:
-	case GFX_OILWELL_ANIMATED_3:
-		if ((TimerGameTick::counter & 7) == 0) AnimateOilWell(tile, gfx);
-		break;
+		case GFX_OILWELL_ANIMATED_1:
+		case GFX_OILWELL_ANIMATED_2:
+		case GFX_OILWELL_ANIMATED_3:
+			if ((TimerGameTick::counter & 7) == 0) AnimateOilWell(tile, gfx);
+			break;
 
-	case GFX_COAL_MINE_TOWER_ANIMATED:
-	case GFX_COPPER_MINE_TOWER_ANIMATED:
-	case GFX_GOLD_MINE_TOWER_ANIMATED:
-		AnimateMineTower(tile);
-		break;
+		case GFX_COAL_MINE_TOWER_ANIMATED:
+		case GFX_COPPER_MINE_TOWER_ANIMATED:
+		case GFX_GOLD_MINE_TOWER_ANIMATED:
+			AnimateMineTower(tile);
+			break;
 	}
 }
 
@@ -777,59 +772,57 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	}
 
 	switch (gfx) {
-	case GFX_POWERPLANT_CHIMNEY:
-		CreateChimneySmoke(tile);
-		break;
+		case GFX_POWERPLANT_CHIMNEY:
+			CreateChimneySmoke(tile);
+			break;
 
-	case GFX_OILRIG_1: {
-		/* Do not require an industry tile to be after the first two GFX_OILRIG_1
+		case GFX_OILRIG_1: {
+			/* Do not require an industry tile to be after the first two GFX_OILRIG_1
 		 * tiles (like the default oil rig). Do a proper check to ensure the
 		 * tiles belong to the same industry and based on that build the oil rig's
 		 * station. */
-		TileIndex other = tile + TileDiffXY(0, 1);
+			TileIndex other = tile + TileDiffXY(0, 1);
 
-		if (IsTileType(other, MP_INDUSTRY) &&
-				GetIndustryGfx(other) == GFX_OILRIG_1 &&
-				GetIndustryIndex(tile) == GetIndustryIndex(other)) {
-			BuildOilRig(tile);
+			if (IsTileType(other, MP_INDUSTRY) && GetIndustryGfx(other) == GFX_OILRIG_1 && GetIndustryIndex(tile) == GetIndustryIndex(other)) {
+				BuildOilRig(tile);
+			}
+			break;
 		}
-		break;
-	}
 
-	case GFX_TOY_FACTORY:
-	case GFX_BUBBLE_CATCHER:
-	case GFX_TOFFEE_QUARY:
-		SetAnimationFrame(tile, 0);
-		SetIndustryAnimationLoop(tile, 0);
-		break;
+		case GFX_TOY_FACTORY:
+		case GFX_BUBBLE_CATCHER:
+		case GFX_TOFFEE_QUARY:
+			SetAnimationFrame(tile, 0);
+			SetIndustryAnimationLoop(tile, 0);
+			break;
 
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_1: case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_3: case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_5: case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
-	case GFX_PLASTIC_FOUNTAIN_ANIMATED_7: case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
-		AddAnimatedTile(tile, false);
-		break;
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_1:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_2:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_3:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_4:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_5:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_6:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_7:
+		case GFX_PLASTIC_FOUNTAIN_ANIMATED_8:
+			AddAnimatedTile(tile, false);
+			break;
 	}
 }
 
 static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 {
 	static const int8_t _bubble_spawn_location[3][4] = {
-		{ 11,   0, -4, -14 },
-		{ -4, -10, -4,   1 },
-		{ 49,  59, 60,  65 },
+		{11, 0, -4, -14},
+		{-4, -10, -4, 1},
+		{49, 59, 60, 65},
 	};
 
 	if (_settings_client.sound.ambient) SndPlayTileFx(SND_2E_BUBBLE_GENERATOR, tile);
 
 	int dir = Random() & 3;
 
-	EffectVehicle *v = CreateEffectVehicleAbove(
-		TileX(tile) * TILE_SIZE + _bubble_spawn_location[0][dir],
-		TileY(tile) * TILE_SIZE + _bubble_spawn_location[1][dir],
-		_bubble_spawn_location[2][dir],
-		EV_BUBBLE
-	);
+	EffectVehicle *v =
+		CreateEffectVehicleAbove(TileX(tile) * TILE_SIZE + _bubble_spawn_location[0][dir], TileY(tile) * TILE_SIZE + _bubble_spawn_location[1][dir], _bubble_spawn_location[2][dir], EV_BUBBLE);
 
 	if (v != nullptr) v->animation_substate = dir;
 }
@@ -877,79 +870,89 @@ static void TileLoop_Industry(TileIndex tile)
 
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	switch (gfx) {
-	case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
-	case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
-	case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:
-		if (!(TimerGameTick::counter & 0x400) && Chance16(1, 2)) {
-			switch (gfx) {
-				case GFX_COAL_MINE_TOWER_NOT_ANIMATED:   gfx = GFX_COAL_MINE_TOWER_ANIMATED;   break;
-				case GFX_COPPER_MINE_TOWER_NOT_ANIMATED: gfx = GFX_COPPER_MINE_TOWER_ANIMATED; break;
-				case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:   gfx = GFX_GOLD_MINE_TOWER_ANIMATED;   break;
+		case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
+		case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
+		case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:
+			if (!(TimerGameTick::counter & 0x400) && Chance16(1, 2)) {
+				switch (gfx) {
+					case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
+						gfx = GFX_COAL_MINE_TOWER_ANIMATED;
+						break;
+					case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
+						gfx = GFX_COPPER_MINE_TOWER_ANIMATED;
+						break;
+					case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:
+						gfx = GFX_GOLD_MINE_TOWER_ANIMATED;
+						break;
+				}
+				SetIndustryGfx(tile, gfx);
+				SetAnimationFrame(tile, 0x80);
+				AddAnimatedTile(tile);
 			}
-			SetIndustryGfx(tile, gfx);
-			SetAnimationFrame(tile, 0x80);
-			AddAnimatedTile(tile);
-		}
-		break;
+			break;
 
-	case GFX_OILWELL_NOT_ANIMATED:
-		if (Chance16(1, 6)) {
-			SetIndustryGfx(tile, GFX_OILWELL_ANIMATED_1);
-			SetAnimationFrame(tile, 0);
-			AddAnimatedTile(tile);
-		}
-		break;
-
-	case GFX_COAL_MINE_TOWER_ANIMATED:
-	case GFX_COPPER_MINE_TOWER_ANIMATED:
-	case GFX_GOLD_MINE_TOWER_ANIMATED:
-		if (!(TimerGameTick::counter & 0x400)) {
-			switch (gfx) {
-				case GFX_COAL_MINE_TOWER_ANIMATED:   gfx = GFX_COAL_MINE_TOWER_NOT_ANIMATED;   break;
-				case GFX_COPPER_MINE_TOWER_ANIMATED: gfx = GFX_COPPER_MINE_TOWER_NOT_ANIMATED; break;
-				case GFX_GOLD_MINE_TOWER_ANIMATED:   gfx = GFX_GOLD_MINE_TOWER_NOT_ANIMATED;   break;
+		case GFX_OILWELL_NOT_ANIMATED:
+			if (Chance16(1, 6)) {
+				SetIndustryGfx(tile, GFX_OILWELL_ANIMATED_1);
+				SetAnimationFrame(tile, 0);
+				AddAnimatedTile(tile);
 			}
-			SetIndustryGfx(tile, gfx);
-			SetIndustryCompleted(tile);
-			SetIndustryConstructionStage(tile, 3);
-			DeleteAnimatedTile(tile);
-			MarkTileDirtyByTile(tile);
-		}
-		break;
+			break;
 
-	case GFX_POWERPLANT_SPARKS:
-		if (Chance16(1, 3)) {
-			if (_settings_client.sound.ambient) SndPlayTileFx(SND_0C_POWER_STATION, tile);
-			AddAnimatedTile(tile);
-		}
-		break;
+		case GFX_COAL_MINE_TOWER_ANIMATED:
+		case GFX_COPPER_MINE_TOWER_ANIMATED:
+		case GFX_GOLD_MINE_TOWER_ANIMATED:
+			if (!(TimerGameTick::counter & 0x400)) {
+				switch (gfx) {
+					case GFX_COAL_MINE_TOWER_ANIMATED:
+						gfx = GFX_COAL_MINE_TOWER_NOT_ANIMATED;
+						break;
+					case GFX_COPPER_MINE_TOWER_ANIMATED:
+						gfx = GFX_COPPER_MINE_TOWER_NOT_ANIMATED;
+						break;
+					case GFX_GOLD_MINE_TOWER_ANIMATED:
+						gfx = GFX_GOLD_MINE_TOWER_NOT_ANIMATED;
+						break;
+				}
+				SetIndustryGfx(tile, gfx);
+				SetIndustryCompleted(tile);
+				SetIndustryConstructionStage(tile, 3);
+				DeleteAnimatedTile(tile);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
 
-	case GFX_COPPER_MINE_CHIMNEY:
-		CreateEffectVehicleAbove(TileX(tile) * TILE_SIZE + 6, TileY(tile) * TILE_SIZE + 6, 43, EV_COPPER_MINE_SMOKE);
-		break;
+		case GFX_POWERPLANT_SPARKS:
+			if (Chance16(1, 3)) {
+				if (_settings_client.sound.ambient) SndPlayTileFx(SND_0C_POWER_STATION, tile);
+				AddAnimatedTile(tile);
+			}
+			break;
 
+		case GFX_COPPER_MINE_CHIMNEY:
+			CreateEffectVehicleAbove(TileX(tile) * TILE_SIZE + 6, TileY(tile) * TILE_SIZE + 6, 43, EV_COPPER_MINE_SMOKE);
+			break;
 
-	case GFX_TOY_FACTORY: {
+		case GFX_TOY_FACTORY: {
 			Industry *i = Industry::GetByTile(tile);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
 				SetIndustryAnimationLoop(tile, 0);
 				AddAnimatedTile(tile);
 			}
-		}
-		break;
+		} break;
 
-	case GFX_BUBBLE_GENERATOR:
-		TileLoopIndustry_BubbleGenerator(tile);
-		break;
+		case GFX_BUBBLE_GENERATOR:
+			TileLoopIndustry_BubbleGenerator(tile);
+			break;
 
-	case GFX_TOFFEE_QUARY:
-		AddAnimatedTile(tile);
-		break;
+		case GFX_TOFFEE_QUARY:
+			AddAnimatedTile(tile);
+			break;
 
-	case GFX_SUGAR_MINE_SIEVE:
-		if (Chance16(1, 3)) AddAnimatedTile(tile);
-		break;
+		case GFX_SUGAR_MINE_SIEVE:
+			if (Chance16(1, 3)) AddAnimatedTile(tile);
+			break;
 	}
 }
 
@@ -990,7 +993,9 @@ bool IsTileForestIndustry(TileIndex tile)
 	if (!GetIndustrySpec(ind->type)->life_type.Test(IndustryLifeType::Organic)) return false;
 
 	/* Check for wood production */
-	return std::any_of(std::begin(ind->produced), std::end(ind->produced), [](const auto &p) { return IsValidCargoType(p.cargo) && CargoSpec::Get(p.cargo)->label == CT_WOOD; });
+	return std::any_of(std::begin(ind->produced), std::end(ind->produced), [](const auto &p) {
+		return IsValidCargoType(p.cargo) && CargoSpec::Get(p.cargo)->label == CT_WOOD;
+	});
 }
 
 static const uint8_t _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
@@ -1005,9 +1010,12 @@ static const uint8_t _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 
 static bool IsSuitableForFarmField(TileIndex tile, bool allow_fields)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR: return !IsSnowTile(tile) && !IsClearGround(tile, CLEAR_DESERT) && (allow_fields || !IsClearGround(tile, CLEAR_FIELDS));
-		case MP_TREES: return GetTreeGround(tile) != TREE_GROUND_SHORE;
-		default:       return false;
+		case MP_CLEAR:
+			return !IsSnowTile(tile) && !IsClearGround(tile, CLEAR_DESERT) && (allow_fields || !IsClearGround(tile, CLEAR_FIELDS));
+		case MP_TREES:
+			return GetTreeGround(tile) != TREE_GROUND_SHORE;
+		default:
+			return false;
 	}
 }
 
@@ -1162,11 +1170,11 @@ static void ProduceIndustryGoods(Industry *i)
 	if ((i->counter & 0x3F) == 0) {
 		uint32_t r;
 		if (Chance16R(1, 14, r) && !indsp->random_sounds.empty() && _settings_client.sound.ambient) {
-			if (std::any_of(std::begin(i->produced), std::end(i->produced), [](const auto &p) { return p.history[LAST_MONTH].production > 0; })) {
+			if (std::any_of(std::begin(i->produced), std::end(i->produced), [](const auto &p) {
+					return p.history[LAST_MONTH].production > 0;
+				})) {
 				/* Play sound since last month had production */
-				SndPlayTileFx(
-					static_cast<SoundFx>(indsp->random_sounds[((r >> 16) * indsp->random_sounds.size()) >> 16]),
-					i->location.tile);
+				SndPlayTileFx(static_cast<SoundFx>(indsp->random_sounds[((r >> 16) * indsp->random_sounds.size()) >> 16]), i->location.tile);
 			}
 		}
 	}
@@ -1319,8 +1327,7 @@ static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR && _ignore_industry_restrictions) return CommandCost();
 
-	if (TileHeight(tile) == 0 &&
-			CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
+	if (TileHeight(tile) == 0 && CheckScaledDistanceFromEdge(TileAddXY(tile, 1, 1), _settings_game.game_creation.oil_refinery_limit)) return CommandCost();
 
 	return CommandCost(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
@@ -1400,16 +1407,16 @@ static CommandCost CheckNewIndustry_BubbleGen(TileIndex tile)
 typedef CommandCost CheckNewIndustryProc(TileIndex tile);
 
 /** Check functions for different types of industry. */
-static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
-	CheckNewIndustry_NULL,        ///< CHECK_NOTHING
-	CheckNewIndustry_Forest,      ///< CHECK_FOREST
+static CheckNewIndustryProc *const _check_new_industry_procs[CHECK_END] = {
+	CheckNewIndustry_NULL, ///< CHECK_NOTHING
+	CheckNewIndustry_Forest, ///< CHECK_FOREST
 	CheckNewIndustry_OilRefinery, ///< CHECK_REFINERY
-	CheckNewIndustry_Farm,        ///< CHECK_FARM
-	CheckNewIndustry_Plantation,  ///< CHECK_PLANTATION
-	CheckNewIndustry_Water,       ///< CHECK_WATER
-	CheckNewIndustry_Lumbermill,  ///< CHECK_LUMBERMILL
-	CheckNewIndustry_BubbleGen,   ///< CHECK_BUBBLEGEN
-	CheckNewIndustry_OilRig,      ///< CHECK_OIL_RIG
+	CheckNewIndustry_Farm, ///< CHECK_FARM
+	CheckNewIndustry_Plantation, ///< CHECK_PLANTATION
+	CheckNewIndustry_Water, ///< CHECK_WATER
+	CheckNewIndustry_Lumbermill, ///< CHECK_LUMBERMILL
+	CheckNewIndustry_BubbleGen, ///< CHECK_BUBBLEGEN
+	CheckNewIndustry_OilRig, ///< CHECK_OIL_RIG
 };
 
 /**
@@ -1475,8 +1482,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 		}
 
 		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
-			if (!IsWaterTile(cur_tile) ||
-					!IsTileFlat(cur_tile)) {
+			if (!IsWaterTile(cur_tile) || !IsTileFlat(cur_tile)) {
 				return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 			}
 		} else {
@@ -1487,10 +1493,11 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
 
 			/* Perform land/water check if not disabled */
-			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) != ind_behav.Test(IndustryBehaviour::BuiltOnWater))) return CommandCost(STR_ERROR_SITE_UNSUITABLE);
+			if (!HasBit(its->slopes_refused, 5) && ((HasTileWaterClass(cur_tile) && IsTileOnWater(cur_tile)) != ind_behav.Test(IndustryBehaviour::BuiltOnWater)))
+				return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 
 			if (ind_behav.Any({IndustryBehaviour::OnlyInTown, IndustryBehaviour::Town1200More}) || // Tile must be a house
-					(ind_behav.Test(IndustryBehaviour::OnlyNearTown) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
+				(ind_behav.Test(IndustryBehaviour::OnlyNearTown) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
 					return CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS);
 				}
@@ -1524,7 +1531,8 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
  * @param[out] custom_shape_check Perform custom check for the site.
  * @return Failed or succeeded command.
  */
-static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileLayout &layout, size_t layout_index, IndustryType type, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type, bool *custom_shape_check = nullptr)
+static CommandCost CheckIfIndustryTileSlopes(TileIndex tile, const IndustryTileLayout &layout, size_t layout_index, IndustryType type, uint16_t initial_random_bits, Owner founder,
+	IndustryAvailabilityCallType creation_type, bool *custom_shape_check = nullptr)
 {
 	bool refused_slope = false;
 	bool custom_shape = false;
@@ -1631,8 +1639,8 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 
 	/* TileArea::Expand is not used here as we need to abort
 	 * instead of clamping if the bounds cannot expanded. */
-	TileArea ta(tile + TileDiffXY(-_settings_game.construction.industry_platform, -_settings_game.construction.industry_platform),
-			max_x + 2 + 2 * _settings_game.construction.industry_platform, max_y + 2 + 2 * _settings_game.construction.industry_platform);
+	TileArea ta(tile + TileDiffXY(-_settings_game.construction.industry_platform, -_settings_game.construction.industry_platform), max_x + 2 + 2 * _settings_game.construction.industry_platform,
+		max_y + 2 + 2 * _settings_game.construction.industry_platform);
 
 	if (TileX(ta.tile) + ta.w >= Map::MaxX() || TileY(ta.tile) + ta.h >= Map::MaxY()) return false;
 
@@ -1675,7 +1683,6 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlags flags
 	cur_company.Restore();
 	return true;
 }
-
 
 /**
  * Check that the new industry is far enough from conflicting industries.
@@ -1797,8 +1804,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->ctlflags = {};
 
 	i->construction_date = TimerGameCalendar::date;
-	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
-			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
+	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR : (_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
 
 	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
 	 * 0 = created prior of newindustries
@@ -1874,7 +1880,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				ErrorUnknownCallbackResult(indspec->grf_prop.grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
 				break;
 			}
-			if (std::any_of(std::begin(i->accepted), std::begin(i->accepted) + j, [&cargo](const auto &a) { return a.cargo == cargo; })) {
+			if (std::any_of(std::begin(i->accepted), std::begin(i->accepted) + j, [&cargo](const auto &a) {
+					return a.cargo == cargo;
+				})) {
 				/* Duplicate cargo */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grfid, CBID_INDUSTRY_INPUT_CARGO_TYPES, res);
 				break;
@@ -1910,7 +1918,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 				ErrorUnknownCallbackResult(indspec->grf_prop.grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
 				break;
 			}
-			if (std::any_of(std::begin(i->produced), std::begin(i->produced) + j, [&cargo](const auto &p) { return p.cargo == cargo; })) {
+			if (std::any_of(std::begin(i->produced), std::begin(i->produced) + j, [&cargo](const auto &p) {
+					return p.cargo == cargo;
+				})) {
 				/* Duplicate cargo */
 				ErrorUnknownCallbackResult(indspec->grf_prop.grfid, CBID_INDUSTRY_OUTPUT_CARGO_TYPES, res);
 				break;
@@ -1971,7 +1981,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
  *
  * @post \c *ip contains the newly created industry if all checks are successful and the \a flags request actual creation, else it contains \c nullptr afterwards.
  */
-static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlags flags, const IndustrySpec *indspec, size_t layout_index, uint32_t random_var8f, uint16_t random_initial_bits, Owner founder, IndustryAvailabilityCallType creation_type, Industry **ip)
+static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlags flags, const IndustrySpec *indspec, size_t layout_index, uint32_t random_var8f,
+	uint16_t random_initial_bits, Owner founder, IndustryAvailabilityCallType creation_type, Industry **ip)
 {
 	assert(layout_index < indspec->layouts.size());
 	const IndustryTileLayout &layout = indspec->layouts[layout_index];
@@ -2009,8 +2020,8 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	ret = CheckIfIndustryTileSlopes(tile, layout, layout_index, type, random_initial_bits, founder, creation_type, &custom_shape_check);
 	if (ret.Failed()) return ret;
 
-	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world &&
-			!_ignore_industry_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DoCommandFlag::NoWater, layout)) {
+	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_industry_restrictions &&
+		!CheckIfCanLevelIndustryPlatform(tile, DoCommandFlag::NoWater, layout)) {
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
@@ -2105,7 +2116,8 @@ CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType 
 		/* Check subsequently each layout, starting with the given layout in p1 */
 		for (size_t i = 0; i < num_layouts; i++) {
 			layout = (layout + 1) % num_layouts;
-			ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_USERCREATION, &ind);
+			ret = CreateNewIndustryHelper(
+				tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_USERCREATION, &ind);
 			if (ret.Succeeded()) break;
 		}
 
@@ -2166,10 +2178,17 @@ CommandCost CmdIndustrySetProduction(DoCommandFlags flags, IndustryID ind_id, ui
 		if (show_news && prod_level != ind->prod_level) {
 			NewsType nt;
 			switch (WhoCanServiceIndustry(ind)) {
-				case 0: nt = NewsType::IndustryNobody;  break;
-				case 1: nt = NewsType::IndustryOther;   break;
-				case 2: nt = NewsType::IndustryCompany; break;
-				default: NOT_REACHED();
+				case 0:
+					nt = NewsType::IndustryNobody;
+					break;
+				case 1:
+					nt = NewsType::IndustryOther;
+					break;
+				case 2:
+					nt = NewsType::IndustryCompany;
+					break;
+				default:
+					NOT_REACHED();
 			}
 
 			/* Set parameters of news string */
@@ -2177,9 +2196,7 @@ CommandCost CmdIndustrySetProduction(DoCommandFlags flags, IndustryID ind_id, ui
 			if (!custom_news.empty()) {
 				headline = custom_news;
 			} else {
-				StringID str = (prod_level > ind->prod_level)
-					? GetIndustrySpec(ind->type)->production_up_text
-					: GetIndustrySpec(ind->type)->production_down_text;
+				StringID str = (prod_level > ind->prod_level) ? GetIndustrySpec(ind->type)->production_up_text : GetIndustrySpec(ind->type)->production_down_text;
 
 				if (str > STR_LAST_STRINGID) {
 					headline = GetEncodedString(str, STR_TOWN_NAME, ind->town->index, GetIndustrySpec(ind->type)->name);
@@ -2211,8 +2228,7 @@ CommandCost CmdIndustrySetExclusivity(DoCommandFlags flags, IndustryID ind_id, O
 	Industry *ind = Industry::GetIfValid(ind_id);
 	if (ind == nullptr) return CMD_ERROR;
 
-	if (company_id != OWNER_NONE && company_id != INVALID_OWNER && company_id != OWNER_DEITY
-		&& !Company::IsValidID(company_id)) return CMD_ERROR;
+	if (company_id != OWNER_NONE && company_id != INVALID_OWNER && company_id != OWNER_DEITY && !Company::IsValidID(company_id)) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (consumer) {
@@ -2221,7 +2237,6 @@ CommandCost CmdIndustrySetExclusivity(DoCommandFlags flags, IndustryID ind_id, O
 			ind->exclusive_supplier = company_id;
 		}
 	}
-
 
 	return CommandCost();
 }
@@ -2279,9 +2294,8 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, bool *fo
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	uint32_t chance = ind_spc->appear_creation[to_underlying(_settings_game.game_creation.landscape)];
-	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
-			(_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) ||
-			(chance = GetIndustryProbabilityCallback(it, IACT_MAPGENERATION, chance)) == 0) {
+	if (!ind_spc->enabled || ind_spc->layouts.empty() || (_game_mode != GM_EDITOR && _settings_game.difficulty.industry_density == ID_FUND_ONLY) ||
+		(chance = GetIndustryProbabilityCallback(it, IACT_MAPGENERATION, chance)) == 0) {
 		*force_at_least_one = false;
 		return 0;
 	} else {
@@ -2310,10 +2324,8 @@ static uint16_t GetIndustryGamePlayProbability(IndustryType it, uint8_t *min_num
 
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	uint8_t chance = ind_spc->appear_ingame[to_underlying(_settings_game.game_creation.landscape)];
-	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
-			(ind_spc->behaviour.Test(IndustryBehaviour::Before1950) && TimerGameCalendar::year > 1950) ||
-			(ind_spc->behaviour.Test(IndustryBehaviour::After1960) && TimerGameCalendar::year < 1960) ||
-			(chance = GetIndustryProbabilityCallback(it, IACT_RANDOMCREATION, chance)) == 0) {
+	if (!ind_spc->enabled || ind_spc->layouts.empty() || (ind_spc->behaviour.Test(IndustryBehaviour::Before1950) && TimerGameCalendar::year > 1950) ||
+		(ind_spc->behaviour.Test(IndustryBehaviour::After1960) && TimerGameCalendar::year < 1960) || (chance = GetIndustryProbabilityCallback(it, IACT_RANDOMCREATION, chance)) == 0) {
 		*min_number = 0;
 		return 0;
 	}
@@ -2329,13 +2341,13 @@ static uint GetNumberOfIndustries()
 {
 	/* Number of industries on a 256x256 map. */
 	static const uint16_t numof_industry_table[] = {
-		0,    // none
-		0,    // minimal
-		10,   // very low
-		25,   // low
-		55,   // normal
-		80,   // high
-		0,    // custom
+		0, // none
+		0, // minimal
+		10, // very low
+		25, // low
+		55, // normal
+		80, // high
+		0, // custom
 	};
 
 	assert(lengthof(numof_industry_table) == ID_END);
@@ -2392,15 +2404,14 @@ static uint GetCurrentTotalNumberOfIndustries()
 	return total;
 }
 
-
 /** Reset the entry. */
 void IndustryTypeBuildData::Reset()
 {
-	this->probability  = 0;
-	this->min_number   = 0;
+	this->probability = 0;
+	this->min_number = 0;
 	this->target_count = 0;
-	this->max_wait     = 1;
-	this->wait_count   = 0;
+	this->max_wait = 1;
+	this->wait_count = 0;
 }
 
 /** Completely reset the industry build data. */
@@ -2553,7 +2564,7 @@ void IndustryBuildData::SetupTargetCount()
 	if (!changed) return; // All industries are still the same, no need to re-randomize.
 
 	/* Initialize the target counts. */
-	uint force_build = 0;  // Number of industries that should always be available.
+	uint force_build = 0; // Number of industries that should always be available.
 	uint32_t total_prob = 0; // Sum of probabilities.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		IndustryTypeBuildData *ibd = this->builddata + it;
@@ -2589,8 +2600,8 @@ void IndustryBuildData::TryBuildNewIndustry()
 {
 	this->SetupTargetCount();
 
-	int missing = 0;       // Number of industries that need to be build.
-	uint count = 0;        // Number of industry types eligible for build.
+	int missing = 0; // Number of industries that need to be build.
+	uint count = 0; // Number of industry types eligible for build.
 	uint32_t total_prob = 0; // Sum of probabilities.
 	IndustryType forced_build = NUM_INDUSTRYTYPES; // Industry type that should be forcibly build.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
@@ -2600,8 +2611,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 		if (difference > 0) {
 			if (Industry::GetIndustryTypeCount(it) == 0 && this->builddata[it].min_number > 0) {
 				/* An industry that should exist at least once, is not available. Force it, trying the most needed one first. */
-				if (forced_build == NUM_INDUSTRYTYPES ||
-						difference > this->builddata[forced_build].target_count - Industry::GetIndustryTypeCount(forced_build)) {
+				if (forced_build == NUM_INDUSTRYTYPES || difference > this->builddata[forced_build].target_count - Industry::GetIndustryTypeCount(forced_build)) {
 					forced_build = it;
 				}
 			}
@@ -2630,7 +2640,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 				if (r < (uint)difference) break;
 				r -= difference;
 			}
-			assert(it < NUM_INDUSTRYTYPES && this->builddata[it].target_count > Industry::GetIndustryTypeCount(it));
+			assert(it<NUM_INDUSTRYTYPES &&this->builddata[it].target_count> Industry::GetIndustryTypeCount(it));
 		}
 
 		/* Try to create the industry. */
@@ -2758,18 +2768,21 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoType cargo, i
 	NewsType nt;
 
 	switch (WhoCanServiceIndustry(ind)) {
-		case 0: nt = NewsType::IndustryNobody;  break;
-		case 1: nt = NewsType::IndustryOther;   break;
-		case 2: nt = NewsType::IndustryCompany; break;
-		default: NOT_REACHED();
+		case 0:
+			nt = NewsType::IndustryNobody;
+			break;
+		case 1:
+			nt = NewsType::IndustryOther;
+			break;
+		case 2:
+			nt = NewsType::IndustryCompany;
+			break;
+		default:
+			NOT_REACHED();
 	}
 	AddIndustryNewsItem(
-		GetEncodedString(percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
-			CargoSpec::Get(cargo)->name, ind->index, abs(percent)
-		),
-		nt,
-		ind->index
-	);
+		GetEncodedString(percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH, CargoSpec::Get(cargo)->name, ind->index, abs(percent)), nt,
+		ind->index);
 }
 
 static const uint PERCENT_TRANSPORTED_60 = 153;
@@ -2803,21 +2816,39 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grfid, GRFStringID(GB(GetRegister(0x100), 0, 16)));
 			res = GB(res, 0, 4);
 			switch (res) {
-				default: NOT_REACHED();
-				case 0x0: break;                  // Do nothing, but show the custom message if any
-				case 0x1: div = 1; break;         // Halve industry production. If production reaches the quarter of the default, the industry is closed instead.
-				case 0x2: mul = 1; break;         // Double industry production if it hasn't reached eight times of the original yet.
-				case 0x3: closeit = true; break;  // The industry announces imminent closure, and is physically removed from the map next month.
-				case 0x4: standard = true; break; // Do the standard random production change as if this industry was a primary one.
-				case 0x5: case 0x6: case 0x7:     // Divide production by 4, 8, 16
-				case 0x8: div = res - 0x3; break; // Divide production by 32
-				case 0x9: case 0xA: case 0xB:     // Multiply production by 4, 8, 16
-				case 0xC: mul = res - 0x7; break; // Multiply production by 32
-				case 0xD:                         // decrement production
-				case 0xE:                         // increment production
+				default:
+					NOT_REACHED();
+				case 0x0:
+					break; // Do nothing, but show the custom message if any
+				case 0x1:
+					div = 1;
+					break; // Halve industry production. If production reaches the quarter of the default, the industry is closed instead.
+				case 0x2:
+					mul = 1;
+					break; // Double industry production if it hasn't reached eight times of the original yet.
+				case 0x3:
+					closeit = true;
+					break; // The industry announces imminent closure, and is physically removed from the map next month.
+				case 0x4:
+					standard = true;
+					break; // Do the standard random production change as if this industry was a primary one.
+				case 0x5:
+				case 0x6:
+				case 0x7: // Divide production by 4, 8, 16
+				case 0x8:
+					div = res - 0x3;
+					break; // Divide production by 32
+				case 0x9:
+				case 0xA:
+				case 0xB: // Multiply production by 4, 8, 16
+				case 0xC:
+					mul = res - 0x7;
+					break; // Multiply production by 32
+				case 0xD: // decrement production
+				case 0xE: // increment production
 					increment = res == 0x0D ? -1 : 1;
 					break;
-				case 0xF:                         // Set production to third byte of register 0x100
+				case 0xF: // Set production to third byte of register 0x100
 					i->prod_level = Clamp(GB(GetRegister(0x100), 16, 8), PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
 					recalculate_multipliers = true;
 					break;
@@ -2857,7 +2888,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				 * the multiplier will always be -1 so they will only decrease. */
 				if (only_decrease) {
 					mult = -1;
-				/* For normal industries, if over 60% is transported, 33% chance for decrease.
+					/* For normal industries, if over 60% is transported, 33% chance for decrease.
 				 * Bonus for very high station ratings (over 80%): 16% chance for decrease. */
 				} else if (Chance16I(1, ((p.history[LAST_MONTH].PctTransported() > PERCENT_TRANSPORTED_80) ? 6 : 3), r)) {
 					mult *= -1;
@@ -2962,10 +2993,17 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			Game::NewEvent(new ScriptEventIndustryClose(i->index));
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
-				case 0: nt = NewsType::IndustryNobody;  break;
-				case 1: nt = NewsType::IndustryOther;   break;
-				case 2: nt = NewsType::IndustryCompany; break;
-				default: NOT_REACHED();
+				case 0:
+					nt = NewsType::IndustryNobody;
+					break;
+				case 1:
+					nt = NewsType::IndustryOther;
+					break;
+				case 2:
+					nt = NewsType::IndustryCompany;
+					break;
+				default:
+					NOT_REACHED();
 			}
 		}
 		/* Set parameters of news string */
@@ -2993,8 +3031,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
  * For small maps, it implies that less than one change per month is required, while on bigger maps,
  * it would be way more. The daily loop handles those changes.
  */
-static IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::INDUSTRY}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::INDUSTRY}, [](auto) {
 	_economy.industry_daily_change_counter += _economy.industry_daily_increment;
 
 	/* Bits 16-31 of industry_construction_counter contain the number of industries to change/create today,
@@ -3006,7 +3043,7 @@ static IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGameEcono
 	_economy.industry_daily_change_counter &= 0xFFFF;
 
 	if (change_loop == 0) {
-		return;  // Nothing to do? get out
+		return; // Nothing to do? get out
 	}
 
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
@@ -3035,8 +3072,7 @@ static IntervalTimer<TimerGameEconomy> _economy_industries_daily({TimerGameEcono
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
 });
 
-static IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::INDUSTRY}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::INDUSTRY}, [](auto) {
 	Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
 
 	_industry_builder.EconomyMonthlyLoop();
@@ -3056,7 +3092,6 @@ static IntervalTimer<TimerGameEconomy> _economy_industries_monthly({TimerGameEco
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, IDIWD_PRODUCTION_CHANGE);
 });
-
 
 void InitializeIndustries()
 {
@@ -3078,8 +3113,7 @@ void CheckIndustries()
 		if (chance == 0 || !force_at_least_one) continue; // Types that are not available can be skipped.
 
 		const IndustrySpec *is = GetIndustrySpec(it);
-		ShowErrorMessage(GetEncodedString(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES, is->name),
-			GetEncodedString(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION), WL_WARNING);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES, is->name), GetEncodedString(STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION), WL_WARNING);
 
 		count++;
 		if (count >= 3) break; // Don't swamp the user with errors.
@@ -3102,8 +3136,7 @@ bool IndustrySpec::IsRawIndustry() const
 bool IndustrySpec::IsProcessingIndustry() const
 {
 	/* Lumber mills are neither raw nor processing */
-	return this->life_type.Test(IndustryLifeType::Processing) &&
-			!this->behaviour.Test(IndustryBehaviour::CutTrees);
+	return this->life_type.Test(IndustryLifeType::Processing) && !this->behaviour.Test(IndustryBehaviour::CutTrees);
 }
 
 /**
@@ -3113,8 +3146,7 @@ bool IndustrySpec::IsProcessingIndustry() const
 Money IndustrySpec::GetConstructionCost() const
 {
 	/* Building raw industries like secondary uses different price base */
-	return (_price[(_settings_game.construction.raw_industry_construction == 1 && this->IsRawIndustry()) ?
-			PR_BUILD_INDUSTRY_RAW : PR_BUILD_INDUSTRY] * this->cost_multiplier) >> 8;
+	return (_price[(_settings_game.construction.raw_industry_construction == 1 && this->IsRawIndustry()) ? PR_BUILD_INDUSTRY_RAW : PR_BUILD_INDUSTRY] * this->cost_multiplier) >> 8;
 }
 
 /**
@@ -3135,12 +3167,9 @@ Money IndustrySpec::GetRemovalCost() const
 bool IndustrySpec::UsesOriginalEconomy() const
 {
 	return _settings_game.economy.type == ET_ORIGINAL ||
-		this->callback_mask.Any({
-			IndustryCallbackMask::Production256Ticks,
+		this->callback_mask.Any({IndustryCallbackMask::Production256Ticks,
 			IndustryCallbackMask::ProductionCargoArrival, // production callbacks
-			IndustryCallbackMask::MonthlyProdChange,
-			IndustryCallbackMask::ProductionChange,
-			IndustryCallbackMask::ProdChangeBuild}); // production change callbacks
+			IndustryCallbackMask::MonthlyProdChange, IndustryCallbackMask::ProductionChange, IndustryCallbackMask::ProdChangeBuild}); // production change callbacks
 }
 
 static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
@@ -3173,23 +3202,23 @@ static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlags flags, 
 }
 
 extern const TileTypeProcs _tile_type_industry_procs = {
-	DrawTile_Industry,           // draw_tile_proc
-	GetSlopePixelZ_Industry,     // get_slope_z_proc
-	ClearTile_Industry,          // clear_tile_proc
-	AddAcceptedCargo_Industry,   // add_accepted_cargo_proc
-	GetTileDesc_Industry,        // get_tile_desc_proc
+	DrawTile_Industry, // draw_tile_proc
+	GetSlopePixelZ_Industry, // get_slope_z_proc
+	ClearTile_Industry, // clear_tile_proc
+	AddAcceptedCargo_Industry, // add_accepted_cargo_proc
+	GetTileDesc_Industry, // get_tile_desc_proc
 	GetTileTrackStatus_Industry, // get_tile_track_status_proc
-	ClickTile_Industry,          // click_tile_proc
-	AnimateTile_Industry,        // animate_tile_proc
-	TileLoop_Industry,           // tile_loop_proc
-	ChangeTileOwner_Industry,    // change_tile_owner_proc
-	nullptr,                        // add_produced_cargo_proc
-	nullptr,                        // vehicle_enter_tile_proc
-	GetFoundation_Industry,      // get_foundation_proc
-	TerraformTile_Industry,      // terraform_tile_proc
+	ClickTile_Industry, // click_tile_proc
+	AnimateTile_Industry, // animate_tile_proc
+	TileLoop_Industry, // tile_loop_proc
+	ChangeTileOwner_Industry, // change_tile_owner_proc
+	nullptr, // add_produced_cargo_proc
+	nullptr, // vehicle_enter_tile_proc
+	GetFoundation_Industry, // get_foundation_proc
+	TerraformTile_Industry, // terraform_tile_proc
 };
 
-bool IndustryCompare::operator() (const IndustryListEntry &lhs, const IndustryListEntry &rhs) const
+bool IndustryCompare::operator()(const IndustryListEntry &lhs, const IndustryListEntry &rhs) const
 {
 	/* Compare by distance first and use index as a tiebreaker. */
 	return std::tie(lhs.distance, lhs.industry->index) < std::tie(rhs.distance, rhs.industry->index);
@@ -3201,11 +3230,15 @@ bool IndustryCompare::operator() (const IndustryListEntry &lhs, const IndustryLi
  */
 void TrimIndustryAcceptedProduced(Industry *ind)
 {
-	auto ita = std::find_if(std::rbegin(ind->accepted), std::rend(ind->accepted), [](const auto &a) { return IsValidCargoType(a.cargo); });
+	auto ita = std::find_if(std::rbegin(ind->accepted), std::rend(ind->accepted), [](const auto &a) {
+		return IsValidCargoType(a.cargo);
+	});
 	ind->accepted.erase(ita.base(), std::end(ind->accepted));
 	ind->accepted.shrink_to_fit();
 
-	auto itp = std::find_if(std::rbegin(ind->produced), std::rend(ind->produced), [](const auto &p) { return IsValidCargoType(p.cargo); });
+	auto itp = std::find_if(std::rbegin(ind->produced), std::rend(ind->produced), [](const auto &p) {
+		return IsValidCargoType(p.cargo);
+	});
 	ind->produced.erase(itp.base(), std::end(ind->produced));
 	ind->produced.shrink_to_fit();
 }

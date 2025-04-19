@@ -11,8 +11,8 @@
 #define ORDER_CMD_H
 
 #include "command_type.h"
-#include "order_base.h"
 #include "misc/endian_buffer.hpp"
+#include "order_base.h"
 
 CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID sel_ord, ModifyOrderFlags mof, uint16_t data);
 CommandCost CmdSkipToOrder(DoCommandFlags flags, VehicleID veh_id, VehicleOrderID sel_ord);
@@ -23,22 +23,22 @@ CommandCost CmdCloneOrder(DoCommandFlags flags, CloneOptions action, VehicleID v
 CommandCost CmdMoveOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
 CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID user_id);
 
-DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
-DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CommandFlag::ClientID, CMDT_SERVER_SETTING)
+DEF_CMD_TRAIT(CMD_MODIFY_ORDER, CmdModifyOrder, CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER, CmdSkipToOrder, CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_DELETE_ORDER, CmdDeleteOrder, CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_INSERT_ORDER, CmdInsertOrder, CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_ORDER_REFIT, CmdOrderRefit, CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CLONE_ORDER, CmdCloneOrder, CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_MOVE_ORDER, CmdMoveOrder, CommandFlag::Location, CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup, CommandFlag::ClientID, CMDT_SERVER_SETTING)
 
 template <typename Tcont, typename Titer>
-inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)
+inline EndianBufferWriter<Tcont, Titer> &operator<<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)
 {
 	return buffer << order.type << order.flags << order.dest.value << order.refit_cargo << order.wait_time << order.travel_time << order.max_speed;
 }
 
-inline EndianBufferReader &operator >>(EndianBufferReader &buffer, Order &order)
+inline EndianBufferReader &operator>>(EndianBufferReader &buffer, Order &order)
 {
 	return buffer >> order.type >> order.flags >> order.dest.value >> order.refit_cargo >> order.wait_time >> order.travel_time >> order.max_speed;
 }

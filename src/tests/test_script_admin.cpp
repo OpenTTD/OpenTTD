@@ -9,18 +9,16 @@
 
 #include "../stdafx.h"
 
+#include <squirrel.h>
 #include "../3rdparty/catch2/catch.hpp"
+#include "../3rdparty/fmt/format.h"
+#include "../3rdparty/nlohmann/json.hpp"
 
 #include "../game/game_instance.hpp"
 #include "../script/api/script_admin.hpp"
 #include "../script/api/script_event_types.hpp"
 #include "../script/script_instance.hpp"
 #include "../script/squirrel.hpp"
-
-#include "../3rdparty/fmt/format.h"
-#include "../3rdparty/nlohmann/json.hpp"
-
-#include <squirrel.h>
 
 #include "../safeguards.h"
 

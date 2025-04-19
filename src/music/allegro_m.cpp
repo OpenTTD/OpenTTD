@@ -9,13 +9,16 @@
 
 #ifdef WITH_ALLEGRO
 
-#include "../stdafx.h"
-#include "../debug.h"
-#include "allegro_m.h"
-#include "midifile.hpp"
-#include <allegro.h>
+#	include "../stdafx.h"
 
-#include "../safeguards.h"
+#	include "allegro_m.h"
+
+#	include <allegro.h>
+
+#	include "../debug.h"
+#	include "midifile.hpp"
+
+#	include "../safeguards.h"
 
 static FMusicDriver_Allegro iFMusicDriver_Allegro;
 static MIDI *_midi = nullptr;

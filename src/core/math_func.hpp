@@ -186,8 +186,7 @@ constexpr To ClampTo(From value)
 		/* The output is a signed number. */
 		if constexpr (std::numeric_limits<From>::is_signed) {
 			/* Both input and output are signed. */
-			return static_cast<To>(std::clamp<BiggerType>(value,
-					std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+			return static_cast<To>(std::clamp<BiggerType>(value, std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
 		}
 
 		/* The input is unsigned, so skip the minimum check and use unsigned variant of the biggest type as intermediate type. */
@@ -206,8 +205,7 @@ constexpr To ClampTo(From value)
 
 		/* The output type is smaller than the input type. */
 		using BiggerSignedType = typename std::make_signed<BiggerType>::type;
-		return static_cast<To>(std::clamp<BiggerSignedType>(value,
-				std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
+		return static_cast<To>(std::clamp<BiggerSignedType>(value, std::numeric_limits<To>::lowest(), std::numeric_limits<To>::max()));
 	}
 
 	/* The input and output are unsigned, just clamp at the high side. */
@@ -269,7 +267,10 @@ constexpr bool IsInsideMM(const size_t x, const size_t min, const size_t max) no
 	return static_cast<size_t>(x - min) < (max - min);
 }
 
-constexpr bool IsInsideMM(const ConvertibleThroughBase auto x, const size_t min, const size_t max) noexcept { return IsInsideMM(x.base(), min, max); }
+constexpr bool IsInsideMM(const ConvertibleThroughBase auto x, const size_t min, const size_t max) noexcept
+{
+	return IsInsideMM(x.base(), min, max);
+}
 
 /**
  * Converts a "fract" value 0..255 to "percent" value 0..100

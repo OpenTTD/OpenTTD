@@ -8,52 +8,50 @@
 /** @file company_gui.cpp %Company related GUIs. */
 
 #include "stdafx.h"
-#include "currency.h"
-#include "error.h"
-#include "gui.h"
-#include "window_gui.h"
-#include "textbuf_gui.h"
-#include "viewport_func.h"
-#include "company_func.h"
-#include "command_func.h"
-#include "network/network.h"
-#include "network/network_gui.h"
-#include "network/network_func.h"
-#include "newgrf.h"
-#include "company_manager_face.h"
-#include "strings_func.h"
-#include "timer/timer_game_economy.h"
-#include "dropdown_type.h"
-#include "tilehighlight_func.h"
-#include "company_base.h"
+
 #include "core/geometry_func.hpp"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_cmd.h"
+#include "company_func.h"
+#include "company_manager_face.h"
+#include "currency.h"
+#include "dropdown_common_type.h"
+#include "dropdown_type.h"
+#include "economy_cmd.h"
+#include "engine_base.h"
+#include "error.h"
+#include "group_cmd.h"
+#include "group_gui.h"
+#include "gui.h"
+#include "misc_cmd.h"
+#include "network/network.h"
+#include "network/network_func.h"
+#include "network/network_gui.h"
+#include "newgrf.h"
+#include "object_cmd.h"
 #include "object_type.h"
 #include "rail.h"
 #include "road.h"
-#include "engine_base.h"
-#include "window_func.h"
 #include "road_func.h"
-#include "water.h"
-#include "station_func.h"
-#include "zoom_func.h"
 #include "sortlist_type.h"
-#include "company_cmd.h"
-#include "economy_cmd.h"
-#include "group_cmd.h"
-#include "group_gui.h"
-#include "misc_cmd.h"
-#include "object_cmd.h"
+#include "station_func.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "tilehighlight_func.h"
 #include "timer/timer.h"
+#include "timer/timer_game_economy.h"
 #include "timer/timer_window.h"
+#include "viewport_func.h"
+#include "water.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/company_widget.h"
-
 #include "table/strings.h"
 
-#include "dropdown_common_type.h"
-
 #include "safeguards.h"
-
 
 /** Company GUI constants. */
 static void DoSelectCompanyManagerFace(Window *parent);
@@ -89,9 +87,7 @@ struct ExpensesList {
 	const StringID title; ///< StringID of list title.
 	const std::initializer_list<ExpensesType> &items; ///< List of expenses types.
 
-	ExpensesList(StringID title, const std::initializer_list<ExpensesType> &list) : title(title), items(list)
-	{
-	}
+	ExpensesList(StringID title, const std::initializer_list<ExpensesType> &list) : title(title), items(list) {}
 
 	uint GetHeight() const
 	{
@@ -112,9 +108,9 @@ struct ExpensesList {
 
 /** Types of expense lists */
 static const std::initializer_list<ExpensesList> _expenses_list_types = {
-	{ STR_FINANCES_REVENUE_TITLE,            _expenses_list_revenue },
-	{ STR_FINANCES_OPERATING_EXPENSES_TITLE, _expenses_list_operating_costs },
-	{ STR_FINANCES_CAPITAL_EXPENSES_TITLE,   _expenses_list_capital_costs },
+	{STR_FINANCES_REVENUE_TITLE, _expenses_list_revenue},
+	{STR_FINANCES_OPERATING_EXPENSES_TITLE, _expenses_list_operating_costs},
+	{STR_FINANCES_CAPITAL_EXPENSES_TITLE, _expenses_list_capital_costs},
 };
 
 /**
@@ -252,7 +248,6 @@ static Money DrawYearCategory(const Rect &r, int start_y, const ExpensesList &li
 	/* Return the sum for the yearly total. */
 	return sum;
 }
-
 
 /**
  * Draw a column with prices.
@@ -396,7 +391,7 @@ struct CompanyFinancesWindow : Window {
 	{
 		switch (widget) {
 			case WID_CF_EXPS_CATEGORY:
-				size.width  = GetMaxCategoriesWidth();
+				size.width = GetMaxCategoriesWidth();
 				size.height = GetTotalCategoriesHeight();
 				break;
 
@@ -525,7 +520,9 @@ struct CompanyFinancesWindow : Window {
 			const Company *c = Company::Get(this->window_number);
 			const Expenses &expenses = c->yearly_expenses[NUM_PERIODS - period - 1];
 			/* Show expenses column if it has any non-zero value in it. */
-			if (std::ranges::any_of(expenses, [](const Money &value) { return value != 0; })) {
+			if (std::ranges::any_of(expenses, [](const Money &value) {
+					return value != 0;
+				})) {
 				this->first_visible = period;
 				break;
 			}
@@ -542,24 +539,19 @@ struct CompanyFinancesWindow : Window {
 	 * If it has, rescale the window to fit the new amount.
 	 */
 	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
-		const Company *c = Company::Get(this->window_number);
-		if (c->money > CompanyFinancesWindow::max_money) {
-			CompanyFinancesWindow::max_money = std::max(c->money * 2, CompanyFinancesWindow::max_money * 4);
-			this->SetupWidgets();
-			this->ReInit();
-		}
-	}};
+													   const Company *c = Company::Get(this->window_number);
+													   if (c->money > CompanyFinancesWindow::max_money) {
+														   CompanyFinancesWindow::max_money = std::max(c->money * 2, CompanyFinancesWindow::max_money * 4);
+														   this->SetupWidgets();
+														   this->ReInit();
+													   }
+												   }};
 };
 
 /** First conservative estimate of the maximum amount of money */
 Money CompanyFinancesWindow::max_money = INT32_MAX;
 
-static WindowDesc _company_finances_desc(
-	WDP_AUTO, "company_finances", 0, 0,
-	WC_FINANCES, WC_NONE,
-	{},
-	_nested_company_finances_widgets
-);
+static WindowDesc _company_finances_desc(WDP_AUTO, "company_finances", 0, 0, WC_FINANCES, WC_NONE, {}, _nested_company_finances_widgets);
 
 /**
  * Open the finances window of a company.
@@ -577,11 +569,28 @@ void ShowCompanyFinances(CompanyID company)
 /* Association of liveries to livery classes */
 static const LiveryClass _livery_class[LS_END] = {
 	LC_OTHER,
-	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,
-	LC_ROAD, LC_ROAD,
-	LC_SHIP, LC_SHIP,
-	LC_AIRCRAFT, LC_AIRCRAFT, LC_AIRCRAFT,
-	LC_ROAD, LC_ROAD,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_RAIL,
+	LC_ROAD,
+	LC_ROAD,
+	LC_SHIP,
+	LC_SHIP,
+	LC_AIRCRAFT,
+	LC_AIRCRAFT,
+	LC_AIRCRAFT,
+	LC_ROAD,
+	LC_ROAD,
 };
 
 /**
@@ -592,7 +601,8 @@ template <SpriteID TSprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
 	DropDownListColourItem(int colour, bool masked) :
-			DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GetColourPalette(static_cast<Colours>(colour % COLOUR_END)), GetString(colour < COLOUR_END ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
+		DropDownIcon<DropDownString<DropDownListItem>>(
+			TSprite, GetColourPalette(static_cast<Colours>(colour % COLOUR_END)), GetString(colour < COLOUR_END ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
 	{
 	}
 };
@@ -719,11 +729,20 @@ public:
 		this->RaiseWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
 		const Group *g = Group::Get(group);
 		switch (g->vehicle_type) {
-			case VEH_TRAIN: this->livery_class = LC_GROUP_RAIL; break;
-			case VEH_ROAD: this->livery_class = LC_GROUP_ROAD; break;
-			case VEH_SHIP: this->livery_class = LC_GROUP_SHIP; break;
-			case VEH_AIRCRAFT: this->livery_class = LC_GROUP_AIRCRAFT; break;
-			default: NOT_REACHED();
+			case VEH_TRAIN:
+				this->livery_class = LC_GROUP_RAIL;
+				break;
+			case VEH_ROAD:
+				this->livery_class = LC_GROUP_ROAD;
+				break;
+			case VEH_SHIP:
+				this->livery_class = LC_GROUP_SHIP;
+				break;
+			case VEH_AIRCRAFT:
+				this->livery_class = LC_GROUP_AIRCRAFT;
+				break;
+			default:
+				NOT_REACHED();
 		}
 		this->sel = group.base();
 		this->LowerWidget(WID_SCL_CLASS_GENERAL + this->livery_class);
@@ -871,7 +890,7 @@ public:
 
 		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
 		int square_offs = (ir.Height() - this->square.height) / 2;
-		int text_offs   = (ir.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_offs = (ir.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		int y = ir.top;
 
@@ -882,12 +901,14 @@ public:
 
 			/* Text below the first dropdown. */
 			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour1), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + livery.colour1 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+			DrawString(
+				pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + livery.colour1 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
 				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour2), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + livery.colour2 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
+				DrawString(
+					sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + livery.colour2 : STR_COLOUR_DEFAULT, is_selected ? TC_WHITE : TC_GOLD);
 			}
 
 			y += this->line_height;
@@ -911,7 +932,7 @@ public:
 			}
 
 			if (this->vscroll->GetCount() == 0) {
-				const StringID empty_labels[] = { STR_LIVERY_TRAIN_GROUP_EMPTY, STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY, STR_LIVERY_SHIP_GROUP_EMPTY, STR_LIVERY_AIRCRAFT_GROUP_EMPTY };
+				const StringID empty_labels[] = {STR_LIVERY_TRAIN_GROUP_EMPTY, STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY, STR_LIVERY_SHIP_GROUP_EMPTY, STR_LIVERY_AIRCRAFT_GROUP_EMPTY};
 				VehicleType vtype = (VehicleType)(this->livery_class - LC_GROUP_RAIL);
 				DrawString(ir.left, ir.right, y + text_offs, empty_labels[vtype], TC_BLACK);
 			}
@@ -1103,12 +1124,7 @@ static constexpr NWidgetPart _nested_select_company_livery_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _select_company_livery_desc(
-	WDP_AUTO, "company_color_scheme", 0, 0,
-	WC_COMPANY_COLOUR, WC_NONE,
-	{},
-	_nested_select_company_livery_widgets
-);
+static WindowDesc _select_company_livery_desc(WDP_AUTO, "company_color_scheme", 0, 0, WC_COMPANY_COLOUR, WC_NONE, {}, _nested_select_company_livery_widgets);
 
 void ShowCompanyLiveryWindow(CompanyID company, GroupID group)
 {
@@ -1135,9 +1151,9 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 	int x = CentreBounds(r.left, r.right, d.width);
 	int y = CentreBounds(r.top, r.bottom, d.height);
 
-	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_moustache = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE, ge) != 0;
 	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
-	bool has_glasses     = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
+	bool has_glasses = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
 	PaletteID pal;
 
 	/* Modify eye colour palette only if 2 or more valid values exist */
@@ -1145,10 +1161,17 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 		pal = PAL_NONE;
 	} else {
 		switch (GetCompanyManagerFaceBits(cmf, CMFV_EYE_COLOUR, ge)) {
-			default: NOT_REACHED();
-			case 0: pal = PALETTE_TO_BROWN; break;
-			case 1: pal = PALETTE_TO_BLUE;  break;
-			case 2: pal = PALETTE_TO_GREEN; break;
+			default:
+				NOT_REACHED();
+			case 0:
+				pal = PALETTE_TO_BROWN;
+				break;
+			case 1:
+				pal = PALETTE_TO_BLUE;
+				break;
+			case 2:
+				pal = PALETTE_TO_GREEN;
+				break;
 		}
 	}
 
@@ -1157,12 +1180,21 @@ void DrawCompanyManagerFace(CompanyManagerFace cmf, Colours colour, const Rect &
 
 	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
 		switch (cmfv) {
-			case CMFV_MOUSTACHE:   if (!has_moustache)   continue; break;
+			case CMFV_MOUSTACHE:
+				if (!has_moustache) continue;
+				break;
 			case CMFV_LIPS:
-			case CMFV_NOSE:        if (has_moustache)    continue; break;
-			case CMFV_TIE_EARRING: if (!has_tie_earring) continue; break;
-			case CMFV_GLASSES:     if (!has_glasses)     continue; break;
-			default: break;
+			case CMFV_NOSE:
+				if (has_moustache) continue;
+				break;
+			case CMFV_TIE_EARRING:
+				if (!has_tie_earring) continue;
+				break;
+			case CMFV_GLASSES:
+				if (!has_glasses) continue;
+				break;
+			default:
+				break;
 		}
 		DrawSprite(GetCompanyManagerFaceSprite(cmf, cmfv, ge), (cmfv == CMFV_EYEBROWS) ? pal : PAL_NONE, x, y);
 	}
@@ -1328,16 +1360,15 @@ static constexpr NWidgetPart _nested_select_company_manager_face_widgets[] = {
 /* clang-format on */
 
 /** Management class for customizing the face of the company manager. */
-class SelectCompanyManagerFaceWindow : public Window
-{
+class SelectCompanyManagerFaceWindow : public Window {
 	CompanyManagerFace face{}; ///< company manager face bits
 	bool advanced = false; ///< advanced company manager face selection window
 
 	GenderEthnicity ge{}; ///< Gender and ethnicity.
-	bool is_female = false;     ///< Female face.
+	bool is_female = false; ///< Female face.
 	bool is_moust_male = false; ///< Male face with a moustache.
 
-	Dimension yesno_dim{};  ///< Dimension of a yes/no button of a part in the advanced face window.
+	Dimension yesno_dim{}; ///< Dimension of a yes/no button of a part in the advanced face window.
 	Dimension number_dim{}; ///< Dimension of a number widget of a part in the advanced face window.
 
 	/**
@@ -1407,7 +1438,7 @@ public:
 	{
 		/* Size of the boolean yes/no button. */
 		Dimension yesno_dim = maxdim(GetStringBoundingBox(STR_FACE_YES), GetStringBoundingBox(STR_FACE_NO));
-		yesno_dim.width  += WidgetDimensions::scaled.framerect.Horizontal();
+		yesno_dim.width += WidgetDimensions::scaled.framerect.Horizontal();
 		yesno_dim.height += WidgetDimensions::scaled.framerect.Vertical();
 		/* Size of the number button + arrows. */
 		Dimension number_dim = {0, 0};
@@ -1471,59 +1502,50 @@ public:
 	{
 		/* lower the non-selected gender button */
 		this->SetWidgetsLoweredState(!this->is_female, WID_SCMF_MALE, WID_SCMF_MALE2);
-		this->SetWidgetsLoweredState( this->is_female, WID_SCMF_FEMALE, WID_SCMF_FEMALE2);
+		this->SetWidgetsLoweredState(this->is_female, WID_SCMF_FEMALE, WID_SCMF_FEMALE2);
 
 		/* advanced company manager face selection window */
 
 		/* lower the non-selected ethnicity button */
 		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
-		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
-
+		this->SetWidgetLoweredState(WID_SCMF_ETHNICITY_AFR, HasBit(this->ge, ETHNICITY_BLACK));
 
 		/* Disable dynamically the widgets which CompanyManagerFaceVariable has less than 2 options
 		 * (or in other words you haven't any choice).
 		 * If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
 
 		/* Eye colour buttons */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_EYE_COLOUR].valid_values[this->ge] < 2,
-				WID_SCMF_EYECOLOUR, WID_SCMF_EYECOLOUR_L, WID_SCMF_EYECOLOUR_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_EYE_COLOUR].valid_values[this->ge] < 2, WID_SCMF_EYECOLOUR, WID_SCMF_EYECOLOUR_L, WID_SCMF_EYECOLOUR_R);
 
 		/* Chin buttons */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_CHIN].valid_values[this->ge] < 2,
-				WID_SCMF_CHIN, WID_SCMF_CHIN_L, WID_SCMF_CHIN_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_CHIN].valid_values[this->ge] < 2, WID_SCMF_CHIN, WID_SCMF_CHIN_L, WID_SCMF_CHIN_R);
 
 		/* Eyebrows buttons */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_EYEBROWS].valid_values[this->ge] < 2,
-				WID_SCMF_EYEBROWS, WID_SCMF_EYEBROWS_L, WID_SCMF_EYEBROWS_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_EYEBROWS].valid_values[this->ge] < 2, WID_SCMF_EYEBROWS, WID_SCMF_EYEBROWS_L, WID_SCMF_EYEBROWS_R);
 
 		/* Lips or (if it a male face with a moustache) moustache buttons */
-		this->SetWidgetsDisabledState(_cmf_info[this->is_moust_male ? CMFV_MOUSTACHE : CMFV_LIPS].valid_values[this->ge] < 2,
-				WID_SCMF_LIPS_MOUSTACHE, WID_SCMF_LIPS_MOUSTACHE_L, WID_SCMF_LIPS_MOUSTACHE_R);
+		this->SetWidgetsDisabledState(
+			_cmf_info[this->is_moust_male ? CMFV_MOUSTACHE : CMFV_LIPS].valid_values[this->ge] < 2, WID_SCMF_LIPS_MOUSTACHE, WID_SCMF_LIPS_MOUSTACHE_L, WID_SCMF_LIPS_MOUSTACHE_R);
 
 		/* Nose buttons | male faces with moustache haven't any nose options */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_NOSE].valid_values[this->ge] < 2 || this->is_moust_male,
-				WID_SCMF_NOSE, WID_SCMF_NOSE_L, WID_SCMF_NOSE_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_NOSE].valid_values[this->ge] < 2 || this->is_moust_male, WID_SCMF_NOSE, WID_SCMF_NOSE_L, WID_SCMF_NOSE_R);
 
 		/* Hair buttons */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_HAIR].valid_values[this->ge] < 2,
-				WID_SCMF_HAIR, WID_SCMF_HAIR_L, WID_SCMF_HAIR_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_HAIR].valid_values[this->ge] < 2, WID_SCMF_HAIR, WID_SCMF_HAIR_L, WID_SCMF_HAIR_R);
 
 		/* Jacket buttons */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_JACKET].valid_values[this->ge] < 2,
-				WID_SCMF_JACKET, WID_SCMF_JACKET_L, WID_SCMF_JACKET_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_JACKET].valid_values[this->ge] < 2, WID_SCMF_JACKET, WID_SCMF_JACKET_L, WID_SCMF_JACKET_R);
 
 		/* Collar buttons */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_COLLAR].valid_values[this->ge] < 2,
-				WID_SCMF_COLLAR, WID_SCMF_COLLAR_L, WID_SCMF_COLLAR_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_COLLAR].valid_values[this->ge] < 2, WID_SCMF_COLLAR, WID_SCMF_COLLAR_L, WID_SCMF_COLLAR_R);
 
 		/* Tie/earring buttons | female faces without earring haven't any earring options */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_TIE_EARRING].valid_values[this->ge] < 2 ||
-					(this->is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge) == 0),
-				WID_SCMF_TIE_EARRING, WID_SCMF_TIE_EARRING_L, WID_SCMF_TIE_EARRING_R);
+		this->SetWidgetsDisabledState(_cmf_info[CMFV_TIE_EARRING].valid_values[this->ge] < 2 || (this->is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge) == 0),
+			WID_SCMF_TIE_EARRING, WID_SCMF_TIE_EARRING_L, WID_SCMF_TIE_EARRING_R);
 
 		/* Glasses buttons | faces without glasses haven't any glasses options */
-		this->SetWidgetsDisabledState(_cmf_info[CMFV_GLASSES].valid_values[this->ge] < 2 || GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge) == 0,
-				WID_SCMF_GLASSES, WID_SCMF_GLASSES_L, WID_SCMF_GLASSES_R);
+		this->SetWidgetsDisabledState(
+			_cmf_info[CMFV_GLASSES].valid_values[this->ge] < 2 || GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge) == 0, WID_SCMF_GLASSES, WID_SCMF_GLASSES_L, WID_SCMF_GLASSES_R);
 
 		this->DrawWidgets();
 	}
@@ -1545,31 +1567,31 @@ public:
 			}
 
 			case WID_SCMF_HAS_GLASSES:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true );
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge), true);
 
 			case WID_SCMF_HAIR:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_HAIR,        this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_HAIR, this->ge), false);
 
 			case WID_SCMF_EYEBROWS:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS,    this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS, this->ge), false);
 
 			case WID_SCMF_EYECOLOUR:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR,  this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR, this->ge), false);
 
 			case WID_SCMF_GLASSES:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_GLASSES,     this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_GLASSES, this->ge), false);
 
 			case WID_SCMF_NOSE:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_NOSE,        this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_NOSE, this->ge), false);
 
 			case WID_SCMF_CHIN:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_CHIN,        this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_CHIN, this->ge), false);
 
 			case WID_SCMF_JACKET:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_JACKET,      this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_JACKET, this->ge), false);
 
 			case WID_SCMF_COLLAR:
-				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,      this->ge), false);
+				return this->GetFaceString(widget, GetCompanyManagerFaceBits(this->face, CMFV_COLLAR, this->ge), false);
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -1663,25 +1685,51 @@ public:
 
 					if (widget < WID_SCMF_EYECOLOUR_L) { // Bool buttons
 						switch (widget - WID_SCMF_HAS_MOUSTACHE_EARRING) {
-							default: NOT_REACHED();
-							case 0: cmfv = this->is_female ? CMFV_HAS_TIE_EARRING : CMFV_HAS_MOUSTACHE; break; // Has earring/moustache button
-							case 1: cmfv = CMFV_HAS_GLASSES; break; // Has glasses button
+							default:
+								NOT_REACHED();
+							case 0:
+								cmfv = this->is_female ? CMFV_HAS_TIE_EARRING : CMFV_HAS_MOUSTACHE;
+								break; // Has earring/moustache button
+							case 1:
+								cmfv = CMFV_HAS_GLASSES;
+								break; // Has glasses button
 						}
 						SetCompanyManagerFaceBits(this->face, cmfv, this->ge, !GetCompanyManagerFaceBits(this->face, cmfv, this->ge));
 						ScaleAllCompanyManagerFaceBits(this->face);
 					} else { // Value buttons
 						switch ((widget - WID_SCMF_EYECOLOUR_L) / 3) {
-							default: NOT_REACHED();
-							case 0: cmfv = CMFV_EYE_COLOUR; break;  // Eye colour buttons
-							case 1: cmfv = CMFV_CHIN; break;        // Chin buttons
-							case 2: cmfv = CMFV_EYEBROWS; break;    // Eyebrows buttons
-							case 3: cmfv = this->is_moust_male ? CMFV_MOUSTACHE : CMFV_LIPS; break; // Moustache or lips buttons
-							case 4: cmfv = CMFV_NOSE; break;        // Nose buttons
-							case 5: cmfv = CMFV_HAIR; break;        // Hair buttons
-							case 6: cmfv = CMFV_JACKET; break;      // Jacket buttons
-							case 7: cmfv = CMFV_COLLAR; break;      // Collar buttons
-							case 8: cmfv = CMFV_TIE_EARRING; break; // Tie/earring buttons
-							case 9: cmfv = CMFV_GLASSES; break;     // Glasses buttons
+							default:
+								NOT_REACHED();
+							case 0:
+								cmfv = CMFV_EYE_COLOUR;
+								break; // Eye colour buttons
+							case 1:
+								cmfv = CMFV_CHIN;
+								break; // Chin buttons
+							case 2:
+								cmfv = CMFV_EYEBROWS;
+								break; // Eyebrows buttons
+							case 3:
+								cmfv = this->is_moust_male ? CMFV_MOUSTACHE : CMFV_LIPS;
+								break; // Moustache or lips buttons
+							case 4:
+								cmfv = CMFV_NOSE;
+								break; // Nose buttons
+							case 5:
+								cmfv = CMFV_HAIR;
+								break; // Hair buttons
+							case 6:
+								cmfv = CMFV_JACKET;
+								break; // Jacket buttons
+							case 7:
+								cmfv = CMFV_COLLAR;
+								break; // Collar buttons
+							case 8:
+								cmfv = CMFV_TIE_EARRING;
+								break; // Tie/earring buttons
+							case 9:
+								cmfv = CMFV_GLASSES;
+								break; // Glasses buttons
 						}
 						/* 0 == left (_L), 1 == middle or 2 == right (_R) - button click */
 						IncreaseCompanyManagerFaceBits(this->face, cmfv, this->ge, (((widget - WID_SCMF_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
@@ -1710,12 +1758,7 @@ public:
 };
 
 /** Company manager face selection window description */
-static WindowDesc _select_company_manager_face_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_COMPANY_MANAGER_FACE, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_select_company_manager_face_widgets
-);
+static WindowDesc _select_company_manager_face_desc(WDP_AUTO, nullptr, 0, 0, WC_COMPANY_MANAGER_FACE, WC_NONE, WindowDefaultFlag::Construction, _nested_select_company_manager_face_widgets);
 
 /**
  * Open the simple/advanced company manager face selection window
@@ -1754,8 +1797,7 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 /**
  * Window with detailed information about the company's infrastructure.
  */
-struct CompanyInfrastructureWindow : Window
-{
+struct CompanyInfrastructureWindow : Window {
 	enum class InfrastructureItemType : uint8_t {
 		Header, ///< Section header.
 		Spacer, ///< Spacer
@@ -1941,7 +1983,8 @@ struct CompanyInfrastructureWindow : Window
 		this->count_width = GetStringBoundingBox(GetString(STR_JUST_COMMA, max_count)).width;
 
 		if (_settings_game.economy.infrastructure_maintenance) {
-			this->cost_width = GetStringBoundingBox(GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, max_cost)).width;
+			this->cost_width =
+				GetStringBoundingBox(GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, max_cost)).width;
 		} else {
 			this->cost_width = 0;
 		}
@@ -1978,14 +2021,16 @@ struct CompanyInfrastructureWindow : Window
 				case InfrastructureItemType::Total:
 					/* Draw line in the spacer above the total. */
 					GfxFillRect(costr.Translate(0, -WidgetDimensions::scaled.vsep_normal).WithHeight(WidgetDimensions::scaled.fullbevel.top), PC_WHITE);
-					DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TC_BLACK, SA_RIGHT | SA_FORCE);
+					DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12),
+						TC_BLACK, SA_RIGHT | SA_FORCE);
 					break;
 
 				case InfrastructureItemType::Value:
 					DrawString(labelr.Indent(WidgetDimensions::scaled.hsep_indent, rtl), GetString(it->label), TC_WHITE);
 					DrawString(countr, GetString(STR_JUST_COMMA, it->count), TC_WHITE, SA_RIGHT | SA_FORCE);
 					if (_settings_game.economy.infrastructure_maintenance) {
-						DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12), TC_BLACK, SA_RIGHT | SA_FORCE);
+						DrawString(costr, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR, it->cost * 12),
+							TC_BLACK, SA_RIGHT | SA_FORCE);
 					}
 					break;
 			}
@@ -1997,9 +2042,9 @@ struct CompanyInfrastructureWindow : Window
 	}
 
 	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(1), [this](auto) {
-		this->UpdateInfrastructureList();
-		this->SetWidgetDirty(WID_CI_LIST);
-	}};
+													  this->UpdateInfrastructureList();
+													  this->SetWidgetDirty(WID_CI_LIST);
+												  }};
 
 	void OnResize() override
 	{
@@ -2019,12 +2064,7 @@ struct CompanyInfrastructureWindow : Window
 	}
 };
 
-static WindowDesc _company_infrastructure_desc(
-	WDP_AUTO, "company_infrastructure", 0, 0,
-	WC_COMPANY_INFRASTRUCTURE, WC_NONE,
-	{},
-	_nested_company_infrastructure_widgets
-);
+static WindowDesc _company_infrastructure_desc(WDP_AUTO, "company_infrastructure", 0, 0, WC_COMPANY_INFRASTRUCTURE, WC_NONE, {}, _nested_company_infrastructure_widgets);
 
 /**
  * Open the infrastructure window of a company.
@@ -2115,26 +2155,23 @@ static constexpr NWidgetPart _nested_company_widgets[] = {
 /* clang-format on */
 
 /** Strings for the company vehicle counts */
-static const StringID _company_view_vehicle_count_strings[] = {
-	STR_COMPANY_VIEW_TRAINS, STR_COMPANY_VIEW_ROAD_VEHICLES, STR_COMPANY_VIEW_SHIPS, STR_COMPANY_VIEW_AIRCRAFT
-};
+static const StringID _company_view_vehicle_count_strings[] = {STR_COMPANY_VIEW_TRAINS, STR_COMPANY_VIEW_ROAD_VEHICLES, STR_COMPANY_VIEW_SHIPS, STR_COMPANY_VIEW_AIRCRAFT};
 
 /**
  * Window with general information about a company
  */
-struct CompanyWindow : Window
-{
+struct CompanyWindow : Window {
 	CompanyWidgets query_widget{};
 
 	/** Display planes in the company window. */
 	enum CompanyWindowPlanes : uint8_t {
 		/* Display planes of the #WID_C_SELECT_VIEW_BUILD_HQ selection widget. */
-		CWP_VB_VIEW = 0,  ///< Display the view button
-		CWP_VB_BUILD,     ///< Display the build button
+		CWP_VB_VIEW = 0, ///< Display the view button
+		CWP_VB_BUILD, ///< Display the build button
 
 		/* Display planes of the #WID_C_SELECT_RELOCATE selection widget. */
 		CWP_RELOCATE_SHOW = 0, ///< Show the relocate HQ button.
-		CWP_RELOCATE_HIDE,     ///< Hide the relocate HQ button.
+		CWP_RELOCATE_HIDE, ///< Hide the relocate HQ button.
 	};
 
 	CompanyWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
@@ -2168,7 +2205,8 @@ struct CompanyWindow : Window
 			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_HOSTILE_TAKEOVER)->SetDisplayedPlane((local || _local_company == COMPANY_SPECTATOR || !c->is_ai || _networking) ? SZSP_NONE : 0);
 
 			/* Multiplayer buttons. */
-			reinit |= this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking || !NetworkCanJoinCompany(c->index) || _local_company == c->index) ? (int)SZSP_NONE : 0);
+			reinit |=
+				this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER)->SetDisplayedPlane((!_networking || !NetworkCanJoinCompany(c->index) || _local_company == c->index) ? (int)SZSP_NONE : 0);
 
 			this->SetWidgetDisabledState(WID_C_COMPANY_JOIN, c->is_ai);
 
@@ -2360,7 +2398,9 @@ struct CompanyWindow : Window
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_C_NEW_FACE: DoSelectCompanyManagerFace(this); break;
+			case WID_C_NEW_FACE:
+				DoSelectCompanyManagerFace(this);
+				break;
 
 			case WID_C_COLOUR_SCHEME:
 				ShowCompanyLiveryWindow(this->window_number, GroupID::Invalid());
@@ -2368,12 +2408,14 @@ struct CompanyWindow : Window
 
 			case WID_C_PRESIDENT_NAME:
 				this->query_widget = WID_C_PRESIDENT_NAME;
-				ShowQueryString(GetString(STR_PRESIDENT_NAME, this->window_number), STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION, MAX_LENGTH_PRESIDENT_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
+				ShowQueryString(GetString(STR_PRESIDENT_NAME, this->window_number), STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION, MAX_LENGTH_PRESIDENT_NAME_CHARS, this, CS_ALPHANUMERAL,
+					{QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				break;
 
 			case WID_C_COMPANY_NAME:
 				this->query_widget = WID_C_COMPANY_NAME;
-				ShowQueryString(GetString(STR_COMPANY_NAME, this->window_number), STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
+				ShowQueryString(GetString(STR_COMPANY_NAME, this->window_number), STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION, MAX_LENGTH_COMPANY_NAME_CHARS, this, CS_ALPHANUMERAL,
+					{QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				break;
 
 			case WID_C_VIEW_HQ: {
@@ -2441,8 +2483,8 @@ struct CompanyWindow : Window
 
 	/** Redraw the window on a regular interval. */
 	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
-		this->SetDirty();
-	}};
+													  this->SetDirty();
+												  }};
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
@@ -2462,7 +2504,8 @@ struct CompanyWindow : Window
 		if (!str.has_value()) return;
 
 		switch (this->query_widget) {
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 
 			case WID_C_GIVE_MONEY: {
 				Money money = std::strtoull(str->c_str(), nullptr, 10) / GetCurrency().rate;
@@ -2489,12 +2532,7 @@ struct CompanyWindow : Window
 	}
 };
 
-static WindowDesc _company_desc(
-	WDP_AUTO, "company", 0, 0,
-	WC_COMPANY, WC_NONE,
-	{},
-	_nested_company_widgets
-);
+static WindowDesc _company_desc(WDP_AUTO, "company", 0, 0, WC_COMPANY, WC_NONE, {}, _nested_company_widgets);
 
 /**
  * Show the window with the overview of the company.
@@ -2585,16 +2623,16 @@ struct BuyCompanyWindow : Window {
 	 * Check on a regular interval if the company value has changed.
 	 */
 	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
-		/* Value can't change when in bankruptcy. */
-		if (!this->hostile_takeover) return;
+													   /* Value can't change when in bankruptcy. */
+													   if (!this->hostile_takeover) return;
 
-		const Company *c = Company::Get(this->window_number);
-		auto new_value = CalculateHostileTakeoverValue(c);
-		if (new_value != this->company_value) {
-			this->company_value = new_value;
-			this->ReInit();
-		}
-	}};
+													   const Company *c = Company::Get(this->window_number);
+													   auto new_value = CalculateHostileTakeoverValue(c);
+													   if (new_value != this->company_value) {
+														   this->company_value = new_value;
+														   this->ReInit();
+													   }
+												   }};
 
 private:
 	bool hostile_takeover = false; ///< Whether the window is showing a hostile takeover.
@@ -2622,12 +2660,7 @@ static constexpr NWidgetPart _nested_buy_company_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _buy_company_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_BUY_COMPANY, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_buy_company_widgets
-);
+static WindowDesc _buy_company_desc(WDP_AUTO, nullptr, 0, 0, WC_BUY_COMPANY, WC_NONE, WindowDefaultFlag::Construction, _nested_buy_company_widgets);
 
 /**
  * Show the query to buy another company.

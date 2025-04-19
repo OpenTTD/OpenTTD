@@ -8,13 +8,14 @@
 /** @file newgrf_act0_trains.cpp NewGRF Action 0x00 handler for trains. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_cargo.h"
 #include "../newgrf_engine.h"
 #include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
-#include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
+#include "newgrf_internal_vehicle.h"
 
 #include "../safeguards.h"
 
@@ -47,9 +48,15 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				}
 
 				switch (tracktype) {
-					case 0: _gted[e->index].railtypelabel = rvi->engclass >= 2 ? RAILTYPE_LABEL_ELECTRIC : RAILTYPE_LABEL_RAIL; break;
-					case 1: _gted[e->index].railtypelabel = RAILTYPE_LABEL_MONO; break;
-					case 2: _gted[e->index].railtypelabel = RAILTYPE_LABEL_MAGLEV; break;
+					case 0:
+						_gted[e->index].railtypelabel = rvi->engclass >= 2 ? RAILTYPE_LABEL_ELECTRIC : RAILTYPE_LABEL_RAIL;
+						break;
+					case 1:
+						_gted[e->index].railtypelabel = RAILTYPE_LABEL_MONO;
+						break;
+					case 2:
+						_gted[e->index].railtypelabel = RAILTYPE_LABEL_MAGLEV;
+						break;
 					default:
 						GrfMsg(1, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
 						break;
@@ -115,8 +122,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				if (dual != 0) {
 					rvi->railveh_type = RAILVEH_MULTIHEAD;
 				} else {
-					rvi->railveh_type = rvi->power == 0 ?
-						RAILVEH_WAGON : RAILVEH_SINGLEHEAD;
+					rvi->railveh_type = rvi->power == 0 ? RAILVEH_WAGON : RAILVEH_SINGLEHEAD;
 				}
 				break;
 			}
@@ -182,8 +188,8 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				if (_cur_gps.grffile->railtype_list.empty()) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
-					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_RAIL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_ELECTRIC;
-					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_ELECTRIC && engclass  < EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_RAIL;
+					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_RAIL && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_ELECTRIC;
+					if (_gted[e->index].railtypelabel == RAILTYPE_LABEL_ELECTRIC && engclass < EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_LABEL_RAIL;
 				}
 
 				rvi->engclass = engclass;
@@ -286,7 +292,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				ei->cargo_age_period = buf.ReadWord();
 				break;
 
-			case 0x2C:   // CTT refit include list
+			case 0x2C: // CTT refit include list
 			case 0x2D: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x2C && count != 0);
@@ -336,5 +342,14 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAINS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAINS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RailVehicleChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_TRAINS>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_TRAINS>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RailVehicleChangeInfo(first, last, prop, buf);
+}

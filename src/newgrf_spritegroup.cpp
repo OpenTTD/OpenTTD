@@ -8,10 +8,12 @@
 /** @file newgrf_spritegroup.cpp Handling of primarily NewGRF action 2. */
 
 #include "stdafx.h"
-#include "debug.h"
+
 #include "newgrf_spritegroup.h"
-#include "newgrf_profiling.h"
+
 #include "core/pool_func.hpp"
+#include "debug.h"
+#include "newgrf_profiling.h"
 
 #include "safeguards.h"
 
@@ -19,7 +21,6 @@ SpriteGroupPool _spritegroup_pool("SpriteGroup");
 INSTANTIATE_POOL_METHODS(SpriteGroup)
 
 TemporaryStorageArray<int32_t, 0x110> _temp_store;
-
 
 /**
  * ResolverObject (re)entry point.
@@ -57,14 +58,20 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 {
 	uint32_t value;
 	switch (variable) {
-		case 0x0C: return object.callback;
-		case 0x10: return object.callback_param1;
-		case 0x18: return object.callback_param2;
-		case 0x1C: return object.last_value;
+		case 0x0C:
+			return object.callback;
+		case 0x10:
+			return object.callback_param1;
+		case 0x18:
+			return object.callback_param2;
+		case 0x1C:
+			return object.last_value;
 
-		case 0x5F: return (scope->GetRandomBits() << 8) | scope->GetRandomTriggers();
+		case 0x5F:
+			return (scope->GetRandomBits() << 8) | scope->GetRandomTriggers();
 
-		case 0x7D: return _temp_store.GetValue(parameter);
+		case 0x7D:
+			return _temp_store.GetValue(parameter);
 
 		case 0x7F:
 			if (object.grffile == nullptr) return 0;
@@ -122,7 +129,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  */
 /* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (!group->loaded.empty())  return group->loaded[0];
+	if (!group->loaded.empty()) return group->loaded[0];
 	if (!group->loading.empty()) return group->loading[0];
 
 	return nullptr;
@@ -143,42 +150,72 @@ template <typename U, typename S>
 static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver *scope, U last_value, uint32_t value)
 {
 	value >>= adjust.shift_num;
-	value  &= adjust.and_mask;
+	value &= adjust.and_mask;
 
 	switch (adjust.type) {
-		case DSGA_TYPE_DIV:  value = ((S)value + (S)adjust.add_val) / (S)adjust.divmod_val; break;
-		case DSGA_TYPE_MOD:  value = ((S)value + (S)adjust.add_val) % (S)adjust.divmod_val; break;
-		case DSGA_TYPE_NONE: break;
+		case DSGA_TYPE_DIV:
+			value = ((S)value + (S)adjust.add_val) / (S)adjust.divmod_val;
+			break;
+		case DSGA_TYPE_MOD:
+			value = ((S)value + (S)adjust.add_val) % (S)adjust.divmod_val;
+			break;
+		case DSGA_TYPE_NONE:
+			break;
 	}
 
 	switch (adjust.operation) {
-		case DSGA_OP_ADD:  return last_value + value;
-		case DSGA_OP_SUB:  return last_value - value;
-		case DSGA_OP_SMIN: return std::min<S>(last_value, value);
-		case DSGA_OP_SMAX: return std::max<S>(last_value, value);
-		case DSGA_OP_UMIN: return std::min<U>(last_value, value);
-		case DSGA_OP_UMAX: return std::max<U>(last_value, value);
-		case DSGA_OP_SDIV: return value == 0 ? (S)last_value : (S)last_value / (S)value;
-		case DSGA_OP_SMOD: return value == 0 ? (S)last_value : (S)last_value % (S)value;
-		case DSGA_OP_UDIV: return value == 0 ? (U)last_value : (U)last_value / (U)value;
-		case DSGA_OP_UMOD: return value == 0 ? (U)last_value : (U)last_value % (U)value;
-		case DSGA_OP_MUL:  return last_value * value;
-		case DSGA_OP_AND:  return last_value & value;
-		case DSGA_OP_OR:   return last_value | value;
-		case DSGA_OP_XOR:  return last_value ^ value;
-		case DSGA_OP_STO:  _temp_store.StoreValue((U)value, (S)last_value); return last_value;
-		case DSGA_OP_RST:  return value;
-		case DSGA_OP_STOP: scope->StorePSA((U)value, (S)last_value); return last_value;
-		case DSGA_OP_ROR:  return std::rotr<uint32_t>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
-		case DSGA_OP_SCMP: return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
-		case DSGA_OP_UCMP: return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);
-		case DSGA_OP_SHL:  return (uint32_t)(U)last_value << ((U)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
-		case DSGA_OP_SHR:  return (uint32_t)(U)last_value >> ((U)value & 0x1F);
-		case DSGA_OP_SAR:  return (int32_t)(S)last_value >> ((U)value & 0x1F);
-		default:           return value;
+		case DSGA_OP_ADD:
+			return last_value + value;
+		case DSGA_OP_SUB:
+			return last_value - value;
+		case DSGA_OP_SMIN:
+			return std::min<S>(last_value, value);
+		case DSGA_OP_SMAX:
+			return std::max<S>(last_value, value);
+		case DSGA_OP_UMIN:
+			return std::min<U>(last_value, value);
+		case DSGA_OP_UMAX:
+			return std::max<U>(last_value, value);
+		case DSGA_OP_SDIV:
+			return value == 0 ? (S)last_value : (S)last_value / (S)value;
+		case DSGA_OP_SMOD:
+			return value == 0 ? (S)last_value : (S)last_value % (S)value;
+		case DSGA_OP_UDIV:
+			return value == 0 ? (U)last_value : (U)last_value / (U)value;
+		case DSGA_OP_UMOD:
+			return value == 0 ? (U)last_value : (U)last_value % (U)value;
+		case DSGA_OP_MUL:
+			return last_value * value;
+		case DSGA_OP_AND:
+			return last_value & value;
+		case DSGA_OP_OR:
+			return last_value | value;
+		case DSGA_OP_XOR:
+			return last_value ^ value;
+		case DSGA_OP_STO:
+			_temp_store.StoreValue((U)value, (S)last_value);
+			return last_value;
+		case DSGA_OP_RST:
+			return value;
+		case DSGA_OP_STOP:
+			scope->StorePSA((U)value, (S)last_value);
+			return last_value;
+		case DSGA_OP_ROR:
+			return std::rotr<uint32_t>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
+		case DSGA_OP_SCMP:
+			return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
+		case DSGA_OP_UCMP:
+			return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);
+		case DSGA_OP_SHL:
+			return (uint32_t)(U)last_value << ((U)value & 0x1F); // Same behaviour as in ParamSet, mask 'value' to 5 bits, which should behave the same on all architectures.
+		case DSGA_OP_SHR:
+			return (uint32_t)(U)last_value >> ((U)value & 0x1F);
+		case DSGA_OP_SAR:
+			return (int32_t)(S)last_value >> ((U)value & 0x1F);
+		default:
+			return value;
 	}
 }
-
 
 static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint32_t value)
 {
@@ -217,10 +254,17 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		}
 
 		switch (this->size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8_t,  int8_t> (adjust, scope, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16_t, int16_t>(adjust, scope, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32_t, int32_t>(adjust, scope, last_value, value); break;
-			default: NOT_REACHED();
+			case DSG_SIZE_BYTE:
+				value = EvalAdjustT<uint8_t, int8_t>(adjust, scope, last_value, value);
+				break;
+			case DSG_SIZE_WORD:
+				value = EvalAdjustT<uint16_t, int16_t>(adjust, scope, last_value, value);
+				break;
+			case DSG_SIZE_DWORD:
+				value = EvalAdjustT<uint32_t, int32_t>(adjust, scope, last_value, value);
+				break;
+			default:
+				NOT_REACHED();
 		}
 		last_value = value;
 	}
@@ -252,7 +296,6 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 	return SpriteGroup::Resolve(this->default_group, object, false);
 }
 
-
 const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 {
 	ScopeResolver *scope = object.GetScope(this->var_scope, this->count);
@@ -272,7 +315,6 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 
 	return SpriteGroup::Resolve(this->groups[index], object, false);
 }
-
 
 const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
 {

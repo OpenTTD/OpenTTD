@@ -8,17 +8,19 @@
 /** @file group_cmd.cpp Handling of the engine groups */
 
 #include "stdafx.h"
-#include "command_func.h"
-#include "train.h"
-#include "vehiclelist.h"
-#include "vehicle_func.h"
+
+#include "group_cmd.h"
+
+#include "core/pool_func.hpp"
 #include "autoreplace_base.h"
 #include "autoreplace_func.h"
-#include "string_func.h"
+#include "command_func.h"
 #include "company_func.h"
-#include "core/pool_func.hpp"
 #include "order_backup.h"
-#include "group_cmd.h"
+#include "string_func.h"
+#include "train.h"
+#include "vehicle_func.h"
+#include "vehiclelist.h"
 
 #include "table/strings.h"
 
@@ -262,7 +264,6 @@ static inline void UpdateNumEngineGroup(const Vehicle *v, GroupID old_g, GroupID
 	}
 }
 
-
 const Livery *GetParentLivery(const Group *g)
 {
 	if (g->parent == GroupID::Invalid()) {
@@ -273,7 +274,6 @@ const Livery *GetParentLivery(const Group *g)
 	const Group *pg = Group::Get(g->parent);
 	return &pg->livery;
 }
-
 
 /**
  * Propagate a livery change to a group's children, and optionally update cached vehicle colourmaps.
@@ -319,7 +319,6 @@ void UpdateCompanyGroupLiveries(const Company *c)
 	}
 }
 
-
 /**
  * Create a new vehicle group.
  * @param flags type of operation
@@ -329,14 +328,14 @@ void UpdateCompanyGroupLiveries(const Company *c)
  */
 std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleType vt, GroupID parent_group)
 {
-	if (!IsCompanyBuildableVehicleType(vt)) return { CMD_ERROR, GroupID::Invalid() };
+	if (!IsCompanyBuildableVehicleType(vt)) return {CMD_ERROR, GroupID::Invalid()};
 
-	if (!Group::CanAllocateItem()) return { CMD_ERROR, GroupID::Invalid() };
+	if (!Group::CanAllocateItem()) return {CMD_ERROR, GroupID::Invalid()};
 
 	const Group *pg = Group::GetIfValid(parent_group);
 	if (pg != nullptr) {
-		if (pg->owner != _current_company) return { CMD_ERROR, GroupID::Invalid() };
-		if (pg->vehicle_type != vt) return { CMD_ERROR, GroupID::Invalid() };
+		if (pg->owner != _current_company) return {CMD_ERROR, GroupID::Invalid()};
+		if (pg->vehicle_type != vt) return {CMD_ERROR, GroupID::Invalid()};
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -358,12 +357,11 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).ToWindowNumber());
 		InvalidateWindowData(WC_COMPANY_COLOUR, g->owner, g->vehicle_type);
 
-		return { CommandCost(), g->index };
+		return {CommandCost(), g->index};
 	}
 
-	return { CommandCost(), GroupID::Invalid()};
+	return {CommandCost(), GroupID::Invalid()};
 }
-
 
 /**
  * Add all vehicles in the given group to the default group and then deletes the group.
@@ -486,7 +484,6 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 	return CommandCost();
 }
 
-
 /**
  * Do add a vehicle to a group.
  * @param v Vehicle to add.
@@ -497,7 +494,8 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 	GroupStatistics::CountVehicle(v, -1);
 
 	switch (v->type) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case VEH_TRAIN:
 			SetTrainGroupID(Train::From(v), new_g);
 			break;
@@ -529,31 +527,31 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupID group_id, VehicleID veh_id, bool add_shared, const VehicleListIdentifier &vli)
 {
 	GroupID new_g = group_id;
-	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP) return { CMD_ERROR, GroupID::Invalid() };
+	if (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP) return {CMD_ERROR, GroupID::Invalid()};
 
 	VehicleList list;
 	if (veh_id == VehicleID::Invalid() && vli.Valid()) {
-		if (!GenerateVehicleSortList(&list, vli) || list.empty()) return { CMD_ERROR, GroupID::Invalid() };
+		if (!GenerateVehicleSortList(&list, vli) || list.empty()) return {CMD_ERROR, GroupID::Invalid()};
 	} else {
 		Vehicle *v = Vehicle::GetIfValid(veh_id);
-		if (v == nullptr) return { CMD_ERROR, GroupID::Invalid() };
+		if (v == nullptr) return {CMD_ERROR, GroupID::Invalid()};
 		list.push_back(v);
 	}
 
 	VehicleType vtype = list.front()->type;
 	for (const Vehicle *v : list) {
-		if (v->owner != _current_company || !v->IsPrimaryVehicle()) return { CMD_ERROR, GroupID::Invalid() };
+		if (v->owner != _current_company || !v->IsPrimaryVehicle()) return {CMD_ERROR, GroupID::Invalid()};
 	}
 
 	if (Group::IsValidID(new_g)) {
 		Group *g = Group::Get(new_g);
-		if (g->owner != _current_company || g->vehicle_type != vtype) return { CMD_ERROR, GroupID::Invalid() };
+		if (g->owner != _current_company || g->vehicle_type != vtype) return {CMD_ERROR, GroupID::Invalid()};
 	}
 
 	if (new_g == NEW_GROUP) {
 		/* Create new group. */
 		auto [ret, new_group_id] = CmdCreateGroup(flags, vtype, GroupID::Invalid());
-		if (ret.Failed()) return { ret, new_group_id };
+		if (ret.Failed()) return {ret, new_group_id};
 
 		new_g = new_group_id;
 	}
@@ -585,7 +583,7 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupI
 		InvalidateWindowData(GetWindowClassForVehicleType(vtype), VehicleListIdentifier(VL_GROUP_LIST, vtype, _current_company).ToWindowNumber());
 	}
 
-	return { CommandCost(), new_g };
+	return {CommandCost(), new_g};
 }
 
 /**
@@ -618,7 +616,6 @@ CommandCost CmdAddSharedVehicleGroup(DoCommandFlags flags, GroupID id_g, Vehicle
 
 	return CommandCost();
 }
-
 
 /**
  * Remove all vehicles from a group
@@ -754,7 +751,6 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 	SetWindowDirty(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 
-
 /**
  * Recalculates the groupID of a train. Should be called each time a vehicle is added
  * to/removed from the chain,.
@@ -855,7 +851,6 @@ void RemoveAllGroupsForCompany(const CompanyID company)
 		if (company == g->owner) delete g;
 	}
 }
-
 
 /**
  * Test if GroupID group is a descendant of (or is) GroupID search

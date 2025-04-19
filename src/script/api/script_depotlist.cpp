@@ -8,7 +8,9 @@
 /** @file script_depotlist.cpp Implementation of ScriptDepotList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_depotlist.hpp"
+
 #include "../../depot_base.h"
 #include "../../station_base.h"
 
@@ -19,11 +21,18 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 	EnforceDeityOrCompanyModeValid_Void();
 	::TileType tile_type;
 	switch (transport_type) {
-		default: return;
+		default:
+			return;
 
-		case ScriptTile::TRANSPORT_ROAD:  tile_type = ::MP_ROAD; break;
-		case ScriptTile::TRANSPORT_RAIL:  tile_type = ::MP_RAILWAY; break;
-		case ScriptTile::TRANSPORT_WATER: tile_type = ::MP_WATER; break;
+		case ScriptTile::TRANSPORT_ROAD:
+			tile_type = ::MP_ROAD;
+			break;
+		case ScriptTile::TRANSPORT_RAIL:
+			tile_type = ::MP_RAILWAY;
+			break;
+		case ScriptTile::TRANSPORT_WATER:
+			tile_type = ::MP_WATER;
+			break;
 
 		case ScriptTile::TRANSPORT_AIR: {
 			/* Hangars are not seen as real depots by the depot code. */

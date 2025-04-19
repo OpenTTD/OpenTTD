@@ -8,44 +8,45 @@
 /** @file strings.cpp Handling of translated strings. */
 
 #include "stdafx.h"
-#include "currency.h"
-#include "station_base.h"
-#include "town.h"
-#include "waypoint_base.h"
-#include "depot_base.h"
-#include "industry.h"
-#include "newgrf_text.h"
-#include "fileio_func.h"
-#include "signs_base.h"
-#include "fontdetection.h"
-#include "error.h"
-#include "error_func.h"
-#include "strings_func.h"
-#include "rev.h"
-#include "core/endian_func.hpp"
-#include "timer/timer_game_calendar.h"
-#include "vehicle_base.h"
-#include "engine_base.h"
-#include "language.h"
-#include "townname_func.h"
-#include "string_func.h"
-#include "company_base.h"
-#include "smallmap_gui.h"
-#include "window_func.h"
-#include "debug.h"
-#include "game/game_text.hpp"
-#include "network/network_content_gui.h"
-#include "newgrf_engine.h"
-#include "core/backup_type.hpp"
-#include "gfx_layout.h"
-#include "core/utf8.hpp"
-#include "core/string_consumer.hpp"
-#include <stack>
 
-#include "table/control_codes.h"
+#include <stack>
 #include "3rdparty/fmt/std.h"
 
+#include "core/backup_type.hpp"
+#include "core/endian_func.hpp"
+#include "core/string_consumer.hpp"
+#include "core/utf8.hpp"
+#include "company_base.h"
+#include "currency.h"
+#include "debug.h"
+#include "depot_base.h"
+#include "engine_base.h"
+#include "error.h"
+#include "error_func.h"
+#include "fileio_func.h"
+#include "fontdetection.h"
+#include "game/game_text.hpp"
+#include "gfx_layout.h"
+#include "industry.h"
+#include "language.h"
+#include "network/network_content_gui.h"
+#include "newgrf_engine.h"
+#include "newgrf_text.h"
+#include "rev.h"
+#include "signs_base.h"
+#include "smallmap_gui.h"
+#include "station_base.h"
+#include "string_func.h"
+#include "strings_func.h"
 #include "strings_internal.h"
+#include "timer/timer_game_calendar.h"
+#include "town.h"
+#include "townname_func.h"
+#include "vehicle_base.h"
+#include "waypoint_base.h"
+#include "window_func.h"
+
+#include "table/control_codes.h"
 
 /* clang-format off */
 /* work around "main include" detection */
@@ -54,14 +55,14 @@
 
 #include "safeguards.h"
 
-std::string _config_language_file;                ///< The file (name) stored in the configuration.
-LanguageList _languages;                          ///< The actual list of language meta data.
+std::string _config_language_file; ///< The file (name) stored in the configuration.
+LanguageList _languages; ///< The actual list of language meta data.
 const LanguageMetadata *_current_language = nullptr; ///< The currently loaded language.
 
 TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 
 #ifdef WITH_ICU_I18N
-std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
+std::unique_ptr<icu::Collator> _current_collator; ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
 
 /**
@@ -277,7 +278,7 @@ struct LanguagePackDeleter {
 	void operator()(LanguagePack *langpack)
 	{
 		/* LanguagePack is in fact reinterpreted char[], we need to reinterpret it back to free it properly. */
-		delete[] reinterpret_cast<char*>(langpack);
+		delete[] reinterpret_cast<char *>(langpack);
 	}
 };
 
@@ -286,7 +287,7 @@ struct LoadedLanguagePack {
 
 	std::vector<std::string_view> strings;
 
-	std::array<uint, TEXT_TAB_END> langtab_num;   ///< Offset into langpack offs
+	std::array<uint, TEXT_TAB_END> langtab_num; ///< Offset into langpack offs
 	std::array<uint, TEXT_TAB_END> langtab_start; ///< Offset into langpack offs
 
 	std::string list_separator; ///< Current list separator string.
@@ -294,7 +295,7 @@ struct LoadedLanguagePack {
 
 static LoadedLanguagePack _langpack;
 
-static bool _scan_for_gender_data = false;  ///< Are we scanning for the gender of the current string? (instead of formatting it)
+static bool _scan_for_gender_data = false; ///< Are we scanning for the gender of the current string? (instead of formatting it)
 
 /**
  * Get the list separator string for the current language.
@@ -308,10 +309,13 @@ std::string_view GetListSeparator()
 std::string_view GetStringPtr(StringID string)
 {
 	switch (GetStringTab(string)) {
-		case TEXT_TAB_GAMESCRIPT_START: return GetGameStringPtr(GetStringIndex(string));
+		case TEXT_TAB_GAMESCRIPT_START:
+			return GetGameStringPtr(GetStringIndex(string));
 		/* 0xD0xx and 0xD4xx IDs have been converted earlier. */
-		case TEXT_TAB_OLD_NEWGRF: NOT_REACHED();
-		case TEXT_TAB_NEWGRF_START: return GetGRFStringPtr(GetStringIndex(string));
+		case TEXT_TAB_OLD_NEWGRF:
+			NOT_REACHED();
+		case TEXT_TAB_NEWGRF_START:
+			return GetGRFStringPtr(GetStringIndex(string));
 		default: {
 			const size_t offset = _langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string).base();
 			if (offset < _langpack.strings.size()) return _langpack.strings[offset];
@@ -534,7 +538,7 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 	assert(number >= 0);
 
 	/*                                   1   2^10  2^20  2^30  2^40  2^50  2^60 */
-	const char * const iec_prefixes[] = {"", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei"};
+	const char *const iec_prefixes[] = {"", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei"};
 	uint id = 1;
 	while (number >= 1024 * 1024) {
 		number /= 1024;
@@ -802,9 +806,7 @@ struct UnitConversion {
 	 */
 	int64_t ToDisplay(int64_t input, bool round = true) const
 	{
-		return round
-			? (int64_t)std::round(input * this->factor)
-			: (int64_t)(input * this->factor);
+		return round ? (int64_t)std::round(input * this->factor) : (int64_t)(input * this->factor);
 	}
 
 	/**
@@ -816,115 +818,113 @@ struct UnitConversion {
 	 */
 	int64_t FromDisplay(int64_t input, bool round = true, int64_t divider = 1) const
 	{
-		return round
-			? (int64_t)std::round(input / this->factor / divider)
-			: (int64_t)(input / this->factor / divider);
+		return round ? (int64_t)std::round(input / this->factor / divider) : (int64_t)(input / this->factor / divider);
 	}
 };
 
 /** Information about a specific unit system. */
 struct Units {
 	UnitConversion c; ///< Conversion
-	StringID s;       ///< String for the unit
+	StringID s; ///< String for the unit
 	unsigned int decimal_places; ///< Number of decimal places embedded in the value. For example, 1 if the value is in tenths, and 3 if the value is in thousandths.
 };
 
 /** Information about a specific unit system with a long variant. */
 struct UnitsLong {
 	UnitConversion c; ///< Conversion
-	StringID s;       ///< String for the short variant of the unit
-	StringID l;       ///< String for the long variant of the unit
+	StringID s; ///< String for the short variant of the unit
+	StringID l; ///< String for the long variant of the unit
 	unsigned int decimal_places; ///< Number of decimal places embedded in the value. For example, 1 if the value is in tenths, and 3 if the value is in thousandths.
 };
 
 /** Unit conversions for velocity. */
 static const Units _units_velocity_calendar[] = {
-	{ { 1.0      }, STR_UNITS_VELOCITY_IMPERIAL,      0 },
-	{ { 1.609344 }, STR_UNITS_VELOCITY_METRIC,        0 },
-	{ { 0.44704  }, STR_UNITS_VELOCITY_SI,            0 },
-	{ { 0.578125 }, STR_UNITS_VELOCITY_GAMEUNITS_DAY, 1 },
-	{ { 0.868976 }, STR_UNITS_VELOCITY_KNOTS,         0 },
+	{{1.0}, STR_UNITS_VELOCITY_IMPERIAL, 0},
+	{{1.609344}, STR_UNITS_VELOCITY_METRIC, 0},
+	{{0.44704}, STR_UNITS_VELOCITY_SI, 0},
+	{{0.578125}, STR_UNITS_VELOCITY_GAMEUNITS_DAY, 1},
+	{{0.868976}, STR_UNITS_VELOCITY_KNOTS, 0},
 };
 
 /** Unit conversions for velocity. */
 static const Units _units_velocity_realtime[] = {
-	{ { 1.0      }, STR_UNITS_VELOCITY_IMPERIAL,      0 },
-	{ { 1.609344 }, STR_UNITS_VELOCITY_METRIC,        0 },
-	{ { 0.44704  }, STR_UNITS_VELOCITY_SI,            0 },
-	{ { 0.289352 }, STR_UNITS_VELOCITY_GAMEUNITS_SEC, 1 },
-	{ { 0.868976 }, STR_UNITS_VELOCITY_KNOTS,         0 },
+	{{1.0}, STR_UNITS_VELOCITY_IMPERIAL, 0},
+	{{1.609344}, STR_UNITS_VELOCITY_METRIC, 0},
+	{{0.44704}, STR_UNITS_VELOCITY_SI, 0},
+	{{0.289352}, STR_UNITS_VELOCITY_GAMEUNITS_SEC, 1},
+	{{0.868976}, STR_UNITS_VELOCITY_KNOTS, 0},
 };
 
 /** Unit conversions for power. */
 static const Units _units_power[] = {
-	{ { 1.0      }, STR_UNITS_POWER_IMPERIAL, 0 },
-	{ { 1.01387  }, STR_UNITS_POWER_METRIC,   0 },
-	{ { 0.745699 }, STR_UNITS_POWER_SI,       0 },
+	{{1.0}, STR_UNITS_POWER_IMPERIAL, 0},
+	{{1.01387}, STR_UNITS_POWER_METRIC, 0},
+	{{0.745699}, STR_UNITS_POWER_SI, 0},
 };
 
 /** Unit conversions for power to weight. */
 static const Units _units_power_to_weight[] = {
-	{ { 0.907185 }, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL, 1 },
-	{ { 1.0      }, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC,   1 },
-	{ { 1.0      }, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI,       1 },
-	{ { 0.919768 }, STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL,   1 },
-	{ { 1.01387  }, STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC,     1 },
-	{ { 1.01387  }, STR_UNITS_POWER_METRIC_TO_WEIGHT_SI,         1 },
-	{ { 0.676487 }, STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL,       1 },
-	{ { 0.745699 }, STR_UNITS_POWER_SI_TO_WEIGHT_METRIC,         1 },
-	{ { 0.745699 }, STR_UNITS_POWER_SI_TO_WEIGHT_SI,             1 },
+	{{0.907185}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL, 1},
+	{{1.0}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC, 1},
+	{{1.0}, STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_SI, 1},
+	{{0.919768}, STR_UNITS_POWER_METRIC_TO_WEIGHT_IMPERIAL, 1},
+	{{1.01387}, STR_UNITS_POWER_METRIC_TO_WEIGHT_METRIC, 1},
+	{{1.01387}, STR_UNITS_POWER_METRIC_TO_WEIGHT_SI, 1},
+	{{0.676487}, STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL, 1},
+	{{0.745699}, STR_UNITS_POWER_SI_TO_WEIGHT_METRIC, 1},
+	{{0.745699}, STR_UNITS_POWER_SI_TO_WEIGHT_SI, 1},
 };
 
 /** Unit conversions for weight. */
 static const UnitsLong _units_weight[] = {
-	{ {    1.102311 }, STR_UNITS_WEIGHT_SHORT_IMPERIAL, STR_UNITS_WEIGHT_LONG_IMPERIAL, 0 },
-	{ {    1.0      }, STR_UNITS_WEIGHT_SHORT_METRIC,   STR_UNITS_WEIGHT_LONG_METRIC,   0 },
-	{ { 1000.0      }, STR_UNITS_WEIGHT_SHORT_SI,       STR_UNITS_WEIGHT_LONG_SI,       0 },
+	{{1.102311}, STR_UNITS_WEIGHT_SHORT_IMPERIAL, STR_UNITS_WEIGHT_LONG_IMPERIAL, 0},
+	{{1.0}, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC, 0},
+	{{1000.0}, STR_UNITS_WEIGHT_SHORT_SI, STR_UNITS_WEIGHT_LONG_SI, 0},
 };
 
 /** Unit conversions for volume. */
 static const UnitsLong _units_volume[] = {
-	{ {  264.172 }, STR_UNITS_VOLUME_SHORT_IMPERIAL, STR_UNITS_VOLUME_LONG_IMPERIAL, 0 },
-	{ { 1000.0   }, STR_UNITS_VOLUME_SHORT_METRIC,   STR_UNITS_VOLUME_LONG_METRIC,   0 },
-	{ {    1.0   }, STR_UNITS_VOLUME_SHORT_SI,       STR_UNITS_VOLUME_LONG_SI,       0 },
+	{{264.172}, STR_UNITS_VOLUME_SHORT_IMPERIAL, STR_UNITS_VOLUME_LONG_IMPERIAL, 0},
+	{{1000.0}, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC, 0},
+	{{1.0}, STR_UNITS_VOLUME_SHORT_SI, STR_UNITS_VOLUME_LONG_SI, 0},
 };
 
 /** Unit conversions for force. */
 static const Units _units_force[] = {
-	{ { 0.224809 }, STR_UNITS_FORCE_IMPERIAL, 0 },
-	{ { 0.101972 }, STR_UNITS_FORCE_METRIC,   0 },
-	{ { 0.001    }, STR_UNITS_FORCE_SI,       0 },
+	{{0.224809}, STR_UNITS_FORCE_IMPERIAL, 0},
+	{{0.101972}, STR_UNITS_FORCE_METRIC, 0},
+	{{0.001}, STR_UNITS_FORCE_SI, 0},
 };
 
 /** Unit conversions for height. */
 static const Units _units_height[] = {
-	{ { 3.0 }, STR_UNITS_HEIGHT_IMPERIAL, 0 }, // "Wrong" conversion factor for more nicer GUI values
-	{ { 1.0 }, STR_UNITS_HEIGHT_METRIC,   0 },
-	{ { 1.0 }, STR_UNITS_HEIGHT_SI,       0 },
+	{{3.0}, STR_UNITS_HEIGHT_IMPERIAL, 0}, // "Wrong" conversion factor for more nicer GUI values
+	{{1.0}, STR_UNITS_HEIGHT_METRIC, 0},
+	{{1.0}, STR_UNITS_HEIGHT_SI, 0},
 };
 
 /** Unit conversions for time in calendar days or wallclock seconds */
 static const Units _units_time_days_or_seconds[] = {
-	{ { 1 }, STR_UNITS_DAYS,    0 },
-	{ { 2 }, STR_UNITS_SECONDS, 0 },
+	{{1}, STR_UNITS_DAYS, 0},
+	{{2}, STR_UNITS_SECONDS, 0},
 };
 
 /** Unit conversions for time in calendar months or wallclock minutes */
 static const Units _units_time_months_or_minutes[] = {
-	{ { 1 }, STR_UNITS_MONTHS,  0 },
-	{ { 1 }, STR_UNITS_MINUTES, 0 },
+	{{1}, STR_UNITS_MONTHS, 0},
+	{{1}, STR_UNITS_MINUTES, 0},
 };
 
 /** Unit conversions for time in calendar years or economic periods */
 static const Units _units_time_years_or_periods[] = {
-	{ { 1 }, STR_UNITS_YEARS,  0 },
-	{ { 1 }, STR_UNITS_PERIODS, 0 },
+	{{1}, STR_UNITS_YEARS, 0},
+	{{1}, STR_UNITS_PERIODS, 0},
 };
 
 /** Unit conversions for time in calendar years or wallclock minutes */
 static const Units _units_time_years_or_minutes[] = {
-	{ { 1  }, STR_UNITS_YEARS,  0 },
-	{ { 12 }, STR_UNITS_MINUTES, 0 },
+	{{1}, STR_UNITS_YEARS, 0},
+	{{12}, STR_UNITS_MINUTES, 0},
 };
 
 /**
@@ -1083,15 +1083,15 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 		args.SetOffset(orig_first_param_offset);
 	}
 	uint next_substr_case_index = 0;
+
 	struct StrStackItem {
 		StringConsumer consumer;
 		size_t first_param_offset;
 		uint case_index;
 
-		StrStackItem(std::string_view view, size_t first_param_offset, uint case_index)
-			: consumer(view), first_param_offset(first_param_offset), case_index(case_index)
-		{}
+		StrStackItem(std::string_view view, size_t first_param_offset, uint case_index) : consumer(view), first_param_offset(first_param_offset), case_index(case_index) {}
 	};
+
 	std::stack<StrStackItem, std::vector<StrStackItem>> str_stack;
 	str_stack.emplace(str_arg, orig_first_param_offset, orig_case_index);
 
@@ -1189,7 +1189,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				}
 
 				case SCC_PLURAL_LIST: { // {P}
-					uint8_t plural_form = consumer.ReadUint8();  // contains the plural form for this string
+					uint8_t plural_form = consumer.ReadUint8(); // contains the plural form for this string
 					size_t offset = ref_param_offset + consumer.ReadUint8();
 					const uint64_t *v = nullptr;
 					/* The offset may come from an external NewGRF, and be invalid. */
@@ -1252,7 +1252,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					break;
 				}
 
-				case SCC_STRING: {// {STRING}
+				case SCC_STRING: { // {STRING}
 					StringID string_id = args.GetNextParameter<StringID>();
 					if (game_script && GetStringTab(string_id) != TEXT_TAB_GAMESCRIPT_START) break;
 					/* It's prohibited for the included string to consume any arguments. */
@@ -1761,11 +1761,21 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 						StringID string_id;
 						switch (v->type) {
-							default:           string_id = STR_INVALID_VEHICLE; break;
-							case VEH_TRAIN:    string_id = STR_SV_TRAIN_NAME; break;
-							case VEH_ROAD:     string_id = STR_SV_ROAD_VEHICLE_NAME; break;
-							case VEH_SHIP:     string_id = STR_SV_SHIP_NAME; break;
-							case VEH_AIRCRAFT: string_id = STR_SV_AIRCRAFT_NAME; break;
+							default:
+								string_id = STR_INVALID_VEHICLE;
+								break;
+							case VEH_TRAIN:
+								string_id = STR_SV_TRAIN_NAME;
+								break;
+							case VEH_ROAD:
+								string_id = STR_SV_ROAD_VEHICLE_NAME;
+								break;
+							case VEH_SHIP:
+								string_id = STR_SV_SHIP_NAME;
+								break;
+							case VEH_AIRCRAFT:
+								string_id = STR_SV_AIRCRAFT_NAME;
+								break;
 						}
 
 						GetStringWithArgs(builder, string_id, tmp_params);
@@ -1808,7 +1818,6 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 	}
 }
 
-
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x)
 {
 	if (x.Test(StationFacility::Train)) builder.PutUtf8(SCC_TRAIN);
@@ -1818,75 +1827,37 @@ static void StationGetSpecialString(StringBuilder &builder, StationFacilities x)
 	if (x.Test(StationFacility::Airport)) builder.PutUtf8(SCC_PLANE);
 }
 
-static const char * const _silly_company_names[] = {
-	"Bloggs Brothers",
-	"Tiny Transport Ltd.",
-	"Express Travel",
-	"Comfy-Coach & Co.",
-	"Crush & Bump Ltd.",
-	"Broken & Late Ltd.",
-	"Sam Speedy & Son",
-	"Supersonic Travel",
-	"Mike's Motors",
-	"Lightning International",
-	"Pannik & Loozit Ltd.",
-	"Inter-City Transport",
-	"Getout & Pushit Ltd."
-};
+static const char *const _silly_company_names[] = {"Bloggs Brothers", "Tiny Transport Ltd.", "Express Travel", "Comfy-Coach & Co.", "Crush & Bump Ltd.", "Broken & Late Ltd.", "Sam Speedy & Son",
+	"Supersonic Travel", "Mike's Motors", "Lightning International", "Pannik & Loozit Ltd.", "Inter-City Transport", "Getout & Pushit Ltd."};
 
-static const char * const _surname_list[] = {
-	"Adams",
-	"Allan",
-	"Baker",
-	"Bigwig",
-	"Black",
-	"Bloggs",
-	"Brown",
-	"Campbell",
-	"Gordon",
-	"Hamilton",
-	"Hawthorn",
-	"Higgins",
-	"Green",
-	"Gribble",
-	"Jones",
-	"McAlpine",
-	"MacDonald",
-	"McIntosh",
-	"Muir",
-	"Murphy",
-	"Nelson",
-	"O'Donnell",
-	"Parker",
-	"Phillips",
-	"Pilkington",
-	"Quigley",
-	"Sharkey",
-	"Thomson",
-	"Watkins"
-};
+static const char *const _surname_list[] = {"Adams", "Allan", "Baker", "Bigwig", "Black", "Bloggs", "Brown", "Campbell", "Gordon", "Hamilton", "Hawthorn", "Higgins", "Green", "Gribble", "Jones",
+	"McAlpine", "MacDonald", "McIntosh", "Muir", "Murphy", "Nelson", "O'Donnell", "Parker", "Phillips", "Pilkington", "Quigley", "Sharkey", "Thomson", "Watkins"};
 
-static const char * const _silly_surname_list[] = {
-	"Grumpy",
-	"Dozy",
-	"Speedy",
-	"Nosey",
-	"Dribble",
-	"Mushroom",
-	"Cabbage",
-	"Sniffle",
-	"Fishy",
-	"Swindle",
-	"Sneaky",
-	"Nutkins"
-};
+static const char *const _silly_surname_list[] = {"Grumpy", "Dozy", "Speedy", "Nosey", "Dribble", "Mushroom", "Cabbage", "Sniffle", "Fishy", "Swindle", "Sneaky", "Nutkins"};
 
 static const char _initial_name_letters[] = {
-	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
+	'A',
+	'B',
+	'C',
+	'D',
+	'E',
+	'F',
+	'G',
+	'H',
+	'I',
+	'J',
+	'K',
+	'L',
+	'M',
+	'N',
+	'P',
+	'R',
+	'S',
+	'T',
+	'W',
 };
 
-static std::span<const char * const> GetSurnameOptions()
+static std::span<const char *const> GetSurnameOptions()
 {
 	if (_settings_game.game_creation.landscape == LandscapeType::Toyland) return _silly_surname_list;
 	return _surname_list;
@@ -1956,19 +1927,9 @@ static bool GetSpecialNameString(StringBuilder &builder, StringID string, String
  */
 bool LanguagePackHeader::IsValid() const
 {
-	return this->ident        == TO_LE32(LanguagePackHeader::IDENT) &&
-	       this->version      == TO_LE32(LANGUAGE_PACK_VERSION) &&
-	       this->plural_form  <  LANGUAGE_MAX_PLURAL &&
-	       this->text_dir     <= 1 &&
-	       this->newgrflangid < MAX_LANG &&
-	       this->num_genders  < MAX_NUM_GENDERS &&
-	       this->num_cases    < MAX_NUM_CASES &&
-	       StrValid(this->name) &&
-	       StrValid(this->own_name) &&
-	       StrValid(this->isocode) &&
-	       StrValid(this->digit_group_separator) &&
-	       StrValid(this->digit_group_separator_currency) &&
-	       StrValid(this->digit_decimal_separator);
+	return this->ident == TO_LE32(LanguagePackHeader::IDENT) && this->version == TO_LE32(LANGUAGE_PACK_VERSION) && this->plural_form < LANGUAGE_MAX_PLURAL && this->text_dir <= 1 &&
+		this->newgrflangid < MAX_LANG && this->num_genders < MAX_NUM_GENDERS && this->num_cases < MAX_NUM_CASES && StrValid(this->name) && StrValid(this->own_name) && StrValid(this->isocode) &&
+		StrValid(this->digit_group_separator) && StrValid(this->digit_group_separator_currency) && StrValid(this->digit_decimal_separator);
 }
 
 /**
@@ -2071,13 +2032,13 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	SortIndustryTypes();
 	BuildIndustriesLegend();
 	BuildContentTypeStringList();
-	InvalidateWindowClassesData(WC_BUILD_VEHICLE);      // Build vehicle window.
-	InvalidateWindowClassesData(WC_TRAINS_LIST);        // Train group window.
-	InvalidateWindowClassesData(WC_ROADVEH_LIST);       // Road vehicle group window.
-	InvalidateWindowClassesData(WC_SHIPS_LIST);         // Ship group window.
-	InvalidateWindowClassesData(WC_AIRCRAFT_LIST);      // Aircraft group window.
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE); // Build vehicle window.
+	InvalidateWindowClassesData(WC_TRAINS_LIST); // Train group window.
+	InvalidateWindowClassesData(WC_ROADVEH_LIST); // Road vehicle group window.
+	InvalidateWindowClassesData(WC_SHIPS_LIST); // Ship group window.
+	InvalidateWindowClassesData(WC_AIRCRAFT_LIST); // Aircraft group window.
 	InvalidateWindowClassesData(WC_INDUSTRY_DIRECTORY); // Industry directory window.
-	InvalidateWindowClassesData(WC_STATION_LIST);       // Station list window.
+	InvalidateWindowClassesData(WC_STATION_LIST); // Station list window.
 
 	return true;
 }
@@ -2194,9 +2155,9 @@ void InitializeLanguagePacks()
 	const char *lang = GetCurrentLocale("LC_MESSAGES");
 	if (lang == nullptr) lang = "en_GB";
 
-	const LanguageMetadata *chosen_language   = nullptr; ///< Matching the language in the configuration file or the current locale
+	const LanguageMetadata *chosen_language = nullptr; ///< Matching the language in the configuration file or the current locale
 	const LanguageMetadata *language_fallback = nullptr; ///< Using pt_PT for pt_BR locale when pt_BR is not available
-	const LanguageMetadata *en_GB_fallback    = _languages.data(); ///< Fallback when no locale-matching language has been found
+	const LanguageMetadata *en_GB_fallback = _languages.data(); ///< Fallback when no locale-matching language has been found
 
 	/* Find a proper language. */
 	for (const LanguageMetadata &lng : _languages) {
@@ -2208,12 +2169,12 @@ void InitializeLanguagePacks()
 			break;
 		}
 
-		if (strcmp (lng.isocode, "en_GB") == 0) en_GB_fallback    = &lng;
+		if (strcmp(lng.isocode, "en_GB") == 0) en_GB_fallback = &lng;
 
 		/* Only auto-pick finished translations */
 		if (!lng.IsReasonablyFinished()) continue;
 
-		if (strncmp(lng.isocode, lang, 5) == 0) chosen_language   = &lng;
+		if (strncmp(lng.isocode, lang, 5) == 0) chosen_language = &lng;
 		if (strncmp(lng.isocode, lang, 2) == 0) language_fallback = &lng;
 	}
 
@@ -2256,11 +2217,20 @@ bool MissingGlyphSearcher::FindMissingGlyphs()
 				std::string size_name;
 
 				switch (size) {
-					case FS_NORMAL: size_name = "medium"; break;
-					case FS_SMALL: size_name = "small"; break;
-					case FS_LARGE: size_name = "large"; break;
-					case FS_MONO: size_name = "mono"; break;
-					default: NOT_REACHED();
+					case FS_NORMAL:
+						size_name = "medium";
+						break;
+					case FS_SMALL:
+						size_name = "small";
+						break;
+					case FS_LARGE:
+						size_name = "large";
+						break;
+					case FS_MONO:
+						size_name = "mono";
+						break;
+					default:
+						NOT_REACHED();
 				}
 
 				Debug(fontcache, 0, "Font is missing glyphs to display char 0x{:X} in {} font size", (int)c, size_name);
@@ -2381,7 +2351,8 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		std::string err_str;
 		StringBuilder builder(err_str);
 		builder.PutUtf8(SCC_YELLOW);
-		builder.Put("The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
+		builder.Put(
+			"The current font is missing some of the characters used in the texts for this language. Go to Help & Manuals > Fonts, or read the file docs/fonts.md in your OpenTTD directory, to see how to solve this.");
 		ShowErrorMessage(GetEncodedString(STR_JUST_RAW_STRING, std::move(err_str)), {}, WL_WARNING);
 
 		/* Reset the font width */

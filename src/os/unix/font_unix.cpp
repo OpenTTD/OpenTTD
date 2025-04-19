@@ -8,16 +8,16 @@
 /** @file font_unix.cpp Functions related to font handling on Unix/Fontconfig. */
 
 #include "../../stdafx.h"
+
+#include <fontconfig/fontconfig.h>
+#include <ft2build.h>
+
 #include "../../debug.h"
 #include "../../fontdetection.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 
-#include <fontconfig/fontconfig.h>
-
 #include "../../safeguards.h"
-
-#include <ft2build.h>
 #include FT_FREETYPE_H
 
 extern FT_Library _ft_library;
@@ -31,12 +31,12 @@ extern FT_Library _ft_library;
 static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_view font_name)
 {
 	auto separator = font_name.find(',');
-	if (separator == std::string_view::npos) return { std::string(font_name), std::string() };
+	if (separator == std::string_view::npos) return {std::string(font_name), std::string()};
 
 	auto begin = font_name.find_first_not_of("\t ", separator + 1);
-	if (begin == std::string_view::npos) return { std::string(font_name.substr(0, separator)), std::string() };
+	if (begin == std::string_view::npos) return {std::string(font_name.substr(0, separator)), std::string()};
 
-	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
+	return {std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin))};
 }
 
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
@@ -61,7 +61,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	FcConfigSubstitute(nullptr, pat, FcMatchPattern);
 	FcDefaultSubstitute(pat);
 	FcFontSet *fs = FcFontSetCreate();
-	FcResult  result;
+	FcResult result;
 	FcPattern *match = FcFontMatch(nullptr, pat, &result);
 
 	if (fs != nullptr && match != nullptr) {
@@ -73,11 +73,8 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 		for (int i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
 			/* Try the new filename */
-			if (FcPatternGetString(fs->fonts[i], FC_FILE, 0, &file) == FcResultMatch &&
-				FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
-				FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch &&
-				FcPatternGetInteger(fs->fonts[i], FC_INDEX, 0, &index) == FcResultMatch) {
-
+			if (FcPatternGetString(fs->fonts[i], FC_FILE, 0, &file) == FcResultMatch && FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
+				FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch && FcPatternGetInteger(fs->fonts[i], FC_INDEX, 0, &index) == FcResultMatch) {
 				/* The correct style? */
 				if (!font_style.empty() && !StrEqualsIgnoreCase(font_style, (char *)style)) continue;
 

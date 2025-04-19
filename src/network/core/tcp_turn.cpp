@@ -10,9 +10,11 @@
  */
 
 #include "../../stdafx.h"
-#include "../../timer/timer_game_calendar.h"
-#include "../../debug.h"
+
 #include "tcp_turn.h"
+
+#include "../../debug.h"
+#include "../../timer/timer_game_calendar.h"
 
 #include "../../safeguards.h"
 
@@ -27,9 +29,12 @@ bool NetworkTurnSocketHandler::HandlePacket(Packet &p)
 	PacketTurnType type = (PacketTurnType)p.Recv_uint8();
 
 	switch (type) {
-		case PACKET_TURN_TURN_ERROR:     return this->Receive_TURN_ERROR(p);
-		case PACKET_TURN_SERCLI_CONNECT: return this->Receive_SERCLI_CONNECT(p);
-		case PACKET_TURN_TURN_CONNECTED: return this->Receive_TURN_CONNECTED(p);
+		case PACKET_TURN_TURN_ERROR:
+			return this->Receive_TURN_ERROR(p);
+		case PACKET_TURN_SERCLI_CONNECT:
+			return this->Receive_SERCLI_CONNECT(p);
+		case PACKET_TURN_TURN_CONNECTED:
+			return this->Receive_TURN_CONNECTED(p);
 
 		default:
 			Debug(net, 0, "[tcp/turn] Received invalid packet type {}", type);
@@ -65,6 +70,17 @@ bool NetworkTurnSocketHandler::ReceiveInvalidPacket(PacketTurnType type)
 	return false;
 }
 
-bool NetworkTurnSocketHandler::Receive_TURN_ERROR(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_ERROR); }
-bool NetworkTurnSocketHandler::Receive_SERCLI_CONNECT(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_SERCLI_CONNECT); }
-bool NetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet &) { return this->ReceiveInvalidPacket(PACKET_TURN_TURN_CONNECTED); }
+bool NetworkTurnSocketHandler::Receive_TURN_ERROR(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_TURN_TURN_ERROR);
+}
+
+bool NetworkTurnSocketHandler::Receive_SERCLI_CONNECT(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_TURN_SERCLI_CONNECT);
+}
+
+bool NetworkTurnSocketHandler::Receive_TURN_CONNECTED(Packet &)
+{
+	return this->ReceiveInvalidPacket(PACKET_TURN_TURN_CONNECTED);
+}

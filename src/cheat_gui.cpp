@@ -8,41 +8,40 @@
 /** @file cheat_gui.cpp GUI related to cheating. */
 
 #include "stdafx.h"
-#include "command_func.h"
+
+#include "core/geometry_func.hpp"
 #include "cheat_type.h"
+#include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "currency.h"
-#include "saveload/saveload.h"
-#include "vehicle_base.h"
-#include "textbuf_gui.h"
-#include "window_gui.h"
-#include "string_func.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "rail_gui.h"
-#include "settings_gui.h"
 #include "company_gui.h"
+#include "currency.h"
+#include "error.h"
 #include "linkgraph/linkgraphschedule.h"
 #include "map_func.h"
-#include "tile_map.h"
-#include "newgrf.h"
-#include "error.h"
 #include "misc_cmd.h"
-#include "core/geometry_func.hpp"
-#include "settings_type.h"
+#include "newgrf.h"
+#include "rail_gui.h"
+#include "saveload/saveload.h"
+#include "settings_gui.h"
 #include "settings_internal.h"
+#include "settings_type.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "tile_map.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "vehicle_base.h"
+#include "window_func.h"
+#include "window_gui.h"
 
 #include "widgets/cheat_widget.h"
-
 #include "table/sprites.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
-
 
 /**
  * The 'amount' to cheat with.
@@ -170,17 +169,17 @@ static int32_t ClickChangeMaxHlCheat(int32_t new_value, int32_t)
 
 /** Available cheats. */
 enum CheatNumbers : uint8_t {
-	CHT_MONEY,           ///< Change amount of money.
-	CHT_CHANGE_COMPANY,  ///< Switch company.
-	CHT_EXTRA_DYNAMITE,  ///< Dynamite anything.
+	CHT_MONEY, ///< Change amount of money.
+	CHT_CHANGE_COMPANY, ///< Switch company.
+	CHT_EXTRA_DYNAMITE, ///< Dynamite anything.
 	CHT_CROSSINGTUNNELS, ///< Allow tunnels to cross each other.
-	CHT_NO_JETCRASH,     ///< Disable jet-airplane crashes.
-	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
-	CHT_STATION_RATING,  ///< Fix station ratings at 100%.
-	CHT_EDIT_MAX_HL,     ///< Edit maximum allowed heightlevel
-	CHT_CHANGE_DATE,     ///< Do time traveling.
+	CHT_NO_JETCRASH, ///< Disable jet-airplane crashes.
+	CHT_SETUP_PROD, ///< Allow manually editing of industry production.
+	CHT_STATION_RATING, ///< Fix station ratings at 100%.
+	CHT_EDIT_MAX_HL, ///< Edit maximum allowed heightlevel
+	CHT_CHANGE_DATE, ///< Do time traveling.
 
-	CHT_NUM_CHEATS,      ///< Number of cheats.
+	CHT_NUM_CHEATS, ///< Number of cheats.
 };
 
 /**
@@ -192,11 +191,11 @@ typedef int32_t CheckButtonClick(int32_t new_value, int32_t change_direction);
 
 /** Information of a cheat. */
 struct CheatEntry {
-	VarType type;          ///< type of selector
-	StringID str;          ///< string with descriptive text
-	void *variable;        ///< pointer to the variable
-	bool *been_used;       ///< has this cheat been used before?
-	CheckButtonClick *proc;///< procedure
+	VarType type; ///< type of selector
+	StringID str; ///< string with descriptive text
+	void *variable; ///< pointer to the variable
+	bool *been_used; ///< has this cheat been used before?
+	CheckButtonClick *proc; ///< procedure
 };
 
 /**
@@ -204,15 +203,15 @@ struct CheatEntry {
  * Order matches with the values of #CheatNumbers
  */
 static const CheatEntry _cheats_ui[] = {
-	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                          &_cheats.money.been_used,            &ClickMoneyCheat         },
-	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                               &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
-	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,                &_cheats.magic_bulldozer.been_used,  nullptr                  },
-	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,               &_cheats.crossing_tunnels.been_used, nullptr                  },
-	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,                    &_cheats.no_jetcrash.been_used,      nullptr                  },
-	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,                     &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
-	{SLE_BOOL,  STR_CHEAT_STATION_RATING,  &_cheats.station_rating.value,                 &_cheats.station_rating.been_used,   nullptr                  },
-	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used,      &ClickChangeMaxHlCheat   },
-	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &TimerGameCalendar::year,                      &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
+	{SLE_INT32, STR_CHEAT_MONEY, &_money_cheat_amount, &_cheats.money.been_used, &ClickMoneyCheat},
+	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY, &_local_company, &_cheats.switch_company.been_used, &ClickChangeCompanyCheat},
+	{SLE_BOOL, STR_CHEAT_EXTRA_DYNAMITE, &_cheats.magic_bulldozer.value, &_cheats.magic_bulldozer.been_used, nullptr},
+	{SLE_BOOL, STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value, &_cheats.crossing_tunnels.been_used, nullptr},
+	{SLE_BOOL, STR_CHEAT_NO_JETCRASH, &_cheats.no_jetcrash.value, &_cheats.no_jetcrash.been_used, nullptr},
+	{SLE_BOOL, STR_CHEAT_SETUP_PROD, &_cheats.setup_prod.value, &_cheats.setup_prod.been_used, &ClickSetProdCheat},
+	{SLE_BOOL, STR_CHEAT_STATION_RATING, &_cheats.station_rating.value, &_cheats.station_rating.been_used, nullptr},
+	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL, &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used, &ClickChangeMaxHlCheat},
+	{SLE_INT32, STR_CHEAT_CHANGE_DATE, &TimerGameCalendar::year, &_cheats.change_date.been_used, &ClickChangeDateCheat},
 };
 
 static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
@@ -249,7 +248,9 @@ struct CheatWindow : Window {
 
 	CheatWindow(WindowDesc &desc) : Window(desc)
 	{
-		this->sandbox_settings = GetFilteredSettingCollection([](const SettingDesc &sd) { return sd.flags.Test(SettingFlag::Sandbox); });
+		this->sandbox_settings = GetFilteredSettingCollection([](const SettingDesc &sd) {
+			return sd.flags.Test(SettingFlag::Sandbox);
+		});
 		this->InitNested();
 	}
 
@@ -261,8 +262,12 @@ struct CheatWindow : Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		switch (widget) {
-			case WID_C_PANEL: DrawCheatWidget(r); break;
-			case WID_C_SETTINGS: DrawSettingsWidget(r); break;
+			case WID_C_PANEL:
+				DrawCheatWidget(r);
+				break;
+			case WID_C_SETTINGS:
+				DrawSettingsWidget(r);
+				break;
 		}
 	}
 
@@ -273,8 +278,8 @@ struct CheatWindow : Window {
 
 		bool rtl = _current_text_dir == TD_RTL;
 		uint button_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
-		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH);
-		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH : 0);
+		uint text_left = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH);
+		uint text_right = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH : 0);
 
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
@@ -286,7 +291,7 @@ struct CheatWindow : Window {
 			std::string str;
 			switch (ce->type) {
 				case SLE_BOOL: {
-					bool on = (*(bool*)ce->variable);
+					bool on = (*(bool *)ce->variable);
 
 					DrawBoolButton(button_left, y + button_y_offset, COLOUR_YELLOW, COLOUR_GREY, on, true);
 					str = GetString(ce->str, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
@@ -362,8 +367,8 @@ struct CheatWindow : Window {
 			DrawDropDownButton(buttons.left, buttons.top, COLOUR_YELLOW, state != 0, editable);
 		} else {
 			/* Draw [<][>] boxes for settings of an integer-type */
-			DrawArrowButtons(buttons.left, buttons.top, COLOUR_YELLOW, state,
-					editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
+			DrawArrowButtons(buttons.left, buttons.top, COLOUR_YELLOW, state, editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val),
+				editable && static_cast<uint32_t>(value) != max_val);
 		}
 		auto [param1, param2] = sd->GetValueParams(value);
 		DrawString(text.left, text.right, text.top, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), TC_LIGHT_BLUE);
@@ -372,8 +377,12 @@ struct CheatWindow : Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_C_PANEL: UpdateCheatPanelSize(size); break;
-			case WID_C_SETTINGS: UpdateSettingsPanelSize(size); break;
+			case WID_C_PANEL:
+				UpdateCheatPanelSize(size);
+				break;
+			case WID_C_SETTINGS:
+				UpdateSettingsPanelSize(size);
+				break;
 		}
 	}
 
@@ -431,8 +440,12 @@ struct CheatWindow : Window {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
-			case WID_C_PANEL: CheatPanelClick(pt); break;
-			case WID_C_SETTINGS: SettingsPanelClick(pt); break;
+			case WID_C_PANEL:
+				CheatPanelClick(pt);
+				break;
+			case WID_C_SETTINGS:
+				SettingsPanelClick(pt);
+				break;
 		}
 	}
 
@@ -566,7 +579,7 @@ struct CheatWindow : Window {
 			if (value != oldvalue) {
 				this->last_clicked_setting = nullptr;
 				this->clicked_setting = sd;
-				this->clicked =  (x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? 2 : 1;
+				this->clicked = (x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? 2 : 1;
 				this->SetTimeout();
 				_left_button_clicked = false;
 			}
@@ -635,17 +648,12 @@ struct CheatWindow : Window {
 	}
 
 	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [this](auto) {
-		this->SetDirty();
-	}};
+														   this->SetDirty();
+													   }};
 };
 
 /** Window description of the cheats GUI. */
-static WindowDesc _cheats_desc(
-	WDP_AUTO, "cheats", 0, 0,
-	WC_CHEATS, WC_NONE,
-	{},
-	_nested_cheat_widgets
-);
+static WindowDesc _cheats_desc(WDP_AUTO, "cheats", 0, 0, WC_CHEATS, WC_NONE, {}, _nested_cheat_widgets);
 
 /** Open cheat window. */
 void ShowCheatWindow()

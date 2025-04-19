@@ -44,6 +44,7 @@ struct DrawTileSprites {
 	PalSpriteID ground{}; ///< Palette and sprite for the ground
 
 	DrawTileSprites(PalSpriteID ground) : ground(ground) {}
+
 	DrawTileSprites() = default;
 
 	virtual ~DrawTileSprites() = default;
@@ -59,11 +60,17 @@ struct DrawTileSpriteSpan : DrawTileSprites {
 	std::span<const DrawTileSeqStruct> seq; ///< Child sprites,
 
 	template <size_t N>
-	DrawTileSpriteSpan(PalSpriteID ground, const DrawTileSeqStruct (&seq)[N]) : DrawTileSprites(ground), seq(std::begin(seq), std::end(seq)) {}
+	DrawTileSpriteSpan(PalSpriteID ground, const DrawTileSeqStruct (&seq)[N]) : DrawTileSprites(ground), seq(std::begin(seq), std::end(seq))
+	{
+	}
+
 	DrawTileSpriteSpan(PalSpriteID ground) : DrawTileSprites(ground) {};
 	DrawTileSpriteSpan() = default;
 
-	std::span<const DrawTileSeqStruct> GetSequence() const override { return this->seq; }
+	std::span<const DrawTileSeqStruct> GetSequence() const override
+	{
+		return this->seq;
+	}
 };
 
 /**
@@ -78,10 +85,11 @@ struct DrawBuildingsTileStruct {
 	uint8_t width;
 	uint8_t height;
 	uint8_t dz;
-	uint8_t draw_proc;  // this allows to specify a special drawing procedure.
+	uint8_t draw_proc; // this allows to specify a special drawing procedure.
 };
 
-void DrawCommonTileSeq(const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
+void DrawCommonTileSeq(
+	const struct TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
 void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32_t orig_offset, uint32_t newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned);
 
 /**
@@ -182,6 +190,9 @@ inline PaletteID GroundSpritePaletteTransform(SpriteID image, PaletteID pal, Pal
  * @param colour Colour.
  * @return Recolour palette.
  */
-static inline PaletteID GetColourPalette(Colours colour) { return PALETTE_RECOLOUR_START + colour; }
+static inline PaletteID GetColourPalette(Colours colour)
+{
+	return PALETTE_RECOLOUR_START + colour;
+}
 
 #endif /* SPRITE_H */

@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file screenshot_gui.h GUI functions related to screenshots. */
+/** @file screenshot_gui.h GUI functions related to screenshots. */
 
 #ifndef SCREENSHOT_GUI_H
 #define SCREENSHOT_GUI_H

@@ -8,12 +8,14 @@
 /** @file newgrf_canal.cpp Implementation of NewGRF canals. */
 
 #include "stdafx.h"
+
+#include "newgrf_canal.h"
+
 #include "debug.h"
 #include "newgrf_spritegroup.h"
-#include "newgrf_canal.h"
+#include "spritecache.h"
 #include "water.h"
 #include "water_map.h"
-#include "spritecache.h"
 
 #include "safeguards.h"
 
@@ -24,10 +26,7 @@ std::array<WaterFeature, CF_END> _water_feature;
 struct CanalScopeResolver : public ScopeResolver {
 	TileIndex tile; ///< Tile containing the canal.
 
-	CanalScopeResolver(ResolverObject &ro, TileIndex tile)
-		: ScopeResolver(ro), tile(tile)
-	{
-	}
+	CanalScopeResolver(ResolverObject &ro, TileIndex tile) : ScopeResolver(ro), tile(tile) {}
 
 	uint32_t GetRandomBits() const override;
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
@@ -38,14 +37,15 @@ struct CanalResolverObject : public ResolverObject {
 	CanalScopeResolver canal_scope;
 	CanalFeature feature;
 
-	CanalResolverObject(CanalFeature feature, TileIndex tile,
-			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
+	CanalResolverObject(CanalFeature feature, TileIndex tile, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->canal_scope;
-			default: return ResolverObject::GetScope(scope, relative);
+			case VSG_SCOPE_SELF:
+				return &this->canal_scope;
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
@@ -71,7 +71,8 @@ struct CanalResolverObject : public ResolverObject {
 		}
 
 		/* Terrain type */
-		case 0x81: return GetTerrainType(this->tile);
+		case 0x81:
+			return GetTerrainType(this->tile);
 
 		/* Dike map: Connectivity info for river and canal tiles
 		 *
@@ -84,20 +85,20 @@ struct CanalResolverObject : public ResolverObject {
 		 *         5
 		 */
 		case 0x82: {
-			uint32_t connectivity =
-				  (!IsWateredTile(TileAddXY(tile, -1,  0), DIR_SW) << 0)  // NE
-				+ (!IsWateredTile(TileAddXY(tile,  0,  1), DIR_NW) << 1)  // SE
-				+ (!IsWateredTile(TileAddXY(tile,  1,  0), DIR_NE) << 2)  // SW
-				+ (!IsWateredTile(TileAddXY(tile,  0, -1), DIR_SE) << 3)  // NW
-				+ (!IsWateredTile(TileAddXY(tile, -1,  1), DIR_W)  << 4)  // E
-				+ (!IsWateredTile(TileAddXY(tile,  1,  1), DIR_N)  << 5)  // S
-				+ (!IsWateredTile(TileAddXY(tile,  1, -1), DIR_E)  << 6)  // W
-				+ (!IsWateredTile(TileAddXY(tile, -1, -1), DIR_S)  << 7); // N
+			uint32_t connectivity = (!IsWateredTile(TileAddXY(tile, -1, 0), DIR_SW) << 0) // NE
+				+ (!IsWateredTile(TileAddXY(tile, 0, 1), DIR_NW) << 1) // SE
+				+ (!IsWateredTile(TileAddXY(tile, 1, 0), DIR_NE) << 2) // SW
+				+ (!IsWateredTile(TileAddXY(tile, 0, -1), DIR_SE) << 3) // NW
+				+ (!IsWateredTile(TileAddXY(tile, -1, 1), DIR_W) << 4) // E
+				+ (!IsWateredTile(TileAddXY(tile, 1, 1), DIR_N) << 5) // S
+				+ (!IsWateredTile(TileAddXY(tile, 1, -1), DIR_E) << 6) // W
+				+ (!IsWateredTile(TileAddXY(tile, -1, -1), DIR_S) << 7); // N
 			return connectivity;
 		}
 
 		/* Random data for river or canal tiles, otherwise zero */
-		case 0x83: return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
+		case 0x83:
+			return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
 	}
 
 	Debug(grf, 1, "Unhandled canal variable 0x{:02X}", variable);
@@ -124,9 +125,8 @@ uint32_t CanalResolverObject::GetDebugID() const
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
-CanalResolverObject::CanalResolverObject(CanalFeature feature, TileIndex tile,
-		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-		: ResolverObject(_water_feature[feature].grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile), feature(feature)
+CanalResolverObject::CanalResolverObject(CanalFeature feature, TileIndex tile, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2) :
+	ResolverObject(_water_feature[feature].grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile), feature(feature)
 {
 	this->root_spritegroup = _water_feature[feature].group;
 }

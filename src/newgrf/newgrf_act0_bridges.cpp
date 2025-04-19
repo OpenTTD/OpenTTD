@@ -8,8 +8,9 @@
 /** @file newgrf_act0_bidges.cpp NewGRF Action 0x00 handler for bridges. */
 
 #include "../stdafx.h"
-#include "../debug.h"
+
 #include "../bridge.h"
+#include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
@@ -85,10 +86,10 @@ static ChangeInfoResult BridgeChangeInfo(uint first, uint last, int prop, ByteRe
 
 					for (uint8_t sprite = 0; sprite < SPRITES_PER_BRIDGE_PIECE; sprite++) {
 						SpriteID image = buf.ReadWord();
-						PaletteID pal  = buf.ReadWord();
+						PaletteID pal = buf.ReadWord();
 
 						bridge->sprite_table[tableid][sprite].sprite = image;
-						bridge->sprite_table[tableid][sprite].pal    = pal;
+						bridge->sprite_table[tableid][sprite].pal = pal;
 
 						MapSpriteMappingRecolour(&bridge->sprite_table[tableid][sprite]);
 					}
@@ -129,5 +130,14 @@ static ChangeInfoResult BridgeChangeInfo(uint first, uint last, int prop, ByteRe
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_BRIDGES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_BRIDGES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return BridgeChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_BRIDGES>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_BRIDGES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return BridgeChangeInfo(first, last, prop, buf);
+}

@@ -22,7 +22,7 @@
  */
 class ScriptExecMode : public ScriptObject {
 private:
-	ScriptModeProc *last_mode;   ///< The previous mode we were in.
+	ScriptModeProc *last_mode; ///< The previous mode we were in.
 	ScriptObject *last_instance; ///< The previous instance of the mode.
 
 protected:

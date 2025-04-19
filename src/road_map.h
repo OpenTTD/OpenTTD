@@ -10,19 +10,18 @@
 #ifndef ROAD_MAP_H
 #define ROAD_MAP_H
 
-#include "track_func.h"
 #include "depot_type.h"
 #include "rail_type.h"
 #include "road_func.h"
-#include "tile_map.h"
 #include "road_type.h"
-
+#include "tile_map.h"
+#include "track_func.h"
 
 /** The different types of road tiles. */
 enum RoadTileType : uint8_t {
-	ROAD_TILE_NORMAL,   ///< Normal road
+	ROAD_TILE_NORMAL, ///< Normal road
 	ROAD_TILE_CROSSING, ///< Level crossing
-	ROAD_TILE_DEPOT,    ///< Depot (one entrance)
+	ROAD_TILE_DEPOT, ///< Depot (one entrance)
 };
 
 bool MayHaveRoad(Tile t);
@@ -354,7 +353,6 @@ inline TrackBits GetCrossingRailBits(Tile tile)
 	return AxisToTrackBits(GetCrossingRailAxis(tile));
 }
 
-
 /**
  * Get the reservation state of the rail crossing
  * @param t the crossing tile
@@ -452,15 +450,14 @@ inline void ToggleSnowOrDesert(Tile t)
 	ToggleBit(t.m7(), 5);
 }
 
-
 /** The possible road side decorations. */
 enum Roadside : uint8_t {
-	ROADSIDE_BARREN           = 0, ///< Road on barren land
-	ROADSIDE_GRASS            = 1, ///< Road on grass
-	ROADSIDE_PAVED            = 2, ///< Road with paved sidewalks
-	ROADSIDE_STREET_LIGHTS    = 3, ///< Road with street lights on paved sidewalks
+	ROADSIDE_BARREN = 0, ///< Road on barren land
+	ROADSIDE_GRASS = 1, ///< Road on grass
+	ROADSIDE_PAVED = 2, ///< Road with paved sidewalks
+	ROADSIDE_STREET_LIGHTS = 3, ///< Road with street lights on paved sidewalks
 	/* 4 is unused for historical reasons */
-	ROADSIDE_TREES            = 5, ///< Road with trees on paved sidewalks
+	ROADSIDE_TREES = 5, ///< Road with trees on paved sidewalks
 	ROADSIDE_GRASS_ROAD_WORKS = 6, ///< Road on grass with road works
 	ROADSIDE_PAVED_ROAD_WORKS = 7, ///< Road with sidewalks and road works
 };
@@ -518,8 +515,12 @@ inline void StartRoadWorks(Tile t)
 	/* Remove any trees or lamps in case or roadwork */
 	switch (GetRoadside(t)) {
 		case ROADSIDE_BARREN:
-		case ROADSIDE_GRASS:  SetRoadside(t, ROADSIDE_GRASS_ROAD_WORKS); break;
-		default:              SetRoadside(t, ROADSIDE_PAVED_ROAD_WORKS); break;
+		case ROADSIDE_GRASS:
+			SetRoadside(t, ROADSIDE_GRASS_ROAD_WORKS);
+			break;
+		default:
+			SetRoadside(t, ROADSIDE_PAVED_ROAD_WORKS);
+			break;
 	}
 }
 
@@ -536,7 +537,6 @@ inline void TerminateRoadWorks(Tile t)
 	SB(t.m7(), 0, 4, 0);
 }
 
-
 /**
  * Get the direction of the exit of a road depot.
  * @param t The tile to query.
@@ -547,7 +547,6 @@ inline DiagDirection GetRoadDepotDirection(Tile t)
 	assert(IsRoadDepot(t));
 	return (DiagDirection)GB(t.m5(), 0, 2);
 }
-
 
 RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge_entrance = false);
 

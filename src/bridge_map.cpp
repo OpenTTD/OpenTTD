@@ -8,11 +8,11 @@
 /** @file bridge_map.cpp Map accessor functions for bridges. */
 
 #include "stdafx.h"
+
 #include "landscape.h"
 #include "tunnelbridge_map.h"
 
 #include "safeguards.h"
-
 
 /**
  * Finds the end of a bridge in the specified direction starting at a middle tile
@@ -31,7 +31,6 @@ static TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
 	return tile;
 }
 
-
 /**
  * Finds the northern end of a bridge starting at a middle tile
  * @param t the bridge tile to find the bridge ramp for
@@ -41,7 +40,6 @@ TileIndex GetNorthernBridgeEnd(TileIndex t)
 	return GetBridgeEnd(t, ReverseDiagDir(AxisToDiagDir(GetBridgeAxis(t))));
 }
 
-
 /**
  * Finds the southern end of a bridge starting at a middle tile
  * @param t the bridge tile to find the bridge ramp for
@@ -50,7 +48,6 @@ TileIndex GetSouthernBridgeEnd(TileIndex t)
 {
 	return GetBridgeEnd(t, AxisToDiagDir(GetBridgeAxis(t)));
 }
-
 
 /**
  * Starting at one bridge end finds the other bridge end

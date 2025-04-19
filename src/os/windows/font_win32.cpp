@@ -8,10 +8,16 @@
 /** @file font_win32.cpp Functions related to font handling on Win32. */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
-#include "../../blitter/factory.hpp"
+
+#include "font_win32.h"
+
+#include <windows.h>
+#include <shlobj.h> /* SHGetFolderPath */
+
 #include "../../core/math_func.hpp"
 #include "../../core/mem_func.hpp"
+#include "../../blitter/factory.hpp"
+#include "../../debug.h"
 #include "../../error_func.h"
 #include "../../fileio_func.h"
 #include "../../fontcache.h"
@@ -21,20 +27,16 @@
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../zoom_func.h"
-#include "font_win32.h"
+#include "win32.h"
 
 #include "../../table/control_codes.h"
-
-#include <windows.h>
-#include <shlobj.h> /* SHGetFolderPath */
-#include "win32.h"
 #undef small // Say what, Windows?
 
 #include "../../safeguards.h"
 
 struct EFCParam {
 	FontCacheSettings *settings;
-	LOCALESIGNATURE  locale;
+	LOCALESIGNATURE locale;
 	MissingGlyphSearcher *callback;
 	std::vector<std::wstring> fonts;
 
@@ -111,7 +113,6 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	return ret == 0;
 }
 
-
 /**
  * Create a new Win32FontCache.
  * @param fs      The font size that is going to be cached.
@@ -143,7 +144,7 @@ void Win32FontCache::SetFontSize(int pixels)
 			HGDIOBJ old = SelectObject(this->dc, temp);
 
 			UINT size = GetOutlineTextMetrics(this->dc, 0, nullptr);
-			LPOUTLINETEXTMETRIC otm = (LPOUTLINETEXTMETRIC)new BYTE[size];
+			LPOUTLINETEXTMETRIC otm = (LPOUTLINETEXTMETRIC) new BYTE[size];
 			GetOutlineTextMetrics(this->dc, size, otm);
 
 			/* Font height is minimum height plus the difference between the default
@@ -152,7 +153,7 @@ void Win32FontCache::SetFontSize(int pixels)
 			/* Clamp() is not used as scaled_height could be greater than MAX_FONT_SIZE, which is not permitted in Clamp(). */
 			pixels = std::min(std::max(std::min<int>(otm->otmusMinimumPPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height), MAX_FONT_SIZE);
 
-			delete[] (BYTE*)otm;
+			delete[] (BYTE *)otm;
 			SelectObject(dc, old);
 			DeleteObject(temp);
 		}
@@ -176,7 +177,7 @@ void Win32FontCache::SetFontSize(int pixels)
 
 	/* Query the font metrics we needed. */
 	UINT otmSize = GetOutlineTextMetrics(this->dc, 0, nullptr);
-	POUTLINETEXTMETRIC otm = (POUTLINETEXTMETRIC)new BYTE[otmSize];
+	POUTLINETEXTMETRIC otm = (POUTLINETEXTMETRIC) new BYTE[otmSize];
 	GetOutlineTextMetrics(this->dc, otmSize, otm);
 
 	this->ascender = otm->otmTextMetrics.tmAscent;
@@ -188,7 +189,7 @@ void Win32FontCache::SetFontSize(int pixels)
 	this->fontname = FS2OTTD((LPWSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFaceName));
 
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->fontname, pixels);
-	delete[] (BYTE*)otm;
+	delete[] (BYTE *)otm;
 }
 
 /**
@@ -205,7 +206,7 @@ void Win32FontCache::ClearFontCache()
 /* virtual */ const Sprite *Win32FontCache::InternalGetGlyph(GlyphID key, bool aa)
 {
 	GLYPHMETRICS gm;
-	MAT2 mat = { {0, 1}, {0, 0}, {0, 0}, {0, 1} };
+	MAT2 mat = {{0, 1}, {0, 0}, {0, 0}, {0, 1}};
 
 	/* Call GetGlyphOutline with zero size initially to get required memory size. */
 	DWORD size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, 0, nullptr, &mat);
@@ -288,13 +289,12 @@ void Win32FontCache::ClearFontCache()
 		chars[0] = (wchar_t)(key & 0xFFFF);
 	}
 
-	WORD glyphs[2] = { 0, 0 };
+	WORD glyphs[2] = {0, 0};
 	GetGlyphIndicesW(this->dc, chars, key >= 0x010000U ? 2 : 1, glyphs, GGI_MARK_NONEXISTING_GLYPHS);
 
 	if (glyphs[0] != 0xFFFF) return glyphs[0];
 	return allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END ? this->parent->MapCharToGlyph(key) : 0;
 }
-
 
 static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 {
@@ -316,7 +316,7 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 			/* Try a nice little undocumented function first for getting the internal font name.
 			 * Some documentation is found at: http://www.undocprint.org/winspool/getfontresourceinfo */
 			static LibraryLoader _gdi32("gdi32.dll");
-			typedef BOOL(WINAPI *PFNGETFONTRESOURCEINFO)(LPCTSTR, LPDWORD, LPVOID, DWORD);
+			typedef BOOL(WINAPI * PFNGETFONTRESOURCEINFO)(LPCTSTR, LPDWORD, LPVOID, DWORD);
 			static PFNGETFONTRESOURCEINFO GetFontResourceInfo = _gdi32.GetFunction("GetFontResourceInfoW");
 
 			if (GetFontResourceInfo != nullptr) {
@@ -327,7 +327,7 @@ static bool TryLoadFontFromFile(const std::string &font_name, LOGFONT &logfont)
 					if (GetFontResourceInfo(fontPath, &len, buf, 2)) {
 						logfont = *buf; // Just use first entry.
 					}
-					delete[](uint8_t *)buf;
+					delete[] (uint8_t *)buf;
 				}
 			}
 
@@ -356,6 +356,7 @@ static void LoadWin32Font(FontSize fs, const LOGFONT &logfont, uint size, std::s
 
 	new Win32FontCache(fs, logfont, size);
 }
+
 /**
  * Loads the GDI font.
  * If a GDI font description is present, e.g. from the automatic font

@@ -12,33 +12,41 @@
 
 #ifdef WITH_SSE
 
-#ifndef SSE_VERSION
-#define SSE_VERSION 2
-#endif
+#	ifndef SSE_VERSION
+#		define SSE_VERSION 2
+#	endif
 
-#ifndef SSE_TARGET
-#define SSE_TARGET "sse2"
-#endif
+#	ifndef SSE_TARGET
+#		define SSE_TARGET "sse2"
+#	endif
 
-#ifndef FULL_ANIMATION
-#define FULL_ANIMATION 1
-#endif
+#	ifndef FULL_ANIMATION
+#		define FULL_ANIMATION 1
+#	endif
 
-#include "32bpp_anim.hpp"
-#include "32bpp_sse2.hpp"
+#	include "32bpp_anim.hpp"
+#	include "32bpp_sse2.hpp"
 
 /** A partially 32 bpp blitter with palette animation. */
 class Blitter_32bppSSE2_Anim : public Blitter_32bppAnim {
 public:
 	void PaletteAnimate(const Palette &palette) override;
-	std::string_view GetName() override { return "32bpp-sse2-anim"; }
+
+	std::string_view GetName() override
+	{
+		return "32bpp-sse2-anim";
+	}
 };
 
 /** Factory for the partially 32bpp blitter with animation. */
 class FBlitter_32bppSSE2_Anim : public BlitterFactory {
 public:
 	FBlitter_32bppSSE2_Anim() : BlitterFactory("32bpp-sse2-anim", "32bpp partially SSE2 Animation Blitter (palette animation)", HasCPUIDFlag(1, 3, 26)) {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppSSE2_Anim>(); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::make_unique<Blitter_32bppSSE2_Anim>();
+	}
 };
 
 #endif /* WITH_SSE */

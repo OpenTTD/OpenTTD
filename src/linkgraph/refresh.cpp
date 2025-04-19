@@ -8,11 +8,13 @@
 /** @file refresh.h Definition of link refreshing utility. */
 
 #include "../stdafx.h"
-#include "../core/bitmath_func.hpp"
-#include "../station_func.h"
-#include "../engine_base.h"
-#include "../vehicle_func.h"
+
 #include "refresh.h"
+
+#include "../core/bitmath_func.hpp"
+#include "../engine_base.h"
+#include "../station_func.h"
+#include "../vehicle_func.h"
 #include "linkgraph.h"
 
 #include "../safeguards.h"
@@ -47,8 +49,7 @@
  * @param is_full_loading If the vehicle is full loading.
  */
 LinkRefresher::LinkRefresher(Vehicle *vehicle, HopSet *seen_hops, bool allow_merge, bool is_full_loading) :
-	vehicle(vehicle), seen_hops(seen_hops), cargo(INVALID_CARGO), allow_merge(allow_merge),
-	is_full_loading(is_full_loading)
+	vehicle(vehicle), seen_hops(seen_hops), cargo(INVALID_CARGO), allow_merge(allow_merge), is_full_loading(is_full_loading)
 {
 	/* Assemble list of capacities and set last loading stations to 0. */
 	for (Vehicle *v = this->vehicle; v != nullptr; v = v->Next()) {
@@ -144,15 +145,13 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
 	 * evaluation) or if it's not conditional and the caller allows it to be
 	 * chosen (by setting RefreshFlag::UseNext). */
 	while (next != nullptr && (!flags.Test(RefreshFlag::UseNext) || next->IsType(OT_CONDITIONAL))) {
-
 		/* After the first step any further non-conditional order is good,
 		 * regardless of previous RefreshFlag::UseNext settings. The case of cur and next or
 		 * their respective stations being equal is handled elsewhere. */
 		flags.Set(RefreshFlag::UseNext);
 
 		if (next->IsType(OT_CONDITIONAL)) {
-			const Order *skip_to = this->vehicle->orders->GetNextDecisionNode(
-					this->vehicle->orders->GetOrderAt(next->GetConditionSkipToOrder()), num_hops);
+			const Order *skip_to = this->vehicle->orders->GetNextDecisionNode(this->vehicle->orders->GetOrderAt(next->GetConditionSkipToOrder()), num_hops);
 			if (skip_to != nullptr && num_hops < this->vehicle->orders->GetNumOrders()) {
 				/* Make copies of capacity tracking lists. There is potential
 				 * for optimization here: If the vehicle never refits we don't
@@ -165,8 +164,7 @@ const Order *LinkRefresher::PredictNextOrder(const Order *cur, const Order *next
 
 		/* Reassign next with the following stop. This can be a station or a
 		 * depot.*/
-		next = this->vehicle->orders->GetNextDecisionNode(
-				this->vehicle->orders->GetNext(next), num_hops++);
+		next = this->vehicle->orders->GetNextDecisionNode(this->vehicle->orders->GetNext(next), num_hops++);
 	}
 	return next;
 }
@@ -197,8 +195,7 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			}
 
 			/* A link is at least partly restricted if a vehicle can't load at its source. */
-			EdgeUpdateMode restricted_mode = (cur->GetLoadType() & OLFB_NO_LOAD) == 0 ?
-						EdgeUpdateMode::Unrestricted : EdgeUpdateMode::Restricted;
+			EdgeUpdateMode restricted_mode = (cur->GetLoadType() & OLFB_NO_LOAD) == 0 ? EdgeUpdateMode::Unrestricted : EdgeUpdateMode::Restricted;
 			/* This estimates the travel time of the link as the time needed
 			 * to travel between the stations at half the max speed of the consist.
 			 * The result is in tiles/tick (= 2048 km-ish/h). */
@@ -209,14 +206,11 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 			 * loading. Don't do that if the vehicle has been waiting for longer than the entire
 			 * order list is supposed to take, though. If that is the case the total duration is
 			 * probably far off and we'd greatly overestimate the capacity by increasing.*/
-			if (this->is_full_loading && this->vehicle->orders != nullptr &&
-					st->index == vehicle->last_station_visited &&
-					this->vehicle->orders->GetTotalDuration() > this->vehicle->current_order_time) {
+			if (this->is_full_loading && this->vehicle->orders != nullptr && st->index == vehicle->last_station_visited &&
+				this->vehicle->orders->GetTotalDuration() > this->vehicle->current_order_time) {
 				uint effective_capacity = cargo_quantity * this->vehicle->load_unload_ticks;
 				if (effective_capacity > (uint)this->vehicle->orders->GetTotalDuration()) {
-					IncreaseStats(st, cargo, next_station, effective_capacity /
-							this->vehicle->orders->GetTotalDuration(), 0, 0,
-							{EdgeUpdateMode::Increase, restricted_mode});
+					IncreaseStats(st, cargo, next_station, effective_capacity / this->vehicle->orders->GetTotalDuration(), 0, 0, {EdgeUpdateMode::Increase, restricted_mode});
 				} else if (RandomRange(this->vehicle->orders->GetTotalDuration()) < effective_capacity) {
 					IncreaseStats(st, cargo, next_station, 1, 0, 0, {EdgeUpdateMode::Increase, restricted_mode});
 				} else {
@@ -243,7 +237,6 @@ void LinkRefresher::RefreshStats(const Order *cur, const Order *next)
 void LinkRefresher::RefreshLinks(const Order *cur, const Order *next, RefreshFlags flags, uint num_hops)
 {
 	while (next != nullptr) {
-
 		if ((next->IsType(OT_GOTO_DEPOT) || next->IsType(OT_GOTO_STATION)) && next->IsRefit()) {
 			flags.Set(RefreshFlag::WasRefit);
 			if (!next->IsAutoRefit()) {

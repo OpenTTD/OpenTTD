@@ -10,9 +10,10 @@
  */
 
 #include "../../stdafx.h"
-#include "../../string_func.h"
 
 #include "packet.h"
+
+#include "../../string_func.h"
 
 #include "../../safeguards.h"
 
@@ -59,7 +60,6 @@ Packet::Packet(NetworkSocketHandler *cs, PacketType type, size_t limit) : pos(0)
 	this->Send_uint8(type);
 }
 
-
 /**
  * Writes the packet size from the raw packet from packet->size
  */
@@ -78,7 +78,7 @@ void Packet::PrepareToSend()
 		cs->send_encryption_handler->Encrypt(std::span(&this->buffer[offset], mac_size), std::span(&this->buffer[message_offset], this->buffer.size() - message_offset));
 	}
 
-	this->pos  = 0; // We start reading from here
+	this->pos = 0; // We start reading from here
 	this->buffer.shrink_to_fit();
 }
 
@@ -141,8 +141,8 @@ void Packet::Send_uint16(uint16_t data)
 void Packet::Send_uint32(uint32_t data)
 {
 	assert(this->CanWriteToPacket(sizeof(data)));
-	this->buffer.emplace_back(GB(data,  0, 8));
-	this->buffer.emplace_back(GB(data,  8, 8));
+	this->buffer.emplace_back(GB(data, 0, 8));
+	this->buffer.emplace_back(GB(data, 8, 8));
 	this->buffer.emplace_back(GB(data, 16, 8));
 	this->buffer.emplace_back(GB(data, 24, 8));
 }
@@ -154,8 +154,8 @@ void Packet::Send_uint32(uint32_t data)
 void Packet::Send_uint64(uint64_t data)
 {
 	assert(this->CanWriteToPacket(sizeof(data)));
-	this->buffer.emplace_back(GB(data,  0, 8));
-	this->buffer.emplace_back(GB(data,  8, 8));
+	this->buffer.emplace_back(GB(data, 0, 8));
+	this->buffer.emplace_back(GB(data, 8, 8));
 	this->buffer.emplace_back(GB(data, 16, 8));
 	this->buffer.emplace_back(GB(data, 24, 8));
 	this->buffer.emplace_back(GB(data, 32, 8));
@@ -206,7 +206,6 @@ std::span<const uint8_t> Packet::Send_bytes(const std::span<const uint8_t> span)
  * Again, the next couple of functions are endian-safe
  *  see the comment before Send_bool for more info.
  */
-
 
 /**
  * Is it safe to read from the packet, i.e. didn't we run over the buffer?
@@ -259,7 +258,7 @@ size_t Packet::Size() const
 bool Packet::ParsePacketSize()
 {
 	size_t size = static_cast<size_t>(this->buffer[0]);
-	size       += static_cast<size_t>(this->buffer[1]) << 8;
+	size += static_cast<size_t>(this->buffer[1]) << 8;
 
 	/* If the size of the packet is less than the bytes required for the size and type of
 	 * the packet, or more than the allowed limit, then something is wrong with the packet.
@@ -335,7 +334,7 @@ uint16_t Packet::Recv_uint16()
 
 	if (!this->CanReadFromPacket(sizeof(n), true)) return 0;
 
-	n  = (uint16_t)this->buffer[this->pos++];
+	n = (uint16_t)this->buffer[this->pos++];
 	n += (uint16_t)this->buffer[this->pos++] << 8;
 	return n;
 }
@@ -350,7 +349,7 @@ uint32_t Packet::Recv_uint32()
 
 	if (!this->CanReadFromPacket(sizeof(n), true)) return 0;
 
-	n  = (uint32_t)this->buffer[this->pos++];
+	n = (uint32_t)this->buffer[this->pos++];
 	n += (uint32_t)this->buffer[this->pos++] << 8;
 	n += (uint32_t)this->buffer[this->pos++] << 16;
 	n += (uint32_t)this->buffer[this->pos++] << 24;
@@ -367,7 +366,7 @@ uint64_t Packet::Recv_uint64()
 
 	if (!this->CanReadFromPacket(sizeof(n), true)) return 0;
 
-	n  = (uint64_t)this->buffer[this->pos++];
+	n = (uint64_t)this->buffer[this->pos++];
 	n += (uint64_t)this->buffer[this->pos++] << 8;
 	n += (uint64_t)this->buffer[this->pos++] << 16;
 	n += (uint64_t)this->buffer[this->pos++] << 24;

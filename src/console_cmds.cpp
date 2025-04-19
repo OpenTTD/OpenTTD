@@ -8,42 +8,44 @@
 /** @file console_cmds.cpp Implementation of the console hooks. */
 
 #include "stdafx.h"
-#include "console_internal.h"
-#include "debug.h"
-#include "engine_func.h"
-#include "landscape.h"
-#include "saveload/saveload.h"
+
+#include "3rdparty/fmt/chrono.h"
+
 #include "network/core/network_game_info.h"
-#include "network/network.h"
-#include "network/network_func.h"
-#include "network/network_base.h"
-#include "network/network_admin.h"
-#include "network/network_client.h"
-#include "command_func.h"
-#include "settings_func.h"
-#include "fios.h"
-#include "fileio_func.h"
-#include "fontcache.h"
-#include "screenshot.h"
-#include "genworld.h"
-#include "strings_func.h"
-#include "viewport_func.h"
-#include "window_func.h"
-#include "timer/timer.h"
-#include "company_func.h"
-#include "gamelog.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
+#include "command_func.h"
+#include "company_cmd.h"
+#include "company_func.h"
+#include "console_func.h"
+#include "console_internal.h"
+#include "debug.h"
+#include "engine_base.h"
+#include "engine_func.h"
+#include "fileio_func.h"
+#include "fios.h"
+#include "fontcache.h"
+#include "game/game.hpp"
+#include "gamelog.h"
+#include "genworld.h"
+#include "landscape.h"
+#include "misc_cmd.h"
+#include "network/network.h"
+#include "network/network_admin.h"
+#include "network/network_base.h"
+#include "network/network_client.h"
+#include "network/network_func.h"
 #include "newgrf.h"
 #include "newgrf_profiling.h"
-#include "console_func.h"
-#include "engine_base.h"
-#include "road.h"
 #include "rail.h"
-#include "game/game.hpp"
-#include "3rdparty/fmt/chrono.h"
-#include "company_cmd.h"
-#include "misc_cmd.h"
+#include "road.h"
+#include "saveload/saveload.h"
+#include "screenshot.h"
+#include "settings_func.h"
+#include "strings_func.h"
+#include "timer/timer.h"
+#include "viewport_func.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -57,25 +59,23 @@ static std::string _scheduled_monthly_script; ///< Script scheduled to execute b
 
 /** Timer that runs every month of game time for the 'schedule' console command. */
 static IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto) {
-	if (_scheduled_monthly_script.empty()) {
-		return;
-	}
+																		if (_scheduled_monthly_script.empty()) {
+																			return;
+																		}
 
-	/* Clear the schedule before rather than after the script to allow the script to itself call
+																		/* Clear the schedule before rather than after the script to allow the script to itself call
 	 * schedule without it getting immediately cleared. */
-	const std::string filename = _scheduled_monthly_script;
-	_scheduled_monthly_script.clear();
+																		const std::string filename = _scheduled_monthly_script;
+																		_scheduled_monthly_script.clear();
 
-	IConsolePrint(CC_DEFAULT, "Executing scheduled script file '{}'...", filename);
-	IConsoleCmdExec(std::string("exec") + " " + filename);
-}};
+																		IConsolePrint(CC_DEFAULT, "Executing scheduled script file '{}'...", filename);
+																		IConsoleCmdExec(std::string("exec") + " " + filename);
+																	}};
 
 /** File list storage for the console, for caching the last 'ls' command. */
 class ConsoleFileList : public FileList {
 public:
-	ConsoleFileList(AbstractFileType abstract_filetype, bool show_dirs) : FileList(), abstract_filetype(abstract_filetype), show_dirs(show_dirs)
-	{
-	}
+	ConsoleFileList(AbstractFileType abstract_filetype, bool show_dirs) : FileList(), abstract_filetype(abstract_filetype), show_dirs(show_dirs) {}
 
 	/** Declare the file storage cache as being invalid, also clears all stored files. */
 	void InvalidateFileList()
@@ -546,7 +546,6 @@ static bool ConRemove([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv
 	return true;
 }
 
-
 /* List all the files in the current dir via console */
 static bool ConListFiles([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
@@ -615,7 +614,8 @@ static bool ConChangeDirectory([[maybe_unused]] uint8_t argc, [[maybe_unused]] c
 			case DFT_FIOS_PARENT:
 				FiosBrowseTo(item);
 				break;
-			default: IConsolePrint(CC_ERROR, "{}: Not a directory.", file);
+			default:
+				IConsolePrint(CC_ERROR, "{}: Not a directory.", file);
 		}
 	} else {
 		IConsolePrint(CC_ERROR, "{}: No such file or directory.", file);
@@ -651,7 +651,6 @@ static bool ConClearBuffer([[maybe_unused]] uint8_t argc, [[maybe_unused]] char 
 	SetWindowDirty(WC_CONSOLE, 0);
 	return true;
 }
-
 
 /**********************************
  * Network Core Console Commands
@@ -1079,8 +1078,11 @@ static bool ConNetworkReconnect([[maybe_unused]] uint8_t argc, [[maybe_unused]] 
 
 	CompanyID playas = (argc >= 2) ? (CompanyID)atoi(argv[1]) : COMPANY_SPECTATOR;
 	switch (playas.base()) {
-		case 0: playas = COMPANY_NEW_COMPANY; break;
-		case COMPANY_SPECTATOR.base(): /* nothing to do */ break;
+		case 0:
+			playas = COMPANY_NEW_COMPANY;
+			break;
+		case COMPANY_SPECTATOR.base(): /* nothing to do */
+			break;
 		default:
 			/* From a user pov 0 is a new company, internally it's different and all
 			 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
@@ -1328,7 +1330,7 @@ static void PrintLineByLine(const std::string &full_string)
 	}
 }
 
-template <typename F, typename ... Args>
+template <typename F, typename... Args>
 bool PrintList(F list_function, Args... args)
 {
 	std::string output_str;
@@ -1745,7 +1747,9 @@ static bool ConDebugLevel([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *
 	if (argc == 1) {
 		IConsolePrint(CC_DEFAULT, "Current debug-level: '{}'", GetDebugString());
 	} else {
-		SetDebugString(argv[1], [](const std::string &err) { IConsolePrint(CC_ERROR, err); });
+		SetDebugString(argv[1], [](const std::string &err) {
+			IConsolePrint(CC_ERROR, err);
+		});
 	}
 
 	return true;
@@ -1867,14 +1871,9 @@ static bool ConCompanies([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *a
 		std::string company_name = GetString(STR_COMPANY_NAME, c->index);
 
 		std::string colour = GetString(STR_COLOUR_DARK_BLUE + _company_colours[c->index]);
-		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
-			c->index + 1, colour, company_name,
-			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),
-			c->group_all[VEH_TRAIN].num_vehicle,
-			c->group_all[VEH_ROAD].num_vehicle,
-			c->group_all[VEH_AIRCRAFT].num_vehicle,
-			c->group_all[VEH_SHIP].num_vehicle,
-			c->is_ai ? "AI" : "");
+		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}", c->index + 1, colour, company_name, c->inaugurated_year,
+			(int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c), c->group_all[VEH_TRAIN].num_vehicle, c->group_all[VEH_ROAD].num_vehicle,
+			c->group_all[VEH_AIRCRAFT].num_vehicle, c->group_all[VEH_SHIP].num_vehicle, c->is_ai ? "AI" : "");
 	}
 
 	return true;
@@ -1947,9 +1946,9 @@ static bool ConSayClient([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *a
 
 /** All the known authorized keys with their name. */
 static std::vector<std::pair<std::string_view, NetworkAuthorizedKeys *>> _console_cmd_authorized_keys{
-	{ "admin", &_settings_client.network.admin_authorized_keys },
-	{ "rcon", &_settings_client.network.rcon_authorized_keys },
-	{ "server", &_settings_client.network.server_authorized_keys },
+	{"admin", &_settings_client.network.admin_authorized_keys},
+	{"rcon", &_settings_client.network.rcon_authorized_keys},
+	{"server", &_settings_client.network.server_authorized_keys},
 };
 
 enum ConNetworkAuthorizedKeyAction : uint8_t {
@@ -1958,7 +1957,8 @@ enum ConNetworkAuthorizedKeyAction : uint8_t {
 	CNAKA_REMOVE,
 };
 
-static void PerformNetworkAuthorizedKeyAction(std::string_view name, NetworkAuthorizedKeys *authorized_keys, ConNetworkAuthorizedKeyAction action, const std::string &authorized_key, CompanyID company = CompanyID::Invalid())
+static void PerformNetworkAuthorizedKeyAction(
+	std::string_view name, NetworkAuthorizedKeys *authorized_keys, ConNetworkAuthorizedKeyAction action, const std::string &authorized_key, CompanyID company = CompanyID::Invalid())
 {
 	switch (action) {
 		case CNAKA_LIST:
@@ -2079,20 +2079,19 @@ static bool ConNetworkAuthorizedKey([[maybe_unused]] uint8_t argc, [[maybe_unuse
 	return false;
 }
 
-
 /* Content downloading only is available with ZLIB */
 #if defined(WITH_ZLIB)
-#include "network/network_content.h"
+#	include "network/network_content.h"
 
 /** Resolve a string to a content type. */
 static ContentType StringToContentType(const char *str)
 {
 	static const std::initializer_list<std::pair<std::string_view, ContentType>> content_types = {
-		{"base",      CONTENT_TYPE_BASE_GRAPHICS},
-		{"newgrf",    CONTENT_TYPE_NEWGRF},
-		{"ai",        CONTENT_TYPE_AI},
-		{"ailib",     CONTENT_TYPE_AI_LIBRARY},
-		{"scenario",  CONTENT_TYPE_SCENARIO},
+		{"base", CONTENT_TYPE_BASE_GRAPHICS},
+		{"newgrf", CONTENT_TYPE_NEWGRF},
+		{"ai", CONTENT_TYPE_AI},
+		{"ailib", CONTENT_TYPE_AI_LIBRARY},
+		{"scenario", CONTENT_TYPE_SCENARIO},
 		{"heightmap", CONTENT_TYPE_HEIGHTMAP},
 	};
 	for (const auto &ct : content_types) {
@@ -2125,10 +2124,10 @@ struct ConsoleContentCallback : public ContentCallback {
  */
 static void OutputContentState(const ContentInfo &ci)
 {
-	static const char * const types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
+	static const char *const types[] = {"Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library"};
 	static_assert(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
-	static const char * const states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
-	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
+	static const char *const states[] = {"Not selected", "Selected", "Dep Selected", "Installed", "Unknown"};
+	static const TextColour state_to_colour[] = {CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR};
 
 	IConsolePrint(state_to_colour[ci.state], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[ci.state], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
@@ -2359,24 +2358,25 @@ static bool ConListDirs([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *ar
 {
 	struct SubdirNameMap {
 		Subdirectory subdir; ///< Index of subdirectory type
-		const char *name;    ///< UI name for the directory
-		bool default_only;   ///< Whether only the default (first existing) directory for this is interesting
+		const char *name; ///< UI name for the directory
+		bool default_only; ///< Whether only the default (first existing) directory for this is interesting
 	};
+
 	static const SubdirNameMap subdir_name_map[] = {
 		/* Game data directories */
-		{ BASESET_DIR,      "baseset",    false },
-		{ NEWGRF_DIR,       "newgrf",     false },
-		{ AI_DIR,           "ai",         false },
-		{ AI_LIBRARY_DIR,   "ailib",      false },
-		{ GAME_DIR,         "gs",         false },
-		{ GAME_LIBRARY_DIR, "gslib",      false },
-		{ SCENARIO_DIR,     "scenario",   false },
-		{ HEIGHTMAP_DIR,    "heightmap",  false },
+		{BASESET_DIR, "baseset", false},
+		{NEWGRF_DIR, "newgrf", false},
+		{AI_DIR, "ai", false},
+		{AI_LIBRARY_DIR, "ailib", false},
+		{GAME_DIR, "gs", false},
+		{GAME_LIBRARY_DIR, "gslib", false},
+		{SCENARIO_DIR, "scenario", false},
+		{HEIGHTMAP_DIR, "heightmap", false},
 		/* Default save locations for user data */
-		{ SAVE_DIR,         "save",       true  },
-		{ AUTOSAVE_DIR,     "autosave",   true  },
-		{ SCREENSHOT_DIR,   "screenshot", true  },
-		{ SOCIAL_INTEGRATION_DIR, "social_integration", true },
+		{SAVE_DIR, "save", true},
+		{AUTOSAVE_DIR, "autosave", true},
+		{SCREENSHOT_DIR, "screenshot", true},
+		{SOCIAL_INTEGRATION_DIR, "social_integration", true},
 	};
 
 	if (argc != 2) {
@@ -2394,7 +2394,7 @@ static bool ConListDirs([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *ar
 
 	std::set<std::string> seen_dirs;
 	for (const SubdirNameMap &sdn : subdir_name_map) {
-		if (!StrEqualsIgnoreCase(argv[1], sdn.name))  continue;
+		if (!StrEqualsIgnoreCase(argv[1], sdn.name)) continue;
 		bool found = false;
 		for (Searchpath sp : _valid_searchpaths) {
 			/* Get the directory */
@@ -2467,7 +2467,9 @@ static bool ConNewGRFProfile([[maybe_unused]] uint8_t argc, [[maybe_unused]] cha
 				continue;
 			}
 			const GRFFile *grf = &files[grfnum - 1];
-			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
+			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) {
+					return pr.grffile == grf;
+				})) {
 				IConsolePrint(CC_WARNING, "GRF number {} [{:08X}] is already selected for profiling.", grfnum, std::byteswap(grf->grfid));
 				continue;
 			}
@@ -2548,9 +2550,9 @@ static bool ConNewGRFProfile([[maybe_unused]] uint8_t argc, [[maybe_unused]] cha
 
 static void IConsoleDebugLibRegister()
 {
-	IConsole::CmdRegister("resettile",        ConResetTile);
-	IConsole::AliasRegister("dbg_echo",       "echo %A; echo %B");
-	IConsole::AliasRegister("dbg_echo2",      "echo %!");
+	IConsole::CmdRegister("resettile", ConResetTile);
+	IConsole::AliasRegister("dbg_echo", "echo %A; echo %B");
+	IConsole::AliasRegister("dbg_echo2", "echo %!");
 }
 #endif
 
@@ -2616,18 +2618,9 @@ static void ConDumpRoadTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} {} {}, Flags: {}{}{}{}{}, GRF: {:08X}, {}",
-				(uint)rt,
-				RoadTypeIsTram(rt) ? "Tram" : "Road",
-				FormatLabel(rti->label),
-				rti->flags.Test(RoadTypeFlag::Catenary)        ? 'c' : '-',
-				rti->flags.Test(RoadTypeFlag::NoLevelCrossing) ? 'l' : '-',
-				rti->flags.Test(RoadTypeFlag::NoHouses)        ? 'X' : '-',
-				rti->flags.Test(RoadTypeFlag::Hidden)          ? 'h' : '-',
-				rti->flags.Test(RoadTypeFlag::TownBuild)       ? 'T' : '-',
-				std::byteswap(grfid),
-				GetStringPtr(rti->strings.name)
-		);
+		IConsolePrint(CC_DEFAULT, "  {:02d} {} {}, Flags: {}{}{}{}{}, GRF: {:08X}, {}", (uint)rt, RoadTypeIsTram(rt) ? "Tram" : "Road", FormatLabel(rti->label),
+			rti->flags.Test(RoadTypeFlag::Catenary) ? 'c' : '-', rti->flags.Test(RoadTypeFlag::NoLevelCrossing) ? 'l' : '-', rti->flags.Test(RoadTypeFlag::NoHouses) ? 'X' : '-',
+			rti->flags.Test(RoadTypeFlag::Hidden) ? 'h' : '-', rti->flags.Test(RoadTypeFlag::TownBuild) ? 'T' : '-', std::byteswap(grfid), GetStringPtr(rti->strings.name));
 	}
 	for (const auto &grf : grfs) {
 		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
@@ -2654,18 +2647,9 @@ static void ConDumpRailTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} {}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}",
-				(uint)rt,
-				FormatLabel(rti->label),
-				rti->flags.Test(RailTypeFlag::Catenary)        ? 'c' : '-',
-				rti->flags.Test(RailTypeFlag::NoLevelCrossing) ? 'l' : '-',
-				rti->flags.Test(RailTypeFlag::Hidden)          ? 'h' : '-',
-				rti->flags.Test(RailTypeFlag::NoSpriteCombine) ? 's' : '-',
-				rti->flags.Test(RailTypeFlag::Allow90Deg)      ? 'a' : '-',
-				rti->flags.Test(RailTypeFlag::Disallow90Deg)   ? 'd' : '-',
-				std::byteswap(grfid),
-				GetStringPtr(rti->strings.name)
-		);
+		IConsolePrint(CC_DEFAULT, "  {:02d} {}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}", (uint)rt, FormatLabel(rti->label), rti->flags.Test(RailTypeFlag::Catenary) ? 'c' : '-',
+			rti->flags.Test(RailTypeFlag::NoLevelCrossing) ? 'l' : '-', rti->flags.Test(RailTypeFlag::Hidden) ? 'h' : '-', rti->flags.Test(RailTypeFlag::NoSpriteCombine) ? 's' : '-',
+			rti->flags.Test(RailTypeFlag::Allow90Deg) ? 'a' : '-', rti->flags.Test(RailTypeFlag::Disallow90Deg) ? 'd' : '-', std::byteswap(grfid), GetStringPtr(rti->strings.name));
 	}
 	for (const auto &grf : grfs) {
 		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
@@ -2700,30 +2684,13 @@ static void ConDumpCargoTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
-				spec->Index(),
-				spec->bitnum,
-				FormatLabel(spec->label.base()),
-				spec->callback_mask.base(),
-				spec->classes.Test(CargoClass::Passengers)   ? 'p' : '-',
-				spec->classes.Test(CargoClass::Mail)         ? 'm' : '-',
-				spec->classes.Test(CargoClass::Express)      ? 'x' : '-',
-				spec->classes.Test(CargoClass::Armoured)     ? 'a' : '-',
-				spec->classes.Test(CargoClass::Bulk)         ? 'b' : '-',
-				spec->classes.Test(CargoClass::PieceGoods)   ? 'g' : '-',
-				spec->classes.Test(CargoClass::Liquid)       ? 'l' : '-',
-				spec->classes.Test(CargoClass::Refrigerated) ? 'r' : '-',
-				spec->classes.Test(CargoClass::Hazardous)    ? 'h' : '-',
-				spec->classes.Test(CargoClass::Covered)      ? 'c' : '-',
-				spec->classes.Test(CargoClass::Oversized)    ? 'o' : '-',
-				spec->classes.Test(CargoClass::Powderized)   ? 'd' : '-',
-				spec->classes.Test(CargoClass::NotPourable)  ? 'n' : '-',
-				spec->classes.Test(CargoClass::Potable)      ? 'e' : '-',
-				spec->classes.Test(CargoClass::NonPotable)   ? 'i' : '-',
-				spec->classes.Test(CargoClass::Special)      ? 'S' : '-',
-				std::byteswap(grfid),
-				GetStringPtr(spec->name)
-		);
+		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}", spec->Index(), spec->bitnum,
+			FormatLabel(spec->label.base()), spec->callback_mask.base(), spec->classes.Test(CargoClass::Passengers) ? 'p' : '-', spec->classes.Test(CargoClass::Mail) ? 'm' : '-',
+			spec->classes.Test(CargoClass::Express) ? 'x' : '-', spec->classes.Test(CargoClass::Armoured) ? 'a' : '-', spec->classes.Test(CargoClass::Bulk) ? 'b' : '-',
+			spec->classes.Test(CargoClass::PieceGoods) ? 'g' : '-', spec->classes.Test(CargoClass::Liquid) ? 'l' : '-', spec->classes.Test(CargoClass::Refrigerated) ? 'r' : '-',
+			spec->classes.Test(CargoClass::Hazardous) ? 'h' : '-', spec->classes.Test(CargoClass::Covered) ? 'c' : '-', spec->classes.Test(CargoClass::Oversized) ? 'o' : '-',
+			spec->classes.Test(CargoClass::Powderized) ? 'd' : '-', spec->classes.Test(CargoClass::NotPourable) ? 'n' : '-', spec->classes.Test(CargoClass::Potable) ? 'e' : '-',
+			spec->classes.Test(CargoClass::NonPotable) ? 'i' : '-', spec->classes.Test(CargoClass::Special) ? 'S' : '-', std::byteswap(grfid), GetStringPtr(spec->name));
 	}
 	for (const auto &grf : grfs) {
 		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", std::byteswap(grf.first), grf.second->filename);
@@ -2763,144 +2730,144 @@ static bool ConDumpInfo([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *ar
 
 void IConsoleStdLibRegister()
 {
-	IConsole::CmdRegister("debug_level",             ConDebugLevel);
-	IConsole::CmdRegister("echo",                    ConEcho);
-	IConsole::CmdRegister("echoc",                   ConEchoC);
-	IConsole::CmdRegister("exec",                    ConExec);
-	IConsole::CmdRegister("schedule",                ConSchedule);
-	IConsole::CmdRegister("exit",                    ConExit);
-	IConsole::CmdRegister("part",                    ConPart);
-	IConsole::CmdRegister("help",                    ConHelp);
-	IConsole::CmdRegister("info_cmd",                ConInfoCmd);
-	IConsole::CmdRegister("list_cmds",               ConListCommands);
-	IConsole::CmdRegister("list_aliases",            ConListAliases);
-	IConsole::CmdRegister("newgame",                 ConNewGame);
-	IConsole::CmdRegister("restart",                 ConRestart);
-	IConsole::CmdRegister("reload",                  ConReload);
-	IConsole::CmdRegister("getseed",                 ConGetSeed);
-	IConsole::CmdRegister("getdate",                 ConGetDate);
-	IConsole::CmdRegister("getsysdate",              ConGetSysDate);
-	IConsole::CmdRegister("quit",                    ConExit);
-	IConsole::CmdRegister("resetengines",            ConResetEngines,     ConHookNoNetwork);
-	IConsole::CmdRegister("reset_enginepool",        ConResetEnginePool,  ConHookNoNetwork);
-	IConsole::CmdRegister("return",                  ConReturn);
-	IConsole::CmdRegister("screenshot",              ConScreenShot);
-	IConsole::CmdRegister("script",                  ConScript);
-	IConsole::CmdRegister("zoomto",                  ConZoomToLevel);
-	IConsole::CmdRegister("scrollto",                ConScrollToTile);
-	IConsole::CmdRegister("alias",                   ConAlias);
-	IConsole::CmdRegister("load",                    ConLoad);
-	IConsole::CmdRegister("load_save",               ConLoad);
-	IConsole::CmdRegister("load_scenario",           ConLoadScenario);
-	IConsole::CmdRegister("load_heightmap",          ConLoadHeightmap);
-	IConsole::CmdRegister("rm",                      ConRemove);
-	IConsole::CmdRegister("save",                    ConSave);
-	IConsole::CmdRegister("saveconfig",              ConSaveConfig);
-	IConsole::CmdRegister("ls",                      ConListFiles);
-	IConsole::CmdRegister("list_saves",              ConListFiles);
-	IConsole::CmdRegister("list_scenarios",          ConListScenarios);
-	IConsole::CmdRegister("list_heightmaps",         ConListHeightmaps);
-	IConsole::CmdRegister("cd",                      ConChangeDirectory);
-	IConsole::CmdRegister("pwd",                     ConPrintWorkingDirectory);
-	IConsole::CmdRegister("clear",                   ConClearBuffer);
-	IConsole::CmdRegister("font",                    ConFont);
-	IConsole::CmdRegister("setting",                 ConSetting);
-	IConsole::CmdRegister("setting_newgame",         ConSettingNewgame);
-	IConsole::CmdRegister("list_settings",           ConListSettings);
-	IConsole::CmdRegister("gamelog",                 ConGamelogPrint);
-	IConsole::CmdRegister("rescan_newgrf",           ConRescanNewGRF);
-	IConsole::CmdRegister("list_dirs",               ConListDirs);
+	IConsole::CmdRegister("debug_level", ConDebugLevel);
+	IConsole::CmdRegister("echo", ConEcho);
+	IConsole::CmdRegister("echoc", ConEchoC);
+	IConsole::CmdRegister("exec", ConExec);
+	IConsole::CmdRegister("schedule", ConSchedule);
+	IConsole::CmdRegister("exit", ConExit);
+	IConsole::CmdRegister("part", ConPart);
+	IConsole::CmdRegister("help", ConHelp);
+	IConsole::CmdRegister("info_cmd", ConInfoCmd);
+	IConsole::CmdRegister("list_cmds", ConListCommands);
+	IConsole::CmdRegister("list_aliases", ConListAliases);
+	IConsole::CmdRegister("newgame", ConNewGame);
+	IConsole::CmdRegister("restart", ConRestart);
+	IConsole::CmdRegister("reload", ConReload);
+	IConsole::CmdRegister("getseed", ConGetSeed);
+	IConsole::CmdRegister("getdate", ConGetDate);
+	IConsole::CmdRegister("getsysdate", ConGetSysDate);
+	IConsole::CmdRegister("quit", ConExit);
+	IConsole::CmdRegister("resetengines", ConResetEngines, ConHookNoNetwork);
+	IConsole::CmdRegister("reset_enginepool", ConResetEnginePool, ConHookNoNetwork);
+	IConsole::CmdRegister("return", ConReturn);
+	IConsole::CmdRegister("screenshot", ConScreenShot);
+	IConsole::CmdRegister("script", ConScript);
+	IConsole::CmdRegister("zoomto", ConZoomToLevel);
+	IConsole::CmdRegister("scrollto", ConScrollToTile);
+	IConsole::CmdRegister("alias", ConAlias);
+	IConsole::CmdRegister("load", ConLoad);
+	IConsole::CmdRegister("load_save", ConLoad);
+	IConsole::CmdRegister("load_scenario", ConLoadScenario);
+	IConsole::CmdRegister("load_heightmap", ConLoadHeightmap);
+	IConsole::CmdRegister("rm", ConRemove);
+	IConsole::CmdRegister("save", ConSave);
+	IConsole::CmdRegister("saveconfig", ConSaveConfig);
+	IConsole::CmdRegister("ls", ConListFiles);
+	IConsole::CmdRegister("list_saves", ConListFiles);
+	IConsole::CmdRegister("list_scenarios", ConListScenarios);
+	IConsole::CmdRegister("list_heightmaps", ConListHeightmaps);
+	IConsole::CmdRegister("cd", ConChangeDirectory);
+	IConsole::CmdRegister("pwd", ConPrintWorkingDirectory);
+	IConsole::CmdRegister("clear", ConClearBuffer);
+	IConsole::CmdRegister("font", ConFont);
+	IConsole::CmdRegister("setting", ConSetting);
+	IConsole::CmdRegister("setting_newgame", ConSettingNewgame);
+	IConsole::CmdRegister("list_settings", ConListSettings);
+	IConsole::CmdRegister("gamelog", ConGamelogPrint);
+	IConsole::CmdRegister("rescan_newgrf", ConRescanNewGRF);
+	IConsole::CmdRegister("list_dirs", ConListDirs);
 
-	IConsole::AliasRegister("dir",                   "ls");
-	IConsole::AliasRegister("del",                   "rm %+");
-	IConsole::AliasRegister("newmap",                "newgame");
-	IConsole::AliasRegister("patch",                 "setting %+");
-	IConsole::AliasRegister("set",                   "setting %+");
-	IConsole::AliasRegister("set_newgame",           "setting_newgame %+");
-	IConsole::AliasRegister("list_patches",          "list_settings %+");
-	IConsole::AliasRegister("developer",             "setting developer %+");
+	IConsole::AliasRegister("dir", "ls");
+	IConsole::AliasRegister("del", "rm %+");
+	IConsole::AliasRegister("newmap", "newgame");
+	IConsole::AliasRegister("patch", "setting %+");
+	IConsole::AliasRegister("set", "setting %+");
+	IConsole::AliasRegister("set_newgame", "setting_newgame %+");
+	IConsole::AliasRegister("list_patches", "list_settings %+");
+	IConsole::AliasRegister("developer", "setting developer %+");
 
-	IConsole::CmdRegister("list_ai_libs",            ConListAILibs);
-	IConsole::CmdRegister("list_ai",                 ConListAI);
-	IConsole::CmdRegister("reload_ai",               ConReloadAI);
-	IConsole::CmdRegister("rescan_ai",               ConRescanAI);
-	IConsole::CmdRegister("start_ai",                ConStartAI);
-	IConsole::CmdRegister("stop_ai",                 ConStopAI);
+	IConsole::CmdRegister("list_ai_libs", ConListAILibs);
+	IConsole::CmdRegister("list_ai", ConListAI);
+	IConsole::CmdRegister("reload_ai", ConReloadAI);
+	IConsole::CmdRegister("rescan_ai", ConRescanAI);
+	IConsole::CmdRegister("start_ai", ConStartAI);
+	IConsole::CmdRegister("stop_ai", ConStopAI);
 
-	IConsole::CmdRegister("list_game",               ConListGame);
-	IConsole::CmdRegister("list_game_libs",          ConListGameLibs);
-	IConsole::CmdRegister("rescan_game",             ConRescanGame);
+	IConsole::CmdRegister("list_game", ConListGame);
+	IConsole::CmdRegister("list_game_libs", ConListGameLibs);
+	IConsole::CmdRegister("rescan_game", ConRescanGame);
 
-	IConsole::CmdRegister("companies",               ConCompanies);
-	IConsole::AliasRegister("players",               "companies");
+	IConsole::CmdRegister("companies", ConCompanies);
+	IConsole::AliasRegister("players", "companies");
 
 	/* networking functions */
 
 /* Content downloading is only available with ZLIB */
 #if defined(WITH_ZLIB)
-	IConsole::CmdRegister("content",                 ConContent);
+	IConsole::CmdRegister("content", ConContent);
 #endif /* defined(WITH_ZLIB) */
 
 	/*** Networking commands ***/
-	IConsole::CmdRegister("say",                     ConSay,              ConHookNeedNetwork);
-	IConsole::CmdRegister("say_company",             ConSayCompany,       ConHookNeedNetwork);
-	IConsole::AliasRegister("say_player",            "say_company %+");
-	IConsole::CmdRegister("say_client",              ConSayClient,        ConHookNeedNetwork);
+	IConsole::CmdRegister("say", ConSay, ConHookNeedNetwork);
+	IConsole::CmdRegister("say_company", ConSayCompany, ConHookNeedNetwork);
+	IConsole::AliasRegister("say_player", "say_company %+");
+	IConsole::CmdRegister("say_client", ConSayClient, ConHookNeedNetwork);
 
-	IConsole::CmdRegister("connect",                 ConNetworkConnect,   ConHookClientOnly);
-	IConsole::CmdRegister("clients",                 ConNetworkClients,   ConHookNeedNetwork);
-	IConsole::CmdRegister("status",                  ConStatus,           ConHookServerOnly);
-	IConsole::CmdRegister("server_info",             ConServerInfo,       ConHookServerOnly);
-	IConsole::AliasRegister("info",                  "server_info");
-	IConsole::CmdRegister("reconnect",               ConNetworkReconnect, ConHookClientOnly);
-	IConsole::CmdRegister("rcon",                    ConRcon,             ConHookNeedNetwork);
+	IConsole::CmdRegister("connect", ConNetworkConnect, ConHookClientOnly);
+	IConsole::CmdRegister("clients", ConNetworkClients, ConHookNeedNetwork);
+	IConsole::CmdRegister("status", ConStatus, ConHookServerOnly);
+	IConsole::CmdRegister("server_info", ConServerInfo, ConHookServerOnly);
+	IConsole::AliasRegister("info", "server_info");
+	IConsole::CmdRegister("reconnect", ConNetworkReconnect, ConHookClientOnly);
+	IConsole::CmdRegister("rcon", ConRcon, ConHookNeedNetwork);
 
-	IConsole::CmdRegister("join",                    ConJoinCompany,      ConHookNeedNonDedicatedNetwork);
-	IConsole::AliasRegister("spectate",              "join 255");
-	IConsole::CmdRegister("move",                    ConMoveClient,       ConHookServerOnly);
-	IConsole::CmdRegister("reset_company",           ConResetCompany,     ConHookServerOnly);
-	IConsole::AliasRegister("clean_company",         "reset_company %A");
-	IConsole::CmdRegister("client_name",             ConClientNickChange, ConHookServerOnly);
-	IConsole::CmdRegister("kick",                    ConKick,             ConHookServerOnly);
-	IConsole::CmdRegister("ban",                     ConBan,              ConHookServerOnly);
-	IConsole::CmdRegister("unban",                   ConUnBan,            ConHookServerOnly);
-	IConsole::CmdRegister("banlist",                 ConBanList,          ConHookServerOnly);
+	IConsole::CmdRegister("join", ConJoinCompany, ConHookNeedNonDedicatedNetwork);
+	IConsole::AliasRegister("spectate", "join 255");
+	IConsole::CmdRegister("move", ConMoveClient, ConHookServerOnly);
+	IConsole::CmdRegister("reset_company", ConResetCompany, ConHookServerOnly);
+	IConsole::AliasRegister("clean_company", "reset_company %A");
+	IConsole::CmdRegister("client_name", ConClientNickChange, ConHookServerOnly);
+	IConsole::CmdRegister("kick", ConKick, ConHookServerOnly);
+	IConsole::CmdRegister("ban", ConBan, ConHookServerOnly);
+	IConsole::CmdRegister("unban", ConUnBan, ConHookServerOnly);
+	IConsole::CmdRegister("banlist", ConBanList, ConHookServerOnly);
 
-	IConsole::CmdRegister("pause",                   ConPauseGame,        ConHookServerOrNoNetwork);
-	IConsole::CmdRegister("unpause",                 ConUnpauseGame,      ConHookServerOrNoNetwork);
+	IConsole::CmdRegister("pause", ConPauseGame, ConHookServerOrNoNetwork);
+	IConsole::CmdRegister("unpause", ConUnpauseGame, ConHookServerOrNoNetwork);
 
 	IConsole::CmdRegister("authorized_key", ConNetworkAuthorizedKey, ConHookServerOnly);
 	IConsole::AliasRegister("ak", "authorized_key %+");
 
-	IConsole::AliasRegister("net_frame_freq",        "setting frame_freq %+");
-	IConsole::AliasRegister("net_sync_freq",         "setting sync_freq %+");
-	IConsole::AliasRegister("server_pw",             "setting server_password %+");
-	IConsole::AliasRegister("server_password",       "setting server_password %+");
-	IConsole::AliasRegister("rcon_pw",               "setting rcon_password %+");
-	IConsole::AliasRegister("rcon_password",         "setting rcon_password %+");
-	IConsole::AliasRegister("name",                  "setting client_name %+");
-	IConsole::AliasRegister("server_name",           "setting server_name %+");
-	IConsole::AliasRegister("server_port",           "setting server_port %+");
-	IConsole::AliasRegister("max_clients",           "setting max_clients %+");
-	IConsole::AliasRegister("max_companies",         "setting max_companies %+");
-	IConsole::AliasRegister("max_join_time",         "setting max_join_time %+");
-	IConsole::AliasRegister("pause_on_join",         "setting pause_on_join %+");
-	IConsole::AliasRegister("autoclean_companies",   "setting autoclean_companies %+");
-	IConsole::AliasRegister("autoclean_protected",   "setting autoclean_protected %+");
-	IConsole::AliasRegister("restart_game_year",     "setting restart_game_year %+");
-	IConsole::AliasRegister("min_players",           "setting min_active_clients %+");
-	IConsole::AliasRegister("reload_cfg",            "setting reload_cfg %+");
+	IConsole::AliasRegister("net_frame_freq", "setting frame_freq %+");
+	IConsole::AliasRegister("net_sync_freq", "setting sync_freq %+");
+	IConsole::AliasRegister("server_pw", "setting server_password %+");
+	IConsole::AliasRegister("server_password", "setting server_password %+");
+	IConsole::AliasRegister("rcon_pw", "setting rcon_password %+");
+	IConsole::AliasRegister("rcon_password", "setting rcon_password %+");
+	IConsole::AliasRegister("name", "setting client_name %+");
+	IConsole::AliasRegister("server_name", "setting server_name %+");
+	IConsole::AliasRegister("server_port", "setting server_port %+");
+	IConsole::AliasRegister("max_clients", "setting max_clients %+");
+	IConsole::AliasRegister("max_companies", "setting max_companies %+");
+	IConsole::AliasRegister("max_join_time", "setting max_join_time %+");
+	IConsole::AliasRegister("pause_on_join", "setting pause_on_join %+");
+	IConsole::AliasRegister("autoclean_companies", "setting autoclean_companies %+");
+	IConsole::AliasRegister("autoclean_protected", "setting autoclean_protected %+");
+	IConsole::AliasRegister("restart_game_year", "setting restart_game_year %+");
+	IConsole::AliasRegister("min_players", "setting min_active_clients %+");
+	IConsole::AliasRegister("reload_cfg", "setting reload_cfg %+");
 
 	/* debugging stuff */
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
 #endif
-	IConsole::CmdRegister("fps",                     ConFramerate);
-	IConsole::CmdRegister("fps_wnd",                 ConFramerateWindow);
+	IConsole::CmdRegister("fps", ConFramerate);
+	IConsole::CmdRegister("fps_wnd", ConFramerateWindow);
 
 	/* NewGRF development stuff */
-	IConsole::CmdRegister("reload_newgrfs",          ConNewGRFReload,     ConHookNewGRFDeveloperTool);
-	IConsole::CmdRegister("newgrf_profile",          ConNewGRFProfile,    ConHookNewGRFDeveloperTool);
+	IConsole::CmdRegister("reload_newgrfs", ConNewGRFReload, ConHookNewGRFDeveloperTool);
+	IConsole::CmdRegister("newgrf_profile", ConNewGRFProfile, ConHookNewGRFDeveloperTool);
 
-	IConsole::CmdRegister("dump_info",               ConDumpInfo);
+	IConsole::CmdRegister("dump_info", ConDumpInfo);
 }

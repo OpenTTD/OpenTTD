@@ -8,10 +8,12 @@
 /** @file script_cargomonitor.cpp Code to monitor cargo pickup and deliveries by companies. */
 
 #include "../../stdafx.h"
-#include "script_cargo.hpp"
+
 #include "script_cargomonitor.hpp"
-#include "../../town.h"
+
 #include "../../industry.h"
+#include "../../town.h"
+#include "script_cargo.hpp"
 
 #include "../../safeguards.h"
 
@@ -64,4 +66,3 @@
 	ClearCargoPickupMonitoring();
 	ClearCargoDeliveryMonitoring();
 }
-

@@ -10,8 +10,8 @@
 #ifndef NETWORK_SERVER_H
 #define NETWORK_SERVER_H
 
-#include "network_internal.h"
 #include "core/tcp_listen.h"
+#include "network_internal.h"
 
 class ServerNetworkGameSocketHandler;
 /** Make the code look slightly nicer/simpler. */
@@ -21,7 +21,10 @@ using NetworkClientSocketPool = Pool<NetworkClientSocket, ClientPoolID, 8, PoolT
 extern NetworkClientSocketPool _networkclientsocket_pool;
 
 /** Class for handling the server side of the game connection. */
-class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
+class ServerNetworkGameSocketHandler :
+	public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>,
+	public NetworkGameSocketHandler,
+	public TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
 protected:
 	std::unique_ptr<class NetworkAuthenticationServerHandler> authentication_handler = nullptr; ///< The handler for the authentication.
 	std::string peer_public_key{}; ///< The public key of our client.
@@ -51,17 +54,17 @@ protected:
 public:
 	/** Status of a client */
 	enum ClientStatus : uint8_t {
-		STATUS_INACTIVE,      ///< The client is not connected nor active.
-		STATUS_AUTH_GAME,     ///< The client is authorizing with game (server) password.
-		STATUS_IDENTIFY,      ///< The client is identifying itself.
+		STATUS_INACTIVE, ///< The client is not connected nor active.
+		STATUS_AUTH_GAME, ///< The client is authorizing with game (server) password.
+		STATUS_IDENTIFY, ///< The client is identifying itself.
 		STATUS_NEWGRFS_CHECK, ///< The client is checking NewGRFs.
-		STATUS_AUTHORIZED,    ///< The client is authorized.
-		STATUS_MAP_WAIT,      ///< The client is waiting as someone else is downloading the map.
-		STATUS_MAP,           ///< The client is downloading the map.
-		STATUS_DONE_MAP,      ///< The client has downloaded the map.
-		STATUS_PRE_ACTIVE,    ///< The client is catching up the delayed frames.
-		STATUS_ACTIVE,        ///< The client is active within in the game.
-		STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period).
+		STATUS_AUTHORIZED, ///< The client is authorized.
+		STATUS_MAP_WAIT, ///< The client is waiting as someone else is downloading the map.
+		STATUS_MAP, ///< The client is downloading the map.
+		STATUS_DONE_MAP, ///< The client has downloaded the map.
+		STATUS_PRE_ACTIVE, ///< The client is catching up the delayed frames.
+		STATUS_ACTIVE, ///< The client is active within in the game.
+		STATUS_END, ///< Must ALWAYS be on the end of this list!! (period).
 	};
 
 	uint8_t lag_test = 0; ///< Byte used for lag-testing the client
@@ -116,7 +119,11 @@ public:
 	}
 
 	std::string_view GetClientIP();
-	std::string_view GetPeerPublicKey() const { return this->peer_public_key; }
+
+	std::string_view GetPeerPublicKey() const
+	{
+		return this->peer_public_key;
+	}
 
 	static ServerNetworkGameSocketHandler *GetByClientID(ClientID client_id);
 };

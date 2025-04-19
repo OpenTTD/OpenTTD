@@ -8,6 +8,7 @@
 /** @file palette.cpp Handling of palettes. */
 
 #include "stdafx.h"
+
 #include "blitter/base.hpp"
 #include "blitter/factory.hpp"
 #include "fileio_func.h"
@@ -198,10 +199,7 @@ Colour ReallyAdjustBrightness(Colour colour, int brightness)
 	/* Reduce overbright strength */
 	ob /= 2;
 	return Colour(
-		r >= 255 ? 255 : std::min(r + ob * (255 - r) / 256, 255),
-		g >= 255 ? 255 : std::min(g + ob * (255 - g) / 256, 255),
-		b >= 255 ? 255 : std::min(b + ob * (255 - b) / 256, 255),
-		colour.a);
+		r >= 255 ? 255 : std::min(r + ob * (255 - r) / 256, 255), g >= 255 ? 255 : std::min(g + ob * (255 - g) / 256, 255), b >= 255 ? 255 : std::min(b + ob * (255 - b) / 256, 255), colour.a);
 }
 
 void DoPaletteAnimations();
@@ -261,7 +259,7 @@ void DoPaletteAnimations()
 		palette_animation_counter = 0;
 	}
 
-	Colour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START];  // Points to where animations are taking place on the palette
+	Colour *palette_pos = &_cur_palette.palette[PALETTE_ANIM_START]; // Points to where animations are taking place on the palette
 	/* Makes a copy of the current animation palette in old_val,
 	 * so the work on the current palette could be compared, see if there has been any changes */
 	memcpy(old_val, palette_pos, sizeof(old_val));
@@ -364,15 +362,14 @@ TextColour GetContrastColour(uint8_t background, uint8_t threshold)
 	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
 	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
 	/* Compare with threshold brightness which defaults to 128 (50%) */
-	return sq1000_brightness < ((uint) threshold) * ((uint) threshold) * 1000 ? TC_WHITE : TC_BLACK;
+	return sq1000_brightness < ((uint)threshold) * ((uint)threshold) * 1000 ? TC_WHITE : TC_BLACK;
 }
 
 /**
  * Lookup table of colour shades for all 16 colour gradients.
  * 8 colours per gradient from darkest (0) to lightest (7)
  */
-struct ColourGradients
-{
+struct ColourGradients {
 	using ColourGradient = std::array<uint8_t, SHADE_END>;
 
 	static inline std::array<ColourGradient, COLOUR_END> gradient{};

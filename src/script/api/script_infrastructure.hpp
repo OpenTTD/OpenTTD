@@ -10,8 +10,8 @@
 #ifndef SCRIPT_INFRASTRUCTURE_HPP
 #define SCRIPT_INFRASTRUCTURE_HPP
 
-#include "script_road.hpp"
 #include "script_rail.hpp"
+#include "script_road.hpp"
 
 /**
  * Class that handles all company infrastructure related functions.
@@ -21,10 +21,10 @@ class ScriptInfrastructure : public ScriptObject {
 public:
 	/** Infrastructure categories. */
 	enum Infrastructure {
-		INFRASTRUCTURE_RAIL,    ///< Rail infrastructure.
+		INFRASTRUCTURE_RAIL, ///< Rail infrastructure.
 		INFRASTRUCTURE_SIGNALS, ///< Signal infrastructure.
-		INFRASTRUCTURE_ROAD,    ///< Road infrastructure.
-		INFRASTRUCTURE_CANAL,   ///< Canal infrastructure.
+		INFRASTRUCTURE_ROAD, ///< Road infrastructure.
+		INFRASTRUCTURE_CANAL, ///< Canal infrastructure.
 		INFRASTRUCTURE_STATION, ///< Station infrastructure.
 		INFRASTRUCTURE_AIRPORT, ///< Airport infrastructure.
 	};

@@ -8,9 +8,10 @@
 /** @file roadstop.cpp Implementation of the roadstop base class. */
 
 #include "stdafx.h"
-#include "roadveh.h"
+
 #include "core/pool_func.hpp"
 #include "roadstop_base.h"
+#include "roadveh.h"
 #include "station_base.h"
 #include "vehicle_func.h"
 
@@ -302,18 +303,15 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
  */
 /* static */ bool RoadStop::IsDriveThroughRoadStopContinuation(TileIndex rs, TileIndex next)
 {
-	return IsTileType(next, MP_STATION) &&
-			GetStationIndex(next) == GetStationIndex(rs) &&
-			GetStationType(next) == GetStationType(rs) &&
-			IsDriveThroughStopTile(next) &&
-			GetDriveThroughStopAxis(next) == GetDriveThroughStopAxis(rs);
+	return IsTileType(next, MP_STATION) && GetStationIndex(next) == GetStationIndex(rs) && GetStationType(next) == GetStationType(rs) && IsDriveThroughStopTile(next) &&
+		GetDriveThroughStopAxis(next) == GetDriveThroughStopAxis(rs);
 }
 
 typedef std::list<const RoadVehicle *> RVList; ///< A list of road vehicles
 
 /** Helper for finding RVs in a road stop. */
 struct RoadStopEntryRebuilderHelper {
-	RVList vehicles;   ///< The list of vehicles to possibly add to.
+	RVList vehicles; ///< The list of vehicles to possibly add to.
 	DiagDirection dir; ///< The direction the vehicle has to face to be added.
 };
 
@@ -325,7 +323,7 @@ struct RoadStopEntryRebuilderHelper {
  */
 Vehicle *FindVehiclesInRoadStop(Vehicle *v, void *data)
 {
-	RoadStopEntryRebuilderHelper *rserh = (RoadStopEntryRebuilderHelper*)data;
+	RoadStopEntryRebuilderHelper *rserh = (RoadStopEntryRebuilderHelper *)data;
 	/* Not a RV or not in the right direction or crashed :( */
 	if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != rserh->dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) return nullptr;
 
@@ -351,9 +349,12 @@ Vehicle *FindVehiclesInRoadStop(Vehicle *v, void *data)
 static DiagDirection GetEntryDirection(bool east, Axis axis)
 {
 	switch (axis) {
-		case AXIS_X: return east ? DIAGDIR_NE : DIAGDIR_SW;
-		case AXIS_Y: return east ? DIAGDIR_SE : DIAGDIR_NW;
-		default: NOT_REACHED();
+		case AXIS_X:
+			return east ? DIAGDIR_NE : DIAGDIR_SW;
+		case AXIS_Y:
+			return east ? DIAGDIR_SE : DIAGDIR_NW;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -384,7 +385,6 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 		this->occupied += it->gcache.cached_total_length;
 	}
 }
-
 
 /**
  * Check the integrity of the data in this struct.

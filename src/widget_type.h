@@ -12,16 +12,16 @@
 
 #include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
-#include "strings_type.h"
 #include "gfx_type.h"
+#include "strings_type.h"
 #include "window_type.h"
 
 /** Values for an arrow widget */
 enum ArrowWidgetValues : uint8_t {
 	AWV_DECREASE, ///< Arrow to the left or in case of RTL to the right
 	AWV_INCREASE, ///< Arrow to the right or in case of RTL to the left
-	AWV_LEFT,     ///< Force the arrow to the left
-	AWV_RIGHT,    ///< Force the arrow to the right
+	AWV_LEFT, ///< Force the arrow to the left
+	AWV_RIGHT, ///< Force the arrow to the right
 };
 
 /** WidgetData values for a resize box widget. */
@@ -35,61 +35,61 @@ enum ResizeWidgetValues : uint8_t {
  */
 enum WidgetType : uint8_t {
 	/* Window widget types. */
-	WWT_EMPTY,      ///< Empty widget, place holder to reserve space in widget tree.
+	WWT_EMPTY, ///< Empty widget, place holder to reserve space in widget tree.
 
-	WWT_PANEL,      ///< Simple depressed panel
-	WWT_INSET,      ///< Pressed (inset) panel, most commonly used as combo box _text_ area
-	WWT_IMGBTN,     ///< (Toggle) Button with image
-	WWT_IMGBTN_2,   ///< (Toggle) Button with diff image when clicked
-	WWT_ARROWBTN,   ///< (Toggle) Button with an arrow
-	WWT_TEXTBTN,    ///< (Toggle) Button with text
-	WWT_TEXTBTN_2,  ///< (Toggle) Button with diff text when clicked
-	WWT_BOOLBTN,    ///< Standard boolean toggle button.
-	WWT_LABEL,      ///< Centered label
-	WWT_TEXT,       ///< Pure simple text
-	WWT_MATRIX,     ///< Grid of rows and columns. @see MatrixWidgetValues
-	WWT_FRAME,      ///< Frame
-	WWT_CAPTION,    ///< Window caption (window title between closebox and stickybox)
+	WWT_PANEL, ///< Simple depressed panel
+	WWT_INSET, ///< Pressed (inset) panel, most commonly used as combo box _text_ area
+	WWT_IMGBTN, ///< (Toggle) Button with image
+	WWT_IMGBTN_2, ///< (Toggle) Button with diff image when clicked
+	WWT_ARROWBTN, ///< (Toggle) Button with an arrow
+	WWT_TEXTBTN, ///< (Toggle) Button with text
+	WWT_TEXTBTN_2, ///< (Toggle) Button with diff text when clicked
+	WWT_BOOLBTN, ///< Standard boolean toggle button.
+	WWT_LABEL, ///< Centered label
+	WWT_TEXT, ///< Pure simple text
+	WWT_MATRIX, ///< Grid of rows and columns. @see MatrixWidgetValues
+	WWT_FRAME, ///< Frame
+	WWT_CAPTION, ///< Window caption (window title between closebox and stickybox)
 
-	WWT_DEBUGBOX,   ///< NewGRF debug box (at top-right of a window, between WWT_CAPTION and WWT_SHADEBOX)
-	WWT_SHADEBOX,   ///< Shade box (at top-right of a window, between WWT_DEBUGBOX and WWT_DEFSIZEBOX)
+	WWT_DEBUGBOX, ///< NewGRF debug box (at top-right of a window, between WWT_CAPTION and WWT_SHADEBOX)
+	WWT_SHADEBOX, ///< Shade box (at top-right of a window, between WWT_DEBUGBOX and WWT_DEFSIZEBOX)
 	WWT_DEFSIZEBOX, ///< Default window size box (at top-right of a window, between WWT_SHADEBOX and WWT_STICKYBOX)
-	WWT_STICKYBOX,  ///< Sticky box (at top-right of a window, after WWT_DEFSIZEBOX)
+	WWT_STICKYBOX, ///< Sticky box (at top-right of a window, after WWT_DEFSIZEBOX)
 
-	WWT_RESIZEBOX,  ///< Resize box (normally at bottom-right of a window)
-	WWT_CLOSEBOX,   ///< Close box (at top-left of a window)
-	WWT_DROPDOWN,   ///< Drop down list
-	WWT_EDITBOX,    ///< a textbox for typing
-	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
+	WWT_RESIZEBOX, ///< Resize box (normally at bottom-right of a window)
+	WWT_CLOSEBOX, ///< Close box (at top-left of a window)
+	WWT_DROPDOWN, ///< Drop down list
+	WWT_EDITBOX, ///< a textbox for typing
+	WWT_LAST, ///< Last Item. use WIDGETS_END to fill up padding!!
 
 	/* Nested widget types. */
-	NWID_HORIZONTAL,      ///< Horizontal container.
-	NWID_HORIZONTAL_LTR,  ///< Horizontal container that doesn't change the order of the widgets for RTL languages.
-	NWID_VERTICAL,        ///< Vertical container.
-	NWID_MATRIX,          ///< Matrix container.
-	NWID_SPACER,          ///< Invisible widget that takes some space.
-	NWID_SELECTION,       ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
-	NWID_LAYER,           ///< Layered widgets, all visible together.
-	NWID_VIEWPORT,        ///< Nested widget containing a viewport.
+	NWID_HORIZONTAL, ///< Horizontal container.
+	NWID_HORIZONTAL_LTR, ///< Horizontal container that doesn't change the order of the widgets for RTL languages.
+	NWID_VERTICAL, ///< Vertical container.
+	NWID_MATRIX, ///< Matrix container.
+	NWID_SPACER, ///< Invisible widget that takes some space.
+	NWID_SELECTION, ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
+	NWID_LAYER, ///< Layered widgets, all visible together.
+	NWID_VIEWPORT, ///< Nested widget containing a viewport.
 	NWID_BUTTON_DROPDOWN, ///< Button with a drop-down.
-	NWID_HSCROLLBAR,      ///< Horizontal scrollbar
-	NWID_VSCROLLBAR,      ///< Vertical scrollbar
-	NWID_CUSTOM,          ///< General Custom widget.
+	NWID_HSCROLLBAR, ///< Horizontal scrollbar
+	NWID_VSCROLLBAR, ///< Vertical scrollbar
+	NWID_CUSTOM, ///< General Custom widget.
 
 	/* Nested widget part types. */
 	WPT_ATTRIBUTE_BEGIN, ///< Begin marker for attribute NWidgetPart types.
-	WPT_RESIZE,       ///< Widget part for specifying resizing.
-	WPT_MINSIZE,      ///< Widget part for specifying minimal size.
+	WPT_RESIZE, ///< Widget part for specifying resizing.
+	WPT_MINSIZE, ///< Widget part for specifying minimal size.
 	WPT_MINTEXTLINES, ///< Widget part for specifying minimal number of lines of text.
-	WPT_FILL,         ///< Widget part for specifying fill.
-	WPT_DATATIP,      ///< Widget part for specifying data and tooltip.
-	WPT_PADDING,      ///< Widget part for specifying a padding.
-	WPT_PIPSPACE,     ///< Widget part for specifying pre/inter/post space for containers.
-	WPT_PIPRATIO,     ///< Widget part for specifying pre/inter/post ratio for containers.
-	WPT_TEXTSTYLE,    ///< Widget part for specifying text colour.
-	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
-	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
-	WPT_ASPECT,       ///< Widget part for specifying aspect ratio.
+	WPT_FILL, ///< Widget part for specifying fill.
+	WPT_DATATIP, ///< Widget part for specifying data and tooltip.
+	WPT_PADDING, ///< Widget part for specifying a padding.
+	WPT_PIPSPACE, ///< Widget part for specifying pre/inter/post space for containers.
+	WPT_PIPRATIO, ///< Widget part for specifying pre/inter/post ratio for containers.
+	WPT_TEXTSTYLE, ///< Widget part for specifying text colour.
+	WPT_ALIGNMENT, ///< Widget part for specifying text/image alignment.
+	WPT_SCROLLBAR, ///< Widget part for attaching a scrollbar.
+	WPT_ASPECT, ///< Widget part for specifying aspect ratio.
 	WPT_ATTRIBUTE_END, ///< End marker for attribute NWidgetPart types.
 
 	WPT_FUNCTION, ///< Widget part for calling a user function.
@@ -98,19 +98,19 @@ enum WidgetType : uint8_t {
 	/* Pushable window widget types. */
 	WWT_MASK = 0x7F,
 
-	WWB_PUSHBUTTON    = 1 << 7,
+	WWB_PUSHBUTTON = 1 << 7,
 
-	WWT_PUSHBTN       = WWT_PANEL    | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with custom drawing
-	WWT_PUSHTXTBTN    = WWT_TEXTBTN  | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with text caption
-	WWT_PUSHIMGBTN    = WWT_IMGBTN   | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with image caption
-	WWT_PUSHARROWBTN  = WWT_ARROWBTN | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with arrow caption
+	WWT_PUSHBTN = WWT_PANEL | WWB_PUSHBUTTON, ///< Normal push-button (no toggle button) with custom drawing
+	WWT_PUSHTXTBTN = WWT_TEXTBTN | WWB_PUSHBUTTON, ///< Normal push-button (no toggle button) with text caption
+	WWT_PUSHIMGBTN = WWT_IMGBTN | WWB_PUSHBUTTON, ///< Normal push-button (no toggle button) with image caption
+	WWT_PUSHARROWBTN = WWT_ARROWBTN | WWB_PUSHBUTTON, ///< Normal push-button (no toggle button) with arrow caption
 	NWID_PUSHBUTTON_DROPDOWN = NWID_BUTTON_DROPDOWN | WWB_PUSHBUTTON,
 };
 
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */
 enum SizingType : uint8_t {
 	ST_SMALLEST, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
-	ST_RESIZE,   ///< Resize the nested widget tree.
+	ST_RESIZE, ///< Resize the nested widget tree.
 };
 
 enum class AspectFlag : uint8_t {
@@ -135,6 +135,7 @@ using WidgetLookup = std::map<WidgetID, class NWidgetBase *>;
 class NWidgetBase {
 public:
 	NWidgetBase(WidgetType tp) : type(tp) {}
+
 	virtual ~NWidgetBase() = default;
 
 	void ApplyAspectRatio();
@@ -175,8 +176,16 @@ public:
 		return nullptr;
 	}
 
-	virtual bool IsHighlighted() const { return false; }
-	virtual TextColour GetHighlightColour() const { return TC_INVALID; }
+	virtual bool IsHighlighted() const
+	{
+		return false;
+	}
+
+	virtual TextColour GetHighlightColour() const
+	{
+		return TC_INVALID;
+	}
+
 	virtual void SetHighlighted([[maybe_unused]] TextColour highlight_colour) {}
 
 	/**
@@ -287,7 +296,6 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, uint
 	this->current_y = given_height;
 }
 
-
 /**
  * Base class for a resizable nested widget.
  * @ingroup NestedWidgets
@@ -345,6 +353,7 @@ enum NWidgetDisplayFlag : uint8_t {
 	Highlight, ///< Highlight of widget is on.
 	DropdownClosed, ///< Dropdown menu of the dropdown widget has closed.
 };
+
 using NWidgetDisplayFlags = EnumBitSet<NWidgetDisplayFlag, uint16_t>;
 
 /** Container with the data associated to a single widget. */
@@ -384,8 +393,15 @@ public:
 	inline void SetDisabled(bool disabled);
 	inline bool IsDisabled() const;
 
-	inline TextColour GetTextColour() const { return this->text_colour; }
-	inline FontSize GetFontSize() const { return this->text_size; }
+	inline TextColour GetTextColour() const
+	{
+		return this->text_colour;
+	}
+
+	inline FontSize GetFontSize() const
+	{
+		return this->text_size;
+	}
 
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -394,7 +410,7 @@ public:
 	void SetHighlighted(TextColour highlight_colour) override;
 
 	NWidgetDisplayFlags disp_flags; ///< Flags that affect display and interaction with the widget.
-	Colours colour;            ///< Colour of this widget.
+	Colours colour; ///< Colour of this widget.
 protected:
 	const WidgetID index = -1; ///< Index of the nested widget (\c -1 means 'not used').
 	WidgetData widget_data{}; ///< Data of the widget. @see Widget::data
@@ -461,14 +477,13 @@ inline bool NWidgetCore::IsDisabled() const
 	return this->disp_flags.Test(NWidgetDisplayFlag::Disabled);
 }
 
-
 /**
  * Baseclass for container widgets.
  * @ingroup NestedWidgets
  */
 class NWidgetContainer : public NWidgetBase {
 public:
-	NWidgetContainer(WidgetType tp) : NWidgetBase(tp) { }
+	NWidgetContainer(WidgetType tp) : NWidgetBase(tp) {}
 
 	void AdjustPaddingForZoom() override;
 	void Add(std::unique_ptr<NWidgetBase> &&wid);
@@ -478,7 +493,10 @@ public:
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 
 	/** Return whether the container is empty. */
-	inline bool IsEmpty() { return this->children.empty(); }
+	inline bool IsEmpty()
+	{
+		return this->children.empty();
+	}
 
 	NWidgetBase *GetWidgetOfType(WidgetType tp) override;
 
@@ -489,10 +507,10 @@ protected:
 /** Display planes with zero size for #NWidgetStacked. */
 enum StackedZeroSizePlanes : int {
 	SZSP_VERTICAL = INT_MAX / 2, ///< Display plane with zero size horizontally, and filling and resizing vertically.
-	SZSP_HORIZONTAL,             ///< Display plane with zero size vertically, and filling and resizing horizontally.
-	SZSP_NONE,                   ///< Display plane with zero size in both directions (none filling and resizing).
+	SZSP_HORIZONTAL, ///< Display plane with zero size vertically, and filling and resizing horizontally.
+	SZSP_NONE, ///< Display plane with zero size in both directions (none filling and resizing).
 
-	SZSP_BEGIN = SZSP_VERTICAL,  ///< First zero-size plane.
+	SZSP_BEGIN = SZSP_VERTICAL, ///< First zero-size plane.
 };
 
 /**
@@ -529,6 +547,7 @@ enum NWidContainerFlag : uint8_t {
 	EqualSize, ///< Containers should keep all their (resizing) children equally large.
 	BigFirst, ///< Allocate space to biggest resize first.
 };
+
 using NWidContainerFlags = EnumBitSet<NWidContainerFlag, uint8_t>;
 
 /** Container with pre/inter/post child space. */
@@ -614,13 +633,14 @@ public:
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
 	void Draw(const Window *w) override;
+
 protected:
 	const WidgetID index = -1; ///< If non-negative, index in the #Window::widget_lookup.
 	Colours colour{}; ///< Colour of this widget.
 	int clicked = -1; ///< The currently clicked element.
 	int count = -1; ///< Amount of valid elements.
 	int current_element = 0; ///< The element currently being processed.
-	Scrollbar *sb = nullptr;  ///< The scrollbar we're associated with.
+	Scrollbar *sb = nullptr; ///< The scrollbar we're associated with.
 private:
 	int widget_w = 0; ///< The width of the child widget including inter spacing.
 	int widget_h = 0; ///< The height of the child widget including inter spacing.
@@ -629,7 +649,6 @@ private:
 
 	void GetScrollOffsets(int &start_x, int &start_y, int &base_offs_x, int &base_offs_y);
 };
-
 
 /**
  * Spacer widget.
@@ -701,6 +720,7 @@ public:
 	using size_type = int32_t;
 	static constexpr size_type max_size_type = std::numeric_limits<size_type>::max();
 	static constexpr size_type npos = max_size_type;
+
 private:
 	const bool is_vertical = false; ///< Scrollbar has vertical orientation.
 	size_type count = 0; ///< Number of elements in the list.
@@ -711,9 +731,9 @@ private:
 public:
 	/** Stepping sizes when scrolling */
 	enum ScrollbarStepping : uint8_t {
-		SS_RAW,             ///< Step in single units.
-		SS_SMALL,           ///< Step in #stepsize units.
-		SS_BIG,             ///< Step in #cap units.
+		SS_RAW, ///< Step in single units.
+		SS_SMALL, ///< Step in #stepsize units.
+		SS_BIG, ///< Step in #cap units.
 	};
 
 	Scrollbar(bool is_vertical) : is_vertical(is_vertical) {}
@@ -828,9 +848,14 @@ public:
 	{
 		if (difference == 0) return false;
 		switch (unit) {
-			case SS_SMALL: difference *= this->stepsize; break;
-			case SS_BIG:   difference *= this->cap; break;
-			default: break;
+			case SS_SMALL:
+				difference *= this->stepsize;
+				break;
+			case SS_BIG:
+				difference *= this->cap;
+				break;
+			default:
+				break;
 		}
 		return this->SetPosition(this->pos + difference);
 	}
@@ -852,7 +877,7 @@ public:
 		}
 	}
 
-	size_type GetScrolledRowFromWidget(int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const;
+	size_type GetScrolledRowFromWidget(int clickpos, const Window *const w, WidgetID widget, int padding = 0, int line_height = -1) const;
 
 	/**
 	 * Get a pair of iterators for the range of visible elements in a container.
@@ -879,7 +904,7 @@ public:
 	 * @return Iterator to the element clicked at. If clicked at a wrong position, returns an iterator to the end of the container.
 	 */
 	template <typename Tcontainer>
-	auto GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window * const w, WidgetID widget, int padding = 0, int line_height = -1) const
+	auto GetScrolledItemFromWidget(Tcontainer &container, int clickpos, const Window *const w, WidgetID widget, int padding = 0, int line_height = -1) const
 	{
 		assert(static_cast<size_t>(this->GetCount()) == container.size()); // Scrollbar and container size must match.
 		size_type row = this->GetScrolledRowFromWidget(clickpos, w, widget, padding, line_height);
@@ -908,7 +933,7 @@ public:
 	static Dimension GetHorizontalDimension();
 
 private:
-	static Dimension vertical_dimension;   ///< Cached size of vertical scrollbar button.
+	static Dimension vertical_dimension; ///< Cached size of vertical scrollbar button.
 	static Dimension horizontal_dimension; ///< Cached size of horizontal scrollbar button.
 };
 
@@ -927,12 +952,12 @@ public:
 
 	static void InvalidateDimensionCache();
 
-	static Dimension dropdown_dimension;  ///< Cached size of a dropdown widget.
+	static Dimension dropdown_dimension; ///< Cached size of a dropdown widget.
 	static Dimension resizebox_dimension; ///< Cached size of a resizebox widget.
-	static Dimension closebox_dimension;  ///< Cached size of a closebox widget.
+	static Dimension closebox_dimension; ///< Cached size of a closebox widget.
 private:
-	static Dimension shadebox_dimension;  ///< Cached size of a shadebox widget.
-	static Dimension debugbox_dimension;  ///< Cached size of a debugbox widget.
+	static Dimension shadebox_dimension; ///< Cached size of a shadebox widget.
+	static Dimension debugbox_dimension; ///< Cached size of a debugbox widget.
 	static Dimension defsizebox_dimension; ///< Cached size of a defsizebox widget.
 	static Dimension stickybox_dimension; ///< Cached size of a stickybox widget.
 };
@@ -1024,8 +1049,7 @@ struct NWidgetPartWidget {
  * Widget part for storing padding.
  * @ingroup NestedWidgetParts
  */
-struct NWidgetPartPaddings : RectPadding {
-};
+struct NWidgetPartPaddings : RectPadding {};
 
 /**
  * Widget part for storing pre/inter/post spaces.
@@ -1040,7 +1064,7 @@ struct NWidgetPartPIP {
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartTextLines {
-	uint8_t lines;   ///< Number of text lines.
+	uint8_t lines; ///< Number of text lines.
 	uint8_t spacing; ///< Extra spacing around lines.
 	FontSize size; ///< Font size of text lines.
 };
@@ -1078,47 +1102,70 @@ typedef std::unique_ptr<NWidgetBase> NWidgetFunctionType();
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPart {
-	WidgetType type;                         ///< Type of the part. @see NWidgetPartType.
+	WidgetType type; ///< Type of the part. @see NWidgetPartType.
+
 	union NWidgetPartUnion {
-		Point xy;                        ///< Part with an x/y size.
-		NWidgetPartDataTip data_tip;     ///< Part with a data/tooltip.
-		NWidgetPartWidget widget;        ///< Part with a start of a widget.
-		NWidgetPartPaddings padding;     ///< Part with paddings.
-		NWidgetPartPIP pip;              ///< Part with pre/inter/post spaces.
+		Point xy; ///< Part with an x/y size.
+		NWidgetPartDataTip data_tip; ///< Part with a data/tooltip.
+		NWidgetPartWidget widget; ///< Part with a start of a widget.
+		NWidgetPartPaddings padding; ///< Part with paddings.
+		NWidgetPartPIP pip; ///< Part with pre/inter/post spaces.
 		NWidgetPartTextLines text_lines; ///< Part with text line data.
 		NWidgetPartTextStyle text_style; ///< Part with text style data.
-		NWidgetPartAlignment align;      ///< Part with internal alignment.
-		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
-		NWidContainerFlags cont_flags;   ///< Part with container flags.
+		NWidgetPartAlignment align; ///< Part with internal alignment.
+		NWidgetFunctionType *func_ptr; ///< Part with a function call.
+		NWidContainerFlags cont_flags; ///< Part with container flags.
 		NWidgetPartAspect aspect; ///< Part to set aspect ratio.
 
 		/* Constructors for each NWidgetPartUnion data type. */
 		constexpr NWidgetPartUnion() : xy() {}
+
 		constexpr NWidgetPartUnion(Point xy) : xy(xy) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartDataTip data_tip) : data_tip(data_tip) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartWidget widget) : widget(widget) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartPaddings padding) : padding(padding) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartPIP pip) : pip(pip) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartTextLines text_lines) : text_lines(text_lines) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartTextStyle text_style) : text_style(text_style) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartAlignment align) : align(align) {}
+
 		constexpr NWidgetPartUnion(NWidgetFunctionType *func_ptr) : func_ptr(func_ptr) {}
+
 		constexpr NWidgetPartUnion(NWidContainerFlags cont_flags) : cont_flags(cont_flags) {}
+
 		constexpr NWidgetPartUnion(NWidgetPartAspect aspect) : aspect(aspect) {}
 	} u;
 
 	/* Constructors for each NWidgetPart data type. */
 	explicit constexpr NWidgetPart(WidgetType type) : type(type), u() {}
+
 	constexpr NWidgetPart(WidgetType type, Point xy) : type(type), u(xy) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartDataTip data_tip) : type(type), u(data_tip) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartWidget widget) : type(type), u(widget) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartPaddings padding) : type(type), u(padding) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartPIP pip) : type(type), u(pip) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartTextLines text_lines) : type(type), u(text_lines) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartTextStyle text_style) : type(type), u(text_style) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartAlignment align) : type(type), u(align) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetFunctionType *func_ptr) : type(type), u(func_ptr) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidContainerFlags cont_flags) : type(type), u(cont_flags) {}
+
 	constexpr NWidgetPart(WidgetType type, NWidgetPartAspect aspect) : type(type), u(aspect) {}
 };
 
@@ -1251,7 +1298,7 @@ constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, Str
  */
 constexpr NWidgetPart SetMatrixDataTip(uint32_t cols, uint32_t rows, StringID tip = {})
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.matrix{ cols, rows }}, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.matrix{cols, rows}}, tip}};
 }
 
 /**

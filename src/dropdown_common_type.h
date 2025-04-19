@@ -29,10 +29,19 @@ template <class TBase, FontSize TFs = FS_NORMAL>
 class DropDownDivider : public TBase {
 public:
 	template <typename... Args>
-	explicit DropDownDivider(Args&&... args) : TBase(std::forward<Args>(args)...) {}
+	explicit DropDownDivider(Args &&...args) : TBase(std::forward<Args>(args)...)
+	{
+	}
 
-	bool Selectable() const override { return false; }
-	uint Height() const override { return std::max<uint>(GetCharacterHeight(TFs), this->TBase::Height()); }
+	bool Selectable() const override
+	{
+		return false;
+	}
+
+	uint Height() const override
+	{
+		return std::max<uint>(GetCharacterHeight(TFs), this->TBase::Height());
+	}
 
 	void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const override
 	{
@@ -57,7 +66,7 @@ class DropDownString : public TBase {
 	Dimension dim; ///< Dimensions of string.
 public:
 	template <typename... Args>
-	explicit DropDownString(std::string &&string, Args&&... args) : TBase(std::forward<Args>(args)...)
+	explicit DropDownString(std::string &&string, Args &&...args) : TBase(std::forward<Args>(args)...)
 	{
 		this->SetString(std::move(string));
 	}
@@ -73,7 +82,10 @@ public:
 		return std::max<uint>(this->dim.height, this->TBase::Height());
 	}
 
-	uint Width() const override { return this->dim.width + this->TBase::Width(); }
+	uint Width() const override
+	{
+		return this->dim.width + this->TBase::Width();
+	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
@@ -89,10 +101,10 @@ public:
 	 * @return true if \a first precedes \a second.
 	 * @warning All items in the list need to be derivates of DropDownListStringItem.
 	 */
-	static bool NatSortFunc(std::unique_ptr<const DropDownListItem> const &first, std::unique_ptr<const DropDownListItem> const &second)
+	static bool NatSortFunc(const std::unique_ptr<const DropDownListItem> &first, const std::unique_ptr<const DropDownListItem> &second)
 	{
-		const std::string &str1 = static_cast<const DropDownString*>(first.get())->string;
-		const std::string &str2 = static_cast<const DropDownString*>(second.get())->string;
+		const std::string &str1 = static_cast<const DropDownString *>(first.get())->string;
+		const std::string &str2 = static_cast<const DropDownString *>(second.get())->string;
 		return StrNaturalCompare(str1, str2) < 0;
 	}
 };
@@ -110,20 +122,27 @@ class DropDownIcon : public TBase {
 	Dimension dbounds; ///< Bounding box dimensions of bounds.
 public:
 	template <typename... Args>
-	explicit DropDownIcon(SpriteID sprite, PaletteID palette, Args&&... args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette)
+	explicit DropDownIcon(SpriteID sprite, PaletteID palette, Args &&...args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette)
 	{
 		this->dsprite = GetSpriteSize(this->sprite);
 		this->dbounds = this->dsprite;
 	}
 
 	template <typename... Args>
-	explicit DropDownIcon(const Dimension &dim, SpriteID sprite, PaletteID palette, Args&&... args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette), dbounds(dim)
+	explicit DropDownIcon(const Dimension &dim, SpriteID sprite, PaletteID palette, Args &&...args) : TBase(std::forward<Args>(args)...), sprite(sprite), palette(palette), dbounds(dim)
 	{
 		this->dsprite = GetSpriteSize(this->sprite);
 	}
 
-	uint Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
-	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
+	uint Height() const override
+	{
+		return std::max(this->dbounds.height, this->TBase::Height());
+	}
+
+	uint Width() const override
+	{
+		return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width();
+	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
@@ -146,13 +165,20 @@ class DropDownCheck : public TBase {
 	Dimension dim; ///< Dimension of checkmark.
 public:
 	template <typename... Args>
-	explicit DropDownCheck(bool checked, Args&&... args) : TBase(std::forward<Args>(args)...), checked(checked)
+	explicit DropDownCheck(bool checked, Args &&...args) : TBase(std::forward<Args>(args)...), checked(checked)
 	{
 		this->dim = GetStringBoundingBox(STR_JUST_CHECKMARK, TFs);
 	}
 
-	uint Height() const override { return std::max<uint>(this->dim.height, this->TBase::Height()); }
-	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+	uint Height() const override
+	{
+		return std::max<uint>(this->dim.height, this->TBase::Height());
+	}
+
+	uint Width() const override
+	{
+		return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
+	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
@@ -172,11 +198,17 @@ public:
 template <class TBase, bool TEnd = false>
 class DropDownIndent : public TBase {
 	uint indent;
+
 public:
 	template <typename... Args>
-	explicit DropDownIndent(uint indent, Args&&... args) : TBase(std::forward<Args>(args)...), indent(indent) {}
+	explicit DropDownIndent(uint indent, Args &&...args) : TBase(std::forward<Args>(args)...), indent(indent)
+	{
+	}
 
-	uint Width() const override { return this->indent * WidgetDimensions::scaled.hsep_indent + this->TBase::Width(); }
+	uint Width() const override
+	{
+		return this->indent * WidgetDimensions::scaled.hsep_indent + this->TBase::Width();
+	}
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{

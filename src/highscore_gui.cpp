@@ -8,24 +8,24 @@
 /** @file highscore_gui.cpp Definition of the HighScore and EndGame windows */
 
 #include "stdafx.h"
-#include "highscore.h"
-#include "gfx_func.h"
-#include "table/sprites.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "network/network.h"
+
 #include "command_func.h"
-#include "company_func.h"
 #include "company_base.h"
-#include "strings_func.h"
+#include "company_func.h"
+#include "gfx_func.h"
+#include "highscore.h"
 #include "hotkeys.h"
-#include "zoom_func.h"
 #include "misc_cmd.h"
+#include "network/network.h"
+#include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/highscore_widget.h"
-
+#include "table/sprites.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -145,12 +145,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		 * at the start of the new year when these things have already been copied */
 		if (this->background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
 			DrawStringMultiLine(pt.x + ScaleSpriteTrad(15), pt.x + ScaleSpriteTrad(640) - ScaleSpriteTrad(25), pt.y + ScaleSpriteTrad(90), pt.y + ScaleSpriteTrad(160),
-					GetString(STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, c->index, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
-					TC_FROMSTRING, SA_CENTER);
+				GetString(STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS, c->index, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)), TC_FROMSTRING,
+				SA_CENTER);
 		} else {
 			DrawStringMultiLine(pt.x + ScaleSpriteTrad(36), pt.x + ScaleSpriteTrad(640), pt.y + ScaleSpriteTrad(140), pt.y + ScaleSpriteTrad(206),
-					GetString(STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)),
-					TC_FROMSTRING, SA_CENTER);
+				GetString(STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS, c->index, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history)), TC_FROMSTRING, SA_CENTER);
 		}
 	}
 };
@@ -194,16 +193,14 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 
 		/* Draw Highscore peepz */
 		for (uint8_t i = 0; i < ClampTo<uint8_t>(hs.size()); i++) {
-			DrawString(pt.x + ScaleSpriteTrad(40), pt.x + ScaleSpriteTrad(600), pt.y + ScaleSpriteTrad(140 + i * 55),
-					GetString(STR_HIGHSCORE_POSITION, i + 1));
+			DrawString(pt.x + ScaleSpriteTrad(40), pt.x + ScaleSpriteTrad(600), pt.y + ScaleSpriteTrad(140 + i * 55), GetString(STR_HIGHSCORE_POSITION, i + 1));
 
 			if (!hs[i].name.empty()) {
 				TextColour colour = (this->rank == i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
-				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55),
-						GetString(STR_JUST_BIG_RAW_STRING, hs[i].name), colour);
+				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140 + i * 55), GetString(STR_JUST_BIG_RAW_STRING, hs[i].name), colour);
 				DrawString(pt.x + ScaleSpriteTrad(71), pt.x + ScaleSpriteTrad(569), pt.y + ScaleSpriteTrad(140) + GetCharacterHeight(FS_LARGE) + ScaleSpriteTrad(i * 55),
-						GetString(STR_HIGHSCORE_STATS, hs[i].title, hs[i].score), colour);
+					GetString(STR_HIGHSCORE_STATS, hs[i].title, hs[i].score), colour);
 			}
 		}
 	}
@@ -215,19 +212,9 @@ static constexpr NWidgetPart _nested_highscore_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _highscore_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_HIGHSCORE, WC_NONE,
-	{},
-	_nested_highscore_widgets
-);
+static WindowDesc _highscore_desc(WDP_MANUAL, nullptr, 0, 0, WC_HIGHSCORE, WC_NONE, {}, _nested_highscore_widgets);
 
-static WindowDesc _endgame_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_ENDSCREEN, WC_NONE,
-	{},
-	_nested_highscore_widgets
-);
+static WindowDesc _endgame_desc(WDP_MANUAL, nullptr, 0, 0, WC_ENDSCREEN, WC_NONE, {}, _nested_highscore_widgets);
 
 /**
  * Show the highscore table for a given difficulty. When called from
@@ -254,8 +241,7 @@ void ShowEndGameChart()
 	new EndGameWindow(_endgame_desc);
 }
 
-static IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
-{
+static IntervalTimer<TimerGameCalendar> _check_end_game({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto) {
 	/* 0 = never */
 	if (_settings_game.game_creation.ending_year == 0) return;
 

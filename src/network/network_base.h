@@ -10,11 +10,11 @@
 #ifndef NETWORK_BASE_H
 #define NETWORK_BASE_H
 
-#include "network_type.h"
-#include "core/address.h"
 #include "../core/pool_type.hpp"
+#include "core/address.h"
 #include "../company_type.h"
 #include "../timer/timer_game_economy.h"
+#include "network_type.h"
 
 /** Type for the pool with client information. */
 using NetworkClientInfoPool = Pool<NetworkClientInfo, ClientPoolID, 8, PoolType::NetworkClient>;
@@ -33,6 +33,7 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 	 * @param client_id The unique identifier of the client.
 	 */
 	NetworkClientInfo(ClientID client_id = INVALID_CLIENT_ID) : client_id(client_id) {}
+
 	~NetworkClientInfo();
 
 	static NetworkClientInfo *GetByClientID(ClientID client_id);

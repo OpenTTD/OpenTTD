@@ -8,6 +8,7 @@
 /** @file bootstrap_gui.cpp Barely used user interface for bootstrapping OpenTTD, i.e. downloading the required content. */
 
 #include "stdafx.h"
+
 #include "base_media_base.h"
 #include "base_media_graphics.h"
 #include "blitter/factory.hpp"
@@ -15,22 +16,21 @@
 
 #if defined(WITH_FREETYPE) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 
-#include "core/geometry_func.hpp"
-#include "error.h"
-#include "fontcache.h"
-#include "gfx_func.h"
-#include "network/network.h"
-#include "network/network_content_gui.h"
-#include "openttd.h"
-#include "strings_func.h"
-#include "video/video_driver.hpp"
-#include "window_func.h"
+#	include "core/geometry_func.hpp"
+#	include "error.h"
+#	include "fontcache.h"
+#	include "gfx_func.h"
+#	include "network/network.h"
+#	include "network/network_content_gui.h"
+#	include "openttd.h"
+#	include "strings_func.h"
+#	include "video/video_driver.hpp"
+#	include "window_func.h"
 
-#include "widgets/bootstrap_widget.h"
+#	include "widgets/bootstrap_widget.h"
+#	include "table/strings.h"
 
-#include "table/strings.h"
-
-#include "safeguards.h"
+#	include "safeguards.h"
 
 /** Widgets for the background window to prevent smearing. */
 /* clang-format off */
@@ -43,12 +43,7 @@ static constexpr NWidgetPart _background_widgets[] = {
 /**
  * Window description for the background window to prevent smearing.
  */
-static WindowDesc _background_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_BOOTSTRAP, WC_NONE,
-	WindowDefaultFlag::NoClose,
-	_background_widgets
-);
+static WindowDesc _background_desc(WDP_MANUAL, nullptr, 0, 0, WC_BOOTSTRAP, WC_NONE, WindowDefaultFlag::NoClose, _background_widgets);
 
 /** The background for the game. */
 class BootstrapBackground : public Window {
@@ -81,12 +76,7 @@ static constexpr NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
 /* clang-format on */
 
 /** Window description for the error window. */
-static WindowDesc _bootstrap_errmsg_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_BOOTSTRAP, WC_NONE,
-	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
-	_nested_bootstrap_errmsg_widgets
-);
+static WindowDesc _bootstrap_errmsg_desc(WDP_CENTER, nullptr, 0, 0, WC_BOOTSTRAP, WC_NONE, {WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose}, _nested_bootstrap_errmsg_widgets);
 
 /** The window for a failed bootstrap. */
 class BootstrapErrorWindow : public Window {
@@ -141,20 +131,13 @@ static constexpr NWidgetPart _nested_bootstrap_download_status_window_widgets[] 
 
 /** Window description for the download window */
 static WindowDesc _bootstrap_download_status_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_NETWORK_STATUS_WINDOW, WC_NONE,
-	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
-	_nested_bootstrap_download_status_window_widgets
-);
-
+	WDP_CENTER, nullptr, 0, 0, WC_NETWORK_STATUS_WINDOW, WC_NONE, {WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose}, _nested_bootstrap_download_status_window_widgets);
 
 /** Window for showing the download status of content */
 struct BootstrapContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
 public:
 	/** Simple call the constructor of the superclass. */
-	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(_bootstrap_download_status_window_desc)
-	{
-	}
+	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(_bootstrap_download_status_window_desc) {}
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
@@ -194,12 +177,7 @@ static constexpr NWidgetPart _bootstrap_query_widgets[] = {
 /* clang-format on */
 
 /** The window description for the query. */
-static WindowDesc _bootstrap_query_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_CONFIRM_POPUP_QUERY, WC_NONE,
-	WindowDefaultFlag::NoClose,
-	_bootstrap_query_widgets
-);
+static WindowDesc _bootstrap_query_desc(WDP_CENTER, nullptr, 0, 0, WC_CONFIRM_POPUP_QUERY, WC_NONE, WindowDefaultFlag::NoClose, _bootstrap_query_widgets);
 
 /** The window for the query. It can't use the generic query window as that uses sprites that don't exist yet. */
 class BootstrapAskForDownloadWindow : public Window, ContentCallback {
@@ -320,7 +298,9 @@ public:
 	void OnConnect(bool success) override
 	{
 		if (!success) {
-			EM_ASM({ if (window["openttd_bootstrap_failed"]) openttd_bootstrap_failed(); });
+			EM_ASM({
+				if (window["openttd_bootstrap_failed"]) openttd_bootstrap_failed();
+			});
 			return;
 		}
 
@@ -337,7 +317,11 @@ public:
 		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
 		this->downloading = true;
 
-		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
+		EM_ASM(
+			{
+				if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1);
+			},
+			this->downloaded_bytes, this->total_bytes);
 	}
 
 	void OnDownloadProgress(const ContentInfo &, int bytes) override
@@ -349,7 +333,11 @@ public:
 			this->downloaded_bytes += bytes;
 		}
 
-		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
+		EM_ASM(
+			{
+				if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1);
+			},
+			this->downloaded_bytes, this->total_bytes);
 	}
 
 	void OnDownloadComplete(ContentID) override
@@ -382,9 +370,9 @@ bool HandleBootstrap()
 	/* First tell the game we're bootstrapping. */
 	_game_mode = GM_BOOTSTRAP;
 
-#if defined(__EMSCRIPTEN__)
+#	if defined(__EMSCRIPTEN__)
 	new BootstrapEmscripten();
-#else
+#	else
 	/* Initialise the font cache. */
 	InitializeUnicodeGlyphMap();
 	/* Next "force" finding a suitable non-sprite font as the local font is missing. */
@@ -393,7 +381,7 @@ bool HandleBootstrap()
 	/* Initialise the palette. The biggest step is 'faking' some recolour sprites.
 	 * This way the mauve and gray colours work and we can show the user interface. */
 	GfxInitPalettes();
-	static const int offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
+	static const int offsets[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08};
 	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
 		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
 			SetColourGradient(i, j, offsets[i] + j);
@@ -403,7 +391,7 @@ bool HandleBootstrap()
 	/* Finally ask the question. */
 	new BootstrapBackground();
 	new BootstrapAskForDownloadWindow();
-#endif /* __EMSCRIPTEN__ */
+#	endif /* __EMSCRIPTEN__ */
 
 	/* Process the user events. */
 	VideoDriver::GetInstance()->MainLoop();

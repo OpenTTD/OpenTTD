@@ -12,13 +12,14 @@
 
 #include "../core/string_consumer.hpp"
 
-class OTTDByteReaderSignal { };
+class OTTDByteReaderSignal {};
 
 /** Class to read from a NewGRF file */
 class ByteReader {
 	StringConsumer consumer;
+
 public:
-	ByteReader(const uint8_t *data, size_t len) : consumer(reinterpret_cast<const char *>(data), len) { }
+	ByteReader(const uint8_t *data, size_t len) : consumer(reinterpret_cast<const char *>(data), len) {}
 
 	const uint8_t *ReadBytes(size_t size)
 	{
@@ -109,7 +110,6 @@ public:
 		auto result = this->consumer.Read(len);
 		if (result.size() != len) throw OTTDByteReaderSignal();
 	}
-
 };
 
 #endif /* NEWGRF_BYTEREADER_H */

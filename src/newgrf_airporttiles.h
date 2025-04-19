@@ -11,19 +11,19 @@
 #define NEWGRF_AIRPORTTILES_H
 
 #include "airport.h"
-#include "station_map.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "station_base.h"
+#include "station_map.h"
 
 /** Scope resolver for handling the tiles of an airport. */
 struct AirportTileScopeResolver : public ScopeResolver {
-	struct Station *st;  ///< %Station of the airport for which the callback is run, or \c nullptr for build gui.
-	uint8_t airport_id;     ///< Type of airport for which the callback is run.
-	TileIndex tile;      ///< Tile for the callback, only valid for airporttile callbacks.
+	struct Station *st; ///< %Station of the airport for which the callback is run, or \c nullptr for build gui.
+	uint8_t airport_id; ///< Type of airport for which the callback is run.
+	TileIndex tile; ///< Tile for the callback, only valid for airporttile callbacks.
 	const AirportTileSpec *ats;
 
 	/**
@@ -32,8 +32,7 @@ struct AirportTileScopeResolver : public ScopeResolver {
 	 * @param tile %Tile for the callback, only valid for airporttile callbacks.
 	 * @param st Station of the airport for which the callback is run, or \c nullptr for build gui.
 	 */
-	AirportTileScopeResolver(ResolverObject &ro, const AirportTileSpec *ats, TileIndex tile, Station *st)
-		: ScopeResolver(ro), st(st), tile(tile), ats(ats)
+	AirportTileScopeResolver(ResolverObject &ro, const AirportTileSpec *ats, TileIndex tile, Station *st) : ScopeResolver(ro), st(st), tile(tile), ats(ats)
 	{
 		assert(st != nullptr);
 		this->airport_id = st->airport.type;
@@ -46,17 +45,19 @@ struct AirportTileScopeResolver : public ScopeResolver {
 /** Resolver for tiles of an airport. */
 struct AirportTileResolverObject : public ResolverObject {
 	AirportTileScopeResolver tiles_scope; ///< Scope resolver for the tiles.
-	AirportScopeResolver airport_scope;   ///< Scope resolver for the airport owning the tile.
+	AirportScopeResolver airport_scope; ///< Scope resolver for the airport owning the tile.
 
-	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
-			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
+	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &tiles_scope;
-			case VSG_SCOPE_PARENT: return &airport_scope;
-			default: return ResolverObject::GetScope(scope, relative);
+			case VSG_SCOPE_SELF:
+				return &tiles_scope;
+			case VSG_SCOPE_PARENT:
+				return &airport_scope;
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
@@ -69,11 +70,11 @@ struct AirportTileResolverObject : public ResolverObject {
  */
 struct AirportTileSpec {
 	AnimationInfo<AirportAnimationTriggers> animation; ///< Information about the animation.
-	StringID name;                        ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
-	AirportTileCallbackMasks callback_mask;                  ///< Bitmask telling which grf callback is set
-	uint8_t animation_special_flags;        ///< Extra flags to influence the animation
-	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
-	GRFFileProps grf_prop;                ///< properties related the the grf file
+	StringID name; ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
+	AirportTileCallbackMasks callback_mask; ///< Bitmask telling which grf callback is set
+	uint8_t animation_special_flags; ///< Extra flags to influence the animation
+	bool enabled; ///< entity still available (by default true). newgrf can disable it, though
+	GRFFileProps grf_prop; ///< properties related the the grf file
 	std::vector<BadgeID> badges;
 
 	static const AirportTileSpec *Get(StationGfx gfx);

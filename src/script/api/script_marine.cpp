@@ -8,18 +8,19 @@
 /** @file script_marine.cpp Implementation of ScriptMarine. */
 
 #include "../../stdafx.h"
+
 #include "script_marine.hpp"
-#include "script_station.hpp"
-#include "../../station_base.h"
+
 #include "../../dock_cmd.h"
 #include "../../landscape_cmd.h"
+#include "../../station_base.h"
 #include "../../station_cmd.h"
 #include "../../tile_cmd.h"
 #include "../../water_cmd.h"
 #include "../../waypoint_cmd.h"
+#include "script_station.hpp"
 
 #include "../../safeguards.h"
-
 
 /* static */ bool ScriptMarine::IsWaterDepotTile(TileIndex tile)
 {
@@ -167,11 +168,17 @@
 /* static */ Money ScriptMarine::GetBuildCost(BuildType build_type)
 {
 	switch (build_type) {
-		case BT_DOCK:  return ::GetPrice(PR_BUILD_STATION_DOCK, 1, nullptr);
-		case BT_DEPOT: return ::GetPrice(PR_BUILD_DEPOT_SHIP, 1, nullptr);
-		case BT_BUOY:  return ::GetPrice(PR_BUILD_WAYPOINT_BUOY, 1, nullptr);
-		case BT_LOCK:  return ::GetPrice(PR_BUILD_LOCK, 1, nullptr);
-		case BT_CANAL: return ::GetPrice(PR_BUILD_CANAL, 1, nullptr);
-		default: return -1;
+		case BT_DOCK:
+			return ::GetPrice(PR_BUILD_STATION_DOCK, 1, nullptr);
+		case BT_DEPOT:
+			return ::GetPrice(PR_BUILD_DEPOT_SHIP, 1, nullptr);
+		case BT_BUOY:
+			return ::GetPrice(PR_BUILD_WAYPOINT_BUOY, 1, nullptr);
+		case BT_LOCK:
+			return ::GetPrice(PR_BUILD_LOCK, 1, nullptr);
+		case BT_CANAL:
+			return ::GetPrice(PR_BUILD_CANAL, 1, nullptr);
+		default:
+			return -1;
 	}
 }

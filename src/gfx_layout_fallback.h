@@ -26,5 +26,4 @@ public:
 	static size_t AppendToBuffer(char32_t *buff, const char32_t *buffer_last, char32_t c);
 };
 
-
 #endif /* GFX_LAYOUT_FALLBACK_H */

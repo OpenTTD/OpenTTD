@@ -10,8 +10,8 @@
 #ifndef SCRIPT_STORYPAGELIST_HPP
 #define SCRIPT_STORYPAGELIST_HPP
 
-#include "script_list.hpp"
 #include "script_company.hpp"
+#include "script_list.hpp"
 
 /**
  * Create a list of all story pages.

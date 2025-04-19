@@ -8,18 +8,20 @@
 /** @file script_story_page.cpp Implementation of ScriptStoryPage. */
 
 #include "../../stdafx.h"
+
 #include "script_story_page.hpp"
+
+#include "../../goal_base.h"
+#include "../../story_base.h"
+#include "../../story_cmd.h"
+#include "../../string_func.h"
+#include "../../tile_map.h"
+#include "../script_instance.hpp"
 #include "script_error.hpp"
+#include "script_goal.hpp"
 #include "script_industry.hpp"
 #include "script_map.hpp"
 #include "script_town.hpp"
-#include "script_goal.hpp"
-#include "../script_instance.hpp"
-#include "../../story_base.h"
-#include "../../goal_base.h"
-#include "../../string_func.h"
-#include "../../tile_map.h"
-#include "../../story_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -52,8 +54,7 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
-	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE>::Do(&ScriptInstance::DoCommandReturnStoryPageID,
-		c, title != nullptr ? title->GetEncodedText() : EncodedString{})) return STORY_PAGE_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE>::Do(&ScriptInstance::DoCommandReturnStoryPageID, c, title != nullptr ? title->GetEncodedText() : EncodedString{})) return STORY_PAGE_INVALID;
 
 	/* In case of test-mode, we return StoryPageID 0 */
 	return StoryPageID::Begin();
@@ -96,11 +97,9 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 			NOT_REACHED();
 	}
 
-	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE_ELEMENT>::Do(&ScriptInstance::DoCommandReturnStoryPageElementID,
-			reftile,
-			(::StoryPageID)story_page_id, (::StoryPageElementType)type,
-			refid,
-			encoded_text)) return STORY_PAGE_ELEMENT_INVALID;
+	if (!ScriptObject::Command<CMD_CREATE_STORY_PAGE_ELEMENT>::Do(
+			&ScriptInstance::DoCommandReturnStoryPageElementID, reftile, (::StoryPageID)story_page_id, (::StoryPageElementType)type, refid, encoded_text))
+		return STORY_PAGE_ELEMENT_INVALID;
 
 	/* In case of test-mode, we return StoryPageElementID 0 */
 	return StoryPageElementID::Begin();
@@ -195,7 +194,6 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return ScriptObject::Command<CMD_SET_STORY_PAGE_DATE>::Do(story_page_id, ::TimerGameCalendar::Date{date});
 }
 
-
 /* static */ bool ScriptStoryPage::Show(StoryPageID story_page_id)
 {
 	EnforcePrecondition(false, IsValidStoryPage(story_page_id));
@@ -268,12 +266,14 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	return data.referenced_id;
 }
 
-/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype)
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(
+	StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype)
 {
 	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonColour(colour));
 	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonFlags(flags));
 	EnforcePrecondition(UINT32_MAX, IsValidStoryPageButtonCursor(cursor));
-	EnforcePrecondition(UINT32_MAX, vehtype == ScriptVehicle::VT_INVALID || vehtype == ScriptVehicle::VT_RAIL || vehtype == ScriptVehicle::VT_ROAD || vehtype == ScriptVehicle::VT_WATER || vehtype == ScriptVehicle::VT_AIR);
+	EnforcePrecondition(UINT32_MAX,
+		vehtype == ScriptVehicle::VT_INVALID || vehtype == ScriptVehicle::VT_RAIL || vehtype == ScriptVehicle::VT_ROAD || vehtype == ScriptVehicle::VT_WATER || vehtype == ScriptVehicle::VT_AIR);
 
 	StoryPageButtonData data;
 	data.SetColour((::Colours)colour);

@@ -17,10 +17,13 @@
  */
 
 #include "../../stdafx.h"
+
 #include "os_abstraction.h"
-#include "../../string_func.h"
-#include "../../3rdparty/fmt/format.h"
+
 #include <mutex>
+#include "../../3rdparty/fmt/format.h"
+
+#include "../../string_func.h"
 
 #include "../../safeguards.h"
 
@@ -29,9 +32,7 @@
  * @param error The error code.
  * @param message The error message. Leave empty to determine this automatically based on the error number.
  */
-NetworkError::NetworkError(int error, std::string_view message) : error(error), message(message)
-{
-}
+NetworkError::NetworkError(int error, std::string_view message) : error(error), message(message) {}
 
 /**
  * Check whether this error describes that the operation would block.
@@ -83,8 +84,8 @@ std::string_view NetworkError::AsString() const
 	if (this->message.empty()) {
 #if defined(_WIN32)
 		wchar_t buffer[512];
-		if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, this->error,
-			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
+		if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, this->error, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)),
+				nullptr) == 0) {
 			this->message.assign(fmt::format("Unknown error {}", this->error));
 		} else {
 			this->message.assign(FS2OTTD(buffer));
@@ -124,7 +125,6 @@ bool NetworkError::HasError() const
 	return NetworkError(errno);
 #endif
 }
-
 
 /**
  * Try to set the socket into non-blocking mode.

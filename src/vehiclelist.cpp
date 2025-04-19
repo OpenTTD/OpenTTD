@@ -8,11 +8,13 @@
 /** @file vehiclelist.cpp Lists of vehicles. */
 
 #include "stdafx.h"
+
+#include "vehiclelist.h"
+
+#include "group.h"
 #include "train.h"
 #include "vehicle_func.h"
-#include "vehiclelist.h"
 #include "vehiclelist_func.h"
-#include "group.h"
 
 #include "safeguards.h"
 
@@ -23,18 +25,17 @@
 WindowNumber VehicleListIdentifier::ToWindowNumber() const
 {
 	uint8_t c = this->company == OWNER_NONE ? 0xF : this->company.base();
-	assert(c             < (1 <<  4));
-	assert(this->vtype   < (1 <<  2));
-	assert(this->index   < (1 << 20));
-	assert(this->type    < VLT_END);
-	static_assert(VLT_END <= (1 <<  3));
+	assert(c < (1 << 4));
+	assert(this->vtype < (1 << 2));
+	assert(this->index < (1 << 20));
+	assert(this->type < VLT_END);
+	static_assert(VLT_END <= (1 << 3));
 
 	return c << 28 | this->type << 23 | this->vtype << 26 | this->index;
 }
 
 /** Data for building a depot vehicle list. */
-struct BuildDepotVehicleListData
-{
+struct BuildDepotVehicleListData {
 	VehicleList *engines; ///< Pointer to list to add vehicles to.
 	VehicleList *wagons; ///< Pointer to list to add wagons to (can be nullptr).
 	VehicleType type; ///< Type of vehicle.
@@ -95,10 +96,15 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 	switch (vli.type) {
 		case VL_STATION_LIST:
 			FindVehiclesWithOrder(
-				[&vli](const Vehicle *v) { return v->type == vli.vtype; },
-				[&vli](const Order *order) { return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT) || order->IsType(OT_IMPLICIT)) && order->GetDestination() == vli.ToStationID(); },
-				[&list](const Vehicle *v) { list->push_back(v); }
-			);
+				[&vli](const Vehicle *v) {
+					return v->type == vli.vtype;
+				},
+				[&vli](const Order *order) {
+					return (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT) || order->IsType(OT_IMPLICIT)) && order->GetDestination() == vli.ToStationID();
+				},
+				[&list](const Vehicle *v) {
+					list->push_back(v);
+				});
 			break;
 
 		case VL_SHARED_ORDERS: {
@@ -115,8 +121,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		case VL_GROUP_LIST:
 			if (vli.ToGroupID() != ALL_GROUP) {
 				for (const Vehicle *v : Vehicle::Iterate()) {
-					if (v->type == vli.vtype && v->IsPrimaryVehicle() &&
-							v->owner == vli.company && GroupIsInGroup(v->group_id, vli.ToGroupID())) {
+					if (v->type == vli.vtype && v->IsPrimaryVehicle() && v->owner == vli.company && GroupIsInGroup(v->group_id, vli.ToGroupID())) {
 						list->push_back(v);
 					}
 				}
@@ -134,13 +139,19 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 
 		case VL_DEPOT_LIST:
 			FindVehiclesWithOrder(
-				[&vli](const Vehicle *v) { return v->type == vli.vtype; },
-				[&vli](const Order *order) { return order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == vli.ToDestinationID(); },
-				[&list](const Vehicle *v) { list->push_back(v); }
-			);
+				[&vli](const Vehicle *v) {
+					return v->type == vli.vtype;
+				},
+				[&vli](const Order *order) {
+					return order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == vli.ToDestinationID();
+				},
+				[&list](const Vehicle *v) {
+					list->push_back(v);
+				});
 			break;
 
-		default: return false;
+		default:
+			return false;
 	}
 
 	return true;

@@ -10,9 +10,9 @@
 #ifndef CARGO_TYPE_H
 #define CARGO_TYPE_H
 
+#include "core/convertible_through_base.hpp"
 #include "core/enum_type.hpp"
 #include "core/strong_typedef_type.hpp"
-#include "core/convertible_through_base.hpp"
 
 /** Globally unique label of a cargo type. */
 using CargoLabel = StrongType::Typedef<uint32_t, struct CargoLabelTag, StrongType::Compare>;
@@ -92,18 +92,21 @@ enum MixedCargoType : uint8_t {
  * These are used by user interface code only and must not be assigned to any entity. Not all values are valid for every UI filter.
  */
 namespace CargoFilterCriteria {
-	static constexpr CargoType CF_ANY     = NUM_CARGO;     ///< Show all items independent of carried cargo (i.e. no filtering)
-	static constexpr CargoType CF_NONE    = NUM_CARGO + 1; ///< Show only items which do not carry cargo (e.g. train engines)
+	static constexpr CargoType CF_ANY = NUM_CARGO; ///< Show all items independent of carried cargo (i.e. no filtering)
+	static constexpr CargoType CF_NONE = NUM_CARGO + 1; ///< Show only items which do not carry cargo (e.g. train engines)
 	static constexpr CargoType CF_ENGINES = NUM_CARGO + 2; ///< Show only engines (for rail vehicles only)
 	static constexpr CargoType CF_FREIGHT = NUM_CARGO + 3; ///< Show only vehicles which carry any freight (non-passenger) cargo
 
-	static constexpr CargoType CF_NO_RATING   = NUM_CARGO + 4; ///< Show items with no rating (station list)
-	static constexpr CargoType CF_SELECT_ALL  = NUM_CARGO + 5; ///< Select all items (station list)
+	static constexpr CargoType CF_NO_RATING = NUM_CARGO + 4; ///< Show items with no rating (station list)
+	static constexpr CargoType CF_SELECT_ALL = NUM_CARGO + 5; ///< Select all items (station list)
 	static constexpr CargoType CF_EXPAND_LIST = NUM_CARGO + 6; ///< Expand list to show all items (station list)
 };
 
 /** Test whether cargo type is not INVALID_CARGO */
-inline bool IsValidCargoType(CargoType cargo) { return cargo != INVALID_CARGO; }
+inline bool IsValidCargoType(CargoType cargo)
+{
+	return cargo != INVALID_CARGO;
+}
 
 typedef uint64_t CargoTypes;
 
@@ -127,7 +130,9 @@ struct CargoArray : std::array<uint, NUM_CARGO> {
 	 */
 	inline uint GetCount() const
 	{
-		return std::ranges::count_if(*this, [](uint amount) { return amount != 0; });
+		return std::ranges::count_if(*this, [](uint amount) {
+			return amount != 0;
+		});
 	}
 };
 

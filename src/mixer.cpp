@@ -8,11 +8,14 @@
 /** @file mixer.cpp Mixing of sound samples. */
 
 #include "stdafx.h"
-#include <mutex>
+
+#include "mixer.h"
+
 #include <atomic>
+#include <mutex>
+
 #include "core/math_func.hpp"
 #include "framerate_type.h"
-#include "mixer.h"
 #include "settings_type.h"
 
 #include "safeguards.h"
@@ -85,7 +88,7 @@ static void mix_int16(MixerChannel *sc, int16_t *buffer, uint samples, uint8_t e
 	if (frac_speed == 0x10000) {
 		/* Special case when frac_speed is 0x10000 */
 		do {
-			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> SHIFT), -MAX_VOLUME, MAX_VOLUME);
+			buffer[0] = Clamp(buffer[0] + (*b * volume_left >> SHIFT), -MAX_VOLUME, MAX_VOLUME);
 			buffer[1] = Clamp(buffer[1] + (*b * volume_right >> SHIFT), -MAX_VOLUME, MAX_VOLUME);
 			b++;
 			buffer += 2;
@@ -93,7 +96,7 @@ static void mix_int16(MixerChannel *sc, int16_t *buffer, uint samples, uint8_t e
 	} else {
 		do {
 			int data = RateConversion(b, frac_pos);
-			buffer[0] = Clamp(buffer[0] + (data * volume_left  >> SHIFT), -MAX_VOLUME, MAX_VOLUME);
+			buffer[0] = Clamp(buffer[0] + (data * volume_left >> SHIFT), -MAX_VOLUME, MAX_VOLUME);
 			buffer[1] = Clamp(buffer[1] + (data * volume_right >> SHIFT), -MAX_VOLUME, MAX_VOLUME);
 			buffer += 2;
 			frac_pos += frac_speed;
@@ -134,9 +137,9 @@ void MxMixSamples(void *buffer, uint samples)
 	memset(buffer, 0, sizeof(int16_t) * 2 * samples);
 
 	{
-		std::lock_guard<std::mutex> lock{ _music_stream_mutex };
+		std::lock_guard<std::mutex> lock{_music_stream_mutex};
 		/* Fetch music if a sampled stream is available */
-		if (_music_stream) _music_stream((int16_t*)buffer, samples);
+		if (_music_stream) _music_stream((int16_t *)buffer, samples);
 	}
 
 	/* Check if any channels should be stopped. */
@@ -150,18 +153,16 @@ void MxMixSamples(void *buffer, uint samples)
 	 * is expected to be in the range 0-127 hence the division by 127 * 127 to
 	 * get back into range. */
 	uint8_t effect_vol_setting = _effect_vol.load(std::memory_order_relaxed);
-	uint8_t effect_vol = (effect_vol_setting *
-	                    effect_vol_setting *
-	                    effect_vol_setting) / (127 * 127);
+	uint8_t effect_vol = (effect_vol_setting * effect_vol_setting * effect_vol_setting) / (127 * 127);
 
 	/* Mix each channel */
 	MixerChannelMask active = _active_channels.load(std::memory_order_acquire);
 	for (uint8_t idx : SetBitIterator(active)) {
 		MixerChannel *mc = &_channels[idx];
 		if (mc->is16bit) {
-			mix_int16<int16_t>(mc, (int16_t*)buffer, samples, effect_vol);
+			mix_int16<int16_t>(mc, (int16_t *)buffer, samples, effect_vol);
 		} else {
-			mix_int16<int8_t>(mc, (int16_t*)buffer, samples, effect_vol);
+			mix_int16<int8_t>(mc, (int16_t *)buffer, samples, effect_vol);
 		}
 		if (mc->samples_left == 0) MxCloseChannel(idx);
 	}
@@ -218,7 +219,6 @@ void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan)
 	mc->volume_right = (uint)(sin(pan * M_PI / 2.0) * volume);
 }
 
-
 void MxActivateChannel(MixerChannel *mc)
 {
 	uint8_t channel_index = mc - _channels;
@@ -233,17 +233,16 @@ void MxActivateChannel(MixerChannel *mc)
  */
 uint32_t MxSetMusicSource(MxStreamCallback music_callback)
 {
-	std::lock_guard<std::mutex> lock{ _music_stream_mutex };
+	std::lock_guard<std::mutex> lock{_music_stream_mutex};
 	_music_stream = music_callback;
 	return _play_rate;
 }
 
-
 bool MxInitialize(uint rate)
 {
-	std::lock_guard<std::mutex> lock{ _music_stream_mutex };
+	std::lock_guard<std::mutex> lock{_music_stream_mutex};
 	_play_rate = rate;
-	_max_size  = UINT_MAX / _play_rate;
+	_max_size = UINT_MAX / _play_rate;
 	_music_stream = nullptr; /* rate may have changed, any music source is now invalid */
 	return true;
 }

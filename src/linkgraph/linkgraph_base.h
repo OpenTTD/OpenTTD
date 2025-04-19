@@ -19,5 +19,4 @@ typedef LinkGraph::BaseEdge Edge;
 typedef const LinkGraph::BaseNode ConstNode;
 typedef const LinkGraph::BaseEdge ConstEdge;
 
-
 #endif /* LINKGRAPH_BASE_H */

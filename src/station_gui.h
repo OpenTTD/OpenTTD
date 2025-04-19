@@ -12,16 +12,15 @@
 
 #include "core/geometry_type.hpp"
 #include "command_type.h"
+#include "station_type.h"
 #include "tilearea_type.h"
 #include "window_type.h"
-#include "station_type.h"
-
 
 /** Types of cargo to display for station coverage. */
 enum StationCoverageType : uint8_t {
-	SCT_PASSENGERS_ONLY,     ///< Draw only passenger class cargoes.
+	SCT_PASSENGERS_ONLY, ///< Draw only passenger class cargoes.
 	SCT_NON_PASSENGERS_ONLY, ///< Draw all non-passenger class cargoes.
-	SCT_ALL,                 ///< Draw all cargoes.
+	SCT_ALL, ///< Draw all cargoes.
 };
 
 int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad, bool supplies);

@@ -10,8 +10,8 @@
 #ifndef SCRIPT_COMPANYMODE_HPP
 #define SCRIPT_COMPANYMODE_HPP
 
-#include "script_object.hpp"
 #include "script_company.hpp"
+#include "script_object.hpp"
 
 /**
  * Class to switch the current company.

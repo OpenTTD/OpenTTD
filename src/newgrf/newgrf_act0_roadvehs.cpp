@@ -8,14 +8,15 @@
 /** @file newgrf_act0_roadvehs.cpp NewGRF Action 0x00 handler for road vehicles. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_cargo.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_sound.h"
 #include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
-#include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
+#include "newgrf_internal_vehicle.h"
 
 #include "../safeguards.h"
 
@@ -188,7 +189,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				rvi->shorten_factor = buf.ReadByte();
 				break;
 
-			case 0x24:   // CTT refit include list
+			case 0x24: // CTT refit include list
 			case 0x25: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x24 && count != 0);
@@ -234,5 +235,14 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadVehicleChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_ROADVEHICLES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RoadVehicleChangeInfo(first, last, prop, buf);
+}

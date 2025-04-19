@@ -29,15 +29,15 @@ using ViewportStringFlags = EnumBitSet<ViewportStringFlag, uint8_t>;
  * Data structure for viewport, display of a part of the world
  */
 struct Viewport {
-	int left;    ///< Screen coordinate left edge of the viewport
-	int top;     ///< Screen coordinate top edge of the viewport
-	int width;   ///< Screen width of the viewport
-	int height;  ///< Screen height of the viewport
+	int left; ///< Screen coordinate left edge of the viewport
+	int top; ///< Screen coordinate top edge of the viewport
+	int width; ///< Screen width of the viewport
+	int height; ///< Screen height of the viewport
 
-	int virtual_left;    ///< Virtual left coordinate
-	int virtual_top;     ///< Virtual top coordinate
-	int virtual_width;   ///< width << zoom
-	int virtual_height;  ///< height << zoom
+	int virtual_left; ///< Virtual left coordinate
+	int virtual_top; ///< Virtual top coordinate
+	int virtual_width; ///< width << zoom
+	int virtual_height; ///< height << zoom
 
 	ZoomLevel zoom; ///< The zoom level of the viewport.
 	std::shared_ptr<LinkGraphOverlay> overlay;
@@ -78,8 +78,8 @@ struct TrackedViewportSign : ViewportSign {
  * @see DoZoomInOutWindow
  */
 enum ZoomStateChange : uint8_t {
-	ZOOM_IN   = 0, ///< Zoom in (get more detailed view).
-	ZOOM_OUT  = 1, ///< Zoom out (get helicopter view).
+	ZOOM_IN = 0, ///< Zoom in (get more detailed view).
+	ZOOM_OUT = 1, ///< Zoom out (get helicopter view).
 	ZOOM_NONE = 2, ///< Hack, used to update the button status.
 };
 
@@ -90,21 +90,21 @@ enum ZoomStateChange : uint8_t {
  * z=7     Z separator between bridge/tunnel and the things under/above it.
  */
 static const uint BB_HEIGHT_UNDER_BRIDGE = 6; ///< Everything that can be built under low bridges, must not exceed this Z height.
-static const uint BB_Z_SEPARATOR         = 7; ///< Separates the bridge/tunnel from the things under/above it.
+static const uint BB_Z_SEPARATOR = 7; ///< Separates the bridge/tunnel from the things under/above it.
 
 /** Viewport place method (type of highlighted area and placed objects) */
 enum ViewportPlaceMethod : uint8_t {
-	VPM_X_OR_Y          =    0, ///< drag in X or Y direction
-	VPM_FIX_X           =    1, ///< drag only in X axis
-	VPM_FIX_Y           =    2, ///< drag only in Y axis
-	VPM_X_AND_Y         =    3, ///< area of land in X and Y directions
-	VPM_X_AND_Y_LIMITED =    4, ///< area of land of limited size
-	VPM_FIX_HORIZONTAL  =    5, ///< drag only in horizontal direction
-	VPM_FIX_VERTICAL    =    6, ///< drag only in vertical direction
-	VPM_X_LIMITED       =    7, ///< Drag only in X axis with limited size
-	VPM_Y_LIMITED       =    8, ///< Drag only in Y axis with limited size
-	VPM_RAILDIRS        = 0x40, ///< all rail directions
-	VPM_SIGNALDIRS      = 0x80, ///< similar to VMP_RAILDIRS, but with different cursor
+	VPM_X_OR_Y = 0, ///< drag in X or Y direction
+	VPM_FIX_X = 1, ///< drag only in X axis
+	VPM_FIX_Y = 2, ///< drag only in Y axis
+	VPM_X_AND_Y = 3, ///< area of land in X and Y directions
+	VPM_X_AND_Y_LIMITED = 4, ///< area of land of limited size
+	VPM_FIX_HORIZONTAL = 5, ///< drag only in horizontal direction
+	VPM_FIX_VERTICAL = 6, ///< drag only in vertical direction
+	VPM_X_LIMITED = 7, ///< Drag only in X axis with limited size
+	VPM_Y_LIMITED = 8, ///< Drag only in Y axis with limited size
+	VPM_RAILDIRS = 0x40, ///< all rail directions
+	VPM_SIGNALDIRS = 0x80, ///< similar to VMP_RAILDIRS, but with different cursor
 };
 DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
 
@@ -113,46 +113,45 @@ DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
  * you've selected it.
  */
 enum ViewportDragDropSelectionProcess : uint8_t {
-	DDSP_DEMOLISH_AREA,        ///< Clear area
+	DDSP_DEMOLISH_AREA, ///< Clear area
 	DDSP_RAISE_AND_LEVEL_AREA, ///< Raise / level area
 	DDSP_LOWER_AND_LEVEL_AREA, ///< Lower / level area
-	DDSP_LEVEL_AREA,           ///< Level area
-	DDSP_CREATE_DESERT,        ///< Fill area with desert
-	DDSP_CREATE_ROCKS,         ///< Fill area with rocks
-	DDSP_CREATE_WATER,         ///< Create a canal
-	DDSP_CREATE_RIVER,         ///< Create rivers
-	DDSP_PLANT_TREES,          ///< Plant trees
-	DDSP_BUILD_BRIDGE,         ///< Bridge placement
-	DDSP_BUILD_OBJECT,         ///< Build an object
+	DDSP_LEVEL_AREA, ///< Level area
+	DDSP_CREATE_DESERT, ///< Fill area with desert
+	DDSP_CREATE_ROCKS, ///< Fill area with rocks
+	DDSP_CREATE_WATER, ///< Create a canal
+	DDSP_CREATE_RIVER, ///< Create rivers
+	DDSP_PLANT_TREES, ///< Plant trees
+	DDSP_BUILD_BRIDGE, ///< Bridge placement
+	DDSP_BUILD_OBJECT, ///< Build an object
 
 	/* Rail specific actions */
-	DDSP_PLACE_RAIL,           ///< Rail placement
-	DDSP_BUILD_SIGNALS,        ///< Signal placement
-	DDSP_BUILD_STATION,        ///< Station placement
-	DDSP_REMOVE_STATION,       ///< Station removal
-	DDSP_CONVERT_RAIL,         ///< Rail conversion
+	DDSP_PLACE_RAIL, ///< Rail placement
+	DDSP_BUILD_SIGNALS, ///< Signal placement
+	DDSP_BUILD_STATION, ///< Station placement
+	DDSP_REMOVE_STATION, ///< Station removal
+	DDSP_CONVERT_RAIL, ///< Rail conversion
 
 	/* Road specific actions */
-	DDSP_PLACE_ROAD_X_DIR,     ///< Road placement (X axis)
-	DDSP_PLACE_ROAD_Y_DIR,     ///< Road placement (Y axis)
-	DDSP_PLACE_AUTOROAD,       ///< Road placement (auto)
-	DDSP_BUILD_ROAD_WAYPOINT,  ///< Road stop placement (waypoint)
-	DDSP_BUILD_BUSSTOP,        ///< Road stop placement (buses)
-	DDSP_BUILD_TRUCKSTOP,      ///< Road stop placement (trucks)
+	DDSP_PLACE_ROAD_X_DIR, ///< Road placement (X axis)
+	DDSP_PLACE_ROAD_Y_DIR, ///< Road placement (Y axis)
+	DDSP_PLACE_AUTOROAD, ///< Road placement (auto)
+	DDSP_BUILD_ROAD_WAYPOINT, ///< Road stop placement (waypoint)
+	DDSP_BUILD_BUSSTOP, ///< Road stop placement (buses)
+	DDSP_BUILD_TRUCKSTOP, ///< Road stop placement (trucks)
 	DDSP_REMOVE_ROAD_WAYPOINT, ///< Road stop removal (waypoint)
-	DDSP_REMOVE_BUSSTOP,       ///< Road stop removal (buses)
-	DDSP_REMOVE_TRUCKSTOP,     ///< Road stop removal (trucks)
-	DDSP_CONVERT_ROAD,         ///< Road conversion
+	DDSP_REMOVE_BUSSTOP, ///< Road stop removal (buses)
+	DDSP_REMOVE_TRUCKSTOP, ///< Road stop removal (trucks)
+	DDSP_CONVERT_ROAD, ///< Road conversion
 };
-
 
 /**
  * Target of the viewport scrolling GS method
  */
 enum ViewportScrollTarget : uint8_t {
 	VST_EVERYONE, ///< All players
-	VST_COMPANY,  ///< All players in specific company
-	VST_CLIENT,   ///< Single player
+	VST_COMPANY, ///< All players in specific company
+	VST_CLIENT, ///< Single player
 };
 
 #endif /* VIEWPORT_TYPE_H */

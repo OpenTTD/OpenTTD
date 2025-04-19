@@ -11,20 +11,18 @@
 #define YAPF_HPP
 
 #include "../../landscape.h"
-#include "../pathfinder_func.h"
-#include "yapf.h"
-
-#include "../../misc/hashtable.hpp"
 #include "../../misc/binaryheap.hpp"
 #include "../../misc/dbg_helpers.h"
-#include "nodelist.hpp"
+#include "../../misc/hashtable.hpp"
 #include "../follow_track.hpp"
-#include "yapf_type.hpp"
+#include "../pathfinder_func.h"
+#include "nodelist.hpp"
+#include "yapf.h"
 #include "yapf_base.hpp"
-#include "yapf_node.hpp"
 #include "yapf_common.hpp"
 #include "yapf_costbase.hpp"
 #include "yapf_costcache.hpp"
-
+#include "yapf_node.hpp"
+#include "yapf_type.hpp"
 
 #endif /* YAPF_HPP */

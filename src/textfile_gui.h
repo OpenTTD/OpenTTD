@@ -45,12 +45,13 @@ protected:
 	void ConstructWindow();
 
 	struct Line {
-		int top = 0;                  ///< Top scroll position in visual lines.
-		int bottom = 0;               ///< Bottom scroll position in visual lines.
-		std::string text{};           ///< Contents of the line.
+		int top = 0; ///< Top scroll position in visual lines.
+		int bottom = 0; ///< Bottom scroll position in visual lines.
+		std::string text{}; ///< Contents of the line.
 		TextColour colour = TC_WHITE; ///< Colour to render text line in.
 
 		Line(int top, std::string_view text) : top(top), bottom(top + 1), text(text) {}
+
 		Line() {}
 	};
 
@@ -62,8 +63,8 @@ protected:
 	};
 
 	struct HistoryEntry {
-		std::string filepath;    ///< File the history entry is in.
-		int scrollpos;           ///< Scrolling position the file was at at navigation time.
+		std::string filepath; ///< File the history entry is in.
+		int scrollpos; ///< Scrolling position the file was at at navigation time.
 	};
 
 	std::string filename{}; ///< Filename of the textfile.

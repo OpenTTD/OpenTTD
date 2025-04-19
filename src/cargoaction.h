@@ -20,9 +20,10 @@ template <class Tsource>
 class CargoRemoval {
 protected:
 	Tsource *source; ///< Source of the cargo.
-	uint max_move;   ///< Maximum amount of cargo to be removed with this action.
+	uint max_move; ///< Maximum amount of cargo to be removed with this action.
 	uint Preprocess(CargoPacket *cp);
 	bool Postprocess(CargoPacket *cp, uint remove);
+
 public:
 	CargoRemoval(Tsource *source, uint max_move) : source(source), max_move(max_move) {}
 
@@ -30,7 +31,10 @@ public:
 	 * Returns how much more cargo can be removed with this action.
 	 * @return Amount of cargo this action can still remove.
 	 */
-	uint MaxMove() { return this->max_move; }
+	uint MaxMove()
+	{
+		return this->max_move;
+	}
 
 	bool operator()(CargoPacket *cp);
 };
@@ -43,7 +47,10 @@ protected:
 	CargoType cargo; ///< The cargo type of the cargo.
 public:
 	CargoDelivery(VehicleCargoList *source, uint max_move, CargoType cargo, CargoPayment *payment, TileIndex current_tile) :
-			CargoRemoval<VehicleCargoList>(source, max_move), current_tile(current_tile), payment(payment), cargo(cargo) {}
+		CargoRemoval<VehicleCargoList>(source, max_move), current_tile(current_tile), payment(payment), cargo(cargo)
+	{
+	}
+
 	bool operator()(CargoPacket *cp);
 };
 
@@ -55,10 +62,11 @@ public:
 template <class Tsource, class Tdest>
 class CargoMovement {
 protected:
-	Tsource *source;    ///< Source of the cargo.
+	Tsource *source; ///< Source of the cargo.
 	Tdest *destination; ///< Destination for the cargo.
-	uint max_move;      ///< Maximum amount of cargo to be moved with this action.
+	uint max_move; ///< Maximum amount of cargo to be moved with this action.
 	CargoPacket *Preprocess(CargoPacket *cp);
+
 public:
 	CargoMovement(Tsource *source, Tdest *destination, uint max_move) : source(source), destination(destination), max_move(max_move) {}
 
@@ -66,7 +74,10 @@ public:
 	 * Returns how much more cargo can be moved with this action.
 	 * @return Amount of cargo this action can still move.
 	 */
-	uint MaxMove() { return this->max_move; }
+	uint MaxMove()
+	{
+		return this->max_move;
+	}
 };
 
 /** Action of transferring cargo from a vehicle to a station. */
@@ -75,7 +86,10 @@ protected:
 	TileIndex current_tile; ///< Current tile cargo unloading is happening.
 public:
 	CargoTransfer(VehicleCargoList *source, StationCargoList *destination, uint max_move, TileIndex current_tile) :
-			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), current_tile(current_tile) {}
+		CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), current_tile(current_tile)
+	{
+	}
+
 	bool operator()(CargoPacket *cp);
 };
 
@@ -85,15 +99,18 @@ protected:
 	TileIndex current_tile; ///< Current tile cargo loading is happening.
 public:
 	CargoLoad(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
-			CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), current_tile(current_tile) {}
+		CargoMovement<StationCargoList, VehicleCargoList>(source, destination, max_move), current_tile(current_tile)
+	{
+	}
+
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of reserving cargo from a station to be loaded onto a vehicle. */
 class CargoReservation : public CargoLoad {
 public:
-	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) :
-			CargoLoad(source, destination, max_move, current_tile) {}
+	CargoReservation(StationCargoList *source, VehicleCargoList *destination, uint max_move, TileIndex current_tile) : CargoLoad(source, destination, max_move, current_tile) {}
+
 	bool operator()(CargoPacket *cp);
 };
 
@@ -102,17 +119,21 @@ class CargoReturn : public CargoMovement<VehicleCargoList, StationCargoList> {
 protected:
 	TileIndex current_tile; ///< Current tile cargo unloading is happening.
 	StationID next;
+
 public:
 	CargoReturn(VehicleCargoList *source, StationCargoList *destination, uint max_move, StationID next, TileIndex current_tile) :
-			CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), current_tile(current_tile), next(next) {}
+		CargoMovement<VehicleCargoList, StationCargoList>(source, destination, max_move), current_tile(current_tile), next(next)
+	{
+	}
+
 	bool operator()(CargoPacket *cp);
 };
 
 /** Action of shifting cargo from one vehicle to another. */
 class CargoShift : public CargoMovement<VehicleCargoList, VehicleCargoList> {
 public:
-	CargoShift(VehicleCargoList *source, VehicleCargoList *destination, uint max_move) :
-			CargoMovement<VehicleCargoList, VehicleCargoList>(source, destination, max_move) {}
+	CargoShift(VehicleCargoList *source, VehicleCargoList *destination, uint max_move) : CargoMovement<VehicleCargoList, VehicleCargoList>(source, destination, max_move) {}
+
 	bool operator()(CargoPacket *cp);
 };
 
@@ -123,16 +144,22 @@ protected:
 	StationID avoid;
 	StationID avoid2;
 	const GoodsEntry *ge;
+
 public:
 	CargoReroute(Tlist *source, Tlist *dest, uint max_move, StationID avoid, StationID avoid2, const GoodsEntry *ge) :
-			CargoMovement<Tlist, Tlist>(source, dest, max_move), avoid(avoid), avoid2(avoid2), ge(ge) {}
+		CargoMovement<Tlist, Tlist>(source, dest, max_move), avoid(avoid), avoid2(avoid2), ge(ge)
+	{
+	}
 };
 
 /** Action of rerouting cargo in a station. */
 class StationCargoReroute : public CargoReroute<StationCargoList> {
 public:
 	StationCargoReroute(StationCargoList *source, StationCargoList *dest, uint max_move, StationID avoid, StationID avoid2, const GoodsEntry *ge) :
-				CargoReroute<StationCargoList>(source, dest, max_move, avoid, avoid2, ge) {}
+		CargoReroute<StationCargoList>(source, dest, max_move, avoid, avoid2, ge)
+	{
+	}
+
 	bool operator()(CargoPacket *cp);
 };
 
@@ -140,10 +167,11 @@ public:
 class VehicleCargoReroute : public CargoReroute<VehicleCargoList> {
 public:
 	VehicleCargoReroute(VehicleCargoList *source, VehicleCargoList *dest, uint max_move, StationID avoid, StationID avoid2, const GoodsEntry *ge) :
-			CargoReroute<VehicleCargoList>(source, dest, max_move, avoid, avoid2, ge)
+		CargoReroute<VehicleCargoList>(source, dest, max_move, avoid, avoid2, ge)
 	{
 		assert(this->max_move <= source->ActionCount(VehicleCargoList::MTA_TRANSFER));
 	}
+
 	bool operator()(CargoPacket *cp);
 };
 

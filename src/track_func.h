@@ -11,9 +11,9 @@
 #define TRACK_FUNC_H
 
 #include "core/bitmath_func.hpp"
-#include "track_type.h"
 #include "direction_func.h"
 #include "slope_func.h"
+#include "track_type.h"
 
 using SetTrackBitIterator = SetBitIterator<Track, TrackBits>;
 using SetTrackdirBitIterator = SetBitIterator<Trackdir, TrackdirBits>;
@@ -570,7 +570,10 @@ inline TrackdirBits DiagdirReachesTrackdirs(DiagDirection diagdir)
  * @return The tracks which can be used
  * @see DiagdirReachesTrackdirs
  */
-inline TrackBits DiagdirReachesTracks(DiagDirection diagdir) { return TrackdirBitsToTrackBits(DiagdirReachesTrackdirs(diagdir)); }
+inline TrackBits DiagdirReachesTracks(DiagDirection diagdir)
+{
+	return TrackdirBitsToTrackBits(DiagdirReachesTrackdirs(diagdir));
+}
 
 /**
  * Maps a trackdir to the trackdirs that can be reached from it (ie, when
@@ -587,6 +590,7 @@ inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir)
 	extern const TrackdirBits _exitdir_reaches_trackdirs[DIAGDIR_END];
 	return _exitdir_reaches_trackdirs[TrackdirToExitdir(trackdir)];
 }
+
 /* Note that there is no direct table for this function (there used to be),
  * but it uses two simpler tables to achieve the result */
 
@@ -633,7 +637,6 @@ inline bool IsDiagonalTrackdir(Trackdir trackdir)
 	assert(IsValidTrackdir(trackdir));
 	return IsDiagonalTrack(TrackdirToTrack(trackdir));
 }
-
 
 /**
  * Checks if the given tracks overlap, ie form a crossing. Basically this
@@ -713,7 +716,7 @@ inline bool IsUphillTrackdir(Slope slope, Trackdir dir)
  */
 inline DiagDirection VehicleExitDir(Direction direction, TrackBits track)
 {
-	static const TrackBits state_dir_table[DIAGDIR_END] = { TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER };
+	static const TrackBits state_dir_table[DIAGDIR_END] = {TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER};
 
 	DiagDirection diagdir = DirToDiagDir(direction);
 

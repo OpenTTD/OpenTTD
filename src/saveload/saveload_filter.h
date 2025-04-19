@@ -19,9 +19,7 @@ struct LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LoadFilter(std::shared_ptr<LoadFilter> chain) : chain(std::move(chain))
-	{
-	}
+	LoadFilter(std::shared_ptr<LoadFilter> chain) : chain(std::move(chain)) {}
 
 	/** Make sure the writers are properly closed. */
 	virtual ~LoadFilter() = default;
@@ -48,7 +46,8 @@ struct LoadFilter {
  * @param chain The next filter in this chain.
  * @tparam T    The type of load filter to create.
  */
-template <typename T> std::shared_ptr<LoadFilter> CreateLoadFilter(std::shared_ptr<LoadFilter> chain)
+template <typename T>
+std::shared_ptr<LoadFilter> CreateLoadFilter(std::shared_ptr<LoadFilter> chain)
 {
 	return std::make_shared<T>(chain);
 }
@@ -62,9 +61,7 @@ struct SaveFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	SaveFilter(std::shared_ptr<SaveFilter> chain) : chain(std::move(chain))
-	{
-	}
+	SaveFilter(std::shared_ptr<SaveFilter> chain) : chain(std::move(chain)) {}
 
 	/** Make sure the writers are properly closed. */
 	virtual ~SaveFilter() = default;
@@ -91,7 +88,8 @@ struct SaveFilter {
  * @param compression_level The requested level of compression.
  * @tparam T                The type of save filter to create.
  */
-template <typename T> std::shared_ptr<SaveFilter> CreateSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level)
+template <typename T>
+std::shared_ptr<SaveFilter> CreateSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level)
 {
 	return std::make_shared<T>(chain, compression_level);
 }

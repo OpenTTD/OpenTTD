@@ -8,9 +8,11 @@
 /** @file 32bpp_simple.cpp Implementation of the simple 32 bpp blitter. */
 
 #include "../stdafx.h"
-#include "../zoom_func.h"
-#include "../palette_func.h"
+
 #include "32bpp_simple.hpp"
+
+#include "../palette_func.h"
+#include "../zoom_func.h"
 
 #include "../table/sprites.h"
 
@@ -121,7 +123,7 @@ Sprite *Blitter_32bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + static_cast<size_t>(sprite[ZOOM_LVL_MIN].height) * static_cast<size_t>(sprite[ZOOM_LVL_MIN].width) * sizeof(*dst));
 
 	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dest_sprite->width = sprite[ZOOM_LVL_MIN].width;
 	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
 	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 

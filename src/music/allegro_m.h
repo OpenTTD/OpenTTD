@@ -26,7 +26,11 @@ public:
 	bool IsSongPlaying() override;
 
 	void SetVolume(uint8_t vol) override;
-	std::string_view GetName() const override { return "allegro"; }
+
+	std::string_view GetName() const override
+	{
+		return "allegro";
+	}
 };
 
 /** Factory for allegro's music player. */
@@ -41,7 +45,11 @@ public:
 	static const int PRIORITY = 2;
 #endif
 	FMusicDriver_Allegro() : DriverFactoryBase(Driver::DT_MUSIC, PRIORITY, "allegro", "Allegro MIDI Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_Allegro>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<MusicDriver_Allegro>();
+	}
 };
 
 #endif /* MUSIC_ALLEGRO_H */

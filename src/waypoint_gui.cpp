@@ -8,23 +8,23 @@
 /** @file waypoint_gui.cpp Handling of waypoints gui. */
 
 #include "stdafx.h"
-#include "window_gui.h"
-#include "gui.h"
-#include "textbuf_gui.h"
-#include "vehiclelist.h"
-#include "vehicle_gui.h"
-#include "viewport_func.h"
-#include "strings_func.h"
+
 #include "command_func.h"
-#include "company_func.h"
 #include "company_base.h"
-#include "window_func.h"
+#include "company_func.h"
+#include "gui.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "vehicle_gui.h"
+#include "vehiclelist.h"
+#include "viewport_func.h"
 #include "waypoint_base.h"
 #include "waypoint_cmd.h"
+#include "window_func.h"
+#include "window_gui.h"
 #include "zoom_func.h"
 
 #include "widgets/waypoint_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -137,7 +137,8 @@ public:
 				break;
 
 			case WID_W_RENAME: // rename
-				ShowQueryString(GetString(STR_WAYPOINT_NAME, this->wp->index), STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
+				ShowQueryString(GetString(STR_WAYPOINT_NAME, this->wp->index), STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_STATION_NAME_CHARS, this, CS_ALPHANUMERAL,
+					{QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				break;
 
 			case WID_W_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
@@ -183,7 +184,6 @@ public:
 
 		Command<CMD_RENAME_WAYPOINT>::Post(STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME, this->window_number, *str);
 	}
-
 };
 
 /** The widgets of the waypoint view. */
@@ -212,12 +212,7 @@ static constexpr NWidgetPart _nested_waypoint_view_widgets[] = {
 /* clang-format on */
 
 /** The description of the waypoint view. */
-static WindowDesc _waypoint_view_desc(
-	WDP_AUTO, "view_waypoint", 260, 118,
-	WC_WAYPOINT_VIEW, WC_NONE,
-	{},
-	_nested_waypoint_view_widgets
-);
+static WindowDesc _waypoint_view_desc(WDP_AUTO, "view_waypoint", 260, 118, WC_WAYPOINT_VIEW, WC_NONE, {}, _nested_waypoint_view_widgets);
 
 /**
  * Show the window for the given waypoint.

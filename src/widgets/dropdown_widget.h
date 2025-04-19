@@ -12,9 +12,9 @@
 
 /** Widgets of the #DropdownWindow class. */
 enum DropdownMenuWidgets : WidgetID {
-	WID_DM_ITEMS,        ///< Panel showing the dropdown items.
-	WID_DM_SHOW_SCROLL,  ///< Hide scrollbar if too few items.
-	WID_DM_SCROLL,       ///< Scrollbar.
+	WID_DM_ITEMS, ///< Panel showing the dropdown items.
+	WID_DM_SHOW_SCROLL, ///< Hide scrollbar if too few items.
+	WID_DM_SCROLL, ///< Scrollbar.
 };
 
 #endif /* WIDGETS_DROPDOWN_WIDGET_H */

@@ -14,102 +14,102 @@
 #include "core/geometry_type.hpp"
 #include "zoom_type.h"
 
-typedef uint32_t SpriteID;  ///< The number of a sprite, without mapping bits and colourtables
+typedef uint32_t SpriteID; ///< The number of a sprite, without mapping bits and colourtables
 typedef uint32_t PaletteID; ///< The number of the palette
-typedef uint32_t CursorID;  ///< The number of the cursor (sprite)
+typedef uint32_t CursorID; ///< The number of the cursor (sprite)
 
 /** Combination of a palette sprite and a 'real' sprite */
 struct PalSpriteID {
-	SpriteID sprite{};  ///< The 'real' sprite
-	PaletteID pal{};    ///< The palette (use \c PAL_NONE) if not needed)
+	SpriteID sprite{}; ///< The 'real' sprite
+	PaletteID pal{}; ///< The palette (use \c PAL_NONE) if not needed)
 
-	auto operator<=>(const PalSpriteID&) const = default;
+	auto operator<=>(const PalSpriteID &) const = default;
 };
 
 enum WindowKeyCodes : uint16_t {
 	WKC_SHIFT = 0x8000,
-	WKC_CTRL  = 0x4000,
-	WKC_ALT   = 0x2000,
-	WKC_META  = 0x1000,
+	WKC_CTRL = 0x4000,
+	WKC_ALT = 0x2000,
+	WKC_META = 0x1000,
 
 	WKC_GLOBAL_HOTKEY = 0x0800, ///< Fake keycode bit to indicate global hotkeys
 
 	WKC_SPECIAL_KEYS = WKC_SHIFT | WKC_CTRL | WKC_ALT | WKC_META | WKC_GLOBAL_HOTKEY,
 
 	/* Special ones */
-	WKC_NONE        =  0,
-	WKC_ESC         =  1,
-	WKC_BACKSPACE   =  2,
-	WKC_INSERT      =  3,
-	WKC_DELETE      =  4,
+	WKC_NONE = 0,
+	WKC_ESC = 1,
+	WKC_BACKSPACE = 2,
+	WKC_INSERT = 3,
+	WKC_DELETE = 4,
 
-	WKC_PAGEUP      =  5,
-	WKC_PAGEDOWN    =  6,
-	WKC_END         =  7,
-	WKC_HOME        =  8,
+	WKC_PAGEUP = 5,
+	WKC_PAGEDOWN = 6,
+	WKC_END = 7,
+	WKC_HOME = 8,
 
 	/* Arrow keys */
-	WKC_LEFT        =  9,
-	WKC_UP          = 10,
-	WKC_RIGHT       = 11,
-	WKC_DOWN        = 12,
+	WKC_LEFT = 9,
+	WKC_UP = 10,
+	WKC_RIGHT = 11,
+	WKC_DOWN = 12,
 
 	/* Return & tab */
-	WKC_RETURN      = 13,
-	WKC_TAB         = 14,
+	WKC_RETURN = 13,
+	WKC_TAB = 14,
 
 	/* Space */
-	WKC_SPACE       = 32,
+	WKC_SPACE = 32,
 
 	/* Function keys */
-	WKC_F1          = 33,
-	WKC_F2          = 34,
-	WKC_F3          = 35,
-	WKC_F4          = 36,
-	WKC_F5          = 37,
-	WKC_F6          = 38,
-	WKC_F7          = 39,
-	WKC_F8          = 40,
-	WKC_F9          = 41,
-	WKC_F10         = 42,
-	WKC_F11         = 43,
-	WKC_F12         = 44,
+	WKC_F1 = 33,
+	WKC_F2 = 34,
+	WKC_F3 = 35,
+	WKC_F4 = 36,
+	WKC_F5 = 37,
+	WKC_F6 = 38,
+	WKC_F7 = 39,
+	WKC_F8 = 40,
+	WKC_F9 = 41,
+	WKC_F10 = 42,
+	WKC_F11 = 43,
+	WKC_F12 = 44,
 
 	/* Backquote is the key left of "1"
 	 * we only store this key here, no matter what character is really mapped to it
 	 * on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °) */
-	WKC_BACKQUOTE   = 45,
-	WKC_PAUSE       = 46,
+	WKC_BACKQUOTE = 45,
+	WKC_PAUSE = 46,
 
 	/* 0-9 are mapped to 48-57
 	 * A-Z are mapped to 65-90
 	 * a-z are mapped to 97-122 */
 
 	/* Numerical keyboard */
-	WKC_NUM_DIV     = 138,
-	WKC_NUM_MUL     = 139,
-	WKC_NUM_MINUS   = 140,
-	WKC_NUM_PLUS    = 141,
-	WKC_NUM_ENTER   = 142,
+	WKC_NUM_DIV = 138,
+	WKC_NUM_MUL = 139,
+	WKC_NUM_MINUS = 140,
+	WKC_NUM_PLUS = 141,
+	WKC_NUM_ENTER = 142,
 	WKC_NUM_DECIMAL = 143,
 
 	/* Other keys */
-	WKC_SLASH       = 144, ///< / Forward slash
-	WKC_SEMICOLON   = 145, ///< ; Semicolon
-	WKC_EQUALS      = 146, ///< = Equals
-	WKC_L_BRACKET   = 147, ///< [ Left square bracket
-	WKC_BACKSLASH   = 148, ///< \ Backslash
-	WKC_R_BRACKET   = 149, ///< ] Right square bracket
+	WKC_SLASH = 144, ///< / Forward slash
+	WKC_SEMICOLON = 145, ///< ; Semicolon
+	WKC_EQUALS = 146, ///< = Equals
+	WKC_L_BRACKET = 147, ///< [ Left square bracket
+	WKC_BACKSLASH = 148, ///< \ Backslash
+	WKC_R_BRACKET = 149, ///< ] Right square bracket
 	WKC_SINGLEQUOTE = 150, ///< ' Single quote
-	WKC_COMMA       = 151, ///< , Comma
-	WKC_PERIOD      = 152, ///< . Period
-	WKC_MINUS       = 153, ///< - Minus
+	WKC_COMMA = 151, ///< , Comma
+	WKC_PERIOD = 152, ///< . Period
+	WKC_MINUS = 153, ///< - Minus
 };
 
 /** A single sprite of a list of animated cursors */
 struct AnimCursor {
 	static const CursorID LAST = std::numeric_limits<CursorID>::max();
-	CursorID sprite;   ///< Must be set to LAST_ANIM when it is the last sprite of the loop
+	CursorID sprite; ///< Must be set to LAST_ANIM when it is the last sprite of the loop
 	uint8_t display_time; ///< Amount of ticks this sprite will be shown
 };
 
@@ -123,10 +123,10 @@ struct CursorSprite {
 /** Collection of variables for cursor-display and -animation */
 struct CursorVars {
 	/* Logical mouse position */
-	Point pos;                    ///< logical mouse position
-	Point delta;                  ///< relative mouse movement in this tick
-	int wheel;                    ///< mouse wheel movement
-	bool fix_at;                  ///< mouse is moving, but cursor is not (used for scrolling)
+	Point pos; ///< logical mouse position
+	Point delta; ///< relative mouse movement in this tick
+	int wheel; ///< mouse wheel movement
+	bool fix_at; ///< mouse is moving, but cursor is not (used for scrolling)
 
 	/* 2D wheel scrolling for moving around the map */
 	bool wheel_moved;
@@ -137,18 +137,18 @@ struct CursorVars {
 	std::vector<CursorSprite> sprites; ///< Sprites comprising cursor.
 	Point total_offs, total_size; ///< union of sprite properties
 
-	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
+	Point draw_pos, draw_size; ///< position and size bounding-box for drawing
 
 	const AnimCursor *animate_list; ///< in case of animated cursor, list of frames
-	const AnimCursor *animate_cur;  ///< in case of animated cursor, current frame
-	uint animate_timeout;           ///< in case of animated cursor, number of ticks to show the current cursor
+	const AnimCursor *animate_cur; ///< in case of animated cursor, current frame
+	uint animate_timeout; ///< in case of animated cursor, number of ticks to show the current cursor
 
-	bool visible;                 ///< cursor is visible
-	bool dirty;                   ///< the rect occupied by the mouse is dirty (redraw)
-	bool in_window;               ///< mouse inside this window, determines drawing logic
+	bool visible; ///< cursor is visible
+	bool dirty; ///< the rect occupied by the mouse is dirty (redraw)
+	bool in_window; ///< mouse inside this window, determines drawing logic
 
 	/* Drag data */
-	bool vehchain;                ///< vehicle chain is dragged
+	bool vehchain; ///< vehicle chain is dragged
 
 	void UpdateCursorPositionRelative(int delta_x, int delta_y);
 	bool UpdateCursorPosition(int x, int y);
@@ -165,6 +165,7 @@ struct DrawPixelInfo {
 /** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for Emscripten build. */
 union ColourRGBA {
 	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
+
 	struct {
 		uint8_t r, g, b, a; ///< colour channels as used in browsers
 	};
@@ -176,18 +177,19 @@ union ColourRGBA {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	constexpr ColourRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : r(r), g(g), b(b), a(a) { }
+	constexpr ColourRGBA(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : r(r), g(g), b(b), a(a) {}
 
 	/**
 	 * Create a new colour.
 	 * @param data The colour in the correct packed format.
 	 */
-	constexpr ColourRGBA(uint data = 0) : data(data) { }
+	constexpr ColourRGBA(uint data = 0) : data(data) {}
 };
 
 /** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for big-endian systems. */
 union ColourARGB {
 	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
+
 	struct {
 		uint8_t a, r, g, b; ///< colour channels in BE order
 	};
@@ -199,18 +201,19 @@ union ColourARGB {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	constexpr ColourARGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : a(a), r(r), g(g), b(b) { }
+	constexpr ColourARGB(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : a(a), r(r), g(g), b(b) {}
 
 	/**
 	 * Create a new colour.
 	 * @param data The colour in the correct packed format.
 	 */
-	constexpr ColourARGB(uint data = 0) : data(data) { }
+	constexpr ColourARGB(uint data = 0) : data(data) {}
 };
 
 /** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for little-endian systems. */
 union ColourBGRA {
 	uint32_t data; ///< Conversion of the channel information to a 32 bit number.
+
 	struct {
 		uint8_t b, g, r, a; ///< colour channels in LE order
 	};
@@ -222,13 +225,13 @@ union ColourBGRA {
 	 * @param b The channel for the blue colour.
 	 * @param a The channel for the alpha/transparency.
 	 */
-	constexpr ColourBGRA(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : b(b), g(g), r(r), a(a) { }
+	constexpr ColourBGRA(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0xFF) : b(b), g(g), r(r), a(a) {}
 
 	/**
 	 * Create a new colour.
 	 * @param data The colour in the correct packed format.
 	 */
-	constexpr ColourBGRA(uint data = 0) : data(data) { }
+	constexpr ColourBGRA(uint data = 0) : data(data) {}
 };
 
 #if defined(__EMSCRIPTEN__)
@@ -239,13 +242,12 @@ using Colour = std::conditional_t<std::endian::native == std::endian::little, Co
 
 static_assert(sizeof(Colour) == sizeof(uint32_t));
 
-
 /** Available font sizes */
 enum FontSize : uint8_t {
 	FS_NORMAL, ///< Index of the normal font in the font tables.
-	FS_SMALL,  ///< Index of the small font in the font tables.
-	FS_LARGE,  ///< Index of the large font in the font tables.
-	FS_MONO,   ///< Index of the monospaced font in the font tables.
+	FS_SMALL, ///< Index of the small font in the font tables.
+	FS_LARGE, ///< Index of the large font in the font tables.
+	FS_MONO, ///< Index of the monospaced font in the font tables.
 	FS_END,
 
 	FS_BEGIN = FS_NORMAL, ///< First font.
@@ -254,7 +256,7 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
 inline const char *FontSizeToName(FontSize fs)
 {
-	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
+	static const char *SIZE_TO_NAME[] = {"medium", "small", "large", "mono"};
 	assert(fs < FS_END);
 	return SIZE_TO_NAME[fs];
 }
@@ -294,31 +296,31 @@ DECLARE_ENUM_AS_ADDABLE(Colours)
 
 /** Colour of the strings, see _string_colourmap in table/string_colours.h or docs/ottd-colourtext-palette.png */
 enum TextColour : uint16_t {
-	TC_BEGIN       = 0x00,
-	TC_FROMSTRING  = 0x00,
-	TC_BLUE        = 0x00,
-	TC_SILVER      = 0x01,
-	TC_GOLD        = 0x02,
-	TC_RED         = 0x03,
-	TC_PURPLE      = 0x04,
+	TC_BEGIN = 0x00,
+	TC_FROMSTRING = 0x00,
+	TC_BLUE = 0x00,
+	TC_SILVER = 0x01,
+	TC_GOLD = 0x02,
+	TC_RED = 0x03,
+	TC_PURPLE = 0x04,
 	TC_LIGHT_BROWN = 0x05,
-	TC_ORANGE      = 0x06,
-	TC_GREEN       = 0x07,
-	TC_YELLOW      = 0x08,
-	TC_DARK_GREEN  = 0x09,
-	TC_CREAM       = 0x0A,
-	TC_BROWN       = 0x0B,
-	TC_WHITE       = 0x0C,
-	TC_LIGHT_BLUE  = 0x0D,
-	TC_GREY        = 0x0E,
-	TC_DARK_BLUE   = 0x0F,
-	TC_BLACK       = 0x10,
+	TC_ORANGE = 0x06,
+	TC_GREEN = 0x07,
+	TC_YELLOW = 0x08,
+	TC_DARK_GREEN = 0x09,
+	TC_CREAM = 0x0A,
+	TC_BROWN = 0x0B,
+	TC_WHITE = 0x0C,
+	TC_LIGHT_BLUE = 0x0D,
+	TC_GREY = 0x0E,
+	TC_DARK_BLUE = 0x0F,
+	TC_BLACK = 0x10,
 	TC_END,
-	TC_INVALID     = 0xFF,
+	TC_INVALID = 0xFF,
 
 	TC_IS_PALETTE_COLOUR = 0x100, ///< Colour value is already a real palette colour index, not an index of a StringColour.
-	TC_NO_SHADE          = 0x200, ///< Do not add shading to this text colour.
-	TC_FORCED            = 0x400, ///< Ignore colour changes from strings.
+	TC_NO_SHADE = 0x200, ///< Do not add shading to this text colour.
+	TC_FORCED = 0x400, ///< Ignore colour changes from strings.
 
 	TC_COLOUR_MASK = 0xFF, ///< Mask to test if TextColour (without flags) is within limits.
 	TC_FLAGS_MASK = 0x700, ///< Mask to test if TextColour (with flags) is within limits.
@@ -331,24 +333,24 @@ static constexpr uint8_t PALETTE_ANIM_START = 227; ///< Index in  the _palettes 
 
 /** Define the operation GfxFillRect performs */
 enum FillRectMode : uint8_t {
-	FILLRECT_OPAQUE,  ///< Fill rectangle with a single colour
+	FILLRECT_OPAQUE, ///< Fill rectangle with a single colour
 	FILLRECT_CHECKER, ///< Draw only every second pixel, used for greying-out
 	FILLRECT_RECOLOUR, ///< Apply a recolour sprite to the screen content
 };
 
 /** Palettes OpenTTD supports. */
 enum PaletteType : uint8_t {
-	PAL_DOS,        ///< Use the DOS palette.
-	PAL_WINDOWS,    ///< Use the Windows palette.
+	PAL_DOS, ///< Use the DOS palette.
+	PAL_WINDOWS, ///< Use the Windows palette.
 };
 
 /** Types of sprites that might be loaded */
 enum class SpriteType : uint8_t {
-	Normal   = 0,      ///< The most basic (normal) sprite
-	MapGen   = 1,      ///< Special sprite for the map generator
-	Font     = 2,      ///< A sprite used for fonts
-	Recolour = 3,      ///< Recolour sprite
-	Invalid  = 4,      ///< Pseudosprite or other unusable sprite, used only internally
+	Normal = 0, ///< The most basic (normal) sprite
+	MapGen = 1, ///< Special sprite for the map generator
+	Font = 2, ///< A sprite used for fonts
+	Recolour = 3, ///< Recolour sprite
+	Invalid = 4, ///< Pseudosprite or other unusable sprite, used only internally
 };
 
 /**
@@ -361,32 +363,32 @@ static const uint MILLISECONDS_PER_TICK = 27;
 /** Information about the currently used palette. */
 struct Palette {
 	Colour palette[256]; ///< Current palette. Entry 0 has to be always fully transparent!
-	int first_dirty;     ///< The first dirty element.
-	int count_dirty;     ///< The number of dirty elements.
+	int first_dirty; ///< The first dirty element.
+	int count_dirty; ///< The number of dirty elements.
 };
 
 /** Modes for 8bpp support */
 enum Support8bpp : uint8_t {
 	S8BPP_NONE = 0, ///< No support for 8bpp by OS or hardware, force 32bpp blitters.
-	S8BPP_SYSTEM,   ///< No 8bpp support by hardware, do not try to use 8bpp video modes or hardware palettes.
+	S8BPP_SYSTEM, ///< No 8bpp support by hardware, do not try to use 8bpp video modes or hardware palettes.
 	S8BPP_HARDWARE, ///< Full 8bpp support by OS and hardware.
 };
 
-	/** How to align the to-be drawn text. */
+/** How to align the to-be drawn text. */
 enum StringAlignment : uint8_t {
-	SA_LEFT        = 0 << 0, ///< Left align the text.
-	SA_HOR_CENTER  = 1 << 0, ///< Horizontally center the text.
-	SA_RIGHT       = 2 << 0, ///< Right align the text (must be a single bit).
-	SA_HOR_MASK    = 3 << 0, ///< Mask for horizontal alignment.
+	SA_LEFT = 0 << 0, ///< Left align the text.
+	SA_HOR_CENTER = 1 << 0, ///< Horizontally center the text.
+	SA_RIGHT = 2 << 0, ///< Right align the text (must be a single bit).
+	SA_HOR_MASK = 3 << 0, ///< Mask for horizontal alignment.
 
-	SA_TOP         = 0 << 2, ///< Top align the text.
+	SA_TOP = 0 << 2, ///< Top align the text.
 	SA_VERT_CENTER = 1 << 2, ///< Vertically center the text.
-	SA_BOTTOM      = 2 << 2, ///< Bottom align the text.
-	SA_VERT_MASK   = 3 << 2, ///< Mask for vertical alignment.
+	SA_BOTTOM = 2 << 2, ///< Bottom align the text.
+	SA_VERT_MASK = 3 << 2, ///< Mask for vertical alignment.
 
-	SA_CENTER      = SA_HOR_CENTER | SA_VERT_CENTER, ///< Center both horizontally and vertically.
+	SA_CENTER = SA_HOR_CENTER | SA_VERT_CENTER, ///< Center both horizontally and vertically.
 
-	SA_FORCE       = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
+	SA_FORCE = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
 };
 DECLARE_ENUM_AS_BIT_SET(StringAlignment)
 

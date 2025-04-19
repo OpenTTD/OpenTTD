@@ -10,27 +10,28 @@
  */
 
 #include "../../stdafx.h"
+
 #include "network_game_info.h"
+
 #include "../../core/bitmath_func.hpp"
 #include "../../company_base.h"
-#include "../../timer/timer_game_calendar.h"
-#include "../../timer/timer_game_tick.h"
 #include "../../debug.h"
-#include "../../map_func.h"
 #include "../../game/game.hpp"
 #include "../../game/game_info.hpp"
+#include "../../map_func.h"
+#include "../../rev.h"
 #include "../../settings_type.h"
 #include "../../string_func.h"
-#include "../../rev.h"
-#include "../network_func.h"
+#include "../../timer/timer_game_calendar.h"
+#include "../../timer/timer_game_tick.h"
 #include "../network.h"
+#include "../network_func.h"
 #include "../network_internal.h"
 #include "packet.h"
 
 #include "table/strings.h"
 
 #include "../../safeguards.h"
-
 
 /**
  * How many hex digits of the git hash to include in network revision string.
@@ -142,14 +143,14 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
  */
 void FillStaticNetworkServerGameInfo()
 {
-	_network_game_info.use_password   = !_settings_client.network.server_password.empty();
+	_network_game_info.use_password = !_settings_client.network.server_password.empty();
 	_network_game_info.calendar_start = TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
-	_network_game_info.clients_max    = _settings_client.network.max_clients;
-	_network_game_info.companies_max  = _settings_client.network.max_companies;
-	_network_game_info.map_width      = Map::SizeX();
-	_network_game_info.map_height     = Map::SizeY();
-	_network_game_info.landscape      = _settings_game.game_creation.landscape;
-	_network_game_info.dedicated      = _network_dedicated;
+	_network_game_info.clients_max = _settings_client.network.max_clients;
+	_network_game_info.companies_max = _settings_client.network.max_companies;
+	_network_game_info.map_width = Map::SizeX();
+	_network_game_info.map_height = Map::SizeY();
+	_network_game_info.landscape = _settings_game.game_creation.landscape;
+	_network_game_info.dedicated = _network_dedicated;
 	CopyGRFConfigList(_network_game_info.grfconfig, _grfconfig, false);
 
 	_network_game_info.server_name = _settings_client.network.server_name;
@@ -167,7 +168,7 @@ const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo()
 	 *  - invite_code
 	 * These don't need to be updated manually here.
 	 */
-	_network_game_info.companies_on  = (uint8_t)Company::GetNumItems();
+	_network_game_info.companies_on = (uint8_t)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.calendar_date = TimerGameCalendar::date;
 	_network_game_info.ticks_playing = TimerGameTick::counter;
@@ -205,7 +206,7 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::strin
  */
 void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool send_newgrf_names)
 {
-	p.Send_uint8 (NETWORK_GAME_INFO_VERSION);
+	p.Send_uint8(NETWORK_GAME_INFO_VERSION);
 
 	/*
 	 *              Please observe the order.
@@ -232,8 +233,10 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 		 * the GRFs that are needed, i.e. the ones that the server has
 		 * selected in the NewGRF GUI and not the ones that are used due
 		 * to the fact that they are in [newgrf-static] in openttd.cfg */
-		uint count = std::ranges::count_if(info.grfconfig, [](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static); });
-		p.Send_uint8 (count); // Send number of GRFs
+		uint count = std::ranges::count_if(info.grfconfig, [](const auto &c) {
+			return !c->flags.Test(GRFConfigFlag::Static);
+		});
+		p.Send_uint8(count); // Send number of GRFs
 
 		/* Send actual GRF Identifications */
 		for (const auto &c : info.grfconfig) {
@@ -249,21 +252,21 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 	p.Send_uint32(info.calendar_start.base());
 
 	/* NETWORK_GAME_INFO_VERSION = 2 */
-	p.Send_uint8 (info.companies_max);
-	p.Send_uint8 (info.companies_on);
-	p.Send_uint8 (info.clients_max); // Used to be max-spectators
+	p.Send_uint8(info.companies_max);
+	p.Send_uint8(info.companies_on);
+	p.Send_uint8(info.clients_max); // Used to be max-spectators
 
 	/* NETWORK_GAME_INFO_VERSION = 1 */
 	p.Send_string(info.server_name);
 	p.Send_string(info.server_revision);
-	p.Send_bool  (info.use_password);
-	p.Send_uint8 (info.clients_max);
-	p.Send_uint8 (info.clients_on);
-	p.Send_uint8 (info.spectators_on);
+	p.Send_bool(info.use_password);
+	p.Send_uint8(info.clients_max);
+	p.Send_uint8(info.clients_on);
+	p.Send_uint8(info.spectators_on);
 	p.Send_uint16(info.map_width);
 	p.Send_uint16(info.map_height);
-	p.Send_uint8 (to_underlying(info.landscape));
-	p.Send_bool  (info.dedicated);
+	p.Send_uint8(to_underlying(info.landscape));
+	p.Send_bool(info.dedicated);
 }
 
 /**
@@ -347,28 +350,29 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			[[fallthrough]];
 
 		case 2:
-			info.companies_max  = p.Recv_uint8 ();
-			info.companies_on   = p.Recv_uint8 ();
+			info.companies_max = p.Recv_uint8();
+			info.companies_on = p.Recv_uint8();
 			p.Recv_uint8(); // Used to contain max-spectators.
 			[[fallthrough]];
 
 		case 1:
 			info.server_name = p.Recv_string(NETWORK_NAME_LENGTH);
 			info.server_revision = p.Recv_string(NETWORK_REVISION_LENGTH);
-			if (game_info_version < 6) p.Recv_uint8 (); // Used to contain server-lang.
-			info.use_password   = p.Recv_bool  ();
-			info.clients_max    = p.Recv_uint8 ();
-			info.clients_on     = p.Recv_uint8 ();
-			info.spectators_on  = p.Recv_uint8 ();
+			if (game_info_version < 6) p.Recv_uint8(); // Used to contain server-lang.
+			info.use_password = p.Recv_bool();
+			info.clients_max = p.Recv_uint8();
+			info.clients_on = p.Recv_uint8();
+			info.spectators_on = p.Recv_uint8();
 			if (game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
 				info.calendar_date = CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + p.Recv_uint16();
 				info.calendar_start = CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + p.Recv_uint16();
 			}
-			if (game_info_version < 6) while (p.Recv_uint8() != 0) {} // Used to contain the map-name.
-			info.map_width      = p.Recv_uint16();
-			info.map_height     = p.Recv_uint16();
-			info.landscape      = LandscapeType{p.Recv_uint8()};
-			info.dedicated      = p.Recv_bool  ();
+			if (game_info_version < 6)
+				while (p.Recv_uint8() != 0) {} // Used to contain the map-name.
+			info.map_width = p.Recv_uint16();
+			info.map_height = p.Recv_uint16();
+			info.landscape = LandscapeType{p.Recv_uint8()};
+			info.dedicated = p.Recv_bool();
 
 			if (to_underlying(info.landscape) >= NUM_LANDSCAPE) info.landscape = LandscapeType::Temperate;
 	}

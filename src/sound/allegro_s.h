@@ -20,14 +20,22 @@ public:
 	void Stop() override;
 
 	void MainLoop() override;
-	std::string_view GetName() const override { return "allegro"; }
+
+	std::string_view GetName() const override
+	{
+		return "allegro";
+	}
 };
 
 /** Factory for the allegro sound driver. */
 class FSoundDriver_Allegro : public DriverFactoryBase {
 public:
 	FSoundDriver_Allegro() : DriverFactoryBase(Driver::DT_SOUND, 4, "allegro", "Allegro Sound Driver (param hz,samples)") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_Allegro>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<SoundDriver_Allegro>();
+	}
 };
 
 #endif /* SOUND_ALLEGRO_H */

@@ -33,20 +33,20 @@ template <typename T, typename TxyFunc, typename CoordT, typename DistT>
 class Kdtree {
 	/** Type of a node in the tree */
 	struct node {
-		T      element;  ///< Element stored at node
-		size_t left;     ///< Index of node to the left, INVALID_NODE if none
-		size_t right;    ///< Index of node to the right, INVALID_NODE if none
+		T element; ///< Element stored at node
+		size_t left; ///< Index of node to the left, INVALID_NODE if none
+		size_t right; ///< Index of node to the right, INVALID_NODE if none
 
-		node(T element) : element(element), left(INVALID_NODE), right(INVALID_NODE) { }
+		node(T element) : element(element), left(INVALID_NODE), right(INVALID_NODE) {}
 	};
 
-	static const size_t INVALID_NODE = SIZE_MAX;     ///< Index value indicating no-such-node
+	static const size_t INVALID_NODE = SIZE_MAX; ///< Index value indicating no-such-node
 	static const size_t MIN_REBALANCE_THRESHOLD = 8; ///< Arbitrary value for "not worth rebalancing"
 
-	std::vector<node> nodes;       ///< Pool of all nodes in the tree
+	std::vector<node> nodes; ///< Pool of all nodes in the tree
 	std::vector<size_t> free_list; ///< List of dead indices in the nodes vector
-	size_t root;                   ///< Index of root node
-	size_t unbalanced;             ///< Number approximating how unbalanced the tree might be
+	size_t root; ///< Index of root node
+	size_t unbalanced; ///< Number approximating how unbalanced the tree might be
 
 	/** Create one new node in the tree, return its index in the pool */
 	size_t AddNode(const T &element)
@@ -57,7 +57,7 @@ class Kdtree {
 		} else {
 			size_t newidx = this->free_list.back();
 			this->free_list.pop_back();
-			this->nodes[newidx] = node{ element };
+			this->nodes[newidx] = node{element};
 			return newidx;
 		}
 	}
@@ -67,7 +67,9 @@ class Kdtree {
 	CoordT SelectSplitCoord(It begin, It end, int level)
 	{
 		It mid = begin + (end - begin) / 2;
-		std::nth_element(begin, mid, end, [&](T a, T b) { return TxyFunc()(a, level % 2) < TxyFunc()(b, level % 2); });
+		std::nth_element(begin, mid, end, [&](T a, T b) {
+			return TxyFunc()(a, level % 2) < TxyFunc()(b, level % 2);
+		});
 		return TxyFunc()(*mid, level % 2);
 	}
 
@@ -83,7 +85,9 @@ class Kdtree {
 			return this->AddNode(*begin);
 		} else if (count > 1) {
 			CoordT split_coord = this->SelectSplitCoord(begin, end, level);
-			It split = std::partition(begin, end, [&](T v) { return TxyFunc()(v, level % 2) < split_coord; });
+			It split = std::partition(begin, end, [&](T v) {
+				return TxyFunc()(v, level % 2) < split_coord;
+			});
 			size_t newidx = this->AddNode(*split);
 			this->nodes[newidx].left = this->BuildSubtree(begin, split, level + 1);
 			this->nodes[newidx].right = this->BuildSubtree(split + 1, end, level + 1);
@@ -138,7 +142,10 @@ class Kdtree {
 			size_t newidx = this->AddNode(element);
 			/* Vector may have been reallocated at this point, n and next are invalid */
 			node &nn = this->nodes[node_idx];
-			if (ec < nc) nn.left = newidx; else nn.right = newidx;
+			if (ec < nc)
+				nn.left = newidx;
+			else
+				nn.right = newidx;
 		} else {
 			this->InsertRecursive(element, next, level + 1);
 		}
@@ -193,7 +200,8 @@ class Kdtree {
 			} else {
 				/* Complex case, rebuild the sub-tree */
 				std::vector<T> subtree_elements = this->FreeSubtree(node_idx);
-				return this->BuildSubtree(subtree_elements.begin(), subtree_elements.end(), level);;
+				return this->BuildSubtree(subtree_elements.begin(), subtree_elements.end(), level);
+				;
 			}
 		} else {
 			/* Search in a sub-tree */
@@ -211,12 +219,14 @@ class Kdtree {
 			if (new_branch != next) {
 				/* Vector may have been reallocated at this point, n and next are invalid */
 				node &nn = this->nodes[node_idx];
-				if (ec < nc) nn.left = new_branch; else nn.right = new_branch;
+				if (ec < nc)
+					nn.left = new_branch;
+				else
+					nn.right = new_branch;
 			}
 			return node_idx;
 		}
 	}
-
 
 	DistT ManhattanDistance(const T &element, CoordT x, CoordT y) const
 	{
@@ -225,6 +235,7 @@ class Kdtree {
 
 	/** A data element and its distance to a searched-for point */
 	using node_distance = std::pair<T, DistT>;
+
 	/** Ordering function for node_distance objects, elements with equal distance are ordered by less-than comparison */
 	static node_distance SelectNearestNodeDistance(const node_distance &a, const node_distance &b)
 	{
@@ -234,6 +245,7 @@ class Kdtree {
 		if (b.first < a.first) return b;
 		NOT_REACHED(); // a.first == b.first: same element must not be inserted twice
 	}
+
 	/** Search a sub-tree for the element nearest to a given point */
 	node_distance FindNearestRecursive(CoordT xy[2], size_t node_idx, int level, DistT limit = std::numeric_limits<DistT>::max()) const
 	{
@@ -329,11 +341,11 @@ class Kdtree {
 
 		if (level % 2 == 0) {
 			/* split in dimension 0 = x */
-			this->CheckInvariant(n.left,  level + 1, min_x, cx, min_y, max_y);
+			this->CheckInvariant(n.left, level + 1, min_x, cx, min_y, max_y);
 			this->CheckInvariant(n.right, level + 1, cx, max_x, min_y, max_y);
 		} else {
 			/* split in dimension 1 = y */
-			this->CheckInvariant(n.left,  level + 1, min_x, max_x, min_y, cy);
+			this->CheckInvariant(n.left, level + 1, min_x, max_x, min_y, cy);
 			this->CheckInvariant(n.right, level + 1, min_x, max_x, cy, max_y);
 		}
 	}
@@ -348,7 +360,7 @@ class Kdtree {
 
 public:
 	/** Construct a new Kdtree with the given xyfunc */
-	Kdtree() : root(INVALID_NODE), unbalanced(0) { }
+	Kdtree() : root(INVALID_NODE), unbalanced(0) {}
 
 	/**
 	 * Clear and rebuild the tree from a new sequence of elements,
@@ -440,7 +452,7 @@ public:
 	{
 		assert(this->Count() > 0);
 
-		CoordT xy[2] = { x, y };
+		CoordT xy[2] = {x, y};
 		return this->FindNearestRecursive(xy, this->root, 0).first;
 	}
 
@@ -461,8 +473,8 @@ public:
 
 		if (this->Count() == 0) return;
 
-		CoordT p1[2] = { x1, y1 };
-		CoordT p2[2] = { x2, y2 };
+		CoordT p1[2] = {x1, y1};
+		CoordT p2[2] = {x2, y2};
 		this->FindContainedRecursive(p1, p2, this->root, 0, outputter);
 	}
 
@@ -473,7 +485,9 @@ public:
 	std::vector<T> FindContained(CoordT x1, CoordT y1, CoordT x2, CoordT y2) const
 	{
 		std::vector<T> result;
-		this->FindContained(x1, y1, x2, y2, [&result](T e) {result.push_back(e); });
+		this->FindContained(x1, y1, x2, y2, [&result](T e) {
+			result.push_back(e);
+		});
 		return result;
 	}
 };

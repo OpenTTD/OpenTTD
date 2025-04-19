@@ -8,41 +8,42 @@
 /** @file newgrf.cpp Base of all NewGRF support. */
 
 #include "stdafx.h"
+
 #include "core/backup_type.hpp"
 #include "core/container_func.hpp"
-#include "debug.h"
-#include "fileio_func.h"
-#include "engine_func.h"
-#include "engine_base.h"
+#include "network/core/config.h"
 #include "bridge.h"
-#include "town.h"
-#include "newgrf_engine.h"
-#include "newgrf_text.h"
-#include "spritecache.h"
 #include "currency.h"
+#include "debug.h"
+#include "engine_base.h"
+#include "engine_func.h"
+#include "error_func.h"
+#include "fileio_func.h"
+#include "genworld.h"
+#include "industrytype.h"
 #include "landscape.h"
+#include "newgrf/newgrf_bytereader.h"
+#include "newgrf/newgrf_internal.h"
+#include "newgrf/newgrf_internal_vehicle.h"
+#include "newgrf/newgrf_stringmapping.h"
+#include "newgrf_airport.h"
+#include "newgrf_airporttiles.h"
 #include "newgrf_badge.h"
+#include "newgrf_canal.h"
 #include "newgrf_cargo.h"
+#include "newgrf_engine.h"
+#include "newgrf_industries.h"
+#include "newgrf_object.h"
+#include "newgrf_roadstop.h"
 #include "newgrf_sound.h"
 #include "newgrf_station.h"
-#include "industrytype.h"
-#include "newgrf_canal.h"
+#include "newgrf_text.h"
 #include "newgrf_townname.h"
-#include "newgrf_industries.h"
-#include "newgrf_airporttiles.h"
-#include "newgrf_airport.h"
-#include "newgrf_object.h"
-#include "network/core/config.h"
-#include "smallmap_gui.h"
-#include "genworld.h"
-#include "error_func.h"
-#include "vehicle_base.h"
 #include "road.h"
-#include "newgrf_roadstop.h"
-#include "newgrf/newgrf_bytereader.h"
-#include "newgrf/newgrf_internal_vehicle.h"
-#include "newgrf/newgrf_internal.h"
-#include "newgrf/newgrf_stringmapping.h"
+#include "smallmap_gui.h"
+#include "spritecache.h"
+#include "town.h"
+#include "vehicle_base.h"
 
 #include "table/strings.h"
 
@@ -73,7 +74,7 @@ GRFLoadedFeatures _loaded_newgrf_features;
 
 GrfProcessingState _cur_gps;
 
-ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted;  ///< Temporary engine data used during NewGRF loading
+ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted; ///< Temporary engine data used during NewGRF loading
 
 /**
  * Debug() function dedicated to newGRF debugging messages
@@ -300,9 +301,6 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16_t internal
 	return _engine_mngr.GetID(type, internal_id, scope_grfid);
 }
 
-
-
-
 /**
  * Translate the refit mask. refit_mask is uint32_t as it has not been mapped to CargoTypes.
  */
@@ -332,7 +330,7 @@ void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_location, Pric
 	}
 
 	static const uint32_t start = 0x4B34; ///< Position of first base price
-	static const uint32_t size  = 6;      ///< Size of each base price record
+	static const uint32_t size = 6; ///< Size of each base price record
 
 	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= PR_END) {
 		GrfMsg(1, "{}: Unsupported running cost base 0x{:04X}, ignoring", error_location, base_pointer);
@@ -477,10 +475,10 @@ void ResetNewGRFData()
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = {};
 
-	_loaded_newgrf_features.has_2CC           = false;
-	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;
-	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
-	_loaded_newgrf_features.tram              = TRAMWAY_REPLACE_DEPOT_NONE;
+	_loaded_newgrf_features.has_2CC = false;
+	_loaded_newgrf_features.used_liveries = 1 << LS_DEFAULT;
+	_loaded_newgrf_features.shore = SHORE_REPLACE_NONE;
+	_loaded_newgrf_features.tram = TRAMWAY_REPLACE_DEPOT_NONE;
 
 	/* Clear all GRF overrides */
 	_grf_id_overrides.clear();
@@ -509,17 +507,17 @@ void ResetPersistentNewGRFData()
  * @param grffile GRF file.
  * @returns Readonly cargo translation table to use.
  */
- std::span<const CargoLabel> GetCargoTranslationTable(const GRFFile &grffile)
- {
-	 /* Always use the translation table if it's installed. */
-	 if (!grffile.cargo_list.empty()) return grffile.cargo_list;
+std::span<const CargoLabel> GetCargoTranslationTable(const GRFFile &grffile)
+{
+	/* Always use the translation table if it's installed. */
+	if (!grffile.cargo_list.empty()) return grffile.cargo_list;
 
-	 /* Pre-v7 use climate-dependent "slot" table. */
-	 if (grffile.grf_version < 7) return GetClimateDependentCargoTranslationTable();
+	/* Pre-v7 use climate-dependent "slot" table. */
+	if (grffile.grf_version < 7) return GetClimateDependentCargoTranslationTable();
 
-	 /* Otherwise use climate-independent "bitnum" table. */
-	 return GetClimateIndependentCargoTranslationTable();
- }
+	/* Otherwise use climate-independent "bitnum" table. */
+	return GetClimateIndependentCargoTranslationTable();
+}
 
 /**
  * Construct the Cargo Mapping
@@ -617,14 +615,22 @@ static CargoLabel GetActiveCargoLabel(const std::initializer_list<CargoLabel> &l
 static CargoLabel GetActiveCargoLabel(const std::variant<CargoLabel, MixedCargoType> &label)
 {
 	struct visitor {
-		CargoLabel operator()(const CargoLabel &label) { return label; }
+		CargoLabel operator()(const CargoLabel &label)
+		{
+			return label;
+		}
+
 		CargoLabel operator()(const MixedCargoType &mixed)
 		{
 			switch (mixed) {
-				case MCT_LIVESTOCK_FRUIT: return GetActiveCargoLabel({CT_LIVESTOCK, CT_FRUIT});
-				case MCT_GRAIN_WHEAT_MAIZE: return GetActiveCargoLabel({CT_GRAIN, CT_WHEAT, CT_MAIZE});
-				case MCT_VALUABLES_GOLD_DIAMONDS: return GetActiveCargoLabel({CT_VALUABLES, CT_GOLD, CT_DIAMONDS});
-				default: NOT_REACHED();
+				case MCT_LIVESTOCK_FRUIT:
+					return GetActiveCargoLabel({CT_LIVESTOCK, CT_FRUIT});
+				case MCT_GRAIN_WHEAT_MAIZE:
+					return GetActiveCargoLabel({CT_GRAIN, CT_WHEAT, CT_MAIZE});
+				case MCT_VALUABLES_GOLD_DIAMONDS:
+					return GetActiveCargoLabel({CT_VALUABLES, CT_GOLD, CT_DIAMONDS});
+				default:
+					NOT_REACHED();
 			}
 		}
 	};
@@ -660,25 +666,26 @@ static void CalculateRefitMasks()
 				static constexpr LandscapeType A = LandscapeType::Arctic;
 				static constexpr LandscapeType S = LandscapeType::Tropic;
 				static constexpr LandscapeType Y = LandscapeType::Toyland;
+
 				static const struct DefaultRefitMasks {
 					LandscapeTypes climate;
 					CargoLabel cargo_label;
 					CargoClasses cargo_allowed;
 					CargoClasses cargo_disallowed;
 				} _default_refit_masks[] = {
-					{{T, A, S, Y}, CT_PASSENGERS, {CargoClass::Passengers},                      {}},
-					{{T, A, S   }, CT_MAIL,       {CargoClass::Mail},                            {}},
-					{{T, A, S   }, CT_VALUABLES,  {CargoClass::Armoured},                        {CargoClass::Liquid}},
-					{{         Y}, CT_MAIL,       {CargoClass::Mail, CargoClass::Armoured},      {CargoClass::Liquid}},
-					{{T, A      }, CT_COAL,       {CargoClass::Bulk},                            {}},
-					{{      S   }, CT_COPPER_ORE, {CargoClass::Bulk},                            {}},
-					{{         Y}, CT_SUGAR,      {CargoClass::Bulk},                            {}},
-					{{T, A, S   }, CT_OIL,        {CargoClass::Liquid},                          {}},
-					{{         Y}, CT_COLA,       {CargoClass::Liquid},                          {}},
-					{{T         }, CT_GOODS,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
-					{{   A, S   }, CT_GOODS,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers, CargoClass::Refrigerated}},
-					{{   A, S   }, CT_FOOD,       {CargoClass::Refrigerated},                    {}},
-					{{         Y}, CT_CANDY,      {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
+					{{T, A, S, Y}, CT_PASSENGERS, {CargoClass::Passengers}, {}},
+					{{T, A, S}, CT_MAIL, {CargoClass::Mail}, {}},
+					{{T, A, S}, CT_VALUABLES, {CargoClass::Armoured}, {CargoClass::Liquid}},
+					{{Y}, CT_MAIL, {CargoClass::Mail, CargoClass::Armoured}, {CargoClass::Liquid}},
+					{{T, A}, CT_COAL, {CargoClass::Bulk}, {}},
+					{{S}, CT_COPPER_ORE, {CargoClass::Bulk}, {}},
+					{{Y}, CT_SUGAR, {CargoClass::Bulk}, {}},
+					{{T, A, S}, CT_OIL, {CargoClass::Liquid}, {}},
+					{{Y}, CT_COLA, {CargoClass::Liquid}, {}},
+					{{T}, CT_GOODS, {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
+					{{A, S}, CT_GOODS, {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers, CargoClass::Refrigerated}},
+					{{A, S}, CT_FOOD, {CargoClass::Refrigerated}, {}},
+					{{Y}, CT_CANDY, {CargoClass::PieceGoods, CargoClass::Express}, {CargoClass::Liquid, CargoClass::Passengers}},
 				};
 
 				if (e->type == VEH_AIRCRAFT) {
@@ -772,10 +779,15 @@ static void CalculateRefitMasks()
 						case CALLBACK_FAILED:
 						case 0:
 							break; // Do nothing.
-						case 1: SetBit(ei->refit_mask, cs->Index()); break;
-						case 2: ClrBit(ei->refit_mask, cs->Index()); break;
+						case 1:
+							SetBit(ei->refit_mask, cs->Index());
+							break;
+						case 2:
+							ClrBit(ei->refit_mask, cs->Index());
+							break;
 
-						default: ErrorUnknownCallbackResult(file->grfid, CBID_VEHICLE_CUSTOM_REFIT, callback);
+						default:
+							ErrorUnknownCallbackResult(file->grfid, CBID_VEHICLE_CUSTOM_REFIT, callback);
 					}
 				}
 			}
@@ -860,9 +872,14 @@ static void FinaliseEngineArray()
 		if (!e->info.climates.Test(_settings_game.game_creation.landscape)) continue;
 
 		switch (e->type) {
-			case VEH_TRAIN: AppendCopyableBadgeList(e->badges, GetRailTypeInfo(e->u.rail.railtype)->badges, GSF_TRAINS); break;
-			case VEH_ROAD: AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->u.road.roadtype)->badges, GSF_ROADVEHICLES); break;
-			default: break;
+			case VEH_TRAIN:
+				AppendCopyableBadgeList(e->badges, GetRailTypeInfo(e->u.rail.railtype)->badges, GSF_TRAINS);
+				break;
+			case VEH_ROAD:
+				AppendCopyableBadgeList(e->badges, GetRoadTypeInfo(e->u.road.roadtype)->badges, GSF_ROADVEHICLES);
+				break;
+			default:
+				break;
 		}
 
 		/* Skip wagons, there livery is defined via the engine */
@@ -887,7 +904,8 @@ static void FinaliseEngineArray()
 						SetBit(_loaded_newgrf_features.used_liveries, LS_PASSENGER_WAGON_DIESEL + ls - LS_DMU);
 						break;
 
-					default: NOT_REACHED();
+					default:
+						NOT_REACHED();
 				}
 			}
 		}
@@ -921,9 +939,15 @@ void FinaliseCargoArray()
 		if (cs.town_production_effect == INVALID_TPE) {
 			/* Set default town production effect by cargo label. */
 			switch (cs.label.base()) {
-				case CT_PASSENGERS.base(): cs.town_production_effect = TPE_PASSENGERS; break;
-				case CT_MAIL.base():       cs.town_production_effect = TPE_MAIL; break;
-				default:                   cs.town_production_effect = TPE_NONE; break;
+				case CT_PASSENGERS.base():
+					cs.town_production_effect = TPE_PASSENGERS;
+					break;
+				case CT_MAIL.base():
+					cs.town_production_effect = TPE_MAIL;
+					break;
+				default:
+					cs.town_production_effect = TPE_NONE;
+					break;
 			}
 		}
 		if (!cs.IsValid()) {
@@ -947,11 +971,9 @@ void FinaliseCargoArray()
  */
 static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseSpec *next2, const HouseSpec *next3, const std::string &filename)
 {
-	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) &&
-				(next1 == nullptr || !next1->enabled || next1->building_flags.Any(BUILDING_HAS_1_TILE))) ||
-			(hs.building_flags.Any(BUILDING_HAS_4_TILES) &&
-				(next2 == nullptr || !next2->enabled || next2->building_flags.Any(BUILDING_HAS_1_TILE) ||
-				next3 == nullptr || !next3->enabled || next3->building_flags.Any(BUILDING_HAS_1_TILE)))) {
+	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) && (next1 == nullptr || !next1->enabled || next1->building_flags.Any(BUILDING_HAS_1_TILE))) ||
+		(hs.building_flags.Any(BUILDING_HAS_4_TILES) &&
+			(next2 == nullptr || !next2->enabled || next2->building_flags.Any(BUILDING_HAS_1_TILE) || next3 == nullptr || !next3->enabled || next3->building_flags.Any(BUILDING_HAS_1_TILE)))) {
 		hs.enabled = false;
 		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
@@ -960,8 +982,7 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 	/* Some places sum population by only counting north tiles. Other places use all tiles causing desyncs.
 	 * As the newgrf specs define population to be zero for non-north tiles, we just disable the offending house.
 	 * If you want to allow non-zero populations somewhen, make sure to sum the population of all tiles in all places. */
-	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) && next1->population != 0) ||
-			(hs.building_flags.Any(BUILDING_HAS_4_TILES) && (next2->population != 0 || next3->population != 0))) {
+	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) && next1->population != 0) || (hs.building_flags.Any(BUILDING_HAS_4_TILES) && (next2->population != 0 || next3->population != 0))) {
 		hs.enabled = false;
 		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
@@ -1203,21 +1224,53 @@ struct InvokeGrfActionHandler {
 	static void Invoke(ByteReader &buf, GrfLoadingStage stage)
 	{
 		switch (stage) {
-			case GLS_FILESCAN: GrfActionHandler<TAction>::FileScan(buf); break;
-			case GLS_SAFETYSCAN: GrfActionHandler<TAction>::SafetyScan(buf); break;
-			case GLS_LABELSCAN: GrfActionHandler<TAction>::LabelScan(buf); break;
-			case GLS_INIT: GrfActionHandler<TAction>::Init(buf); break;
-			case GLS_RESERVE: GrfActionHandler<TAction>::Reserve(buf); break;
-			case GLS_ACTIVATION: GrfActionHandler<TAction>::Activation(buf); break;
-			default: NOT_REACHED();
+			case GLS_FILESCAN:
+				GrfActionHandler<TAction>::FileScan(buf);
+				break;
+			case GLS_SAFETYSCAN:
+				GrfActionHandler<TAction>::SafetyScan(buf);
+				break;
+			case GLS_LABELSCAN:
+				GrfActionHandler<TAction>::LabelScan(buf);
+				break;
+			case GLS_INIT:
+				GrfActionHandler<TAction>::Init(buf);
+				break;
+			case GLS_RESERVE:
+				GrfActionHandler<TAction>::Reserve(buf);
+				break;
+			case GLS_ACTIVATION:
+				GrfActionHandler<TAction>::Activation(buf);
+				break;
+			default:
+				NOT_REACHED();
 		}
 	}
 
-	using Invoker = void(*)(ByteReader &buf, GrfLoadingStage stage);
-	static constexpr Invoker funcs[] = { // Must be listed in action order.
-		Invoke<0x00>, Invoke<0x01>, Invoke<0x02>, Invoke<0x03>, Invoke<0x04>, Invoke<0x05>, Invoke<0x06>, Invoke<0x07>,
-		Invoke<0x08>, Invoke<0x09>, Invoke<0x0A>, Invoke<0x0B>, Invoke<0x0C>, Invoke<0x0D>, Invoke<0x0E>, Invoke<0x0F>,
-		Invoke<0x10>, Invoke<0x11>, Invoke<0x12>, Invoke<0x13>, Invoke<0x14>,
+	using Invoker = void (*)(ByteReader &buf, GrfLoadingStage stage);
+	static constexpr Invoker funcs[] = {
+		// Must be listed in action order.
+		Invoke<0x00>,
+		Invoke<0x01>,
+		Invoke<0x02>,
+		Invoke<0x03>,
+		Invoke<0x04>,
+		Invoke<0x05>,
+		Invoke<0x06>,
+		Invoke<0x07>,
+		Invoke<0x08>,
+		Invoke<0x09>,
+		Invoke<0x0A>,
+		Invoke<0x0B>,
+		Invoke<0x0C>,
+		Invoke<0x0D>,
+		Invoke<0x0E>,
+		Invoke<0x0F>,
+		Invoke<0x10>,
+		Invoke<0x11>,
+		Invoke<0x12>,
+		Invoke<0x13>,
+		Invoke<0x14>,
 	};
 
 	static void Invoke(uint8_t action, GrfLoadingStage stage, ByteReader &buf)
@@ -1420,20 +1473,20 @@ static void ActivateOldShore()
 	if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_A;
 
 	if (_loaded_newgrf_features.shore != SHORE_REPLACE_ACTION_5) {
-		DupSprite(SPR_ORIGINALSHORE_START +  1, SPR_SHORE_BASE +  1); // SLOPE_W
-		DupSprite(SPR_ORIGINALSHORE_START +  2, SPR_SHORE_BASE +  2); // SLOPE_S
-		DupSprite(SPR_ORIGINALSHORE_START +  6, SPR_SHORE_BASE +  3); // SLOPE_SW
-		DupSprite(SPR_ORIGINALSHORE_START +  0, SPR_SHORE_BASE +  4); // SLOPE_E
-		DupSprite(SPR_ORIGINALSHORE_START +  4, SPR_SHORE_BASE +  6); // SLOPE_SE
-		DupSprite(SPR_ORIGINALSHORE_START +  3, SPR_SHORE_BASE +  8); // SLOPE_N
-		DupSprite(SPR_ORIGINALSHORE_START +  7, SPR_SHORE_BASE +  9); // SLOPE_NW
-		DupSprite(SPR_ORIGINALSHORE_START +  5, SPR_SHORE_BASE + 12); // SLOPE_NE
+		DupSprite(SPR_ORIGINALSHORE_START + 1, SPR_SHORE_BASE + 1); // SLOPE_W
+		DupSprite(SPR_ORIGINALSHORE_START + 2, SPR_SHORE_BASE + 2); // SLOPE_S
+		DupSprite(SPR_ORIGINALSHORE_START + 6, SPR_SHORE_BASE + 3); // SLOPE_SW
+		DupSprite(SPR_ORIGINALSHORE_START + 0, SPR_SHORE_BASE + 4); // SLOPE_E
+		DupSprite(SPR_ORIGINALSHORE_START + 4, SPR_SHORE_BASE + 6); // SLOPE_SE
+		DupSprite(SPR_ORIGINALSHORE_START + 3, SPR_SHORE_BASE + 8); // SLOPE_N
+		DupSprite(SPR_ORIGINALSHORE_START + 7, SPR_SHORE_BASE + 9); // SLOPE_NW
+		DupSprite(SPR_ORIGINALSHORE_START + 5, SPR_SHORE_BASE + 12); // SLOPE_NE
 	}
 
 	if (_loaded_newgrf_features.shore == SHORE_REPLACE_ACTION_A) {
-		DupSprite(SPR_FLAT_GRASS_TILE + 16, SPR_SHORE_BASE +  0); // SLOPE_STEEP_S
-		DupSprite(SPR_FLAT_GRASS_TILE + 17, SPR_SHORE_BASE +  5); // SLOPE_STEEP_W
-		DupSprite(SPR_FLAT_GRASS_TILE +  7, SPR_SHORE_BASE +  7); // SLOPE_WSE
+		DupSprite(SPR_FLAT_GRASS_TILE + 16, SPR_SHORE_BASE + 0); // SLOPE_STEEP_S
+		DupSprite(SPR_FLAT_GRASS_TILE + 17, SPR_SHORE_BASE + 5); // SLOPE_STEEP_W
+		DupSprite(SPR_FLAT_GRASS_TILE + 7, SPR_SHORE_BASE + 7); // SLOPE_WSE
 		DupSprite(SPR_FLAT_GRASS_TILE + 15, SPR_SHORE_BASE + 10); // SLOPE_STEEP_N
 		DupSprite(SPR_FLAT_GRASS_TILE + 11, SPR_SHORE_BASE + 11); // SLOPE_NWS
 		DupSprite(SPR_FLAT_GRASS_TILE + 13, SPR_SHORE_BASE + 13); // SLOPE_ENW
@@ -1442,7 +1495,7 @@ static void ActivateOldShore()
 
 		/* XXX - SLOPE_EW, SLOPE_NS are currently not used.
 		 *       If they would be used somewhen, then these grass tiles will most like not look as needed */
-		DupSprite(SPR_FLAT_GRASS_TILE +  5, SPR_SHORE_BASE + 16); // SLOPE_EW
+		DupSprite(SPR_FLAT_GRASS_TILE + 5, SPR_SHORE_BASE + 16); // SLOPE_EW
 		DupSprite(SPR_FLAT_GRASS_TILE + 10, SPR_SHORE_BASE + 17); // SLOPE_NS
 	}
 }
@@ -1453,9 +1506,9 @@ static void ActivateOldShore()
 static void ActivateOldTramDepot()
 {
 	if (_loaded_newgrf_features.tram == TRAMWAY_REPLACE_DEPOT_WITH_TRACK) {
-		DupSprite(SPR_ROAD_DEPOT               + 0, SPR_TRAMWAY_DEPOT_NO_TRACK + 0); // use road depot graphics for "no tracks"
+		DupSprite(SPR_ROAD_DEPOT + 0, SPR_TRAMWAY_DEPOT_NO_TRACK + 0); // use road depot graphics for "no tracks"
 		DupSprite(SPR_TRAMWAY_DEPOT_WITH_TRACK + 1, SPR_TRAMWAY_DEPOT_NO_TRACK + 1);
-		DupSprite(SPR_ROAD_DEPOT               + 2, SPR_TRAMWAY_DEPOT_NO_TRACK + 2); // use road depot graphics for "no tracks"
+		DupSprite(SPR_ROAD_DEPOT + 2, SPR_TRAMWAY_DEPOT_NO_TRACK + 2); // use road depot graphics for "no tracks"
 		DupSprite(SPR_TRAMWAY_DEPOT_WITH_TRACK + 3, SPR_TRAMWAY_DEPOT_NO_TRACK + 3);
 		DupSprite(SPR_TRAMWAY_DEPOT_WITH_TRACK + 4, SPR_TRAMWAY_DEPOT_NO_TRACK + 4);
 		DupSprite(SPR_TRAMWAY_DEPOT_WITH_TRACK + 5, SPR_TRAMWAY_DEPOT_NO_TRACK + 5);
@@ -1699,8 +1752,7 @@ static void AfterLoadGRFs()
 		_gted[e->index].roadtramtype--;
 
 		const std::vector<RoadTypeLabel> *list = (rtt == RTT_TRAM) ? &file->tramtype_list : &file->roadtype_list;
-		if (_gted[e->index].roadtramtype < list->size())
-		{
+		if (_gted[e->index].roadtramtype < list->size()) {
 			RoadTypeLabel rtl = (*list)[_gted[e->index].roadtramtype];
 			RoadType rt = GetRoadTypeByLabel(rtl);
 			if (rt != INVALID_ROADTYPE && GetRoadTramType(rt) == rtt) {
@@ -1744,16 +1796,16 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	 * so all NewGRFs are loaded equally. For this we use the
 	 * start date of the game and we set the counters, etc. to
 	 * 0 so they're the same too. */
-	TimerGameCalendar::Date date            = TimerGameCalendar::date;
-	TimerGameCalendar::Year year            = TimerGameCalendar::year;
+	TimerGameCalendar::Date date = TimerGameCalendar::date;
+	TimerGameCalendar::Year year = TimerGameCalendar::year;
 	TimerGameCalendar::DateFract date_fract = TimerGameCalendar::date_fract;
 
 	TimerGameEconomy::Date economy_date = TimerGameEconomy::date;
 	TimerGameEconomy::Year economy_year = TimerGameEconomy::year;
 	TimerGameEconomy::DateFract economy_date_fract = TimerGameEconomy::date_fract;
 
-	uint64_t tick_counter  = TimerGameTick::counter;
-	uint8_t display_opt     = _display_opt;
+	uint64_t tick_counter = TimerGameTick::counter;
+	uint8_t display_opt = _display_opt;
 
 	if (_networking) {
 		TimerGameCalendar::year = _settings_game.game_creation.starting_year;
@@ -1765,7 +1817,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 		TimerGameEconomy::date_fract = 0;
 
 		TimerGameTick::counter = 0;
-		_display_opt  = 0;
+		_display_opt = 0;
 	}
 
 	InitializePatchFlags();
@@ -1797,9 +1849,9 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 		if (stage == GLS_RESERVE) {
 			static const std::pair<uint32_t, uint32_t> default_grf_overrides[] = {
-				{ std::byteswap(0x44442202), std::byteswap(0x44440111) }, // UKRS addons modifies UKRS
-				{ std::byteswap(0x6D620402), std::byteswap(0x6D620401) }, // DBSetXL ECS extension modifies DBSetXL
-				{ std::byteswap(0x4D656f20), std::byteswap(0x4D656F17) }, // LV4cut modifies LV4
+				{std::byteswap(0x44442202), std::byteswap(0x44440111)}, // UKRS addons modifies UKRS
+				{std::byteswap(0x6D620402), std::byteswap(0x6D620401)}, // DBSetXL ECS extension modifies DBSetXL
+				{std::byteswap(0x4D656f20), std::byteswap(0x4D656F17)}, // LV4cut modifies LV4
 			};
 			for (const auto &grf_override : default_grf_overrides) {
 				SetNewGRFOverride(grf_override.first, grf_override.second);
@@ -1827,7 +1879,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
 					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GCS_DISABLED;
-					c->error  = {STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED};
+					c->error = {STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED};
 					continue;
 				}
 				num_non_static++;
@@ -1871,5 +1923,5 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 	TimerGameEconomy::date_fract = economy_date_fract;
 
 	TimerGameTick::counter = tick_counter;
-	_display_opt  = display_opt;
+	_display_opt = display_opt;
 }

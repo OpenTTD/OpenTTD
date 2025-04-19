@@ -14,6 +14,7 @@
  */
 
 #include "../../stdafx.h"
+
 #include "aystar.h"
 
 #include "../../safeguards.h"
@@ -137,18 +138,28 @@ AyStarStatus AyStar::Main()
 	} while (r == AyStarStatus::StillBusy);
 #ifdef AYSTAR_DEBUG
 	switch (r) {
-		case AyStarStatus::FoundEndNode: Debug(misc, 0, "[AyStar] Found path!"); break;
-		case AyStarStatus::EmptyOpenList: Debug(misc, 0, "[AyStar] OpenList run dry, no path found"); break;
-		case AyStarStatus::LimitReached: Debug(misc, 0, "[AyStar] Exceeded search_nodes, no path found"); break;
-		default: break;
+		case AyStarStatus::FoundEndNode:
+			Debug(misc, 0, "[AyStar] Found path!");
+			break;
+		case AyStarStatus::EmptyOpenList:
+			Debug(misc, 0, "[AyStar] OpenList run dry, no path found");
+			break;
+		case AyStarStatus::LimitReached:
+			Debug(misc, 0, "[AyStar] Exceeded search_nodes, no path found");
+			break;
+		default:
+			break;
 	}
 #endif
 
 	switch (r) {
-		case AyStarStatus::FoundEndNode: return AyStarStatus::FoundEndNode;
+		case AyStarStatus::FoundEndNode:
+			return AyStarStatus::FoundEndNode;
 		case AyStarStatus::EmptyOpenList:
-		case AyStarStatus::LimitReached: return AyStarStatus::NoPath;
-		default: return AyStarStatus::StillBusy;
+		case AyStarStatus::LimitReached:
+			return AyStarStatus::NoPath;
+		default:
+			return AyStarStatus::StillBusy;
 	}
 }
 
@@ -161,8 +172,7 @@ AyStarStatus AyStar::Main()
 void AyStar::AddStartNode(AyStarNode *start_node, int g)
 {
 #ifdef AYSTAR_DEBUG
-	Debug(misc, 0, "[AyStar] Starting A* Algorithm from node ({}, {}, {})\n",
-		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
+	Debug(misc, 0, "[AyStar] Starting A* Algorithm from node ({}, {}, {})\n", TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
 #endif
 	this->OpenListAdd(nullptr, start_node, 0, g);
 }

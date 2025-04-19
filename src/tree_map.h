@@ -23,13 +23,13 @@
  * for the amount of different trees for a specific landscape.
  */
 enum TreeType : uint8_t {
-	TREE_TEMPERATE    = 0x00, ///< temperate tree
-	TREE_SUB_ARCTIC   = 0x0C, ///< tree on a sub_arctic landscape
-	TREE_RAINFOREST   = 0x14, ///< tree on the 'green part' on a sub-tropical map
-	TREE_CACTUS       = 0x1B, ///< a cactus for the 'desert part' on a sub-tropical map
+	TREE_TEMPERATE = 0x00, ///< temperate tree
+	TREE_SUB_ARCTIC = 0x0C, ///< tree on a sub_arctic landscape
+	TREE_RAINFOREST = 0x14, ///< tree on the 'green part' on a sub-tropical map
+	TREE_CACTUS = 0x1B, ///< a cactus for the 'desert part' on a sub-tropical map
 	TREE_SUB_TROPICAL = 0x1C, ///< tree on a sub-tropical map, non-rainforest, non-desert
-	TREE_TOYLAND      = 0x20, ///< tree on a toyland map
-	TREE_INVALID      = 0xFF, ///< An invalid tree
+	TREE_TOYLAND = 0x20, ///< tree on a toyland map
+	TREE_INVALID = 0xFF, ///< An invalid tree
 };
 
 /* Counts the number of tree types for each landscape.
@@ -38,11 +38,11 @@ enum TreeType : uint8_t {
  * 5 entries instead of 4 (as there are only 4 landscape types) as the sub tropic landscape
  * has two types of area, one for normal trees and one only for cacti.
  */
-static const uint TREE_COUNT_TEMPERATE    = TREE_SUB_ARCTIC - TREE_TEMPERATE;    ///< number of tree types on a temperate map.
-static const uint TREE_COUNT_SUB_ARCTIC   = TREE_RAINFOREST - TREE_SUB_ARCTIC;   ///< number of tree types on a sub arctic map.
-static const uint TREE_COUNT_RAINFOREST   = TREE_CACTUS     - TREE_RAINFOREST;   ///< number of tree types for the 'rainforest part' of a sub-tropic map.
-static const uint TREE_COUNT_SUB_TROPICAL = TREE_TOYLAND    - TREE_SUB_TROPICAL; ///< number of tree types for the 'sub-tropic part' of a sub-tropic map.
-static const uint TREE_COUNT_TOYLAND      = 9;                                   ///< number of tree types on a toyland map.
+static const uint TREE_COUNT_TEMPERATE = TREE_SUB_ARCTIC - TREE_TEMPERATE; ///< number of tree types on a temperate map.
+static const uint TREE_COUNT_SUB_ARCTIC = TREE_RAINFOREST - TREE_SUB_ARCTIC; ///< number of tree types on a sub arctic map.
+static const uint TREE_COUNT_RAINFOREST = TREE_CACTUS - TREE_RAINFOREST; ///< number of tree types for the 'rainforest part' of a sub-tropic map.
+static const uint TREE_COUNT_SUB_TROPICAL = TREE_TOYLAND - TREE_SUB_TROPICAL; ///< number of tree types for the 'sub-tropic part' of a sub-tropic map.
+static const uint TREE_COUNT_TOYLAND = 9; ///< number of tree types on a toyland map.
 
 /**
  * Enumeration for ground types of tiles with trees.
@@ -50,11 +50,11 @@ static const uint TREE_COUNT_TOYLAND      = 9;                                  
  * This enumeration defines the ground types for tiles with trees on it.
  */
 enum TreeGround : uint8_t {
-	TREE_GROUND_GRASS       = 0, ///< normal grass
-	TREE_GROUND_ROUGH       = 1, ///< some rough tile
+	TREE_GROUND_GRASS = 0, ///< normal grass
+	TREE_GROUND_ROUGH = 1, ///< some rough tile
 	TREE_GROUND_SNOW_DESERT = 2, ///< a desert or snow tile, depend on landscape
-	TREE_GROUND_SHORE       = 3, ///< shore
-	TREE_GROUND_ROUGH_SNOW  = 4, ///< A snow tile that is rough underneath.
+	TREE_GROUND_SHORE = 3, ///< shore
+	TREE_GROUND_ROUGH_SNOW = 4, ///< A snow tile that is rough underneath.
 };
 
 /**
@@ -63,13 +63,13 @@ enum TreeGround : uint8_t {
  * This enumeration defines the stages of tree growth for tiles with trees on it.
  */
 enum class TreeGrowthStage : uint8_t {
-	Growing1 = 0,  ///< First stage of growth
-	Growing2 = 1,  ///< Second stage of growth
-	Growing3 = 2,  ///< Third stage of growth
-	Grown = 3,  ///< Fully grown tree
-	Dying1 = 4,  ///< First stage of dying
-	Dying2 = 5,  ///< Second stage of dying
-	Dead = 6,  ///< Dead tree
+	Growing1 = 0, ///< First stage of growth
+	Growing2 = 1, ///< Second stage of growth
+	Growing3 = 2, ///< Third stage of growth
+	Grown = 3, ///< Fully grown tree
+	Dying1 = 4, ///< First stage of dying
+	Dying2 = 5, ///< Second stage of dying
+	Dead = 6, ///< Dead tree
 };
 
 /**

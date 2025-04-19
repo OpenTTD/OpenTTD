@@ -8,6 +8,7 @@
 /** @file newgrf_act0_sounds.cpp NewGRF Action 0x00 handler for sounds. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_sound.h"
 #include "newgrf_bytereader.h"
@@ -72,5 +73,14 @@ static ChangeInfoResult SoundEffectChangeInfo(uint first, uint last, int prop, B
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SOUNDFX>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SOUNDFX>::Activation(uint first, uint last, int prop, ByteReader &buf) { return SoundEffectChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_SOUNDFX>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_SOUNDFX>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return SoundEffectChangeInfo(first, last, prop, buf);
+}

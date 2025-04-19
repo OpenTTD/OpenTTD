@@ -10,15 +10,14 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
-#include "newgrf_storage.h"
-#include "subsidy_type.h"
 #include "industry_map.h"
 #include "industrytype.h"
-#include "tilearea_type.h"
+#include "newgrf_storage.h"
 #include "station_base.h"
+#include "subsidy_type.h"
+#include "tilearea_type.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
-
 
 typedef Pool<Industry, IndustryID, 64> IndustryPool;
 extern IndustryPool _industry_pool;
@@ -120,6 +119,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	PersistentStorage *psa = nullptr; ///< Persistent storage for NewGRF industries.
 
 	Industry(TileIndex tile = INVALID_TILE) : location(tile, 0, 0) {}
+
 	~Industry();
 
 	void RecomputeProductionMultipliers();
@@ -204,27 +204,47 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 * Test if this industry accepts any cargo.
 	 * @return true iff the industry accepts any cargo.
 	 */
-	bool IsCargoAccepted() const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [](const auto &a) { return IsValidCargoType(a.cargo); }); }
+	bool IsCargoAccepted() const
+	{
+		return std::any_of(std::begin(this->accepted), std::end(this->accepted), [](const auto &a) {
+			return IsValidCargoType(a.cargo);
+		});
+	}
 
 	/**
 	 * Test if this industry produces any cargo.
 	 * @return true iff the industry produces any cargo.
 	 */
-	bool IsCargoProduced() const { return std::any_of(std::begin(this->produced), std::end(this->produced), [](const auto &p) { return IsValidCargoType(p.cargo); }); }
+	bool IsCargoProduced() const
+	{
+		return std::any_of(std::begin(this->produced), std::end(this->produced), [](const auto &p) {
+			return IsValidCargoType(p.cargo);
+		});
+	}
 
 	/**
 	 * Test if this industry accepts a specific cargo.
 	 * @param cargo Cargo type to test.
 	 * @return true iff the industry accepts the given cargo type.
 	 */
-	bool IsCargoAccepted(CargoType cargo) const { return std::any_of(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) { return a.cargo == cargo; }); }
+	bool IsCargoAccepted(CargoType cargo) const
+	{
+		return std::any_of(std::begin(this->accepted), std::end(this->accepted), [&cargo](const auto &a) {
+			return a.cargo == cargo;
+		});
+	}
 
 	/**
 	 * Test if this industry produces a specific cargo.
 	 * @param cargo Cargo type to test.
 	 * @return true iff the industry produces the given cargo types.
 	 */
-	bool IsCargoProduced(CargoType cargo) const { return std::any_of(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) { return p.cargo == cargo; }); }
+	bool IsCargoProduced(CargoType cargo) const
+	{
+		return std::any_of(std::begin(this->produced), std::end(this->produced), [&cargo](const auto &p) {
+			return p.cargo == cargo;
+		});
+	}
 
 	/**
 	 * Get the industry of the given tile
@@ -273,11 +293,11 @@ bool IsTileForestIndustry(TileIndex tile);
 
 /** Data for managing the number of industries of a single industry type. */
 struct IndustryTypeBuildData {
-	uint32_t probability;  ///< Relative probability of building this industry.
-	uint8_t   min_number;   ///< Smallest number of industries that should exist (either \c 0 or \c 1).
+	uint32_t probability; ///< Relative probability of building this industry.
+	uint8_t min_number; ///< Smallest number of industries that should exist (either \c 0 or \c 1).
 	uint16_t target_count; ///< Desired number of industries of this type.
-	uint16_t max_wait;     ///< Starting number of turns to wait (copied to #wait_count).
-	uint16_t wait_count;   ///< Number of turns to wait before trying to build again.
+	uint16_t max_wait; ///< Starting number of turns to wait (copied to #wait_count).
+	uint16_t wait_count; ///< Number of turns to wait before trying to build again.
 
 	void Reset();
 
@@ -300,7 +320,6 @@ struct IndustryBuildData {
 };
 
 extern IndustryBuildData _industry_builder;
-
 
 /** Special values for the industry list window for the data parameter of #InvalidateWindowData. */
 enum IndustryDirectoryInvalidateWindowData : uint8_t {

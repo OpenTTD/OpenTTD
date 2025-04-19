@@ -8,15 +8,17 @@
 /** @file script_bridge.cpp Implementation of ScriptBridge. */
 
 #include "../../stdafx.h"
+
 #include "script_bridge.hpp"
-#include "script_rail.hpp"
-#include "../script_instance.hpp"
+
 #include "../../bridge_map.h"
-#include "../../strings_func.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
-#include "../../tunnelbridge_cmd.h"
+#include "../../strings_func.h"
 #include "../../timer/timer_game_calendar.h"
+#include "../../tunnelbridge_cmd.h"
+#include "../script_instance.hpp"
+#include "script_rail.hpp"
 
 #include "table/strings.h"
 
@@ -91,7 +93,8 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_RAIL, bridge_type, ScriptRail::GetCurrentRailType());
 		case ScriptVehicle::VT_WATER:
 			return ScriptObject::Command<CMD_BUILD_BRIDGE>::Do(end, start, TRANSPORT_WATER, bridge_type, 0);
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -106,7 +109,8 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::Command<CMD_BUILD_ROAD>::Do(&::_DoCommandReturnBuildBridge2, start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2), (::RoadType)ScriptRoad::GetCurrentRoadType(), DRD_NONE, TownID::Invalid());
+	return ScriptObject::Command<CMD_BUILD_ROAD>::Do(
+		&::_DoCommandReturnBuildBridge2, start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2), (::RoadType)ScriptRoad::GetCurrentRoadType(), DRD_NONE, TownID::Invalid());
 }
 
 /* static */ bool ScriptBridge::_BuildBridgeRoad2()

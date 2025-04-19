@@ -16,7 +16,7 @@
  * depending of the industry.
  */
 struct DrawIndustryAnimationStruct {
-	int x;        ///< coordinate x of the first image offset
+	int x; ///< coordinate x of the first image offset
 	uint8_t image_1; ///< image offset 1
 	uint8_t image_2; ///< image offset 2
 	uint8_t image_3; ///< image offset 3
@@ -27,8 +27,8 @@ struct DrawIndustryAnimationStruct {
  * industries animations
  */
 struct DrawIndustryCoordinates {
-	uint8_t x;  ///< coordinate x of the pair
-	uint8_t y;  ///< coordinate y of the pair
+	uint8_t x; ///< coordinate x of the pair
+	uint8_t y; ///< coordinate y of the pair
 };
 
 /* clang-format off */

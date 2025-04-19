@@ -10,9 +10,9 @@
 #ifndef SCRIPT_VIEWPORT_HPP
 #define SCRIPT_VIEWPORT_HPP
 
-#include "script_object.hpp"
 #include "script_client.hpp"
 #include "script_company.hpp"
+#include "script_object.hpp"
 
 /**
  * Class that manipulates the user's viewport.

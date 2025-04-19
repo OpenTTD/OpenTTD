@@ -40,7 +40,7 @@ struct BaseConsist {
 
 	TimerGameTick::TickCounter depot_unbunching_last_departure{}; ///< When the vehicle last left its unbunching depot.
 	TimerGameTick::TickCounter depot_unbunching_next_departure{}; ///< When the vehicle will next try to leave its unbunching depot.
-	TimerGameTick::Ticks round_trip_time;  ///< How many ticks for a single circumnavigation of the orders.
+	TimerGameTick::Ticks round_trip_time; ///< How many ticks for a single circumnavigation of the orders.
 
 	uint16_t service_interval = 0; ///< The interval for (automatic) servicing; either in days or %.
 

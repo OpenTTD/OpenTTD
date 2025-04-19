@@ -13,6 +13,7 @@
 #define STRING_CONSUMER_HPP
 
 #include <charconv>
+
 #include "format.hpp"
 
 /**
@@ -55,14 +56,17 @@ public:
 	 * Construct parser with data from string.
 	 */
 	explicit StringConsumer(std::string_view src) : src(src) {}
+
 	/**
 	 * Construct parser with data from string.
 	 */
 	explicit StringConsumer(const std::string &src) : src(src) {}
+
 	/**
 	 * Construct parser with data from span.
 	 */
 	explicit StringConsumer(std::span<const char> src) : src(src.data(), src.size()) {}
+
 	/**
 	 * Construct parser with data from buffer.
 	 */
@@ -71,44 +75,73 @@ public:
 	/**
 	 * Check whether any bytes left to read.
 	 */
-	[[nodiscard]] bool AnyBytesLeft() const noexcept { return this->position < this->src.size(); }
+	[[nodiscard]] bool AnyBytesLeft() const noexcept
+	{
+		return this->position < this->src.size();
+	}
+
 	/**
 	 * Get number of bytes left to read.
 	 */
-	[[nodiscard]] size_type GetBytesLeft() const noexcept { return this->src.size() - this->position; }
+	[[nodiscard]] size_type GetBytesLeft() const noexcept
+	{
+		return this->src.size() - this->position;
+	}
 
 	/**
 	 * Check wheter any bytes were already read.
 	 */
-	[[nodiscard]] bool AnyBytesRead() const noexcept { return this->position > 0; }
+	[[nodiscard]] bool AnyBytesRead() const noexcept
+	{
+		return this->position > 0;
+	}
+
 	/**
 	 * Get number of already read bytes.
 	 */
-	[[nodiscard]] size_type GetBytesRead() const noexcept { return this->position; }
+	[[nodiscard]] size_type GetBytesRead() const noexcept
+	{
+		return this->position;
+	}
 
 	/**
 	 * Get the original data, as passed to the constructor.
 	 */
-	[[nodiscard]] std::string_view GetOrigData() const noexcept { return this->src; }
+	[[nodiscard]] std::string_view GetOrigData() const noexcept
+	{
+		return this->src;
+	}
+
 	/**
 	 * Get already read data.
 	 */
-	[[nodiscard]] std::string_view GetReadData() const noexcept { return this->src.substr(0, this->position); }
+	[[nodiscard]] std::string_view GetReadData() const noexcept
+	{
+		return this->src.substr(0, this->position);
+	}
+
 	/**
 	 * Get data left to read.
 	 */
-	[[nodiscard]] std::string_view GetLeftData() const noexcept { return this->src.substr(this->position); }
+	[[nodiscard]] std::string_view GetLeftData() const noexcept
+	{
+		return this->src.substr(this->position);
+	}
 
 	/**
 	 * Discard all remaining data.
 	 */
-	void SkipAll() { this->position = this->src.size(); }
+	void SkipAll()
+	{
+		this->position = this->src.size();
+	}
 
 	/**
 	 * Peek binary uint8.
 	 * @return Read integer, std::nullopt if not enough data.
 	 */
 	[[nodiscard]] std::optional<uint8_t> PeekUint8() const;
+
 	/**
 	 * Try to read binary uint8, and then advance reader.
 	 */
@@ -118,6 +151,7 @@ public:
 		if (value.has_value()) this->SkipUint8();
 		return value;
 	}
+
 	/**
 	 * Read binary uint8, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -129,10 +163,14 @@ public:
 		this->SkipUint8(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary uint8.
 	 */
-	void SkipUint8() { this->Skip(1); }
+	void SkipUint8()
+	{
+		this->Skip(1);
+	}
 
 	/**
 	 * Peek binary int8.
@@ -144,6 +182,7 @@ public:
 		if (!result.has_value()) return std::nullopt;
 		return static_cast<int8_t>(*result);
 	}
+
 	/**
 	 * Try to read binary int8, and then advance reader.
 	 */
@@ -153,6 +192,7 @@ public:
 		if (value.has_value()) this->SkipSint8();
 		return value;
 	}
+
 	/**
 	 * Read binary int8, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -164,16 +204,21 @@ public:
 		this->SkipSint8(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary int8.
 	 */
-	void SkipSint8() { this->Skip(1); }
+	void SkipSint8()
+	{
+		this->Skip(1);
+	}
 
 	/**
 	 * Peek binary uint16 using little endian.
 	 * @return Read integer, std::nullopt if not enough data.
 	 */
 	[[nodiscard]] std::optional<uint16_t> PeekUint16LE() const;
+
 	/**
 	 * Try to read binary uint16, and then advance reader.
 	 */
@@ -183,6 +228,7 @@ public:
 		if (value.has_value()) this->SkipUint16LE();
 		return value;
 	}
+
 	/**
 	 * Read binary uint16 using little endian, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -195,11 +241,15 @@ public:
 		this->SkipUint16LE(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary uint16, and advance reader.
 	 * @note The reader is advanced, even if not enough data was present.
 	 */
-	void SkipUint16LE() { this->Skip(2); }
+	void SkipUint16LE()
+	{
+		this->Skip(2);
+	}
 
 	/**
 	 * Peek binary int16 using little endian.
@@ -211,6 +261,7 @@ public:
 		if (!result.has_value()) return std::nullopt;
 		return static_cast<int16_t>(*result);
 	}
+
 	/**
 	 * Try to read binary int16, and then advance reader.
 	 */
@@ -220,6 +271,7 @@ public:
 		if (value.has_value()) this->SkipSint16LE();
 		return value;
 	}
+
 	/**
 	 * Read binary int16 using little endian, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -232,17 +284,22 @@ public:
 		this->SkipSint16LE(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary int16, and advance reader.
 	 * @note The reader is advanced, even if not enough data was present.
 	 */
-	void SkipSint16LE() { this->Skip(2); }
+	void SkipSint16LE()
+	{
+		this->Skip(2);
+	}
 
 	/**
 	 * Peek binary uint32 using little endian.
 	 * @return Read integer, std::nullopt if not enough data.
 	 */
 	[[nodiscard]] std::optional<uint32_t> PeekUint32LE() const;
+
 	/**
 	 * Try to read binary uint32, and then advance reader.
 	 */
@@ -252,6 +309,7 @@ public:
 		if (value.has_value()) this->SkipUint32LE();
 		return value;
 	}
+
 	/**
 	 * Read binary uint32 using little endian, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -264,11 +322,15 @@ public:
 		this->SkipUint32LE(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary uint32, and advance reader.
 	 * @note The reader is advanced, even if not enough data was present.
 	 */
-	void SkipUint32LE() { this->Skip(4); }
+	void SkipUint32LE()
+	{
+		this->Skip(4);
+	}
 
 	/**
 	 * Peek binary int32 using little endian.
@@ -280,6 +342,7 @@ public:
 		if (!result.has_value()) return std::nullopt;
 		return static_cast<int32_t>(*result);
 	}
+
 	/**
 	 * Try to read binary int32, and then advance reader.
 	 */
@@ -289,6 +352,7 @@ public:
 		if (value.has_value()) this->SkipSint32LE();
 		return value;
 	}
+
 	/**
 	 * Read binary int32 using little endian, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -301,17 +365,22 @@ public:
 		this->SkipSint32LE(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary int32, and advance reader.
 	 * @note The reader is advanced, even if not enough data was present.
 	 */
-	void SkipSint32LE() { this->Skip(4); }
+	void SkipSint32LE()
+	{
+		this->Skip(4);
+	}
 
 	/**
 	 * Peek binary uint64 using little endian.
 	 * @return Read integer, std::nullopt if not enough data.
 	 */
 	[[nodiscard]] std::optional<uint64_t> PeekUint64LE() const;
+
 	/**
 	 * Try to read binary uint64, and then advance reader.
 	 */
@@ -321,6 +390,7 @@ public:
 		if (value.has_value()) this->SkipUint64LE();
 		return value;
 	}
+
 	/**
 	 * Read binary uint64 using little endian, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -333,11 +403,15 @@ public:
 		this->SkipUint64LE(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary uint64, and advance reader.
 	 * @note The reader is advanced, even if not enough data was present.
 	 */
-	void SkipUint64LE() { this->Skip(8); }
+	void SkipUint64LE()
+	{
+		this->Skip(8);
+	}
 
 	/**
 	 * Peek binary int64 using little endian.
@@ -349,6 +423,7 @@ public:
 		if (!result.has_value()) return std::nullopt;
 		return static_cast<int64_t>(*result);
 	}
+
 	/**
 	 * Try to read binary int64, and then advance reader.
 	 */
@@ -358,6 +433,7 @@ public:
 		if (value.has_value()) this->SkipSint64LE();
 		return value;
 	}
+
 	/**
 	 * Read binary int64 using little endian, and advance reader.
 	 * @param def Default value to return, if not enough data.
@@ -370,17 +446,22 @@ public:
 		this->SkipSint64LE(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip binary int64, and advance reader.
 	 * @note The reader is advanced, even if not enough data was present.
 	 */
-	void SkipSint64LE() { this->Skip(8); }
+	void SkipSint64LE()
+	{
+		this->Skip(8);
+	}
 
 	/**
 	 * Peek 8-bit character.
 	 * @return Read char, std::nullopt if not enough data.
 	 */
 	[[nodiscard]] std::optional<char> PeekChar() const;
+
 	/**
 	 * Try to read a 8-bit character, and then advance reader.
 	 */
@@ -390,26 +471,33 @@ public:
 		if (value.has_value()) this->SkipChar();
 		return value;
 	}
+
 	/**
 	 * Read 8-bit character, and advance reader.
 	 * @param def Default value to return, if not enough data.
 	 * @return Read character, 'def' if not enough data.
 	 */
-	[[nodiscard]] char ReadChar(char def = '?') {
+	[[nodiscard]] char ReadChar(char def = '?')
+	{
 		auto value = this->PeekChar();
 		this->SkipChar(); // always advance
 		return value.value_or(def);
 	}
+
 	/**
 	 * Skip 8-bit character, and advance reader.
 	 */
-	void SkipChar() { this->Skip(1); }
+	void SkipChar()
+	{
+		this->Skip(1);
+	}
 
 	/**
 	 * Peek UTF-8 character.
 	 * @return Length and read char, {0, 0} if no valid data.
 	 */
 	[[nodiscard]] std::pair<size_type, char32_t> PeekUtf8() const;
+
 	/**
 	 * Try to read a UTF-8 character, and then advance reader.
 	 */
@@ -420,6 +508,7 @@ public:
 		this->Skip(len);
 		return value;
 	}
+
 	/**
 	 * Read UTF-8 character, and advance reader.
 	 * @param def Default value to return, if no valid data.
@@ -432,6 +521,7 @@ public:
 		this->Skip(len > 0 ? len : 1); // advance at least one byte
 		return len > 0 ? value : def;
 	}
+
 	/**
 	 * Skip UTF-8 character, and advance reader.
 	 * @note The reader is advanced, even if no valid data was present.
@@ -452,6 +542,7 @@ public:
 	{
 		return this->src.compare(this->position, str.size(), str) == 0;
 	}
+
 	/**
 	 * Check whether the next data matches 'str', and skip it.
 	 */
@@ -461,6 +552,7 @@ public:
 		if (result) this->Skip(str.size());
 		return result;
 	}
+
 	/**
 	 * If the next data matches 'str', then skip it.
 	 */
@@ -476,6 +568,7 @@ public:
 	{
 		return this->PeekIf({&c, 1});
 	}
+
 	/**
 	 * Check whether the next 8-bit char matches 'c', and skip it.
 	 */
@@ -483,6 +576,7 @@ public:
 	{
 		return this->ReadIf({&c, 1});
 	}
+
 	/**
 	 * If the next data matches the 8-bit char 'c', then skip it.
 	 */
@@ -499,6 +593,7 @@ public:
 		auto [len, result] = this->PeekUtf8();
 		return len > 0 && result == c;
 	}
+
 	/**
 	 * Check whether the next UTF-8 char matches 'c', and skip it.
 	 */
@@ -509,6 +604,7 @@ public:
 		this->Skip(len);
 		return true;
 	}
+
 	/**
 	 * If the next data matches the UTF-8 char 'c', then skip it.
 	 */
@@ -526,6 +622,7 @@ public:
 	 * @return Up to 'len' bytes.
 	 */
 	[[nodiscard]] std::string_view Peek(size_type len) const;
+
 	/**
 	 * Read the next 'len' bytes, and advance reader.
 	 * @param len Bytes to read, 'npos' to read all.
@@ -540,6 +637,7 @@ public:
 		this->Skip(result.size());
 		return result;
 	}
+
 	/**
 	 * Discard some bytes.
 	 * @param len Number of bytes to skip, 'npos' to skip all.
@@ -551,6 +649,7 @@ public:
 	 * @return Offset from current reader position. 'npos' if no match found.
 	 */
 	[[nodiscard]] size_type Find(std::string_view str) const;
+
 	/**
 	 * Find first occurence of 8-bit char 'c'.
 	 * @return Offset from current reader position. 'npos' if no match found.
@@ -559,6 +658,7 @@ public:
 	{
 		return this->Find({&c, 1});
 	}
+
 	/**
 	 * Find first occurence of UTF-8 char 'c'.
 	 * @return Offset from current reader position. 'npos' if no match found.
@@ -587,6 +687,7 @@ public:
 		if (c.has_value() && chars.find(*c) != std::string_view::npos) return c;
 		return std::nullopt;
 	}
+
 	/**
 	 * Read next 8-bit char, check whether it is in 'chars', and advance reader.
 	 * @return Matching char, std::nullopt if no match.
@@ -597,6 +698,7 @@ public:
 		if (result.has_value()) this->Skip(1);
 		return result;
 	}
+
 	/**
 	 * If the next 8-bit char is in 'chars', skip it.
 	 */
@@ -617,6 +719,7 @@ public:
 		if (c.has_value() && chars.find(*c) == std::string_view::npos) return c;
 		return std::nullopt;
 	}
+
 	/**
 	 * Read next 8-bit char, check whether it is not in 'chars', and advance reader.
 	 * @return Non-matching char, std::nullopt if match.
@@ -627,6 +730,7 @@ public:
 		if (result.has_value()) this->Skip(1);
 		return result;
 	}
+
 	/**
 	 * If the next 8-bit char is not in 'chars', skip it.
 	 */
@@ -645,6 +749,7 @@ public:
 		size_type len = this->FindCharIn(chars);
 		return this->Peek(len);
 	}
+
 	/**
 	 * Read 8-bit chars, while they are not in 'chars', until they are; and advance reader.
 	 * @return Non-matching chars.
@@ -654,6 +759,7 @@ public:
 		size_type len = this->FindCharIn(chars);
 		return this->Read(len);
 	}
+
 	/**
 	 * Skip 8-bit chars, while they are not in 'chars', until they are.
 	 */
@@ -672,6 +778,7 @@ public:
 		size_type len = this->FindCharNotIn(chars);
 		return this->Peek(len);
 	}
+
 	/**
 	 * Read 8-bit chars, while they are in 'chars', until they are not; and advance reader.
 	 * @return Matching chars.
@@ -681,6 +788,7 @@ public:
 		size_type len = this->FindCharNotIn(chars);
 		return this->Read(len);
 	}
+
 	/**
 	 * Skip 8-bit chars, while they are in 'chars', until they are not.
 	 */
@@ -695,9 +803,9 @@ public:
 	 */
 	enum SeparatorUsage {
 		READ_ALL_SEPARATORS, ///< Read all consecutive separators, and include them all in the result
-		READ_ONE_SEPARATOR,  ///< Read one separator, and include it in the result
-		KEEP_SEPARATOR,      ///< Keep the separator in the data as next value to be read.
-		SKIP_ONE_SEPARATOR,  ///< Read and discard one separator, do not include it in the result.
+		READ_ONE_SEPARATOR, ///< Read one separator, and include it in the result
+		KEEP_SEPARATOR, ///< Keep the separator in the data as next value to be read.
+		SKIP_ONE_SEPARATOR, ///< Read and discard one separator, do not include it in the result.
 		SKIP_ALL_SEPARATORS, ///< Read and discard all consecutive separators, do not include any in the result.
 	};
 
@@ -707,6 +815,7 @@ public:
 	 * @param sep Whether to include/exclude 'str' from the result.
 	 */
 	[[nodiscard]] std::string_view PeekUntil(std::string_view str, SeparatorUsage sep) const;
+
 	/**
 	 * Read data until the first occurrence of 'str', and advance reader.
 	 * @param str Separator string.
@@ -729,6 +838,7 @@ public:
 		}
 		return result;
 	}
+
 	/**
 	 * Skip data until the first occurrence of 'str'.
 	 * @param str Separator string.
@@ -761,6 +871,7 @@ public:
 	{
 		return this->PeekUntil({&c, 1}, sep);
 	}
+
 	/**
 	 * Read data until the first occurrence of 8-bit char 'c', and advance reader.
 	 * @param c Separator char.
@@ -770,6 +881,7 @@ public:
 	{
 		return this->ReadUntil({&c, 1}, sep);
 	}
+
 	/**
 	 * Skip data until the first occurrence of 8-bit char 'c'.
 	 * @param c Separator char.
@@ -855,6 +967,7 @@ public:
 	{
 		return ParseIntegerBase<T>(this->src.substr(this->position), base, false);
 	}
+
 	/**
 	 * Try to read and parse an integer in number 'base', and then advance the reader.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
@@ -869,6 +982,7 @@ public:
 		this->SkipIntegerBase(base);
 		return value;
 	}
+
 	/**
 	 * Read and parse an integer in number 'base', and advance the reader.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.
@@ -883,6 +997,7 @@ public:
 		this->SkipIntegerBase(base); // always advance
 		return len > 0 ? value : def;
 	}
+
 	/**
 	 * Skip an integer in number 'base'.
 	 * If 'base == 0', then a prefix '0x' decides between base 16 or base 10.

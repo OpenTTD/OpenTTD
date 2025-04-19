@@ -12,8 +12,8 @@
 
 /** Flags of an option. */
 enum OptionDataType : uint8_t {
-	ODF_NO_VALUE,       ///< A plain option (no value attached to it).
-	ODF_HAS_VALUE,      ///< An option with a value.
+	ODF_NO_VALUE, ///< A plain option (no value attached to it).
+	ODF_HAS_VALUE, ///< An option with a value.
 	ODF_OPTIONAL_VALUE, ///< An option with an optional value.
 };
 
@@ -28,7 +28,7 @@ struct OptionData {
 /** Data storage for parsing command line options. */
 struct GetOptData {
 	using OptionSpan = std::span<const OptionData>;
-	using ArgumentSpan = std::span<char * const>;
+	using ArgumentSpan = std::span<char *const>;
 
 	ArgumentSpan arguments; ///< Remaining command line arguments.
 	const OptionSpan options; ///< Command line option descriptions.

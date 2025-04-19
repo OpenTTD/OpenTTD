@@ -10,9 +10,9 @@
 #ifndef NETWORK_ADMIN_H
 #define NETWORK_ADMIN_H
 
-#include "network_internal.h"
-#include "core/tcp_listen.h"
 #include "core/tcp_admin.h"
+#include "core/tcp_listen.h"
+#include "network_internal.h"
 
 extern AdminID _redirect_console_to_admin;
 
@@ -22,7 +22,10 @@ using NetworkAdminSocketPool = Pool<ServerNetworkAdminSocketHandler, AdminID, 2,
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */
-class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>, public NetworkAdminSocketHandler, public TCPListenHandler<ServerNetworkAdminSocketHandler, ADMIN_PACKET_SERVER_FULL, ADMIN_PACKET_SERVER_BANNED> {
+class ServerNetworkAdminSocketHandler :
+	public NetworkAdminSocketPool::PoolItem<&_networkadminsocket_pool>,
+	public NetworkAdminSocketHandler,
+	public TCPListenHandler<ServerNetworkAdminSocketHandler, ADMIN_PACKET_SERVER_FULL, ADMIN_PACKET_SERVER_BANNED> {
 private:
 	std::unique_ptr<NetworkAuthenticationServerHandler> authentication_handler = nullptr; ///< The handler for the authentication.
 protected:
@@ -42,6 +45,7 @@ protected:
 	NetworkRecvStatus SendPong(uint32_t d1);
 	NetworkRecvStatus SendAuthRequest();
 	NetworkRecvStatus SendEnableEncryption();
+
 public:
 	std::array<AdminUpdateFrequencies, ADMIN_UPDATE_END> update_frequency{}; ///< Admin requested update intervals.
 	std::chrono::steady_clock::time_point connect_time{}; ///< Time of connection.
@@ -91,7 +95,10 @@ public:
 	}
 
 	struct ServerNetworkAdminSocketHandlerFilter {
-		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; }
+		bool operator()(size_t index)
+		{
+			return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE;
+		}
 	};
 
 	/**

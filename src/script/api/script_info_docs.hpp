@@ -202,9 +202,9 @@ public:
 
 	/** Miscellaneous flags for Script settings. */
 	enum ScriptConfigFlags {
-		CONFIG_NONE,      ///< Normal setting.
-		CONFIG_BOOLEAN,   ///< This value is a boolean (either 0 (false) or 1 (true) ).
-		CONFIG_INGAME,    ///< This setting can be changed while the Script is running.
+		CONFIG_NONE, ///< Normal setting.
+		CONFIG_BOOLEAN, ///< This value is a boolean (either 0 (false) or 1 (true) ).
+		CONFIG_INGAME, ///< This setting can be changed while the Script is running.
 		CONFIG_DEVELOPER, ///< This setting will only be visible when the Script development tools are active.
 	};
 

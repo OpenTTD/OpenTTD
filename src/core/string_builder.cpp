@@ -8,8 +8,11 @@
 /** @file string_builder.cpp Implementation of string composing. */
 
 #include "../stdafx.h"
+
 #include "string_builder.hpp"
+
 #include "utf8.hpp"
+
 #include "../safeguards.h"
 
 /**
@@ -17,9 +20,7 @@
  */
 void BaseStringBuilder::PutUint8(uint8_t value)
 {
-	std::array<char, 1> buf{
-		static_cast<char>(value)
-	};
+	std::array<char, 1> buf{static_cast<char>(value)};
 	this->PutBuffer(buf);
 }
 
@@ -36,10 +37,7 @@ void BaseStringBuilder::PutSint8(int8_t value)
  */
 void BaseStringBuilder::PutUint16LE(uint16_t value)
 {
-	std::array<char, 2> buf{
-		static_cast<char>(static_cast<uint8_t>(value)),
-		static_cast<char>(static_cast<uint8_t>(value >> 8))
-	};
+	std::array<char, 2> buf{static_cast<char>(static_cast<uint8_t>(value)), static_cast<char>(static_cast<uint8_t>(value >> 8))};
 	this->PutBuffer(buf);
 }
 
@@ -56,12 +54,8 @@ void BaseStringBuilder::PutSint16LE(int16_t value)
  */
 void BaseStringBuilder::PutUint32LE(uint32_t value)
 {
-	std::array<char, 4> buf{
-		static_cast<char>(static_cast<uint8_t>(value)),
-		static_cast<char>(static_cast<uint8_t>(value >> 8)),
-		static_cast<char>(static_cast<uint8_t>(value >> 16)),
-		static_cast<char>(static_cast<uint8_t>(value >> 24))
-	};
+	std::array<char, 4> buf{static_cast<char>(static_cast<uint8_t>(value)), static_cast<char>(static_cast<uint8_t>(value >> 8)), static_cast<char>(static_cast<uint8_t>(value >> 16)),
+		static_cast<char>(static_cast<uint8_t>(value >> 24))};
 	this->PutBuffer(buf);
 }
 
@@ -78,16 +72,9 @@ void BaseStringBuilder::PutSint32LE(int32_t value)
  */
 void BaseStringBuilder::PutUint64LE(uint64_t value)
 {
-	std::array<char, 8> buf{
-		static_cast<char>(static_cast<uint8_t>(value)),
-		static_cast<char>(static_cast<uint8_t>(value >> 8)),
-		static_cast<char>(static_cast<uint8_t>(value >> 16)),
-		static_cast<char>(static_cast<uint8_t>(value >> 24)),
-		static_cast<char>(static_cast<uint8_t>(value >> 32)),
-		static_cast<char>(static_cast<uint8_t>(value >> 40)),
-		static_cast<char>(static_cast<uint8_t>(value >> 48)),
-		static_cast<char>(static_cast<uint8_t>(value >> 56))
-	};
+	std::array<char, 8> buf{static_cast<char>(static_cast<uint8_t>(value)), static_cast<char>(static_cast<uint8_t>(value >> 8)), static_cast<char>(static_cast<uint8_t>(value >> 16)),
+		static_cast<char>(static_cast<uint8_t>(value >> 24)), static_cast<char>(static_cast<uint8_t>(value >> 32)), static_cast<char>(static_cast<uint8_t>(value >> 40)),
+		static_cast<char>(static_cast<uint8_t>(value >> 48)), static_cast<char>(static_cast<uint8_t>(value >> 56))};
 	this->PutBuffer(buf);
 }
 

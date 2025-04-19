@@ -10,12 +10,11 @@
 #ifndef POOL_FUNC_HPP
 #define POOL_FUNC_HPP
 
+#include "../error_func.h"
+#include "../saveload/saveload_error.hpp" // SlErrorCorruptFmt
 #include "bitmath_func.hpp"
 #include "math_func.hpp"
 #include "pool_type.hpp"
-#include "../error_func.h"
-
-#include "../saveload/saveload_error.hpp" // SlErrorCorruptFmt
 
 /**
  * Helper for defining the method's signature.
@@ -165,7 +164,7 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t size, size_t index)
 		ac->next = this->alloc_cache;
 		this->alloc_cache = ac;
 	} else {
-		this->allocator.deallocate(reinterpret_cast<uint8_t*>(this->data[index]), size);
+		this->allocator.deallocate(reinterpret_cast<uint8_t *>(this->data[index]), size);
 	}
 	this->data[index] = nullptr;
 	this->first_free = std::min(this->first_free, index);
@@ -195,7 +194,7 @@ DEFINE_POOL_METHOD(void)::CleanPool()
 		while (this->alloc_cache != nullptr) {
 			AllocCache *ac = this->alloc_cache;
 			this->alloc_cache = ac->next;
-			this->allocator.deallocate(reinterpret_cast<uint8_t*>(ac), sizeof(Titem));
+			this->allocator.deallocate(reinterpret_cast<uint8_t *>(ac), sizeof(Titem));
 		}
 	}
 }

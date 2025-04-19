@@ -10,8 +10,8 @@
 #ifndef NEWGRF_INTERNAL_VEHICLE_H
 #define NEWGRF_INTERNAL_VEHICLE_H
 
-#include "../newgrf.h"
 #include "../engine_base.h"
+#include "../newgrf.h"
 #include "../vehicle_func.h"
 #include "newgrf_internal.h"
 
@@ -19,19 +19,19 @@
 struct GRFTempEngineData {
 	/** Summary state of refittability properties */
 	enum Refittability : uint8_t {
-		UNSET    =  0,  ///< No properties assigned. Default refit masks shall be activated.
-		EMPTY,          ///< GRF defined vehicle as not-refittable. The vehicle shall only carry the default cargo.
-		NONEMPTY,       ///< GRF defined the vehicle as refittable. If the refitmask is empty after translation (cargotypes not available), disable the vehicle.
+		UNSET = 0, ///< No properties assigned. Default refit masks shall be activated.
+		EMPTY, ///< GRF defined vehicle as not-refittable. The vehicle shall only carry the default cargo.
+		NONEMPTY, ///< GRF defined the vehicle as refittable. If the refitmask is empty after translation (cargotypes not available), disable the vehicle.
 	};
 
-	CargoClasses cargo_allowed;          ///< Bitmask of cargo classes that are allowed as a refit.
+	CargoClasses cargo_allowed; ///< Bitmask of cargo classes that are allowed as a refit.
 	CargoClasses cargo_allowed_required; ///< Bitmask of cargo classes that are required to be all present to allow a cargo as a refit.
-	CargoClasses cargo_disallowed;       ///< Bitmask of cargo classes that are disallowed as a refit.
+	CargoClasses cargo_disallowed; ///< Bitmask of cargo classes that are disallowed as a refit.
 	RailTypeLabel railtypelabel;
 	uint8_t roadtramtype;
 	const GRFFile *defaultcargo_grf; ///< GRF defining the cargo translation table to use if the default cargo is the 'first refittable'.
-	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
-	uint8_t rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
+	Refittability refittability; ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
+	uint8_t rv_max_speed; ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 	CargoTypes ctt_include_mask; ///< Cargo types always included in the refit mask.
 	CargoTypes ctt_exclude_mask; ///< Cargo types always excluded from the refit mask.
 
@@ -49,7 +49,7 @@ struct GRFTempEngineData {
 	}
 };
 
-extern ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted;  ///< Temporary engine data used during NewGRF loading
+extern ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted; ///< Temporary engine data used during NewGRF loading
 
 Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id, bool static_access = false);
 void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_location, Price *index);

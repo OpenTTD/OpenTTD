@@ -9,21 +9,21 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/newgrf_sl_compat.h"
-
 #include "newgrf_sl.h"
+
 #include "../fios.h"
+#include "compat/newgrf_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
-	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
-	SLE_CONDVAR(EntityIDMapping, entity_id,     SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION,            SLV_EXTEND_ENTITY_MAPPING),
-	SLE_CONDVAR(EntityIDMapping, entity_id,     SLE_UINT16,                SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION,            SLV_EXTEND_ENTITY_MAPPING),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_UINT16,                SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
+	SLE_VAR(EntityIDMapping, grfid, SLE_UINT32),
+	SLE_CONDVAR(EntityIDMapping, entity_id, SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_EXTEND_ENTITY_MAPPING),
+	SLE_CONDVAR(EntityIDMapping, entity_id, SLE_UINT16, SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
+	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_EXTEND_ENTITY_MAPPING),
+	SLE_CONDVAR(EntityIDMapping, substitute_id, SLE_UINT16, SLV_EXTEND_ENTITY_MAPPING, SL_MAX_VERSION),
 };
 
 /**
@@ -34,8 +34,7 @@ void NewGRFMappingChunkHandler::Save() const
 	SlTableHeader(_newgrf_mapping_desc);
 
 	for (uint i = 0; i < this->mapping.GetMaxMapping(); i++) {
-		if (this->mapping.mappings[i].grfid == 0 &&
-			this->mapping.mappings[i].entity_id == 0) continue;
+		if (this->mapping.mappings[i].grfid == 0 && this->mapping.mappings[i].entity_id == 0) continue;
 		SlSetArrayIndex(i);
 		SlObject(&this->mapping.mappings[i], _newgrf_mapping_desc);
 	}
@@ -68,13 +67,13 @@ struct NGRFChunkHandler : ChunkHandler {
 	static inline uint8_t num_params;
 
 	static inline const SaveLoad description[] = {
-		   SLE_SSTR(GRFConfig, filename,         SLE_STR),
-		    SLE_VAR(GRFConfig, ident.grfid,      SLE_UINT32),
-		    SLE_ARR(GRFConfig, ident.md5sum,     SLE_UINT8,  16),
-		SLE_CONDVAR(GRFConfig, version,          SLE_UINT32, SLV_151, SL_MAX_VERSION),
-		   SLEG_ARR("param", param,              SLE_UINT32, std::size(param)),
-		   SLEG_VAR("num_params", num_params,    SLE_UINT8),
-		SLE_CONDVAR(GRFConfig, palette,          SLE_UINT8,  SLV_101, SL_MAX_VERSION),
+		SLE_SSTR(GRFConfig, filename, SLE_STR),
+		SLE_VAR(GRFConfig, ident.grfid, SLE_UINT32),
+		SLE_ARR(GRFConfig, ident.md5sum, SLE_UINT8, 16),
+		SLE_CONDVAR(GRFConfig, version, SLE_UINT32, SLV_151, SL_MAX_VERSION),
+		SLEG_ARR("param", param, SLE_UINT32, std::size(param)),
+		SLEG_VAR("num_params", num_params, SLE_UINT8),
+		SLE_CONDVAR(GRFConfig, palette, SLE_UINT8, SLV_101, SL_MAX_VERSION),
 	};
 
 	void SaveParameters(const GRFConfig &config) const

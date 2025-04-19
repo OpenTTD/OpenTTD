@@ -8,26 +8,26 @@
 /** @file story.cpp Handling of stories. */
 
 #include "stdafx.h"
-#include "story_base.h"
+
 #include "core/pool_func.hpp"
 #include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "string_func.h"
-#include "timer/timer_game_calendar.h"
-#include "tile_map.h"
-#include "goal_type.h"
-#include "goal_base.h"
-#include "window_func.h"
-#include "gui.h"
-#include "vehicle_base.h"
 #include "game/game.hpp"
-#include "script/api/script_story_page.hpp"
+#include "goal_base.h"
+#include "goal_type.h"
+#include "gui.h"
 #include "script/api/script_event_types.hpp"
+#include "script/api/script_story_page.hpp"
+#include "story_base.h"
 #include "story_cmd.h"
+#include "string_func.h"
+#include "tile_map.h"
+#include "timer/timer_game_calendar.h"
+#include "vehicle_base.h"
+#include "window_func.h"
 
 #include "safeguards.h"
-
 
 uint32_t _story_page_element_next_sort_value;
 uint32_t _story_page_next_sort_value;
@@ -58,7 +58,7 @@ StoryPage::~StoryPage()
  */
 static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElementType type, TileIndex tile, uint32_t reference, const EncodedString &text)
 {
-	StoryPageButtonData button_data{ reference };
+	StoryPageButtonData button_data{reference};
 
 	switch (type) {
 		case SPET_TEXT:
@@ -122,7 +122,8 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t referen
 			pe.text = text;
 			pe.referenced_id = reference;
 			break;
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -217,10 +218,10 @@ bool StoryPageButtonData::ValidateVehicleType() const
  */
 std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlags flags, CompanyID company, const EncodedString &text)
 {
-	if (!StoryPage::CanAllocateItem()) return { CMD_ERROR, StoryPageID::Invalid() };
+	if (!StoryPage::CanAllocateItem()) return {CMD_ERROR, StoryPageID::Invalid()};
 
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, StoryPageID::Invalid() };
-	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return { CMD_ERROR, StoryPageID::Invalid() };
+	if (_current_company != OWNER_DEITY) return {CMD_ERROR, StoryPageID::Invalid()};
+	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return {CMD_ERROR, StoryPageID::Invalid()};
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (StoryPage::GetNumItems() == 0) {
@@ -234,10 +235,10 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlags flags, Co
 		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 
 		_story_page_next_sort_value++;
-		return { CommandCost(), s->index };
+		return {CommandCost(), s->index};
 	}
 
-	return { CommandCost(), StoryPageID::Invalid() };
+	return {CommandCost(), StoryPageID::Invalid()};
 }
 
 /**
@@ -250,21 +251,21 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlags flags, Co
  * @param text Text content in case it is a text or location page element
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandFlags flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32_t reference, const EncodedString &text)
+std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(
+	DoCommandFlags flags, TileIndex tile, StoryPageID page_id, StoryPageElementType type, uint32_t reference, const EncodedString &text)
 {
-	if (!StoryPageElement::CanAllocateItem()) return { CMD_ERROR, StoryPageElementID::Invalid() };
+	if (!StoryPageElement::CanAllocateItem()) return {CMD_ERROR, StoryPageElementID::Invalid()};
 
 	/* Allow at most 128 elements per page. */
 	uint16_t element_count = 0;
 	for (StoryPageElement *iter : StoryPageElement::Iterate()) {
 		if (iter->page == page_id) element_count++;
 	}
-	if (element_count >= 128) return { CMD_ERROR, StoryPageElementID::Invalid() };
+	if (element_count >= 128) return {CMD_ERROR, StoryPageElementID::Invalid()};
 
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, StoryPageElementID::Invalid() };
-	if (!StoryPage::IsValidID(page_id)) return { CMD_ERROR, StoryPageElementID::Invalid() };
-	if (!VerifyElementContentParameters(page_id, type, tile, reference, text)) return { CMD_ERROR, StoryPageElementID::Invalid() };
-
+	if (_current_company != OWNER_DEITY) return {CMD_ERROR, StoryPageElementID::Invalid()};
+	if (!StoryPage::IsValidID(page_id)) return {CMD_ERROR, StoryPageElementID::Invalid()};
+	if (!VerifyElementContentParameters(page_id, type, tile, reference, text)) return {CMD_ERROR, StoryPageElementID::Invalid()};
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		if (StoryPageElement::GetNumItems() == 0) {
@@ -278,10 +279,10 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
 
 		_story_page_element_next_sort_value++;
-		return { CommandCost(), pe->index };
+		return {CommandCost(), pe->index};
 	}
 
-	return { CommandCost(), StoryPageElementID::Invalid() };
+	return {CommandCost(), StoryPageElementID::Invalid()};
 }
 
 /**
@@ -370,11 +371,13 @@ CommandCost CmdShowStoryPage(DoCommandFlags flags, StoryPageID page_id)
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		StoryPage *g = StoryPage::Get(page_id);
-		if ((g->company != CompanyID::Invalid() && g->company == _local_company) || (g->company == CompanyID::Invalid() && Company::IsValidID(_local_company))) ShowStoryBook(_local_company, page_id, true);
+		if ((g->company != CompanyID::Invalid() && g->company == _local_company) || (g->company == CompanyID::Invalid() && Company::IsValidID(_local_company)))
+			ShowStoryBook(_local_company, page_id, true);
 	}
 
 	return CommandCost();
 }
+
 /**
  * Remove a story page and associated story page elements.
  * @param flags type of operation
@@ -464,4 +467,3 @@ CommandCost CmdStoryPageButton(DoCommandFlags flags, TileIndex tile, StoryPageEl
 
 	return CommandCost();
 }
-

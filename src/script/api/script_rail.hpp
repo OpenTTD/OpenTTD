@@ -10,11 +10,11 @@
 #ifndef SCRIPT_RAIL_HPP
 #define SCRIPT_RAIL_HPP
 
-#include "script_tile.hpp"
 #include "../../industry_type.h"
 #include "../../signal_type.h"
 #include "../../station_type.h"
 #include "../../track_type.h"
+#include "script_tile.hpp"
 
 /**
  * Class that handles all rail related functions.
@@ -32,13 +32,13 @@ public:
 		ERR_RAIL_BASE = ScriptError::ERR_CAT_RAIL << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** One-way roads cannot have crossings */
-		ERR_CROSSING_ON_ONEWAY_ROAD,       // [STR_ERROR_CROSSING_ON_ONEWAY_ROAD]
+		ERR_CROSSING_ON_ONEWAY_ROAD, // [STR_ERROR_CROSSING_ON_ONEWAY_ROAD]
 
 		/** No suitable track could be found */
-		ERR_UNSUITABLE_TRACK,              // [STR_ERROR_NO_SUITABLE_RAILROAD_TRACK, STR_ERROR_THERE_IS_NO_RAILROAD_TRACK, STR_ERROR_THERE_ARE_NO_SIGNALS, STR_ERROR_THERE_IS_NO_STATION]
+		ERR_UNSUITABLE_TRACK, // [STR_ERROR_NO_SUITABLE_RAILROAD_TRACK, STR_ERROR_THERE_IS_NO_RAILROAD_TRACK, STR_ERROR_THERE_ARE_NO_SIGNALS, STR_ERROR_THERE_IS_NO_STATION]
 
 		/** This railtype cannot have crossings */
-		ERR_RAILTYPE_DISALLOWS_CROSSING,   // [STR_ERROR_CROSSING_DISALLOWED_RAIL]
+		ERR_RAILTYPE_DISALLOWS_CROSSING, // [STR_ERROR_CROSSING_DISALLOWED_RAIL]
 	};
 
 	/**
@@ -46,7 +46,7 @@ public:
 	 */
 	enum RailType : uint8_t {
 		/* Note: these values represent part of the in-game static values */
-		RAILTYPE_INVALID  = ::INVALID_RAILTYPE, ///< Invalid RailType.
+		RAILTYPE_INVALID = ::INVALID_RAILTYPE, ///< Invalid RailType.
 	};
 
 	/**
@@ -54,12 +54,12 @@ public:
 	 */
 	enum RailTrack {
 		/* Note: these values represent part of the in-game TrackBits enum */
-		RAILTRACK_NE_SW   = ::TRACK_BIT_X,       ///< Track along the x-axis (north-east to south-west).
-		RAILTRACK_NW_SE   = ::TRACK_BIT_Y,       ///< Track along the y-axis (north-west to south-east).
-		RAILTRACK_NW_NE   = ::TRACK_BIT_UPPER,   ///< Track in the upper corner of the tile (north).
-		RAILTRACK_SW_SE   = ::TRACK_BIT_LOWER,   ///< Track in the lower corner of the tile (south).
-		RAILTRACK_NW_SW   = ::TRACK_BIT_LEFT,    ///< Track in the left corner of the tile (west).
-		RAILTRACK_NE_SE   = ::TRACK_BIT_RIGHT,   ///< Track in the right corner of the tile (east).
+		RAILTRACK_NE_SW = ::TRACK_BIT_X, ///< Track along the x-axis (north-east to south-west).
+		RAILTRACK_NW_SE = ::TRACK_BIT_Y, ///< Track along the y-axis (north-west to south-east).
+		RAILTRACK_NW_NE = ::TRACK_BIT_UPPER, ///< Track in the upper corner of the tile (north).
+		RAILTRACK_SW_SE = ::TRACK_BIT_LOWER, ///< Track in the lower corner of the tile (south).
+		RAILTRACK_NW_SW = ::TRACK_BIT_LEFT, ///< Track in the left corner of the tile (west).
+		RAILTRACK_NE_SE = ::TRACK_BIT_RIGHT, ///< Track in the right corner of the tile (east).
 		RAILTRACK_INVALID = 0xFF, ///< Flag for an invalid track.
 	};
 
@@ -68,30 +68,30 @@ public:
 	 */
 	enum SignalType {
 		/* Note: these values represent part of the in-game SignalType enum */
-		SIGNALTYPE_NORMAL        = ::SIGTYPE_BLOCK,      ///< Block signal.
-		SIGNALTYPE_ENTRY         = ::SIGTYPE_ENTRY,      ///< Entry presignal.
-		SIGNALTYPE_EXIT          = ::SIGTYPE_EXIT,       ///< Exit signal.
-		SIGNALTYPE_COMBO         = ::SIGTYPE_COMBO,      ///< Combo signal.
-		SIGNALTYPE_PBS           = ::SIGTYPE_PBS,        ///< Normal PBS signal.
-		SIGNALTYPE_PBS_ONEWAY    = ::SIGTYPE_PBS_ONEWAY, ///< No-entry PBS signal.
+		SIGNALTYPE_NORMAL = ::SIGTYPE_BLOCK, ///< Block signal.
+		SIGNALTYPE_ENTRY = ::SIGTYPE_ENTRY, ///< Entry presignal.
+		SIGNALTYPE_EXIT = ::SIGTYPE_EXIT, ///< Exit signal.
+		SIGNALTYPE_COMBO = ::SIGTYPE_COMBO, ///< Combo signal.
+		SIGNALTYPE_PBS = ::SIGTYPE_PBS, ///< Normal PBS signal.
+		SIGNALTYPE_PBS_ONEWAY = ::SIGTYPE_PBS_ONEWAY, ///< No-entry PBS signal.
 
-		SIGNALTYPE_TWOWAY        = 8, ///< Bit mask for twoway signal.
+		SIGNALTYPE_TWOWAY = 8, ///< Bit mask for twoway signal.
 		SIGNALTYPE_NORMAL_TWOWAY = SIGNALTYPE_NORMAL | SIGNALTYPE_TWOWAY, ///< Normal twoway signal.
-		SIGNALTYPE_ENTRY_TWOWAY  = SIGNALTYPE_ENTRY  | SIGNALTYPE_TWOWAY, ///< Entry twoway signal.
-		SIGNALTYPE_EXIT_TWOWAY   = SIGNALTYPE_EXIT   | SIGNALTYPE_TWOWAY, ///< Exit twoway signal.
-		SIGNALTYPE_COMBO_TWOWAY  = SIGNALTYPE_COMBO  | SIGNALTYPE_TWOWAY, ///< Combo twoway signal.
+		SIGNALTYPE_ENTRY_TWOWAY = SIGNALTYPE_ENTRY | SIGNALTYPE_TWOWAY, ///< Entry twoway signal.
+		SIGNALTYPE_EXIT_TWOWAY = SIGNALTYPE_EXIT | SIGNALTYPE_TWOWAY, ///< Exit twoway signal.
+		SIGNALTYPE_COMBO_TWOWAY = SIGNALTYPE_COMBO | SIGNALTYPE_TWOWAY, ///< Combo twoway signal.
 
-		SIGNALTYPE_NONE          = 0xFF, ///< No signal.
+		SIGNALTYPE_NONE = 0xFF, ///< No signal.
 	};
 
 	/**
 	 * Types of rail-related objects in the game.
 	 */
 	enum BuildType {
-		BT_TRACK,    ///< Build a track
-		BT_SIGNAL,   ///< Build a signal
-		BT_DEPOT,    ///< Build a depot
-		BT_STATION,  ///< Build a station
+		BT_TRACK, ///< Build a track
+		BT_SIGNAL, ///< Build a signal
+		BT_DEPOT, ///< Build a depot
+		BT_STATION, ///< Build a station
 		BT_WAYPOINT, ///< Build a rail waypoint
 	};
 

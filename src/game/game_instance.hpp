@@ -30,6 +30,7 @@ private:
 	void RegisterAPI() override;
 	void Died() override;
 	CommandCallbackData *GetDoCommandCallback() override;
+
 	void LoadDummyScript() override {}
 };
 

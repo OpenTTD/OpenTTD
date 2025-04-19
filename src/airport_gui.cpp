@@ -8,44 +8,43 @@
 /** @file airport_gui.cpp The GUI for airports. */
 
 #include "stdafx.h"
-#include "economy_func.h"
-#include "window_gui.h"
-#include "station_gui.h"
-#include "terraform_gui.h"
-#include "sound_func.h"
-#include "window_func.h"
-#include "strings_func.h"
-#include "viewport_func.h"
-#include "company_func.h"
-#include "tilehighlight_func.h"
+
+#include "core/geometry_func.hpp"
+#include "airport_cmd.h"
+#include "command_func.h"
 #include "company_base.h"
-#include "station_type.h"
+#include "company_func.h"
+#include "dropdown_func.h"
+#include "dropdown_type.h"
+#include "economy_func.h"
+#include "gui.h"
+#include "hotkeys.h"
 #include "newgrf_airport.h"
 #include "newgrf_badge_gui.h"
 #include "newgrf_callbacks.h"
-#include "dropdown_type.h"
-#include "dropdown_func.h"
-#include "core/geometry_func.hpp"
-#include "hotkeys.h"
-#include "vehicle_func.h"
-#include "gui.h"
-#include "command_func.h"
-#include "airport_cmd.h"
+#include "sound_func.h"
 #include "station_cmd.h"
-#include "zoom_func.h"
+#include "station_gui.h"
+#include "station_type.h"
+#include "strings_func.h"
+#include "terraform_gui.h"
+#include "tilehighlight_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
+#include "vehicle_func.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/airport_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
 
-
 static AirportClassID _selected_airport_class; ///< the currently visible airport class
-static int _selected_airport_index;            ///< the index of the selected airport in the current class or -1
-static uint8_t _selected_airport_layout;          ///< selected airport layout number.
+static int _selected_airport_index; ///< the index of the selected airport in the current class or -1
+static uint8_t _selected_airport_layout; ///< selected airport layout number.
 
 static void ShowBuildAirportPicker(Window *parent);
 
@@ -136,10 +135,10 @@ struct BuildAirToolbarWindow : Window {
 				this->last_user_action = widget;
 				break;
 
-			default: break;
+			default:
+				break;
 		}
 	}
-
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
@@ -152,7 +151,8 @@ struct BuildAirToolbarWindow : Window {
 				PlaceProc_DemolishArea(tile);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -191,10 +191,12 @@ struct BuildAirToolbarWindow : Window {
 		return w->OnHotkey(hotkey);
 	}
 
-	static inline HotkeyList hotkeys{"airtoolbar", {
-		Hotkey('1', "airport", WID_AT_AIRPORT),
-		Hotkey('2', "demolish", WID_AT_DEMOLISH),
-	}, AirportToolbarGlobalHotkeys};
+	static inline HotkeyList hotkeys{"airtoolbar",
+		{
+			Hotkey('1', "airport", WID_AT_AIRPORT),
+			Hotkey('2', "demolish", WID_AT_DEMOLISH),
+		},
+		AirportToolbarGlobalHotkeys};
 };
 
 /* clang-format off */
@@ -212,13 +214,7 @@ static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _air_toolbar_desc(
-	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
-	WC_BUILD_TOOLBAR, WC_NONE,
-	WindowDefaultFlag::Construction,
-	_nested_air_toolbar_widgets,
-	&BuildAirToolbarWindow::hotkeys
-);
+static WindowDesc _air_toolbar_desc(WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0, WC_BUILD_TOOLBAR, WC_NONE, WindowDefaultFlag::Construction, _nested_air_toolbar_widgets, &BuildAirToolbarWindow::hotkeys);
 
 /**
  * Open the build airport toolbar window
@@ -376,7 +372,8 @@ public:
 				}
 				break;
 
-			default: break;
+			default:
+				break;
 		}
 	}
 
@@ -506,7 +503,8 @@ public:
 				break;
 			}
 
-			case WID_AP_BTN_DONTHILIGHT: case WID_AP_BTN_DOHILIGHT:
+			case WID_AP_BTN_DONTHILIGHT:
+			case WID_AP_BTN_DOHILIGHT:
 				_settings_client.gui.station_show_coverage = (widget != WID_AP_BTN_DONTHILIGHT);
 				this->SetWidgetLoweredState(WID_AP_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 				this->SetWidgetLoweredState(WID_AP_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
@@ -578,8 +576,8 @@ public:
 	}
 
 	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
-		this->InvalidateData();
-	}};
+															this->InvalidateData();
+														}};
 };
 
 /* clang-format off */
@@ -621,12 +619,7 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _build_airport_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
-	WindowDefaultFlag::Construction,
-	_nested_build_airport_widgets
-);
+static WindowDesc _build_airport_desc(WDP_AUTO, nullptr, 0, 0, WC_BUILD_STATION, WC_BUILD_TOOLBAR, WindowDefaultFlag::Construction, _nested_build_airport_widgets);
 
 static void ShowBuildAirportPicker(Window *parent)
 {

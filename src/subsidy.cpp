@@ -8,26 +8,27 @@
 /** @file subsidy.cpp Handling of subsidies. */
 
 #include "stdafx.h"
-#include "company_func.h"
-#include "industry.h"
-#include "town.h"
-#include "news_func.h"
-#include "ai/ai.hpp"
-#include "station_base.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "subsidy_base.h"
-#include "subsidy_func.h"
+
+#include "core/container_func.hpp"
 #include "core/pool_func.hpp"
 #include "core/random_func.hpp"
-#include "core/container_func.hpp"
-#include "game/game.hpp"
+#include "ai/ai.hpp"
 #include "command_func.h"
+#include "company_func.h"
+#include "game/game.hpp"
+#include "industry.h"
+#include "news_func.h"
+#include "station_base.h"
 #include "string_func.h"
-#include "tile_cmd.h"
+#include "strings_func.h"
+#include "subsidy_base.h"
 #include "subsidy_cmd.h"
+#include "subsidy_func.h"
+#include "tile_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
+#include "town.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -43,9 +44,12 @@ INSTANTIATE_POOL_METHODS(Subsidy)
 NewsReference Source::GetNewsReference() const
 {
 	switch (this->type) {
-		case SourceType::Industry: return static_cast<IndustryID>(this->id);
-		case SourceType::Town: return static_cast<TownID>(this->id);
-		default: NOT_REACHED();
+		case SourceType::Industry:
+			return static_cast<IndustryID>(this->id);
+		case SourceType::Town:
+			return static_cast<TownID>(this->id);
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -56,9 +60,12 @@ NewsReference Source::GetNewsReference() const
 StringID Source::GetFormat() const
 {
 	switch (this->type) {
-		case SourceType::Industry: return STR_INDUSTRY_NAME;
-		case SourceType::Town: return STR_TOWN_NAME;
-		default: NOT_REACHED();
+		case SourceType::Industry:
+			return STR_INDUSTRY_NAME;
+		case SourceType::Town:
+			return STR_TOWN_NAME;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -77,7 +84,8 @@ void Subsidy::AwardTo(CompanyID company)
 
 	/* Add a news item */
 	const CargoSpec *cs = CargoSpec::Get(this->cargo_type);
-	EncodedString headline = GetEncodedString(STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier, std::move(company_name), cs->name, this->src.GetFormat(), this->src.id, this->dst.GetFormat(), this->dst.id, _settings_game.difficulty.subsidy_duration);
+	EncodedString headline = GetEncodedString(STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier, std::move(company_name), cs->name, this->src.GetFormat(),
+		this->src.id, this->dst.GetFormat(), this->dst.id, _settings_game.difficulty.subsidy_duration);
 	AddNewsItem(std::move(headline), NewsType::Subsidies, NewsStyle::Normal, {}, this->src.GetNewsReference(), this->dst.GetNewsReference());
 	AI::BroadcastNewEvent(new ScriptEventSubsidyAwarded(this->index));
 	Game::NewEvent(new ScriptEventSubsidyAwarded(this->index));
@@ -93,9 +101,14 @@ void Subsidy::AwardTo(CompanyID company)
 static inline void SetPartOfSubsidyFlag(Source source, PartOfSubsidy flag)
 {
 	switch (source.type) {
-		case SourceType::Industry: Industry::Get(source.ToIndustryID())->part_of_subsidy.Set(flag); return;
-		case SourceType::Town: Town::Get(source.ToTownID())->cache.part_of_subsidy.Set(flag); return;
-		default: NOT_REACHED();
+		case SourceType::Industry:
+			Industry::Get(source.ToIndustryID())->part_of_subsidy.Set(flag);
+			return;
+		case SourceType::Town:
+			Town::Get(source.ToTownID())->cache.part_of_subsidy.Set(flag);
+			return;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -242,8 +255,7 @@ bool FindSubsidyPassengerRoute()
 	CargoType cargo_type = CargoSpec::town_production_cargoes[TPE_PASSENGERS][r]->Index();
 
 	const Town *src = Town::GetRandom();
-	if (src->cache.population < SUBSIDY_PAX_MIN_POPULATION ||
-			src->GetPercentTransported(cargo_type) > SUBSIDY_MAX_PCT_TRANSPORTED) {
+	if (src->cache.population < SUBSIDY_PAX_MIN_POPULATION || src->GetPercentTransported(cargo_type) > SUBSIDY_MAX_PCT_TRANSPORTED) {
 		return false;
 	}
 
@@ -261,7 +273,6 @@ bool FindSubsidyPassengerRoute()
 }
 
 bool FindSubsidyCargoDestination(CargoType cargo_type, Source src);
-
 
 /**
  * Tries to create a cargo subsidy with a town as source.
@@ -305,8 +316,7 @@ bool FindSubsidyTownCargoRoute()
 	}
 
 	/* Avoid using invalid NewGRF cargoes. */
-	if (!CargoSpec::Get(cargo_type)->IsValid() ||
-			_settings_game.linkgraph.GetDistributionType(cargo_type) != DT_MANUAL) {
+	if (!CargoSpec::Get(cargo_type)->IsValid() || _settings_game.linkgraph.GetDistributionType(cargo_type) != DT_MANUAL) {
 		return false;
 	}
 
@@ -333,7 +343,9 @@ bool FindSubsidyIndustryCargoRoute()
 	CargoType cargo_type;
 
 	/* Randomize cargo type */
-	int num_cargos = std::ranges::count_if(src_ind->produced, [](const auto &p) { return IsValidCargoType(p.cargo); });
+	int num_cargos = std::ranges::count_if(src_ind->produced, [](const auto &p) {
+		return IsValidCargoType(p.cargo);
+	});
 	if (num_cargos == 0) return false; // industry produces nothing
 	int cargo_num = RandomRange(num_cargos) + 1;
 
@@ -351,9 +363,7 @@ bool FindSubsidyIndustryCargoRoute()
 	/* Quit if no production in this industry
 	 * or if the pct transported is already large enough
 	 * or if the cargo is automatically distributed */
-	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED ||
-			!IsValidCargoType(cargo_type) ||
-			_settings_game.linkgraph.GetDistributionType(cargo_type) != DT_MANUAL) {
+	if (total == 0 || trans > SUBSIDY_MAX_PCT_TRANSPORTED || !IsValidCargoType(cargo_type) || _settings_game.linkgraph.GetDistributionType(cargo_type) != DT_MANUAL) {
 		return false;
 	}
 
@@ -404,7 +414,8 @@ bool FindSubsidyCargoDestination(CargoType cargo_type, Source src)
 			break;
 		}
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 
 	/* Check that the source and the destination are not the same. */
@@ -422,8 +433,7 @@ bool FindSubsidyCargoDestination(CargoType cargo_type, Source src)
 }
 
 /** Perform the economy monthly update of open subsidies, and try to create a new one. */
-static IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::SUBSIDY}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGameEconomy::MONTH, TimerGameEconomy::Priority::SUBSIDY}, [](auto) {
 	bool modified = false;
 
 	for (Subsidy *s : Subsidy::Iterate()) {
@@ -453,10 +463,8 @@ static IntervalTimer<TimerGameEconomy> _economy_subsidies_monthly({TimerGameEcon
 	} else if (_settings_game.difficulty.subsidy_duration == 0) {
 		/* If subsidy duration is set to 0, subsidies are disabled, so bail out. */
 		return;
-	} else if (_settings_game.linkgraph.distribution_pax != DT_MANUAL &&
-			   _settings_game.linkgraph.distribution_mail != DT_MANUAL &&
-			   _settings_game.linkgraph.distribution_armoured != DT_MANUAL &&
-			   _settings_game.linkgraph.distribution_default != DT_MANUAL) {
+	} else if (_settings_game.linkgraph.distribution_pax != DT_MANUAL && _settings_game.linkgraph.distribution_mail != DT_MANUAL && _settings_game.linkgraph.distribution_armoured != DT_MANUAL &&
+		_settings_game.linkgraph.distribution_default != DT_MANUAL) {
 		/* Return early if there are no manually distributed cargoes and if we
 		 * don't need to invalidate the subsidies window. */
 		return;
@@ -515,7 +523,8 @@ bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const 
 		case SourceType::Town:
 			if (!Town::Get(src.ToTownID())->cache.part_of_subsidy.Test(PartOfSubsidy::Source)) return false;
 			break;
-		default: return false;
+		default:
+			return false;
 	}
 
 	/* Remember all towns near this station (at least one house in its catchment radius)

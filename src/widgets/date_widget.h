@@ -12,9 +12,9 @@
 
 /** Widgets of the #SetDateWindow class. */
 enum SetDateWidgets : WidgetID {
-	WID_SD_DAY,      ///< Dropdown for the day.
-	WID_SD_MONTH,    ///< Dropdown for the month.
-	WID_SD_YEAR,     ///< Dropdown for the year.
+	WID_SD_DAY, ///< Dropdown for the day.
+	WID_SD_MONTH, ///< Dropdown for the month.
+	WID_SD_YEAR, ///< Dropdown for the year.
 	WID_SD_SET_DATE, ///< Actually set the date.
 };
 

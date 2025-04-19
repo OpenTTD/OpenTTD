@@ -8,9 +8,11 @@
 /** @file game_config.cpp Implementation of GameConfig. */
 
 #include "../stdafx.h"
+
+#include "game_config.hpp"
+
 #include "../settings_type.h"
 #include "game.hpp"
-#include "game_config.hpp"
 #include "game_info.hpp"
 
 #include "../safeguards.h"

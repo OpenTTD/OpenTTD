@@ -5,14 +5,15 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file yapf_ship_regions.cpp Implementation of YAPF for water regions, which are used for finding intermediate ship destinations. */
+/** @file yapf_ship_regions.cpp Implementation of YAPF for water regions, which are used for finding intermediate ship destinations. */
 
 #include "../../stdafx.h"
-#include "../../ship.h"
 
-#include "yapf.hpp"
 #include "yapf_ship_regions.h"
+
+#include "../../ship.h"
 #include "../water_regions.h"
+#include "yapf.hpp"
 
 #include "../../safeguards.h"
 
@@ -29,8 +30,15 @@ struct CYapfRegionPatchNodeKey {
 		this->water_region_patch = water_region_patch;
 	}
 
-	inline int CalcHash() const { return CalculateWaterRegionPatchHash(this->water_region_patch); }
-	inline bool operator==(const CYapfRegionPatchNodeKey &other) const { return this->CalcHash() == other.CalcHash(); }
+	inline int CalcHash() const
+	{
+		return CalculateWaterRegionPatchHash(this->water_region_patch);
+	}
+
+	inline bool operator==(const CYapfRegionPatchNodeKey &other) const
+	{
+		return this->CalcHash() == other.CalcHash();
+	}
 };
 
 inline uint ManhattanDistance(const CYapfRegionPatchNodeKey &a, const CYapfRegionPatchNodeKey &b)
@@ -40,7 +48,7 @@ inline uint ManhattanDistance(const CYapfRegionPatchNodeKey &a, const CYapfRegio
 
 /** Yapf Node for water regions. */
 template <class Tkey_>
-struct CYapfRegionNodeT : CYapfNodeT<Tkey_, CYapfRegionNodeT<Tkey_> > {
+struct CYapfRegionNodeT : CYapfNodeT<Tkey_, CYapfRegionNodeT<Tkey_>> {
 	typedef Tkey_ Key;
 	typedef CYapfRegionNodeT<Tkey_> Node;
 
@@ -73,15 +81,17 @@ struct CYapfRegionNodeT : CYapfNodeT<Tkey_, CYapfRegionNodeT<Tkey_> > {
 
 /** YAPF origin for water regions. */
 template <class Types>
-class CYapfOriginRegionT
-{
+class CYapfOriginRegionT {
 public:
 	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
 	typedef typename Types::NodeList::Item Node; ///< This will be our node type.
 	typedef typename Node::Key Key; ///< Key to hash tables.
 
 protected:
-	inline Tpf &Yapf() { return *static_cast<Tpf*>(this); }
+	inline Tpf &Yapf()
+	{
+		return *static_cast<Tpf *>(this);
+	}
 
 private:
 	std::vector<CYapfRegionPatchNodeKey> origin_keys;
@@ -95,7 +105,7 @@ public:
 
 	bool HasOrigin(const WaterRegionPatchDesc &water_region_patch)
 	{
-		return std::ranges::find(this->origin_keys, CYapfRegionPatchNodeKey{ water_region_patch }) != this->origin_keys.end();
+		return std::ranges::find(this->origin_keys, CYapfRegionPatchNodeKey{water_region_patch}) != this->origin_keys.end();
 	}
 
 	void PfSetStartupNodes()
@@ -110,8 +120,7 @@ public:
 
 /** YAPF destination provider for water regions. */
 template <class Types>
-class CYapfDestinationRegionT
-{
+class CYapfDestinationRegionT {
 public:
 	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
 	typedef typename Types::NodeList::Item Node; ///< This will be our node type.
@@ -127,7 +136,10 @@ public:
 	}
 
 protected:
-	Tpf &Yapf() { return *static_cast<Tpf*>(this); }
+	Tpf &Yapf()
+	{
+		return *static_cast<Tpf *>(this);
+	}
 
 public:
 	inline bool PfDetectDestination(Node &n) const
@@ -150,8 +162,7 @@ public:
 
 /** YAPF node following for water region pathfinding. */
 template <class Types>
-class CYapfFollowRegionT
-{
+class CYapfFollowRegionT {
 public:
 	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
@@ -159,13 +170,15 @@ public:
 	typedef typename Node::Key Key; ///< Key to hash tables.
 
 protected:
-	inline Tpf &Yapf() { return *static_cast<Tpf*>(this); }
+	inline Tpf &Yapf()
+	{
+		return *static_cast<Tpf *>(this);
+	}
 
 public:
 	inline void PfFollowNode(Node &old_node)
 	{
-		TVisitWaterRegionPatchCallBack visit_func = [&](const WaterRegionPatchDesc &water_region_patch)
-		{
+		TVisitWaterRegionPatchCallBack visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
 			Node &node = Yapf().CreateNewNode();
 			node.Set(&old_node, water_region_patch);
 			Yapf().AddNewNode(node, TrackFollower{});
@@ -173,7 +186,10 @@ public:
 		VisitWaterRegionPatchNeighbours(old_node.key.water_region_patch, visit_func);
 	}
 
-	inline char TransportTypeChar() const { return '^'; }
+	inline char TransportTypeChar() const
+	{
+		return '^';
+	}
 
 	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
 	{
@@ -200,7 +216,7 @@ public:
 		}
 
 		/* If origin and destination are the same we simply return that water patch. */
-		std::vector<WaterRegionPatchDesc> path = { start_water_region_patch };
+		std::vector<WaterRegionPatchDesc> path = {start_water_region_patch};
 		path.reserve(max_returned_path_length);
 		if (pf.HasOrigin(start_water_region_patch)) return path;
 
@@ -222,8 +238,7 @@ public:
 
 /** Cost Provider of YAPF for water regions. */
 template <class Types>
-class CYapfCostRegionT
-{
+class CYapfCostRegionT {
 public:
 	typedef typename Types::Tpf Tpf; ///< The pathfinder class (derived from THIS class).
 	typedef typename Types::TrackFollower TrackFollower;
@@ -232,7 +247,10 @@ public:
 
 protected:
 	/** To access inherited path finder. */
-	Tpf &Yapf() { return *static_cast<Tpf*>(this); }
+	Tpf &Yapf()
+	{
+		return *static_cast<Tpf *>(this);
+	}
 
 public:
 	/**
@@ -263,28 +281,29 @@ struct DummyFollower : public CFollowTrackWater {};
  * Defines all 6 base YAPF modules as classes providing services for CYapfBaseT.
  */
 template <class Tpf_, class Tnode_list>
-struct CYapfRegion_TypesT
-{
-	typedef CYapfRegion_TypesT<Tpf_, Tnode_list> Types;         ///< Shortcut for this struct type.
-	typedef Tpf_                                 Tpf;           ///< Pathfinder type.
-	typedef DummyFollower                        TrackFollower; ///< Track follower helper class
-	typedef Tnode_list                           NodeList;
-	typedef Ship                                 VehicleType;
+struct CYapfRegion_TypesT {
+	typedef CYapfRegion_TypesT<Tpf_, Tnode_list> Types; ///< Shortcut for this struct type.
+	typedef Tpf_ Tpf; ///< Pathfinder type.
+	typedef DummyFollower TrackFollower; ///< Track follower helper class
+	typedef Tnode_list NodeList;
+	typedef Ship VehicleType;
 
 	/** Pathfinder components (modules). */
-	typedef CYapfBaseT<Types>                 PfBase;        ///< Base pathfinder class.
-	typedef CYapfFollowRegionT<Types>         PfFollow;      ///< Node follower.
-	typedef CYapfOriginRegionT<Types>         PfOrigin;      ///< Origin provider.
-	typedef CYapfDestinationRegionT<Types>    PfDestination; ///< Destination/distance provider.
-	typedef CYapfSegmentCostCacheNoneT<Types> PfCache;       ///< Segment cost cache provider.
-	typedef CYapfCostRegionT<Types>           PfCost;        ///< Cost provider.
+	typedef CYapfBaseT<Types> PfBase; ///< Base pathfinder class.
+	typedef CYapfFollowRegionT<Types> PfFollow; ///< Node follower.
+	typedef CYapfOriginRegionT<Types> PfOrigin; ///< Origin provider.
+	typedef CYapfDestinationRegionT<Types> PfDestination; ///< Destination/distance provider.
+	typedef CYapfSegmentCostCacheNoneT<Types> PfCache; ///< Segment cost cache provider.
+	typedef CYapfCostRegionT<Types> PfCost; ///< Cost provider.
 };
 
 typedef NodeList<CYapfRegionNodeT<CYapfRegionPatchNodeKey>, 12, 12> CRegionNodeListWater;
 
-struct CYapfRegionWater : CYapfT<CYapfRegion_TypesT<CYapfRegionWater, CRegionNodeListWater>>
-{
-	explicit CYapfRegionWater(int max_nodes) { this->max_search_nodes = max_nodes; }
+struct CYapfRegionWater : CYapfT<CYapfRegion_TypesT<CYapfRegionWater, CRegionNodeListWater>> {
+	explicit CYapfRegionWater(int max_nodes)
+	{
+		this->max_search_nodes = max_nodes;
+	}
 };
 
 /**

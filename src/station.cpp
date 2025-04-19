@@ -8,24 +8,25 @@
 /** @file station.cpp Implementation of the station base class. */
 
 #include "stdafx.h"
-#include "company_func.h"
-#include "company_base.h"
-#include "roadveh.h"
-#include "viewport_func.h"
-#include "viewport_kdtree.h"
-#include "command_func.h"
-#include "news_func.h"
-#include "aircraft.h"
-#include "vehiclelist.h"
+
 #include "core/pool_func.hpp"
-#include "station_base.h"
-#include "station_kdtree.h"
-#include "roadstop_base.h"
-#include "industry.h"
-#include "town.h"
 #include "core/random_func.hpp"
+#include "aircraft.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "industry.h"
 #include "linkgraph/linkgraph.h"
 #include "linkgraph/linkgraphschedule.h"
+#include "news_func.h"
+#include "roadstop_base.h"
+#include "roadveh.h"
+#include "station_base.h"
+#include "station_kdtree.h"
+#include "town.h"
+#include "vehiclelist.h"
+#include "viewport_func.h"
+#include "viewport_kdtree.h"
 
 #include "table/strings.h"
 
@@ -34,7 +35,6 @@
 /** The pool of stations. */
 StationPool _station_pool("Station");
 INSTANTIATE_POOL_METHODS(Station)
-
 
 StationKdtree _station_kdtree{};
 
@@ -47,28 +47,21 @@ void RebuildStationKdtree()
 	_station_kdtree.Build(stids.begin(), stids.end());
 }
 
-
 BaseStation::~BaseStation()
 {
 	if (CleaningPool()) return;
 
-	CloseWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->index).ToWindowNumber());
-	CloseWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     this->owner, this->index).ToWindowNumber());
-	CloseWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     this->owner, this->index).ToWindowNumber());
+	CloseWindowById(WC_TRAINS_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN, this->owner, this->index).ToWindowNumber());
+	CloseWindowById(WC_ROADVEH_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD, this->owner, this->index).ToWindowNumber());
+	CloseWindowById(WC_SHIPS_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP, this->owner, this->index).ToWindowNumber());
 	CloseWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, this->owner, this->index).ToWindowNumber());
 
 	this->sign.MarkDirty();
 }
 
 Station::Station(TileIndex tile) :
-	SpecializedStation<Station, false>(tile),
-	bus_station(INVALID_TILE, 0, 0),
-	truck_station(INVALID_TILE, 0, 0),
-	ship_station(INVALID_TILE, 0, 0),
-	indtype(IT_INVALID),
-	time_since_load(255),
-	time_since_unload(255),
-	last_vehicle_type(VEH_INVALID)
+	SpecializedStation<Station, false>(tile), bus_station(INVALID_TILE, 0, 0), truck_station(INVALID_TILE, 0, 0), ship_station(INVALID_TILE, 0, 0), indtype(IT_INVALID), time_since_load(255),
+	time_since_unload(255), last_vehicle_type(VEH_INVALID)
 {
 	/* this->random_bits is set in Station::AddFacility() */
 }
@@ -160,7 +153,6 @@ Station::~Station()
 	_station_kdtree.Remove(this->index);
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 }
-
 
 /**
  * Invalidating of the JoinStation window has to be done
@@ -313,24 +305,34 @@ static uint GetTileCatchmentRadius(TileIndex tile, const Station *st)
 
 	if (_settings_game.station.modified_catchment) {
 		switch (GetStationType(tile)) {
-			case StationType::Rail:    return CA_TRAIN;
-			case StationType::Oilrig:  return CA_UNMODIFIED;
-			case StationType::Airport: return st->airport.GetSpec()->catchment;
-			case StationType::Truck:   return CA_TRUCK;
-			case StationType::Bus:     return CA_BUS;
-			case StationType::Dock:    return CA_DOCK;
+			case StationType::Rail:
+				return CA_TRAIN;
+			case StationType::Oilrig:
+				return CA_UNMODIFIED;
+			case StationType::Airport:
+				return st->airport.GetSpec()->catchment;
+			case StationType::Truck:
+				return CA_TRUCK;
+			case StationType::Bus:
+				return CA_BUS;
+			case StationType::Dock:
+				return CA_DOCK;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 			case StationType::Buoy:
 			case StationType::RailWaypoint:
-			case StationType::RoadWaypoint: return CA_NONE;
+			case StationType::RoadWaypoint:
+				return CA_NONE;
 		}
 	} else {
 		switch (GetStationType(tile)) {
-			default:               return CA_UNMODIFIED;
+			default:
+				return CA_UNMODIFIED;
 			case StationType::Buoy:
 			case StationType::RailWaypoint:
-			case StationType::RoadWaypoint: return CA_NONE;
+			case StationType::RoadWaypoint:
+				return CA_NONE;
 		}
 	}
 }
@@ -344,11 +346,11 @@ uint Station::GetCatchmentRadius() const
 	uint ret = CA_NONE;
 
 	if (_settings_game.station.modified_catchment) {
-		if (this->bus_stops          != nullptr)      ret = std::max<uint>(ret, CA_BUS);
-		if (this->truck_stops        != nullptr)      ret = std::max<uint>(ret, CA_TRUCK);
+		if (this->bus_stops != nullptr) ret = std::max<uint>(ret, CA_BUS);
+		if (this->truck_stops != nullptr) ret = std::max<uint>(ret, CA_TRUCK);
 		if (this->train_station.tile != INVALID_TILE) ret = std::max<uint>(ret, CA_TRAIN);
-		if (this->ship_station.tile  != INVALID_TILE) ret = std::max<uint>(ret, CA_DOCK);
-		if (this->airport.tile       != INVALID_TILE) ret = std::max<uint>(ret, this->airport.GetSpec()->catchment);
+		if (this->ship_station.tile != INVALID_TILE) ret = std::max<uint>(ret, CA_DOCK);
+		if (this->airport.tile != INVALID_TILE) ret = std::max<uint>(ret, this->airport.GetSpec()->catchment);
 	} else {
 		if (this->bus_stops != nullptr || this->truck_stops != nullptr || this->train_station.tile != INVALID_TILE || this->ship_station.tile != INVALID_TILE || this->airport.tile != INVALID_TILE) {
 			ret = CA_UNMODIFIED;
@@ -369,12 +371,8 @@ Rect Station::GetCatchmentRect() const
 	/* Compute acceptance rectangle */
 	int catchment_radius = this->GetCatchmentRadius();
 
-	Rect ret = {
-		std::max<int>(this->rect.left   - catchment_radius, 0),
-		std::max<int>(this->rect.top    - catchment_radius, 0),
-		std::min<int>(this->rect.right  + catchment_radius, Map::MaxX()),
-		std::min<int>(this->rect.bottom + catchment_radius, Map::MaxY())
-	};
+	Rect ret = {std::max<int>(this->rect.left - catchment_radius, 0), std::max<int>(this->rect.top - catchment_radius, 0), std::min<int>(this->rect.right + catchment_radius, Map::MaxX()),
+		std::min<int>(this->rect.bottom + catchment_radius, Map::MaxY())};
 
 	return ret;
 }
@@ -419,7 +417,6 @@ void Station::RemoveIndustryToDeliver(Industry *ind)
 	}
 }
 
-
 /**
  * Remove this station from the nearby stations lists of nearby towns and industries.
  */
@@ -437,8 +434,12 @@ void Station::RemoveFromAllNearbyLists()
 		}
 	}
 
-	for (const TownID &townid : towns) { Town::Get(townid)->stations_near.erase(this); }
-	for (const IndustryID &industryid : industries) { Industry::Get(industryid)->stations_near.erase(this); }
+	for (const TownID &townid : towns) {
+		Town::Get(townid)->stations_near.erase(this);
+	}
+	for (const IndustryID &industryid : industries) {
+		Industry::Get(industryid)->stations_near.erase(this);
+	}
 }
 
 /**
@@ -532,9 +533,15 @@ void Station::RecomputeCatchment(bool no_clear_nearby_lists)
  */
 /* static */ void Station::RecomputeCatchmentForAll()
 {
-	for (Town *t : Town::Iterate()) { t->stations_near.clear(); }
-	for (Industry *i : Industry::Iterate()) { i->stations_near.clear(); }
-	for (Station *st : Station::Iterate()) { st->RecomputeCatchment(true); }
+	for (Town *t : Town::Iterate()) {
+		t->stations_near.clear();
+	}
+	for (Industry *i : Industry::Iterate()) {
+		i->stations_near.clear();
+	}
+	for (Station *st : Station::Iterate()) {
+		st->RecomputeCatchment(true);
+	}
 }
 
 /************************************************************************/
@@ -562,8 +569,7 @@ void StationRect::MakeEmpty()
  */
 bool StationRect::PtInExtendedRect(int x, int y, int distance) const
 {
-	return this->left - distance <= x && x <= this->right + distance &&
-			this->top - distance <= y && y <= this->bottom + distance;
+	return this->left - distance <= x && x <= this->right + distance && this->top - distance <= y && y <= this->bottom + distance;
 }
 
 bool StationRect::IsEmpty() const
@@ -695,7 +701,7 @@ bool StationRect::AfterRemoveRect(BaseStation *st, TileArea ta)
 	return empty;
 }
 
-StationRect& StationRect::operator = (const Rect &src)
+StationRect &StationRect::operator=(const Rect &src)
 {
 	this->left = src.left;
 	this->top = src.top;
@@ -722,7 +728,7 @@ Money AirportMaintenanceCost(Owner owner)
 	return total_cost >> 3;
 }
 
-bool StationCompare::operator() (const Station *lhs, const Station *rhs) const
+bool StationCompare::operator()(const Station *lhs, const Station *rhs) const
 {
 	return lhs->index < rhs->index;
 }

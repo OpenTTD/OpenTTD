@@ -8,20 +8,22 @@
 /** @file linkgraph_gui.cpp Implementation of linkgraph overlay GUI. */
 
 #include "../stdafx.h"
-#include "../window_gui.h"
-#include "../window_func.h"
-#include "../company_base.h"
-#include "../company_gui.h"
-#include "../timer/timer_game_tick.h"
-#include "../timer/timer_game_calendar.h"
-#include "../viewport_func.h"
-#include "../zoom_func.h"
-#include "../smallmap_gui.h"
-#include "../core/geometry_func.hpp"
-#include "../widgets/link_graph_legend_widget.h"
-#include "../strings_func.h"
+
 #include "linkgraph_gui.h"
 
+#include "../core/geometry_func.hpp"
+#include "../company_base.h"
+#include "../company_gui.h"
+#include "../smallmap_gui.h"
+#include "../strings_func.h"
+#include "../timer/timer_game_calendar.h"
+#include "../timer/timer_game_tick.h"
+#include "../viewport_func.h"
+#include "../window_func.h"
+#include "../window_gui.h"
+#include "../zoom_func.h"
+
+#include "../widgets/link_graph_legend_widget.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -30,28 +32,9 @@
  * Colours for the various "load" states of links. Ordered from "unused" to
  * "overloaded".
  */
-const uint8_t LinkGraphOverlay::LINK_COLOURS[][12] = {
-{
-	0x0f, 0xd1, 0xd0, 0x57,
-	0x55, 0x53, 0xbf, 0xbd,
-	0xba, 0xb9, 0xb7, 0xb5
-},
-{
-	0x0f, 0xd1, 0xd0, 0x57,
-	0x55, 0x53, 0x96, 0x95,
-	0x94, 0x93, 0x92, 0x91
-},
-{
-	0x0f, 0x0b, 0x09, 0x07,
-	0x05, 0x03, 0xbf, 0xbd,
-	0xba, 0xb9, 0xb7, 0xb5
-},
-{
-	0x0f, 0x0b, 0x0a, 0x09,
-	0x08, 0x07, 0x06, 0x05,
-	0x04, 0x03, 0x02, 0x01
-}
-};
+const uint8_t LinkGraphOverlay::LINK_COLOURS[][12] = {{0x0f, 0xd1, 0xd0, 0x57, 0x55, 0x53, 0xbf, 0xbd, 0xba, 0xb9, 0xb7, 0xb5},
+	{0x0f, 0xd1, 0xd0, 0x57, 0x55, 0x53, 0x96, 0x95, 0x94, 0x93, 0x92, 0x91}, {0x0f, 0x0b, 0x09, 0x07, 0x05, 0x03, 0xbf, 0xbd, 0xba, 0xb9, 0xb7, 0xb5},
+	{0x0f, 0x0b, 0x0a, 0x09, 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01}};
 
 /**
  * Get a DPI for the widget we will be drawing to.
@@ -127,9 +110,7 @@ void LinkGraphOverlay::RebuildCache()
  */
 inline bool LinkGraphOverlay::IsPointVisible(Point pt, const DrawPixelInfo *dpi, int padding) const
 {
-	return pt.x > dpi->left - padding && pt.y > dpi->top - padding &&
-			pt.x < dpi->left + dpi->width + padding &&
-			pt.y < dpi->top + dpi->height + padding;
+	return pt.x > dpi->left - padding && pt.y > dpi->top - padding && pt.x < dpi->left + dpi->width + padding && pt.y < dpi->top + dpi->height + padding;
 }
 
 /**
@@ -153,10 +134,10 @@ inline bool LinkGraphOverlay::IsLinkVisible(Point pta, Point ptb, const DrawPixe
 	 */
 
 	const uint8_t INSIDE = 0; // 0000
-	const uint8_t LEFT   = 1; // 0001
-	const uint8_t RIGHT  = 2; // 0010
+	const uint8_t LEFT = 1; // 0001
+	const uint8_t RIGHT = 2; // 0010
 	const uint8_t BOTTOM = 4; // 0100
-	const uint8_t TOP    = 8; // 1000
+	const uint8_t TOP = 8; // 1000
 
 	int x0 = pta.x;
 	int y0 = pta.y;
@@ -185,17 +166,17 @@ inline bool LinkGraphOverlay::IsLinkVisible(Point pta, Point ptb, const DrawPixe
 		if (c0 == 0 || c1 == 0) return true;
 		if ((c0 & c1) != 0) return false;
 
-		if (c0 & TOP) {           // point 0 is above the clip window
-			x0 = x0 + (int)(((int64_t) (x1 - x0)) * ((int64_t) (top - y0)) / ((int64_t) (y1 - y0)));
+		if (c0 & TOP) { // point 0 is above the clip window
+			x0 = x0 + (int)(((int64_t)(x1 - x0)) * ((int64_t)(top - y0)) / ((int64_t)(y1 - y0)));
 			y0 = top;
 		} else if (c0 & BOTTOM) { // point 0 is below the clip window
-			x0 = x0 + (int)(((int64_t) (x1 - x0)) * ((int64_t) (bottom - y0)) / ((int64_t) (y1 - y0)));
+			x0 = x0 + (int)(((int64_t)(x1 - x0)) * ((int64_t)(bottom - y0)) / ((int64_t)(y1 - y0)));
 			y0 = bottom;
-		} else if (c0 & RIGHT) {  // point 0 is to the right of clip window
-			y0 = y0 + (int)(((int64_t) (y1 - y0)) * ((int64_t) (right - x0)) / ((int64_t) (x1 - x0)));
+		} else if (c0 & RIGHT) { // point 0 is to the right of clip window
+			y0 = y0 + (int)(((int64_t)(y1 - y0)) * ((int64_t)(right - x0)) / ((int64_t)(x1 - x0)));
 			x0 = right;
-		} else if (c0 & LEFT) {   // point 0 is to the left of clip window
-			y0 = y0 + (int)(((int64_t) (y1 - y0)) * ((int64_t) (left - x0)) / ((int64_t) (x1 - x0)));
+		} else if (c0 & LEFT) { // point 0 is to the left of clip window
+			y0 = y0 + (int)(((int64_t)(y1 - y0)) * ((int64_t)(left - x0)) / ((int64_t)(x1 - x0)));
 			x0 = left;
 		}
 
@@ -215,18 +196,14 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 	for (CargoType cargo : SetCargoBitIterator(this->cargo_mask)) {
 		if (!CargoSpec::Get(cargo)->IsValid()) continue;
 		const GoodsEntry &ge = from->goods[cargo];
-		if (!LinkGraph::IsValidID(ge.link_graph) ||
-				ge.link_graph != to->goods[cargo].link_graph) {
+		if (!LinkGraph::IsValidID(ge.link_graph) || ge.link_graph != to->goods[cargo].link_graph) {
 			continue;
 		}
 		const LinkGraph &lg = *LinkGraph::Get(ge.link_graph);
 		if (lg[ge.node].HasEdgeTo(to->goods[cargo].node)) {
 			ConstEdge &edge = lg[ge.node][to->goods[cargo].node];
-			this->AddStats(cargo, lg.Monthly(edge.capacity), lg.Monthly(edge.usage),
-					ge.HasData() ? ge.GetData().flows.GetFlowVia(to->index) : 0,
-					edge.TravelTime() / Ticks::DAY_TICKS,
-					from->owner == OWNER_NONE || to->owner == OWNER_NONE,
-					this->cached_links[from->index][to->index]);
+			this->AddStats(cargo, lg.Monthly(edge.capacity), lg.Monthly(edge.usage), ge.HasData() ? ge.GetData().flows.GetFlowVia(to->index) : 0, edge.TravelTime() / Ticks::DAY_TICKS,
+				from->owner == OWNER_NONE || to->owner == OWNER_NONE, this->cached_links[from->index][to->index]);
 		}
 	}
 }
@@ -244,8 +221,7 @@ void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 /* static */ void LinkGraphOverlay::AddStats(CargoType new_cargo, uint new_cap, uint new_usg, uint new_plan, uint32_t time, bool new_shared, LinkProperties &cargo)
 {
 	/* multiply the numbers by 32 in order to avoid comparing to 0 too often. */
-	if (cargo.capacity == 0 ||
-			cargo.Usage() * 32 / (cargo.capacity + 1) < std::max(new_usg, new_plan) * 32 / (new_cap + 1)) {
+	if (cargo.capacity == 0 || cargo.Usage() * 32 / (cargo.capacity + 1) < std::max(new_usg, new_plan) * 32 / (new_cap + 1)) {
 		cargo.cargo = new_cargo;
 		cargo.capacity = new_cap;
 		cargo.usage = new_usg;
@@ -330,10 +306,8 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 
 		uint r = width * 2 + width * 2 * std::min(200U, i.second) / 200;
 
-		LinkGraphOverlay::DrawVertex(pt.x, pt.y, r,
-				GetColourGradient(st->owner != OWNER_NONE ?
-						Company::Get(st->owner)->colour : COLOUR_GREY, SHADE_LIGHT),
-				GetColourGradient(COLOUR_GREY, SHADE_DARKEST));
+		LinkGraphOverlay::DrawVertex(
+			pt.x, pt.y, r, GetColourGradient(st->owner != OWNER_NONE ? Company::Get(st->owner)->colour : COLOUR_GREY, SHADE_LIGHT), GetColourGradient(COLOUR_GREY, SHADE_DARKEST));
 	}
 }
 
@@ -370,11 +344,7 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 			float dist = std::abs((int64_t)(ptb.x - pta.x) * (int64_t)(pta.y - pt.y) - (int64_t)(pta.x - pt.x) * (int64_t)(ptb.y - pta.y)) /
 				std::sqrt((int64_t)(ptb.x - pta.x) * (int64_t)(ptb.x - pta.x) + (int64_t)(ptb.y - pta.y) * (int64_t)(ptb.y - pta.y));
 			const auto &link = j->second;
-			if (dist <= 4 && link.Usage() > 0 &&
-					pt.x + 2 >= std::min(pta.x, ptb.x) &&
-					pt.x - 2 <= std::max(pta.x, ptb.x) &&
-					pt.y + 2 >= std::min(pta.y, ptb.y) &&
-					pt.y - 2 <= std::max(pta.y, ptb.y)) {
+			if (dist <= 4 && link.Usage() > 0 && pt.x + 2 >= std::min(pta.x, ptb.x) && pt.x - 2 <= std::max(pta.x, ptb.x) && pt.y + 2 >= std::min(pta.y, ptb.y) && pt.y - 2 <= std::max(pta.y, ptb.y)) {
 				static std::string tooltip_extension;
 				tooltip_extension.clear();
 				/* Fill buf with more information if this is a bidirectional link. */
@@ -384,8 +354,7 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 					const auto &back = k->second;
 					back_time = back.time;
 					if (back.Usage() > 0) {
-						tooltip_extension = GetString(STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION,
-								back.cargo, back.Usage(), back.Usage() * 100 / (back.capacity + 1));
+						tooltip_extension = GetString(STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION, back.cargo, back.Usage(), back.Usage() * 100 / (back.capacity + 1));
 					}
 				}
 				/* Add information about the travel time if known. */
@@ -395,8 +364,8 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 					AppendStringWithArgsInPlace(tooltip_extension, STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION, params);
 				}
 				GuiShowTooltips(this->window,
-					GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_LINKGRAPH_STATS_TOOLTIP_MINUTE : STR_LINKGRAPH_STATS_TOOLTIP_MONTH,
-						link.cargo, link.Usage(), i->first, j->first, link.Usage() * 100 / (link.capacity + 1), tooltip_extension),
+					GetEncodedString(TimerGameEconomy::UsingWallclockUnits() ? STR_LINKGRAPH_STATS_TOOLTIP_MINUTE : STR_LINKGRAPH_STATS_TOOLTIP_MONTH, link.cargo, link.Usage(), i->first, j->first,
+						link.Usage() * 100 / (link.capacity + 1), tooltip_extension),
 					close_cond);
 				return true;
 			}
@@ -495,7 +464,6 @@ std::unique_ptr<NWidgetBase> MakeCargoesLegendLinkGraphGUI()
 	return panel;
 }
 
-
 /* clang-format off */
 static constexpr NWidgetPart _nested_linkgraph_legend_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -528,15 +496,9 @@ static constexpr NWidgetPart _nested_linkgraph_legend_widgets[] = {
 };
 /* clang-format on */
 
-static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
-		lengthof(LinkGraphOverlay::LINK_COLOURS[0]) - 1);
+static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST == lengthof(LinkGraphOverlay::LINK_COLOURS[0]) - 1);
 
-static WindowDesc _linkgraph_legend_desc(
-	WDP_AUTO, "toolbar_linkgraph", 0, 0,
-	WC_LINKGRAPH_LEGEND, WC_NONE,
-	{},
-	_nested_linkgraph_legend_widgets
-);
+static WindowDesc _linkgraph_legend_desc(WDP_AUTO, "toolbar_linkgraph", 0, 0, WC_LINKGRAPH_LEGEND, WC_NONE, {}, _nested_linkgraph_legend_widgets);
 
 /**
  * Open a link graph legend window.
@@ -636,11 +598,7 @@ bool LinkGraphLegendWindow::OnTooltip([[maybe_unused]] Point, WidgetID widget, T
 		if (this->IsWidgetDisabled(widget)) {
 			GuiShowTooltips(this, GetEncodedString(STR_LINKGRAPH_LEGEND_SELECT_COMPANIES), close_cond);
 		} else {
-			GuiShowTooltips(this,
-				GetEncodedString(STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP,
-					STR_LINKGRAPH_LEGEND_SELECT_COMPANIES,
-					widget - WID_LGL_COMPANY_FIRST),
-				close_cond);
+			GuiShowTooltips(this, GetEncodedString(STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP, STR_LINKGRAPH_LEGEND_SELECT_COMPANIES, widget - WID_LGL_COMPANY_FIRST), close_cond);
 		}
 		return true;
 	}

@@ -10,16 +10,16 @@
 #ifndef STRGEN_H
 #define STRGEN_H
 
-#include "../core/string_consumer.hpp"
-#include "../language.h"
+#include <array>
+#include <unordered_map>
 #include "../3rdparty/fmt/format.h"
 
-#include <unordered_map>
-#include <array>
+#include "../core/string_consumer.hpp"
+#include "../language.h"
 
 /** Container for the different cases of a string. */
 struct Case {
-	uint8_t caseidx;       ///< The index of the case.
+	uint8_t caseidx; ///< The index of the case.
 	std::string string; ///< The translation of the case.
 
 	Case(uint8_t caseidx, std::string_view string);
@@ -27,11 +27,11 @@ struct Case {
 
 /** Information about a single string. */
 struct LangString {
-	std::string name;       ///< Name of the string.
-	std::string english;    ///< English text.
+	std::string name; ///< Name of the string.
+	std::string english; ///< English text.
 	std::string translated; ///< Translated text.
-	size_t index;           ///< The index in the language file.
-	size_t line;            ///< Line of string in source-file.
+	size_t index; ///< The index in the language file.
+	size_t line; ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
 
 	LangString(std::string_view name, std::string_view english, size_t index, size_t line);
@@ -42,9 +42,9 @@ struct LangString {
 struct StringData {
 	std::vector<std::shared_ptr<LangString>> strings; ///< List of all known strings.
 	std::unordered_map<std::string, std::shared_ptr<LangString>> name_to_string; ///< Lookup table for the strings.
-	size_t tabs;          ///< The number of 'tabs' of strings.
-	size_t max_strings;   ///< The maximum number of strings.
-	size_t next_string_id;///< The next string ID to allocate.
+	size_t tabs; ///< The number of 'tabs' of strings.
+	size_t max_strings; ///< The maximum number of strings.
+	size_t next_string_id; ///< The next string ID to allocate.
 
 	StringData(size_t tabs);
 	void FreeTranslation();
@@ -58,7 +58,7 @@ struct StringData {
 struct StringReader {
 	StringData &data; ///< The data to fill during reading.
 	const std::string file; ///< The file we are reading.
-	bool master;      ///< Are we reading the master file?
+	bool master; ///< Are we reading the master file?
 	bool translation; ///< Are we reading a translation, implies !master. However, the base translation will have this false.
 
 	StringReader(StringData &data, const std::string &file, bool master, bool translation);
@@ -141,7 +141,7 @@ struct CmdPair {
 
 struct ParsedCommandStruct {
 	std::vector<CmdPair> non_consuming_commands;
-	std::array<const CmdStruct*, 32> consuming_commands{ nullptr }; // ordered by param #
+	std::array<const CmdStruct *, 32> consuming_commands{nullptr}; // ordered by param #
 };
 
 const CmdStruct *TranslateCmdForCompare(const CmdStruct *a);
@@ -166,6 +166,7 @@ struct StrgenState {
 	bool translation = false; ///< Is the current file actually a translation or not
 	LanguagePackHeader lang; ///< Header information about a language.
 };
+
 extern StrgenState _strgen;
 
 #endif /* STRGEN_H */

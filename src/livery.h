@@ -13,9 +13,9 @@
 #include "company_type.h"
 #include "gfx_type.h"
 
-static const uint8_t LIT_NONE    = 0; ///< Don't show the liveries at all
+static const uint8_t LIT_NONE = 0; ///< Don't show the liveries at all
 static const uint8_t LIT_COMPANY = 1; ///< Show the liveries of your own company
-static const uint8_t LIT_ALL     = 2; ///< Show the liveries of all companies
+static const uint8_t LIT_ALL = 2; ///< Show the liveries of all companies
 
 /** List of different livery schemes. */
 enum LiveryScheme : uint8_t {
@@ -76,7 +76,7 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */
 struct Livery {
-	uint8_t in_use = 0;  ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
+	uint8_t in_use = 0; ///< Bit 0 set if this livery should override the default livery first colour, Bit 1 for the second colour.
 	Colours colour1 = COLOUR_BEGIN; ///< First colour, for all vehicles.
 	Colours colour2 = COLOUR_BEGIN; ///< Second colour, for vehicles with 2CC support.
 };

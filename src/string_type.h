@@ -22,12 +22,12 @@
  * Valid filter types for IsValidChar.
  */
 enum CharSetFilter : uint8_t {
-	CS_ALPHANUMERAL,      ///< Both numeric and alphabetic and spaces and stuff
-	CS_NUMERAL,           ///< Only numeric ones
-	CS_NUMERAL_SPACE,     ///< Only numbers and spaces
-	CS_NUMERAL_SIGNED,    ///< Only numbers and '-' for negative values
-	CS_ALPHA,             ///< Only alphabetic values
-	CS_HEXADECIMAL,       ///< Only hexadecimal characters
+	CS_ALPHANUMERAL, ///< Both numeric and alphabetic and spaces and stuff
+	CS_NUMERAL, ///< Only numeric ones
+	CS_NUMERAL_SPACE, ///< Only numbers and spaces
+	CS_NUMERAL_SIGNED, ///< Only numbers and '-' for negative values
+	CS_ALPHA, ///< Only alphabetic values
+	CS_HEXADECIMAL, ///< Only hexadecimal characters
 };
 
 /* The following are directional formatting codes used to get the LTR and RTL strings right:
@@ -54,7 +54,6 @@ enum class StringValidationSetting : uint8_t {
 };
 
 using StringValidationSettings = EnumBitSet<StringValidationSetting, uint8_t>;
-
 
 /** Type for a list of strings. */
 typedef std::vector<std::string> StringList;

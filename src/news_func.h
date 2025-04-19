@@ -10,12 +10,13 @@
 #ifndef NEWS_FUNC_H
 #define NEWS_FUNC_H
 
-#include "news_type.h"
-#include "vehicle_type.h"
-#include "station_type.h"
 #include "industry_type.h"
+#include "news_type.h"
+#include "station_type.h"
+#include "vehicle_type.h"
 
-void AddNewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1 = {}, NewsReference ref2 = {}, std::unique_ptr<NewsAllocatedData> &&data = nullptr, AdviceType advice_type = AdviceType::Invalid);
+void AddNewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1 = {}, NewsReference ref2 = {}, std::unique_ptr<NewsAllocatedData> &&data = nullptr,
+	AdviceType advice_type = AdviceType::Invalid);
 
 inline void AddCompanyNewsItem(EncodedString &&headline, std::unique_ptr<CompanyNewsInformation> cni)
 {

@@ -163,9 +163,9 @@ static const CmdStruct _cmd_structs[] = {
 
 /** Description of a plural form */
 struct PluralForm {
-	size_t plural_count;     ///< The number of plural forms
+	size_t plural_count; ///< The number of plural forms
 	const char *description; ///< Human readable description of the form
-	const char *names;       ///< Plural names
+	const char *names; ///< Plural names
 };
 
 /** The maximum number of plurals. */

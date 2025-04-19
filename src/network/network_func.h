@@ -17,13 +17,13 @@
 // #define DEBUG_DUMP_COMMANDS
 // #define DEBUG_FAILED_DUMP_COMMANDS
 
-#include "network_type.h"
 #include "../core/convertible_through_base.hpp"
+#include "../company_type.h"
 #include "../console_type.h"
 #include "../gfx_type.h"
 #include "../openttd.h"
-#include "../company_type.h"
 #include "../string_type.h"
+#include "network_type.h"
 
 extern ClientID _network_own_client_id;
 extern ClientID _redirect_console_to_client;
@@ -71,7 +71,6 @@ void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 void NetworkServerNewCompany(const Company *company, NetworkClientInfo *ci);
 bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_name);
-
 
 bool NetworkCanJoinCompany(CompanyID company_id);
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);

@@ -8,21 +8,20 @@
 /** @file ai_instance.cpp Implementation of AIInstance. */
 
 #include "../stdafx.h"
-#include "../debug.h"
-#include "../error.h"
+
+#include "ai_instance.hpp"
+
 #include "../company_base.h"
 #include "../company_func.h"
-
-#include "../script/squirrel_class.hpp"
-
-#include "ai_config.hpp"
-#include "ai.hpp"
-
-#include "../script/script_storage.hpp"
+#include "../debug.h"
+#include "../error.h"
 #include "../script/script_cmd.h"
 #include "../script/script_gui.h"
+#include "../script/script_storage.hpp"
+#include "../script/squirrel_class.hpp"
+#include "ai.hpp"
+#include "ai_config.hpp"
 #include "ai_info.hpp"
-#include "ai_instance.hpp"
 
 #include "table/strings.h"
 
@@ -34,9 +33,7 @@
 
 #include "../safeguards.h"
 
-AIInstance::AIInstance() :
-	ScriptInstance("AI")
-{}
+AIInstance::AIInstance() : ScriptInstance("AI") {}
 
 void AIInstance::Initialize(AIInfo *info)
 {

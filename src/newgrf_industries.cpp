@@ -8,19 +8,21 @@
 /** @file newgrf_industries.cpp Handling of NewGRF industries. */
 
 #include "stdafx.h"
+
+#include "newgrf_industries.h"
+
+#include "core/random_func.hpp"
+#include "company_base.h"
 #include "debug.h"
+#include "error.h"
 #include "industry.h"
 #include "newgrf_badge.h"
-#include "newgrf_industries.h"
-#include "newgrf_town.h"
 #include "newgrf_cargo.h"
-#include "window_func.h"
-#include "town.h"
-#include "company_base.h"
-#include "error.h"
+#include "newgrf_town.h"
 #include "strings_func.h"
-#include "core/random_func.hpp"
 #include "timer/timer_game_calendar.h"
+#include "town.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -115,14 +117,14 @@ static uint32_t GetClosestIndustry(TileIndex tile, IndustryType type, const Indu
  */
 static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8_t layout_filter, bool town_filter, const Industry *current)
 {
-	uint32_t grf_id = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
+	uint32_t grf_id = GetRegister(0x100); ///< Get the GRFID of the definition to look for in register 100h
 	IndustryType industry_type;
 	uint32_t closest_dist = UINT32_MAX;
 	uint8_t count = 0;
 
 	/* Determine what will be the industry type to look for */
 	switch (grf_id) {
-		case 0:  // this is a default industry type
+		case 0: // this is a default industry type
 			industry_type = param_set_id;
 			break;
 
@@ -167,40 +169,54 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 		/* Variables available during construction check. */
 
 		switch (variable) {
-			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
+			case 0x7A:
+				return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
 
-			case 0x80: return this->tile.base();
-			case 0x81: return GB(this->tile.base(), 8, 8);
+			case 0x80:
+				return this->tile.base();
+			case 0x81:
+				return GB(this->tile.base(), 8, 8);
 
 			/* Pointer to the town the industry is associated with */
-			case 0x82: return this->industry->town->index.base();
+			case 0x82:
+				return this->industry->town->index.base();
 			case 0x83:
 			case 0x84:
-			case 0x85: Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
+			case 0x85:
+				Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic");
+				break; // not supported
 
 			/* Number of the layout */
-			case 0x86: return this->industry->selected_layout;
+			case 0x86:
+				return this->industry->selected_layout;
 
 			/* Ground type */
-			case 0x87: return GetTerrainType(this->tile);
+			case 0x87:
+				return GetTerrainType(this->tile);
 
 			/* Town zone */
-			case 0x88: return GetTownRadiusGroup(this->industry->town, this->tile);
+			case 0x88:
+				return GetTownRadiusGroup(this->industry->town, this->tile);
 
 			/* Manhattan distance of the closest town */
-			case 0x89: return ClampTo<uint8_t>(DistanceManhattan(this->industry->town->xy, this->tile));
+			case 0x89:
+				return ClampTo<uint8_t>(DistanceManhattan(this->industry->town->xy, this->tile));
 
 			/* Lowest height of the tile */
-			case 0x8A: return ClampTo<uint8_t>(GetTileZ(this->tile) * (this->ro.grffile->grf_version >= 8 ? 1 : TILE_HEIGHT));
+			case 0x8A:
+				return ClampTo<uint8_t>(GetTileZ(this->tile) * (this->ro.grffile->grf_version >= 8 ? 1 : TILE_HEIGHT));
 
 			/* Distance to the nearest water/land tile */
-			case 0x8B: return GetClosestWaterDistance(this->tile, !GetIndustrySpec(this->industry->type)->behaviour.Test(IndustryBehaviour::BuiltOnWater));
+			case 0x8B:
+				return GetClosestWaterDistance(this->tile, !GetIndustrySpec(this->industry->type)->behaviour.Test(IndustryBehaviour::BuiltOnWater));
 
 			/* Square of Euclidean distance from town */
-			case 0x8D: return ClampTo<uint16_t>(DistanceSquare(this->industry->town->xy, this->tile));
+			case 0x8D:
+				return ClampTo<uint16_t>(DistanceSquare(this->industry->town->xy, this->tile));
 
 			/* 32 random bits */
-			case 0x8F: return this->random_bits;
+			case 0x8F:
+				return this->random_bits;
 		}
 	}
 
@@ -236,7 +252,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			return GetClosestWaterDistance(this->tile, !indspec->behaviour.Test(IndustryBehaviour::BuiltOnWater));
 
 		/* Layout number */
-		case 0x44: return this->industry->selected_layout;
+		case 0x44:
+			return this->industry->selected_layout;
 
 		/* Company info */
 		case 0x45: {
@@ -254,13 +271,16 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			return this->industry->founder.base() | (is_ai ? 0x10000 : 0) | (colours << 24);
 		}
 
-		case 0x46: return this->industry->construction_date.base(); // Date when built - long format - (in days)
+		case 0x46:
+			return this->industry->construction_date.base(); // Date when built - long format - (in days)
 
 		/* Override flags from GS */
-		case 0x47: return this->industry->ctlflags.base();
+		case 0x47:
+			return this->industry->ctlflags.base();
 
 		/* Get industry ID at offset param */
-		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->industry->location.tile, false), this->industry, this->ro.grffile->grfid);
+		case 0x60:
+			return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->industry->location.tile, false), this->industry, this->ro.grffile->grfid);
 
 		/* Get random tile bits at offset param */
 		case 0x61: {
@@ -330,17 +350,24 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			auto it = this->industry->GetCargoProduced(cargo);
 			if (it == std::end(this->industry->produced)) return 0; // invalid cargo
 			switch (variable) {
-				case 0x69: return it->waiting;
-				case 0x6A: return it->history[THIS_MONTH].production;
-				case 0x6B: return it->history[THIS_MONTH].transported;
-				case 0x6C: return it->history[LAST_MONTH].production;
-				case 0x6D: return it->history[LAST_MONTH].transported;
-				case 0x70: return it->rate;
-				case 0x71: return it->history[LAST_MONTH].PctTransported();
-				default: NOT_REACHED();
+				case 0x69:
+					return it->waiting;
+				case 0x6A:
+					return it->history[THIS_MONTH].production;
+				case 0x6B:
+					return it->history[THIS_MONTH].transported;
+				case 0x6C:
+					return it->history[LAST_MONTH].production;
+				case 0x6D:
+					return it->history[LAST_MONTH].transported;
+				case 0x70:
+					return it->rate;
+				case 0x71:
+					return it->history[LAST_MONTH].PctTransported();
+				default:
+					NOT_REACHED();
 			}
 		}
-
 
 		case 0x6E:
 		case 0x6F: {
@@ -353,71 +380,116 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			NOT_REACHED();
 		}
 
-		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
+		case 0x7A:
+			return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
 
 		/* Get a variable from the persistent storage */
-		case 0x7C: return (this->industry->psa != nullptr) ? this->industry->psa->GetValue(parameter) : 0;
+		case 0x7C:
+			return (this->industry->psa != nullptr) ? this->industry->psa->GetValue(parameter) : 0;
 
 		/* Industry structure access*/
-		case 0x80: return this->industry->location.tile.base();
-		case 0x81: return GB(this->industry->location.tile.base(), 8, 8);
+		case 0x80:
+			return this->industry->location.tile.base();
+		case 0x81:
+			return GB(this->industry->location.tile.base(), 8, 8);
 		/* Pointer to the town the industry is associated with */
-		case 0x82: return this->industry->town->index.base();
+		case 0x82:
+			return this->industry->town->index.base();
 		case 0x83:
 		case 0x84:
-		case 0x85: Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
-		case 0x86: return this->industry->location.w;
-		case 0x87: return this->industry->location.h;// xy dimensions
+		case 0x85:
+			Debug(grf, 0, "NewGRFs shouldn't be doing pointer magic");
+			break; // not supported
+		case 0x86:
+			return this->industry->location.w;
+		case 0x87:
+			return this->industry->location.h; // xy dimensions
 
 		case 0x88:
-		case 0x89: return this->industry->GetProduced(variable - 0x88).cargo;
-		case 0x8A: return this->industry->GetProduced(0).waiting;
-		case 0x8B: return GB(this->industry->GetProduced(0).waiting, 8, 8);
-		case 0x8C: return this->industry->GetProduced(1).waiting;
-		case 0x8D: return GB(this->industry->GetProduced(1).waiting, 8, 8);
+		case 0x89:
+			return this->industry->GetProduced(variable - 0x88).cargo;
+		case 0x8A:
+			return this->industry->GetProduced(0).waiting;
+		case 0x8B:
+			return GB(this->industry->GetProduced(0).waiting, 8, 8);
+		case 0x8C:
+			return this->industry->GetProduced(1).waiting;
+		case 0x8D:
+			return GB(this->industry->GetProduced(1).waiting, 8, 8);
 		case 0x8E:
-		case 0x8F: return this->industry->GetProduced(variable - 0x8E).rate;
+		case 0x8F:
+			return this->industry->GetProduced(variable - 0x8E).rate;
 		case 0x90:
 		case 0x91:
-		case 0x92: return this->industry->GetAccepted(variable - 0x90).cargo;
-		case 0x93: return this->industry->prod_level;
+		case 0x92:
+			return this->industry->GetAccepted(variable - 0x90).cargo;
+		case 0x93:
+			return this->industry->prod_level;
 		/* amount of cargo produced so far THIS month. */
-		case 0x94: return this->industry->GetProduced(0).history[THIS_MONTH].production;
-		case 0x95: return GB(this->industry->GetProduced(0).history[THIS_MONTH].production, 8, 8);
-		case 0x96: return this->industry->GetProduced(1).history[THIS_MONTH].production;
-		case 0x97: return GB(this->industry->GetProduced(1).history[THIS_MONTH].production, 8, 8);
+		case 0x94:
+			return this->industry->GetProduced(0).history[THIS_MONTH].production;
+		case 0x95:
+			return GB(this->industry->GetProduced(0).history[THIS_MONTH].production, 8, 8);
+		case 0x96:
+			return this->industry->GetProduced(1).history[THIS_MONTH].production;
+		case 0x97:
+			return GB(this->industry->GetProduced(1).history[THIS_MONTH].production, 8, 8);
 		/* amount of cargo transported so far THIS month. */
-		case 0x98: return this->industry->GetProduced(0).history[THIS_MONTH].transported;
-		case 0x99: return GB(this->industry->GetProduced(0).history[THIS_MONTH].transported, 8, 8);
-		case 0x9A: return this->industry->GetProduced(1).history[THIS_MONTH].transported;
-		case 0x9B: return GB(this->industry->GetProduced(1).history[THIS_MONTH].transported, 8, 8);
+		case 0x98:
+			return this->industry->GetProduced(0).history[THIS_MONTH].transported;
+		case 0x99:
+			return GB(this->industry->GetProduced(0).history[THIS_MONTH].transported, 8, 8);
+		case 0x9A:
+			return this->industry->GetProduced(1).history[THIS_MONTH].transported;
+		case 0x9B:
+			return GB(this->industry->GetProduced(1).history[THIS_MONTH].transported, 8, 8);
 		/* fraction of cargo transported LAST month. */
 		case 0x9C:
-		case 0x9D: return this->industry->GetProduced(variable - 0x9C).history[LAST_MONTH].PctTransported();
+		case 0x9D:
+			return this->industry->GetProduced(variable - 0x9C).history[LAST_MONTH].PctTransported();
 		/* amount of cargo produced LAST month. */
-		case 0x9E: return this->industry->GetProduced(0).history[LAST_MONTH].production;
-		case 0x9F: return GB(this->industry->GetProduced(0).history[LAST_MONTH].production, 8, 8);
-		case 0xA0: return this->industry->GetProduced(1).history[LAST_MONTH].production;
-		case 0xA1: return GB(this->industry->GetProduced(1).history[LAST_MONTH].production, 8, 8);
+		case 0x9E:
+			return this->industry->GetProduced(0).history[LAST_MONTH].production;
+		case 0x9F:
+			return GB(this->industry->GetProduced(0).history[LAST_MONTH].production, 8, 8);
+		case 0xA0:
+			return this->industry->GetProduced(1).history[LAST_MONTH].production;
+		case 0xA1:
+			return GB(this->industry->GetProduced(1).history[LAST_MONTH].production, 8, 8);
 		/* amount of cargo transported last month. */
-		case 0xA2: return this->industry->GetProduced(0).history[LAST_MONTH].transported;
-		case 0xA3: return GB(this->industry->GetProduced(0).history[LAST_MONTH].transported, 8, 8);
-		case 0xA4: return this->industry->GetProduced(1).history[LAST_MONTH].transported;
-		case 0xA5: return GB(this->industry->GetProduced(1).history[LAST_MONTH].transported, 8, 8);
+		case 0xA2:
+			return this->industry->GetProduced(0).history[LAST_MONTH].transported;
+		case 0xA3:
+			return GB(this->industry->GetProduced(0).history[LAST_MONTH].transported, 8, 8);
+		case 0xA4:
+			return this->industry->GetProduced(1).history[LAST_MONTH].transported;
+		case 0xA5:
+			return GB(this->industry->GetProduced(1).history[LAST_MONTH].transported, 8, 8);
 
-		case 0xA6: return indspec->grf_prop.local_id;
-		case 0xA7: return this->industry->founder.base();
-		case 0xA8: return this->industry->random_colour;
-		case 0xA9: return ClampTo<uint8_t>(this->industry->last_prod_year - EconomyTime::ORIGINAL_BASE_YEAR);
-		case 0xAA: return this->industry->counter;
-		case 0xAB: return GB(this->industry->counter, 8, 8);
-		case 0xAC: return this->industry->was_cargo_delivered;
+		case 0xA6:
+			return indspec->grf_prop.local_id;
+		case 0xA7:
+			return this->industry->founder.base();
+		case 0xA8:
+			return this->industry->random_colour;
+		case 0xA9:
+			return ClampTo<uint8_t>(this->industry->last_prod_year - EconomyTime::ORIGINAL_BASE_YEAR);
+		case 0xAA:
+			return this->industry->counter;
+		case 0xAB:
+			return GB(this->industry->counter, 8, 8);
+		case 0xAC:
+			return this->industry->was_cargo_delivered;
 
-		case 0xB0: return ClampTo<uint16_t>(this->industry->construction_date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date when built since 1920 (in days)
-		case 0xB3: return this->industry->construction_type; // Construction type
+		case 0xB0:
+			return ClampTo<uint16_t>(this->industry->construction_date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date when built since 1920 (in days)
+		case 0xB3:
+			return this->industry->construction_type; // Construction type
 		case 0xB4: {
 			if (this->industry->accepted.empty()) return 0;
-			auto it = std::max_element(std::begin(this->industry->accepted), std::end(this->industry->accepted), [](const auto &a, const auto &b) { return a.last_accepted < b.last_accepted; });
+			auto it = std::max_element(std::begin(this->industry->accepted), std::end(this->industry->accepted), [](const auto &a, const auto &b) {
+				return a.last_accepted < b.last_accepted;
+			});
 			return ClampTo<uint16_t>(it->last_accepted - EconomyTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date last cargo accepted since 1920 (in days)
 		}
 	}
@@ -476,10 +548,8 @@ static const GRFFile *GetGrffile(IndustryType type)
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
-IndustriesResolverObject::IndustriesResolverObject(TileIndex tile, Industry *indus, IndustryType type, uint32_t random_bits,
-		CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-	: ResolverObject(GetGrffile(type), callback, callback_param1, callback_param2),
-	industries_scope(*this, tile, indus, type, random_bits)
+IndustriesResolverObject::IndustriesResolverObject(TileIndex tile, Industry *indus, IndustryType type, uint32_t random_bits, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2) :
+	ResolverObject(GetGrffile(type), callback, callback_param1, callback_param2), industries_scope(*this, tile, indus, type, random_bits)
 {
 	this->root_spritegroup = GetIndustrySpec(type)->grf_prop.GetSpriteGroup();
 }
@@ -620,9 +690,8 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		 * 'loop' is provided as 16 bits to the newgrf, so abort when those are exceeded. */
 		if (loop >= 0x10000) {
 			/* display error message */
-			ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, spec->grf_prop.grffile->filename),
-				GetEncodedString(STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK, std::monostate{}, spec->name),
-				WL_WARNING);
+			ShowErrorMessage(
+				GetEncodedString(STR_NEWGRF_BUGGY, spec->grf_prop.grffile->filename), GetEncodedString(STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK, std::monostate{}, spec->name), WL_WARNING);
 
 			/* abort the function early, this error isn't critical and will allow the game to continue to run */
 			break;
@@ -636,8 +705,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		if (group->version == 0xFF) {
 			/* Result was marked invalid on load, display error message */
 			ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, spec->grf_prop.grffile->filename),
-				GetEncodedString(STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK, std::monostate{}, spec->name, ind->location.tile),
-				WL_WARNING);
+				GetEncodedString(STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK, std::monostate{}, spec->name, ind->location.tile), WL_WARNING);
 
 			/* abort the function early, this error isn't critical and will allow the game to continue to run */
 			break;
@@ -691,9 +759,7 @@ bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoType cargo_type)
 
 	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 	if (indspec->callback_mask.Test(IndustryCallbackMask::RefuseCargo)) {
-		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO,
-				0, indspec->grf_prop.grffile->cargo_map[cargo_type],
-				ind, ind->type, ind->location.tile);
+		uint16_t res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, indspec->grf_prop.grffile->cargo_map[cargo_type], ind, ind->type, ind->location.tile);
 		if (res != CALLBACK_FAILED) return !ConvertBooleanCallback(indspec->grf_prop.grffile, CBID_INDUSTRY_REFUSE_CARGO, res);
 	}
 	return false;

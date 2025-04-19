@@ -10,12 +10,11 @@
 #ifndef YAPF_COSTRAIL_HPP
 #define YAPF_COSTRAIL_HPP
 
-
 #include "../../pbs.h"
 #include "../follow_track.hpp"
 #include "../pathfinder_type.h"
-#include "yapf_type.hpp"
 #include "yapf_costbase.hpp"
+#include "yapf_type.hpp"
 
 template <class Types>
 class CYapfCostRailT : public CYapfCostBase {
@@ -27,17 +26,16 @@ public:
 	typedef typename Node::CachedData CachedData;
 
 protected:
-
 	/* Structure used inside PfCalcCost() to keep basic tile information. */
 	struct TILE {
-		TileIndex   tile;
-		Trackdir    td;
-		TileType    tile_type;
-		RailType    rail_type;
+		TileIndex tile;
+		Trackdir td;
+		TileType tile_type;
+		RailType rail_type;
 
-		TILE() : tile(INVALID_TILE), td(INVALID_TRACKDIR), tile_type(MP_VOID), rail_type(INVALID_RAILTYPE) { }
+		TILE() : tile(INVALID_TILE), td(INVALID_TRACKDIR), tile_type(MP_VOID), rail_type(INVALID_RAILTYPE) {}
 
-		TILE(TileIndex tile, Trackdir td) : tile(tile), td(td), tile_type(GetTileType(tile)), rail_type(GetTileRailType(tile)) { }
+		TILE(TileIndex tile, Trackdir td) : tile(tile), td(td), tile_type(GetTileType(tile)), rail_type(GetTileRailType(tile)) {}
 	};
 
 protected:
@@ -99,8 +97,7 @@ public:
 		assert(IsValidTrackdir(td1));
 		assert(IsValidTrackdir(td2));
 		int cost = 0;
-		if (TrackFollower::Allow90degTurns()
-				&& HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
+		if (TrackFollower::Allow90degTurns() && HasTrackdir(TrackdirCrossesTrackdirs(td1), td2)) {
 			/* 90-deg curve penalty */
 			cost += Yapf().PfGetSettings().rail_curve90_penalty;
 		} else if (td2 != NextTrackdir(td1)) {
@@ -221,10 +218,15 @@ public:
 						if (n.num_signals_passed == 0) {
 							switch (sig_type) {
 								case SIGTYPE_COMBO:
-								case SIGTYPE_EXIT:   cost += Yapf().PfGetSettings().rail_firstred_exit_penalty; break; // first signal is red pre-signal-exit
+								case SIGTYPE_EXIT:
+									cost += Yapf().PfGetSettings().rail_firstred_exit_penalty;
+									break; // first signal is red pre-signal-exit
 								case SIGTYPE_BLOCK:
-								case SIGTYPE_ENTRY:  cost += Yapf().PfGetSettings().rail_firstred_penalty; break;
-								default: break;
+								case SIGTYPE_ENTRY:
+									cost += Yapf().PfGetSettings().rail_firstred_penalty;
+									break;
+								default:
+									break;
 							}
 						}
 					}
@@ -372,7 +374,7 @@ public:
 				segment_cost += transition_cost;
 			}
 
-no_entry_cost: // jump here at the beginning if the node has no parent (it is the first node)
+		no_entry_cost: // jump here at the beginning if the node has no parent (it is the first node)
 
 			/* All other tile costs will be calculated here. */
 			segment_cost += Yapf().OneTileCost(cur.tile, cur.td);
@@ -402,9 +404,8 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				end_segment_reason.Set(EndSegmentReason::Depot);
 
 			} else if (cur.tile_type == MP_STATION && IsRailWaypoint(cur.tile)) {
-				if (v->current_order.IsType(OT_GOTO_WAYPOINT) &&
-						GetStationIndex(cur.tile) == v->current_order.GetDestination() &&
-						!Waypoint::Get(v->current_order.GetDestination().ToStationID())->IsSingleTile()) {
+				if (v->current_order.IsType(OT_GOTO_WAYPOINT) && GetStationIndex(cur.tile) == v->current_order.GetDestination() &&
+					!Waypoint::Get(v->current_order.GetDestination().ToStationID())->IsSingleTile()) {
 					/* This waypoint is our destination; maybe this isn't an unreserved
 					 * one, so check that and if so see that as the last signal being
 					 * red. This way waypoints near stations should work better. */
@@ -436,9 +437,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 					/* In the case this platform is (possibly) occupied we add penalty so the
 					 * other platforms of this waypoint are evaluated as well, i.e. we assume
 					 * that there is a red signal in the waypoint when it's occupied. */
-					if (td == INVALID_TRACKDIR ||
-							!IsSafeWaitingPosition(v, t, td, true, _settings_game.pf.forbid_90_deg) ||
-							!IsWaitingPositionFree(v, t, td, _settings_game.pf.forbid_90_deg)) {
+					if (td == INVALID_TRACKDIR || !IsSafeWaitingPosition(v, t, td, true, _settings_game.pf.forbid_90_deg) || !IsWaitingPositionFree(v, t, td, _settings_game.pf.forbid_90_deg)) {
 						extra_cost += Yapf().PfGetSettings().rail_lastred_penalty;
 					}
 				}
@@ -463,8 +462,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 			/* Apply min/max speed penalties only when inside the look-ahead radius. Otherwise
 			 * it would cause desync in MP. */
-			if (n.num_signals_passed < this->sig_look_ahead_costs.size())
-			{
+			if (n.num_signals_passed < this->sig_look_ahead_costs.size()) {
 				int min_speed = 0;
 				int max_speed = tf->GetSpeedLimit(&min_speed);
 				int max_veh_speed = std::min<int>(v->GetDisplayMaxSpeed(), v->current_order.GetMaxSpeed());
@@ -616,9 +614,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 	inline bool CanUseGlobalCache(Node &n) const
 	{
-		return !this->disable_cache
-			&& (n.parent != nullptr)
-			&& (n.parent->num_signals_passed >= this->sig_look_ahead_costs.size());
+		return !this->disable_cache && (n.parent != nullptr) && (n.parent->num_signals_passed >= this->sig_look_ahead_costs.size());
 	}
 
 	inline void ConnectNodeToCachedData(Node &n, CachedData &ci)

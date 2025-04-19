@@ -8,11 +8,12 @@
 /** @file autoreplace.cpp Management of replacement lists. */
 
 #include "stdafx.h"
-#include "command_func.h"
-#include "group.h"
-#include "autoreplace_base.h"
+
 #include "core/bitmath_func.hpp"
 #include "core/pool_func.hpp"
+#include "autoreplace_base.h"
+#include "command_func.h"
+#include "group.h"
 
 #include "safeguards.h"
 

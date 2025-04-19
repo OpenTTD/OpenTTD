@@ -8,20 +8,21 @@
 /** @file screenshot_png.cpp PNG screenshot provider. */
 
 #include "stdafx.h"
+
+#include <png.h>
+
 #include "core/math_func.hpp"
 #include "debug.h"
 #include "fileio_func.h"
 #include "screenshot_type.h"
 
-#include <png.h>
-
 #ifdef PNG_TEXT_SUPPORTED
-#include "rev.h"
-#include "newgrf_config.h"
-#include "ai/ai_info.hpp"
-#include "company_base.h"
-#include "base_media_base.h"
-#include "base_media_graphics.h"
+#	include "ai/ai_info.hpp"
+#	include "base_media_base.h"
+#	include "base_media_graphics.h"
+#	include "company_base.h"
+#	include "newgrf_config.h"
+#	include "rev.h"
 #endif /* PNG_TEXT_SUPPORTED */
 
 #include "safeguards.h"
@@ -54,7 +55,7 @@ public:
 
 		info_ptr = png_create_info_struct(png_ptr);
 		if (info_ptr == nullptr) {
-			png_destroy_write_struct(&png_ptr, (png_infopp)nullptr);
+			png_destroy_write_struct(&png_ptr, (png_infopp) nullptr);
 			return false;
 		}
 
@@ -67,8 +68,7 @@ public:
 
 		png_set_filter(png_ptr, 0, PNG_FILTER_NONE);
 
-		png_set_IHDR(png_ptr, info_ptr, w, h, 8, pixelformat == 8 ? PNG_COLOR_TYPE_PALETTE : PNG_COLOR_TYPE_RGB,
-			PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
+		png_set_IHDR(png_ptr, info_ptr, w, h, 8, pixelformat == 8 ? PNG_COLOR_TYPE_PALETTE : PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
 #ifdef PNG_TEXT_SUPPORTED
 
@@ -109,9 +109,9 @@ public:
 		if (pixelformat == 8) {
 			/* convert the palette to the .PNG format. */
 			for (i = 0; i != 256; i++) {
-				rq[i].red   = palette[i].r;
+				rq[i].red = palette[i].r;
 				rq[i].green = palette[i].g;
-				rq[i].blue  = palette[i].b;
+				rq[i].blue = palette[i].b;
 			}
 
 			png_set_PLTE(png_ptr, info_ptr, rq, 256);
@@ -125,10 +125,10 @@ public:
 
 			/* Save exact colour/alpha resolution */
 			sig_bit.alpha = 0;
-			sig_bit.blue  = 8;
+			sig_bit.blue = 8;
 			sig_bit.green = 8;
-			sig_bit.red   = 8;
-			sig_bit.gray  = 8;
+			sig_bit.red = 8;
+			sig_bit.gray = 8;
 			png_set_sBIT(png_ptr, info_ptr, &sig_bit);
 
 			if constexpr (std::endian::native == std::endian::little) {

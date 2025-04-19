@@ -18,7 +18,7 @@
  */
 enum HeightmapRotation : uint8_t {
 	HM_COUNTER_CLOCKWISE, ///< Rotate the map counter clockwise 45 degrees
-	HM_CLOCKWISE,         ///< Rotate the map clockwise 45 degrees
+	HM_CLOCKWISE, ///< Rotate the map clockwise 45 degrees
 };
 
 bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x, uint *y);

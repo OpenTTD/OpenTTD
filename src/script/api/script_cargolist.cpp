@@ -8,12 +8,14 @@
 /** @file script_cargolist.cpp Implementation of ScriptCargoList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_cargolist.hpp"
-#include "script_industry.hpp"
-#include "script_station.hpp"
+
 #include "../../cargotype.h"
 #include "../../industry.h"
 #include "../../station_base.h"
+#include "script_industry.hpp"
+#include "script_station.hpp"
 
 #include "../../safeguards.h"
 

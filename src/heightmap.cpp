@@ -8,16 +8,18 @@
 /** @file heightmap.cpp Creating of maps from heightmaps. */
 
 #include "stdafx.h"
+
 #include "heightmap.h"
+
+#include "bmp.h"
 #include "clear_map.h"
+#include "error.h"
+#include "fileio_func.h"
+#include "fios.h"
+#include "gfx_func.h"
+#include "saveload/saveload.h"
 #include "strings_func.h"
 #include "void_map.h"
-#include "error.h"
-#include "saveload/saveload.h"
-#include "bmp.h"
-#include "gfx_func.h"
-#include "fios.h"
-#include "fileio_func.h"
 
 #include "table/strings.h"
 
@@ -52,9 +54,7 @@ static_assert(MAX_HEIGHTMAP_SIZE_PIXELS < UINT32_MAX / 8);
  */
 static inline bool IsValidHeightmapDimension(size_t width, size_t height)
 {
-	return (uint64_t)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS &&
-		width > 0 && width <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS &&
-		height > 0 && height <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS;
+	return (uint64_t)width * height <= MAX_HEIGHTMAP_SIZE_PIXELS && width > 0 && width <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS && height > 0 && height <= MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS;
 }
 
 /**
@@ -68,10 +68,9 @@ static inline uint8_t RGBToGrayscale(uint8_t red, uint8_t green, uint8_t blue)
 	return ((red * 19595) + (green * 38470) + (blue * 7471)) / 65536;
 }
 
-
 #ifdef WITH_PNG
 
-#include <png.h>
+#	include <png.h>
 
 /**
  * The PNG Heightmap loader.
@@ -121,8 +120,7 @@ static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_pt
 			if (has_palette) {
 				*pixel = gray_palette[row_pointers[y][x_offset]];
 			} else if (channels == 3) {
-				*pixel = RGBToGrayscale(row_pointers[y][x_offset + 0],
-						row_pointers[y][x_offset + 1], row_pointers[y][x_offset + 2]);
+				*pixel = RGBToGrayscale(row_pointers[y][x_offset + 0], row_pointers[y][x_offset + 1], row_pointers[y][x_offset + 2]);
 			} else {
 				*pixel = row_pointers[y][x_offset];
 			}
@@ -138,7 +136,7 @@ static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_pt
 static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
 	png_structp png_ptr = nullptr;
-	png_infop info_ptr  = nullptr;
+	png_infop info_ptr = nullptr;
 
 	auto fp = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
 	if (!fp.has_value()) {
@@ -196,7 +194,6 @@ static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector
 }
 
 #endif /* WITH_PNG */
-
 
 /**
  * The BMP Heightmap loader.
@@ -317,14 +314,15 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, std::span<con
 
 	/* Get map size and calculate scale and padding values */
 	switch (_settings_game.game_creation.heightmap_rotation) {
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 		case HM_COUNTER_CLOCKWISE:
-			width   = Map::SizeX();
-			height  = Map::SizeY();
+			width = Map::SizeX();
+			height = Map::SizeY();
 			break;
 		case HM_CLOCKWISE:
-			width   = Map::SizeY();
-			height  = Map::SizeX();
+			width = Map::SizeY();
+			height = Map::SizeX();
 			break;
 	}
 
@@ -347,22 +345,27 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, std::span<con
 	for (row = 0; row < height; row++) {
 		for (col = 0; col < width; col++) {
 			switch (_settings_game.game_creation.heightmap_rotation) {
-				default: NOT_REACHED();
-				case HM_COUNTER_CLOCKWISE: tile = TileXY(col, row); break;
-				case HM_CLOCKWISE:         tile = TileXY(row, col); break;
+				default:
+					NOT_REACHED();
+				case HM_COUNTER_CLOCKWISE:
+					tile = TileXY(col, row);
+					break;
+				case HM_CLOCKWISE:
+					tile = TileXY(row, col);
+					break;
 			}
 
 			/* Check if current tile is within the 1-pixel map edge or padding regions */
-			if ((!_settings_game.construction.freeform_edges && DistanceFromEdge(tile) <= 1) ||
-					(row < row_pad) || (row >= (height - row_pad - (_settings_game.construction.freeform_edges ? 0 : 1))) ||
-					(col < col_pad) || (col >= (width  - col_pad - (_settings_game.construction.freeform_edges ? 0 : 1)))) {
+			if ((!_settings_game.construction.freeform_edges && DistanceFromEdge(tile) <= 1) || (row < row_pad) || (row >= (height - row_pad - (_settings_game.construction.freeform_edges ? 0 : 1))) ||
+				(col < col_pad) || (col >= (width - col_pad - (_settings_game.construction.freeform_edges ? 0 : 1)))) {
 				SetTileHeight(tile, 0);
 			} else {
 				/* Use nearest neighbour resizing to scale map data.
 				 *  We rotate the map 45 degrees (counter)clockwise */
 				img_row = (((row - row_pad) * num_div) / img_scale);
 				switch (_settings_game.game_creation.heightmap_rotation) {
-					default: NOT_REACHED();
+					default:
+						NOT_REACHED();
 					case HM_COUNTER_CLOCKWISE:
 						img_col = (((width - 1 - col - col_pad) * num_div) / img_scale);
 						break;
@@ -405,8 +408,8 @@ void FixSlopes()
 	uint8_t max_height = _settings_game.construction.map_height_limit;
 
 	/* Adjust height difference to maximum one horizontal/vertical change. */
-	width   = Map::SizeX();
-	height  = Map::SizeY();
+	width = Map::SizeX();
+	height = Map::SizeY();
 
 	/* Top and left edge */
 	for (row = 0; (uint)row < height; row++) {

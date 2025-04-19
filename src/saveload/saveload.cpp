@@ -21,37 +21,38 @@
  */
 
 #include "../stdafx.h"
-#include "../debug.h"
-#include "../station_base.h"
-#include "../thread.h"
-#include "../town.h"
-#include "../network/network.h"
-#include "../window_func.h"
-#include "../strings_func.h"
+
+#include <atomic>
+
 #include "../core/endian_func.hpp"
 #include "../core/string_builder.hpp"
 #include "../core/string_consumer.hpp"
-#include "../vehicle_base.h"
-#include "../company_func.h"
-#include "../timer/timer_game_economy.h"
 #include "../autoreplace_base.h"
-#include "../roadstop_base.h"
+#include "../company_func.h"
+#include "../debug.h"
+#include "../error.h"
+#include "../fileio_func.h"
+#include "../fios.h"
+#include "../gamelog.h"
 #include "../linkgraph/linkgraph.h"
 #include "../linkgraph/linkgraphjob.h"
-#include "../statusbar_gui.h"
-#include "../fileio_func.h"
-#include "../gamelog.h"
-#include "../string_func.h"
-#include "../fios.h"
-#include "../error.h"
-#include "../strings_type.h"
+#include "../network/network.h"
 #include "../newgrf_railtype.h"
 #include "../newgrf_roadtype.h"
+#include "../roadstop_base.h"
 #include "../settings_internal.h"
-#include "saveload_internal.h"
+#include "../station_base.h"
+#include "../statusbar_gui.h"
+#include "../string_func.h"
+#include "../strings_func.h"
+#include "../strings_type.h"
+#include "../thread.h"
+#include "../timer/timer_game_economy.h"
+#include "../town.h"
+#include "../vehicle_base.h"
+#include "../window_func.h"
 #include "saveload_filter.h"
-
-#include <atomic>
+#include "saveload_internal.h"
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #endif
@@ -65,23 +66,23 @@ extern const SaveLoadVersion SAVEGAME_VERSION = (SaveLoadVersion)(SL_MAX_VERSION
 SavegameType _savegame_type; ///< type of savegame we are loading
 FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
 
-uint32_t _ttdp_version;         ///< version of TTDP savegame (if applicable)
-SaveLoadVersion _sl_version;  ///< the major savegame version identifier
-uint8_t   _sl_minor_version;     ///< the minor savegame version, DO NOT USE!
+uint32_t _ttdp_version; ///< version of TTDP savegame (if applicable)
+SaveLoadVersion _sl_version; ///< the major savegame version identifier
+uint8_t _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 std::string _savegame_format; ///< how to compress savegames
-bool _do_autosave;            ///< are we doing an autosave at the moment?
+bool _do_autosave; ///< are we doing an autosave at the moment?
 
 /** What are we currently doing? */
 enum SaveLoadAction : uint8_t {
-	SLA_LOAD,        ///< loading
-	SLA_SAVE,        ///< saving
-	SLA_PTRS,        ///< fixing pointers
-	SLA_NULL,        ///< null all pointers (on loading error)
-	SLA_LOAD_CHECK,  ///< partial loading into #_load_check_data
+	SLA_LOAD, ///< loading
+	SLA_SAVE, ///< saving
+	SLA_PTRS, ///< fixing pointers
+	SLA_NULL, ///< null all pointers (on loading error)
+	SLA_LOAD_CHECK, ///< partial loading into #_load_check_data
 };
 
 enum NeedLength : uint8_t {
-	NL_NONE = 0,       ///< not working in NeedLength mode
+	NL_NONE = 0, ///< not working in NeedLength mode
 	NL_WANTLENGTH = 1, ///< writing length and data
 	NL_CALCLENGTH = 2, ///< need to calculate the length
 };
@@ -101,9 +102,7 @@ struct ReadBuffer {
 	 * Initialise our variables.
 	 * @param reader The filter to actually read data.
 	 */
-	ReadBuffer(std::shared_ptr<LoadFilter> reader) : reader(std::move(reader))
-	{
-	}
+	ReadBuffer(std::shared_ptr<LoadFilter> reader) : reader(std::move(reader)) {}
 
 	inline uint8_t ReadByte()
 	{
@@ -128,7 +127,6 @@ struct ReadBuffer {
 		return this->read - (this->bufe - this->bufp);
 	}
 };
-
 
 /** Container for dumping the savegame (quickly) to memory. */
 struct MemoryDumper {
@@ -182,14 +180,14 @@ struct MemoryDumper {
 
 /** The saveload struct, containing reader-writer functions, buffer, version, etc. */
 struct SaveLoadParams {
-	SaveLoadAction action;               ///< are we doing a save or a load atm.
-	NeedLength need_length;              ///< working in NeedLength (Autolength) mode?
-	uint8_t block_mode;                     ///< ???
-	bool error;                          ///< did an error occur or not
+	SaveLoadAction action; ///< are we doing a save or a load atm.
+	NeedLength need_length; ///< working in NeedLength (Autolength) mode?
+	uint8_t block_mode; ///< ???
+	bool error; ///< did an error occur or not
 
-	size_t obj_len;                      ///< the length of the current object we are busy with
-	int array_index, last_array_index;   ///< in the case of an array, the current and last positions
-	bool expect_table_header;            ///< In the case of a table, if the header is saved/loaded.
+	size_t obj_len; ///< the length of the current object we are busy with
+	int array_index, last_array_index; ///< in the case of an array, the current and last positions
+	bool expect_table_header; ///< In the case of a table, if the header is saved/loaded.
 
 	std::unique_ptr<MemoryDumper> dumper; ///< Memory dumper to write the savegame to.
 	std::shared_ptr<SaveFilter> sf; ///< Filter to write the savegame to.
@@ -197,10 +195,10 @@ struct SaveLoadParams {
 	std::unique_ptr<ReadBuffer> reader; ///< Savegame reading buffer.
 	std::shared_ptr<LoadFilter> lf; ///< Filter to read the savegame from.
 
-	StringID error_str;                  ///< the translatable error message to show
-	std::string extra_msg;               ///< the error message
+	StringID error_str; ///< the translatable error message to show
+	std::string extra_msg; ///< the error message
 
-	bool saveinprogress;                 ///< Whether there is currently a save in progress.
+	bool saveinprogress; ///< Whether there is currently a save in progress.
 };
 
 static SaveLoadParams _sl; ///< Parameters used for/at saveload.
@@ -359,10 +357,9 @@ static void SlNullPointers()
 	SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, msg);
 }
 
-
-typedef void (*AsyncSaveFinishProc)();                      ///< Callback for when the savegame loading is finished.
+typedef void (*AsyncSaveFinishProc)(); ///< Callback for when the savegame loading is finished.
 static std::atomic<AsyncSaveFinishProc> _async_save_finish; ///< Callback to call when the savegame loading is finished.
-static std::thread _save_thread;                            ///< The thread we're using to compress and write a savegame
+static std::thread _save_thread; ///< The thread we're using to compress and write a savegame
 
 /**
  * Called by save thread to tell we finished saving.
@@ -437,7 +434,7 @@ static inline void SlWriteUint16(uint16_t v)
 static inline void SlWriteUint32(uint32_t v)
 {
 	SlWriteUint16(GB(v, 16, 16));
-	SlWriteUint16(GB(v,  0, 16));
+	SlWriteUint16(GB(v, 0, 16));
 }
 
 static inline void SlWriteUint64(uint64_t x)
@@ -559,13 +556,15 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 {
 	switch (sld.cmd) {
 		case SL_VAR:
-			return GetVarFileType(sld.conv); break;
+			return GetVarFileType(sld.conv);
+			break;
 
 		case SL_STDSTR:
 		case SL_ARR:
 		case SL_VECTOR:
 		case SL_DEQUE:
-			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD; break;
+			return GetVarFileType(sld.conv) | SLE_FILE_HAS_LENGTH_FIELD;
+			break;
 
 		case SL_REF:
 			return IsSavegameVersionBefore(SLV_69) ? SLE_FILE_U16 : SLE_FILE_U32;
@@ -581,7 +580,8 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 		case SL_STRUCTLIST:
 			return SLE_FILE_STRUCT | SLE_FILE_HAS_LENGTH_FIELD;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -594,16 +594,26 @@ static uint8_t GetSavegameFileType(const SaveLoad &sld)
 static inline uint SlCalcConvMemLen(VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL: return sizeof(bool);
-		case SLE_VAR_I8: return sizeof(int8_t);
-		case SLE_VAR_U8: return sizeof(uint8_t);
-		case SLE_VAR_I16: return sizeof(int16_t);
-		case SLE_VAR_U16: return sizeof(uint16_t);
-		case SLE_VAR_I32: return sizeof(int32_t);
-		case SLE_VAR_U32: return sizeof(uint32_t);
-		case SLE_VAR_I64: return sizeof(int64_t);
-		case SLE_VAR_U64: return sizeof(uint64_t);
-		case SLE_VAR_NULL: return 0;
+		case SLE_VAR_BL:
+			return sizeof(bool);
+		case SLE_VAR_I8:
+			return sizeof(int8_t);
+		case SLE_VAR_U8:
+			return sizeof(uint8_t);
+		case SLE_VAR_I16:
+			return sizeof(int16_t);
+		case SLE_VAR_U16:
+			return sizeof(uint16_t);
+		case SLE_VAR_I32:
+			return sizeof(int32_t);
+		case SLE_VAR_U32:
+			return sizeof(uint32_t);
+		case SLE_VAR_I64:
+			return sizeof(int64_t);
+		case SLE_VAR_U64:
+			return sizeof(uint64_t);
+		case SLE_VAR_NULL:
+			return 0;
 
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
@@ -624,16 +634,26 @@ static inline uint SlCalcConvMemLen(VarType conv)
 static inline uint8_t SlCalcConvFileLen(VarType conv)
 {
 	switch (GetVarFileType(conv)) {
-		case SLE_FILE_END: return 0;
-		case SLE_FILE_I8: return sizeof(int8_t);
-		case SLE_FILE_U8: return sizeof(uint8_t);
-		case SLE_FILE_I16: return sizeof(int16_t);
-		case SLE_FILE_U16: return sizeof(uint16_t);
-		case SLE_FILE_I32: return sizeof(int32_t);
-		case SLE_FILE_U32: return sizeof(uint32_t);
-		case SLE_FILE_I64: return sizeof(int64_t);
-		case SLE_FILE_U64: return sizeof(uint64_t);
-		case SLE_FILE_STRINGID: return sizeof(uint16_t);
+		case SLE_FILE_END:
+			return 0;
+		case SLE_FILE_I8:
+			return sizeof(int8_t);
+		case SLE_FILE_U8:
+			return sizeof(uint8_t);
+		case SLE_FILE_I16:
+			return sizeof(int16_t);
+		case SLE_FILE_U16:
+			return sizeof(uint16_t);
+		case SLE_FILE_I32:
+			return sizeof(int32_t);
+		case SLE_FILE_U32:
+			return sizeof(uint32_t);
+		case SLE_FILE_I64:
+			return sizeof(int64_t);
+		case SLE_FILE_U64:
+			return sizeof(uint64_t);
+		case SLE_FILE_STRINGID:
+			return sizeof(uint16_t);
 
 		case SLE_FILE_STRING:
 			return SlReadArrayLength();
@@ -689,9 +709,13 @@ int SlIterateArray()
 		int index;
 		switch (_sl.block_mode) {
 			case CH_SPARSE_TABLE:
-			case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
+			case CH_SPARSE_ARRAY:
+				index = (int)SlReadSparseIndex();
+				break;
 			case CH_TABLE:
-			case CH_ARRAY:        index = _sl.array_index++; break;
+			case CH_ARRAY:
+				index = _sl.array_index++;
+				break;
 			default:
 				Debug(sl, 0, "SlIterateArray error");
 				return -1; // error
@@ -750,7 +774,8 @@ void SlSetLength(size_t length)
 					SlWriteArrayLength(length + 1 + SlGetArrayLength(_sl.array_index)); // Also include length of sparse index.
 					SlWriteSparseIndex(_sl.array_index);
 					break;
-				default: NOT_REACHED();
+				default:
+					NOT_REACHED();
 			}
 			break;
 
@@ -758,7 +783,8 @@ void SlSetLength(size_t length)
 			_sl.obj_len += (int)length;
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -780,7 +806,8 @@ static void SlCopyBytes(void *ptr, size_t length)
 		case SLA_SAVE:
 			for (; length != 0; length--) SlWriteByte(*p++);
 			break;
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -800,17 +827,28 @@ size_t SlGetFieldLength()
 int64_t ReadValue(const void *ptr, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL:  return (*(const bool *)ptr != 0);
-		case SLE_VAR_I8:  return *(const int8_t  *)ptr;
-		case SLE_VAR_U8:  return *(const uint8_t  *)ptr;
-		case SLE_VAR_I16: return *(const int16_t *)ptr;
-		case SLE_VAR_U16: return *(const uint16_t*)ptr;
-		case SLE_VAR_I32: return *(const int32_t *)ptr;
-		case SLE_VAR_U32: return *(const uint32_t*)ptr;
-		case SLE_VAR_I64: return *(const int64_t *)ptr;
-		case SLE_VAR_U64: return *(const uint64_t*)ptr;
-		case SLE_VAR_NULL:return 0;
-		default: NOT_REACHED();
+		case SLE_VAR_BL:
+			return (*(const bool *)ptr != 0);
+		case SLE_VAR_I8:
+			return *(const int8_t *)ptr;
+		case SLE_VAR_U8:
+			return *(const uint8_t *)ptr;
+		case SLE_VAR_I16:
+			return *(const int16_t *)ptr;
+		case SLE_VAR_U16:
+			return *(const uint16_t *)ptr;
+		case SLE_VAR_I32:
+			return *(const int32_t *)ptr;
+		case SLE_VAR_U32:
+			return *(const uint32_t *)ptr;
+		case SLE_VAR_I64:
+			return *(const int64_t *)ptr;
+		case SLE_VAR_U64:
+			return *(const uint64_t *)ptr;
+		case SLE_VAR_NULL:
+			return 0;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -824,18 +862,40 @@ int64_t ReadValue(const void *ptr, VarType conv)
 void WriteValue(void *ptr, VarType conv, int64_t val)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL:  *(bool  *)ptr = (val != 0);  break;
-		case SLE_VAR_I8:  *(int8_t  *)ptr = val; break;
-		case SLE_VAR_U8:  *(uint8_t  *)ptr = val; break;
-		case SLE_VAR_I16: *(int16_t *)ptr = val; break;
-		case SLE_VAR_U16: *(uint16_t*)ptr = val; break;
-		case SLE_VAR_I32: *(int32_t *)ptr = val; break;
-		case SLE_VAR_U32: *(uint32_t*)ptr = val; break;
-		case SLE_VAR_I64: *(int64_t *)ptr = val; break;
-		case SLE_VAR_U64: *(uint64_t*)ptr = val; break;
-		case SLE_VAR_NAME: *reinterpret_cast<std::string *>(ptr) = CopyFromOldName(val); break;
-		case SLE_VAR_NULL: break;
-		default: NOT_REACHED();
+		case SLE_VAR_BL:
+			*(bool *)ptr = (val != 0);
+			break;
+		case SLE_VAR_I8:
+			*(int8_t *)ptr = val;
+			break;
+		case SLE_VAR_U8:
+			*(uint8_t *)ptr = val;
+			break;
+		case SLE_VAR_I16:
+			*(int16_t *)ptr = val;
+			break;
+		case SLE_VAR_U16:
+			*(uint16_t *)ptr = val;
+			break;
+		case SLE_VAR_I32:
+			*(int32_t *)ptr = val;
+			break;
+		case SLE_VAR_U32:
+			*(uint32_t *)ptr = val;
+			break;
+		case SLE_VAR_I64:
+			*(int64_t *)ptr = val;
+			break;
+		case SLE_VAR_U64:
+			*(uint64_t *)ptr = val;
+			break;
+		case SLE_VAR_NAME:
+			*reinterpret_cast<std::string *>(ptr) = CopyFromOldName(val);
+			break;
+		case SLE_VAR_NULL:
+			break;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -855,16 +915,33 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 
 			/* Write the value to the file and check if its value is in the desired range */
 			switch (GetVarFileType(conv)) {
-				case SLE_FILE_I8: assert(x >= -128 && x <= 127);     SlWriteByte(x);break;
-				case SLE_FILE_U8: assert(x >= 0 && x <= 255);        SlWriteByte(x);break;
-				case SLE_FILE_I16:assert(x >= -32768 && x <= 32767); SlWriteUint16(x);break;
+				case SLE_FILE_I8:
+					assert(x >= -128 && x <= 127);
+					SlWriteByte(x);
+					break;
+				case SLE_FILE_U8:
+					assert(x >= 0 && x <= 255);
+					SlWriteByte(x);
+					break;
+				case SLE_FILE_I16:
+					assert(x >= -32768 && x <= 32767);
+					SlWriteUint16(x);
+					break;
 				case SLE_FILE_STRINGID:
-				case SLE_FILE_U16:assert(x >= 0 && x <= 65535);      SlWriteUint16(x);break;
+				case SLE_FILE_U16:
+					assert(x >= 0 && x <= 65535);
+					SlWriteUint16(x);
+					break;
 				case SLE_FILE_I32:
-				case SLE_FILE_U32:                                   SlWriteUint32((uint32_t)x);break;
+				case SLE_FILE_U32:
+					SlWriteUint32((uint32_t)x);
+					break;
 				case SLE_FILE_I64:
-				case SLE_FILE_U64:                                   SlWriteUint64(x);break;
-				default: NOT_REACHED();
+				case SLE_FILE_U64:
+					SlWriteUint64(x);
+					break;
+				default:
+					NOT_REACHED();
 			}
 			break;
 		}
@@ -873,25 +950,47 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			int64_t x;
 			/* Read a value from the file */
 			switch (GetVarFileType(conv)) {
-				case SLE_FILE_I8:  x = (int8_t  )SlReadByte();   break;
-				case SLE_FILE_U8:  x = (uint8_t  )SlReadByte();   break;
-				case SLE_FILE_I16: x = (int16_t )SlReadUint16(); break;
-				case SLE_FILE_U16: x = (uint16_t)SlReadUint16(); break;
-				case SLE_FILE_I32: x = (int32_t )SlReadUint32(); break;
-				case SLE_FILE_U32: x = (uint32_t)SlReadUint32(); break;
-				case SLE_FILE_I64: x = (int64_t )SlReadUint64(); break;
-				case SLE_FILE_U64: x = (uint64_t)SlReadUint64(); break;
-				case SLE_FILE_STRINGID: x = RemapOldStringID((uint16_t)SlReadUint16()); break;
-				default: NOT_REACHED();
+				case SLE_FILE_I8:
+					x = (int8_t)SlReadByte();
+					break;
+				case SLE_FILE_U8:
+					x = (uint8_t)SlReadByte();
+					break;
+				case SLE_FILE_I16:
+					x = (int16_t)SlReadUint16();
+					break;
+				case SLE_FILE_U16:
+					x = (uint16_t)SlReadUint16();
+					break;
+				case SLE_FILE_I32:
+					x = (int32_t)SlReadUint32();
+					break;
+				case SLE_FILE_U32:
+					x = (uint32_t)SlReadUint32();
+					break;
+				case SLE_FILE_I64:
+					x = (int64_t)SlReadUint64();
+					break;
+				case SLE_FILE_U64:
+					x = (uint64_t)SlReadUint64();
+					break;
+				case SLE_FILE_STRINGID:
+					x = RemapOldStringID((uint16_t)SlReadUint16());
+					break;
+				default:
+					NOT_REACHED();
 			}
 
 			/* Write The value to the struct. These ARE endian safe. */
 			WriteValue(ptr, conv, x);
 			break;
 		}
-		case SLA_PTRS: break;
-		case SLA_NULL: break;
-		default: NOT_REACHED();
+		case SLA_PTRS:
+			break;
+		case SLA_NULL:
+			break;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -909,7 +1008,6 @@ static inline size_t SlCalcStdStringLen(const void *ptr)
 	size_t len = str->length();
 	return len + SlGetArrayLength(len); // also include the length of the index
 }
-
 
 /**
  * Scan the string for old values of SCC_ENCODED and fix it to it's new, value.
@@ -1069,9 +1167,12 @@ static void SlStdString(void *ptr, VarType conv)
 			StrMakeValidInPlace(*str, settings);
 		}
 
-		case SLA_PTRS: break;
-		case SLA_NULL: break;
-		default: NOT_REACHED();
+		case SLA_PTRS:
+			break;
+		case SLA_NULL:
+			break;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1095,15 +1196,14 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 	 * as a byte-type. So detect this, and adjust object size accordingly */
 	if (_sl.action != SLA_SAVE && _sl_version == 0) {
 		/* all objects except difficulty settings */
-		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID ||
-				conv == SLE_INT32 || conv == SLE_UINT32) {
+		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID || conv == SLE_INT32 || conv == SLE_UINT32) {
 			SlCopyBytes(object, length * SlCalcConvFileLen(conv));
 			return;
 		}
 		/* used for conversion of Money 32bit->64bit */
 		if (conv == (SLE_FILE_I32 | SLE_VAR_I64)) {
 			for (uint i = 0; i < length; i++) {
-				((int64_t*)object)[i] = (int32_t)std::byteswap(SlReadUint32());
+				((int64_t *)object)[i] = (int32_t)std::byteswap(SlReadUint32());
 			}
 			return;
 		}
@@ -1114,10 +1214,10 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
 	if (conv == SLE_INT8 || conv == SLE_UINT8) {
 		SlCopyBytes(object, length);
 	} else {
-		uint8_t *a = (uint8_t*)object;
+		uint8_t *a = (uint8_t *)object;
 		uint8_t mem_size = SlCalcConvMemLen(conv);
 
-		for (; length != 0; length --) {
+		for (; length != 0; length--) {
 			SlSaveLoadConv(a, conv);
 			a += mem_size; // get size
 		}
@@ -1216,18 +1316,30 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
 
 	switch (rt) {
 		case REF_VEHICLE_OLD: // Old vehicles we save as new ones
-		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
-		case REF_STATION:   return ((const  Station*)obj)->index + 1;
-		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
-		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
-		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
-		case REF_ENGINE_RENEWS:  return ((const       EngineRenew*)obj)->index + 1;
-		case REF_CARGO_PACKET:   return ((const       CargoPacket*)obj)->index + 1;
-		case REF_ORDERLIST:      return ((const         OrderList*)obj)->index + 1;
-		case REF_STORAGE:        return ((const PersistentStorage*)obj)->index + 1;
-		case REF_LINK_GRAPH:     return ((const         LinkGraph*)obj)->index + 1;
-		case REF_LINK_GRAPH_JOB: return ((const      LinkGraphJob*)obj)->index + 1;
-		default: NOT_REACHED();
+		case REF_VEHICLE:
+			return ((const Vehicle *)obj)->index + 1;
+		case REF_STATION:
+			return ((const Station *)obj)->index + 1;
+		case REF_TOWN:
+			return ((const Town *)obj)->index + 1;
+		case REF_ORDER:
+			return ((const Order *)obj)->index + 1;
+		case REF_ROADSTOPS:
+			return ((const RoadStop *)obj)->index + 1;
+		case REF_ENGINE_RENEWS:
+			return ((const EngineRenew *)obj)->index + 1;
+		case REF_CARGO_PACKET:
+			return ((const CargoPacket *)obj)->index + 1;
+		case REF_ORDERLIST:
+			return ((const OrderList *)obj)->index + 1;
+		case REF_STORAGE:
+			return ((const PersistentStorage *)obj)->index + 1;
+		case REF_LINK_GRAPH:
+			return ((const LinkGraph *)obj)->index + 1;
+		case REF_LINK_GRAPH_JOB:
+			return ((const LinkGraphJob *)obj)->index + 1;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1308,7 +1420,8 @@ static void *IntToReference(size_t index, SLRefType rt)
 			if (LinkGraphJob::IsValidID(index)) return LinkGraphJob::Get(index);
 			SlErrorCorrupt("Referencing invalid LinkGraphJob");
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1333,7 +1446,8 @@ void SlSaveLoadRef(void *ptr, VarType conv)
 		case SLA_NULL:
 			*(void **)ptr = nullptr;
 			break;
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1343,6 +1457,7 @@ void SlSaveLoadRef(void *ptr, VarType conv)
 template <template <typename, typename> typename Tstorage, typename Tvar, typename Tallocator = std::allocator<Tvar>>
 class SlStorageHelper {
 	typedef Tstorage<Tvar, Tallocator> SlStorageT;
+
 public:
 	/**
 	 * Internal templated helper to return the size in bytes of a list-like type.
@@ -1364,9 +1479,15 @@ public:
 	static void SlSaveLoadMember(SaveLoadType cmd, Tvar *item, VarType conv)
 	{
 		switch (cmd) {
-			case SL_VAR: SlSaveLoadConv(item, conv); break;
-			case SL_REF: SlSaveLoadRef(item, conv); break;
-			case SL_STDSTR: SlStdString(item, conv); break;
+			case SL_VAR:
+				SlSaveLoadConv(item, conv);
+				break;
+			case SL_REF:
+				SlSaveLoadRef(item, conv);
+				break;
+			case SL_STDSTR:
+				SlStdString(item, conv);
+				break;
 			default:
 				NOT_REACHED();
 		}
@@ -1397,10 +1518,17 @@ public:
 			case SLA_LOAD: {
 				size_t length;
 				switch (cmd) {
-					case SL_VAR: length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
-					case SL_REF: length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
-					case SL_STDSTR: length = SlReadArrayLength(); break;
-					default: NOT_REACHED();
+					case SL_VAR:
+						length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength();
+						break;
+					case SL_REF:
+						length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength();
+						break;
+					case SL_STDSTR:
+						length = SlReadArrayLength();
+						break;
+					default:
+						NOT_REACHED();
 				}
 
 				list->clear();
@@ -1426,7 +1554,8 @@ public:
 				list->clear();
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 };
@@ -1493,22 +1622,32 @@ static void SlRefVector(void *vector, VarType conv)
 static inline size_t SlCalcDequeLen(const void *deque, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL: return SlStorageHelper<std::deque, bool>::SlCalcLen(deque, conv);
-		case SLE_VAR_I8: return SlStorageHelper<std::deque, int8_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U8: return SlStorageHelper<std::deque, uint8_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_I16: return SlStorageHelper<std::deque, int16_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U16: return SlStorageHelper<std::deque, uint16_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_I32: return SlStorageHelper<std::deque, int32_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U32: return SlStorageHelper<std::deque, uint32_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_I64: return SlStorageHelper<std::deque, int64_t>::SlCalcLen(deque, conv);
-		case SLE_VAR_U64: return SlStorageHelper<std::deque, uint64_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_BL:
+			return SlStorageHelper<std::deque, bool>::SlCalcLen(deque, conv);
+		case SLE_VAR_I8:
+			return SlStorageHelper<std::deque, int8_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_U8:
+			return SlStorageHelper<std::deque, uint8_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_I16:
+			return SlStorageHelper<std::deque, int16_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_U16:
+			return SlStorageHelper<std::deque, uint16_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_I32:
+			return SlStorageHelper<std::deque, int32_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_U32:
+			return SlStorageHelper<std::deque, uint32_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_I64:
+			return SlStorageHelper<std::deque, int64_t>::SlCalcLen(deque, conv);
+		case SLE_VAR_U64:
+			return SlStorageHelper<std::deque, uint64_t>::SlCalcLen(deque, conv);
 
 		case SLE_VAR_STR:
 			/* Strings are a length-prefixed field type in the savegame table format,
 			 * these may not be directly stored in another length-prefixed container type. */
 			NOT_REACHED();
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1520,15 +1659,33 @@ static inline size_t SlCalcDequeLen(const void *deque, VarType conv)
 static void SlDeque(void *deque, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL: SlStorageHelper<std::deque, bool>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I8: SlStorageHelper<std::deque, int8_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U8: SlStorageHelper<std::deque, uint8_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I16: SlStorageHelper<std::deque, int16_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U16: SlStorageHelper<std::deque, uint16_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I32: SlStorageHelper<std::deque, int32_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U32: SlStorageHelper<std::deque, uint32_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_I64: SlStorageHelper<std::deque, int64_t>::SlSaveLoad(deque, conv); break;
-		case SLE_VAR_U64: SlStorageHelper<std::deque, uint64_t>::SlSaveLoad(deque, conv); break;
+		case SLE_VAR_BL:
+			SlStorageHelper<std::deque, bool>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_I8:
+			SlStorageHelper<std::deque, int8_t>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_U8:
+			SlStorageHelper<std::deque, uint8_t>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_I16:
+			SlStorageHelper<std::deque, int16_t>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_U16:
+			SlStorageHelper<std::deque, uint16_t>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_I32:
+			SlStorageHelper<std::deque, int32_t>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_U32:
+			SlStorageHelper<std::deque, uint32_t>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_I64:
+			SlStorageHelper<std::deque, int64_t>::SlSaveLoad(deque, conv);
+			break;
+		case SLE_VAR_U64:
+			SlStorageHelper<std::deque, uint64_t>::SlSaveLoad(deque, conv);
+			break;
 
 		case SLE_VAR_STR:
 			/* Strings are a length-prefixed field type in the savegame table format,
@@ -1539,7 +1696,8 @@ static void SlDeque(void *deque, VarType conv)
 			SlStorageHelper<std::deque, std::string>::SlSaveLoad(deque, conv, SL_STDSTR);
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1551,22 +1709,32 @@ static void SlDeque(void *deque, VarType conv)
 static inline size_t SlCalcVectorLen(const void *vector, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL: NOT_REACHED(); // Not supported
-		case SLE_VAR_I8: return SlStorageHelper<std::vector, int8_t>::SlCalcLen(vector, conv);
-		case SLE_VAR_U8: return SlStorageHelper<std::vector, uint8_t>::SlCalcLen(vector, conv);
-		case SLE_VAR_I16: return SlStorageHelper<std::vector, int16_t>::SlCalcLen(vector, conv);
-		case SLE_VAR_U16: return SlStorageHelper<std::vector, uint16_t>::SlCalcLen(vector, conv);
-		case SLE_VAR_I32: return SlStorageHelper<std::vector, int32_t>::SlCalcLen(vector, conv);
-		case SLE_VAR_U32: return SlStorageHelper<std::vector, uint32_t>::SlCalcLen(vector, conv);
-		case SLE_VAR_I64: return SlStorageHelper<std::vector, int64_t>::SlCalcLen(vector, conv);
-		case SLE_VAR_U64: return SlStorageHelper<std::vector, uint64_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_BL:
+			NOT_REACHED(); // Not supported
+		case SLE_VAR_I8:
+			return SlStorageHelper<std::vector, int8_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_U8:
+			return SlStorageHelper<std::vector, uint8_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_I16:
+			return SlStorageHelper<std::vector, int16_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_U16:
+			return SlStorageHelper<std::vector, uint16_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_I32:
+			return SlStorageHelper<std::vector, int32_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_U32:
+			return SlStorageHelper<std::vector, uint32_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_I64:
+			return SlStorageHelper<std::vector, int64_t>::SlCalcLen(vector, conv);
+		case SLE_VAR_U64:
+			return SlStorageHelper<std::vector, uint64_t>::SlCalcLen(vector, conv);
 
 		case SLE_VAR_STR:
 			/* Strings are a length-prefixed field type in the savegame table format,
 			 * these may not be directly stored in another length-prefixed container type. */
 			NOT_REACHED();
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1578,15 +1746,32 @@ static inline size_t SlCalcVectorLen(const void *vector, VarType conv)
 static void SlVector(void *vector, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-		case SLE_VAR_BL: NOT_REACHED(); // Not supported
-		case SLE_VAR_I8: SlStorageHelper<std::vector, int8_t>::SlSaveLoad(vector, conv); break;
-		case SLE_VAR_U8: SlStorageHelper<std::vector, uint8_t>::SlSaveLoad(vector, conv); break;
-		case SLE_VAR_I16: SlStorageHelper<std::vector, int16_t>::SlSaveLoad(vector, conv); break;
-		case SLE_VAR_U16: SlStorageHelper<std::vector, uint16_t>::SlSaveLoad(vector, conv); break;
-		case SLE_VAR_I32: SlStorageHelper<std::vector, int32_t>::SlSaveLoad(vector, conv); break;
-		case SLE_VAR_U32: SlStorageHelper<std::vector, uint32_t>::SlSaveLoad(vector, conv); break;
-		case SLE_VAR_I64: SlStorageHelper<std::vector, int64_t>::SlSaveLoad(vector, conv); break;
-		case SLE_VAR_U64: SlStorageHelper<std::vector, uint64_t>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_BL:
+			NOT_REACHED(); // Not supported
+		case SLE_VAR_I8:
+			SlStorageHelper<std::vector, int8_t>::SlSaveLoad(vector, conv);
+			break;
+		case SLE_VAR_U8:
+			SlStorageHelper<std::vector, uint8_t>::SlSaveLoad(vector, conv);
+			break;
+		case SLE_VAR_I16:
+			SlStorageHelper<std::vector, int16_t>::SlSaveLoad(vector, conv);
+			break;
+		case SLE_VAR_U16:
+			SlStorageHelper<std::vector, uint16_t>::SlSaveLoad(vector, conv);
+			break;
+		case SLE_VAR_I32:
+			SlStorageHelper<std::vector, int32_t>::SlSaveLoad(vector, conv);
+			break;
+		case SLE_VAR_U32:
+			SlStorageHelper<std::vector, uint32_t>::SlSaveLoad(vector, conv);
+			break;
+		case SLE_VAR_I64:
+			SlStorageHelper<std::vector, int64_t>::SlSaveLoad(vector, conv);
+			break;
+		case SLE_VAR_U64:
+			SlStorageHelper<std::vector, uint64_t>::SlSaveLoad(vector, conv);
+			break;
 
 		case SLE_VAR_STR:
 			/* Strings are a length-prefixed field type in the savegame table format,
@@ -1597,7 +1782,8 @@ static void SlVector(void *vector, VarType conv)
 			SlStorageHelper<std::vector, std::string>::SlSaveLoad(vector, conv, SL_STDSTR);
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -1659,16 +1845,26 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 	if (!SlIsObjectValidInSavegame(sld)) return 0;
 
 	switch (sld.cmd) {
-		case SL_VAR: return SlCalcConvFileLen(sld.conv);
-		case SL_REF: return SlCalcRefLen();
-		case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
-		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
-		case SL_REFVECTOR: return SlCalcRefVectorLen(GetVariableAddress(object, sld), sld.conv);
-		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
-		case SL_VECTOR: return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
-		case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
-		case SL_SAVEBYTE: return 1; // a byte is logically of size 1
-		case SL_NULL: return SlCalcConvFileLen(sld.conv) * sld.length;
+		case SL_VAR:
+			return SlCalcConvFileLen(sld.conv);
+		case SL_REF:
+			return SlCalcRefLen();
+		case SL_ARR:
+			return SlCalcArrayLen(sld.length, sld.conv);
+		case SL_REFLIST:
+			return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_REFVECTOR:
+			return SlCalcRefVectorLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_DEQUE:
+			return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_VECTOR:
+			return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_STDSTR:
+			return SlCalcStdStringLen(GetVariableAddress(object, sld));
+		case SL_SAVEBYTE:
+			return 1; // a byte is logically of size 1
+		case SL_NULL:
+			return SlCalcConvFileLen(sld.conv) * sld.length;
 
 		case SL_STRUCT:
 		case SL_STRUCTLIST: {
@@ -1694,7 +1890,8 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 			return length;
 		}
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 	return 0;
 }
@@ -1716,15 +1913,32 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 			void *ptr = GetVariableAddress(object, sld);
 
 			switch (sld.cmd) {
-				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
-				case SL_REF: SlSaveLoadRef(ptr, conv); break;
-				case SL_ARR: SlArray(ptr, sld.length, conv); break;
-				case SL_REFLIST: SlRefList(ptr, conv); break;
-				case SL_REFVECTOR: SlRefVector(ptr, conv); break;
-				case SL_DEQUE: SlDeque(ptr, conv); break;
-				case SL_VECTOR: SlVector(ptr, conv); break;
-				case SL_STDSTR: SlStdString(ptr, sld.conv); break;
-				default: NOT_REACHED();
+				case SL_VAR:
+					SlSaveLoadConv(ptr, conv);
+					break;
+				case SL_REF:
+					SlSaveLoadRef(ptr, conv);
+					break;
+				case SL_ARR:
+					SlArray(ptr, sld.length, conv);
+					break;
+				case SL_REFLIST:
+					SlRefList(ptr, conv);
+					break;
+				case SL_REFVECTOR:
+					SlRefVector(ptr, conv);
+					break;
+				case SL_DEQUE:
+					SlDeque(ptr, conv);
+					break;
+				case SL_VECTOR:
+					SlVector(ptr, conv);
+					break;
+				case SL_STDSTR:
+					SlStdString(ptr, sld.conv);
+					break;
+				default:
+					NOT_REACHED();
 			}
 			break;
 		}
@@ -1736,12 +1950,16 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 			void *ptr = GetVariableAddress(object, sld);
 
 			switch (_sl.action) {
-				case SLA_SAVE: SlWriteByte(*(uint8_t *)ptr); break;
+				case SLA_SAVE:
+					SlWriteByte(*(uint8_t *)ptr);
+					break;
 				case SLA_LOAD_CHECK:
 				case SLA_LOAD:
 				case SLA_PTRS:
-				case SLA_NULL: break;
-				default: NOT_REACHED();
+				case SLA_NULL:
+					break;
+				default:
+					NOT_REACHED();
 			}
 			break;
 		}
@@ -1751,11 +1969,17 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 
 			switch (_sl.action) {
 				case SLA_LOAD_CHECK:
-				case SLA_LOAD: SlSkipBytes(SlCalcConvFileLen(sld.conv) * sld.length); break;
-				case SLA_SAVE: for (int i = 0; i < SlCalcConvFileLen(sld.conv) * sld.length; i++) SlWriteByte(0); break;
+				case SLA_LOAD:
+					SlSkipBytes(SlCalcConvFileLen(sld.conv) * sld.length);
+					break;
+				case SLA_SAVE:
+					for (int i = 0; i < SlCalcConvFileLen(sld.conv) * sld.length; i++) SlWriteByte(0);
+					break;
 				case SLA_PTRS:
-				case SLA_NULL: break;
-				default: NOT_REACHED();
+				case SLA_NULL:
+					break;
+				default:
+					NOT_REACHED();
 			}
 			break;
 		}
@@ -1792,12 +2016,15 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 					sld.handler->FixPointers(object);
 					break;
 
-				case SLA_NULL: break;
-				default: NOT_REACHED();
+				case SLA_NULL:
+					break;
+				default:
+					NOT_REACHED();
 			}
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 	return true;
 }
@@ -2007,7 +2234,8 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 			break;
 		}
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 
 	return std::vector<SaveLoad>();
@@ -2270,7 +2498,8 @@ static void SlSaveChunk(const ChunkHandler &ch)
 			ch.Save();
 			SlWriteArrayLength(0); // Terminate arrays
 			break;
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 
 	if (_sl.expect_table_header) SlErrorCorrupt("Table chunk without header");
@@ -2295,7 +2524,8 @@ static void SlSaveChunks()
  */
 static const ChunkHandler *SlFindChunkHandler(uint32_t id)
 {
-	for (const ChunkHandler &ch : ChunkHandlers()) if (ch.id == id) return &ch;
+	for (const ChunkHandler &ch : ChunkHandlers())
+		if (ch.id == id) return &ch;
 	return nullptr;
 }
 
@@ -2342,7 +2572,6 @@ static void SlFixPointers()
 	assert(_sl.action == SLA_PTRS);
 }
 
-
 /** Yes, simply reading from a file. */
 struct FileReader : LoadFilter {
 	std::optional<FileHandle> file; ///< The file to read from.
@@ -2352,9 +2581,7 @@ struct FileReader : LoadFilter {
 	 * Create the file reader, so it reads from a specific file.
 	 * @param file The file to read from.
 	 */
-	FileReader(FileHandle &&file) : LoadFilter(nullptr), file(std::move(file)), begin(ftell(*this->file))
-	{
-	}
+	FileReader(FileHandle &&file) : LoadFilter(nullptr), file(std::move(file)), begin(ftell(*this->file)) {}
 
 	/** Make sure everything is cleaned up. */
 	~FileReader()
@@ -2389,9 +2616,7 @@ struct FileWriter : SaveFilter {
 	 * Create the file writer, so it writes to a specific file.
 	 * @param file The file to write to.
 	 */
-	FileWriter(FileHandle &&file) : SaveFilter(nullptr), file(std::move(file))
-	{
-	}
+	FileWriter(FileHandle &&file) : SaveFilter(nullptr), file(std::move(file)) {}
 
 	/** Make sure everything is cleaned up. */
 	~FileWriter()
@@ -2421,7 +2646,7 @@ struct FileWriter : SaveFilter {
  *******************************************/
 
 #ifdef WITH_LZO
-#include <lzo/lzo1x.h>
+#	include <lzo/lzo1x.h>
 
 /** Buffer size for the LZO compressor */
 static const uint LZO_BUFFER_SIZE = 8192;
@@ -2448,10 +2673,10 @@ struct LZOLoadFilter : LoadFilter {
 		lzo_uint len = ssize;
 
 		/* Read header*/
-		if (this->chain->Read((uint8_t*)tmp, sizeof(tmp)) != sizeof(tmp)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE, "File read failed");
+		if (this->chain->Read((uint8_t *)tmp, sizeof(tmp)) != sizeof(tmp)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE, "File read failed");
 
 		/* Check if size is bad */
-		((uint32_t*)out)[0] = size = tmp[1];
+		((uint32_t *)out)[0] = size = tmp[1];
 
 		if (_sl_version != SL_MIN_VERSION) {
 			tmp[0] = TO_BE32(tmp[0]);
@@ -2496,8 +2721,8 @@ struct LZOSaveFilter : SaveFilter {
 			/* Compress up to LZO_BUFFER_SIZE bytes at once. */
 			lzo_uint len = size > LZO_BUFFER_SIZE ? LZO_BUFFER_SIZE : (lzo_uint)size;
 			lzo1x_1_compress(in, len, out + sizeof(uint32_t) * 2, &outlen, wrkmem);
-			((uint32_t*)out)[1] = TO_BE32((uint32_t)outlen);
-			((uint32_t*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32_t), outlen + sizeof(uint32_t)));
+			((uint32_t *)out)[1] = TO_BE32((uint32_t)outlen);
+			((uint32_t *)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32_t), outlen + sizeof(uint32_t)));
 			this->chain->Write(out, outlen + sizeof(uint32_t) * 2);
 
 			/* Move to next data chunk. */
@@ -2519,9 +2744,7 @@ struct NoCompLoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	NoCompLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain))
-	{
-	}
+	NoCompLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain)) {}
 
 	size_t Read(uint8_t *buf, size_t size) override
 	{
@@ -2535,9 +2758,7 @@ struct NoCompSaveFilter : SaveFilter {
 	 * Initialise this filter.
 	 * @param chain             The next filter in this chain.
 	 */
-	NoCompSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t) : SaveFilter(std::move(chain))
-	{
-	}
+	NoCompSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t) : SaveFilter(std::move(chain)) {}
 
 	void Write(uint8_t *buf, size_t size) override
 	{
@@ -2550,11 +2771,11 @@ struct NoCompSaveFilter : SaveFilter {
  ********************************************/
 
 #if defined(WITH_ZLIB)
-#include <zlib.h>
+#	include <zlib.h>
 
 /** Filter using Zlib compression. */
 struct ZlibLoadFilter : LoadFilter {
-	z_stream z;                        ///< Stream state we are reading from.
+	z_stream z; ///< Stream state we are reading from.
 	uint8_t fread_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for reading from the file.
 
 	/**
@@ -2575,7 +2796,7 @@ struct ZlibLoadFilter : LoadFilter {
 
 	size_t Read(uint8_t *buf, size_t size) override
 	{
-		this->z.next_out  = buf;
+		this->z.next_out = buf;
 		this->z.avail_out = (uint)size;
 
 		do {
@@ -2671,7 +2892,7 @@ struct ZlibSaveFilter : SaveFilter {
  ********************************************/
 
 #if defined(WITH_LIBLZMA)
-#include <lzma.h>
+#	include <lzma.h>
 
 /**
  * Have a copy of an initialised LZMA stream. We need this as it's
@@ -2683,7 +2904,7 @@ static const lzma_stream _lzma_init = LZMA_STREAM_INIT;
 
 /** Filter without any compression. */
 struct LZMALoadFilter : LoadFilter {
-	lzma_stream lzma;                  ///< Stream state that we are reading from.
+	lzma_stream lzma; ///< Stream state that we are reading from.
 	uint8_t fread_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for reading from the file.
 
 	/**
@@ -2704,13 +2925,13 @@ struct LZMALoadFilter : LoadFilter {
 
 	size_t Read(uint8_t *buf, size_t size) override
 	{
-		this->lzma.next_out  = buf;
+		this->lzma.next_out = buf;
 		this->lzma.avail_out = size;
 
 		do {
 			/* read more bytes from the file? */
 			if (this->lzma.avail_in == 0) {
-				this->lzma.next_in  = this->fread_buf;
+				this->lzma.next_in = this->fread_buf;
 				this->lzma.avail_in = this->chain->Read(this->fread_buf, sizeof(this->fread_buf));
 			}
 
@@ -2791,15 +3012,15 @@ struct LZMASaveFilter : SaveFilter {
 
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
-	const char *name;                     ///< name of the compressor/decompressor (debug-only)
-	uint32_t tag;                           ///< the 4-letter tag by which it is identified in the savegame
+	const char *name; ///< name of the compressor/decompressor (debug-only)
+	uint32_t tag; ///< the 4-letter tag by which it is identified in the savegame
 
 	std::shared_ptr<LoadFilter> (*init_load)(std::shared_ptr<LoadFilter> chain); ///< Constructor for the load filter.
 	std::shared_ptr<SaveFilter> (*init_write)(std::shared_ptr<SaveFilter> chain, uint8_t compression); ///< Constructor for the save filter.
 
-	uint8_t min_compression;                 ///< the minimum compression level of this format
-	uint8_t default_compression;             ///< the default compression level of this format
-	uint8_t max_compression;                 ///< the maximum compression level of this format
+	uint8_t min_compression; ///< the minimum compression level of this format
+	uint8_t default_compression; ///< the default compression level of this format
+	uint8_t max_compression; ///< the maximum compression level of this format
 };
 
 static const uint32_t SAVEGAME_TAG_LZO = TO_BE32('OTTD');
@@ -2811,9 +3032,9 @@ static const uint32_t SAVEGAME_TAG_LZMA = TO_BE32('OTTX');
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
 	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
-	{"lzo",  SAVEGAME_TAG_LZO,  CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
+	{"lzo", SAVEGAME_TAG_LZO, CreateLoadFilter<LZOLoadFilter>, CreateSaveFilter<LZOSaveFilter>, 0, 0, 0},
 #else
-	{"lzo",  SAVEGAME_TAG_LZO,  nullptr,                            nullptr,                            0, 0, 0},
+	{"lzo", SAVEGAME_TAG_LZO, nullptr, nullptr, 0, 0, 0},
 #endif
 	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
 	{"none", SAVEGAME_TAG_NONE, CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
@@ -2821,9 +3042,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
 	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
 	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
-	{"zlib", SAVEGAME_TAG_ZLIB, CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
+	{"zlib", SAVEGAME_TAG_ZLIB, CreateLoadFilter<ZlibLoadFilter>, CreateSaveFilter<ZlibSaveFilter>, 0, 6, 9},
 #else
-	{"zlib", SAVEGAME_TAG_ZLIB, nullptr,                            nullptr,                            0, 0, 0},
+	{"zlib", SAVEGAME_TAG_ZLIB, nullptr, nullptr, 0, 0, 0},
 #endif
 #if defined(WITH_LIBLZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
@@ -2831,9 +3052,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
 	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is preferred over .tar.lzma. */
-	{"lzma", SAVEGAME_TAG_LZMA, CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
+	{"lzma", SAVEGAME_TAG_LZMA, CreateLoadFilter<LZMALoadFilter>, CreateSaveFilter<LZMASaveFilter>, 0, 2, 9},
 #else
-	{"lzma", SAVEGAME_TAG_LZMA, nullptr,                            nullptr,                            0, 0, 0},
+	{"lzma", SAVEGAME_TAG_LZMA, nullptr, nullptr, 0, 0, 0},
 #endif
 };
 
@@ -2846,7 +3067,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::string &full_name)
 {
 	/* Find default savegame format, the highest one with which files can be written. */
-	auto it = std::find_if(std::rbegin(_saveload_formats), std::rend(_saveload_formats), [](const auto &slf) { return slf.init_write != nullptr; });
+	auto it = std::find_if(std::rbegin(_saveload_formats), std::rend(_saveload_formats), [](const auto &slf) {
+		return slf.init_write != nullptr;
+	});
 	if (it == std::rend(_saveload_formats)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "no writeable savegame formats");
 
 	const SaveLoadFormat &def = *it;
@@ -2866,10 +3089,7 @@ static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::s
 					size_t processed;
 					long level = std::stol(complevel, &processed, 10);
 					if (processed == 0 || level != Clamp(level, slf.min_compression, slf.max_compression)) {
-						ShowErrorMessage(
-							GetEncodedString(STR_CONFIG_ERROR),
-							GetEncodedString(STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, complevel),
-							WL_CRITICAL);
+						ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, complevel), WL_CRITICAL);
 					} else {
 						return {slf, ClampTo<uint8_t>(level)};
 					}
@@ -2878,10 +3098,7 @@ static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::s
 			}
 		}
 
-		ShowErrorMessage(
-			GetEncodedString(STR_CONFIG_ERROR),
-			GetEncodedString(STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM, name, def.name),
-			WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR), GetEncodedString(STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM, name, def.name), WL_CRITICAL);
 	}
 	return {def, def.default_compression};
 }
@@ -2987,8 +3204,8 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		auto [fmt, compression] = GetSavegameFormat(_savegame_format);
 
 		/* We have written our stuff to memory, now write it to file! */
-		uint32_t hdr[2] = { fmt.tag, TO_BE32(SAVEGAME_VERSION << 16) };
-		_sl.sf->Write((uint8_t*)hdr, sizeof(hdr));
+		uint32_t hdr[2] = {fmt.tag, TO_BE32(SAVEGAME_VERSION << 16)};
+		_sl.sf->Write((uint8_t *)hdr, sizeof(hdr));
 
 		_sl.sf = fmt.init_write(_sl.sf, compression);
 		_sl.dumper->Flush(_sl.sf);
@@ -3142,7 +3359,7 @@ static SaveOrLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_che
 	}
 
 	uint32_t hdr[2];
-	if (_sl.lf->Read((uint8_t*)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+	if (_sl.lf->Read((uint8_t *)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 	/* see if we have any loader for this type. */
 	const SaveLoadFormat *fmt = DetermineSaveLoadFormat(hdr[0], hdr[1]);
@@ -3299,7 +3516,8 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 				_sl.action = SLA_SAVE;
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 
 		auto fh = (fop == SLO_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
@@ -3357,7 +3575,6 @@ void DoAutoOrNetsave(FiosNumberedSaveName &counter)
 	}
 }
 
-
 /** Do a save when exiting the game (_settings_client.gui.autosave_on_exit) */
 void DoExitSave()
 {
@@ -3394,10 +3611,17 @@ std::string GenerateDefaultSaveName()
 	} else {
 		/* Insert current date */
 		switch (_settings_client.gui.date_format_in_default_names) {
-			case 0: *it++ = STR_JUST_DATE_LONG; break;
-			case 1: *it++ = STR_JUST_DATE_TINY; break;
-			case 2: *it++ = STR_JUST_DATE_ISO; break;
-			default: NOT_REACHED();
+			case 0:
+				*it++ = STR_JUST_DATE_LONG;
+				break;
+			case 1:
+				*it++ = STR_JUST_DATE_TINY;
+				break;
+			case 2:
+				*it++ = STR_JUST_DATE_ISO;
+				break;
+			default:
+				NOT_REACHED();
 		}
 		*it++ = TimerGameEconomy::date;
 	}

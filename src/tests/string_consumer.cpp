@@ -9,11 +9,10 @@
 
 #include "../stdafx.h"
 
-#include <iostream>
-
-#include "../3rdparty/catch2/catch.hpp"
-
 #include "../core/string_consumer.hpp"
+
+#include <iostream>
+#include "../3rdparty/catch2/catch.hpp"
 
 #include "../safeguards.h"
 
@@ -142,7 +141,7 @@ TEST_CASE("StringConsumer - binary64")
 
 TEST_CASE("StringConsumer - utf8")
 {
-	StringConsumer consumer("a\u1234\xFF\xFE""b"sv);
+	StringConsumer consumer("a\u1234\xFF\xFE" "b"sv);
 	CHECK(consumer.PeekUtf8() == std::pair<StringConsumer::size_type, char32_t>(1, 'a'));
 	consumer.SkipUtf8();
 	CHECK(consumer.PeekUtf8() == std::pair<StringConsumer::size_type, char32_t>(3, 0x1234));
@@ -270,7 +269,8 @@ TEST_CASE("StringConsumer - ascii")
 
 TEST_CASE("StringConsumer - parse int")
 {
-	StringConsumer consumer("1 a -a -2 -2 ffffFFFF ffffFFFF -1aaaAAAA -1aaaAAAA +3 1234567890123 1234567890123 1234567890123 ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE -0x1aaaAAAAaaaaAAAA -1234567890123 "sv);
+	StringConsumer consumer(
+		"1 a -a -2 -2 ffffFFFF ffffFFFF -1aaaAAAA -1aaaAAAA +3 1234567890123 1234567890123 1234567890123 ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE -0x1aaaAAAAaaaaAAAA -1234567890123 "sv);
 	CHECK(consumer.PeekIntegerBase<uint32_t>(0) == std::pair<StringConsumer::size_type, uint32_t>(1, 1));
 	CHECK(consumer.PeekIntegerBase<int32_t>(0) == std::pair<StringConsumer::size_type, int32_t>(1, 1));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(1, 1));

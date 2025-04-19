@@ -10,9 +10,9 @@
 #ifndef SCRIPT_STATION_HPP
 #define SCRIPT_STATION_HPP
 
-#include "script_road.hpp"
-#include "script_basestation.hpp"
 #include "../../station_type.h"
+#include "script_basestation.hpp"
+#include "script_road.hpp"
 
 /**
  * Class that handles all station related functions.
@@ -33,10 +33,10 @@ public:
 		ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, // [STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT, STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK]
 
 		/** There are too many stations, airports and docks in the game */
-		ERR_STATION_TOO_MANY_STATIONS,            // [STR_ERROR_TOO_MANY_STATIONS_LOADING, STR_ERROR_TOO_MANY_TRUCK_STOPS, STR_ERROR_TOO_MANY_BUS_STOPS]
+		ERR_STATION_TOO_MANY_STATIONS, // [STR_ERROR_TOO_MANY_STATIONS_LOADING, STR_ERROR_TOO_MANY_TRUCK_STOPS, STR_ERROR_TOO_MANY_BUS_STOPS]
 
 		/** There are too many stations, airports of docks in a town */
-		ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    // [STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT]
+		ERR_STATION_TOO_MANY_STATIONS_IN_TOWN, // [STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT]
 	};
 
 	/**
@@ -44,12 +44,12 @@ public:
 	 */
 	enum StationType {
 		/* Note: these values represent part of the in-game StationFacilities enum */
-		STATION_TRAIN      = ::StationFacilities{::StationFacility::Train}.base(),     ///< Train station
+		STATION_TRAIN = ::StationFacilities{::StationFacility::Train}.base(), ///< Train station
 		STATION_TRUCK_STOP = ::StationFacilities{::StationFacility::TruckStop}.base(), ///< Truck station
-		STATION_BUS_STOP   = ::StationFacilities{::StationFacility::BusStop}.base(),   ///< Bus station
-		STATION_AIRPORT    = ::StationFacilities{::StationFacility::Airport}.base(),   ///< Airport
-		STATION_DOCK       = ::StationFacilities{::StationFacility::Dock}.base(),      ///< Dock
-		STATION_ANY        = STATION_TRAIN | STATION_TRUCK_STOP | STATION_BUS_STOP | STATION_AIRPORT | STATION_DOCK, ///< All station types
+		STATION_BUS_STOP = ::StationFacilities{::StationFacility::BusStop}.base(), ///< Bus station
+		STATION_AIRPORT = ::StationFacilities{::StationFacility::Airport}.base(), ///< Airport
+		STATION_DOCK = ::StationFacilities{::StationFacility::Dock}.base(), ///< Dock
+		STATION_ANY = STATION_TRAIN | STATION_TRUCK_STOP | STATION_BUS_STOP | STATION_AIRPORT | STATION_DOCK, ///< All station types
 	};
 
 	/**
@@ -298,17 +298,13 @@ public:
 
 private:
 	template <bool Tfrom, bool Tvia>
-	static bool IsCargoRequestValid(StationID station_id, StationID from_station_id,
-			StationID via_station_id, CargoType cargo_type);
+	static bool IsCargoRequestValid(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type);
 
 	template <bool Tfrom, bool Tvia>
-	static SQInteger CountCargoWaiting(StationID station_id, StationID from_station_id,
-			StationID via_station_id, CargoType cargo_type);
+	static SQInteger CountCargoWaiting(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type);
 
 	template <bool Tfrom, bool Tvia>
-	static SQInteger CountCargoPlanned(StationID station_id, StationID from_station_id,
-			StationID via_station_id, CargoType cargo_type);
-
+	static SQInteger CountCargoPlanned(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type);
 };
 
 DECLARE_ENUM_AS_BIT_SET(ScriptStation::StationType)

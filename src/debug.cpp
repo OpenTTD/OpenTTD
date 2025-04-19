@@ -8,15 +8,18 @@
 /** @file debug.cpp Handling of printing debug messages. */
 
 #include "stdafx.h"
-#include "console_func.h"
+
 #include "debug.h"
-#include "string_func.h"
-#include "fileio_func.h"
-#include "settings_type.h"
+
 #include <mutex>
 
+#include "console_func.h"
+#include "fileio_func.h"
+#include "settings_type.h"
+#include "string_func.h"
+
 #if defined(_WIN32)
-#include "os/windows/win32.h"
+#	include "os/windows/win32.h"
 #endif
 
 #include "3rdparty/fmt/chrono.h"
@@ -27,9 +30,10 @@
 
 /** Element in the queue of debug messages that have to be passed to either NetworkAdminConsole or IConsolePrint.*/
 struct QueuedDebugItem {
-	std::string level;   ///< The used debug level.
+	std::string level; ///< The used debug level.
 	std::string message; ///< The actual formatted message.
 };
+
 std::atomic<bool> _debug_remote_console; ///< Whether we need to send data to either NetworkAdminConsole or IConsolePrint.
 std::mutex _debug_remote_console_mutex; ///< Mutex to guard the queue of debug messages for either NetworkAdminConsole or IConsolePrint.
 std::vector<QueuedDebugItem> _debug_remote_console_queue; ///< Queue for debug messages to be passed to NetworkAdminConsole or IConsolePrint.

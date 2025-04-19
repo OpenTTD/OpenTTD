@@ -37,8 +37,12 @@ struct Randomizer {
 	 * @param limit Limit of the range to be generated from.
 	 * @return Random number in [0,\a limit)
 	 */
-	inline uint32_t Next(uint32_t limit) { return ScaleToLimit(this->Next(), limit); }
+	inline uint32_t Next(uint32_t limit)
+	{
+		return ScaleToLimit(this->Next(), limit);
+	}
 };
+
 extern Randomizer _random; ///< Random used in the game state calculations
 extern Randomizer _interactive_random; ///< Random used everywhere else, where it does not (directly) influence the game state
 
@@ -70,12 +74,12 @@ inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
 
 void SetRandomSeed(uint32_t seed);
 #ifdef RANDOM_DEBUG
-	uint32_t Random(const std::source_location location = std::source_location::current());
+uint32_t Random(const std::source_location location = std::source_location::current());
 #else
-	inline uint32_t Random([[maybe_unused]] const std::source_location location = std::source_location::current())
-	{
-		return _random.Next();
-	}
+inline uint32_t Random([[maybe_unused]] const std::source_location location = std::source_location::current())
+{
+	return _random.Next();
+}
 #endif
 
 /**

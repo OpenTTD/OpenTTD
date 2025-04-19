@@ -10,10 +10,10 @@
 #ifndef ENGINE_FUNC_H
 #define ENGINE_FUNC_H
 
-#include "engine_type.h"
-#include "vehicle_type.h"
 #include "company_type.h"
+#include "engine_type.h"
 #include "timer/timer_game_calendar.h"
+#include "vehicle_type.h"
 
 void SetupEngines();
 void StartupEngines();

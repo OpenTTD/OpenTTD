@@ -7,10 +7,10 @@
 
 /** @file newgrf_debug_data.h Data 'tables' for NewGRF debugging. */
 
-#include "../newgrf_house.h"
 #include "../newgrf_engine.h"
-#include "../newgrf_roadtype.h"
+#include "../newgrf_house.h"
 #include "../newgrf_roadstop.h"
+#include "../newgrf_roadtype.h"
 
 /* clang-format off */
 

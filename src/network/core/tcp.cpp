@@ -10,9 +10,10 @@
  */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
 
 #include "tcp.h"
+
+#include "../../debug.h"
 
 #include "../../safeguards.h"
 

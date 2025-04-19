@@ -22,7 +22,7 @@ static const char32_t NFO_UTF8_IDENTIFIER = 0x00DE;
 
 /** A GRF text with associated language ID. */
 struct GRFText {
-	uint8_t langid;      ///< The language associated with this GRFText.
+	uint8_t langid; ///< The language associated with this GRFText.
 	std::string text; ///< The actual (translated) text.
 };
 
@@ -35,7 +35,7 @@ using GRFTextWrapper = std::shared_ptr<GRFTextList>;
 struct LanguageMap {
 	/** Mapping between NewGRF and OpenTTD IDs. */
 	struct Mapping {
-		uint8_t newgrf_id;  ///< NewGRF's internal ID for a case/gender.
+		uint8_t newgrf_id; ///< NewGRF's internal ID for a case/gender.
 		uint8_t openttd_id; ///< OpenTTD's internal ID for a case/gender.
 	};
 
@@ -46,8 +46,8 @@ struct LanguageMap {
 	 * case a NewGRF developer/translator might want a different translation for
 	 * both cases. Thus we are basically implementing a multi-map. */
 	std::vector<Mapping> gender_map; ///< Mapping of NewGRF and OpenTTD IDs for genders.
-	std::vector<Mapping> case_map;   ///< Mapping of NewGRF and OpenTTD IDs for cases.
-	int plural_form;                 ///< The plural form used for this language.
+	std::vector<Mapping> case_map; ///< Mapping of NewGRF and OpenTTD IDs for cases.
+	int plural_form; ///< The plural form used for this language.
 
 	int GetMapping(int newgrf_id, bool gender) const;
 	int GetReverseMapping(int openttd_id, bool gender) const;

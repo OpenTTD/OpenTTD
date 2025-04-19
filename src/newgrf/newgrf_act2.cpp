@@ -8,13 +8,15 @@
 /** @file newgrf_act2.cpp NewGRF Action 0x02 handler. */
 
 #include "../stdafx.h"
+
 #include <ranges>
+
 #include "../debug.h"
-#include "../newgrf_engine.h"
-#include "../newgrf_cargo.h"
 #include "../error.h"
-#include "../vehicle_base.h"
+#include "../newgrf_cargo.h"
+#include "../newgrf_engine.h"
 #include "../road.h"
+#include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 
@@ -57,7 +59,8 @@ void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
  * @param[out] max_palette_offset Optionally returns the number of sprites in the spriteset of the palette. (0 if no spritset)
  * @return Read TileLayoutFlags.
  */
-TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset, uint16_t *max_palette_offset)
+TileLayoutFlags ReadSpriteLayoutSprite(
+	ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset, uint16_t *max_palette_offset)
 {
 	grf_sprite->sprite = buf.ReadWord();
 	grf_sprite->pal = buf.ReadWord();
@@ -120,11 +123,11 @@ static void ReadSpriteLayoutRegisters(ByteReader &buf, TileLayoutFlags flags, bo
 	if (!(flags & TLF_DRAWING_FLAGS)) return;
 
 	if (dts->registers.empty()) dts->AllocateRegisters();
-	TileLayoutRegisters &regs = const_cast<TileLayoutRegisters&>(dts->registers[index]);
+	TileLayoutRegisters &regs = const_cast<TileLayoutRegisters &>(dts->registers[index]);
 	regs.flags = flags & TLF_DRAWING_FLAGS;
 
-	if (flags & TLF_DODRAW)  regs.dodraw  = buf.ReadByte();
-	if (flags & TLF_SPRITE)  regs.sprite  = buf.ReadByte();
+	if (flags & TLF_DODRAW) regs.dodraw = buf.ReadByte();
+	if (flags & TLF_SPRITE) regs.sprite = buf.ReadByte();
 	if (flags & TLF_PALETTE) regs.palette = buf.ReadByte();
 
 	if (is_parent) {
@@ -132,10 +135,10 @@ static void ReadSpriteLayoutRegisters(ByteReader &buf, TileLayoutFlags flags, bo
 			regs.delta.parent[0] = buf.ReadByte();
 			regs.delta.parent[1] = buf.ReadByte();
 		}
-		if (flags & TLF_BB_Z_OFFSET)    regs.delta.parent[2] = buf.ReadByte();
+		if (flags & TLF_BB_Z_OFFSET) regs.delta.parent[2] = buf.ReadByte();
 	} else {
-		if (flags & TLF_CHILD_X_OFFSET) regs.delta.child[0]  = buf.ReadByte();
-		if (flags & TLF_CHILD_Y_OFFSET) regs.delta.child[1]  = buf.ReadByte();
+		if (flags & TLF_CHILD_X_OFFSET) regs.delta.child[0] = buf.ReadByte();
+		if (flags & TLF_CHILD_Y_OFFSET) regs.delta.child[1] = buf.ReadByte();
 	}
 
 	if (flags & TLF_SPRITE_VAR10) {
@@ -193,7 +196,7 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 	if (_cur_gps.skip_sprites < 0) return true;
 
 	for (uint i = 0; i < num_building_sprites; i++) {
-		DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&dts->seq[i]);
+		DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct *>(&dts->seq[i]);
 
 		flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &seq->image, max_sprite_offset.data() + i + 1, max_palette_offset.data() + i + 1);
 		if (_cur_gps.skip_sprites < 0) return true;
@@ -249,7 +252,7 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 		if (dts->registers.empty()) dts->AllocateRegisters();
 
 		for (uint i = 0; i < num_building_sprites + 1; i++) {
-			TileLayoutRegisters &regs = const_cast<TileLayoutRegisters&>(dts->registers[i]);
+			TileLayoutRegisters &regs = const_cast<TileLayoutRegisters &>(dts->registers[i]);
 			regs.max_sprite_offset = max_sprite_offset[i];
 			regs.max_palette_offset = max_palette_offset[i];
 		}
@@ -350,8 +353,8 @@ static void NewSpriteGroup(ByteReader &buf)
 		return;
 	}
 
-	uint8_t setid   = buf.ReadByte();
-	uint8_t type    = buf.ReadByte();
+	uint8_t setid = buf.ReadByte();
+	uint8_t type = buf.ReadByte();
 
 	/* Sprite Groups are created here but they are allocated from a pool, so
 	 * we do not need to delete anything if there is an exception from the
@@ -376,10 +379,20 @@ static void NewSpriteGroup(ByteReader &buf)
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			switch (GB(type, 2, 2)) {
-				default: NOT_REACHED();
-				case 0: group->size = DSG_SIZE_BYTE;  varsize = 1; break;
-				case 1: group->size = DSG_SIZE_WORD;  varsize = 2; break;
-				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
+				default:
+					NOT_REACHED();
+				case 0:
+					group->size = DSG_SIZE_BYTE;
+					varsize = 1;
+					break;
+				case 1:
+					group->size = DSG_SIZE_WORD;
+					varsize = 2;
+					break;
+				case 2:
+					group->size = DSG_SIZE_DWORD;
+					varsize = 4;
+					break;
 			}
 
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
@@ -389,7 +402,7 @@ static void NewSpriteGroup(ByteReader &buf)
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
 				adjust.operation = group->adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf.ReadByte();
-				adjust.variable  = buf.ReadByte();
+				adjust.variable = buf.ReadByte();
 				if (adjust.variable == 0x7E) {
 					/* Link subroutine group */
 					adjust.subroutine = GetGroupFromGroupID(setid, type, buf.ReadByte());
@@ -399,15 +412,15 @@ static void NewSpriteGroup(ByteReader &buf)
 
 				varadjust = buf.ReadByte();
 				adjust.shift_num = GB(varadjust, 0, 5);
-				adjust.type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
-				adjust.and_mask  = buf.ReadVarSize(varsize);
+				adjust.type = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
+				adjust.and_mask = buf.ReadVarSize(varsize);
 
 				if (adjust.type != DSGA_TYPE_NONE) {
-					adjust.add_val    = buf.ReadVarSize(varsize);
+					adjust.add_val = buf.ReadVarSize(varsize);
 					adjust.divmod_val = buf.ReadVarSize(varsize);
 					if (adjust.divmod_val == 0) adjust.divmod_val = 1; // Ensure that divide by zero cannot occur
 				} else {
-					adjust.add_val    = 0;
+					adjust.add_val = 0;
 					adjust.divmod_val = 0;
 				}
 
@@ -418,8 +431,8 @@ static void NewSpriteGroup(ByteReader &buf)
 			ranges.resize(buf.ReadByte());
 			for (auto &range : ranges) {
 				range.group = GetGroupFromGroupID(setid, type, buf.ReadWord());
-				range.low   = buf.ReadVarSize(varsize);
-				range.high  = buf.ReadVarSize(varsize);
+				range.low = buf.ReadVarSize(varsize);
+				range.high = buf.ReadVarSize(varsize);
 			}
 
 			group->default_group = GetGroupFromGroupID(setid, type, buf.ReadWord());
@@ -451,7 +464,7 @@ static void NewSpriteGroup(ByteReader &buf)
 			}
 			assert(target.size() == bounds.size());
 
-			for (uint j = 0; j < bounds.size(); ) {
+			for (uint j = 0; j < bounds.size();) {
 				if (target[j] != group->default_group) {
 					DeterministicSpriteGroupRange &r = group->ranges.emplace_back();
 					r.group = target[j];
@@ -485,8 +498,8 @@ static void NewSpriteGroup(ByteReader &buf)
 			}
 
 			uint8_t triggers = buf.ReadByte();
-			group->triggers       = GB(triggers, 0, 7);
-			group->cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
+			group->triggers = GB(triggers, 0, 7);
+			group->cmp_mode = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
 			group->lowest_randbit = buf.ReadByte();
 
 			uint8_t num_groups = buf.ReadByte();
@@ -503,8 +516,7 @@ static void NewSpriteGroup(ByteReader &buf)
 		}
 
 		/* Neither a variable or randomized sprite group... must be a real group */
-		default:
-		{
+		default: {
 			switch (feature) {
 				case GSF_TRAINS:
 				case GSF_ROADVEHICLES:
@@ -517,9 +529,8 @@ static void NewSpriteGroup(ByteReader &buf)
 				case GSF_RAILTYPES:
 				case GSF_ROADTYPES:
 				case GSF_TRAMTYPES:
-				case GSF_BADGES:
-				{
-					uint8_t num_loaded  = type;
+				case GSF_BADGES: {
+					uint8_t num_loaded = type;
 					uint8_t num_loading = buf.ReadByte();
 
 					if (!_cur_gps.HasValidSpriteSets(feature)) {
@@ -527,8 +538,7 @@ static void NewSpriteGroup(ByteReader &buf)
 						return;
 					}
 
-					GrfMsg(6, "NewSpriteGroup: New SpriteGroup 0x{:02X}, {} loaded, {} loading",
-							setid, num_loaded, num_loading);
+					GrfMsg(6, "NewSpriteGroup: New SpriteGroup 0x{:02X}, {} loaded, {} loading", setid, num_loaded, num_loading);
 
 					if (num_loaded + num_loading == 0) {
 						GrfMsg(1, "NewSpriteGroup: no result, skipping invalid RealSpriteGroup");
@@ -558,7 +568,7 @@ static void NewSpriteGroup(ByteReader &buf)
 						GrfMsg(8, "NewSpriteGroup: + rg->loading[{}] = subset {}", i, loading[i]);
 					}
 
-					bool loaded_same = !loaded.empty() && std::adjacent_find(loaded.begin(),  loaded.end(),  std::not_equal_to<>()) == loaded.end();
+					bool loaded_same = !loaded.empty() && std::adjacent_find(loaded.begin(), loaded.end(), std::not_equal_to<>()) == loaded.end();
 					bool loading_same = !loading.empty() && std::adjacent_find(loading.begin(), loading.end(), std::not_equal_to<>()) == loading.end();
 					if (loaded_same && loading_same && loaded[0] == loading[0]) {
 						/* Both lists only contain the same value, so don't create 'Real' sprite group */
@@ -688,7 +698,8 @@ static void NewSpriteGroup(ByteReader &buf)
 				}
 
 				/* Loading of Tile Layout and Production Callback groups would happen here */
-				default: GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+				default:
+					GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 			}
 		}
 	}
@@ -696,9 +707,33 @@ static void NewSpriteGroup(ByteReader &buf)
 	_cur_gps.spritegroups[setid] = act_group;
 }
 
-template <> void GrfActionHandler<0x02>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x02>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x02>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x02>::Init(ByteReader &) { }
-template <> void GrfActionHandler<0x02>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x02>::Activation(ByteReader &buf) { NewSpriteGroup(buf); }
+template <>
+void GrfActionHandler<0x02>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x02>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x02>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x02>::Init(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x02>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x02>::Activation(ByteReader &buf)
+{
+	NewSpriteGroup(buf);
+}

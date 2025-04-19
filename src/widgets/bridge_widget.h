@@ -12,11 +12,11 @@
 
 /** Widgets of the #BuildBridgeWindow class. */
 enum BuildBridgeSelectionWidgets : WidgetID {
-	WID_BBS_CAPTION,           ///< Caption of the window.
-	WID_BBS_DROPDOWN_ORDER,    ///< Direction of sort dropdown.
+	WID_BBS_CAPTION, ///< Caption of the window.
+	WID_BBS_DROPDOWN_ORDER, ///< Direction of sort dropdown.
 	WID_BBS_DROPDOWN_CRITERIA, ///< Criteria of sort dropdown.
-	WID_BBS_BRIDGE_LIST,       ///< List of bridges.
-	WID_BBS_SCROLLBAR,         ///< Scrollbar of the list.
+	WID_BBS_BRIDGE_LIST, ///< List of bridges.
+	WID_BBS_SCROLLBAR, ///< Scrollbar of the list.
 };
 
 #endif /* WIDGETS_BRIDGE_WIDGET_H */

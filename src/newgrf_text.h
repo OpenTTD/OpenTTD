@@ -12,6 +12,7 @@
 
 #include "newgrf_text_type.h"
 #include "strings_type.h"
+
 #include "table/control_codes.h"
 
 StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid, bool new_scheme, bool allow_newlines, std::string_view text_to_add, StringID def_string);

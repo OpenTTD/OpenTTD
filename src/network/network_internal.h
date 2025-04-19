@@ -10,14 +10,13 @@
 #ifndef NETWORK_INTERNAL_H
 #define NETWORK_INTERNAL_H
 
-#include "network_func.h"
 #include "core/tcp_coordinator.h"
 #include "core/tcp_game.h"
-
-#include "../command_type.h"
 #include "../command_func.h"
+#include "../command_type.h"
 #include "../misc/endian_buffer.hpp"
 #include "../strings_type.h"
+#include "network_func.h"
 
 #ifdef RANDOM_DEBUG
 /**
@@ -29,13 +28,13 @@
  *  option enabled to make it to work. If one of the two has it disabled
  *  nothing will happen.
  */
-#define ENABLE_NETWORK_SYNC_EVERY_FRAME
+#	define ENABLE_NETWORK_SYNC_EVERY_FRAME
 
 /**
  * In theory sending 1 of the 2 seeds is enough to check for desyncs
  *   so in theory, this next define can be left off.
  */
-#define NETWORK_SEND_DOUBLE_SEED
+#	define NETWORK_SEND_DOUBLE_SEED
 #endif /* RANDOM_DEBUG */
 
 typedef class ServerNetworkGameSocketHandler NetworkClientSocket;

@@ -22,5 +22,4 @@ public:
 	ScriptObjectTypeList();
 };
 
-
 #endif /* SCRIPT_OBJECTTYPELIST_HPP */

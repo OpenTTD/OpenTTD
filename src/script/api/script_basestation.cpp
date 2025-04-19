@@ -8,14 +8,16 @@
 /** @file script_basestation.cpp Implementation of ScriptBaseStation. */
 
 #include "../../stdafx.h"
+
 #include "script_basestation.hpp"
-#include "script_error.hpp"
+
 #include "../../station_base.h"
+#include "../../station_cmd.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../station_cmd.h"
-#include "../../waypoint_cmd.h"
 #include "../../timer/timer_game_calendar.h"
+#include "../../waypoint_cmd.h"
+#include "script_error.hpp"
 
 #include "table/strings.h"
 

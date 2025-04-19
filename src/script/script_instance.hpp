@@ -10,14 +10,14 @@
 #ifndef SCRIPT_INSTANCE_HPP
 #define SCRIPT_INSTANCE_HPP
 
-#include <variant>
 #include <squirrel.h>
-#include "script_suspend.hpp"
-#include "script_log_types.hpp"
+#include <variant>
 
 #include "../command_type.h"
 #include "../company_type.h"
 #include "../fileio_type.h"
+#include "script_log_types.hpp"
+#include "script_suspend.hpp"
 
 static const uint SQUIRREL_MAX_DEPTH = 25; ///< The maximum recursive depth for items stored in the savegame.
 
@@ -26,13 +26,13 @@ class ScriptInstance {
 private:
 	/** The type of the data that follows in the savegame. */
 	enum SQSaveLoadType : uint8_t {
-		SQSL_INT             = 0x00, ///< The following data is an integer.
-		SQSL_STRING          = 0x01, ///< The following data is an string.
-		SQSL_ARRAY           = 0x02, ///< The following data is an array.
-		SQSL_TABLE           = 0x03, ///< The following data is an table.
-		SQSL_BOOL            = 0x04, ///< The following data is a boolean.
-		SQSL_NULL            = 0x05, ///< A null variable.
-		SQSL_INSTANCE        = 0x06, ///< The following data is an instance.
+		SQSL_INT = 0x00, ///< The following data is an integer.
+		SQSL_STRING = 0x01, ///< The following data is an string.
+		SQSL_ARRAY = 0x02, ///< The following data is an array.
+		SQSL_TABLE = 0x03, ///< The following data is an table.
+		SQSL_BOOL = 0x04, ///< The following data is a boolean.
+		SQSL_NULL = 0x05, ///< A null variable.
+		SQSL_INSTANCE = 0x06, ///< The following data is an instance.
 		SQSL_ARRAY_TABLE_END = 0xFF, ///< Marks the end of an array or table, no data follows.
 	};
 
@@ -146,17 +146,26 @@ public:
 	/**
 	 * Get the controller attached to the instance.
 	 */
-	class ScriptController *GetController() { return controller; }
+	class ScriptController *GetController()
+	{
+		return controller;
+	}
 
 	/**
 	 * Return the "this script died" value
 	 */
-	inline bool IsDead() const { return this->is_dead; }
+	inline bool IsDead() const
+	{
+		return this->is_dead;
+	}
 
 	/**
 	 * Return whether the script is alive.
 	 */
-	inline bool IsAlive() const { return !this->IsDead() && !this->in_shutdown; }
+	inline bool IsAlive() const
+	{
+		return !this->IsDead() && !this->in_shutdown;
+	}
 
 	/**
 	 * Call the script Save function and save all data in the savegame.
@@ -236,14 +245,20 @@ public:
 	 *  script executed a DoCommand, executed this.Sleep() or it has been
 	 *  paused.
 	 */
-	bool IsSleeping() { return this->suspend != 0; }
+	bool IsSleeping()
+	{
+		return this->suspend != 0;
+	}
 
 	size_t GetAllocatedMemory() const;
 
 	/**
 	 * Indicate whether this instance is currently being destroyed.
 	 */
-	inline bool InShutdown() const { return this->in_shutdown; }
+	inline bool InShutdown() const
+	{
+		return this->in_shutdown;
+	}
 
 	/**
 	 * Decrease the ref count of a squirrel object.

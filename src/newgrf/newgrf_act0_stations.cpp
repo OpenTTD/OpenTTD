@@ -8,6 +8,7 @@
 /** @file newgrf_act0_stations.cpp NewGRF Action 0x00 handler for stations. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_station.h"
 #include "newgrf_bytereader.h"
@@ -246,7 +247,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				statspec->animation.triggers = static_cast<StationAnimationTriggers>(buf.ReadWord());
 				break;
 
-			/* 0x19 road routing (not implemented) */
+				/* 0x19 road routing (not implemented) */
 
 			case 0x1A: { // Advanced sprite layout
 				uint16_t tiles = buf.ReadExtendedByte();
@@ -280,7 +281,9 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				break;
 
 			case 0x1D: // Station Class name
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, [statspec = statspec.get()](StringID str) { StationClass::Get(statspec->class_index)->name = str; });
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, [statspec = statspec.get()](StringID str) {
+					StationClass::Get(statspec->class_index)->name = str;
+				});
 				break;
 
 			case 0x1E: { // Extended tile flags (replaces prop 11, 14 and 15)
@@ -303,5 +306,14 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return StationChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_STATIONS>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return StationChangeInfo(first, last, prop, buf);
+}

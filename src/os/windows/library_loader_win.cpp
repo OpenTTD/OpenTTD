@@ -10,9 +10,9 @@
 #include "../../stdafx.h"
 
 #include <windows.h>
+#include "../../3rdparty/fmt/format.h"
 
 #include "../../library_loader.h"
-#include "../../3rdparty/fmt/format.h"
 
 #include "../../safeguards.h"
 
@@ -21,8 +21,8 @@ static std::string GetLoadError()
 	auto error_code = GetLastError();
 
 	wchar_t buffer[512];
-	if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, error_code,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
+	if (FormatMessage(
+			FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr, error_code, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
 		return fmt::format("Unknown error {}", error_code);
 	}
 

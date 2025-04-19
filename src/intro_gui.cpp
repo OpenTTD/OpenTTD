@@ -8,40 +8,40 @@
 /** @file intro_gui.cpp The main menu GUI. */
 
 #include "stdafx.h"
-#include "error.h"
-#include "gui.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "textbuf_gui.h"
-#include "help_gui.h"
-#include "network/network.h"
-#include "genworld.h"
-#include "network/network_gui.h"
-#include "network/network_content.h"
-#include "network/network_survey.h"
-#include "landscape_type.h"
-#include "landscape.h"
-#include "strings_func.h"
-#include "fios.h"
-#include "ai/ai_gui.hpp"
-#include "game/game_gui.hpp"
-#include "gfx_func.h"
-#include "core/geometry_func.hpp"
-#include "language.h"
-#include "rev.h"
-#include "highscore.h"
-#include "signs_base.h"
-#include "viewport_func.h"
-#include "vehicle_base.h"
+
 #include <regex>
 
-#include "widgets/intro_widget.h"
+#include "core/geometry_func.hpp"
+#include "ai/ai_gui.hpp"
+#include "error.h"
+#include "fios.h"
+#include "game/game_gui.hpp"
+#include "genworld.h"
+#include "gfx_func.h"
+#include "gui.h"
+#include "help_gui.h"
+#include "highscore.h"
+#include "landscape.h"
+#include "landscape_type.h"
+#include "language.h"
+#include "network/network.h"
+#include "network/network_content.h"
+#include "network/network_gui.h"
+#include "network/network_survey.h"
+#include "rev.h"
+#include "signs_base.h"
+#include "strings_func.h"
+#include "textbuf_gui.h"
+#include "vehicle_base.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "window_gui.h"
 
-#include "table/strings.h"
+#include "widgets/intro_widget.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
-
 
 /**
  * A viewport command for the main menu background (intro game).
@@ -53,6 +53,7 @@ struct IntroGameViewportCommand {
 		CENTRE,
 		RIGHT,
 	};
+
 	/** Vertical alignment value. */
 	enum AlignmentV : uint8_t {
 		TOP,
@@ -60,14 +61,14 @@ struct IntroGameViewportCommand {
 		BOTTOM,
 	};
 
-	int command_index = 0;               ///< Sequence number of the command (order they are performed in).
-	Point position{ 0, 0 };              ///< Calculated world coordinate to position viewport top-left at.
+	int command_index = 0; ///< Sequence number of the command (order they are performed in).
+	Point position{0, 0}; ///< Calculated world coordinate to position viewport top-left at.
 	VehicleID vehicle = VehicleID::Invalid(); ///< Vehicle to follow, or VehicleID::Invalid() if not following a vehicle.
-	uint delay = 0;                      ///< Delay until next command.
-	int zoom_adjust = 0;                 ///< Adjustment to zoom level from base zoom level.
-	bool pan_to_next = false;            ///< If true, do a smooth pan from this position to the next.
-	AlignmentH align_h = CENTRE;         ///< Horizontal alignment.
-	AlignmentV align_v = MIDDLE;         ///< Vertical alignment.
+	uint delay = 0; ///< Delay until next command.
+	int zoom_adjust = 0; ///< Adjustment to zoom level from base zoom level.
+	bool pan_to_next = false; ///< If true, do a smooth pan from this position to the next.
+	AlignmentH align_h = CENTRE; ///< Horizontal alignment.
+	AlignmentV align_v = MIDDLE; ///< Vertical alignment.
 
 	/**
 	 * Calculate effective position.
@@ -84,19 +85,30 @@ struct IntroGameViewportCommand {
 
 		Point p;
 		switch (this->align_h) {
-			case LEFT: p.x = this->position.x; break;
-			case CENTRE: p.x = this->position.x - vp.virtual_width / 2; break;
-			case RIGHT: p.x = this->position.x - vp.virtual_width; break;
+			case LEFT:
+				p.x = this->position.x;
+				break;
+			case CENTRE:
+				p.x = this->position.x - vp.virtual_width / 2;
+				break;
+			case RIGHT:
+				p.x = this->position.x - vp.virtual_width;
+				break;
 		}
 		switch (this->align_v) {
-			case TOP: p.y = this->position.y; break;
-			case MIDDLE: p.y = this->position.y - vp.virtual_height / 2; break;
-			case BOTTOM: p.y = this->position.y - vp.virtual_height; break;
+			case TOP:
+				p.y = this->position.y;
+				break;
+			case MIDDLE:
+				p.y = this->position.y - vp.virtual_height / 2;
+				break;
+			case BOTTOM:
+				p.y = this->position.y - vp.virtual_height;
+				break;
 		}
 		return p;
 	}
 };
-
 
 struct SelectGameWindow : public Window {
 	/** Vector of viewport commands parsed. */
@@ -136,8 +148,10 @@ struct SelectGameWindow : public Window {
 
 				/* Parse flags from second matching group. */
 				enum IdType : uint8_t {
-					ID_NONE, ID_VEHICLE
+					ID_NONE,
+					ID_VEHICLE
 				} id_type = ID_NONE;
+
 				for (char c : match[2].str()) {
 					if (isdigit(c)) {
 						if (id_type == ID_VEHICLE) {
@@ -146,16 +160,37 @@ struct SelectGameWindow : public Window {
 					} else {
 						id_type = ID_NONE;
 						switch (toupper(c)) {
-							case '-': vc.zoom_adjust = +1; break;
-							case '+': vc.zoom_adjust = -1; break;
-							case 'T': vc.align_v = IntroGameViewportCommand::TOP; break;
-							case 'M': vc.align_v = IntroGameViewportCommand::MIDDLE; break;
-							case 'B': vc.align_v = IntroGameViewportCommand::BOTTOM; break;
-							case 'L': vc.align_h = IntroGameViewportCommand::LEFT; break;
-							case 'C': vc.align_h = IntroGameViewportCommand::CENTRE; break;
-							case 'R': vc.align_h = IntroGameViewportCommand::RIGHT; break;
-							case 'P': vc.pan_to_next = true; break;
-							case 'V': id_type = ID_VEHICLE; vc.vehicle = VehicleID::Begin(); break;
+							case '-':
+								vc.zoom_adjust = +1;
+								break;
+							case '+':
+								vc.zoom_adjust = -1;
+								break;
+							case 'T':
+								vc.align_v = IntroGameViewportCommand::TOP;
+								break;
+							case 'M':
+								vc.align_v = IntroGameViewportCommand::MIDDLE;
+								break;
+							case 'B':
+								vc.align_v = IntroGameViewportCommand::BOTTOM;
+								break;
+							case 'L':
+								vc.align_h = IntroGameViewportCommand::LEFT;
+								break;
+							case 'C':
+								vc.align_h = IntroGameViewportCommand::CENTRE;
+								break;
+							case 'R':
+								vc.align_h = IntroGameViewportCommand::RIGHT;
+								break;
+							case 'P':
+								vc.pan_to_next = true;
+								break;
+							case 'V':
+								id_type = ID_VEHICLE;
+								vc.vehicle = VehicleID::Begin();
+								break;
 						}
 					}
 				}
@@ -167,10 +202,14 @@ struct SelectGameWindow : public Window {
 		}
 
 		/* Sort the commands by sequence index. */
-		std::sort(intro_viewport_commands.begin(), intro_viewport_commands.end(), [](const IntroGameViewportCommand &a, const IntroGameViewportCommand &b) { return a.command_index < b.command_index; });
+		std::sort(intro_viewport_commands.begin(), intro_viewport_commands.end(), [](const IntroGameViewportCommand &a, const IntroGameViewportCommand &b) {
+			return a.command_index < b.command_index;
+		});
 
 		/* Delete all the consumed signs, from last ID to first ID. */
-		std::sort(signs_to_delete.begin(), signs_to_delete.end(), [](SignID a, SignID b) { return a > b; });
+		std::sort(signs_to_delete.begin(), signs_to_delete.end(), [](SignID a, SignID b) {
+			return a > b;
+		});
 		for (SignID sign_id : signs_to_delete) {
 			delete Sign::Get(sign_id);
 		}
@@ -262,9 +301,9 @@ struct SelectGameWindow : public Window {
 	{
 		if (!gui_scope) return;
 		this->SetWidgetLoweredState(WID_SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LandscapeType::Temperate);
-		this->SetWidgetLoweredState(WID_SGI_ARCTIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LandscapeType::Arctic);
-		this->SetWidgetLoweredState(WID_SGI_TROPIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LandscapeType::Tropic);
-		this->SetWidgetLoweredState(WID_SGI_TOYLAND_LANDSCAPE,   _settings_newgame.game_creation.landscape == LandscapeType::Toyland);
+		this->SetWidgetLoweredState(WID_SGI_ARCTIC_LANDSCAPE, _settings_newgame.game_creation.landscape == LandscapeType::Arctic);
+		this->SetWidgetLoweredState(WID_SGI_TROPIC_LANDSCAPE, _settings_newgame.game_creation.landscape == LandscapeType::Tropic);
+		this->SetWidgetLoweredState(WID_SGI_TOYLAND_LANDSCAPE, _settings_newgame.game_creation.landscape == LandscapeType::Toyland);
 	}
 
 	void OnInit() override
@@ -292,8 +331,10 @@ struct SelectGameWindow : public Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_SGI_TEMPERATE_LANDSCAPE: case WID_SGI_ARCTIC_LANDSCAPE:
-			case WID_SGI_TROPIC_LANDSCAPE: case WID_SGI_TOYLAND_LANDSCAPE:
+			case WID_SGI_TEMPERATE_LANDSCAPE:
+			case WID_SGI_ARCTIC_LANDSCAPE:
+			case WID_SGI_TROPIC_LANDSCAPE:
+			case WID_SGI_TOYLAND_LANDSCAPE:
 				size.width += WidgetDimensions::scaled.fullbevel.Horizontal();
 				size.height += WidgetDimensions::scaled.fullbevel.Vertical();
 				break;
@@ -330,10 +371,18 @@ struct SelectGameWindow : public Window {
 				}
 				break;
 
-			case WID_SGI_LOAD_GAME:      ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD); break;
-			case WID_SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD); break;
-			case WID_SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(FT_HEIGHTMAP,SLO_LOAD); break;
-			case WID_SGI_EDIT_SCENARIO:  StartScenarioEditor(); break;
+			case WID_SGI_LOAD_GAME:
+				ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD);
+				break;
+			case WID_SGI_PLAY_SCENARIO:
+				ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD);
+				break;
+			case WID_SGI_PLAY_HEIGHTMAP:
+				ShowSaveLoadDialog(FT_HEIGHTMAP, SLO_LOAD);
+				break;
+			case WID_SGI_EDIT_SCENARIO:
+				StartScenarioEditor();
+				break;
 
 			case WID_SGI_PLAY_NETWORK:
 				if (!_network_available) {
@@ -343,16 +392,28 @@ struct SelectGameWindow : public Window {
 				}
 				break;
 
-			case WID_SGI_TEMPERATE_LANDSCAPE: case WID_SGI_ARCTIC_LANDSCAPE:
-			case WID_SGI_TROPIC_LANDSCAPE: case WID_SGI_TOYLAND_LANDSCAPE:
+			case WID_SGI_TEMPERATE_LANDSCAPE:
+			case WID_SGI_ARCTIC_LANDSCAPE:
+			case WID_SGI_TROPIC_LANDSCAPE:
+			case WID_SGI_TOYLAND_LANDSCAPE:
 				SetNewLandscapeType(LandscapeType(widget - WID_SGI_TEMPERATE_LANDSCAPE));
 				break;
 
-			case WID_SGI_OPTIONS:         ShowGameOptions(); break;
-			case WID_SGI_HIGHSCORE:       ShowHighscoreTable(); break;
-			case WID_SGI_HELP:            ShowHelpWindow(); break;
-			case WID_SGI_SETTINGS_OPTIONS:ShowGameSettings(); break;
-			case WID_SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, _grfconfig_newgame); break;
+			case WID_SGI_OPTIONS:
+				ShowGameOptions();
+				break;
+			case WID_SGI_HIGHSCORE:
+				ShowHighscoreTable();
+				break;
+			case WID_SGI_HELP:
+				ShowHelpWindow();
+				break;
+			case WID_SGI_SETTINGS_OPTIONS:
+				ShowGameSettings();
+				break;
+			case WID_SGI_GRF_SETTINGS:
+				ShowNewGRFSettings(true, true, false, _grfconfig_newgame);
+				break;
 			case WID_SGI_CONTENT_DOWNLOAD:
 				if (!_network_available) {
 					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WL_ERROR);
@@ -360,9 +421,15 @@ struct SelectGameWindow : public Window {
 					ShowNetworkContentListWindow();
 				}
 				break;
-			case WID_SGI_AI_SETTINGS:     ShowAIConfigWindow(); break;
-			case WID_SGI_GS_SETTINGS:     ShowGSConfigWindow(); break;
-			case WID_SGI_EXIT:            HandleExitGameRequest(); break;
+			case WID_SGI_AI_SETTINGS:
+				ShowAIConfigWindow();
+				break;
+			case WID_SGI_GS_SETTINGS:
+				ShowGSConfigWindow();
+				break;
+			case WID_SGI_EXIT:
+				HandleExitGameRequest();
+				break;
 		}
 	}
 };
@@ -448,12 +515,7 @@ static constexpr NWidgetPart _nested_select_game_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _select_game_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_SELECT_GAME, WC_NONE,
-	WindowDefaultFlag::NoClose,
-	_nested_select_game_widgets
-);
+static WindowDesc _select_game_desc(WDP_CENTER, nullptr, 0, 0, WC_SELECT_GAME, WC_NONE, WindowDefaultFlag::NoClose, _nested_select_game_widgets);
 
 void ShowSelectGameWindow()
 {
@@ -470,15 +532,8 @@ static void AskExitGameCallback(Window *, bool confirmed)
 
 void AskExitGame()
 {
-	ShowQuery(
-		GetEncodedString(STR_QUIT_CAPTION),
-		GetEncodedString(STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD),
-		nullptr,
-		AskExitGameCallback,
-		true
-	);
+	ShowQuery(GetEncodedString(STR_QUIT_CAPTION), GetEncodedString(STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD), nullptr, AskExitGameCallback, true);
 }
-
 
 static void AskExitToGameMenuCallback(Window *, bool confirmed)
 {
@@ -490,11 +545,5 @@ static void AskExitToGameMenuCallback(Window *, bool confirmed)
 
 void AskExitToGameMenu()
 {
-	ShowQuery(
-		GetEncodedString(STR_ABANDON_GAME_CAPTION),
-		GetEncodedString((_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY),
-		nullptr,
-		AskExitToGameMenuCallback,
-		true
-	);
+	ShowQuery(GetEncodedString(STR_ABANDON_GAME_CAPTION), GetEncodedString((_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY), nullptr, AskExitToGameMenuCallback, true);
 }

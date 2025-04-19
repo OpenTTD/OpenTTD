@@ -10,15 +10,15 @@
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
+#include "core/bitmath_func.hpp"
+#include "core/mem_func.hpp"
 #include "cargotype.h"
-#include "rail_type.h"
-#include "road_type.h"
 #include "fileio_type.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
-#include "core/bitmath_func.hpp"
-#include "core/mem_func.hpp"
+#include "rail_type.h"
+#include "road_type.h"
 
 /**
  * List of different canal 'features'.
@@ -39,8 +39,8 @@ enum CanalFeature : uint8_t {
 
 /** Canal properties local to the NewGRF */
 struct CanalProperties {
-	CanalCallbackMasks callback_mask;  ///< Bitmask of canal callbacks that have to be called.
-	uint8_t flags;          ///< Flags controlling display.
+	CanalCallbackMasks callback_mask; ///< Bitmask of canal callbacks that have to be called.
+	uint8_t flags; ///< Flags controlling display.
 };
 
 enum GrfLoadingStage : uint8_t {
@@ -93,10 +93,11 @@ enum GrfSpecFeature : uint8_t {
 	GSF_END,
 
 	GSF_FAKE_TOWNS = GSF_END, ///< Fake town GrfSpecFeature for NewGRF debugging (parent scope)
-	GSF_FAKE_END,             ///< End of the fake features
+	GSF_FAKE_END, ///< End of the fake features
 
-	GSF_INVALID = 0xFF,       ///< An invalid spec feature
+	GSF_INVALID = 0xFF, ///< An invalid spec feature
 };
+
 using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::GSF_END>;
 
 static const uint32_t INVALID_GRFID = 0xFFFFFFFF;
@@ -171,23 +172,23 @@ struct GRFFile {
 };
 
 enum ShoreReplacement : uint8_t {
-	SHORE_REPLACE_NONE,       ///< No shore sprites were replaced.
-	SHORE_REPLACE_ACTION_5,   ///< Shore sprites were replaced by Action5.
-	SHORE_REPLACE_ACTION_A,   ///< Shore sprites were replaced by ActionA (using grass tiles for the corner-shores).
-	SHORE_REPLACE_ONLY_NEW,   ///< Only corner-shores were loaded by Action5 (openttd(w/d).grf only).
+	SHORE_REPLACE_NONE, ///< No shore sprites were replaced.
+	SHORE_REPLACE_ACTION_5, ///< Shore sprites were replaced by Action5.
+	SHORE_REPLACE_ACTION_A, ///< Shore sprites were replaced by ActionA (using grass tiles for the corner-shores).
+	SHORE_REPLACE_ONLY_NEW, ///< Only corner-shores were loaded by Action5 (openttd(w/d).grf only).
 };
 
 enum TramReplacement : uint8_t {
-	TRAMWAY_REPLACE_DEPOT_NONE,       ///< No tram depot graphics were loaded.
+	TRAMWAY_REPLACE_DEPOT_NONE, ///< No tram depot graphics were loaded.
 	TRAMWAY_REPLACE_DEPOT_WITH_TRACK, ///< Electrified depot graphics with tram track were loaded.
-	TRAMWAY_REPLACE_DEPOT_NO_TRACK,   ///< Electrified depot graphics without tram track were loaded.
+	TRAMWAY_REPLACE_DEPOT_NO_TRACK, ///< Electrified depot graphics without tram track were loaded.
 };
 
 struct GRFLoadedFeatures {
-	bool has_2CC;             ///< Set if any vehicle is loaded which uses 2cc (two company colours).
-	uint64_t used_liveries;     ///< Bitmask of #LiveryScheme used by the defined engines.
-	ShoreReplacement shore;   ///< In which way shore sprites were replaced.
-	TramReplacement tram;     ///< In which way tram depots were replaced.
+	bool has_2CC; ///< Set if any vehicle is loaded which uses 2cc (two company colours).
+	uint64_t used_liveries; ///< Bitmask of #LiveryScheme used by the defined engines.
+	ShoreReplacement shore; ///< In which way shore sprites were replaced.
+	TramReplacement tram; ///< In which way tram depots were replaced.
 };
 
 /**

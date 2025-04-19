@@ -8,20 +8,19 @@
 /** @file dropdown.cpp Implementation of the dropdown widget. */
 
 #include "stdafx.h"
-#include "dropdown_type.h"
+
+#include "dropdown_common_type.h"
 #include "dropdown_func.h"
+#include "dropdown_type.h"
 #include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
-#include "window_gui.h"
 #include "window_func.h"
+#include "window_gui.h"
 #include "zoom_func.h"
 
 #include "widgets/dropdown_widget.h"
-
 #include "table/strings.h"
-
-#include "dropdown_common_type.h"
 
 #include "safeguards.h"
 
@@ -66,12 +65,7 @@ static constexpr NWidgetPart _nested_dropdown_menu_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _dropdown_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_DROPDOWN_MENU, WC_NONE,
-	WindowDefaultFlag::NoFocus,
-	_nested_dropdown_menu_widgets
-);
+static WindowDesc _dropdown_desc(WDP_MANUAL, nullptr, 0, 0, WC_DROPDOWN_MENU, WC_NONE, WindowDefaultFlag::NoFocus, _nested_dropdown_menu_widgets);
 
 /** Drop-down menu window */
 struct DropdownWindow : Window {
@@ -100,14 +94,8 @@ struct DropdownWindow : Window {
 	 * @param wi_colour     Colour of the parent widget.
 	 * @param persist       Dropdown menu will persist.
 	 */
-	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist)
-			: Window(_dropdown_desc)
-			, parent_button(button)
-			, wi_rect(wi_rect)
-			, list(std::move(list))
-			, selected_result(selected)
-			, instant_close(instant_close)
-			, persist(persist)
+	DropdownWindow(Window *parent, DropDownList &&list, int selected, WidgetID button, const Rect wi_rect, bool instant_close, Colours wi_colour, bool persist) :
+		Window(_dropdown_desc), parent_button(button), wi_rect(wi_rect), list(std::move(list)), selected_result(selected), instant_close(instant_close), persist(persist)
 	{
 		assert(!this->list.empty());
 
@@ -235,8 +223,8 @@ struct DropdownWindow : Window {
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
 		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.dropdownlist);
-		int y     = _cursor.pos.y - this->top - r.top;
-		int pos   = this->vscroll->GetPosition();
+		int y = _cursor.pos.y - this->top - r.top;
+		int pos = this->vscroll->GetPosition();
 
 		for (const auto &item : this->list) {
 			/* Skip items that are scrolled up */
@@ -296,12 +284,12 @@ struct DropdownWindow : Window {
 
 	/** Rate limit how fast scrolling happens. */
 	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(30), [this](auto) {
-		if (this->scrolling == 0) return;
+													  if (this->scrolling == 0) return;
 
-		if (this->vscroll->UpdatePosition(this->scrolling)) this->SetDirty();
+													  if (this->vscroll->UpdatePosition(this->scrolling)) this->SetDirty();
 
-		this->scrolling = 0;
-	}};
+													  this->scrolling = 0;
+												  }};
 
 	void OnMouseLoop() override
 	{
@@ -411,7 +399,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */
 	NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
-	Rect wi_rect      = nwi->GetCurrentRect();
+	Rect wi_rect = nwi->GetCurrentRect();
 	Colours wi_colour = nwi->colour;
 
 	if ((nwi->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {

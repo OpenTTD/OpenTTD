@@ -26,27 +26,42 @@ public:
 	/**
 	 * Get the engine of the main squirrel handler (it indexes all available scripts).
 	 */
-	class Squirrel *GetEngine() { return this->engine; }
+	class Squirrel *GetEngine()
+	{
+		return this->engine;
+	}
 
 	/**
 	 * Get the current main script the ScanDir is currently tracking.
 	 */
-	std::string GetMainScript() { return this->main_script; }
+	std::string GetMainScript()
+	{
+		return this->main_script;
+	}
 
 	/**
 	 * Get the current tar file the ScanDir is currently tracking.
 	 */
-	std::string GetTarFile() { return this->tar_file; }
+	std::string GetTarFile()
+	{
+		return this->tar_file;
+	}
 
 	/**
 	 * Get the list of all registered scripts.
 	 */
-	const ScriptInfoList *GetInfoList() { return &this->info_list; }
+	const ScriptInfoList *GetInfoList()
+	{
+		return &this->info_list;
+	}
 
 	/**
 	 * Get the list of the latest version of all registered scripts.
 	 */
-	const ScriptInfoList *GetUniqueInfoList() { return &this->info_single_list; }
+	const ScriptInfoList *GetUniqueInfoList()
+	{
+		return &this->info_single_list;
+	}
 
 	/**
 	 * Register a ScriptInfo to the scanner.
@@ -84,11 +99,11 @@ public:
 	void RescanDir();
 
 protected:
-	class Squirrel *engine;  ///< The engine we're scanning with.
+	class Squirrel *engine; ///< The engine we're scanning with.
 	std::string main_script; ///< The full path of the script.
-	std::string tar_file;    ///< If, which tar file the script was in.
+	std::string tar_file; ///< If, which tar file the script was in.
 
-	ScriptInfoList info_list;        ///< The list of all script.
+	ScriptInfoList info_list; ///< The list of all script.
 	ScriptInfoList info_single_list; ///< The list of all unique script. The best script (highest version) is shown.
 
 	/**

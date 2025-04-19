@@ -10,17 +10,17 @@
 #ifndef WATER_H
 #define WATER_H
 
-#include "water_map.h"
 #include "economy_func.h"
+#include "water_map.h"
 
 /**
  * Describes the behaviour of a tile during flooding.
  */
 enum FloodingBehaviour : uint8_t {
-	FLOOD_NONE,    ///< The tile does not flood neighboured tiles.
-	FLOOD_ACTIVE,  ///< The tile floods neighboured tiles.
+	FLOOD_NONE, ///< The tile does not flood neighboured tiles.
+	FLOOD_ACTIVE, ///< The tile floods neighboured tiles.
 	FLOOD_PASSIVE, ///< The tile does not actively flood neighboured tiles, but it prevents them from drying up.
-	FLOOD_DRYUP,   ///< The tile drys up if it is not constantly flooded from neighboured tiles.
+	FLOOD_DRYUP, ///< The tile drys up if it is not constantly flooded from neighboured tiles.
 };
 
 FloodingBehaviour GetFloodingBehaviour(TileIndex tile);

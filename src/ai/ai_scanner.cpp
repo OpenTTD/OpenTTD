@@ -8,25 +8,22 @@
 /** @file ai_scanner.cpp allows scanning AI scripts */
 
 #include "../stdafx.h"
+
+#include "ai_scanner.hpp"
+
 #include <ranges>
+
+#include "../core/random_func.hpp"
 #include "../debug.h"
 #include "../network/network.h"
 #include "../openttd.h"
-#include "../core/random_func.hpp"
-
-#include "../script/squirrel_class.hpp"
 #include "../script/api/script_object.hpp"
+#include "../script/squirrel_class.hpp"
 #include "ai_info.hpp"
-#include "ai_scanner.hpp"
 
 #include "../safeguards.h"
 
-
-AIScannerInfo::AIScannerInfo() :
-	ScriptScanner(),
-	info_dummy(nullptr)
-{
-}
+AIScannerInfo::AIScannerInfo() : ScriptScanner(), info_dummy(nullptr) {}
 
 void AIScannerInfo::Initialize()
 {
@@ -67,7 +64,9 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 	}
 
 	/* Filter for AIs suitable as Random AI. */
-	auto random_ais = info_single_list | std::views::filter([](const auto &item) { return static_cast<AIInfo *>(item.second)->UseAsRandomAI(); });
+	auto random_ais = info_single_list | std::views::filter([](const auto &item) {
+		return static_cast<AIInfo *>(item.second)->UseAsRandomAI();
+	});
 
 	uint num_random_ais = std::ranges::distance(random_ais);
 	if (num_random_ais == 0) {
@@ -118,7 +117,6 @@ AIInfo *AIScannerInfo::FindInfo(const std::string &name, int version, bool force
 
 	return info;
 }
-
 
 void AIScannerLibrary::Initialize()
 {

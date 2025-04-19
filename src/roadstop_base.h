@@ -10,9 +10,9 @@
 #ifndef ROADSTOP_BASE_H
 #define ROADSTOP_BASE_H
 
-#include "station_type.h"
-#include "core/pool_type.hpp"
 #include "core/bitmath_func.hpp"
+#include "core/pool_type.hpp"
+#include "station_type.h"
 #include "vehicle_type.h"
 
 using RoadStopPool = Pool<RoadStop, RoadStopID, 32>;
@@ -21,8 +21,8 @@ extern RoadStopPool _roadstop_pool;
 /** A Stop for a Road Vehicle */
 struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	enum RoadStopStatusFlags : uint8_t {
-		RSSFB_BAY0_FREE  = 0, ///< Non-zero when bay 0 is free
-		RSSFB_BAY1_FREE  = 1, ///< Non-zero when bay 1 is free
+		RSSFB_BAY0_FREE = 0, ///< Non-zero when bay 0 is free
+		RSSFB_BAY1_FREE = 1, ///< Non-zero when bay 1 is free
 		RSSFB_BASE_ENTRY = 6, ///< Non-zero when the entries on this road stop are the primary, i.e. the ones to delete
 		RSSFB_ENTRY_BUSY = 7, ///< Non-zero when roadstop entry is busy
 	};
@@ -70,10 +70,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	RoadStop *next = nullptr; ///< Next stop of the given type at this station
 
 	/** Initializes a RoadStop */
-	inline RoadStop(TileIndex tile = INVALID_TILE) :
-		status((1 << BAY_COUNT) - 1),
-		xy(tile)
-	{ }
+	inline RoadStop(TileIndex tile = INVALID_TILE) : status((1 << BAY_COUNT) - 1), xy(tile) {}
 
 	~RoadStop();
 

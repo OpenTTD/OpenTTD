@@ -10,8 +10,8 @@
 #ifndef SCRIPT_STORYPAGEELEMENTLIST_HPP
 #define SCRIPT_STORYPAGEELEMENTLIST_HPP
 
-#include "script_list.hpp"
 #include "script_company.hpp"
+#include "script_list.hpp"
 #include "script_story_page.hpp"
 
 /**

@@ -16,26 +16,34 @@
 /** The most trivial 32 bpp blitter (without palette animation). */
 class Blitter_32bppSimple : public Blitter_32bppBase {
 	struct Pixel {
-		uint8_t r;  ///< Red-channel
-		uint8_t g;  ///< Green-channel
-		uint8_t b;  ///< Blue-channel
-		uint8_t a;  ///< Alpha-channel
-		uint8_t m;  ///< Remap-channel
-		uint8_t v;  ///< Brightness-channel
+		uint8_t r; ///< Red-channel
+		uint8_t g; ///< Green-channel
+		uint8_t b; ///< Blue-channel
+		uint8_t a; ///< Alpha-channel
+		uint8_t m; ///< Remap-channel
+		uint8_t v; ///< Brightness-channel
 	};
+
 public:
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
 
-	std::string_view GetName() override { return "32bpp-simple"; }
+	std::string_view GetName() override
+	{
+		return "32bpp-simple";
+	}
 };
 
 /** Factory for the simple 32 bpp blitter. */
 class FBlitter_32bppSimple : public BlitterFactory {
 public:
 	FBlitter_32bppSimple() : BlitterFactory("32bpp-simple", "32bpp Simple Blitter (no palette animation)") {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppSimple>(); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::make_unique<Blitter_32bppSimple>();
+	}
 };
 
 #endif /* BLITTER_32BPP_SIMPLE_HPP */

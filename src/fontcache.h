@@ -10,8 +10,8 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
-#include "string_type.h"
 #include "spritecache.h"
+#include "string_type.h"
 
 /** Glyphs are characters from a font. */
 typedef uint32_t GlyphID;
@@ -21,11 +21,11 @@ static const GlyphID SPRITE_GLYPH = 1U << 30;
 class FontCache {
 protected:
 	static FontCache *caches[FS_END]; ///< All the font caches.
-	FontCache *parent;                ///< The parent of this font cache.
-	const FontSize fs;                ///< The size of the font.
-	int height;                       ///< The height of the font.
-	int ascender;                     ///< The ascender value of the font.
-	int descender;                    ///< The descender value of the font.
+	FontCache *parent; ///< The parent of this font cache.
+	const FontSize fs; ///< The size of the font.
+	int height; ///< The height of the font.
+	int ascender; ///< The ascender value of the font.
+	int descender; ///< The descender value of the font.
 
 public:
 	FontCache(FontSize fs);
@@ -39,31 +39,46 @@ public:
 	 * Get the FontSize of the font.
 	 * @return The FontSize.
 	 */
-	inline FontSize GetSize() const { return this->fs; }
+	inline FontSize GetSize() const
+	{
+		return this->fs;
+	}
 
 	/**
 	 * Get the height of the font.
 	 * @return The height of the font.
 	 */
-	inline int GetHeight() const { return this->height; }
+	inline int GetHeight() const
+	{
+		return this->height;
+	}
 
 	/**
 	 * Get the ascender value of the font.
 	 * @return The ascender value of the font.
 	 */
-	inline int GetAscender() const { return this->ascender; }
+	inline int GetAscender() const
+	{
+		return this->ascender;
+	}
 
 	/**
 	 * Get the descender value of the font.
 	 * @return The descender value of the font.
 	 */
-	inline int GetDescender() const{ return this->descender; }
+	inline int GetDescender() const
+	{
+		return this->descender;
+	}
 
 	/**
 	 * Get the nominal font size of the font.
 	 * @return The nominal font size.
 	 */
-	virtual int GetFontSize() const { return this->height; }
+	virtual int GetFontSize() const
+	{
+		return this->height;
+	}
 
 	/**
 	 * Map a SpriteID to the key
@@ -191,19 +206,19 @@ inline bool GetDrawGlyphShadow(FontSize size)
 /** Settings for a single font. */
 struct FontCacheSubSetting {
 	std::string font; ///< The name of the font, or path to the font.
-	uint size;        ///< The (requested) size of the font.
+	uint size; ///< The (requested) size of the font.
 
 	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
 };
 
 /** Settings for the four different fonts. */
 struct FontCacheSettings {
-	FontCacheSubSetting small;  ///< The smallest font; mostly used for zoomed out view.
+	FontCacheSubSetting small; ///< The smallest font; mostly used for zoomed out view.
 	FontCacheSubSetting medium; ///< The normal font size.
-	FontCacheSubSetting large;  ///< The largest font; mostly used for newspapers.
-	FontCacheSubSetting mono;   ///< The mono space font used for license/readme viewers.
-	bool prefer_sprite;         ///< Whether to prefer the built-in sprite font over resizable fonts.
-	bool global_aa;             ///< Whether to anti alias all font sizes.
+	FontCacheSubSetting large; ///< The largest font; mostly used for newspapers.
+	FontCacheSubSetting mono; ///< The mono space font used for license/readme viewers.
+	bool prefer_sprite; ///< Whether to prefer the built-in sprite font over resizable fonts.
+	bool global_aa; ///< Whether to anti alias all font sizes.
 };
 
 extern FontCacheSettings _fcsettings;
@@ -216,11 +231,16 @@ extern FontCacheSettings _fcsettings;
 inline FontCacheSubSetting *GetFontCacheSubSetting(FontSize fs)
 {
 	switch (fs) {
-		default: NOT_REACHED();
-		case FS_SMALL:  return &_fcsettings.small;
-		case FS_NORMAL: return &_fcsettings.medium;
-		case FS_LARGE:  return &_fcsettings.large;
-		case FS_MONO:   return &_fcsettings.mono;
+		default:
+			NOT_REACHED();
+		case FS_SMALL:
+			return &_fcsettings.small;
+		case FS_NORMAL:
+			return &_fcsettings.medium;
+		case FS_LARGE:
+			return &_fcsettings.large;
+		case FS_MONO:
+			return &_fcsettings.mono;
 	}
 }
 

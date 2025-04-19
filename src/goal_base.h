@@ -10,9 +10,9 @@
 #ifndef GOAL_BASE_H
 #define GOAL_BASE_H
 
+#include "core/pool_type.hpp"
 #include "company_type.h"
 #include "goal_type.h"
-#include "core/pool_type.hpp"
 #include "strings_type.h"
 
 using GoalPool = Pool<Goal, GoalID, 64>;
@@ -30,13 +30,14 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	Goal() { }
+	Goal() {}
+
 	Goal(GoalType type, GoalTypeID dst, CompanyID company, const EncodedString &text) : company(company), type(type), dst(dst), text(text) {}
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
 	 */
-	~Goal() { }
+	~Goal() {}
 
 	static bool IsValidGoalDestination(CompanyID company, GoalType type, GoalTypeID dest);
 };

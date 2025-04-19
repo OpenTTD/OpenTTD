@@ -8,17 +8,19 @@
 /** @file script_group.cpp Implementation of ScriptGroup. */
 
 #include "../../stdafx.h"
+
 #include "script_group.hpp"
-#include "script_engine.hpp"
-#include "../script_instance.hpp"
-#include "../../string_func.h"
-#include "../../strings_func.h"
-#include "../../autoreplace_func.h"
-#include "../../settings_func.h"
-#include "../../vehicle_base.h"
+
 #include "../../autoreplace_cmd.h"
+#include "../../autoreplace_func.h"
 #include "../../group_cmd.h"
 #include "../../settings_cmd.h"
+#include "../../settings_func.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
+#include "../../vehicle_base.h"
+#include "../script_instance.hpp"
+#include "script_engine.hpp"
 
 #include "table/strings.h"
 

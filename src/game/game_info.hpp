@@ -16,7 +16,7 @@
 class GameInfo : public ScriptInfo {
 public:
 	/* All valid GameScript API versions, in order. */
-	static constexpr std::string_view ApiVersions[]{ "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14", "15" };
+	static constexpr std::string_view ApiVersions[]{"1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14", "15"};
 
 	GameInfo();
 
@@ -38,14 +38,20 @@ public:
 	/**
 	 * Get the API version this Game is written for.
 	 */
-	const std::string &GetAPIVersion() const { return this->api_version; }
+	const std::string &GetAPIVersion() const
+	{
+		return this->api_version;
+	}
 
-	bool IsDeveloperOnly() const override { return this->is_developer_only; }
+	bool IsDeveloperOnly() const override
+	{
+		return this->is_developer_only;
+	}
 
 private:
 	int min_loadable_version; ///< The Game can load savegame data if the version is equal or greater than this.
-	bool is_developer_only;   ///< Is the script selectable by non-developers?
-	std::string api_version;  ///< API version used by this Game.
+	bool is_developer_only; ///< Is the script selectable by non-developers?
+	std::string api_version; ///< API version used by this Game.
 };
 
 /** All static information from an Game library like name, version, etc. */
@@ -66,7 +72,10 @@ public:
 	/**
 	 * Get the category this library is in.
 	 */
-	const std::string &GetCategory() const { return this->category; }
+	const std::string &GetCategory() const
+	{
+		return this->category;
+	}
 
 private:
 	std::string category; ///< The category this library is in.

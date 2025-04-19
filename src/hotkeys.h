@@ -11,8 +11,8 @@
 #define HOTKEYS_H
 
 #include "gfx_type.h"
-#include "window_type.h"
 #include "string_type.h"
+#include "window_type.h"
 
 /**
  * All data for a single hotkey. The name (for saving/loading a configfile),
@@ -46,6 +46,7 @@ struct HotkeyList {
 	int CheckMatch(uint16_t keycode, bool global_only = false) const;
 
 	GlobalHotkeyHandlerFunc global_hotkey_handler;
+
 private:
 	const std::string ini_group;
 	std::vector<Hotkey> items;
@@ -61,7 +62,6 @@ bool IsQuitKey(uint16_t keycode);
 
 void LoadHotkeysFromConfig();
 void SaveHotkeysToConfig();
-
 
 void HandleGlobalHotkeys(char32_t key, uint16_t keycode);
 

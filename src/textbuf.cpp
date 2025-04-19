@@ -9,13 +9,13 @@
 
 #include "stdafx.h"
 
-#include "textbuf_type.h"
-#include "string_func.h"
-#include "strings_func.h"
 #include "core/utf8.hpp"
-#include "gfx_type.h"
 #include "gfx_func.h"
 #include "gfx_layout.h"
+#include "gfx_type.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "textbuf_type.h"
 #include "window_func.h"
 
 #include "safeguards.h"
@@ -29,7 +29,6 @@
 std::optional<std::string> GetClipboardContents();
 
 int _caret_timer;
-
 
 /**
  * Checks if it is possible to delete a character.
@@ -400,16 +399,15 @@ bool Textbuf::MovePos(uint16_t keycode)
  * @param max_bytes maximum size in bytes, including terminating '\0'
  * @param max_chars maximum size in chars, including terminating '\0'
  */
-Textbuf::Textbuf(uint16_t max_bytes, uint16_t max_chars)
-	: char_iter(StringIterator::Create())
+Textbuf::Textbuf(uint16_t max_bytes, uint16_t max_chars) : char_iter(StringIterator::Create())
 {
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
 
-	this->afilter    = CS_ALPHANUMERAL;
-	this->max_bytes  = max_bytes;
-	this->max_chars  = max_chars == UINT16_MAX ? max_bytes : max_chars;
-	this->caret      = true;
+	this->afilter = CS_ALPHANUMERAL;
+	this->max_bytes = max_bytes;
+	this->max_chars = max_chars == UINT16_MAX ? max_bytes : max_chars;
+	this->caret = true;
 	this->DeleteAll();
 }
 
@@ -435,7 +433,6 @@ void Textbuf::Assign(const std::string_view text)
 
 	this->UpdateSize();
 }
-
 
 /**
  * Update Textbuf type with its actual physical character and screenlength
@@ -477,9 +474,12 @@ HandleKeyPressResult Textbuf::HandleKeyPress(char32_t key, uint16_t keycode)
 	bool edited = false;
 
 	switch (keycode) {
-		case WKC_ESC: return HKPR_CANCEL;
+		case WKC_ESC:
+			return HKPR_CANCEL;
 
-		case WKC_RETURN: case WKC_NUM_ENTER: return HKPR_CONFIRM;
+		case WKC_RETURN:
+		case WKC_NUM_ENTER:
+			return HKPR_CONFIRM;
 
 		case (WKC_CTRL | 'V'):
 		case (WKC_SHIFT | WKC_INSERT):
@@ -491,13 +491,19 @@ HandleKeyPressResult Textbuf::HandleKeyPress(char32_t key, uint16_t keycode)
 			edited = true;
 			break;
 
-		case WKC_BACKSPACE: case WKC_DELETE:
-		case WKC_CTRL | WKC_BACKSPACE: case WKC_CTRL | WKC_DELETE:
+		case WKC_BACKSPACE:
+		case WKC_DELETE:
+		case WKC_CTRL | WKC_BACKSPACE:
+		case WKC_CTRL | WKC_DELETE:
 			edited = this->DeleteChar(keycode);
 			break;
 
-		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-		case WKC_CTRL | WKC_LEFT: case WKC_CTRL | WKC_RIGHT:
+		case WKC_LEFT:
+		case WKC_RIGHT:
+		case WKC_END:
+		case WKC_HOME:
+		case WKC_CTRL | WKC_LEFT:
+		case WKC_CTRL | WKC_RIGHT:
 			this->MovePos(keycode);
 			break;
 

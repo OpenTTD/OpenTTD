@@ -12,45 +12,55 @@
 
 #ifdef WITH_SSE
 
-#ifndef SSE_VERSION
-#define SSE_VERSION 4
-#endif
+#	ifndef SSE_VERSION
+#		define SSE_VERSION 4
+#	endif
 
-#ifndef SSE_TARGET
-#define SSE_TARGET "sse4.1"
-#endif
+#	ifndef SSE_TARGET
+#		define SSE_TARGET "sse4.1"
+#	endif
 
-#ifndef FULL_ANIMATION
-#define FULL_ANIMATION 1
-#endif
+#	ifndef FULL_ANIMATION
+#		define FULL_ANIMATION 1
+#	endif
 
-#include "32bpp_anim.hpp"
-#include "32bpp_anim_sse2.hpp"
-#include "32bpp_sse4.hpp"
+#	include "32bpp_anim.hpp"
+#	include "32bpp_anim_sse2.hpp"
+#	include "32bpp_sse4.hpp"
 
-#undef MARGIN_NORMAL_THRESHOLD
-#define MARGIN_NORMAL_THRESHOLD 4
+#	undef MARGIN_NORMAL_THRESHOLD
+#	define MARGIN_NORMAL_THRESHOLD 4
 
 /** The SSE4 32 bpp blitter with palette animation. */
 class Blitter_32bppSSE4_Anim final : public Blitter_32bppSSE2_Anim, public Blitter_32bppSSE4 {
 private:
-
 public:
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent, bool animated>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
-	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override {
+
+	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override
+	{
 		return Blitter_32bppSSE_Base::Encode(sprite, allocator);
 	}
-	std::string_view GetName() override { return "32bpp-sse4-anim"; }
+
+	std::string_view GetName() override
+	{
+		return "32bpp-sse4-anim";
+	}
+
 	using Blitter_32bppSSE2_Anim::LookupColourInPalette;
 };
 
 /** Factory for the SSE4 32 bpp blitter (with palette animation). */
-class FBlitter_32bppSSE4_Anim: public BlitterFactory {
+class FBlitter_32bppSSE4_Anim : public BlitterFactory {
 public:
 	FBlitter_32bppSSE4_Anim() : BlitterFactory("32bpp-sse4-anim", "32bpp SSE4 Blitter (palette animation)", HasCPUIDFlag(1, 2, 19)) {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::unique_ptr<Blitter>(static_cast<Blitter_32bppSSE2_Anim *>(new Blitter_32bppSSE4_Anim())); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::unique_ptr<Blitter>(static_cast<Blitter_32bppSSE2_Anim *>(new Blitter_32bppSSE4_Anim()));
+	}
 };
 
 #endif /* WITH_SSE */

@@ -57,7 +57,6 @@ inline Direction ReverseDir(Direction d)
 	return (Direction)(4 ^ d);
 }
 
-
 /**
  * Calculate the difference between two directions
  *
@@ -107,7 +106,6 @@ inline Direction ChangeDir(Direction d, DirDiff delta)
 	/* Cast to uint so compiler can use bitmask. Result can never be negative. */
 	return static_cast<Direction>((static_cast<uint>(d) + static_cast<uint>(delta)) % 8);
 }
-
 
 /**
  * Returns the reverse direction of the given DiagDirection
@@ -185,7 +183,6 @@ inline Direction DiagDirToDir(DiagDirection dir)
 	return (Direction)(dir * 2 + 1);
 }
 
-
 /**
  * Select the other axis as provided.
  *
@@ -199,7 +196,6 @@ inline Axis OtherAxis(Axis a)
 	assert(IsValidAxis(a));
 	return (Axis)(a ^ 1);
 }
-
 
 /**
  * Convert a DiagDirection to the axis.
@@ -216,7 +212,6 @@ inline Axis DiagDirToAxis(DiagDirection d)
 	assert(IsValidDiagDirection(d));
 	return (Axis)(d & 1);
 }
-
 
 /**
  * Converts an Axis to a DiagDirection

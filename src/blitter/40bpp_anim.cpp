@@ -8,24 +8,24 @@
 /** @file 40bpp_optimized.cpp Implementation of the optimized 40 bpp blitter. */
 
 #include "../stdafx.h"
-#include "../zoom_func.h"
+
+#include "40bpp_anim.hpp"
+
+#include "../palette_func.h"
 #include "../settings_type.h"
 #include "../video/video_driver.hpp"
-#include "../palette_func.h"
-#include "40bpp_anim.hpp"
+#include "../zoom_func.h"
 #include "common.hpp"
 
 #include "../table/sprites.h"
 
 #include "../safeguards.h"
 
-
 /** Instantiation of the 40bpp with animation blitter factory. */
 static FBlitter_40bppAnim iFBlitter_40bppAnim;
 
 /** Cached black value. */
 static const Colour _black_colour(0, 0, 0);
-
 
 void Blitter_40bppAnim::SetPixel(void *video, int x, int y, uint8_t colour)
 {
@@ -100,7 +100,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	/* src_n  : each line begins with uint32_t n = 'number of bytes in this line',
 	 *          then interleaved stream of 'm' and 'n' channels. 'm' is remap,
 	 *          'n' is number of bytes with the same alpha channel class */
-	const uint16_t *src_n  = (const uint16_t *)(src->data + src->offset[zoom][1]);
+	const uint16_t *src_n = (const uint16_t *)(src->data + src->offset[zoom][1]);
 
 	/* skip upper lines in src_px and src_n */
 	for (uint i = bp->skip_top; i != 0; i--) {
@@ -178,7 +178,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 				continue;
 			}
 
-			draw:;
+		draw:;
 
 			switch (mode) {
 				case BlitterMode::ColourRemap:
@@ -316,7 +316,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 		dst = dst_ln;
 		anim = anim_ln;
 		src_px = src_px_ln;
-		src_n  = src_n_ln;
+		src_n = src_n_ln;
 	}
 }
 
@@ -338,13 +338,26 @@ void Blitter_40bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 	}
 
 	switch (mode) {
-		default: NOT_REACHED();
-		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, zoom); return;
-		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, zoom); return;
-		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, zoom); return;
-		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, zoom); return;
-		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, zoom); return;
-		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, zoom); return;
+		default:
+			NOT_REACHED();
+		case BlitterMode::Normal:
+			Draw<BlitterMode::Normal>(bp, zoom);
+			return;
+		case BlitterMode::ColourRemap:
+			Draw<BlitterMode::ColourRemap>(bp, zoom);
+			return;
+		case BlitterMode::Transparent:
+			Draw<BlitterMode::Transparent>(bp, zoom);
+			return;
+		case BlitterMode::TransparentRemap:
+			Draw<BlitterMode::TransparentRemap>(bp, zoom);
+			return;
+		case BlitterMode::CrashRemap:
+			Draw<BlitterMode::CrashRemap>(bp, zoom);
+			return;
+		case BlitterMode::BlackRemap:
+			Draw<BlitterMode::BlackRemap>(bp, zoom);
+			return;
 	}
 }
 
@@ -401,7 +414,6 @@ Sprite *Blitter_40bppAnim::Encode(const SpriteLoader::SpriteCollection &sprite, 
 {
 	return this->EncodeInternal<false>(sprite, allocator);
 }
-
 
 void Blitter_40bppAnim::CopyFromBuffer(void *video, const void *src, int width, int height)
 {

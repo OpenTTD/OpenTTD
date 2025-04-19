@@ -8,18 +8,19 @@
 /** @file script_scanner.cpp Allows scanning for scripts. */
 
 #include "../stdafx.h"
-#include "../debug.h"
-#include "../string_func.h"
-#include "../settings_type.h"
 
-#include "../script/squirrel.hpp"
 #include "script_scanner.hpp"
-#include "script_info.hpp"
-#include "script_fatalerror.hpp"
 
-#include "../network/network_content.h"
 #include "../3rdparty/md5/md5.h"
+
+#include "../debug.h"
+#include "../network/network_content.h"
+#include "../script/squirrel.hpp"
+#include "../settings_type.h"
+#include "../string_func.h"
 #include "../tar_type.h"
+#include "script_fatalerror.hpp"
+#include "script_info.hpp"
 
 #include "../safeguards.h"
 
@@ -44,10 +45,7 @@ bool ScriptScanner::AddFile(const std::string &filename, size_t, const std::stri
 	return true;
 }
 
-ScriptScanner::ScriptScanner() :
-	engine(nullptr)
-{
-}
+ScriptScanner::ScriptScanner() : engine(nullptr) {}
 
 void ScriptScanner::ResetEngine()
 {

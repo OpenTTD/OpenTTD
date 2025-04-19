@@ -31,12 +31,18 @@ public:
 	/**
 	 * Append span.
 	 */
-	void PutBuffer(std::span<const char> str) { this->PutBuffer(str.data(), str.size()); }
+	void PutBuffer(std::span<const char> str)
+	{
+		this->PutBuffer(str.data(), str.size());
+	}
 
 	/**
 	 * Append string.
 	 */
-	void Put(std::string_view str) { this->PutBuffer(str.data(), str.size()); }
+	void Put(std::string_view str)
+	{
+		this->PutBuffer(str.data(), str.size());
+	}
 
 	void PutUint8(uint8_t value);
 	void PutSint8(int8_t value);
@@ -69,6 +75,7 @@ public:
  */
 class StringBuilder final : public BaseStringBuilder {
 	std::string *dest;
+
 public:
 	/**
 	 * Construct StringBuilder into destination string.
@@ -79,19 +86,34 @@ public:
 	/**
 	 * Check whether any bytes have been written.
 	 */
-	[[nodiscard]] bool AnyBytesWritten() const noexcept { return !this->dest->empty(); }
+	[[nodiscard]] bool AnyBytesWritten() const noexcept
+	{
+		return !this->dest->empty();
+	}
+
 	/**
 	 * Get number of already written bytes.
 	 */
-	[[nodiscard]] size_type GetBytesWritten() const noexcept { return this->dest->size(); }
+	[[nodiscard]] size_type GetBytesWritten() const noexcept
+	{
+		return this->dest->size();
+	}
+
 	/**
 	 * Get already written data.
 	 */
-	[[nodiscard]] const std::string &GetWrittenData() const noexcept { return *dest; }
+	[[nodiscard]] const std::string &GetWrittenData() const noexcept
+	{
+		return *dest;
+	}
+
 	/**
 	 * Get mutable already written data.
 	 */
-	[[nodiscard]] std::string &GetString() noexcept { return *dest; }
+	[[nodiscard]] std::string &GetString() noexcept
+	{
+		return *dest;
+	}
 
 	using BaseStringBuilder::PutBuffer;
 	void PutBuffer(const char *str, size_type len) override;
@@ -99,13 +121,14 @@ public:
 	/**
 	 * Append string.
 	 */
-	StringBuilder& operator+=(std::string_view str)
+	StringBuilder &operator+=(std::string_view str)
 	{
 		this->Put(str);
 		return *this;
 	}
 
 	using back_insert_iterator = std::back_insert_iterator<std::string>;
+
 	/**
 	 * Create a back-insert-iterator.
 	 */

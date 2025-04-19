@@ -13,7 +13,9 @@
  */
 
 #include "stdafx.h"
+
 #include "newgrf_townname.h"
+
 #include "string_func.h"
 #include "strings_internal.h"
 
@@ -74,7 +76,6 @@ void GRFTownNameGenerate(StringBuilder &builder, uint32_t grfid, uint16_t gen, u
 		RandomPart(builder, t, seed, t->styles[gen].id);
 	}
 }
-
 
 /** Allocate memory for the NewGRF town names. */
 void InitGRFTownGeneratorNames()

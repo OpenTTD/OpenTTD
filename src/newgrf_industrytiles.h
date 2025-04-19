@@ -10,14 +10,14 @@
 #ifndef NEWGRF_INDUSTRYTILES_H
 #define NEWGRF_INDUSTRYTILES_H
 
+#include "core/random_func.hpp"
 #include "newgrf_animation_type.h"
 #include "newgrf_industries.h"
-#include "core/random_func.hpp"
 
 /** Resolver for the industry tiles scope. */
 struct IndustryTileScopeResolver : public ScopeResolver {
 	Industry *industry; ///< Industry owning the tiles.
-	TileIndex tile;     ///< %Tile being resolved.
+	TileIndex tile; ///< %Tile being resolved.
 
 	/**
 	 * Constructor of the scope resolver for the industry tile.
@@ -25,10 +25,7 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 	 * @param industry %Industry owning the tile.
 	 * @param tile %Tile of the industry.
 	 */
-	IndustryTileScopeResolver(ResolverObject &ro, Industry *industry, TileIndex tile)
-		: ScopeResolver(ro), industry(industry), tile(tile)
-	{
-	}
+	IndustryTileScopeResolver(ResolverObject &ro, Industry *industry, TileIndex tile) : ScopeResolver(ro), industry(industry), tile(tile) {}
 
 	uint32_t GetRandomBits() const override;
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
@@ -38,18 +35,20 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 /** Resolver for industry tiles. */
 struct IndustryTileResolverObject : public SpecializedResolverObject<IndustryRandomTriggers> {
 	IndustryTileScopeResolver indtile_scope; ///< Scope resolver for the industry tile.
-	IndustriesScopeResolver ind_scope;       ///< Scope resolver for the industry owning the tile.
+	IndustriesScopeResolver ind_scope; ///< Scope resolver for the industry owning the tile.
 	IndustryGfx gfx;
 
-	IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
-			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
+	IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &indtile_scope;
-			case VSG_SCOPE_PARENT: return &ind_scope;
-			default: return ResolverObject::GetScope(scope, relative);
+			case VSG_SCOPE_SELF:
+				return &indtile_scope;
+			case VSG_SCOPE_PARENT:
+				return &ind_scope;
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
@@ -59,7 +58,8 @@ struct IndustryTileResolverObject : public SpecializedResolverObject<IndustryRan
 
 bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds);
 uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile);
-CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, size_t layout_index, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type);
+CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, size_t layout_index,
+	uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type);
 
 void AnimateNewIndustryTile(TileIndex tile);
 bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random = Random());

@@ -8,17 +8,20 @@
 /** @file script_event_types.cpp Implementation of all EventTypes. */
 
 #include "../../stdafx.h"
+
 #include "script_event_types.hpp"
-#include "script_vehicle.hpp"
-#include "script_log.hpp"
-#include "../../strings_func.h"
-#include "../../settings_type.h"
-#include "../../engine_base.h"
-#include "../../articulated_vehicles.h"
-#include "../../string_func.h"
-#include "../../economy_cmd.h"
-#include "../../engine_cmd.h"
+
 #include "../../3rdparty/nlohmann/json.hpp"
+
+#include "../../articulated_vehicles.h"
+#include "../../economy_cmd.h"
+#include "../../engine_base.h"
+#include "../../engine_cmd.h"
+#include "../../settings_type.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
+#include "script_log.hpp"
+#include "script_vehicle.hpp"
 
 #include "table/strings.h"
 
@@ -66,7 +69,8 @@ int32_t ScriptEventEnginePreview::GetCapacity()
 		case VEH_AIRCRAFT:
 			return e->GetDisplayDefaultCapacity();
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -95,11 +99,16 @@ int32_t ScriptEventEnginePreview::GetVehicleType()
 {
 	if (!this->IsEngineValid()) return ScriptVehicle::VT_INVALID;
 	switch (::Engine::Get(this->engine)->type) {
-		case VEH_ROAD:     return ScriptVehicle::VT_ROAD;
-		case VEH_TRAIN:    return ScriptVehicle::VT_RAIL;
-		case VEH_SHIP:     return ScriptVehicle::VT_WATER;
-		case VEH_AIRCRAFT: return ScriptVehicle::VT_AIR;
-		default: NOT_REACHED();
+		case VEH_ROAD:
+			return ScriptVehicle::VT_ROAD;
+		case VEH_TRAIN:
+			return ScriptVehicle::VT_RAIL;
+		case VEH_SHIP:
+			return ScriptVehicle::VT_WATER;
+		case VEH_AIRCRAFT:
+			return ScriptVehicle::VT_AIR;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -116,11 +125,8 @@ bool ScriptEventCompanyAskMerger::AcceptMerger()
 	return ScriptObject::Command<CMD_BUY_COMPANY>::Do(ScriptCompany::FromScriptCompanyID(this->owner), false);
 }
 
-ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :
-		ScriptEvent(ET_ADMIN_PORT),
-		json(json)
-{
-}
+ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) : ScriptEvent(ET_ADMIN_PORT), json(json) {}
+
 /**
  * Convert a JSON part for Squirrel.
  * @param vm The VM used.

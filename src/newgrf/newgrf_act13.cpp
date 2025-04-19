@@ -8,6 +8,7 @@
 /** @file newgrf_act13.cpp NewGRF Action 0x13 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_text.h"
 #include "../strings_func.h"
@@ -52,7 +53,7 @@ static void TranslateGRFStrings(ByteReader &buf)
 	 * not change anything if a string has been provided specifically for this language. */
 	uint8_t language = _cur_gps.grffile->grf_version >= 8 ? buf.ReadByte() : 0x7F;
 	uint8_t num_strings = buf.ReadByte();
-	uint16_t first_id  = buf.ReadWord();
+	uint16_t first_id = buf.ReadWord();
 
 	if (!((first_id >= 0xD000 && first_id + num_strings <= 0xD400) || (first_id >= 0xD800 && first_id + num_strings <= 0xE000))) {
 		GrfMsg(7, "TranslateGRFStrings: Attempting to set out-of-range string IDs in action 13 (first: 0x{:04X}, number: 0x{:02X})", first_id, num_strings);
@@ -71,9 +72,33 @@ static void TranslateGRFStrings(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x13>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x13>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x13>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x13>::Init(ByteReader &) { }
-template <> void GrfActionHandler<0x13>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x13>::Activation(ByteReader &buf) { TranslateGRFStrings(buf); }
+template <>
+void GrfActionHandler<0x13>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x13>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x13>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x13>::Init(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x13>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x13>::Activation(ByteReader &buf)
+{
+	TranslateGRFStrings(buf);
+}

@@ -8,13 +8,14 @@
 /** @file string.cpp Handling of C-type strings (char*). */
 
 #include "stdafx.h"
-#include "debug.h"
+
 #include "core/math_func.hpp"
-#include "error_func.h"
-#include "string_func.h"
-#include "string_base.h"
-#include "core/utf8.hpp"
 #include "core/string_inplace.hpp"
+#include "core/utf8.hpp"
+#include "debug.h"
+#include "error_func.h"
+#include "string_base.h"
+#include "string_func.h"
 
 #include "table/control_codes.h"
 
@@ -38,7 +39,6 @@
 #endif
 
 #include "safeguards.h"
-
 
 /**
  * Copies characters from one buffer to another.
@@ -126,9 +126,8 @@ static void StrMakeValid(Builder &builder, StringConsumer &consumer, StringValid
 		}
 		if (*c == 0) break;
 
-		if ((IsPrintable(*c) && (*c < SCC_SPRITE_START || *c > SCC_SPRITE_END)) ||
-				(settings.Test(StringValidationSetting::AllowControlCode) && IsSccEncodedCode(*c)) ||
-				(settings.Test(StringValidationSetting::AllowNewline) && *c == '\n')) {
+		if ((IsPrintable(*c) && (*c < SCC_SPRITE_START || *c > SCC_SPRITE_END)) || (settings.Test(StringValidationSetting::AllowControlCode) && IsSccEncodedCode(*c)) ||
+			(settings.Test(StringValidationSetting::AllowNewline) && *c == '\n')) {
 			builder.PutUtf8(*c);
 		} else if (settings.Test(StringValidationSetting::AllowNewline) && *c == '\r' && consumer.PeekCharIf('\n')) {
 			/* Skip \r, if followed by \n */
@@ -252,16 +251,28 @@ bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix
 
 /** Case insensitive implementation of the standard character type traits. */
 struct CaseInsensitiveCharTraits : public std::char_traits<char> {
-	static bool eq(char c1, char c2) { return toupper(c1) == toupper(c2); }
-	static bool ne(char c1, char c2) { return toupper(c1) != toupper(c2); }
-	static bool lt(char c1, char c2) { return toupper(c1) <  toupper(c2); }
+	static bool eq(char c1, char c2)
+	{
+		return toupper(c1) == toupper(c2);
+	}
+
+	static bool ne(char c1, char c2)
+	{
+		return toupper(c1) != toupper(c2);
+	}
+
+	static bool lt(char c1, char c2)
+	{
+		return toupper(c1) < toupper(c2);
+	}
 
 	static int compare(const char *s1, const char *s2, size_t n)
 	{
 		while (n-- != 0) {
 			if (toupper(*s1) < toupper(*s2)) return -1;
 			if (toupper(*s1) > toupper(*s2)) return 1;
-			++s1; ++s2;
+			++s1;
+			++s2;
 		}
 		return 0;
 	}
@@ -299,8 +310,8 @@ bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix)
  */
 int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2)
 {
-	CaseInsensitiveStringView ci_str1{ str1.data(), str1.size() };
-	CaseInsensitiveStringView ci_str2{ str2.data(), str2.size() };
+	CaseInsensitiveStringView ci_str1{str1.data(), str1.size()};
+	CaseInsensitiveStringView ci_str2{str2.data(), str2.size()};
 	return ci_str1.compare(ci_str2);
 }
 
@@ -325,8 +336,8 @@ bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str
  */
 bool StrContainsIgnoreCase(const std::string_view str, const std::string_view value)
 {
-	CaseInsensitiveStringView ci_str{ str.data(), str.size() };
-	CaseInsensitiveStringView ci_value{ value.data(), value.size() };
+	CaseInsensitiveStringView ci_str{str.data(), str.size()};
+	CaseInsensitiveStringView ci_value{value.data(), value.size()};
 	return ci_str.find(ci_value) != ci_str.npos;
 }
 
@@ -363,13 +374,20 @@ bool strtolower(std::string &str, std::string::size_type offs)
 bool IsValidChar(char32_t key, CharSetFilter afilter)
 {
 	switch (afilter) {
-		case CS_ALPHANUMERAL:   return IsPrintable(key);
-		case CS_NUMERAL:        return (key >= '0' && key <= '9');
-		case CS_NUMERAL_SPACE:  return (key >= '0' && key <= '9') || key == ' ';
-		case CS_NUMERAL_SIGNED: return (key >= '0' && key <= '9') || key == '-';
-		case CS_ALPHA:          return IsPrintable(key) && !(key >= '0' && key <= '9');
-		case CS_HEXADECIMAL:    return (key >= '0' && key <= '9') || (key >= 'a' && key <= 'f') || (key >= 'A' && key <= 'F');
-		default: NOT_REACHED();
+		case CS_ALPHANUMERAL:
+			return IsPrintable(key);
+		case CS_NUMERAL:
+			return (key >= '0' && key <= '9');
+		case CS_NUMERAL_SPACE:
+			return (key >= '0' && key <= '9') || key == ' ';
+		case CS_NUMERAL_SIGNED:
+			return (key >= '0' && key <= '9') || key == '-';
+		case CS_ALPHA:
+			return IsPrintable(key) && !(key >= '0' && key <= '9');
+		case CS_HEXADECIMAL:
+			return (key >= '0' && key <= '9') || (key >= 'a' && key <= 'f') || (key >= 'A' && key <= 'F');
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -445,7 +463,7 @@ int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garb
 
 #ifdef WITH_ICU_I18N
 
-#include <unicode/stsearch.h>
+#	include <unicode/stsearch.h>
 
 /**
  * Search if a string is contained in another string using the current locale.
@@ -529,8 +547,8 @@ static int ICUStringContains(const std::string_view str, const std::string_view 
 	if (res >= 0) return res > 0;
 #endif
 
-	CaseInsensitiveStringView ci_str{ str.data(), str.size() };
-	CaseInsensitiveStringView ci_value{ value.data(), value.size() };
+	CaseInsensitiveStringView ci_str{str.data(), str.size()};
+	CaseInsensitiveStringView ci_value{value.data(), value.size()};
 	return ci_str.find(ci_value) != CaseInsensitiveStringView::npos;
 }
 
@@ -593,16 +611,15 @@ bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes)
 
 #elif defined(WITH_ICU_I18N)
 
-#include <unicode/utext.h>
-#include <unicode/brkiter.h>
+#	include <unicode/brkiter.h>
+#	include <unicode/utext.h>
 
 /** String iterator using ICU as a backend. */
-class IcuStringIterator : public StringIterator
-{
+class IcuStringIterator : public StringIterator {
 	icu::BreakIterator *char_itr; ///< ICU iterator for characters.
 	icu::BreakIterator *word_itr; ///< ICU iterator for words.
 
-	std::vector<UChar> utf16_str;      ///< UTF-16 copy of the string.
+	std::vector<UChar> utf16_str; ///< UTF-16 copy of the string.
 	std::vector<size_t> utf16_to_utf8; ///< Mapping from UTF-16 code point position to index in the UTF-8 source string.
 
 public:
@@ -688,8 +705,7 @@ public:
 				/* The ICU word iterator considers both the start and the end of a word a valid
 				 * break point, but we only want word starts. Move to the next location in
 				 * case the new position points to whitespace. */
-				while (pos != icu::BreakIterator::DONE &&
-						IsWhitespace(Utf16DecodeChar((const uint16_t *)&this->utf16_str[pos]))) {
+				while (pos != icu::BreakIterator::DONE && IsWhitespace(Utf16DecodeChar((const uint16_t *)&this->utf16_str[pos]))) {
 					int32_t new_pos = this->word_itr->next();
 					/* Don't set it to DONE if it was valid before. Otherwise we'll return END
 					 * even though the iterator wasn't at the end of the string before. */
@@ -720,8 +736,7 @@ public:
 				/* The ICU word iterator considers both the start and the end of a word a valid
 				 * break point, but we only want word starts. Move to the previous location in
 				 * case the new position points to whitespace. */
-				while (pos != icu::BreakIterator::DONE &&
-						IsWhitespace(Utf16DecodeChar((const uint16_t *)&this->utf16_str[pos]))) {
+				while (pos != icu::BreakIterator::DONE && IsWhitespace(Utf16DecodeChar((const uint16_t *)&this->utf16_str[pos]))) {
 					int32_t new_pos = this->word_itr->previous();
 					/* Don't set it to DONE if it was valid before. Otherwise we'll return END
 					 * even though the iterator wasn't at the start of the string before. */
@@ -748,8 +763,7 @@ public:
 #else
 
 /** Fallback simple string iterator. */
-class DefaultStringIterator : public StringIterator
-{
+class DefaultStringIterator : public StringIterator {
 	Utf8View string; ///< Current string.
 	Utf8View::iterator cur_pos; //< Current iteration position.
 
@@ -827,7 +841,7 @@ public:
 	}
 };
 
-#if defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN)
+#	if defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN)
 /* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
 	std::unique_ptr<StringIterator> i = OSXStringIterator::Create();
@@ -835,11 +849,11 @@ public:
 
 	return std::make_unique<DefaultStringIterator>();
 }
-#else
+#	else
 /* static */ std::unique_ptr<StringIterator> StringIterator::Create()
 {
 	return std::make_unique<DefaultStringIterator>();
 }
-#endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
+#	endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
 
 #endif

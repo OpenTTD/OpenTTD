@@ -8,6 +8,7 @@
 /** @file screenshot_bmp.cpp BMP screenshot provider. */
 
 #include "stdafx.h"
+
 #include "core/endian_func.hpp"
 #include "core/math_func.hpp"
 #include "fileio_func.h"
@@ -31,12 +32,14 @@ struct BitmapInfoHeader {
 	uint16_t planes, bitcount;
 	uint32_t compression, sizeimage, xpels, ypels, clrused, clrimp;
 };
+
 static_assert(sizeof(BitmapInfoHeader) == 40);
 
 /** Format of palette data in BMP header */
 struct RgbQuad {
 	uint8_t blue, green, red, reserved;
 };
+
 static_assert(sizeof(RgbQuad) == 4);
 
 class ScreenshotProvider_Bmp : public ScreenshotProvider {
@@ -47,11 +50,16 @@ public:
 	{
 		uint bpp; // bytes per pixel
 		switch (pixelformat) {
-			case 8:  bpp = 1; break;
+			case 8:
+				bpp = 1;
+				break;
 			/* 32bpp mode is saved as 24bpp BMP */
-			case 32: bpp = 3; break;
+			case 32:
+				bpp = 3;
+				break;
 			/* Only implemented for 8bit and 32bit images so far */
-			default: return false;
+			default:
+				return false;
 		}
 
 		auto of = FileHandle::Open(name, "wb");
@@ -94,9 +102,9 @@ public:
 			/* Convert the palette to the windows format */
 			RgbQuad rq[256];
 			for (uint i = 0; i < 256; i++) {
-				rq[i].red   = palette[i].r;
+				rq[i].red = palette[i].r;
 				rq[i].green = palette[i].g;
-				rq[i].blue  = palette[i].b;
+				rq[i].blue = palette[i].b;
 				rq[i].reserved = 0;
 			}
 			/* Write the palette */
@@ -130,7 +138,7 @@ public:
 					Colour *src = ((Colour *)buff.data()) + n * w;
 					uint8_t *dst = line.data();
 					for (uint i = 0; i < w; i++) {
-						dst[i * 3    ] = src[i].b;
+						dst[i * 3] = src[i].b;
 						dst[i * 3 + 1] = src[i].g;
 						dst[i * 3 + 2] = src[i].r;
 					}
@@ -141,7 +149,6 @@ public:
 				}
 			}
 		} while (h != 0);
-
 
 		return true;
 	}

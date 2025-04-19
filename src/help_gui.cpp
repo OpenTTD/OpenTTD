@@ -5,21 +5,22 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file help_gui.cpp GUI to access manuals and related. */
+/** @file help_gui.cpp GUI to access manuals and related. */
 
 #include "stdafx.h"
-#include "gui.h"
-#include "window_gui.h"
-#include "textfile_gui.h"
-#include "fileio_func.h"
-#include "table/control_codes.h"
-#include "string_func.h"
-#include "openttd.h"
+
 #include "help_gui.h"
+
+#include "fileio_func.h"
+#include "gui.h"
+#include "openttd.h"
+#include "string_func.h"
+#include "textfile_gui.h"
+#include "window_gui.h"
 
 #include "widgets/help_widget.h"
 #include "widgets/misc_widget.h"
-
+#include "table/control_codes.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -46,9 +47,7 @@ static constexpr size_t CHANGELOG_VERSIONS_LIMIT = 20;
  */
 static std::optional<std::string> FindGameManualFilePath(std::string_view filename, Subdirectory subdir)
 {
-	static const Searchpath searchpaths[] = {
-		SP_APPLICATION_BUNDLE_DIR, SP_INSTALLATION_DIR, SP_SHARED_DIR, SP_BINARY_DIR, SP_WORKING_DIR
-	};
+	static const Searchpath searchpaths[] = {SP_APPLICATION_BUNDLE_DIR, SP_INSTALLATION_DIR, SP_SHARED_DIR, SP_BINARY_DIR, SP_WORKING_DIR};
 
 	for (Searchpath sp : searchpaths) {
 		std::string file_path = FioGetDirectory(sp, subdir);
@@ -76,7 +75,7 @@ struct GameManualTextfileWindow : public TextfileWindow {
 
 		this->filepath = filepath.value();
 		this->LoadTextfile(this->filepath, NO_DIRECTORY);
-		this->OnClick({ 0, 0 }, WID_TF_WRAPTEXT, 1);
+		this->OnClick({0, 0}, WID_TF_WRAPTEXT, 1);
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
@@ -123,7 +122,6 @@ struct GameManualTextfileWindow : public TextfileWindow {
 
 /** Window class displaying the help window. */
 struct HelpWindow : public Window {
-
 	HelpWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
@@ -203,12 +201,7 @@ static constexpr NWidgetPart _nested_helpwin_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _helpwin_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_HELPWIN, WC_NONE,
-	{},
-	_nested_helpwin_widgets
-);
+static WindowDesc _helpwin_desc(WDP_CENTER, nullptr, 0, 0, WC_HELPWIN, WC_NONE, {}, _nested_helpwin_widgets);
 
 void ShowHelpWindow()
 {

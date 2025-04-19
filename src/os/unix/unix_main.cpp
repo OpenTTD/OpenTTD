@@ -8,13 +8,14 @@
 /** @file unix_main.cpp Main entry for Unix. */
 
 #include "../../stdafx.h"
-#include "../../openttd.h"
-#include "../../crashlog.h"
-#include "../../core/random_func.hpp"
-#include "../../string_func.h"
 
-#include <time.h>
 #include <signal.h>
+#include <time.h>
+
+#include "../../core/random_func.hpp"
+#include "../../crashlog.h"
+#include "../../openttd.h"
+#include "../../string_func.h"
 
 #include "../../safeguards.h"
 

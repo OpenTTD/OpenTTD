@@ -12,11 +12,11 @@
 #ifndef NETWORK_CORE_HTTP_SHARED_H
 #define NETWORK_CORE_HTTP_SHARED_H
 
-#include "http.h"
-
 #include <condition_variable>
 #include <mutex>
 #include <vector>
+
+#include "http.h"
 
 /** Converts a HTTPCallback to a Thread-Safe variant. */
 class HTTPThreadSafeCallback {
@@ -25,6 +25,7 @@ private:
 	class Callback {
 	public:
 		Callback(std::unique_ptr<char[]> data, size_t length) : data(std::move(data)), length(length), failure(false) {}
+
 		Callback() : data(nullptr), length(0), failure(true) {}
 
 		std::unique_ptr<char[]> data;

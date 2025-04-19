@@ -10,20 +10,19 @@
 #ifndef RAIL_MAP_H
 #define RAIL_MAP_H
 
-#include "rail_type.h"
 #include "depot_type.h"
+#include "rail_type.h"
 #include "signal_func.h"
-#include "track_func.h"
-#include "tile_map.h"
-#include "water_map.h"
 #include "signal_type.h"
-
+#include "tile_map.h"
+#include "track_func.h"
+#include "water_map.h"
 
 /** Different types of Rail-related tiles */
 enum RailTileType : uint8_t {
-	RAIL_TILE_NORMAL   = 0, ///< Normal rail tile without signals
-	RAIL_TILE_SIGNALS  = 1, ///< Normal rail tile with signals
-	RAIL_TILE_DEPOT    = 3, ///< Depot (one entrance)
+	RAIL_TILE_NORMAL = 0, ///< Normal rail tile without signals
+	RAIL_TILE_SIGNALS = 1, ///< Normal rail tile with signals
+	RAIL_TILE_DEPOT = 3, ///< Depot (one entrance)
 };
 
 /**
@@ -61,7 +60,6 @@ enum RailTileType : uint8_t {
 {
 	return IsTileType(t, MP_RAILWAY) && IsPlainRail(t);
 }
-
 
 /**
  * Checks if a rail tile has signals.
@@ -127,7 +125,6 @@ inline void SetRailType(Tile t, RailType r)
 	SB(t.m8(), 0, 6, r);
 }
 
-
 /**
  * Gets the track bits of the given tile
  * @param tile the tile to get the track bits from
@@ -184,7 +181,6 @@ inline Track GetRailDepotTrack(Tile t)
 	return DiagDirToDiagTrack(GetRailDepotDirection(t));
 }
 
-
 /**
  * Returns the reserved track bits of the tile
  * @pre IsPlainRailTile(t)
@@ -195,7 +191,7 @@ inline TrackBits GetRailReservationTrackBits(Tile t)
 {
 	assert(IsPlainRailTile(t));
 	uint8_t track_b = GB(t.m2(), 8, 3);
-	Track track = (Track)(track_b - 1);    // map array saves Track+1
+	Track track = (Track)(track_b - 1); // map array saves Track+1
 	if (track_b == 0) return TRACK_BIT_NONE;
 	return (TrackBits)(TrackToTrackBits(track) | (HasBit(t.m2(), 11) ? TrackToTrackBits(TrackToOppositeTrack(track)) : 0));
 }
@@ -227,9 +223,9 @@ inline bool TryReserveTrack(Tile tile, Track t)
 	assert(HasTrack(tile, t));
 	TrackBits bits = TrackToTrackBits(t);
 	TrackBits res = GetRailReservationTrackBits(tile);
-	if ((res & bits) != TRACK_BIT_NONE) return false;  // already reserved
+	if ((res & bits) != TRACK_BIT_NONE) return false; // already reserved
 	res |= bits;
-	if (TracksOverlap(res)) return false;  // crossing reservation present
+	if (TracksOverlap(res)) return false; // crossing reservation present
 	SetTrackReservation(tile, res);
 	return true;
 }
@@ -282,7 +278,6 @@ inline TrackBits GetDepotReservationTrackBits(Tile t)
 {
 	return HasDepotReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
 }
-
 
 inline bool IsPbsSignal(SignalType s)
 {
@@ -424,7 +419,7 @@ inline bool HasSignalOnTrack(Tile tile, Track track)
  */
 inline bool HasSignalOnTrackdir(Tile tile, Trackdir trackdir)
 {
-	assert (IsValidTrackdir(trackdir));
+	assert(IsValidTrackdir(trackdir));
 	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
 }
 
@@ -438,8 +433,7 @@ inline SignalState GetSignalStateByTrackdir(Tile tile, Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
 	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
-	return GetSignalStates(tile) & SignalAlongTrackdir(trackdir) ?
-		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
+	return GetSignalStates(tile) & SignalAlongTrackdir(trackdir) ? SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
 }
 
 /**
@@ -461,8 +455,7 @@ inline void SetSignalStateByTrackdir(Tile tile, Trackdir trackdir, SignalState s
  */
 inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
 {
-	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, td) &&
-			IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
+	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, td) && IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
 }
 
 /**
@@ -473,30 +466,28 @@ inline bool HasPbsSignalOnTrackdir(Tile tile, Trackdir td)
  */
 inline bool HasOnewaySignalBlockingTrackdir(Tile tile, Trackdir td)
 {
-	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, ReverseTrackdir(td)) &&
-			!HasSignalOnTrackdir(tile, td) && IsOnewaySignal(tile, TrackdirToTrack(td));
+	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, ReverseTrackdir(td)) && !HasSignalOnTrackdir(tile, td) && IsOnewaySignal(tile, TrackdirToTrack(td));
 }
-
 
 RailType GetTileRailType(Tile tile);
 
 /** The ground 'under' the rail */
 enum RailGroundType : uint8_t {
-	RAIL_GROUND_BARREN       =  0, ///< Nothing (dirt)
-	RAIL_GROUND_GRASS        =  1, ///< Grassy
-	RAIL_GROUND_FENCE_NW     =  2, ///< Grass with a fence at the NW edge
-	RAIL_GROUND_FENCE_SE     =  3, ///< Grass with a fence at the SE edge
-	RAIL_GROUND_FENCE_SENW   =  4, ///< Grass with a fence at the NW and SE edges
-	RAIL_GROUND_FENCE_NE     =  5, ///< Grass with a fence at the NE edge
-	RAIL_GROUND_FENCE_SW     =  6, ///< Grass with a fence at the SW edge
-	RAIL_GROUND_FENCE_NESW   =  7, ///< Grass with a fence at the NE and SW edges
-	RAIL_GROUND_FENCE_VERT1  =  8, ///< Grass with a fence at the eastern side
-	RAIL_GROUND_FENCE_VERT2  =  9, ///< Grass with a fence at the western side
+	RAIL_GROUND_BARREN = 0, ///< Nothing (dirt)
+	RAIL_GROUND_GRASS = 1, ///< Grassy
+	RAIL_GROUND_FENCE_NW = 2, ///< Grass with a fence at the NW edge
+	RAIL_GROUND_FENCE_SE = 3, ///< Grass with a fence at the SE edge
+	RAIL_GROUND_FENCE_SENW = 4, ///< Grass with a fence at the NW and SE edges
+	RAIL_GROUND_FENCE_NE = 5, ///< Grass with a fence at the NE edge
+	RAIL_GROUND_FENCE_SW = 6, ///< Grass with a fence at the SW edge
+	RAIL_GROUND_FENCE_NESW = 7, ///< Grass with a fence at the NE and SW edges
+	RAIL_GROUND_FENCE_VERT1 = 8, ///< Grass with a fence at the eastern side
+	RAIL_GROUND_FENCE_VERT2 = 9, ///< Grass with a fence at the western side
 	RAIL_GROUND_FENCE_HORIZ1 = 10, ///< Grass with a fence at the southern side
 	RAIL_GROUND_FENCE_HORIZ2 = 11, ///< Grass with a fence at the northern side
-	RAIL_GROUND_ICE_DESERT   = 12, ///< Icy or sandy
-	RAIL_GROUND_WATER        = 13, ///< Grass with a fence and shore or water on the free halftile
-	RAIL_GROUND_HALF_SNOW    = 14, ///< Snow only on higher part of slope (steep or one corner raised)
+	RAIL_GROUND_ICE_DESERT = 12, ///< Icy or sandy
+	RAIL_GROUND_WATER = 13, ///< Grass with a fence and shore or water on the free halftile
+	RAIL_GROUND_HALF_SNOW = 14, ///< Snow only on higher part of slope (steep or one corner raised)
 };
 
 inline void SetRailGroundType(Tile t, RailGroundType rgt)
@@ -513,7 +504,6 @@ inline bool IsSnowRailGround(Tile t)
 {
 	return GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT;
 }
-
 
 inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 {

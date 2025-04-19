@@ -11,24 +11,25 @@
 #define LANGUAGE_H
 
 #ifdef WITH_ICU_I18N
-#include <unicode/coll.h>
+#	include <unicode/coll.h>
 #endif /* WITH_ICU_I18N */
-#include "strings_type.h"
 #include <filesystem>
 
+#include "strings_type.h"
+
 static const uint8_t CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gender string.
-static const uint8_t MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
-static const uint8_t MAX_NUM_CASES   = 16; ///< Maximum number of supported cases.
+static const uint8_t MAX_NUM_GENDERS = 8; ///< Maximum number of supported genders.
+static const uint8_t MAX_NUM_CASES = 16; ///< Maximum number of supported cases.
 
 /** Header of a language file. */
 struct LanguagePackHeader {
 	static const uint32_t IDENT = 0x474E414C; ///< Identifier for OpenTTD language files, big endian for "LANG"
 
-	uint32_t ident;       ///< 32-bits identifier
-	uint32_t version;     ///< 32-bits of auto generated version info which is basically a hash of strings.h
-	char name[32];      ///< the international name of this language
-	char own_name[32];  ///< the localized name of this language
-	char isocode[16];   ///< the ISO code for the language (not country code)
+	uint32_t ident; ///< 32-bits identifier
+	uint32_t version; ///< 32-bits of auto generated version info which is basically a hash of strings.h
+	char name[32]; ///< the international name of this language
+	char own_name[32]; ///< the localized name of this language
+	char isocode[16]; ///< the ISO code for the language (not country code)
 	uint16_t offsets[TEXT_TAB_END]; ///< the offsets
 
 	/** Thousand separator used for anything not currencies */
@@ -37,9 +38,9 @@ struct LanguagePackHeader {
 	char digit_group_separator_currency[8];
 	/** Decimal separator */
 	char digit_decimal_separator[8];
-	uint16_t missing;     ///< number of missing strings.
-	uint8_t plural_form;   ///< plural form index
-	uint8_t text_dir;      ///< default direction of the text
+	uint16_t missing; ///< number of missing strings.
+	uint8_t plural_form; ///< plural form index
+	uint8_t text_dir; ///< default direction of the text
 	/**
 	 * Windows language ID:
 	 * Windows cannot and will not convert isocodes to something it can use to
@@ -48,14 +49,14 @@ struct LanguagePackHeader {
 	 * what language it is in "Windows". The ID is the 'locale identifier' on:
 	 *   http://msdn.microsoft.com/en-us/library/ms776294.aspx
 	 */
-	uint16_t winlangid;   ///< windows language id
+	uint16_t winlangid; ///< windows language id
 	uint8_t newgrflangid; ///< newgrf language id
-	uint8_t num_genders;  ///< the number of genders of this language
-	uint8_t num_cases;    ///< the number of cases of this language
-	uint8_t pad[3];        ///< pad header to be a multiple of 4
+	uint8_t num_genders; ///< the number of genders of this language
+	uint8_t num_cases; ///< the number of cases of this language
+	uint8_t pad[3]; ///< pad header to be a multiple of 4
 
 	char genders[MAX_NUM_GENDERS][CASE_GENDER_LEN]; ///< the genders used by this translation
-	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation
+	char cases[MAX_NUM_CASES][CASE_GENDER_LEN]; ///< the cases used by this translation
 
 	bool IsValid() const;
 	bool IsReasonablyFinished() const;
@@ -86,6 +87,7 @@ struct LanguagePackHeader {
 		return MAX_NUM_CASES;
 	}
 };
+
 /** Make sure the size is right. */
 static_assert(sizeof(LanguagePackHeader) % 4 == 0);
 

@@ -8,6 +8,7 @@
 /** @file road_map.cpp Complex road accessors. */
 
 #include "stdafx.h"
+
 #include "station_map.h"
 #include "tunnelbridge_map.h"
 
@@ -59,9 +60,12 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
 		case MP_ROAD:
 			switch (GetRoadTileType(tile)) {
 				default:
-				case ROAD_TILE_NORMAL:   return GetRoadBits(tile, rtt);
-				case ROAD_TILE_CROSSING: return GetCrossingRoadBits(tile);
-				case ROAD_TILE_DEPOT:    return DiagDirToRoadBits(GetRoadDepotDirection(tile));
+				case ROAD_TILE_NORMAL:
+					return GetRoadBits(tile, rtt);
+				case ROAD_TILE_CROSSING:
+					return GetCrossingRoadBits(tile);
+				case ROAD_TILE_DEPOT:
+					return DiagDirToRoadBits(GetRoadDepotDirection(tile));
 			}
 
 		case MP_STATION:
@@ -71,10 +75,9 @@ RoadBits GetAnyRoadBits(Tile tile, RoadTramType rtt, bool straight_tunnel_bridge
 
 		case MP_TUNNELBRIDGE:
 			assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD); // ensured by MayHaveRoad
-			return straight_tunnel_bridge_entrance ?
-					AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) :
-					DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
+			return straight_tunnel_bridge_entrance ? AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) : DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
 
-		default: return ROAD_NONE;
+		default:
+			return ROAD_NONE;
 	}
 }

@@ -8,12 +8,13 @@
 /** @file xaudio2_s.cpp XAudio2 sound driver. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../driver.h"
-#include "../mixer.h"
-#include "../debug.h"
+
 #include "../core/bitmath_func.hpp"
 #include "../core/math_func.hpp"
+#include "../debug.h"
+#include "../driver.h"
+#include "../mixer.h"
+#include "../openttd.h"
 
 /* Windows 8 SDK required for XAudio2 */
 #undef NTDDI_VERSION
@@ -22,16 +23,17 @@
 #define NTDDI_VERSION    NTDDI_WIN8
 #define _WIN32_WINNT     _WIN32_WINNT_WIN8
 
-#include "xaudio2_s.h"
-
 #include <windows.h>
 #include <mmsystem.h>
 #include <wrl\client.h>
 #include <xaudio2.h>
 
+#include "xaudio2_s.h"
+
 using Microsoft::WRL::ComPtr;
 
 #include "../os/windows/win32.h"
+
 #include "../safeguards.h"
 
 /* Definition of the "XAudio2Create" call used to initialise XAudio2 */
@@ -43,8 +45,7 @@ static FSoundDriver_XAudio2 iFSoundDriver_XAudio2;
  * Implementation of the IXAudio2VoiceCallback interface.
  * Provides buffered audio to XAudio2 from the OpenTTD mixer.
  */
-class StreamingVoiceContext : public IXAudio2VoiceCallback
-{
+class StreamingVoiceContext : public IXAudio2VoiceCallback {
 private:
 	std::vector<BYTE> buffer;
 
@@ -67,41 +68,29 @@ public:
 
 		MxMixSamples(this->buffer.data(), static_cast<uint>(this->buffer.size() / 4));
 
-		XAUDIO2_BUFFER buf = { 0 };
+		XAUDIO2_BUFFER buf = {0};
 		buf.AudioBytes = static_cast<UINT32>(this->buffer.size());
 		buf.pAudioData = this->buffer.data();
 
 		return source_voice->SubmitSourceBuffer(&buf);
 	}
 
-	STDMETHOD_(void, OnVoiceProcessingPassStart)(UINT32) override
-	{
-	}
+	STDMETHOD_(void, OnVoiceProcessingPassStart)(UINT32) override {}
 
-	STDMETHOD_(void, OnVoiceProcessingPassEnd)() override
-	{
-	}
+	STDMETHOD_(void, OnVoiceProcessingPassEnd)() override {}
 
-	STDMETHOD_(void, OnStreamEnd)() override
-	{
-	}
+	STDMETHOD_(void, OnStreamEnd)() override {}
 
-	STDMETHOD_(void, OnBufferStart)(void*) override
-	{
-	}
+	STDMETHOD_(void, OnBufferStart)(void *) override {}
 
-	STDMETHOD_(void, OnBufferEnd)(void*) override
+	STDMETHOD_(void, OnBufferEnd)(void *) override
 	{
 		SubmitBuffer();
 	}
 
-	STDMETHOD_(void, OnLoopEnd)(void*) override
-	{
-	}
+	STDMETHOD_(void, OnLoopEnd)(void *) override {}
 
-	STDMETHOD_(void, OnVoiceError)(void*, HRESULT) override
-	{
-	}
+	STDMETHOD_(void, OnVoiceError)(void *, HRESULT) override {}
 };
 
 static HMODULE _xaudio_dll_handle;
@@ -149,7 +138,7 @@ std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &par
 		return "Failed to load XAudio2 DLL";
 	}
 
-	API_XAudio2Create xAudio2Create = (API_XAudio2Create) GetProcAddress(_xaudio_dll_handle, "XAudio2Create");
+	API_XAudio2Create xAudio2Create = (API_XAudio2Create)GetProcAddress(_xaudio_dll_handle, "XAudio2Create");
 
 	if (xAudio2Create == nullptr) {
 		FreeLibrary(_xaudio_dll_handle);

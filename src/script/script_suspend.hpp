@@ -13,7 +13,7 @@
 /**
  * The callback function when a script suspends.
  */
-typedef void (Script_SuspendCallbackProc)(class ScriptInstance *instance);
+typedef void(Script_SuspendCallbackProc)(class ScriptInstance *instance);
 
 /**
  * A throw-class that is given when the script wants to suspend.
@@ -25,25 +25,28 @@ public:
 	 * @param time The amount of ticks to suspend.
 	 * @param callback The callback to call when the script may resume again.
 	 */
-	Script_Suspend(int time, Script_SuspendCallbackProc *callback) :
-		time(time),
-		callback(callback)
-	{}
+	Script_Suspend(int time, Script_SuspendCallbackProc *callback) : time(time), callback(callback) {}
 
 	/**
 	 * Get the amount of ticks the script should be suspended.
 	 * @return The amount of ticks to suspend the script.
 	 */
-	int GetSuspendTime() { return time; }
+	int GetSuspendTime()
+	{
+		return time;
+	}
 
 	/**
 	 * Get the callback to call when the script can run again.
 	 * @return The callback function to run.
 	 */
-	Script_SuspendCallbackProc *GetSuspendCallback() { return callback; }
+	Script_SuspendCallbackProc *GetSuspendCallback()
+	{
+		return callback;
+	}
 
 private:
-	int time;                             ///< Amount of ticks to suspend the script.
+	int time; ///< Amount of ticks to suspend the script.
 	Script_SuspendCallbackProc *callback; ///< Callback function to call when the script can run again.
 };
 

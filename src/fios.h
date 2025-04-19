@@ -10,19 +10,18 @@
 #ifndef FIOS_H
 #define FIOS_H
 
-#include "gfx_type.h"
-#include "company_base.h"
-#include "newgrf_config.h"
-#include "gamelog.h"
 #include "network/core/tcp_content_type.h"
+#include "company_base.h"
+#include "gamelog.h"
+#include "gfx_type.h"
+#include "newgrf_config.h"
 #include "timer/timer_game_calendar.h"
-
 
 /** Special values for save-load window for the data parameter of #InvalidateWindowData. */
 enum SaveLoadInvalidateWindowData : uint8_t {
-	SLIWD_RESCAN_FILES,          ///< Rescan all files (when changed directory, ...)
-	SLIWD_SELECTION_CHANGES,     ///< File selection has changed (user click, ...)
-	SLIWD_FILTER_CHANGES,        ///< The filename filter has changed (via the editbox)
+	SLIWD_RESCAN_FILES, ///< Rescan all files (when changed directory, ...)
+	SLIWD_SELECTION_CHANGES, ///< File selection has changed (user click, ...)
+	SLIWD_FILTER_CHANGES, ///< The filename filter has changed (via the editbox)
 };
 
 using CompanyPropertiesMap = std::map<uint, std::unique_ptr<CompanyProperties>>;
@@ -80,7 +79,7 @@ struct FiosItem {
 	int64_t mtime;
 	std::string title;
 	std::string name;
-	bool operator< (const FiosItem &other) const;
+	bool operator<(const FiosItem &other) const;
 };
 
 /** List of file information. */
@@ -91,10 +90,10 @@ public:
 };
 
 enum SortingBits : uint8_t {
-	SORT_ASCENDING  = 0,
+	SORT_ASCENDING = 0,
 	SORT_DESCENDING = 1,
-	SORT_BY_DATE    = 0,
-	SORT_BY_NAME    = 2
+	SORT_BY_DATE = 0,
+	SORT_BY_NAME = 2
 };
 DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
@@ -130,6 +129,7 @@ struct FiosNumberedSaveName {
 	FiosNumberedSaveName(const std::string &prefix);
 	std::string Filename();
 	std::string Extension();
+
 private:
 	std::string prefix;
 	int number;

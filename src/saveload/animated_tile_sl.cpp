@@ -9,17 +9,16 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/animated_tile_sl_compat.h"
-
 #include "../tile_type.h"
+#include "compat/animated_tile_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
 extern std::vector<TileIndex> _animated_tiles;
 
 static const SaveLoad _animated_tile_desc[] = {
-	 SLEG_VECTOR("tiles", _animated_tiles, SLE_UINT32),
+	SLEG_VECTOR("tiles", _animated_tiles, SLE_UINT32),
 };
 
 struct ANITChunkHandler : ChunkHandler {
@@ -63,7 +62,6 @@ struct ANITChunkHandler : ChunkHandler {
 		if (SlIterateArray() != -1) SlErrorCorrupt("Too many ANIT entries");
 	}
 };
-
 
 static const ANITChunkHandler ANIT;
 static const ChunkHandlerRef animated_tile_chunk_handlers[] = {

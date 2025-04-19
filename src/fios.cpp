@@ -11,17 +11,20 @@
  */
 
 #include "stdafx.h"
-#include "3rdparty/md5/md5.h"
-#include "fileio_func.h"
+
 #include "fios.h"
+
+#include <charconv>
+#include <filesystem>
+#include <sys/stat.h>
+#include "3rdparty/md5/md5.h"
+
+#include "fileio_func.h"
 #include "network/network_content.h"
 #include "screenshot.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "tar_type.h"
-#include <sys/stat.h>
-#include <charconv>
-#include <filesystem>
 
 #include "table/strings.h"
 
@@ -44,7 +47,7 @@ extern std::string GetOldSaveGameName(const std::string &file);
  * @param other The FiosItem to compare to.
  * @return for ascending order: returns true if da < db. Vice versa for descending order.
  */
-bool FiosItem::operator< (const FiosItem &other) const
+bool FiosItem::operator<(const FiosItem &other) const
 {
 	int r = false;
 
@@ -146,7 +149,7 @@ bool FiosBrowseTo(const FiosItem *item)
 		case DFT_FIOS_DRIVE:
 #if defined(_WIN32)
 			assert(_fios_path != nullptr);
-			*_fios_path = std::string{ item->title, 0, 1 } + ":" PATHSEP;
+			*_fios_path = std::string{item->title, 0, 1} + ":" PATHSEP;
 #endif
 			break;
 
@@ -250,9 +253,9 @@ typedef std::tuple<FiosType, std::string> FiosGetTypeAndNameProc(SaveLoadOperati
  * Scanner to scan for a particular type of FIOS file.
  */
 class FiosFileScanner : public FileScanner {
-	SaveLoadOperation fop;   ///< The kind of file we are looking for.
+	SaveLoadOperation fop; ///< The kind of file we are looking for.
 	FiosGetTypeAndNameProc *callback_proc; ///< Callback to check whether the file may be added
-	FileList &file_list;     ///< Destination of the found files.
+	FileList &file_list; ///< Destination of the found files.
 public:
 	/**
 	 * Create the scanner
@@ -260,9 +263,7 @@ public:
 	 * @param callback_proc The function that is called where you need to do the filtering.
 	 * @param file_list Destination of the found files.
 	 */
-	FiosFileScanner(SaveLoadOperation fop, FiosGetTypeAndNameProc *callback_proc, FileList &file_list) :
-			fop(fop), callback_proc(callback_proc), file_list(file_list)
-	{}
+	FiosFileScanner(SaveLoadOperation fop, FiosGetTypeAndNameProc *callback_proc, FileList &file_list) : fop(fop), callback_proc(callback_proc), file_list(file_list) {}
 
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
 };
@@ -308,7 +309,6 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t, const std::st
 
 	return true;
 }
-
 
 /**
  * Fill the list of the files in a directory, according to some arbitrary rule.
@@ -411,17 +411,16 @@ std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation 
 	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game */
 
 	if (StrEqualsIgnoreCase(ext, ".sav")) {
-		return { FIOS_TYPE_FILE, GetFileTitle(file, SAVE_DIR) };
+		return {FIOS_TYPE_FILE, GetFileTitle(file, SAVE_DIR)};
 	}
 
 	if (fop == SLO_LOAD) {
-		if (StrEqualsIgnoreCase(ext, ".ss1") || StrEqualsIgnoreCase(ext, ".sv1") ||
-				StrEqualsIgnoreCase(ext, ".sv2")) {
-			return { FIOS_TYPE_OLDFILE, GetOldSaveGameName(file) };
+		if (StrEqualsIgnoreCase(ext, ".ss1") || StrEqualsIgnoreCase(ext, ".sv1") || StrEqualsIgnoreCase(ext, ".sv2")) {
+			return {FIOS_TYPE_OLDFILE, GetOldSaveGameName(file)};
 		}
 	}
 
-	return { FIOS_TYPE_INVALID, {} };
+	return {FIOS_TYPE_INVALID, {}};
 }
 
 /**
@@ -458,17 +457,16 @@ std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation 
 	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
 	 * .SS0 Transport Tycoon Deluxe preset scenario */
 	if (StrEqualsIgnoreCase(ext, ".scn")) {
-		return { FIOS_TYPE_SCENARIO, GetFileTitle(file, SCENARIO_DIR) };
-
+		return {FIOS_TYPE_SCENARIO, GetFileTitle(file, SCENARIO_DIR)};
 	}
 
 	if (fop == SLO_LOAD) {
 		if (StrEqualsIgnoreCase(ext, ".sv0") || StrEqualsIgnoreCase(ext, ".ss0")) {
-			return { FIOS_TYPE_OLD_SCENARIO, GetOldSaveGameName(file) };
+			return {FIOS_TYPE_OLD_SCENARIO, GetOldSaveGameName(file)};
 		}
 	}
 
-	return { FIOS_TYPE_INVALID, {} };
+	return {FIOS_TYPE_INVALID, {}};
 }
 
 /**
@@ -507,7 +505,7 @@ std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation
 
 	if (StrEqualsIgnoreCase(ext, ".bmp")) type = FIOS_TYPE_BMP;
 
-	if (type == FIOS_TYPE_INVALID) return { FIOS_TYPE_INVALID, {} };
+	if (type == FIOS_TYPE_INVALID) return {FIOS_TYPE_INVALID, {}};
 
 	TarFileList::iterator it = _tar_filelist[SCENARIO_DIR].find(file);
 	if (it != _tar_filelist[SCENARIO_DIR].end()) {
@@ -526,10 +524,10 @@ std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation
 			}
 		}
 
-		if (!match) return { FIOS_TYPE_INVALID, {} };
+		if (!match) return {FIOS_TYPE_INVALID, {}};
 	}
 
-	return { type, GetFileTitle(file, HEIGHTMAP_DIR) };
+	return {type, GetFileTitle(file, HEIGHTMAP_DIR)};
 }
 
 /**
@@ -561,11 +559,11 @@ static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOpe
 {
 	if (fop == SLO_LOAD) {
 		if (StrEqualsIgnoreCase(ext, ".json")) {
-			return { FIOS_TYPE_JSON, GetFileTitle(file, SAVE_DIR) };
+			return {FIOS_TYPE_JSON, GetFileTitle(file, SAVE_DIR)};
 		}
 	}
 
-	return { FIOS_TYPE_INVALID, {} };
+	return {FIOS_TYPE_INVALID, {}};
 }
 
 /**
@@ -602,11 +600,11 @@ const char *FiosGetScreenshotDir()
 
 /** Basic data to distinguish a scenario. Used in the server list window */
 struct ScenarioIdentifier {
-	uint32_t scenid;           ///< ID for the scenario (generated by content).
-	MD5Hash md5sum;          ///< MD5 checksum of file.
-	std::string filename;    ///< filename of the file.
+	uint32_t scenid; ///< ID for the scenario (generated by content).
+	MD5Hash md5sum; ///< MD5 checksum of file.
+	std::string filename; ///< filename of the file.
 
-	bool operator == (const ScenarioIdentifier &other) const
+	bool operator==(const ScenarioIdentifier &other) const
 	{
 		return this->scenid == other.scenid && this->md5sum == other.md5sum;
 	}
@@ -679,8 +677,7 @@ const char *FindScenario(const ContentInfo &ci, bool md5sum)
 	_scanner.Scan(false);
 
 	for (ScenarioIdentifier &id : _scanner) {
-		if (md5sum ? (id.md5sum == ci.md5sum)
-		           : (id.scenid == ci.unique_id)) {
+		if (md5sum ? (id.md5sum == ci.md5sum) : (id.scenid == ci.unique_id)) {
 			return id.filename.c_str();
 		}
 	}

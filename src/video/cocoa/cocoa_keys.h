@@ -101,8 +101,8 @@
 #define QZ_COMMA        0x2B
 #define QZ_PERIOD       0x2F
 #define QZ_SLASH        0x2C
-#if 1        /* Panther now defines right side keys */
-#define QZ_RSHIFT       0x3C
+#if 1 /* Panther now defines right side keys */
+#	define QZ_RSHIFT       0x3C
 #endif
 #define QZ_UP           0x7E
 #define QZ_KP1          0x53
@@ -113,10 +113,10 @@
 #define QZ_LALT         0x3A
 #define QZ_LMETA        0x37
 #define QZ_SPACE        0x31
-#if 1        /* Panther now defines right side keys */
-#define QZ_RMETA        0x36
-#define QZ_RALT         0x3D
-#define QZ_RCTRL        0x3E
+#if 1 /* Panther now defines right side keys */
+#	define QZ_RMETA        0x36
+#	define QZ_RALT         0x3D
+#	define QZ_RCTRL        0x3E
 #endif
 #define QZ_LEFT         0x7B
 #define QZ_DOWN         0x7D
@@ -131,7 +131,6 @@
 #define QZ_IBOOK_DOWN   0x3D
 #define QZ_IBOOK_UP     0x3E
 
-
 struct CocoaVkMapping {
 	unsigned short vk_from;
 	uint8_t map_to;
@@ -139,117 +138,40 @@ struct CocoaVkMapping {
 
 #define AS(x, z) {x, z}
 
-static const CocoaVkMapping _vk_mapping[] = {
-	AS(QZ_BACKQUOTE,  WKC_BACKQUOTE), // key left of '1'
+static const CocoaVkMapping _vk_mapping[] = {AS(QZ_BACKQUOTE, WKC_BACKQUOTE), // key left of '1'
 	AS(QZ_BACKQUOTE2, WKC_BACKQUOTE), // some keyboards have it on another scancode
 
 	/* Pageup stuff + up/down */
-	AS(QZ_PAGEUP,   WKC_PAGEUP),
-	AS(QZ_PAGEDOWN, WKC_PAGEDOWN),
+	AS(QZ_PAGEUP, WKC_PAGEUP), AS(QZ_PAGEDOWN, WKC_PAGEDOWN),
 
-	AS(QZ_UP,    WKC_UP),
-	AS(QZ_DOWN,  WKC_DOWN),
-	AS(QZ_LEFT,  WKC_LEFT),
-	AS(QZ_RIGHT, WKC_RIGHT),
+	AS(QZ_UP, WKC_UP), AS(QZ_DOWN, WKC_DOWN), AS(QZ_LEFT, WKC_LEFT), AS(QZ_RIGHT, WKC_RIGHT),
 
-	AS(QZ_HOME, WKC_HOME),
-	AS(QZ_END,  WKC_END),
+	AS(QZ_HOME, WKC_HOME), AS(QZ_END, WKC_END),
 
-	AS(QZ_INSERT, WKC_INSERT),
-	AS(QZ_DELETE, WKC_DELETE),
+	AS(QZ_INSERT, WKC_INSERT), AS(QZ_DELETE, WKC_DELETE),
 
 	/* Letters. QZ_[a-z] is not in numerical order so we can't use AM(...) */
-	AS(QZ_a, 'A'),
-	AS(QZ_b, 'B'),
-	AS(QZ_c, 'C'),
-	AS(QZ_d, 'D'),
-	AS(QZ_e, 'E'),
-	AS(QZ_f, 'F'),
-	AS(QZ_g, 'G'),
-	AS(QZ_h, 'H'),
-	AS(QZ_i, 'I'),
-	AS(QZ_j, 'J'),
-	AS(QZ_k, 'K'),
-	AS(QZ_l, 'L'),
-	AS(QZ_m, 'M'),
-	AS(QZ_n, 'N'),
-	AS(QZ_o, 'O'),
-	AS(QZ_p, 'P'),
-	AS(QZ_q, 'Q'),
-	AS(QZ_r, 'R'),
-	AS(QZ_s, 'S'),
-	AS(QZ_t, 'T'),
-	AS(QZ_u, 'U'),
-	AS(QZ_v, 'V'),
-	AS(QZ_w, 'W'),
-	AS(QZ_x, 'X'),
-	AS(QZ_y, 'Y'),
-	AS(QZ_z, 'Z'),
+	AS(QZ_a, 'A'), AS(QZ_b, 'B'), AS(QZ_c, 'C'), AS(QZ_d, 'D'), AS(QZ_e, 'E'), AS(QZ_f, 'F'), AS(QZ_g, 'G'), AS(QZ_h, 'H'), AS(QZ_i, 'I'), AS(QZ_j, 'J'), AS(QZ_k, 'K'), AS(QZ_l, 'L'), AS(QZ_m, 'M'),
+	AS(QZ_n, 'N'), AS(QZ_o, 'O'), AS(QZ_p, 'P'), AS(QZ_q, 'Q'), AS(QZ_r, 'R'), AS(QZ_s, 'S'), AS(QZ_t, 'T'), AS(QZ_u, 'U'), AS(QZ_v, 'V'), AS(QZ_w, 'W'), AS(QZ_x, 'X'), AS(QZ_y, 'Y'), AS(QZ_z, 'Z'),
 	/* Same thing for digits */
-	AS(QZ_0, '0'),
-	AS(QZ_1, '1'),
-	AS(QZ_2, '2'),
-	AS(QZ_3, '3'),
-	AS(QZ_4, '4'),
-	AS(QZ_5, '5'),
-	AS(QZ_6, '6'),
-	AS(QZ_7, '7'),
-	AS(QZ_8, '8'),
-	AS(QZ_9, '9'),
+	AS(QZ_0, '0'), AS(QZ_1, '1'), AS(QZ_2, '2'), AS(QZ_3, '3'), AS(QZ_4, '4'), AS(QZ_5, '5'), AS(QZ_6, '6'), AS(QZ_7, '7'), AS(QZ_8, '8'), AS(QZ_9, '9'),
 
-	AS(QZ_ESCAPE,    WKC_ESC),
-	AS(QZ_PAUSE,     WKC_PAUSE),
-	AS(QZ_BACKSPACE, WKC_BACKSPACE),
+	AS(QZ_ESCAPE, WKC_ESC), AS(QZ_PAUSE, WKC_PAUSE), AS(QZ_BACKSPACE, WKC_BACKSPACE),
 
-	AS(QZ_SPACE,  WKC_SPACE),
-	AS(QZ_RETURN, WKC_RETURN),
-	AS(QZ_TAB,    WKC_TAB),
+	AS(QZ_SPACE, WKC_SPACE), AS(QZ_RETURN, WKC_RETURN), AS(QZ_TAB, WKC_TAB),
 
 	/* Function keys */
-	AS(QZ_F1,  WKC_F1),
-	AS(QZ_F2,  WKC_F2),
-	AS(QZ_F3,  WKC_F3),
-	AS(QZ_F4,  WKC_F4),
-	AS(QZ_F5,  WKC_F5),
-	AS(QZ_F6,  WKC_F6),
-	AS(QZ_F7,  WKC_F7),
-	AS(QZ_F8,  WKC_F8),
-	AS(QZ_F9,  WKC_F9),
-	AS(QZ_F10, WKC_F10),
-	AS(QZ_F11, WKC_F11),
-	AS(QZ_F12, WKC_F12),
+	AS(QZ_F1, WKC_F1), AS(QZ_F2, WKC_F2), AS(QZ_F3, WKC_F3), AS(QZ_F4, WKC_F4), AS(QZ_F5, WKC_F5), AS(QZ_F6, WKC_F6), AS(QZ_F7, WKC_F7), AS(QZ_F8, WKC_F8), AS(QZ_F9, WKC_F9), AS(QZ_F10, WKC_F10),
+	AS(QZ_F11, WKC_F11), AS(QZ_F12, WKC_F12),
 
 	/* Numeric part */
-	AS(QZ_KP0,         '0'),
-	AS(QZ_KP1,         '1'),
-	AS(QZ_KP2,         '2'),
-	AS(QZ_KP3,         '3'),
-	AS(QZ_KP4,         '4'),
-	AS(QZ_KP5,         '5'),
-	AS(QZ_KP6,         '6'),
-	AS(QZ_KP7,         '7'),
-	AS(QZ_KP8,         '8'),
-	AS(QZ_KP9,         '9'),
-	AS(QZ_KP_DIVIDE,   WKC_NUM_DIV),
-	AS(QZ_KP_MULTIPLY, WKC_NUM_MUL),
-	AS(QZ_KP_MINUS,    WKC_NUM_MINUS),
-	AS(QZ_KP_PLUS,     WKC_NUM_PLUS),
-	AS(QZ_KP_ENTER,    WKC_NUM_ENTER),
-	AS(QZ_KP_PERIOD,   WKC_NUM_DECIMAL),
+	AS(QZ_KP0, '0'), AS(QZ_KP1, '1'), AS(QZ_KP2, '2'), AS(QZ_KP3, '3'), AS(QZ_KP4, '4'), AS(QZ_KP5, '5'), AS(QZ_KP6, '6'), AS(QZ_KP7, '7'), AS(QZ_KP8, '8'), AS(QZ_KP9, '9'),
+	AS(QZ_KP_DIVIDE, WKC_NUM_DIV), AS(QZ_KP_MULTIPLY, WKC_NUM_MUL), AS(QZ_KP_MINUS, WKC_NUM_MINUS), AS(QZ_KP_PLUS, WKC_NUM_PLUS), AS(QZ_KP_ENTER, WKC_NUM_ENTER), AS(QZ_KP_PERIOD, WKC_NUM_DECIMAL),
 
 	/* Other non-letter keys */
-	AS(QZ_SLASH,        WKC_SLASH),
-	AS(QZ_SEMICOLON,    WKC_SEMICOLON),
-	AS(QZ_EQUALS,       WKC_EQUALS),
-	AS(QZ_LEFTBRACKET,  WKC_L_BRACKET),
-	AS(QZ_BACKSLASH,    WKC_BACKSLASH),
-	AS(QZ_RIGHTBRACKET, WKC_R_BRACKET),
+	AS(QZ_SLASH, WKC_SLASH), AS(QZ_SEMICOLON, WKC_SEMICOLON), AS(QZ_EQUALS, WKC_EQUALS), AS(QZ_LEFTBRACKET, WKC_L_BRACKET), AS(QZ_BACKSLASH, WKC_BACKSLASH), AS(QZ_RIGHTBRACKET, WKC_R_BRACKET),
 
-	AS(QZ_QUOTE,   WKC_SINGLEQUOTE),
-	AS(QZ_COMMA,   WKC_COMMA),
-	AS(QZ_MINUS,   WKC_MINUS),
-	AS(QZ_PERIOD,  WKC_PERIOD)
-};
+	AS(QZ_QUOTE, WKC_SINGLEQUOTE), AS(QZ_COMMA, WKC_COMMA), AS(QZ_MINUS, WKC_MINUS), AS(QZ_PERIOD, WKC_PERIOD)};
 
 #undef AS
 

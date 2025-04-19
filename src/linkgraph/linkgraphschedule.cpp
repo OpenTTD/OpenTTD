@@ -8,15 +8,17 @@
 /** @file linkgraphschedule.cpp Definition of link graph schedule used for cargo distribution. */
 
 #include "../stdafx.h"
+
 #include "linkgraphschedule.h"
-#include "init.h"
-#include "demands.h"
-#include "mcf.h"
-#include "flowmapper.h"
-#include "../framerate_type.h"
+
 #include "../command_func.h"
-#include "../network/network.h"
+#include "../framerate_type.h"
 #include "../misc_cmd.h"
+#include "../network/network.h"
+#include "demands.h"
+#include "flowmapper.h"
+#include "init.h"
+#include "mcf.h"
 
 #include "../safeguards.h"
 
@@ -173,10 +175,9 @@ void StateGameLoop_LinkGraphPauseControl()
 		if (!LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
 			Command<CMD_PAUSE>::Post(PauseMode::LinkGraph, false);
 		}
-	} else if (_pause_mode.None() &&
-			TimerGameEconomy::date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
-			TimerGameEconomy::date.base() % (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) / 2 &&
-			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
+	} else if (_pause_mode.None() && TimerGameEconomy::date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
+		TimerGameEconomy::date.base() % (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) == (_settings_game.linkgraph.recalc_interval / EconomyTime::SECONDS_PER_DAY) / 2 &&
+		LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
 		/* Perform check two TimerGameEconomy::date_fract ticks before we would join, to make
 		 * sure it also works in multiplayer. */
 		Command<CMD_PAUSE>::Post(PauseMode::LinkGraph, true);
@@ -215,5 +216,3 @@ void OnTick_LinkGraph()
 		}
 	}
 }
-
-

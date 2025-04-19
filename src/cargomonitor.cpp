@@ -8,12 +8,14 @@
 /** @file cargomonitor.cpp Implementation of the cargo transport monitoring. */
 
 #include "stdafx.h"
+
 #include "cargomonitor.h"
+
 #include "station_base.h"
 
 #include "safeguards.h"
 
-CargoMonitorMap _cargo_pickups;    ///< Map of monitored pick-ups   to the amount since last query/activation.
+CargoMonitorMap _cargo_pickups; ///< Map of monitored pick-ups   to the amount since last query/activation.
 CargoMonitorMap _cargo_deliveries; ///< Map of monitored deliveries to the amount since last query/activation.
 
 /**
@@ -133,7 +135,8 @@ void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, 
 				if (iter != _cargo_pickups.end()) iter->second += amount;
 				break;
 			}
-			default: break;
+			default:
+				break;
 		}
 	}
 
@@ -153,4 +156,3 @@ void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, 
 		if (iter != _cargo_deliveries.end()) iter->second += amount;
 	}
 }
-

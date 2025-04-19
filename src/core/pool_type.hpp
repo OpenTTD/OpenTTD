@@ -49,35 +49,98 @@ struct EMPTY_BASES PoolID : PoolIDBase {
 
 	explicit constexpr PoolID(const TBaseType &value) : value(value) {}
 
-	constexpr PoolID &operator =(const PoolID &rhs) { this->value = rhs.value; return *this; }
-	constexpr PoolID &operator =(PoolID &&rhs) { this->value = std::move(rhs.value); return *this; }
+	constexpr PoolID &operator=(const PoolID &rhs)
+	{
+		this->value = rhs.value;
+		return *this;
+	}
+
+	constexpr PoolID &operator=(PoolID &&rhs)
+	{
+		this->value = std::move(rhs.value);
+		return *this;
+	}
 
 	/* Only allow conversion to BaseType via method. */
-	constexpr TBaseType base() const noexcept { return this->value; }
+	constexpr TBaseType base() const noexcept
+	{
+		return this->value;
+	}
 
-	static constexpr PoolID Begin() { return PoolID{}; }
-	static constexpr PoolID End() { return PoolID{static_cast<TBaseType>(TEnd)}; }
-	static constexpr PoolID Invalid() { return PoolID{static_cast<TBaseType>(TInvalid)}; }
+	static constexpr PoolID Begin()
+	{
+		return PoolID{};
+	}
 
-	constexpr auto operator++() { ++this->value; return this; }
-	constexpr auto operator+(const std::integral auto &val) const { return this->value + val; }
-	constexpr auto operator-(const std::integral auto &val) const { return this->value - val; }
-	constexpr auto operator%(const std::integral auto &val) const { return this->value % val; }
+	static constexpr PoolID End()
+	{
+		return PoolID{static_cast<TBaseType>(TEnd)};
+	}
 
-	constexpr bool operator==(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value == rhs.value; }
-	constexpr auto operator<=>(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const { return this->value <=> rhs.value; }
+	static constexpr PoolID Invalid()
+	{
+		return PoolID{static_cast<TBaseType>(TInvalid)};
+	}
 
-	constexpr bool operator==(const size_t &rhs) const { return this->value == rhs; }
-	constexpr auto operator<=>(const size_t &rhs) const { return this->value <=> rhs; }
+	constexpr auto operator++()
+	{
+		++this->value;
+		return this;
+	}
+
+	constexpr auto operator+(const std::integral auto &val) const
+	{
+		return this->value + val;
+	}
+
+	constexpr auto operator-(const std::integral auto &val) const
+	{
+		return this->value - val;
+	}
+
+	constexpr auto operator%(const std::integral auto &val) const
+	{
+		return this->value % val;
+	}
+
+	constexpr bool operator==(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const
+	{
+		return this->value == rhs.value;
+	}
+
+	constexpr auto operator<=>(const PoolID<TBaseType, TTag, TEnd, TInvalid> &rhs) const
+	{
+		return this->value <=> rhs.value;
+	}
+
+	constexpr bool operator==(const size_t &rhs) const
+	{
+		return this->value == rhs;
+	}
+
+	constexpr auto operator<=>(const size_t &rhs) const
+	{
+		return this->value <=> rhs;
+	}
+
 private:
 	/* Do not explicitly initialize. */
 	TBaseType value;
 };
 
-template <typename T> requires std::is_base_of_v<PoolIDBase, T>
-constexpr auto operator+(const std::integral auto &val, const T &pool_id) { return pool_id + val; }
-template <typename Te, typename Tp> requires std::is_enum_v<Te> && std::is_base_of_v<PoolIDBase, Tp>
-constexpr auto operator+(const Te &val, const Tp &pool_id) { return pool_id + to_underlying(val); }
+template <typename T>
+requires std::is_base_of_v<PoolIDBase, T>
+constexpr auto operator+(const std::integral auto &val, const T &pool_id)
+{
+	return pool_id + val;
+}
+
+template <typename Te, typename Tp>
+requires std::is_enum_v<Te> && std::is_base_of_v<PoolIDBase, Tp>
+constexpr auto operator+(const Te &val, const Tp &pool_id)
+{
+	return pool_id + to_underlying(val);
+}
 
 /** Base class for base of all pools. */
 struct PoolBase {
@@ -137,7 +200,7 @@ public:
 	using BitmapStorage = size_t;
 	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
 
-	const char * const name = nullptr; ///< Name of this pool
+	const char *const name = nullptr; ///< Name of this pool
 
 	size_t first_free = 0; ///< No item with index lower than this is free (doesn't say anything about this one!)
 	size_t first_unused = 0; ///< This and all higher indexes are free (doesn't say anything about first_unused-1 !)
@@ -151,6 +214,7 @@ public:
 	std::vector<BitmapStorage> used_bitmap{}; ///< Bitmap of used indices.
 
 	Pool(const char *name) : PoolBase(Tpool_type), name(name) {}
+
 	void CleanPool() override;
 
 	/**
@@ -206,12 +270,26 @@ public:
 			this->ValidateIndex();
 		};
 
-		bool operator==(const PoolIterator &other) const { return this->index == other.index; }
-		T * operator*() const { return T::Get(this->index); }
-		PoolIterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
+		bool operator==(const PoolIterator &other) const
+		{
+			return this->index == other.index;
+		}
+
+		T *operator*() const
+		{
+			return T::Get(this->index);
+		}
+
+		PoolIterator &operator++()
+		{
+			this->index++;
+			this->ValidateIndex();
+			return *this;
+		}
 
 	private:
 		size_t index;
+
 		void ValidateIndex()
 		{
 			while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index))) this->index++;
@@ -226,10 +304,23 @@ public:
 	template <class T>
 	struct IterateWrapper {
 		size_t from;
+
 		IterateWrapper(size_t from = 0) : from(from) {}
-		PoolIterator<T> begin() { return PoolIterator<T>(this->from); }
-		PoolIterator<T> end() { return PoolIterator<T>(T::Pool::MAX_SIZE); }
-		bool empty() { return this->begin() == this->end(); }
+
+		PoolIterator<T> begin()
+		{
+			return PoolIterator<T>(this->from);
+		}
+
+		PoolIterator<T> end()
+		{
+			return PoolIterator<T>(T::Pool::MAX_SIZE);
+		}
+
+		bool empty()
+		{
+			return this->begin() == this->end();
+		}
 	};
 
 	/**
@@ -249,13 +340,27 @@ public:
 			this->ValidateIndex();
 		};
 
-		bool operator==(const PoolIteratorFiltered &other) const { return this->index == other.index; }
-		T * operator*() const { return T::Get(this->index); }
-		PoolIteratorFiltered & operator++() { this->index++; this->ValidateIndex(); return *this; }
+		bool operator==(const PoolIteratorFiltered &other) const
+		{
+			return this->index == other.index;
+		}
+
+		T *operator*() const
+		{
+			return T::Get(this->index);
+		}
+
+		PoolIteratorFiltered &operator++()
+		{
+			this->index++;
+			this->ValidateIndex();
+			return *this;
+		}
 
 	private:
 		size_t index;
 		F filter;
+
 		void ValidateIndex()
 		{
 			while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index) && this->filter(this->index))) this->index++;
@@ -271,10 +376,23 @@ public:
 	struct IterateWrapperFiltered {
 		size_t from;
 		F filter;
+
 		IterateWrapperFiltered(size_t from, F filter) : from(from), filter(filter) {}
-		PoolIteratorFiltered<T, F> begin() { return PoolIteratorFiltered<T, F>(this->from, this->filter); }
-		PoolIteratorFiltered<T, F> end() { return PoolIteratorFiltered<T, F>(T::Pool::MAX_SIZE, this->filter); }
-		bool empty() { return this->begin() == this->end(); }
+
+		PoolIteratorFiltered<T, F> begin()
+		{
+			return PoolIteratorFiltered<T, F>(this->from, this->filter);
+		}
+
+		PoolIteratorFiltered<T, F> end()
+		{
+			return PoolIteratorFiltered<T, F>(T::Pool::MAX_SIZE, this->filter);
+		}
+
+		bool empty()
+		{
+			return this->begin() == this->end();
+		}
 	};
 
 	/**
@@ -345,7 +463,6 @@ public:
 			}
 			return ptr;
 		}
-
 
 		/** Helper functions so we can use PoolItem::Function() instead of _poolitem_pool.Function() */
 
@@ -426,14 +543,17 @@ public:
 		 * @note when this function is called, PoolItem::Get(index) == nullptr.
 		 * @note it's called only when !CleaningPool()
 		 */
-		static inline void PostDestructor([[maybe_unused]] size_t index) { }
+		static inline void PostDestructor([[maybe_unused]] size_t index) {}
 
 		/**
 		 * Returns an iterable ensemble of all valid Titem
 		 * @param from index of the first Titem to consider
 		 * @return an iterable ensemble of all valid Titem
 		 */
-		static Pool::IterateWrapper<Titem> Iterate(size_t from = 0) { return Pool::IterateWrapper<Titem>(from); }
+		static Pool::IterateWrapper<Titem> Iterate(size_t from = 0)
+		{
+			return Pool::IterateWrapper<Titem>(from);
+		}
 	};
 
 private:
@@ -461,9 +581,17 @@ private:
 
 	void FreeItem(size_t size, size_t index);
 
-	static constexpr size_t GetRawIndex(size_t index) { return index; }
-	template <typename T> requires std::is_base_of_v<PoolIDBase, T>
-	static constexpr size_t GetRawIndex(const T &index) { return index.base(); }
+	static constexpr size_t GetRawIndex(size_t index)
+	{
+		return index;
+	}
+
+	template <typename T>
+	requires std::is_base_of_v<PoolIDBase, T>
+	static constexpr size_t GetRawIndex(const T &index)
+	{
+		return index.base();
+	}
 };
 
 #endif /* POOL_TYPE_HPP */

@@ -8,10 +8,12 @@
 /** @file script_clientlist.cpp Implementation of ScriptClientList and friends. */
 
 #include "../../stdafx.h"
-#include "script_company.hpp"
+
 #include "script_clientlist.hpp"
+
 #include "../../network/network.h"
 #include "../../network/network_base.h"
+#include "script_company.hpp"
 
 #include "../../safeguards.h"
 

@@ -29,15 +29,27 @@ public:
 	bool ChangeResolution(int w, int h) override;
 
 	bool ToggleFullscreen(bool fullscreen) override;
-	std::string_view GetName() const override { return "null"; }
-	bool HasGUI() const override { return false; }
+
+	std::string_view GetName() const override
+	{
+		return "null";
+	}
+
+	bool HasGUI() const override
+	{
+		return false;
+	}
 };
 
 /** Factory the null video driver. */
 class FVideoDriver_Null : public DriverFactoryBase {
 public:
 	FVideoDriver_Null() : DriverFactoryBase(Driver::DT_VIDEO, 0, "null", "Null Video Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Null>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<VideoDriver_Null>();
+	}
 };
 
 #endif /* VIDEO_NULL_H */

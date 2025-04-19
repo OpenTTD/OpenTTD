@@ -8,13 +8,14 @@
 /** @file depot.cpp Handling of depots. */
 
 #include "stdafx.h"
+
+#include "core/pool_func.hpp"
 #include "depot_base.h"
 #include "order_backup.h"
 #include "order_func.h"
-#include "window_func.h"
-#include "core/pool_func.hpp"
 #include "vehicle_gui.h"
 #include "vehiclelist.h"
+#include "window_func.h"
 
 #include "safeguards.h"
 

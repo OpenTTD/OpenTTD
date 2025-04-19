@@ -22,8 +22,8 @@ public:
 		return instance;
 	}
 
-	MockEnvironment(MockEnvironment const &) = delete;
-	void operator=(MockEnvironment const &) = delete;
+	MockEnvironment(const MockEnvironment &) = delete;
+	void operator=(const MockEnvironment &) = delete;
 
 private:
 	MockEnvironment()

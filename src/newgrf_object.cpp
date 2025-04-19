@@ -8,24 +8,25 @@
 /** @file newgrf_object.cpp Handling of object NewGRFs. */
 
 #include "stdafx.h"
+
+#include "newgrf_object.h"
+
 #include "company_base.h"
 #include "company_func.h"
 #include "debug.h"
 #include "genworld.h"
+#include "newgrf_animation_base.h"
 #include "newgrf_badge.h"
-#include "newgrf_object.h"
+#include "newgrf_class_func.h"
 #include "newgrf_sound.h"
 #include "object_base.h"
 #include "object_map.h"
-#include "timer/timer_game_calendar.h"
 #include "tile_cmd.h"
+#include "timer/timer_game_calendar.h"
 #include "town.h"
 #include "water.h"
-#include "newgrf_animation_base.h"
 
 #include "table/strings.h"
-
-#include "newgrf_class_func.h"
 
 #include "safeguards.h"
 
@@ -78,7 +79,7 @@ size_t ObjectSpec::Count()
 bool ObjectSpec::IsEverAvailable() const
 {
 	return this->IsEnabled() && this->climate.Test(_settings_game.game_creation.landscape) &&
-			!this->flags.Test((_game_mode != GM_EDITOR && !_generating_world) ? ObjectFlag::OnlyInScenedit : ObjectFlag::OnlyInGame);
+		!this->flags.Test((_game_mode != GM_EDITOR && !_generating_world) ? ObjectFlag::OnlyInScenedit : ObjectFlag::OnlyInGame);
 }
 
 /**
@@ -96,8 +97,7 @@ bool ObjectSpec::WasEverAvailable() const
  */
 bool ObjectSpec::IsAvailable() const
 {
-	return this->WasEverAvailable() &&
-			(TimerGameCalendar::date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365);
+	return this->WasEverAvailable() && (TimerGameCalendar::date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365);
 }
 
 /**
@@ -233,12 +233,12 @@ static uint32_t GetClosestObject(TileIndex tile, ObjectType type, const Object *
  */
 static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t grfid, TileIndex tile, const Object *current)
 {
-	uint32_t grf_id = GetRegister(0x100);  // Get the GRFID of the definition to look for in register 100h
+	uint32_t grf_id = GetRegister(0x100); // Get the GRFID of the definition to look for in register 100h
 	uint32_t idx;
 
 	/* Determine what will be the object type to look for */
 	switch (grf_id) {
-		case 0:  // this is a default object type
+		case 0: // this is a default object type
 			idx = local_id;
 			break;
 
@@ -282,15 +282,19 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 				break;
 
 			/* Construction date */
-			case 0x42: return TimerGameCalendar::date.base();
+			case 0x42:
+				return TimerGameCalendar::date.base();
 
 			/* Object founder information */
-			case 0x44: return _current_company.base();
+			case 0x44:
+				return _current_company.base();
 
 			/* Object view */
-			case 0x48: return this->view;
+			case 0x48:
+				return this->view;
 
-			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
+			case 0x7A:
+				return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
 
 			/*
 			 * Disallow the rest:
@@ -319,31 +323,40 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 		}
 
 		/* Tile information. */
-		case 0x41: return GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile);
+		case 0x41:
+			return GetTileSlope(this->tile) << 8 | GetTerrainType(this->tile);
 
 		/* Construction date */
-		case 0x42: return this->obj->build_date.base();
+		case 0x42:
+			return this->obj->build_date.base();
 
 		/* Animation counter */
-		case 0x43: return GetAnimationFrame(this->tile);
+		case 0x43:
+			return GetAnimationFrame(this->tile);
 
 		/* Object founder information */
-		case 0x44: return GetTileOwner(this->tile).base();
+		case 0x44:
+			return GetTileOwner(this->tile).base();
 
 		/* Get town zone and Manhattan distance of closest town */
-		case 0x45: return GetTownRadiusGroup(t, this->tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy));
+		case 0x45:
+			return GetTownRadiusGroup(t, this->tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(this->tile, t->xy));
 
 		/* Get square of Euclidean distance of closest town */
-		case 0x46: return DistanceSquare(this->tile, t->xy);
+		case 0x46:
+			return DistanceSquare(this->tile, t->xy);
 
 		/* Object colour */
-		case 0x47: return this->obj->colour;
+		case 0x47:
+			return this->obj->colour;
 
 		/* Object view */
-		case 0x48: return this->obj->view;
+		case 0x48:
+			return this->obj->view;
 
 		/* Get object ID at offset param */
-		case 0x60: return GetObjectIDAtOffset(GetNearbyTile(parameter, this->tile), this->ro.grffile->grfid);
+		case 0x60:
+			return GetObjectIDAtOffset(GetNearbyTile(parameter, this->tile), this->ro.grffile->grfid);
 
 		/* Get random tile bits at offset param */
 		case 0x61: {
@@ -352,7 +365,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 		}
 
 		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyObjectTileInformation(parameter, this->tile, this->obj == nullptr ? ObjectID::Invalid() : this->obj->index, this->ro.grffile->grf_version >= 8);
+		case 0x62:
+			return GetNearbyObjectTileInformation(parameter, this->tile, this->obj == nullptr ? ObjectID::Invalid() : this->obj->index, this->ro.grffile->grf_version >= 8);
 
 		/* Animation counter of nearby tile */
 		case 0x63: {
@@ -361,9 +375,11 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t 
 		}
 
 		/* Count of object, distance of closest instance */
-		case 0x64: return GetCountAndDistanceOfClosestInstance(parameter, this->ro.grffile->grfid, this->tile, this->obj);
+		case 0x64:
+			return GetCountAndDistanceOfClosestInstance(parameter, this->ro.grffile->grfid, this->tile, this->obj);
 
-		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
+		case 0x7A:
+			return GetBadgeVariableResult(*this->ro.grffile, this->spec->badges, parameter);
 	}
 
 unhandled:
@@ -382,9 +398,8 @@ unhandled:
  * @param param1 First parameter (var 10) of the callback.
  * @param param2 Second parameter (var 18) of the callback.
  */
-ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, TileIndex tile, uint8_t view,
-		CallbackID callback, uint32_t param1, uint32_t param2)
-	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), object_scope(*this, obj, spec, tile, view)
+ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, TileIndex tile, uint8_t view, CallbackID callback, uint32_t param1, uint32_t param2) :
+	ResolverObject(spec->grf_prop.grffile, callback, param1, param2), object_scope(*this, obj, spec, tile, view)
 {
 	this->root_spritegroup = (obj == nullptr) ? spec->grf_prop.GetSpriteGroup(OBJECT_SPRITE_GROUP_PURCHASE) : nullptr;
 	if (this->root_spritegroup == nullptr) this->root_spritegroup = spec->grf_prop.GetSpriteGroup(OBJECT_SPRITE_GROUP_DEFAULT);
@@ -449,7 +464,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->colour;
 
 	SpriteID image = dts->ground.sprite;
-	PaletteID pal  = dts->ground.pal;
+	PaletteID pal = dts->ground.pal;
 
 	if (GB(image, 0, SPRITE_WIDTH) != 0) {
 		/* If the ground sprite is the default flat water sprite, draw also canal/river borders
@@ -510,7 +525,7 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 	}
 
 	SpriteID image = dts->ground.sprite;
-	PaletteID pal  = dts->ground.pal;
+	PaletteID pal = dts->ground.pal;
 
 	if (GB(image, 0, SPRITE_WIDTH) != 0) {
 		DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
@@ -535,11 +550,11 @@ uint16_t StubGetObjectCallback(CallbackID callback, uint32_t param1, uint32_t pa
 }
 
 /** Helper class for animation control. */
-struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, int, StubGetObjectCallback, TileAnimationFrameAnimationHelper<Object> > {
-	static const CallbackID cb_animation_speed      = CBID_OBJECT_ANIMATION_SPEED;
+struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, int, StubGetObjectCallback, TileAnimationFrameAnimationHelper<Object>> {
+	static const CallbackID cb_animation_speed = CBID_OBJECT_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_OBJECT_ANIMATION_NEXT_FRAME;
 
-	static const ObjectCallbackMask cbm_animation_speed      = ObjectCallbackMask::AnimationSpeed;
+	static const ObjectCallbackMask cbm_animation_speed = ObjectCallbackMask::AnimationSpeed;
 	static const ObjectCallbackMask cbm_animation_next_frame = ObjectCallbackMask::AnimationNextFrame;
 };
 

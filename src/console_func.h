@@ -10,8 +10,8 @@
 #ifndef CONSOLE_FUNC_H
 #define CONSOLE_FUNC_H
 
-#include "console_type.h"
 #include "core/format.hpp"
+#include "console_type.h"
 
 /* console modes */
 extern IConsoleModes _iconsole_mode;
@@ -37,8 +37,8 @@ void IConsolePrint(TextColour colour_code, const std::string &string);
  * @tparam A The type of the first argument.
  * @tparam Args The types of the other arguments.
  */
-template <typename A, typename ... Args>
-inline void IConsolePrint(TextColour colour_code, fmt::format_string<A, Args...> format, A&& first_arg, Args&&... other_args)
+template <typename A, typename... Args>
+inline void IConsolePrint(TextColour colour_code, fmt::format_string<A, Args...> format, A &&first_arg, Args &&...other_args)
 {
 	/* The separate first_arg argument is added to aid overloading.
 	 * Otherwise the calls that do no need formatting will still use this function. */

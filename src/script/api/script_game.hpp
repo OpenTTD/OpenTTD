@@ -10,8 +10,8 @@
 #ifndef SCRIPT_GAME_HPP
 #define SCRIPT_GAME_HPP
 
-#include "script_object.hpp"
 #include "../../landscape_type.h"
+#include "script_object.hpp"
 
 /**
  * Class that handles some game related functions.
@@ -24,10 +24,10 @@ public:
 	 */
 	enum LandscapeType {
 		/* Note: these values represent part of the in-game LandscapeType enum */
-		LT_TEMPERATE  = to_underlying(::LandscapeType::Temperate), ///< Temperate climate.
-		LT_ARCTIC     = to_underlying(::LandscapeType::Arctic),    ///< Arctic climate.
-		LT_TROPIC     = to_underlying(::LandscapeType::Tropic),    ///< Tropic climate.
-		LT_TOYLAND    = to_underlying(::LandscapeType::Toyland),   ///< Toyland climate.
+		LT_TEMPERATE = to_underlying(::LandscapeType::Temperate), ///< Temperate climate.
+		LT_ARCTIC = to_underlying(::LandscapeType::Arctic), ///< Arctic climate.
+		LT_TROPIC = to_underlying(::LandscapeType::Tropic), ///< Tropic climate.
+		LT_TOYLAND = to_underlying(::LandscapeType::Toyland), ///< Toyland climate.
 	};
 
 	/**

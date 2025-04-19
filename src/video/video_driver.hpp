@@ -10,18 +10,19 @@
 #ifndef VIDEO_VIDEO_DRIVER_HPP
 #define VIDEO_VIDEO_DRIVER_HPP
 
-#include "../driver.h"
-#include "../core/geometry_type.hpp"
-#include "../core/math_func.hpp"
-#include "../gfx_func.h"
-#include "../settings_type.h"
-#include "../zoom_type.h"
-#include "../network/network_func.h"
 #include <atomic>
 #include <chrono>
 #include <condition_variable>
 #include <mutex>
 #include <thread>
+
+#include "../core/geometry_type.hpp"
+#include "../core/math_func.hpp"
+#include "../driver.h"
+#include "../gfx_func.h"
+#include "../network/network_func.h"
+#include "../settings_type.h"
+#include "../zoom_type.h"
 
 extern std::string _ini_videodriver;
 extern std::vector<Dimension> _resolutions;
@@ -32,11 +33,13 @@ extern bool _video_vsync;
 
 /** The base of all video drivers. */
 class VideoDriver : public Driver {
-	const uint DEFAULT_WINDOW_WIDTH = 640u;  ///< Default window width.
+	const uint DEFAULT_WINDOW_WIDTH = 640u; ///< Default window width.
 	const uint DEFAULT_WINDOW_HEIGHT = 480u; ///< Default window height.
 
 public:
-	VideoDriver(bool uses_hardware_acceleration = false) : fast_forward_key_pressed(false), fast_forward_via_key(false), is_game_threaded(true), uses_hardware_acceleration(uses_hardware_acceleration) {}
+	VideoDriver(bool uses_hardware_acceleration = false) : fast_forward_key_pressed(false), fast_forward_via_key(false), is_game_threaded(true), uses_hardware_acceleration(uses_hardware_acceleration)
+	{
+	}
 
 	/**
 	 * Mark a particular area dirty.
@@ -230,13 +233,19 @@ protected:
 	/**
 	 * Get the resolution of the main screen.
 	 */
-	virtual Dimension GetScreenSize() const { return { DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT }; }
+	virtual Dimension GetScreenSize() const
+	{
+		return {DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT};
+	}
 
 	/**
 	 * Get DPI scaling factor of the screen OTTD is displayed on.
 	 * @return 1.0 for default platform DPI, > 1.0 for higher DPI values, and < 1.0 for smaller DPI values.
 	 */
-	virtual float GetDPIScale() { return 1.0f; }
+	virtual float GetDPIScale()
+	{
+		return 1.0f;
+	}
 
 	/**
 	 * Apply resolution auto-detection and clamp to sensible defaults.
@@ -248,7 +257,7 @@ protected:
 			 * Limit width times height times bytes per pixel to fit a 32 bit
 			 * integer, This way all internal drawing routines work correctly. */
 			Dimension res = this->GetScreenSize();
-			_cur_resolution.width  = ClampU(res.width  * 3 / 4, DEFAULT_WINDOW_WIDTH, UINT16_MAX / 2);
+			_cur_resolution.width = ClampU(res.width * 3 / 4, DEFAULT_WINDOW_WIDTH, UINT16_MAX / 2);
 			_cur_resolution.height = ClampU(res.height * 3 / 4, DEFAULT_WINDOW_HEIGHT, UINT16_MAX / 2);
 		}
 	}
@@ -286,7 +295,10 @@ protected:
 	 * Process a single system event.
 	 * @returns False if there are no more events to process.
 	 */
-	virtual bool PollEvent() { return false; };
+	virtual bool PollEvent()
+	{
+		return false;
+	};
 
 	/**
 	 * Start the loop for game-tick.

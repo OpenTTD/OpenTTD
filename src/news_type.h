@@ -12,8 +12,8 @@
 
 #include "core/enum_type.hpp"
 #include "engine_type.h"
-#include "industry_type.h"
 #include "gfx_type.h"
+#include "industry_type.h"
 #include "sound_type.h"
 #include "station_type.h"
 #include "strings_type.h"
@@ -106,9 +106,9 @@ enum class NewsDisplay : uint8_t {
  * Per-NewsType data
  */
 struct NewsTypeData {
-	const char * const name;    ///< Name
-	const uint8_t age;             ///< Maximum age of news items (in days)
-	const SoundFx sound;        ///< Sound
+	const char *const name; ///< Name
+	const uint8_t age; ///< Maximum age of news items (in days)
+	const SoundFx sound; ///< Sound
 
 	/**
 	 * Construct this entry.
@@ -116,12 +116,7 @@ struct NewsTypeData {
 	 * @param age The maximum age for these messages.
 	 * @param sound The sound to play.
 	 */
-	NewsTypeData(const char *name, uint8_t age, SoundFx sound) :
-		name(name),
-		age(age),
-		sound(sound)
-	{
-	}
+	NewsTypeData(const char *name, uint8_t age, SoundFx sound) : name(name), age(age), sound(sound) {}
 
 	NewsDisplay GetDisplay() const;
 };
@@ -131,16 +126,15 @@ struct NewsAllocatedData {
 	virtual ~NewsAllocatedData() = default;
 };
 
-
 /** Information about a single item of news. */
 struct NewsItem {
 	EncodedString headline; ///< Headline of news.
 	TimerGameCalendar::Date date; ///< Calendar date to show for the news
 	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
-	NewsType type;                ///< Type of the news
+	NewsType type; ///< Type of the news
 	AdviceType advice_type; ///< The type of advice, to be able to remove specific advices later on.
 	NewsStyle style; /// Window style for the news.
-	NewsFlags flags;               ///< NewsFlags bits @see NewsFlag
+	NewsFlags flags; ///< NewsFlags bits @see NewsFlag
 
 	NewsReference ref1; ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
 	NewsReference ref2; ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
@@ -159,8 +153,8 @@ struct NewsItem {
  * resulting in wrong names and such.
  */
 struct CompanyNewsInformation : NewsAllocatedData {
-	std::string company_name;       ///< The name of the company
-	std::string president_name;     ///< The name of the president
+	std::string company_name; ///< The name of the company
+	std::string president_name; ///< The name of the president
 	std::string other_company_name; ///< The name of the company taking over this one
 
 	StringID title;

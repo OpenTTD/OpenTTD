@@ -11,9 +11,11 @@
 #define FORMAT_HPP
 
 #include "../3rdparty/fmt/format.h"
+
 #include "convertible_through_base.hpp"
 
-template <typename E, typename Char> requires std::is_enum_v<E>
+template <typename E, typename Char>
+requires std::is_enum_v<E>
 struct fmt::formatter<E, Char> : fmt::formatter<typename std::underlying_type_t<E>> {
 	using underlying_type = typename std::underlying_type_t<E>;
 	using parent = typename fmt::formatter<underlying_type>;

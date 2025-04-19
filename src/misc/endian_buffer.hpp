@@ -11,6 +11,7 @@
 #define ENDIAN_BUFFER_HPP
 
 #include <string_view>
+
 #include "../core/bitmath_func.hpp"
 #include "../strings_type.h"
 
@@ -27,41 +28,63 @@ class EndianBufferWriter {
 
 public:
 	EndianBufferWriter(Titer buffer) : buffer(buffer) {}
+
 	EndianBufferWriter(typename Titer::container_type &container) : buffer(std::back_inserter(container)) {}
 
-	EndianBufferWriter &operator <<(const std::string &data) { return *this << std::string_view{ data }; }
-	EndianBufferWriter &operator <<(const EncodedString &data) { return *this << data.string; }
-	EndianBufferWriter &operator <<(const char *data) { return *this << std::string_view{ data }; }
-	EndianBufferWriter &operator <<(std::string_view data) { this->Write(data); return *this; }
-	EndianBufferWriter &operator <<(bool data) { return *this << static_cast<uint8_t>(data ? 1 : 0); }
+	EndianBufferWriter &operator<<(const std::string &data)
+	{
+		return *this << std::string_view{data};
+	}
+
+	EndianBufferWriter &operator<<(const EncodedString &data)
+	{
+		return *this << data.string;
+	}
+
+	EndianBufferWriter &operator<<(const char *data)
+	{
+		return *this << std::string_view{data};
+	}
+
+	EndianBufferWriter &operator<<(std::string_view data)
+	{
+		this->Write(data);
+		return *this;
+	}
+
+	EndianBufferWriter &operator<<(bool data)
+	{
+		return *this << static_cast<uint8_t>(data ? 1 : 0);
+	}
 
 	template <typename... Targs>
-	EndianBufferWriter &operator <<(const std::tuple<Targs...> &data)
+	EndianBufferWriter &operator<<(const std::tuple<Targs...> &data)
 	{
 		this->WriteTuple(data, std::index_sequence_for<Targs...>{});
 		return *this;
 	}
 
 	template <typename... Targs>
-	EndianBufferWriter &operator <<(const std::variant<Targs...> &variant)
+	EndianBufferWriter &operator<<(const std::variant<Targs...> &variant)
 	{
 		this->WriteVariant(variant);
 		return *this;
 	}
 
-	EndianBufferWriter &operator <<(const std::monostate &)
+	EndianBufferWriter &operator<<(const std::monostate &)
 	{
 		return *this;
 	}
 
-	EndianBufferWriter &operator <<(const ConvertibleThroughBase auto data)
+	EndianBufferWriter &operator<<(const ConvertibleThroughBase auto data)
 	{
 		this->Write(data.base());
 		return *this;
 	}
 
-	template <class T> requires (!std::is_class_v<T>)
-	EndianBufferWriter &operator <<(const T data)
+	template <class T>
+	requires(!std::is_class_v<T>)
+	EndianBufferWriter &operator<<(const T data)
 	{
 		if constexpr (std::is_enum_v<T>) {
 			this->Write(to_underlying(data));
@@ -75,7 +98,7 @@ public:
 	static Tbuf FromValue(const Tvalue &data)
 	{
 		Tbuf buffer;
-		EndianBufferWriter writer{ buffer };
+		EndianBufferWriter writer{buffer};
 		writer << data;
 		return buffer;
 	}
@@ -89,7 +112,7 @@ private:
 	}
 
 	template <typename T, std::size_t I = 0>
-	void WriteVariant(const T &variant )
+	void WriteVariant(const T &variant)
 	{
 		if constexpr (I < std::variant_size_v<T>) {
 			if (I == variant.index()) {
@@ -152,40 +175,58 @@ class EndianBufferReader {
 public:
 	EndianBufferReader(std::span<const uint8_t> buffer) : buffer(buffer) {}
 
-	void rewind() { this->read_pos = 0; }
+	void rewind()
+	{
+		this->read_pos = 0;
+	}
 
-	EndianBufferReader &operator >>(std::string &data) { data = this->ReadStr(); return *this; }
-	EndianBufferReader &operator >>(EncodedString &data) { data = EncodedString{this->ReadStr()}; return *this; }
-	EndianBufferReader &operator >>(bool &data) { data = this->Read<uint8_t>() != 0; return *this; }
+	EndianBufferReader &operator>>(std::string &data)
+	{
+		data = this->ReadStr();
+		return *this;
+	}
+
+	EndianBufferReader &operator>>(EncodedString &data)
+	{
+		data = EncodedString{this->ReadStr()};
+		return *this;
+	}
+
+	EndianBufferReader &operator>>(bool &data)
+	{
+		data = this->Read<uint8_t>() != 0;
+		return *this;
+	}
 
 	template <typename... Targs>
-	EndianBufferReader &operator >>(std::tuple<Targs...> &data)
+	EndianBufferReader &operator>>(std::tuple<Targs...> &data)
 	{
 		this->ReadTuple(data, std::index_sequence_for<Targs...>{});
 		return *this;
 	}
 
 	template <typename... Targs>
-	EndianBufferReader &operator >>(std::variant<Targs...> &variant)
+	EndianBufferReader &operator>>(std::variant<Targs...> &variant)
 	{
 		this->ReadVariant(this->Read<uint8_t>(), variant);
 		return *this;
 	}
 
-	EndianBufferReader &operator >>(const std::monostate &)
+	EndianBufferReader &operator>>(const std::monostate &)
 	{
 		return *this;
 	}
 
 	template <ConvertibleThroughBase T>
-	EndianBufferReader &operator >>(T &data)
+	EndianBufferReader &operator>>(T &data)
 	{
 		data = T{this->Read<typename T::BaseType>()};
 		return *this;
 	}
 
-	template <class T> requires (!std::is_class_v<T>)
-	EndianBufferReader &operator >>(T &data)
+	template <class T>
+	requires(!std::is_class_v<T>)
+	EndianBufferReader &operator>>(T &data)
 	{
 		if constexpr (std::is_enum_v<T>) {
 			data = static_cast<T>(this->Read<std::underlying_type_t<T>>());
@@ -199,7 +240,7 @@ public:
 	static Tvalue ToValue(std::span<const uint8_t> buffer)
 	{
 		Tvalue result{};
-		EndianBufferReader reader{ buffer };
+		EndianBufferReader reader{buffer};
 		reader >> result;
 		return result;
 	}

@@ -8,25 +8,28 @@
 /** @file sdl2_default_v.cpp Implementation of the default backend for SDL2 video driver. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../error_func.h"
-#include "../gfx_func.h"
-#include "../rev.h"
-#include "../blitter/factory.hpp"
-#include "../network/network.h"
-#include "../thread.h"
-#include "../progress.h"
-#include "../core/random_func.hpp"
+
+#include "sdl2_default_v.h"
+
+#include <condition_variable>
+#include <mutex>
+#include <SDL.h>
+
+#include "../core/geometry_func.hpp"
 #include "../core/math_func.hpp"
 #include "../core/mem_func.hpp"
-#include "../core/geometry_func.hpp"
+#include "../core/random_func.hpp"
+#include "../blitter/factory.hpp"
+#include "../error_func.h"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
+#include "../gfx_func.h"
+#include "../network/network.h"
+#include "../openttd.h"
+#include "../progress.h"
+#include "../rev.h"
+#include "../thread.h"
 #include "../window_func.h"
-#include "sdl2_default_v.h"
-#include <SDL.h>
-#include <mutex>
-#include <condition_variable>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
@@ -119,7 +122,7 @@ void VideoDriver_SDL_Default::Paint()
 		this->local_palette.count_dirty = 0;
 	}
 
-	SDL_Rect r = { this->dirty_rect.left, this->dirty_rect.top, this->dirty_rect.right - this->dirty_rect.left, this->dirty_rect.bottom - this->dirty_rect.top };
+	SDL_Rect r = {this->dirty_rect.left, this->dirty_rect.top, this->dirty_rect.right - this->dirty_rect.left, this->dirty_rect.bottom - this->dirty_rect.top};
 
 	if (_sdl_surface != _sdl_real_surface) {
 		SDL_BlitSurface(_sdl_surface, &r, _sdl_real_surface, &r);

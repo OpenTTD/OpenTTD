@@ -10,10 +10,10 @@
  */
 
 #include "../../stdafx.h"
+
 #include "../../debug.h"
 #include "../../rev.h"
 #include "../network_internal.h"
-
 #include "http.h"
 
 #include "../../safeguards.h"
@@ -24,14 +24,8 @@
 	callback->OnFailure();
 }
 
-/* static */ void NetworkHTTPSocketHandler::HTTPReceive()
-{
-}
+/* static */ void NetworkHTTPSocketHandler::HTTPReceive() {}
 
-void NetworkHTTPInitialize()
-{
-}
+void NetworkHTTPInitialize() {}
 
-void NetworkHTTPUninitialize()
-{
-}
+void NetworkHTTPUninitialize() {}

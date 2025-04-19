@@ -10,10 +10,10 @@
 #ifndef SCRIPT_INDUSTRY_HPP
 #define SCRIPT_INDUSTRY_HPP
 
+#include "../../industry.h"
 #include "script_company.hpp"
 #include "script_date.hpp"
 #include "script_object.hpp"
-#include "../../industry.h"
 
 /**
  * Class that handles all industry related functions.
@@ -24,7 +24,7 @@ public:
 	/** Ways for an industry to accept a cargo. */
 	enum CargoAcceptState {
 		CAS_NOT_ACCEPTED, ///< The CargoType is not accepted by this industry.
-		CAS_ACCEPTED,     ///< The industry currently accepts this CargoType.
+		CAS_ACCEPTED, ///< The industry currently accepts this CargoType.
 		CAS_TEMP_REFUSED, ///< The industry temporarily refuses to accept this CargoType but may do so again in the future.
 	};
 
@@ -46,11 +46,11 @@ public:
 		 * Industry can not close regardless of production level or time since last delivery.
 		 * This does not prevent a closure already announced.
 		 */
-		INDCTL_NO_CLOSURE             = ::IndustryControlFlags{::IndustryControlFlag::NoClosure}.base(),
+		INDCTL_NO_CLOSURE = ::IndustryControlFlags{::IndustryControlFlag::NoClosure}.base(),
 		/**
 		 * Indicates that the production level of the industry is controlled by a game script.
 		 */
-		INDCTL_EXTERNAL_PROD_LEVEL    = ::IndustryControlFlags{::IndustryControlFlag::ExternalProdLevel}.base(),
+		INDCTL_EXTERNAL_PROD_LEVEL = ::IndustryControlFlags{::IndustryControlFlag::ExternalProdLevel}.base(),
 	};
 
 	/**

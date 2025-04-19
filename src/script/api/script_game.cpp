@@ -8,12 +8,14 @@
 /** @file script_game.cpp Implementation of ScriptGame. */
 
 #include "../../stdafx.h"
+
 #include "script_game.hpp"
-#include "script_error.hpp"
+
 #include "../../command_type.h"
-#include "../../settings_type.h"
-#include "../../network/network.h"
 #include "../../misc_cmd.h"
+#include "../../network/network.h"
+#include "../../settings_type.h"
+#include "script_error.hpp"
 
 #include "../../safeguards.h"
 

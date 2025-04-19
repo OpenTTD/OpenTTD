@@ -13,13 +13,13 @@
 #define NETWORK_CORE_TCP_STUN_H
 
 #include "os_abstraction.h"
-#include "tcp.h"
 #include "packet.h"
+#include "tcp.h"
 
 /** Enum with all types of TCP STUN packets. The order MUST not be changed. **/
 enum PacketStunType : uint8_t {
-	PACKET_STUN_SERCLI_STUN,  ///< Send a STUN request to the STUN server.
-	PACKET_STUN_END,          ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_STUN_SERCLI_STUN, ///< Send a STUN request to the STUN server.
+	PACKET_STUN_END, ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Base socket handler for all STUN TCP sockets. */

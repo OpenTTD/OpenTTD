@@ -16,7 +16,7 @@
 class AIInfo : public ScriptInfo {
 public:
 	/* All valid AI API versions, in order. */
-	static constexpr std::string_view ApiVersions[]{ "0.7", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14", "15" };
+	static constexpr std::string_view ApiVersions[]{"0.7", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14", "15"};
 
 	AIInfo();
 
@@ -43,17 +43,23 @@ public:
 	/**
 	 * Use this AI as a random AI.
 	 */
-	bool UseAsRandomAI() const { return this->use_as_random; }
+	bool UseAsRandomAI() const
+	{
+		return this->use_as_random;
+	}
 
 	/**
 	 * Get the API version this AI is written for.
 	 */
-	const std::string &GetAPIVersion() const { return this->api_version; }
+	const std::string &GetAPIVersion() const
+	{
+		return this->api_version;
+	}
 
 private:
 	int min_loadable_version; ///< The AI can load savegame data if the version is equal or greater than this.
-	bool use_as_random;       ///< Should this AI be used when the user wants a "random AI"?
-	std::string api_version;  ///< API version used by this AI.
+	bool use_as_random; ///< Should this AI be used when the user wants a "random AI"?
+	std::string api_version; ///< API version used by this AI.
 };
 
 /** All static information from an AI library like name, version, etc. */
@@ -74,7 +80,10 @@ public:
 	/**
 	 * Get the category this library is in.
 	 */
-	const std::string &GetCategory() const { return this->category; }
+	const std::string &GetCategory() const
+	{
+		return this->category;
+	}
 
 private:
 	std::string category; ///< The category this library is in.

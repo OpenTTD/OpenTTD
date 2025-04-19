@@ -8,20 +8,21 @@
 /** @file newgrf_act4.cpp NewGRF Action 0x04 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../engine_base.h"
 #include "../house.h"
-#include "../newgrf_engine.h"
-#include "../newgrf_text.h"
+#include "../newgrf_airporttiles.h"
 #include "../newgrf_badge.h"
 #include "../newgrf_badge_type.h"
 #include "../newgrf_cargo.h"
+#include "../newgrf_engine.h"
 #include "../newgrf_station.h"
-#include "../newgrf_airporttiles.h"
+#include "../newgrf_text.h"
 #include "../string_func.h"
 #include "newgrf_bytereader.h"
-#include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
+#include "newgrf_internal_vehicle.h"
 
 #include "table/strings.h"
 
@@ -48,15 +49,15 @@ static void FeatureNewName(ByteReader &buf)
 
 	bool new_scheme = _cur_gps.grffile->grf_version >= 7;
 
-	uint8_t feature  = buf.ReadByte();
+	uint8_t feature = buf.ReadByte();
 	if (feature >= GSF_END && feature != 0x48) {
 		GrfMsg(1, "FeatureNewName: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
-	uint8_t lang     = buf.ReadByte();
-	uint8_t num      = buf.ReadByte();
-	bool generic   = HasBit(lang, 7);
+	uint8_t lang = buf.ReadByte();
+	uint8_t num = buf.ReadByte();
+	bool generic = HasBit(lang, 7);
 	uint16_t id;
 	if (generic) {
 		id = buf.ReadWord();
@@ -70,8 +71,7 @@ static void FeatureNewName(ByteReader &buf)
 
 	uint16_t endid = id + num;
 
-	GrfMsg(6, "FeatureNewName: About to rename engines {}..{} (feature 0x{:02X}) in language 0x{:02X}",
-	               id, endid, feature, lang);
+	GrfMsg(6, "FeatureNewName: About to rename engines {}..{} (feature 0x{:02X}) in language 0x{:02X}", id, endid, feature, lang);
 
 	/* Feature overlay to make non-generic strings unique in their feature. We use feature + 1 so that generic strings stay as they are. */
 	uint32_t feature_overlay = generic ? 0 : ((feature + 1) << 16);
@@ -159,9 +159,33 @@ static void FeatureNewName(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x04>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x04>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x04>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x04>::Init(ByteReader &) { }
-template <> void GrfActionHandler<0x04>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x04>::Activation(ByteReader &buf) { FeatureNewName(buf); }
+template <>
+void GrfActionHandler<0x04>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x04>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x04>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x04>::Init(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x04>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x04>::Activation(ByteReader &buf)
+{
+	FeatureNewName(buf);
+}

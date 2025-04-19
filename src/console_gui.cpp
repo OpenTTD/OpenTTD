@@ -8,61 +8,52 @@
 /** @file console_gui.cpp Handling the GUI of the in-game console. */
 
 #include "stdafx.h"
-#include "textbuf_type.h"
-#include "window_gui.h"
-#include "autocompletion.h"
+
 #include "console_gui.h"
+
+#include "autocompletion.h"
+#include "console_func.h"
 #include "console_internal.h"
-#include "window_func.h"
-#include "string_func.h"
-#include "strings_func.h"
 #include "gfx_func.h"
 #include "gfx_layout.h"
-#include "settings_type.h"
-#include "console_func.h"
 #include "rev.h"
-#include "video/video_driver.hpp"
+#include "settings_type.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "textbuf_type.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "video/video_driver.hpp"
+#include "window_func.h"
+#include "window_gui.h"
 
 #include "widgets/console_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
 
-static const uint ICON_HISTORY_SIZE       = 20;
-static const uint ICON_RIGHT_BORDERWIDTH  = 10;
+static const uint ICON_HISTORY_SIZE = 20;
+static const uint ICON_RIGHT_BORDERWIDTH = 10;
 static const uint ICON_BOTTOM_BORDERWIDTH = 12;
 
 /**
  * Container for a single line of console output
  */
 struct IConsoleLine {
-	std::string buffer;     ///< The data to store.
-	TextColour colour;      ///< The colour of the line.
-	uint16_t time;            ///< The amount of time the line is in the backlog.
+	std::string buffer; ///< The data to store.
+	TextColour colour; ///< The colour of the line.
+	uint16_t time; ///< The amount of time the line is in the backlog.
 
-	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0)
-	{
-
-	}
+	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0) {}
 
 	/**
 	 * Initialize the console line.
 	 * @param buffer the data to print.
 	 * @param colour the colour of the line.
 	 */
-	IConsoleLine(std::string buffer, TextColour colour) :
-			buffer(std::move(buffer)),
-			colour(colour),
-			time(0)
-	{
-	}
+	IConsoleLine(std::string buffer, TextColour colour) : buffer(std::move(buffer)), colour(colour), time(0) {}
 
-	~IConsoleLine()
-	{
-	}
+	~IConsoleLine() {}
 };
 
 /** The console backlog buffer. Item index 0 is the newest line. */
@@ -128,7 +119,6 @@ static inline void IConsoleResetHistoryPos()
 	_iconsole_historypos = -1;
 }
 
-
 static const char *IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
@@ -138,15 +128,9 @@ static constexpr NWidgetPart _nested_console_window_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _console_window_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_CONSOLE, WC_NONE,
-	{},
-	_nested_console_window_widgets
-);
+static WindowDesc _console_window_desc(WDP_MANUAL, nullptr, 0, 0, WC_CONSOLE, WC_NONE, {}, _nested_console_window_widgets);
 
-struct IConsoleWindow : Window
-{
+struct IConsoleWindow : Window {
 	static size_t scroll;
 	int line_height = 0; ///< Height of one line of text in the console.
 	int line_offset = 0;
@@ -200,7 +184,9 @@ struct IConsoleWindow : Window
 		int ypos = this->height - this->line_height - WidgetDimensions::scaled.hsep_normal;
 		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
 			const IConsoleLine &print = _iconsole_buffer[line_index];
-			ypos = DrawStringMultiLine(WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, GetString(STR_JUST_RAW_STRING, print.buffer), print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - WidgetDimensions::scaled.hsep_normal;
+			ypos = DrawStringMultiLine(
+					   WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, GetString(STR_JUST_RAW_STRING, print.buffer), print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) -
+				WidgetDimensions::scaled.hsep_normal;
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
@@ -211,7 +197,9 @@ struct IConsoleWindow : Window
 		}
 
 		/* If we have a marked area, draw a background highlight. */
-		if (_iconsole_cmdline.marklength != 0) GfxFillRect(this->line_offset + delta + _iconsole_cmdline.markxoffs, this->height - this->line_height, this->line_offset + delta + _iconsole_cmdline.markxoffs + _iconsole_cmdline.marklength, this->height - 1, PC_DARK_RED);
+		if (_iconsole_cmdline.marklength != 0)
+			GfxFillRect(this->line_offset + delta + _iconsole_cmdline.markxoffs, this->height - this->line_height,
+				this->line_offset + delta + _iconsole_cmdline.markxoffs + _iconsole_cmdline.marklength, this->height - 1, PC_DARK_RED);
 
 		DrawString(this->line_offset + delta, right, this->height - this->line_height, _iconsole_cmdline.GetText(), static_cast<TextColour>(CC_COMMAND), SA_LEFT | SA_FORCE);
 
@@ -222,15 +210,15 @@ struct IConsoleWindow : Window
 
 	/** Check on a regular interval if the console buffer needs truncating. */
 	IntervalTimer<TimerWindow> truncate_interval = {std::chrono::seconds(3), [this](auto) {
-		assert(this->height >= 0 && this->line_height > 0);
-		size_t visible_lines = static_cast<size_t>(this->height / this->line_height);
+														assert(this->height >= 0 && this->line_height > 0);
+														size_t visible_lines = static_cast<size_t>(this->height / this->line_height);
 
-		if (TruncateBuffer() && IConsoleWindow::scroll + visible_lines > _iconsole_buffer.size()) {
-			size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
-			IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll, max_scroll);
-			this->SetDirty();
-		}
-	}};
+														if (TruncateBuffer() && IConsoleWindow::scroll + visible_lines > _iconsole_buffer.size()) {
+															size_t max_scroll = (visible_lines > _iconsole_buffer.size()) ? 0 : _iconsole_buffer.size() + 1 - visible_lines;
+															IConsoleWindow::scroll = std::min<size_t>(IConsoleWindow::scroll, max_scroll);
+															this->SetDirty();
+														}
+													}};
 
 	void OnMouseLoop() override
 	{
@@ -273,7 +261,8 @@ struct IConsoleWindow : Window
 				IConsoleSwitch();
 				break;
 
-			case WKC_RETURN: case WKC_NUM_ENTER: {
+			case WKC_RETURN:
+			case WKC_NUM_ENTER: {
 				/* We always want the ] at the left side; we always force these strings to be left
 				 * aligned anyway. So enforce this in all cases by adding a left-to-right marker,
 				 * otherwise it will be drawn at the wrong side with right-to-left texts. */
@@ -416,7 +405,8 @@ void IConsoleResize(Window *w)
 			w->height = _screen.height - ICON_BOTTOM_BORDERWIDTH;
 			w->width = _screen.width;
 			break;
-		default: return;
+		default:
+			return;
 	}
 
 	MarkWholeScreenDirty();
@@ -430,7 +420,8 @@ void IConsoleSwitch()
 			new IConsoleWindow();
 			break;
 
-		case ICONSOLE_OPENED: case ICONSOLE_FULL:
+		case ICONSOLE_OPENED:
+		case ICONSOLE_FULL:
 			CloseWindowById(WC_CONSOLE, 0);
 			break;
 	}
@@ -528,7 +519,6 @@ static bool TruncateBuffer()
 
 	return need_truncation;
 }
-
 
 /**
  * Check whether the given TextColour is valid for console usage.

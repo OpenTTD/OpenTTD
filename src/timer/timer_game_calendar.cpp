@@ -21,10 +21,12 @@
  */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "timer.h"
+
 #include "timer_game_calendar.h"
+
+#include "../openttd.h"
 #include "../vehicle_base.h"
+#include "timer.h"
 
 #include "../safeguards.h"
 

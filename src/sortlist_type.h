@@ -24,12 +24,13 @@ using SortListFlags = EnumBitSet<SortListFlag, uint8_t>;
 
 /** Data structure describing how to show the list (what sort direction and criteria). */
 struct Listing {
-	bool order;    ///< Ascending/descending
+	bool order; ///< Ascending/descending
 	uint8_t criteria; ///< Sorting criteria
 };
+
 /** Data structure describing what to show in the list (filter criteria). */
 struct Filtering {
-	bool state;    ///< Filter on/off
+	bool state; ///< Filter on/off
 	uint8_t criteria; ///< Filtering criteria
 };
 
@@ -39,23 +40,23 @@ struct Filtering {
  * @tparam P Tyoe of data passed as additional parameter to the sort function.
  * @tparam F Type of data fed as additional value to the filter function. @see FilterFunction
  */
-template <typename T, typename P = std::nullptr_t, typename F = const char*>
+template <typename T, typename P = std::nullptr_t, typename F = const char *>
 class GUIList : public std::vector<T> {
 public:
-	using SortFunction = std::conditional_t<std::is_same_v<P, std::nullptr_t>, bool (const T&, const T&), bool (const T&, const T&, const P)>; ///< Signature of sort function.
-	using FilterFunction = bool(const T*, F); ///< Signature of filter function.
+	using SortFunction = std::conditional_t<std::is_same_v<P, std::nullptr_t>, bool(const T &, const T &), bool(const T &, const T &, const P)>; ///< Signature of sort function.
+	using FilterFunction = bool(const T *, F); ///< Signature of filter function.
 
 protected:
-	std::span<SortFunction * const> sort_func_list;     ///< the sort criteria functions
-	std::span<FilterFunction * const> filter_func_list; ///< the filter criteria functions
-	SortListFlags flags;                      ///< used to control sorting/resorting/etc.
-	uint8_t sort_type;                          ///< what criteria to sort on
-	uint8_t filter_type;                        ///< what criteria to filter on
-	uint16_t resort_timer;                      ///< resort list after a given amount of ticks if set
+	std::span<SortFunction *const> sort_func_list; ///< the sort criteria functions
+	std::span<FilterFunction *const> filter_func_list; ///< the filter criteria functions
+	SortListFlags flags; ///< used to control sorting/resorting/etc.
+	uint8_t sort_type; ///< what criteria to sort on
+	uint8_t filter_type; ///< what criteria to filter on
+	uint16_t resort_timer; ///< resort list after a given amount of ticks if set
 
 	/* If sort parameters are used then params must be a reference, however if not then params cannot be a reference as
 	 * it will not be able to reference anything. */
-	using SortParameterReference = std::conditional_t<std::is_same_v<P, std::nullptr_t>, P, P&>;
+	using SortParameterReference = std::conditional_t<std::is_same_v<P, std::nullptr_t>, P, P &>;
 	const SortParameterReference params;
 
 	/**
@@ -79,28 +80,12 @@ protected:
 
 public:
 	/* If sort parameters are not used then we don't require a reference to the params. */
-	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<std::is_same_v<P_, std::nullptr_t>>* = nullptr>
-	GUIList() :
-		sort_func_list({}),
-		filter_func_list({}),
-		flags({}),
-		sort_type(0),
-		filter_type(0),
-		resort_timer(1),
-		params(nullptr)
-	{};
+	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<std::is_same_v<P_, std::nullptr_t>> * = nullptr>
+	GUIList() : sort_func_list({}), filter_func_list({}), flags({}), sort_type(0), filter_type(0), resort_timer(1), params(nullptr){};
 
 	/* If sort parameters are used then we require a reference to the params. */
-	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<!std::is_same_v<P_, std::nullptr_t>>* = nullptr>
-	GUIList(const P &params) :
-		sort_func_list({}),
-		filter_func_list({}),
-		flags({}),
-		sort_type(0),
-		filter_type(0),
-		resort_timer(1),
-		params(params)
-	{};
+	template <typename T_ = T, typename P_ = P, typename _F = F, std::enable_if_t<!std::is_same_v<P_, std::nullptr_t>> * = nullptr>
+	GUIList(const P &params) : sort_func_list({}), filter_func_list({}), flags({}), sort_type(0), filter_type(0), resort_timer(1), params(params){};
 
 	/**
 	 * Get the sorttype of the list
@@ -278,9 +263,13 @@ public:
 		const bool desc = this->flags.Test(SortListFlag::Desc);
 
 		if constexpr (std::is_same_v<P, std::nullptr_t>) {
-			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a) : compare(a, b); });
+			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) {
+				return desc ? compare(b, a) : compare(a, b);
+			});
 		} else {
-			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a, params) : compare(a, b, params); });
+			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) {
+				return desc ? compare(b, a, params) : compare(a, b, params);
+			});
 		}
 		return true;
 	}
@@ -290,7 +279,7 @@ public:
 	 *
 	 * @param n_funcs Span covering the sort function pointers.
 	 */
-	void SetSortFuncs(std::span<SortFunction * const> n_funcs)
+	void SetSortFuncs(std::span<SortFunction *const> n_funcs)
 	{
 		this->sort_func_list = n_funcs;
 	}
@@ -362,7 +351,7 @@ public:
 	 *
 	 * @param n_funcs Span covering the filter function pointers.
 	 */
-	void SetFilterFuncs(std::span<FilterFunction * const> n_funcs)
+	void SetFilterFuncs(std::span<FilterFunction *const> n_funcs)
 	{
 		this->filter_func_list = n_funcs;
 	}

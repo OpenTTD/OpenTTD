@@ -8,14 +8,16 @@
 /** @file script_station.cpp Implementation of ScriptStation. */
 
 #include "../../stdafx.h"
+
 #include "script_station.hpp"
+
+#include "../../roadstop_base.h"
+#include "../../station_base.h"
+#include "../../station_cmd.h"
+#include "../../town.h"
+#include "script_cargo.hpp"
 #include "script_map.hpp"
 #include "script_town.hpp"
-#include "script_cargo.hpp"
-#include "../../station_base.h"
-#include "../../roadstop_base.h"
-#include "../../town.h"
-#include "../../station_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -40,8 +42,7 @@
 }
 
 template <bool Tfrom, bool Tvia>
-/* static */ bool ScriptStation::IsCargoRequestValid(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
+/* static */ bool ScriptStation::IsCargoRequestValid(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
 	if (!IsValidStation(station_id)) return false;
 	if (Tfrom && !IsValidStation(from_station_id) && from_station_id != STATION_INVALID) return false;
@@ -51,11 +52,9 @@ template <bool Tfrom, bool Tvia>
 }
 
 template <bool Tfrom, bool Tvia>
-/* static */ SQInteger ScriptStation::CountCargoWaiting(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::CountCargoWaiting(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
-	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id,
-			via_station_id, cargo_type)) {
+	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id, via_station_id, cargo_type)) {
 		return -1;
 	}
 
@@ -67,9 +66,8 @@ template <bool Tfrom, bool Tvia>
 
 	uint16_t cargo_count = 0;
 	std::pair<StationCargoList::ConstIterator, StationCargoList::ConstIterator> range = Tvia ?
-				cargo_list.Packets()->equal_range(via_station_id) :
-				std::make_pair(StationCargoList::ConstIterator(cargo_list.Packets()->begin()),
-						StationCargoList::ConstIterator(cargo_list.Packets()->end()));
+		cargo_list.Packets()->equal_range(via_station_id) :
+		std::make_pair(StationCargoList::ConstIterator(cargo_list.Packets()->begin()), StationCargoList::ConstIterator(cargo_list.Packets()->end()));
 	for (StationCargoList::ConstIterator it = range.first; it != range.second; it++) {
 		const CargoPacket *cp = *it;
 		if (!Tfrom || cp->GetFirstStation() == from_station_id) cargo_count += cp->Count();
@@ -83,30 +81,25 @@ template <bool Tfrom, bool Tvia>
 	return CountCargoWaiting<false, false>(station_id, STATION_INVALID, STATION_INVALID, cargo_type);
 }
 
-/* static */ SQInteger ScriptStation::GetCargoWaitingFrom(StationID station_id,
-		StationID from_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::GetCargoWaitingFrom(StationID station_id, StationID from_station_id, CargoType cargo_type)
 {
 	return CountCargoWaiting<true, false>(station_id, from_station_id, STATION_INVALID, cargo_type);
 }
 
-/* static */ SQInteger ScriptStation::GetCargoWaitingVia(StationID station_id,
-		StationID via_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::GetCargoWaitingVia(StationID station_id, StationID via_station_id, CargoType cargo_type)
 {
 	return CountCargoWaiting<false, true>(station_id, STATION_INVALID, via_station_id, cargo_type);
 }
 
-/* static */ SQInteger ScriptStation::GetCargoWaitingFromVia(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::GetCargoWaitingFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
 	return CountCargoWaiting<true, true>(station_id, from_station_id, via_station_id, cargo_type);
 }
 
 template <bool Tfrom, bool Tvia>
-/* static */ SQInteger ScriptStation::CountCargoPlanned(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::CountCargoPlanned(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
-	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id,
-			via_station_id, cargo_type)) {
+	if (!ScriptStation::IsCargoRequestValid<Tfrom, Tvia>(station_id, from_station_id, via_station_id, cargo_type)) {
 		return -1;
 	}
 
@@ -115,8 +108,7 @@ template <bool Tfrom, bool Tvia>
 
 	const FlowStatMap &flows = goods.GetData().flows;
 	if (Tfrom) {
-		return Tvia ? flows.GetFlowFromVia(from_station_id, via_station_id) :
-					  flows.GetFlowFrom(from_station_id);
+		return Tvia ? flows.GetFlowFromVia(from_station_id, via_station_id) : flows.GetFlowFrom(from_station_id);
 	} else {
 		return Tvia ? flows.GetFlowVia(via_station_id) : flows.GetFlow();
 	}
@@ -127,20 +119,17 @@ template <bool Tfrom, bool Tvia>
 	return CountCargoPlanned<false, false>(station_id, STATION_INVALID, STATION_INVALID, cargo_type);
 }
 
-/* static */ SQInteger ScriptStation::GetCargoPlannedFrom(StationID station_id,
-		StationID from_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::GetCargoPlannedFrom(StationID station_id, StationID from_station_id, CargoType cargo_type)
 {
 	return CountCargoPlanned<true, false>(station_id, from_station_id, STATION_INVALID, cargo_type);
 }
 
-/* static */ SQInteger ScriptStation::GetCargoPlannedVia(StationID station_id,
-		StationID via_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::GetCargoPlannedVia(StationID station_id, StationID via_station_id, CargoType cargo_type)
 {
 	return CountCargoPlanned<false, true>(station_id, STATION_INVALID, via_station_id, cargo_type);
 }
 
-/* static */ SQInteger ScriptStation::GetCargoPlannedFromVia(StationID station_id,
-		StationID from_station_id, StationID via_station_id, CargoType cargo_type)
+/* static */ SQInteger ScriptStation::GetCargoPlannedFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type)
 {
 	return CountCargoPlanned<true, true>(station_id, from_station_id, via_station_id, cargo_type);
 }
@@ -168,11 +157,16 @@ template <bool Tfrom, bool Tvia>
 	if (!_settings_game.station.modified_catchment) return CA_UNMODIFIED;
 
 	switch (station_type) {
-		case STATION_TRAIN:      return CA_TRAIN;
-		case STATION_TRUCK_STOP: return CA_TRUCK;
-		case STATION_BUS_STOP:   return CA_BUS;
-		case STATION_DOCK:       return CA_DOCK;
-		default:                 return CA_NONE;
+		case STATION_TRAIN:
+			return CA_TRAIN;
+		case STATION_TRUCK_STOP:
+			return CA_TRUCK;
+		case STATION_BUS_STOP:
+			return CA_BUS;
+		case STATION_DOCK:
+			return CA_DOCK;
+		default:
+			return CA_NONE;
 	}
 }
 

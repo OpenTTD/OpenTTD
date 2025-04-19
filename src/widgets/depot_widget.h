@@ -12,24 +12,24 @@
 
 /** Widgets of the #DepotWindow class. */
 enum DepotWidgets : WidgetID {
-	WID_D_CAPTION,         ///< Caption of window.
-	WID_D_SELL,            ///< Sell button.
+	WID_D_CAPTION, ///< Caption of window.
+	WID_D_SELL, ///< Sell button.
 	WID_D_SHOW_SELL_CHAIN, ///< Show sell chain panel.
-	WID_D_SELL_CHAIN,      ///< Sell chain button.
-	WID_D_SELL_ALL,        ///< Sell all button.
-	WID_D_AUTOREPLACE,     ///< Autoreplace button.
-	WID_D_MATRIX,          ///< Matrix of vehicles.
-	WID_D_V_SCROLL,        ///< Vertical scrollbar.
-	WID_D_SHOW_H_SCROLL,   ///< Show horizontal scrollbar panel.
-	WID_D_H_SCROLL,        ///< Horizontal scrollbar.
-	WID_D_BUILD,           ///< Build button.
-	WID_D_CLONE,           ///< Clone button.
-	WID_D_LOCATION,        ///< Location button.
-	WID_D_SHOW_RENAME,     ///< Show rename panel.
-	WID_D_RENAME,          ///< Rename button.
-	WID_D_VEHICLE_LIST,    ///< List of vehicles.
-	WID_D_STOP_ALL,        ///< Stop all button.
-	WID_D_START_ALL,       ///< Start all button.
+	WID_D_SELL_CHAIN, ///< Sell chain button.
+	WID_D_SELL_ALL, ///< Sell all button.
+	WID_D_AUTOREPLACE, ///< Autoreplace button.
+	WID_D_MATRIX, ///< Matrix of vehicles.
+	WID_D_V_SCROLL, ///< Vertical scrollbar.
+	WID_D_SHOW_H_SCROLL, ///< Show horizontal scrollbar panel.
+	WID_D_H_SCROLL, ///< Horizontal scrollbar.
+	WID_D_BUILD, ///< Build button.
+	WID_D_CLONE, ///< Clone button.
+	WID_D_LOCATION, ///< Location button.
+	WID_D_SHOW_RENAME, ///< Show rename panel.
+	WID_D_RENAME, ///< Rename button.
+	WID_D_VEHICLE_LIST, ///< List of vehicles.
+	WID_D_STOP_ALL, ///< Stop all button.
+	WID_D_START_ALL, ///< Start all button.
 };
 
 #endif /* WIDGETS_DEPOT_WIDGET_H */

@@ -10,14 +10,18 @@
 #ifndef BLITTER_32BPP_BASE_HPP
 #define BLITTER_32BPP_BASE_HPP
 
-#include "base.hpp"
 #include "../gfx_func.h"
 #include "../palette_func.h"
+#include "base.hpp"
 
 /** Base for all 32bpp blitters. */
 class Blitter_32bppBase : public Blitter {
 public:
-	uint8_t GetScreenDepth() override { return 32; }
+	uint8_t GetScreenDepth() override
+	{
+		return 32;
+	}
+
 	void *MoveTo(void *video, int x, int y) override;
 	void SetPixel(void *video, int x, int y, uint8_t colour) override;
 	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override;
@@ -48,10 +52,7 @@ public:
 		uint cb = current.b;
 
 		/* The 256 is wrong, it should be 255, but 256 is much faster... */
-		return Colour(
-							((int)(r - cr) * a) / 256 + cr,
-							((int)(g - cg) * a) / 256 + cg,
-							((int)(b - cb) * a) / 256 + cb);
+		return Colour(((int)(r - cr) * a) / 256 + cr, ((int)(g - cg) * a) / 256 + cg, ((int)(b - cb) * a) / 256 + cb);
 	}
 
 	/**
@@ -71,9 +72,9 @@ public:
 	 */
 	static inline Colour ComposeColourPANoCheck(Colour colour, uint a, Colour current)
 	{
-		uint r  = colour.r;
-		uint g  = colour.g;
-		uint b  = colour.b;
+		uint r = colour.r;
+		uint g = colour.g;
+		uint b = colour.b;
 
 		return ComposeColourRGBANoCheck(r, g, b, a, current);
 	}

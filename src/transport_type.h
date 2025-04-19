@@ -25,10 +25,10 @@ enum TransportType : uint8_t {
 	 */
 	TRANSPORT_BEGIN = 0, ///< Begin of the iterator.
 	TRANSPORT_RAIL = TRANSPORT_BEGIN, ///< Transport by train
-	TRANSPORT_ROAD,  ///< Transport by road vehicle
+	TRANSPORT_ROAD, ///< Transport by road vehicle
 	TRANSPORT_WATER, ///< Transport over water
-	TRANSPORT_AIR,   ///< Transport through air
-	TRANSPORT_END,   ///< End of iterations.
+	TRANSPORT_AIR, ///< Transport through air
+	TRANSPORT_END, ///< End of iterations.
 	INVALID_TRANSPORT = 0xff, ///< Sentinel for invalid transport types.
 };
 

@@ -11,11 +11,11 @@
 #define ORDER_BACKUP_H
 
 #include "core/pool_type.hpp"
+#include "base_consist.h"
 #include "group_type.h"
+#include "saveload/saveload.h"
 #include "tile_type.h"
 #include "vehicle_type.h"
-#include "base_consist.h"
-#include "saveload/saveload.h"
 
 /** Unique identifier for an order backup. */
 using OrderBackupID = PoolID<uint8_t, struct OrderBackupIDTag, 255, 0xFF>;
@@ -43,6 +43,7 @@ private:
 
 	/** Creation for savegame restoration. */
 	OrderBackup() {}
+
 	OrderBackup(const Vehicle *v, uint32_t user);
 
 	void DoRestore(Vehicle *v);

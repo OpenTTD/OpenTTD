@@ -8,10 +8,12 @@
 /** @file script_tilelist.cpp Implementation of ScriptTileList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_tilelist.hpp"
-#include "script_industry.hpp"
+
 #include "../../industry.h"
 #include "../../station_base.h"
+#include "script_industry.hpp"
 
 #include "../../safeguards.h"
 
@@ -103,7 +105,10 @@ ScriptTileList_IndustryAccepting::ScriptTileList_IndustryAccepting(IndustryID in
 		/* Only add the tile if it accepts the cargo (sometimes just 1 tile of an
 		 *  industry triggers the acceptance). */
 		CargoArray acceptance = ::GetAcceptanceAroundTiles(cur_tile, 1, 1, radius);
-		if (std::none_of(std::begin(i->accepted), std::end(i->accepted), [&acceptance](const auto &a) { return ::IsValidCargoType(a.cargo) && acceptance[a.cargo] != 0; })) continue;
+		if (std::none_of(std::begin(i->accepted), std::end(i->accepted), [&acceptance](const auto &a) {
+				return ::IsValidCargoType(a.cargo) && acceptance[a.cargo] != 0;
+			}))
+			continue;
 
 		this->AddTile(cur_tile);
 	}
@@ -141,11 +146,11 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 	EnumBitSet<StationType, uint8_t> station_types = {};
 	/* Convert ScriptStation::StationType to ::StationType, but do it in a
 	 *  bitmask, so we can scan for multiple entries at the same time. */
-	if ((station_type & ScriptStation::STATION_TRAIN) != 0)      station_types.Set(::StationType::Rail);
+	if ((station_type & ScriptStation::STATION_TRAIN) != 0) station_types.Set(::StationType::Rail);
 	if ((station_type & ScriptStation::STATION_TRUCK_STOP) != 0) station_types.Set(::StationType::Truck);
-	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0)   station_types.Set(::StationType::Bus);
-	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_types.Set({::StationType::Airport, ::StationType::Oilrig});
-	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_types.Set({::StationType::Dock, ::StationType::Oilrig});
+	if ((station_type & ScriptStation::STATION_BUS_STOP) != 0) station_types.Set(::StationType::Bus);
+	if ((station_type & ScriptStation::STATION_AIRPORT) != 0) station_types.Set({::StationType::Airport, ::StationType::Oilrig});
+	if ((station_type & ScriptStation::STATION_DOCK) != 0) station_types.Set({::StationType::Dock, ::StationType::Oilrig});
 
 	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
 	for (TileIndex cur_tile : ta) {

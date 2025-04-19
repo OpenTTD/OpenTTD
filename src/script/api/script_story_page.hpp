@@ -10,11 +10,11 @@
 #ifndef SCRIPT_STORY_HPP
 #define SCRIPT_STORY_HPP
 
+#include "../../story_base.h"
+#include "../../story_type.h"
 #include "script_company.hpp"
 #include "script_date.hpp"
 #include "script_vehicle.hpp"
-#include "../../story_type.h"
-#include "../../story_base.h"
 
 /**
  * Class that handles story page related functions.
@@ -45,11 +45,11 @@ public:
 	 * Story page element types.
 	 */
 	enum StoryPageElementType : uint8_t {
-		SPET_TEXT = ::SPET_TEXT,                     ///< An element that displays a block of text.
-		SPET_LOCATION = ::SPET_LOCATION,             ///< An element that displays a single line of text along with a button to view the referenced location.
-		SPET_GOAL = ::SPET_GOAL,                     ///< An element that displays a goal.
-		SPET_BUTTON_PUSH = ::SPET_BUTTON_PUSH,       ///< A push button that triggers an immediate event.
-		SPET_BUTTON_TILE = ::SPET_BUTTON_TILE,       ///< A button that allows the player to select a tile, and triggers an event with the tile.
+		SPET_TEXT = ::SPET_TEXT, ///< An element that displays a block of text.
+		SPET_LOCATION = ::SPET_LOCATION, ///< An element that displays a single line of text along with a button to view the referenced location.
+		SPET_GOAL = ::SPET_GOAL, ///< An element that displays a goal.
+		SPET_BUTTON_PUSH = ::SPET_BUTTON_PUSH, ///< A push button that triggers an immediate event.
+		SPET_BUTTON_TILE = ::SPET_BUTTON_TILE, ///< A button that allows the player to select a tile, and triggers an event with the tile.
 		SPET_BUTTON_VEHICLE = ::SPET_BUTTON_VEHICLE, ///< A button that allows the player to select a vehicle, and triggers an event with the vehicle.
 	};
 
@@ -63,8 +63,8 @@ public:
 	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
 	 */
 	enum StoryPageButtonFlags : uint8_t {
-		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
-		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
+		SPBF_NONE = ::SPBF_NONE, ///< No special formatting for button.
+		SPBF_FLOAT_LEFT = ::SPBF_FLOAT_LEFT, ///< Button is placed to the left of the following paragraph.
 		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
 	};
 
@@ -72,61 +72,61 @@ public:
 	 * Mouse cursors usable by story page buttons.
 	 */
 	enum StoryPageButtonCursor : uint8_t {
-		SPBC_MOUSE          = ::SPBC_MOUSE,
-		SPBC_ZZZ            = ::SPBC_ZZZ,
-		SPBC_BUOY           = ::SPBC_BUOY,
-		SPBC_QUERY          = ::SPBC_QUERY,
-		SPBC_HQ             = ::SPBC_HQ,
-		SPBC_SHIP_DEPOT     = ::SPBC_SHIP_DEPOT,
-		SPBC_SIGN           = ::SPBC_SIGN,
-		SPBC_TREE           = ::SPBC_TREE,
-		SPBC_BUY_LAND       = ::SPBC_BUY_LAND,
-		SPBC_LEVEL_LAND     = ::SPBC_LEVEL_LAND,
-		SPBC_TOWN           = ::SPBC_TOWN,
-		SPBC_INDUSTRY       = ::SPBC_INDUSTRY,
-		SPBC_ROCKY_AREA     = ::SPBC_ROCKY_AREA,
-		SPBC_DESERT         = ::SPBC_DESERT,
-		SPBC_TRANSMITTER    = ::SPBC_TRANSMITTER,
-		SPBC_AIRPORT        = ::SPBC_AIRPORT,
-		SPBC_DOCK           = ::SPBC_DOCK,
-		SPBC_CANAL          = ::SPBC_CANAL,
-		SPBC_LOCK           = ::SPBC_LOCK,
-		SPBC_RIVER          = ::SPBC_RIVER,
-		SPBC_AQUEDUCT       = ::SPBC_AQUEDUCT,
-		SPBC_BRIDGE         = ::SPBC_BRIDGE,
-		SPBC_RAIL_STATION   = ::SPBC_RAIL_STATION,
-		SPBC_TUNNEL_RAIL    = ::SPBC_TUNNEL_RAIL,
-		SPBC_TUNNEL_ELRAIL  = ::SPBC_TUNNEL_ELRAIL,
-		SPBC_TUNNEL_MONO    = ::SPBC_TUNNEL_MONO,
-		SPBC_TUNNEL_MAGLEV  = ::SPBC_TUNNEL_MAGLEV,
-		SPBC_AUTORAIL       = ::SPBC_AUTORAIL,
-		SPBC_AUTOELRAIL     = ::SPBC_AUTOELRAIL,
-		SPBC_AUTOMONO       = ::SPBC_AUTOMONO,
-		SPBC_AUTOMAGLEV     = ::SPBC_AUTOMAGLEV,
-		SPBC_WAYPOINT       = ::SPBC_WAYPOINT,
-		SPBC_RAIL_DEPOT     = ::SPBC_RAIL_DEPOT,
-		SPBC_ELRAIL_DEPOT   = ::SPBC_ELRAIL_DEPOT,
-		SPBC_MONO_DEPOT     = ::SPBC_MONO_DEPOT,
-		SPBC_MAGLEV_DEPOT   = ::SPBC_MAGLEV_DEPOT,
-		SPBC_CONVERT_RAIL   = ::SPBC_CONVERT_RAIL,
+		SPBC_MOUSE = ::SPBC_MOUSE,
+		SPBC_ZZZ = ::SPBC_ZZZ,
+		SPBC_BUOY = ::SPBC_BUOY,
+		SPBC_QUERY = ::SPBC_QUERY,
+		SPBC_HQ = ::SPBC_HQ,
+		SPBC_SHIP_DEPOT = ::SPBC_SHIP_DEPOT,
+		SPBC_SIGN = ::SPBC_SIGN,
+		SPBC_TREE = ::SPBC_TREE,
+		SPBC_BUY_LAND = ::SPBC_BUY_LAND,
+		SPBC_LEVEL_LAND = ::SPBC_LEVEL_LAND,
+		SPBC_TOWN = ::SPBC_TOWN,
+		SPBC_INDUSTRY = ::SPBC_INDUSTRY,
+		SPBC_ROCKY_AREA = ::SPBC_ROCKY_AREA,
+		SPBC_DESERT = ::SPBC_DESERT,
+		SPBC_TRANSMITTER = ::SPBC_TRANSMITTER,
+		SPBC_AIRPORT = ::SPBC_AIRPORT,
+		SPBC_DOCK = ::SPBC_DOCK,
+		SPBC_CANAL = ::SPBC_CANAL,
+		SPBC_LOCK = ::SPBC_LOCK,
+		SPBC_RIVER = ::SPBC_RIVER,
+		SPBC_AQUEDUCT = ::SPBC_AQUEDUCT,
+		SPBC_BRIDGE = ::SPBC_BRIDGE,
+		SPBC_RAIL_STATION = ::SPBC_RAIL_STATION,
+		SPBC_TUNNEL_RAIL = ::SPBC_TUNNEL_RAIL,
+		SPBC_TUNNEL_ELRAIL = ::SPBC_TUNNEL_ELRAIL,
+		SPBC_TUNNEL_MONO = ::SPBC_TUNNEL_MONO,
+		SPBC_TUNNEL_MAGLEV = ::SPBC_TUNNEL_MAGLEV,
+		SPBC_AUTORAIL = ::SPBC_AUTORAIL,
+		SPBC_AUTOELRAIL = ::SPBC_AUTOELRAIL,
+		SPBC_AUTOMONO = ::SPBC_AUTOMONO,
+		SPBC_AUTOMAGLEV = ::SPBC_AUTOMAGLEV,
+		SPBC_WAYPOINT = ::SPBC_WAYPOINT,
+		SPBC_RAIL_DEPOT = ::SPBC_RAIL_DEPOT,
+		SPBC_ELRAIL_DEPOT = ::SPBC_ELRAIL_DEPOT,
+		SPBC_MONO_DEPOT = ::SPBC_MONO_DEPOT,
+		SPBC_MAGLEV_DEPOT = ::SPBC_MAGLEV_DEPOT,
+		SPBC_CONVERT_RAIL = ::SPBC_CONVERT_RAIL,
 		SPBC_CONVERT_ELRAIL = ::SPBC_CONVERT_ELRAIL,
-		SPBC_CONVERT_MONO   = ::SPBC_CONVERT_MONO,
+		SPBC_CONVERT_MONO = ::SPBC_CONVERT_MONO,
 		SPBC_CONVERT_MAGLEV = ::SPBC_CONVERT_MAGLEV,
-		SPBC_AUTOROAD       = ::SPBC_AUTOROAD,
-		SPBC_AUTOTRAM       = ::SPBC_AUTOTRAM,
-		SPBC_ROAD_DEPOT     = ::SPBC_ROAD_DEPOT,
-		SPBC_BUS_STATION    = ::SPBC_BUS_STATION,
-		SPBC_TRUCK_STATION  = ::SPBC_TRUCK_STATION,
-		SPBC_ROAD_TUNNEL    = ::SPBC_ROAD_TUNNEL,
-		SPBC_CLONE_TRAIN    = ::SPBC_CLONE_TRAIN,
-		SPBC_CLONE_ROADVEH  = ::SPBC_CLONE_ROADVEH,
-		SPBC_CLONE_SHIP     = ::SPBC_CLONE_SHIP,
+		SPBC_AUTOROAD = ::SPBC_AUTOROAD,
+		SPBC_AUTOTRAM = ::SPBC_AUTOTRAM,
+		SPBC_ROAD_DEPOT = ::SPBC_ROAD_DEPOT,
+		SPBC_BUS_STATION = ::SPBC_BUS_STATION,
+		SPBC_TRUCK_STATION = ::SPBC_TRUCK_STATION,
+		SPBC_ROAD_TUNNEL = ::SPBC_ROAD_TUNNEL,
+		SPBC_CLONE_TRAIN = ::SPBC_CLONE_TRAIN,
+		SPBC_CLONE_ROADVEH = ::SPBC_CLONE_ROADVEH,
+		SPBC_CLONE_SHIP = ::SPBC_CLONE_SHIP,
 		SPBC_CLONE_AIRPLANE = ::SPBC_CLONE_AIRPLANE,
-		SPBC_DEMOLISH       = ::SPBC_DEMOLISH,
-		SPBC_LOWERLAND      = ::SPBC_LOWERLAND,
-		SPBC_RAISELAND      = ::SPBC_RAISELAND,
-		SPBC_PICKSTATION    = ::SPBC_PICKSTATION,
-		SPBC_BUILDSIGNALS   = ::SPBC_BUILDSIGNALS,
+		SPBC_DEMOLISH = ::SPBC_DEMOLISH,
+		SPBC_LOWERLAND = ::SPBC_LOWERLAND,
+		SPBC_RAISELAND = ::SPBC_RAISELAND,
+		SPBC_PICKSTATION = ::SPBC_PICKSTATION,
+		SPBC_BUILDSIGNALS = ::SPBC_BUILDSIGNALS,
 	};
 
 	/**
@@ -134,22 +134,22 @@ public:
 	 * Place a colour value in the lowest 8 bits of the \c reference parameter to the button.
 	 */
 	enum StoryPageButtonColour : uint8_t {
-		SPBC_DARK_BLUE  = ::COLOUR_DARK_BLUE,
+		SPBC_DARK_BLUE = ::COLOUR_DARK_BLUE,
 		SPBC_PALE_GREEN = ::COLOUR_PALE_GREEN,
-		SPBC_PINK       = ::COLOUR_PINK,
-		SPBC_YELLOW     = ::COLOUR_YELLOW,
-		SPBC_RED        = ::COLOUR_RED,
+		SPBC_PINK = ::COLOUR_PINK,
+		SPBC_YELLOW = ::COLOUR_YELLOW,
+		SPBC_RED = ::COLOUR_RED,
 		SPBC_LIGHT_BLUE = ::COLOUR_LIGHT_BLUE,
-		SPBC_GREEN      = ::COLOUR_GREEN,
+		SPBC_GREEN = ::COLOUR_GREEN,
 		SPBC_DARK_GREEN = ::COLOUR_DARK_GREEN,
-		SPBC_BLUE       = ::COLOUR_BLUE,
-		SPBC_CREAM      = ::COLOUR_CREAM,
-		SPBC_MAUVE      = ::COLOUR_MAUVE,
-		SPBC_PURPLE     = ::COLOUR_PURPLE,
-		SPBC_ORANGE     = ::COLOUR_ORANGE,
-		SPBC_BROWN      = ::COLOUR_BROWN,
-		SPBC_GREY       = ::COLOUR_GREY,
-		SPBC_WHITE      = ::COLOUR_WHITE,
+		SPBC_BLUE = ::COLOUR_BLUE,
+		SPBC_CREAM = ::COLOUR_CREAM,
+		SPBC_MAUVE = ::COLOUR_MAUVE,
+		SPBC_PURPLE = ::COLOUR_PURPLE,
+		SPBC_ORANGE = ::COLOUR_ORANGE,
+		SPBC_BROWN = ::COLOUR_BROWN,
+		SPBC_GREY = ::COLOUR_GREY,
+		SPBC_WHITE = ::COLOUR_WHITE,
 	};
 
 	/**
@@ -368,4 +368,3 @@ public:
 };
 
 #endif /* SCRIPT_STORY_HPP */
-

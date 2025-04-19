@@ -10,7 +10,6 @@
 #ifndef SQUIRREL_HELPER_TYPE_HPP
 #define SQUIRREL_HELPER_TYPE_HPP
 
-
 /** Definition of a simple array. */
 template <typename Titem = int32_t>
 using Array = std::vector<Titem>;

@@ -26,14 +26,22 @@ public:
 	bool IsSongPlaying() override;
 
 	void SetVolume(uint8_t vol) override;
-	std::string_view GetName() const override { return "win32"; }
+
+	std::string_view GetName() const override
+	{
+		return "win32";
+	}
 };
 
 /** Factory for Windows' music player. */
 class FMusicDriver_Win32 : public DriverFactoryBase {
 public:
 	FMusicDriver_Win32() : DriverFactoryBase(Driver::DT_MUSIC, 5, "win32", "Win32 Music Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_Win32>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<MusicDriver_Win32>();
+	}
 };
 
 #endif /* MUSIC_WIN32_H */

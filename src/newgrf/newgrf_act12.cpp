@@ -8,6 +8,7 @@
 /** @file newgrf_act12.cpp NewGRF Action 0x12 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../fontcache.h"
 #include "newgrf_bytereader.h"
@@ -28,8 +29,8 @@ static void LoadFontGlyph(ByteReader &buf)
 	uint8_t num_def = buf.ReadByte();
 
 	for (uint i = 0; i < num_def; i++) {
-		FontSize size    = (FontSize)buf.ReadByte();
-		uint8_t  num_char  = buf.ReadByte();
+		FontSize size = (FontSize)buf.ReadByte();
+		uint8_t num_char = buf.ReadByte();
 		uint16_t base_char = buf.ReadWord();
 
 		if (size >= FS_END) {
@@ -72,9 +73,38 @@ static void SkipAct12(ByteReader &buf)
 	GrfMsg(3, "SkipAct12: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
-template <> void GrfActionHandler<0x12>::FileScan(ByteReader &buf) { SkipAct12(buf); }
-template <> void GrfActionHandler<0x12>::SafetyScan(ByteReader &buf) { SkipAct12(buf); }
-template <> void GrfActionHandler<0x12>::LabelScan(ByteReader &buf) { SkipAct12(buf); }
-template <> void GrfActionHandler<0x12>::Init(ByteReader &buf) { SkipAct12(buf); }
-template <> void GrfActionHandler<0x12>::Reserve(ByteReader &buf) { SkipAct12(buf); }
-template <> void GrfActionHandler<0x12>::Activation(ByteReader &buf) { LoadFontGlyph(buf); }
+template <>
+void GrfActionHandler<0x12>::FileScan(ByteReader &buf)
+{
+	SkipAct12(buf);
+}
+
+template <>
+void GrfActionHandler<0x12>::SafetyScan(ByteReader &buf)
+{
+	SkipAct12(buf);
+}
+
+template <>
+void GrfActionHandler<0x12>::LabelScan(ByteReader &buf)
+{
+	SkipAct12(buf);
+}
+
+template <>
+void GrfActionHandler<0x12>::Init(ByteReader &buf)
+{
+	SkipAct12(buf);
+}
+
+template <>
+void GrfActionHandler<0x12>::Reserve(ByteReader &buf)
+{
+	SkipAct12(buf);
+}
+
+template <>
+void GrfActionHandler<0x12>::Activation(ByteReader &buf)
+{
+	LoadFontGlyph(buf);
+}

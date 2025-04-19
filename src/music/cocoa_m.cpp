@@ -10,35 +10,34 @@
  * @brief MIDI music player for MacOS X using CoreAudio.
  */
 
-
 #ifdef WITH_COCOA
 
-#include "../stdafx.h"
-#include "../os/macosx/macos.h"
-#include "cocoa_m.h"
-#include "midifile.hpp"
-#include "../debug.h"
-#include "../base_media_base.h"
+#	include "../stdafx.h"
 
-#include <CoreServices/CoreServices.h>
-#include <AudioUnit/AudioUnit.h>
-#include <AudioToolbox/AudioToolbox.h>
+#	include "cocoa_m.h"
 
-#include "../safeguards.h"
+#	include <AudioToolbox/AudioToolbox.h>
+#	include <AudioUnit/AudioUnit.h>
+#	include <CoreServices/CoreServices.h>
 
-#if !defined(HAVE_OSX_1011_SDK)
-#define kMusicSequenceFile_AnyType 0
-#endif
+#	include "../base_media_base.h"
+#	include "../debug.h"
+#	include "../os/macosx/macos.h"
+#	include "midifile.hpp"
+
+#	include "../safeguards.h"
+
+#	if !defined(HAVE_OSX_1011_SDK)
+#		define kMusicSequenceFile_AnyType 0
+#	endif
 
 static FMusicDriver_Cocoa iFMusicDriver_Cocoa;
 
-
-static MusicPlayer    _player = nullptr;
-static MusicSequence  _sequence = nullptr;
+static MusicPlayer _player = nullptr;
+static MusicSequence _sequence = nullptr;
 static MusicTimeStamp _seq_length = 0;
-static bool           _playing = false;
-static uint8_t           _volume = 127;
-
+static bool _playing = false;
+static uint8_t _volume = 127;
 
 /** Set the volume of the current sequence. */
 static void DoSetVolume()
@@ -71,10 +70,9 @@ static void DoSetVolume()
 		return;
 	}
 
-	Float32 vol = _volume / 127.0f;  // 0 - +127 -> 0.0 - 1.0
+	Float32 vol = _volume / 127.0f; // 0 - +127 -> 0.0 - 1.0
 	AudioUnitSetParameter(output_unit, kHALOutputParam_Volume, kAudioUnitScope_Global, 0, vol, 0);
 }
-
 
 /**
  * Initialized the MIDI player, including QuickTime initialization.
@@ -85,7 +83,6 @@ std::optional<std::string_view> MusicDriver_Cocoa::Start(const StringList &)
 
 	return std::nullopt;
 }
-
 
 /**
  * Checks whether the player is active.
@@ -99,7 +96,6 @@ bool MusicDriver_Cocoa::IsSongPlaying()
 	return time < _seq_length;
 }
 
-
 /**
  * Stops the MIDI player.
  */
@@ -108,7 +104,6 @@ void MusicDriver_Cocoa::Stop()
 	if (_player != nullptr) DisposeMusicPlayer(_player);
 	if (_sequence != nullptr) DisposeMusicSequence(_sequence);
 }
-
 
 /**
  * Starts playing a new song.
@@ -135,7 +130,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	}
 
 	std::string os_file = OTTD2FS(filename);
-	CFAutoRelease<CFURLRef> url(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file.c_str(), os_file.length(), false));
+	CFAutoRelease<CFURLRef> url(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8 *)os_file.c_str(), os_file.length(), false));
 
 	if (MusicSequenceFileLoad(_sequence, url.get(), kMusicSequenceFile_AnyType, 0) != noErr) {
 		Debug(driver, 0, "cocoa_m: Failed to load MIDI file");
@@ -157,9 +152,9 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	MusicSequenceGetTrackCount(_sequence, &num_tracks);
 	_seq_length = 0;
 	for (UInt32 i = 0; i < num_tracks; i++) {
-		MusicTrack     track = nullptr;
+		MusicTrack track = nullptr;
 		MusicTimeStamp track_length = 0;
-		UInt32         prop_size = sizeof(MusicTimeStamp);
+		UInt32 prop_size = sizeof(MusicTimeStamp);
 		MusicSequenceGetIndTrack(_sequence, i, &track);
 		MusicTrackGetProperty(track, kSequenceTrackProperty_TrackLength, &track_length, &prop_size);
 		if (track_length > _seq_length) _seq_length = track_length;
@@ -176,7 +171,6 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	Debug(driver, 3, "cocoa_m: playing '{}'", filename);
 }
 
-
 /**
  * Stops playing the current song, if the player is active.
  */
@@ -186,7 +180,6 @@ void MusicDriver_Cocoa::StopSong()
 	MusicPlayerSetSequence(_player, nullptr);
 	_playing = false;
 }
-
 
 /**
  * Changes the playing volume of the MIDI player.

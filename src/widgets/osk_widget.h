@@ -12,30 +12,30 @@
 
 /** Widgets of the #OskWindow class. */
 enum OnScreenKeyboardWidgets : WidgetID {
-	WID_OSK_CAPTION,   ///< Caption of window.
-	WID_OSK_TEXT,      ///< Edit box.
-	WID_OSK_CANCEL,    ///< Cancel key.
-	WID_OSK_OK,        ///< Ok key.
+	WID_OSK_CAPTION, ///< Caption of window.
+	WID_OSK_TEXT, ///< Edit box.
+	WID_OSK_CANCEL, ///< Cancel key.
+	WID_OSK_OK, ///< Ok key.
 	WID_OSK_BACKSPACE, ///< Backspace key.
-	WID_OSK_SPECIAL,   ///< Special key (at keyboards often used for tab key).
-	WID_OSK_CAPS,      ///< Capslock key.
-	WID_OSK_SHIFT,     ///< Shift(lock) key.
-	WID_OSK_SPACE,     ///< Space bar.
-	WID_OSK_LEFT,      ///< Cursor left key.
-	WID_OSK_RIGHT,     ///< Cursor right key.
-	WID_OSK_LETTERS,   ///< First widget of the 'normal' keys.
+	WID_OSK_SPECIAL, ///< Special key (at keyboards often used for tab key).
+	WID_OSK_CAPS, ///< Capslock key.
+	WID_OSK_SHIFT, ///< Shift(lock) key.
+	WID_OSK_SPACE, ///< Space bar.
+	WID_OSK_LEFT, ///< Cursor left key.
+	WID_OSK_RIGHT, ///< Cursor right key.
+	WID_OSK_LETTERS, ///< First widget of the 'normal' keys.
 
-	WID_OSK_NUMBERS_FIRST = WID_OSK_LETTERS,            ///< First widget of the numbers row.
-	WID_OSK_NUMBERS_LAST  = WID_OSK_NUMBERS_FIRST + 13, ///< Last widget of the numbers row.
+	WID_OSK_NUMBERS_FIRST = WID_OSK_LETTERS, ///< First widget of the numbers row.
+	WID_OSK_NUMBERS_LAST = WID_OSK_NUMBERS_FIRST + 13, ///< Last widget of the numbers row.
 
-	WID_OSK_QWERTY_FIRST,                               ///< First widget of the qwerty row.
-	WID_OSK_QWERTY_LAST   = WID_OSK_QWERTY_FIRST  + 11, ///< Last widget of the qwerty row.
+	WID_OSK_QWERTY_FIRST, ///< First widget of the qwerty row.
+	WID_OSK_QWERTY_LAST = WID_OSK_QWERTY_FIRST + 11, ///< Last widget of the qwerty row.
 
-	WID_OSK_ASDFG_FIRST,                                ///< First widget of the asdfg row.
-	WID_OSK_ASDFG_LAST    = WID_OSK_ASDFG_FIRST   + 11, ///< Last widget of the asdfg row.
+	WID_OSK_ASDFG_FIRST, ///< First widget of the asdfg row.
+	WID_OSK_ASDFG_LAST = WID_OSK_ASDFG_FIRST + 11, ///< Last widget of the asdfg row.
 
-	WID_OSK_ZXCVB_FIRST,                                ///< First widget of the zxcvb row.
-	WID_OSK_ZXCVB_LAST    = WID_OSK_ZXCVB_FIRST   + 11, ///< Last widget of the zxcvb row.
+	WID_OSK_ZXCVB_FIRST, ///< First widget of the zxcvb row.
+	WID_OSK_ZXCVB_LAST = WID_OSK_ZXCVB_FIRST + 11, ///< Last widget of the zxcvb row.
 };
 
 #endif /* WIDGETS_OSK_WIDGET_H */

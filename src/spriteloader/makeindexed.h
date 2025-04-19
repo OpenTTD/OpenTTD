@@ -15,9 +15,12 @@
 /** Sprite loader for converting graphics coming from another source. */
 class SpriteLoaderMakeIndexed : public SpriteLoader {
 	SpriteLoader &baseloader;
+
 public:
 	SpriteLoaderMakeIndexed(SpriteLoader &baseloader) : baseloader(baseloader) {}
-	uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp) override;
+
+	uint8_t LoadSprite(
+		SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp) override;
 };
 
 #endif /* SPRITELOADER_MAKEINDEXED_H */

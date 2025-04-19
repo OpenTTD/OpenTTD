@@ -10,15 +10,14 @@
 #ifndef NETWORK_CORE_ADDRESS_H
 #define NETWORK_CORE_ADDRESS_H
 
-#include "os_abstraction.h"
-#include "config.h"
 #include "../../company_type.h"
 #include "../../string_func.h"
-
+#include "config.h"
+#include "os_abstraction.h"
 
 class NetworkAddress;
 typedef std::vector<NetworkAddress> NetworkAddressList; ///< Type for a list of addresses.
-using SocketList = std::map<SOCKET, NetworkAddress>;    ///< Type for a mapping between address and socket.
+using SocketList = std::map<SOCKET, NetworkAddress>; ///< Type for a mapping between address and socket.
 
 /**
  * Wrapper for (un)resolved network addresses; there's no reason to transform
@@ -27,10 +26,10 @@ using SocketList = std::map<SOCKET, NetworkAddress>;    ///< Type for a mapping 
  */
 class NetworkAddress {
 private:
-	std::string hostname;     ///< The hostname
-	int address_length;       ///< The length of the resolved address
+	std::string hostname; ///< The hostname
+	int address_length; ///< The length of the resolved address
 	sockaddr_storage address; ///< The resolved address
-	bool resolved;            ///< Whether the address has been (tried to be) resolved
+	bool resolved; ///< Whether the address has been (tried to be) resolved
 
 	/**
 	 * Helper function to resolve something to a socket.
@@ -40,27 +39,21 @@ private:
 	typedef SOCKET (*LoopProc)(addrinfo *runp);
 
 	SOCKET Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func);
+
 public:
 	/**
 	 * Create a network address based on a resolved IP and port.
 	 * @param address The IP address with port.
 	 * @param address_length The length of the address.
 	 */
-	NetworkAddress(struct sockaddr_storage &address, int address_length) :
-		address_length(address_length),
-		address(address),
-		resolved(address_length != 0)
-	{
-	}
+	NetworkAddress(struct sockaddr_storage &address, int address_length) : address_length(address_length), address(address), resolved(address_length != 0) {}
 
 	/**
 	 * Create a network address based on a resolved IP and port.
 	 * @param address The IP address with port.
 	 * @param address_length The length of the address.
 	 */
-	NetworkAddress(sockaddr *address, int address_length) :
-		address_length(address_length),
-		resolved(address_length != 0)
+	NetworkAddress(sockaddr *address, int address_length) : address_length(address_length), resolved(address_length != 0)
 	{
 		memset(&this->address, 0, sizeof(this->address));
 		memcpy(&this->address, address, address_length);
@@ -72,9 +65,7 @@ public:
 	 * @param port the port
 	 * @param family the address family
 	 */
-	NetworkAddress(std::string_view hostname = "", uint16_t port = 0, int family = AF_UNSPEC) :
-		address_length(0),
-		resolved(false)
+	NetworkAddress(std::string_view hostname = "", uint16_t port = 0, int family = AF_UNSPEC) : address_length(0), resolved(false)
 	{
 		if (!hostname.empty() && hostname.front() == '[' && hostname.back() == ']') {
 			hostname.remove_prefix(1);
@@ -136,7 +127,7 @@ public:
 	 * @param address the other address.
 	 * @return true if both match.
 	 */
-	bool operator == (NetworkAddress &address)
+	bool operator==(NetworkAddress &address)
 	{
 		return this->CompareTo(address) == 0;
 	}
@@ -146,16 +137,16 @@ public:
 	 * @param address the other address.
 	 * @return true if both match.
 	 */
-	bool operator == (NetworkAddress &address) const
+	bool operator==(NetworkAddress &address) const
 	{
-		return const_cast<NetworkAddress*>(this)->CompareTo(address) == 0;
+		return const_cast<NetworkAddress *>(this)->CompareTo(address) == 0;
 	}
 
 	/**
 	 * Compare the address of this class with the address of another.
 	 * @param address the other address.
 	 */
-	auto operator <=>(NetworkAddress &address)
+	auto operator<=>(NetworkAddress &address)
 	{
 		return this->CompareTo(address) <=> 0;
 	}
@@ -175,7 +166,7 @@ public:
  * Sorting will prefer entries at the top of this list above ones at the bottom.
  */
 enum ServerAddressType : uint8_t {
-	SERVER_ADDRESS_DIRECT,      ///< Server-address is based on an hostname:port.
+	SERVER_ADDRESS_DIRECT, ///< Server-address is based on an hostname:port.
 	SERVER_ADDRESS_INVITE_CODE, ///< Server-address is based on an invite code.
 };
 
@@ -197,7 +188,7 @@ private:
 	ServerAddress(ServerAddressType type, std::string &&connection_string) : type(type), connection_string(std::move(connection_string)) {}
 
 public:
-	ServerAddressType type;        ///< The type of this ServerAddress.
+	ServerAddressType type; ///< The type of this ServerAddress.
 	std::string connection_string; ///< The connection string for this ServerAddress.
 
 	static ServerAddress Parse(std::string_view connection_string, uint16_t default_port, CompanyID *company_id = nullptr);

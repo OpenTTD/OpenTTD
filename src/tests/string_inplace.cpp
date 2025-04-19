@@ -8,8 +8,11 @@
 /** @file string_inplace.cpp Test functionality from core/string_inplace. */
 
 #include "../stdafx.h"
-#include "../3rdparty/catch2/catch.hpp"
+
 #include "../core/string_inplace.hpp"
+
+#include "../3rdparty/catch2/catch.hpp"
+
 #include "../safeguards.h"
 
 using namespace std::literals;

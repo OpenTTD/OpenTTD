@@ -10,8 +10,8 @@
 #ifndef DEPOT_FUNC_H
 #define DEPOT_FUNC_H
 
-#include "vehicle_type.h"
 #include "slope_func.h"
+#include "vehicle_type.h"
 
 void ShowDepotWindow(TileIndex tile, VehicleType type);
 void InitDepotWindowBlockSizes();

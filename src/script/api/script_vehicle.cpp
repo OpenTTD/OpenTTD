@@ -8,22 +8,23 @@
 /** @file script_vehicle.cpp Implementation of ScriptVehicle. */
 
 #include "../../stdafx.h"
-#include "script_engine.hpp"
+
+#include "../../aircraft.h"
+#include "../../command_func.h"
+#include "../../roadveh.h"
+#include "../../roadveh_cmd.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
+#include "../../train.h"
+#include "../../train_cmd.h"
+#include "../../vehicle_cmd.h"
+#include "../../vehicle_func.h"
+#include "../script_instance.hpp"
 #include "script_cargo.hpp"
+#include "script_engine.hpp"
 #include "script_gamesettings.hpp"
 #include "script_group.hpp"
 #include "script_map.hpp"
-#include "../script_instance.hpp"
-#include "../../string_func.h"
-#include "../../strings_func.h"
-#include "../../command_func.h"
-#include "../../roadveh.h"
-#include "../../train.h"
-#include "../../vehicle_func.h"
-#include "../../aircraft.h"
-#include "../../roadveh_cmd.h"
-#include "../../train_cmd.h"
-#include "../../vehicle_cmd.h"
 
 #include "table/strings.h"
 
@@ -165,7 +166,6 @@
 	return ScriptObject::Command<CMD_REFIT_VEHICLE>::Do(vehicle_id, cargo, 0, false, false, 0);
 }
 
-
 /* static */ bool ScriptVehicle::SellVehicle(VehicleID vehicle_id)
 {
 	EnforceCompanyModeValid(false);
@@ -240,9 +240,12 @@
 	EnforcePrecondition(false, ::Vehicle::Get(vehicle_id)->type == VEH_ROAD || ::Vehicle::Get(vehicle_id)->type == VEH_TRAIN);
 
 	switch (::Vehicle::Get(vehicle_id)->type) {
-		case VEH_ROAD: return ScriptObject::Command<CMD_TURN_ROADVEH>::Do(vehicle_id);
-		case VEH_TRAIN: return ScriptObject::Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(vehicle_id, false);
-		default: NOT_REACHED();
+		case VEH_ROAD:
+			return ScriptObject::Command<CMD_TURN_ROADVEH>::Do(vehicle_id);
+		case VEH_TRAIN:
+			return ScriptObject::Command<CMD_REVERSE_TRAIN_DIRECTION>::Do(vehicle_id, false);
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -396,11 +399,16 @@
 	if (!IsValidVehicle(vehicle_id)) return VT_INVALID;
 
 	switch (::Vehicle::Get(vehicle_id)->type) {
-		case VEH_ROAD:     return VT_ROAD;
-		case VEH_TRAIN:    return VT_RAIL;
-		case VEH_SHIP:     return VT_WATER;
-		case VEH_AIRCRAFT: return VT_AIR;
-		default:           return VT_INVALID;
+		case VEH_ROAD:
+			return VT_ROAD;
+		case VEH_TRAIN:
+			return VT_RAIL;
+		case VEH_SHIP:
+			return VT_WATER;
+		case VEH_AIRCRAFT:
+			return VT_AIR;
+		default:
+			return VT_INVALID;
 	}
 }
 
@@ -452,9 +460,12 @@
 
 	const Vehicle *v = ::Vehicle::Get(vehicle_id);
 	switch (v->type) {
-		case VEH_ROAD: return ::RoadVehicle::From(v)->HasArticulatedPart();
-		case VEH_TRAIN: return ::Train::From(v)->HasArticulatedPart();
-		default: NOT_REACHED();
+		case VEH_ROAD:
+			return ::RoadVehicle::From(v)->HasArticulatedPart();
+		case VEH_TRAIN:
+			return ::Train::From(v)->HasArticulatedPart();
+		default:
+			NOT_REACHED();
 	}
 }
 

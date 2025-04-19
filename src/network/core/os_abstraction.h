@@ -20,7 +20,7 @@
  */
 class NetworkError {
 private:
-	int error;                   ///< The underlying error number from errno or WSAGetLastError.
+	int error; ///< The underlying error number from errno or WSAGetLastError.
 	mutable std::string message; ///< The string representation of the error (set on first call to #AsString).
 public:
 	NetworkError(int error, std::string_view message = {});
@@ -38,25 +38,25 @@ public:
 
 /* Windows stuff */
 #if defined(_WIN32)
-#include <errno.h>
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#include <windows.h>
+#	include <errno.h>
+#	include <windows.h>
+#	include <winsock2.h>
+#	include <ws2tcpip.h>
 
 /* Windows has some different names for some types */
 typedef unsigned long in_addr_t;
 
 /* Handle cross-compilation with --build=*-*-cygwin --host=*-*-mingw32 */
-#if defined(__MINGW32__) && !defined(AI_ADDRCONFIG)
-#	define AI_ADDRCONFIG               0x00000400
-#endif
+#	if defined(__MINGW32__) && !defined(AI_ADDRCONFIG)
+#		define AI_ADDRCONFIG               0x00000400
+#	endif
 
-#if !(defined(__MINGW32__) || defined(__CYGWIN__))
-	/* Windows has some different names for some types */
-	typedef SSIZE_T ssize_t;
-	typedef int socklen_t;
-#	define IPPROTO_IPV6 41
-#endif /* !(__MINGW32__ && __CYGWIN__) */
+#	if !(defined(__MINGW32__) || defined(__CYGWIN__))
+/* Windows has some different names for some types */
+typedef SSIZE_T ssize_t;
+typedef int socklen_t;
+#		define IPPROTO_IPV6 41
+#	endif /* !(__MINGW32__ && __CYGWIN__) */
 #endif /* _WIN32 */
 
 /* UNIX stuff */
@@ -84,14 +84,14 @@ typedef unsigned long in_addr_t;
 #	endif
 
 #	if defined(__GLIBC__) && (__GLIBC__ <= 2) && (__GLIBC_MINOR__ <= 1)
-		typedef uint32_t in_addr_t;
+typedef uint32_t in_addr_t;
 #	endif
 
 #	include <errno.h>
 #	include <sys/time.h>
 #	include <netdb.h>
 
-#   if defined(__EMSCRIPTEN__)
+#	if defined(__EMSCRIPTEN__)
 /* Emscripten doesn't support AI_ADDRCONFIG and errors out on it. */
 #		undef AI_ADDRCONFIG
 #		define AI_ADDRCONFIG 0
@@ -99,13 +99,13 @@ typedef unsigned long in_addr_t;
  * https://github.com/emscripten-core/emscripten/issues/1711 */
 #		undef FD_SETSIZE
 #		define FD_SETSIZE 64
-#   endif
+#	endif
 
 /* Haiku says it supports FD_SETSIZE fds, but it really only supports 512. */
-#   if defined(__HAIKU__)
+#	if defined(__HAIKU__)
 #		undef FD_SETSIZE
 #		define FD_SETSIZE 512
-#   endif
+#	endif
 
 #endif /* UNIX */
 
@@ -124,13 +124,15 @@ typedef unsigned long in_addr_t;
 inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address)
 {
 	switch (address.ss_family) {
-		case AF_INET6: return sizeof(struct sockaddr_in6);
-		case AF_INET: return sizeof(struct sockaddr_in);
-		default: NOT_REACHED();
+		case AF_INET6:
+			return sizeof(struct sockaddr_in6);
+		case AF_INET:
+			return sizeof(struct sockaddr_in);
+		default:
+			NOT_REACHED();
 	}
 }
 #endif
-
 
 bool SetNonBlocking(SOCKET d);
 bool SetNoDelay(SOCKET d);
@@ -138,7 +140,7 @@ bool SetReusePort(SOCKET d);
 NetworkError GetSocketError(SOCKET d);
 
 /* Make sure these structures have the size we expect them to be */
-static_assert(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
+static_assert(sizeof(in_addr) == 4); ///< IPv4 addresses should be 4 bytes.
 static_assert(sizeof(in6_addr) == 16); ///< IPv6 addresses should be 16 bytes.
 
 #endif /* NETWORK_CORE_OS_ABSTRACTION_H */

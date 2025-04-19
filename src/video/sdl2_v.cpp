@@ -8,21 +8,24 @@
 /** @file sdl2_v.cpp Implementation of the SDL2 video driver. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../gfx_func.h"
-#include "../blitter/factory.hpp"
-#include "../thread.h"
-#include "../progress.h"
-#include "../core/random_func.hpp"
+
+#include "sdl2_v.h"
+
+#include <SDL.h>
+
+#include "../core/geometry_func.hpp"
 #include "../core/math_func.hpp"
 #include "../core/mem_func.hpp"
-#include "../core/geometry_func.hpp"
+#include "../core/random_func.hpp"
 #include "../core/utf8.hpp"
+#include "../blitter/factory.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
+#include "../gfx_func.h"
+#include "../openttd.h"
+#include "../progress.h"
+#include "../thread.h"
 #include "../window_func.h"
-#include "sdl2_v.h"
-#include <SDL.h>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
@@ -42,19 +45,7 @@ void VideoDriver_SDL_Base::CheckPaletteAnim()
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
-static const Dimension default_resolutions[] = {
-	{  640,  480 },
-	{  800,  600 },
-	{ 1024,  768 },
-	{ 1152,  864 },
-	{ 1280,  800 },
-	{ 1280,  960 },
-	{ 1280, 1024 },
-	{ 1400, 1050 },
-	{ 1600, 1200 },
-	{ 1680, 1050 },
-	{ 1920, 1200 }
-};
+static const Dimension default_resolutions[] = {{640, 480}, {800, 600}, {1024, 768}, {1152, 864}, {1280, 800}, {1280, 960}, {1280, 1024}, {1400, 1050}, {1600, 1200}, {1680, 1050}, {1920, 1200}};
 
 static void FindResolutions()
 {
@@ -152,11 +143,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 	}
 
 	std::string caption = VideoDriver::GetCaption();
-	this->sdl_window = SDL_CreateWindow(
-		caption.c_str(),
-		x, y,
-		w, h,
-		flags);
+	this->sdl_window = SDL_CreateWindow(caption.c_str(), x, y, w, h, flags);
 
 	if (this->sdl_window == nullptr) {
 		Debug(driver, 0, "SDL2: Couldn't allocate a window to draw on: {}", SDL_GetError());
@@ -239,15 +226,14 @@ std::vector<int> VideoDriver_SDL_Base::GetListOfMonitorRefreshRates()
 	return rates;
 }
 
-
 struct SDLVkMapping {
 	const SDL_Keycode vk_from;
 	const uint8_t vk_count;
 	const uint8_t map_to;
 	const bool unprintable;
 
-	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last, bool unprintable)
-		: vk_from(vk_first), vk_count(vk_last - vk_first + 1), map_to(map_first), unprintable(unprintable)
+	constexpr SDLVkMapping(SDL_Keycode vk_first, SDL_Keycode vk_last, uint8_t map_first, [[maybe_unused]] uint8_t map_last, bool unprintable) :
+		vk_from(vk_first), vk_count(vk_last - vk_first + 1), map_to(map_first), unprintable(unprintable)
 	{
 		assert((vk_last - vk_first) == (map_last - map_first));
 	}
@@ -260,65 +246,32 @@ struct SDLVkMapping {
 
 static constexpr SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
-	AS_UP(SDLK_PAGEUP,   WKC_PAGEUP),
-	AS_UP(SDLK_PAGEDOWN, WKC_PAGEDOWN),
-	AS_UP(SDLK_UP,     WKC_UP),
-	AS_UP(SDLK_DOWN,   WKC_DOWN),
-	AS_UP(SDLK_LEFT,   WKC_LEFT),
-	AS_UP(SDLK_RIGHT,  WKC_RIGHT),
+	AS_UP(SDLK_PAGEUP, WKC_PAGEUP), AS_UP(SDLK_PAGEDOWN, WKC_PAGEDOWN), AS_UP(SDLK_UP, WKC_UP), AS_UP(SDLK_DOWN, WKC_DOWN), AS_UP(SDLK_LEFT, WKC_LEFT), AS_UP(SDLK_RIGHT, WKC_RIGHT),
 
-	AS_UP(SDLK_HOME,   WKC_HOME),
-	AS_UP(SDLK_END,    WKC_END),
+	AS_UP(SDLK_HOME, WKC_HOME), AS_UP(SDLK_END, WKC_END),
 
-	AS_UP(SDLK_INSERT, WKC_INSERT),
-	AS_UP(SDLK_DELETE, WKC_DELETE),
+	AS_UP(SDLK_INSERT, WKC_INSERT), AS_UP(SDLK_DELETE, WKC_DELETE),
 
 	/* Map letters & digits */
-	AM(SDLK_a, SDLK_z, 'A', 'Z'),
-	AM(SDLK_0, SDLK_9, '0', '9'),
+	AM(SDLK_a, SDLK_z, 'A', 'Z'), AM(SDLK_0, SDLK_9, '0', '9'),
 
-	AS_UP(SDLK_ESCAPE,    WKC_ESC),
-	AS_UP(SDLK_PAUSE,     WKC_PAUSE),
-	AS_UP(SDLK_BACKSPACE, WKC_BACKSPACE),
+	AS_UP(SDLK_ESCAPE, WKC_ESC), AS_UP(SDLK_PAUSE, WKC_PAUSE), AS_UP(SDLK_BACKSPACE, WKC_BACKSPACE),
 
-	AS(SDLK_SPACE,     WKC_SPACE),
-	AS(SDLK_RETURN,    WKC_RETURN),
-	AS(SDLK_TAB,       WKC_TAB),
+	AS(SDLK_SPACE, WKC_SPACE), AS(SDLK_RETURN, WKC_RETURN), AS(SDLK_TAB, WKC_TAB),
 
 	/* Function keys */
 	AM_UP(SDLK_F1, SDLK_F12, WKC_F1, WKC_F12),
 
 	/* Numeric part. */
-	AS(SDLK_KP_1,        '1'),
-	AS(SDLK_KP_2,        '2'),
-	AS(SDLK_KP_3,        '3'),
-	AS(SDLK_KP_4,        '4'),
-	AS(SDLK_KP_5,        '5'),
-	AS(SDLK_KP_6,        '6'),
-	AS(SDLK_KP_7,        '7'),
-	AS(SDLK_KP_8,        '8'),
-	AS(SDLK_KP_9,        '9'),
-	AS(SDLK_KP_0,        '0'),
-	AS(SDLK_KP_DIVIDE,   WKC_NUM_DIV),
-	AS(SDLK_KP_MULTIPLY, WKC_NUM_MUL),
-	AS(SDLK_KP_MINUS,    WKC_NUM_MINUS),
-	AS(SDLK_KP_PLUS,     WKC_NUM_PLUS),
-	AS(SDLK_KP_ENTER,    WKC_NUM_ENTER),
-	AS(SDLK_KP_PERIOD,   WKC_NUM_DECIMAL),
+	AS(SDLK_KP_1, '1'), AS(SDLK_KP_2, '2'), AS(SDLK_KP_3, '3'), AS(SDLK_KP_4, '4'), AS(SDLK_KP_5, '5'), AS(SDLK_KP_6, '6'), AS(SDLK_KP_7, '7'), AS(SDLK_KP_8, '8'), AS(SDLK_KP_9, '9'),
+	AS(SDLK_KP_0, '0'), AS(SDLK_KP_DIVIDE, WKC_NUM_DIV), AS(SDLK_KP_MULTIPLY, WKC_NUM_MUL), AS(SDLK_KP_MINUS, WKC_NUM_MINUS), AS(SDLK_KP_PLUS, WKC_NUM_PLUS), AS(SDLK_KP_ENTER, WKC_NUM_ENTER),
+	AS(SDLK_KP_PERIOD, WKC_NUM_DECIMAL),
 
 	/* Other non-letter keys */
-	AS(SDLK_SLASH,        WKC_SLASH),
-	AS(SDLK_SEMICOLON,    WKC_SEMICOLON),
-	AS(SDLK_EQUALS,       WKC_EQUALS),
-	AS(SDLK_LEFTBRACKET,  WKC_L_BRACKET),
-	AS(SDLK_BACKSLASH,    WKC_BACKSLASH),
+	AS(SDLK_SLASH, WKC_SLASH), AS(SDLK_SEMICOLON, WKC_SEMICOLON), AS(SDLK_EQUALS, WKC_EQUALS), AS(SDLK_LEFTBRACKET, WKC_L_BRACKET), AS(SDLK_BACKSLASH, WKC_BACKSLASH),
 	AS(SDLK_RIGHTBRACKET, WKC_R_BRACKET),
 
-	AS(SDLK_QUOTE,   WKC_SINGLEQUOTE),
-	AS(SDLK_COMMA,   WKC_COMMA),
-	AS(SDLK_MINUS,   WKC_MINUS),
-	AS(SDLK_PERIOD,  WKC_PERIOD)
-};
+	AS(SDLK_QUOTE, WKC_SINGLEQUOTE), AS(SDLK_COMMA, WKC_COMMA), AS(SDLK_MINUS, WKC_MINUS), AS(SDLK_PERIOD, WKC_PERIOD)};
 
 static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 {
@@ -337,16 +290,13 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, char32_t *character)
 	if (sym->scancode == SDL_SCANCODE_GRAVE) key = WKC_BACKQUOTE;
 
 	/* META are the command keys on mac */
-	if (sym->mod & KMOD_GUI)   key |= WKC_META;
+	if (sym->mod & KMOD_GUI) key |= WKC_META;
 	if (sym->mod & KMOD_SHIFT) key |= WKC_SHIFT;
-	if (sym->mod & KMOD_CTRL)  key |= WKC_CTRL;
-	if (sym->mod & KMOD_ALT)   key |= WKC_ALT;
+	if (sym->mod & KMOD_CTRL) key |= WKC_CTRL;
+	if (sym->mod & KMOD_ALT) key |= WKC_ALT;
 
 	/* The mod keys have no character. Prevent '?' */
-	if (sym->mod & KMOD_GUI ||
-		sym->mod & KMOD_CTRL ||
-		sym->mod & KMOD_ALT ||
-		unprintable) {
+	if (sym->mod & KMOD_GUI || sym->mod & KMOD_CTRL || sym->mod & KMOD_ALT || unprintable) {
 		*character = WKC_NONE;
 	} else {
 		*character = sym->sym;
@@ -440,7 +390,8 @@ bool VideoDriver_SDL_Base::PollEvent()
 					_right_button_clicked = true;
 					break;
 
-				default: break;
+				default:
+					break;
 			}
 			HandleMouseEvents();
 			break;
@@ -464,8 +415,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 			break;
 
 		case SDL_KEYDOWN: // Toggle full-screen on ALT + ENTER/F
-			if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_GUI)) &&
-					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
+			if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_GUI)) && (ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				if (ev.key.repeat == 0) ToggleFullScreen(!_fullscreen);
 			} else {
 				char32_t character;
@@ -473,19 +423,8 @@ bool VideoDriver_SDL_Base::PollEvent()
 				uint keycode = ConvertSdlKeyIntoMy(&ev.key.keysym, &character);
 				/* Only handle non-text keys here. Text is handled in
 				 * SDL_TEXTINPUT below. */
-				if (!this->edit_box_focused ||
-					keycode == WKC_DELETE ||
-					keycode == WKC_NUM_ENTER ||
-					keycode == WKC_LEFT ||
-					keycode == WKC_RIGHT ||
-					keycode == WKC_UP ||
-					keycode == WKC_DOWN ||
-					keycode == WKC_HOME ||
-					keycode == WKC_END ||
-					keycode & WKC_META ||
-					keycode & WKC_CTRL ||
-					keycode & WKC_ALT ||
-					(keycode >= WKC_F1 && keycode <= WKC_F12) ||
+				if (!this->edit_box_focused || keycode == WKC_DELETE || keycode == WKC_NUM_ENTER || keycode == WKC_LEFT || keycode == WKC_RIGHT || keycode == WKC_UP || keycode == WKC_DOWN ||
+					keycode == WKC_HOME || keycode == WKC_END || keycode & WKC_META || keycode & WKC_CTRL || keycode & WKC_ALT || (keycode >= WKC_F1 && keycode <= WKC_F12) ||
 					!IsValidChar(character, CS_ALPHANUMERAL)) {
 					HandleKeypress(keycode, character);
 				}
@@ -615,7 +554,7 @@ void VideoDriver_SDL_Base::InputLoop()
 
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed  = !!(mod & KMOD_CTRL);
+	_ctrl_pressed = !!(mod & KMOD_CTRL);
 	_shift_pressed = !!(mod & KMOD_SHIFT);
 
 	/* Speedup when pressing tab, except when using ALT+TAB
@@ -623,11 +562,7 @@ void VideoDriver_SDL_Base::InputLoop()
 	this->fast_forward_key_pressed = keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0;
 
 	/* Determine which directional keys are down. */
-	_dirkeys =
-		(keys[SDL_SCANCODE_LEFT]  ? 1 : 0) |
-		(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
-		(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
-		(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
+	_dirkeys = (keys[SDL_SCANCODE_LEFT] ? 1 : 0) | (keys[SDL_SCANCODE_UP] ? 2 : 0) | (keys[SDL_SCANCODE_RIGHT] ? 4 : 0) | (keys[SDL_SCANCODE_DOWN] ? 8 : 0);
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
@@ -732,7 +667,7 @@ Dimension VideoDriver_SDL_Base::GetScreenSize() const
 	SDL_DisplayMode mode;
 	if (SDL_GetCurrentDisplayMode(this->startup_display, &mode) != 0) return VideoDriver::GetScreenSize();
 
-	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
+	return {static_cast<uint>(mode.w), static_cast<uint>(mode.h)};
 }
 
 bool VideoDriver_SDL_Base::LockVideoBuffer()

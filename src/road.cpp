@@ -8,18 +8,20 @@
 /** @file road.cpp Generic road related functions. */
 
 #include "stdafx.h"
-#include "rail_map.h"
-#include "road_map.h"
-#include "water_map.h"
-#include "genworld.h"
-#include "company_func.h"
-#include "company_base.h"
-#include "engine_base.h"
-#include "timer/timer_game_calendar.h"
-#include "landscape.h"
+
 #include "road.h"
+
+#include "company_base.h"
+#include "company_func.h"
+#include "engine_base.h"
+#include "genworld.h"
+#include "landscape.h"
+#include "rail_map.h"
 #include "road_func.h"
+#include "road_map.h"
 #include "roadveh.h"
+#include "timer/timer_game_calendar.h"
+#include "water_map.h"
 
 #include "safeguards.h"
 
@@ -32,9 +34,7 @@
  */
 static bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {
-	return (IsTileType(tile, MP_RAILWAY) &&
-		GetRailTileType(tile) == RAIL_TILE_NORMAL &&
-		GetTrackBits(tile) == (ax == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) &&
+	return (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RAIL_TILE_NORMAL && GetTrackBits(tile) == (ax == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) &&
 		std::get<0>(GetFoundationSlope(tile)) == SLOPE_FLAT);
 }
 
@@ -61,7 +61,8 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 			if (IsValidTile(neighbour_tile)) {
 				switch (GetTileType(neighbour_tile)) {
 					/* Always connective ones */
-					case MP_CLEAR: case MP_TREES:
+					case MP_CLEAR:
+					case MP_TREES:
 						connective = true;
 						break;
 
@@ -90,7 +91,8 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 						break;
 
 					/* The definitely not connective ones */
-					default: break;
+					default:
+						break;
 				}
 			}
 
@@ -122,7 +124,7 @@ bool HasRoadTypeAvail(const CompanyID company, RoadType roadtype)
 		 * The GS under deity mode, as well as anybody in the editor builds roads that are
 		 * owned by towns. So if a town may build it, it should be buildable by them too.
 		 */
-		return !rti->flags.Test( RoadTypeFlag::Hidden) || rti->flags.Test( RoadTypeFlag::TownBuild);
+		return !rti->flags.Test(RoadTypeFlag::Hidden) || rti->flags.Test(RoadTypeFlag::TownBuild);
 	} else {
 		const Company *c = Company::GetIfValid(company);
 		if (c == nullptr) return false;
@@ -202,8 +204,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 		const EngineInfo *ei = &e->info;
 
-		if (ei->climates.Test(_settings_game.game_creation.landscape) &&
-				(e->company_avail.Test(company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
+		if (ei->climates.Test(_settings_game.game_creation.landscape) && (e->company_avail.Test(company) || TimerGameCalendar::date >= e->intro_date + CalendarTime::DAYS_IN_YEAR)) {
 			const RoadVehicleInfo *rvi = &e->u.road;
 			assert(rvi->roadtype < ROADTYPE_END);
 			if (introduces) {

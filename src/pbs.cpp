@@ -8,10 +8,11 @@
 /** @file pbs.cpp PBS support routines */
 
 #include "stdafx.h"
-#include "viewport_func.h"
-#include "vehicle_func.h"
+
 #include "newgrf_station.h"
 #include "pathfinder/follow_track.hpp"
+#include "vehicle_func.h"
+#include "viewport_func.h"
 
 #include "safeguards.h"
 
@@ -56,7 +57,7 @@ TrackBits GetReservedTrackbits(TileIndex t)
  */
 void SetRailStationPlatformReservation(TileIndex start, DiagDirection dir, bool b)
 {
-	TileIndex     tile = start;
+	TileIndex tile = start;
 	TileIndexDiff diff = TileOffsByDiagDir(dir);
 
 	assert(IsRailStationTile(start));
@@ -182,13 +183,12 @@ void UnreserveRailTrack(TileIndex tile, Track t)
 	}
 }
 
-
 /** Follow a reservation starting from a specific tile to the end. */
 static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Trackdir trackdir, bool ignore_oneway = false)
 {
 	TileIndex start_tile = tile;
-	Trackdir  start_trackdir = trackdir;
-	bool      first_loop = true;
+	Trackdir start_trackdir = trackdir;
+	bool first_loop = true;
 
 	/* Start track not reserved? This can happen if two trains
 	 * are on the same tile. The reservation on the next tile
@@ -253,7 +253,7 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
  */
 struct FindTrainOnTrackInfo {
 	PBSTileInfo res; ///< Information about the track.
-	Train *best;     ///< The currently "best" vehicle we have found.
+	Train *best; ///< The currently "best" vehicle we have found.
 
 	/** Init the best location to nullptr always! */
 	FindTrainOnTrackInfo() : best(nullptr) {}
@@ -290,7 +290,7 @@ PBSTileInfo FollowTrainReservation(const Train *v, Vehicle **train_on_res)
 	assert(v->type == VEH_TRAIN);
 
 	TileIndex tile = v->tile;
-	Trackdir  trackdir = v->GetVehicleTrackdir();
+	Trackdir trackdir = v->GetVehicleTrackdir();
 
 	if (IsRailDepotTile(tile) && !GetDepotReservationTrackBits(tile)) return PBSTileInfo(tile, trackdir, false);
 
@@ -330,7 +330,7 @@ PBSTileInfo FollowTrainReservation(const Train *v, Vehicle **train_on_res)
 Train *GetTrainForReservation(TileIndex tile, Track track)
 {
 	assert(HasReservedTracks(tile, TrackToTrackBits(track)));
-	Trackdir  trackdir = TrackToTrackdir(track);
+	Trackdir trackdir = TrackToTrackdir(track);
 
 	RailTypes rts = GetRailTypeInfo(GetTileRailType(tile))->compatible_railtypes;
 
@@ -405,8 +405,7 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
 		/* PBS signal on next trackdir? Safe position. */
 		if (HasPbsSignalOnTrackdir(ft.new_tile, td)) return true;
 		/* One-way PBS signal against us? Safe if end-of-line is allowed. */
-		if (IsTileType(ft.new_tile, MP_RAILWAY) && HasSignalOnTrackdir(ft.new_tile, ReverseTrackdir(td)) &&
-				GetSignalType(ft.new_tile, TrackdirToTrack(td)) == SIGTYPE_PBS_ONEWAY) {
+		if (IsTileType(ft.new_tile, MP_RAILWAY) && HasSignalOnTrackdir(ft.new_tile, ReverseTrackdir(td)) && GetSignalType(ft.new_tile, TrackdirToTrack(td)) == SIGTYPE_PBS_ONEWAY) {
 			return include_line_end;
 		}
 	}
@@ -425,7 +424,7 @@ bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bo
  */
 bool IsWaitingPositionFree(const Train *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg)
 {
-	Track     track = TrackdirToTrack(trackdir);
+	Track track = TrackdirToTrack(trackdir);
 	TrackBits reserved = GetReservedTrackbits(tile);
 
 	/* Tile reserved? Can never be a free waiting position. */

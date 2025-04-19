@@ -8,6 +8,7 @@
 /** @file sprite_file.cpp Implementation of logic specific to the SpriteFile class. */
 
 #include "../stdafx.h"
+
 #include "sprite_file_type.hpp"
 #include "../safeguards.h"
 
@@ -43,8 +44,7 @@ static uint8_t GetGRFContainerVersion(SpriteFile &file)
  * @param subdir        The sub directory to search this file in.
  * @param palette_remap Whether a palette remap needs to be performed for this file.
  */
-SpriteFile::SpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap)
-	: RandomAccessFile(filename, subdir), palette_remap(palette_remap)
+SpriteFile::SpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap) : RandomAccessFile(filename, subdir), palette_remap(palette_remap)
 {
 	this->container_version = GetGRFContainerVersion(*this);
 	this->content_begin = this->GetPos();

@@ -8,10 +8,12 @@
 /** @file font_osx.cpp Functions related to font handling on MacOS. */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
+
 #include "font_osx.h"
+
 #include "../../core/math_func.hpp"
 #include "../../blitter/factory.hpp"
+#include "../../debug.h"
 #include "../../error_func.h"
 #include "../../fileio_func.h"
 #include "../../fontdetection.h"
@@ -46,7 +48,8 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	lang_codes[0] = CFStringCreateWithCString(kCFAllocatorDefault, lang.c_str(), kCFStringEncodingUTF8);
 	lang_codes[1] = CFSTR("en");
 	CFArrayRef lang_arr = CFArrayCreate(kCFAllocatorDefault, (const void **)lang_codes, lengthof(lang_codes), &kCFTypeArrayCallBacks);
-	CFAutoRelease<CFDictionaryRef> lang_attribs(CFDictionaryCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void *const *>(&kCTFontLanguagesAttribute)), (const void **)&lang_arr, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks));
+	CFAutoRelease<CFDictionaryRef> lang_attribs(CFDictionaryCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void *const *>(&kCTFontLanguagesAttribute)),
+		(const void **)&lang_arr, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks));
 	CFAutoRelease<CTFontDescriptorRef> lang_desc(CTFontDescriptorCreateWithAttributes(lang_attribs.get()));
 	CFRelease(lang_arr);
 	CFRelease(lang_codes[0]);
@@ -106,7 +109,6 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 	callback->FindMissingGlyphs();
 	return result;
 }
-
 
 CoreTextFontCache::CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels) : TrueTypeFontCache(fs, pixels), font_desc(std::move(font))
 {
@@ -355,7 +357,7 @@ void LoadCoreTextFont(FontSize fs)
 		 * We instead query the list of all font descriptors that match the given name which
 		 * does not do this stupid name fallback. */
 		CFAutoRelease<CTFontDescriptorRef> name_desc(CTFontDescriptorCreateWithNameAndSize(name.get(), 0.0));
-		CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void * const *>(&kCTFontNameAttribute)), 1, &kCFTypeSetCallBacks));
+		CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void *const *>(&kCTFontNameAttribute)), 1, &kCFTypeSetCallBacks));
 		CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(name_desc.get(), mandatory_attribs.get()));
 
 		/* Assume the first result is the one we want. */

@@ -10,10 +10,10 @@
 #ifndef SCRIPT_TOWN_HPP
 #define SCRIPT_TOWN_HPP
 
-#include "script_cargo.hpp"
-#include "script_company.hpp"
 #include "../../town.h"
 #include "../../town_type.h"
+#include "script_cargo.hpp"
+#include "script_company.hpp"
 
 /**
  * Class that handles all town related functions.
@@ -32,7 +32,7 @@ public:
 		 * absolute percentage, so 10% becomes 35%, with a max of 99%)
 		 * for all stations within 10 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_SMALL  = to_underlying(::TownAction::AdvertiseSmall),
+		TOWN_ACTION_ADVERTISE_SMALL = to_underlying(::TownAction::AdvertiseSmall),
 
 		/**
 		 * The cargo ratings temporary gains 44% of rating (in
@@ -46,50 +46,50 @@ public:
 		 * absolute percentage, so 10% becomes 73%, with a max of 99%)
 		 * for all stations within 20 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_LARGE  = to_underlying(::TownAction::AdvertiseLarge),
+		TOWN_ACTION_ADVERTISE_LARGE = to_underlying(::TownAction::AdvertiseLarge),
 
 		/**
 		 * Rebuild the roads of this town for 6 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_ROAD_REBUILD     = to_underlying(::TownAction::RoadRebuild),
+		TOWN_ACTION_ROAD_REBUILD = to_underlying(::TownAction::RoadRebuild),
 
 		/**
 		 * Build a statue in this town.
 		 */
-		TOWN_ACTION_BUILD_STATUE     = to_underlying(::TownAction::BuildStatue),
+		TOWN_ACTION_BUILD_STATUE = to_underlying(::TownAction::BuildStatue),
 
 		/**
 		 * Fund the creation of extra buildings for 3 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_FUND_BUILDINGS   = to_underlying(::TownAction::FundBuildings),
+		TOWN_ACTION_FUND_BUILDINGS = to_underlying(::TownAction::FundBuildings),
 
 		/**
 		 * Buy exclusive rights for this town for 12 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_BUY_RIGHTS       = to_underlying(::TownAction::BuyRights),
+		TOWN_ACTION_BUY_RIGHTS = to_underlying(::TownAction::BuyRights),
 
 		/**
 		 * Bribe the town in order to get a higher rating.
 		 */
-		TOWN_ACTION_BRIBE            = to_underlying(::TownAction::Bribe),
+		TOWN_ACTION_BRIBE = to_underlying(::TownAction::Bribe),
 	};
 
 	/**
 	 * Different ratings one could have in a town.
 	 */
 	enum TownRating {
-		TOWN_RATING_NONE,         ///< The company got no rating in the town.
-		TOWN_RATING_APPALLING,    ///< The company got an appalling rating in the town .
-		TOWN_RATING_VERY_POOR,    ///< The company got an very poor rating in the town.
-		TOWN_RATING_POOR,         ///< The company got an poor rating in the town.
-		TOWN_RATING_MEDIOCRE,     ///< The company got an mediocre rating in the town.
-		TOWN_RATING_GOOD,         ///< The company got an good rating in the town.
-		TOWN_RATING_VERY_GOOD,    ///< The company got an very good rating in the town.
-		TOWN_RATING_EXCELLENT,    ///< The company got an excellent rating in the town.
-		TOWN_RATING_OUTSTANDING,  ///< The company got an outstanding rating in the town.
+		TOWN_RATING_NONE, ///< The company got no rating in the town.
+		TOWN_RATING_APPALLING, ///< The company got an appalling rating in the town .
+		TOWN_RATING_VERY_POOR, ///< The company got an very poor rating in the town.
+		TOWN_RATING_POOR, ///< The company got an poor rating in the town.
+		TOWN_RATING_MEDIOCRE, ///< The company got an mediocre rating in the town.
+		TOWN_RATING_GOOD, ///< The company got an good rating in the town.
+		TOWN_RATING_VERY_GOOD, ///< The company got an very good rating in the town.
+		TOWN_RATING_EXCELLENT, ///< The company got an excellent rating in the town.
+		TOWN_RATING_OUTSTANDING, ///< The company got an outstanding rating in the town.
 		TOWN_RATING_INVALID = -1, ///< The town rating for invalid towns/companies.
 	};
 
@@ -98,32 +98,32 @@ public:
 	 */
 	enum RoadLayout {
 		/* Note: these values represent part of the in-game TownLayout enum */
-		ROAD_LAYOUT_ORIGINAL      = ::TL_ORIGINAL,     ///< Original algorithm (min. 1 distance between roads).
-		ROAD_LAYOUT_BETTER_ROADS  = ::TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
-		ROAD_LAYOUT_2x2           = ::TL_2X2_GRID,     ///< Geometric 2x2 grid algorithm
-		ROAD_LAYOUT_3x3           = ::TL_3X3_GRID,     ///< Geometric 3x3 grid algorithm
-		ROAD_LAYOUT_RANDOM        = ::TL_RANDOM,       ///< Random road layout
+		ROAD_LAYOUT_ORIGINAL = ::TL_ORIGINAL, ///< Original algorithm (min. 1 distance between roads).
+		ROAD_LAYOUT_BETTER_ROADS = ::TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
+		ROAD_LAYOUT_2x2 = ::TL_2X2_GRID, ///< Geometric 2x2 grid algorithm
+		ROAD_LAYOUT_3x3 = ::TL_3X3_GRID, ///< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_RANDOM = ::TL_RANDOM, ///< Random road layout
 
 		/* Custom added value, only valid for this API */
-		ROAD_LAYOUT_INVALID       = -1,                ///< The layout for invalid towns.
+		ROAD_LAYOUT_INVALID = -1, ///< The layout for invalid towns.
 	};
 
 	/**
 	 * Possible town construction sizes.
 	 */
 	enum TownSize {
-		TOWN_SIZE_SMALL   = ::TSZ_SMALL,  ///< Small town.
-		TOWN_SIZE_MEDIUM  = ::TSZ_MEDIUM, ///< Medium town.
-		TOWN_SIZE_LARGE   = ::TSZ_LARGE,  ///< Large town.
+		TOWN_SIZE_SMALL = ::TSZ_SMALL, ///< Small town.
+		TOWN_SIZE_MEDIUM = ::TSZ_MEDIUM, ///< Medium town.
+		TOWN_SIZE_LARGE = ::TSZ_LARGE, ///< Large town.
 
-		TOWN_SIZE_INVALID = -1,  ///< Invalid town size.
+		TOWN_SIZE_INVALID = -1, ///< Invalid town size.
 	};
 
 	/**
 	 * Special values for SetGrowthRate.
 	 */
 	enum TownGrowth {
-		TOWN_GROWTH_NONE   = 0xFFFF,  ///< Town does not grow at all.
+		TOWN_GROWTH_NONE = 0xFFFF, ///< Town does not grow at all.
 		TOWN_GROWTH_NORMAL = 0x10000, ///< Use default town growth algorithm instead of custom growth rate.
 	};
 

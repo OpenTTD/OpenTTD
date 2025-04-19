@@ -8,25 +8,29 @@
 /** @file network_survey.cpp Opt-in survey part of the network protocol. */
 
 #include "../stdafx.h"
+
 #include "network_survey.h"
-#include "../settings_table.h"
-#include "network.h"
-#include "network_func.h"
-#include "../debug.h"
-#include "../survey.h"
+
 #include "../3rdparty/fmt/chrono.h"
 #include "../3rdparty/fmt/std.h"
+
+#include "../debug.h"
+#include "../settings_table.h"
+#include "../survey.h"
+#include "network.h"
+#include "network_func.h"
 
 #include "../safeguards.h"
 
 NetworkSurveyHandler _survey = {};
 
-NLOHMANN_JSON_SERIALIZE_ENUM(NetworkSurveyHandler::Reason, {
-	{NetworkSurveyHandler::Reason::PREVIEW, "preview"},
-	{NetworkSurveyHandler::Reason::LEAVE, "leave"},
-	{NetworkSurveyHandler::Reason::EXIT, "exit"},
-	{NetworkSurveyHandler::Reason::CRASH, "crash"},
-})
+NLOHMANN_JSON_SERIALIZE_ENUM(NetworkSurveyHandler::Reason,
+	{
+		{NetworkSurveyHandler::Reason::PREVIEW, "preview"},
+		{NetworkSurveyHandler::Reason::LEAVE, "leave"},
+		{NetworkSurveyHandler::Reason::EXIT, "exit"},
+		{NetworkSurveyHandler::Reason::CRASH, "crash"},
+	})
 
 /**
  * Create the payload for the survey.

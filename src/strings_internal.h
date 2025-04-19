@@ -10,10 +10,10 @@
 #ifndef STRINGS_INTERNAL_H
 #define STRINGS_INTERNAL_H
 
-#include "strings_func.h"
-#include "string_func.h"
 #include "core/string_builder.hpp"
 #include "core/string_consumer.hpp"
+#include "string_func.h"
+#include "strings_func.h"
 
 class StringParameters {
 protected:
@@ -30,21 +30,24 @@ public:
 	 * Create a new StringParameters instance that can reference part of the data of
 	 * the given parent instance.
 	 */
-	StringParameters(StringParameters &parent, size_t size) :
-		parent(&parent),
-		parameters(parent.parameters.subspan(parent.offset, size))
-	{}
+	StringParameters(StringParameters &parent, size_t size) : parent(&parent), parameters(parent.parameters.subspan(parent.offset, size)) {}
 
 	StringParameters(std::span<StringParameter> parameters = {}) : parameters(parameters) {}
 
-	void SetTypeOfNextParameter(char32_t type) { this->next_type = type; }
+	void SetTypeOfNextParameter(char32_t type)
+	{
+		this->next_type = type;
+	}
 
 	/**
 	 * Get the current offset, so it can be backed up for certain processing
 	 * steps, or be used to offset the argument index within sub strings.
 	 * @return The current offset.
 	 */
-	size_t GetOffset() { return this->offset; }
+	size_t GetOffset()
+	{
+		return this->offset;
+	}
 
 	/**
 	 * Set the offset within the string from where to return the next result of
@@ -84,9 +87,20 @@ public:
 	uint64_t GetNextParameter()
 	{
 		struct visitor {
-			uint64_t operator()(const std::monostate &) { throw std::out_of_range("Attempt to read uninitialised parameter as integer"); }
-			uint64_t operator()(const uint64_t &arg) { return arg; }
-			uint64_t operator()(const std::string &) { throw std::out_of_range("Attempt to read string parameter as integer"); }
+			uint64_t operator()(const std::monostate &)
+			{
+				throw std::out_of_range("Attempt to read uninitialised parameter as integer");
+			}
+
+			uint64_t operator()(const uint64_t &arg)
+			{
+				return arg;
+			}
+
+			uint64_t operator()(const std::string &)
+			{
+				throw std::out_of_range("Attempt to read string parameter as integer");
+			}
 		};
 
 		const auto &param = this->GetNextParameterReference();
@@ -115,9 +129,20 @@ public:
 	const char *GetNextParameterString()
 	{
 		struct visitor {
-			const char *operator()(const std::monostate &) { throw std::out_of_range("Attempt to read uninitialised parameter as string"); }
-			const char *operator()(const uint64_t &) { throw std::out_of_range("Attempt to read integer parameter as string"); }
-			const char *operator()(const std::string &arg) { return arg.c_str(); }
+			const char *operator()(const std::monostate &)
+			{
+				throw std::out_of_range("Attempt to read uninitialised parameter as string");
+			}
+
+			const char *operator()(const uint64_t &)
+			{
+				throw std::out_of_range("Attempt to read integer parameter as string");
+			}
+
+			const char *operator()(const std::string &arg)
+			{
+				return arg.c_str();
+			}
 		};
 
 		const auto &param = this->GetNextParameterReference();
@@ -132,7 +157,10 @@ public:
 	 * The returned StringParameters must not outlive this StringParameters.
 	 * @return A "range" of the string parameters.
 	 */
-	StringParameters GetRemainingParameters() { return GetRemainingParameters(this->offset); }
+	StringParameters GetRemainingParameters()
+	{
+		return GetRemainingParameters(this->offset);
+	}
 
 	/**
 	 * Get a new instance of StringParameters that is a "range" into the
@@ -191,7 +219,10 @@ public:
 		this->parameters[n].data = str;
 	}
 
-	void SetParam(size_t n, const std::string &str) { this->SetParam(n, str.c_str()); }
+	void SetParam(size_t n, const std::string &str)
+	{
+		this->SetParam(n, str.c_str());
+	}
 
 	void SetParam(size_t n, std::string &&str)
 	{

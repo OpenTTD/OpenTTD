@@ -8,20 +8,20 @@
 /** @file script_priorityqueue.cpp Implementation of ScriptPriorityQueue. */
 
 #include "../../stdafx.h"
+
 #include "script_priorityqueue.hpp"
-#include "script_error.hpp"
-#include "../squirrel_helper.hpp"
-#include "../script_instance.hpp"
+
 #include "../../debug.h"
+#include "../script_instance.hpp"
+#include "../squirrel_helper.hpp"
+#include "script_error.hpp"
 
 #include "../../safeguards.h"
-
 
 static bool operator==(const ScriptPriorityQueue::PriorityItem &lhs, const HSQOBJECT &rhs)
 {
 	return lhs.second._type == rhs._type && lhs.second._unVal.raw == rhs._unVal.raw;
 }
-
 
 ScriptPriorityQueue::~ScriptPriorityQueue()
 {

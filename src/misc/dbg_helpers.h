@@ -18,14 +18,15 @@
 #include "../track_type.h"
 
 /** Helper template class that provides C array length and item type */
-template <typename T> struct ArrayT;
+template <typename T>
+struct ArrayT;
 
 /** Helper template class that provides C array length and item type */
-template <typename T, size_t N> struct ArrayT<T[N]> {
+template <typename T, size_t N>
+struct ArrayT<T[N]> {
 	static const size_t length = N;
 	using Item = T;
 };
-
 
 /**
  * Helper template function that returns item of array at given index
@@ -119,16 +120,12 @@ std::string ValueStr(SignalType t);
 
 /** Class that represents the dump-into-string target. */
 struct DumpTarget {
-
 	/** Used as a key into map of known object instances. */
 	struct KnownStructKey {
-		size_t      m_type_id;
+		size_t m_type_id;
 		const void *m_ptr;
 
-		KnownStructKey(size_t type_id, const void *ptr)
-			: m_type_id(type_id)
-			, m_ptr(ptr)
-		{}
+		KnownStructKey(size_t type_id, const void *ptr) : m_type_id(type_id), m_ptr(ptr) {}
 
 		bool operator<(const KnownStructKey &other) const
 		{
@@ -141,14 +138,12 @@ struct DumpTarget {
 
 	typedef std::map<KnownStructKey, std::string> KNOWN_NAMES;
 
-	std::string m_out;                    ///< the output string
-	int m_indent;                         ///< current indent/nesting level
+	std::string m_out; ///< the output string
+	int m_indent; ///< current indent/nesting level
 	std::stack<std::string> m_cur_struct; ///< here we will track the current structure name
-	KNOWN_NAMES m_known_names;            ///< map of known object instances and their structured names
+	KNOWN_NAMES m_known_names; ///< map of known object instances and their structured names
 
-	DumpTarget()
-		: m_indent(0)
-	{}
+	DumpTarget() : m_indent(0) {}
 
 	static size_t &LastTypeId();
 	std::string GetCurrentStructName();
@@ -161,7 +156,8 @@ struct DumpTarget {
 	void WriteTile(const std::string &name, TileIndex t);
 
 	/** Dump given enum value (as a number and as named value) */
-	template <typename E> void WriteEnumT(const std::string &name, E e)
+	template <typename E>
+	void WriteEnumT(const std::string &name, E e)
 	{
 		WriteValue(name, ValueStr(e));
 	}
@@ -170,7 +166,8 @@ struct DumpTarget {
 	void EndStruct();
 
 	/** Dump nested object (or only its name if this instance is already known). */
-	template <typename S> void WriteStructT(const std::string &name, const S *s)
+	template <typename S>
+	void WriteStructT(const std::string &name, const S *s)
 	{
 		static size_t type_id = ++LastTypeId();
 
@@ -193,7 +190,8 @@ struct DumpTarget {
 	}
 
 	/** Dump nested object (or only its name if this instance is already known). */
-	template <typename S> void WriteStructT(const std::string &name, const std::deque<S> *s)
+	template <typename S>
+	void WriteStructT(const std::string &name, const std::deque<S> *s)
 	{
 		static size_t type_id = ++LastTypeId();
 

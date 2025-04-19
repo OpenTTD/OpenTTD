@@ -8,38 +8,40 @@
 /** @file object_cmd.cpp Handling of object tiles. */
 
 #include "stdafx.h"
-#include "landscape.h"
-#include "command_func.h"
-#include "company_func.h"
-#include "viewport_func.h"
-#include "company_base.h"
-#include "town.h"
-#include "bridge_map.h"
-#include "genworld.h"
+
+#include "object_cmd.h"
+
+#include "core/pool_func.hpp"
+#include "core/random_func.hpp"
 #include "autoslope.h"
+#include "bridge_map.h"
+#include "cargopacket.h"
+#include "cheat_type.h"
 #include "clear_func.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "company_gui.h"
+#include "genworld.h"
+#include "landscape.h"
+#include "landscape_cmd.h"
+#include "newgrf_config.h"
+#include "newgrf_debug.h"
+#include "newgrf_object.h"
+#include "object.h"
+#include "object_base.h"
+#include "object_map.h"
+#include "pathfinder/water_regions.h"
+#include "station_func.h"
+#include "timer/timer_game_calendar.h"
+#include "town.h"
+#include "vehicle_func.h"
+#include "viewport_func.h"
 #include "water.h"
 #include "window_func.h"
-#include "company_gui.h"
-#include "cheat_type.h"
-#include "object.h"
-#include "cargopacket.h"
-#include "core/random_func.hpp"
-#include "core/pool_func.hpp"
-#include "object_map.h"
-#include "object_base.h"
-#include "newgrf_config.h"
-#include "newgrf_object.h"
-#include "timer/timer_game_calendar.h"
-#include "newgrf_debug.h"
-#include "vehicle_func.h"
-#include "station_func.h"
-#include "object_cmd.h"
-#include "landscape_cmd.h"
-#include "pathfinder/water_regions.h"
 
-#include "table/strings.h"
 #include "table/object_land.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -261,10 +263,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 				/* For non-water tiles, we'll have to clear it before building. */
 
 				/* When relocating HQ, allow it to be relocated (partial) on itself. */
-				if (!(type == OBJECT_HQ &&
-						IsTileType(t, MP_OBJECT) &&
-						IsTileOwner(t, _current_company) &&
-						IsObjectType(t, OBJECT_HQ))) {
+				if (!(type == OBJECT_HQ && IsTileType(t, MP_OBJECT) && IsTileOwner(t, _current_company) && IsObjectType(t, OBJECT_HQ))) {
 					cost.AddCost(Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t));
 				}
 			}
@@ -309,9 +308,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 	/* Finally do a check for bridges. */
 	for (TileIndex t : ta) {
-		if (IsBridgeAbove(t) && (
-				!spec->flags.Test(ObjectFlag::AllowUnderBridge) ||
-				(GetTileMaxZ(t) + spec->height >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
+		if (IsBridgeAbove(t) && (!spec->flags.Test(ObjectFlag::AllowUnderBridge) || (GetTileMaxZ(t) + spec->height >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
 			return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 	}
@@ -325,9 +322,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 			break;
 
 		case OBJECT_OWNED_LAND:
-			if (IsTileType(tile, MP_OBJECT) &&
-					IsTileOwner(tile, _current_company) &&
-					IsObjectType(tile, OBJECT_OWNED_LAND)) {
+			if (IsTileType(tile, MP_OBJECT) && IsTileOwner(tile, _current_company) && IsObjectType(tile, OBJECT_OWNED_LAND)) {
 				return CommandCost(STR_ERROR_YOU_ALREADY_OWN_IT);
 			}
 			break;
@@ -463,11 +458,21 @@ static void DrawTile_Object(TileInfo *ti)
 			/* If an object has no foundation, but tries to draw a (flat) ground
 			 * type... we have to be nice and convert that for them. */
 			switch (dts->ground.sprite) {
-				case SPR_FLAT_BARE_LAND:          DrawClearLandTile(ti, 0); break;
-				case SPR_FLAT_1_THIRD_GRASS_TILE: DrawClearLandTile(ti, 1); break;
-				case SPR_FLAT_2_THIRD_GRASS_TILE: DrawClearLandTile(ti, 2); break;
-				case SPR_FLAT_GRASS_TILE:         DrawClearLandTile(ti, 3); break;
-				default: DrawGroundSprite(dts->ground.sprite, palette);     break;
+				case SPR_FLAT_BARE_LAND:
+					DrawClearLandTile(ti, 0);
+					break;
+				case SPR_FLAT_1_THIRD_GRASS_TILE:
+					DrawClearLandTile(ti, 1);
+					break;
+				case SPR_FLAT_2_THIRD_GRASS_TILE:
+					DrawClearLandTile(ti, 2);
+					break;
+				case SPR_FLAT_GRASS_TILE:
+					DrawClearLandTile(ti, 3);
+					break;
+				default:
+					DrawGroundSprite(dts->ground.sprite, palette);
+					break;
 			}
 		} else {
 			DrawGroundSprite(dts->ground.sprite, palette);
@@ -476,12 +481,7 @@ static void DrawTile_Object(TileInfo *ti)
 		if (!IsInvisibilitySet(TO_STRUCTURES)) {
 			for (const DrawTileSeqStruct &dtss : dts->GetSequence()) {
 				AddSortableSpriteToDraw(
-					dtss.image.sprite, palette,
-					ti->x + dtss.delta_x, ti->y + dtss.delta_y,
-					dtss.size_x, dtss.size_y,
-					dtss.size_z, ti->z + dtss.delta_z,
-					IsTransparencySet(TO_STRUCTURES)
-				);
+					dtss.image.sprite, palette, ti->x + dtss.delta_x, ti->y + dtss.delta_y, dtss.size_x, dtss.size_y, dtss.size_z, ti->z + dtss.delta_z, IsTransparencySet(TO_STRUCTURES));
 			}
 		}
 	} else {
@@ -658,7 +658,6 @@ static void AddProducedCargo_Object(TileIndex tile, CargoArray &produced)
 	if (IsValidCargoType(mail)) produced[mail]++;
 }
 
-
 static void GetTileDesc_Object(TileIndex tile, TileDesc &td)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
@@ -725,7 +724,6 @@ static void TileLoop_Object(TileIndex tile)
 	}
 }
 
-
 static TrackStatus GetTileTrackStatus_Object(TileIndex, TransportType, uint, DiagDirection)
 {
 	return 0;
@@ -764,10 +762,18 @@ static bool TryBuildLightHouse()
 	TileIndex tile;
 	switch (dir) {
 		default:
-		case DIAGDIR_NE: tile = TileXY(maxx - 1, r % maxy); break;
-		case DIAGDIR_SE: tile = TileXY(r % maxx, 1); break;
-		case DIAGDIR_SW: tile = TileXY(1,        r % maxy); break;
-		case DIAGDIR_NW: tile = TileXY(r % maxx, maxy - 1); break;
+		case DIAGDIR_NE:
+			tile = TileXY(maxx - 1, r % maxy);
+			break;
+		case DIAGDIR_SE:
+			tile = TileXY(r % maxx, 1);
+			break;
+		case DIAGDIR_SW:
+			tile = TileXY(1, r % maxy);
+			break;
+		case DIAGDIR_NW:
+			tile = TileXY(r % maxx, maxy - 1);
+			break;
 	}
 
 	/* Only build lighthouses at tiles where the border is sea. */
@@ -824,7 +830,6 @@ void GenerateObjects()
 
 	/* Iterate over all possible object types */
 	for (const auto &spec : ObjectSpec::Specs()) {
-
 		/* Continue, if the object was never available till now or shall not be placed */
 		if (!spec.WasEverAvailable() || spec.generate_amount == 0) continue;
 
@@ -855,7 +860,8 @@ void GenerateObjects()
 
 				default:
 					uint8_t view = RandomRange(spec.views);
-					if (CmdBuildObject({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating}, RandomTile(), spec.Index(), view).Succeeded()) amount--;
+					if (CmdBuildObject({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating}, RandomTile(), spec.Index(), view).Succeeded())
+						amount--;
 					break;
 			}
 		}
@@ -935,18 +941,18 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlags flags, in
 }
 
 extern const TileTypeProcs _tile_type_object_procs = {
-	DrawTile_Object,             // draw_tile_proc
-	GetSlopePixelZ_Object,       // get_slope_z_proc
-	ClearTile_Object,            // clear_tile_proc
-	AddAcceptedCargo_Object,     // add_accepted_cargo_proc
-	GetTileDesc_Object,          // get_tile_desc_proc
-	GetTileTrackStatus_Object,   // get_tile_track_status_proc
-	ClickTile_Object,            // click_tile_proc
-	AnimateTile_Object,          // animate_tile_proc
-	TileLoop_Object,             // tile_loop_proc
-	ChangeTileOwner_Object,      // change_tile_owner_proc
-	AddProducedCargo_Object,     // add_produced_cargo_proc
-	nullptr,                        // vehicle_enter_tile_proc
-	GetFoundation_Object,        // get_foundation_proc
-	TerraformTile_Object,        // terraform_tile_proc
+	DrawTile_Object, // draw_tile_proc
+	GetSlopePixelZ_Object, // get_slope_z_proc
+	ClearTile_Object, // clear_tile_proc
+	AddAcceptedCargo_Object, // add_accepted_cargo_proc
+	GetTileDesc_Object, // get_tile_desc_proc
+	GetTileTrackStatus_Object, // get_tile_track_status_proc
+	ClickTile_Object, // click_tile_proc
+	AnimateTile_Object, // animate_tile_proc
+	TileLoop_Object, // tile_loop_proc
+	ChangeTileOwner_Object, // change_tile_owner_proc
+	AddProducedCargo_Object, // add_produced_cargo_proc
+	nullptr, // vehicle_enter_tile_proc
+	GetFoundation_Object, // get_foundation_proc
+	TerraformTile_Object, // terraform_tile_proc
 };

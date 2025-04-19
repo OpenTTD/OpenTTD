@@ -15,11 +15,20 @@
 /** Blitter that does nothing. */
 class Blitter_Null : public Blitter {
 public:
-	uint8_t GetScreenDepth() override { return 0; }
+	uint8_t GetScreenDepth() override
+	{
+		return 0;
+	}
+
 	void Draw(Blitter::BlitterParams *, BlitterMode, ZoomLevel) override {};
 	void DrawColourMappingRect(void *, int, int, PaletteID) override {};
 	Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
-	void *MoveTo(void *, int, int) override { return nullptr; };
+
+	void *MoveTo(void *, int, int) override
+	{
+		return nullptr;
+	};
+
 	void SetPixel(void *, int, int, uint8_t) override {};
 	void DrawRect(void *, int, int, uint8_t) override {};
 	void DrawLine(void *, int, int, int, int, int, int, uint8_t, int, int) override {};
@@ -27,18 +36,34 @@ public:
 	void CopyToBuffer(const void *, void *, int, int) override {};
 	void CopyImageToBuffer(const void *, void *, int, int, int) override {};
 	void ScrollBuffer(void *, int &, int &, int &, int &, int, int) override {};
-	size_t BufferSize(uint, uint) override { return 0; };
-	void PaletteAnimate(const Palette &) override { };
-	Blitter::PaletteAnimation UsePaletteAnimation() override { return Blitter::PaletteAnimation::None; };
 
-	std::string_view GetName() override { return "null"; }
+	size_t BufferSize(uint, uint) override
+	{
+		return 0;
+	};
+
+	void PaletteAnimate(const Palette &) override {};
+
+	Blitter::PaletteAnimation UsePaletteAnimation() override
+	{
+		return Blitter::PaletteAnimation::None;
+	};
+
+	std::string_view GetName() override
+	{
+		return "null";
+	}
 };
 
 /** Factory for the blitter that does nothing. */
 class FBlitter_Null : public BlitterFactory {
 public:
 	FBlitter_Null() : BlitterFactory("null", "Null Blitter (does nothing)") {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_Null>(); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::make_unique<Blitter_Null>();
+	}
 };
 
 #endif /* BLITTER_NULL_HPP */

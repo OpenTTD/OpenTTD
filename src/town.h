@@ -10,12 +10,12 @@
 #ifndef TOWN_H
 #define TOWN_H
 
-#include "viewport_type.h"
+#include "cargotype.h"
+#include "newgrf_storage.h"
+#include "subsidy_type.h"
 #include "timer/timer_game_tick.h"
 #include "town_map.h"
-#include "subsidy_type.h"
-#include "newgrf_storage.h"
-#include "cargotype.h"
+#include "viewport_type.h"
 
 template <typename T>
 struct BuildingCounts {
@@ -25,13 +25,14 @@ struct BuildingCounts {
 	auto operator<=>(const BuildingCounts &) const = default;
 };
 
-static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
-static const uint CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum number of towns a user can specify in customisation
+static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY = 4; ///< value for custom town number in difficulty settings
+static const uint CUSTOM_TOWN_MAX_NUMBER = 5000; ///< this is the maximum number of towns a user can specify in customisation
 
 static const uint TOWN_GROWTH_WINTER = 0xFFFFFFFE; ///< The town only needs this cargo in the winter (any amount)
 static const uint TOWN_GROWTH_DESERT = 0xFFFFFFFF; ///< The town needs the cargo for growth when on desert (any amount)
 static const uint16_t TOWN_GROWTH_RATE_NONE = 0xFFFF; ///< Special value for Town::growth_rate to disable town growth.
-static const uint16_t MAX_TOWN_GROWTH_TICKS = 930; ///< Max amount of original town ticks that still fit into uint16_t, about equal to UINT16_MAX / TOWN_GROWTH_TICKS but slightly less to simplify calculations
+static const uint16_t MAX_TOWN_GROWTH_TICKS =
+	930; ///< Max amount of original town ticks that still fit into uint16_t, about equal to UINT16_MAX / TOWN_GROWTH_TICKS but slightly less to simplify calculations
 
 typedef Pool<Town, TownID, 64> TownPool;
 extern TownPool _town_pool;
@@ -72,7 +73,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	ReferenceThroughBaseContainer<std::array<uint8_t, MAX_COMPANIES>> unwanted{}; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyID exclusivity = CompanyID::Invalid(); ///< which company has exclusivity
 	uint8_t exclusive_counter = 0; ///< months till the exclusivity expires
-	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings{};  ///< ratings of each company for this town
+	ReferenceThroughBaseContainer<std::array<int16_t, MAX_COMPANIES>> ratings{}; ///< ratings of each company for this town
 
 	std::array<TransportedCargoStat<uint32_t>, NUM_CARGO> supplied{}; ///< Cargo statistics about supplied cargo.
 	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
@@ -107,7 +108,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	 * Creates a new town.
 	 * @param tile center tile of the town
 	 */
-	Town(TileIndex tile = INVALID_TILE) : xy(tile) { }
+	Town(TileIndex tile = INVALID_TILE) : xy(tile) {}
 
 	/** Destroy the town. */
 	~Town();
@@ -160,9 +161,9 @@ void RebuildTownKdtree();
 
 /** Settings for town council attitudes. */
 enum TownCouncilAttitudes {
-	TOWN_COUNCIL_LENIENT    = 0,
-	TOWN_COUNCIL_TOLERANT   = 1,
-	TOWN_COUNCIL_HOSTILE    = 2,
+	TOWN_COUNCIL_LENIENT = 0,
+	TOWN_COUNCIL_TOLERANT = 1,
+	TOWN_COUNCIL_HOSTILE = 2,
 	TOWN_COUNCIL_PERMISSIVE = 3,
 };
 
@@ -171,8 +172,8 @@ enum TownCouncilAttitudes {
  * @see CheckforTownRating
  */
 enum TownRatingCheckType {
-	ROAD_REMOVE         = 0,      ///< Removal of a road owned by the town.
-	TUNNELBRIDGE_REMOVE = 1,      ///< Removal of a tunnel or bridge owned by the towb.
+	ROAD_REMOVE = 0, ///< Removal of a road owned by the town.
+	TUNNELBRIDGE_REMOVE = 1, ///< Removal of a tunnel or bridge owned by the towb.
 	TOWN_RATING_CHECK_TYPE_COUNT, ///< Number of town checking action types.
 };
 
@@ -191,14 +192,13 @@ enum TownDirectoryInvalidateWindowData {
  * And there are 5 more bits available on flags...
  */
 enum TownFlags {
-	TOWN_IS_GROWING     = 0,   ///< Conditions for town growth are met. Grow according to Town::growth_rate.
-	TOWN_HAS_CHURCH     = 1,   ///< There can be only one church by town.
-	TOWN_HAS_STADIUM    = 2,   ///< There can be only one stadium by town.
-	TOWN_CUSTOM_GROWTH  = 3,   ///< Growth rate is controlled by GS.
+	TOWN_IS_GROWING = 0, ///< Conditions for town growth are met. Grow according to Town::growth_rate.
+	TOWN_HAS_CHURCH = 1, ///< There can be only one church by town.
+	TOWN_HAS_STADIUM = 2, ///< There can be only one stadium by town.
+	TOWN_CUSTOM_GROWTH = 3, ///< Growth rate is controlled by GS.
 };
 
 CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckType type);
-
 
 TileIndexDiff GetHouseNorthPart(HouseID &house);
 
@@ -263,8 +263,8 @@ void MakeDefaultName(T *obj)
 
 	uint32_t used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
 	uint32_t next = 0; // first number in the bitmap
-	uint32_t idx  = 0; // index where we will stop
-	uint32_t cid  = 0; // current index, goes to T::GetPoolSize()-1, then wraps to 0
+	uint32_t idx = 0; // index where we will stop
+	uint32_t cid = 0; // current index, goes to T::GetPoolSize()-1, then wraps to 0
 
 	do {
 		T *lobj = T::GetIfValid(cid);
@@ -309,7 +309,6 @@ inline uint16_t TownTicksToGameTicks(uint16_t ticks)
 {
 	return (std::min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * Ticks::TOWN_GROWTH_TICKS - 1;
 }
-
 
 RoadType GetTownRoadType();
 bool CheckTownRoadTypes();

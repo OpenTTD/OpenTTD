@@ -18,7 +18,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 CommandCost CmdBuildLock(DoCommandFlags flags, TileIndex tile);
 
 DEF_CMD_TRAIT(CMD_BUILD_SHIP_DEPOT, CmdBuildShipDepot, CommandFlag::Auto, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_CANAL,      CmdBuildCanal,     CommandFlag::Auto, CMDT_LANDSCAPE_CONSTRUCTION)
-DEF_CMD_TRAIT(CMD_BUILD_LOCK,       CmdBuildLock,      CommandFlag::Auto, CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_BUILD_CANAL, CmdBuildCanal, CommandFlag::Auto, CMDT_LANDSCAPE_CONSTRUCTION)
+DEF_CMD_TRAIT(CMD_BUILD_LOCK, CmdBuildLock, CommandFlag::Auto, CMDT_LANDSCAPE_CONSTRUCTION)
 
 #endif /* WATER_CMD_H */

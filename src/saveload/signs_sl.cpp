@@ -9,25 +9,24 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/signs_sl_compat.h"
-
-#include "../signs_base.h"
 #include "../fios.h"
+#include "../signs_base.h"
+#include "compat/signs_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
-	SLE_CONDVAR(Sign, name,  SLE_NAME,                   SL_MIN_VERSION, SLV_84),
+	SLE_CONDVAR(Sign, name, SLE_NAME, SL_MIN_VERSION, SLV_84),
 	SLE_CONDSSTR(Sign, name, SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, x,     SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
-	SLE_CONDVAR(Sign, y,     SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
-	SLE_CONDVAR(Sign, x,     SLE_INT32,                  SLV_5, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, y,     SLE_INT32,                  SLV_5, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, owner, SLE_UINT8,                  SLV_6, SL_MAX_VERSION),
-	SLE_CONDVAR(Sign, z,     SLE_FILE_U8  | SLE_VAR_I32, SL_MIN_VERSION, SLV_164),
-	SLE_CONDVAR(Sign, z,     SLE_INT32,                SLV_164, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, x, SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
+	SLE_CONDVAR(Sign, y, SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_5),
+	SLE_CONDVAR(Sign, x, SLE_INT32, SLV_5, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, y, SLE_INT32, SLV_5, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, owner, SLE_UINT8, SLV_6, SL_MAX_VERSION),
+	SLE_CONDVAR(Sign, z, SLE_FILE_U8 | SLE_VAR_I32, SL_MIN_VERSION, SLV_164),
+	SLE_CONDVAR(Sign, z, SLE_INT32, SLV_164, SL_MAX_VERSION),
 };
 
 struct SIGNChunkHandler : ChunkHandler {

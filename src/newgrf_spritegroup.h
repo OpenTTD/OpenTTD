@@ -11,15 +11,14 @@
 #define NEWGRF_SPRITEGROUP_H
 
 #include "core/pool_type.hpp"
-#include "town_type.h"
 #include "engine_type.h"
 #include "house_type.h"
 #include "industry_type.h"
-
 #include "newgrf_callbacks.h"
+#include "newgrf_commons.h"
 #include "newgrf_generic.h"
 #include "newgrf_storage.h"
-#include "newgrf_commons.h"
+#include "town_type.h"
 
 /**
  * Gets the value of a so-called newgrf "register".
@@ -58,8 +57,12 @@ extern SpriteGroupPool _spritegroup_pool;
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
 	SpriteGroup(SpriteGroupType type) : type(type) {}
+
 	/** Base sprite group resolver */
-	virtual const SpriteGroup *Resolve([[maybe_unused]] ResolverObject &object) const { return this; };
+	virtual const SpriteGroup *Resolve([[maybe_unused]] ResolverObject &object) const
+	{
+		return this;
+	};
 
 public:
 	virtual ~SpriteGroup() = default;
@@ -67,13 +70,23 @@ public:
 	uint32_t nfo_line = 0;
 	SpriteGroupType type{};
 
-	virtual SpriteID GetResult() const { return 0; }
-	virtual uint8_t GetNumResults() const { return 0; }
-	virtual uint16_t GetCallbackResult() const { return CALLBACK_FAILED; }
+	virtual SpriteID GetResult() const
+	{
+		return 0;
+	}
+
+	virtual uint8_t GetNumResults() const
+	{
+		return 0;
+	}
+
+	virtual uint16_t GetCallbackResult() const
+	{
+		return CALLBACK_FAILED;
+	}
 
 	static const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
 };
-
 
 /* 'Real' sprite groups contain a list of other result or callback sprite
  * groups. */
@@ -87,7 +100,7 @@ struct RealSpriteGroup : SpriteGroup {
 	 * with small amount of cargo whilst loading is for stations with a lot
 	 * of da stuff. */
 
-	std::vector<const SpriteGroup *> loaded{};  ///< List of loaded groups (can be SpriteIDs or Callback results)
+	std::vector<const SpriteGroup *> loaded{}; ///< List of loaded groups (can be SpriteIDs or Callback results)
 	std::vector<const SpriteGroup *> loading{}; ///< List of loading groups (can be SpriteIDs or Callback results)
 
 protected:
@@ -99,8 +112,8 @@ enum VarSpriteGroupScope : uint8_t {
 	VSG_BEGIN,
 
 	VSG_SCOPE_SELF = VSG_BEGIN, ///< Resolved object itself
-	VSG_SCOPE_PARENT,           ///< Related object of the resolved one
-	VSG_SCOPE_RELATIVE,         ///< Relative position (vehicles only)
+	VSG_SCOPE_PARENT, ///< Related object of the resolved one
+	VSG_SCOPE_RELATIVE, ///< Relative position (vehicles only)
 
 	VSG_END
 };
@@ -119,8 +132,8 @@ enum DeterministicSpriteGroupAdjustType : uint8_t {
 };
 
 enum DeterministicSpriteGroupAdjustOperation : uint8_t {
-	DSGA_OP_ADD,  ///< a + b
-	DSGA_OP_SUB,  ///< a - b
+	DSGA_OP_ADD, ///< a + b
+	DSGA_OP_SUB, ///< a - b
 	DSGA_OP_SMIN, ///< (signed) min(a, b)
 	DSGA_OP_SMAX, ///< (signed) max(a, b)
 	DSGA_OP_UMIN, ///< (unsigned) min(a, b)
@@ -129,21 +142,20 @@ enum DeterministicSpriteGroupAdjustOperation : uint8_t {
 	DSGA_OP_SMOD, ///< (signed) a % b
 	DSGA_OP_UDIV, ///< (unsigned) a / b
 	DSGA_OP_UMOD, ///< (unsigned) a & b
-	DSGA_OP_MUL,  ///< a * b
-	DSGA_OP_AND,  ///< a & b
-	DSGA_OP_OR,   ///< a | b
-	DSGA_OP_XOR,  ///< a ^ b
-	DSGA_OP_STO,  ///< store a into temporary storage, indexed by b. return a
-	DSGA_OP_RST,  ///< return b
+	DSGA_OP_MUL, ///< a * b
+	DSGA_OP_AND, ///< a & b
+	DSGA_OP_OR, ///< a | b
+	DSGA_OP_XOR, ///< a ^ b
+	DSGA_OP_STO, ///< store a into temporary storage, indexed by b. return a
+	DSGA_OP_RST, ///< return b
 	DSGA_OP_STOP, ///< store a into persistent storage, indexed by b, return a
-	DSGA_OP_ROR,  ///< rotate a b positions to the right
+	DSGA_OP_ROR, ///< rotate a b positions to the right
 	DSGA_OP_SCMP, ///< (signed) comparison (a < b -> 0, a == b = 1, a > b = 2)
 	DSGA_OP_UCMP, ///< (unsigned) comparison (a < b -> 0, a == b = 1, a > b = 2)
-	DSGA_OP_SHL,  ///< a << b
-	DSGA_OP_SHR,  ///< (unsigned) a >> b
-	DSGA_OP_SAR,  ///< (signed) a >> b
+	DSGA_OP_SHL, ///< a << b
+	DSGA_OP_SHR, ///< (unsigned) a >> b
+	DSGA_OP_SAR, ///< (signed) a >> b
 };
-
 
 struct DeterministicSpriteGroupAdjust {
 	DeterministicSpriteGroupAdjustOperation operation{};
@@ -157,13 +169,11 @@ struct DeterministicSpriteGroupAdjust {
 	const SpriteGroup *subroutine = nullptr;
 };
 
-
 struct DeterministicSpriteGroupRange {
 	const SpriteGroup *group = nullptr;
 	uint32_t low = 0;
 	uint32_t high = 0;
 };
-
 
 struct DeterministicSpriteGroup : SpriteGroup {
 	DeterministicSpriteGroup() : SpriteGroup(SGT_DETERMINISTIC) {}
@@ -191,7 +201,7 @@ enum RandomizedSpriteGroupCompareMode : uint8_t {
 struct RandomizedSpriteGroup : SpriteGroup {
 	RandomizedSpriteGroup() : SpriteGroup(SGT_RANDOMIZED) {}
 
-	VarSpriteGroupScope var_scope{};  ///< Take this object:
+	VarSpriteGroupScope var_scope{}; ///< Take this object:
 
 	RandomizedSpriteGroupCompareMode cmp_mode{}; ///< Check for these triggers:
 	uint8_t triggers = 0;
@@ -205,7 +215,6 @@ protected:
 	const SpriteGroup *Resolve(ResolverObject &object) const override;
 };
 
-
 /* This contains a callback result. A failed callback has a value of
  * CALLBACK_FAILED */
 struct CallbackResultSpriteGroup : SpriteGroup {
@@ -216,9 +225,12 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 	explicit CallbackResultSpriteGroup(uint16_t value) : SpriteGroup(SGT_CALLBACK), result(value) {}
 
 	uint16_t result = 0;
-	uint16_t GetCallbackResult() const override { return this->result; }
-};
 
+	uint16_t GetCallbackResult() const override
+	{
+		return this->result;
+	}
+};
 
 /* A result sprite group returns the first SpriteID and the number of
  * sprites in the set */
@@ -229,18 +241,20 @@ struct ResultSpriteGroup : SpriteGroup {
 	 * @param num_sprites The number of sprites per set.
 	 * @return A spritegroup representing the sprite number result.
 	 */
-	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) :
-		SpriteGroup(SGT_RESULT),
-		num_sprites(num_sprites),
-		sprite(sprite)
-	{
-	}
+	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) : SpriteGroup(SGT_RESULT), num_sprites(num_sprites), sprite(sprite) {}
 
 	uint8_t num_sprites = 0;
 	SpriteID sprite = 0;
 
-	SpriteID GetResult() const override { return this->sprite; }
-	uint8_t GetNumResults() const override { return this->num_sprites; }
+	SpriteID GetResult() const override
+	{
+		return this->sprite;
+	}
+
+	uint8_t GetNumResults() const override
+	{
+		return this->num_sprites;
+	}
 };
 
 /**
@@ -248,6 +262,7 @@ struct ResultSpriteGroup : SpriteGroup {
  */
 struct TileLayoutSpriteGroup : SpriteGroup {
 	TileLayoutSpriteGroup() : SpriteGroup(SGT_TILELAYOUT) {}
+
 	~TileLayoutSpriteGroup() {}
 
 	NewGRFSpriteLayout dts{};
@@ -266,7 +281,6 @@ struct IndustryProductionSpriteGroup : SpriteGroup {
 	std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> add_output{}; ///< Add this much output cargo when successful (unsigned, is indirect in cb version 1+)
 	std::array<CargoType, INDUSTRY_NUM_OUTPUTS> cargo_output{}; ///< Which output cargoes to add to (only cb version 2)
 	uint8_t again = 0;
-
 };
 
 /**
@@ -279,6 +293,7 @@ struct ScopeResolver {
 	ResolverObject &ro; ///< Surrounding resolver object.
 
 	ScopeResolver(ResolverObject &ro) : ro(ro) {}
+
 	virtual ~ScopeResolver() = default;
 
 	virtual uint32_t GetRandomBits() const;
@@ -302,8 +317,8 @@ struct ResolverObject {
 	 * @param callback_param1 First parameter (var 10) of the callback (only used when \a callback is also set).
 	 * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).
 	 */
-	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0)
-		: default_scope(*this), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(nullptr)
+	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0) :
+		default_scope(*this), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(nullptr)
 	{
 		this->ResetState();
 	}
@@ -396,13 +411,20 @@ public:
 	 * Get the feature number being resolved for.
 	 * This function is mainly intended for the callback profiling feature.
 	 */
-	virtual GrfSpecFeature GetFeature() const { return GSF_INVALID; }
+	virtual GrfSpecFeature GetFeature() const
+	{
+		return GSF_INVALID;
+	}
+
 	/**
 	 * Get an identifier for the item being resolved.
 	 * This function is mainly intended for the callback profiling feature,
 	 * and should return an identifier recognisable by the NewGRF developer.
 	 */
-	virtual uint32_t GetDebugID() const { return 0; }
+	virtual uint32_t GetDebugID() const
+	{
+		return 0;
+	}
 };
 
 /**

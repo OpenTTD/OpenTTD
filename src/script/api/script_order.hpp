@@ -10,8 +10,8 @@
 #ifndef SCRIPT_ORDER_HPP
 #define SCRIPT_ORDER_HPP
 
-#include "script_vehicle.hpp"
 #include "../../order_type.h"
+#include "script_vehicle.hpp"
 
 /**
  * Class that handles all order related functions.
@@ -29,13 +29,13 @@ public:
 		ERR_ORDER_BASE = ScriptError::ERR_CAT_ORDER << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** No more space for orders */
-		ERR_ORDER_TOO_MANY,                                  // [STR_ERROR_NO_MORE_SPACE_FOR_ORDERS]
+		ERR_ORDER_TOO_MANY, // [STR_ERROR_NO_MORE_SPACE_FOR_ORDERS]
 
 		/** Destination of new order is too far away from the previous order */
-		ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION,    // [STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION]
+		ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, // [STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION]
 
 		/** Aircraft has not enough range to copy/share orders. */
-		ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,                 // [STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE]
+		ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE, // [STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE]
 	};
 
 	/**
@@ -43,45 +43,45 @@ public:
 	 */
 	enum ScriptOrderFlags {
 		/** Just go to the station/depot, stop unload if possible and load if needed. */
-		OF_NONE              = 0,
+		OF_NONE = 0,
 
 		/** Do not stop at the stations that are passed when going to the destination. Only for trains and road vehicles. */
 		OF_NON_STOP_INTERMEDIATE = 1 << 0,
 		/** Do not stop at the destination station. Only for trains and road vehicles. */
-		OF_NON_STOP_DESTINATION  = 1 << 1,
+		OF_NON_STOP_DESTINATION = 1 << 1,
 
 		/** Always unload the vehicle; only for stations. Cannot be set when OF_TRANSFER or OF_NO_UNLOAD is set. */
-		OF_UNLOAD            = 1 << 2,
+		OF_UNLOAD = 1 << 2,
 		/** Transfer instead of deliver the goods; only for stations. Cannot be set when OF_UNLOAD or OF_NO_UNLOAD is set. */
-		OF_TRANSFER          = 1 << 3,
+		OF_TRANSFER = 1 << 3,
 		/** Never unload the vehicle; only for stations. Cannot be set when OF_UNLOAD, OF_TRANSFER or OF_NO_LOAD is set. */
-		OF_NO_UNLOAD         = 1 << 4,
+		OF_NO_UNLOAD = 1 << 4,
 
 		/** Wait till the vehicle is fully loaded; only for stations. Cannot be set when OF_NO_LOAD is set. */
-		OF_FULL_LOAD         = 2 << 5,
+		OF_FULL_LOAD = 2 << 5,
 		/** Wait till at least one cargo of the vehicle is fully loaded; only for stations. Cannot be set when OF_NO_LOAD is set. */
-		OF_FULL_LOAD_ANY     = 3 << 5,
+		OF_FULL_LOAD_ANY = 3 << 5,
 		/** Do not load any cargo; only for stations. Cannot be set when OF_NO_UNLOAD, OF_FULL_LOAD or OF_FULL_LOAD_ANY is set. */
-		OF_NO_LOAD           = 1 << 7,
+		OF_NO_LOAD = 1 << 7,
 
 		/** Service the vehicle when needed, otherwise skip this order; only for depots. */
 		OF_SERVICE_IF_NEEDED = 1 << 2,
 		/** Stop in the depot instead of only go there for servicing; only for depots. */
-		OF_STOP_IN_DEPOT     = 1 << 3,
+		OF_STOP_IN_DEPOT = 1 << 3,
 		/** Go to nearest depot. */
 		OF_GOTO_NEAREST_DEPOT = 1 << 8,
 
 		/** All flags related to non-stop settings. */
-		OF_NON_STOP_FLAGS    = OF_NON_STOP_INTERMEDIATE | OF_NON_STOP_DESTINATION,
+		OF_NON_STOP_FLAGS = OF_NON_STOP_INTERMEDIATE | OF_NON_STOP_DESTINATION,
 		/** All flags related to unloading. */
-		OF_UNLOAD_FLAGS      = OF_TRANSFER | OF_UNLOAD | OF_NO_UNLOAD,
+		OF_UNLOAD_FLAGS = OF_TRANSFER | OF_UNLOAD | OF_NO_UNLOAD,
 		/** All flags related to loading. */
-		OF_LOAD_FLAGS        = OF_FULL_LOAD | OF_FULL_LOAD_ANY | OF_NO_LOAD,
+		OF_LOAD_FLAGS = OF_FULL_LOAD | OF_FULL_LOAD_ANY | OF_NO_LOAD,
 		/** All flags related to depots. */
-		OF_DEPOT_FLAGS       = OF_SERVICE_IF_NEEDED | OF_STOP_IN_DEPOT | OF_GOTO_NEAREST_DEPOT,
+		OF_DEPOT_FLAGS = OF_SERVICE_IF_NEEDED | OF_STOP_IN_DEPOT | OF_GOTO_NEAREST_DEPOT,
 
 		/** For marking invalid order flags */
-		OF_INVALID           = 0xFFFF,
+		OF_INVALID = 0xFFFF,
 	};
 
 	/**
@@ -89,17 +89,17 @@ public:
 	 */
 	enum OrderCondition {
 		/* Note: these values represent part of the in-game OrderConditionVariable enum */
-		OC_LOAD_PERCENTAGE     = ::OCV_LOAD_PERCENTAGE,    ///< Skip based on the amount of load, value is in tons.
-		OC_RELIABILITY         = ::OCV_RELIABILITY,        ///< Skip based on the reliability, value is percent (0..100).
-		OC_MAX_RELIABILITY     = ::OCV_MAX_RELIABILITY,    ///< Skip based on the maximum reliability.  Value in percent
-		OC_MAX_SPEED           = ::OCV_MAX_SPEED,          ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
-		OC_AGE                 = ::OCV_AGE,                ///< Skip based on the age, value is in calender-years. @see \ref ScriptCalendarTime
-		OC_REQUIRES_SERVICE    = ::OCV_REQUIRES_SERVICE,   ///< Skip when the vehicle requires service, no value.
-		OC_UNCONDITIONALLY     = ::OCV_UNCONDITIONALLY,    ///< Always skip, no compare function, no value.
-		OC_REMAINING_LIFETIME  = ::OCV_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime in calendar-years. @see \ref ScriptCalendarTime
+		OC_LOAD_PERCENTAGE = ::OCV_LOAD_PERCENTAGE, ///< Skip based on the amount of load, value is in tons.
+		OC_RELIABILITY = ::OCV_RELIABILITY, ///< Skip based on the reliability, value is percent (0..100).
+		OC_MAX_RELIABILITY = ::OCV_MAX_RELIABILITY, ///< Skip based on the maximum reliability.  Value in percent
+		OC_MAX_SPEED = ::OCV_MAX_SPEED, ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
+		OC_AGE = ::OCV_AGE, ///< Skip based on the age, value is in calender-years. @see \ref ScriptCalendarTime
+		OC_REQUIRES_SERVICE = ::OCV_REQUIRES_SERVICE, ///< Skip when the vehicle requires service, no value.
+		OC_UNCONDITIONALLY = ::OCV_UNCONDITIONALLY, ///< Always skip, no compare function, no value.
+		OC_REMAINING_LIFETIME = ::OCV_REMAINING_LIFETIME, ///< Skip based on the remaining lifetime in calendar-years. @see \ref ScriptCalendarTime
 
 		/* Custom added value, only valid for this API */
-		OC_INVALID             = -1,                       ///< An invalid condition, do not use.
+		OC_INVALID = -1, ///< An invalid condition, do not use.
 	};
 
 	/**
@@ -107,17 +107,17 @@ public:
 	 */
 	enum CompareFunction {
 		/* Note: these values represent part of the in-game OrderConditionComparator enum */
-		CF_EQUALS        = ::OCC_EQUALS,       ///< Skip if both values are equal
-		CF_NOT_EQUALS    = ::OCC_NOT_EQUALS,   ///< Skip if both values are not equal
-		CF_LESS_THAN     = ::OCC_LESS_THAN,    ///< Skip if the value is less than the limit
-		CF_LESS_EQUALS   = ::OCC_LESS_EQUALS,  ///< Skip if the value is less or equal to the limit
-		CF_MORE_THAN     = ::OCC_MORE_THAN,    ///< Skip if the value is more than the limit
-		CF_MORE_EQUALS   = ::OCC_MORE_EQUALS,  ///< Skip if the value is more or equal to the limit
-		CF_IS_TRUE       = ::OCC_IS_TRUE,      ///< Skip if the variable is true
-		CF_IS_FALSE      = ::OCC_IS_FALSE,     ///< Skip if the variable is false
+		CF_EQUALS = ::OCC_EQUALS, ///< Skip if both values are equal
+		CF_NOT_EQUALS = ::OCC_NOT_EQUALS, ///< Skip if both values are not equal
+		CF_LESS_THAN = ::OCC_LESS_THAN, ///< Skip if the value is less than the limit
+		CF_LESS_EQUALS = ::OCC_LESS_EQUALS, ///< Skip if the value is less or equal to the limit
+		CF_MORE_THAN = ::OCC_MORE_THAN, ///< Skip if the value is more than the limit
+		CF_MORE_EQUALS = ::OCC_MORE_EQUALS, ///< Skip if the value is more or equal to the limit
+		CF_IS_TRUE = ::OCC_IS_TRUE, ///< Skip if the variable is true
+		CF_IS_FALSE = ::OCC_IS_FALSE, ///< Skip if the variable is false
 
 		/* Custom added value, only valid for this API */
-		CF_INVALID       = -1,                 ///< Invalid compare function, do not use.
+		CF_INVALID = -1, ///< Invalid compare function, do not use.
 	};
 
 	/**
@@ -129,14 +129,14 @@ public:
 	 */
 	enum OrderPosition {
 		ORDER_CURRENT = 0xFF, ///< Constant that gets resolved to the current order.
-		ORDER_INVALID = -1,   ///< An invalid order.
+		ORDER_INVALID = -1, ///< An invalid order.
 	};
 
 	/** Where to stop trains in a station that's longer than the train */
 	enum StopLocation {
-		STOPLOCATION_NEAR,         ///< Stop the train as soon as it's completely in the station
-		STOPLOCATION_MIDDLE,       ///< Stop the train in the middle of the station
-		STOPLOCATION_FAR,          ///< Stop the train at the far end of the station
+		STOPLOCATION_NEAR, ///< Stop the train as soon as it's completely in the station
+		STOPLOCATION_MIDDLE, ///< Stop the train in the middle of the station
+		STOPLOCATION_FAR, ///< Stop the train at the far end of the station
 		STOPLOCATION_INVALID = -1, ///< An invalid stop location
 	};
 

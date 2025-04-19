@@ -8,7 +8,9 @@
 /** @file league_gui.cpp GUI for league tables. */
 
 #include "stdafx.h"
+
 #include "league_gui.h"
+
 #include "company_base.h"
 #include "company_gui.h"
 #include "gui.h"
@@ -23,12 +25,10 @@
 #include "window_gui.h"
 
 #include "widgets/league_widget.h"
-
-#include "table/strings.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
-
 
 static const StringID _performance_titles[] = {
 	STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER,
@@ -80,7 +80,7 @@ private:
 	}
 
 	/** Sort the company league by performance history */
-	static bool PerformanceSorter(const Company * const &c1, const Company * const &c2)
+	static bool PerformanceSorter(const Company *const &c1, const Company *const &c2)
 	{
 		return c2->old_economy[0].performance_history < c1->old_economy[0].performance_history;
 	}
@@ -112,7 +112,7 @@ public:
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
 		uint icon_left = ir.Indent(rtl ? this->text_width : this->ordinal_width, rtl).left;
-		Rect text    = ir.WithWidth(this->text_width, !rtl);
+		Rect text = ir.WithWidth(this->text_width, !rtl);
 
 		for (uint i = 0; i != this->companies.size(); i++) {
 			const Company *c = this->companies[i];
@@ -120,7 +120,8 @@ public:
 
 			DrawCompanyIcon(c->index, icon_left, ir.top + icon_y_offset);
 
-			DrawString(text.left, text.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(c->old_economy[0].performance_history)));
+			DrawString(
+				text.left, text.right, ir.top + text_y_offset, GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, GetPerformanceTitleFromValue(c->old_economy[0].performance_history)));
 			ir.top += this->line_height;
 		}
 	}
@@ -194,12 +195,7 @@ static constexpr NWidgetPart _nested_performance_league_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _performance_league_desc(
-	WDP_AUTO, "performance_league", 0, 0,
-	WC_COMPANY_LEAGUE, WC_NONE,
-	{},
-	_nested_performance_league_widgets
-);
+static WindowDesc _performance_league_desc(WDP_AUTO, "performance_league", 0, 0, WC_COMPANY_LEAGUE, WC_NONE, {}, _nested_performance_league_widgets);
 
 void ShowPerformanceLeagueTable()
 {
@@ -210,7 +206,8 @@ static void HandleLinkClick(Link link)
 {
 	TileIndex xy;
 	switch (link.type) {
-		case LT_NONE: return;
+		case LT_NONE:
+			return;
 
 		case LT_TILE:
 			if (!IsValidTile(link.target)) return;
@@ -238,7 +235,8 @@ static void HandleLinkClick(Link link)
 			return;
 		}
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 
 	if (_ctrl_pressed) {
@@ -247,7 +245,6 @@ static void HandleLinkClick(Link link)
 		ScrollMainWindowToTile(xy);
 	}
 }
-
 
 class ScriptLeagueWindow : public Window {
 private:
@@ -280,7 +277,9 @@ private:
 			if (lte->table != this->table) continue;
 			elements.push_back(lte);
 		}
-		std::ranges::sort(elements, [](const LeagueTableElement *a, const LeagueTableElement *b) { return a->rating > b->rating; });
+		std::ranges::sort(elements, [](const LeagueTableElement *a, const LeagueTableElement *b) {
+			return a->rating > b->rating;
+		});
 
 		/* Calculate rank, companies with the same rating share the ranks */
 		uint rank = 0;
@@ -432,12 +431,7 @@ static constexpr NWidgetPart _nested_script_league_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _script_league_desc(
-	WDP_AUTO, "script_league", 0, 0,
-	WC_COMPANY_LEAGUE, WC_NONE,
-	{},
-	_nested_script_league_widgets
-);
+static WindowDesc _script_league_desc(WDP_AUTO, "script_league", 0, 0, WC_COMPANY_LEAGUE, WC_NONE, {}, _nested_script_league_widgets);
 
 void ShowScriptLeagueTable(LeagueTableID table)
 {

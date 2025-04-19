@@ -8,10 +8,11 @@
 /** @file newgrf_act0_houses.cpp NewGRF Action 0x00 handler for houses. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "../town.h"
 #include "../newgrf_cargo.h"
 #include "../newgrf_house.h"
+#include "../town.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
@@ -190,7 +191,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
 				CargoType cargo_type = (goods >= 0) ? ((_settings_game.game_creation.landscape == LandscapeType::Toyland) ? GetCargoTypeByLabel(CT_CANDY) : GetCargoTypeByLabel(CT_GOODS)) :
-						((_settings_game.game_creation.landscape == LandscapeType::Toyland) ? GetCargoTypeByLabel(CT_FIZZY_DRINKS) : GetCargoTypeByLabel(CT_FOOD));
+													  ((_settings_game.game_creation.landscape == LandscapeType::Toyland) ? GetCargoTypeByLabel(CT_FIZZY_DRINKS) : GetCargoTypeByLabel(CT_FOOD));
 
 				/* Make sure the cargo type is valid in this climate. */
 				if (!IsValidCargoType(cargo_type)) goods = 0;
@@ -355,5 +356,14 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return TownHouseChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_HOUSES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return TownHouseChangeInfo(first, last, prop, buf);
+}

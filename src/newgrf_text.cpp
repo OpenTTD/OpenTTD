@@ -17,22 +17,22 @@
 
 #include "stdafx.h"
 
-#include "debug.h"
-#include "newgrf.h"
-#include "strings_internal.h"
-#include "newgrf_storage.h"
 #include "newgrf_text.h"
-#include "newgrf_cargo.h"
-#include "string_func.h"
-#include "timer/timer_game_calendar.h"
-#include "debug.h"
+
 #include "core/alloc_type.hpp"
 #include "core/string_builder.hpp"
 #include "core/string_consumer.hpp"
+#include "debug.h"
 #include "language.h"
+#include "newgrf.h"
+#include "newgrf_cargo.h"
+#include "newgrf_storage.h"
+#include "string_func.h"
+#include "strings_internal.h"
+#include "timer/timer_game_calendar.h"
 
-#include "table/strings.h"
 #include "table/control_codes.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -42,23 +42,22 @@
  * jumping from standard langID scheme to the new one.
  */
 enum GRFBaseLanguages : uint8_t {
-	GRFLB_AMERICAN    = 0x01,
-	GRFLB_ENGLISH     = 0x02,
-	GRFLB_GERMAN      = 0x04,
-	GRFLB_FRENCH      = 0x08,
-	GRFLB_SPANISH     = 0x10,
-	GRFLB_GENERIC     = 0x80,
+	GRFLB_AMERICAN = 0x01,
+	GRFLB_ENGLISH = 0x02,
+	GRFLB_GERMAN = 0x04,
+	GRFLB_FRENCH = 0x08,
+	GRFLB_SPANISH = 0x10,
+	GRFLB_GENERIC = 0x80,
 };
 
 enum GRFExtendedLanguages : uint8_t {
-	GRFLX_AMERICAN    = 0x00,
-	GRFLX_ENGLISH     = 0x01,
-	GRFLX_GERMAN      = 0x02,
-	GRFLX_FRENCH      = 0x03,
-	GRFLX_SPANISH     = 0x04,
+	GRFLX_AMERICAN = 0x00,
+	GRFLX_ENGLISH = 0x01,
+	GRFLX_GERMAN = 0x02,
+	GRFLX_FRENCH = 0x03,
+	GRFLX_SPANISH = 0x04,
 	GRFLX_UNSPECIFIED = 0x7F,
 };
-
 
 /**
  * Holder of the above structure.
@@ -72,9 +71,8 @@ struct GRFTextEntry {
 	GRFStringID stringid;
 };
 
-
 static ReferenceThroughBaseContainer<std::vector<GRFTextEntry>> _grf_text;
-static uint8_t _current_lang_id = GRFLX_ENGLISH;  ///< by default, english is used.
+static uint8_t _current_lang_id = GRFLX_ENGLISH; ///< by default, english is used.
 
 /**
  * Get the mapping from the NewGRF supplied ID to OpenTTD's internal ID.
@@ -113,13 +111,10 @@ struct UnmappedChoiceList {
 	 * @param type   The type of mapping.
 	 * @param offset The offset to get the plural/gender from.
 	 */
-	UnmappedChoiceList(StringControlCode type, int offset) :
-		type(type), offset(offset)
-	{
-	}
+	UnmappedChoiceList(StringControlCode type, int offset) : type(type), offset(offset) {}
 
 	StringControlCode type; ///< The type of choice list.
-	int offset;             ///< The offset for the plural/gender form.
+	int offset; ///< The offset for the plural/gender form.
 
 	/** Mapping of NewGRF supplied ID to the different strings in the choice list. */
 	std::map<int, std::string> strings;
@@ -273,7 +268,8 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				consumer.SkipUint8();
 				builder.PutChar(' ');
 				break;
-			case 0x0A: break;
+			case 0x0A:
+				break;
 			case 0x0D:
 				if (allow_newlines) {
 					builder.PutChar(0x0A);
@@ -281,8 +277,12 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 					GrfMsg(1, "Detected newline in string that does not allow one");
 				}
 				break;
-			case 0x0E: builder.PutUtf8(SCC_TINYFONT); break;
-			case 0x0F: builder.PutUtf8(SCC_BIGFONT); break;
+			case 0x0E:
+				builder.PutUtf8(SCC_TINYFONT);
+				break;
+			case 0x0F:
+				builder.PutUtf8(SCC_BIGFONT);
+				break;
 			case 0x1F:
 				consumer.SkipUint8();
 				consumer.SkipUint8();
@@ -292,10 +292,13 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 			case 0x7C:
 			case 0x7D:
 			case 0x7E:
-			case 0x7F: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
-			case 0x80: builder.PutUtf8(byte80); break;
-			case 0x81:
-			{
+			case 0x7F:
+				builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B);
+				break;
+			case 0x80:
+				builder.PutUtf8(byte80);
+				break;
+			case 0x81: {
 				uint16_t string = consumer.ReadUint16LE();
 				builder.PutUtf8(SCC_NEWGRF_STRINL);
 				builder.PutUtf8(MapGRFStringID(grfid, GRFStringID{string}));
@@ -303,33 +306,77 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 			}
 			case 0x82:
 			case 0x83:
-			case 0x84: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_DATE_LONG + c - 0x82); break;
-			case 0x85: builder.PutUtf8(SCC_NEWGRF_DISCARD_WORD);       break;
-			case 0x86: builder.PutUtf8(SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
-			case 0x87: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_VOLUME_LONG);  break;
-			case 0x88: builder.PutUtf8(SCC_BLUE);    break;
-			case 0x89: builder.PutUtf8(SCC_SILVER);  break;
-			case 0x8A: builder.PutUtf8(SCC_GOLD);    break;
-			case 0x8B: builder.PutUtf8(SCC_RED);     break;
-			case 0x8C: builder.PutUtf8(SCC_PURPLE);  break;
-			case 0x8D: builder.PutUtf8(SCC_LTBROWN); break;
-			case 0x8E: builder.PutUtf8(SCC_ORANGE);  break;
-			case 0x8F: builder.PutUtf8(SCC_GREEN);   break;
-			case 0x90: builder.PutUtf8(SCC_YELLOW);  break;
-			case 0x91: builder.PutUtf8(SCC_DKGREEN); break;
-			case 0x92: builder.PutUtf8(SCC_CREAM);   break;
-			case 0x93: builder.PutUtf8(SCC_BROWN);   break;
-			case 0x94: builder.PutUtf8(SCC_WHITE);   break;
-			case 0x95: builder.PutUtf8(SCC_LTBLUE);  break;
-			case 0x96: builder.PutUtf8(SCC_GRAY);    break;
-			case 0x97: builder.PutUtf8(SCC_DKBLUE);  break;
-			case 0x98: builder.PutUtf8(SCC_BLACK);   break;
-			case 0x9A:
-			{
+			case 0x84:
+				builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_DATE_LONG + c - 0x82);
+				break;
+			case 0x85:
+				builder.PutUtf8(SCC_NEWGRF_DISCARD_WORD);
+				break;
+			case 0x86:
+				builder.PutUtf8(SCC_NEWGRF_ROTATE_TOP_4_WORDS);
+				break;
+			case 0x87:
+				builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_VOLUME_LONG);
+				break;
+			case 0x88:
+				builder.PutUtf8(SCC_BLUE);
+				break;
+			case 0x89:
+				builder.PutUtf8(SCC_SILVER);
+				break;
+			case 0x8A:
+				builder.PutUtf8(SCC_GOLD);
+				break;
+			case 0x8B:
+				builder.PutUtf8(SCC_RED);
+				break;
+			case 0x8C:
+				builder.PutUtf8(SCC_PURPLE);
+				break;
+			case 0x8D:
+				builder.PutUtf8(SCC_LTBROWN);
+				break;
+			case 0x8E:
+				builder.PutUtf8(SCC_ORANGE);
+				break;
+			case 0x8F:
+				builder.PutUtf8(SCC_GREEN);
+				break;
+			case 0x90:
+				builder.PutUtf8(SCC_YELLOW);
+				break;
+			case 0x91:
+				builder.PutUtf8(SCC_DKGREEN);
+				break;
+			case 0x92:
+				builder.PutUtf8(SCC_CREAM);
+				break;
+			case 0x93:
+				builder.PutUtf8(SCC_BROWN);
+				break;
+			case 0x94:
+				builder.PutUtf8(SCC_WHITE);
+				break;
+			case 0x95:
+				builder.PutUtf8(SCC_LTBLUE);
+				break;
+			case 0x96:
+				builder.PutUtf8(SCC_GRAY);
+				break;
+			case 0x97:
+				builder.PutUtf8(SCC_DKBLUE);
+				break;
+			case 0x98:
+				builder.PutUtf8(SCC_BLACK);
+				break;
+			case 0x9A: {
 				uint8_t code = consumer.ReadUint8();
 				switch (code) {
-					case 0x00: goto string_end;
-					case 0x01: builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
+					case 0x00:
+						goto string_end;
+					case 0x01:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_CURRENCY);
+						break;
 						/* 0x02: ignore next colour byte is not supported. It works on the final
 						 * string and as such hooks into the string drawing routine. At that
 						 * point many things already happened, such as splitting up of strings
@@ -337,23 +384,33 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 						 * make the behaviour peculiar, e.g. only happening at specific width
 						 * of windows. Or we need to add another pass over the string to just
 						 * support this. As such it is not implemented in OpenTTD. */
-					case 0x03:
-					{
+					case 0x03: {
 						uint16_t tmp = consumer.ReadUint16LE();
 						builder.PutUtf8(SCC_NEWGRF_PUSH_WORD);
 						builder.PutUtf8(tmp);
 						break;
 					}
-					case 0x06: builder.PutUtf8(SCC_NEWGRF_PRINT_BYTE_HEX);          break;
-					case 0x07: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_HEX);          break;
-					case 0x08: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_HEX);         break;
+					case 0x06:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_BYTE_HEX);
+						break;
+					case 0x07:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_HEX);
+						break;
+					case 0x08:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_HEX);
+						break;
 					/* 0x09, 0x0A are TTDPatch internal use only string codes. */
-					case 0x0B: builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_HEX);         break;
-					case 0x0C: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
-					case 0x0D: builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG);  break;
+					case 0x0B:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_QWORD_HEX);
+						break;
+					case 0x0C:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_STATION_NAME);
+						break;
+					case 0x0D:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG);
+						break;
 					case 0x0E:
-					case 0x0F:
-					{
+					case 0x0F: {
 						const LanguageMap *lm = LanguageMap::GetLanguageMap(grfid, language_id);
 						int index = consumer.ReadUint8();
 						int mapped = lm != nullptr ? lm->GetMapping(index, code == 0x0E) : -1;
@@ -406,7 +463,7 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 							GrfMsg(1, "choice lists can't be stacked, it's going to get messy now...");
 							if (code != 0x14) consumer.SkipUint8();
 						} else {
-							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST };
+							static const StringControlCode mp[] = {SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST};
 							mapping.emplace(mp[code - 0x13], code == 0x14 ? 0 : consumer.ReadUint8());
 						}
 						break;
@@ -424,10 +481,16 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 						builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_DATE_LONG + code - 0x16);
 						break;
 
-					case 0x1F: builder.PutUtf8(SCC_PUSH_COLOUR); break;
-					case 0x20: builder.PutUtf8(SCC_POP_COLOUR);  break;
+					case 0x1F:
+						builder.PutUtf8(SCC_PUSH_COLOUR);
+						break;
+					case 0x20:
+						builder.PutUtf8(SCC_POP_COLOUR);
+						break;
 
-					case 0x21: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_FORCE); break;
+					case 0x21:
+						builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_FORCE);
+						break;
 
 					default:
 						GrfMsg(1, "missing handler for extended format code");
@@ -436,21 +499,51 @@ std::string TranslateTTDPatchCodes(uint32_t grfid, uint8_t language_id, bool all
 				break;
 			}
 
-			case 0x9E: builder.PutUtf8(0x20AC);               break; // Euro
-			case 0x9F: builder.PutUtf8(0x0178);               break; // Y with diaeresis
-			case 0xA0: builder.PutUtf8(SCC_UP_ARROW);         break;
-			case 0xAA: builder.PutUtf8(SCC_DOWN_ARROW);       break;
-			case 0xAC: builder.PutUtf8(SCC_CHECKMARK);        break;
-			case 0xAD: builder.PutUtf8(SCC_CROSS);            break;
-			case 0xAF: builder.PutUtf8(SCC_RIGHT_ARROW);      break;
-			case 0xB4: builder.PutUtf8(SCC_TRAIN);            break;
-			case 0xB5: builder.PutUtf8(SCC_LORRY);            break;
-			case 0xB6: builder.PutUtf8(SCC_BUS);              break;
-			case 0xB7: builder.PutUtf8(SCC_PLANE);            break;
-			case 0xB8: builder.PutUtf8(SCC_SHIP);             break;
-			case 0xB9: builder.PutUtf8(SCC_SUPERSCRIPT_M1);   break;
-			case 0xBC: builder.PutUtf8(SCC_SMALL_UP_ARROW);   break;
-			case 0xBD: builder.PutUtf8(SCC_SMALL_DOWN_ARROW); break;
+			case 0x9E:
+				builder.PutUtf8(0x20AC);
+				break; // Euro
+			case 0x9F:
+				builder.PutUtf8(0x0178);
+				break; // Y with diaeresis
+			case 0xA0:
+				builder.PutUtf8(SCC_UP_ARROW);
+				break;
+			case 0xAA:
+				builder.PutUtf8(SCC_DOWN_ARROW);
+				break;
+			case 0xAC:
+				builder.PutUtf8(SCC_CHECKMARK);
+				break;
+			case 0xAD:
+				builder.PutUtf8(SCC_CROSS);
+				break;
+			case 0xAF:
+				builder.PutUtf8(SCC_RIGHT_ARROW);
+				break;
+			case 0xB4:
+				builder.PutUtf8(SCC_TRAIN);
+				break;
+			case 0xB5:
+				builder.PutUtf8(SCC_LORRY);
+				break;
+			case 0xB6:
+				builder.PutUtf8(SCC_BUS);
+				break;
+			case 0xB7:
+				builder.PutUtf8(SCC_PLANE);
+				break;
+			case 0xB8:
+				builder.PutUtf8(SCC_SHIP);
+				break;
+			case 0xB9:
+				builder.PutUtf8(SCC_SUPERSCRIPT_M1);
+				break;
+			case 0xBC:
+				builder.PutUtf8(SCC_SMALL_UP_ARROW);
+				break;
+			case 0xBD:
+				builder.PutUtf8(SCC_SMALL_DOWN_ARROW);
+				break;
 			default:
 				/* Validate any unhandled character */
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
@@ -544,22 +637,24 @@ StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_ad
 			langid_to_add = GRFLX_ENGLISH;
 		} else {
 			StringID ret = STR_EMPTY;
-			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, GRFLX_GERMAN,  true, allow_newlines, text_to_add, def_string);
-			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, GRFLX_FRENCH,  true, allow_newlines, text_to_add, def_string);
+			if (langid_to_add & GRFLB_GERMAN) ret = AddGRFString(grfid, stringid, GRFLX_GERMAN, true, allow_newlines, text_to_add, def_string);
+			if (langid_to_add & GRFLB_FRENCH) ret = AddGRFString(grfid, stringid, GRFLX_FRENCH, true, allow_newlines, text_to_add, def_string);
 			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, GRFLX_SPANISH, true, allow_newlines, text_to_add, def_string);
 			return ret;
 		}
 	}
 
-	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) {
+		return grf_text.grfid == grfid && grf_text.stringid == stringid;
+	});
 	if (it == std::end(_grf_text)) {
 		/* Too many strings allocated, return empty. */
 		if (_grf_text.size() == TAB_SIZE_NEWGRF) return STR_EMPTY;
 
 		/* We didn't find our stringid and grfid in the list, allocate a new id. */
 		it = _grf_text.emplace(std::end(_grf_text));
-		it->grfid      = grfid;
-		it->stringid   = stringid;
+		it->grfid = grfid;
+		it->stringid = stringid;
 		it->def_string = def_string;
 	}
 	StringIndexInTab id(it - std::begin(_grf_text));
@@ -577,7 +672,9 @@ StringID AddGRFString(uint32_t grfid, GRFStringID stringid, uint8_t langid_to_ad
  */
 StringID GetGRFStringID(uint32_t grfid, GRFStringID stringid)
 {
-	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) { return grf_text.grfid == grfid && grf_text.stringid == stringid; });
+	auto it = std::ranges::find_if(_grf_text, [&grfid, &stringid](const GRFTextEntry &grf_text) {
+		return grf_text.grfid == grfid && grf_text.stringid == stringid;
+	});
 	if (it != std::end(_grf_text)) {
 		StringIndexInTab id(it - std::begin(_grf_text));
 		return MakeStringID(TEXT_TAB_NEWGRF_START, id);
@@ -585,7 +682,6 @@ StringID GetGRFStringID(uint32_t grfid, GRFStringID stringid)
 
 	return STR_UNDEFINED;
 }
-
 
 /**
  * Get a C-string from a GRFText-list. If there is a translation for the
@@ -656,10 +752,14 @@ bool CheckGrfLangID(uint8_t lang_id, uint8_t grf_version)
 {
 	if (grf_version < 7) {
 		switch (_current_lang_id) {
-			case GRFLX_GERMAN:  return (lang_id & GRFLB_GERMAN)  != 0;
-			case GRFLX_FRENCH:  return (lang_id & GRFLB_FRENCH)  != 0;
-			case GRFLX_SPANISH: return (lang_id & GRFLB_SPANISH) != 0;
-			default:            return (lang_id & (GRFLB_ENGLISH | GRFLB_AMERICAN)) != 0;
+			case GRFLX_GERMAN:
+				return (lang_id & GRFLB_GERMAN) != 0;
+			case GRFLX_FRENCH:
+				return (lang_id & GRFLB_FRENCH) != 0;
+			case GRFLX_SPANISH:
+				return (lang_id & GRFLB_SPANISH) != 0;
+			default:
+				return (lang_id & (GRFLB_ENGLISH | GRFLB_AMERICAN)) != 0;
 		}
 	}
 
@@ -695,37 +795,57 @@ struct TextRefStack {
 		}
 	}
 
-	uint8_t  PopUnsignedByte()  { assert(this->position < this->stack.size()); return this->stack[this->position++]; }
-	int8_t   PopSignedByte()    { return (int8_t)this->PopUnsignedByte(); }
+	uint8_t PopUnsignedByte()
+	{
+		assert(this->position < this->stack.size());
+		return this->stack[this->position++];
+	}
+
+	int8_t PopSignedByte()
+	{
+		return (int8_t)this->PopUnsignedByte();
+	}
 
 	uint16_t PopUnsignedWord()
 	{
 		uint16_t val = this->PopUnsignedByte();
 		return val | (this->PopUnsignedByte() << 8);
 	}
-	int16_t  PopSignedWord()    { return (int32_t)this->PopUnsignedWord(); }
+
+	int16_t PopSignedWord()
+	{
+		return (int32_t)this->PopUnsignedWord();
+	}
 
 	uint32_t PopUnsignedDWord()
 	{
 		uint32_t val = this->PopUnsignedWord();
 		return val | (this->PopUnsignedWord() << 16);
 	}
-	int32_t  PopSignedDWord()   { return (int32_t)this->PopUnsignedDWord(); }
+
+	int32_t PopSignedDWord()
+	{
+		return (int32_t)this->PopUnsignedDWord();
+	}
 
 	uint64_t PopUnsignedQWord()
 	{
 		uint64_t val = this->PopUnsignedDWord();
 		return val | (((uint64_t)this->PopUnsignedDWord()) << 32);
 	}
-	int64_t  PopSignedQWord()   { return (int64_t)this->PopUnsignedQWord(); }
+
+	int64_t PopSignedQWord()
+	{
+		return (int64_t)this->PopUnsignedQWord();
+	}
 
 	/** Rotate the top four words down: W1, W2, W3, W4 -> W4, W1, W2, W3 */
 	void RotateTop4Words()
 	{
 		uint8_t tmp[2];
-		for (int i = 0; i  < 2; i++) tmp[i] = this->stack[this->position + i + 6];
+		for (int i = 0; i < 2; i++) tmp[i] = this->stack[this->position + i + 6];
 		for (int i = 5; i >= 0; i--) this->stack[this->position + i + 2] = this->stack[this->position + i];
-		for (int i = 0; i  < 2; i++) this->stack[this->position + i] = tmp[i];
+		for (int i = 0; i < 2; i++) this->stack[this->position + i] = tmp[i];
 	}
 
 	void PushWord(uint16_t word)
@@ -736,7 +856,7 @@ struct TextRefStack {
 			/* Rotate right 2 positions */
 			std::rotate(this->stack.rbegin(), this->stack.rbegin() + 2, this->stack.rend());
 		}
-		this->stack[this->position]     = GB(word, 0, 8);
+		this->stack[this->position] = GB(word, 0, 8);
 		this->stack[this->position + 1] = GB(word, 8, 8);
 	}
 };
@@ -755,7 +875,8 @@ static void ProcessNewGRFStringControlCode(char32_t scc, StringConsumer &consume
 	/* There is data on the NewGRF text stack, and we want to move them to OpenTTD's string stack.
 	 * After this call, a new call is made with `modify_parameters` set to false when the string is finally formatted. */
 	switch (scc) {
-		default: return;
+		default:
+			return;
 
 		case SCC_PLURAL_LIST:
 			consumer.SkipUint8(); // plural form
@@ -793,40 +914,64 @@ static void ProcessNewGRFStringControlCode(char32_t scc, StringConsumer &consume
 			NOT_REACHED();
 			break;
 
-		case SCC_NEWGRF_PRINT_BYTE_SIGNED:      params.emplace_back(stack.PopSignedByte());    break;
-		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:   params.emplace_back(stack.PopSignedQWord());   break;
+		case SCC_NEWGRF_PRINT_BYTE_SIGNED:
+			params.emplace_back(stack.PopSignedByte());
+			break;
+		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
+			params.emplace_back(stack.PopSignedQWord());
+			break;
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
-		case SCC_NEWGRF_PRINT_DWORD_SIGNED:     params.emplace_back(stack.PopSignedDWord());   break;
+		case SCC_NEWGRF_PRINT_DWORD_SIGNED:
+			params.emplace_back(stack.PopSignedDWord());
+			break;
 
-		case SCC_NEWGRF_PRINT_BYTE_HEX:         params.emplace_back(stack.PopUnsignedByte());  break;
-		case SCC_NEWGRF_PRINT_QWORD_HEX:        params.emplace_back(stack.PopUnsignedQWord()); break;
+		case SCC_NEWGRF_PRINT_BYTE_HEX:
+			params.emplace_back(stack.PopUnsignedByte());
+			break;
+		case SCC_NEWGRF_PRINT_QWORD_HEX:
+			params.emplace_back(stack.PopUnsignedQWord());
+			break;
 
 		case SCC_NEWGRF_PRINT_WORD_SPEED:
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_LONG:
 		case SCC_NEWGRF_PRINT_WORD_VOLUME_SHORT:
-		case SCC_NEWGRF_PRINT_WORD_SIGNED:      params.emplace_back(stack.PopSignedWord());    break;
+		case SCC_NEWGRF_PRINT_WORD_SIGNED:
+			params.emplace_back(stack.PopSignedWord());
+			break;
 
 		case SCC_NEWGRF_PRINT_WORD_HEX:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_LONG:
 		case SCC_NEWGRF_PRINT_WORD_WEIGHT_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_POWER:
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
-		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:    params.emplace_back(stack.PopUnsignedWord());  break;
+		case SCC_NEWGRF_PRINT_WORD_UNSIGNED:
+			params.emplace_back(stack.PopUnsignedWord());
+			break;
 
 		case SCC_NEWGRF_PRINT_DWORD_FORCE:
 		case SCC_NEWGRF_PRINT_DWORD_DATE_LONG:
 		case SCC_NEWGRF_PRINT_DWORD_DATE_SHORT:
-		case SCC_NEWGRF_PRINT_DWORD_HEX:        params.emplace_back(stack.PopUnsignedDWord()); break;
+		case SCC_NEWGRF_PRINT_DWORD_HEX:
+			params.emplace_back(stack.PopUnsignedDWord());
+			break;
 
 		/* Dates from NewGRFs have 1920-01-01 as their zero point, convert it to OpenTTD's epoch. */
 		case SCC_NEWGRF_PRINT_WORD_DATE_LONG:
-		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:  params.emplace_back(CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + stack.PopUnsignedWord()); break;
+		case SCC_NEWGRF_PRINT_WORD_DATE_SHORT:
+			params.emplace_back(CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + stack.PopUnsignedWord());
+			break;
 
-		case SCC_NEWGRF_DISCARD_WORD:           stack.PopUnsignedWord(); break;
+		case SCC_NEWGRF_DISCARD_WORD:
+			stack.PopUnsignedWord();
+			break;
 
-		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     stack.RotateTop4Words(); break;
-		case SCC_NEWGRF_PUSH_WORD:              stack.PushWord(consumer.ReadUtf8(0)); break;
+		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:
+			stack.RotateTop4Words();
+			break;
+		case SCC_NEWGRF_PUSH_WORD:
+			stack.PushWord(consumer.ReadUtf8(0));
+			break;
 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:

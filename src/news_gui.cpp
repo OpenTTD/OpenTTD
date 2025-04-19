@@ -8,38 +8,38 @@
 /** @file news_gui.cpp GUI functions related to news messages. */
 
 #include "stdafx.h"
-#include "gui.h"
-#include "viewport_func.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "vehicle_base.h"
-#include "vehicle_func.h"
-#include "vehicle_gui.h"
-#include "roadveh.h"
-#include "station_base.h"
-#include "industry.h"
-#include "town.h"
-#include "sound_func.h"
-#include "string_func.h"
-#include "statusbar_gui.h"
-#include "company_manager_face.h"
-#include "company_func.h"
-#include "engine_base.h"
-#include "engine_gui.h"
+
 #include "core/geometry_func.hpp"
 #include "command_func.h"
 #include "company_base.h"
-#include "settings_internal.h"
+#include "company_func.h"
+#include "company_manager_face.h"
+#include "engine_base.h"
+#include "engine_gui.h"
 #include "group_gui.h"
-#include "zoom_func.h"
+#include "gui.h"
+#include "industry.h"
 #include "news_cmd.h"
 #include "news_func.h"
+#include "roadveh.h"
+#include "settings_internal.h"
+#include "sound_func.h"
+#include "station_base.h"
+#include "statusbar_gui.h"
+#include "string_func.h"
+#include "strings_func.h"
 #include "timer/timer.h"
-#include "timer/timer_window.h"
 #include "timer/timer_game_calendar.h"
+#include "timer/timer_window.h"
+#include "town.h"
+#include "vehicle_base.h"
+#include "vehicle_func.h"
+#include "vehicle_gui.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "zoom_func.h"
 
 #include "widgets/news_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -89,13 +89,40 @@ const NewsContainer &GetNews()
 static TileIndex GetReferenceTile(const NewsReference &reference)
 {
 	struct visitor {
-		TileIndex operator()(const std::monostate &) { return INVALID_TILE; }
-		TileIndex operator()(const TileIndex &t) { return t; }
-		TileIndex operator()(const VehicleID) { return INVALID_TILE; }
-		TileIndex operator()(const StationID s) { return Station::Get(s)->xy; }
-		TileIndex operator()(const IndustryID i) { return Industry::Get(i)->location.tile + TileDiffXY(1, 1); }
-		TileIndex operator()(const TownID t) { return Town::Get(t)->xy; }
-		TileIndex operator()(const EngineID) { return INVALID_TILE; }
+		TileIndex operator()(const std::monostate &)
+		{
+			return INVALID_TILE;
+		}
+
+		TileIndex operator()(const TileIndex &t)
+		{
+			return t;
+		}
+
+		TileIndex operator()(const VehicleID)
+		{
+			return INVALID_TILE;
+		}
+
+		TileIndex operator()(const StationID s)
+		{
+			return Station::Get(s)->xy;
+		}
+
+		TileIndex operator()(const IndustryID i)
+		{
+			return Industry::Get(i)->location.tile + TileDiffXY(1, 1);
+		}
+
+		TileIndex operator()(const TownID t)
+		{
+			return Town::Get(t)->xy;
+		}
+
+		TileIndex operator()(const EngineID)
+		{
+			return INVALID_TILE;
+		}
 	};
 
 	return std::visit(visitor{}, reference);
@@ -128,12 +155,7 @@ static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _normal_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
-	{},
-	_nested_normal_news_widgets
-);
+static WindowDesc _normal_news_desc(WDP_MANUAL, nullptr, 0, 0, WC_NEWS_WINDOW, WC_NONE, {}, _nested_normal_news_widgets);
 
 /* New vehicles news items. */
 /* clang-format off */
@@ -178,12 +200,7 @@ static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _vehicle_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
-	{},
-	_nested_vehicle_news_widgets
-);
+static WindowDesc _vehicle_news_desc(WDP_MANUAL, nullptr, 0, 0, WC_NEWS_WINDOW, WC_NONE, {}, _nested_vehicle_news_widgets);
 
 /* Company news items. */
 /* clang-format off */
@@ -225,12 +242,7 @@ static constexpr NWidgetPart _nested_company_news_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _company_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
-	{},
-	_nested_company_news_widgets
-);
+static WindowDesc _company_news_desc(WDP_MANUAL, nullptr, 0, 0, WC_NEWS_WINDOW, WC_NONE, {}, _nested_company_news_widgets);
 
 /* Thin news items. */
 /* clang-format off */
@@ -261,12 +273,7 @@ static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _thin_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
-	{},
-	_nested_thin_news_widgets
-);
+static WindowDesc _thin_news_desc(WDP_MANUAL, nullptr, 0, 0, WC_NEWS_WINDOW, WC_NONE, {}, _nested_thin_news_widgets);
 
 /* Small news items. */
 /* clang-format off */
@@ -299,20 +306,15 @@ static constexpr NWidgetPart _nested_small_news_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _small_news_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_NEWS_WINDOW, WC_NONE,
-	{},
-	_nested_small_news_widgets
-);
+static WindowDesc _small_news_desc(WDP_MANUAL, nullptr, 0, 0, WC_NEWS_WINDOW, WC_NONE, {}, _nested_small_news_widgets);
 
 /**
  * Window layouts for news items.
  */
 static WindowDesc *_news_window_layout[] = {
-	&_thin_news_desc,    // NewsStyle::Thin
-	&_small_news_desc,   // NewsStyle::Small
-	&_normal_news_desc,  // NewsStyle::Normal
+	&_thin_news_desc, // NewsStyle::Thin
+	&_small_news_desc, // NewsStyle::Small
+	&_normal_news_desc, // NewsStyle::Normal
 	&_vehicle_news_desc, // NewsStyle::Vehicle
 	&_company_news_desc, // NewsStyle::Company
 };
@@ -329,22 +331,22 @@ static WindowDesc &GetNewsWindowLayout(NewsStyle style)
  */
 static NewsTypeData _news_type_data[] = {
 	/*            name,                           age, sound,          */
-	NewsTypeData("news_display.arrival_player",    60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalCompany
-	NewsTypeData("news_display.arrival_other",     60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalOther
-	NewsTypeData("news_display.accident",          90, SND_BEGIN       ),  ///< NewsType::Accident
-	NewsTypeData("news_display.accident_other",    90, SND_BEGIN       ),  ///< NewsType::AccidentOther
-	NewsTypeData("news_display.company_info",      60, SND_BEGIN       ),  ///< NewsType::CompanyInfo
-	NewsTypeData("news_display.open",              90, SND_BEGIN       ),  ///< NewsType::IndustryOpen
-	NewsTypeData("news_display.close",             90, SND_BEGIN       ),  ///< NewsType::IndustryClose
-	NewsTypeData("news_display.economy",           30, SND_BEGIN       ),  ///< NewsType::Economy
-	NewsTypeData("news_display.production_player", 30, SND_BEGIN       ),  ///< NewsType::IndustryCompany
-	NewsTypeData("news_display.production_other",  30, SND_BEGIN       ),  ///< NewsType::IndustryOther
-	NewsTypeData("news_display.production_nobody", 30, SND_BEGIN       ),  ///< NewsType::IndustryNobody
-	NewsTypeData("news_display.advice",           150, SND_BEGIN       ),  ///< NewsType::Advice
-	NewsTypeData("news_display.new_vehicles",      30, SND_1E_NEW_ENGINE), ///< NewsType::NewVehicles
-	NewsTypeData("news_display.acceptance",        90, SND_BEGIN       ),  ///< NewsType::Acceptance
-	NewsTypeData("news_display.subsidies",        180, SND_BEGIN       ),  ///< NewsType::Subsidies
-	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NewsType::General
+	NewsTypeData("news_display.arrival_player", 60, SND_1D_APPLAUSE), ///< NewsType::ArrivalCompany
+	NewsTypeData("news_display.arrival_other", 60, SND_1D_APPLAUSE), ///< NewsType::ArrivalOther
+	NewsTypeData("news_display.accident", 90, SND_BEGIN), ///< NewsType::Accident
+	NewsTypeData("news_display.accident_other", 90, SND_BEGIN), ///< NewsType::AccidentOther
+	NewsTypeData("news_display.company_info", 60, SND_BEGIN), ///< NewsType::CompanyInfo
+	NewsTypeData("news_display.open", 90, SND_BEGIN), ///< NewsType::IndustryOpen
+	NewsTypeData("news_display.close", 90, SND_BEGIN), ///< NewsType::IndustryClose
+	NewsTypeData("news_display.economy", 30, SND_BEGIN), ///< NewsType::Economy
+	NewsTypeData("news_display.production_player", 30, SND_BEGIN), ///< NewsType::IndustryCompany
+	NewsTypeData("news_display.production_other", 30, SND_BEGIN), ///< NewsType::IndustryOther
+	NewsTypeData("news_display.production_nobody", 30, SND_BEGIN), ///< NewsType::IndustryNobody
+	NewsTypeData("news_display.advice", 150, SND_BEGIN), ///< NewsType::Advice
+	NewsTypeData("news_display.new_vehicles", 30, SND_1E_NEW_ENGINE), ///< NewsType::NewVehicles
+	NewsTypeData("news_display.acceptance", 90, SND_BEGIN), ///< NewsType::Acceptance
+	NewsTypeData("news_display.subsidies", 180, SND_BEGIN), ///< NewsType::Subsidies
+	NewsTypeData("news_display.general", 60, SND_BEGIN), ///< NewsType::General
 };
 
 static_assert(std::size(_news_type_data) == to_underlying(NewsType::End));
@@ -426,15 +428,15 @@ struct NewsWindow : Window {
 		GfxFillRect(ir, PC_WHITE);
 
 		ir = ir.Expand(1);
-		GfxFillRect( r.left,   r.top,    ir.left,   r.bottom, PC_BLACK);
-		GfxFillRect(ir.right,  r.top,     r.right,  r.bottom, PC_BLACK);
-		GfxFillRect( r.left,   r.top,     r.right, ir.top,    PC_BLACK);
-		GfxFillRect( r.left,  ir.bottom,  r.right,  r.bottom, PC_BLACK);
+		GfxFillRect(r.left, r.top, ir.left, r.bottom, PC_BLACK);
+		GfxFillRect(ir.right, r.top, r.right, r.bottom, PC_BLACK);
+		GfxFillRect(r.left, r.top, r.right, ir.top, PC_BLACK);
+		GfxFillRect(r.left, ir.bottom, r.right, r.bottom, PC_BLACK);
 	}
 
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
-		Point pt = { 0, _screen.height };
+		Point pt = {0, _screen.height};
 		return pt;
 	}
 
@@ -510,12 +512,11 @@ struct NewsWindow : Window {
 		if (widget == WID_N_DATE) {
 			return GetString(STR_JUST_DATE_LONG, this->ni->date);
 		} else if (widget == WID_N_TITLE) {
-			const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
+			const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation *>(this->ni->data.get());
 			return GetString(cni->title);
 		}
 
 		return this->Window::GetWidgetString(widget, stringid);
-
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -537,13 +538,13 @@ struct NewsWindow : Window {
 			}
 
 			case WID_N_MGR_FACE: {
-				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
+				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation *>(this->ni->data.get());
 				DrawCompanyManagerFace(cni->face, cni->colour, r);
 				GfxFillRect(r, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_MGR_NAME: {
-				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data.get());
+				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation *>(this->ni->data.get());
 				DrawStringMultiLine(r, GetString(STR_JUST_RAW_STRING, cni->president_name), TC_FROMSTRING, SA_CENTER);
 				break;
 			}
@@ -663,9 +664,9 @@ struct NewsWindow : Window {
 	 * The interval of 210ms is chosen to maintain 15ms at normal zoom: 210 / GetCharacterHeight(FS_NORMAL) = 15ms.
 	 */
 	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(210) / GetCharacterHeight(FS_NORMAL), [this](uint count) {
-		int newtop = std::max(this->top - 2 * static_cast<int>(count), _screen.height - this->height - this->status_height - this->chat_height);
-		this->SetWindowTop(newtop);
-	}};
+													  int newtop = std::max(this->top - 2 * static_cast<int>(count), _screen.height - this->height - this->status_height - this->chat_height);
+													  this->SetWindowTop(newtop);
+												  }};
 
 private:
 	/**
@@ -778,7 +779,8 @@ static void MoveToNextTickerItem()
 		if (TimerGameEconomy::date - _news_type_data[to_underlying(type)].age > _statusbar_news->economy_date) continue;
 
 		switch (_news_type_data[to_underlying(type)].GetDisplay()) {
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 			case NewsDisplay::Off: // Show nothing only a small reminder in the status bar.
 				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
 				return;
@@ -788,7 +790,8 @@ static void MoveToNextTickerItem()
 				return;
 
 			case NewsDisplay::Full: // Show newspaper, skipped here.
-				break;;
+				break;
+				;
 		}
 	}
 }
@@ -816,7 +819,8 @@ static void MoveToNextNewsItem()
 		if (TimerGameEconomy::date - _news_type_data[to_underlying(type)].age > _current_news->economy_date) continue;
 
 		switch (_news_type_data[to_underlying(type)].GetDisplay()) {
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 			case NewsDisplay::Off: // Show nothing only a small reminder in the status bar, skipped here.
 				break;
 
@@ -879,8 +883,10 @@ static std::list<NewsItem>::iterator DeleteNewsItem(std::list<NewsItem>::iterato
  *
  * @see NewsSubtype
  */
-NewsItem::NewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
-	headline(std::move(headline)), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), ref1(ref1), ref2(ref2), data(std::move(data))
+NewsItem::NewsItem(
+	EncodedString &&headline, NewsType type, NewsStyle style, NewsFlags flags, NewsReference ref1, NewsReference ref2, std::unique_ptr<NewsAllocatedData> &&data, AdviceType advice_type) :
+	headline(std::move(headline)), date(TimerGameCalendar::date), economy_date(TimerGameEconomy::date), type(type), advice_type(advice_type), style(style), flags(flags), ref1(ref1), ref2(ref2),
+	data(std::move(data))
 {
 	/* show this news message in colour? */
 	if (TimerGameCalendar::year >= _settings_client.gui.coloured_news_year) this->flags.Set(NewsFlag::InColour);
@@ -890,7 +896,7 @@ std::string NewsItem::GetStatusText() const
 {
 	if (this->data != nullptr) {
 		/* CompanyNewsInformation is the only type of additional data used. */
-		const CompanyNewsInformation &cni = *static_cast<const CompanyNewsInformation*>(this->data.get());
+		const CompanyNewsInformation &cni = *static_cast<const CompanyNewsInformation *>(this->data.get());
 		return GetString(STR_MESSAGE_NEWS_FORMAT, cni.title, this->headline.GetDecodedString());
 	}
 
@@ -932,13 +938,40 @@ void AddNewsItem(EncodedString &&headline, NewsType type, NewsStyle style, NewsF
 uint32_t SerialiseNewsReference(const NewsReference &reference)
 {
 	struct visitor {
-		uint32_t operator()(const std::monostate &) { return 0; }
-		uint32_t operator()(const TileIndex &t) { return t.base(); }
-		uint32_t operator()(const VehicleID v) { return v.base(); }
-		uint32_t operator()(const StationID s) { return s.base(); }
-		uint32_t operator()(const IndustryID i) { return i.base(); }
-		uint32_t operator()(const TownID t) { return t.base(); }
-		uint32_t operator()(const EngineID e) { return e.base(); }
+		uint32_t operator()(const std::monostate &)
+		{
+			return 0;
+		}
+
+		uint32_t operator()(const TileIndex &t)
+		{
+			return t.base();
+		}
+
+		uint32_t operator()(const VehicleID v)
+		{
+			return v.base();
+		}
+
+		uint32_t operator()(const StationID s)
+		{
+			return s.base();
+		}
+
+		uint32_t operator()(const IndustryID i)
+		{
+			return i.base();
+		}
+
+		uint32_t operator()(const TownID t)
+		{
+			return t.base();
+		}
+
+		uint32_t operator()(const EngineID e)
+		{
+			return e.base();
+		}
 	};
 
 	return std::visit(visitor{}, reference);
@@ -963,13 +996,40 @@ CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID com
 	if (text.empty()) return CMD_ERROR;
 
 	struct visitor {
-		bool operator()(const std::monostate &) { return true; }
-		bool operator()(const TileIndex t) { return IsValidTile(t); }
-		bool operator()(const VehicleID v) { return Vehicle::IsValidID(v); }
-		bool operator()(const StationID s) { return Station::IsValidID(s); }
-		bool operator()(const IndustryID i) { return Industry::IsValidID(i); }
-		bool operator()(const TownID t) { return Town::IsValidID(t); }
-		bool operator()(const EngineID e) { return Engine::IsValidID(e); }
+		bool operator()(const std::monostate &)
+		{
+			return true;
+		}
+
+		bool operator()(const TileIndex t)
+		{
+			return IsValidTile(t);
+		}
+
+		bool operator()(const VehicleID v)
+		{
+			return Vehicle::IsValidID(v);
+		}
+
+		bool operator()(const StationID s)
+		{
+			return Station::IsValidID(s);
+		}
+
+		bool operator()(const IndustryID i)
+		{
+			return Industry::IsValidID(i);
+		}
+
+		bool operator()(const TownID t)
+		{
+			return Town::IsValidID(t);
+		}
+
+		bool operator()(const EngineID e)
+		{
+			return Engine::IsValidID(e);
+		}
 	};
 
 	if (!std::visit(visitor{}, reference)) return CMD_ERROR;
@@ -1187,7 +1247,6 @@ void ShowLastNewsMessage()
 	}
 }
 
-
 /**
  * Draw an unformatted news message truncated to a maximum length. If
  * length exceeds maximum length it will be postfixed by '...'
@@ -1228,7 +1287,8 @@ struct MessageHistoryWindow : Window {
 
 			/* Months are off-by-one, so it's actually 8. Not using
 			 * month 12 because the 1 is usually less wide. */
-			this->date_width = GetStringBoundingBox(GetString(STR_JUST_DATE_TINY, TimerGameCalendar::ConvertYMDToDate(CalendarTime::ORIGINAL_MAX_YEAR, 7, 30))).width + WidgetDimensions::scaled.hsep_wide;
+			this->date_width =
+				GetStringBoundingBox(GetString(STR_JUST_DATE_TINY, TimerGameCalendar::ConvertYMDToDate(CalendarTime::ORIGINAL_MAX_YEAR, 7, 30))).width + WidgetDimensions::scaled.hsep_wide;
 
 			size.height = 4 * resize.height + WidgetDimensions::scaled.framerect.Vertical(); // At least 4 lines are visible.
 			size.width = std::max(200u, size.width); // At least 200 pixels wide.
@@ -1306,12 +1366,7 @@ static constexpr NWidgetPart _nested_message_history[] = {
 };
 /* clang-format on */
 
-static WindowDesc _message_history_desc(
-	WDP_AUTO, "list_news", 400, 140,
-	WC_MESSAGE_HISTORY, WC_NONE,
-	{},
-	_nested_message_history
-);
+static WindowDesc _message_history_desc(WDP_AUTO, "list_news", 400, 140, WC_MESSAGE_HISTORY, WC_NONE, {}, _nested_message_history);
 
 /** Display window with news messages history */
 void ShowMessageHistory()

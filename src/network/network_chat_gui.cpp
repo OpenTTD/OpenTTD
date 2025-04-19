@@ -8,25 +8,25 @@
 /** @file network_chat_gui.cpp GUI for handling chat messages. */
 
 #include "../stdafx.h"
-#include "../strings_func.h"
+
+#include "../core/geometry_func.hpp"
 #include "../autocompletion.h"
 #include "../blitter/factory.hpp"
 #include "../console_func.h"
-#include "../video/video_driver.hpp"
 #include "../querystring_gui.h"
-#include "../town.h"
-#include "../window_func.h"
-#include "../toolbar_gui.h"
-#include "../core/geometry_func.hpp"
-#include "../zoom_func.h"
+#include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
+#include "../toolbar_gui.h"
+#include "../town.h"
+#include "../video/video_driver.hpp"
+#include "../window_func.h"
+#include "../zoom_func.h"
 #include "network.h"
-#include "network_client.h"
 #include "network_base.h"
+#include "network_client.h"
 
 #include "../widgets/network_chat_widget.h"
-
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -37,15 +37,15 @@ static const uint NETWORK_CHAT_LINE_SPACING = 3;
 /** Container for a message. */
 struct ChatMessage {
 	std::string message; ///< The action message.
-	TextColour colour;  ///< The colour of the message.
+	TextColour colour; ///< The colour of the message.
 	std::chrono::steady_clock::time_point remove_time; ///< The time to remove the message.
 };
 
 /* used for chat window */
 static std::deque<ChatMessage> _chatmsg_list; ///< The actual chat message list.
-static bool _chatmessage_dirty = false;   ///< Does the chat message need repainting?
+static bool _chatmessage_dirty = false; ///< Does the chat message need repainting?
 static bool _chatmessage_visible = false; ///< Is a chat message visible.
-static uint MAX_CHAT_MESSAGES = 0;        ///< The limit of chat messages to show.
+static uint MAX_CHAT_MESSAGES = 0; ///< The limit of chat messages to show.
 
 /**
  * Time the chat history was marked dirty. This is used to determine if expired
@@ -101,18 +101,18 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::st
 /** Initialize all font-dependent chat box sizes. */
 void NetworkReInitChatBoxSize()
 {
-	_chatmsg_box.y       = 3 * GetCharacterHeight(FS_NORMAL);
-	_chatmsg_box.height  = MAX_CHAT_MESSAGES * (GetCharacterHeight(FS_NORMAL) + ScaleGUITrad(NETWORK_CHAT_LINE_SPACING)) + ScaleGUITrad(4);
+	_chatmsg_box.y = 3 * GetCharacterHeight(FS_NORMAL);
+	_chatmsg_box.height = MAX_CHAT_MESSAGES * (GetCharacterHeight(FS_NORMAL) + ScaleGUITrad(NETWORK_CHAT_LINE_SPACING)) + ScaleGUITrad(4);
 }
 
 /** Initialize all buffers of the chat visualisation. */
 void NetworkInitChatMessage()
 {
-	MAX_CHAT_MESSAGES    = _settings_client.gui.network_chat_box_height;
+	MAX_CHAT_MESSAGES = _settings_client.gui.network_chat_box_height;
 
 	_chatmsg_list.clear();
-	_chatmsg_box.x       = ScaleGUITrad(10);
-	_chatmsg_box.width   = _settings_client.gui.network_chat_box_width_pct * _screen.width / 100;
+	_chatmsg_box.x = ScaleGUITrad(10);
+	_chatmsg_box.width = _settings_client.gui.network_chat_box_width_pct * _screen.width / 100;
 	NetworkReInitChatBoxSize();
 	_chatmessage_visible = false;
 }
@@ -130,19 +130,16 @@ void NetworkUndrawChatMessage()
 	 *   looks nicely ;)
 	 * (and now hope this story above makes sense to you ;))
 	 */
-	if (_cursor.visible &&
-			_cursor.draw_pos.x + _cursor.draw_size.x >= _chatmsg_box.x &&
-			_cursor.draw_pos.x <= _chatmsg_box.x + _chatmsg_box.width &&
-			_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _chatmsg_box.y - _chatmsg_box.height &&
-			_cursor.draw_pos.y <= _screen.height - _chatmsg_box.y) {
+	if (_cursor.visible && _cursor.draw_pos.x + _cursor.draw_size.x >= _chatmsg_box.x && _cursor.draw_pos.x <= _chatmsg_box.x + _chatmsg_box.width &&
+		_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _chatmsg_box.y - _chatmsg_box.height && _cursor.draw_pos.y <= _screen.height - _chatmsg_box.y) {
 		UndrawMouseCursor();
 	}
 
 	if (_chatmessage_visible) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
-		int x      = _chatmsg_box.x;
-		int y      = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
-		int width  = _chatmsg_box.width;
+		int x = _chatmsg_box.x;
+		int y = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
+		int width = _chatmsg_box.width;
 		int height = _chatmsg_box.height;
 		if (y < 0) {
 			height = std::max(height + y, std::min(_chatmsg_box.height, _screen.height));
@@ -194,9 +191,9 @@ void NetworkDrawChatMessage()
 	/* Check if we have anything to draw at all */
 	if (!HaveChatMessages(show_all)) return;
 
-	int x      = _chatmsg_box.x;
-	int y      = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
-	int width  = _chatmsg_box.width;
+	int x = _chatmsg_box.x;
+	int y = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
+	int width = _chatmsg_box.width;
 	int height = _chatmsg_box.height;
 	if (y < 0) {
 		height = std::max(height + y, std::min(_chatmsg_box.height, _screen.height));
@@ -225,16 +222,16 @@ void NetworkDrawChatMessage()
 	int top = _screen.height - _chatmsg_box.y - string_height - 2;
 	int bottom = _screen.height - _chatmsg_box.y - 2;
 	/* Paint a half-transparent box behind the chat messages */
-	GfxFillRect(_chatmsg_box.x, top - 2, _chatmsg_box.x + _chatmsg_box.width - 1, bottom,
-			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR // black, but with some alpha for background
-		);
+	GfxFillRect(_chatmsg_box.x, top - 2, _chatmsg_box.x + _chatmsg_box.width - 1, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOUR // black, but with some alpha for background
+	);
 
 	/* Paint the chat messages starting with the lowest at the bottom */
 	int ypos = bottom - 2;
 
 	for (auto &cmsg : _chatmsg_list) {
 		if (!show_all && cmsg.remove_time < now) continue;
-		ypos = DrawStringMultiLine(_chatmsg_box.x + ScaleGUITrad(3), _chatmsg_box.x + _chatmsg_box.width - 1, top, ypos, cmsg.message, cmsg.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - NETWORK_CHAT_LINE_SPACING;
+		ypos = DrawStringMultiLine(_chatmsg_box.x + ScaleGUITrad(3), _chatmsg_box.x + _chatmsg_box.width - 1, top, ypos, cmsg.message, cmsg.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) -
+			NETWORK_CHAT_LINE_SPACING;
 		if (ypos < top) break;
 	}
 
@@ -308,8 +305,7 @@ struct NetworkChatWindow : public Window {
 	 * @param type The type of destination.
 	 * @param dest The actual destination index.
 	 */
-	NetworkChatWindow(WindowDesc &desc, DestType type, int dest)
-			: Window(desc), dtype(type), dest(dest), message_editbox(NETWORK_CHAT_LENGTH), chat_tab_completion(&message_editbox.text)
+	NetworkChatWindow(WindowDesc &desc, DestType type, int dest) : Window(desc), dtype(type), dest(dest), message_editbox(NETWORK_CHAT_LENGTH), chat_tab_completion(&message_editbox.text)
 	{
 		this->querystrings[WID_NC_TEXTBOX] = &this->message_editbox;
 		this->message_editbox.cancel_button = WID_NC_CLOSE;
@@ -347,7 +343,7 @@ struct NetworkChatWindow : public Window {
 
 	Point OnInitialPosition([[maybe_unused]] int16_t sm_width, [[maybe_unused]] int16_t sm_height, [[maybe_unused]] int window_number) override
 	{
-		Point pt = { 0, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height };
+		Point pt = {0, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height};
 		return pt;
 	}
 
@@ -355,11 +351,7 @@ struct NetworkChatWindow : public Window {
 	{
 		if (widget != WID_NC_DESTINATION) return this->Window::GetWidgetString(widget, stringid);
 
-		static const StringID chat_captions[] = {
-			STR_NETWORK_CHAT_ALL_CAPTION,
-			STR_NETWORK_CHAT_COMPANY_CAPTION,
-			STR_NETWORK_CHAT_CLIENT_CAPTION
-		};
+		static const StringID chat_captions[] = {STR_NETWORK_CHAT_ALL_CAPTION, STR_NETWORK_CHAT_COMPANY_CAPTION, STR_NETWORK_CHAT_CLIENT_CAPTION};
 		assert((uint)this->dtype < lengthof(chat_captions));
 
 		if (this->dtype == DESTTYPE_CLIENT) {
@@ -428,13 +420,7 @@ static constexpr NWidgetPart _nested_chat_window_widgets[] = {
 /* clang-format on */
 
 /** The description of the chat window. */
-static WindowDesc _chat_window_desc(
-	WDP_MANUAL, nullptr, 0, 0,
-	WC_SEND_NETWORK_MSG, WC_NONE,
-	{},
-	_nested_chat_window_widgets
-);
-
+static WindowDesc _chat_window_desc(WDP_MANUAL, nullptr, 0, 0, WC_SEND_NETWORK_MSG, WC_NONE, {}, _nested_chat_window_widgets);
 
 /**
  * Show the chat window.

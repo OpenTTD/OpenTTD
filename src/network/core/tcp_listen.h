@@ -12,12 +12,12 @@
 #ifndef NETWORK_CORE_TCP_LISTEN_H
 #define NETWORK_CORE_TCP_LISTEN_H
 
-#include "tcp.h"
+#include "../../core/pool_type.hpp"
+#include "../../debug.h"
 #include "../network.h"
 #include "../network_func.h"
 #include "../network_internal.h"
-#include "../../core/pool_type.hpp"
-#include "../../debug.h"
+#include "tcp.h"
 
 #include "table/strings.h"
 
@@ -79,7 +79,7 @@ public:
 			struct sockaddr_storage sin;
 			memset(&sin, 0, sizeof(sin));
 			socklen_t sin_len = sizeof(sin);
-			SOCKET s = accept(ls, (struct sockaddr*)&sin, &sin_len);
+			SOCKET s = accept(ls, (struct sockaddr *)&sin, &sin_len);
 			if (s == INVALID_SOCKET) return;
 #ifdef __EMSCRIPTEN__
 			sin_len = FixAddrLenForEmscripten(sin);
@@ -108,7 +108,6 @@ public:
 
 		FD_ZERO(&read_fd);
 		FD_ZERO(&write_fd);
-
 
 		for (Tsocket *cs : Tsocket::Iterate()) {
 			FD_SET(cs->sock, &read_fd);
@@ -174,6 +173,7 @@ public:
 	}
 };
 
-template <class Tsocket, PacketType Tfull_packet, PacketType Tban_packet> SocketList TCPListenHandler<Tsocket, Tfull_packet, Tban_packet>::sockets;
+template <class Tsocket, PacketType Tfull_packet, PacketType Tban_packet>
+SocketList TCPListenHandler<Tsocket, Tfull_packet, Tban_packet>::sockets;
 
 #endif /* NETWORK_CORE_TCP_LISTEN_H */

@@ -11,10 +11,10 @@
 #define YAPF_H
 
 #include "../../direction_type.h"
+#include "../../roadveh.h"
+#include "../../ship.h"
 #include "../../track_type.h"
 #include "../../vehicle_type.h"
-#include "../../ship.h"
-#include "../../roadveh.h"
 #include "../pathfinder_type.h"
 
 /**

@@ -25,13 +25,21 @@ public:
 	bool IsSongPlaying() override;
 
 	void SetVolume(uint8_t vol) override;
-	std::string_view GetName() const override { return "cocoa"; }
+
+	std::string_view GetName() const override
+	{
+		return "cocoa";
+	}
 };
 
 class FMusicDriver_Cocoa : public DriverFactoryBase {
 public:
 	FMusicDriver_Cocoa() : DriverFactoryBase(Driver::DT_MUSIC, 10, "cocoa", "Cocoa MIDI Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_Cocoa>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<MusicDriver_Cocoa>();
+	}
 };
 
 #endif /* MUSIC_MACOSX_COCOA_H */

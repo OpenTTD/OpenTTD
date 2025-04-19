@@ -14,7 +14,10 @@
 
 /** Implementation of std::to_underlying (from C++23) */
 template <typename enum_type>
-constexpr std::underlying_type_t<enum_type> to_underlying(enum_type e) { return static_cast<std::underlying_type_t<enum_type>>(e); }
+constexpr std::underlying_type_t<enum_type> to_underlying(enum_type e)
+{
+	return static_cast<std::underlying_type_t<enum_type>>(e);
+}
 
 /** Trait to enable prefix/postfix incrementing operators. */
 template <typename enum_type>
@@ -27,7 +30,7 @@ constexpr bool is_enum_incrementable_v = is_enum_incrementable<enum_type>::value
 
 /** Prefix increment. */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
-inline constexpr enum_type &operator ++(enum_type &e)
+inline constexpr enum_type &operator++(enum_type &e)
 {
 	e = static_cast<enum_type>(to_underlying(e) + 1);
 	return e;
@@ -35,7 +38,7 @@ inline constexpr enum_type &operator ++(enum_type &e)
 
 /** Postfix increment, uses prefix increment. */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
-inline constexpr enum_type operator ++(enum_type &e, int)
+inline constexpr enum_type operator++(enum_type &e, int)
 {
 	enum_type e_org = e;
 	++e;
@@ -44,7 +47,7 @@ inline constexpr enum_type operator ++(enum_type &e, int)
 
 /** Prefix decrement. */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
-inline constexpr enum_type &operator --(enum_type &e)
+inline constexpr enum_type &operator--(enum_type &e)
 {
 	e = static_cast<enum_type>(to_underlying(e) - 1);
 	return e;
@@ -52,7 +55,7 @@ inline constexpr enum_type &operator --(enum_type &e)
 
 /** Postfix decrement, uses prefix decrement. */
 template <typename enum_type, std::enable_if_t<is_enum_incrementable_v<enum_type>, bool> = true>
-inline constexpr enum_type operator --(enum_type &e, int)
+inline constexpr enum_type operator--(enum_type &e, int)
 {
 	enum_type e_org = e;
 	--e;
@@ -64,7 +67,6 @@ inline constexpr enum_type operator --(enum_type &e, int)
 	template <> struct is_enum_incrementable<enum_type> { \
 		static const bool value = true; \
 	};
-
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 #define DECLARE_ENUM_AS_BIT_SET(enum_type) \
@@ -127,11 +129,17 @@ struct EnumBitSetMask {
 template <typename Tenum, typename Tstorage, Tenum Tend_value = Tenum{std::numeric_limits<Tstorage>::digits}>
 class EnumBitSet : public BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage, EnumBitSetMask<Tstorage, Tenum, Tend_value>::value> {
 	using BaseClass = BaseBitSet<EnumBitSet<Tenum, Tstorage, Tend_value>, Tenum, Tstorage, EnumBitSetMask<Tstorage, Tenum, Tend_value>::value>;
+
 public:
 	using EnumType = BaseClass::ValueType;
 
 	constexpr EnumBitSet() : BaseClass() {}
-	constexpr EnumBitSet(Tenum value) : BaseClass() { this->Set(value); }
+
+	constexpr EnumBitSet(Tenum value) : BaseClass()
+	{
+		this->Set(value);
+	}
+
 	explicit constexpr EnumBitSet(Tstorage data) : BaseClass(data) {}
 
 	/**
@@ -145,9 +153,12 @@ public:
 		}
 	}
 
-	constexpr auto operator <=>(const EnumBitSet &) const noexcept = default;
+	constexpr auto operator<=>(const EnumBitSet &) const noexcept = default;
 
-	static constexpr size_t DecayValueType(const BaseClass::ValueType &value) { return to_underlying(value); }
+	static constexpr size_t DecayValueType(const BaseClass::ValueType &value)
+	{
+		return to_underlying(value);
+	}
 };
 
 #endif /* ENUM_TYPE_HPP */

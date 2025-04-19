@@ -17,9 +17,9 @@
 /** The status a server can be in. */
 enum NetworkGameStatus : uint8_t {
 	NGLS_OFFLINE, ///< Server is offline (or cannot be queried).
-	NGLS_ONLINE,  ///< Server is online.
-	NGLS_FULL,    ///< Server is full and cannot be queried.
-	NGLS_BANNED,  ///< You are banned from this server.
+	NGLS_ONLINE, ///< Server is online.
+	NGLS_FULL, ///< Server is full and cannot be queried.
+	NGLS_BANNED, ///< You are banned from this server.
 	NGLS_TOO_OLD, ///< Server is too old to query.
 };
 
@@ -27,12 +27,12 @@ enum NetworkGameStatus : uint8_t {
 struct NetworkGame {
 	NetworkGame(std::string_view connection_string) : connection_string(connection_string) {}
 
-	NetworkGameInfo info{};                  ///< The game information of this server.
-	std::string connection_string;           ///< Address of the server.
+	NetworkGameInfo info{}; ///< The game information of this server.
+	std::string connection_string; ///< Address of the server.
 	NetworkGameStatus status = NGLS_OFFLINE; ///< Stats of the server.
-	bool manually = false;                   ///< True if the server was added manually.
-	bool refreshing = false;                 ///< Whether this server is being queried.
-	int version = 0;                         ///< Used to see which servers are no longer available on the Game Coordinator and can be removed.
+	bool manually = false; ///< True if the server was added manually.
+	bool refreshing = false; ///< Whether this server is being queried.
+	int version = 0; ///< Used to see which servers are no longer available on the Game Coordinator and can be removed.
 };
 
 extern std::vector<std::unique_ptr<NetworkGame>> _network_game_list;

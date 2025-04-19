@@ -10,27 +10,27 @@
 #ifndef RAIL_H
 #define RAIL_H
 
-#include "rail_type.h"
-#include "track_type.h"
-#include "gfx_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/enum_type.hpp"
 #include "economy_func.h"
+#include "gfx_type.h"
+#include "newgrf_badge_type.h"
+#include "rail_type.h"
+#include "settings_type.h"
+#include "signal_type.h"
 #include "slope_type.h"
 #include "strings_type.h"
 #include "timer/timer_game_calendar.h"
-#include "signal_type.h"
-#include "settings_type.h"
-#include "newgrf_badge_type.h"
+#include "track_type.h"
 
 /** Railtype flag bit numbers. */
 enum class RailTypeFlag : uint8_t {
-	Catenary        = 0, ///< Bit number for drawing a catenary.
+	Catenary = 0, ///< Bit number for drawing a catenary.
 	NoLevelCrossing = 1, ///< Bit number for disallowing level crossings.
-	Hidden          = 2, ///< Bit number for hiding from selection.
+	Hidden = 2, ///< Bit number for hiding from selection.
 	NoSpriteCombine = 3, ///< Bit number for using non-combined junctions.
-	Allow90Deg      = 4, ///< Bit number for always allowed 90 degree turns, regardless of setting.
-	Disallow90Deg   = 5, ///< Bit number for never allowed 90 degree turns, regardless of setting.
+	Allow90Deg = 4, ///< Bit number for always allowed 90 degree turns, regardless of setting.
+	Disallow90Deg = 5, ///< Bit number for never allowed 90 degree turns, regardless of setting.
 };
 using RailTypeFlags = EnumBitSet<RailTypeFlag, uint8_t>;
 
@@ -38,18 +38,18 @@ struct SpriteGroup;
 
 /** Sprite groups for a railtype. */
 enum RailTypeSpriteGroup : uint8_t {
-	RTSG_CURSORS,     ///< Cursor and toolbar icon images
-	RTSG_OVERLAY,     ///< Images for overlaying track
-	RTSG_GROUND,      ///< Main group of ground images
-	RTSG_TUNNEL,      ///< Main group of ground images for snow or desert
-	RTSG_WIRES,       ///< Catenary wires
-	RTSG_PYLONS,      ///< Catenary pylons
-	RTSG_BRIDGE,      ///< Bridge surface images
-	RTSG_CROSSING,    ///< Level crossing overlay images
-	RTSG_DEPOT,       ///< Depot images
-	RTSG_FENCES,      ///< Fence images
+	RTSG_CURSORS, ///< Cursor and toolbar icon images
+	RTSG_OVERLAY, ///< Images for overlaying track
+	RTSG_GROUND, ///< Main group of ground images
+	RTSG_TUNNEL, ///< Main group of ground images for snow or desert
+	RTSG_WIRES, ///< Catenary wires
+	RTSG_PYLONS, ///< Catenary pylons
+	RTSG_BRIDGE, ///< Bridge surface images
+	RTSG_CROSSING, ///< Level crossing overlay images
+	RTSG_DEPOT, ///< Depot images
+	RTSG_FENCES, ///< Fence images
 	RTSG_TUNNEL_PORTAL, ///< Tunnel portal overlay
-	RTSG_SIGNALS,     ///< Signal images
+	RTSG_SIGNALS, ///< Signal images
 	RTSG_GROUND_COMPLETE, ///< Complete ground images
 	RTSG_END,
 };
@@ -59,30 +59,30 @@ enum RailTypeSpriteGroup : uint8_t {
  * These are the same for overlay and underlay sprites.
  */
 enum RailTrackOffset : uint8_t {
-	RTO_X,            ///< Piece of rail in X direction
-	RTO_Y,            ///< Piece of rail in Y direction
-	RTO_N,            ///< Piece of rail in northern corner
-	RTO_S,            ///< Piece of rail in southern corner
-	RTO_E,            ///< Piece of rail in eastern corner
-	RTO_W,            ///< Piece of rail in western corner
-	RTO_SLOPE_NE,     ///< Piece of rail on slope with north-east raised
-	RTO_SLOPE_SE,     ///< Piece of rail on slope with south-east raised
-	RTO_SLOPE_SW,     ///< Piece of rail on slope with south-west raised
-	RTO_SLOPE_NW,     ///< Piece of rail on slope with north-west raised
-	RTO_CROSSING_XY,  ///< Crossing of X and Y rail, with ballast
-	RTO_JUNCTION_SW,  ///< Ballast for junction 'pointing' SW
-	RTO_JUNCTION_NE,  ///< Ballast for junction 'pointing' NE
-	RTO_JUNCTION_SE,  ///< Ballast for junction 'pointing' SE
-	RTO_JUNCTION_NW,  ///< Ballast for junction 'pointing' NW
-	RTO_JUNCTION_NSEW,///< Ballast for full junction
+	RTO_X, ///< Piece of rail in X direction
+	RTO_Y, ///< Piece of rail in Y direction
+	RTO_N, ///< Piece of rail in northern corner
+	RTO_S, ///< Piece of rail in southern corner
+	RTO_E, ///< Piece of rail in eastern corner
+	RTO_W, ///< Piece of rail in western corner
+	RTO_SLOPE_NE, ///< Piece of rail on slope with north-east raised
+	RTO_SLOPE_SE, ///< Piece of rail on slope with south-east raised
+	RTO_SLOPE_SW, ///< Piece of rail on slope with south-west raised
+	RTO_SLOPE_NW, ///< Piece of rail on slope with north-west raised
+	RTO_CROSSING_XY, ///< Crossing of X and Y rail, with ballast
+	RTO_JUNCTION_SW, ///< Ballast for junction 'pointing' SW
+	RTO_JUNCTION_NE, ///< Ballast for junction 'pointing' NE
+	RTO_JUNCTION_SE, ///< Ballast for junction 'pointing' SE
+	RTO_JUNCTION_NW, ///< Ballast for junction 'pointing' NW
+	RTO_JUNCTION_NSEW, ///< Ballast for full junction
 };
 
 /**
  * Offsets for sprites within a bridge surface overlay set.
  */
 enum RailTrackBridgeOffset : uint8_t {
-	RTBO_X,     ///< Piece of rail in X direction
-	RTBO_Y,     ///< Piece of rail in Y direction
+	RTBO_X, ///< Piece of rail in X direction
+	RTBO_Y, ///< Piece of rail in Y direction
 	RTBO_SLOPE, ///< Sloped rail pieces, in order NE, SE, SW, NW
 };
 
@@ -91,22 +91,22 @@ enum RailTrackBridgeOffset : uint8_t {
  *  the sprites in the original data files.
  */
 enum RailFenceOffset : uint8_t {
-	RFO_FLAT_X_NW,     //!< Slope FLAT, Track X,     Fence NW
-	RFO_FLAT_Y_NE,     //!< Slope FLAT, Track Y,     Fence NE
-	RFO_FLAT_LEFT,     //!< Slope FLAT, Track LEFT,  Fence E
-	RFO_FLAT_UPPER,    //!< Slope FLAT, Track UPPER, Fence S
-	RFO_SLOPE_SW_NW,   //!< Slope SW,   Track X,     Fence NW
-	RFO_SLOPE_SE_NE,   //!< Slope SE,   Track Y,     Fence NE
-	RFO_SLOPE_NE_NW,   //!< Slope NE,   Track X,     Fence NW
-	RFO_SLOPE_NW_NE,   //!< Slope NW,   Track Y,     Fence NE
-	RFO_FLAT_X_SE,     //!< Slope FLAT, Track X,     Fence SE
-	RFO_FLAT_Y_SW,     //!< Slope FLAT, Track Y,     Fence SW
-	RFO_FLAT_RIGHT,    //!< Slope FLAT, Track RIGHT, Fence W
-	RFO_FLAT_LOWER,    //!< Slope FLAT, Track LOWER, Fence N
-	RFO_SLOPE_SW_SE,   //!< Slope SW,   Track X,     Fence SE
-	RFO_SLOPE_SE_SW,   //!< Slope SE,   Track Y,     Fence SW
-	RFO_SLOPE_NE_SE,   //!< Slope NE,   Track X,     Fence SE
-	RFO_SLOPE_NW_SW,   //!< Slope NW,   Track Y,     Fence SW
+	RFO_FLAT_X_NW, //!< Slope FLAT, Track X,     Fence NW
+	RFO_FLAT_Y_NE, //!< Slope FLAT, Track Y,     Fence NE
+	RFO_FLAT_LEFT, //!< Slope FLAT, Track LEFT,  Fence E
+	RFO_FLAT_UPPER, //!< Slope FLAT, Track UPPER, Fence S
+	RFO_SLOPE_SW_NW, //!< Slope SW,   Track X,     Fence NW
+	RFO_SLOPE_SE_NE, //!< Slope SE,   Track Y,     Fence NE
+	RFO_SLOPE_NE_NW, //!< Slope NE,   Track X,     Fence NW
+	RFO_SLOPE_NW_NE, //!< Slope NW,   Track Y,     Fence NE
+	RFO_FLAT_X_SE, //!< Slope FLAT, Track X,     Fence SE
+	RFO_FLAT_Y_SW, //!< Slope FLAT, Track Y,     Fence SW
+	RFO_FLAT_RIGHT, //!< Slope FLAT, Track RIGHT, Fence W
+	RFO_FLAT_LOWER, //!< Slope FLAT, Track LOWER, Fence N
+	RFO_SLOPE_SW_SE, //!< Slope SW,   Track X,     Fence SE
+	RFO_SLOPE_SE_SW, //!< Slope SE,   Track Y,     Fence SW
+	RFO_SLOPE_NE_SE, //!< Slope NE,   Track X,     Fence SE
+	RFO_SLOPE_NW_SW, //!< Slope NW,   Track Y,     Fence SW
 };
 
 /** List of rail type labels. */
@@ -122,18 +122,18 @@ public:
 	 *  the ones used directly in the code
 	 */
 	struct {
-		SpriteID track_y;      ///< single piece of rail in Y direction, with ground
-		SpriteID track_ns;     ///< two pieces of rail in North and South corner (East-West direction)
-		SpriteID ground;       ///< ground sprite for a 3-way switch
-		SpriteID single_x;     ///< single piece of rail in X direction, without ground
-		SpriteID single_y;     ///< single piece of rail in Y direction, without ground
-		SpriteID single_n;     ///< single piece of rail in the northern corner
-		SpriteID single_s;     ///< single piece of rail in the southern corner
-		SpriteID single_e;     ///< single piece of rail in the eastern corner
-		SpriteID single_w;     ///< single piece of rail in the western corner
-		SpriteID single_sloped;///< single piece of rail for slopes
-		SpriteID crossing;     ///< level crossing, rail in X direction
-		SpriteID tunnel;       ///< tunnel sprites base
+		SpriteID track_y; ///< single piece of rail in Y direction, with ground
+		SpriteID track_ns; ///< two pieces of rail in North and South corner (East-West direction)
+		SpriteID ground; ///< ground sprite for a 3-way switch
+		SpriteID single_x; ///< single piece of rail in X direction, without ground
+		SpriteID single_y; ///< single piece of rail in Y direction, without ground
+		SpriteID single_n; ///< single piece of rail in the northern corner
+		SpriteID single_s; ///< single piece of rail in the southern corner
+		SpriteID single_e; ///< single piece of rail in the eastern corner
+		SpriteID single_w; ///< single piece of rail in the western corner
+		SpriteID single_sloped; ///< single piece of rail for slopes
+		SpriteID crossing; ///< level crossing, rail in X direction
+		SpriteID tunnel; ///< tunnel sprites base
 	} base_sprites;
 
 	/**
@@ -141,36 +141,36 @@ public:
 	 * directly in the code are listed
 	 */
 	struct {
-		SpriteID build_ns_rail;      ///< button for building single rail in N-S direction
-		SpriteID build_x_rail;       ///< button for building single rail in X direction
-		SpriteID build_ew_rail;      ///< button for building single rail in E-W direction
-		SpriteID build_y_rail;       ///< button for building single rail in Y direction
-		SpriteID auto_rail;          ///< button for the autorail construction
-		SpriteID build_depot;        ///< button for building depots
-		SpriteID build_tunnel;       ///< button for building a tunnel
-		SpriteID convert_rail;       ///< button for converting rail
+		SpriteID build_ns_rail; ///< button for building single rail in N-S direction
+		SpriteID build_x_rail; ///< button for building single rail in X direction
+		SpriteID build_ew_rail; ///< button for building single rail in E-W direction
+		SpriteID build_y_rail; ///< button for building single rail in Y direction
+		SpriteID auto_rail; ///< button for the autorail construction
+		SpriteID build_depot; ///< button for building depots
+		SpriteID build_tunnel; ///< button for building a tunnel
+		SpriteID convert_rail; ///< button for converting rail
 		SpriteID signals[SIGTYPE_END][2][2]; ///< signal GUI sprites (type, variant, state)
 	} gui_sprites;
 
 	struct {
-		CursorID rail_ns;    ///< Cursor for building rail in N-S direction
-		CursorID rail_swne;  ///< Cursor for building rail in X direction
-		CursorID rail_ew;    ///< Cursor for building rail in E-W direction
-		CursorID rail_nwse;  ///< Cursor for building rail in Y direction
-		CursorID autorail;   ///< Cursor for autorail tool
-		CursorID depot;      ///< Cursor for building a depot
-		CursorID tunnel;     ///< Cursor for building a tunnel
-		CursorID convert;    ///< Cursor for converting track
-	} cursor;                    ///< Cursors associated with the rail type.
+		CursorID rail_ns; ///< Cursor for building rail in N-S direction
+		CursorID rail_swne; ///< Cursor for building rail in X direction
+		CursorID rail_ew; ///< Cursor for building rail in E-W direction
+		CursorID rail_nwse; ///< Cursor for building rail in Y direction
+		CursorID autorail; ///< Cursor for autorail tool
+		CursorID depot; ///< Cursor for building a depot
+		CursorID tunnel; ///< Cursor for building a tunnel
+		CursorID convert; ///< Cursor for converting track
+	} cursor; ///< Cursors associated with the rail type.
 
 	struct {
-		StringID name;            ///< Name of this rail type.
+		StringID name; ///< Name of this rail type.
 		StringID toolbar_caption; ///< Caption in the construction toolbar GUI for this rail type.
-		StringID menu_text;       ///< Name of this rail type in the main toolbar dropdown.
-		StringID build_caption;   ///< Caption of the build vehicle GUI for this rail type.
-		StringID replace_text;    ///< Text used in the autoreplace GUI.
-		StringID new_loco;        ///< Name of an engine for this type of rail in the engine preview GUI.
-	} strings;                        ///< Strings associated with the rail type.
+		StringID menu_text; ///< Name of this rail type in the main toolbar dropdown.
+		StringID build_caption; ///< Caption of the build vehicle GUI for this rail type.
+		StringID replace_text; ///< Text used in the autoreplace GUI.
+		StringID new_loco; ///< Name of an engine for this type of rail in the engine preview GUI.
+	} strings; ///< Strings associated with the rail type.
 
 	/** sprite number difference between a piece of track on a snowy ground and the corresponding one on normal ground */
 	SpriteID snow_offset;
@@ -290,7 +290,6 @@ public:
 		return 82 * this->fallback_railtype;
 	}
 };
-
 
 /**
  * Returns a pointer to the Railtype information for a given railtype
@@ -453,7 +452,6 @@ void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 int TicksToLeaveDepot(const Train *v);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
-
 
 bool HasRailTypeAvail(const CompanyID company, const RailType railtype);
 bool HasAnyRailTypesAvail(const CompanyID company);

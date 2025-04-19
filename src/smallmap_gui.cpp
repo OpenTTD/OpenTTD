@@ -8,50 +8,51 @@
 /** @file smallmap_gui.cpp GUI that shows a small map of the world with metadata like owner or height. */
 
 #include "stdafx.h"
-#include "core/backup_type.hpp"
-#include "clear_map.h"
-#include "industry.h"
-#include "station_map.h"
-#include "landscape.h"
-#include "tree_map.h"
-#include "viewport_func.h"
-#include "town.h"
-#include "tunnelbridge_map.h"
-#include "core/endian_func.hpp"
-#include "vehicle_base.h"
-#include "sound_func.h"
-#include "window_func.h"
-#include "company_base.h"
-#include "zoom_func.h"
-#include "strings_func.h"
-#include "blitter/factory.hpp"
-#include "linkgraph/linkgraph_gui.h"
-#include "timer/timer.h"
-#include "timer/timer_window.h"
+
 #include "smallmap_gui.h"
 
-#include "widgets/smallmap_widget.h"
-
-#include "table/strings.h"
-
 #include <bitset>
+
+#include "core/backup_type.hpp"
+#include "core/endian_func.hpp"
+#include "blitter/factory.hpp"
+#include "clear_map.h"
+#include "company_base.h"
+#include "industry.h"
+#include "landscape.h"
+#include "linkgraph/linkgraph_gui.h"
+#include "sound_func.h"
+#include "station_map.h"
+#include "strings_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
+#include "town.h"
+#include "tree_map.h"
+#include "tunnelbridge_map.h"
+#include "vehicle_base.h"
+#include "viewport_func.h"
+#include "window_func.h"
+#include "zoom_func.h"
+
+#include "widgets/smallmap_widget.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
 static int _smallmap_industry_count; ///< Number of used industries
-static int _smallmap_company_count;  ///< Number of entries in the owner legend.
-static int _smallmap_cargo_count;    ///< Number of cargos in the link stats legend.
+static int _smallmap_company_count; ///< Number of entries in the owner legend.
+static int _smallmap_cargo_count; ///< Number of cargos in the link stats legend.
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
-	uint8_t colour;            ///< Colour of the item on the map.
-	StringID legend;           ///< String corresponding to the coloured item.
-	IndustryType type;         ///< Type of industry. Only valid for industry entries.
-	uint8_t height;            ///< Height in tiles. Only valid for height legend entries.
-	CompanyID company;         ///< Company to display. Only valid for company entries of the owner legend.
-	bool show_on_map;          ///< For filtering industries, if \c true, industry is shown on the map in colour.
-	bool end;                  ///< This is the end of the list.
-	bool col_break;            ///< Perform a column break and go further at the next column.
+	uint8_t colour; ///< Colour of the item on the map.
+	StringID legend; ///< String corresponding to the coloured item.
+	IndustryType type; ///< Type of industry. Only valid for industry entries.
+	uint8_t height; ///< Height in tiles. Only valid for height legend entries.
+	CompanyID company; ///< Company to display. Only valid for company entries of the owner legend.
+	bool show_on_map; ///< For filtering industries, if \c true, industry is shown on the map in colour.
+	bool end; ///< This is the end of the list.
+	bool col_break; ///< Perform a column break and go further at the next column.
 };
 
 /** Link stat colours shown in legenda. */
@@ -81,77 +82,35 @@ static const int NUM_NO_COMPANY_ENTRIES = 4; ///< Number of entries in the owner
 #define MS(a, b) {a, b, IT_INVALID, 0, CompanyID::Invalid(), true, false, true}
 
 /** Legend text giving the colours to look for on the minimap */
-static LegendAndColour _legend_land_contours[] = {
-	MK(PC_BLACK,           STR_SMALLMAP_LEGENDA_ROADS),
-	MK(PC_GREY,            STR_SMALLMAP_LEGENDA_RAILROADS),
-	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS),
-	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
-	MK(PC_WHITE,           STR_SMALLMAP_LEGENDA_VEHICLES),
+static LegendAndColour _legend_land_contours[] = {MK(PC_BLACK, STR_SMALLMAP_LEGENDA_ROADS), MK(PC_GREY, STR_SMALLMAP_LEGENDA_RAILROADS),
+	MK(PC_LIGHT_BLUE, STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS), MK(PC_DARK_RED, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES), MK(PC_WHITE, STR_SMALLMAP_LEGENDA_VEHICLES),
 
 	/* Placeholders for the colours and heights of the legend.
 	 * The following values are set at BuildLandLegend() based
 	 * on each colour scheme and the maximum map height. */
-	MC(true),
-	MC(false),
-	MC(false),
-	MC(false),
-	MC(false),
-	MC(false),
-	MC(true),
-	MC(false),
-	MC(false),
-	MC(false),
-	MC(false),
-	MC(false),
-	MKEND()
-};
+	MC(true), MC(false), MC(false), MC(false), MC(false), MC(false), MC(true), MC(false), MC(false), MC(false), MC(false), MC(false), MKEND()};
 
-static const LegendAndColour _legend_vehicles[] = {
-	MK(PC_RED,             STR_SMALLMAP_LEGENDA_TRAINS),
-	MK(PC_YELLOW,          STR_SMALLMAP_LEGENDA_ROAD_VEHICLES),
-	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_SHIPS),
-	MK(PC_WHITE,           STR_SMALLMAP_LEGENDA_AIRCRAFT),
+static const LegendAndColour _legend_vehicles[] = {MK(PC_RED, STR_SMALLMAP_LEGENDA_TRAINS), MK(PC_YELLOW, STR_SMALLMAP_LEGENDA_ROAD_VEHICLES), MK(PC_LIGHT_BLUE, STR_SMALLMAP_LEGENDA_SHIPS),
+	MK(PC_WHITE, STR_SMALLMAP_LEGENDA_AIRCRAFT),
 
-	MS(PC_BLACK,           STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
-	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
-	MKEND()
-};
+	MS(PC_BLACK, STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES), MK(PC_DARK_RED, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES), MKEND()};
 
-static const LegendAndColour _legend_routes[] = {
-	MK(PC_BLACK,           STR_SMALLMAP_LEGENDA_ROADS),
-	MK(PC_GREY,            STR_SMALLMAP_LEGENDA_RAILROADS),
-	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
+static const LegendAndColour _legend_routes[] = {MK(PC_BLACK, STR_SMALLMAP_LEGENDA_ROADS), MK(PC_GREY, STR_SMALLMAP_LEGENDA_RAILROADS), MK(PC_DARK_RED, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
 
-	MS(PC_VERY_DARK_BROWN, STR_SMALLMAP_LEGENDA_RAILROAD_STATION),
-	MK(PC_ORANGE,          STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY),
-	MK(PC_YELLOW,          STR_SMALLMAP_LEGENDA_BUS_STATION),
-	MK(PC_RED,             STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT),
-	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_DOCK),
-	MKEND()
-};
+	MS(PC_VERY_DARK_BROWN, STR_SMALLMAP_LEGENDA_RAILROAD_STATION), MK(PC_ORANGE, STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY), MK(PC_YELLOW, STR_SMALLMAP_LEGENDA_BUS_STATION),
+	MK(PC_RED, STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT), MK(PC_LIGHT_BLUE, STR_SMALLMAP_LEGENDA_DOCK), MKEND()};
 
-static const LegendAndColour _legend_vegetation[] = {
-	MK(PC_ROUGH_LAND,      STR_SMALLMAP_LEGENDA_ROUGH_LAND),
-	MK(PC_GRASS_LAND,      STR_SMALLMAP_LEGENDA_GRASS_LAND),
-	MK(PC_BARE_LAND,       STR_SMALLMAP_LEGENDA_BARE_LAND),
-	MK(PC_RAINFOREST,      STR_SMALLMAP_LEGENDA_RAINFOREST),
-	MK(PC_FIELDS,          STR_SMALLMAP_LEGENDA_FIELDS),
-	MK(PC_TREES,           STR_SMALLMAP_LEGENDA_TREES),
+static const LegendAndColour _legend_vegetation[] = {MK(PC_ROUGH_LAND, STR_SMALLMAP_LEGENDA_ROUGH_LAND), MK(PC_GRASS_LAND, STR_SMALLMAP_LEGENDA_GRASS_LAND),
+	MK(PC_BARE_LAND, STR_SMALLMAP_LEGENDA_BARE_LAND), MK(PC_RAINFOREST, STR_SMALLMAP_LEGENDA_RAINFOREST), MK(PC_FIELDS, STR_SMALLMAP_LEGENDA_FIELDS), MK(PC_TREES, STR_SMALLMAP_LEGENDA_TREES),
 
-	MS(PC_GREEN,           STR_SMALLMAP_LEGENDA_FOREST),
-	MK(PC_GREY,            STR_SMALLMAP_LEGENDA_ROCKS),
-	MK(PC_ORANGE,          STR_SMALLMAP_LEGENDA_DESERT),
-	MK(PC_LIGHT_BLUE,      STR_SMALLMAP_LEGENDA_SNOW),
-	MK(PC_BLACK,           STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES),
-	MK(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES),
-	MKEND()
-};
+	MS(PC_GREEN, STR_SMALLMAP_LEGENDA_FOREST), MK(PC_GREY, STR_SMALLMAP_LEGENDA_ROCKS), MK(PC_ORANGE, STR_SMALLMAP_LEGENDA_DESERT), MK(PC_LIGHT_BLUE, STR_SMALLMAP_LEGENDA_SNOW),
+	MK(PC_BLACK, STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES), MK(PC_DARK_RED, STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES), MKEND()};
 
 static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIES + 1] = {
-	MO(PC_WATER,           STR_SMALLMAP_LEGENDA_WATER),
-	MO(0x00,               STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
-	MO(PC_DARK_RED,        STR_SMALLMAP_LEGENDA_TOWNS),
-	MO(PC_DARK_GREY,       STR_SMALLMAP_LEGENDA_INDUSTRIES),
+	MO(PC_WATER, STR_SMALLMAP_LEGENDA_WATER),
+	MO(0x00, STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
+	MO(PC_DARK_RED, STR_SMALLMAP_LEGENDA_TOWNS),
+	MO(PC_DARK_GREY, STR_SMALLMAP_LEGENDA_INDUSTRIES),
 	/* The legend will be terminated the first time it is used. */
 	MOEND(),
 };
@@ -246,7 +205,7 @@ void BuildLinkStatsLegend()
 	_legend_linkstats[i].end = true;
 }
 
-static const LegendAndColour * const _legend_table[] = {
+static const LegendAndColour *const _legend_table[] = {
 	_legend_land_contours,
 	_legend_vehicles,
 	_legend_from_industries,
@@ -274,14 +233,14 @@ static const LegendAndColour * const _legend_table[] = {
 struct SmallMapColourScheme {
 	std::vector<uint32_t> height_colours; ///< Cached colours for each level in a map.
 	std::span<const uint32_t> height_colours_base; ///< Base table for determining the colours
-	uint32_t default_colour;             ///< Default colour of the land.
+	uint32_t default_colour; ///< Default colour of the land.
 };
 
 /** Available colour schemes for height maps. */
 static SmallMapColourScheme _heightmap_schemes[] = {
-	{{}, _green_map_heights,      MKCOLOUR_XXXX(0x54)}, ///< Green colour scheme.
+	{{}, _green_map_heights, MKCOLOUR_XXXX(0x54)}, ///< Green colour scheme.
 	{{}, _dark_green_map_heights, MKCOLOUR_XXXX(0x62)}, ///< Dark green colour scheme.
-	{{}, _violet_map_heights,     MKCOLOUR_XXXX(0x81)}, ///< Violet colour scheme.
+	{{}, _violet_map_heights, MKCOLOUR_XXXX(0x81)}, ///< Violet colour scheme.
 };
 
 /**
@@ -312,7 +271,7 @@ void BuildLandLegend()
 	 */
 
 	/* Table for delta; if max_height is less than the first column, use the second column as value. */
-	uint deltas[][2] = { { 24, 2 }, { 48, 4 }, { 72, 6 }, { 120, 10 }, { 180, 15 }, { 240, 20 }, { MAX_TILE_HEIGHT + 1, 25 }};
+	uint deltas[][2] = {{24, 2}, {48, 4}, {72, 6}, {120, 10}, {180, 15}, {240, 20}, {MAX_TILE_HEIGHT + 1, 25}};
 	uint i = 0;
 	for (; _settings_game.construction.map_height_limit >= deltas[i][0]; i++) {
 		/* Nothing to do here. */
@@ -370,37 +329,36 @@ static inline uint32_t ApplyMask(uint32_t colour, const AndOr *mask)
 	return (colour & mask->mand) | mask->mor;
 }
 
-
 /** Colour masks for "Contour" and "Routes" modes. */
 static const AndOr _smallmap_contours_andor[] = {
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_CLEAR
-	{MKCOLOUR_0XX0(PC_GREY      ), MKCOLOUR_F00F}, // MP_RAILWAY
-	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_ROAD
-	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_HOUSE
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TREES
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_CLEAR
+	{MKCOLOUR_0XX0(PC_GREY), MKCOLOUR_F00F}, // MP_RAILWAY
+	{MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F}, // MP_ROAD
+	{MKCOLOUR_0XX0(PC_DARK_RED), MKCOLOUR_F00F}, // MP_HOUSE
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_TREES
 	{MKCOLOUR_XXXX(PC_LIGHT_BLUE), MKCOLOUR_0000}, // MP_STATION
-	{MKCOLOUR_XXXX(PC_WATER     ), MKCOLOUR_0000}, // MP_WATER
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_VOID
-	{MKCOLOUR_XXXX(PC_DARK_RED  ), MKCOLOUR_0000}, // MP_INDUSTRY
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
-	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_OBJECT
-	{MKCOLOUR_0XX0(PC_GREY      ), MKCOLOUR_F00F},
+	{MKCOLOUR_XXXX(PC_WATER), MKCOLOUR_0000}, // MP_WATER
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_VOID
+	{MKCOLOUR_XXXX(PC_DARK_RED), MKCOLOUR_0000}, // MP_INDUSTRY
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
+	{MKCOLOUR_0XX0(PC_DARK_RED), MKCOLOUR_F00F}, // MP_OBJECT
+	{MKCOLOUR_0XX0(PC_GREY), MKCOLOUR_F00F},
 };
 
 /** Colour masks for "Vehicles", "Industry", and "Vegetation" modes. */
 static const AndOr _smallmap_vehicles_andor[] = {
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_CLEAR
-	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_RAILWAY
-	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_ROAD
-	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_HOUSE
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TREES
-	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F}, // MP_STATION
-	{MKCOLOUR_XXXX(PC_WATER     ), MKCOLOUR_0000}, // MP_WATER
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_VOID
-	{MKCOLOUR_XXXX(PC_DARK_RED  ), MKCOLOUR_0000}, // MP_INDUSTRY
-	{MKCOLOUR_0000               , MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
-	{MKCOLOUR_0XX0(PC_DARK_RED  ), MKCOLOUR_F00F}, // MP_OBJECT
-	{MKCOLOUR_0XX0(PC_BLACK     ), MKCOLOUR_F00F},
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_CLEAR
+	{MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F}, // MP_RAILWAY
+	{MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F}, // MP_ROAD
+	{MKCOLOUR_0XX0(PC_DARK_RED), MKCOLOUR_F00F}, // MP_HOUSE
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_TREES
+	{MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F}, // MP_STATION
+	{MKCOLOUR_XXXX(PC_WATER), MKCOLOUR_0000}, // MP_WATER
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_VOID
+	{MKCOLOUR_XXXX(PC_DARK_RED), MKCOLOUR_0000}, // MP_INDUSTRY
+	{MKCOLOUR_0000, MKCOLOUR_FFFF}, // MP_TUNNELBRIDGE
+	{MKCOLOUR_0XX0(PC_DARK_RED), MKCOLOUR_F00F}, // MP_OBJECT
+	{MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F},
 };
 
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
@@ -418,7 +376,6 @@ static const uint8_t _tiletype_importance[] = {
 	2, // MP_OBJECT
 	0,
 };
-
 
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Contour".
@@ -470,19 +427,22 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 	switch (t) {
 		case MP_STATION:
 			switch (GetStationType(tile)) {
-				case StationType::Rail:    return MKCOLOUR_XXXX(PC_VERY_DARK_BROWN);
-				case StationType::Airport: return MKCOLOUR_XXXX(PC_RED);
-				case StationType::Truck:   return MKCOLOUR_XXXX(PC_ORANGE);
-				case StationType::Bus:     return MKCOLOUR_XXXX(PC_YELLOW);
-				case StationType::Dock:    return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
-				default:              return MKCOLOUR_FFFF;
+				case StationType::Rail:
+					return MKCOLOUR_XXXX(PC_VERY_DARK_BROWN);
+				case StationType::Airport:
+					return MKCOLOUR_XXXX(PC_RED);
+				case StationType::Truck:
+					return MKCOLOUR_XXXX(PC_ORANGE);
+				case StationType::Bus:
+					return MKCOLOUR_XXXX(PC_YELLOW);
+				case StationType::Dock:
+					return MKCOLOUR_XXXX(PC_LIGHT_BLUE);
+				default:
+					return MKCOLOUR_FFFF;
 			}
 
 		case MP_RAILWAY: {
-			AndOr andor = {
-				MKCOLOUR_0XX0(GetRailTypeInfo(GetRailType(tile))->map_colour),
-				_smallmap_contours_andor[t].mand
-			};
+			AndOr andor = {MKCOLOUR_0XX0(GetRailTypeInfo(GetRailType(tile))->map_colour), _smallmap_contours_andor[t].mand};
 
 			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 			return ApplyMask(cs->default_colour, &andor);
@@ -496,10 +456,7 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 				rti = GetRoadTypeInfo(GetRoadTypeTram(tile));
 			}
 			if (rti != nullptr) {
-				AndOr andor = {
-					MKCOLOUR_0XX0(rti->map_colour),
-					_smallmap_contours_andor[t].mand
-				};
+				AndOr andor = {MKCOLOUR_0XX0(rti->map_colour), _smallmap_contours_andor[t].mand};
 
 				const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 				return ApplyMask(cs->default_colour, &andor);
@@ -529,10 +486,10 @@ static inline uint32_t GetSmallMapLinkStatsPixels(TileIndex tile, TileType t)
 static const uint32_t _vegetation_clear_bits[] = {
 	MKCOLOUR_XXXX(PC_GRASS_LAND), ///< full grass
 	MKCOLOUR_XXXX(PC_ROUGH_LAND), ///< rough land
-	MKCOLOUR_XXXX(PC_GREY),       ///< rocks
-	MKCOLOUR_XXXX(PC_FIELDS),     ///< fields
+	MKCOLOUR_XXXX(PC_GREY), ///< rocks
+	MKCOLOUR_XXXX(PC_FIELDS), ///< fields
 	MKCOLOUR_XXXX(PC_LIGHT_BLUE), ///< snow
-	MKCOLOUR_XXXX(PC_ORANGE),     ///< desert
+	MKCOLOUR_XXXX(PC_ORANGE), ///< desert
 	MKCOLOUR_XXXX(PC_GRASS_LAND), ///< unused
 	MKCOLOUR_XXXX(PC_GRASS_LAND), ///< unused
 };
@@ -582,9 +539,12 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 	Owner o;
 
 	switch (t) {
-		case MP_VOID:     return MKCOLOUR_XXXX(PC_BLACK);
-		case MP_INDUSTRY: return MKCOLOUR_XXXX(PC_DARK_GREY);
-		case MP_HOUSE:    return MKCOLOUR_XXXX(PC_DARK_RED);
+		case MP_VOID:
+			return MKCOLOUR_XXXX(PC_BLACK);
+		case MP_INDUSTRY:
+			return MKCOLOUR_XXXX(PC_DARK_GREY);
+		case MP_HOUSE:
+			return MKCOLOUR_XXXX(PC_DARK_RED);
 		case MP_ROAD:
 			o = GetRoadOwner(tile, HasRoadTypeRoad(tile) ? RTT_ROAD : RTT_TRAM);
 			break;
@@ -597,8 +557,8 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 	if ((o < MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE || o == OWNER_WATER) {
 		if (t == MP_WATER) return MKCOLOUR_XXXX(PC_WATER);
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-		return ((include_heightmap == IncludeHeightmap::IfEnabled && _smallmap_show_heightmap) || include_heightmap == IncludeHeightmap::Always)
-			? cs->height_colours[TileHeight(tile)] : cs->default_colour;
+		return ((include_heightmap == IncludeHeightmap::IfEnabled && _smallmap_show_heightmap) || include_heightmap == IncludeHeightmap::Always) ? cs->height_colours[TileHeight(tile)] :
+																																				   cs->default_colour;
 	} else if (o == OWNER_TOWN) {
 		return MKCOLOUR_XXXX(PC_DARK_RED);
 	}
@@ -607,9 +567,7 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 }
 
 /** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleType. */
-static const uint8_t _vehicle_type_colours[6] = {
-	PC_RED, PC_YELLOW, PC_LIGHT_BLUE, PC_WHITE, PC_BLACK, PC_RED
-};
+static const uint8_t _vehicle_type_colours[6] = {PC_RED, PC_YELLOW, PC_LIGHT_BLUE, PC_WHITE, PC_BLACK, PC_RED};
 
 /** Types of legends in the #WID_SM_LEGEND widget. */
 enum SmallMapType : uint8_t {
@@ -629,14 +587,14 @@ protected:
 	/** Available kinds of zoomlevel changes. */
 	enum ZoomLevelChange : uint8_t {
 		ZLC_INITIALIZE, ///< Initialize zoom level.
-		ZLC_ZOOM_OUT,   ///< Zoom out.
-		ZLC_ZOOM_IN,    ///< Zoom in.
+		ZLC_ZOOM_OUT, ///< Zoom out.
+		ZLC_ZOOM_IN, ///< Zoom in.
 	};
 
 	static SmallMapType map_type; ///< Currently displayed legends.
-	static bool show_towns;       ///< Display town names in the smallmap.
-	static bool show_ind_names;   ///< Display industry names in the smallmap.
-	static int map_height_limit;  ///< Currently used/cached map height limit.
+	static bool show_towns; ///< Display town names in the smallmap.
+	static bool show_ind_names; ///< Display industry names in the smallmap.
+	static int map_height_limit; ///< Currently used/cached map height limit.
 
 	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #WID_SM_LEGEND widget for the #SMT_INDUSTRY legend.
 
@@ -674,8 +632,8 @@ protected:
 	 */
 	static inline void DrawVertMapIndicator(int x, int y, int y2)
 	{
-		GfxFillRect(x, y,      x, y + 3, PC_VERY_LIGHT_YELLOW);
-		GfxFillRect(x, y2 - 3, x, y2,    PC_VERY_LIGHT_YELLOW);
+		GfxFillRect(x, y, x, y + 3, PC_VERY_LIGHT_YELLOW);
+		GfxFillRect(x, y2 - 3, x, y2, PC_VERY_LIGHT_YELLOW);
 	}
 
 	/**
@@ -686,8 +644,8 @@ protected:
 	 */
 	static inline void DrawHorizMapIndicator(int x, int x2, int y)
 	{
-		GfxFillRect(x,      y, x + 3, y, PC_VERY_LIGHT_YELLOW);
-		GfxFillRect(x2 - 3, y, x2,    y, PC_VERY_LIGHT_YELLOW);
+		GfxFillRect(x, y, x + 3, y, PC_VERY_LIGHT_YELLOW);
+		GfxFillRect(x2 - 3, y, x2, y, PC_VERY_LIGHT_YELLOW);
 	}
 
 	/**
@@ -715,8 +673,7 @@ protected:
 	 */
 	inline uint GetLegendHeight(uint num_columns) const
 	{
-		return WidgetDimensions::scaled.framerect.Vertical() +
-				this->GetNumberRowsLegend(num_columns) * GetCharacterHeight(FS_SMALL);
+		return WidgetDimensions::scaled.framerect.Vertical() + this->GetNumberRowsLegend(num_columns) * GetCharacterHeight(FS_SMALL);
 	}
 
 	/**
@@ -731,13 +688,13 @@ protected:
 
 	/** Blink the industries (if selected) on a regular interval. */
 	IntervalTimer<TimerWindow> blink_interval = {std::chrono::milliseconds(450), [this](auto) {
-		Blink();
-	}};
+													 Blink();
+												 }};
 
 	/** Update the whole map on a regular interval. */
 	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(930), [this](auto) {
-		ForceRefresh();
-	}};
+													   ForceRefresh();
+												   }};
 
 	/**
 	 * Rebuilds the colour indices used for fast access to the smallmap contour colours based on the heightlevel.
@@ -878,7 +835,7 @@ protected:
 		/* Find main viewport. */
 		const Viewport &vp = *GetMainWindow()->viewport;
 
-		Point upper_left_smallmap_coord  = InverseRemapCoords2(vp.virtual_left, vp.virtual_top);
+		Point upper_left_smallmap_coord = InverseRemapCoords2(vp.virtual_left, vp.virtual_top);
 		Point lower_right_smallmap_coord = InverseRemapCoords2(vp.virtual_left + vp.virtual_width - 1, vp.virtual_top + vp.virtual_height - 1);
 
 		Point upper_left = this->RemapTile(upper_left_smallmap_coord.x / (int)TILE_SIZE, upper_left_smallmap_coord.y / (int)TILE_SIZE);
@@ -938,7 +895,7 @@ protected:
 				blitter->SetPixel(dst, idx, 0, val8[idx]);
 				idx++;
 			}
-		/* Switch to next tile in the column */
+			/* Switch to next tile in the column */
 		} while (xc += this->zoom, yc += this->zoom, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
 	}
 
@@ -994,10 +951,7 @@ protected:
 			int y = pt.y + vertical_padding;
 
 			/* Check if the town sign is within bounds */
-			if (x + t->cache.sign.width_small > dpi->left &&
-					x < dpi->left + dpi->width &&
-					y + GetCharacterHeight(FS_SMALL) > dpi->top &&
-					y < dpi->top + dpi->height) {
+			if (x + t->cache.sign.width_small > dpi->left && x < dpi->left + dpi->width && y + GetCharacterHeight(FS_SMALL) > dpi->top && y < dpi->top + dpi->height) {
 				/* And draw it. */
 				DrawString(x, x + t->cache.sign.width_small, y, GetString(STR_SMALLMAP_TOWN, t->index));
 			}
@@ -1032,11 +986,7 @@ protected:
 			const int y = pt.y + vertical_padding;
 
 			/* Check if the industry name is within bounds */
-			if (x + legend_text_width > dpi->left &&
-					x < dpi->left + dpi->width &&
-					y + GetCharacterHeight(FS_SMALL) > dpi->top &&
-					y < dpi->top + dpi->height) {
-
+			if (x + legend_text_width > dpi->left && x < dpi->left + dpi->width && y + GetCharacterHeight(FS_SMALL) > dpi->top && y < dpi->top + dpi->height) {
 				/* And draw it. */
 				DrawString(x, x + legend_text_width, y, tbl.legend, TC_WHITE, SA_LEFT, false, FS_SMALL);
 			}
@@ -1069,7 +1019,7 @@ protected:
 		int tile_y = this->scroll_y / (int)TILE_SIZE + tile.y;
 
 		void *ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
-		int x = - dx - 4;
+		int x = -dx - 4;
 		int y = 0;
 
 		for (;;) {
@@ -1147,7 +1097,7 @@ protected:
 	 */
 	Point PixelToTile(int px, int py, int *sub, bool add_sub = true) const
 	{
-		if (add_sub) px += this->subscroll;  // Total horizontal offset.
+		if (add_sub) px += this->subscroll; // Total horizontal offset.
 
 		/* For each two rows down, add a x and a y tile, and
 		 * For each four pixels to the right, move a tile to the right. */
@@ -1215,7 +1165,7 @@ protected:
 		Point tile;
 		switch (change) {
 			case ZLC_INITIALIZE:
-				cur_index = - 1; // Definitely different from new_index.
+				cur_index = -1; // Definitely different from new_index.
 				new_index = MIN_ZOOM_INDEX;
 				tile.x = tile.y = 0;
 				break;
@@ -1231,19 +1181,19 @@ protected:
 				new_index = Clamp(cur_index + ((change == ZLC_ZOOM_IN) ? -1 : 1), MIN_ZOOM_INDEX, MAX_ZOOM_INDEX);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 
 		if (new_index != cur_index) {
 			this->zoom = zoomlevels[new_index];
 			if (cur_index >= 0) {
 				Point new_tile = this->PixelToTile(zoom_pt->x, zoom_pt->y, &sub);
-				this->SetNewScroll(this->scroll_x + (tile.x - new_tile.x) * TILE_SIZE,
-						this->scroll_y + (tile.y - new_tile.y) * TILE_SIZE, sub);
+				this->SetNewScroll(this->scroll_x + (tile.x - new_tile.x) * TILE_SIZE, this->scroll_y + (tile.y - new_tile.y) * TILE_SIZE, sub);
 			} else if (this->map_type == SMT_LINKSTATS) {
 				this->overlay->SetDirty();
 			}
-			this->SetWidgetDisabledState(WID_SM_ZOOM_IN,  this->zoom == zoomlevels[MIN_ZOOM_INDEX]);
+			this->SetWidgetDisabledState(WID_SM_ZOOM_IN, this->zoom == zoomlevels[MIN_ZOOM_INDEX]);
 			this->SetWidgetDisabledState(WID_SM_ZOOM_OUT, this->zoom == zoomlevels[MAX_ZOOM_INDEX]);
 			this->SetDirty();
 		}
@@ -1321,7 +1271,7 @@ protected:
 	{
 		int importance = 0;
 		TileIndex tile = INVALID_TILE; // Position of the most important tile.
-		TileType et = MP_VOID;         // Effective tile type at that position.
+		TileType et = MP_VOID; // Effective tile type at that position.
 
 		for (TileIndex ti : ta) {
 			TileType ttype = GetTileType(ti);
@@ -1331,9 +1281,15 @@ protected:
 					TransportType tt = GetTunnelBridgeTransportType(ti);
 
 					switch (tt) {
-						case TRANSPORT_RAIL: ttype = MP_RAILWAY; break;
-						case TRANSPORT_ROAD: ttype = MP_ROAD;    break;
-						default:             ttype = MP_WATER;   break;
+						case TRANSPORT_RAIL:
+							ttype = MP_RAILWAY;
+							break;
+						case TRANSPORT_ROAD:
+							ttype = MP_ROAD;
+							break;
+						default:
+							ttype = MP_WATER;
+							break;
 					}
 					break;
 				}
@@ -1389,7 +1345,8 @@ protected:
 			case SMT_OWNER:
 				return GetSmallMapOwnerPixels(tile, et, IncludeHeightmap::IfEnabled);
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 	}
 
@@ -1482,8 +1439,7 @@ public:
 
 		int sub;
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-		Point sxy = this->ComputeScroll(viewport_center.x / (int)TILE_SIZE, viewport_center.y / (int)TILE_SIZE,
-				std::max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
+		Point sxy = this->ComputeScroll(viewport_center.x / (int)TILE_SIZE, viewport_center.y / (int)TILE_SIZE, std::max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
 		this->SetNewScroll(sxy.x, sxy.y, sub);
 		this->SetDirty();
 	}
@@ -1715,19 +1671,19 @@ public:
 			case WID_SM_ZOOM_IN:
 			case WID_SM_ZOOM_OUT: {
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-				Point zoom_pt = { (int)wid->current_x / 2, (int)wid->current_y / 2};
+				Point zoom_pt = {(int)wid->current_x / 2, (int)wid->current_y / 2};
 				this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &zoom_pt);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
 			}
 
-			case WID_SM_CONTOUR:    // Show land contours
-			case WID_SM_VEHICLES:   // Show vehicles
+			case WID_SM_CONTOUR: // Show land contours
+			case WID_SM_VEHICLES: // Show vehicles
 			case WID_SM_INDUSTRIES: // Show industries
-			case WID_SM_LINKSTATS:  // Show route map
-			case WID_SM_ROUTES:     // Show transport routes
+			case WID_SM_LINKSTATS: // Show route map
+			case WID_SM_ROUTES: // Show transport routes
 			case WID_SM_VEGETATION: // Show vegetation
-			case WID_SM_OWNERS:     // Show land owners
+			case WID_SM_OWNERS: // Show land owners
 				this->SwitchMapType((SmallMapType)(widget - WID_SM_CONTOUR));
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
@@ -1796,7 +1752,7 @@ public:
 					default:
 						NOT_REACHED();
 				}
-				for (;!tbl->end && tbl->legend != STR_LINKGRAPH_LEGEND_UNUSED; ++tbl) {
+				for (; !tbl->end && tbl->legend != STR_LINKGRAPH_LEGEND_UNUSED; ++tbl) {
 					tbl->show_on_map = (widget == WID_SM_ENABLE_ALL);
 				}
 				if (this->map_type == SMT_LINKSTATS) this->SetOverlayCargoMask();
@@ -1844,7 +1800,8 @@ public:
 				this->RebuildColourIndexIfNecessary();
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 		this->SetDirty();
 	}
@@ -1862,7 +1819,7 @@ public:
 		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
 			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 			int cursor_x = _cursor.pos.x - this->left - wid->pos_x;
-			int cursor_y = _cursor.pos.y - this->top  - wid->pos_y;
+			int cursor_y = _cursor.pos.y - this->top - wid->pos_y;
 			if (IsInsideMM(cursor_x, 0, wid->current_x) && IsInsideMM(cursor_y, 0, wid->current_y)) {
 				Point pt = {cursor_x, cursor_y};
 				this->SetZoomLevel((wheel < 0) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
@@ -1897,7 +1854,6 @@ public:
 			this->SetDirty();
 		}
 	}
-
 };
 
 SmallMapType SmallMapWindow::map_type = SMT_CONTOUR;
@@ -2060,12 +2016,7 @@ static constexpr NWidgetPart _nested_smallmap_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _smallmap_desc(
-	WDP_AUTO, "smallmap", 484, 314,
-	WC_SMALLMAP, WC_NONE,
-	{},
-	_nested_smallmap_widgets
-);
+static WindowDesc _smallmap_desc(WDP_AUTO, "smallmap", 484, 314, WC_SMALLMAP, WC_NONE, {}, _nested_smallmap_widgets);
 
 /**
  * Show the smallmap window.
@@ -2093,7 +2044,7 @@ bool ScrollMainWindowTo(int x, int y, int z, bool instant)
 
 	if (res) return res;
 
-	SmallMapWindow *w = dynamic_cast<SmallMapWindow*>(FindWindowById(WC_SMALLMAP, 0));
+	SmallMapWindow *w = dynamic_cast<SmallMapWindow *>(FindWindowById(WC_SMALLMAP, 0));
 	if (w != nullptr) w->SmallMapCenterOnCurrentPos();
 
 	return res;

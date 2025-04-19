@@ -8,33 +8,33 @@
 /** @file newgrf_gui.cpp GUI to change NewGRF settings. */
 
 #include "stdafx.h"
-#include "error.h"
-#include "settings_gui.h"
-#include "newgrf.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "gamelog.h"
-#include "settings_type.h"
-#include "settings_func.h"
-#include "dropdown_type.h"
+
+#include "core/geometry_func.hpp"
 #include "dropdown_func.h"
+#include "dropdown_type.h"
+#include "error.h"
+#include "fios.h"
+#include "gamelog.h"
 #include "network/network.h"
 #include "network/network_content.h"
+#include "newgrf.h"
+#include "newgrf_text.h"
+#include "querystring_gui.h"
+#include "settings_func.h"
+#include "settings_gui.h"
+#include "settings_type.h"
 #include "sortlist_type.h"
 #include "stringfilter_type.h"
-#include "querystring_gui.h"
-#include "core/geometry_func.hpp"
-#include "newgrf_text.h"
+#include "strings_func.h"
 #include "textfile_gui.h"
 #include "tilehighlight_func.h"
-#include "fios.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "window_func.h"
 #include "zoom_func.h"
 
-#include "widgets/newgrf_widget.h"
 #include "widgets/misc_widget.h"
-
+#include "widgets/newgrf_widget.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -122,9 +122,9 @@ static void ShowNewGRFInfo(const GRFConfig &c, const Rect &r, bool show_params)
 	}
 
 	/* Show flags */
-	if (c.status == GCS_NOT_FOUND)       tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NOT_FOUND);
-	if (c.status == GCS_DISABLED)        tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_DISABLED);
-	if (c.flags.Test(GRFConfigFlag::Invalid))    tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
+	if (c.status == GCS_NOT_FOUND) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_NOT_FOUND);
+	if (c.status == GCS_DISABLED) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_DISABLED);
+	if (c.flags.Test(GRFConfigFlag::Invalid)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
 	if (c.flags.Test(GRFConfigFlag::Compatible)) tr.top = DrawStringMultiLine(tr, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
@@ -151,9 +151,7 @@ struct NewGRFParametersWindow : public Window {
 	bool action14present = false; ///< True if action14 information is present.
 	bool editable = false; ///< Allow editing parameters.
 
-	NewGRFParametersWindow(WindowDesc &desc, bool is_baseset, GRFConfig &c, bool editable) : Window(desc),
-		grf_config(c),
-		editable(editable)
+	NewGRFParametersWindow(WindowDesc &desc, bool is_baseset, GRFConfig &c, bool editable) : Window(desc), grf_config(c), editable(editable)
 	{
 		this->action14present = (this->grf_config.num_valid_params != this->grf_config.param.size() || !this->grf_config.param_info.empty());
 
@@ -162,7 +160,7 @@ struct NewGRFParametersWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_NP_SCROLLBAR);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_NUMPAR)->SetDisplayedPlane(this->action14present ? SZSP_HORIZONTAL : 0);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_DESCRIPTION)->SetDisplayedPlane(this->action14present ? 0 : SZSP_HORIZONTAL);
-		this->FinishInitNested();  // Initializes 'this->line_height' as side effect.
+		this->FinishInitNested(); // Initializes 'this->line_height' as side effect.
 
 		this->SetWidgetDisabledState(WID_NP_RESET, !this->editable);
 
@@ -206,7 +204,7 @@ struct NewGRFParametersWindow : public Window {
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
 			case WID_NP_NUMPAR_INC: {
-				size.width  = std::max(SETTING_BUTTON_WIDTH / 2, GetCharacterHeight(FS_NORMAL));
+				size.width = std::max(SETTING_BUTTON_WIDTH / 2, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL));
 				break;
 			}
@@ -270,9 +268,8 @@ struct NewGRFParametersWindow : public Window {
 	{
 		auto [param1, param2] = this->GetValueParams(par_info, value);
 		auto name = GetGRFStringFromGRFText(par_info.name);
-		return name.has_value()
-			? GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_JUST_RAW_STRING, std::string(*name), param1, param2)
-			: GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, i + 1, param1, param2);
+		return name.has_value() ? GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_JUST_RAW_STRING, std::string(*name), param1, param2) :
+								  GetString(STR_NEWGRF_PARAMETERS_SETTING, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, i + 1, param1, param2);
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override
@@ -306,7 +303,8 @@ struct NewGRFParametersWindow : public Window {
 				if (par_info.complete_labels) {
 					DrawDropDownButton(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
 				} else {
-					DrawArrowButtons(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info.min_value, this->editable && current_value < par_info.max_value);
+					DrawArrowButtons(buttons_left, ir.top + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0,
+						this->editable && current_value > par_info.min_value, this->editable && current_value < par_info.max_value);
 				}
 			}
 
@@ -373,7 +371,8 @@ struct NewGRFParametersWindow : public Window {
 						int rel_y = (pt.y - r.top) % this->line_height;
 
 						Rect wi_rect;
-						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);;
+						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
+						;
 						wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
 						wi_rect.top = pt.y - rel_y + (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 						wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
@@ -492,12 +491,12 @@ struct NewGRFParametersWindow : public Window {
 
 	/** When reset, unclick the button after a small timeout. */
 	TimeoutTimer<TimerWindow> unclick_timeout = {std::chrono::milliseconds(150), [this]() {
-		this->clicked_button = INT32_MAX;
-		this->SetDirty();
-	}};
+													 this->clicked_button = INT32_MAX;
+													 this->SetDirty();
+												 }};
 };
-GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 
+GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 
 /* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
@@ -534,12 +533,7 @@ static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
 /* clang-format on */
 
 /** Window definition for the change grf parameters window */
-static WindowDesc _newgrf_parameters_desc(
-	WDP_CENTER, "settings_newgrf_config", 500, 208,
-	WC_GRF_PARAMETERS, WC_NONE,
-	{},
-	_nested_newgrf_parameter_widgets
-);
+static WindowDesc _newgrf_parameters_desc(WDP_CENTER, "settings_newgrf_config", 500, 208, WC_GRF_PARAMETERS, WC_NONE, {}, _nested_newgrf_parameter_widgets);
 
 void OpenGRFParameterWindow(bool is_baseset, GRFConfig &c, bool editable)
 {
@@ -598,12 +592,12 @@ static void ShowSavePresetWindow(const char *initial_text);
 struct NewGRFWindow : public Window, NewGRFScanCallback {
 	typedef GUIList<const GRFConfig *, std::nullptr_t, StringFilter &> GUIGRFConfigList;
 
-	static const uint EDITBOX_MAX_SIZE   =  50;
+	static const uint EDITBOX_MAX_SIZE = 50;
 
-	static Listing   last_sorting;   ///< Default sorting of #GUIGRFConfigList.
+	static Listing last_sorting; ///< Default sorting of #GUIGRFConfigList.
 	static Filtering last_filtering; ///< Default filtering of #GUIGRFConfigList.
-	static const std::initializer_list<GUIGRFConfigList::SortFunction   * const> sorter_funcs; ///< Sort functions of the #GUIGRFConfigList.
-	static const std::initializer_list<GUIGRFConfigList::FilterFunction * const> filter_funcs; ///< Filter functions of the #GUIGRFConfigList.
+	static const std::initializer_list<GUIGRFConfigList::SortFunction *const> sorter_funcs; ///< Sort functions of the #GUIGRFConfigList.
+	static const std::initializer_list<GUIGRFConfigList::FilterFunction *const> filter_funcs; ///< Filter functions of the #GUIGRFConfigList.
 
 	GUIGRFConfigList avails{}; ///< Available (non-active) grfs.
 	const GRFConfig *avail_sel = nullptr; ///< Currently selected available grf. \c nullptr is none is selected.
@@ -629,8 +623,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	NewGRFWindow(WindowDesc &desc, bool editable, bool show_params, bool execute, GRFConfigList &orig_list) : Window(desc), filter_editbox(EDITBOX_MAX_SIZE), orig_list(orig_list)
 	{
-		this->editable    = editable;
-		this->execute     = execute;
+		this->editable = editable;
+		this->execute = execute;
 		this->show_params = show_params;
 
 		CopyGRFConfigList(this->actives, orig_list, false);
@@ -679,7 +673,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	int GetCurrentActivePosition() const
 	{
 		if (this->active_sel != nullptr) {
-			auto it = std::ranges::find_if(this->actives, [this](const auto &c) { return c.get() == this->active_sel; });
+			auto it = std::ranges::find_if(this->actives, [this](const auto &c) {
+				return c.get() == this->active_sel;
+			});
 			if (it != std::end(this->actives)) return static_cast<int>(std::distance(std::begin(this->actives), it));
 		}
 		return -1;
@@ -711,7 +707,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			GrfIdMap::iterator iter = grfid_map.find(a->ident.grfid);
 			if (iter == grfid_map.end() || iter->second->version >= a->version) continue;
 
-			auto c = std::ranges::find_if(this->actives, [&iter](const auto &grfconfig) { return grfconfig.get() == iter->second; });
+			auto c = std::ranges::find_if(this->actives, [&iter](const auto &grfconfig) {
+				return grfconfig.get() == iter->second;
+			});
 			assert(c != std::end(this->actives));
 			auto d = std::make_unique<GRFConfig>(*iter->second);
 			if (d->IsCompatible((*c)->version)) {
@@ -732,16 +730,14 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_NS_FILE_LIST:
-			{
+			case WID_NS_FILE_LIST: {
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
 				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 6 * resize.height);
 				break;
 			}
 
-			case WID_NS_AVAIL_LIST:
-			{
+			case WID_NS_AVAIL_LIST: {
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
 				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 8 * resize.height);
@@ -751,7 +747,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_NEWGRF_INFO_TITLE: {
 				Dimension dim = GetStringBoundingBox(STR_NEWGRF_SETTINGS_INFO_TITLE);
 				size.height = std::max(size.height, dim.height + WidgetDimensions::scaled.frametext.Vertical());
-				size.width  = std::max(size.width,  dim.width  + WidgetDimensions::scaled.frametext.Horizontal());
+				size.width = std::max(size.width, dim.width + WidgetDimensions::scaled.frametext.Horizontal());
 				break;
 			}
 
@@ -773,7 +769,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_CONTENT_DOWNLOAD2: {
 				Dimension d = GetStringBoundingBox(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON);
 				size = maxdim(d, GetStringBoundingBox(STR_INTRO_ONLINE_CONTENT));
-				size.width  += padding.width;
+				size.width += padding.width;
 				size.height += padding.height;
 				break;
 			}
@@ -850,9 +846,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 				bool rtl = _current_text_dir == TD_RTL;
-				uint text_left    = rtl ? tr.left : tr.left + square.width + 13;
-				uint text_right   = rtl ? tr.right - square.width - 13 : tr.right;
-				uint square_left  = rtl ? tr.right - square.width - 3 : tr.left + 3;
+				uint text_left = rtl ? tr.left : tr.left + square.width + 13;
+				uint text_right = rtl ? tr.right - square.width - 13 : tr.right;
+				uint square_left = rtl ? tr.right - square.width - 3 : tr.left + 3;
 				uint warning_left = rtl ? tr.right - square.width - warning.width - 8 : tr.left + square.width + 8;
 
 				int i = 0;
@@ -1087,12 +1083,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_APPLY_CHANGES: // Apply changes made to GRF list
 				if (!this->editable) break;
 				if (this->execute) {
-					ShowQuery(
-						GetEncodedString(STR_NEWGRF_POPUP_CAUTION_CAPTION),
-						GetEncodedString(STR_NEWGRF_CONFIRMATION_TEXT),
-						this,
-						NewGRFConfirmationCallback
-					);
+					ShowQuery(GetEncodedString(STR_NEWGRF_POPUP_CAUTION_CAPTION), GetEncodedString(STR_NEWGRF_CONFIRMATION_TEXT), this, NewGRFConfirmationCallback);
 				} else {
 					CopyGRFConfigList(this->orig_list, this->actives, true);
 					ResetGRFConfig(false);
@@ -1249,19 +1240,12 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->BuildAvailables();
 
 		this->SetWidgetDisabledState(WID_NS_APPLY_CHANGES, !((this->editable && this->modified) || _settings_client.gui.newgrf_developer_tools));
-		this->SetWidgetsDisabledState(!this->editable,
-			WID_NS_PRESET_LIST,
-			WID_NS_TOGGLE_PALETTE
-		);
+		this->SetWidgetsDisabledState(!this->editable, WID_NS_PRESET_LIST, WID_NS_TOGGLE_PALETTE);
 		this->SetWidgetDisabledState(WID_NS_ADD, !this->editable || this->avail_sel == nullptr || this->avail_sel->flags.Test(GRFConfigFlag::Invalid));
 		this->SetWidgetDisabledState(WID_NS_UPGRADE, !this->editable || this->actives.empty() || !this->CanUpgradeCurrent());
 
 		bool disable_all = this->active_sel == nullptr || !this->editable;
-		this->SetWidgetsDisabledState(disable_all,
-			WID_NS_REMOVE,
-			WID_NS_MOVE_UP,
-			WID_NS_MOVE_DOWN
-		);
+		this->SetWidgetsDisabledState(disable_all, WID_NS_REMOVE, WID_NS_MOVE_UP, WID_NS_MOVE_DOWN);
 
 		const GRFConfig *selected_config = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
 		for (TextfileType tft = TFT_CONTENT_BEGIN; tft < TFT_CONTENT_END; tft++) {
@@ -1271,8 +1255,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == nullptr || this->active_sel->num_valid_params == 0);
-		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE, disable_all ||
-				(!(_settings_client.gui.newgrf_developer_tools || _settings_client.gui.scenario_developer) && ((selected_config->palette & GRFP_GRF_MASK) != GRFP_GRF_UNSET)));
+		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE,
+			disable_all || (!(_settings_client.gui.newgrf_developer_tools || _settings_client.gui.scenario_developer) && ((selected_config->palette & GRFP_GRF_MASK) != GRFP_GRF_UNSET)));
 
 		if (!disable_all) {
 			/* All widgets are now enabled, so disable widgets we can't use */
@@ -1285,7 +1269,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		bool has_missing = false;
 		bool has_compatible = false;
 		for (const auto &c : this->actives) {
-			has_missing    |= c->status == GCS_NOT_FOUND;
+			has_missing |= c->status == GCS_NOT_FOUND;
 			has_compatible |= c->flags.Test(GRFConfigFlag::Compatible);
 		}
 		StringID text;
@@ -1398,7 +1382,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 private:
 	/** Sort grfs by name. */
-	static bool NameSorter(const GRFConfig * const &a, const GRFConfig * const &b)
+	static bool NameSorter(const GRFConfig *const &a, const GRFConfig *const &b)
 	{
 		std::string name_a = StrMakeValid(a->GetName(), {}); // Make a copy without control codes.
 		std::string name_b = StrMakeValid(b->GetName(), {}); // Make a copy without control codes.
@@ -1412,13 +1396,14 @@ private:
 	}
 
 	/** Filter grfs by tags/name */
-	static bool TagNameFilter(const GRFConfig * const *a, StringFilter &filter)
+	static bool TagNameFilter(const GRFConfig *const *a, StringFilter &filter)
 	{
 		filter.ResetState();
 		filter.AddLine((*a)->GetName());
 		filter.AddLine((*a)->filename);
 		if (auto desc = (*a)->GetDescription(); desc.has_value()) filter.AddLine(*desc);
-		return filter.GetState();;
+		return filter.GetState();
+		;
 	}
 
 	void BuildAvailables()
@@ -1428,7 +1413,10 @@ private:
 		this->avails.clear();
 
 		for (const auto &c : _all_grfs) {
-			if (std::ranges::any_of(this->actives, [&c](const auto &gc) { return gc->ident.HasGrfIdentifier(c->ident.grfid, &c->ident.md5sum); })) continue;
+			if (std::ranges::any_of(this->actives, [&c](const auto &gc) {
+					return gc->ident.HasGrfIdentifier(c->ident.grfid, &c->ident.md5sum);
+				}))
+				continue;
 
 			if (_settings_client.gui.newgrf_show_old_versions) {
 				this->avails.push_back(c.get());
@@ -1476,21 +1464,23 @@ private:
 		CloseWindowByClass(WC_TEXTFILE);
 
 		/* Get number of non-static NewGRFs. */
-		size_t count = std::ranges::count_if(this->actives, [](const auto &gc) { return !gc->flags.Test(GRFConfigFlag::Static); });
+		size_t count = std::ranges::count_if(this->actives, [](const auto &gc) {
+			return !gc->flags.Test(GRFConfigFlag::Static);
+		});
 		if (count >= NETWORK_MAX_GRF_COUNT) {
 			ShowErrorMessage(GetEncodedString(STR_NEWGRF_TOO_MANY_NEWGRFS), {}, WL_INFO);
 			return false;
 		}
 
 		/* Check for duplicate GRF ID. */
-		if (std::ranges::any_of(this->actives, [&grfid = this->avail_sel->ident.grfid](const auto &gc)  { return gc->ident.grfid == grfid; })) {
+		if (std::ranges::any_of(this->actives, [&grfid = this->avail_sel->ident.grfid](const auto &gc) {
+				return gc->ident.grfid == grfid;
+			})) {
 			ShowErrorMessage(GetEncodedString(STR_NEWGRF_DUPLICATE_GRFID), {}, WL_INFO);
 			return false;
 		}
 
-		auto entry = (ins_pos >= 0 && static_cast<size_t>(ins_pos) < std::size(this->actives))
-			? std::next(std::begin(this->actives), ins_pos)
-			: std::end(this->actives);
+		auto entry = (ins_pos >= 0 && static_cast<size_t>(ins_pos) < std::size(this->actives)) ? std::next(std::begin(this->actives), ins_pos) : std::end(this->actives);
 
 		/* Copy GRF details from scanned list. */
 		entry = this->actives.insert(entry, std::make_unique<GRFConfig>(*this->avail_sel));
@@ -1530,14 +1520,14 @@ void ShowMissingContentWindow(const GRFConfigList &list)
 	ShowNetworkContentListWindow(cv.empty() ? nullptr : &cv, CONTENT_TYPE_NEWGRF);
 }
 
-Listing NewGRFWindow::last_sorting     = {false, 0};
+Listing NewGRFWindow::last_sorting = {false, 0};
 Filtering NewGRFWindow::last_filtering = {false, 0};
 
-const std::initializer_list<NewGRFWindow::GUIGRFConfigList::SortFunction * const> NewGRFWindow::sorter_funcs = {
+const std::initializer_list<NewGRFWindow::GUIGRFConfigList::SortFunction *const> NewGRFWindow::sorter_funcs = {
 	&NameSorter,
 };
 
-const std::initializer_list<NewGRFWindow::GUIGRFConfigList::FilterFunction * const> NewGRFWindow::filter_funcs = {
+const std::initializer_list<NewGRFWindow::GUIGRFConfigList::FilterFunction *const> NewGRFWindow::filter_funcs = {
 	&TagNameFilter,
 };
 
@@ -1549,7 +1539,7 @@ const std::initializer_list<NewGRFWindow::GUIGRFConfigList::FilterFunction * con
  */
 class NWidgetNewGRFDisplay : public NWidgetBase {
 public:
-	static const uint MAX_EXTRA_INFO_WIDTH;    ///< Maximal additional width given to the panel.
+	static const uint MAX_EXTRA_INFO_WIDTH; ///< Maximal additional width given to the panel.
 	static const uint MIN_EXTRA_FOR_3_COLUMNS; ///< Minimal additional width needed before switching to 3 columns.
 
 	std::unique_ptr<NWidgetBase> avs{}; ///< Widget with the available grfs list and buttons.
@@ -1557,10 +1547,8 @@ public:
 	std::unique_ptr<NWidgetBase> inf{}; ///< Info panel.
 	bool editable = true; ///< Editable status of the parent NewGRF window (if \c false, drop all widgets that make the window editable).
 
-	NWidgetNewGRFDisplay(std::unique_ptr<NWidgetBase> &&avs, std::unique_ptr<NWidgetBase> &&acs, std::unique_ptr<NWidgetBase> &&inf) : NWidgetBase(NWID_CUSTOM)
-		, avs(std::move(avs))
-		, acs(std::move(acs))
-		, inf(std::move(inf))
+	NWidgetNewGRFDisplay(std::unique_ptr<NWidgetBase> &&avs, std::unique_ptr<NWidgetBase> &&acs, std::unique_ptr<NWidgetBase> &&inf) :
+		NWidgetBase(NWID_CUSTOM), avs(std::move(avs)), acs(std::move(acs)), inf(std::move(inf))
 	{
 	}
 
@@ -1616,12 +1604,12 @@ public:
 		uint min_inf_width = this->inf->smallest_x + this->inf->padding.Horizontal();
 
 		uint min_list_width = std::max(min_avs_width, min_acs_width); // Smallest width of the lists such that they have equal width (incl padding).
-		uint avs_extra_width = min_list_width - min_avs_width;   // Additional width needed for avs to reach min_list_width.
-		uint acs_extra_width = min_list_width - min_acs_width;   // Additional width needed for acs to reach min_list_width.
+		uint avs_extra_width = min_list_width - min_avs_width; // Additional width needed for avs to reach min_list_width.
+		uint acs_extra_width = min_list_width - min_acs_width; // Additional width needed for acs to reach min_list_width.
 
 		/* Use 2 or 3 columns? */
 		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * WidgetDimensions::scaled.hsep_wide;
-		uint min_two_columns   = min_list_width + min_inf_width + WidgetDimensions::scaled.hsep_wide;
+		uint min_two_columns = min_list_width + min_inf_width + WidgetDimensions::scaled.hsep_wide;
 		bool use_three_columns = this->editable && (min_three_columns + ScaleGUITrad(MIN_EXTRA_FOR_3_COLUMNS) <= given_width);
 
 		/* Info panel is a separate column in both modes. Compute its width first. */
@@ -1649,10 +1637,8 @@ public:
 			avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_width, this->avs->GetHorizontalStepSize(sizing));
 
 			uint acs_width = given_width - // Remaining space, including horizontal padding.
-					inf_width - this->inf->padding.Horizontal() -
-					avs_width - this->avs->padding.Horizontal() - 2 * WidgetDimensions::scaled.hsep_wide;
-			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) -
-					this->acs->padding.Horizontal();
+				inf_width - this->inf->padding.Horizontal() - avs_width - this->avs->padding.Horizontal() - 2 * WidgetDimensions::scaled.hsep_wide;
+			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) - this->acs->padding.Horizontal();
 
 			/* Never use fill_y on these; the minimal size is chosen, so that the 3 column view looks nice */
 			uint avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->resize_y);
@@ -1683,10 +1669,8 @@ public:
 		} else {
 			/* Two columns, all space in extra_width goes to both lists. Since the lists are underneath each other,
 			 * the column is min_list_width wide at least. */
-			uint avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_extra_width + extra_width,
-					this->avs->GetHorizontalStepSize(sizing));
-			uint acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width,
-					this->acs->GetHorizontalStepSize(sizing));
+			uint avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_extra_width + extra_width, this->avs->GetHorizontalStepSize(sizing));
+			uint acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width, this->acs->GetHorizontalStepSize(sizing));
 
 			uint min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding.Vertical() + WidgetDimensions::scaled.vsep_wide;
 			uint min_acs_height = this->acs->smallest_y + this->acs->padding.Vertical();
@@ -1751,7 +1735,7 @@ public:
 	}
 };
 
-const uint NWidgetNewGRFDisplay::MAX_EXTRA_INFO_WIDTH    = 150;
+const uint NWidgetNewGRFDisplay::MAX_EXTRA_INFO_WIDTH = 150;
 const uint NWidgetNewGRFDisplay::MIN_EXTRA_FOR_3_COLUMNS = 50;
 
 /* clang-format off */
@@ -1920,12 +1904,7 @@ static constexpr NWidgetPart _nested_newgrf_widgets[] = {
 /* clang-format on */
 
 /* Window definition of the manage newgrfs window */
-static WindowDesc _newgrf_desc(
-	WDP_CENTER, "settings_newgrf", 300, 263,
-	WC_GAME_OPTIONS, WC_NONE,
-	{},
-	_nested_newgrf_widgets
-);
+static WindowDesc _newgrf_desc(WDP_CENTER, "settings_newgrf", 300, 263, WC_GAME_OPTIONS, WC_NONE, {}, _nested_newgrf_widgets);
 
 /**
  * Callback function for the newgrf 'apply changes' confirmation window
@@ -1937,7 +1916,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 	if (confirmed) {
 		CloseWindowByClass(WC_GRF_PARAMETERS);
 		CloseWindowByClass(WC_TEXTFILE);
-		NewGRFWindow *nw = dynamic_cast<NewGRFWindow*>(w);
+		NewGRFWindow *nw = dynamic_cast<NewGRFWindow *>(w);
 		assert(nw != nullptr);
 
 		_gamelog.StartAction(GLAT_GRF);
@@ -1969,8 +1948,6 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		CloseWindowByClass(WC_BUILD_OBJECT);
 	}
 }
-
-
 
 /**
  * Setup the NewGRF gui
@@ -2014,12 +1991,7 @@ static constexpr NWidgetPart _nested_save_preset_widgets[] = {
 /* clang-format on */
 
 /** Window description of the preset save window. */
-static WindowDesc _save_preset_desc(
-	WDP_CENTER, "save_preset", 140, 110,
-	WC_SAVE_PRESET, WC_GAME_OPTIONS,
-	WindowDefaultFlag::Modal,
-	_nested_save_preset_widgets
-);
+static WindowDesc _save_preset_desc(WDP_CENTER, "save_preset", 140, 110, WC_SAVE_PRESET, WC_GAME_OPTIONS, WindowDefaultFlag::Modal, _nested_save_preset_widgets);
 
 /** Class for the save preset window. */
 struct SavePresetWindow : public Window {
@@ -2057,9 +2029,7 @@ struct SavePresetWindow : public Window {
 		if (initial_text != nullptr) this->presetname_editbox.text.Assign(initial_text);
 	}
 
-	~SavePresetWindow()
-	{
-	}
+	~SavePresetWindow() {}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
@@ -2160,12 +2130,7 @@ static constexpr NWidgetPart _nested_scan_progress_widgets[] = {
 /* clang-format on */
 
 /** Description of the widgets and other settings of the window. */
-static WindowDesc _scan_progress_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_MODAL_PROGRESS, WC_NONE,
-	{},
-	_nested_scan_progress_widgets
-);
+static WindowDesc _scan_progress_desc(WDP_CENTER, nullptr, 0, 0, WC_MODAL_PROGRESS, WC_NONE, {}, _nested_scan_progress_widgets);
 
 /** Window for showing the progress of NewGRF scanning. */
 struct ScanProgressWindow : public Window {
@@ -2185,7 +2150,7 @@ struct ScanProgressWindow : public Window {
 				size = GetStringBoundingBox(GetString(STR_GENERATION_PROGRESS, GetParamMaxValue(100)));
 				/* We need some spacing for the 'border' */
 				size.height += WidgetDimensions::scaled.frametext.Horizontal();
-				size.width  += WidgetDimensions::scaled.frametext.Vertical();
+				size.width += WidgetDimensions::scaled.frametext.Vertical();
 				break;
 
 			case WID_SP_PROGRESS_TEXT: {
@@ -2242,7 +2207,7 @@ struct ScanProgressWindow : public Window {
  */
 void UpdateNewGRFScanStatus(uint num, std::string &&name)
 {
-	ScanProgressWindow *w  = dynamic_cast<ScanProgressWindow *>(FindWindowByClass(WC_MODAL_PROGRESS));
+	ScanProgressWindow *w = dynamic_cast<ScanProgressWindow *>(FindWindowByClass(WC_MODAL_PROGRESS));
 	if (w == nullptr) w = new ScanProgressWindow();
 	w->UpdateNewGRFScanStatus(num, std::move(name));
 }

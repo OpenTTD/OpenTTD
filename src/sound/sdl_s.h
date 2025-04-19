@@ -18,14 +18,22 @@ public:
 	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
-	std::string_view GetName() const override { return "sdl"; }
+
+	std::string_view GetName() const override
+	{
+		return "sdl";
+	}
 };
 
 /** Factory for the SDL sound driver. */
 class FSoundDriver_SDL : public DriverFactoryBase {
 public:
 	FSoundDriver_SDL() : DriverFactoryBase(Driver::DT_SOUND, 5, "sdl", "SDL Sound Driver (param hz,samples)") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_SDL>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<SoundDriver_SDL>();
+	}
 };
 
 #endif /* SOUND_SDL_H */

@@ -22,9 +22,7 @@ private:
 	const char *classname;
 
 public:
-	DefSQClass(const char *_classname) :
-		classname(_classname)
-	{}
+	DefSQClass(const char *_classname) : classname(_classname) {}
 
 	/**
 	 * This defines a method inside a class for Squirrel.

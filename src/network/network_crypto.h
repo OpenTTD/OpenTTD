@@ -64,7 +64,6 @@ public:
 	virtual void Encrypt(std::span<std::uint8_t> mac, std::span<std::uint8_t> message) = 0;
 };
 
-
 /**
  * Callback interface for requests for passwords in the context of network authentication.
  */
@@ -87,7 +86,6 @@ protected:
 
 	std::string password; ///< The entered password.
 public:
-
 	virtual void Reply(const std::string &password) override;
 
 	/**
@@ -101,7 +99,6 @@ public:
 	 */
 	virtual void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) = 0;
 };
-
 
 /**
  * Callback interface for server implementations to provide the current password.
@@ -131,7 +128,10 @@ public:
 	 */
 	NetworkAuthenticationDefaultPasswordProvider(const std::string &password) : password(&password) {}
 
-	std::string_view GetPassword() const override { return *this->password; };
+	std::string_view GetPassword() const override
+	{
+		return *this->password;
+	};
 };
 
 /**
@@ -168,10 +168,16 @@ public:
 	 */
 	NetworkAuthenticationDefaultAuthorizedKeyHandler(const NetworkAuthorizedKeys &authorized_keys) : authorized_keys(&authorized_keys) {}
 
-	bool CanBeUsed() const override { return !this->authorized_keys->empty(); }
-	bool IsAllowed(std::string_view peer_public_key) const override { return authorized_keys->Contains(peer_public_key); }
-};
+	bool CanBeUsed() const override
+	{
+		return !this->authorized_keys->empty();
+	}
 
+	bool IsAllowed(std::string_view peer_public_key) const override
+	{
+		return authorized_keys->Contains(peer_public_key);
+	}
+};
 
 /** The authentication method that can be used. */
 enum class NetworkAuthenticationMethod : uint8_t {
@@ -296,7 +302,10 @@ public:
 	 */
 	virtual std::string GetPeerPublicKey() const = 0;
 
-	static std::unique_ptr<NetworkAuthenticationServerHandler> Create(const NetworkAuthenticationPasswordProvider *password_provider, const NetworkAuthenticationAuthorizedKeyHandler *authorized_key_handler, NetworkAuthenticationMethodMask client_supported_method_mask = {NetworkAuthenticationMethod::X25519_KeyExchangeOnly, NetworkAuthenticationMethod::X25519_PAKE, NetworkAuthenticationMethod::X25519_AuthorizedKey});
+	static std::unique_ptr<NetworkAuthenticationServerHandler> Create(const NetworkAuthenticationPasswordProvider *password_provider,
+		const NetworkAuthenticationAuthorizedKeyHandler *authorized_key_handler,
+		NetworkAuthenticationMethodMask client_supported_method_mask = {
+			NetworkAuthenticationMethod::X25519_KeyExchangeOnly, NetworkAuthenticationMethod::X25519_PAKE, NetworkAuthenticationMethod::X25519_AuthorizedKey});
 };
 
 #endif /* NETWORK_CRYPTO_H */

@@ -17,8 +17,7 @@
 #include "yapf_type.hpp"
 
 /** key for cached segment cost for rail YAPF */
-struct CYapfRailSegmentKey
-{
+struct CYapfRailSegmentKey {
 	uint32_t value;
 
 	inline CYapfRailSegmentKey(const CYapfNodeKeyTrackDir &node_key)
@@ -64,8 +63,7 @@ struct CYapfRailSegmentKey
 };
 
 /** cached segment cost for rail YAPF */
-struct CYapfRailSegment
-{
+struct CYapfRailSegment {
 	typedef CYapfRailSegmentKey Key;
 
 	CYapfRailSegmentKey key;
@@ -113,22 +111,23 @@ struct CYapfRailSegment
 
 /** Yapf Node for rail YAPF */
 template <class Tkey_>
-struct CYapfRailNodeT
-	: CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_> >
-{
-	typedef CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_> > base;
+struct CYapfRailNodeT : CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_>> {
+	typedef CYapfNodeT<Tkey_, CYapfRailNodeT<Tkey_>> base;
 	typedef CYapfRailSegment CachedData;
 
 	CYapfRailSegment *segment;
 	uint16_t num_signals_passed;
+
 	union {
 		uint32_t inherited_flags;
+
 		struct {
 			bool target_seen;
 			bool choice_seen;
 			bool last_signal_was_red;
 		} flags_s;
 	} flags_u;
+
 	SignalType last_red_signal_type;
 	SignalType last_signal_type;
 
@@ -137,9 +136,9 @@ struct CYapfRailNodeT
 		this->base::Set(parent, tile, td, is_choice);
 		this->segment = nullptr;
 		if (parent == nullptr) {
-			this->num_signals_passed      = 0;
+			this->num_signals_passed = 0;
 			this->flags_u.inherited_flags = 0;
-			this->last_red_signal_type    = SIGTYPE_BLOCK;
+			this->last_red_signal_type = SIGTYPE_BLOCK;
 			/* We use PBS as initial signal type because if we are in
 			 * a PBS section and need to route, i.e. we're at a safe
 			 * waiting point of a station, we need to account for the
@@ -150,12 +149,12 @@ struct CYapfRailNodeT
 			 * then avoiding that train with help of the reservation
 			 * costs is not a bad thing, actually it would probably
 			 * be a good thing to do. */
-			this->last_signal_type        = SIGTYPE_PBS;
+			this->last_signal_type = SIGTYPE_PBS;
 		} else {
-			this->num_signals_passed      = parent->num_signals_passed;
+			this->num_signals_passed = parent->num_signals_passed;
 			this->flags_u.inherited_flags = parent->flags_u.inherited_flags;
-			this->last_red_signal_type    = parent->last_red_signal_type;
-			this->last_signal_type        = parent->last_signal_type;
+			this->last_red_signal_type = parent->last_red_signal_type;
+			this->last_signal_type = parent->last_signal_type;
 		}
 		this->flags_u.flags_s.choice_seen |= is_choice;
 	}
@@ -184,7 +183,7 @@ struct CYapfRailNodeT
 	{
 		typename Tbase::TrackFollower ft(v, yapf.GetCompatibleRailTypes());
 		TileIndex cur = this->base::GetTile();
-		Trackdir  cur_td = this->base::GetTrackdir();
+		Trackdir cur_td = this->base::GetTrackdir();
 
 		while (cur != this->GetLastTile() || cur_td != this->GetLastTrackdir()) {
 			if (!((obj.*func)(cur, cur_td))) return false;
@@ -211,11 +210,11 @@ struct CYapfRailNodeT
 };
 
 /* now define two major node types (that differ by key type) */
-typedef CYapfRailNodeT<CYapfNodeKeyExitDir>  CYapfRailNodeExitDir;
+typedef CYapfRailNodeT<CYapfNodeKeyExitDir> CYapfRailNodeExitDir;
 typedef CYapfRailNodeT<CYapfNodeKeyTrackDir> CYapfRailNodeTrackDir;
 
 /* Default NodeList types */
-typedef NodeList<CYapfRailNodeExitDir , 8, 10> CRailNodeListExitDir;
+typedef NodeList<CYapfRailNodeExitDir, 8, 10> CRailNodeListExitDir;
 typedef NodeList<CYapfRailNodeTrackDir, 8, 10> CRailNodeListTrackDir;
 
 #endif /* YAPF_NODE_RAIL_HPP */

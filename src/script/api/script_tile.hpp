@@ -10,10 +10,10 @@
 #ifndef SCRIPT_TILE_HPP
 #define SCRIPT_TILE_HPP
 
-#include "script_error.hpp"
-#include "script_company.hpp"
 #include "../../slope_type.h"
 #include "../../transport_type.h"
+#include "script_company.hpp"
+#include "script_error.hpp"
 
 /**
  * Class that handles all tile related functions.
@@ -27,24 +27,23 @@ public:
 	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
-
 		/** Base for tile related errors */
 		ERR_TILE_BASE = ScriptError::ERR_CAT_TILE << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Tile can't be raised any higher */
-		ERR_TILE_TOO_HIGH,                     // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
+		ERR_TILE_TOO_HIGH, // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
 
 		/** Tile can't be lowered any lower */
-		ERR_TILE_TOO_LOW,                      // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
+		ERR_TILE_TOO_LOW, // [STR_ERROR_ALREADY_AT_SEA_LEVEL]
 
 		/** The area was already flat */
-		ERR_AREA_ALREADY_FLAT,                 // [STR_ERROR_ALREADY_LEVELLED]
+		ERR_AREA_ALREADY_FLAT, // [STR_ERROR_ALREADY_LEVELLED]
 
 		/** There is a tunnel underneath */
-		ERR_EXCAVATION_WOULD_DAMAGE,           // [STR_ERROR_EXCAVATION_WOULD_DAMAGE]
+		ERR_EXCAVATION_WOULD_DAMAGE, // [STR_ERROR_EXCAVATION_WOULD_DAMAGE]
 
 		/** Reached the limit for terraforming/clearing/planting */
-		ERR_LIMIT_REACHED,                     // [STR_ERROR_TERRAFORM_LIMIT_REACHED, STR_ERROR_CLEARING_LIMIT_REACHED, STR_ERROR_TREE_PLANT_LIMIT_REACHED]
+		ERR_LIMIT_REACHED, // [STR_ERROR_TERRAFORM_LIMIT_REACHED, STR_ERROR_CLEARING_LIMIT_REACHED, STR_ERROR_TREE_PLANT_LIMIT_REACHED]
 	};
 
 	/**
@@ -52,10 +51,10 @@ public:
 	 */
 	enum Corner {
 		/* Note: these values represent part of the in-game Corner enum */
-		CORNER_W       = ::CORNER_W,       ///< West corner
-		CORNER_S       = ::CORNER_S,       ///< South corner
-		CORNER_E       = ::CORNER_E,       ///< East corner
-		CORNER_N       = ::CORNER_N,       ///< North corner
+		CORNER_W = ::CORNER_W, ///< West corner
+		CORNER_S = ::CORNER_S, ///< South corner
+		CORNER_E = ::CORNER_E, ///< East corner
+		CORNER_N = ::CORNER_N, ///< North corner
 
 		CORNER_INVALID = ::CORNER_INVALID, ///< An invalid corner
 	};
@@ -69,30 +68,30 @@ public:
 	 */
 	enum Slope {
 		/* Note: these values represent part of the in-game Slope enum */
-		SLOPE_FLAT     = ::SLOPE_FLAT,     ///< A flat tile
-		SLOPE_W        = ::SLOPE_W,        ///< The west corner of the tile is raised
-		SLOPE_S        = ::SLOPE_S,        ///< The south corner of the tile is raised
-		SLOPE_E        = ::SLOPE_E,        ///< The east corner of the tile is raised
-		SLOPE_N        = ::SLOPE_N,        ///< The north corner of the tile is raised
-		SLOPE_STEEP    = ::SLOPE_STEEP,    ///< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
-		SLOPE_NW       = ::SLOPE_NW,       ///< North and west corner are raised
-		SLOPE_SW       = ::SLOPE_SW,       ///< South and west corner are raised
-		SLOPE_SE       = ::SLOPE_SE,       ///< South and east corner are raised
-		SLOPE_NE       = ::SLOPE_NE,       ///< North and east corner are raised
-		SLOPE_EW       = ::SLOPE_EW,       ///< East and west corner are raised
-		SLOPE_NS       = ::SLOPE_NS,       ///< North and south corner are raised
+		SLOPE_FLAT = ::SLOPE_FLAT, ///< A flat tile
+		SLOPE_W = ::SLOPE_W, ///< The west corner of the tile is raised
+		SLOPE_S = ::SLOPE_S, ///< The south corner of the tile is raised
+		SLOPE_E = ::SLOPE_E, ///< The east corner of the tile is raised
+		SLOPE_N = ::SLOPE_N, ///< The north corner of the tile is raised
+		SLOPE_STEEP = ::SLOPE_STEEP, ///< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
+		SLOPE_NW = ::SLOPE_NW, ///< North and west corner are raised
+		SLOPE_SW = ::SLOPE_SW, ///< South and west corner are raised
+		SLOPE_SE = ::SLOPE_SE, ///< South and east corner are raised
+		SLOPE_NE = ::SLOPE_NE, ///< North and east corner are raised
+		SLOPE_EW = ::SLOPE_EW, ///< East and west corner are raised
+		SLOPE_NS = ::SLOPE_NS, ///< North and south corner are raised
 		SLOPE_ELEVATED = ::SLOPE_ELEVATED, ///< Bit mask containing all 'simple' slopes. Does not appear as a slope.
-		SLOPE_NWS      = ::SLOPE_NWS,      ///< North, west and south corner are raised
-		SLOPE_WSE      = ::SLOPE_WSE,      ///< West, south and east corner are raised
-		SLOPE_SEN      = ::SLOPE_SEN,      ///< South, east and north corner are raised
-		SLOPE_ENW      = ::SLOPE_ENW,      ///< East, north and west corner are raised
-		SLOPE_STEEP_W  = ::SLOPE_STEEP_W,  ///< A steep slope falling to east (from west)
-		SLOPE_STEEP_S  = ::SLOPE_STEEP_S,  ///< A steep slope falling to north (from south)
-		SLOPE_STEEP_E  = ::SLOPE_STEEP_E,  ///< A steep slope falling to west (from east)
-		SLOPE_STEEP_N  = ::SLOPE_STEEP_N,  ///< A steep slope falling to south (from north)
+		SLOPE_NWS = ::SLOPE_NWS, ///< North, west and south corner are raised
+		SLOPE_WSE = ::SLOPE_WSE, ///< West, south and east corner are raised
+		SLOPE_SEN = ::SLOPE_SEN, ///< South, east and north corner are raised
+		SLOPE_ENW = ::SLOPE_ENW, ///< East, north and west corner are raised
+		SLOPE_STEEP_W = ::SLOPE_STEEP_W, ///< A steep slope falling to east (from west)
+		SLOPE_STEEP_S = ::SLOPE_STEEP_S, ///< A steep slope falling to north (from south)
+		SLOPE_STEEP_E = ::SLOPE_STEEP_E, ///< A steep slope falling to west (from east)
+		SLOPE_STEEP_N = ::SLOPE_STEEP_N, ///< A steep slope falling to south (from north)
 
 		/* Custom added value, only valid for this API */
-		SLOPE_INVALID  = 0xFFFF,           ///< An invalid slope
+		SLOPE_INVALID = 0xFFFF, ///< An invalid slope
 	};
 
 	/**
@@ -100,10 +99,10 @@ public:
 	 */
 	enum TransportType {
 		/* Note: these values represent part of the in-game TransportType enum */
-		TRANSPORT_RAIL    =  ::TRANSPORT_RAIL,  ///< Tile with rail.
-		TRANSPORT_ROAD    =  ::TRANSPORT_ROAD,  ///< Tile with road.
-		TRANSPORT_WATER   =  ::TRANSPORT_WATER, ///< Tile with navigable waterways.
-		TRANSPORT_AIR     =  ::TRANSPORT_AIR,   ///< Tile with airport.
+		TRANSPORT_RAIL = ::TRANSPORT_RAIL, ///< Tile with rail.
+		TRANSPORT_ROAD = ::TRANSPORT_ROAD, ///< Tile with road.
+		TRANSPORT_WATER = ::TRANSPORT_WATER, ///< Tile with navigable waterways.
+		TRANSPORT_AIR = ::TRANSPORT_AIR, ///< Tile with airport.
 
 		/* Custom added value, only valid for this API */
 		TRANSPORT_INVALID = -1, ///< Tile without any transport type.
@@ -113,15 +112,15 @@ public:
 	 * Get the base cost for building/clearing several things.
 	 */
 	enum BuildType {
-		BT_FOUNDATION,   ///< Build a foundation under something
-		BT_TERRAFORM,    ///< Terraform
-		BT_BUILD_TREES,  ///< Build trees
-		BT_CLEAR_GRASS,  ///< Clear a tile with just grass
-		BT_CLEAR_ROUGH,  ///< Clear a rough tile
-		BT_CLEAR_ROCKY,  ///< Clear a tile with rocks
+		BT_FOUNDATION, ///< Build a foundation under something
+		BT_TERRAFORM, ///< Terraform
+		BT_BUILD_TREES, ///< Build trees
+		BT_CLEAR_GRASS, ///< Clear a tile with just grass
+		BT_CLEAR_ROUGH, ///< Clear a rough tile
+		BT_CLEAR_ROCKY, ///< Clear a tile with rocks
 		BT_CLEAR_FIELDS, ///< Clear a tile with farm fields
-		BT_CLEAR_HOUSE,  ///< Clear a tile with a house
-		BT_CLEAR_WATER,  ///< Clear a tile with either river or sea
+		BT_CLEAR_HOUSE, ///< Clear a tile with a house
+		BT_CLEAR_WATER, ///< Clear a tile with either river or sea
 	};
 
 	/**
@@ -131,10 +130,10 @@ public:
 	 * @note The snow terrain type can change to the normal terrain type and vice versa based on landscaping or variable snow lines from NewGRFs.
 	 */
 	enum TerrainType {
-		TERRAIN_NORMAL,     ///< A normal tile (default); not desert, rainforest or snow.
-		TERRAIN_DESERT,     ///< A tile in the desert (manually set in in scenarios, below certain height and certain distance from water in random games).
+		TERRAIN_NORMAL, ///< A normal tile (default); not desert, rainforest or snow.
+		TERRAIN_DESERT, ///< A tile in the desert (manually set in in scenarios, below certain height and certain distance from water in random games).
 		TERRAIN_RAINFOREST, ///< A tile in the rainforest (manually set in scenarios, certain distance away from deserts in random games),
-		TERRAIN_SNOW        ///< A tile on or above the snowline level.
+		TERRAIN_SNOW ///< A tile on or above the snowline level.
 	};
 
 	/**

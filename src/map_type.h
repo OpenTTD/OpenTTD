@@ -29,15 +29,15 @@ typedef int32_t TileIndexDiff;
  * tiles as a pair of x and y value.
  */
 struct TileIndexDiffC {
-	int16_t x;        ///< The x value of the coordinate
-	int16_t y;        ///< The y value of the coordinate
+	int16_t x; ///< The x value of the coordinate
+	int16_t y; ///< The y value of the coordinate
 };
 
 /** Minimal and maximal map width and height */
-static const uint MIN_MAP_SIZE_BITS = 6;                       ///< Minimal size of map is equal to 2 ^ MIN_MAP_SIZE_BITS
-static const uint MAX_MAP_SIZE_BITS = 12;                      ///< Maximal size of map is equal to 2 ^ MAX_MAP_SIZE_BITS
-static const uint MIN_MAP_SIZE      = 1U << MIN_MAP_SIZE_BITS; ///< Minimal map size = 64
-static const uint MAX_MAP_SIZE      = 1U << MAX_MAP_SIZE_BITS; ///< Maximal map size = 4096
+static const uint MIN_MAP_SIZE_BITS = 6; ///< Minimal size of map is equal to 2 ^ MIN_MAP_SIZE_BITS
+static const uint MAX_MAP_SIZE_BITS = 12; ///< Maximal size of map is equal to 2 ^ MAX_MAP_SIZE_BITS
+static const uint MIN_MAP_SIZE = 1U << MIN_MAP_SIZE_BITS; ///< Minimal map size = 64
+static const uint MAX_MAP_SIZE = 1U << MAX_MAP_SIZE_BITS; ///< Maximal map size = 4096
 
 /** Argument for CmdLevelLand describing what to do. */
 enum LevelMode : uint8_t {

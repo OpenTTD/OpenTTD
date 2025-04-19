@@ -21,6 +21,7 @@ struct ShipPathElement {
 	Trackdir trackdir = INVALID_TRACKDIR; ///< Trackdir for this element.
 
 	constexpr ShipPathElement() {}
+
 	constexpr ShipPathElement(Trackdir trackdir) : trackdir(trackdir) {}
 };
 
@@ -38,20 +39,52 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Ship() : SpecializedVehicleBase() {}
+
 	/** We want to 'destruct' the right class. */
-	virtual ~Ship() { this->PreDestructor(); }
+	virtual ~Ship()
+	{
+		this->PreDestructor();
+	}
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_SHIP_REVENUE : EXPENSES_SHIP_RUN; }
+
+	ExpensesType GetExpenseType(bool income) const override
+	{
+		return income ? EXPENSES_SHIP_REVENUE : EXPENSES_SHIP_RUN;
+	}
+
 	void PlayLeaveStationSound(bool force = false) const override;
-	bool IsPrimaryVehicle() const override { return true; }
+
+	bool IsPrimaryVehicle() const override
+	{
+		return true;
+	}
+
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
-	int GetDisplaySpeed() const override { return this->cur_speed / 2; }
-	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed / 2; }
-	int GetCurrentMaxSpeed() const override { return std::min<int>(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2); }
+
+	int GetDisplaySpeed() const override
+	{
+		return this->cur_speed / 2;
+	}
+
+	int GetDisplayMaxSpeed() const override
+	{
+		return this->vcache.cached_max_speed / 2;
+	}
+
+	int GetCurrentMaxSpeed() const override
+	{
+		return std::min<int>(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2);
+	}
+
 	Money GetRunningCost() const override;
-	bool IsInDepot() const override { return this->state == TRACK_BIT_DEPOT; }
+
+	bool IsInDepot() const override
+	{
+		return this->state == TRACK_BIT_DEPOT;
+	}
+
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;

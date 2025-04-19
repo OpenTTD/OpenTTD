@@ -12,7 +12,6 @@
 
 #include "fileio_type.h"
 
-
 struct TarFileListEntry {
 	std::string tar_filename;
 	size_t size;

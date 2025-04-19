@@ -10,13 +10,13 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
-#include "vehiclelist.h"
-#include "vehicle_type.h"
-#include "viewport_type.h"
 #include "company_type.h"
-#include "tile_type.h"
-#include "widget_type.h"
 #include "string_type.h"
+#include "tile_type.h"
+#include "vehicle_type.h"
+#include "vehiclelist.h"
+#include "viewport_type.h"
+#include "widget_type.h"
 
 /**
  * Flags to describe the look of the frame
@@ -31,39 +31,39 @@ using FrameFlags = EnumBitSet<FrameFlag, uint8_t>;
 
 class WidgetDimensions {
 public:
-	RectPadding imgbtn;        ///< Padding around image button image.
-	RectPadding inset;         ///< Padding inside inset container.
-	RectPadding vscrollbar;    ///< Padding inside vertical scrollbar buttons.
-	RectPadding hscrollbar;    ///< Padding inside horizontal scrollbar buttons.
-	RectPadding bevel;         ///< Bevel thickness, affected by "scaled bevels" game option.
-	RectPadding fullbevel;     ///< Always-scaled bevel thickness.
-	RectPadding framerect;     ///< Standard padding inside many panels.
-	RectPadding frametext;     ///< Padding inside frame with text.
-	RectPadding matrix;        ///< Padding of WWT_MATRIX items.
-	RectPadding shadebox;      ///< Padding around image in shadebox widget.
-	RectPadding stickybox;     ///< Padding around image in stickybox widget.
-	RectPadding debugbox;      ///< Padding around image in debugbox widget.
-	RectPadding defsizebox;    ///< Padding around image in defsizebox widget.
-	RectPadding resizebox;     ///< Padding around image in resizebox widget.
-	RectPadding closebox;      ///< Padding around image in closebox widget.
-	RectPadding captiontext;   ///< Padding for text within caption widget.
-	RectPadding dropdowntext;  ///< Padding of drop down list item.
-	RectPadding dropdownlist;  ///< Padding of complete drop down list.
-	RectPadding modalpopup;    ///< Spacing for popup warning/information windows.
-	RectPadding picker;        ///< Padding for a picker (dock, station, etc) window.
-	RectPadding sparse;        ///< Padding used for 'sparse' widget window, usually containing multiple frames.
+	RectPadding imgbtn; ///< Padding around image button image.
+	RectPadding inset; ///< Padding inside inset container.
+	RectPadding vscrollbar; ///< Padding inside vertical scrollbar buttons.
+	RectPadding hscrollbar; ///< Padding inside horizontal scrollbar buttons.
+	RectPadding bevel; ///< Bevel thickness, affected by "scaled bevels" game option.
+	RectPadding fullbevel; ///< Always-scaled bevel thickness.
+	RectPadding framerect; ///< Standard padding inside many panels.
+	RectPadding frametext; ///< Padding inside frame with text.
+	RectPadding matrix; ///< Padding of WWT_MATRIX items.
+	RectPadding shadebox; ///< Padding around image in shadebox widget.
+	RectPadding stickybox; ///< Padding around image in stickybox widget.
+	RectPadding debugbox; ///< Padding around image in debugbox widget.
+	RectPadding defsizebox; ///< Padding around image in defsizebox widget.
+	RectPadding resizebox; ///< Padding around image in resizebox widget.
+	RectPadding closebox; ///< Padding around image in closebox widget.
+	RectPadding captiontext; ///< Padding for text within caption widget.
+	RectPadding dropdowntext; ///< Padding of drop down list item.
+	RectPadding dropdownlist; ///< Padding of complete drop down list.
+	RectPadding modalpopup; ///< Spacing for popup warning/information windows.
+	RectPadding picker; ///< Padding for a picker (dock, station, etc) window.
+	RectPadding sparse; ///< Padding used for 'sparse' widget window, usually containing multiple frames.
 	RectPadding sparse_resize; ///< Padding used for a resizeable 'sparse' widget window, usually containing multiple frames.
 
-	int vsep_picker;          ///< Vertical spacing of picker-window widgets.
-	int vsep_normal;          ///< Normal vertical spacing.
-	int vsep_sparse;          ///< Normal vertical spacing for 'sparse' widget window.
-	int vsep_wide;            ///< Wide vertical spacing.
-	int hsep_normal;          ///< Normal horizontal spacing.
-	int hsep_wide;            ///< Wide horizontal spacing.
-	int hsep_indent;          ///< Width of indentation for tree layouts.
+	int vsep_picker; ///< Vertical spacing of picker-window widgets.
+	int vsep_normal; ///< Normal vertical spacing.
+	int vsep_sparse; ///< Normal vertical spacing for 'sparse' widget window.
+	int vsep_wide; ///< Wide vertical spacing.
+	int hsep_normal; ///< Normal horizontal spacing.
+	int hsep_wide; ///< Wide horizontal spacing.
+	int hsep_indent; ///< Width of indentation for tree layouts.
 
 	static const WidgetDimensions unscaled; ///< Unscaled widget dimensions.
-	static WidgetDimensions scaled;         ///< Widget dimensions scaled for current zoom level.
+	static WidgetDimensions scaled; ///< Widget dimensions scaled for current zoom level.
 
 	static constexpr float ASPECT_LOCATION = 12.f / 14.f;
 	static constexpr float ASPECT_RENAME = 12.f / 14.f;
@@ -91,35 +91,35 @@ private:
 };
 
 inline constexpr WidgetDimensions WidgetDimensions::unscaled = {
-	.imgbtn        = { .left =  1, .top =  1, .right =  1, .bottom =  1},
-	.inset         = { .left =  2, .top =  1, .right =  2, .bottom =  1},
-	.vscrollbar    = { .left =  2, .top =  3, .right =  2, .bottom =  3},
-	.hscrollbar    = { .left =  3, .top =  2, .right =  3, .bottom =  2},
-	.bevel         = { .left =  1, .top =  1, .right =  1, .bottom =  1},
-	.fullbevel     = { .left =  1, .top =  1, .right =  1, .bottom =  1},
-	.framerect     = { .left =  2, .top =  1, .right =  2, .bottom =  1},
-	.frametext     = { .left =  6, .top =  6, .right =  6, .bottom =  6},
-	.matrix        = { .left =  2, .top =  3, .right =  2, .bottom =  1},
-	.shadebox      = { .left =  2, .top =  3, .right =  2, .bottom =  3},
-	.stickybox     = { .left =  2, .top =  3, .right =  2, .bottom =  3},
-	.debugbox      = { .left =  2, .top =  3, .right =  2, .bottom =  3},
-	.defsizebox    = { .left =  2, .top =  3, .right =  2, .bottom =  3},
-	.resizebox     = { .left =  2, .top =  2, .right =  2, .bottom =  2},
-	.closebox      = { .left =  2, .top =  2, .right =  1, .bottom =  2},
-	.captiontext   = { .left =  2, .top =  2, .right =  2, .bottom =  2},
-	.dropdowntext  = { .left =  2, .top =  1, .right =  2, .bottom =  1},
-	.dropdownlist  = { .left =  1, .top =  2, .right =  1, .bottom =  2},
-	.modalpopup    = { .left = 20, .top = 10, .right = 20, .bottom = 10},
-	.picker        = { .left =  3, .top =  3, .right =  3, .bottom =  3},
-	.sparse        = { .left = 10, .top =  8, .right = 10, .bottom =  8},
-	.sparse_resize = { .left = 10, .top =  8, .right = 10, .bottom =  0},
-	.vsep_picker   = 1,
-	.vsep_normal   = 2,
-	.vsep_sparse   = 4,
-	.vsep_wide     = 8,
-	.hsep_normal   = 2,
-	.hsep_wide     = 6,
-	.hsep_indent   = 10,
+	.imgbtn = {.left = 1, .top = 1, .right = 1, .bottom = 1},
+	.inset = {.left = 2, .top = 1, .right = 2, .bottom = 1},
+	.vscrollbar = {.left = 2, .top = 3, .right = 2, .bottom = 3},
+	.hscrollbar = {.left = 3, .top = 2, .right = 3, .bottom = 2},
+	.bevel = {.left = 1, .top = 1, .right = 1, .bottom = 1},
+	.fullbevel = {.left = 1, .top = 1, .right = 1, .bottom = 1},
+	.framerect = {.left = 2, .top = 1, .right = 2, .bottom = 1},
+	.frametext = {.left = 6, .top = 6, .right = 6, .bottom = 6},
+	.matrix = {.left = 2, .top = 3, .right = 2, .bottom = 1},
+	.shadebox = {.left = 2, .top = 3, .right = 2, .bottom = 3},
+	.stickybox = {.left = 2, .top = 3, .right = 2, .bottom = 3},
+	.debugbox = {.left = 2, .top = 3, .right = 2, .bottom = 3},
+	.defsizebox = {.left = 2, .top = 3, .right = 2, .bottom = 3},
+	.resizebox = {.left = 2, .top = 2, .right = 2, .bottom = 2},
+	.closebox = {.left = 2, .top = 2, .right = 1, .bottom = 2},
+	.captiontext = {.left = 2, .top = 2, .right = 2, .bottom = 2},
+	.dropdowntext = {.left = 2, .top = 1, .right = 2, .bottom = 1},
+	.dropdownlist = {.left = 1, .top = 2, .right = 1, .bottom = 2},
+	.modalpopup = {.left = 20, .top = 10, .right = 20, .bottom = 10},
+	.picker = {.left = 3, .top = 3, .right = 3, .bottom = 3},
+	.sparse = {.left = 10, .top = 8, .right = 10, .bottom = 8},
+	.sparse_resize = {.left = 10, .top = 8, .right = 10, .bottom = 0},
+	.vsep_picker = 1,
+	.vsep_normal = 2,
+	.vsep_sparse = 4,
+	.vsep_wide = 8,
+	.hsep_normal = 2,
+	.hsep_wide = 6,
+	.hsep_indent = 10,
 };
 
 /* widget.cpp */
@@ -137,12 +137,11 @@ using WindowList = std::list<Window *>;
 extern WindowList _z_windows;
 extern Window *_focused_window;
 
-
 /** How do we the window to be placed? */
 enum WindowPosition : uint8_t {
-	WDP_MANUAL,        ///< Manually align the window (so no automatic location finding)
-	WDP_AUTO,          ///< Find a place automatically
-	WDP_CENTER,        ///< Center the window
+	WDP_MANUAL, ///< Manually align the window (so no automatic location finding)
+	WDP_AUTO, ///< Find a place automatically
+	WDP_CENTER, ///< Center the window
 	WDP_ALIGN_TOOLBAR, ///< Align toward the toolbar
 };
 
@@ -165,11 +164,8 @@ struct HotkeyList;
  * High level window description
  */
 struct WindowDesc {
-
-	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
-			WindowClass window_class, WindowClass parent_class, WindowDefaultFlags flags,
-			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys = nullptr,
-			const std::source_location location = std::source_location::current());
+	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad, WindowClass window_class, WindowClass parent_class, WindowDefaultFlags flags,
+		const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys = nullptr, const std::source_location location = std::source_location::current());
 
 	~WindowDesc();
 
@@ -201,39 +197,39 @@ private:
 	 * copying the structure, which fails due to _window_descs.
 	 */
 	WindowDesc(const WindowDesc &) = delete;
-	WindowDesc& operator=(const WindowDesc &) = delete;
+	WindowDesc &operator=(const WindowDesc &) = delete;
 };
 
 /**
  * Data structure for resizing a window
  */
 struct ResizeInfo {
-	uint step_width;  ///< Step-size of width resize changes
+	uint step_width; ///< Step-size of width resize changes
 	uint step_height; ///< Step-size of height resize changes
 };
 
 /** State of a sort direction button. */
 enum SortButtonState : uint8_t {
-	SBS_OFF,  ///< Do not sort (with this button).
+	SBS_OFF, ///< Do not sort (with this button).
 	SBS_DOWN, ///< Sort ascending.
-	SBS_UP,   ///< Sort descending.
+	SBS_UP, ///< Sort descending.
 };
 
 /**
  * Window flags.
  */
 enum class WindowFlag : uint8_t {
-	Timeout,          ///< Window timeout counter.
+	Timeout, ///< Window timeout counter.
 
-	Dragging,         ///< Window is being dragged.
-	SizingRight,      ///< Window is being resized towards the right.
-	SizingLeft,       ///< Window is being resized towards the left.
+	Dragging, ///< Window is being dragged.
+	SizingRight, ///< Window is being resized towards the right.
+	SizingLeft, ///< Window is being resized towards the left.
 
-	Sticky,           ///< Window is made sticky by user
-	DisableVpScroll,  ///< Window does not do autoscroll, @see HandleAutoscroll().
-	WhiteBorder,      ///< Window white border counter bit mask.
-	Highlighted,      ///< Window has a widget that has a highlight.
-	Centred,          ///< Window is centered and shall stay centered after ReInit.
+	Sticky, ///< Window is made sticky by user
+	DisableVpScroll, ///< Window does not do autoscroll, @see HandleAutoscroll().
+	WhiteBorder, ///< Window white border counter bit mask.
+	Highlighted, ///< Window has a widget that has a highlight.
+	Centred, ///< Window is centered and shall stay centered after ReInit.
 };
 using WindowFlags = EnumBitSet<WindowFlag, uint16_t>;
 
@@ -249,10 +245,10 @@ static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for W
  */
 struct ViewportData : Viewport {
 	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #VehicleID::Invalid() otherwise.
-	int32_t scrollpos_x;        ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
-	int32_t scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
-	int32_t dest_scrollpos_x;   ///< Current destination x coordinate to display (virtual screen coordinate of topleft corner of the viewport).
-	int32_t dest_scrollpos_y;   ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
+	int32_t scrollpos_x; ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
+	int32_t scrollpos_y; ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
+	int32_t dest_scrollpos_x; ///< Current destination x coordinate to display (virtual screen coordinate of topleft corner of the viewport).
+	int32_t dest_scrollpos_y; ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
 
 	void CancelFollow(const Window &viewport_window);
 };
@@ -317,7 +313,7 @@ public:
 
 	std::unique_ptr<ViewportData> viewport; ///< Pointer to viewport data, if present.
 	const NWidgetCore *nested_focus = nullptr; ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
-	std::map<WidgetID, QueryString*> querystrings{}; ///< QueryString associated to WWT_EDITBOX widgets.
+	std::map<WidgetID, QueryString *> querystrings{}; ///< QueryString associated to WWT_EDITBOX widgets.
 	std::unique_ptr<NWidgetBase> nested_root{}; ///< Root of the nested tree.
 	WidgetLookup widget_lookup{}; ///< Indexed access to the nested widget tree. Do not access directly, use #Window::GetWidget() instead.
 	NWidgetStacked *shade_select = nullptr; ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c nullptr, window cannot shade.
@@ -573,7 +569,7 @@ public:
 	 * Notification that the nested widget tree gets initialized. The event can be used to perform general computations.
 	 * @note #nested_root and/or #widget_lookup (normally accessed via #GetWidget()) may not exist during this call.
 	 */
-	virtual void OnInit() { }
+	virtual void OnInit() {}
 
 	virtual void ApplyDefaults();
 
@@ -615,7 +611,10 @@ public:
 	 * @param[in,out] fill Fill step of the widget.
 	 * @param[in,out] resize Resize step of the widget.
 	 */
-	virtual void UpdateWidgetSize([[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) {}
+	virtual void UpdateWidgetSize(
+		[[maybe_unused]] WidgetID widget, [[maybe_unused]] Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize)
+	{
+	}
 
 	/**
 	 * Get the raw string for a widget.
@@ -645,7 +644,10 @@ public:
 	 * @return #ES_HANDLED if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnKeyPress([[maybe_unused]] char32_t key, [[maybe_unused]] uint16_t keycode) { return ES_NOT_HANDLED; }
+	virtual EventState OnKeyPress([[maybe_unused]] char32_t key, [[maybe_unused]] uint16_t keycode)
+	{
+		return ES_NOT_HANDLED;
+	}
 
 	virtual EventState OnHotkey(int hotkey);
 
@@ -654,8 +656,10 @@ public:
 	 * @return #ES_HANDLED if the change has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnCTRLStateChange() { return ES_NOT_HANDLED; }
-
+	virtual EventState OnCTRLStateChange()
+	{
+		return ES_NOT_HANDLED;
+	}
 
 	/**
 	 * A click with the left mouse button has been made on the window.
@@ -672,7 +676,10 @@ public:
 	 * @return true if the click was actually handled, i.e. do not show a
 	 *         tooltip if tooltip-on-right-click is enabled.
 	 */
-	virtual bool OnRightClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) { return false; }
+	virtual bool OnRightClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget)
+	{
+		return false;
+	}
 
 	/**
 	 * The mouse is hovering over a widget in the window, perform an action for it.
@@ -687,7 +694,10 @@ public:
 	 * @param widget The widget where the mouse is located.
 	 * @return True if the event is handled, false if it is ignored.
 	 */
-	virtual bool OnTooltip([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget, [[maybe_unused]] TooltipCloseCondition close_cond) { return false; }
+	virtual bool OnTooltip([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget, [[maybe_unused]] TooltipCloseCondition close_cond)
+	{
+		return false;
+	}
 
 	/**
 	 * An 'object' is being dragged at the provided position, highlight the target if possible.
@@ -723,7 +733,6 @@ public:
 	 */
 	virtual void OnMouseWheel([[maybe_unused]] int wheel) {}
 
-
 	/**
 	 * Called for every mouse loop run, which is at least once per (game) tick.
 	 */
@@ -743,7 +752,6 @@ public:
 	 * Called when this window's timeout has been reached.
 	 */
 	virtual void OnTimeout() {}
-
 
 	/**
 	 * Called after the window got resized.
@@ -795,7 +803,10 @@ public:
 	 * @return true if the click is handled, false if it is ignored
 	 * @pre v->IsPrimaryVehicle() == true
 	 */
-	virtual bool OnVehicleSelect([[maybe_unused]] const struct Vehicle *v) { return false; }
+	virtual bool OnVehicleSelect([[maybe_unused]] const struct Vehicle *v)
+	{
+		return false;
+	}
 
 	/**
 	 * The user clicked on a vehicle while HT_VEHICLE has been set.
@@ -803,13 +814,15 @@ public:
 	 * @return True if the click is handled, false if it is ignored
 	 * @pre v->IsPrimaryVehicle() == true
 	 */
-	virtual bool OnVehicleSelect([[maybe_unused]] VehicleList::const_iterator begin, [[maybe_unused]] VehicleList::const_iterator end) { return false; }
+	virtual bool OnVehicleSelect([[maybe_unused]] VehicleList::const_iterator begin, [[maybe_unused]] VehicleList::const_iterator end)
+	{
+		return false;
+	}
 
 	/**
 	 * The user cancelled a tile highlight mode that has been set.
 	 */
 	virtual void OnPlaceObjectAbort() {}
-
 
 	/**
 	 * The user is dragging over the map when the tile highlight mode
@@ -829,7 +842,10 @@ public:
 	 * @param start_tile    the begin tile of the drag.
 	 * @param end_tile      the end tile of the drag.
 	 */
-	virtual void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, [[maybe_unused]] TileIndex start_tile, [[maybe_unused]] TileIndex end_tile) {}
+	virtual void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt,
+		[[maybe_unused]] TileIndex start_tile, [[maybe_unused]] TileIndex end_tile)
+	{
+	}
 
 	/**
 	 * The user moves over the map when a tile highlight mode has been set
@@ -846,7 +862,10 @@ public:
 	 * Is the data related to this window NewGRF inspectable?
 	 * @return true iff it is inspectable.
 	 */
-	virtual bool IsNewGRFInspectable() const { return false; }
+	virtual bool IsNewGRFInspectable() const
+	{
+		return false;
+	}
 
 	/**
 	 * Show the NewGRF inspection window. When this function is called it is
@@ -854,7 +873,10 @@ public:
 	 * ShowInspectWindow function.
 	 * @pre this->IsNewGRFInspectable()
 	 */
-	virtual void ShowNewGRFInspectWindow() const { NOT_REACHED(); }
+	virtual void ShowNewGRFInspectWindow() const
+	{
+		NOT_REACHED();
+	}
 
 	/**
 	 * Iterator to iterate all valid Windows
@@ -872,20 +894,39 @@ public:
 		{
 			this->Validate();
 		}
+
 		explicit WindowIterator(const Window *w) : it(w->z_position) {}
 
-		bool operator==(const WindowIterator &other) const { return this->it == other.it; }
-		Window * operator*() const { return *this->it; }
-		WindowIterator & operator++() { this->Next(); this->Validate(); return *this; }
+		bool operator==(const WindowIterator &other) const
+		{
+			return this->it == other.it;
+		}
 
-		bool IsEnd() const { return this->it == _z_windows.end(); }
+		Window *operator*() const
+		{
+			return *this->it;
+		}
+
+		WindowIterator &operator++()
+		{
+			this->Next();
+			this->Validate();
+			return *this;
+		}
+
+		bool IsEnd() const
+		{
+			return this->it == _z_windows.end();
+		}
 
 	private:
 		WindowList::iterator it;
+
 		void Validate()
 		{
 			while (!this->IsEnd() && *this->it == nullptr) this->Next();
 		}
+
 		void Next()
 		{
 			if constexpr (!TtoBack) {
@@ -897,6 +938,7 @@ public:
 			}
 		}
 	};
+
 	using IteratorToFront = WindowIterator<false>; //!< Iterate in Z order towards front.
 	using IteratorToBack = WindowIterator<true>; //!< Iterate in Z order towards back.
 
@@ -907,6 +949,7 @@ public:
 	template <bool Tfront>
 	struct AllWindows {
 		AllWindows() {}
+
 		WindowIterator<Tfront> begin()
 		{
 			if constexpr (Tfront) {
@@ -917,8 +960,13 @@ public:
 				return WindowIterator<Tfront>(_z_windows.begin());
 			}
 		}
-		WindowIterator<Tfront> end() { return WindowIterator<Tfront>(_z_windows.end()); }
+
+		WindowIterator<Tfront> end()
+		{
+			return WindowIterator<Tfront>(_z_windows.end());
+		}
 	};
+
 	using Iterate = AllWindows<false>; //!< Iterate all windows in whatever order is easiest.
 	using IterateFromBack = AllWindows<false>; //!< Iterate all windows in Z order from back to front.
 	using IterateFromFront = AllWindows<true>; //!< Iterate all windows in Z order from front to back.
@@ -974,12 +1022,10 @@ inline const NWID *Window::GetWidget(WidgetID widnum) const
 	return const_cast<Window *>(this)->GetWidget<NWID>(widnum);
 }
 
-
 /**
  * Base class for windows opened from a toolbar.
  */
 class PickerWindowBase : public Window {
-
 public:
 	PickerWindowBase(WindowDesc &desc, Window *parent) : Window(desc)
 	{
@@ -1027,12 +1073,13 @@ extern bool _mouse_hovering;
 
 /** Mouse modes. */
 enum SpecialMouseMode : uint8_t {
-	WSM_NONE,     ///< No special mouse mode.
+	WSM_NONE, ///< No special mouse mode.
 	WSM_DRAGDROP, ///< Drag&drop an object.
-	WSM_SIZING,   ///< Sizing mode.
-	WSM_PRESIZE,  ///< Presizing mode (docks, tunnels).
+	WSM_SIZING, ///< Sizing mode.
+	WSM_PRESIZE, ///< Presizing mode (docks, tunnels).
 	WSM_DRAGGING, ///< Dragging mode (trees).
 };
+
 extern SpecialMouseMode _special_mouse_mode;
 
 void SetFocusedWindow(Window *w);

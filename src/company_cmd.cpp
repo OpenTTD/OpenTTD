@@ -8,40 +8,41 @@
 /** @file company_cmd.cpp Handling of companies. */
 
 #include "stdafx.h"
+
+#include "company_cmd.h"
+
+#include "core/backup_type.hpp"
+#include "core/pool_func.hpp"
+#include "ai/ai.hpp"
+#include "ai/ai_config.hpp"
+#include "ai/ai_instance.hpp"
+#include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
 #include "company_gui.h"
-#include "core/backup_type.hpp"
-#include "town.h"
-#include "news_func.h"
-#include "command_func.h"
-#include "network/network.h"
-#include "network/network_func.h"
-#include "network/network_base.h"
-#include "network/network_admin.h"
-#include "ai/ai.hpp"
-#include "ai/ai_instance.hpp"
-#include "ai/ai_config.hpp"
 #include "company_manager_face.h"
-#include "window_func.h"
-#include "strings_func.h"
-#include "sound_func.h"
-#include "rail.h"
-#include "core/pool_func.hpp"
-#include "settings_func.h"
-#include "vehicle_base.h"
-#include "vehicle_func.h"
-#include "smallmap_gui.h"
 #include "game/game.hpp"
 #include "goal_base.h"
+#include "network/network.h"
+#include "network/network_admin.h"
+#include "network/network_base.h"
+#include "network/network_func.h"
+#include "news_func.h"
+#include "rail.h"
+#include "settings_func.h"
+#include "smallmap_gui.h"
+#include "sound_func.h"
 #include "story_base.h"
-#include "company_cmd.h"
+#include "strings_func.h"
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
+#include "town.h"
+#include "vehicle_base.h"
+#include "vehicle_func.h"
+#include "window_func.h"
 
 #include "widgets/statusbar_widget.h"
-
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -49,11 +50,11 @@
 void ClearEnginesHiddenFlagOfCompany(CompanyID cid);
 void UpdateObjectColours(const Company *c);
 
-CompanyID _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
+CompanyID _local_company; ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyID _current_company; ///< Company currently doing an action.
 ReferenceThroughBaseContainer<std::array<Colours, MAX_COMPANIES>> _company_colours; ///< NOSAVE: can be determined from company structs.
 CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
-uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
+uint _cur_company_tick_index; ///< used to generate a name for one company that doesn't have a name yet per tick
 
 CompanyPool _company_pool("Company"); ///< Pool of companies.
 INSTANTIATE_POOL_METHODS(Company)
@@ -67,9 +68,9 @@ Company::Company(StringID name_1, bool is_ai)
 {
 	this->name_1 = name_1;
 	this->is_ai = is_ai;
-	this->terraform_limit    = (uint32_t)_settings_game.construction.terraform_frame_burst << 16;
-	this->clear_limit        = (uint32_t)_settings_game.construction.clear_frame_burst << 16;
-	this->tree_limit         = (uint32_t)_settings_game.construction.tree_frame_burst << 16;
+	this->terraform_limit = (uint32_t)_settings_game.construction.terraform_frame_burst << 16;
+	this->clear_limit = (uint32_t)_settings_game.construction.clear_frame_burst << 16;
+	this->tree_limit = (uint32_t)_settings_game.construction.tree_frame_burst << 16;
 	this->build_object_limit = (uint32_t)_settings_game.construction.build_object_frame_burst << 16;
 
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, CompanyID::Invalid());
@@ -182,20 +183,29 @@ static bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 {
 	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_GEN_ETHN, GE_WM)) return false;
 
-	GenderEthnicity ge   = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
-	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
+	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
+	bool has_moustache = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE, ge) != 0;
 	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
-	bool has_glasses     = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
+	bool has_glasses = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
 
 	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_EYE_COLOUR, ge)) return false;
 	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
 		switch (cmfv) {
-			case CMFV_MOUSTACHE:   if (!has_moustache)   continue; break;
+			case CMFV_MOUSTACHE:
+				if (!has_moustache) continue;
+				break;
 			case CMFV_LIPS:
-			case CMFV_NOSE:        if (has_moustache)    continue; break;
-			case CMFV_TIE_EARRING: if (!has_tie_earring) continue; break;
-			case CMFV_GLASSES:     if (!has_glasses)     continue; break;
-			default: break;
+			case CMFV_NOSE:
+				if (has_moustache) continue;
+				break;
+			case CMFV_TIE_EARRING:
+				if (!has_tie_earring) continue;
+				break;
+			case CMFV_GLASSES:
+				if (!has_glasses) continue;
+				break;
+			default:
+				break;
 		}
 		if (!AreCompanyManagerFaceBitsValid(cmf, cmfv, ge)) return false;
 	}
@@ -276,17 +286,10 @@ static void SubtractMoneyFromAnyCompany(Company *c, const CommandCost &cost)
 	c->money -= cost.GetCost();
 	c->yearly_expenses[0][cost.GetExpensesType()] += cost.GetCost();
 
-	if (HasBit(1 << EXPENSES_TRAIN_REVENUE    |
-	           1 << EXPENSES_ROADVEH_REVENUE  |
-	           1 << EXPENSES_AIRCRAFT_REVENUE |
-	           1 << EXPENSES_SHIP_REVENUE, cost.GetExpensesType())) {
+	if (HasBit(1 << EXPENSES_TRAIN_REVENUE | 1 << EXPENSES_ROADVEH_REVENUE | 1 << EXPENSES_AIRCRAFT_REVENUE | 1 << EXPENSES_SHIP_REVENUE, cost.GetExpensesType())) {
 		c->cur_economy.income -= cost.GetCost();
-	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
-	                  1 << EXPENSES_ROADVEH_RUN  |
-	                  1 << EXPENSES_AIRCRAFT_RUN |
-	                  1 << EXPENSES_SHIP_RUN     |
-	                  1 << EXPENSES_PROPERTY     |
-	                  1 << EXPENSES_LOAN_INTEREST, cost.GetExpensesType())) {
+	} else if (HasBit(1 << EXPENSES_TRAIN_RUN | 1 << EXPENSES_ROADVEH_RUN | 1 << EXPENSES_AIRCRAFT_RUN | 1 << EXPENSES_SHIP_RUN | 1 << EXPENSES_PROPERTY | 1 << EXPENSES_LOAN_INTEREST,
+				   cost.GetExpensesType())) {
 		c->cur_economy.expenses -= cost.GetCost();
 	}
 
@@ -329,9 +332,9 @@ static constexpr void UpdateLandscapingLimit(uint32_t &limit, uint64_t per_64k_f
 void UpdateLandscapingLimits()
 {
 	for (Company *c : Company::Iterate()) {
-		UpdateLandscapingLimit(c->terraform_limit,    _settings_game.construction.terraform_per_64k_frames,    _settings_game.construction.terraform_frame_burst);
-		UpdateLandscapingLimit(c->clear_limit,        _settings_game.construction.clear_per_64k_frames,        _settings_game.construction.clear_frame_burst);
-		UpdateLandscapingLimit(c->tree_limit,         _settings_game.construction.tree_per_64k_frames,         _settings_game.construction.tree_frame_burst);
+		UpdateLandscapingLimit(c->terraform_limit, _settings_game.construction.terraform_per_64k_frames, _settings_game.construction.terraform_frame_burst);
+		UpdateLandscapingLimit(c->clear_limit, _settings_game.construction.clear_per_64k_frames, _settings_game.construction.clear_frame_burst);
+		UpdateLandscapingLimit(c->tree_limit, _settings_game.construction.tree_per_64k_frames, _settings_game.construction.tree_frame_burst);
 		UpdateLandscapingLimit(c->build_object_limit, _settings_game.construction.build_object_per_64k_frames, _settings_game.construction.build_object_frame_burst);
 	}
 }
@@ -411,7 +414,7 @@ static void GenerateCompanyName(Company *c)
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_COMPANY_NAME_START;
 		strp = t->townnameparts;
 
-verify_name:;
+	verify_name:;
 		/* No companies must have this name already */
 		for (const Company *cc : Company::Iterate()) {
 			if (cc->name_1 == str && cc->name_2 == strp) goto bad_town_name;
@@ -420,7 +423,7 @@ verify_name:;
 		name = GetString(str, strp);
 		if (Utf8StringLength(name) >= MAX_LENGTH_COMPANY_NAME_CHARS) goto bad_town_name;
 
-set_name:;
+	set_name:;
 		c->name_1 = str;
 		c->name_2 = strp;
 
@@ -431,8 +434,7 @@ set_name:;
 		if (c->is_ai) {
 			auto cni = std::make_unique<CompanyNewsInformation>(STR_NEWS_COMPANY_LAUNCH_TITLE, c);
 			EncodedString headline = GetEncodedString(STR_NEWS_COMPANY_LAUNCH_DESCRIPTION, cni->company_name, t->index);
-			AddNewsItem(std::move(headline),
-				NewsType::CompanyInfo, NewsStyle::Company, {}, c->last_build_coordinate, {}, std::move(cni));
+			AddNewsItem(std::move(headline), NewsType::CompanyInfo, NewsStyle::Company, {}, c->last_build_coordinate, {}, std::move(cni));
 		}
 		return;
 	}
@@ -454,22 +456,22 @@ bad_town_name:;
 static const uint8_t _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 /** Similar colours, so we can try to prevent same coloured companies. */
 static const Colours _similar_colour[COLOUR_END][2] = {
-	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE
-	{ COLOUR_GREEN,      COLOUR_DARK_GREEN }, // COLOUR_PALE_GREEN
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_PINK
-	{ COLOUR_ORANGE,     INVALID_COLOUR    }, // COLOUR_YELLOW
-	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_RED
-	{ COLOUR_DARK_BLUE,  COLOUR_BLUE       }, // COLOUR_LIGHT_BLUE
-	{ COLOUR_PALE_GREEN, COLOUR_DARK_GREEN }, // COLOUR_GREEN
-	{ COLOUR_PALE_GREEN, COLOUR_GREEN      }, // COLOUR_DARK_GREEN
-	{ COLOUR_DARK_BLUE,  COLOUR_LIGHT_BLUE }, // COLOUR_BLUE
-	{ COLOUR_BROWN,      COLOUR_ORANGE     }, // COLOUR_CREAM
-	{ COLOUR_PURPLE,     INVALID_COLOUR    }, // COLOUR_MAUVE
-	{ COLOUR_MAUVE,      INVALID_COLOUR    }, // COLOUR_PURPLE
-	{ COLOUR_YELLOW,     COLOUR_CREAM      }, // COLOUR_ORANGE
-	{ COLOUR_CREAM,      INVALID_COLOUR    }, // COLOUR_BROWN
-	{ COLOUR_WHITE,      INVALID_COLOUR    }, // COLOUR_GREY
-	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
+	{COLOUR_BLUE, COLOUR_LIGHT_BLUE}, // COLOUR_DARK_BLUE
+	{COLOUR_GREEN, COLOUR_DARK_GREEN}, // COLOUR_PALE_GREEN
+	{INVALID_COLOUR, INVALID_COLOUR}, // COLOUR_PINK
+	{COLOUR_ORANGE, INVALID_COLOUR}, // COLOUR_YELLOW
+	{INVALID_COLOUR, INVALID_COLOUR}, // COLOUR_RED
+	{COLOUR_DARK_BLUE, COLOUR_BLUE}, // COLOUR_LIGHT_BLUE
+	{COLOUR_PALE_GREEN, COLOUR_DARK_GREEN}, // COLOUR_GREEN
+	{COLOUR_PALE_GREEN, COLOUR_GREEN}, // COLOUR_DARK_GREEN
+	{COLOUR_DARK_BLUE, COLOUR_LIGHT_BLUE}, // COLOUR_BLUE
+	{COLOUR_BROWN, COLOUR_ORANGE}, // COLOUR_CREAM
+	{COLOUR_PURPLE, INVALID_COLOUR}, // COLOUR_MAUVE
+	{COLOUR_MAUVE, INVALID_COLOUR}, // COLOUR_PURPLE
+	{COLOUR_YELLOW, COLOUR_CREAM}, // COLOUR_ORANGE
+	{COLOUR_CREAM, INVALID_COLOUR}, // COLOUR_BROWN
+	{COLOUR_WHITE, INVALID_COLOUR}, // COLOUR_GREY
+	{COLOUR_GREY, INVALID_COLOUR}, // COLOUR_WHITE
 };
 
 /**
@@ -534,7 +536,7 @@ static Colours GenerateCompanyColour()
 static void GeneratePresidentName(Company *c)
 {
 	for (;;) {
-restart:;
+	restart:;
 		c->president_name_2 = Random();
 		c->president_name_1 = SPECSTR_PRESIDENT_NAME;
 
@@ -561,14 +563,14 @@ restart:;
 void ResetCompanyLivery(Company *c)
 {
 	for (LiveryScheme scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-		c->livery[scheme].in_use  = 0;
+		c->livery[scheme].in_use = 0;
 		c->livery[scheme].colour1 = c->colour;
 		c->livery[scheme].colour2 = c->colour;
 	}
 
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index) {
-			g->livery.in_use  = 0;
+			g->livery.in_use = 0;
 			g->livery.colour1 = c->colour;
 			g->livery.colour2 = c->colour;
 		}
@@ -638,7 +640,7 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid(
 }
 
 /** Start a new competitor company if possible. */
-TimeoutTimer<TimerGameTick> _new_competitor_timeout({ TimerGameTick::Priority::COMPETITOR_TIMEOUT, 0 }, []() {
+TimeoutTimer<TimerGameTick> _new_competitor_timeout({TimerGameTick::Priority::COMPETITOR_TIMEOUT, 0}, []() {
 	if (_game_mode == GM_MENU || !AI::CanStartNew()) return;
 	if (_networking && Company::GetNumItems() >= _settings_client.network.max_companies) return;
 	if (_settings_game.difficulty.competitors_interval == 0) return;
@@ -682,8 +684,8 @@ bool CheckTakeoverVehicleLimit(CompanyID cbig, CompanyID csmall)
 
 	/* Do the combined vehicle counts stay within the limits? */
 	return c1->group_all[VEH_TRAIN].num_vehicle + c2->group_all[VEH_TRAIN].num_vehicle <= _settings_game.vehicle.max_trains &&
-		c1->group_all[VEH_ROAD].num_vehicle     + c2->group_all[VEH_ROAD].num_vehicle     <= _settings_game.vehicle.max_roadveh &&
-		c1->group_all[VEH_SHIP].num_vehicle     + c2->group_all[VEH_SHIP].num_vehicle     <= _settings_game.vehicle.max_ships &&
+		c1->group_all[VEH_ROAD].num_vehicle + c2->group_all[VEH_ROAD].num_vehicle <= _settings_game.vehicle.max_roadveh &&
+		c1->group_all[VEH_SHIP].num_vehicle + c2->group_all[VEH_SHIP].num_vehicle <= _settings_game.vehicle.max_ships &&
 		c1->group_all[VEH_AIRCRAFT].num_vehicle + c2->group_all[VEH_AIRCRAFT].num_vehicle <= _settings_game.vehicle.max_aircraft;
 }
 
@@ -725,9 +727,7 @@ static void HandleBankruptcyTakeover(Company *c)
 	/* Ask the company with the highest performance history first */
 	for (Company *c2 : Company::Iterate()) {
 		if (c2->bankrupt_asked.None() && // Don't ask companies going bankrupt themselves
-				!c->bankrupt_asked.Test(c2->index) &&
-				best_performance < c2->old_economy[1].performance_history &&
-				CheckTakeoverVehicleLimit(c2->index, c->index)) {
+			!c->bankrupt_asked.Test(c2->index) && best_performance < c2->old_economy[1].performance_history && CheckTakeoverVehicleLimit(c2->index, c->index)) {
 			best_performance = c2->old_economy[1].performance_history;
 			best = c2;
 		}
@@ -781,7 +781,7 @@ void OnTick_Companies()
 		/* Randomize a bit when the AI is actually going to start; ranges from 87.5% .. 112.5% of indicated value. */
 		timeout += ScriptObject::GetRandomizer(OWNER_NONE).Next(timeout / 4) - timeout / 8;
 
-		_new_competitor_timeout.Reset({ TimerGameTick::Priority::COMPETITOR_TIMEOUT, static_cast<uint>(std::max(1, timeout)) });
+		_new_competitor_timeout.Reset({TimerGameTick::Priority::COMPETITOR_TIMEOUT, static_cast<uint>(std::max(1, timeout))});
 	}
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
@@ -791,8 +791,7 @@ void OnTick_Companies()
  * A year has passed, update the economic data of all companies, and perhaps show the
  * financial overview window of the local company.
  */
-static IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto)
-{
+static IntervalTimer<TimerGameEconomy> _economy_companies_yearly({TimerGameEconomy::YEAR, TimerGameEconomy::Priority::COMPANY}, [](auto) {
 	/* Copy statistics */
 	for (Company *c : Company::Iterate()) {
 		/* Move expenses to previous years. */
@@ -831,7 +830,6 @@ CompanyNewsInformation::CompanyNewsInformation(StringID title, const Company *c,
 	this->title = title;
 	this->colour = c->colour;
 	this->face = c->face;
-
 }
 
 /**
@@ -967,7 +965,8 @@ CommandCost CmdCompanyCtrl(DoCommandFlags flags, CompanyCtrlAction cca, CompanyI
 			break;
 		}
 
-		default: return CMD_ERROR;
+		default:
+			return CMD_ERROR;
 	}
 
 	InvalidateWindowClassesData(WC_GAME_OPTIONS);
@@ -1254,11 +1253,16 @@ int CompanyServiceInterval(const Company *c, VehicleType type)
 {
 	const VehicleDefaultSettings *vds = (c == nullptr) ? &_settings_client.company.vehicle : &c->settings.vehicle;
 	switch (type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:    return vds->servint_trains;
-		case VEH_ROAD:     return vds->servint_roadveh;
-		case VEH_AIRCRAFT: return vds->servint_aircraft;
-		case VEH_SHIP:     return vds->servint_ships;
+		default:
+			NOT_REACHED();
+		case VEH_TRAIN:
+			return vds->servint_trains;
+		case VEH_ROAD:
+			return vds->servint_roadveh;
+		case VEH_AIRCRAFT:
+			return vds->servint_aircraft;
+		case VEH_SHIP:
+			return vds->servint_ships;
 	}
 }
 

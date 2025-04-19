@@ -8,8 +8,10 @@
 /** @file newgrf_cargo.cpp Implementation of NewGRF cargoes. */
 
 #include "stdafx.h"
-#include "debug.h"
+
 #include "newgrf_cargo.h"
+
+#include "debug.h"
 #include "newgrf_spritegroup.h"
 
 #include "safeguards.h"
@@ -41,8 +43,8 @@ uint32_t CargoResolverObject::GetDebugID() const
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
-CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2), cargospec(cs)
+CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2) :
+	ResolverObject(cs->grffile, callback, callback_param1, callback_param2), cargospec(cs)
 {
 	this->root_spritegroup = cs->group;
 }
@@ -60,7 +62,6 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 
 	return group->GetResult();
 }
-
 
 uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs)
 {

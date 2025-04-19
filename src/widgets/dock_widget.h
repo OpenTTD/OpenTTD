@@ -13,22 +13,22 @@
 /** Widgets of the #BuildDocksDepotWindow class. */
 enum BuildDockDepotWidgets : WidgetID {
 	WID_BDD_BACKGROUND, ///< Background of the window.
-	WID_BDD_X,          ///< X-direction button.
-	WID_BDD_Y,          ///< Y-direction button.
+	WID_BDD_X, ///< X-direction button.
+	WID_BDD_Y, ///< Y-direction button.
 };
 
 /** Widgets of the #BuildDocksToolbarWindow class. */
 enum DockToolbarWidgets : WidgetID {
-	WID_DT_CANAL,          ///< Build canal button.
-	WID_DT_LOCK,           ///< Build lock button.
-	WID_DT_DEMOLISH,       ///< Demolish aka dynamite button.
-	WID_DT_DEPOT,          ///< Build depot button.
-	WID_DT_STATION,        ///< Build station button.
-	WID_DT_BUOY,           ///< Build buoy button.
-	WID_DT_RIVER,          ///< Build river button (in scenario editor).
+	WID_DT_CANAL, ///< Build canal button.
+	WID_DT_LOCK, ///< Build lock button.
+	WID_DT_DEMOLISH, ///< Demolish aka dynamite button.
+	WID_DT_DEPOT, ///< Build depot button.
+	WID_DT_STATION, ///< Build station button.
+	WID_DT_BUOY, ///< Build buoy button.
+	WID_DT_RIVER, ///< Build river button (in scenario editor).
 	WID_DT_BUILD_AQUEDUCT, ///< Build aqueduct button.
 
-	WID_DT_INVALID,        ///< Used to initialize a variable.
+	WID_DT_INVALID, ///< Used to initialize a variable.
 };
 
 #endif /* WIDGETS_DOCK_WIDGET_H */

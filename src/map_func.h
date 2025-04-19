@@ -11,9 +11,9 @@
 #define MAP_FUNC_H
 
 #include "core/math_func.hpp"
-#include "tile_type.h"
-#include "map_type.h"
 #include "direction_func.h"
+#include "map_type.h"
+#include "tile_type.h"
 
 /**
  * Wrapper class to abstract away the way the tiles are stored. It is
@@ -25,6 +25,7 @@
 class Tile {
 private:
 	friend struct Map;
+
 	/**
 	 * Data that is stored per tile. Also used TileExtended for this.
 	 * Look at docs/landscape.html for the exact meaning of the members.
@@ -72,12 +73,18 @@ public:
 	/**
 	 * Implicit conversion to the TileIndex.
 	 */
-	[[debug_inline]] inline constexpr operator TileIndex() const { return this->tile; }
+	[[debug_inline]] inline constexpr operator TileIndex() const
+	{
+		return this->tile;
+	}
 
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 */
-	[[debug_inline]] inline constexpr operator uint() const { return this->tile.base(); }
+	[[debug_inline]] inline constexpr operator uint() const
+	{
+		return this->tile.base();
+	}
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -216,9 +223,23 @@ private:
 		typedef std::forward_iterator_tag iterator_category;
 
 		explicit Iterator(TileIndex index) : index(index) {}
-		bool operator==(const Iterator &other) const { return this->index == other.index; }
-		Tile operator*() const { return this->index; }
-		Iterator & operator++() { this->index++; return *this; }
+
+		bool operator==(const Iterator &other) const
+		{
+			return this->index == other.index;
+		}
+
+		Tile operator*() const
+		{
+			return this->index;
+		}
+
+		Iterator &operator++()
+		{
+			this->index++;
+			return *this;
+		}
+
 	private:
 		TileIndex index;
 	};
@@ -227,16 +248,27 @@ private:
 	 * Iterable ensemble of all Tiles
 	 */
 	struct IterateWrapper {
-		Iterator begin() { return Iterator(TileIndex{}); }
-		Iterator end() { return Iterator(TileIndex{Map::Size()}); }
-		bool empty() { return false; }
+		Iterator begin()
+		{
+			return Iterator(TileIndex{});
+		}
+
+		Iterator end()
+		{
+			return Iterator(TileIndex{Map::Size()});
+		}
+
+		bool empty()
+		{
+			return false;
+		}
 	};
 
-	static uint log_x;     ///< 2^_map_log_x == _map_size_x
-	static uint log_y;     ///< 2^_map_log_y == _map_size_y
-	static uint size_x;    ///< Size of the map along the X
-	static uint size_y;    ///< Size of the map along the Y
-	static uint size;      ///< The number of tiles on the map
+	static uint log_x; ///< 2^_map_log_x == _map_size_x
+	static uint log_y; ///< 2^_map_log_y == _map_size_y
+	static uint size_x; ///< Size of the map along the X
+	static uint size_y; ///< Size of the map along the Y
+	static uint size; ///< The number of tiles on the map
 	static uint tile_mask; ///< _map_size - 1 (to mask the mapsize)
 
 public:
@@ -307,7 +339,6 @@ public:
 		return Map::SizeY() - 1;
 	}
 
-
 	/**
 	 * 'Wraps' the given "tile" so it is within the map.
 	 * It does this by masking the 'high' bits of.
@@ -359,7 +390,10 @@ public:
 	 * Returns an iterable ensemble of all Tiles
 	 * @return an iterable ensemble of all Tiles
 	 */
-	static IterateWrapper Iterate() { return IterateWrapper(); }
+	static IterateWrapper Iterate()
+	{
+		return IterateWrapper();
+	}
 };
 
 /**
@@ -405,7 +439,6 @@ inline TileIndexDiff TileDiffXY(int x, int y)
 	return TileIndex{(y >> 4 << Map::LogX()) + (x >> 4)};
 }
 
-
 /**
  * Get the X component of a tile
  * @param tile the tile to get the X component of
@@ -442,8 +475,17 @@ inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 }
 
 /* Helper functions to provide explicit +=/-= operators for TileIndex and TileIndexDiff. */
-constexpr TileIndex &operator+=(TileIndex &tile, TileIndexDiff offset) { tile = tile + TileIndex(offset); return tile; }
-constexpr TileIndex &operator-=(TileIndex &tile, TileIndexDiff offset) { tile = tile - TileIndex(offset); return tile; }
+constexpr TileIndex &operator+=(TileIndex &tile, TileIndexDiff offset)
+{
+	tile = tile + TileIndex(offset);
+	return tile;
+}
+
+constexpr TileIndex &operator-=(TileIndex &tile, TileIndexDiff offset)
+{
+	tile = tile - TileIndex(offset);
+	return tile;
+}
 
 /**
  * Adds a given offset to a tile.
@@ -453,9 +495,12 @@ constexpr TileIndex &operator-=(TileIndex &tile, TileIndexDiff offset) { tile = 
  * @return The resulting tile.
  */
 #ifndef _DEBUG
-	constexpr TileIndex TileAdd(TileIndex tile, TileIndexDiff offset) { return tile + offset; }
+constexpr TileIndex TileAdd(TileIndex tile, TileIndexDiff offset)
+{
+	return tile + offset;
+}
 #else
-	TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
+TileIndex TileAdd(TileIndex tile, TileIndexDiff offset);
 #endif
 
 /**

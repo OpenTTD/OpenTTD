@@ -8,16 +8,17 @@
 /** @file script_road.cpp Implementation of ScriptRoad. */
 
 #include "../../stdafx.h"
-#include "script_map.hpp"
-#include "script_station.hpp"
-#include "script_cargo.hpp"
-#include "../../station_base.h"
+
 #include "../../landscape_cmd.h"
+#include "../../newgrf_roadstop.h"
 #include "../../road_cmd.h"
+#include "../../script/squirrel_helper_type.hpp"
+#include "../../station_base.h"
 #include "../../station_cmd.h"
 #include "../../strings_func.h"
-#include "../../newgrf_roadstop.h"
-#include "../../script/squirrel_helper_type.hpp"
+#include "script_cargo.hpp"
+#include "script_map.hpp"
+#include "script_station.hpp"
 
 #include "../../safeguards.h"
 
@@ -37,8 +38,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != ROAD_TILE_DEPOT) ||
-			IsDriveThroughRoadStationTile(tile);
+	return (::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) != ROAD_TILE_DEPOT) || IsDriveThroughRoadStationTile(tile);
 }
 
 /* static */ bool ScriptRoad::IsRoadDepotTile(TileIndex tile)
@@ -46,8 +46,7 @@
 	if (!::IsValidTile(tile)) return false;
 	if (!IsRoadTypeAvailable(GetCurrentRoadType())) return false;
 
-	return ::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
-			::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
+	return ::IsTileType(tile, MP_ROAD) && ::GetRoadTileType(tile) == ROAD_TILE_DEPOT && ::GetPresentRoadTypes(tile).Test(::RoadType(GetCurrentRoadType()));
 }
 
 /* static */ bool ScriptRoad::IsRoadStationTile(TileIndex tile)
@@ -143,7 +142,10 @@
  * Technically DiagDirection could be used, but that allows simple conversions to/from integer. In this case that is not wanted.
  */
 enum class RoadPartOrientation {
-	NW, NE, SW, SE
+	NW,
+	NE,
+	SW,
+	SE
 };
 
 /**
@@ -155,11 +157,16 @@ enum class RoadPartOrientation {
 static bool IsStraight(RoadPartOrientation start, RoadPartOrientation end)
 {
 	switch (start) {
-		case RoadPartOrientation::NW: return end == RoadPartOrientation::SE;
-		case RoadPartOrientation::NE: return end == RoadPartOrientation::SW;
-		case RoadPartOrientation::SW: return end == RoadPartOrientation::NE;
-		case RoadPartOrientation::SE: return end == RoadPartOrientation::NW;
-		default: NOT_REACHED();
+		case RoadPartOrientation::NW:
+			return end == RoadPartOrientation::SE;
+		case RoadPartOrientation::NE:
+			return end == RoadPartOrientation::SW;
+		case RoadPartOrientation::SW:
+			return end == RoadPartOrientation::NE;
+		case RoadPartOrientation::SE:
+			return end == RoadPartOrientation::NW;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -203,9 +210,11 @@ static int32_t LookupWithoutBuildOnSlopes(::Slope slope, const Array<RoadPartOri
 		 * necessary because these bits can be something else when the settings
 		 * in the game have been changed.
 		 */
-		case SLOPE_NE: case SLOPE_SW:
+		case SLOPE_NE:
+		case SLOPE_SW:
 			return (CheckAutoExpandedRoadBits(existing, start, end) && (start == RoadPartOrientation::SW || end == RoadPartOrientation::SW)) ? (existing.empty() ? 2 : 1) : 0;
-		case SLOPE_SE: case SLOPE_NW:
+		case SLOPE_SE:
+		case SLOPE_NW:
 			return (CheckAutoExpandedRoadBits(existing, start, end) && (start != RoadPartOrientation::SW && end != RoadPartOrientation::SW)) ? (existing.empty() ? 2 : 1) : 0;
 
 		/* Any other tile cannot be built on. */
@@ -222,11 +231,16 @@ static int32_t LookupWithoutBuildOnSlopes(::Slope slope, const Array<RoadPartOri
 static RoadPartOrientation RotateNeighbour(RoadPartOrientation neighbour)
 {
 	switch (neighbour) {
-		case RoadPartOrientation::NW: return RoadPartOrientation::NE;
-		case RoadPartOrientation::NE: return RoadPartOrientation::SE;
-		case RoadPartOrientation::SE: return RoadPartOrientation::SW;
-		case RoadPartOrientation::SW: return RoadPartOrientation::NW;
-		default: NOT_REACHED();
+		case RoadPartOrientation::NW:
+			return RoadPartOrientation::NE;
+		case RoadPartOrientation::NE:
+			return RoadPartOrientation::SE;
+		case RoadPartOrientation::SE:
+			return RoadPartOrientation::SW;
+		case RoadPartOrientation::SW:
+			return RoadPartOrientation::NW;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -238,11 +252,16 @@ static RoadPartOrientation RotateNeighbour(RoadPartOrientation neighbour)
 static RoadBits NeighbourToRoadBits(RoadPartOrientation neighbour)
 {
 	switch (neighbour) {
-		case RoadPartOrientation::NW: return ROAD_NW;
-		case RoadPartOrientation::NE: return ROAD_NE;
-		case RoadPartOrientation::SE: return ROAD_SE;
-		case RoadPartOrientation::SW: return ROAD_SW;
-		default: NOT_REACHED();
+		case RoadPartOrientation::NW:
+			return ROAD_NW;
+		case RoadPartOrientation::NE:
+			return ROAD_NE;
+		case RoadPartOrientation::SE:
+			return ROAD_SE;
+		case RoadPartOrientation::SW:
+			return ROAD_SW;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -267,11 +286,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 	 * same but are only rotated. So to reduce the amount of lookup work that
 	 * needs to be done the data is made uniform. This means rotating the
 	 * existing parts and updating the slope. */
-	static const ::Slope base_slopes[] = {
-		SLOPE_FLAT, SLOPE_W,   SLOPE_W,   SLOPE_SW,
-		SLOPE_W,    SLOPE_EW,  SLOPE_SW,  SLOPE_WSE,
-		SLOPE_W,    SLOPE_SW,  SLOPE_EW,  SLOPE_WSE,
-		SLOPE_SW,   SLOPE_WSE, SLOPE_WSE};
+	static const ::Slope base_slopes[] = {SLOPE_FLAT, SLOPE_W, SLOPE_W, SLOPE_SW, SLOPE_W, SLOPE_EW, SLOPE_SW, SLOPE_WSE, SLOPE_W, SLOPE_SW, SLOPE_EW, SLOPE_WSE, SLOPE_SW, SLOPE_WSE, SLOPE_WSE};
 	static const uint8_t base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
 
 	if (slope >= (::Slope)lengthof(base_slopes)) {
@@ -307,12 +322,12 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 	/* Now perform the actual rotation. */
 	for (int j = 0; j < base_rotate; j++) {
 		start = RotateNeighbour(start);
-		end   = RotateNeighbour(end);
+		end = RotateNeighbour(end);
 	}
 
 	/* Create roadbits out of the data for easier handling. */
-	RoadBits start_roadbits    = NeighbourToRoadBits(start);
-	RoadBits new_roadbits      = start_roadbits | NeighbourToRoadBits(end);
+	RoadBits start_roadbits = NeighbourToRoadBits(start);
+	RoadBits new_roadbits = start_roadbits | NeighbourToRoadBits(end);
 	RoadBits existing_roadbits = ROAD_NONE;
 	for (RoadPartOrientation neighbour : existing) {
 		for (int j = 0; j < base_rotate; j++) {
@@ -418,9 +433,8 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 
 	/* Without build on slopes the characteristics are vastly different, so use
 	 * a different helper function (one that is much simpler). */
-	return _settings_game.construction.build_on_slopes ?
-			LookupWithBuildOnSlopes(slope, existing_orientations, *start_orientation, *end_orientation) :
-			LookupWithoutBuildOnSlopes(slope, existing_orientations, *start_orientation, *end_orientation);
+	return _settings_game.construction.build_on_slopes ? LookupWithBuildOnSlopes(slope, existing_orientations, *start_orientation, *end_orientation) :
+														 LookupWithoutBuildOnSlopes(slope, existing_orientations, *start_orientation, *end_orientation);
 }
 
 /* static */ SQInteger ScriptRoad::CanBuildConnectedRoadPartsHere(TileIndex tile, TileIndex start, TileIndex end)
@@ -430,8 +444,8 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 
 	const TileIndex neighbours[] = {
 		ScriptMap::GetTileIndex(0, -1), // ROAD_NW
-		ScriptMap::GetTileIndex(1, 0),  // ROAD_SW
-		ScriptMap::GetTileIndex(0, 1),  // ROAD_SE
+		ScriptMap::GetTileIndex(1, 0), // ROAD_SW
+		ScriptMap::GetTileIndex(0, 1), // ROAD_SE
 		ScriptMap::GetTileIndex(-1, 0), // ROAD_NE
 	};
 
@@ -581,7 +595,8 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	DiagDirection entrance_dir = DiagdirBetweenTiles(tile, front);
 	RoadStopType stop_type = road_veh_type == ROADVEHTYPE_TRUCK ? RoadStopType::Truck : RoadStopType::Bus;
 	StationID to_join = ScriptStation::IsValidStation(station_id) ? station_id : StationID::Invalid();
-	return ScriptObject::Command<CMD_BUILD_ROAD_STOP>::Do(tile, 1, 1, stop_type, drive_through, entrance_dir, ScriptObject::GetRoadType(), ROADSTOP_CLASS_DFLT, 0, to_join, station_id != ScriptStation::STATION_JOIN_ADJACENT);
+	return ScriptObject::Command<CMD_BUILD_ROAD_STOP>::Do(
+		tile, 1, 1, stop_type, drive_through, entrance_dir, ScriptObject::GetRoadType(), ROADSTOP_CLASS_DFLT, 0, to_join, station_id != ScriptStation::STATION_JOIN_ADJACENT);
 }
 
 /* static */ bool ScriptRoad::BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id)
@@ -622,8 +637,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, IsTileType(tile, MP_ROAD))
-	EnforcePrecondition(false, GetRoadTileType(tile) == ROAD_TILE_DEPOT);
+	EnforcePrecondition(false, IsTileType(tile, MP_ROAD)) EnforcePrecondition(false, GetRoadTileType(tile) == ROAD_TILE_DEPOT);
 
 	return ScriptObject::Command<CMD_LANDSCAPE_CLEAR>::Do(tile);
 }
@@ -643,11 +657,16 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	if (!ScriptRoad::IsRoadTypeAvailable(roadtype)) return -1;
 
 	switch (build_type) {
-		case BT_ROAD:       return ::RoadBuildCost((::RoadType)roadtype);
-		case BT_DEPOT:      return ::GetPrice(PR_BUILD_DEPOT_ROAD, 1, nullptr);
-		case BT_BUS_STOP:   return ::GetPrice(PR_BUILD_STATION_BUS, 1, nullptr);
-		case BT_TRUCK_STOP: return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
-		default: return -1;
+		case BT_ROAD:
+			return ::RoadBuildCost((::RoadType)roadtype);
+		case BT_DEPOT:
+			return ::GetPrice(PR_BUILD_DEPOT_ROAD, 1, nullptr);
+		case BT_BUS_STOP:
+			return ::GetPrice(PR_BUILD_STATION_BUS, 1, nullptr);
+		case BT_TRUCK_STOP:
+			return ::GetPrice(PR_BUILD_STATION_TRUCK, 1, nullptr);
+		default:
+			return -1;
 	}
 }
 

@@ -24,7 +24,10 @@ struct LinkProperties {
 	LinkProperties() {}
 
 	/** Return the usage of the link to display. */
-	uint Usage() const { return std::max(this->usage, this->planned); }
+	uint Usage() const
+	{
+		return std::max(this->usage, this->planned);
+	}
 
 	CargoType cargo = INVALID_CARGO; ///< Cargo type of the link.
 	uint capacity = 0; ///< Capacity of the link.
@@ -42,7 +45,7 @@ class LinkGraphOverlay {
 public:
 	typedef std::map<StationID, LinkProperties> StationLinkMap;
 	typedef std::map<StationID, StationLinkMap> LinkMap;
-	typedef std::vector<std::pair<StationID, uint> > StationSupplyList;
+	typedef std::vector<std::pair<StationID, uint>> StationSupplyList;
 
 	static const uint8_t LINK_COLOURS[][12];
 
@@ -55,8 +58,9 @@ public:
 	 * @param scale Desired thickness of lines and size of station dots.
 	 */
 	LinkGraphOverlay(Window *w, WidgetID wid, CargoTypes cargo_mask, CompanyMask company_mask, uint scale) :
-			window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale), dirty(true)
-	{}
+		window(w), widget_id(wid), cargo_mask(cargo_mask), company_mask(company_mask), scale(scale), dirty(true)
+	{
+	}
 
 	void Draw(const DrawPixelInfo *dpi);
 	void SetCargoMask(CargoTypes cargo_mask);
@@ -65,23 +69,32 @@ public:
 	bool ShowTooltip(Point pt, TooltipCloseCondition close_cond);
 
 	/** Mark the linkgraph dirty to be rebuilt next time Draw() is called. */
-	void SetDirty() { this->dirty = true; }
+	void SetDirty()
+	{
+		this->dirty = true;
+	}
 
 	/** Get a bitmask of the currently shown cargoes. */
-	CargoTypes GetCargoMask() { return this->cargo_mask; }
+	CargoTypes GetCargoMask()
+	{
+		return this->cargo_mask;
+	}
 
 	/** Get a bitmask of the currently shown companies. */
-	CompanyMask GetCompanyMask() { return this->company_mask; }
+	CompanyMask GetCompanyMask()
+	{
+		return this->company_mask;
+	}
 
 protected:
-	Window *window;                    ///< Window to be drawn into.
-	const WidgetID widget_id;          ///< ID of Widget in Window to be drawn to.
-	CargoTypes cargo_mask;             ///< Bitmask of cargos to be displayed.
-	CompanyMask company_mask;          ///< Bitmask of companies to be displayed.
-	LinkMap cached_links;              ///< Cache for links to reduce recalculation.
+	Window *window; ///< Window to be drawn into.
+	const WidgetID widget_id; ///< ID of Widget in Window to be drawn to.
+	CargoTypes cargo_mask; ///< Bitmask of cargos to be displayed.
+	CompanyMask company_mask; ///< Bitmask of companies to be displayed.
+	LinkMap cached_links; ///< Cache for links to reduce recalculation.
 	StationSupplyList cached_stations; ///< Cache for stations to be drawn.
-	uint scale;                        ///< Width of link lines.
-	bool dirty;                        ///< Set if overlay should be rebuilt.
+	uint scale; ///< Width of link lines.
+	bool dirty; ///< Set if overlay should be rebuilt.
 
 	Point GetStationMiddle(const Station *st) const;
 

@@ -17,19 +17,20 @@ protected:
 	Textbuf *textbuf;
 
 private:
-	std::string              initial_buf; ///< Value of text buffer when we started current suggestion session.
+	std::string initial_buf; ///< Value of text buffer when we started current suggestion session.
 
-	std::string_view         prefix;      ///< Prefix of the text before the last space.
-	std::string_view         query;       ///< Last token of the text. This is used to based the suggestions on.
+	std::string_view prefix; ///< Prefix of the text before the last space.
+	std::string_view query; ///< Last token of the text. This is used to based the suggestions on.
 
 	std::vector<std::string> suggestions;
-	size_t                   current_suggestion_index;
+	size_t current_suggestion_index;
 
 public:
 	AutoCompletion(Textbuf *textbuf) : textbuf(textbuf)
 	{
 		this->Reset();
 	}
+
 	virtual ~AutoCompletion() = default;
 
 	bool AutoComplete();

@@ -5,41 +5,37 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file newgrf_profiling.cpp Profiling of NewGRF action 2 handling. */
+/** @file newgrf_profiling.cpp Profiling of NewGRF action 2 handling. */
 
 #include "stdafx.h"
 
 #include "newgrf_profiling.h"
-#include "fileio_func.h"
-#include "string_func.h"
-#include "console_func.h"
-#include "spritecache.h"
-#include "3rdparty/fmt/chrono.h"
-#include "timer/timer.h"
-#include "timer/timer_game_tick.h"
 
 #include <chrono>
+#include "3rdparty/fmt/chrono.h"
+
+#include "console_func.h"
+#include "fileio_func.h"
+#include "spritecache.h"
+#include "string_func.h"
+#include "timer/timer.h"
+#include "timer/timer_game_tick.h"
 
 #include "safeguards.h"
 
 std::vector<NewGRFProfiler> _newgrf_profilers;
-
 
 /**
  * Create profiler object and begin profiling session.
  * @param grffile   The GRF file to collect profiling data on
  * @param end_date  Game date to end profiling on
  */
-NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile) : grffile(grffile)
-{
-}
+NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile) : grffile(grffile) {}
 
 /**
  * Complete profiling session and write data to file
  */
-NewGRFProfiler::~NewGRFProfiler()
-{
-}
+NewGRFProfiler::~NewGRFProfiler() {}
 
 /**
  * Capture the start of a sprite group resolution.
@@ -163,8 +159,7 @@ std::string NewGRFProfiler::GetOutputFilename() const
 /**
  * Check whether profiling is active and should be finished.
  */
-static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({ TimerGameTick::Priority::NONE, 0 }, []()
-{
+static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({TimerGameTick::Priority::NONE, 0}, []() {
 	NewGRFProfiler::FinishAll();
 });
 
@@ -173,7 +168,7 @@ static TimeoutTimer<TimerGameTick> _profiling_finish_timeout({ TimerGameTick::Pr
  */
 /* static */ void NewGRFProfiler::StartTimer(uint64_t ticks)
 {
-	_profiling_finish_timeout.Reset({ TimerGameTick::Priority::NONE, static_cast<uint>(ticks) });
+	_profiling_finish_timeout.Reset({TimerGameTick::Priority::NONE, static_cast<uint>(ticks)});
 }
 
 /**

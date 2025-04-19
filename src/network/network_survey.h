@@ -12,6 +12,7 @@
 
 #include <condition_variable>
 #include <mutex>
+
 #include "core/http.h"
 
 /**
@@ -21,7 +22,11 @@ class NetworkSurveyHandler : public HTTPCallback {
 protected:
 	void OnFailure() override;
 	void OnReceiveData(std::unique_ptr<char[]> data, size_t length) override;
-	bool IsCancelled() const override { return false; }
+
+	bool IsCancelled() const override
+	{
+		return false;
+	}
 
 public:
 	enum class Reason : uint8_t {

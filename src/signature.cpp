@@ -11,20 +11,20 @@
 
 #include "signature.h"
 
+#include "3rdparty/monocypher/monocypher-ed25519.h"
+#include "3rdparty/monocypher/monocypher.h"
+#include "3rdparty/nlohmann/json.hpp"
+
 #include "debug.h"
 #include "fileio_func.h"
 #include "string_func.h"
-
-#include "3rdparty/monocypher/monocypher.h"
-#include "3rdparty/monocypher/monocypher-ed25519.h"
-#include "3rdparty/nlohmann/json.hpp"
 
 #include "safeguards.h"
 
 /** The public keys used for signature validation. */
 static const std::initializer_list<std::array<uint8_t, 32>> _public_keys_v1 = {
 	/* 2024-01-20 - Public key for Social Integration Plugins. */
-	{ 0xed, 0x5d, 0x57, 0x47, 0x21, 0x99, 0x8b, 0x02, 0xdf, 0x6e, 0x3d, 0x69, 0xe1, 0x87, 0xca, 0xd0, 0x0e, 0x88, 0xc3, 0xe2, 0xb2, 0xa6, 0x7b, 0xc0, 0x42, 0xc8, 0xd6, 0x4b, 0x65, 0xe6, 0x48, 0xf7 },
+	{0xed, 0x5d, 0x57, 0x47, 0x21, 0x99, 0x8b, 0x02, 0xdf, 0x6e, 0x3d, 0x69, 0xe1, 0x87, 0xca, 0xd0, 0x0e, 0x88, 0xc3, 0xe2, 0xb2, 0xa6, 0x7b, 0xc0, 0x42, 0xc8, 0xd6, 0x4b, 0x65, 0xe6, 0x48, 0xf7},
 };
 
 /**
@@ -266,7 +266,8 @@ static bool _ValidateSignatureFile(const std::string &filename)
  */
 bool ValidateSignatureFile(const std::string &filename)
 {
-	auto res = _ValidateSignatureFile(filename);;
+	auto res = _ValidateSignatureFile(filename);
+	;
 #if defined(ALLOW_INVALID_SIGNATURE)
 	(void)res; // Ignore the result.
 	return true;

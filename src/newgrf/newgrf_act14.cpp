@@ -8,6 +8,7 @@
 /** @file newgrf_act14.cpp NewGRF Action 0x14 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_text.h"
 #include "newgrf_bytereader.h"
@@ -59,9 +60,15 @@ static bool ChangeGRFPalette(size_t len, ByteReader &buf)
 		GRFPalette pal = GRFP_GRF_UNSET;
 		switch (data) {
 			case '*':
-			case 'A': pal = GRFP_GRF_ANY;     break;
-			case 'W': pal = GRFP_GRF_WINDOWS; break;
-			case 'D': pal = GRFP_GRF_DOS;     break;
+			case 'A':
+				pal = GRFP_GRF_ANY;
+				break;
+			case 'W':
+				pal = GRFP_GRF_WINDOWS;
+				break;
+			case 'D':
+				pal = GRFP_GRF_DOS;
+				break;
 			default:
 				GrfMsg(2, "StaticGRFInfo: unexpected value '{:02X}' for 'INFO'->'PALS', ignoring this field", data);
 				break;
@@ -84,8 +91,12 @@ static bool ChangeGRFBlitter(size_t len, ByteReader &buf)
 		char data = buf.ReadByte();
 		GRFPalette pal = GRFP_BLT_UNSET;
 		switch (data) {
-			case '8': pal = GRFP_BLT_UNSET; break;
-			case '3': pal = GRFP_BLT_32BPP;  break;
+			case '8':
+				pal = GRFP_BLT_UNSET;
+				break;
+			case '3':
+				pal = GRFP_BLT_32BPP;
+				break;
 			default:
 				GrfMsg(2, "StaticGRFInfo: unexpected value '{:02X}' for 'INFO'->'BLTR', ignoring this field", data);
 				return true;
@@ -218,9 +229,9 @@ static bool ChangeGRFParamDefault(size_t len, ByteReader &buf)
 	return true;
 }
 
-typedef bool (*DataHandler)(size_t, ByteReader &);  ///< Type of callback function for binary nodes
+typedef bool (*DataHandler)(size_t, ByteReader &); ///< Type of callback function for binary nodes
 typedef bool (*TextHandler)(uint8_t, std::string_view str); ///< Type of callback function for text nodes
-typedef bool (*BranchHandler)(ByteReader &);        ///< Type of callback function for branch nodes
+typedef bool (*BranchHandler)(ByteReader &); ///< Type of callback function for branch nodes
 
 /**
  * Data structure to store the allowed id/type combinations for action 14. The
@@ -333,7 +344,6 @@ static constexpr AllowedSubtags _tags_root[] = {
 	AllowedSubtags{'INFO', std::make_pair(std::begin(_tags_info), std::end(_tags_info))},
 };
 
-
 /**
  * Try to skip the current node and all subnodes (if it's a branch node).
  * @param buf Buffer.
@@ -384,10 +394,25 @@ static bool HandleNode(uint8_t type, uint32_t id, ByteReader &buf, std::span<con
 {
 	/* Visitor to get a subtag handler's type. */
 	struct type_visitor {
-		char operator()(const DataHandler &) { return 'B'; }
-		char operator()(const TextHandler &) { return 'T'; }
-		char operator()(const BranchHandler &) { return 'C'; }
-		char operator()(const AllowedSubtags::Span &) { return 'C'; }
+		char operator()(const DataHandler &)
+		{
+			return 'B';
+		}
+
+		char operator()(const TextHandler &)
+		{
+			return 'T';
+		}
+
+		char operator()(const BranchHandler &)
+		{
+			return 'C';
+		}
+
+		char operator()(const AllowedSubtags::Span &)
+		{
+			return 'C';
+		}
 	};
 
 	/* Visitor to evaluate a subtag handler. */
@@ -454,9 +479,33 @@ static void StaticGRFInfo(ByteReader &buf)
 	HandleNodes(buf, _tags_root);
 }
 
-template <> void GrfActionHandler<0x14>::FileScan(ByteReader &buf) { StaticGRFInfo(buf); }
-template <> void GrfActionHandler<0x14>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x14>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x14>::Init(ByteReader &) { }
-template <> void GrfActionHandler<0x14>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x14>::Activation(ByteReader &) { }
+template <>
+void GrfActionHandler<0x14>::FileScan(ByteReader &buf)
+{
+	StaticGRFInfo(buf);
+}
+
+template <>
+void GrfActionHandler<0x14>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x14>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x14>::Init(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x14>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x14>::Activation(ByteReader &)
+{
+}

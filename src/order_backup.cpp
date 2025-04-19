@@ -8,17 +8,19 @@
 /** @file order_backup.cpp Handling of order backups. */
 
 #include "stdafx.h"
-#include "command_func.h"
+
+#include "order_backup.h"
+
 #include "core/pool_func.hpp"
+#include "command_func.h"
+#include "group_cmd.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "order_backup.h"
-#include "vehicle_base.h"
-#include "window_func.h"
-#include "station_map.h"
 #include "order_cmd.h"
-#include "group_cmd.h"
+#include "station_map.h"
+#include "vehicle_base.h"
 #include "vehicle_func.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -200,7 +202,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
 			/* We need to circumvent the "prevention" from this command being executed
 			 * while the game is paused, so use the internal method. Nor do we want
 			 * this command to get its cost estimated when shift is pressed. */
-			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe<CommandCallback>(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ ob->tile, static_cast<ClientID>(user) });
+			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe<CommandCallback>(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ob->tile, static_cast<ClientID>(user)});
 		} else {
 			/* The command came from the game logic, i.e. the clearing of a tile.
 			 * In that case we have no need to actually sync this, just do it. */

@@ -26,14 +26,22 @@ public:
 	bool IsSongPlaying() override;
 
 	void SetVolume(uint8_t vol) override;
-	std::string_view GetName() const override { return "fluidsynth"; }
+
+	std::string_view GetName() const override
+	{
+		return "fluidsynth";
+	}
 };
 
 /** Factory for the fluidsynth driver. */
 class FMusicDriver_FluidSynth : public DriverFactoryBase {
 public:
 	FMusicDriver_FluidSynth() : DriverFactoryBase(Driver::DT_MUSIC, 5, "fluidsynth", "FluidSynth MIDI Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_FluidSynth>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<MusicDriver_FluidSynth>();
+	}
 };
 
 #endif /* MUSIC_FLUIDSYNTH_H */

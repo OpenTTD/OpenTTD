@@ -10,44 +10,44 @@
 #ifndef VEHICLE_BASE_H
 #define VEHICLE_BASE_H
 
-#include "track_type.h"
-#include "command_type.h"
-#include "order_base.h"
-#include "cargopacket.h"
-#include "texteff.hpp"
-#include "engine_type.h"
-#include "order_func.h"
-#include "transport_type.h"
-#include "group_type.h"
 #include "base_consist.h"
+#include "cargopacket.h"
+#include "command_type.h"
+#include "engine_type.h"
+#include "group_type.h"
 #include "network/network.h"
+#include "order_base.h"
+#include "order_func.h"
 #include "saveload/saveload.h"
+#include "texteff.hpp"
 #include "timer/timer_game_calendar.h"
+#include "track_type.h"
+#include "transport_type.h"
 
-const uint TILE_AXIAL_DISTANCE = 192;  // Logical length of the tile in any DiagDirection used in vehicle movement.
-const uint TILE_CORNER_DISTANCE = 128;  // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
+const uint TILE_AXIAL_DISTANCE = 192; // Logical length of the tile in any DiagDirection used in vehicle movement.
+const uint TILE_CORNER_DISTANCE = 128; // Logical length of the tile corner crossing in any non-diagonal direction used in vehicle movement.
 
 /** Vehicle state bits in #Vehicle::vehstatus. */
 enum class VehState : uint8_t {
-	Hidden         = 0, ///< Vehicle is not visible.
-	Stopped        = 1, ///< Vehicle is stopped by the player.
-	Unclickable    = 2, ///< Vehicle is not clickable by the user (shadow vehicles).
+	Hidden = 0, ///< Vehicle is not visible.
+	Stopped = 1, ///< Vehicle is stopped by the player.
+	Unclickable = 2, ///< Vehicle is not clickable by the user (shadow vehicles).
 	DefaultPalette = 3, ///< Use default vehicle palette. @see DoDrawVehicle
-	TrainSlowing   = 4, ///< Train is slowing down.
-	Shadow         = 5, ///< Vehicle is a shadow vehicle.
+	TrainSlowing = 4, ///< Train is slowing down.
+	Shadow = 5, ///< Vehicle is a shadow vehicle.
 	AircraftBroken = 6, ///< Aircraft is broken down.
-	Crashed        = 7, ///< Vehicle is crashed.
+	Crashed = 7, ///< Vehicle is crashed.
 };
 using VehStates = EnumBitSet<VehState, uint8_t>;
 
 /** Bit numbers used to indicate which of the #NewGRFCache values are valid. */
 enum NewGRFCacheValidValues : uint8_t {
-	NCVV_POSITION_CONSIST_LENGTH   = 0, ///< This bit will be set if the NewGRF var 40 currently stored is valid.
-	NCVV_POSITION_SAME_ID_LENGTH   = 1, ///< This bit will be set if the NewGRF var 41 currently stored is valid.
+	NCVV_POSITION_CONSIST_LENGTH = 0, ///< This bit will be set if the NewGRF var 40 currently stored is valid.
+	NCVV_POSITION_SAME_ID_LENGTH = 1, ///< This bit will be set if the NewGRF var 41 currently stored is valid.
 	NCVV_CONSIST_CARGO_INFORMATION = 2, ///< This bit will be set if the NewGRF var 42 currently stored is valid.
-	NCVV_COMPANY_INFORMATION       = 3, ///< This bit will be set if the NewGRF var 43 currently stored is valid.
-	NCVV_POSITION_IN_VEHICLE       = 4, ///< This bit will be set if the NewGRF var 4D currently stored is valid.
-	NCVV_END,                           ///< End of the bits.
+	NCVV_COMPANY_INFORMATION = 3, ///< This bit will be set if the NewGRF var 43 currently stored is valid.
+	NCVV_POSITION_IN_VEHICLE = 4, ///< This bit will be set if the NewGRF var 4D currently stored is valid.
+	NCVV_END, ///< End of the bits.
 };
 
 /** Cached often queried (NewGRF) values */
@@ -58,37 +58,37 @@ struct NewGRFCache {
 	uint32_t consist_cargo_information = 0; ///< Cache for NewGRF var 42. (Note: The cargotype is untranslated in the cache because the accessing GRF is yet unknown.)
 	uint32_t company_information = 0; ///< Cache for NewGRF var 43.
 	uint32_t position_in_vehicle = 0; ///< Cache for NewGRF var 4D.
-	uint8_t  cache_valid = 0; ///< Bitset that indicates which cache values are valid.
+	uint8_t cache_valid = 0; ///< Bitset that indicates which cache values are valid.
 
 	auto operator<=>(const NewGRFCache &) const = default;
 };
 
 /** Meaning of the various bits of the visual effect. */
 enum VisualEffect : uint8_t {
-	VE_OFFSET_START        = 0, ///< First bit that contains the offset (0 = front, 8 = centre, 15 = rear)
-	VE_OFFSET_COUNT        = 4, ///< Number of bits used for the offset
-	VE_OFFSET_CENTRE       = 8, ///< Value of offset corresponding to a position above the centre of the vehicle
+	VE_OFFSET_START = 0, ///< First bit that contains the offset (0 = front, 8 = centre, 15 = rear)
+	VE_OFFSET_COUNT = 4, ///< Number of bits used for the offset
+	VE_OFFSET_CENTRE = 8, ///< Value of offset corresponding to a position above the centre of the vehicle
 
-	VE_TYPE_START          = 4, ///< First bit used for the type of effect
-	VE_TYPE_COUNT          = 2, ///< Number of bits used for the effect type
-	VE_TYPE_DEFAULT        = 0, ///< Use default from engine class
-	VE_TYPE_STEAM          = 1, ///< Steam plumes
-	VE_TYPE_DIESEL         = 2, ///< Diesel fumes
-	VE_TYPE_ELECTRIC       = 3, ///< Electric sparks
+	VE_TYPE_START = 4, ///< First bit used for the type of effect
+	VE_TYPE_COUNT = 2, ///< Number of bits used for the effect type
+	VE_TYPE_DEFAULT = 0, ///< Use default from engine class
+	VE_TYPE_STEAM = 1, ///< Steam plumes
+	VE_TYPE_DIESEL = 2, ///< Diesel fumes
+	VE_TYPE_ELECTRIC = 3, ///< Electric sparks
 
-	VE_DISABLE_EFFECT      = 6, ///< Flag to disable visual effect
-	VE_ADVANCED_EFFECT     = VE_DISABLE_EFFECT, ///< Flag for advanced effects
+	VE_DISABLE_EFFECT = 6, ///< Flag to disable visual effect
+	VE_ADVANCED_EFFECT = VE_DISABLE_EFFECT, ///< Flag for advanced effects
 	VE_DISABLE_WAGON_POWER = 7, ///< Flag to disable wagon power
 
-	VE_DEFAULT = 0xFF,          ///< Default value to indicate that visual effect should be based on engine class
+	VE_DEFAULT = 0xFF, ///< Default value to indicate that visual effect should be based on engine class
 };
 
 /** Models for spawning visual effects. */
 enum VisualEffectSpawnModel : uint8_t {
-	VESM_NONE              = 0, ///< No visual effect
-	VESM_STEAM,                 ///< Steam model
-	VESM_DIESEL,                ///< Diesel model
-	VESM_ELECTRIC,              ///< Electric model
+	VESM_NONE = 0, ///< No visual effect
+	VESM_STEAM, ///< Steam model
+	VESM_DIESEL, ///< Diesel model
+	VESM_ELECTRIC, ///< Electric model
 
 	VESM_END
 };
@@ -99,12 +99,12 @@ enum VisualEffectSpawnModel : uint8_t {
  * Do not access it directly unless you have to. Use the subtype access functions.
  */
 enum GroundVehicleSubtypeFlags : uint8_t {
-	GVSF_FRONT            = 0, ///< Leading engine of a consist.
+	GVSF_FRONT = 0, ///< Leading engine of a consist.
 	GVSF_ARTICULATED_PART = 1, ///< Articulated part of an engine.
-	GVSF_WAGON            = 2, ///< Wagon (not used for road vehicles).
-	GVSF_ENGINE           = 3, ///< Engine that can be front engine, but might be placed behind another engine (not used for road vehicles).
-	GVSF_FREE_WAGON       = 4, ///< First in a wagon chain (in depot) (not used for road vehicles).
-	GVSF_MULTIHEADED      = 5, ///< Engine is multiheaded (not used for road vehicles).
+	GVSF_WAGON = 2, ///< Wagon (not used for road vehicles).
+	GVSF_ENGINE = 3, ///< Engine that can be front engine, but might be placed behind another engine (not used for road vehicles).
+	GVSF_FREE_WAGON = 4, ///< First in a wagon chain (in depot) (not used for road vehicles).
+	GVSF_MULTIHEADED = 5, ///< Engine is multiheaded (not used for road vehicles).
 };
 
 /** Cached often queried values common to all vehicles. */
@@ -112,7 +112,7 @@ struct VehicleCache {
 	uint16_t cached_max_speed = 0; ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
 	uint16_t cached_cargo_age_period = 0; ///< Number of ticks before carried cargo is aged.
 
-	uint8_t cached_vis_effect = 0;  ///< Visual effect to show (see #VisualEffect)
+	uint8_t cached_vis_effect = 0; ///< Visual effect to show (see #VisualEffect)
 
 	auto operator<=>(const VehicleCache &) const = default;
 };
@@ -197,11 +197,11 @@ struct GRFFile;
  * Simulated cargo type and capacity for prediction of future links.
  */
 struct RefitDesc {
-	CargoType cargo;    ///< Cargo type the vehicle will be carrying.
-	uint16_t capacity;  ///< Capacity the vehicle will have.
+	CargoType cargo; ///< Cargo type the vehicle will be carrying.
+	uint16_t capacity; ///< Capacity the vehicle will have.
 	uint16_t remaining; ///< Capacity remaining from before the previous refit.
-	RefitDesc(CargoType cargo, uint16_t capacity, uint16_t remaining) :
-			cargo(cargo), capacity(capacity), remaining(remaining) {}
+
+	RefitDesc(CargoType cargo, uint16_t capacity, uint16_t remaining) : cargo(cargo), capacity(capacity), remaining(remaining) {}
 };
 
 /**
@@ -216,8 +216,7 @@ struct ClosestDepot {
 
 	ClosestDepot() = default;
 
-	ClosestDepot(TileIndex location, DestinationID destination, bool reverse = false) :
-		location(location), destination(destination), reverse(reverse), found(true) {}
+	ClosestDepot(TileIndex location, DestinationID destination, bool reverse = false) : location(location), destination(destination), reverse(reverse), found(true) {}
 };
 
 /** %Vehicle data structure. */
@@ -234,8 +233,8 @@ private:
 
 public:
 	friend void FixOldVehicles(LoadgameState &ls);
-	friend void AfterLoadVehiclesPhase1(bool part_of_load);       ///< So we can set the #previous and #first pointers while loading
-	friend bool LoadOldVehicle(LoadgameState &ls, int num);       ///< So we can set the proper next pointer while loading
+	friend void AfterLoadVehiclesPhase1(bool part_of_load); ///< So we can set the #previous and #first pointers while loading
+	friend bool LoadOldVehicle(LoadgameState &ls, int num); ///< So we can set the proper next pointer while loading
 	/* So we can use private/protected variables in the saveload code */
 	friend class SlVehicleCommon;
 	friend class SlVehicleDisaster;
@@ -443,7 +442,10 @@ public:
 	 * Sets the expense type associated to this vehicle type
 	 * @param income whether this is income or (running) expenses of the vehicle
 	 */
-	virtual ExpensesType GetExpenseType([[maybe_unused]] bool income) const { return EXPENSES_OTHER; }
+	virtual ExpensesType GetExpenseType([[maybe_unused]] bool income) const
+	{
+		return EXPENSES_OTHER;
+	}
 
 	/**
 	 * Play the sound associated with leaving the station
@@ -454,7 +456,10 @@ public:
 	/**
 	 * Whether this is the primary vehicle in the chain.
 	 */
-	virtual bool IsPrimaryVehicle() const { return false; }
+	virtual bool IsPrimaryVehicle() const
+	{
+		return false;
+	}
 
 	const Engine *GetEngine() const;
 
@@ -463,7 +468,10 @@ public:
 	 * @param direction the direction the vehicle is facing
 	 * @param[out] result Vehicle sprite sequence.
 	 */
-	virtual void GetImage([[maybe_unused]] Direction direction, [[maybe_unused]] EngineImageType image_type, [[maybe_unused]] VehicleSpriteSeq *result) const { result->Clear(); }
+	virtual void GetImage([[maybe_unused]] Direction direction, [[maybe_unused]] EngineImageType image_type, [[maybe_unused]] VehicleSpriteSeq *result) const
+	{
+		result->Clear();
+	}
 
 	const GRFFile *GetGRF() const;
 	uint32_t GetGRFID() const;
@@ -501,37 +509,55 @@ public:
 	 * Gets the speed in km-ish/h that can be sent into string parameters for string processing.
 	 * @return the vehicle's speed
 	 */
-	virtual int GetDisplaySpeed() const { return 0; }
+	virtual int GetDisplaySpeed() const
+	{
+		return 0;
+	}
 
 	/**
 	 * Gets the maximum speed in km-ish/h that can be sent into string parameters for string processing.
 	 * @return the vehicle's maximum speed
 	 */
-	virtual int GetDisplayMaxSpeed() const { return 0; }
+	virtual int GetDisplayMaxSpeed() const
+	{
+		return 0;
+	}
 
 	/**
 	 * Calculates the maximum speed of the vehicle under its current conditions.
 	 * @return Current maximum speed in native units.
 	 */
-	virtual int GetCurrentMaxSpeed() const { return 0; }
+	virtual int GetCurrentMaxSpeed() const
+	{
+		return 0;
+	}
 
 	/**
 	 * Gets the running cost of a vehicle
 	 * @return the vehicle's running cost
 	 */
-	virtual Money GetRunningCost() const { return 0; }
+	virtual Money GetRunningCost() const
+	{
+		return 0;
+	}
 
 	/**
 	 * Check whether the vehicle is in the depot.
 	 * @return true if and only if the vehicle is in the depot.
 	 */
-	virtual bool IsInDepot() const { return false; }
+	virtual bool IsInDepot() const
+	{
+		return false;
+	}
 
 	/**
 	 * Check whether the whole vehicle chain is in the depot.
 	 * @return true if and only if the whole chain is in the depot.
 	 */
-	virtual bool IsChainInDepot() const { return this->IsInDepot(); }
+	virtual bool IsChainInDepot() const
+	{
+		return this->IsInDepot();
+	}
 
 	/**
 	 * Check whether the vehicle is in the depot *and* stopped.
@@ -549,7 +575,10 @@ public:
 	 * Calls the tick handler of the vehicle
 	 * @return is this vehicle still valid?
 	 */
-	virtual bool Tick() { return true; };
+	virtual bool Tick()
+	{
+		return true;
+	};
 
 	/**
 	 * Calls the new calendar day handler of the vehicle.
@@ -582,25 +611,37 @@ public:
 	 * in depots), returns 0xFF.
 	 * @return the trackdir of the vehicle
 	 */
-	virtual Trackdir GetVehicleTrackdir() const { return INVALID_TRACKDIR; }
+	virtual Trackdir GetVehicleTrackdir() const
+	{
+		return INVALID_TRACKDIR;
+	}
 
 	/**
 	 * Gets the running cost of a vehicle  that can be sent into string parameters for string processing.
 	 * @return the vehicle's running cost
 	 */
-	Money GetDisplayRunningCost() const { return (this->GetRunningCost() >> 8); }
+	Money GetDisplayRunningCost() const
+	{
+		return (this->GetRunningCost() >> 8);
+	}
 
 	/**
 	 * Gets the profit vehicle had this year. It can be sent into string parameters for string processing.
 	 * @return the vehicle's profit this year
 	 */
-	Money GetDisplayProfitThisYear() const { return (this->profit_this_year >> 8); }
+	Money GetDisplayProfitThisYear() const
+	{
+		return (this->profit_this_year >> 8);
+	}
 
 	/**
 	 * Gets the profit vehicle had last year. It can be sent into string parameters for string processing.
 	 * @return the vehicle's profit last year
 	 */
-	Money GetDisplayProfitLastYear() const { return (this->profit_last_year >> 8); }
+	Money GetDisplayProfitLastYear() const
+	{
+		return (this->profit_last_year >> 8);
+	}
 
 	void SetNext(Vehicle *next);
 
@@ -609,20 +650,29 @@ public:
 	 * @note articulated parts are also counted as vehicles.
 	 * @return the next vehicle or nullptr when there isn't a next vehicle.
 	 */
-	inline Vehicle *Next() const { return this->next; }
+	inline Vehicle *Next() const
+	{
+		return this->next;
+	}
 
 	/**
 	 * Get the previous vehicle of this vehicle.
 	 * @note articulated parts are also counted as vehicles.
 	 * @return the previous vehicle or nullptr when there isn't a previous vehicle.
 	 */
-	inline Vehicle *Previous() const { return this->previous; }
+	inline Vehicle *Previous() const
+	{
+		return this->previous;
+	}
 
 	/**
 	 * Get the first vehicle of this vehicle chain.
 	 * @return the first vehicle of the chain.
 	 */
-	inline Vehicle *First() const { return this->first; }
+	inline Vehicle *First() const
+	{
+		return this->first;
+	}
 
 	/**
 	 * Get the last vehicle of this vehicle chain.
@@ -682,7 +732,10 @@ public:
 	 * Get the first order of the vehicles order list.
 	 * @return first order of order list.
 	 */
-	inline Order *GetFirstOrder() const { return (this->orders == nullptr) ? nullptr : this->orders->GetFirstOrder(); }
+	inline Order *GetFirstOrder() const
+	{
+		return (this->orders == nullptr) ? nullptr : this->orders->GetFirstOrder();
+	}
 
 	void AddToShared(Vehicle *shared_chain);
 	void RemoveFromShared();
@@ -691,37 +744,55 @@ public:
 	 * Get the next vehicle of the shared vehicle chain.
 	 * @return the next shared vehicle or nullptr when there isn't a next vehicle.
 	 */
-	inline Vehicle *NextShared() const { return this->next_shared; }
+	inline Vehicle *NextShared() const
+	{
+		return this->next_shared;
+	}
 
 	/**
 	 * Get the previous vehicle of the shared vehicle chain
 	 * @return the previous shared vehicle or nullptr when there isn't a previous vehicle.
 	 */
-	inline Vehicle *PreviousShared() const { return this->previous_shared; }
+	inline Vehicle *PreviousShared() const
+	{
+		return this->previous_shared;
+	}
 
 	/**
 	 * Get the first vehicle of this vehicle chain.
 	 * @return the first vehicle of the chain.
 	 */
-	inline Vehicle *FirstShared() const { return (this->orders == nullptr) ? this->First() : this->orders->GetFirstSharedVehicle(); }
+	inline Vehicle *FirstShared() const
+	{
+		return (this->orders == nullptr) ? this->First() : this->orders->GetFirstSharedVehicle();
+	}
 
 	/**
 	 * Check if we share our orders with another vehicle.
 	 * @return true if there are other vehicles sharing the same order
 	 */
-	inline bool IsOrderListShared() const { return this->orders != nullptr && this->orders->IsShared(); }
+	inline bool IsOrderListShared() const
+	{
+		return this->orders != nullptr && this->orders->IsShared();
+	}
 
 	/**
 	 * Get the number of orders this vehicle has.
 	 * @return the number of orders this vehicle has.
 	 */
-	inline VehicleOrderID GetNumOrders() const { return (this->orders == nullptr) ? 0 : this->orders->GetNumOrders(); }
+	inline VehicleOrderID GetNumOrders() const
+	{
+		return (this->orders == nullptr) ? 0 : this->orders->GetNumOrders();
+	}
 
 	/**
 	 * Get the number of manually added orders this vehicle has.
 	 * @return the number of manually added orders this vehicle has.
 	 */
-	inline VehicleOrderID GetNumManualOrders() const { return (this->orders == nullptr) ? 0 : this->orders->GetNumManualOrders(); }
+	inline VehicleOrderID GetNumManualOrders() const
+	{
+		return (this->orders == nullptr) ? 0 : this->orders->GetNumManualOrders();
+	}
 
 	/**
 	 * Get the next station the vehicle will stop at.
@@ -750,14 +821,13 @@ public:
 		this->unitnumber = src->unitnumber;
 
 		this->current_order = src->current_order;
-		this->dest_tile  = src->dest_tile;
+		this->dest_tile = src->dest_tile;
 
 		this->profit_this_year = src->profit_this_year;
 		this->profit_last_year = src->profit_last_year;
 
 		src->unitnumber = 0;
 	}
-
 
 	bool HandleBreakdown();
 
@@ -773,18 +843,30 @@ public:
 	 * @param station the station to make the next location of the vehicle.
 	 * @return the location (tile) to aim for.
 	 */
-	virtual TileIndex GetOrderStationLocation([[maybe_unused]] StationID station) { return INVALID_TILE; }
+	virtual TileIndex GetOrderStationLocation([[maybe_unused]] StationID station)
+	{
+		return INVALID_TILE;
+	}
 
-	virtual TileIndex GetCargoTile() const { return this->tile; }
+	virtual TileIndex GetCargoTile() const
+	{
+		return this->tile;
+	}
 
 	/**
 	 * Find the closest depot for this vehicle and tell us the location,
 	 * DestinationID and whether we should reverse.
 	 * @return A structure with information about the closest depot, if found.
 	 */
-	virtual ClosestDepot FindClosestDepot() { return {}; }
+	virtual ClosestDepot FindClosestDepot()
+	{
+		return {};
+	}
 
-	virtual void SetDestTile(TileIndex tile) { this->dest_tile = tile; }
+	virtual void SetDestTile(TileIndex tile)
+	{
+		this->dest_tile = tile;
+	}
 
 	CommandCost SendToDepot(DoCommandFlags flags, DepotCommandFlags command);
 
@@ -797,17 +879,35 @@ public:
 	void UpdatePositionAndViewport();
 	bool MarkAllViewportsDirty() const;
 
-	inline uint16_t GetServiceInterval() const { return this->service_interval; }
+	inline uint16_t GetServiceInterval() const
+	{
+		return this->service_interval;
+	}
 
-	inline void SetServiceInterval(uint16_t interval) { this->service_interval = interval; }
+	inline void SetServiceInterval(uint16_t interval)
+	{
+		this->service_interval = interval;
+	}
 
-	inline bool ServiceIntervalIsCustom() const { return this->vehicle_flags.Test(VehicleFlag::ServiceIntervalIsCustom); }
+	inline bool ServiceIntervalIsCustom() const
+	{
+		return this->vehicle_flags.Test(VehicleFlag::ServiceIntervalIsCustom);
+	}
 
-	inline bool ServiceIntervalIsPercent() const { return this->vehicle_flags.Test(VehicleFlag::ServiceIntervalIsPercent); }
+	inline bool ServiceIntervalIsPercent() const
+	{
+		return this->vehicle_flags.Test(VehicleFlag::ServiceIntervalIsPercent);
+	}
 
-	inline void SetServiceIntervalIsCustom(bool on) { this->vehicle_flags.Set(VehicleFlag::ServiceIntervalIsCustom, on); }
+	inline void SetServiceIntervalIsCustom(bool on)
+	{
+		this->vehicle_flags.Set(VehicleFlag::ServiceIntervalIsCustom, on);
+	}
 
-	inline void SetServiceIntervalIsPercent(bool on) { this->vehicle_flags.Set(VehicleFlag::ServiceIntervalIsPercent, on); }
+	inline void SetServiceIntervalIsPercent(bool on)
+	{
+		this->vehicle_flags.Set(VehicleFlag::ServiceIntervalIsPercent, on);
+	}
 
 	bool HasFullLoadOrder() const;
 	bool HasConditionalOrder() const;
@@ -1030,9 +1130,17 @@ public:
 			this->order = (this->list == nullptr) ? nullptr : this->list->GetFirstOrder();
 		}
 
-		bool operator==(const OrderIterator &other) const { return this->order == other.order; }
-		Order * operator*() const { return this->order; }
-		OrderIterator & operator++()
+		bool operator==(const OrderIterator &other) const
+		{
+			return this->order == other.order;
+		}
+
+		Order *operator*() const
+		{
+			return this->order;
+		}
+
+		OrderIterator &operator++()
 		{
 			this->prev = (this->prev == nullptr) ? this->list->GetFirstOrder() : this->prev->next;
 			this->order = (this->prev == nullptr) ? nullptr : this->prev->next;
@@ -1050,17 +1158,33 @@ public:
 	 */
 	struct IterateWrapper {
 		OrderList *list;
+
 		IterateWrapper(OrderList *list = nullptr) : list(list) {}
-		OrderIterator begin() { return OrderIterator(this->list); }
-		OrderIterator end() { return OrderIterator(nullptr); }
-		bool empty() { return this->begin() == this->end(); }
+
+		OrderIterator begin()
+		{
+			return OrderIterator(this->list);
+		}
+
+		OrderIterator end()
+		{
+			return OrderIterator(nullptr);
+		}
+
+		bool empty()
+		{
+			return this->begin() == this->end();
+		}
 	};
 
 	/**
 	 * Returns an iterable ensemble of orders of a vehicle
 	 * @return an iterable ensemble of orders of a vehicle
 	 */
-	IterateWrapper Orders() const { return IterateWrapper(this->orders); }
+	IterateWrapper Orders() const
+	{
+		return IterateWrapper(this->orders);
+	}
 
 	uint32_t GetDisplayMaxWeight() const;
 	uint32_t GetDisplayMinPowerToWeight() const;
@@ -1088,75 +1212,111 @@ struct SpecializedVehicle : public Vehicle {
 	 * Get the first vehicle in the chain
 	 * @return first vehicle in the chain
 	 */
-	inline T *First() const { return (T *)this->Vehicle::First(); }
+	inline T *First() const
+	{
+		return (T *)this->Vehicle::First();
+	}
 
 	/**
 	 * Get the last vehicle in the chain
 	 * @return last vehicle in the chain
 	 */
-	inline T *Last() { return (T *)this->Vehicle::Last(); }
+	inline T *Last()
+	{
+		return (T *)this->Vehicle::Last();
+	}
 
 	/**
 	 * Get the last vehicle in the chain
 	 * @return last vehicle in the chain
 	 */
-	inline const T *Last() const { return (const T *)this->Vehicle::Last(); }
+	inline const T *Last() const
+	{
+		return (const T *)this->Vehicle::Last();
+	}
 
 	/**
 	 * Get next vehicle in the chain
 	 * @return next vehicle in the chain
 	 */
-	inline T *Next() const { return (T *)this->Vehicle::Next(); }
+	inline T *Next() const
+	{
+		return (T *)this->Vehicle::Next();
+	}
 
 	/**
 	 * Get previous vehicle in the chain
 	 * @return previous vehicle in the chain
 	 */
-	inline T *Previous() const { return (T *)this->Vehicle::Previous(); }
+	inline T *Previous() const
+	{
+		return (T *)this->Vehicle::Previous();
+	}
 
 	/**
 	 * Get the next part of an articulated engine.
 	 * @return Next part of the articulated engine.
 	 * @pre The vehicle is an articulated engine.
 	 */
-	inline T *GetNextArticulatedPart() { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+	inline T *GetNextArticulatedPart()
+	{
+		return (T *)this->Vehicle::GetNextArticulatedPart();
+	}
 
 	/**
 	 * Get the next part of an articulated engine.
 	 * @return Next part of the articulated engine.
 	 * @pre The vehicle is an articulated engine.
 	 */
-	inline T *GetNextArticulatedPart() const { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+	inline T *GetNextArticulatedPart() const
+	{
+		return (T *)this->Vehicle::GetNextArticulatedPart();
+	}
 
 	/**
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	inline T *GetFirstEnginePart() { return (T *)this->Vehicle::GetFirstEnginePart(); }
+	inline T *GetFirstEnginePart()
+	{
+		return (T *)this->Vehicle::GetFirstEnginePart();
+	}
 
 	/**
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	inline const T *GetFirstEnginePart() const { return (const T *)this->Vehicle::GetFirstEnginePart(); }
+	inline const T *GetFirstEnginePart() const
+	{
+		return (const T *)this->Vehicle::GetFirstEnginePart();
+	}
 
 	/**
 	 * Get the last part of an articulated engine.
 	 * @return Last part of the engine.
 	 */
-	inline T *GetLastEnginePart() { return (T *)this->Vehicle::GetLastEnginePart(); }
+	inline T *GetLastEnginePart()
+	{
+		return (T *)this->Vehicle::GetLastEnginePart();
+	}
 
 	/**
 	 * Get the next real (non-articulated part) vehicle in the consist.
 	 * @return Next vehicle in the consist.
 	 */
-	inline T *GetNextVehicle() const { return (T *)this->Vehicle::GetNextVehicle(); }
+	inline T *GetNextVehicle() const
+	{
+		return (T *)this->Vehicle::GetNextVehicle();
+	}
 
 	/**
 	 * Get the previous real (non-articulated part) vehicle in the consist.
 	 * @return Previous vehicle in the consist.
 	 */
-	inline T *GetPrevVehicle() const { return (T *)this->Vehicle::GetPrevVehicle(); }
+	inline T *GetPrevVehicle() const
+	{
+		return (T *)this->Vehicle::GetPrevVehicle();
+	}
 
 	/**
 	 * Tests whether given index is a valid index for vehicle of this type
@@ -1233,7 +1393,7 @@ struct SpecializedVehicle : public Vehicle {
 		if (this->direction != this->sprite_cache.last_direction || this->sprite_cache.is_viewport_candidate) {
 			VehicleSpriteSeq seq;
 
-			((T*)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
+			((T *)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
 			if (this->sprite_cache.sprite_seq != seq) {
 				sprite_has_changed = true;
 				this->sprite_cache.sprite_seq = seq;
@@ -1260,7 +1420,10 @@ struct SpecializedVehicle : public Vehicle {
 	 * @param from index of the first vehicle to consider
 	 * @return an iterable ensemble of all valid vehicles of type T
 	 */
-	static Pool::IterateWrapper<T> Iterate(size_t from = 0) { return Pool::IterateWrapper<T>(from); }
+	static Pool::IterateWrapper<T> Iterate(size_t from = 0)
+	{
+		return Pool::IterateWrapper<T>(from);
+	}
 };
 
 /** Sentinel for an invalid coordinate. */

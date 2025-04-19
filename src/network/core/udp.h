@@ -17,9 +17,9 @@
 
 /** Enum with all types of UDP packets. The order MUST not be changed **/
 enum PacketUDPType : uint8_t {
-	PACKET_UDP_CLIENT_FIND_SERVER,   ///< Queries a game server for game information
-	PACKET_UDP_SERVER_RESPONSE,      ///< Reply of the game server with game information
-	PACKET_UDP_END,                  ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_UDP_CLIENT_FIND_SERVER, ///< Queries a game server for game information
+	PACKET_UDP_SERVER_RESPONSE, ///< Reply of the game server with game information
+	PACKET_UDP_END, ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Base socket handler for all UDP sockets */
@@ -47,11 +47,15 @@ protected:
 	virtual void Receive_SERVER_RESPONSE(Packet &p, NetworkAddress &client_addr);
 
 	void HandleUDPPacket(Packet &p, NetworkAddress &client_addr);
+
 public:
 	NetworkUDPSocketHandler(NetworkAddressList *bind = nullptr);
 
 	/** On destructing of this class, the socket needs to be closed */
-	virtual ~NetworkUDPSocketHandler() { this->CloseSocket(); }
+	virtual ~NetworkUDPSocketHandler()
+	{
+		this->CloseSocket();
+	}
 
 	bool Listen();
 	void CloseSocket();

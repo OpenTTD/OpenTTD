@@ -31,19 +31,19 @@ public:
 	/** Parameters related to blitting. */
 	struct BlitterParams {
 		const void *sprite; ///< Pointer to the sprite how ever the encoder stored it
-		const uint8_t *remap;  ///< XXX -- Temporary storage for remap array
+		const uint8_t *remap; ///< XXX -- Temporary storage for remap array
 
-		int skip_left;      ///< How much pixels of the source to skip on the left (based on zoom of dst)
-		int skip_top;       ///< How much pixels of the source to skip on the top (based on zoom of dst)
-		int width;          ///< The width in pixels that needs to be drawn to dst
-		int height;         ///< The height in pixels that needs to be drawn to dst
-		int sprite_width;   ///< Real width of the sprite
-		int sprite_height;  ///< Real height of the sprite
-		int left;           ///< The left offset in the 'dst' in pixels to start drawing
-		int top;            ///< The top offset in the 'dst' in pixels to start drawing
+		int skip_left; ///< How much pixels of the source to skip on the left (based on zoom of dst)
+		int skip_top; ///< How much pixels of the source to skip on the top (based on zoom of dst)
+		int width; ///< The width in pixels that needs to be drawn to dst
+		int height; ///< The height in pixels that needs to be drawn to dst
+		int sprite_width; ///< Real width of the sprite
+		int sprite_height; ///< Real height of the sprite
+		int left; ///< The left offset in the 'dst' in pixels to start drawing
+		int top; ///< The top offset in the 'dst' in pixels to start drawing
 
-		void *dst;          ///< Destination buffer
-		int pitch;          ///< The pitch of the destination buffer
+		void *dst; ///< Destination buffer
+		int pitch; ///< The pitch of the destination buffer
 	};
 
 	/** Types of palette animation. */
@@ -202,11 +202,12 @@ public:
 	/**
 	 * Post resize event
 	 */
-	virtual void PostResize() { };
+	virtual void PostResize() {};
 
 	virtual ~Blitter() = default;
 
-	template <typename SetPixelT> void DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel);
+	template <typename SetPixelT>
+	void DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel);
 };
 
 #endif /* BLITTER_BASE_HPP */

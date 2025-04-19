@@ -8,6 +8,7 @@
 /** @file newgrf_act0_canals.cpp NewGRF Action 0x00 handler for canals. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
@@ -52,5 +53,14 @@ static ChangeInfoResult CanalChangeInfo(uint first, uint last, int prop, ByteRea
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CANALS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CANALS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return CanalChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_CANALS>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_CANALS>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return CanalChangeInfo(first, last, prop, buf);
+}

@@ -15,10 +15,10 @@ void NetworkShutDown();
 void NetworkDrawChatMessage();
 bool HasClients();
 
-extern bool _networking;         ///< are we in networking mode?
-extern bool _network_server;     ///< network-server is active
-extern bool _network_available;  ///< is network mode available?
-extern bool _network_dedicated;  ///< are we a dedicated server?
-extern bool _is_network_server;  ///< Does this client wants to be a network-server?
+extern bool _networking; ///< are we in networking mode?
+extern bool _network_server; ///< network-server is active
+extern bool _network_available; ///< is network mode available?
+extern bool _network_dedicated; ///< are we a dedicated server?
+extern bool _is_network_server; ///< Does this client wants to be a network-server?
 
 #endif /* NETWORK_H */

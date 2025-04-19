@@ -10,17 +10,16 @@
 #ifndef BLITTER_FACTORY_HPP
 #define BLITTER_FACTORY_HPP
 
-#include "base.hpp"
 #include "../debug.h"
 #include "../string_func.h"
-
+#include "base.hpp"
 
 /**
  * The base factory, keeping track of all blitters.
  */
 class BlitterFactory {
 private:
-	const std::string name;        ///< The name of the blitter factory.
+	const std::string name; ///< The name of the blitter factory.
 	const std::string description; ///< The description of the blitter.
 
 	typedef std::map<std::string, BlitterFactory *> Blitters; ///< Map of blitter factories.
@@ -55,8 +54,7 @@ protected:
 	 * @pre description != nullptr.
 	 * @pre There is no blitter registered with this name.
 	 */
-	BlitterFactory(const char *name, const char *description, bool usable = true) :
-			name(name), description(description)
+	BlitterFactory(const char *name, const char *description, bool usable = true) : name(name), description(description)
 	{
 		if (usable) {
 			Blitters &blitters = GetBlitters();

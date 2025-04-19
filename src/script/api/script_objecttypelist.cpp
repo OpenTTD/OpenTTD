@@ -8,7 +8,9 @@
 /** @file script_objecttypelist.cpp Implementation of ScriptObjectTypeList. */
 
 #include "../../stdafx.h"
+
 #include "script_objecttypelist.hpp"
+
 #include "../../newgrf_object.h"
 
 #include "../../safeguards.h"

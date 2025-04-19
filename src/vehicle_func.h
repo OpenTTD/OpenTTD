@@ -10,16 +10,16 @@
 #ifndef VEHICLE_FUNC_H
 #define VEHICLE_FUNC_H
 
-#include "gfx_type.h"
-#include "direction_type.h"
-#include "timer/timer_game_economy.h"
 #include "command_type.h"
-#include "vehicle_type.h"
+#include "direction_type.h"
 #include "engine_type.h"
-#include "transport_type.h"
-#include "newgrf_config.h"
-#include "track_type.h"
+#include "gfx_type.h"
 #include "livery.h"
+#include "newgrf_config.h"
+#include "timer/timer_game_economy.h"
+#include "track_type.h"
+#include "transport_type.h"
+#include "vehicle_type.h"
 
 /**
  * Special values for Vehicle::spritenum and (Aircraft|Rail|Road|Ship)VehicleInfo::image_index
@@ -35,7 +35,7 @@ static inline bool IsCustomVehicleSpriteNum(uint8_t spritenum)
 }
 
 static const TimerGameEconomy::Date VEHICLE_PROFIT_MIN_AGE{CalendarTime::DAYS_IN_YEAR * 2}; ///< Only vehicles older than this have a meaningful profit.
-static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a vehicle to be considered making good profit.
+static const Money VEHICLE_PROFIT_THRESHOLD = 10000; ///< Threshold for a vehicle to be considered making good profit.
 
 /**
  * Helper to check whether an image index is valid for a particular vehicle.
@@ -83,7 +83,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type, uint8_t subtype = 0);
 
 /** Position information of a vehicle after it moved */
 struct GetNewVehiclePosResult {
-	int x, y;  ///< x and y position of the vehicle after moving
+	int x, y; ///< x and y position of the vehicle after moving
 	TileIndex old_tile; ///< Current tile of the vehicle
 	TileIndex new_tile; ///< Tile of the vehicle after moving
 };

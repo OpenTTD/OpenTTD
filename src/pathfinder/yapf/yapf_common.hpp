@@ -16,8 +16,7 @@
 
 /** YAPF origin provider base class - used when origin is one tile / multiple trackdirs */
 template <class Types>
-class CYapfOriginTileT
-{
+class CYapfOriginTileT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Item Node; ///< this will be our node type
@@ -56,8 +55,7 @@ public:
 
 /** YAPF origin provider base class - used when there are two tile/trackdir origins */
 template <class Types>
-class CYapfOriginTileTwoWayT
-{
+class CYapfOriginTileTwoWayT {
 public:
 	typedef typename Types::Tpf Tpf; ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Item Node; ///< this will be our node type
@@ -111,16 +109,18 @@ public:
  *  CYapfRail1, CYapfRail2, CYapfRail3, CYapfAnyDepotRail1, CYapfAnyDepotRail2, CYapfAnyDepotRail3
  */
 template <class Ttypes>
-class CYapfT
-	: public Ttypes::PfBase         ///< Instance of CYapfBaseT - main YAPF loop and support base class
-	, public Ttypes::PfCost         ///< Cost calculation provider base class
-	, public Ttypes::PfCache        ///< Segment cost cache provider
-	, public Ttypes::PfOrigin       ///< Origin (tile or two-tile origin)
-	, public Ttypes::PfDestination  ///< Destination detector and distance (estimate) calculation provider
-	, public Ttypes::PfFollow       ///< Node follower (stepping provider)
-{
-};
-
-
+class CYapfT :
+	public Ttypes::PfBase ///< Instance of CYapfBaseT - main YAPF loop and support base class
+	,
+	public Ttypes::PfCost ///< Cost calculation provider base class
+	,
+	public Ttypes::PfCache ///< Segment cost cache provider
+	,
+	public Ttypes::PfOrigin ///< Origin (tile or two-tile origin)
+	,
+	public Ttypes::PfDestination ///< Destination detector and distance (estimate) calculation provider
+	,
+	public Ttypes::PfFollow ///< Node follower (stepping provider)
+{};
 
 #endif /* YAPF_COMMON_HPP */

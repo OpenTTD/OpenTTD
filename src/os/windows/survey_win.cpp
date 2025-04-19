@@ -9,11 +9,11 @@
 
 #include "../../stdafx.h"
 
-#include "../../3rdparty/fmt/format.h"
-#include "../../survey.h"
-
-#include <thread>
 #include <windows.h>
+#include <thread>
+#include "../../3rdparty/fmt/format.h"
+
+#include "../../survey.h"
 
 #include "../../safeguards.h"
 

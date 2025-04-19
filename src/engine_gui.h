@@ -10,17 +10,17 @@
 #ifndef ENGINE_GUI_H
 #define ENGINE_GUI_H
 
+#include "engine_base.h"
 #include "engine_type.h"
+#include "gfx_type.h"
 #include "group_type.h"
 #include "newgrf_badge_gui.h"
 #include "sortlist_type.h"
-#include "gfx_type.h"
 #include "vehicle_type.h"
-#include "engine_base.h"
 
 struct GUIEngineListItem {
-	EngineID engine_id;       ///< Engine to display in build purchase list
-	EngineID variant_id;      ///< Variant group of the engine.
+	EngineID engine_id; ///< Engine to display in build purchase list
+	EngineID variant_id; ///< Variant group of the engine.
 	EngineDisplayFlags flags; ///< Flags for toggling/drawing (un)folded status and controlling indentation.
 	uint8_t indent; ///< Display indentation level.
 	uint16_t level_mask; ///< Mask of level continuations.
@@ -30,7 +30,7 @@ struct GUIEngineListItem {
 
 typedef GUIList<GUIEngineListItem, std::nullptr_t, CargoType> GUIEngineList;
 
-typedef bool EngList_SortTypeFunction(const GUIEngineListItem&, const GUIEngineListItem&); ///< argument type for #EngList_Sort.
+typedef bool EngList_SortTypeFunction(const GUIEngineListItem &, const GUIEngineListItem &); ///< argument type for #EngList_Sort.
 void EngList_Sort(GUIEngineList &el, EngList_SortTypeFunction compare);
 void EngList_SortPartial(GUIEngineList &el, EngList_SortTypeFunction compare, size_t begin, size_t num_items);
 
@@ -48,12 +48,13 @@ extern uint8_t _engine_sort_last_criteria[];
 extern bool _engine_sort_last_order[];
 extern bool _engine_sort_show_hidden_engines[];
 extern const std::initializer_list<const StringID> _engine_sort_listing[];
-extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
+extern EngList_SortTypeFunction *const _engine_sort_functions[][11];
 
 /* Functions in build_vehicle_gui.cpp */
 uint GetEngineListHeight(VehicleType type);
 void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, WidgetID button);
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes);
+void DrawEngineList(
+	VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes);
 void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, EngineID parent = EngineID::Invalid(), uint8_t indent = 0);
 
 #endif /* ENGINE_GUI_H */

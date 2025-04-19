@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file help_gui.h GUI to access manuals and related. */
+/** @file help_gui.h GUI to access manuals and related. */
 
 #ifndef HELP_GUI_H
 #define HELP_GUI_H

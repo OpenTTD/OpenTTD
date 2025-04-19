@@ -15,9 +15,9 @@
 /** Landscape types */
 enum class LandscapeType : uint8_t {
 	Temperate = 0,
-	Arctic    = 1,
-	Tropic    = 2,
-	Toyland   = 3,
+	Arctic = 1,
+	Tropic = 2,
+	Toyland = 3,
 };
 using LandscapeTypes = EnumBitSet<LandscapeType, uint8_t>;
 

@@ -8,6 +8,7 @@
 /** @file newgrf_act0_roadtypes.cpp NewGRF Action 0x00 handler for roadtypes. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../road.h"
 #include "newgrf_bytereader.h"
@@ -88,8 +89,12 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 									GrfMsg(1, "RoadTypeChangeInfo: Powered road type list: Road type {} road/tram type does not match road type {}, ignoring", resolved_rt, rt);
 								}
 								break;
-							case 0x18: rti->introduction_required_roadtypes.Set(resolved_rt); break;
-							case 0x19: rti->introduces_roadtypes.Set(resolved_rt);            break;
+							case 0x18:
+								rti->introduction_required_roadtypes.Set(resolved_rt);
+								break;
+							case 0x19:
+								rti->introduces_roadtypes.Set(resolved_rt);
+								break;
 						}
 					}
 				}
@@ -228,8 +233,26 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RTT_ROAD); }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RTT_ROAD); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RoadTypeReserveInfo(first, last, prop, buf, RTT_ROAD);
+}
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeReserveInfo(first, last, prop, buf, RTT_TRAM); }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadTypeChangeInfo(first, last, prop, buf, RTT_TRAM); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_ROADTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RoadTypeChangeInfo(first, last, prop, buf, RTT_ROAD);
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RoadTypeReserveInfo(first, last, prop, buf, RTT_TRAM);
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_TRAMTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RoadTypeChangeInfo(first, last, prop, buf, RTT_TRAM);
+}

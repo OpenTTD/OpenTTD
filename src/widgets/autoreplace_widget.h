@@ -12,25 +12,25 @@
 
 /** Widgets of the #ReplaceVehicleWindow class. */
 enum ReplaceVehicleWidgets : WidgetID {
-	WID_RV_CAPTION,                  ///< Caption of the window.
+	WID_RV_CAPTION, ///< Caption of the window.
 
 	/* Sort dropdown at the right. */
 	WID_RV_SORT_ASCENDING_DESCENDING, ///< Ascending/descending sort order button.
-	WID_RV_SHOW_HIDDEN_ENGINES,       ///< Toggle whether to display the hidden vehicles.
-	WID_RV_SORT_DROPDOWN,             ///< Dropdown for the sort criteria.
+	WID_RV_SHOW_HIDDEN_ENGINES, ///< Toggle whether to display the hidden vehicles.
+	WID_RV_SORT_DROPDOWN, ///< Dropdown for the sort criteria.
 
 	/* Left and right matrix + details. */
-	WID_RV_LEFT_MATRIX,              ///< The matrix on the left.
-	WID_RV_LEFT_SCROLLBAR,           ///< The scrollbar for the matrix on the left.
-	WID_RV_RIGHT_MATRIX,             ///< The matrix on the right.
-	WID_RV_RIGHT_SCROLLBAR,          ///< The scrollbar for the matrix on the right.
-	WID_RV_LEFT_DETAILS,             ///< Details of the entry on the left.
-	WID_RV_RIGHT_DETAILS,            ///< Details of the entry on the right.
+	WID_RV_LEFT_MATRIX, ///< The matrix on the left.
+	WID_RV_LEFT_SCROLLBAR, ///< The scrollbar for the matrix on the left.
+	WID_RV_RIGHT_MATRIX, ///< The matrix on the right.
+	WID_RV_RIGHT_SCROLLBAR, ///< The scrollbar for the matrix on the right.
+	WID_RV_LEFT_DETAILS, ///< Details of the entry on the left.
+	WID_RV_RIGHT_DETAILS, ///< Details of the entry on the right.
 
 	/* Button row. */
-	WID_RV_START_REPLACE,            ///< Start Replacing button.
-	WID_RV_INFO_TAB,                 ///< Info tab.
-	WID_RV_STOP_REPLACE,             ///< Stop Replacing button.
+	WID_RV_START_REPLACE, ///< Start Replacing button.
+	WID_RV_INFO_TAB, ///< Info tab.
+	WID_RV_STOP_REPLACE, ///< Stop Replacing button.
 
 	/* Train only widgets. */
 	WID_RV_RAIL_TYPE_DROPDOWN, ///< Dropdown to select railtype.

@@ -8,6 +8,7 @@
 /** @file newgrf_act0_roadstops.cpp NewGRF Action 0x00 handler for roadstops. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_roadstop.h"
@@ -102,7 +103,9 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x0B: // Road Stop Class name
-				AddStringForMapping(GRFStringID{buf.ReadWord()}, [rs = rs.get()](StringID str) { RoadStopClass::Get(rs->class_index)->name = str; });
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, [rs = rs.get()](StringID str) {
+					RoadStopClass::Get(rs->class_index)->name = str;
+				});
 				break;
 
 			case 0x0C: // The draw mode
@@ -152,5 +155,14 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADSTOPS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADSTOPS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadStopChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_ROADSTOPS>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_ROADSTOPS>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RoadStopChangeInfo(first, last, prop, buf);
+}

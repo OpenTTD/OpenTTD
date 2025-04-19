@@ -8,7 +8,9 @@
 /** @file script_storypageelementlist.cpp Implementation of ScriptStoryPageElementList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_storypageelementlist.hpp"
+
 #include "../../story_base.h"
 
 #include "../../safeguards.h"
@@ -17,7 +19,7 @@ ScriptStoryPageElementList::ScriptStoryPageElementList(StoryPageID story_page_id
 {
 	if (!ScriptStoryPage::IsValidStoryPage(story_page_id)) return;
 
-	ScriptList::FillList<StoryPageElement>(this,
-		[story_page_id](const StoryPageElement *pe) {return pe->page == story_page_id; }
-	);
+	ScriptList::FillList<StoryPageElement>(this, [story_page_id](const StoryPageElement *pe) {
+		return pe->page == story_page_id;
+	});
 }

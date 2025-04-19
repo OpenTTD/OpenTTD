@@ -8,17 +8,19 @@
 /** @file random_func.cpp Implementation of the pseudo random generator. */
 
 #include "../stdafx.h"
+
 #include "random_func.hpp"
-#include "bitmath_func.hpp"
+
 #include "../debug.h"
+#include "bitmath_func.hpp"
 
 #ifdef RANDOM_DEBUG
-#include "../network/network.h"
-#include "../network/network_server.h"
-#include "../network/network_internal.h"
-#include "../company_func.h"
-#include "../fileio_func.h"
-#include "../timer/timer_game_calendar.h"
+#	include "../company_func.h"
+#	include "../fileio_func.h"
+#	include "../network/network.h"
+#	include "../network/network_internal.h"
+#	include "../network/network_server.h"
+#	include "../timer/timer_game_calendar.h"
 #endif /* RANDOM_DEBUG */
 
 #if defined(_WIN32)
@@ -104,18 +106,20 @@ void RandomBytesWithFallback(std::span<uint8_t> buf)
 	auto res = getrandom(buf.data(), buf.size(), 0);
 	if (res > 0 && static_cast<size_t>(res) == buf.size()) return;
 #elif defined(__EMSCRIPTEN__)
-	auto res = EM_ASM_INT({
-		var buf = $0;
-		var bytes = $1;
+	auto res = EM_ASM_INT(
+		{
+			var buf = $0;
+			var bytes = $1;
 
-		var crypto = window.crypto;
-		if (crypto === undefined || crypto.getRandomValues === undefined) {
-			return -1;
-		}
+			var crypto = window.crypto;
+			if (crypto == = undefined || crypto.getRandomValues == = undefined) {
+				return -1;
+			}
 
-		crypto.getRandomValues(Module.HEAPU8.subarray(buf, buf + bytes));
-		return 1;
-	}, buf.data(), buf.size());
+			crypto.getRandomValues(Module.HEAPU8.subarray(buf, buf + bytes));
+			return 1;
+		},
+		buf.data(), buf.size());
 	if (res > 0) return;
 #else
 #	warning "No cryptographically-strong random generator available; using a fallback instead"

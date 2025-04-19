@@ -8,28 +8,29 @@
 /** @file graph_gui.cpp GUI that shows performance graphs. */
 
 #include "stdafx.h"
+
 #include "graph_gui.h"
-#include "window_gui.h"
+
+#include "core/geometry_func.hpp"
+#include "cargotype.h"
 #include "company_base.h"
 #include "company_gui.h"
-#include "economy_func.h"
-#include "cargotype.h"
-#include "strings_func.h"
-#include "window_func.h"
-#include "gfx_func.h"
-#include "core/geometry_func.hpp"
 #include "currency.h"
-#include "timer/timer.h"
-#include "timer/timer_window.h"
-#include "timer/timer_game_tick.h"
-#include "timer/timer_game_economy.h"
-#include "zoom_func.h"
+#include "economy_func.h"
+#include "gfx_func.h"
 #include "industry.h"
+#include "strings_func.h"
+#include "timer/timer.h"
+#include "timer/timer_game_economy.h"
+#include "timer/timer_game_tick.h"
+#include "timer/timer_window.h"
+#include "window_func.h"
+#include "window_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/graph_widget.h"
-
-#include "table/strings.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -40,7 +41,7 @@ static CargoTypes _legend_excluded_cargo_production_history;
 
 /* Apparently these don't play well with enums. */
 static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
-static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
+static const uint INVALID_DATAPOINT_POS = UINT_MAX; // Used to determine if the previous point was drawn.
 
 constexpr double INT64_MAX_IN_DOUBLE = static_cast<double>(INT64_MAX - 512); ///< The biggest double that when cast to int64_t still fits in a int64_t.
 static_assert(static_cast<int64_t>(INT64_MAX_IN_DOUBLE) < INT64_MAX);
@@ -76,7 +77,8 @@ struct GraphLegendWindow : Window {
 		DrawCompanyIcon(cid, rtl ? ir.right - d.width : ir.left, CentreBounds(ir.top, ir.bottom, d.height));
 
 		const Rect tr = ir.Indent(d.width + WidgetDimensions::scaled.hsep_normal, rtl);
-		DrawString(tr.left, tr.right, CentreBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_COMPANY_NAME_COMPANY_NUM, cid, cid), _legend_excluded_companies.Test(cid) ? TC_BLACK : TC_WHITE);
+		DrawString(tr.left, tr.right, CentreBounds(tr.top, tr.bottom, GetCharacterHeight(FS_NORMAL)), GetString(STR_COMPANY_NAME_COMPANY_NUM, cid, cid),
+			_legend_excluded_companies.Test(cid) ? TC_BLACK : TC_WHITE);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -143,12 +145,7 @@ static constexpr NWidgetPart _nested_graph_legend_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _graph_legend_desc(
-	WDP_AUTO, "graph_legend", 0, 0,
-	WC_GRAPH_LEGEND, WC_NONE,
-	{},
-	_nested_graph_legend_widgets
-);
+static WindowDesc _graph_legend_desc(WDP_AUTO, "graph_legend", 0, 0, WC_GRAPH_LEGEND, WC_NONE, {}, _nested_graph_legend_widgets);
 
 static void ShowGraphLegend()
 {
@@ -158,7 +155,7 @@ static void ShowGraphLegend()
 /** Contains the interval of a graph's data. */
 struct ValuesInterval {
 	OverflowSafeInt64 highest; ///< Highest value of this interval. Must be zero or greater.
-	OverflowSafeInt64 lowest;  ///< Lowest value of this interval. Must be zero or less.
+	OverflowSafeInt64 lowest; ///< Lowest value of this interval. Must be zero or less.
 };
 
 /******************/
@@ -167,23 +164,23 @@ struct ValuesInterval {
 
 struct BaseGraphWindow : Window {
 protected:
-	static const int GRAPH_MAX_DATASETS     =  64;
-	static const int GRAPH_BASE_COLOUR      =  GREY_SCALE(2);
-	static const int GRAPH_GRID_COLOUR      =  GREY_SCALE(3);
-	static const int GRAPH_AXIS_LINE_COLOUR =  GREY_SCALE(1);
-	static const int GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
-	static const int GRAPH_YEAR_LINE_COLOUR =  GREY_SCALE(5);
-	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
+	static const int GRAPH_MAX_DATASETS = 64;
+	static const int GRAPH_BASE_COLOUR = GREY_SCALE(2);
+	static const int GRAPH_GRID_COLOUR = GREY_SCALE(3);
+	static const int GRAPH_AXIS_LINE_COLOUR = GREY_SCALE(1);
+	static const int GRAPH_ZERO_LINE_COLOUR = GREY_SCALE(8);
+	static const int GRAPH_YEAR_LINE_COLOUR = GREY_SCALE(5);
+	static const int GRAPH_NUM_MONTHS = 24; ///< Number of months displayed in the graph.
 	static const int GRAPH_PAYMENT_RATE_STEPS = 20; ///< Number of steps on Payment rate graph.
-	static const int PAYMENT_GRAPH_X_STEP_DAYS    = 10; ///< X-axis step label for cargo payment rates "Days in transit".
+	static const int PAYMENT_GRAPH_X_STEP_DAYS = 10; ///< X-axis step label for cargo payment rates "Days in transit".
 	static const int PAYMENT_GRAPH_X_STEP_SECONDS = 20; ///< X-axis step label for cargo payment rates "Seconds in transit".
-	static const int ECONOMY_QUARTER_MINUTES = 3;  ///< Minutes per economic quarter.
-	static const int ECONOMY_MONTH_MINUTES = 1;  ///< Minutes per economic month.
+	static const int ECONOMY_QUARTER_MINUTES = 3; ///< Minutes per economic quarter.
+	static const int ECONOMY_MONTH_MINUTES = 1; ///< Minutes per economic month.
 
 	static const TextColour GRAPH_AXIS_LABEL_COLOUR = TC_BLACK; ///< colour of the graph axis label.
 
-	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
-	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
+	static const int MIN_GRAPH_NUM_LINES_Y = 9; ///< Minimal number of horizontal lines to draw.
+	static const int MIN_GRID_PIXEL_SIZE = 20; ///< Minimum distance between graph lines.
 
 	uint64_t excluded_data = 0; ///< bitmask of the datasets that shouldn't be displayed.
 	uint64_t excluded_range = 0; ///< bitmask of ranges that should not be displayed.
@@ -211,6 +208,7 @@ protected:
 		uint8_t range_bit;
 		uint8_t dash;
 	};
+
 	std::vector<DataSet> data{};
 
 	std::span<const StringID> ranges = {};
@@ -237,7 +235,7 @@ protected:
 
 		ValuesInterval current_interval;
 		current_interval.highest = INT64_MIN;
-		current_interval.lowest  = INT64_MAX;
+		current_interval.lowest = INT64_MAX;
 
 		for (const DataSet &dataset : this->data) {
 			if (HasBit(this->excluded_data, dataset.exclude_bit)) continue;
@@ -246,13 +244,13 @@ protected:
 			for (const OverflowSafeInt64 &datapoint : this->GetDataSetRange(dataset)) {
 				if (datapoint != INVALID_DATAPOINT) {
 					current_interval.highest = std::max(current_interval.highest, datapoint);
-					current_interval.lowest  = std::min(current_interval.lowest, datapoint);
+					current_interval.lowest = std::min(current_interval.lowest, datapoint);
 				}
 			}
 		}
 
 		/* Always include zero in the shown range. */
-		double abs_lower  = (current_interval.lowest > 0) ? 0 : (double)abs(current_interval.lowest);
+		double abs_lower = (current_interval.lowest > 0) ? 0 : (double)abs(current_interval.lowest);
 		double abs_higher = (current_interval.highest < 0) ? 0 : (double)current_interval.highest;
 
 		/* Prevent showing values too close to the graph limits. */
@@ -325,9 +323,9 @@ protected:
 	 */
 	void DrawGraph(Rect r) const
 	{
-		uint x, y;               ///< Reused whenever x and y coordinates are needed.
+		uint x, y; ///< Reused whenever x and y coordinates are needed.
 		ValuesInterval interval; ///< Interval that contains all of the graph data.
-		int x_axis_offset;       ///< Distance from the top of the graph to the x axis.
+		int x_axis_offset; ///< Distance from the top of the graph to the x axis.
 
 		/* the colours and cost array of GraphDrawer must accommodate
 		 * both values for cargo and companies. So if any are higher, quit */
@@ -338,10 +336,10 @@ protected:
 
 		/* Rect r will be adjusted to contain just the graph, with labels being
 		 * placed outside the area. */
-		r.top    += ScaleGUITrad(5) + GetCharacterHeight(FS_SMALL) / 2;
+		r.top += ScaleGUITrad(5) + GetCharacterHeight(FS_SMALL) / 2;
 		r.bottom -= (this->draw_dates ? 2 : 1) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4);
-		r.left   += ScaleGUITrad(rtl ? 5 : 9);
-		r.right  -= ScaleGUITrad(rtl ? 9 : 5);
+		r.left += ScaleGUITrad(rtl ? 5 : 9);
+		r.right -= ScaleGUITrad(rtl ? 9 : 5);
 
 		/* Initial number of horizontal lines. */
 		int num_hori_lines = 160 / ScaleGUITrad(MIN_GRID_PIXEL_SIZE);
@@ -431,13 +429,11 @@ protected:
 
 		for (int i = 0; i < (num_hori_lines + 1); i++) {
 			if (rtl) {
-				DrawString(r.right + ScaleGUITrad(4), r.right + label_width + ScaleGUITrad(4), y,
-					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
-					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT | SA_FORCE);
+				DrawString(r.right + ScaleGUITrad(4), r.right + label_width + ScaleGUITrad(4), y, GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label), GRAPH_AXIS_LABEL_COLOUR,
+					SA_RIGHT | SA_FORCE);
 			} else {
-				DrawString(r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y,
-					GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label),
-					GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT | SA_FORCE);
+				DrawString(
+					r.left - label_width - ScaleGUITrad(4), r.left - ScaleGUITrad(4), y, GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label), GRAPH_AXIS_LABEL_COLOUR, SA_RIGHT | SA_FORCE);
 			}
 
 			y_label -= y_label_separation;
@@ -456,12 +452,10 @@ protected:
 			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				if (rtl) {
-					DrawStringMultiLine(x + x_sep, x, y, this->height,
-						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
+					DrawStringMultiLine(x + x_sep, x, y, this->height, GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
 						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 				} else {
-					DrawStringMultiLine(x, x + x_sep, y, this->height,
-						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
+					DrawStringMultiLine(x, x + x_sep, y, this->height, GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
 						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 				}
 
@@ -564,9 +558,7 @@ protected:
 		}
 	}
 
-	BaseGraphWindow(WindowDesc &desc, StringID format_str_y_axis) :
-			Window(desc),
-			format_str_y_axis(format_str_y_axis)
+	BaseGraphWindow(WindowDesc &desc, StringID format_str_y_axis) : Window(desc), format_str_y_axis(format_str_y_axis)
 	{
 		SetWindowDirty(WC_GRAPH_LEGEND, 0);
 	}
@@ -614,7 +606,8 @@ public:
 					TimerGameEconomy::Month month = this->month;
 					TimerGameEconomy::Year year = this->year;
 					for (int i = 0; i < this->num_on_x_axis; i++) {
-						x_label_width = std::max(x_label_width, GetStringBoundingBox(GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year)).width);
+						x_label_width =
+							std::max(x_label_width, GetStringBoundingBox(GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year)).width);
 
 						month += this->month_increment;
 						if (month >= 12) {
@@ -630,13 +623,14 @@ public:
 
 				uint y_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, INT64_MAX)).width;
 
-				size.width  = std::max<uint>(size.width,  ScaleGUITrad(5) + y_label_width + this->num_vert_lines * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
+				size.width = std::max<uint>(size.width, ScaleGUITrad(5) + y_label_width + this->num_vert_lines * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
 				size.height = std::max<uint>(size.height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->draw_dates ? 3 : 1)) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4));
 				size.height = std::max<uint>(size.height, size.width / 3);
 				break;
 			}
 
-			default: break;
+			default:
+				break;
 		}
 	}
 
@@ -666,7 +660,8 @@ public:
 				break;
 			}
 
-			default: break;
+			default:
+				break;
 		}
 	}
 
@@ -691,7 +686,8 @@ public:
 				break;
 			}
 
-			default: break;
+			default:
+				break;
 		}
 	}
 
@@ -736,8 +732,7 @@ public:
 			mo += 12;
 		}
 
-		if (!initialize && this->excluded_data == excluded_companies.base() && this->num_on_x_axis == nums &&
-				this->year == yr && this->month == mo) {
+		if (!initialize && this->excluded_data == excluded_companies.base() && this->num_on_x_axis == nums && this->year == yr && this->month == mo) {
 			/* There's no reason to get new stats */
 			return;
 		}
@@ -770,14 +765,12 @@ public:
 	}
 };
 
-
 /********************/
 /* OPERATING PROFIT */
 /********************/
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
-	OperatingProfitGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
+	OperatingProfitGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -816,27 +809,19 @@ static constexpr NWidgetPart _nested_operating_profit_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _operating_profit_desc(
-	WDP_AUTO, "graph_operating_profit", 0, 0,
-	WC_OPERATING_PROFIT, WC_NONE,
-	{},
-	_nested_operating_profit_widgets
-);
-
+static WindowDesc _operating_profit_desc(WDP_AUTO, "graph_operating_profit", 0, 0, WC_OPERATING_PROFIT, WC_NONE, {}, _nested_operating_profit_widgets);
 
 void ShowOperatingProfitGraph()
 {
 	AllocateWindowDescFront<OperatingProfitGraphWindow>(_operating_profit_desc, 0);
 }
 
-
 /****************/
 /* INCOME GRAPH */
 /****************/
 
 struct IncomeGraphWindow : BaseGraphWindow {
-	IncomeGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
+	IncomeGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -875,12 +860,7 @@ static constexpr NWidgetPart _nested_income_graph_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _income_graph_desc(
-	WDP_AUTO, "graph_income", 0, 0,
-	WC_INCOME_GRAPH, WC_NONE,
-	{},
-	_nested_income_graph_widgets
-);
+static WindowDesc _income_graph_desc(WDP_AUTO, "graph_income", 0, 0, WC_INCOME_GRAPH, WC_NONE, {}, _nested_income_graph_widgets);
 
 void ShowIncomeGraph()
 {
@@ -892,8 +872,7 @@ void ShowIncomeGraph()
 /*******************/
 
 struct DeliveredCargoGraphWindow : BaseGraphWindow {
-	DeliveredCargoGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_COMMA)
+	DeliveredCargoGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_COMMA)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -932,12 +911,7 @@ static constexpr NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _delivered_cargo_graph_desc(
-	WDP_AUTO, "graph_delivered_cargo", 0, 0,
-	WC_DELIVERED_CARGO, WC_NONE,
-	{},
-	_nested_delivered_cargo_graph_widgets
-);
+static WindowDesc _delivered_cargo_graph_desc(WDP_AUTO, "graph_delivered_cargo", 0, 0, WC_DELIVERED_CARGO, WC_NONE, {}, _nested_delivered_cargo_graph_widgets);
 
 void ShowDeliveredCargoGraph()
 {
@@ -949,8 +923,7 @@ void ShowDeliveredCargoGraph()
 /***********************/
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
-	PerformanceHistoryGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_COMMA)
+	PerformanceHistoryGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_COMMA)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -996,12 +969,7 @@ static constexpr NWidgetPart _nested_performance_history_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _performance_history_desc(
-	WDP_AUTO, "graph_performance", 0, 0,
-	WC_PERFORMANCE_HISTORY, WC_NONE,
-	{},
-	_nested_performance_history_widgets
-);
+static WindowDesc _performance_history_desc(WDP_AUTO, "graph_performance", 0, 0, WC_PERFORMANCE_HISTORY, WC_NONE, {}, _nested_performance_history_widgets);
 
 void ShowPerformanceHistoryGraph()
 {
@@ -1013,8 +981,7 @@ void ShowPerformanceHistoryGraph()
 /*****************/
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
-	CompanyValueGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
+	CompanyValueGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -1053,12 +1020,7 @@ static constexpr NWidgetPart _nested_company_value_graph_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _company_value_graph_desc(
-	WDP_AUTO, "graph_company_value", 0, 0,
-	WC_COMPANY_VALUE, WC_NONE,
-	{},
-	_nested_company_value_graph_widgets
-);
+static WindowDesc _company_value_graph_desc(WDP_AUTO, "graph_company_value", 0, 0, WC_COMPANY_VALUE, WC_NONE, {}, _nested_company_value_graph_widgets);
 
 void ShowCompanyValueGraph()
 {
@@ -1074,8 +1036,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	Scrollbar *vscroll = nullptr; ///< Cargo list scrollbar.
 	uint legend_width = 0; ///< Width of legend 'blob'.
 
-	PaymentRatesGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
+	PaymentRatesGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
 	{
 		this->num_on_x_axis = GRAPH_PAYMENT_RATE_STEPS;
 		this->num_vert_lines = GRAPH_PAYMENT_RATE_STEPS;
@@ -1225,8 +1186,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	/** Update the payment rates on a regular interval. */
 	IntervalTimer<TimerWindow> update_payment_interval = {std::chrono::seconds(3), [this](auto) {
-		this->UpdatePaymentRates();
-	}};
+															  this->UpdatePaymentRates();
+														  }};
 
 	/**
 	 * Update the payment rates according to the latest information.
@@ -1288,13 +1249,7 @@ static constexpr NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _cargo_payment_rates_desc(
-	WDP_AUTO, "graph_cargo_payment_rates", 0, 0,
-	WC_PAYMENT_RATES, WC_NONE,
-	{},
-	_nested_cargo_payment_rates_widgets
-);
-
+static WindowDesc _cargo_payment_rates_desc(WDP_AUTO, "graph_cargo_payment_rates", 0, 0, WC_PAYMENT_RATES, WC_NONE, {}, _nested_cargo_payment_rates_widgets);
 
 void ShowCargoPaymentRates()
 {
@@ -1373,18 +1328,19 @@ struct PerformanceRatingDetailWindow : Window {
 				if (GetCurrency().rate < 1000) max /= GetCurrency().rate;
 				uint score_detail_width = GetStringBoundingBox(GetString(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, max, max)).width;
 
-				size.width = WidgetDimensions::scaled.frametext.Horizontal() + score_info_width + WidgetDimensions::scaled.hsep_wide + this->bar_width + WidgetDimensions::scaled.hsep_wide + score_detail_width;
-				uint left  = WidgetDimensions::scaled.frametext.left;
+				size.width =
+					WidgetDimensions::scaled.frametext.Horizontal() + score_info_width + WidgetDimensions::scaled.hsep_wide + this->bar_width + WidgetDimensions::scaled.hsep_wide + score_detail_width;
+				uint left = WidgetDimensions::scaled.frametext.left;
 				uint right = size.width - WidgetDimensions::scaled.frametext.right;
 
 				bool rtl = _current_text_dir == TD_RTL;
-				this->score_info_left  = rtl ? right - score_info_width : left;
+				this->score_info_left = rtl ? right - score_info_width : left;
 				this->score_info_right = rtl ? right : left + score_info_width;
 
-				this->score_detail_left  = rtl ? left : right - score_detail_width;
+				this->score_detail_left = rtl ? left : right - score_detail_width;
 				this->score_detail_right = rtl ? left + score_detail_width : right;
 
-				this->bar_left  = left + (rtl ? score_detail_width : score_info_width) + WidgetDimensions::scaled.hsep_wide;
+				this->bar_left = left + (rtl ? score_detail_width : score_info_width) + WidgetDimensions::scaled.hsep_wide;
 				this->bar_right = this->bar_left + this->bar_width - 1;
 				break;
 		}
@@ -1412,9 +1368,9 @@ struct PerformanceRatingDetailWindow : Window {
 		int colour_notdone = GetColourGradient(COLOUR_RED, SHADE_NORMAL);
 
 		/* Draw all the score parts */
-		int64_t val    = _score_part[company][score_type];
+		int64_t val = _score_part[company][score_type];
 		int64_t needed = _score_info[score_type].needed;
-		int   score  = _score_info[score_type].score;
+		int score = _score_info[score_type].score;
 
 		/* SCORE_TOTAL has its own rules ;) */
 		if (score_type == SCORE_TOTAL) {
@@ -1422,7 +1378,7 @@ struct PerformanceRatingDetailWindow : Window {
 			needed = SCORE_MAX;
 		}
 
-		uint bar_top  = CentreBounds(r.top, r.bottom, this->bar_height);
+		uint bar_top = CentreBounds(r.top, r.bottom, this->bar_height);
 		uint text_top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 
 		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
@@ -1440,8 +1396,8 @@ struct PerformanceRatingDetailWindow : Window {
 		}
 
 		/* Draw the bar */
-		if (x != this->bar_left)  GfxFillRect(this->bar_left, bar_top, x,               bar_top + this->bar_height - 1, rtl ? colour_notdone : colour_done);
-		if (x != this->bar_right) GfxFillRect(x,              bar_top, this->bar_right, bar_top + this->bar_height - 1, rtl ? colour_done : colour_notdone);
+		if (x != this->bar_left) GfxFillRect(this->bar_left, bar_top, x, bar_top + this->bar_height - 1, rtl ? colour_notdone : colour_done);
+		if (x != this->bar_right) GfxFillRect(x, bar_top, this->bar_right, bar_top + this->bar_height - 1, rtl ? colour_done : colour_notdone);
 
 		/* Draw it */
 		DrawString(this->bar_left, this->bar_right, text_top, GetString(STR_PERFORMANCE_DETAIL_PERCENT, Clamp<int64_t>(val, 0, needed) * 100 / needed), TC_FROMSTRING, SA_HOR_CENTER);
@@ -1531,15 +1487,11 @@ CompanyID PerformanceRatingDetailWindow::company = CompanyID::Invalid();
 struct IndustryProductionGraphWindow : BaseGraphWindow {
 	uint line_height = 0; ///< Pixel height of each cargo type row.
 	Scrollbar *vscroll = nullptr; ///< Cargo list scrollbar.
-	uint legend_width = 0;  ///< Width of legend 'blob'.
+	uint legend_width = 0; ///< Width of legend 'blob'.
 
-	static inline constexpr StringID RANGE_LABELS[] = {
-		STR_GRAPH_INDUSTRY_RANGE_PRODUCED,
-		STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED
-	};
+	static inline constexpr StringID RANGE_LABELS[] = {STR_GRAPH_INDUSTRY_RANGE_PRODUCED, STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED};
 
-	IndustryProductionGraphWindow(WindowDesc &desc, WindowNumber window_number) :
-			BaseGraphWindow(desc, STR_JUST_COMMA)
+	IndustryProductionGraphWindow(WindowDesc &desc, WindowNumber window_number) : BaseGraphWindow(desc, STR_JUST_COMMA)
 	{
 		this->num_on_x_axis = GRAPH_NUM_MONTHS;
 		this->num_vert_lines = GRAPH_NUM_MONTHS;
@@ -1802,12 +1754,7 @@ static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _industry_production_desc(
-	WDP_AUTO, "graph_industry_production", 0, 0,
-	WC_INDUSTRY_PRODUCTION, WC_INDUSTRY_VIEW,
-	{},
-	_nested_industry_production_widgets
-);
+static WindowDesc _industry_production_desc(WDP_AUTO, "graph_industry_production", 0, 0, WC_INDUSTRY_PRODUCTION, WC_INDUSTRY_VIEW, {}, _nested_industry_production_widgets);
 
 void ShowIndustryProductionGraph(WindowNumber window_number)
 {
@@ -1867,12 +1814,7 @@ static constexpr NWidgetPart _nested_performance_rating_detail_widgets[] = {
 };
 /* clang-format on */
 
-static WindowDesc _performance_rating_detail_desc(
-	WDP_AUTO, "league_details", 0, 0,
-	WC_PERFORMANCE_DETAIL, WC_NONE,
-	{},
-	_nested_performance_rating_detail_widgets
-);
+static WindowDesc _performance_rating_detail_desc(WDP_AUTO, "league_details", 0, 0, WC_PERFORMANCE_DETAIL, WC_NONE, {}, _nested_performance_rating_detail_widgets);
 
 void ShowPerformanceRatingDetail()
 {

@@ -8,18 +8,19 @@
 /** @file clear_cmd.cpp Commands related to clear tiles. */
 
 #include "stdafx.h"
+
+#include "core/random_func.hpp"
 #include "clear_map.h"
 #include "command_func.h"
-#include "landscape.h"
 #include "genworld.h"
-#include "viewport_func.h"
-#include "core/random_func.hpp"
-#include "newgrf_generic.h"
+#include "landscape.h"
 #include "landscape_cmd.h"
+#include "newgrf_generic.h"
+#include "viewport_func.h"
 
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "table/clear_land.h"
+#include "table/sprites.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
 
@@ -119,7 +120,8 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case CLEAR_ROCKS:
-			DrawGroundSprite((HasGrfMiscBit(GrfMiscBit::SecondRockyTileSet) && (TileHash(ti->x, ti->y) & 1) ? SPR_FLAT_ROCKY_LAND_2 : SPR_FLAT_ROCKY_LAND_1) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			DrawGroundSprite(
+				(HasGrfMiscBit(GrfMiscBit::SecondRockyTileSet) && (TileHash(ti->x, ti->y) & 1) ? SPR_FLAT_ROCKY_LAND_2 : SPR_FLAT_ROCKY_LAND_1) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			break;
 
 		case CLEAR_FIELDS:
@@ -173,7 +175,6 @@ static void UpdateFences(TileIndex tile)
 
 	if (dirty) MarkTileDirtyByTile(tile);
 }
-
 
 /** Convert to or from snowy tiles. */
 static void TileLoopClearAlps(TileIndex tile)
@@ -251,9 +252,14 @@ static void TileLoop_Clear(TileIndex tile)
 	AmbientSoundEffect(tile);
 
 	switch (_settings_game.game_creation.landscape) {
-		case LandscapeType::Tropic: TileLoopClearDesert(tile); break;
-		case LandscapeType::Arctic: TileLoopClearAlps(tile);   break;
-		default: break;
+		case LandscapeType::Tropic:
+			TileLoopClearDesert(tile);
+			break;
+		case LandscapeType::Arctic:
+			TileLoopClearAlps(tile);
+			break;
+		default:
+			break;
 	}
 
 	if (IsSnowTile(tile)) return;
@@ -340,7 +346,7 @@ void GenerateClearTile()
 				} while (!IsTileType(tile_new, MP_CLEAR) || IsClearGround(tile_new, CLEAR_DESERT));
 				tile = tile_new;
 			}
-get_out:;
+		get_out:;
 		}
 	} while (--i);
 }
@@ -354,12 +360,12 @@ static void GetTileDesc_Clear(TileIndex tile, TileDesc &td)
 {
 	/* Each pair holds a normal and a snowy ClearGround description. */
 	static constexpr std::pair<StringID, StringID> clear_land_str[] = {
-		{STR_LAI_CLEAR_DESCRIPTION_GRASS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS},
+		{STR_LAI_CLEAR_DESCRIPTION_GRASS, STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS},
 		{STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND},
-		{STR_LAI_CLEAR_DESCRIPTION_ROCKS,      STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS},
-		{STR_LAI_CLEAR_DESCRIPTION_FIELDS,     STR_EMPTY},
-		{STR_EMPTY,                            STR_EMPTY}, // CLEAR_SNOW does not appear in the map.
-		{STR_LAI_CLEAR_DESCRIPTION_DESERT,     STR_EMPTY},
+		{STR_LAI_CLEAR_DESCRIPTION_ROCKS, STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS},
+		{STR_LAI_CLEAR_DESCRIPTION_FIELDS, STR_EMPTY},
+		{STR_EMPTY, STR_EMPTY}, // CLEAR_SNOW does not appear in the map.
+		{STR_LAI_CLEAR_DESCRIPTION_DESERT, STR_EMPTY},
 	};
 
 	if (!IsSnowTile(tile) && IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
@@ -382,18 +388,18 @@ static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlags flags, int
 }
 
 extern const TileTypeProcs _tile_type_clear_procs = {
-	DrawTile_Clear,           ///< draw_tile_proc
-	GetSlopePixelZ_Clear,     ///< get_slope_z_proc
-	ClearTile_Clear,          ///< clear_tile_proc
-	nullptr,                     ///< add_accepted_cargo_proc
-	GetTileDesc_Clear,        ///< get_tile_desc_proc
+	DrawTile_Clear, ///< draw_tile_proc
+	GetSlopePixelZ_Clear, ///< get_slope_z_proc
+	ClearTile_Clear, ///< clear_tile_proc
+	nullptr, ///< add_accepted_cargo_proc
+	GetTileDesc_Clear, ///< get_tile_desc_proc
 	GetTileTrackStatus_Clear, ///< get_tile_track_status_proc
-	nullptr,                     ///< click_tile_proc
-	nullptr,                     ///< animate_tile_proc
-	TileLoop_Clear,           ///< tile_loop_proc
-	ChangeTileOwner_Clear,    ///< change_tile_owner_proc
-	nullptr,                     ///< add_produced_cargo_proc
-	nullptr,                     ///< vehicle_enter_tile_proc
-	GetFoundation_Clear,      ///< get_foundation_proc
-	TerraformTile_Clear,      ///< terraform_tile_proc
+	nullptr, ///< click_tile_proc
+	nullptr, ///< animate_tile_proc
+	TileLoop_Clear, ///< tile_loop_proc
+	ChangeTileOwner_Clear, ///< change_tile_owner_proc
+	nullptr, ///< add_produced_cargo_proc
+	nullptr, ///< vehicle_enter_tile_proc
+	GetFoundation_Clear, ///< get_foundation_proc
+	TerraformTile_Clear, ///< terraform_tile_proc
 };

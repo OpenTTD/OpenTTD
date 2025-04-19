@@ -8,7 +8,9 @@
 /** @file script_base.cpp Implementation of ScriptBase. */
 
 #include "../../stdafx.h"
+
 #include "script_base.hpp"
+
 #include "script_error.hpp"
 
 #include "../../safeguards.h"

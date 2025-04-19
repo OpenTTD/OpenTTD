@@ -11,24 +11,24 @@
 #define NEWGRF_STATION_H
 
 #include "core/enum_type.hpp"
+#include "cargo_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
-#include "cargo_type.h"
-#include "station_type.h"
-#include "rail_type.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
+#include "rail_type.h"
+#include "station_type.h"
 
 /** Scope resolver for stations. */
 struct StationScopeResolver : public ScopeResolver {
-	TileIndex tile;                     ///< %Tile of the station.
-	struct BaseStation *st;             ///< Instance of the station.
+	TileIndex tile; ///< %Tile of the station.
+	struct BaseStation *st; ///< Instance of the station.
 	const struct StationSpec *statspec; ///< Station (type) specification.
-	CargoType cargo_type;                 ///< Type of cargo of the station.
-	Axis axis;                          ///< Station axis, used only for the slope check callback.
+	CargoType cargo_type; ///< Type of cargo of the station.
+	Axis axis; ///< Station axis, used only for the slope check callback.
 
 	/**
 	 * Constructor for station scopes.
@@ -37,8 +37,8 @@ struct StationScopeResolver : public ScopeResolver {
 	 * @param st Instance of the station.
 	 * @param tile %Tile of the station.
 	 */
-	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
-		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(INVALID_AXIS)
+	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile) :
+		ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(INVALID_AXIS)
 	{
 	}
 
@@ -53,8 +53,7 @@ struct StationResolverObject : public SpecializedResolverObject<StationRandomTri
 	StationScopeResolver station_scope; ///< The station scope resolver.
 	std::optional<TownScopeResolver> town_scope = std::nullopt; ///< The town scope resolver (created on the first call).
 
-	StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile,
-			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
+	StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
 	TownScopeResolver *GetTown();
 
@@ -105,11 +104,8 @@ using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
 
 /** Station specification. */
 struct StationSpec : NewGRFSpecBase<StationClassID> {
-	StationSpec() : name(0),
-		disallowed_platforms(0), disallowed_lengths(0),
-		cargo_threshold(0), cargo_triggers(0),
-		callback_mask(0), flags(0)
-	{}
+	StationSpec() : name(0), disallowed_platforms(0), disallowed_lengths(0), cargo_threshold(0), cargo_triggers(0), callback_mask(0), flags(0) {}
+
 	/**
 	 * Properties related the the grf file.
 	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
@@ -117,7 +113,7 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 	 * evaluating callbacks.
 	 */
 	VariableGRFFileProps grf_prop;
-	StringID name;             ///< Name of this station.
+	StringID name; ///< Name of this station.
 
 	/**
 	 * Bitmask of number of platforms available for the station.

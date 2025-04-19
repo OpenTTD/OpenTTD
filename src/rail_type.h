@@ -14,22 +14,22 @@
 
 typedef uint32_t RailTypeLabel;
 
-static const RailTypeLabel RAILTYPE_LABEL_RAIL     = 'RAIL';
+static const RailTypeLabel RAILTYPE_LABEL_RAIL = 'RAIL';
 static const RailTypeLabel RAILTYPE_LABEL_ELECTRIC = 'ELRL';
-static const RailTypeLabel RAILTYPE_LABEL_MONO     = 'MONO';
-static const RailTypeLabel RAILTYPE_LABEL_MAGLEV   = 'MGLV';
+static const RailTypeLabel RAILTYPE_LABEL_MONO = 'MONO';
+static const RailTypeLabel RAILTYPE_LABEL_MAGLEV = 'MGLV';
 
 /**
  * Enumeration for all possible railtypes.
  */
 enum RailType : uint8_t {
-	RAILTYPE_BEGIN    = 0,          ///< Used for iterations
-	RAILTYPE_RAIL     = 0,          ///< Standard non-electric rails
-	RAILTYPE_ELECTRIC = 1,          ///< Electric rails
-	RAILTYPE_MONO     = 2,          ///< Monorail
-	RAILTYPE_MAGLEV   = 3,          ///< Maglev
-	RAILTYPE_END      = 64,         ///< Used for iterations
-	INVALID_RAILTYPE  = 0xFF,       ///< Flag for invalid railtype
+	RAILTYPE_BEGIN = 0, ///< Used for iterations
+	RAILTYPE_RAIL = 0, ///< Standard non-electric rails
+	RAILTYPE_ELECTRIC = 1, ///< Electric rails
+	RAILTYPE_MONO = 2, ///< Monorail
+	RAILTYPE_MAGLEV = 3, ///< Maglev
+	RAILTYPE_END = 64, ///< Used for iterations
+	INVALID_RAILTYPE = 0xFF, ///< Flag for invalid railtype
 };
 
 /** Allow incrementing of Track variables */

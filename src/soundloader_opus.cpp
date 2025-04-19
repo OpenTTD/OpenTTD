@@ -8,11 +8,12 @@
 /** @file sound_opus.cpp Loading of opus sounds. */
 
 #include "stdafx.h"
+
+#include <opusfile.h>
+
 #include "random_access_file_type.h"
 #include "sound_type.h"
 #include "soundloader_type.h"
-
-#include <opusfile.h>
 
 #include "safeguards.h"
 

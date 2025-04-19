@@ -10,15 +10,15 @@
 #ifndef CARGOPACKET_H
 #define CARGOPACKET_H
 
-#include "core/pool_type.hpp"
-#include "economy_type.h"
-#include "station_type.h"
-#include "order_type.h"
-#include "cargo_type.h"
-#include "source_type.h"
-#include "vehicle_type.h"
 #include "core/multimap.hpp"
+#include "core/pool_type.hpp"
+#include "cargo_type.h"
+#include "economy_type.h"
+#include "order_type.h"
 #include "saveload/saveload.h"
+#include "source_type.h"
+#include "station_type.h"
+#include "vehicle_type.h"
 
 /** Unique identifier for a single cargo packet. */
 using CargoPacketID = PoolID<uint32_t, struct CargoPacketIDTag, 0xFFF000, 0xFFFFFF>;
@@ -31,7 +31,8 @@ extern CargoPacketPool _cargopacket_pool;
 
 struct GoodsEntry; // forward-declare for Stage() and RerouteStalePackets()
 
-template <class Tinst, class Tcont> class CargoList;
+template <class Tinst, class Tcont>
+class CargoList;
 class StationCargoList; // forward-declare, so we can use it in VehicleCargoList.
 extern SaveLoadTable GetCargoPacketDesc();
 
@@ -64,11 +65,13 @@ private:
 	StationID next_hop = StationID::Invalid(); ///< Station where the cargo wants to go next.
 
 	/** The CargoList caches, thus needs to know about it. */
-	template <class Tinst, class Tcont> friend class CargoList;
+	template <class Tinst, class Tcont>
+	friend class CargoList;
 	friend class VehicleCargoList;
 	friend class StationCargoList;
 	/** We want this to be saved, right? */
 	friend SaveLoadTable GetCargoPacketDesc();
+
 public:
 	/** Maximum number of items in a single cargo packet. */
 	static const uint16_t MAX_COUNT = UINT16_MAX;
@@ -79,7 +82,7 @@ public:
 	CargoPacket(uint16_t count, Money feeder_share, CargoPacket &original);
 
 	/** Destroy the packet. */
-	~CargoPacket() { }
+	~CargoPacket() {}
 
 	CargoPacket *Split(uint new_size);
 	void Merge(CargoPacket *cp);
@@ -286,9 +289,9 @@ public:
 	enum MoveToAction : uint8_t {
 		MTA_BEGIN = 0,
 		MTA_TRANSFER = 0, ///< Transfer the cargo to the station.
-		MTA_DELIVER,      ///< Deliver the cargo to some town or industry.
-		MTA_KEEP,         ///< Keep the cargo in the vehicle.
-		MTA_LOAD,         ///< Load the cargo from the station.
+		MTA_DELIVER, ///< Deliver the cargo to some town or industry.
+		MTA_KEEP, ///< Keep the cargo in the vehicle.
+		MTA_LOAD, ///< Load the cargo from the station.
 		MTA_END,
 		NUM_MOVE_TO_ACTION = MTA_END
 	};
@@ -344,7 +347,7 @@ protected:
 	/** The (direct) parent of this class. */
 	typedef CargoList<VehicleCargoList, CargoPacketList> Parent;
 
-	Money feeder_share;                     ///< Cache for the feeder share.
+	Money feeder_share; ///< Cache for the feeder share.
 	uint action_counts[NUM_MOVE_TO_ACTION]; ///< Counts of cargo to be transferred, delivered, kept and loaded.
 
 	template <class Taction>
@@ -358,10 +361,7 @@ protected:
 	 */
 	inline void AssertCountConsistency() const
 	{
-		assert(this->action_counts[MTA_KEEP] +
-				this->action_counts[MTA_DELIVER] +
-				this->action_counts[MTA_TRANSFER] +
-				this->action_counts[MTA_LOAD] == this->count);
+		assert(this->action_counts[MTA_KEEP] + this->action_counts[MTA_DELIVER] + this->action_counts[MTA_TRANSFER] + this->action_counts[MTA_LOAD] == this->count);
 	}
 
 	void AddToCache(const CargoPacket *cp);
@@ -370,8 +370,7 @@ protected:
 	void AddToMeta(const CargoPacket *cp, MoveToAction action);
 	void RemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count);
 
-	static MoveToAction ChooseAction(const CargoPacket *cp, StationID cargo_next,
-			StationID current_station, bool accepted, StationIDStack next_station);
+	static MoveToAction ChooseAction(const CargoPacket *cp, StationID cargo_next, StationID current_station, bool accepted, StationIDStack next_station);
 
 public:
 	/** The station cargo list needs to control the unloading. */
@@ -503,10 +502,7 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy == cp2->source_xy &&
-				cp1->periods_in_transit == cp2->periods_in_transit &&
-				cp1->first_station == cp2->first_station &&
-				cp1->source == cp2->source;
+		return cp1->source_xy == cp2->source_xy && cp1->periods_in_transit == cp2->periods_in_transit && cp1->first_station == cp2->first_station && cp1->source == cp2->source;
 	}
 };
 
@@ -617,10 +613,7 @@ public:
 	 */
 	static bool AreMergable(const CargoPacket *cp1, const CargoPacket *cp2)
 	{
-		return cp1->source_xy == cp2->source_xy &&
-				cp1->periods_in_transit == cp2->periods_in_transit &&
-				cp1->first_station == cp2->first_station &&
-				cp1->source == cp2->source;
+		return cp1->source_xy == cp2->source_xy && cp1->periods_in_transit == cp2->periods_in_transit && cp1->first_station == cp2->first_station && cp1->source == cp2->source;
 	}
 };
 

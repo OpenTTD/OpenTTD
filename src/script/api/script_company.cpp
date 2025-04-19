@@ -8,22 +8,24 @@
 /** @file script_company.cpp Implementation of ScriptCompany. */
 
 #include "../../stdafx.h"
+
 #include "script_company.hpp"
-#include "script_error.hpp"
-#include "script_companymode.hpp"
-#include "../../company_func.h"
+
 #include "../../company_base.h"
+#include "../../company_cmd.h"
+#include "../../company_func.h"
 #include "../../company_manager_face.h"
 #include "../../economy_func.h"
-#include "../../object_type.h"
-#include "../../strings_func.h"
-#include "../../tile_map.h"
-#include "../../string_func.h"
-#include "../../settings_func.h"
-#include "../../company_cmd.h"
 #include "../../misc_cmd.h"
 #include "../../object_cmd.h"
+#include "../../object_type.h"
 #include "../../settings_cmd.h"
+#include "../../settings_func.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
+#include "../../tile_map.h"
+#include "script_companymode.hpp"
+#include "script_error.hpp"
 
 #include "table/strings.h"
 
@@ -186,7 +188,6 @@
 	}
 	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].company_value;
 }
-
 
 /* static */ Money ScriptCompany::GetBankBalance(ScriptCompany::CompanyID company)
 {

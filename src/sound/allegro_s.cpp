@@ -9,14 +9,16 @@
 
 #ifdef WITH_ALLEGRO
 
-#include "../stdafx.h"
+#	include "../stdafx.h"
 
-#include "../mixer.h"
-#include "../debug.h"
-#include "allegro_s.h"
-#include <allegro.h>
+#	include "allegro_s.h"
 
-#include "../safeguards.h"
+#	include <allegro.h>
+
+#	include "../debug.h"
+#	include "../mixer.h"
+
+#	include "../safeguards.h"
 
 static FSoundDriver_Allegro iFSoundDriver_Allegro;
 /** The stream we are writing too */
@@ -37,7 +39,7 @@ void SoundDriver_Allegro::MainLoop()
 	MxMixSamples(data, _buffer_size);
 
 	/* Allegro sound is always unsigned, so we need to correct that */
-	uint16_t *snd = (uint16_t*)data;
+	uint16_t *snd = (uint16_t *)data;
 	for (int i = 0; i < _buffer_size * 2; i++) snd[i] ^= 0x8000;
 
 	/* Tell we've filled the stream */

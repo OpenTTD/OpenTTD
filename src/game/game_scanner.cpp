@@ -9,14 +9,14 @@
 
 #include "../stdafx.h"
 
-#include "../script/squirrel_class.hpp"
-#include "game_info.hpp"
 #include "game_scanner.hpp"
 
 #include "../3rdparty/fmt/format.h"
 
-#include "../safeguards.h"
+#include "../script/squirrel_class.hpp"
+#include "game_info.hpp"
 
+#include "../safeguards.h"
 
 void GameScannerInfo::Initialize()
 {
@@ -68,7 +68,6 @@ GameInfo *GameScannerInfo::FindInfo(const std::string &name, int version, bool f
 
 	return info;
 }
-
 
 void GameScannerLibrary::Initialize()
 {

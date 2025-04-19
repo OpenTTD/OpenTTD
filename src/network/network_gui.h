@@ -11,11 +11,11 @@
 #define NETWORK_GUI_H
 
 #include "../company_type.h"
-#include "../timer/timer_game_calendar.h"
 #include "../economy_type.h"
+#include "../timer/timer_game_calendar.h"
 #include "../window_type.h"
-#include "network_type.h"
 #include "network_gamelist.h"
+#include "network_type.h"
 
 void ShowNetworkNeedPassword(std::shared_ptr<class NetworkAuthenticationPasswordRequest> request);
 void ShowNetworkChatQueryWindow(DestType type, int dest);
@@ -30,12 +30,12 @@ void ShowSurveyResultTextfileWindow();
 struct NetworkCompanyInfo : NetworkCompanyStats {
 	std::string company_name; ///< Company name
 	TimerGameCalendar::Year inaugurated_year; ///< What year the company started in
-	Money company_value;      ///< The company value
-	Money money;              ///< The amount of money the company has
-	Money income;             ///< How much did the company earn last year
-	uint16_t performance;       ///< What was his performance last month?
-	bool use_password;        ///< Is there a password
-	std::string clients;      ///< The clients that control this company (Name1, name2, ..)
+	Money company_value; ///< The company value
+	Money money; ///< The amount of money the company has
+	Money income; ///< How much did the company earn last year
+	uint16_t performance; ///< What was his performance last month?
+	bool use_password; ///< Is there a password
+	std::string clients; ///< The clients that control this company (Name1, name2, ..)
 };
 
 enum NetworkRelayWindowCloseData : uint8_t {

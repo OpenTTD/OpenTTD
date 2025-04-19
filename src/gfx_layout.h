@@ -10,24 +10,25 @@
 #ifndef GFX_LAYOUT_H
 #define GFX_LAYOUT_H
 
-#include "fontcache.h"
-#include "gfx_func.h"
-#include "core/math_func.hpp"
-
 #include <stack>
 #include <string_view>
+
+#include "core/math_func.hpp"
+#include "fontcache.h"
+#include "gfx_func.h"
 
 /**
  * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
  * of the same text, e.g. on line breaks.
  */
 struct FontState {
-	FontSize fontsize;       ///< Current font size.
-	TextColour cur_colour;   ///< Current text colour.
+	FontSize fontsize; ///< Current font size.
+	TextColour cur_colour; ///< Current text colour.
 
 	std::stack<TextColour, std::vector<TextColour>> colour_stack; ///< Stack of colours to assist with colour switching.
 
 	FontState() : fontsize(FS_END), cur_colour(TC_INVALID) {}
+
 	FontState(TextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour) {}
 
 	/**
@@ -74,7 +75,7 @@ struct FontState {
  */
 class Font {
 public:
-	FontCache *fc;     ///< The font we are using.
+	FontCache *fc; ///< The font we are using.
 	TextColour colour; ///< The colour this font has to be.
 
 	Font(FontSize size, TextColour colour);
@@ -97,10 +98,10 @@ public:
 		int16_t right; ///< Right-most position of glyph.
 		int16_t top; ///< Top-most position of glyph.
 
-		constexpr inline Position(int16_t left, int16_t right, int16_t top) : left(left), right(right), top(top) { }
+		constexpr inline Position(int16_t left, int16_t right, int16_t top) : left(left), right(right), top(top) {}
 
 		/** Conversion from a single point to a Position. */
-		constexpr inline Position(const Point &pt) : left(pt.x), right(pt.x), top(pt.y) { }
+		constexpr inline Position(const Point &pt) : left(pt.x), right(pt.x), top(pt.y) {}
 	};
 
 	/** Visual run contains data about the bit of text with the same font. */
@@ -140,13 +141,13 @@ class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Lin
 
 	/** Key into the linecache */
 	struct LineCacheKey {
-		FontState state_before;  ///< Font state at the beginning of the line.
-		std::string str;         ///< Source string of the line (including colour and font size codes).
+		FontState state_before; ///< Font state at the beginning of the line.
+		std::string str; ///< Source string of the line (including colour and font size codes).
 	};
 
 	struct LineCacheQuery {
 		const FontState &state_before; ///< Font state at the beginning of the line.
-		std::string_view str;    ///< Source string of the line (including colour and font size codes).
+		std::string_view str; ///< Source string of the line (including colour and font size codes).
 	};
 
 	/** Comparator for std::map */
@@ -163,18 +164,20 @@ class Layouter : public std::vector<std::unique_ptr<const ParagraphLayouter::Lin
 			return lhs.str < rhs.str;
 		}
 	};
+
 public:
 	/** Item in the linecache */
 	struct LineCacheItem {
 		/* Due to the type of data in the buffer differing depending on the Layouter, we need to pass our own deleter routine. */
-		using Buffer = std::unique_ptr<void, void(*)(void *)>;
+		using Buffer = std::unique_ptr<void, void (*)(void *)>;
 		/* Stuff that cannot be freed until the ParagraphLayout is freed */
-		Buffer buffer{nullptr, [](void *){}}; ///< Accessed by our ParagraphLayout::nextLine.
-		FontMap runs;              ///< Accessed by our ParagraphLayout::nextLine.
+		Buffer buffer{nullptr, [](void *) {}}; ///< Accessed by our ParagraphLayout::nextLine.
+		FontMap runs; ///< Accessed by our ParagraphLayout::nextLine.
 
-		FontState state_after;     ///< Font state after the line.
+		FontState state_after; ///< Font state after the line.
 		std::unique_ptr<ParagraphLayouter> layout = nullptr; ///< Layout of the line.
 	};
+
 private:
 	typedef std::map<LineCacheKey, LineCacheItem, LineCacheCompare> LineCache;
 	static LineCache *linecache;
@@ -183,6 +186,7 @@ private:
 
 	using FontColourMap = std::map<TextColour, std::unique_ptr<Font>>;
 	static FontColourMap fonts[FS_END];
+
 public:
 	static Font *GetFont(FontSize size, TextColour colour);
 

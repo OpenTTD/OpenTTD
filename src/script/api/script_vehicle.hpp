@@ -10,9 +10,9 @@
 #ifndef SCRIPT_VEHICLE_HPP
 #define SCRIPT_VEHICLE_HPP
 
-#include "script_road.hpp"
 #include "../../engine_type.h"
 #include "../../group_type.h"
+#include "script_road.hpp"
 
 /**
  * Class that handles all vehicle related functions.
@@ -30,43 +30,43 @@ public:
 		ERR_VEHICLE_BASE = ScriptError::ERR_CAT_VEHICLE << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Too many vehicles in the game, can't build any more. */
-		ERR_VEHICLE_TOO_MANY,                   // [STR_ERROR_TOO_MANY_VEHICLES_IN_GAME]
+		ERR_VEHICLE_TOO_MANY, // [STR_ERROR_TOO_MANY_VEHICLES_IN_GAME]
 
 		/** Vehicle is not available */
-		ERR_VEHICLE_NOT_AVAILABLE,              // [STR_ERROR_AIRCRAFT_NOT_AVAILABLE, STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE, STR_ERROR_SHIP_NOT_AVAILABLE, STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE]
+		ERR_VEHICLE_NOT_AVAILABLE, // [STR_ERROR_AIRCRAFT_NOT_AVAILABLE, STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE, STR_ERROR_SHIP_NOT_AVAILABLE, STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE]
 
 		/** Vehicle can't be built due to game settings */
-		ERR_VEHICLE_BUILD_DISABLED,             // [STR_ERROR_CAN_T_BUY_TRAIN, STR_ERROR_CAN_T_BUY_ROAD_VEHICLE, STR_ERROR_CAN_T_BUY_SHIP, STR_ERROR_CAN_T_BUY_AIRCRAFT]
+		ERR_VEHICLE_BUILD_DISABLED, // [STR_ERROR_CAN_T_BUY_TRAIN, STR_ERROR_CAN_T_BUY_ROAD_VEHICLE, STR_ERROR_CAN_T_BUY_SHIP, STR_ERROR_CAN_T_BUY_AIRCRAFT]
 
 		/** Vehicle can't be build in the selected depot */
-		ERR_VEHICLE_WRONG_DEPOT,                // [STR_ERROR_DEPOT_WRONG_DEPOT_TYPE]
+		ERR_VEHICLE_WRONG_DEPOT, // [STR_ERROR_DEPOT_WRONG_DEPOT_TYPE]
 
 		/** Vehicle can't return to the depot */
-		ERR_VEHICLE_CANNOT_SEND_TO_DEPOT,       // [STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT, STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT, STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT, STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR]
+		ERR_VEHICLE_CANNOT_SEND_TO_DEPOT, // [STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT, STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT, STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT, STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR]
 
 		/** Vehicle can't start / stop */
-		ERR_VEHICLE_CANNOT_START_STOP,          // [STR_ERROR_CAN_T_STOP_START_TRAIN, STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE, STR_ERROR_CAN_T_STOP_START_SHIP, STR_ERROR_CAN_T_STOP_START_AIRCRAFT]
+		ERR_VEHICLE_CANNOT_START_STOP, // [STR_ERROR_CAN_T_STOP_START_TRAIN, STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE, STR_ERROR_CAN_T_STOP_START_SHIP, STR_ERROR_CAN_T_STOP_START_AIRCRAFT]
 
 		/** Vehicle can't turn */
-		ERR_VEHICLE_CANNOT_TURN,                // [STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN, STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN, STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS]
+		ERR_VEHICLE_CANNOT_TURN, // [STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN, STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN, STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS]
 
 		/** Vehicle can't be refit */
-		ERR_VEHICLE_CANNOT_REFIT,               // [STR_ERROR_CAN_T_REFIT_TRAIN, STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE, STR_ERROR_CAN_T_REFIT_SHIP, STR_ERROR_CAN_T_REFIT_AIRCRAFT]
+		ERR_VEHICLE_CANNOT_REFIT, // [STR_ERROR_CAN_T_REFIT_TRAIN, STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE, STR_ERROR_CAN_T_REFIT_SHIP, STR_ERROR_CAN_T_REFIT_AIRCRAFT]
 
 		/** Vehicle is destroyed */
-		ERR_VEHICLE_IS_DESTROYED,               // [STR_ERROR_VEHICLE_IS_DESTROYED]
+		ERR_VEHICLE_IS_DESTROYED, // [STR_ERROR_VEHICLE_IS_DESTROYED]
 
 		/** Vehicle is not in a depot */
-		ERR_VEHICLE_NOT_IN_DEPOT,               // [STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR, STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT, STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT, STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT]
+		ERR_VEHICLE_NOT_IN_DEPOT, // [STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR, STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT, STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT, STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT]
 
 		/** Vehicle is flying */
-		ERR_VEHICLE_IN_FLIGHT,                  // [STR_ERROR_AIRCRAFT_IS_IN_FLIGHT]
+		ERR_VEHICLE_IN_FLIGHT, // [STR_ERROR_AIRCRAFT_IS_IN_FLIGHT]
 
 		/** Vehicle is without power */
-		ERR_VEHICLE_NO_POWER,                   // [STR_ERROR_TRAIN_START_NO_POWER]
+		ERR_VEHICLE_NO_POWER, // [STR_ERROR_TRAIN_START_NO_POWER]
 
 		/** Vehicle would get too long during construction. */
-		ERR_VEHICLE_TOO_LONG,                   // [STR_ERROR_TRAIN_TOO_LONG]
+		ERR_VEHICLE_TOO_LONG, // [STR_ERROR_TRAIN_TOO_LONG]
 	};
 
 	/**
@@ -74,10 +74,10 @@ public:
 	 *  road vehicles, as maglev is a rail vehicle.
 	 */
 	enum VehicleType {
-		VT_RAIL,           ///< Rail type vehicle.
-		VT_ROAD,           ///< Road type vehicle (bus / truck).
-		VT_WATER,          ///< Water type vehicle.
-		VT_AIR,            ///< Air type vehicle.
+		VT_RAIL, ///< Rail type vehicle.
+		VT_ROAD, ///< Road type vehicle (bus / truck).
+		VT_WATER, ///< Water type vehicle.
+		VT_AIR, ///< Air type vehicle.
 		VT_INVALID = 0xFF, ///< Invalid vehicle type.
 	};
 
@@ -85,12 +85,12 @@ public:
 	 * The different states a vehicle can be in.
 	 */
 	enum VehicleState {
-		VS_RUNNING,        ///< The vehicle is currently running.
-		VS_STOPPED,        ///< The vehicle is stopped manually.
-		VS_IN_DEPOT,       ///< The vehicle is stopped in the depot.
-		VS_AT_STATION,     ///< The vehicle is stopped at a station and is currently loading or unloading.
-		VS_BROKEN,         ///< The vehicle has broken down and will start running again in a while.
-		VS_CRASHED,        ///< The vehicle is crashed (and will never run again).
+		VS_RUNNING, ///< The vehicle is currently running.
+		VS_STOPPED, ///< The vehicle is stopped manually.
+		VS_IN_DEPOT, ///< The vehicle is stopped in the depot.
+		VS_AT_STATION, ///< The vehicle is stopped at a station and is currently loading or unloading.
+		VS_BROKEN, ///< The vehicle has broken down and will start running again in a while.
+		VS_CRASHED, ///< The vehicle is crashed (and will never run again).
 
 		VS_INVALID = 0xFF, ///< An invalid vehicle state.
 	};
@@ -271,7 +271,6 @@ public:
 	 * @see \ref ScriptEconomyTime
 	 */
 	static Money GetProfitLastYear(VehicleID vehicle_id);
-
 
 	/**
 	 * Get the current value of a vehicle.

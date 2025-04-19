@@ -8,14 +8,15 @@
 /** @file articulated_vehicles.cpp Implementation of articulated vehicles. */
 
 #include "stdafx.h"
+
 #include "core/bitmath_func.hpp"
 #include "core/random_func.hpp"
-#include "train.h"
-#include "roadveh.h"
-#include "vehicle_func.h"
-#include "engine_func.h"
 #include "company_func.h"
+#include "engine_func.h"
 #include "newgrf.h"
+#include "roadveh.h"
+#include "train.h"
+#include "vehicle_func.h"
 
 #include "table/strings.h"
 
@@ -96,7 +97,6 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 
 	return i - 1;
 }
-
 
 /**
  * Returns the default (non-refitted) cargo and capacity of a specific EngineID.
@@ -355,7 +355,8 @@ void AddArticulatedParts(Vehicle *first)
 
 		const Engine *e_artic = Engine::Get(engine_type);
 		switch (type) {
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 
 			case VEH_TRAIN: {
 				Train *front = Train::From(first);
@@ -370,7 +371,7 @@ void AddArticulatedParts(Vehicle *first)
 				t->spritenum = e_artic->u.rail.image_index;
 				if (e_artic->CanCarryCargo()) {
 					t->cargo_type = e_artic->GetDefaultCargoType();
-					t->cargo_cap = e_artic->u.rail.capacity;  // Callback 36 is called when the consist is finished
+					t->cargo_cap = e_artic->u.rail.capacity; // Callback 36 is called when the consist is finished
 				} else {
 					t->cargo_type = front->cargo_type; // Needed for livery selection
 					t->cargo_cap = 0;
@@ -398,7 +399,7 @@ void AddArticulatedParts(Vehicle *first)
 				if (e_artic->CanCarryCargo()) {
 					rv->cargo_type = e_artic->GetDefaultCargoType();
 					assert(IsValidCargoType(rv->cargo_type));
-					rv->cargo_cap = e_artic->u.road.capacity;  // Callback 36 is called when the consist is finished
+					rv->cargo_cap = e_artic->u.road.capacity; // Callback 36 is called when the consist is finished
 				} else {
 					rv->cargo_type = front->cargo_type; // Needed for livery selection
 					rv->cargo_cap = 0;

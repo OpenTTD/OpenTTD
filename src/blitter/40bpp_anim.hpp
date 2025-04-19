@@ -10,14 +10,12 @@
 #ifndef BLITTER_40BPP_OPTIMIZED_HPP
 #define BLITTER_40BPP_OPTIMIZED_HPP
 
-
-#include "32bpp_optimized.hpp"
 #include "../video/video_driver.hpp"
+#include "32bpp_optimized.hpp"
 
 /** The optimized 40 bpp blitter (for OpenGL video driver). */
 class Blitter_40bppAnim : public Blitter_32bppOptimized {
 public:
-
 	void SetPixel(void *video, int x, int y, uint8_t colour) override;
 	void DrawRect(void *video, int width, int height, uint8_t colour) override;
 	void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8_t colour, int width, int dash) override;
@@ -32,16 +30,19 @@ public:
 	Blitter::PaletteAnimation UsePaletteAnimation() override;
 	bool NeedsAnimationBuffer() override;
 
-	std::string_view GetName()  override { return "40bpp-anim"; }
+	std::string_view GetName() override
+	{
+		return "40bpp-anim";
+	}
 
-	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+	template <BlitterMode mode>
+	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
 protected:
 	static inline Colour RealizeBlendedColour(uint8_t anim, Colour c)
 	{
 		return anim != 0 ? AdjustBrightness(LookupColourInPalette(anim), GetColourBrightness(c)) : c;
 	}
-
 };
 
 /** Factory for the 40 bpp animated blitter (for OpenGL). */
@@ -54,7 +55,11 @@ protected:
 
 public:
 	FBlitter_40bppAnim() : BlitterFactory("40bpp-anim", "40bpp Animation Blitter (OpenGL)") {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_40bppAnim>(); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::make_unique<Blitter_40bppAnim>();
+	}
 };
 
 #endif /* BLITTER_40BPP_OPTIMIZED_HPP */

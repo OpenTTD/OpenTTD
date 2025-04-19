@@ -8,9 +8,11 @@
 /** @file newgrf_storage.cpp Functionality related to the temporary and persistent storage arrays for NewGRFs. */
 
 #include "stdafx.h"
+
 #include "newgrf_storage.h"
-#include "core/pool_func.hpp"
+
 #include "core/endian_func.hpp"
+#include "core/pool_func.hpp"
 #include "debug.h"
 
 #include "safeguards.h"
@@ -19,7 +21,7 @@ PersistentStoragePool _persistent_storage_pool("PersistentStorage");
 INSTANTIATE_POOL_METHODS(PersistentStorage)
 
 /** The changed storage arrays */
-static std::set<BasePersistentStorageArray*> *_changed_storage_arrays = new std::set<BasePersistentStorageArray*>;
+static std::set<BasePersistentStorageArray *> *_changed_storage_arrays = new std::set<BasePersistentStorageArray *>;
 
 bool BasePersistentStorageArray::gameloop;
 bool BasePersistentStorageArray::command;
@@ -86,7 +88,8 @@ void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 			testmode = false;
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 
 	/* Discard all temporary changes */

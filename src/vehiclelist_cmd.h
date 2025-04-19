@@ -14,12 +14,12 @@
 #include "vehiclelist.h"
 
 template <typename Tcont, typename Titer>
-inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const VehicleListIdentifier &vli)
+inline EndianBufferWriter<Tcont, Titer> &operator<<(EndianBufferWriter<Tcont, Titer> &buffer, const VehicleListIdentifier &vli)
 {
 	return buffer << vli.type << vli.vtype << vli.company << vli.index;
 }
 
-inline EndianBufferReader &operator >>(EndianBufferReader &buffer, VehicleListIdentifier &vli)
+inline EndianBufferReader &operator>>(EndianBufferReader &buffer, VehicleListIdentifier &vli)
 {
 	return buffer >> vli.type >> vli.vtype >> vli.company >> vli.index;
 }

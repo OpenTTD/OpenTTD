@@ -8,20 +8,20 @@
 /** @file script_object.cpp Implementation of ScriptObject. */
 
 #include "../../stdafx.h"
-#include "../../script/squirrel.hpp"
-#include "../../company_func.h"
+
+#include "../../command_func.h"
 #include "../../company_base.h"
-#include "../../network/network.h"
+#include "../../company_func.h"
+#include "../../debug.h"
 #include "../../genworld.h"
+#include "../../network/network.h"
+#include "../../script/squirrel.hpp"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../command_func.h"
-
-#include "../script_storage.hpp"
-#include "../script_instance.hpp"
 #include "../script_fatalerror.hpp"
+#include "../script_instance.hpp"
+#include "../script_storage.hpp"
 #include "script_error.hpp"
-#include "../../debug.h"
 
 #include "../../safeguards.h"
 
@@ -49,7 +49,6 @@ static ScriptStorage *GetStorage()
 	return ScriptObject::GetActiveInstance()->GetStorage();
 }
 
-
 /* static */ ScriptInstance *ScriptObject::ActiveInstance::active = nullptr;
 
 ScriptObject::ActiveInstance::ActiveInstance(ScriptInstance *instance) : alc_scope(instance->engine)
@@ -68,7 +67,6 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	assert(ScriptObject::ActiveInstance::active != nullptr);
 	return ScriptObject::ActiveInstance::active;
 }
-
 
 /* static */ void ScriptObject::SetDoCommandDelay(uint ticks)
 {
@@ -281,10 +279,10 @@ std::tuple<bool, bool, bool, bool> ScriptObject::DoCommandPrep()
 
 	if (!ScriptCompanyMode::IsDeity() && !ScriptCompanyMode::IsValid()) {
 		ScriptObject::SetLastError(ScriptError::ERR_PRECONDITION_INVALID_COMPANY);
-		return { true, estimate_only, asynchronous, networking };
+		return {true, estimate_only, asynchronous, networking};
 	}
 
-	return { false, estimate_only, asynchronous, networking };
+	return {false, estimate_only, asynchronous, networking};
 }
 
 bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_SuspendCallbackProc *callback, bool estimate_only, bool asynchronous)
@@ -340,7 +338,6 @@ bool ScriptObject::DoCommandProcessResult(const CommandCost &res, Script_Suspend
 
 	NOT_REACHED();
 }
-
 
 /* static */ ScriptObject::RandomizerArray ScriptObject::random_states;
 

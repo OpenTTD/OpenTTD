@@ -8,17 +8,17 @@
 /** @file effectvehicle.cpp Implementation of everything generic to vehicles. */
 
 #include "stdafx.h"
-#include "landscape.h"
+
 #include "core/random_func.hpp"
-#include "industry_map.h"
-#include "vehicle_func.h"
-#include "sound_func.h"
 #include "animated_tile_func.h"
-#include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
+#include "effectvehicle_func.h"
+#include "industry_map.h"
+#include "landscape.h"
+#include "sound_func.h"
+#include "vehicle_func.h"
 
 #include "safeguards.h"
-
 
 /**
  * Increment the sprite unless it has reached the end of the animation.
@@ -245,43 +245,18 @@ static void BulldozerInit(EffectVehicle *v)
 }
 
 struct BulldozerMovement {
-	uint8_t direction:2;
-	uint8_t image:2;
-	uint8_t duration:3;
+	uint8_t direction : 2;
+	uint8_t image : 2;
+	uint8_t duration : 3;
 };
 
-static const BulldozerMovement _bulldozer_movement[] = {
-	{ 0, 0, 4 },
-	{ 3, 3, 4 },
-	{ 2, 2, 7 },
-	{ 0, 2, 7 },
-	{ 1, 1, 3 },
-	{ 2, 2, 7 },
-	{ 0, 2, 7 },
-	{ 1, 1, 3 },
-	{ 2, 2, 7 },
-	{ 0, 2, 7 },
-	{ 3, 3, 6 },
-	{ 2, 2, 6 },
-	{ 1, 1, 7 },
-	{ 3, 1, 7 },
-	{ 0, 0, 3 },
-	{ 1, 1, 7 },
-	{ 3, 1, 7 },
-	{ 0, 0, 3 },
-	{ 1, 1, 7 },
-	{ 3, 1, 7 }
-};
+static const BulldozerMovement _bulldozer_movement[] = {{0, 0, 4}, {3, 3, 4}, {2, 2, 7}, {0, 2, 7}, {1, 1, 3}, {2, 2, 7}, {0, 2, 7}, {1, 1, 3}, {2, 2, 7}, {0, 2, 7}, {3, 3, 6}, {2, 2, 6}, {1, 1, 7},
+	{3, 1, 7}, {0, 0, 3}, {1, 1, 7}, {3, 1, 7}, {0, 0, 3}, {1, 1, 7}, {3, 1, 7}};
 
 static const struct {
 	int8_t x;
 	int8_t y;
-} _inc_by_dir[] = {
-	{ -1,  0 },
-	{  0,  1 },
-	{  1,  0 },
-	{  0, -1 }
-};
+} _inc_by_dir[] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
 static bool BulldozerTick(EffectVehicle *v)
 {
@@ -317,147 +292,37 @@ static void BubbleInit(EffectVehicle *v)
 }
 
 struct BubbleMovement {
-	int8_t x:4;
-	int8_t y:4;
-	int8_t z:4;
-	uint8_t image:4;
+	int8_t x : 4;
+	int8_t y : 4;
+	int8_t z : 4;
+	uint8_t image : 4;
 };
 
 #define MK(x, y, z, i) { x, y, z, i }
 #define ME(i) { i, 4, 0, 0 }
 
-static const BubbleMovement _bubble_float_sw[] = {
-	MK(0, 0, 1, 0),
-	MK(1, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(1, 0, 1, 2),
-	ME(1)
-};
+static const BubbleMovement _bubble_float_sw[] = {MK(0, 0, 1, 0), MK(1, 0, 1, 1), MK(0, 0, 1, 0), MK(1, 0, 1, 2), ME(1)};
 
+static const BubbleMovement _bubble_float_ne[] = {MK(0, 0, 1, 0), MK(-1, 0, 1, 1), MK(0, 0, 1, 0), MK(-1, 0, 1, 2), ME(1)};
 
-static const BubbleMovement _bubble_float_ne[] = {
-	MK( 0, 0, 1, 0),
-	MK(-1, 0, 1, 1),
-	MK( 0, 0, 1, 0),
-	MK(-1, 0, 1, 2),
-	ME(1)
-};
+static const BubbleMovement _bubble_float_se[] = {MK(0, 0, 1, 0), MK(0, 1, 1, 1), MK(0, 0, 1, 0), MK(0, 1, 1, 2), ME(1)};
 
-static const BubbleMovement _bubble_float_se[] = {
-	MK(0, 0, 1, 0),
-	MK(0, 1, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 1, 1, 2),
-	ME(1)
-};
+static const BubbleMovement _bubble_float_nw[] = {MK(0, 0, 1, 0), MK(0, -1, 1, 1), MK(0, 0, 1, 0), MK(0, -1, 1, 2), ME(1)};
 
-static const BubbleMovement _bubble_float_nw[] = {
-	MK(0,  0, 1, 0),
-	MK(0, -1, 1, 1),
-	MK(0,  0, 1, 0),
-	MK(0, -1, 1, 2),
-	ME(1)
-};
+static const BubbleMovement _bubble_burst[] = {MK(0, 0, 1, 2), MK(0, 0, 1, 7), MK(0, 0, 1, 8), MK(0, 0, 1, 9), ME(0)};
 
-static const BubbleMovement _bubble_burst[] = {
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 7),
-	MK(0, 0, 1, 8),
-	MK(0, 0, 1, 9),
-	ME(0)
-};
-
-static const BubbleMovement _bubble_absorb[] = {
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(0, 0, 1, 1),
-	MK(2, 1, 3, 0),
-	MK(1, 1, 3, 1),
-	MK(2, 1, 3, 0),
-	MK(1, 1, 3, 2),
-	MK(2, 1, 3, 0),
-	MK(1, 1, 3, 1),
-	MK(2, 1, 3, 0),
-	MK(1, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(1, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(1, 0, 1, 2),
-	MK(0, 0, 1, 0),
-	MK(1, 0, 1, 1),
-	MK(0, 0, 1, 0),
-	MK(1, 0, 1, 2),
-	ME(2),
-	MK(0, 0, 0, 0xA),
-	MK(0, 0, 0, 0xB),
-	MK(0, 0, 0, 0xC),
-	MK(0, 0, 0, 0xD),
-	MK(0, 0, 0, 0xE),
-	ME(0)
-};
+static const BubbleMovement _bubble_absorb[] = {MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0),
+	MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0),
+	MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0),
+	MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0),
+	MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0),
+	MK(0, 0, 1, 1), MK(0, 0, 1, 0), MK(0, 0, 1, 2), MK(0, 0, 1, 0), MK(0, 0, 1, 1), MK(2, 1, 3, 0), MK(1, 1, 3, 1), MK(2, 1, 3, 0), MK(1, 1, 3, 2), MK(2, 1, 3, 0), MK(1, 1, 3, 1), MK(2, 1, 3, 0),
+	MK(1, 0, 1, 2), MK(0, 0, 1, 0), MK(1, 0, 1, 1), MK(0, 0, 1, 0), MK(1, 0, 1, 2), MK(0, 0, 1, 0), MK(1, 0, 1, 1), MK(0, 0, 1, 0), MK(1, 0, 1, 2), ME(2), MK(0, 0, 0, 0xA), MK(0, 0, 0, 0xB),
+	MK(0, 0, 0, 0xC), MK(0, 0, 0, 0xD), MK(0, 0, 0, 0xE), ME(0)};
 #undef ME
 #undef MK
 
-static const BubbleMovement * const _bubble_movement[] = {
+static const BubbleMovement *const _bubble_movement[] = {
 	_bubble_float_sw,
 	_bubble_float_ne,
 	_bubble_float_se,
@@ -535,24 +400,23 @@ struct EffectProcs {
 	TickProc *tick_proc; ///< Functions for controlling effect vehicles at each tick.
 	TransparencyOption transparency; ///< Transparency option affecting the effect.
 
-	constexpr EffectProcs(InitProc *init_proc, TickProc *tick_proc, TransparencyOption transparency)
-		: init_proc(init_proc), tick_proc(tick_proc), transparency(transparency) {}
+	constexpr EffectProcs(InitProc *init_proc, TickProc *tick_proc, TransparencyOption transparency) : init_proc(init_proc), tick_proc(tick_proc), transparency(transparency) {}
 };
 
 /** Per-EffectVehicleType handling. */
 static std::array<EffectProcs, EV_END> _effect_procs = {{
-	{ ChimneySmokeInit,   ChimneySmokeTick,   TO_INDUSTRIES }, // EV_CHIMNEY_SMOKE
-	{ SteamSmokeInit,     SteamSmokeTick,     TO_INVALID    }, // EV_STEAM_SMOKE
-	{ DieselSmokeInit,    DieselSmokeTick,    TO_INVALID    }, // EV_DIESEL_SMOKE
-	{ ElectricSparkInit,  ElectricSparkTick,  TO_INVALID    }, // EV_ELECTRIC_SPARK
-	{ SmokeInit,          SmokeTick,          TO_INVALID    }, // EV_CRASH_SMOKE
-	{ ExplosionLargeInit, ExplosionLargeTick, TO_INVALID    }, // EV_EXPLOSION_LARGE
-	{ BreakdownSmokeInit, BreakdownSmokeTick, TO_INVALID    }, // EV_BREAKDOWN_SMOKE
-	{ ExplosionSmallInit, ExplosionSmallTick, TO_INVALID    }, // EV_EXPLOSION_SMALL
-	{ BulldozerInit,      BulldozerTick,      TO_INVALID    }, // EV_BULLDOZER
-	{ BubbleInit,         BubbleTick,         TO_INDUSTRIES }, // EV_BUBBLE
-	{ SmokeInit,          SmokeTick,          TO_INVALID    }, // EV_BREAKDOWN_SMOKE_AIRCRAFT
-	{ SmokeInit,          SmokeTick,          TO_INDUSTRIES }, // EV_COPPER_MINE_SMOKE
+	{ChimneySmokeInit, ChimneySmokeTick, TO_INDUSTRIES}, // EV_CHIMNEY_SMOKE
+	{SteamSmokeInit, SteamSmokeTick, TO_INVALID}, // EV_STEAM_SMOKE
+	{DieselSmokeInit, DieselSmokeTick, TO_INVALID}, // EV_DIESEL_SMOKE
+	{ElectricSparkInit, ElectricSparkTick, TO_INVALID}, // EV_ELECTRIC_SPARK
+	{SmokeInit, SmokeTick, TO_INVALID}, // EV_CRASH_SMOKE
+	{ExplosionLargeInit, ExplosionLargeTick, TO_INVALID}, // EV_EXPLOSION_LARGE
+	{BreakdownSmokeInit, BreakdownSmokeTick, TO_INVALID}, // EV_BREAKDOWN_SMOKE
+	{ExplosionSmallInit, ExplosionSmallTick, TO_INVALID}, // EV_EXPLOSION_SMALL
+	{BulldozerInit, BulldozerTick, TO_INVALID}, // EV_BULLDOZER
+	{BubbleInit, BubbleTick, TO_INDUSTRIES}, // EV_BUBBLE
+	{SmokeInit, SmokeTick, TO_INVALID}, // EV_BREAKDOWN_SMOKE_AIRCRAFT
+	{SmokeInit, SmokeTick, TO_INDUSTRIES}, // EV_COPPER_MINE_SMOKE
 }};
 
 /**
@@ -619,11 +483,11 @@ bool EffectVehicle::Tick()
 
 void EffectVehicle::UpdateDeltaXY()
 {
-	this->x_offs        = 0;
-	this->y_offs        = 0;
-	this->x_extent      = 1;
-	this->y_extent      = 1;
-	this->z_extent      = 1;
+	this->x_offs = 0;
+	this->y_offs = 0;
+	this->x_extent = 1;
+	this->y_extent = 1;
+	this->z_extent = 1;
 }
 
 /**

@@ -13,21 +13,21 @@
 /** Widgets of the #BuildRailToolbarWindow class. */
 enum RailToolbarWidgets : WidgetID {
 	/* Name starts with RA instead of R, because of collision with RoadToolbarWidgets */
-	WID_RAT_CAPTION,        ///< Caption of the window.
-	WID_RAT_BUILD_NS,       ///< Build rail along the game view Y axis.
-	WID_RAT_BUILD_X,        ///< Build rail along the game grid X axis.
-	WID_RAT_BUILD_EW,       ///< Build rail along the game view X axis.
-	WID_RAT_BUILD_Y,        ///< Build rail along the game grid Y axis.
-	WID_RAT_AUTORAIL,       ///< Autorail tool.
-	WID_RAT_DEMOLISH,       ///< Destroy something with dynamite!
-	WID_RAT_BUILD_DEPOT,    ///< Build a depot.
+	WID_RAT_CAPTION, ///< Caption of the window.
+	WID_RAT_BUILD_NS, ///< Build rail along the game view Y axis.
+	WID_RAT_BUILD_X, ///< Build rail along the game grid X axis.
+	WID_RAT_BUILD_EW, ///< Build rail along the game view X axis.
+	WID_RAT_BUILD_Y, ///< Build rail along the game grid Y axis.
+	WID_RAT_AUTORAIL, ///< Autorail tool.
+	WID_RAT_DEMOLISH, ///< Destroy something with dynamite!
+	WID_RAT_BUILD_DEPOT, ///< Build a depot.
 	WID_RAT_BUILD_WAYPOINT, ///< Build a waypoint.
-	WID_RAT_BUILD_STATION,  ///< Build a station.
-	WID_RAT_BUILD_SIGNALS,  ///< Build signals.
-	WID_RAT_BUILD_BRIDGE,   ///< Build a bridge.
-	WID_RAT_BUILD_TUNNEL,   ///< Build a tunnel.
-	WID_RAT_REMOVE,         ///< Bulldozer to remove rail.
-	WID_RAT_CONVERT_RAIL,   ///< Convert other rail to this type.
+	WID_RAT_BUILD_STATION, ///< Build a station.
+	WID_RAT_BUILD_SIGNALS, ///< Build signals.
+	WID_RAT_BUILD_BRIDGE, ///< Build a bridge.
+	WID_RAT_BUILD_TUNNEL, ///< Build a tunnel.
+	WID_RAT_REMOVE, ///< Bulldozer to remove rail.
+	WID_RAT_CONVERT_RAIL, ///< Convert other rail to this type.
 
 	INVALID_WID_RAT = -1,
 };
@@ -35,30 +35,30 @@ enum RailToolbarWidgets : WidgetID {
 /** Widgets of the #BuildRailStationWindow class. */
 enum BuildRailStationWidgets : WidgetID {
 	/* Name starts with BRA instead of BR, because of collision with BuildRoadStationWidgets */
-	WID_BRAS_PLATFORM_DIR_X,       ///< Button to select '/' view.
-	WID_BRAS_PLATFORM_DIR_Y,       ///< Button to select '\' view.
+	WID_BRAS_PLATFORM_DIR_X, ///< Button to select '/' view.
+	WID_BRAS_PLATFORM_DIR_Y, ///< Button to select '\' view.
 
-	WID_BRAS_PLATFORM_NUM_1,       ///< Button to select stations with a single platform.
-	WID_BRAS_PLATFORM_NUM_2,       ///< Button to select stations with 2 platforms.
-	WID_BRAS_PLATFORM_NUM_3,       ///< Button to select stations with 3 platforms.
-	WID_BRAS_PLATFORM_NUM_4,       ///< Button to select stations with 4 platforms.
-	WID_BRAS_PLATFORM_NUM_5,       ///< Button to select stations with 5 platforms.
-	WID_BRAS_PLATFORM_NUM_6,       ///< Button to select stations with 6 platforms.
-	WID_BRAS_PLATFORM_NUM_7,       ///< Button to select stations with 7 platforms.
+	WID_BRAS_PLATFORM_NUM_1, ///< Button to select stations with a single platform.
+	WID_BRAS_PLATFORM_NUM_2, ///< Button to select stations with 2 platforms.
+	WID_BRAS_PLATFORM_NUM_3, ///< Button to select stations with 3 platforms.
+	WID_BRAS_PLATFORM_NUM_4, ///< Button to select stations with 4 platforms.
+	WID_BRAS_PLATFORM_NUM_5, ///< Button to select stations with 5 platforms.
+	WID_BRAS_PLATFORM_NUM_6, ///< Button to select stations with 6 platforms.
+	WID_BRAS_PLATFORM_NUM_7, ///< Button to select stations with 7 platforms.
 
-	WID_BRAS_PLATFORM_LEN_1,       ///< Button to select single tile length station platforms.
-	WID_BRAS_PLATFORM_LEN_2,       ///< Button to select 2 tiles length station platforms.
-	WID_BRAS_PLATFORM_LEN_3,       ///< Button to select 3 tiles length station platforms.
-	WID_BRAS_PLATFORM_LEN_4,       ///< Button to select 4 tiles length station platforms.
-	WID_BRAS_PLATFORM_LEN_5,       ///< Button to select 5 tiles length station platforms.
-	WID_BRAS_PLATFORM_LEN_6,       ///< Button to select 6 tiles length station platforms.
-	WID_BRAS_PLATFORM_LEN_7,       ///< Button to select 7 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_1, ///< Button to select single tile length station platforms.
+	WID_BRAS_PLATFORM_LEN_2, ///< Button to select 2 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_3, ///< Button to select 3 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_4, ///< Button to select 4 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_5, ///< Button to select 5 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_6, ///< Button to select 6 tiles length station platforms.
+	WID_BRAS_PLATFORM_LEN_7, ///< Button to select 7 tiles length station platforms.
 
 	WID_BRAS_PLATFORM_DRAG_N_DROP, ///< Button to enable drag and drop type station placement.
 
-	WID_BRAS_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
-	WID_BRAS_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
-	WID_BRAS_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
+	WID_BRAS_HIGHLIGHT_OFF, ///< Button for turning coverage highlighting off.
+	WID_BRAS_HIGHLIGHT_ON, ///< Button for turning coverage highlighting on.
+	WID_BRAS_COVERAGE_TEXTS, ///< Empty space for the coverage texts.
 
 	WID_BRAS_PLATFORM_NUM_BEGIN = WID_BRAS_PLATFORM_NUM_1 - 1, ///< Helper for determining the chosen platform width.
 	WID_BRAS_PLATFORM_LEN_BEGIN = WID_BRAS_PLATFORM_LEN_1 - 1, ///< Helper for determining the chosen platform length.
@@ -66,26 +66,26 @@ enum BuildRailStationWidgets : WidgetID {
 
 /** Widgets of the #BuildSignalWindow class. */
 enum BuildSignalWidgets : WidgetID {
-	WID_BS_CAPTION,            ///< Caption for the Signal Selection window.
-	WID_BS_TOGGLE_SIZE,        ///< Toggle showing advanced signal types.
-	WID_BS_SEMAPHORE_NORM,     ///< Build a semaphore normal block signal.
-	WID_BS_SEMAPHORE_ENTRY,    ///< Build a semaphore entry block signal.
-	WID_BS_SEMAPHORE_EXIT,     ///< Build a semaphore exit block signal.
-	WID_BS_SEMAPHORE_COMBO,    ///< Build a semaphore combo block signal.
-	WID_BS_SEMAPHORE_PBS,      ///< Build a semaphore path signal.
+	WID_BS_CAPTION, ///< Caption for the Signal Selection window.
+	WID_BS_TOGGLE_SIZE, ///< Toggle showing advanced signal types.
+	WID_BS_SEMAPHORE_NORM, ///< Build a semaphore normal block signal.
+	WID_BS_SEMAPHORE_ENTRY, ///< Build a semaphore entry block signal.
+	WID_BS_SEMAPHORE_EXIT, ///< Build a semaphore exit block signal.
+	WID_BS_SEMAPHORE_COMBO, ///< Build a semaphore combo block signal.
+	WID_BS_SEMAPHORE_PBS, ///< Build a semaphore path signal.
 	WID_BS_SEMAPHORE_PBS_OWAY, ///< Build a semaphore one way path signal.
-	WID_BS_ELECTRIC_NORM,      ///< Build an electric normal block signal.
-	WID_BS_ELECTRIC_ENTRY,     ///< Build an electric entry block signal.
-	WID_BS_ELECTRIC_EXIT,      ///< Build an electric exit block signal.
-	WID_BS_ELECTRIC_COMBO,     ///< Build an electric combo block signal.
-	WID_BS_ELECTRIC_PBS,       ///< Build an electric path signal.
-	WID_BS_ELECTRIC_PBS_OWAY,  ///< Build an electric one way path signal.
-	WID_BS_CONVERT,            ///< Convert the signal.
-	WID_BS_DRAG_SIGNALS_DENSITY_LABEL,    ///< The current signal density.
+	WID_BS_ELECTRIC_NORM, ///< Build an electric normal block signal.
+	WID_BS_ELECTRIC_ENTRY, ///< Build an electric entry block signal.
+	WID_BS_ELECTRIC_EXIT, ///< Build an electric exit block signal.
+	WID_BS_ELECTRIC_COMBO, ///< Build an electric combo block signal.
+	WID_BS_ELECTRIC_PBS, ///< Build an electric path signal.
+	WID_BS_ELECTRIC_PBS_OWAY, ///< Build an electric one way path signal.
+	WID_BS_CONVERT, ///< Convert the signal.
+	WID_BS_DRAG_SIGNALS_DENSITY_LABEL, ///< The current signal density.
 	WID_BS_DRAG_SIGNALS_DENSITY_DECREASE, ///< Decrease the signal density.
 	WID_BS_DRAG_SIGNALS_DENSITY_INCREASE, ///< Increase the signal density.
-	WID_BS_BLOCK_SEL,           ///< Container for the block signal group, which can be hidden.
-	WID_BS_BLOCK_SPACER_SEL,    ///< Container for the spacer between block and path signal groups, which can be hidden.
+	WID_BS_BLOCK_SEL, ///< Container for the block signal group, which can be hidden.
+	WID_BS_BLOCK_SPACER_SEL, ///< Container for the spacer between block and path signal groups, which can be hidden.
 };
 
 /** Widgets of the #BuildRailDepotWindow class. */
@@ -99,11 +99,11 @@ enum BuildRailDepotWidgets : WidgetID {
 
 /** Widgets of the #BuildRailWaypointWindow class. */
 enum BuildRailWaypointWidgets : WidgetID {
-	WID_BRW_FILTER,          ///< Text filter.
+	WID_BRW_FILTER, ///< Text filter.
 	WID_BRW_WAYPOINT_MATRIX, ///< Matrix with waypoints.
-	WID_BRW_WAYPOINT,        ///< A single waypoint.
-	WID_BRW_SCROLL,          ///< Scrollbar for the matrix.
-	WID_BRW_NAME,            ///< Name of selected waypoint.
+	WID_BRW_WAYPOINT, ///< A single waypoint.
+	WID_BRW_SCROLL, ///< Scrollbar for the matrix.
+	WID_BRW_NAME, ///< Name of selected waypoint.
 };
 
 #endif /* WIDGETS_RAIL_WIDGET_H */

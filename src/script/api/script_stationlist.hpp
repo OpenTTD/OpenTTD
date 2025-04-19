@@ -38,18 +38,18 @@ public:
 	 * Criteria of selecting and grouping cargo at a station.
 	 */
 	enum CargoSelector {
-		CS_BY_FROM,     ///< Group by origin station.
+		CS_BY_FROM, ///< Group by origin station.
 		CS_VIA_BY_FROM, ///< Select by next hop and group by origin station.
-		CS_BY_VIA,      ///< Group by next hop.
-		CS_FROM_BY_VIA  ///< Select by origin station and group by next hop.
+		CS_BY_VIA, ///< Group by next hop.
+		CS_FROM_BY_VIA ///< Select by origin station and group by next hop.
 	};
 
 	/**
 	 * Ways of associating cargo to stations.
 	 */
 	enum CargoMode {
-		CM_WAITING,     ///< Waiting cargo.
-		CM_PLANNED      ///< Planned cargo.
+		CM_WAITING, ///< Waiting cargo.
+		CM_PLANNED ///< Planned cargo.
 	};
 
 	/**
@@ -64,7 +64,6 @@ public:
 	ScriptStationList_Cargo(ScriptStationList_Cargo::CargoMode mode, ScriptStationList_Cargo::CargoSelector selector, StationID station_id, CargoType cargo, StationID other_station);
 
 protected:
-
 	/**
 	 * Creates an empty list.
 	 */
@@ -96,7 +95,6 @@ protected:
 	void Add(StationID station_id, CargoType cargo, StationID other_station = StationID::Invalid());
 
 public:
-
 	/**
 	 * Creates a list of stations associated with waiting cargo, selected and grouped by the chosen
 	 * criteria.
@@ -133,7 +131,6 @@ protected:
 	void Add(StationID station_id, CargoType cargo, StationID other_station = StationID::Invalid());
 
 public:
-
 	/**
 	 * Creates a list of stations associated with cargo planned to pass the station, selected and
 	 * grouped by the chosen criteria.

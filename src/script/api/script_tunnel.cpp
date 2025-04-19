@@ -8,13 +8,15 @@
 /** @file script_tunnel.cpp Implementation of ScriptTunnel. */
 
 #include "../../stdafx.h"
+
 #include "script_tunnel.hpp"
-#include "script_rail.hpp"
-#include "../script_instance.hpp"
-#include "../../tunnel_map.h"
+
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
+#include "../../tunnel_map.h"
 #include "../../tunnelbridge_cmd.h"
+#include "../script_instance.hpp"
+#include "script_rail.hpp"
 
 #include "../../safeguards.h"
 
@@ -108,7 +110,8 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 	DiagDirection dir_1 = ::DiagdirBetweenTiles(end, start);
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
 
-	return ScriptObject::Command<CMD_BUILD_ROAD>::Do(&::_DoCommandReturnBuildTunnel2, start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2), ScriptRoad::GetRoadType(), DRD_NONE, TownID::Invalid());
+	return ScriptObject::Command<CMD_BUILD_ROAD>::Do(
+		&::_DoCommandReturnBuildTunnel2, start + ::TileOffsByDiagDir(dir_1), ::DiagDirToRoadBits(dir_2), ScriptRoad::GetRoadType(), DRD_NONE, TownID::Invalid());
 }
 
 /* static */ bool ScriptTunnel::_BuildTunnelRoad2()

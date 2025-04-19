@@ -10,9 +10,9 @@
 #ifndef SCRIPT_LEAGUE_HPP
 #define SCRIPT_LEAGUE_HPP
 
+#include "../../league_type.h"
 #include "script_company.hpp"
 #include "script_text.hpp"
-#include "../../league_type.h"
 
 /**
  * Class that handles league table related functions.
@@ -33,11 +33,11 @@ public:
 	 * The type of a link.
 	 */
 	enum LinkType : uint8_t {
-		LINK_NONE = ::LT_NONE,             ///< No link
-		LINK_TILE = ::LT_TILE,             ///< Link a tile
-		LINK_INDUSTRY = ::LT_INDUSTRY,     ///< Link an industry
-		LINK_TOWN = ::LT_TOWN,             ///< Link a town
-		LINK_COMPANY = ::LT_COMPANY,       ///< Link a company
+		LINK_NONE = ::LT_NONE, ///< No link
+		LINK_TILE = ::LT_TILE, ///< Link a tile
+		LINK_INDUSTRY = ::LT_INDUSTRY, ///< Link an industry
+		LINK_TOWN = ::LT_TOWN, ///< Link a town
+		LINK_COMPANY = ::LT_COMPANY, ///< Link a company
 		LINK_STORY_PAGE = ::LT_STORY_PAGE, ///< Link a story page
 	};
 
@@ -111,7 +111,6 @@ public:
 	 */
 	static bool UpdateElementScore(LeagueTableElementID element, SQInteger rating, Text *score);
 
-
 	/**
 	 * Remove a league table element.
 	 * @param element Id of the element to update
@@ -121,6 +120,5 @@ public:
 	 */
 	static bool RemoveElement(LeagueTableElementID element);
 };
-
 
 #endif /* SCRIPT_LEAGUE_HPP */

@@ -15,7 +15,10 @@
 /** The SDL video driver using default SDL backend. */
 class VideoDriver_SDL_Default : public VideoDriver_SDL_Base {
 public:
-	std::string_view GetName() const override { return "sdl"; }
+	std::string_view GetName() const override
+	{
+		return "sdl";
+	}
 
 protected:
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
@@ -33,7 +36,11 @@ private:
 class FVideoDriver_SDL_Default : public DriverFactoryBase {
 public:
 	FVideoDriver_SDL_Default() : DriverFactoryBase(Driver::DT_VIDEO, 5, "sdl", "SDL Video Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_SDL_Default>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<VideoDriver_SDL_Default>();
+	}
 };
 
 #endif /* VIDEO_SDL2_DEFAULT_H */

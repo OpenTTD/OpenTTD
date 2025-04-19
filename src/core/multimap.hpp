@@ -28,7 +28,7 @@ protected:
 	typedef MultiMapIterator<Tmap_iter, Tlist_iter, Tkey, Tvalue, Tcompare> Self;
 
 	Tlist_iter list_iter; ///< Iterator pointing to current position in the current list of items with equal keys.
-	Tmap_iter map_iter;   ///< Iterator pointing to the position of the current list of items with equal keys in the map.
+	Tmap_iter map_iter; ///< Iterator pointing to the position of the current list of items with equal keys in the map.
 
 	/**
 	 * Flag to show that the iterator has just "walked" a step in the map.
@@ -54,7 +54,9 @@ public:
 	 * @param mi One such iterator.
 	 */
 	template <class Tnon_const>
-	MultiMapIterator(Tnon_const mi) : map_iter(mi), list_valid(false) {}
+	MultiMapIterator(Tnon_const mi) : map_iter(mi), list_valid(false)
+	{
+	}
 
 	/**
 	 * Constructor to allow specifying an exact position in map and list. You cannot
@@ -90,9 +92,7 @@ public:
 	Tvalue &operator*() const
 	{
 		assert(!this->map_iter->second.empty());
-		return this->list_valid ?
-				this->list_iter.operator*() :
-				this->map_iter->second.begin().operator*();
+		return this->list_valid ? this->list_iter.operator*() : this->map_iter->second.begin().operator*();
 	}
 
 	/**
@@ -102,16 +102,28 @@ public:
 	Tvalue *operator->() const
 	{
 		assert(!this->map_iter->second.empty());
-		return this->list_valid ?
-				this->list_iter.operator->() :
-				this->map_iter->second.begin().operator->();
+		return this->list_valid ? this->list_iter.operator->() : this->map_iter->second.begin().operator->();
 	}
 
-	inline const Tmap_iter &GetMapIter() const { return this->map_iter; }
-	inline const Tlist_iter &GetListIter() const { return this->list_iter; }
-	inline bool ListValid() const { return this->list_valid; }
+	inline const Tmap_iter &GetMapIter() const
+	{
+		return this->map_iter;
+	}
 
-	const Tkey &GetKey() const { return this->map_iter->first; }
+	inline const Tlist_iter &GetListIter() const
+	{
+		return this->list_iter;
+	}
+
+	inline bool ListValid() const
+	{
+		return this->list_valid;
+	}
+
+	const Tkey &GetKey() const
+	{
+		return this->map_iter->first;
+	}
 
 	/**
 	 * Prefix increment operator. Increment the iterator and set it to the
@@ -181,6 +193,7 @@ public:
 		this->operator--();
 		return tmp;
 	}
+
 	/**
 	 * Compare two MultiMap iterators. Iterators are equal if
 	 * 1. Their map iterators are equal.
@@ -196,8 +209,7 @@ public:
 	{
 		if (this->GetMapIter() != other.GetMapIter()) return false;
 		if (!this->ListValid()) return !other.ListValid();
-		return other.ListValid() ?
-				this->GetListIter() == other.GetListIter() : false;
+		return other.ListValid() ? this->GetListIter() == other.GetListIter() : false;
 	}
 
 	/**
@@ -221,14 +233,14 @@ public:
  * STL-compatible members are named in STL style, all others are named in OpenTTD
  * style.
  */
-template <typename Tkey, typename Tvalue, typename Tcompare = std::less<Tkey> >
-class MultiMap : public std::map<Tkey, std::list<Tvalue>, Tcompare > {
+template <typename Tkey, typename Tvalue, typename Tcompare = std::less<Tkey>>
+class MultiMap : public std::map<Tkey, std::list<Tvalue>, Tcompare> {
 public:
 	typedef typename std::list<Tvalue> List;
 	typedef typename List::iterator ListIterator;
 	typedef typename List::const_iterator ConstListIterator;
 
-	typedef typename std::map<Tkey, List, Tcompare > Map;
+	typedef typename std::map<Tkey, List, Tcompare> Map;
 	typedef typename Map::iterator MapIterator;
 	typedef typename Map::const_iterator ConstMapIterator;
 

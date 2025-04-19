@@ -31,15 +31,15 @@ static constexpr uint8_t WBL_DEPOT_AXIS = 1; ///< Depot axis flag.
 enum WaterTileType : uint8_t {
 	WATER_TILE_CLEAR, ///< Plain water.
 	WATER_TILE_COAST, ///< Coast.
-	WATER_TILE_LOCK,  ///< Water lock.
+	WATER_TILE_LOCK, ///< Water lock.
 	WATER_TILE_DEPOT, ///< Water Depot.
 };
 
 /** classes of water (for #WATER_TILE_CLEAR water tile type). */
 enum WaterClass : uint8_t {
-	WATER_CLASS_SEA,     ///< Sea.
-	WATER_CLASS_CANAL,   ///< Canal.
-	WATER_CLASS_RIVER,   ///< River.
+	WATER_CLASS_SEA, ///< Sea.
+	WATER_CLASS_CANAL, ///< Canal.
+	WATER_CLASS_RIVER, ///< River.
 	WATER_CLASS_INVALID, ///< Used for industry tiles on land (also for oilrig if newgrf says so).
 };
 
@@ -64,8 +64,8 @@ enum DepotPart : uint8_t {
 /** Sections of the water lock. */
 enum LockPart : uint8_t {
 	LOCK_PART_MIDDLE = 0, ///< Middle part of a lock.
-	LOCK_PART_LOWER  = 1, ///< Lower part of a lock.
-	LOCK_PART_UPPER  = 2, ///< Upper part of a lock.
+	LOCK_PART_LOWER = 1, ///< Lower part of a lock.
+	LOCK_PART_UPPER = 2, ///< Upper part of a lock.
 };
 
 bool IsPossibleDockingTile(Tile t);
@@ -373,7 +373,6 @@ inline bool IsDockingTile(Tile t)
 	return (IsTileType(t, MP_WATER) || IsTileType(t, MP_RAILWAY) || IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE)) && HasBit(t.m1(), 7);
 }
 
-
 /**
  * Helper function to make a coast tile.
  * @param t The tile to change into water
@@ -526,6 +525,7 @@ inline void SetNonFloodingWaterTile(Tile t, bool b)
 	assert(IsTileType(t, MP_WATER));
 	AssignBit(t.m3(), 0, b);
 }
+
 /**
  * Checks whether the tile is marked as a non-flooding water tile.
  * @return true iff the tile is marked as a non-flooding water tile.

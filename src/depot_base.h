@@ -10,8 +10,8 @@
 #ifndef DEPOT_BASE_H
 #define DEPOT_BASE_H
 
-#include "depot_map.h"
 #include "core/pool_type.hpp"
+#include "depot_map.h"
 #include "timer/timer_game_calendar.h"
 
 typedef Pool<Depot, DepotID, 64> DepotPool;
@@ -26,7 +26,9 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	TimerGameCalendar::Date build_date{}; ///< Date of construction
 
 	Depot() {}
+
 	Depot(TileIndex xy) : xy(xy), build_date(TimerGameCalendar::date) {}
+
 	~Depot();
 
 	static inline Depot *GetByTile(TileIndex tile)

@@ -8,16 +8,18 @@
 /** @file script_town.cpp Implementation of ScriptTown. */
 
 #include "../../stdafx.h"
+
 #include "script_town.hpp"
-#include "script_map.hpp"
-#include "script_error.hpp"
-#include "../../town.h"
-#include "../../townname_func.h"
+
+#include "../../landscape.h"
+#include "../../station_base.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../station_base.h"
-#include "../../landscape.h"
+#include "../../town.h"
 #include "../../town_cmd.h"
+#include "../../townname_func.h"
+#include "script_error.hpp"
+#include "script_map.hpp"
 
 #include "table/strings.h"
 
@@ -152,7 +154,8 @@
 			if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->cache.population > 60) return 1;
 			return 0;
 
-		default: return t->goal[towneffect_id];
+		default:
+			return t->goal[towneffect_id];
 	}
 }
 
@@ -288,13 +291,12 @@
 	EnforceDeityOrCompanyModeValid(false);
 	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town != TF_FORBIDDEN);
 	EnforcePrecondition(false, ::IsValidTile(tile));
-	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE)
-	EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || size != TOWN_SIZE_LARGE);
+	EnforcePrecondition(false, size == TOWN_SIZE_SMALL || size == TOWN_SIZE_MEDIUM || size == TOWN_SIZE_LARGE) EnforcePrecondition(false, ScriptCompanyMode::IsDeity() || size != TOWN_SIZE_LARGE);
 	if (ScriptCompanyMode::IsDeity() || _settings_game.economy.found_town == TF_CUSTOM_LAYOUT) {
 		EnforcePrecondition(false, layout >= ROAD_LAYOUT_ORIGINAL && layout <= ROAD_LAYOUT_RANDOM);
 	} else {
 		/* The layout parameter is ignored for AIs when custom layouts is disabled. */
-		layout = (RoadLayout) (uint8_t)_settings_game.economy.town_layout;
+		layout = (RoadLayout)(uint8_t)_settings_game.economy.town_layout;
 	}
 
 	std::string text;

@@ -14,27 +14,30 @@
 
 #ifdef WITH_ALLEGRO
 
-#include "../stdafx.h"
-#include "../openttd.h"
-#include "../error_func.h"
-#include "../gfx_func.h"
-#include "../blitter/factory.hpp"
-#include "../core/random_func.hpp"
-#include "../core/math_func.hpp"
-#include "../framerate_type.h"
-#include "../progress.h"
-#include "../thread.h"
-#include "../window_func.h"
-#include "allegro_v.h"
-#include <allegro.h>
+#	include "../stdafx.h"
 
-#include "../safeguards.h"
+#	include "allegro_v.h"
 
-#ifdef _DEBUG
+#	include <allegro.h>
+
+#	include "../core/math_func.hpp"
+#	include "../core/random_func.hpp"
+#	include "../blitter/factory.hpp"
+#	include "../error_func.h"
+#	include "../framerate_type.h"
+#	include "../gfx_func.h"
+#	include "../openttd.h"
+#	include "../progress.h"
+#	include "../thread.h"
+#	include "../window_func.h"
+
+#	include "../safeguards.h"
+
+#	ifdef _DEBUG
 /* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
  * be triggered, so rereplace the signals and make the debugger useful. */
-#include <signal.h>
-#endif
+#		include <signal.h>
+#	endif
 
 static FVideoDriver_Allegro iFVideoDriver_Allegro;
 
@@ -72,7 +75,6 @@ void VideoDriver_Allegro::Paint()
 		blit(_allegro_screen, screen, _dirty_rects[i].x, _dirty_rects[i].y, _dirty_rects[i].x, _dirty_rects[i].y, _dirty_rects[i].width, _dirty_rects[i].height);
 	}
 }
-
 
 static void UpdatePalette(uint start, uint count)
 {
@@ -117,19 +119,7 @@ void VideoDriver_Allegro::CheckPaletteAnim()
 	}
 }
 
-static const Dimension default_resolutions[] = {
-	{ 640,  480},
-	{ 800,  600},
-	{1024,  768},
-	{1152,  864},
-	{1280,  800},
-	{1280,  960},
-	{1280, 1024},
-	{1400, 1050},
-	{1600, 1200},
-	{1680, 1050},
-	{1920, 1200}
-};
+static const Dimension default_resolutions[] = {{640, 480}, {800, 600}, {1024, 768}, {1152, 864}, {1280, 800}, {1280, 960}, {1280, 1024}, {1400, 1050}, {1600, 1200}, {1680, 1050}, {1920, 1200}};
 
 static void GetVideoModes()
 {
@@ -199,7 +189,7 @@ static bool CreateMainSurface(uint w, uint h)
 	_allegro_screen = create_bitmap_ex(bpp, screen->cr - screen->cl, screen->cb - screen->ct);
 	_screen.width = _allegro_screen->w;
 	_screen.height = _allegro_screen->h;
-	_screen.pitch = ((uint8_t*)screen->line[1] - (uint8_t*)screen->line[0]) / (bpp / 8);
+	_screen.pitch = ((uint8_t *)screen->line[1] - (uint8_t *)screen->line[0]) / (bpp / 8);
 	_screen.dst_ptr = _allegro_screen->line[0];
 
 	/* Initialise the screen so we don't blit garbage to the screen */
@@ -250,60 +240,60 @@ struct AllegroVkMapping {
 	uint8_t map_to;
 };
 
-#define AS(x, z) {x, 1, z}
-#define AM(x, y, z, w) {x, y - x + 1, z}
+#	define AS(x, z) {x, 1, z}
+#	define AM(x, y, z, w) {x, y - x + 1, z}
 
 static const AllegroVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AM(KEY_PGUP, KEY_PGDN, WKC_PAGEUP, WKC_PAGEDOWN),
-	AS(KEY_UP,     WKC_UP),
-	AS(KEY_DOWN,   WKC_DOWN),
-	AS(KEY_LEFT,   WKC_LEFT),
-	AS(KEY_RIGHT,  WKC_RIGHT),
+	AS(KEY_UP, WKC_UP),
+	AS(KEY_DOWN, WKC_DOWN),
+	AS(KEY_LEFT, WKC_LEFT),
+	AS(KEY_RIGHT, WKC_RIGHT),
 
-	AS(KEY_HOME,   WKC_HOME),
-	AS(KEY_END,    WKC_END),
+	AS(KEY_HOME, WKC_HOME),
+	AS(KEY_END, WKC_END),
 
 	AS(KEY_INSERT, WKC_INSERT),
-	AS(KEY_DEL,    WKC_DELETE),
+	AS(KEY_DEL, WKC_DELETE),
 
 	/* Map letters & digits */
 	AM(KEY_A, KEY_Z, 'A', 'Z'),
 	AM(KEY_0, KEY_9, '0', '9'),
 
-	AS(KEY_ESC,       WKC_ESC),
-	AS(KEY_PAUSE,     WKC_PAUSE),
+	AS(KEY_ESC, WKC_ESC),
+	AS(KEY_PAUSE, WKC_PAUSE),
 	AS(KEY_BACKSPACE, WKC_BACKSPACE),
 
-	AS(KEY_SPACE,     WKC_SPACE),
-	AS(KEY_ENTER,     WKC_RETURN),
-	AS(KEY_TAB,       WKC_TAB),
+	AS(KEY_SPACE, WKC_SPACE),
+	AS(KEY_ENTER, WKC_RETURN),
+	AS(KEY_TAB, WKC_TAB),
 
 	/* Function keys */
 	AM(KEY_F1, KEY_F12, WKC_F1, WKC_F12),
 
 	/* Numeric part. */
 	AM(KEY_0_PAD, KEY_9_PAD, '0', '9'),
-	AS(KEY_SLASH_PAD,   WKC_NUM_DIV),
-	AS(KEY_ASTERISK,    WKC_NUM_MUL),
-	AS(KEY_MINUS_PAD,   WKC_NUM_MINUS),
-	AS(KEY_PLUS_PAD,    WKC_NUM_PLUS),
-	AS(KEY_ENTER_PAD,   WKC_NUM_ENTER),
-	AS(KEY_DEL_PAD,     WKC_DELETE),
+	AS(KEY_SLASH_PAD, WKC_NUM_DIV),
+	AS(KEY_ASTERISK, WKC_NUM_MUL),
+	AS(KEY_MINUS_PAD, WKC_NUM_MINUS),
+	AS(KEY_PLUS_PAD, WKC_NUM_PLUS),
+	AS(KEY_ENTER_PAD, WKC_NUM_ENTER),
+	AS(KEY_DEL_PAD, WKC_DELETE),
 
 	/* Other non-letter keys */
-	AS(KEY_SLASH,        WKC_SLASH),
-	AS(KEY_SEMICOLON,    WKC_SEMICOLON),
-	AS(KEY_EQUALS,       WKC_EQUALS),
-	AS(KEY_OPENBRACE,    WKC_L_BRACKET),
-	AS(KEY_BACKSLASH,    WKC_BACKSLASH),
-	AS(KEY_CLOSEBRACE,   WKC_R_BRACKET),
+	AS(KEY_SLASH, WKC_SLASH),
+	AS(KEY_SEMICOLON, WKC_SEMICOLON),
+	AS(KEY_EQUALS, WKC_EQUALS),
+	AS(KEY_OPENBRACE, WKC_L_BRACKET),
+	AS(KEY_BACKSLASH, WKC_BACKSLASH),
+	AS(KEY_CLOSEBRACE, WKC_R_BRACKET),
 
-	AS(KEY_QUOTE,   WKC_SINGLEQUOTE),
-	AS(KEY_COMMA,   WKC_COMMA),
-	AS(KEY_MINUS,   WKC_MINUS),
-	AS(KEY_STOP,    WKC_PERIOD),
-	AS(KEY_TILDE,   WKC_BACKQUOTE),
+	AS(KEY_QUOTE, WKC_SINGLEQUOTE),
+	AS(KEY_COMMA, WKC_COMMA),
+	AS(KEY_MINUS, WKC_MINUS),
+	AS(KEY_STOP, WKC_PERIOD),
+	AS(KEY_TILDE, WKC_BACKQUOTE),
 };
 
 static uint32_t ConvertAllegroKeyIntoMy(char32_t *character)
@@ -321,18 +311,18 @@ static uint32_t ConvertAllegroKeyIntoMy(char32_t *character)
 	}
 
 	if (key_shifts & KB_SHIFT_FLAG) key |= WKC_SHIFT;
-	if (key_shifts & KB_CTRL_FLAG)  key |= WKC_CTRL;
-	if (key_shifts & KB_ALT_FLAG)   key |= WKC_ALT;
-#if 0
+	if (key_shifts & KB_CTRL_FLAG) key |= WKC_CTRL;
+	if (key_shifts & KB_ALT_FLAG) key |= WKC_ALT;
+#	if 0
 	Debug(driver, 0, "Scancode character pressed {}", scancode);
 	Debug(driver, 0, "Unicode character pressed {}", unicode);
-#endif
+#	endif
 
 	*character = unicode;
 	return key;
 }
 
-static const uint LEFT_BUTTON  = 0;
+static const uint LEFT_BUTTON = 0;
 static const uint RIGHT_BUTTON = 1;
 
 bool VideoDriver_Allegro::PollEvent()
@@ -433,12 +423,12 @@ std::optional<std::string_view> VideoDriver_Allegro::Start(const StringList &par
 	install_mouse();
 	install_keyboard();
 
-#if defined _DEBUG
-/* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
+#	if defined _DEBUG
+	/* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
  * be triggered, so rereplace the signals and make the debugger useful. */
 	signal(SIGABRT, nullptr);
 	signal(SIGSEGV, nullptr);
-#endif
+#	endif
 
 	GetVideoModes();
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height)) {
@@ -461,7 +451,7 @@ void VideoDriver_Allegro::InputLoop()
 {
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
+	_ctrl_pressed = !!(key_shifts & KB_CTRL_FLAG);
 	_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
 
 	/* Speedup when pressing tab, except when using ALT+TAB
@@ -469,11 +459,7 @@ void VideoDriver_Allegro::InputLoop()
 	this->fast_forward_key_pressed = key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0;
 
 	/* Determine which directional keys are down. */
-	_dirkeys =
-		(key[KEY_LEFT]  ? 1 : 0) |
-		(key[KEY_UP]    ? 2 : 0) |
-		(key[KEY_RIGHT] ? 4 : 0) |
-		(key[KEY_DOWN]  ? 8 : 0);
+	_dirkeys = (key[KEY_LEFT] ? 1 : 0) | (key[KEY_UP] ? 2 : 0) | (key[KEY_RIGHT] ? 4 : 0) | (key[KEY_DOWN] ? 8 : 0);
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }

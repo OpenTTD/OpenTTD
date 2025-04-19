@@ -1,4 +1,4 @@
- /*
+/*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -8,8 +8,10 @@
 /** @file newgrf_badge.cpp Functionality for NewGRF badges. */
 
 #include "stdafx.h"
-#include "newgrf.h"
+
 #include "newgrf_badge.h"
+
+#include "newgrf.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_spritegroup.h"
 #include "stringfilter_type.h"
@@ -142,8 +144,9 @@ struct BadgeScopeResolver : public ScopeResolver {
 	 * @param badge Badge to resolve.
 	 * @param introduction_date Introduction date of entity.
 	 */
-	BadgeScopeResolver(ResolverObject &ro, const Badge &badge, const std::optional<TimerGameCalendar::Date> introduction_date)
-		: ScopeResolver(ro), badge(badge), introduction_date(introduction_date) { }
+	BadgeScopeResolver(ResolverObject &ro, const Badge &badge, const std::optional<TimerGameCalendar::Date> introduction_date) : ScopeResolver(ro), badge(badge), introduction_date(introduction_date)
+	{
+	}
 
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
 };
@@ -155,7 +158,8 @@ struct BadgeScopeResolver : public ScopeResolver {
 			if (this->introduction_date.has_value()) return this->introduction_date->base();
 			return TimerGameCalendar::date.base();
 
-		default: break;
+		default:
+			break;
 	}
 
 	available = false;
@@ -166,13 +170,16 @@ struct BadgeScopeResolver : public ScopeResolver {
 struct BadgeResolverObject : public ResolverObject {
 	BadgeScopeResolver self_scope;
 
-	BadgeResolverObject(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
+	BadgeResolverObject(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0,
+		uint32_t callback_param2 = 0);
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->self_scope;
-			default: return ResolverObject::GetScope(scope, relative);
+			case VSG_SCOPE_SELF:
+				return &this->self_scope;
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 
@@ -199,8 +206,8 @@ uint32_t BadgeResolverObject::GetDebugID() const
  * @param callback_param1 First parameter (var 10) of the callback.
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
-BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
-		: ResolverObject(badge.grf_prop.grffile, callback, callback_param1, callback_param2), self_scope(*this, badge, introduction_date)
+BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, CallbackID callback, uint32_t callback_param1,
+	uint32_t callback_param2) : ResolverObject(badge.grf_prop.grffile, callback, callback_param1, callback_param2), self_scope(*this, badge, introduction_date)
 {
 	assert(feature <= GSF_END);
 	this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(feature);
@@ -297,7 +304,9 @@ UsedBadgeClasses::UsedBadgeClasses(GrfSpecFeature feature)
 		this->classes.push_back(class_badge->class_index);
 	}
 
-	std::ranges::sort(this->classes, [](const BadgeClassID &a, const BadgeClassID &b) { return GetClassBadge(a)->label < GetClassBadge(b)->label; });
+	std::ranges::sort(this->classes, [](const BadgeClassID &a, const BadgeClassID &b) {
+		return GetClassBadge(a)->label < GetClassBadge(b)->label;
+	});
 }
 
 /**
@@ -333,5 +342,7 @@ BadgeTextFilter::BadgeTextFilter(StringFilter &filter, GrfSpecFeature feature)
  */
 bool BadgeTextFilter::Filter(std::span<const BadgeID> badges) const
 {
-	return std::ranges::any_of(badges, [this](const BadgeID &badge) { return std::ranges::binary_search(this->badges, badge); });
+	return std::ranges::any_of(badges, [this](const BadgeID &badge) {
+		return std::ranges::binary_search(this->badges, badge);
+	});
 }

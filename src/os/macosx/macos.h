@@ -40,9 +40,9 @@ void MacOSSetThreadName(const char *name);
 
 uint64_t MacOSGetPhysicalMemory();
 
-
 /** Deleter that calls CFRelease rather than deleting the pointer. */
-template <typename T> struct CFDeleter {
+template <typename T>
+struct CFDeleter {
 	void operator()(T *p)
 	{
 		if (p) ::CFRelease(p);

@@ -8,7 +8,9 @@
 /** @file script_map.cpp Implementation of ScriptMap. */
 
 #include "../../stdafx.h"
+
 #include "script_map.hpp"
+
 #include "../../tile_map.h"
 
 #include "../../safeguards.h"

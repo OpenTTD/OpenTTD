@@ -58,6 +58,7 @@ public:
 /** Helper for scanning for files with tar as extension */
 class TarScanner : FileScanner {
 	uint DoScan(Subdirectory sd);
+
 public:
 	/** The mode of tar scanning. */
 	enum class Mode : uint8_t {

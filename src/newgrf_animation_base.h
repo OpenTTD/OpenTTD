@@ -9,17 +9,21 @@
 
 /* No inclusion guards as this file must only be included from .cpp files. */
 
-#include "animated_tile_func.h"
 #include "core/random_func.hpp"
-#include "timer/timer_game_tick.h"
-#include "viewport_func.h"
+#include "animated_tile_func.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_callbacks.h"
 #include "tile_map.h"
+#include "timer/timer_game_tick.h"
+#include "viewport_func.h"
 
 template <typename Tobj>
 struct TileAnimationFrameAnimationHelper {
-	static uint8_t Get(Tobj *, TileIndex tile) { return GetAnimationFrame(tile); }
+	static uint8_t Get(Tobj *, TileIndex tile)
+	{
+		return GetAnimationFrame(tile);
+	}
+
 	static bool Set(Tobj *, TileIndex tile, uint8_t frame)
 	{
 		uint8_t prev_frame = GetAnimationFrame(tile);
@@ -39,7 +43,8 @@ struct TileAnimationFrameAnimationHelper {
  * @tparam GetCallback  The callback function pointer.
  * @tparam Tframehelper The animation frame get/set helper.
  */
-template <typename Tbase, typename Tspec, typename Tobj, typename Textra, uint16_t (*GetCallback)(CallbackID callback, uint32_t param1, uint32_t param2, const Tspec *statspec, Tobj *st, TileIndex tile, Textra extra_data), typename Tframehelper>
+template <typename Tbase, typename Tspec, typename Tobj, typename Textra,
+	uint16_t (*GetCallback)(CallbackID callback, uint32_t param1, uint32_t param2, const Tspec *statspec, Tobj *st, TileIndex tile, Textra extra_data), typename Tframehelper>
 struct AnimationBase {
 	/**
 	 * Animate a single tile.
@@ -69,7 +74,7 @@ struct AnimationBase {
 		 * maximum, corresponding to around 33 minutes. */
 		if (TimerGameTick::counter % (1ULL << animation_speed) != 0) return;
 
-		uint8_t frame      = Tframehelper::Get(obj, tile);
+		uint8_t frame = Tframehelper::Get(obj, tile);
 		uint8_t num_frames = spec->animation.frames;
 
 		bool frame_set_by_callback = false;
@@ -134,9 +139,14 @@ struct AnimationBase {
 		if (callback == CALLBACK_FAILED) return;
 
 		switch (callback & 0xFF) {
-			case 0xFD: /* Do nothing. */         break;
-			case 0xFE: AddAnimatedTile(tile, false); break;
-			case 0xFF: DeleteAnimatedTile(tile); break;
+			case 0xFD: /* Do nothing. */
+				break;
+			case 0xFE:
+				AddAnimatedTile(tile, false);
+				break;
+			case 0xFF:
+				DeleteAnimatedTile(tile);
+				break;
 			default:
 				bool changed = Tframehelper::Set(obj, tile, callback);
 				AddAnimatedTile(tile, changed);

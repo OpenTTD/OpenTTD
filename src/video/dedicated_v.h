@@ -26,8 +26,16 @@ public:
 	bool ChangeResolution(int w, int h) override;
 
 	bool ToggleFullscreen(bool fullscreen) override;
-	std::string_view GetName() const override { return "dedicated"; }
-	bool HasGUI() const override { return false; }
+
+	std::string_view GetName() const override
+	{
+		return "dedicated";
+	}
+
+	bool HasGUI() const override
+	{
+		return false;
+	}
 };
 
 /** Factory for the dedicated server video driver. */
@@ -41,7 +49,11 @@ public:
 	static const int PRIORITY = 0;
 #endif
 	FVideoDriver_Dedicated() : DriverFactoryBase(Driver::DT_VIDEO, PRIORITY, "dedicated", "Dedicated Video Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Dedicated>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<VideoDriver_Dedicated>();
+	}
 };
 
 #endif /* VIDEO_DEDICATED_H */

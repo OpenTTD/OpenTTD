@@ -8,6 +8,7 @@
 /** @file newgrf_act0_cargo.cpp NewGRF Action 0x00 handler for cargo. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_cargo.h"
 #include "newgrf_bytereader.h"
@@ -121,15 +122,27 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				uint8_t substitute_type = buf.ReadByte();
 
 				switch (substitute_type) {
-					case 0x00: cs->town_acceptance_effect = TAE_PASSENGERS; break;
-					case 0x02: cs->town_acceptance_effect = TAE_MAIL; break;
-					case 0x05: cs->town_acceptance_effect = TAE_GOODS; break;
-					case 0x09: cs->town_acceptance_effect = TAE_WATER; break;
-					case 0x0B: cs->town_acceptance_effect = TAE_FOOD; break;
+					case 0x00:
+						cs->town_acceptance_effect = TAE_PASSENGERS;
+						break;
+					case 0x02:
+						cs->town_acceptance_effect = TAE_MAIL;
+						break;
+					case 0x05:
+						cs->town_acceptance_effect = TAE_GOODS;
+						break;
+					case 0x09:
+						cs->town_acceptance_effect = TAE_WATER;
+						break;
+					case 0x0B:
+						cs->town_acceptance_effect = TAE_FOOD;
+						break;
 					default:
 						GrfMsg(1, "CargoChangeInfo: Unknown town growth substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
-					case 0xFF: cs->town_acceptance_effect = TAE_NONE; break;
+					case 0xFF:
+						cs->town_acceptance_effect = TAE_NONE;
+						break;
 				}
 				break;
 			}
@@ -150,12 +163,18 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				uint8_t substitute_type = buf.ReadByte();
 
 				switch (substitute_type) {
-					case 0x00: cs->town_production_effect = TPE_PASSENGERS; break;
-					case 0x02: cs->town_production_effect = TPE_MAIL; break;
+					case 0x00:
+						cs->town_production_effect = TPE_PASSENGERS;
+						break;
+					case 0x02:
+						cs->town_production_effect = TPE_MAIL;
+						break;
 					default:
 						GrfMsg(1, "CargoChangeInfo: Unknown town production substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
-					case 0xFF: cs->town_production_effect = TPE_NONE; break;
+					case 0xFF:
+						cs->town_production_effect = TPE_NONE;
+						break;
 				}
 				break;
 			}
@@ -173,5 +192,14 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return CargoReserveInfo(first, last, prop, buf); }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Activation(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Reserve(uint first, uint last, int prop, ByteReader &buf)
+{
+	return CargoReserveInfo(first, last, prop, buf);
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_CARGOES>::Activation(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}

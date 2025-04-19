@@ -8,11 +8,13 @@
 /** @file script_cargo.cpp Implementation of ScriptCargo. */
 
 #include "../../stdafx.h"
+
 #include "script_cargo.hpp"
-#include "../../economy_func.h"
+
 #include "../../core/bitmath_func.hpp"
-#include "../../strings_func.h"
+#include "../../economy_func.h"
 #include "../../settings_type.h"
+#include "../../strings_func.h"
 
 #include "table/strings.h"
 

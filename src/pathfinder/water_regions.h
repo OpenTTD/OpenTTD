@@ -5,13 +5,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /** @file water_regions.h Handles dividing the water in the map into regions to assist pathfinding. */
+/** @file water_regions.h Handles dividing the water in the map into regions to assist pathfinding. */
 
 #ifndef WATER_REGIONS_H
 #define WATER_REGIONS_H
 
-#include "../tile_type.h"
 #include "../map_func.h"
+#include "../tile_type.h"
 
 using TWaterRegionPatchLabel = uint8_t;
 using TWaterRegionIndex = uint;
@@ -23,28 +23,32 @@ constexpr TWaterRegionPatchLabel INVALID_WATER_REGION_PATCH = 0;
 /**
  * Describes a single interconnected patch of water within a particular water region.
  */
-struct WaterRegionPatchDesc
-{
+struct WaterRegionPatchDesc {
 	int x; ///< The X coordinate of the water region, i.e. X=2 is the 3rd water region along the X-axis
 	int y; ///< The Y coordinate of the water region, i.e. Y=2 is the 3rd water region along the Y-axis
 	TWaterRegionPatchLabel label; ///< Unique label identifying the patch within the region
 
-	bool operator==(const WaterRegionPatchDesc &other) const { return x == other.x && y == other.y && label == other.label; }
+	bool operator==(const WaterRegionPatchDesc &other) const
+	{
+		return x == other.x && y == other.y && label == other.label;
+	}
 };
-
 
 /**
  * Describes a single square water region.
  */
-struct WaterRegionDesc
-{
+struct WaterRegionDesc {
 	int x; ///< The X coordinate of the water region, i.e. X=2 is the 3rd water region along the X-axis
 	int y; ///< The Y coordinate of the water region, i.e. Y=2 is the 3rd water region along the Y-axis
 
 	WaterRegionDesc(const int x, const int y) : x(x), y(y) {}
+
 	WaterRegionDesc(const WaterRegionPatchDesc &water_region_patch) : x(water_region_patch.x), y(water_region_patch.y) {}
 
-	bool operator==(const WaterRegionDesc &other) const { return x == other.x && y == other.y; }
+	bool operator==(const WaterRegionDesc &other) const
+	{
+		return x == other.x && y == other.y;
+	}
 };
 
 int CalculateWaterRegionPatchHash(const WaterRegionPatchDesc &water_region_patch);

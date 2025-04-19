@@ -12,29 +12,29 @@
 
 /** Widgets of the #VehicleGroupWindow class. */
 enum GroupListWidgets : WidgetID {
-	WID_GL_CAPTION,                  ///< Caption of the window.
-	WID_GL_GROUP_BY_ORDER,           ///< Group order.
-	WID_GL_GROUP_BY_DROPDOWN,        ///< Group by dropdown list.
-	WID_GL_SORT_BY_ORDER,            ///< Sort order.
-	WID_GL_SORT_BY_DROPDOWN,         ///< Sort by dropdown list.
-	WID_GL_FILTER_BY_CARGO,          ///< Filter vehicles by cargo type.
-	WID_GL_LIST_VEHICLE,             ///< List of the vehicles.
-	WID_GL_LIST_VEHICLE_SCROLLBAR,   ///< Scrollbar for the list.
-	WID_GL_AVAILABLE_VEHICLES,       ///< Available vehicles.
+	WID_GL_CAPTION, ///< Caption of the window.
+	WID_GL_GROUP_BY_ORDER, ///< Group order.
+	WID_GL_GROUP_BY_DROPDOWN, ///< Group by dropdown list.
+	WID_GL_SORT_BY_ORDER, ///< Sort order.
+	WID_GL_SORT_BY_DROPDOWN, ///< Sort by dropdown list.
+	WID_GL_FILTER_BY_CARGO, ///< Filter vehicles by cargo type.
+	WID_GL_LIST_VEHICLE, ///< List of the vehicles.
+	WID_GL_LIST_VEHICLE_SCROLLBAR, ///< Scrollbar for the list.
+	WID_GL_AVAILABLE_VEHICLES, ///< Available vehicles.
 	WID_GL_MANAGE_VEHICLES_DROPDOWN, ///< Manage vehicles dropdown list.
-	WID_GL_STOP_ALL,                 ///< Stop all button.
-	WID_GL_START_ALL,                ///< Start all button.
+	WID_GL_STOP_ALL, ///< Stop all button.
+	WID_GL_START_ALL, ///< Start all button.
 
-	WID_GL_ALL_VEHICLES,             ///< All vehicles entry.
-	WID_GL_DEFAULT_VEHICLES,         ///< Default vehicles entry.
-	WID_GL_LIST_GROUP,               ///< List of the groups.
-	WID_GL_LIST_GROUP_SCROLLBAR,     ///< Scrollbar for the list.
-	WID_GL_CREATE_GROUP,             ///< Create group button.
-	WID_GL_DELETE_GROUP,             ///< Delete group button.
-	WID_GL_RENAME_GROUP,             ///< Rename group button.
-	WID_GL_LIVERY_GROUP,             ///< Group livery button.
-	WID_GL_REPLACE_PROTECTION,       ///< Replace protection button.
-	WID_GL_INFO,                     ///< Group info.
+	WID_GL_ALL_VEHICLES, ///< All vehicles entry.
+	WID_GL_DEFAULT_VEHICLES, ///< Default vehicles entry.
+	WID_GL_LIST_GROUP, ///< List of the groups.
+	WID_GL_LIST_GROUP_SCROLLBAR, ///< Scrollbar for the list.
+	WID_GL_CREATE_GROUP, ///< Create group button.
+	WID_GL_DELETE_GROUP, ///< Delete group button.
+	WID_GL_RENAME_GROUP, ///< Rename group button.
+	WID_GL_LIVERY_GROUP, ///< Group livery button.
+	WID_GL_REPLACE_PROTECTION, ///< Replace protection button.
+	WID_GL_INFO, ///< Group info.
 };
 
 #endif /* WIDGETS_GROUP_WIDGET_H */

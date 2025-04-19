@@ -10,10 +10,10 @@
 #ifndef SCRIPT_ROAD_HPP
 #define SCRIPT_ROAD_HPP
 
-#include "script_tile.hpp"
-#include "../squirrel_helper_type.hpp"
-#include "../../station_type.h"
 #include "../../road.h"
+#include "../../station_type.h"
+#include "../squirrel_helper_type.hpp"
+#include "script_tile.hpp"
 
 /**
  * Class that handles all road related functions.
@@ -31,22 +31,22 @@ public:
 		ERR_ROAD_BASE = ScriptError::ERR_CAT_ROAD << ScriptError::ERR_CAT_BIT_SIZE,
 
 		/** Road works are in progress */
-		ERR_ROAD_WORKS_IN_PROGRESS,                   // [STR_ERROR_ROAD_WORKS_IN_PROGRESS]
+		ERR_ROAD_WORKS_IN_PROGRESS, // [STR_ERROR_ROAD_WORKS_IN_PROGRESS]
 
 		/** Drive through is in the wrong direction */
-		ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       // [STR_ERROR_DRIVE_THROUGH_DIRECTION]
+		ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION, // [STR_ERROR_DRIVE_THROUGH_DIRECTION]
 
 		/** Drive through roads can't be build on town owned roads */
-		ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           // [STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD]
+		ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD, // [STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD]
 
 		/** One way roads can't have junctions */
 		ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, // [STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION]
 
 		/** This roadtype cannot have crossings */
-		ERR_ROADTYPE_DISALLOWS_CROSSING,              // [STR_ERROR_CROSSING_DISALLOWED_ROAD]
+		ERR_ROADTYPE_DISALLOWS_CROSSING, // [STR_ERROR_CROSSING_DISALLOWED_ROAD]
 
 		/** No suitable road could be found */
-		ERR_UNSUITABLE_ROAD,                          // [STR_ERROR_NO_SUITABLE_ROAD, STR_ERROR_NO_SUITABLE_TRAMWAY]
+		ERR_UNSUITABLE_ROAD, // [STR_ERROR_NO_SUITABLE_ROAD, STR_ERROR_NO_SUITABLE_TRAMWAY]
 	};
 
 	/**
@@ -54,11 +54,11 @@ public:
 	 */
 	enum RoadType {
 		/* Note: these values represent part of the in-game static values */
-		ROADTYPE_ROAD    = ::ROADTYPE_ROAD,    ///< Build road objects.
-		ROADTYPE_TRAM    = ::ROADTYPE_TRAM,    ///< Build tram objects.
+		ROADTYPE_ROAD = ::ROADTYPE_ROAD, ///< Build road objects.
+		ROADTYPE_TRAM = ::ROADTYPE_TRAM, ///< Build tram objects.
 
 		/* Custom added value, only valid for this API */
-		ROADTYPE_INVALID = -1,                 ///< Invalid RoadType.
+		ROADTYPE_INVALID = -1, ///< Invalid RoadType.
 	};
 
 	/**
@@ -73,7 +73,7 @@ public:
 	 * Type of road station.
 	 */
 	enum RoadVehicleType {
-		ROADVEHTYPE_BUS,   ///< Build objects usable for busses and passenger trams
+		ROADVEHTYPE_BUS, ///< Build objects usable for busses and passenger trams
 		ROADVEHTYPE_TRUCK, ///< Build objects usable for trucks and cargo trams
 	};
 
@@ -81,9 +81,9 @@ public:
 	 * Types of road-related objects in the game.
 	 */
 	enum BuildType {
-		BT_ROAD,       ///< Build a piece of road
-		BT_DEPOT,      ///< Build a road depot
-		BT_BUS_STOP,   ///< Build a bus stop
+		BT_ROAD, ///< Build a piece of road
+		BT_DEPOT, ///< Build a road depot
+		BT_BUS_STOP, ///< Build a bus stop
 		BT_TRUCK_STOP, ///< Build a truck stop
 	};
 
@@ -180,7 +180,6 @@ public:
 	 * @return Whether a road vehicle built for 'engine_road_type' has power on 'road_road_type'.
 	 */
 	static bool RoadVehHasPowerOnRoad(ScriptRoad::RoadType engine_road_type, ScriptRoad::RoadType road_road_type);
-
 
 	/**
 	 * Convert the road on all tiles within a rectangle to another RoadType.
@@ -575,7 +574,6 @@ public:
 	static SQInteger GetMaintenanceCostFactor(RoadType roadtype);
 
 private:
-
 	/**
 	 * Internal function used by Build(OneWay)Road(Full).
 	 */

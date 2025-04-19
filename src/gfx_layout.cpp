@@ -8,31 +8,31 @@
 /** @file gfx_layout.cpp Handling of laying out text. */
 
 #include "stdafx.h"
-#include "core/math_func.hpp"
+
 #include "gfx_layout.h"
-#include "string_func.h"
-#include "strings_func.h"
+
+#include "core/math_func.hpp"
 #include "core/utf8.hpp"
 #include "debug.h"
+#include "gfx_layout_fallback.h"
+#include "string_func.h"
+#include "strings_func.h"
 
 #include "table/control_codes.h"
 
-#include "gfx_layout_fallback.h"
-
 #if defined(WITH_ICU_I18N) && defined(WITH_HARFBUZZ)
-#include "gfx_layout_icu.h"
+#	include "gfx_layout_icu.h"
 #endif /* WITH_ICU_I18N && WITH_HARFBUZZ */
 
 #ifdef WITH_UNISCRIBE
-#include "os/windows/string_uniscribe.h"
+#	include "os/windows/string_uniscribe.h"
 #endif /* WITH_UNISCRIBE */
 
 #ifdef WITH_COCOA
-#include "os/macosx/string_osx.h"
+#	include "os/macosx/string_osx.h"
 #endif
 
 #include "safeguards.h"
-
 
 /** Cache of ParagraphLayout lines. */
 Layouter::LineCache *Layouter::linecache;
@@ -40,14 +40,12 @@ Layouter::LineCache *Layouter::linecache;
 /** Cache of Font instances. */
 Layouter::FontColourMap Layouter::fonts[FS_END];
 
-
 /**
  * Construct a new font.
  * @param size   The font size to use for this font.
  * @param colour The colour to draw this font in.
  */
-Font::Font(FontSize size, TextColour colour) :
-		fc(FontCache::Get(size)), colour(colour)
+Font::Font(FontSize size, TextColour colour) : fc(FontCache::Get(size)), colour(colour)
 {
 	assert(size < FS_END);
 }
@@ -66,7 +64,9 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 {
 	typename T::CharType *buff_begin = new typename T::CharType[str.size() + 1];
 	/* Move ownership of buff_begin into the Buffer/unique_ptr. */
-	line.buffer = Layouter::LineCacheItem::Buffer(buff_begin, [](void *p) { delete[] reinterpret_cast<T::CharType *>(p); });
+	line.buffer = Layouter::LineCacheItem::Buffer(buff_begin, [](void *p) {
+		delete[] reinterpret_cast<T::CharType *>(p);
+	});
 
 	const typename T::CharType *buffer_last = buff_begin + str.size() + 1;
 	typename T::CharType *buff = buff_begin;
@@ -197,7 +197,7 @@ Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(s
  */
 Dimension Layouter::GetBounds()
 {
-	Dimension d = { 0, 0 };
+	Dimension d = {0, 0};
 	for (const auto &l : *this) {
 		d.width = std::max<uint>(d.width, l->GetWidth());
 		d.height += l->GetLeading();
@@ -307,7 +307,7 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 			if (glyphs[i] == 0xFFFF) continue;
 
 			int begin_x = positions[i].left;
-			int end_x   = positions[i].right + 1;
+			int end_x = positions[i].right + 1;
 
 			if (IsInsideMM(x, begin_x, end_x)) {
 				/* Found our glyph, now convert to UTF-8 string index. */
@@ -383,8 +383,7 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str
 		linecache = new LineCache();
 	}
 
-	if (auto match = linecache->find(LineCacheQuery{state, str});
-		match != linecache->end()) {
+	if (auto match = linecache->find(LineCacheQuery{state, str}); match != linecache->end()) {
 		return match->second;
 	}
 

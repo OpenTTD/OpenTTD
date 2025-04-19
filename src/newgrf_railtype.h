@@ -10,13 +10,13 @@
 #ifndef NEWGRF_RAILTYPE_H
 #define NEWGRF_RAILTYPE_H
 
-#include "rail.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
+#include "rail.h"
 
 /** Resolver for the railtype scope. */
 struct RailTypeScopeResolver : public ScopeResolver {
-	TileIndex tile;      ///< Tracktile. For track on a bridge this is the southern bridgehead.
+	TileIndex tile; ///< Tracktile. For track on a bridge this is the southern bridgehead.
 	TileContext context; ///< Are we resolving sprites for the upper halftile, or on a bridge?
 	const RailTypeInfo *rti;
 
@@ -26,10 +26,7 @@ struct RailTypeScopeResolver : public ScopeResolver {
 	 * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
 	 * @param context Are we resolving sprites for the upper halftile, or on a bridge?
 	 */
-	RailTypeScopeResolver(ResolverObject &ro, const RailTypeInfo *rti, TileIndex tile, TileContext context)
-		: ScopeResolver(ro), tile(tile), context(context), rti(rti)
-	{
-	}
+	RailTypeScopeResolver(ResolverObject &ro, const RailTypeInfo *rti, TileIndex tile, TileContext context) : ScopeResolver(ro), tile(tile), context(context), rti(rti) {}
 
 	uint32_t GetRandomBits() const override;
 	uint32_t GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const override;
@@ -44,8 +41,10 @@ struct RailTypeResolverObject : public ResolverObject {
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->railtype_scope;
-			default:             return ResolverObject::GetScope(scope, relative);
+			case VSG_SCOPE_SELF:
+				return &this->railtype_scope;
+			default:
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 

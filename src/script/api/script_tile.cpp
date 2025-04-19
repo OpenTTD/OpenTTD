@@ -8,18 +8,20 @@
 /** @file script_tile.cpp Implementation of ScriptTile. */
 
 #include "../../stdafx.h"
+
 #include "script_tile.hpp"
-#include "script_map.hpp"
-#include "script_town.hpp"
-#include "../../station_func.h"
-#include "../../water_map.h"
+
 #include "../../clear_map.h"
-#include "../../tree_map.h"
-#include "../../town.h"
 #include "../../landscape.h"
 #include "../../landscape_cmd.h"
+#include "../../station_func.h"
 #include "../../terraform_cmd.h"
+#include "../../town.h"
 #include "../../tree_cmd.h"
+#include "../../tree_map.h"
+#include "../../water_map.h"
+#include "script_map.hpp"
+#include "script_town.hpp"
 
 #include "../../safeguards.h"
 
@@ -29,10 +31,14 @@
 	if (!::IsValidTile(tile)) return false;
 
 	switch (::GetTileType(tile)) {
-		default: return false;
-		case MP_CLEAR: return true;
-		case MP_TREES: return true;
-		case MP_WATER: return IsCoast(tile);
+		default:
+			return false;
+		case MP_CLEAR:
+			return true;
+		case MP_TREES:
+			return true;
+		case MP_WATER:
+			return IsCoast(tile);
 		case MP_ROAD:
 			/* Tram bits aren't considered buildable */
 			if (::GetRoadTypeTram(tile) != INVALID_ROADTYPE) return false;
@@ -87,8 +93,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return (::IsTileType(tile, MP_WATER) && ::IsCoast(tile)) ||
-		(::IsTileType(tile, MP_TREES) && ::GetTreeGround(tile) == TREE_GROUND_SHORE);
+	return (::IsTileType(tile, MP_WATER) && ::IsCoast(tile)) || (::IsTileType(tile, MP_TREES) && ::GetTreeGround(tile) == TREE_GROUND_SHORE);
 }
 
 /* static */ bool ScriptTile::IsStationTile(TileIndex tile)
@@ -160,10 +165,14 @@
 
 	switch (::GetTerrainType(tile)) {
 		default:
-		case 0: return TERRAIN_NORMAL;
-		case 1: return TERRAIN_DESERT;
-		case 2: return TERRAIN_RAINFOREST;
-		case 4: return TERRAIN_SNOW;
+		case 0:
+			return TERRAIN_NORMAL;
+		case 1:
+			return TERRAIN_DESERT;
+		case 2:
+			return TERRAIN_RAINFOREST;
+		case 4:
+			return TERRAIN_SNOW;
 	}
 }
 
@@ -218,7 +227,7 @@
 
 	if (transport_type == TRANSPORT_ROAD) {
 		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE ||
-				::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 1)) != TRACKDIR_BIT_NONE;
+			::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 1)) != TRACKDIR_BIT_NONE;
 	} else {
 		return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, 0)) != TRACKDIR_BIT_NONE;
 	}
@@ -331,15 +340,25 @@
 /* static */ Money ScriptTile::GetBuildCost(BuildType build_type)
 {
 	switch (build_type) {
-		case BT_FOUNDATION:   return ::GetPrice(PR_BUILD_FOUNDATION, 1, nullptr);
-		case BT_TERRAFORM:    return ::GetPrice(PR_TERRAFORM, 1, nullptr);
-		case BT_BUILD_TREES:  return ::GetPrice(PR_BUILD_TREES, 1, nullptr);
-		case BT_CLEAR_GRASS:  return ::GetPrice(PR_CLEAR_GRASS, 1, nullptr);
-		case BT_CLEAR_ROUGH:  return ::GetPrice(PR_CLEAR_ROUGH, 1, nullptr);
-		case BT_CLEAR_ROCKY:  return ::GetPrice(PR_CLEAR_ROCKS, 1, nullptr);
-		case BT_CLEAR_FIELDS: return ::GetPrice(PR_CLEAR_FIELDS, 1, nullptr);
-		case BT_CLEAR_HOUSE:  return ::GetPrice(PR_CLEAR_HOUSE, 1, nullptr);
-		case BT_CLEAR_WATER:  return ::GetPrice(PR_CLEAR_WATER, 1, nullptr);
-		default: return -1;
+		case BT_FOUNDATION:
+			return ::GetPrice(PR_BUILD_FOUNDATION, 1, nullptr);
+		case BT_TERRAFORM:
+			return ::GetPrice(PR_TERRAFORM, 1, nullptr);
+		case BT_BUILD_TREES:
+			return ::GetPrice(PR_BUILD_TREES, 1, nullptr);
+		case BT_CLEAR_GRASS:
+			return ::GetPrice(PR_CLEAR_GRASS, 1, nullptr);
+		case BT_CLEAR_ROUGH:
+			return ::GetPrice(PR_CLEAR_ROUGH, 1, nullptr);
+		case BT_CLEAR_ROCKY:
+			return ::GetPrice(PR_CLEAR_ROCKS, 1, nullptr);
+		case BT_CLEAR_FIELDS:
+			return ::GetPrice(PR_CLEAR_FIELDS, 1, nullptr);
+		case BT_CLEAR_HOUSE:
+			return ::GetPrice(PR_CLEAR_HOUSE, 1, nullptr);
+		case BT_CLEAR_WATER:
+			return ::GetPrice(PR_CLEAR_WATER, 1, nullptr);
+		default:
+			return -1;
 	}
 }

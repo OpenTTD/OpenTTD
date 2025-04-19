@@ -8,6 +8,7 @@
 /** @file cachecheck.cpp Check caches. */
 
 #include "stdafx.h"
+
 #include "aircraft.h"
 #include "company_base.h"
 #include "debug.h"
@@ -105,11 +106,20 @@ void CheckCaches()
 		}
 
 		switch (v->type) {
-			case VEH_TRAIN:    Train::From(v)->ConsistChanged(CCF_TRACK); break;
-			case VEH_ROAD:     RoadVehUpdateCache(RoadVehicle::From(v)); break;
-			case VEH_AIRCRAFT: UpdateAircraftCache(Aircraft::From(v));   break;
-			case VEH_SHIP:     Ship::From(v)->UpdateCache();             break;
-			default: break;
+			case VEH_TRAIN:
+				Train::From(v)->ConsistChanged(CCF_TRACK);
+				break;
+			case VEH_ROAD:
+				RoadVehUpdateCache(RoadVehicle::From(v));
+				break;
+			case VEH_AIRCRAFT:
+				UpdateAircraftCache(Aircraft::From(v));
+				break;
+			case VEH_SHIP:
+				Ship::From(v)->UpdateCache();
+				break;
+			default:
+				break;
 		}
 
 		uint length = 0;

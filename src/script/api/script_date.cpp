@@ -8,10 +8,12 @@
 /** @file script_date.cpp Implementation of ScriptDate. */
 
 #include "../../stdafx.h"
+
 #include "script_date.hpp"
-#include "../../timer/timer_game_economy.h"
 
 #include <time.h>
+
+#include "../../timer/timer_game_economy.h"
 
 #include "../../safeguards.h"
 

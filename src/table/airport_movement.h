@@ -19,9 +19,9 @@
  */
 struct AirportFTAbuildup {
 	uint8_t position; ///< The position that an airplane is at.
-	uint8_t heading;  ///< The current orders (eg. TAKEOFF, HANGAR, ENDLANDING, etc.).
-	AirportBlocks blocks;  ///< The block this position is on on the airport (st->airport.flags).
-	uint8_t next;     ///< Next position from this position.
+	uint8_t heading; ///< The current orders (eg. TAKEOFF, HANGAR, ENDLANDING, etc.).
+	AirportBlocks blocks; ///< The block this position is on on the airport (st->airport.flags).
+	uint8_t next; ///< Next position from this position.
 };
 
 /* clang-format off */

@@ -8,17 +8,18 @@
 /** @file dedicated.cpp Forking support for dedicated servers. */
 
 #include "stdafx.h"
-#include "fileio_func.h"
+
 #include "debug.h"
+#include "fileio_func.h"
 
 std::string _log_file; ///< Filename to reroute output of a forked OpenTTD to
 std::optional<FileHandle> _log_fd; ///< File to reroute output of a forked OpenTTD to
 
 #if defined(UNIX)
 
-#include <unistd.h>
+#	include <unistd.h>
 
-#include "safeguards.h"
+#	include "safeguards.h"
 
 void DedicatedFork()
 {

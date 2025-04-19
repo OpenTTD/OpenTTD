@@ -8,15 +8,16 @@
 /** @file script_infrastructure.cpp Implementation of ScriptInfrastructure. */
 
 #include "../../stdafx.h"
+
 #include "script_infrastructure.hpp"
+
 #include "../../company_base.h"
 #include "../../rail.h"
 #include "../../road_func.h"
-#include "../../water.h"
 #include "../../station_func.h"
+#include "../../water.h"
 
 #include "../../safeguards.h"
-
 
 /* static */ SQInteger ScriptInfrastructure::GetRailPieceCount(ScriptCompany::CompanyID company, ScriptRail::RailType railtype)
 {

@@ -8,7 +8,9 @@
 /** @file script_industrylist.cpp Implementation of ScriptIndustryList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_industrylist.hpp"
+
 #include "../../industry.h"
 
 #include "../../safeguards.h"
@@ -20,14 +22,14 @@ ScriptIndustryList::ScriptIndustryList(HSQUIRRELVM vm)
 
 ScriptIndustryList_CargoAccepting::ScriptIndustryList_CargoAccepting(CargoType cargo_type)
 {
-	ScriptList::FillList<Industry>(this,
-		[cargo_type](const Industry *i) { return i->IsCargoAccepted(cargo_type); }
-	);
+	ScriptList::FillList<Industry>(this, [cargo_type](const Industry *i) {
+		return i->IsCargoAccepted(cargo_type);
+	});
 }
 
 ScriptIndustryList_CargoProducing::ScriptIndustryList_CargoProducing(CargoType cargo_type)
 {
-	ScriptList::FillList<Industry>(this,
-		[cargo_type](const Industry *i) { return i->IsCargoProduced(cargo_type); }
-	);
+	ScriptList::FillList<Industry>(this, [cargo_type](const Industry *i) {
+		return i->IsCargoProduced(cargo_type);
+	});
 }

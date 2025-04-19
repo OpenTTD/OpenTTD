@@ -8,6 +8,7 @@
 /** @file newgrf_act6.cpp NewGRF Action 0x06 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
@@ -77,11 +78,11 @@ static void CfgApply(ByteReader &buf)
 
 		/* Bit 7 of param_size indicates we should add to the original value
 		 * instead of replacing it. */
-		add_value  = HasBit(param_size, 7);
+		add_value = HasBit(param_size, 7);
 		param_size = GB(param_size, 0, 7);
 
 		/* Where to apply the data to within the pseudo sprite data. */
-		offset     = buf.ReadExtendedByte();
+		offset = buf.ReadExtendedByte();
 
 		/* If the parameter is a GRF parameter (not an internal variable) check
 		 * if it (and all further sequential parameters) has been defined. */
@@ -111,9 +112,35 @@ static void CfgApply(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x06>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x06>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x06>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x06>::Init(ByteReader &buf) { CfgApply(buf); }
-template <> void GrfActionHandler<0x06>::Reserve(ByteReader &buf) { CfgApply(buf); }
-template <> void GrfActionHandler<0x06>::Activation(ByteReader &buf) { CfgApply(buf); }
+template <>
+void GrfActionHandler<0x06>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x06>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x06>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x06>::Init(ByteReader &buf)
+{
+	CfgApply(buf);
+}
+
+template <>
+void GrfActionHandler<0x06>::Reserve(ByteReader &buf)
+{
+	CfgApply(buf);
+}
+
+template <>
+void GrfActionHandler<0x06>::Activation(ByteReader &buf)
+{
+	CfgApply(buf);
+}

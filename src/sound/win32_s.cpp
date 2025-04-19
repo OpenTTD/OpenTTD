@@ -8,15 +8,18 @@
 /** @file win32_s.cpp Handling of sound for Windows. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../driver.h"
-#include "../mixer.h"
-#include "../core/bitmath_func.hpp"
-#include "../core/math_func.hpp"
+
 #include "win32_s.h"
+
 #include <windows.h>
 #include <mmsystem.h>
 #include <versionhelpers.h>
+
+#include "../core/bitmath_func.hpp"
+#include "../core/math_func.hpp"
+#include "../driver.h"
+#include "../mixer.h"
+#include "../openttd.h"
 #include "../os/windows/win32.h"
 #include "../thread.h"
 

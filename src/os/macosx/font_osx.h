@@ -10,28 +10,42 @@
 #ifndef FONT_OSX_H
 #define FONT_OSX_H
 
+#include <CoreFoundation/CoreFoundation.h>
+
 #include "../../fontcache/truetypefontcache.h"
 #include "macos.h"
 
-#include <CoreFoundation/CoreFoundation.h>
-
 class CoreTextFontCache : public TrueTypeFontCache {
 	CFAutoRelease<CTFontDescriptorRef> font_desc; ///< Font descriptor excluding font size.
-	CFAutoRelease<CTFontRef> font;                ///< CoreText font handle.
+	CFAutoRelease<CTFontRef> font; ///< CoreText font handle.
 
-	std::string font_name;                        ///< Cached font name.
+	std::string font_name; ///< Cached font name.
 
 	void SetFontSize(int pixels);
 	const Sprite *InternalGetGlyph(GlyphID key, bool use_aa) override;
+
 public:
 	CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels);
+
 	~CoreTextFontCache() {}
 
 	void ClearFontCache() override;
 	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
-	std::string GetFontName() override { return font_name; }
-	bool IsBuiltInFont() override { return false; }
-	const void *GetOSHandle() override { return font.get(); }
+
+	std::string GetFontName() override
+	{
+		return font_name;
+	}
+
+	bool IsBuiltInFont() override
+	{
+		return false;
+	}
+
+	const void *GetOSHandle() override
+	{
+		return font.get();
+	}
 };
 
 void LoadCoreTextFont(FontSize fs);

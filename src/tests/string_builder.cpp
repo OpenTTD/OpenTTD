@@ -8,8 +8,11 @@
 /** @file string_builder.cpp Test functionality from core/string_builder. */
 
 #include "../stdafx.h"
-#include "../3rdparty/catch2/catch.hpp"
+
 #include "../core/string_builder.hpp"
+
+#include "../3rdparty/catch2/catch.hpp"
+
 #include "../safeguards.h"
 
 using namespace std::literals;

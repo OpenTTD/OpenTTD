@@ -18,20 +18,36 @@ public:
 
 	void Stop() override;
 
-	bool HasEfficient8Bpp() const override { return true; }
+	bool HasEfficient8Bpp() const override
+	{
+		return true;
+	}
 
-	bool UseSystemCursor() override { return true; }
+	bool UseSystemCursor() override
+	{
+		return true;
+	}
 
 	void ClearSystemSprites() override;
 
 	void PopulateSystemSprites() override;
 
-	bool HasAnimBuffer() override { return true; }
-	uint8_t *GetAnimBuffer() override { return this->anim_buffer; }
+	bool HasAnimBuffer() override
+	{
+		return true;
+	}
+
+	uint8_t *GetAnimBuffer() override
+	{
+		return this->anim_buffer;
+	}
 
 	void ToggleVsync(bool vsync) override;
 
-	std::string_view GetName() const override { return "sdl-opengl"; }
+	std::string_view GetName() const override
+	{
+		return "sdl-opengl";
+	}
 
 protected:
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
@@ -41,7 +57,7 @@ protected:
 	bool CreateMainWindow(uint w, uint h, uint flags) override;
 
 private:
-	void  *gl_context;  ///< OpenGL context.
+	void *gl_context; ///< OpenGL context.
 	uint8_t *anim_buffer; ///< Animation buffer from OpenGL back-end.
 
 	std::optional<std::string_view> AllocateContext();
@@ -52,8 +68,15 @@ private:
 class FVideoDriver_SDL_OpenGL : public DriverFactoryBase {
 public:
 	FVideoDriver_SDL_OpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 8, "sdl-opengl", "SDL OpenGL Video Driver") {}
-	/* virtual */ std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_SDL_OpenGL>(); }
+
+	/* virtual */ std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<VideoDriver_SDL_OpenGL>();
+	}
 
 protected:
-	bool UsesHardwareAcceleration() const override { return true; }
+	bool UsesHardwareAcceleration() const override
+	{
+		return true;
+	}
 };

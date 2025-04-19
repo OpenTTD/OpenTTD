@@ -8,21 +8,22 @@
 /** @file crashlog_win.cpp Implementation of a crashlogger for Windows */
 
 #include "../../stdafx.h"
-#include "../../crashlog.h"
-#include "win32.h"
-#include "../../core/math_func.hpp"
-#include "../../string_func.h"
-#include "../../fileio_func.h"
-#include "../../strings_func.h"
-#include "../../gamelog.h"
-#include "../../saveload/saveload.h"
-#include "../../video/video_driver.hpp"
-#include "../../library_loader.h"
 
 #include <windows.h>
 #include <mmsystem.h>
-#include <signal.h>
 #include <psapi.h>
+#include <signal.h>
+
+#include "../../core/math_func.hpp"
+#include "../../crashlog.h"
+#include "../../fileio_func.h"
+#include "../../gamelog.h"
+#include "../../library_loader.h"
+#include "../../saveload/saveload.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
+#include "../../video/video_driver.hpp"
+#include "win32.h"
 
 #if defined(_MSC_VER)
 #	include <dbghelp.h>
@@ -96,8 +97,8 @@ class CrashLogWindows : public CrashLog {
 	}
 
 	void SurveyStacktrace(nlohmann::json &survey) const override;
-public:
 
+public:
 #ifdef WITH_UNOFFICIAL_BREAKPAD
 	static bool MinidumpCallback(const wchar_t *dump_dir, const wchar_t *minidump_id, void *context, EXCEPTION_POINTERS *, MDRawAssertionInfo *, bool succeeded)
 	{
@@ -153,10 +154,7 @@ public:
 	 * A crash log is always generated when it's generated.
 	 * @param ep the data related to the exception.
 	 */
-	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) :
-		ep(ep)
-	{
-	}
+	CrashLogWindows(EXCEPTION_POINTERS *ep = nullptr) : ep(ep) {}
 
 #if !defined(_MSC_VER)
 	/** Buffer to track the long jump set setup. */
@@ -174,21 +172,23 @@ public:
 
 #if defined(_MSC_VER)
 static const uint MAX_SYMBOL_LEN = 512;
-static const uint MAX_FRAMES     = 64;
+static const uint MAX_FRAMES = 64;
 
 /* virtual */ void CrashLogWindows::SurveyStacktrace(nlohmann::json &survey) const
 {
 	LibraryLoader dbghelp("dbghelp.dll");
+
 	struct ProcPtrs {
-		BOOL (WINAPI * pSymInitialize)(HANDLE, PCSTR, BOOL);
-		BOOL (WINAPI * pSymSetOptions)(DWORD);
-		BOOL (WINAPI * pSymCleanup)(HANDLE);
-		BOOL (WINAPI * pStackWalk64)(DWORD, HANDLE, HANDLE, LPSTACKFRAME64, PVOID, PREAD_PROCESS_MEMORY_ROUTINE64, PFUNCTION_TABLE_ACCESS_ROUTINE64, PGET_MODULE_BASE_ROUTINE64, PTRANSLATE_ADDRESS_ROUTINE64);
-		PVOID (WINAPI * pSymFunctionTableAccess64)(HANDLE, DWORD64);
-		DWORD64 (WINAPI * pSymGetModuleBase64)(HANDLE, DWORD64);
-		BOOL (WINAPI * pSymGetModuleInfo64)(HANDLE, DWORD64, PIMAGEHLP_MODULE64);
-		BOOL (WINAPI * pSymGetSymFromAddr64)(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
-		BOOL (WINAPI * pSymGetLineFromAddr64)(HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64);
+		BOOL(WINAPI *pSymInitialize)(HANDLE, PCSTR, BOOL);
+		BOOL(WINAPI *pSymSetOptions)(DWORD);
+		BOOL(WINAPI *pSymCleanup)(HANDLE);
+		BOOL(WINAPI *pStackWalk64)(
+			DWORD, HANDLE, HANDLE, LPSTACKFRAME64, PVOID, PREAD_PROCESS_MEMORY_ROUTINE64, PFUNCTION_TABLE_ACCESS_ROUTINE64, PGET_MODULE_BASE_ROUTINE64, PTRANSLATE_ADDRESS_ROUTINE64);
+		PVOID(WINAPI *pSymFunctionTableAccess64)(HANDLE, DWORD64);
+		DWORD64(WINAPI *pSymGetModuleBase64)(HANDLE, DWORD64);
+		BOOL(WINAPI *pSymGetModuleInfo64)(HANDLE, DWORD64, PIMAGEHLP_MODULE64);
+		BOOL(WINAPI *pSymGetSymFromAddr64)(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
+		BOOL(WINAPI *pSymGetLineFromAddr64)(HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64);
 	} proc = {
 		dbghelp.GetFunction("SymInitialize"),
 		dbghelp.GetFunction("SymSetOptions"),
@@ -214,19 +214,19 @@ static const uint MAX_FRAMES     = 64;
 		/* Initialize starting stack frame from context record. */
 		STACKFRAME64 frame;
 		memset(&frame, 0, sizeof(frame));
-#ifdef _M_AMD64
+#	ifdef _M_AMD64
 		frame.AddrPC.Offset = ep->ContextRecord->Rip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Rbp;
 		frame.AddrStack.Offset = ep->ContextRecord->Rsp;
-#elif defined(_M_IX86)
+#	elif defined(_M_IX86)
 		frame.AddrPC.Offset = ep->ContextRecord->Eip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Ebp;
 		frame.AddrStack.Offset = ep->ContextRecord->Esp;
-#elif defined(_M_ARM64)
+#	elif defined(_M_ARM64)
 		frame.AddrPC.Offset = ep->ContextRecord->Pc;
 		frame.AddrFrame.Offset = ep->ContextRecord->Fp;
 		frame.AddrStack.Offset = ep->ContextRecord->Sp;
-#endif
+#	endif
 		frame.AddrPC.Mode = AddrModeFlat;
 		frame.AddrFrame.Mode = AddrModeFlat;
 		frame.AddrStack.Mode = AddrModeFlat;
@@ -240,19 +240,20 @@ static const uint MAX_FRAMES     = 64;
 		 * SymGetSymFromAddr64 is not required to write a null-terminating char.
 		 * sizeof(IMAGEHLP_SYMBOL64) includes at least one char of the Name buffer. */
 		std::array<char, sizeof(IMAGEHLP_SYMBOL64) + MAX_SYMBOL_LEN> sym_info_raw{};
-		IMAGEHLP_SYMBOL64 *sym_info = reinterpret_cast<IMAGEHLP_SYMBOL64*>(sym_info_raw.data());
+		IMAGEHLP_SYMBOL64 *sym_info = reinterpret_cast<IMAGEHLP_SYMBOL64 *>(sym_info_raw.data());
 		sym_info->SizeOfStruct = sizeof(IMAGEHLP_SYMBOL64);
 		sym_info->MaxNameLength = MAX_SYMBOL_LEN;
 
 		/* Walk stack at most MAX_FRAMES deep in case the stack is corrupt. */
 		for (uint num = 0; num < MAX_FRAMES; num++) {
 			if (!proc.pStackWalk64(
-#ifdef _M_AMD64
-				IMAGE_FILE_MACHINE_AMD64,
-#else
-				IMAGE_FILE_MACHINE_I386,
-#endif
-				hCur, GetCurrentThread(), &frame, &ctx, nullptr, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, nullptr)) break;
+#	ifdef _M_AMD64
+					IMAGE_FILE_MACHINE_AMD64,
+#	else
+					IMAGE_FILE_MACHINE_I386,
+#	endif
+					hCur, GetCurrentThread(), &frame, &ctx, nullptr, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, nullptr))
+				break;
 
 			if (frame.AddrPC.Offset == frame.AddrReturn.Offset) {
 				survey.push_back("<infinite loop>");
@@ -269,7 +270,7 @@ static const uint MAX_FRAMES     = 64;
 			}
 
 			/* Print module and instruction pointer. */
-			std::string message = fmt::format("{:20s} {:X}",  mod_name, frame.AddrPC.Offset);
+			std::string message = fmt::format("{:20s} {:X}", mod_name, frame.AddrPC.Offset);
 
 			/* Get symbol name and line info if possible. */
 			DWORD64 offset;
@@ -321,8 +322,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	if (_gamelog.TestEmergency()) {
 		static const wchar_t _emergency_crash[] =
-			L"A serious fault condition occurred in the game. The game will shut down.\n"
-			L"As you loaded an emergency savegame no crash information will be generated.\n";
+			L"A serious fault condition occurred in the game. The game will shut down.\n" L"As you loaded an emergency savegame no crash information will be generated.\n";
 		MessageBox(nullptr, _emergency_crash, L"Fatal Application Failure", MB_ICONERROR);
 		ImmediateExitProcess(3);
 	}
@@ -425,7 +425,7 @@ static void CDECL CustomAbort(int)
 		mov safe_esp, esp
 	}
 #	else
-	asm("movl %%esp, %0" : "=rm" (safe_esp));
+	asm("movl %%esp, %0" : "=rm"(safe_esp));
 #	endif
 	_safe_esp = safe_esp;
 #endif
@@ -442,7 +442,7 @@ static const wchar_t _crash_desc[] =
 	L"https://github.com/OpenTTD/OpenTTD/issues\n\n"
 	L"%s\n%s\n%s\n%s\n";
 
-static const wchar_t * const _expand_texts[] = {L"S&how report >>", L"&Hide report <<" };
+static const wchar_t *const _expand_texts[] = {L"S&how report >>", L"&Hide report <<"};
 
 static void SetWndSize(HWND wnd, int mode)
 {
@@ -455,13 +455,9 @@ static void SetWndSize(HWND wnd, int mode)
 		GetWindowRect(GetDlgItem(wnd, 11), &r2);
 		int offs = r2.bottom - r2.top + 10;
 		if (mode == 0) offs = -offs;
-		SetWindowPos(wnd, HWND_TOPMOST, 0, 0,
-			r.right - r.left, r.bottom - r.top + offs, SWP_NOMOVE | SWP_NOZORDER);
+		SetWindowPos(wnd, HWND_TOPMOST, 0, 0, r.right - r.left, r.bottom - r.top + offs, SWP_NOMOVE | SWP_NOZORDER);
 	} else {
-		SetWindowPos(wnd, HWND_TOPMOST,
-			(GetSystemMetrics(SM_CXSCREEN) - (r.right - r.left)) / 2,
-			(GetSystemMetrics(SM_CYSCREEN) - (r.bottom - r.top)) / 2,
-			0, 0, SWP_NOSIZE);
+		SetWindowPos(wnd, HWND_TOPMOST, (GetSystemMetrics(SM_CXSCREEN) - (r.right - r.left)) / 2, (GetSystemMetrics(SM_CYSCREEN) - (r.bottom - r.top)) / 2, 0, 0, SWP_NOSIZE);
 	}
 }
 
@@ -482,10 +478,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			 * buffer in MB_TO_WIDE is not large enough (512 chars).
 			 * Use VirtualAlloc to allocate pages for the buffer to avoid overflowing the stack.
 			 * Avoid the heap in case the crash is because the heap became corrupted. */
-			const size_t total_length = crash_desc_buf_length * sizeof(wchar_t) +
-										crashlog_length * sizeof(wchar_t) +
-										filename_buf_length * sizeof(wchar_t) * filename_count +
-										crashlog_length;
+			const size_t total_length = crash_desc_buf_length * sizeof(wchar_t) + crashlog_length * sizeof(wchar_t) + filename_buf_length * sizeof(wchar_t) * filename_count + crashlog_length;
 			void *raw_buffer = VirtualAlloc(nullptr, total_length, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
 
 			wchar_t *crash_desc_buf = reinterpret_cast<wchar_t *>(raw_buffer);
@@ -503,21 +496,17 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 				*p = '\0';
 			}
 
-			_snwprintf(
-				crash_desc_buf,
-				crash_desc_buf_length,
-				_crash_desc,
-				convert_to_fs(CrashLogWindows::current->crashlog_filename,   {filename_buf + filename_buf_length * 0, filename_buf_length}),
-				convert_to_fs(CrashLogWindows::current->crashdump_filename,  {filename_buf + filename_buf_length * 1, filename_buf_length}),
-				convert_to_fs(CrashLogWindows::current->savegame_filename,   {filename_buf + filename_buf_length * 2, filename_buf_length}),
-				convert_to_fs(CrashLogWindows::current->screenshot_filename, {filename_buf + filename_buf_length * 3, filename_buf_length})
-			);
+			_snwprintf(crash_desc_buf, crash_desc_buf_length, _crash_desc, convert_to_fs(CrashLogWindows::current->crashlog_filename, {filename_buf + filename_buf_length * 0, filename_buf_length}),
+				convert_to_fs(CrashLogWindows::current->crashdump_filename, {filename_buf + filename_buf_length * 1, filename_buf_length}),
+				convert_to_fs(CrashLogWindows::current->savegame_filename, {filename_buf + filename_buf_length * 2, filename_buf_length}),
+				convert_to_fs(CrashLogWindows::current->screenshot_filename, {filename_buf + filename_buf_length * 3, filename_buf_length}));
 
 			SetDlgItemText(wnd, 10, crash_desc_buf);
 			SetDlgItemText(wnd, 11, convert_to_fs(crashlog_dos_nl, {crashlog_buf, crashlog_length}));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 			SetWndSize(wnd, -1);
-		} return TRUE;
+		}
+			return TRUE;
 		case WM_COMMAND:
 			switch (wParam) {
 				case 12: // Close

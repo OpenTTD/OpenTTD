@@ -11,8 +11,8 @@
 #define COMPANY_GUI_H
 
 #include "company_type.h"
-#include "group.h"
 #include "gfx_type.h"
+#include "group.h"
 
 TextColour GetDrawStringCompanyColour(CompanyID company);
 void DrawCompanyIcon(CompanyID c, int x, int y);

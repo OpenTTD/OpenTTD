@@ -10,11 +10,11 @@
  */
 
 #include "../../stdafx.h"
-#include "../../thread.h"
 
-#include "tcp.h"
+#include "../../thread.h"
 #include "../network_coordinator.h"
 #include "../network_internal.h"
+#include "tcp.h"
 
 #include "../../safeguards.h"
 
@@ -26,9 +26,7 @@
  * @param default_port If not indicated in connection_string, what port to use.
  * @param bind_address The local bind address to use. Defaults to letting the OS find one.
  */
-TCPConnecter::TCPConnecter(std::string_view connection_string, uint16_t default_port, const NetworkAddress &bind_address, int family) :
-	bind_address(bind_address),
-	family(family)
+TCPConnecter::TCPConnecter(std::string_view connection_string, uint16_t default_port, const NetworkAddress &bind_address, int family) : bind_address(bind_address), family(family)
 {
 	this->connection_string = NormalizeConnectionString(connection_string, default_port);
 }
@@ -38,8 +36,7 @@ TCPConnecter::TCPConnecter(std::string_view connection_string, uint16_t default_
  * @param connection_string The address to connect to.
  * @param default_port If not indicated in connection_string, what port to use.
  */
-TCPServerConnecter::TCPServerConnecter(std::string_view connection_string, uint16_t default_port) :
-	server_address(ServerAddress::Parse(connection_string, default_port))
+TCPServerConnecter::TCPServerConnecter(std::string_view connection_string, uint16_t default_port) : server_address(ServerAddress::Parse(connection_string, default_port))
 {
 	switch (this->server_address.type) {
 		case SERVER_ADDRESS_DIRECT:
@@ -89,7 +86,8 @@ void TCPConnecter::Connect(addrinfo *address)
 {
 	SOCKET sock = socket(address->ai_family, address->ai_socktype, address->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		Debug(net, 0, "Could not create {} {} socket: {}", NetworkAddress::SocketTypeAsString(address->ai_socktype), NetworkAddress::AddressFamilyAsString(address->ai_family), NetworkError::GetLast().AsString());
+		Debug(net, 0, "Could not create {} {} socket: {}", NetworkAddress::SocketTypeAsString(address->ai_socktype), NetworkAddress::AddressFamilyAsString(address->ai_family),
+			NetworkError::GetLast().AsString());
 		return;
 	}
 
@@ -462,9 +460,10 @@ void TCPServerConnecter::SetFailure()
  */
 /* static */ void TCPConnecter::CheckCallbacks()
 {
-	TCPConnecter::connecters.erase(
-		std::remove_if(TCPConnecter::connecters.begin(), TCPConnecter::connecters.end(),
-				   [](auto &connecter) { return connecter->CheckActivity(); }),
+	TCPConnecter::connecters.erase(std::remove_if(TCPConnecter::connecters.begin(), TCPConnecter::connecters.end(),
+									   [](auto &connecter) {
+										   return connecter->CheckActivity();
+									   }),
 		TCPConnecter::connecters.end());
 }
 

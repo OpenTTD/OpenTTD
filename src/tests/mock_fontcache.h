@@ -22,14 +22,40 @@ public:
 	}
 
 	void SetUnicodeGlyph(char32_t, SpriteID) override {}
+
 	void InitializeUnicodeGlyphMap() override {}
+
 	void ClearFontCache() override {}
-	const Sprite *GetGlyph(GlyphID) override { return nullptr; }
-	uint GetGlyphWidth(GlyphID) override { return this->height / 2; }
-	bool GetDrawGlyphShadow() override { return false; }
-	GlyphID MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback = true) override { return key; }
-	std::string GetFontName() override { return "mock"; }
-	bool IsBuiltInFont() override { return true; }
+
+	const Sprite *GetGlyph(GlyphID) override
+	{
+		return nullptr;
+	}
+
+	uint GetGlyphWidth(GlyphID) override
+	{
+		return this->height / 2;
+	}
+
+	bool GetDrawGlyphShadow() override
+	{
+		return false;
+	}
+
+	GlyphID MapCharToGlyph(char32_t key, [[maybe_unused]] bool allow_fallback = true) override
+	{
+		return key;
+	}
+
+	std::string GetFontName() override
+	{
+		return "mock";
+	}
+
+	bool IsBuiltInFont() override
+	{
+		return true;
+	}
 
 	static void InitializeFontCaches()
 	{

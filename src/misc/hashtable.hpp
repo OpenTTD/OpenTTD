@@ -13,8 +13,7 @@
 #include "../core/math_func.hpp"
 
 template <class TItem>
-struct HashTableSlot
-{
+struct HashTableSlot {
 	typedef typename TItem::Key Key; // make Titem::Key a property of HashTable
 
 	TItem *first_item = nullptr;
@@ -147,17 +146,17 @@ protected:
 	int number_of_items = 0; // item counter
 
 	/** static helper - return hash for the given key modulo number of slots */
-	inline static int CalcHash(const Tkey &key)
+	static inline int CalcHash(const Tkey &key)
 	{
 		uint32_t hash = key.CalcHash();
-		hash -= (hash >> 17);          // hash * 131071 / 131072
-		hash -= (hash >> 5);           //   * 31 / 32
+		hash -= (hash >> 17); // hash * 131071 / 131072
+		hash -= (hash >> 5); //   * 31 / 32
 		hash &= (1 << HASH_BITS) - 1; //   modulo slots
 		return hash;
 	}
 
 	/** static helper - return hash for the given item modulo number of slots */
-	inline static int CalcHash(const Titem &item)
+	static inline int CalcHash(const Titem &item)
 	{
 		return CalcHash(item.GetKey());
 	}

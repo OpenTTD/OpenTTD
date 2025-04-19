@@ -18,7 +18,7 @@ struct MixerChannel;
  * @param buffer Pointer to interleaved 2-channel signed 16 bit PCM data buffer, guaranteed to be 0-initialized.
  * @param samples number of samples that must be filled into \c buffer.
  */
-typedef void(*MxStreamCallback)(int16_t *buffer, size_t samples);
+typedef void (*MxStreamCallback)(int16_t *buffer, size_t samples);
 
 bool MxInitialize(uint rate);
 void MxMixSamples(void *buffer, uint samples);
@@ -26,7 +26,7 @@ void MxMixSamples(void *buffer, uint samples);
 MixerChannel *MxAllocateChannel();
 void MxSetChannelRawSrc(MixerChannel *mc, const std::shared_ptr<std::vector<uint8_t>> &mem, uint rate, bool is16bit);
 void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan);
-void MxActivateChannel(MixerChannel*);
+void MxActivateChannel(MixerChannel *);
 void MxCloseAllChannels();
 
 uint32_t MxSetMusicSource(MxStreamCallback music_callback);

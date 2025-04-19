@@ -8,7 +8,9 @@
 /** @file script_client.cpp Implementation of ScriptClient. */
 
 #include "../../stdafx.h"
+
 #include "script_client.hpp"
+
 #include "../../network/network.h"
 #include "../../network/network_base.h"
 

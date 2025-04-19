@@ -12,19 +12,19 @@
 #ifndef NETWORK_CORE_TCP_H
 #define NETWORK_CORE_TCP_H
 
-#include "address.h"
-#include "packet.h"
-
 #include <atomic>
 #include <chrono>
 #include <thread>
 
+#include "address.h"
+#include "packet.h"
+
 /** The states of sending the packets. */
 enum SendPacketsState : uint8_t {
-	SPS_CLOSED,      ///< The connection got closed.
-	SPS_NONE_SENT,   ///< The buffer is still full, so no (parts of) packets could be sent.
+	SPS_CLOSED, ///< The connection got closed.
+	SPS_NONE_SENT, ///< The buffer is still full, so no (parts of) packets could be sent.
 	SPS_PARTLY_SENT, ///< The packets are partly sent; there are more packets to be sent in the queue.
-	SPS_ALL_SENT,    ///< All packets in the queue are sent.
+	SPS_ALL_SENT, ///< All packets in the queue are sent.
 };
 
 /** Base socket handler for all TCP sockets */
@@ -34,6 +34,7 @@ private:
 	std::unique_ptr<Packet> packet_recv = nullptr; ///< Partially received packet
 
 	void EmptyPacketQueue();
+
 public:
 	SOCKET sock = INVALID_SOCKET; ///< The socket currently connected to
 	bool writable = false; ///< Can we write to this socket?
@@ -42,7 +43,10 @@ public:
 	 * Whether this socket is currently bound to a socket.
 	 * @return true when the socket is bound, false otherwise
 	 */
-	bool IsConnected() const { return this->sock != INVALID_SOCKET; }
+	bool IsConnected() const
+	{
+		return this->sock != INVALID_SOCKET;
+	}
 
 	virtual NetworkRecvStatus CloseConnection(bool error = true);
 	void CloseSocket();
@@ -58,13 +62,17 @@ public:
 	 * Whether there is something pending in the send queue.
 	 * @return true when something is pending in the send queue.
 	 */
-	bool HasSendQueue() { return !this->packet_queue.empty(); }
+	bool HasSendQueue()
+	{
+		return !this->packet_queue.empty();
+	}
 
 	/**
 	 * Construct a socket handler for a TCP connection.
 	 * @param s The just opened TCP connection.
 	 */
 	NetworkTCPSocketHandler(SOCKET s = INVALID_SOCKET) : sock(s) {}
+
 	~NetworkTCPSocketHandler();
 };
 
@@ -81,28 +89,28 @@ private:
 	 * lock on the game-state.
 	 */
 	enum class Status : uint8_t {
-		Init,       ///< TCPConnecter is created but resolving hasn't started.
-		Resolving,  ///< The hostname is being resolved (threaded).
-		Failure,    ///< Resolving failed.
+		Init, ///< TCPConnecter is created but resolving hasn't started.
+		Resolving, ///< The hostname is being resolved (threaded).
+		Failure, ///< Resolving failed.
 		Connecting, ///< We are currently connecting.
-		Connected,  ///< The connection is established.
+		Connected, ///< The connection is established.
 	};
 
-	std::thread resolve_thread;                         ///< Thread used during resolving.
-	std::atomic<Status> status = Status::Init;          ///< The current status of the connecter.
-	std::atomic<bool> killed = false;                   ///< Whether this connecter is marked as killed.
+	std::thread resolve_thread; ///< Thread used during resolving.
+	std::atomic<Status> status = Status::Init; ///< The current status of the connecter.
+	std::atomic<bool> killed = false; ///< Whether this connecter is marked as killed.
 
-	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
-	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
-	std::map<SOCKET, NetworkAddress> sock_to_address;   ///< Mapping of a socket to the real address it is connecting to. USed for DEBUG statements.
-	size_t current_address = 0;                         ///< Current index in addresses we are trying.
+	addrinfo *ai = nullptr; ///< getaddrinfo() allocated linked-list of resolved addresses.
+	std::vector<addrinfo *> addresses; ///< Addresses we can connect to.
+	std::map<SOCKET, NetworkAddress> sock_to_address; ///< Mapping of a socket to the real address it is connecting to. USed for DEBUG statements.
+	size_t current_address = 0; ///< Current index in addresses we are trying.
 
-	std::vector<SOCKET> sockets;                        ///< Pending connect() attempts.
+	std::vector<SOCKET> sockets; ///< Pending connect() attempts.
 	std::chrono::steady_clock::time_point last_attempt; ///< Time we last tried to connect.
 
-	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
-	NetworkAddress bind_address;                        ///< Address we're binding to, if any.
-	int family = AF_UNSPEC;                             ///< Family we are using to connect with.
+	std::string connection_string; ///< Current address we are connecting to (before resolving).
+	NetworkAddress bind_address; ///< Address we're binding to, if any.
+	int family = AF_UNSPEC; ///< Family we are using to connect with.
 
 	static std::vector<std::shared_ptr<TCPConnecter>> connecters; ///< List of connections that are currently being created.
 
@@ -146,7 +154,7 @@ public:
 	 * @return Shared pointer to the connecter.
 	 */
 	template <class T, typename... Args>
-	static std::shared_ptr<TCPConnecter> Create(Args&& ... args)
+	static std::shared_ptr<TCPConnecter> Create(Args &&...args)
 	{
 		return TCPConnecter::connecters.emplace_back(std::make_shared<T>(std::forward<Args>(args)...));
 	}

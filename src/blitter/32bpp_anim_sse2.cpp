@@ -9,17 +9,20 @@
 
 #ifdef WITH_SSE
 
-#include "../stdafx.h"
-#include "../video/video_driver.hpp"
-#include "32bpp_anim_sse2.hpp"
-#include "32bpp_sse_func.hpp"
+#	include "../stdafx.h"
 
-#include "../safeguards.h"
+#	include "32bpp_anim_sse2.hpp"
+
+#	include "../video/video_driver.hpp"
+#	include "32bpp_sse_func.hpp"
+
+#	include "../safeguards.h"
 
 /** Instantiation of the partially SSSE2 32bpp with animation blitter factory. */
 static FBlitter_32bppSSE2_Anim iFBlitter_32bppSSE2_Anim;
 
 GNU_TARGET("sse2")
+
 void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 {
 	assert(!_screen_disable_anim);
@@ -42,12 +45,12 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 	__m128i anim_cmp = _mm_set1_epi16(PALETTE_ANIM_START - 1);
 	__m128i brightness_cmp = _mm_set1_epi16(DEFAULT_BRIGHTNESS);
 	__m128i colour_mask = _mm_set1_epi16(0xFF);
-	for (int y = this->anim_buf_height; y != 0 ; y--) {
+	for (int y = this->anim_buf_height; y != 0; y--) {
 		Colour *next_dst_ln = dst + screen_pitch;
 		const uint16_t *next_anim_ln = anim + anim_pitch;
 		int x = width;
 		while (x > 0) {
-			__m128i data = _mm_load_si128((const __m128i *) anim);
+			__m128i data = _mm_load_si128((const __m128i *)anim);
 
 			/* low bytes only, shifted into high positions */
 			__m128i colour_data = _mm_and_si128(data, colour_mask);
@@ -56,10 +59,9 @@ void Blitter_32bppSSE2_Anim::PaletteAnimate(const Palette &palette)
 			int colour_cmp_result = _mm_movemask_epi8(_mm_cmpgt_epi16(colour_data, anim_cmp));
 			if (colour_cmp_result) {
 				/* test if any brightness is unexpected */
-				if (x < 8 || colour_cmp_result != 0xFFFF ||
-						_mm_movemask_epi8(_mm_cmpeq_epi16(_mm_srli_epi16(data, 8), brightness_cmp)) != 0xFFFF) {
+				if (x < 8 || colour_cmp_result != 0xFFFF || _mm_movemask_epi8(_mm_cmpeq_epi16(_mm_srli_epi16(data, 8), brightness_cmp)) != 0xFFFF) {
 					/* slow path: < 8 pixels left or unexpected brightnesses */
-					for (int z = std::min<int>(x, 8); z != 0 ; z--) {
+					for (int z = std::min<int>(x, 8); z != 0; z--) {
 						int value = _mm_extract_epi16(data, 0);
 						uint8_t colour = GB(value, 0, 8);
 						if (colour >= PALETTE_ANIM_START) {

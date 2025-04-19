@@ -12,14 +12,14 @@
 #ifndef NETWORK_CORE_GAME_INFO_H
 #define NETWORK_CORE_GAME_INFO_H
 
-#include "config.h"
-#include "core.h"
+#include <unordered_map>
+
+#include "../../landscape_type.h"
 #include "../../newgrf_config.h"
 #include "../../timer/timer_game_calendar.h"
 #include "../../timer/timer_game_tick.h"
-#include "../../landscape_type.h"
-
-#include <unordered_map>
+#include "config.h"
+#include "core.h"
 
 /*
  * NetworkGameInfo has several revisions which we still need to support on the
@@ -85,10 +85,10 @@
 
 /** The different types/ways a NewGRF can be serialized in the GameInfo since version 6. */
 enum NewGRFSerializationType {
-	NST_GRFID_MD5      = 0, ///< Unique GRF ID and MD5 checksum.
+	NST_GRFID_MD5 = 0, ///< Unique GRF ID and MD5 checksum.
 	NST_GRFID_MD5_NAME = 1, ///< Unique GRF ID, MD5 checksum and name.
-	NST_LOOKUP_ID      = 2, ///< Unique ID into a lookup table that is sent before.
-	NST_END                 ///< The end of the list (period).
+	NST_LOOKUP_ID = 2, ///< Unique ID into a lookup table that is sent before.
+	NST_END ///< The end of the list (period).
 };
 
 /**
@@ -99,19 +99,19 @@ struct NetworkServerGameInfo {
 	TimerGameCalendar::Date calendar_start; ///< When the game started.
 	TimerGameCalendar::Date calendar_date; ///< Current calendar date.
 	TimerGameTick::TickCounter ticks_playing; ///< Amount of ticks the game has been running unpaused.
-	uint16_t map_width;            ///< Map width
-	uint16_t map_height;           ///< Map height
-	std::string server_name;     ///< Server name
+	uint16_t map_width; ///< Map width
+	uint16_t map_height; ///< Map height
+	std::string server_name; ///< Server name
 	std::string server_revision; ///< The version number the server is using (e.g.: 'r304' or 0.5.0)
-	bool dedicated;              ///< Is this a dedicated server?
-	bool use_password;           ///< Is this server passworded?
-	uint8_t clients_on;             ///< Current count of clients on server
-	uint8_t clients_max;            ///< Max clients allowed on server
-	uint8_t companies_on;           ///< How many started companies do we have
-	uint8_t companies_max;          ///< Max companies allowed on server
-	uint8_t spectators_on;          ///< How many spectators do we have?
-	LandscapeType landscape;              ///< The used landscape
-	int gamescript_version;      ///< Version of the gamescript.
+	bool dedicated; ///< Is this a dedicated server?
+	bool use_password; ///< Is this server passworded?
+	uint8_t clients_on; ///< Current count of clients on server
+	uint8_t clients_max; ///< Max clients allowed on server
+	uint8_t companies_on; ///< How many started companies do we have
+	uint8_t companies_max; ///< Max companies allowed on server
+	uint8_t spectators_on; ///< How many spectators do we have?
+	LandscapeType landscape; ///< The used landscape
+	int gamescript_version; ///< Version of the gamescript.
 	std::string gamescript_name; ///< Name of the gamescript.
 };
 
@@ -120,8 +120,8 @@ struct NetworkServerGameInfo {
  * with extra information only required at the client side.
  */
 struct NetworkGameInfo : NetworkServerGameInfo {
-	bool version_compatible;                        ///< Can we connect to this server or not? (based on server_revision)
-	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
+	bool version_compatible; ///< Can we connect to this server or not? (based on server_revision)
+	bool compatible; ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
 };
 
 /**
@@ -130,8 +130,9 @@ struct NetworkGameInfo : NetworkServerGameInfo {
  */
 struct NamedGRFIdentifier {
 	GRFIdentifier ident; ///< The unique identifier of the NewGRF.
-	std::string name;    ///< The name of the NewGRF.
+	std::string name; ///< The name of the NewGRF.
 };
+
 /** Lookup table for the GameInfo in case of #NST_LOOKUP_ID. */
 typedef std::unordered_map<uint32_t, NamedGRFIdentifier> GameInfoNewGRFLookupTable;
 

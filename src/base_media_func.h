@@ -11,9 +11,9 @@
 
 #include "base_media_base.h"
 #include "debug.h"
+#include "error_func.h"
 #include "ini_type.h"
 #include "string_func.h"
-#include "error_func.h"
 
 extern void CheckExternalFiles();
 
@@ -76,8 +76,8 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 	this->fallback = (item != nullptr && item->value && *item->value != "0" && *item->value != "false");
 
 	/* For each of the file types we want to find the file, MD5 checksums and warning messages. */
-	const IniGroup *files  = ini.GetGroup("files");
-	const IniGroup *md5s   = ini.GetGroup("md5s");
+	const IniGroup *files = ini.GetGroup("files");
+	const IniGroup *md5s = ini.GetGroup("md5s");
 	const IniGroup *origin = ini.GetGroup("origin");
 	auto file_names = BaseSet<T>::GetFilenames();
 
@@ -169,7 +169,7 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 
 	Tbase_set *set = new Tbase_set();
 	IniFile ini{};
-	std::string path{ filename, basepath_length };
+	std::string path{filename, basepath_length};
 	ini.LoadFromDisk(path, BASESET_DIR);
 
 	auto psep = path.rfind(PATHSEPCHAR);
@@ -189,11 +189,9 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		}
 		if (duplicate != nullptr) {
 			/* The more complete set takes precedence over the version number. */
-			if ((duplicate->valid_files == set->valid_files && duplicate->version >= set->version) ||
-					duplicate->valid_files > set->valid_files) {
-				Debug(grf, 1, "Not adding {} ({}) as base {} set (duplicate, {})", set->name, set->version,
-						BaseSet<Tbase_set>::SET_TYPE,
-						duplicate->valid_files > set->valid_files ? "less valid files" : "lower version");
+			if ((duplicate->valid_files == set->valid_files && duplicate->version >= set->version) || duplicate->valid_files > set->valid_files) {
+				Debug(grf, 1, "Not adding {} ({}) as base {} set (duplicate, {})", set->name, set->version, BaseSet<Tbase_set>::SET_TYPE,
+					duplicate->valid_files > set->valid_files ? "less valid files" : "lower version");
 				set->next = BaseMedia<Tbase_set>::duplicate_sets;
 				BaseMedia<Tbase_set>::duplicate_sets = set;
 			} else {
@@ -211,9 +209,8 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 				 * version number until a new game is started which isn't a big problem */
 				if (BaseMedia<Tbase_set>::used_set == duplicate) BaseMedia<Tbase_set>::used_set = set;
 
-				Debug(grf, 1, "Removing {} ({}) as base {} set (duplicate, {})", duplicate->name, duplicate->version,
-						BaseSet<Tbase_set>::SET_TYPE,
-						duplicate->valid_files < set->valid_files ? "less valid files" : "lower version");
+				Debug(grf, 1, "Removing {} ({}) as base {} set (duplicate, {})", duplicate->name, duplicate->version, BaseSet<Tbase_set>::SET_TYPE,
+					duplicate->valid_files < set->valid_files ? "less valid files" : "lower version");
 				duplicate->next = BaseMedia<Tbase_set>::duplicate_sets;
 				BaseMedia<Tbase_set>::duplicate_sets = duplicate;
 				ret = true;
@@ -319,7 +316,8 @@ template <class Tbase_set>
 
 #include "network/core/tcp_content_type.h"
 
-template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const Tbase_set *s)
+template <class Tbase_set>
+const char *TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const Tbase_set *s)
 {
 	for (; s != nullptr; s = s->next) {
 		if (s->GetNumMissing() != 0) continue;
@@ -339,8 +337,7 @@ template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo &ci, 
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo &ci, bool md5sum)
 {
-	return (TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::available_sets) != nullptr) ||
-			(TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets) != nullptr);
+	return (TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::available_sets) != nullptr) || (TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets) != nullptr);
 }
 
 /**

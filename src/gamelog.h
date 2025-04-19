@@ -14,31 +14,31 @@
 
 /** The actions we log. */
 enum GamelogActionType : uint8_t {
-	GLAT_START,        ///< Game created
-	GLAT_LOAD,         ///< Game loaded
-	GLAT_GRF,          ///< GRF changed
-	GLAT_CHEAT,        ///< Cheat was used
-	GLAT_SETTING,      ///< Setting changed
-	GLAT_GRFBUG,       ///< GRF bug was triggered
-	GLAT_EMERGENCY,    ///< Emergency savegame
-	GLAT_END,          ///< So we know how many GLATs are there
-	GLAT_NONE  = 0xFF, ///< No logging active; in savegames, end of list
+	GLAT_START, ///< Game created
+	GLAT_LOAD, ///< Game loaded
+	GLAT_GRF, ///< GRF changed
+	GLAT_CHEAT, ///< Cheat was used
+	GLAT_SETTING, ///< Setting changed
+	GLAT_GRFBUG, ///< GRF bug was triggered
+	GLAT_EMERGENCY, ///< Emergency savegame
+	GLAT_END, ///< So we know how many GLATs are there
+	GLAT_NONE = 0xFF, ///< No logging active; in savegames, end of list
 };
 
 /** Type of logged change */
 enum GamelogChangeType : uint8_t {
-	GLCT_MODE,        ///< Scenario editor x Game, different landscape
-	GLCT_REVISION,    ///< Changed game revision string
-	GLCT_OLDVER,      ///< Loaded from savegame without logged data
-	GLCT_SETTING,     ///< Non-networksafe setting value changed
-	GLCT_GRFADD,      ///< Removed GRF
-	GLCT_GRFREM,      ///< Added GRF
-	GLCT_GRFCOMPAT,   ///< Loading compatible GRF
-	GLCT_GRFPARAM,    ///< GRF parameter changed
-	GLCT_GRFMOVE,     ///< GRF order changed
-	GLCT_GRFBUG,      ///< GRF bug triggered
-	GLCT_EMERGENCY,   ///< Emergency savegame
-	GLCT_END,         ///< So we know how many GLCTs are there
+	GLCT_MODE, ///< Scenario editor x Game, different landscape
+	GLCT_REVISION, ///< Changed game revision string
+	GLCT_OLDVER, ///< Loaded from savegame without logged data
+	GLCT_SETTING, ///< Non-networksafe setting value changed
+	GLCT_GRFADD, ///< Removed GRF
+	GLCT_GRFREM, ///< Added GRF
+	GLCT_GRFCOMPAT, ///< Loading compatible GRF
+	GLCT_GRFPARAM, ///< GRF parameter changed
+	GLCT_GRFMOVE, ///< GRF order changed
+	GLCT_GRFBUG, ///< GRF bug triggered
+	GLCT_EMERGENCY, ///< Emergency savegame
+	GLCT_END, ///< So we know how many GLCTs are there
 	GLCT_NONE = 0xFF, ///< In savegames, end of list
 };
 

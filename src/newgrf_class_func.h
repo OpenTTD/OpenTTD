@@ -102,7 +102,9 @@ uint NewGRFClass<Tspec, Tindex, Tmax>::GetClassCount()
 template <typename Tspec, typename Tindex, Tindex Tmax>
 uint NewGRFClass<Tspec, Tindex, Tmax>::GetUIClassCount()
 {
-	return std::ranges::count_if(NewGRFClass::classes, [](const auto &cls) { return cls.GetUISpecCount() > 0; });
+	return std::ranges::count_if(NewGRFClass::classes, [](const auto &cls) {
+		return cls.GetUISpecCount() > 0;
+	});
 }
 
 /**

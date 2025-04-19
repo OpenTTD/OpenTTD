@@ -10,8 +10,8 @@
 #ifndef OBJECT_MAP_H
 #define OBJECT_MAP_H
 
-#include "water_map.h"
 #include "object_type.h"
+#include "water_map.h"
 
 ObjectType GetObjectType(Tile t);
 
@@ -61,7 +61,6 @@ inline uint8_t GetObjectRandomBits(Tile t)
 	assert(IsTileType(t, MP_OBJECT));
 	return t.m3();
 }
-
 
 /**
  * Make an Object tile.

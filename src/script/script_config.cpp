@@ -8,13 +8,15 @@
 /** @file script_config.cpp Implementation of ScriptConfig. */
 
 #include "../stdafx.h"
-#include "../settings_type.h"
-#include "../core/random_func.hpp"
-#include "script_info.hpp"
-#include "api/script_object.hpp"
-#include "../textfile_gui.h"
-#include "../string_func.h"
+
 #include <charconv>
+
+#include "../core/random_func.hpp"
+#include "../settings_type.h"
+#include "../string_func.h"
+#include "../textfile_gui.h"
+#include "api/script_object.hpp"
+#include "script_info.hpp"
 
 #include "table/strings.h"
 
@@ -211,9 +213,7 @@ static std::pair<StringParameter, StringParameter> GetValueParams(const ScriptCo
 std::string ScriptConfigItem::GetString(int value) const
 {
 	auto [param1, param2] = GetValueParams(*this, value);
-	return this->description.empty()
-		? ::GetString(STR_JUST_STRING1, param1, param2)
-		: ::GetString(STR_AI_SETTINGS_SETTING, this->description, param1, param2);
+	return this->description.empty() ? ::GetString(STR_JUST_STRING1, param1, param2) : ::GetString(STR_AI_SETTINGS_SETTING, this->description, param1, param2);
 }
 
 /**
@@ -224,4 +224,3 @@ TextColour ScriptConfigItem::GetColour() const
 {
 	return this->description.empty() ? TC_ORANGE : TC_LIGHT_BLUE;
 }
-

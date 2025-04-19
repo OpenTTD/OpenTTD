@@ -12,19 +12,19 @@
 
 #include <squirrel.h>
 
-#include "script_object.hpp"
 #include "script_config.hpp"
+#include "script_object.hpp"
 
 /** The maximum number of operations for saving or loading the data of a script. */
-static const int MAX_SL_OPS             = 100000;
+static const int MAX_SL_OPS = 100000;
 /** The maximum number of operations for initial start of a script. */
-static const int MAX_CONSTRUCTOR_OPS    = 100000;
+static const int MAX_CONSTRUCTOR_OPS = 100000;
 /** Number of operations to create an instance of a script. */
 static const int MAX_CREATEINSTANCE_OPS = 100000;
 /** Number of operations to get the author and similar information. */
-static const int MAX_GET_OPS            =   1000;
+static const int MAX_GET_OPS = 1000;
 /** Maximum number of operations allowed for getting a particular setting. */
-static const int MAX_GET_SETTING_OPS    = 100000;
+static const int MAX_GET_SETTING_OPS = 100000;
 
 /** All static information from an Script like name, version, etc. */
 class ScriptInfo : public SimpleCountedObject {
@@ -32,52 +32,82 @@ public:
 	/**
 	 * Get the Author of the script.
 	 */
-	const std::string &GetAuthor() const { return this->author; }
+	const std::string &GetAuthor() const
+	{
+		return this->author;
+	}
 
 	/**
 	 * Get the Name of the script.
 	 */
-	const std::string &GetName() const { return this->name; }
+	const std::string &GetName() const
+	{
+		return this->name;
+	}
 
 	/**
 	 * Get the 4 character long short name of the script.
 	 */
-	const std::string &GetShortName() const { return this->short_name; }
+	const std::string &GetShortName() const
+	{
+		return this->short_name;
+	}
 
 	/**
 	 * Get the description of the script.
 	 */
-	const std::string &GetDescription() const { return this->description; }
+	const std::string &GetDescription() const
+	{
+		return this->description;
+	}
 
 	/**
 	 * Get the version of the script.
 	 */
-	int GetVersion() const { return this->version; }
+	int GetVersion() const
+	{
+		return this->version;
+	}
 
 	/**
 	 * Get the last-modified date of the script.
 	 */
-	const std::string &GetDate() const { return this->date; }
+	const std::string &GetDate() const
+	{
+		return this->date;
+	}
 
 	/**
 	 * Get the name of the instance of the script to create.
 	 */
-	const std::string &GetInstanceName() const { return this->instance_name; }
+	const std::string &GetInstanceName() const
+	{
+		return this->instance_name;
+	}
 
 	/**
 	 * Get the website for this script.
 	 */
-	const std::string &GetURL() const { return this->url; }
+	const std::string &GetURL() const
+	{
+		return this->url;
+	}
 
 	/**
 	 * Get the filename of the main.nut script.
 	 */
-	const std::string &GetMainScript() const { return this->main_script; }
+	const std::string &GetMainScript() const
+	{
+		return this->main_script;
+	}
 
 	/**
 	 * Get the filename of the tar the script is in.
 	 */
-	const std::string &GetTarFile() const { return this->tar_file; }
+	const std::string &GetTarFile() const
+	{
+		return this->tar_file;
+	}
 
 	/**
 	 * Check if a given method exists.
@@ -92,7 +122,10 @@ public:
 	/**
 	 * Get the scanner which has found this ScriptInfo.
 	 */
-	virtual class ScriptScanner *GetScanner() { return this->scanner; }
+	virtual class ScriptScanner *GetScanner()
+	{
+		return this->scanner;
+	}
 
 	/**
 	 * Get the settings of the Script.
@@ -127,7 +160,10 @@ public:
 	/**
 	 * Can this script be selected by developers only?
 	 */
-	virtual bool IsDeveloperOnly() const { return false; }
+	virtual bool IsDeveloperOnly() const
+	{
+		return false;
+	}
 
 protected:
 	class Squirrel *engine = nullptr; ///< Engine used to register for Squirrel.

@@ -8,25 +8,25 @@
 /** @file goal.cpp Handling of goals. */
 
 #include "stdafx.h"
-#include "company_func.h"
-#include "industry.h"
-#include "town.h"
-#include "window_func.h"
-#include "goal_base.h"
+
 #include "core/pool_func.hpp"
-#include "game/game.hpp"
 #include "command_func.h"
 #include "company_base.h"
-#include "story_base.h"
-#include "string_func.h"
+#include "company_func.h"
+#include "game/game.hpp"
+#include "goal_base.h"
+#include "goal_cmd.h"
 #include "gui.h"
+#include "industry.h"
 #include "network/network.h"
 #include "network/network_base.h"
 #include "network/network_func.h"
-#include "goal_cmd.h"
+#include "story_base.h"
+#include "string_func.h"
+#include "town.h"
+#include "window_func.h"
 
 #include "safeguards.h"
-
 
 GoalPool _goal_pool("Goal");
 INSTANTIATE_POOL_METHODS(Goal)
@@ -61,7 +61,8 @@ INSTANTIATE_POOL_METHODS(Goal)
 			break;
 		}
 
-		default: return false;
+		default:
+			return false;
 	}
 	return true;
 }
@@ -77,12 +78,12 @@ INSTANTIATE_POOL_METHODS(Goal)
  */
 std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID company, GoalType type, GoalTypeID dest, const EncodedString &text)
 {
-	if (!Goal::CanAllocateItem()) return { CMD_ERROR, GoalID::Invalid() };
+	if (!Goal::CanAllocateItem()) return {CMD_ERROR, GoalID::Invalid()};
 
-	if (_current_company != OWNER_DEITY) return { CMD_ERROR, GoalID::Invalid() };
-	if (text.empty()) return { CMD_ERROR, GoalID::Invalid() };
-	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return { CMD_ERROR, GoalID::Invalid() };
-	if (!Goal::IsValidGoalDestination(company, type, dest)) return { CMD_ERROR, GoalID::Invalid() };
+	if (_current_company != OWNER_DEITY) return {CMD_ERROR, GoalID::Invalid()};
+	if (text.empty()) return {CMD_ERROR, GoalID::Invalid()};
+	if (company != CompanyID::Invalid() && !Company::IsValidID(company)) return {CMD_ERROR, GoalID::Invalid()};
+	if (!Goal::IsValidGoalDestination(company, type, dest)) return {CMD_ERROR, GoalID::Invalid()};
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		Goal *g = new Goal(type, dest, company, text);
@@ -94,10 +95,10 @@ std::tuple<CommandCost, GoalID> CmdCreateGoal(DoCommandFlags flags, CompanyID co
 		}
 		if (Goal::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
 
-		return { CommandCost(), g->index };
+		return {CommandCost(), g->index};
 	}
 
-	return { CommandCost(), GoalID::Invalid() };
+	return {CommandCost(), GoalID::Invalid()};
 }
 
 /**

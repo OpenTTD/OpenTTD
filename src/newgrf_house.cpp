@@ -8,20 +8,22 @@
 /** @file newgrf_house.cpp Implementation of NewGRF houses. */
 
 #include "stdafx.h"
-#include "debug.h"
-#include "landscape.h"
-#include "newgrf_badge.h"
+
 #include "newgrf_house.h"
+
+#include "company_base.h"
+#include "company_func.h"
+#include "debug.h"
+#include "genworld.h"
+#include "landscape.h"
+#include "newgrf_animation_base.h"
+#include "newgrf_badge.h"
+#include "newgrf_cargo.h"
+#include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
-#include "newgrf_sound.h"
-#include "company_func.h"
-#include "company_base.h"
-#include "town.h"
-#include "genworld.h"
-#include "newgrf_animation_base.h"
-#include "newgrf_cargo.h"
 #include "station_base.h"
+#include "town.h"
 
 #include "safeguards.h"
 
@@ -37,7 +39,7 @@ HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, NUM_HOUSES, INVALID_HOUSE_ID)
  */
 static const GRFFile *GetHouseSpecGrf(HouseID house_id)
 {
-	const HouseSpec *hs  = HouseSpec::Get(house_id);
+	const HouseSpec *hs = HouseSpec::Get(house_id);
 	return (hs != nullptr) ? hs->grf_prop.grffile : nullptr;
 }
 
@@ -104,10 +106,9 @@ void ResetHouses()
  * @param initial_random_bits Random bits during construction checks.
  * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
  */
-HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
-		CallbackID callback, uint32_t param1, uint32_t param2,
-		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
-	: SpecializedResolverObject<HouseRandomTriggers>(GetHouseSpecGrf(house_id), callback, param1, param2),
+HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town, CallbackID callback, uint32_t param1, uint32_t param2, bool not_yet_constructed, uint8_t initial_random_bits,
+	CargoTypes watched_cargo_triggers, int view) :
+	SpecializedResolverObject<HouseRandomTriggers>(GetHouseSpecGrf(house_id), callback, param1, param2),
 	house_scope(*this, house_id, tile, town, not_yet_constructed, initial_random_bits, watched_cargo_triggers, view),
 	town_scope(*this, town, not_yet_constructed) // Don't access StorePSA if house is not yet constructed.
 {
@@ -138,7 +139,9 @@ void ResetHouseClassIDs()
 HouseClassID AllocateHouseClassID(uint8_t grf_class_id, uint32_t grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */
-	auto it = std::find_if(std::next(std::begin(_class_mapping)), std::end(_class_mapping), [grf_class_id, grfid](const HouseClassMapping &map) { return map.class_id == grf_class_id && map.grfid == grfid; });
+	auto it = std::find_if(std::next(std::begin(_class_mapping)), std::end(_class_mapping), [grf_class_id, grfid](const HouseClassMapping &map) {
+		return map.class_id == grf_class_id && map.grfid == grfid;
+	});
 
 	/* HouseClass not found, allocate a new one. */
 	if (it == std::end(_class_mapping)) it = _class_mapping.insert(it, {.grfid = grfid, .class_id = grf_class_id});
@@ -236,9 +239,9 @@ static uint32_t GetNumHouses(HouseID house_id, const Town *town)
 {
 	HouseClassID class_id = HouseSpec::Get(house_id)->class_id;
 
-	uint8_t map_id_count     = ClampTo<uint8_t>(_building_counts.id_count[house_id]);
-	uint8_t map_class_count  = ClampTo<uint8_t>(_building_counts.class_count[class_id]);
-	uint8_t town_id_count    = ClampTo<uint8_t>(town->cache.building_counts.id_count[house_id]);
+	uint8_t map_id_count = ClampTo<uint8_t>(_building_counts.id_count[house_id]);
+	uint8_t map_class_count = ClampTo<uint8_t>(_building_counts.class_count[class_id]);
+	uint8_t town_id_count = ClampTo<uint8_t>(town->cache.building_counts.id_count[house_id]);
 	uint8_t town_class_count = ClampTo<uint8_t>(town->cache.building_counts.class_count[class_id]);
 
 	return map_class_count << 24 | town_class_count << 16 | map_id_count << 8 | town_id_count;
@@ -286,15 +289,15 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 		bool match;
 		switch (searchtype) {
 			case 0:
-				match = hs->grf_prop.local_id == start_hs->grf_prop.local_id &&  // same local id as the one requested
-						hs->grf_prop.grfid == start_hs->grf_prop.grfid;  // from the same grf
+				match = hs->grf_prop.local_id == start_hs->grf_prop.local_id && // same local id as the one requested
+					hs->grf_prop.grfid == start_hs->grf_prop.grfid; // from the same grf
 				break;
 			case 1:
-				match = hs->class_id == start_hs->class_id &&  // same classid as the one requested
-						hs->grf_prop.grfid == start_hs->grf_prop.grfid;  // from the same grf
+				match = hs->class_id == start_hs->class_id && // same classid as the one requested
+					hs->grf_prop.grfid == start_hs->grf_prop.grfid; // from the same grf
 				break;
 			case 2:
-				match = hs->grf_prop.grfid == start_hs->grf_prop.grfid;  // from the same grf
+				match = hs->grf_prop.grfid == start_hs->grf_prop.grfid; // from the same grf
 				break;
 			default:
 				return 0;
@@ -312,24 +315,41 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 	if (this->tile == INVALID_TILE) {
 		/* House does not yet exist, nor is it being planned to exist. Provide some default values instead. */
 		switch (variable) {
-			case 0x40: return TOWN_HOUSE_COMPLETED | this->view << 2; /* Construction stage. */
-			case 0x41: return 0;
-			case 0x42: return 0;
-			case 0x43: return 0;
-			case 0x44: return 0;
-			case 0x45: return _generating_world ? 1 : 0;
-			case 0x46: return 0;
-			case 0x47: return 0;
-			case 0x60: return 0;
-			case 0x61: return 0;
-			case 0x62: return 0;
-			case 0x63: return 0;
-			case 0x64: return 0;
-			case 0x65: return 0;
-			case 0x66: return 0xFFFFFFFF; /* Class and ID of nearby house. */
-			case 0x67: return 0;
+			case 0x40:
+				return TOWN_HOUSE_COMPLETED | this->view << 2; /* Construction stage. */
+			case 0x41:
+				return 0;
+			case 0x42:
+				return 0;
+			case 0x43:
+				return 0;
+			case 0x44:
+				return 0;
+			case 0x45:
+				return _generating_world ? 1 : 0;
+			case 0x46:
+				return 0;
+			case 0x47:
+				return 0;
+			case 0x60:
+				return 0;
+			case 0x61:
+				return 0;
+			case 0x62:
+				return 0;
+			case 0x63:
+				return 0;
+			case 0x64:
+				return 0;
+			case 0x65:
+				return 0;
+			case 0x66:
+				return 0xFFFFFFFF; /* Class and ID of nearby house. */
+			case 0x67:
+				return 0;
 
-			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, HouseSpec::Get(this->house_id)->badges, parameter);
+			case 0x7A:
+				return GetBadgeVariableResult(*this->ro.grffile, HouseSpec::Get(this->house_id)->badges, parameter);
 		}
 
 		Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
@@ -339,31 +359,40 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 
 	switch (variable) {
 		/* Construction stage. */
-		case 0x40: return (IsTileType(this->tile, MP_HOUSE) ? GetHouseBuildingStage(this->tile) : 0) | TileHash2Bit(TileX(this->tile), TileY(this->tile)) << 2;
+		case 0x40:
+			return (IsTileType(this->tile, MP_HOUSE) ? GetHouseBuildingStage(this->tile) : 0) | TileHash2Bit(TileX(this->tile), TileY(this->tile)) << 2;
 
 		/* Building age. */
-		case 0x41: return IsTileType(this->tile, MP_HOUSE) ? GetHouseAge(this->tile).base() : 0;
+		case 0x41:
+			return IsTileType(this->tile, MP_HOUSE) ? GetHouseAge(this->tile).base() : 0;
 
 		/* Town zone */
-		case 0x42: return GetTownRadiusGroup(this->town, this->tile);
+		case 0x42:
+			return GetTownRadiusGroup(this->town, this->tile);
 
 		/* Terrain type */
-		case 0x43: return GetTerrainType(this->tile);
+		case 0x43:
+			return GetTerrainType(this->tile);
 
 		/* Number of this type of building on the map. */
-		case 0x44: return GetNumHouses(this->house_id, this->town);
+		case 0x44:
+			return GetNumHouses(this->house_id, this->town);
 
 		/* Whether the town is being created or just expanded. */
-		case 0x45: return _generating_world ? 1 : 0;
+		case 0x45:
+			return _generating_world ? 1 : 0;
 
 		/* Current animation frame. */
-		case 0x46: return IsTileType(this->tile, MP_HOUSE) ? GetAnimationFrame(this->tile) : 0;
+		case 0x46:
+			return IsTileType(this->tile, MP_HOUSE) ? GetAnimationFrame(this->tile) : 0;
 
 		/* Position of the house */
-		case 0x47: return TileY(this->tile) << 16 | TileX(this->tile);
+		case 0x47:
+			return TileY(this->tile) << 16 | TileX(this->tile);
 
 		/* Building counts for old houses with id = parameter. */
-		case 0x60: return parameter < NEW_HOUSE_OFFSET ? GetNumHouses(parameter, this->town) : 0;
+		case 0x60:
+			return parameter < NEW_HOUSE_OFFSET ? GetNumHouses(parameter, this->town) : 0;
 
 		/* Building counts for new houses with id = parameter. */
 		case 0x61: {
@@ -375,7 +404,8 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 		}
 
 		/* Land info for nearby tiles. */
-		case 0x62: return GetNearbyTileInformation(parameter, this->tile, this->ro.grffile->grf_version >= 8);
+		case 0x62:
+			return GetNearbyTileInformation(parameter, this->tile, this->ro.grffile->grf_version >= 8);
 
 		/* Current animation frame of nearby house tiles */
 		case 0x63: {
@@ -408,7 +438,8 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 		}
 
 		/* Distance test for some house types */
-		case 0x65: return GetDistanceFromNearbyHouse(parameter, this->tile, this->house_id);
+		case 0x65:
+			return GetDistanceFromNearbyHouse(parameter, this->tile, this->house_id);
 
 		/* Class and ID of nearby house tile */
 		case 0x66: {
@@ -444,7 +475,8 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 			return _house_mngr.GetGRFID(house_id);
 		}
 
-		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, HouseSpec::Get(this->house_id)->badges, parameter);
+		case 0x7A:
+			return GetBadgeVariableResult(*this->ro.grffile, HouseSpec::Get(this->house_id)->badges, parameter);
 	}
 
 	Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
@@ -453,11 +485,10 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 	return UINT_MAX;
 }
 
-uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
-		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
+uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed, uint8_t initial_random_bits,
+	CargoTypes watched_cargo_triggers, int view)
 {
-	HouseResolverObject object(house_id, tile, town, callback, param1, param2,
-			not_yet_constructed, initial_random_bits, watched_cargo_triggers, view);
+	HouseResolverObject object(house_id, tile, town, callback, param1, param2, not_yet_constructed, initial_random_bits, watched_cargo_triggers, view);
 	return object.ResolveCallback();
 }
 
@@ -476,7 +507,7 @@ static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *grou
 	}
 
 	SpriteID image = dts->ground.sprite;
-	PaletteID pal  = dts->ground.pal;
+	PaletteID pal = dts->ground.pal;
 
 	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) image += stage;
 	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += stage;
@@ -521,11 +552,11 @@ uint16_t GetSimpleHouseCallback(CallbackID callback, uint32_t param1, uint32_t p
 }
 
 /** Helper class for animation control. */
-struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, Town, CargoTypes, GetSimpleHouseCallback, TileAnimationFrameAnimationHelper<Town> > {
-	static constexpr CallbackID cb_animation_speed      = CBID_HOUSE_ANIMATION_SPEED;
+struct HouseAnimationBase : public AnimationBase<HouseAnimationBase, HouseSpec, Town, CargoTypes, GetSimpleHouseCallback, TileAnimationFrameAnimationHelper<Town>> {
+	static constexpr CallbackID cb_animation_speed = CBID_HOUSE_ANIMATION_SPEED;
 	static constexpr CallbackID cb_animation_next_frame = CBID_HOUSE_ANIMATION_NEXT_FRAME;
 
-	static constexpr HouseCallbackMask cbm_animation_speed      = HouseCallbackMask::AnimationSpeed;
+	static constexpr HouseCallbackMask cbm_animation_speed = HouseCallbackMask::AnimationSpeed;
 	static constexpr HouseCallbackMask cbm_animation_next_frame = HouseCallbackMask::AnimationNextFrame;
 };
 
@@ -575,8 +606,7 @@ static void TriggerHouseAnimation_TileLoop(TileIndex tile, bool sync, uint16_t r
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	/* Check whether the matching trigger is enabled */
-	if (hs->callback_mask.Test(HouseCallbackMask::AnimationTriggerTileLoop) &&
-			hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B) == sync) {
+	if (hs->callback_mask.Test(HouseCallbackMask::AnimationTriggerTileLoop) && hs->extra_flags.Test(HouseExtraFlag::SynchronisedCallback1B) == sync) {
 		uint32_t param = sync ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
 		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_TILE_LOOP, hs, Town::GetByTile(tile), tile, param, 0);
 	}
@@ -663,8 +693,8 @@ static void DoTriggerHouseRandomisation(TileIndex tile, HouseRandomTrigger trigg
 				break;
 			}
 			/* Random value of first tile already set. */
-			if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoTriggerHouseRandomisation(TileAddXY(tile, 0, 1), trigger, random_bits, false);
-			if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoTriggerHouseRandomisation(TileAddXY(tile, 1, 0), trigger, random_bits, false);
+			if (hs->building_flags.Any(BUILDING_2_TILES_Y)) DoTriggerHouseRandomisation(TileAddXY(tile, 0, 1), trigger, random_bits, false);
+			if (hs->building_flags.Any(BUILDING_2_TILES_X)) DoTriggerHouseRandomisation(TileAddXY(tile, 1, 0), trigger, random_bits, false);
 			if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoTriggerHouseRandomisation(TileAddXY(tile, 1, 1), trigger, random_bits, false);
 			break;
 	}
@@ -713,8 +743,7 @@ void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigg
 	hs = HouseSpec::Get(id);
 
 	DoTriggerHouseAnimation_WatchedCargoAccepted(north, tile, trigger_cargoes, r);
-	if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 0, 1), tile, trigger_cargoes, r);
-	if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 1, 0), tile, trigger_cargoes, r);
+	if (hs->building_flags.Any(BUILDING_2_TILES_Y)) DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 0, 1), tile, trigger_cargoes, r);
+	if (hs->building_flags.Any(BUILDING_2_TILES_X)) DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 1, 0), tile, trigger_cargoes, r);
 	if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 1, 1), tile, trigger_cargoes, r);
 }
-

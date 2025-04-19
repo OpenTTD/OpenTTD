@@ -19,13 +19,9 @@ public:
 	 */
 	static GameConfig *GetConfig(ScriptSettingSource source = SSS_DEFAULT);
 
-	GameConfig() :
-		ScriptConfig()
-	{}
+	GameConfig() : ScriptConfig() {}
 
-	GameConfig(const GameConfig &config) :
-		ScriptConfig(config)
-	{}
+	GameConfig(const GameConfig &config) : ScriptConfig(config) {}
 
 	class GameInfo *GetInfo() const;
 

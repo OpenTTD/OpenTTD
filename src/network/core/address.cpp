@@ -10,9 +10,10 @@
 #include "../../stdafx.h"
 
 #include "address.h"
-#include "../network_internal.h"
-#include "../../debug.h"
+
 #include "../../core/string_consumer.hpp"
+#include "../../debug.h"
+#include "../network_internal.h"
 
 #include "../../safeguards.h"
 
@@ -60,11 +61,11 @@ void NetworkAddress::SetPort(uint16_t port)
 	switch (this->address.ss_family) {
 		case AF_UNSPEC:
 		case AF_INET:
-			((struct sockaddr_in*)&this->address)->sin_port = htons(port);
+			((struct sockaddr_in *)&this->address)->sin_port = htons(port);
 			break;
 
 		case AF_INET6:
-			((struct sockaddr_in6*)&this->address)->sin6_port = htons(port);
+			((struct sockaddr_in6 *)&this->address)->sin6_port = htons(port);
 			break;
 
 		default:
@@ -81,9 +82,12 @@ void NetworkAddress::SetPort(uint16_t port)
 static const char *GetAddressFormatString(uint16_t family, bool with_family)
 {
 	switch (family) {
-		case AF_INET: return with_family ? "{}:{} (IPv4)" : "{}:{}";
-		case AF_INET6: return with_family ? "[{}]:{} (IPv6)" : "[{}]:{}";
-		default: return with_family ? "{}:{} (IPv?)" : "{}:{}";
+		case AF_INET:
+			return with_family ? "{}:{} (IPv4)" : "{}:{}";
+		case AF_INET6:
+			return with_family ? "[{}]:{} (IPv6)" : "[{}]:{}";
+		default:
+			return with_family ? "{}:{} (IPv?)" : "{}:{}";
 	}
 }
 
@@ -167,13 +171,13 @@ bool NetworkAddress::IsInNetmask(std::string_view netmask)
 	uint32_t *mask;
 	switch (this->address.ss_family) {
 		case AF_INET:
-			ip = (uint32_t*)&((struct sockaddr_in*)&this->address)->sin_addr.s_addr;
-			mask = (uint32_t*)&((struct sockaddr_in*)&mask_address.address)->sin_addr.s_addr;
+			ip = (uint32_t *)&((struct sockaddr_in *)&this->address)->sin_addr.s_addr;
+			mask = (uint32_t *)&((struct sockaddr_in *)&mask_address.address)->sin_addr.s_addr;
 			break;
 
 		case AF_INET6:
-			ip = (uint32_t*)&((struct sockaddr_in6*)&this->address)->sin6_addr;
-			mask = (uint32_t*)&((struct sockaddr_in6*)&mask_address.address)->sin6_addr;
+			ip = (uint32_t *)&((struct sockaddr_in6 *)&this->address)->sin6_addr;
+			mask = (uint32_t *)&((struct sockaddr_in6 *)&mask_address.address)->sin6_addr;
 			break;
 
 		default:
@@ -203,9 +207,9 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 {
 	struct addrinfo *ai;
 	struct addrinfo hints;
-	memset(&hints, 0, sizeof (hints));
-	hints.ai_family   = family;
-	hints.ai_flags    = flags;
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_family = family;
+	hints.ai_flags = flags;
 	hints.ai_socktype = socktype;
 
 	/* The port needs to be a string. Six is enough to contain all characters + '\0'. */
@@ -228,19 +232,18 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	auto end = std::chrono::steady_clock::now();
 	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
-		Debug(net, 0, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} took {} seconds",
-				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), duration.count());
+		Debug(net, 0, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} took {} seconds", this->hostname, port_name, AddressFamilyAsString(family),
+			SocketTypeAsString(socktype), duration.count());
 		Debug(net, 0, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
 		_resolve_timeout_error_message_shown = true;
 	}
-
 
 	if (reset_hostname) this->hostname.clear();
 
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
-			Debug(net, 0, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} failed: {}",
-				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
+			Debug(net, 0, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} failed: {}", this->hostname, port_name, AddressFamilyAsString(family),
+				SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
 		}
 		return INVALID_SOCKET;
 	}
@@ -252,7 +255,10 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		 * of course totally unneeded ;) */
 		if (sockets != nullptr) {
 			NetworkAddress address(runp->ai_addr, (int)runp->ai_addrlen);
-			if (std::any_of(sockets->begin(), sockets->end(), [&address](const auto &p) { return p.second == address; })) continue;
+			if (std::any_of(sockets->begin(), sockets->end(), [&address](const auto &p) {
+					return p.second == address;
+				}))
+				continue;
 		}
 		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;
@@ -280,7 +286,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		(*sockets)[sock] = std::move(addr);
 		sock = INVALID_SOCKET;
 	}
-	freeaddrinfo (ai);
+	freeaddrinfo(ai);
 
 	return sock;
 }
@@ -311,8 +317,7 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	}
 
 	int on = 1;
-	if (runp->ai_family == AF_INET6 &&
-			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
+	if (runp->ai_family == AF_INET6 && setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char *)&on, sizeof(on)) == -1) {
 		Debug(net, 3, "Could not disable IPv4 over IPv6: {}", NetworkError::GetLast().AsString());
 	}
 
@@ -350,9 +355,8 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 	/* Setting both hostname to "" and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
-	if (this->address_length == 0 && this->address.ss_family == AF_UNSPEC &&
-			this->hostname.empty() && this->GetPort() == 0) {
-		this->Resolve(AF_INET,  socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
+	if (this->address_length == 0 && this->address.ss_family == AF_UNSPEC && this->hostname.empty() && this->GetPort() == 0) {
+		this->Resolve(AF_INET, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 		this->Resolve(AF_INET6, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 	} else {
 		this->Resolve(AF_UNSPEC, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
@@ -368,9 +372,12 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 /* static */ const char *NetworkAddress::SocketTypeAsString(int socktype)
 {
 	switch (socktype) {
-		case SOCK_STREAM: return "tcp";
-		case SOCK_DGRAM:  return "udp";
-		default:          return "unsupported";
+		case SOCK_STREAM:
+			return "tcp";
+		case SOCK_DGRAM:
+			return "udp";
+		default:
+			return "unsupported";
 	}
 }
 
@@ -383,10 +390,14 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 /* static */ const char *NetworkAddress::AddressFamilyAsString(int family)
 {
 	switch (family) {
-		case AF_UNSPEC: return "either IPv4 or IPv6";
-		case AF_INET:   return "IPv4";
-		case AF_INET6:  return "IPv6";
-		default:        return "unsupported";
+		case AF_UNSPEC:
+			return "either IPv4 or IPv6";
+		case AF_INET:
+			return "IPv4";
+		case AF_INET6:
+			return "IPv6";
+		default:
+			return "unsupported";
 	}
 }
 

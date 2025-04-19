@@ -10,9 +10,9 @@
 #ifndef TRANSPARENCY_H
 #define TRANSPARENCY_H
 
+#include "core/bitmath_func.hpp"
 #include "gfx_func.h"
 #include "openttd.h"
-#include "core/bitmath_func.hpp"
 #include "station_type.h"
 
 /**
@@ -21,17 +21,17 @@
  * If you add or remove an option don't forget to change the transparency 'hot keys' in main_gui.cpp.
  */
 enum TransparencyOption : uint8_t {
-	TO_SIGNS = 0,  ///< signs
-	TO_TREES,      ///< trees
-	TO_HOUSES,     ///< town buildings
+	TO_SIGNS = 0, ///< signs
+	TO_TREES, ///< trees
+	TO_HOUSES, ///< town buildings
 	TO_INDUSTRIES, ///< industries
-	TO_BUILDINGS,  ///< company buildings - depots, stations, HQ, ...
-	TO_BRIDGES,    ///< bridges
+	TO_BUILDINGS, ///< company buildings - depots, stations, HQ, ...
+	TO_BRIDGES, ///< bridges
 	TO_STRUCTURES, ///< other objects such as transmitters and lighthouses
-	TO_CATENARY,   ///< catenary
-	TO_TEXT,       ///< loading and cost/income text
+	TO_CATENARY, ///< catenary
+	TO_TEXT, ///< loading and cost/income text
 	TO_END,
-	TO_INVALID,    ///< Invalid transparency option
+	TO_INVALID, ///< Invalid transparency option
 };
 
 typedef uint TransparencyOptionBits; ///< transparency option bits

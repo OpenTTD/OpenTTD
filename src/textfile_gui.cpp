@@ -8,31 +8,32 @@
 /** @file textfile_gui.cpp Implementation of textfile window. */
 
 #include "stdafx.h"
+
+#include "textfile_gui.h"
+
 #include "core/backup_type.hpp"
+#include "core/string_builder.hpp"
+#include "debug.h"
+#include "dropdown_func.h"
+#include "dropdown_type.h"
 #include "fileio_func.h"
 #include "fontcache.h"
-#include "gfx_type.h"
 #include "gfx_func.h"
-#include "string_func.h"
-#include "core/string_builder.hpp"
-#include "textfile_gui.h"
-#include "dropdown_type.h"
-#include "dropdown_func.h"
 #include "gfx_layout.h"
-#include "debug.h"
+#include "gfx_type.h"
 #include "openttd.h"
+#include "string_func.h"
 
 #include "widgets/misc_widget.h"
-
-#include "table/strings.h"
 #include "table/control_codes.h"
+#include "table/strings.h"
 
 #if defined(WITH_ZLIB)
-#include <zlib.h>
+#	include <zlib.h>
 #endif
 
 #if defined(WITH_LIBLZMA)
-#include <lzma.h>
+#	include <lzma.h>
 #endif
 
 #include <regex>
@@ -78,12 +79,7 @@ static constexpr NWidgetPart _nested_textfile_widgets[] = {
 /* clang-format on */
 
 /** Window definition for the textfile window */
-static WindowDesc _textfile_desc(
-	WDP_CENTER, "textfile", 630, 460,
-	WC_TEXTFILE, WC_NONE,
-	{},
-	_nested_textfile_widgets
-);
+static WindowDesc _textfile_desc(WDP_CENTER, "textfile", 630, 460, WC_TEXTFILE, WC_NONE, {}, _nested_textfile_widgets);
 
 TextfileWindow::TextfileWindow(TextfileType file_type) : Window(_textfile_desc), file_type(file_type)
 {
@@ -165,16 +161,15 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, IsWidgetLowered(WID_TF_WRAPTEXT));
 }
 
-
 /** Regular expression that searches for Markdown links. */
 static const std::regex _markdown_link_regex{"\\[(.+?)\\]\\((.+?)\\)", std::regex_constants::ECMAScript | std::regex_constants::optimize};
 
 /** Types of link we support in markdown files. */
 enum class HyperlinkType : uint8_t {
 	Internal, ///< Internal link, or "anchor" in HTML language.
-	Web,      ///< Link to an external website.
-	File,     ///< Link to a local file.
-	Unknown,  ///< Unknown link.
+	Web, ///< Link to an external website.
+	File, ///< Link to a local file.
+	Unknown, ///< Unknown link.
 };
 
 /**
@@ -250,7 +245,7 @@ void TextfileWindow::FindHyperlinksInMarkdown(Line &line, size_t line_index)
 	std::string fixed_line;
 	StringBuilder builder(fixed_line);
 
-	std::sregex_iterator matcher{ line.text.cbegin(), line.text.cend(), _markdown_link_regex};
+	std::sregex_iterator matcher{line.text.cbegin(), line.text.cend(), _markdown_link_regex};
 	while (matcher != std::sregex_iterator()) {
 		std::smatch match = *matcher;
 
@@ -312,7 +307,9 @@ const TextfileWindow::Hyperlink *TextfileWindow::GetHyperlink(Point pt) const
 	size_t line_index;
 	size_t subline;
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-		auto it = std::ranges::find_if(this->lines, [clicked_row](const Line &l) { return l.top <= clicked_row && l.bottom > clicked_row; });
+		auto it = std::ranges::find_if(this->lines, [clicked_row](const Line &l) {
+			return l.top <= clicked_row && l.bottom > clicked_row;
+		});
 		if (it == this->lines.cend()) return nullptr;
 		line_index = it - this->lines.cbegin();
 		subline = clicked_row - it->top;
@@ -402,8 +399,7 @@ void TextfileWindow::NavigateHistory(int delta)
 /* virtual */ void TextfileWindow::OnHyperlinkClick(const Hyperlink &link)
 {
 	switch (ClassifyHyperlink(link.destination, this->trusted)) {
-		case HyperlinkType::Internal:
-		{
+		case HyperlinkType::Internal: {
 			auto it = std::ranges::find(this->link_anchors, link.destination, &Hyperlink::destination);
 			if (it != this->link_anchors.cend()) {
 				this->AppendHistory(this->filepath);
@@ -744,7 +740,6 @@ static std::vector<char> Xunzip(std::span<char> input)
 }
 #endif
 
-
 /**
  * Loads the textfile text from file and setup #lines.
  */
@@ -846,7 +841,7 @@ void TextfileWindow::LoadText(std::string_view buf)
  */
 std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, const std::string &filename)
 {
-	static const char * const prefixes[] = {
+	static const char *const prefixes[] = {
 		"readme",
 		"changelog",
 		"license",

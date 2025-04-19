@@ -9,29 +9,28 @@
 
 #include "stdafx.h"
 
-#include "framerate_type.h"
-#include <chrono>
-#include "gfx_func.h"
-#include "newgrf_sound.h"
-#include "window_gui.h"
-#include "window_func.h"
-#include "string_func.h"
-#include "strings_func.h"
-#include "console_func.h"
-#include "console_type.h"
-#include "company_base.h"
-#include "ai/ai_info.hpp"
-#include "ai/ai_instance.hpp"
-#include "game/game.hpp"
-#include "game/game_instance.hpp"
-#include "timer/timer.h"
-#include "timer/timer_window.h"
-
-#include "widgets/framerate_widget.h"
-
 #include <atomic>
+#include <chrono>
 #include <mutex>
 
+#include "ai/ai_info.hpp"
+#include "ai/ai_instance.hpp"
+#include "company_base.h"
+#include "console_func.h"
+#include "console_type.h"
+#include "framerate_type.h"
+#include "game/game.hpp"
+#include "game/game_instance.hpp"
+#include "gfx_func.h"
+#include "newgrf_sound.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
+#include "window_func.h"
+#include "window_gui.h"
+
+#include "widgets/framerate_widget.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
@@ -78,7 +77,7 @@ namespace {
 		 * Expected number of cycles per second of the performance element. Use 1 if unknown or not relevant.
 		 * The rate is used for highlighting slow-running elements in the GUI.
 		 */
-		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate) { }
+		explicit PerformanceData(double expected_rate) : expected_rate(expected_rate) {}
 
 		/** Collect a complete measurement, given start and ending times for a processing block */
 		void Add(TimingMeasurement start_time, TimingMeasurement end_time)
@@ -193,39 +192,27 @@ namespace {
 	 * @hideinitializer
 	 */
 	PerformanceData _pf_data[PFE_MAX] = {
-		PerformanceData(GL_RATE),               // PFE_GAMELOOP
-		PerformanceData(1),                     // PFE_ACC_GL_ECONOMY
-		PerformanceData(1),                     // PFE_ACC_GL_TRAINS
-		PerformanceData(1),                     // PFE_ACC_GL_ROADVEHS
-		PerformanceData(1),                     // PFE_ACC_GL_SHIPS
-		PerformanceData(1),                     // PFE_ACC_GL_AIRCRAFT
-		PerformanceData(1),                     // PFE_GL_LANDSCAPE
-		PerformanceData(1),                     // PFE_GL_LINKGRAPH
-		PerformanceData(1000.0 / 30),           // PFE_DRAWING
-		PerformanceData(1),                     // PFE_ACC_DRAWWORLD
-		PerformanceData(60.0),                  // PFE_VIDEO
+		PerformanceData(GL_RATE), // PFE_GAMELOOP
+		PerformanceData(1), // PFE_ACC_GL_ECONOMY
+		PerformanceData(1), // PFE_ACC_GL_TRAINS
+		PerformanceData(1), // PFE_ACC_GL_ROADVEHS
+		PerformanceData(1), // PFE_ACC_GL_SHIPS
+		PerformanceData(1), // PFE_ACC_GL_AIRCRAFT
+		PerformanceData(1), // PFE_GL_LANDSCAPE
+		PerformanceData(1), // PFE_GL_LINKGRAPH
+		PerformanceData(1000.0 / 30), // PFE_DRAWING
+		PerformanceData(1), // PFE_ACC_DRAWWORLD
+		PerformanceData(60.0), // PFE_VIDEO
 		PerformanceData(1000.0 * 8192 / 44100), // PFE_SOUND
-		PerformanceData(1),                     // PFE_ALLSCRIPTS
-		PerformanceData(1),                     // PFE_GAMESCRIPT
-		PerformanceData(1),                     // PFE_AI0 ...
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),
-		PerformanceData(1),                     // PFE_AI14
+		PerformanceData(1), // PFE_ALLSCRIPTS
+		PerformanceData(1), // PFE_GAMESCRIPT
+		PerformanceData(1), // PFE_AI0 ...
+		PerformanceData(1), PerformanceData(1), PerformanceData(1), PerformanceData(1), PerformanceData(1), PerformanceData(1), PerformanceData(1), PerformanceData(1), PerformanceData(1),
+		PerformanceData(1), PerformanceData(1), PerformanceData(1), PerformanceData(1),
+		PerformanceData(1), // PFE_AI14
 	};
 
 }
-
 
 /**
  * Return a timestamp with \c TIMESTAMP_PRECISION ticks per second precision.
@@ -237,7 +224,6 @@ static TimingMeasurement GetPerformanceTimer()
 	using namespace std::chrono;
 	return (TimingMeasurement)time_point_cast<microseconds>(high_resolution_clock::now()).time_since_epoch().count();
 }
-
 
 /**
  * Begin a cycle of a measured element.
@@ -304,7 +290,6 @@ void PerformanceMeasurer::SetExpectedRate(double rate)
 	_pf_data[elem].AddPause(GetPerformanceTimer());
 }
 
-
 /**
  * Begin measuring one block of the accumulating value.
  * @param elem The element to be measured
@@ -333,9 +318,7 @@ void PerformanceAccumulator::Reset(PerformanceElement elem)
 	_pf_data[elem].BeginAccumulate(GetPerformanceTimer());
 }
 
-
 void ShowFrametimeGraphWindow(PerformanceElement elem);
-
 
 static const PerformanceElement DISPLAY_ORDER_PFE[PFE_MAX] = {
 	PFE_GAMELOOP,
@@ -369,7 +352,7 @@ static const PerformanceElement DISPLAY_ORDER_PFE[PFE_MAX] = {
 	PFE_SOUND,
 };
 
-static const char * GetAIName(int ai_index)
+static const char *GetAIName(int ai_index)
 {
 	if (!Company::IsValidAiID(ai_index)) return "";
 	return Company::Get(ai_index)->ai_info->GetName().c_str();
@@ -435,8 +418,15 @@ struct FramerateWindow : Window {
 			this->strid = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
 		}
 
-		inline uint32_t GetValue() const { return this->value; }
-		inline uint32_t GetDecimals() const { return 2; }
+		inline uint32_t GetValue() const
+		{
+			return this->value;
+		}
+
+		inline uint32_t GetDecimals() const
+		{
+			return 2;
+		}
 	};
 
 	CachedDecimal rate_gameloop{}; ///< cached game loop tick rate
@@ -459,9 +449,9 @@ struct FramerateWindow : Window {
 
 	/** Update the window on a regular interval. */
 	IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(100), [this](auto) {
-		this->UpdateData();
-		this->SetDirty();
-	}};
+													  this->UpdateData();
+													  this->SetDirty();
+												  }};
 
 	void UpdateData()
 	{
@@ -496,7 +486,8 @@ struct FramerateWindow : Window {
 				/* When the window is shaded, the caption shows game loop rate and speed factor */
 				if (!this->IsShaded()) return GetString(STR_FRAMERATE_CAPTION);
 
-				return GetString(STR_FRAMERATE_CAPTION_SMALL, this->rate_gameloop.strid, this->rate_gameloop.GetValue(), this->rate_gameloop.GetDecimals(), this->speed_gameloop.GetValue(), this->speed_gameloop.GetDecimals());
+				return GetString(STR_FRAMERATE_CAPTION_SMALL, this->rate_gameloop.strid, this->rate_gameloop.GetValue(), this->rate_gameloop.GetDecimals(), this->speed_gameloop.GetValue(),
+					this->speed_gameloop.GetDecimals());
 
 			case WID_FRW_RATE_GAMELOOP:
 				return GetString(STR_FRAMERATE_RATE_GAMELOOP, this->rate_gameloop.strid, this->rate_gameloop.GetValue(), this->rate_gameloop.GetDecimals());
@@ -687,13 +678,7 @@ struct FramerateWindow : Window {
 	}
 };
 
-static WindowDesc _framerate_display_desc(
-	WDP_AUTO, "framerate_display", 0, 0,
-	WC_FRAMERATE_DISPLAY, WC_NONE,
-	{},
-	_framerate_window_widgets
-);
-
+static WindowDesc _framerate_display_desc(WDP_AUTO, "framerate_display", 0, 0, WC_FRAMERATE_DISPLAY, WC_NONE, {}, _framerate_window_widgets);
 
 /** @hideinitializer */
 /* clang-format off */
@@ -765,13 +750,17 @@ struct FrametimeGraphWindow : Window {
 
 		/* Determine horizontal scale based on period covered by 60 points
 		 * (slightly less than 2 seconds at full game speed) */
-		struct ScaleDef { TimingMeasurement range; int scale; };
+		struct ScaleDef {
+			TimingMeasurement range;
+			int scale;
+		};
+
 		static const std::initializer_list<ScaleDef> hscales = {
-			{ TIMESTAMP_PRECISION * 120, 60 },
-			{ TIMESTAMP_PRECISION *  10, 20 },
-			{ TIMESTAMP_PRECISION *   5, 10 },
-			{ TIMESTAMP_PRECISION *   3,  4 },
-			{ TIMESTAMP_PRECISION *   1,  2 },
+			{TIMESTAMP_PRECISION * 120, 60},
+			{TIMESTAMP_PRECISION * 10, 20},
+			{TIMESTAMP_PRECISION * 5, 10},
+			{TIMESTAMP_PRECISION * 3, 4},
+			{TIMESTAMP_PRECISION * 1, 2},
 		};
 		for (const auto &sc : hscales) {
 			if (range < sc.range) this->horizontal_scale = sc.scale;
@@ -842,8 +831,8 @@ struct FrametimeGraphWindow : Window {
 
 	/** Update the scaling on a regular interval. */
 	IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(500), [this](auto) {
-		this->UpdateScale();
-	}};
+													  this->UpdateScale();
+												  }};
 
 	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
 	{
@@ -862,7 +851,7 @@ struct FrametimeGraphWindow : Window {
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_FGW_GRAPH) {
-			const auto &durations  = _pf_data[this->element].durations;
+			const auto &durations = _pf_data[this->element].durations;
 			const auto &timestamps = _pf_data[this->element].timestamps;
 			int point = _pf_data[this->element].prev_index;
 
@@ -890,12 +879,10 @@ struct FrametimeGraphWindow : Window {
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
 					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
-						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL),
-							GetString(STR_FRAMERATE_GRAPH_SECONDS, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION),
-							TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL), GetString(STR_FRAMERATE_GRAPH_SECONDS, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION), TC_GREY,
+							SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					} else {
-						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL),
-							GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION),
+						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL), GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION),
 							TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					}
 				}
@@ -905,22 +892,17 @@ struct FrametimeGraphWindow : Window {
 				int x = Scinterlate(x_zero, x_max, 0, (int)horz_divisions, (int)horz_divisions - (int)division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
-					DrawString(x, x_max, y_zero + 2,
-						GetString(STR_FRAMERATE_GRAPH_SECONDS, division * horz_div_scl / 2),
-						TC_GREY, SA_LEFT | SA_FORCE, false, FS_SMALL);
+					DrawString(x, x_max, y_zero + 2, GetString(STR_FRAMERATE_GRAPH_SECONDS, division * horz_div_scl / 2), TC_GREY, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
 			}
 
 			/* Position of last rendered data point */
-			Point lastpoint = {
-				x_max,
-				(int)Scinterlate<int64_t>(y_zero, y_max, 0, this->vertical_scale, durations[point])
-			};
+			Point lastpoint = {x_max, (int)Scinterlate<int64_t>(y_zero, y_max, 0, this->vertical_scale, durations[point])};
 			/* Timestamp of last rendered data point */
 			TimingMeasurement lastts = timestamps[point];
 
 			TimingMeasurement peak_value = 0;
-			Point peak_point = { 0, 0 };
+			Point peak_point = {0, 0};
 			TimingMeasurement value_sum = 0;
 			TimingMeasurement time_sum = 0;
 			int points_drawn = 0;
@@ -943,10 +925,8 @@ struct FrametimeGraphWindow : Window {
 				if (time_sum > draw_horz_scale) break;
 
 				/* Draw line from previous point to new point */
-				Point newpoint = {
-					(int)Scinterlate<int64_t>(x_zero, x_max, 0, (int64_t)draw_horz_scale, (int64_t)draw_horz_scale - (int64_t)time_sum),
-					(int)Scinterlate<int64_t>(y_zero, y_max, 0, (int64_t)draw_vert_scale, (int64_t)value)
-				};
+				Point newpoint = {(int)Scinterlate<int64_t>(x_zero, x_max, 0, (int64_t)draw_horz_scale, (int64_t)draw_horz_scale - (int64_t)time_sum),
+					(int)Scinterlate<int64_t>(y_zero, y_max, 0, (int64_t)draw_vert_scale, (int64_t)value)};
 				if (newpoint.x > lastpoint.x) continue; // don't draw backwards
 				GfxDrawLine(lastpoint.x, lastpoint.y, newpoint.x, newpoint.y, c_lines);
 				lastpoint = newpoint;
@@ -976,14 +956,7 @@ struct FrametimeGraphWindow : Window {
 	}
 };
 
-static WindowDesc _frametime_graph_window_desc(
-	WDP_AUTO, "frametime_graph", 140, 90,
-	WC_FRAMETIME_GRAPH, WC_NONE,
-	{},
-	_frametime_graph_window_widgets
-);
-
-
+static WindowDesc _frametime_graph_window_desc(WDP_AUTO, "frametime_graph", 140, 90, WC_FRAMETIME_GRAPH, WC_NONE, {}, _frametime_graph_window_widgets);
 
 /** Open the general framerate window */
 void ShowFramerateWindow()
@@ -1027,13 +1000,10 @@ void ConPrintFramerate()
 
 	bool printed_anything = false;
 
-	for (const auto &e : { PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO }) {
+	for (const auto &e : {PFE_GAMELOOP, PFE_DRAWING, PFE_VIDEO}) {
 		auto &pf = _pf_data[e];
 		if (pf.num_valid == 0) continue;
-		IConsolePrint(TC_GREEN, "{} rate: {:.2f}fps  (expected: {:.2f}fps)",
-			MEASUREMENT_NAMES[e],
-			pf.GetRate(),
-			pf.expected_rate);
+		IConsolePrint(TC_GREEN, "{} rate: {:.2f}fps  (expected: {:.2f}fps)", MEASUREMENT_NAMES[e], pf.GetRate(), pf.expected_rate);
 		printed_anything = true;
 	}
 
@@ -1047,10 +1017,7 @@ void ConPrintFramerate()
 			ai_name_buf = fmt::format("AI {} {}", e - PFE_AI0 + 1, GetAIName(e - PFE_AI0));
 			name = ai_name_buf;
 		}
-		IConsolePrint(TC_LIGHT_BLUE, "{} times: {:.2f}ms  {:.2f}ms  {:.2f}ms",
-			name,
-			pf.GetAverageDurationMilliseconds(count1),
-			pf.GetAverageDurationMilliseconds(count2),
+		IConsolePrint(TC_LIGHT_BLUE, "{} times: {:.2f}ms  {:.2f}ms  {:.2f}ms", name, pf.GetAverageDurationMilliseconds(count1), pf.GetAverageDurationMilliseconds(count2),
 			pf.GetAverageDurationMilliseconds(count3));
 		printed_anything = true;
 	}

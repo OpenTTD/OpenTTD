@@ -8,28 +8,30 @@
 /** @file network_content.cpp Content sending/receiving part of the network protocol. */
 
 #include "../stdafx.h"
-#include "../rev.h"
+
+#include "network_content.h"
+
 #include "../ai/ai.hpp"
-#include "../game/game.hpp"
-#include "../window_func.h"
-#include "../error.h"
-#include "../fileio_func.h"
 #include "../base_media_base.h"
 #include "../base_media_graphics.h"
 #include "../base_media_music.h"
 #include "../base_media_sounds.h"
+#include "../error.h"
+#include "../fileio_func.h"
+#include "../game/game.hpp"
+#include "../rev.h"
 #include "../settings_type.h"
 #include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
-#include "network_content.h"
+#include "../window_func.h"
 
 #include "table/strings.h"
 
 #if defined(WITH_ZLIB)
 #	include <zlib.h>
 #	if defined(_WIN32)
-		/* Required for: dup, fileno, close */
+/* Required for: dup, fileno, close */
 #		include <io.h>
 #	endif
 #endif
@@ -68,30 +70,41 @@ using HasContentProc = bool(const ContentInfo &ci, bool md5sum);
 static HasContentProc *GetHasContentProcforContentType(ContentType type)
 {
 	switch (type) {
-		case CONTENT_TYPE_NEWGRF: return HasGRFConfig;
-		case CONTENT_TYPE_BASE_GRAPHICS: return BaseGraphics::HasSet;
-		case CONTENT_TYPE_BASE_MUSIC: return BaseMusic::HasSet;
-		case CONTENT_TYPE_BASE_SOUNDS: return BaseSounds::HasSet;
-		case CONTENT_TYPE_AI: return AI::HasAI;
-		case CONTENT_TYPE_AI_LIBRARY: return AI::HasAILibrary;
-		case CONTENT_TYPE_GAME: return Game::HasGame;
-		case CONTENT_TYPE_GAME_LIBRARY: return Game::HasGameLibrary;
-		case CONTENT_TYPE_SCENARIO: return HasScenario;
-		case CONTENT_TYPE_HEIGHTMAP: return HasScenario;
-		default: return nullptr;
+		case CONTENT_TYPE_NEWGRF:
+			return HasGRFConfig;
+		case CONTENT_TYPE_BASE_GRAPHICS:
+			return BaseGraphics::HasSet;
+		case CONTENT_TYPE_BASE_MUSIC:
+			return BaseMusic::HasSet;
+		case CONTENT_TYPE_BASE_SOUNDS:
+			return BaseSounds::HasSet;
+		case CONTENT_TYPE_AI:
+			return AI::HasAI;
+		case CONTENT_TYPE_AI_LIBRARY:
+			return AI::HasAILibrary;
+		case CONTENT_TYPE_GAME:
+			return Game::HasGame;
+		case CONTENT_TYPE_GAME_LIBRARY:
+			return Game::HasGameLibrary;
+		case CONTENT_TYPE_SCENARIO:
+			return HasScenario;
+		case CONTENT_TYPE_HEIGHTMAP:
+			return HasScenario;
+		default:
+			return nullptr;
 	}
 }
 
 bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 {
 	auto ci = std::make_unique<ContentInfo>();
-	ci->type     = (ContentType)p.Recv_uint8();
-	ci->id       = (ContentID)p.Recv_uint32();
+	ci->type = (ContentType)p.Recv_uint8();
+	ci->id = (ContentID)p.Recv_uint32();
 	ci->filesize = p.Recv_uint32();
 
-	ci->name        = p.Recv_string(NETWORK_CONTENT_NAME_LENGTH);
-	ci->version     = p.Recv_string(NETWORK_CONTENT_VERSION_LENGTH);
-	ci->url         = p.Recv_string(NETWORK_CONTENT_URL_LENGTH);
+	ci->name = p.Recv_string(NETWORK_CONTENT_NAME_LENGTH);
+	ci->version = p.Recv_string(NETWORK_CONTENT_VERSION_LENGTH);
+	ci->url = p.Recv_string(NETWORK_CONTENT_URL_LENGTH);
 	ci->description = p.Recv_string(NETWORK_CONTENT_DESC_LENGTH, {StringValidationSetting::ReplaceWithQuestionMark, StringValidationSetting::AllowNewline});
 
 	ci->unique_id = p.Recv_uint32();
@@ -190,9 +203,9 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 	this->Connect();
 
 	auto p = std::make_unique<Packet>(this, PACKET_CONTENT_CLIENT_INFO_LIST);
-	p->Send_uint8 ((uint8_t)type);
+	p->Send_uint8((uint8_t)type);
 	p->Send_uint32(0xffffffff);
-	p->Send_uint8 (1);
+	p->Send_uint8(1);
 	p->Send_string("vanilla");
 	p->Send_string(_openttd_content_version);
 
@@ -252,8 +265,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	this->Connect();
 
 	assert(cv->size() < 255);
-	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint8_t)) /
-			(sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
+	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(uint8_t) - sizeof(uint8_t)) / (sizeof(uint8_t) + sizeof(uint32_t) + (send_md5sum ? MD5_HASH_BYTES : 0)));
 
 	auto p = std::make_unique<Packet>(this, send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
 	p->Send_uint8((uint8_t)cv->size());
@@ -270,8 +282,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	for (auto &ci : *cv) {
 		bool found = false;
 		for (const auto &ci2 : this->infos) {
-			if (ci->type == ci2->type && ci->unique_id == ci2->unique_id &&
-					(!send_md5sum || ci->md5sum == ci2->md5sum)) {
+			if (ci->type == ci2->type && ci->unique_id == ci2->unique_id && (!send_md5sum || ci->md5sum == ci2->md5sum)) {
 				found = true;
 				break;
 			}
@@ -463,8 +474,8 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 	if (!this->cur_file.has_value()) {
 		/* When we haven't opened a file this must be our first packet with metadata. */
 		this->cur_info = std::make_unique<ContentInfo>();
-		this->cur_info->type     = (ContentType)p.Recv_uint8();
-		this->cur_info->id       = (ContentID)p.Recv_uint32();
+		this->cur_info->type = (ContentType)p.Recv_uint8();
+		this->cur_info->id = (ContentID)p.Recv_uint32();
 		this->cur_info->filesize = p.Recv_uint32();
 		this->cur_info->filename = p.Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
 
@@ -477,10 +488,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 		size_t to_read = p.RemainingBytesToTransfer();
 		if (to_read != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, std::ref(this->cur_file))) != to_read) {
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
-			ShowErrorMessage(
-				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD),
-				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE),
-				WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD), GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE), WL_ERROR);
 			this->CloseConnection();
 			this->cur_file.reset();
 
@@ -512,10 +520,7 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 		if (filename.empty() || !(this->cur_file = FileHandle::Open(filename, "wb")).has_value()) {
 			/* Unless that fails of course... */
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
-			ShowErrorMessage(
-				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD),
-				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE),
-				WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD), GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE), WL_ERROR);
 			return false;
 		}
 	}
@@ -802,8 +807,8 @@ void ClientNetworkContentSocketHandler::SendReceive()
 static constexpr auto CONTENT_QUEUE_TIMEOUT = std::chrono::milliseconds(100);
 
 static TimeoutTimer<TimerWindow> _request_queue_timeout = {CONTENT_QUEUE_TIMEOUT, []() {
-	_network_content_client.RequestQueuedContentInfo();
-}};
+															   _network_content_client.RequestQueuedContentInfo();
+														   }};
 
 /**
  * Download information of a given Content ID if not already tried
@@ -837,9 +842,11 @@ void ClientNetworkContentSocketHandler::RequestQueuedContentInfo()
 	queue.swap(this->queued);
 
 	/* Remove ids that have since been received since the request was queued. */
-	queue.erase(std::remove_if(std::begin(queue), std::end(queue), [this](ContentID content_id) {
-		return std::ranges::find(this->infos, content_id, &ContentInfo::id) != std::end(this->infos);
-	}), std::end(queue));
+	queue.erase(std::remove_if(std::begin(queue), std::end(queue),
+					[this](ContentID content_id) {
+						return std::ranges::find(this->infos, content_id, &ContentInfo::id) != std::end(this->infos);
+					}),
+		std::end(queue));
 
 	this->RequestContentList(queue);
 }
@@ -856,7 +863,6 @@ ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid) const
 	}
 	return nullptr;
 }
-
 
 /**
  * Select a specific content id.

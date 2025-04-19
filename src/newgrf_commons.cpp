@@ -11,24 +11,25 @@
  */
 
 #include "stdafx.h"
+
+#include "clear_map.h"
+#include "company_base.h"
+#include "company_func.h"
 #include "debug.h"
-#include "landscape.h"
+#include "error.h"
+#include "genworld.h"
 #include "house.h"
 #include "industrytype.h"
+#include "landscape.h"
 #include "newgrf_config.h"
-#include "company_func.h"
-#include "clear_map.h"
-#include "station_map.h"
-#include "tree_map.h"
-#include "tunnelbridge_map.h"
 #include "newgrf_object.h"
-#include "genworld.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
-#include "company_base.h"
-#include "error.h"
-#include "strings_func.h"
+#include "station_map.h"
 #include "string_func.h"
+#include "strings_func.h"
+#include "tree_map.h"
+#include "tunnelbridge_map.h"
 
 #include "table/strings.h"
 
@@ -122,8 +123,8 @@ uint16_t OverrideManagerBase::AddEntityID(uint16_t grf_local_id, uint32_t grfid,
 		EntityIDMapping *map = &this->mappings[id];
 
 		if (CheckValidNewID(id) && map->entity_id == 0 && map->grfid == 0) {
-			map->entity_id     = grf_local_id;
-			map->grfid         = grfid;
+			map->entity_id = grf_local_id;
+			map->grfid = grfid;
 			map->substitute_id = substitute_id;
 			return id;
 		}
@@ -228,8 +229,8 @@ uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, uint32_t gr
 
 			if (map->entity_id == 0 && map->grfid == 0) {
 				/* winning slot, mark it as been used */
-				map->entity_id     = grf_local_id;
-				map->grfid         = grfid;
+				map->entity_id = grf_local_id;
+				map->grfid = grfid;
 				map->substitute_id = substitute_id;
 				return id;
 			}
@@ -256,7 +257,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec &&inds)
 		 * Or it is a simple substitute.
 		 * We need to find a free available slot */
 		ind_id = this->AddEntityID(inds.grf_prop.local_id, inds.grf_prop.grfid, inds.grf_prop.subst_id);
-		inds.grf_prop.override_id = this->invalid_id;  // make sure it will not be detected as overridden
+		inds.grf_prop.override_id = this->invalid_id; // make sure it will not be detected as overridden
 	}
 
 	if (ind_id == this->invalid_id) {
@@ -336,7 +337,8 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec &&spec)
 uint32_t GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LandscapeType::Tropic: return GetTropicZone(tile);
+		case LandscapeType::Tropic:
+			return GetTropicZone(tile);
 		case LandscapeType::Arctic: {
 			bool has_snow;
 			switch (GetTileType(tile)) {
@@ -392,11 +394,13 @@ uint32_t GetTerrainType(TileIndex tile, TileContext context)
 					has_snow = (GetTileZ(tile) > GetSnowLine());
 					break;
 
-				default: NOT_REACHED();
+				default:
+					NOT_REACHED();
 			}
 			return has_snow ? 4 : 0;
 		}
-		default:        return 0;
+		default:
+			return 0;
 	}
 }
 
@@ -482,18 +486,35 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRF
 		res.SetEncodedMessage(GetEncodedStringWithArgs(stringid, params));
 	} else {
 		switch (cb_res) {
-			case 0x400: return res; // No error.
+			case 0x400:
+				return res; // No error.
 
-			default:    // unknown reason -> default error
-			case 0x401: res = CommandCost(default_error); break;
+			default: // unknown reason -> default error
+			case 0x401:
+				res = CommandCost(default_error);
+				break;
 
-			case 0x402: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST); break;
-			case 0x403: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT); break;
-			case 0x404: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE); break;
-			case 0x405: res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE); break;
-			case 0x406: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_SEA); break;
-			case 0x407: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_CANAL); break;
-			case 0x408: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER); break;
+			case 0x402:
+				res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
+				break;
+			case 0x403:
+				res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
+				break;
+			case 0x404:
+				res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE);
+				break;
+			case 0x405:
+				res = CommandCost(STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE);
+				break;
+			case 0x406:
+				res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_SEA);
+				break;
+			case 0x407:
+				res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_CANAL);
+				break;
+			case 0x408:
+				res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER);
+				break;
 		}
 	}
 
@@ -513,9 +534,7 @@ void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
 
 	if (grfconfig->grf_bugs.Test(GRFBug::UnknownCbResult)) {
 		grfconfig->grf_bugs.Set(GRFBug::UnknownCbResult);
-		ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, grfconfig->GetName()),
-			GetEncodedString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res),
-			WL_CRITICAL);
+		ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, grfconfig->GetName()), GetEncodedString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res), WL_CRITICAL);
 	}
 
 	/* debug output */
@@ -562,9 +581,7 @@ bool Convert8bitBooleanCallback(const GRFFile *grffile, uint16_t cbid, uint16_t 
 	return cb_res != 0;
 }
 
-
 /* static */ std::vector<DrawTileSeqStruct> NewGRFSpriteLayout::result_seq;
-
 
 /**
  * Allocate a spritelayout for \a num_sprites building sprites.
@@ -698,7 +715,7 @@ void NewGRFSpriteLayout::ProcessRegisters(uint8_t resolved_var10, uint32_t resol
 							result.delta_x += static_cast<int32_t>(GetRegister(regs->delta.parent[0]));
 							result.delta_y += static_cast<int32_t>(GetRegister(regs->delta.parent[1]));
 						}
-						if (flags & TLF_BB_Z_OFFSET)    result.delta_z += static_cast<int32_t>(GetRegister(regs->delta.parent[2]));
+						if (flags & TLF_BB_Z_OFFSET) result.delta_z += static_cast<int32_t>(GetRegister(regs->delta.parent[2]));
 					} else {
 						if (flags & TLF_CHILD_X_OFFSET) result.delta_x += static_cast<int32_t>(GetRegister(regs->delta.child[0]));
 						if (flags & TLF_CHILD_Y_OFFSET) result.delta_y += static_cast<int32_t>(GetRegister(regs->delta.child[1]));

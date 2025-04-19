@@ -9,13 +9,15 @@
 
 #ifdef WITH_SSE
 
-#include "../stdafx.h"
-#include "../zoom_func.h"
-#include "../settings_type.h"
-#include "32bpp_ssse3.hpp"
-#include "32bpp_sse_func.hpp"
+#	include "../stdafx.h"
 
-#include "../safeguards.h"
+#	include "32bpp_ssse3.hpp"
+
+#	include "../settings_type.h"
+#	include "../zoom_func.h"
+#	include "32bpp_sse_func.hpp"
+
+#	include "../safeguards.h"
 
 /** Instantiation of the SSSE3 32bpp blitter factory. */
 static FBlitter_32bppSSSE3 iFBlitter_32bppSSSE3;

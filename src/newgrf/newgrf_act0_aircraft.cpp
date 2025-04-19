@@ -8,13 +8,14 @@
 /** @file newgrf_act0_aircraft.cpp NewGRF Action 0x00 handler for aircraft. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_cargo.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_sound.h"
 #include "newgrf_bytereader.h"
-#include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
+#include "newgrf_internal_vehicle.h"
 
 #include "../safeguards.h"
 
@@ -147,7 +148,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				ei->cargo_age_period = buf.ReadWord();
 				break;
 
-			case 0x1D:   // CTT refit include list
+			case 0x1D: // CTT refit include list
 			case 0x1E: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1D && count != 0);
@@ -197,5 +198,14 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Activation(uint first, uint last, int prop, ByteReader &buf) { return AircraftVehicleChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_AIRCRAFT>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return AircraftVehicleChangeInfo(first, last, prop, buf);
+}

@@ -38,9 +38,9 @@ public:
 	enum Type : uint8_t {
 		DT_BEGIN = 0, ///< Helper for iteration
 		DT_MUSIC = 0, ///< A music driver, needs to be before sound to properly shut down extmidi forked music players
-		DT_SOUND,     ///< A sound driver
-		DT_VIDEO,     ///< A video driver
-		DT_END,       ///< Helper for iteration
+		DT_SOUND, ///< A sound driver
+		DT_VIDEO, ///< A video driver
+		DT_END, ///< Helper for iteration
 	};
 
 	/**
@@ -52,7 +52,6 @@ public:
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(Driver::Type)
 
-
 /** Base for all driver factories. */
 class DriverFactoryBase {
 private:
@@ -60,9 +59,9 @@ private:
 	friend class SoundDriver;
 	friend class VideoDriver;
 
-	Driver::Type type;       ///< The type of driver.
-	int priority;            ///< The priority of this factory.
-	std::string_view name;        ///< The name of the drivers of this factory.
+	Driver::Type type; ///< The type of driver.
+	int priority; ///< The priority of this factory.
+	std::string_view name; ///< The name of the drivers of this factory.
 	std::string_view description; ///< The description of this driver.
 
 	typedef std::map<std::string, DriverFactoryBase *> Drivers; ///< Type for a map of drivers.
@@ -94,7 +93,7 @@ private:
 	 */
 	static std::string_view GetDriverTypeName(Driver::Type type)
 	{
-		static const std::string_view driver_type_name[] = { "music", "sound", "video" };
+		static const std::string_view driver_type_name[] = {"music", "sound", "video"};
 		return driver_type_name[type];
 	}
 

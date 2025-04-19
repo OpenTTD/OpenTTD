@@ -8,37 +8,37 @@
 /** @file fios_gui.cpp GUIs for loading/saving games, scenarios, heightmaps, ... */
 
 #include "stdafx.h"
-#include "saveload/saveload.h"
-#include "error.h"
-#include "gui.h"
-#include "gfx_func.h"
+
+#include "core/geometry_func.hpp"
 #include "command_func.h"
-#include "network/network.h"
-#include "network/network_content.h"
-#include "strings_func.h"
+#include "engine_func.h"
+#include "error.h"
 #include "fileio_func.h"
 #include "fios.h"
-#include "window_func.h"
-#include "tilehighlight_func.h"
-#include "querystring_gui.h"
-#include "engine_func.h"
-#include "landscape_type.h"
-#include "genworld.h"
-#include "timer/timer_game_calendar.h"
-#include "core/geometry_func.hpp"
 #include "gamelog.h"
-#include "stringfilter_type.h"
-#include "misc_cmd.h"
 #include "gamelog_internal.h"
+#include "genworld.h"
+#include "gfx_func.h"
+#include "gui.h"
+#include "landscape_type.h"
+#include "misc_cmd.h"
+#include "network/network.h"
+#include "network/network_content.h"
+#include "querystring_gui.h"
+#include "saveload/saveload.h"
+#include "stringfilter_type.h"
+#include "strings_func.h"
+#include "tilehighlight_func.h"
+#include "timer/timer_game_calendar.h"
+#include "window_func.h"
 
 #include "widgets/fios_widget.h"
-
 #include "table/sprites.h"
 #include "table/strings.h"
 
 #include "safeguards.h"
 
-LoadCheckData _load_check_data;    ///< Data loaded from save during SL_LOAD_CHECK.
+LoadCheckData _load_check_data; ///< Data loaded from save during SL_LOAD_CHECK.
 
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
@@ -290,15 +290,15 @@ static constexpr NWidgetPart _nested_save_dialog_widgets[] = {
 
 /** Text colours of #DetailedFileType fios entries in the window. */
 static const TextColour _fios_colours[] = {
-	TC_LIGHT_BROWN,  // DFT_OLD_GAME_FILE
-	TC_ORANGE,       // DFT_GAME_FILE
-	TC_YELLOW,       // DFT_HEIGHTMAP_BMP
-	TC_ORANGE,       // DFT_HEIGHTMAP_PNG
-	TC_LIGHT_BROWN,  // DFT_TOWN_DATA_JSON
-	TC_LIGHT_BLUE,   // DFT_FIOS_DRIVE
-	TC_DARK_GREEN,   // DFT_FIOS_PARENT
-	TC_DARK_GREEN,   // DFT_FIOS_DIR
-	TC_ORANGE,       // DFT_FIOS_DIRECT
+	TC_LIGHT_BROWN, // DFT_OLD_GAME_FILE
+	TC_ORANGE, // DFT_GAME_FILE
+	TC_YELLOW, // DFT_HEIGHTMAP_BMP
+	TC_ORANGE, // DFT_HEIGHTMAP_PNG
+	TC_LIGHT_BROWN, // DFT_TOWN_DATA_JSON
+	TC_LIGHT_BLUE, // DFT_FIOS_DRIVE
+	TC_DARK_GREEN, // DFT_FIOS_PARENT
+	TC_DARK_GREEN, // DFT_FIOS_DIR
+	TC_ORANGE, // DFT_FIOS_DIRECT
 };
 /* This should align with the DetailedFileType enum defined in fileio_type.h */
 static_assert(std::size(_fios_colours) == DFT_END);
@@ -318,10 +318,17 @@ static void SortSaveGameList(FileList &file_list)
 	 */
 	for (const auto &item : file_list) {
 		switch (item.type.detailed) {
-			case DFT_FIOS_DIR:    sort_start++; break;
-			case DFT_FIOS_PARENT: sort_start++; break;
-			case DFT_FIOS_DRIVE:  sort_end++;   break;
-			default: break;
+			case DFT_FIOS_DIR:
+				sort_start++;
+				break;
+			case DFT_FIOS_PARENT:
+				sort_start++;
+				break;
+			case DFT_FIOS_DRIVE:
+				sort_end++;
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -330,7 +337,7 @@ static void SortSaveGameList(FileList &file_list)
 
 struct SaveLoadWindow : public Window {
 private:
-	static const uint EDITBOX_MAX_SIZE   =  50;
+	static const uint EDITBOX_MAX_SIZE = 50;
 
 	QueryString filename_editbox; ///< Filename editbox.
 	AbstractFileType abstract_filetype{}; /// Type of file to select.
@@ -358,15 +365,14 @@ private:
 	}
 
 public:
-
 	/** Generate a default save filename. */
 	void GenerateFileName()
 	{
 		this->filename_editbox.text.Assign(GenerateDefaultSaveName());
 	}
 
-	SaveLoadWindow(WindowDesc &desc, AbstractFileType abstract_filetype, SaveLoadOperation fop)
-			: Window(desc), filename_editbox(64), abstract_filetype(abstract_filetype), fop(fop), filter_editbox(EDITBOX_MAX_SIZE)
+	SaveLoadWindow(WindowDesc &desc, AbstractFileType abstract_filetype, SaveLoadOperation fop) :
+		Window(desc), filename_editbox(64), abstract_filetype(abstract_filetype), fop(fop), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		assert(this->fop == SLO_SAVE || this->fop == SLO_LOAD);
 
@@ -658,15 +664,13 @@ public:
 	{
 		switch (widget) {
 			case WID_SL_SORT_BYNAME: // Sort save names by name
-				_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
-					SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
+				_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ? SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
 				_savegame_sort_dirty = true;
 				this->SetDirty();
 				break;
 
 			case WID_SL_SORT_BYDATE: // Sort save names by date
-				_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
-					SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
+				_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ? SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
 				_savegame_sort_dirty = true;
 				this->SetDirty();
 				break;
@@ -762,9 +766,14 @@ public:
 				} else {
 					assert(this->fop == SLO_LOAD);
 					switch (this->abstract_filetype) {
-						default: NOT_REACHED();
-						case FT_SCENARIO:  ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_SCENARIO);  break;
-						case FT_HEIGHTMAP: ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_HEIGHTMAP); break;
+						default:
+							NOT_REACHED();
+						case FT_SCENARIO:
+							ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_SCENARIO);
+							break;
+						case FT_HEIGHTMAP:
+							ShowNetworkContentListWindow(nullptr, CONTENT_TYPE_HEIGHTMAP);
+							break;
 					}
 				}
 				break;
@@ -825,20 +834,14 @@ public:
 			if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
 				_file_to_saveload.name = FiosMakeSavegameName(this->filename_editbox.text.GetText());
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
-					ShowQuery(
-						GetEncodedString(STR_SAVELOAD_OVERWRITE_TITLE),
-						GetEncodedString(STR_SAVELOAD_OVERWRITE_WARNING),
-						this, SaveLoadWindow::SaveGameConfirmationCallback);
+					ShowQuery(GetEncodedString(STR_SAVELOAD_OVERWRITE_TITLE), GetEncodedString(STR_SAVELOAD_OVERWRITE_WARNING), this, SaveLoadWindow::SaveGameConfirmationCallback);
 				} else {
 					_switch_mode = SM_SAVE_GAME;
 				}
 			} else {
 				_file_to_saveload.name = FiosMakeHeightmapName(this->filename_editbox.text.GetText());
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
-					ShowQuery(
-						GetEncodedString(STR_SAVELOAD_OVERWRITE_TITLE),
-						GetEncodedString(STR_SAVELOAD_OVERWRITE_WARNING),
-						this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
+					ShowQuery(GetEncodedString(STR_SAVELOAD_OVERWRITE_TITLE), GetEncodedString(STR_SAVELOAD_OVERWRITE_WARNING), this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
 				} else {
 					_switch_mode = SM_SAVE_HEIGHTMAP;
 				}
@@ -927,8 +930,7 @@ public:
 						}
 						this->SetWidgetDisabledState(WID_SL_LOAD_BUTTON, disabled);
 						this->SetWidgetDisabledState(WID_SL_NEWGRF_INFO, !_load_check_data.HasNewGrfs());
-						this->SetWidgetDisabledState(WID_SL_MISSING_NEWGRFS,
-								!_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility == GLC_ALL_GOOD);
+						this->SetWidgetDisabledState(WID_SL_MISSING_NEWGRFS, !_load_check_data.HasNewGrfs() || _load_check_data.grf_compatibility == GLC_ALL_GOOD);
 						break;
 					}
 
@@ -953,36 +955,16 @@ public:
 };
 
 /** Load game/scenario */
-static WindowDesc _load_dialog_desc(
-	WDP_CENTER, "load_game", 500, 294,
-	WC_SAVELOAD, WC_NONE,
-	{},
-	_nested_load_dialog_widgets
-);
+static WindowDesc _load_dialog_desc(WDP_CENTER, "load_game", 500, 294, WC_SAVELOAD, WC_NONE, {}, _nested_load_dialog_widgets);
 
 /** Load heightmap */
-static WindowDesc _load_heightmap_dialog_desc(
-	WDP_CENTER, "load_heightmap", 257, 320,
-	WC_SAVELOAD, WC_NONE,
-	{},
-	_nested_load_heightmap_dialog_widgets
-);
+static WindowDesc _load_heightmap_dialog_desc(WDP_CENTER, "load_heightmap", 257, 320, WC_SAVELOAD, WC_NONE, {}, _nested_load_heightmap_dialog_widgets);
 
 /** Load town data */
-static WindowDesc _load_town_data_dialog_desc(
-	WDP_CENTER, "load_town_data", 257, 320,
-	WC_SAVELOAD, WC_NONE,
-	{},
-	_nested_load_town_data_dialog_widgets
-);
+static WindowDesc _load_town_data_dialog_desc(WDP_CENTER, "load_town_data", 257, 320, WC_SAVELOAD, WC_NONE, {}, _nested_load_town_data_dialog_widgets);
 
 /** Save game/scenario */
-static WindowDesc _save_dialog_desc(
-	WDP_CENTER, "save_game", 500, 294,
-	WC_SAVELOAD, WC_NONE,
-	{},
-	_nested_save_dialog_widgets
-);
+static WindowDesc _save_dialog_desc(WDP_CENTER, "save_game", 500, 294, WC_SAVELOAD, WC_NONE, {}, _nested_save_dialog_widgets);
 
 /**
  * Launch save/load dialog in the given mode.

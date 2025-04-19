@@ -8,27 +8,27 @@
 /** @file townname.cpp %Town name generators. */
 
 #include "stdafx.h"
-#include "string_func.h"
-#include "townname_type.h"
-#include "town.h"
-#include "strings_func.h"
-#include "core/random_func.hpp"
-#include "genworld.h"
-#include "gfx_layout.h"
-#include "strings_internal.h"
 
 #include "table/townname.h"
 
-#include "safeguards.h"
+#include "core/random_func.hpp"
+#include "genworld.h"
+#include "gfx_layout.h"
+#include "string_func.h"
+#include "strings_func.h"
+#include "strings_internal.h"
+#include "town.h"
+#include "townname_type.h"
 
+#include "safeguards.h"
 
 /**
  * Initializes this struct from town data
  * @param t town for which we will be printing name later
  */
 TownNameParams::TownNameParams(const Town *t) :
-		grfid(t->townnamegrfid), // by default, use supplied data
-		type(t->townnametype)
+	grfid(t->townnamegrfid), // by default, use supplied data
+	type(t->townnametype)
 {
 	if (t->townnamegrfid != 0 && GetGRFTownName(t->townnamegrfid) == nullptr) {
 		/* Fallback to the first built in town name (English). */
@@ -37,7 +37,6 @@ TownNameParams::TownNameParams(const Town *t) :
 		return;
 	}
 }
-
 
 /**
  * Fills builder with specified town name.
@@ -92,7 +91,6 @@ std::string GetTownName(const Town *t)
 	return GetTownName(&par, t->townnameparts);
 }
 
-
 /**
  * Verifies the town name is valid and unique.
  * @param r random bits
@@ -125,7 +123,6 @@ bool VerifyTownName(uint32_t r, const TownNameParams *par, TownNames *town_names
 	return true;
 }
 
-
 /**
  * Generates valid town name.
  * @param randomizer the source of random data for generating the name
@@ -157,8 +154,6 @@ bool GenerateTownName(Randomizer &randomizer, uint32_t *townnameparts, TownNames
 	return false;
 }
 
-
-
 /**
  * Generates a number from given seed.
  * @param shift_by number of bits seed is shifted to the right
@@ -170,7 +165,6 @@ static inline uint32_t SeedChance(uint8_t shift_by, size_t max, uint32_t seed)
 {
 	return (GB(seed, shift_by, 16) * ClampTo<uint16_t>(max)) >> 16;
 }
-
 
 /**
  * Generates a number from given seed. Uses different algorithm than SeedChance().
@@ -193,7 +187,6 @@ static inline uint32_t SeedModChance(uint8_t shift_by, size_t max, uint32_t seed
 	return (seed >> shift_by) % max;
 }
 
-
 /**
  * Generates a number from given seed.
  * @param shift_by number of bits seed is shifted to the right
@@ -207,7 +200,6 @@ static inline int32_t SeedChanceBias(uint8_t shift_by, size_t max, uint32_t seed
 	return SeedChance(shift_by, max + bias, seed) - bias;
 }
 
-
 /**
  * Replaces a string beginning in 'org' with 'rep'.
  * @param org     string to replace
@@ -219,7 +211,6 @@ static void ReplaceWords(std::string_view org, std::string_view rep, std::string
 {
 	if (str.compare(start, org.size(), org) == 0) str.replace(start, org.size(), rep);
 }
-
 
 /**
  * Replaces english curses and ugly letter combinations by nicer ones.
@@ -257,8 +248,8 @@ static void MakeEnglishOriginalTownName(StringBuilder &builder, uint32_t seed)
 	if (i >= 0) builder += _name_original_english_1[i];
 
 	/* mandatory middle segments */
-	builder += _name_original_english_2[SeedChance(4,  std::size(_name_original_english_2), seed)];
-	builder += _name_original_english_3[SeedChance(7,  std::size(_name_original_english_3), seed)];
+	builder += _name_original_english_2[SeedChance(4, std::size(_name_original_english_2), seed)];
+	builder += _name_original_english_3[SeedChance(7, std::size(_name_original_english_3), seed)];
 	builder += _name_original_english_4[SeedChance(10, std::size(_name_original_english_4), seed)];
 	builder += _name_original_english_5[SeedChance(13, std::size(_name_original_english_5), seed)];
 
@@ -268,7 +259,6 @@ static void MakeEnglishOriginalTownName(StringBuilder &builder, uint32_t seed)
 
 	ReplaceEnglishWords(builder.GetString(), start, true);
 }
-
 
 /**
  * Generates English (Additional) town name from given seed.
@@ -304,7 +294,6 @@ static void MakeEnglishAdditionalTownName(StringBuilder &builder, uint32_t seed)
 	ReplaceEnglishWords(builder.GetString(), start, false);
 }
 
-
 /**
  * Generates Austrian town name from given seed.
  * @param builder string builder
@@ -321,16 +310,16 @@ static void MakeAustrianTownName(StringBuilder &builder, uint32_t seed)
 	i = SeedChance(4, 6, seed);
 	if (i >= 4) {
 		/* Kaisers-kirchen */
-		builder += _name_austrian_a2[SeedChance( 7, std::size(_name_austrian_a2), seed)];
+		builder += _name_austrian_a2[SeedChance(7, std::size(_name_austrian_a2), seed)];
 		builder += _name_austrian_a3[SeedChance(13, std::size(_name_austrian_a3), seed)];
 	} else if (i >= 2) {
 		/* St. Johann */
-		builder += _name_austrian_a5[SeedChance( 7, std::size(_name_austrian_a5), seed)];
-		builder += _name_austrian_a6[SeedChance( 9, std::size(_name_austrian_a6), seed)];
+		builder += _name_austrian_a5[SeedChance(7, std::size(_name_austrian_a5), seed)];
+		builder += _name_austrian_a6[SeedChance(9, std::size(_name_austrian_a6), seed)];
 		j = 1; // More likely to have a " an der " or " am "
 	} else {
 		/* Zell */
-		builder += _name_austrian_a4[SeedChance( 7, std::size(_name_austrian_a4), seed)];
+		builder += _name_austrian_a4[SeedChance(7, std::size(_name_austrian_a4), seed)];
 	}
 
 	i = SeedChance(1, 6, seed);
@@ -344,7 +333,6 @@ static void MakeAustrianTownName(StringBuilder &builder, uint32_t seed)
 		builder += _name_austrian_b2[SeedChance(5, std::size(_name_austrian_b2), seed)];
 	}
 }
-
 
 /**
  * Generates German town name from given seed.
@@ -385,7 +373,6 @@ static void MakeGermanTownName(StringBuilder &builder, uint32_t seed)
 	}
 }
 
-
 /**
  * Generates Latin-American town name from given seed.
  * @param builder string builder
@@ -395,7 +382,6 @@ static void MakeSpanishTownName(StringBuilder &builder, uint32_t seed)
 {
 	builder += _name_spanish_real[SeedChance(0, std::size(_name_spanish_real), seed)];
 }
-
 
 /**
  * Generates French town name from given seed.
@@ -407,7 +393,6 @@ static void MakeFrenchTownName(StringBuilder &builder, uint32_t seed)
 	builder += _name_french_real[SeedChance(0, std::size(_name_french_real), seed)];
 }
 
-
 /**
  * Generates Silly town name from given seed.
  * @param builder string builder
@@ -415,10 +400,9 @@ static void MakeFrenchTownName(StringBuilder &builder, uint32_t seed)
  */
 static void MakeSillyTownName(StringBuilder &builder, uint32_t seed)
 {
-	builder += _name_silly_1[SeedChance( 0, std::size(_name_silly_1), seed)];
+	builder += _name_silly_1[SeedChance(0, std::size(_name_silly_1), seed)];
 	builder += _name_silly_2[SeedChance(16, std::size(_name_silly_2), seed)];
 }
-
 
 /**
  * Generates Swedish town name from given seed.
@@ -433,16 +417,15 @@ static void MakeSwedishTownName(StringBuilder &builder, uint32_t seed)
 
 	/* mandatory middle segments including option of hardcoded name */
 	if (SeedChance(4, 5, seed) >= 3) {
-		builder += _name_swedish_2[SeedChance( 7, std::size(_name_swedish_2), seed)];
+		builder += _name_swedish_2[SeedChance(7, std::size(_name_swedish_2), seed)];
 	} else {
-		builder += _name_swedish_2a[SeedChance( 7, std::size(_name_swedish_2a), seed)];
+		builder += _name_swedish_2a[SeedChance(7, std::size(_name_swedish_2a), seed)];
 		builder += _name_swedish_2b[SeedChance(10, std::size(_name_swedish_2b), seed)];
 		builder += _name_swedish_2c[SeedChance(13, std::size(_name_swedish_2c), seed)];
 	}
 
 	builder += _name_swedish_3[SeedChance(16, std::size(_name_swedish_3), seed)];
 }
-
 
 /**
  * Generates Dutch town name from given seed.
@@ -457,15 +440,14 @@ static void MakeDutchTownName(StringBuilder &builder, uint32_t seed)
 
 	/* mandatory middle segments including option of hardcoded name */
 	if (SeedChance(6, 9, seed) > 4) {
-		builder += _name_dutch_2[SeedChance( 9, std::size(_name_dutch_2), seed)];
+		builder += _name_dutch_2[SeedChance(9, std::size(_name_dutch_2), seed)];
 	} else {
-		builder += _name_dutch_3[SeedChance( 9, std::size(_name_dutch_3), seed)];
+		builder += _name_dutch_3[SeedChance(9, std::size(_name_dutch_3), seed)];
 		builder += _name_dutch_4[SeedChance(12, std::size(_name_dutch_4), seed)];
 	}
 
 	builder += _name_dutch_5[SeedChance(15, std::size(_name_dutch_5), seed)];
 }
-
 
 /**
  * Generates Finnish town name from given seed.
@@ -486,7 +468,7 @@ static void MakeFinnishTownName(StringBuilder &builder, uint32_t seed)
 		/* A two-part name by combining one of _name_finnish_1 + "la"/"lä"
 		 * The reason for not having the contents of _name_finnish_{1,2} in the same table is
 		 * that the ones in _name_finnish_2 are not good for this purpose. */
-		uint sel = SeedChance( 0, std::size(_name_finnish_1), seed);
+		uint sel = SeedChance(0, std::size(_name_finnish_1), seed);
 		builder += _name_finnish_1[sel];
 
 		std::string &str = builder.GetString();
@@ -512,7 +494,6 @@ static void MakeFinnishTownName(StringBuilder &builder, uint32_t seed)
 	builder += _name_finnish_3[SeedChance(10, std::size(_name_finnish_3), seed)];
 }
 
-
 /**
  * Generates Polish town name from given seed.
  * @param builder string builder
@@ -521,12 +502,8 @@ static void MakeFinnishTownName(StringBuilder &builder, uint32_t seed)
 static void MakePolishTownName(StringBuilder &builder, uint32_t seed)
 {
 	/* optional first segment */
-	uint i = SeedChance(0,
-			std::size(_name_polish_2_o) + std::size(_name_polish_2_m) +
-			std::size(_name_polish_2_f) + std::size(_name_polish_2_n),
-			seed);
+	uint i = SeedChance(0, std::size(_name_polish_2_o) + std::size(_name_polish_2_m) + std::size(_name_polish_2_f) + std::size(_name_polish_2_n), seed);
 	uint j = SeedChance(2, 20, seed);
-
 
 	if (i < std::size(_name_polish_2_o)) {
 		builder += _name_polish_2_o[SeedChance(3, std::size(_name_polish_2_o), seed)];
@@ -574,7 +551,6 @@ static void MakePolishTownName(StringBuilder &builder, uint32_t seed)
 	return;
 }
 
-
 /**
  * Generates Czech town name from given seed.
  * @param builder string builder
@@ -608,9 +584,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 	if (do_prefix) prefix = SeedModChance(5, std::size(_name_czech_adj) * 12, seed) / 12;
 	if (do_suffix) suffix = SeedModChance(7, std::size(_name_czech_suffix), seed);
 	/* 3:1 chance 3:1 to use dynamic substantive */
-	stem = SeedModChance(9,
-			std::size(_name_czech_subst_full) + 3 * std::size(_name_czech_subst_stem),
-			seed);
+	stem = SeedModChance(9, std::size(_name_czech_subst_full) + 3 * std::size(_name_czech_subst_stem), seed);
 	if (stem < std::size(_name_czech_subst_full)) {
 		/* That was easy! */
 		dynamic_subst = false;
@@ -650,9 +624,7 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 		for (ending = 0; ending < (int)std::size(_name_czech_subst_ending); ending++) {
 			const CzechNameSubst *e = &_name_czech_subst_ending[ending];
 
-			if (gender == CZG_FREE ||
-					(gender == CZG_NFREE && e->gender != CZG_SNEUT && e->gender != CZG_PNEUT) ||
-					 gender == e->gender) {
+			if (gender == CZG_FREE || (gender == CZG_NFREE && e->gender != CZG_SNEUT && e->gender != CZG_PNEUT) || gender == e->gender) {
 				if (ending_start < 0) {
 					ending_start = ending;
 				}
@@ -710,18 +682,21 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 			assert(postlen > 0 && endlen > 0);
 
 			/* Kill the "avava" and "Jananna"-like cases */
-			if (postlen < 2 || postlen > endlen ||
-					((poststr[1] != 'v' || poststr[1] != endstr[1]) &&
-					poststr[2] != endstr[1])) {
+			if (postlen < 2 || postlen > endlen || ((poststr[1] != 'v' || poststr[1] != endstr[1]) && poststr[2] != endstr[1])) {
 				builder += poststr;
 
 				/* k-i -> c-i, h-i -> z-i */
 				if (endstr[0] == 'i') {
 					std::string &str = builder.GetString();
 					switch (str.back()) {
-						case 'k': str.back() = 'c'; break;
-						case 'h': str.back() = 'z'; break;
-						default: break;
+						case 'k':
+							str.back() = 'c';
+							break;
+						case 'h':
+							str.back() = 'z';
+							break;
+						default:
+							break;
 					}
 				}
 			}
@@ -737,7 +712,6 @@ static void MakeCzechTownName(StringBuilder &builder, uint32_t seed)
 	}
 }
 
-
 /**
  * Generates Romanian town name from given seed.
  * @param builder string builder
@@ -748,7 +722,6 @@ static void MakeRomanianTownName(StringBuilder &builder, uint32_t seed)
 	builder += _name_romanian_real[SeedChance(0, std::size(_name_romanian_real), seed)];
 }
 
-
 /**
  * Generates Slovak town name from given seed.
  * @param builder string builder
@@ -758,7 +731,6 @@ static void MakeSlovakTownName(StringBuilder &builder, uint32_t seed)
 {
 	builder += _name_slovak_real[SeedChance(0, std::size(_name_slovak_real), seed)];
 }
-
 
 /**
  * Generates Norwegian town name from given seed.
@@ -780,7 +752,6 @@ static void MakeNorwegianTownName(StringBuilder &builder, uint32_t seed)
 	/* Use 7bit for the last fake part.  Bit 11-17 */
 	builder += _name_norwegian_2[SeedChance(11, std::size(_name_norwegian_2), seed)];
 }
-
 
 /**
  * Generates Hungarian town name from given seed.
@@ -809,7 +780,6 @@ static void MakeHungarianTownName(StringBuilder &builder, uint32_t seed)
 	}
 }
 
-
 /**
  * Generates Swiss town name from given seed.
  * @param builder string builder
@@ -819,7 +789,6 @@ static void MakeSwissTownName(StringBuilder &builder, uint32_t seed)
 {
 	builder += _name_swiss_real[SeedChance(0, std::size(_name_swiss_real), seed)];
 }
-
 
 /**
  * Generates Danish town name from given seed.
@@ -833,10 +802,9 @@ static void MakeDanishTownName(StringBuilder &builder, uint32_t seed)
 	if (i >= 0) builder += _name_danish_1[i];
 
 	/* middle segments removed as this algorithm seems to create much more realistic names */
-	builder += _name_danish_2[SeedChance( 7, std::size(_name_danish_2), seed)];
+	builder += _name_danish_2[SeedChance(7, std::size(_name_danish_2), seed)];
 	builder += _name_danish_3[SeedChance(16, std::size(_name_danish_3), seed)];
 }
-
 
 /**
  * Generates Turkish town name from given seed.
@@ -849,28 +817,28 @@ static void MakeTurkishTownName(StringBuilder &builder, uint32_t seed)
 
 	switch (i) {
 		case 0:
-			builder += _name_turkish_prefix[SeedModChance( 2, std::size(_name_turkish_prefix), seed)];
+			builder += _name_turkish_prefix[SeedModChance(2, std::size(_name_turkish_prefix), seed)];
 
 			/* middle segment */
-			builder += _name_turkish_middle[SeedModChance( 4, std::size(_name_turkish_middle), seed)];
+			builder += _name_turkish_middle[SeedModChance(4, std::size(_name_turkish_middle), seed)];
 
 			/* optional suffix */
 			if (SeedModChance(0, 7, seed) == 0) {
-				builder += _name_turkish_suffix[SeedModChance( 10, std::size(_name_turkish_suffix), seed)];
+				builder += _name_turkish_suffix[SeedModChance(10, std::size(_name_turkish_suffix), seed)];
 			}
 			break;
 
-		case 1: case 2:
-			builder += _name_turkish_prefix[SeedModChance( 2, std::size(_name_turkish_prefix), seed)];
-			builder += _name_turkish_suffix[SeedModChance( 4, std::size(_name_turkish_suffix), seed)];
+		case 1:
+		case 2:
+			builder += _name_turkish_prefix[SeedModChance(2, std::size(_name_turkish_prefix), seed)];
+			builder += _name_turkish_suffix[SeedModChance(4, std::size(_name_turkish_suffix), seed)];
 			break;
 
 		default:
-			builder += _name_turkish_real[SeedModChance( 4, std::size(_name_turkish_real), seed)];
+			builder += _name_turkish_real[SeedModChance(4, std::size(_name_turkish_real), seed)];
 			break;
 	}
 }
-
 
 /**
  * Generates Italian town name from given seed.
@@ -884,7 +852,7 @@ static void MakeItalianTownName(StringBuilder &builder, uint32_t seed)
 		return;
 	}
 
-	static const char * const mascul_femin_italian[] = {
+	static const char *const mascul_femin_italian[] = {
 		"o",
 		"a",
 	};
@@ -916,7 +884,6 @@ static void MakeItalianTownName(StringBuilder &builder, uint32_t seed)
 		}
 	}
 }
-
 
 /**
  * Generates Catalan town name from given seed.
@@ -952,7 +919,6 @@ static void MakeCatalanTownName(StringBuilder &builder, uint32_t seed)
 	}
 }
 
-
 /**
  * Type for all town name generator functions.
  * @param builder The builder to write the name to.
@@ -962,7 +928,7 @@ typedef void TownNameGenerator(StringBuilder &builder, uint32_t seed);
 
 /** Town name generators */
 static TownNameGenerator *_town_name_generators[] = {
-	MakeEnglishOriginalTownName,  // replaces first 4 characters of name
+	MakeEnglishOriginalTownName, // replaces first 4 characters of name
 	MakeFrenchTownName,
 	MakeGermanTownName,
 	MakeEnglishAdditionalTownName, // replaces first 4 characters of name
@@ -984,7 +950,6 @@ static TownNameGenerator *_town_name_generators[] = {
 	MakeItalianTownName,
 	MakeCatalanTownName,
 };
-
 
 /**
  * Generates town name from given seed.

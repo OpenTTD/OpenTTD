@@ -33,13 +33,21 @@ public:
 	bool IsSongPlaying() override;
 
 	void SetVolume(uint8_t vol) override;
-	std::string_view GetName() const override { return "extmidi"; }
+
+	std::string_view GetName() const override
+	{
+		return "extmidi";
+	}
 };
 
 class FMusicDriver_ExtMidi : public DriverFactoryBase {
 public:
 	FMusicDriver_ExtMidi() : DriverFactoryBase(Driver::DT_MUSIC, 3, "extmidi", "External MIDI Driver") {}
-	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<MusicDriver_ExtMidi>(); }
+
+	std::unique_ptr<Driver> CreateInstance() const override
+	{
+		return std::make_unique<MusicDriver_ExtMidi>();
+	}
 };
 
 #endif /* MUSIC_EXTERNAL_H */

@@ -10,9 +10,10 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
-#include "cpu.h"
 #include <chrono>
+
 #include "core/format.hpp"
+#include "cpu.h"
 
 /* Debugging messages policy:
  * These should be the severities used for direct Debug() calls
@@ -73,13 +74,13 @@ struct TicToc {
 		uint32_t count = 0;
 		uint64_t chrono_sum = 0;
 
-		constexpr State(std::string_view name, uint32_t max_count) : name(name), max_count(max_count) { }
+		constexpr State(std::string_view name, uint32_t max_count) : name(name), max_count(max_count) {}
 	};
 
 	State &state;
 	std::chrono::high_resolution_clock::time_point chrono_start; ///< real time count.
 
-	inline TicToc(State &state) : state(state), chrono_start(std::chrono::high_resolution_clock::now()) { }
+	inline TicToc(State &state) : state(state), chrono_start(std::chrono::high_resolution_clock::now()) {}
 
 	inline ~TicToc()
 	{

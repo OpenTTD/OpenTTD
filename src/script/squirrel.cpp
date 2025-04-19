@@ -8,15 +8,16 @@
 /** @file squirrel.cpp the implementation of the Squirrel class. It handles all Squirrel-stuff and gives a nice API back to work with. */
 
 #include "../stdafx.h"
-#include "../debug.h"
-#include "squirrel_std.hpp"
-#include "../error_func.h"
-#include "../fileio_func.h"
-#include "../string_func.h"
-#include "script_fatalerror.hpp"
-#include "../settings_type.h"
+
 #include "../core/math_func.hpp"
 #include "../core/string_consumer.hpp"
+#include "../debug.h"
+#include "../error_func.h"
+#include "../fileio_func.h"
+#include "../settings_type.h"
+#include "../string_func.h"
+#include "script_fatalerror.hpp"
+#include "squirrel_std.hpp"
 
 /* clang-format off */
 /* squirrel defines lots of generically named macros, which break some headers above, so move them to the end */
@@ -66,8 +67,7 @@ private:
 
 		/* Do not allow allocating more than the allocation limit. */
 		this->error_thrown = true;
-		std::string msg = fmt::format("Maximum memory allocation exceeded by {} bytes when allocating {} bytes",
-			this->allocated_size + requested_size - this->allocation_limit, requested_size);
+		std::string msg = fmt::format("Maximum memory allocation exceeded by {} bytes when allocating {} bytes", this->allocated_size + requested_size - this->allocation_limit, requested_size);
 		throw Script_FatalError(msg);
 	}
 
@@ -106,7 +106,10 @@ private:
 	}
 
 public:
-	size_t GetAllocatedSize() const { return this->allocated_size; }
+	size_t GetAllocatedSize() const
+	{
+		return this->allocated_size;
+	}
 
 	void CheckLimit() const
 	{
@@ -147,7 +150,7 @@ public:
 	void Free(void *p, SQUnsignedInteger size)
 	{
 		if (p == nullptr) return;
-		this->allocator.deallocate(reinterpret_cast<uint8_t*>(p), size);
+		this->allocator.deallocate(reinterpret_cast<uint8_t *>(p), size);
 		this->allocated_size -= size;
 
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
@@ -172,16 +175,26 @@ public:
 
 ScriptAllocator *_squirrel_allocator = nullptr;
 
-void *sq_vm_malloc(SQUnsignedInteger size) { return _squirrel_allocator->Malloc(size); }
-void *sq_vm_realloc(void *p, SQUnsignedInteger oldsize, SQUnsignedInteger size) { return _squirrel_allocator->Realloc(p, oldsize, size); }
-void sq_vm_free(void *p, SQUnsignedInteger size) { _squirrel_allocator->Free(p, size); }
+void *sq_vm_malloc(SQUnsignedInteger size)
+{
+	return _squirrel_allocator->Malloc(size);
+}
+
+void *sq_vm_realloc(void *p, SQUnsignedInteger oldsize, SQUnsignedInteger size)
+{
+	return _squirrel_allocator->Realloc(p, oldsize, size);
+}
+
+void sq_vm_free(void *p, SQUnsignedInteger size)
+{
+	_squirrel_allocator->Free(p, size);
+}
 
 size_t Squirrel::GetAllocatedMemory() const noexcept
 {
 	assert(this->allocator != nullptr);
 	return this->allocator->GetAllocatedSize();
 }
-
 
 void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column)
 {
@@ -509,8 +522,7 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 	throw sq_throwerror(vm, fmt::format("parameter {} has an invalid type ; expected: '{}'", index - 1, class_name));
 }
 
-Squirrel::Squirrel(const char *APIName) :
-	APIName(APIName), allocator(new ScriptAllocator())
+Squirrel::Squirrel(const char *APIName) : APIName(APIName), allocator(new ScriptAllocator())
 {
 	this->Initialize();
 }
@@ -642,7 +654,8 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 	}
 	unsigned short bom = 0;
 	if (size >= 2) {
-		if (fread(&bom, 1, sizeof(bom), *file) != sizeof(bom)) return sq_throwerror(vm, "cannot read the file");;
+		if (fread(&bom, 1, sizeof(bom), *file) != sizeof(bom)) return sq_throwerror(vm, "cannot read the file");
+		;
 	}
 
 	SQLEXREADFUNC func;
@@ -658,7 +671,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 			}
 			return sq_throwerror(vm, "Couldn't read bytecode");
 		}
-		case 0xBBEF:   // UTF-8
+		case 0xBBEF: // UTF-8
 		case 0xEFBB: { // UTF-8 on big-endian machine
 			/* Similarly, check the file is actually big enough to finish checking BOM */
 			if (size < 3) {

@@ -8,21 +8,24 @@
 /** @file fluidsynth.cpp Playing music via the fluidsynth library. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../sound_type.h"
-#include "../debug.h"
+
 #include "fluidsynth.h"
-#include "midifile.hpp"
+
 #include <fluidsynth.h>
-#include "../mixer.h"
 #include <mutex>
 #include "../safeguards.h"
 
+#include "../debug.h"
+#include "../mixer.h"
+#include "../openttd.h"
+#include "../sound_type.h"
+#include "midifile.hpp"
+
 static struct {
-	fluid_settings_t *settings;    ///< FluidSynth settings handle
-	fluid_synth_t *synth;          ///< FluidSynth synthesizer handle
-	fluid_player_t *player;        ///< FluidSynth MIDI player handle
-	std::mutex synth_mutex;        ///< Guard mutex for synth access
+	fluid_settings_t *settings; ///< FluidSynth settings handle
+	fluid_synth_t *synth; ///< FluidSynth synthesizer handle
+	fluid_player_t *player; ///< FluidSynth MIDI player handle
+	std::mutex synth_mutex; ///< Guard mutex for synth access
 } _midi; ///< Metadata about the midi we're playing.
 
 /** Factory for the FluidSynth driver. */
@@ -45,15 +48,13 @@ static const char *default_sf[] = {
 	"/usr/share/soundfonts/FluidR3_GM.sf2",
 
 	/* Debian/Ubuntu/OpenSUSE alternatives */
-	"/usr/share/sounds/sf2/TimGM6mb.sf2",
-	"/usr/share/sounds/sf2/FluidR3_GS.sf2",
+	"/usr/share/sounds/sf2/TimGM6mb.sf2", "/usr/share/sounds/sf2/FluidR3_GS.sf2",
 
-	nullptr
-};
+	nullptr};
 
 static void RenderMusicStream(int16_t *buffer, size_t samples)
 {
-	std::unique_lock<std::mutex> lock{ _midi.synth_mutex, std::try_to_lock };
+	std::unique_lock<std::mutex> lock{_midi.synth_mutex, std::try_to_lock};
 
 	if (!lock.owns_lock() || _midi.synth == nullptr || _midi.player == nullptr) return;
 	fluid_synth_write_s16(_midi.synth, samples, buffer, 0, 2, buffer, 1, 2);
@@ -61,7 +62,7 @@ static void RenderMusicStream(int16_t *buffer, size_t samples)
 
 std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &param)
 {
-	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
+	std::lock_guard<std::mutex> lock{_midi.synth_mutex};
 
 	const char *sfont_name = GetDriverParam(param, "soundfont");
 	int sfont_id;
@@ -118,7 +119,7 @@ void MusicDriver_FluidSynth::Stop()
 {
 	MxSetMusicSource(nullptr);
 
-	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
+	std::lock_guard<std::mutex> lock{_midi.synth_mutex};
 
 	if (_midi.player != nullptr) delete_fluid_player(_midi.player);
 	_midi.player = nullptr;
@@ -140,7 +141,7 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 		return;
 	}
 
-	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
+	std::lock_guard<std::mutex> lock{_midi.synth_mutex};
 
 	_midi.player = new_fluid_player(_midi.synth);
 	if (_midi.player == nullptr) {
@@ -164,7 +165,7 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 
 void MusicDriver_FluidSynth::StopSong()
 {
-	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
+	std::lock_guard<std::mutex> lock{_midi.synth_mutex};
 
 	if (_midi.player == nullptr) return;
 
@@ -178,7 +179,7 @@ void MusicDriver_FluidSynth::StopSong()
 
 bool MusicDriver_FluidSynth::IsSongPlaying()
 {
-	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
+	std::lock_guard<std::mutex> lock{_midi.synth_mutex};
 	if (_midi.player == nullptr) return false;
 
 	return fluid_player_get_status(_midi.player) == FLUID_PLAYER_PLAYING;
@@ -186,7 +187,7 @@ bool MusicDriver_FluidSynth::IsSongPlaying()
 
 void MusicDriver_FluidSynth::SetVolume(uint8_t vol)
 {
-	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
+	std::lock_guard<std::mutex> lock{_midi.synth_mutex};
 	if (_midi.settings == nullptr) return;
 
 	/* Allowed range of synth.gain is 0.0 to 10.0 */

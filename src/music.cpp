@@ -8,13 +8,13 @@
 /** @file music.cpp The songs that OpenTTD knows. */
 
 #include "stdafx.h"
-#include "string_func.h"
+
 #include "base_media_func.h"
 #include "base_media_music.h"
 #include "random_access_file_type.h"
+#include "string_func.h"
 
 #include "safeguards.h"
-
 
 /**
  * Read the name of a music CAT file entry.
@@ -69,9 +69,36 @@ std::optional<std::vector<uint8_t>> GetMusicCatEntryData(const std::string &file
 /** Names corresponding to the music set's files */
 static const std::string_view _music_file_names[] = {
 	"theme",
-	"old_0", "old_1", "old_2", "old_3", "old_4", "old_5", "old_6", "old_7", "old_8", "old_9",
-	"new_0", "new_1", "new_2", "new_3", "new_4", "new_5", "new_6", "new_7", "new_8", "new_9",
-	"ezy_0", "ezy_1", "ezy_2", "ezy_3", "ezy_4", "ezy_5", "ezy_6", "ezy_7", "ezy_8", "ezy_9",
+	"old_0",
+	"old_1",
+	"old_2",
+	"old_3",
+	"old_4",
+	"old_5",
+	"old_6",
+	"old_7",
+	"old_8",
+	"old_9",
+	"new_0",
+	"new_1",
+	"new_2",
+	"new_3",
+	"new_4",
+	"new_5",
+	"new_6",
+	"new_7",
+	"new_8",
+	"new_9",
+	"ezy_0",
+	"ezy_1",
+	"ezy_2",
+	"ezy_3",
+	"ezy_4",
+	"ezy_5",
+	"ezy_6",
+	"ezy_7",
+	"ezy_8",
+	"ezy_9",
 };
 /** Make sure we aren't messing things up. */
 static_assert(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
@@ -97,11 +124,8 @@ template <>
 	for (const MusicSet *c = BaseMedia<MusicSet>::available_sets; c != nullptr; c = c->next) {
 		if (c->GetNumMissing() != 0) continue;
 
-		if (best == nullptr ||
-				(best->fallback && !c->fallback) ||
-				best->valid_files < c->valid_files ||
-				(best->valid_files == c->valid_files &&
-					(best->shortname == c->shortname && best->version < c->version))) {
+		if (best == nullptr || (best->fallback && !c->fallback) || best->valid_files < c->valid_files ||
+			(best->valid_files == c->valid_files && (best->shortname == c->shortname && best->version < c->version))) {
 			best = c;
 		}
 	}

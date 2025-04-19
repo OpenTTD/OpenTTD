@@ -8,13 +8,14 @@
 /** @file soundloader.cpp Handling of loading sounds. */
 
 #include "stdafx.h"
+
 #include "debug.h"
-#include "sound_type.h"
-#include "soundloader_type.h"
-#include "soundloader_func.h"
-#include "string_func.h"
 #include "newgrf_sound.h"
 #include "random_access_file_type.h"
+#include "sound_type.h"
+#include "soundloader_func.h"
+#include "soundloader_type.h"
+#include "string_func.h"
 
 #include "safeguards.h"
 
@@ -41,7 +42,8 @@ bool LoadSoundData(SoundEntry &sound, bool new_format, SoundID sound_id, const s
 	assert(sound.channels == 1);
 	assert(sound.rate != 0);
 
-	Debug(grf, 2, "LoadSound [{}]: channels {}, sample rate {}, bits per sample {}, length {}", sound.file->GetSimplifiedFilename(), sound.channels, sound.rate, sound.bits_per_sample, sound.file_size);
+	Debug(
+		grf, 2, "LoadSound [{}]: channels {}, sample rate {}, bits per sample {}, length {}", sound.file->GetSimplifiedFilename(), sound.channels, sound.rate, sound.bits_per_sample, sound.file_size);
 
 	/* Mixer always requires an extra sample at the end for the built-in linear resampler. */
 	sound.data->resize(sound.data->size() + sound.channels * sound.bits_per_sample / 8);
@@ -65,9 +67,13 @@ static bool LoadBasesetSound(SoundEntry &sound, bool new_format, SoundID sound_i
 bool LoadSound(SoundEntry &sound, SoundID sound_id)
 {
 	switch (sound.source) {
-		case SoundSource::BasesetOldFormat: return LoadBasesetSound(sound, false, sound_id);
-		case SoundSource::BasesetNewFormat: return LoadBasesetSound(sound, true, sound_id);
-		case SoundSource::NewGRF: return LoadNewGRFSound(sound, sound_id);
-		default: NOT_REACHED();
+		case SoundSource::BasesetOldFormat:
+			return LoadBasesetSound(sound, false, sound_id);
+		case SoundSource::BasesetNewFormat:
+			return LoadBasesetSound(sound, true, sound_id);
+		case SoundSource::NewGRF:
+			return LoadNewGRFSound(sound, sound_id);
+		default:
+			NOT_REACHED();
 	}
 }

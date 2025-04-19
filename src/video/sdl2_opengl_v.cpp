@@ -12,25 +12,28 @@
 #define APIENTRY
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../gfx_func.h"
-#include "../rev.h"
-#include "../blitter/factory.hpp"
-#include "../network/network.h"
-#include "../thread.h"
-#include "../progress.h"
-#include "../core/random_func.hpp"
-#include "../core/math_func.hpp"
-#include "../core/geometry_func.hpp"
-#include "../fileio_func.h"
-#include "../framerate_type.h"
-#include "../window_func.h"
+
 #include "sdl2_opengl_v.h"
-#include <SDL.h>
-#include <mutex>
+
 #include <condition_variable>
 #include <GL/gl.h>
+#include <mutex>
+#include <SDL.h>
 #include "../3rdparty/opengl/glext.h"
+
+#include "../core/geometry_func.hpp"
+#include "../core/math_func.hpp"
+#include "../core/random_func.hpp"
+#include "../blitter/factory.hpp"
+#include "../fileio_func.h"
+#include "../framerate_type.h"
+#include "../gfx_func.h"
+#include "../network/network.h"
+#include "../openttd.h"
+#include "../progress.h"
+#include "../rev.h"
+#include "../thread.h"
+#include "../window_func.h"
 #include "opengl.h"
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>

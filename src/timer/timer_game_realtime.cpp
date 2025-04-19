@@ -11,9 +11,11 @@
  */
 
 #include "../stdafx.h"
+
+#include "timer_game_realtime.h"
+
 #include "../openttd.h"
 #include "timer.h"
-#include "timer_game_realtime.h"
 
 #include "../safeguards.h"
 

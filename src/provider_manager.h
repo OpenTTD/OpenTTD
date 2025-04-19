@@ -21,9 +21,9 @@ template <typename TProviderType>
 class ProviderManager {
 public:
 	/* Avoid copying this object; it is a singleton object. */
-	ProviderManager(ProviderManager const &) = delete;
+	ProviderManager(const ProviderManager &) = delete;
 
-	ProviderManager &operator=(ProviderManager const &) = delete;
+	ProviderManager &operator=(const ProviderManager &) = delete;
 
 	static void Register(TProviderType &instance)
 	{
@@ -54,10 +54,18 @@ template <typename T>
 class BaseProvider {
 public:
 	constexpr BaseProvider(std::string_view name, std::string_view description) : name(name), description(description) {}
+
 	virtual ~BaseProvider() {}
 
-	inline std::string_view GetName() const { return this->name; }
-	inline std::string_view GetDescription() const { return this->description; }
+	inline std::string_view GetName() const
+	{
+		return this->name;
+	}
+
+	inline std::string_view GetDescription() const
+	{
+		return this->description;
+	}
 
 	/**
 	 * Sorter for BaseProvider.
@@ -82,9 +90,13 @@ template <typename T>
 class PriorityBaseProvider : public BaseProvider<T> {
 public:
 	constexpr PriorityBaseProvider(std::string_view name, std::string_view description, int priority) : BaseProvider<T>(name, description), priority(priority) {}
+
 	virtual ~PriorityBaseProvider() {}
 
-	inline int GetPriority() const { return this->priority; }
+	inline int GetPriority() const
+	{
+		return this->priority;
+	}
 
 	/**
 	 * Sorter for PriorityBaseProvider.

@@ -10,15 +10,16 @@
  */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
-#include "../../rev.h"
-#include "../network_internal.h"
 
 #include "http.h"
-#include "http_shared.h"
 
 #include <mutex>
 #include <winhttp.h>
+
+#include "../../debug.h"
+#include "../../rev.h"
+#include "../network_internal.h"
+#include "http_shared.h"
 
 #include "../../safeguards.h"
 
@@ -31,10 +32,10 @@ private:
 	HTTPThreadSafeCallback callback; ///< Callback to send data back on.
 	const std::string data; ///< Data to send, if any.
 
-	HINTERNET connection = nullptr;      ///< Current connection object.
-	HINTERNET request = nullptr;         ///< Current request object.
-	std::atomic<bool> finished = false;  ///< Whether we are finished with the request.
-	int depth = 0;                       ///< Current redirect depth we are in.
+	HINTERNET connection = nullptr; ///< Current connection object.
+	HINTERNET request = nullptr; ///< Current request object.
+	std::atomic<bool> finished = false; ///< Whether we are finished with the request.
+	int depth = 0; ///< Current redirect depth we are in.
 
 public:
 	NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data);
@@ -62,10 +63,7 @@ static std::mutex _new_http_callback_mutex;
  * @param callback the callback to send data back on.
  * @param data     the data we want to send. When non-empty, this will be a POST request, otherwise a GET request.
  */
-NetworkHTTPRequest::NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data) :
-	uri(uri),
-	callback(callback),
-	data(data)
+NetworkHTTPRequest::NetworkHTTPRequest(const std::wstring &uri, HTTPCallback *callback, const std::string &data) : uri(uri), callback(callback), data(data)
 {
 	std::lock_guard<std::mutex> lock(_new_http_callback_mutex);
 	_new_http_callbacks.push_back(&this->callback);
@@ -77,8 +75,8 @@ static std::string GetLastErrorAsString()
 
 	DWORD error_code = GetLastError();
 
-	if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_FROM_HMODULE | FORMAT_MESSAGE_IGNORE_INSERTS, GetModuleHandle(L"winhttp.dll"), error_code,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
+	if (FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_FROM_HMODULE | FORMAT_MESSAGE_IGNORE_INSERTS, GetModuleHandle(L"winhttp.dll"), error_code, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+			buffer, static_cast<DWORD>(std::size(buffer)), nullptr) == 0) {
 		return fmt::format("unknown error {}", error_code);
 	}
 
@@ -132,8 +130,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			WinHttpReceiveResponse(this->request, nullptr);
 			break;
 
-		case WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE:
-		{
+		case WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE: {
 			/* Retrieve the status code. */
 			DWORD status_code = 0;
 			DWORD status_code_size = sizeof(status_code);
@@ -153,8 +150,7 @@ void NetworkHTTPRequest::WinHttpCallback(DWORD code, void *info, DWORD length)
 			WinHttpQueryDataAvailable(this->request, nullptr);
 		} break;
 
-		case WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE:
-		{
+		case WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE: {
 			/* Retrieve the amount of data available to process. */
 			DWORD size = *(DWORD *)info;
 
@@ -238,7 +234,8 @@ void NetworkHTTPRequest::Connect()
 		return;
 	}
 
-	this->request = WinHttpOpenRequest(connection, data.empty() ? L"GET" : L"POST", url_components.lpszUrlPath, nullptr, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, url_components.nScheme == INTERNET_SCHEME_HTTPS ? WINHTTP_FLAG_SECURE : 0);
+	this->request = WinHttpOpenRequest(connection, data.empty() ? L"GET" : L"POST", url_components.lpszUrlPath, nullptr, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES,
+		url_components.nScheme == INTERNET_SCHEME_HTTPS ? WINHTTP_FLAG_SECURE : 0);
 	if (this->request == nullptr) {
 		WinHttpCloseHandle(this->connection);
 

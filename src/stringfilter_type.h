@@ -31,15 +31,15 @@ struct StringFilter {
 private:
 	/** State of a single filter word */
 	struct WordState {
-		std::string word;                          ///< Word to filter for.
-		bool match;                                ///< Already matched?
+		std::string word; ///< Word to filter for.
+		bool match; ///< Already matched?
 	};
 
-	std::vector<WordState> word_index;             ///< Word index and filter state.
-	uint word_matches = 0;                         ///< Summary of filter state: Number of words matched.
+	std::vector<WordState> word_index; ///< Word index and filter state.
+	uint word_matches = 0; ///< Summary of filter state: Number of words matched.
 
-	const bool *case_sensitive;                    ///< Match case-sensitively (usually a static variable).
-	bool locale_aware;                             ///< Match words using the current locale.
+	const bool *case_sensitive; ///< Match case-sensitively (usually a static variable).
+	bool locale_aware; ///< Match words using the current locale.
 
 public:
 	/**
@@ -54,7 +54,10 @@ public:
 	 * Check whether any filter words were entered.
 	 * @return true if no words were entered.
 	 */
-	bool IsEmpty() const { return this->word_index.empty(); }
+	bool IsEmpty() const
+	{
+		return this->word_index.empty();
+	}
 
 	void ResetState();
 	void AddLine(const char *) = delete; // prevent implicit construction of string_view from potential nullptr
@@ -64,7 +67,10 @@ public:
 	 * Get the matching state of the current item.
 	 * @return true if matched.
 	 */
-	bool GetState() const { return this->word_matches == this->word_index.size(); }
+	bool GetState() const
+	{
+		return this->word_matches == this->word_index.size();
+	}
 };
 
 #endif /* STRINGFILTER_TYPE_H */

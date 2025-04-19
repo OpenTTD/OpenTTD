@@ -8,8 +8,10 @@
 /** @file 8bpp_simple.cpp Implementation of the simple 8 bpp blitter. */
 
 #include "../stdafx.h"
-#include "../zoom_func.h"
+
 #include "8bpp_simple.hpp"
+
+#include "../zoom_func.h"
 
 #include "../safeguards.h"
 
@@ -67,7 +69,7 @@ Sprite *Blitter_8bppSimple::Encode(const SpriteLoader::SpriteCollection &sprite,
 	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + static_cast<size_t>(sprite[ZOOM_LVL_MIN].height) * static_cast<size_t>(sprite[ZOOM_LVL_MIN].width));
 
 	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
+	dest_sprite->width = sprite[ZOOM_LVL_MIN].width;
 	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
 	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
 

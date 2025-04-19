@@ -10,13 +10,13 @@
 #ifndef COMPANY_BASE_H
 #define COMPANY_BASE_H
 
-#include "road_type.h"
-#include "livery.h"
 #include "autoreplace_type.h"
+#include "group.h"
+#include "livery.h"
+#include "road_type.h"
+#include "settings_type.h"
 #include "tile_type.h"
 #include "timer/timer_game_economy.h"
-#include "settings_type.h"
-#include "group.h"
 
 static const Money COMPANY_MAX_LOAN_DEFAULT = INT64_MIN;
 
@@ -134,7 +134,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	std::unique_ptr<class AIConfig> ai_config{};
 
 	std::array<GroupStatistics, VEH_COMPANY_END> group_all{}; ///< NOSAVE: Statistics for the ALL_GROUP group.
-	std::array<GroupStatistics, VEH_COMPANY_END> group_default{};  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
+	std::array<GroupStatistics, VEH_COMPANY_END> group_default{}; ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
 
 	CompanyInfrastructure infrastructure{}; ///< NOSAVE: Counts of company owned infrastructure.
 

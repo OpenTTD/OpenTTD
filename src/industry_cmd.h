@@ -12,8 +12,8 @@
 
 #include "command_type.h"
 #include "company_type.h"
-#include "industry_type.h"
 #include "industry.h"
+#include "industry_type.h"
 
 CommandCost CmdBuildIndustry(DoCommandFlags flags, TileIndex tile, IndustryType it, uint32_t first_layout, bool fund, uint32_t seed);
 CommandCost CmdIndustrySetFlags(DoCommandFlags flags, IndustryID ind_id, IndustryControlFlags ctlflags);

@@ -9,10 +9,9 @@
 
 #include "../stdafx.h"
 
-#include "saveload.h"
-#include "compat/cargomonitor_sl_compat.h"
-
 #include "../cargomonitor.h"
+#include "compat/cargomonitor_sl_compat.h"
+#include "saveload.h"
 
 #include "../safeguards.h"
 

@@ -8,36 +8,39 @@
 /** @file vehicle_cmd.cpp Commands for vehicles. */
 
 #include "stdafx.h"
-#include "roadveh.h"
-#include "news_func.h"
-#include "airport.h"
-#include "command_func.h"
-#include "company_func.h"
-#include "train.h"
-#include "aircraft.h"
-#include "newgrf_text.h"
-#include "vehicle_func.h"
-#include "string_func.h"
-#include "depot_map.h"
-#include "vehiclelist.h"
-#include "engine_func.h"
-#include "articulated_vehicles.h"
-#include "autoreplace_gui.h"
-#include "group.h"
-#include "order_backup.h"
-#include "ship.h"
-#include "newgrf.h"
-#include "company_base.h"
-#include "core/random_func.hpp"
+
 #include "vehicle_cmd.h"
-#include "aircraft_cmd.h"
-#include "autoreplace_cmd.h"
-#include "group_cmd.h"
-#include "order_cmd.h"
-#include "roadveh_cmd.h"
-#include "train_cmd.h"
-#include "ship_cmd.h"
+
 #include <charconv>
+
+#include "core/random_func.hpp"
+#include "aircraft.h"
+#include "aircraft_cmd.h"
+#include "airport.h"
+#include "articulated_vehicles.h"
+#include "autoreplace_cmd.h"
+#include "autoreplace_gui.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "depot_map.h"
+#include "engine_func.h"
+#include "group.h"
+#include "group_cmd.h"
+#include "newgrf.h"
+#include "newgrf_text.h"
+#include "news_func.h"
+#include "order_backup.h"
+#include "order_cmd.h"
+#include "roadveh.h"
+#include "roadveh_cmd.h"
+#include "ship.h"
+#include "ship_cmd.h"
+#include "string_func.h"
+#include "train.h"
+#include "train_cmd.h"
+#include "vehicle_func.h"
+#include "vehiclelist.h"
 
 #include "table/strings.h"
 
@@ -86,7 +89,6 @@ const StringID _send_to_depot_msg_table[] = {
 	STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR,
 };
 
-
 /**
  * Build a vehicle.
  * @param flags for command
@@ -100,41 +102,50 @@ const StringID _send_to_depot_msg_table[] = {
 std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(DoCommandFlags flags, TileIndex tile, EngineID eid, bool use_free_vehicles, CargoType cargo, ClientID client_id)
 {
 	/* Elementary check for valid location. */
-	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
+	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return {CMD_ERROR, VehicleID::Invalid(), 0, 0, {}};
 
 	VehicleType type = GetDepotVehicleType(tile);
 
 	/* Validate the engine type. */
-	if (!IsEngineBuildable(eid, type, _current_company)) return { CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + type), VehicleID::Invalid(), 0, 0, {} };
+	if (!IsEngineBuildable(eid, type, _current_company)) return {CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + type), VehicleID::Invalid(), 0, 0, {}};
 
 	/* Validate the cargo type. */
-	if (cargo >= NUM_CARGO && IsValidCargoType(cargo)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
+	if (cargo >= NUM_CARGO && IsValidCargoType(cargo)) return {CMD_ERROR, VehicleID::Invalid(), 0, 0, {}};
 
 	const Engine *e = Engine::Get(eid);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines without valid cargo should not be available */
 	CargoType default_cargo = e->GetDefaultCargoType();
-	if (!IsValidCargoType(default_cargo)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
+	if (!IsValidCargoType(default_cargo)) return {CMD_ERROR, VehicleID::Invalid(), 0, 0, {}};
 
 	bool refitting = IsValidCargoType(cargo) && cargo != default_cargo;
 
 	/* Check whether the number of vehicles we need to build can be built according to pool space. */
 	uint num_vehicles;
 	switch (type) {
-		case VEH_TRAIN:    num_vehicles = (e->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) + CountArticulatedParts(eid, false); break;
-		case VEH_ROAD:     num_vehicles = 1 + CountArticulatedParts(eid, false); break;
-		case VEH_SHIP:     num_vehicles = 1; break;
-		case VEH_AIRCRAFT: num_vehicles = e->u.air.subtype & AIR_CTOL ? 2 : 3; break;
-		default: NOT_REACHED(); // Safe due to IsDepotTile()
+		case VEH_TRAIN:
+			num_vehicles = (e->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) + CountArticulatedParts(eid, false);
+			break;
+		case VEH_ROAD:
+			num_vehicles = 1 + CountArticulatedParts(eid, false);
+			break;
+		case VEH_SHIP:
+			num_vehicles = 1;
+			break;
+		case VEH_AIRCRAFT:
+			num_vehicles = e->u.air.subtype & AIR_CTOL ? 2 : 3;
+			break;
+		default:
+			NOT_REACHED(); // Safe due to IsDepotTile()
 	}
-	if (!Vehicle::CanAllocateItem(num_vehicles)) return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid(), 0, 0, {} };
+	if (!Vehicle::CanAllocateItem(num_vehicles)) return {CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid(), 0, 0, {}};
 
 	/* Check whether we can allocate a unit number. Autoreplace does not allocate
 	 * an unit number as it will (always) reuse the one of the replaced vehicle
 	 * and (train) wagons don't have an unit number in any scenario. */
 	UnitID unit_num = (flags.Test(DoCommandFlag::QueryCost) || flags.Test(DoCommandFlag::AutoReplace) || (type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON)) ? 0 : GetFreeUnitNumber(type);
-	if (unit_num == UINT16_MAX) return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid(), 0, 0, {} };
+	if (unit_num == UINT16_MAX) return {CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid(), 0, 0, {}};
 
 	/* If we are refitting we need to temporarily purchase the vehicle to be able to
 	 * test it. */
@@ -148,11 +159,20 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 
 	Vehicle *v = nullptr;
 	switch (type) {
-		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(subflags, tile, e, &v)); break;
-		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(subflags, tile, e, &v)); break;
-		case VEH_SHIP:     value.AddCost(CmdBuildShip       (subflags, tile, e, &v)); break;
-		case VEH_AIRCRAFT: value.AddCost(CmdBuildAircraft   (subflags, tile, e, &v)); break;
-		default: NOT_REACHED(); // Safe due to IsDepotTile()
+		case VEH_TRAIN:
+			value.AddCost(CmdBuildRailVehicle(subflags, tile, e, &v));
+			break;
+		case VEH_ROAD:
+			value.AddCost(CmdBuildRoadVehicle(subflags, tile, e, &v));
+			break;
+		case VEH_SHIP:
+			value.AddCost(CmdBuildShip(subflags, tile, e, &v));
+			break;
+		case VEH_AIRCRAFT:
+			value.AddCost(CmdBuildAircraft(subflags, tile, e, &v));
+			break;
+		default:
+			NOT_REACHED(); // Safe due to IsDepotTile()
 	}
 
 	VehicleID veh_id = VehicleID::Invalid();
@@ -162,8 +182,8 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	if (value.Succeeded()) {
 		if (subflags.Test(DoCommandFlag::Execute)) {
 			v->unitnumber = unit_num;
-			v->value      = value.GetCost();
-			veh_id        = v->index;
+			v->value = value.GetCost();
+			veh_id = v->index;
 		}
 
 		if (refitting) {
@@ -211,7 +231,6 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 			Company::Get(v->owner)->freeunits[v->type].UseID(v->unitnumber);
 		}
 
-
 		/* If we are not in DoCommandFlag::Execute undo everything */
 		if (flags != subflags) {
 			Command<CMD_SELL_VEHICLE>::Do(DoCommandFlag::Execute, v->index, false, false, INVALID_CLIENT_ID);
@@ -221,7 +240,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	/* Only restore if we actually did some refitting */
 	if (flags != subflags) RestoreRandomSeeds(saved_seeds);
 
-	return { value, veh_id, refitted_capacity, refitted_mail_capacity, cargo_capacities };
+	return {value, veh_id, refitted_capacity, refitted_mail_capacity, cargo_capacities};
 }
 
 /**
@@ -248,10 +267,7 @@ CommandCost CmdSellVehicle(DoCommandFlags flags, VehicleID v_id, bool sell_chain
 	if (!front->IsStoppedInDepot()) return CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 
 	/* Can we actually make the order backup, i.e. are there enough orders? */
-	if (backup_order &&
-			front->orders != nullptr &&
-			!front->orders->IsShared() &&
-			!Order::CanAllocateItem(front->orders->GetNumOrders())) {
+	if (backup_order && front->orders != nullptr && !front->orders->IsShared() && !Order::CanAllocateItem(front->orders->GetNumOrders())) {
 		/* Only happens in exceptional cases when there aren't enough orders anyhow.
 		 * Thus it should be safe to just drop the orders in that case. */
 		backup_order = false;
@@ -340,7 +356,8 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoTyp
 			expense_type = EXPENSES_TRAIN_RUN;
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 	if (cost_factor < 0) {
 		return CommandCost(expense_type, -GetPrice(base_price, -cost_factor, e->GetGRF(), -10));
@@ -351,10 +368,10 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoTyp
 
 /** Helper structure for RefitVehicle() */
 struct RefitResult {
-	Vehicle *v;         ///< Vehicle to refit
-	uint capacity;      ///< New capacity of vehicle
+	Vehicle *v; ///< Vehicle to refit
+	uint capacity; ///< New capacity of vehicle
 	uint mail_capacity; ///< New mail capacity of aircraft
-	uint8_t subtype;       ///< cargo subtype to refit to
+	uint8_t subtype; ///< cargo subtype to refit to
 };
 
 /**
@@ -369,7 +386,8 @@ struct RefitResult {
  * @param auto_refit   Refitting is done as automatic refitting outside a depot.
  * @return Refit cost + refittet capacity + mail capacity (aircraft).
  */
-static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle *v, bool only_this, uint8_t num_vehicles, CargoType new_cargo_type, uint8_t new_subtype, DoCommandFlags flags, bool auto_refit)
+static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(
+	Vehicle *v, bool only_this, uint8_t num_vehicles, CargoType new_cargo_type, uint8_t new_subtype, DoCommandFlags flags, bool auto_refit)
 {
 	CommandCost cost(v->GetExpenseType(false));
 	uint total_capacity = 0;
@@ -485,7 +503,7 @@ static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle 
 	}
 
 	refit_result.clear();
-	return { cost, total_capacity, total_mail_capacity, cargo_capacities };
+	return {cost, total_capacity, total_mail_capacity, cargo_capacities};
 }
 
 /**
@@ -500,37 +518,38 @@ static std::tuple<CommandCost, uint, uint16_t, CargoArray> RefitVehicle(Vehicle 
  *                     Only used if "refit only this vehicle" is false.
  * @return the cost of this operation or an error
  */
-std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(DoCommandFlags flags, VehicleID veh_id, CargoType new_cargo_type, uint8_t new_subtype, bool auto_refit, bool only_this, uint8_t num_vehicles)
+std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(
+	DoCommandFlags flags, VehicleID veh_id, CargoType new_cargo_type, uint8_t new_subtype, bool auto_refit, bool only_this, uint8_t num_vehicles)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
-	if (v == nullptr) return { CMD_ERROR, 0, 0, {} };
+	if (v == nullptr) return {CMD_ERROR, 0, 0, {}};
 
 	/* Don't allow disasters and sparks and such to be refitted.
 	 * We cannot check for IsPrimaryVehicle as autoreplace also refits in free wagon chains. */
-	if (!IsCompanyBuildableVehicleType(v->type)) return { CMD_ERROR, 0, 0, {} };
+	if (!IsCompanyBuildableVehicleType(v->type)) return {CMD_ERROR, 0, 0, {}};
 
 	Vehicle *front = v->First();
 
 	CommandCost ret = CheckOwnership(front->owner);
-	if (ret.Failed()) return { ret, 0, 0, {} };
+	if (ret.Failed()) return {ret, 0, 0, {}};
 
 	bool free_wagon = v->type == VEH_TRAIN && Train::From(front)->IsFreeWagon(); // used by autoreplace/renew
 
 	/* Don't allow shadows and such to be refitted. */
-	if (v != front && (v->type == VEH_SHIP || v->type == VEH_AIRCRAFT)) return { CMD_ERROR, 0, 0, {} };
+	if (v != front && (v->type == VEH_SHIP || v->type == VEH_AIRCRAFT)) return {CMD_ERROR, 0, 0, {}};
 
 	/* Allow auto-refitting only during loading and normal refitting only in a depot. */
 	if (!flags.Test(DoCommandFlag::QueryCost) && // used by the refit GUI, including the order refit GUI.
-			!free_wagon && // used by autoreplace/renew
-			(!auto_refit || !front->current_order.IsType(OT_LOADING)) && // refit inside stations
-			!front->IsStoppedInDepot()) { // refit inside depots
-		return { CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type), 0, 0, {} };
+		!free_wagon && // used by autoreplace/renew
+		(!auto_refit || !front->current_order.IsType(OT_LOADING)) && // refit inside stations
+		!front->IsStoppedInDepot()) { // refit inside depots
+		return {CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type), 0, 0, {}};
 	}
 
-	if (front->vehstatus.Test(VehState::Crashed)) return { CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED), 0, 0, {} };
+	if (front->vehstatus.Test(VehState::Crashed)) return {CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED), 0, 0, {}};
 
 	/* Check cargo */
-	if (new_cargo_type >= NUM_CARGO) return { CMD_ERROR, 0, 0, {} };
+	if (new_cargo_type >= NUM_CARGO) return {CMD_ERROR, 0, 0, {}};
 
 	/* For ships and aircraft there is always only one. */
 	only_this |= front->type == VEH_SHIP || front->type == VEH_AIRCRAFT;
@@ -558,7 +577,8 @@ std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(DoCommandFla
 				UpdateAircraftCache(Aircraft::From(v), true);
 				break;
 
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 		front->MarkDirty();
 
@@ -572,7 +592,7 @@ std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(DoCommandFla
 		v->InvalidateNewGRFCacheOfChain();
 	}
 
-	return { cost, refit_capacity, mail_capacity, cargo_capacities };
+	return {cost, refit_capacity, mail_capacity, cargo_capacities};
 }
 
 /**
@@ -612,7 +632,8 @@ CommandCost CmdStartStopVehicle(DoCommandFlags flags, VehicleID veh_id, bool eva
 			break;
 		}
 
-		default: return CMD_ERROR;
+		default:
+			return CMD_ERROR;
 	}
 
 	if (evaluate_startstop_cb) {
@@ -837,7 +858,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
-	if (v == nullptr || !v->IsPrimaryVehicle()) return { CMD_ERROR, VehicleID::Invalid() };
+	if (v == nullptr || !v->IsPrimaryVehicle()) return {CMD_ERROR, VehicleID::Invalid()};
 	Vehicle *v_front = v;
 	Vehicle *w = nullptr;
 	Vehicle *w_front = nullptr;
@@ -852,9 +873,9 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 	 */
 
 	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return { ret, VehicleID::Invalid() };
+	if (ret.Failed()) return {ret, VehicleID::Invalid()};
 
-	if (v->type == VEH_TRAIN && (!v->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return { CMD_ERROR, VehicleID::Invalid() };
+	if (v->type == VEH_TRAIN && (!v->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return {CMD_ERROR, VehicleID::Invalid()};
 
 	/* check that we can allocate enough vehicles */
 	if (!flags.Test(DoCommandFlag::Execute)) {
@@ -864,7 +885,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		} while ((v = v->Next()) != nullptr);
 
 		if (!Vehicle::CanAllocateItem(veh_counter)) {
-			return { CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid() };
+			return {CommandCost(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME), VehicleID::Invalid()};
 		}
 	}
 
@@ -892,7 +913,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
 			if (w_front != nullptr) Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-			return { cost, VehicleID::Invalid() };
+			return {cost, VehicleID::Invalid()};
 		}
 
 		total_cost.AddCost(cost.GetCost());
@@ -912,8 +933,8 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
 					Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-					Command<CMD_SELL_VEHICLE>::Do(flags, w->index,       true, false, INVALID_CLIENT_ID);
-					return { result, VehicleID::Invalid() }; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
+					Command<CMD_SELL_VEHICLE>::Do(flags, w->index, true, false, INVALID_CLIENT_ID);
+					return {result, VehicleID::Invalid()}; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
 				/* this is a front engine or not a train. */
@@ -935,7 +956,6 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		/* Cloned vehicles belong to the same group */
 		Command<CMD_ADD_VEHICLE_GROUP>::Do(flags, v_front->group_id, w_front->index, false, VehicleListIdentifier{});
 	}
-
 
 	/* Take care of refitting. */
 	w = w_front;
@@ -994,7 +1014,7 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-			return { result, VehicleID::Invalid() };
+			return {result, VehicleID::Invalid()};
 		}
 
 		/* Now clone the vehicle's name, if it has one. */
@@ -1005,11 +1025,11 @@ std::tuple<CommandCost, VehicleID> CmdCloneVehicle(DoCommandFlags flags, TileInd
 		if (!CheckCompanyHasMoney(total_cost)) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			Command<CMD_SELL_VEHICLE>::Do(flags, w_front->index, true, false, INVALID_CLIENT_ID);
-			return { total_cost, VehicleID::Invalid() };
+			return {total_cost, VehicleID::Invalid()};
 		}
 	}
 
-	return { total_cost, new_veh_id };
+	return {total_cost, new_veh_id};
 }
 
 /**
@@ -1102,7 +1122,6 @@ CommandCost CmdRenameVehicle(DoCommandFlags flags, VehicleID veh_id, const std::
 
 	return CommandCost();
 }
-
 
 /**
  * Change the service interval of a vehicle

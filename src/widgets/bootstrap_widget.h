@@ -19,14 +19,14 @@ enum BootstrapBackgroundWidgets : WidgetID {
 enum BootstrapErrorMessageWidgets : WidgetID {
 	WID_BEM_CAPTION, ///< Caption of the window.
 	WID_BEM_MESSAGE, ///< Error message.
-	WID_BEM_QUIT,    ///< Quit button.
+	WID_BEM_QUIT, ///< Quit button.
 };
 
 /** Widgets of the #BootstrapContentDownloadStatusWindow class. */
 enum BootstrapAskForDownloadWidgets : WidgetID {
 	WID_BAFD_QUESTION, ///< The question whether to download.
-	WID_BAFD_YES,      ///< An affirmative answer to the question.
-	WID_BAFD_NO,       ///< An negative answer to the question.
+	WID_BAFD_YES, ///< An affirmative answer to the question.
+	WID_BAFD_NO, ///< An negative answer to the question.
 };
 
 #endif /* WIDGETS_BOOTSTRAP_WIDGET_H */

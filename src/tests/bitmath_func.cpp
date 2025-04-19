@@ -9,9 +9,9 @@
 
 #include "../stdafx.h"
 
-#include "../3rdparty/catch2/catch.hpp"
-
 #include "../core/bitmath_func.hpp"
+
+#include "../3rdparty/catch2/catch.hpp"
 
 #include "../safeguards.h"
 
@@ -27,9 +27,9 @@ TEST_CASE("SetBitIterator tests")
 		return iter == expected.end();
 	};
 	CHECK(test_case(0, {}));
-	CHECK(test_case(1, { 0 }));
-	CHECK(test_case(42, { 1, 3, 5 }));
-	CHECK(test_case(0x8080FFFFU, { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 23, 31 }));
-	CHECK(test_case(INT32_MIN, { 31 }));
-	CHECK(test_case(INT64_MIN, { 63 }));
+	CHECK(test_case(1, {0}));
+	CHECK(test_case(42, {1, 3, 5}));
+	CHECK(test_case(0x8080FFFFU, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 23, 31}));
+	CHECK(test_case(INT32_MIN, {31}));
+	CHECK(test_case(INT64_MIN, {63}));
 }

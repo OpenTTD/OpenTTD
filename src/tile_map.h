@@ -10,10 +10,10 @@
 #ifndef TILE_MAP_H
 #define TILE_MAP_H
 
-#include "slope_type.h"
-#include "map_func.h"
 #include "core/bitmath_func.hpp"
+#include "map_func.h"
 #include "settings_type.h"
+#include "slope_type.h"
 
 /**
  * Returns the height of a tile

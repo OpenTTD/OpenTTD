@@ -11,8 +11,8 @@
 #define SOUND_FUNC_H
 
 #include "sound_type.h"
-#include "vehicle_type.h"
 #include "tile_type.h"
+#include "vehicle_type.h"
 
 void ChangeSoundSet(int index);
 

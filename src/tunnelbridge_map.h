@@ -13,7 +13,6 @@
 #include "bridge_map.h"
 #include "tunnel_map.h"
 
-
 /**
  * Get the direction pointing to the other end.
  *
@@ -80,7 +79,6 @@ inline TileIndex GetOtherTunnelBridgeEnd(Tile t)
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	return IsTunnel(t) ? GetOtherTunnelEnd(t) : GetOtherBridgeEnd(t);
 }
-
 
 /**
  * Get the reservation state of the rail tunnel/bridge

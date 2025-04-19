@@ -8,17 +8,19 @@
 /** @file script_engine.cpp Implementation of ScriptEngine. */
 
 #include "../../stdafx.h"
+
 #include "script_engine.hpp"
-#include "script_cargo.hpp"
+
+#include "../../articulated_vehicles.h"
 #include "../../company_base.h"
-#include "../../strings_func.h"
+#include "../../engine_base.h"
+#include "../../engine_cmd.h"
+#include "../../engine_func.h"
 #include "../../rail.h"
 #include "../../road.h"
-#include "../../engine_base.h"
-#include "../../engine_func.h"
-#include "../../articulated_vehicles.h"
-#include "../../engine_cmd.h"
+#include "../../strings_func.h"
 #include "../../timer/timer_game_calendar.h"
+#include "script_cargo.hpp"
 
 #include "table/strings.h"
 
@@ -79,7 +81,6 @@
 	return (::RailVehInfo(engine_id)->ai_passenger_only != 1) || ScriptCargo::HasCargoClass(cargo_type, ScriptCargo::CC_PASSENGERS);
 }
 
-
 /* static */ SQInteger ScriptEngine::GetCapacity(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
@@ -99,7 +100,8 @@
 		case VEH_AIRCRAFT:
 			return e->GetDisplayDefaultCapacity();
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -181,11 +183,16 @@
 	if (!IsValidEngine(engine_id)) return ScriptVehicle::VT_INVALID;
 
 	switch (::Engine::Get(engine_id)->type) {
-		case VEH_ROAD:     return ScriptVehicle::VT_ROAD;
-		case VEH_TRAIN:    return ScriptVehicle::VT_RAIL;
-		case VEH_SHIP:     return ScriptVehicle::VT_WATER;
-		case VEH_AIRCRAFT: return ScriptVehicle::VT_AIR;
-		default: NOT_REACHED();
+		case VEH_ROAD:
+			return ScriptVehicle::VT_ROAD;
+		case VEH_TRAIN:
+			return ScriptVehicle::VT_RAIL;
+		case VEH_SHIP:
+			return ScriptVehicle::VT_WATER;
+		case VEH_AIRCRAFT:
+			return ScriptVehicle::VT_AIR;
+		default:
+			NOT_REACHED();
 	}
 }
 

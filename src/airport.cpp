@@ -8,14 +8,14 @@
 /** @file airport.cpp Functions related to airports. */
 
 #include "stdafx.h"
+
 #include "station_base.h"
 
-#include "table/strings.h"
 #include "table/airport_movement.h"
 #include "table/airporttile_ids.h"
+#include "table/strings.h"
 
 #include "safeguards.h"
-
 
 /**
  * Define a generic airport.
@@ -65,10 +65,8 @@ AIRPORT_GENERIC(dummy, nullptr, 0, AirportFTAClass::Flags({AirportFTAClass::Flag
 
 #include "table/airport_defaults.h"
 
-
 static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA);
 static void AirportBuildAutomata(std::vector<AirportFTA> &layout, uint8_t nofelements, const AirportFTAbuildup *apFA);
-
 
 /**
  * Rotate the airport moving data to another rotation.
@@ -104,27 +102,15 @@ AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Directi
 			amd.y = orig->x;
 			break;
 
-		default: NOT_REACHED();
+		default:
+			NOT_REACHED();
 	}
 	return amd;
 }
 
 AirportFTAClass::AirportFTAClass(
-	const AirportMovingData *moving_data_,
-	const uint8_t *terminals_,
-	const uint8_t num_helipads_,
-	const uint8_t *entry_points_,
-	Flags flags_,
-	const AirportFTAbuildup *apFA,
-	uint8_t delta_z_
-) :
-	moving_data(moving_data_),
-	terminals(terminals_),
-	num_helipads(num_helipads_),
-	flags(flags_),
-	nofelements(AirportGetNofElements(apFA)),
-	entry_points(entry_points_),
-	delta_z(delta_z_)
+	const AirportMovingData *moving_data_, const uint8_t *terminals_, const uint8_t num_helipads_, const uint8_t *entry_points_, Flags flags_, const AirportFTAbuildup *apFA, uint8_t delta_z_) :
+	moving_data(moving_data_), terminals(terminals_), num_helipads(num_helipads_), flags(flags_), nofelements(AirportGetNofElements(apFA)), entry_points(entry_points_), delta_z(delta_z_)
 {
 	/* Build the state machine itself */
 	AirportBuildAutomata(this->layout, this->nofelements, apFA);
@@ -150,9 +136,7 @@ static uint16_t AirportGetNofElements(const AirportFTAbuildup *apFA)
 	return nofelements;
 }
 
-AirportFTA::AirportFTA(const AirportFTAbuildup &buildup) : blocks(buildup.blocks), position(buildup.position), next_position(buildup.next), heading(buildup.heading)
-{
-}
+AirportFTA::AirportFTA(const AirportFTAbuildup &buildup) : blocks(buildup.blocks), position(buildup.position), next_position(buildup.next), heading(buildup.heading) {}
 
 /**
  * Construct the FTA given a description.

@@ -11,10 +11,11 @@
 #define NETWORK_CONTENT_H
 
 #include <ranges>
-#include "core/tcp_content.h"
-#include "core/http.h"
 #include <unordered_map>
+
 #include "../core/container_func.hpp"
+#include "core/http.h"
+#include "core/tcp_content.h"
 
 /** Vector with content info */
 using ContentVector = std::vector<std::unique_ptr<ContentInfo>>;
@@ -100,6 +101,7 @@ protected:
 
 	void DownloadSelectedContentHTTP(const ContentIDList &content);
 	void DownloadSelectedContentFallback(const ContentIDList &content);
+
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
 	static constexpr std::chrono::seconds IDLE_TIMEOUT = std::chrono::seconds(60);
@@ -131,14 +133,26 @@ public:
 	 * Get a read-only view of content info for iterating externally.
 	 * @return Read-only view of content info.
 	 */
-	auto Info() const { return this->infos | std::views::transform([](const auto &ci) -> const ContentInfo & { return *ci; }); }
+	auto Info() const
+	{
+		return this->infos | std::views::transform([](const auto &ci) -> const ContentInfo & {
+			return *ci;
+		});
+	}
 
 	void Clear();
 
 	/** Add a callback to this class */
-	void AddCallback(ContentCallback *cb) { include(this->callbacks, cb); }
+	void AddCallback(ContentCallback *cb)
+	{
+		include(this->callbacks, cb);
+	}
+
 	/** Remove a callback */
-	void RemoveCallback(ContentCallback *cb) { this->callbacks.erase(std::ranges::find(this->callbacks, cb)); }
+	void RemoveCallback(ContentCallback *cb)
+	{
+		this->callbacks.erase(std::ranges::find(this->callbacks, cb));
+	}
 };
 
 extern ClientNetworkContentSocketHandler _network_content_client;

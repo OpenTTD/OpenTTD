@@ -8,45 +8,47 @@
 /** @file genworld.cpp Functions to generate a map. */
 
 #include "stdafx.h"
-#include "landscape.h"
-#include "company_func.h"
-#include "town_cmd.h"
-#include "signs_cmd.h"
-#include "3rdparty/nlohmann/json.hpp"
-#include "strings_func.h"
+
 #include "genworld.h"
-#include "gfxinit.h"
-#include "window_func.h"
-#include "network/network.h"
-#include "heightmap.h"
-#include "viewport_func.h"
-#include "timer/timer_game_calendar.h"
-#include "timer/timer_game_tick.h"
-#include "engine_func.h"
-#include "water.h"
-#include "video/video_driver.hpp"
-#include "tilehighlight_func.h"
-#include "saveload/saveload.h"
-#include "void_map.h"
-#include "town.h"
-#include "newgrf.h"
-#include "newgrf_house.h"
-#include "core/random_func.hpp"
+
+#include "3rdparty/nlohmann/json.hpp"
+
 #include "core/backup_type.hpp"
-#include "progress.h"
+#include "core/random_func.hpp"
+#include "company_func.h"
+#include "engine_func.h"
 #include "error.h"
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
+#include "gfxinit.h"
+#include "heightmap.h"
+#include "landscape.h"
+#include "network/network.h"
+#include "newgrf.h"
+#include "newgrf_house.h"
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
+#include "progress.h"
+#include "saveload/saveload.h"
+#include "signs_cmd.h"
 #include "string_func.h"
-#include "thread.h"
+#include "strings_func.h"
 #include "tgp.h"
+#include "thread.h"
+#include "tilehighlight_func.h"
+#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_tick.h"
+#include "town.h"
+#include "town_cmd.h"
+#include "video/video_driver.hpp"
+#include "viewport_func.h"
+#include "void_map.h"
+#include "water.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
-
 
 void GenerateClearTile();
 void GenerateIndustries();
@@ -61,19 +63,19 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 
 /** Properties of current genworld process */
 struct GenWorldInfo {
-	static inline bool abort;            ///< Whether to abort the thread ASAP
-	static inline GenWorldMode mode;     ///< What mode are we making a world in
-	static inline CompanyID lc;          ///< The local_company before generating
-	static inline uint size_x;           ///< X-size of the map
-	static inline uint size_y;           ///< Y-size of the map
-	static inline GWDoneProc *proc;      ///< Proc that is called when done (can be nullptr)
-	static inline GWAbortProc *abortp;   ///< Proc that is called when aborting (can be nullptr)
+	static inline bool abort; ///< Whether to abort the thread ASAP
+	static inline GenWorldMode mode; ///< What mode are we making a world in
+	static inline CompanyID lc; ///< The local_company before generating
+	static inline uint size_x; ///< X-size of the map
+	static inline uint size_y; ///< Y-size of the map
+	static inline GWDoneProc *proc; ///< Proc that is called when done (can be nullptr)
+	static inline GWAbortProc *abortp; ///< Proc that is called when aborting (can be nullptr)
 };
 
 /** Whether we are generating the map or not. */
 bool _generating_world;
 
-class AbortGenerateWorldSignal { };
+class AbortGenerateWorldSignal {};
 
 /**
  * Generation is done; show windows again and delete the progress window.
@@ -84,8 +86,8 @@ static void CleanupGeneration()
 
 	SetMouseCursorBusy(false);
 	SetModalProgress(false);
-	GenWorldInfo::proc     = nullptr;
-	GenWorldInfo::abortp   = nullptr;
+	GenWorldInfo::proc = nullptr;
+	GenWorldInfo::abortp = nullptr;
 
 	CloseWindowByClass(WC_MODAL_PROGRESS);
 	ShowFirstError();
@@ -217,7 +219,7 @@ static void _GenerateWorld()
 			std::string name = fmt::format("dmp_cmds_{:08x}_{:08x}.sav", _settings_game.game_creation.generation_seed, TimerGameEconomy::date);
 			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
 		}
-	} catch (AbortGenerateWorldSignal&) {
+	} catch (AbortGenerateWorldSignal &) {
 		CleanupGeneration();
 
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP, true);
@@ -293,13 +295,13 @@ void HandleGeneratingWorldAbortion()
 void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_settings)
 {
 	if (HasModalProgress()) return;
-	GenWorldInfo::mode   = mode;
+	GenWorldInfo::mode = mode;
 	GenWorldInfo::size_x = size_x;
 	GenWorldInfo::size_y = size_y;
 	SetModalProgress(true);
-	GenWorldInfo::abort  = false;
+	GenWorldInfo::abort = false;
 	GenWorldInfo::abortp = nullptr;
-	GenWorldInfo::lc     = _local_company;
+	GenWorldInfo::lc = _local_company;
 
 	/* This disables some commands and stuff */
 	SetLocalCompany(COMPANY_SPECTATOR);
@@ -361,8 +363,7 @@ void LoadTownData()
 	auto f = FioFOpenFile(_file_to_saveload.name, "rb", HEIGHTMAP_DIR, &filesize);
 
 	if (!f.has_value()) {
-		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-			GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
 		return;
 	}
 
@@ -370,8 +371,7 @@ void LoadTownData()
 	size_t len = fread(text.data(), filesize, 1, *f);
 	f.reset();
 	if (len != 1) {
-		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-			GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WL_ERROR);
 		return;
 	}
 
@@ -390,7 +390,7 @@ void LoadTownData()
 		return;
 	}
 
-	std::vector<std::pair<Town *, uint> > towns;
+	std::vector<std::pair<Town *, uint>> towns;
 	uint failed_towns = 0;
 
 	/* Iterate through towns and attempt to found them. */
@@ -415,13 +415,10 @@ void LoadTownData()
 		}
 
 		/* If other fields are formatted wrong, we can actually inform the player which town is the problem. */
-		if (!feature.contains("population") || !feature.at("population").is_number() ||
-				!feature.contains("city") || !feature.at("city").is_boolean() ||
-				!feature.contains("x") || !feature.at("x").is_number() ||
-				!feature.contains("y") || !feature.at("y").is_number()) {
+		if (!feature.contains("population") || !feature.at("population").is_number() || !feature.contains("city") || !feature.at("city").is_boolean() || !feature.contains("x") ||
+			!feature.at("x").is_number() || !feature.contains("y") || !feature.at("y").is_number()) {
 			feature.at("name").get_to(name);
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-				GetEncodedString(STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY, name), WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY, name), WL_ERROR);
 			return;
 		}
 
@@ -436,8 +433,7 @@ void LoadTownData()
 
 		/* Check for improper coordinates and warn the player. */
 		if (x_proportion <= 0.0f || y_proportion <= 0.0f || x_proportion >= 1.0f || y_proportion >= 1.0f) {
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-				GetEncodedString(STR_TOWN_DATA_ERROR_BAD_COORDINATE, name), WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_BAD_COORDINATE, name), WL_ERROR);
 			return;
 		}
 
@@ -452,7 +448,8 @@ void LoadTownData()
 				/* Tile coordinates are rotated and must be adjusted. */
 				target_tile = TileXY((1 - y_proportion * Map::MaxX()), x_proportion * Map::MaxY());
 				break;
-			default: NOT_REACHED();
+			default:
+				NOT_REACHED();
 		}
 
 		TownID town_id; // The TownID of the town in OpenTTD. Not imported, but set during the founding proceess and stored here for convenience.

@@ -8,14 +8,15 @@
 /** @file newgrf_act0_ships.cpp NewGRF Action 0x00 handler for ships. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_cargo.h"
 #include "../newgrf_engine.h"
 #include "../newgrf_sound.h"
 #include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
-#include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
+#include "newgrf_internal_vehicle.h"
 #include "newgrf_stringmapping.h"
 
 #include "../safeguards.h"
@@ -167,7 +168,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				ei->cargo_age_period = buf.ReadWord();
 				break;
 
-			case 0x1E:   // CTT refit include list
+			case 0x1E: // CTT refit include list
 			case 0x1F: { // CTT refit exclude list
 				uint8_t count = buf.ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1E && count != 0);
@@ -221,5 +222,14 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return ShipVehicleChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_SHIPS>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return ShipVehicleChangeInfo(first, last, prop, buf);
+}

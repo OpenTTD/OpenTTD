@@ -8,15 +8,17 @@
 /** @file script_signlist.cpp Implementation of ScriptSignList and friends. */
 
 #include "../../stdafx.h"
+
 #include "script_signlist.hpp"
-#include "script_sign.hpp"
+
 #include "../../signs_base.h"
+#include "script_sign.hpp"
 
 #include "../../safeguards.h"
 
 ScriptSignList::ScriptSignList(HSQUIRRELVM vm)
 {
-	ScriptList::FillList<Sign>(vm, this,
-		[](const Sign *s) { return ScriptSign::IsValidSign(s->index); }
-	);
+	ScriptList::FillList<Sign>(vm, this, [](const Sign *s) {
+		return ScriptSign::IsValidSign(s->index);
+	});
 }

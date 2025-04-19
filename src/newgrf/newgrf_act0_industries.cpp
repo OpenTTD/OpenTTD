@@ -8,18 +8,19 @@
 /** @file newgrf_act0_industries.cpp NewGRF Action 0x00 handler for industries and industrytiles. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "../newgrf_cargo.h"
 #include "../industry.h"
-#include "../industrytype.h"
 #include "../industry_map.h"
+#include "../industrytype.h"
+#include "../newgrf_cargo.h"
 #include "../newgrf_industries.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
 
-#include "table/strings.h"
 #include "../table/build_industry.h"
+#include "table/strings.h"
 
 #include "../safeguards.h"
 
@@ -308,8 +309,7 @@ static bool ValidateIndustryLayout(const IndustryTileLayout &layout)
 
 	for (size_t i = 0; i < size - 1; i++) {
 		for (size_t j = i + 1; j < size; j++) {
-			if (layout[i].ti.x == layout[j].ti.x &&
-					layout[i].ti.y == layout[j].ti.y) {
+			if (layout[i].ti.x == layout[j].ti.x && layout[i].ti.y == layout[j].ti.y) {
 				return false;
 			}
 		}
@@ -579,11 +579,11 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 			case 0x1C: // Input cargo multipliers for the three input cargo types
 			case 0x1D:
 			case 0x1E: {
-					uint32_t multiples = buf.ReadDWord();
-					indsp->input_cargo_multiplier[prop - 0x1C][0] = GB(multiples, 0, 16);
-					indsp->input_cargo_multiplier[prop - 0x1C][1] = GB(multiples, 16, 16);
-					break;
-				}
+				uint32_t multiples = buf.ReadDWord();
+				indsp->input_cargo_multiplier[prop - 0x1C][0] = GB(multiples, 0, 16);
+				indsp->input_cargo_multiplier[prop - 0x1C][1] = GB(multiples, 16, 16);
+				break;
+			}
 
 			case 0x1F: // Industry name
 				AddStringForMapping(GRFStringID{buf.ReadWord()}, &indsp->name);
@@ -593,7 +593,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 				indsp->prospecting_chance = buf.ReadDWord();
 				break;
 
-			case 0x21:   // Callback mask
+			case 0x21: // Callback mask
 			case 0x22: { // Callback additional mask
 				auto mask = indsp->callback_mask.base();
 				SB(mask, (prop - 0x21) * 8, 8, buf.ReadByte());
@@ -701,8 +701,26 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRYTILES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRYTILES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return IndustrytilesChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRYTILES>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRIES>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRIES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return IndustriesChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRYTILES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return IndustrytilesChangeInfo(first, last, prop, buf);
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRIES>::Reserve(uint, uint, int, ByteReader &)
+{
+	return CIR_UNHANDLED;
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_INDUSTRIES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return IndustriesChangeInfo(first, last, prop, buf);
+}

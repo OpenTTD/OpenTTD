@@ -8,16 +8,18 @@
 /** @file cargotype.cpp Implementation of cargoes. */
 
 #include "stdafx.h"
+
 #include "cargotype.h"
+
 #include "core/geometry_func.hpp"
 #include "newgrf_cargo.h"
+#include "settings_type.h"
 #include "string_func.h"
 #include "strings_func.h"
-#include "settings_type.h"
 
+#include "table/cargo_const.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "table/cargo_const.h"
 
 #include "safeguards.h"
 
@@ -71,13 +73,13 @@ void SetupCargoForClimate(LandscapeType l)
 	/* Copy from default cargo by label or index. */
 	auto insert = std::begin(CargoSpec::array);
 	for (const auto &cl : _default_climate_cargo[to_underlying(l)]) {
-
 		struct visitor {
 			const CargoSpec &operator()(const int &index)
 			{
 				/* Copy the default cargo by index. */
 				return _default_cargo[index];
 			}
+
 			const CargoSpec &operator()(const CargoLabel &label)
 			{
 				/* Search for label in default cargo types and copy if found. */
@@ -153,7 +155,9 @@ bool IsDefaultCargo(CargoType cargo_type)
 	if (!cs->IsValid()) return false;
 
 	CargoLabel label = cs->label;
-	return std::any_of(std::begin(_default_cargo_labels), std::end(_default_cargo_labels), [&label](const CargoLabel &cl) { return cl == label; });
+	return std::any_of(std::begin(_default_cargo_labels), std::end(_default_cargo_labels), [&label](const CargoLabel &cl) {
+		return cl == label;
+	});
 }
 
 /**
@@ -187,11 +191,11 @@ SpriteID CargoSpec::GetCargoIcon() const
 }
 
 std::array<uint8_t, NUM_CARGO> _sorted_cargo_types; ///< Sort order of cargoes by cargo type.
-std::vector<const CargoSpec *> _sorted_cargo_specs;   ///< Cargo specifications sorted alphabetically by name.
+std::vector<const CargoSpec *> _sorted_cargo_specs; ///< Cargo specifications sorted alphabetically by name.
 std::span<const CargoSpec *> _sorted_standard_cargo_specs; ///< Standard cargo specifications sorted alphabetically by name.
 
 /** Sort cargo specifications by their name. */
-static bool CargoSpecNameSorter(const CargoSpec * const &a, const CargoSpec * const &b)
+static bool CargoSpecNameSorter(const CargoSpec *const &a, const CargoSpec *const &b)
 {
 	std::string a_name = GetString(a->name);
 	std::string b_name = GetString(b->name);
@@ -203,7 +207,7 @@ static bool CargoSpecNameSorter(const CargoSpec * const &a, const CargoSpec * co
 }
 
 /** Sort cargo specifications by their cargo class. */
-static bool CargoSpecClassSorter(const CargoSpec * const &a, const CargoSpec * const &b)
+static bool CargoSpecClassSorter(const CargoSpec *const &a, const CargoSpec *const &b)
 {
 	int res = b->classes.Test(CargoClass::Passengers) - a->classes.Test(CargoClass::Passengers);
 	if (res == 0) {
@@ -249,7 +253,7 @@ void InitializeSortedCargoSpecs()
 	}
 
 	/* _sorted_standard_cargo_specs is a subset of _sorted_cargo_specs. */
-	_sorted_standard_cargo_specs = { _sorted_cargo_specs.data(), nb_standard_cargo };
+	_sorted_standard_cargo_specs = {_sorted_cargo_specs.data(), nb_standard_cargo};
 }
 
 uint64_t CargoSpec::WeightOfNUnitsInTrain(uint32_t n) const

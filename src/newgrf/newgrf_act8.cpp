@@ -8,6 +8,7 @@
 /** @file newgrf_act8.cpp NewGRF Action 0x08 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../string_func.h"
 #include "newgrf_bytereader.h"
@@ -21,14 +22,15 @@
 static void ScanInfo(ByteReader &buf)
 {
 	uint8_t grf_version = buf.ReadByte();
-	uint32_t grfid      = buf.ReadDWord();
+	uint32_t grfid = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
 	_cur_gps.grfconfig->ident.grfid = grfid;
 
 	if (grf_version < 2 || grf_version > 8) {
 		_cur_gps.grfconfig->flags.Set(GRFConfigFlag::Invalid);
-		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur_gps.grfconfig->filename, StrMakeValid(name), std::byteswap(grfid), grf_version);
+		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur_gps.grfconfig->filename, StrMakeValid(name),
+			std::byteswap(grfid), grf_version);
 	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
@@ -55,8 +57,8 @@ static void GRFInfo(ByteReader &buf)
 	 * S name          name of this .grf set
 	 * S info          string describing the set, and e.g. author and copyright */
 
-	uint8_t version    = buf.ReadByte();
-	uint32_t grfid     = buf.ReadDWord();
+	uint8_t version = buf.ReadByte();
+	uint32_t grfid = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
 	if (_cur_gps.stage < GLS_RESERVE && _cur_gps.grfconfig->status != GCS_UNKNOWN) {
@@ -73,12 +75,40 @@ static void GRFInfo(ByteReader &buf)
 	_cur_gps.grfconfig->status = _cur_gps.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, std::byteswap(grfid), StrMakeValid(name), (_cur_gps.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_gps.grfconfig->version);
+	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, std::byteswap(grfid), StrMakeValid(name),
+		(_cur_gps.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_gps.grfconfig->version);
 }
 
-template <> void GrfActionHandler<0x08>::FileScan(ByteReader &buf) { ScanInfo(buf); }
-template <> void GrfActionHandler<0x08>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x08>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x08>::Init(ByteReader &buf) { GRFInfo(buf); }
-template <> void GrfActionHandler<0x08>::Reserve(ByteReader &buf) { GRFInfo(buf); }
-template <> void GrfActionHandler<0x08>::Activation(ByteReader &buf) { GRFInfo(buf); }
+template <>
+void GrfActionHandler<0x08>::FileScan(ByteReader &buf)
+{
+	ScanInfo(buf);
+}
+
+template <>
+void GrfActionHandler<0x08>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x08>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x08>::Init(ByteReader &buf)
+{
+	GRFInfo(buf);
+}
+
+template <>
+void GrfActionHandler<0x08>::Reserve(ByteReader &buf)
+{
+	GRFInfo(buf);
+}
+
+template <>
+void GrfActionHandler<0x08>::Activation(ByteReader &buf)
+{
+	GRFInfo(buf);
+}

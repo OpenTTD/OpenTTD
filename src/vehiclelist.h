@@ -31,22 +31,56 @@ enum VehicleListType : uint8_t {
 /** The information about a vehicle list. */
 struct VehicleListIdentifier {
 	VehicleListType type; ///< The type of vehicle list.
-	VehicleType vtype;    ///< The vehicle type associated with this list.
-	CompanyID company;    ///< The company associated with this list.
-	uint32_t index;         ///< A vehicle list type specific index.
+	VehicleType vtype; ///< The vehicle type associated with this list.
+	CompanyID company; ///< The company associated with this list.
+	uint32_t index; ///< A vehicle list type specific index.
 
 	WindowNumber ToWindowNumber() const;
 
-	bool Valid() const { return this->type < VLT_END; }
+	bool Valid() const
+	{
+		return this->type < VLT_END;
+	}
 
-	constexpr CompanyID ToCompanyID() const { assert(this->type == VL_STANDARD); return CompanyID(this->index); }
-	constexpr DestinationID ToDestinationID() const { assert(this->type == VL_DEPOT_LIST); return DestinationID(this->index); }
-	constexpr GroupID ToGroupID() const { assert(this->type == VL_GROUP_LIST); return GroupID(this->index); }
-	constexpr StationID ToStationID() const { assert(this->type == VL_STATION_LIST); return StationID(this->index); }
-	constexpr VehicleID ToVehicleID() const { assert(this->type == VL_SHARED_ORDERS); return VehicleID(this->index); }
+	constexpr CompanyID ToCompanyID() const
+	{
+		assert(this->type == VL_STANDARD);
+		return CompanyID(this->index);
+	}
 
-	constexpr void SetIndex(uint32_t index) { this->index = index; }
-	constexpr void SetIndex(ConvertibleThroughBase auto index) { this->index = index.base(); }
+	constexpr DestinationID ToDestinationID() const
+	{
+		assert(this->type == VL_DEPOT_LIST);
+		return DestinationID(this->index);
+	}
+
+	constexpr GroupID ToGroupID() const
+	{
+		assert(this->type == VL_GROUP_LIST);
+		return GroupID(this->index);
+	}
+
+	constexpr StationID ToStationID() const
+	{
+		assert(this->type == VL_STATION_LIST);
+		return StationID(this->index);
+	}
+
+	constexpr VehicleID ToVehicleID() const
+	{
+		assert(this->type == VL_SHARED_ORDERS);
+		return VehicleID(this->index);
+	}
+
+	constexpr void SetIndex(uint32_t index)
+	{
+		this->index = index;
+	}
+
+	constexpr void SetIndex(ConvertibleThroughBase auto index)
+	{
+		this->index = index.base();
+	}
 
 	/**
 	 * Create a simple vehicle list.
@@ -55,11 +89,9 @@ struct VehicleListIdentifier {
 	 * @param company Company associated with this list.
 	 * @param index   Optional type specific index.
 	 */
-	VehicleListIdentifier(VehicleListType type, VehicleType vtype, CompanyID company, uint index = 0) :
-		type(type), vtype(vtype), company(company), index(index) {}
+	VehicleListIdentifier(VehicleListType type, VehicleType vtype, CompanyID company, uint index = 0) : type(type), vtype(vtype), company(company), index(index) {}
 
-	VehicleListIdentifier(VehicleListType type, VehicleType vtype, CompanyID company, ConvertibleThroughBase auto index) :
-		type(type), vtype(vtype), company(company), index(index.base()) {}
+	VehicleListIdentifier(VehicleListType type, VehicleType vtype, CompanyID company, ConvertibleThroughBase auto index) : type(type), vtype(vtype), company(company), index(index.base()) {}
 
 	VehicleListIdentifier() = default;
 };

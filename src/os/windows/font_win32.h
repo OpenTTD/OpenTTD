@@ -10,20 +10,20 @@
 #ifndef FONT_WIN32_H
 #define FONT_WIN32_H
 
+#include <windows.h>
+
 #include "../../core/alloc_type.hpp"
 #include "../../fontcache/truetypefontcache.h"
 #include "win32.h"
 
-#include <windows.h>
-
 /** Font cache for fonts that are based on a Win32 font. */
 class Win32FontCache : public TrueTypeFontCache {
 private:
-	LOGFONT logfont;      ///< Logical font information for selecting the font face.
+	LOGFONT logfont; ///< Logical font information for selecting the font face.
 	HFONT font = nullptr; ///< The font face associated with this font.
-	HDC dc = nullptr;     ///< Cached GDI device context.
-	HGDIOBJ old_font;     ///< Old font selected into the GDI context.
-	SIZE glyph_size;      ///< Maximum size of regular glyphs.
+	HDC dc = nullptr; ///< Cached GDI device context.
+	HGDIOBJ old_font; ///< Old font selected into the GDI context.
+	SIZE glyph_size; ///< Maximum size of regular glyphs.
 	std::string fontname; ///< Cached copy of loaded font facename
 
 	ReusableBuffer<uint8_t> render_buffer; ///< Temporary buffer for rendering glyphs.
@@ -38,8 +38,16 @@ public:
 	~Win32FontCache();
 	void ClearFontCache() override;
 	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
-	std::string GetFontName() override { return this->fontname; }
-	const void *GetOSHandle() override { return &this->logfont; }
+
+	std::string GetFontName() override
+	{
+		return this->fontname;
+	}
+
+	const void *GetOSHandle() override
+	{
+		return &this->logfont;
+	}
 };
 
 void LoadWin32Font(FontSize fs);

@@ -12,8 +12,8 @@
 #include "../3rdparty/catch2/catch.hpp"
 
 #include "../core/format.hpp"
-#include "../network/network_crypto_internal.h"
 #include "../network/core/packet.h"
+#include "../network/network_crypto_internal.h"
 #include "../string_func.h"
 
 #include "../safeguards.h"
@@ -50,21 +50,26 @@ static std::tuple<Packet, bool> CreatePacketForReading(Packet &source, MockNetwo
 
 	bool valid = dest.PrepareToRead();
 	dest.Recv_uint8(); // Ignore the type
-	return { dest, valid };
+	return {dest, valid};
 }
 
 class TestPasswordRequestHandler : public NetworkAuthenticationPasswordRequestHandler {
 private:
 	std::string password;
+
 public:
 	TestPasswordRequestHandler(std::string &password) : password(password) {}
+
 	void SendResponse() override {}
-	void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override { request->Reply(this->password); }
+
+	void AskUserForPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request) override
+	{
+		request->Reply(this->password);
+	}
 };
 
-static void TestAuthentication(NetworkAuthenticationServerHandler &server, NetworkAuthenticationClientHandler &client,
-		NetworkAuthenticationServerHandler::ResponseResult expected_response_result,
-		NetworkAuthenticationClientHandler::RequestResult expected_request_result)
+static void TestAuthentication(NetworkAuthenticationServerHandler &server, NetworkAuthenticationClientHandler &client, NetworkAuthenticationServerHandler::ResponseResult expected_response_result,
+	NetworkAuthenticationClientHandler::RequestResult expected_request_result)
 {
 	Packet request(&mock_socket_handler, PacketType{});
 	server.SendRequest(request);
@@ -82,7 +87,6 @@ static void TestAuthentication(NetworkAuthenticationServerHandler &server, Netwo
 	CHECK(server.ReceiveResponse(response) == expected_response_result);
 }
 
-
 TEST_CASE("Authentication_KeyExchangeOnly")
 {
 	X25519KeyExchangeOnlyServerHandler server(X25519SecretKey::CreateRandom());
@@ -91,9 +95,7 @@ TEST_CASE("Authentication_KeyExchangeOnly")
 	TestAuthentication(server, client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 }
 
-
-static void TestAuthenticationPAKE(std::string server_password, std::string client_password,
-		NetworkAuthenticationServerHandler::ResponseResult expected_response_result)
+static void TestAuthenticationPAKE(std::string server_password, std::string client_password, NetworkAuthenticationServerHandler::ResponseResult expected_response_result)
 {
 	NetworkAuthenticationDefaultPasswordProvider server_password_provider(server_password);
 	X25519PAKEServerHandler server(X25519SecretKey::CreateRandom(), &server_password_provider);
@@ -104,22 +106,24 @@ static void TestAuthenticationPAKE(std::string server_password, std::string clie
 
 TEST_CASE("Authentication_PAKE")
 {
-	SECTION("Correct password") {
+	SECTION("Correct password")
+	{
 		TestAuthenticationPAKE("sikrit", "sikrit", NetworkAuthenticationServerHandler::ResponseResult::Authenticated);
 	}
 
-	SECTION("Empty password") {
+	SECTION("Empty password")
+	{
 		TestAuthenticationPAKE("", "", NetworkAuthenticationServerHandler::ResponseResult::Authenticated);
 	}
 
-	SECTION("Wrong password") {
+	SECTION("Wrong password")
+	{
 		TestAuthenticationPAKE("sikrit", "secret", NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated);
 	}
 }
 
-
-static void TestAuthenticationAuthorizedKey(const X25519SecretKey &client_secret_key, const X25519PublicKey &server_expected_public_key,
-		NetworkAuthenticationServerHandler::ResponseResult expected_response_result)
+static void TestAuthenticationAuthorizedKey(
+	const X25519SecretKey &client_secret_key, const X25519PublicKey &server_expected_public_key, NetworkAuthenticationServerHandler::ResponseResult expected_response_result)
 {
 	NetworkAuthorizedKeys authorized_keys;
 	authorized_keys.Add(FormatArrayAsHex(server_expected_public_key));
@@ -137,15 +141,16 @@ TEST_CASE("Authentication_AuthorizedKey")
 	auto valid_client_public_key = client_secret_key.CreatePublicKey();
 	auto invalid_client_public_key = X25519SecretKey::CreateRandom().CreatePublicKey();
 
-	SECTION("Correct public key") {
+	SECTION("Correct public key")
+	{
 		TestAuthenticationAuthorizedKey(client_secret_key, valid_client_public_key, NetworkAuthenticationServerHandler::ResponseResult::Authenticated);
 	}
 
-	SECTION("Incorrect public key") {
+	SECTION("Incorrect public key")
+	{
 		TestAuthenticationAuthorizedKey(client_secret_key, invalid_client_public_key, NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated);
 	}
 }
-
 
 TEST_CASE("Authentication_Combined")
 {
@@ -174,49 +179,54 @@ TEST_CASE("Authentication_Combined")
 
 	auto client = NetworkAuthenticationClientHandler::Create(std::make_shared<TestPasswordRequestHandler>(valid_password), client_secret_key_str, client_public_key_str);
 
-	SECTION("Invalid authorized keys, invalid password") {
+	SECTION("Invalid authorized keys, invalid password")
+	{
 		auto server = NetworkAuthenticationServerHandler::Create(&invalid_password_provider, &invalid_authorized_key_handler);
 
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::RetryNextMethod, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
-	SECTION("Invalid authorized keys, valid password") {
+	SECTION("Invalid authorized keys, valid password")
+	{
 		auto server = NetworkAuthenticationServerHandler::Create(&valid_password_provider, &invalid_authorized_key_handler);
 
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::RetryNextMethod, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
-	SECTION("Valid authorized keys, valid password") {
+	SECTION("Valid authorized keys, valid password")
+	{
 		auto server = NetworkAuthenticationServerHandler::Create(&valid_password_provider, &valid_authorized_key_handler);
 
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 	}
 
-	SECTION("No authorized keys, invalid password") {
+	SECTION("No authorized keys, invalid password")
+	{
 		auto server = NetworkAuthenticationServerHandler::Create(&invalid_password_provider, &no_authorized_key_handler);
 
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
-	SECTION("No authorized keys, valid password") {
+	SECTION("No authorized keys, valid password")
+	{
 		auto server = NetworkAuthenticationServerHandler::Create(&valid_password_provider, &no_authorized_key_handler);
 
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::AwaitUserInput);
 	}
 
-	SECTION("No authorized keys, no password") {
+	SECTION("No authorized keys, no password")
+	{
 		auto server = NetworkAuthenticationServerHandler::Create(&no_password_provider, &no_authorized_key_handler);
 
 		TestAuthentication(*server, *client, NetworkAuthenticationServerHandler::ResponseResult::Authenticated, NetworkAuthenticationClientHandler::RequestResult::ReadyForResponse);
 	}
 }
 
-
 static void CheckEncryption(MockNetworkSocketHandler *sending_socket_handler, MockNetworkSocketHandler *receiving_socket_handler)
 {
-	PacketType sent_packet_type{ 1 };
+	PacketType sent_packet_type{1};
 	uint64_t sent_value = 0x1234567890ABCDEF;
 	std::set<PacketType> encrypted_packet_types;
 
@@ -242,7 +252,6 @@ static void CheckEncryption(MockNetworkSocketHandler *sending_socket_handler, Mo
 	 * one-in-sextillion (10**21) order of magnitude.
 	 */
 	CHECK(encrypted_packet_types.size() != 1);
-
 }
 
 TEST_CASE("Encryption handling")
@@ -263,15 +272,18 @@ TEST_CASE("Encryption handling")
 	MockNetworkSocketHandler server_socket_handler(server.CreateClientToServerEncryptionHandler(), server.CreateServerToClientEncryptionHandler());
 	MockNetworkSocketHandler client_socket_handler(client.CreateServerToClientEncryptionHandler(), client.CreateClientToServerEncryptionHandler());
 
-	SECTION("Encryption happening client -> server") {
+	SECTION("Encryption happening client -> server")
+	{
 		CheckEncryption(&client_socket_handler, &server_socket_handler);
 	}
 
-	SECTION("Encryption happening server -> client") {
+	SECTION("Encryption happening server -> client")
+	{
 		CheckEncryption(&server_socket_handler, &client_socket_handler);
 	}
 
-	SECTION("Unencrypted packet sent causes invalid read packet") {
+	SECTION("Unencrypted packet sent causes invalid read packet")
+	{
 		Packet request(&mock_socket_handler, PacketType{});
 		request.Send_uint64(0);
 

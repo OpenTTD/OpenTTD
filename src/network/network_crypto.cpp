@@ -9,13 +9,13 @@
 
 #include "../stdafx.h"
 
-#include "network_crypto_internal.h"
-#include "core/packet.h"
-
 #include "../3rdparty/monocypher/monocypher.h"
+
 #include "../core/random_func.hpp"
+#include "core/packet.h"
 #include "../debug.h"
 #include "../string_func.h"
+#include "network_crypto_internal.h"
 
 #include "../safeguards.h"
 
@@ -61,12 +61,14 @@ std::span<const uint8_t> X25519DerivedKeys::ServerToClient() const
  * @param extra_payload Extra payload to put into the hash function to create the derived keys.
  * @return True when the key exchange has succeeded, false when an illegal public key was given.
  */
-bool X25519DerivedKeys::Exchange(const X25519PublicKey &peer_public_key, X25519KeyExchangeSide side,
-		const X25519SecretKey &our_secret_key, const X25519PublicKey &our_public_key, std::string_view extra_payload)
+bool X25519DerivedKeys::Exchange(
+	const X25519PublicKey &peer_public_key, X25519KeyExchangeSide side, const X25519SecretKey &our_secret_key, const X25519PublicKey &our_public_key, std::string_view extra_payload)
 {
 	X25519Key shared_secret;
 	crypto_x25519(shared_secret.data(), our_secret_key.data(), peer_public_key.data());
-	if (std::all_of(shared_secret.begin(), shared_secret.end(), [](auto v) { return v == 0; })) {
+	if (std::all_of(shared_secret.begin(), shared_secret.end(), [](auto v) {
+			return v == 0;
+		})) {
 		/* A shared secret of all zeros means that the peer tried to force the shared secret to a known constant. */
 		return false;
 	}
@@ -182,8 +184,7 @@ X25519Nonce::~X25519Nonce()
  * @param secret_key The secret key to use for this handler. Defaults to secure random data.
  */
 X25519AuthenticationHandler::X25519AuthenticationHandler(const X25519SecretKey &secret_key) :
-	our_secret_key(secret_key), our_public_key(secret_key.CreatePublicKey()),
-	key_exchange_nonce(X25519Nonce::CreateRandom()), encryption_nonce(X25519Nonce::CreateRandom())
+	our_secret_key(secret_key), our_public_key(secret_key.CreatePublicKey()), key_exchange_nonce(X25519Nonce::CreateRandom()), encryption_nonce(X25519Nonce::CreateRandom())
 {
 }
 
@@ -218,8 +219,7 @@ bool X25519AuthenticationHandler::ReceiveRequest(Packet &p)
  */
 bool X25519AuthenticationHandler::SendResponse(Packet &p, std::string_view derived_key_extra_payload)
 {
-	if (!this->derived_keys.Exchange(this->peer_public_key, X25519KeyExchangeSide::CLIENT,
-			this->our_secret_key, this->our_public_key, derived_key_extra_payload)) {
+	if (!this->derived_keys.Exchange(this->peer_public_key, X25519KeyExchangeSide::CLIENT, this->our_secret_key, this->our_public_key, derived_key_extra_payload)) {
 		Debug(net, 0, "[crypto] Peer sent an illegal public key; authentication aborted.");
 		return false;
 	}
@@ -228,8 +228,8 @@ bool X25519AuthenticationHandler::SendResponse(Packet &p, std::string_view deriv
 	RandomBytesWithFallback(message);
 	X25519Mac mac;
 
-	crypto_aead_lock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), this->key_exchange_nonce.data(),
-			this->our_public_key.data(), this->our_public_key.size(), message.data(), message.size());
+	crypto_aead_lock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), this->key_exchange_nonce.data(), this->our_public_key.data(), this->our_public_key.size(), message.data(),
+		message.size());
 
 	p.Send_bytes(this->our_public_key);
 	p.Send_bytes(mac);
@@ -296,14 +296,13 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 	p.Recv_bytes(mac);
 	p.Recv_bytes(message);
 
-	if (!this->derived_keys.Exchange(this->peer_public_key, X25519KeyExchangeSide::SERVER,
-			this->our_secret_key, this->our_public_key, derived_key_extra_payload)) {
+	if (!this->derived_keys.Exchange(this->peer_public_key, X25519KeyExchangeSide::SERVER, this->our_secret_key, this->our_public_key, derived_key_extra_payload)) {
 		Debug(net, 0, "[crypto] Peer sent an illegal public key; authentication aborted.");
 		return NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated;
 	}
 
-	if (crypto_aead_unlock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), this->key_exchange_nonce.data(),
-			this->peer_public_key.data(), this->peer_public_key.size(), message.data(), message.size()) != 0) {
+	if (crypto_aead_unlock(message.data(), mac.data(), this->derived_keys.ClientToServer().data(), this->key_exchange_nonce.data(), this->peer_public_key.data(), this->peer_public_key.size(),
+			message.data(), message.size()) != 0) {
 		/*
 		 * The ciphertext and the message authentication code do not match with the encryption key.
 		 * This is most likely an invalid password, or possibly a bug in the client.
@@ -313,7 +312,6 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 
 	return NetworkAuthenticationServerHandler::ResponseResult::Authenticated;
 }
-
 
 /* virtual */ NetworkAuthenticationClientHandler::RequestResult X25519PAKEClientHandler::ReceiveRequest(struct Packet &p)
 {
@@ -357,12 +355,13 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 	return this->authorized_key_handler->IsAllowed(peer_public_key) ? ResponseResult::Authenticated : ResponseResult::NotAuthenticated;
 }
 
-
 /* virtual */ NetworkAuthenticationClientHandler::RequestResult CombinedAuthenticationClientHandler::ReceiveRequest(struct Packet &p)
 {
 	NetworkAuthenticationMethod method = static_cast<NetworkAuthenticationMethod>(p.Recv_uint8());
 
-	auto is_of_method = [method](Handler &handler) { return handler->GetAuthenticationMethod() == method; };
+	auto is_of_method = [method](Handler &handler) {
+		return handler->GetAuthenticationMethod() == method;
+	};
 	auto it = std::ranges::find_if(handlers, is_of_method);
 	if (it == handlers.end()) return RequestResult::Invalid;
 
@@ -388,7 +387,6 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 {
 	return this->current_handler != nullptr ? this->current_handler->GetAuthenticationMethod() : NetworkAuthenticationMethod::End;
 }
-
 
 /**
  * Add the given sub-handler to this handler, if the handler can be used (e.g. there are authorized keys or there is a password).
@@ -436,7 +434,6 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
 	return !this->handlers.empty();
 }
 
-
 /* virtual */ void NetworkAuthenticationPasswordRequestHandler::Reply(const std::string &password)
 {
 	this->password = password;
@@ -459,7 +456,8 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
  * @param secret_key The location where the secret key is stored; can be overwritten when invalid.
  * @param public_key The location where the public key is stored; can be overwritten when invalid.
  */
-/* static */ std::unique_ptr<NetworkAuthenticationClientHandler> NetworkAuthenticationClientHandler::Create(std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> password_handler, std::string &secret_key, std::string &public_key)
+/* static */ std::unique_ptr<NetworkAuthenticationClientHandler> NetworkAuthenticationClientHandler::Create(
+	std::shared_ptr<NetworkAuthenticationPasswordRequestHandler> password_handler, std::string &secret_key, std::string &public_key)
 {
 	auto secret = X25519AuthorizedKeyClientHandler::GetValidSecretKeyAndUpdatePublicKey(secret_key, public_key);
 	auto handler = std::make_unique<CombinedAuthenticationClientHandler>();
@@ -475,7 +473,8 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
  * @param authorized_key_handler Callback to provide the authorized key handling. Must remain valid until the authentication has succeeded or failed. Can be \c nullptr to skip authorized key checks.
  * @param client_supported_method_mask Bitmask of the methods that are supported by the client. Defaults to support of all methods.
  */
-std::unique_ptr<NetworkAuthenticationServerHandler> NetworkAuthenticationServerHandler::Create(const NetworkAuthenticationPasswordProvider *password_provider, const NetworkAuthenticationAuthorizedKeyHandler *authorized_key_handler, NetworkAuthenticationMethodMask client_supported_method_mask)
+std::unique_ptr<NetworkAuthenticationServerHandler> NetworkAuthenticationServerHandler::Create(const NetworkAuthenticationPasswordProvider *password_provider,
+	const NetworkAuthenticationAuthorizedKeyHandler *authorized_key_handler, NetworkAuthenticationMethodMask client_supported_method_mask)
 {
 	auto secret = X25519SecretKey::CreateRandom();
 	auto handler = std::make_unique<CombinedAuthenticationServerHandler>();

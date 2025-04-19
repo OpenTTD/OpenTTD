@@ -22,5 +22,4 @@ public:
 	ScriptIndustryTypeList();
 };
 
-
 #endif /* SCRIPT_INDUSTRYTYPELIST_HPP */

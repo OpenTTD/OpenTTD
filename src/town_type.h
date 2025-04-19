@@ -19,12 +19,12 @@ struct Town;
 
 /** Supported initial town sizes */
 enum TownSize : uint8_t {
-	TSZ_SMALL,  ///< Small town.
+	TSZ_SMALL, ///< Small town.
 	TSZ_MEDIUM, ///< Medium town.
-	TSZ_LARGE,  ///< Large town.
+	TSZ_LARGE, ///< Large town.
 	TSZ_RANDOM, ///< Random size, bigger than small, smaller than large.
 
-	TSZ_END,    ///< Number of available town sizes.
+	TSZ_END, ///< Number of available town sizes.
 };
 DECLARE_ENUM_AS_ADDABLE(TownSize)
 
@@ -50,7 +50,7 @@ static constexpr int RATING_TREE_MINIMUM = RATING_MINIMUM;
 static constexpr int RATING_TREE_UP_STEP = 7;
 static constexpr int RATING_TREE_MAXIMUM = 220;
 
-static constexpr int RATING_GROWTH_UP_STEP =  5; ///< when a town grows, all companies have rating increased a bit ...
+static constexpr int RATING_GROWTH_UP_STEP = 5; ///< when a town grows, all companies have rating increased a bit ...
 static constexpr int RATING_GROWTH_MAXIMUM = RATING_MEDIOCRE; ///< ... up to RATING_MEDIOCRE
 static constexpr int RATING_STATION_UP_STEP = 12; ///< when a town grows, company gains reputation for all well serviced stations ...
 static constexpr int RATING_STATION_DOWN_STEP = -15; ///< ... but loses for badly serviced stations
@@ -64,14 +64,14 @@ static constexpr int RATING_TUNNEL_BRIDGE_NEEDED_HOSTILE = 400; ///< "Hostile"
 static constexpr int RATING_TUNNEL_BRIDGE_NEEDED_PERMISSIVE = RATING_MINIMUM; ///< "Permissive" (local authority disabled)
 
 static constexpr int RATING_ROAD_DOWN_STEP_INNER = -50; ///< removing a roadpiece in the middle
-static constexpr int RATING_ROAD_DOWN_STEP_EDGE  = -18; ///< removing a roadpiece at the edge
+static constexpr int RATING_ROAD_DOWN_STEP_EDGE = -18; ///< removing a roadpiece at the edge
 static constexpr int RATING_ROAD_MINIMUM = -100; ///< minimum rating after removing town owned road
 static constexpr int RATING_ROAD_NEEDED_LENIENT = 16; ///< rating needed, "Lenient" difficulty settings
 static constexpr int RATING_ROAD_NEEDED_NEUTRAL = 64; ///< "Neutral"
 static constexpr int RATING_ROAD_NEEDED_HOSTILE = 112; ///< "Hostile"
 static constexpr int RATING_ROAD_NEEDED_PERMISSIVE = RATING_MINIMUM; ///< "Permissive" (local authority disabled)
 
-static constexpr int RATING_HOUSE_MINIMUM  = RATING_MINIMUM;
+static constexpr int RATING_HOUSE_MINIMUM = RATING_MINIMUM;
 
 static constexpr int RATING_BRIBE_UP_STEP = 200;
 static constexpr int RATING_BRIBE_MAXIMUM = 800;
@@ -80,31 +80,31 @@ static constexpr int RATING_BRIBE_DOWN_TO = -50; // XXX SHOULD BE SOMETHING LOWE
 /** Town Layouts. It needs to be 8bits, because we save and load it as such */
 enum TownLayout : uint8_t {
 	TL_BEGIN = 0,
-	TL_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
-	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
-	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
-	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
+	TL_ORIGINAL = 0, ///< Original algorithm (min. 1 distance between roads)
+	TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads)
+	TL_2X2_GRID, ///< Geometric 2x2 grid algorithm
+	TL_3X3_GRID, ///< Geometric 3x3 grid algorithm
 
-	TL_RANDOM,           ///< Random town layout
+	TL_RANDOM, ///< Random town layout
 
-	NUM_TLS,             ///< Number of town layouts
+	NUM_TLS, ///< Number of town layouts
 };
 DECLARE_ENUM_AS_ADDABLE(TownLayout)
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
 enum TownFounding : uint8_t {
-	TF_BEGIN = 0,     ///< Used for iterations and limit testing
+	TF_BEGIN = 0, ///< Used for iterations and limit testing
 	TF_FORBIDDEN = 0, ///< Forbidden
-	TF_ALLOWED,       ///< Allowed
+	TF_ALLOWED, ///< Allowed
 	TF_CUSTOM_LAYOUT, ///< Allowed, with custom town layout
-	TF_END,           ///< Used for iterations and limit testing
+	TF_END, ///< Used for iterations and limit testing
 };
 
 /** Town cargo generation modes */
 enum TownCargoGenMode : uint8_t {
 	TCGM_BEGIN = 0,
-	TCGM_ORIGINAL = 0,  ///< Original algorithm (quadratic cargo by population)
-	TCGM_BITCOUNT,      ///< Bit-counted algorithm (normal distribution from individual house population)
+	TCGM_ORIGINAL = 0, ///< Original algorithm (quadratic cargo by population)
+	TCGM_BITCOUNT, ///< Bit-counted algorithm (normal distribution from individual house population)
 	TCGM_END,
 };
 
@@ -121,8 +121,10 @@ struct TransportedCargoStat {
 	/** Update stats for a new month. */
 	void NewMonth()
 	{
-		this->old_max = this->new_max; this->new_max = 0;
-		this->old_act = this->new_act; this->new_act = 0;
+		this->old_max = this->new_max;
+		this->new_max = 0;
+		this->old_act = this->new_act;
+		this->new_act = 0;
 	}
 };
 

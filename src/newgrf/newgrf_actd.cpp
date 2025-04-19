@@ -8,16 +8,17 @@
 /** @file newgrf_actd.cpp NewGRF Action 0x0D handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "../newgrf.h"
-#include "../newgrf_engine.h"
-#include "../newgrf_cargo.h"
-#include "../timer/timer_game_calendar.h"
-#include "../error.h"
 #include "../engine_func.h"
-#include "../vehicle_base.h"
+#include "../error.h"
+#include "../newgrf.h"
+#include "../newgrf_cargo.h"
+#include "../newgrf_engine.h"
 #include "../rail.h"
 #include "../road.h"
+#include "../timer/timer_game_calendar.h"
+#include "../vehicle_base.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 
@@ -59,13 +60,16 @@ static uint32_t GetPatchVariable(uint8_t param)
 {
 	switch (param) {
 		/* start year - 1920 */
-		case 0x0B: return (std::max(_settings_game.game_creation.starting_year, CalendarTime::ORIGINAL_BASE_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base();
+		case 0x0B:
+			return (std::max(_settings_game.game_creation.starting_year, CalendarTime::ORIGINAL_BASE_YEAR) - CalendarTime::ORIGINAL_BASE_YEAR).base();
 
 		/* freight trains weight factor */
-		case 0x0E: return _settings_game.vehicle.freight_trains;
+		case 0x0E:
+			return _settings_game.vehicle.freight_trains;
 
 		/* empty wagon speed increase */
-		case 0x0F: return 0;
+		case 0x0F:
+			return 0;
 
 		/* plane speed factor; our patch option is reversed from TTDPatch's,
 		 * the following is good for 1x, 2x and 4x (most common?) and...
@@ -73,15 +77,19 @@ static uint32_t GetPatchVariable(uint8_t param)
 		case 0x10:
 			switch (_settings_game.vehicle.plane_speed) {
 				default:
-				case 4: return 1;
-				case 3: return 2;
-				case 2: return 2;
-				case 1: return 4;
+				case 4:
+					return 1;
+				case 3:
+					return 2;
+				case 2:
+					return 2;
+				case 1:
+					return 4;
 			}
 
-
 		/* 2CC colourmap base sprite */
-		case 0x11: return SPR_2CCMAP_BASE;
+		case 0x11:
+			return SPR_2CCMAP_BASE;
 
 		/* map size: format = -MABXYSS
 		 * M  : the type of map
@@ -106,8 +114,7 @@ static uint32_t GetPatchVariable(uint8_t param)
 				if (max_edge == log_Y) SetBit(map_bits, 1); // edge Y been the biggest, mark it
 			}
 
-			return (map_bits << 24) | (std::min(log_X, log_Y) << 20) | (max_edge << 16) |
-				(log_X << 12) | (log_Y << 8) | (log_X + log_Y);
+			return (map_bits << 24) | (std::min(log_X, log_Y) << 20) | (max_edge << 16) | (log_X << 12) | (log_Y << 8) | (log_X + log_Y);
 		}
 
 		/* The maximum height of the map. */
@@ -135,7 +142,7 @@ static uint32_t GetPatchVariable(uint8_t param)
 static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, uint8_t target, const char *type)
 {
 	uint start = 0;
-	uint size  = 0;
+	uint size = 0;
 
 	if (op == 6) {
 		/* Return GRFID of set that reserved ID */
@@ -204,9 +211,9 @@ static void ParamSet(ByteReader &buf)
 	 */
 
 	uint8_t target = buf.ReadByte();
-	uint8_t oper   = buf.ReadByte();
-	uint32_t src1  = buf.ReadByte();
-	uint32_t src2  = buf.ReadByte();
+	uint8_t oper = buf.ReadByte();
+	uint32_t src1 = buf.ReadByte();
+	uint32_t src2 = buf.ReadByte();
 
 	uint32_t data = 0;
 	if (buf.Remaining() >= 4) data = buf.ReadDWord();
@@ -233,9 +240,9 @@ static void ParamSet(ByteReader &buf)
 				src1 = GetPatchVariable(src1);
 			} else {
 				/* GRF Resource Management */
-				uint8_t  op      = src1;
-				uint8_t  feature = GB(data, 8, 8);
-				uint16_t count   = GB(data, 16, 16);
+				uint8_t op = src1;
+				uint8_t feature = GB(data, 8, 8);
+				uint16_t count = GB(data, 16, 16);
 
 				if (_cur_gps.stage == GLS_RESERVE) {
 					if (feature == 0x08) {
@@ -304,7 +311,9 @@ static void ParamSet(ByteReader &buf)
 							if (_cur_gps.skip_sprites == -1) return;
 							break;
 
-						default: GrfMsg(1, "ParamSet: GRM: Unsupported feature 0x{:X}", feature); return;
+						default:
+							GrfMsg(1, "ParamSet: GRM: Unsupported feature 0x{:X}", feature);
+							return;
 					}
 				} else {
 					/* Ignore GRM during initialization */
@@ -415,7 +424,9 @@ static void ParamSet(ByteReader &buf)
 			}
 			break;
 
-		default: GrfMsg(0, "ParamSet: Unknown operation {}, skipping", oper); return;
+		default:
+			GrfMsg(0, "ParamSet: Unknown operation {}, skipping", oper);
+			return;
 	}
 
 	switch (target) {
@@ -483,9 +494,36 @@ static void ParamSet(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x0D>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0D>::SafetyScan(ByteReader &buf) { SafeParamSet(buf); }
-template <> void GrfActionHandler<0x0D>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0D>::Init(ByteReader &buf) { ParamSet(buf); }
-template <> void GrfActionHandler<0x0D>::Reserve(ByteReader &buf) { ParamSet(buf); }
-template <> void GrfActionHandler<0x0D>::Activation(ByteReader &buf) { ParamSet(buf); }
+template <>
+void GrfActionHandler<0x0D>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0D>::SafetyScan(ByteReader &buf)
+{
+	SafeParamSet(buf);
+}
+
+template <>
+void GrfActionHandler<0x0D>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0D>::Init(ByteReader &buf)
+{
+	ParamSet(buf);
+}
+
+template <>
+void GrfActionHandler<0x0D>::Reserve(ByteReader &buf)
+{
+	ParamSet(buf);
+}
+
+template <>
+void GrfActionHandler<0x0D>::Activation(ByteReader &buf)
+{
+	ParamSet(buf);
+}

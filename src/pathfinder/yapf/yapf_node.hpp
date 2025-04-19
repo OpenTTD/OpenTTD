@@ -10,8 +10,8 @@
 #ifndef YAPF_NODE_HPP
 #define YAPF_NODE_HPP
 
-#include "../../track_func.h"
 #include "../../misc/dbg_helpers.h"
+#include "../../track_func.h"
 
 /** Yapf Node Key that evaluates hash from (and compares) tile & exit dir. */
 struct CYapfNodeKeyExitDir {
@@ -44,8 +44,7 @@ struct CYapfNodeKeyExitDir {
 	}
 };
 
-struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir
-{
+struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir {
 	inline int CalcHash() const
 	{
 		return this->td | (this->tile.base() << 4);

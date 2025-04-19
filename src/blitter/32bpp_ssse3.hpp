@@ -12,19 +12,19 @@
 
 #ifdef WITH_SSE
 
-#ifndef SSE_VERSION
-#define SSE_VERSION 3
-#endif
+#	ifndef SSE_VERSION
+#		define SSE_VERSION 3
+#	endif
 
-#ifndef SSE_TARGET
-#define SSE_TARGET "ssse3"
-#endif
+#	ifndef SSE_TARGET
+#		define SSE_TARGET "ssse3"
+#	endif
 
-#ifndef FULL_ANIMATION
-#define FULL_ANIMATION 0
-#endif
+#	ifndef FULL_ANIMATION
+#		define FULL_ANIMATION 0
+#	endif
 
-#include "32bpp_sse2.hpp"
+#	include "32bpp_sse2.hpp"
 
 /** The SSSE3 32 bpp blitter (without palette animation). */
 class Blitter_32bppSSSE3 : public Blitter_32bppSSE2 {
@@ -32,14 +32,22 @@ public:
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
 	template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent>
 	void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
-	std::string_view GetName() override { return "32bpp-ssse3"; }
+
+	std::string_view GetName() override
+	{
+		return "32bpp-ssse3";
+	}
 };
 
 /** Factory for the SSSE3 32 bpp blitter (without palette animation). */
-class FBlitter_32bppSSSE3: public BlitterFactory {
+class FBlitter_32bppSSSE3 : public BlitterFactory {
 public:
 	FBlitter_32bppSSSE3() : BlitterFactory("32bpp-ssse3", "32bpp SSSE3 Blitter (no palette animation)", HasCPUIDFlag(1, 2, 9)) {}
-	std::unique_ptr<Blitter> CreateInstance() override { return std::make_unique<Blitter_32bppSSSE3>(); }
+
+	std::unique_ptr<Blitter> CreateInstance() override
+	{
+		return std::make_unique<Blitter_32bppSSSE3>();
+	}
 };
 
 #endif /* WITH_SSE */

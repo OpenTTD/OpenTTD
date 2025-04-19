@@ -8,6 +8,7 @@
 /** @file newgrf_act1.cpp NewGRF Action 0x01 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../spritecache.h"
 #include "newgrf_bytereader.h"
@@ -32,8 +33,8 @@ static void NewSpriteSet(ByteReader &buf)
 	 *                         In that case, use num-dirs=4.
 	 */
 
-	uint8_t  feature   = buf.ReadByte();
-	uint16_t num_sets  = buf.ReadByte();
+	uint8_t feature = buf.ReadByte();
+	uint16_t num_sets = buf.ReadByte();
 	uint16_t first_set = 0;
 
 	if (num_sets == 0 && buf.HasData(3)) {
@@ -52,9 +53,7 @@ static void NewSpriteSet(ByteReader &buf)
 
 	_cur_gps.AddSpriteSets(feature, _cur_gps.spriteid, first_set, num_sets, num_ents);
 
-	GrfMsg(7, "New sprite set at {} of feature 0x{:02X}, consisting of {} sets with {} views each (total {})",
-		_cur_gps.spriteid, feature, num_sets, num_ents, num_sets * num_ents
-	);
+	GrfMsg(7, "New sprite set at {} of feature 0x{:02X}, consisting of {} sets with {} views each (total {})", _cur_gps.spriteid, feature, num_sets, num_ents, num_sets * num_ents);
 
 	for (int i = 0; i < num_sets * num_ents; i++) {
 		_cur_gps.nfo_line++;
@@ -66,7 +65,7 @@ static void NewSpriteSet(ByteReader &buf)
 static void SkipAct1(ByteReader &buf)
 {
 	buf.ReadByte();
-	uint16_t num_sets  = buf.ReadByte();
+	uint16_t num_sets = buf.ReadByte();
 
 	if (num_sets == 0 && buf.HasData(3)) {
 		/* Extended Action1 format.
@@ -81,9 +80,38 @@ static void SkipAct1(ByteReader &buf)
 	GrfMsg(3, "SkipAct1: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
-template <> void GrfActionHandler<0x01>::FileScan(ByteReader &buf) { SkipAct1(buf); }
-template <> void GrfActionHandler<0x01>::SafetyScan(ByteReader &buf) { SkipAct1(buf); }
-template <> void GrfActionHandler<0x01>::LabelScan(ByteReader &buf) { SkipAct1(buf); }
-template <> void GrfActionHandler<0x01>::Init(ByteReader &buf) { SkipAct1(buf); }
-template <> void GrfActionHandler<0x01>::Reserve(ByteReader &buf) { SkipAct1(buf); }
-template <> void GrfActionHandler<0x01>::Activation(ByteReader &buf) { NewSpriteSet(buf); }
+template <>
+void GrfActionHandler<0x01>::FileScan(ByteReader &buf)
+{
+	SkipAct1(buf);
+}
+
+template <>
+void GrfActionHandler<0x01>::SafetyScan(ByteReader &buf)
+{
+	SkipAct1(buf);
+}
+
+template <>
+void GrfActionHandler<0x01>::LabelScan(ByteReader &buf)
+{
+	SkipAct1(buf);
+}
+
+template <>
+void GrfActionHandler<0x01>::Init(ByteReader &buf)
+{
+	SkipAct1(buf);
+}
+
+template <>
+void GrfActionHandler<0x01>::Reserve(ByteReader &buf)
+{
+	SkipAct1(buf);
+}
+
+template <>
+void GrfActionHandler<0x01>::Activation(ByteReader &buf)
+{
+	NewSpriteSet(buf);
+}

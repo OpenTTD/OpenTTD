@@ -8,6 +8,7 @@
 /** @file newgrf_act0_railtypes.cpp NewGRF Action 0x00 handler for railtypes. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../rail.h"
 #include "newgrf_bytereader.h"
@@ -86,10 +87,18 @@ static ChangeInfoResult RailTypeChangeInfo(uint first, uint last, int prop, Byte
 					RailType resolved_rt = GetRailTypeByLabel(std::byteswap(label), false);
 					if (resolved_rt != INVALID_RAILTYPE) {
 						switch (prop) {
-							case 0x0F: rti->powered_railtypes.Set(resolved_rt);               [[fallthrough]]; // Powered implies compatible.
-							case 0x0E: rti->compatible_railtypes.Set(resolved_rt);            break;
-							case 0x18: rti->introduction_required_railtypes.Set(resolved_rt); break;
-							case 0x19: rti->introduces_railtypes.Set(resolved_rt);            break;
+							case 0x0F:
+								rti->powered_railtypes.Set(resolved_rt);
+								[[fallthrough]]; // Powered implies compatible.
+							case 0x0E:
+								rti->compatible_railtypes.Set(resolved_rt);
+								break;
+							case 0x18:
+								rti->introduction_required_railtypes.Set(resolved_rt);
+								break;
+							case 0x19:
+								rti->introduces_railtypes.Set(resolved_rt);
+								break;
 						}
 					}
 				}
@@ -242,5 +251,14 @@ static ChangeInfoResult RailTypeReserveInfo(uint first, uint last, int prop, Byt
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_RAILTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf) { return RailTypeReserveInfo(first, last, prop, buf); }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_RAILTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RailTypeChangeInfo(first, last, prop, buf); }
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_RAILTYPES>::Reserve(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RailTypeReserveInfo(first, last, prop, buf);
+}
+
+template <>
+ChangeInfoResult GrfChangeInfoHandler<GSF_RAILTYPES>::Activation(uint first, uint last, int prop, ByteReader &buf)
+{
+	return RailTypeChangeInfo(first, last, prop, buf);
+}

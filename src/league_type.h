@@ -14,12 +14,12 @@
 
 /** Types of the possible link targets. */
 enum LinkType : uint8_t {
-	LT_NONE = 0,         ///< No link
-	LT_TILE = 1,         ///< Link a tile
-	LT_INDUSTRY = 2,     ///< Link an industry
-	LT_TOWN = 3,         ///< Link a town
-	LT_COMPANY = 4,      ///< Link a company
-	LT_STORY_PAGE = 5,   ///< Link a story page
+	LT_NONE = 0, ///< No link
+	LT_TILE = 1, ///< Link a tile
+	LT_INDUSTRY = 2, ///< Link an industry
+	LT_TOWN = 3, ///< Link a town
+	LT_COMPANY = 4, ///< Link a company
+	LT_STORY_PAGE = 5, ///< Link a story page
 };
 
 typedef uint32_t LinkTargetID; ///< Contains either tile, industry ID, town ID, story page ID or company ID
@@ -29,6 +29,7 @@ struct Link {
 	LinkTargetID target = 0;
 
 	Link() {}
+
 	Link(LinkType type, LinkTargetID target) : type{type}, target{target} {}
 };
 

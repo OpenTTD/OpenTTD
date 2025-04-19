@@ -43,8 +43,8 @@ private:
 
 protected:
 	std::array<std::unique_ptr<ComponentHandler>, 6> handlers{}; ///< Handlers to be run for each job.
-	GraphList schedule;            ///< Queue for new jobs.
-	JobList running;               ///< Currently running jobs.
+	GraphList schedule; ///< Queue for new jobs.
+	JobList running; ///< Currently running jobs.
 
 public:
 	/* This is a tick where not much else is happening, so a small lag might go unnoticed. */
@@ -74,7 +74,10 @@ public:
 	 * Remove a link graph from the execution queue.
 	 * @param lg Link graph to be removed.
 	 */
-	void Unqueue(LinkGraph *lg) { this->schedule.remove(lg); }
+	void Unqueue(LinkGraph *lg)
+	{
+		this->schedule.remove(lg);
+	}
 };
 
 void StateGameLoop_LinkGraphPauseControl();

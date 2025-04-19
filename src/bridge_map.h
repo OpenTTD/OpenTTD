@@ -10,9 +10,9 @@
 #ifndef BRIDGE_MAP_H
 #define BRIDGE_MAP_H
 
+#include "bridge.h"
 #include "rail_map.h"
 #include "road_map.h"
-#include "bridge.h"
 #include "water_map.h"
 
 /**
@@ -76,6 +76,7 @@ TileIndex GetSouthernBridgeEnd(TileIndex t);
 TileIndex GetOtherBridgeEnd(TileIndex t);
 
 int GetBridgeHeight(TileIndex tile);
+
 /**
  * Get the height ('z') of a bridge in pixels.
  * @param tile the bridge ramp tile to get the bridge height from

@@ -9,9 +9,9 @@
 
 #include "../stdafx.h"
 
-#include "../3rdparty/catch2/catch.hpp"
-
 #include "../core/utf8.hpp"
+
+#include "../3rdparty/catch2/catch.hpp"
 
 #include "../safeguards.h"
 
@@ -28,7 +28,7 @@ TEST_CASE("Utf8View - empty")
 
 TEST_CASE("Utf8View - invalid")
 {
-	Utf8View view("\u1234\x80\x80""a\xFF\x80\x80\x80\x80\x80""b\xF0");
+	Utf8View view("\u1234\x80\x80" "a\xFF\x80\x80\x80\x80\x80" "b\xF0");
 	auto begin = view.begin();
 	auto end = view.end();
 	CHECK(begin < end);

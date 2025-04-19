@@ -8,11 +8,13 @@
 /** @file makeindexed.cpp Implementation for converting sprites from another source from 32bpp RGBA to indexed 8bpp. */
 
 #include "../stdafx.h"
+
+#include "makeindexed.h"
+
 #include "../core/bitmath_func.hpp"
 #include "../core/math_func.hpp"
 #include "../gfx_func.h"
 #include "../palette_func.h"
-#include "makeindexed.h"
 
 #include "../safeguards.h"
 
@@ -48,7 +50,8 @@ static void Convert32bppTo8bpp(SpriteLoader::Sprite &sprite)
 	}
 }
 
-uint8_t SpriteLoaderMakeIndexed::LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool, uint8_t control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp)
+uint8_t SpriteLoaderMakeIndexed::LoadSprite(
+	SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool, uint8_t control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp)
 {
 	uint8_t avail = this->baseloader.LoadSprite(sprite, file, file_pos, sprite_type, true, control_flags, avail_8bpp, avail_32bpp);
 

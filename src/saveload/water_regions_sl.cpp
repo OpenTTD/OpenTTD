@@ -17,8 +17,7 @@ extern void SlSkipArray();
 
 /* Water Region savegame data is no longer used, but still needed for old savegames to load without errors. */
 struct WaterRegionChunkHandler : ChunkHandler {
-	WaterRegionChunkHandler() : ChunkHandler('WRGN', CH_READONLY)
-	{}
+	WaterRegionChunkHandler() : ChunkHandler('WRGN', CH_READONLY) {}
 
 	void Load() const override
 	{
@@ -28,5 +27,5 @@ struct WaterRegionChunkHandler : ChunkHandler {
 };
 
 static const WaterRegionChunkHandler WRGN;
-static const ChunkHandlerRef water_region_chunk_handlers[] = { WRGN };
+static const ChunkHandlerRef water_region_chunk_handlers[] = {WRGN};
 extern const ChunkHandlerTable _water_region_chunk_handlers(water_region_chunk_handlers);

@@ -9,28 +9,29 @@
 
 #include "stdafx.h"
 
-#include "command_func.h"
-#include "landscape.h"
+#include "waypoint_cmd.h"
+
 #include "bridge_map.h"
-#include "town.h"
-#include "waypoint_base.h"
-#include "pathfinder/yapf/yapf_cache.h"
+#include "command_func.h"
+#include "company_base.h"
+#include "company_func.h"
+#include "company_gui.h"
+#include "landscape.h"
+#include "landscape_cmd.h"
+#include "newgrf_roadstop.h"
+#include "newgrf_station.h"
 #include "pathfinder/water_regions.h"
+#include "pathfinder/yapf/yapf_cache.h"
+#include "string_func.h"
 #include "strings_func.h"
+#include "timer/timer_game_calendar.h"
+#include "town.h"
+#include "vehicle_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
-#include "window_func.h"
-#include "timer/timer_game_calendar.h"
-#include "vehicle_func.h"
-#include "string_func.h"
-#include "company_func.h"
-#include "newgrf_station.h"
-#include "newgrf_roadstop.h"
-#include "company_base.h"
 #include "water.h"
-#include "company_gui.h"
-#include "waypoint_cmd.h"
-#include "landscape_cmd.h"
+#include "waypoint_base.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -106,9 +107,12 @@ Axis GetAxisForNewRailWaypoint(TileIndex tile)
 	if (!IsTileType(tile, MP_RAILWAY) || GetRailTileType(tile) != RAIL_TILE_NORMAL) return INVALID_AXIS;
 
 	switch (GetTrackBits(tile)) {
-		case TRACK_BIT_X: return AXIS_X;
-		case TRACK_BIT_Y: return AXIS_Y;
-		default:          return INVALID_AXIS;
+		case TRACK_BIT_X:
+			return AXIS_X;
+		case TRACK_BIT_Y:
+			return AXIS_Y;
+		default:
+			return INVALID_AXIS;
 	}
 }
 
@@ -169,8 +173,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 	if (ret.Failed()) return ret;
 
 	Slope tileh = GetTileSlope(tile);
-	if (tileh != SLOPE_FLAT &&
-			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
+	if (tileh != SLOPE_FLAT && (!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
 		return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 	}
 
@@ -182,7 +185,8 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 extern void GetStationLayout(uint8_t *layout, uint numtracks, uint plat_len, const StationSpec *statspec);
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp, bool is_road);
 extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta);
-extern CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost);
+extern CommandCost CalculateRoadStopCost(
+	TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost);
 extern CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int replacement_spec_index);
 
 /**
@@ -199,7 +203,8 @@ extern CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, 
  * @param adjacent allow waypoints directly adjacent to other waypoints.
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axis axis, uint8_t width, uint8_t height, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
+CommandCost CmdBuildRailWaypoint(
+	DoCommandFlags flags, TileIndex start_tile, Axis axis, uint8_t width, uint8_t height, StationClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */
@@ -298,9 +303,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			TileIndex tile = start_tile + i * offset;
 			uint8_t old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 			if (!HasStationTileRail(tile)) c->infrastructure.station++;
-			bool reserved = IsTileType(tile, MP_RAILWAY) ?
-					HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) :
-					HasStationReservation(tile);
+			bool reserved = IsTileType(tile, MP_RAILWAY) ? HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) : HasStationReservation(tile);
 			MakeRailWaypoint(tile, wp->owner, wp->index, axis, layout[i], GetRailType(tile));
 			SetCustomStationSpecIndex(tile, map_spec_index);
 
@@ -331,7 +334,8 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
  * @param adjacent allow waypoints directly adjacent to other waypoints.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRoadWaypoint(DoCommandFlags flags, TileIndex start_tile, Axis axis, uint8_t width, uint8_t height, RoadStopClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
+CommandCost CmdBuildRoadWaypoint(
+	DoCommandFlags flags, TileIndex start_tile, Axis axis, uint8_t width, uint8_t height, RoadStopClassID spec_class, uint16_t spec_index, StationID station_to_join, bool adjacent)
 {
 	if (!IsValidAxis(axis)) return CMD_ERROR;
 	/* Check if the given station class is valid */

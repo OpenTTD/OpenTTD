@@ -8,9 +8,11 @@
 /** @file hotkeys.cpp Implementation of hotkey related functions */
 
 #include "stdafx.h"
-#include "openttd.h"
+
 #include "hotkeys.h"
+
 #include "ini_type.h"
+#include "openttd.h"
 #include "string_func.h"
 #include "window_gui.h"
 
@@ -22,7 +24,7 @@ std::string _hotkeys_file;
  * List of all HotkeyLists.
  * This is a pointer to ensure initialisation order with the various static HotkeyList instances.
  */
-static std::vector<HotkeyList*> *_hotkey_lists = nullptr;
+static std::vector<HotkeyList *> *_hotkey_lists = nullptr;
 
 /** String representation of a keycode */
 struct KeycodeNames {
@@ -32,60 +34,19 @@ struct KeycodeNames {
 
 /** Array of non-standard keycodes that can be used in the hotkeys config file. */
 static const std::initializer_list<KeycodeNames> _keycode_to_name = {
-	{"SHIFT", WKC_SHIFT},
-	{"CTRL", WKC_CTRL},
-	{"ALT", WKC_ALT},
-	{"META", WKC_META},
-	{"GLOBAL", WKC_GLOBAL_HOTKEY},
-	{"ESC", WKC_ESC},
-	{"BACKSPACE", WKC_BACKSPACE},
-	{"INS", WKC_INSERT},
-	{"DEL", WKC_DELETE},
-	{"PAGEUP", WKC_PAGEUP},
-	{"PAGEDOWN", WKC_PAGEDOWN},
-	{"END", WKC_END},
-	{"HOME", WKC_HOME},
-	{"RETURN", WKC_RETURN},
-	{"SPACE", WKC_SPACE},
-	{"F1", WKC_F1},
-	{"F2", WKC_F2},
-	{"F3", WKC_F3},
-	{"F4", WKC_F4},
-	{"F5", WKC_F5},
-	{"F6", WKC_F6},
-	{"F7", WKC_F7},
-	{"F8", WKC_F8},
-	{"F9", WKC_F9},
-	{"F10", WKC_F10},
-	{"F11", WKC_F11},
-	{"F12", WKC_F12},
-	{"BACKQUOTE", WKC_BACKQUOTE},
-	{"PAUSE", WKC_PAUSE},
-	{"NUM_DIV", WKC_NUM_DIV},
-	{"NUM_MUL", WKC_NUM_MUL},
-	{"NUM_MINUS", WKC_NUM_MINUS},
-	{"NUM_PLUS", WKC_NUM_PLUS},
-	{"NUM_ENTER", WKC_NUM_ENTER},
-	{"NUM_DOT", WKC_NUM_DECIMAL},
-	{"SLASH", WKC_SLASH},
-	{"/", WKC_SLASH}, /* deprecated, use SLASH */
-	{"SEMICOLON", WKC_SEMICOLON},
-	{";", WKC_SEMICOLON}, /* deprecated, use SEMICOLON */
-	{"EQUALS", WKC_EQUALS},
-	{"=", WKC_EQUALS}, /* deprecated, use EQUALS */
-	{"L_BRACKET", WKC_L_BRACKET},
-	{"[", WKC_L_BRACKET}, /* deprecated, use L_BRACKET */
-	{"BACKSLASH", WKC_BACKSLASH},
-	{"\\", WKC_BACKSLASH}, /* deprecated, use BACKSLASH */
-	{"R_BRACKET", WKC_R_BRACKET},
-	{"]", WKC_R_BRACKET}, /* deprecated, use R_BRACKET */
-	{"SINGLEQUOTE", WKC_SINGLEQUOTE},
-	{"'", WKC_SINGLEQUOTE}, /* deprecated, use SINGLEQUOTE */
-	{"COMMA", WKC_COMMA},
-	{"PERIOD", WKC_PERIOD},
-	{".", WKC_PERIOD}, /* deprecated, use PERIOD */
-	{"MINUS", WKC_MINUS},
-	{"-", WKC_MINUS}, /* deprecated, use MINUS */
+	{"SHIFT", WKC_SHIFT}, {"CTRL", WKC_CTRL}, {"ALT", WKC_ALT}, {"META", WKC_META}, {"GLOBAL", WKC_GLOBAL_HOTKEY}, {"ESC", WKC_ESC}, {"BACKSPACE", WKC_BACKSPACE}, {"INS", WKC_INSERT},
+	{"DEL", WKC_DELETE}, {"PAGEUP", WKC_PAGEUP}, {"PAGEDOWN", WKC_PAGEDOWN}, {"END", WKC_END}, {"HOME", WKC_HOME}, {"RETURN", WKC_RETURN}, {"SPACE", WKC_SPACE}, {"F1", WKC_F1}, {"F2", WKC_F2},
+	{"F3", WKC_F3}, {"F4", WKC_F4}, {"F5", WKC_F5}, {"F6", WKC_F6}, {"F7", WKC_F7}, {"F8", WKC_F8}, {"F9", WKC_F9}, {"F10", WKC_F10}, {"F11", WKC_F11}, {"F12", WKC_F12}, {"BACKQUOTE", WKC_BACKQUOTE},
+	{"PAUSE", WKC_PAUSE}, {"NUM_DIV", WKC_NUM_DIV}, {"NUM_MUL", WKC_NUM_MUL}, {"NUM_MINUS", WKC_NUM_MINUS}, {"NUM_PLUS", WKC_NUM_PLUS}, {"NUM_ENTER", WKC_NUM_ENTER}, {"NUM_DOT", WKC_NUM_DECIMAL},
+	{"SLASH", WKC_SLASH}, {"/", WKC_SLASH}, /* deprecated, use SLASH */
+	{"SEMICOLON", WKC_SEMICOLON}, {";", WKC_SEMICOLON}, /* deprecated, use SEMICOLON */
+	{"EQUALS", WKC_EQUALS}, {"=", WKC_EQUALS}, /* deprecated, use EQUALS */
+	{"L_BRACKET", WKC_L_BRACKET}, {"[", WKC_L_BRACKET}, /* deprecated, use L_BRACKET */
+	{"BACKSLASH", WKC_BACKSLASH}, {"\\", WKC_BACKSLASH}, /* deprecated, use BACKSLASH */
+	{"R_BRACKET", WKC_R_BRACKET}, {"]", WKC_R_BRACKET}, /* deprecated, use R_BRACKET */
+	{"SINGLEQUOTE", WKC_SINGLEQUOTE}, {"'", WKC_SINGLEQUOTE}, /* deprecated, use SINGLEQUOTE */
+	{"COMMA", WKC_COMMA}, {"PERIOD", WKC_PERIOD}, {".", WKC_PERIOD}, /* deprecated, use PERIOD */
+	{"MINUS", WKC_MINUS}, {"-", WKC_MINUS}, /* deprecated, use MINUS */
 };
 
 /**
@@ -106,7 +67,7 @@ static uint16_t ParseCode(const char *start, const char *end)
 		}
 	}
 	if (end - start == 1) {
-		if (*start >= 'a' && *start <= 'z') return *start - ('a'-'A');
+		if (*start >= 'a' && *start <= 'z') return *start - ('a' - 'A');
 		/* Ignore invalid keycodes */
 		if (*(const uint8_t *)start < 128) return *start;
 	}
@@ -157,7 +118,7 @@ static void ParseHotkeys(Hotkey &hotkey, const char *value)
 		while (*end != '\0' && *end != ',') end++;
 		uint16_t keycode = ParseKeycode(start, end);
 		if (keycode != 0) hotkey.AddKeycode(keycode);
-		start = (*end == ',') ? end + 1: end;
+		start = (*end == ',') ? end + 1 : end;
 	}
 }
 
@@ -226,9 +187,7 @@ std::string SaveKeycodes(const Hotkey &hotkey)
  * @param name The name of this hotkey.
  * @param num Number of this hotkey, should be unique within the hotkey list.
  */
-Hotkey::Hotkey(uint16_t default_keycode, const std::string &name, int num) :
-	name(name),
-	num(num)
+Hotkey::Hotkey(uint16_t default_keycode, const std::string &name, int num) : name(name), num(num)
 {
 	if (default_keycode != 0) this->AddKeycode(default_keycode);
 }
@@ -239,9 +198,7 @@ Hotkey::Hotkey(uint16_t default_keycode, const std::string &name, int num) :
  * @param name The name of this hotkey.
  * @param num Number of this hotkey, should be unique within the hotkey list.
  */
-Hotkey::Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, int num) :
-	name(name),
-	num(num)
+Hotkey::Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, int num) : name(name), num(num)
 {
 	for (uint16_t keycode : default_keycodes) {
 		this->AddKeycode(keycode);
@@ -261,7 +218,7 @@ void Hotkey::AddKeycode(uint16_t keycode)
 HotkeyList::HotkeyList(const std::string &ini_group, const std::vector<Hotkey> &items, GlobalHotkeyHandlerFunc global_hotkey_handler) :
 	global_hotkey_handler(global_hotkey_handler), ini_group(ini_group), items(items)
 {
-	if (_hotkey_lists == nullptr) _hotkey_lists = new std::vector<HotkeyList*>();
+	if (_hotkey_lists == nullptr) _hotkey_lists = new std::vector<HotkeyList *>();
 	_hotkey_lists->push_back(this);
 }
 
@@ -318,7 +275,6 @@ int HotkeyList::CheckMatch(uint16_t keycode, bool global_only) const
 	return -1;
 }
 
-
 static void SaveLoadHotkeys(bool save)
 {
 	IniFile ini{};
@@ -334,7 +290,6 @@ static void SaveLoadHotkeys(bool save)
 
 	if (save) ini.SaveToDisk(_hotkeys_file);
 }
-
 
 /** Load the hotkeys from the config file */
 void LoadHotkeysFromConfig()
@@ -357,4 +312,3 @@ void HandleGlobalHotkeys([[maybe_unused]] char32_t key, uint16_t keycode)
 		if (hotkey >= 0 && (list->global_hotkey_handler(hotkey) == ES_HANDLED)) return;
 	}
 }
-

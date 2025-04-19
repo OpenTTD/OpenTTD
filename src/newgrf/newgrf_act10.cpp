@@ -8,6 +8,7 @@
 /** @file newgrf_act10.cpp NewGRF Action 0x10 handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
@@ -29,9 +30,33 @@ static void DefineGotoLabel(ByteReader &buf)
 	GrfMsg(2, "DefineGotoLabel: GOTO target with label 0x{:02X}", nfo_label);
 }
 
-template <> void GrfActionHandler<0x10>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x10>::SafetyScan(ByteReader &) { }
-template <> void GrfActionHandler<0x10>::LabelScan(ByteReader &buf) { DefineGotoLabel(buf); }
-template <> void GrfActionHandler<0x10>::Init(ByteReader &) { }
-template <> void GrfActionHandler<0x10>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x10>::Activation(ByteReader &) { }
+template <>
+void GrfActionHandler<0x10>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x10>::SafetyScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x10>::LabelScan(ByteReader &buf)
+{
+	DefineGotoLabel(buf);
+}
+
+template <>
+void GrfActionHandler<0x10>::Init(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x10>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x10>::Activation(ByteReader &)
+{
+}

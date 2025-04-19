@@ -8,6 +8,7 @@
 /** @file script_accounting.cpp Implementation of ScriptAccounting. */
 
 #include "../../stdafx.h"
+
 #include "script_accounting.hpp"
 
 #include "../../safeguards.h"

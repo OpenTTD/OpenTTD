@@ -8,20 +8,21 @@
 /** @file script_controller.cpp Implementation of ScriptControler. */
 
 #include "../../stdafx.h"
-#include "../../string_func.h"
-#include "../../script/squirrel.hpp"
-#include "../../rev.h"
 
 #include "script_controller.hpp"
-#include "script_error.hpp"
+
+#include "../../misc_cmd.h"
+#include "../../network/network.h"
+#include "../../rev.h"
+#include "../../script/squirrel.hpp"
+#include "../../settings_type.h"
+#include "../../string_func.h"
 #include "../script_fatalerror.hpp"
+#include "../script_gui.h"
 #include "../script_info.hpp"
 #include "../script_instance.hpp"
+#include "script_error.hpp"
 #include "script_log.hpp"
-#include "../script_gui.h"
-#include "../../settings_type.h"
-#include "../../network/network.h"
-#include "../../misc_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -67,9 +68,7 @@
 	ScriptLog::Log(error_msg ? ScriptLogTypes::LOG_SQ_ERROR : ScriptLogTypes::LOG_SQ_INFO, message);
 }
 
-ScriptController::ScriptController(::CompanyID company) :
-	ticks(0),
-	loaded_library_count(0)
+ScriptController::ScriptController(::CompanyID company) : ticks(0), loaded_library_count(0)
 {
 	ScriptObject::SetCompany(company);
 }

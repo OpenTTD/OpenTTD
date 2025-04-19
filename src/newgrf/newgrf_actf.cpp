@@ -8,6 +8,7 @@
 /** @file newgrf_actf.cpp NewGRF Action 0x0F handler. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
 #include "../newgrf_townname.h"
 #include "newgrf_bytereader.h"
@@ -66,7 +67,7 @@ static void FeatureTownName(ByteReader &buf)
 		uint8_t texts = buf.ReadByte();
 		partlist.bitstart = buf.ReadByte();
 		partlist.bitcount = buf.ReadByte();
-		partlist.maxprob  = 0;
+		partlist.maxprob = 0;
 		GrfMsg(6, "FeatureTownName: part {} contains {} texts and will use GB(seed, {}, {})", partnum, texts, partlist.bitstart, partlist.bitcount);
 
 		partlist.parts.reserve(texts);
@@ -95,9 +96,34 @@ static void FeatureTownName(ByteReader &buf)
 	}
 }
 
-template <> void GrfActionHandler<0x0F>::FileScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0F>::SafetyScan(ByteReader &buf) { GRFUnsafe(buf); }
-template <> void GrfActionHandler<0x0F>::LabelScan(ByteReader &) { }
-template <> void GrfActionHandler<0x0F>::Init(ByteReader &buf) { FeatureTownName(buf); }
-template <> void GrfActionHandler<0x0F>::Reserve(ByteReader &) { }
-template <> void GrfActionHandler<0x0F>::Activation(ByteReader &) { }
+template <>
+void GrfActionHandler<0x0F>::FileScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0F>::SafetyScan(ByteReader &buf)
+{
+	GRFUnsafe(buf);
+}
+
+template <>
+void GrfActionHandler<0x0F>::LabelScan(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0F>::Init(ByteReader &buf)
+{
+	FeatureTownName(buf);
+}
+
+template <>
+void GrfActionHandler<0x0F>::Reserve(ByteReader &)
+{
+}
+
+template <>
+void GrfActionHandler<0x0F>::Activation(ByteReader &)
+{
+}

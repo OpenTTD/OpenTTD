@@ -11,16 +11,16 @@
 #define ENGINE_TYPE_H
 
 #include "core/pool_type.hpp"
+#include "cargo_type.h"
 #include "economy_type.h"
 #include "landscape_type.h"
+#include "newgrf_badge_type.h"
 #include "newgrf_callbacks.h"
 #include "rail_type.h"
 #include "road_type.h"
-#include "cargo_type.h"
-#include "timer/timer_game_calendar.h"
 #include "sound_type.h"
 #include "strings_type.h"
-#include "newgrf_badge_type.h"
+#include "timer/timer_game_calendar.h"
 
 /** Unique identification number of an engine. */
 using EngineID = PoolID<uint16_t, struct EngineIDTag, 64000, 0xFFFF>;
@@ -29,18 +29,18 @@ struct Engine;
 
 /** Available types of rail vehicles. */
 enum RailVehicleTypes : uint8_t {
-	RAILVEH_SINGLEHEAD,  ///< indicates a "standalone" locomotive
-	RAILVEH_MULTIHEAD,   ///< indicates a combination of two locomotives
-	RAILVEH_WAGON,       ///< simple wagon, not motorized
+	RAILVEH_SINGLEHEAD, ///< indicates a "standalone" locomotive
+	RAILVEH_MULTIHEAD, ///< indicates a combination of two locomotives
+	RAILVEH_WAGON, ///< simple wagon, not motorized
 };
 
 /** Type of rail engine. */
 enum EngineClass : uint8_t {
-	EC_STEAM,    ///< Steam rail engine.
-	EC_DIESEL,   ///< Diesel rail engine.
+	EC_STEAM, ///< Steam rail engine.
+	EC_DIESEL, ///< Diesel rail engine.
 	EC_ELECTRIC, ///< Electric rail engine.
 	EC_MONORAIL, ///< Mono rail engine.
-	EC_MAGLEV,   ///< Maglev engine.
+	EC_MAGLEV, ///< Maglev engine.
 };
 
 /** Information about a rail vehicle. */
@@ -138,9 +138,9 @@ struct RoadVehicleInfo {
  * This is defined in the specification a 32 bit value, but most bits are not currently used.
  */
 enum class ExtraEngineFlag : uint8_t {
-	NoNews          = 0, ///< No 'new vehicle' news will be generated.
-	NoPreview       = 1, ///< No exclusive preview will be offered.
-	JoinPreview     = 2, ///< Engine will join exclusive preview with variant parent.
+	NoNews = 0, ///< No 'new vehicle' news will be generated.
+	NoPreview = 1, ///< No exclusive preview will be offered.
+	JoinPreview = 2, ///< Engine will join exclusive preview with variant parent.
 	SyncReliability = 3, ///< Engine reliability will be synced with variant parent.
 };
 using ExtraEngineFlags = EnumBitSet<ExtraEngineFlag, uint8_t>;
@@ -149,18 +149,18 @@ using ExtraEngineFlags = EnumBitSet<ExtraEngineFlag, uint8_t>;
  * EngineInfo.misc_flags is a bitmask, with the following values
  */
 enum class EngineMiscFlag : uint8_t {
-	RailTilts  = 0, ///< Rail vehicle tilts in curves
+	RailTilts = 0, ///< Rail vehicle tilts in curves
 	RoadIsTram = 0, ///< Road vehicle is a tram/light rail vehicle
 
-	Uses2CC    = 1, ///< Vehicle uses two company colours
+	Uses2CC = 1, ///< Vehicle uses two company colours
 
-	RailIsMU   = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
-	RailFlips  = 3, ///< Rail vehicle has old depot-flip handling
+	RailIsMU = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
+	RailFlips = 3, ///< Rail vehicle has old depot-flip handling
 
-	AutoRefit                = 4, ///< Automatic refitting is allowed
+	AutoRefit = 4, ///< Automatic refitting is allowed
 	NoDefaultCargoMultiplier = 5, ///< Use the new capacity algorithm. The default cargotype of the vehicle does not affect capacity multipliers. CB 15 is also called in purchase list.
-	NoBreakdownSmoke         = 6, ///< Do not show black smoke during a breakdown.
-	SpriteStack              = 7, ///< Draw vehicle by stacking multiple sprites.
+	NoBreakdownSmoke = 6, ///< Do not show black smoke during a breakdown.
+	SpriteStack = 7, ///< Draw vehicle by stacking multiple sprites.
 };
 using EngineMiscFlags = EnumBitSet<EngineMiscFlag, uint8_t>;
 
@@ -192,7 +192,7 @@ struct EngineInfo {
  * Engine.flags is a bitmask, with the following values.
  */
 enum class EngineFlag : uint8_t {
-	Available        = 0, ///< This vehicle is available to everyone.
+	Available = 0, ///< This vehicle is available to everyone.
 	ExclusivePreview = 1, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
 };
 using EngineFlags = EnumBitSet<EngineFlag, uint8_t>;
@@ -201,10 +201,10 @@ using EngineFlags = EnumBitSet<EngineFlag, uint8_t>;
  * Contexts an engine name can be shown in.
  */
 enum class EngineNameContext : uint8_t {
-	Generic                 = 0x00, ///< No specific context available.
-	VehicleDetails          = 0x11, ///< Name is shown in the vehicle details GUI.
-	PurchaseList            = 0x20, ///< Name is shown in the purchase list (including autoreplace window 'Available vehicles' panel).
-	PreviewNews             = 0x21, ///< Name is shown in exclusive preview or newspaper.
+	Generic = 0x00, ///< No specific context available.
+	VehicleDetails = 0x11, ///< Name is shown in the vehicle details GUI.
+	PurchaseList = 0x20, ///< Name is shown in the purchase list (including autoreplace window 'Available vehicles' panel).
+	PreviewNews = 0x21, ///< Name is shown in exclusive preview or newspaper.
 	AutoreplaceVehicleInUse = 0x22, ///< Name is show in the autoreplace window 'Vehicles in use' panel.
 };
 
