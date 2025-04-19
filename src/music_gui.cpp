@@ -768,11 +768,11 @@ struct MusicWindow : public Window {
 			}
 
 			case WID_M_MUSIC_VOL:
-				DrawSliderWidget(r, 0, INT8_MAX, 0, _settings_client.music.music_vol, nullptr);
+				DrawSliderWidget(r, COLOUR_GREY, COLOUR_GREY, TC_BLACK, 0, INT8_MAX, 0, _settings_client.music.music_vol, nullptr);
 				break;
 
 			case WID_M_EFFECT_VOL:
-				DrawSliderWidget(r, 0, INT8_MAX, 0, _settings_client.music.effect_vol, nullptr);
+				DrawSliderWidget(r, COLOUR_GREY, COLOUR_GREY, TC_BLACK, 0, INT8_MAX, 0, _settings_client.music.effect_vol, nullptr);
 				break;
 		}
 	}
