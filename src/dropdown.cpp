@@ -87,6 +87,9 @@ struct DropdownWindow : Window {
 
 	Dimension items_dim{}; ///< Calculated cropped and padded dimension for the items widget.
 
+	static inline Dimension selected_item_dimension;
+	static inline Point selected_item_position;
+
 	/**
 	 * Create a dropdown menu.
 	 * @param parent        Parent window.
@@ -244,6 +247,9 @@ struct DropdownWindow : Window {
 
 			if (y < item_height) {
 				if (item->masked || !item->Selectable()) return false;
+				/* Store the selected item's size and click position in case the event handler needs it. */
+				DropdownWindow::selected_item_dimension = Dimension(r.Width(), item_height);
+				DropdownWindow::selected_item_position = Point(_cursor.pos.x - r.left - this->left, _cursor.pos.y - y - this->top);
 				value = item->result;
 				return true;
 			}
@@ -342,9 +348,10 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	void ReplaceList(DropDownList &&list)
+	void ReplaceList(DropDownList &&list, std::optional<int> selected_result)
 	{
 		this->list = std::move(list);
+		if (selected_result.has_value()) this->selected_result = *selected_result;
 		this->UpdateSizeAndPosition();
 		this->ReInit(0, 0);
 		this->InitializePositionSize(this->position.x, this->position.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
@@ -352,10 +359,15 @@ struct DropdownWindow : Window {
 	}
 };
 
-void ReplaceDropDownList(Window *parent, DropDownList &&list)
+void ReplaceDropDownList(Window *parent, DropDownList &&list, std::optional<int> selected_result)
 {
 	DropdownWindow *ddw = dynamic_cast<DropdownWindow *>(parent->FindChildWindow(WC_DROPDOWN_MENU));
-	if (ddw != nullptr) ddw->ReplaceList(std::move(list));
+	if (ddw != nullptr) ddw->ReplaceList(std::move(list), selected_result);
+}
+
+std::pair<Dimension, Point> GetLastDropDownClickPosition()
+{
+	return {DropdownWindow::selected_item_dimension, DropdownWindow::selected_item_position};
 }
 
 /**
