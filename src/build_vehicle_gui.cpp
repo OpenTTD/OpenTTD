@@ -18,6 +18,7 @@
 #include "company_func.h"
 #include "vehicle_gui.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_badge_gui.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
@@ -73,9 +74,12 @@ static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDDEN_ENGINES),
 			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_FILTER_CRITERIA),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_BV_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY),
 			NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BV_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_VERTICAL, NWidContainerFlag{}, WID_BV_BADGE_FILTER),
 		EndContainer(),
 	EndContainer(),
 	/* Vehicle list. */
@@ -1148,8 +1152,13 @@ struct BuildVehicleWindow : Window {
 	TestedEngineDetails te{}; ///< Tested cost and capacity after refit.
 	GUIBadgeClasses badge_classes{};
 
+	static constexpr int BADGE_COLUMNS = 3; ///< Number of columns available for badges (0 = left of image, 1 = between image and name, 2 = after name)
+
 	StringFilter string_filter{}; ///< Filter for vehicle name
 	QueryString vehicle_editbox; ///< Filter editbox
+
+	std::pair<WidgetID, WidgetID> badge_filters{}; ///< First and last widgets IDs of badge filters.
+	BadgeFilterConfiguration badge_filter_conf{};
 
 	void SetBuyVehicleText()
 	{
@@ -1306,6 +1315,12 @@ struct BuildVehicleWindow : Window {
 	{
 		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
 		this->SetCargoFilterArray();
+
+		auto container = this->GetWidget<NWidgetContainer>(WID_BV_BADGE_FILTER);
+		this->badge_filters = AddBadgeDropdownFilters(*container, WID_BV_BADGE_FILTER, COLOUR_GREY, static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
+
+		this->widget_lookup.clear();
+		this->nested_root->FillWidgetLookup(this->widget_lookup);
 	}
 
 	/** Filter the engine list against the currently selected cargo filter */
@@ -1353,6 +1368,7 @@ struct BuildVehicleWindow : Window {
 		list.clear();
 
 		BadgeTextFilter btf(this->string_filter, GSF_TRAINS);
+		BadgeDropdownFilter bdf(this->badge_filter_conf);
 
 		/* Make list of all available train engines and wagons.
 		 * Also check to see if the previously selected engine is still available,
@@ -1368,6 +1384,8 @@ struct BuildVehicleWindow : Window {
 
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!FilterSingleEngine(eid)) continue;
+
+			if (!bdf.Filter(e->badges)) continue;
 
 			/* Filter by name or NewGRF extra text */
 			if (!FilterByText(e) && !btf.Filter(e->badges)) continue;
@@ -1574,6 +1592,12 @@ struct BuildVehicleWindow : Window {
 		return list;
 	}
 
+	DropDownList BuildBadgeConfigurationList() const
+	{
+		static const auto separators = {STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME};
+		return BuildBadgeClassConfigurationList(this->badge_classes, BADGE_COLUMNS, separators);
+	}
+
 	void BuildVehicle()
 	{
 		EngineID sel_eng = this->sel_engine;
@@ -1657,6 +1681,11 @@ struct BuildVehicleWindow : Window {
 				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
 				break;
 
+			case WID_BV_CONFIGURE_BADGES:
+				if (this->badge_classes.GetClasses().empty()) break;
+				ShowDropDownList(this, this->BuildBadgeConfigurationList(), -1, widget, 0, false, true);
+				break;
+
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr) {
@@ -1677,6 +1706,12 @@ struct BuildVehicleWindow : Window {
 				}
 				break;
 			}
+
+			default:
+				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+					ShowDropDownList(this, GetBadgeDropdownFilterList(*this->GetWidget<NWidgetBase>(widget)), -1, widget, 0, false);
+				}
+				break;
 		}
 	}
 
@@ -1727,6 +1762,10 @@ struct BuildVehicleWindow : Window {
 			}
 
 			default:
+				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+					return GetBadgeDropdownFilterString(*this->GetWidget<NWidgetBase>(widget), this->badge_filter_conf);
+				}
+
 				return this->Window::GetWidgetString(widget, stringid);
 		}
 	}
@@ -1754,6 +1793,10 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
 				size.width = std::max(size.width, GetDropDownListDimension(this->BuildCargoDropDownList()).width + padding.width);
+				break;
+
+			case WID_BV_CONFIGURE_BADGES:
+				if (this->badge_classes.GetClasses().empty()) size.width = 0;
 				break;
 
 			case WID_BV_BUILD:
@@ -1849,6 +1892,40 @@ struct BuildVehicleWindow : Window {
 					this->eng_list.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
 					this->eng_list.ForceRebuild();
 					this->SelectEngine(this->sel_engine);
+				}
+				break;
+
+			case WID_BV_CONFIGURE_BADGES: {
+				if (index < 0) return;
+
+				GrfSpecFeature feature = static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type);
+				if (index == INT_MAX) {
+					ResetBadgeClassConfiguration(feature);
+					this->ReInit();
+					this->SetDirty();
+
+					this->CloseChildWindows(WC_DROPDOWN_MENU);
+					return;
+				}
+
+				HandleBadgeConfigurationDropDownClick(feature, BadgeClassID(index), BADGE_COLUMNS);
+
+				this->ReInit();
+				this->SetDirty();
+
+				ReplaceDropDownList(this, this->BuildBadgeConfigurationList(), -1);
+				break;
+			}
+
+			default:
+				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
+					if (index < 0) {
+						ResetBadgeFilter(this->badge_filter_conf, GetBadgeDropdownFilterClass(*this->GetWidget<NWidgetBase>(widget)));
+					} else {
+						SetBadgeFilter(this->badge_filter_conf, BadgeID(index));
+					}
+					this->eng_list.ForceRebuild();
+					this->SetDirty();
 				}
 				break;
 		}

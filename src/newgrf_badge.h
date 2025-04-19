@@ -54,6 +54,7 @@ std::span<const Badge> GetBadges();
 Badge *GetBadge(BadgeID index);
 Badge *GetBadgeByLabel(std::string_view label);
 Badge *GetClassBadge(BadgeClassID class_index);
+std::span<const BadgeID> GetClassBadges();
 
 uint32_t GetBadgeVariableResult(const struct GRFFile &grffile, std::span<const BadgeID> badges, uint32_t parameter);
 
@@ -66,6 +67,15 @@ public:
 
 private:
 	std::vector<BadgeID> badges{};
+};
+
+class BadgeDropdownFilter {
+public:
+	BadgeDropdownFilter(const BadgeFilterConfiguration &conf) : badges(conf) {}
+	bool Filter(std::span<const BadgeID> badges) const;
+
+private:
+	const BadgeFilterConfiguration &badges;
 };
 
 #endif /* NEWGRF_BADGE_H */

@@ -1041,4 +1041,6 @@ void SetFocusedWindow(Window *w);
 void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y);
 Rect ScrollRect(Rect r, const Scrollbar &sb, int resize_step = 1);
 
+void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str, StringAlignment align);
+
 #endif /* WINDOW_GUI_H */
