@@ -27,6 +27,7 @@
  * \li GSCargo::CC_NON_POURABLE
  * \li GSCargo::CC_POTABLE
  * \li GSCargo::CC_NON_POTABLE
+ * \li GSAirport::GetAirportNumHangars
  *
  * Other changes:
  * \li GSBridge::GetBridgeID renamed to GSBridge::GetBridgeType
