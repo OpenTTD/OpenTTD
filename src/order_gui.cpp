@@ -1596,6 +1596,7 @@ public:
 };
 
 /** Nested widget definition for "your" train orders. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1663,6 +1664,7 @@ static constexpr NWidgetPart _nested_orders_train_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _orders_train_desc(
 	WDP_AUTO, "view_vehicle_orders_train", 384, 100,
@@ -1673,6 +1675,7 @@ static WindowDesc _orders_train_desc(
 );
 
 /** Nested widget definition for "your" orders (non-train). */
+/* clang-format off */
 static constexpr NWidgetPart _nested_orders_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1736,6 +1739,7 @@ static constexpr NWidgetPart _nested_orders_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _orders_desc(
 	WDP_AUTO, "view_vehicle_orders", 384, 100,
@@ -1746,6 +1750,7 @@ static WindowDesc _orders_desc(
 );
 
 /** Nested widget definition for competitor orders. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_other_orders_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1763,6 +1768,7 @@ static constexpr NWidgetPart _nested_other_orders_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _other_orders_desc(
 	WDP_AUTO, "view_vehicle_orders_competitor", 384, 86,

@@ -218,6 +218,7 @@ static const CheatEntry _cheats_ui[] = {
 static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
 
 /** Widget definitions of the cheat GUI. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_cheat_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -232,6 +233,7 @@ static constexpr NWidgetPart _nested_cheat_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** GUI for the cheats. */
 struct CheatWindow : Window {

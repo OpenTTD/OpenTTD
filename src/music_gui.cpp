@@ -623,6 +623,7 @@ struct MusicTrackSelectionWindow : public Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -659,6 +660,7 @@ static constexpr NWidgetPart _nested_music_track_selection_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _music_track_selection_desc(
 	WDP_AUTO, nullptr, 0, 0,
@@ -855,6 +857,7 @@ struct MusicWindow : public Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_music_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -918,6 +921,7 @@ static constexpr NWidgetPart _nested_music_window_widgets[] = {
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_M_CUSTOM2), SetFill(1, 0), SetStringTip(STR_MUSIC_PLAYLIST_CUSTOM_2, STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _music_window_desc(
 	WDP_AUTO, "music", 0, 0,

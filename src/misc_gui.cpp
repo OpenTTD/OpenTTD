@@ -47,6 +47,7 @@ enum OskActivation : uint8_t {
 };
 
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -56,6 +57,7 @@ static constexpr NWidgetPart _nested_land_info_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_LI_BACKGROUND), EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _land_info_desc(
 	WDP_AUTO, nullptr, 0, 0,
@@ -319,6 +321,7 @@ void ShowLandInfo(TileIndex tile)
 	new LandInfoWindow(tile);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_about_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -334,6 +337,7 @@ static constexpr NWidgetPart _nested_about_widgets[] = {
 		NWidget(WWT_LABEL, INVALID_COLOUR, WID_A_COPYRIGHT),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _about_desc(
 	WDP_CENTER, nullptr, 0, 0,
@@ -586,9 +590,11 @@ void HideFillingPercent(TextEffectID *te_id)
 	*te_id = INVALID_TE_ID;
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_tooltips_widgets[] = {
 	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_TT_BACKGROUND),
 };
+/* clang-format on */
 
 static WindowDesc _tool_tips_desc(
 	WDP_MANUAL, nullptr, 0, 0, // Coordinates and sizes are not used,
@@ -975,6 +981,7 @@ struct QueryStringWindow : public Window
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_query_string_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -989,6 +996,7 @@ static constexpr NWidgetPart _nested_query_string_widgets[] = {
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_QS_OK), SetMinimalSize(87, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_OK),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _query_string_desc(
 	WDP_CENTER, nullptr, 0, 0,
@@ -1113,6 +1121,7 @@ struct QueryWindow : public Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_query_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
@@ -1128,6 +1137,7 @@ static constexpr NWidgetPart _nested_query_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _query_desc(
 	WDP_CENTER, nullptr, 0, 0,

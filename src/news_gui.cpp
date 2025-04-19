@@ -102,6 +102,7 @@ static TileIndex GetReferenceTile(const NewsReference &reference)
 }
 
 /* Normal news items. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -125,6 +126,7 @@ static constexpr NWidgetPart _nested_normal_news_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _normal_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
@@ -134,6 +136,7 @@ static WindowDesc _normal_news_desc(
 );
 
 /* New vehicles news items. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -173,6 +176,7 @@ static constexpr NWidgetPart _nested_vehicle_news_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _vehicle_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
@@ -182,6 +186,7 @@ static WindowDesc _vehicle_news_desc(
 );
 
 /* Company news items. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_company_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -218,6 +223,7 @@ static constexpr NWidgetPart _nested_company_news_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _company_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
@@ -227,6 +233,7 @@ static WindowDesc _company_news_desc(
 );
 
 /* Thin news items. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_WHITE, WID_N_PANEL),
 		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.fullbevel),
@@ -252,6 +259,7 @@ static constexpr NWidgetPart _nested_thin_news_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _thin_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
@@ -261,6 +269,7 @@ static WindowDesc _thin_news_desc(
 );
 
 /* Small news items. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_small_news_widgets[] = {
 	/* Caption + close box. The caption is not WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
@@ -288,6 +297,7 @@ static constexpr NWidgetPart _nested_small_news_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _small_news_desc(
 	WDP_MANUAL, nullptr, 0, 0,
@@ -1275,6 +1285,7 @@ struct MessageHistoryWindow : Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_message_history[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1293,6 +1304,7 @@ static constexpr NWidgetPart _nested_message_history[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _message_history_desc(
 	WDP_AUTO, "list_news", 400, 140,

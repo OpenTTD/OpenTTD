@@ -374,6 +374,7 @@ static const char * GetAIName(int ai_index)
 }
 
 /** @hideinitializer */
+/* clang-format off */
 static constexpr NWidgetPart _framerate_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -406,6 +407,7 @@ static constexpr NWidgetPart _framerate_window_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 struct FramerateWindow : Window {
 	int num_active = 0;
@@ -692,6 +694,7 @@ static WindowDesc _framerate_display_desc(
 
 
 /** @hideinitializer */
+/* clang-format off */
 static constexpr NWidgetPart _frametime_graph_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -704,6 +707,7 @@ static constexpr NWidgetPart _frametime_graph_window_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 struct FrametimeGraphWindow : Window {
 	int vertical_scale = TIMESTAMP_PRECISION / 10; ///< number of TIMESTAMP_PRECISION units vertically

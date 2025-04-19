@@ -262,6 +262,7 @@ void CcBuildIndustry(Commands, const CommandCost &result, TileIndex tile, Indust
 	}
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_industry_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -291,6 +292,7 @@ static constexpr NWidgetPart _nested_build_industry_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition of the dynamic place industries gui */
 static WindowDesc _build_industry_desc(
@@ -1199,6 +1201,7 @@ static void UpdateIndustryProduction(Industry *i)
 }
 
 /** Widget definition of the view industry gui */
+/* clang-format off */
 static constexpr NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_CREAM),
@@ -1222,6 +1225,7 @@ static constexpr NWidgetPart _nested_industry_view_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_CREAM),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition of the view industry gui */
 static WindowDesc _industry_view_desc(
@@ -1237,6 +1241,7 @@ void ShowIndustryViewWindow(IndustryID industry)
 }
 
 /** Widget definition of the industry directory gui */
+/* clang-format off */
 static constexpr NWidgetPart _nested_industry_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1267,6 +1272,7 @@ static constexpr NWidgetPart _nested_industry_directory_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
+/* clang-format on */
 
 typedef GUIList<const Industry *, const CargoType &, const std::pair<CargoType, CargoType> &> GUIIndustryList;
 
@@ -1943,6 +1949,7 @@ void ShowIndustryDirectory()
 }
 
 /** Widgets of the industry cargoes window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_industry_cargoes_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1966,6 +1973,7 @@ static constexpr NWidgetPart _nested_industry_cargoes_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window description for the industry cargoes window. */
 static WindowDesc _industry_cargoes_desc(

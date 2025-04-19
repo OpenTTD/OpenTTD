@@ -86,6 +86,7 @@ void ShowContentTextfileWindow(TextfileType file_type, const ContentInfo *ci)
 }
 
 /** Nested widgets for the download window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_network_content_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -96,6 +97,7 @@ static constexpr NWidgetPart _nested_network_content_download_status_window_widg
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window description for the download window */
 static WindowDesc _network_content_download_status_window_desc(
@@ -1019,6 +1021,7 @@ void BuildContentTypeStringList()
 }
 
 /** The widgets for the content list. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_network_content_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
@@ -1096,6 +1099,7 @@ static constexpr NWidgetPart _nested_network_content_list_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window description of the content list */
 static WindowDesc _network_content_list_desc(

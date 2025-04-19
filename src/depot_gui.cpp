@@ -46,6 +46,7 @@
  */
 
 /** Nested widget definition for train depots. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_train_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -84,6 +85,7 @@ static constexpr NWidgetPart _nested_train_depot_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _train_depot_desc(
 	WDP_AUTO, "depot_train", 362, 123,

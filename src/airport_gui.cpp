@@ -197,6 +197,7 @@ struct BuildAirToolbarWindow : Window {
 	}, AirportToolbarGlobalHotkeys};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -209,6 +210,7 @@ static constexpr NWidgetPart _nested_air_toolbar_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_AT_DEMOLISH), SetFill(0, 1), SetMinimalSize(22, 22), SetSpriteTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _air_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_air", 0, 0,
@@ -580,6 +582,7 @@ public:
 	}};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -616,6 +619,7 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_airport_desc(
 	WDP_AUTO, nullptr, 0, 0,

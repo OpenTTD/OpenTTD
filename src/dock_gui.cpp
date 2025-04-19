@@ -333,6 +333,7 @@ struct BuildDocksToolbarWindow : Window {
  * Nested widget parts of docks toolbar, game version.
  * Position of #WID_DT_RIVER widget has changed.
  */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -350,6 +351,7 @@ static constexpr NWidgetPart _nested_build_docks_toolbar_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_BUILD_AQUEDUCT), SetMinimalSize(23, 22), SetFill(0, 1), SetSpriteTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_docks_toolbar_desc(
 	WDP_ALIGN_TOOLBAR, "toolbar_water", 0, 0,
@@ -378,6 +380,7 @@ Window *ShowBuildDocksToolbar()
  * Nested widget parts of docks toolbar, scenario editor version.
  * Positions of #WID_DT_DEPOT, #WID_DT_STATION, and #WID_DT_BUOY widgets have changed.
  */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -393,6 +396,7 @@ static constexpr NWidgetPart _nested_build_docks_scen_toolbar_widgets[] = {
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_DT_BUILD_AQUEDUCT), SetMinimalSize(22, 22), SetFill(0, 1), SetSpriteTip(SPR_IMG_AQUEDUCT, STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the build docks in scenario editor window. */
 static WindowDesc _build_docks_scen_toolbar_desc(
@@ -487,6 +491,7 @@ public:
 };
 
 /** Nested widget parts of a build dock station window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -505,6 +510,7 @@ static constexpr NWidgetPart _nested_build_dock_station_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_dock_station_desc(
 	WDP_AUTO, nullptr, 0, 0,
@@ -588,6 +594,7 @@ public:
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_docks_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -600,6 +607,7 @@ static constexpr NWidgetPart _nested_build_docks_depot_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_docks_depot_desc(
 	WDP_AUTO, nullptr, 0, 0,

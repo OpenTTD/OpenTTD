@@ -28,6 +28,7 @@
 
 
 /** Widgets for the configure AI window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -81,6 +82,7 @@ static constexpr NWidgetPart _nested_ai_config_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the configure AI window. */
 static WindowDesc _ai_config_desc(

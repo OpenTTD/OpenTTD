@@ -1965,13 +1965,16 @@ public:
 };
 
 /** Widget parts of the smallmap display. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_smallmap_display[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_SM_MAP_BORDER),
 		NWidget(WWT_INSET, COLOUR_BROWN, WID_SM_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Widget parts of the smallmap legend bar + image buttons. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_smallmap_bar[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN),
 		NWidget(NWID_HORIZONTAL),
@@ -2012,6 +2015,7 @@ static constexpr NWidgetPart _nested_smallmap_bar[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static std::unique_ptr<NWidgetBase> SmallMapDisplay()
 {
@@ -2022,6 +2026,7 @@ static std::unique_ptr<NWidgetBase> SmallMapDisplay()
 	return map_display;
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_smallmap_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -2053,6 +2058,7 @@ static constexpr NWidgetPart _nested_smallmap_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _smallmap_desc(
 	WDP_AUTO, "smallmap", 484, 314,

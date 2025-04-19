@@ -38,6 +38,7 @@
 
 #include "safeguards.h"
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_group_widgets[] = {
 	NWidget(NWID_HORIZONTAL), // Window header
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -110,6 +111,7 @@ static constexpr NWidgetPart _nested_group_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /**
  * Add children to GUI group list to build a hierarchical tree.
