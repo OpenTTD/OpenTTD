@@ -10,6 +10,8 @@
 #ifndef AIRPORTTILES_H
 #define AIRPORTTILES_H
 
+#include "table/strings.h"
+
 /** Writes all airport tile properties in the AirportTile struct */
 #define AT(num_frames, anim_speed) {{num_frames, AnimationStatus::Looping, anim_speed, 0}, STR_NULL, AirportTileCallbackMasks{}, 0, true, GRFFileProps(INVALID_AIRPORTTILE), {}}
 /** Writes an airport tile without animation in the AirportTile struct */

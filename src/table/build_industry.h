@@ -10,6 +10,8 @@
 #ifndef BUILD_INDUSTRY_H
 #define BUILD_INDUSTRY_H
 
+#include "table/strings.h"
+
 /**
  * Definition of an industry tiles layout.
  * @param x offset x of this tile

@@ -11,7 +11,9 @@
 #define TIMETABLE_CMD_H
 
 #include "command_type.h"
+#include "order_type.h"
 #include "timer/timer_game_tick.h"
+#include "vehicle_type.h"
 
 CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrderID order_number, ModifyTimetableFlags mtf, uint16_t data);
 CommandCost CmdBulkChangeTimetable(DoCommandFlags flags, VehicleID veh, ModifyTimetableFlags mtf, uint16_t data);

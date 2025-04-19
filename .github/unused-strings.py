@@ -158,7 +158,7 @@ def scan_source_files(path, strings_found):
         # Most files we can just open, but some use magic, that requires the
         # G++ preprocessor before we can make sense out of it.
         if new_path == "src/table/cargo_const.h":
-            p = subprocess.run(["g++", "-E", new_path], stdout=subprocess.PIPE)
+            p = subprocess.run(["g++", "-E", "-DCHECK_UNUSED_STRINGS", new_path], stdout=subprocess.PIPE)
             output = p.stdout.decode()
         else:
             with open(new_path) as fp:

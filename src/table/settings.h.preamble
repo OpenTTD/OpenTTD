@@ -7,6 +7,8 @@
 
 /** @file table/settings.h Settings to save in the savegame and config file. */
 
+#include "table/strings.h"
+
 /* Callback function used in _settings[] as well as _company_settings[] */
 static size_t ConvertLandscape(const char *value);
 

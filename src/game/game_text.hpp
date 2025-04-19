@@ -10,6 +10,7 @@
 #ifndef GAME_TEXT_HPP
 #define GAME_TEXT_HPP
 
+#include "../string_type.h"
 #include "../strings_type.h"
 
 struct StringParam {

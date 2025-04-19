@@ -10,6 +10,7 @@
 #ifndef NEWGRF_SPRITEGROUP_H
 #define NEWGRF_SPRITEGROUP_H
 
+#include "core/pool_type.hpp"
 #include "town_type.h"
 #include "engine_type.h"
 #include "house_type.h"

@@ -10,6 +10,8 @@
 #ifndef SIGNS_TYPE_H
 #define SIGNS_TYPE_H
 
+#include "core/pool_type.hpp"
+
 /** The type of the IDs of signs. */
 using SignID = PoolID<uint16_t, struct SignIDTag, 64000, 0xFFFF>;
 

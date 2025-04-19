@@ -10,7 +10,7 @@
 #ifndef DATE_GUI_H
 #define DATE_GUI_H
 
-#include "timer/timer_game_calendar.h"
+#include "timer/timer_game_economy.h"
 #include "window_type.h"
 
 /**

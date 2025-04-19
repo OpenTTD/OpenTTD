@@ -12,6 +12,7 @@
 
 #include "command_type.h"
 #include "track_type.h"
+#include "direction_type.h"
 #include "rail_type.h"
 #include "signal_type.h"
 

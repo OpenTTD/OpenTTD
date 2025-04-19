@@ -13,6 +13,8 @@
 #include "direction_type.h"
 #include "road_type.h"
 #include "command_type.h"
+#include "station_type.h"
+#include "town_type.h"
 
 enum RoadStopClassID : uint16_t;
 

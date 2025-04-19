@@ -12,6 +12,7 @@
 
 #include "command_type.h"
 #include "engine_type.h"
+#include "network/network_type.h"
 #include "vehicle_type.h"
 
 CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engine *e, Vehicle **ret);

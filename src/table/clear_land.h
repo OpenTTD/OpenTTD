@@ -7,6 +7,8 @@
 
 /** @file clear_land.h Tables with sprites for clear land and fences. */
 
+#include "sprites.h"
+
 static const SpriteID _landscape_clear_sprites_rough[8] = {
 	SPR_FLAT_ROUGH_LAND,
 	SPR_FLAT_ROUGH_LAND_1,
