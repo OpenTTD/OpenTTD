@@ -367,6 +367,7 @@ struct SelectGameWindow : public Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_select_game_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_INTRO_CAPTION),
 	NWidget(WWT_PANEL, COLOUR_BROWN),
@@ -445,6 +446,7 @@ static constexpr NWidgetPart _nested_select_game_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _select_game_desc(
 	WDP_CENTER, nullptr, 0, 0,

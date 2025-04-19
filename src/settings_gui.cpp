@@ -192,6 +192,7 @@ static std::optional<std::string> VolumeMarkFunc(int, int mark, int value)
 	return GetString(STR_GAME_OPTIONS_VOLUME_MARK, value / 31 * 25);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_FRAME, COLOUR_GREY, WID_GO_SOCIAL_PLUGIN_TITLE),
@@ -206,12 +207,15 @@ static constexpr NWidgetPart _nested_social_plugins_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_social_plugins_none_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXT, INVALID_COLOUR), SetMinimalSize(0, 12), SetFill(1, 0), SetStringTip(STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE),
 	EndContainer(),
 };
+/* clang-format on */
 
 class NWidgetSocialPlugins : public NWidgetVertical {
 public:
@@ -997,6 +1001,7 @@ struct GameOptionsWindow : Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_game_options_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1178,6 +1183,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _game_options_desc(
 	WDP_CENTER, nullptr, 0, 0,
@@ -1757,6 +1763,7 @@ struct GameSettingsWindow : Window {
 
 GameSettings *GameSettingsWindow::settings_ptr = nullptr;
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_settings_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -1796,6 +1803,7 @@ static constexpr NWidgetPart _nested_settings_selection_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _settings_selection_desc(
 	WDP_CENTER, "settings", 510, 450,
@@ -2062,6 +2070,7 @@ struct CustomCurrencyWindow : Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -2102,6 +2111,7 @@ static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _cust_currency_desc(
 	WDP_CENTER, nullptr, 0, 0,

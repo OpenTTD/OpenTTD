@@ -275,6 +275,7 @@ struct GoalListWindow : public Window {
 };
 
 /** Widgets of the #GoalListWindow. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -296,6 +297,7 @@ static constexpr NWidgetPart _nested_goals_list_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _goals_list_desc(
 	WDP_AUTO, "list_goals", 500, 127,

@@ -808,6 +808,7 @@ struct TimetableWindow : Window {
 	}};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_timetable_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -853,6 +854,7 @@ static constexpr NWidgetPart _nested_timetable_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _timetable_desc(
 	WDP_AUTO, "view_vehicle_timetable", 400, 130,

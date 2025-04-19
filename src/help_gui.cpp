@@ -175,6 +175,7 @@ private:
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_helpwin_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -200,6 +201,7 @@ static constexpr NWidgetPart _nested_helpwin_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _helpwin_desc(
 	WDP_CENTER, nullptr, 0, 0,

@@ -321,6 +321,7 @@ static std::unique_ptr<NWidgetBase> MakeSpacebarKeys()
 }
 
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_osk_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY, WID_OSK_CAPTION), SetTextStyle(TC_WHITE),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -337,6 +338,7 @@ static constexpr NWidgetPart _nested_osk_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _osk_desc(
 	WDP_CENTER, nullptr, 0, 0,

@@ -858,6 +858,7 @@ static std::unique_ptr<NWidgetBase> MakeResizableHeader()
 	return std::make_unique<NWidgetServerListHeader>();
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_network_game_widgets[] = {
 	/* TOP */
 	NWidget(NWID_HORIZONTAL),
@@ -935,6 +936,7 @@ static constexpr NWidgetPart _nested_network_game_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _network_game_window_desc(
 	WDP_CENTER, "list_servers", 1000, 730,
@@ -1133,6 +1135,7 @@ struct NetworkStartServerWindow : public Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_network_start_server_window_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
@@ -1199,6 +1202,7 @@ static constexpr NWidgetPart _nested_network_start_server_window_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _network_start_server_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
@@ -1221,6 +1225,7 @@ static void ShowNetworkStartServerWindow()
 
 extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1273,6 +1278,7 @@ static constexpr NWidgetPart _nested_client_list_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _client_list_desc(
 	WDP_AUTO, "list_clients", 220, 300,
@@ -2145,6 +2151,7 @@ struct NetworkJoinStatusWindow : Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_network_join_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_NETWORK_CONNECTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -2155,6 +2162,7 @@ static constexpr NWidgetPart _nested_network_join_status_window_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _network_join_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
@@ -2246,6 +2254,7 @@ struct NetworkAskRelayWindow : public Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_network_ask_relay_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_RED),
@@ -2262,6 +2271,7 @@ static constexpr NWidgetPart _nested_network_ask_relay_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _network_ask_relay_desc(
 	WDP_CENTER, nullptr, 0, 0,
@@ -2341,6 +2351,7 @@ struct NetworkAskSurveyWindow : public Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_network_ask_survey_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -2360,6 +2371,7 @@ static constexpr NWidgetPart _nested_network_ask_survey_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _network_ask_survey_desc(
 	WDP_CENTER, nullptr, 0, 0,
