@@ -7,6 +7,8 @@
 
 /** @file opengl_shader.h OpenGL shader programs. */
 
+/* clang-format off */
+
 /** Vertex shader that positions a sprite on screen.. */
 static const char *_vertex_shader_sprite[] = {
 	"#version 110\n",
@@ -199,3 +201,5 @@ static const char *_frag_shader_sprite_blend_150[] = {
 	"  colour.rgb = idx > 0.0 ? adj_brightness(remap_col.rgb, max3(rgb_col.rgb)) : rgb_col.rgb;",
 	"}",
 };
+
+/* clang-format on */

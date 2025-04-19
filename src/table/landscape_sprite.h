@@ -7,6 +7,8 @@
 
 /** @file landscape_sprite.h Offsets of sprites to replace for non-temperate landscapes. */
 
+/* clang-format off */
+
 static constexpr std::pair<SpriteID, SpriteID> _landscape_spriteindexes_arctic[] = {
 	{ 0xF67,  0xF9F},
 	{ 0xAAD,  0xAB0},
@@ -136,3 +138,5 @@ static constexpr std::pair<SpriteID, SpriteID> _landscape_spriteindexes_toyland[
 	{ 0x511,  0x511},
 	{ 0x322,  0x322},
 };
+
+/* clang-format on */

@@ -7,6 +7,8 @@
 
 /** @file string_colours.h The colour translation of GRF's strings. */
 
+/* clang-format off */
+
 /** Colour mapping for #TextColour. */
 static const uint8_t _string_colourmap[17] = {
 	150, // TC_BLUE
@@ -27,3 +29,5 @@ static const uint8_t _string_colourmap[17] = {
 	133, // TC_DARK_BLUE
 	  1, // TC_BLACK
 };
+
+/* clang-format on */

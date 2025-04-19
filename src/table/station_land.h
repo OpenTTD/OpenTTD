@@ -7,6 +7,8 @@
 
 /** @file station_land.h Sprites to use and how to display them for station tiles. */
 
+/* clang-format off */
+
 /**
  * Constructor macro for an image without a palette in a DrawTileSeqStruct array.
  * @param dx  Offset in x direction
@@ -902,3 +904,5 @@ static const std::array<std::span<const DrawTileSpriteSpan>, to_underlying(Stati
 	_station_display_datas_waypoint,
 	_station_display_datas_road_waypoint,
 }};
+
+/* clang-format on */

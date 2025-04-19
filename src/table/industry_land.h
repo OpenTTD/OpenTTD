@@ -31,6 +31,8 @@ struct DrawIndustryCoordinates {
 	uint8_t y;  ///< coordinate y of the pair
 };
 
+/* clang-format off */
+
 /**
  * Macro to ease the declaration of the array
  * @param s1 sprite ID of ground sprite
@@ -954,3 +956,4 @@ static const DrawIndustryCoordinates _coal_plant_sparks[] = {
 	{15,  0},
 };
 
+/* clang-format on */

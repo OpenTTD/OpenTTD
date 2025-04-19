@@ -7,6 +7,8 @@
 
 #include "table/strings.h"
 
+/* clang-format off */
+
 /**
  * @file bridge_land.h This file contains all the sprites for bridges
  * It consists of a number of arrays.
@@ -799,3 +801,5 @@ const BridgeSpec _orig_bridge[] = {
 #undef MR
 #undef MW
 #undef MC
+
+/* clang-format on */

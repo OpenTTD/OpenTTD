@@ -12,6 +12,8 @@
 
 #include "table/strings.h"
 
+/* clang-format off */
+
 /**
  * Definition of an industry tiles layout.
  * @param x offset x of this tile
@@ -1786,5 +1788,7 @@ static const IndustryTileSpec _origin_industry_tile_specs[NEW_INDUSTRYTILEOFFSET
 	MT(0, CT_INVALID,      0, CT_INVALID,      0, CT_INVALID,     SLOPE_STEEP, INDUSTRYTILE_NOANIM, INDUSTRYTILE_NOANIM, false),
 };
 #undef MT
+
+/* clang-format on */
 
 #endif  /* BUILD_INDUSTRY_H */

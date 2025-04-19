@@ -7,6 +7,8 @@
 
 /** @file train_sprites.h Sprites to use for trains. */
 
+/* clang-format off */
+
 static const SpriteID _engine_sprite_base[] = {
 0x0B59, 0x0B61, 0x0B69, 0x0BE1, 0x0B71, 0x0B75, 0x0B7D, 0x0B7D,
 0x0B85, 0x0B85, 0x0B8D, 0x0B8D, 0x0BC9, 0x0BD1, 0x0BD9, 0x0BE9,
@@ -66,3 +68,5 @@ static const uint8_t _wagon_full_adder[] = {
 static_assert(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_and));
 static_assert(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_add));
 static_assert(lengthof(_engine_sprite_base) == lengthof(_wagon_full_adder));
+
+/* clang-format on */

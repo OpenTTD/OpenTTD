@@ -7,6 +7,8 @@
 
 /** @file pricebase.h Price Bases */
 
+/* clang-format off */
+
 extern const PriceBaseSpec _price_base_specs[] = {
 	{    100, PCAT_NONE,         GSF_END,          INVALID_PRICE         }, ///< PR_STATION_VALUE
 	{    100, PCAT_CONSTRUCTION, GSF_END,          INVALID_PRICE         }, ///< PR_BUILD_RAIL
@@ -81,3 +83,5 @@ extern const PriceBaseSpec _price_base_specs[] = {
 	{   5000, PCAT_RUNNING,      GSF_END,          PR_BUILD_STATION_AIRPORT}, ///< PR_INFRASTRUCTURE_AIRPORT
 };
 static_assert(lengthof(_price_base_specs) == PR_END);
+
+/* clang-format on */

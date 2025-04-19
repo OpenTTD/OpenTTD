@@ -7,6 +7,8 @@
 
 /** @file town_land.h Sprites to use and how to display them for town tiles. */
 
+/* clang-format off */
+
 /**
  * Writes the data into the Town Tile Drawing Struct
  * @param s1 The first sprite of the building, mostly the ground sprite
@@ -2277,3 +2279,5 @@ extern const HouseSpec _original_house_specs[] = {
 
 /** Make sure we have the right number of elements: one entry for each house */
 static_assert(lengthof(_original_house_specs) == NEW_HOUSE_OFFSET);
+
+/* clang-format on */

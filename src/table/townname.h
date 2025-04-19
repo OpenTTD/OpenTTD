@@ -9,6 +9,8 @@
 
 #include "../core/enum_type.hpp"
 
+/* clang-format off */
+
 static const char * const _name_original_english_1[] = {
 	"Great ",
 	"Little ",
@@ -3312,3 +3314,5 @@ static const char * const _name_catalan_river1[] = {
 	" de Segre",
 	" de Francol\u00ed",
 };
+
+/* clang-format on */

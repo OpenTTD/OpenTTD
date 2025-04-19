@@ -7,6 +7,8 @@
 
 /** @file autorail.h Highlight/sprite information for autorail. */
 
+/* clang-format off */
+
 /* Rail selection types (directions):
  *  / \    / \    / \    / \   / \   / \
  * /  /\  /\  \  /===\  /   \ /|  \ /  |\
@@ -77,3 +79,5 @@ static const HighLightStyle _autorail_piece[][16] = {
 	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL },
 	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL }
 };
+
+/* clang-format on */

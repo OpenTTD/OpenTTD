@@ -24,6 +24,8 @@ struct AirportFTAbuildup {
 	uint8_t next;     ///< Next position from this position.
 };
 
+/* clang-format off */
+
 ///////////////////////////////////////////////////////////////////////
 /////*********Movement Positions on Airports********************///////
 
@@ -831,5 +833,7 @@ static const AirportFTAbuildup _airport_fta_helistation[] = {
 	{ 32, TO_ALL, AirportBlock::Nothing, 25 },
 	{ MAX_ELEMENTS, TO_ALL, {}, 0 } // end marker. DO NOT REMOVE
 };
+
+/* clang-format on */
 
 #endif /* AIRPORT_MOVEMENT_H */

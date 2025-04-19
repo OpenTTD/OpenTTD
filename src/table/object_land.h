@@ -9,6 +9,8 @@
 
 #include "table/strings.h"
 
+/* clang-format off */
+
 #define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
 
 static const DrawTileSeqStruct _object_transmitter_seq[] = {
@@ -131,3 +133,5 @@ extern const ObjectSpec _original_objects[] = {
 #undef S
 #undef A
 #undef T
+
+/* clang-format on */

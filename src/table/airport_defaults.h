@@ -12,6 +12,8 @@
 
 #include "../timer/timer_game_calendar.h"
 
+/* clang-format off */
+
 /**
  * Definition of an airport tiles layout.
  * @param x offset x of this tile
@@ -411,5 +413,7 @@ const AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, {}, {}, 0,
 #undef AS
 #undef AS_ND
 #undef AS_GENERIC
+
+/* clang-format on */
 
 #endif /* AIRPORT_DEFAULTS_H */
