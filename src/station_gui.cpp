@@ -2178,14 +2178,12 @@ static std::vector<StationID> _stations_nearby_list;
  * Add station on this tile to _stations_nearby_list if it's fully within the
  * station spread.
  * @param tile Tile just being checked
- * @param user_data Pointer to TileArea context
+ * @param ctx Pointer to TileArea context
  * @tparam T the station filter type
  */
 template <class T>
-static bool AddNearbyStation(TileIndex tile, void *user_data)
+static void AddNearbyStation(TileIndex tile, TileArea *ctx)
 {
-	TileArea *ctx = (TileArea *)user_data;
-
 	/* First check if there were deleted stations here */
 	for (auto it = _deleted_stations_nearby.begin(); it != _deleted_stations_nearby.end(); /* nothing */) {
 		if (it->tile == tile) {
@@ -2197,21 +2195,19 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	}
 
 	/* Check if own station and if we stay within station spread */
-	if (!IsTileType(tile, MP_STATION)) return false;
+	if (!IsTileType(tile, MP_STATION)) return;
 
 	StationID sid = GetStationIndex(tile);
 
 	/* This station is (likely) a waypoint */
-	if (!T::IsValidID(sid)) return false;
+	if (!T::IsValidID(sid)) return;
 
 	BaseStation *st = BaseStation::Get(sid);
-	if (st->owner != _local_company || std::ranges::find(_stations_nearby_list, sid) != _stations_nearby_list.end()) return false;
+	if (st->owner != _local_company || std::ranges::find(_stations_nearby_list, sid) != _stations_nearby_list.end()) return;
 
 	if (st->rect.BeforeAddRect(ctx->tile, ctx->w, ctx->h, StationRect::ADD_TEST).Succeeded()) {
 		_stations_nearby_list.push_back(sid);
 	}
-
-	return false; // We want to include *all* nearby stations
 }
 
 /**
@@ -2259,8 +2255,9 @@ static const BaseStation *FindStationsNearby(TileArea ta, bool distant_join)
 	if (distant_join && std::min(ta.w, ta.h) >= _settings_game.station.station_spread) return nullptr;
 	uint max_dist = distant_join ? _settings_game.station.station_spread - std::min(ta.w, ta.h) : 1;
 
-	TileIndex tile = TileAddByDir(ctx.tile, DIR_N);
-	CircularTileSearch(&tile, max_dist, ta.w, ta.h, AddNearbyStation<T>, &ctx);
+	for (auto tile : SpiralTileSequence(TileAddByDir(ctx.tile, DIR_N), max_dist, ta.w, ta.h)) {
+		AddNearbyStation<T>(tile, &ctx);
+	}
 
 	return nullptr;
 }

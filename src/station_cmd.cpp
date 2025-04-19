@@ -237,31 +237,6 @@ struct StationNameInformation {
 	}
 };
 
-/**
- * Find a station action 0 property 24 station name, or reduce the
- * free_names if needed.
- * @param tile the tile to search
- * @param user_data the StationNameInformation to base the search on
- * @return true if the tile contains an industry that has not given
- *              its name to one of the other stations in town.
- */
-static bool FindNearIndustryName(TileIndex tile, void *user_data)
-{
-	/* All already found industry types */
-	StationNameInformation *sni = (StationNameInformation*)user_data;
-	if (!IsTileType(tile, MP_INDUSTRY)) return false;
-
-	/* If the station name is undefined it means that it doesn't name a station */
-	IndustryType indtype = GetIndustryType(tile);
-	if (GetIndustrySpec(indtype)->station_name == STR_UNDEFINED) return false;
-
-	/* In all cases if an industry that provides a name is found two of
-	 * the standard names will be disabled. */
-	sni->SetUsed(STR_SV_STNAME_OILFIELD);
-	sni->SetUsed(STR_SV_STNAME_MINES);
-	return !sni->indtypes[indtype];
-}
-
 static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming name_class)
 {
 	const Town *t = st->town;
@@ -290,21 +265,30 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 		}
 	}
 
-	TileIndex indtile = tile;
-	if (CircularTileSearch(&indtile, 7, FindNearIndustryName, &sni)) {
-		/* An industry has been found nearby */
+	for (auto indtile : SpiralTileSequence(tile, 7)) {
+		if (!IsTileType(indtile, MP_INDUSTRY)) continue;
+
+		/* If the station name is undefined it means that it doesn't name a station */
 		IndustryType indtype = GetIndustryType(indtile);
 		const IndustrySpec *indsp = GetIndustrySpec(indtype);
+		if (indsp->station_name == STR_UNDEFINED) continue;
+
+		/* In all cases if an industry that provides a name is found two of
+		 * the standard names will be disabled. */
+		sni.SetUsed(STR_SV_STNAME_OILFIELD);
+		sni.SetUsed(STR_SV_STNAME_MINES);
+		if (sni.indtypes[indtype]) continue;
+
 		/* STR_NULL means it only disables oil rig/mines */
 		if (indsp->station_name != STR_NULL) {
 			st->indtype = indtype;
 			return STR_SV_STNAME_FALLBACK;
 		}
+		break;
 	}
 
-	/* Oil rigs/mines name could be marked not free by looking for a near by industry. */
-
-	/* check default names */
+	/* check default names
+	 * Oil rigs/mines name could be marked not free by looking for a near by industry. */
 	switch (name_class) {
 		case STATIONNAMING_AIRPORT:
 			if (sni.IsAvailable(STR_SV_STNAME_AIRPORT)) return STR_SV_STNAME_AIRPORT;

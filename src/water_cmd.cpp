@@ -439,13 +439,6 @@ CommandCost CmdBuildLock(DoCommandFlags flags, TileIndex tile)
 	return DoBuildLock(tile, dir, flags);
 }
 
-/** Callback to create non-desert around a river tile. */
-static bool RiverModifyDesertZone(TileIndex tile, void *)
-{
-	if (GetTropicZone(tile) == TROPICZONE_DESERT) SetTropicZone(tile, TROPICZONE_NORMAL);
-	return false;
-}
-
 /**
  * Make a river tile and remove desert directly around it.
  * @param tile The tile to change into river and create non-desert around
@@ -456,7 +449,9 @@ void MakeRiverAndModifyDesertZoneAround(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 
 	/* Remove desert directly around the river tile. */
-	CircularTileSearch(&tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+	for (auto t : SpiralTileSequence(tile, RIVER_OFFSET_DESERT_DISTANCE)) {
+		if (GetTropicZone(t) == TROPICZONE_DESERT) SetTropicZone(t, TROPICZONE_NORMAL);
+	}
 }
 
 /**
@@ -510,8 +505,10 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 				case WATER_CLASS_RIVER:
 					MakeRiver(current_tile, Random());
 					if (_game_mode == GM_EDITOR) {
-						TileIndex tile2 = current_tile;
-						CircularTileSearch(&tile2, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
+						/* Remove desert directly around the river tile. */
+						for (auto t : SpiralTileSequence(current_tile, RIVER_OFFSET_DESERT_DISTANCE)) {
+							if (GetTropicZone(t) == TROPICZONE_DESERT) SetTropicZone(t, TROPICZONE_NORMAL);
+						}
 					}
 					break;
 

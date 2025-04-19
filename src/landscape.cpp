@@ -980,7 +980,7 @@ static void CreateDesertOrRainForest(uint desert_tropic_line)
  * @param tile The tile to consider for being the spring.
  * @return True iff it is suitable as a spring.
  */
-static bool FindSpring(TileIndex tile, void *)
+static bool FindSpring(TileIndex tile)
 {
 	int reference_height;
 	if (!IsTileFlat(tile, &reference_height) || IsWaterTile(tile)) return false;
@@ -1013,54 +1013,48 @@ static bool FindSpring(TileIndex tile, void *)
 /**
  * Make a connected lake; fill all tiles in the circular tile search that are connected.
  * @param tile The tile to consider for lake making.
- * @param user_data The height of the lake.
- * @return Always false, so it continues searching.
+ * @param height_lake The height of the lake.
  */
-static bool MakeLake(TileIndex tile, void *user_data)
+static void MakeLake(TileIndex tile, uint height_lake)
 {
-	uint height_lake = *static_cast<uint *>(user_data);
-	if (!IsValidTile(tile) || TileHeight(tile) != height_lake || !IsTileFlat(tile)) return false;
-	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return false;
+	if (!IsValidTile(tile) || TileHeight(tile) != height_lake || !IsTileFlat(tile)) return;
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TROPICZONE_DESERT) return;
 
 	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 		TileIndex t = tile + TileOffsByDiagDir(d);
 		if (IsWaterTile(t)) {
 			MakeRiverAndModifyDesertZoneAround(tile);
-			return false;
+			return;
 		}
 	}
-
-	return false;
 }
 
 /**
  * Widen a river by expanding into adjacent tiles via circular tile search.
  * @param tile The tile to try expanding the river into.
- * @param user_data The tile to try surrounding the river around.
- * @return Always false, so it continues searching.
+ * @param origin_tile The tile to try surrounding the river around.
  */
-static bool RiverMakeWider(TileIndex tile, void *user_data)
+static void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 {
 	/* Don't expand into void tiles. */
-	if (!IsValidTile(tile)) return false;
+	if (!IsValidTile(tile)) return;
 
 	/* If the tile is already sea or river, don't expand. */
-	if (IsWaterTile(tile)) return false;
+	if (IsWaterTile(tile)) return;
 
 	/* If the tile is at height 0 after terraforming but the ocean hasn't flooded yet, don't build river. */
-	if (GetTileMaxZ(tile) == 0) return false;
+	if (GetTileMaxZ(tile) == 0) return;
 
-	TileIndex origin_tile = *static_cast<TileIndex *>(user_data);
 	Slope cur_slope = GetTileSlope(tile);
 	Slope desired_slope = GetTileSlope(origin_tile); // Initialize matching the origin tile as a shortcut if no terraforming is needed.
 
 	/* Never flow uphill. */
-	if (GetTileMaxZ(tile) > GetTileMaxZ(origin_tile)) return false;
+	if (GetTileMaxZ(tile) > GetTileMaxZ(origin_tile)) return;
 
 	/* If the new tile can't hold a river tile, try terraforming. */
 	if (!IsTileFlat(tile) && !IsInclinedSlope(cur_slope)) {
 		/* Don't try to terraform steep slopes. */
-		if (IsSteepSlope(cur_slope)) return false;
+		if (IsSteepSlope(cur_slope)) return;
 
 		bool flat_river_found = false;
 		bool sloped_river_found = false;
@@ -1070,7 +1064,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 		 * 2. River descending, adjacent tile has either one or three corners raised.
 		 */
 
-		/* First, determine the desired slope based on adjacent river tiles. This doesn't necessarily match the origin tile for the CircularTileSearch. */
+		/* First, determine the desired slope based on adjacent river tiles. This doesn't necessarily match the origin tile for the SpiralTileSequence. */
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 			TileIndex other_tile = TileAddByDiagDir(tile, d);
 			Slope other_slope = GetTileSlope(other_tile);
@@ -1092,7 +1086,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 			}
 		}
 		/* We didn't find either an inclined or flat river, so we're climbing the wrong slope. Bail out. */
-		if (!sloped_river_found && !flat_river_found) return false;
+		if (!sloped_river_found && !flat_river_found) return;
 
 		/* We didn't find an inclined river, but there is a flat river. */
 		if (!sloped_river_found && flat_river_found) desired_slope = SLOPE_FLAT;
@@ -1104,7 +1098,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 			/* Make sure we're not affecting an existing river slope tile. */
 			for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 				TileIndex other_tile = TileAddByDiagDir(tile, d);
-				if (IsInclinedSlope(GetTileSlope(other_tile)) && IsWaterTile(other_tile)) return false;
+				if (IsInclinedSlope(GetTileSlope(other_tile)) && IsWaterTile(other_tile)) return;
 			}
 			Command<CMD_TERRAFORM_LAND>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, ComplementSlope(cur_slope), true);
 
@@ -1118,7 +1112,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 				if (d == DIAGDIRDIFF_SAME || d == DIAGDIRDIFF_REVERSE) continue;
 
 				TileIndex other_tile = (TileAddByDiagDir(tile, ChangeDiagDir(river_direction, d)));
-				if (IsWaterTile(other_tile) && IsRiver(other_tile) && IsTileFlat(other_tile)) return false;
+				if (IsWaterTile(other_tile) && IsRiver(other_tile) && IsTileFlat(other_tile)) return;
 			}
 
 			/* Get the corners which are different between the current and desired slope. */
@@ -1149,7 +1143,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 		TileIndex downstream_tile = TileAddByDiagDir(tile, ReverseDiagDir(slope_direction));
 
 		/* Don't look outside the map. */
-		if (!IsValidTile(upstream_tile) || !IsValidTile(downstream_tile)) return false;
+		if (!IsValidTile(upstream_tile) || !IsValidTile(downstream_tile)) return;
 
 		/* Downstream might be new ocean created by our terraforming, and it hasn't flooded yet. */
 		bool downstream_is_ocean = GetTileZ(downstream_tile) == 0 && (GetTileSlope(downstream_tile) == SLOPE_FLAT || IsSlopeWithOneCornerRaised(GetTileSlope(downstream_tile)));
@@ -1157,7 +1151,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 		/* If downstream is dry, flat, and not ocean, try making it a river tile. */
 		if (!IsWaterTile(downstream_tile) && !downstream_is_ocean) {
 			/* If the tile upstream isn't flat, don't bother. */
-			if (GetTileSlope(downstream_tile) != SLOPE_FLAT) return false;
+			if (GetTileSlope(downstream_tile) != SLOPE_FLAT) return;
 
 			MakeRiverAndModifyDesertZoneAround(downstream_tile);
 		}
@@ -1165,7 +1159,7 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 		/* If upstream is dry and flat, try making it a river tile. */
 		if (!IsWaterTile(upstream_tile)) {
 			/* If the tile upstream isn't flat, don't bother. */
-			if (GetTileSlope(upstream_tile) != SLOPE_FLAT) return false;
+			if (GetTileSlope(upstream_tile) != SLOPE_FLAT) return;
 
 			MakeRiverAndModifyDesertZoneAround(upstream_tile);
 		}
@@ -1175,9 +1169,6 @@ static bool RiverMakeWider(TileIndex tile, void *user_data)
 	if (cur_slope == desired_slope) {
 		MakeRiverAndModifyDesertZoneAround(tile);
 	}
-
-	/* Always return false to keep searching. */
-	return false;
 }
 
 /**
@@ -1257,13 +1248,16 @@ protected:
 			const uint long_river_length = _settings_game.game_creation.min_river_length * 4;
 
 			for (PathNode *path = current.parent; path != nullptr; path = path->parent) {
-				TileIndex tile = path->GetTile();
+				TileIndex origin_tile = path->GetTile();
 
 				/* Check if we should widen river depending on how far we are away from the source. */
-				uint current_river_length = DistanceManhattan(this->spring, tile);
+				uint current_river_length = DistanceManhattan(this->spring, origin_tile);
 				uint diameter = std::min(3u, (current_river_length / (long_river_length / 3u)) + 1u);
+				if (diameter <= 1) continue;
 
-				if (diameter > 1) CircularTileSearch(&tile, diameter, RiverMakeWider, &path->key.tile);
+				for (auto tile : SpiralTileSequence(origin_tile, diameter)) {
+					RiverMakeWider(tile, origin_tile);
+				}
 			}
 		}
 	}
@@ -1363,10 +1357,14 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 			end = lake_centre;
 			MakeRiverAndModifyDesertZoneAround(lake_centre);
 			uint diameter = RandomRange(8) + 3;
-			CircularTileSearch(&lake_centre, diameter, MakeLake, &height_begin);
-			/* Call the search a second time so artefacts from going circular in one direction get (mostly) hidden. */
-			lake_centre = end;
-			CircularTileSearch(&lake_centre, diameter, MakeLake, &height_begin);
+
+			/* Run the loop twice, so artefacts from going circular in one direction get (mostly) hidden. */
+			for (uint loops = 0; loops < 2; ++loops) {
+				for (auto tile : SpiralTileSequence(lake_centre, diameter)) {
+					MakeLake(tile, height_begin);
+				}
+			}
+
 			found = true;
 		}
 	}
@@ -1391,20 +1389,30 @@ static void CreateRivers()
 	/* Try to create long rivers. */
 	for (; wells > num_short_rivers; wells--) {
 		IncreaseGeneratingWorldProgress(GWP_RIVER);
+		bool done = false;
 		for (int tries = 0; tries < 512; tries++) {
-			TileIndex t = RandomTile();
-			if (!CircularTileSearch(&t, 8, FindSpring, nullptr)) continue;
-			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length * 4))) break;
+			for (auto t : SpiralTileSequence(RandomTile(), 8)) {
+				if (FindSpring(t)) {
+					done = std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length * 4));
+					break;
+				}
+			}
+			if (done) break;
 		}
 	}
 
 	/* Try to create short rivers. */
 	for (; wells != 0; wells--) {
 		IncreaseGeneratingWorldProgress(GWP_RIVER);
+		bool done = false;
 		for (int tries = 0; tries < 128; tries++) {
-			TileIndex t = RandomTile();
-			if (!CircularTileSearch(&t, 8, FindSpring, nullptr)) continue;
-			if (std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length))) break;
+			for (auto t : SpiralTileSequence(RandomTile(), 8)) {
+				if (FindSpring(t)) {
+					done = std::get<0>(FlowRiver(t, t, _settings_game.game_creation.min_river_length));
+					break;
+				}
+			}
+			if (done) break;
 		}
 	}
 
