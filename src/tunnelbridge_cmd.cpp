@@ -1882,11 +1882,11 @@ static const uint8_t TUNNEL_SOUND_FRAME = 1;
  */
 extern const uint8_t _tunnel_visibility_frame[DIAGDIR_END] = {12, 8, 8, 12};
 
-static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStates VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
 	int z = GetSlopePixelZ(x, y, true) - v->z_pos;
 
-	if (abs(z) > 2) return VETSB_CANNOT_ENTER;
+	if (abs(z) > 2) return VehicleEnterTileState::CannotEnter;
 	/* Direction into the wormhole */
 	const DiagDirection dir = GetTunnelBridgeDirection(tile);
 	/* Direction of the vehicle */
@@ -1905,13 +1905,13 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == 0) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					}
-					return VETSB_CONTINUE;
+					return {};
 				}
 				if (frame == _tunnel_visibility_frame[dir]) {
 					t->tile = tile;
 					t->track = TRACK_BIT_WORMHOLE;
 					t->vehstatus.Set(VehState::Hidden);
-					return VETSB_ENTERED_WORMHOLE;
+					return VehicleEnterTileState::EnteredWormhole;
 				}
 			}
 
@@ -1921,7 +1921,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				t->track = DiagDirToDiagTrackBits(vdir);
 				assert(t->track);
 				t->vehstatus.Reset(VehState::Hidden);
-				return VETSB_ENTERED_WORMHOLE;
+				return VehicleEnterTileState::EnteredWormhole;
 			}
 		} else if (v->type == VEH_ROAD) {
 			RoadVehicle *rv = RoadVehicle::From(v);
@@ -1934,9 +1934,9 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					rv->tile = tile;
 					rv->state = RVSB_WORMHOLE;
 					rv->vehstatus.Set(VehState::Hidden);
-					return VETSB_ENTERED_WORMHOLE;
+					return VehicleEnterTileState::EnteredWormhole;
 				} else {
-					return VETSB_CONTINUE;
+					return {};
 				}
 			}
 
@@ -1946,7 +1946,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				rv->state = DiagDirToDiagTrackdir(vdir);
 				rv->frame = frame;
 				rv->vehstatus.Reset(VehState::Hidden);
-				return VETSB_ENTERED_WORMHOLE;
+				return VehicleEnterTileState::EnteredWormhole;
 			}
 		}
 	} else { // IsBridge(tile)
@@ -1961,7 +1961,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 
 		if (vdir == dir) {
 			/* Vehicle enters bridge at the last frame inside this tile. */
-			if (frame != TILE_SIZE - 1) return VETSB_CONTINUE;
+			if (frame != TILE_SIZE - 1) return {};
 			switch (v->type) {
 				case VEH_TRAIN: {
 					Train *t = Train::From(v);
@@ -1983,7 +1983,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 
 				default: NOT_REACHED();
 			}
-			return VETSB_ENTERED_WORMHOLE;
+			return VehicleEnterTileState::EnteredWormhole;
 		} else if (vdir == ReverseDiagDir(dir)) {
 			v->tile = tile;
 			switch (v->type) {
@@ -1991,7 +1991,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					Train *t = Train::From(v);
 					if (t->track == TRACK_BIT_WORMHOLE) {
 						t->track = DiagDirToDiagTrackBits(vdir);
-						return VETSB_ENTERED_WORMHOLE;
+						return VehicleEnterTileState::EnteredWormhole;
 					}
 					break;
 				}
@@ -2001,7 +2001,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					if (rv->state == RVSB_WORMHOLE) {
 						rv->state = DiagDirToDiagTrackdir(vdir);
 						rv->frame = 0;
-						return VETSB_ENTERED_WORMHOLE;
+						return VehicleEnterTileState::EnteredWormhole;
 					}
 					break;
 				}
@@ -2010,7 +2010,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					Ship *ship = Ship::From(v);
 					if (ship->state == TRACK_BIT_WORMHOLE) {
 						ship->state = DiagDirToDiagTrackBits(vdir);
-						return VETSB_ENTERED_WORMHOLE;
+						return VehicleEnterTileState::EnteredWormhole;
 					}
 					break;
 				}
@@ -2019,7 +2019,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			}
 		}
 	}
-	return VETSB_CONTINUE;
+	return {};
 }
 
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)

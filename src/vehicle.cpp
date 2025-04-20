@@ -1837,9 +1837,9 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y)
  * @param x    X position
  * @param y    Y position
  * @return Some meta-data over the to be entered tile.
- * @see VehicleEnterTileStatus to see what the bits in the return value mean.
+ * @see VehicleEnterTileStates to see what the bits in the return value mean.
  */
-VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
+VehicleEnterTileStates VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
 {
 	return _tile_type_procs[GetTileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
 }

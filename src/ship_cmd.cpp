@@ -742,8 +742,8 @@ static void ShipController(Ship *v)
 					gp.y = v->y_pos;
 				} else {
 					/* Not inside depot */
-					const VehicleEnterTileStatus r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-					if (HasBit(r, VETS_CANNOT_ENTER)) return ReverseShip(v);
+					auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+					if (vets.Test(VehicleEnterTileState::CannotEnter)) return ReverseShip(v);
 
 					/* A leave station order only needs one tick to get processed, so we can
 					 * always skip ahead. */
@@ -810,10 +810,10 @@ static void ShipController(Ship *v)
 				gp.y = (gp.y & ~0xF) | b.y_subcoord;
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
-				const VehicleEnterTileStatus r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-				if (HasBit(r, VETS_CANNOT_ENTER)) return ReverseShip(v);
+				auto vets = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+				if (vets.Test(VehicleEnterTileState::CannotEnter)) return ReverseShip(v);
 
-				if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
+				if (!vets.Test(VehicleEnterTileState::EnteredWormhole)) {
 					v->tile = gp.new_tile;
 					v->state = TrackToTrackBits(track);
 
@@ -843,7 +843,7 @@ static void ShipController(Ship *v)
 			}
 		} else {
 			/* On a bridge */
-			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !VehicleEnterTile(v, gp.new_tile, gp.x, gp.y).Test(VehicleEnterTileState::EnteredWormhole)) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				v->UpdatePosition();
