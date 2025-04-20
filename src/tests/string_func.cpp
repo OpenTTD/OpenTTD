@@ -464,6 +464,9 @@ TEST_CASE("FixSCCEncoded")
 	/* Test conversion with one numeric parameter. */
 	CHECK(FixSCCEncodedWrapper("\uE00022:1", false) == Compose(SCC_ENCODED, "22", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "1"));
 
+	/* Test conversion with signed numeric parameter. */
+	CHECK(FixSCCEncodedWrapper("\uE00022:-1", false) == Compose(SCC_ENCODED, "22", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "-1"));
+
 	/* Test conversion with two numeric parameters. */
 	CHECK(FixSCCEncodedWrapper("\uE0003:12:2", false) == Compose(SCC_ENCODED, "3", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "12", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "2"));
 
@@ -480,7 +483,27 @@ TEST_CASE("FixSCCEncoded")
 	CHECK(FixSCCEncodedWrapper("\uE000777:\uE0008888:\"Foo\":\"BarBaz\"", false) == Compose(SCC_ENCODED, "777", SCC_RECORD_SEPARATOR, SCC_ENCODED, "8888", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "Foo", SCC_RECORD_SEPARATOR, SCC_ENCODED_STRING, "BarBaz"));
 }
 
-TEST_CASE("EncodedString::ReplaceParam")
+extern void FixSCCEncodedNegative(std::string &str);
+
+/* Helper to call FixSCCEncodedNegative and return the result in a new string. */
+static std::string FixSCCEncodedNegativeWrapper(const std::string &str)
+{
+	std::string result = str;
+	FixSCCEncodedNegative(result);
+	return result;
+}
+
+TEST_CASE("FixSCCEncodedNegative")
+{
+	auto positive = Compose(SCC_ENCODED, "777", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "ffffffffffffffff");
+	auto negative = Compose(SCC_ENCODED, "777", SCC_RECORD_SEPARATOR, SCC_ENCODED_NUMERIC, "-1");
+
+	CHECK(FixSCCEncodedNegativeWrapper("") == "");
+	CHECK(FixSCCEncodedNegativeWrapper(positive) == positive);
+	CHECK(FixSCCEncodedNegativeWrapper(negative) == positive);
+}
+
+TEST_CASE("EncodedString::ReplaceParam - positive")
 {
 	/* Test that two encoded strings with different parameters are not the same. */
 	EncodedString string1 = GetEncodedString(STR_NULL, "Foo", 10, "Bar");
@@ -490,4 +513,19 @@ TEST_CASE("EncodedString::ReplaceParam")
 	/* Test that replacing parameter results in the same string. */
 	EncodedString string3 = string1.ReplaceParam(1, 15);
 	CHECK(string2 == string3);
+}
+
+TEST_CASE("EncodedString::ReplaceParam - negative")
+{
+	EncodedString string1 = GetEncodedString(STR_NULL, "Foo", -1, "Bar");
+	EncodedString string2 = GetEncodedString(STR_NULL, "Foo", -2, "Bar");
+	EncodedString string3 = GetEncodedString(STR_NULL, "Foo", 0xFFFF'FFFF'FFFF'FFFF, "Bar");
+	/* Test that two encoded strings with different parameters are not the same. */
+	CHECK(string1 != string2);
+	/* Test that signed values are stored as unsigned. */
+	CHECK(string1 == string3);
+
+	/* Test that replacing parameter results in the same string. */
+	EncodedString string4 = string1.ReplaceParam(1, -2);
+	CHECK(string2 == string4);
 }

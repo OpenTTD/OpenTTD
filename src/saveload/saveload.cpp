@@ -982,6 +982,43 @@ void FixSCCEncoded(std::string &str, bool fix_code)
 }
 
 /**
+ * Scan the string for SCC_ENCODED_NUMERIC with negative values, and reencode them as uint64_t.
+ * @param str the string to fix.
+ */
+void FixSCCEncodedNegative(std::string &str)
+{
+	if (str.empty()) return;
+
+	StringConsumer consumer(str);
+
+	/* Check whether this is an encoded string */
+	if (!consumer.ReadUtf8If(SCC_ENCODED)) return;
+
+	std::string result;
+	StringBuilder builder(result);
+	builder.PutUtf8(SCC_ENCODED);
+	while (consumer.AnyBytesLeft()) {
+		/* Copy until next record */
+		builder.Put(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::READ_ONE_SEPARATOR));
+
+		/* Check whether this is a numeric parameter */
+		if (!consumer.ReadUtf8If(SCC_ENCODED_NUMERIC)) continue;
+		builder.PutUtf8(SCC_ENCODED_NUMERIC);
+
+		/* First try unsigned */
+		if (auto u = consumer.TryReadIntegerBase<uint64_t>(16); u.has_value()) {
+			builder.PutIntegerBase<uint64_t>(*u, 16);
+		} else {
+			/* Read as signed, store as unsigned */
+			auto s = consumer.ReadIntegerBase<int64_t>(16);
+			builder.PutIntegerBase<uint64_t>(static_cast<uint64_t>(s), 16);
+		}
+	}
+
+	str = std::move(result);
+}
+
+/**
  * Read the given amount of bytes from the buffer into the string.
  * @param str The string to write to.
  * @param length The amount of bytes to read into the string.
@@ -1024,6 +1061,7 @@ static void SlStdString(void *ptr, VarType conv)
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
 				settings.Set(StringValidationSetting::AllowControlCode);
 				if (IsSavegameVersionBefore(SLV_ENCODED_STRING_FORMAT)) FixSCCEncoded(*str, IsSavegameVersionBefore(SLV_169));
+				if (IsSavegameVersionBefore(SLV_FIX_SCC_ENCODED_NEGATIVE)) FixSCCEncodedNegative(*str);
 			}
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings.Set(StringValidationSetting::AllowNewline);

@@ -211,7 +211,8 @@ void ScriptText::ParamCheck::Encode(StringBuilder &builder, std::string_view cmd
 		void operator()(const SQInteger &value)
 		{
 			this->builder.PutUtf8(SCC_ENCODED_NUMERIC);
-			this->builder.PutIntegerBase(value, 16);
+			/* Sign-extend the value, then store as unsigned */
+			this->builder.PutIntegerBase<uint64_t>(static_cast<uint64_t>(static_cast<int64_t>(value)), 16);
 		}
 
 		void operator()(const ScriptTextRef &value)
