@@ -462,7 +462,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
  * @param pass The password for the remote command.
  * @param command The actual command.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const std::string &pass, const std::string &command)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(std::string_view pass, std::string_view command)
 {
 	Debug(net, 9, "Client::SendRCon()");
 
@@ -1212,7 +1212,7 @@ void NetworkClient_Connected()
  * @param password The password.
  * @param command The command to execute.
  */
-void NetworkClientSendRcon(const std::string &password, const std::string &command)
+void NetworkClientSendRcon(std::string_view password, std::string_view command)
 {
 	MyClient::SendRCon(password, command);
 }

@@ -53,7 +53,7 @@ void NetworkClientsToSpectators(CompanyID cid);
 bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password = "");
 void NetworkClientJoinGame();
 void NetworkClientRequestMove(CompanyID company);
-void NetworkClientSendRcon(const std::string &password, const std::string &command);
+void NetworkClientSendRcon(std::string_view password, std::string_view command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data = 0);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 uint NetworkMaxCompaniesAllowed();
@@ -75,7 +75,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 
 bool NetworkCanJoinCompany(CompanyID company_id);
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
-void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std::string &string);
+void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, std::string_view string);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
 void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg);
 
