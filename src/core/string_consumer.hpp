@@ -813,10 +813,10 @@ private:
 
 			/* Try negative hex */
 			if (std::is_signed_v<T> && (src.starts_with("-0x") || src.starts_with("-0X"))) {
-				using Unsigned = std::make_signed_t<T>;
+				using Unsigned = std::make_unsigned_t<T>;
 				auto [len, uvalue] = ParseIntegerBase<Unsigned>(src.substr(3), 16, log_errors);
 				if (len == 0) return {};
-				T value = -uvalue;
+				T value = static_cast<T>(0 - uvalue);
 				if (value > 0) {
 					if (log_errors) LogError(fmt::format("Integer out of range: '{}'", src.substr(0, len + 3)));
 					return {};
