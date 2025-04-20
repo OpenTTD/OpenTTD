@@ -155,19 +155,19 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bo
 	} else {
 		button_size = NWidgetScrollbar::GetVerticalDimension().height;
 	}
-	top += button_size;    // top    points to just below the up-button
-	bottom -= button_size; // bottom points to top of the down-button
+	top += button_size;    // top points to just below the up-button
+	bottom -= button_size; // bottom points to just before the down-button
 
 	int count = sb->GetCount();
 	int cap = sb->GetCapacity();
 
 	if (count > cap) {
-		int height = (bottom - top);
+		int height = bottom + 1 - top;
 		int slider_height = std::max(button_size, cap * height / count);
 		height -= slider_height;
 
 		top += height * sb->GetPosition() / (count - cap);
-		bottom = top + slider_height;
+		bottom = top + slider_height - 1;
 	}
 
 	Point pt;
