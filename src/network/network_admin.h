@@ -68,7 +68,7 @@ public:
 	NetworkRecvStatus SendCompanyEconomy();
 	NetworkRecvStatus SendCompanyStats();
 
-	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64_t data);
+	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data);
 	NetworkRecvStatus SendRcon(uint16_t colour, const std::string_view command);
 	NetworkRecvStatus SendConsole(const std::string_view origin, const std::string_view command);
 	NetworkRecvStatus SendGameScript(const std::string_view json);
@@ -113,7 +113,7 @@ void NetworkAdminCompanyNew(const Company *company);
 void NetworkAdminCompanyUpdate(const Company *company);
 void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 
-void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64_t data = 0, bool from_admin = false);
+void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, const std::string_view string);
 void NetworkAdminConsole(const std::string_view origin, const std::string_view string);

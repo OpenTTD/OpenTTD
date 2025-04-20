@@ -54,7 +54,7 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 void NetworkClientJoinGame();
 void NetworkClientRequestMove(CompanyID company);
 void NetworkClientSendRcon(std::string_view password, std::string_view command);
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64_t data = 0);
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, std::string_view msg, int64_t data = 0);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 uint NetworkMaxCompaniesAllowed();
 bool NetworkMaxCompaniesReached();
@@ -76,8 +76,8 @@ bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_na
 bool NetworkCanJoinCompany(CompanyID company_id);
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, std::string_view string);
-void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
-void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg);
+void NetworkServerSendChat(NetworkAction action, DestType type, int dest, std::string_view msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
+void NetworkServerSendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg);
 
 void NetworkServerKickClient(ClientID client_id, std::string_view reason);
 uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, std::string_view reason);

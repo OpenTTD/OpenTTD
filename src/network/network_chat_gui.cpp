@@ -251,7 +251,7 @@ void NetworkDrawChatMessage()
  * @param type The type of destination.
  * @param dest The actual destination index.
  */
-static void SendChat(const std::string &buf, DestType type, int dest)
+static void SendChat(std::string_view buf, DestType type, int dest)
 {
 	if (buf.empty()) return;
 	if (!_network_server) {
