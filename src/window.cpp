@@ -685,8 +685,13 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 
 		case WWT_DEFSIZEBOX: {
 			if (_ctrl_pressed) {
-				w->window_desc.pref_width = w->width;
-				w->window_desc.pref_height = w->height;
+				if (click_count > 1) {
+					w->window_desc.pref_width = 0;
+					w->window_desc.pref_height = 0;
+				} else {
+					w->window_desc.pref_width = w->width;
+					w->window_desc.pref_height = w->height;
+				}
 			} else {
 				int16_t def_width = std::max<int16_t>(std::min<int16_t>(w->window_desc.GetDefaultWidth(), _screen.width), w->nested_root->smallest_x);
 				int16_t def_height = std::max<int16_t>(std::min<int16_t>(w->window_desc.GetDefaultHeight(), _screen.height - 50), w->nested_root->smallest_y);
