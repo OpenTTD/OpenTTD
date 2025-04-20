@@ -7,6 +7,8 @@
 
  /** @file newgrf_profiling.cpp Profiling of NewGRF action 2 handling. */
 
+#include "stdafx.h"
+
 #include "newgrf_profiling.h"
 #include "fileio_func.h"
 #include "string_func.h"
@@ -18,6 +20,7 @@
 
 #include <chrono>
 
+#include "safeguards.h"
 
 std::vector<NewGRFProfiler> _newgrf_profilers;
 

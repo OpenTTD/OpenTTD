@@ -22,6 +22,8 @@
 
 #include <squirrel.h>
 
+#include "../safeguards.h"
+
 /**
  * A controller to start enough so we can use Squirrel for testing.
  *

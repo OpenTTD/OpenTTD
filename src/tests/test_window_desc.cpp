@@ -15,6 +15,8 @@
 
 #include "../window_gui.h"
 
+#include "../safeguards.h"
+
 /**
  * List of WindowDescs. Defined in window.cpp but not exposed as this unit-test is the only other place that needs it.
  * WindowDesc is a self-registering class so all WindowDescs will be included in the list.

@@ -17,6 +17,8 @@
 
 #include "../3rdparty/catch2/catch.hpp"
 
+#include "../safeguards.h"
+
 enum TestEnum : int8_t {
 	ZERO,
 	ONE,

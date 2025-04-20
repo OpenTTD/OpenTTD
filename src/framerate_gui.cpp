@@ -7,6 +7,8 @@
 
 /** @file framerate_gui.cpp GUI for displaying framerate/game speed information. */
 
+#include "stdafx.h"
+
 #include "framerate_type.h"
 #include <chrono>
 #include "gfx_func.h"

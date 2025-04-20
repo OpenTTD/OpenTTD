@@ -14,6 +14,8 @@
 #include "../landscape.h"
 #include "../slope_func.h"
 
+#include "../safeguards.h"
+
 /**
  * Check whether the addition of two slope's GetPartialPixelZ values results in
  * the GetPartialPixelZ values of the expected slope.

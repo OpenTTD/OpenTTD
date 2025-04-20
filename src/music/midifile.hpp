@@ -10,7 +10,6 @@
 #ifndef MUSIC_MIDIFILE_HPP
 #define MUSIC_MIDIFILE_HPP
 
-#include "../stdafx.h"
 #include "../fileio_type.h"
 #include "midi.h"
 

@@ -10,8 +10,6 @@
 #ifndef MOCK_FONTCACHE_H
 #define MOCK_FONTCACHE_H
 
-#include "../stdafx.h"
-
 #include "../fontcache.h"
 #include "../string_func.h"
 

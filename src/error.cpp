@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "error_func.h"
+#include "safeguards.h"
 
 [[noreturn]] void NOT_REACHED(const std::source_location location)
 {

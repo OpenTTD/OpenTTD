@@ -35,7 +35,6 @@
 #ifndef FRAMERATE_TYPE_H
 #define FRAMERATE_TYPE_H
 
-#include "stdafx.h"
 #include "core/enum_type.hpp"
 
 /**

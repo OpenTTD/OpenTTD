@@ -13,6 +13,8 @@
 
 #include "../core/math_func.hpp"
 
+#include "../safeguards.h"
+
 TEST_CASE("DivideApproxTest - Negative")
 {
 	CHECK(-2 == DivideApprox(-5, 2));

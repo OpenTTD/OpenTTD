@@ -18,6 +18,8 @@
 
 #include "table/strings.h"
 
+#include "../safeguards.h"
+
 /**** String compare/equals *****/
 
 TEST_CASE("StrCompareIgnoreCase - std::string")
