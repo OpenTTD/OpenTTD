@@ -406,11 +406,11 @@ public:
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE:
 				if (const Group *g = Group::GetIfValid(this->sel_group); g != nullptr) {
 					bool remove_wagon = g->flags.Test(GroupFlag::ReplaceWagonRemoval);
-					return GetString(STR_GROUP_NAME, sel_group, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+					return GetString(STR_REPLACE_REMOVE_WAGON, STR_GROUP_NAME, sel_group, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				} else {
 					const Company *c = Company::Get(_local_company);
 					bool remove_wagon = c->settings.renew_keep_length;
-					return GetString(STR_GROUP_DEFAULT_TRAINS + this->window_number, std::monostate{}, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+					return GetString(STR_REPLACE_REMOVE_WAGON, STR_GROUP_DEFAULT_TRAINS + this->window_number, std::monostate{}, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				}
 				break;
 
@@ -744,7 +744,7 @@ static constexpr NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_LEFT_DETAILS), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_RIGHT_DETAILS), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_TRAIN_WAGONREMOVE_TOGGLE), SetMinimalSize(138, 12), SetStringTip(STR_REPLACE_REMOVE_WAGON, STR_REPLACE_REMOVE_WAGON_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_TRAIN_WAGONREMOVE_TOGGLE), SetMinimalSize(138, 12), SetToolTip(STR_REPLACE_REMOVE_WAGON_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
