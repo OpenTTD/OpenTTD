@@ -485,3 +485,18 @@ TEST_CASE("StringConsumer - invalid int")
 	consumer.SkipIntegerBase(0);
 	CHECK(consumer.ReadUtf8() == 'y');
 }
+
+TEST_CASE("StringConsumer - most negative")
+{
+	StringConsumer consumer("-80000000 -0x80000000 -2147483648"sv);
+	CHECK(consumer.PeekIntegerBase<uint32_t>(16) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(16) == std::pair<StringConsumer::size_type, int32_t>(9, 0x80000000));
+	consumer.SkipIntegerBase(16);
+	CHECK(consumer.ReadUtf8() == ' ');
+	CHECK(consumer.PeekIntegerBase<uint32_t>(0) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(0) == std::pair<StringConsumer::size_type, int32_t>(11, 0x80000000));
+	consumer.SkipIntegerBase(0);
+	CHECK(consumer.ReadUtf8() == ' ');
+	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(11, 0x80000000));
+}
