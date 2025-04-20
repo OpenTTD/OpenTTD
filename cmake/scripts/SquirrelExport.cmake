@@ -614,8 +614,10 @@ foreach(LINE IN LISTS SOURCE_LINES)
         string(REGEX REPLACE "\\*" "" LINE "${LINE}")
         string(REGEX REPLACE "\\(.*" "" LINE "${LINE}")
 
-        string(REGEX REPLACE ".*\\(" "" PARAM_S "${PARAM_S}")
+        # Parameters start at first "(". Further "(" will appear in ctor lists.
+        string(REGEX MATCH "\\(.*" PARAM_S "${PARAM_S}")
         string(REGEX REPLACE "\\).*" "" PARAM_S "${PARAM_S}")
+        string(REGEX REPLACE "^\\(" "" PARAM_S "${PARAM_S}")
 
         string(REGEX MATCH "([^ 	]+)( ([^ ]+))?" RESULT "${LINE}")
         set(FUNCTYPE "${CMAKE_MATCH_1}")
