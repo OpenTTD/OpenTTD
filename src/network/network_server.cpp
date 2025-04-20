@@ -356,7 +356,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendGameInfo()
  * @param error The error to disconnect for.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error, const std::string &reason)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error, std::string_view reason)
 {
 	Debug(net, 9, "client[{}] SendError(): error={}", this->client_id, error);
 
@@ -1917,7 +1917,7 @@ static IntervalTimer<TimerGameEconomy> _economy_network_daily({TimerGameEconomy:
  * Get the IP address/hostname of the connected client.
  * @return The IP address.
  */
-const std::string &ServerNetworkGameSocketHandler::GetClientIP()
+std::string_view ServerNetworkGameSocketHandler::GetClientIP()
 {
 	return this->client_address.GetHostname();
 }
@@ -2028,7 +2028,7 @@ void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std
  * @param client_id The client to kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-void NetworkServerKickClient(ClientID client_id, const std::string &reason)
+void NetworkServerKickClient(ClientID client_id, std::string_view reason)
 {
 	if (client_id == CLIENT_ID_SERVER) return;
 	NetworkClientSocket::GetByClientID(client_id)->SendError(NETWORK_ERROR_KICKED, reason);
@@ -2040,7 +2040,7 @@ void NetworkServerKickClient(ClientID client_id, const std::string &reason)
  * @param ban Whether to ban or kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const std::string &reason)
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, std::string_view reason)
 {
 	return NetworkServerKickOrBanIP(NetworkClientSocket::GetByClientID(client_id)->GetClientIP(), ban, reason);
 }
@@ -2051,7 +2051,7 @@ uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const std::string &r
  * @param ban Whether to ban or just kick.
  * @param reason In case of kicking a client, specifies the reason for kicking the client.
  */
-uint NetworkServerKickOrBanIP(const std::string &ip, bool ban, const std::string &reason)
+uint NetworkServerKickOrBanIP(std::string_view ip, bool ban, std::string_view reason)
 {
 	/* Add address to ban-list */
 	if (ban) {

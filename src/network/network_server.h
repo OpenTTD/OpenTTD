@@ -93,7 +93,7 @@ public:
 	NetworkRecvStatus SendMove(ClientID client_id, CompanyID company_id);
 
 	NetworkRecvStatus SendClientInfo(NetworkClientInfo *ci);
-	NetworkRecvStatus SendError(NetworkErrorCode error, const std::string &reason = {});
+	NetworkRecvStatus SendError(NetworkErrorCode error, std::string_view reason = {});
 	NetworkRecvStatus SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64_t data);
 	NetworkRecvStatus SendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg);
 	NetworkRecvStatus SendJoin(ClientID client_id);
@@ -115,7 +115,7 @@ public:
 		return "server";
 	}
 
-	const std::string &GetClientIP();
+	std::string_view GetClientIP();
 	std::string_view GetPeerPublicKey() const { return this->peer_public_key; }
 
 	static ServerNetworkGameSocketHandler *GetByClientID(ClientID client_id);

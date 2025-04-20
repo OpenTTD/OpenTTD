@@ -79,9 +79,9 @@ void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64_t data = 0, bool from_admin = false);
 void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg);
 
-void NetworkServerKickClient(ClientID client_id, const std::string &reason);
-uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const std::string &reason);
-uint NetworkServerKickOrBanIP(const std::string &ip, bool ban, const std::string &reason);
+void NetworkServerKickClient(ClientID client_id, std::string_view reason);
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, std::string_view reason);
+uint NetworkServerKickOrBanIP(std::string_view ip, bool ban, std::string_view reason);
 
 void NetworkInitChatMessage();
 void NetworkReInitChatBoxSize();
