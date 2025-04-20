@@ -472,7 +472,7 @@ static void CheckPauseOnJoin()
  * @param company_id        The company ID to set, if available.
  * @return A std::string_view into the connection string without the company part.
  */
-std::string_view ParseCompanyFromConnectionString(const std::string &connection_string, CompanyID *company_id)
+std::string_view ParseCompanyFromConnectionString(std::string_view connection_string, CompanyID *company_id)
 {
 	std::string_view ip = connection_string;
 	if (company_id == nullptr) return ip;
@@ -516,7 +516,7 @@ std::string_view ParseCompanyFromConnectionString(const std::string &connection_
  * @param company_id        The company ID to set, if available.
  * @return A std::string_view into the connection string with the (IP) address part.
  */
-std::string_view ParseFullConnectionString(const std::string &connection_string, uint16_t &port, CompanyID *company_id)
+std::string_view ParseFullConnectionString(std::string_view connection_string, uint16_t &port, CompanyID *company_id)
 {
 	std::string_view ip = ParseCompanyFromConnectionString(connection_string, company_id);
 
@@ -536,11 +536,11 @@ std::string_view ParseFullConnectionString(const std::string &connection_string,
  * @param default_port The port to use if none is given.
  * @return The normalized connection string.
  */
-std::string NormalizeConnectionString(const std::string &connection_string, uint16_t default_port)
+std::string NormalizeConnectionString(std::string_view connection_string, uint16_t default_port)
 {
 	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
-	return std::string(ip) + ":" + std::to_string(port);
+	return fmt::format("{}:{}", ip, port);
 }
 
 /**
@@ -551,7 +551,7 @@ std::string NormalizeConnectionString(const std::string &connection_string, uint
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseConnectionString(const std::string &connection_string, uint16_t default_port)
+NetworkAddress ParseConnectionString(std::string_view connection_string, uint16_t default_port)
 {
 	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port);
@@ -642,7 +642,7 @@ private:
 	std::string connection_string;
 
 public:
-	TCPQueryConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+	TCPQueryConnecter(std::string_view connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -667,7 +667,7 @@ public:
  * Query a server to fetch the game-info.
  * @param connection_string the address to query.
  */
-void NetworkQueryServer(const std::string &connection_string)
+void NetworkQueryServer(std::string_view connection_string)
 {
 	if (!_network_available) return;
 
@@ -689,7 +689,7 @@ void NetworkQueryServer(const std::string &connection_string)
  * @param never_expire Whether the entry can expire (removed when no longer found in the public listing).
  * @return The entry on the game list.
  */
-NetworkGame *NetworkAddServer(const std::string &connection_string, bool manually, bool never_expire)
+NetworkGame *NetworkAddServer(std::string_view connection_string, bool manually, bool never_expire)
 {
 	if (connection_string.empty()) return nullptr;
 
@@ -745,7 +745,7 @@ private:
 	std::string connection_string;
 
 public:
-	TCPClientConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+	TCPClientConnecter(std::string_view connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -782,7 +782,7 @@ public:
  * @param join_server_password  The password for the server.
  * @return Whether the join has started.
  */
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password)
+bool NetworkClientConnectGame(std::string_view connection_string, CompanyID default_company, const std::string &join_server_password)
 {
 	Debug(net, 9, "NetworkClientConnectGame(): connection_string={}", connection_string);
 

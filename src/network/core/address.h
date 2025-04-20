@@ -194,13 +194,13 @@ private:
 	 * @param type The type of the ServerAdress.
 	 * @param connection_string The connection_string that belongs to this ServerAddress type.
 	 */
-	ServerAddress(ServerAddressType type, const std::string &connection_string) : type(type), connection_string(connection_string) {}
+	ServerAddress(ServerAddressType type, std::string &&connection_string) : type(type), connection_string(std::move(connection_string)) {}
 
 public:
 	ServerAddressType type;        ///< The type of this ServerAddress.
 	std::string connection_string; ///< The connection string for this ServerAddress.
 
-	static ServerAddress Parse(const std::string &connection_string, uint16_t default_port, CompanyID *company_id = nullptr);
+	static ServerAddress Parse(std::string_view connection_string, uint16_t default_port, CompanyID *company_id = nullptr);
 };
 
 #endif /* NETWORK_CORE_ADDRESS_H */

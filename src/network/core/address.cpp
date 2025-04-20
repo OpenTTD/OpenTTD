@@ -442,7 +442,7 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
  * @param company Pointer to the company variable to set iff indicated.
  * @return A valid ServerAddress of the parsed information.
  */
-/* static */ ServerAddress ServerAddress::Parse(const std::string &connection_string, uint16_t default_port, CompanyID *company_id)
+/* static */ ServerAddress ServerAddress::Parse(std::string_view connection_string, uint16_t default_port, CompanyID *company_id)
 {
 	if (connection_string.starts_with("+")) {
 		std::string_view invite_code = ParseCompanyFromConnectionString(connection_string, company_id);
@@ -451,5 +451,5 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 
 	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port, company_id);
-	return ServerAddress(SERVER_ADDRESS_DIRECT, std::string(ip) + ":" + std::to_string(port));
+	return ServerAddress(SERVER_ADDRESS_DIRECT, fmt::format("{}:{}", ip, port));
 }

@@ -109,7 +109,7 @@ void ClientNetworkEmergencySave()
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
-ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string)
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string)
 {
 	assert(ClientNetworkGameSocketHandler::my_client == nullptr);
 	ClientNetworkGameSocketHandler::my_client = this;

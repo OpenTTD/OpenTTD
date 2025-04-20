@@ -28,7 +28,7 @@ public:
 	 * @param stun_handler The handler for this request.
 	 * @param connection_string The address of the server.
 	 */
-	NetworkStunConnecter(ClientNetworkStunSocketHandler *stun_handler, const std::string &connection_string, const std::string &token, uint8_t family) :
+	NetworkStunConnecter(ClientNetworkStunSocketHandler *stun_handler, std::string_view connection_string, const std::string &token, uint8_t family) :
 		TCPConnecter(connection_string, NETWORK_STUN_SERVER_PORT, NetworkAddress(), family),
 		stun_handler(stun_handler),
 		token(token),
