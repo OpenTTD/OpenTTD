@@ -16,6 +16,7 @@
 #include <fluidsynth.h>
 #include "../mixer.h"
 #include <mutex>
+#include "../safeguards.h"
 
 static struct {
 	fluid_settings_t *settings;    ///< FluidSynth settings handle

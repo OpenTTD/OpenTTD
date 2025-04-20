@@ -10,8 +10,6 @@
 #ifndef MUSIC_MIDI_H
 #define MUSIC_MIDI_H
 
-#include "../stdafx.h"
-
 /** Header of a Stanard MIDI File */
 struct SMFHeader {
 	uint16_t format;

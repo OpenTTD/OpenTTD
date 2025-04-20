@@ -10,8 +10,6 @@
 #ifndef KDTREE_HPP
 #define KDTREE_HPP
 
-#include "../stdafx.h"
-
 /**
  * K-dimensional tree, specialised for 2-dimensional space.
  * This is not intended as a primary storage of data, but as an index into existing data.

@@ -19,6 +19,7 @@
 #include "../ship.h"
 #include "../debug.h"
 #include "../3rdparty/fmt/ranges.h"
+#include "../safeguards.h"
 
 using TWaterRegionTraversabilityBits = uint16_t;
 constexpr TWaterRegionPatchLabel FIRST_REGION_LABEL = 1;

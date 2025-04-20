@@ -7,6 +7,8 @@
 
 /* @file midifile.cpp Parser for standard MIDI files */
 
+#include "../stdafx.h"
+
 #include "midifile.hpp"
 #include "../fileio_func.h"
 #include "../fileio_type.h"
@@ -20,6 +22,8 @@
 #include "../console_internal.h"
 
 #include "table/strings.h"
+
+#include "../safeguards.h"
 
 /* SMF reader based on description at: http://www.somascape.org/midi/tech/mfile.html */
 
