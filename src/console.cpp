@@ -156,7 +156,7 @@ static std::string RemoveUnderscores(std::string name)
  * @param name name of the alias that will be used
  * @param cmd name of the command that 'name' will be alias of
  */
-/* static */ void IConsole::AliasRegister(const std::string &name, const std::string &cmd)
+/* static */ void IConsole::AliasRegister(const std::string &name, std::string_view cmd)
 {
 	auto result = IConsole::Aliases().try_emplace(RemoveUnderscores(name), name, cmd);
 	if (!result.second) IConsolePrint(CC_ERROR, "An alias with the name '{}' already exists.", name);
@@ -342,10 +342,10 @@ void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 		ConsoleHookResult chr = (cmd->hook == nullptr ? CHR_ALLOW : cmd->hook(true));
 		switch (chr) {
 			case CHR_ALLOW: {
-				std::vector<char *> c_strings;
-				for (auto &token : tokens) c_strings.emplace_back(token.data());
-				if (!cmd->proc(static_cast<uint8_t>(tokens.size()), c_strings.data())) { // index started with 0
-					cmd->proc(0, nullptr); // if command failed, give help
+				std::vector<std::string_view> views;
+				for (auto &token : tokens) views.emplace_back(token);
+				if (!cmd->proc(views)) { // index started with 0
+					cmd->proc({}); // if command failed, give help
 				}
 				return;
 			}
