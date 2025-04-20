@@ -27,9 +27,9 @@ public:
 	~ClientNetworkStunSocketHandler() override;
 	void SendReceive();
 
-	void Connect(const std::string &token, uint8_t family);
+	void Connect(std::string_view token, uint8_t family);
 
-	static std::unique_ptr<ClientNetworkStunSocketHandler> Stun(const std::string &token, uint8_t family);
+	static std::unique_ptr<ClientNetworkStunSocketHandler> Stun(std::string_view token, uint8_t family);
 };
 
 #endif /* NETWORK_STUN_H */
