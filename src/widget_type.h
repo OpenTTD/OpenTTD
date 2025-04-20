@@ -44,6 +44,7 @@ enum WidgetType : uint8_t {
 	WWT_ARROWBTN,   ///< (Toggle) Button with an arrow
 	WWT_TEXTBTN,    ///< (Toggle) Button with text
 	WWT_TEXTBTN_2,  ///< (Toggle) Button with diff text when clicked
+	WWT_BOOLBTN,    ///< Standard boolean toggle button.
 	WWT_LABEL,      ///< Centered label
 	WWT_TEXT,       ///< Pure simple text
 	WWT_MATRIX,     ///< Grid of rows and columns. @see MatrixWidgetValues

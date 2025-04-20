@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "core/backup_type.hpp"
 #include "company_func.h"
+#include "settings_gui.h"
 #include "strings_type.h"
 #include "window_gui.h"
 #include "viewport_func.h"
@@ -2719,6 +2720,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, const Wi
 		case WWT_TEXTBTN:
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
+		case WWT_BOOLBTN:
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
@@ -2879,6 +2881,12 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 			padding = {WidgetDimensions::scaled.frametext.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
 			break;
 		}
+
+		case WWT_BOOLBTN:
+			size.width = SETTING_BUTTON_WIDTH;
+			size.height = SETTING_BUTTON_HEIGHT;
+			break;
+
 		case WWT_IMGBTN:
 		case WWT_IMGBTN_2:
 		case WWT_PUSHIMGBTN: {
@@ -2992,6 +3000,12 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
 			break;
 
+		case WWT_BOOLBTN: {
+			Point pt = GetAlignedPosition(r, Dimension(SETTING_BUTTON_WIDTH, SETTING_BUTTON_HEIGHT), this->align);
+			DrawBoolButton(pt.x, pt.y, this->colour, this->colour, clicked, !this->IsDisabled());
+			break;
+		}
+
 		case WWT_IMGBTN:
 		case WWT_PUSHIMGBTN:
 		case WWT_IMGBTN_2:
@@ -3079,7 +3093,8 @@ void NWidgetLeaf::Draw(const Window *w)
 	}
 	if (this->index >= 0) w->DrawWidget(r, this->index);
 
-	if (this->IsDisabled()) {
+	if (this->IsDisabled() && this->type != WWT_BOOLBTN) {
+		/* WWT_BOOLBTN is excluded as it draws its own disabled state. */
 		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(this->colour, SHADE_DARKER), FILLRECT_CHECKER);
 	}
 
