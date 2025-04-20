@@ -118,7 +118,7 @@ static void FillValidSearchPaths(bool only_local_path)
  * @param subdir the subdirectory to look in
  * @return true if and only if the file can be opened
  */
-bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
+bool FioCheckFileExists(std::string_view filename, Subdirectory subdir)
 {
 	auto f = FioFOpenFile(filename, "rb", subdir);
 	return f.has_value();
@@ -141,7 +141,7 @@ bool FileExists(const std::string &filename)
  * @param filename Filename to look for.
  * @return String containing the path if the path was found, else an empty string.
  */
-std::string FioFindFullPath(Subdirectory subdir, const std::string &filename)
+std::string FioFindFullPath(Subdirectory subdir, std::string_view filename)
 {
 	assert(subdir < NUM_SUBDIRS);
 
@@ -180,7 +180,7 @@ std::string FioFindDirectory(Subdirectory subdir)
 	return _personal_dir;
 }
 
-static std::optional<FileHandle> FioFOpenFileSp(const std::string &filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
+static std::optional<FileHandle> FioFOpenFileSp(std::string_view filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
 {
 #if defined(_WIN32)
 	/* fopen is implemented as a define with ellipses for
@@ -195,7 +195,7 @@ static std::optional<FileHandle> FioFOpenFileSp(const std::string &filename, con
 	if (subdir == NO_DIRECTORY) {
 		buf = filename;
 	} else {
-		buf = _searchpaths[sp] + _subdirs[subdir] + filename;
+		buf = fmt::format("{}{}{}", _searchpaths[sp], _subdirs[subdir], filename);
 	}
 
 	auto f = FileHandle::Open(buf, mode);
@@ -239,7 +239,7 @@ static std::optional<FileHandle> FioFOpenFileTar(const TarFileListEntry &entry, 
  * @param subdir Subdirectory to open.
  * @return File handle of the opened file, or \c nullptr if the file is not available.
  */
-std::optional<FileHandle> FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize)
+std::optional<FileHandle> FioFOpenFile(std::string_view filename, const char *mode, Subdirectory subdir, size_t *filesize)
 {
 	std::optional<FileHandle> f = std::nullopt;
 	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
@@ -252,7 +252,7 @@ std::optional<FileHandle> FioFOpenFile(const std::string &filename, const char *
 	/* We can only use .tar in case of data-dir, and read-mode */
 	if (!f.has_value() && mode[0] == 'r' && subdir != NO_DIRECTORY) {
 		/* Filenames in tars are always forced to be lowercase */
-		std::string resolved_name = filename;
+		std::string resolved_name{filename};
 		strtolower(resolved_name);
 
 		/* Resolve ".." */

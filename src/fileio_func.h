@@ -13,9 +13,9 @@
 #include "core/enum_type.hpp"
 #include "fileio_type.h"
 
-std::optional<FileHandle> FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
-bool FioCheckFileExists(const std::string &filename, Subdirectory subdir);
-std::string FioFindFullPath(Subdirectory subdir, const std::string &filename);
+std::optional<FileHandle> FioFOpenFile(std::string_view filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
+bool FioCheckFileExists(std::string_view filename, Subdirectory subdir);
+std::string FioFindFullPath(Subdirectory subdir, std::string_view filename);
 std::string FioGetDirectory(Searchpath sp, Subdirectory subdir);
 std::string FioFindDirectory(Subdirectory subdir);
 void FioCreateDirectory(const std::string &name);
