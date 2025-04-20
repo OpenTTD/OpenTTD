@@ -68,6 +68,7 @@ macro(reset_reader)
     unset(START_SQUIRREL_DEFINE_ON_NEXT_LINE)
     set(CLS_LEVEL 0)
     unset(CLS_IN_API)
+    set(BRACE_LEVEL 0)
 endmacro()
 
 reset_reader()
@@ -539,6 +540,14 @@ foreach(LINE IN LISTS SOURCE_LINES)
         continue()
     endif()
 
+    # Count braces to skip function bodies
+    string(REGEX REPLACE "[^{]" "" OPENING_BRACES "${LINE}")
+    string(LENGTH "${OPENING_BRACES}" OPENING_BRACES)
+    string(REGEX REPLACE "[^}]" "" CLOSING_BRACES "${LINE}")
+    string(LENGTH "${CLOSING_BRACES}" CLOSING_BRACES)
+    set(OLD_BRACE_LEVEL "${BRACE_LEVEL}")
+    math(EXPR BRACE_LEVEL "${BRACE_LEVEL} + ${OPENING_BRACES} - ${CLOSING_BRACES}")
+
     # Add enums
     if(IN_ENUM)
         string(REGEX MATCH "([^,	 ]+)" ENUM_VALUE "${LINE}")
@@ -567,6 +576,10 @@ foreach(LINE IN LISTS SOURCE_LINES)
         continue()
     endif()
 
+    if(OLD_BRACE_LEVEL)
+        continue()
+    endif()
+
     # Add a const (non-enum) value
     if("${LINE}" MATCHES "^[ 	]*static const [^ ]+ ([^ ]+) = -?\\(?[^ ]*\\)?[^ ]+;")
         list(APPEND CONST_VALUES "${CMAKE_MATCH_1}")
@@ -591,7 +604,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
         endif()
 
         unset(IS_STATIC)
-        if("${LINE}" MATCHES "static")
+        if("${LINE}" MATCHES "static ")
             set(IS_STATIC TRUE)
         endif()
 
