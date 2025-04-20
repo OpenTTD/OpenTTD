@@ -1870,15 +1870,20 @@ void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool cl
  * Draw a toggle button.
  * @param x the x position to draw
  * @param y the y position to draw
+ * @param button_colour the colour of the button.
+ * @param background background colour.
  * @param state true = lowered
  * @param clickable is the button clickable?
  */
-void DrawBoolButton(int x, int y, bool state, bool clickable)
+void DrawBoolButton(int x, int y, Colours button_colour, Colours background, bool state, bool clickable)
 {
-	static const Colours _bool_ctabs[2][2] = {{COLOUR_CREAM, COLOUR_RED}, {COLOUR_DARK_GREEN, COLOUR_GREEN}};
-
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
-	DrawFrameRect(r, _bool_ctabs[state][clickable], state ? FrameFlag::Lowered : FrameFlags{});
+	DrawFrameRect(r, state ? COLOUR_GREEN : background, state ? FrameFlags{FrameFlag::Lowered} : FrameFlags{FrameFlag::Lowered, FrameFlag::BorderOnly});
+	Rect button_rect = r.WithWidth(SETTING_BUTTON_WIDTH / 3, state ^ (_current_text_dir == TD_RTL));
+	DrawFrameRect(button_rect, button_colour, {});
+	if (!clickable) {
+		GfxFillRect(button_rect.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(button_colour, SHADE_DARKER), FILLRECT_CHECKER);
+	}
 }
 
 struct CustomCurrencyWindow : Window {
