@@ -677,7 +677,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64_t data)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, std::string_view msg, int64_t data)
 {
 	Debug(net, 9, "client[{}] SendChat(): action={}, client_id={}, self_send={}", this->client_id, action, client_id, self_send);
 
@@ -702,7 +702,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
  * @param user Name of the user who sent the message.
  * @param msg The actual message.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg)
 {
 	Debug(net, 9, "client[{}] SendExternalChat(): source={}", this->client_id, source);
 
@@ -1250,7 +1250,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet &p)
  * @param data Arbitrary data.
  * @param from_admin Whether the origin is an admin or not.
  */
-void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const std::string &msg, ClientID from_id, int64_t data, bool from_admin)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, std::string_view msg, ClientID from_id, int64_t data, bool from_admin)
 {
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
@@ -1367,7 +1367,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
  * @param user Name of the user who sent the message.
  * @param msg The actual message.
  */
-void NetworkServerSendExternalChat(const std::string &source, TextColour colour, const std::string &user, const std::string &msg)
+void NetworkServerSendExternalChat(std::string_view source, TextColour colour, std::string_view user, std::string_view msg)
 {
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) cs->SendExternalChat(source, colour, user, msg);
