@@ -2020,7 +2020,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Uchafswm ffenes
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Y nifer o ffenestri agored (nad ydynt yn ludiog) cyn y caiff hen ffenestri eu cau'n ddiofyn i wneud lle ar gyfer ffenestri newydd
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :analluogwyd
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Analluogwyd
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Lefel mwyháu uchafsymol: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Y lefel agosáu uchaf ar gyfer ffenestri olygfa. Sylwer y bydd galluogi lefelau uwch yn codi 'r gofynion côf
