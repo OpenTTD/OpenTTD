@@ -26,6 +26,7 @@
 #include "game/game_instance.hpp"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "zoom_func.h"
 
 #include "widgets/framerate_widget.h"
 
@@ -701,7 +702,7 @@ static constexpr NWidgetPart _frametime_graph_window_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VERTICAL), SetPadding(6),
+		NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.frametext),
 			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_FGW_GRAPH),
 		EndContainer(),
 	EndContainer(),
@@ -741,13 +742,13 @@ struct FrametimeGraphWindow : Window {
 			Dimension size_s_label = GetStringBoundingBox(GetString(STR_FRAMERATE_GRAPH_SECONDS, 100));
 
 			/* Size graph in height to fit at least 10 vertical labels with space between, or at least 100 pixels */
-			graph_size.height = std::max(100u, 10 * (size_ms_label.height + 1));
+			graph_size.height = std::max<uint>(ScaleGUITrad(100), 10 * (size_ms_label.height + WidgetDimensions::scaled.vsep_normal));
 			/* Always 2:1 graph area */
 			graph_size.width = 2 * graph_size.height;
 			size = graph_size;
 
-			size.width += size_ms_label.width + 2;
-			size.height += size_s_label.height + 2;
+			size.width += size_ms_label.width + WidgetDimensions::scaled.hsep_normal;
+			size.height += size_s_label.height + WidgetDimensions::scaled.vsep_normal;
 		}
 	}
 
@@ -886,11 +887,11 @@ struct FrametimeGraphWindow : Window {
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
 					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
-						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL),
+						DrawString(r.left, x_zero - WidgetDimensions::scaled.hsep_normal, y - GetCharacterHeight(FS_SMALL),
 							GetString(STR_FRAMERATE_GRAPH_SECONDS, this->vertical_scale * division / 10 / TIMESTAMP_PRECISION),
 							TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					} else {
-						DrawString(r.left, x_zero - 2, y - GetCharacterHeight(FS_SMALL),
+						DrawString(r.left, x_zero - WidgetDimensions::scaled.hsep_normal, y - GetCharacterHeight(FS_SMALL),
 							GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, this->vertical_scale * division / 10 * 1000 / TIMESTAMP_PRECISION),
 							TC_GREY, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 					}
@@ -901,7 +902,7 @@ struct FrametimeGraphWindow : Window {
 				int x = Scinterlate(x_zero, x_max, 0, (int)horz_divisions, (int)horz_divisions - (int)division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
-					DrawString(x, x_max, y_zero + 2,
+					DrawString(x, x_max, y_zero + WidgetDimensions::scaled.vsep_normal,
 						GetString(STR_FRAMERATE_GRAPH_SECONDS, division * horz_div_scl / 2),
 						TC_GREY, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
@@ -963,9 +964,9 @@ struct FrametimeGraphWindow : Window {
 				uint64_t value = peak_value * 1000 / TIMESTAMP_PRECISION;
 				int label_y = std::max(y_max, peak_point.y - GetCharacterHeight(FS_SMALL));
 				if (peak_point.x - x_zero > (int)this->graph_size.width / 2) {
-					DrawString(x_zero, peak_point.x - 2, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+					DrawString(x_zero, peak_point.x - WidgetDimensions::scaled.hsep_normal, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 				} else {
-					DrawString(peak_point.x + 2, x_max, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_LEFT | SA_FORCE, false, FS_SMALL);
+					DrawString(peak_point.x + WidgetDimensions::scaled.hsep_normal, x_max, label_y, GetString(STR_FRAMERATE_GRAPH_MILLISECONDS, value), tc_peak, SA_LEFT | SA_FORCE, false, FS_SMALL);
 				}
 			}
 		}
