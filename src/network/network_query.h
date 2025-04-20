@@ -36,14 +36,14 @@ public:
 	 * @param s The socket to connect with.
 	 * @param connection_string The connection string of the server.
 	 */
-	QueryNetworkGameSocketHandler(SOCKET s, const std::string &connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string) {}
+	QueryNetworkGameSocketHandler(SOCKET s, std::string_view connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string) {}
 
 	/**
 	 * Start to query a server based on an open socket.
 	 * @param s The socket to connect with.
 	 * @param connection_string The connection string of the server.
 	 */
-	static void QueryServer(SOCKET s, const std::string &connection_string)
+	static void QueryServer(SOCKET s, std::string_view connection_string)
 	{
 		auto query = std::make_unique<QueryNetworkGameSocketHandler>(s, connection_string);
 		query->SendGameInfo();

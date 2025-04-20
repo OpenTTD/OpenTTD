@@ -29,7 +29,7 @@ int _network_game_list_version = 0; ///< Current version of all items in the lis
  * @param connection_string the address of the to-be added item
  * @return a point to the newly added or already existing item
  */
-NetworkGame *NetworkGameListAddItem(const std::string &connection_string)
+NetworkGame *NetworkGameListAddItem(std::string_view connection_string)
 {
 	/* Parse the connection string to ensure the default port is there. */
 	const std::string resolved_connection_string = ServerAddress::Parse(connection_string, NETWORK_DEFAULT_PORT).connection_string;

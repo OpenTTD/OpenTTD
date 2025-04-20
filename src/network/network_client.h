@@ -74,7 +74,7 @@ protected:
 	static NetworkRecvStatus SendIdentify();
 	void CheckConnection();
 public:
-	ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string);
+	ClientNetworkGameSocketHandler(SOCKET s, std::string_view connection_string);
 	~ClientNetworkGameSocketHandler();
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;

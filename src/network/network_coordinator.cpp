@@ -106,7 +106,7 @@ public:
 	 * Initiate the connecting.
 	 * @param connection_string The address of the Game Coordinator server.
 	 */
-	NetworkCoordinatorConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_COORDINATOR_SERVER_PORT) {}
+	NetworkCoordinatorConnecter(std::string_view connection_string) : TCPConnecter(connection_string, NETWORK_COORDINATOR_SERVER_PORT) {}
 
 	void OnFailure() override
 	{
