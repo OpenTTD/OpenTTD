@@ -23,13 +23,13 @@ private:
 	int error;                   ///< The underlying error number from errno or WSAGetLastError.
 	mutable std::string message; ///< The string representation of the error (set on first call to #AsString).
 public:
-	NetworkError(int error, const std::string &message = {});
+	NetworkError(int error, std::string_view message = {});
 
 	bool HasError() const;
 	bool WouldBlock() const;
 	bool IsConnectionReset() const;
 	bool IsConnectInProgress() const;
-	const std::string &AsString() const;
+	std::string_view AsString() const;
 
 	static NetworkError GetLast();
 };
