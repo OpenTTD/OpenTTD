@@ -74,7 +74,7 @@ struct BaseSettingEntry {
 	virtual void GetFoldingState([[maybe_unused]] bool &all_folded, [[maybe_unused]] bool &all_unfolded) const {}
 	virtual bool IsVisible(const BaseSettingEntry *item) const;
 	virtual BaseSettingEntry *FindEntry(uint row, uint *cur_row);
-	virtual uint GetMaxHelpHeight([[maybe_unused]] int maxw) { return 0; }
+	virtual int GetMaxHelpHeight([[maybe_unused]] int maxw) { return 0; }
 
 	/**
 	 * Check whether an entry is hidden due to filters
@@ -100,7 +100,7 @@ struct SettingEntry : BaseSettingEntry {
 	void Init(uint8_t level = 0) override;
 	void ResetAll() override;
 	uint Length() const override;
-	uint GetMaxHelpHeight(int maxw) override;
+	int GetMaxHelpHeight(int maxw) override;
 	bool UpdateFilterState(SettingFilter &filter, bool force_visible) override;
 
 	void SetButtons(SettingEntryFlags new_val);
@@ -133,7 +133,7 @@ struct SettingsContainer {
 	void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
 	bool IsVisible(const BaseSettingEntry *item) const;
 	BaseSettingEntry *FindEntry(uint row, uint *cur_row);
-	uint GetMaxHelpHeight(int maxw);
+	int GetMaxHelpHeight(int maxw);
 
 	bool UpdateFilterState(SettingFilter &filter, bool force_visible);
 
@@ -156,7 +156,7 @@ struct SettingsPage : BaseSettingEntry, SettingsContainer {
 	void GetFoldingState(bool &all_folded, bool &all_unfolded) const override;
 	bool IsVisible(const BaseSettingEntry *item) const override;
 	BaseSettingEntry *FindEntry(uint row, uint *cur_row) override;
-	uint GetMaxHelpHeight(int maxw) override { return SettingsContainer::GetMaxHelpHeight(maxw); }
+	int GetMaxHelpHeight(int maxw) override { return SettingsContainer::GetMaxHelpHeight(maxw); }
 
 	bool UpdateFilterState(SettingFilter &filter, bool force_visible) override;
 

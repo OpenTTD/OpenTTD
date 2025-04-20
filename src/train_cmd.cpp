@@ -577,7 +577,7 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
  * @param[out] yoffs Number of pixels to shift the sprite downwards.
  * @param image_type Context the sprite is used in.
  */
-void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type)
+void GetTrainSpriteSize(EngineID engine, int &width, int &height, int &xoffs, int &yoffs, EngineImageType image_type)
 {
 	int y = 0;
 
@@ -598,7 +598,7 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 
 		/* Calculate values relative to an imaginary center between the two sprites. */
 		width = ScaleSpriteTrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(rect.right) - xoffs;
-		height = std::max<uint>(height, UnScaleGUI(rect.Height()));
+		height = std::max(height, UnScaleGUI(rect.Height()));
 		xoffs  = xoffs - ScaleSpriteTrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) / 2;
 		yoffs  = std::min(yoffs, UnScaleGUI(rect.top));
 	}

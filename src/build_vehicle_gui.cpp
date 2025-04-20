@@ -52,9 +52,9 @@
  * @param type the vehicle type to get the height of
  * @return the height for the entry
  */
-uint GetEngineListHeight(VehicleType type)
+int GetEngineListHeight(VehicleType type)
 {
-	return std::max<uint>(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.matrix.Vertical(), GetVehicleImageCellSize(type, EIT_PURCHASE).height);
+	return std::max(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.matrix.Vertical(), GetVehicleImageCellSize(type, EIT_PURCHASE).height);
 }
 
 static constexpr NWidgetPart _nested_build_vehicle_widgets[] = {

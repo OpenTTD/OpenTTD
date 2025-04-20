@@ -552,8 +552,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		if (widget != WID_ETT_DOTS) return;
 
-		size.width  = std::max<uint>(size.width,  ScaleGUITrad(59));
-		size.height = std::max<uint>(size.height, ScaleGUITrad(31));
+		size.width  = std::max(size.width,  ScaleGUITrad(59));
+		size.height = std::max(size.height, ScaleGUITrad(31));
 	}
 
 	void DrawWidget(const Rect &r, WidgetID widget) const override

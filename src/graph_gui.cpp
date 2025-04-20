@@ -40,7 +40,7 @@ static CargoTypes _legend_excluded_cargo_production_history;
 
 /* Apparently these don't play well with enums. */
 static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
-static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
+static constexpr int INVALID_DATAPOINT_POS = INT_MAX;  // Used to determine if the previous point was drawn.
 
 constexpr double INT64_MAX_IN_DOUBLE = static_cast<double>(INT64_MAX - 512); ///< The biggest double that when cast to int64_t still fits in a int64_t.
 static_assert(static_cast<int64_t>(INT64_MAX_IN_DOUBLE) < INT64_MAX);
@@ -116,7 +116,7 @@ static std::unique_ptr<NWidgetBase> MakeNWidgetCompanyLines()
 {
 	auto vert = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	vert->SetPadding(2, 2, 2, 2);
-	uint sprite_height = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_NORMAL).height;
+	int sprite_height = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_NORMAL).height;
 
 	for (WidgetID widnum = WID_GL_FIRST_COMPANY; widnum <= WID_GL_LAST_COMPANY; widnum++) {
 		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_BROWN, widnum);
@@ -299,13 +299,13 @@ protected:
 	 * @param current_interval Interval that contains all of the graph data.
 	 * @param num_hori_lines Number of horizontal lines to be drawn.
 	 */
-	uint GetYLabelWidth(ValuesInterval current_interval, int num_hori_lines) const
+	int GetYLabelWidth(ValuesInterval current_interval, int num_hori_lines) const
 	{
 		/* draw text strings on the y axis */
 		int64_t y_label = current_interval.highest;
 		int64_t y_label_separation = (current_interval.highest - current_interval.lowest) / num_hori_lines;
 
-		uint max_width = 0;
+		int max_width = 0;
 
 		for (int i = 0; i < (num_hori_lines + 1); i++) {
 			Dimension d = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, y_label));
@@ -323,7 +323,7 @@ protected:
 	 */
 	void DrawGraph(Rect r) const
 	{
-		uint x, y;               ///< Reused whenever x and y coordinates are needed.
+		int x, y;               ///< Reused whenever x and y coordinates are needed.
 		ValuesInterval interval; ///< Interval that contains all of the graph data.
 		int x_axis_offset;       ///< Distance from the top of the graph to the x axis.
 
@@ -498,9 +498,9 @@ protected:
 		}
 
 		/* draw lines and dots */
-		uint linewidth = _settings_client.gui.graph_line_thickness;
-		uint pointoffs1 = (linewidth + 1) / 2;
-		uint pointoffs2 = linewidth + 1 - pointoffs1;
+		int linewidth = _settings_client.gui.graph_line_thickness;
+		int pointoffs1 = (linewidth + 1) / 2;
+		int pointoffs2 = linewidth + 1 - pointoffs1;
 
 		for (const DataSet &dataset : this->data) {
 			if (HasBit(this->excluded_data, dataset.exclude_bit)) continue;
@@ -516,8 +516,8 @@ protected:
 			/* if there are not enough datapoints to fill the graph, align to the right */
 			x += (this->num_vert_lines - this->num_on_x_axis) * x_sep;
 
-			uint prev_x = INVALID_DATAPOINT_POS;
-			uint prev_y = INVALID_DATAPOINT_POS;
+			int prev_x = INVALID_DATAPOINT_POS;
+			int prev_y = INVALID_DATAPOINT_POS;
 
 			const uint dash = ScaleGUITrad(dataset.dash);
 			for (OverflowSafeInt64 datapoint : this->GetDataSetRange(dataset)) {
@@ -597,7 +597,7 @@ public:
 				size.height += WidgetDimensions::scaled.framerect.Vertical();
 
 				/* Set fixed height for number of ranges. */
-				size.height *= static_cast<uint>(std::size(this->ranges));
+				size.height *= static_cast<int>(std::size(this->ranges));
 
 				resize.width = 0;
 				resize.height = 0;
@@ -605,7 +605,7 @@ public:
 				break;
 
 			case WID_GRAPH_GRAPH: {
-				uint x_label_width = 0;
+				int x_label_width = 0;
 
 				/* Draw x-axis labels and markings for graphs based on financial quarters and years.  */
 				if (this->draw_dates) {
@@ -626,11 +626,11 @@ public:
 					x_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL_NUMBER, max_value)).width;
 				}
 
-				uint y_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, INT64_MAX)).width;
+				int y_label_width = GetStringBoundingBox(GetString(STR_GRAPH_Y_LABEL, this->format_str_y_axis, INT64_MAX)).width;
 
-				size.width  = std::max<uint>(size.width,  ScaleGUITrad(5) + y_label_width + this->num_vert_lines * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
-				size.height = std::max<uint>(size.height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->draw_dates ? 3 : 1)) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4));
-				size.height = std::max<uint>(size.height, size.width / 3);
+				size.width  = std::max(size.width,  ScaleGUITrad(5) + y_label_width + this->num_vert_lines * (x_label_width + ScaleGUITrad(5)) + ScaleGUITrad(9));
+				size.height = std::max(size.height, ScaleGUITrad(5) + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->draw_dates ? 3 : 1)) * GetCharacterHeight(FS_SMALL) + ScaleGUITrad(4));
+				size.height = std::max(size.height, size.width / 3);
 				break;
 			}
 
@@ -646,7 +646,7 @@ public:
 				break;
 
 			case WID_GRAPH_RANGE_MATRIX: {
-				uint line_height = GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical();
+				int line_height = GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.framerect.Vertical();
 				uint index = 0;
 				Rect line = r.WithHeight(line_height);
 				for (const auto &str : this->ranges) {
@@ -1058,9 +1058,9 @@ void ShowCompanyValueGraph()
 /*****************/
 
 struct PaymentRatesGraphWindow : BaseGraphWindow {
-	uint line_height = 0; ///< Pixel height of each cargo type row.
+	int line_height = 0; ///< Pixel height of each cargo type row.
 	Scrollbar *vscroll = nullptr; ///< Cargo list scrollbar.
-	uint legend_width = 0; ///< Width of legend 'blob'.
+	int legend_width = 0; ///< Width of legend 'blob'.
 
 	PaymentRatesGraphWindow(WindowDesc &desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, STR_JUST_CURRENCY_SHORT)
@@ -1294,14 +1294,14 @@ void ShowCargoPaymentRates()
 struct PerformanceRatingDetailWindow : Window {
 	static CompanyID company;
 	int timeout = 0;
-	uint score_info_left = 0;
-	uint score_info_right = 0;
-	uint bar_left = 0;
-	uint bar_right = 0;
-	uint bar_width = 0;
-	uint bar_height = 0;
-	uint score_detail_left = 0;
-	uint score_detail_right = 0;
+	int score_info_left = 0;
+	int score_info_right = 0;
+	int bar_left = 0;
+	int bar_right = 0;
+	int bar_width = 0;
+	int bar_height = 0;
+	int score_detail_left = 0;
+	int score_detail_right = 0;
 
 	PerformanceRatingDetailWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
@@ -1329,7 +1329,7 @@ struct PerformanceRatingDetailWindow : Window {
 				this->bar_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.fullbevel.Vertical();
 				size.height = this->bar_height + WidgetDimensions::scaled.matrix.Vertical();
 
-				uint score_info_width = 0;
+				int score_info_width = 0;
 				for (uint i = SCORE_BEGIN; i < SCORE_END; i++) {
 					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + i).width);
 				}
@@ -1357,11 +1357,11 @@ struct PerformanceRatingDetailWindow : Window {
 				 * exchange rate is that high, 999 999 k is usually not enough anymore
 				 * to show the different currency numbers. */
 				if (GetCurrency().rate < 1000) max /= GetCurrency().rate;
-				uint score_detail_width = GetStringBoundingBox(GetString(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, max, max)).width;
+				int score_detail_width = GetStringBoundingBox(GetString(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, max, max)).width;
 
 				size.width = WidgetDimensions::scaled.frametext.Horizontal() + score_info_width + WidgetDimensions::scaled.hsep_wide + this->bar_width + WidgetDimensions::scaled.hsep_wide + score_detail_width;
-				uint left  = WidgetDimensions::scaled.frametext.left;
-				uint right = size.width - WidgetDimensions::scaled.frametext.right;
+				int left  = WidgetDimensions::scaled.frametext.left;
+				int right = size.width - WidgetDimensions::scaled.frametext.right;
 
 				bool rtl = _current_text_dir == TD_RTL;
 				this->score_info_left  = rtl ? right - score_info_width : left;
@@ -1408,8 +1408,8 @@ struct PerformanceRatingDetailWindow : Window {
 			needed = SCORE_MAX;
 		}
 
-		uint bar_top  = CentreBounds(r.top, r.bottom, this->bar_height);
-		uint text_top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
+		int bar_top  = CentreBounds(r.top, r.bottom, this->bar_height);
+		int text_top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FS_NORMAL));
 
 		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + score_type);
 
@@ -1417,7 +1417,7 @@ struct PerformanceRatingDetailWindow : Window {
 		DrawString(this->score_info_left, this->score_info_right, text_top, GetString(STR_JUST_COMMA, score), TC_BLACK, SA_RIGHT);
 
 		/* Calculate the %-bar */
-		uint x = Clamp<int64_t>(val, 0, needed) * this->bar_width / needed;
+		int x = Clamp<int64_t>(val, 0, needed) * this->bar_width / needed;
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) {
 			x = this->bar_right - x;
@@ -1515,9 +1515,9 @@ CompanyID PerformanceRatingDetailWindow::company = CompanyID::Invalid();
 /*******************************/
 
 struct IndustryProductionGraphWindow : BaseGraphWindow {
-	uint line_height = 0; ///< Pixel height of each cargo type row.
+	int line_height = 0; ///< Pixel height of each cargo type row.
 	Scrollbar *vscroll = nullptr; ///< Cargo list scrollbar.
-	uint legend_width = 0;  ///< Width of legend 'blob'.
+	int legend_width = 0;  ///< Width of legend 'blob'.
 
 	static inline constexpr StringID RANGE_LABELS[] = {
 		STR_GRAPH_INDUSTRY_RANGE_PRODUCED,

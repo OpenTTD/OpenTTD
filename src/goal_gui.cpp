@@ -187,7 +187,7 @@ struct GoalListWindow : public Window {
 	 * @param progress_col_width Width of the progress column.
 	 * @return max width of drawn text
 	 */
-	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
+	void DrawListColumn(GoalColumn column, NWidgetBase *wid, int progress_col_width) const
 	{
 		/* Get column draw area. */
 		Rect r = wid->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
@@ -203,7 +203,7 @@ struct GoalListWindow : public Window {
 					switch (column) {
 						case GC_GOAL: {
 							/* Display the goal. */
-							uint width_reduction = progress_col_width > 0 ? progress_col_width + WidgetDimensions::scaled.framerect.Horizontal() : 0;
+							int width_reduction = progress_col_width > 0 ? progress_col_width + WidgetDimensions::scaled.framerect.Horizontal() : 0;
 							DrawString(r.Indent(width_reduction, !rtl), GetString(STR_GOALS_TEXT, s->text.GetDecodedString()));
 							break;
 						}
@@ -236,17 +236,17 @@ struct GoalListWindow : public Window {
 		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
 
 		/* Calculate progress column width. */
-		uint max_width = 0;
+		int max_width = 0;
 		for (const Goal *s : Goal::Iterate()) {
 			if (!s->progress.empty()) {
 				StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-				uint str_width = GetStringBoundingBox(GetString(str, s->progress.GetDecodedString())).width;
+				int str_width = GetStringBoundingBox(GetString(str, s->progress.GetDecodedString())).width;
 				if (str_width > max_width) max_width = str_width;
 			}
 		}
 
 		NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GOAL_LIST);
-		uint progress_col_width = std::min(max_width, wid->current_x);
+		int progress_col_width = std::min(max_width, wid->current_x);
 
 		/* Draw goal list. */
 		this->DrawListColumn(GC_PROGRESS, wid, progress_col_width);

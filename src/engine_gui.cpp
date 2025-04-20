@@ -85,7 +85,7 @@ struct EnginePreviewWindow : Window {
 		/* Get size of engine sprite, on loan from depot_gui.cpp */
 		EngineID engine = static_cast<EngineID>(this->window_number);
 		EngineImageType image_type = EIT_PURCHASE;
-		uint x, y;
+		int x, y;
 		int x_offs, y_offs;
 
 		const Engine *e = Engine::Get(engine);

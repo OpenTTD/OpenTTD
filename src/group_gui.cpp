@@ -205,7 +205,7 @@ private:
 	GroupID group_over = GroupID::Invalid(); ///< Group over which a vehicle is dragged, GroupID::Invalid() if none
 	GroupID group_confirm = GroupID::Invalid(); ///< Group awaiting delete confirmation
 	GUIGroupList groups{}; ///< List of groups
-	uint tiny_step_height = 0; ///< Step height for the group list
+	int tiny_step_height = 0; ///< Step height for the group list
 	Scrollbar *group_sb = nullptr;
 
 	std::array<Dimension, VGC_END> column_size{}; ///< Size of the columns in the group list.
@@ -237,7 +237,7 @@ private:
 		this->tiny_step_height = this->column_size[VGC_FOLD].height;
 
 		this->column_size[VGC_NAME] = maxdim(GetStringBoundingBox(STR_GROUP_DEFAULT_TRAINS + this->vli.vtype), GetStringBoundingBox(STR_GROUP_ALL_TRAINS + this->vli.vtype));
-		this->column_size[VGC_NAME].width = std::max(170u, this->column_size[VGC_NAME].width) + WidgetDimensions::scaled.hsep_indent;
+		this->column_size[VGC_NAME].width = std::max(170, this->column_size[VGC_NAME].width) + WidgetDimensions::scaled.hsep_indent;
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_NAME].height);
 
 		this->column_size[VGC_PROTECT] = GetSpriteSize(SPR_GROUP_REPLACE_PROTECT);
@@ -296,7 +296,7 @@ private:
 		const GroupStatistics &stats = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype);
 		bool rtl = _current_text_dir == TD_RTL;
 
-		const int offset = (rtl ? -(int)this->column_size[VGC_FOLD].width : (int)this->column_size[VGC_FOLD].width) / 2;
+		const int offset = (rtl ? -this->column_size[VGC_FOLD].width : this->column_size[VGC_FOLD].width) / 2;
 		const int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 		const int linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
 
@@ -639,7 +639,7 @@ public:
 
 					y1 += this->tiny_step_height;
 				}
-				if ((uint)this->group_sb->GetPosition() + this->group_sb->GetCapacity() > this->groups.size()) {
+				if (static_cast<size_t>(this->group_sb->GetPosition() + this->group_sb->GetCapacity()) > this->groups.size()) {
 					DrawGroupInfo(y1, r.left, r.right, NEW_GROUP);
 				}
 				break;
@@ -731,7 +731,7 @@ public:
 					int x = _current_text_dir == TD_RTL ?
 							group_display->pos_x + group_display->current_x - WidgetDimensions::scaled.framerect.right - it->indent * WidgetDimensions::scaled.hsep_indent - this->column_size[VGC_FOLD].width :
 							group_display->pos_x + WidgetDimensions::scaled.framerect.left + it->indent * WidgetDimensions::scaled.hsep_indent;
-					if (click_count > 1 || (pt.x >= x && pt.x < (int)(x + this->column_size[VGC_FOLD].width))) {
+					if (click_count > 1 || (pt.x >= x && pt.x < x + this->column_size[VGC_FOLD].width)) {
 
 						GroupID g = this->vli.ToGroupID();
 						if (!IsAllGroupID(g) && !IsDefaultGroupID(g)) {

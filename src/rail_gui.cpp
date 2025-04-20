@@ -1051,7 +1051,7 @@ public:
 
 struct BuildRailStationWindow : public PickerWindow {
 private:
-	uint coverage_height = 0; ///< Height of the coverage texts.
+	int coverage_height = 0; ///< Height of the coverage texts.
 
 	/**
 	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.

@@ -38,7 +38,7 @@ protected:
 	void *GetVideoPointer() override;
 	void ReleaseVideoPointer() override;
 	void Paint() override;
-	bool CreateMainWindow(uint w, uint h, uint flags) override;
+	bool CreateMainWindow(int w, int h, uint flags) override;
 
 private:
 	void  *gl_context;  ///< OpenGL context.

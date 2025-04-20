@@ -84,7 +84,7 @@ static const ServerListPosition SLP_INVALID = -1;
 
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetServerListHeader : public NWidgetContainer {
-	static const uint MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER = 150; ///< Minimum width before adding a new header
+	static constexpr int MINIMUM_NAME_WIDTH_BEFORE_NEW_HEADER = 150; ///< Minimum width before adding a new header
 public:
 	NWidgetServerListHeader() : NWidgetContainer(NWID_HORIZONTAL)
 	{
@@ -127,7 +127,7 @@ public:
 		this->ApplyAspectRatio();
 	}
 
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override
 	{
 		assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -156,7 +156,7 @@ public:
 		this->children.front()->current_x = given_width;
 
 		/* Now assign the widgets to their rightful place */
-		uint position = 0; // Place to put next child relative to origin of the container.
+		int position = 0; // Place to put next child relative to origin of the container.
 		auto assign_position = [&](const std::unique_ptr<NWidgetBase> &child_wid) {
 			if (child_wid->current_x != 0) {
 				child_wid->AssignSizePosition(sizing, x + position, y, child_wid->current_x, this->current_y, rtl);
@@ -355,7 +355,7 @@ protected:
 
 		/* show highlighted item with a different colour */
 		if (highlight) {
-			Rect r = {std::min(name.left, info.left), y, std::max(name.right, info.right), y + (int)this->resize.step_height - 1};
+			Rect r = {std::min(name.left, info.left), y, std::max(name.right, info.right), y + this->resize.step_height - 1};
 			GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), PC_GREY);
 		}
 
@@ -475,13 +475,13 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				resize.height = std::max(GetSpriteSize(SPR_BLOT).height, GetCharacterHeight(FS_NORMAL)) + padding.height;
 				fill.height = resize.height;
 				size.height = 12 * resize.height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size.height = std::max(GetSpriteSize(SPR_BLOT).height, (uint)GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
+				size.height = std::max(GetSpriteSize(SPR_BLOT).height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.matrix.Vertical();
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
@@ -1334,8 +1334,8 @@ public:
 	StringID tooltip;  ///< The tooltip of the button.
 	Colours colour;    ///< The colour of the button.
 	bool disabled;     ///< Is the button disabled?
-	uint height;       ///< Calculated height of the button.
-	uint width;        ///< Calculated width of the button.
+	int height;       ///< Calculated height of the button.
+	int width;        ///< Calculated width of the button.
 
 	ButtonCommon(SpriteID sprite, StringID tooltip, Colours colour, bool disabled = false) :
 		sprite(sprite),
@@ -1396,13 +1396,13 @@ private:
 	CompanyID dd_company_id = CompanyID::Invalid(); ///< During admin dropdown, track which company this was for.
 
 	Scrollbar *vscroll = nullptr; ///< Vertical scrollbar of this window.
-	uint line_height = 0; ///< Current lineheight of each entry in the matrix.
-	uint line_count = 0; ///< Amount of lines in the matrix.
+	int line_height = 0; ///< Current lineheight of each entry in the matrix.
+	int line_count = 0; ///< Amount of lines in the matrix.
 	int hover_index = -1; ///< Index of the current line we are hovering over, or -1 if none.
 	int player_self_index = -1; ///< The line the current player is on.
 	int player_host_index = -1; ///< The line the host is on.
 
-	std::map<uint, std::vector<std::unique_ptr<ButtonCommon>>> buttons{}; ///< Per line which buttons are available.
+	std::map<int, std::vector<std::unique_ptr<ButtonCommon>>> buttons{}; ///< Per line which buttons are available.
 
 	/**
 	 * Chat button on a Company is clicked.
@@ -1581,11 +1581,11 @@ private:
 	 */
 	ButtonCommon *GetButtonAtPoint(Point pt)
 	{
-		uint index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_CL_MATRIX);
+		int index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_CL_MATRIX);
 		Rect matrix = this->GetWidget<NWidgetBase>(WID_CL_MATRIX)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint x = rtl ? matrix.left : matrix.right;
+		int x = rtl ? matrix.left : matrix.right;
 
 		/* Find the buttons for this row. */
 		auto button_find = this->buttons.find(index);
@@ -1593,8 +1593,8 @@ private:
 
 		/* Check if we want to display a tooltip for any of the buttons. */
 		for (auto &button : button_find->second) {
-			uint left = rtl ? x : x - button->width;
-			uint right = rtl ? x + button->width : x;
+			int left = rtl ? x : x - button->width;
+			int right = rtl ? x + button->width : x;
 
 			if (IsInsideMM(pt.x, left, right)) {
 				return button.get();
@@ -1643,7 +1643,7 @@ public:
 					str = GetString(STR_JUST_RAW_STRING, own_ci != nullptr ? own_ci->client_name : _settings_client.network.client_name);
 				}
 				size = GetStringBoundingBox(str);
-				size.width = std::min(size.width, static_cast<uint>(ScaleGUITrad(200))); // By default, don't open the window too wide.
+				size.width = std::min(size.width, ScaleGUITrad(200)); // By default, don't open the window too wide.
 				break;
 			}
 
@@ -1654,9 +1654,9 @@ public:
 				break;
 
 			case WID_CL_MATRIX: {
-				uint height = std::max({GetSpriteSize(SPR_COMPANY_ICON).height, GetSpriteSize(SPR_JOIN).height, GetSpriteSize(SPR_ADMIN).height, GetSpriteSize(SPR_CHAT).height});
+				int height = std::max({GetSpriteSize(SPR_COMPANY_ICON).height, GetSpriteSize(SPR_JOIN).height, GetSpriteSize(SPR_ADMIN).height, GetSpriteSize(SPR_CHAT).height});
 				height += WidgetDimensions::scaled.framerect.Vertical();
-				this->line_height = std::max(height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				this->line_height = std::max(height, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				resize.width = 1;
 				resize.height = this->line_height;
@@ -1742,13 +1742,13 @@ public:
 				Rect matrix = this->GetWidget<NWidgetBase>(WID_CL_MATRIX)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
 				Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
-				uint text_left  = matrix.left  + (rtl ? 0 : d.width + WidgetDimensions::scaled.hsep_wide);
-				uint text_right = matrix.right - (rtl ? d.width + WidgetDimensions::scaled.hsep_wide : 0);
+				int text_left  = matrix.left  + (rtl ? 0 : d.width + WidgetDimensions::scaled.hsep_wide);
+				int text_right = matrix.right - (rtl ? d.width + WidgetDimensions::scaled.hsep_wide : 0);
 
 				Dimension d2 = GetSpriteSize(SPR_PLAYER_SELF);
-				uint offset_x = WidgetDimensions::scaled.hsep_indent - d2.width - ScaleGUITrad(3);
+				int offset_x = WidgetDimensions::scaled.hsep_indent - d2.width - ScaleGUITrad(3);
 
-				uint player_icon_x = rtl ? text_right - offset_x - d2.width : text_left + offset_x;
+				int player_icon_x = rtl ? text_right - offset_x - d2.width : text_left + offset_x;
 
 				if (IsInsideMM(pt.x, player_icon_x, player_icon_x + d2.width)) {
 					if (index == this->player_self_index) {
@@ -1867,7 +1867,7 @@ public:
 	 * @param y The y-position to start with the buttons.
 	 * @param buttons The buttons to draw.
 	 */
-	void DrawButtons(int &x, uint y, const std::vector<std::unique_ptr<ButtonCommon>> &buttons) const
+	void DrawButtons(int &x, int y, const std::vector<std::unique_ptr<ButtonCommon>> &buttons) const
 	{
 		Rect r;
 
@@ -1897,7 +1897,7 @@ public:
 	 * @param r The rect to draw within.
 	 * @param line The Nth line we are drawing. Updated during this function.
 	 */
-	void DrawCompany(CompanyID company_id, const Rect &r, uint &line) const
+	void DrawCompany(CompanyID company_id, const Rect &r, int &line) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
 		int text_y_offset = CentreBounds(0, this->line_height, GetCharacterHeight(FS_NORMAL));
@@ -1905,10 +1905,10 @@ public:
 		Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
 		int offset = CentreBounds(0, this->line_height, d.height);
 
-		uint line_start = this->vscroll->GetPosition();
-		uint line_end = line_start + this->vscroll->GetCapacity();
+		int line_start = this->vscroll->GetPosition();
+		int line_end = line_start + this->vscroll->GetCapacity();
 
-		uint y = r.top + (this->line_height * (line - line_start));
+		int y = r.top + (this->line_height * (line - line_start));
 
 		/* Draw the company line (if in range of scrollbar). */
 		if (IsInsideMM(line, line_start, line_end)) {
@@ -1979,7 +1979,7 @@ public:
 		switch (widget) {
 			case WID_CL_MATRIX: {
 				Rect ir = r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero);
-				uint line = 0;
+				int line = 0;
 
 				if (this->hover_index >= 0) {
 					Rect br = r.WithHeight(this->line_height).Translate(0, this->hover_index * this->line_height);

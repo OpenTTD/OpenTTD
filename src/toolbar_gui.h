@@ -58,6 +58,6 @@ void ToggleBoundingBoxes();
 void ToggleDirtyBlocks();
 void ToggleWidgetOutlines();
 
-extern uint _toolbar_width;
+extern int _toolbar_width;
 
 #endif /* TOOLBAR_GUI_H */

@@ -64,7 +64,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck = false, bool first_tile_okay =
 
 int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, int *station_ahead, int *station_length);
 
-void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
+void GetTrainSpriteSize(EngineID engine, int &width, int &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 bool TrainOnCrossing(TileIndex tile);
 void NormalizeTrainVehInDepot(const Train *u);

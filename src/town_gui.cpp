@@ -289,7 +289,7 @@ public:
 				break;
 
 			case WID_TA_RATING_INFO:
-				resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, (uint)GetCharacterHeight(FS_NORMAL)});
+				resize.height = std::max({this->icon_size.height + WidgetDimensions::scaled.vsep_normal, this->exclusive_size.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL)});
 				size.height = 9 * resize.height + padding.height;
 				break;
 		}
@@ -531,9 +531,9 @@ public:
 	 * Gets the desired height for the information panel.
 	 * @return the desired height in pixels.
 	 */
-	uint GetDesiredInfoHeight(int width) const
+	int GetDesiredInfoHeight(int width) const
 	{
-		uint aimed_height = static_cast<uint>(1 + CargoSpec::town_production_cargoes[TPE_PASSENGERS].size() + CargoSpec::town_production_cargoes[TPE_MAIL].size()) * GetCharacterHeight(FS_NORMAL);
+		int aimed_height = static_cast<int>(1 + CargoSpec::town_production_cargoes[TPE_PASSENGERS].size() + CargoSpec::town_production_cargoes[TPE_MAIL].size()) * GetCharacterHeight(FS_NORMAL);
 
 		bool first = true;
 		for (int i = TAE_BEGIN; i < TAE_END; i++) {
@@ -561,7 +561,7 @@ public:
 	void ResizeWindowAsNeeded()
 	{
 		const NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(WID_TV_INFO);
-		uint aimed_height = GetDesiredInfoHeight(nwid_info->current_x);
+		int aimed_height = GetDesiredInfoHeight(nwid_info->current_x);
 		if (aimed_height > nwid_info->current_y || (aimed_height < nwid_info->current_y && nwid_info->current_y > nwid_info->smallest_y)) {
 			this->ReInit();
 		}

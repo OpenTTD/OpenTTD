@@ -51,7 +51,7 @@ extern const std::initializer_list<const StringID> _engine_sort_listing[];
 extern EngList_SortTypeFunction * const _engine_sort_functions[][11];
 
 /* Functions in build_vehicle_gui.cpp */
-uint GetEngineListHeight(VehicleType type);
+int GetEngineListHeight(VehicleType type);
 void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selected, WidgetID button);
 void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes);
 void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, EngineID parent = EngineID::Invalid(), uint8_t indent = 0);

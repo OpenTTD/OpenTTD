@@ -170,7 +170,7 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
  * @param[out] yoffs Number of pixels to shift the sprite downwards.
  * @param image_type Context the sprite is used in.
  */
-void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type)
+void GetRoadVehSpriteSize(EngineID engine, int &width, int &height, int &xoffs, int &yoffs, EngineImageType image_type)
 {
 	VehicleSpriteSeq seq;
 	GetRoadVehIcon(engine, image_type, &seq);

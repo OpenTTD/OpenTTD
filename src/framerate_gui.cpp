@@ -739,7 +739,7 @@ struct FrametimeGraphWindow : Window {
 			Dimension size_s_label = GetStringBoundingBox(GetString(STR_FRAMERATE_GRAPH_SECONDS, 100));
 
 			/* Size graph in height to fit at least 10 vertical labels with space between, or at least 100 pixels */
-			graph_size.height = std::max(100u, 10 * (size_ms_label.height + 1));
+			graph_size.height = std::max(100, 10 * (size_ms_label.height + 1));
 			/* Always 2:1 graph area */
 			graph_size.width = 2 * graph_size.height;
 			size = graph_size;
@@ -860,9 +860,9 @@ struct FrametimeGraphWindow : Window {
 			const auto &timestamps = _pf_data[this->element].timestamps;
 			int point = _pf_data[this->element].prev_index;
 
-			const int x_zero = r.right - (int)this->graph_size.width;
+			const int x_zero = r.right - this->graph_size.width;
 			const int x_max = r.right;
-			const int y_zero = r.top + (int)this->graph_size.height;
+			const int y_zero = r.top + this->graph_size.height;
 			const int y_max = r.top;
 			const int c_grid = PC_DARK_GREY;
 			const int c_lines = PC_BLACK;
@@ -872,15 +872,15 @@ struct FrametimeGraphWindow : Window {
 			const TimingMeasurement draw_vert_scale = (TimingMeasurement)this->vertical_scale;
 
 			/* Number of \c horizontal_scale units in each horizontal division */
-			const uint horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
+			const int horz_div_scl = (this->horizontal_scale <= 20) ? 1 : 10;
 			/* Number of divisions of the horizontal axis */
-			const uint horz_divisions = this->horizontal_scale / horz_div_scl;
+			const int horz_divisions = this->horizontal_scale / horz_div_scl;
 			/* Number of divisions of the vertical axis */
-			const uint vert_divisions = 10;
+			const int vert_divisions = 10;
 
 			/* Draw division lines and labels for the vertical axis */
-			for (uint division = 0; division < vert_divisions; division++) {
-				int y = Scinterlate(y_zero, y_max, 0, (int)vert_divisions, (int)division);
+			for (int division = 0; division < vert_divisions; division++) {
+				int y = Scinterlate(y_zero, y_max, 0, vert_divisions, division);
 				GfxDrawLine(x_zero, y, x_max, y, c_grid);
 				if (division % 2 == 0) {
 					if ((TimingMeasurement)this->vertical_scale > TIMESTAMP_PRECISION) {
@@ -895,8 +895,8 @@ struct FrametimeGraphWindow : Window {
 				}
 			}
 			/* Draw division lines and labels for the horizontal axis */
-			for (uint division = horz_divisions; division > 0; division--) {
-				int x = Scinterlate(x_zero, x_max, 0, (int)horz_divisions, (int)horz_divisions - (int)division);
+			for (int division = horz_divisions; division > 0; division--) {
+				int x = Scinterlate(x_zero, x_max, 0, horz_divisions, horz_divisions - division);
 				GfxDrawLine(x, y_max, x, y_zero, c_grid);
 				if (division % 2 == 0) {
 					DrawString(x, x_max, y_zero + 2,
@@ -908,7 +908,7 @@ struct FrametimeGraphWindow : Window {
 			/* Position of last rendered data point */
 			Point lastpoint = {
 				x_max,
-				(int)Scinterlate<int64_t>(y_zero, y_max, 0, this->vertical_scale, durations[point])
+				static_cast<int>(Scinterlate<int64_t>(y_zero, y_max, 0, this->vertical_scale, durations[point]))
 			};
 			/* Timestamp of last rendered data point */
 			TimingMeasurement lastts = timestamps[point];

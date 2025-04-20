@@ -264,7 +264,7 @@ protected:
 	/**
 	 * Get the width available for displaying content on the page panel.
 	 */
-	uint GetAvailablePageContentWidth() const
+	int GetAvailablePageContentWidth() const
 	{
 		return this->GetWidget<NWidgetCore>(WID_SB_PAGE_PANEL)->current_x - WidgetDimensions::scaled.frametext.Horizontal() - 1;
 	}
@@ -276,7 +276,7 @@ protected:
 	 * @param max_width Available width to display content.
 	 * @return the height in pixels.
 	 */
-	uint GetHeadHeight(int max_width) const
+	int GetHeadHeight(int max_width) const
 	{
 		StoryPage *page = this->GetSelPage();
 		if (page == nullptr) return 0;
@@ -316,7 +316,7 @@ protected:
 	 * @param max_width Available width to display content.
 	 * @return the height in pixels.
 	 */
-	uint GetPageElementHeight(const StoryPageElement &pe, int max_width) const
+	int GetPageElementHeight(const StoryPageElement &pe, int max_width) const
 	{
 		switch (pe.type) {
 			case SPET_TEXT:
@@ -513,10 +513,10 @@ protected:
 	void DrawActionElement(int &y_offset, int width, int line_height, SpriteID action_sprite, const std::string &text) const
 	{
 		Dimension sprite_dim = GetSpriteSize(action_sprite);
-		uint element_height = std::max(sprite_dim.height, (uint)line_height);
+		int element_height = std::max(sprite_dim.height, line_height);
 
-		uint sprite_top = y_offset + (element_height - sprite_dim.height) / 2;
-		uint text_top = y_offset + (element_height - line_height) / 2;
+		int sprite_top = y_offset + (element_height - sprite_dim.height) / 2;
+		int text_top = y_offset + (element_height - line_height) / 2;
 
 		DrawSprite(action_sprite, PAL_NONE, 0, sprite_top);
 		DrawString(sprite_dim.width + WidgetDimensions::scaled.frametext.left, width, text_top, text, TC_BLACK);

@@ -587,7 +587,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	/* Check maximum texture size against screen resolution. */
 	GLint max_tex_size = 0;
 	_glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_tex_size);
-	if (std::max(screen_res.width, screen_res.height) > (uint)max_tex_size) return "Max supported texture size is too small";
+	if (std::max(screen_res.width, screen_res.height) > max_tex_size) return "Max supported texture size is too small";
 
 	/* Check available texture units. */
 	GLint max_tex_units = 0;
@@ -1502,7 +1502,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
  */
 inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
 {
-	Dimension sd = { (uint)UnScaleByZoomLower(this->dim.width, level), (uint)UnScaleByZoomLower(this->dim.height, level) };
+	Dimension sd = { UnScaleByZoomLower(this->dim.width, level), UnScaleByZoomLower(this->dim.height, level) };
 	return sd;
 }
 

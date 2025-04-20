@@ -31,9 +31,9 @@
 
 #include "safeguards.h"
 
-static const uint ICON_HISTORY_SIZE       = 20;
-static const uint ICON_RIGHT_BORDERWIDTH  = 10;
-static const uint ICON_BOTTOM_BORDERWIDTH = 12;
+static const int ICON_HISTORY_SIZE       = 20;
+static const int ICON_RIGHT_BORDERWIDTH  = 10;
+static const int ICON_BOTTOM_BORDERWIDTH = 12;
 
 /**
  * Container for a single line of console output

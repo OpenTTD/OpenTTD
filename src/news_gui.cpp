@@ -352,8 +352,8 @@ NewsDisplay NewsTypeData::GetDisplay() const
 
 /** Window class displaying a news item. */
 struct NewsWindow : Window {
-	uint16_t chat_height = 0; ///< Height of the chat window.
-	uint16_t status_height = 0; ///< Height of the status bar window
+	int16_t chat_height = 0; ///< Height of the chat window.
+	int16_t status_height = 0; ///< Height of the status bar window
 	const NewsItem *ni = nullptr; ///< News item to display.
 	static int duration; ///< Remaining time for showing the current news message (may only be access while a news item is displayed).
 
@@ -1187,7 +1187,7 @@ void ShowLastNewsMessage()
  * @param colour the colour the string will be shown in
  * @param *ni NewsItem being printed
  */
-static void DrawNewsString(uint left, uint right, int y, TextColour colour, const NewsItem &ni)
+static void DrawNewsString(int left, int right, int y, TextColour colour, const NewsItem &ni)
 {
 	/* Get the string, replaces newlines with spaces and remove control codes from the string. */
 	std::string message = StrMakeValid(ni.GetStatusText(), StringValidationSetting::ReplaceTabCrNlWithSpace);
@@ -1221,7 +1221,7 @@ struct MessageHistoryWindow : Window {
 			this->date_width = GetStringBoundingBox(GetString(STR_JUST_DATE_TINY, TimerGameCalendar::ConvertYMDToDate(CalendarTime::ORIGINAL_MAX_YEAR, 7, 30))).width + WidgetDimensions::scaled.hsep_wide;
 
 			size.height = 4 * resize.height + WidgetDimensions::scaled.framerect.Vertical(); // At least 4 lines are visible.
-			size.width = std::max(200u, size.width); // At least 200 pixels wide.
+			size.width = std::max(200, size.width); // At least 200 pixels wide.
 		}
 	}
 

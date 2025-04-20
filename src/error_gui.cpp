@@ -98,9 +98,9 @@ bool _window_system_initialized = false;
 /** Window class for displaying an error message window. */
 struct ErrmsgWindow : public Window, ErrorMessageData {
 private:
-	uint height_summary = 0; ///< Height of the #summary_msg string in pixels in the #WID_EM_MESSAGE widget.
-	uint height_detailed = 0; ///< Height of the #detailed_msg string in pixels in the #WID_EM_MESSAGE widget.
-	uint height_extra = 0; ///< Height of the #extra_msg string in pixels in the #WID_EM_MESSAGE widget.
+	int height_summary = 0; ///< Height of the #summary_msg string in pixels in the #WID_EM_MESSAGE widget.
+	int height_detailed = 0; ///< Height of the #detailed_msg string in pixels in the #WID_EM_MESSAGE widget.
+	int height_extra = 0; ///< Height of the #extra_msg string in pixels in the #WID_EM_MESSAGE widget.
 	TimeoutTimer<TimerWindow> display_timeout;
 
 public:
@@ -127,7 +127,7 @@ public:
 				this->height_detailed = (this->detailed_msg.empty()) ? 0 : GetStringHeight(this->detailed_msg.GetDecodedString(), size.width);
 				this->height_extra = (this->extra_msg.empty()) ? 0 : GetStringHeight(this->extra_msg.GetDecodedString(), size.width);
 
-				uint panel_height = this->height_summary;
+				int panel_height = this->height_summary;
 				if (!this->detailed_msg.empty()) panel_height += this->height_detailed + WidgetDimensions::scaled.vsep_wide;
 				if (!this->extra_msg.empty()) panel_height += this->height_extra + WidgetDimensions::scaled.vsep_wide;
 

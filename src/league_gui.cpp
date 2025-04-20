@@ -57,8 +57,8 @@ static inline StringID GetPerformanceTitleFromValue(uint value)
 class PerformanceLeagueWindow : public Window {
 private:
 	GUIList<const Company *> companies{};
-	uint ordinal_width = 0; ///< The width of the ordinal number
-	uint text_width = 0; ///< The width of the actual text
+	int ordinal_width = 0; ///< The width of the ordinal number
+	int text_width = 0; ///< The width of the actual text
 	int line_height = 0; ///< Height of the text lines
 	Dimension icon{}; ///< Dimension of the company icon.
 
@@ -111,7 +111,7 @@ public:
 
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect ordinal = ir.WithWidth(this->ordinal_width, rtl);
-		uint icon_left = ir.Indent(rtl ? this->text_width : this->ordinal_width, rtl).left;
+		int icon_left = ir.Indent(rtl ? this->text_width : this->ordinal_width, rtl).left;
 		Rect text    = ir.WithWidth(this->text_width, !rtl);
 
 		for (uint i = 0; i != this->companies.size(); i++) {
@@ -135,10 +135,10 @@ public:
 		}
 		this->ordinal_width += WidgetDimensions::scaled.hsep_wide; // Keep some extra spacing
 
-		uint widest_width = 0;
+		int widest_width = 0;
 		StringID widest_title = STR_NULL;
 		for (auto title : _performance_titles) {
-			uint width = GetStringBoundingBox(title).width;
+			int width = GetStringBoundingBox(title).width;
 			if (width > widest_width) {
 				widest_title = title;
 				widest_width = width;
@@ -146,7 +146,7 @@ public:
 		}
 
 		this->icon = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = std::max<int>(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
+		this->line_height = std::max(this->icon.height + WidgetDimensions::scaled.vsep_normal, GetCharacterHeight(FS_NORMAL));
 
 		for (const Company *c : Company::Iterate()) {
 			widest_width = std::max(widest_width, GetStringBoundingBox(GetString(STR_COMPANY_LEAGUE_COMPANY_NAME, c->index, c->index, widest_title)).width);
@@ -251,10 +251,10 @@ class ScriptLeagueWindow : public Window {
 private:
 	LeagueTableID table{};
 	std::vector<std::pair<uint, const LeagueTableElement *>> rows{};
-	uint rank_width = 0; ///< The width of the rank ordinal
-	uint text_width = 0; ///< The width of the actual text
-	uint score_width = 0; ///< The width of the score text
-	uint header_height = 0; ///< Height of the table header
+	int rank_width = 0; ///< The width of the rank ordinal
+	int text_width = 0; ///< The width of the actual text
+	int score_width = 0; ///< The width of the score text
+	int header_height = 0; ///< Height of the table header
 	int line_height = 0; ///< Height of the text lines
 	Dimension icon_size{}; ///< Dimension of the company icon.
 	EncodedString title{};
@@ -372,9 +372,9 @@ public:
 			this->icon_size.width += WidgetDimensions::scaled.hsep_wide;
 		}
 
-		uint non_text_width = this->rank_width + this->icon_size.width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
+		int non_text_width = this->rank_width + this->icon_size.width + this->score_width + WidgetDimensions::scaled.framerect.Horizontal() + WidgetDimensions::scaled.hsep_wide * 2;
 		size.width = std::max(size.width, non_text_width + this->text_width);
-		uint used_height = this->line_height * std::max<uint>(3u, static_cast<uint>(this->rows.size())) + WidgetDimensions::scaled.framerect.Vertical();
+		int used_height = this->line_height * std::max(3, static_cast<int>(this->rows.size())) + WidgetDimensions::scaled.framerect.Vertical();
 
 		/* Adjust text_width to fill any space left over if the preset minimal width is larger than our calculated width. */
 		this->text_width = size.width - non_text_width;

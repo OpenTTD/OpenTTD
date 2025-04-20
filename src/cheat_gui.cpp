@@ -237,7 +237,7 @@ static constexpr NWidgetPart _nested_cheat_widgets[] = {
 struct CheatWindow : Window {
 	int clicked = 0;
 	int clicked_cheat = 0;
-	uint line_height = 0;
+	int line_height = 0;
 	Dimension icon{}; ///< Dimension of company icon sprite
 
 	std::vector<const SettingDesc *> sandbox_settings{};
@@ -270,9 +270,9 @@ struct CheatWindow : Window {
 		int y = ir.top;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint button_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
-		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH);
-		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH : 0);
+		int button_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
+		int text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH);
+		int text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH : 0);
 
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
@@ -306,7 +306,7 @@ struct CheatWindow : Window {
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY: {
 							str = GetString(ce->str, val + 1);
-							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(str).width;
+							int offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(str).width;
 							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
 							break;
 						}
@@ -377,7 +377,7 @@ struct CheatWindow : Window {
 
 	void UpdateCheatPanelSize(Dimension &size)
 	{
-		uint width = 0;
+		int width = 0;
 		for (const auto &ce : _cheats_ui) {
 			switch (ce.type) {
 				case SLE_BOOL:
@@ -405,8 +405,8 @@ struct CheatWindow : Window {
 			}
 		}
 
-		this->line_height = std::max<uint>(this->icon.height, SETTING_BUTTON_HEIGHT);
-		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
+		this->line_height = std::max(this->icon.height, SETTING_BUTTON_HEIGHT);
+		this->line_height = std::max(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
 		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
 		size.height = this->line_height * lengthof(_cheats_ui);
@@ -414,7 +414,7 @@ struct CheatWindow : Window {
 
 	void UpdateSettingsPanelSize(Dimension &size)
 	{
-		uint width = 0;
+		int width = 0;
 		for (const auto &desc : this->sandbox_settings) {
 			const IntSettingDesc *sd = desc->AsIntSetting();
 
@@ -423,7 +423,7 @@ struct CheatWindow : Window {
 		}
 
 		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
-		size.height = this->line_height * static_cast<uint>(std::size(this->sandbox_settings));
+		size.height = this->line_height * static_cast<int>(std::size(this->sandbox_settings));
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

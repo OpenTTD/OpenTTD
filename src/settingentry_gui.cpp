@@ -94,7 +94,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 	if (cur_row >= max_row) return cur_row;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int offset = (rtl ? -(int)_setting_circle_size.width : (int)_setting_circle_size.width) / 2;
+	int offset = (rtl ? -_setting_circle_size.width : _setting_circle_size.width) / 2;
 	int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 
 	int x = rtl ? right : left;
@@ -173,7 +173,7 @@ uint SettingEntry::Length() const
  * @param maxw Maximal width of a line help text.
  * @return Biggest height needed to display any help text of this node (and its descendants).
  */
-uint SettingEntry::GetMaxHelpHeight(int maxw)
+int SettingEntry::GetMaxHelpHeight(int maxw)
 {
 	return GetStringHeight(this->setting->GetHelp(), maxw);
 }
@@ -281,10 +281,10 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	int state = (this->flags & SEF_BUTTONS_MASK).base();
 
 	bool rtl = _current_text_dir == TD_RTL;
-	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
-	uint text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide);
-	uint text_right = right - (rtl ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide : 0);
-	uint button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
+	int buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
+	int text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide);
+	int text_right = right - (rtl ? SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide : 0);
+	int button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
 	bool editable = sd->IsEditable();
@@ -421,9 +421,9 @@ BaseSettingEntry *SettingsContainer::FindEntry(uint row_num, uint *cur_row)
  * @param maxw Maximal width of a line help text.
  * @return Biggest height needed to display any help text of this (sub-)tree.
  */
-uint SettingsContainer::GetMaxHelpHeight(int maxw)
+int SettingsContainer::GetMaxHelpHeight(int maxw)
 {
-	uint biggest = 0;
+	int biggest = 0;
 	for (const auto &it : this->entries) {
 		biggest = std::max(biggest, it->GetMaxHelpHeight(maxw));
 	}

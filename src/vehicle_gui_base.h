@@ -82,7 +82,7 @@ struct BaseVehicleListWindow : public Window {
 	VehicleListIdentifier vli{}; ///< Identifier of the vehicle list we want to currently show.
 	VehicleID vehicle_sel{}; ///< Selected vehicle
 	CargoType cargo_filter_criteria{}; ///< Selected cargo filter index
-	uint order_arrow_width = 0; ///< Width of the arrow in the small order list.
+	int order_arrow_width = 0; ///< Width of the arrow in the small order list.
 	CargoTypes used_cargoes{};
 
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
@@ -155,7 +155,7 @@ void AddCargoIconOverlay(std::vector<CargoIconOverlay> &overlays, int x, int wid
 void DrawCargoIconOverlay(int x, int y, CargoType cargo_type);
 void DrawCargoIconOverlays(std::span<const CargoIconOverlay> overlays, int y);
 
-uint GetVehicleListHeight(VehicleType type, uint divisor = 1);
+int GetVehicleListHeight(VehicleType type, int divisor = 1);
 
 struct Sorting {
 	Listing aircraft;

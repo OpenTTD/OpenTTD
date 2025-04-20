@@ -32,7 +32,7 @@
 #include "../safeguards.h"
 
 /** Spacing between chat lines. */
-static const uint NETWORK_CHAT_LINE_SPACING = 3;
+static const int NETWORK_CHAT_LINE_SPACING = 3;
 
 /** Container for a message. */
 struct ChatMessage {
@@ -45,7 +45,7 @@ struct ChatMessage {
 static std::deque<ChatMessage> _chatmsg_list; ///< The actual chat message list.
 static bool _chatmessage_dirty = false;   ///< Does the chat message need repainting?
 static bool _chatmessage_visible = false; ///< Is a chat message visible.
-static uint MAX_CHAT_MESSAGES = 0;        ///< The limit of chat messages to show.
+static int MAX_CHAT_MESSAGES = 0;        ///< The limit of chat messages to show.
 
 /**
  * Time the chat history was marked dirty. This is used to determine if expired
@@ -85,7 +85,7 @@ static inline bool HaveChatMessages(bool show_all)
  */
 void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message)
 {
-	if (_chatmsg_list.size() == MAX_CHAT_MESSAGES) {
+	if (_chatmsg_list.size() == static_cast<size_t>(MAX_CHAT_MESSAGES)) {
 		_chatmsg_list.pop_back();
 	}
 
@@ -220,7 +220,7 @@ void NetworkDrawChatMessage()
 		string_height += GetStringLineCount(GetString(STR_JUST_RAW_STRING, cmsg.message), width - 1) * GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING;
 	}
 
-	string_height = std::min<uint>(string_height, MAX_CHAT_MESSAGES * (GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING));
+	string_height = std::min(string_height, MAX_CHAT_MESSAGES * (GetCharacterHeight(FS_NORMAL) + NETWORK_CHAT_LINE_SPACING));
 
 	int top = _screen.height - _chatmsg_box.y - string_height - 2;
 	int bottom = _screen.height - _chatmsg_box.y - 2;

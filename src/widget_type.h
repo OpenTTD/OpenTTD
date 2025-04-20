@@ -139,7 +139,7 @@ public:
 	void ApplyAspectRatio();
 	virtual void AdjustPaddingForZoom();
 	virtual void SetupSmallestSize(Window *w) = 0;
-	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
+	virtual void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) = 0;
 
 	virtual void FillWidgetLookup(WidgetLookup &widget_lookup) = 0;
 
@@ -185,7 +185,7 @@ public:
 	 * @param bottom Amount of additional space below the widget.
 	 * @param left   Amount of additional space left of the widget.
 	 */
-	inline void SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uint8_t left)
+	inline void SetPadding(int8_t top, int8_t right, int8_t bottom, int8_t left)
 	{
 		this->uz_padding.top = top;
 		this->uz_padding.right = right;
@@ -204,8 +204,8 @@ public:
 		this->AdjustPaddingForZoom();
 	}
 
-	inline uint GetHorizontalStepSize(SizingType sizing) const;
-	inline uint GetVerticalStepSize(SizingType sizing) const;
+	inline int GetHorizontalStepSize(SizingType sizing) const;
+	inline int GetVerticalStepSize(SizingType sizing) const;
 
 	virtual void Draw(const Window *w) = 0;
 	virtual void SetDirty(const Window *w) const;
@@ -221,18 +221,18 @@ public:
 	}
 
 	WidgetType type{}; ///< Type of the widget / nested widget.
-	uint fill_x = 0; ///< Horizontal fill stepsize (from initial size, \c 0 means not resizable).
-	uint fill_y = 0; ///< Vertical fill stepsize (from initial size, \c 0 means not resizable).
-	uint resize_x = 0; ///< Horizontal resize step (\c 0 means not resizable).
-	uint resize_y = 0; ///< Vertical resize step (\c 0 means not resizable).
+	int fill_x = 0; ///< Horizontal fill stepsize (from initial size, \c 0 means not resizable).
+	int fill_y = 0; ///< Vertical fill stepsize (from initial size, \c 0 means not resizable).
+	int resize_x = 0; ///< Horizontal resize step (\c 0 means not resizable).
+	int resize_y = 0; ///< Vertical resize step (\c 0 means not resizable).
 	/* Size of the widget in the smallest window possible.
 	 * Computed by #SetupSmallestSize() followed by #AssignSizePosition().
 	 */
-	uint smallest_x = 0; ///< Smallest horizontal size of the widget in a filled window.
-	uint smallest_y = 0; ///< Smallest vertical size of the widget in a filled window.
+	int smallest_x = 0; ///< Smallest horizontal size of the widget in a filled window.
+	int smallest_y = 0; ///< Smallest vertical size of the widget in a filled window.
 	/* Current widget size (that is, after resizing). */
-	uint current_x = 0; ///< Current horizontal size (after resizing).
-	uint current_y = 0; ///< Current vertical size (after resizing).
+	int current_x = 0; ///< Current horizontal size (after resizing).
+	int current_y = 0; ///< Current vertical size (after resizing).
 	float aspect_ratio = 0; ///< Desired aspect ratio of widget.
 	AspectFlags aspect_flags = AspectFlag::ResizeX; ///< Which dimensions can be resized.
 
@@ -245,14 +245,14 @@ public:
 	NWidgetBase *parent = nullptr; ///< Parent widget of this widget, automatically filled in when added to container.
 
 protected:
-	inline void StoreSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height);
+	inline void StoreSizePosition(SizingType sizing, int x, int y, int given_width, int given_height);
 };
 
 /**
  * Get the horizontal sizing step.
  * @param sizing Type of resize being performed.
  */
-inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
+inline int NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 {
 	return (sizing == ST_RESIZE) ? this->resize_x : this->fill_x;
 }
@@ -261,7 +261,7 @@ inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
  * Get the vertical sizing step.
  * @param sizing Type of resize being performed.
  */
-inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
+inline int NWidgetBase::GetVerticalStepSize(SizingType sizing) const
 {
 	return (sizing == ST_RESIZE) ? this->resize_y : this->fill_y;
 }
@@ -274,8 +274,9 @@ inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
  * @param given_width  Width allocated to the widget.
  * @param given_height Height allocated to the widget.
  */
-inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height)
+inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, int given_width, int given_height)
 {
+	assert(given_width >= 0 && given_height >= 0);
 	this->pos_x = x;
 	this->pos_y = y;
 	if (sizing == ST_SMALLEST) {
@@ -293,32 +294,32 @@ inline void NWidgetBase::StoreSizePosition(SizingType sizing, int x, int y, uint
  */
 class NWidgetResizeBase : public NWidgetBase {
 public:
-	NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y);
+	NWidgetResizeBase(WidgetType tp, int fill_x, int fill_y);
 
 	void AdjustPaddingForZoom() override;
-	void SetMinimalSize(uint min_x, uint min_y);
-	void SetMinimalSizeAbsolute(uint min_x, uint min_y);
-	void SetMinimalTextLines(uint8_t min_lines, uint8_t spacing, FontSize size);
-	void SetFill(uint fill_x, uint fill_y);
-	void SetResize(uint resize_x, uint resize_y);
+	void SetMinimalSize(int min_x, int min_y);
+	void SetMinimalSizeAbsolute(int min_x, int min_y);
+	void SetMinimalTextLines(int8_t min_lines, int8_t spacing, FontSize size);
+	void SetFill(int fill_x, int fill_y);
+	void SetResize(int resize_x, int resize_y);
 	void SetAspect(float ratio, AspectFlags flags = AspectFlag::ResizeX);
 	void SetAspect(int x_ratio, int y_ratio, AspectFlags flags = AspectFlag::ResizeX);
 
 	bool UpdateMultilineWidgetSize(const std::string &str, int max_lines);
-	bool UpdateSize(uint min_x, uint min_y);
-	bool UpdateVerticalSize(uint min_y);
+	bool UpdateSize(int min_x, int min_y);
+	bool UpdateVerticalSize(int min_y);
 
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override;
 
-	uint min_x = 0; ///< Minimal horizontal size of only this widget.
-	uint min_y = 0; ///< Minimal vertical size of only this widget.
+	int min_x = 0; ///< Minimal horizontal size of only this widget.
+	int min_y = 0; ///< Minimal vertical size of only this widget.
 
 	bool absolute = false; ///< Set if minimum size is fixed and should not be resized.
-	uint uz_min_x = 0; ///< Unscaled Minimal horizontal size of only this widget.
-	uint uz_min_y = 0; ///< Unscaled Minimal vertical size of only this widget.
+	int uz_min_x = 0; ///< Unscaled Minimal horizontal size of only this widget.
+	int uz_min_y = 0; ///< Unscaled Minimal vertical size of only this widget.
 
-	uint8_t uz_text_lines = 0; ///< 'Unscaled' text lines, stored for resize calculation.
-	uint8_t uz_text_spacing = 0; ///< 'Unscaled' text padding, stored for resize calculation.
+	int8_t uz_text_lines = 0; ///< 'Unscaled' text lines, stored for resize calculation.
+	int8_t uz_text_spacing = 0; ///< 'Unscaled' text padding, stored for resize calculation.
 	FontSize uz_text_size{}; ///< 'Unscaled' font size, stored for resize calculation.
 };
 
@@ -361,13 +362,13 @@ struct WidgetData {
  */
 class NWidgetCore : public NWidgetResizeBase {
 public:
-	NWidgetCore(WidgetType tp, Colours colour, WidgetID index, uint fill_x, uint fill_y, const WidgetData &widget_data, StringID tool_tip);
+	NWidgetCore(WidgetType tp, Colours colour, WidgetID index, int fill_x, int fill_y, const WidgetData &widget_data, StringID tool_tip);
 
 	void SetString(StringID string);
 	void SetStringTip(StringID string, StringID tool_tip);
 	void SetSprite(SpriteID sprite);
 	void SetSpriteTip(SpriteID sprite, StringID tool_tip);
-	void SetMatrixDimension(uint32_t columns, uint32_t rows);
+	void SetMatrixDimension(int columns, int rows);
 	void SetResizeWidgetType(ResizeWidgetValues type);
 	void SetToolTip(StringID tool_tip);
 	StringID GetToolTip() const;
@@ -509,7 +510,7 @@ public:
 	NWidgetStacked(WidgetID index) : NWidgetContainer(NWID_SELECTION), index(index) {}
 
 	void SetupSmallestSize(Window *w) override;
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override;
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	void Draw(const Window *w) override;
@@ -536,23 +537,23 @@ public:
 	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = {});
 
 	void AdjustPaddingForZoom() override;
-	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
-	void SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_rato_post);
+	void SetPIP(int8_t pip_pre, int8_t pip_inter, int8_t pip_post);
+	void SetPIPRatio(int8_t pip_ratio_pre, int8_t pip_ratio_inter, int8_t pip_rato_post);
 
 protected:
 	NWidContainerFlags flags{}; ///< Flags of the container.
-	uint8_t pip_pre = 0; ///< Amount of space before first widget.
-	uint8_t pip_inter = 0; ///< Amount of space between widgets.
-	uint8_t pip_post = 0; ///< Amount of space after last widget.
-	uint8_t pip_ratio_pre = 0; ///< Ratio of remaining space before first widget.
-	uint8_t pip_ratio_inter = 0; ///< Ratio of remaining space between widgets.
-	uint8_t pip_ratio_post = 0; ///< Ratio of remaining space after last widget.
+	int8_t pip_pre = 0; ///< Amount of space before first widget.
+	int8_t pip_inter = 0; ///< Amount of space between widgets.
+	int8_t pip_post = 0; ///< Amount of space after last widget.
+	int8_t pip_ratio_pre = 0; ///< Ratio of remaining space before first widget.
+	int8_t pip_ratio_inter = 0; ///< Ratio of remaining space between widgets.
+	int8_t pip_ratio_post = 0; ///< Ratio of remaining space after last widget.
 
-	uint8_t uz_pip_pre = 0; ///< Unscaled space before first widget.
-	uint8_t uz_pip_inter = 0; ///< Unscaled space between widgets.
-	uint8_t uz_pip_post = 0; ///< Unscaled space after last widget.
+	int8_t uz_pip_pre = 0; ///< Unscaled space before first widget.
+	int8_t uz_pip_inter = 0; ///< Unscaled space between widgets.
+	int8_t uz_pip_post = 0; ///< Unscaled space after last widget.
 
-	uint8_t gaps = 0; ///< Number of gaps between widgets.
+	int8_t gaps = 0; ///< Number of gaps between widgets.
 };
 
 /**
@@ -564,7 +565,7 @@ public:
 	NWidgetHorizontal(NWidContainerFlags flags = {});
 
 	void SetupSmallestSize(Window *w) override;
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override;
 };
 
 /**
@@ -575,7 +576,7 @@ class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
 	NWidgetHorizontalLTR(NWidContainerFlags flags = {});
 
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override;
 };
 
 /**
@@ -587,7 +588,7 @@ public:
 	NWidgetVertical(NWidContainerFlags flags = {});
 
 	void SetupSmallestSize(Window *w) override;
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override;
 };
 
 /**
@@ -608,7 +609,7 @@ public:
 	int GetCurrentElement() const;
 
 	void SetupSmallestSize(Window *w) override;
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override;
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
 	NWidgetCore *GetWidgetFromPos(int x, int y) override;
@@ -655,12 +656,12 @@ public:
 	NWidgetBackground(WidgetType tp, Colours colour, WidgetID index, std::unique_ptr<NWidgetPIPContainer> &&child = nullptr);
 
 	void Add(std::unique_ptr<NWidgetBase> &&nwid);
-	void SetPIP(uint8_t pip_pre, uint8_t pip_inter, uint8_t pip_post);
-	void SetPIPRatio(uint8_t pip_ratio_pre, uint8_t pip_ratio_inter, uint8_t pip_ratio_post);
+	void SetPIP(int8_t pip_pre, int8_t pip_inter, int8_t pip_post);
+	void SetPIPRatio(int8_t pip_ratio_pre, int8_t pip_ratio_inter, int8_t pip_ratio_post);
 
 	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w) override;
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override;
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override;
 
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override;
 
@@ -943,11 +944,11 @@ private:
  * @param step      Stepsize of the widget.
  * @return Biggest possible size of the widget, assuming that \a base may only be incremented by \a step size steps.
  */
-inline uint ComputeMaxSize(uint base, uint max_space, uint step)
+inline int ComputeMaxSize(int base, int max_space, int step)
 {
 	if (base >= max_space || step == 0) return base;
 	if (step == 1) return max_space;
-	uint increment = max_space - base;
+	int increment = max_space - base;
 	increment -= increment % step;
 	return base + increment;
 }
@@ -1031,7 +1032,7 @@ struct NWidgetPartPaddings : RectPadding {
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartPIP {
-	uint8_t pre, inter, post; ///< Amount of space before/between/after child widgets.
+	int8_t pre, inter, post; ///< Amount of space before/between/after child widgets.
 };
 
 /**
@@ -1039,8 +1040,8 @@ struct NWidgetPartPIP {
  * @ingroup NestedWidgetParts
  */
 struct NWidgetPartTextLines {
-	uint8_t lines;   ///< Number of text lines.
-	uint8_t spacing; ///< Extra spacing around lines.
+	int8_t lines;   ///< Number of text lines.
+	int8_t spacing; ///< Extra spacing around lines.
 	FontSize size; ///< Font size of text lines.
 };
 
@@ -1150,7 +1151,7 @@ constexpr NWidgetPart SetMinimalSize(int16_t x, int16_t y)
  * @param size    Font size of text.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetMinimalTextLines(uint8_t lines, uint8_t spacing, FontSize size = FS_NORMAL)
+constexpr NWidgetPart SetMinimalTextLines(int8_t lines, int8_t spacing, FontSize size = FS_NORMAL)
 {
 	return NWidgetPart{WPT_MINTEXTLINES, NWidgetPartTextLines{lines, spacing, size}};
 }
@@ -1182,7 +1183,7 @@ constexpr NWidgetPart SetAlignment(StringAlignment align)
  * @param fill_y Vertical filling step from minimal size.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetFill(uint16_t fill_x, uint16_t fill_y)
+constexpr NWidgetPart SetFill(int16_t fill_x, int16_t fill_y)
 {
 	return NWidgetPart{WPT_FILL, Point{fill_x, fill_y}};
 }
@@ -1248,9 +1249,9 @@ constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, Str
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetMatrixDataTip(uint32_t cols, uint32_t rows, StringID tip = {})
+constexpr NWidgetPart SetMatrixDataTip(int cols, int rows, StringID tip = {})
 {
-	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.matrix{ cols, rows }}, tip}};
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.matrix{cols, rows}}, tip}};
 }
 
 /**
@@ -1272,7 +1273,7 @@ constexpr NWidgetPart SetToolTip(StringID tip)
  * @param left The padding left of the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uint8_t left)
+constexpr NWidgetPart SetPadding(int8_t top, int8_t right, int8_t bottom, int8_t left)
 {
 	return NWidgetPart{WPT_PADDING, NWidgetPartPaddings{left, top, right, bottom}};
 }
@@ -1283,7 +1284,7 @@ constexpr NWidgetPart SetPadding(uint8_t top, uint8_t right, uint8_t bottom, uin
  * @param vertical The padding above and below the widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetPadding(uint8_t horizontal, uint8_t vertical)
+constexpr NWidgetPart SetPadding(int8_t horizontal, int8_t vertical)
 {
 	return NWidgetPart{WPT_PADDING, NWidgetPartPaddings{horizontal, vertical, horizontal, vertical}};
 }
@@ -1303,7 +1304,7 @@ constexpr NWidgetPart SetPadding(const RectPadding &padding)
  * @param padding The padding to use for all directions.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetPadding(uint8_t padding)
+constexpr NWidgetPart SetPadding(int8_t padding)
 {
 	return SetPadding(padding, padding, padding, padding);
 }
@@ -1315,7 +1316,7 @@ constexpr NWidgetPart SetPadding(uint8_t padding)
  * @param post The amount of space after the last widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
+constexpr NWidgetPart SetPIP(int8_t pre, int8_t inter, int8_t post)
 {
 	return NWidgetPart{WPT_PIPSPACE, NWidgetPartPIP{pre, inter, post}};
 }
@@ -1327,7 +1328,7 @@ constexpr NWidgetPart SetPIP(uint8_t pre, uint8_t inter, uint8_t post)
  * @param post The ratio of space after the last widget.
  * @ingroup NestedWidgetParts
  */
-constexpr NWidgetPart SetPIPRatio(uint8_t ratio_pre, uint8_t ratio_inter, uint8_t ratio_post)
+constexpr NWidgetPart SetPIPRatio(int8_t ratio_pre, int8_t ratio_inter, int8_t ratio_post)
 {
 	return NWidgetPart{WPT_PIPRATIO, NWidgetPartPIP{ratio_pre, ratio_inter, ratio_post}};
 }

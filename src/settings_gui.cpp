@@ -1274,7 +1274,7 @@ struct GameSettingsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL:
-				resize.height = SETTING_HEIGHT = std::max({(int)_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
+				resize.height = SETTING_HEIGHT = std::max({_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
 				resize.width = 1;
 
 				size.height = 5 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
@@ -1387,7 +1387,7 @@ struct GameSettingsWindow : Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 				tr.top += this->warn_lines * SETTING_HEIGHT;
 				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
-				int next_row = GetSettingsTree().Draw(settings_ptr, tr.left, tr.right, tr.top,
+				uint next_row = GetSettingsTree().Draw(settings_ptr, tr.left, tr.right, tr.top,
 						this->vscroll->GetPosition(), last_row, this->last_clicked);
 				if (next_row == 0) DrawString(tr, STR_CONFIG_SETTINGS_NONE);
 				break;
@@ -1826,8 +1826,8 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 	int colour = GetColourGradient(button_colour, SHADE_DARKER);
 	Dimension dim = NWidgetScrollbar::GetHorizontalDimension();
 
-	Rect lr = {x,                  y, x + (int)dim.width     - 1, y + (int)dim.height - 1};
-	Rect rr = {x + (int)dim.width, y, x + (int)dim.width * 2 - 1, y + (int)dim.height - 1};
+	Rect lr = {x,             y, x + dim.width     - 1, y + dim.height - 1};
+	Rect rr = {x + dim.width, y, x + dim.width * 2 - 1, y + dim.height - 1};
 
 	DrawFrameRect(lr, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
 	DrawFrameRect(rr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
@@ -1925,14 +1925,14 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_RATE_UP:
 			case WID_CC_YEAR_DOWN:
 			case WID_CC_YEAR_UP:
-				size = maxdim(size, {(uint)SETTING_BUTTON_WIDTH / 2, (uint)SETTING_BUTTON_HEIGHT});
+				size = maxdim(size, {SETTING_BUTTON_WIDTH / 2, SETTING_BUTTON_HEIGHT});
 				break;
 
 			/* Set the appropriate width for the edit buttons. */
 			case WID_CC_SEPARATOR_EDIT:
 			case WID_CC_PREFIX_EDIT:
 			case WID_CC_SUFFIX_EDIT:
-				size = maxdim(size, {(uint)SETTING_BUTTON_WIDTH, (uint)SETTING_BUTTON_HEIGHT});
+				size = maxdim(size, {SETTING_BUTTON_WIDTH, SETTING_BUTTON_HEIGHT});
 				break;
 
 			/* Make sure the window is wide enough for the widest exchange rate */

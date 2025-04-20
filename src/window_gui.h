@@ -79,14 +79,14 @@ private:
 	 * Distances used in drawing widgets.
 	 * These constants should not be used elsewhere, use scaled/unscaled WidgetDimensions instead.
 	 */
-	static constexpr uint WD_SHADEBOX_WIDTH = 12; ///< Minimum width of a standard shade box widget.
-	static constexpr uint WD_STICKYBOX_WIDTH = 12; ///< Minimum width of a standard sticky box widget.
-	static constexpr uint WD_DEBUGBOX_WIDTH = 12; ///< Minimum width of a standard debug box widget.
-	static constexpr uint WD_DEFSIZEBOX_WIDTH = 12; ///< Minimum width of a standard defsize box widget.
-	static constexpr uint WD_RESIZEBOX_WIDTH = 12; ///< Minimum width of a resize box widget.
-	static constexpr uint WD_CLOSEBOX_WIDTH = 11; ///< Minimum width of a close box widget.
-	static constexpr uint WD_CAPTION_HEIGHT = 14; ///< Minimum height of a title bar.
-	static constexpr uint WD_DROPDOWN_HEIGHT = 12; ///< Minimum height of a drop down widget.
+	static constexpr int WD_SHADEBOX_WIDTH = 12; ///< Minimum width of a standard shade box widget.
+	static constexpr int WD_STICKYBOX_WIDTH = 12; ///< Minimum width of a standard sticky box widget.
+	static constexpr int WD_DEBUGBOX_WIDTH = 12; ///< Minimum width of a standard debug box widget.
+	static constexpr int WD_DEFSIZEBOX_WIDTH = 12; ///< Minimum width of a standard defsize box widget.
+	static constexpr int WD_RESIZEBOX_WIDTH = 12; ///< Minimum width of a resize box widget.
+	static constexpr int WD_CLOSEBOX_WIDTH = 11; ///< Minimum width of a close box widget.
+	static constexpr int WD_CAPTION_HEIGHT = 14; ///< Minimum height of a title bar.
+	static constexpr int WD_DROPDOWN_HEIGHT = 12; ///< Minimum height of a drop down widget.
 
 	friend NWidgetLeaf;
 };
@@ -209,8 +209,8 @@ private:
  * Data structure for resizing a window
  */
 struct ResizeInfo {
-	uint step_width;  ///< Step-size of width resize changes
-	uint step_height; ///< Step-size of height resize changes
+	int step_width;  ///< Step-size of width resize changes
+	int step_height; ///< Step-size of height resize changes
 };
 
 /** State of a sort direction button. */

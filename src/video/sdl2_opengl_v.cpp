@@ -47,7 +47,7 @@ static OGLProc GetOGLProcAddressCallback(const char *proc)
 	return reinterpret_cast<OGLProc>(SDL_GL_GetProcAddress(proc));
 }
 
-bool VideoDriver_SDL_OpenGL::CreateMainWindow(uint w, uint h, uint flags)
+bool VideoDriver_SDL_OpenGL::CreateMainWindow(int w, int h, uint flags)
 {
 	return this->VideoDriver_SDL_Base::CreateMainWindow(w, h, flags | SDL_WINDOW_OPENGL);
 }

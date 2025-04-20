@@ -29,7 +29,7 @@ public:
 	explicit DropDownDivider(Args&&... args) : TBase(std::forward<Args>(args)...) {}
 
 	bool Selectable() const override { return false; }
-	uint Height() const override { return std::max<uint>(GetCharacterHeight(TFs), this->TBase::Height()); }
+	int Height() const override { return std::max(GetCharacterHeight(TFs), this->TBase::Height()); }
 
 	void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const override
 	{
@@ -65,12 +65,12 @@ public:
 		this->dim = GetStringBoundingBox(this->string, TFs);
 	}
 
-	uint Height() const override
+	int Height() const override
 	{
-		return std::max<uint>(this->dim.height, this->TBase::Height());
+		return std::max(this->dim.height, this->TBase::Height());
 	}
 
-	uint Width() const override { return this->dim.width + this->TBase::Width(); }
+	int Width() const override { return this->dim.width + this->TBase::Width(); }
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
@@ -119,8 +119,8 @@ public:
 		this->dsprite = GetSpriteSize(this->sprite);
 	}
 
-	uint Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
-	uint Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
+	int Height() const override { return std::max(this->dbounds.height, this->TBase::Height()); }
+	int Width() const override { return this->dbounds.width + WidgetDimensions::scaled.hsep_normal + this->TBase::Width(); }
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
@@ -148,8 +148,8 @@ public:
 		this->dim = GetStringBoundingBox(STR_JUST_CHECKMARK, TFs);
 	}
 
-	uint Height() const override { return std::max<uint>(this->dim.height, this->TBase::Height()); }
-	uint Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
+	int Height() const override { return std::max(this->dim.height, this->TBase::Height()); }
+	int Width() const override { return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width(); }
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
@@ -173,7 +173,7 @@ public:
 	template <typename... Args>
 	explicit DropDownIndent(uint indent, Args&&... args) : TBase(std::forward<Args>(args)...), indent(indent) {}
 
-	uint Width() const override { return this->indent * WidgetDimensions::scaled.hsep_indent + this->TBase::Width(); }
+	int Width() const override { return this->indent * WidgetDimensions::scaled.hsep_indent + this->TBase::Width(); }
 
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{

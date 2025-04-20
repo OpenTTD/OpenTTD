@@ -596,7 +596,7 @@ public:
 			}
 
 			case WID_NCL_MATRIX:
-				resize.height = std::max(this->checkbox_size.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				resize.height = std::max(this->checkbox_size.height, GetCharacterHeight(FS_NORMAL)) + padding.height;
 				size.height = 10 * resize.height;
 				break;
 		}
@@ -644,7 +644,7 @@ public:
 		const Rect type = this->GetWidget<NWidgetBase>(WID_NCL_TYPE)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 
 		/* Fill the matrix with the information */
-		const uint step_height = this->GetWidget<NWidgetBase>(WID_NCL_MATRIX)->resize_y;
+		const int step_height = this->GetWidget<NWidgetBase>(WID_NCL_MATRIX)->resize_y;
 		const int text_y_offset = WidgetDimensions::scaled.matrix.top + (step_height - WidgetDimensions::scaled.matrix.Vertical() - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		Rect mr = r.WithHeight(step_height);

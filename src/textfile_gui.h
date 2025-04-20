@@ -99,10 +99,10 @@ protected:
 
 private:
 	uint search_iterator = 0; ///< Iterator for the font check search.
-	uint max_length = 0; ///< Maximum length of unwrapped text line.
+	int max_length = 0; ///< Maximum length of unwrapped text line.
 
-	uint ReflowContent();
-	uint GetContentHeight();
+	int ReflowContent();
+	int GetContentHeight();
 	void SetupScrollbars(bool force_reflow);
 	const Hyperlink *GetHyperlink(Point pt) const;
 

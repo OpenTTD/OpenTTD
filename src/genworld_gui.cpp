@@ -563,7 +563,7 @@ struct GenerateLandscapeWindow : public Window {
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		Dimension d{0, (uint)GetCharacterHeight(FS_NORMAL)};
+		Dimension d{0, GetCharacterHeight(FS_NORMAL)};
 		std::span<const StringID> strs;
 		switch (widget) {
 			case WID_GL_TEMPERATE: case WID_GL_ARCTIC:

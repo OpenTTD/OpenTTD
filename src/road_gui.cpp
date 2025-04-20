@@ -1291,7 +1291,7 @@ static PickerCallbacks &GetRoadStopPickerCallbacks(RoadStopType rs)
 
 struct BuildRoadStationWindow : public PickerWindow {
 private:
-	uint coverage_height = 0; ///< Height of the coverage texts.
+	int coverage_height = 0; ///< Height of the coverage texts.
 
 	void CheckOrientationValid()
 	{

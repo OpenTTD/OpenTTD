@@ -25,8 +25,8 @@
 
 #include "safeguards.h"
 
-static constexpr uint MAX_BADGE_HEIGHT = 12; ///< Maximal height of a badge sprite.
-static constexpr uint MAX_BADGE_WIDTH = MAX_BADGE_HEIGHT * 2; ///< Maximal width.
+static constexpr int MAX_BADGE_HEIGHT = 12; ///< Maximal height of a badge sprite.
+static constexpr int MAX_BADGE_WIDTH = MAX_BADGE_HEIGHT * 2; ///< Maximal width.
 
 /**
  * Get the largest badge size (within limits) for a badge class.
@@ -94,7 +94,7 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
 	}
 
 	/* Replace trailing `hsep_normal` spacer with wider `hsep_wide` spacer. */
-	for (uint &badge_width : this->column_widths) {
+	for (int &badge_width : this->column_widths) {
 		if (badge_width == 0) continue;
 		badge_width = badge_width - WidgetDimensions::scaled.hsep_normal + WidgetDimensions::scaled.hsep_wide;
 	}
@@ -104,9 +104,9 @@ GUIBadgeClasses::GUIBadgeClasses(GrfSpecFeature feature)
  * Get total width of all columns.
  * @returns sum of all column widths.
  */
-uint GUIBadgeClasses::GetTotalColumnsWidth() const
+int GUIBadgeClasses::GetTotalColumnsWidth() const
 {
-	return std::accumulate(std::begin(this->column_widths), std::end(this->column_widths), 0U);
+	return std::accumulate(std::begin(this->column_widths), std::end(this->column_widths), 0);
 }
 
 /**
@@ -198,12 +198,12 @@ public:
 		}
 	}
 
-	uint Height() const override
+	int Height() const override
 	{
-		return std::max<uint>(this->dim.height, this->TBase::Height());
+		return std::max(this->dim.height, this->TBase::Height());
 	}
 
-	uint Width() const override
+	int Width() const override
 	{
 		return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
 	}

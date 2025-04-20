@@ -70,9 +70,9 @@ struct VehicleResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
-static const uint TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
-static const uint ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 32;
-static const uint VEHICLEINFO_FULL_VEHICLE_WIDTH    = 32;
+static constexpr int TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
+static constexpr int ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 32;
+static constexpr int VEHICLEINFO_FULL_VEHICLE_WIDTH    = 32;
 
 struct VehicleSpriteSeq;
 

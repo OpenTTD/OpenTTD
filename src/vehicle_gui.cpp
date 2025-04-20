@@ -695,8 +695,8 @@ static void DrawVehicleRefitWindow(const RefitOptions &refits, const RefitOption
 	uint current = 0;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	uint iconwidth = std::max(GetSpriteSize(SPR_CIRCLE_FOLDED).width, GetSpriteSize(SPR_CIRCLE_UNFOLDED).width);
-	uint iconheight = GetSpriteSize(SPR_CIRCLE_FOLDED).height;
+	int iconwidth = std::max(GetSpriteSize(SPR_CIRCLE_FOLDED).width, GetSpriteSize(SPR_CIRCLE_UNFOLDED).width);
+	int iconheight = GetSpriteSize(SPR_CIRCLE_FOLDED).height;
 	int linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
 
 	int iconleft   = rtl ? ir.right - iconwidth     : ir.left;
@@ -747,7 +747,7 @@ struct RefitWindow : public Window {
 	const RefitOption *selected_refit = nullptr; ///< Selected refit option.
 	RefitOptions refit_list{}; ///< List of refit subtypes available for each sorted cargo.
 	VehicleOrderID order = INVALID_VEH_ORDER_ID; ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
-	uint information_width = 0; ///< Width required for correctly displaying all cargoes in the information panel.
+	int information_width = 0; ///< Width required for correctly displaying all cargoes in the information panel.
 	Scrollbar *vscroll = nullptr; ///< The main scrollbar.
 	Scrollbar *hscroll = nullptr; ///< Only used for long vehicles.
 	int vehicle_width = 0; ///< Width of the vehicle being drawn.
@@ -1143,7 +1143,7 @@ struct RefitWindow : public Window {
 
 				/* The vehicle width has changed too. */
 				this->vehicle_width = GetVehicleWidth(Vehicle::Get(this->window_number), EIT_IN_DETAILS);
-				uint max_width = 0;
+				int max_width = 0;
 
 				/* Check the width of all cargo information strings. */
 				for (const auto &list : this->refit_list) {
@@ -1654,7 +1654,7 @@ static constexpr NWidgetPart _nested_vehicle_list[] = {
 	EndContainer(),
 };
 
-static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uint order_arrow_width, VehicleOrderID start)
+static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, int order_arrow_width, VehicleOrderID start)
 {
 	const Order *order = v->GetOrder(start);
 	if (order == nullptr) return;
@@ -1685,7 +1685,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uin
 }
 
 /** Draw small order list in the vehicle GUI, but without the little black arrow.  This is used for shared order groups. */
-static void DrawSmallOrderList(const Order *order, int left, int right, int y, uint order_arrow_width)
+static void DrawSmallOrderList(const Order *order, int left, int right, int y, int order_arrow_width)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	int l_offset = rtl ? 0 : order_arrow_width;
@@ -1726,17 +1726,17 @@ void DrawVehicleImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
  * @param divisor the resulting height must be dividable by this
  * @return the height
  */
-uint GetVehicleListHeight(VehicleType type, uint divisor)
+int GetVehicleListHeight(VehicleType type, int divisor)
 {
 	/* Name + vehicle + profit */
-	uint base = ScaleGUITrad(GetVehicleHeight(type)) + 2 * GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.matrix.Vertical();
+	int base = ScaleGUITrad(GetVehicleHeight(type)) + 2 * GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.matrix.Vertical();
 	/* Drawing of the 4 small orders + profit*/
-	if (type >= VEH_SHIP) base = std::max(base, 6U * GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.matrix.Vertical());
+	if (type >= VEH_SHIP) base = std::max(base, 6 * GetCharacterHeight(FS_SMALL) + WidgetDimensions::scaled.matrix.Vertical());
 
 	if (divisor == 1) return base;
 
 	/* Make sure the height is dividable by divisor */
-	uint rem = base % divisor;
+	int rem = base % divisor;
 	return base + (rem == 0 ? 0 : divisor - rem);
 }
 
@@ -2436,7 +2436,7 @@ struct VehicleDetailsWindow : Window {
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		if (v->type == VEH_ROAD) {
 			const NWidgetBase *nwid_info = this->GetWidget<NWidgetBase>(WID_VD_MIDDLE_DETAILS);
-			uint aimed_height = this->GetRoadVehDetailsHeight(v);
+			int aimed_height = this->GetRoadVehDetailsHeight(v);
 			/* If the number of articulated parts changes, the size of the window must change too. */
 			if (aimed_height != nwid_info->current_y) {
 				this->ReInit();
@@ -2449,9 +2449,9 @@ struct VehicleDetailsWindow : Window {
 	 * @param v Road vehicle being shown.
 	 * @return Desired height in pixels.
 	 */
-	uint GetRoadVehDetailsHeight(const Vehicle *v)
+	int GetRoadVehDetailsHeight(const Vehicle *v)
 	{
-		uint desired_height;
+		int desired_height;
 		if (v->HasArticulatedPart()) {
 			/* An articulated RV has its text drawn under the sprite instead of after it, hence 15 pixels extra. */
 			desired_height = ScaleGUITrad(15) + 3 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal * 2;
@@ -2506,7 +2506,7 @@ struct VehicleDetailsWindow : Window {
 			}
 
 			case WID_VD_MATRIX:
-				resize.height = std::max<uint>(ScaleGUITrad(14), GetCharacterHeight(FS_NORMAL) + padding.height);
+				resize.height = std::max(ScaleGUITrad(14), GetCharacterHeight(FS_NORMAL) + padding.height);
 				size.height = 4 * resize.height;
 				break;
 
@@ -2645,7 +2645,7 @@ struct VehicleDetailsWindow : Window {
 			case WID_VD_MIDDLE_DETAILS: {
 				/* For other vehicles, at the place of the matrix. */
 				bool rtl = _current_text_dir == TD_RTL;
-				uint sprite_width = GetSingleVehicleWidth(v, EIT_IN_DETAILS) + WidgetDimensions::scaled.framerect.Horizontal();
+				int sprite_width = GetSingleVehicleWidth(v, EIT_IN_DETAILS) + WidgetDimensions::scaled.framerect.Horizontal();
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 				/* Articulated road vehicles use a complete line. */
@@ -3061,7 +3061,7 @@ public:
 		const Vehicle *v = Vehicle::Get(this->window_number);
 		switch (widget) {
 			case WID_VV_START_STOP:
-				size.height = std::max<uint>({size.height, (uint)GetCharacterHeight(FS_NORMAL), GetScaledSpriteSize(SPR_WARNING_SIGN).height, GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED).height, GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING).height}) + padding.height;
+				size.height = std::max({size.height, GetCharacterHeight(FS_NORMAL), GetScaledSpriteSize(SPR_WARNING_SIGN).height, GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED).height, GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING).height}) + padding.height;
 				break;
 
 			case WID_VV_FORCE_PROCEED:
@@ -3201,7 +3201,7 @@ public:
 
 		/* Draw the flag plus orders. */
 		bool rtl = (_current_text_dir == TD_RTL);
-		uint icon_width = std::max({GetScaledSpriteSize(SPR_WARNING_SIGN).width, GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED).width, GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING).width});
+		int icon_width = std::max({GetScaledSpriteSize(SPR_WARNING_SIGN).width, GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED).width, GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING).width});
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		const Vehicle *v = Vehicle::Get(this->window_number);

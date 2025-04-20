@@ -117,7 +117,7 @@ void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine
  * @param[out] yoffs Number of pixels to shift the sprite downwards.
  * @param image_type Context the sprite is used in.
  */
-void GetShipSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type)
+void GetShipSpriteSize(EngineID engine, int &width, int &height, int &xoffs, int &yoffs, EngineImageType image_type)
 {
 	VehicleSpriteSeq seq;
 	GetShipIcon(engine, image_type, &seq);
