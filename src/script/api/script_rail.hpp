@@ -301,7 +301,10 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
 	 */
+	/* clang-format off */
+	/* wrapping breaks the squirrel-extractor */
 	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, SQInteger num_platforms, SQInteger platform_length, StationID station_id, CargoType cargo_type, IndustryType source_industry, IndustryType goal_industry, SQInteger distance, bool source_station);
+	/* clang-format on */
 
 	/**
 	 * Build a rail waypoint.
