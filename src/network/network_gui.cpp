@@ -2186,11 +2186,11 @@ struct NetworkAskRelayWindow : public Window {
 	std::string relay_connection_string{}; ///< The relay server we want to connect to.
 	std::string token{}; ///< The token for this connection.
 
-	NetworkAskRelayWindow(WindowDesc &desc, Window *parent, const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token) :
+	NetworkAskRelayWindow(WindowDesc &desc, Window *parent, std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token) :
 		Window(desc),
 		server_connection_string(server_connection_string),
-		relay_connection_string(relay_connection_string),
-		token(token)
+		relay_connection_string(std::move(relay_connection_string)),
+		token(std::move(token))
 	{
 		this->parent = parent;
 		this->InitNested(0);
@@ -2276,12 +2276,12 @@ static WindowDesc _network_ask_relay_desc(
  * @param relay_connection_string The relay server we want to connect to.
  * @param token The token for this connection.
  */
-void ShowNetworkAskRelay(const std::string &server_connection_string, const std::string &relay_connection_string, const std::string &token)
+void ShowNetworkAskRelay(std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token)
 {
 	CloseWindowByClass(WC_NETWORK_ASK_RELAY, NRWCD_HANDLED);
 
 	Window *parent = GetMainWindow();
-	new NetworkAskRelayWindow(_network_ask_relay_desc, parent, server_connection_string, relay_connection_string, token);
+	new NetworkAskRelayWindow(_network_ask_relay_desc, parent, server_connection_string, std::move(relay_connection_string), std::move(token));
 }
 
 /**

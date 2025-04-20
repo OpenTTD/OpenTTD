@@ -96,7 +96,7 @@ void ClientNetworkTurnSocketHandler::Connect()
  * @param connection_string Connection string of the TURN server.
  * @return The handler for this TURN connection.
  */
-/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(const std::string &token, uint8_t tracking_number, const std::string &ticket, std::string_view connection_string)
+/* static */ std::unique_ptr<ClientNetworkTurnSocketHandler> ClientNetworkTurnSocketHandler::Turn(std::string_view token, uint8_t tracking_number, std::string_view ticket, std::string_view connection_string)
 {
 	auto turn_handler = std::make_unique<ClientNetworkTurnSocketHandler>(token, tracking_number, connection_string);
 
