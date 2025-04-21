@@ -1575,9 +1575,12 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 			/* Graphics tab */
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.sparse_resize),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
-					NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_GUI_SCALE_FRAME),
+					NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_INTERFACE),
 						NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_GUI_SCALE), SetMinimalTextLines(1, 12 + WidgetDimensions::unscaled.vsep_normal, FS_SMALL), SetFill(0, 0), SetResize(1, 0), SetToolTip(STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP),
+							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
+								NWidget(WWT_TEXT, INVALID_COLOUR), SetStringTip(STR_GAME_OPTIONS_GUI_SCALE_FRAME),
+								NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_GUI_SCALE), SetMinimalTextLines(1, 12 + WidgetDimensions::unscaled.vsep_normal, FS_SMALL), SetFill(1, 0), SetResize(1, 0), SetToolTip(STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP),
+							EndContainer(),
 							NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 								NWidget(WWT_TEXT, INVALID_COLOUR), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_GAME_OPTIONS_GUI_SCALE_AUTO),
 								NWidget(WWT_BOOLBTN, COLOUR_GREY, WID_GO_GUI_SCALE_AUTO), SetToolTip(STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP),
@@ -1599,7 +1602,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 						EndContainer(),
 					EndContainer(),
 
-					NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_GRAPHICS),
+					NWidget(WWT_FRAME, COLOUR_GREY), SetStringTip(STR_GAME_OPTIONS_DISPLAY),
 						NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
 							NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 								NWidget(WWT_TEXT, INVALID_COLOUR), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_GAME_OPTIONS_RESOLUTION),
