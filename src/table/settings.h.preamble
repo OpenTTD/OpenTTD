@@ -10,7 +10,7 @@
 #include "table/strings.h"
 
 /* Callback function used in _settings[] as well as _company_settings[] */
-static size_t ConvertLandscape(const char *value);
+static std::optional<uint32_t> ConvertLandscape(std::string_view value);
 
 static StringID SettingTitleWallclock(const IntSettingDesc &sd);
 static StringID SettingHelpWallclock(const IntSettingDesc &sd);
