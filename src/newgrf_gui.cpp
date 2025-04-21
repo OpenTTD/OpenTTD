@@ -260,7 +260,7 @@ struct NewGRFParametersWindow : public Window {
 
 		auto it = std::ranges::lower_bound(par_info.value_names, value, std::less{}, &GRFParameterInfo::ValueName::first);
 		if (it != std::end(par_info.value_names) && it->first == value) {
-			if (auto label = GetGRFStringFromGRFText(it->second); label.has_value()) return {STR_JUST_RAW_STRING, std::string(*label)};
+			if (auto label = GetGRFStringFromGRFText(it->second); label.has_value()) return {STR_JUST_RAW_STRING, *label};
 		}
 
 		return {STR_JUST_INT, value};
