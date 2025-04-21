@@ -1239,7 +1239,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Setări client 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Setări joc (stocate în salvări; afectează doar jocurile noi)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Setări joc (stocate în salvări; afectează doar jocul curent)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Setări companie (stocate în salvări; afectează doar jocurile noi)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Setări compenia (stocate în salvări; afectează doar compania curentă)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Setări companie (stocate în salvări; afectează doar compania curentă)
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nespecificat -
 ###length 3
