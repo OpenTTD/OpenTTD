@@ -1877,16 +1877,16 @@ void SyncCompanySettings()
  * @param force_newgame force the newgame settings
  * @note Strings WILL NOT be synced over the network
  */
-bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_newgame)
+bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool force_newgame)
 {
 	assert(sd->flags.Test(SettingFlag::NoNetworkSync));
 
-	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value.compare("(null)") == 0) {
-		value.clear();
+	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value == "(null)") {
+		value = {};
 	}
 
 	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
-	sd->AsStringSetting()->ChangeValue(object, value);
+	sd->AsStringSetting()->ChangeValue(object, std::string{value});
 	return true;
 }
 
@@ -1896,7 +1896,7 @@ bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_
  * @param object The object the setting is in.
  * @param newval The new value for the setting.
  */
-void StringSettingDesc::ChangeValue(const void *object, std::string &newval) const
+void StringSettingDesc::ChangeValue(const void *object, std::string &&newval) const
 {
 	this->MakeValueValid(newval);
 	if (this->pre_check != nullptr && !this->pre_check(newval)) return;
