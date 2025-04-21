@@ -87,7 +87,7 @@
 #endif
 
 #if defined(_MSC_VER)
-	// See https://learn.microsoft.com/en-us/cpp/cpp/empty-bases?view=msvc-170
+	/* See https://learn.microsoft.com/en-us/cpp/cpp/empty-bases?view=msvc-170 */
 #	define EMPTY_BASES __declspec(empty_bases)
 #else
 #	define EMPTY_BASES

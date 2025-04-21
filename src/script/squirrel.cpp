@@ -570,7 +570,7 @@ public:
 
 			size_t buffer_size = this->buffer.size();
 			size_t read_size = Align(min_size - buffer_size, 4096); // read pages of 4096 bytes
-			// TODO C++23: use std::string::resize_and_overwrite()
+			/* TODO C++23: use std::string::resize_and_overwrite() */
 			this->buffer.resize(buffer_size + read_size);
 			auto dest = std::span(this->buffer.data(), this->buffer.size()).subspan(buffer_size);
 			buffer_size += this->ReadInternal(dest);

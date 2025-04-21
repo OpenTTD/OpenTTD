@@ -15,7 +15,7 @@
 #include "../core/bitmath_func.hpp"
 #include "../core/math_func.hpp"
 
-// Windows 8 SDK required for XAudio2
+/* Windows 8 SDK required for XAudio2 */
 #undef NTDDI_VERSION
 #undef _WIN32_WINNT
 
@@ -34,7 +34,7 @@ using Microsoft::WRL::ComPtr;
 #include "../os/windows/win32.h"
 #include "../safeguards.h"
 
-// Definition of the "XAudio2Create" call used to initialise XAudio2
+/* Definition of the "XAudio2Create" call used to initialise XAudio2 */
 typedef HRESULT(__stdcall *API_XAudio2Create)(_Outptr_ IXAudio2 **ppXAudio2, UINT32 Flags, XAUDIO2_PROCESSOR XAudio2Processor);
 
 static FSoundDriver_XAudio2 iFSoundDriver_XAudio2;
@@ -60,7 +60,7 @@ public:
 
 	HRESULT SubmitBuffer()
 	{
-		// Ensure we do have a valid voice
+		/* Ensure we do have a valid voice */
 		if (this->source_voice == nullptr) {
 			return E_FAIL;
 		}
@@ -159,7 +159,7 @@ std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &par
 		return "Failed to load XAudio2 DLL";
 	}
 
-	// Create the XAudio engine
+	/* Create the XAudio engine */
 	hr = CreateXAudio(xAudio2Create);
 
 	if (FAILED(hr)) {
@@ -170,7 +170,7 @@ std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &par
 		return "Failed to inititialise the XAudio2 engine";
 	}
 
-	// Create a mastering voice
+	/* Create a mastering voice */
 	hr = _xaudio2->CreateMasteringVoice(&_mastering_voice);
 
 	if (FAILED(hr)) {
@@ -182,7 +182,7 @@ std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &par
 		return "Failed to create a mastering voice";
 	}
 
-	// Create a source voice to stream our audio
+	/* Create a source voice to stream our audio */
 	WAVEFORMATEX wfex;
 
 	wfex.wFormatTag = WAVE_FORMAT_PCM;
@@ -192,7 +192,7 @@ std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &par
 	wfex.nBlockAlign = (wfex.nChannels * wfex.wBitsPerSample) / 8;
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
-	// Limit buffer size to prevent overflows
+	/* Limit buffer size to prevent overflows */
 	int bufsize = GetDriverParamInt(parm, "samples", 1024);
 	bufsize = std::min<int>(bufsize, UINT16_MAX);
 
@@ -231,7 +231,7 @@ std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &par
 
 	MxInitialize(wfex.nSamplesPerSec);
 
-	// Submit the first buffer
+	/* Submit the first buffer */
 	hr = _voice_context->SubmitBuffer();
 
 	if (FAILED(hr)) {
@@ -249,7 +249,7 @@ std::optional<std::string_view> SoundDriver_XAudio2::Start(const StringList &par
  */
 void SoundDriver_XAudio2::Stop()
 {
-	// Clean up XAudio2
+	/* Clean up XAudio2 */
 	_source_voice->DestroyVoice();
 
 	_voice_context = nullptr;

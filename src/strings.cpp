@@ -1477,7 +1477,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_VELOCITY: { // {VELOCITY}
 					int64_t arg = args.GetNextParameter<int64_t>();
-					// Unpack vehicle type from packed argument to get desired units.
+					/* Unpack vehicle type from packed argument to get desired units. */
 					VehicleType vt = static_cast<VehicleType>(GB(arg, 56, 8));
 					const auto &x = GetVelocityUnits(vt);
 					auto tmp_params = MakeParameters(ConvertKmhishSpeedToDisplaySpeed(GB(arg, 0, 56), vt), x.decimal_places);

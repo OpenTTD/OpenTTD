@@ -549,7 +549,7 @@ struct ShipSubcoordData {
  * so each Diagdir sub-array will have three valid and three invalid structures per Track.
  */
 static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
-	// DIAGDIR_NE
+	/* DIAGDIR_NE */
 	{
 		{15,  8, DIR_NE},      // TRACK_X
 		{ 0,  0, INVALID_DIR}, // TRACK_Y
@@ -558,7 +558,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 		{15,  7, DIR_N},       // TRACK_LEFT
 		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
 	},
-	// DIAGDIR_SE
+	/* DIAGDIR_SE */
 	{
 		{ 0,  0, INVALID_DIR}, // TRACK_X
 		{ 8,  0, DIR_SE},      // TRACK_Y
@@ -567,7 +567,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 		{ 8,  0, DIR_S},       // TRACK_LEFT
 		{ 0,  0, INVALID_DIR}, // TRACK_RIGHT
 	},
-	// DIAGDIR_SW
+	/* DIAGDIR_SW */
 	{
 		{ 0,  8, DIR_SW},      // TRACK_X
 		{ 0,  0, INVALID_DIR}, // TRACK_Y
@@ -576,7 +576,7 @@ static const ShipSubcoordData _ship_subcoord[DIAGDIR_END][TRACK_END] = {
 		{ 0,  0, INVALID_DIR}, // TRACK_LEFT
 		{ 0,  8, DIR_S},       // TRACK_RIGHT
 	},
-	// DIAGDIR_NW
+	/* DIAGDIR_NW */
 	{
 		{ 0,  0, INVALID_DIR}, // TRACK_X
 		{ 8, 15, DIR_NW},      // TRACK_Y

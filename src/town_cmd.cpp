@@ -235,7 +235,7 @@ static int _grow_town_result;
 enum TownGrowthResult {
 	GROWTH_SUCCEED         = -1,
 	GROWTH_SEARCH_STOPPED  =  0
-//	GROWTH_SEARCH_RUNNING >=  1
+	/* GROWTH_SEARCH_RUNNING >= 1 */
 };
 
 static bool TryBuildTownHouse(Town *t, TileIndex tile);

@@ -188,7 +188,7 @@ static std::optional<std::string> VolumeMarkFunc(int, int mark, int value)
 	/* Label only every other mark. */
 	if (mark % 2 != 0) return std::string{};
 
-	// 0-127 does not map nicely to 0-100. Dividing first gives us nice round numbers.
+	/* 0-127 does not map nicely to 0-100. Dividing first gives us nice round numbers. */
 	return GetString(STR_GAME_OPTIONS_VOLUME_MARK, value / 31 * 25);
 }
 

@@ -695,7 +695,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	/* Prime vertex buffer with a full-screen quad and store
 	 * the corresponding state in a vertex array object. */
 	static const Simple2DVertex vert_array[] = {
-		//  x     y    u    v
+		/*  x     y    u    v */
 		{  1.f, -1.f, 1.f, 1.f },
 		{  1.f,  1.f, 1.f, 0.f },
 		{ -1.f, -1.f, 0.f, 1.f },

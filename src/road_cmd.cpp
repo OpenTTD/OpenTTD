@@ -1463,7 +1463,7 @@ void DrawRoadCatenary(const TileInfo *ti)
 			}
 		}
 	} else {
-		// No road here, no catenary to draw
+		/* No road here, no catenary to draw */
 		return;
 	}
 
@@ -2402,10 +2402,10 @@ static bool CanConvertUnownedRoadType(Owner owner, RoadTramType rtt)
  */
 static void ConvertRoadTypeOwner(TileIndex tile, uint num_pieces, Owner owner, RoadType from_type, RoadType to_type)
 {
-	// Scenario editor, maybe? Don't touch the owners when converting roadtypes...
+	/* Scenario editor, maybe? Don't touch the owners when converting roadtypes... */
 	if (_current_company >= MAX_COMPANIES) return;
 
-	// We can't get a company from invalid owners but we can get ownership of roads without an owner
+	/* We can't get a company from invalid owners but we can get ownership of roads without an owner */
 	if (owner >= MAX_COMPANIES && owner != OWNER_NONE) return;
 
 	Company *c;

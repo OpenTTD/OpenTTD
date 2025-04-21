@@ -328,11 +328,11 @@ class Kdtree {
 		assert(cy < max_y);
 
 		if (level % 2 == 0) {
-			// split in dimension 0 = x
+			/* split in dimension 0 = x */
 			this->CheckInvariant(n.left,  level + 1, min_x, cx, min_y, max_y);
 			this->CheckInvariant(n.right, level + 1, cx, max_x, min_y, max_y);
 		} else {
-			// split in dimension 1 = y
+			/* split in dimension 1 = y */
 			this->CheckInvariant(n.left,  level + 1, min_x, max_x, min_y, cy);
 			this->CheckInvariant(n.right, level + 1, min_x, max_x, cy, max_y);
 		}

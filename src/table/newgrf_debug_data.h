@@ -60,7 +60,7 @@ static const NIVariable _niv_vehicles[] = {
 	NIV(0x4C, "current max speed"),
 	NIV(0x4D, "position in articulated vehicle"),
 	NIV(0x60, "count vehicle id occurrences"),
-	// 0x61 not useful, since it requires register 0x10F
+	/* 0x61 not useful, since it requires register 0x10F */
 	NIV(0x62, "curvature/position difference to other vehicle"),
 	NIV(0x63, "tile compatibility wrt. track-type"),
 };

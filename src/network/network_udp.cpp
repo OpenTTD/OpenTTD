@@ -58,7 +58,7 @@ struct UDPSocket {
 static UDPSocket _udp_client("Client"); ///< udp client socket
 static UDPSocket _udp_server("Server"); ///< udp server socket
 
-///*** Communication with clients (we are server) ***/
+/* Communication with clients (we are server) */
 
 /** Helper class for handling all server side communication. */
 class ServerNetworkUDPSocketHandler : public NetworkUDPSocketHandler {
@@ -81,7 +81,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet &, Network
 	Debug(net, 7, "Queried from {}", client_addr.GetHostname());
 }
 
-///*** Communication with servers (we are client) ***/
+/* Communication with servers (we are client) */
 
 /** Helper class for handling all client side communication. */
 class ClientNetworkUDPSocketHandler : public NetworkUDPSocketHandler {

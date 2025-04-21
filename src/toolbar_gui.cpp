@@ -1540,7 +1540,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_AIR,
 			WID_TN_LANDSCAPE,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_SETTINGS,
 			WID_TN_SAVE,
 			WID_TN_SMALL_MAP,
@@ -1572,7 +1572,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_SETTINGS,
 			WID_TN_SMALL_MAP,
@@ -1606,7 +1606,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1642,7 +1642,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1680,7 +1680,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1720,7 +1720,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1762,7 +1762,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TN_PAUSE,
 			WID_TN_FAST_FORWARD,
 			WID_TN_SAVE,
@@ -1909,7 +1909,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 			WID_TE_TREES,
 			WID_TE_SIGNS,
 			WID_TE_SWITCH_BAR,
-			// lower toolbar
+			/* lower toolbar */
 			WID_TE_PAUSE,
 			WID_TE_FAST_FORWARD,
 			WID_TE_SETTINGS,
