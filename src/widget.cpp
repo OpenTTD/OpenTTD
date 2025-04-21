@@ -3002,7 +3002,9 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_BOOLBTN: {
 			Point pt = GetAlignedPosition(r, Dimension(SETTING_BUTTON_WIDTH, SETTING_BUTTON_HEIGHT), this->align);
-			DrawBoolButton(pt.x, pt.y, this->colour, this->colour, clicked, !this->IsDisabled());
+			Colours button_colour = this->widget_data.alternate_colour;
+			if (button_colour == INVALID_COLOUR) button_colour = this->colour;
+			DrawBoolButton(pt.x, pt.y, button_colour, this->colour, clicked, !this->IsDisabled());
 			break;
 		}
 
