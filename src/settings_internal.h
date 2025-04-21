@@ -334,7 +334,7 @@ struct StringSettingDesc : SettingDesc {
 	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
 
 	bool IsStringSetting() const override { return true; }
-	void ChangeValue(const void *object, std::string &newval) const;
+	void ChangeValue(const void *object, std::string &&newval) const;
 
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
@@ -392,7 +392,7 @@ const SettingDesc *GetSettingFromName(const std::string_view name);
 void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads);
 SettingTable GetSaveLoadSettingTable();
 bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame = false);
-bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
+bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool force_newgame = false);
 
 std::vector<const SettingDesc *> GetFilteredSettingCollection(std::function<bool(const SettingDesc &desc)> func);
 
