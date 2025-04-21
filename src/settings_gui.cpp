@@ -1273,12 +1273,14 @@ struct GameSettingsWindow : Window {
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
-			case WID_GS_OPTIONSPANEL:
-				resize.height = SETTING_HEIGHT = std::max({(int)_setting_circle_size.height, SETTING_BUTTON_HEIGHT, GetCharacterHeight(FS_NORMAL)}) + WidgetDimensions::scaled.vsep_normal;
+			case WID_GS_OPTIONSPANEL: {
+				const Dimension setting_button = GetSettingButtonSize();
+				resize.height = SETTING_HEIGHT = std::max({_setting_circle_size.height, setting_button.height, static_cast<uint>(GetCharacterHeight(FS_NORMAL))}) + WidgetDimensions::scaled.vsep_normal;
 				resize.width = 1;
 
 				size.height = 5 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
 				break;
+			}
 
 			case WID_GS_HELP_TEXT: {
 				static const StringID setting_types[] = {
@@ -1507,11 +1509,12 @@ struct GameSettingsWindow : Window {
 			return;
 		}
 
+		const Dimension setting_button = GetSettingButtonSize();
 		auto [min_val, max_val] = sd->GetRange();
 		int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
-		if (x < SETTING_BUTTON_WIDTH && sd->flags.Test(SettingFlag::GuiDropdown)) {
+		if (IsInsideMM(x, 0, setting_button.width) && sd->flags.Test(SettingFlag::GuiDropdown)) {
 			this->SetDisplayedHelpText(pe);
 
 			if (this->valuedropdown_entry == pe) {
@@ -1528,10 +1531,10 @@ struct GameSettingsWindow : Window {
 				int rel_y = (pt.y - wid->pos_y - WidgetDimensions::scaled.framerect.top) % wid->resize_y;
 
 				Rect wi_rect;
-				wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
-				wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
-				wi_rect.top = pt.y - rel_y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
-				wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
+				wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? setting_button.width - 1 - x : x);
+				wi_rect.right = wi_rect.left + setting_button.width - 1;
+				wi_rect.top = pt.y - rel_y + (SETTING_HEIGHT - setting_button.height) / 2;
+				wi_rect.bottom = wi_rect.top + setting_button.height - 1;
 
 				/* For dropdowns we also have to check the y position thoroughly, the mouse may not above the just opening dropdown */
 				if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
@@ -1548,7 +1551,7 @@ struct GameSettingsWindow : Window {
 				}
 			}
 			this->SetDirty();
-		} else if (x < SETTING_BUTTON_WIDTH) {
+		} else if (IsInsideMM(x, 0, setting_button.width)) {
 			this->SetDisplayedHelpText(pe);
 			int32_t oldvalue = value;
 
@@ -1569,7 +1572,7 @@ struct GameSettingsWindow : Window {
 				}
 
 				/* Increase or decrease the value and clamp it to extremes */
-				if (x >= SETTING_BUTTON_WIDTH / 2) {
+				if (IsInsideMM(x, setting_button.width / 2, setting_button.width)) {
 					value += step;
 					if (min_val < 0) {
 						assert(static_cast<int32_t>(max_val) >= 0);
@@ -1589,7 +1592,7 @@ struct GameSettingsWindow : Window {
 						this->clicked_entry->SetButtons({});
 					}
 					this->clicked_entry = pe;
-					this->clicked_entry->SetButtons((x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? SettingEntryFlag::RightDepressed : SettingEntryFlag::LeftDepressed);
+					this->clicked_entry->SetButtons(IsInsideMM(x, setting_button.width / 2, setting_button.width) != (_current_text_dir == TD_RTL) ? SettingEntryFlag::RightDepressed : SettingEntryFlag::LeftDepressed);
 					this->SetTimeout();
 					_left_button_clicked = false;
 				}
@@ -1856,7 +1859,7 @@ void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool cl
 {
 	int colour = GetColourGradient(button_colour, SHADE_DARKER);
 
-	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
+	Rect r{x, y, GetSettingButtonSize()};
 
 	DrawFrameRect(r, button_colour, state ? FrameFlag::Lowered : FrameFlags{});
 	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, r, SA_CENTER);
@@ -1877,7 +1880,7 @@ void DrawBoolButton(int x, int y, bool state, bool clickable)
 {
 	static const Colours _bool_ctabs[2][2] = {{COLOUR_CREAM, COLOUR_RED}, {COLOUR_DARK_GREEN, COLOUR_GREEN}};
 
-	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
+	Rect r{x, y, GetSettingButtonSize()};
 	DrawFrameRect(r, _bool_ctabs[state][clickable], state ? FrameFlag::Lowered : FrameFlags{});
 }
 
@@ -1924,16 +1927,20 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_RATE_DOWN:
 			case WID_CC_RATE_UP:
 			case WID_CC_YEAR_DOWN:
-			case WID_CC_YEAR_UP:
-				size = maxdim(size, {(uint)SETTING_BUTTON_WIDTH / 2, (uint)SETTING_BUTTON_HEIGHT});
+			case WID_CC_YEAR_UP: {
+				const Dimension setting_button = GetSettingButtonSize();
+				size = maxdim(size, {setting_button.width / 2, setting_button.height});
 				break;
+			}
 
 			/* Set the appropriate width for the edit buttons. */
 			case WID_CC_SEPARATOR_EDIT:
 			case WID_CC_PREFIX_EDIT:
-			case WID_CC_SUFFIX_EDIT:
-				size = maxdim(size, {(uint)SETTING_BUTTON_WIDTH, (uint)SETTING_BUTTON_HEIGHT});
+			case WID_CC_SUFFIX_EDIT: {
+				const Dimension setting_button = GetSettingButtonSize();
+				size = maxdim(size, setting_button);
 				break;
+			}
 
 			/* Make sure the window is wide enough for the widest exchange rate */
 			case WID_CC_RATE:

@@ -266,16 +266,17 @@ struct CheatWindow : Window {
 
 	void DrawCheatWidget(const Rect &r) const
 	{
+		const Dimension setting_button = GetSettingButtonSize();
 		const Rect ir = r;
 		int y = ir.top;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint button_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
-		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH);
-		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + SETTING_BUTTON_WIDTH : 0);
+		uint button_left = rtl ? ir.right - setting_button.width : ir.left;
+		uint text_left   = ir.left + (rtl ? 0 : WidgetDimensions::scaled.hsep_wide + setting_button.width);
+		uint text_right  = ir.right - (rtl ? WidgetDimensions::scaled.hsep_wide + setting_button.width : 0);
 
 		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
-		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
+		int button_y_offset = (this->line_height - setting_button.height) / 2;
 		int icon_y_offset = (this->line_height - this->icon.height) / 2;
 
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
@@ -337,14 +338,15 @@ struct CheatWindow : Window {
 
 	void DrawSetting(const Rect r, const SettingDesc *desc) const
 	{
+		const Dimension setting_button = GetSettingButtonSize();
 		const IntSettingDesc *sd = desc->AsIntSetting();
 		int state = this->clicked_setting == sd ? this->clicked : 0;
 
 		bool rtl = _current_text_dir == TD_RTL;
 
-		Rect buttons = r.WithWidth(SETTING_BUTTON_WIDTH, rtl);
-		Rect text = r.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
-		buttons.top += (r.Height() - SETTING_BUTTON_HEIGHT) / 2;
+		Rect buttons = r.WithWidth(setting_button.width, rtl);
+		Rect text = r.Indent(setting_button.width + WidgetDimensions::scaled.hsep_wide, rtl);
+		buttons.top += (r.Height() - setting_button.height) / 2;
 		text.top += (r.Height() - GetCharacterHeight(FS_NORMAL)) / 2;
 
 		/* We do not allow changes of some items when we are a client in a network game */
@@ -405,10 +407,11 @@ struct CheatWindow : Window {
 			}
 		}
 
-		this->line_height = std::max<uint>(this->icon.height, SETTING_BUTTON_HEIGHT);
+		const Dimension setting_button = GetSettingButtonSize();
+		this->line_height = std::max<uint>(this->icon.height, setting_button.height);
 		this->line_height = std::max<uint>(this->line_height, GetCharacterHeight(FS_NORMAL)) + WidgetDimensions::scaled.framerect.Vertical();
 
-		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
+		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + setting_button.width;
 		size.height = this->line_height * lengthof(_cheats_ui);
 	}
 
@@ -422,7 +425,8 @@ struct CheatWindow : Window {
 			width = std::max(width, GetStringBoundingBox(GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2)).width);
 		}
 
-		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + SETTING_BUTTON_WIDTH;
+		const Dimension setting_button = GetSettingButtonSize();
+		size.width = width + WidgetDimensions::scaled.hsep_wide * 2 + setting_button.width;
 		size.height = this->line_height * static_cast<uint>(std::size(this->sandbox_settings));
 	}
 
@@ -436,6 +440,7 @@ struct CheatWindow : Window {
 
 	void CheatPanelClick(Point pt)
 	{
+		const Dimension setting_button = GetSettingButtonSize();
 		Rect r = this->GetWidget<NWidgetBase>(WID_C_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 		uint btn = (pt.y - r.top) / this->line_height;
 		int x = pt.x - r.left;
@@ -448,19 +453,19 @@ struct CheatWindow : Window {
 		int value = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
 		int oldvalue = value;
 
-		if (btn == CHT_CHANGE_DATE && x >= SETTING_BUTTON_WIDTH) {
+		if (btn == CHT_CHANGE_DATE && !IsInsideMM(x, 0, setting_button.width)) {
 			/* Click at the date text directly. */
 			clicked_cheat = CHT_CHANGE_DATE;
 			ShowQueryString(GetString(STR_JUST_INT, value), STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QueryStringFlag::AcceptUnchanged);
 			return;
-		} else if (btn == CHT_EDIT_MAX_HL && x >= SETTING_BUTTON_WIDTH) {
+		} else if (btn == CHT_EDIT_MAX_HL && !IsInsideMM(x, 0, setting_button.width)) {
 			clicked_cheat = CHT_EDIT_MAX_HL;
 			ShowQueryString(GetString(STR_JUST_INT, value), STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT, 8, this, CS_NUMERAL, QueryStringFlag::AcceptUnchanged);
 			return;
 		}
 
 		/* Not clicking a button? */
-		if (!IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) return;
+		if (!IsInsideMM(x, 0, setting_button.width)) return;
 
 		this->clicked_setting = nullptr;
 		*ce->been_used = true;
@@ -473,10 +478,10 @@ struct CheatWindow : Window {
 
 			default:
 				/* Take whatever the function returns */
-				value = ce->proc(value + ((x >= SETTING_BUTTON_WIDTH / 2) ? 1 : -1), (x >= SETTING_BUTTON_WIDTH / 2) ? 1 : -1);
+				value = ce->proc(value + ((x >= static_cast<int>(setting_button.width) / 2) ? 1 : -1), (x >= static_cast<int>(setting_button.width) / 2) ? 1 : -1);
 
 				/* The first cheat (money), doesn't return a different value. */
-				if (value != oldvalue || btn == CHT_MONEY) this->clicked = btn * 2 + 1 + ((x >= SETTING_BUTTON_WIDTH / 2) != rtl ? 1 : 0);
+				if (value != oldvalue || btn == CHT_MONEY) this->clicked = btn * 2 + 1 + ((x >= static_cast<int>(setting_button.width) / 2) != rtl ? 1 : 0);
 				break;
 		}
 
@@ -502,7 +507,8 @@ struct CheatWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) x = r.Width() - 1 - x;
 
-		if (x < SETTING_BUTTON_WIDTH) {
+		const Dimension setting_button = GetSettingButtonSize();
+		if (IsInsideMM(x, 0, setting_button.width)) {
 			ChangeSettingValue(sd, x);
 		} else {
 			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
@@ -538,6 +544,8 @@ struct CheatWindow : Window {
 				return;
 			}
 
+			const Dimension setting_button = GetSettingButtonSize();
+
 			/* Add a dynamic step-size to the scroller. In a maximum of
 			 * 50-steps you should be able to get from min to max,
 			 * unless specified otherwise in the 'interval' variable
@@ -546,7 +554,7 @@ struct CheatWindow : Window {
 			if (step == 0) step = 1;
 
 			/* Increase or decrease the value and clamp it to extremes */
-			if (x >= SETTING_BUTTON_WIDTH / 2) {
+			if (x >= static_cast<int>(setting_button.width) / 2) {
 				value += step;
 				if (sd->min < 0) {
 					assert(static_cast<int32_t>(sd->max) >= 0);
@@ -564,7 +572,7 @@ struct CheatWindow : Window {
 			if (value != oldvalue) {
 				this->last_clicked_setting = nullptr;
 				this->clicked_setting = sd;
-				this->clicked =  (x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? 2 : 1;
+				this->clicked =  (x >= static_cast<int>(setting_button.width) / 2) != (_current_text_dir == TD_RTL) ? 2 : 1;
 				this->SetTimeout();
 				_left_button_clicked = false;
 			}
