@@ -185,7 +185,7 @@ EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&data) 
 			}
 
 			case SCC_ENCODED_STRING: {
-				params.emplace_back(std::string(record.Read(StringConsumer::npos)));
+				params.emplace_back(record.Read(StringConsumer::npos));
 				break;
 			}
 
@@ -1037,7 +1037,7 @@ static void DecodeEncodedString(StringConsumer &consumer, bool game_script, Stri
 			}
 
 			case SCC_ENCODED_STRING: {
-				sub_args.emplace_back(std::string(record.Read(StringConsumer::npos)));
+				sub_args.emplace_back(record.Read(StringConsumer::npos));
 				break;
 			}
 
