@@ -219,16 +219,16 @@
  * Do not force inlining when not in debug. This way we do not work against
  * any carefully designed compiler optimizations.
  */
-#define debug_inline inline
+#define debug_inline
 #elif defined(__clang__) || defined(__GNUC__)
-#define debug_inline [[gnu::always_inline]] inline
+#define debug_inline gnu::always_inline
 #else
 /*
  * MSVC explicitly disables inlining, even forced inlining, in debug builds
  * so __forceinline makes no difference compared to inline. Other unknown
  * compilers can also just fallback to a normal inline.
  */
-#define debug_inline inline
+#define debug_inline
 #endif
 
 /* This is already defined in unix, but not in QNX Neutrino (6.x) or Cygwin. */

@@ -90,7 +90,7 @@ inline constexpr enum_type operator --(enum_type &e, int)
  * @return True iff the flag is set.
  */
 template <typename T, class = typename std::enable_if_t<std::is_enum_v<T>>>
-debug_inline constexpr bool HasFlag(const T x, const T y)
+[[debug_inline]] inline constexpr bool HasFlag(const T x, const T y)
 {
 	return (x & y) == y;
 }
@@ -101,7 +101,7 @@ debug_inline constexpr bool HasFlag(const T x, const T y)
  * @param y The flag to toggle.
  */
 template <typename T, class = typename std::enable_if_t<std::is_enum_v<T>>>
-debug_inline constexpr void ToggleFlag(T &x, const T y)
+[[debug_inline]] inline constexpr void ToggleFlag(T &x, const T y)
 {
 	if (HasFlag(x, y)) {
 		x &= ~y;
