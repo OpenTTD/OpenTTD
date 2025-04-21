@@ -4278,10 +4278,10 @@ static uint UpdateStationWaiting(Station *st, CargoType cargo, uint amount, Sour
 		ge.status.Set(GoodsEntry::State::Rating);
 	}
 
-	TriggerStationRandomisation(st, st->xy, SRT_NEW_CARGO, cargo);
+	TriggerStationRandomisation(st, st->xy, StationRandomTrigger::NewCargo, cargo);
 	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, cargo);
 	TriggerAirportAnimation(st, AAT_STATION_NEW_CARGO, cargo);
-	TriggerRoadStopRandomisation(st, st->xy, RSRT_NEW_CARGO, cargo);
+	TriggerRoadStopRandomisation(st, st->xy, StationRandomTrigger::NewCargo, cargo);
 	TriggerRoadStopAnimation(st, st->xy, SAT_NEW_CARGO, cargo);
 
 
