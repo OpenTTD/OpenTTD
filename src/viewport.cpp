@@ -90,6 +90,8 @@
 #include "network/network_func.h"
 #include "framerate_type.h"
 #include "viewport_cmd.h"
+#include "company_gui.h"
+#include "road_map.h"
 
 #include <forward_list>
 #include <stack>
@@ -1040,6 +1042,39 @@ static TileHighlightType GetTileHighlightType(TileIndex t)
 		}
 	}
 
+	/* Highlight infrastructure of selected company */
+	if (_viewport_company_to_highlight_infrastructure != INVALID_OWNER) {
+		switch (GetTileType(t)) {
+			case MP_ROAD:
+				/* Edge case of company owned tramway on non-company owned road/rail tile */
+				if (!IsRoadDepot(t) && HasTileRoadType(t, RTT_TRAM)) {
+					if (IsRoadOwner(t, RTT_TRAM, _viewport_company_to_highlight_infrastructure)) {
+						return THT_WHITE;
+					}
+				}
+
+				/* Edge case of company owned road on non-company owned rail tile */
+				if (!IsRoadDepot(t) && HasTileRoadType(t, RTT_ROAD)) {
+					if (IsRoadOwner(t, RTT_ROAD, _viewport_company_to_highlight_infrastructure)){
+						return THT_WHITE;
+					}
+				}
+				[[fallthrough]];
+			case MP_RAILWAY:
+			case MP_TUNNELBRIDGE:
+			case MP_WATER:
+			case MP_STATION:
+			case MP_OBJECT:
+				if (GetTileOwner(t) == _viewport_company_to_highlight_infrastructure) {
+					return THT_WHITE;
+				}
+				break;
+			default:
+				return THT_NONE;
+				break;
+
+		}
+	}
 	return THT_NONE;
 }
 

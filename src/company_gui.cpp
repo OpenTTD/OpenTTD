@@ -58,6 +58,7 @@
 /** Company GUI constants. */
 static void DoSelectCompanyManagerFace(Window *parent);
 static void ShowCompanyInfrastructure(CompanyID company);
+CompanyID _viewport_company_to_highlight_infrastructure = INVALID_OWNER;
 
 /** List of revenues. */
 static const std::initializer_list<ExpensesType> _expenses_list_revenue = {
@@ -1758,6 +1759,7 @@ static constexpr NWidgetPart _nested_company_infrastructure_widgets[] = {
 				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_CI_TOTAL), SetFill(0, 1),
 			EndContainer(),
 		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_CI_HIGHLIGHT_INFRASTRUCTURE), SetFill(1, 0), SetDataTip(STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE, STR_COMPANY_INFRASTRUCTURE_VIEW_HIGHLIGHT_INFRASTRUCTURE_TOOLTIP),
 	EndContainer(),
 };
 
@@ -1771,7 +1773,21 @@ struct CompanyInfrastructureWindow : Window
 
 	uint total_width = 0; ///< String width of the total cost line.
 
-	CompanyInfrastructureWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	/**
+	 * Hide the window and all its child windows, and mark them for a later deletion.
+	 * Stop white highlight of company owned infrastructure
+	 */
+	void Close([[maybe_unused]] int data) override
+	{
+		/* Clear highlights if the infrastructure window is closed */
+		if (_viewport_company_to_highlight_infrastructure == (CompanyID)this->window_number) {
+			_viewport_company_to_highlight_infrastructure = INVALID_OWNER;
+			MarkWholeScreenDirty();
+		}
+		this->Window::Close();
+	}
+
+	CompanyInfrastructureWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->UpdateRailRoadTypes();
 
@@ -1969,6 +1985,12 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
+	void OnPaint() override
+	{
+		this->SetWidgetLoweredState(WID_CI_HIGHLIGHT_INFRASTRUCTURE, _viewport_company_to_highlight_infrastructure == (CompanyID)this->window_number);
+		this->DrawWidgets();
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		const Company *c = Company::Get(this->window_number);
@@ -2064,6 +2086,23 @@ struct CompanyInfrastructureWindow : Window
 				this->DrawCountLine(r, y, c->infrastructure.station, StationMaintenanceCost(c->infrastructure.station));
 				this->DrawCountLine(r, y, c->infrastructure.airport, AirportMaintenanceCost(c->index));
 				break;
+		}
+	}
+
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	{
+		if (widget != WID_CI_HIGHLIGHT_INFRASTRUCTURE) return;
+
+		/* Toggle between highlight and clear */
+		CompanyID window_company_id = (CompanyID)this->window_number;
+		if(_viewport_company_to_highlight_infrastructure != window_company_id) {
+			/* highlight tiles of this company */
+			_viewport_company_to_highlight_infrastructure = window_company_id;
+			MarkWholeScreenDirty();
+		} else {
+			/* Clear tile highlights */
+			_viewport_company_to_highlight_infrastructure = INVALID_OWNER;
+			MarkWholeScreenDirty();
 		}
 	}
 
