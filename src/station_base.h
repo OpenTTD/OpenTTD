@@ -302,7 +302,7 @@ struct GoodsEntry {
 	 * Test if this goods entry has optional cargo packet/flow data.
 	 * @returns true iff optional data is present.
 	 */
-	debug_inline bool HasData() const { return this->data != nullptr; }
+	[[debug_inline]] inline bool HasData() const { return this->data != nullptr; }
 
 	/**
 	 * Clear optional cargo packet/flow data.
@@ -314,7 +314,7 @@ struct GoodsEntry {
 	 * @pre HasData()
 	 * @returns cargo packet/flow data.
 	 */
-	debug_inline const GoodsEntryData &GetData() const
+	[[debug_inline]] inline const GoodsEntryData &GetData() const
 	{
 		assert(this->HasData());
 		return *this->data;
@@ -325,7 +325,7 @@ struct GoodsEntry {
 	 * @pre HasData()
 	 * @returns non-const cargo packet/flow data.
 	 */
-	debug_inline GoodsEntryData &GetData()
+	[[debug_inline]] inline GoodsEntryData &GetData()
 	{
 		assert(this->HasData());
 		return *this->data;
