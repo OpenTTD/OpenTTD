@@ -785,14 +785,14 @@ public:
 				auto it = this->vscroll->GetScrolledItemFromWidget(this->content, pt.y, this, WID_NCL_MATRIX);
 				if (it == this->content.end()) return; // click out of bounds
 
-				this->selected = *it;
-				this->list_pos = it - this->content.begin();
-
 				const NWidgetBase *checkbox = this->GetWidget<NWidgetBase>(WID_NCL_CHECKBOX);
 				if (click_count > 1 || IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {
-					_network_content_client.ToggleSelectedState(*this->selected);
+					_network_content_client.ToggleSelectedState(**it);
 					this->content.ForceResort();
 					this->content.ForceRebuild();
+				} else {
+					this->selected = *it;
+					this->list_pos = it - this->content.begin();
 				}
 
 				if (this->filter_data.types.any()) {
