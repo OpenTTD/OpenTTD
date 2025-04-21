@@ -1974,8 +1974,9 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		std::string value = sd->FormatValue(object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		auto [min_val, max_val] = int_setting->GetRange();
-		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}).",
-			sd->GetName(), value, sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? "(0) " : "", min_val, max_val);
+		auto def_val = int_setting->GetDefaultValue();
+		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}, def: {}).",
+			sd->GetName(), value, sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? "(0) " : "", min_val, max_val, def_val);
 	}
 }
 
