@@ -925,7 +925,7 @@ Vehicle::~Vehicle()
  * Adds a vehicle to the list of vehicles that visited a depot this tick
  * @param *v vehicle to add
  */
-void VehicleEnteredDepotThisTick(Vehicle *v)
+static void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* Vehicle should stop in the depot if it was in 'stopping' state */
 	_vehicles_to_autoreplace[v->index] = !v->vehstatus.Test(VehState::Stopped);
@@ -1609,6 +1609,9 @@ void VehicleEnterDepot(Vehicle *v)
 	v->cur_speed = 0;
 
 	VehicleServiceInDepot(v);
+
+	/* Store that the vehicle entered a depot this tick */
+	VehicleEnteredDepotThisTick(v);
 
 	/* After a vehicle trigger, the graphics and properties of the vehicle could change. */
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);

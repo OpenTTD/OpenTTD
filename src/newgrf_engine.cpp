@@ -1311,11 +1311,6 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, uint16_t base_r
 
 void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 {
-	if (trigger == VEHICLE_TRIGGER_DEPOT) {
-		/* store that the vehicle entered a depot this tick */
-		VehicleEnteredDepotThisTick(v);
-	}
-
 	v->InvalidateNewGRFCacheOfChain();
 	DoTriggerVehicle(v, trigger, 0, true);
 	v->InvalidateNewGRFCacheOfChain();
