@@ -31,14 +31,11 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	/** Container for each entry point of a drive through road stop */
 	struct Entry {
 	private:
-		int length = 0; ///< The length of the stop in tile 'units'
-		int occupied = 0; ///< The amount of occupied stop in tile 'units'
+		uint16_t length = 0; ///< The length of the stop in tile 'units'
+		uint16_t occupied = 0; ///< The amount of occupied stop in tile 'units'
 
 	public:
 		friend struct RoadStop; ///< Oh yeah, the road stop may play with me.
-
-		/** Create an entry */
-		Entry() {}
 
 		/**
 		 * Get the length of this drive through stop.
@@ -62,6 +59,12 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		void Enter(const RoadVehicle *rv);
 		void CheckIntegrity(const RoadStop *rs) const;
 		void Rebuild(const RoadStop *rs, int side = -1);
+	};
+
+	/** Container for both east and west entry points. */
+	struct Entries {
+		Entry east{}; ///< Information for vehicles that entered from the east
+		Entry west{}; ///< Information for vehicles that entered from the west
 	};
 
 	RoadStopStatusFlags status{RoadStopStatusFlag::Bay0Free, RoadStopStatusFlag::Bay1Free}; ///< Current status of the Stop. Access using *Bay and *Busy functions.
@@ -119,9 +122,9 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * @param dir The direction to get the entry for.
 	 * @return the entry
 	 */
-	inline const Entry *GetEntry(DiagDirection dir) const
+	inline const Entry &GetEntry(DiagDirection dir) const
 	{
-		return HasBit((int)dir, 1) ? this->west : this->east;
+		return dir >= DIAGDIR_SW ? this->entries->west : this->entries->east;
 	}
 
 	/**
@@ -129,9 +132,9 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * @param dir The direction to get the entry for.
 	 * @return the entry
 	 */
-	inline Entry *GetEntry(DiagDirection dir)
+	inline Entry &GetEntry(DiagDirection dir)
 	{
-		return HasBit((int)dir, 1) ? this->west : this->east;
+		return dir >= DIAGDIR_SW ? this->entries->west : this->entries->east;
 	}
 
 	void MakeDriveThrough();
@@ -147,8 +150,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	static bool IsDriveThroughRoadStopContinuation(TileIndex rs, TileIndex next);
 
 private:
-	Entry *east = nullptr; ///< The vehicles that entered from the east
-	Entry *west = nullptr; ///< The vehicles that entered from the west
+	Entries *entries = nullptr; ///< Information about available and allocated bays.
 
 	/**
 	 * Allocates a bay

@@ -151,8 +151,8 @@ void AfterLoadRoadStops()
 	for (RoadStop *rs : RoadStop::Iterate()) {
 		if (!rs->status.Test(RoadStop::RoadStopStatusFlag::BaseEntry)) continue;
 
-		rs->GetEntry(DIAGDIR_NE)->Rebuild(rs);
-		rs->GetEntry(DIAGDIR_NW)->Rebuild(rs);
+		rs->GetEntry(DIAGDIR_NE).Rebuild(rs);
+		rs->GetEntry(DIAGDIR_NW).Rebuild(rs);
 	}
 }
 
