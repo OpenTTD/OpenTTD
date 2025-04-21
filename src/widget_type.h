@@ -353,6 +353,7 @@ struct WidgetData {
 	SpriteID sprite{};
 	ArrowWidgetValues arrow_widget_type{};
 	ResizeWidgetValues resize_widget_type{};
+	Colours alternate_colour = INVALID_COLOUR;
 	Dimension matrix{};
 };
 
@@ -1240,6 +1241,17 @@ constexpr NWidgetPart SetArrowWidgetTypeTip(ArrowWidgetValues widget_type, Strin
 constexpr NWidgetPart SetResizeWidgetTypeTip(ResizeWidgetValues widget_type, StringID tip)
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.resize_widget_type = widget_type}, tip}};
+}
+
+/**
+ * Widget part function for setting the alternate colour and tooltip.
+ * @param colour Alternate colour of the widget.
+ * @param tip Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetAlternateColourTip(Colours colour, StringID tip)
+{
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.alternate_colour = colour}, tip}};
 }
 
 /**
