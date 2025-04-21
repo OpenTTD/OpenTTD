@@ -526,7 +526,7 @@ bool GetIfClassHasNewStopsByType(const RoadStopClass *roadstopclass, RoadStopTyp
  */
 bool GetIfStopIsForType(const RoadStopSpec *roadstopspec, RoadStopType rs, RoadType roadtype)
 {
-	// The roadstopspec is nullptr, must be the default station, always return true.
+	/* The roadstopspec is nullptr, must be the default station, always return true. */
 	if (roadstopspec == nullptr) return true;
 
 	if (roadstopspec->flags.Test(RoadStopSpecFlag::RoadOnly) && !RoadTypeIsRoad(roadtype)) return false;

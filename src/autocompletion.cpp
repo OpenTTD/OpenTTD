@@ -17,9 +17,12 @@
 
 #include "safeguards.h"
 
+/**
+ * @return true, if the textbuf was updated.
+ */
 bool AutoCompletion::AutoComplete()
 {
-	// We are pressing TAB for the first time after reset.
+	/* We are pressing TAB for the first time after reset. */
 	if (this->suggestions.empty()) {
 		this->InitSuggestions(this->textbuf->GetText());
 		if (this->suggestions.empty()) {
@@ -29,11 +32,11 @@ bool AutoCompletion::AutoComplete()
 		return true;
 	}
 
-	// We are pressing TAB again on the same text.
+	/* We are pressing TAB again on the same text. */
 	if (this->current_suggestion_index + 1 < this->suggestions.size()) {
 		this->ApplySuggestion(prefix, this->suggestions[++this->current_suggestion_index]);
 	} else {
-		// We are out of options, restore original text.
+		/* We are out of options, restore original text. */
 		this->textbuf->Assign(initial_buf);
 		this->Reset();
 	}

@@ -214,7 +214,7 @@ static bool IsConsumedFormattingCode(char32_t ch)
 	if (ch == SCC_PUSH_COLOUR) return true;
 	if (ch == SCC_POP_COLOUR) return true;
 	if (ch >= SCC_FIRST_FONT && ch <= SCC_LAST_FONT) return true;
-	// All other characters defined in Unicode standard are assumed to be non-consumed.
+	/* All other characters defined in Unicode standard are assumed to be non-consumed. */
 	return false;
 }
 

@@ -733,7 +733,7 @@ struct TextRefStack {
 		if (this->position >= 2) {
 			this->position -= 2;
 		} else {
-			// Rotate right 2 positions
+			/* Rotate right 2 positions */
 			std::rotate(this->stack.rbegin(), this->stack.rbegin() + 2, this->stack.rend());
 		}
 		this->stack[this->position]     = GB(word, 0, 8);

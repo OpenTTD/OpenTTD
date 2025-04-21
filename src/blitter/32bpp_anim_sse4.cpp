@@ -190,8 +190,8 @@ bmno_full_transparency:
 					const uint m1 = (uint8_t) (mvX2 >> 16);
 					const uint r1 = remap[m1];
 					if (mvX2 & 0x00FF00FF) {
+						/* Written so the compiler uses CMOV. */
 						#define CMOV_REMAP(m_colour, m_colour_init, m_src, m_m) \
-							/* Written so the compiler uses CMOV. */ \
 							Colour m_colour = m_colour_init; \
 							{ \
 							const Colour srcm = (Colour) (m_src); \

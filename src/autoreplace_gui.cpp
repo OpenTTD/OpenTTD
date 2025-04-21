@@ -552,7 +552,7 @@ public:
 				if (g != nullptr) {
 					Command<CMD_SET_GROUP_FLAG>::Post(this->sel_group, GroupFlag::ReplaceWagonRemoval, !g->flags.Test(GroupFlag::ReplaceWagonRemoval), _ctrl_pressed);
 				} else {
-					// toggle renew_keep_length
+					/* toggle renew_keep_length */
 					Command<CMD_CHANGE_COMPANY_SETTING>::Post("company.renew_keep_length", Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1);
 				}
 				break;

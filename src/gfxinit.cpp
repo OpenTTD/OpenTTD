@@ -346,10 +346,10 @@ void GfxLoadSprites()
 	UpdateCursorSize();
 }
 
-// instantiate here, because unique_ptr needs a complete type
+/* instantiate here, because unique_ptr needs a complete type */
 GraphicsSet::GraphicsSet() = default;
 
-// instantiate here, because unique_ptr needs a complete type
+/* instantiate here, because unique_ptr needs a complete type */
 GraphicsSet::~GraphicsSet() = default;
 
 bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)

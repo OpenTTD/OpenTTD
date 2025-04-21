@@ -19,7 +19,7 @@ static const int INT32_DIGITS_WITH_SIGN_AND_TERMINATION = 10 + 1 + 1;
 
 /** Flags for Script settings. */
 enum class ScriptConfigFlag : uint8_t {
-	// Unused flag 0x1.
+	/* Unused flag 0x1. */
 	Boolean   = 1, ///< This value is a boolean (either 0 (false) or 1 (true) ).
 	InGame    = 2, ///< This setting can be changed while the Script is running.
 	Developer = 3, ///< This setting will only be visible when the Script development tools are active.

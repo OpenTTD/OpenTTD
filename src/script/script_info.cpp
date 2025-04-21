@@ -122,7 +122,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			config.max_value = ClampTo<int32_t>(res);
 			items |= 0x008;
 		} else if (key == "easy_value") {
-			// No longer parsed.
+			/* No longer parsed. */
 			items |= 0x010;
 		} else if (key == "medium_value") {
 			SQInteger res;
@@ -130,17 +130,17 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			medium_value = ClampTo<int32_t>(res);
 			items |= 0x020;
 		} else if (key == "hard_value") {
-			// No longer parsed.
+			/* No longer parsed. */
 			items |= 0x040;
 		} else if (key == "custom_value") {
-			// No longer parsed.
+			/* No longer parsed. */
 		} else if (key == "default_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.default_value = ClampTo<int32_t>(res);
 			items |= 0x080;
 		} else if (key == "random_deviation") {
-			// No longer parsed.
+			/* No longer parsed. */
 		} else if (key == "step_size") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;

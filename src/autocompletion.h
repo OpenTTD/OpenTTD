@@ -32,7 +32,6 @@ public:
 	}
 	virtual ~AutoCompletion() = default;
 
-	// Returns true the textbuf was updated.
 	bool AutoComplete();
 	void Reset();
 

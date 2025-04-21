@@ -175,12 +175,12 @@ static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixTy
 		}
 		switch (use_input) {
 			case CARGOSUFFIX_OUT:
-				// Handle INDUSTRY_ORIGINAL_NUM_OUTPUTS cargoes
+				/* Handle INDUSTRY_ORIGINAL_NUM_OUTPUTS cargoes */
 				if (IsValidCargoType(cargoes[0])) GetCargoSuffix(3, cst, ind, ind_type, indspec, suffixes[0]);
 				if (IsValidCargoType(cargoes[1])) GetCargoSuffix(4, cst, ind, ind_type, indspec, suffixes[1]);
 				break;
 			case CARGOSUFFIX_IN:
-				// Handle INDUSTRY_ORIGINAL_NUM_INPUTS cargoes
+				/* Handle INDUSTRY_ORIGINAL_NUM_INPUTS cargoes */
 				if (IsValidCargoType(cargoes[0])) GetCargoSuffix(0, cst, ind, ind_type, indspec, suffixes[0]);
 				if (IsValidCargoType(cargoes[1])) GetCargoSuffix(1, cst, ind, ind_type, indspec, suffixes[1]);
 				if (IsValidCargoType(cargoes[2])) GetCargoSuffix(2, cst, ind, ind_type, indspec, suffixes[2]);
