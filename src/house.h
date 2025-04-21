@@ -112,7 +112,7 @@ struct HouseSpec {
 	uint8_t probability;                         ///< Relative probability of appearing (16 is the standard value)
 	HouseExtraFlags extra_flags{};              ///< some more flags
 	HouseClassID class_id;                    ///< defines the class this house has (not grf file based)
-	AnimationInfo animation;                  ///< information about the animation.
+	AnimationInfo<void> animation; ///< information about the animation.
 	uint8_t processing_time;                     ///< Periodic refresh multiplier
 	uint8_t minimum_life;                        ///< The minimum number of years this house will survive before the town rebuilds it
 	CargoTypes watched_cargoes;               ///< Cargo types watched for acceptance.

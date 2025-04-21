@@ -243,7 +243,7 @@ static ChangeInfoResult StationChangeInfo(uint first, uint last, int prop, ByteR
 				break;
 
 			case 0x18: // Animation triggers
-				statspec->animation.triggers = buf.ReadWord();
+				statspec->animation.triggers = static_cast<StationAnimationTriggers>(buf.ReadWord());
 				break;
 
 			/* 0x19 road routing (not implemented) */

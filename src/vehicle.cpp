@@ -2395,7 +2395,7 @@ void Vehicle::LeaveStation()
 		/* Trigger station animation (trains only) */
 		if (IsTileType(this->tile, MP_STATION)) {
 			TriggerStationRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
-			TriggerStationAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
+			TriggerStationAnimation(st, this->tile, StationAnimationTrigger::VehicleDeparts);
 		}
 
 		SetBit(Train::From(this)->flags, VRF_LEAVING_STATION);
@@ -2404,7 +2404,7 @@ void Vehicle::LeaveStation()
 		/* Trigger road stop animation */
 		if (IsStationRoadStopTile(this->tile)) {
 			TriggerRoadStopRandomisation(st, this->tile, StationRandomTrigger::VehicleDeparts);
-			TriggerRoadStopAnimation(st, this->tile, SAT_TRAIN_DEPARTS);
+			TriggerRoadStopAnimation(st, this->tile, StationAnimationTrigger::VehicleDeparts);
 		}
 	}
 

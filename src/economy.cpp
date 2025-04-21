@@ -1168,7 +1168,7 @@ static void TriggerIndustryProduction(Industry *i)
 	}
 
 	TriggerIndustryRandomisation(i, IndustryRandomTrigger::CargoReceived);
-	TriggerIndustryAnimation(i, IAT_INDUSTRY_RECEIVED_CARGO);
+	TriggerIndustryAnimation(i, IndustryAnimationTrigger::CargoReceived);
 }
 
 /**
@@ -1812,10 +1812,10 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 					if (ge->GetData().cargo.TotalCount() == 0) {
 						TriggerStationRandomisation(st, st->xy, StationRandomTrigger::CargoTaken, v->cargo_type);
-						TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
-						TriggerAirportAnimation(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
+						TriggerStationAnimation(st, st->xy, StationAnimationTrigger::CargoTaken, v->cargo_type);
+						TriggerAirportAnimation(st, AirportAnimationTrigger::CargoTaken, v->cargo_type);
 						TriggerRoadStopRandomisation(st, st->xy, StationRandomTrigger::CargoTaken, v->cargo_type);
-						TriggerRoadStopAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
+						TriggerRoadStopAnimation(st, st->xy, StationAnimationTrigger::CargoTaken, v->cargo_type);
 					}
 
 					new_load_unload_ticks += loaded;
@@ -1835,10 +1835,10 @@ static void LoadUnloadVehicle(Vehicle *front)
 	if (anything_loaded || anything_unloaded) {
 		if (front->type == VEH_TRAIN) {
 			TriggerStationRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
-			TriggerStationAnimation(st, front->tile, SAT_TRAIN_LOADS);
+			TriggerStationAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
 		} else if (front->type == VEH_ROAD) {
 			TriggerRoadStopRandomisation(st, front->tile, StationRandomTrigger::VehicleLoads);
-			TriggerRoadStopAnimation(st, front->tile, SAT_TRAIN_LOADS);
+			TriggerRoadStopAnimation(st, front->tile, StationAnimationTrigger::VehicleLoads);
 		}
 	}
 
