@@ -571,7 +571,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlags flags)
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return CommandCost(STR_ERROR_OWNED_BY);
-		} else if (spec->flags.All({ObjectFlag::CannotRemove, ObjectFlag::Autoremove})) {
+		} else if (spec->flags.Test(ObjectFlag::CannotRemove) && !spec->flags.Test(ObjectFlag::Autoremove)) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
 			if (!_cheats.magic_bulldozer.value) {
 				if (type == OBJECT_HQ) return CommandCost(STR_ERROR_COMPANY_HEADQUARTERS_IN);
