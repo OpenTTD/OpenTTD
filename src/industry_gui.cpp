@@ -430,7 +430,7 @@ public:
 				for (const auto &indtype : this->list) {
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(indtype)->name));
 				}
-				resize.height = std::max<uint>({this->legend.height, d.height, count.height}) + padding.height;
+				resize.height = std::max({this->legend.height, d.height, count.height}) + padding.height;
 				d.width += this->badge_classes.GetTotalColumnsWidth() + this->legend.width + WidgetDimensions::scaled.hsep_wide + WidgetDimensions::scaled.hsep_normal + count.width + padding.width;
 				d.height = 5 * resize.height;
 				size = maxdim(size, d);
@@ -440,10 +440,10 @@ public:
 			case WID_DPI_INFOPANEL: {
 				/* Extra line for cost outside of editor. */
 				int height = 2 + (_game_mode == GM_EDITOR ? 0 : 1);
-				uint extra_lines_req = 0;
-				uint extra_lines_prd = 0;
-				uint extra_lines_newgrf = 0;
-				uint max_minwidth = GetCharacterHeight(FS_NORMAL) * MAX_MINWIDTH_LINEHEIGHTS;
+				int extra_lines_req = 0;
+				int extra_lines_prd = 0;
+				int extra_lines_newgrf = 0;
+				int max_minwidth = GetCharacterHeight(FS_NORMAL) * MAX_MINWIDTH_LINEHEIGHTS;
 				Dimension d = {0, 0};
 				for (const auto &indtype : this->list) {
 					const IndustrySpec *indsp = GetIndustrySpec(indtype);
@@ -1421,9 +1421,9 @@ protected:
 	 * Get the width needed to draw the longest industry line.
 	 * @return Returns width of the longest industry line, including padding.
 	 */
-	uint GetIndustryListWidth() const
+	int GetIndustryListWidth() const
 	{
-		uint width = this->hscroll->GetCount();
+		int width = this->hscroll->GetCount();
 		auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->industries);
 		for (auto it = first; it != last; ++it) {
 			width = std::max(width, GetStringBoundingBox(this->GetIndustryString(*it)).width);
@@ -2309,7 +2309,7 @@ struct CargoesField {
 		uint col;
 		for (col = 0; col < this->u.cargo.num_cargoes; col++) {
 			if (pt.x < cpos) break;
-			if (pt.x < cpos + (int)CargoesField::cargo_line.width) return this->u.cargo.vertical_cargoes[col];
+			if (pt.x < cpos + CargoesField::cargo_line.width) return this->u.cargo.vertical_cargoes[col];
 			cpos += CargoesField::cargo_line.width + CargoesField::cargo_space.width;
 		}
 		/* col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col. */
@@ -2623,7 +2623,7 @@ struct IndustryCargoesWindow : public Window {
 
 		d.width += WidgetDimensions::scaled.frametext.Horizontal();
 		/* Ensure the height is enough for the industry type text, for the horizontal connections, and for the cargo labels. */
-		uint min_ind_height = CargoesField::cargo_border.height * 2 + CargoesField::max_cargoes * GetCharacterHeight(FS_NORMAL) + (CargoesField::max_cargoes - 1) * CargoesField::cargo_space.height;
+		int min_ind_height = CargoesField::cargo_border.height * 2 + CargoesField::max_cargoes * GetCharacterHeight(FS_NORMAL) + (CargoesField::max_cargoes - 1) * CargoesField::cargo_space.height;
 		d.height = std::max(d.height + WidgetDimensions::scaled.frametext.Vertical(), min_ind_height);
 
 		CargoesField::industry_width = d.width;

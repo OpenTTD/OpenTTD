@@ -280,7 +280,7 @@ std::vector<int> VideoDriver_Cocoa::GetListOfMonitorRefreshRates()
 Dimension VideoDriver_Cocoa::GetScreenSize() const
 {
 	NSRect frame = [ [ NSScreen mainScreen ] frame ];
-	return { static_cast<uint>(NSWidth(frame)), static_cast<uint>(NSHeight(frame)) };
+	return {static_cast<int>(NSWidth(frame)), static_cast<int>(NSHeight(frame))};
 }
 
 /** Get DPI scale of our window. */

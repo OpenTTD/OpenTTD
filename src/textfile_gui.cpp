@@ -107,9 +107,9 @@ void TextfileWindow::ConstructWindow()
  * Get the total height of the content displayed in this window, if wrapping is disabled.
  * @return the height in pixels
  */
-uint TextfileWindow::ReflowContent()
+int TextfileWindow::ReflowContent()
 {
-	uint height = 0;
+	int height = 0;
 	if (!IsWidgetLowered(WID_TF_WRAPTEXT)) {
 		for (auto &line : this->lines) {
 			line.top = height;
@@ -128,7 +128,7 @@ uint TextfileWindow::ReflowContent()
 	return height;
 }
 
-uint TextfileWindow::GetContentHeight()
+int TextfileWindow::GetContentHeight()
 {
 	if (this->lines.empty()) return 0;
 	return this->lines.back().bottom;
@@ -141,7 +141,7 @@ uint TextfileWindow::GetContentHeight()
 			resize.height = GetCharacterHeight(FS_MONO);
 
 			size.height = 4 * resize.height + WidgetDimensions::scaled.frametext.Vertical(); // At least 4 lines are visible.
-			size.width = std::max(200u, size.width); // At least 200 pixels wide.
+			size.width = std::max(200, size.width); // At least 200 pixels wide.
 			break;
 	}
 }
@@ -151,12 +151,12 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 {
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
 		/* Reflow is mandatory if text wrapping is on */
-		uint height = this->ReflowContent();
-		this->vscroll->SetCount(ClampTo<uint16_t>(height));
+		int height = this->ReflowContent();
+		this->vscroll->SetCount(height);
 		this->hscroll->SetCount(0);
 	} else {
-		uint height = force_reflow ? this->ReflowContent() : this->GetContentHeight();
-		this->vscroll->SetCount(ClampTo<uint16_t>(height));
+		int height = force_reflow ? this->ReflowContent() : this->GetContentHeight();
+		this->vscroll->SetCount(height);
 		this->hscroll->SetCount(this->max_length);
 	}
 
@@ -821,7 +821,7 @@ void TextfileWindow::LoadText(std::string_view buf)
 	this->lines.emplace_back(row, p);
 
 	/* Calculate maximum text line length. */
-	uint max_length = 0;
+	int max_length = 0;
 	for (auto &line : this->lines) {
 		max_length = std::max(max_length, GetStringBoundingBox(line.text, FS_MONO).width);
 	}

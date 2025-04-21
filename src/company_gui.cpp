@@ -93,16 +93,16 @@ struct ExpensesList {
 	{
 	}
 
-	uint GetHeight() const
+	int GetHeight() const
 	{
 		/* Add up the height of all the lines.  */
-		return static_cast<uint>(this->items.size()) * GetCharacterHeight(FS_NORMAL);
+		return static_cast<int>(this->items.size()) * GetCharacterHeight(FS_NORMAL);
 	}
 
 	/** Compute width of the expenses categories in pixels. */
-	uint GetListWidth() const
+	int GetListWidth() const
 	{
-		uint width = 0;
+		int width = 0;
 		for (const ExpensesType &et : this->items) {
 			width = std::max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + et).width);
 		}
@@ -121,10 +121,10 @@ static const std::initializer_list<ExpensesList> _expenses_list_types = {
  * Get the total height of the "categories" column.
  * @return The total height in pixels.
  */
-static uint GetTotalCategoriesHeight()
+static int GetTotalCategoriesHeight()
 {
 	/* There's an empty line and blockspace on the year row */
-	uint total_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
+	int total_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_wide;
 
 	for (const ExpensesList &list : _expenses_list_types) {
 		/* Title + expense list + total line + total + blockspace after category */
@@ -141,9 +141,9 @@ static uint GetTotalCategoriesHeight()
  * Get the required width of the "categories" column, equal to the widest element.
  * @return The required width in pixels.
  */
-static uint GetMaxCategoriesWidth()
+static int GetMaxCategoriesWidth()
 {
-	uint max_width = GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION).width;
+	int max_width = GetStringBoundingBox(TimerGameEconomy::UsingWallclockUnits() ? STR_FINANCES_PERIOD_CAPTION : STR_FINANCES_YEAR_CAPTION).width;
 
 	/* Loop through categories to check max widths. */
 	for (const ExpensesList &list : _expenses_list_types) {
@@ -602,7 +602,7 @@ private:
 	LiveryClass livery_class{};
 	Dimension square{};
 	uint rows = 0;
-	uint line_height = 0;
+	int line_height = 0;
 	GUIGroupList groups{};
 	Scrollbar *vscroll = nullptr;
 
@@ -763,7 +763,7 @@ public:
 			case WID_SCL_MATRIX: {
 				/* 11 items in the default rail class */
 				this->square = GetSpriteSize(SPR_SQUARE);
-				this->line_height = std::max(this->square.height, (uint)GetCharacterHeight(FS_NORMAL)) + padding.height;
+				this->line_height = std::max(this->square.height, GetCharacterHeight(FS_NORMAL)) + padding.height;
 
 				size.height = 5 * this->line_height;
 				resize.width = 1;
@@ -1408,7 +1408,7 @@ public:
 		for (int val = 1; val <= 12; val++) {
 			number_dim = maxdim(number_dim, GetStringBoundingBox(GetString(STR_JUST_INT, val)));
 		}
-		uint arrows_width = GetSpriteSize(SPR_ARROW_LEFT).width + GetSpriteSize(SPR_ARROW_RIGHT).width + 2 * (WidgetDimensions::scaled.imgbtn.Horizontal());
+		int arrows_width = GetSpriteSize(SPR_ARROW_LEFT).width + GetSpriteSize(SPR_ARROW_RIGHT).width + 2 * (WidgetDimensions::scaled.imgbtn.Horizontal());
 		number_dim.width += WidgetDimensions::scaled.framerect.Horizontal() + arrows_width;
 		number_dim.height += WidgetDimensions::scaled.framerect.Vertical();
 		/* Compute width of both buttons. */
@@ -1769,7 +1769,7 @@ struct CompanyInfrastructureWindow : Window
 	RailTypes railtypes{}; ///< Valid railtypes.
 	RoadTypes roadtypes{}; ///< Valid roadtypes.
 
-	uint total_width = 0; ///< String width of the total cost line.
+	int total_width = 0; ///< String width of the total cost line.
 
 	CompanyInfrastructureWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
@@ -1849,7 +1849,7 @@ struct CompanyInfrastructureWindow : Window
 
 		switch (widget) {
 			case WID_CI_RAIL_DESC: {
-				uint lines = 1; // Starts at 1 because a line is also required for the section title
+				int lines = 1; // Starts at 1 because a line is also required for the section title
 
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width + padding.width);
 
@@ -1870,7 +1870,7 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_ROAD_DESC:
 			case WID_CI_TRAM_DESC: {
-				uint lines = 1; // Starts at 1 because a line is also required for the section title
+				int lines = 1; // Starts at 1 because a line is also required for the section title
 
 				size.width = std::max(size.width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width + padding.width);
 
@@ -1926,7 +1926,7 @@ struct CompanyInfrastructureWindow : Window
 				max_val = std::max(max_val, c->infrastructure.airport);
 				max_cost = std::max(max_cost, AirportMaintenanceCost(c->index));
 
-				uint count_width = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxValue(max_val))).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
+				int count_width = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxValue(max_val))).width + WidgetDimensions::scaled.hsep_indent; // Reserve some wiggle room
 
 				if (_settings_game.economy.infrastructure_maintenance) {
 					StringID str_total = TimerGameEconomy::UsingWallclockUnits() ? STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD : STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR;
@@ -1942,7 +1942,7 @@ struct CompanyInfrastructureWindow : Window
 
 				/* Set height of the total line. */
 				if (widget == WID_CI_TOTAL) {
-					size.height = _settings_game.economy.infrastructure_maintenance ? std::max<uint>(size.height, WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FS_NORMAL)) : 0;
+					size.height = _settings_game.economy.infrastructure_maintenance ? std::max(size.height, WidgetDimensions::scaled.vsep_normal + GetCharacterHeight(FS_NORMAL)) : 0;
 				}
 				break;
 			}

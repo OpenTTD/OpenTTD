@@ -79,7 +79,7 @@ static void FindResolutions()
 	SortResolutions();
 }
 
-static void GetAvailableVideoMode(uint *w, uint *h)
+static void GetAvailableVideoMode(int *w, int *h)
 {
 	/* All modes available? */
 	if (!_fullscreen || _resolutions.empty()) return;
@@ -134,7 +134,7 @@ void VideoDriver_SDL_Base::ClientSizeChanged(int w, int h, bool force)
 	}
 }
 
-bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
+bool VideoDriver_SDL_Base::CreateMainWindow(int w, int h, uint flags)
 {
 	if (this->sdl_window != nullptr) return true;
 
@@ -147,8 +147,8 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 	int x = SDL_WINDOWPOS_UNDEFINED, y = SDL_WINDOWPOS_UNDEFINED;
 	SDL_Rect r;
 	if (SDL_GetDisplayBounds(this->startup_display, &r) == 0) {
-		x = r.x + std::max(0, r.w - static_cast<int>(w)) / 2;
-		y = r.y + std::max(0, r.h - static_cast<int>(h)) / 4; // decent desktops have taskbars at the bottom
+		x = r.x + std::max(0, r.w - w) / 2;
+		y = r.y + std::max(0, r.h - h) / 4; // decent desktops have taskbars at the bottom
 	}
 
 	std::string caption = VideoDriver::GetCaption();
@@ -180,7 +180,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 	return true;
 }
 
-bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
+bool VideoDriver_SDL_Base::CreateMainSurface(int w, int h, bool resize)
 {
 	GetAvailableVideoMode(&w, &h);
 	Debug(driver, 1, "SDL2: using mode {}x{}", w, h);
@@ -732,7 +732,7 @@ Dimension VideoDriver_SDL_Base::GetScreenSize() const
 	SDL_DisplayMode mode;
 	if (SDL_GetCurrentDisplayMode(this->startup_display, &mode) != 0) return VideoDriver::GetScreenSize();
 
-	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
+	return {mode.w, mode.h};
 }
 
 bool VideoDriver_SDL_Base::LockVideoBuffer()

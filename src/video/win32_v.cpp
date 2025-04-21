@@ -1044,7 +1044,7 @@ std::vector<int> VideoDriver_Win32Base::GetListOfMonitorRefreshRates()
 
 Dimension VideoDriver_Win32Base::GetScreenSize() const
 {
-	return { static_cast<uint>(GetSystemMetrics(SM_CXSCREEN)), static_cast<uint>(GetSystemMetrics(SM_CYSCREEN)) };
+	return {GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN)};
 }
 
 float VideoDriver_Win32Base::GetDPIScale()

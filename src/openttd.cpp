@@ -670,8 +670,8 @@ int openttd_main(std::span<char * const> arguments)
 	 * integer, This way all internal drawing routines work correctly.
 	 * A resolution that has one component as 0 is treated as a marker to
 	 * auto-detect a good window size. */
-	_cur_resolution.width  = std::min(_cur_resolution.width, UINT16_MAX / 2u);
-	_cur_resolution.height = std::min(_cur_resolution.height, UINT16_MAX / 2u);
+	_cur_resolution.width  = std::min<int>(_cur_resolution.width, UINT16_MAX / 2);
+	_cur_resolution.height = std::min<int>(_cur_resolution.height, UINT16_MAX / 2);
 
 	/* Assume the cursor starts within the game as not all video drivers
 	 * get an event that the cursor is within the window when it is opened.

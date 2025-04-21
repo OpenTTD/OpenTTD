@@ -34,16 +34,16 @@ public:
 		return this->gui_classes;
 	}
 
-	inline std::span<const uint> GetColumnWidths() const
+	inline std::span<const int> GetColumnWidths() const
 	{
 		return this->column_widths;
 	}
 
-	uint GetTotalColumnsWidth() const;
+	int GetTotalColumnsWidth() const;
 
 private:
 	std::vector<Element> gui_classes{};
-	std::vector<uint> column_widths{};
+	std::vector<int> column_widths{};
 };
 
 int DrawBadgeNameList(Rect r, std::span<const BadgeID> badges, GrfSpecFeature feature);

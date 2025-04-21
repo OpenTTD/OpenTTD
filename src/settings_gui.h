@@ -14,9 +14,9 @@
 #include "dropdown_type.h"
 
 /** Width of setting buttons */
-#define SETTING_BUTTON_WIDTH  ((int)NWidgetScrollbar::GetHorizontalDimension().width * 2)
+#define SETTING_BUTTON_WIDTH  (NWidgetScrollbar::GetHorizontalDimension().width * 2)
 /** Height of setting buttons */
-#define SETTING_BUTTON_HEIGHT ((int)NWidgetScrollbar::GetHorizontalDimension().height)
+#define SETTING_BUTTON_HEIGHT (NWidgetScrollbar::GetHorizontalDimension().height)
 
 void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_left, bool clickable_right);
 void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable);

@@ -67,12 +67,12 @@ protected:
 	/** Hand video buffer back to the painting backend. */
 	virtual void ReleaseVideoPointer() = 0;
 	/** Create the main window. */
-	virtual bool CreateMainWindow(uint w, uint h, uint flags = 0);
+	virtual bool CreateMainWindow(int w, int h, uint flags = 0);
 
 private:
 	void LoopOnce();
 	void MainLoopCleanup();
-	bool CreateMainSurface(uint w, uint h, bool resize);
+	bool CreateMainSurface(int w, int h, bool resize);
 	std::optional<std::string_view> Initialize();
 
 #ifdef __EMSCRIPTEN__

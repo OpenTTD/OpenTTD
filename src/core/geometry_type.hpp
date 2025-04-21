@@ -39,31 +39,28 @@ struct Point {
 
 /** Dimensions (a width and height) of a rectangle in 2D */
 struct Dimension {
-	uint width;
-	uint height;
+	int width;
+	int height;
 
 	constexpr Dimension() : width(0), height(0) {}
-	constexpr Dimension(uint w, uint h) : width(w), height(h) {}
+	constexpr Dimension(int w, int h) : width(w), height(h) {}
 
-	bool operator< (const Dimension &other) const
+	bool operator<(const Dimension &other) const
 	{
 		int x = (*this).width - other.width;
 		if (x != 0) return x < 0;
 		return (*this).height < other.height;
 	}
 
-	bool operator== (const Dimension &other) const
-	{
-		return (*this).width == other.width && (*this).height == other.height;
-	}
+	bool operator==(const Dimension &) const = default;
 };
 
 /** Padding dimensions to apply to each side of a Rect. */
 struct RectPadding {
-	uint8_t left = 0;
-	uint8_t top = 0;
-	uint8_t right = 0;
-	uint8_t bottom = 0;
+	int8_t left = 0;
+	int8_t top = 0;
+	int8_t right = 0;
+	int8_t bottom = 0;
 
 	static const RectPadding zero;
 
@@ -71,13 +68,13 @@ struct RectPadding {
 	 * Get total horizontal padding of RectPadding.
 	 * @return total horizontal padding.
 	 */
-	constexpr uint Horizontal() const { return this->left + this->right; }
+	constexpr int Horizontal() const { return this->left + this->right; }
 
 	/**
 	 * Get total vertical padding of RectPadding.
 	 * @return total vertical padding.
 	 */
-	constexpr uint Vertical() const { return this->top + this->bottom; }
+	constexpr int Vertical() const { return this->top + this->bottom; }
 };
 
 inline const RectPadding RectPadding::zero{};
@@ -234,7 +231,8 @@ struct Rect {
 	inline bool Contains(const Point &pt) const
 	{
 		/* This is a local version of IsInsideMM, to avoid including math_func everywhere. */
-		return (uint)(pt.x - this->left) < (uint)(this->right - this->left) && (uint)(pt.y - this->top) < (uint)(this->bottom - this->top);
+		return static_cast<uint>(pt.x - this->left) < static_cast<uint>(this->right - this->left) &&
+				static_cast<uint>(pt.y - this->top) < static_cast<uint>(this->bottom - this->top);
 	}
 };
 

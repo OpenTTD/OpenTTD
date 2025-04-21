@@ -71,7 +71,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
  * @param type the vehicle type to look at
  * @return the height
  */
-inline uint GetVehicleHeight(VehicleType type)
+inline int GetVehicleHeight(VehicleType type)
 {
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
@@ -81,9 +81,9 @@ int GetVehicleWidth(const Vehicle *v, EngineImageType image_type);
 
 /** Dimensions of a cell in the purchase/depot windows. */
 struct VehicleCellSize {
-	uint height;       ///< Vehicle cell height.
-	uint extend_left;  ///< Extend of the cell to the left.
-	uint extend_right; ///< Extend of the cell to the right.
+	int height;       ///< Vehicle cell height.
+	int extend_left;  ///< Extend of the cell to the left.
+	int extend_right; ///< Extend of the cell to the right.
 };
 
 VehicleCellSize GetVehicleImageCellSize(VehicleType type, EngineImageType image_type);

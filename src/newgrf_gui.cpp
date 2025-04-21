@@ -229,7 +229,7 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_DESCRIPTION:
 				/* Minimum size of 4 lines. The 500 is the default size of the window. */
-				Dimension suggestion = {500U - WidgetDimensions::scaled.frametext.Horizontal(), (uint)GetCharacterHeight(FS_NORMAL) * 4 + WidgetDimensions::scaled.frametext.Vertical()};
+				Dimension suggestion = {500 - WidgetDimensions::scaled.frametext.Horizontal(), GetCharacterHeight(FS_NORMAL) * 4 + WidgetDimensions::scaled.frametext.Vertical()};
 				for (const auto &par_info : this->grf_config.param_info) {
 					if (!par_info.has_value()) continue;
 					auto desc = GetGRFStringFromGRFText(par_info->desc);
@@ -290,7 +290,7 @@ struct NewGRFParametersWindow : public Window {
 
 		Rect ir = r.Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero);
 		bool rtl = _current_text_dir == TD_RTL;
-		uint buttons_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
+		int buttons_left = rtl ? ir.right - SETTING_BUTTON_WIDTH : ir.left;
 		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
 
 		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
@@ -733,7 +733,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_FILE_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
+				resize.height = std::max(d.height + 2, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 6 * resize.height);
 				break;
 			}
@@ -741,7 +741,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_AVAIL_LIST:
 			{
 				Dimension d = maxdim(GetScaledSpriteSize(SPR_SQUARE), GetScaledSpriteSize(SPR_WARNING_SIGN));
-				resize.height = std::max<uint>(d.height + 2U, GetCharacterHeight(FS_NORMAL));
+				resize.height = std::max(d.height + 2, GetCharacterHeight(FS_NORMAL));
 				size.height = std::max(size.height, padding.height + 8 * resize.height);
 				break;
 			}
@@ -754,7 +754,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			}
 
 			case WID_NS_NEWGRF_INFO:
-				size.height = std::max<uint>(size.height, WidgetDimensions::scaled.framerect.Vertical() + 10 * GetCharacterHeight(FS_NORMAL));
+				size.height = std::max(size.height, WidgetDimensions::scaled.framerect.Vertical() + 10 * GetCharacterHeight(FS_NORMAL));
 				break;
 
 			case WID_NS_PRESET_LIST: {
@@ -840,7 +840,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				GfxFillRect(br, PC_BLACK);
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_FILE_LIST)->resize_y;
+				int step_height = this->GetWidget<NWidgetBase>(WID_NS_FILE_LIST)->resize_y;
 				Dimension square = GetSpriteSize(SPR_SQUARE);
 				Dimension warning = GetSpriteSize(SPR_WARNING_SIGN);
 				int square_offset_y = (step_height - square.height) / 2;
@@ -848,10 +848,10 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 				bool rtl = _current_text_dir == TD_RTL;
-				uint text_left    = rtl ? tr.left : tr.left + square.width + 13;
-				uint text_right   = rtl ? tr.right - square.width - 13 : tr.right;
-				uint square_left  = rtl ? tr.right - square.width - 3 : tr.left + 3;
-				uint warning_left = rtl ? tr.right - square.width - warning.width - 8 : tr.left + square.width + 8;
+				int text_left    = rtl ? tr.left : tr.left + square.width + 13;
+				int text_right   = rtl ? tr.right - square.width - 13 : tr.right;
+				int square_left  = rtl ? tr.right - square.width - 3 : tr.left + 3;
+				int warning_left = rtl ? tr.right - square.width - warning.width - 8 : tr.left + square.width + 8;
 
 				int i = 0;
 				for (const auto &c : this->actives) {
@@ -866,13 +866,13 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 							/* Get index of current selection. */
 							int active_sel_pos = this->GetCurrentActivePosition();
 							if (active_sel_pos != this->active_over) {
-								uint top = this->active_over < active_sel_pos ? tr.top + 1 : tr.top + step_height - 2;
+								int top = this->active_over < active_sel_pos ? tr.top + 1 : tr.top + step_height - 2;
 								GfxFillRect(tr.left, top - 1, tr.right, top + 1, PC_GREY);
 							}
 						}
 						DrawSprite(SPR_SQUARE, pal, square_left, tr.top + square_offset_y);
 						if (c->error.has_value()) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, tr.top + warning_offset_y);
-						uint txtoffset = !c->error.has_value() ? 0 : warning.width;
+						int txtoffset = !c->error.has_value() ? 0 : warning.width;
 						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), tr.top + offset_y, std::move(text), h ? TC_WHITE : TC_ORANGE);
 						tr.top += step_height;
 					}
@@ -889,7 +889,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				GfxFillRect(br, this->active_over == -2 ? PC_DARK_GREY : PC_BLACK);
 
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_AVAIL_LIST)->resize_y;
+				int step_height = this->GetWidget<NWidgetBase>(WID_NS_AVAIL_LIST)->resize_y;
 				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 
 				auto [first, last] = this->vscroll2->GetVisibleRangeIterators(this->avails);
@@ -1547,8 +1547,8 @@ const std::initializer_list<NewGRFWindow::GUIGRFConfigList::FilterFunction * con
  */
 class NWidgetNewGRFDisplay : public NWidgetBase {
 public:
-	static const uint MAX_EXTRA_INFO_WIDTH;    ///< Maximal additional width given to the panel.
-	static const uint MIN_EXTRA_FOR_3_COLUMNS; ///< Minimal additional width needed before switching to 3 columns.
+	static inline constexpr int MAX_EXTRA_INFO_WIDTH = 150; ///< Maximal additional width given to the panel.
+	static inline constexpr int MIN_EXTRA_FOR_3_COLUMNS = 50; ///< Minimal additional width needed before switching to 3 columns.
 
 	std::unique_ptr<NWidgetBase> avs{}; ///< Widget with the available grfs list and buttons.
 	std::unique_ptr<NWidgetBase> acs{}; ///< Widget with the active grfs list and buttons.
@@ -1573,13 +1573,13 @@ public:
 		this->acs->SetupSmallestSize(w);
 		this->inf->SetupSmallestSize(w);
 
-		uint min_avs_width = this->avs->smallest_x + this->avs->padding.Horizontal();
-		uint min_acs_width = this->acs->smallest_x + this->acs->padding.Horizontal();
-		uint min_inf_width = this->inf->smallest_x + this->inf->padding.Horizontal();
+		int min_avs_width = this->avs->smallest_x + this->avs->padding.Horizontal();
+		int min_acs_width = this->acs->smallest_x + this->acs->padding.Horizontal();
+		int min_inf_width = this->inf->smallest_x + this->inf->padding.Horizontal();
 
-		uint min_avs_height = this->avs->smallest_y + this->avs->padding.Vertical();
-		uint min_acs_height = this->acs->smallest_y + this->acs->padding.Vertical();
-		uint min_inf_height = this->inf->smallest_y + this->inf->padding.Vertical();
+		int min_avs_height = this->avs->smallest_y + this->avs->padding.Vertical();
+		int min_acs_height = this->acs->smallest_y + this->acs->padding.Vertical();
+		int min_inf_height = this->inf->smallest_y + this->inf->padding.Vertical();
 
 		/* Smallest window is in two column mode. */
 		this->smallest_x = std::max(min_avs_width, min_acs_width) + WidgetDimensions::scaled.hsep_wide + min_inf_width;
@@ -1605,56 +1605,56 @@ public:
 		this->smallest_y = ComputeMaxSize(min_acs_height, this->smallest_y + this->resize_y - 1, this->resize_y);
 	}
 
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override
 	{
 		this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
-		uint min_avs_width = this->avs->smallest_x + this->avs->padding.Horizontal();
-		uint min_acs_width = this->acs->smallest_x + this->acs->padding.Horizontal();
-		uint min_inf_width = this->inf->smallest_x + this->inf->padding.Horizontal();
+		int min_avs_width = this->avs->smallest_x + this->avs->padding.Horizontal();
+		int min_acs_width = this->acs->smallest_x + this->acs->padding.Horizontal();
+		int min_inf_width = this->inf->smallest_x + this->inf->padding.Horizontal();
 
-		uint min_list_width = std::max(min_avs_width, min_acs_width); // Smallest width of the lists such that they have equal width (incl padding).
-		uint avs_extra_width = min_list_width - min_avs_width;   // Additional width needed for avs to reach min_list_width.
-		uint acs_extra_width = min_list_width - min_acs_width;   // Additional width needed for acs to reach min_list_width.
+		int min_list_width = std::max(min_avs_width, min_acs_width); // Smallest width of the lists such that they have equal width (incl padding).
+		int avs_extra_width = min_list_width - min_avs_width;   // Additional width needed for avs to reach min_list_width.
+		int acs_extra_width = min_list_width - min_acs_width;   // Additional width needed for acs to reach min_list_width.
 
 		/* Use 2 or 3 columns? */
-		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * WidgetDimensions::scaled.hsep_wide;
-		uint min_two_columns   = min_list_width + min_inf_width + WidgetDimensions::scaled.hsep_wide;
+		int min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * WidgetDimensions::scaled.hsep_wide;
+		int min_two_columns   = min_list_width + min_inf_width + WidgetDimensions::scaled.hsep_wide;
 		bool use_three_columns = this->editable && (min_three_columns + ScaleGUITrad(MIN_EXTRA_FOR_3_COLUMNS) <= given_width);
 
 		/* Info panel is a separate column in both modes. Compute its width first. */
-		uint extra_width, inf_width;
+		int extra_width, inf_width;
 		if (use_three_columns) {
 			extra_width = given_width - min_three_columns;
-			inf_width = std::min<uint>(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
+			inf_width = std::min(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
 		} else {
 			extra_width = given_width - min_two_columns;
-			inf_width = std::min<uint>(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
+			inf_width = std::min(ScaleGUITrad(MAX_EXTRA_INFO_WIDTH), extra_width / 2);
 		}
 		inf_width = ComputeMaxSize(this->inf->smallest_x, this->inf->smallest_x + inf_width, this->inf->GetHorizontalStepSize(sizing));
 		extra_width -= inf_width - this->inf->smallest_x;
 
-		uint inf_height = ComputeMaxSize(this->inf->smallest_y, given_height, this->inf->GetVerticalStepSize(sizing));
+		int inf_height = ComputeMaxSize(this->inf->smallest_y, given_height, this->inf->GetVerticalStepSize(sizing));
 
 		if (use_three_columns) {
 			/* Three column display, first make both lists equally wide, then divide whatever is left between both lists.
 			 * Only keep track of what avs gets, all other space goes to acs. */
-			uint avs_width = std::min(avs_extra_width, extra_width);
+			int avs_width = std::min(avs_extra_width, extra_width);
 			extra_width -= avs_width;
 			extra_width -= std::min(acs_extra_width, extra_width);
 			avs_width += extra_width / 2;
 
 			avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_width, this->avs->GetHorizontalStepSize(sizing));
 
-			uint acs_width = given_width - // Remaining space, including horizontal padding.
+			int acs_width = given_width - // Remaining space, including horizontal padding.
 					inf_width - this->inf->padding.Horizontal() -
 					avs_width - this->avs->padding.Horizontal() - 2 * WidgetDimensions::scaled.hsep_wide;
 			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) -
 					this->acs->padding.Horizontal();
 
 			/* Never use fill_y on these; the minimal size is chosen, so that the 3 column view looks nice */
-			uint avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->resize_y);
-			uint acs_height = ComputeMaxSize(this->acs->smallest_y, given_height, this->acs->resize_y);
+			int avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->resize_y);
+			int acs_height = ComputeMaxSize(this->acs->smallest_y, given_height, this->acs->resize_y);
 
 			/* Assign size and position to the children. */
 			if (rtl) {
@@ -1681,19 +1681,19 @@ public:
 		} else {
 			/* Two columns, all space in extra_width goes to both lists. Since the lists are underneath each other,
 			 * the column is min_list_width wide at least. */
-			uint avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_extra_width + extra_width,
+			int avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_extra_width + extra_width,
 					this->avs->GetHorizontalStepSize(sizing));
-			uint acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width,
+			int acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width,
 					this->acs->GetHorizontalStepSize(sizing));
 
-			uint min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding.Vertical() + WidgetDimensions::scaled.vsep_wide;
-			uint min_acs_height = this->acs->smallest_y + this->acs->padding.Vertical();
-			uint extra_height = given_height - min_acs_height - min_avs_height;
+			int min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding.Vertical() + WidgetDimensions::scaled.vsep_wide;
+			int min_acs_height = this->acs->smallest_y + this->acs->padding.Vertical();
+			int extra_height = given_height - min_acs_height - min_avs_height;
 
 			/* Never use fill_y on these; instead use WidgetDimensions::scaled.vsep_wide as filler */
-			uint avs_height = ComputeMaxSize(this->avs->smallest_y, this->avs->smallest_y + extra_height / 2, this->avs->resize_y);
+			int avs_height = ComputeMaxSize(this->avs->smallest_y, this->avs->smallest_y + extra_height / 2, this->avs->resize_y);
 			if (this->editable) extra_height -= avs_height - this->avs->smallest_y;
-			uint acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->resize_y);
+			int acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->resize_y);
 
 			/* Assign size and position to the children. */
 			if (rtl) {
@@ -1714,7 +1714,7 @@ public:
 				} else {
 					this->avs->AssignSizePosition(sizing, 0, 0, this->avs->smallest_x, this->avs->smallest_y, rtl);
 				}
-				uint dx = this->acs->current_x + this->acs->padding.Horizontal();
+				int dx = this->acs->current_x + this->acs->padding.Horizontal();
 				if (this->editable) {
 					dx = std::max(dx, this->avs->current_x + this->avs->padding.Horizontal());
 				}
@@ -1748,9 +1748,6 @@ public:
 		this->inf->Draw(w);
 	}
 };
-
-const uint NWidgetNewGRFDisplay::MAX_EXTRA_INFO_WIDTH    = 150;
-const uint NWidgetNewGRFDisplay::MIN_EXTRA_FOR_3_COLUMNS = 50;
 
 static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
 	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
@@ -2073,7 +2070,7 @@ struct SavePresetWindow : public Window {
 				const Rect br = r.Shrink(WidgetDimensions::scaled.bevel);
 				GfxFillRect(br, PC_BLACK);
 
-				uint step_height = this->GetWidget<NWidgetBase>(WID_SVP_PRESET_LIST)->resize_y;
+				int step_height = this->GetWidget<NWidgetBase>(WID_SVP_PRESET_LIST)->resize_y;
 				int offset_y = (step_height - GetCharacterHeight(FS_NORMAL)) / 2;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
@@ -2178,7 +2175,7 @@ struct ScanProgressWindow : public Window {
 				uint64_t max_digits = GetParamMaxDigits(4);
 				/* We really don't know the width. We could determine it by scanning the NewGRFs,
 				 * but this is the status window for scanning them... */
-				size.width = std::max<uint>(size.width, GetStringBoundingBox(GetString(STR_NEWGRF_SCAN_STATUS, max_digits, max_digits)).width + padding.width);
+				size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_NEWGRF_SCAN_STATUS, max_digits, max_digits)).width + padding.width);
 				size.height = GetCharacterHeight(FS_NORMAL) * 2 + WidgetDimensions::scaled.vsep_normal;
 				break;
 			}

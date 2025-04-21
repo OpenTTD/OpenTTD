@@ -149,7 +149,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 static VehicleCellSize _base_block_sizes_depot[VEH_COMPANY_END];    ///< Cell size for vehicle images in the depot view.
 static VehicleCellSize _base_block_sizes_purchase[VEH_COMPANY_END]; ///< Cell size for vehicle images in the purchase list.
-static uint _consistent_train_width;                                ///< Whether trains of all lengths are consistently scaled. Either TRAININFO_DEFAULT_VEHICLE_WIDTH, VEHICLEINFO_FULL_VEHICLE_WIDTH, or 0.
+static int _consistent_train_width;                                 ///< Whether trains of all lengths are consistently scaled. Either TRAININFO_DEFAULT_VEHICLE_WIDTH, VEHICLEINFO_FULL_VEHICLE_WIDTH, or 0.
 
 /**
  * Get the GUI cell size for a vehicle image.
@@ -171,13 +171,13 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 {
 	int max_extend_left  = 0;
 	int max_extend_right = 0;
-	uint max_height = 0;
+	int max_height = 0;
 
 	for (const Engine *e : Engine::IterateType(type)) {
 		if (!e->IsEnabled()) continue;
 
 		EngineID eid = e->index;
-		uint x, y;
+		int x, y;
 		int x_offs, y_offs;
 
 		switch (type) {
@@ -189,7 +189,7 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 		}
 		if (y > max_height) max_height = y;
 		if (-x_offs > max_extend_left) max_extend_left = -x_offs;
-		if ((int)x + x_offs > max_extend_right) max_extend_right = x + x_offs;
+		if (x + x_offs > max_extend_right) max_extend_right = x + x_offs;
 	}
 
 	int min_extend = ScaleSpriteTrad(16);
@@ -197,12 +197,12 @@ static void InitBlocksizeForVehicles(VehicleType type, EngineImageType image_typ
 
 	switch (image_type) {
 		case EIT_IN_DEPOT:
-			_base_block_sizes_depot[type].height       = std::max<uint>(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
+			_base_block_sizes_depot[type].height       = std::max(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
 			_base_block_sizes_depot[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
 			_base_block_sizes_depot[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
 		case EIT_PURCHASE:
-			_base_block_sizes_purchase[type].height       = std::max<uint>(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
+			_base_block_sizes_purchase[type].height       = std::max(ScaleSpriteTrad(GetVehicleHeight(type)), max_height);
 			_base_block_sizes_purchase[type].extend_left  = Clamp(max_extend_left, min_extend, max_extend);
 			_base_block_sizes_purchase[type].extend_right = Clamp(max_extend_right, min_extend, max_extend);
 			break;
@@ -227,7 +227,7 @@ void InitDepotWindowBlockSizes()
 	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		if (!e->IsEnabled()) continue;
 
-		uint w = TRAININFO_DEFAULT_VEHICLE_WIDTH;
+		int w = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 		if (e->GetGRF() != nullptr && IsCustomVehicleSpriteNum(e->u.rail.image_index)) {
 			w = e->GetGRF()->traininfo_vehicle_width;
 			if (w != VEHICLEINFO_FULL_VEHICLE_WIDTH) {
@@ -263,11 +263,11 @@ struct DepotWindow : Window {
 	VehicleList vehicle_list{};
 	VehicleList wagon_list{};
 	uint unitnumber_digits = 2;
-	uint num_columns = 1; ///< Number of columns.
+	int num_columns = 1; ///< Number of columns.
 	Scrollbar *hscroll = nullptr; ///< Only for trains.
 	Scrollbar *vscroll = nullptr;
-	uint count_width = 0; ///< Width of length count, including separator.
-	uint header_width = 0; ///< Width of unit number and flag, including separator.
+	int count_width = 0; ///< Width of length count, including separator.
+	int header_width = 0; ///< Width of unit number and flag, including separator.
 	Dimension flag_size{}; ///< Size of start/stop flag.
 	VehicleCellSize cell_size{}; ///< Vehicle sprite cell size.
 	bool last_overlay_state = false;
@@ -320,7 +320,7 @@ struct DepotWindow : Window {
 				const Train *u = Train::From(v);
 				free_wagon = u->IsFreeWagon();
 
-				uint x_space = free_wagon ?
+				int x_space = free_wagon ?
 						ScaleSpriteTrad(_consistent_train_width != 0 ? _consistent_train_width : TRAININFO_DEFAULT_VEHICLE_WIDTH) :
 						0;
 
@@ -340,7 +340,7 @@ struct DepotWindow : Window {
 			default: NOT_REACHED();
 		}
 
-		uint diff_x, diff_y;
+		int diff_x, diff_y;
 		if (v->IsGroundVehicle()) {
 			/* Arrange unitnumber and flag horizontally */
 			diff_x = this->flag_size.width + WidgetDimensions::scaled.hsep_normal;
@@ -397,21 +397,21 @@ struct DepotWindow : Window {
 			}
 		}
 
-		uint16_t rows_in_display = wid->current_y / wid->resize_y;
+		int rows_in_display = wid->current_y / wid->resize_y;
 
-		uint num = this->vscroll->GetPosition() * this->num_columns;
-		uint maxval = static_cast<uint>(std::min<size_t>(this->vehicle_list.size(), num + (rows_in_display * this->num_columns)));
+		int num = this->vscroll->GetPosition() * this->num_columns;
+		int maxval = static_cast<int>(std::min<size_t>(this->vehicle_list.size(), num + (rows_in_display * this->num_columns)));
 		for (; num < maxval; ir = ir.Translate(0, this->resize.step_height)) { // Draw the rows
 			Rect cell = ir; /* Keep track of horizontal cells */
-			for (uint i = 0; i < this->num_columns && num < maxval; i++, num++) {
+			for (int i = 0; i < this->num_columns && num < maxval; i++, num++) {
 				/* Draw all vehicles in the current row */
 				const Vehicle *v = this->vehicle_list[num];
 				this->DrawVehicleInDepot(v, cell);
-				cell = cell.Translate(rtl ? -(int)this->resize.step_width : (int)this->resize.step_width, 0);
+				cell = cell.Translate(rtl ? -this->resize.step_width : this->resize.step_width, 0);
 			}
 		}
 
-		maxval = static_cast<uint>(std::min<size_t>(this->vehicle_list.size() + this->wagon_list.size(), (this->vscroll->GetPosition() * this->num_columns) + (rows_in_display * this->num_columns)));
+		maxval = static_cast<int>(std::min<size_t>(this->vehicle_list.size() + this->wagon_list.size(), (this->vscroll->GetPosition() * this->num_columns) + (rows_in_display * this->num_columns)));
 
 		/* Draw the train wagons without an engine in front. */
 		for (; num < maxval; num++, ir = ir.Translate(0, this->resize.step_height)) {
@@ -449,7 +449,7 @@ struct DepotWindow : Window {
 		/* In case of RTL the widgets are swapped as a whole */
 		if (_current_text_dir == TD_RTL) x = matrix_widget->current_x - x;
 
-		uint xt = 0, xm = 0, ym = 0;
+		int xt = 0, xm = 0, ym = 0;
 		if (this->type == VEH_TRAIN) {
 			xm = x;
 		} else {
@@ -460,9 +460,9 @@ struct DepotWindow : Window {
 		ym = (y - matrix_widget->pos_y) % this->resize.step_height;
 
 		int32_t row = this->vscroll->GetScrolledRowFromWidget(y, this, WID_D_MATRIX);
-		uint pos = (row * this->num_columns) + xt;
+		int pos = (row * this->num_columns) + xt;
 
-		if (row == INT32_MAX || this->vehicle_list.size() + this->wagon_list.size() <= pos) {
+		if (row == INT32_MAX || static_cast<int>(this->vehicle_list.size() + this->wagon_list.size()) <= pos) {
 			/* Clicking on 'line' / 'block' without a vehicle */
 			if (this->type == VEH_TRAIN) {
 				/* End the dragging */
@@ -475,12 +475,12 @@ struct DepotWindow : Window {
 		}
 
 		bool wagon = false;
-		if (this->vehicle_list.size() > pos) {
+		if (static_cast<int>(this->vehicle_list.size()) > pos) {
 			*veh = this->vehicle_list[pos];
 			/* Skip vehicles that are scrolled off the list */
 			if (this->type == VEH_TRAIN) x += this->hscroll->GetPosition();
 		} else {
-			pos -= (uint)this->vehicle_list.size();
+			pos -= static_cast<int>(this->vehicle_list.size());
 			*veh = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
 			x -= ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
@@ -505,7 +505,7 @@ struct DepotWindow : Window {
 
 				case VEH_SHIP:
 				case VEH_AIRCRAFT:
-					if (xm <= this->flag_size.width && ym >= (uint)(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal)) return MODE_START_STOP;
+					if (xm <= this->flag_size.width && ym >= GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal) return MODE_START_STOP;
 					break;
 
 				default: NOT_REACHED();
@@ -652,7 +652,7 @@ struct DepotWindow : Window {
 	{
 		switch (widget) {
 			case WID_D_MATRIX: {
-				uint min_height = 0;
+				int min_height = 0;
 
 				if (this->type == VEH_TRAIN) {
 					this->count_width = GetStringBoundingBox(GetString(STR_JUST_DECIMAL, GetParamMaxValue(1000, 0, FS_SMALL), 1), FS_SMALL).width + WidgetDimensions::scaled.hsep_normal;
@@ -663,15 +663,15 @@ struct DepotWindow : Window {
 				Dimension unumber = GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxDigits(this->unitnumber_digits)));
 
 				if (this->type == VEH_TRAIN || this->type == VEH_ROAD) {
-					min_height = std::max<uint>(unumber.height, this->flag_size.height);
+					min_height = std::max(unumber.height, this->flag_size.height);
 					this->header_width = unumber.width + WidgetDimensions::scaled.hsep_normal + this->flag_size.width + WidgetDimensions::scaled.hsep_normal;
 				} else {
 					min_height = unumber.height + WidgetDimensions::scaled.vsep_normal + this->flag_size.height;
-					this->header_width = std::max<uint>(unumber.width, this->flag_size.width) + WidgetDimensions::scaled.hsep_normal;
+					this->header_width = std::max(unumber.width, this->flag_size.width) + WidgetDimensions::scaled.hsep_normal;
 				}
 				int base_width = this->count_width + this->header_width + padding.width;
 
-				resize.height = std::max<uint>(this->cell_size.height, min_height + padding.height);
+				resize.height = std::max(this->cell_size.height, min_height + padding.height);
 				if (this->type == VEH_TRAIN) {
 					resize.width = 1;
 					size.width = base_width + 2 * ScaleSpriteTrad(29); // about 2 parts
@@ -727,9 +727,9 @@ struct DepotWindow : Window {
 
 		/* determine amount of items for scroller */
 		if (this->type == VEH_TRAIN) {
-			uint max_width = ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
+			int max_width = ScaleSpriteTrad(VEHICLEINFO_FULL_VEHICLE_WIDTH);
 			for (uint num = 0; num < this->vehicle_list.size(); num++) {
-				uint width = 0;
+				int width = 0;
 				for (const Train *v = Train::From(this->vehicle_list[num]); v != nullptr; v = v->Next()) {
 					width += v->GetDisplayImageWidth();
 				}

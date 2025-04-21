@@ -1131,7 +1131,7 @@ struct ScriptDebugWindow : public Window {
 
 		this->SelectValidDebugCompany();
 
-		uint max_width = 0;
+		int max_width = 0;
 		if (this->filter.script_debug_company != CompanyID::Invalid()) {
 			for (auto &line : this->GetLogData()) {
 				if (line.width == 0 || data == -1) line.width = GetStringBoundingBox(line.text).width;

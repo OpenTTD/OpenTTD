@@ -295,9 +295,9 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary &su
  * @param v the vehicle to get the length of.
  * @return the length in pixels.
  */
-static uint GetLengthOfArticulatedVehicle(const Train *v)
+static int GetLengthOfArticulatedVehicle(const Train *v)
 {
-	uint length = 0;
+	int length = 0;
 
 	do {
 		length += v->GetDisplayImageWidth();
@@ -327,10 +327,10 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 	} else {
 		for (const Train *v = Train::Get(veh_id); v != nullptr; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);
-			num += std::max(1u, (unsigned)_cargo_summary.size());
+			num += std::max(1, static_cast<int>(_cargo_summary.size()));
 
-			uint length = GetLengthOfArticulatedVehicle(v);
-			if (length > (uint)ScaleSpriteTrad(TRAIN_DETAILS_MAX_INDENT)) num++;
+			int length = GetLengthOfArticulatedVehicle(v);
+			if (length > ScaleSpriteTrad(TRAIN_DETAILS_MAX_INDENT)) num++;
 		}
 	}
 
@@ -361,7 +361,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);
 
 			/* Draw sprites */
-			uint dx = 0;
+			int dx = 0;
 			int px = x;
 			const Train *u = v;
 			do {
@@ -383,7 +383,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 				u = u->Next();
 			} while (u != nullptr && u->IsArticulatedPart());
 
-			bool separate_sprite_row = (dx > (uint)ScaleSpriteTrad(TRAIN_DETAILS_MAX_INDENT));
+			bool separate_sprite_row = (dx > ScaleSpriteTrad(TRAIN_DETAILS_MAX_INDENT));
 			if (separate_sprite_row) {
 				vscroll_pos--;
 				dx = 0;
@@ -391,8 +391,8 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 
 			int sprite_width = std::max<int>(dx, ScaleSpriteTrad(TRAIN_DETAILS_MIN_INDENT)) + WidgetDimensions::scaled.hsep_normal;
 			Rect dr = r.Indent(sprite_width, rtl);
-			uint num_lines = std::max(1u, (unsigned)_cargo_summary.size());
-			for (uint i = 0; i < num_lines; i++) {
+			int num_lines = std::max(1, static_cast<int>(_cargo_summary.size()));
+			for (int i = 0; i < num_lines; i++) {
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
 					int py = r.top - line_height * vscroll_pos + text_y_offset;
 					if (i > 0 || separate_sprite_row) {
@@ -400,7 +400,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:
-							if (i < _cargo_summary.size()) {
+							if (i < static_cast<int>(_cargo_summary.size())) {
 								TrainDetailsCargoTab(&_cargo_summary[i], dr.left, dr.right, py);
 							} else {
 								DrawString(dr.left, dr.right, py, STR_QUANTITY_N_A, TC_LIGHT_BLUE);
@@ -412,7 +412,7 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 							break;
 
 						case TDW_TAB_CAPACITY:
-							if (i < _cargo_summary.size()) {
+							if (i < static_cast<int>(_cargo_summary.size())) {
 								TrainDetailsCapacityTab(&_cargo_summary[i], dr.left, dr.right, py);
 							} else {
 								DrawString(dr.left, dr.right, py, GetString(STR_VEHICLE_INFO_NO_CAPACITY, STR_EMPTY));

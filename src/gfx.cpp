@@ -729,7 +729,7 @@ int GetStringHeight(StringID str, int maxw)
 int GetStringLineCount(std::string_view str, int maxw)
 {
 	Layouter layout(str, maxw);
-	return (uint)layout.size();
+	return static_cast<int>(layout.size());
 }
 
 /**
@@ -740,7 +740,7 @@ int GetStringLineCount(std::string_view str, int maxw)
  */
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion)
 {
-	Dimension box = {suggestion.width, (uint)GetStringHeight(str, suggestion.width)};
+	Dimension box = {suggestion.width, GetStringHeight(str, suggestion.width)};
 	return box;
 }
 
@@ -752,7 +752,7 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  */
 Dimension GetStringMultiLineBoundingBox(std::string_view str, const Dimension &suggestion, FontSize fontsize)
 {
-	Dimension box = {suggestion.width, (uint)GetStringHeight(str, suggestion.width, fontsize)};
+	Dimension box = {suggestion.width, GetStringHeight(str, suggestion.width, fontsize)};
 	return box;
 }
 
@@ -872,9 +872,9 @@ Dimension GetStringBoundingBox(StringID strid, FontSize start_fontsize)
  * @param fontsize Font size to use.
  * @return Width of longest string within the list.
  */
-uint GetStringListWidth(std::span<const StringID> list, FontSize fontsize)
+int GetStringListWidth(std::span<const StringID> list, FontSize fontsize)
 {
-	uint width = 0;
+	int width = 0;
 	for (auto str : list) {
 		width = std::max(width, GetStringBoundingBox(str, fontsize).width);
 	}

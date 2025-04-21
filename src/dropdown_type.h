@@ -29,8 +29,8 @@ public:
 	virtual ~DropDownListItem() = default;
 
 	virtual bool Selectable() const { return true; }
-	virtual uint Height() const { return 0; }
-	virtual uint Width() const { return 0; }
+	virtual int Height() const { return 0; }
+	virtual int Width() const { return 0; }
 
 	virtual void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const
 	{
@@ -51,7 +51,7 @@ typedef std::vector<std::unique_ptr<const DropDownListItem>> DropDownList;
 
 void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID button, Rect wi_rect, Colours wi_colour, bool instant_close = false, bool persist = false);
 
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width = 0, bool instant_close = false, bool persist = false);
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, int width = 0, bool instant_close = false, bool persist = false);
 
 Dimension GetDropDownListDimension(const DropDownList &list);
 

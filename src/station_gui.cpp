@@ -289,7 +289,7 @@ protected:
 	FilterState filter{};
 	GUIStationList stations{filter.cargoes};
 	Scrollbar *vscroll = nullptr;
-	uint rating_width = 0;
+	int rating_width = 0;
 	bool filter_expanded = false;
 	std::array<uint16_t, NUM_CARGO> stations_per_cargo_type{}; ///< Number of stations with a rating for each cargo type.
 	uint16_t stations_per_cargo_type_no_rating = 0; ///< Number of stations without a rating.
@@ -502,7 +502,7 @@ public:
 			case WID_STL_LIST: {
 				bool rtl = _current_text_dir == TD_RTL;
 				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
-				uint line_height = this->GetWidget<NWidgetBase>(widget)->resize_y;
+				int line_height = this->GetWidget<NWidgetBase>(widget)->resize_y;
 				/* Spacing between station name and first rating graph. */
 				int text_spacing = WidgetDimensions::scaled.hsep_wide;
 				/* Spacing between additional rating graphs. */
@@ -1293,7 +1293,7 @@ struct StationViewWindow : public Window {
 		MODE_PLANNED  ///< Show cargo planned to pass through the station.
 	};
 
-	uint expand_shrink_width = 0; ///< The width allocated to the expand/shrink 'button'
+	int expand_shrink_width = 0; ///< The width allocated to the expand/shrink 'button'
 	int rating_lines = RATING_LINES; ///< Number of lines in the cargo ratings view.
 	int accepts_lines = ACCEPTS_LINES; ///< Number of lines in the accepted cargo view.
 	Scrollbar *vscroll = nullptr;

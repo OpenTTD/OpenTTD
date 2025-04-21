@@ -79,7 +79,7 @@ static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 static const uint8_t RV_OVERTAKE_TIMEOUT = 35;
 
 void RoadVehUpdateCache(RoadVehicle *v, bool same_length = false);
-void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
+void GetRoadVehSpriteSize(EngineID engine, int &width, int &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
 /** Element of the RoadVehPathCache. */
 struct RoadVehPathElement {

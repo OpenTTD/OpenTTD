@@ -74,7 +74,7 @@
 
 
 /** Width of the toolbar, shared by statusbar. */
-uint _toolbar_width = 0;
+int _toolbar_width = 0;
 
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;
@@ -1425,7 +1425,7 @@ public:
 		_toolbar_width = nbuttons * this->smallest_x + this->spacers * this->smallest_x / 4;
 	}
 
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override
 	{
 		assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
@@ -1435,7 +1435,7 @@ public:
 		this->current_y = given_height;
 
 		/* Figure out what are the visible buttons */
-		uint arrangable_count, button_count, spacer_count;
+		int arrangable_count, button_count, spacer_count;
 		const WidgetID *arrangement = GetButtonArrangement(given_width, arrangable_count, button_count, spacer_count);
 
 		/* Create us ourselves a quick lookup table from WidgetID to slot. */
@@ -1450,22 +1450,22 @@ public:
 		}
 
 		/* Now assign the widgets to their rightful place */
-		uint position = 0; // Place to put next child relative to origin of the container.
-		uint spacer_space = std::max(0, (int)given_width - (int)(button_count * this->smallest_x)); // Remaining spacing for 'spacer' widgets
-		uint button_space = given_width - spacer_space; // Remaining spacing for the buttons
-		uint spacer_i = 0;
-		uint button_i = 0;
+		int position = 0; // Place to put next child relative to origin of the container.
+		int spacer_space = std::max(0, given_width - (button_count * this->smallest_x)); // Remaining spacing for 'spacer' widgets
+		int button_space = given_width - spacer_space; // Remaining spacing for the buttons
+		int spacer_i = 0;
+		int button_i = 0;
 
 		/* Index into the arrangement indices. */
 		const WidgetID *slotp = rtl ? &arrangement[arrangable_count - 1] : arrangement;
-		for (uint i = 0; i < arrangable_count; i++) {
+		for (int i = 0; i < arrangable_count; i++) {
 			uint slot = lookup[*slotp];
 			auto &child_wid = this->children[slot];
 			/* If we have space to give to the spacers, do that. */
 			if (spacer_space > 0 && slot > 0 && slot < this->children.size() - 1) {
 				const auto &possible_spacer = this->children[slot + (rtl ? 1 : -1)];
 				if (possible_spacer != nullptr && possible_spacer->type == NWID_SPACER) {
-					uint add = spacer_space / (spacer_count - spacer_i);
+					int add = spacer_space / (spacer_count - spacer_i);
 					position += add;
 					spacer_space -= add;
 					spacer_i++;
@@ -1509,15 +1509,15 @@ public:
 	 * @param spacer_count output of the number of spacers.
 	 * @return the button configuration.
 	 */
-	virtual const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const = 0;
+	virtual const WidgetID *GetButtonArrangement(int &width, int &arrangable_count, int &button_count, int &spacer_count) const = 0;
 };
 
 /** Container for the 'normal' main toolbar */
 class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
-	const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(int &width, int &arrangable_count, int &button_count, int &spacer_count) const override
 	{
-		static const uint SMALLEST_ARRANGEMENT = 14;
-		static const uint BIGGEST_ARRANGEMENT  = 20;
+		static constexpr int SMALLEST_ARRANGEMENT = 14;
+		static constexpr int BIGGEST_ARRANGEMENT  = 20;
 
 		/* The number of buttons of each row of the toolbar should match the number of items which we want to be visible.
 		 * The total number of buttons should be equal to arrangable_count * 2.
@@ -1818,7 +1818,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 		};
 
 		/* If at least BIGGEST_ARRANGEMENT fit, just spread all the buttons nicely */
-		uint full_buttons = std::max(CeilDiv(width, this->smallest_x), SMALLEST_ARRANGEMENT);
+		int full_buttons = std::max<int>(CeilDiv(width, this->smallest_x), SMALLEST_ARRANGEMENT);
 		if (full_buttons > BIGGEST_ARRANGEMENT) {
 			button_count = arrangable_count = lengthof(arrange_all);
 			spacer_count = this->spacers;
@@ -1836,7 +1836,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 
 /** Container for the scenario editor's toolbar */
 class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
-	std::array<uint, 2> panel_widths{}; ///< The width of the two panels (the text panel and date panel)
+	std::array<int, 2> panel_widths{}; ///< The width of the two panels (the text panel and date panel)
 
 	void SetupSmallestSize(Window *w) override
 	{
@@ -1854,7 +1854,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		}
 	}
 
-	const WidgetID *GetButtonArrangement(uint &width, uint &arrangable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(int &width, int &arrangable_count, int &button_count, int &spacer_count) const override
 	{
 		static const WidgetID arrange_all[] = {
 			WID_TE_PAUSE,
@@ -1924,20 +1924,20 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 		};
 
 		/* If we can place all buttons *and* the panels, show them. */
-		size_t min_full_width = (lengthof(arrange_all) - std::size(this->panel_widths)) * this->smallest_x + this->panel_widths[0] + this->panel_widths[1];
+		int min_full_width = static_cast<int>(std::size(arrange_all) - std::size(this->panel_widths)) * this->smallest_x + this->panel_widths[0] + this->panel_widths[1];
 		if (width >= min_full_width) {
 			width -= this->panel_widths[0] + this->panel_widths[1];
-			arrangable_count = lengthof(arrange_all);
+			arrangable_count = static_cast<int>(std::size(arrange_all));
 			button_count = arrangable_count - 2;
 			spacer_count = this->spacers;
 			return arrange_all;
 		}
 
 		/* Otherwise don't show the date panel and if we can't fit half the buttons and the panels anymore, split the toolbar in two */
-		size_t min_small_width = (lengthof(arrange_switch) - std::size(this->panel_widths)) * this->smallest_x / 2 + this->panel_widths[1];
+		int min_small_width = static_cast<int>(std::size(arrange_switch) - std::size(this->panel_widths)) * this->smallest_x / 2 + this->panel_widths[1];
 		if (width > min_small_width) {
 			width -= this->panel_widths[1];
-			arrangable_count = lengthof(arrange_nopanel);
+			arrangable_count = static_cast<int>(std::size(arrange_nopanel));
 			button_count = arrangable_count - 1;
 			spacer_count = this->spacers - 1;
 			return arrange_nopanel;
@@ -1945,7 +1945,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 
 		/* Split toolbar */
 		width -= this->panel_widths[1];
-		arrangable_count = lengthof(arrange_switch) / 2;
+		arrangable_count = static_cast<int>(std::size(arrange_switch)) / 2;
 		button_count = arrangable_count - 1;
 		spacer_count = 0;
 		return arrange_switch + ((_toolbar_mode == TB_LOWER) ? arrangable_count : 0);

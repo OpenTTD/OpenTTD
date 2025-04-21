@@ -638,12 +638,12 @@ protected:
 	static bool show_ind_names;   ///< Display industry names in the smallmap.
 	static int map_height_limit;  ///< Currently used/cached map height limit.
 
-	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #WID_SM_LEGEND widget for the #SMT_INDUSTRY legend.
+	static constexpr int INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #WID_SM_LEGEND widget for the #SMT_INDUSTRY legend.
 
-	uint min_number_of_columns = 0; ///< Minimal number of columns in legends.
-	uint min_number_of_fixed_rows = 0; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
-	uint column_width = 0; ///< Width of a column in the #WID_SM_LEGEND widget.
-	uint legend_width = 0; ///< Width of legend 'blob'.
+	int min_number_of_columns = 0; ///< Minimal number of columns in legends.
+	int min_number_of_fixed_rows = 0; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
+	int column_width = 0; ///< Width of a column in the #WID_SM_LEGEND widget.
+	int legend_width = 0; ///< Width of legend 'blob'.
 
 	int32_t scroll_x = 0; ///< Horizontal world coordinate of the base tile left of the top-left corner of the smallmap display.
 	int32_t scroll_y = 0; ///< Vertical world coordinate of the base tile left of the top-left corner of the smallmap display.
@@ -694,7 +694,7 @@ protected:
 	 * Compute minimal required width of the legends.
 	 * @return Minimally needed width for displaying the smallmap legends in pixels.
 	 */
-	inline uint GetMinLegendWidth() const
+	inline int GetMinLegendWidth() const
 	{
 		return WidgetDimensions::scaled.framerect.left + this->min_number_of_columns * this->column_width;
 	}
@@ -703,7 +703,7 @@ protected:
 	 * Return number of columns that can be displayed in \a width pixels.
 	 * @return Number of columns to display.
 	 */
-	inline uint GetNumberColumnsLegend(uint width) const
+	inline int GetNumberColumnsLegend(int width) const
 	{
 		return width / this->column_width;
 	}
@@ -713,7 +713,7 @@ protected:
 	 * @param num_columns Number of columns.
 	 * @return Needed height for displaying the smallmap legends in pixels.
 	 */
-	inline uint GetLegendHeight(uint num_columns) const
+	inline int GetLegendHeight(int num_columns) const
 	{
 		return WidgetDimensions::scaled.framerect.Vertical() +
 				this->GetNumberRowsLegend(num_columns) * GetCharacterHeight(FS_SMALL);
@@ -772,11 +772,11 @@ protected:
 	 * @param columns Number of columns in the legend.
 	 * @return Number of rows needed for everything to fit in.
 	 */
-	uint GetNumberRowsLegend(uint columns) const
+	int GetNumberRowsLegend(int columns) const
 	{
 		/* Reserve one column for link colours */
-		uint num_rows_linkstats = CeilDiv(_smallmap_cargo_count, columns - 1);
-		uint num_rows_others = CeilDiv(std::max(_smallmap_industry_count, _smallmap_company_count), columns);
+		int num_rows_linkstats = CeilDiv(_smallmap_cargo_count, columns - 1);
+		int num_rows_others = CeilDiv(std::max(_smallmap_industry_count, _smallmap_company_count), columns);
 		return std::max({this->min_number_of_fixed_rows, num_rows_linkstats, num_rows_others});
 	}
 
@@ -907,14 +907,14 @@ protected:
 	 * @param blitter current blitter
 	 * @note If pixel position is below \c 0, skip drawing.
 	 */
-	void DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter) const
+	void DrawSmallMapColumn(void *dst, int xc, int yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter) const
 	{
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
-		uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
+		int min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
 
 		do {
 			/* Check if the tile (xc,yc) is within the map range */
-			if (xc >= Map::MaxX() || yc >= Map::MaxY()) continue;
+			if (!IsInsideMM(xc, 0, Map::MaxX()) || !IsInsideMM(yc, 0, Map::MaxY())) continue;
 
 			/* Check if the dst pointer points to a pixel inside the screen buffer */
 			if (dst < _screen.dst_ptr) continue;
@@ -1401,15 +1401,15 @@ protected:
 	int GetPositionOnLegend(Point pt)
 	{
 		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND);
-		uint line = (pt.y - wi->pos_y - WidgetDimensions::scaled.framerect.top) / GetCharacterHeight(FS_SMALL);
-		uint columns = this->GetNumberColumnsLegend(wi->current_x);
-		uint number_of_rows = this->GetNumberRowsLegend(columns);
+		int line = (pt.y - wi->pos_y - WidgetDimensions::scaled.framerect.top) / GetCharacterHeight(FS_SMALL);
+		int columns = this->GetNumberColumnsLegend(wi->current_x);
+		int number_of_rows = this->GetNumberRowsLegend(columns);
 		if (line >= number_of_rows) return -1;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		int x = pt.x - wi->pos_x;
 		if (rtl) x = wi->current_x - x;
-		uint column = (x - WidgetDimensions::scaled.framerect.left) / this->column_width;
+		int column = (x - WidgetDimensions::scaled.framerect.left) / this->column_width;
 
 		return (column * number_of_rows) + line;
 	}
@@ -1483,7 +1483,7 @@ public:
 		int sub;
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 		Point sxy = this->ComputeScroll(viewport_center.x / (int)TILE_SIZE, viewport_center.y / (int)TILE_SIZE,
-				std::max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
+				std::max(0, wid->current_x / 2 - 2), wid->current_y / 2, &sub);
 		this->SetNewScroll(sxy.x, sxy.y, sub);
 		this->SetDirty();
 	}
@@ -1525,12 +1525,12 @@ public:
 
 	void OnInit() override
 	{
-		uint min_width = 0;
+		int min_width = 0;
 		this->min_number_of_columns = INDUSTRY_MIN_NUMBER_OF_COLUMNS;
 		this->min_number_of_fixed_rows = lengthof(_linkstat_colours_in_legenda);
 		for (uint i = 0; i < lengthof(_legend_table); i++) {
-			uint height = 0;
-			uint num_columns = 1;
+			int height = 0;
+			int num_columns = 1;
 			for (const LegendAndColour *tbl = _legend_table[i]; !tbl->end; ++tbl) {
 				std::string str;
 				if (i == SMT_INDUSTRY) {
@@ -1607,11 +1607,11 @@ public:
 			}
 
 			case WID_SM_LEGEND: {
-				uint columns = this->GetNumberColumnsLegend(r.Width());
-				uint number_of_rows = this->GetNumberRowsLegend(columns);
+				int columns = this->GetNumberColumnsLegend(r.Width());
+				int number_of_rows = this->GetNumberRowsLegend(columns);
 				bool rtl = _current_text_dir == TD_RTL;
-				uint i = 0; // Row counter for industry legend.
-				uint row_height = GetCharacterHeight(FS_SMALL);
+				int i = 0; // Row counter for industry legend.
+				int row_height = GetCharacterHeight(FS_SMALL);
 				int padding = ScaleGUITrad(1);
 
 				Rect origin = r.WithWidth(this->column_width, rtl).Shrink(WidgetDimensions::scaled.framerect).WithHeight(row_height);
@@ -1637,7 +1637,7 @@ public:
 					if (tbl->col_break || ((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER || this->map_type == SMT_LINKSTATS) && i++ >= number_of_rows)) {
 						/* Column break needed, continue at top, COLUMN_WIDTH pixels
 						 * (one "row") to the right. */
-						int x = rtl ? -(int)this->column_width : this->column_width;
+						int x = rtl ? -this->column_width : this->column_width;
 						int y = origin.top - text.top;
 						text = text.Translate(x, y);
 						icon = icon.Translate(x, y);
@@ -1715,7 +1715,7 @@ public:
 			case WID_SM_ZOOM_IN:
 			case WID_SM_ZOOM_OUT: {
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
-				Point zoom_pt = { (int)wid->current_x / 2, (int)wid->current_y / 2};
+				Point zoom_pt = {wid->current_x / 2, wid->current_y / 2};
 				this->SetZoomLevel((widget == WID_SM_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &zoom_pt);
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				break;
@@ -1938,7 +1938,7 @@ public:
 		this->ApplyAspectRatio();
 	}
 
-	void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) override
+	void AssignSizePosition(SizingType sizing, int x, int y, int given_width, int given_height, bool rtl) override
 	{
 		this->pos_x = x;
 		this->pos_y = y;
@@ -1957,8 +1957,8 @@ public:
 			bar->AssignSizePosition(ST_SMALLEST, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
 		}
 
-		uint bar_height = std::max(bar->smallest_y, this->smallmap_window->GetLegendHeight(this->smallmap_window->GetNumberColumnsLegend(given_width - bar->smallest_x)));
-		uint display_height = given_height - bar_height;
+		int bar_height = std::max(bar->smallest_y, this->smallmap_window->GetLegendHeight(this->smallmap_window->GetNumberColumnsLegend(given_width - bar->smallest_x)));
+		int display_height = given_height - bar_height;
 		display->AssignSizePosition(ST_RESIZE, x, y, given_width, display_height, rtl);
 		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);
 	}

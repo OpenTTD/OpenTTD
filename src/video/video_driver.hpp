@@ -32,8 +32,8 @@ extern bool _video_vsync;
 
 /** The base of all video drivers. */
 class VideoDriver : public Driver {
-	const uint DEFAULT_WINDOW_WIDTH = 640u;  ///< Default window width.
-	const uint DEFAULT_WINDOW_HEIGHT = 480u; ///< Default window height.
+	const int DEFAULT_WINDOW_WIDTH = 640; ///< Default window width.
+	const int DEFAULT_WINDOW_HEIGHT = 480; ///< Default window height.
 
 public:
 	VideoDriver(bool uses_hardware_acceleration = false) : fast_forward_key_pressed(false), fast_forward_via_key(false), is_game_threaded(true), uses_hardware_acceleration(uses_hardware_acceleration) {}

@@ -92,15 +92,15 @@ public:
 
 		size.height = WidgetDimensions::scaled.frametext.Vertical();
 		for (size_t i = 0; i < this->landinfo_data.size(); i++) {
-			uint width = GetStringBoundingBox(this->landinfo_data[i]).width + WidgetDimensions::scaled.frametext.Horizontal();
+			int width = GetStringBoundingBox(this->landinfo_data[i]).width + WidgetDimensions::scaled.frametext.Horizontal();
 			size.width = std::max(size.width, width);
 
 			size.height += GetCharacterHeight(FS_NORMAL) + (i == 0 ? WidgetDimensions::scaled.vsep_wide : WidgetDimensions::scaled.vsep_normal);
 		}
 
 		if (!this->cargo_acceptance.empty()) {
-			uint width = GetStringBoundingBox(this->cargo_acceptance).width + WidgetDimensions::scaled.frametext.Horizontal();
-			size.width = std::max(size.width, std::min(static_cast<uint>(ScaleGUITrad(300)), width));
+			int width = GetStringBoundingBox(this->cargo_acceptance).width + WidgetDimensions::scaled.frametext.Horizontal();
+			size.width = std::max(size.width, std::min(ScaleGUITrad(300), width));
 			size.height += GetStringHeight(GetString(STR_JUST_RAW_STRING, this->cargo_acceptance), size.width - WidgetDimensions::scaled.frametext.Horizontal());
 		}
 	}
@@ -638,7 +638,7 @@ struct TooltipsWindow : public Window
 		if (widget != WID_TT_BACKGROUND) return;
 
 		auto str = this->text.GetDecodedString();
-		size.width  = std::min<uint>(GetStringBoundingBox(str).width, ScaleGUITrad(194));
+		size.width  = std::min(GetStringBoundingBox(str).width, ScaleGUITrad(194));
 		size.height = GetStringHeight(str, size.width);
 
 		/* Increase slightly to have some space around the box. */

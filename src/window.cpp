@@ -2030,14 +2030,14 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, boo
 			 * the resolution clamp it in such a manner that it stays within the bounds. */
 			int new_right  = w->left + w->width  + delta_x;
 			int new_bottom = w->top  + w->height + delta_y;
-			if (new_right  >= (int)_screen.width)  delta_x -= Ceil(new_right  - _screen.width,  std::max(1U, w->nested_root->resize_x));
-			if (new_bottom >= (int)_screen.height) delta_y -= Ceil(new_bottom - _screen.height, std::max(1U, w->nested_root->resize_y));
+			if (new_right  >= _screen.width)  delta_x -= Ceil(new_right  - _screen.width,  std::max(1, w->nested_root->resize_x));
+			if (new_bottom >= _screen.height) delta_y -= Ceil(new_bottom - _screen.height, std::max(1, w->nested_root->resize_y));
 		}
 
 		w->SetDirty();
 
-		uint new_xinc = std::max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
-		uint new_yinc = std::max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
+		int new_xinc = std::max(0, (w->nested_root->resize_x == 0) ? 0 : (w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
+		int new_yinc = std::max(0, (w->nested_root->resize_y == 0) ? 0 : (w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
 		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
 		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
@@ -3459,12 +3459,12 @@ void RelocateAllWindows(int neww, int newh)
 
 	/* Reposition toolbar then status bar before other all windows. */
 	if (Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0); wt != nullptr) {
-		ResizeWindow(wt, std::min<uint>(neww, _toolbar_width) - wt->width, 0, false);
+		ResizeWindow(wt, std::min(neww, _toolbar_width) - wt->width, 0, false);
 		wt->left = PositionMainToolbar(wt);
 	}
 
 	if (Window *ws = FindWindowById(WC_STATUS_BAR, 0); ws != nullptr) {
-		ResizeWindow(ws, std::min<uint>(neww, _toolbar_width) - ws->width, 0, false);
+		ResizeWindow(ws, std::min(neww, _toolbar_width) - ws->width, 0, false);
 		ws->top = newh - ws->height;
 		ws->left = PositionStatusbar(ws);
 	}
@@ -3491,7 +3491,7 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_SEND_NETWORK_MSG:
-				ResizeWindow(w, std::min<uint>(neww, _toolbar_width) - w->width, 0, false);
+				ResizeWindow(w, std::min(neww, _toolbar_width) - w->width, 0, false);
 
 				top = newh - w->height - FindWindowById(WC_STATUS_BAR, 0)->height;
 				left = PositionNetworkChatWindow(w);

@@ -152,13 +152,13 @@ struct DropdownWindow : Window {
 	 * @param list Dimensions of the list itself, without padding or cropping.
 	 * @param available_height Available height to fit list within.
 	 */
-	void FitAvailableHeight(Dimension &desired, const Dimension &list, uint available_height)
+	void FitAvailableHeight(Dimension &desired, const Dimension &list, int available_height)
 	{
 		if (desired.height < available_height) return;
 
 		/* If the dropdown doesn't fully fit, we a need a dropdown. */
-		uint avg_height = list.height / (uint)this->list.size();
-		uint rows = std::max((available_height - WidgetDimensions::scaled.dropdownlist.Vertical()) / avg_height, 1U);
+		int avg_height = list.height / static_cast<int>(this->list.size());
+		int rows = std::max((available_height - WidgetDimensions::scaled.dropdownlist.Vertical()) / avg_height, 1);
 
 		desired.width = std::max(list.width, desired.width - NWidgetScrollbar::GetVerticalDimension().width);
 		desired.height = rows * avg_height + WidgetDimensions::scaled.dropdownlist.Vertical();
@@ -180,11 +180,11 @@ struct DropdownWindow : Window {
 		widget_dim.height += WidgetDimensions::scaled.dropdownlist.Vertical();
 
 		/* Width should match at least the width of the parent widget. */
-		widget_dim.width = std::max<uint>(widget_dim.width, button_rect.Width());
+		widget_dim.width = std::max(widget_dim.width, button_rect.Width());
 
 		/* Available height below (or above, if the dropdown is placed above the widget). */
-		uint available_height_below = std::max(GetMainViewBottom() - button_rect.bottom - 1, 0);
-		uint available_height_above = std::max(button_rect.top - 1 - GetMainViewTop(), 0);
+		int available_height_below = std::max(GetMainViewBottom() - button_rect.bottom - 1, 0);
+		int available_height_above = std::max(button_rect.top - 1 - GetMainViewTop(), 0);
 
 		/* Is it better to place the dropdown above the widget? */
 		if (widget_dim.height > available_height_below && available_height_above > available_height_below) {
@@ -404,7 +404,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, WidgetID b
  *                      list regardless of where the cursor is.
  * @param persist  Set if this dropdown should stay open after an option is selected.
  */
-void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, uint width, bool instant_close, bool persist)
+void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID button, int width, bool instant_close, bool persist)
 {
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */
@@ -441,7 +441,7 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, WidgetID but
  * @param hidden_mask   Bitmask for hidden items (items with their bit set are not copied to the dropdown list).
  * @param width         Minimum width of the dropdown menu.
  */
-void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width)
+void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, int width)
 {
 	DropDownList list;
 

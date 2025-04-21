@@ -148,8 +148,8 @@ static void GetVideoModes()
 	GFX_MODE *modes = mode_list->mode;
 
 	for (int i = 0; modes[i].bpp != 0; i++) {
-		uint w = modes[i].width;
-		uint h = modes[i].height;
+		int w = modes[i].width;
+		int h = modes[i].height;
 		if (w < 640 || h < 480) continue;
 		if (std::ranges::find(_resolutions, Dimension(w, h)) != _resolutions.end()) continue;
 		_resolutions.emplace_back(w, h);
@@ -160,7 +160,7 @@ static void GetVideoModes()
 	destroy_gfx_mode_list(mode_list);
 }
 
-static void GetAvailableVideoMode(uint *w, uint *h)
+static void GetAvailableVideoMode(int *w, int *h)
 {
 	/* No video modes, so just try it and see where it ends */
 	if (_resolutions.empty()) return;
@@ -170,9 +170,9 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 
 	/* use the closest possible resolution */
 	uint best = 0;
-	uint delta = Delta(_resolutions[0].width, *w) * Delta(_resolutions[0].height, *h);
+	int delta = Delta(_resolutions[0].width, *w) * Delta(_resolutions[0].height, *h);
 	for (uint i = 1; i != _resolutions.size(); ++i) {
-		uint newdelta = Delta(_resolutions[i].width, *w) * Delta(_resolutions[i].height, *h);
+		int newdelta = Delta(_resolutions[i].width, *w) * Delta(_resolutions[i].height, *h);
 		if (newdelta < delta) {
 			best = i;
 			delta = newdelta;
@@ -182,7 +182,7 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 	*h = _resolutions[best].height;
 }
 
-static bool CreateMainSurface(uint w, uint h)
+static bool CreateMainSurface(int w, int h)
 {
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	if (bpp == 0) UserError("Can't use a blitter that blits 0 bpp for normal visuals");
