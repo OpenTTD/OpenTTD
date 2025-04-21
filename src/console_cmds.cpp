@@ -2329,7 +2329,7 @@ static bool ConListSettings([[maybe_unused]] uint8_t argc, [[maybe_unused]] char
 
 	if (argc > 2) return false;
 
-	IConsoleListSettings((argc == 2) ? argv[1] : nullptr);
+	IConsoleListSettings((argc == 2) ? argv[1] : std::string_view{});
 	return true;
 }
 

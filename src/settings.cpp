@@ -1909,7 +1909,7 @@ void StringSettingDesc::ChangeValue(const void *object, std::string &&newval) co
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
+void IConsoleSetSetting(std::string_view name, std::string_view value, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	/* Company settings are not in "list_settings", so don't try to modify them. */
@@ -1941,7 +1941,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 	}
 }
 
-void IConsoleSetSetting(const char *name, int value)
+void IConsoleSetSetting(std::string_view name, int value)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	assert(sd != nullptr);
@@ -1953,7 +1953,7 @@ void IConsoleSetSetting(const char *name, int value)
  * @param name  Name of the setting to output its value
  * @param force_newgame force the newgame settings
  */
-void IConsoleGetSetting(const char *name, bool force_newgame)
+void IConsoleGetSetting(std::string_view name, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	/* Company settings are not in "list_settings", so don't try to read them. */
@@ -1976,12 +1976,12 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	}
 }
 
-static void IConsoleListSettingsTable(const SettingTable &table, const char *prefilter)
+static void IConsoleListSettingsTable(const SettingTable &table, std::string_view prefilter)
 {
 	for (auto &desc : table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (prefilter != nullptr && sd->GetName().find(prefilter) == std::string::npos) continue;
+		if (!prefilter.empty() && sd->GetName().find(prefilter) == std::string::npos) continue;
 		IConsolePrint(CC_DEFAULT, "{} = {}", sd->GetName(), sd->FormatValue(&GetGameSettings()));
 	}
 }
@@ -1991,7 +1991,7 @@ static void IConsoleListSettingsTable(const SettingTable &table, const char *pre
  *
  * @param prefilter  If not \c nullptr, only list settings with names that begin with \a prefilter prefix
  */
-void IConsoleListSettings(const char *prefilter)
+void IConsoleListSettings(std::string_view prefilter)
 {
 	IConsolePrint(CC_HELP, "All settings with their current value:");
 
