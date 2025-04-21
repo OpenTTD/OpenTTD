@@ -1058,6 +1058,8 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Check th
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Current driver: {RAW_STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :{BLACK}Interface
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interface size
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Drag slider to set interface size. Ctrl+Drag for continuous adjustment
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Auto-detect size
@@ -1081,7 +1083,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}This ope
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Preview survey result
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Show the survey result of the current running game
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graphics
+STR_GAME_OPTIONS_DISPLAY                                        :{BLACK}Display
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Display refresh rate
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Select the screen refresh rate to use
