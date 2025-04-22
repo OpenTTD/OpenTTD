@@ -668,7 +668,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(int widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index) override
 	{
 		if (widget == WID_STL_SORTDROPBTN) {
 			if (this->stations.SortType() != index) {
