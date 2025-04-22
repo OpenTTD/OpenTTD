@@ -46,6 +46,58 @@ static const Money VEHICLE_PROFIT_THRESHOLD = 10000;        ///< Threshold for a
 template <VehicleType T>
 bool IsValidImageIndex(uint8_t image_index);
 
+/**
+ * Iterate over all vehicles on a tile.
+ * @warning The order is non-deterministic. You have to make sure, that your processing is not order dependant.
+ */
+class VehiclesOnTile {
+public:
+	/**
+	 * Forward iterator
+	 */
+	class Iterator {
+	public:
+		using value_type = Vehicle *;
+		using difference_type = std::ptrdiff_t;
+		using iterator_category = std::forward_iterator_tag;
+		using pointer = void;
+		using reference = void;
+
+		explicit Iterator(TileIndex tile);
+
+		bool operator==(const Iterator &rhs) const { return this->current == rhs.current; }
+		bool operator==(const std::default_sentinel_t &) const { return this->current == nullptr; }
+
+		Vehicle *operator*() const { return this->current; }
+
+		Iterator &operator++()
+		{
+			this->Increment();
+			this->SkipFalseMatches();
+			return *this;
+		}
+
+		Iterator operator++(int)
+		{
+			Iterator result = *this;
+			++*this;
+			return result;
+		}
+	private:
+		TileIndex tile;
+		Vehicle *current;
+
+		void Increment();
+		void SkipFalseMatches();
+	};
+
+	explicit VehiclesOnTile(TileIndex tile) : start(tile) {}
+	Iterator begin() const { return this->start; }
+	std::default_sentinel_t end() const { return std::default_sentinel_t(); }
+private:
+	Iterator start;
+};
+
 typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
