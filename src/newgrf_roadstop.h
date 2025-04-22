@@ -176,7 +176,7 @@ uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t para
 void AnimateRoadStopTile(TileIndex tile);
 uint8_t GetRoadStopTileAnimationSpeed(TileIndex tile);
 void TriggerRoadStopAnimation(BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
-void TriggerRoadStopRandomisation(Station *st, TileIndex tile, StationRandomTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandomTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 
 bool GetIfNewStopsByType(RoadStopType rs, RoadType roadtype);
 bool GetIfClassHasNewStopsByType(const RoadStopClass *roadstopclass, RoadStopType rs, RoadType roadtype);
