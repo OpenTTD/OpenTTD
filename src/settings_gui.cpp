@@ -1879,6 +1879,10 @@ void DrawBoolButton(int x, int y, Colours button_colour, Colours background, boo
 {
 	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
 	DrawFrameRect(r, state ? COLOUR_GREEN : background, state ? FrameFlags{FrameFlag::Lowered} : FrameFlags{FrameFlag::Lowered, FrameFlag::BorderOnly});
+	if (!clickable) {
+		GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(state ? COLOUR_GREEN : background, SHADE_DARKER), FILLRECT_CHECKER);
+	}
+
 	Rect button_rect = r.WithWidth(SETTING_BUTTON_WIDTH / 3, state ^ (_current_text_dir == TD_RTL));
 	DrawFrameRect(button_rect, button_colour, {});
 	if (!clickable) {
