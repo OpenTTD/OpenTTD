@@ -2705,6 +2705,8 @@ static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID
 	MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits, is_protected);
 	UpdateTownRadius(t);
 	UpdateTownGrowthRate(t);
+
+	TriggerHouseAnimation_Built(tile);
 }
 
 /**

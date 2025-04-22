@@ -293,6 +293,9 @@ enum CallbackID : uint16_t {
 	 * for each defined cargo after all NewGRFs are loaded.
 	 */
 	CBID_VEHICLE_CUSTOM_REFIT            = 0x0163, // 15 bit callback
+
+	/** Called for starting the animation for newly built houses. */
+	CBID_HOUSE_ANIMATION_TRIGGER_BUILT   = 0x0164, // 15 bit callback
 };
 
 /**
@@ -352,6 +355,7 @@ enum class HouseCallbackMask : uint8_t {
 	DenyDestruction         = 10, ///< conditional protection
 	DrawFoundations         = 11, ///< decides if default foundations need to be drawn
 	Autoslope               = 12, ///< decides allowance of autosloping
+	AnimationTriggerBuilt   = 13, ///< start animation when house is built
 };
 using HouseCallbackMasks = EnumBitSet<HouseCallbackMask, uint16_t>;
 
