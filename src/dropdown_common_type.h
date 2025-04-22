@@ -34,7 +34,7 @@ public:
 	bool Selectable() const override { return false; }
 	uint Height() const override { return std::max<uint>(GetCharacterHeight(TFs), this->TBase::Height()); }
 
-	void Draw(const Rect &full, const Rect &, bool, Colours bg_colour) const override
+	void Draw(const Rect &full, const Rect &, bool, int, Colours bg_colour) const override
 	{
 		uint8_t c1 = GetColourGradient(bg_colour, SHADE_DARK);
 		uint8_t c2 = GetColourGradient(bg_colour, SHADE_LIGHTEST);
@@ -81,11 +81,11 @@ public:
 		return this->TBase::OnClick(r.Indent(this->dim.width, rtl), pt);
 	}
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), this->string, this->GetColour(sel), SA_CENTER, false, TFs);
-		this->TBase::Draw(full, r.Indent(this->dim.width, rtl), sel, bg_colour);
+		this->TBase::Draw(full, r.Indent(this->dim.width, rtl), sel, click_result, bg_colour);
 	}
 
 	/**
@@ -137,12 +137,12 @@ public:
 		return this->TBase::OnClick(r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), pt);
 	}
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		Rect ir = r.WithWidth(this->dbounds.width, rtl);
 		DrawSprite(this->sprite, this->palette, CentreBounds(ir.left, ir.right, this->dsprite.width), CentreBounds(r.top, r.bottom, this->dsprite.height));
-		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, bg_colour);
+		this->TBase::Draw(full, r.Indent(this->dbounds.width + WidgetDimensions::scaled.hsep_normal, rtl), sel, click_result, bg_colour);
 	}
 };
 
@@ -172,13 +172,13 @@ public:
 		return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
 	}
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
 		if (this->checked) {
 			DrawStringMultiLine(r.WithWidth(this->dim.width, rtl), STR_JUST_CHECKMARK, this->GetColour(sel), SA_CENTER, false, TFs);
 		}
-		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, bg_colour);
+		this->TBase::Draw(full, r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), sel, click_result, bg_colour);
 	}
 };
 
@@ -202,10 +202,10 @@ public:
 		return this->TBase::OnClick(r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), pt);
 	}
 
-	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &full, const Rect &r, bool sel, int click_result, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
-		this->TBase::Draw(full, r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), sel, bg_colour);
+		this->TBase::Draw(full, r.Indent(this->indent * WidgetDimensions::scaled.hsep_indent, rtl), sel, click_result, bg_colour);
 	}
 };
 
