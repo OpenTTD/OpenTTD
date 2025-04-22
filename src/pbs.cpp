@@ -113,8 +113,8 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 		case MP_STATION:
 			if (HasStationRail(tile) && !HasStationReservation(tile)) {
 				SetRailStationReservation(tile, true);
-				if (trigger_stations && IsRailStation(tile)) {
-					auto *st = Station::GetByTile(tile);
+				if (trigger_stations) {
+					auto *st = BaseStation::GetByTile(tile);
 					TriggerStationRandomisation(st, tile, StationRandomTrigger::PathReservation);
 				}
 				MarkTileDirtyByTile(tile); // some GRFs need redraw after reserving track

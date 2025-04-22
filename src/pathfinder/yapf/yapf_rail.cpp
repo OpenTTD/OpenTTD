@@ -110,6 +110,11 @@ private:
 				SetSignalStateByTrackdir(tile, rev_td, SIGNAL_STATE_RED);
 				MarkTileDirtyByTile(tile);
 			}
+
+			if (IsRailWaypointTile(tile)) {
+				auto *st = BaseStation::GetByTile(tile);
+				TriggerStationRandomisation(st, tile, StationRandomTrigger::PathReservation);
+			}
 		}
 
 		return tile != this->res_dest_tile || td != this->res_dest_td;
