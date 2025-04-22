@@ -472,6 +472,35 @@ bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
 }
 
 /**
+ * Iterator constructor.
+ * Find first vehicle on tile.
+ */
+VehiclesOnTile::Iterator::Iterator(TileIndex tile) : tile(tile)
+{
+	int x = GB(TileX(tile), HASH_RES, HASH_BITS);
+	int y = GB(TileY(tile), HASH_RES, HASH_BITS) << HASH_BITS;
+	this->current = _vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
+	this->SkipFalseMatches();
+}
+
+/**
+ * Advance the internal state to the next potential vehicle.
+ * The vehicle may not be on the correct tile though.
+ */
+void VehiclesOnTile::Iterator::Increment()
+{
+	this->current = this->current->hash_tile_next;
+}
+
+/**
+ * Advance the internal state until it reaches a vehicle on the correct tile or the end.
+ */
+void VehiclesOnTile::Iterator::SkipFalseMatches()
+{
+	while (this->current != nullptr && this->current->tile != this->tile) this->Increment();
+}
+
+/**
  * Helper function for FindVehicleOnPos/HasVehicleOnPos.
  * @note Do not call this function directly!
  * @param tile The location on the map
