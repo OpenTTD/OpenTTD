@@ -501,66 +501,6 @@ void VehiclesOnTile::Iterator::SkipFalseMatches()
 }
 
 /**
- * Helper function for FindVehicleOnPos/HasVehicleOnPos.
- * @note Do not call this function directly!
- * @param tile The location on the map
- * @param data Arbitrary data passed to \a proc.
- * @param proc The proc that determines whether a vehicle will be "found".
- * @param find_first Whether to return on the first found or iterate over
- *                   all vehicles
- * @return the best matching or first vehicle (depending on find_first).
- */
-static Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc, bool find_first)
-{
-	int x = GB(TileX(tile), HASH_RES, HASH_BITS);
-	int y = GB(TileY(tile), HASH_RES, HASH_BITS) << HASH_BITS;
-
-	Vehicle *v = _vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
-	for (; v != nullptr; v = v->hash_tile_next) {
-		if (v->tile != tile) continue;
-
-		Vehicle *a = proc(v, data);
-		if (find_first && a != nullptr) return a;
-	}
-
-	return nullptr;
-}
-
-/**
- * Find a vehicle from a specific location. It will call \a proc for ALL vehicles
- * on the tile and YOU must make SURE that the "best one" is stored in the
- * data value and is ALWAYS the same regardless of the order of the vehicles
- * where proc was called on!
- * When you fail to do this properly you create an almost untraceable DESYNC!
- * @note The return value of \a proc will be ignored.
- * @note Use this function when you have the intention that all vehicles
- *       should be iterated over.
- * @param tile The location on the map
- * @param data Arbitrary data passed to \a proc.
- * @param proc The proc that determines whether a vehicle will be "found".
- */
-void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
-{
-	VehicleFromPos(tile, data, proc, false);
-}
-
-/**
- * Callback that returns 'real' vehicles lower or at height \c *(int*)data .
- * @param v Vehicle to examine.
- * @param data Pointer to height data.
- * @return \a v if conditions are met, else \c nullptr.
- */
-static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
-{
-	int z = *(int*)data;
-
-	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return nullptr;
-	if (v->z_pos > z) return nullptr;
-
-	return v;
-}
-
-/**
  * Ensure there is no vehicle at the ground at the given position.
  * @param tile Position to examine.
  * @return Succeeded command (ground is free) or failed command (a vehicle is found).
@@ -573,18 +513,13 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 	 * error message only (which may be different for different machines).
 	 * Such a message does not affect MP synchronisation.
 	 */
-	Vehicle *v = VehicleFromPos(tile, &z, &EnsureNoVehicleProcZ, true);
-	if (v != nullptr) return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	for (const Vehicle *v : VehiclesOnTile(tile)) {
+		if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) continue;
+		if (v->z_pos > z) continue;
+
+		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	}
 	return CommandCost();
-}
-
-/** Procedure called for every vehicle found in tunnel/bridge in the hash map */
-static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
-{
-	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return nullptr;
-	if (v == (const Vehicle *)data) return nullptr;
-
-	return v;
 }
 
 /**
@@ -596,27 +531,18 @@ static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
  */
 CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle *ignore)
 {
-	/* Value v is not safe in MP games, however, it is used to generate a local
-	 * error message only (which may be different for different machines).
-	 * Such a message does not affect MP synchronisation.
-	 */
-	Vehicle *v = VehicleFromPos(tile, const_cast<Vehicle *>(ignore), &GetVehicleTunnelBridgeProc, true);
-	if (v == nullptr) v = VehicleFromPos(endtile, const_cast<Vehicle *>(ignore), &GetVehicleTunnelBridgeProc, true);
-
-	if (v != nullptr) return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	for (TileIndex t : {tile, endtile}) {
+		/* Value v is not safe in MP games, however, it is used to generate a local
+		 * error message only (which may be different for different machines).
+		 * Such a message does not affect MP synchronisation.
+		 */
+		for (const Vehicle *v : VehiclesOnTile(t)) {
+			if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) continue;
+			if (v == ignore) continue;
+			return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+		}
+	}
 	return CommandCost();
-}
-
-static Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
-{
-	TrackBits rail_bits = *(TrackBits *)data;
-
-	if (v->type != VEH_TRAIN) return nullptr;
-
-	Train *t = Train::From(v);
-	if ((t->track != rail_bits) && !TracksOverlap(t->track | rail_bits)) return nullptr;
-
-	return v;
 }
 
 /**
@@ -633,8 +559,14 @@ CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
 	 * error message only (which may be different for different machines).
 	 * Such a message does not affect MP synchronisation.
 	 */
-	Vehicle *v = VehicleFromPos(tile, &track_bits, &EnsureNoTrainOnTrackProc, true);
-	if (v != nullptr) return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	for (const Vehicle *v : VehiclesOnTile(tile)) {
+		if (v->type != VEH_TRAIN) continue;
+
+		const Train *t = Train::From(v);
+		if ((t->track != track_bits) && !TracksOverlap(t->track | track_bits)) continue;
+
+		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	}
 	return CommandCost();
 }
 

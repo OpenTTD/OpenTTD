@@ -2370,17 +2370,6 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlags flags, int 
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
-/** Update power of road vehicle under which is the roadtype being converted */
-static Vehicle *UpdateRoadVehPowerProc(Vehicle *v, void *data)
-{
-	if (v->type != VEH_ROAD) return nullptr;
-
-	RoadVehicleList *affected_rvs = static_cast<RoadVehicleList*>(data);
-	include(*affected_rvs, RoadVehicle::From(v)->First());
-
-	return nullptr;
-}
-
 /**
  * Checks the tile and returns whether the current player is allowed to convert the roadtype to another roadtype without taking ownership
  * @param owner the tile owner.
@@ -2538,7 +2527,9 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				MarkTileDirtyByTile(tile);
 
 				/* update power of train on this tile */
-				FindVehicleOnPos(tile, &affected_rvs, &UpdateRoadVehPowerProc);
+				for (Vehicle *v : VehiclesOnTile(tile)) {
+					if (v->type == VEH_ROAD) include(affected_rvs, RoadVehicle::From(v)->First());
+				}
 
 				if (IsRoadDepotTile(tile)) {
 					/* Update build vehicle window related to this depot */
@@ -2595,8 +2586,12 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				SetRoadType(tile,    rtt, to_type);
 				SetRoadType(endtile, rtt, to_type);
 
-				FindVehicleOnPos(tile, &affected_rvs, &UpdateRoadVehPowerProc);
-				FindVehicleOnPos(endtile, &affected_rvs, &UpdateRoadVehPowerProc);
+				for (Vehicle *v : VehiclesOnTile(tile)) {
+					if (v->type == VEH_ROAD) include(affected_rvs, RoadVehicle::From(v)->First());
+				}
+				for (Vehicle *v : VehiclesOnTile(endtile)) {
+					if (v->type == VEH_ROAD) include(affected_rvs, RoadVehicle::From(v)->First());
+				}
 
 				if (IsBridge(tile)) {
 					MarkBridgeDirty(tile);

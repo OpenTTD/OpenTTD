@@ -3234,8 +3234,12 @@ static bool CheckTrainCollision(Train *v)
 
 	/* find colliding vehicles */
 	if (v->track == TRACK_BIT_WORMHOLE) {
-		FindVehicleOnPos(v->tile, &tcc, FindTrainCollideEnum);
-		FindVehicleOnPos(GetOtherTunnelBridgeEnd(v->tile), &tcc, FindTrainCollideEnum);
+		for (Vehicle *u : VehiclesOnTile(v->tile)) {
+			FindTrainCollideEnum(u, &tcc);
+		}
+		for (Vehicle *u : VehiclesOnTile(GetOtherTunnelBridgeEnd(v->tile))) {
+			FindTrainCollideEnum(u, &tcc);
+		}
 	} else {
 		FindVehicleOnPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
 	}
@@ -3582,29 +3586,6 @@ reverse_train_direction:
 	return false;
 }
 
-/**
- * Collect trackbits of all crashed train vehicles on a tile
- * @param v Vehicle passed from Find/HasVehicleOnPos()
- * @param data trackdirbits for the result
- * @return nullptr to iterate over all vehicles on the tile.
- */
-static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
-{
-	TrackBits *trackbits = (TrackBits *)data;
-
-	if (v->type == VEH_TRAIN && v->vehstatus.Test(VehState::Crashed)) {
-		TrackBits train_tbits = Train::From(v)->track;
-		if (train_tbits == TRACK_BIT_WORMHOLE) {
-			/* Vehicle is inside a wormhole, v->track contains no useful value then. */
-			*trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(v->tile));
-		} else if (train_tbits != TRACK_BIT_DEPOT) {
-			*trackbits |= train_tbits;
-		}
-	}
-
-	return nullptr;
-}
-
 static bool IsRailStationPlatformOccupied(TileIndex tile)
 {
 	TileIndexDiff delta = TileOffsByAxis(GetRailStationAxis(tile));
@@ -3631,11 +3612,11 @@ static void DeleteLastWagon(Train *v)
 	Train *first = v->First();
 
 	/* Go to the last wagon and delete the link pointing there
-	 * *u is then the one-before-last wagon, and *v the last
+	 * new_last is then the one-before-last wagon, and v the last
 	 * one which will physically be removed */
-	Train *u = v;
-	for (; v->Next() != nullptr; v = v->Next()) u = v;
-	u->SetNext(nullptr);
+	Train *new_last = v;
+	for (; v->Next() != nullptr; v = v->Next()) new_last = v;
+	new_last->SetNext(nullptr);
 
 	if (first != v) {
 		/* Recalculate cached train properties */
@@ -3667,7 +3648,16 @@ static void DeleteLastWagon(Train *v)
 
 		/* If there are still crashed vehicles on the tile, give the track reservation to them */
 		TrackBits remaining_trackbits = TRACK_BIT_NONE;
-		FindVehicleOnPos(tile, &remaining_trackbits, CollectTrackbitsFromCrashedVehiclesEnum);
+		for (const Vehicle *u : VehiclesOnTile(tile)) {
+			if (u->type != VEH_TRAIN || !u->vehstatus.Test(VehState::Crashed)) continue;
+			TrackBits train_tbits = Train::From(u)->track;
+			if (train_tbits == TRACK_BIT_WORMHOLE) {
+				/* Vehicle is inside a wormhole, u->track contains no useful value then. */
+				remaining_trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));
+			} else if (train_tbits != TRACK_BIT_DEPOT) {
+				remaining_trackbits |= train_tbits;
+			}
+		}
 
 		/* It is important that these two are the first in the loop, as reservation cannot deal with every trackbit combination */
 		assert(TRACK_BEGIN == TRACK_X && TRACK_Y == TRACK_BEGIN + 1);

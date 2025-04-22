@@ -1528,17 +1528,6 @@ CommandCost CmdRemoveSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex
 	return CmdSignalTrackHelper(flags, tile, end_tile, track, SIGTYPE_BLOCK, SIG_ELECTRIC, false, true, autofill, false, 1); // bit 5 is remove bit
 }
 
-/** Update power of train under which is the railtype being converted */
-static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
-{
-	if (v->type != VEH_TRAIN) return nullptr;
-
-	TrainList *affected_trains = static_cast<TrainList*>(data);
-	include(*affected_trains, Train::From(v)->First());
-
-	return nullptr;
-}
-
 /**
  * Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
@@ -1640,7 +1629,9 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				SetRailType(tile, totype);
 				MarkTileDirtyByTile(tile);
 				/* update power of train on this tile */
-				FindVehicleOnPos(tile, &affected_trains, &UpdateTrainPowerProc);
+				for (Vehicle *v : VehiclesOnTile(tile)) {
+					if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+				}
 			}
 		}
 
@@ -1717,8 +1708,12 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					SetRailType(tile, totype);
 					SetRailType(endtile, totype);
 
-					FindVehicleOnPos(tile, &affected_trains, &UpdateTrainPowerProc);
-					FindVehicleOnPos(endtile, &affected_trains, &UpdateTrainPowerProc);
+					for (Vehicle *v : VehiclesOnTile(tile)) {
+						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+					}
+					for (Vehicle *v : VehiclesOnTile(endtile)) {
+						if (v->type == VEH_TRAIN) include(affected_trains, Train::From(v)->First());
+					}
 
 					YapfNotifyTrackLayoutChange(tile, track);
 					YapfNotifyTrackLayoutChange(endtile, track);

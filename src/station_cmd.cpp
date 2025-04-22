@@ -2108,24 +2108,6 @@ CommandCost CmdBuildRoadStop(DoCommandFlags flags, TileIndex tile, uint8_t width
 	return cost;
 }
 
-
-static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
-{
-	if (v->type == VEH_ROAD) {
-		/* Okay... we are a road vehicle on a drive through road stop.
-		 * But that road stop has just been removed, so we need to make
-		 * sure we are in a valid state... however, vehicles can also
-		 * turn on road stop tiles, so only clear the 'road stop' state
-		 * bits and only when the state was 'in road stop', otherwise
-		 * we'll end up clearing the turn around bits. */
-		RoadVehicle *rv = RoadVehicle::From(v);
-		if (HasBit(rv->state, RVS_IN_DT_ROAD_STOP)) rv->state &= RVSB_ROAD_STOP_TRACKDIR_MASK;
-	}
-
-	return nullptr;
-}
-
-
 /**
  * Remove a bus station/truck stop
  * @param tile TileIndex been queried
@@ -2159,7 +2141,19 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlags flags, int repl
 	/* don't do the check for drive-through road stops when company bankrupts */
 	if (IsDriveThroughStopTile(tile) && flags.Test(DoCommandFlag::Bankrupt)) {
 		/* remove the 'going through road stop' status from all vehicles on that tile */
-		if (flags.Test(DoCommandFlag::Execute)) FindVehicleOnPos(tile, nullptr, &ClearRoadStopStatusEnum);
+		if (flags.Test(DoCommandFlag::Execute)) {
+			for (Vehicle *v : VehiclesOnTile(tile)) {
+				if (v->type != VEH_ROAD) continue;
+				/* Okay... we are a road vehicle on a drive through road stop.
+				 * But that road stop has just been removed, so we need to make
+				 * sure we are in a valid state... however, vehicles can also
+				 * turn on road stop tiles, so only clear the 'road stop' state
+				 * bits and only when the state was 'in road stop', otherwise
+				 * we'll end up clearing the turn around bits. */
+				RoadVehicle *rv = RoadVehicle::From(v);
+				if (HasBit(rv->state, RVS_IN_DT_ROAD_STOP)) rv->state &= RVSB_ROAD_STOP_TRACKDIR_MASK;
+			}
+		}
 	} else {
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Failed()) return ret;

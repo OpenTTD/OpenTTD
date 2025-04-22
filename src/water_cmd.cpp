@@ -1012,12 +1012,11 @@ static void FloodVehicle(Vehicle *v)
 /**
  * Flood a vehicle if we are allowed to flood it, i.e. when it is on the ground.
  * @param v    The vehicle to test for flooding.
- * @param data The z of level to flood.
- * @return nullptr as we always want to remove everything.
+ * @param z    The z of level to flood.
  */
-static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
+static void FloodVehicleProc(Vehicle *v, int z)
 {
-	if (v->vehstatus.Test(VehState::Crashed)) return nullptr;
+	if (v->vehstatus.Test(VehState::Crashed)) return;
 
 	switch (v->type) {
 		default: break;
@@ -1038,14 +1037,18 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 
 		case VEH_TRAIN:
 		case VEH_ROAD: {
-			int z = *(int*)data;
 			if (v->z_pos > z) break;
 			FloodVehicle(v->First());
 			break;
 		}
 	}
+}
 
-	return nullptr;
+static void FloodVehiclesOnTile(TileIndex tile, int z)
+{
+	for (Vehicle *v : VehiclesOnTile(tile)) {
+		FloodVehicleProc(v, z);
+	}
 }
 
 /**
@@ -1055,12 +1058,10 @@ static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
  */
 static void FloodVehicles(TileIndex tile)
 {
-	int z = 0;
-
 	if (IsAirportTile(tile)) {
 		const Station *st = Station::GetByTile(tile);
 		for (TileIndex airport_tile : st->airport) {
-			if (st->TileBelongsToAirport(airport_tile)) FindVehicleOnPos(airport_tile, &z, &FloodVehicleProc);
+			if (st->TileBelongsToAirport(airport_tile)) FloodVehiclesOnTile(airport_tile, 0);
 		}
 
 		/* No vehicle could be flooded on this airport anymore */
@@ -1068,15 +1069,15 @@ static void FloodVehicles(TileIndex tile)
 	}
 
 	if (!IsBridgeTile(tile)) {
-		FindVehicleOnPos(tile, &z, &FloodVehicleProc);
+		FloodVehiclesOnTile(tile, 0);
 		return;
 	}
 
 	TileIndex end = GetOtherBridgeEnd(tile);
-	z = GetBridgePixelHeight(tile);
+	int z = GetBridgePixelHeight(tile);
 
-	FindVehicleOnPos(tile, &z, &FloodVehicleProc);
-	FindVehicleOnPos(end, &z, &FloodVehicleProc);
+	FloodVehiclesOnTile(tile, z);
+	FloodVehiclesOnTile(end, z);
 }
 
 /**
