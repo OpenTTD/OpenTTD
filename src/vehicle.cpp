@@ -545,21 +545,6 @@ void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 }
 
 /**
- * Checks whether a vehicle is on a specific location. It will call \a proc for
- * vehicles until it returns non-nullptr.
- * @note Use #FindVehicleOnPos when you have the intention that all vehicles
- *       should be iterated over.
- * @param tile The location on the map
- * @param data Arbitrary data passed to \a proc.
- * @param proc The \a proc that determines whether a vehicle will be "found".
- * @return True if proc returned non-nullptr.
- */
-bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
-{
-	return VehicleFromPos(tile, data, proc, true) != nullptr;
-}
-
-/**
  * Callback that returns 'real' vehicles lower or at height \c *(int*)data .
  * @param v Vehicle to examine.
  * @param data Pointer to height data.

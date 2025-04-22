@@ -3032,14 +3032,6 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, DoCommandFlags flags,
 	return  cost;
 }
 
-/**
- * Test-procedure for HasVehicleOnPos to check for a ship.
- */
-static Vehicle *EnsureNoShipProc(Vehicle *v, void *)
-{
-	return v->type == VEH_SHIP ? v : nullptr;
-}
-
 static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	auto [tileh_old, z_old] = GetTileSlopeZ(tile);
@@ -3049,7 +3041,9 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlags flags, int
 		bool was_water = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh_old));
 
 		/* Allow clearing the water only if there is no ship */
-		if (was_water && HasVehicleOnPos(tile, nullptr, &EnsureNoShipProc)) return CommandCost(STR_ERROR_SHIP_IN_THE_WAY);
+		if (was_water && HasVehicleOnTile(tile, [](const Vehicle *v) {
+				return v->type == VEH_SHIP;
+			})) return CommandCost(STR_ERROR_SHIP_IN_THE_WAY);
 
 		/* First test autoslope. However if it succeeds we still have to test the rest, because non-autoslope terraforming is cheaper. */
 		CommandCost autoslope_result = TestAutoslopeOnRailTile(tile, flags, z_old, tileh_old, z_new, tileh_new, rail_bits);

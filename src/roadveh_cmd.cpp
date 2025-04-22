@@ -767,13 +767,6 @@ struct OvertakeData {
 	Trackdir trackdir;
 };
 
-static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
-{
-	const OvertakeData *od = (OvertakeData*)data;
-
-	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v) ? v : nullptr;
-}
-
 /**
  * Check if overtaking is possible on a piece of track
  *
@@ -792,7 +785,9 @@ static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 	if (!HasBit(trackdirbits, od->trackdir) || (trackbits & ~TRACK_BIT_CROSS) || (red_signals != TRACKDIR_BIT_NONE)) return true;
 
 	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
-	return HasVehicleOnPos(od->tile, od, EnumFindVehBlockingOvertake);
+	return HasVehicleOnTile(od->tile, [&](const Vehicle *v) {
+		return v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v;
+	});
 }
 
 static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)

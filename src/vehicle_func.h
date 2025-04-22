@@ -98,13 +98,25 @@ private:
 	Iterator start;
 };
 
+/**
+ * Loop over vehicles on a tile, and check whether a predicate is true for any of them.
+ * The predicate must have the signature: bool Predicate(const Vehicle *);
+ */
+template <class UnaryPred>
+bool HasVehicleOnTile(TileIndex tile, UnaryPred &&predicate)
+{
+	for (const auto *v : VehiclesOnTile(tile)) {
+		if (predicate(v)) return true;
+	}
+	return false;
+}
+
 typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
 void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
-bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 uint8_t CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
