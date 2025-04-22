@@ -445,7 +445,7 @@ STR_GOTO_ORDER_VIEW_TOOLTIP                                     :{BLACK}A járm�
 ###length 31
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék szüneteltetése
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Játék gyorsítása
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Alapbeállítások és beállítások
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Beállítások
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése vagy játék elhagyása, kilépés
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép, extra látkép, rakományáramlás és feliratlista megnyitása
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Településlista megnyitása
@@ -508,10 +508,10 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Házak elhelyez
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Játékbeállítások
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Beállítások
-STR_SETTINGS_MENU_AI_SETTINGS                                   :MI Beállítások
-STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Játékszkript beállítások
+STR_SETTINGS_MENU_AI_SETTINGS                                   :MI-beállítások
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Játékszkript-beállítások
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF beállítások
-STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Homokozó mód beállítások
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Homokozó mód beállításai
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Átlátszósági beállítások
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Városnevek mutatása
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Állomásnevek mutatása
@@ -1261,10 +1261,10 @@ STR_SUBSIDY_X3                                                  :3x
 STR_SUBSIDY_X4                                                  :4x
 
 ###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Mérsékelt táj
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Mérsékelt égövi táj
 STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Szubarktikus táj
 STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Szubtrópusi táj
-STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Játékvilág táj
+STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Játékvilági táj
 
 ###length 7
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Nagyon sík
@@ -1312,11 +1312,11 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Beállítosok a
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Lista szűkítése a beállítások szerint
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Minden beállítástípus
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliens beállítások (nincs mentésben tárolva; minden játékot érintenek)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Játék beállítások (mentésben tárolva; csak az új játékokat érintik)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Játék beállítások (mentésben tárolva; csak a jelenlegi játékot érintik)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Vállalat beállítások (mentésben tárolva; csak az új játékokat érintik)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Vállalat beállítások (mentésben tárolva; csak a jelenlegi vállalatot érintik)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliensbeállítások (nincs mentésben tárolva; az összes játékot érinti)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Játékbeállítások (mentésben tárolva; csak az új játékokat érinti)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Játékbeállítások (mentésben tárolva; csak a jelenlegi játékot érinti)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Vállalatbeállítások (mentésben tárolva; csak az új játékokat érinti)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Vállalatbeállítások (mentésben tárolva; csak a jelenlegi vállalatot érinti)
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nincs találat -
 ###length 3
@@ -2084,7 +2084,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nem zárolt abl
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Nem zárolt ablakok száma mielőtt a régi ablakok bezárásra kerülnek, hogy legyen hely az új ablakok számára
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :kikapcsolva
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Kikapcsolva
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :A nagyítás maximális mértéke: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximális nagyítás mértéke. A nagyobb nagyítási mérték több memóriát igényel
@@ -2268,10 +2268,10 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Alapbeá
 STR_INTRO_HIGHSCORE                                             :{BLACK}Rekord tábla
 STR_INTRO_HELP                                                  :{BLACK}Súgó és útmutatók
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Beállítások
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
-STR_INTRO_AI_SETTINGS                                           :{BLACK}MI Beállítások
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Játékszkript beállítások
+STR_INTRO_AI_SETTINGS                                           :{BLACK}MI-beállítások
+STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Játékszkript-beállítások
 STR_INTRO_QUIT                                                  :{BLACK}Kilépés
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Új játék kezdése. Ctrl+kattintással átugorhatod a térkép beállításokat
@@ -2290,10 +2290,10 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}A játé
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rekord tábla megnyitása
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Férj hozzá a dokumentációhoz és az online tartalmakhoz
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}A beállítások megnyitása
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megnyitása
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-beállítások megnyitása
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}MI beállítások megnyitása
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Játékszkript beállítások megnyitása
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}MI-beállítások megnyitása
+STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Játékszkript-beállítások megnyitása
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépés az OpenTTD-ből
 
 STR_INTRO_BASESET                                               :{BLACK}A jelenleg kiválasztott grafikus alapcsomagból {NUM} sprite hiányzik. Frissítsd a grafikus alapcsomagot!
@@ -2325,7 +2325,7 @@ STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}Hiba jel
 STR_HELP_WINDOW_COMMUNITY                                       :{BLACK}Közösség
 
 # Cheat window
-STR_CHEATS                                                      :{WHITE}Homokozó mód beállítások
+STR_CHEATS                                                      :{WHITE}Homokozó mód beállításai
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Irányított vállalat: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, mozgathatatlan objektumokat): {ORANGE}{STRING}
@@ -3436,12 +3436,12 @@ STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Simaság
 STR_MAPGEN_VARIETY                                              :{BLACK}Változatosság eloszlása:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generál
 STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}Készíts egy világot és játssz OpenTTD-t!
-STR_MAPGEN_NEWGRF_SETTINGS                                      :NewGRF Beállítások
-STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF beállítások megnyitása
-STR_MAPGEN_AI_SETTINGS                                          :{BLACK}MI Beállítások
-STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}MI beállítások megnyitása
-STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Játékszkript Beállítások
-STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Játékszkript beállítások megnyitása
+STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF-beállítások
+STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRF-beállítások megnyitása
+STR_MAPGEN_AI_SETTINGS                                          :{BLACK}MI-beállítások
+STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}MI-beállítások megnyitása
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Játékszkript-beállítások
+STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Játékszkript-beállítások megnyitása
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :Angol (Eredeti)
@@ -3532,7 +3532,7 @@ STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING}
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE}Nem található érvényes hely {NUM} város számára. Táblá{P "" ka}t helyeztünk el a kívánt hely{P "" ek}en
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF beállítások
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-beállítások
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Részletes NewGRF információ
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktív NewGRF fájlok
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktív NewGRF fájlok
@@ -4061,7 +4061,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Vasúti elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Vasúti jelzők
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Közúti elemek:
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Villamospálya elemek:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Villamospálya-elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vízi elemek:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Csatornák
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Állomások:
@@ -4243,15 +4243,15 @@ STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Hajó ki
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Repülőgép kiválasztása - kattints egy repülőgépre az adataihoz. Ctrl+kattintással a repülőgéptípus elrejthető/felfedhető
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Megvesz
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Megvétel
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Megvesz
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Megvesz
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Megvétel
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Megvesz
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Megvesz és átalakít
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Megvesz és átalakít
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Megvesz és átalakít
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Megvétel és átalakítás
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Megvesz és átalakít
 
 ###length VEHICLE_TYPES
@@ -4267,9 +4267,9 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}A kijel�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}A kijelölt repülőgép megvétele és átalakítása a kijelölt rakománytípusra. Shift+kattintással csak a becsült költséget jeleníti meg
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Átnevez
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Átnevez
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Átnevez
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Átnevezés
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Átnevezés
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Átnevezés
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Átnevez
 
 ###length VEHICLE_TYPES
@@ -4920,8 +4920,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI / Játékszkript nyomkövetés ablak csak a szerver számára elérhető
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}MI beállítások
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Játékszkript beállítások
+STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}MI-beállítások
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Játékszkript-beállítások
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}A következő játékban betöltődő játékszkript
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}A következő játékban betöltődő MI-k
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Játékos
@@ -4931,9 +4931,9 @@ STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLO
 STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Ellenfelek indítása közötti időtartam: {ORANGE}{COMMA} perc
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mozgatás Fel
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mozgatás fel
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Kiválasztott MI mozgatása felfelé a listában
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mozgatás Le
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mozgatás le
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Kiválasztott MI mozgatása lefelé a listában
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Játékszkript
@@ -4956,7 +4956,7 @@ STR_AI_LIST_AUTHOR                                              :{LTBLUE}Készí
 STR_AI_LIST_VERSION                                             :{LTBLUE}Verzió: {ORANGE}{NUM}
 STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
-STR_AI_LIST_ACCEPT                                              :{BLACK}Elfogad
+STR_AI_LIST_ACCEPT                                              :{BLACK}Elfogadás
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}A kijelölt szkript kiválasztása
 STR_AI_LIST_CANCEL                                              :{BLACK}Mégsem
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne változtassa a szkriptet
