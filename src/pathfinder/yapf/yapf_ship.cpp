@@ -379,7 +379,7 @@ public:
 		if (IsDockingTile(n.GetTile())) {
 			/* Check docking tile for occupancy. */
 			uint count = 0;
-			HasVehicleOnPos(n.GetTile(), &count, &CountShipProc);
+			FindVehicleOnPos(n.GetTile(), &count, &CountShipProc);
 			c += count * 3 * YAPF_TILE_LENGTH;
 		}
 
