@@ -421,7 +421,8 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 	assert(st != nullptr);
 
 	/* Check the cached cargo trigger bitmask to see if we need
-	 * to bother with any further processing. */
+	 * to bother with any further processing.
+	 * Note: cached_roadstop_cargo_triggers must be non-zero even for cargo-independent triggers. */
 	if (st->cached_roadstop_cargo_triggers == 0) return;
 	if (IsValidCargoType(cargo_type) && !HasBit(st->cached_roadstop_cargo_triggers, cargo_type)) return;
 
