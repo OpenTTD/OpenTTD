@@ -209,6 +209,12 @@ public:
 		return this->dim.width + WidgetDimensions::scaled.hsep_wide + this->TBase::Width();
 	}
 
+	int OnClick(const Rect &r, const Point &pt) const override
+	{
+		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);
+		return this->TBase::OnClick(r.Indent(this->dim.width + WidgetDimensions::scaled.hsep_wide, rtl), pt);
+	}
+
 	void Draw(const Rect &full, const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = TEnd ^ (_current_text_dir == TD_RTL);

@@ -615,7 +615,7 @@ void TextfileWindow::AfterLoadMarkdown()
 	this->SetupScrollbars(true);
 }
 
-void TextfileWindow::OnDropdownSelect(WidgetID widget, int index)
+void TextfileWindow::OnDropdownSelect(WidgetID widget, int index, int)
 {
 	if (widget != WID_TF_JUMPLIST) return;
 

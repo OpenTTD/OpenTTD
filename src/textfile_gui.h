@@ -29,7 +29,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnResize() override;
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
-	void OnDropdownSelect(WidgetID widget, int index) override;
+	void OnDropdownSelect(WidgetID widget, int index, int) override;
 
 	void Reset() override;
 	FontSize DefaultSize() override;

@@ -1399,7 +1399,7 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: // Currency
@@ -1492,14 +1492,14 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	void OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_close) override
+	void OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close) override
 	{
 		if (widget != WID_GO_SETTING_DROPDOWN) {
 			/* Normally the default implementation of OnDropdownClose() takes care of
 			 * a few things. We want that behaviour here too, but only for
 			 * "normal" dropdown boxes. The special dropdown boxes added for every
 			 * setting that needs one can't have this call. */
-			Window::OnDropdownClose(pt, widget, index, instant_close);
+			Window::OnDropdownClose(pt, widget, index, click_result, instant_close);
 		} else {
 			/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 			 * the same dropdown button was clicked again, and then not open the dropdown again.
