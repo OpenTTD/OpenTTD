@@ -470,7 +470,7 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 			}
 		}
 	};
-	if (trigger == StationRandomTrigger::NewCargo || trigger == StationRandomTrigger::CargoTaken) {
+	if (trigger == StationRandomTrigger::NewCargo || trigger == StationRandomTrigger::CargoTaken || trigger == StationRandomTrigger::AcceptanceTick) {
 		for (const RoadStopTileData &tile_data : st->custom_roadstop_tile_data) {
 			process_tile(tile_data.tile);
 		}

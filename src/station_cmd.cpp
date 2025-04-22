@@ -3607,9 +3607,16 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 
 static void TileLoop_Station(TileIndex tile)
 {
+	auto *st = BaseStation::GetByTile(tile);
 	switch (GetStationType(tile)) {
 		case StationType::Airport:
-			TriggerAirportTileAnimation(Station::GetByTile(tile), tile, AirportAnimationTrigger::TileLoop);
+			TriggerAirportTileAnimation(Station::From(st), tile, AirportAnimationTrigger::TileLoop);
+			break;
+
+		case StationType::Rail:
+		case StationType::RailWaypoint:
+			TriggerStationRandomisation(st, tile, StationRandomTrigger::TileLoop);
+			TriggerStationAnimation(st, tile, StationAnimationTrigger::TileLoop);
 			break;
 
 		case StationType::Dock:
@@ -3619,6 +3626,12 @@ static void TileLoop_Station(TileIndex tile)
 		case StationType::Oilrig: //(station part)
 		case StationType::Buoy:
 			TileLoop_Water(tile);
+			break;
+
+		case StationType::Truck:
+		case StationType::Bus:
+			TriggerRoadStopRandomisation(st, tile, StationRandomTrigger::TileLoop);
+			TriggerRoadStopAnimation(st, tile, StationAnimationTrigger::TileLoop);
 			break;
 
 		case StationType::RoadWaypoint: {
@@ -3654,6 +3667,9 @@ static void TileLoop_Station(TileIndex tile)
 				SetRoadWaypointRoadside(tile, cur_rs == ROADSIDE_BARREN ? new_rs : ROADSIDE_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
+
+			TriggerRoadStopRandomisation(st, tile, StationRandomTrigger::TileLoop);
+			TriggerRoadStopAnimation(st, tile, StationAnimationTrigger::TileLoop);
 			break;
 		}
 
@@ -4211,7 +4227,9 @@ void OnTick_Station()
 
 		/* Spread out station animation over STATION_ACCEPTANCE_TICKS ticks. */
 		if ((TimerGameTick::counter + st->index) % Ticks::STATION_ACCEPTANCE_TICKS == 0) {
+			TriggerStationRandomisation(st, st->xy, StationRandomTrigger::AcceptanceTick);
 			TriggerStationAnimation(st, st->xy, StationAnimationTrigger::AcceptanceTick);
+			TriggerRoadStopRandomisation(st, st->xy, StationRandomTrigger::AcceptanceTick);
 			TriggerRoadStopAnimation(st, st->xy, StationAnimationTrigger::AcceptanceTick);
 			if (Station::IsExpected(st)) TriggerAirportAnimation(Station::From(st), AirportAnimationTrigger::AcceptanceTick);
 		}

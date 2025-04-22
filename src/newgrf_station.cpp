@@ -906,8 +906,17 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 {
 	/* List of coverage areas for each animation trigger */
 	static const TriggerArea tas[] = {
-		TA_TILE, TA_WHOLE, TA_WHOLE, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM, TA_WHOLE
+		TA_TILE, // Built
+		TA_WHOLE, // NewCargo
+		TA_WHOLE, // CargoTaken
+		TA_PLATFORM, // VehicleArrives
+		TA_PLATFORM, // VehicleDeparts
+		TA_PLATFORM, // VehicleLoads
+		TA_WHOLE, // AcceptanceTick
+		TA_TILE, // TileLoop
+		TA_PLATFORM, // PathReservation
 	};
+	static_assert(lengthof(tas) == static_cast<size_t>(StationAnimationTrigger::End));
 
 	assert(st != nullptr);
 
@@ -946,8 +955,16 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 {
 	/* List of coverage areas for each animation trigger */
 	static const TriggerArea tas[] = {
-		TA_WHOLE, TA_WHOLE, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM
+		TA_WHOLE, // NewCargo
+		TA_WHOLE, // CargoTaken
+		TA_PLATFORM, // VehicleArrives
+		TA_PLATFORM, // VehicleDeparts
+		TA_PLATFORM, // VehicleLoads
+		TA_PLATFORM, // PathReservation
+		TA_WHOLE, // AcceptanceTick
+		TA_TILE, // TileLoop
 	};
+	static_assert(lengthof(tas) == static_cast<size_t>(StationRandomTrigger::End));
 
 	assert(st != nullptr);
 
