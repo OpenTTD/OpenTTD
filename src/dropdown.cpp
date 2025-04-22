@@ -278,7 +278,7 @@ struct DropdownWindow : Window {
 				bool selected = (this->selected_result == item->result) && item->Selectable();
 				if (selected) GfxFillRect(full, PC_BLACK);
 
-				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, colour);
+				item->Draw(full, full.Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero), selected, selected ? this->selected_click_result : -1, colour);
 			}
 			y += item_height;
 		}
