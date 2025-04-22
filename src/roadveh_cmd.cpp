@@ -771,7 +771,45 @@ static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 {
 	const OvertakeData *od = (OvertakeData*)data;
 
-	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v) ? v : nullptr;
+	/* A vehicle blocking overtake must be an engine running on the road. */
+	if (v->type != VEH_ROAD || v->First() != v) return nullptr;
+
+	/* A vehicle must be a third party to block. If it is the same as either the passer
+	 * or passee, it's just part of the base overtake and there is no blockage. */
+	if (v == od->u || v == od->v) return nullptr;
+
+	/* This is the offset to tile in front of either the passer the passee, looking the passer's way. */
+	TileIndexDiff tile_step = TileOffsByDiagDir(DirToDiagDir(od->v->direction));
+
+	/* Overtaking concerns the overtaker's tile as well as the few in front of them.
+	 * If a third party is not in these tiles, it is not blocking the overtake.
+	 * If the overtakee and overtaker are on separate tiles, look one tile further. */
+	bool third_present = (v->tile == od->u->tile + (2 * tile_step));
+	if (!third_present) {
+		/* If a third party is not in that above spot, search the other three. */
+		for (int iter = 0; iter < 3; ++iter) {
+			if (v->tile == od->v->tile + (iter * tile_step)) {
+				third_present = true;
+				break;
+			}
+		}
+	}
+	if (!third_present) return nullptr;
+
+	/* From here, the third vehicle is blocking if one of the below is true. */
+
+	/* 1: The third vehicle is going the opposite way, so it's not wise to pass. */
+	if (v->direction == ReverseDir(od->v->direction)) return v;
+
+	/* 2: If the passee is manually stopped or broken down while active, then it is likely wanting to overtake as well.
+	 * It's safer to let it deal with this first. Otherwise, it is better to close passer
+	 * and passee's distance first than it is to try and overtake. */
+	if (!(od->u->vehstatus & VS_STOPPED || od->u->breakdown_ctr == 1)) return v;
+
+	/* 3: Third vehicle is trying to overtake too, but it is stuck for some reason. */
+	if (((RoadVehicle*)v)->overtaking && v->cur_speed == 0) return v;
+
+	return nullptr;
 }
 
 /**
