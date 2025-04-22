@@ -1664,15 +1664,14 @@ void ReverseTrainSwapVeh(Train *v, int l, int r)
 	}
 }
 
-
 /**
  * Check if the vehicle is a train
  * @param v vehicle on tile
- * @return v if it is a train, nullptr otherwise
+ * @return true if v is a train
  */
-static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
+static bool IsTrain(const Vehicle *v)
 {
-	return (v->type == VEH_TRAIN) ? v : nullptr;
+	return v->type == VEH_TRAIN;
 }
 
 /**
@@ -1685,28 +1684,23 @@ bool TrainOnCrossing(TileIndex tile)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	return HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum);
+	return HasVehicleOnTile(tile, IsTrain);
 }
-
 
 /**
  * Checks if a train is approaching a rail-road crossing
  * @param v vehicle on tile
- * @param data tile with crossing we are testing
- * @return v if it is approaching a crossing, nullptr otherwise
+ * @param tile tile with crossing we are testing
+ * @return true if v is approaching a crossing
  */
-static Vehicle *TrainApproachingCrossingEnum(Vehicle *v, void *data)
+static bool TrainApproachingCrossingEnum(const Vehicle *v, TileIndex tile)
 {
-	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return nullptr;
+	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return false;
 
-	Train *t = Train::From(v);
-	if (!t->IsFrontEngine()) return nullptr;
+	const Train *t = Train::From(v);
+	if (!t->IsFrontEngine()) return false;
 
-	TileIndex tile = *(TileIndex *)data;
-
-	if (TrainApproachingCrossingTile(t) != tile) return nullptr;
-
-	return t;
+	return TrainApproachingCrossingTile(t) == tile;
 }
 
 
@@ -1723,12 +1717,16 @@ static bool TrainApproachingCrossing(TileIndex tile)
 	DiagDirection dir = AxisToDiagDir(GetCrossingRailAxis(tile));
 	TileIndex tile_from = tile + TileOffsByDiagDir(dir);
 
-	if (HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum)) return true;
+	if (HasVehicleOnTile(tile_from, [&](const Vehicle *v) {
+			return TrainApproachingCrossingEnum(v, tile);
+		})) return true;
 
 	dir = ReverseDiagDir(dir);
 	tile_from = tile + TileOffsByDiagDir(dir);
 
-	return HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum);
+	return HasVehicleOnTile(tile_from, [&](const Vehicle *v) {
+		return TrainApproachingCrossingEnum(v, tile);
+	});
 }
 
 /**
@@ -3252,21 +3250,6 @@ static bool CheckTrainCollision(Train *v)
 	return true;
 }
 
-static Vehicle *CheckTrainAtSignal(Vehicle *v, void *data)
-{
-	if (v->type != VEH_TRAIN || v->vehstatus.Test(VehState::Crashed)) return nullptr;
-
-	Train *t = Train::From(v);
-	DiagDirection exitdir = *(DiagDirection *)data;
-
-	/* not front engine of a train, inside wormhole or depot, crashed */
-	if (!t->IsFrontEngine() || !(t->track & TRACK_BIT_MASK)) return nullptr;
-
-	if (t->cur_speed > 5 || VehicleExitDir(t->direction, t->track) != exitdir) return nullptr;
-
-	return t;
-}
-
 /**
  * Move a vehicle chain one movement stop forwards.
  * @param v First vehicle to move.
@@ -3384,7 +3367,17 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 								exitdir = ReverseDiagDir(exitdir);
 
 								/* check if a train is waiting on the other side */
-								if (!HasVehicleOnPos(o_tile, &exitdir, &CheckTrainAtSignal)) return false;
+								if (!HasVehicleOnTile(o_tile, [&exitdir](const Vehicle *u) {
+										if (u->type != VEH_TRAIN || u->vehstatus.Test(VehState::Crashed)) return false;
+										const Train *t = Train::From(u);
+
+										/* not front engine of a train, inside wormhole or depot, crashed */
+										if (!t->IsFrontEngine() || !(t->track & TRACK_BIT_MASK)) return false;
+
+										if (t->cur_speed > 5 || VehicleExitDir(t->direction, t->track) != exitdir) return false;
+
+										return true;
+									})) return false;
 							}
 						}
 
@@ -3617,10 +3610,10 @@ static bool IsRailStationPlatformOccupied(TileIndex tile)
 	TileIndexDiff delta = TileOffsByAxis(GetRailStationAxis(tile));
 
 	for (TileIndex t = tile; IsCompatibleTrainStationTile(t, tile); t -= delta) {
-		if (HasVehicleOnPos(t, nullptr, &TrainOnTileEnum)) return true;
+		if (HasVehicleOnTile(t, IsTrain)) return true;
 	}
 	for (TileIndex t = tile + delta; IsCompatibleTrainStationTile(t, tile); t += delta) {
-		if (HasVehicleOnPos(t, nullptr, &TrainOnTileEnum)) return true;
+		if (HasVehicleOnTile(t, IsTrain)) return true;
 	}
 
 	return false;

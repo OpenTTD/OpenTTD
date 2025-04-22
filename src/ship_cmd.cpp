@@ -359,14 +359,6 @@ void Ship::UpdateDeltaXY()
 	}
 }
 
-/**
- * Test-procedure for HasVehicleOnPos to check for any ships which are moving.
- */
-static Vehicle *EnsureNoMovingShipProc(Vehicle *v, void *)
-{
-	return v->type == VEH_SHIP && v->cur_speed != 0 ? v : nullptr;
-}
-
 static bool CheckReverseShip(const Ship *v, Trackdir *trackdir = nullptr)
 {
 	/* Ask pathfinder for best direction */
@@ -392,7 +384,9 @@ static bool CheckShipLeaveDepot(Ship *v)
 
 	/* Don't leave depot if another vehicle is already entering/leaving */
 	/* This helps avoid CPU load if many ships are set to start at the same time */
-	if (HasVehicleOnPos(v->tile, nullptr, &EnsureNoMovingShipProc)) return true;
+	if (HasVehicleOnTile(v->tile, [](const Vehicle *u) {
+			return u->type == VEH_SHIP && u->cur_speed != 0;
+		})) return true;
 
 	TileIndex tile = v->tile;
 	Axis axis = GetShipDepotAxis(tile);
