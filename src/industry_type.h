@@ -36,6 +36,7 @@ enum class IndustryAnimationTrigger : uint8_t {
 	IndustryTick, ///< Trigger every tick.
 	CargoReceived, ///< Trigger when cargo is received .
 	CargoDistributed, ///< Trigger when cargo is distributed.
+	Built, ///< Trigger tile when built.
 };
 using IndustryAnimationTriggers = EnumBitSet<IndustryAnimationTrigger, uint8_t>;
 

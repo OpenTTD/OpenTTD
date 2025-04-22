@@ -1946,6 +1946,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		}
 	}
 
+	TriggerIndustryAnimation(i, IndustryAnimationTrigger::Built);
+
 	if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::PlantOnBuild)) {
 		for (uint j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
