@@ -32,39 +32,6 @@ WindowNumber VehicleListIdentifier::ToWindowNumber() const
 	return c << 28 | this->type << 23 | this->vtype << 26 | this->index;
 }
 
-/** Data for building a depot vehicle list. */
-struct BuildDepotVehicleListData
-{
-	VehicleList *engines; ///< Pointer to list to add vehicles to.
-	VehicleList *wagons; ///< Pointer to list to add wagons to (can be nullptr).
-	VehicleType type; ///< Type of vehicle.
-	bool individual_wagons; ///< If true add every wagon to \a wagons which is not attached to an engine. If false only add the first wagon of every row.
-};
-
-/**
- * Add vehicles to a depot vehicle list.
- * @param v The found vehicle.
- * @param data The depot vehicle list data.
- * @return Always nullptr.
- */
-static Vehicle *BuildDepotVehicleListProc(Vehicle *v, void *data)
-{
-	auto bdvld = static_cast<BuildDepotVehicleListData *>(data);
-	if (v->type != bdvld->type || !v->IsInDepot()) return nullptr;
-
-	if (bdvld->type == VEH_TRAIN) {
-		const Train *t = Train::From(v);
-		if (t->IsArticulatedPart() || t->IsRearDualheaded()) return nullptr;
-		if (bdvld->wagons != nullptr && t->First()->IsFreeWagon()) {
-			if (bdvld->individual_wagons || t->IsFreeWagon()) bdvld->wagons->push_back(t);
-			return nullptr;
-		}
-	}
-
-	if (v->IsPrimaryVehicle()) bdvld->engines->push_back(v);
-	return nullptr;
-};
-
 /**
  * Generate a list of vehicles inside a depot.
  * @param type    Type of vehicle
@@ -78,8 +45,20 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
 	engines->clear();
 	if (wagons != nullptr && wagons != engines) wagons->clear();
 
-	BuildDepotVehicleListData bdvld{engines, wagons, type, individual_wagons};
-	FindVehicleOnPos(tile, &bdvld, BuildDepotVehicleListProc);
+	for (Vehicle *v : VehiclesOnTile(tile)) {
+		if (v->type != type || !v->IsInDepot()) continue;
+
+		if (type == VEH_TRAIN) {
+			const Train *t = Train::From(v);
+			if (t->IsArticulatedPart() || t->IsRearDualheaded()) continue;
+			if (wagons != nullptr && t->First()->IsFreeWagon()) {
+				if (individual_wagons || t->IsFreeWagon()) wagons->push_back(t);
+				continue;
+			}
+		}
+
+		if (v->IsPrimaryVehicle()) engines->push_back(v);
+	}
 }
 
 /**

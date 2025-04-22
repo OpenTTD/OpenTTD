@@ -659,8 +659,12 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 	rvf.best_diff = UINT_MAX;
 
 	if (front->state == RVSB_WORMHOLE) {
-		FindVehicleOnPos(v->tile, &rvf, EnumCheckRoadVehClose);
-		FindVehicleOnPos(GetOtherTunnelBridgeEnd(v->tile), &rvf, EnumCheckRoadVehClose);
+		for (Vehicle *u : VehiclesOnTile(v->tile)) {
+			EnumCheckRoadVehClose(u, &rvf);
+		}
+		for (Vehicle *u : VehiclesOnTile(GetOtherTunnelBridgeEnd(v->tile))) {
+			EnumCheckRoadVehClose(u, &rvf);
+		}
 	} else {
 		FindVehicleOnPosXY(x, y, &rvf, EnumCheckRoadVehClose);
 	}
