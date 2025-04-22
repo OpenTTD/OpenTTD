@@ -718,3 +718,39 @@ void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigg
 	if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoTriggerHouseAnimation_WatchedCargoAccepted(TileAddXY(north, 1, 1), tile, trigger_cargoes, r);
 }
 
+/**
+ * Run the house-built callback for a single house tile.
+ * @param tile The house tile.
+ * @param origin The triggering tile.
+ * @param random Shared random bits for all tiles.
+ */
+static void DoTriggerHouseAnimation_Built(TileIndex tile, uint16_t random)
+{
+	HouseID id = GetHouseType(tile);
+	const HouseSpec *hs = HouseSpec::Get(id);
+
+	if (hs->callback_mask.Test(HouseCallbackMask::AnimationTriggerBuilt)) {
+		uint32_t r = random << 16 | GB(Random(), 0, 16);
+		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_BUILT, hs, Town::GetByTile(tile), tile, r, 0);
+	}
+}
+
+/**
+ * Run house-built callback for a house.
+ * @param tile_north House northern tile.
+ * @pre IsTileType(t, MP_HOUSE)
+ */
+void TriggerHouseAnimation_Built(TileIndex tile_north)
+{
+	assert(IsTileType(tile_north, MP_HOUSE));
+	HouseID id = GetHouseType(tile_north);
+	const HouseSpec *hs = HouseSpec::Get(id);
+
+	/* Same random value for all tiles of a multi-tile house. */
+	uint16_t r = Random();
+
+	DoTriggerHouseAnimation_Built(tile_north, r);
+	if (hs->building_flags.Any(BUILDING_2_TILES_Y))   DoTriggerHouseAnimation_Built(TileAddXY(tile_north, 0, 1), r);
+	if (hs->building_flags.Any(BUILDING_2_TILES_X))   DoTriggerHouseAnimation_Built(TileAddXY(tile_north, 1, 0), r);
+	if (hs->building_flags.Any(BUILDING_HAS_4_TILES)) DoTriggerHouseAnimation_Built(TileAddXY(tile_north, 1, 1), r);
+}

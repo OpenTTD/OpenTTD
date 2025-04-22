@@ -102,6 +102,7 @@ void AnimateNewHouseTile(TileIndex tile);
 /* see also: void TriggerHouseAnimation_TileLoop(TileIndex tile, uint16_t random_bits) */
 void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile);
 void TriggerHouseAnimation_WatchedCargoAccepted(TileIndex tile, CargoTypes trigger_cargoes);
+void TriggerHouseAnimation_Built(TileIndex tile_north);
 
 uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
 		bool not_yet_constructed = false, uint8_t initial_random_bits = 0, CargoTypes watched_cargo_triggers = 0, int view = 0);
