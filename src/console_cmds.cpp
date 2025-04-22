@@ -8,6 +8,7 @@
 /** @file console_cmds.cpp Implementation of the console hooks. */
 
 #include "stdafx.h"
+#include "core/string_consumer.hpp"
 #include "console_internal.h"
 #include "debug.h"
 #include "engine_func.h"
@@ -69,6 +70,17 @@ static IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCa
 	IConsolePrint(CC_DEFAULT, "Executing scheduled script file '{}'...", filename);
 	IConsoleCmdExec(std::string("exec") + " " + filename);
 }};
+
+
+/**
+ * Change a string into its number representation. Supports decimal and hexadecimal numbers.
+ * @param arg The string to be converted.
+ * @return The number, or std::nullopt when it could not be parsed.
+ */
+static std::optional<uint32_t> ParseInteger(std::string_view arg)
+{
+	return StringConsumer{arg}.TryReadIntegerBase<uint32_t>(0);
+}
 
 /** File list storage for the console, for caching the last 'ls' command. */
 class ConsoleFileList : public FileList {
@@ -275,9 +287,9 @@ static bool ConResetTile([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *a
 	}
 
 	if (argc == 2) {
-		uint32_t result;
-		if (GetArgumentInteger(&result, argv[1])) {
-			DoClearSquare((TileIndex)result);
+		auto result = ParseInteger(argv[1]);
+		if (result.has_value() && IsValidTile(*result)) {
+			DoClearSquare(TileIndex{*result});
 			return true;
 		}
 	}
@@ -312,25 +324,25 @@ static bool ConZoomToLevel([[maybe_unused]] uint8_t argc, [[maybe_unused]] char 
 			return true;
 
 		case 2: {
-			uint32_t level;
-			if (GetArgumentInteger(&level, argv[1])) {
+			auto level = ParseInteger(argv[1]);
+			if (level.has_value()) {
 				/* In case ZOOM_LVL_MIN is more than 0, the next if statement needs to be amended.
 				 * A simple check for less than ZOOM_LVL_MIN does not work here because we are
 				 * reading an unsigned integer from the console, so just check for a '-' char. */
 				static_assert(ZOOM_LVL_MIN == 0);
 				if (argv[1][0] == '-') {
 					IConsolePrint(CC_ERROR, "Zoom-in levels below {} are not supported.", ZOOM_LVL_MIN);
-				} else if (level < _settings_client.gui.zoom_min) {
+				} else if (*level < _settings_client.gui.zoom_min) {
 					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming in below level {}.", _settings_client.gui.zoom_min);
-				} else if (level > ZOOM_LVL_MAX) {
+				} else if (*level > ZOOM_LVL_MAX) {
 					IConsolePrint(CC_ERROR, "Zoom-in levels above {} are not supported.", ZOOM_LVL_MAX);
-				} else if (level > _settings_client.gui.zoom_max) {
+				} else if (*level > _settings_client.gui.zoom_max) {
 					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming out beyond level {}.", _settings_client.gui.zoom_max);
 				} else {
 					Window *w = GetMainWindow();
 					Viewport &vp = *w->viewport;
-					while (vp.zoom > level) DoZoomInOutWindow(ZOOM_IN, w);
-					while (vp.zoom < level) DoZoomInOutWindow(ZOOM_OUT, w);
+					while (vp.zoom > *level) DoZoomInOutWindow(ZOOM_IN, w);
+					while (vp.zoom < *level) DoZoomInOutWindow(ZOOM_OUT, w);
 				}
 				return true;
 			}
@@ -370,26 +382,27 @@ static bool ConScrollToTile([[maybe_unused]] uint8_t argc, [[maybe_unused]] char
 
 	switch (argc - arg_index) {
 		case 1: {
-			uint32_t result;
-			if (GetArgumentInteger(&result, argv[arg_index])) {
-				if (result >= Map::Size()) {
+			auto result = ParseInteger(argv[arg_index]);
+			if (result.has_value()) {
+				if (*result >= Map::Size()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile((TileIndex)result, instant);
+				ScrollMainWindowToTile(TileIndex{*result}, instant);
 				return true;
 			}
 			break;
 		}
 
 		case 2: {
-			uint32_t x, y;
-			if (GetArgumentInteger(&x, argv[arg_index]) && GetArgumentInteger(&y, argv[arg_index + 1])) {
-				if (x >= Map::SizeX() || y >= Map::SizeY()) {
+			auto x = ParseInteger(argv[arg_index]);
+			auto y = ParseInteger(argv[arg_index + 1]);
+			if (x.has_value() && y.has_value()) {
+				if (*x >= Map::SizeX() || *y >= Map::SizeY()) {
 					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
-				ScrollMainWindowToTile(TileXY(x, y), instant);
+				ScrollMainWindowToTile(TileXY(*x, *y), instant);
 				return true;
 			}
 			break;
@@ -1690,8 +1703,19 @@ static bool ConScreenShot([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *
 			IConsolePrint(CC_ERROR, "'size' can only be used in combination with 'normal' or 'big'.");
 			return true;
 		}
-		GetArgumentInteger(&width, argv[arg_index + 1]);
-		GetArgumentInteger(&height, argv[arg_index + 2]);
+		auto t = ParseInteger(argv[arg_index + 1]);
+		if (!t.has_value()) {
+			IConsolePrint(CC_ERROR, "Invalid width '{}'", argv[arg_index + 1]);
+			return true;
+		}
+		width = *t;
+
+		t = ParseInteger(argv[arg_index + 2]);
+		if (!t.has_value()) {
+			IConsolePrint(CC_ERROR, "Invalid height '{}'", argv[arg_index + 2]);
+			return true;
+		}
+		height = *t;
 		arg_index += 3;
 	}
 
@@ -2247,18 +2271,18 @@ static bool ConFont([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[]
 		FontCacheSubSetting *setting = GetFontCacheSubSetting(argfs);
 		std::string font = setting->font;
 		uint size = setting->size;
-		uint v;
 		uint8_t arg_index = 2;
 		/* For <name> we want a string. */
 
-		if (!GetArgumentInteger(&v, argv[arg_index])) {
+		if (!ParseInteger(argv[arg_index]).has_value()) {
 			font = argv[arg_index++];
 		}
 
 		if (argc > arg_index) {
 			/* For <size> we want a number. */
-			if (GetArgumentInteger(&v, argv[arg_index])) {
-				size = v;
+			auto v = ParseInteger(argv[arg_index]);
+			if (v.has_value()) {
+				size = *v;
 				arg_index++;
 			}
 		}

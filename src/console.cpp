@@ -118,30 +118,6 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
 }
 
 /**
- * Change a string into its number representation. Supports
- * decimal and hexadecimal numbers as well as 'on'/'off' 'true'/'false'
- * @param *value the variable a successful conversion will be put in
- * @param *arg the string to be converted
- * @return Return true on success or false on failure
- */
-bool GetArgumentInteger(uint32_t *value, const char *arg)
-{
-	char *endptr;
-
-	if (strcmp(arg, "on") == 0 || strcmp(arg, "true") == 0) {
-		*value = 1;
-		return true;
-	}
-	if (strcmp(arg, "off") == 0 || strcmp(arg, "false") == 0) {
-		*value = 0;
-		return true;
-	}
-
-	*value = std::strtoul(arg, &endptr, 0);
-	return arg != endptr;
-}
-
-/**
  * Creates a copy of a string with underscores removed from it
  * @param name String to remove the underscores from.
  * @return A copy of \a name, without underscores.

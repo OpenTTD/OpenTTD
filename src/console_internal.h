@@ -81,9 +81,6 @@ void IConsoleClearBuffer();
 /* console std lib (register ingame commands/aliases) */
 void IConsoleStdLibRegister();
 
-/* Supporting functions */
-bool GetArgumentInteger(uint32_t *value, const char *arg);
-
 void IConsoleGUIInit();
 void IConsoleGUIFree();
 void IConsoleGUIPrint(TextColour colour_code, const std::string &string);
