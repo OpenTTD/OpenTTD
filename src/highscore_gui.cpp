@@ -209,9 +209,11 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_highscore_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _highscore_desc(
 	WDP_MANUAL, nullptr, 0, 0,

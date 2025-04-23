@@ -10,6 +10,8 @@
 #ifndef TREE_LAND_H
 #define TREE_LAND_H
 
+/* clang-format off */
+
 static const uint8_t _tree_base_by_landscape[4] = {0, 12, 20, 32};
 static const uint8_t _tree_count_by_landscape[4] = {12, 8, 12, 9};
 
@@ -224,5 +226,7 @@ static const PalSpriteID _tree_layout_sprite[164 + (79 - 48 + 1)][4] = {
 	{ { 0x716, PAL_NONE }, { 0x716, PAL_NONE }, { 0x6f3, PAL_NONE }, { 0x6ec, PAL_NONE } }, // 30
 	{ { 0x716, PAL_NONE }, { 0x701, PAL_NONE }, { 0x6fa, PAL_NONE }, { 0x716, PAL_NONE } }, // 31
 };
+
+/* clang-format on */
 
 #endif /* TREE_LAND_H */

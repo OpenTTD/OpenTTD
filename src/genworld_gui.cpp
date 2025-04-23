@@ -73,6 +73,7 @@ void SetNewLandscapeType(LandscapeType landscape)
 }
 
 /** Widgets of GenerateLandscapeWindow when generating world */
+/* clang-format off */
 static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -195,8 +196,10 @@ static constexpr NWidgetPart _nested_generate_landscape_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Widgets of GenerateLandscapeWindow when loading heightmap */
+/* clang-format off */
 static constexpr NWidgetPart _nested_heightmap_load_widgets[] = {
 	/* Window header. */
 	NWidget(NWID_HORIZONTAL),
@@ -312,6 +315,7 @@ static constexpr NWidgetPart _nested_heightmap_load_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 {
@@ -1218,6 +1222,7 @@ struct CreateScenarioWindow : public Window
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_create_scenario_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1276,6 +1281,7 @@ static constexpr NWidgetPart _nested_create_scenario_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _create_scenario_desc(
 	WDP_CENTER, nullptr, 0, 0,
@@ -1291,6 +1297,7 @@ void ShowCreateScenario()
 	new CreateScenarioWindow(_create_scenario_desc, GLWM_SCENARIO);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_GENERATION_WORLD, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -1301,6 +1308,7 @@ static constexpr NWidgetPart _nested_generate_progress_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 
 static WindowDesc _generate_progress_desc(

@@ -12,6 +12,8 @@
 #include "table/strings.h"
 #endif
 
+/* clang-format off */
+
 /** Construction macros for the #CargoSpec StringID entries. */
 #define MK_STR_CARGO_PLURAL(label_plural) STR_CARGO_PLURAL_ ## label_plural
 #define MK_STR_CARGO_SINGULAR(label_singular) STR_CARGO_SINGULAR_ ## label_singular
@@ -108,3 +110,4 @@ static const std::variant<CargoLabel, int> _default_climate_cargo[NUM_LANDSCAPE]
 	{ CT_PASSENGERS, CT_SUGAR,  CT_MAIL, CT_TOYS, CT_BATTERIES, CT_CANDY, CT_TOFFEE, CT_COLA, CT_COTTON_CANDY, CT_BUBBLES, CT_PLASTIC,   CT_FIZZY_DRINKS, },
 };
 
+/* clang-format on */

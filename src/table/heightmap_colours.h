@@ -9,6 +9,8 @@
  * @file heightmap_colours.h The colour tables for heightmaps.
  */
 
+/* clang-format off */
+
 /** Height map colours for the green colour scheme, ordered by height. */
 static const uint32_t _green_map_heights[] = {
 	MKCOLOUR(0x59595958),
@@ -340,3 +342,5 @@ static const uint32_t _violet_map_heights[] = {
 	MKCOLOUR(0x87878786),
 	MKCOLOUR(0x87878787),
 };
+
+/* clang-format on */

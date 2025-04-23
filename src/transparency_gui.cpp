@@ -126,6 +126,7 @@ public:
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_transparency_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -148,6 +149,7 @@ static constexpr NWidgetPart _nested_transparency_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_TT_BUTTONS), SetMinimalSize(219, 13), SetToolTip(STR_TRANSPARENT_INVISIBLE_TOOLTIP),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _transparency_desc(
 	WDP_MANUAL, "toolbar_transparency", 0, 0,

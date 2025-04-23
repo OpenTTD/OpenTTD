@@ -23,6 +23,7 @@
 #include "safeguards.h"
 
 /* Extra Viewport Window Stuff */
+/* clang-format off */
 static constexpr NWidgetPart _nested_extra_viewport_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -49,6 +50,7 @@ static constexpr NWidgetPart _nested_extra_viewport_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 class ExtraViewportWindow : public Window {
 public:

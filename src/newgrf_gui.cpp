@@ -499,6 +499,7 @@ struct NewGRFParametersWindow : public Window {
 GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
 
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -530,6 +531,7 @@ static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window definition for the change grf parameters window */
 static WindowDesc _newgrf_parameters_desc(
@@ -1752,6 +1754,7 @@ public:
 const uint NWidgetNewGRFDisplay::MAX_EXTRA_INFO_WIDTH    = 150;
 const uint NWidgetNewGRFDisplay::MIN_EXTRA_FOR_3_COLUMNS = 50;
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
 	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Left side, presets. */
@@ -1806,7 +1809,9 @@ static constexpr NWidgetPart _nested_newgrf_actives_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_availables_widgets[] = {
 	NWidget(WWT_FRAME, COLOUR_MAUVE), SetStringTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Left side, available grfs, filter edit box. */
@@ -1839,7 +1844,9 @@ static constexpr NWidgetPart _nested_newgrf_availables_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 	NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
 		/* Right side, info panel. */
@@ -1881,6 +1888,7 @@ static constexpr NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
 std::unique_ptr<NWidgetBase> NewGRFDisplay()
@@ -1893,6 +1901,7 @@ std::unique_ptr<NWidgetBase> NewGRFDisplay()
 }
 
 /* Widget definition of the manage newgrfs window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_newgrf_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -1908,6 +1917,7 @@ static constexpr NWidgetPart _nested_newgrf_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /* Window definition of the manage newgrfs window */
 static WindowDesc _newgrf_desc(
@@ -1977,6 +1987,7 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 }
 
 /** Widget parts of the save preset window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_save_preset_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -2000,6 +2011,7 @@ static constexpr NWidgetPart _nested_save_preset_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Window description of the preset save window. */
 static WindowDesc _save_preset_desc(
@@ -2134,6 +2146,7 @@ static void ShowSavePresetWindow(const char *initial_text)
 }
 
 /** Widgets for the progress window. */
+/* clang-format off */
 static constexpr NWidgetPart _nested_scan_progress_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_NEWGRF_SCAN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY),
@@ -2144,6 +2157,7 @@ static constexpr NWidgetPart _nested_scan_progress_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Description of the widgets and other settings of the window. */
 static WindowDesc _scan_progress_desc(

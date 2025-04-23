@@ -42,11 +42,15 @@
 #include "core/string_consumer.hpp"
 #include <stack>
 
-#include "table/strings.h"
 #include "table/control_codes.h"
 #include "3rdparty/fmt/std.h"
 
 #include "strings_internal.h"
+
+/* clang-format off */
+/* work around "main include" detection */
+#include "table/strings.h"
+/* clang-format on */
 
 #include "safeguards.h"
 

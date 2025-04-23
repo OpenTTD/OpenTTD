@@ -47,6 +47,7 @@ struct ScreenshotWindow : Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_screenshot[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -63,6 +64,7 @@ static constexpr NWidgetPart _nested_screenshot[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_MINIMAP), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_MINIMAP_SCREENSHOT), SetMinimalTextLines(2, 0),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _screenshot_window_desc(
 	WDP_AUTO, "take_a_screenshot", 200, 100,

@@ -759,6 +759,7 @@ const std::initializer_list<GUIStationList::SortFunction * const> CompanyStation
 	&StationRatingMinSorter
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_company_stations_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -791,6 +792,7 @@ static constexpr NWidgetPart _nested_company_stations_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _company_stations_desc(
 	WDP_AUTO, "list_stations", 358, 162,
@@ -811,6 +813,7 @@ void ShowCompanyStations(CompanyID company)
 	AllocateWindowDescFront<CompanyStationsWindow>(_company_stations_desc, company);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_station_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -847,6 +850,7 @@ static constexpr NWidgetPart _nested_station_view_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
+/* clang-format on */
 
 /**
  * Draws icons of waiting cargo in the StationView window
@@ -2262,6 +2266,7 @@ static const BaseStation *FindStationsNearby(TileArea ta, bool distant_join)
 	return nullptr;
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_select_station_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -2276,6 +2281,7 @@ static constexpr NWidgetPart _nested_select_station_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /**
  * Window for selecting stations/waypoints to (distant) join to.

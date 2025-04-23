@@ -12,6 +12,8 @@
 
 #include "table/strings.h"
 
+/* clang-format off */
+
 /** Writes all airport tile properties in the AirportTile struct */
 #define AT(num_frames, anim_speed) {{num_frames, AnimationStatus::Looping, anim_speed, {}}, STR_NULL, AirportTileCallbackMasks{}, 0, true, GRFFileProps(INVALID_AIRPORTTILE), {}}
 /** Writes an airport tile without animation in the AirportTile struct */
@@ -110,5 +112,7 @@ static_assert(NEW_AIRPORTTILE_OFFSET == lengthof(_origin_airporttile_specs));
 
 #undef AT_NOANIM
 #undef AT
+
+/* clang-format on */
 
 #endif /* AIRPORTTILES_H */

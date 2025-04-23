@@ -15,6 +15,8 @@
 
 #include "table/strings.h"
 
+/* clang-format off */
+
 /**
  * Global Railtype definition
  */
@@ -415,5 +417,7 @@ static const RailTypeInfo _original_railtypes[] = {
 		{},
 	},
 };
+
+/* clang-format on */
 
 #endif /* RAILTYPES_H */

@@ -7,6 +7,8 @@
 
 /** @file palettes.h The colour translation of the GRF palettes. */
 
+/* clang-format off */
+
 #define M(r, g, b) Colour(r, g, b)
 
 /** Colour palette (DOS) */
@@ -143,3 +145,5 @@ static const ExtraPaletteValues _extra_palette_values = {
 	  M(116, 180, 196), M(148, 200, 216), M(180, 220, 232) }
 };
 #undef M
+
+/* clang-format on */

@@ -29,7 +29,7 @@
  * @return The selected bits, aligned to a LSB.
  */
 template <typename T>
-debug_inline constexpr static uint GB(const T x, const uint8_t s, const uint8_t n)
+[[debug_inline]] inline constexpr static uint GB(const T x, const uint8_t s, const uint8_t n)
 {
 	return (x >> s) & (((T)1U << n) - 1);
 }
@@ -100,7 +100,7 @@ constexpr T AB(T &x, const uint8_t s, const uint8_t n, const U i)
  * @return True if the bit is set, false else.
  */
 template <typename T>
-debug_inline constexpr bool HasBit(const T x, const uint8_t y)
+[[debug_inline]] inline constexpr bool HasBit(const T x, const uint8_t y)
 {
 	return (x & ((T)1U << y)) != 0;
 }

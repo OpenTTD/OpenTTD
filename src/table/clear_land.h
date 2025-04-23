@@ -9,6 +9,8 @@
 
 #include "sprites.h"
 
+/* clang-format off */
+
 static const SpriteID _landscape_clear_sprites_rough[8] = {
 	SPR_FLAT_ROUGH_LAND,
 	SPR_FLAT_ROUGH_LAND_1,
@@ -76,3 +78,5 @@ static const SpriteID _clear_land_sprites_snow_desert[8] = {
 	SPR_FLAT_3_QUART_SNOW_DESERT_TILE,
 	SPR_FLAT_SNOW_DESERT_TILE,
 };
+
+/* clang-format on */

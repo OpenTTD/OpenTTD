@@ -15,11 +15,15 @@
 #include "../string_func.h"
 #include "script_fatalerror.hpp"
 #include "../settings_type.h"
-#include <sqstdaux.h>
-#include <../squirrel/sqpcheader.h>
-#include <../squirrel/sqvm.h>
 #include "../core/math_func.hpp"
 #include "../core/string_consumer.hpp"
+
+/* clang-format off */
+/* squirrel defines lots of generically named macros, which break some headers above, so move them to the end */
+#include "../3rdparty/squirrel/include/sqstdaux.h"
+#include "../3rdparty/squirrel/squirrel/sqpcheader.h"
+#include "../3rdparty/squirrel/squirrel/sqvm.h"
+/* clang-format on */
 
 #include "../safeguards.h"
 

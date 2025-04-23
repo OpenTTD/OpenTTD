@@ -262,6 +262,7 @@ struct SubsidyListWindow : Window {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -278,6 +279,7 @@ static constexpr NWidgetPart _nested_subsidies_list_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _subsidies_list_desc(
 	WDP_AUTO, "list_subsidies", 500, 127,

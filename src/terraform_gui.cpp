@@ -316,6 +316,7 @@ struct TerraformToolbarWindow : Window {
 	}, TerraformToolbarGlobalHotkeys};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_terraform_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -346,6 +347,7 @@ static constexpr NWidgetPart _nested_terraform_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _terraform_desc(
 	WDP_MANUAL, "toolbar_landscape", 0, 0,
@@ -445,6 +447,7 @@ static const int8_t _multi_terraform_coords[][2] = {
 	{-28,  0}, {-24, -2}, {-20, -4}, {-16, -6}, {-12, -8}, { -8,-10}, { -4,-12}, {  0,-14}, {  4,-12}, {  8,-10}, { 12, -8}, { 16, -6}, { 20, -4}, { 24, -2}, { 28,  0},
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -493,6 +496,7 @@ static constexpr NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 								SetFill(1, 0), SetStringTip(STR_TERRAFORM_RESET_LANDSCAPE, STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP), SetPadding(1, 2, 2, 2),
 	EndContainer(),
 };
+/* clang-format on */
 
 /**
  * Callback function for the scenario editor 'reset landscape' confirmation window

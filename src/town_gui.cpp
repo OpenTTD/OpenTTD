@@ -56,6 +56,7 @@ TownKdtree _town_local_authority_kdtree{};
 
 typedef GUIList<const Town*, const bool &> GUITownList;
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_town_authority_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -73,6 +74,7 @@ static constexpr NWidgetPart _nested_town_authority_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer()
 };
+/* clang-format on */
 
 /** Town authority window. */
 struct TownAuthorityWindow : Window {
@@ -609,6 +611,7 @@ public:
 	}};
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_town_game_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -631,6 +634,7 @@ static constexpr NWidgetPart _nested_town_game_view_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _town_game_view_desc(
 	WDP_AUTO, "view_town", 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
@@ -639,6 +643,7 @@ static WindowDesc _town_game_view_desc(
 	_nested_town_game_view_widgets
 );
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -662,6 +667,7 @@ static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 		NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _town_editor_view_desc(
 	WDP_AUTO, "view_town_scen", 260, TownViewWindow::WID_TV_HEIGHT_NORMAL,
@@ -679,6 +685,7 @@ void ShowTownViewWindow(TownID town)
 	}
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_town_directory_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -706,6 +713,7 @@ static constexpr NWidgetPart _nested_town_directory_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Enum referring to the Hotkeys in the town directory window */
 enum TownDirectoryHotkeys : int32_t {
@@ -1079,6 +1087,7 @@ void CcFoundRandomTown(Commands, const CommandCost &result, Money, TownID town_i
 	if (result.Succeeded()) ScrollMainWindowToTile(Town::Get(town_id)->xy);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_found_town_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1140,6 +1149,7 @@ static constexpr NWidgetPart _nested_found_town_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 /** Found a town window class. */
 struct FoundTownWindow : Window {
@@ -1817,6 +1827,7 @@ struct BuildHouseWindow : public PickerWindow {
 };
 
 /** Nested widget definition for the build NewGRF rail waypoint window */
+/* clang-format off */
 static constexpr NWidgetPart _nested_build_house_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1843,6 +1854,7 @@ static constexpr NWidgetPart _nested_build_house_widgets[] = {
 		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _build_house_desc(
 	WDP_AUTO, "build_house", 0, 0,

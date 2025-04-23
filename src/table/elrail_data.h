@@ -13,6 +13,8 @@
 #ifndef ELRAIL_DATA_H
 #define ELRAIL_DATA_H
 
+/* clang-format off */
+
 /**
  * Tile Location group.
  * This defines whether the X and or Y coordinate of a tile is even
@@ -509,5 +511,7 @@ static const RailCatenarySprite Wires[5][TRACK_END][4] = {
 		{INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY, INVALID_CATENARY},
 	}
 };
+
+/* clang-format on */
 
 #endif /* ELRAIL_DATA_H */

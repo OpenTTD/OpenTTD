@@ -129,6 +129,7 @@ static std::unique_ptr<NWidgetBase> MakeNWidgetCompanyLines()
 	return vert;
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_graph_legend_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -140,6 +141,7 @@ static constexpr NWidgetPart _nested_graph_legend_widgets[] = {
 		NWidgetFunction(MakeNWidgetCompanyLines),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _graph_legend_desc(
 	WDP_AUTO, "graph_legend", 0, 0,
@@ -790,6 +792,7 @@ struct OperatingProfitGraphWindow : BaseGraphWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_operating_profit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -811,6 +814,7 @@ static constexpr NWidgetPart _nested_operating_profit_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _operating_profit_desc(
 	WDP_AUTO, "graph_operating_profit", 0, 0,
@@ -847,6 +851,7 @@ struct IncomeGraphWindow : BaseGraphWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_income_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -868,6 +873,7 @@ static constexpr NWidgetPart _nested_income_graph_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _income_graph_desc(
 	WDP_AUTO, "graph_income", 0, 0,
@@ -902,6 +908,7 @@ struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -923,6 +930,7 @@ static constexpr NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _delivered_cargo_graph_desc(
 	WDP_AUTO, "graph_delivered_cargo", 0, 0,
@@ -963,6 +971,7 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_performance_history_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -985,6 +994,7 @@ static constexpr NWidgetPart _nested_performance_history_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _performance_history_desc(
 	WDP_AUTO, "graph_performance", 0, 0,
@@ -1019,6 +1029,7 @@ struct CompanyValueGraphWindow : BaseGraphWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_company_value_graph_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1040,6 +1051,7 @@ static constexpr NWidgetPart _nested_company_value_graph_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _company_value_graph_desc(
 	WDP_AUTO, "graph_company_value", 0, 0,
@@ -1236,6 +1248,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1273,6 +1286,7 @@ static constexpr NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _cargo_payment_rates_desc(
 	WDP_AUTO, "graph_cargo_payment_rates", 0, 0,
@@ -1751,6 +1765,7 @@ struct IndustryProductionGraphWindow : BaseGraphWindow {
 	}
 };
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1785,6 +1800,7 @@ static constexpr NWidgetPart _nested_industry_production_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 };
+/* clang-format on */
 
 static WindowDesc _industry_production_desc(
 	WDP_AUTO, "graph_industry_production", 0, 0,
@@ -1836,6 +1852,7 @@ std::unique_ptr<NWidgetBase> MakeCompanyButtonRowsGraphGUI()
 	return MakeCompanyButtonRows(WID_PRD_COMPANY_FIRST, WID_PRD_COMPANY_LAST, COLOUR_BROWN, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
 }
 
+/* clang-format off */
 static constexpr NWidgetPart _nested_performance_rating_detail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
@@ -1848,6 +1865,7 @@ static constexpr NWidgetPart _nested_performance_rating_detail_widgets[] = {
 	EndContainer(),
 	NWidgetFunction(MakePerformanceDetailPanels),
 };
+/* clang-format on */
 
 static WindowDesc _performance_rating_detail_desc(
 	WDP_AUTO, "league_details", 0, 0,
