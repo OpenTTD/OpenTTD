@@ -1882,7 +1882,7 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
-	void FindWindowPlacementAndResize([[maybe_unused]] int def_width, [[maybe_unused]] int def_height) override
+	void FindWindowPlacementAndResize(int def_width, int def_height, bool allow_resize) override
 	{
 		if (def_height == 0) {
 			/* Try to open the window with the exact required rows, but clamp to a reasonable limit. */
@@ -1891,7 +1891,7 @@ struct CompanyInfrastructureWindow : Window
 			def_height = this->height + delta * GetCharacterHeight(FS_NORMAL);
 		}
 
-		this->Window::FindWindowPlacementAndResize(def_width, def_height);
+		this->Window::FindWindowPlacementAndResize(def_width, def_height, allow_resize);
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
