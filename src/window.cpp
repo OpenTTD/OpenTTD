@@ -990,7 +990,7 @@ void Window::ReInit(int rx, int ry, bool reposition)
 	if (reposition) {
 		Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 		this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
-		this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight());
+		this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), false);
 	}
 
 	ResizeWindow(this, dx, dy, true, false);
@@ -1423,39 +1423,42 @@ void Window::InitializePositionSize(int x, int y, int sm_width, int sm_height)
  * done here.
  * @param def_width default width in pixels of the window
  * @param def_height default height in pixels of the window
+ * @param allow_resize Set if resizing is permitted.
  * @see Window::Window(), Window::InitializeData(), Window::InitializePositionSize()
  */
-void Window::FindWindowPlacementAndResize(int def_width, int def_height)
+void Window::FindWindowPlacementAndResize(int def_width, int def_height, bool allow_resize)
 {
-	def_width  = std::max(def_width,  this->width); // Don't allow default size to be smaller than smallest size
-	def_height = std::max(def_height, this->height);
-	/* Try to make windows smaller when our window is too small.
-	 * w->(width|height) is normally the same as min_(width|height),
-	 * but this way the GUIs can be made a little more dynamic;
-	 * one can use the same spec for multiple windows and those
-	 * can then determine the real minimum size of the window. */
-	if (this->width != def_width || this->height != def_height) {
-		/* Think about the overlapping toolbars when determining the minimum window size */
-		int free_height = _screen.height;
-		const Window *wt = FindWindowById(WC_STATUS_BAR, 0);
-		if (wt != nullptr) free_height -= wt->height;
-		wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		if (wt != nullptr) free_height -= wt->height;
+	if (allow_resize) {
+		def_width  = std::max(def_width,  this->width); // Don't allow default size to be smaller than smallest size
+		def_height = std::max(def_height, this->height);
+		/* Try to make windows smaller when our window is too small.
+		 * w->(width|height) is normally the same as min_(width|height),
+		 * but this way the GUIs can be made a little more dynamic;
+		 * one can use the same spec for multiple windows and those
+		 * can then determine the real minimum size of the window. */
+		if (this->width != def_width || this->height != def_height) {
+			/* Think about the overlapping toolbars when determining the minimum window size */
+			int free_height = _screen.height;
+			const Window *wt = FindWindowById(WC_STATUS_BAR, 0);
+			if (wt != nullptr) free_height -= wt->height;
+			wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
+			if (wt != nullptr) free_height -= wt->height;
 
-		int enlarge_x = std::max(std::min(def_width  - this->width,  _screen.width - this->width),  0);
-		int enlarge_y = std::max(std::min(def_height - this->height, free_height   - this->height), 0);
+			int enlarge_x = std::max(std::min(def_width  - this->width,  _screen.width - this->width),  0);
+			int enlarge_y = std::max(std::min(def_height - this->height, free_height   - this->height), 0);
 
-		/* X and Y has to go by step.. calculate it.
-		 * The cast to int is necessary else x/y are implicitly casted to
-		 * unsigned int, which won't work. */
-		if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)this->resize.step_width;
-		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
+			/* X and Y has to go by step.. calculate it.
+			 * The cast to int is necessary else x/y are implicitly casted to
+			 * unsigned int, which won't work. */
+			if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)this->resize.step_width;
+			if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
 
-		ResizeWindow(this, enlarge_x, enlarge_y, true, false);
-		/* ResizeWindow() calls this->OnResize(). */
-	} else {
-		/* Always call OnResize; that way the scrollbars and matrices get initialized. */
-		this->OnResize();
+			ResizeWindow(this, enlarge_x, enlarge_y, true, false);
+			/* ResizeWindow() calls this->OnResize(). */
+		} else {
+			/* Always call OnResize; that way the scrollbars and matrices get initialized. */
+			this->OnResize();
+		}
 	}
 
 	int nx = this->left;
@@ -1744,7 +1747,7 @@ void Window::FinishInitNested(WindowNumber window_number)
 	this->ApplyDefaults();
 	Point pt = this->OnInitialPosition(this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
-	this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight());
+	this->FindWindowPlacementAndResize(this->window_desc.GetDefaultWidth(), this->window_desc.GetDefaultHeight(), true);
 }
 
 /**

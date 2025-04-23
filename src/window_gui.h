@@ -277,7 +277,7 @@ private:
 protected:
 	void InitializeData(WindowNumber window_number);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
-	virtual void FindWindowPlacementAndResize(int def_width, int def_height);
+	virtual void FindWindowPlacementAndResize(int def_width, int def_height, bool allow_resize);
 
 	std::vector<int> scheduled_invalidation_data{}; ///< Data of scheduled OnInvalidateData() calls.
 	bool scheduled_resize = false; ///< Set if window has been resized.
