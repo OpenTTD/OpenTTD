@@ -1747,7 +1747,7 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 				EndContainer(),
 
 				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_PANEL, GAME_OPTIONS_BACKGROUND, WID_GO_OPTIONSPANEL), SetMinimalSize(400, 0), SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_GO_SCROLLBAR),
+					NWidget(WWT_PANEL, GAME_OPTIONS_BACKGROUND, WID_GO_OPTIONSPANEL), SetFill(1, 1), SetResize(1, 1), SetScrollbar(WID_GO_SCROLLBAR),
 					EndContainer(),
 					NWidget(NWID_VSCROLLBAR, GAME_OPTIONS_BACKGROUND, WID_GO_SCROLLBAR),
 				EndContainer(),
