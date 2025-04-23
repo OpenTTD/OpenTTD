@@ -285,7 +285,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sulje ik
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ikkunan otsake – siirrä ikkunaa vetämällä tästä
 STR_TOOLTIP_SHADE                                               :{BLACK}Pienennä ikkuna – näytä vain otsikko
 STR_TOOLTIP_DEBUG                                               :{BLACK}Näytä NewGRF-vianmääritystiedot
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Palauta ikkunan oletuskoko. Ctrl+napsautus tallentaa nykyisen koon oletukseksi.
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Palauta ikkuna oletuskokoon. Ctrl+napsautus tallentaa nykyisen koon oletukseksi. Ctrl+kaksoisnapautus asettaa oletuskoon alkutilaan
 STR_TOOLTIP_STICKY                                              :{BLACK}Aseta ikkuna säilymään ”Sulje kaikki ikkunat” -napista huolimatta. Ctrl+napsautus tallentaa tilan oletukseksi.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna

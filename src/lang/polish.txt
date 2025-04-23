@@ -664,7 +664,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zamknij 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij, aby przesunąć okno
 STR_TOOLTIP_SHADE                                               :{BLACK}Zwiń okno - pokaż tylko nagłówek
 STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmień rozmiar okna na domyślny. Użyj Ctrl, aby zapamiętać obecny rozmiar jako domyślny
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmień rozmiar okna na domyślny. Użyj Ctrl, aby zapamiętać obecny rozmiar jako domyślny. Kliknij dwukrotnie z użyciem Ctrl, aby zresetować zapamiętany rozmiar
 STR_TOOLTIP_STICKY                                              :{BLACK}Oznacz to okno jako niezamykalne przyciskiem „Zamknij Wszystkie Okna”. Użyj Ctrl, aby zapamiętać to ustawienie jako domyślne
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij, by zmienić rozmiar okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz na duży/mały rozmiar okna

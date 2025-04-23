@@ -287,7 +287,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Aizvērt
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Loga virsraksts - vilkt to, lai pārvietotu logu
 STR_TOOLTIP_SHADE                                               :{BLACK}Aizēnot logu - rādīt tikai virsrakstu
 STR_TOOLTIP_DEBUG                                               :{BLACK}Rādīt NewGRF atkļūdošanas informāciju
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Mainīt loga izmēru uz tā noklusējuma izmēru. Ctrl+klikšķis, lai saglabātu esošo izmēru kā noklusējuma
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Mainīt loga izmēru uz tā noklusējuma izmēru. Ctrl+klikšķis, lai saglabātu esošo izmēru kā noklusējuma. Divreiz Ctrl+kilkšķis, lai atiestatītu saglabātos noklusējuma iestatījumus
 STR_TOOLTIP_STICKY                                              :{BLACK}Atzīmēt šo logu kā neaizveramu ar "Aizvērt visus logus" taustiņu. Ctrl+klikšķis, lai saglabātu stāvokli kā noklusējumu
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikšķināt un vilkt, lai mainītu šī loga lielumu
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pārslēgties starp lielu/mazu loga izmēru

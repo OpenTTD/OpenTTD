@@ -286,7 +286,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar j
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para guardar o tamanho atual como padrão
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para guardar o tamanho atual como padrão. Duplo Ctrl+Clique para redefinir o padrão armazenado
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique também guarda o estado como padrão.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena

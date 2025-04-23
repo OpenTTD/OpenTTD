@@ -285,7 +285,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉�
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
 STR_TOOLTIP_SHADE                                               :{BLACK}陰影視窗 - 只顯示標題列
 STR_TOOLTIP_DEBUG                                               :{BLACK}顯示 NewGRF 除錯資訊
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}將視窗改回預設大小。按下 Ctrl 鍵點選此掣則將視窗現時大小定為預設
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}將視窗改回預設大小。按住 <Ctrl> 鍵單擊點選此按鈕可將視窗現時大小設為預設。按住 <Ctrl> 鍵雙擊點選則可重設預設大小
 STR_TOOLTIP_STICKY                                              :{BLACK}標記此視窗使其不受「關閉所有視窗」掣影響。按住 Ctrl 鍵點選此掣以將選項定為常態
 STR_TOOLTIP_RESIZE                                              :{BLACK}點選並拖曳可縮放視窗大小
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
@@ -1485,7 +1485,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :初始公司副
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :選擇初始公司副色調，需使用支援副色調的 NewGRF
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :機場永不過期：{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :如啟用此選項，所有機場一經面世，就永遠可以選擇建設。
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :啟用時，所有機場一經面世，即可永久地能夠選擇興建
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :當車輛走失時發出警告：{STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :在車輛無法到達指令的目的地時觸發訊息。
@@ -1660,7 +1660,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB                               :使用右鍵移
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :使用左鍵移動地圖
 
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :畫面平滑移動：{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主畫面的顯示反應。如啟用此選項，影像會移動直至到達點選的位置；否則影像會直接跳到點選的位置。
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主畫面的顯示方式。啟用時，畫面會平緩移動到所點選的位置；否則畫面會直接跳到所點選的位置
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :當點選建造工具後拖曳滑鼠時，是否顯示兩端的方格距離及高度差異。
@@ -1694,7 +1694,7 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :單撳 (選定�
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :單撳 (立刻)
 
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :使用中繼服務：{STRING}
-STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :嘗試連結伺服器失敗時，玩家可以使用中繼伺服以建立連結。"關閉"禁止使用中繼伺服，"詢問"使用中繼伺服前先詢問，"打開"直接使用中繼伺服。
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :嘗試連結伺服器失敗時，玩家可以使用中繼伺服以建立連結。「關閉」禁止使用中繼伺服，「詢問」使用中繼伺服前先詢問，「允許」直接使用中繼伺服
 ###length 3
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :永不
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :詢問
@@ -1974,13 +1974,13 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :市鎮可以興建道路：{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :此選項決定是否容許市鎮自行興建道路。
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :允許市鎮建設平交道：{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :啟用此選項以容許市鎮自行興建平交道。
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :啟用時允許市鎮興建平交道
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :根據噪音水平限制機場建造︰{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :允許市鎮根據其噪音接受水平限制機場興建，噪音接受程度取決於市鎮的人口以及機場的規模和距離。如果禁用此設置時，每座市鎮僅允許興建兩個機場，除非地方政府態度設置為「放任」
 
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :於遊戲中興建新市鎮：{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :如啟用此選項，玩家可自行興建新市鎮。
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :啟用時，允許玩家在遊戲中興建新市鎮
 ###length 3
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允許
@@ -2084,7 +2084,7 @@ STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :如果您對此
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :在對稱模式下產生的返程貨物比例：{STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :如果把此值定於100%以下，到達一站的貨物不會全部被送回始發站。如果此設定的值為0%，則「對稱」分配模式的表現跟「不對稱」分配模式完全一樣
 
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路徑的飽和度超過{STRING}，把貨物改派往容量較大的路徑
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :如果最短路徑的飽和度超過 {STRING}，把貨物改派往容量較大的路徑
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :貨物分配功能在派送貨物時，會優先使用最短路徑，至其飽和後改用第二短的路徑，如此類推。當所有路徑皆飽和但仍未滿足需求，系統會由容量較大的路徑開始繼續加載貨物。由於路徑飽和度難以準確估算，此設定容許您定義一值，使短路徑達至該飽和度後，系統便開始加載容量較大的路徑。如果此設定的值少於100%，即使系統高估路徑容量，也不會使過多的貨物滯留車站
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :速度單位（陸地）：{STRING}

@@ -1285,7 +1285,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen 
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Beállítások
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Szűrő kifejezés:
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Szűrőkifejezés:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Összes szétnyitása
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Összes összecsukása
 STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Visszaállítja az összes értéket
@@ -1356,7 +1356,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Nincs kölcsön
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Kamatláb: {STRING}
-STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitel kamat; inflációt is szabályozza, ha be van kapcsolva
+STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Banki hitelkamat; az inflációt is szabályozza, ha be van kapcsolva
 
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Üzemeltetési költségek: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Járművek karbantartási és üzemeltetési költségeinek a szintje
@@ -1433,7 +1433,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Emelkedő meredeksége közúti járműveknek: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Egy emelkedő mező meredeksége közúti járműveknek. Nagyobb érték esetén a jármű nehezebben mássza meg az emelkedőt
 
-STR_CONFIG_SETTING_FORBID_90_DEG                                :Vonatok nem tehetnek 90 fokos kanyart: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :A vonatok nem tehetnek 90 fokos kanyart: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 fokos kanyarok akkor fordulnak elő, ha egy vízszintes pályaelemet egy függőleges elem követ közvetlenül a következő mezőn, ami által a vonat egy 90 fokos kanyart tesz a szokásos 45 fokos helyett
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Nem közvetlen szomszédos állomások egyesítése: {STRING}
@@ -1516,7 +1516,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Pénz adományo
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Pénz küldésének engedélyezése másik vállalatok részére: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Pénzátutalások engedélyezése vállalatok között többjátékos módban
 
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Tömegszorzó tehervonatoknak nehéz vonatok szimulációjára: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Tömegszorzó a tehervonatokhoz a nehéz vonatok szimulációjához: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Tehervonatok terhelési szorzójának beállítása. Magasabb érték esetén a tehervagonok jobban igénybe veszik a vontatójárművet, főleg dombokon
 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Repülőgép sebességszorzó: {STRING}
@@ -1610,7 +1610,7 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :Leírás megjel
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Késleltetés, mielőtt megjelenne az eszközleírás az egér fölé húzása után egy felületi elemen. A leírás elérhető még az egér jobb gombjával is, ha ennek értéke 0-ra van állítva.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} ezredmásodperc után
 ###setting-zero-is-special
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Jobb klikk
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Jobb kattintás
 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mutassa a település lakosságát a feliratban: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Település lakosságszámának kijelzése a címkéjén
@@ -1626,7 +1626,7 @@ STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Ha be van kapcs
 STR_CONFIG_SETTING_LANDSCAPE                                    :Táj: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :A tájak alapvető játékbeállításokat határoznak meg különféle árukkal és településnövekedési tényezőkkel. A NewGRF-ek és a játékszkriptek segítségével ez még tovább hangolható.
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :Terep generálás: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Térképgenerátor: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Az eredeti térképgenerátor az alap grafikus csomagtól függ, és fix formájú tájakat állít össze. A TerraGenesis egy Perlin zajon alapuló térképgenerátor, nagyobb konfigurálhatósággal.
 ###length 2
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
@@ -2051,7 +2051,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :megengedett
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :megengedett, egyéni városelrendezés
 
 STR_CONFIG_SETTING_HOUSE_PLACER                                 :Egyedi városi házak elhelyezése: {STRING}
-STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :Ennek a beállításnak az engedélyezése lehetővé teszi a játékosok számára, hogy manuálisan helyezzenek el városi házakat.
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :A beállítás engedélyezése lehetővé teszi a játékosok számára, hogy kézileg helyezzenek el városi házakat.
 ###length 3
 STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :Tiltott
 STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :Engedélyezett
@@ -2116,7 +2116,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Nagyon gyors
 
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Várossá váló települések aránya: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Azon települések mennyisége, melyek várossá fognak válni, így egy település nagyobbként kezd és gyorsabban nő
-STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 a {COMMA}-ból
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nincs
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kezdeti városméret-szorzó: {STRING}
@@ -4395,7 +4395,7 @@ STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Most kés
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :vasúti mozdony
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :villamos vasúti mozdony
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :egysínű mozdony
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Maglev mozdony
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev mozdony
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :közúti jármű
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :villamos
