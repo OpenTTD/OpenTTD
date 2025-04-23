@@ -1006,7 +1006,8 @@ static void DecodeEncodedString(StringConsumer &consumer, bool game_script, Stri
 	}
 
 	while (consumer.AnyBytesLeft()) {
-		StringConsumer record(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::SKIP_ONE_SEPARATOR));
+		consumer.SkipUtf8If(SCC_RECORD_SEPARATOR);
+		StringConsumer record(consumer.ReadUntilUtf8(SCC_RECORD_SEPARATOR, StringConsumer::KEEP_SEPARATOR));
 
 		if (!record.AnyBytesLeft()) {
 			/* This is an empty parameter. */
