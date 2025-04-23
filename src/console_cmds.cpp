@@ -1133,7 +1133,8 @@ static bool ConNetworkConnect([[maybe_unused]] uint8_t argc, [[maybe_unused]] ch
 static bool ConExec([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[])
 {
 	if (argc == 0) {
-		IConsolePrint(CC_HELP, "Execute a local script file. Usage: 'exec <script> <?>'.");
+		IConsolePrint(CC_HELP, "Execute a local script file. Usage: 'exec <script> [0]'.");
+		IConsolePrint(CC_HELP, "By passing '0' after the script name, no warning about a missing script file will be shown.");
 		return true;
 	}
 
@@ -1142,7 +1143,7 @@ static bool ConExec([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[]
 	auto script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
 
 	if (!script_file.has_value()) {
-		if (argc == 2 || atoi(argv[2]) != 0) IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[1]);
+		if (argc == 2 || strcmp(argv[2], "0") != 0) IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[1]);
 		return true;
 	}
 
