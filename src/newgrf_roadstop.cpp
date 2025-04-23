@@ -396,7 +396,7 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
 			} else {
 				local_cargo = ss->grf_prop.grffile->cargo_map[cargo_type];
 			}
-			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, cur_tile, (random_bits << 16) | Random(), to_underlying(trigger) | (local_cargo << 8));
+			RoadStopAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, cur_tile, (random_bits << 16) | GB(Random(), 0, 16), to_underlying(trigger) | (local_cargo << 8));
 		}
 	};
 
