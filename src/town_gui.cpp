@@ -372,7 +372,6 @@ public:
 		this->CreateNestedTree();
 
 		this->town = Town::Get(window_number);
-		if (this->town->larger_town) this->GetWidget<NWidgetCore>(WID_TV_CAPTION)->SetString(STR_TOWN_VIEW_CITY_CAPTION);
 
 		this->FinishInitNested(window_number);
 
@@ -392,7 +391,7 @@ public:
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
-		if (widget == WID_TV_CAPTION) return GetString(STR_TOWN_VIEW_TOWN_CAPTION, this->town->index);
+		if (widget == WID_TV_CAPTION) return GetString(this->town->larger_town ? STR_TOWN_VIEW_CITY_CAPTION : STR_TOWN_VIEW_TOWN_CAPTION, this->town->index);
 
 		return this->Window::GetWidgetString(widget, stringid);
 	}
@@ -644,7 +643,7 @@ static constexpr NWidgetPart _nested_town_editor_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CHANGE_NAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_TOWN_VIEW_RENAME_TOOLTIP),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TV_CAPTION), SetStringTip(STR_TOWN_VIEW_TOWN_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_TV_CAPTION), SetToolTip(STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, WID_TV_CENTER_VIEW), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_TOWN_VIEW_CENTER_TOOLTIP),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
