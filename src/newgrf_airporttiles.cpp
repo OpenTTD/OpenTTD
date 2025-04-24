@@ -325,7 +325,8 @@ bool TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, Cargo
 
 		uint8_t var18_extra = 0;
 		if (IsValidCargoType(cargo_type)) {
-			var18_extra |= cargo_type << 8;
+			const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
+			var18_extra |= ats->grf_prop.grffile->cargo_map[cargo_type] << 8;
 		}
 
 		if (DoTriggerAirportTileAnimation(st, tile, trigger, random, var18_extra)) {
