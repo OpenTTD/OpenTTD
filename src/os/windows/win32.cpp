@@ -198,7 +198,7 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 	return FALSE;
 }
 
-void ShowInfoI(const std::string &str)
+void ShowInfoI(std::string_view str)
 {
 	if (_has_console) {
 		fmt::print(stderr, "{}\n", str);

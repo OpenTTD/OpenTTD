@@ -56,7 +56,8 @@ extern int _debug_random_level;
 #endif
 
 void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator);
-void SetDebugString(const char *s, void (*error_func)(const std::string &));
+using SetDebugStringErrorFunc = void(std::string_view);
+void SetDebugString(std::string_view s, SetDebugStringErrorFunc error_func);
 std::string GetDebugString();
 
 /** TicToc profiling.
@@ -92,7 +93,7 @@ struct TicToc {
 	}
 };
 
-void ShowInfoI(const std::string &str);
+void ShowInfoI(std::string_view str);
 #define ShowInfo(format_string, ...) ShowInfoI(fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__))
 
 std::string GetLogPrefix(bool force = false);
