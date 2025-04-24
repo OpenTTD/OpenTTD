@@ -1504,17 +1504,15 @@ static bool ConStartAI([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *arg
 		 * try again with the assumption everything right of the dot is
 		 * the version the user wants to load. */
 		if (!config->HasScript()) {
-			const char *e = strrchr(argv[1], '.');
-			if (e != nullptr) {
-				size_t name_length = e - argv[1];
-				e++;
-
-				auto version = ParseInteger(e);
+			StringConsumer consumer{std::string_view{argv[1]}};
+			auto name = consumer.ReadUntilChar('.', StringConsumer::SKIP_ONE_SEPARATOR);
+			if (consumer.AnyBytesLeft()) {
+				auto version = consumer.TryReadIntegerBase<uint32_t>(10);
 				if (!version.has_value()) {
 					IConsolePrint(CC_ERROR, "The version is not a valid number.");
 					return true;
 				}
-				config->Change(std::string(argv[1], name_length), *version, true);
+				config->Change(name, *version, true);
 			}
 		}
 
