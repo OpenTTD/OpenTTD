@@ -1338,7 +1338,17 @@ static bool ConNewGame([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *arg
 		return true;
 	}
 
-	StartNewGameWithoutGUI((argc == 2) ? std::strtoul(argv[1], nullptr, 10) : GENERATE_NEW_SEED);
+	uint32_t seed = GENERATE_NEW_SEED;
+	if (argc >= 2) {
+		auto param = ParseInteger(argv[1]);
+		if (!param.has_value()) {
+			IConsolePrint(CC_ERROR, "The given seed must be a valid number.");
+			return true;
+		}
+		seed = *param;
+	}
+
+	StartNewGameWithoutGUI(seed);
 	return true;
 }
 
