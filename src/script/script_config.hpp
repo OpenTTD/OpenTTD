@@ -78,7 +78,7 @@ public:
 	 * @param force_exact_match If true try to find the exact same version
 	 *   as specified. If false any compatible version is ok.
 	 */
-	void Change(std::optional<std::string> name, int version = -1, bool force_exact_match = false);
+	void Change(std::optional<std::string_view> name, int version = -1, bool force_exact_match = false);
 
 	/**
 	 * Get the ScriptInfo linked to this ScriptConfig.
@@ -154,7 +154,7 @@ public:
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this Script.
 	 */
-	void StringToSettings(const std::string &value);
+	void StringToSettings(std::string_view value);
 
 	/**
 	 * Convert the custom settings to a string that can be stored in the config
