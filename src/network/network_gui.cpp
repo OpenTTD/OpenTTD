@@ -502,7 +502,7 @@ public:
 
 			case WID_NG_MAPSIZE: {
 				size.width += 2 * Window::SortButtonWidth(); // Make space for the arrow
-				auto max_map_size = GetParamMaxValue(0, MAX_MAP_SIZE);
+				auto max_map_size = GetParamMaxValue(MAX_MAP_SIZE);
 				size = maxdim(size, GetStringBoundingBox(GetString(STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT, max_map_size, max_map_size)));
 				break;
 			}
