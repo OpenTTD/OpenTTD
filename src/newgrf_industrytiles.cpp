@@ -276,14 +276,18 @@ void AnimateNewIndustryTile(TileIndex tile)
 	IndustryAnimationBase::AnimateTile(itspec, Industry::GetByTile(tile), tile, itspec->special_flags.Test(IndustryTileSpecialFlag::NextFrameRandomBits));
 }
 
-bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random)
+static bool DoTriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random, uint32_t var18_extra = 0)
 {
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
-
 	if (!itspec->animation.triggers.Test(iat)) return false;
 
-	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, to_underlying(iat));
+	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, to_underlying(iat) | var18_extra);
 	return true;
+}
+
+bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat)
+{
+	return DoTriggerIndustryTileAnimation(tile, iat, Random());
 }
 
 bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat)
@@ -292,7 +296,7 @@ bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat)
 	uint32_t random = Random();
 	for (TileIndex tile : ind->location) {
 		if (ind->TileBelongsToIndustry(tile)) {
-			if (TriggerIndustryTileAnimation(tile, iat, random)) {
+			if (DoTriggerIndustryTileAnimation(tile, iat, random)) {
 				SB(random, 0, 16, Random());
 			} else {
 				ret = false;

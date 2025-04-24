@@ -88,8 +88,8 @@ private:
 };
 
 void AnimateAirportTile(TileIndex tile);
-void TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
-void TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+bool TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+bool TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts);
 
 #endif /* NEWGRF_AIRPORTTILES_H */

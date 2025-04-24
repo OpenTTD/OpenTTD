@@ -555,6 +555,14 @@ void AnimateNewObjectTile(TileIndex tile)
 	ObjectAnimationBase::AnimateTile(spec, Object::GetByTile(tile), tile, spec->flags.Test(ObjectFlag::AnimRandomBits));
 }
 
+static bool DoTriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec, uint32_t random, uint32_t var18_extra = 0)
+{
+	if (!spec->animation.triggers.Test(trigger)) return false;
+
+	ObjectAnimationBase::ChangeAnimationFrame(CBID_OBJECT_ANIMATION_TRIGGER, spec, o, tile, random, to_underlying(trigger) | var18_extra);
+	return true;
+}
+
 /**
  * Trigger the update of animation on a single tile.
  * @param o       The object that got triggered.
@@ -562,11 +570,9 @@ void AnimateNewObjectTile(TileIndex tile)
  * @param trigger The trigger that is triggered.
  * @param spec    The spec associated with the object.
  */
-void TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
+bool TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {
-	if (!spec->animation.triggers.Test(trigger)) return;
-
-	ObjectAnimationBase::ChangeAnimationFrame(CBID_OBJECT_ANIMATION_TRIGGER, spec, o, tile, Random(), to_underlying(trigger));
+	return DoTriggerObjectTileAnimation(o, tile, trigger, spec, Random());
 }
 
 /**
@@ -575,11 +581,19 @@ void TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigge
  * @param trigger The trigger that is triggered.
  * @param spec    The spec associated with the object.
  */
-void TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
+bool TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {
-	if (!spec->animation.triggers.Test(trigger)) return;
+	if (!spec->animation.triggers.Test(trigger)) return false;
 
+	bool ret = true;
+	uint32_t random = Random();
 	for (TileIndex tile : o->location) {
-		TriggerObjectTileAnimation(o, tile, trigger, spec);
+		if (DoTriggerObjectTileAnimation(o, tile, trigger, spec, random)) {
+			SB(random, 0, 16, Random());
+		} else {
+			ret = false;
+		}
 	}
+
+	return ret;
 }
