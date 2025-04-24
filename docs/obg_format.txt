@@ -16,8 +16,11 @@
 ; - `openttd -I <name>` starts OpenTTD with the given set (case sensitive)
 ; - adding `graphicsset = <name>` to the misc section of openttd.cfg makes
 ;   OpenTTD start with that graphics set by default
-; - there is a command line tool for all platforms called md5sum that can
-;   create the MD5 checksum you need.
+; - `grfid -m` can give the GRF file MD5 checksums that you need
+; - The `--md5` output option for `nmlc` can also give the MD5 if you are
+;   encoding from an nml source
+; - Simple file MD5 checksums, eg. using `md5sum` are not correct for grf
+;   container versions other than 1
 ; - all files specified in this file are search relatively to the path where
 ;   this file is found, i.e. if the graphics files are in a subdir you have
 ;   to add that subdir to the names in this file to! It will NOT search for
@@ -44,6 +47,8 @@ description.en_US = howdie
 palette      = DOS
 ; preferred blitter, optional; either 8bpp (default) or 32bpp.
 blitter      = 8bpp
+; url, optional
+url          = https://github.com/my/baseset
 
 ; The files section lists the files that replace sprites.
 ; The file names are case sensitive.
