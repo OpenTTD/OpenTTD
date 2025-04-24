@@ -1838,7 +1838,7 @@ static bool ConDebugLevel([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *
 	if (argc == 1) {
 		IConsolePrint(CC_DEFAULT, "Current debug-level: '{}'", GetDebugString());
 	} else {
-		SetDebugString(argv[1], [](const std::string &err) { IConsolePrint(CC_ERROR, err); });
+		SetDebugString(argv[1], [](std::string_view err) { IConsolePrint(CC_ERROR, "{}", err); });
 	}
 
 	return true;

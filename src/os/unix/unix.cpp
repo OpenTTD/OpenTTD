@@ -184,7 +184,7 @@ std::string FS2OTTD(const std::string &name)
 
 #endif /* WITH_ICONV */
 
-void ShowInfoI(const std::string &str)
+void ShowInfoI(std::string_view str)
 {
 	fmt::print(stderr, "{}\n", str);
 }

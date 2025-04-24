@@ -8,6 +8,7 @@
 /** @file debug.cpp Handling of printing debug messages. */
 
 #include "stdafx.h"
+#include "core/string_consumer.hpp"
 #include "console_func.h"
 #include "debug.h"
 #include "string_func.h"
@@ -54,12 +55,12 @@ int _debug_random_level;
 #endif
 
 struct DebugLevel {
-	const char *name;
+	std::string_view name;
 	int *level;
 };
 
 #define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
-static const DebugLevel _debug_levels[] = {
+static const std::initializer_list<DebugLevel> _debug_levels{
 	DEBUG_LEVEL(driver),
 	DEBUG_LEVEL(grf),
 	DEBUG_LEVEL(map),
@@ -140,53 +141,47 @@ void DebugPrint(const char *category, int level, std::string &&message)
  * @param s Text describing the wanted debugging levels.
  * @param error_func The function to call if a parse error occurs.
  */
-void SetDebugString(const char *s, void (*error_func)(const std::string &))
+void SetDebugString(std::string_view s, SetDebugStringErrorFunc error_func)
 {
-	int v;
-	char *end;
-	const char *t;
+	StringConsumer consumer{s};
 
 	/* Store planned changes into map during parse */
-	std::map<const char *, int> new_levels;
+	std::map<std::string_view, int> new_levels;
 
 	/* Global debugging level? */
-	if (*s >= '0' && *s <= '9') {
-		v = std::strtoul(s, &end, 0);
-		s = end;
-
+	auto level = consumer.TryReadIntegerBase<int>(10);
+	if (level.has_value()) {
 		for (const auto &debug_level : _debug_levels) {
-			new_levels[debug_level.name] = v;
+			new_levels[debug_level.name] = *level;
 		}
 	}
 
+	static const std::string_view lowercase_letters{"abcdefghijklmnopqrstuvwxyz"};
+	static const std::string_view lowercase_letters_and_digits{"abcdefghijklmnopqrstuvwxyz0123456789"};
+
 	/* Individual levels */
-	for (;;) {
-		/* skip delimiters */
-		while (*s == ' ' || *s == ',' || *s == '\t') s++;
-		if (*s == '\0') break;
+	while (consumer.AnyBytesLeft()) {
+		consumer.SkipUntilCharIn(lowercase_letters);
+		if (!consumer.AnyBytesLeft()) break;
 
-		t = s;
-		while (*s >= 'a' && *s <= 'z') s++;
-
-		/* check debugging levels */
-		const DebugLevel *found = nullptr;
-		for (const auto &debug_level : _debug_levels) {
-			if (s == t + strlen(debug_level.name) && strncmp(t, debug_level.name, s - t) == 0) {
-				found = &debug_level;
-				break;
-			}
-		}
-
-		if (*s == '=') s++;
-		v = std::strtoul(s, &end, 0);
-		s = end;
-		if (found != nullptr) {
-			new_levels[found->name] = v;
-		} else {
-			std::string error_string = fmt::format("Unknown debug level '{}'", std::string(t, s - t));
-			error_func(error_string);
+		/* Find the level by name. */
+		std::string_view key = consumer.ReadUntilCharNotIn(lowercase_letters);
+		auto it = std::ranges::find(_debug_levels, key, &DebugLevel::name);
+		if (it == std::end(_debug_levels)) {
+			error_func(fmt::format("Unknown debug level '{}'", key));
 			return;
 		}
+
+		/* Do not skip lowercase letters, so 'net misc=2' won't be resolved
+		 * to setting 'net=2' and leaving misc untouched. */
+		consumer.SkipUntilCharIn(lowercase_letters_and_digits);
+		level = consumer.TryReadIntegerBase<int>(10);
+		if (!level.has_value()) {
+			error_func(fmt::format("Level for '{}' must be a valid integer.", key));
+			return;
+		}
+
+		new_levels[it->name] = *level;
 	}
 
 	/* Apply the changes after parse is successful */
