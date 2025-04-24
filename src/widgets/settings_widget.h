@@ -24,11 +24,16 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_LANG_DROPDOWN,          ///< Language dropdown.
 	WID_GO_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution.
 	WID_GO_FULLSCREEN_BUTTON,      ///< Toggle fullscreen.
+	WID_GO_FULLSCREEN_TEXT,        ///< Text for toggle fullscreen.
 	WID_GO_GUI_SCALE,              ///< GUI Scale slider.
 	WID_GO_GUI_SCALE_AUTO,         ///< Autodetect GUI scale button.
+	WID_GO_GUI_SCALE_AUTO_TEXT,    ///< Text for Autodetect GUI scale.
 	WID_GO_GUI_SCALE_BEVEL_BUTTON, ///< Toggle for chunky bevels.
+	WID_GO_GUI_SCALE_BEVEL_TEXT,   ///< Text for chunky bevels.
 	WID_GO_GUI_FONT_SPRITE,        ///< Toggle whether to prefer the sprite font over TTF fonts.
+	WID_GO_GUI_FONT_SPRITE_TEXT,   ///< Text for sprite font toggle.
 	WID_GO_GUI_FONT_AA,            ///< Toggle whether to anti-alias fonts.
+	WID_GO_GUI_FONT_AA_TEXT,       ///< Text for anti-alias toggle.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_PARAMETERS,    ///< Base GRF parameters.
 	WID_GO_BASE_GRF_CONTENT_DOWNLOAD, ///< 'Get Content' button for base GRF.
@@ -51,11 +56,14 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_BASE_MUSIC_TEXTFILE,    ///< Open base music readme, changelog (+1) or license (+2).
 	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_CONTENT_END, ///< Description of selected base music set.
 	WID_GO_VIDEO_ACCEL_BUTTON,     ///< Toggle for video acceleration.
+	WID_GO_VIDEO_ACCEL_TEXT,       ///< Text for video acceleration toggle.
 	WID_GO_VIDEO_VSYNC_BUTTON,     ///< Toggle for video vsync.
+	WID_GO_VIDEO_VSYNC_TEXT,       ///< Text for video vsync toggle.
 	WID_GO_REFRESH_RATE_DROPDOWN,  ///< Dropdown for all available refresh rates.
 	WID_GO_VIDEO_DRIVER_INFO,      ///< Label showing details about the current video driver.
 	WID_GO_SURVEY_SEL,             ///< Selection to hide survey if no JSON library is compiled in.
 	WID_GO_SURVEY_PARTICIPATE_BUTTON, ///< Toggle for participating in the automated survey.
+	WID_GO_SURVEY_PARTICIPATE_TEXT, ///< Text for automated survey toggle.
 	WID_GO_SURVEY_LINK_BUTTON,     ///< Button to open browser to go to the survey website.
 	WID_GO_SURVEY_PREVIEW_BUTTON,  ///< Button to open a preview window with the survey results
 	WID_GO_SOCIAL_PLUGINS,         ///< Main widget handling the social plugins.
