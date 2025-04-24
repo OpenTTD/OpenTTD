@@ -763,7 +763,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	uint8_t stage = GetIndustryConstructionStage(tile) + 1;
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
-	TriggerIndustryTileAnimation(tile, IndustryAnimationTrigger::ConstructionStageChanged);
+	TriggerIndustryTileAnimation_ConstructionStageChanged(tile, false);
 	if (stage == INDUSTRY_COMPLETED) SetIndustryCompleted(tile);
 
 	MarkTileDirtyByTile(tile);
@@ -1943,6 +1943,15 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 			IndustryGfx cur_gfx = GetTranslatedIndustryTileID(it.gfx);
 			const IndustryTileSpec *its = GetIndustryTileSpec(cur_gfx);
 			if (its->animation.status != AnimationStatus::NoAnimation) AddAnimatedTile(cur_tile);
+		}
+	}
+
+	/* Call callbacks after all tiles have been created. */
+	for (TileIndex cur_tile : i->location) {
+		if (i->TileBelongsToIndustry(cur_tile)) {
+			/* There are no shared random bits, consistent with "MakeIndustryTileBigger" in tile loop.
+			 * So, trigger tiles individually */
+			TriggerIndustryTileAnimation_ConstructionStageChanged(cur_tile, true);
 		}
 	}
 
