@@ -8,6 +8,8 @@
 /** @file console.cpp Handling of the in-game console. */
 
 #include "stdafx.h"
+#include "core/string_builder.hpp"
+#include "core/string_consumer.hpp"
 #include "console_internal.h"
 #include "network/network.h"
 #include "network/network_func.h"
@@ -18,7 +20,6 @@
 
 #include "safeguards.h"
 
-static const uint ICON_TOKEN_COUNT = 20;     ///< Maximum number of tokens in one command
 static const uint ICON_MAX_RECURSE = 10;     ///< Maximum number of recursion
 
 /* console parser */
@@ -176,14 +177,12 @@ static std::string RemoveUnderscores(std::string name)
 /**
  * An alias is just another name for a command, or for more commands
  * Execute it as well.
- * @param *alias is the alias of the command
- * @param tokencount the number of parameters passed
- * @param *tokens are the parameters given to the original command (0 is the first param)
+ * @param alias is the alias of the command
+ * @param tokens are the parameters given to the original command (0 is the first param)
+ * @param recurse_count the number of re-entrant calls to this function
  */
-static void IConsoleAliasExec(const IConsoleAlias *alias, uint8_t tokencount, char *tokens[ICON_TOKEN_COUNT], const uint recurse_count)
+static void IConsoleAliasExec(const IConsoleAlias *alias, std::span<std::string> tokens, uint recurse_count)
 {
-	std::string alias_buffer;
-
 	Debug(console, 6, "Requested command is an alias; parsing...");
 
 	if (recurse_count > ICON_MAX_RECURSE) {
@@ -191,72 +190,75 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, uint8_t tokencount, ch
 		return;
 	}
 
-	for (const char *cmdptr = alias->cmdline.c_str(); *cmdptr != '\0'; cmdptr++) {
-		switch (*cmdptr) {
+	std::string buffer;
+	StringBuilder builder{buffer};
+
+	StringConsumer consumer{alias->cmdline};
+	while (consumer.AnyBytesLeft()) {
+		auto c = consumer.TryReadUtf8();
+		if (!c.has_value()) {
+			IConsolePrint(CC_ERROR, "Alias '{}' ('{}') contains malformed characters.", alias->name, alias->cmdline);
+			return;
+		}
+
+		switch (*c) {
 			case '\'': // ' will double for ""
-				alias_buffer += '\"';
+				builder.PutChar('\"');
 				break;
 
 			case ';': // Cmd separator; execute previous and start new command
-				IConsoleCmdExec(alias_buffer, recurse_count);
+				IConsoleCmdExec(builder.GetString(), recurse_count);
 
-				alias_buffer.clear();
-
-				cmdptr++;
+				buffer.clear();
 				break;
 
 			case '%': // Some or all parameters
-				cmdptr++;
-				switch (*cmdptr) {
+				c = consumer.ReadUtf8();
+				switch (*c) {
 					case '+': { // All parameters separated: "[param 1]" "[param 2]"
-						for (uint i = 0; i != tokencount; i++) {
-							if (i != 0) alias_buffer += ' ';
-							alias_buffer += '\"';
-							alias_buffer += tokens[i];
-							alias_buffer += '\"';
+						for (size_t i = 0; i < tokens.size(); ++i) {
+							if (i != 0) builder.PutChar(' ');
+							builder.PutChar('\"');
+							builder += tokens[i];
+							builder.PutChar('\"');
 						}
 						break;
 					}
 
 					case '!': { // Merge the parameters to one: "[param 1] [param 2] [param 3...]"
-						alias_buffer += '\"';
-						for (uint i = 0; i != tokencount; i++) {
-							if (i != 0) alias_buffer += " ";
-							alias_buffer += tokens[i];
+						builder.PutChar('\"');
+						for (size_t i = 0; i < tokens.size(); ++i) {
+							if (i != 0) builder.PutChar(' ');
+							builder += tokens[i];
 						}
-						alias_buffer += '\"';
+						builder.PutChar('\"');
 						break;
 					}
 
 					default: { // One specific parameter: %A = [param 1] %B = [param 2] ...
-						int param = *cmdptr - 'A';
+						size_t param = *c - 'A';
 
-						if (param < 0 || param >= tokencount) {
+						if (param >= tokens.size()) {
 							IConsolePrint(CC_ERROR, "Too many or wrong amount of parameters passed to alias.");
 							IConsolePrint(CC_HELP, "Usage of alias '{}': '{}'.", alias->name, alias->cmdline);
 							return;
 						}
 
-						alias_buffer += '\"';
-						alias_buffer += tokens[param];
-						alias_buffer += '\"';
+						builder.PutChar('\"');
+						builder += tokens[param];
+						builder.PutChar('\"');
 						break;
 					}
 				}
 				break;
 
 			default:
-				alias_buffer += *cmdptr;
+				builder.PutUtf8(*c);
 				break;
-		}
-
-		if (alias_buffer.size() >= ICON_MAX_STREAMSIZE - 1) {
-			IConsolePrint(CC_ERROR, "Requested alias execution would overflow execution buffer.");
-			return;
 		}
 	}
 
-	IConsoleCmdExec(alias_buffer, recurse_count);
+	IConsoleCmdExec(builder.GetString(), recurse_count);
 }
 
 /**
@@ -264,88 +266,73 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, uint8_t tokencount, ch
  * individual tokens (separated by spaces), then execute it if possible
  * @param command_string string to be parsed and executed
  */
-void IConsoleCmdExec(const std::string &command_string, const uint recurse_count)
+void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 {
-	const char *cmdptr;
-	char *tokens[ICON_TOKEN_COUNT], tokenstream[ICON_MAX_STREAMSIZE];
-	uint t_index, tstream_i;
-
-	bool longtoken = false;
-	bool foundtoken = false;
-
 	if (command_string[0] == '#') return; // comments
-
-	for (cmdptr = command_string.c_str(); *cmdptr != '\0'; cmdptr++) {
-		if (!IsValidChar(*cmdptr, CS_ALPHANUMERAL)) {
-			IConsolePrint(CC_ERROR, "Command '{}' contains malformed characters.", command_string);
-			return;
-		}
-	}
 
 	Debug(console, 4, "Executing cmdline: '{}'", command_string);
 
-	memset(&tokens, 0, sizeof(tokens));
-	memset(&tokenstream, 0, sizeof(tokenstream));
+	std::string buffer;
+	StringBuilder builder{buffer};
+	StringConsumer consumer{command_string};
+
+	std::vector<std::string> tokens;
+	bool found_token = false;
+	bool in_quotes = false;
 
 	/* 1. Split up commandline into tokens, separated by spaces, commands
 	 * enclosed in "" are taken as one token. We can only go as far as the amount
 	 * of characters in our stream or the max amount of tokens we can handle */
-	for (cmdptr = command_string.c_str(), t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
-		if (tstream_i >= lengthof(tokenstream)) {
-			IConsolePrint(CC_ERROR, "Command line too long.");
+	while (consumer.AnyBytesLeft()) {
+		auto c = consumer.TryReadUtf8();
+		if (!c.has_value()) {
+			IConsolePrint(CC_ERROR, "Command '{}' contains malformed characters.", command_string);
 			return;
 		}
 
-		switch (*cmdptr) {
-		case ' ': // Token separator
-			if (!foundtoken) break;
+		switch (*c) {
+			case ' ': // Token separator
+				if (!found_token) break;
 
-			if (longtoken) {
-				tokenstream[tstream_i] = *cmdptr;
-			} else {
-				tokenstream[tstream_i] = '\0';
-				foundtoken = false;
-			}
-
-			tstream_i++;
-			break;
-		case '"': // Tokens enclosed in "" are one token
-			longtoken = !longtoken;
-			if (!foundtoken) {
-				if (t_index >= lengthof(tokens)) {
-					IConsolePrint(CC_ERROR, "Command line too long.");
-					return;
+				if (in_quotes) {
+					builder.PutUtf8(*c);
+					break;
 				}
-				tokens[t_index++] = &tokenstream[tstream_i];
-				foundtoken = true;
-			}
-			break;
-		case '\\': // Escape character for ""
-			if (cmdptr[1] == '"' && tstream_i + 1 < lengthof(tokenstream)) {
-				tokenstream[tstream_i++] = *++cmdptr;
+
+				tokens.emplace_back(std::move(buffer));
+				buffer.clear();
+				found_token = false;
 				break;
-			}
-			[[fallthrough]];
-		default: // Normal character
-			tokenstream[tstream_i++] = *cmdptr;
 
-			if (!foundtoken) {
-				if (t_index >= lengthof(tokens)) {
-					IConsolePrint(CC_ERROR, "Command line too long.");
-					return;
+			case '"': // Tokens enclosed in "" are one token
+				in_quotes = !in_quotes;
+				found_token = true;
+				break;
+
+			case '\\': // Escape character for ""
+				if (consumer.ReadUtf8If('"')) {
+					builder.PutUtf8('"');
+					break;
 				}
-				tokens[t_index++] = &tokenstream[tstream_i - 1];
-				foundtoken = true;
-			}
-			break;
+				[[fallthrough]];
+
+			default: // Normal character
+				builder.PutUtf8(*c);
+				found_token = true;
+				break;
 		}
 	}
 
-	for (uint i = 0; i < lengthof(tokens) && tokens[i] != nullptr; i++) {
+	if (found_token) {
+		tokens.emplace_back(std::move(buffer));
+		buffer.clear();
+	}
+
+	for (size_t i = 0; i < tokens.size(); i++) {
 		Debug(console, 8, "Token {} is: '{}'", i, tokens[i]);
 	}
 
-	if (StrEmpty(tokens[0])) return; // don't execute empty commands
+	if (tokens.empty() || tokens[0].empty()) return; // don't execute empty commands
 	/* 2. Determine type of command (cmd or alias) and execute
 	 * First try commands, then aliases. Execute
 	 * the found action taking into account its hooking code
@@ -354,21 +341,23 @@ void IConsoleCmdExec(const std::string &command_string, const uint recurse_count
 	if (cmd != nullptr) {
 		ConsoleHookResult chr = (cmd->hook == nullptr ? CHR_ALLOW : cmd->hook(true));
 		switch (chr) {
-			case CHR_ALLOW:
-				if (!cmd->proc(t_index, tokens)) { // index started with 0
+			case CHR_ALLOW: {
+				std::vector<char *> c_strings;
+				for (auto &token : tokens) c_strings.emplace_back(token.data());
+				if (!cmd->proc(static_cast<uint8_t>(tokens.size()), c_strings.data())) { // index started with 0
 					cmd->proc(0, nullptr); // if command failed, give help
 				}
 				return;
+			}
 
 			case CHR_DISALLOW: return;
 			case CHR_HIDE: break;
 		}
 	}
 
-	t_index--;
 	IConsoleAlias *alias = IConsole::AliasGet(tokens[0]);
 	if (alias != nullptr) {
-		IConsoleAliasExec(alias, t_index, &tokens[1], recurse_count + 1);
+		IConsoleAliasExec(alias, std::span(tokens).subspan(1), recurse_count + 1);
 		return;
 	}
 
