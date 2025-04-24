@@ -440,8 +440,7 @@ static bool ConSave([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[]
 	}
 
 	if (argc == 2) {
-		std::string filename = argv[1];
-		filename += ".sav";
+		std::string filename = fmt::format("{}.sav", argv[1]);
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
 		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
@@ -481,7 +480,7 @@ static bool ConLoad([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[]
 
 	if (argc != 2) return false;
 
-	const char *file = argv[1];
+	std::string_view file = argv[1];
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
@@ -507,7 +506,7 @@ static bool ConLoadScenario([[maybe_unused]] uint8_t argc, [[maybe_unused]] char
 
 	if (argc != 2) return false;
 
-	const char *file = argv[1];
+	std::string_view file = argv[1];
 	_console_file_list_scenario.ValidateFileList();
 	const FiosItem *item = _console_file_list_scenario.FindItem(file);
 	if (item != nullptr) {
@@ -533,7 +532,7 @@ static bool ConLoadHeightmap([[maybe_unused]] uint8_t argc, [[maybe_unused]] cha
 
 	if (argc != 2) return false;
 
-	const char *file = argv[1];
+	std::string_view file = argv[1];
 	_console_file_list_heightmap.ValidateFileList();
 	const FiosItem *item = _console_file_list_heightmap.FindItem(file);
 	if (item != nullptr) {
@@ -559,7 +558,7 @@ static bool ConRemove([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv
 
 	if (argc != 2) return false;
 
-	const char *file = argv[1];
+	std::string_view file = argv[1];
 	_console_file_list_savegame.ValidateFileList();
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
@@ -633,7 +632,7 @@ static bool ConChangeDirectory([[maybe_unused]] uint8_t argc, [[maybe_unused]] c
 
 	if (argc != 2) return false;
 
-	const char *file = argv[1];
+	std::string_view file = argv[1];
 	_console_file_list_savegame.ValidateFileList(true);
 	const FiosItem *item = _console_file_list_savegame.FindItem(file);
 	if (item != nullptr) {
@@ -1308,7 +1307,7 @@ static bool ConEcho([[maybe_unused]] uint8_t argc, [[maybe_unused]] char *argv[]
 	}
 
 	if (argc < 2) return false;
-	IConsolePrint(CC_DEFAULT, argv[1]);
+	IConsolePrint(CC_DEFAULT, "{}", argv[1]);
 	return true;
 }
 
@@ -2190,7 +2189,7 @@ static bool ConNetworkAuthorizedKey([[maybe_unused]] uint8_t argc, [[maybe_unuse
 #include "network/network_content.h"
 
 /** Resolve a string to a content type. */
-static ContentType StringToContentType(const char *str)
+static ContentType StringToContentType(std::string_view str)
 {
 	static const std::initializer_list<std::pair<std::string_view, ContentType>> content_types = {
 		{"base",      CONTENT_TYPE_BASE_GRAPHICS},
