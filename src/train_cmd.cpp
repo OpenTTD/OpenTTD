@@ -3162,56 +3162,45 @@ static uint TrainCrashed(Train *v)
 	return victims;
 }
 
-/** Temporary data storage for testing collisions. */
-struct TrainCollideChecker {
-	Train *v; ///< %Vehicle we are testing for collision.
-	uint num; ///< Total number of victims if train collided.
-};
-
 /**
  * Collision test function.
  * @param v %Train vehicle to test collision with.
- * @param data %Train being examined.
- * @return \c nullptr (always continue search)
+ * @param t %Train being examined.
+ * @return Number of victims.
  */
-static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
+static uint CheckTrainCollision(Vehicle *v, Train *t)
 {
-	TrainCollideChecker *tcc = (TrainCollideChecker*)data;
-
 	/* not a train or in depot */
-	if (v->type != VEH_TRAIN || Train::From(v)->track == TRACK_BIT_DEPOT) return nullptr;
+	if (v->type != VEH_TRAIN || Train::From(v)->track == TRACK_BIT_DEPOT) return 0;
 
 	/* do not crash into trains of another company. */
-	if (v->owner != tcc->v->owner) return nullptr;
+	if (v->owner != t->owner) return 0;
 
 	/* get first vehicle now to make most usual checks faster */
 	Train *coll = Train::From(v)->First();
 
 	/* can't collide with own wagons */
-	if (coll == tcc->v) return nullptr;
+	if (coll == t) return 0;
 
-	int x_diff = v->x_pos - tcc->v->x_pos;
-	int y_diff = v->y_pos - tcc->v->y_pos;
+	int x_diff = v->x_pos - t->x_pos;
+	int y_diff = v->y_pos - t->y_pos;
 
 	/* Do fast calculation to check whether trains are not in close vicinity
 	 * and quickly reject trains distant enough for any collision.
 	 * Differences are shifted by 7, mapping range [-7 .. 8] into [0 .. 15]
 	 * Differences are then ORed and then we check for any higher bits */
 	uint hash = (y_diff + 7) | (x_diff + 7);
-	if (hash & ~15) return nullptr;
+	if (hash & ~15) return 0;
 
 	/* Slower check using multiplication */
-	int min_diff = (Train::From(v)->gcache.cached_veh_length + 1) / 2 + (tcc->v->gcache.cached_veh_length + 1) / 2 - 1;
-	if (x_diff * x_diff + y_diff * y_diff > min_diff * min_diff) return nullptr;
+	int min_diff = (Train::From(v)->gcache.cached_veh_length + 1) / 2 + (t->gcache.cached_veh_length + 1) / 2 - 1;
+	if (x_diff * x_diff + y_diff * y_diff > min_diff * min_diff) return 0;
 
 	/* Happens when there is a train under bridge next to bridge head */
-	if (abs(v->z_pos - tcc->v->z_pos) > 5) return nullptr;
+	if (abs(v->z_pos - t->z_pos) > 5) return 0;
 
 	/* crash both trains */
-	tcc->num += TrainCrashed(tcc->v);
-	tcc->num += TrainCrashed(coll);
-
-	return nullptr; // continue searching
+	return TrainCrashed(t) + TrainCrashed(coll);
 }
 
 /**
@@ -3228,26 +3217,26 @@ static bool CheckTrainCollision(Train *v)
 
 	assert(v->track == TRACK_BIT_WORMHOLE || TileVirtXY(v->x_pos, v->y_pos) == v->tile);
 
-	TrainCollideChecker tcc;
-	tcc.v = v;
-	tcc.num = 0;
+	uint num_victims = 0;
 
 	/* find colliding vehicles */
 	if (v->track == TRACK_BIT_WORMHOLE) {
 		for (Vehicle *u : VehiclesOnTile(v->tile)) {
-			FindTrainCollideEnum(u, &tcc);
+			num_victims += CheckTrainCollision(u, v);
 		}
 		for (Vehicle *u : VehiclesOnTile(GetOtherTunnelBridgeEnd(v->tile))) {
-			FindTrainCollideEnum(u, &tcc);
+			num_victims += CheckTrainCollision(u, v);
 		}
 	} else {
-		FindVehicleOnPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
+		for (Vehicle *u : VehiclesNearTileXY(v->x_pos, v->y_pos)) {
+			num_victims += CheckTrainCollision(u, v);
+		}
 	}
 
 	/* any dead -> no crash */
-	if (tcc.num == 0) return false;
+	if (num_victims == 0) return false;
 
-	AddTileNewsItem(GetEncodedString(STR_NEWS_TRAIN_CRASH, tcc.num), NewsType::Accident, v->tile);
+	AddTileNewsItem(GetEncodedString(STR_NEWS_TRAIN_CRASH, num_victims), NewsType::Accident, v->tile);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
 	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_13_TRAIN_COLLISION, v);

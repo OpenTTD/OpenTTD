@@ -511,22 +511,6 @@ static bool RoadVehIsCrashed(RoadVehicle *v)
 	return true;
 }
 
-/**
- * Check routine whether a road and a train vehicle have collided.
- * @param v    %Train vehicle to test.
- * @param data Road vehicle to test.
- * @return %Train vehicle if the vehicles collided, else \c nullptr.
- */
-static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
-{
-	const Vehicle *u = (Vehicle*)data;
-
-	return (v->type == VEH_TRAIN &&
-			abs(v->z_pos - u->z_pos) <= 6 &&
-			abs(v->x_pos - u->x_pos) <= 4 &&
-			abs(v->y_pos - u->y_pos) <= 4) ? v : nullptr;
-}
-
 uint RoadVehicle::Crash(bool flooded)
 {
 	uint victims = this->GroundVehicleBase::Crash(flooded);
@@ -569,7 +553,10 @@ static bool RoadVehCheckTrainCrash(RoadVehicle *v)
 
 		if (!IsLevelCrossingTile(tile)) continue;
 
-		if (HasVehicleOnPosXY(v->x_pos, v->y_pos, u, EnumCheckRoadVehCrashTrain)) {
+		if (HasVehicleNearTileXY(v->x_pos, v->y_pos, [&u](const Vehicle *t) {
+				return t->type == VEH_TRAIN && abs(t->z_pos - u->z_pos) <= 6 &&
+					abs(t->x_pos - u->x_pos) <= 4 && abs(t->y_pos - u->y_pos) <= 4;
+			})) {
 			RoadVehCrash(v);
 			return true;
 		}
@@ -612,25 +599,23 @@ struct RoadVehFindData {
 	Direction dir;
 };
 
-static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
+static void FindClosestBlockingRoadVeh(Vehicle *v, RoadVehFindData *rvf)
 {
 	static const int8_t dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
 	static const int8_t dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
-
-	RoadVehFindData *rvf = (RoadVehFindData*)data;
 
 	int x_diff = v->x_pos - rvf->x;
 	int y_diff = v->y_pos - rvf->y;
 
 	/* Not a close Road vehicle when it's not a road vehicle, in the depot, or ourself. */
-	if (v->type != VEH_ROAD || v->IsInDepot() || rvf->veh->First() == v->First()) return nullptr;
+	if (v->type != VEH_ROAD || v->IsInDepot() || rvf->veh->First() == v->First()) return;
 
 	/* Not close when at a different height or when going in a different direction. */
-	if (abs(v->z_pos - rvf->veh->z_pos) >= 6 || v->direction != rvf->dir) return nullptr;
+	if (abs(v->z_pos - rvf->veh->z_pos) >= 6 || v->direction != rvf->dir) return;
 
 	/* We 'return' the closest vehicle, in distance and then VehicleID as tie-breaker. */
 	uint diff = abs(x_diff) + abs(y_diff);
-	if (diff > rvf->best_diff || (diff == rvf->best_diff && v->index > rvf->best->index)) return nullptr;
+	if (diff > rvf->best_diff || (diff == rvf->best_diff && v->index > rvf->best->index)) return;
 
 	auto IsCloseOnAxis = [](int dist, int diff) {
 		if (dist < 0) return diff > dist && diff <= 0;
@@ -641,8 +626,6 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 		rvf->best = v;
 		rvf->best_diff = diff;
 	}
-
-	return nullptr;
 }
 
 static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction dir, bool update_blocked_ctr = true)
@@ -660,13 +643,15 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 
 	if (front->state == RVSB_WORMHOLE) {
 		for (Vehicle *u : VehiclesOnTile(v->tile)) {
-			EnumCheckRoadVehClose(u, &rvf);
+			FindClosestBlockingRoadVeh(u, &rvf);
 		}
 		for (Vehicle *u : VehiclesOnTile(GetOtherTunnelBridgeEnd(v->tile))) {
-			EnumCheckRoadVehClose(u, &rvf);
+			FindClosestBlockingRoadVeh(u, &rvf);
 		}
 	} else {
-		FindVehicleOnPosXY(x, y, &rvf, EnumCheckRoadVehClose);
+		for (Vehicle *u : VehiclesNearTileXY(x, y)) {
+			FindClosestBlockingRoadVeh(u, &rvf);
+		}
 	}
 
 	/* This code protects a roadvehicle from being blocked for ever
