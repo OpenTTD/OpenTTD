@@ -178,12 +178,8 @@ bool HasVehicleNearTileXY(int32_t x, int32_t y, UnaryPred &&predicate)
 	return false;
 }
 
-typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
-
 void VehicleServiceInDepot(Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
-void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
-bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 uint8_t CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 
