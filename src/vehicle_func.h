@@ -111,6 +111,73 @@ bool HasVehicleOnTile(TileIndex tile, UnaryPred &&predicate)
 	return false;
 }
 
+/**
+ * Iterate over all vehicles near a given world coordinate.
+ * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
+ * @warning The order is non-deterministic. You have to make sure, that your processing is not order dependant.
+ */
+class VehiclesNearTileXY {
+public:
+	/**
+	 * Forward iterator
+	 */
+	class Iterator {
+	public:
+		using value_type = Vehicle *;
+		using difference_type = std::ptrdiff_t;
+		using iterator_category = std::forward_iterator_tag;
+		using pointer = void;
+		using reference = void;
+
+		explicit Iterator(int32_t x, int32_t y);
+
+		bool operator==(const Iterator &rhs) const { return this->current_veh == rhs.current_veh; }
+		bool operator==(const std::default_sentinel_t &) const { return this->current_veh == nullptr; }
+
+		Vehicle *operator*() const { return this->current_veh; }
+
+		Iterator &operator++()
+		{
+			this->Increment();
+			return *this;
+		}
+
+		Iterator operator++(int)
+		{
+			Iterator result = *this;
+			++*this;
+			return result;
+		}
+	private:
+		uint hxmin, hxmax, hymin, hymax;
+		uint hx, hy;
+		Vehicle *current_veh;
+
+		void Increment();
+		void SkipEmptyBuckets();
+	};
+
+	explicit VehiclesNearTileXY(int32_t x, int32_t y) : start(x, y) {}
+	Iterator begin() const { return this->start; }
+	std::default_sentinel_t end() const { return std::default_sentinel_t(); }
+private:
+	Iterator start;
+};
+
+/**
+ * Loop over vehicles near a given world coordinate, and check whether a predicate is true for any of them.
+ * The predicate must have the signature: bool Predicate(const Vehicle *);
+ * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
+ */
+template <class UnaryPred>
+bool HasVehicleNearTileXY(int32_t x, int32_t y, UnaryPred &&predicate)
+{
+	for (const auto *v : VehiclesNearTileXY(x, y)) {
+		if (predicate(v)) return true;
+	}
+	return false;
+}
+
 typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
