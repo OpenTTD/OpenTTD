@@ -300,20 +300,34 @@ void AnimateAirportTile(TileIndex tile)
 	AirportTileAnimationBase::AnimateTile(ats, Station::GetByTile(tile), tile, HasBit(ats->animation_special_flags, 0));
 }
 
-void TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, CargoType cargo_type)
+static bool DoTriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, uint32_t random, uint32_t var18_extra = 0)
 {
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
-	if (!ats->animation.triggers.Test(trigger)) return;
+	if (!ats->animation.triggers.Test(trigger)) return false;
 
-	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIMATION_TRIGGER, ats, st, tile, Random(), to_underlying(trigger) | (cargo_type << 8));
+	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIMATION_TRIGGER, ats, st, tile, random, to_underlying(trigger) | var18_extra);
+	return true;
 }
 
-void TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type)
+bool TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, CargoType cargo_type)
 {
-	if (st->airport.tile == INVALID_TILE) return;
-
-	for (TileIndex tile : st->airport) {
-		if (st->TileBelongsToAirport(tile)) TriggerAirportTileAnimation(st, tile, trigger, cargo_type);
-	}
+	return DoTriggerAirportTileAnimation(st, tile, trigger, Random(), cargo_type << 8);
 }
 
+bool TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type)
+{
+	if (st->airport.tile == INVALID_TILE) return false;
+
+	bool ret = true;
+	uint32_t random = Random();
+	for (TileIndex tile : st->airport) {
+		if (!st->TileBelongsToAirport(tile)) continue;
+
+		if (DoTriggerAirportTileAnimation(st, tile, trigger, random, cargo_type << 8)) {
+			SB(random, 0, 16, Random());
+		} else {
+			ret = false;
+		}
+	}
+	return ret;
+}

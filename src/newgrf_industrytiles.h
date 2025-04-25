@@ -62,7 +62,7 @@ uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t 
 CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, size_t layout_index, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type);
 
 void AnimateNewIndustryTile(TileIndex tile);
-bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32_t random = Random());
+bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat);
 bool TriggerIndustryAnimation(const Industry *ind, IndustryAnimationTrigger iat);
 
 void TriggerIndustryTileRandomisation(TileIndex t, IndustryRandomTrigger trigger);
