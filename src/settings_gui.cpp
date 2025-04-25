@@ -443,7 +443,6 @@ struct GameOptionsWindow : Window {
 
 		this->querystrings[WID_GO_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
-		this->SetFocusedWidget(WID_GO_FILTER);
 
 		this->OnInvalidateData(0);
 
@@ -773,6 +772,7 @@ struct GameOptionsWindow : Window {
 		}
 
 		this->GetWidget<NWidgetStacked>(WID_GO_TAB_SELECTION)->SetDisplayedPlane(plane);
+		if (widget == WID_GO_TAB_ADVANCED) this->SetFocusedWidget(WID_GO_FILTER);
 		this->SetDirty();
 	}
 
