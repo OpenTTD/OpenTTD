@@ -382,23 +382,54 @@ Vehicle::Vehicle(VehicleType type)
 
 /* Size of the hash, 6 = 64 x 64, 7 = 128 x 128. Larger sizes will (in theory) reduce hash
  * lookup times at the expense of memory usage. */
-const int HASH_BITS = 7;
-const int HASH_SIZE = 1 << HASH_BITS;
-const int HASH_MASK = HASH_SIZE - 1;
-const int TOTAL_HASH_SIZE = 1 << (HASH_BITS * 2);
-const int TOTAL_HASH_MASK = TOTAL_HASH_SIZE - 1;
+constexpr uint TILE_HASH_BITS = 7;
+constexpr uint TILE_HASH_SIZE = 1 << TILE_HASH_BITS;
+constexpr uint TILE_HASH_MASK = TILE_HASH_SIZE - 1;
+constexpr uint TOTAL_TILE_HASH_SIZE = 1 << (TILE_HASH_BITS * 2);
 
 /* Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
  * Profiling results show that 0 is fastest. */
-const int HASH_RES = 0;
+constexpr uint TILE_HASH_RES = 0;
 
-static std::array<Vehicle *, TOTAL_HASH_SIZE> _vehicle_tile_hash{};
-
-static Vehicle *VehicleFromTileHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc, bool find_first)
+/**
+ * Compute hash for 1D tile coordinate.
+ */
+static inline uint GetTileHash1D(uint p)
 {
-	for (int y = yl; ; y = (y + (1 << HASH_BITS)) & (HASH_MASK << HASH_BITS)) {
-		for (int x = xl; ; x = (x + 1) & HASH_MASK) {
-			Vehicle *v = _vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
+	return GB(p, TILE_HASH_RES, TILE_HASH_BITS);
+}
+
+/**
+ * Increment 1D hash to next bucket.
+ */
+static inline uint IncTileHash1D(uint h)
+{
+	return (h + 1) & TILE_HASH_MASK;
+}
+
+/**
+ * Compose two 1D hashes into 2D hash.
+ */
+static inline uint ComposeTileHash(uint hx, uint hy)
+{
+	return hx | hy << TILE_HASH_BITS;
+}
+
+/**
+ * Compute hash for tile coordinate.
+ */
+static inline uint GetTileHash(uint x, uint y)
+{
+	return ComposeTileHash(GetTileHash1D(x), GetTileHash1D(y));
+}
+
+static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
+
+static Vehicle *VehicleFromTileHash(uint xl, uint yl, uint xu, uint yu, void *data, VehicleFromPosProc *proc, bool find_first)
+{
+	for (uint y = yl; ; y = IncTileHash1D(y)) {
+		for (uint x = xl; ; x = IncTileHash1D(x)) {
+			Vehicle *v = _vehicle_tile_hash[ComposeTileHash(x, y)];
 			for (; v != nullptr; v = v->hash_tile_next) {
 				Vehicle *a = proc(v, data);
 				if (find_first && a != nullptr) return a;
@@ -428,10 +459,10 @@ static Vehicle *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *p
 	const int COLL_DIST = 6;
 
 	/* Hash area to scan is from xl,yl to xu,yu */
-	int xl = GB((x - COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS);
-	int xu = GB((x + COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS);
-	int yl = GB((y - COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
-	int yu = GB((y + COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
+	uint xl = GetTileHash1D((x - COLL_DIST) / TILE_SIZE);
+	uint xu = GetTileHash1D((x + COLL_DIST) / TILE_SIZE);
+	uint yl = GetTileHash1D((y - COLL_DIST) / TILE_SIZE);
+	uint yu = GetTileHash1D((y + COLL_DIST) / TILE_SIZE);
 
 	return VehicleFromTileHash(xl, yl, xu, yu, data, proc, find_first);
 }
@@ -477,9 +508,7 @@ bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
  */
 VehiclesOnTile::Iterator::Iterator(TileIndex tile) : tile(tile)
 {
-	int x = GB(TileX(tile), HASH_RES, HASH_BITS);
-	int y = GB(TileY(tile), HASH_RES, HASH_BITS) << HASH_BITS;
-	this->current = _vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
+	this->current = _vehicle_tile_hash[GetTileHash(TileX(tile), TileY(tile))];
 	this->SkipFalseMatches();
 }
 
@@ -578,9 +607,7 @@ static void UpdateVehicleTileHash(Vehicle *v, bool remove)
 	if (remove) {
 		new_hash = nullptr;
 	} else {
-		int x = GB(TileX(v->tile), HASH_RES, HASH_BITS);
-		int y = GB(TileY(v->tile), HASH_RES, HASH_BITS) << HASH_BITS;
-		new_hash = &_vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
+		new_hash = &_vehicle_tile_hash[GetTileHash(TileX(v->tile), TileY(v->tile))];
 	}
 
 	if (old_hash == new_hash) return;
