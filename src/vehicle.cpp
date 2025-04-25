@@ -504,6 +504,52 @@ bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
 
 /**
  * Iterator constructor.
+ * Find first vehicle near (x, y).
+ */
+VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y)
+{
+	const int COLL_DIST = 6;
+
+	/* Hash area to scan */
+	this->hxmin = this->hx = GetTileHash1D((x - COLL_DIST) / TILE_SIZE);
+	this->hxmax = GetTileHash1D((x + COLL_DIST) / TILE_SIZE);
+	this->hymin = this->hy = GetTileHash1D((y - COLL_DIST) / TILE_SIZE);
+	this->hymax = GetTileHash1D((y + COLL_DIST) / TILE_SIZE);
+
+	this->current_veh = _vehicle_tile_hash[ComposeTileHash(this->hx, this->hy)];
+	this->SkipEmptyBuckets();
+}
+
+/**
+ * Advance the internal state to the next potential vehicle.
+ */
+void VehiclesNearTileXY::Iterator::Increment()
+{
+	assert(this->current_veh != nullptr);
+	this->current_veh = this->current_veh->hash_tile_next;
+	this->SkipEmptyBuckets();
+}
+
+/**
+ * Advance the internal state until we reach a non-empty bucket, or the end.
+ */
+void VehiclesNearTileXY::Iterator::SkipEmptyBuckets()
+{
+	while (this->current_veh == nullptr) {
+		if (this->hx != this->hxmax) {
+			this->hx = IncTileHash1D(this->hx);
+		} else if (this->hy != this->hymax) {
+			this->hx = this->hxmin;
+			this->hy = IncTileHash1D(this->hy);
+		} else {
+			return;
+		}
+		this->current_veh = _vehicle_tile_hash[ComposeTileHash(this->hx, this->hy)];
+	}
+}
+
+/**
+ * Iterator constructor.
  * Find first vehicle on tile.
  */
 VehiclesOnTile::Iterator::Iterator(TileIndex tile) : tile(tile)
