@@ -75,6 +75,7 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_OPTIONSPANEL,       ///< Panel widget containing the option lists.
 	WID_GO_SCROLLBAR,          ///< Scrollbar.
 	WID_GO_HELP_TEXT,          ///< Information area to display help text of the selected option.
+	WID_GO_HELP_TEXT_SCROLL,   ///< Scrollbar for setting description.
 	WID_GO_EXPAND_ALL,         ///< Expand all button.
 	WID_GO_COLLAPSE_ALL,       ///< Collapse all button.
 	WID_GO_RESET_ALL,          ///< Reset all button.
