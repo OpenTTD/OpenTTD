@@ -507,7 +507,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Házak elhelyez
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Játékbeállítások
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Beállítások
 STR_SETTINGS_MENU_AI_SETTINGS                                   :MI-beállítások
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Játékszkript-beállítások
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF beállítások
@@ -1121,6 +1120,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Jelöld 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Jelenlegi meghajtó: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Felület mérete
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Használd a csúszkát a felület méretének beállításához. Ctrl+húzás a finom állításhoz
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Méret automatikus felismerése
@@ -1144,7 +1144,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ezzel me
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Felmérés eredményének előnézete
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mutasd a jelenleg futó játékhoz tartozó felmérés eredményeit.
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Képernyőfrissítési frekvencia
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Játékhoz használt képernyőfrissítési frekvencia kiválasztása
@@ -1283,8 +1282,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny (ni
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen megfelelő elérhető MI...{}{}Letölthetsz néhány MI-t a tartalomletöltő rendszeren keresztül
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Beállítások
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Szűrőkifejezés:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Összes szétnyitása
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Összes összecsukása
@@ -2267,7 +2265,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Hálóza
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Alapbeállítások
 STR_INTRO_HIGHSCORE                                             :{BLACK}Rekord tábla
 STR_INTRO_HELP                                                  :{BLACK}Súgó és útmutatók
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Beállítások
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
 STR_INTRO_AI_SETTINGS                                           :{BLACK}MI-beállítások
@@ -2289,7 +2286,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Játékv
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}A játékbeállítások megnyitása
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Rekord tábla megnyitása
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Férj hozzá a dokumentációhoz és az online tartalmakhoz
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}A beállítások megnyitása
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-beállítások megnyitása
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}MI-beállítások megnyitása

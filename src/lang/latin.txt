@@ -574,7 +574,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Exire
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludi optiones
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Electiones
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Optiones NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Optiones perluciditatis
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomina oppidorum spectabilia
@@ -1114,6 +1113,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Fundamentum graphicum
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Eligere fundamentum graphicum adhibendum
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Indicia additicia de hoc fundamento graphico
@@ -1227,8 +1227,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Longe
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nullae IA parabiles sunt...{}Potes arcessere nunullas IA in 'Inventario Interretiale'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Electiones
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Series colans:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Omnia expandere
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Omnia collocare
@@ -2075,7 +2074,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Plurium 
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludi Optiones
 STR_INTRO_HIGHSCORE                                             :{BLACK}Album Punctorum Supremorum
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Electiones
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Optiones
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Inspicere Inventarium Interretiale
 STR_INTRO_QUIT                                                  :{BLACK}Exire
@@ -2094,7 +2092,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Eligere 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Monstrare ludi optiones
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Monstrare album punctorum supremorum
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Monstrare electiones
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Monstrare optiones NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Inspicere inventarium Interretiale in quo res sicut NewGRF, scaenaria, musica, etc. sunt
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Exire OpenTTD

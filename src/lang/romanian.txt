@@ -443,7 +443,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Plasează case
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opțiunile jocului
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Setări
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Setările AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Setări pentru scriptul jocului
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
@@ -1044,6 +1043,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Bifați 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Driver curent: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Dimensiune interfață
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Trageți glisorul pentru a seta dimensiunea interfeței. Ctrl+Tras pentru ajustare continuă
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectează automat dimensiunea
@@ -1067,7 +1067,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Asta va 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Previzualizare rezultat sondaj
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Arată rezultatul sondajului pentru jocul curent
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Afișează rata de reîmprospătare
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Alegeți rata de reîmprospătare dorită
@@ -1206,8 +1205,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă (far
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligență Artificială...{}Puteți descărca diferite module de Inteligență Artificială prin sistemul de 'Resurse Online'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Setări
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtru:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Extinde toate
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsează toate
@@ -2184,7 +2182,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opțiuni
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela cu scoruri maxime
 STR_INTRO_HELP                                                  :{BLACK}Ajutor și manuale
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Setări
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Setări AI
@@ -2206,7 +2203,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Alege pe
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afișează opțiunile jocului
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Afișează tabela cu scoruri maxime
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obțineți acces la documentație și resurse online
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Deschide setările
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afișează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afișează setările AI

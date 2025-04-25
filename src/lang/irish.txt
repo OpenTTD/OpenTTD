@@ -399,7 +399,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghanna an chluiche
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Socruithe
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruithe NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghanna trédhearcachta
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Taispeántar ainmneacha bailte
@@ -956,7 +955,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cuir tic
 
 
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafaicí
+
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ráta athnuachana na taispeána
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Roghnaigh ráta athnuachana an scáileán atá le húsáid
@@ -1078,8 +1077,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tugtar cead
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon AI oiriúnach ar fáil...{}Is féidir leat roinnt AI a íoslódáil tríd an gcóras 'Inneachar Ar Líne'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Socruithe
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Teaghrán scagtha:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Fairsingigh gach ceann
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Leacaigh gach ceann
@@ -1979,7 +1977,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Ilimreoi
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Roghanna an Chluiche
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tábla na nArdscór
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Socruithe
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Socruithe NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Seiceáil Inneachar Ar Líne
 STR_INTRO_QUIT                                                  :{BLACK}Scoir
@@ -1998,7 +1995,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Roghnaig
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Taispeáin roghanna an chluiche
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Taispeáin tábla na n-ardscór
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Socruithe taispeána
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Taispeáin socruithe NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Seiceáil le haghaidh inneachar nua agus nuashonruithe le híoslódáil
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Téigh amach as 'OpenTTD'

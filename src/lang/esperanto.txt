@@ -523,7 +523,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Forlasi
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj agordoj
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Agordoj
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI agordoj
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ludoskriptaj agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
@@ -1104,6 +1103,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Vertikal
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuna pelilo: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interfacgrandeco
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Aŭtomate rekonu grandecon
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Ŝaltu ĉi tiun kvadrateton por aŭtomate detekti grandecon de la interfaco
@@ -1123,7 +1123,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Tio ĉi 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Antaŭmontru sondaĵrezulton
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Montru la sondaĵrezulton de la kuranta ludo
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiko
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Montru aktualigoftecon
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Elektu ekranan aktualigoftecon
@@ -1249,8 +1248,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permesema (ne e
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Neniu taŭga AI estas disponebla...{}Kelkaj AI-oj estas elŝuteblaj per la sistemo 'Enreta Enhavo'.
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Agordoj
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrilo:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Etendu ĉion
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Maletendu ĉiujn
@@ -2165,7 +2163,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Pluraj L
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj agordoj
 STR_INTRO_HIGHSCORE                                             :{BLACK}Altpoentara tabelo
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontroli ĉeretajn aldonaĵojn
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-agordoj
@@ -2186,7 +2183,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elektu '
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montri ludajn agordojn
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Malfermu altpoentaran tabelon
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Montru agordojn
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Montru AI-agordojn

@@ -429,6 +429,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
+
 # Custom currency window
 
 
@@ -455,7 +456,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 

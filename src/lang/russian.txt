@@ -570,7 +570,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Размеще�
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Основные настройки
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Расширенные настройки
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Настройки ИИ
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Настройки игровых скриптов
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
@@ -1202,6 +1201,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Вклю
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Видеодрайвер: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Масштаб интерфейса
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Изменяйте масштаб интерфейса с помощью ползунка. Удерживайте Ctrl для точной настройки.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Автоопределение
@@ -1225,7 +1225,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Откр
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Просмотр собранных данных
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Показать данные, собранные в текущем сеансе и подготовленные к отправке
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Настройки графики
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Частота обновления экрана
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Выбор частоты обновления экрана
@@ -1368,8 +1367,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :дозволя�
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}{}Их можно скачать через систему онлайн-контента.
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Расширенные настройки
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фильтр:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Развернуть всё
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Свернуть всё
@@ -2354,7 +2352,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Сете
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Основные настройки
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица рекордов
 STR_INTRO_HELP                                                  :{BLACK}Помощь и документация
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Онлайн-контент
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Настройки ИИ
@@ -2376,7 +2373,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Детс
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Открыть окно с основными настройками игры
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показать таблицу рекордов
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Ссылки на документацию и интернет-ресурсы
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Расширенные настройки игры
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Открыть настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Открыть настройки ИИ

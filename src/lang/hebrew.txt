@@ -426,7 +426,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :יציאה
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :אפשרויות המשחק
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :הגדרות
 STR_SETTINGS_MENU_AI_SETTINGS                                   :הגדרות בינה מלאכותית
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :אפשרויות סקריפטי משחק
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :הגדרות GRF חדש
@@ -978,6 +977,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}סמן �
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}מנהל ההתקן הנוכחי: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}גודל הממשק
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}זהה גודל אוטומטית
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}סמן תיבה זו כדי לזהות את גודל הממשק אוטומטית
@@ -996,7 +996,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}פותח
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}צפייה מקדימה בתוצאות הסקר
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}הצג את תוצאות הסקר של המשחק הנוכחי
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}גרפיקה
 
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}עדכוני סמך מעל 60Hz עלולים להשפיע על ביצועים.
 
@@ -1116,8 +1115,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין בינות מלאכותיות מתאימות...{}באפשרותך להוריד בינות מלאכותיות בעזרת מערכת ה'תוכן המקוון'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}הגדרות
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}מחרוזת סינון:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}הרחב הכל
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}צמצם הכל
@@ -2004,7 +2002,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}משחק
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}אפשרויות משחק
 STR_INTRO_HIGHSCORE                                             :{BLACK}טבלת ניקוד מירבי
 STR_INTRO_HELP                                                  :{BLACK}עזרה ומדריכים
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}הגדרות
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
 STR_INTRO_AI_SETTINGS                                           :{BLACK}הגדרות בינה מלאכותית
@@ -2026,7 +2023,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}ארץ �
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}הצג הגדרות משחק
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}הצג טבלת ניקוד מירבי
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}קבל גישה לתיעוד ולמשאבים מקוונים
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}פתח הגדרות
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}פתח הגדרות NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}פתח הגדרות בינה מלאכותית

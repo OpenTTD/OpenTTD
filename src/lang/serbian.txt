@@ -624,7 +624,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Podešavanja
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Podešavanja VI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Podešavanja skripte
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Podešavanja NewGRF
@@ -1216,6 +1215,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Označi 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Trenutni pokretač: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Veličina interfejsa
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Povuci klizač da podesiš veličinu interfejsa. Držanjem Ctrl podešavanje se vrši kontinualno
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automatski detektuj veličinu
@@ -1238,7 +1238,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ovo otva
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Pregledaj rezultate anketa
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Pogledaj rezultate ankete za trenutnu igru
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafike
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Frekvencija osvežavanja ekrana
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Odaberi frekvenciju osvežavanja ekrana
@@ -1369,8 +1368,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljivo (be
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dostupne odgovarajuće VI...{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Podešavanja
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Pretraga:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Proširi sve
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skupi sve
@@ -2320,7 +2318,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mrežna 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcije
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela najboljih rezultata
 STR_INTRO_HELP                                                  :{BLACK}Pomoć i priručnici
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Podešavanja
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Podešavanja NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Proveri dodatke na mreži
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Podešavanja VI
@@ -2342,7 +2339,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izbor ze
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Prikaži opcije igre
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Prikaži tabelu najboljih rezultata
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Pristupi dokumentaciji i resursima na internetu
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otvori podešavanja
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži podešavanja NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažuriranih dodatka za preuzimanje
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otvori podešavanja VI

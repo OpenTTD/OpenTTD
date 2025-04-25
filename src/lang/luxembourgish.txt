@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Haiser plazéir
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Astellungen
 STR_SETTINGS_MENU_AI_SETTINGS                                   :KI Astellungen
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spillscriptastellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Astellungen
@@ -1057,6 +1056,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Wiel des
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuellen Driver: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interfacegréisst
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}De Slider zéien fir d'Gréisst vum Interface ze änneren. Ctrl+Zéien fir eng kontinuéierlech Ännerung
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Gréisst autom. erkennen
@@ -1080,7 +1080,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Dëst st
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Preview op d'Emfroresultat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Weis d'Resultat vun der Emfro vum aktuelle Spill un
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Bildfrequenz
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Wiel d'Frequenz vum Bildschirm aus
@@ -1219,8 +1218,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Fräizügeg (ke
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keng KI fonnt...{}{}KI kënnen iwwert den 'Online Content' system downgeload ginn
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Astellungen
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles erweideren
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles reduzéiren
@@ -2203,7 +2201,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multipla
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilloptiounen
 STR_INTRO_HIGHSCORE                                             :{BLACK}Beschtelëscht
 STR_INTRO_HELP                                                  :{BLACK}Hëllef & Handbuch
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Astellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Astellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online Content
 STR_INTRO_AI_SETTINGS                                           :{BLACK}KI Astellungen
@@ -2225,7 +2222,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wielt de
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spilloptiounen opman
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Beschtelëscht opman
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Hei kritt een Dokumentatiounen an online Ressourcen
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Astellungen opman
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF Astellungen opman
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann erofgelude ginn
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}KI-Astellungen opman

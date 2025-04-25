@@ -157,7 +157,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 
 
 # Settings menu
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :समायोजन
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :पथ-संकेतों के नाम दिखायें
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :पारदर्शी संकेत
 
@@ -346,6 +345,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}हा�
 
 
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}इंटरफ़ेस का आकार
 
 
@@ -397,7 +397,7 @@ STR_DISASTER_NORMAL                                             :सामान
 STR_CITY_APPROVAL_TOLERANT                                      :सहिष्णु
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}डिफ़ॉल्ट मान: {ORANGE}{STRING}
 
 

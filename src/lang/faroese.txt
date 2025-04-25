@@ -889,6 +889,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base grafikk sett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel ta base grafikk setti tú vil brúka
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Meira kunning um base grafikk setti
@@ -1000,7 +1001,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Eftirgevandi
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Einki hóskandi AI til taks...{}Tú kann heinta niður fleiri ymisk AI gjøgnum 'Online tilfar' kervi
 
-# Settings tree window
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtur strongur:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Víðka alt
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Toga alt saman

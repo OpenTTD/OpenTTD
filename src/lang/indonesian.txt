@@ -436,7 +436,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Pengaturan
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Pengaturan AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Pengaturan Game script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
@@ -1017,6 +1016,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Centang 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Pengendali piranti: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Ukuran antarmuka
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Geser slider untuk mengatur ukuran antarmuka. Tekan tombol Ctrl untuk pengaturan terus menerus
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Otomatis deteksi ukuran
@@ -1037,7 +1037,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ini akan
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Tampilkan hasil survey
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Tampilkan hasil survey pada game yang berjalan saat ini
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Menampilkan kecepatan refresh
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Pilih laju penyegaran layar yang akan digunakan
@@ -1168,8 +1167,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisif (tidak
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa macam AI lewat "Cari Konten"
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Pengaturan
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Saring:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Perluas semua
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Persempit semua
@@ -2126,7 +2124,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi Pe
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pengaturan Permainan
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabel Nilai Tertinggi
 STR_INTRO_HELP                                                  :{BLACK}Bantuan & Panduan
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Pengaturan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari Konten Daring
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Pengaturan AI
@@ -2148,7 +2145,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Pilih ga
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Tampilkan opsi permainan
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Tampilkan tabel nilai tertinggi
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Dapatkan izin dokumentasi dan sumber daya online
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Tampilkan pengaturan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan pengaturan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Tampilkan pengaturan AI

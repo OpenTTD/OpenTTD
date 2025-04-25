@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Placera ut hus
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Inställningar
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Inställningar för AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spelskriptinställningar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Inställningar för NewGRF
@@ -1055,6 +1054,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Markera 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nuvarande drivrutin: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Gränssnittets storlek
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Dra i reglaget för att ställa in gränssnittets storlek. Ctrl+Drag för steglös justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Känn av storleken automatiskt
@@ -1078,7 +1078,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Detta ö
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Förhandsgranska enkätresultat
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Visa enkätresultatet från det nu pågående spelet
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Visa uppdateringsfrekvens
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Välj skärmens uppdateringsfrekvens
@@ -1217,8 +1216,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tillåtande (in
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande datorspelare finns tillgänglig...{}{}Du kan ladda ner ett flertal datorspelare via systemet för 'online-innehåll'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Inställningar
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Sökfilter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Utöka alla
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Stäng alla
@@ -2201,7 +2199,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera sp
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinställningar
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bästa spelresultat
 STR_INTRO_HELP                                                  :Hjälp & Manualer
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Inställningar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-inställningar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online-innehåll
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-inställningar
@@ -2223,7 +2220,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Välj 'l
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Öppna spelinställningar
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Öppna topplistan över de bästa spelresultaten
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Inhämta dokumentation och onlineresurser
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Öppna inställningar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Öppna inställningar för NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Öppna inställningar för AI

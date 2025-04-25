@@ -823,7 +823,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Stawianie budyn
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcje gry
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ustawienia
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ustawienia SI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ustawienia Game Script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewGRF
@@ -1437,6 +1436,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Bieżący sterownik: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Rozmiar interfejsu
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Wykryj rozmiar automatycznie
@@ -1460,7 +1460,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Spowoduj
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Podejrzyj wynik ankiety
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Pokaż wynik ankiety dotyczącej bieżącej gry
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Częstotliwość odświeżania obrazu
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Wybierz częstotliwość odświeżania ekranu
@@ -1599,8 +1598,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne (bez 
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak odpowiednich SI...{}{}Możesz pobrać różne SI przez „Przeglądarkę Dodatków”
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ustawienia
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtr:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otwórz wszystko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zamknij wszystko
@@ -2583,7 +2581,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Gra Wiel
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opcje Gry
 STR_INTRO_HIGHSCORE                                             :{BLACK}Najwyższe Wyniki
 STR_INTRO_HELP                                                  :{BLACK}Pomoc i Instrukcje
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ustawienia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Przeglądarka Dodatków
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ustawienia SI
@@ -2605,7 +2602,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Wybierz 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Otwórz opcje gry
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Otwórz tabelę najwyższych wyników
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Skorzystaj z dokumentacji i zasobów online
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otwórz ustawienia rozgrywki
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Otwórz ustawienia dodatków NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych dodatków lub aktualizacji do pobrania
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otwórz ustawienia SI

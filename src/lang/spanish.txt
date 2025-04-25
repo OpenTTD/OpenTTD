@@ -445,7 +445,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Colocar edifici
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuración
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuración de IA
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configuración de script de juego
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
@@ -1058,6 +1057,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marca es
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Mueve el control deslizante para seleccionar el tamaño de la interfaz. Ctrl+deslizar para ajustar de forma continua
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Autodetectar tamaño
@@ -1081,7 +1081,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Se abrir
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Vista previa del resultado
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Muestra el resultado de la encuesta para el juego actual
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Mostrar frecuencia de actualización
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecciona la frecuencia de actualización de la pantalla
@@ -1220,8 +1219,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (sin 
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se han encontrado IA apropiadas...{}Puedes descargar IA a través del sistema de 'Contenido en línea'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtro:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todo
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Contraer todo
@@ -2204,7 +2202,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijug
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones de Juego
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabla de Puntuaciones
 STR_INTRO_HELP                                                  :{BLACK}Ayuda y Manuales
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configuración
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido en línea
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración de IA
@@ -2226,7 +2223,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Seleccio
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abre la tabla de puntuaciones
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Proporciona acceso a documentación y recursos en línea
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abre la configuración
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abre la configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprueba si hay contenidos nuevos y actualizados para descargar
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abre la configuración de IA

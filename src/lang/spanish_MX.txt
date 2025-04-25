@@ -286,7 +286,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cerrar v
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana (arrastrar para mover)
 STR_TOOLTIP_SHADE                                               :{BLACK}Ocultar ventana (mostrar solo título)
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar información de depuración de NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Cambiar al tamaño por defecto de la ventana. Ctrl+Clic guarda el tamaño actual como nuevo tamaño por defecto
+STR_TOOLTIP_DEFSIZE                                             :Cambiar al tamaño por defecto de la ventana. Ctrl+Clic guarda el tamaño actual como nuevo tamaño por defecto
 STR_TOOLTIP_STICKY                                              :{BLACK}Excluir esta ventana de la función de la tecla "Cerrar todas las ventanas". Ctrl+Clic guarda esta preferencia como opción por defecto
 STR_TOOLTIP_RESIZE                                              :{BLACK}Arrastrar para cambiar el tamaño de esta ventana
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Cambiar entre tamaño de ventana grande o pequeño
@@ -445,7 +445,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Colocar edifici
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuración
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuración de IA
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Configuración de script de juego
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración de NewGRF
@@ -960,13 +959,15 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copiar u
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opciones de juego
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :General
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Elegir ajustes generales
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Elegir ajustes generales
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Gráficos
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Elegir ajustes de gráficos
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Elegir ajustes de gráficos
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sonido
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Elegir ajustes de sonido y música
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Elegir ajustes de sonido y música
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Elegir ajustes de integración social
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Elegir ajustes de integración social
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avanzado
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Cambiar ajustes avanzados
 
 STR_GAME_OPTIONS_VOLUME                                         :Volumen
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectos de sonido
@@ -974,8 +975,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Divisa
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elegir divisa
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Divisas
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Elegir divisa
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1026,8 +1027,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats letón
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugués
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Grivna ucraniana
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Guardado automático
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el intervalo de guardados automáticos
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Guardado automático
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Elegir el intervalo de guardados automáticos
 
 # Autosave dropdown
 ###length 5
@@ -1037,77 +1038,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Cada 30 minutos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Cada 60 minutos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Cada 120 minutos
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Elegir el idioma de la interfaz
+STR_GAME_OPTIONS_LANGUAGE                                       :Idioma
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Elegir el idioma de la interfaz
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% completado)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jugar OpenTTD en pantalla completa
+STR_GAME_OPTIONS_FULLSCREEN                                     :Pantalla completa
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Jugar OpenTTD en pantalla completa
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolución de pantalla
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elegir la resolución de pantalla
+STR_GAME_OPTIONS_RESOLUTION                                     :Resolución de pantalla
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Elegir la resolución de pantalla
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otra
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}×{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aceleración por hardware
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Intentar usar la aceleración por hardware. Se debe reiniciar el juego para que el cambio surta efecto
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Aceleración por hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Intentar usar la aceleración por hardware. Se debe reiniciar el juego para que el cambio surta efecto
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Esta configuración solo tendrá efecto después de reiniciar el juego
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Sincronización vertical
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Activar la sincronización vertical de pantalla (v-sync). Se debe activar la aceleración por hardware y reiniciar el juego para que el cambio surta efecto
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Sincronización vertical
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Activar la sincronización vertical de pantalla (v-sync). Se debe activar la aceleración por hardware y reiniciar el juego para que el cambio surta efecto
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Controlador actual: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador actual: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Tamaño de la interfaz
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arrastrar la barra para cambiar el tamaño de la interfaz. Ctrl y arrastrar para un ajuste más fino
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detectar automáticamente
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Detectar el tamaño de la interfaz automáticamente
+STR_GAME_OPTIONS_INTERFACE                                      :Interfaz
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Ajustar biseles
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Ajustar el tamaño de los biseles respecto a la interfaz
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Tamaño de la interfaz
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arrastrar la barra para cambiar el tamaño de la interfaz. Ctrl y arrastrar para un ajuste más fino
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detectar automáticamente
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Detectar el tamaño de la interfaz automáticamente
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar la fuente sprite tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Preferir usar la fuente tradicional de sprite de tamaño fijo
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fuentes suavizadas
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Suavizar las fuentes de tamaño adaptable
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Ajustar biseles
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Ajustar el tamaño de los biseles respecto a la interfaz
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar la fuente sprite tradicional
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Preferir usar la fuente tradicional de sprite de tamaño fijo
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fuentes suavizadas
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Suavizar las fuentes de tamaño adaptable
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Recopilación de datos
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Permitir recopilar datos
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Al activarse, OpenTTD enviará datos recopilados automáticamente al salir del juego
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Detalles e información de privacidad
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Ir a la página web con más información sobre la recopilación de datos automática (en inglés)
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Ver qué datos se enviarán
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar los datos recopilados del juego actual que se enviarán
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Recopilación de datos
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Permitir recopilar datos
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Al activarse, OpenTTD enviará datos recopilados automáticamente al salir del juego
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Detalles e información de privacidad
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Ir a la página web con más información sobre la recopilación de datos automática (en inglés)
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Ver qué datos se enviarán
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Mostrar los datos recopilados del juego actual que se enviarán
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Gráficos
+STR_GAME_OPTIONS_DISPLAY                                        :Mostrar
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Frecuencia de actualización
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Elegir la frecuencia de actualización de la pantalla
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Frecuencia de actualización
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Elegir la frecuencia de actualización de la pantalla
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM} Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Las frecuencias mayores a 60 Hz pueden alterar el rendimiento.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Elegir el paquete de gráficos base. Solo pueden cambiarse desde el menú principal
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre los gráficos base
+STR_GAME_OPTIONS_BASE_GRF                                       :Gráficos base
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Elegir el paquete de gráficos base. Solo pueden cambiarse desde el menú principal
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Información adicional sobre los gráficos base
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sonidos base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Elegir el paquete de sonidos base. Solo pueden cambiarse desde el menú principal
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre los sonidos base
+STR_GAME_OPTIONS_BASE_SFX                                       :Sonidos base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Elegir el paquete de sonidos base. Solo pueden cambiarse desde el menú principal
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Información adicional sobre los sonidos base
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Música base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elegir música base
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre música base
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Música base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Elegir música base
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Información adicional sobre música base
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Buscar contenido
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Revisar si hay contenido nuevo y actualizado para descargar
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no se han instalado plugins para integrar plataformas sociales)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(no se han instalado plugins para integrar plataformas sociales)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plataforma:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Estado del plugin:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Plataforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Estado del plugin:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}En ejecución
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}No se pudo inicializar
@@ -1220,12 +1223,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva (no a
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron archivos de IA apropiados...{}{}Se pueden descargar por medio del sistema de 'Contenido en línea'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configuración
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplegar todo
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Contraer todo
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer todos los ajustes
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtrar:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Desplegar todo
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Contraer todo
+STR_CONFIG_SETTING_RESET_ALL                                    :Restablecer todos los ajustes
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sin explicación disponible)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
@@ -1238,9 +1240,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empr
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}¡Advertencia!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta acción restablecerá todos los ajustes del juego a sus valores originales.{}¿Deseas proceder?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringir lista de opciones a los filtros predefinidos
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Categoría:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tipo:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Restringir lista de opciones a los filtros predefinidos
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Básico (mostrar solo las opciones más esenciales)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanzado (mostrar la mayoría de las opciones)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Experto (mostrar todas las opciones, incluso las avanzadas)
@@ -1257,9 +1259,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Opciones de emp
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ninguno -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Categoría {BLACK}a {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Tipo {BLACK}a {WHITE}Todos los tipos de opción
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos los resultados por opción de configuración{}{SILVER}Categoría {BLACK}a {WHITE}{STRING} {BLACK}y {SILVER}Tipo {BLACK}a {WHITE}Todos los tipos de opción
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Mostrar todos los resultados por opción de configuración{}{PUSH_COLOUR}{SILVER}Categoría {POP_COLOUR}a {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Mostrar todos los resultados por opción de configuración{}{PUSH_COLOUR}{SILVER}Tipo {POP_COLOUR}a {WHITE}Todos los tipos de opción
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Mostrar todos los resultados por opción de configuración{}{PUSH_COLOUR}{SILVER}Categoría {POP_COLOUR}a {PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}y {PUSH_COLOUR}{SILVER}Tipo {POP_COLOUR}a {WHITE}Todos los tipos de opción
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :No
@@ -2204,7 +2206,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijug
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones de juego
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabla de puntuaciones
 STR_INTRO_HELP                                                  :{BLACK}Ayuda y manuales
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configuración
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido en línea
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración de IA
@@ -2226,7 +2227,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir m
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabla de puntuaciones
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Acceder a documentación y recursos en línea
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Abrir configuración
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar si hay nuevos contenidos actualizados para descargar
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir configuración de IA

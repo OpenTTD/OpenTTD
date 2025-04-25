@@ -577,7 +577,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Розміще�
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Налаштування
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Налаштування ШІ
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Налаштування ігрового скрипту
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
@@ -1192,6 +1191,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Позн
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Використовуваний драйвер: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Розмір інтерфейсу
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Потягніть повзунок для зміни розміру інтерфейсу. Ctrl+протягування для точнішого коригування
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Визначати розмір автоматично
@@ -1215,7 +1215,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Відк
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Попередній перегляд збору даних
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Перегляд збору даних поточної гри
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Графіка
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Частота оновлення екрана
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Оберіть, яку частоту оновлення екрана використовувати
@@ -1354,8 +1353,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :допусти�
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Немає підходящих модулів ШІ...{}Ви можете завантажити різноманітні модулі ШІ через 'Додатковий контент'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Налаштування
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтр:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Розгорнути всі
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згорнути всі
@@ -2336,7 +2334,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Мере
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблиця рекордів
 STR_INTRO_HELP                                                  :{BLACK}Допомога й довідка
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Налаштування ШІ
@@ -2358,7 +2355,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Вибр
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Відкрити налаштування гри
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Відкрити таблицю рекордів
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Отримати доступ до довідки й мережевих ресурсів
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Показати налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Відкрити налаштування NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показати налаштування ШІ

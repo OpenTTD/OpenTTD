@@ -498,7 +498,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :V채lju
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :M채ngu seadistus
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Seaded
 STR_SETTINGS_MENU_AI_SETTINGS                                   :TI seaded
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :GameScript'i seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-i seadistus
@@ -1098,6 +1097,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}M채rgi, 
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Hetke draiver: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Liidese suurus
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Lohista liugurit liidesesuuruse seadmiseks. Ctrl+lohistamisel pidevkohendamine
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tuvasta automaatselt suurus
@@ -1121,7 +1121,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}See avab
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Uuringutulemuste eelvaade
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}N채ita k채imasoleva m채ngu uuringutulemusi
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekraani v채rskendussagedus
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Vali, mis v채rskendussagedust kasutada
@@ -1258,8 +1257,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Lubav (ei oma m
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv AI puudub...{}Mitmesuguseid AI-sid saab alla laadida 'aineste allalaadimise' kaudu
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Seaded
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}M채rks천na:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ava k천ik
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulge k천ik
@@ -2234,7 +2232,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mitmikm�
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Liidese seadistus
 STR_INTRO_HIGHSCORE                                             :{BLACK}Edetabel
 STR_INTRO_HELP                                                  :{BLACK}Abi & kasutusjuhendid
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Seaded
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-i seadistus
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Aineste allalaadimine
 STR_INTRO_AI_SETTINGS                                           :{BLACK}TI Seaded
@@ -2256,7 +2253,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vali 'm�
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Ava liidese seadus
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Ava edetabel
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Saa ligip채채s dokumentatsioonile ja veebiressursidele
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ava seaded
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ava NewGRF-i seadistus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uusi ja uuendatud aineseid
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Ava TI-seaded

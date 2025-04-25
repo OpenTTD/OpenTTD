@@ -506,7 +506,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Τοποθέτ�
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Ρυθμίσεις
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Ρυθμίσεις AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Ρυθμίσεις σενάριου παιχνιδιού
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
@@ -1150,6 +1149,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Τσεκ
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Τρέχων οδηγός: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Μέγεθος διεπαφής
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Σύρετε το κουμπί για να ορίσετε το μέγεθος του περιβάλλοντος διεπαφής. Ctrl+Σύρσιμο για συνεχή προσαρμογή
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Αυτόματος εντοπισμός μεγέθους
@@ -1173,7 +1173,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Αυτό
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Προεπισκόπηση αποτελέσματος έρευνας
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Εμφάνιση του αποτελέσματος της έρευνας του τρέχοντος παιχνιδιού
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Γραφικά
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Εμφάνιση ρυθμού ανανέωσης
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Επιλέξτε τον ρυθμό ανανέωσης της οθόνης
@@ -1312,8 +1311,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτικ�
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν υπάρχει διαθέσιμο κατάλληλο Al...{}{}Μπορείτε να κατεβάσετε AI μέσω του συστήματος «Διαδικτυακού Περιεχομένου»
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ρυθμίσεις
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Φιλτράρισμα:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Επέκταση όλων
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Σύμπτυξη όλων
@@ -2296,7 +2294,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχ
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
 STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνακας Βαθμολογιών
 STR_INTRO_HELP                                                  :{BLACK}Βοήθεια και εγχειρίδια χρήσης
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδικτυακό Περιεχόμενο
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ρυθμίσεις AI
@@ -2318,7 +2315,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλ
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Εμφάνιση επιλογών παιχνιδιού
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Εμφάνιση του πίνακα βαθμολογιών
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Αποκτήστε πρόσβαση στην τεκμηρίωση και σε διαδικτυακούς πόρους
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Εμφάνιση ρυθμίσεων
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για λήψη
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Εμφάνιση ρυθμίσεων ΤΝ

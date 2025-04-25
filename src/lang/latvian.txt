@@ -446,7 +446,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Novietojiet mā
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Iestatījumi
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI iestatījumi
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Spēles skripta iestatījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF iestatījumi
@@ -1059,6 +1058,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Atzīmē
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Esošais vadītājs: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Saskarnes izmērs
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Velciet slīdni, lai iestatītu saskarnes izmēru. Velciet Ctrl nepārtrauktai pielāgošanai
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Automātiski noteikt izmēru
@@ -1082,7 +1082,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Tiek atv
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Priekšskatīt aptaujas rezultātus
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Rādīt pašreizējās spēles aptaujas rezultātus
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekrāna atsvaidzes intensitāte
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Izvēlieties izmantojamo ekrāna atsvaidzes intensitāti
@@ -1221,8 +1220,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujoša (n
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}{}Jūs varat lejuplādēt dažādus MI, izmantojot pogu 'Tiešsaistes saturs'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Iestatījumi
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrs:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Izvērst visu
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sakļaut visu
@@ -2207,7 +2205,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Vairāks
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles opcijas
 STR_INTRO_HIGHSCORE                                             :{BLACK}Sasniegumu tabula
 STR_INTRO_HELP                                                  :{BLACK}Palīdzība un rokasgrāmatas
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tiešsaistes saturs
 STR_INTRO_AI_SETTINGS                                           :{BLACK}MI Iestatījumi
@@ -2229,7 +2226,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izvēlē
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Atvērt spēles opcijas
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Atvērt sasniegumu tabulu
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Piekļūstiet dokumentācijai un tiešsaistes resursiem
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Atvērt iestatījumus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Atvērt NewGRF iestatījumus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai lejupielādei nav pieejams jauns un atjaunināts saturs
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Atvērt MI iestatījumus

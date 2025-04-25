@@ -495,6 +495,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
+
 # Custom currency window
 
 
@@ -539,7 +540,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 

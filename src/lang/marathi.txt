@@ -727,6 +727,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
+
 # Custom currency window
 
 
@@ -757,7 +758,7 @@ STR_SUBSIDY_X4                                                  :x४
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 

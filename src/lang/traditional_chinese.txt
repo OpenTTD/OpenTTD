@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :設置房屋
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI 設定
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :遊戲腳本設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
@@ -959,13 +958,15 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}將主�
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}遊戲選項
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :基本
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}選擇基本設定
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :選擇基本設定
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :圖形集
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}選擇圖形設定
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :選擇圖形設定
 STR_GAME_OPTIONS_TAB_SOUND                                      :音效
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}選擇音效及音樂設定
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :選擇音效及音樂設定
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :社交
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}選擇社交插件設定
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :選擇社交插件設定
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :進階
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :變更進階設定
 
 STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :音效
@@ -973,8 +974,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音樂
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}幣值單位
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}選擇幣值單位
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :幣值單位
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :選擇幣值單位
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1025,8 +1026,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :拉脫維亞勒
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :葡萄牙埃斯庫多
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :烏克蘭赫里夫尼亞
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}選擇自動存檔頻率
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :自動存檔
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :選擇自動存檔頻率
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1037,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :每30分鐘
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :每60分鐘
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :每120分鐘
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}語言
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}選擇要用的介面語言
+STR_GAME_OPTIONS_LANGUAGE                                       :語言
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :選擇界面語言
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM} ％）
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}全螢幕
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}勾選即可在全螢幕下玩 OpenTTD
+STR_GAME_OPTIONS_FULLSCREEN                                     :全螢幕
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :勾選此方框即可在全螢幕下遊玩 OpenTTD
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}螢幕解析度
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇螢幕解析度
+STR_GAME_OPTIONS_RESOLUTION                                     :螢幕解析度
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :選擇螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}硬體加速
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}勾選此方框以允許OpenTTD嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :硬體加速
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :勾選此方框以允許OpenTTD嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改的設定將會在遊戲重啟後生效
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}垂直同步
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}勾選此方框以啟用垂直同步 (V-SYNC)。此項設定將會在遊戲重啟後套用。只有在硬體加速存在時可用
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :垂直同步
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :勾選此方框以啟用垂直同步 (V-SYNC)。此項設定將會在遊戲重啟後套用。只有在硬體加速存在時可用
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}使用中的驅動程式：{STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :使用中的驅動程式：{STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}界面大小
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}拖曳滑動以設定界面大小。 按住 <Ctrl> 以調整至非整數之倍數
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}自動選取大小
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}勾選此方框以自動選取界面大小
+STR_GAME_OPTIONS_INTERFACE                                      :界面
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}縮放邊框
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}勾選此方框以令邊框隨界面大小而縮放
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :界面大小
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖曳滑動以設定界面大小。 按住 <Ctrl> 鍵以精準細緻調整
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自動選取大小
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :勾選此方框以自動選取界面大小
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}使用傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}勾選此方框以使用固定大小的傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}反鋸齒字體
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}勾選此方框以使用反鋸齒字體
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :縮放邊框
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :勾選此方框以令邊框隨界面大小而縮放
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用傳統點陣式字體
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :勾選此方框以使用固定大小的傳統點陣式字體
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :反鋸齒字體
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾選此方框以使用反鋸齒字體
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}自動問卷
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}參與自動問卷
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}在啟用後，OpenTTD 將在離開遊戲時傳送調查資訊
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}關於問卷和隱私
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}這將會開啟瀏覽器給提供更多自動調查的資訊
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}預覽調查結果
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}顯示現正執行的遊戲調查結果
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :自動問卷調查
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :參與遊戲體驗自動問卷調查
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :啟用後，OpenTTD 將在離開遊戲時傳送問卷調查資訊
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :關於問卷和隱私
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :開啟瀏覽器以顯示更多有關遊戲體驗自動問卷調查的資訊
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :預覽調查結果
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :顯示現正執行的遊戲體驗問卷調查結果
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}圖形
+STR_GAME_OPTIONS_DISPLAY                                        :顯示
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}顯示畫面更新率
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}選擇畫面更新率
+STR_GAME_OPTIONS_REFRESH_RATE                                   :顯示畫面更新率
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :選擇畫面更新率
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高於60Hz的畫面更新率可能會影響遊戲性能
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集（無法在遊戲中更改，只能從主選單中更改）
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}關於基本圖形集的額外資訊
+STR_GAME_OPTIONS_BASE_GRF                                       :基本圖形集
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :選擇要使用的基本圖形集（無法在遊戲中更改，只能從主選單中更改）
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :關於基本圖形集的額外資訊
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}基本音效集
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}選擇要使用的基本音效集（無法在遊戲中更改，只能從主選單中更改）
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}關於基本音效集的額外資訊
+STR_GAME_OPTIONS_BASE_SFX                                       :基本音效集
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :選擇要使用的基本音效集（無法在遊戲中更改，只能從主選單中更改）
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :關於基本音效集的額外資訊
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}選擇要使用的基本音樂集
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}關於基本音樂集的額外資訊
+STR_GAME_OPTIONS_BASE_MUSIC                                     :基本音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :選擇要使用的基本音樂集
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :關於基本音樂集的額外資訊
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :取得內容
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :檢查及下載最新內容
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}（沒有安裝社交平台擴充功能）
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :（沒有安裝社交平台擴充功能）
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}平台︰
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}擴充功能狀態︰
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING}（{STRING}）
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :平台：
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :擴充功能狀態：
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}正在執行
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}初始化失敗
@@ -1219,12 +1222,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :放任（所有
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可供使用……{}{}您可以使用「線上擴充內容」功能下載更多的 AI
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}顯示設定
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}篩選：
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}展開所有選項
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}折疊所有選項
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}重設所有數值
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :篩選：
+STR_CONFIG_SETTING_EXPAND_ALL                                   :展開所有選項
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :折疊所有選項
+STR_CONFIG_SETTING_RESET_ALL                                    :重設所有數值
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(沒有適用的解釋)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}預設值：{ORANGE}{STRING}
@@ -1237,9 +1239,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :公司設定 (�
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}注意！
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}此操作將會還原所有遊戲設定至預設狀態{}你確定要進行此操作嗎?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}篩選設定：
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}適用範圍：
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}限制以下列表僅顯示曾被更改的設定。
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :篩選設定：
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :適用範圍：
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :僅顯示曾被更改的設定
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本 (僅顯示重要設定)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :進階 (顯示大部份設定)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :專業 (顯示所有設定)
@@ -1256,9 +1258,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :公司設定 (�
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- 無 -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}在 {SILVER}篩選設定 {BLACK}一欄選擇 {WHITE}{STRING} {BLACK}以顯示所有搜尋結果
-STR_CONFIG_SETTING_TYPE_HIDES                                   :在 {SILVER}適用範圍 {BLACK}一欄選擇 {WHITE}所有適用範圍 {BLACK}以顯示所有搜尋結果
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}在 {SILVER}篩選設定 {BLACK}一欄選擇 {WHITE}{STRING} 並在 {SILVER}適用範圍 {BLACK}一欄選擇 {WHITE}所有適用範圍 {BLACK}以顯示所有搜尋結果
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :在{PUSH_COLOUR}{SILVER}篩選設定{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}{STRING}{POP_COLOUR}以顯示所有搜尋結果
+STR_CONFIG_SETTING_TYPE_HIDES                                   :在{PUSH_COLOUR}{SILVER}適用範圍{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}所有適用範圍{POP_COLOUR}以顯示所有搜尋結果
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :在{PUSH_COLOUR}{SILVER}篩選設定{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}{STRING}{POP_COLOUR}並在{PUSH_COLOUR}{SILVER}適用範圍{POP_COLOUR}一欄選擇{PUSH_COLOUR}{WHITE}所有適用範圍{POP_COLOUR}以顯示所有搜尋結果
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :關
@@ -2203,7 +2205,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}多人�
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}遊戲選項
 STR_INTRO_HIGHSCORE                                             :{BLACK}積分排行榜
 STR_INTRO_HELP                                                  :{BLACK}幫助和手冊
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}線上擴充內容
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 設定
@@ -2225,7 +2226,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}選擇�
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}開啟遊戲選項
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}開啟積分排行榜
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}取得說明和線上資源
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}開啟設定
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}開啟 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}開啟 AI 設定
@@ -2542,8 +2542,8 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，僅此一次
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，且不再詢問
 
-STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與自動問卷？
-STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否願意參加自動調查？{} OpenTTD 會在離開遊戲時傳送調查資訊。{}您可在任何時候於「遊戲選項」選單裡修改此項設定。
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與遊戲體驗自動問卷調查？
+STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否願意參加遊戲體驗自動問卷調查？{} OpenTTD 會在離開遊戲時傳送調查資訊。{}您可在任何時候於「遊戲選項」選單裡更改此項設定。
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :預覽調查結果
 STR_NETWORK_ASK_SURVEY_LINK                                     :關於問卷和隱私
 STR_NETWORK_ASK_SURVEY_NO                                       :否

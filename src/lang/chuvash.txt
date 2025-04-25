@@ -496,6 +496,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 
 
+
 # Custom currency window
 
 
@@ -540,7 +541,7 @@ STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Вӑйӑ пах
 ###length 4
 
 
-# Settings tree window
+# Settings tree in the Game Options window
 
 
 

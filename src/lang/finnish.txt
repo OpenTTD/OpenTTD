@@ -444,7 +444,6 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Sijoita taloja
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin valinnat
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Asetukset
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Tekoälyasetukset
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Peliskriptiasetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
@@ -959,13 +958,15 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Siirrä 
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pelin valinnat
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Yleiset
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Valitse yleisasetukset
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Valitse yleisasetukset
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafiikka
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Valitse grafiikka-asetukset
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Valitse grafiikka-asetukset
 STR_GAME_OPTIONS_TAB_SOUND                                      :Ääni
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Valitse ääni- ja musiikkiasetukset
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Valitse ääni- ja musiikkiasetukset
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Sosiaaliset
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Valitse sosiaalisen integraation asetukset
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Valitse sosiaalisen integraation asetukset
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Edistyneet
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Muuta lisäasetuksia
 
 STR_GAME_OPTIONS_VOLUME                                         :Äänenvoimakkuus
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Äänitehosteet
@@ -973,8 +974,8 @@ STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musiikki
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}{NBSP}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Rahayksikkö
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Rahayksikön valinta
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Rahayksiköt
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Rahayksiköiden valinta
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1025,8 +1026,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian lati
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portugalin escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainan hryvnia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaattitallennus
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Valitse aikaväli automaattisille pelitallennuksille
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automaattitallennus
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Valitse automaattisten pelitallennusten välinen aika
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1037,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :30 minuutin vä
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :60 minuutin välein
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :120 minuutin välein
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kieli
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli
+STR_GAME_OPTIONS_LANGUAGE                                       :Kieli
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Valitse käyttöliittymän kieli
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% valmiina)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Koko näyttö
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Valitse tämä pelataksesi kokoruututilassa
+STR_GAME_OPTIONS_FULLSCREEN                                     :Koko näyttö
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Valitse tämä pelataksesi OpenTTD:tä koko ruudun tilassa
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Näytön tarkkuus
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Valitse käytettävä näytön tarkkuus
+STR_GAME_OPTIONS_RESOLUTION                                     :Näytön tarkkuus
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Valitse käytettävä näytön tarkkuus
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}×{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Laitteistokiihdytys
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Valitse tämä, jos haluat, että OpenTTD yrittää käyttää laitteistokiihdytystä. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Laitteistokiihdytys
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Valitse tämä, jos haluat, että OpenTTD yrittää käyttää laitteistokiihdytystä. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Pystytahdistus
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Valitse tämä ottaaksesi käyttöön näytön pystytahdistuksen. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen. Edellyttää, että laitteistokiihdytys on käytössä.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Pystytahdistus
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Valitse tämä ottaaksesi käyttöön näytön pystytahdistuksen. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen. Edellyttää, että laitteistokiihdytys on käytössä
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Nykyinen ajuri: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nykyinen ajuri: {STRING}
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Käyttöliittymän koko
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Vedä liukusäädintä asettaaksesi käyttöliittymän koon. Pidä Ctrl-näppäintä painettuna säätääksesi portaattomasti
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Tunnista koko automaattisesti
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Valitse tämä ruutu käyttöliittymän koon tunnistamiseksi automaattisesti
+STR_GAME_OPTIONS_INTERFACE                                      :Käyttöliittymä
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaalaa viisteet
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Valitse tämä ruutu reunusten skaalaamiseksi käyttöliittymän koon mukaan
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Käyttöliittymän koko
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Vedä liukusäädintä asettaaksesi käyttöliittymän koon. Pidä Ctrl-näppäintä painettuna säätääksesi portaattomasti
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Tunnista koko automaattisesti
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Valitse tämä ruutu käyttöliittymän koon tunnistamiseksi automaattisesti
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Käytä perinteistä sprite-fonttia
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Pehmennä kirjasinten reunoja
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaalaa viisteet
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Valitse tämä ruutu viisteiden skaalaamiseksi käyttöliittymän koon mukaan
+
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Käytä perinteistä sprite-fonttia
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Valitse tämä ruutu käyttääksesi perinteistä kiinteäkokoista sprite-kirjasintyyppiä
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Pehmennä kirjasinten reunoja
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Valitse tämä ruutu pehmentääksesi muuttuvan kokoisten fonttien reunoja
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}×
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatisoitu tutkimus
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Osallistu automatisoituun tutkimukseen
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Mikäli käytössä, OpenTTD lähettää tilastointitietoja pelistä poistuttaessa
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Tutkimuksesta ja yksityisyydestä
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Avaa selaimen, jossa lisätietoja automatisoidusta tutkimuksesta
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Esikatsele tutkimustulosta
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Näytä meneillään olevan pelin tutkimustulos
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatisoitu tutkimus
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Osallistu automatisoituun tutkimukseen
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Mikäli käytössä, OpenTTD lähettää tilastointitietoja pelistä poistuttaessa
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Tutkimuksesta ja yksityisyydestä
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Avaa selaimen, missä lisätietoja automatisoidusta tutkimuksesta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Esikatsele tutkimustulosta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Näytä meneillään olevan pelin tutkimustulos
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafiikka
+STR_GAME_OPTIONS_DISPLAY                                        :Näyttö
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Näytön virkistystaajuus
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Valitse käytettävä näytönvirkistystaajuus
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Näytön virkistystaajuus
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Valitse käytettävä näytönvirkistystaajuus
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM} Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Yli 60 Hz:n virkistystaajuudet saattavat vaikuttaa suorituskykyyn.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusgrafiikoista
+STR_GAME_OPTIONS_BASE_GRF                                       :Perusgrafiikkakokoelma
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Valitse käytettävä perusgrafiikkakokoelma (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Lisätietoja perusgrafiikkakokoelmasta
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Perusäänet
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Valitse käytettävät perusäänet (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisätietoja perusäänistä
+STR_GAME_OPTIONS_BASE_SFX                                       :Perusäänikokoelma
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Valitse käytettävä perusäänikokoelma (ei vaihdettavissa pelin aikana, ainoastaan päävalikosta)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Lisätietoja perusäänikokoelmasta
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musiikkipaketti
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valitse käytettävä musiikkipaketti
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Lisätietoja musiikkipaketista
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Musiikkipaketti
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Valitse käytettävä musiikkipaketti
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Lisätietoja musiikkipaketista
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hae sisältöä
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Tarkista, onko ladattavissa uutta tai päivitettyä sisältöä
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(ei sosiaalisten alustojen integroinnin liitännäisiä asennettuna)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(ei sosiaalisten alustojen integroinnin liitännäisiä asennettuna)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Alusta:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Liitännäisen tila:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Alusta:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Liitännäisen tila:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Käynnissä
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Alustus epäonnistui
@@ -1219,12 +1222,11 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva (ei vai
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ei soveltuvia tekoälyjä saatavilla…{}{}Voit ladata tekoälyjä online-sisältöpalvelun kautta
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Asetukset
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Suodatin:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Avaa kaikki
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulje kaikki
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Palauta oletukset
+# Settings tree in the Game Options window
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Suodatin:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Laajenna kaikki
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Tiivistä kaikki
+STR_CONFIG_SETTING_RESET_ALL                                    :Palauta oletukset
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(selitystä ei saatavilla)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Oletusarvo: {ORANGE}{STRING}
@@ -1237,9 +1239,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus 
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Varoitus!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tämä toiminto palauttaa pelin kaikki asetukset oletusarvoihinsa.{}Haluatko varmasti jatkaa?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tyyppi:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rajaa alla olevaa listaa ennalta määritellyillä suodattimilla
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tyyppi:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Rajaa alla olevaa listaa ennalta määritellyillä suodattimilla
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Perus (näytä vain tärkeät asetukset)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Kehittynyt (näytä useimmat asetukset)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Edistynyt (näytä kaikki asetukset, oudotkin)
@@ -1256,9 +1258,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Yhtiön asetuks
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ei mitään -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}kategoriaksi {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Näytä kaikki hakutulokset muuttamalla{}{SILVER}Tyypiksi {WHITE}Kaikki asetustyypit
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}kategoriaksi {WHITE}{STRING} {BLACK}ja {SILVER}tyypiksi {WHITE}kaikki asetustyypit
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Näytä kaikki tulokset muuttamalla{}PUSH_COLOUR}{SILVER}kategoriaksi {POP_COLOUR}{WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Näytä kaikki hakutulokset muuttamalla{}{PUSH_COLOUR}{SILVER}tyypiksi {POP_COLOUR}{WHITE}kaikki asetustyypit
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Näytä kaikki tulokset muuttamalla{}{PUSH_COLOUR}{SILVER}kategoriaksi {POP_COLOUR}{PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}ja {PUSH_COLOUR}{SILVER}tyypiksi {POP_COLOUR}{WHITE}kaikki asetustyypit
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :pois
@@ -2203,7 +2205,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpel
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin valinnat
 STR_INTRO_HIGHSCORE                                             :{BLACK}Pistetaulukko
 STR_INTRO_HELP                                                  :{BLACK}Ohjeet ja oppaat
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Asetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online-sisältö
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Tekoälyasetukset
@@ -2225,7 +2226,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Valitse 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Avaa pelin valinnat
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Avaa pistetaulukko
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Tutustu dokumentaatioon ja online-resursseihin
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Avaa asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Avaa NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista, onko ladattavissa uutta tai päivitettyä sisältöä
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Avaa tekoälyasetukset

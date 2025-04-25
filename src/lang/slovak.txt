@@ -505,7 +505,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavenia
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Nastavenia AI
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Nastavenia skriptu
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenia NewGRF
@@ -1109,6 +1108,7 @@ STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaškrtn
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Aktuálny ovládač: {STRING}
 
+
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Veľkosť rozhrania
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Potiahnutím posúvača nastavte veľkosť rozhrania. Pre plynulé nastavenie podržte Ctrl
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Detekovať rozmery automaticky
@@ -1132,7 +1132,6 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Otvorí 
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Náhľad výsledkov prieskumu
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Zobraziť výsledky prieskumu aktuálnej hry
 
-STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Obnovovacia frekvencia obrazovky
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Výber používanej obnovovacej frekvencie obrazu
@@ -1270,8 +1269,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Povoľný (nem�
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nieje dostupné žiadne použiteľné AI...{}Niekoľko AI je možné stiahnuť cez 'Online obsah'
 
-# Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Nastavenia
+# Settings tree in the Game Options window
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozbaliť všetko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zabaliť všetko
@@ -2243,7 +2241,6 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Viacero 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Možnosti hry
 STR_INTRO_HIGHSCORE                                             :{BLACK}Najvyššie skóre
 STR_INTRO_HELP                                                  :{BLACK}Nápoveda a manuály
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Nastavenia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Nastavenia AI
@@ -2265,7 +2262,6 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vybrať 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Otvoriť možnosti hry
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Otvoriť tabuľku hráčov s najvyšším skóre
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Získajte prístup k dokumentácií a on-line zdrojom
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Otvoriť nastavenia
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Otvoriť nastavenia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Otvoriť nastavenia AI
