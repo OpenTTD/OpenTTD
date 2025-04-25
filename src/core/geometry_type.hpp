@@ -234,7 +234,7 @@ struct Rect {
 	inline bool Contains(const Point &pt) const
 	{
 		/* This is a local version of IsInsideMM, to avoid including math_func everywhere. */
-		return (uint)(pt.x - this->left) < (uint)(this->right - this->left) && (uint)(pt.y - this->top) < (uint)(this->bottom - this->top);
+		return (uint)(pt.x - this->left) <= (uint)(this->right - this->left) && (uint)(pt.y - this->top) <= (uint)(this->bottom - this->top);
 	}
 };
 
