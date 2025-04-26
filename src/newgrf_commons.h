@@ -343,17 +343,6 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 };
 
 /**
- * Entities with single sprite group.
- */
-struct SingleGRFFileProps : GRFFilePropsBase {
-	const struct SpriteGroup *spritegroup;
-
-	bool HasSpriteGroups() const { return this->spritegroup != nullptr; }
-	const struct SpriteGroup *GetSpriteGroup() const { return this->spritegroup; }
-	void SetSpriteGroup(const struct SpriteGroup *spritegroup) { this->spritegroup = spritegroup; }
-};
-
-/**
  * Standard sprite groups.
  */
 enum class StandardSpriteGroup {
@@ -450,7 +439,7 @@ struct CargoGRFFileProps : VariableGRFFileProps<CargoType> {
 /**
  * NewGRF entities which can replace default entities.
  */
-struct SubstituteGRFFileProps : SingleGRFFileProps {
+struct SubstituteGRFFileProps : StandardGRFFileProps {
 	/** Set all default data constructor for the props. */
 	constexpr SubstituteGRFFileProps(uint16_t subst_id = 0) : subst_id(subst_id), override_id(subst_id) {}
 

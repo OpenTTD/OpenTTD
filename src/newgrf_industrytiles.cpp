@@ -145,7 +145,7 @@ IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileInde
 	ind_scope(*this, tile, indus, indus->type),
 	gfx(gfx)
 {
-	this->root_spritegroup = GetIndustryTileSpec(gfx)->grf_prop.GetSpriteGroup();
+	this->root_spritegroup = GetIndustryTileSpec(gfx)->grf_prop.GetSpriteGroup(indus->index != IndustryID::Invalid());
 }
 
 GrfSpecFeature IndustryTileResolverObject::GetFeature() const
