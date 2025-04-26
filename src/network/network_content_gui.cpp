@@ -687,8 +687,8 @@ public:
 		Rect tr = r.Shrink(WidgetDimensions::scaled.frametext);
 		tr.top += HEADER_HEIGHT;
 
-		/* Create the nice grayish rectangle at the details top */
-		GfxFillRect(r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.bevel.left, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, 0), PC_DARK_BLUE);
+		/* Create the nice darker rectangle at the details top */
+		GfxFillRect(r.WithHeight(HEADER_HEIGHT).Shrink(WidgetDimensions::scaled.bevel.left, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, 0), GetColourGradient(COLOUR_LIGHT_BLUE, SHADE_NORMAL));
 		DrawString(hr.left, hr.right, hr.top, STR_CONTENT_DETAIL_TITLE, TC_FROMSTRING, SA_HOR_CENTER);
 
 		/* Draw the total download size */
