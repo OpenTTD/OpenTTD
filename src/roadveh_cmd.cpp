@@ -553,9 +553,8 @@ static bool RoadVehCheckTrainCrash(RoadVehicle *v)
 
 		if (!IsLevelCrossingTile(tile)) continue;
 
-		if (HasVehicleNearTileXY(v->x_pos, v->y_pos, 6, [&u](const Vehicle *t) {
-				return t->type == VEH_TRAIN && abs(t->z_pos - u->z_pos) <= 6 &&
-					abs(t->x_pos - u->x_pos) <= 4 && abs(t->y_pos - u->y_pos) <= 4;
+		if (HasVehicleNearTileXY(v->x_pos, v->y_pos, 4, [&u](const Vehicle *t) {
+				return t->type == VEH_TRAIN && abs(t->z_pos - u->z_pos) <= 6;
 			})) {
 			RoadVehCrash(v);
 			return true;
@@ -649,7 +648,7 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 			FindClosestBlockingRoadVeh(u, &rvf);
 		}
 	} else {
-		for (Vehicle *u : VehiclesNearTileXY(x, y, 6)) {
+		for (Vehicle *u : VehiclesNearTileXY(x, y, 8)) {
 			FindClosestBlockingRoadVeh(u, &rvf);
 		}
 	}
