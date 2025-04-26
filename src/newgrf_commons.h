@@ -306,9 +306,10 @@ struct GRFFilePropsBase {
 
 /**
  * Fixed-length list of sprite groups for an entity.
+ * @tparam Tkey Key for indexing spritegroups
  * @tparam Tcount Number of spritegroups
  */
-template <size_t Tcount>
+template <class Tkey, size_t Tcount>
 struct FixedGRFFileProps : GRFFilePropsBase {
 	std::array<const struct SpriteGroup *, Tcount> spritegroups{}; ///< pointers to the different sprite groups of the entity
 
@@ -317,14 +318,14 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 	 * @param index Index to get.
 	 * @returns SpriteGroup at index, or nullptr if not present.
 	 */
-	const struct SpriteGroup *GetSpriteGroup(size_t index = 0) const { return this->spritegroups[index]; }
+	const struct SpriteGroup *GetSpriteGroup(Tkey index) const { return this->spritegroups[static_cast<size_t>(index)]; }
 
 	/**
 	 * Set the SpriteGroup at the specified index.
 	 * @param index Index to set.
 	 * @param spritegroup SpriteGroup to set.
 	 */
-	void SetSpriteGroup(size_t index, const struct SpriteGroup *spritegroup) { this->spritegroups[index] = spritegroup; }
+	void SetSpriteGroup(Tkey index, const struct SpriteGroup *spritegroup) { this->spritegroups[static_cast<size_t>(index)] = spritegroup; }
 };
 
 /**
@@ -336,6 +337,16 @@ struct SingleGRFFileProps : GRFFilePropsBase {
 	const struct SpriteGroup *GetSpriteGroup() const { return this->spritegroup; }
 	void SetSpriteGroup(const struct SpriteGroup *spritegroup) { this->spritegroup = spritegroup; }
 };
+
+/**
+ * Standard sprite groups.
+ */
+enum class StandardSpriteGroup {
+	Default, ///< Default type used when no more-specific group matches.
+	Purchase, ///< Used before an entity exists.
+	End
+};
+using StandardGRFFileProps = FixedGRFFileProps<StandardSpriteGroup, static_cast<size_t>(StandardSpriteGroup::End)>;
 
 /**
  * Variable-length list of sprite groups for an entity.
