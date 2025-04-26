@@ -106,7 +106,7 @@ enum class NewsDisplay : uint8_t {
  * Per-NewsType data
  */
 struct NewsTypeData {
-	const char * const name;    ///< Name
+	const std::string_view name; ///< Name
 	const uint8_t age;             ///< Maximum age of news items (in days)
 	const SoundFx sound;        ///< Sound
 
@@ -116,7 +116,7 @@ struct NewsTypeData {
 	 * @param age The maximum age for these messages.
 	 * @param sound The sound to play.
 	 */
-	NewsTypeData(const char *name, uint8_t age, SoundFx sound) :
+	NewsTypeData(std::string_view name, uint8_t age, SoundFx sound) :
 		name(name),
 		age(age),
 		sound(sound)
