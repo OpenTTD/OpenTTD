@@ -129,7 +129,7 @@ public:
 		using pointer = void;
 		using reference = void;
 
-		explicit Iterator(int32_t x, int32_t y);
+		explicit Iterator(int32_t x, int32_t y, uint max_dist);
 
 		bool operator==(const Iterator &rhs) const { return this->current_veh == rhs.current_veh; }
 		bool operator==(const std::default_sentinel_t &) const { return this->current_veh == nullptr; }
@@ -160,7 +160,7 @@ public:
 		void SkipFalseMatches();
 	};
 
-	explicit VehiclesNearTileXY(int32_t x, int32_t y) : start(x, y) {}
+	explicit VehiclesNearTileXY(int32_t x, int32_t y, uint max_dist) : start(x, y, max_dist) {}
 	Iterator begin() const { return this->start; }
 	std::default_sentinel_t end() const { return std::default_sentinel_t(); }
 private:
@@ -173,9 +173,9 @@ private:
  * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
  */
 template <class UnaryPred>
-bool HasVehicleNearTileXY(int32_t x, int32_t y, UnaryPred &&predicate)
+bool HasVehicleNearTileXY(int32_t x, int32_t y, uint max_dist, UnaryPred &&predicate)
 {
-	for (const auto *v : VehiclesNearTileXY(x, y)) {
+	for (const auto *v : VehiclesNearTileXY(x, y, max_dist)) {
 		if (predicate(v)) return true;
 	}
 	return false;

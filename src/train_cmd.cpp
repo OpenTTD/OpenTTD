@@ -3228,7 +3228,7 @@ static bool CheckTrainCollision(Train *v)
 			num_victims += CheckTrainCollision(u, v);
 		}
 	} else {
-		for (Vehicle *u : VehiclesNearTileXY(v->x_pos, v->y_pos)) {
+		for (Vehicle *u : VehiclesNearTileXY(v->x_pos, v->y_pos, 6)) {
 			num_victims += CheckTrainCollision(u, v);
 		}
 	}
