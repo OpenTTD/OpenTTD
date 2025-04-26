@@ -417,6 +417,8 @@ struct GameOptionsWindow : Window {
 	int warn_lines = 0; ///< Number of lines used for warning about missing search results.
 
 	Scrollbar *vscroll;
+	Scrollbar *vscroll_description;
+	static constexpr uint NUM_DESCRIPTION_LINES = 5;
 
 	GameSettings *opt = nullptr;
 	bool reload = false;
@@ -439,6 +441,8 @@ struct GameOptionsWindow : Window {
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_GO_SCROLLBAR);
+		this->vscroll_description = this->GetScrollbar(WID_GO_HELP_TEXT_SCROLL);
+		this->vscroll_description->SetCapacity(NUM_DESCRIPTION_LINES);
 		this->FinishInitNested(WN_GAME_OPTIONS_GAME_OPTIONS);
 
 		this->querystrings[WID_GO_FILTER] = &this->filter_editbox;
@@ -717,7 +721,7 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
-			case WID_GO_HELP_TEXT:
+			case WID_GO_SETTING_PROPERTIES:
 				if (this->last_clicked != nullptr) {
 					const IntSettingDesc *sd = this->last_clicked->setting;
 
@@ -734,9 +738,19 @@ struct GameOptionsWindow : Window {
 
 					auto [param1, param2] = sd->GetValueParams(sd->GetDefaultValue());
 					DrawString(tr, GetString(STR_CONFIG_SETTING_DEFAULT_VALUE, param1, param2));
-					tr.top += GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal;
+				}
+				break;
 
-					DrawStringMultiLine(tr, sd->GetHelp(), TC_WHITE);
+			case WID_GO_HELP_TEXT:
+				if (this->last_clicked != nullptr) {
+					const IntSettingDesc *sd = this->last_clicked->setting;
+
+					DrawPixelInfo tmp_dpi;
+					if (FillDrawPixelInfo(&tmp_dpi, r)) {
+						AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
+						int scrolls_pos = this->vscroll_description->GetPosition() * GetCharacterHeight(FS_NORMAL);
+						DrawStringMultiLine(0, r.Width() - 1, -scrolls_pos, r.Height() - 1, sd->GetHelp(), TC_WHITE);
+					}
 				}
 				break;
 
@@ -753,6 +767,13 @@ struct GameOptionsWindow : Window {
 	{
 		if (this->last_clicked != pe) this->SetDirty();
 		this->last_clicked = pe;
+		UpdateHelpTextSize();
+	}
+
+	void UpdateHelpTextSize()
+	{
+		NWidgetResizeBase *wid = this->GetWidget<NWidgetResizeBase>(WID_GO_HELP_TEXT);
+		this->vscroll_description->SetCount(this->last_clicked ? CeilDiv(this->last_clicked->GetMaxHelpHeight(wid->current_x), GetCharacterHeight(FS_NORMAL)) : 0);
 	}
 
 	void SetTab(WidgetID widget)
@@ -779,6 +800,7 @@ struct GameOptionsWindow : Window {
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_GO_OPTIONSPANEL, WidgetDimensions::scaled.framerect.Vertical());
+		UpdateHelpTextSize();
 
 		bool changed = false;
 
@@ -809,10 +831,6 @@ struct GameOptionsWindow : Window {
 		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_VIDEO_DRIVER_INFO);
 		std::string str = GetString(STR_GAME_OPTIONS_VIDEO_DRIVER_INFO, std::string{VideoDriver::GetInstance()->GetInfoString()});
 		y = GetStringHeight(str, wid->current_x);
-		changed |= wid->UpdateVerticalSize(y);
-
-		wid = this->GetWidget<NWidgetResizeBase>(WID_GO_HELP_TEXT);
-		y = 2 * GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.vsep_normal + GetSettingsTree().GetMaxHelpHeight(wid->current_x);
 		changed |= wid->UpdateVerticalSize(y);
 
 		if (changed) this->ReInit(0, 0, this->flags.Test(WindowFlag::Centred));
@@ -850,7 +868,7 @@ struct GameOptionsWindow : Window {
 				size.height = 8 * resize.height + WidgetDimensions::scaled.framerect.Vertical();
 				break;
 
-			case WID_GO_HELP_TEXT: {
+			case WID_GO_SETTING_PROPERTIES: {
 				static const StringID setting_types[] = {
 					STR_CONFIG_SETTING_TYPE_CLIENT,
 					STR_CONFIG_SETTING_TYPE_COMPANY_MENU, STR_CONFIG_SETTING_TYPE_COMPANY_INGAME,
@@ -859,8 +877,13 @@ struct GameOptionsWindow : Window {
 				for (const auto &setting_type : setting_types) {
 					size.width = std::max(size.width, GetStringBoundingBox(GetString(STR_CONFIG_SETTING_TYPE, setting_type)).width + padding.width);
 				}
+				size.height = 2 * GetCharacterHeight(FS_NORMAL);
 				break;
 			}
+
+			case WID_GO_HELP_TEXT:
+				size.height = NUM_DESCRIPTION_LINES * GetCharacterHeight(FS_NORMAL);
+				break;
 
 			case WID_GO_RESTRICT_CATEGORY:
 			case WID_GO_RESTRICT_TYPE:
@@ -1792,7 +1815,11 @@ static constexpr NWidgetPart _nested_game_options_widgets[] = {
 					NWidget(WWT_PUSHTXTBTN, GAME_OPTIONS_BUTTON, WID_GO_RESET_ALL), SetStringTip(STR_CONFIG_SETTING_RESET_ALL), SetFill(1, 0), SetResize(1, 0),
 				EndContainer(),
 
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_HELP_TEXT), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_SETTING_PROPERTIES), SetFill(1, 0), SetResize(1, 0),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GO_HELP_TEXT), SetFill(1, 0), SetResize(1, 0), SetScrollbar(WID_GO_HELP_TEXT_SCROLL),
+					NWidget(NWID_VSCROLLBAR, GAME_OPTIONS_BACKGROUND, WID_GO_HELP_TEXT_SCROLL),
+				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 
