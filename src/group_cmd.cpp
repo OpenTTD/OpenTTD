@@ -515,6 +515,9 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 			break;
 	}
 
+	InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
+	InvalidateWindowData(WC_VEHICLE_DETAILS, v->index);
+
 	GroupStatistics::CountVehicle(v, 1);
 }
 
@@ -572,10 +575,6 @@ std::tuple<CommandCost, GroupID> CmdAddVehicleGroup(DoCommandFlags flags, GroupI
 			}
 
 			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-			InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
-			InvalidateWindowData(WC_VEHICLE_DETAILS, v->index);
 		}
 
 		GroupStatistics::UpdateAutoreplace(_current_company);
