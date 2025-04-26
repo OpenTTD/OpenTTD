@@ -432,15 +432,20 @@ static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
 VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y)
 {
 	const int COLL_DIST = 6;
+	pos_rect.left = x - COLL_DIST;
+	pos_rect.right = x + COLL_DIST;
+	pos_rect.top = y - COLL_DIST;
+	pos_rect.bottom = y + COLL_DIST;
 
 	/* Hash area to scan */
-	this->hxmin = this->hx = GetTileHash1D((x - COLL_DIST) / TILE_SIZE);
-	this->hxmax = GetTileHash1D((x + COLL_DIST) / TILE_SIZE);
-	this->hymin = this->hy = GetTileHash1D((y - COLL_DIST) / TILE_SIZE);
-	this->hymax = GetTileHash1D((y + COLL_DIST) / TILE_SIZE);
+	this->hxmin = this->hx = GetTileHash1D(pos_rect.left / TILE_SIZE);
+	this->hxmax = GetTileHash1D(pos_rect.right / TILE_SIZE);
+	this->hymin = this->hy = GetTileHash1D(pos_rect.top / TILE_SIZE);
+	this->hymax = GetTileHash1D(pos_rect.bottom / TILE_SIZE);
 
 	this->current_veh = _vehicle_tile_hash[ComposeTileHash(this->hx, this->hy)];
 	this->SkipEmptyBuckets();
+	this->SkipFalseMatches();
 }
 
 /**
@@ -469,6 +474,14 @@ void VehiclesNearTileXY::Iterator::SkipEmptyBuckets()
 		}
 		this->current_veh = _vehicle_tile_hash[ComposeTileHash(this->hx, this->hy)];
 	}
+}
+
+/**
+ * Advance the internal state until it reaches a vehicle within the search area.
+ */
+void VehiclesNearTileXY::Iterator::SkipFalseMatches()
+{
+	while (this->current_veh != nullptr && !this->pos_rect.Contains({this->current_veh->x_pos, this->current_veh->y_pos})) this->Increment();
 }
 
 /**

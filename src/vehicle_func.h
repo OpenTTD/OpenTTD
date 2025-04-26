@@ -139,6 +139,7 @@ public:
 		Iterator &operator++()
 		{
 			this->Increment();
+			this->SkipFalseMatches();
 			return *this;
 		}
 
@@ -149,12 +150,14 @@ public:
 			return result;
 		}
 	private:
+		Rect pos_rect;
 		uint hxmin, hxmax, hymin, hymax;
 		uint hx, hy;
 		Vehicle *current_veh;
 
 		void Increment();
 		void SkipEmptyBuckets();
+		void SkipFalseMatches();
 	};
 
 	explicit VehiclesNearTileXY(int32_t x, int32_t y) : start(x, y) {}
