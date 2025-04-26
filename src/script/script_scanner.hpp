@@ -95,7 +95,7 @@ protected:
 	 * Initialize the scanner.
 	 * @param name The name of the scanner ("AIScanner", "GSScanner", ..).
 	 */
-	void Initialize(const char *name);
+	void Initialize(std::string_view name);
 
 	/**
 	 * Get the script name how to store the script in memory.
@@ -105,7 +105,7 @@ protected:
 	/**
 	 * Get the filename to scan for this type of script.
 	 */
-	virtual const char *GetFileName() const = 0;
+	virtual std::string_view GetFileName() const = 0;
 
 	/**
 	 * Get the directory to scan in.
@@ -120,7 +120,7 @@ protected:
 	/**
 	 * Get the type of the script, in plural.
 	 */
-	virtual const char *GetScannerName() const = 0;
+	virtual std::string_view GetScannerName() const = 0;
 
 	/**
 	 * Reset all allocated lists.

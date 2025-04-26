@@ -19,10 +19,10 @@
 template <class CL, ScriptType ST>
 class DefSQClass {
 private:
-	const char *classname;
+	std::string_view classname;
 
 public:
-	DefSQClass(const char *_classname) :
+	DefSQClass(std::string_view _classname) :
 		classname(_classname)
 	{}
 
@@ -30,7 +30,7 @@ public:
 	 * This defines a method inside a class for Squirrel.
 	 */
 	template <typename Func>
-	void DefSQMethod(Squirrel *engine, Func function_proc, const char *function_name)
+	void DefSQMethod(Squirrel *engine, Func function_proc, std::string_view function_name)
 	{
 		using namespace SQConvert;
 		engine->AddMethod(function_name, DefSQNonStaticCallback<CL, Func, ST>, 0, nullptr, &function_proc, sizeof(function_proc));
@@ -40,7 +40,7 @@ public:
 	 * This defines a method inside a class for Squirrel, which has access to the 'engine' (experts only!).
 	 */
 	template <typename Func>
-	void DefSQAdvancedMethod(Squirrel *engine, Func function_proc, const char *function_name)
+	void DefSQAdvancedMethod(Squirrel *engine, Func function_proc, std::string_view function_name)
 	{
 		using namespace SQConvert;
 		engine->AddMethod(function_name, DefSQAdvancedNonStaticCallback<CL, Func, ST>, 0, nullptr, &function_proc, sizeof(function_proc));
@@ -53,7 +53,7 @@ public:
 	 *  of the code, but without it calling your function will fail!
 	 */
 	template <typename Func>
-	void DefSQMethod(Squirrel *engine, Func function_proc, const char *function_name, int nparam, const char *params)
+	void DefSQMethod(Squirrel *engine, Func function_proc, std::string_view function_name, int nparam, const char *params)
 	{
 		using namespace SQConvert;
 		engine->AddMethod(function_name, DefSQNonStaticCallback<CL, Func, ST>, nparam, params, &function_proc, sizeof(function_proc));
@@ -63,7 +63,7 @@ public:
 	 * This defines a static method inside a class for Squirrel.
 	 */
 	template <typename Func>
-	void DefSQStaticMethod(Squirrel *engine, Func function_proc, const char *function_name)
+	void DefSQStaticMethod(Squirrel *engine, Func function_proc, std::string_view function_name)
 	{
 		using namespace SQConvert;
 		engine->AddMethod(function_name, DefSQStaticCallback<CL, Func>, 0, nullptr, &function_proc, sizeof(function_proc));
@@ -73,7 +73,7 @@ public:
 	 * This defines a static method inside a class for Squirrel, which has access to the 'engine' (experts only!).
 	 */
 	template <typename Func>
-	void DefSQAdvancedStaticMethod(Squirrel *engine, Func function_proc, const char *function_name)
+	void DefSQAdvancedStaticMethod(Squirrel *engine, Func function_proc, std::string_view function_name)
 	{
 		using namespace SQConvert;
 		engine->AddMethod(function_name, DefSQAdvancedStaticCallback<CL, Func>, 0, nullptr, &function_proc, sizeof(function_proc));
@@ -86,14 +86,14 @@ public:
 	 *  of the code, but without it calling your function will fail!
 	 */
 	template <typename Func>
-	void DefSQStaticMethod(Squirrel *engine, Func function_proc, const char *function_name, int nparam, const char *params)
+	void DefSQStaticMethod(Squirrel *engine, Func function_proc, std::string_view function_name, int nparam, const char *params)
 	{
 		using namespace SQConvert;
 		engine->AddMethod(function_name, DefSQStaticCallback<CL, Func>, nparam, params, &function_proc, sizeof(function_proc));
 	}
 
 	template <typename Var>
-	void DefSQConst(Squirrel *engine, Var value, const char *var_name)
+	void DefSQConst(Squirrel *engine, Var value, std::string_view var_name)
 	{
 		engine->AddConst(var_name, value);
 	}
@@ -103,7 +103,7 @@ public:
 		engine->AddClassBegin(this->classname);
 	}
 
-	void PreRegister(Squirrel *engine, const char *parent_class)
+	void PreRegister(Squirrel *engine, std::string_view parent_class)
 	{
 		engine->AddClassBegin(this->classname, parent_class);
 	}

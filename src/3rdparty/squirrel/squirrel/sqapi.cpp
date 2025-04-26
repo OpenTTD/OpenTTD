@@ -376,7 +376,7 @@ SQRESULT sq_getclosureinfo(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger *nparam
 	return sq_throwerror(v,"the object is not a closure");
 }
 
-SQRESULT sq_setnativeclosurename(HSQUIRRELVM v,SQInteger idx,const SQChar *name)
+SQRESULT sq_setnativeclosurename(HSQUIRRELVM v,SQInteger idx,std::string_view name)
 {
 	SQObject o = stack_get(v, idx);
 	if(sq_isnativeclosure(o)) {

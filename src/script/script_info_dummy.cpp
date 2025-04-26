@@ -26,7 +26,7 @@
  */
 
 /** Run the dummy info.nut. */
-void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir)
+void Script_CreateDummyInfo(HSQUIRRELVM vm, std::string_view type, std::string_view dir)
 {
 	std::string dummy_script = fmt::format(
 			"class Dummy{0} extends {0}Info {{\n"
@@ -78,7 +78,7 @@ static std::vector<std::string> EscapeQuotesAndSlashesAndSplitOnNewLines(const s
 }
 
 /** Run the dummy AI and let it generate an error message. */
-void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type)
+void Script_CreateDummy(HSQUIRRELVM vm, StringID string, std::string_view type)
 {
 	/* We want to translate the error message.
 	 * We do this in three steps:
