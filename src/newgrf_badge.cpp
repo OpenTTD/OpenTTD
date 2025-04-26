@@ -204,7 +204,7 @@ BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feat
 {
 	assert(feature <= GSF_END);
 	this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(feature);
-	if (this->root_spritegroup == nullptr) this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(GSF_END);
+	if (this->root_spritegroup == nullptr) this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(GSF_DEFAULT);
 }
 
 /**
