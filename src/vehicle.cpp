@@ -429,20 +429,27 @@ static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
  * Iterator constructor.
  * Find first vehicle near (x, y).
  */
-VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y)
+VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y, uint max_dist)
 {
-	const int COLL_DIST = 6;
 	/* There are no negative tile coordinates */
-	pos_rect.left = std::max<int>(0, x - COLL_DIST);
-	pos_rect.right = std::max<int>(0, x + COLL_DIST);
-	pos_rect.top = std::max<int>(0, y - COLL_DIST);
-	pos_rect.bottom = std::max<int>(0, y + COLL_DIST);
+	pos_rect.left = std::max<int>(0, x - max_dist);
+	pos_rect.right = std::max<int>(0, x + max_dist);
+	pos_rect.top = std::max<int>(0, y - max_dist);
+	pos_rect.bottom = std::max<int>(0, y + max_dist);
 
-	/* Hash area to scan */
-	this->hxmin = this->hx = GetTileHash1D(pos_rect.left / TILE_SIZE);
-	this->hxmax = GetTileHash1D(pos_rect.right / TILE_SIZE);
-	this->hymin = this->hy = GetTileHash1D(pos_rect.top / TILE_SIZE);
-	this->hymax = GetTileHash1D(pos_rect.bottom / TILE_SIZE);
+	if (2 * max_dist < TILE_HASH_MASK * TILE_SIZE) {
+		/* Hash area to scan */
+		this->hxmin = this->hx = GetTileHash1D(pos_rect.left / TILE_SIZE);
+		this->hxmax = GetTileHash1D(pos_rect.right / TILE_SIZE);
+		this->hymin = this->hy = GetTileHash1D(pos_rect.top / TILE_SIZE);
+		this->hymax = GetTileHash1D(pos_rect.bottom / TILE_SIZE);
+	} else {
+		/* Scan all */
+		this->hxmin = this->hx = 0;
+		this->hxmax = TILE_HASH_MASK;
+		this->hymin = this->hy = 0;
+		this->hymax = TILE_HASH_MASK;
+	}
 
 	this->current_veh = _vehicle_tile_hash[ComposeTileHash(this->hx, this->hy)];
 	this->SkipEmptyBuckets();
