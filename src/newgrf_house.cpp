@@ -537,12 +537,12 @@ void AnimateNewHouseTile(TileIndex tile)
 	HouseAnimationBase::AnimateTile(hs, Town::GetByTile(tile), tile, hs->extra_flags.Test(HouseExtraFlag::Callback1ARandomBits));
 }
 
-void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile)
+void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile, bool first_call)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	if (hs->callback_mask.Test(HouseCallbackMask::AnimationTriggerConstructionStageChanged)) {
-		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED, hs, Town::GetByTile(tile), tile, 0, 0);
+		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED, hs, Town::GetByTile(tile), tile, 0, first_call ? 1 : 0);
 	}
 }
 

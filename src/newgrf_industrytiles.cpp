@@ -285,8 +285,15 @@ static bool DoTriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrig
 	return true;
 }
 
+bool TriggerIndustryTileAnimation_ConstructionStageChanged(TileIndex tile, bool first_call)
+{
+	auto iat = IndustryAnimationTrigger::ConstructionStageChanged;
+	return DoTriggerIndustryTileAnimation(tile, iat, Random(), first_call ? 0x100 : 0);
+}
+
 bool TriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat)
 {
+	assert(iat != IndustryAnimationTrigger::ConstructionStageChanged);
 	return DoTriggerIndustryTileAnimation(tile, iat, Random());
 }
 

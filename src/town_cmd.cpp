@@ -503,7 +503,7 @@ static void AdvanceSingleHouseConstruction(TileIndex tile)
 	IncHouseConstructionTick(tile);
 	if (GetHouseConstructionTick(tile) != 0) return;
 
-	TriggerHouseAnimation_ConstructionStageChanged(tile);
+	TriggerHouseAnimation_ConstructionStageChanged(tile, false);
 
 	if (IsHouseCompleted(tile)) {
 		/* Now that construction is complete, we can add the population of the
@@ -2705,6 +2705,13 @@ static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID
 	MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits, is_protected);
 	UpdateTownRadius(t);
 	UpdateTownGrowthRate(t);
+
+	BuildingFlags size = hs->building_flags;
+
+	TriggerHouseAnimation_ConstructionStageChanged(tile, true);
+	if (size.Any(BUILDING_2_TILES_Y)) TriggerHouseAnimation_ConstructionStageChanged(tile + TileDiffXY(0, 1), true);
+	if (size.Any(BUILDING_2_TILES_X)) TriggerHouseAnimation_ConstructionStageChanged(tile + TileDiffXY(1, 0), true);
+	if (size.Any(BUILDING_HAS_4_TILES)) TriggerHouseAnimation_ConstructionStageChanged(tile + TileDiffXY(1, 1), true);
 }
 
 /**
