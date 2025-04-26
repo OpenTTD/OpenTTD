@@ -25,13 +25,13 @@ void IConsoleListSettings(std::string_view prefilter);
 void LoadFromConfig(bool minimal = false);
 void SaveToConfig();
 
-void IniLoadWindowSettings(IniFile &ini, const char *grpname, WindowDesc *desc);
-void IniSaveWindowSettings(IniFile &ini, const char *grpname, WindowDesc *desc);
+void IniLoadWindowSettings(IniFile &ini, std::string_view grpname, WindowDesc *desc);
+void IniSaveWindowSettings(IniFile &ini, std::string_view grpname, WindowDesc *desc);
 
 StringList GetGRFPresetList();
-GRFConfigList LoadGRFPresetFromConfig(const char *config_name);
-void SaveGRFPresetToConfig(const char *config_name, GRFConfigList &config);
-void DeleteGRFPresetFromConfig(const char *config_name);
+GRFConfigList LoadGRFPresetFromConfig(std::string_view config_name);
+void SaveGRFPresetToConfig(std::string_view config_name, GRFConfigList &config);
+void DeleteGRFPresetFromConfig(std::string_view config_name);
 
 void SetDefaultCompanySettings(CompanyID cid);
 
