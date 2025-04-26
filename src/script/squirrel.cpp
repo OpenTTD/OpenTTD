@@ -253,7 +253,7 @@ void Squirrel::PrintFunc(HSQUIRRELVM vm, const std::string &s)
 	}
 }
 
-void Squirrel::AddMethod(std::string_view method_name, SQFUNCTION proc, uint nparam, const char *params, void *userdata, int size)
+void Squirrel::AddMethod(std::string_view method_name, SQFUNCTION proc, std::string_view params, void *userdata, int size)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -265,7 +265,7 @@ void Squirrel::AddMethod(std::string_view method_name, SQFUNCTION proc, uint npa
 	}
 
 	sq_newclosure(this->vm, proc, size != 0 ? 1 : 0);
-	if (nparam != 0) sq_setparamscheck(this->vm, nparam, params);
+	if (!params.empty()) sq_setparamscheck(this->vm, params.size(), params.data());
 	sq_setnativeclosurename(this->vm, -1, method_name);
 	sq_newslot(this->vm, -3, SQFalse);
 }

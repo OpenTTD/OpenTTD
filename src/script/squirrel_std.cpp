@@ -90,16 +90,16 @@ void squirrel_register_global_std(Squirrel *engine)
 {
 	/* We don't use squirrel_helper here, as we want to register to the global
 	 *  scope and not to a class. */
-	engine->AddMethod("require",             &SquirrelStd::require,             2, ".s");
-	engine->AddMethod("notifyallexceptions", &SquirrelStd::notifyallexceptions, 2, ".b");
+	engine->AddMethod("require",             &SquirrelStd::require,             ".s");
+	engine->AddMethod("notifyallexceptions", &SquirrelStd::notifyallexceptions, ".b");
 }
 
 void squirrel_register_std(Squirrel *engine)
 {
 	/* We don't use squirrel_helper here, as we want to register to the global
 	 *  scope and not to a class. */
-	engine->AddMethod("min", &SquirrelStd::min, 3, ".ii");
-	engine->AddMethod("max", &SquirrelStd::max, 3, ".ii");
+	engine->AddMethod("min", &SquirrelStd::min, ".ii");
+	engine->AddMethod("max", &SquirrelStd::max, ".ii");
 
 	sqstd_register_mathlib(engine->GetVM());
 }
