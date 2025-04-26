@@ -110,13 +110,8 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 		cargo_threshold(0), cargo_triggers(0),
 		callback_mask(0), flags(0)
 	{}
-	/**
-	 * Properties related the the grf file.
-	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
-	 * Used for obtaining the sprite offset of custom sprites, and for
-	 * evaluating callbacks.
-	 */
-	VariableGRFFileProps grf_prop;
+
+	CargoGRFFileProps grf_prop; ///< Link to NewGRF
 	StringID name;             ///< Name of this station.
 
 	/**

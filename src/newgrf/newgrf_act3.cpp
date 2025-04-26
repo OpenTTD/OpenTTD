@@ -36,8 +36,8 @@
 static CargoType TranslateCargo(uint8_t feature, uint8_t ctype)
 {
 	/* Special cargo types for purchase list and stations */
-	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return SpriteGroupCargo::SG_DEFAULT_NA;
-	if (ctype == 0xFF) return SpriteGroupCargo::SG_PURCHASE;
+	if ((feature == GSF_STATIONS || feature == GSF_ROADSTOPS) && ctype == 0xFE) return CargoGRFFileProps::SG_DEFAULT_NA;
+	if (ctype == 0xFF) return CargoGRFFileProps::SG_PURCHASE;
 
 	auto cargo_list = GetCargoTranslationTable(*_cur_gps.grffile);
 
@@ -145,9 +145,9 @@ static void VehicleMapSpriteGroup(ByteReader &buf, uint8_t feature, uint8_t idco
 		EngineID engine = engines[i];
 
 		if (wagover) {
-			SetWagonOverrideSprites(engine, SpriteGroupCargo::SG_DEFAULT, _cur_gps.spritegroups[groupid], last_engines);
+			SetWagonOverrideSprites(engine, CargoGRFFileProps::SG_DEFAULT, _cur_gps.spritegroups[groupid], last_engines);
 		} else {
-			SetCustomEngineSprites(engine, SpriteGroupCargo::SG_DEFAULT, _cur_gps.spritegroups[groupid]);
+			SetCustomEngineSprites(engine, CargoGRFFileProps::SG_DEFAULT, _cur_gps.spritegroups[groupid]);
 			SetEngineGRF(engine, _cur_gps.grffile);
 		}
 	}
@@ -199,8 +199,8 @@ static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		uint16_t groupid = buf.ReadWord();
 		if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) continue;
 
-		ctype = TranslateCargo(GSF_STATIONS, ctype);
-		if (!IsValidCargoType(ctype)) continue;
+		CargoType cargo_type = TranslateCargo(GSF_STATIONS, ctype);
+		if (!IsValidCargoType(cargo_type)) continue;
 
 		for (auto &station : stations) {
 			StationSpec *statspec = station >= _cur_gps.grffile->stations.size() ? nullptr : _cur_gps.grffile->stations[station].get();
@@ -210,7 +210,7 @@ static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 				continue;
 			}
 
-			statspec->grf_prop.SetSpriteGroup(ctype, _cur_gps.spritegroups[groupid]);
+			statspec->grf_prop.SetSpriteGroup(cargo_type, _cur_gps.spritegroups[groupid]);
 		}
 	}
 
@@ -230,7 +230,7 @@ static void StationMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		statspec->grf_prop.SetSpriteGroup(SpriteGroupCargo::SG_DEFAULT, _cur_gps.spritegroups[groupid]);
+		statspec->grf_prop.SetSpriteGroup(CargoGRFFileProps::SG_DEFAULT, _cur_gps.spritegroups[groupid]);
 		statspec->grf_prop.SetGRFFile(_cur_gps.grffile);
 		statspec->grf_prop.local_id = station;
 		StationClass::Assign(statspec);
@@ -569,8 +569,8 @@ static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		uint16_t groupid = buf.ReadWord();
 		if (!IsValidGroupID(groupid, "RoadStopMapSpriteGroup")) continue;
 
-		ctype = TranslateCargo(GSF_ROADSTOPS, ctype);
-		if (!IsValidCargoType(ctype)) continue;
+		CargoType cargo_type = TranslateCargo(GSF_ROADSTOPS, ctype);
+		if (!IsValidCargoType(cargo_type)) continue;
 
 		for (auto &roadstop : roadstops) {
 			RoadStopSpec *roadstopspec = roadstop >= _cur_gps.grffile->roadstops.size() ? nullptr : _cur_gps.grffile->roadstops[roadstop].get();
@@ -580,7 +580,7 @@ static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 				continue;
 			}
 
-			roadstopspec->grf_prop.SetSpriteGroup(ctype, _cur_gps.spritegroups[groupid]);
+			roadstopspec->grf_prop.SetSpriteGroup(cargo_type, _cur_gps.spritegroups[groupid]);
 		}
 	}
 
@@ -600,7 +600,7 @@ static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		roadstopspec->grf_prop.SetSpriteGroup(SpriteGroupCargo::SG_DEFAULT, _cur_gps.spritegroups[groupid]);
+		roadstopspec->grf_prop.SetSpriteGroup(CargoGRFFileProps::SG_DEFAULT, _cur_gps.spritegroups[groupid]);
 		roadstopspec->grf_prop.SetGRFFile(_cur_gps.grffile);
 		roadstopspec->grf_prop.local_id = roadstop;
 		RoadStopClass::Assign(roadstopspec);
@@ -636,7 +636,7 @@ static void BadgeMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			}
 
 			auto &badge = *GetBadge(found->second);
-			badge.grf_prop.SetSpriteGroup(ctype, _cur_gps.spritegroups[groupid]);
+			badge.grf_prop.SetSpriteGroup(static_cast<GrfSpecFeature>(ctype), _cur_gps.spritegroups[groupid]);
 		}
 	}
 

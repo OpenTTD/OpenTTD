@@ -530,12 +530,12 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 
 	switch (this->station_scope.cargo_type) {
 		case INVALID_CARGO:
-		case SpriteGroupCargo::SG_DEFAULT_NA:
-		case SpriteGroupCargo::SG_PURCHASE:
+		case CargoGRFFileProps::SG_DEFAULT_NA:
+		case CargoGRFFileProps::SG_PURCHASE:
 			cargo = 0;
 			break;
 
-		case SpriteGroupCargo::SG_DEFAULT:
+		case CargoGRFFileProps::SG_DEFAULT:
 			for (const GoodsEntry &ge : st->goods) {
 				if (!ge.HasData()) continue;
 				cargo += ge.GetData().cargo.TotalCount();
@@ -594,11 +594,11 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	/* Invalidate all cached vars */
 	_svc.valid = 0;
 
-	CargoType ctype = SpriteGroupCargo::SG_DEFAULT_NA;
+	CargoType ctype = CargoGRFFileProps::SG_DEFAULT_NA;
 
 	if (this->station_scope.st == nullptr) {
 		/* No station, so we are in a purchase list */
-		ctype = SpriteGroupCargo::SG_PURCHASE;
+		ctype = CargoGRFFileProps::SG_PURCHASE;
 		this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
 	} else if (Station::IsExpected(this->station_scope.st)) {
 		const Station *st = Station::From(this->station_scope.st);
@@ -612,14 +612,14 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 		}
 
 		if (this->root_spritegroup == nullptr) {
-			ctype = SpriteGroupCargo::SG_DEFAULT_NA;
+			ctype = CargoGRFFileProps::SG_DEFAULT_NA;
 			this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
 		}
 	}
 
 
 	if (this->root_spritegroup == nullptr) {
-		ctype = SpriteGroupCargo::SG_DEFAULT;
+		ctype = CargoGRFFileProps::SG_DEFAULT;
 		this->root_spritegroup = statspec->grf_prop.GetSpriteGroup(ctype);
 	}
 

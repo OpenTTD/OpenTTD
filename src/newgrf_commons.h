@@ -18,6 +18,7 @@
 #include "command_type.h"
 #include "direction_type.h"
 #include "company_type.h"
+#include "cargo_type.h"
 
 /** Context for tile accesses */
 enum TileContext : uint8_t {
@@ -328,13 +329,48 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 
 /**
  * Variable-length list of sprite groups for an entity.
+ * @tparam Tkey Key for indexing spritegroups
  */
+template <class Tkey>
 struct VariableGRFFileProps : GRFFilePropsBase {
-	using CargoSpriteGroup = std::pair<size_t, const struct SpriteGroup *>;
-	std::vector<CargoSpriteGroup> spritegroups; ///< pointers to the different sprite groups of the entity
+	using ValueType = std::pair<Tkey, const struct SpriteGroup *>;
+	std::vector<ValueType> spritegroups; ///< pointers to the different sprite groups of the entity
 
-	const struct SpriteGroup *GetSpriteGroup(size_t index) const;
-	void SetSpriteGroup(size_t index, const struct SpriteGroup *spritegroup);
+	/**
+	 * Get the SpriteGroup at the specified index.
+	 * @param index Index to get.
+	 * @returns SpriteGroup at index, or nullptr if not present.
+	 */
+	const SpriteGroup *GetSpriteGroup(Tkey index) const
+	{
+		auto it = std::ranges::lower_bound(this->spritegroups, index, std::less{}, &ValueType::first);
+		if (it == std::end(this->spritegroups) || it->first != index) return nullptr;
+		return it->second;
+	}
+
+	/**
+	 * Set the SpriteGroup at the specified index.
+	 * @param index Index to set.
+	 * @param spritegroup SpriteGroup to set.
+	*/
+	void SetSpriteGroup(Tkey index, const SpriteGroup *spritegroup)
+	{
+		auto it = std::ranges::lower_bound(this->spritegroups, index, std::less{}, &ValueType::first);
+		if (it == std::end(this->spritegroups) || it->first != index) {
+			this->spritegroups.emplace(it, index, spritegroup);
+		} else {
+			it->second = spritegroup;
+		}
+	}
+};
+
+/**
+ * Sprite groups indexed by CargoType.
+ */
+struct CargoGRFFileProps : VariableGRFFileProps<CargoType> {
+	static constexpr CargoType SG_DEFAULT = NUM_CARGO; ///< Default type used when no more-specific cargo matches.
+	static constexpr CargoType SG_PURCHASE = NUM_CARGO + 1; ///< Used in purchase lists before an item exists.
+	static constexpr CargoType SG_DEFAULT_NA = NUM_CARGO + 2; ///< Used only by stations and roads when no more-specific cargo matches.
 };
 
 /** Data related to the handling of grf files. */
