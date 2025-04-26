@@ -1135,7 +1135,7 @@ enum IndustryTypes : uint8_t {
 		{INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO}, \
 		{{im1, 0}, {im2, 0}, {im3, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}}, \
 		pr, clim, bev, col, in, intx, s1, s2, s3, STR_UNDEFINED, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
-		IndustryCallbackMasks{}, true, GRFFileProps(IT_INVALID), snd, {}, \
+		IndustryCallbackMasks{}, true, SubstituteGRFFileProps(IT_INVALID), snd, {}, \
 		{{p1, p2}}, {{a1, a2, a3}}}
 	/* Format:
 	   tile table                              count and sounds table
@@ -1535,7 +1535,7 @@ static const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
  */
 #define MT(ca1, c1, ca2, c2, ca3, c3, sl, a1, a2, a3) { \
 	{INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO}, \
-	{ca1, ca2, ca3}, sl, a1, a2, a3, IndustryTileCallbackMasks{}, AnimationInfo<IndustryAnimationTriggers>{}, IndustryTileSpecialFlags{}, true, GRFFileProps(INVALID_INDUSTRYTILE), {}, {c1, c2, c3} \
+	{ca1, ca2, ca3}, sl, a1, a2, a3, IndustryTileCallbackMasks{}, AnimationInfo<IndustryAnimationTriggers>{}, IndustryTileSpecialFlags{}, true, SubstituteGRFFileProps(INVALID_INDUSTRYTILE), {}, {c1, c2, c3} \
 }
 static const IndustryTileSpec _origin_industry_tile_specs[NEW_INDUSTRYTILEOFFSET] = {
 	/* Coal Mine */

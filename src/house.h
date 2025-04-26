@@ -106,7 +106,7 @@ struct HouseSpec {
 	bool enabled;                             ///< the house is available to build (true by default, but can be disabled by newgrf)
 
 	/* NewHouses properties */
-	GRFFileProps grf_prop;                    ///< Properties related the the grf file
+	SubstituteGRFFileProps grf_prop; ///< Properties related the the grf file
 	HouseCallbackMasks callback_mask;                     ///< Bitmask of house callbacks that have to be called
 	Colours random_colour[4];                 ///< 4 "random" colours
 	uint8_t probability;                         ///< Relative probability of appearing (16 is the standard value)

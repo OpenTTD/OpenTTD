@@ -73,7 +73,7 @@ struct AirportTileSpec {
 	AirportTileCallbackMasks callback_mask;                  ///< Bitmask telling which grf callback is set
 	uint8_t animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
-	GRFFileProps grf_prop;                ///< properties related the the grf file
+	SubstituteGRFFileProps grf_prop; ///< properties related the the grf file
 	std::vector<BadgeID> badges;
 
 	static const AirportTileSpec *Get(StationGfx gfx);
