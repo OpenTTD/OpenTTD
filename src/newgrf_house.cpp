@@ -542,7 +542,7 @@ void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile, bool first_c
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
 
 	if (hs->callback_mask.Test(HouseCallbackMask::AnimationTriggerConstructionStageChanged)) {
-		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED, hs, Town::GetByTile(tile), tile, 0, first_call ? 1 : 0);
+		HouseAnimationBase::ChangeAnimationFrame(CBID_HOUSE_ANIMATION_TRIGGER_CONSTRUCTION_STAGE_CHANGED, hs, Town::GetByTile(tile), tile, Random(), first_call ? 1 : 0);
 	}
 }
 
