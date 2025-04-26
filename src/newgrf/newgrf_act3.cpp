@@ -266,7 +266,7 @@ static void TownHouseMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		hs->grf_prop.SetSpriteGroup(0, _cur_gps.spritegroups[groupid]);
+		hs->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
 	}
 }
 
@@ -298,7 +298,7 @@ static void IndustryMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		indsp->grf_prop.SetSpriteGroup(0, _cur_gps.spritegroups[groupid]);
+		indsp->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
 	}
 }
 
@@ -330,7 +330,7 @@ static void IndustrytileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		indtsp->grf_prop.SetSpriteGroup(0, _cur_gps.spritegroups[groupid]);
+		indtsp->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
 	}
 }
 
@@ -514,7 +514,7 @@ static void AirportMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		as->grf_prop.SetSpriteGroup(0, _cur_gps.spritegroups[groupid]);
+		as->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
 	}
 }
 
@@ -546,7 +546,7 @@ static void AirportTileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		airtsp->grf_prop.SetSpriteGroup(0, _cur_gps.spritegroups[groupid]);
+		airtsp->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
 	}
 }
 
