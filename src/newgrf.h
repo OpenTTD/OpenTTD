@@ -92,6 +92,7 @@ enum GrfSpecFeature : uint8_t {
 	GSF_BADGES,
 	GSF_END,
 
+	GSF_DEFAULT = GSF_END, ///< Unspecified feature, default badge
 	GSF_FAKE_TOWNS = GSF_END, ///< Fake town GrfSpecFeature for NewGRF debugging (parent scope)
 	GSF_FAKE_END,             ///< End of the fake features
 

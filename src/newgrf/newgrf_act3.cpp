@@ -651,7 +651,7 @@ static void BadgeMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		}
 
 		auto &badge = *GetBadge(found->second);
-		badge.grf_prop.SetSpriteGroup(GSF_END, _cur_gps.spritegroups[groupid]);
+		badge.grf_prop.SetSpriteGroup(GSF_DEFAULT, _cur_gps.spritegroups[groupid]);
 		badge.grf_prop.SetGRFFile(_cur_gps.grffile);
 		badge.grf_prop.local_id = local_id;
 	}
