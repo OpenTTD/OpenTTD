@@ -27,6 +27,7 @@
 #include "saveload/saveload.h"
 #include "company_cmd.h"
 #include "company_func.h"
+#include "company_gui.h"
 #include "command_func.h"
 #include "news_func.h"
 #include "fios.h"
@@ -1229,6 +1230,7 @@ void StateGameLoop()
 
 		CallWindowGameTickEvent();
 		NewsLoop();
+		InvalidateCompanyWindows();
 	} else {
 		if (_debug_desync_level > 2 && TimerGameEconomy::date_fract == 0 && (TimerGameEconomy::date.base() & 0x1F) == 0) {
 			/* Save the desync savegame if needed. */
@@ -1265,6 +1267,7 @@ void StateGameLoop()
 
 		CallWindowGameTickEvent();
 		NewsLoop();
+		InvalidateCompanyWindows();
 		cur_company.Restore();
 	}
 

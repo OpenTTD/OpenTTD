@@ -203,16 +203,34 @@ static bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 	return true;
 }
 
+static CompanyMask _dirty_company_finances{}; ///< Bitmask of compamy finances that should be marked dirty.
+
 /**
- * Refresh all windows owned by a company.
+ * Mark all finance windows owned by a company as needing a refresh.
+ * The actual refresh is deferred until the end of the gameloop to reduce duplicated work.
  * @param company Company that changed, and needs its windows refreshed.
  */
 void InvalidateCompanyWindows(const Company *company)
 {
 	CompanyID cid = company->index;
+	_dirty_company_finances.Set(cid);
+}
 
-	if (cid == _local_company) SetWindowWidgetDirty(WC_STATUS_BAR, 0, WID_S_RIGHT);
-	SetWindowDirty(WC_FINANCES, cid);
+/**
+ * Refresh all company finance windows previously marked dirty.
+ */
+void InvalidateCompanyWindows()
+{
+	for (CompanyID cid : _dirty_company_finances) {
+		if (cid == _local_company) SetWindowWidgetDirty(WC_STATUS_BAR, 0, WID_S_RIGHT);
+		Window *w = FindWindowById(WC_FINANCES, cid);
+		if (w != nullptr) {
+			w->SetWidgetDirty(WID_CF_EXPS_PRICE3);
+			w->SetWidgetDirty(WID_CF_OWN_VALUE);
+			w->SetWidgetDirty(WID_CF_BALANCE_VALUE);
+		}
+	}
+	_dirty_company_finances = {};
 }
 
 /**
