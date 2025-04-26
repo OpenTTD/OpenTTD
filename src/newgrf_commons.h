@@ -394,10 +394,12 @@ struct CargoGRFFileProps : VariableGRFFileProps<CargoType> {
 	static constexpr CargoType SG_DEFAULT_NA = NUM_CARGO + 2; ///< Used only by stations and roads when no more-specific cargo matches.
 };
 
-/** Data related to the handling of grf files. */
-struct GRFFileProps : SingleGRFFileProps {
+/**
+ * NewGRF entities which can replace default entities.
+ */
+struct SubstituteGRFFileProps : SingleGRFFileProps {
 	/** Set all default data constructor for the props. */
-	constexpr GRFFileProps(uint16_t subst_id = 0) : subst_id(subst_id), override_id(subst_id) {}
+	constexpr SubstituteGRFFileProps(uint16_t subst_id = 0) : subst_id(subst_id), override_id(subst_id) {}
 
 	uint16_t subst_id;
 	uint16_t override_id; ///< id of the entity been replaced by
