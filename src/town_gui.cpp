@@ -1335,45 +1335,6 @@ void InitializeTownGui()
 }
 
 /**
- * Draw representation of a house tile for GUI purposes.
- * @param x Position x of image.
- * @param y Position y of image.
- * @param spec House spec to draw.
- * @param house_id House ID to draw.
- * @param view The house's 'view'.
- */
-void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id, int view)
-{
-	HouseResolverObject object(house_id, INVALID_TILE, nullptr, CBID_NO_CALLBACK, 0, 0, true, view);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
-
-	uint8_t stage = TOWN_HOUSE_COMPLETED;
-	const DrawTileSprites *dts = reinterpret_cast<const TileLayoutSpriteGroup *>(group)->ProcessRegisters(&stage);
-
-	PaletteID palette = GetColourPalette(spec->random_colour[0]);
-	if (spec->callback_mask.Test(HouseCallbackMask::Colour)) {
-		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, true, view);
-		if (callback != CALLBACK_FAILED) {
-			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
-			palette = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
-		}
-	}
-
-	SpriteID image = dts->ground.sprite;
-	PaletteID pal  = dts->ground.pal;
-
-	if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) image += stage;
-	if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += stage;
-
-	if (GB(image, 0, SPRITE_WIDTH) != 0) {
-		DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
-	}
-
-	DrawNewGRFTileSeqInGUI(x, y, dts, stage, palette);
-}
-
-/**
  * Draw a house that does not exist.
  * @param x Position x of image.
  * @param y Position y of image.

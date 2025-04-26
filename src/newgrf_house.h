@@ -98,6 +98,7 @@ void DecreaseBuildingCount(Town *t, HouseID house_id);
 std::span<const uint> GetBuildingHouseIDCounts();
 
 void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
+void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id, int view);
 void AnimateNewHouseTile(TileIndex tile);
 /* see also: void TriggerHouseAnimation_TileLoop(TileIndex tile, uint16_t random_bits) */
 void TriggerHouseAnimation_ConstructionStageChanged(TileIndex tile, bool first_call);
