@@ -23,7 +23,6 @@ enum NewGRFParametersWidgets : WidgetID {
 	WID_NP_NUMPAR_TEXT,      ///< Text description.
 	WID_NP_BACKGROUND,       ///< Panel to draw the settings on.
 	WID_NP_SCROLLBAR,        ///< Scrollbar to scroll through all settings.
-	WID_NP_ACCEPT,           ///< Accept button.
 	WID_NP_RESET,            ///< Reset button.
 	WID_NP_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions.
 	WID_NP_DESCRIPTION,      ///< Multi-line description of a parameter.
@@ -67,7 +66,6 @@ enum SavePresetWidgets : WidgetID {
 	WID_SVP_PRESET_LIST, ///< List with available preset names.
 	WID_SVP_SCROLLBAR,   ///< Scrollbar for the list available preset names.
 	WID_SVP_EDITBOX,     ///< Edit box for changing the preset name.
-	WID_SVP_CANCEL,      ///< Button to cancel saving the preset.
 	WID_SVP_SAVE,        ///< Button to save the preset.
 };
 

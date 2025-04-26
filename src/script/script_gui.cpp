@@ -214,10 +214,6 @@ struct ScriptListWindow : public Window {
 				this->Close();
 				break;
 			}
-
-			case WID_SCRL_CANCEL:
-				this->Close();
-				break;
 		}
 	}
 
@@ -261,10 +257,7 @@ static constexpr NWidgetPart _nested_script_list_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_MAUVE, WID_SCRL_INFO_BG), SetMinimalTextLines(8, WidgetDimensions::unscaled.framerect.Vertical() + WidgetDimensions::unscaled.vsep_normal * 3), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRL_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_ACCEPT, STR_AI_LIST_ACCEPT_TOOLTIP),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRL_CANCEL), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_CANCEL, STR_AI_LIST_CANCEL_TOOLTIP),
-		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRL_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_LIST_ACCEPT, STR_AI_LIST_ACCEPT_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };
@@ -483,10 +476,6 @@ struct ScriptSettingsWindow : public Window {
 				break;
 			}
 
-			case WID_SCRS_ACCEPT:
-				this->Close();
-				break;
-
 			case WID_SCRS_RESET:
 				this->script_config->ResetEditableSettings(_game_mode == GM_MENU || ((this->slot != OWNER_DEITY) && !Company::IsValidID(this->slot)));
 				this->SetDirty();
@@ -577,9 +566,8 @@ static constexpr NWidgetPart _nested_script_settings_widgets[] = {
 		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_SCRS_SCROLLBAR),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_SETTINGS_CLOSE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_RESET), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_AI_SETTINGS_RESET),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_SCRS_RESET), SetStringTip(STR_AI_SETTINGS_RESET),
+		NWidget(WWT_PANEL, COLOUR_MAUVE), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),

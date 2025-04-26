@@ -3527,15 +3527,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Save pre
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}List of available presets, select one to copy it to the save name below
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Enter a name for the preset
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Currently selected name for the preset to save
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancel
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Don't change the preset
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Save
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Save the preset to the current selected name
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Change base graphics parameters
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Change NewGRF parameters
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Close
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set all parameters to their default value
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4896,8 +4893,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accept
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select highlighted script
-STR_AI_LIST_CANCEL                                              :{BLACK}Cancel
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Don't change the script
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Take a screenshot
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normal screenshot
@@ -4910,7 +4905,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI Parameters
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Game Script Parameters
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{RAW_STRING}: {ORANGE}{STRING1}
 
