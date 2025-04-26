@@ -1238,16 +1238,9 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					builder += _openttd_revision;
 					break;
 
-				case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-					const char *raw_string = args.GetNextParameterString();
-					/* raw_string can be nullptr. */
-					if (raw_string == nullptr) {
-						builder += "(invalid RAW_STRING parameter)";
-						break;
-					}
-					FormatString(builder, raw_string, args);
+				case SCC_RAW_STRING_POINTER: // {RAW_STRING}
+					FormatString(builder, args.GetNextParameterString(), args);
 					break;
-				}
 
 				case SCC_STRING: {// {STRING}
 					StringID string_id = args.GetNextParameter<StringID>();
