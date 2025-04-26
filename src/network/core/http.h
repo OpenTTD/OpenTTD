@@ -55,7 +55,7 @@ public:
 	 * @param callback the callback to send data back on.
 	 * @param data     the data we want to send. When non-empty, this will be a POST request, otherwise a GET request.
 	 */
-	static void Connect(const std::string &uri, HTTPCallback *callback, const std::string data = "");
+	static void Connect(std::string_view uri, HTTPCallback *callback, std::string &&data = "");
 
 	/**
 	 * Do the receiving for all HTTP connections.
