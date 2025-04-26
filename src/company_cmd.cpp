@@ -229,6 +229,7 @@ void InvalidateCompanyWindows()
 			w->SetWidgetDirty(WID_CF_OWN_VALUE);
 			w->SetWidgetDirty(WID_CF_BALANCE_VALUE);
 		}
+		SetWindowWidgetDirty(WC_COMPANY, cid, WID_C_DESC_COMPANY_VALUE);
 	}
 	_dirty_company_finances = {};
 }
