@@ -667,7 +667,7 @@ static void DoTriggerHouseRandomisation(TileIndex tile, HouseRandomTrigger trigg
 	HouseID hid = GetHouseType(tile);
 	HouseSpec *hs = HouseSpec::Get(hid);
 
-	if (hs->grf_prop.GetSpriteGroup() == nullptr) return;
+	if (!hs->grf_prop.HasSpriteGroups()) return;
 
 	HouseResolverObject object(hid, tile, Town::GetByTile(tile), CBID_RANDOM_TRIGGER);
 	auto waiting_random_triggers = GetHouseRandomTriggers(tile);

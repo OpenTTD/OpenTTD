@@ -203,8 +203,7 @@ BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feat
 		: ResolverObject(badge.grf_prop.grffile, callback, callback_param1, callback_param2), self_scope(*this, badge, introduction_date)
 {
 	assert(feature <= GSF_END);
-	this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(feature);
-	if (this->root_spritegroup == nullptr) this->root_spritegroup = this->self_scope.badge.grf_prop.GetSpriteGroup(GSF_DEFAULT);
+	this->root_spritegroup = this->self_scope.badge.grf_prop.GetFirstSpriteGroupOf({feature, GSF_DEFAULT});
 }
 
 /**

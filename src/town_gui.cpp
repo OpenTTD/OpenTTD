@@ -1349,7 +1349,7 @@ void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
 			 * spritegroup associated with them, then the sprite for the substitute
 			 * house id is drawn instead. */
 			const HouseSpec *spec = HouseSpec::Get(house_id);
-			if (spec->grf_prop.GetSpriteGroup() != nullptr) {
+			if (spec->grf_prop.HasSpriteGroups()) {
 				DrawNewHouseTileInGUI(x, y, spec, house_id, view);
 				return;
 			} else {

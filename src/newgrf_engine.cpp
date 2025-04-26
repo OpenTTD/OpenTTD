@@ -1086,8 +1086,7 @@ VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle
 		if (this->root_spritegroup == nullptr) {
 			const Engine *e = Engine::Get(engine_type);
 			CargoType cargo = v != nullptr ? v->cargo_type : CargoGRFFileProps::SG_PURCHASE;
-			this->root_spritegroup = e->grf_prop.GetSpriteGroup(cargo);
-			if (this->root_spritegroup == nullptr) this->root_spritegroup = e->grf_prop.GetSpriteGroup(CargoGRFFileProps::SG_DEFAULT);
+			this->root_spritegroup = e->grf_prop.GetFirstSpriteGroupOf({cargo, CargoGRFFileProps::SG_DEFAULT});
 		}
 	}
 }

@@ -328,7 +328,7 @@ static void DoTriggerIndustryTileRandomisation(TileIndex tile, IndustryRandomTri
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
-	if (itspec->grf_prop.GetSpriteGroup() == nullptr) return;
+	if (!itspec->grf_prop.HasSpriteGroups()) return;
 
 	IndustryTileResolverObject object(gfx, tile, ind, CBID_RANDOM_TRIGGER);
 	auto waiting_random_triggers = GetIndustryRandomTriggers(tile);
