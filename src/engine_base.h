@@ -74,13 +74,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16_t list_position = 0;
 
 	/* NewGRF related data */
-	/**
-	 * Properties related the the grf file.
-	 * NUM_CARGO real cargo plus two pseudo cargo sprite groups.
-	 * Used for obtaining the sprite offset of custom sprites, and for
-	 * evaluating callbacks.
-	 */
-	VariableGRFFileProps grf_prop{};
+	CargoGRFFileProps grf_prop{}; ///< Link to NewGRF
 	std::vector<WagonOverride> overrides{};
 	std::vector<BadgeID> badges{};
 

@@ -24,7 +24,7 @@ public:
 	BadgeFlags flags = {}; ///< Display flags
 	StringID name = 0; ///< Short name.
 	GrfSpecFeatures features{}; ///< Bitmask of which features use this badge.
-	VariableGRFFileProps grf_prop; ///< Sprite information.
+	VariableGRFFileProps<GrfSpecFeature> grf_prop; ///< Sprite information.
 
 	Badge(std::string_view label, BadgeID index, BadgeClassID class_index) : label(label), index(index), class_index(class_index) {}
 };

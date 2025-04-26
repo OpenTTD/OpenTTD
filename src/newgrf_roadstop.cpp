@@ -229,11 +229,11 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 		CallbackID callback, uint32_t param1, uint32_t param2)
 	: SpecializedResolverObject<StationRandomTriggers>(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
 {
-	CargoType ctype = SpriteGroupCargo::SG_DEFAULT_NA;
+	CargoType ctype = CargoGRFFileProps::SG_DEFAULT_NA;
 
 	if (st == nullptr) {
 		/* No station, so we are in a purchase list */
-		ctype = SpriteGroupCargo::SG_PURCHASE;
+		ctype = CargoGRFFileProps::SG_PURCHASE;
 		this->root_spritegroup = roadstopspec->grf_prop.GetSpriteGroup(ctype);
 	} else if (Station::IsExpected(st)) {
 		const Station *station = Station::From(st);
@@ -247,13 +247,13 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 		}
 
 		if (this->root_spritegroup == nullptr) {
-			ctype = SpriteGroupCargo::SG_DEFAULT_NA;
+			ctype = CargoGRFFileProps::SG_DEFAULT_NA;
 			this->root_spritegroup = roadstopspec->grf_prop.GetSpriteGroup(ctype);
 		}
 	}
 
 	if (this->root_spritegroup == nullptr) {
-		ctype = SpriteGroupCargo::SG_DEFAULT;
+		ctype = CargoGRFFileProps::SG_DEFAULT;
 		this->root_spritegroup = roadstopspec->grf_prop.GetSpriteGroup(ctype);
 	}
 

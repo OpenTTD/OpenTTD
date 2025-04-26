@@ -128,13 +128,7 @@ struct RoadStopResolverObject : public SpecializedResolverObject<StationRandomTr
 
 /** Road stop specification. */
 struct RoadStopSpec : NewGRFSpecBase<RoadStopClassID> {
-	/**
-	 * Properties related the the grf file.
-	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
-	 * Used for obtaining the sprite offset of custom sprites, and for
-	 * evaluating callbacks.
-	 */
-	VariableGRFFileProps grf_prop;
+	CargoGRFFileProps grf_prop; ///< Link to NewGRF
 	StringID name;              ///< Name of this stop
 
 	RoadStopAvailabilityType stop_type = ROADSTOPTYPE_ALL;
