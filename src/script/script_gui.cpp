@@ -359,7 +359,7 @@ struct ScriptSettingsWindow : public Window {
 	{
 		if (widget != WID_SCRS_BACKGROUND) return;
 
-		Rect ir = r.Shrink(WidgetDimensions::scaled.framerect);
+		Rect ir = r.Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero);
 		bool rtl = _current_text_dir == TD_RTL;
 		Rect br = ir.WithWidth(SETTING_BUTTON_WIDTH, rtl);
 		Rect tr = ir.Indent(SETTING_BUTTON_WIDTH + WidgetDimensions::scaled.hsep_wide, rtl);
@@ -419,7 +419,7 @@ struct ScriptSettingsWindow : public Window {
 
 				bool bool_item = config_item.flags.Test(ScriptConfigFlag::Boolean);
 
-				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero);
+				Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.frametext, RectPadding::zero);
 				int x = pt.x - r.left;
 				if (_current_text_dir == TD_RTL) x = r.Width() - 1 - x;
 
