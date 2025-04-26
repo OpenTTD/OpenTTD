@@ -328,6 +328,16 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 };
 
 /**
+ * Entities with single sprite group.
+ */
+struct SingleGRFFileProps : GRFFilePropsBase {
+	const struct SpriteGroup *spritegroup;
+
+	const struct SpriteGroup *GetSpriteGroup() const { return this->spritegroup; }
+	void SetSpriteGroup(const struct SpriteGroup *spritegroup) { this->spritegroup = spritegroup; }
+};
+
+/**
  * Variable-length list of sprite groups for an entity.
  * @tparam Tkey Key for indexing spritegroups
  */
@@ -374,7 +384,7 @@ struct CargoGRFFileProps : VariableGRFFileProps<CargoType> {
 };
 
 /** Data related to the handling of grf files. */
-struct GRFFileProps : FixedGRFFileProps<1> {
+struct GRFFileProps : SingleGRFFileProps {
 	/** Set all default data constructor for the props. */
 	constexpr GRFFileProps(uint16_t subst_id = 0) : subst_id(subst_id), override_id(subst_id) {}
 
