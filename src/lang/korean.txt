@@ -971,6 +971,7 @@ STR_GAME_OPTIONS_VOLUME                                         :음량
 STR_GAME_OPTIONS_SFX_VOLUME                                     :효과음
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :배경음
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}화폐 단위

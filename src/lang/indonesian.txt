@@ -935,6 +935,7 @@ STR_GAME_OPTIONS_SFX_VOLUME                                     :Efek suara
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mata uang
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilih mata uang
 

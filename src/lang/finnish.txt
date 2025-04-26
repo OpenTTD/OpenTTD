@@ -972,6 +972,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Äänenvoimakku
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Äänitehosteet
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musiikki
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}{NBSP}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Rahayksiköt

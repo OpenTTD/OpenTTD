@@ -1208,7 +1208,7 @@ STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Pokaż o
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- - {COMPANY} - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* * PAUZA * *
 STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * PAUZA (aktualizowanie grafu połączeń) * *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOZAPIS
+STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMATYCZNY ZAPIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}* * ZAPISYWANIE GRY * *
 
 STR_STATUSBAR_SPECTATOR                                         :{WHITE}(obserwator)
@@ -1338,22 +1338,25 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Kopiuj p
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opcje gry
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Ogólne
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Wybierz opcje ogólne
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Wybierz opcje ogólne
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Grafika
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Wybierz opcje grafiki
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Wybierz opcje grafiki
 STR_GAME_OPTIONS_TAB_SOUND                                      :Dźwięk
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Wybierz opcje dźwięku i muzyki
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Wybierz opcje dźwięku i muzyki
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Społeczność
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Wybierz opcje integracji sieci społecznościowych
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Wybierz opcje integracji z sieciami społecznościowymi
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Zaawansowane
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Zmień ustawienia zaawansowane
 
 STR_GAME_OPTIONS_VOLUME                                         :Głośność
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efekty dźwiękowe
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muzyka
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Waluta
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Wybór waluty
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Waluta
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Wybór jednostek waluty
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1404,8 +1407,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Łat łotewski
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo portugalskie
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hrywna ukraińska
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autozapis
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Częstotliwość automatycznego zapisu stanu gry
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Automatyczny zapis
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Wybierz częstotliwość automatycznego zapisu stanu gry
 
 # Autosave dropdown
 ###length 5
@@ -1415,77 +1418,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Co 30 minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Co 60 minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Co 120 minut
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Język
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Wybierz język interfejsu
+STR_GAME_OPTIONS_LANGUAGE                                       :Język
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Wybierz język interfejsu
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (ukończono {NUM}%)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pełny ekran
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Zaznacz to pole, jeśli chcesz grać w OpenTTD w trybie pełnoekranowym
+STR_GAME_OPTIONS_FULLSCREEN                                     :Pełny ekran
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Zaznacz to pole, jeśli chcesz grać w OpenTTD w trybie pełnoekranowym
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozdzielczość ekranu
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wybierz rozdzielczość ekranu
+STR_GAME_OPTIONS_RESOLUTION                                     :Rozdzielczość ekranu
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Wybierz rozdzielczość ekranu
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Przyspieszenie sprzętowe
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Zaznacz to pole, aby zezwolić OpenTTD na użycie przyspieszenia sprzętowego. Ustawienia zostaną zastosowane dopiero po ponownym uruchomieniu gry.
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ustawienie to zacznie obowiązywać dopiero po ponownym uruchomieniu gry.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Przyspieszenie sprzętowe
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Zaznacz to pole, aby zezwolić OpenTTD na użycie przyspieszenia sprzętowego. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ustawienie zostanie zastosowane dopiero po ponownym uruchomieniu gry
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Synchronizacja pionowa
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Zaznacz to pole aby włączyć synchronizację pionową. Zmiany zostaną zastosowane po restarcie gry. Działa tylko z włączonym przyspieszeniem sprzętowym.
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :Synchronizacja pionowa
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Zaznacz to pole, aby włączyć synchronizację pionową. Zmiana zostanie zastosowana dopiero po ponownym uruchomieniu gry. Działa tylko z włączonym przyspieszeniem sprzętowym
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Bieżący sterownik: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Bieżący sterownik: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Interfejs
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Rozmiar interfejsu
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Wykryj rozmiar automatycznie
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Zaznacz to pole, aby rozmiar interfejsu był wykrywany automatycznie
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Rozmiar interfejsu
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Wykryj rozmiar automatycznie
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Zaznacz to pole, aby rozmiar interfejsu był wykrywany automatycznie
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Skaluj fazy krawędzi
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Zaznacz to pole, aby skalować fazy krawędzi zgodnie z rozmiarem interfejsu
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Skaluj fazy krawędzi
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaznacz to pole, aby skalować fazy krawędzi zgodnie z rozmiarem interfejsu
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Użyj tradycyjnego fonta typu sprite
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Zaznacz to pole, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Antyaliasing fontów
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Zaznacz to pole, aby wygładzać fonty o zmiennym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Użyj tradycyjnego fonta typu sprite
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaznacz to pole, jeśli wolisz używać tradycyjnego fonta typu sprite o stałym rozmiarze
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Wygładzanie fontów
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaznacz to pole, aby wygładzać fonty o zmiennym rozmiarze
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automatyczna ankieta
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Udział w automatycznej ankiecie
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Kiedy włączone, OpenTTD prześle ankietę przy opuszczaniu gry
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}O ankiecie i prywatności
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Spowoduje to otwarcie przeglądarki z dodatkowymi informacjami na temat automatycznej ankiety
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Podejrzyj wynik ankiety
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Pokaż wynik ankiety dotyczącej bieżącej gry
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automatyczna ankieta
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Udział w automatycznej ankiecie
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Kiedy włączone, OpenTTD prześle ankietę przy opuszczaniu gry
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :O ankiecie i prywatności
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Spowoduje to otworzenie przeglądarki z dodatkowymi informacjami na temat automatycznej ankiety
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Podejrzyj wynik ankiety
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Pokaż wynik ankiety dotyczącej uruchomionej gry
 
+STR_GAME_OPTIONS_DISPLAY                                        :Wyświetlanie
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Częstotliwość odświeżania obrazu
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Wybierz częstotliwość odświeżania ekranu
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Częstotliwość odświeżania obrazu
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Wybierz częstotliwość odświeżania ekranu
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Częstotliwość odświeżania wyższa niż 60Hz może mieć wpływ na wydajność.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Podstawowy zestaw grafik
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wybierz podstawowy zestaw grafik (nie można tego zmienić w trakcie gry, jedynie w menu głównym)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkowe informacje o grafice
+STR_GAME_OPTIONS_BASE_GRF                                       :Podstawowy zestaw grafik
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Wybierz podstawowy zestaw grafik (nie można tego zmienić w trakcie gry, jedynie w menu głównym)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Dodatkowe informacje o podstawowym zestawie grafik
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Podstawowy zestaw dźwięków
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Wybierz podstawowy zestaw dźwięków (nie można tego zmienić w trakcie gry, jedynie w menu głównym)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatkowe informacje o zestawie podstawowych dźwięków
+STR_GAME_OPTIONS_BASE_SFX                                       :Podstawowy zestaw dźwięków
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Wybierz podstawowy zestaw dźwięków (nie można tego zmienić w trakcie gry, jedynie w menu głównym)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Dodatkowe informacje o podstawowym zestawie dźwięków
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Podstawowy zestaw muzyki
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Wybierz podstawowy zestaw muzyki do użycia
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatkowe informacje o muzyce podstawowej
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Podstawowy zestaw muzyki
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Wybierz podstawowy zestaw muzyki
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Dodatkowe informacje o podstawowym zestawie muzyki
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Pobierz
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Wyszukaj nową lub zaktualizowaną zawartość do pobrania
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(brak zainstalowanych wtyczek do integracji z platformami społecznościowymi)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(brak zainstalowanych wtyczek do integracji z platformami społecznościowymi)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platforma:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Stan wtyczki:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Stan wtyczki:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Uruchomiona
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Inicjalizacja nie powiodła się
@@ -1599,10 +1604,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne (bez 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak odpowiednich SI...{}{}Możesz pobrać różne SI przez „Przeglądarkę Dodatków”
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtr:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otwórz wszystko
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zamknij wszystko
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Zresetuj wszystkie ustawienia
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtr:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Rozwiń wszystkie
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Zwiń wszystkie
+STR_CONFIG_SETTING_RESET_ALL                                    :Przywróć wszystkie ustawienia
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(wyjaśnienie niedostępne)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Domyślna wartość: {ORANGE}{STRING}
@@ -1615,9 +1620,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ustawienie firm
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Uwaga!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Ta czynność spowoduje przywrócenie wszystkich ustawień gry do wartości domyślnych.{}Czy na pewno chcesz kontynuować?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicza poniższą listę, używając określonych filtrów
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Typ:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Ogranicza poniższą listę, używając określonych filtrów
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Podstawowe (pokaż tylko ważne opcje)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Zaawansowane (pokaż większość opcji)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert (pokaż wszystkie opcje, włącznie z dziwnymi)
@@ -1634,9 +1639,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Ustawienia firm
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Żadne -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{SILVER}Kategorię {BLACK}na {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{SILVER}Typ {BLACK}na {WHITE}Wszystkie typy ustawień
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{SILVER}Kategorię {BLACK}na {WHITE}{STRING} {BLACK}oraz {SILVER} Typ {BLACK}na {WHITE}Wszystkie typy ustawień
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{PUSH_COLOUR}{SILVER}Kategorię {POP_COLOUR}na {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{PUSH_COLOUR}{SILVER}Typ {POP_COLOUR}na {WHITE}Wszystkie typy ustawień
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Zobacz wszystkie wyniki wyszukiwania, ustawiając{}{PUSH_COLOUR}{SILVER}Kategorię {POP_COLOUR}na {PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}oraz {PUSH_COLOUR}{SILVER} Typ {POP_COLOUR}na {WHITE}Wszystkie typy ustawień
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Wył.
@@ -5334,7 +5339,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Szacowan
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Zapisywanie trwa,{}proszę zaczekać do zakończenia!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Błąd autozapisu
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Błąd automatycznego zapisu gry
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nie można odczytać napędu
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Nie można zapisać gry...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nie można usunąć pliku

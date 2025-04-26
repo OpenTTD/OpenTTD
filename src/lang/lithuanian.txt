@@ -1142,6 +1142,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Tūris
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Garso efektai
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muzika
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valiuta

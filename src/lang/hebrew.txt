@@ -907,6 +907,7 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :גרפיקות
 
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}מטבע
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}בחירת מטבע
 

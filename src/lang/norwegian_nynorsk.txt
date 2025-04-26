@@ -857,6 +857,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinns
 
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaeining
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Vel valutaeining
 

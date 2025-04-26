@@ -714,7 +714,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}跳至�
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}跳至所選的下一首樂軌
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}停止播放音樂
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}開始播放音樂
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}拖曳捲軸以設定背景音樂和音效的音量
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}拖曳滑動以設定背景音樂和音效的音量
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}選擇「全部音軌」播放清單
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}選擇「舊格調」播放清單
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}選擇「新格調」播放清單
@@ -972,6 +972,7 @@ STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :音效
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音樂
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :幣值單位
@@ -1042,7 +1043,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :選擇界面語
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING}（已完成 {NUM} ％）
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :全螢幕
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :勾選此方框即可在全螢幕下遊玩 OpenTTD
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :啟用後，即可在全螢幕下遊玩 OpenTTD
 
 STR_GAME_OPTIONS_RESOLUTION                                     :螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :選擇螢幕解析度
@@ -1050,11 +1051,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :硬體加速
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :勾選此方框以允許OpenTTD嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :啟用後，允許 OpenTTD 嘗試使用硬體加速。設定將會在遊戲重新啟動後套用
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改的設定將會在遊戲重啟後生效
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :垂直同步
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :勾選此方框以啟用垂直同步 (V-SYNC)。此項設定將會在遊戲重啟後套用。只有在硬體加速存在時可用
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :啟用後，使用垂直同步 (V-SYNC)。此項設定將會在遊戲重啟後套用。只在使用硬體加速時可用
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :使用中的驅動程式：{STRING}
 
@@ -1063,15 +1064,15 @@ STR_GAME_OPTIONS_INTERFACE                                      :界面
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :界面大小
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖曳滑動以設定界面大小。 按住 <Ctrl> 鍵以精準細緻調整
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自動選取大小
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :勾選此方框以自動選取界面大小
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :啟用後，自動選取界面大小
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :縮放邊框
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :勾選此方框以令邊框隨界面大小而縮放
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :啟用後，使邊框隨界面大小而縮放
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :使用傳統點陣式字體
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :勾選此方框以使用固定大小的傳統點陣式字體
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :啟用後，使用固定大小的傳統點陣式字體
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :反鋸齒字體
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :勾選此方框以使用反鋸齒字體
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :啟用後，使用反鋸齒字體
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1241,7 +1242,7 @@ STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}此操�
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :篩選設定：
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :適用範圍：
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :僅顯示曾被更改的設定
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :僅顯示所選擇的適用設定
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :基本 (僅顯示重要設定)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :進階 (顯示大部份設定)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :專業 (顯示所有設定)

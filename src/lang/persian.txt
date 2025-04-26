@@ -855,6 +855,7 @@ STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}تنظی
 
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}واحد پول
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}انتخب واحد پول
 

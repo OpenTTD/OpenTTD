@@ -970,6 +970,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Lefel Sain
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Effeithiau sŵn
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Cerddoriaeth
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Uned Arian

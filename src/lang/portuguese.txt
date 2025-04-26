@@ -959,22 +959,25 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copiar a
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opções do Jogo
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :Geral
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Escolher definições gerais
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Escolher definições gerais
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Gráficos
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Escolher definições gráficas
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Escolher as definições gráficas
 STR_GAME_OPTIONS_TAB_SOUND                                      :Som
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Escolher definições de sons e música
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Escolher as definições de sons e música
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Escolher as definições de integração social
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Escolher as definições de integração social
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Avançado
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Alterar definições avançadas
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efeitos sonoros
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades monetárias
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selecção de unidades monetárias
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Unidades monetárias
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Seleção de unidades monetárias
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1025,8 +1028,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Lats da Letóni
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Escudo Português
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Hryvnia Ucraniana
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Guardar automaticamente
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Seleccionar o intervalo para guardar automático
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Guardar automaticamente
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Selecionar o intervalo para guardar o jogo automaticamente
 
 # Autosave dropdown
 ###length 5
@@ -1036,77 +1039,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :A cada 30 minut
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :A cada 60 minutos
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :A cada 120 minutos
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleccionar o idioma da interface do jogo
+STR_GAME_OPTIONS_LANGUAGE                                       :Língua
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Selecionar a Língua da interface do jogo
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% concluído)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Ecrã Inteiro
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Seleccione esta opção para jogar o OpenTTD em modo de ecrã inteiro
+STR_GAME_OPTIONS_FULLSCREEN                                     :Ecrã Inteiro
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Seleccione esta opção para jogar o OpenTTD em modo de ecrã inteiro
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução do ecrã
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccione a resolução do ecrã que deseja utilizar
+STR_GAME_OPTIONS_RESOLUTION                                     :Resolução do ecrã
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Selecione a resolução do ecrã que deseja utilizar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aceleração por hardware
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque esta caixa para permitir que o OpenTTD tente usar a aceleração por hardware. Uma configuração alterada só será aplicada após reiniciar o jogo
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Aceleração por hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Marque esta opção para permitir que o OpenTTD tente usar a aceleração por hardware. Uma definição alterada só será aplicada após reiniciar o jogo
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A definição só terá efeito após reiniciar o jogo
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar "V-Sync" no ecrã. Uma configuração alterada só terá efeito quando reiniciar o jogo. Só funciona com a aceleração por hardware ativada
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Marque esta opção para ativar v-sync no ecrã. Uma definição alterada só terá efeito quando reiniciar o jogo. Só funciona com a aceleração por hardware ativada
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}"Driver" atual: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador atual: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Interface
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Tamanho do interface
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Arrastar o controlo deslizante para definir o tamanho do interface. Ctrl+Arrastar para um ajuste contínuo
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Auto-detetar o tamanho
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Marque esta caixa para detetar automaticamente o tamanho do interface
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Tamanho da interface
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arrastar o controlo deslizante para definir o tamanho da interface. Ctrl+Arrastar para um ajuste contínuo
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detetar automaticamente o tamanho
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta opção para detetar automaticamente o tamanho do interface
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Escalar chanfros
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Marque esta caixa para dimensionar os chanfros por tamanho de interface
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Escalar chanfros
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Marque esta opção para dimensionar os chanfros por tamanho de interface
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Usar a fonte "sprite" tradicional
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Marque esta caixa se prefere usar o tipo de fonte tradicional de tamanho fixo
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Fontes anti-alias
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Marque esta caixa para fontes redimensionáveis com anti-alias
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Usar a fonte "sprite" tradicional
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Marque esta opção se prefere usar o tipo de fonte tradicional de tamanho fixo
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Fontes anti-alias
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Marque esta opção para fontes redimensionáveis com anti-alias
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Sondagem automatizada
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participar numa sondagem automatizada
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}Quando ativo, o OpenTTD transmitirá uma sondagem ao deixar um jogo
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}Sobre sondagem e privacidade
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}Isto abre um navegador com mais informações sobre a pesquisa automatizada
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Pré-visualizar resultado da sondagem
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Mostrar o resultado da sondagem do jogo atual a decorrer
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Sondagem automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Participar numa sondagem automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :Quando ativo, o OpenTTD transmitirá uma sondagem ao deixar um jogo
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :Sobre sondagem e privacidade
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :Isto abre um navegador com mais informações sobre a sondagem automatizada
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Pré-visualizar resultado da sondagem
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Mostrar o resultado da sondagem do jogo atual a decorrer
 
+STR_GAME_OPTIONS_DISPLAY                                        :Ecrã
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Exibir taxa de atualização
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecione a taxa de atualização do ecrã para usar
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Taxa de atualização do Ecrã
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Selecione a taxa de atualização do ecrã para usar
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Taxas de atualização maiores que 60Hz podem interferir no desempenho.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione o conjunto de gráficos base a usar (não pode ser alterado no jogo, só a partir do menu principal)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre o conjunto de gráficos base
+STR_GAME_OPTIONS_BASE_GRF                                       :Conjunto de gráficos base
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Selecione o conjunto de gráficos base a usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Informação adicional sobre o conjunto de gráficos base
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione o conjunto de sons base a usar (não pode ser alterado no jogo, só a partir do menu principal)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informação adicional sobre o conjunto de sons base
+STR_GAME_OPTIONS_BASE_SFX                                       :Conjunto de sons base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Selecione o conjunto de sons base a usar (não pode ser alterado no jogo, só a partir do menu principal)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Informação adicional sobre o conjunto de sons base
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de música base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Seleccione o conjunto de música base a usar
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de música base
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Conjunto de música base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Seleccione o conjunto de música base a usar
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Informação adicional sobre o conjunto de música base
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Obter Conteúdo
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Verificar se há conteúdo novo e atualizado para descarga
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(não existem "plugins" para integrar com as plataformas sociais instaladas)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(não existem extensões para integrar com as plataformas sociais instaladas)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Plataforma:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Estado do plugin:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Plataforma:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Estado da extensão:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}A correr
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Falha ao inicializar
@@ -1220,10 +1225,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo (sem
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não existem IAs disponíveis...{}{}Pode descarregar várias IAs através do sistema de 'Conteúdo Online'
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtro:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todas
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar todas
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Repor todos os valores
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filtro:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Expandir todas
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Colapsar todas
+STR_CONFIG_SETTING_RESET_ALL                                    :Repor todos os valores
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sem explicação disponível)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por omissão: {ORANGE}{STRING}
@@ -1236,9 +1241,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configurações
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Cuidado!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta ação vai repor todas as configurações do jogo para os seus valores padrão.{}Tem a certeza que deseja continuar?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringe a lista abaixo para mostrar apenas opções modificadas
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Categoria:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tipo:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Restringe a lista abaixo para mostrar apenas opções modificadas
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opções básicas (mostrar apenas definições importantes)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avançado (mostra grande parte das definições)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Avançado (mostrar todas as definições, incluindo as estranhas)
@@ -1255,9 +1260,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Configurações
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Nenhum -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Mostrar todos os resultados de pesquisa por configuração{}{SILVER}Categoria {BLACK}para {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Mostrar todos os resultados de pesquisa por configuração{}{SILVER}Tipo {BLACK}para {WHITE}Todos os tipos de configuração
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Mostrar todos os resultados de pesquisa por configuração{}{SILVER}Categoria {BLACK}para {WHITE}{STRING} {BLACK}e {SILVER}Tipo {BLACK}para {WHITE}Todos os tipos de configuração
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Mostrar todos os resultados da pesquisa definindo{}{PUSH_COLOUR}{SILVER}Categoria {POP_COLOUR}para {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Mostrar todos os resultados da pesquisa por definição{}{PUSH_COLOUR}{SILVER}Tipo {POP_COLOUR}para {WHITE}Todos os tipos de definição
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Mostrar todos os resultados da pesquisa por configuração{}{PUSH_COLOUR}{SILVER}Categoria {POP_COLOUR}para {PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}e {PUSH_COLOUR}{SILVER}Tipo {POP_COLOUR}para {WHITE}Todos os tipos de definições
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Desligado

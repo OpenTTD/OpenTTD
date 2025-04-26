@@ -926,6 +926,7 @@ STR_GAME_OPTIONS_SFX_VOLUME                                     :効果音
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音楽
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}通貨単位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}通貨単位の選択
 

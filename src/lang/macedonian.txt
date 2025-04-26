@@ -763,6 +763,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Опци
 
 
 
+
 ###length 45
 
 

@@ -958,6 +958,7 @@ STR_GAME_OPTIONS_SFX_VOLUME                                     :Ses efektleri
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Müzik
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Para birimleri
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para birimi seçimi
 

@@ -285,7 +285,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Close wi
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window title - drag this to move window
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - only show the title bar
 STR_TOOLTIP_DEBUG                                               :{BLACK}Show NewGRF debug information
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Resize window to default size. Ctrl+Click to store current size as default
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Resize window to default size. Ctrl+Click to store current size as default. Double Ctrl+Click to reset stored default
 STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable by the 'Close All Windows' key. Ctrl+Click to also save state as default
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click and drag to resize this window
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
@@ -958,22 +958,25 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TOOLTIP                        :{BLACK}Copy the
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Game Options
 
 STR_GAME_OPTIONS_TAB_GENERAL                                    :General
-STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :{BLACK}Choose general settings
+STR_GAME_OPTIONS_TAB_GENERAL_TOOLTIP                            :Choose general settings
 STR_GAME_OPTIONS_TAB_GRAPHICS                                   :Graphics
-STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :{BLACK}Choose graphics settings
+STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :Choose graphics settings
 STR_GAME_OPTIONS_TAB_SOUND                                      :Sound
-STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :{BLACK}Choose sound and music settings
+STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :Choose sound and music settings
 STR_GAME_OPTIONS_TAB_SOCIAL                                     :Social
-STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :{BLACK}Choose social integration settings
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :Choose social integration settings
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :Advanced
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :Change advanced settings
 
 STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Sound effects
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Music
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Currency units
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Currency units selection
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :Currency units
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :Currency units selection
 
 STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
@@ -1024,8 +1027,8 @@ STR_GAME_OPTIONS_CURRENCY_LVL                                   :Latvian Lats
 STR_GAME_OPTIONS_CURRENCY_PTE                                   :Portuguese Escudo
 STR_GAME_OPTIONS_CURRENCY_UAH                                   :Ukrainian Hryvnia
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosave
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Select interval between automatic game saves
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :Autosave
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :Select interval between automatic game saves
 
 # Autosave dropdown
 ###length 5
@@ -1035,77 +1038,79 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :Every 30 minute
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :Every 60 minutes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :Every 120 minutes
 
-STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Language
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Select the interface language to use
+STR_GAME_OPTIONS_LANGUAGE                                       :Language
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Select the interface language to use
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% completed)
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Fullscreen
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Check this box to play OpenTTD fullscreen mode
+STR_GAME_OPTIONS_FULLSCREEN                                     :Fullscreen
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Check this box to play OpenTTD fullscreen mode
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen resolution
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
+STR_GAME_OPTIONS_RESOLUTION                                     :Screen resolution
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Select the screen resolution to use
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
-STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware acceleration
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :Hardware acceleration
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}The setting will only take effect after a game restart
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Check this box to v-sync the screen. A changed setting will only be applied upon game restart. Only works with hardware acceleration enabled
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Check this box to v-sync the screen. A changed setting will only be applied upon game restart. Only works with hardware acceleration enabled
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :{BLACK}Current driver: {STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Current driver: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :Interface
 
-STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :{BLACK}Interface size
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :{BLACK}Drag slider to set interface size. Ctrl+Drag for continuous adjustment
-STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :{BLACK}Auto-detect size
-STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :{BLACK}Check this box to detect interface size automatically
+STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interface size
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Drag slider to set interface size. Ctrl+Drag for continuous adjustment
+STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Auto-detect size
+STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Check this box to detect interface size automatically
 
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :{BLACK}Scale bevels
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :{BLACK}Check this box to scale bevels by interface size
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Scale bevels
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Check this box to scale bevels by interface size
 
-STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :{BLACK}Use traditional sprite font
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :{BLACK}Check this box if you prefer to use the traditional fixed-size sprite font
-STR_GAME_OPTIONS_GUI_FONT_AA                                    :{BLACK}Anti-alias fonts
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :{BLACK}Check this box to anti-alias resizable fonts
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Use traditional sprite font
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Check this box if you prefer to use the traditional fixed-size sprite font
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias fonts
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Check this box to anti-alias resizable fonts
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :{BLACK}Automated survey
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :{BLACK}Participate in automated survey
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :{BLACK}When enabled, OpenTTD will transmit a survey when leaving a game
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :{BLACK}About survey and privacy
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :{BLACK}This opens a browser with more information about the automated survey
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :{BLACK}Preview survey result
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :{BLACK}Show the survey result of the current running game
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :Automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :Participate in automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :When enabled, OpenTTD will transmit a survey when leaving a game
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :About survey and privacy
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :This opens a browser with more information about the automated survey
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :Preview survey result
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :Show the survey result of the current running game
 
+STR_GAME_OPTIONS_DISPLAY                                        :Display
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Display refresh rate
-STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Select the screen refresh rate to use
+STR_GAME_OPTIONS_REFRESH_RATE                                   :Display refresh rate
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :Select the screen refresh rate to use
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates higher than 60Hz might impact performance.
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use (cannot be changed in-game, only from the main menu)
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base graphics set
+STR_GAME_OPTIONS_BASE_GRF                                       :Base graphics set
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :Select the base graphics set to use (cannot be changed in-game, only from the main menu)
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :Additional information about the base graphics set
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Base sounds set
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Select the base sounds set to use (cannot be changed in-game, only from the main menu)
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Additional information about the base sounds set
+STR_GAME_OPTIONS_BASE_SFX                                       :Base sounds set
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :Select the base sounds set to use (cannot be changed in-game, only from the main menu)
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :Additional information about the base sounds set
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base music set
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Select the base music set to use
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Additional information about the base music set
+STR_GAME_OPTIONS_BASE_MUSIC                                     :Base music set
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Select the base music set to use
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Additional information about the base music set
 
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Get Content
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Check for new and updated content to download
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(no plugins to integrate with social platforms installed)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(no plugins to integrate with social platforms installed)
 
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{BLACK}{STRING} ({STRING})
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :{BLACK}Platform:
-STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :{BLACK}Plugin state:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platform:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :Plugin state:
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}Running
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}Failed to initialize
@@ -1219,10 +1224,10 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive (no 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}{}You can download several AIs via the 'Online Content' system
 
 # Settings tree in the Game Options window
-STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter:
-STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expand all
-STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Collapse all
-STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Reset all values
+STR_CONFIG_SETTING_FILTER_TITLE                                 :Filter:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :Expand all
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Collapse all
+STR_CONFIG_SETTING_RESET_ALL                                    :Reset all values
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no explanation available)
 STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Default value: {ORANGE}{STRING}
@@ -1235,9 +1240,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Caution!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}This action will reset all game settings to their default values.{}Are you sure you want to proceed?
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Category:
-STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
-STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below using predefined filters
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Category:
+STR_CONFIG_SETTING_RESTRICT_TYPE                                :Type:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :Restricts the list below using predefined filters
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Basic (show only important settings)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Advanced (show most settings)
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Expert (show all settings, including weird ones)
@@ -1254,9 +1259,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Company setting
 
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- None -
 ###length 3
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING}
-STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Show all search results by setting{}{SILVER}Type {BLACK}to {WHITE}All setting types
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Show all search results by setting{}{SILVER}Category {BLACK}to {WHITE}{STRING} {BLACK}and {SILVER}Type {BLACK}to {WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :Show all search results by setting{}{PUSH_COLOUR}{SILVER}Category {POP_COLOUR}to {WHITE}{STRING}
+STR_CONFIG_SETTING_TYPE_HIDES                                   :Show all search results by setting{}{PUSH_COLOUR}{SILVER}Type {POP_COLOUR}to {WHITE}All setting types
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :Show all search results by setting{}{PUSH_COLOUR}{SILVER}Category {POP_COLOUR}to {PUSH_COLOUR}{WHITE}{STRING} {POP_COLOUR}and {PUSH_COLOUR}{SILVER}Type {POP_COLOUR}to {WHITE}All setting types
 
 ###length 3
 STR_CONFIG_SETTING_OFF                                          :Off

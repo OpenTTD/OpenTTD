@@ -1021,6 +1021,7 @@ STR_GAME_OPTIONS_SFX_VOLUME                                     :Sonefektoj
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muziko
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Monunuoj
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Elekto de monunuoj
 

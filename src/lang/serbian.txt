@@ -1133,6 +1133,7 @@ STR_GAME_OPTIONS_SFX_VOLUME                                     :Zvučni efekti
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muzika
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor valute
 

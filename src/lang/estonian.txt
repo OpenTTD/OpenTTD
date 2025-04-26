@@ -1012,6 +1012,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Helitase
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Heliefektid
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muusika
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuuta

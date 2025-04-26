@@ -962,6 +962,7 @@ STR_GAME_OPTIONS_SFX_VOLUME                                     :Effetti sonori
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musica
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Selezione della valuta
 

@@ -1270,6 +1270,7 @@ STR_GAME_OPTIONS_SFX_VOLUME                                     :Гукавыя 
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Музыка
 
 
+
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Выбар валюты
 

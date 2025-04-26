@@ -968,6 +968,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Volym
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ljudeffekter
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Musik
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenheter

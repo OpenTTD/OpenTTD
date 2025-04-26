@@ -963,6 +963,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Височин�
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Звукови ефекти
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Музика
 
+
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Парична единица
