@@ -321,6 +321,20 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 	const struct SpriteGroup *GetSpriteGroup(Tkey index) const { return this->spritegroups[static_cast<size_t>(index)]; }
 
 	/**
+	 * Get the first existing SpriteGroup from a list of options.
+	 * @param indices Valid options.
+	 * @return First existing, or nullptr if none exists.
+	 */
+	const struct SpriteGroup *GetFirstSpriteGroupOf(std::initializer_list<Tkey> indices) const
+	{
+		for (auto key : indices) {
+			auto *result = GetSpriteGroup(key);
+			if (result != nullptr) return result;
+		}
+		return nullptr;
+	}
+
+	/**
 	 * Set the SpriteGroup at the specified index.
 	 * @param index Index to set.
 	 * @param spritegroup SpriteGroup to set.
@@ -334,6 +348,7 @@ struct FixedGRFFileProps : GRFFilePropsBase {
 struct SingleGRFFileProps : GRFFilePropsBase {
 	const struct SpriteGroup *spritegroup;
 
+	bool HasSpriteGroups() const { return this->spritegroup != nullptr; }
 	const struct SpriteGroup *GetSpriteGroup() const { return this->spritegroup; }
 	void SetSpriteGroup(const struct SpriteGroup *spritegroup) { this->spritegroup = spritegroup; }
 };
@@ -346,7 +361,31 @@ enum class StandardSpriteGroup {
 	Purchase, ///< Used before an entity exists.
 	End
 };
-using StandardGRFFileProps = FixedGRFFileProps<StandardSpriteGroup, static_cast<size_t>(StandardSpriteGroup::End)>;
+
+/**
+ * Container for standard sprite groups.
+ */
+struct StandardGRFFileProps : FixedGRFFileProps<StandardSpriteGroup, static_cast<size_t>(StandardSpriteGroup::End)> {
+	using FixedGRFFileProps<StandardSpriteGroup, static_cast<size_t>(StandardSpriteGroup::End)>::GetSpriteGroup;
+
+	/**
+	 * Check whether the entity has sprite groups.
+	 */
+	bool HasSpriteGroups() const
+	{
+		return GetSpriteGroup(StandardSpriteGroup::Default) != nullptr;
+	}
+
+	/**
+	 * Get the standard sprite group.
+	 * @param entity_exists Whether the entity exists (true), or is being constructed or shown in the GUI (false).
+	 */
+	const struct SpriteGroup *GetSpriteGroup(bool entity_exists) const
+	{
+		auto *res = entity_exists ? nullptr : GetSpriteGroup(StandardSpriteGroup::Purchase);
+		return res ? res : GetSpriteGroup(StandardSpriteGroup::Default);
+	}
+};
 
 /**
  * Variable-length list of sprite groups for an entity.
@@ -367,6 +406,20 @@ struct VariableGRFFileProps : GRFFilePropsBase {
 		auto it = std::ranges::lower_bound(this->spritegroups, index, std::less{}, &ValueType::first);
 		if (it == std::end(this->spritegroups) || it->first != index) return nullptr;
 		return it->second;
+	}
+
+	/**
+	 * Get the first existing SpriteGroup from a list of options.
+	 * @param indices Valid options.
+	 * @return First existing, or nullptr if none exists.
+	 */
+	const struct SpriteGroup *GetFirstSpriteGroupOf(std::initializer_list<Tkey> indices) const
+	{
+		for (auto key : indices) {
+			auto *result = GetSpriteGroup(key);
+			if (result != nullptr) return result;
+		}
+		return nullptr;
 	}
 
 	/**

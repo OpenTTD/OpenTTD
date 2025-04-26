@@ -79,7 +79,7 @@ uint32_t GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32_t cur_g
 		}
 	}
 	/* Not an 'old type' tile */
-	if (indtsp->grf_prop.GetSpriteGroup() != nullptr) { // tile has a spritegroup ?
+	if (indtsp->grf_prop.HasSpriteGroups()) {
 		if (indtsp->grf_prop.grfid == cur_grfid) { // same industry, same grf ?
 			return indtsp->grf_prop.local_id;
 		} else {
