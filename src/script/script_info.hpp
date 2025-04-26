@@ -82,7 +82,7 @@ public:
 	/**
 	 * Check if a given method exists.
 	 */
-	bool CheckMethod(const char *name) const;
+	bool CheckMethod(std::string_view name) const;
 
 	/**
 	 * Process the creation of a FileInfo object.
@@ -149,7 +149,7 @@ private:
 	class ScriptScanner *scanner = nullptr; ///< ScriptScanner object that was used to scan this script info.
 };
 
-void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir);
-void Script_CreateDummy(HSQUIRRELVM vm, StringID string, const char *type);
+void Script_CreateDummyInfo(HSQUIRRELVM vm, std::string_view type, std::string_view dir);
+void Script_CreateDummy(HSQUIRRELVM vm, StringID string, std::string_view type);
 
 #endif /* SCRIPT_INFO_HPP */

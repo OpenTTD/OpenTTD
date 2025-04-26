@@ -46,7 +46,7 @@ public:
 	/**
 	 * Create a new script.
 	 */
-	ScriptInstance(const char *APIName);
+	ScriptInstance(std::string_view api_name);
 	virtual ~ScriptInstance();
 
 	/**

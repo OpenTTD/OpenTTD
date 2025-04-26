@@ -18,7 +18,7 @@
 
 #include "../safeguards.h"
 
-bool ScriptInfo::CheckMethod(const char *name) const
+bool ScriptInfo::CheckMethod(std::string_view name) const
 {
 	if (!this->engine->MethodExists(this->SQ_instance, name)) {
 		this->engine->ThrowError(fmt::format("your info.nut/library.nut doesn't have the method '{}'", name));
@@ -38,7 +38,7 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	info->engine = info->scanner->GetEngine();
 
 	/* Ensure the mandatory functions exist */
-	static const char * const required_functions[] = {
+	static std::string_view const required_functions[] = {
 		"GetAuthor",
 		"GetName",
 		"GetShortName",

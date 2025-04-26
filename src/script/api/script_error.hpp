@@ -218,11 +218,11 @@ public:
 	 * @param ai_error_msg The script error message representation.
 	 * @param message The string representation of this error message, used for debug purposes.
 	 */
-	static void RegisterErrorMapString(ScriptErrorType ai_error_msg, const char *message);
+	static void RegisterErrorMapString(ScriptErrorType ai_error_msg, std::string_view message);
 
 private:
-	typedef std::map<StringID, ScriptErrorType> ScriptErrorMap;           ///< The type for mapping between error (internal OpenTTD) StringID to the script error type.
-	typedef std::map<ScriptErrorType, const char *> ScriptErrorMapString; ///< The type for mapping between error type and textual representation.
+	using ScriptErrorMap = std::map<StringID, ScriptErrorType>; ///< The type for mapping between error (internal OpenTTD) StringID to the script error type.
+	using ScriptErrorMapString = std::map<ScriptErrorType, std::string_view>; ///< The type for mapping between error type and textual representation.
 
 	static ScriptErrorMap error_map;              ///< The mapping between error (internal OpenTTD) StringID to the script error type.
 	static ScriptErrorMapString error_map_string; ///< The mapping between error type and textual representation.

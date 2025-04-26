@@ -253,7 +253,7 @@ void Squirrel::PrintFunc(HSQUIRRELVM vm, const std::string &s)
 	}
 }
 
-void Squirrel::AddMethod(const char *method_name, SQFUNCTION proc, uint nparam, const char *params, void *userdata, int size)
+void Squirrel::AddMethod(std::string_view method_name, SQFUNCTION proc, uint nparam, const char *params, void *userdata, int size)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -270,7 +270,7 @@ void Squirrel::AddMethod(const char *method_name, SQFUNCTION proc, uint nparam, 
 	sq_newslot(this->vm, -3, SQFalse);
 }
 
-void Squirrel::AddConst(const char *var_name, int value)
+void Squirrel::AddConst(std::string_view var_name, int value)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -279,7 +279,7 @@ void Squirrel::AddConst(const char *var_name, int value)
 	sq_newslot(this->vm, -3, SQTrue);
 }
 
-void Squirrel::AddConst(const char *var_name, bool value)
+void Squirrel::AddConst(std::string_view var_name, bool value)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -288,7 +288,7 @@ void Squirrel::AddConst(const char *var_name, bool value)
 	sq_newslot(this->vm, -3, SQTrue);
 }
 
-void Squirrel::AddClassBegin(const char *class_name)
+void Squirrel::AddClassBegin(std::string_view class_name)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -297,7 +297,7 @@ void Squirrel::AddClassBegin(const char *class_name)
 	sq_newclass(this->vm, SQFalse);
 }
 
-void Squirrel::AddClassBegin(const char *class_name, const char *parent_class)
+void Squirrel::AddClassBegin(std::string_view class_name, std::string_view parent_class)
 {
 	ScriptAllocatorScope alloc_scope(this);
 
@@ -320,7 +320,7 @@ void Squirrel::AddClassEnd()
 	sq_pop(vm, 1);
 }
 
-bool Squirrel::MethodExists(HSQOBJECT instance, const char *method_name)
+bool Squirrel::MethodExists(HSQOBJECT instance, std::string_view method_name)
 {
 	assert(!this->crashed);
 	ScriptAllocatorScope alloc_scope(this);
@@ -373,7 +373,7 @@ void Squirrel::CollectGarbage()
 	sq_collectgarbage(this->vm);
 }
 
-bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend)
+bool Squirrel::CallMethod(HSQOBJECT instance, std::string_view method_name, HSQOBJECT *ret, int suspend)
 {
 	assert(!this->crashed);
 	ScriptAllocatorScope alloc_scope(this);
@@ -407,7 +407,7 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	return true;
 }
 
-bool Squirrel::CallStringMethod(HSQOBJECT instance, const char *method_name, std::string *res, int suspend)
+bool Squirrel::CallStringMethod(HSQOBJECT instance, std::string_view method_name, std::string *res, int suspend)
 {
 	HSQOBJECT ret;
 	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
@@ -416,7 +416,7 @@ bool Squirrel::CallStringMethod(HSQOBJECT instance, const char *method_name, std
 	return true;
 }
 
-bool Squirrel::CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend)
+bool Squirrel::CallIntegerMethod(HSQOBJECT instance, std::string_view method_name, int *res, int suspend)
 {
 	HSQOBJECT ret;
 	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
@@ -425,7 +425,7 @@ bool Squirrel::CallIntegerMethod(HSQOBJECT instance, const char *method_name, in
 	return true;
 }
 
-bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend)
+bool Squirrel::CallBoolMethod(HSQOBJECT instance, std::string_view method_name, bool *res, int suspend)
 {
 	HSQOBJECT ret;
 	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
@@ -444,8 +444,7 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 	sq_pushroottable(vm);
 
 	if (prepend_API_name) {
-		std::string prepended_class_name = engine->GetAPIName();
-		prepended_class_name += class_name;
+		std::string prepended_class_name = fmt::format("{}{}", engine->GetAPIName(), class_name);
 		sq_pushstring(vm, prepended_class_name, -1);
 	} else {
 		sq_pushstring(vm, class_name, -1);
@@ -488,7 +487,7 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 	return Squirrel::CreateClassInstanceVM(this->vm, class_name, real_instance, instance, nullptr);
 }
 
-/* static */ SQUserPointer Squirrel::GetRealInstance(HSQUIRRELVM vm, int index, const char *tag)
+/* static */ SQUserPointer Squirrel::GetRealInstance(HSQUIRRELVM vm, int index, std::string_view tag)
 {
 	if (index < 0) index += sq_gettop(vm) + 1;
 	Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(vm));
@@ -505,8 +504,8 @@ bool Squirrel::CreateClassInstance(const std::string &class_name, void *real_ins
 	throw sq_throwerror(vm, fmt::format("parameter {} has an invalid type ; expected: '{}'", index - 1, class_name));
 }
 
-Squirrel::Squirrel(const char *APIName) :
-	APIName(APIName), allocator(new ScriptAllocator())
+Squirrel::Squirrel(std::string_view api_name) :
+	api_name(api_name), allocator(new ScriptAllocator())
 {
 	this->Initialize();
 }
@@ -623,10 +622,10 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 
 	std::optional<FileHandle> file = std::nullopt;
 	size_t size;
-	if (strncmp(this->GetAPIName(), "AI", 2) == 0) {
+	if (this->GetAPIName().starts_with("AI")) {
 		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
 		if (!file.has_value()) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
-	} else if (strncmp(this->GetAPIName(), "GS", 2) == 0) {
+	} else if (this->GetAPIName().starts_with("GS")) {
 		file = FioFOpenFile(filename, "rb", GAME_DIR, &size);
 		if (!file.has_value()) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
 	} else {

@@ -41,9 +41,9 @@ public:
 
 protected:
 	std::string GetScriptName(ScriptInfo *info) override;
-	const char *GetFileName() const override { return PATHSEP "info.nut"; }
+	std::string_view GetFileName() const override { return PATHSEP "info.nut"; }
 	Subdirectory GetDirectory() const override { return AI_DIR; }
-	const char *GetScannerName() const override { return "AIs"; }
+	std::string_view GetScannerName() const override { return "AIs"; }
 	void RegisterAPI(class Squirrel *engine) override;
 
 private:
@@ -64,9 +64,9 @@ public:
 
 protected:
 	std::string GetScriptName(ScriptInfo *info) override;
-	const char *GetFileName() const override { return PATHSEP "library.nut"; }
+	std::string_view GetFileName() const override { return PATHSEP "library.nut"; }
 	Subdirectory GetDirectory() const override { return AI_LIBRARY_DIR; }
-	const char *GetScannerName() const override { return "AI Libraries"; }
+	std::string_view GetScannerName() const override { return "AI Libraries"; }
 	void RegisterAPI(class Squirrel *engine) override;
 };
 
