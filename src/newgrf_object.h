@@ -58,8 +58,7 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(ObjectClassID)
  * default objects in table/object_land.h
  */
 struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
-	/* 2 because of the "normal" and "buy" sprite stacks. */
-	FixedGRFFileProps<2> grf_prop; ///< Properties related the the grf file
+	StandardGRFFileProps grf_prop; ///< Properties related the the grf file
 	/* Animation speed default differs from other features */
 	AnimationInfo<ObjectAnimationTriggers> animation{0, AnimationStatus::NoAnimation, 0, {}};  ///< Information about the animation.
 	StringID name;                ///< The name for this object.
@@ -165,9 +164,6 @@ private:
 
 /** Class containing information relating to object classes. */
 using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
-
-static const size_t OBJECT_SPRITE_GROUP_DEFAULT = 0;
-static const size_t OBJECT_SPRITE_GROUP_PURCHASE = 1;
 
 uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view = 0);
 

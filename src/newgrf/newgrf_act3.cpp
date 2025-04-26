@@ -394,7 +394,7 @@ static void ObjectMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 				continue;
 			}
 
-			spec->grf_prop.SetSpriteGroup(OBJECT_SPRITE_GROUP_PURCHASE, _cur_gps.spritegroups[groupid]);
+			spec->grf_prop.SetSpriteGroup(StandardSpriteGroup::Purchase, _cur_gps.spritegroups[groupid]);
 		}
 	}
 
@@ -414,7 +414,7 @@ static void ObjectMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 			continue;
 		}
 
-		spec->grf_prop.SetSpriteGroup(OBJECT_SPRITE_GROUP_DEFAULT, _cur_gps.spritegroups[groupid]);
+		spec->grf_prop.SetSpriteGroup(StandardSpriteGroup::Default, _cur_gps.spritegroups[groupid]);
 		spec->grf_prop.SetGRFFile(_cur_gps.grffile);
 		spec->grf_prop.local_id = object;
 	}
