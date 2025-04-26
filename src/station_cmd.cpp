@@ -3601,9 +3601,15 @@ static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode
 
 static void TileLoop_Station(TileIndex tile)
 {
+	auto *st = BaseStation::GetByTile(tile);
 	switch (GetStationType(tile)) {
 		case StationType::Airport:
-			TriggerAirportTileAnimation(Station::GetByTile(tile), tile, AirportAnimationTrigger::TileLoop);
+			TriggerAirportTileAnimation(Station::From(st), tile, AirportAnimationTrigger::TileLoop);
+			break;
+
+		case StationType::Rail:
+		case StationType::RailWaypoint:
+			TriggerStationAnimation(st, tile, StationAnimationTrigger::TileLoop);
 			break;
 
 		case StationType::Dock:
@@ -3613,6 +3619,11 @@ static void TileLoop_Station(TileIndex tile)
 		case StationType::Oilrig: //(station part)
 		case StationType::Buoy:
 			TileLoop_Water(tile);
+			break;
+
+		case StationType::Truck:
+		case StationType::Bus:
+			TriggerRoadStopAnimation(st, tile, StationAnimationTrigger::TileLoop);
 			break;
 
 		case StationType::RoadWaypoint: {
@@ -3648,6 +3659,8 @@ static void TileLoop_Station(TileIndex tile)
 				SetRoadWaypointRoadside(tile, cur_rs == ROADSIDE_BARREN ? new_rs : ROADSIDE_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
+
+			TriggerRoadStopAnimation(st, tile, StationAnimationTrigger::TileLoop);
 			break;
 		}
 

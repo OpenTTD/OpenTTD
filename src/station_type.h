@@ -96,6 +96,9 @@ enum class StationAnimationTrigger : uint8_t {
 	VehicleDeparts, ///< Trigger platform when train leaves.
 	VehicleLoads, ///< Trigger platform when train loads/unloads.
 	AcceptanceTick, ///< Trigger station every 250 ticks.
+	TileLoop, ///< Trigger in the periodic tile loop.
+	PathReservation, ///< Trigger platform when train reserves path.
+	End
 };
 using StationAnimationTriggers = EnumBitSet<StationAnimationTrigger, uint16_t>;
 
