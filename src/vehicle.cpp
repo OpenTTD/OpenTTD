@@ -432,10 +432,11 @@ static std::array<Vehicle *, TOTAL_TILE_HASH_SIZE> _vehicle_tile_hash{};
 VehiclesNearTileXY::Iterator::Iterator(int32_t x, int32_t y)
 {
 	const int COLL_DIST = 6;
-	pos_rect.left = x - COLL_DIST;
-	pos_rect.right = x + COLL_DIST;
-	pos_rect.top = y - COLL_DIST;
-	pos_rect.bottom = y + COLL_DIST;
+	/* There are no negative tile coordinates */
+	pos_rect.left = std::max<int>(0, x - COLL_DIST);
+	pos_rect.right = std::max<int>(0, x + COLL_DIST);
+	pos_rect.top = std::max<int>(0, y - COLL_DIST);
+	pos_rect.bottom = std::max<int>(0, y + COLL_DIST);
 
 	/* Hash area to scan */
 	this->hxmin = this->hx = GetTileHash1D(pos_rect.left / TILE_SIZE);
