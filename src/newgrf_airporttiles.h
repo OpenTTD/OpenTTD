@@ -88,7 +88,7 @@ private:
 };
 
 void AnimateAirportTile(TileIndex tile);
-bool TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
+bool TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger);
 bool TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type = INVALID_CARGO);
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts);
 
