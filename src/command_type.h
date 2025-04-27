@@ -372,6 +372,10 @@ enum Commands : uint8_t {
 	CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, ///< update the score of a league table element
 	CMD_REMOVE_LEAGUE_TABLE_ELEMENT,       ///< remove a league table element
 
+	CMD_CREATE_TEXT_EFFECT,           ///< create a new text effect
+	CMD_UPDATE_TEXT_EFFECT,           ///< update text effect
+	CMD_REMOVE_TEXT_EFFECT,           ///< remove text effect
+
 	CMD_END,                          ///< Must ALWAYS be on the end of this list!! (period)
 };
 

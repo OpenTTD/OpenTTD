@@ -46,6 +46,7 @@
 #include "station_cmd.h"
 #include "story_cmd.h"
 #include "subsidy_cmd.h"
+#include "texteff_cmd.h"
 #include "terraform_cmd.h"
 #include "timetable_cmd.h"
 #include "town_cmd.h"

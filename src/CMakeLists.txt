@@ -498,6 +498,8 @@ add_files(
     textbuf_type.h
     texteff.cpp
     texteff.hpp
+    texteff_cmd.cpp
+    texteff_cmd.h
     textfile_gui.cpp
     textfile_gui.h
     textfile_type.h
