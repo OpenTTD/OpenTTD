@@ -1212,7 +1212,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	}
 
 	/** Update the payment rates on a regular interval. */
-	IntervalTimer<TimerWindow> update_payment_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> update_payment_interval = {std::chrono::seconds(3), [this](auto) {
 		this->UpdatePaymentRates();
 	}};
 

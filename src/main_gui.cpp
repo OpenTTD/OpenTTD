@@ -238,7 +238,7 @@ struct MainWindow : Window
 	}
 
 	/** Refresh the link-graph overlay on a regular interval. */
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(7650), [this](auto) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(7650), [this](auto) {
 		RefreshLinkGraph();
 	}};
 

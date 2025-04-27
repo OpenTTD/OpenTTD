@@ -940,7 +940,7 @@ static void ResetDisasterDelay()
 	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
-static IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::DISASTER}, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::DISASTER}, [](auto)
 {
 	if (--_disaster_delay != 0) return;
 

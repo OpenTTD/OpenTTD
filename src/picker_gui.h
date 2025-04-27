@@ -222,11 +222,11 @@ private:
 
 	GUIBadgeClasses badge_classes;
 
-	IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> yearly_interval = {{TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		this->SetDirty();
 	}};
 
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(3), [this](auto) {
 		RefreshUsedTypeList();
 	}};
 };

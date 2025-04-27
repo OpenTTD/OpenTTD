@@ -635,7 +635,7 @@ struct CheatWindow : Window {
 		this->SetDirty();
 	}
 
-	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		this->SetDirty();
 	}};
 };

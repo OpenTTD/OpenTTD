@@ -833,7 +833,7 @@ public:
 	}
 
 	/** Refresh the online servers on a regular interval. */
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(30), [this](uint) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::seconds(30), [this](uint) {
 		if (!this->searched_internet) return;
 
 		_network_coordinator_client.GetListing();

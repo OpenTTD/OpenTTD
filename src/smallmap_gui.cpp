@@ -730,12 +730,12 @@ protected:
 	}
 
 	/** Blink the industries (if selected) on a regular interval. */
-	IntervalTimer<TimerWindow> blink_interval = {std::chrono::milliseconds(450), [this](auto) {
+	const IntervalTimer<TimerWindow> blink_interval = {std::chrono::milliseconds(450), [this](auto) {
 		Blink();
 	}};
 
 	/** Update the whole map on a regular interval. */
-	IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(930), [this](auto) {
+	const IntervalTimer<TimerWindow> refresh_interval = {std::chrono::milliseconds(930), [this](auto) {
 		ForceRefresh();
 	}};
 

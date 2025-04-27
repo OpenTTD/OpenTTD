@@ -143,7 +143,7 @@ uint64_t GetMaskOfAllowedCurrencies()
 /**
  * Verify if the currency chosen by the user is about to be converted to Euro
  */
-static IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
 {
 	if (_currency_specs[_settings_game.locale.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_settings_game.locale.currency].to_euro != CF_ISEURO &&

@@ -293,7 +293,7 @@ struct DropdownWindow : Window {
 	}
 
 	/** Rate limit how fast scrolling happens. */
-	IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(30), [this](auto) {
+	const IntervalTimer<TimerWindow> scroll_interval = {std::chrono::milliseconds(30), [this](auto) {
 		if (this->scrolling == 0) return;
 
 		if (this->vscroll->UpdatePosition(this->scrolling)) this->SetDirty();

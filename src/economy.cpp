@@ -1969,7 +1969,7 @@ void LoadUnloadStation(Station *st)
 /**
  * Every calendar month update of inflation.
  */
-static IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCalendar::MONTH, TimerGameCalendar::Priority::COMPANY}, [](auto)
 {
 	if (_settings_game.economy.inflation) {
 		AddInflation();
@@ -1980,7 +1980,7 @@ static IntervalTimer<TimerGameCalendar> _calendar_inflation_monthly({TimerGameCa
 /**
  * Every economy month update of company economic data, plus economy fluctuations.
  */
-static IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::COMPANY }, [](auto)
+static const IntervalTimer<TimerGameEconomy> _economy_companies_monthly({ TimerGameEconomy::MONTH, TimerGameEconomy::Priority::COMPANY }, [](auto)
 {
 	CompaniesGenStatistics();
 	CompaniesPayInterest();
