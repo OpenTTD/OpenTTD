@@ -220,7 +220,7 @@ struct IConsoleWindow : Window
 	}
 
 	/** Check on a regular interval if the console buffer needs truncating. */
-	IntervalTimer<TimerWindow> truncate_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> truncate_interval = {std::chrono::seconds(3), [this](auto) {
 		assert(this->height >= 0 && this->line_height > 0);
 		size_t visible_lines = static_cast<size_t>(this->height / this->line_height);
 

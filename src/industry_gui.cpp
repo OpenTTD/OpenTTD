@@ -737,7 +737,7 @@ public:
 		if (success && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 
-	IntervalTimer<TimerWindow> update_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> update_interval = {std::chrono::seconds(3), [this](auto) {
 		if (_game_mode == GM_EDITOR) return;
 		if (this->selected_type == IT_INVALID) return;
 
@@ -1872,7 +1872,7 @@ public:
 	}
 
 	/** Rebuild the industry list on a regular interval. */
-	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
 		this->industries.ForceResort();
 		this->BuildSortIndustriesList();
 	}};

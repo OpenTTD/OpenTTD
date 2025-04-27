@@ -540,7 +540,7 @@ struct CompanyFinancesWindow : Window {
 	 * Check on a regular interval if the maximum amount of money has changed.
 	 * If it has, rescale the window to fit the new amount.
 	 */
-	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
 		const Company *c = Company::Get(this->window_number);
 		if (c->money > CompanyFinancesWindow::max_money) {
 			CompanyFinancesWindow::max_money = std::max(c->money * 2, CompanyFinancesWindow::max_money * 4);
@@ -1991,7 +1991,7 @@ struct CompanyInfrastructureWindow : Window
 		}
 	}
 
-	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(1), [this](auto) {
+	const IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(1), [this](auto) {
 		this->UpdateInfrastructureList();
 		this->SetWidgetDirty(WID_CI_LIST);
 	}};
@@ -2433,7 +2433,7 @@ struct CompanyWindow : Window
 	}
 
 	/** Redraw the window on a regular interval. */
-	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
 		this->SetDirty();
 	}};
 
@@ -2579,7 +2579,7 @@ struct BuyCompanyWindow : Window {
 	/**
 	 * Check on a regular interval if the company value has changed.
 	 */
-	IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
 		/* Value can't change when in bankruptcy. */
 		if (!this->hostile_takeover) return;
 

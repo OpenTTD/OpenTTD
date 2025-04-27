@@ -332,7 +332,7 @@ public:
 	}
 
 	/** Redraw the whole window on a regular interval. */
-	IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> redraw_interval = {std::chrono::seconds(3), [this](auto) {
 		this->SetDirty();
 	}};
 
@@ -605,7 +605,7 @@ public:
 		Command<CMD_RENAME_TOWN>::Post(STR_ERROR_CAN_T_RENAME_TOWN, static_cast<TownID>(this->window_number), *str);
 	}
 
-	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		/* Refresh after possible snowline change */
 		this->SetDirty();
 	}};
@@ -987,7 +987,7 @@ public:
 	}
 
 	/** Redraw the whole window on a regular interval. */
-	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
 		this->BuildSortTownList();
 		this->SetDirty();
 	}};
@@ -1775,7 +1775,7 @@ struct BuildHouseWindow : public PickerWindow {
 		Command<CMD_PLACE_HOUSE>::Post(STR_ERROR_CAN_T_BUILD_HOUSE, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), this->house_protected);
 	}
 
-	IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
+	const IntervalTimer<TimerWindow> view_refresh_interval = {std::chrono::milliseconds(2500), [this](auto) {
 		/* There are four different 'views' that are random based on house tile position. As this is not
 		 * user-controllable, instead we automatically cycle through them. */
 		HousePickerCallbacks::sel_view = (HousePickerCallbacks::sel_view + 1) % 4;

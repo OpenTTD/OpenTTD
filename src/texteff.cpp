@@ -89,7 +89,7 @@ void RemoveTextEffect(TextEffectID te_id)
 }
 
 /** Slowly move text effects upwards. */
-IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::milliseconds(30), [](uint count) {
+const IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::milliseconds(30), [](uint count) {
 	if (_pause_mode.Any() && _game_mode != GM_EDITOR && _settings_game.construction.command_pause_level <= CMDPL_NO_CONSTRUCTION) return;
 
 	for (TextEffect &te : _text_effects) {

@@ -3039,7 +3039,7 @@ void CallWindowRealtimeTickEvent(uint delta_ms)
 }
 
 /** Update various of window-related information on a regular interval. */
-static IntervalTimer<TimerWindow> window_interval(std::chrono::milliseconds(30), [](auto) {
+static const IntervalTimer<TimerWindow> window_interval(std::chrono::milliseconds(30), [](auto) {
 	extern int _caret_timer;
 	_caret_timer += 3;
 	CursorTick();
@@ -3050,12 +3050,12 @@ static IntervalTimer<TimerWindow> window_interval(std::chrono::milliseconds(30),
 });
 
 /** Blink the window highlight colour constantly. */
-static IntervalTimer<TimerWindow> highlight_interval(std::chrono::milliseconds(450), [](auto) {
+static const IntervalTimer<TimerWindow> highlight_interval(std::chrono::milliseconds(450), [](auto) {
 	_window_highlight_colour = !_window_highlight_colour;
 });
 
 /** Blink all windows marked with a white border. */
-static IntervalTimer<TimerWindow> white_border_interval(std::chrono::milliseconds(30), [](auto) {
+static const IntervalTimer<TimerWindow> white_border_interval(std::chrono::milliseconds(30), [](auto) {
 	if (_network_dedicated) return;
 
 	for (Window *w : Window::Iterate()) {

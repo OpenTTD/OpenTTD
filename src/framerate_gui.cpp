@@ -457,7 +457,7 @@ struct FramerateWindow : Window {
 	}
 
 	/** Update the window on a regular interval. */
-	IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(100), [this](auto) {
+	const IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(100), [this](auto) {
 		this->UpdateData();
 		this->SetDirty();
 	}};
@@ -838,7 +838,7 @@ struct FrametimeGraphWindow : Window {
 	}
 
 	/** Update the scaling on a regular interval. */
-	IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(500), [this](auto) {
+	const IntervalTimer<TimerWindow> update_interval = {std::chrono::milliseconds(500), [this](auto) {
 		this->UpdateScale();
 	}};
 

@@ -165,7 +165,7 @@ void NetworkUndrawChatMessage()
 }
 
 /** Check if a message is expired on a regular interval. */
-static IntervalTimer<TimerWindow> network_message_expired_interval(std::chrono::seconds(1), [](auto) {
+static const IntervalTimer<TimerWindow> network_message_expired_interval(std::chrono::seconds(1), [](auto) {
 	auto now = std::chrono::steady_clock::now();
 	for (auto &cmsg : _chatmsg_list) {
 		/* Message has expired, remove from the list */

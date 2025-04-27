@@ -192,7 +192,7 @@ struct StatusBarWindow : Window {
 	}
 
 	/** Move information on the ticker slowly from one side to the other. */
-	IntervalTimer<TimerWindow> ticker_scroll_interval = {std::chrono::milliseconds(15), [this](uint count) {
+	const IntervalTimer<TimerWindow> ticker_scroll_interval = {std::chrono::milliseconds(15), [this](uint count) {
 		if (_pause_mode.Any()) return;
 
 		if (this->ticker_scroll < TICKER_STOP) {
@@ -205,7 +205,7 @@ struct StatusBarWindow : Window {
 		this->SetWidgetDirty(WID_S_MIDDLE);
 	}};
 
-	IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
+	const IntervalTimer<TimerGameCalendar> daily_interval = {{TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [this](auto) {
 		this->SetWidgetDirty(WID_S_LEFT);
 	}};
 };

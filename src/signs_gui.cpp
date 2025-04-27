@@ -308,7 +308,7 @@ struct SignListWindow : Window, SignList {
 	}
 
 	/** Resort the sign listing on a regular interval. */
-	IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
+	const IntervalTimer<TimerWindow> rebuild_interval = {std::chrono::seconds(3), [this](auto) {
 		this->BuildSortSignList();
 		this->SetDirty();
 	}};

@@ -57,7 +57,7 @@ static uint _script_current_depth; ///< Depth of scripts running (used to abort 
 static std::string _scheduled_monthly_script; ///< Script scheduled to execute by the 'schedule' console command (empty if no script is scheduled).
 
 /** Timer that runs every month of game time for the 'schedule' console command. */
-static IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto) {
+static const IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCalendar::MONTH, TimerGameCalendar::Priority::NONE}, [](auto) {
 	if (_scheduled_monthly_script.empty()) {
 		return;
 	}
