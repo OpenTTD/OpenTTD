@@ -85,7 +85,7 @@ public:
 	 * Get the name used by the listener.
 	 * @return the name to show in debug logs and the like.
 	 */
-	static const char *GetName()
+	static std::string_view GetName()
 	{
 		return "admin";
 	}

@@ -915,14 +915,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet 
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	CommandPacket cp;
-	const char *err = this->ReceiveCommand(p, cp);
+	auto err = this->ReceiveCommand(p, cp);
 	cp.frame    = p.Recv_uint32();
 	cp.my_cmd   = p.Recv_bool();
 
 	Debug(net, 9, "Client::Receive_SERVER_COMMAND(): cmd={}, frame={}", cp.cmd, cp.frame);
 
-	if (err != nullptr) {
-		IConsolePrint(CC_WARNING, "Dropping server connection due to {}.", err);
+	if (err.has_value()) {
+		IConsolePrint(CC_WARNING, "Dropping server connection due to {}.", *err);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
