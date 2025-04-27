@@ -48,7 +48,7 @@ struct IniGroup {
 
 /** Ini file that only supports loading. */
 struct IniLoadFile {
-	using IniGroupNameList = std::initializer_list<std::string_view>;
+	using IniGroupNameList = std::initializer_list<const std::string_view>;
 
 	std::list<IniGroup> groups; ///< all groups in the ini
 	std::string comment;                  ///< last comment in file

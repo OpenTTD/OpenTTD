@@ -153,4 +153,4 @@ public:
 	}
 };
 
-static ScreenshotProvider_Pcx s_screenshot_provider_pcx;
+static const ScreenshotProvider_Pcx s_screenshot_provider_pcx;

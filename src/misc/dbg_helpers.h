@@ -178,7 +178,7 @@ struct DumpTarget {
 	/** Dump nested object (or only its name if this instance is already known). */
 	template <typename S> void WriteStructT(std::string_view name, const S *s)
 	{
-		static size_t type_id = ++LastTypeId();
+		static const size_t type_id = ++LastTypeId();
 
 		if (s == nullptr) {
 			/* No need to dump nullptr struct. */
@@ -201,7 +201,7 @@ struct DumpTarget {
 	/** Dump nested object (or only its name if this instance is already known). */
 	template <typename S> void WriteStructT(std::string_view name, const std::deque<S> *s)
 	{
-		static size_t type_id = ++LastTypeId();
+		static const size_t type_id = ++LastTypeId();
 
 		if (s == nullptr) {
 			/* No need to dump nullptr struct. */

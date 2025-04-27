@@ -448,7 +448,7 @@ static bool CheckRoadSide(int32_t &)
 static std::optional<uint32_t> ConvertLandscape(std::string_view value)
 {
 	/* try with the old values */
-	static std::vector<std::string_view> _old_landscape_values{"normal", "hilly", "desert", "candy"};
+	static constexpr std::initializer_list<std::string_view> _old_landscape_values{"normal"sv, "hilly"sv, "desert"sv, "candy"sv};
 	return OneOfManySettingDesc::ParseSingleValue(value, _old_landscape_values);
 }
 

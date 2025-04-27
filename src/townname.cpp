@@ -961,7 +961,7 @@ static void MakeCatalanTownName(StringBuilder &builder, uint32_t seed)
 typedef void TownNameGenerator(StringBuilder &builder, uint32_t seed);
 
 /** Town name generators */
-static TownNameGenerator *_town_name_generators[] = {
+static TownNameGenerator *const _town_name_generators[] = {
 	MakeEnglishOriginalTownName,  // replaces first 4 characters of name
 	MakeFrenchTownName,
 	MakeGermanTownName,

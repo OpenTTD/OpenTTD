@@ -1425,7 +1425,7 @@ void LoadFromConfig(bool startup)
 		}
 
 		if (generic_version < IFV_AUTOSAVE_RENAME && IsConversionNeeded(generic_ini, "gui", "autosave", "autosave_interval", &old_item)) {
-			static std::vector<std::string_view> _old_autosave_interval{"off", "monthly", "quarterly", "half year", "yearly"};
+			static constexpr std::initializer_list<std::string_view> _old_autosave_interval{"off"sv, "monthly"sv, "quarterly"sv, "half year"sv, "yearly"sv};
 			auto old_value = OneOfManySettingDesc::ParseSingleValue(*old_item->value, _old_autosave_interval).value_or(-1);
 
 			switch (old_value) {

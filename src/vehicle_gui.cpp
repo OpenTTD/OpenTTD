@@ -2391,13 +2391,13 @@ extern void DrawRoadVehDetails(const Vehicle *v, const Rect &r);
 extern void DrawShipDetails(const Vehicle *v, const Rect &r);
 extern void DrawAircraftDetails(const Aircraft *v, const Rect &r);
 
-static StringID _service_interval_dropdown_calendar[] = {
+static const StringID _service_interval_dropdown_calendar[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
 	STR_VEHICLE_DETAILS_DAYS,
 	STR_VEHICLE_DETAILS_PERCENT,
 };
 
-static StringID _service_interval_dropdown_wallclock[] = {
+static const StringID _service_interval_dropdown_wallclock[] = {
 	STR_VEHICLE_DETAILS_DEFAULT,
 	STR_VEHICLE_DETAILS_MINUTES,
 	STR_VEHICLE_DETAILS_PERCENT,
