@@ -175,6 +175,6 @@ static void SkipAct11(ByteReader &buf)
 template <> void GrfActionHandler<0x11>::FileScan(ByteReader &buf) { SkipAct11(buf); }
 template <> void GrfActionHandler<0x11>::SafetyScan(ByteReader &buf) { GRFUnsafe(buf); }
 template <> void GrfActionHandler<0x11>::LabelScan(ByteReader &buf) { SkipAct11(buf); }
-template <> void GrfActionHandler<0x11>::Init(ByteReader &buf) { SkipAct11(buf); }
+template <> void GrfActionHandler<0x11>::Init(ByteReader &buf) { GRFSound(buf); }
 template <> void GrfActionHandler<0x11>::Reserve(ByteReader &buf) { SkipAct11(buf); }
 template <> void GrfActionHandler<0x11>::Activation(ByteReader &buf) { GRFSound(buf); }
