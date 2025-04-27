@@ -656,7 +656,7 @@ void TextfileWindow::ScrollToLine(size_t line)
 	return true;
 }
 
-/* virtual */ void TextfileWindow::SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] const char *font_name, [[maybe_unused]] const void *os_data)
+/* virtual */ void TextfileWindow::SetFontNames([[maybe_unused]] FontCacheSettings *settings, [[maybe_unused]] std::string_view font_name, [[maybe_unused]] const void *os_data)
 {
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 	settings->mono.font = font_name;

@@ -47,7 +47,7 @@ template <class T> struct BaseSetTraits;
  */
 template <class T>
 struct BaseSet {
-	typedef std::unordered_map<std::string, std::string> TranslatedStrings;
+	typedef std::unordered_map<std::string, std::string, StringHash, std::equal_to<>> TranslatedStrings;
 
 	/** Number of files in this set */
 	static constexpr size_t NUM_FILES = BaseSetTraits<T>::num_files;
@@ -107,7 +107,7 @@ struct BaseSet {
 	 * @param isocode the isocode to search for
 	 * @return the description
 	 */
-	const std::string &GetDescription(const std::string &isocode) const
+	const std::string &GetDescription(std::string_view isocode) const
 	{
 		if (!isocode.empty()) {
 			/* First the full ISO code */

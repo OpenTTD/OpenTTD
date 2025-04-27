@@ -302,22 +302,22 @@ void MacOSResetScriptCache(FontSize size)
 }
 
 /** Register an external font file with the CoreText system. */
-void MacOSRegisterExternalFont(const char *file_path)
+void MacOSRegisterExternalFont(std::string_view file_path)
 {
 	if (!MacOSVersionIsAtLeast(10, 6, 0)) return;
 
-	CFAutoRelease<CFStringRef> path(CFStringCreateWithCString(kCFAllocatorDefault, file_path, kCFStringEncodingUTF8));
+	CFAutoRelease<CFStringRef> path(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(file_path.data()), file_path.size(), kCFStringEncodingUTF8, false));
 	CFAutoRelease<CFURLRef> url(CFURLCreateWithFileSystemPath(kCFAllocatorDefault, path.get(), kCFURLPOSIXPathStyle, false));
 
 	CTFontManagerRegisterFontsForURL(url.get(), kCTFontManagerScopeProcess, nullptr);
 }
 
 /** Store current language locale as a CoreFoundation locale. */
-void MacOSSetCurrentLocaleName(const char *iso_code)
+void MacOSSetCurrentLocaleName(std::string_view iso_code)
 {
 	if (!MacOSVersionIsAtLeast(10, 5, 0)) return;
 
-	CFAutoRelease<CFStringRef> iso(CFStringCreateWithCString(kCFAllocatorDefault, iso_code, kCFStringEncodingUTF8));
+	CFAutoRelease<CFStringRef> iso(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(iso_code.data()), iso_code.size(), kCFStringEncodingUTF8, false));
 	_osx_locale.reset(CFLocaleCreate(kCFAllocatorDefault, iso.get()));
 }
 
