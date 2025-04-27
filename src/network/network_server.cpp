@@ -1066,17 +1066,16 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	Debug(net, 9, "client[{}] Receive_CLIENT_COMMAND()", this->client_id);
 
 	CommandPacket cp;
-	const char *err = this->ReceiveCommand(p, cp);
+	auto err = this->ReceiveCommand(p, cp);
 
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
 	NetworkClientInfo *ci = this->GetInfo();
 
-	if (err != nullptr) {
-		IConsolePrint(CC_WARNING, "Dropping client #{} (IP: {}) due to {}.", ci->client_id, this->GetClientIP(), err);
+	if (err.has_value()) {
+		IConsolePrint(CC_WARNING, "Dropping client #{} (IP: {}) due to {}.", ci->client_id, this->GetClientIP(), *err);
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
-
 
 	if (GetCommandFlags(cp.cmd).Test(CommandFlag::Server) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrint(CC_WARNING, "Kicking client #{} (IP: {}) due to calling a server only command {}.", ci->client_id, this->GetClientIP(), cp.cmd);
@@ -1925,7 +1924,7 @@ std::string_view ServerNetworkGameSocketHandler::GetClientIP()
 /** Show the status message of all clients on the console. */
 void NetworkServerShowStatusToConsole()
 {
-	static const char * const stat_str[] = {
+	static const std::string_view stat_str[] = {
 		"inactive",
 		"authorizing",
 		"identifying client",
@@ -1943,9 +1942,8 @@ void NetworkServerShowStatusToConsole()
 		NetworkClientInfo *ci = cs->GetInfo();
 		if (ci == nullptr) continue;
 		uint lag = NetworkCalculateLag(cs);
-		const char *status;
 
-		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
+		std::string_view status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),

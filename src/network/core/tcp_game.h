@@ -519,7 +519,7 @@ public:
 
 	NetworkRecvStatus ReceivePackets();
 
-	const char *ReceiveCommand(Packet &p, CommandPacket &cp);
+	std::optional<std::string_view> ReceiveCommand(Packet &p, CommandPacket &cp);
 	void SendCommand(Packet &p, const CommandPacket &cp);
 
 	bool IsPendingDeletion() const { return this->is_pending_deletion; }
