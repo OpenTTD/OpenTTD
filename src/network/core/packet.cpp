@@ -397,18 +397,18 @@ std::vector<uint8_t> Packet::Recv_buffer()
 
 /**
  * Extract at most the length of the span bytes from the packet into the span.
- * @param span The span to write the bytes to.
+ * @param destination The span to write the bytes to.
  * @return The number of bytes that were actually read.
  */
-size_t Packet::Recv_bytes(std::span<uint8_t> span)
+size_t Packet::Recv_bytes(std::span<uint8_t> destination)
 {
-	auto tranfer_to_span = [](std::span<uint8_t> destination, const char *source, size_t amount) {
-		size_t to_copy = std::min(amount, destination.size());
-		std::copy(source, source + to_copy, destination.data());
-		return to_copy;
+	auto transfer_to_span = [&destination](std::span<const uint8_t> source) {
+		auto to_copy = source.subspan(0, destination.size());
+		std::ranges::copy(to_copy, destination.begin());
+		return to_copy.size();
 	};
 
-	return this->TransferOut(tranfer_to_span, span);
+	return this->TransferOut(transfer_to_span);
 }
 
 /**

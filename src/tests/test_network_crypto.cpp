@@ -39,14 +39,14 @@ static std::tuple<Packet, bool> CreatePacketForReading(Packet &source, MockNetwo
 
 	Packet dest(socket_handler, COMPAT_MTU, source.Size());
 
-	auto transfer_in = [](Packet &source, char *dest_data, size_t length) {
-		auto transfer_out = [](char *dest_data, const char *source_data, size_t length) {
-			std::copy(source_data, source_data + length, dest_data);
-			return length;
+	auto transfer_in = [&source](std::span<uint8_t> dest_data) {
+		auto transfer_out = [&dest_data](std::span<const uint8_t> source_data) {
+			std::ranges::copy(source_data, dest_data.begin());
+			return source_data.size();
 		};
-		return source.TransferOutWithLimit(transfer_out, length, dest_data);
+		return source.TransferOutWithLimit(transfer_out, dest_data.size());
 	};
-	dest.TransferIn(transfer_in, source);
+	dest.TransferIn(transfer_in);
 
 	bool valid = dest.PrepareToRead();
 	dest.Recv_uint8(); // Ignore the type
