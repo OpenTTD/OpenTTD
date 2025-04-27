@@ -59,7 +59,7 @@ bool ContentInfo::IsValid() const
 std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 {
 	if (this->state == INVALID) return std::nullopt;
-	const char *tmp;
+	std::optional<std::string_view> tmp;
 	switch (this->type) {
 		default: NOT_REACHED();
 		case CONTENT_TYPE_AI:
@@ -93,8 +93,8 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 			tmp = FindScenario(*this, true);
 			break;
 	}
-	if (tmp == nullptr) return std::nullopt;
-	return ::GetTextfile(type, GetContentInfoSubDir(this->type), tmp);
+	if (!tmp.has_value()) return std::nullopt;
+	return ::GetTextfile(type, GetContentInfoSubDir(this->type), *tmp);
 }
 
 /**

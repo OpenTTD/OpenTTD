@@ -121,7 +121,7 @@ std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation 
 std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext);
 
 void ScanScenarios();
-const char *FindScenario(const ContentInfo &ci, bool md5sum);
+std::optional<std::string_view> FindScenario(const ContentInfo &ci, bool md5sum);
 
 /**
  * A savegame name automatically numbered.

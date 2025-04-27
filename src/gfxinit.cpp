@@ -506,7 +506,7 @@ template <>
 }
 
 template <>
-/* static */ const char *BaseMedia<GraphicsSet>::GetExtension()
+/* static */ std::string_view BaseMedia<GraphicsSet>::GetExtension()
 {
 	return ".obg"; // OpenTTD Base Graphics
 }
