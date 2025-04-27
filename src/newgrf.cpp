@@ -323,7 +323,7 @@ CargoTypes TranslateRefitMask(uint32_t refit_mask)
  * @param error_location Function name for grf error messages
  * @param[out] index If \a base_pointer is valid, \a index is assigned to the matching price; else it is left unchanged
  */
-void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_location, Price *index)
+void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location, Price *index)
 {
 	/* Special value for 'none' */
 	if (base_pointer == 0) {

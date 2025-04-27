@@ -46,7 +46,7 @@ private:
 	virtual bool TryExecute(std::string_view section_name, std::function<bool()> &&func) = 0;
 
 protected:
-	std::string CreateFileName(const char *ext, bool with_dir = true) const;
+	std::string CreateFileName(std::string_view ext, bool with_dir = true) const;
 
 public:
 	/** Stub destructor to silence some compilers. */

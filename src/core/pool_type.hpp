@@ -137,7 +137,7 @@ public:
 	using BitmapStorage = size_t;
 	static constexpr size_t BITMAP_SIZE = std::numeric_limits<BitmapStorage>::digits;
 
-	const char * const name = nullptr; ///< Name of this pool
+	const std::string_view name{}; ///< Name of this pool
 
 	size_t first_free = 0; ///< No item with index lower than this is free (doesn't say anything about this one!)
 	size_t first_unused = 0; ///< This and all higher indexes are free (doesn't say anything about first_unused-1 !)
@@ -150,7 +150,7 @@ public:
 	std::vector<Titem *> data{}; ///< Pointers to Titem
 	std::vector<BitmapStorage> used_bitmap{}; ///< Bitmap of used indices.
 
-	Pool(const char *name) : PoolBase(Tpool_type), name(name) {}
+	Pool(std::string_view name) : PoolBase(Tpool_type), name(name) {}
 	void CleanPool() override;
 
 	/**

@@ -36,7 +36,7 @@ class RandomAccessFile {
 	uint8_t buffer_start[BUFFER_SIZE];  ///< Local buffer when read from file.
 
 public:
-	RandomAccessFile(const std::string &filename, Subdirectory subdir);
+	RandomAccessFile(std::string_view filename, Subdirectory subdir);
 	RandomAccessFile(const RandomAccessFile&) = delete;
 	void operator=(const RandomAccessFile&) = delete;
 

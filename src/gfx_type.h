@@ -252,9 +252,9 @@ enum FontSize : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(FontSize)
 
-inline const char *FontSizeToName(FontSize fs)
+inline std::string_view FontSizeToName(FontSize fs)
 {
-	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
+	static const std::string_view SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
 	assert(fs < FS_END);
 	return SIZE_TO_NAME[fs];
 }

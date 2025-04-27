@@ -21,8 +21,8 @@ enum HeightmapRotation : uint8_t {
 	HM_CLOCKWISE,         ///< Rotate the map clockwise 45 degrees
 };
 
-bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x, uint *y);
-bool LoadHeightmap(DetailedFileType dft, const char *filename);
+bool GetHeightmapDimensions(DetailedFileType dft, std::string_view filename, uint *x, uint *y);
+bool LoadHeightmap(DetailedFileType dft, std::string_view filename);
 void FlatEmptyWorld(uint8_t tile_height);
 void FixSlopes();
 

@@ -470,7 +470,7 @@ template <Commands Tcmd> struct CommandTraits;
 		static constexpr auto &proc = proc_; \
 		static constexpr CommandFlags flags = flags_; \
 		static constexpr CommandType type = type_; \
-		static inline constexpr const char *name = #proc_; \
+		static inline constexpr std::string_view name = #proc_; \
 	};
 
 /** Storage buffer for serialized command data. */

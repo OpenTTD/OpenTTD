@@ -132,7 +132,7 @@ static uint32_t GetPatchVariable(uint8_t param)
 	}
 }
 
-static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, uint8_t target, const char *type)
+static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, uint8_t target, std::string_view type)
 {
 	uint start = 0;
 	uint size  = 0;

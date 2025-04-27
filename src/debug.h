@@ -35,7 +35,7 @@
  * @param format_string The formatting string of the message.
  */
 #define Debug(category, level, format_string, ...) do { if ((level) == 0 || _debug_ ## category ## _level >= (level)) DebugPrint(#category, level, fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__)); } while (false)
-void DebugPrint(const char *category, int level, std::string &&message);
+void DebugPrint(std::string_view category, int level, std::string &&message);
 
 extern int _debug_driver_level;
 extern int _debug_grf_level;

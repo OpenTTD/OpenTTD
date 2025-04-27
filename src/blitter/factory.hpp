@@ -55,7 +55,7 @@ protected:
 	 * @pre description != nullptr.
 	 * @pre There is no blitter registered with this name.
 	 */
-	BlitterFactory(const char *name, const char *description, bool usable = true) :
+	BlitterFactory(std::string_view name, std::string_view description, bool usable = true) :
 			name(name), description(description)
 	{
 		if (usable) {

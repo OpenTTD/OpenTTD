@@ -28,7 +28,7 @@
 
 /** Element in the queue of debug messages that have to be passed to either NetworkAdminConsole or IConsolePrint.*/
 struct QueuedDebugItem {
-	std::string level;   ///< The used debug level.
+	std::string_view level;   ///< The used debug level.
 	std::string message; ///< The actual formatted message.
 };
 std::atomic<bool> _debug_remote_console; ///< Whether we need to send data to either NetworkAdminConsole or IConsolePrint.
@@ -107,16 +107,16 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
  * @param level Debug category.
  * @param message The message to output.
  */
-void DebugPrint(const char *category, int level, std::string &&message)
+void DebugPrint(std::string_view category, int level, std::string &&message)
 {
-	if (strcmp(category, "desync") == 0 && level != 0) {
+	if (category == "desync" && level != 0) {
 		static auto f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (!f.has_value()) return;
 
 		fmt::print(*f, "{}{}\n", GetLogPrefix(true), message);
 		fflush(*f);
 #ifdef RANDOM_DEBUG
-	} else if (strcmp(category, "random") == 0) {
+	} else if (category == "random") {
 		static auto f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
 		if (!f.has_value()) return;
 

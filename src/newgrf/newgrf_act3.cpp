@@ -65,7 +65,7 @@ static CargoType TranslateCargo(uint8_t feature, uint8_t ctype)
 }
 
 
-static bool IsValidGroupID(uint16_t groupid, const char *function)
+static bool IsValidGroupID(uint16_t groupid, std::string_view function)
 {
 	if (groupid > MAX_SPRITEGROUP || _cur_gps.spritegroups[groupid] == nullptr) {
 		GrfMsg(1, "{}: Spritegroup 0x{:04X} out of range or empty, skipping.", function, groupid);

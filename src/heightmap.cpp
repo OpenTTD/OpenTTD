@@ -135,7 +135,7 @@ static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_pt
  * If map == nullptr only the size of the PNG is read, otherwise a map
  * with grayscale pixels is allocated and assigned to *map.
  */
-static bool ReadHeightmapPNG(const char *filename, uint *x, uint *y, std::vector<uint8_t> *map)
+static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
 	png_structp png_ptr = nullptr;
 	png_infop info_ptr  = nullptr;
@@ -256,7 +256,7 @@ static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &inf
  * If map == nullptr only the size of the BMP is read, otherwise a map
  * with grayscale pixels is allocated and assigned to *map.
  */
-static bool ReadHeightmapBMP(const char *filename, uint *x, uint *y, std::vector<uint8_t> *map)
+static bool ReadHeightmapBMP(std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
 	auto f = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
 	if (!f.has_value()) {
@@ -475,7 +475,7 @@ void FixSlopes()
  * @param[in,out] map If not \c nullptr, destination to store the loaded block of image data.
  * @return Whether loading was successful.
  */
-static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, uint *y, std::vector<uint8_t> *map)
+static bool ReadHeightMap(DetailedFileType dft, std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
 	switch (dft) {
 		default:
@@ -499,7 +499,7 @@ static bool ReadHeightMap(DetailedFileType dft, const char *filename, uint *x, u
  * @param y dimension y
  * @return Returns false if loading of the image failed.
  */
-bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x, uint *y)
+bool GetHeightmapDimensions(DetailedFileType dft, std::string_view filename, uint *x, uint *y)
 {
 	return ReadHeightMap(dft, filename, x, y, nullptr);
 }
@@ -511,7 +511,7 @@ bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x,
  * @param dft Type of image file.
  * @param filename of the heightmap file to be imported
  */
-bool LoadHeightmap(DetailedFileType dft, const char *filename)
+bool LoadHeightmap(DetailedFileType dft, std::string_view filename)
 {
 	uint x, y;
 	std::vector<uint8_t> map;
