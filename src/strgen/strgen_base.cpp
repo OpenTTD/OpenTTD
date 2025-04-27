@@ -100,7 +100,7 @@ void StringData::Add(std::shared_ptr<LangString> ls)
  * @param s The string name to search on.
  * @return The LangString or nullptr if it is not known.
  */
-LangString *StringData::Find(const std::string &s)
+LangString *StringData::Find(std::string_view s)
 {
 	auto it = this->name_to_string.find(s);
 	if (it == this->name_to_string.end()) return nullptr;
@@ -527,7 +527,7 @@ void StringReader::HandleString(std::string_view src)
 	}
 
 	/* Check if this string already exists.. */
-	LangString *ent = this->data.Find(std::string(str_name));
+	LangString *ent = this->data.Find(str_name);
 
 	if (this->master) {
 		if (casep.has_value()) {
