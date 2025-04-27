@@ -1065,6 +1065,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Ένταση Ή
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Ηχητικά εφέ
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Μουσική
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
