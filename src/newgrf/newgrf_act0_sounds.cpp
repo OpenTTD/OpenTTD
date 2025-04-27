@@ -26,6 +26,7 @@
 static ChangeInfoResult SoundEffectChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
+	if (first == last) return ret;
 
 	if (_cur_gps.grffile->sound_offset == 0) {
 		GrfMsg(1, "SoundEffectChangeInfo: No effects defined, skipping");
