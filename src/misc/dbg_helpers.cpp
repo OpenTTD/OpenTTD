@@ -9,12 +9,13 @@
 
 #include "../stdafx.h"
 #include "../rail_map.h"
+#include "../core/enum_type.hpp"
 #include "dbg_helpers.h"
 
 #include "../safeguards.h"
 
 /** Trackdir & TrackdirBits short names. */
-static const char * const trackdir_names[] = {
+static const std::string_view trackdir_names[] = {
 	"NE", "SE", "UE", "LE", "LS", "RS", "rne", "rse",
 	"SW", "NW", "UW", "LW", "LN", "RN", "rsw", "rnw",
 };
@@ -22,37 +23,37 @@ static const char * const trackdir_names[] = {
 /** Return name of given Trackdir. */
 std::string ValueStr(Trackdir td)
 {
-	return std::to_string(td) + " (" + ItemAtT(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV") + ")";
+	return fmt::format("{} ({})", to_underlying(td), ItemAtT(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV"));
 }
 
 /** Return composed name of given TrackdirBits. */
 std::string ValueStr(TrackdirBits td_bits)
 {
-	return std::to_string(td_bits) + " (" + ComposeNameT(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV") + ")";
+	return fmt::format("{} ({})", to_underlying(td_bits), ComposeNameT(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV"));
 }
 
 
 /** DiagDirection short names. */
-static const char * const diagdir_names[] = {
+static const std::string_view diagdir_names[] = {
 	"NE", "SE", "SW", "NW",
 };
 
 /** Return name of given DiagDirection. */
 std::string ValueStr(DiagDirection dd)
 {
-	return std::to_string(dd) + " (" + ItemAtT(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV") + ")";
+	return fmt::format("{} ({})", to_underlying(dd), ItemAtT(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV"));
 }
 
 
 /** SignalType short names. */
-static const char * const signal_type_names[] = {
+static const std::string_view signal_type_names[] = {
 	"NORMAL", "ENTRY", "EXIT", "COMBO", "PBS", "NOENTRY",
 };
 
 /** Return name of given SignalType. */
 std::string ValueStr(SignalType t)
 {
-	return std::to_string(t) + " (" + ItemAtT(t, signal_type_names, "UNK") + ")";
+	return fmt::format("{} ({})", to_underlying(t), ItemAtT(t, signal_type_names, "UNK"));
 }
 
 

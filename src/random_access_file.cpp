@@ -22,7 +22,7 @@
  * @param filename Name of the file at the disk.
  * @param subdir   The sub directory to search this file in.
  */
-RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory subdir) : filename(filename)
+RandomAccessFile::RandomAccessFile(std::string_view filename, Subdirectory subdir) : filename(filename)
 {
 	size_t file_size;
 	this->file_handle = FioFOpenFile(filename, "rb", subdir, &file_size);
@@ -38,7 +38,7 @@ RandomAccessFile::RandomAccessFile(const std::string &filename, Subdirectory sub
 
 	/* Store the filename without path and extension */
 	auto t = filename.rfind(PATHSEPCHAR);
-	std::string name_without_path = filename.substr(t != std::string::npos ? t + 1 : 0);
+	std::string name_without_path{filename.substr(t != std::string::npos ? t + 1 : 0)};
 	this->simplified_filename = name_without_path.substr(0, name_without_path.rfind('.'));
 	strtolower(this->simplified_filename);
 

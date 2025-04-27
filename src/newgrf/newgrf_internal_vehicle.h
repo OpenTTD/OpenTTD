@@ -52,7 +52,7 @@ struct GRFTempEngineData {
 extern ReferenceThroughBaseContainer<std::vector<GRFTempEngineData>> _gted;  ///< Temporary engine data used during NewGRF loading
 
 Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id, bool static_access = false);
-void ConvertTTDBasePrice(uint32_t base_pointer, const char *error_location, Price *index);
+void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location, Price *index);
 
 /**
  * Helper to check whether an image index is valid for a particular NewGRF vehicle.

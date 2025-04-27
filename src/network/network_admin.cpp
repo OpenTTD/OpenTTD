@@ -574,12 +574,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_CMD_NAMES);
 
 	for (uint16_t i = 0; i < CMD_END; i++) {
-		const char *cmdname = GetCommandName(static_cast<Commands>(i));
+		std::string_view cmdname = GetCommandName(static_cast<Commands>(i));
 
 		/* Should COMPAT_MTU be exceeded, start a new packet
 		 * (magic 5: 1 bool "more data" and one uint16_t "command id", one
 		 * byte for string '\0' termination and 1 bool "no more data" */
-		if (!p->CanWriteToPacket(strlen(cmdname) + 5)) {
+		if (!p->CanWriteToPacket(cmdname.size() + 5)) {
 			p->Send_bool(false);
 			this->SendPacket(std::move(p));
 

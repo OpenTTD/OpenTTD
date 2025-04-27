@@ -2237,9 +2237,9 @@ struct ConsoleContentCallback : public ContentCallback {
  */
 static void OutputContentState(const ContentInfo &ci)
 {
-	static const char * const types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
+	static const std::string_view types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music", "Game script", "GS library" };
 	static_assert(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
-	static const char * const states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
+	static const std::string_view states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
 	IConsolePrint(state_to_colour[ci.state], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[ci.state], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
@@ -2475,7 +2475,7 @@ static bool ConListDirs(std::span<std::string_view> argv)
 {
 	struct SubdirNameMap {
 		Subdirectory subdir; ///< Index of subdirectory type
-		const char *name;    ///< UI name for the directory
+		std::string_view name; ///< UI name for the directory
 		bool default_only;   ///< Whether only the default (first existing) directory for this is interesting
 	};
 	static const SubdirNameMap subdir_name_map[] = {
@@ -2498,10 +2498,13 @@ static bool ConListDirs(std::span<std::string_view> argv)
 	if (argv.size() != 2) {
 		IConsolePrint(CC_HELP, "List all search paths or default directories for various categories.");
 		IConsolePrint(CC_HELP, "Usage: list_dirs <category>");
-		std::string cats = subdir_name_map[0].name;
+		std::string cats{subdir_name_map[0].name};
 		bool first = true;
 		for (const SubdirNameMap &sdn : subdir_name_map) {
-			if (!first) cats = cats + ", " + sdn.name;
+			if (!first) {
+				cats += ", ";
+				cats += sdn.name;
+			}
 			first = false;
 		}
 		IConsolePrint(CC_HELP, "Valid categories: {}", cats);
@@ -2567,7 +2570,7 @@ static bool ConNewGRFProfile(std::span<std::string_view> argv)
 			bool selected = profiler != _newgrf_profilers.end();
 			bool active = selected && profiler->active;
 			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
-			const char *statustext = active ? " (active)" : selected ? " (selected)" : "";
+			std::string_view statustext = active ? " (active)" : selected ? " (selected)" : "";
 			IConsolePrint(tc, "{}: [{:08X}] {}{}", i, std::byteswap(grf.grfid), grf.filename, statustext);
 			i++;
 		}

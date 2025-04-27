@@ -73,7 +73,7 @@ static void SurveyRecentNews(nlohmann::json &json)
  * @param with_dir      Whether to prepend the filename with the personal directory.
  * @return The filename
  */
-std::string CrashLog::CreateFileName(const char *ext, bool with_dir) const
+std::string CrashLog::CreateFileName(std::string_view ext, bool with_dir) const
 {
 	static std::string crashname;
 
