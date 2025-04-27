@@ -53,26 +53,16 @@ struct PacketReader : LoadFilter {
 	}
 
 	/**
-	 * Simple wrapper around fwrite to be able to pass it to Packet's TransferOut.
-	 * @param destination The reader to add the data to.
-	 * @param source      The buffer to read data from.
-	 * @param amount      The number of bytes to copy.
-	 * @return The number of bytes that were copied.
-	 */
-	static inline ssize_t TransferOutMemCopy(PacketReader *destination, const char *source, size_t amount)
-	{
-		std::copy_n(source, amount, std::back_inserter(destination->buffer));
-		return amount;
-	}
-
-	/**
 	 * Add a packet to this buffer.
 	 * @param p The packet to add.
 	 */
 	void AddPacket(Packet &p)
 	{
 		assert(this->read_bytes == 0);
-		p.TransferOut(TransferOutMemCopy, this);
+		p.TransferOut([this](std::span<const uint8_t> source) {
+			std::ranges::copy(source, std::back_inserter(this->buffer));
+			return source.size();
+		});
 	}
 
 	size_t Read(uint8_t *rbuf, size_t size) override

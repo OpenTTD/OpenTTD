@@ -446,18 +446,6 @@ static bool GunzipFile(const ContentInfo &ci)
 #endif /* defined(WITH_ZLIB) */
 }
 
-/**
- * Simple wrapper around fwrite to be able to pass it to Packet's TransferOut.
- * @param file   The file to write data to.
- * @param buffer The buffer to write to the file.
- * @param amount The number of bytes to write.
- * @return The number of bytes that were written.
- */
-static inline ssize_t TransferOutFWrite(std::optional<FileHandle> &file, const char *buffer, size_t amount)
-{
-	return fwrite(buffer, 1, amount, *file);
-}
-
 bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 {
 	if (!this->cur_file.has_value()) {
@@ -474,8 +462,11 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet &p)
 		}
 	} else {
 		/* We have a file opened, thus are downloading internal content */
-		size_t to_read = p.RemainingBytesToTransfer();
-		if (to_read != 0 && static_cast<size_t>(p.TransferOut(TransferOutFWrite, std::ref(this->cur_file))) != to_read) {
+		ssize_t to_read = p.RemainingBytesToTransfer();
+		auto write_to_disk = [this](std::span<const uint8_t> buffer) {
+			return fwrite(buffer.data(), 1, buffer.size(), *this->cur_file);
+		};
+		if (to_read != 0 && p.TransferOut(write_to_disk) != to_read) {
 			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(
 				GetEncodedString(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD),

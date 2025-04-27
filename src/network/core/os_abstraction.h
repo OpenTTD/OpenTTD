@@ -141,4 +141,22 @@ NetworkError GetSocketError(SOCKET d);
 static_assert(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
 static_assert(sizeof(in6_addr) == 16); ///< IPv6 addresses should be 16 bytes.
 
+struct SocketSender {
+	SOCKET sock;
+
+	ssize_t operator()(std::span<const uint8_t> buffer)
+	{
+		return send(this->sock, reinterpret_cast<const char *>(buffer.data()), static_cast<int>(buffer.size()), 0);
+	}
+};
+
+struct SocketReceiver {
+	SOCKET sock;
+
+	ssize_t operator()(std::span<uint8_t> buffer)
+	{
+		return recv(this->sock, reinterpret_cast<char *>(buffer.data()), static_cast<int>(buffer.size()), 0);
+	}
+};
+
 #endif /* NETWORK_CORE_OS_ABSTRACTION_H */

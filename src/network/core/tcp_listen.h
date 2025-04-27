@@ -43,7 +43,7 @@ public:
 
 				Debug(net, 2, "[{}] Banned ip tried to join ({}), refused", Tsocket::GetName(), entry);
 
-				if (p.TransferOut<int>(send, s, 0) < 0) {
+				if (p.TransferOut(SocketSender{s}) < 0) {
 					Debug(net, 0, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
 				}
 				closesocket(s);
@@ -58,7 +58,7 @@ public:
 			Packet p(nullptr, Tfull_packet);
 			p.PrepareToSend();
 
-			if (p.TransferOut<int>(send, s, 0) < 0) {
+			if (p.TransferOut(SocketSender{s}) < 0) {
 				Debug(net, 0, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
 			}
 			closesocket(s);

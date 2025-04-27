@@ -94,7 +94,9 @@ void NetworkUDPSocketHandler::SendPacket(Packet &p, NetworkAddress &recv, bool a
 		}
 
 		/* Send the buffer */
-		ssize_t res = p.TransferOut<int>(sendto, s.first, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
+		ssize_t res = p.TransferOut([&](std::span<const uint8_t> buffer) {
+			return sendto(s.first, reinterpret_cast<const char *>(buffer.data()), static_cast<int>(buffer.size()), 0, reinterpret_cast<const struct sockaddr *>(send.GetAddress()), send.GetAddressLength());
+		});
 		Debug(net, 7, "sendto({})", send.GetAddressAsString());
 
 		/* Check for any errors, but ignore it otherwise */
@@ -120,7 +122,9 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 			/* Try to receive anything */
 			SetNonBlocking(s.first); // Some OSes seem to lose the non-blocking status of the socket
-			ssize_t nbytes = p.TransferIn<int>(recvfrom, s.first, 0, (struct sockaddr *)&client_addr, &client_len);
+			ssize_t nbytes = p.TransferIn([&](std::span<uint8_t> buffer) {
+				return recvfrom(s.first, reinterpret_cast<char *>(buffer.data()), static_cast<int>(buffer.size()), 0, reinterpret_cast<struct sockaddr *>(&client_addr), &client_len);
+			});
 
 			/* Did we get the bytes for the base header of the packet? */
 			if (nbytes <= 0) break;    // No data, i.e. no packet
