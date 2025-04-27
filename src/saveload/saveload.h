@@ -420,6 +420,7 @@ enum class SaveLoadVersion : uint16_t {
 
 	DriveBackwards, ///< Saveload version: 365, GitHub pull request: 15379\n Trains can drive backwards.
 	DepotsUnderBridges, ///< Saveload version: 366, GitHub pull request: 15836\n Allow depots under bridges.
+	ScriptTextEffects, ///< Saveload version: 367, GitHub pull request: 11672\n Store GameScript-created text effects.
 
 	MaxVersion, ///< Highest possible saveload version.
 };

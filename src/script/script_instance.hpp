@@ -156,6 +156,12 @@ public:
 	static void DoCommandReturnLeagueTableElementID(ScriptInstance &instance);
 
 	/**
+	 * Return a ScriptTextEffectID reply for a DoCommand.
+	 * @param instance The instance to return the reply to.
+	 */
+	static void DoCommandReturnTextEffectID(ScriptInstance &instance);
+
+	/**
 	 * Get the controller attached to the instance.
 	 * @return The instance's controller.
 	 */

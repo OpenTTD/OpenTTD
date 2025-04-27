@@ -18,6 +18,9 @@
  * \b 16.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+ * API additions:
+ * \li GSTextEffect
+ *
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting
  *
