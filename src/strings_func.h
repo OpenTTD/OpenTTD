@@ -96,7 +96,7 @@ uint64_t GetParamMaxDigits(uint count, FontSize size = FS_NORMAL);
 extern TextDirection _current_text_dir; ///< Text direction of the currently selected language
 
 void InitializeLanguagePacks();
-const char *GetCurrentLanguageIsoCode();
+std::string_view GetCurrentLanguageIsoCode();
 std::string_view GetListSeparator();
 
 /**
@@ -189,7 +189,7 @@ public:
 	 * @param font_name The new font name.
 	 * @param os_data Opaque pointer to OS-specific data.
 	 */
-	virtual void SetFontNames(struct FontCacheSettings *settings, const char *font_name, const void *os_data = nullptr) = 0;
+	virtual void SetFontNames(struct FontCacheSettings *settings, std::string_view font_name, const void *os_data = nullptr) = 0;
 
 	bool FindMissingGlyphs();
 };
