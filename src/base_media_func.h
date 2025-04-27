@@ -339,8 +339,8 @@ template <class Tbase_set> std::optional<std::string_view> TryGetBaseSetFile(con
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo &ci, bool md5sum)
 {
-	return (TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::available_sets) != nullptr) ||
-			(TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets) != nullptr);
+	return TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::available_sets).has_value() ||
+			TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets).has_value();
 }
 
 /**
