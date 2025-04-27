@@ -15,7 +15,7 @@
 #include "textfile_type.h"
 #include "window_gui.h"
 
-std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, const std::string &filename);
+std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, std::string_view filename);
 
 /** Window for displaying a textfile */
 struct TextfileWindow : public Window, MissingGlyphSearcher {

@@ -240,10 +240,10 @@ bool ScriptScanner::HasScript(const ContentInfo &ci, bool md5sum)
 	return false;
 }
 
-const char *ScriptScanner::FindMainScript(const ContentInfo &ci, bool md5sum)
+std::optional<std::string_view> ScriptScanner::FindMainScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
-		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript().c_str();
+		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript();
 	}
-	return nullptr;
+	return std::nullopt;
 }

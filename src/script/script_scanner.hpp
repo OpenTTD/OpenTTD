@@ -74,7 +74,7 @@ public:
 	 * @param md5sum Whether to check the MD5 checksum.
 	 * @return A filename of a file of the content, else \c nullptr.
 	 */
-	const char *FindMainScript(const ContentInfo &ci, bool md5sum);
+	std::optional<std::string_view> FindMainScript(const ContentInfo &ci, bool md5sum);
 
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
 

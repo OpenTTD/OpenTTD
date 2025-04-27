@@ -176,7 +176,7 @@ protected:
 	 * Get the extension that is used to identify this set.
 	 * @return the extension
 	 */
-	static const char *GetExtension();
+	static std::string_view GetExtension();
 public:
 	/**
 	 * Determine the graphics pack that has to be used.
@@ -219,9 +219,9 @@ public:
  * @param ci The content info to compare it to.
  * @param md5sum Should the MD5 checksum be tested as well?
  * @param s The list with sets.
- * @return The filename of the first file of the base set, or \c nullptr if there is no match.
+ * @return The filename of the first file of the base set, or \c std::nullopt if there is no match.
  */
 template <class Tbase_set>
-const char *TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const Tbase_set *s);
+std::optional<std::string_view> TryGetBaseSetFile(const ContentInfo &ci, bool md5sum, const Tbase_set *s);
 
 #endif /* BASE_MEDIA_BASE_H */

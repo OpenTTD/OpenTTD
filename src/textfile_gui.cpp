@@ -842,9 +842,9 @@ void TextfileWindow::LoadText(std::string_view buf)
  * @param filename The filename of the content to look for.
  * @return The path to the textfile, \c nullptr otherwise.
  */
-std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, const std::string &filename)
+std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, std::string_view filename)
 {
-	static const char * const prefixes[] = {
+	static const std::string_view prefixes[] = {
 		"readme",
 		"changelog",
 		"license",
@@ -861,7 +861,7 @@ std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, cons
 	auto slash = filename.find_last_of(PATHSEPCHAR);
 	if (slash == std::string::npos) return std::nullopt;
 
-	std::string_view base_path(filename.data(), slash + 1);
+	std::string_view base_path = filename.substr(0, slash + 1);
 
 	static const std::initializer_list<std::string_view> extensions{
 		"txt",

@@ -83,7 +83,7 @@ template <>
 }
 
 template <>
-/* static */ const char *BaseMedia<MusicSet>::GetExtension()
+/* static */ std::string_view BaseMedia<MusicSet>::GetExtension()
 {
 	return ".obm"; // OpenTTD Base Music
 }
