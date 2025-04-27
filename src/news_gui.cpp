@@ -317,7 +317,7 @@ static WindowDesc &GetNewsWindowLayout(NewsStyle style)
 /**
  * Per-NewsType data
  */
-static NewsTypeData _news_type_data[] = {
+static const NewsTypeData _news_type_data[] = {
 	/*            name,                           age, sound,          */
 	NewsTypeData("news_display.arrival_player",    60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalCompany
 	NewsTypeData("news_display.arrival_other",     60, SND_1D_APPLAUSE ),  ///< NewsType::ArrivalOther

@@ -540,7 +540,7 @@ struct EffectProcs {
 };
 
 /** Per-EffectVehicleType handling. */
-static std::array<EffectProcs, EV_END> _effect_procs = {{
+static const std::array<EffectProcs, EV_END> _effect_procs = {{
 	{ ChimneySmokeInit,   ChimneySmokeTick,   TO_INDUSTRIES }, // EV_CHIMNEY_SMOKE
 	{ SteamSmokeInit,     SteamSmokeTick,     TO_INVALID    }, // EV_STEAM_SMOKE
 	{ DieselSmokeInit,    DieselSmokeTick,    TO_INVALID    }, // EV_DIESEL_SMOKE

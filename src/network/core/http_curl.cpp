@@ -29,19 +29,19 @@
 
 #if defined(UNIX)
 /** List of certificate bundles, depending on OS. Taken from: https://go.dev/src/crypto/x509/root_linux.go. */
-static auto _certificate_files = {
-	"/etc/ssl/certs/ca-certificates.crt",                // Debian/Ubuntu/Gentoo etc.
-	"/etc/pki/tls/certs/ca-bundle.crt",                  // Fedora/RHEL 6
-	"/etc/ssl/ca-bundle.pem",                            // OpenSUSE
-	"/etc/pki/tls/cacert.pem",                           // OpenELEC
-	"/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem", // CentOS/RHEL 7
-	"/etc/ssl/cert.pem",                                 // Alpine Linux
+static constexpr std::initializer_list<std::string_view> _certificate_files = {
+	"/etc/ssl/certs/ca-certificates.crt"sv,                // Debian/Ubuntu/Gentoo etc.
+	"/etc/pki/tls/certs/ca-bundle.crt"sv,                  // Fedora/RHEL 6
+	"/etc/ssl/ca-bundle.pem"sv,                            // OpenSUSE
+	"/etc/pki/tls/cacert.pem"sv,                           // OpenELEC
+	"/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"sv, // CentOS/RHEL 7
+	"/etc/ssl/cert.pem"sv,                                 // Alpine Linux
 };
 /** List of certificate directories, depending on OS. Taken from: https://go.dev/src/crypto/x509/root_linux.go. */
-static auto _certificate_directories = {
-	"/etc/ssl/certs",                                    // SLES10/SLES11, https://golang.org/issue/12139
-	"/etc/pki/tls/certs",                                // Fedora/RHEL
-	"/system/etc/security/cacerts",                      // Android
+static constexpr std::initializer_list<std::string_view> _certificate_directories = {
+	"/etc/ssl/certs"sv,                                    // SLES10/SLES11, https://golang.org/issue/12139
+	"/etc/pki/tls/certs"sv,                                // Fedora/RHEL
+	"/system/etc/security/cacerts"sv,                      // Android
 };
 #endif /* UNIX */
 

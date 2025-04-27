@@ -110,7 +110,7 @@ inline auto MakeCallbackTable(std::index_sequence<i...>) noexcept
 }
 
 /** Type-erased table of callbacks. */
-static auto _callback_table = MakeCallbackTable(std::make_index_sequence<_callback_tuple_size>{});
+static const auto _callback_table = MakeCallbackTable(std::make_index_sequence<_callback_tuple_size>{});
 
 template <typename T> struct CallbackArgsHelper;
 template <typename... Targs>

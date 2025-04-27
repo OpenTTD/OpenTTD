@@ -863,7 +863,7 @@ std::optional<std::string> GetTextfile(TextfileType type, Subdirectory dir, std:
 
 	std::string_view base_path = filename.substr(0, slash + 1);
 
-	static const std::initializer_list<std::string_view> extensions{
+	static const std::initializer_list<const std::string_view> extensions{
 		"txt",
 		"md",
 #if defined(WITH_ZLIB)

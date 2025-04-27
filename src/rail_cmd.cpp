@@ -1916,7 +1916,7 @@ struct FenceOffset {
 };
 
 /** Offsets for drawing fences */
-static FenceOffset _fence_offsets[] = {
+static const FenceOffset _fence_offsets[] = {
 	{ CORNER_INVALID,  0,  1, 16,  1 }, // RFO_FLAT_X_NW
 	{ CORNER_INVALID,  1,  0,  1, 16 }, // RFO_FLAT_Y_NE
 	{ CORNER_W,        8,  8,  1,  1 }, // RFO_FLAT_LEFT

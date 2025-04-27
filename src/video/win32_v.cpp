@@ -442,7 +442,7 @@ static void SetDarkModeForWindow(HWND hWnd, bool dark_mode)
 	 * reason, the code uses dynamic loading and ignores any errors for a best-effort result. */
 	static LibraryLoader _dwmapi("dwmapi.dll");
 	typedef HRESULT(WINAPI *PFNDWMSETWINDOWATTRIBUTE)(HWND, DWORD, LPCVOID, DWORD);
-	static PFNDWMSETWINDOWATTRIBUTE DwmSetWindowAttribute = _dwmapi.GetFunction("DwmSetWindowAttribute");
+	static const PFNDWMSETWINDOWATTRIBUTE DwmSetWindowAttribute = _dwmapi.GetFunction("DwmSetWindowAttribute");
 
 	if (DwmSetWindowAttribute != nullptr) {
 		/* Contrary to the published documentation, DWMWA_USE_IMMERSIVE_DARK_MODE does not change the
