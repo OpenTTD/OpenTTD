@@ -1343,13 +1343,20 @@ void NWidgetStacked::SetupSmallestSize(Window *w)
 	for (const auto &child_wid : this->children) {
 		child_wid->SetupSmallestSize(w);
 
-		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
-		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 		this->fill_x = std::lcm(this->fill_x, child_wid->fill_x);
 		this->fill_y = std::lcm(this->fill_y, child_wid->fill_y);
 		this->resize_x = std::lcm(this->resize_x, child_wid->resize_x);
 		this->resize_y = std::lcm(this->resize_y, child_wid->resize_y);
 		this->ApplyAspectRatio();
+	}
+
+	for (const auto &child_wid : this->children) {
+		uint x = child_wid->smallest_x + child_wid->padding.Horizontal();
+		uint y = child_wid->smallest_y + child_wid->padding.Vertical();
+		if (child_wid->resize_x > 1) while (x < this->smallest_x) x += this->resize_x;
+		if (child_wid->resize_y > 1) while (y < this->smallest_y) y += this->resize_y;
+		this->smallest_x = std::max(this->smallest_x, x);
+		this->smallest_y = std::max(this->smallest_y, y);
 	}
 }
 
@@ -1441,13 +1448,20 @@ void NWidgetLayer::SetupSmallestSize(Window *w)
 	for (const auto &child_wid : this->children) {
 		child_wid->SetupSmallestSize(w);
 
-		this->smallest_x = std::max(this->smallest_x, child_wid->smallest_x + child_wid->padding.Horizontal());
-		this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding.Vertical());
 		this->fill_x = std::lcm(this->fill_x, child_wid->fill_x);
 		this->fill_y = std::lcm(this->fill_y, child_wid->fill_y);
 		this->resize_x = std::lcm(this->resize_x, child_wid->resize_x);
 		this->resize_y = std::lcm(this->resize_y, child_wid->resize_y);
 		this->ApplyAspectRatio();
+	}
+
+	for (const auto &child_wid : this->children) {
+		uint x = child_wid->smallest_x + child_wid->padding.Horizontal();
+		uint y = child_wid->smallest_y + child_wid->padding.Vertical();
+		if (child_wid->resize_x > 1) while (x < this->smallest_x) x += this->resize_x;
+		if (child_wid->resize_y > 1) while (y < this->smallest_y) y += this->resize_y;
+		this->smallest_x = std::max(this->smallest_x, x);
+		this->smallest_y = std::max(this->smallest_y, y);
 	}
 }
 
@@ -1598,6 +1612,13 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w)
 		this->resize_y = std::lcm(this->resize_y, child_wid->resize_y);
 	}
 	if (this->fill_x == 0 && this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post > 0) this->fill_x = 1;
+
+	for (const auto &child_wid : this->children) {
+		uint y = child_wid->smallest_y + child_wid->padding.Vertical();
+		if (child_wid->resize_y > 1) while (y < this->smallest_y) y += this->resize_y;
+		this->smallest_y = std::max(this->smallest_y, y);
+	}
+
 	/* 4. Increase by required PIP space. */
 	this->smallest_x += this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 }
@@ -1792,6 +1813,13 @@ void NWidgetVertical::SetupSmallestSize(Window *w)
 		this->resize_x = std::lcm(this->resize_x, child_wid->resize_x);
 	}
 	if (this->fill_y == 0 && this->pip_ratio_pre + this->pip_ratio_inter + this->pip_ratio_post > 0) this->fill_y = 1;
+
+	for (const auto &child_wid : this->children) {
+		uint x = child_wid->smallest_x + child_wid->padding.Horizontal();
+		if (child_wid->resize_x > 1) while (x < this->smallest_x) x += this->resize_x;
+		this->smallest_x = std::max(this->smallest_x, x);
+	}
+
 	/* 4. Increase by required PIP space. */
 	this->smallest_y += this->pip_pre + this->gaps * this->pip_inter + this->pip_post;
 }
