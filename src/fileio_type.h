@@ -130,7 +130,9 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(Searchpath)
 
 class FileHandle {
 public:
-	static std::optional<FileHandle> Open(const std::string &filename, const std::string &mode);
+	static std::optional<FileHandle> Open(const std::string &filename, std::string_view mode);
+	static std::optional<FileHandle> Open(std::string_view filename, std::string_view mode) { return FileHandle::Open(std::string{filename}, mode); }
+	static std::optional<FileHandle> Open(const char *filename, std::string_view mode) { return FileHandle::Open(std::string{filename}, mode); }
 
 	inline void Close() { this->f.reset(); }
 

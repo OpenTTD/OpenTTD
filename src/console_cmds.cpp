@@ -1288,7 +1288,7 @@ static bool ConScript(std::span<std::string_view> argv)
 	if (!CloseConsoleLogIfActive()) {
 		if (argv.size() < 2) return false;
 
-		_iconsole_output_file = FileHandle::Open(std::string(argv[1]), "ab");
+		_iconsole_output_file = FileHandle::Open(argv[1], "ab");
 		if (!_iconsole_output_file.has_value()) {
 			IConsolePrint(CC_ERROR, "Could not open console log file '{}'.", argv[1]);
 		} else {
