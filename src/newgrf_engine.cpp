@@ -1255,8 +1255,7 @@ static void DoTriggerVehicleRandomisation(Vehicle *v, VehicleRandomTrigger trigg
 	v->waiting_random_triggers.Set(trigger); // store now for var 5F
 	object.SetWaitingRandomTriggers(v->waiting_random_triggers);
 
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return;
+	object.ResolveRerandomisation();
 
 	/* Store remaining triggers. */
 	v->waiting_random_triggers.Reset(object.GetUsedRandomTriggers());
