@@ -83,10 +83,21 @@ bool ScriptInfo::GetSettings()
 	return this->engine->CallMethod(this->SQ_instance, "GetSettings", nullptr, MAX_GET_SETTING_OPS);
 }
 
+enum class ScriptConfigItemKey : uint8_t {
+	Name,
+	Description,
+	MinValue,
+	MaxValue,
+	MediumValue,
+	DefaultValue,
+	Flags,
+};
+using ScriptConfigItemKeys = EnumBitSet<ScriptConfigItemKey, uint8_t>;
+
 SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 {
 	ScriptConfigItem config;
-	uint items = 0;
+	ScriptConfigItemKeys present{};
 
 	int medium_value = INT32_MIN;
 
@@ -106,40 +117,38 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			auto replace_with_underscore = [](auto c) { return c == '=' || c == ','; };
 			config.name = StrMakeValid(sqvalue);
 			std::replace_if(config.name.begin(), config.name.end(), replace_with_underscore, '_');
-			items |= 0x001;
+			present.Set(ScriptConfigItemKey::Name);
 		} else if (key == "description") {
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
 			config.description = StrMakeValid(sqdescription);
-			items |= 0x002;
+			present.Set(ScriptConfigItemKey::Description);
 		} else if (key == "min_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.min_value = ClampTo<int32_t>(res);
-			items |= 0x004;
+			present.Set(ScriptConfigItemKey::MinValue);
 		} else if (key == "max_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.max_value = ClampTo<int32_t>(res);
-			items |= 0x008;
+			present.Set(ScriptConfigItemKey::MaxValue);
 		} else if (key == "easy_value") {
 			/* No longer parsed. */
-			items |= 0x010;
 		} else if (key == "medium_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			medium_value = ClampTo<int32_t>(res);
-			items |= 0x020;
+			present.Set(ScriptConfigItemKey::MediumValue);
 		} else if (key == "hard_value") {
 			/* No longer parsed. */
-			items |= 0x040;
 		} else if (key == "custom_value") {
 			/* No longer parsed. */
 		} else if (key == "default_value") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
 			config.default_value = ClampTo<int32_t>(res);
-			items |= 0x080;
+			present.Set(ScriptConfigItemKey::DefaultValue);
 		} else if (key == "random_deviation") {
 			/* No longer parsed. */
 		} else if (key == "step_size") {
@@ -149,8 +158,8 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 		} else if (key == "flags") {
 			SQInteger res;
 			if (SQ_FAILED(sq_getinteger(vm, -1, &res))) return SQ_ERROR;
-			config.flags = (ScriptConfigFlags)res;
-			items |= 0x100;
+			config.flags = static_cast<ScriptConfigFlags>(res);
+			present.Set(ScriptConfigItemKey::Flags);
 		} else {
 			this->engine->ThrowError(fmt::format("unknown setting property '{}'", key));
 			return SQ_ERROR;
@@ -163,23 +172,22 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	/* Check if default_value is set. Although required, this was changed with
 	 * 14.0, and as such, older AIs don't use it yet. So we convert the older
 	 * values into a default_value. */
-	if ((items & 0x080) == 0) {
+	if (!present.Test(ScriptConfigItemKey::DefaultValue)) {
 		/* Easy/medium/hard should all three be defined. */
-		if ((items & 0x010) == 0 || (items & 0x020) == 0 || (items & 0x040) == 0) {
+		if (!present.Test(ScriptConfigItemKey::MediumValue)) {
 			this->engine->ThrowError("please define all properties of a setting (min/max not allowed for booleans)");
 			return SQ_ERROR;
 		}
 
 		config.default_value = medium_value;
-		items |= 0x080;
-	} else {
-		/* For compatibility, also act like the default sets the easy/medium/hard. */
-		items |= 0x010 | 0x020 | 0x040;
+		present.Set(ScriptConfigItemKey::DefaultValue);
 	}
 
-	/* Make sure all properties are defined */
-	uint mask = config.flags.Test(ScriptConfigFlag::Boolean) ? 0x1F3 : 0x1FF;
-	if (items != mask) {
+	/* Make sure all required properties are defined */
+	ScriptConfigItemKeys required = {ScriptConfigItemKey::Name, ScriptConfigItemKey::Description, ScriptConfigItemKey::DefaultValue, ScriptConfigItemKey::Flags};
+	if (!config.flags.Test(ScriptConfigFlag::Boolean)) required.Set({ScriptConfigItemKey::MinValue, ScriptConfigItemKey::MaxValue});
+
+	if (!present.All(required)) {
 		this->engine->ThrowError("please define all properties of a setting (min/max not allowed for booleans)");
 		return SQ_ERROR;
 	}
