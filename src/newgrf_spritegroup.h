@@ -163,8 +163,15 @@ struct DeterministicSpriteGroupAdjust {
 };
 
 
-struct DeterministicSpriteGroupRange {
+struct DeterministicSpriteGroupResult {
+	bool calculated_result = false;
 	const SpriteGroup *group = nullptr;
+
+	bool operator==(const DeterministicSpriteGroupResult &) const = default;
+};
+
+struct DeterministicSpriteGroupRange {
+	DeterministicSpriteGroupResult result;
 	uint32_t low = 0;
 	uint32_t high = 0;
 };
@@ -175,12 +182,11 @@ struct DeterministicSpriteGroup : SpriteGroup {
 
 	VarSpriteGroupScope var_scope{};
 	DeterministicSpriteGroupSize size{};
-	bool calculated_result = false;
 	std::vector<DeterministicSpriteGroupAdjust> adjusts{};
 	std::vector<DeterministicSpriteGroupRange> ranges{}; // Dynamically allocated
 
 	/* Dynamically allocated, this is the sole owner */
-	const SpriteGroup *default_group = nullptr;
+	DeterministicSpriteGroupResult default_result;
 
 	const SpriteGroup *error_group = nullptr; // was first range, before sorting ranges
 

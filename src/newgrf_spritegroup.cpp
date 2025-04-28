@@ -224,26 +224,27 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
 
 	object.last_value = last_value;
 
-	if (this->calculated_result) {
-		/* nvar == 0 is a special case -- we turn our value into a callback result */
-		return static_cast<CallbackResult>(GB(value, 0, 15));
-	}
+	auto result = this->default_result;
 
 	if (this->ranges.size() > 4) {
 		const auto &lower = std::lower_bound(this->ranges.begin(), this->ranges.end(), value, RangeHighComparator);
 		if (lower != this->ranges.end() && lower->low <= value) {
 			assert(lower->low <= value && value <= lower->high);
-			return SpriteGroup::Resolve(lower->group, object, false);
+			result = lower->result;
 		}
 	} else {
 		for (const auto &range : this->ranges) {
 			if (range.low <= value && value <= range.high) {
-				return SpriteGroup::Resolve(range.group, object, false);
+				result = range.result;
+				break;
 			}
 		}
 	}
 
-	return SpriteGroup::Resolve(this->default_group, object, false);
+	if (result.calculated_result) {
+		return static_cast<CallbackResult>(GB(value, 0, 15));
+	}
+	return SpriteGroup::Resolve(result.group, object, false);
 }
 
 

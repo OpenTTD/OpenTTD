@@ -23,6 +23,7 @@
 #include "../safeguards.h"
 
 constexpr uint16_t GROUPID_CALLBACK_FAILED = 0x7FFF; ///< Explicit "failure" result.
+constexpr uint16_t GROUPID_CALCULATED_RESULT = 0x7FFE; ///< Return calculated result from VarAction2.
 
 /**
  * Map the colour modifiers of TTDPatch to those that Open is using.
@@ -420,15 +421,31 @@ static void NewSpriteGroup(ByteReader &buf)
 			std::vector<DeterministicSpriteGroupRange> ranges;
 			ranges.resize(buf.ReadByte());
 			for (auto &range : ranges) {
-				range.group = GetGroupFromGroupID(setid, type, buf.ReadWord());
+				auto groupid = buf.ReadWord();
+				if (groupid == GROUPID_CALCULATED_RESULT) {
+					range.result.calculated_result = true;
+				} else {
+					range.result.group = GetGroupFromGroupID(setid, type, groupid);
+				}
 				range.low   = buf.ReadVarSize(varsize);
 				range.high  = buf.ReadVarSize(varsize);
 			}
 
-			group->default_group = GetGroupFromGroupID(setid, type, buf.ReadWord());
-			group->error_group = ranges.empty() ? group->default_group : ranges[0].group;
-			/* nvar == 0 is a special case -- we turn our value into a callback result */
-			group->calculated_result = ranges.empty();
+			auto defgroupid = buf.ReadWord();
+			if (defgroupid == GROUPID_CALCULATED_RESULT) {
+				group->default_result.calculated_result = true;
+			} else {
+				group->default_result.group = GetGroupFromGroupID(setid, type, defgroupid);
+			}
+			/* 'calculated_result' makes no sense for the 'error' case. Use callback failure (nullptr) instead */
+			group->error_group = ranges.empty() ? group->default_result.group : ranges[0].result.group;
+			/* nvar == 0 is a special case:
+			 * - set "default_result" to "calculated_result".
+			 * - the old value specifies the "error_group". */
+			if (ranges.empty()) {
+				group->default_result.calculated_result = true;
+				group->default_result.group = nullptr;
+			}
 
 			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
 			std::vector<uint32_t> bounds;
@@ -440,13 +457,13 @@ static void NewSpriteGroup(ByteReader &buf)
 			std::sort(bounds.begin(), bounds.end());
 			bounds.erase(std::unique(bounds.begin(), bounds.end()), bounds.end());
 
-			std::vector<const SpriteGroup *> target;
+			std::vector<DeterministicSpriteGroupResult> target;
 			target.reserve(bounds.size());
 			for (const auto &bound : bounds) {
-				const SpriteGroup *t = group->default_group;
+				auto t = group->default_result;
 				for (const auto &range : ranges) {
 					if (range.low <= bound && bound <= range.high) {
-						t = range.group;
+						t = range.result;
 						break;
 					}
 				}
@@ -455,11 +472,11 @@ static void NewSpriteGroup(ByteReader &buf)
 			assert(target.size() == bounds.size());
 
 			for (uint j = 0; j < bounds.size(); ) {
-				if (target[j] != group->default_group) {
+				if (target[j] != group->default_result) {
 					DeterministicSpriteGroupRange &r = group->ranges.emplace_back();
-					r.group = target[j];
+					r.result = target[j];
 					r.low = bounds[j];
-					while (j < bounds.size() && target[j] == r.group) {
+					while (j < bounds.size() && target[j] == r.result) {
 						j++;
 					}
 					r.high = j < bounds.size() ? bounds[j] - 1 : UINT32_MAX;
