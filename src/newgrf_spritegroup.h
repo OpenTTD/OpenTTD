@@ -67,8 +67,6 @@ public:
 	uint32_t nfo_line = 0;
 	SpriteGroupType type{};
 
-	virtual SpriteID GetResult() const { return 0; }
-	virtual uint8_t GetNumResults() const { return 0; }
 	virtual uint16_t GetCallbackResult() const { return CALLBACK_FAILED; }
 
 	static const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
@@ -240,9 +238,6 @@ struct ResultSpriteGroup : SpriteGroup {
 
 	uint8_t num_sprites = 0;
 	SpriteID sprite = 0;
-
-	SpriteID GetResult() const override { return this->sprite; }
-	uint8_t GetNumResults() const override { return this->num_sprites; }
 };
 
 /**

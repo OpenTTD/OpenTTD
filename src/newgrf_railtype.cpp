@@ -111,11 +111,11 @@ SpriteID GetCustomRailSprite(const RailTypeInfo *rti, TileIndex tile, RailTypeSp
 
 	RailTypeResolverObject object(rti, tile, context, rtsg);
 	const auto *group = object.Resolve<ResultSpriteGroup>();
-	if (group == nullptr || group->GetNumResults() == 0) return 0;
+	if (group == nullptr || group->num_sprites == 0) return 0;
 
-	if (num_results) *num_results = group->GetNumResults();
+	if (num_results) *num_results = group->num_sprites;
 
-	return group->GetResult();
+	return group->sprite;
 }
 
 /**
@@ -137,9 +137,9 @@ SpriteID GetCustomSignalSprite(const RailTypeInfo *rti, TileIndex tile, SignalTy
 	RailTypeResolverObject object(rti, tile, TCX_NORMAL, RTSG_SIGNALS, param1, param2);
 
 	const auto *group = object.Resolve<ResultSpriteGroup>();
-	if (group == nullptr || group->GetNumResults() == 0) return 0;
+	if (group == nullptr || group->num_sprites == 0) return 0;
 
-	return group->GetResult();
+	return group->sprite;
 }
 
 /**
