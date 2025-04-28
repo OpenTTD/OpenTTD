@@ -225,7 +225,7 @@ std::pair<const GRFFile *, uint16_t> GetAiPurchaseCallbackResult(uint8_t feature
 	object.generic_scope.feature           = feature;
 
 	auto callback = GetGenericCallbackResult(feature, object, 0, 0);
-	if (callback.second != CALLBACK_FAILED) callback.second = GB(callback.second, 0, 8);
+	if (callback.second != CALLBACK_FAILED && callback.first->grf_version < 8) callback.second = GB(callback.second, 0, 8);
 	return callback;
 }
 
