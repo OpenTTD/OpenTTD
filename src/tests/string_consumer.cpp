@@ -17,8 +17,6 @@
 
 #include "../safeguards.h"
 
-using namespace std::literals;
-
 TEST_CASE("StringConsumer - basic")
 {
 	StringConsumer consumer("ab"sv);
