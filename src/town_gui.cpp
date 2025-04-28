@@ -1421,13 +1421,7 @@ public:
 	 */
 	void SetClimateMask()
 	{
-		switch (_settings_game.game_creation.landscape) {
-			case LandscapeType::Temperate: this->climate_mask = HZ_TEMP; break;
-			case LandscapeType::Arctic:    this->climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
-			case LandscapeType::Tropic:    this->climate_mask = HZ_SUBTROPIC; break;
-			case LandscapeType::Toyland:   this->climate_mask = HZ_TOYLND; break;
-			default: NOT_REACHED();
-		}
+		this->climate_mask = GetClimateMaskForLandscape();
 
 		/* In some cases, not all 'classes' (house zones) have distinct houses, so we need to disable those.
 		 * As we need to check all types, and this cannot change with the picker window open, pre-calculate it.
@@ -1455,7 +1449,7 @@ public:
 
 	/* Houses do not have classes like NewGRFClass. We'll make up fake classes based on town zone
 	 * availability instead. */
-	static inline const std::array<StringID, HZB_END> zone_names = {
+	static inline const std::array<StringID, NUM_HOUSE_ZONES> zone_names = {
 		STR_HOUSE_PICKER_CLASS_ZONE1,
 		STR_HOUSE_PICKER_CLASS_ZONE2,
 		STR_HOUSE_PICKER_CLASS_ZONE3,
@@ -1500,16 +1494,19 @@ public:
 	int GetSelectedType() const override { return sel_type; }
 	void SetSelectedType(int id) const override { sel_type = id; }
 
+	static HouseZone GetHouseZoneFromClassId(int cls_id) { return static_cast<HouseZone>(to_underlying(HouseZone::TownEdge) + cls_id); }
+	static int GetClassIdFromHouseZone(HouseZones zones) { return FindFirstBit((zones & HZ_ZONE_ALL).base()) - to_underlying(HouseZone::TownEdge); }
+
 	StringID GetTypeName(int cls_id, int id) const override
 	{
 		const HouseSpec *spec = HouseSpec::Get(id);
 		if (spec == nullptr) return INVALID_STRING_ID;
 		if (!spec->enabled) return INVALID_STRING_ID;
-		if ((spec->building_availability & climate_mask) == 0) return INVALID_STRING_ID;
-		if (!HasBit(spec->building_availability, cls_id)) return INVALID_STRING_ID;
+		if (!spec->building_availability.Any(climate_mask)) return INVALID_STRING_ID;
+		if (!spec->building_availability.Test(GetHouseZoneFromClassId(cls_id))) return INVALID_STRING_ID;
 		for (int i = 0; i < cls_id; i++) {
 			/* Don't include if it's already included in an earlier zone. */
-			if (HasBit(spec->building_availability, i)) return INVALID_STRING_ID;
+			if (spec->building_availability.Test(GetHouseZoneFromClassId(i))) return INVALID_STRING_ID;
 		}
 
 		return GetHouseName(spec);
@@ -1520,11 +1517,11 @@ public:
 		const auto *spec = HouseSpec::Get(id);
 		if (spec == nullptr) return {};
 		if (!spec->enabled) return {};
-		if ((spec->building_availability & climate_mask) == 0) return {};
-		if (!HasBit(spec->building_availability, cls_id)) return {};
+		if (!spec->building_availability.Any(climate_mask)) return {};
+		if (!spec->building_availability.Test(GetHouseZoneFromClassId(cls_id))) return {};
 		for (int i = 0; i < cls_id; i++) {
 			/* Don't include if it's already included in an earlier zone. */
-			if (HasBit(spec->building_availability, i)) return {};
+			if (spec->building_availability.Test(GetHouseZoneFromClassId(i))) return {};
 		}
 
 		return spec->badges;
@@ -1548,7 +1545,7 @@ public:
 			if (*it == 0) continue;
 			HouseID house = static_cast<HouseID>(std::distance(id_count.begin(), it));
 			const HouseSpec *hs = HouseSpec::Get(house);
-			int class_index = FindFirstBit(hs->building_availability & HZ_ZONALL);
+			int class_index = GetClassIdFromHouseZone(hs->building_availability);
 			items.insert({0, house, class_index, house});
 		}
 	}
@@ -1569,7 +1566,7 @@ public:
 					/* Not preset, hide from UI. */
 					dst.insert({item.grfid, item.local_id, -1, -1});
 				} else {
-					int class_index = FindFirstBit(it->building_availability & HZ_ZONALL);
+					int class_index = GetClassIdFromHouseZone(it->building_availability);
 					dst.insert( {item.grfid, item.local_id, class_index, it->Index()});
 				}
 			}

@@ -33,7 +33,7 @@
 			case 0x41: return 0;
 			case 0x42: return 0;
 			case 0x43: return TimerGameCalendar::date.base();
-			case 0x44: return HZB_TOWN_EDGE;
+			case 0x44: return to_underlying(HouseZone::TownEdge);
 			case 0x45: {
 				auto rt = GetRailTypeInfoIndex(this->rti);
 				uint8_t local = GetReverseRailTypeTranslation(rt, this->ro.grffile);
@@ -57,7 +57,7 @@
 			} else if (IsLevelCrossingTile(this->tile)) {
 				t = ClosestTownFromTile(this->tile, UINT_MAX);
 			}
-			return t != nullptr ? GetTownRadiusGroup(t, this->tile) : HZB_TOWN_EDGE;
+			return to_underlying(t != nullptr ? GetTownRadiusGroup(t, this->tile) : HouseZone::TownEdge);
 		}
 		case 0x45:
 			return GetTrackTypes(this->tile, ro.grffile);
