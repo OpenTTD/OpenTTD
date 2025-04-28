@@ -64,7 +64,7 @@ struct IniLoadFile {
 	IniGroup &CreateGroup(std::string_view name);
 	void RemoveGroup(std::string_view name);
 
-	void LoadFromDisk(const std::string &filename, Subdirectory subdir);
+	void LoadFromDisk(std::string_view filename, Subdirectory subdir);
 
 	/**
 	 * Open the INI file.
@@ -73,7 +73,7 @@ struct IniLoadFile {
 	 * @param[out] size Size of the opened file.
 	 * @return File handle of the opened file, or \c std::nullopt.
 	 */
-	virtual std::optional<FileHandle> OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) = 0;
+	virtual std::optional<FileHandle> OpenFile(std::string_view filename, Subdirectory subdir, size_t *size) = 0;
 
 	/**
 	 * Report an error about the file contents.
@@ -81,7 +81,7 @@ struct IniLoadFile {
 	 * @param buffer Part of the file with the error.
 	 * @param post   Suffix text of the \a buffer part.
 	 */
-	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post) = 0;
+	virtual void ReportFileError(std::string_view pre, std::string_view buffer, std::string_view post) = 0;
 };
 
 /** Ini file that supports both loading and saving. */
@@ -90,8 +90,8 @@ struct IniFile : IniLoadFile {
 
 	bool SaveToDisk(const std::string &filename);
 
-	std::optional<FileHandle> OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) override;
-	void ReportFileError(const char * const pre, const char * const buffer, const char * const post) override;
+	std::optional<FileHandle> OpenFile(std::string_view filename, Subdirectory subdir, size_t *size) override;
+	void ReportFileError(std::string_view pre, std::string_view buffer, std::string_view post) override;
 };
 
 #endif /* INI_TYPE_H */

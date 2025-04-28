@@ -183,7 +183,7 @@ void IniLoadFile::RemoveGroup(std::string_view name)
  * @param subdir the sub directory to load the file from.
  * @pre nothing has been loaded yet.
  */
-void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
+void IniLoadFile::LoadFromDisk(std::string_view filename, Subdirectory subdir)
 {
 	assert(this->groups.empty());
 
