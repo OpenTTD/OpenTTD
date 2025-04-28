@@ -190,17 +190,17 @@ struct ScriptFileChecksumCreator : FileScanner {
  * @param info The script to get the shortname and md5 sum from.
  * @return True iff they're the same.
  */
-static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, Subdirectory dir)
+static bool IsSameScript(const ContentInfo &ci, bool md5sum, const ScriptInfo &info, Subdirectory dir)
 {
 	uint32_t id = 0;
-	auto str = std::string_view{info->GetShortName()}.substr(0, 4);
+	auto str = std::string_view{info.GetShortName()}.substr(0, 4);
 	for (size_t j = 0; j < str.size(); j++) id |= static_cast<uint8_t>(str[j]) << (8 * j);
 
 	if (id != ci.unique_id) return false;
 	if (!md5sum) return true;
 
 	ScriptFileChecksumCreator checksum(dir);
-	const auto &tar_filename = info->GetTarFile();
+	const auto &tar_filename = info.GetTarFile();
 	TarList::iterator iter;
 	if (!tar_filename.empty() && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
 		/* The main script is in a tar file, so find all files that
@@ -219,7 +219,7 @@ static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, S
 		/* There'll always be at least 1 path separator character in a script
 		 * main script name as the search algorithm requires the main script to
 		 * be in a subdirectory of the script directory; so <dir>/<path>/main.nut. */
-		const std::string &main_script = info->GetMainScript();
+		const std::string &main_script = info.GetMainScript();
 		std::string path = main_script.substr(0, main_script.find_last_of(PATHSEPCHAR));
 		checksum.Scan(".nut", path);
 	}
@@ -230,7 +230,7 @@ static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, S
 bool ScriptScanner::HasScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
-		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return true;
+		if (IsSameScript(ci, md5sum, *item.second, this->GetDirectory())) return true;
 	}
 	return false;
 }
@@ -238,7 +238,7 @@ bool ScriptScanner::HasScript(const ContentInfo &ci, bool md5sum)
 std::optional<std::string_view> ScriptScanner::FindMainScript(const ContentInfo &ci, bool md5sum)
 {
 	for (const auto &item : this->info_list) {
-		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript();
+		if (IsSameScript(ci, md5sum, *item.second, this->GetDirectory())) return item.second->GetMainScript();
 	}
 	return std::nullopt;
 }
