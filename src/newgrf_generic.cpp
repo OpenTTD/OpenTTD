@@ -161,10 +161,9 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  * @param object  pre-populated resolver object
  * @param param1_grfv7 callback_param1 for GRFs up to version 7.
  * @param param1_grfv8 callback_param1 for GRFs from version 8 on.
- * @param[out] file Optionally returns the GRFFile which made the final decision for the callback result. May be nullptr if not required.
- * @return callback value if successful or CALLBACK_FAILED
+ * @return answering GRFFile and callback value if successful, or CALLBACK_FAILED
  */
-static uint16_t GetGenericCallbackResult(uint8_t feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8, const GRFFile **file)
+static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(uint8_t feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8)
 {
 	assert(feature < lengthof(_gcl));
 
@@ -177,14 +176,11 @@ static uint16_t GetGenericCallbackResult(uint8_t feature, ResolverObject &object
 		uint16_t result = object.ResolveCallback();
 		if (result == CALLBACK_FAILED) continue;
 
-		/* Return NewGRF file if necessary */
-		if (file != nullptr) *file = it.file;
-
-		return result;
+		return {it.file, result};
 	}
 
 	/* No callback returned a valid result, so we've failed. */
-	return CALLBACK_FAILED;
+	return {nullptr, CALLBACK_FAILED};
 }
 
 
@@ -200,10 +196,9 @@ static uint16_t GetGenericCallbackResult(uint8_t feature, ResolverObject &object
  * @param event 'AI construction event' to pass to callback. (Variable 86)
  * @param count 'Construction number' to pass to callback. (Variable 87)
  * @param station_size 'Station size' to pass to callback. (Variable 88)
- * @param[out] file Optionally returns the GRFFile which made the final decision for the callback result. May be nullptr if not required.
- * @return callback value if successful or CALLBACK_FAILED
+ * @return answering GRFFile and callback value if successful, or CALLBACK_FAILED
  */
-uint16_t GetAiPurchaseCallbackResult(uint8_t feature, CargoType cargo_type, uint8_t default_selection, IndustryType src_industry, IndustryType dst_industry, uint8_t distance, AIConstructionEvent event, uint8_t count, uint8_t station_size, const GRFFile **file)
+std::pair<const GRFFile *, uint16_t> GetAiPurchaseCallbackResult(uint8_t feature, CargoType cargo_type, uint8_t default_selection, IndustryType src_industry, IndustryType dst_industry, uint8_t distance, AIConstructionEvent event, uint8_t count, uint8_t station_size)
 {
 	GenericResolverObject object(true, CBID_GENERIC_AI_PURCHASE_SELECTION);
 
@@ -229,8 +224,8 @@ uint16_t GetAiPurchaseCallbackResult(uint8_t feature, CargoType cargo_type, uint
 	object.generic_scope.station_size      = station_size;
 	object.generic_scope.feature           = feature;
 
-	uint16_t callback = GetGenericCallbackResult(feature, object, 0, 0, file);
-	if (callback != CALLBACK_FAILED) callback = GB(callback, 0, 8);
+	auto callback = GetGenericCallbackResult(feature, object, 0, 0);
+	if (callback.second != CALLBACK_FAILED) callback.second = GB(callback.second, 0, 8);
 	return callback;
 }
 
@@ -255,8 +250,7 @@ void AmbientSoundEffectCallback(TileIndex tile)
 	uint32_t param1_v8 = GetTileType(tile) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? GetWaterClass(tile) : 0) << 3 | GetTerrainType(tile);
 
 	/* Run callback. */
-	const GRFFile *grf_file;
-	uint16_t callback = GetGenericCallbackResult(GSF_SOUNDFX, object, param1_v7, param1_v8, &grf_file);
+	auto callback = GetGenericCallbackResult(GSF_SOUNDFX, object, param1_v7, param1_v8);
 
-	if (callback != CALLBACK_FAILED) PlayTileSound(grf_file, callback, tile);
+	if (callback.second != CALLBACK_FAILED) PlayTileSound(callback.first, callback.second, tile);
 }
