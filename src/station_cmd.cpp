@@ -3644,14 +3644,14 @@ static void TileLoop_Station(TileIndex tile)
 				default: break;
 			}
 
-			HouseZonesBits new_zone = HZB_TOWN_EDGE;
+			HouseZone new_zone = HouseZone::TownEdge;
 			const Town *t = ClosestTownFromTile(tile, UINT_MAX);
 			if (t != nullptr) {
 				new_zone = GetTownRadiusGroup(t, tile);
 			}
 
 			/* Adjust road ground type depending on 'new_zone' */
-			Roadside new_rs = new_zone > HZB_TOWN_EDGE ? ROADSIDE_PAVED : ROADSIDE_GRASS;
+			Roadside new_rs = new_zone != HouseZone::TownEdge ? ROADSIDE_PAVED : ROADSIDE_GRASS;
 			Roadside cur_rs = GetRoadWaypointRoadside(tile);
 
 			if (new_rs != cur_rs) {

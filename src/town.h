@@ -42,7 +42,7 @@ struct TownCache {
 	uint32_t population = 0; ///< Current population of people
 	TrackedViewportSign sign{}; ///< Location of name sign, UpdateVirtCoord updates this
 	PartsOfSubsidy part_of_subsidy{}; ///< Is this town a source/destination of a subsidy?
-	std::array<uint32_t, HZB_END> squared_town_zone_radius{}; ///< UpdateTownRadius updates this given the house count
+	std::array<uint32_t, NUM_HOUSE_ZONES> squared_town_zone_radius{}; ///< UpdateTownRadius updates this given the house count
 	BuildingCounts<uint16_t> building_counts{}; ///< The number of each type of building in the town
 
 	auto operator<=>(const TownCache &) const = default;
@@ -228,7 +228,7 @@ void UpdateTownRadius(Town *t);
 CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlags flags);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlags flags);
-HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
+HouseZone GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 TownActions GetMaskOfTownActions(CompanyID cid, const Town *t);
 bool GenerateTowns(TownLayout layout);

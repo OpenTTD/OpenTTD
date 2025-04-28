@@ -976,7 +976,7 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 	}
 
 	/* Make sure that additional parts of multitile houses are not available. */
-	if (!hs.building_flags.Any(BUILDING_HAS_1_TILE) && (hs.building_availability & HZ_ZONALL) != 0 && (hs.building_availability & HZ_CLIMALL) != 0) {
+	if (!hs.building_flags.Any(BUILDING_HAS_1_TILE) && hs.building_availability.Any(HZ_ZONE_ALL) && hs.building_availability.Any(HZ_CLIMATE_ALL)) {
 		hs.enabled = false;
 		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
@@ -997,7 +997,7 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 
 	for (const auto &hs : HouseSpec::Specs()) {
 		if (!hs.enabled) continue;
-		if ((hs.building_availability & bitmask) != bitmask) continue;
+		if (!hs.building_availability.All(bitmask)) continue;
 		if (hs.min_year < min_year) min_year = hs.min_year;
 	}
 
@@ -1005,7 +1005,7 @@ static void EnsureEarlyHouse(HouseZones bitmask)
 
 	for (auto &hs : HouseSpec::Specs()) {
 		if (!hs.enabled) continue;
-		if ((hs.building_availability & bitmask) != bitmask) continue;
+		if (!hs.building_availability.All(bitmask)) continue;
 		if (hs.min_year == min_year) hs.min_year = CalendarTime::MIN_YEAR;
 	}
 }
@@ -1077,19 +1077,11 @@ static void FinaliseHouseArray()
 		}
 	}
 
-	HouseZones climate_mask = (HouseZones)(1 << (to_underlying(_settings_game.game_creation.landscape) + 12));
-	EnsureEarlyHouse(HZ_ZON1 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON2 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON3 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON4 | climate_mask);
-	EnsureEarlyHouse(HZ_ZON5 | climate_mask);
-
-	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) {
-		EnsureEarlyHouse(HZ_ZON1 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON2 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON3 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON4 | HZ_SUBARTC_ABOVE);
-		EnsureEarlyHouse(HZ_ZON5 | HZ_SUBARTC_ABOVE);
+	HouseZones climate_mask = GetClimateMaskForLandscape();
+	for (HouseZone climate : climate_mask) {
+		for (HouseZone zone : HZ_ZONE_ALL) {
+			EnsureEarlyHouse({climate, zone});
+		}
 	}
 }
 

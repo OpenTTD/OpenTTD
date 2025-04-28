@@ -185,7 +185,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			case 0x87: return GetTerrainType(this->tile);
 
 			/* Town zone */
-			case 0x88: return GetTownRadiusGroup(this->industry->town, this->tile);
+			case 0x88: return to_underlying(GetTownRadiusGroup(this->industry->town, this->tile));
 
 			/* Manhattan distance of the closest town */
 			case 0x89: return ClampTo<uint8_t>(DistanceManhattan(this->industry->town->xy, this->tile));
@@ -295,7 +295,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 		case 0x65: {
 			if (this->tile == INVALID_TILE) break;
 			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
-			return GetTownRadiusGroup(this->industry->town, tile) << 16 | ClampTo<uint16_t>(DistanceManhattan(tile, this->industry->town->xy));
+			return to_underlying(GetTownRadiusGroup(this->industry->town, tile)) << 16 | ClampTo<uint16_t>(DistanceManhattan(tile, this->industry->town->xy));
 		}
 		/* Get square of Euclidean distance of closest town */
 		case 0x66: {
