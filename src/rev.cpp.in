@@ -35,7 +35,7 @@ bool IsReleasedVersion()
  *
  * <modified> shows a "M", if the binary is made from modified source code.
  */
-const char _openttd_revision[] = "${REV_VERSION}";
+const std::string _openttd_revision = "${REV_VERSION}";
 
 /**
  * The text version of OpenTTD's build date.
@@ -43,17 +43,17 @@ const char _openttd_revision[] = "${REV_VERSION}";
  * updated for each revision in contrary to most other files that only see
  * updates when they are actually changed themselves.
  */
-const char _openttd_build_date[] = __DATE__ " " __TIME__;
+const std::string_view _openttd_build_date = __DATE__ " " __TIME__;
 
 /**
  * The git revision hash of this version.
  */
-const char _openttd_revision_hash[] = "${REV_HASH}";
+const std::string_view _openttd_revision_hash = "${REV_HASH}";
 
 /**
  * The year of this version.
  */
-const char _openttd_revision_year[] = "${REV_YEAR}";
+const std::string_view _openttd_revision_year = "${REV_YEAR}";
 
 /**
  * Let us know if current build was modified. This detection
@@ -77,7 +77,7 @@ const uint8_t _openttd_revision_tagged = ${REV_ISTAG};
  * It should never contain things like "beta", but only the release version
  * we are compatible with.
  */
-const char _openttd_content_version[] = "${REV_MAJOR}.${REV_MINOR}";
+const std::string_view _openttd_content_version = "${REV_MAJOR}.${REV_MINOR}";
 
 /**
  * The NewGRF revision of OTTD:
