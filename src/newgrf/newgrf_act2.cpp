@@ -22,6 +22,8 @@
 
 #include "../safeguards.h"
 
+constexpr uint16_t GROUPID_CALLBACK_FAILED = 0x7FFF; ///< Explicit "failure" result.
+
 /**
  * Map the colour modifiers of TTDPatch to those that Open is using.
  * @param grf_sprite Pointer to the structure been modified.
@@ -293,6 +295,7 @@ static const SpriteGroup *GetCallbackResultGroup(uint16_t value)
 static const SpriteGroup *GetGroupFromGroupID(uint8_t setid, uint8_t type, uint16_t groupid)
 {
 	if (HasBit(groupid, 15)) return GetCallbackResultGroup(groupid);
+	if (groupid == GROUPID_CALLBACK_FAILED) return nullptr;
 
 	if (groupid > MAX_SPRITEGROUP || _cur_gps.spritegroups[groupid] == nullptr) {
 		GrfMsg(1, "GetGroupFromGroupID(0x{:02X}:0x{:02X}): Groupid 0x{:04X} does not exist, leaving empty", setid, type, groupid);
