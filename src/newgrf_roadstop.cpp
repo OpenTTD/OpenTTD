@@ -291,9 +291,9 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 
 	const RoadTypeInfo *rti = GetRoadTypeInfo(roadtype);
 	RoadStopResolverObject object(spec, nullptr, INVALID_TILE, roadtype, type, view);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
-	const DrawTileSprites *dts = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(nullptr);
+	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group == nullptr) return;
+	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 
 	PaletteID palette = GetCompanyPalette(_local_company);
 
@@ -346,9 +346,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 const TileLayoutSpriteGroup *GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view)
 {
 	RoadStopResolverObject object(spec, st, ti->tile, INVALID_ROADTYPE, type, view);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return nullptr;
-	return static_cast<const TileLayoutSpriteGroup *>(group);
+	return object.Resolve<TileLayoutSpriteGroup>();
 }
 
 /** Wrapper for animation control, see GetRoadStopCallback. */

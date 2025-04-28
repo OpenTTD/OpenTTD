@@ -205,13 +205,12 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 	IndustryTileResolverObject object(gfx, ti->tile, i);
 
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return false;
+	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group == nullptr) return false;
 
 	/* Limit the building stage to the number of stages supplied. */
-	const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
 	uint8_t stage = GetIndustryConstructionStage(ti->tile);
-	IndustryDrawTileLayout(ti, tlgroup, i->random_colour, stage);
+	IndustryDrawTileLayout(ti, group, i->random_colour, stage);
 	return true;
 }
 

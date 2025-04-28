@@ -258,7 +258,7 @@ AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, const 
 SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)
 {
 	AirportResolverObject object(INVALID_TILE, nullptr, as, layout);
-	const SpriteGroup *group = object.Resolve();
+	const auto *group = object.Resolve<ResultSpriteGroup>();
 	if (group == nullptr || group->GetNumResults() == 0) return as->preview_sprite;
 
 	return group->GetResult();

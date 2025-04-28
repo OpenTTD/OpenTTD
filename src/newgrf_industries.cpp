@@ -629,9 +629,8 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		}
 
 		SB(object.callback_param2, 8, 16, loop);
-		const SpriteGroup *tgroup = object.Resolve();
-		if (tgroup == nullptr || tgroup->type != SGT_INDUSTRY_PRODUCTION) break;
-		const IndustryProductionSpriteGroup *group = (const IndustryProductionSpriteGroup *)tgroup;
+		const auto *group = object.Resolve<IndustryProductionSpriteGroup>();
+		if (group == nullptr) break;
 
 		if (group->version == 0xFF) {
 			/* Result was marked invalid on load, display error message */

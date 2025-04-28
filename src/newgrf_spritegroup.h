@@ -223,6 +223,8 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 /* A result sprite group returns the first SpriteID and the number of
  * sprites in the set */
 struct ResultSpriteGroup : SpriteGroup {
+	static constexpr SpriteGroupType TYPE = SGT_RESULT;
+
 	/**
 	 * Creates a spritegroup representing a sprite number result.
 	 * @param sprite The sprite number.
@@ -230,7 +232,7 @@ struct ResultSpriteGroup : SpriteGroup {
 	 * @return A spritegroup representing the sprite number result.
 	 */
 	ResultSpriteGroup(SpriteID sprite, uint8_t num_sprites) :
-		SpriteGroup(SGT_RESULT),
+		SpriteGroup(TYPE),
 		num_sprites(num_sprites),
 		sprite(sprite)
 	{
@@ -247,7 +249,9 @@ struct ResultSpriteGroup : SpriteGroup {
  * Action 2 sprite layout for houses, industry tiles, objects and airport tiles.
  */
 struct TileLayoutSpriteGroup : SpriteGroup {
-	TileLayoutSpriteGroup() : SpriteGroup(SGT_TILELAYOUT) {}
+	static constexpr SpriteGroupType TYPE = SGT_TILELAYOUT;
+
+	TileLayoutSpriteGroup() : SpriteGroup(TYPE) {}
 	~TileLayoutSpriteGroup() {}
 
 	NewGRFSpriteLayout dts{};
@@ -256,7 +260,9 @@ struct TileLayoutSpriteGroup : SpriteGroup {
 };
 
 struct IndustryProductionSpriteGroup : SpriteGroup {
-	IndustryProductionSpriteGroup() : SpriteGroup(SGT_INDUSTRY_PRODUCTION) {}
+	static constexpr SpriteGroupType TYPE = SGT_INDUSTRY_PRODUCTION;
+
+	IndustryProductionSpriteGroup() : SpriteGroup(TYPE) {}
 
 	uint8_t version = 0; ///< Production callback version used, or 0xFF if marked invalid
 	uint8_t num_input = 0; ///< How many subtract_input values are valid
@@ -310,6 +316,11 @@ struct ResolverObject {
 
 	virtual ~ResolverObject() = default;
 
+	const SpriteGroup *DoResolve()
+	{
+		return SpriteGroup::Resolve(this->root_spritegroup, *this);
+	}
+
 	ScopeResolver default_scope; ///< Default implementation of the grf scope.
 
 	CallbackID callback{}; ///< Callback being resolved.
@@ -330,10 +341,14 @@ public:
 	/**
 	 * Resolve SpriteGroup.
 	 * @return Result spritegroup.
+	 * @tparam TSpriteGroup Sprite group type
 	 */
-	const SpriteGroup *Resolve()
+	template <class TSpriteGroup>
+	inline const TSpriteGroup *Resolve()
 	{
-		return SpriteGroup::Resolve(this->root_spritegroup, *this);
+		auto result = this->DoResolve();
+		if (result == nullptr || result->type != TSpriteGroup::TYPE) return nullptr;
+		return static_cast<const TSpriteGroup *>(result);
 	}
 
 	/**
@@ -343,20 +358,20 @@ public:
 	 * - GetReseedSum: Bits to rerandomise for SELF scope, for features with broken-by-design PARENT randomisation. (all but industry tiles)
 	 * - GetUsedRandomTriggers: Consumed random triggers to be reset.
 	 */
-	void ResolveRerandomisation()
+	inline void ResolveRerandomisation()
 	{
 		/* The Resolve result has no meaning.
 		 * It can be a SpriteSet, a callback result, or even an invalid SpriteGroup reference (nullptr). */
-		this->Resolve();
+		this->DoResolve();
 	}
 
 	/**
 	 * Resolve callback.
 	 * @return Callback result.
 	 */
-	uint16_t ResolveCallback()
+	inline uint16_t ResolveCallback()
 	{
-		const SpriteGroup *result = this->Resolve();
+		const SpriteGroup *result = this->DoResolve();
 		return result != nullptr ? result->GetCallbackResult() : CALLBACK_FAILED;
 	}
 

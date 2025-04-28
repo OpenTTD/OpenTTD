@@ -1101,7 +1101,7 @@ static void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction d
 	for (uint stack = 0; stack < max_stack; ++stack) {
 		object.ResetState();
 		object.callback_param1 = image_type | (stack << 8);
-		const SpriteGroup *group = object.Resolve();
+		const auto *group = object.Resolve<ResultSpriteGroup>();
 		uint32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
 		if (group != nullptr && group->GetNumResults() != 0) {
 			result->seq[result->count].sprite = group->GetResult() + (direction % group->GetNumResults());
@@ -1144,7 +1144,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 	for (uint stack = 0; stack < max_stack; ++stack) {
 		object.ResetState();
 		object.callback_param1 = image_type | (stack << 8);
-		const SpriteGroup *group = object.Resolve();
+		const auto *group = object.Resolve<ResultSpriteGroup>();
 		uint32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
 		if (group != nullptr && group->GetNumResults() != 0) {
 			result->seq[result->count].sprite = group->GetResult() + (rotor_pos % group->GetNumResults());

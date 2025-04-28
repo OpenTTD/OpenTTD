@@ -273,13 +273,12 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 	}
 
 	AirportTileResolverObject object(airts, ti->tile, st);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) {
+	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group == nullptr) {
 		return false;
 	}
 
-	const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
-	AirportDrawTileLayout(ti, tlgroup, Company::Get(st->owner)->colour);
+	AirportDrawTileLayout(ti, group, Company::Get(st->owner)->colour);
 	return true;
 }
 
