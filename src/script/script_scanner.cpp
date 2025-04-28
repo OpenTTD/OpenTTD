@@ -78,15 +78,12 @@ void ScriptScanner::RescanDir()
 
 void ScriptScanner::Reset()
 {
-	for (const auto &item : this->info_list) {
-		delete item.second;
-	}
-
 	this->info_list.clear();
 	this->info_single_list.clear();
+	this->info_vector.clear();
 }
 
-void ScriptScanner::RegisterScript(ScriptInfo *info)
+void ScriptScanner::RegisterScript(std::unique_ptr<ScriptInfo> &&info)
 {
 	std::string script_original_name = this->GetScriptName(*info);
 	std::string script_name = fmt::format("{}.{}", script_original_name, info->GetVersion());
@@ -94,7 +91,6 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 	/* Check if GetShortName follows the rules */
 	if (info->GetShortName().size() != 4) {
 		Debug(script, 0, "The script '{}' returned a string from GetShortName() which is not four characters. Unable to load the script.", info->GetName());
-		delete info;
 		return;
 	}
 
@@ -106,7 +102,6 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 #else
 		if (it->second->GetMainScript() == info->GetMainScript()) {
 #endif
-			delete info;
 			return;
 		}
 
@@ -115,20 +110,20 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 		Debug(script, 1, "  2: {}", info->GetMainScript());
 		Debug(script, 1, "The first is taking precedence.");
 
-		delete info;
 		return;
 	}
 
-	this->info_list[script_name] = info;
+	ScriptInfo *script_info = this->info_vector.emplace_back(std::move(info)).get();
+	this->info_list[script_name] = script_info;
 
-	if (!info->IsDeveloperOnly() || _settings_client.gui.ai_developer_tools) {
+	if (!script_info->IsDeveloperOnly() || _settings_client.gui.ai_developer_tools) {
 		/* Add the script to the 'unique' script list, where only the highest version
 		 *  of the script is registered. */
 		auto it = this->info_single_list.find(script_original_name);
 		if (it == this->info_single_list.end()) {
-			this->info_single_list[script_original_name] = info;
-		} else if (it->second->GetVersion() < info->GetVersion()) {
-			it->second = info;
+			this->info_single_list[script_original_name] = script_info;
+		} else if (it->second->GetVersion() < script_info->GetVersion()) {
+			it->second = script_info;
 		}
 	}
 }
