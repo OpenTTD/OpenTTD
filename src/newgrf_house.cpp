@@ -505,12 +505,11 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 
 	HouseResolverObject object(house_id, ti->tile, Town::GetByTile(ti->tile));
 
-	const SpriteGroup *group = object.Resolve();
-	if (group != nullptr && group->type == SGT_TILELAYOUT) {
+	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group != nullptr) {
 		/* Limit the building stage to the number of stages supplied. */
-		const TileLayoutSpriteGroup *tlgroup = (const TileLayoutSpriteGroup *)group;
 		uint8_t stage = GetHouseBuildingStage(ti->tile);
-		DrawTileLayout(ti, tlgroup, stage, house_id);
+		DrawTileLayout(ti, group, stage, house_id);
 	}
 }
 
@@ -525,11 +524,11 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id, int view)
 {
 	HouseResolverObject object(house_id, INVALID_TILE, nullptr, CBID_NO_CALLBACK, 0, 0, true, view);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
+	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group == nullptr) return;
 
 	uint8_t stage = TOWN_HOUSE_COMPLETED;
-	const DrawTileSprites *dts = reinterpret_cast<const TileLayoutSpriteGroup *>(group)->ProcessRegisters(&stage);
+	const DrawTileSprites *dts = group->ProcessRegisters(&stage);
 
 	PaletteID palette = GetColourPalette(spec->random_colour[0]);
 	if (spec->callback_mask.Test(HouseCallbackMask::Colour)) {

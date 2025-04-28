@@ -473,10 +473,10 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 	Object *o = Object::GetByTile(ti->tile);
 	ObjectResolverObject object(spec, o, ti->tile);
 
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
+	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group == nullptr) return;
 
-	DrawTileLayout(ti, (const TileLayoutSpriteGroup *)group, spec);
+	DrawTileLayout(ti, group, spec);
 }
 
 /**
@@ -489,10 +489,10 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 {
 	ObjectResolverObject object(spec, nullptr, INVALID_TILE, view);
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr || group->type != SGT_TILELAYOUT) return;
+	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group == nullptr) return;
 
-	const DrawTileSprites *dts = ((const TileLayoutSpriteGroup *)group)->ProcessRegisters(nullptr);
+	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
 
 	PaletteID palette;
 	if (Company::IsValidID(_local_company)) {

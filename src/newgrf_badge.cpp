@@ -275,7 +275,7 @@ void ApplyBadgeFeaturesToClassBadges()
 PalSpriteID GetBadgeSprite(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, PaletteID remap)
 {
 	BadgeResolverObject object(badge, feature, introduction_date);
-	const SpriteGroup *group = object.Resolve();
+	const auto *group = object.Resolve<ResultSpriteGroup>();
 	if (group == nullptr || group->GetNumResults() == 0) return {0, PAL_NONE};
 
 	PaletteID pal = badge.flags.Test(BadgeFlag::UseCompanyColour) ? remap : PAL_NONE;
