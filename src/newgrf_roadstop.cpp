@@ -218,13 +218,6 @@ uint32_t RoadStopScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] u
 	return UINT_MAX;
 }
 
-const SpriteGroup *RoadStopResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	if (group == nullptr) return nullptr;
-
-	return group->loading[0];
-}
-
 RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view,
 		CallbackID callback, uint32_t param1, uint32_t param2)
 	: SpecializedResolverObject<StationRandomTriggers>(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
