@@ -502,9 +502,9 @@ int CDECL main(int argc, char *argv[])
  * @param mode Mode to open file.
  * @return FileHandle, or std::nullopt on failure.
  */
-std::optional<FileHandle> FileHandle::Open(const std::string &filename, const std::string &mode)
+std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::string_view mode)
 {
-	auto f = fopen(filename.c_str(), mode.c_str());
+	auto f = fopen(filename.c_str(), std::string{mode}.c_str());
 	if (f == nullptr) return std::nullopt;
 	return FileHandle(f);
 }

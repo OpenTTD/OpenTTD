@@ -1166,13 +1166,13 @@ uint FileScanner::Scan(const std::string_view extension, const std::string &dire
  * @param mode Mode to open file.
  * @return FileHandle, or std::nullopt on failure.
  */
-std::optional<FileHandle> FileHandle::Open(const std::string &filename, const std::string &mode)
+std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::string_view mode)
 {
 #if defined(_WIN32)
 	/* Windows also requires mode to be wchar_t. */
 	auto f = _wfopen(OTTD2FS(filename).c_str(), OTTD2FS(mode).c_str());
 #else
-	auto f = fopen(filename.c_str(), mode.c_str());
+	auto f = fopen(filename.c_str(), std::string{mode}.c_str());
 #endif /* _WIN32 */
 
 	if (f == nullptr) return std::nullopt;
