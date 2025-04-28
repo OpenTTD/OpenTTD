@@ -230,9 +230,8 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 
 	if (this->calculated_result) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
-		if (value != CALLBACK_FAILED) value = GB(value, 0, 15);
 		static CallbackResultSpriteGroup nvarzero(0);
-		nvarzero.result = value;
+		nvarzero.result = GB(value, 0, 15);
 		return &nvarzero;
 	}
 
