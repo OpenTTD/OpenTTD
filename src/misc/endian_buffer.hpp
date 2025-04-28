@@ -31,7 +31,6 @@ public:
 
 	EndianBufferWriter &operator <<(const std::string &data) { return *this << std::string_view{ data }; }
 	EndianBufferWriter &operator <<(const EncodedString &data) { return *this << data.string; }
-	EndianBufferWriter &operator <<(const char *data) { return *this << std::string_view{ data }; }
 	EndianBufferWriter &operator <<(std::string_view data) { this->Write(data); return *this; }
 	EndianBufferWriter &operator <<(bool data) { return *this << static_cast<uint8_t>(data ? 1 : 0); }
 

@@ -185,13 +185,11 @@ public:
 		SetParam(n, v.base());
 	}
 
-	void SetParam(size_t n, const char *str)
+	void SetParam(size_t n, const std::string &str)
 	{
 		assert(n < this->parameters.size());
 		this->parameters[n].data = str;
 	}
-
-	void SetParam(size_t n, const std::string &str) { this->SetParam(n, str.c_str()); }
 
 	void SetParam(size_t n, std::string &&str)
 	{

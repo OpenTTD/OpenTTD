@@ -64,7 +64,7 @@ inline typename ArrayT<T>::Item ItemAtT(E idx, const T &t, typename ArrayT<T>::I
  * or t_unk when index is out of bounds.
  */
 template <typename E, typename T>
-inline std::string ComposeNameT(E value, T &t, const char *t_unk, E val_inv, const char *name_inv)
+inline std::string ComposeNameT(E value, T &t, std::string_view t_unk, E val_inv, std::string_view name_inv)
 {
 	std::string out;
 	if (value == val_inv) {

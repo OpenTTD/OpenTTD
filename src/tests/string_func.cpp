@@ -506,8 +506,8 @@ TEST_CASE("FixSCCEncodedNegative")
 TEST_CASE("EncodedString::ReplaceParam - positive")
 {
 	/* Test that two encoded strings with different parameters are not the same. */
-	EncodedString string1 = GetEncodedString(STR_NULL, "Foo", 10, "Bar");
-	EncodedString string2 = GetEncodedString(STR_NULL, "Foo", 15, "Bar");
+	EncodedString string1 = GetEncodedString(STR_NULL, "Foo"sv, 10, "Bar"sv);
+	EncodedString string2 = GetEncodedString(STR_NULL, "Foo"sv, 15, "Bar"sv);
 	CHECK(string1 != string2);
 
 	/* Test that replacing parameter results in the same string. */
@@ -517,9 +517,9 @@ TEST_CASE("EncodedString::ReplaceParam - positive")
 
 TEST_CASE("EncodedString::ReplaceParam - negative")
 {
-	EncodedString string1 = GetEncodedString(STR_NULL, "Foo", -1, "Bar");
-	EncodedString string2 = GetEncodedString(STR_NULL, "Foo", -2, "Bar");
-	EncodedString string3 = GetEncodedString(STR_NULL, "Foo", 0xFFFF'FFFF'FFFF'FFFF, "Bar");
+	EncodedString string1 = GetEncodedString(STR_NULL, "Foo"sv, -1, "Bar"sv);
+	EncodedString string2 = GetEncodedString(STR_NULL, "Foo"sv, -2, "Bar"sv);
+	EncodedString string3 = GetEncodedString(STR_NULL, "Foo"sv, 0xFFFF'FFFF'FFFF'FFFF, "Bar"sv);
 	/* Test that two encoded strings with different parameters are not the same. */
 	CHECK(string1 != string2);
 	/* Test that signed values are stored as unsigned. */
