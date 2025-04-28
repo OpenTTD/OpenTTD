@@ -46,6 +46,15 @@ enum SpriteGroupType : uint8_t {
 
 struct SpriteGroup;
 struct ResolverObject;
+using CallbackResult = uint16_t;
+
+/**
+ * Result of resolving sprite groups:
+ * - std::monostate: Failure.
+ * - CallbackResult: Callback result.
+ * - SpriteGroup: ResultSpriteGroup, TileLayoutSpriteGroup, IndustryProductionSpriteGroup
+ */
+using ResolverResult = std::variant<std::monostate, CallbackResult, const SpriteGroup *>;
 
 /* SPRITE_WIDTH is 24. ECS has roughly 30 sprite groups per real sprite.
  * Adding an 'extra' margin would be assuming 64 sprite groups per real
@@ -59,7 +68,7 @@ struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
 	SpriteGroup(SpriteGroupType type) : type(type) {}
 	/** Base sprite group resolver */
-	virtual const SpriteGroup *Resolve([[maybe_unused]] ResolverObject &object) const { return this; };
+	virtual ResolverResult Resolve([[maybe_unused]] ResolverObject &object) const { return this; };
 
 public:
 	virtual ~SpriteGroup() = default;
@@ -67,9 +76,7 @@ public:
 	uint32_t nfo_line = 0;
 	SpriteGroupType type{};
 
-	virtual uint16_t GetCallbackResult() const { return CALLBACK_FAILED; }
-
-	static const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
+	static ResolverResult Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level = true);
 };
 
 
@@ -89,7 +96,7 @@ struct RealSpriteGroup : SpriteGroup {
 	std::vector<const SpriteGroup *> loading{}; ///< List of loading groups (can be SpriteIDs or Callback results)
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const override;
+	ResolverResult Resolve(ResolverObject &object) const override;
 };
 
 /* Shared by deterministic and random groups. */
@@ -178,7 +185,7 @@ struct DeterministicSpriteGroup : SpriteGroup {
 	const SpriteGroup *error_group = nullptr; // was first range, before sorting ranges
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const override;
+	ResolverResult Resolve(ResolverObject &object) const override;
 };
 
 enum RandomizedSpriteGroupCompareMode : uint8_t {
@@ -200,7 +207,7 @@ struct RandomizedSpriteGroup : SpriteGroup {
 	std::vector<const SpriteGroup *> groups{}; ///< Take the group with appropriate index:
 
 protected:
-	const SpriteGroup *Resolve(ResolverObject &object) const override;
+	ResolverResult Resolve(ResolverObject &object) const override;
 };
 
 
@@ -211,10 +218,12 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 	 * Creates a spritegroup representing a callback result
 	 * @param value The value that was used to represent this callback result
 	 */
-	explicit CallbackResultSpriteGroup(uint16_t value) : SpriteGroup(SGT_CALLBACK), result(value) {}
+	explicit CallbackResultSpriteGroup(CallbackResult value) : SpriteGroup(SGT_CALLBACK), result(value) {}
 
-	uint16_t result = 0;
-	uint16_t GetCallbackResult() const override { return this->result; }
+	CallbackResult result = 0;
+
+protected:
+	ResolverResult Resolve(ResolverObject &object) const override;
 };
 
 
@@ -311,7 +320,7 @@ struct ResolverObject {
 
 	virtual ~ResolverObject() = default;
 
-	const SpriteGroup *DoResolve()
+	ResolverResult DoResolve()
 	{
 		return SpriteGroup::Resolve(this->root_spritegroup, *this);
 	}
@@ -342,8 +351,9 @@ public:
 	inline const TSpriteGroup *Resolve()
 	{
 		auto result = this->DoResolve();
-		if (result == nullptr || result->type != TSpriteGroup::TYPE) return nullptr;
-		return static_cast<const TSpriteGroup *>(result);
+		const auto *group = std::get_if<const SpriteGroup *>(&result);
+		if (group == nullptr || *group == nullptr || (*group)->type != TSpriteGroup::TYPE) return nullptr;
+		return static_cast<const TSpriteGroup *>(*group);
 	}
 
 	/**
@@ -364,13 +374,14 @@ public:
 	 * Resolve callback.
 	 * @return Callback result.
 	 */
-	inline uint16_t ResolveCallback()
+	inline CallbackResult ResolveCallback()
 	{
-		const SpriteGroup *result = this->DoResolve();
-		return result != nullptr ? result->GetCallbackResult() : CALLBACK_FAILED;
+		auto result = this->DoResolve();
+		const auto *value = std::get_if<CallbackResult>(&result);
+		return value != nullptr ? *value : CALLBACK_FAILED;
 	}
 
-	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup &group) const;
+	virtual ResolverResult ResolveReal(const RealSpriteGroup &group) const;
 
 	virtual ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0);
 

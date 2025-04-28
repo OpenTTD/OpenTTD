@@ -31,9 +31,9 @@ TemporaryStorageArray<int32_t, 0x110> _temp_store;
  * @param top_level true if this is a top-level SpriteGroup, false if used nested in another SpriteGroup.
  * @return the resolved group
  */
-/* static */ const SpriteGroup *SpriteGroup::Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level)
+/* static */ ResolverResult SpriteGroup::Resolve(const SpriteGroup *group, ResolverObject &object, bool top_level)
 {
-	if (group == nullptr) return nullptr;
+	if (group == nullptr) return std::monostate{};
 
 	const GRFFile *grf = object.grffile;
 	auto profiler = std::ranges::find(_newgrf_profilers, grf, &NewGRFProfiler::grffile);
@@ -44,7 +44,7 @@ TemporaryStorageArray<int32_t, 0x110> _temp_store;
 	} else if (top_level) {
 		profiler->BeginResolve(object);
 		_temp_store.ClearChanges();
-		const SpriteGroup *result = group->Resolve(object);
+		auto result = group->Resolve(object);
 		profiler->EndResolve(result);
 		return result;
 	} else {
@@ -120,12 +120,12 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * @param group Group to get.
  * @return The available sprite group.
  */
-/* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup &group) const
+/* virtual */ ResolverResult ResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
 	if (!group.loaded.empty()) return group.loaded[0];
 	if (!group.loading.empty()) return group.loading[0];
 
-	return nullptr;
+	return std::monostate{};
 }
 
 /**
@@ -185,7 +185,7 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
 	return range.high < value;
 }
 
-const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) const
+/* virtual */ ResolverResult DeterministicSpriteGroup::Resolve(ResolverObject &object) const
 {
 	uint32_t last_value = 0;
 	uint32_t value = 0;
@@ -196,13 +196,9 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
 		if (adjust.variable == 0x7E) {
-			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust.subroutine, object, false);
-			if (subgroup == nullptr) {
-				value = UINT16_MAX;
-			} else {
-				value = subgroup->GetCallbackResult();
-				if (value == CALLBACK_FAILED) value = UINT16_MAX;
-			}
+			auto subgroup = SpriteGroup::Resolve(adjust.subroutine, object, false);
+			auto *subvalue = std::get_if<CallbackResult>(&subgroup);
+			value = subvalue != nullptr ? *subvalue : UINT16_MAX;
 
 			/* Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
 		} else if (adjust.variable == 0x7B) {
@@ -230,9 +226,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 
 	if (this->calculated_result) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
-		static CallbackResultSpriteGroup nvarzero(0);
-		nvarzero.result = GB(value, 0, 15);
-		return &nvarzero;
+		return static_cast<CallbackResult>(GB(value, 0, 15));
 	}
 
 	if (this->ranges.size() > 4) {
@@ -253,7 +247,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 }
 
 
-const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
+/* virtual */ ResolverResult RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 {
 	ScopeResolver *scope = object.GetScope(this->var_scope, this->count);
 	if (object.callback == CBID_RANDOM_TRIGGER) {
@@ -273,8 +267,12 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 	return SpriteGroup::Resolve(this->groups[index], object, false);
 }
 
+/* virtual */ ResolverResult CallbackResultSpriteGroup::Resolve(ResolverObject &) const
+{
+	return this->result;
+}
 
-const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
+/* virtual */ ResolverResult RealSpriteGroup::Resolve(ResolverObject &object) const
 {
 	return object.ResolveReal(*this);
 }
