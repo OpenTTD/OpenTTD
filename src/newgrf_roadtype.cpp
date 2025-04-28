@@ -154,11 +154,11 @@ SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSp
 
 	RoadTypeResolverObject object(rti, tile, context, rtsg);
 	const auto *group = object.Resolve<ResultSpriteGroup>();
-	if (group == nullptr || group->GetNumResults() == 0) return 0;
+	if (group == nullptr || group->num_sprites == 0) return 0;
 
-	if (num_results) *num_results = group->GetNumResults();
+	if (num_results) *num_results = group->num_sprites;
 
-	return group->GetResult();
+	return group->sprite;
 }
 
 /**

@@ -1103,8 +1103,8 @@ static void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction d
 		object.callback_param1 = image_type | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		uint32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
-		if (group != nullptr && group->GetNumResults() != 0) {
-			result->seq[result->count].sprite = group->GetResult() + (direction % group->GetNumResults());
+		if (group != nullptr && group->num_sprites != 0) {
+			result->seq[result->count].sprite = group->sprite + (direction % group->num_sprites);
 			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
 			result->count++;
 		}
@@ -1146,8 +1146,8 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 		object.callback_param1 = image_type | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		uint32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
-		if (group != nullptr && group->GetNumResults() != 0) {
-			result->seq[result->count].sprite = group->GetResult() + (rotor_pos % group->GetNumResults());
+		if (group != nullptr && group->num_sprites != 0) {
+			result->seq[result->count].sprite = group->sprite + (rotor_pos % group->num_sprites);
 			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
 			result->count++;
 		}

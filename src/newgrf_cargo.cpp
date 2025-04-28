@@ -56,9 +56,9 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 {
 	CargoResolverObject object(cs);
 	const auto *group = object.Resolve<ResultSpriteGroup>();
-	if (group == nullptr || group->GetNumResults() == 0) return 0;
+	if (group == nullptr || group->num_sprites == 0) return 0;
 
-	return group->GetResult();
+	return group->sprite;
 }
 
 

@@ -641,8 +641,8 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st
 {
 	StationResolverObject object(statspec, st, tile, CBID_NO_CALLBACK, var10);
 	const auto *group = object.Resolve<ResultSpriteGroup>();
-	if (group == nullptr || group->GetNumResults() == 0) return 0;
-	return group->GetResult() - SPR_RAIL_PLATFORM_Y_FRONT;
+	if (group == nullptr || group->num_sprites == 0) return 0;
+	return group->sprite - SPR_RAIL_PLATFORM_Y_FRONT;
 }
 
 /**
@@ -662,9 +662,9 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseS
 	const auto *group = object.Resolve<ResultSpriteGroup>();
 	/* Note: SpriteGroup::Resolve zeroes all registers, so register 0x100 is initialised to 0. (compatibility) */
 	auto offset = GetRegister(0x100);
-	if (group == nullptr || group->GetNumResults() <= offset) return 0;
+	if (group == nullptr || group->num_sprites <= offset) return 0;
 
-	return group->GetResult() + offset;
+	return group->sprite + offset;
 }
 
 
