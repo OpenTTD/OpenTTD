@@ -12,8 +12,6 @@
 #include "../core/string_inplace.hpp"
 #include "../safeguards.h"
 
-using namespace std::literals;
-
 TEST_CASE("InPlaceReplacement")
 {
 	std::array<char, 4> buffer{1, 2, 3, 4};

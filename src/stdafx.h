@@ -73,6 +73,8 @@
 #include <variant>
 #include <vector>
 
+using namespace std::literals::string_view_literals;
+
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
 #endif
