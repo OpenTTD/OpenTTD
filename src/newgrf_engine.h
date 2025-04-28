@@ -64,7 +64,7 @@ struct VehicleResolverObject : public SpecializedResolverObject<VehicleRandomTri
 
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override;
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup &group) const override;
+	ResolverResult ResolveReal(const RealSpriteGroup &group) const override;
 
 	GrfSpecFeature GetFeature() const override;
 	uint32_t GetDebugID() const override;
