@@ -2791,7 +2791,7 @@ struct LZMASaveFilter : SaveFilter {
 
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
-	const char *name;                     ///< name of the compressor/decompressor (debug-only)
+	std::string_view name; ///< name of the compressor/decompressor (debug-only)
 	uint32_t tag;                           ///< the 4-letter tag by which it is identified in the savegame
 
 	std::shared_ptr<LoadFilter> (*init_load)(std::shared_ptr<LoadFilter> chain); ///< Constructor for the load filter.

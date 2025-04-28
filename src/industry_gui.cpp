@@ -390,7 +390,7 @@ class BuildIndustryWindow : public Window {
 		if (numcargo > 0) {
 			cargostring = GetString(prefixstr, CargoSpec::Get(cargolist[firstcargo])->name, cargo_suffix[firstcargo].text) + cargostring;
 		} else {
-			cargostring = GetString(prefixstr, STR_JUST_NOTHING, "");
+			cargostring = GetString(prefixstr, STR_JUST_NOTHING, ""sv);
 		}
 
 		return cargostring;

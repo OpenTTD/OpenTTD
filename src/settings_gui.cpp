@@ -520,7 +520,7 @@ struct GameOptionsWindow : Window {
 					bool hide_language = IsReleasedVersion() && !_languages[i].IsReasonablyFinished();
 					if (hide_language) continue;
 					bool hide_percentage = IsReleasedVersion() || _languages[i].missing < _settings_client.gui.missing_strings_threshold;
-					char *name;
+					std::string name;
 					if (&_languages[i] == _current_language) {
 						*selected_index = i;
 						name = _languages[i].own_name;
@@ -533,10 +533,10 @@ struct GameOptionsWindow : Window {
 						name = _languages[i].name;
 					}
 					if (hide_percentage) {
-						list.push_back(MakeDropDownListStringItem(name, i));
+						list.push_back(MakeDropDownListStringItem(std::move(name), i));
 					} else {
 						int percentage = (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS;
-						list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, name, percentage), i));
+						list.push_back(MakeDropDownListStringItem(GetString(STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, std::move(name), percentage), i));
 					}
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);

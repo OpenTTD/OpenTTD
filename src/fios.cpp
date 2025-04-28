@@ -329,7 +329,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			fios.type = FIOS_TYPE_PARENT;
 			fios.mtime = 0;
 			fios.name = "..";
-			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY, "..");
+			fios.title = GetString(STR_SAVELOAD_PARENT_DIRECTORY, ".."sv);
 			sort_start = file_list.size();
 		}
 
