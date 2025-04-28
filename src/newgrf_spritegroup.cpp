@@ -198,9 +198,10 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		if (adjust.variable == 0x7E) {
 			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust.subroutine, object, false);
 			if (subgroup == nullptr) {
-				value = CALLBACK_FAILED;
+				value = UINT16_MAX;
 			} else {
 				value = subgroup->GetCallbackResult();
+				if (value == CALLBACK_FAILED) value = UINT16_MAX;
 			}
 
 			/* Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
