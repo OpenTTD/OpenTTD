@@ -175,8 +175,7 @@
 	EnforcePrecondition(false, source_industry == ScriptIndustryType::INDUSTRYTYPE_UNKNOWN || source_industry == ScriptIndustryType::INDUSTRYTYPE_TOWN || ScriptIndustryType::IsValidIndustryType(source_industry));
 	EnforcePrecondition(false, goal_industry   == ScriptIndustryType::INDUSTRYTYPE_UNKNOWN || goal_industry   == ScriptIndustryType::INDUSTRYTYPE_TOWN || ScriptIndustryType::IsValidIndustryType(goal_industry));
 
-	const GRFFile *file;
-	uint16_t res = GetAiPurchaseCallbackResult(
+	auto res = GetAiPurchaseCallbackResult(
 		GSF_STATIONS,
 		cargo_type,
 		0,
@@ -185,17 +184,16 @@
 		ClampTo<uint8_t>(distance / 2),
 		AICE_STATION_GET_STATION_ID,
 		source_station ? 0 : 1,
-		std::min<SQInteger>(15u, num_platforms) << 4 | std::min<SQInteger>(15u, platform_length),
-		&file
+		std::min<SQInteger>(15u, num_platforms) << 4 | std::min<SQInteger>(15u, platform_length)
 	);
 
 	Axis axis = direction == RAILTRACK_NW_SE ? AXIS_Y : AXIS_X;
 	bool adjacent = station_id != ScriptStation::STATION_JOIN_ADJACENT;
 	StationID to_join = ScriptStation::IsValidStation(station_id) ? station_id : StationID::Invalid();
-	if (res != CALLBACK_FAILED) {
-		const StationSpec *spec = StationClass::GetByGrf(file->grfid, res);
+	if (res.second != CALLBACK_FAILED) {
+		const StationSpec *spec = StationClass::GetByGrf(res.first->grfid, res.second);
 		if (spec == nullptr) {
-			Debug(grf, 1, "{} returned an invalid station ID for 'AI construction/purchase selection (18)' callback", file->filename);
+			Debug(grf, 1, "{} returned an invalid station ID for 'AI construction/purchase selection (18)' callback", res.first->filename);
 		} else {
 			/* We might have gotten an usable station spec. Try to build it, but if it fails we'll fall back to the original station. */
 			if (ScriptObject::Command<CMD_BUILD_RAIL_STATION>::Do(tile, (::RailType)GetCurrentRailType(), axis, num_platforms, platform_length, spec->class_index, spec->index, to_join, adjacent)) return true;
