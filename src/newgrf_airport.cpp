@@ -259,7 +259,7 @@ SpriteID GetCustomAirportSprite(const AirportSpec *as, uint8_t layout)
 {
 	AirportResolverObject object(INVALID_TILE, nullptr, as, layout);
 	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return as->preview_sprite;
+	if (group == nullptr || group->GetNumResults() == 0) return as->preview_sprite;
 
 	return group->GetResult();
 }

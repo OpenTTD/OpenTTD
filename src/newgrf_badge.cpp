@@ -276,7 +276,7 @@ PalSpriteID GetBadgeSprite(const Badge &badge, GrfSpecFeature feature, std::opti
 {
 	BadgeResolverObject object(badge, feature, introduction_date);
 	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return {0, PAL_NONE};
+	if (group == nullptr || group->GetNumResults() == 0) return {0, PAL_NONE};
 
 	PaletteID pal = badge.flags.Test(BadgeFlag::UseCompanyColour) ? remap : PAL_NONE;
 
