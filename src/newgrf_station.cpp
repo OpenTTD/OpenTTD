@@ -993,8 +993,7 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 				StationResolverObject object(ss, st, tile, CBID_RANDOM_TRIGGER, 0);
 				object.SetWaitingRandomTriggers(st->waiting_random_triggers);
 
-				const SpriteGroup *group = object.Resolve();
-				if (group == nullptr) continue;
+				object.ResolveRerandomisation();
 
 				used_random_triggers.Set(object.GetUsedRandomTriggers());
 

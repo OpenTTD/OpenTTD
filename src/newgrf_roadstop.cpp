@@ -458,8 +458,7 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 			RoadStopResolverObject object(ss, st, cur_tile, INVALID_ROADTYPE, GetStationType(cur_tile), GetStationGfx(cur_tile));
 			object.SetWaitingRandomTriggers(st->waiting_random_triggers);
 
-			const SpriteGroup *group = object.Resolve();
-			if (group == nullptr) return;
+			object.ResolveRerandomisation();
 
 			used_random_triggers.Set(object.GetUsedRandomTriggers());
 

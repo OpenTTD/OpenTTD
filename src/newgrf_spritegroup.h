@@ -337,12 +337,26 @@ public:
 	}
 
 	/**
+	 * Resolve bits to be rerandomised.
+	 * Access results via:
+	 * - reseed: Bits to rerandomise per scope, for features with proper PARENT rerandomisation. (only industry tiles)
+	 * - GetReseedSum: Bits to rerandomise for SELF scope, for features with broken-by-design PARENT randomisation. (all but industry tiles)
+	 * - GetUsedRandomTriggers: Consumed random triggers to be reset.
+	 */
+	void ResolveRerandomisation()
+	{
+		/* The Resolve result has no meaning.
+		 * It can be a SpriteSet, a callback result, or even an invalid SpriteGroup reference (nullptr). */
+		this->Resolve();
+	}
+
+	/**
 	 * Resolve callback.
 	 * @return Callback result.
 	 */
 	uint16_t ResolveCallback()
 	{
-		const SpriteGroup *result = Resolve();
+		const SpriteGroup *result = this->Resolve();
 		return result != nullptr ? result->GetCallbackResult() : CALLBACK_FAILED;
 	}
 

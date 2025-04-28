@@ -336,8 +336,7 @@ static void DoTriggerIndustryTileRandomisation(TileIndex tile, IndustryRandomTri
 	SetIndustryRandomTriggers(tile, waiting_random_triggers); // store now for var 5F
 	object.SetWaitingRandomTriggers(waiting_random_triggers);
 
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return;
+	object.ResolveRerandomisation();
 
 	/* Store remaining triggers. */
 	waiting_random_triggers.Reset(object.GetUsedRandomTriggers());
