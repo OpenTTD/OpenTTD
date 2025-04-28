@@ -231,7 +231,7 @@ char *getcwd(char *buf, size_t size)
 
 extern std::string _config_file;
 
-void DetermineBasePaths(const char *exe)
+void DetermineBasePaths(std::string_view exe)
 {
 	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
 

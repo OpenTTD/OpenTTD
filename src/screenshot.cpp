@@ -132,7 +132,7 @@ static void LargeWorldCallback(Viewport &vp, void *buf, uint y, uint pitch, uint
  * @param crashlog   Create path for crash.png
  * @return Pathname for a screenshot file.
  */
-static const char *MakeScreenshotName(std::string_view default_fn, std::string_view ext, bool crashlog = false)
+static std::string_view MakeScreenshotName(std::string_view default_fn, std::string_view ext, bool crashlog = false)
 {
 	bool generate = _screenshot_name.empty();
 
@@ -154,7 +154,7 @@ static const char *MakeScreenshotName(std::string_view default_fn, std::string_v
 	/* Add extension to screenshot file */
 	_screenshot_name += fmt::format(".{}", ext);
 
-	const char *screenshot_dir = crashlog ? _personal_dir.c_str() : FiosGetScreenshotDir();
+	std::string_view screenshot_dir = crashlog ? _personal_dir : FiosGetScreenshotDir();
 
 	for (uint serial = 1;; serial++) {
 		_full_screenshot_path = fmt::format("{}{}", screenshot_dir, _screenshot_name);
@@ -166,7 +166,7 @@ static const char *MakeScreenshotName(std::string_view default_fn, std::string_v
 		_screenshot_name += fmt::format("#{}.{}", serial, ext);
 	}
 
-	return _full_screenshot_path.c_str();
+	return _full_screenshot_path;
 }
 
 /** Make a screenshot of the current screen. */
@@ -311,7 +311,7 @@ static void HeightmapCallback(void *buffer, uint y, uint, uint n)
  * Make a heightmap of the current map.
  * @param filename Filename to use for saving.
  */
-bool MakeHeightmapScreenshot(const char *filename)
+bool MakeHeightmapScreenshot(std::string_view filename)
 {
 	auto provider = GetScreenshotProvider();
 	if (provider == nullptr) return false;

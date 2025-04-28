@@ -36,7 +36,7 @@ public:
 		ProviderManager<ScreenshotProvider>::Unregister(*this);
 	}
 
-	virtual bool MakeImage(const char *name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) = 0;
+	virtual bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) = 0;
 };
 
 #endif /* SCREENSHOT_TYPE_H */

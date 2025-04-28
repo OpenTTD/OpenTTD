@@ -12,6 +12,7 @@
 
 #include "stdafx.h"
 #include "3rdparty/md5/md5.h"
+#include "core/string_consumer.hpp"
 #include "fileio_func.h"
 #include "fios.h"
 #include "network/network_content.h"
@@ -108,11 +109,9 @@ const FiosItem *FileList::FindItem(const std::string_view file)
 	}
 
 	/* If no name matches, try to parse it as number */
-	int i;
-	const char *endptr = std::from_chars(file.data(), file.data() + file.size(), i, 10).ptr;
-	if (file.data() == endptr || endptr != file.data() + file.size()) i = -1;
-
-	if (IsInsideMM(i, 0, this->size())) return &this->at(i);
+	StringConsumer consumer{file};
+	auto number = consumer.TryReadIntegerBase<int>(10);
+	if (number.has_value() && !consumer.AnyBytesLeft() && IsInsideMM(*number, 0, this->size())) return &this->at(*number);
 
 	/* As a last effort assume it is an OpenTTD savegame and
 	 * that the ".sav" part was not given. */
@@ -192,21 +191,21 @@ bool FiosBrowseTo(const FiosItem *item)
  * @param ext Filename extension (use \c "" for no extension).
  * @return The completed filename.
  */
-static std::string FiosMakeFilename(const std::string *path, const char *name, const char *ext)
+static std::string FiosMakeFilename(const std::string *path, std::string_view name, std::string_view ext)
 {
-	std::string buf;
+	std::string_view base_path;
 
 	if (path != nullptr) {
-		buf = *path;
+		base_path = *path;
 		/* Remove trailing path separator, if present */
-		if (!buf.empty() && buf.back() == PATHSEPCHAR) buf.pop_back();
+		if (!base_path.empty() && base_path.back() == PATHSEPCHAR) base_path.remove_suffix(1);
 	}
 
 	/* Don't append the extension if it is already there */
-	const char *period = strrchr(name, '.');
-	if (period != nullptr && StrEqualsIgnoreCase(period, ext)) ext = "";
+	auto period = name.find_last_of('.');
+	if (period != std::string_view::npos && StrEqualsIgnoreCase(name.substr(period), ext)) ext = "";
 
-	return buf + PATHSEP + name + ext;
+	return fmt::format("{}{}{}{}", base_path, PATHSEP, name, ext);
 }
 
 /**
@@ -214,9 +213,9 @@ static std::string FiosMakeFilename(const std::string *path, const char *name, c
  * @param name Name of the file.
  * @return The completed filename.
  */
-std::string FiosMakeSavegameName(const char *name)
+std::string FiosMakeSavegameName(std::string_view name)
 {
-	const char *extension = (_game_mode == GM_EDITOR) ? ".scn" : ".sav";
+	std::string_view extension = (_game_mode == GM_EDITOR) ? ".scn" : ".sav";
 
 	return FiosMakeFilename(_fios_path, name, extension);
 }
@@ -226,12 +225,9 @@ std::string FiosMakeSavegameName(const char *name)
  * @param name Filename.
  * @return The completed filename.
  */
-std::string FiosMakeHeightmapName(const char *name)
+std::string FiosMakeHeightmapName(std::string_view name)
 {
-	std::string ext(".");
-	ext += GetCurrentScreenshotExtension();
-
-	return FiosMakeFilename(_fios_path, name, ext.c_str());
+	return FiosMakeFilename(_fios_path, name, fmt::format(".{}", GetCurrentScreenshotExtension()));
 }
 
 /**
@@ -239,7 +235,7 @@ std::string FiosMakeHeightmapName(const char *name)
  * @param name Filename to delete.
  * @return Whether the file deletion was successful.
  */
-bool FiosDelete(const char *name)
+bool FiosDelete(std::string_view name)
 {
 	return FioRemove(FiosMakeSavegameName(name));
 }
@@ -591,13 +587,13 @@ void FiosGetTownDataList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
  * Get the directory for screenshots.
  * @return path to screenshots
  */
-const char *FiosGetScreenshotDir()
+std::string_view FiosGetScreenshotDir()
 {
 	static std::optional<std::string> fios_screenshot_path;
 
 	if (!fios_screenshot_path) fios_screenshot_path = FioFindDirectory(SCREENSHOT_DIR);
 
-	return fios_screenshot_path->c_str();
+	return *fios_screenshot_path;
 }
 
 /** Basic data to distinguish a scenario. Used in the server list window */

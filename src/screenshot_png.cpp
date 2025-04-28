@@ -30,7 +30,7 @@ class ScreenshotProvider_Png : public ScreenshotProvider {
 public:
 	ScreenshotProvider_Png() : ScreenshotProvider("png", "PNG", 0) {}
 
-	bool MakeImage(const char *name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
+	bool MakeImage(std::string_view name, const ScreenshotCallback &callb, uint w, uint h, int pixelformat, const Colour *palette) override
 	{
 		png_color rq[256];
 		uint i, y, n;
@@ -46,7 +46,7 @@ public:
 		if (!of.has_value()) return false;
 		auto &f = *of;
 
-		png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, const_cast<char *>(name), png_my_error, png_my_warning);
+		png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, &name, png_my_error, png_my_warning);
 
 		if (png_ptr == nullptr) {
 			return false;
@@ -169,13 +169,13 @@ public:
 private:
 	static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 	{
-		Debug(misc, 0, "[libpng] error: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
+		Debug(misc, 0, "[libpng] error: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
 		longjmp(png_jmpbuf(png_ptr), 1);
 	}
 
 	static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 	{
-		Debug(misc, 1, "[libpng] warning: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
+		Debug(misc, 1, "[libpng] warning: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
 	}
 };
 
