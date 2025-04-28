@@ -35,7 +35,7 @@ static bool _do_scan_working_directory = true;
 extern std::string _config_file;
 extern std::string _highscore_file;
 
-static const char * const _subdirs[] = {
+static const std::string_view _subdirs[] = {
 	"",
 	"save" PATHSEP,
 	"save" PATHSEP "autosave" PATHSEP,
@@ -165,7 +165,7 @@ std::string FioGetDirectory(Searchpath sp, Subdirectory subdir)
 	assert(subdir < NUM_SUBDIRS);
 	assert(sp < NUM_SEARCHPATHS);
 
-	return _searchpaths[sp] + _subdirs[subdir];
+	return fmt::format("{}{}", _searchpaths[sp], _subdirs[subdir]);
 }
 
 std::string FioFindDirectory(Subdirectory subdir)
@@ -180,7 +180,7 @@ std::string FioFindDirectory(Subdirectory subdir)
 	return _personal_dir;
 }
 
-static std::optional<FileHandle> FioFOpenFileSp(std::string_view filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
+static std::optional<FileHandle> FioFOpenFileSp(std::string_view filename, std::string_view mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
 {
 #if defined(_WIN32)
 	/* fopen is implemented as a define with ellipses for
@@ -188,7 +188,7 @@ static std::optional<FileHandle> FioFOpenFileSp(std::string_view filename, const
 	 * a string, but a variable, it 'renames' the variable,
 	 * so make that variable to makes it compile happily */
 	wchar_t Lmode[5];
-	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, static_cast<int>(std::size(Lmode)));
+	MultiByteToWideChar(CP_ACP, 0, mode.data(), static_cast<int>(std::size(mode)), Lmode, static_cast<int>(std::size(Lmode)));
 #endif
 	std::string buf;
 
@@ -239,7 +239,7 @@ static std::optional<FileHandle> FioFOpenFileTar(const TarFileListEntry &entry, 
  * @param subdir Subdirectory to open.
  * @return File handle of the opened file, or \c nullptr if the file is not available.
  */
-std::optional<FileHandle> FioFOpenFile(std::string_view filename, const char *mode, Subdirectory subdir, size_t *filesize)
+std::optional<FileHandle> FioFOpenFile(std::string_view filename, std::string_view mode, Subdirectory subdir, size_t *filesize)
 {
 	std::optional<FileHandle> f = std::nullopt;
 	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
@@ -658,7 +658,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
  * @param exe the path from the current path to the executable
  * @note defined in the OS related files (win32.cpp, unix.cpp etc)
  */
-extern void DetermineBasePaths(const char *exe);
+extern void DetermineBasePaths(std::string_view exe);
 #else /* defined(_WIN32) */
 
 /**
@@ -668,9 +668,9 @@ extern void DetermineBasePaths(const char *exe);
  * in the same way we remove the name from the executable name.
  * @param exe the path to the executable
  */
-static bool ChangeWorkingDirectoryToExecutable(const char *exe)
+static bool ChangeWorkingDirectoryToExecutable(std::string_view exe)
 {
-	std::string path = exe;
+	std::string path{exe};
 
 #ifdef WITH_COCOA
 	for (size_t pos = path.find_first_of('.'); pos != std::string::npos; pos = path.find_first_of('.', pos + 1)) {
@@ -746,7 +746,7 @@ static std::string GetHomeDir()
  * Determine the base (personal dir and game data dir) paths
  * @param exe the path to the executable
  */
-void DetermineBasePaths(const char *exe)
+void DetermineBasePaths(std::string_view exe)
 {
 	std::string tmp;
 	const std::string homedir = GetHomeDir();
@@ -874,7 +874,7 @@ std::string _personal_dir;
  * @param exe the path from the current path to the executable
  * @param only_local_path Whether we shouldn't fill searchpaths with global folders.
  */
-void DeterminePaths(const char *exe, bool only_local_path)
+void DeterminePaths(std::string_view exe, bool only_local_path)
 {
 	DetermineBasePaths(exe);
 	FillValidSearchPaths(only_local_path);
@@ -976,7 +976,7 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	};
 
 	for (const auto &default_subdir : default_subdirs) {
-		FioCreateDirectory(_personal_dir + _subdirs[default_subdir]);
+		FioCreateDirectory(fmt::format("{}{}", _personal_dir, _subdirs[default_subdir]));
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
@@ -1170,7 +1170,7 @@ std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::str
 {
 #if defined(_WIN32)
 	/* Windows also requires mode to be wchar_t. */
-	auto f = _wfopen(OTTD2FS(filename).c_str(), OTTD2FS(mode).c_str());
+	auto f = _wfopen(OTTD2FS(filename).c_str(), OTTD2FS(std::string{mode}).c_str());
 #else
 	auto f = fopen(filename.c_str(), std::string{mode}.c_str());
 #endif /* _WIN32 */

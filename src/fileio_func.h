@@ -13,7 +13,7 @@
 #include "core/enum_type.hpp"
 #include "fileio_type.h"
 
-std::optional<FileHandle> FioFOpenFile(std::string_view filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
+std::optional<FileHandle> FioFOpenFile(std::string_view filename, std::string_view mode, Subdirectory subdir, size_t *filesize = nullptr);
 bool FioCheckFileExists(std::string_view filename, Subdirectory subdir);
 std::string FioFindFullPath(Subdirectory subdir, std::string_view filename);
 std::string FioGetDirectory(Searchpath sp, Subdirectory subdir);
@@ -21,11 +21,11 @@ std::string FioFindDirectory(Subdirectory subdir);
 void FioCreateDirectory(const std::string &name);
 bool FioRemove(const std::string &filename);
 
-const char *FiosGetScreenshotDir();
+std::string_view FiosGetScreenshotDir();
 
 void SanitizeFilename(std::string &filename);
 void AppendPathSeparator(std::string &buf);
-void DeterminePaths(const char *exe, bool only_local_path);
+void DeterminePaths(std::string_view exe, bool only_local_path);
 std::unique_ptr<char[]> ReadFileToMem(const std::string &filename, size_t &lenp, size_t maxsize);
 bool FileExists(const std::string &filename);
 bool ExtractTar(const std::string &tar_filename, Subdirectory subdir);

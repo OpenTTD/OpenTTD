@@ -112,9 +112,9 @@ bool FiosBrowseTo(const FiosItem *item);
 
 std::string FiosGetCurrentPath();
 std::optional<uint64_t> FiosGetDiskFreeSpace(const std::string &path);
-bool FiosDelete(const char *name);
-std::string FiosMakeHeightmapName(const char *name);
-std::string FiosMakeSavegameName(const char *name);
+bool FiosDelete(std::string_view name);
+std::string FiosMakeHeightmapName(std::string_view name);
+std::string FiosMakeSavegameName(std::string_view name);
 
 std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext);
 std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext);
