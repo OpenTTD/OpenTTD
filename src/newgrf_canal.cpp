@@ -141,7 +141,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 {
 	CanalResolverObject object(feature, tile);
 	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return 0;
+	if (group == nullptr || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult();
 }
