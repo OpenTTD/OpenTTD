@@ -77,8 +77,8 @@ public:
 		png_text_struct text[2];
 		memset(text, 0, sizeof(text));
 		text[0].key = const_cast<char *>("Software");
-		text[0].text = const_cast<char *>(_openttd_revision);
-		text[0].text_length = strlen(_openttd_revision);
+		text[0].text = const_cast<char *>(_openttd_revision.c_str());
+		text[0].text_length = _openttd_revision.size();
 		text[0].compression = PNG_TEXT_COMPRESSION_NONE;
 
 		std::string message;
