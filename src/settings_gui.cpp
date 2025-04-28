@@ -1878,6 +1878,33 @@ void DrawArrowButtons(int x, int y, Colours button_colour, uint8_t state, bool c
 }
 
 /**
+ * Draw [^][v] buttons
+ * @param x the x position to draw
+ * @param y the y position to draw
+ * @param button_colour the colour of the button
+ * @param state 0 = none clicked, 1 = first clicked, 2 = second clicked
+ * @param clickable_up is the up button clickable?
+ * @param clickable_down is the down button clickable?
+ */
+void DrawUpDownButtons(int x, int y, Colours button_colour, uint8_t state, bool clickable_up, bool clickable_down)
+{
+	int colour = GetColourGradient(button_colour, SHADE_DARKER);
+
+	Rect r = {x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1};
+	Rect ur = r.WithWidth(SETTING_BUTTON_WIDTH / 2, (_current_text_dir == TD_RTL));
+	Rect dr = r.WithWidth(SETTING_BUTTON_WIDTH / 2, (_current_text_dir != TD_RTL));
+
+	DrawFrameRect(ur, button_colour, (state == 1) ? FrameFlag::Lowered : FrameFlags{});
+	DrawFrameRect(dr, button_colour, (state == 2) ? FrameFlag::Lowered : FrameFlags{});
+	DrawSpriteIgnorePadding(SPR_ARROW_UP, PAL_NONE, ur, SA_CENTER);
+	DrawSpriteIgnorePadding(SPR_ARROW_DOWN, PAL_NONE, dr, SA_CENTER);
+
+	/* Grey out the buttons that aren't clickable */
+	if (!clickable_up) GfxFillRect(ur.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
+	if (!clickable_down) GfxFillRect(dr.Shrink(WidgetDimensions::scaled.bevel), colour, FILLRECT_CHECKER);
+}
+
+/**
  * Draw a dropdown button.
  * @param x the x position to draw
  * @param y the y position to draw
