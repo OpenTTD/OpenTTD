@@ -13,7 +13,7 @@
 #include "../fileio_func.h"
 #include "../string_func.h"
 
-typedef std::map<std::string, class ScriptInfo *, CaseInsensitiveComparator> ScriptInfoList; ///< Type for the list of scripts.
+using ScriptInfoList = std::map<std::string, class ScriptInfo *, CaseInsensitiveComparator>; ///< Type for the list of scripts.
 
 /** Scanner to help finding scripts. */
 class ScriptScanner : public FileScanner {
@@ -51,7 +51,7 @@ public:
 	/**
 	 * Register a ScriptInfo to the scanner.
 	 */
-	void RegisterScript(class ScriptInfo *info);
+	void RegisterScript(std::unique_ptr<class ScriptInfo> &&info);
 
 	/**
 	 * Get the list of registered scripts to print on the console.
@@ -88,7 +88,9 @@ protected:
 	std::string main_script; ///< The full path of the script.
 	std::string tar_file;    ///< If, which tar file the script was in.
 
-	ScriptInfoList info_list;        ///< The list of all script.
+	std::vector<std::unique_ptr<ScriptInfo>> info_vector;
+
+	ScriptInfoList info_list; ///< The list of all script.
 	ScriptInfoList info_single_list; ///< The list of all unique script. The best script (highest version) is shown.
 
 	/**
