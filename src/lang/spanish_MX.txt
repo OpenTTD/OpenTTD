@@ -973,6 +973,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Volumen
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Efectos de sonido
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Música
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
