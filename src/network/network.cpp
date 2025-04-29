@@ -1156,70 +1156,72 @@ void NetworkGameLoop()
 			char buff[4096];
 			if (fgets(buff, lengthof(buff), *f) == nullptr) break;
 
-			char *p = buff;
+			StringConsumer consumer{std::string_view{buff}};
 			/* Ignore the "[date time] " part of the message */
-			if (*p == '[') {
-				p = strchr(p, ']');
-				if (p == nullptr) break;
-				p += 2;
+			if (consumer.ReadCharIf('[')) {
+				consumer.SkipUntilChar(']', StringConsumer::SKIP_ONE_SEPARATOR);
+				consumer.SkipCharIf(' ');
 			}
 
-			if (strncmp(p, "cmd: ", 5) == 0
+			if (consumer.ReadIf("cmd: ")
 #ifdef DEBUG_FAILED_DUMP_COMMANDS
-				|| strncmp(p, "cmdf: ", 6) == 0
+				|| consumer.ReadIf("cmdf: ")
 #endif
 				) {
-				p += 5;
-				if (*p == ' ') p++;
 				cp = new CommandPacket();
-				int company;
-				uint cmd;
-				char buffer[256];
-				uint32_t next_date_raw;
-				int ret = sscanf(p, "%x; %x; %x; %x; %x; %255s", &next_date_raw, &next_date_fract, &company, &cmd, &cp->err_msg, buffer);
-				assert(ret == 6);
-				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
-				cp->company = (CompanyID)company;
-				cp->cmd = (Commands)cmd;
+				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));
+				bool valid = consumer.ReadIf("; ");
+				next_date_fract = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				cp->company = static_cast<CompanyID>(consumer.ReadIntegerBase<uint16_t>(16));
+				valid &= consumer.ReadIf("; ");
+				cp->cmd = static_cast<Commands>(consumer.ReadIntegerBase<uint32_t>(16));
+				valid &= consumer.ReadIf("; ");
+				cp->err_msg = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				auto args = consumer.ReadUntilChar(' ', StringConsumer::SKIP_ONE_SEPARATOR);
+				assert(valid);
 
 				/* Parse command data. */
-				std::vector<uint8_t> args;
-				size_t arg_len = strlen(buffer);
-				for (size_t i = 0; i + 1 < arg_len; i += 2) {
+				cp->data.clear();
+				for (size_t i = 0; i + 1 < args.size(); i += 2) {
 					uint8_t e = 0;
 					std::from_chars(buffer + i, buffer + i + 2, e, 16);
-					args.emplace_back(e);
+					cp->data.push_back(e);
 				}
-				cp->data = args;
-			} else if (strncmp(p, "join: ", 6) == 0) {
+			} else if (consumer.ReadIf("join: ")) {
 				/* Manually insert a pause when joining; this way the client can join at the exact right time. */
-				uint32_t next_date_raw;
-				int ret = sscanf(p + 6, "%x; %x", &next_date_raw, &next_date_fract);
-				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
-				assert(ret == 2);
+				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));
+				bool valid = consumer.ReadIf("; ");
+				next_date_fract = consumer.ReadIntegerBase<uint32_t>(16);
+				assert(valid);
 				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
 				cp->data = EndianBufferWriter<>::FromValue(CommandTraits<CMD_PAUSE>::Args{ PauseMode::Normal, true });
 				_ddc_fastforward = false;
-			} else if (strncmp(p, "sync: ", 6) == 0) {
-				uint32_t next_date_raw;
-				int ret = sscanf(p + 6, "%x; %x; %x; %x", &next_date_raw, &next_date_fract, &sync_state[0], &sync_state[1]);
-				next_date = TimerGameEconomy::Date((int32_t)next_date_raw);
-				assert(ret == 4);
+			} else if (consumer.ReadIf("sync: ")) {
+				next_date = TimerGameEconomy::Date(consumer.ReadIntegerBase<uint32_t>(16));
+				bool valid = consumer.ReadIf("; ");
+				next_date_fract = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				sync_state[0] = consumer.ReadIntegerBase<uint32_t>(16);
+				valid &= consumer.ReadIf("; ");
+				sync_state[1] = consumer.ReadIntegerBase<uint32_t>(16);
+				assert(valid);
 				check_sync_state = true;
-			} else if (strncmp(p, "msg: ", 5) == 0 || strncmp(p, "client: ", 8) == 0 ||
-						strncmp(p, "load: ", 6) == 0 || strncmp(p, "save: ", 6) == 0 ||
-						strncmp(p, "warning: ", 9) == 0) {
+			} else if (consumer.ReadIf("msg: ") || consumer.ReadIf("client: ") ||
+						consumer.ReadIf("load: ") || consumer.ReadIf("save: ") ||
+						consumer.ReadIf("warning: ")) {
 				/* A message that is not very important to the log playback, but part of the log. */
 #ifndef DEBUG_FAILED_DUMP_COMMANDS
-			} else if (strncmp(p, "cmdf: ", 6) == 0) {
-				Debug(desync, 0, "Skipping replay of failed command: {}", p + 6);
+			} else if (consumer.ReadIf("cmdf: ")) {
+				Debug(desync, 0, "Skipping replay of failed command: {}", consumer.Read(StringConsumer::npos));
 #endif
 			} else {
 				/* Can't parse a line; what's wrong here? */
-				Debug(desync, 0, "Trying to parse: {}", p);
+				Debug(desync, 0, "Trying to parse: {}", consumer.Read(StringConsumer::npos));
 				NOT_REACHED();
 			}
 		}
