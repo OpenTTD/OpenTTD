@@ -95,7 +95,7 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 
 #ifdef WITH_COCOA
 
-extern void CocoaDialog(const char *title, const char *message, const char *buttonLabel);
+extern void CocoaDialog(std::string_view title, std::string_view message, std::string_view buttonLabel);
 
 /**
  * Show the system dialogue message (Cocoa on MacOSX).
@@ -104,7 +104,7 @@ extern void CocoaDialog(const char *title, const char *message, const char *butt
  * @param message Message text.
  * @param buttonLabel Button text.
  */
-void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
+void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
 {
 	CocoaDialog(title, message, buttonLabel);
 }
@@ -119,7 +119,7 @@ void ShowMacDialog(const char *title, const char *message, const char *buttonLab
  * @param message Message text.
  * @param buttonLabel Button text.
  */
-void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
+void ShowMacDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
 {
 	fmt::print(stderr, "{}: {}\n", title, message);
 }

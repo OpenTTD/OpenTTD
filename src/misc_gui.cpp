@@ -744,7 +744,7 @@ void QueryString::DrawEditBox(const Window *w, WidgetID wid) const
 
 	DrawFrameRect(cr, wi->colour, wi->IsLowered() ? FrameFlag::Lowered : FrameFlags{});
 	DrawSpriteIgnorePadding(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT, PAL_NONE, cr, SA_CENTER);
-	if (StrEmpty(this->text.GetText())) GfxFillRect(cr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(wi->colour, SHADE_DARKER), FILLRECT_CHECKER);
+	if (this->text.GetText().empty()) GfxFillRect(cr.Shrink(WidgetDimensions::scaled.bevel), GetColourGradient(wi->colour, SHADE_DARKER), FILLRECT_CHECKER);
 
 	DrawFrameRect(fr, wi->colour, {FrameFlag::Lowered, FrameFlag::Darkened});
 	GfxFillRect(fr.Shrink(WidgetDimensions::scaled.bevel), PC_BLACK);
@@ -877,7 +877,7 @@ void QueryString::ClickEditBox(Window *w, Point pt, WidgetID wid, int click_coun
 	Rect cr = wi->GetCurrentRect().WithWidth(clearbtn_width, !rtl);
 
 	if (IsInsideMM(pt.x, cr.left, cr.right)) {
-		if (!StrEmpty(this->text.GetText())) {
+		if (!this->text.GetText().empty()) {
 			this->text.DeleteAll();
 			w->HandleButtonClick(wid);
 			w->OnEditboxChanged(wid);
@@ -942,7 +942,7 @@ struct QueryStringWindow : public Window
 		if (!this->editbox.orig.has_value() || this->editbox.text.GetText() != this->editbox.orig) {
 			assert(this->parent != nullptr);
 
-			this->parent->OnQueryTextFinished(this->editbox.text.GetText());
+			this->parent->OnQueryTextFinished(std::string{this->editbox.text.GetText()});
 			this->editbox.handled = true;
 		}
 	}

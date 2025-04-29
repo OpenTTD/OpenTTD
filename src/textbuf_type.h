@@ -61,7 +61,7 @@ struct Textbuf {
 
 	void DiscardMarkedText(bool update = true);
 
-	const char *GetText() const;
+	std::string_view GetText() const;
 
 private:
 	std::string buf; ///< buffer in which text is saved

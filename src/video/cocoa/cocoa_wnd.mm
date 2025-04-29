@@ -102,10 +102,10 @@ static OTTDMain *_ottd_main;
  * @param to End of the range.
  * @return Number of UTF-16 code points in the range.
  */
-static NSUInteger CountUtf16Units(const char *from, const char *to)
+static NSUInteger CountUtf16Units(std::string_view str)
 {
 	NSUInteger i = 0;
-	for (char32_t c : Utf8View(std::string_view(from, to))) {
+	for (char32_t c : Utf8View(str)) {
 		i += c < 0x10000 ? 1 : 2; // Watch for surrogate pairs.
 	}
 	return i;
@@ -117,7 +117,7 @@ static NSUInteger CountUtf16Units(const char *from, const char *to)
  * @param count Number of UTF-16 code points to advance the string by.
  * @return Advanced string pointer.
  */
-static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
+static const char *Utf8AdvanceByUtf16Units(std::string_view str, NSUInteger count)
 {
 	Utf8View view(str);
 	auto it = view.begin();
@@ -125,7 +125,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	for (NSUInteger i = 0; it != end && i < count; ++it) {
 		i += *it < 0x10000 ? 1 : 2; // Watch for surrogate pairs.
 	}
-	return str + it.GetByteOffset();
+	return str.data() + it.GetByteOffset();
 }
 
 /**
@@ -394,7 +394,7 @@ void CocoaExitApplication()
  *
  * @note This is needed since sometimes assert is called before the videodriver is initialized .
  */
-void CocoaDialog(const char *title, const char *message, const char *buttonLabel)
+void CocoaDialog(std::string_view title, std::string_view message, std::string_view buttonLabel)
 {
 	_cocoa_video_dialog = true;
 
@@ -413,9 +413,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 #else
 		[ alert setAlertStyle: NSCriticalAlertStyle ];
 #endif
-		[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
-		[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
-		[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
+		[ alert setMessageText:[ [ NSString alloc ] initWithBytes:title.data() length:title.size() encoding:NSUTF8StringEncoding ] ];
+		[ alert setInformativeText:[ [ NSString alloc ] initWithBytes:message.data() length:message.size() encoding:NSUTF8StringEncoding ] ];
+		[ alert addButtonWithTitle: [ [ NSString alloc ] initWithBytes:buttonLabel.data() length:buttonLabel.size() encoding:NSUTF8StringEncoding ] ];
 		[ alert runModal ];
 		[ alert release ];
 	}
@@ -462,7 +462,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
 
 		std::string caption = VideoDriver::GetCaption();
-		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption.c_str() ];
+		NSString *nsscaption = [ [ NSString alloc ] initWithBytes:caption.data() length:caption.size() encoding:NSUTF8StringEncoding ];
 		[ self setTitle:nsscaption ];
 		[ self setMiniwindowTitle:nsscaption ];
 		[ nsscaption release ];
@@ -1001,8 +1001,8 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (!EditBoxInGlobalFocus()) return NSMakeRange(NSNotFound, 0);
 
 	const Textbuf *text_buf = _focused_window->GetFocusedTextbuf();
-	const char *text = text_buf->GetText();
-	NSUInteger start = CountUtf16Units(text, text + text_buf->caretpos);
+	std::string_view text = text_buf->GetText();
+	NSUInteger start = CountUtf16Units(text.substr(0, text_buf->caretpos));
 	return NSMakeRange(start, 0);
 }
 
@@ -1013,10 +1013,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	const Textbuf *text_buf = _focused_window->GetFocusedTextbuf();
 	if (text_buf->markend != 0) {
-		const char *text = text_buf->GetText();
-		const char *mark = text + text_buf->markpos;
-		NSUInteger start = CountUtf16Units(text, mark);
-		NSUInteger len = CountUtf16Units(mark, text + text_buf->markend);
+		std::string_view text = text_buf->GetText();
+		NSUInteger start = CountUtf16Units(text.substr(0, text_buf->markpos));
+		NSUInteger len = CountUtf16Units(text.substr(text_buf->markpos, text_buf->markend - text_buf->markpos));
 
 		return NSMakeRange(start, len);
 	}
@@ -1037,7 +1036,8 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return nil;
 
-	NSString *s = [ NSString stringWithUTF8String:_focused_window->GetFocusedTextbuf()->GetText() ];
+	auto text = _focused_window->GetFocusedTextbuf()->GetText();
+	NSString *s = [ [ NSString alloc] initWithBytes:text.data() length:text.size() encoding:NSUTF8StringEncoding ];
 	NSRange valid_range = NSIntersectionRange(NSMakeRange(0, [ s length ]), theRange);
 
 	if (actualRange != nullptr) *actualRange = valid_range;
@@ -1057,7 +1057,8 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return [ [ [ NSAttributedString alloc ] initWithString:@"" ] autorelease ];
 
-	return [ [ [ NSAttributedString alloc ] initWithString:[ NSString stringWithUTF8String:_focused_window->GetFocusedTextbuf()->GetText() ] ] autorelease ];
+	auto text = _focused_window->GetFocusedTextbuf()->GetText();
+	return [ [ [ NSAttributedString alloc ] initWithString:[ [ NSString alloc ] initWithBytes:text.data() length:text.size() encoding:NSUTF8StringEncoding ] ] autorelease ];
 }
 
 /** Get the character that is rendered at the given point. */
@@ -1073,7 +1074,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (index == -1) return NSNotFound;
 
 	auto text = _focused_window->GetFocusedTextbuf()->GetText();
-	return CountUtf16Units(text, text + index);
+	return CountUtf16Units(text.substr(0, index));
 }
 
 /** Get the bounding rect for the given range. */
@@ -1081,7 +1082,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if (!EditBoxInGlobalFocus()) return NSMakeRect(0, 0, 0, 0);
 
-	const char *focused_text = _focused_window->GetFocusedTextbuf()->GetText();
+	std::string_view focused_text = _focused_window->GetFocusedTextbuf()->GetText();
 	/* Convert range to UTF-8 string pointers. */
 	const char *start = Utf8AdvanceByUtf16Units(focused_text, aRange.location);
 	const char *end = aRange.length != 0 ? Utf8AdvanceByUtf16Units(focused_text, aRange.location + aRange.length) : start;

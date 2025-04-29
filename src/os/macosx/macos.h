@@ -11,7 +11,7 @@
 #define MACOS_H
 
 /** Helper function displaying a message the best possible way. */
-void ShowMacDialog(const char *title, const char *message, const char *button_label);
+void ShowMacDialog(std::string_view title, std::string_view message, std::string_view button_label);
 
 void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix);
 

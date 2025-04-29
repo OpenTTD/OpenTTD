@@ -370,15 +370,15 @@ class NetworkContentListWindow : public Window, ContentCallback {
 			url += "do=searchtext&q=";
 
 			/* Escape search term */
-			for (const char *search = this->filter_editbox.text.GetText(); *search != '\0'; search++) {
+			for (char search : this->filter_editbox.text.GetText()) {
 				/* Remove quotes */
-				if (*search == '\'' || *search == '"') continue;
+				if (search == '\'' || search == '"') continue;
 
 				/* Escape special chars, such as &%,= */
-				if (*search < 0x30) {
-					format_append(url, "%{:02X}", *search);
+				if (static_cast<unsigned char>(search) < 0x30) {
+					format_append(url, "%{:02X}", search);
 				} else {
-					url.push_back(*search);
+					url.push_back(search);
 				}
 			}
 		}
