@@ -19,6 +19,7 @@
 #include "textbuf_gui.h"
 #include "vehicle_gui.h"
 #include "zoom_func.h"
+#include "core/string_consumer.hpp"
 
 #include "engine_base.h"
 #include "industry.h"
@@ -1078,9 +1079,11 @@ struct SpriteAlignerWindow : Window {
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!str.has_value() || str->empty()) return;
+		if (!str.has_value()) return;
 
-		this->current_sprite = atoi(str->c_str());
+		auto value = ParseInteger(*str);
+		if (!value.has_value()) return;
+		this->current_sprite = *value;
 		if (this->current_sprite >= GetMaxSpriteID()) this->current_sprite = 0;
 		while (GetSpriteType(this->current_sprite) != SpriteType::Normal) {
 			this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();

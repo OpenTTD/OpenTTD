@@ -33,6 +33,7 @@
 #include "ai/ai_gui.hpp"
 #include "game/game_gui.hpp"
 #include "industry.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/genworld_widget.h"
 
@@ -913,7 +914,9 @@ struct GenerateLandscapeWindow : public Window {
 
 		int32_t value;
 		if (!str->empty()) {
-			value = atoi(str->c_str());
+			auto val = ParseInteger<int32_t>(*str);
+			if (!val.has_value()) return;
+			value = *val;
 		} else {
 			/* An empty string means revert to the default */
 			switch (this->widget_id) {
@@ -1198,19 +1201,20 @@ struct CreateScenarioWindow : public Window
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!str.has_value() || str->empty()) return;
+		if (!str.has_value()) return;
 
-		int32_t value = atoi(str->c_str());
+		auto value = ParseInteger<int32_t>(*str);
+		if (!value.has_value()) return;
 
 		switch (this->widget_id) {
 			case WID_CS_START_DATE_TEXT:
 				this->SetWidgetDirty(WID_CS_START_DATE_TEXT);
-				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
+				_settings_newgame.game_creation.starting_year = Clamp(TimerGameCalendar::Year(*value), CalendarTime::MIN_YEAR, CalendarTime::MAX_YEAR);
 				break;
 
 			case WID_CS_FLAT_LAND_HEIGHT_TEXT:
 				this->SetWidgetDirty(WID_CS_FLAT_LAND_HEIGHT_TEXT);
-				_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, GetMapHeightLimit());
+				_settings_newgame.game_creation.se_flat_world_height = Clamp(*value, 0, GetMapHeightLimit());
 				break;
 		}
 

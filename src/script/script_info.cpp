@@ -14,6 +14,7 @@
 
 #include "script_info.hpp"
 #include "script_scanner.hpp"
+#include "../core/string_consumer.hpp"
 #include "../3rdparty/fmt/format.h"
 
 #include "../safeguards.h"
@@ -229,8 +230,9 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 			sign = -1;
 			key_string++;
 		}
-		int key = atoi(key_string) * sign;
-		config->labels[key] = StrMakeValid(label);
+		auto key = ParseInteger<int>(key_string);
+		if (!key.has_value()) return SQ_ERROR;
+		config->labels[*key * sign] = StrMakeValid(label);
 
 		sq_pop(vm, 2);
 	}

@@ -48,6 +48,7 @@
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 #include "hotkeys.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/industry_widget.h"
 
@@ -1142,16 +1143,17 @@ public:
 		if (!str.has_value() || str->empty()) return;
 
 		Industry *i = Industry::Get(this->window_number);
-		uint value = atoi(str->c_str());
+		auto value = ParseInteger(*str);
+		if (!value.has_value()) return;
 		switch (this->editbox_line) {
 			case IL_NONE: NOT_REACHED();
 
 			case IL_MULTIPLIER:
-				i->prod_level = ClampU(RoundDivSU(value * PRODLEVEL_DEFAULT, 100), PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
+				i->prod_level = ClampU(RoundDivSU(*value * PRODLEVEL_DEFAULT, 100), PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
 				break;
 
 			default:
-				i->produced[this->editbox_line - IL_RATE1].rate = ClampU(RoundDivSU(value, 8), 0, 255);
+				i->produced[this->editbox_line - IL_RATE1].rate = ClampU(RoundDivSU(*value, 8), 0, 255);
 				break;
 		}
 		UpdateIndustryProduction(i);
