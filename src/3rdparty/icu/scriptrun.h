@@ -19,6 +19,7 @@
 #include <unicode/utypes.h>
 #include <unicode/uobject.h>
 #include <unicode/uscript.h>
+#include <array>
 
 U_NAMESPACE_BEGIN
 
