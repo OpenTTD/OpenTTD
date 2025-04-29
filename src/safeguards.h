@@ -51,6 +51,11 @@
 #define sscanf    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define from_string SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
+/* Use ParseInteger or StringConsumer instead. */
+#define atoi      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define atol      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define atoll     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
 /* Use fmt::print instead. */
 #define printf    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define fprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD

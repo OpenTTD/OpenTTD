@@ -59,6 +59,7 @@
 #include "timer/timer_window.h"
 #include "timer/timer_game_calendar.h"
 #include "help_gui.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/toolbar_widget.h"
 
@@ -2500,7 +2501,9 @@ struct ScenarioEditorToolbarWindow : Window {
 
 		TimerGameCalendar::Year value;
 		if (!str->empty()) {
-			value = TimerGameCalendar::Year{atoi(str->c_str())};
+			auto val = ParseInteger(*str);
+			if (!val.has_value()) return;
+			value = static_cast<TimerGameCalendar::Year>(*val);
 		} else {
 			/* An empty string means revert to the default */
 			value = TimerGameCalendar::Year{CalendarTime::DEF_START_YEAR.base()};

@@ -14,6 +14,7 @@
 #include "ini_type.h"
 #include "string_func.h"
 #include "error_func.h"
+#include "core/string_consumer.hpp"
 
 extern void CheckExternalFiles();
 
@@ -70,7 +71,12 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 	}
 
 	fetch_metadata("version");
-	this->version = atoi(item->value->c_str());
+	auto value = ParseInteger(*item->value);
+	if (!value.has_value()) {
+		Debug(grf, 0, "Base {}set detail loading: {} field is invalid: {}", BaseSet<T>::SET_TYPE, item->name, *item->value);
+		return false;
+	}
+	this->version = *value;
 
 	item = metadata->GetItem("fallback");
 	this->fallback = (item != nullptr && item->value && *item->value != "0" && *item->value != "false");

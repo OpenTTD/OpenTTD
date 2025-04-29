@@ -41,6 +41,7 @@
 #include "../timer/timer_game_calendar.h"
 #include "../textfile_gui.h"
 #include "../stringfilter_type.h"
+#include "../core/string_consumer.hpp"
 
 #include "../widgets/network_widget.h"
 
@@ -1120,12 +1121,13 @@ struct NetworkStartServerWindow : public Window {
 		if (this->widget_id == WID_NSS_SETPWD) {
 			_settings_client.network.server_password = std::move(*str);
 		} else {
-			int32_t value = atoi(str->c_str());
+			auto value = ParseInteger<int32_t>(*str);
+			if (!value.has_value()) return;
 			this->SetWidgetDirty(this->widget_id);
 			switch (this->widget_id) {
 				default: NOT_REACHED();
-				case WID_NSS_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(value, 2, MAX_CLIENTS); break;
-				case WID_NSS_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(value, 1, MAX_COMPANIES); break;
+				case WID_NSS_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(*value, 2, MAX_CLIENTS); break;
+				case WID_NSS_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(*value, 1, MAX_COMPANIES); break;
 			}
 		}
 

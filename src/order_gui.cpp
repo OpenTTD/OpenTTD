@@ -34,6 +34,7 @@
 #include "error.h"
 #include "order_cmd.h"
 #include "company_cmd.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/order_widget.h"
 
@@ -1362,22 +1363,23 @@ public:
 		if (!str.has_value() || str->empty()) return;
 
 		VehicleOrderID sel = this->OrderGetSel();
-		uint value = atoi(str->c_str());
+		auto value = ParseInteger(*str);
+		if (!value.has_value()) return;
 
 		switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {
 			case OCV_MAX_SPEED:
-				value = ConvertDisplaySpeedToSpeed(value, this->vehicle->type);
+				value = ConvertDisplaySpeedToSpeed(*value, this->vehicle->type);
 				break;
 
 			case OCV_RELIABILITY:
 			case OCV_LOAD_PERCENTAGE:
-				value = Clamp(value, 0, 100);
+				value = Clamp(*value, 0, 100);
 				break;
 
 			default:
 				break;
 		}
-		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel, MOF_COND_VALUE, Clamp(value, 0, 2047));
+		Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel, MOF_COND_VALUE, Clamp(*value, 0, 2047));
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index) override

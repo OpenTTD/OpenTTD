@@ -53,6 +53,7 @@
 #include "social_integration.h"
 #include "sound_func.h"
 #include "settingentry_gui.h"
+#include "core/string_consumer.hpp"
 
 #include "table/strings.h"
 
@@ -1371,12 +1372,13 @@ struct GameOptionsWindow : Window {
 
 		int32_t value;
 		if (!str->empty()) {
-			long long llvalue = atoll(str->c_str());
+			auto llvalue = ParseInteger<int64_t>(*str);
+			if (!llvalue.has_value()) return;
 
 			/* Save the correct currency-translated value */
-			if (sd->flags.Test(SettingFlag::GuiCurrency)) llvalue /= GetCurrency().rate;
+			if (sd->flags.Test(SettingFlag::GuiCurrency)) llvalue = *llvalue / GetCurrency().rate;
 
-			value = ClampTo<int32_t>(llvalue);
+			value = ClampTo<int32_t>(*llvalue);
 		} else {
 			value = sd->GetDefaultValue();
 		}
@@ -2065,9 +2067,12 @@ struct CustomCurrencyWindow : Window {
 		if (!str.has_value()) return;
 
 		switch (this->query_widget) {
-			case WID_CC_RATE:
-				GetCustomCurrency().rate = Clamp(atoi(str->c_str()), 1, UINT16_MAX);
+			case WID_CC_RATE: {
+				auto val = ParseInteger(*str);
+				if (!val.has_value()) return;
+				GetCustomCurrency().rate = Clamp(*val, 1, UINT16_MAX);
 				break;
+			}
 
 			case WID_CC_SEPARATOR: // Thousands separator
 				GetCustomCurrency().separator = std::move(*str);
@@ -2082,9 +2087,13 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_YEAR: { // Year to switch to euro
-				TimerGameCalendar::Year val{atoi(str->c_str())};
-
-				GetCustomCurrency().to_euro = (val < MIN_EURO_YEAR ? CF_NOEURO : std::min(val, CalendarTime::MAX_YEAR));
+				TimerGameCalendar::Year year = CF_NOEURO;
+				if (!str->empty()) {
+					auto val = ParseInteger(*str);
+					if (!val.has_value()) return;
+					year = Clamp(static_cast<TimerGameCalendar::Year>(*val), MIN_EURO_YEAR, CalendarTime::MAX_YEAR);
+				}
+				GetCustomCurrency().to_euro = year;
 				break;
 			}
 		}

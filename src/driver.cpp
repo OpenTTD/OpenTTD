@@ -17,6 +17,7 @@
 #include "video/video_driver.hpp"
 #include "string_func.h"
 #include "fileio_func.h"
+#include "core/string_consumer.hpp"
 
 #include "table/strings.h"
 
@@ -77,7 +78,10 @@ bool GetDriverParamBool(const StringList &parm, const char *name)
 int GetDriverParamInt(const StringList &parm, const char *name, int def)
 {
 	const char *p = GetDriverParam(parm, name);
-	return p != nullptr ? atoi(p) : def;
+	if (p == nullptr) return def;
+	auto value = ParseInteger<int>(p);
+	if (value.has_value()) return *value;
+	UserError("Invalid value for driver parameter {}: {}", name, p);
 }
 
 /**
