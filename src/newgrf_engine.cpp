@@ -998,13 +998,13 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 }
 
 
-/* virtual */ const SpriteGroup *VehicleResolverObject::ResolveReal(const RealSpriteGroup *group) const
+/* virtual */ const SpriteGroup *VehicleResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
 	const Vehicle *v = this->self_scope.v;
 
 	if (v == nullptr) {
-		if (!group->loading.empty()) return group->loading[0];
-		if (!group->loaded.empty())  return group->loaded[0];
+		if (!group.loading.empty()) return group.loading[0];
+		if (!group.loaded.empty()) return group.loaded[0];
 		return nullptr;
 	}
 
@@ -1012,14 +1012,14 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 	bool not_loading = (order.GetUnloadType() & OUFB_NO_UNLOAD) && (order.GetLoadType() & OLFB_NO_LOAD);
 	bool in_motion = !order.IsType(OT_LOADING) || not_loading;
 
-	uint totalsets = in_motion ? (uint)group->loaded.size() : (uint)group->loading.size();
+	uint totalsets = static_cast<uint>(in_motion ? group.loaded.size() : group.loading.size());
 
 	if (totalsets == 0) return nullptr;
 
 	uint set = (v->cargo.StoredCount() * totalsets) / std::max<uint16_t>(1u, v->cargo_cap);
 	set = std::min(set, totalsets - 1);
 
-	return in_motion ? group->loaded[set] : group->loading[set];
+	return in_motion ? group.loaded[set] : group.loading[set];
 }
 
 GrfSpecFeature VehicleResolverObject::GetFeature() const

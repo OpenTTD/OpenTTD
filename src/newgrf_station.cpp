@@ -519,10 +519,10 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 	return UINT_MAX;
 }
 
-/* virtual */ const SpriteGroup *StationResolverObject::ResolveReal(const RealSpriteGroup *group) const
+/* virtual */ const SpriteGroup *StationResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
 	if (this->station_scope.st == nullptr || !Station::IsExpected(this->station_scope.st)) {
-		if (!group->loading.empty()) return group->loading[0];
+		if (!group.loading.empty()) return group.loading[0];
 		return nullptr;
 	}
 
@@ -554,18 +554,18 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 	cargo = std::min(0xfffu, cargo);
 
 	if (cargo > this->station_scope.statspec->cargo_threshold) {
-		if (!group->loading.empty()) {
-			uint set = ((cargo - this->station_scope.statspec->cargo_threshold) * (uint)group->loading.size()) / (4096 - this->station_scope.statspec->cargo_threshold);
-			return group->loading[set];
+		if (!group.loading.empty()) {
+			uint set = ((cargo - this->station_scope.statspec->cargo_threshold) * static_cast<uint>(group.loading.size())) / (4096 - this->station_scope.statspec->cargo_threshold);
+			return group.loading[set];
 		}
 	} else {
-		if (!group->loaded.empty()) {
-			uint set = (cargo * (uint)group->loaded.size()) / (this->station_scope.statspec->cargo_threshold + 1);
-			return group->loaded[set];
+		if (!group.loaded.empty()) {
+			uint set = (cargo * static_cast<uint>(group.loaded.size())) / (this->station_scope.statspec->cargo_threshold + 1);
+			return group.loaded[set];
 		}
 	}
 
-	if (!group->loading.empty()) return group->loading[0];
+	if (!group.loading.empty()) return group.loading[0];
 	return nullptr;
 }
 

@@ -120,10 +120,10 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * @param group Group to get.
  * @return The available sprite group.
  */
-/* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
+/* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
-	if (!group->loaded.empty())  return group->loaded[0];
-	if (!group->loading.empty()) return group->loading[0];
+	if (!group.loaded.empty()) return group.loaded[0];
+	if (!group.loading.empty()) return group.loading[0];
 
 	return nullptr;
 }
@@ -276,7 +276,7 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 
 const SpriteGroup *RealSpriteGroup::Resolve(ResolverObject &object) const
 {
-	return object.ResolveReal(this);
+	return object.ResolveReal(*this);
 }
 
 /**
