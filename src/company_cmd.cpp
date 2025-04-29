@@ -227,7 +227,9 @@ void InvalidateCompanyWindows()
 		if (w != nullptr) {
 			w->SetWidgetDirty(WID_CF_EXPS_PRICE3);
 			w->SetWidgetDirty(WID_CF_OWN_VALUE);
+			w->SetWidgetDirty(WID_CF_LOAN_VALUE);
 			w->SetWidgetDirty(WID_CF_BALANCE_VALUE);
+			w->SetWidgetDirty(WID_CF_MAXLOAN_VALUE);
 		}
 		SetWindowWidgetDirty(WC_COMPANY, cid, WID_C_DESC_COMPANY_VALUE);
 	}
