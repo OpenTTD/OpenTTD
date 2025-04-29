@@ -115,7 +115,7 @@ static const char *GetLocalCode()
  * Convert between locales, which from and which to is set in the calling
  * functions OTTD2FS() and FS2OTTD().
  */
-static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
+static std::string convert_tofrom_fs(iconv_t convd, std::string_view name)
 {
 	/* There are different implementations of iconv. The older ones,
 	 * e.g. SUSv2, pass a const pointer, whereas the newer ones, e.g.
@@ -135,7 +135,7 @@ static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
 	iconv(convd, nullptr, nullptr, nullptr, nullptr);
 	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == SIZE_MAX) {
 		Debug(misc, 0, "[iconv] error converting '{}'. Errno {}", name, errno);
-		return name;
+		return std::string{name};
 	}
 
 	buf.resize(outbuf - buf.data());
@@ -147,7 +147,7 @@ static std::string convert_tofrom_fs(iconv_t convd, const std::string &name)
  * @param name pointer to a valid string that will be converted
  * @return pointer to a new stringbuffer that contains the converted string
  */
-std::string OTTD2FS(const std::string &name)
+std::string OTTD2FS(std::string_view name)
 {
 	static iconv_t convd = (iconv_t)(-1);
 	if (convd == (iconv_t)(-1)) {
@@ -155,7 +155,7 @@ std::string OTTD2FS(const std::string &name)
 		convd = iconv_open(env, INTERNALCODE);
 		if (convd == (iconv_t)(-1)) {
 			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", INTERNALCODE, env);
-			return name;
+			return std::string{name};
 		}
 	}
 
@@ -167,7 +167,7 @@ std::string OTTD2FS(const std::string &name)
  * @param name valid string that will be converted
  * @return pointer to a new stringbuffer that contains the converted string
  */
-std::string FS2OTTD(const std::string &name)
+std::string FS2OTTD(std::string_view name)
 {
 	static iconv_t convd = (iconv_t)(-1);
 	if (convd == (iconv_t)(-1)) {
@@ -175,7 +175,7 @@ std::string FS2OTTD(const std::string &name)
 		convd = iconv_open(INTERNALCODE, env);
 		if (convd == (iconv_t)(-1)) {
 			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", env, INTERNALCODE);
-			return name;
+			return std::string{name};
 		}
 	}
 

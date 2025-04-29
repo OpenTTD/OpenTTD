@@ -342,7 +342,7 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
 			FiosItem &fios = file_list.emplace_back();
 			fios.type = FIOS_TYPE_DIR;
 			fios.mtime = 0;
-			fios.name = FS2OTTD(dir_entry.path().filename());
+			fios.name = FS2OTTD(dir_entry.path().filename().native());
 			fios.title = GetString(STR_SAVELOAD_DIRECTORY, fios.name + PATHSEP);
 		}
 
