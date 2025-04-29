@@ -27,6 +27,7 @@
 #include "settings_type.h"
 #include "timetable_cmd.h"
 #include "timetable.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/timetable_widget.h"
 
@@ -747,7 +748,7 @@ struct TimetableWindow : Window {
 		if (!str.has_value()) return;
 
 		const Vehicle *v = this->vehicle;
-		uint64_t val = str->empty() ? 0 : std::strtoul(str->c_str(), nullptr, 10);
+		uint64_t val = ParseInteger<uint64_t>(*str).value_or(0);
 		auto [order_id, mtf] = PackTimetableArgs(v, this->sel_index, query_widget == WID_VT_CHANGE_SPEED);
 
 		switch (query_widget) {
