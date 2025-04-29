@@ -370,7 +370,7 @@ public:
 		return result != nullptr ? result->GetCallbackResult() : CALLBACK_FAILED;
 	}
 
-	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup &group) const;
 
 	virtual ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0);
 
