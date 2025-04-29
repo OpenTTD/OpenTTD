@@ -372,10 +372,10 @@ std::optional<std::string_view> MusicDriver_Win32::Start(const StringList &parm)
 
 	int resolution = GetDriverParamInt(parm, "resolution", 5);
 	uint port = (uint)GetDriverParamInt(parm, "port", UINT_MAX);
-	const char *portname = GetDriverParam(parm, "portname");
+	auto portname = GetDriverParam(parm, "portname");
 
 	/* Enumerate ports either for selecting port by name, or for debug output */
-	if (portname != nullptr || _debug_driver_level > 0) {
+	if (portname.has_value() || _debug_driver_level > 0) {
 		uint numports = midiOutGetNumDevs();
 		Debug(driver, 1, "Win32-MIDI: Found {} output devices:", numports);
 		for (uint tryport = 0; tryport < numports; tryport++) {
@@ -386,7 +386,7 @@ std::optional<std::string_view> MusicDriver_Win32::Start(const StringList &parm)
 
 				/* Compare requested and detected port name.
 				 * If multiple ports have the same name, this will select the last matching port, and the debug output will be confusing. */
-				if (portname != nullptr && strncmp(tryportname, portname, lengthof(tryportname)) == 0) port = tryport;
+				if (portname.has_value() && *portname == tryportname) port = tryport;
 
 				Debug(driver, 1, "MIDI port {:2d}: {}{}", tryport, tryportname, (tryport == port) ? " [selected]" : "");
 			}

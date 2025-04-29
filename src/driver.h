@@ -13,9 +13,9 @@
 #include "core/enum_type.hpp"
 #include "string_type.h"
 
-const char *GetDriverParam(const StringList &parm, const char *name);
-bool GetDriverParamBool(const StringList &parm, const char *name);
-int GetDriverParamInt(const StringList &parm, const char *name, int def);
+std::optional<std::string_view> GetDriverParam(const StringList &parm, std::string_view name);
+bool GetDriverParamBool(const StringList &parm, std::string_view name);
+int GetDriverParamInt(const StringList &parm, std::string_view name, int def);
 
 /** A driver for communicating with the user. */
 class Driver {
@@ -103,7 +103,7 @@ private:
 	static void MarkVideoDriverOperational();
 
 protected:
-	DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description);
+	DriverFactoryBase(Driver::Type type, int priority, std::string_view name, std::string_view description);
 
 	virtual ~DriverFactoryBase();
 
