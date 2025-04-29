@@ -203,7 +203,7 @@ std::string GetDebugString()
 	std::string result;
 	for (const auto &debug_level : _debug_levels) {
 		if (!result.empty()) result += ", ";
-		fmt::format_to(std::back_inserter(result), "{}={}", debug_level.name, *debug_level.level);
+		format_append(result, "{}={}", debug_level.name, *debug_level.level);
 	}
 	return result;
 }

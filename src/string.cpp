@@ -78,7 +78,7 @@ std::string FormatArrayAsHex(std::span<const uint8_t> data)
 	str.reserve(data.size() * 2 + 1);
 
 	for (auto b : data) {
-		fmt::format_to(std::back_inserter(str), "{:02X}", b);
+		format_append(str, "{:02X}", b);
 	}
 
 	return str;

@@ -168,7 +168,7 @@ std::string ScriptConfig::SettingsToString() const
 
 	std::string result;
 	for (const auto &item : this->settings) {
-		fmt::format_to(std::back_inserter(result), "{}={},", item.first, item.second);
+		format_append(result, "{}={},", item.first, item.second);
 	}
 
 	/* Remove the last ','. */

@@ -274,13 +274,13 @@ static const uint MAX_FRAMES     = 64;
 			/* Get symbol name and line info if possible. */
 			DWORD64 offset;
 			if (proc.pSymGetSymFromAddr64(hCur, frame.AddrPC.Offset, &offset, sym_info)) {
-				message += fmt::format(" {} + {}", sym_info->Name, offset);
+				format_append(message, " {} + {}", sym_info->Name, offset);
 
 				DWORD line_offs;
 				IMAGEHLP_LINE64 line;
 				line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
 				if (proc.pSymGetLineFromAddr64(hCur, frame.AddrPC.Offset, &line_offs, &line)) {
-					message += fmt::format(" ({}:{})", line.FileName, line.LineNumber);
+					format_append(message, " ({}:{})", line.FileName, line.LineNumber);
 				}
 			}
 
