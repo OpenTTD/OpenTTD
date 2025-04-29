@@ -105,7 +105,7 @@ std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &
 		}
 		if (sfont_id == FLUID_FAILED) return "Could not open any sound font";
 	} else {
-		std::string name{sfont_name};
+		std::string name{sfont_name.value()};
 		sfont_id = fluid_synth_sfload(_midi.synth, name.c_str(), 1);
 		if (sfont_id == FLUID_FAILED) return "Could not open sound font";
 	}
