@@ -5,6 +5,7 @@
 #include "../../../stdafx.h"
 #include "../../fmt/format.h"
 
+#include "../../../core/string_consumer.hpp"
 #include "sqpcheader.h"
 #include "sqvm.h"
 #include "sqstring.h"
@@ -27,9 +28,9 @@ bool str2num(const SQChar *s,SQObjectPtr &res)
 		return true;
 	}
 	else{
-		SQInteger r = SQInteger(strtol(s,&end,10));
-		if(s == end) return false;
-		res = r;
+		auto val = ParseInteger<int64_t>(s);
+		if (!val.has_value()) return false;
+		res = *val;
 		return true;
 	}
 }

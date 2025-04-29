@@ -1010,10 +1010,26 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 		if (const IniItem *item = group->GetItem("name"); item != nullptr && item->value) BaseGraphics::ini_data.name = *item->value;
 
 		if (const IniItem *item = group->GetItem("shortname"); item != nullptr && item->value && item->value->size() == 8) {
-			BaseGraphics::ini_data.shortname = std::byteswap<uint32_t>(std::strtoul(item->value->c_str(), nullptr, 16));
+			auto val = ParseInteger<uint32_t>(*item->value, 16);
+			if (val.has_value()) {
+				BaseGraphics::ini_data.shortname = std::byteswap<uint32_t>(*val);
+			} else {
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+					GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, *item->value, BaseGraphics::ini_data.name),
+					WL_CRITICAL);
+			}
 		}
 
-		if (const IniItem *item = group->GetItem("extra_version"); item != nullptr && item->value) BaseGraphics::ini_data.extra_version = std::strtoul(item->value->c_str(), nullptr, 10);
+		if (const IniItem *item = group->GetItem("extra_version"); item != nullptr && item->value) {
+			auto val = ParseInteger<uint32_t>(*item->value);
+			if (val.has_value()) {
+				BaseGraphics::ini_data.extra_version = *val;
+			} else {
+				ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
+					GetEncodedString(STR_CONFIG_ERROR_INVALID_VALUE, *item->value, BaseGraphics::ini_data.name),
+					WL_CRITICAL);
+			}
+		}
 
 		if (const IniItem *item = group->GetItem("extra_params"); item != nullptr && item->value) {
 			auto params = ParseIntList(item->value->c_str());

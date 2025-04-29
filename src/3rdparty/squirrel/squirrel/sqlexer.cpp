@@ -12,6 +12,7 @@
 #include "sqlexer.h"
 
 #include "../../../core/utf8.hpp"
+#include "../../../core/string_consumer.hpp"
 
 #include "../../../safeguards.h"
 
@@ -310,16 +311,16 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 					case 'x': NEXT(); {
 						if(!isxdigit(CUR_CHAR)) Error("hexadecimal number expected");
 						const SQInteger maxdigits = 4;
-						SQChar temp[maxdigits+1];
-						SQInteger n = 0;
+						SQChar temp[maxdigits];
+						size_t n = 0;
 						while(isxdigit(CUR_CHAR) && n < maxdigits) {
 							temp[n] = CUR_CHAR;
 							n++;
 							NEXT();
 						}
-						temp[n] = 0;
-						SQChar *sTemp;
-						APPEND_CHAR((SQChar)strtoul(temp,&sTemp,16));
+						auto val = ParseInteger(std::string_view{temp, n}, 16);
+						if (!val.has_value()) Error("hexadecimal number expected");
+						APPEND_CHAR(static_cast<SQChar>(*val));
 					}
 				    break;
 					case 't': APPEND_CHAR('\t'); NEXT(); break;

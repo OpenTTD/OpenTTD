@@ -55,6 +55,10 @@
 #define atoi      SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define atol      SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define atoll     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtol    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtoll   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtoul   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strtoull  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use fmt::print instead. */
 #define printf    SAFEGUARD_DO_NOT_USE_THIS_METHOD

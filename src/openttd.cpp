@@ -636,7 +636,13 @@ int openttd_main(std::span<char * const> arguments)
 			_skip_all_newgrf_scanning += 1;
 			break;
 		}
-		case 'G': scanner->generation_seed = std::strtoul(mgo.opt, nullptr, 10); break;
+		case 'G':
+			if (auto value = ParseInteger(mgo.opt); value.has_value()) {
+				scanner->generation_seed = *value;
+			} else {
+				fmt::print(stderr, "Invalid generation seed: {}\n", mgo.opt);
+			}
+			break;
 		case 'c': _config_file = mgo.opt; break;
 		case 'x': scanner->save_config = false; break;
 		case 'X': only_local_path = true; break;

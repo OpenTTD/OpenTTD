@@ -45,6 +45,7 @@
 #include "object_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
+#include "core/string_consumer.hpp"
 
 #include "widgets/company_widget.h"
 
@@ -1692,7 +1693,9 @@ public:
 		if (!str.has_value()) return;
 		/* Set a new company manager face number */
 		if (!str->empty()) {
-			this->face = std::strtoul(str->c_str(), nullptr, 10);
+			auto val = ParseInteger(*str);
+			if (!val.has_value()) return;
+			this->face = *val;
 			ScaleAllCompanyManagerFaceBits(this->face);
 			ShowErrorMessage(GetEncodedString(STR_FACE_FACECODE_SET), {}, WL_INFO);
 			this->UpdateData();
@@ -2455,7 +2458,9 @@ struct CompanyWindow : Window
 			default: NOT_REACHED();
 
 			case WID_C_GIVE_MONEY: {
-				Money money = std::strtoull(str->c_str(), nullptr, 10) / GetCurrency().rate;
+				auto value = ParseInteger<uint64_t>(*str);
+				if (!value.has_value()) return;
+				Money money = *value / GetCurrency().rate;
 				Command<CMD_GIVE_MONEY>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money, this->window_number);
 				break;
 			}
