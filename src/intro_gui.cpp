@@ -117,8 +117,8 @@ struct SelectGameWindow : public Window {
 		intro_viewport_commands.clear();
 
 		/* Regular expression matching the commands: T, spaces, integer, spaces, flags, spaces, integer */
-		const char *sign_langauge = "^T\\s*([0-9]+)\\s*([-+A-Z0-9]+)\\s*([0-9]+)";
-		std::regex re(sign_langauge, std::regex_constants::icase);
+		static const std::string sign_language = "^T\\s*([0-9]+)\\s*([-+A-Z0-9]+)\\s*([0-9]+)";
+		std::regex re(sign_language, std::regex_constants::icase);
 
 		/* List of signs successfully parsed to delete afterwards. */
 		std::vector<SignID> signs_to_delete;

@@ -134,9 +134,9 @@ struct TranslationWriter : LanguageWriter {
 		/* We don't write the length. */
 	}
 
-	void Write(const char *buffer, size_t length) override
+	void Write(std::string_view buffer) override
 	{
-		this->strings.emplace_back(buffer, length);
+		this->strings.emplace_back(buffer);
 	}
 };
 

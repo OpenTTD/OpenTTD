@@ -23,7 +23,7 @@
  * @param face The face that has been found.
  * @return The error we encountered.
  */
-FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
+FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face);
 
 #endif /* WITH_FREETYPE */
 

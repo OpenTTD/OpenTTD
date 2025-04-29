@@ -289,7 +289,7 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 
 	void WriteHeader(const LanguagePackHeader *header) override
 	{
-		this->Write(reinterpret_cast<const char *>(header), sizeof(*header));
+		this->Write({reinterpret_cast<const char *>(header), sizeof(*header)});
 	}
 
 	void Finalise() override
@@ -298,9 +298,9 @@ struct LanguageFileWriter : LanguageWriter, FileWriter {
 		this->FileWriter::Finalise();
 	}
 
-	void Write(const char *buffer, size_t length) override
+	void Write(std::string_view buffer) override
 	{
-		this->output_stream.write(buffer, length);
+		this->output_stream.write(buffer.data(), buffer.size());
 	}
 };
 

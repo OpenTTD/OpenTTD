@@ -47,7 +47,7 @@ bool MyShowCursor(bool show, bool toggle)
 	return !show;
 }
 
-void ShowOSErrorBox(const char *buf, bool)
+void ShowOSErrorBox(std::string_view buf, bool)
 {
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), OTTD2FS(buf).c_str(), L"Error!", MB_ICONSTOP | MB_TASKMODAL);

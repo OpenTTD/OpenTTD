@@ -104,7 +104,7 @@ bool HandleBootstrap();
 extern void CheckCaches();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
 extern void OSOpenBrowser(const std::string &url);
-extern void ShowOSErrorBox(const char *buf, bool system);
+extern void ShowOSErrorBox(std::string_view buf, bool system);
 extern std::string _config_file;
 
 bool _save_config = false;
@@ -118,7 +118,7 @@ NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
  */
 void UserErrorI(const std::string &str)
 {
-	ShowOSErrorBox(str.c_str(), false);
+	ShowOSErrorBox(str, false);
 	if (VideoDriver::GetInstance() != nullptr) VideoDriver::GetInstance()->Stop();
 
 #ifdef __EMSCRIPTEN__
@@ -140,7 +140,7 @@ void UserErrorI(const std::string &str)
 void FatalErrorI(const std::string &str)
 {
 	if (VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasGUI()) {
-		ShowOSErrorBox(str.c_str(), true);
+		ShowOSErrorBox(str, true);
 	}
 
 	/* Set the error message for the crash log and then invoke it. */

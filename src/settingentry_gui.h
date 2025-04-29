@@ -92,10 +92,10 @@ protected:
 
 /** Standard setting */
 struct SettingEntry : BaseSettingEntry {
-	const char *name;              ///< Name of the setting
-	const IntSettingDesc *setting; ///< Setting description of the setting
+	const std::string_view name; ///< Name of the setting
+	const IntSettingDesc *setting = nullptr; ///< Setting description of the setting
 
-	SettingEntry(const char *name);
+	SettingEntry(std::string_view name) : name(name) {}
 
 	void Init(uint8_t level = 0) override;
 	void ResetAll() override;

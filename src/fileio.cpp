@@ -1170,7 +1170,7 @@ std::optional<FileHandle> FileHandle::Open(const std::string &filename, std::str
 {
 #if defined(_WIN32)
 	/* Windows also requires mode to be wchar_t. */
-	auto f = _wfopen(OTTD2FS(filename).c_str(), OTTD2FS(std::string{mode}).c_str());
+	auto f = _wfopen(OTTD2FS(filename).c_str(), OTTD2FS(mode).c_str());
 #else
 	auto f = fopen(filename.c_str(), std::string{mode}.c_str());
 #endif /* _WIN32 */

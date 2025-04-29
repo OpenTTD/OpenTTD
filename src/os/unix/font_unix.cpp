@@ -39,7 +39,7 @@ static std::tuple<std::string, std::string> SplitFontFamilyAndStyle(std::string_
 	return { std::string(font_name.substr(0, separator)), std::string(font_name.substr(begin)) };
 }
 
-FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
+FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
 

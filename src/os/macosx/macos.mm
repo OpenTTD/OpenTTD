@@ -133,7 +133,7 @@ void ShowMacDialog(std::string_view title, std::string_view message, std::string
  * @param buf error message text.
  * @param system message text originates from OS.
  */
-void ShowOSErrorBox(const char *buf, bool system)
+void ShowOSErrorBox(std::string_view buf, bool system)
 {
 	/* Display the error in the best way possible. */
 	if (system) {

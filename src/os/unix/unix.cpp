@@ -190,7 +190,7 @@ void ShowInfoI(std::string_view str)
 }
 
 #if !defined(__APPLE__)
-void ShowOSErrorBox(const char *buf, bool)
+void ShowOSErrorBox(std::string_view buf, bool)
 {
 	/* All unix systems, except OSX. Only use escape codes on a TTY. */
 	if (isatty(fileno(stderr))) {
