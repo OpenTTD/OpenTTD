@@ -22,6 +22,7 @@
 #include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"
+#include "../core/string_consumer.hpp"
 #include "network_content.h"
 
 #include "table/strings.h"
@@ -628,78 +629,66 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 	/* When we haven't opened a file this must be our first packet with metadata. */
 	this->cur_info = std::make_unique<ContentInfo>();
 
-/** Check p for not being null and return calling OnFailure if that's not the case. */
-#define check_not_null(p) { if ((p) == nullptr) { this->OnFailure(); return; } }
-/** Check p for not being null and then terminate, or return calling OnFailure. */
-#define check_and_terminate(p) { check_not_null(p); *(p) = '\0'; }
+	try {
+		for (;;) {
+			std::string_view buffer{this->http_response.data(), this->http_response.size()};
+			buffer.remove_prefix(this->http_response_index);
+			auto len = buffer.find('\n');
+			if (len == std::string_view::npos) throw std::exception{};
+			/* Update the index for the next one */
+			this->http_response_index += static_cast<int>(len + 1);
 
-	for (;;) {
-		char *str = this->http_response.data() + this->http_response_index;
-		char *p = strchr(str, '\n');
-		check_and_terminate(p);
+			StringConsumer consumer{buffer.substr(0, len)};
 
-		/* Update the index for the next one */
-		this->http_response_index += (int)strlen(str) + 1;
+			/* Read the ID */
+			this->cur_info->id = static_cast<ContentID>(consumer.ReadIntegerBase<uint>(10));
+			if (!consumer.ReadIf(",")) throw std::exception{};
 
-		/* Read the ID */
-		p = strchr(str, ',');
-		check_and_terminate(p);
-		this->cur_info->id = (ContentID)atoi(str);
+			/* Read the type */
+			this->cur_info->type = static_cast<ContentType>(consumer.ReadIntegerBase<uint>(10));
+			if (!consumer.ReadIf(",")) throw std::exception{};
 
-		/* Read the type */
-		str = p + 1;
-		p = strchr(str, ',');
-		check_and_terminate(p);
-		this->cur_info->type = (ContentType)atoi(str);
+			/* Read the file size */
+			this->cur_info->filesize = consumer.ReadIntegerBase<uint32_t>(10);
+			if (!consumer.ReadIf(",")) throw std::exception{};
 
-		/* Read the file size */
-		str = p + 1;
-		p = strchr(str, ',');
-		check_and_terminate(p);
-		this->cur_info->filesize = atoi(str);
+			/* Read the URL */
+			auto url = consumer.GetLeftData();
 
-		/* Read the URL */
-		str = p + 1;
-		/* Is it a fallback URL? If so, just continue with the next one. */
-		if (strncmp(str, "ottd", 4) == 0) {
-			if ((uint)this->http_response_index >= this->http_response.size()) {
+			/* Is it a fallback URL? If so, just continue with the next one. */
+			if (consumer.ReadIf("ottd")) {
 				/* Have we gone through all lines? */
-				this->OnFailure();
-				return;
+				if (static_cast<size_t>(this->http_response_index) >= this->http_response.size()) throw std::exception{};
+				continue;
 			}
-			continue;
-		}
 
-		p = strrchr(str, '/');
-		check_not_null(p);
-		p++; // Start after the '/'
+			consumer.SkipUntilChar('/', StringConsumer::KEEP_SEPARATOR);
+			std::string_view filename;
+			/* Skip all but the last part. There must be at least one / though */
+			do {
+				if (!consumer.ReadIf("/")) throw std::exception{};
+				filename = consumer.ReadUntilChar('/', StringConsumer::KEEP_SEPARATOR);
+			} while (consumer.AnyBytesLeft());
 
-		std::string filename = p;
-		/* Remove the extension from the string. */
-		for (uint i = 0; i < 2; i++) {
-			auto pos = filename.find_last_of('.');
-			if (pos == std::string::npos) {
-				this->OnFailure();
-				return;
+			/* Remove the extension from the string. */
+			for (uint i = 0; i < 2; i++) {
+				auto pos = filename.find_last_of('.');
+				if (pos == std::string::npos) throw std::exception{};
+				filename = filename.substr(0, pos);
 			}
-			filename.erase(pos);
+
+			/* Copy the string, without extension, to the filename. */
+			this->cur_info->filename = filename;
+
+			/* Request the next file. */
+			if (!this->BeforeDownload()) throw std::exception{};
+
+			NetworkHTTPSocketHandler::Connect(url, this);
+			break;
 		}
-
-		/* Copy the string, without extension, to the filename. */
-		this->cur_info->filename = std::move(filename);
-
-		/* Request the next file. */
-		if (!this->BeforeDownload()) {
-			this->OnFailure();
-			return;
-		}
-
-		NetworkHTTPSocketHandler::Connect(str, this);
-		return;
+	} catch (const std::exception&) {
+		this->OnFailure();
 	}
-
-#undef check
-#undef check_and_terminate
 }
 
 /** Connect to the content server. */

@@ -12,6 +12,7 @@
 #include "base_media_func.h"
 #include "base_media_music.h"
 #include "random_access_file_type.h"
+#include "core/string_consumer.hpp"
 
 #include "safeguards.h"
 
@@ -176,10 +177,13 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 
 			item = trimmed_filename != nullptr && timingtrim != nullptr ? timingtrim->GetItem(trimmed_filename) : nullptr;
 			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
-				auto endpos = item->value->find(':');
-				if (endpos != std::string::npos) {
-					this->songinfo[i].override_start = atoi(item->value->c_str());
-					this->songinfo[i].override_end = atoi(item->value->c_str() + endpos + 1);
+				StringConsumer consumer{*item->value};
+				auto start = consumer.TryReadIntegerBase<uint>(10);
+				auto valid = consumer.ReadIf(":");
+				auto end = consumer.TryReadIntegerBase<uint>(10);
+				if (start.has_value() && valid && end.has_value() && !consumer.AnyBytesLeft()) {
+					this->songinfo[i].override_start = *start;
+					this->songinfo[i].override_end = *end;
 				}
 			}
 		}

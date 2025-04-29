@@ -80,6 +80,7 @@
 #include "timer/timer_game_realtime.h"
 #include "timer/timer_game_tick.h"
 #include "social_integration.h"
+#include "core/string_consumer.hpp"
 
 #include "linkgraph/linkgraphschedule.h"
 
@@ -272,14 +273,17 @@ static void WriteSavegameInfo(const std::string &name)
  */
 static void ParseResolution(Dimension *res, const char *s)
 {
-	const char *t = strchr(s, 'x');
-	if (t == nullptr) {
+	StringConsumer consumer(std::string_view{s});
+	auto width = consumer.TryReadIntegerBase<uint>(10);
+	auto valid = consumer.ReadIf("x");
+	auto height = consumer.TryReadIntegerBase<uint>(10);
+	if (!width.has_value() || !valid || !height.has_value() || consumer.AnyBytesLeft()) {
 		ShowInfo("Invalid resolution '{}'", s);
 		return;
 	}
 
-	res->width  = std::max(std::strtoul(s, nullptr, 0), 64UL);
-	res->height = std::max(std::strtoul(t + 1, nullptr, 0), 64UL);
+	res->width  = std::max<uint>(*width, 64);
+	res->height = std::max<uint>(*height, 64);
 }
 
 

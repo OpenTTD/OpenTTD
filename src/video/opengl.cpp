@@ -34,6 +34,7 @@
 #include "../debug.h"
 #include "../blitter/factory.hpp"
 #include "../zoom_func.h"
+#include "../core/string_consumer.hpp"
 
 #include "../table/opengl_shader.h"
 #include "../table/sprites.h"
@@ -539,9 +540,13 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	if (strncmp(renderer, "llvmpipe", 8) == 0 || strncmp(renderer, "softpipe", 8) == 0) return "Software renderer detected, not using OpenGL";
 #endif
 
-	const char *minor = strchr(ver, '.');
-	_gl_major_ver = atoi(ver);
-	_gl_minor_ver = minor != nullptr ? atoi(minor + 1) : 0;
+	StringConsumer consumer{std::string_view{ver}};
+	_gl_major_ver = consumer.ReadIntegerBase<uint8_t>(10);
+	if (consumer.ReadIf(".")) {
+		_gl_minor_ver = consumer.ReadIntegerBase<uint8_t>(10);
+	} else {
+		_gl_minor_ver = 0;
+	}
 
 #ifdef _WIN32
 	/* Old drivers on Windows (especially if made by Intel) seem to be
