@@ -580,7 +580,7 @@ int openttd_main(std::span<char * const> arguments)
 			if (mgo.opt != nullptr) {
 				_file_to_saveload.name = mgo.opt;
 
-				std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(_file_to_saveload.name)).extension());
+				std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(_file_to_saveload.name)).extension().native());
 				auto [ft, _] = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, extension);
 				if (ft == FIOS_TYPE_INVALID) {
 					std::tie(ft, _) = FiosGetScenarioListCallback(SLO_LOAD, _file_to_saveload.name, extension);
@@ -614,7 +614,7 @@ int openttd_main(std::span<char * const> arguments)
 				return ret;
 			}
 
-			std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(mgo.opt)).extension());
+			std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(mgo.opt)).extension().native());
 			auto [_, title] = FiosGetSavegameListCallback(SLO_LOAD, mgo.opt, extension);
 
 			_load_check_data.Clear();

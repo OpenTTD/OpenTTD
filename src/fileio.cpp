@@ -475,7 +475,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 	_tar_list[this->subdir][filename] = std::string{};
 
-	std::string filename_base = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).filename());
+	std::string filename_base = FS2OTTD(std::filesystem::path(OTTD2FS(filename)).filename().native());
 	SimplifyFileName(filename_base);
 
 	TarHeader th;
@@ -822,7 +822,7 @@ void DetermineBasePaths(std::string_view exe)
 			/* _config_file is not in a folder, so use current directory. */
 			tmp = cwd;
 		} else {
-			tmp = FS2OTTD(std::filesystem::weakly_canonical(std::filesystem::path(OTTD2FS(_config_file))).parent_path());
+			tmp = FS2OTTD(std::filesystem::weakly_canonical(std::filesystem::path(OTTD2FS(_config_file))).parent_path().native());
 		}
 		AppendPathSeparator(tmp);
 		_searchpaths[SP_WORKING_DIR] = tmp;
@@ -1074,7 +1074,7 @@ static uint ScanPath(FileScanner *fs, std::string_view extension, const std::fil
 			if (!recursive) continue;
 			num += ScanPath(fs, extension, dir_entry.path(), basepath_length, recursive);
 		} else if (dir_entry.is_regular_file()) {
-			std::string file = FS2OTTD(dir_entry.path());
+			std::string file = FS2OTTD(dir_entry.path().native());
 			if (!MatchesExtension(extension, file)) continue;
 			if (fs->AddFile(file, basepath_length, {})) num++;
 		}

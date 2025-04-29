@@ -386,7 +386,7 @@ void ReconsiderGameScriptLanguage()
 {
 	if (_current_gamestrings_data == nullptr) return;
 
-	std::string language = FS2OTTD(_current_language->file.stem());
+	std::string language = FS2OTTD(_current_language->file.stem().native());
 	for (auto &p : _current_gamestrings_data->compiled_strings) {
 		if (p.language == language) {
 			_current_gamestrings_data->cur_language = &p;

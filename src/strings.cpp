@@ -1979,7 +1979,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
 	size_t total_len = 0;
-	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file), total_len, 1U << 20).release()));
+	std::unique_ptr<LanguagePack, LanguagePackDeleter> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(FS2OTTD(lang->file.native()), total_len, 1U << 20).release()));
 	if (!lang_pack) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
@@ -2027,7 +2027,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 
 	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
-	_config_language_file = FS2OTTD(_current_language->file.filename());
+	_config_language_file = FS2OTTD(_current_language->file.filename().native());
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 	_langpack.list_separator = GetString(STR_LIST_SEPARATOR);
 
@@ -2156,10 +2156,11 @@ static void FillLanguageList(const std::string &path)
 		lmd.file = dir_entry.path();
 
 		/* Check whether the file is of the correct version */
-		if (!GetLanguageFileHeader(FS2OTTD(lmd.file), &lmd)) {
-			Debug(misc, 3, "{} is not a valid language file", FS2OTTD(lmd.file));
+		std::string file = FS2OTTD(lmd.file.native());
+		if (!GetLanguageFileHeader(file, &lmd)) {
+			Debug(misc, 3, "{} is not a valid language file", file);
 		} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
-			Debug(misc, 3, "{}'s language ID is already known", FS2OTTD(lmd.file));
+			Debug(misc, 3, "{}'s language ID is already known", file);
 		} else {
 			_languages.push_back(std::move(lmd));
 		}
@@ -2193,7 +2194,7 @@ void InitializeLanguagePacks()
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
 		 * English. */
-		if (_config_language_file == FS2OTTD(lng.file.filename())) {
+		if (_config_language_file == FS2OTTD(lng.file.filename().native())) {
 			chosen_language = &lng;
 			break;
 		}
@@ -2213,7 +2214,7 @@ void InitializeLanguagePacks()
 		chosen_language = (language_fallback != nullptr) ? language_fallback : en_GB_fallback;
 	}
 
-	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", FS2OTTD(chosen_language->file));
+	if (!ReadLanguagePack(chosen_language)) UserError("Can't read language pack '{}'", FS2OTTD(chosen_language->file.native()));
 }
 
 /**
