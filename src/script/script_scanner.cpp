@@ -103,20 +103,20 @@ void ScriptScanner::RegisterScript(ScriptInfo *info)
 		return;
 	}
 
-	if (this->info_list.find(script_name) != this->info_list.end()) {
+	if (auto it = this->info_list.find(script_name); it != this->info_list.end()) {
 		/* This script was already registered */
 #ifdef _WIN32
 		/* Windows doesn't care about the case */
-		if (StrEqualsIgnoreCase(this->info_list[script_name]->GetMainScript(), info->GetMainScript())) {
+		if (StrEqualsIgnoreCase(it->second->GetMainScript(), info->GetMainScript())) {
 #else
-		if (this->info_list[script_name]->GetMainScript() == info->GetMainScript()) {
+		if (it->second->GetMainScript() == info->GetMainScript()) {
 #endif
 			delete info;
 			return;
 		}
 
 		Debug(script, 1, "Registering two scripts with the same name and version");
-		Debug(script, 1, "  1: {}", this->info_list[script_name]->GetMainScript());
+		Debug(script, 1, "  1: {}", it->second->GetMainScript());
 		Debug(script, 1, "  2: {}", info->GetMainScript());
 		Debug(script, 1, "The first is taking precedence.");
 
