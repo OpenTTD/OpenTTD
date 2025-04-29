@@ -78,7 +78,7 @@ struct DLSFile {
 	std::vector<DLSWave> waves;
 
 	/** Try loading a DLS file into memory. */
-	bool LoadFile(const std::string &file);
+	bool LoadFile(std::string_view file);
 
 private:
 	/** Load an articulation structure from a DLS file. */
@@ -422,7 +422,7 @@ bool DLSFile::ReadDLSWaveList(FileHandle &f, DWORD list_length)
 	return true;
 }
 
-bool DLSFile::LoadFile(const std::string &file)
+bool DLSFile::LoadFile(std::string_view file)
 {
 	Debug(driver, 2, "DMusic: Try to load DLS file {}", file);
 
@@ -843,7 +843,7 @@ static void * DownloadArticulationData(int base_offset, void *data, const std::v
 	return (CONNECTION *)(con_list + 1) + artic.size();
 }
 
-static const char *LoadDefaultDLSFile(const char *user_dls)
+static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::string_view> user_dls)
 {
 	DMUS_PORTCAPS caps;
 	MemSetT(&caps, 0);
@@ -854,7 +854,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 	if ((caps.dwFlags & (DMUS_PC_DLS | DMUS_PC_DLS2)) != 0 && (caps.dwFlags & DMUS_PC_GMINHARDWARE) == 0) {
 		DLSFile dls_file;
 
-		if (user_dls == nullptr) {
+		if (!user_dls.has_value()) {
 			/* Try loading the default GM DLS file stored in the registry. */
 			HKEY hkDM;
 			if (SUCCEEDED(RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\DirectMusic", 0, KEY_READ, &hkDM))) {
@@ -877,7 +877,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				if (!dls_file.LoadFile(FS2OTTD(path))) return "Can't load GM DLS collection";
 			}
 		} else {
-			if (!dls_file.LoadFile(user_dls)) return "Can't load GM DLS collection";
+			if (!dls_file.LoadFile(*user_dls)) return "Can't load GM DLS collection";
 		}
 
 		/* Get download port and allocate download IDs. */
@@ -1060,7 +1060,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 		download_port->Release();
 	}
 
-	return nullptr;
+	return std::nullopt;
 }
 
 
@@ -1136,8 +1136,8 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 	if (FAILED(_music->CreateMusicBuffer(&desc, &_buffer, nullptr))) return "Failed to create music buffer";
 
 	/* On soft-synths (e.g. the default DirectMusic one), we might need to load a wavetable set to get music. */
-	const char *dls = LoadDefaultDLSFile(GetDriverParam(parm, "dls"));
-	if (dls != nullptr) return dls;
+	auto dls = LoadDefaultDLSFile(GetDriverParam(parm, "dls"));
+	if (dls.has_value()) return dls;
 
 	/* Create playback thread and synchronization primitives. */
 	_thread_event = CreateEvent(nullptr, FALSE, FALSE, nullptr);
