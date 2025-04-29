@@ -38,7 +38,7 @@ bool ScriptInfo::CheckMethod(std::string_view name) const
 	info.engine = info.scanner->GetEngine();
 
 	/* Ensure the mandatory functions exist */
-	static std::string_view const required_functions[] = {
+	static const std::string_view required_functions[] = {
 		"GetAuthor",
 		"GetName",
 		"GetShortName",
@@ -253,7 +253,7 @@ const ScriptConfigItemList *ScriptInfo::GetConfigList() const
 	return &this->config_list;
 }
 
-const ScriptConfigItem *ScriptInfo::GetConfigItem(const std::string_view name) const
+const ScriptConfigItem *ScriptInfo::GetConfigItem(std::string_view name) const
 {
 	for (const auto &item : this->config_list) {
 		if (item.name == name) return &item;

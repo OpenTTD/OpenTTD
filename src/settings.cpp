@@ -1623,7 +1623,7 @@ void IntSettingDesc::ChangeValue(const void *object, int32_t newval) const
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-static const SettingDesc *GetSettingFromName(const std::string_view name, const SettingTable &settings)
+static const SettingDesc *GetSettingFromName(std::string_view name, const SettingTable &settings)
 {
 	/* First check all full names */
 	for (auto &desc : settings) {
@@ -1705,7 +1705,7 @@ static const SettingDesc *GetCompanySettingFromName(std::string_view name)
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-const SettingDesc *GetSettingFromName(const std::string_view name)
+const SettingDesc *GetSettingFromName(std::string_view name)
 {
 	for (auto &table : GenericSettingTables()) {
 		auto sd = GetSettingFromName(name, table);

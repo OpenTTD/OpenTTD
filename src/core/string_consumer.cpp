@@ -24,8 +24,8 @@
 
 #include "../safeguards.h"
 
-const std::string_view StringConsumer::WHITESPACE_NO_NEWLINE = "\t\v\f\r ";
-const std::string_view StringConsumer::WHITESPACE_OR_NEWLINE = "\t\n\v\f\r ";
+/* static */ const std::string_view StringConsumer::WHITESPACE_NO_NEWLINE = "\t\v\f\r ";
+/* static */ const std::string_view StringConsumer::WHITESPACE_OR_NEWLINE = "\t\n\v\f\r ";
 
 /* static */ void StringConsumer::LogError(std::string &&msg)
 {

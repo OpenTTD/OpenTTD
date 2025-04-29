@@ -69,12 +69,12 @@ public:
 	NetworkRecvStatus SendCompanyStats();
 
 	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data);
-	NetworkRecvStatus SendRcon(uint16_t colour, const std::string_view command);
-	NetworkRecvStatus SendConsole(const std::string_view origin, const std::string_view command);
-	NetworkRecvStatus SendGameScript(const std::string_view json);
+	NetworkRecvStatus SendRcon(uint16_t colour, std::string_view command);
+	NetworkRecvStatus SendConsole(std::string_view origin, std::string_view command);
+	NetworkRecvStatus SendGameScript(std::string_view json);
 	NetworkRecvStatus SendCmdNames();
 	NetworkRecvStatus SendCmdLogging(ClientID client_id, const CommandPacket &cp);
-	NetworkRecvStatus SendRconEnd(const std::string_view command);
+	NetworkRecvStatus SendRconEnd(std::string_view command);
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
@@ -115,9 +115,9 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 
 void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, std::string_view msg, int64_t data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
-void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, const std::string_view string);
-void NetworkAdminConsole(const std::string_view origin, const std::string_view string);
-void NetworkAdminGameScript(const std::string_view json);
+void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, std::string_view string);
+void NetworkAdminConsole(std::string_view origin, std::string_view string);
+void NetworkAdminGameScript(std::string_view json);
 void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket &cp);
 
 #endif /* NETWORK_ADMIN_H */

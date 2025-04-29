@@ -529,8 +529,8 @@ static void FormatBytes(StringBuilder &builder, int64_t number)
 {
 	assert(number >= 0);
 
-	/*                                       1   2^10  2^20  2^30  2^40  2^50  2^60 */
-	const std::string_view iec_prefixes[] = {"", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei"};
+	/*                                              1   2^10  2^20  2^30  2^40  2^50  2^60 */
+	static const std::string_view iec_prefixes[] = {"", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei"};
 	uint id = 1;
 	while (number >= 1024 * 1024) {
 		number /= 1024;

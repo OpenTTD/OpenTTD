@@ -77,7 +77,7 @@ static void FeatureNewName(ByteReader &buf)
 	uint32_t feature_overlay = generic ? 0 : ((feature + 1) << 16);
 
 	for (; id < endid && buf.HasData(); id++) {
-		const std::string_view name = buf.ReadString();
+		std::string_view name = buf.ReadString();
 		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, StrMakeValid(name));
 
 		switch (feature) {

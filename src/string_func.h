@@ -41,21 +41,21 @@ bool strtolower(std::string &str, std::string::size_type offs = 0);
 void StrTrimInPlace(std::string &str);
 [[nodiscard]] std::string_view StrTrimView(std::string_view str);
 
-[[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix);
-[[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix);
+[[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, std::string_view prefix);
+[[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, std::string_view suffix);
 
-[[nodiscard]] int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2);
-[[nodiscard]] bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2);
-[[nodiscard]] bool StrContainsIgnoreCase(const std::string_view str, const std::string_view value);
+[[nodiscard]] int StrCompareIgnoreCase(std::string_view str1, std::string_view str2);
+[[nodiscard]] bool StrEqualsIgnoreCase(std::string_view str1, std::string_view str2);
+[[nodiscard]] bool StrContainsIgnoreCase(std::string_view str, std::string_view value);
 [[nodiscard]] int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garbage_at_front = false);
-[[nodiscard]] bool StrNaturalContains(const std::string_view str, const std::string_view value);
-[[nodiscard]] bool StrNaturalContainsIgnoreCase(const std::string_view str, const std::string_view value);
+[[nodiscard]] bool StrNaturalContains(std::string_view str, std::string_view value);
+[[nodiscard]] bool StrNaturalContainsIgnoreCase(std::string_view str, std::string_view value);
 
 bool ConvertHexToBytes(std::string_view hex, std::span<uint8_t> bytes);
 
 /** Case insensitive comparator for strings, for example for use in std::map. */
 struct CaseInsensitiveComparator {
-	bool operator()(const std::string_view s1, const std::string_view s2) const { return StrCompareIgnoreCase(s1, s2) < 0; }
+	bool operator()(std::string_view s1, std::string_view s2) const { return StrCompareIgnoreCase(s1, s2) < 0; }
 };
 
 /**

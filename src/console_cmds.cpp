@@ -684,7 +684,7 @@ static bool ConClearBuffer(std::span<std::string_view> argv)
  * Network Core Console Commands
  **********************************/
 
-static bool ConKickOrBan(std::string_view arg, bool ban, const std::string_view reason)
+static bool ConKickOrBan(std::string_view arg, bool ban, std::string_view reason)
 {
 	uint n;
 
@@ -1241,7 +1241,7 @@ static bool ConSchedule(std::span<std::string_view> argv)
 	}
 
 	/* We only support a single script scheduled, so we tell the user what's happening if there was already one. */
-	const std::string_view filename = std::string_view(argv[2]);
+	std::string_view filename = std::string_view(argv[2]);
 	if (!_scheduled_monthly_script.empty() && filename == _scheduled_monthly_script) {
 		IConsolePrint(CC_INFO, "Script file '{}' was already scheduled to execute at the start of next calendar month.", filename);
 	} else if (!_scheduled_monthly_script.empty() && filename != _scheduled_monthly_script) {

@@ -352,7 +352,7 @@ int MacOSStringCompare(std::string_view s1, std::string_view s2)
  * @param case_insensitive Search case-insensitive.
  * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
  */
-int MacOSStringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+int MacOSStringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
 	static bool supported = MacOSVersionIsAtLeast(10, 5, 0);
 	if (!supported) return -1;

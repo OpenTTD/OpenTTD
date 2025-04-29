@@ -238,7 +238,7 @@ public:
 	/**
 	 * Throw a Squirrel error that will be nicely displayed to the user.
 	 */
-	void ThrowError(const std::string_view error) { sq_throwerror(this->vm, error); }
+	void ThrowError(std::string_view error) { sq_throwerror(this->vm, error); }
 
 	/**
 	 * Release a SQ object.

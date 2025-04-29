@@ -88,7 +88,7 @@ int ScriptConfig::GetSetting(const std::string &name) const
 	return (*it).second;
 }
 
-void ScriptConfig::SetSetting(const std::string_view name, int value)
+void ScriptConfig::SetSetting(std::string_view name, int value)
 {
 	/* You can only set Script specific settings if an Script is selected. */
 	if (this->info == nullptr) return;

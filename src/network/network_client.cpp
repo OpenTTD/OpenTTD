@@ -1242,7 +1242,7 @@ void NetworkClientsToSpectators(CompanyID cid)
  * @param client_name The client name to check for validity.
  * @return True iff the name is valid.
  */
-bool NetworkIsValidClientName(const std::string_view client_name)
+bool NetworkIsValidClientName(std::string_view client_name)
 {
 	if (client_name.empty()) return false;
 	if (client_name[0] == ' ') return false;

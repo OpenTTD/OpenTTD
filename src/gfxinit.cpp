@@ -228,9 +228,9 @@ static void LoadSpriteTables()
 }
 
 
-static void RealChangeBlitter(const std::string_view repl_blitter)
+static void RealChangeBlitter(std::string_view repl_blitter)
 {
-	const std::string_view cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
+	std::string_view cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 	if (cur_blitter == repl_blitter) return;
 
 	Debug(driver, 1, "Switching blitter from '{}' to '{}'... ", cur_blitter, repl_blitter);
@@ -299,7 +299,7 @@ static bool SwitchNewGRFBlitter()
 	};
 
 	const bool animation_wanted = HasBit(_display_opt, DO_FULL_ANIMATION);
-	const std::string_view cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
+	std::string_view cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 
 	for (const auto &replacement_blitter : replacement_blitters) {
 		if (animation_wanted && (replacement_blitter.animation == 0)) continue;

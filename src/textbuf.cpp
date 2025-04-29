@@ -417,7 +417,7 @@ Textbuf::Textbuf(uint16_t max_bytes, uint16_t max_chars)
  * Copy a string into the textbuffer.
  * @param text Source.
  */
-void Textbuf::Assign(const std::string_view text)
+void Textbuf::Assign(std::string_view text)
 {
 	size_t bytes = std::min<size_t>(this->max_bytes - 1, text.size());
 	this->buf = StrMakeValid(text.substr(0, bytes));
