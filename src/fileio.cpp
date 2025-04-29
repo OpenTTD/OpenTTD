@@ -1152,7 +1152,7 @@ uint FileScanner::Scan(std::string_view extension, Subdirectory sd, bool tars, b
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.
  */
-uint FileScanner::Scan(const std::string_view extension, const std::string &directory, bool recursive)
+uint FileScanner::Scan(std::string_view extension, const std::string &directory, bool recursive)
 {
 	std::string path(directory);
 	AppendPathSeparator(path);

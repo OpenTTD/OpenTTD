@@ -308,7 +308,7 @@ SQRESULT sq_resume(HSQUIRRELVM v,SQBool retval,SQBool raiseerror);
 const SQChar *sq_getlocal(HSQUIRRELVM v,SQUnsignedInteger level,SQUnsignedInteger idx);
 const SQChar *sq_getfreevariable(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger nval);
 SQRESULT sq_throwerror(HSQUIRRELVM v,const SQChar *err, SQInteger len = -1);
-inline SQRESULT sq_throwerror(HSQUIRRELVM v, const std::string_view err) { return sq_throwerror(v, err.data(), err.size()); }
+inline SQRESULT sq_throwerror(HSQUIRRELVM v, std::string_view err) { return sq_throwerror(v, err.data(), err.size()); }
 void sq_reseterror(HSQUIRRELVM v);
 void sq_getlasterror(HSQUIRRELVM v);
 

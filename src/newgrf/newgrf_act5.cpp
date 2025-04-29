@@ -27,7 +27,7 @@
  * @param name        Used for error warnings.
  * @return The number of sprites that is going to be skipped.
  */
-static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_sprites, const std::string_view name)
+static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_sprites, std::string_view name)
 {
 
 	if (offset >= max_sprites) {

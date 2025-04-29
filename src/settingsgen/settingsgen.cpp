@@ -173,11 +173,11 @@ struct SettingsIniFile : IniLoadFile {
 OutputStore _stored_output; ///< Temporary storage of the output, until all processing is done.
 OutputStore _post_amble_output; ///< Similar to _stored_output, but for the post amble.
 
-static std::string_view PREAMBLE_GROUP_NAME  = "pre-amble"; ///< Name of the group containing the pre amble.
-static std::string_view POSTAMBLE_GROUP_NAME = "post-amble"; ///< Name of the group containing the post amble.
-static std::string_view TEMPLATES_GROUP_NAME = "templates"; ///< Name of the group containing the templates.
-static std::string_view VALIDATION_GROUP_NAME = "validation"; ///< Name of the group containing the validation statements.
-static std::string_view DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group containing default values for the template variables.
+static const std::string_view PREAMBLE_GROUP_NAME  = "pre-amble"; ///< Name of the group containing the pre amble.
+static const std::string_view POSTAMBLE_GROUP_NAME = "post-amble"; ///< Name of the group containing the post amble.
+static const std::string_view TEMPLATES_GROUP_NAME = "templates"; ///< Name of the group containing the templates.
+static const std::string_view VALIDATION_GROUP_NAME = "validation"; ///< Name of the group containing the validation statements.
+static const std::string_view DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group containing default values for the template variables.
 
 /**
  * Dump a #IGT_SEQUENCE group into #_stored_output.

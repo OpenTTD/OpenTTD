@@ -244,7 +244,7 @@ std::string_view StrTrimView(std::string_view str)
  * @param prefix The prefix to look for.
  * @return True iff the begin of the string is the same as the prefix, ignoring case.
  */
-bool StrStartsWithIgnoreCase(std::string_view str, const std::string_view prefix)
+bool StrStartsWithIgnoreCase(std::string_view str, std::string_view prefix)
 {
 	if (str.size() < prefix.size()) return false;
 	return StrEqualsIgnoreCase(str.substr(0, prefix.size()), prefix);
@@ -284,7 +284,7 @@ typedef std::basic_string_view<char, CaseInsensitiveCharTraits> CaseInsensitiveS
  * @param suffix The suffix to look for.
  * @return True iff the end of the string is the same as the suffix, ignoring case.
  */
-bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix)
+bool StrEndsWithIgnoreCase(std::string_view str, std::string_view suffix)
 {
 	if (str.size() < suffix.size()) return false;
 	return StrEqualsIgnoreCase(str.substr(str.size() - suffix.size()), suffix);
@@ -297,7 +297,7 @@ bool StrEndsWithIgnoreCase(std::string_view str, const std::string_view suffix)
  * @return Less than zero if str1 < str2, zero if str1 == str2, greater than
  *         zero if str1 > str2. All ignoring the case of the characters.
  */
-int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str2)
+int StrCompareIgnoreCase(std::string_view str1, std::string_view str2)
 {
 	CaseInsensitiveStringView ci_str1{ str1.data(), str1.size() };
 	CaseInsensitiveStringView ci_str2{ str2.data(), str2.size() };
@@ -310,7 +310,7 @@ int StrCompareIgnoreCase(const std::string_view str1, const std::string_view str
  * @param str2 The second string.
  * @return True iff both strings are equal, barring the case of the characters.
  */
-bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str2)
+bool StrEqualsIgnoreCase(std::string_view str1, std::string_view str2)
 {
 	if (str1.size() != str2.size()) return false;
 	return StrCompareIgnoreCase(str1, str2) == 0;
@@ -323,7 +323,7 @@ bool StrEqualsIgnoreCase(const std::string_view str1, const std::string_view str
  * @param value The string to search for.
  * @return True if a match was found.
  */
-bool StrContainsIgnoreCase(const std::string_view str, const std::string_view value)
+bool StrContainsIgnoreCase(std::string_view str, std::string_view value)
 {
 	CaseInsensitiveStringView ci_str{ str.data(), str.size() };
 	CaseInsensitiveStringView ci_value{ value.data(), value.size() };
@@ -455,7 +455,7 @@ int StrNaturalCompare(std::string_view s1, std::string_view s2, bool ignore_garb
  * @param case_insensitive Search case-insensitive.
  * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
  */
-static int ICUStringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+static int ICUStringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
 	if (_current_collator) {
 		std::unique_ptr<icu::RuleBasedCollator> coll(dynamic_cast<icu::RuleBasedCollator *>(_current_collator->clone()));
@@ -485,7 +485,7 @@ static int ICUStringContains(const std::string_view str, const std::string_view 
  * @param value The string to search for.
  * @return True if a match was found.
  */
-[[nodiscard]] bool StrNaturalContains(const std::string_view str, const std::string_view value)
+[[nodiscard]] bool StrNaturalContains(std::string_view str, std::string_view value)
 {
 #ifdef WITH_ICU_I18N
 	int res_u = ICUStringContains(str, value, false);
@@ -512,7 +512,7 @@ static int ICUStringContains(const std::string_view str, const std::string_view 
  * @param value The string to search for.
  * @return True if a match was found.
  */
-[[nodiscard]] bool StrNaturalContainsIgnoreCase(const std::string_view str, const std::string_view value)
+[[nodiscard]] bool StrNaturalContainsIgnoreCase(std::string_view str, std::string_view value)
 {
 #ifdef WITH_ICU_I18N
 	int res_u = ICUStringContains(str, value, true);

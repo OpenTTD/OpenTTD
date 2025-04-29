@@ -458,7 +458,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
  * Send a notification indicating the rcon command has completed.
  * @param command The original command sent.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(const std::string_view command)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(std::string_view command)
 {
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_RCON_END);
 
@@ -473,7 +473,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(const std::string
  * @param colour The colour of the text.
  * @param result The result of the command.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16_t colour, const std::string_view result)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16_t colour, std::string_view result)
 {
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_RCON);
 
@@ -526,7 +526,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet &p)
  * @param origin The origin of the string.
  * @param string The string that's put on the console.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const std::string_view origin, const std::string_view string)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(std::string_view origin, std::string_view string)
 {
 	/* If the length of both strings, plus the 2 '\0' terminations and 3 bytes of the packet
 	 * are bigger than the MTU, just ignore the message. Better safe than sorry. It should
@@ -547,7 +547,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const std::string
  * Send GameScript JSON output.
  * @param json The JSON string.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const std::string_view json)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(std::string_view json)
 {
 	auto p = std::make_unique<Packet>(this, ADMIN_PACKET_SERVER_GAMESCRIPT);
 
@@ -997,7 +997,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
  * @param colour_code The colour of the string.
  * @param string      The string to show.
  */
-void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, const std::string_view string)
+void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, std::string_view string)
 {
 	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code, string);
 }
@@ -1007,7 +1007,7 @@ void NetworkServerSendAdminRcon(AdminID admin_index, TextColour colour_code, con
  * @param origin the origin of the message.
  * @param string the message as printed on the console.
  */
-void NetworkAdminConsole(const std::string_view origin, const std::string_view string)
+void NetworkAdminConsole(std::string_view origin, std::string_view string)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CONSOLE].Test(AdminUpdateFrequency::Automatic)) {
@@ -1020,7 +1020,7 @@ void NetworkAdminConsole(const std::string_view origin, const std::string_view s
  * Send GameScript JSON to the admin network (if they did opt in for the respective update).
  * @param json The JSON data as received from the GameScript.
  */
-void NetworkAdminGameScript(const std::string_view json)
+void NetworkAdminGameScript(std::string_view json)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_GAMESCRIPT].Test(AdminUpdateFrequency::Automatic)) {

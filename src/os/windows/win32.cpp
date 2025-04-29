@@ -386,7 +386,7 @@ char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf)
  * @param dst_buf span of valid wide-char buffer that will receive the converted string
  * @return pointer to dst_buf. If conversion fails the string is of zero-length
  */
-wchar_t *convert_to_fs(const std::string_view src, std::span<wchar_t> dst_buf)
+wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf)
 {
 	int len = MultiByteToWideChar(CP_UTF8, 0, src.data(), static_cast<int>(src.size()), dst_buf.data(), static_cast<int>(dst_buf.size() - 1U));
 	dst_buf[len] = '\0';
@@ -476,7 +476,7 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
  * @param case_insensitive Search case-insensitive.
  * @return 1 if value was found, 0 if it was not found, or -1 if not supported by the OS.
  */
-int Win32StringContains(const std::string_view str, const std::string_view value, bool case_insensitive)
+int Win32StringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
 	typedef int (WINAPI *PFNFINDNLSSTRINGEX)(LPCWSTR, DWORD, LPCWSTR, int, LPCWSTR, int, LPINT, LPNLSVERSIONINFO, LPVOID, LPARAM);
 	static PFNFINDNLSSTRINGEX _FindNLSStringEx = nullptr;

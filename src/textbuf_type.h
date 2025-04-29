@@ -43,7 +43,7 @@ struct Textbuf {
 
 	explicit Textbuf(uint16_t max_bytes, uint16_t max_chars = UINT16_MAX);
 
-	void Assign(const std::string_view text);
+	void Assign(std::string_view text);
 
 	void DeleteAll();
 	bool InsertClipboard();

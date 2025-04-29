@@ -884,7 +884,7 @@ static void MakeItalianTownName(StringBuilder &builder, uint32_t seed)
 		return;
 	}
 
-	static std::string_view const mascul_femin_italian[] = {
+	static const std::string_view mascul_femin_italian[] = {
 		"o",
 		"a",
 	};

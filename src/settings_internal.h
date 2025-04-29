@@ -388,7 +388,7 @@ static constexpr const SettingDesc *GetSettingDesc(const SettingVariant &desc)
 
 typedef std::span<const SettingVariant> SettingTable;
 
-const SettingDesc *GetSettingFromName(const std::string_view name);
+const SettingDesc *GetSettingFromName(std::string_view name);
 void GetSaveLoadFromSettingTable(SettingTable settings, std::vector<SaveLoad> &saveloads);
 SettingTable GetSaveLoadSettingTable();
 bool SetSettingValue(const IntSettingDesc *sd, int32_t value, bool force_newgame = false);

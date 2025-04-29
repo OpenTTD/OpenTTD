@@ -122,7 +122,7 @@ public:
 	/**
 	 * Set the value of a setting for this config.
 	 */
-	void SetSetting(const std::string_view name, int value);
+	void SetSetting(std::string_view name, int value);
 
 	/**
 	 * Reset all settings to their default value.
