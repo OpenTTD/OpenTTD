@@ -2108,7 +2108,7 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 		IConsolePrint(CC_HELP, "Instead of a key, use 'client:<id>' to add/remove the key of that given client.");
 
 		std::string buffer;
-		for (auto [name, _] : _console_cmd_authorized_keys) fmt::format_to(std::back_inserter(buffer), ", {}", name);
+		for (auto [name, _] : _console_cmd_authorized_keys) format_append(buffer, ", {}", name);
 		IConsolePrint(CC_HELP, "The supported types are: all{} and company:<id>.", buffer);
 		return true;
 	}
@@ -2611,7 +2611,7 @@ static bool ConNewGRFProfile(std::span<std::string_view> argv)
 				started++;
 
 				if (!grfids.empty()) grfids += ", ";
-				fmt::format_to(std::back_inserter(grfids), "[{:08X}]", std::byteswap(pr.grffile->grfid));
+				format_append(grfids, "[{:08X}]", std::byteswap(pr.grffile->grfid));
 			}
 		}
 		if (started > 0) {

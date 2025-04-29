@@ -12,7 +12,7 @@
 
 #include "../string_func.h"
 #include "../strings_func.h"
-#include "../3rdparty/fmt/format.h"
+#include "../core/format.hpp"
 
 #include "../safeguards.h"
 
@@ -90,13 +90,12 @@ void Script_CreateDummy(HSQUIRRELVM vm, StringID string, std::string_view type)
 
 	/* 2) We construct the AI's code. This is done by merging a header, body and footer */
 	std::string dummy_script;
-	auto back_inserter = std::back_inserter(dummy_script);
 	/* Just a rough ballpark estimate. */
 	dummy_script.reserve(error_message.size() + 128 + 64 * messages.size());
 
-	fmt::format_to(back_inserter, "class Dummy{0} extends {0}Controller {{\n  function Start()\n  {{\n", type);
+	format_append(dummy_script, "class Dummy{0} extends {0}Controller {{\n  function Start()\n  {{\n", type);
 	for (std::string &message : messages) {
-		fmt::format_to(back_inserter, "    {}Log.Error(\"{}\");\n", type, message);
+		format_append(dummy_script, "    {}Log.Error(\"{}\");\n", type, message);
 	}
 	dummy_script += "  }\n}\n";
 

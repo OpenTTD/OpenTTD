@@ -83,19 +83,19 @@ public:
 
 		std::string message;
 		message.reserve(1024);
-		fmt::format_to(std::back_inserter(message), "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
+		format_append(message, "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
 		message += "NewGRFs:\n";
 		if (_game_mode != GM_MENU) {
 			for (const auto &c : _grfconfig) {
-				fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
+				format_append(message, "{:08X} {} {}\n", std::byteswap(c->ident.grfid), FormatArrayAsHex(c->ident.md5sum), c->filename);
 			}
 		}
 		message += "\nCompanies:\n";
 		for (const Company *c : Company::Iterate()) {
 			if (c->ai_info == nullptr) {
-				fmt::format_to(std::back_inserter(message), "{:2d}: Human\n", c->index);
+				format_append(message, "{:2d}: Human\n", c->index);
 			} else {
-				fmt::format_to(std::back_inserter(message), "{:2d}: {} (v{})\n", c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
+				format_append(message, "{:2d}: {} (v{})\n", c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
 			}
 		}
 		text[1].key = const_cast<char *>("Description");

@@ -238,19 +238,19 @@ static void WriteSavegameInfo(const std::string &name)
 
 	std::string message;
 	message.reserve(1024);
-	fmt::format_to(std::back_inserter(message), "Name:         {}\n", name);
-	fmt::format_to(std::back_inserter(message), "Savegame ver: {}\n", _sl_version);
-	fmt::format_to(std::back_inserter(message), "NewGRF ver:   0x{:08X}\n", last_ottd_rev);
-	fmt::format_to(std::back_inserter(message), "Modified:     {}\n", ever_modified);
+	format_append(message, "Name:         {}\n", name);
+	format_append(message, "Savegame ver: {}\n", _sl_version);
+	format_append(message, "NewGRF ver:   0x{:08X}\n", last_ottd_rev);
+	format_append(message, "Modified:     {}\n", ever_modified);
 
 	if (removed_newgrfs) {
-		fmt::format_to(std::back_inserter(message), "NewGRFs have been removed\n");
+		format_append(message, "NewGRFs have been removed\n");
 	}
 
 	message += "NewGRFs:\n";
 	if (_load_check_data.HasNewGrfs()) {
 		for (const auto &c : _load_check_data.grfconfig) {
-			fmt::format_to(std::back_inserter(message), "{:08X} {} {}\n", std::byteswap(c->ident.grfid),
+			format_append(message, "{:08X} {} {}\n", std::byteswap(c->ident.grfid),
 				FormatArrayAsHex(c->flags.Test(GRFConfigFlag::Compatible) ? c->original_md5sum : c->ident.md5sum), c->filename);
 		}
 	}

@@ -152,7 +152,7 @@ static std::string_view MakeScreenshotName(std::string_view default_fn, std::str
 
 	size_t len = _screenshot_name.size();
 	/* Add extension to screenshot file */
-	_screenshot_name += fmt::format(".{}", ext);
+	format_append(_screenshot_name, ".{}", ext);
 
 	std::string_view screenshot_dir = crashlog ? _personal_dir : FiosGetScreenshotDir();
 
@@ -163,7 +163,7 @@ static std::string_view MakeScreenshotName(std::string_view default_fn, std::str
 		if (!FileExists(_full_screenshot_path)) break;
 		/* If file exists try another one with same name, but just with a higher index */
 		_screenshot_name.erase(len);
-		_screenshot_name += fmt::format("#{}.{}", serial, ext);
+		format_append(_screenshot_name, "#{}.{}", serial, ext);
 	}
 
 	return _full_screenshot_path;

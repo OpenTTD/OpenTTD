@@ -364,7 +364,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 				if (!first) url.push_back(',');
 				first = false;
 
-				fmt::format_to(std::back_inserter(url), "{:08X}:{}", ci->unique_id, FormatArrayAsHex(ci->md5sum));
+				format_append(url, "{:08X}:{}", ci->unique_id, FormatArrayAsHex(ci->md5sum));
 			}
 		} else {
 			url += "do=searchtext&q=";
@@ -376,7 +376,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 				/* Escape special chars, such as &%,= */
 				if (*search < 0x30) {
-					fmt::format_to(std::back_inserter(url), "%{:02X}", *search);
+					format_append(url, "%{:02X}", *search);
 				} else {
 					url.push_back(*search);
 				}
