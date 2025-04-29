@@ -2540,7 +2540,7 @@ EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode
 			break;
 
 		case QueryString::ACTION_CLEAR:
-			if (StrEmpty(query->text.GetText())) {
+			if (query->text.GetText().empty()) {
 				/* If already empty, unfocus instead */
 				this->UnfocusFocusedWidget();
 			} else {

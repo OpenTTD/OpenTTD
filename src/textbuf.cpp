@@ -281,9 +281,9 @@ void Textbuf::DiscardMarkedText(bool update)
  * Get the current text.
  * @return Current text.
  */
-const char *Textbuf::GetText() const
+std::string_view Textbuf::GetText() const
 {
-	return this->buf.c_str();
+	return this->buf;
 }
 
 /** Update the character iter after the text has changed. */

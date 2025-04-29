@@ -1102,7 +1102,7 @@ struct NetworkStartServerWindow : public Window {
 
 	bool CheckServerName()
 	{
-		std::string str = this->name_editbox.text.GetText();
+		std::string str{this->name_editbox.text.GetText()};
 		if (!NetworkValidateServerName(str)) return false;
 
 		SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), std::move(str));
