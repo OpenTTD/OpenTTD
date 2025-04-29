@@ -324,7 +324,7 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 			default: NOT_REACHED();
 		}
 		if (i != 0) result += ',';
-		result += std::to_string(v);
+		format_append(result, "{}", v);
 	}
 	return result;
 }
@@ -332,7 +332,7 @@ std::string ListSettingDesc::FormatValue(const void *object) const
 std::string OneOfManySettingDesc::FormatSingleValue(uint id) const
 {
 	if (id >= this->many.size()) {
-		return std::to_string(id);
+		return fmt::format("{}", id);
 	}
 	return this->many[id];
 }
@@ -735,7 +735,7 @@ std::string IntSettingDesc::FormatValue(const void *object) const
 	} else {
 		i = (uint32_t)this->Read(object);
 	}
-	return std::to_string(i);
+	return fmt::format("{}", i);
 }
 
 std::string BoolSettingDesc::FormatValue(const void *object) const
@@ -1218,7 +1218,7 @@ static void SaveVersionInConfig(IniFile &ini)
 	IniGroup &group = ini.GetOrCreateGroup("version");
 	group.GetOrCreateItem("version_string").SetValue(_openttd_revision);
 	group.GetOrCreateItem("version_number").SetValue(fmt::format("{:08X}", _openttd_newgrf_version));
-	group.GetOrCreateItem("ini_version").SetValue(std::to_string(INIFILE_VERSION));
+	group.GetOrCreateItem("ini_version").SetValue(fmt::format("{}", INIFILE_VERSION));
 }
 
 /**

@@ -1065,7 +1065,7 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 	AppendPathSeparator(tempdirname);
 	FioCreateDirectory(tempdirname);
 
-	std::string output_filename = tempdirname + std::to_string(song.cat_index) + ".mid";
+	std::string output_filename = fmt::format("{}{}.mid", tempdirname, song.cat_index);
 
 	if (FileExists(output_filename)) {
 		/* If the file already exists, assume it's the correct decoded data */

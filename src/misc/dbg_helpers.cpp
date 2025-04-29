@@ -106,31 +106,17 @@ void DumpTarget::WriteIndent()
 	}
 }
 
-/** Write 'name = value' with indent and new-line. */
-void DumpTarget::WriteValue(const std::string &name, int value)
-{
-	WriteIndent();
-	m_out += name + " = " + std::to_string(value) + "\n";
-}
-
-/** Write 'name = value' with indent and new-line. */
-void DumpTarget::WriteValue(const std::string &name, const std::string &value_str)
-{
-	WriteIndent();
-	m_out += name + " = " + value_str + "\n";
-}
-
 /** Write name & TileIndex to the output. */
-void DumpTarget::WriteTile(const std::string &name, TileIndex tile)
+void DumpTarget::WriteTile(std::string_view name, TileIndex tile)
 {
 	WriteIndent();
-	m_out += name + " = " + TileStr(tile) + "\n";
+	format_append(m_out, "{} = {}\n", name, TileStr(tile));
 }
 
 /**
  * Open new structure (one level deeper than the current one) 'name = {\<LF\>'.
  */
-void DumpTarget::BeginStruct(size_t type_id, const std::string &name, const void *ptr)
+void DumpTarget::BeginStruct(size_t type_id, std::string_view name, const void *ptr)
 {
 	/* make composite name */
 	std::string cur_name = GetCurrentStructName();
@@ -147,7 +133,7 @@ void DumpTarget::BeginStruct(size_t type_id, const std::string &name, const void
 	m_known_names.insert(KNOWN_NAMES::value_type(KnownStructKey(type_id, ptr), cur_name));
 
 	WriteIndent();
-	m_out += name + " = {\n";
+	format_append(m_out, "{} = {{\n", name);
 	m_indent++;
 }
 

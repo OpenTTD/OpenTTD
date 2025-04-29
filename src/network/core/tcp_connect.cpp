@@ -228,7 +228,7 @@ void TCPConnecter::Resolve()
 	hints.ai_flags = AI_ADDRCONFIG;
 	hints.ai_socktype = SOCK_STREAM;
 
-	std::string port_name = std::to_string(address.GetPort());
+	std::string port_name = fmt::format("{}", address.GetPort());
 
 	static bool getaddrinfo_timeout_error_shown = false;
 	auto start = std::chrono::steady_clock::now();

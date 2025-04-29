@@ -196,7 +196,7 @@ public:
 	{
 		Debug(map, 9, "Water region {},{} labels and edge traversability = ...", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
 
-		const size_t max_element_width = std::to_string(this->NumberOfPatches()).size();
+		const size_t max_element_width = fmt::format("{}", this->NumberOfPatches()).size();
 
 		std::string traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DIAGDIR_NW), WATER_REGION_EDGE_LENGTH);
 		Debug(map, 9, "    {:{}}", fmt::join(traversability, " "), max_element_width);
@@ -206,8 +206,11 @@ public:
 			std::string line{};
 			for (int x = 0; x < WATER_REGION_EDGE_LENGTH; ++x) {
 				const auto label = this->GetLabel(TileAddXY(this->tile_area.tile, x, y));
-				const std::string label_str = label == INVALID_WATER_REGION_PATCH ? "." : std::to_string(label);
-				line = fmt::format("{:{}}", label_str, max_element_width) + " " + line;
+				if (label == INVALID_WATER_REGION_PATCH) {
+					line = fmt::format("{:{}} {}", ".", max_element_width, line);
+				} else {
+					line = fmt::format("{:{}} {}", label, max_element_width, line);
+				}
 			}
 			Debug(map, 9, "{} | {}| {}", GB(this->GetEdgeTraversabilityBits(DIAGDIR_SW), y, 1), line, GB(this->GetEdgeTraversabilityBits(DIAGDIR_NE), y, 1));
 		}
