@@ -718,7 +718,7 @@ void LanguageWriter::WriteLength(size_t length)
 		buffer[offs++] = static_cast<char>(static_cast<uint8_t>((length >> 8) | 0xC0));
 	}
 	buffer[offs++] = static_cast<char>(static_cast<uint8_t>(length & 0xFF));
-	this->Write(buffer, offs);
+	this->Write({buffer, offs});
 }
 
 /**
@@ -803,7 +803,7 @@ void LanguageWriter::WriteLang(const StringData &data)
 			builder.Put(def_str);
 
 			this->WriteLength(output.size());
-			this->Write(output.data(), output.size());
+			this->Write(output);
 		}
 	}
 }

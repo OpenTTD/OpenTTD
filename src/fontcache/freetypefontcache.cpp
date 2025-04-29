@@ -113,7 +113,7 @@ void FreeTypeFontCache::SetFontSize(int pixels)
 	}
 }
 
-static FT_Error LoadFont(FontSize fs, FT_Face face, const char *font_name, uint size)
+static FT_Error LoadFont(FontSize fs, FT_Face face, std::string_view font_name, uint size)
 {
 	Debug(fontcache, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
 
@@ -172,29 +172,28 @@ void LoadFreeTypeFont(FontSize fs)
 		Debug(fontcache, 2, "Initialized");
 	}
 
-	const char *font_name = font.c_str();
 	FT_Face face = nullptr;
 
 	/* If font is an absolute path to a ttf, try loading that first. */
 	int32_t index = 0;
 	if (settings->os_handle != nullptr) index = *static_cast<const int32_t *>(settings->os_handle);
-	FT_Error error = FT_New_Face(_ft_library, font_name, index, &face);
+	FT_Error error = FT_New_Face(_ft_library, font.c_str(), index, &face);
 
 	if (error != FT_Err_Ok) {
 		/* Check if font is a relative filename in one of our search-paths. */
-		std::string full_font = FioFindFullPath(BASE_DIR, font_name);
+		std::string full_font = FioFindFullPath(BASE_DIR, font);
 		if (!full_font.empty()) {
 			error = FT_New_Face(_ft_library, full_font.c_str(), 0, &face);
 		}
 	}
 
 	/* Try loading based on font face name (OS-wide fonts). */
-	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, &face);
+	if (error != FT_Err_Ok) error = GetFontByFaceName(font, &face);
 
 	if (error == FT_Err_Ok) {
-		error = LoadFont(fs, face, font_name, GetFontCacheFontSize(fs));
+		error = LoadFont(fs, face, font, GetFontCacheFontSize(fs));
 		if (error != FT_Err_Ok) {
-			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
+			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font, FontSizeToName(fs), error);
 		}
 	} else {
 		FT_Done_Face(face);
@@ -309,7 +308,7 @@ void UninitFreeType()
 
 #if !defined(WITH_FONTCONFIG)
 
-FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
+FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
 
 #endif /* !defined(WITH_FONTCONFIG) */
 

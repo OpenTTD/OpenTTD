@@ -130,7 +130,7 @@ public:
 				 "{}\n{}\n{}\n{}",
 				 this->crashlog_filename, this->crashdump_filename, this->savegame_filename, this->screenshot_filename);
 
-		ShowMacDialog(crash_title, message.c_str(), "Quit");
+		ShowMacDialog(crash_title, message, "Quit");
 	}
 
 	/** Buffer to track the long jump set setup. */

@@ -52,9 +52,9 @@ static const TrackdirBits _enterdir_to_trackdirbits[DIAGDIR_END] = {
 template <typename Tdir, uint items>
 struct SmallSet {
 private:
-	uint n;           // actual number of units
-	bool overflowed;  // did we try to overflow the set?
-	const char *name; // name, used for debugging purposes...
+	uint n = 0; // actual number of units
+	bool overflowed = false; // did we try to overflow the set?
+	const std::string_view name; // name, used for debugging purposes...
 
 	/** Element of set */
 	struct SSdata {
@@ -64,7 +64,7 @@ private:
 
 public:
 	/** Constructor - just set default values and 'name' */
-	SmallSet(const char *name) : n(0), overflowed(false), name(name) { }
+	SmallSet(std::string_view name) : name(name) { }
 
 	/** Reset variables to default values */
 	void Reset()

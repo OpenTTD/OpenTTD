@@ -33,8 +33,8 @@
 
 #include "safeguards.h"
 
-static const char * const SCREENSHOT_NAME = "screenshot"; ///< Default filename of a saved screenshot.
-static const char * const HEIGHTMAP_NAME  = "heightmap";  ///< Default filename of a saved heightmap.
+static const std::string_view SCREENSHOT_NAME = "screenshot"; ///< Default filename of a saved screenshot.
+static const std::string_view HEIGHTMAP_NAME  = "heightmap";  ///< Default filename of a saved heightmap.
 
 std::string _screenshot_format_name;  ///< Extension of the current screenshot format.
 static std::string _screenshot_name;  ///< Filename of the screenshot file.
