@@ -892,4 +892,23 @@ public:
 	void SkipIntegerBase(int base);
 };
 
+/**
+ * Change a string into its number representation.
+ * Supports decimal and hexadecimal numbers.
+ * Accepts leading and trailing whitespace. Trailing junk is an error.
+ * @param arg The string to be converted.
+ * @param base The base for parsing the number, defaults to only decimal numbers. Use 0 to also allow hexadecimal.
+ * @return The number, or std::nullopt if it could not be parsed.
+ */
+template <class T = uint32_t>
+static inline std::optional<T> ParseInteger(std::string_view arg, int base = 10)
+{
+	StringConsumer consumer{arg};
+	consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
+	auto result = consumer.TryReadIntegerBase<T>(base);
+	consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
+	if (consumer.AnyBytesLeft()) return std::nullopt;
+	return result;
+}
+
 #endif /* STRING_CONSUMER_HPP */

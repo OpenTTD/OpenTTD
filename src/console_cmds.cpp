@@ -71,18 +71,6 @@ static IntervalTimer<TimerGameCalendar> _scheduled_monthly_timer = {{TimerGameCa
 	IConsoleCmdExec(fmt::format("exec {}", filename));
 }};
 
-
-/**
- * Change a string into its number representation. Supports decimal and hexadecimal numbers.
- * @param arg The string to be converted.
- * @param base The base for parsing the number, defaults to only decimal numbers. Use 0 to also allow hexadecimal.
- * @return The number, or std::nullopt when it could not be parsed.
- */
-static std::optional<uint32_t> ParseInteger(std::string_view arg, int base = 10)
-{
-	return StringConsumer{arg}.TryReadIntegerBase<uint32_t>(base);
-}
-
 /**
  * Parse an integer using #ParseInteger and convert it to the requested type.
  * @param arg The string to be converted.
