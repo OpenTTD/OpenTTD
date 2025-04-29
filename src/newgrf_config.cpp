@@ -643,7 +643,7 @@ std::string GRFBuildParamList(const GRFConfig &c)
 	std::string result;
 	for (const uint32_t &value : c.param) {
 		if (!result.empty()) result += ' ';
-		result += std::to_string(value);
+		format_append(result, "{}", value);
 	}
 	return result;
 }

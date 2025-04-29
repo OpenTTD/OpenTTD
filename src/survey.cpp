@@ -311,7 +311,7 @@ void SurveyFont(nlohmann::json &survey)
 void SurveyCompanies(nlohmann::json &survey)
 {
 	for (const Company *c : Company::Iterate()) {
-		auto &company = survey[std::to_string(c->index.base())];
+		auto &company = survey[fmt::format("{}", c->index.base())];
 		if (c->ai_info == nullptr) {
 			company["type"] = "human";
 		} else {

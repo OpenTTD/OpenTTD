@@ -322,7 +322,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
 {
 	std::string content_request;
 	for (const ContentID &id : content) {
-		content_request += std::to_string(id) + "\n";
+		format_append(content_request, "{}\n", id);
 	}
 
 	this->http_response_index = -1;

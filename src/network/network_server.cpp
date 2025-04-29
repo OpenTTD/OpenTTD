@@ -1627,7 +1627,7 @@ bool NetworkMakeClientNameUnique(std::string &name)
 
 		if (!is_name_unique) {
 			/* Try a new name (<name> #1, <name> #2, and so on) */
-			name = original_name + " #" + std::to_string(number);
+			name = fmt::format("{} #{}", original_name, number);
 
 			/* The constructed client name is larger than the limit,
 			 * so... bail out as no valid name can be created. */

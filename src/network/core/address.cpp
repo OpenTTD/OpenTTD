@@ -209,7 +209,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	hints.ai_socktype = socktype;
 
 	/* The port needs to be a string. Six is enough to contain all characters + '\0'. */
-	std::string port_name = std::to_string(this->GetPort());
+	std::string port_name = fmt::format("{}", this->GetPort());
 
 	bool reset_hostname = false;
 	/* Setting both hostname to nullptr and port to 0 is not allowed.
