@@ -248,29 +248,19 @@ static std::optional<std::vector<uint32_t>> ParseIntList(const char *p)
 	bool comma = false; // do we accept comma?
 	std::vector<uint32_t> result;
 
-	while (*p != '\0') {
-		switch (*p) {
-			case ',':
-				/* Do not accept multiple commas between numbers */
-				if (!comma) return std::nullopt;
-				comma = false;
-				[[fallthrough]];
-
-			case ' ':
-				p++;
-				break;
-
-			default: {
-				char *end;
-				unsigned long v = std::strtoul(p, &end, 0);
-				if (p == end) return std::nullopt; // invalid character (not a number)
-
-				result.push_back(ClampTo<uint32_t>(v));
-				p = end; // first non-number
-				comma = true; // we accept comma now
-				break;
-			}
+	StringConsumer consumer{std::string_view{p}};
+	for (;;) {
+		consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
+		if (!consumer.AnyBytesLeft()) break;
+		if (comma && consumer.ReadIf(",")) {
+			/* commas are optional, but we only accept one between values */
+			comma = false;
+			continue;
 		}
+		auto v = consumer.TryReadIntegerBase<uint32_t>(10);
+		if (!v.has_value()) return std::nullopt;
+		result.push_back(*v);
+		comma = true;
 	}
 
 	/* If we have read comma but no number after it, fail.
