@@ -439,7 +439,7 @@ std::string GenerateDefaultSaveName();
 void SetSaveLoadError(StringID str);
 EncodedString GetSaveLoadErrorType();
 EncodedString GetSaveLoadErrorMessage();
-SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
+SaveOrLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
 void ProcessAsyncSaveFinish();
 void DoExitSave();

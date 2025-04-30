@@ -231,7 +231,7 @@ static std::tuple<SavegameType, std::string> DetermineOldSavegameTypeAndName(Fil
 
 typedef bool LoadOldMainProc(LoadgameState &ls);
 
-bool LoadOldSaveGame(const std::string &file)
+bool LoadOldSaveGame(std::string_view file)
 {
 	LoadgameState ls{};
 
@@ -282,7 +282,7 @@ bool LoadOldSaveGame(const std::string &file)
 	return true;
 }
 
-std::string GetOldSaveGameName(const std::string &file)
+std::string GetOldSaveGameName(std::string_view file)
 {
 	auto f = FioFOpenFile(file, "rb", NO_DIRECTORY);
 	if (!f.has_value()) return {};
