@@ -199,7 +199,7 @@ bool Textbuf::InsertString(std::string_view str, bool marked, std::optional<size
 		this->markend = insertpos + bytes;
 	}
 
-	this->buf.insert(insertpos, str, bytes);
+	this->buf.insert(insertpos, str.substr(0, bytes));
 
 	this->chars += chars;
 	if (!marked && !caret.has_value()) this->caretpos += bytes;
