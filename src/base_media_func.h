@@ -143,24 +143,9 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 			this->LogError(full_filename, fmt::format("md5s.{} field missing", filename));
 			return false;
 		}
-		const char *c = item->value->c_str();
-		for (size_t i = 0; i < file->hash.size() * 2; i++, c++) {
-			uint j;
-			if ('0' <= *c && *c <= '9') {
-				j = *c - '0';
-			} else if ('a' <= *c && *c <= 'f') {
-				j = *c - 'a' + 10;
-			} else if ('A' <= *c && *c <= 'F') {
-				j = *c - 'A' + 10;
-			} else {
-				this->LogError(full_filename, fmt::format("md5s.{} is malformed: {}", filename, *item->value));
-				return false;
-			}
-			if (i % 2 == 0) {
-				file->hash[i / 2] = j << 4;
-			} else {
-				file->hash[i / 2] |= j;
-			}
+		if (!ConvertHexToBytes(*item->value, file->hash)) {
+			this->LogError(full_filename, fmt::format("md5s.{} is malformed: {}", filename, *item->value));
+			return false;
 		}
 
 		/* Then find the warning message when the file's missing */
