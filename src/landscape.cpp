@@ -1540,7 +1540,7 @@ bool GenerateLandscape(uint8_t mode)
 
 	if (mode == GWM_HEIGHTMAP) {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, steps + GLS_HEIGHTMAP);
-		if (!LoadHeightmap(_file_to_saveload.ftype.detailed, _file_to_saveload.name.c_str())) {
+		if (!LoadHeightmap(_file_to_saveload.ftype.detailed, _file_to_saveload.name)) {
 			return false;
 		}
 		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
