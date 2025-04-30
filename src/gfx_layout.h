@@ -197,7 +197,7 @@ public:
 	static void ReduceLineCache();
 };
 
-ParagraphLayouter::Position GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize = FS_NORMAL);
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, size_t pos, FontSize start_fontsize = FS_NORMAL);
 ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize = FS_NORMAL);
 
 #endif /* GFX_LAYOUT_H */

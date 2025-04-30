@@ -390,7 +390,7 @@ void Window::UpdateQueryStringSize()
  * @param to End of the string range.
  * @return Rectangle encompassing the string range, relative to the window.
  */
-/* virtual */ Rect Window::GetTextBoundingRect(const char *from, const char *to) const
+/* virtual */ Rect Window::GetTextBoundingRect(size_t from, size_t to) const
 {
 	if (this->nested_focus != nullptr && this->nested_focus->type == WWT_EDITBOX) {
 		return this->GetQueryString(this->nested_focus->GetIndex())->GetBoundingRect(this, this->nested_focus->GetIndex(), from, to);
@@ -2647,7 +2647,7 @@ void HandleCtrlChanged()
  * @param wid Edit box widget.
  * @param str Text string to insert.
  */
-/* virtual */ void Window::InsertTextString(WidgetID wid, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
+/* virtual */ void Window::InsertTextString(WidgetID wid, std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)
 {
 	QueryString *query = this->GetQueryString(wid);
 	if (query == nullptr) return;
@@ -2664,7 +2664,7 @@ void HandleCtrlChanged()
  * @param marked Is the input a marked composition string from an IME?
  * @param caret Move the caret to this point in the insertion string.
  */
-void HandleTextInput(const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end)
+void HandleTextInput(std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end)
 {
 	if (!EditBoxInGlobalFocus()) return;
 

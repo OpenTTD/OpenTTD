@@ -418,15 +418,14 @@ void Layouter::ReduceLineCache()
  * Get the leading corner of a character in a single-line string relative
  * to the start of the string.
  * @param str String containing the character.
- * @param ch Pointer to the character in the string.
+ * @param pos Index to the character in the string.
  * @param start_fontsize Font size to start the text with.
  * @return Upper left corner of the glyph associated with the character.
  */
-ParagraphLayouter::Position GetCharPosInString(std::string_view str, const char *ch, FontSize start_fontsize)
+ParagraphLayouter::Position GetCharPosInString(std::string_view str, size_t pos, FontSize start_fontsize)
 {
-	/* Ensure "ch" is inside "str" or at the exact end. */
-	assert(ch >= str.data() && (ch - str.data()) <= static_cast<ptrdiff_t>(str.size()));
-	auto it_ch = str.begin() + (ch - str.data());
+	assert(pos <= str.size());
+	auto it_ch = str.begin() + pos;
 
 	Layouter layout(str, INT32_MAX, start_fontsize);
 	return layout.GetCharPosition(it_ch);
