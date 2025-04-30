@@ -16,8 +16,9 @@
 #include "3rdparty/md5/md5.h"
 #include <unordered_map>
 
-/* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
 struct IniFile;
+struct IniGroup;
+struct IniItem;
 struct ContentInfo;
 
 /** Structure holding filename and MD5 information about a single file */
@@ -95,6 +96,9 @@ struct BaseSet {
 	{
 		return BaseSet<T>::NUM_FILES - this->valid_files;
 	}
+
+	void LogError(std::string_view full_filename, std::string_view detail, int level = 0) const;
+	const IniItem *GetMandatoryItem(std::string_view full_filename, const IniGroup &group, std::string_view name) const;
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);
 	void CopyCompatibleConfig([[maybe_unused]] const T &src) {}

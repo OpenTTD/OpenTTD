@@ -354,20 +354,21 @@ GraphicsSet::~GraphicsSet() = default;
 
 bool GraphicsSet::FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename)
 {
-	bool ret = this->BaseSet<GraphicsSet>::FillSetDetails(ini, path, full_filename, false);
-	if (ret) {
-		const IniGroup *metadata = ini.GetGroup("metadata");
-		assert(metadata != nullptr); /* ret can't be true if metadata isn't present. */
-		const IniItem *item;
+	if (!this->BaseSet<GraphicsSet>::FillSetDetails(ini, path, full_filename, false)) return false;
 
-		fetch_metadata("palette");
-		this->palette = ((*item->value)[0] == 'D' || (*item->value)[0] == 'd') ? PAL_DOS : PAL_WINDOWS;
+	const IniGroup *metadata = ini.GetGroup("metadata");
+	assert(metadata != nullptr); /* already checked by the inherited FillSetDetails. */
+	const IniItem *item;
 
-		/* Get optional blitter information. */
-		item = metadata->GetItem("blitter");
-		this->blitter = (item != nullptr && (*item->value)[0] == '3') ? BLT_32BPP : BLT_8BPP;
-	}
-	return ret;
+	item = this->GetMandatoryItem(full_filename, *metadata, "palette");
+	if (item == nullptr) return false;
+	this->palette = ((*item->value)[0] == 'D' || (*item->value)[0] == 'd') ? PAL_DOS : PAL_WINDOWS;
+
+	/* Get optional blitter information. */
+	item = metadata->GetItem("blitter");
+	this->blitter = (item != nullptr && (*item->value)[0] == '3') ? BLT_32BPP : BLT_8BPP;
+
+	return true;
 }
 
 /**
