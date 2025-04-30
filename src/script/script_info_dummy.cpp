@@ -42,7 +42,7 @@ void Script_CreateDummyInfo(HSQUIRRELVM vm, std::string_view type, std::string_v
 	sq_pushroottable(vm);
 
 	/* Load and run the script */
-	if (SQ_SUCCEEDED(sq_compilebuffer(vm, dummy_script.c_str(), dummy_script.size(), "dummy", SQTrue))) {
+	if (SQ_SUCCEEDED(sq_compilebuffer(vm, dummy_script.data(), dummy_script.size(), "dummy", SQTrue))) {
 		sq_push(vm, -2);
 		if (SQ_SUCCEEDED(sq_call(vm, 1, SQFalse, SQTrue))) {
 			sq_pop(vm, 1);
@@ -101,7 +101,7 @@ void Script_CreateDummy(HSQUIRRELVM vm, StringID string, std::string_view type)
 
 	/* 3) Finally we load and run the script */
 	sq_pushroottable(vm);
-	if (SQ_SUCCEEDED(sq_compilebuffer(vm, dummy_script.c_str(), dummy_script.size(), "dummy", SQTrue))) {
+	if (SQ_SUCCEEDED(sq_compilebuffer(vm, dummy_script.data(), dummy_script.size(), "dummy", SQTrue))) {
 		sq_push(vm, -2);
 		if (SQ_SUCCEEDED(sq_call(vm, 1, SQFalse, SQTrue))) {
 			sq_pop(vm, 1);

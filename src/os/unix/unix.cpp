@@ -224,7 +224,7 @@ std::optional<std::string> GetClipboardContents()
 void OSOpenBrowser(const std::string &url)
 {
 	/* Implementation in pre.js */
-	EM_ASM({ if (window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url.c_str(), url.size());
+	EM_ASM({ if (window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url.data(), url.size());
 }
 #elif !defined( __APPLE__)
 void OSOpenBrowser(const std::string &url)

@@ -1043,7 +1043,7 @@ static void SlStdString(void *ptr, VarType conv)
 		case SLA_SAVE: {
 			size_t len = str->length();
 			SlWriteArrayLength(len);
-			SlCopyBytes(const_cast<void *>(static_cast<const void *>(str->c_str())), len);
+			SlCopyBytes(const_cast<void *>(static_cast<const void *>(str->data())), len);
 			break;
 		}
 
