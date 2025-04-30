@@ -76,7 +76,7 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 			break;
 		case CONTENT_TYPE_NEWGRF: {
 			const GRFConfig *gc = FindGRFConfig(std::byteswap(this->unique_id), FGCM_EXACT, &this->md5sum);
-			tmp = gc != nullptr ? gc->filename.c_str() : nullptr;
+			if (gc != nullptr) tmp = gc->filename;
 			break;
 		}
 		case CONTENT_TYPE_BASE_GRAPHICS:
