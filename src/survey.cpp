@@ -18,6 +18,7 @@
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
+#include "3rdparty/fmt/ranges.h"
 
 #include "currency.h"
 #include "fontcache.h"
@@ -274,7 +275,7 @@ void SurveyConfiguration(nlohmann::json &survey)
 		survey["video_info"] = VideoDriver::GetInstance()->GetInfoString();
 	}
 	if (BaseGraphics::GetUsedSet() != nullptr) {
-		survey["graphics_set"] = fmt::format("{}.{}", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
+		survey["graphics_set"] = fmt::format("{}.{}", BaseGraphics::GetUsedSet()->name, fmt::join(BaseGraphics::GetUsedSet()->version, "."));
 		const GRFConfig *extra_cfg = BaseGraphics::GetUsedSet()->GetExtraConfig();
 		if (extra_cfg != nullptr && !extra_cfg->param.empty()) {
 			survey["graphics_set_parameters"] = std::span<const uint32_t>(extra_cfg->param);
@@ -283,10 +284,10 @@ void SurveyConfiguration(nlohmann::json &survey)
 		}
 	}
 	if (BaseMusic::GetUsedSet() != nullptr) {
-		survey["music_set"] = fmt::format("{}.{}", BaseMusic::GetUsedSet()->name, BaseMusic::GetUsedSet()->version);
+		survey["music_set"] = fmt::format("{}.{}", BaseMusic::GetUsedSet()->name, fmt::join(BaseMusic::GetUsedSet()->version, "."));
 	}
 	if (BaseSounds::GetUsedSet() != nullptr) {
-		survey["sound_set"] = fmt::format("{}.{}", BaseSounds::GetUsedSet()->name, BaseSounds::GetUsedSet()->version);
+		survey["sound_set"] = fmt::format("{}.{}", BaseSounds::GetUsedSet()->name, fmt::join(BaseSounds::GetUsedSet()->version, "."));
 	}
 }
 

@@ -63,7 +63,7 @@ struct BaseSet {
 	std::string url;               ///< URL for information about the base set
 	TranslatedStrings description; ///< Description of the base set
 	uint32_t shortname = 0; ///< Four letter short variant of the name
-	uint32_t version = 0; ///< The version of this base set
+	std::vector<uint32_t> version; ///< The version of this base set
 	bool fallback = false; ///< This set is a fallback set, i.e. it should be used only as last resort
 
 	std::array<MD5File, BaseSet<T>::NUM_FILES> files{}; ///< All files part of this set

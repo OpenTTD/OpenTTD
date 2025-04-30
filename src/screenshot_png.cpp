@@ -12,6 +12,7 @@
 #include "debug.h"
 #include "fileio_func.h"
 #include "screenshot_type.h"
+#include "3rdparty/fmt/ranges.h"
 
 #include <png.h>
 
@@ -83,7 +84,7 @@ public:
 
 		std::string message;
 		message.reserve(1024);
-		format_append(message, "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
+		format_append(message, "Graphics set: {} ({})\n", BaseGraphics::GetUsedSet()->name, fmt::join(BaseGraphics::GetUsedSet()->version, "."));
 		message += "NewGRFs:\n";
 		if (_game_mode != GM_MENU) {
 			for (const auto &c : _grfconfig) {
