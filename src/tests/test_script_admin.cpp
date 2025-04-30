@@ -64,7 +64,7 @@ static std::optional<std::string> TestScriptAdminMakeJSON(std::string_view squir
 	sq_pop(vm, 1);
 
 	/* Compile the snippet. */
-	REQUIRE(sq_compilebuffer(vm, buffer.c_str(), buffer.size(), "test", SQTrue) == SQ_OK);
+	REQUIRE(sq_compilebuffer(vm, buffer.data(), buffer.size(), "test", SQTrue) == SQ_OK);
 	/* Execute the snippet, capturing the return value. */
 	sq_pushroottable(vm);
 	REQUIRE(sq_call(vm, 1, SQTrue, SQTrue) == SQ_OK);

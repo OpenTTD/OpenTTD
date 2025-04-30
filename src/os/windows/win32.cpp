@@ -428,7 +428,7 @@ void Win32SetCurrentLocaleName(std::string iso_code)
 		}
 	}
 
-	MultiByteToWideChar(CP_UTF8, 0, iso_code.c_str(), -1, _cur_iso_locale, static_cast<int>(std::size(_cur_iso_locale)));
+	MultiByteToWideChar(CP_UTF8, 0, iso_code.data(), static_cast<int>(iso_code.size()), _cur_iso_locale, static_cast<int>(std::size(_cur_iso_locale)));
 }
 
 int OTTDStringCompare(std::string_view s1, std::string_view s2)
@@ -461,11 +461,11 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 
 	/* CompareStringEx takes UTF-16 strings, even in ANSI-builds. */
 	if (_CompareStringEx != nullptr) {
-		int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1.c_str(), len_s1, str_s2.c_str(), len_s2, nullptr, nullptr, 0);
+		int result = _CompareStringEx(_cur_iso_locale, LINGUISTIC_IGNORECASE | SORT_DIGITSASNUMBERS, str_s1.data(), len_s1, str_s2.data(), len_s2, nullptr, nullptr, 0);
 		if (result != 0) return result;
 	}
 
-	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, str_s1.c_str(), len_s1, str_s2.c_str(), len_s2);
+	return CompareString(MAKELCID(_current_language->winlangid, SORT_DEFAULT), NORM_IGNORECASE, str_s1.data(), len_s1, str_s2.data(), len_s2);
 }
 
 /**
