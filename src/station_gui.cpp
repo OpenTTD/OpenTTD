@@ -1835,7 +1835,7 @@ struct StationViewWindow : public Window {
 				DrawString(text.left, text.right, y, GetString(str, cargo, cd.GetCount(), station));
 
 				if (column < NUM_COLUMNS - 1) {
-					const char *sym = nullptr;
+					std::string_view sym;
 					if (cd.GetNumChildren() > 0) {
 						sym = "-";
 					} else if (auto_distributed && str != STR_STATION_VIEW_RESERVED) {
@@ -1850,7 +1850,7 @@ struct StationViewWindow : public Window {
 							}
 						}
 					}
-					if (sym != nullptr) DrawString(shrink.left, shrink.right, y, sym, TC_YELLOW);
+					if (!sym.empty()) DrawString(shrink.left, shrink.right, y, sym, TC_YELLOW);
 				}
 				this->SetDisplayedRow(cd);
 			}
