@@ -240,15 +240,15 @@ static std::optional<uint32_t> LookupManyOfMany(const std::vector<std::string> &
 
 /**
  * Parse a string into a vector of uint32s.
- * @param p the string to be parsed. Each element in the list is separated by a comma or a space character
+ * @param str the string to be parsed. Each element in the list is separated by a comma or a space character
  * @return std::optional with a vector of parsed integers. The optional is empty upon an error.
  */
-static std::optional<std::vector<uint32_t>> ParseIntList(const char *p)
+static std::optional<std::vector<uint32_t>> ParseIntList(std::string_view str)
 {
 	bool comma = false; // do we accept comma?
 	std::vector<uint32_t> result;
 
-	StringConsumer consumer{std::string_view{p}};
+	StringConsumer consumer{str};
 	for (;;) {
 		consumer.SkipUntilCharNotIn(StringConsumer::WHITESPACE_NO_NEWLINE);
 		if (!consumer.AnyBytesLeft()) break;
@@ -278,15 +278,15 @@ static std::optional<std::vector<uint32_t>> ParseIntList(const char *p)
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
  * @return return true on success and false on error
  */
-static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
+static bool LoadIntList(std::optional<std::string_view> str, void *array, int nelems, VarType type)
 {
 	size_t elem_size = SlVarSize(type);
-	if (str == nullptr) {
+	if (!str.has_value()) {
 		memset(array, 0, nelems * elem_size);
 		return true;
 	}
 
-	auto opt_items = ParseIntList(str);
+	auto opt_items = ParseIntList(*str);
 	if (!opt_items.has_value() || opt_items->size() != (size_t)nelems) return false;
 
 	char *p = static_cast<char *>(array);
@@ -672,7 +672,12 @@ void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
 
 void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
+	std::optional<std::string_view> str;
+	if (item != nullptr) {
+		str = item->value;
+	} else if (this->def != nullptr) {
+		str = this->def;
+	}
 	void *ptr = GetVariableAddress(object, this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
 		_settings_error_list.emplace_back(
@@ -1032,7 +1037,7 @@ static void GraphicsSetLoadConfig(IniFile &ini)
 		}
 
 		if (const IniItem *item = group->GetItem("extra_params"); item != nullptr && item->value) {
-			auto params = ParseIntList(item->value->c_str());
+			auto params = ParseIntList(*item->value);
 			if (params.has_value()) {
 				BaseGraphics::ini_data.extra_params = params.value();
 			} else {
@@ -1099,7 +1104,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 
 		/* Parse parameters */
 		if (item.value.has_value() && !item.value->empty()) {
-			auto params = ParseIntList(item.value->c_str());
+			auto params = ParseIntList(*item.value);
 			if (params.has_value()) {
 				c->SetParams(params.value());
 			} else {

@@ -215,8 +215,8 @@ static bool IsSameScript(const ContentInfo &ci, bool md5sum, ScriptInfo *info, S
 			if (tar.second.tar_filename != iter->first) continue;
 
 			/* Check the extension. */
-			const char *ext = strrchr(tar.first.c_str(), '.');
-			if (ext == nullptr || !StrEqualsIgnoreCase(ext, ".nut")) continue;
+			auto ext = tar.first.rfind('.');
+			if (ext == std::string_view::npos || !StrEqualsIgnoreCase(tar.first.substr(ext), ".nut")) continue;
 
 			checksum.AddFile(tar.first, 0, tar_filename);
 		}

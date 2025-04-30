@@ -150,17 +150,24 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				this->songinfo[i].filetype = MTT_STANDARDMIDI;
 			}
 
-			const char *trimmed_filename = filename.c_str();
+			std::string_view trimmed_filename{filename};
 			/* As we possibly add a path to the filename and we compare
 			 * on the filename with the path as in the .obm, we need to
 			 * keep stripping path elements until we find a match. */
-			for (; trimmed_filename != nullptr; trimmed_filename = strchr(trimmed_filename, PATHSEPCHAR)) {
+			while (!trimmed_filename.empty()) {
 				/* Remove possible double path separator characters from
 				 * the beginning, so we don't start reading e.g. root. */
-				while (*trimmed_filename == PATHSEPCHAR) trimmed_filename++;
+				while (trimmed_filename.starts_with(PATHSEPCHAR)) trimmed_filename.remove_prefix(1);
 
 				item = names != nullptr ? names->GetItem(trimmed_filename) : nullptr;
 				if (item != nullptr && item->value.has_value() && !item->value->empty()) break;
+
+				auto next = trimmed_filename.find(PATHSEPCHAR);
+				if (next == std::string_view::npos) {
+					trimmed_filename = {};
+				} else {
+					trimmed_filename.remove_prefix(next);
+				}
 			}
 
 			if (this->songinfo[i].filetype == MTT_STANDARDMIDI) {
@@ -180,7 +187,7 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				this->songinfo[i].tracknr = tracknr++;
 			}
 
-			item = trimmed_filename != nullptr && timingtrim != nullptr ? timingtrim->GetItem(trimmed_filename) : nullptr;
+			item = !trimmed_filename.empty() && timingtrim != nullptr ? timingtrim->GetItem(trimmed_filename) : nullptr;
 			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 				StringConsumer consumer{*item->value};
 				auto start = consumer.TryReadIntegerBase<uint>(10);
