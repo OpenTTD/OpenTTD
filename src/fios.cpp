@@ -38,7 +38,7 @@ extern bool FiosIsHiddenFile(const std::filesystem::path &path);
 extern void FiosGetDrives(FileList &file_list);
 
 /* get the name of an oldstyle savegame */
-extern std::string GetOldSaveGameName(const std::string &file);
+extern std::string GetOldSaveGameName(std::string_view file);
 
 /**
  * Compare two FiosItem's. Used with sort when sorting the file list.
@@ -240,7 +240,7 @@ bool FiosDelete(std::string_view name)
 	return FioRemove(FiosMakeSavegameName(name));
 }
 
-typedef std::tuple<FiosType, std::string> FiosGetTypeAndNameProc(SaveLoadOperation fop, const std::string &filename, std::string_view ext);
+typedef std::tuple<FiosType, std::string> FiosGetTypeAndNameProc(SaveLoadOperation fop, std::string_view filename, std::string_view ext);
 
 /**
  * Scanner to scan for a particular type of FIOS file.
@@ -377,9 +377,10 @@ static void FiosGetFileList(SaveLoadOperation fop, bool show_dirs, FiosGetTypeAn
  * @param subdir the sub directory to search in
  * @return The file title.
  */
-static std::string GetFileTitle(const std::string &file, Subdirectory subdir)
+static std::string GetFileTitle(std::string_view file, Subdirectory subdir)
 {
-	auto f = FioFOpenFile(file + ".title", "r", subdir);
+	std::string filename = fmt::format("{}.title", file);
+	auto f = FioFOpenFile(filename, "r", subdir);
 	if (!f.has_value()) return {};
 
 	char title[80];
@@ -398,7 +399,7 @@ static std::string GetFileTitle(const std::string &file, Subdirectory subdir)
  * @see FiosGetFileList
  * @see FiosGetSavegameList
  */
-std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, std::string_view ext)
+std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext)
 {
 	/* Show savegame files
 	 * .SAV OpenTTD saved game
@@ -447,7 +448,7 @@ void FiosGetSavegameList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, std::string_view ext)
+std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
@@ -488,7 +489,7 @@ void FiosGetScenarioList(SaveLoadOperation fop, bool show_dirs, FileList &file_l
 	FiosGetFileList(fop, show_dirs, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
-std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation, const std::string &file, std::string_view ext)
+std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation, std::string_view file, std::string_view ext)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
@@ -553,7 +554,7 @@ void FiosGetHeightmapList(SaveLoadOperation fop, bool show_dirs, FileList &file_
  * @param file Name of the file to check.
  * @return a FIOS_TYPE_JSON type of the found file, FIOS_TYPE_INVALID if not a valid JSON file, and the title of the file (if any).
  */
-static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOperation fop, const std::string &file, std::string_view ext)
+static std::tuple<FiosType, std::string> FiosGetTownDataListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext)
 {
 	if (fop == SLO_LOAD) {
 		if (StrEqualsIgnoreCase(ext, ".json")) {
@@ -715,7 +716,7 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 	static std::string _prefix; ///< Static as the lambda needs access to it.
 
 	/* Callback for FiosFileScanner. */
-	static FiosGetTypeAndNameProc *proc = [](SaveLoadOperation, const std::string &file, std::string_view ext) {
+	static FiosGetTypeAndNameProc *proc = [](SaveLoadOperation, std::string_view file, std::string_view ext) {
 		if (StrEqualsIgnoreCase(ext, ".sav") && file.starts_with(_prefix)) return std::tuple(FIOS_TYPE_FILE, std::string{});
 		return std::tuple(FIOS_TYPE_INVALID, std::string{});
 	};

@@ -116,9 +116,9 @@ bool FiosDelete(std::string_view name);
 std::string FiosMakeHeightmapName(std::string_view name);
 std::string FiosMakeSavegameName(std::string_view name);
 
-std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, std::string_view ext);
-std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, std::string_view ext);
-std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, std::string_view ext);
+std::tuple<FiosType, std::string> FiosGetSavegameListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext);
+std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext);
+std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation fop, std::string_view file, std::string_view ext);
 
 void ScanScenarios();
 std::optional<std::string_view> FindScenario(const ContentInfo &ci, bool md5sum);
