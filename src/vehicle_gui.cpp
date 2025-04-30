@@ -477,7 +477,7 @@ Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_autoreplace, bo
 
 void BaseVehicleListWindow::OnInit()
 {
-	this->order_arrow_width = GetStringBoundingBox(STR_JUST_RIGHT_ARROW, FS_SMALL).width;
+	this->order_arrow_width = std::max(GetStringBoundingBox(STR_JUST_LEFT_ARROW, FS_SMALL).width, GetStringBoundingBox(STR_JUST_RIGHT_ARROW, FS_SMALL).width);
 	this->SetCargoFilterArray();
 }
 
@@ -1666,7 +1666,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uin
 	VehicleOrderID oid = start;
 
 	do {
-		if (oid == v->cur_real_order_index) DrawString(left, right, y, STR_JUST_RIGHT_ARROW, TC_BLACK, SA_LEFT, false, FS_SMALL);
+		if (oid == v->cur_real_order_index) DrawString(left, right, y, rtl ? STR_JUST_LEFT_ARROW : STR_JUST_RIGHT_ARROW, TC_BLACK, SA_LEFT, false, FS_SMALL);
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			DrawString(left + l_offset, right - r_offset, y, GetString(STR_STATION_NAME, order->GetDestination()), TC_BLACK, SA_LEFT, false, FS_SMALL);
