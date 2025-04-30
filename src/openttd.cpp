@@ -1186,7 +1186,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_SAVE_HEIGHTMAP: // Save heightmap.
-			MakeHeightmapScreenshot(_file_to_saveload.name.c_str());
+			MakeHeightmapScreenshot(_file_to_saveload.name);
 			CloseWindowById(WC_SAVELOAD, 0);
 			break;
 

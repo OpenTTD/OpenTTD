@@ -1155,7 +1155,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->preset = index;
 
 		if (index != -1) {
-			this->actives = LoadGRFPresetFromConfig(this->grf_presets[index].c_str());
+			this->actives = LoadGRFPresetFromConfig(this->grf_presets[index]);
 		}
 		this->avails.ForceRebuild();
 
@@ -1170,7 +1170,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	{
 		if (!str.has_value()) return;
 
-		SaveGRFPresetToConfig(str->c_str(), this->actives);
+		SaveGRFPresetToConfig(*str, this->actives);
 		this->grf_presets = GetGRFPresetList();
 
 		/* Switch to this preset */

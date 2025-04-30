@@ -1000,7 +1000,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 
 	if (mode == GLWM_HEIGHTMAP) {
 		/* If the function returns negative, it means there was a problem loading the heightmap */
-		if (!GetHeightmapDimensions(_file_to_saveload.ftype.detailed, _file_to_saveload.name.c_str(), &x, &y)) return;
+		if (!GetHeightmapDimensions(_file_to_saveload.ftype.detailed, _file_to_saveload.name, &x, &y)) return;
 	}
 
 	WindowDesc &desc = (mode == GLWM_HEIGHTMAP) ? _heightmap_load_desc : _generate_landscape_desc;

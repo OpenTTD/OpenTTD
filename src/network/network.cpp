@@ -718,7 +718,7 @@ NetworkGame *NetworkAddServer(std::string_view connection_string, bool manually,
 void GetBindAddresses(NetworkAddressList *addresses, uint16_t port)
 {
 	for (const auto &iter : _network_bind_list) {
-		addresses->emplace_back(iter.c_str(), port);
+		addresses->emplace_back(iter, port);
 	}
 
 	/* No address, so bind to everything. */

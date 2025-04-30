@@ -1125,7 +1125,7 @@ static GRFConfigList GRFLoadConfig(const IniFile &ini, std::string_view grpname,
 			}
 
 			ShowErrorMessage(GetEncodedString(STR_CONFIG_ERROR),
-				GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name.c_str() : filename, reason),
+				GetEncodedString(STR_CONFIG_ERROR_INVALID_GRF, filename.empty() ? item.name : filename, reason),
 				WL_CRITICAL);
 			continue;
 		}
@@ -1559,7 +1559,7 @@ GRFConfigList LoadGRFPresetFromConfig(std::string_view config_name)
 	section += config_name;
 
 	ConfigIniFile ini(_config_file);
-	GRFConfigList config = GRFLoadConfig(ini, section.c_str(), false);
+	GRFConfigList config = GRFLoadConfig(ini, section, false);
 
 	return config;
 }
@@ -1576,7 +1576,7 @@ void SaveGRFPresetToConfig(std::string_view config_name, GRFConfigList &config)
 	section += config_name;
 
 	ConfigIniFile ini(_config_file);
-	GRFSaveConfig(ini, section.c_str(), config);
+	GRFSaveConfig(ini, section, config);
 	ini.SaveToDisk(_config_file);
 }
 
