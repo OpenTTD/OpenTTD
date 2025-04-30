@@ -49,7 +49,9 @@ struct Textbuf {
 	bool InsertClipboard();
 
 	bool InsertChar(char32_t key);
-	bool InsertString(const char *str, bool marked, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
+	bool InsertString(std::string_view str, bool marked,
+			std::optional<size_t> caret = std::nullopt,
+			std::optional<size_t> insert_location = std::nullopt, std::optional<size_t> replacement_end = std::nullopt);
 
 	bool DeleteChar(uint16_t keycode);
 	bool MovePos(uint16_t keycode);

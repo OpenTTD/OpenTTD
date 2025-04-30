@@ -70,7 +70,9 @@ extern Palette _cur_palette; ///< Current palette
 
 void HandleToolbarHotkey(int hotkey);
 void HandleKeypress(uint keycode, char32_t key);
-void HandleTextInput(const char *str, bool marked = false, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
+void HandleTextInput(std::string_view str, bool marked = false,
+		std::optional<size_t> caret = std::nullopt,
+		std::optional<size_t> insert_location = std::nullopt, std::optional<size_t> replacement_end = std::nullopt);
 void HandleCtrlChanged();
 void HandleMouseEvents();
 void UpdateWindows();

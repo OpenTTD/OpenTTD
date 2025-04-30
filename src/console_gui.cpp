@@ -317,7 +317,7 @@ struct IConsoleWindow : Window
 		return ES_HANDLED;
 	}
 
-	void InsertTextString(WidgetID, const char *str, bool marked, const char *caret, const char *insert_location, const char *replacement_end) override
+	void InsertTextString(WidgetID, std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end) override
 	{
 		if (_iconsole_cmdline.InsertString(str, marked, caret, insert_location, replacement_end)) {
 			_iconsole_tab_completion.Reset();
@@ -340,7 +340,7 @@ struct IConsoleWindow : Window
 		return pt;
 	}
 
-	Rect GetTextBoundingRect(const char *from, const char *to) const override
+	Rect GetTextBoundingRect(size_t from, size_t to) const override
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
