@@ -904,7 +904,7 @@ void *UniquePtrSpriteAllocator::AllocatePtr(size_t size)
  */
 static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc, SpriteAllocator *allocator)
 {
-	static const char * const sprite_types[] = {
+	static const std::string_view sprite_types[] = {
 		"normal",        // SpriteType::Normal
 		"map generator", // SpriteType::MapGen
 		"character",     // SpriteType::Font

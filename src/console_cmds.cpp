@@ -1190,15 +1190,13 @@ static bool ConExec(std::span<std::string_view> argv)
 	_script_current_depth++;
 	uint script_depth = _script_current_depth;
 
-	char cmdline[ICON_CMDLN_SIZE];
-	while (fgets(cmdline, sizeof(cmdline), *script_file) != nullptr) {
+	char buffer[ICON_CMDLN_SIZE];
+	while (fgets(buffer, sizeof(buffer), *script_file) != nullptr) {
 		/* Remove newline characters from the executing script */
-		for (char *cmdptr = cmdline; *cmdptr != '\0'; cmdptr++) {
-			if (*cmdptr == '\n' || *cmdptr == '\r') {
-				*cmdptr = '\0';
-				break;
-			}
-		}
+		std::string_view cmdline{buffer};
+		auto last_non_newline = cmdline.find_last_not_of("\r\n");
+		if (last_non_newline != std::string_view::npos) cmdline = cmdline.substr(0, last_non_newline + 1);
+
 		IConsoleCmdExec(cmdline);
 		/* Ensure that we are still on the same depth or that we returned via 'return'. */
 		assert(_script_current_depth == script_depth || _script_current_depth == script_depth - 1);
