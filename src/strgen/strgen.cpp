@@ -322,7 +322,9 @@ int CDECL main(int argc, char *argv[])
 	std::filesystem::path src_dir(".");
 	std::filesystem::path dest_dir;
 
-	GetOptData mgo(std::span(argv + 1, argc - 1), _opts);
+	std::vector<std::string_view> params;
+	for (int i = 1; i < argc; ++i) params.emplace_back(argv[i]);
+	GetOptData mgo(params, _opts);
 	for (;;) {
 		int i = mgo.GetOpt();
 		if (i == -1) break;

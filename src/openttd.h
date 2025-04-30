@@ -83,7 +83,7 @@ extern PauseModes _pause_mode;
 void AskExitGame();
 void AskExitToGameMenu();
 
-int openttd_main(std::span<char * const> arguments);
+int openttd_main(std::span<std::string_view> arguments);
 void StateGameLoop();
 void HandleExitGameRequest();
 
