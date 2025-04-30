@@ -22,18 +22,18 @@ struct OptionData {
 	OptionDataType type; ///< The type of option.
 	char id; ///< Unique identification of this option data, often the same as #shortname.
 	char shortname = '\0'; ///< Short option letter if available, else use \c '\0'.
-	const char *longname = nullptr; ///< Long option name including '-'/'--' prefix, use \c nullptr if not available.
+	std::string_view longname{}; ///< Long option name including '-'/'--' prefix, leave empty if not available.
 };
 
 /** Data storage for parsing command line options. */
 struct GetOptData {
 	using OptionSpan = std::span<const OptionData>;
-	using ArgumentSpan = std::span<char * const>;
+	using ArgumentSpan = std::span<std::string_view>;
 
 	ArgumentSpan arguments; ///< Remaining command line arguments.
 	const OptionSpan options; ///< Command line option descriptions.
-	const char *opt = nullptr; ///< Option value, if available (else \c nullptr).
-	const char *cont = nullptr; ///< Next call to #GetOpt should start here (in the middle of an argument).
+	std::string_view opt; ///< Option value, if available (else empty).
+	std::string_view cont; ///< Next call to #GetOpt should start here (in the middle of an argument).
 
 	/**
 	 * Constructor of the data store.

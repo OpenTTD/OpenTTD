@@ -403,7 +403,9 @@ int CDECL main(int argc, char *argv[])
 	std::optional<std::string_view> before_file;
 	std::optional<std::string_view> after_file;
 
-	GetOptData mgo(std::span(argv + 1, argc - 1), _opts);
+	std::vector<std::string_view> params;
+	for (int i = 1; i < argc; ++i) params.emplace_back(argv[i]);
+	GetOptData mgo(params, _opts);
 	for (;;) {
 		int i = mgo.GetOpt();
 		if (i == -1) break;

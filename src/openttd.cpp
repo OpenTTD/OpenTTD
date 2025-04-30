@@ -497,7 +497,7 @@ static std::vector<OptionData> CreateOptions()
  * @param arguments The command line arguments passed to the application.
  * @return 0 when there is no error.
  */
-int openttd_main(std::span<char * const> arguments)
+int openttd_main(std::span<std::string_view> arguments)
 {
 	_game_session_stats.start_time = std::chrono::steady_clock::now();
 	_game_session_stats.savegame_size = std::nullopt;
@@ -541,7 +541,7 @@ int openttd_main(std::span<char * const> arguments)
 			blitter = "null";
 			dedicated = true;
 			SetDebugString("net=4", ShowInfoI);
-			if (mgo.opt != nullptr) {
+			if (!mgo.opt.empty()) {
 				scanner->dedicated_host = ParseFullConnectionString(mgo.opt, scanner->dedicated_port);
 			}
 			break;
@@ -564,7 +564,7 @@ int openttd_main(std::span<char * const> arguments)
 #if defined(_WIN32)
 				CreateConsole();
 #endif
-				if (mgo.opt != nullptr) SetDebugString(mgo.opt, ShowInfoI);
+				if (!mgo.opt.empty()) SetDebugString(mgo.opt, ShowInfoI);
 				break;
 			}
 		case 'e':
@@ -577,7 +577,7 @@ int openttd_main(std::span<char * const> arguments)
 			}
 			break;
 		case 'g':
-			if (mgo.opt != nullptr) {
+			if (!mgo.opt.empty()) {
 				_file_to_saveload.name = mgo.opt;
 
 				std::string extension = FS2OTTD(std::filesystem::path(OTTD2FS(_file_to_saveload.name)).extension().native());
@@ -609,7 +609,7 @@ int openttd_main(std::span<char * const> arguments)
 			break;
 		case 'q': {
 			DeterminePaths(arguments[0], only_local_path);
-			if (StrEmpty(mgo.opt)) {
+			if (mgo.opt.empty()) {
 				ret = 1;
 				return ret;
 			}
