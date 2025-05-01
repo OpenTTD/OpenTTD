@@ -8,6 +8,10 @@
  IsValid(vehicle.plane_speed): true
  vehicle.plane_speed: 2
   Required this file
+ TestEnum.value1: 1
+ test_constant: 1
+ TestEnum.value2: 2
+ test_constant: 1
  min(6, 3): 3
  min(3, 6): 3
  max(6, 3): 6
@@ -81,7 +85,7 @@
    20
    30
    40
- Ops:      8673
+ Ops:      8649
 
 --Std--
  abs(-21): 21
@@ -9763,9 +9767,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Valuate() with excessive CPU usage--
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [unknown()] regression/main.nut line [2065]
+*FUNCTION [unknown()] regression/main.nut line [2069]
 *FUNCTION [Valuate()] NATIVE line [-1]
-*FUNCTION [Start()] regression/main.nut line [2066]
+*FUNCTION [Start()] regression/main.nut line [2070]
 
 [id] 0
 [this] TABLE
@@ -9774,7 +9778,7 @@ Your script made an error: excessive CPU usage in valuator function
 [this] INSTANCE
 Your script made an error: excessive CPU usage in valuator function
 
-*FUNCTION [Start()] regression/main.nut line [2066]
+*FUNCTION [Start()] regression/main.nut line [2070]
 
 [Infinite] CLOSURE
 [list] INSTANCE

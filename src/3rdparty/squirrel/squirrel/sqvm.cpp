@@ -1253,7 +1253,8 @@ bool SQVM::Get(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPtr &dest,
 	if(fetchroot) {
 		if(_rawval(STK(0)) == _rawval(self) &&
 			type(STK(0)) == type(self)) {
-				return _table(_roottable)->Get(key,dest);
+				if (_table(_roottable)->Get(key,dest)) return true;
+				return _table(_ss(this)->_consts)->Get(key,dest);
 		}
 	}
 	return false;

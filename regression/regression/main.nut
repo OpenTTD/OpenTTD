@@ -17,6 +17,10 @@ function Regression::TestInit()
 	print(" IsValid(vehicle.plane_speed): " + AIGameSettings.IsValid("vehicle.plane_speed"));
 	print(" vehicle.plane_speed: " + AIGameSettings.GetValue("vehicle.plane_speed"));
 	require("require.nut");
+	print(" TestEnum.value1: " + ::TestEnum.value1);
+	print(" test_constant: " + ::test_constant);
+	print(" TestEnum.value2: " + TestEnum.value2);
+	print(" test_constant: " + test_constant);
 	print(" min(6, 3): " + min(6, 3));
 	print(" min(3, 6): " + min(3, 6));
 	print(" max(6, 3): " + max(6, 3));
