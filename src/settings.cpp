@@ -184,7 +184,7 @@ const uint16_t INIFILE_VERSION = (IniFileVersion)(IFV_MAX_VERSION - 1); ///< Cur
  * @param many full domain of values the ONEofMANY setting can have
  * @return the integer index of the full-list, or std::nullopt if not found
  */
-std::optional<uint32_t> OneOfManySettingDesc::ParseSingleValue(std::string_view str, const std::vector<std::string> &many)
+std::optional<uint32_t> OneOfManySettingDesc::ParseSingleValue(std::string_view str, std::span<const std::string_view> many)
 {
 	StringConsumer consumer{str};
 	auto digit = consumer.TryReadIntegerBase<uint32_t>(10);
@@ -217,7 +217,7 @@ std::optional<bool> BoolSettingDesc::ParseSingleValue(std::string_view str)
  * of separated by a whitespace, tab or | character
  * @return the 'fully' set integer, or std::nullopt if a set is not found
  */
-static std::optional<uint32_t> LookupManyOfMany(const std::vector<std::string> &many, std::string_view str)
+static std::optional<uint32_t> LookupManyOfMany(std::span<const std::string_view> many, std::string_view str)
 {
 	static const std::string_view separators{" \t|"};
 
@@ -334,7 +334,7 @@ std::string OneOfManySettingDesc::FormatSingleValue(uint id) const
 	if (id >= this->many.size()) {
 		return fmt::format("{}", id);
 	}
-	return this->many[id];
+	return std::string{this->many[id]};
 }
 
 std::string OneOfManySettingDesc::FormatValue(const void *object) const
@@ -1425,7 +1425,7 @@ void LoadFromConfig(bool startup)
 		}
 
 		if (generic_version < IFV_AUTOSAVE_RENAME && IsConversionNeeded(generic_ini, "gui", "autosave", "autosave_interval", &old_item)) {
-			static std::vector<std::string> _old_autosave_interval{"off", "monthly", "quarterly", "half year", "yearly"};
+			static std::vector<std::string_view> _old_autosave_interval{"off", "monthly", "quarterly", "half year", "yearly"};
 			auto old_value = OneOfManySettingDesc::ParseSingleValue(*old_item->value, _old_autosave_interval).value_or(-1);
 
 			switch (old_value) {

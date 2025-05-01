@@ -274,17 +274,17 @@ struct OneOfManySettingDesc : IntSettingDesc {
 			Tmax max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
-			GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+			GetDefaultValueCallback get_def_cb, std::initializer_list<std::string_view> many, OnConvert *many_cnvt) :
 		IntSettingDesc(save, flags, startup, def, 0, max, 0, str, str_help, str_val, cat,
 			pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, nullptr), many_cnvt(many_cnvt)
 	{
 		for (auto one : many) this->many.push_back(one);
 	}
 
-	std::vector<std::string> many; ///< possible values for this type
+	std::vector<std::string_view> many; ///< possible values for this type
 	OnConvert *many_cnvt;          ///< callback procedure when loading value mechanism fails
 
-	static std::optional<uint32_t> ParseSingleValue(std::string_view str, const std::vector<std::string> &many);
+	static std::optional<uint32_t> ParseSingleValue(std::string_view str, std::span<const std::string_view> many);
 	std::string FormatSingleValue(uint id) const;
 
 	int32_t ParseValue(std::string_view str) const override;
@@ -298,7 +298,7 @@ struct ManyOfManySettingDesc : OneOfManySettingDesc {
 		Tdef def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		GetTitleCallback get_title_cb, GetHelpCallback get_help_cb, GetValueParamsCallback get_value_params_cb,
-		GetDefaultValueCallback get_def_cb, std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		GetDefaultValueCallback get_def_cb, std::initializer_list<std::string_view> many, OnConvert *many_cnvt) :
 		OneOfManySettingDesc(save, flags, startup, def, (1 << many.size()) - 1, str, str_help,
 			str_val, cat, pre_check, post_callback, get_title_cb, get_help_cb, get_value_params_cb, get_def_cb, many, many_cnvt) {}
 
