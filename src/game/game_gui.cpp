@@ -353,14 +353,14 @@ struct GSConfigWindow : public Window {
 		SetValue(*value);
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		if (widget != WID_GSC_SETTING_DROPDOWN) return;
 		assert(this->clicked_dropdown);
 		SetValue(index);
 	}
 
-	void OnDropdownClose(Point, WidgetID widget, int, bool) override
+	void OnDropdownClose(Point, WidgetID widget, int, int, bool) override
 	{
 		if (widget != WID_GSC_SETTING_DROPDOWN) return;
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether

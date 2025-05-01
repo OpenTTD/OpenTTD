@@ -2173,7 +2173,7 @@ public:
 		}
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_VL_GROUP_BY_PULLDOWN:
@@ -2771,7 +2771,7 @@ struct VehicleDetailsWindow : Window {
 		return false;
 	}
 
-	void OnDropdownSelect(WidgetID widget, int index) override
+	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
 			case WID_VD_SERVICE_INTERVAL_DROPDOWN: {
