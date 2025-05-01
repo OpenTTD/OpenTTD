@@ -1066,6 +1066,9 @@ static void SlStdString(void *ptr, VarType conv)
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings.Set(StringValidationSetting::AllowNewline);
 			}
+			if ((conv & SLF_REPLACE_TABCRLF) != 0) {
+				settings.Set(StringValidationSetting::ReplaceTabCrNlWithSpace);
+			}
 			StrMakeValidInPlace(*str, settings);
 		}
 
