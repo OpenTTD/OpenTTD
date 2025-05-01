@@ -840,3 +840,7 @@
    -1 sprites/chars.png 8bpp 630  400   6  21   0  -2 normal
    -1 sprites/mono.png 8bpp 325  270   7  13   0   0 normal
    -1 sprites/mono.png 8bpp 340  270   7  13   0   0 normal
+
+// U+E29D: Small left arrow
+   -1 * 6   12 01 01 01 9D E2
+   -1 sprites/chars.png 8bpp  10  430   5  5   0   1 normal

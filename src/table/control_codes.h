@@ -171,6 +171,7 @@ enum StringControlCode : uint16_t {
 	 * These are mapped to the original glyphs */
 	SCC_LESS_THAN        = SCC_SPRITE_START + 0x3C,
 	SCC_GREATER_THAN     = SCC_SPRITE_START + 0x3E,
+	SCC_LEFT_ARROW       = SCC_SPRITE_START + 0x9D,
 	SCC_UP_ARROW         = SCC_SPRITE_START + 0xA0,
 	SCC_DOWN_ARROW       = SCC_SPRITE_START + 0xAA,
 	SCC_CHECKMARK        = SCC_SPRITE_START + 0xAC,

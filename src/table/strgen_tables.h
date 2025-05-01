@@ -142,6 +142,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"DOWN_ARROW",        EmitSingleChar, SCC_DOWN_ARROW,         0, std::nullopt, {CmdFlag::DontCount}},
 	{"CHECKMARK",         EmitSingleChar, SCC_CHECKMARK,          0, std::nullopt, {CmdFlag::DontCount}},
 	{"CROSS",             EmitSingleChar, SCC_CROSS,              0, std::nullopt, {CmdFlag::DontCount}},
+	{"LEFT_ARROW",        EmitSingleChar, SCC_LEFT_ARROW,         0, std::nullopt, {CmdFlag::DontCount}},
 	{"RIGHT_ARROW",       EmitSingleChar, SCC_RIGHT_ARROW,        0, std::nullopt, {CmdFlag::DontCount}},
 	{"SMALL_LEFT_ARROW",  EmitSingleChar, SCC_LESS_THAN,          0, std::nullopt, {CmdFlag::DontCount}},
 	{"SMALL_RIGHT_ARROW", EmitSingleChar, SCC_GREATER_THAN,       0, std::nullopt, {CmdFlag::DontCount}},
