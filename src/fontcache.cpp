@@ -129,7 +129,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 		InitFontCache(true);
 	}
 
-	LoadStringWidthTable();
+	LoadStringWidthTable(fontsize == FS_MONO);
 	UpdateAllVirtCoords();
 	ReInitAllWindows(true);
 
