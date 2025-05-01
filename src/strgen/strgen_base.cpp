@@ -481,7 +481,7 @@ static bool CheckCommandsMatch(std::string_view a, std::string_view b, std::stri
 
 [[nodiscard]] static std::string_view StripTrailingWhitespace(std::string_view str)
 {
-	auto len = str.find_last_not_of("\r\n ");
+	auto len = str.find_last_not_of("\r\n\t ");
 	if (len == std::string_view::npos) return {};
 	return str.substr(0, len + 1);
 }
