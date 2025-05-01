@@ -99,7 +99,7 @@ static constexpr NWidgetPart _nested_network_content_download_status_window_widg
 
 /** Window description for the download window */
 static WindowDesc _network_content_download_status_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WindowDefaultFlag::Modal,
 	_nested_network_content_download_status_window_widgets

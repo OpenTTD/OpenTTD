@@ -137,7 +137,7 @@ static constexpr NWidgetPart _nested_console_window_widgets[] = {
 };
 
 static WindowDesc _console_window_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_CONSOLE, WC_NONE,
 	{},
 	_nested_console_window_widgets

@@ -618,7 +618,7 @@ static constexpr NWidgetPart _nested_build_airport_widgets[] = {
 };
 
 static WindowDesc _build_airport_desc(
-	WDP_AUTO, nullptr, 0, 0,
+	WDP_AUTO, {}, 0, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WindowDefaultFlag::Construction,
 	_nested_build_airport_widgets

@@ -1708,7 +1708,7 @@ public:
 
 /** Company manager face selection window description */
 static WindowDesc _select_company_manager_face_desc(
-	WDP_AUTO, nullptr, 0, 0,
+	WDP_AUTO, {}, 0, 0,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_select_company_manager_face_widgets
@@ -2616,7 +2616,7 @@ static constexpr NWidgetPart _nested_buy_company_widgets[] = {
 };
 
 static WindowDesc _buy_company_desc(
-	WDP_AUTO, nullptr, 0, 0,
+	WDP_AUTO, {}, 0, 0,
 	WC_BUY_COMPANY, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_buy_company_widgets

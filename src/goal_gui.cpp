@@ -440,25 +440,25 @@ static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets
 
 static WindowDesc _goal_question_list_desc[] = {
 	{
-		WDP_CENTER, nullptr, 0, 0,
+		WDP_CENTER, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_question,
 	},
 	{
-		WDP_CENTER, nullptr, 0, 0,
+		WDP_CENTER, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_info,
 	},
 	{
-		WDP_CENTER, nullptr, 0, 0,
+		WDP_CENTER, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_warning,
 	},
 	{
-		WDP_CENTER, nullptr, 0, 0,
+		WDP_CENTER, {}, 0, 0,
 		WC_GOAL_QUESTION, WC_NONE,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_error,

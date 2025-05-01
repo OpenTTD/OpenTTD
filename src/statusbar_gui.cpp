@@ -219,7 +219,7 @@ static constexpr NWidgetPart _nested_main_status_widgets[] = {
 };
 
 static WindowDesc _main_status_desc(
-	WDP_MANUAL, nullptr, 0, 0,
+	WDP_MANUAL, {}, 0, 0,
 	WC_STATUS_BAR, WC_NONE,
 	{WindowDefaultFlag::NoFocus, WindowDefaultFlag::NoClose},
 	_nested_main_status_widgets
