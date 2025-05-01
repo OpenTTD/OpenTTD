@@ -295,7 +295,7 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
 #endif /* __GNUC__ || __clang__ */
 
 [[noreturn]] void NOT_REACHED(const std::source_location location = std::source_location::current());
-[[noreturn]] void AssertFailedError(const char *expression, const std::source_location location = std::source_location::current());
+[[noreturn]] void AssertFailedError(std::string_view expression, const std::source_location location = std::source_location::current());
 
 /* For non-debug builds with assertions enabled use the special assertion handler. */
 #if defined(NDEBUG) && defined(WITH_ASSERT)
