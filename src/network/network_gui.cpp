@@ -1203,7 +1203,7 @@ static constexpr NWidgetPart _nested_network_start_server_window_widgets[] = {
 };
 
 static WindowDesc _network_start_server_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_WINDOW, WC_NONE,
 	{},
 	_nested_network_start_server_window_widgets
@@ -2159,7 +2159,7 @@ static constexpr NWidgetPart _nested_network_join_status_window_widgets[] = {
 };
 
 static WindowDesc _network_join_status_window_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WindowDefaultFlag::Modal,
 	_nested_network_join_status_window_widgets
@@ -2266,7 +2266,7 @@ static constexpr NWidgetPart _nested_network_ask_relay_widgets[] = {
 };
 
 static WindowDesc _network_ask_relay_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_ASK_RELAY, WC_NONE,
 	WindowDefaultFlag::Modal,
 	_nested_network_ask_relay_widgets
@@ -2364,7 +2364,7 @@ static constexpr NWidgetPart _nested_network_ask_survey_widgets[] = {
 };
 
 static WindowDesc _network_ask_survey_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_NETWORK_ASK_SURVEY, WC_NONE,
 	WindowDefaultFlag::Modal,
 	_nested_network_ask_survey_widgets

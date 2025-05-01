@@ -2152,7 +2152,7 @@ static constexpr NWidgetPart _nested_scan_progress_widgets[] = {
 
 /** Description of the widgets and other settings of the window. */
 static WindowDesc _scan_progress_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
 	{},
 	_nested_scan_progress_widgets

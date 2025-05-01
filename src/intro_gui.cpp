@@ -443,7 +443,7 @@ static constexpr NWidgetPart _nested_select_game_widgets[] = {
 };
 
 static WindowDesc _select_game_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_SELECT_GAME, WC_NONE,
 	WindowDefaultFlag::NoClose,
 	_nested_select_game_widgets

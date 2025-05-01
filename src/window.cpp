@@ -104,7 +104,7 @@ std::vector<WindowDesc*> *_window_descs = nullptr;
 std::string _windows_file;
 
 /** Window description constructor. */
-WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
+WindowDesc::WindowDesc(WindowPosition def_pos, std::string_view ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, WindowDefaultFlags flags,
 			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys,
 			const std::source_location location) :
@@ -156,7 +156,7 @@ void WindowDesc::LoadFromConfig()
 	IniFile ini;
 	ini.LoadFromDisk(_windows_file, NO_DIRECTORY);
 	for (WindowDesc *wd : *_window_descs) {
-		if (wd->ini_key == nullptr) continue;
+		if (wd->ini_key.empty()) continue;
 		IniLoadWindowSettings(ini, wd->ini_key, wd);
 	}
 }
@@ -166,8 +166,7 @@ void WindowDesc::LoadFromConfig()
  */
 static bool DescSorter(WindowDesc * const &a, WindowDesc * const &b)
 {
-	if (a->ini_key != nullptr && b->ini_key != nullptr) return strcmp(a->ini_key, b->ini_key) < 0;
-	return a->ini_key != nullptr;
+	return a->ini_key < b->ini_key;
 }
 
 /**
@@ -181,7 +180,7 @@ void WindowDesc::SaveToConfig()
 	IniFile ini;
 	ini.LoadFromDisk(_windows_file, NO_DIRECTORY);
 	for (WindowDesc *wd : *_window_descs) {
-		if (wd->ini_key == nullptr) continue;
+		if (wd->ini_key.empty()) continue;
 		IniSaveWindowSettings(ini, wd->ini_key, wd);
 	}
 	ini.SaveToDisk(_windows_file);

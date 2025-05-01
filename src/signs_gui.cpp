@@ -544,7 +544,7 @@ static constexpr NWidgetPart _nested_query_sign_edit_widgets[] = {
 };
 
 static WindowDesc _query_sign_edit_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_QUERY_STRING, WC_NONE,
 	WindowDefaultFlag::Construction,
 	_nested_query_sign_edit_widgets

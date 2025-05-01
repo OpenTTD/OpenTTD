@@ -2149,7 +2149,7 @@ static constexpr NWidgetPart _nested_cust_currency_widgets[] = {
 };
 
 static WindowDesc _cust_currency_desc(
-	WDP_CENTER, nullptr, 0, 0,
+	WDP_CENTER, {}, 0, 0,
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	{},
 	_nested_cust_currency_widgets

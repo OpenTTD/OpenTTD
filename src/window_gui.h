@@ -166,7 +166,7 @@ struct HotkeyList;
  */
 struct WindowDesc {
 
-	WindowDesc(WindowPosition default_pos, const char *ini_key, int16_t def_width_trad, int16_t def_height_trad,
+	WindowDesc(WindowPosition default_pos, std::string_view ini_key, int16_t def_width_trad, int16_t def_height_trad,
 			WindowClass window_class, WindowClass parent_class, WindowDefaultFlags flags,
 			const std::span<const NWidgetPart> nwid_parts, HotkeyList *hotkeys = nullptr,
 			const std::source_location location = std::source_location::current());
@@ -177,7 +177,7 @@ struct WindowDesc {
 	const WindowPosition default_pos; ///< Preferred position of the window. @see WindowPosition()
 	const WindowClass cls; ///< Class of the window, @see WindowClass.
 	const WindowClass parent_cls; ///< Class of the parent window. @see WindowClass
-	const char *ini_key; ///< Key to store window defaults in openttd.cfg. \c nullptr if nothing shall be stored.
+	const std::string_view ini_key; ///< Key to store window defaults in openttd.cfg. An empty string if nothing shall be stored.
 	const WindowDefaultFlags flags; ///< Flags. @see WindowDefaultFlag
 	const std::span<const NWidgetPart> nwid_parts; ///< Span of nested widget parts describing the window.
 	const HotkeyList *hotkeys; ///< Hotkeys for the window.

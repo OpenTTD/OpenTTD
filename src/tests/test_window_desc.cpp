@@ -32,11 +32,11 @@ private:
 
 TEST_CASE("WindowDesc - ini_key uniqueness")
 {
-	std::set<std::string> seen;
+	std::set<std::string_view> seen;
 
 	for (const WindowDesc *window_desc : *_window_descs) {
 
-		if (window_desc->ini_key == nullptr) continue;
+		if (window_desc->ini_key.empty()) continue;
 
 		CAPTURE(window_desc->ini_key);
 		CHECK((seen.find(window_desc->ini_key) == std::end(seen)));
@@ -49,7 +49,7 @@ TEST_CASE("WindowDesc - ini_key validity")
 {
 	const WindowDesc *window_desc = GENERATE(from_range(std::begin(*_window_descs), std::end(*_window_descs)));
 
-	bool has_inikey = window_desc->ini_key != nullptr;
+	bool has_inikey = !window_desc->ini_key.empty();
 	bool has_widget = std::any_of(std::begin(window_desc->nwid_parts), std::end(window_desc->nwid_parts), [](const NWidgetPart &part) { return part.type == WWT_DEFSIZEBOX || part.type == WWT_STICKYBOX; });
 
 	INFO(fmt::format("{}:{}", window_desc->source_location.file_name(), window_desc->source_location.line()));
