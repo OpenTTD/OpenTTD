@@ -578,32 +578,32 @@ STR_DAY_NUMBER_30TH                                             :30.
 STR_DAY_NUMBER_31ST                                             :31.
 
 ###length 12
-STR_MONTH_ABBREV_JAN                                            :{NBSP}1.
-STR_MONTH_ABBREV_FEB                                            :{NBSP}2.
-STR_MONTH_ABBREV_MAR                                            :{NBSP}3.
-STR_MONTH_ABBREV_APR                                            :{NBSP}4.
-STR_MONTH_ABBREV_MAY                                            :{NBSP}5.
-STR_MONTH_ABBREV_JUN                                            :{NBSP}6.
-STR_MONTH_ABBREV_JUL                                            :{NBSP}7.
-STR_MONTH_ABBREV_AUG                                            :{NBSP}8.
-STR_MONTH_ABBREV_SEP                                            :{NBSP}9.
+STR_MONTH_ABBREV_JAN                                            :1.
+STR_MONTH_ABBREV_FEB                                            :2.
+STR_MONTH_ABBREV_MAR                                            :3.
+STR_MONTH_ABBREV_APR                                            :4.
+STR_MONTH_ABBREV_MAY                                            :5.
+STR_MONTH_ABBREV_JUN                                            :6.
+STR_MONTH_ABBREV_JUL                                            :7.
+STR_MONTH_ABBREV_AUG                                            :8.
+STR_MONTH_ABBREV_SEP                                            :9.
 STR_MONTH_ABBREV_OCT                                            :10.
 STR_MONTH_ABBREV_NOV                                            :11.
 STR_MONTH_ABBREV_DEC                                            :12.
 
 ###length 12
-STR_MONTH_JAN                                                   :Tammikuu
-STR_MONTH_FEB                                                   :Helmikuu
-STR_MONTH_MAR                                                   :Maaliskuu
-STR_MONTH_APR                                                   :Huhtikuu
-STR_MONTH_MAY                                                   :Toukokuu
-STR_MONTH_JUN                                                   :Kesäkuu
-STR_MONTH_JUL                                                   :Heinäkuu
-STR_MONTH_AUG                                                   :Elokuu
-STR_MONTH_SEP                                                   :Syyskuu
-STR_MONTH_OCT                                                   :Lokakuu
-STR_MONTH_NOV                                                   :Marraskuu
-STR_MONTH_DEC                                                   :Joulukuu
+STR_MONTH_JAN                                                   :tammikuu
+STR_MONTH_FEB                                                   :helmikuu
+STR_MONTH_MAR                                                   :maaliskuu
+STR_MONTH_APR                                                   :huhtikuu
+STR_MONTH_MAY                                                   :toukokuu
+STR_MONTH_JUN                                                   :kesäkuu
+STR_MONTH_JUL                                                   :heinäkuu
+STR_MONTH_AUG                                                   :elokuu
+STR_MONTH_SEP                                                   :syyskuu
+STR_MONTH_OCT                                                   :lokakuu
+STR_MONTH_NOV                                                   :marraskuu
+STR_MONTH_DEC                                                   :joulukuu
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Selite
@@ -5825,9 +5825,9 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut-helik
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}-{ZEROFILL_NUM}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_TINY                                            :{ZEROFILL_NUM}.{ZEROFILL_NUM}.{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING}ssa {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING}{STRING}{NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:ZEROFILL_NUM}-{0:ZEROFILL_NUM}
 
 STR_FORMAT_COMPANY_NUM                                          :(yhtiö {COMMA})

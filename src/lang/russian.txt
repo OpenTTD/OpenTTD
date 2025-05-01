@@ -569,7 +569,7 @@ STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :Создани�
 STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Размещение зданий
 
 # Settings menu
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Основные настройки
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Настройки игры
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Настройки ИИ
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Настройки игровых скриптов
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
@@ -582,7 +582,7 @@ STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :Грузовы�
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :Остановки автобусов
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :Пристани
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :Аэропорты
-STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Удалённые станции
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :Закрытые станции
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать названия маршрутных точек
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать метки
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показывать названия станций конкурентов
@@ -2355,7 +2355,7 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Загр
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценариев
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сетевая игра
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Основные настройки
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки игры
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица рекордов
 STR_INTRO_HELP                                                  :{BLACK}Помощь и документация
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
@@ -4171,14 +4171,14 @@ STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Посл
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфраструктура «{COMPANY}»
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Ж/д участки:
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Железная дорога:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сигналы
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Дорожные участки:
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Трамвайные участки:
-STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водные поля:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Автомобильные дороги:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Трамвайные пути:
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Водная инфраструктура:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Каналы
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Станции:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Площадь станций
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Занимаемая площадь
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Аэропорты
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/год
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/цикл
