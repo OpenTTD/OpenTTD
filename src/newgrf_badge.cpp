@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "newgrf.h"
 #include "newgrf_badge.h"
+#include "newgrf_badge_config.h"
 #include "newgrf_badge_type.h"
 #include "newgrf_spritegroup.h"
 #include "stringfilter_type.h"
@@ -40,6 +41,15 @@ static Badges _badges = {};
 std::span<const Badge> GetBadges()
 {
 	return _badges.specs;
+}
+
+/**
+ * Get a read-only view of class badge index.
+ * @return Span of badges.
+ */
+std::span<const BadgeID> GetClassBadges()
+{
+	return _badges.classes;
 }
 
 /**
@@ -333,4 +343,17 @@ BadgeTextFilter::BadgeTextFilter(StringFilter &filter, GrfSpecFeature feature)
 bool BadgeTextFilter::Filter(std::span<const BadgeID> badges) const
 {
 	return std::ranges::any_of(badges, [this](const BadgeID &badge) { return std::ranges::binary_search(this->badges, badge); });
+}
+
+/**
+ * Test if the given badges matches the filtered badge list.
+ * @param badges List of badges.
+ * @return true iff all required badges are present in the provided list.
+ */
+bool BadgeDropdownFilter::Filter(std::span<const BadgeID> badges) const
+{
+	if (this->badges.empty()) return true;
+
+	/* We want all filtered badges to match. */
+	return std::ranges::all_of(this->badges, [&badges](const auto &badge) { return std::ranges::find(badges, badge.second) != std::end(badges); });
 }

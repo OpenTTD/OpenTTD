@@ -52,4 +52,15 @@ void DrawBadgeColumn(Rect r, int column_group, const GUIBadgeClasses &gui_classe
 std::unique_ptr<DropDownListItem> MakeDropDownListBadgeItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, std::string &&str, int value, bool masked = false, bool shaded = false);
 std::unique_ptr<DropDownListItem> MakeDropDownListBadgeIconItem(const std::shared_ptr<GUIBadgeClasses> &gui_classes, std::span<const BadgeID> badges, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, const Dimension &dim, SpriteID sprite, PaletteID palette, std::string &&str, int value, bool masked = false, bool shaded = false);
 
+DropDownList BuildBadgeClassConfigurationList(const class GUIBadgeClasses &badge_class, uint columns, std::span<const StringID> column_separators);
+void HandleBadgeConfigurationDropDownClick(GrfSpecFeature feature, BadgeClassID class_index, uint columns);
+
+std::pair<WidgetID, WidgetID> AddBadgeDropdownFilters(NWidgetContainer &container, WidgetID widget, Colours colour, GrfSpecFeature feature);
+BadgeClassID GetBadgeDropdownFilterClass(const NWidgetBase &nwid);
+DropDownList GetBadgeDropdownFilterList(const NWidgetBase &nwid);
+std::string GetBadgeDropdownFilterString(const NWidgetBase &nwid, const BadgeFilterConfiguration &conf);
+
+void ResetBadgeFilter(BadgeFilterConfiguration &conf, BadgeClassID badge_class_index);
+void SetBadgeFilter(BadgeFilterConfiguration &conf, BadgeID badge_index);
+
 #endif /* NEWGRF_BADGE_GUI_H */

@@ -15,6 +15,7 @@
 
 /* Show drop down menu containing a fixed list of strings */
 void ShowDropDownMenu(Window *w, std::span<const StringID> strings, int selected, WidgetID button, uint32_t disabled_mask, uint32_t hidden_mask, uint width = 0);
+std::pair<Dimension, Point> GetLastDropDownClickPosition();
 
 /* Helper functions for commonly used drop down list items. */
 std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem();

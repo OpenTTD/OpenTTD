@@ -1728,6 +1728,7 @@ public:
 
 	void FillWidgetLookup(WidgetLookup &widget_lookup) override
 	{
+		this->NWidgetBase::FillWidgetLookup(widget_lookup);
 		this->avs->FillWidgetLookup(widget_lookup);
 		this->acs->FillWidgetLookup(widget_lookup);
 		this->inf->FillWidgetLookup(widget_lookup);
