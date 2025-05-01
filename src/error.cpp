@@ -16,7 +16,7 @@
 	FatalError("NOT_REACHED triggered at line {} of {}", location.line(), location.file_name());
 }
 
-[[noreturn]] void AssertFailedError(const char *expression, const std::source_location location)
+[[noreturn]] void AssertFailedError(std::string_view expression, const std::source_location location)
 {
 	FatalError("Assertion failed at line {} of {}: {}", location.line(), location.file_name(), expression);
 }

@@ -260,7 +260,7 @@ static const uint MAX_FRAMES     = 64;
 			}
 
 			/* Get module name. */
-			const char *mod_name = "???";
+			std::string_view mod_name = "???";
 
 			IMAGEHLP_MODULE64 module;
 			module.SizeOfStruct = sizeof(module);
@@ -269,7 +269,7 @@ static const uint MAX_FRAMES     = 64;
 			}
 
 			/* Print module and instruction pointer. */
-			std::string message = fmt::format("{:20s} {:X}",  mod_name, frame.AddrPC.Offset);
+			std::string message = fmt::format("{:20s} {:X}", mod_name, frame.AddrPC.Offset);
 
 			/* Get symbol name and line info if possible. */
 			DWORD64 offset;
