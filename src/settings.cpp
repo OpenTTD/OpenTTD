@@ -592,7 +592,7 @@ void StringSettingDesc::MakeValueValid(std::string &str) const
  * @param object The object the setting is to be saved in.
  * @param str The string to save.
  */
-void StringSettingDesc::Write(const void *object, const std::string &str) const
+void StringSettingDesc::Write(const void *object, std::string_view str) const
 {
 	reinterpret_cast<std::string *>(GetVariableAddress(object, this->save))->assign(str);
 }
@@ -665,7 +665,7 @@ void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 
 void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	std::string str = (item == nullptr) ? this->def : item->value.value_or("");
+	std::string str{(item == nullptr) ? this->def : item->value.value_or("")};
 	this->MakeValueValid(str);
 	this->Write(object, str);
 }
@@ -675,7 +675,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 	std::optional<std::string_view> str;
 	if (item != nullptr) {
 		str = item->value;
-	} else if (this->def != nullptr) {
+	} else if (!this->def.empty()) {
 		str = this->def;
 	}
 	void *ptr = GetVariableAddress(object, this->save);

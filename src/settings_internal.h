@@ -323,12 +323,12 @@ struct StringSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(const std::string &value);
 
-	StringSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def,
+	StringSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, std::string_view def,
 			uint32_t max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
-		SettingDesc(save, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
+		SettingDesc(save, flags, startup), def(def), max_length(max_length),
 			pre_check(pre_check), post_callback(post_callback) {}
 
-	std::string def;                   ///< Default value given when none is present
+	std::string_view def; ///< Default value given when none is present
 	uint32_t max_length;                 ///< Maximum length of the string, 0 means no maximum length
 	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
 	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
@@ -345,15 +345,15 @@ struct StringSettingDesc : SettingDesc {
 
 private:
 	void MakeValueValid(std::string &str) const;
-	void Write(const void *object, const std::string &str) const;
+	void Write(const void *object, std::string_view str) const;
 };
 
 /** List/array settings. */
 struct ListSettingDesc : SettingDesc {
-	ListSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, const char *def) :
+	ListSettingDesc(const SaveLoad &save, SettingFlags flags, bool startup, std::string_view def) :
 		SettingDesc(save, flags, startup), def(def) {}
 
-	const char *def;        ///< default value given when none is present
+	std::string_view def; ///< default value given when none is present
 
 	std::string FormatValue(const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
