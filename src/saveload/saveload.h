@@ -691,6 +691,7 @@ enum VarTypes : uint16_t {
 	 * Flags directing saving/loading of a variable */
 	SLF_ALLOW_CONTROL   = 1 << 8, ///< Allow control codes in the strings.
 	SLF_ALLOW_NEWLINE   = 1 << 9, ///< Allow new lines in the strings.
+	SLF_REPLACE_TABCRLF = 1 << 10, ///< Replace tabs, cr and lf in the string with spaces.
 };
 
 typedef uint32_t VarType;
