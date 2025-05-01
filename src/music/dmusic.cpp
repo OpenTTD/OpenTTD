@@ -972,7 +972,7 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 				download_port->Release();
 				return "Can't get instrument download buffer";
 			}
-			char *inst_base = (char *)instrument;
+			const std::byte *inst_base = reinterpret_cast<const std::byte *>(instrument);
 
 			/* Fill download header. */
 			DMUS_DOWNLOADINFO *d_info = (DMUS_DOWNLOADINFO *)instrument;
@@ -990,18 +990,18 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 			/* Instrument header. */
 			DMUS_INSTRUMENT *inst_data = (DMUS_INSTRUMENT *)instrument;
 			MemSetT(inst_data, 0);
-			offset_table[last_offset++] = (char *)inst_data - inst_base;
+			offset_table[last_offset++] = reinterpret_cast<const std::byte *>(inst_data) - inst_base;
 			inst_data->ulPatch = (dls_file.instruments[i].hdr.Locale.ulBank & F_INSTRUMENT_DRUMS) | ((dls_file.instruments[i].hdr.Locale.ulBank & 0x7F7F) << 8) | (dls_file.instruments[i].hdr.Locale.ulInstrument & 0x7F);
 			instrument = inst_data + 1;
 
 			/* Write global articulations. */
 			if (!dls_file.instruments[i].articulators.empty()) {
 				inst_data->ulGlobalArtIdx = last_offset;
-				offset_table[last_offset++] = (char *)instrument - inst_base;
-				offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
+				offset_table[last_offset++] = reinterpret_cast<const std::byte *>(instrument) - inst_base;
+				offset_table[last_offset++] = reinterpret_cast<const std::byte *>(instrument) + sizeof(DMUS_ARTICULATION2) - inst_base;
 
 				instrument = DownloadArticulationData(inst_data->ulGlobalArtIdx, instrument, dls_file.instruments[i].articulators);
-				assert((char *)instrument - inst_base <= (ptrdiff_t)inst_size);
+				assert(reinterpret_cast<const std::byte *>(instrument) - inst_base <= (ptrdiff_t)inst_size);
 			}
 
 			/* Write out regions. */
@@ -1010,7 +1010,7 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 				DLSFile::DLSRegion &rgn = dls_file.instruments[i].regions[j];
 
 				DMUS_REGION *inst_region = (DMUS_REGION *)instrument;
-				offset_table[last_offset++] = (char *)inst_region - inst_base;
+				offset_table[last_offset++] = reinterpret_cast<const std::byte *>(inst_region) - inst_base;
 				inst_region->RangeKey = rgn.hdr.RangeKey;
 				inst_region->RangeVelocity = rgn.hdr.RangeVelocity;
 				inst_region->fusOptions = rgn.hdr.fusOptions;
@@ -1026,25 +1026,25 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 					inst_region->WSMP = rgn.wave_sample;
 					if (!rgn.wave_loops.empty()) MemCpyT(inst_region->WLOOP, &rgn.wave_loops.front(), rgn.wave_loops.size());
 
-					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * rgn.wave_loops.size();
+					instrument = reinterpret_cast<std::byte *>(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * rgn.wave_loops.size();
 				} else {
 					inst_region->WSMP = rgn.wave_sample;
 					if (!dls_file.waves[wave_id].wave_loops.empty()) MemCpyT(inst_region->WLOOP, &dls_file.waves[wave_id].wave_loops.front(), dls_file.waves[wave_id].wave_loops.size());
 
-					instrument = (char *)(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * dls_file.waves[wave_id].wave_loops.size();
+					instrument = reinterpret_cast<std::byte *>(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * dls_file.waves[wave_id].wave_loops.size();
 				}
 
 				/* Write local articulator data. */
 				if (!rgn.articulators.empty()) {
 					inst_region->ulRegionArtIdx = last_offset;
-					offset_table[last_offset++] = (char *)instrument - inst_base;
-					offset_table[last_offset++] = (char *)instrument + sizeof(DMUS_ARTICULATION2) - inst_base;
+					offset_table[last_offset++] = reinterpret_cast<const std::byte *>(instrument) - inst_base;
+					offset_table[last_offset++] = reinterpret_cast<const std::byte *>(instrument) + sizeof(DMUS_ARTICULATION2) - inst_base;
 
 					instrument = DownloadArticulationData(inst_region->ulRegionArtIdx, instrument, rgn.articulators);
 				} else {
 					inst_region->ulRegionArtIdx = 0;
 				}
-				assert((char *)instrument - inst_base <= (ptrdiff_t)inst_size);
+				assert(reinterpret_cast<const std::byte *>(instrument) - inst_base <= (ptrdiff_t)inst_size);
 
 				/* Link to the next region unless this was the last one.*/
 				inst_region->ulNextRegionIdx = j < dls_file.instruments[i].regions.size() - 1 ? last_offset : 0;

@@ -289,7 +289,7 @@ static bool LoadIntList(std::optional<std::string_view> str, void *array, int ne
 	auto opt_items = ParseIntList(*str);
 	if (!opt_items.has_value() || opt_items->size() != (size_t)nelems) return false;
 
-	char *p = static_cast<char *>(array);
+	std::byte *p = static_cast<std::byte *>(array);
 	for (auto item : *opt_items) {
 		WriteValue(p, type, item);
 		p += elem_size;
