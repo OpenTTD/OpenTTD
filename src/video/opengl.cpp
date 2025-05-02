@@ -133,30 +133,28 @@ static const int MAX_CACHED_CURSORS = 48;
 
 GetOGLProcAddressProc GetOGLProcAddress;
 
+static std::optional<std::string_view> GlGetString(GLenum name)
+{
+	auto str = reinterpret_cast<const char *>(_glGetString(name));
+	if (str == nullptr) return {};
+	return str;
+}
+
 /**
  * Find a substring in a string made of space delimited elements. The substring
  * has to match the complete element, partial matches don't count.
  * @param string List of space delimited elements.
  * @param substring Substring to find.
- * @return Pointer to the start of the match or nullptr if the substring is not present.
+ * @return Whether the substring was found.
  */
-const char *FindStringInExtensionList(const char *string, const char *substring)
+bool HasStringInExtensionList(std::string_view string, std::string_view substring)
 {
-	while (true) {
-		/* Is the extension string present at all? */
-		const char *pos = strstr(string, substring);
-		if (pos == nullptr) break;
-
-		/* Is this a real match, i.e. are the chars before and after the matched string
-		 * indeed spaces (or the start or end of the string, respectively)? */
-		const char *end = pos + strlen(substring);
-		if ((pos == string || pos[-1] == ' ') && (*end == ' ' || *end == '\0')) return pos;
-
-		/* False hit, try again for the remaining string. */
-		string = end;
+	StringConsumer consumer{string};
+	while (consumer.AnyBytesLeft()) {
+		if (substring == consumer.ReadUntil(" ", StringConsumer::SKIP_ALL_SEPARATORS)) return true;
 	}
 
-	return nullptr;
+	return false;
 }
 
 /**
@@ -164,7 +162,7 @@ const char *FindStringInExtensionList(const char *string, const char *substring)
  * @param extension The extension string to test.
  * @return True if the extension is supported, false if not.
  */
-static bool IsOpenGLExtensionSupported(const char *extension)
+static bool IsOpenGLExtensionSupported(std::string_view extension)
 {
 	static PFNGLGETSTRINGIPROC glGetStringi = nullptr;
 	static bool glGetStringi_loaded = false;
@@ -182,12 +180,12 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 		_glGetIntegerv(GL_NUM_EXTENSIONS, &num_exts);
 
 		for (GLint i = 0; i < num_exts; i++) {
-			const char *entry = (const char *)glGetStringi(GL_EXTENSIONS, i);
-			if (strcmp(entry, extension) == 0) return true;
+			const char *entry = reinterpret_cast<const char *>(glGetStringi(GL_EXTENSIONS, i));
+			if (entry != nullptr && entry == extension) return true;
 		}
-	} else {
+	} else if (auto str = GlGetString(GL_EXTENSIONS); str.has_value()) {
 		/* Old style: A single, space-delimited string for all extensions. */
-		return FindStringInExtensionList((const char *)_glGetString(GL_EXTENSIONS), extension) != nullptr;
+		return HasStringInExtensionList(*str, extension);
 	}
 
 	return false;
@@ -407,7 +405,7 @@ static bool BindPersistentBufferExtensions()
 void APIENTRY DebugOutputCallback([[maybe_unused]] GLenum source, GLenum type, [[maybe_unused]] GLuint id, GLenum severity, [[maybe_unused]] GLsizei length, const GLchar *message, [[maybe_unused]] const void *userParam)
 {
 	/* Make severity human readable. */
-	const char *severity_str = "";
+	std::string_view severity_str;
 	switch (severity) {
 		case GL_DEBUG_SEVERITY_HIGH:   severity_str = "high"; break;
 		case GL_DEBUG_SEVERITY_MEDIUM: severity_str = "medium"; break;
@@ -415,7 +413,7 @@ void APIENTRY DebugOutputCallback([[maybe_unused]] GLenum source, GLenum type, [
 	}
 
 	/* Make type human readable.*/
-	const char *type_str = "Other";
+	std::string_view type_str = "Other";
 	switch (type) {
 		case GL_DEBUG_TYPE_ERROR:               type_str = "Error"; break;
 		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: type_str = "Deprecated"; break;
@@ -516,6 +514,14 @@ OpenGLBackend::~OpenGLBackend()
 	}
 }
 
+static std::tuple<uint8_t, uint8_t> DecodeVersion(std::string_view ver)
+{
+	StringConsumer consumer{ver};
+	int major = consumer.ReadIntegerBase<uint8_t>(10);
+	if (consumer.ReadIf(".")) return {major, consumer.ReadIntegerBase<uint8_t>(10)};
+	return {major, 0};
+}
+
 /**
  * Check for the needed OpenGL functionality and allocate all resources.
  * @param screen_res Current display resolution.
@@ -526,27 +532,21 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	if (!BindBasicInfoProcs()) return "OpenGL not supported";
 
 	/* Always query the supported OpenGL version as the current context might have changed. */
-	const char *ver = (const char *)_glGetString(GL_VERSION);
-	const char *vend = (const char *)_glGetString(GL_VENDOR);
-	const char *renderer = (const char *)_glGetString(GL_RENDERER);
+	auto ver = GlGetString(GL_VERSION);
+	auto vend = GlGetString(GL_VENDOR);
+	auto renderer = GlGetString(GL_RENDERER);
 
-	if (ver == nullptr || vend == nullptr || renderer == nullptr) return "OpenGL not supported";
+	if (!ver.has_value() || !vend.has_value() || !renderer.has_value()) return "OpenGL not supported";
 
-	Debug(driver, 1, "OpenGL driver: {} - {} ({})", vend, renderer, ver);
+	Debug(driver, 1, "OpenGL driver: {} - {} ({})", *vend, *renderer, *ver);
 
 #ifndef GL_ALLOW_SOFTWARE_RENDERER
 	/* Don't use MESA software rendering backends as they are slower than
 	 * just using a non-OpenGL video driver. */
-	if (strncmp(renderer, "llvmpipe", 8) == 0 || strncmp(renderer, "softpipe", 8) == 0) return "Software renderer detected, not using OpenGL";
+	if (renderer->starts_with("llvmpipe") || renderer->starts_with("softpipe")) return "Software renderer detected, not using OpenGL";
 #endif
 
-	StringConsumer consumer{std::string_view{ver}};
-	_gl_major_ver = consumer.ReadIntegerBase<uint8_t>(10);
-	if (consumer.ReadIf(".")) {
-		_gl_minor_ver = consumer.ReadIntegerBase<uint8_t>(10);
-	} else {
-		_gl_minor_ver = 0;
-	}
+	std::tie(_gl_major_ver, _gl_minor_ver) = DecodeVersion(*ver);
 
 #ifdef _WIN32
 	/* Old drivers on Windows (especially if made by Intel) seem to be
@@ -599,7 +599,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	_glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
 	if (max_tex_units < 4) return "Not enough simultaneous textures supported";
 
-	Debug(driver, 2, "OpenGL shading language version: {}, texture units = {}", (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
+	Debug(driver, 2, "OpenGL shading language version: {}, texture units = {}", GlGetString(GL_SHADING_LANGUAGE_VERSION).value_or("Unknown version"), max_tex_units);
 
 	if (!this->InitShaders()) return "Failed to initialize shaders";
 
@@ -746,12 +746,10 @@ void OpenGLBackend::PrepareContext()
 
 std::string OpenGLBackend::GetDriverName()
 {
-	std::string res{};
+	auto renderer = GlGetString(GL_RENDERER);
+	auto version = GlGetString(GL_VERSION);
 	/* Skipping GL_VENDOR as it tends to be "obvious" from the renderer and version data, and just makes the string pointlessly longer */
-	res += reinterpret_cast<const char *>(_glGetString(GL_RENDERER));
-	res += ", ";
-	res += reinterpret_cast<const char *>(_glGetString(GL_VERSION));
-	return res;
+	return fmt::format("{}, {}", renderer.value_or("Unknown renderer"), version.value_or("Unknown version"));
 }
 
 /**
@@ -806,11 +804,10 @@ static bool VerifyProgram(GLuint program)
  */
 bool OpenGLBackend::InitShaders()
 {
-	const char *ver = (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION);
-	if (ver == nullptr) return false;
+	auto ver = GlGetString(GL_SHADING_LANGUAGE_VERSION);
+	if (!ver.has_value()) return false;
 
-	int glsl_major  = ver[0] - '0';
-	int glsl_minor = ver[2] - '0';
+	auto [glsl_major, glsl_minor] = DecodeVersion(*ver);
 
 	bool glsl_150 = (IsOpenGLVersionAtLeast(3, 2) || glsl_major > 1 || (glsl_major == 1 && glsl_minor >= 5)) && _glBindFragDataLocation != nullptr;
 

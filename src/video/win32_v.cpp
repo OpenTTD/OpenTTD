@@ -1379,13 +1379,13 @@ static void LoadWGLExtensions()
 			/* Get list of WGL extensions. */
 			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionsStringARB");
 			if (wglGetExtensionsStringARB != nullptr) {
-				const char *wgl_exts = wglGetExtensionsStringARB(dc);
+				std::string_view wgl_exts = wglGetExtensionsStringARB(dc);
 				/* Bind supported functions. */
-				if (FindStringInExtensionList(wgl_exts, "WGL_ARB_create_context") != nullptr) {
+				if (HasStringInExtensionList(wgl_exts, "WGL_ARB_create_context")) {
 					_wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
 				}
-				_hasWGLARBCreateContextProfile = FindStringInExtensionList(wgl_exts, "WGL_ARB_create_context_profile") != nullptr;
-				if (FindStringInExtensionList(wgl_exts, "WGL_EXT_swap_control") != nullptr) {
+				_hasWGLARBCreateContextProfile = HasStringInExtensionList(wgl_exts, "WGL_ARB_create_context_profile");
+				if (HasStringInExtensionList(wgl_exts, "WGL_EXT_swap_control")) {
 					_wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
 				}
 			}

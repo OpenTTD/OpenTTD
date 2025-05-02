@@ -19,7 +19,7 @@ typedef void (*OGLProc)();
 typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);
 
 bool IsOpenGLVersionAtLeast(uint8_t major, uint8_t minor);
-const char *FindStringInExtensionList(const char *string, const char *substring);
+bool HasStringInExtensionList(std::string_view string, std::string_view substring);
 
 class OpenGLSprite;
 
