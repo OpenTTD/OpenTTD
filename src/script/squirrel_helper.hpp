@@ -110,9 +110,9 @@ namespace SQConvert {
 			/* Convert what-ever there is as parameter to a string */
 			sq_tostring(vm, index);
 
-			const SQChar *tmp;
-			sq_getstring(vm, -1, &tmp);
-			std::string result = StrMakeValid(tmp);
+			std::string_view view;
+			sq_getstring(vm, -1, view);
+			std::string result = StrMakeValid(view);
 			sq_poptop(vm);
 			return result;
 		}

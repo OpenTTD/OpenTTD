@@ -553,11 +553,11 @@ SQRESULT sq_getbool(HSQUIRRELVM v,SQInteger idx,SQBool *b)
 	return SQ_ERROR;
 }
 
-SQRESULT sq_getstring(HSQUIRRELVM v,SQInteger idx,const SQChar **c)
+SQRESULT sq_getstring(HSQUIRRELVM v,SQInteger idx,std::string_view &str)
 {
 	SQObjectPtr *o = nullptr;
 	_GETSAFE_OBJ(v, idx, OT_STRING,o);
-	*c = _stringval(*o);
+	str = _stringval(*o);
 	return SQ_OK;
 }
 

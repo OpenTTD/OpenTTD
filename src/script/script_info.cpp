@@ -105,13 +105,13 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	/* Read the table, and find all properties we care about */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-		const SQChar *key_string;
-		if (SQ_FAILED(sq_getstring(vm, -2, &key_string))) return SQ_ERROR;
+		std::string_view key_string;
+		if (SQ_FAILED(sq_getstring(vm, -2, key_string))) return SQ_ERROR;
 		std::string key = StrMakeValid(key_string);
 
 		if (key == "name") {
-			const SQChar *sqvalue;
-			if (SQ_FAILED(sq_getstring(vm, -1, &sqvalue))) return SQ_ERROR;
+			std::string_view sqvalue;
+			if (SQ_FAILED(sq_getstring(vm, -1, sqvalue))) return SQ_ERROR;
 
 			/* Don't allow '=' and ',' in configure setting names, as we need those
 			 *  2 chars to nicely store the settings as a string. */
@@ -120,8 +120,8 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			std::replace_if(config.name.begin(), config.name.end(), replace_with_underscore, '_');
 			present.Set(ScriptConfigItemKey::Name);
 		} else if (key == "description") {
-			const SQChar *sqdescription;
-			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
+			std::string_view sqdescription;
+			if (SQ_FAILED(sq_getstring(vm, -1, sqdescription))) return SQ_ERROR;
 			config.description = StrMakeValid(sqdescription);
 			present.Set(ScriptConfigItemKey::Description);
 		} else if (key == "min_value") {
@@ -199,9 +199,9 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 
 SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 {
-	const SQChar *setting_name_str;
-	if (SQ_FAILED(sq_getstring(vm, -2, &setting_name_str))) return SQ_ERROR;
-	std::string setting_name = StrMakeValid(setting_name_str);
+	std::string_view setting_name_view;
+	if (SQ_FAILED(sq_getstring(vm, -2, setting_name_view))) return SQ_ERROR;
+	std::string setting_name = StrMakeValid(setting_name_view);
 
 	ScriptConfigItem *config = nullptr;
 	for (auto &item : this->config_list) {
@@ -217,18 +217,18 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 	/* Read the table and find all labels */
 	sq_pushnull(vm);
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
-		const SQChar *key_string;
-		const SQChar *label;
-		if (SQ_FAILED(sq_getstring(vm, -2, &key_string))) return SQ_ERROR;
-		if (SQ_FAILED(sq_getstring(vm, -1, &label))) return SQ_ERROR;
+		std::string_view key_string;
+		std::string_view label;
+		if (SQ_FAILED(sq_getstring(vm, -2, key_string))) return SQ_ERROR;
+		if (SQ_FAILED(sq_getstring(vm, -1, label))) return SQ_ERROR;
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
-		key_string++;
+		key_string.remove_prefix(1);
 		int sign = 1;
-		if (*key_string == '_') {
+		if (key_string.starts_with('_')) {
 			/* When the second character is '_', it indicates the value is negative. */
 			sign = -1;
-			key_string++;
+			key_string.remove_prefix(1);
 		}
 		auto key = ParseInteger<int>(key_string);
 		if (!key.has_value()) return SQ_ERROR;

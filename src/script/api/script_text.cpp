@@ -60,10 +60,10 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 
 	switch (sq_gettype(vm, -1)) {
 		case OT_STRING: {
-			const SQChar *value;
-			sq_getstring(vm, -1, &value);
+			std::string_view view;
+			sq_getstring(vm, -1, view);
 
-			this->param[parameter] = StrMakeValid(value);
+			this->param[parameter] = StrMakeValid(view);
 			break;
 		}
 
@@ -135,10 +135,10 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	int32_t k;
 
 	if (sq_gettype(vm, 2) == OT_STRING) {
-		const SQChar *key_string;
-		sq_getstring(vm, 2, &key_string);
+		std::string_view view;
+		sq_getstring(vm, 2, view);
 
-		std::string str = StrMakeValid(key_string);
+		std::string str = StrMakeValid(view);
 		if (!str.starts_with("param_") || str.size() > 8) return SQ_ERROR;
 
 		k = stoi(str.substr(6));
