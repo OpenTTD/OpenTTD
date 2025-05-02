@@ -222,22 +222,24 @@ SpriteID GetMaxSpriteID()
 static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src, ZoomLevel tgt)
 {
 	uint8_t scaled_1 = ScaleByZoom(1, (ZoomLevel)(src - tgt));
+	const auto &src_sprite = sprite[src];
+	auto &dest_sprite = sprite[tgt];
 
 	/* Check for possible memory overflow. */
-	if (sprite[src].width * scaled_1 > UINT16_MAX || sprite[src].height * scaled_1 > UINT16_MAX) return false;
+	if (src_sprite.width * scaled_1 > UINT16_MAX || src_sprite.height * scaled_1 > UINT16_MAX) return false;
 
-	sprite[tgt].width  = sprite[src].width  * scaled_1;
-	sprite[tgt].height = sprite[src].height * scaled_1;
-	sprite[tgt].x_offs = sprite[src].x_offs * scaled_1;
-	sprite[tgt].y_offs = sprite[src].y_offs * scaled_1;
-	sprite[tgt].colours = sprite[src].colours;
+	dest_sprite.width = src_sprite.width * scaled_1;
+	dest_sprite.height = src_sprite.height * scaled_1;
+	dest_sprite.x_offs = src_sprite.x_offs * scaled_1;
+	dest_sprite.y_offs = src_sprite.y_offs * scaled_1;
+	dest_sprite.colours = src_sprite.colours;
 
-	sprite[tgt].AllocateData(tgt, static_cast<size_t>(sprite[tgt].width) * sprite[tgt].height);
+	dest_sprite.AllocateData(tgt, static_cast<size_t>(dest_sprite.width) * dest_sprite.height);
 
-	SpriteLoader::CommonPixel *dst = sprite[tgt].data;
-	for (int y = 0; y < sprite[tgt].height; y++) {
-		const SpriteLoader::CommonPixel *src_ln = &sprite[src].data[y / scaled_1 * sprite[src].width];
-		for (int x = 0; x < sprite[tgt].width; x++) {
+	SpriteLoader::CommonPixel *dst = dest_sprite.data;
+	for (int y = 0; y < dest_sprite.height; y++) {
+		const SpriteLoader::CommonPixel *src_ln = &src_sprite.data[y / scaled_1 * src_sprite.width];
+		for (int x = 0; x < dest_sprite.width; x++) {
 			*dst = src_ln[x / scaled_1];
 			dst++;
 		}
@@ -248,23 +250,27 @@ static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src
 
 static void ResizeSpriteOut(SpriteLoader::SpriteCollection &sprite, ZoomLevel zoom)
 {
+	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	const auto &src_sprite = sprite[zoom - 1];
+	auto &dest_sprite = sprite[zoom];
+
 	/* Algorithm based on 32bpp_Optimized::ResizeSprite() */
-	sprite[zoom].width  = UnScaleByZoom(sprite[ZOOM_LVL_MIN].width,  zoom);
-	sprite[zoom].height = UnScaleByZoom(sprite[ZOOM_LVL_MIN].height, zoom);
-	sprite[zoom].x_offs = UnScaleByZoom(sprite[ZOOM_LVL_MIN].x_offs, zoom);
-	sprite[zoom].y_offs = UnScaleByZoom(sprite[ZOOM_LVL_MIN].y_offs, zoom);
-	sprite[zoom].colours = sprite[ZOOM_LVL_MIN].colours;
+	dest_sprite.width = UnScaleByZoom(root_sprite.width, zoom);
+	dest_sprite.height = UnScaleByZoom(root_sprite.height, zoom);
+	dest_sprite.x_offs = UnScaleByZoom(root_sprite.x_offs, zoom);
+	dest_sprite.y_offs = UnScaleByZoom(root_sprite.y_offs, zoom);
+	dest_sprite.colours = root_sprite.colours;
 
-	sprite[zoom].AllocateData(zoom, static_cast<size_t>(sprite[zoom].height) * sprite[zoom].width);
+	dest_sprite.AllocateData(zoom, static_cast<size_t>(dest_sprite.height) * dest_sprite.width);
 
-	SpriteLoader::CommonPixel *dst = sprite[zoom].data;
-	const SpriteLoader::CommonPixel *src = sprite[zoom - 1].data;
-	[[maybe_unused]] const SpriteLoader::CommonPixel *src_end = src + sprite[zoom - 1].height * sprite[zoom - 1].width;
+	SpriteLoader::CommonPixel *dst = dest_sprite.data;
+	const SpriteLoader::CommonPixel *src = src_sprite.data;
+	[[maybe_unused]] const SpriteLoader::CommonPixel *src_end = src + src_sprite.height * src_sprite.width;
 
-	for (uint y = 0; y < sprite[zoom].height; y++) {
-		const SpriteLoader::CommonPixel *src_ln = src + sprite[zoom - 1].width;
+	for (uint y = 0; y < dest_sprite.height; y++) {
+		const SpriteLoader::CommonPixel *src_ln = src + src_sprite.width;
 		assert(src_ln <= src_end);
-		for (uint x = 0; x < sprite[zoom].width; x++) {
+		for (uint x = 0; x < dest_sprite.width; x++) {
 			assert(src < src_ln);
 			if (src + 1 != src_ln && (src + 1)->a != 0) {
 				*dst = *(src + 1);
@@ -274,7 +280,7 @@ static void ResizeSpriteOut(SpriteLoader::SpriteCollection &sprite, ZoomLevel zo
 			dst++;
 			src += 2;
 		}
-		src = src_ln + sprite[zoom - 1].width;
+		src = src_ln + src_sprite.width;
 	}
 }
 
@@ -359,15 +365,16 @@ static bool PadSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_av
 	/* Pad sprites where needed. */
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
 		if (HasBit(sprite_avail, zoom)) {
+			auto &cur_sprite = sprite[zoom];
 			/* Scaling the sprite dimensions in the blitter is done with rounding up,
 			 * so a negative padding here is not an error. */
-			int pad_left   = std::max(0, sprite[zoom].x_offs - UnScaleByZoom(min_xoffs, zoom));
-			int pad_top    = std::max(0, sprite[zoom].y_offs - UnScaleByZoom(min_yoffs, zoom));
-			int pad_right  = std::max(0, UnScaleByZoom(max_width, zoom) - sprite[zoom].width - pad_left);
-			int pad_bottom = std::max(0, UnScaleByZoom(max_height, zoom) - sprite[zoom].height - pad_top);
+			int pad_left = std::max(0, cur_sprite.x_offs - UnScaleByZoom(min_xoffs, zoom));
+			int pad_top = std::max(0, cur_sprite.y_offs - UnScaleByZoom(min_yoffs, zoom));
+			int pad_right = std::max(0, UnScaleByZoom(max_width, zoom) - cur_sprite.width - pad_left);
+			int pad_bottom = std::max(0, UnScaleByZoom(max_height, zoom) - cur_sprite.height - pad_top);
 
 			if (pad_left > 0 || pad_right > 0 || pad_top > 0 || pad_bottom > 0) {
-				if (!PadSingleSprite(&sprite[zoom], zoom, pad_left, pad_top, pad_right, pad_bottom)) return false;
+				if (!PadSingleSprite(&cur_sprite, zoom, pad_left, pad_top, pad_right, pad_bottom)) return false;
 			}
 		}
 	}
@@ -393,10 +400,12 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite
 
 		if (HasBit(sprite_avail, zoom)) {
 			/* Check that size and offsets match the fully zoomed image. */
-			assert(sprite[zoom].width  == UnScaleByZoom(sprite[ZOOM_LVL_MIN].width,  zoom));
-			assert(sprite[zoom].height == UnScaleByZoom(sprite[ZOOM_LVL_MIN].height, zoom));
-			assert(sprite[zoom].x_offs == UnScaleByZoom(sprite[ZOOM_LVL_MIN].x_offs, zoom));
-			assert(sprite[zoom].y_offs == UnScaleByZoom(sprite[ZOOM_LVL_MIN].y_offs, zoom));
+			[[maybe_unused]] const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+			[[maybe_unused]] const auto &dest_sprite = sprite[zoom];
+			assert(dest_sprite.width == UnScaleByZoom(root_sprite.width, zoom));
+			assert(dest_sprite.height == UnScaleByZoom(root_sprite.height, zoom));
+			assert(dest_sprite.x_offs == UnScaleByZoom(root_sprite.x_offs, zoom));
+			assert(dest_sprite.y_offs == UnScaleByZoom(root_sprite.y_offs, zoom));
 		}
 
 		/* Zoom level is not available, or unusable, so create it */
@@ -507,15 +516,16 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		 * Ugly: yes. Other solution: no. Blame the original author or
 		 *  something ;) The image should really have been a data-stream
 		 *  (so type = 0xFF basically). */
-		uint num = sprite[ZOOM_LVL_MIN].width * sprite[ZOOM_LVL_MIN].height;
+		const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+		uint num = root_sprite.width * root_sprite.height;
 
 		Sprite *s = allocator.Allocate<Sprite>(sizeof(*s) + num);
-		s->width  = sprite[ZOOM_LVL_MIN].width;
-		s->height = sprite[ZOOM_LVL_MIN].height;
-		s->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
-		s->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
+		s->width = root_sprite.width;
+		s->height = root_sprite.height;
+		s->x_offs = root_sprite.x_offs;
+		s->y_offs = root_sprite.y_offs;
 
-		SpriteLoader::CommonPixel *src = sprite[ZOOM_LVL_MIN].data;
+		SpriteLoader::CommonPixel *src = root_sprite.data;
 		uint8_t *dest = s->data;
 		while (num-- > 0) {
 			*dest++ = src->m;

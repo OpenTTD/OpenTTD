@@ -20,10 +20,11 @@ Sprite *Blitter_Null::Encode(SpriteType, const SpriteLoader::SpriteCollection &s
 	Sprite *dest_sprite;
 	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite));
 
-	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
-	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
-	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
+	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	dest_sprite->height = root_sprite.height;
+	dest_sprite->width = root_sprite.width;
+	dest_sprite->x_offs = root_sprite.x_offs;
+	dest_sprite->y_offs = root_sprite.y_offs;
 
 	return dest_sprite;
 }

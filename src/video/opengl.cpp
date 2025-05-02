@@ -1408,10 +1408,11 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
+	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
 	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
 		/* Sprite component present? */
-		if (t == TEX_RGBA && sprite[ZOOM_LVL_MIN].colours == SpriteComponent::Palette) continue;
-		if (t == TEX_REMAP && !sprite[ZOOM_LVL_MIN].colours.Test(SpriteComponent::Palette)) continue;
+		if (t == TEX_RGBA && root_sprite.colours == SpriteComponent::Palette) continue;
+		if (t == TEX_REMAP && !root_sprite.colours.Test(SpriteComponent::Palette)) continue;
 
 		/* Allocate texture. */
 		_glGenTextures(1, &this->tex[t]);
@@ -1436,7 +1437,8 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 
 	/* Upload texture data. */
 	for (int i = 0; i < (sprite_type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
-		this->Update(sprite[i].width, sprite[i].height, i, sprite[i].data);
+		const auto &src_sprite = sprite[i];
+		this->Update(src_sprite.width, src_sprite.height, i, src_sprite.data);
 	}
 
 	assert(_glGetError() == GL_NO_ERROR);

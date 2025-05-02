@@ -39,22 +39,24 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	uint all_sprites_size = 0;
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		const SpriteLoader::Sprite *src_sprite = &sprite[z];
-		sd.infos[z].sprite_width = src_sprite->width;
-		sd.infos[z].sprite_offset = all_sprites_size;
-		sd.infos[z].sprite_line_size = sizeof(Colour) * src_sprite->width + sizeof(uint32_t) * META_LENGTH;
+		auto &info = sd.infos[z];
+		info.sprite_width = src_sprite->width;
+		info.sprite_offset = all_sprites_size;
+		info.sprite_line_size = sizeof(Colour) * src_sprite->width + sizeof(uint32_t) * META_LENGTH;
 
-		const uint rgba_size = sd.infos[z].sprite_line_size * src_sprite->height;
-		sd.infos[z].mv_offset = all_sprites_size + rgba_size;
+		const uint rgba_size = info.sprite_line_size * src_sprite->height;
+		info.mv_offset = all_sprites_size + rgba_size;
 
 		const uint mv_size = sizeof(MapValue) * src_sprite->width * src_sprite->height;
 		all_sprites_size += rgba_size + mv_size;
 	}
 
 	Sprite *dst_sprite = allocator.Allocate<Sprite>(sizeof(Sprite) + sizeof(SpriteData) + all_sprites_size);
-	dst_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dst_sprite->width  = sprite[ZOOM_LVL_MIN].width;
-	dst_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
-	dst_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
+	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	dst_sprite->height = root_sprite.height;
+	dst_sprite->width = root_sprite.width;
+	dst_sprite->x_offs = root_sprite.x_offs;
+	dst_sprite->y_offs = root_sprite.y_offs;
 	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
 
 	/* Copy colours and determine flags. */
@@ -64,8 +66,9 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		const SpriteLoader::Sprite *src_sprite = &sprite[z];
 		const SpriteLoader::CommonPixel *src = (const SpriteLoader::CommonPixel *) src_sprite->data;
-		Colour *dst_rgba_line = (Colour *) &dst_sprite->data[sizeof(SpriteData) + sd.infos[z].sprite_offset];
-		MapValue *dst_mv = (MapValue *) &dst_sprite->data[sizeof(SpriteData) + sd.infos[z].mv_offset];
+		const auto &info = sd.infos[z];
+		Colour *dst_rgba_line = reinterpret_cast<Colour *>(&dst_sprite->data[sizeof(SpriteData) + info.sprite_offset]);
+		MapValue *dst_mv = reinterpret_cast<MapValue *>(&dst_sprite->data[sizeof(SpriteData) + info.mv_offset]);
 		for (uint y = src_sprite->height; y != 0; y--) {
 			Colour *dst_rgba = dst_rgba_line + META_LENGTH;
 			for (uint x = src_sprite->width; x != 0; x--) {
@@ -113,7 +116,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 			(*dst_rgba_line).data = nb_pix_transp;
 
 			Colour *nb_right = dst_rgba_line + 1;
-			dst_rgba_line = (Colour*) ((uint8_t*) dst_rgba_line + sd.infos[z].sprite_line_size);
+			dst_rgba_line = reinterpret_cast<Colour *>(reinterpret_cast<std::byte *>(dst_rgba_line) + info.sprite_line_size);
 
 			/* Count the number of transparent pixels from the right. */
 			dst_rgba = dst_rgba_line - 1;
