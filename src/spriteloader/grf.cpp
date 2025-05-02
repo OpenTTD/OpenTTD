@@ -230,7 +230,7 @@ static SpriteCollKeys LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, Sprit
 	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
 	if (type == 0xFF) return {};
 
-	const SpriteCollKey sck{(sprite_type != SpriteType::MapGen) ? ZoomLevel::Normal : ZoomLevel::Min};
+	const SpriteCollKey sck{(sprite_type != SpriteType::MapGen) ? ZoomLevel::Normal : ZoomLevel::Min, false};
 	auto &dest_sprite = sprite[sck];
 
 	dest_sprite.height = file.ReadByte();
@@ -280,6 +280,7 @@ static SpriteCollKeys LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, Sprit
 		SpriteComponents colour{type};
 		/* Mask out colour component information from type. */
 		type &= ~SpriteComponents::MASK;
+		bool rtl = type & 0x10;
 
 		uint8_t zoom = file.ReadByte();
 
@@ -288,7 +289,7 @@ static SpriteCollKeys LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, Sprit
 
 		if (sprite_type != SpriteType::MapGen) {
 			if (zoom < lengthof(zoom_lvl_map)) {
-				const SpriteCollKey sck{zoom_lvl_map[zoom]};
+				const SpriteCollKey sck{zoom_lvl_map[zoom], rtl};
 				if (colour == SpriteComponent::Palette) avail_8bpp.Set(sck);
 				if (colour != SpriteComponent::Palette) avail_32bpp.Set(sck);
 
@@ -309,8 +310,10 @@ static SpriteCollKeys LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, Sprit
 			is_wanted_zoom_lvl = (zoom == 0);
 		}
 
-		if (is_wanted_colour_depth && is_wanted_zoom_lvl) {
-			const SpriteCollKey sck{sprite_type != SpriteType::MapGen ? zoom_lvl_map[zoom] : ZoomLevel::Min};
+		bool is_wanted_textdir = !rtl || sprite_type == SpriteType::Normal;
+
+		if (is_wanted_colour_depth && is_wanted_zoom_lvl && is_wanted_textdir) {
+			const SpriteCollKey sck{sprite_type != SpriteType::MapGen ? zoom_lvl_map[zoom] : ZoomLevel::Min, rtl};
 
 			if (loaded_sprites.Test(sck)) {
 				/* We already have this zoom level, skip sprite. */

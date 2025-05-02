@@ -115,9 +115,9 @@ void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height
 	Debug(misc, 0, "32bpp blitter doesn't know how to draw this colour table ('{}')", pal);
 }
 
-Sprite *Blitter_32bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_32bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, bool, SpriteAllocator &allocator)
 {
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(false);
 	Blitter_32bppSimple::Pixel *dst;
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + static_cast<size_t>(root_sprite.height) * static_cast<size_t>(root_sprite.width) * sizeof(*dst));
 
@@ -125,6 +125,7 @@ Sprite *Blitter_32bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollec
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
 	dest_sprite->y_offs = root_sprite.y_offs;
+	dest_sprite->has_rtl = false;
 
 	dst = reinterpret_cast<Blitter_32bppSimple::Pixel *>(dest_sprite->data);
 	SpriteLoader::CommonPixel *src = reinterpret_cast<SpriteLoader::CommonPixel *>(root_sprite.data);

@@ -40,9 +40,9 @@ public:
 	void Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck);
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck) override;
 
-	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override
+	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator) override
 	{
-		return Blitter_32bppSSE_Base::Encode(sprite_type, sprite, allocator);
+		return Blitter_32bppSSE_Base::Encode(sprite_type, sprite, has_rtl, allocator);
 	}
 	std::string_view GetName() override { return "32bpp-sse4-anim"; }
 	using Blitter_32bppSSE2_Anim::LookupColourInPalette;
