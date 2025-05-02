@@ -4442,10 +4442,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}显示�
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}显示飞机的调度计划。按住 <Ctrl> 键单击以显示飞机的时刻表
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}显示列车的详细信息
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}显示汽车的详细信息
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}显示船只的详情
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}显示飞机的详情
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}显示列车详情。按住 <Ctrl> 键点选以显示列车载具组
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}显示汽车详情。按住 <Ctrl> 键点选以显示汽车载具组
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}显示船只详情。按住 <Ctrl> 键点选以显示船只载具组
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}显示飞机详情。按住 <Ctrl> 键点选以显示飞机载具组
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}当前列车状态 - 点击以停止或启动列车
@@ -4776,8 +4776,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :行驶（{STRIN
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :行驶（{STRING}，未指定时间），限速 {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING}，未指定时间）
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（驶往 {STRING}，未指定时间）
-STR_TIMETABLE_STAY_FOR                                          :，停留 {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRING}
+STR_TIMETABLE_STAY_FOR                                          :，等待 {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶 {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}完成该时刻表大约需要 {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}完成该时刻表需要 {STRING}

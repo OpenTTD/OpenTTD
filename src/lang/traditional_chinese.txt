@@ -2255,7 +2255,7 @@ STR_HELP_WINDOW_DOCUMENTS                                       :{BLACK}文檔
 STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}修訂紀錄
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}已知漏洞
-STR_HELP_WINDOW_LICENSE                                         :{BLACK}許可協議
+STR_HELP_WINDOW_LICENSE                                         :{BLACK}授權條款
 STR_HELP_WINDOW_FONTS                                           :{BLACK}字體
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}手冊／維基
@@ -4777,7 +4777,7 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :開往（{STRIN
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :（等候 {STRING} ，無時刻表）
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :（開往 {STRING} ，無時刻表）
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :並開往 {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :並行駛 {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}此時刻表跑完全程大約需時 {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}此時刻表跑完全程需時 {STRING}
@@ -4928,7 +4928,7 @@ STR_TEXTFILE_VIEW_README_TOOLTIP                                :檢視此項目
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}修訂紀錄
 STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP                             :檢視此項目的更新日誌
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}授權條款
-STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :檢視此項目的許可證
+STR_TEXTFILE_VIEW_LICENCE_TOOLTIP                               :檢視此項目的授權條款
 ###length 5
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}{STRING}的 Readme
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}{STRING}的修訂紀錄

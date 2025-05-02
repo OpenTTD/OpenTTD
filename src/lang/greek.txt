@@ -4877,8 +4877,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Ταξίδι (�
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ταξίδι γιά {STRING}, (μη δρομολογημένο) με μέγιστη ταχύτητα {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(αναμονή για {STRING}, μη δρομολογημένο)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(ταξίδι για {STRING}, μη δρομολογημένο)
-STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}και μείνε για {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}και ταξίδεψε για {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Θα χρειαστούν περίπου {STRING} για να ολοκληρωθεί αυτό το χρονοδιάγραμμα
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί

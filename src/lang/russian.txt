@@ -4963,8 +4963,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :В пути п�
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Идти примерно {STRING} со скоростью не более {VELOCITY} (график не составлен)
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(ждать {STRING}; график не составлен)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(в пути {STRING}; график не составлен)
-STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти в {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}и ждать {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}и идти в {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Прохождение этого маршрут займёт примерно {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Весь маршрут займёт {STRING}

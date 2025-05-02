@@ -4777,8 +4777,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, não programado) no máximo a {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(ficar por {STRING}, não programado)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar durante {STRING}, não programado)
-STR_TIMETABLE_STAY_FOR                                          :e ficar por {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar durante {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}e ficar por {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}e viajar durante {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Este horário levará aproximadamente {STRING} para ser concluído
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário levará {STRING} para ser concluído

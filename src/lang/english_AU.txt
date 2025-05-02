@@ -4776,8 +4776,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Travel (for {ST
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Travel (for {STRING}, not timetabled) with at most {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(stay for {STRING}, not timetabled)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(travel for {STRING}, not timetabled)
-STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}and stay for {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}and travel for {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}This timetable will take approximately {STRING} to complete
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}This timetable will take {STRING} to complete

@@ -5162,8 +5162,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Przejazd przez 
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Podróżuj przez {STRING} z prędkością {VELOCITY} maks. (poza rozkładem)
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(postój przez {STRING}, poza rozkładem)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(przejazd przez {STRING}, poza rozkładem)
-STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :i podróżuje przez{STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}i pozostań tam przez {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}i podróżuj przez {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Ten rozkład jazdy zajmie około {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ten rozkład jazdy zajmie {STRING}
