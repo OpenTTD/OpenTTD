@@ -592,7 +592,7 @@ void TextfileWindow::AfterLoadMarkdown()
 
 		int y_offset = (line.top - pos) * line_height;
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-			DrawStringMultiLine(fr.left, fr.right, y_offset, fr.bottom, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLineWithClipping(fr.left, fr.right, y_offset, y_offset + (line.bottom - line.top) * line_height, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
 			DrawString(fr.left, fr.right, y_offset, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
 		}

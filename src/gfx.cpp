@@ -840,6 +840,41 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 }
 
 /**
+ * Draw a multiline string, possibly over multiple lines, if the region is within the current display clipping area.
+ * @note With clipping, it is not possible to determine how tall the rendered text will be, as it's not layouted.
+ *       Regulard DrawStringMultiLine must be used if the height needs to be known.
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param bottom The bottom most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param align  The horizontal and vertical alignment of the string.
+ * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
+ *
+ * @return true iff the string was drawn.
+ */
+bool DrawStringMultiLineWithClipping(int left, int right, int top, int bottom, std::string_view str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+{
+	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
+	int max_height = std::max({GetCharacterHeight(FS_SMALL), GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_LARGE), GetCharacterHeight(FS_MONO)});
+
+	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
+	int extra = max_height / 2;
+
+	if (_cur_dpi->top + _cur_dpi->height + extra < top || _cur_dpi->top > bottom + extra ||
+			_cur_dpi->left + _cur_dpi->width + extra < left || _cur_dpi->left > right + extra) {
+		return false;
+	}
+
+	DrawStringMultiLine(left, right, top, bottom, str, colour, align, underline, fontsize);
+	return true;
+}
+
+/**
  * Return the string dimension in pixels. The height and width are returned
  * in a single Dimension value. TINYFONT, BIGFONT modifiers are only
  * supported as the first character of the string. The returned dimensions

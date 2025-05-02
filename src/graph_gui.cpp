@@ -454,11 +454,11 @@ protected:
 			TimerGameEconomy::Year year = this->year;
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				if (rtl) {
-					DrawStringMultiLine(x + x_sep, x, y, this->height,
+					DrawStringMultiLineWithClipping(x + x_sep, x, y, this->height,
 						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
 						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 				} else {
-					DrawStringMultiLine(x, x + x_sep, y, this->height,
+					DrawStringMultiLineWithClipping(x, x + x_sep, y, this->height,
 						GetString(month == 0 ? STR_GRAPH_X_LABEL_MONTH_YEAR : STR_GRAPH_X_LABEL_MONTH, STR_MONTH_ABBREV_JAN + month, year),
 						GRAPH_AXIS_LABEL_COLOUR, SA_LEFT);
 				}
