@@ -218,9 +218,9 @@ SpriteID GetMaxSpriteID()
 	return static_cast<SpriteID>(_spritecache.size());
 }
 
-static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src, ZoomLevel tgt)
+static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, SpriteCollKey src, SpriteCollKey tgt)
 {
-	uint8_t scaled_1 = AdjustByZoom(1, src - tgt);
+	uint8_t scaled_1 = AdjustByZoom(1, src.zoom - tgt.zoom);
 	const auto &src_sprite = sprite[src];
 	auto &dest_sprite = sprite[tgt];
 
@@ -247,20 +247,20 @@ static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src
 	return true;
 }
 
-static void ResizeSpriteOut(SpriteLoader::SpriteCollection &sprite, ZoomLevel zoom)
+static void ResizeSpriteOut(SpriteLoader::SpriteCollection &sprite, SpriteCollKey sck)
 {
 	const auto &root_sprite = sprite.Root();
-	const auto &src_sprite = sprite[zoom - 1];
-	auto &dest_sprite = sprite[zoom];
+	const auto &src_sprite = sprite[SpriteCollKey{sck.zoom - 1}];
+	auto &dest_sprite = sprite[sck];
 
 	/* Algorithm based on 32bpp_Optimized::ResizeSprite() */
-	dest_sprite.width = UnScaleByZoom(root_sprite.width, zoom);
-	dest_sprite.height = UnScaleByZoom(root_sprite.height, zoom);
-	dest_sprite.x_offs = UnScaleByZoom(root_sprite.x_offs, zoom);
-	dest_sprite.y_offs = UnScaleByZoom(root_sprite.y_offs, zoom);
+	dest_sprite.width = UnScaleByZoom(root_sprite.width, sck.zoom);
+	dest_sprite.height = UnScaleByZoom(root_sprite.height, sck.zoom);
+	dest_sprite.x_offs = UnScaleByZoom(root_sprite.x_offs, sck.zoom);
+	dest_sprite.y_offs = UnScaleByZoom(root_sprite.y_offs, sck.zoom);
 	dest_sprite.colours = root_sprite.colours;
 
-	dest_sprite.AllocateData(zoom, static_cast<size_t>(dest_sprite.height) * dest_sprite.width);
+	dest_sprite.AllocateData(sck, static_cast<size_t>(dest_sprite.height) * dest_sprite.width);
 
 	SpriteLoader::CommonPixel *dst = dest_sprite.data;
 	const SpriteLoader::CommonPixel *src = src_sprite.data;
@@ -283,7 +283,7 @@ static void ResizeSpriteOut(SpriteLoader::SpriteCollection &sprite, ZoomLevel zo
 	}
 }
 
-static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint pad_left, uint pad_top, uint pad_right, uint pad_bottom)
+static bool PadSingleSprite(SpriteLoader::Sprite *sprite, SpriteCollKey sck, uint pad_left, uint pad_top, uint pad_right, uint pad_bottom)
 {
 	uint width  = sprite->width + pad_left + pad_right;
 	uint height = sprite->height + pad_top + pad_bottom;
@@ -293,7 +293,7 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 	/* Copy source data and reallocate sprite memory. */
 	size_t sprite_size = static_cast<size_t>(sprite->width) * sprite->height;
 	std::vector<SpriteLoader::CommonPixel> src_data(sprite->data, sprite->data + sprite_size);
-	sprite->AllocateData(zoom, static_cast<size_t>(width) * height);
+	sprite->AllocateData(sck, static_cast<size_t>(width) * height);
 
 	/* Copy with padding to destination. */
 	SpriteLoader::CommonPixel *src = src_data.data();
@@ -332,25 +332,25 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 	return true;
 }
 
-static bool PadSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite_avail, SpriteEncoder *encoder)
+static bool PadSprites(SpriteLoader::SpriteCollection &sprite, SpriteCollKeys sprite_avail, SpriteEncoder *encoder)
 {
 	/* Get minimum top left corner coordinates. */
 	int min_xoffs = INT32_MAX;
 	int min_yoffs = INT32_MAX;
-	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
-		if (sprite_avail.Test(zoom)) {
-			min_xoffs = std::min(min_xoffs, ScaleByZoom(sprite[zoom].x_offs, zoom));
-			min_yoffs = std::min(min_yoffs, ScaleByZoom(sprite[zoom].y_offs, zoom));
+	for (auto sck : SpriteCollKeyRange(ZoomLevel::Min, ZoomLevel::Max)) {
+		if (sprite_avail.Test(sck)) {
+			min_xoffs = std::min(min_xoffs, ScaleByZoom(sprite[sck].x_offs, sck.zoom));
+			min_yoffs = std::min(min_yoffs, ScaleByZoom(sprite[sck].y_offs, sck.zoom));
 		}
 	}
 
 	/* Get maximum dimensions taking necessary padding at the top left into account. */
 	int max_width  = INT32_MIN;
 	int max_height = INT32_MIN;
-	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
-		if (sprite_avail.Test(zoom)) {
-			max_width  = std::max(max_width, ScaleByZoom(sprite[zoom].width + sprite[zoom].x_offs - UnScaleByZoom(min_xoffs, zoom), zoom));
-			max_height = std::max(max_height, ScaleByZoom(sprite[zoom].height + sprite[zoom].y_offs - UnScaleByZoom(min_yoffs, zoom), zoom));
+	for (auto sck : SpriteCollKeyRange(ZoomLevel::Min, ZoomLevel::Max)) {
+		if (sprite_avail.Test(sck)) {
+			max_width = std::max(max_width, ScaleByZoom(sprite[sck].width + sprite[sck].x_offs - UnScaleByZoom(min_xoffs, sck.zoom), sck.zoom));
+			max_height = std::max(max_height, ScaleByZoom(sprite[sck].height + sprite[sck].y_offs - UnScaleByZoom(min_yoffs, sck.zoom), sck.zoom));
 		}
 	}
 
@@ -362,18 +362,18 @@ static bool PadSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite
 	}
 
 	/* Pad sprites where needed. */
-	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
-		if (sprite_avail.Test(zoom)) {
-			auto &cur_sprite = sprite[zoom];
+	for (auto sck : SpriteCollKeyRange(ZoomLevel::Min, ZoomLevel::Max)) {
+		if (sprite_avail.Test(sck)) {
+			auto &cur_sprite = sprite[sck];
 			/* Scaling the sprite dimensions in the blitter is done with rounding up,
 			 * so a negative padding here is not an error. */
-			int pad_left = std::max(0, cur_sprite.x_offs - UnScaleByZoom(min_xoffs, zoom));
-			int pad_top = std::max(0, cur_sprite.y_offs - UnScaleByZoom(min_yoffs, zoom));
-			int pad_right = std::max(0, UnScaleByZoom(max_width, zoom) - cur_sprite.width - pad_left);
-			int pad_bottom = std::max(0, UnScaleByZoom(max_height, zoom) - cur_sprite.height - pad_top);
+			int pad_left = std::max(0, cur_sprite.x_offs - UnScaleByZoom(min_xoffs, sck.zoom));
+			int pad_top = std::max(0, cur_sprite.y_offs - UnScaleByZoom(min_yoffs, sck.zoom));
+			int pad_right = std::max(0, UnScaleByZoom(max_width, sck.zoom) - cur_sprite.width - pad_left);
+			int pad_bottom = std::max(0, UnScaleByZoom(max_height, sck.zoom) - cur_sprite.height - pad_top);
 
 			if (pad_left > 0 || pad_right > 0 || pad_top > 0 || pad_bottom > 0) {
-				if (!PadSingleSprite(&cur_sprite, zoom, pad_left, pad_top, pad_right, pad_bottom)) return false;
+				if (!PadSingleSprite(&cur_sprite, sck, pad_left, pad_top, pad_right, pad_bottom)) return false;
 			}
 		}
 	}
@@ -381,16 +381,18 @@ static bool PadSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite
 	return true;
 }
 
-static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite_avail, SpriteEncoder *encoder)
+static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, SpriteCollKeys sprite_avail, SpriteEncoder *encoder)
 {
 	/* Create a fully zoomed image if it does not exist */
 	ZoomLevel first_avail;
 	for (ZoomLevel zoom = ZoomLevel::Min; zoom <= ZoomLevel::Max; ++zoom) {
-		if (!sprite_avail.Test(zoom)) continue;
+		SpriteCollKey src_sck{zoom};
+		if (!sprite_avail.Test(src_sck)) continue;
 		first_avail = zoom;
 		if (zoom != ZoomLevel::Min) {
-			if (!ResizeSpriteIn(sprite, zoom, ZoomLevel::Min)) return false;
-			sprite_avail.Set(ZoomLevel::Min);
+			auto root_sck = SpriteCollKey::Root();
+			if (!ResizeSpriteIn(sprite, src_sck, root_sck)) return false;
+			sprite_avail.Set(root_sck);
 		}
 		break;
 	}
@@ -399,27 +401,27 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels spr
 	if (!PadSprites(sprite, sprite_avail, encoder)) return false;
 
 	/* Create other missing zoom levels */
-	for (ZoomLevel zoom = ZoomLevel::Begin; zoom != ZoomLevel::End; zoom++) {
-		if (zoom == ZoomLevel::Min) continue;
-
-		if (sprite_avail.Test(zoom)) {
+	for (auto sck : SpriteCollKeyRange(ZoomLevel::Min + 1, ZoomLevel::Max)) {
+		if (sprite_avail.Test(sck)) {
 			/* Check that size and offsets match the fully zoomed image. */
-			[[maybe_unused]] const auto &root_sprite = sprite[ZoomLevel::Min];
-			[[maybe_unused]] const auto &dest_sprite = sprite[zoom];
-			assert(dest_sprite.width == UnScaleByZoom(root_sprite.width, zoom));
-			assert(dest_sprite.height == UnScaleByZoom(root_sprite.height, zoom));
-			assert(dest_sprite.x_offs == UnScaleByZoom(root_sprite.x_offs, zoom));
-			assert(dest_sprite.y_offs == UnScaleByZoom(root_sprite.y_offs, zoom));
+			[[maybe_unused]] const auto &root_sprite = sprite.Root();
+			[[maybe_unused]] const auto &dest_sprite = sprite[sck];
+			assert(dest_sprite.width == UnScaleByZoom(root_sprite.width, sck.zoom));
+			assert(dest_sprite.height == UnScaleByZoom(root_sprite.height, sck.zoom));
+			assert(dest_sprite.x_offs == UnScaleByZoom(root_sprite.x_offs, sck.zoom));
+			assert(dest_sprite.y_offs == UnScaleByZoom(root_sprite.y_offs, sck.zoom));
 		} else {
 			/* Zoom level is not available, or unusable, so create it */
-			ResizeSpriteOut(sprite, zoom);
+			ResizeSpriteOut(sprite, sck);
 		}
 	}
 
 	/* Replace sprites with higher resolution than the desired maximum source resolution with scaled up sprites, if not already done. */
 	if (first_avail < _settings_client.gui.sprite_zoom_min) {
 		for (ZoomLevel zoom = std::min(ZoomLevel::Normal, _settings_client.gui.sprite_zoom_min); zoom > ZoomLevel::Min; --zoom) {
-			ResizeSpriteIn(sprite, zoom, zoom - 1);
+			const SpriteCollKey src_sck{zoom};
+			const SpriteCollKey dest_sck{zoom - 1};
+			ResizeSpriteIn(sprite, src_sck, dest_sck);
 		}
 	}
 
@@ -487,9 +489,9 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	Debug(sprite, 9, "Load sprite {}", id);
 
 	SpriteLoader::SpriteCollection sprite;
-	ZoomLevels sprite_avail;
-	ZoomLevels avail_8bpp;
-	ZoomLevels avail_32bpp;
+	SpriteCollKeys sprite_avail;
+	SpriteCollKeys avail_8bpp;
+	SpriteCollKeys avail_32bpp;
 
 	SpriteLoaderGrf sprite_loader(file.GetContainerVersion());
 	if (sprite_type != SpriteType::MapGen && encoder->Is32BppSupported()) {
@@ -547,7 +549,9 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 	if (sprite_type == SpriteType::Font && _font_zoom != ZoomLevel::Min) {
 		/* Make ZoomLevel::Min be ZOOM_LVL_GUI */
-		sprite[ZoomLevel::Min] = sprite[_font_zoom];
+		SpriteCollKey min_sck{ZoomLevel::Min};
+		SpriteCollKey font_sck{_font_zoom};
+		sprite[min_sck] = sprite[font_sck];
 	}
 
 	return encoder->Encode(sprite_type, sprite, allocator);

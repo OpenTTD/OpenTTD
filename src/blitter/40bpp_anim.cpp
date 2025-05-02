@@ -87,20 +87,20 @@ void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int 
  *
  * @tparam mode blitter mode
  * @param bp further blitting parameters
- * @param zoom zoom level at which we are drawing
+ * @param sck sprite collection key to draw
  */
 template <BlitterMode mode>
-inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
+inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck)
 {
 	const SpriteData *src = (const SpriteData *)bp->sprite;
 
 	/* src_px : each line begins with uint32_t n = 'number of bytes in this line',
 	 *          then n times is the Colour struct for this line */
-	const Colour *src_px = reinterpret_cast<const Colour *>(src->data + src->offset[0][zoom]);
+	const Colour *src_px = reinterpret_cast<const Colour *>(src->data + src->offset[0][sck]);
 	/* src_n  : each line begins with uint32_t n = 'number of bytes in this line',
 	 *          then interleaved stream of 'm' and 'n' channels. 'm' is remap,
 	 *          'n' is number of bytes with the same alpha channel class */
-	const uint16_t *src_n = reinterpret_cast<const uint16_t *>(src->data + src->offset[1][zoom]);
+	const uint16_t *src_n = reinterpret_cast<const uint16_t *>(src->data + src->offset[1][sck]);
 
 	/* skip upper lines in src_px and src_n */
 	for (uint i = bp->skip_top; i != 0; i--) {
@@ -325,26 +325,26 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
  *
  * @param bp further blitting parameters
  * @param mode blitter mode
- * @param zoom zoom level at which we are drawing
+ * @param sck sprite collection key to draw
  */
-void Blitter_40bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_40bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 {
 	assert(_screen.dst_ptr != nullptr);
 
 	if (_screen_disable_anim || VideoDriver::GetInstance()->GetAnimBuffer() == nullptr) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
-		Blitter_32bppOptimized::Draw<true>(bp, mode, zoom);
+		Blitter_32bppOptimized::Draw<true>(bp, mode, sck);
 		return;
 	}
 
 	switch (mode) {
 		default: NOT_REACHED();
-		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, zoom); return;
-		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, zoom); return;
-		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, zoom); return;
-		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, zoom); return;
-		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, zoom); return;
-		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, zoom); return;
+		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, sck); return;
+		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, sck); return;
+		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, sck); return;
+		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, sck); return;
+		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, sck); return;
+		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, sck); return;
 	}
 }
 

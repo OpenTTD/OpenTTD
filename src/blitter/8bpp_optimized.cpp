@@ -18,11 +18,11 @@
 /** Instantiation of the 8bpp optimised blitter factory. */
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 
-void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 {
 	/* Find the offset of this zoom-level */
 	const SpriteData *sprite_src = (const SpriteData *)bp->sprite;
-	uint offset = sprite_src->offset[zoom];
+	uint offset = sprite_src->offset[sck];
 
 	/* Find where to start reading in the source sprite */
 	const uint8_t *src = sprite_src->data + offset;
@@ -136,8 +136,8 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 		if (zoom_max == zoom_min) zoom_max = ZoomLevel::Max;
 	}
 
-	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
-		memory += sprite[i].width * sprite[i].height;
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+		memory += sprite[sck].width * sprite[sck].height;
 	}
 
 	/* We have no idea how much memory we really need, so just guess something */
@@ -151,11 +151,11 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 	uint8_t *dst = temp_dst->data;
 
 	/* Make the sprites per zoom-level */
-	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
-		const SpriteLoader::Sprite &src_orig = sprite[i];
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+		const SpriteLoader::Sprite &src_orig = sprite[sck];
 		/* Store the index table */
 		uint offset = dst - temp_dst->data;
-		temp_dst->offset[i] = offset;
+		temp_dst->offset[sck] = offset;
 
 		/* cache values, because compiler can't cache it */
 		int scaled_height = src_orig.height;

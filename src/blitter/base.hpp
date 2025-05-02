@@ -67,7 +67,7 @@ public:
 	/**
 	 * Draw an image to the screen, given an amount of params defined above.
 	 */
-	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) = 0;
+	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck) = 0;
 
 	/**
 	 * Draw a colourtable to the screen. This is: the colour of the screen is read

@@ -37,9 +37,9 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	/* Calculate sizes and allocate. */
 	SpriteData sd{};
 	uint all_sprites_size = 0;
-	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
-		const SpriteLoader::Sprite *src_sprite = &sprite[z];
-		auto &info = sd.infos[z];
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+		const SpriteLoader::Sprite *src_sprite = &sprite[sck];
+		auto &info = sd.infos[sck];
 		info.sprite_width = src_sprite->width;
 		info.sprite_offset = all_sprites_size;
 		info.sprite_line_size = sizeof(Colour) * src_sprite->width + sizeof(uint32_t) * META_LENGTH;
@@ -63,10 +63,10 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	bool has_remap = false;
 	bool has_anim = false;
 	bool has_translucency = false;
-	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
-		const SpriteLoader::Sprite *src_sprite = &sprite[z];
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+		const SpriteLoader::Sprite *src_sprite = &sprite[sck];
 		const SpriteLoader::CommonPixel *src = (const SpriteLoader::CommonPixel *) src_sprite->data;
-		const auto &info = sd.infos[z];
+		const auto &info = sd.infos[sck];
 		Colour *dst_rgba_line = reinterpret_cast<Colour *>(&dst_sprite->data[sizeof(SpriteData) + info.sprite_offset]);
 		MapValue *dst_mv = reinterpret_cast<MapValue *>(&dst_sprite->data[sizeof(SpriteData) + info.mv_offset]);
 		for (uint y = src_sprite->height; y != 0; y--) {

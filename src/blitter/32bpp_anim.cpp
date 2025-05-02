@@ -21,12 +21,12 @@
 static FBlitter_32bppAnim iFBlitter_32bppAnim;
 
 template <BlitterMode mode>
-inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
+inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, SpriteCollKey sck)
 {
 	const SpriteData *src = (const SpriteData *)bp->sprite;
 
-	const Colour *src_px = reinterpret_cast<const Colour *>(src->data + src->offset[0][zoom]);
-	const uint16_t *src_n = reinterpret_cast<const uint16_t *>(src->data + src->offset[1][zoom]);
+	const Colour *src_px = reinterpret_cast<const Colour *>(src->data + src->offset[0][sck]);
+	const uint16_t *src_n = reinterpret_cast<const uint16_t *>(src->data + src->offset[1][sck]);
 
 	for (uint i = bp->skip_top; i != 0; i--) {
 		src_px = (const Colour *)((const uint8_t *)src_px + *(const uint32_t *)src_px);
@@ -261,22 +261,22 @@ inline void Blitter_32bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	}
 }
 
-void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
-		Blitter_32bppOptimized::Draw(bp, mode, zoom);
+		Blitter_32bppOptimized::Draw(bp, mode, sck);
 		return;
 	}
 
 	switch (mode) {
 		default: NOT_REACHED();
-		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, zoom); return;
-		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, zoom); return;
-		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, zoom); return;
-		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, zoom); return;
-		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, zoom); return;
-		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, zoom); return;
+		case BlitterMode::Normal: Draw<BlitterMode::Normal>(bp, sck); return;
+		case BlitterMode::ColourRemap: Draw<BlitterMode::ColourRemap>(bp, sck); return;
+		case BlitterMode::Transparent: Draw<BlitterMode::Transparent>(bp, sck); return;
+		case BlitterMode::TransparentRemap: Draw<BlitterMode::TransparentRemap>(bp, sck); return;
+		case BlitterMode::CrashRemap: Draw<BlitterMode::CrashRemap>(bp, sck); return;
+		case BlitterMode::BlackRemap: Draw<BlitterMode::BlackRemap>(bp, sck); return;
 	}
 }
 

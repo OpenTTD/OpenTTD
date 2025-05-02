@@ -229,8 +229,8 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) UserError("Font glyph is too large");
 
 	SpriteLoader::SpriteCollection spritecollection;
-	SpriteLoader::Sprite &sprite = spritecollection[ZoomLevel::Min];
-	sprite.AllocateData(ZoomLevel::Min, width * height);
+	SpriteLoader::Sprite &sprite = spritecollection.Root();
+	sprite.AllocateData(SpriteCollKey::Root(), width * height);
 	sprite.colours = SpriteComponent::Palette;
 	if (use_aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
