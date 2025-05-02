@@ -41,9 +41,9 @@ SQInteger SquirrelStd::max(HSQUIRRELVM vm)
 SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 {
 	SQInteger top = sq_gettop(vm);
-	const SQChar *filename;
+	std::string_view filename;
 
-	sq_getstring(vm, 2, &filename);
+	sq_getstring(vm, 2, filename);
 
 	/* Get the script-name of the current file, so we can work relative from it */
 	SQStackInfos si;

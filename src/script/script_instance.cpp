@@ -40,10 +40,10 @@ ScriptStorage::~ScriptStorage() = default;
  * @param error_msg Is this an error message?
  * @param message The actual message text.
  */
-static void PrintFunc(bool error_msg, const std::string &message)
+static void PrintFunc(bool error_msg, std::string_view message)
 {
 	/* Convert to OpenTTD internal capable string */
-	ScriptController::Print(error_msg, message);
+	ScriptController::Print(error_msg, std::string{message});
 }
 
 ScriptInstance::ScriptInstance(std::string_view api_name)
@@ -383,9 +383,9 @@ static const SaveLoad _script_byte[] = {
 				_script_sl_byte = SQSL_STRING;
 				SlObject(nullptr, _script_byte);
 			}
-			const SQChar *buf;
-			sq_getstring(vm, index, &buf);
-			size_t len = strlen(buf) + 1;
+			std::string_view view;
+			sq_getstring(vm, index, view);
+			size_t len = view.size() + 1;
 			if (len >= 255) {
 				ScriptLog::Error("Maximum string length is 254 chars. No data saved.");
 				return false;
@@ -393,7 +393,7 @@ static const SaveLoad _script_byte[] = {
 			if (!test) {
 				_script_sl_byte = (uint8_t)len;
 				SlObject(nullptr, _script_byte);
-				SlCopy(const_cast<char *>(buf), len, SLE_CHAR);
+				SlCopy(const_cast<char *>(view.data()), len, SLE_CHAR);
 			}
 			return true;
 		}
@@ -678,10 +678,10 @@ bool ScriptInstance::IsPaused()
 				case SQSL_INSTANCE: {
 					SQInteger top = sq_gettop(this->vm);
 					LoadObjects(this->vm, this->data);
-					const SQChar *buf;
-					sq_getstring(this->vm, -1, &buf);
+					std::string_view view;
+					sq_getstring(this->vm, -1, view);
 					Squirrel *engine = static_cast<Squirrel *>(sq_getforeignptr(this->vm));
-					std::string class_name = fmt::format("{}{}", engine->GetAPIName(), buf);
+					std::string class_name = fmt::format("{}{}", engine->GetAPIName(), view);
 					sq_pushroottable(this->vm);
 					sq_pushstring(this->vm, class_name);
 					if (SQ_FAILED(sq_get(this->vm, -2))) throw Script_FatalError(fmt::format("'{}' doesn't exist", class_name));

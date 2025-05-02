@@ -16,7 +16,6 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 		SQInteger i;
 		SQBool b;
 		SQFloat f;
-		const SQChar *s;
 		SQInteger level=1; //1 is to skip this function that is level 0
 		const SQChar *name=nullptr;
 		SQInteger seq=0;
@@ -66,10 +65,12 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 				case OT_USERPOINTER:
 					pf(v,fmt::format("[{}] USERPOINTER\n",name));
 					break;
-				case OT_STRING:
-					sq_getstring(v,-1,&s);
-					pf(v,fmt::format("[{}] \"{}\"\n",name,s));
+				case OT_STRING: {
+					std::string_view view;
+					sq_getstring(v,-1,view);
+					pf(v,fmt::format("[{}] \"{}\"\n",name,view));
 					break;
+				}
 				case OT_TABLE:
 					pf(v,fmt::format("[{}] TABLE\n",name));
 					break;
@@ -117,10 +118,10 @@ static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 {
 	SQPRINTFUNCTION pf = sq_getprintfunc(v);
 	if(pf) {
-		const SQChar *sErr = nullptr;
+		std::string_view error;
 		if(sq_gettop(v)>=1) {
-			if(SQ_SUCCEEDED(sq_getstring(v,2,&sErr)))	{
-				pf(v,fmt::format("\nAN ERROR HAS OCCURRED [{}]\n",sErr));
+			if(SQ_SUCCEEDED(sq_getstring(v,2,error))) {
+				pf(v,fmt::format("\nAN ERROR HAS OCCURRED [{}]\n",error));
 			}
 			else{
 				pf(v,"\nAN ERROR HAS OCCURRED [unknown]\n");

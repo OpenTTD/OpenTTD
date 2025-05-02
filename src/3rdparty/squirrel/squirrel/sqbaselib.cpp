@@ -170,9 +170,9 @@ static SQInteger get_slice_params(HSQUIRRELVM v,SQInteger &sidx,SQInteger &eidx,
 
 static SQInteger base_print(HSQUIRRELVM v)
 {
-	const SQChar *str;
+	std::string_view str;
 	sq_tostring(v,2);
-	sq_getstring(v,-1,&str);
+	sq_getstring(v,-1,str);
 	if(_ss(v)->_printfunc) _ss(v)->_printfunc(v,str);
 	return 0;
 }
@@ -181,12 +181,12 @@ static SQInteger base_print(HSQUIRRELVM v)
 static SQInteger base_compilestring(HSQUIRRELVM v)
 {
 	SQInteger nargs=sq_gettop(v);
-	const SQChar *src=nullptr,*name="unnamedbuffer";
+	std::string_view src, name="unnamedbuffer";
 	SQInteger size;
-	sq_getstring(v,2,&src);
+	sq_getstring(v,2,src);
 	size=sq_getsize(v,2);
 	if(nargs>2){
-		sq_getstring(v,3,&name);
+		sq_getstring(v,3,name);
 	}
 	if(SQ_SUCCEEDED(sq_compilebuffer(v,src,size,name,SQFalse)))
 		return 1;
@@ -649,13 +649,13 @@ static SQInteger string_slice(HSQUIRRELVM v)
 static SQInteger string_find(HSQUIRRELVM v)
 {
 	SQInteger top,start_idx=0;
-	const SQChar *str,*substr,*ret;
-	if(((top=sq_gettop(v))>1) && SQ_SUCCEEDED(sq_getstring(v,1,&str)) && SQ_SUCCEEDED(sq_getstring(v,2,&substr))){
+	std::string_view str,substr;
+	if(((top=sq_gettop(v))>1) && SQ_SUCCEEDED(sq_getstring(v,1,str)) && SQ_SUCCEEDED(sq_getstring(v,2,substr))){
 		if(top>2)sq_getinteger(v,3,&start_idx);
 		if((sq_getsize(v,1)>start_idx) && (start_idx>=0)){
-			ret=strstr(&str[start_idx],substr);
-			if(ret){
-				sq_pushinteger(v,(SQInteger)(ret-str));
+			auto ret = str.find(substr, start_idx);
+			if(ret != std::string_view::npos){
+				sq_pushinteger(v,static_cast<SQInteger>(ret));
 				return 1;
 			}
 		}

@@ -174,7 +174,7 @@ typedef SQObject HSQOBJECT;
 typedef SQInteger (*SQFUNCTION)(HSQUIRRELVM);
 typedef SQInteger (*SQRELEASEHOOK)(SQUserPointer,SQInteger size);
 typedef void (*SQCOMPILERERROR)(HSQUIRRELVM,const SQChar * /*desc*/,const SQChar * /*source*/,SQInteger /*line*/,SQInteger /*column*/);
-typedef void (*SQPRINTFUNCTION)(HSQUIRRELVM,const std::string &);
+typedef void (*SQPRINTFUNCTION)(HSQUIRRELVM,std::string_view);
 
 typedef SQInteger (*SQWRITEFUNC)(SQUserPointer,SQUserPointer,SQInteger);
 typedef SQInteger (*SQREADFUNC)(SQUserPointer,SQUserPointer,SQInteger);
@@ -250,7 +250,7 @@ SQRESULT sq_getbase(HSQUIRRELVM v,SQInteger idx);
 SQBool sq_instanceof(HSQUIRRELVM v);
 void sq_tostring(HSQUIRRELVM v,SQInteger idx);
 void sq_tobool(HSQUIRRELVM v, SQInteger idx, SQBool *b);
-SQRESULT sq_getstring(HSQUIRRELVM v,SQInteger idx,const SQChar **c);
+SQRESULT sq_getstring(HSQUIRRELVM v,SQInteger idx,std::string_view &str);
 SQRESULT sq_getinteger(HSQUIRRELVM v,SQInteger idx,SQInteger *i);
 SQRESULT sq_getfloat(HSQUIRRELVM v,SQInteger idx,SQFloat *f);
 SQRESULT sq_getbool(HSQUIRRELVM v,SQInteger idx,SQBool *b);

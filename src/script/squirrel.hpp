@@ -26,7 +26,7 @@ class Squirrel {
 	friend class ScriptInstance;
 
 private:
-	typedef void (SQPrintFunc)(bool error_msg, const std::string &message);
+	using SQPrintFunc = void (bool error_msg, std::string_view message);
 
 	HSQUIRRELVM vm;          ///< The VirtualMachine instance for squirrel
 	void *global_pointer;    ///< Can be set by who ever initializes Squirrel
@@ -60,17 +60,17 @@ protected:
 	/**
 	 * The RunError handler.
 	 */
-	static void RunError(HSQUIRRELVM vm, const SQChar *error);
+	static void RunError(HSQUIRRELVM vm, std::string_view error);
 
 	/**
 	 * If a user runs 'print' inside a script, this function gets the params.
 	 */
-	static void PrintFunc(HSQUIRRELVM vm, const std::string &s);
+	static void PrintFunc(HSQUIRRELVM vm, std::string_view s);
 
 	/**
 	 * If an error has to be print, this function is called.
 	 */
-	static void ErrorPrintFunc(HSQUIRRELVM vm, const std::string &s);
+	static void ErrorPrintFunc(HSQUIRRELVM vm, std::string_view s);
 
 public:
 	Squirrel(std::string_view api_name);
