@@ -928,7 +928,7 @@ struct GameOptionsWindow : Window {
 
 		/* Draw the 'some search results are hidden' notice. */
 		if (this->warn_missing != WHR_NONE) {
-			DrawStringMultiLine(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)),
+			DrawStringMultiLineWithClipping(panel.WithHeight(this->warn_lines * GetCharacterHeight(FS_NORMAL)),
 				GetString(warn_str, _game_settings_restrict_dropdown[this->filter.min_cat]),
 				TC_BLACK, SA_CENTER);
 		}
