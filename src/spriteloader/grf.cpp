@@ -231,23 +231,24 @@ uint8_t LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 	if (type == 0xFF) return 0;
 
 	ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? ZOOM_LVL_NORMAL : ZOOM_LVL_MIN;
+	auto &dest_sprite = sprite[zoom_lvl];
 
-	sprite[zoom_lvl].height = file.ReadByte();
-	sprite[zoom_lvl].width  = file.ReadWord();
-	sprite[zoom_lvl].x_offs = file.ReadWord();
-	sprite[zoom_lvl].y_offs = file.ReadWord();
-	sprite[zoom_lvl].colours = SpriteComponent::Palette;
+	dest_sprite.height = file.ReadByte();
+	dest_sprite.width = file.ReadWord();
+	dest_sprite.x_offs = file.ReadWord();
+	dest_sprite.y_offs = file.ReadWord();
+	dest_sprite.colours = SpriteComponent::Palette;
 
-	if (sprite[zoom_lvl].width > INT16_MAX) {
+	if (dest_sprite.width > INT16_MAX) {
 		WarnCorruptSprite(file, file_pos, __LINE__);
 		return 0;
 	}
 
 	/* 0x02 indicates it is a compressed sprite, so we can't rely on 'num' to be valid.
 	 * In case it is uncompressed, the size is 'num' - 8 (header-size). */
-	num = (type & 0x02) ? sprite[zoom_lvl].width * sprite[zoom_lvl].height : num - 8;
+	num = (type & 0x02) ? dest_sprite.width * dest_sprite.height : num - 8;
 
-	if (DecodeSingleSprite(&sprite[zoom_lvl], file, file_pos, sprite_type, num, type, zoom_lvl, SpriteComponent::Palette, 1)) {
+	if (DecodeSingleSprite(&dest_sprite, file, file_pos, sprite_type, num, type, zoom_lvl, SpriteComponent::Palette, 1)) {
 		SetBit(avail_8bpp, zoom_lvl);
 		return avail_8bpp;
 	}
@@ -317,12 +318,13 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 				continue;
 			}
 
-			sprite[zoom_lvl].height = file.ReadWord();
-			sprite[zoom_lvl].width  = file.ReadWord();
-			sprite[zoom_lvl].x_offs = file.ReadWord();
-			sprite[zoom_lvl].y_offs = file.ReadWord();
+			auto &dest_sprite = sprite[zoom_lvl];
+			dest_sprite.height = file.ReadWord();
+			dest_sprite.width = file.ReadWord();
+			dest_sprite.x_offs = file.ReadWord();
+			dest_sprite.y_offs = file.ReadWord();
 
-			if (sprite[zoom_lvl].width > INT16_MAX || sprite[zoom_lvl].height > INT16_MAX) {
+			if (dest_sprite.width > INT16_MAX || dest_sprite.height > INT16_MAX) {
 				WarnCorruptSprite(file, file_pos, __LINE__);
 				return 0;
 			}
@@ -333,13 +335,13 @@ uint8_t LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, s
 			if (colour.Test(SpriteComponent::Alpha)) bpp++;
 			if (colour.Test(SpriteComponent::Palette)) bpp++;
 
-			sprite[zoom_lvl].colours = colour;
+			dest_sprite.colours = colour;
 
 			/* For chunked encoding we store the decompressed size in the file,
 			 * otherwise we can calculate it from the image dimensions. */
-			uint decomp_size = (type & 0x08) ? file.ReadDword() : sprite[zoom_lvl].width * sprite[zoom_lvl].height * bpp;
+			uint decomp_size = (type & 0x08) ? file.ReadDword() : dest_sprite.width * dest_sprite.height * bpp;
 
-			bool valid = DecodeSingleSprite(&sprite[zoom_lvl], file, file_pos, sprite_type, decomp_size, type, zoom_lvl, colour, 2);
+			bool valid = DecodeSingleSprite(&dest_sprite, file, file_pos, sprite_type, decomp_size, type, zoom_lvl, colour, 2);
 			if (file.GetPos() != start_pos + num) {
 				WarnCorruptSprite(file, file_pos, __LINE__);
 				return 0;

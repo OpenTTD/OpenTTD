@@ -153,13 +153,14 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 
 	/* Make the sprites per zoom-level */
 	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
+		const SpriteLoader::Sprite &src_orig = sprite[i];
 		/* Store the index table */
 		uint offset = dst - temp_dst->data;
 		temp_dst->offset[i] = offset;
 
 		/* cache values, because compiler can't cache it */
-		int scaled_height = sprite[i].height;
-		int scaled_width  = sprite[i].width;
+		int scaled_height = src_orig.height;
+		int scaled_width = src_orig.width;
 
 		for (int y = 0; y < scaled_height; y++) {
 			uint trans = 0;
@@ -168,7 +169,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 			uint8_t *count_dst = nullptr;
 
 			/* Store the scaled image */
-			const SpriteLoader::CommonPixel *src = &sprite[i].data[y * sprite[i].width];
+			const SpriteLoader::CommonPixel *src = &src_orig.data[y * src_orig.width];
 
 			for (int x = 0; x < scaled_width; x++) {
 				uint colour = src++->m;
@@ -220,10 +221,11 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 	/* Allocate the exact amount of memory we need */
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + size);
 
-	dest_sprite->height = sprite[ZOOM_LVL_MIN].height;
-	dest_sprite->width  = sprite[ZOOM_LVL_MIN].width;
-	dest_sprite->x_offs = sprite[ZOOM_LVL_MIN].x_offs;
-	dest_sprite->y_offs = sprite[ZOOM_LVL_MIN].y_offs;
+	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	dest_sprite->height = root_sprite.height;
+	dest_sprite->width = root_sprite.width;
+	dest_sprite->x_offs = root_sprite.x_offs;
+	dest_sprite->y_offs = root_sprite.y_offs;
 	memcpy(dest_sprite->data, temp_dst, size);
 
 	return dest_sprite;
