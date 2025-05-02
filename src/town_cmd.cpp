@@ -2372,19 +2372,39 @@ static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize si
 	return nullptr;
 }
 
-static const uint8_t _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
+/**
+ * Calculate the number of towns which should be on the map according to the current "town density" newgame setting and the map size.
+ * If the number of towns is set to "custom", the function will always return that value instead.
+ * @return The number of towns.
+ */
+uint GetDefaultTownsForMapSize()
+{
+	static const uint8_t num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
+	if (_settings_game.difficulty.number_towns == static_cast<uint>(CUSTOM_TOWN_NUMBER_DIFFICULTY)) {
+		return _settings_newgame.game_creation.custom_town_number;
+	}
+	return Map::ScaleBySize(num_initial_towns[_settings_game.difficulty.number_towns]);
+}
 
 /**
  * Generate a number of towns with a given layout.
  * This function is used by the Random Towns button in Scenario Editor as well as in world generation.
  * @param layout The road layout to build.
+ * @param number The number of towns to create. std::nullopt means to use the game settings.
  * @return true if towns have been successfully created.
  */
-bool GenerateTowns(TownLayout layout)
+bool GenerateTowns(TownLayout layout, std::optional<uint> number)
 {
 	uint current_number = 0;
-	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
-	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : Map::ScaleBySize(_num_initial_towns[difficulty] + (Random() & 7));
+	uint total;
+	if (number.has_value()) {
+		total = number.value();
+	} else if (_settings_game.difficulty.number_towns == static_cast<uint>(CUSTOM_TOWN_NUMBER_DIFFICULTY)) {
+		total = GetDefaultTownsForMapSize();
+	} else {
+		total = GetDefaultTownsForMapSize() + (Random() & 7);
+	}
+
 	total = std::min<uint>(TownPool::MAX_SIZE, total);
 	uint32_t townnameparts;
 	TownNames town_names;

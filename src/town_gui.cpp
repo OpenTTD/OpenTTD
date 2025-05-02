@@ -34,6 +34,7 @@
 #include "townname_func.h"
 #include "core/backup_type.hpp"
 #include "core/geometry_func.hpp"
+#include "core/string_consumer.hpp"
 #include "genworld.h"
 #include "fios.h"
 #include "stringfilter_type.h"
@@ -1249,16 +1250,10 @@ public:
 				break;
 
 			case WID_TF_MANY_RANDOM_TOWNS: {
-				Backup<bool> old_generating_world(_generating_world, true);
-				UpdateNearestTownForRoadTiles(true);
-				if (!GenerateTowns(this->town_layout)) {
-					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WL_INFO);
-				}
-				UpdateNearestTownForRoadTiles(false);
-				old_generating_world.Restore();
+				std::string default_town_number = fmt::format("{}", GetDefaultTownsForMapSize());
+				ShowQueryString(default_town_number, STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, {QueryStringFlag::AcceptUnchanged});
 				break;
 			}
-
 			case WID_TF_LOAD_FROM_FILE:
 				ShowSaveLoadDialog(FT_TOWN_DATA, SLO_LOAD);
 				break;
@@ -1291,6 +1286,23 @@ public:
 				this->UpdateButtons(false);
 				break;
 		}
+	}
+
+	void OnQueryTextFinished(std::optional<std::string> str) override
+	{
+		/* Was 'cancel' pressed? */
+		if (!str.has_value()) return;
+
+		auto value = ParseInteger(*str);
+		if (!value.has_value()) return;
+
+		Backup<bool> old_generating_world(_generating_world, true);
+		UpdateNearestTownForRoadTiles(true);
+		if (!GenerateTowns(this->town_layout, value)) {
+			ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WL_INFO);
+		}
+		UpdateNearestTownForRoadTiles(false);
+		old_generating_world.Restore();
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
