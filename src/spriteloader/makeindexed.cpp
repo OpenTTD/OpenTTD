@@ -52,7 +52,7 @@ SpriteCollKeys SpriteLoaderMakeIndexed::LoadSprite(SpriteLoader::SpriteCollectio
 {
 	SpriteCollKeys avail = this->baseloader.LoadSprite(sprite, file, file_pos, sprite_type, true, control_flags, avail_8bpp, avail_32bpp);
 
-	for (auto sck : SpriteCollKeyRange(ZoomLevel::Min, ZoomLevel::Max)) {
+	for (auto sck : SpriteCollKeyRange(ZoomLevel::Min, ZoomLevel::Max, true)) {
 		if (avail.Test(sck)) Convert32bppTo8bpp(sprite[sck]);
 	}
 

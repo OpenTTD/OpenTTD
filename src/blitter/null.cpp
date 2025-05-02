@@ -15,16 +15,17 @@
 /** Instantiation of the null blitter factory. */
 static FBlitter_Null iFBlitter_Null;
 
-Sprite *Blitter_Null::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_Null::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, bool, SpriteAllocator &allocator)
 {
 	Sprite *dest_sprite;
 	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite));
 
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(false);
 	dest_sprite->height = root_sprite.height;
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
 	dest_sprite->y_offs = root_sprite.y_offs;
+	dest_sprite->has_rtl = false;
 
 	return dest_sprite;
 }

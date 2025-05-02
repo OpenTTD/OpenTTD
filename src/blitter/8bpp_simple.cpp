@@ -61,9 +61,9 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Spri
 	}
 }
 
-Sprite *Blitter_8bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_8bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, bool, SpriteAllocator &allocator)
 {
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(false);
 	Sprite *dest_sprite;
 	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + static_cast<size_t>(root_sprite.height) * static_cast<size_t>(root_sprite.width));
 
@@ -71,6 +71,7 @@ Sprite *Blitter_8bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollect
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
 	dest_sprite->y_offs = root_sprite.y_offs;
+	dest_sprite->has_rtl = false;
 
 	/* Copy over only the 'remap' channel, as that is what we care about in 8bpp */
 	uint8_t *dst = reinterpret_cast<uint8_t *>(dest_sprite->data);

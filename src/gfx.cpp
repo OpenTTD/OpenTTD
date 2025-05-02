@@ -1167,7 +1167,7 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 		}
 	}
 
-	BlitterFactory::GetCurrentBlitter()->Draw(&bp, mode, SpriteCollKey{zoom});
+	BlitterFactory::GetCurrentBlitter()->Draw(&bp, mode, SpriteCollKey{zoom, _current_text_dir == TD_RTL});
 }
 
 /**

@@ -34,6 +34,7 @@
 #include "../debug.h"
 #include "../blitter/factory.hpp"
 #include "../zoom_func.h"
+#include "../strings_func.h"
 #include "../core/string_consumer.hpp"
 
 #include "../table/opengl_shader.h"
@@ -1258,11 +1259,11 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 	}
 }
 
-/* virtual */ Sprite *OpenGLBackend::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+/* virtual */ Sprite *OpenGLBackend::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator)
 {
 	/* This encoding is only called for mouse cursors. We don't need real sprites but OpenGLSprites to show as cursor. These need to be put in the LRU cache. */
 	OpenGLSpriteAllocator &gl_allocator = static_cast<OpenGLSpriteAllocator&>(allocator);
-	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite_type, sprite));
+	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite_type, sprite, has_rtl && _current_text_dir == TD_RTL));
 
 	return nullptr;
 }
@@ -1397,9 +1398,9 @@ void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal
  * Create an OpenGL sprite with a palette remap part.
  * @param sprite The sprite to create the OpenGL sprite for
  */
-OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite)
+OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool rtl)
 {
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(rtl);
 	this->dim.width = root_sprite.width;
 	this->dim.height = root_sprite.height;
 	this->x_offs = root_sprite.x_offs;
@@ -1441,7 +1442,7 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 
 	/* Upload texture data. */
 	for (ZoomLevel zoom = ZoomLevel::Min; zoom <= (sprite_type == SpriteType::Font ? ZoomLevel::Min : ZoomLevel::Max); ++zoom) {
-		const auto &src_sprite = sprite[SpriteCollKey{zoom}];
+		const auto &src_sprite = sprite[SpriteCollKey{zoom, rtl}];
 		this->Update(src_sprite.width, src_sprite.height, to_underlying(zoom), src_sprite.data);
 	}
 

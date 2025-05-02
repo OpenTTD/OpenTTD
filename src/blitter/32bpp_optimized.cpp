@@ -286,7 +286,7 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 }
 
 template <bool Tpal_to_rgb>
-Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator)
 {
 	/* streams of pixels (a, r, g, b channels)
 	 *
@@ -316,7 +316,7 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 		if (zoom_max == zoom_min) zoom_max = ZoomLevel::Max;
 	}
 
-	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max, has_rtl)) {
 		const SpriteLoader::Sprite *src_orig = &sprite[sck];
 
 		uint size = src_orig->height * src_orig->width;
@@ -411,26 +411,33 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 	}
 
 	uint len = 0; // total length of data
-	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max, has_rtl)) {
 		len += lengths[0][sck] + lengths[1][sck];
 	}
 
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + sizeof(SpriteData) + len);
 
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(false);
 	dest_sprite->height = root_sprite.height;
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
 	dest_sprite->y_offs = root_sprite.y_offs;
+	dest_sprite->has_rtl = has_rtl;
 
 	SpriteData *dst = (SpriteData *)dest_sprite->data;
 
 	uint32_t offset = 0;
-	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max, has_rtl)) {
 		dst->offset[0][sck] = offset;
 		offset += lengths[0][sck];
 		dst->offset[1][sck] = offset;
 		offset += lengths[1][sck];
+		if (!has_rtl) {
+			/* Duplicate the sprite for RTL */
+			SpriteCollKey rtl{sck.zoom, true};
+			dst->offset[0][rtl] = dst->offset[0][sck];
+			dst->offset[1][rtl] = dst->offset[1][sck];
+		}
 
 		std::copy_n(reinterpret_cast<uint8_t *>(dst_px_orig[sck].get()), lengths[0][sck], dst->data + dst->offset[0][sck]);
 		std::copy_n(reinterpret_cast<uint8_t *>(dst_n_orig[sck].get()), lengths[1][sck], dst->data + dst->offset[1][sck]);
@@ -439,10 +446,10 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 	return dest_sprite;
 }
 
-template Sprite *Blitter_32bppOptimized::EncodeInternal<true>(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
-template Sprite *Blitter_32bppOptimized::EncodeInternal<false>(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
+template Sprite *Blitter_32bppOptimized::EncodeInternal<true>(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator);
+template Sprite *Blitter_32bppOptimized::EncodeInternal<false>(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator);
 
-Sprite *Blitter_32bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_32bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator)
 {
-	return this->EncodeInternal<true>(sprite_type, sprite, allocator);
+	return this->EncodeInternal<true>(sprite_type, sprite, has_rtl, allocator);
 }

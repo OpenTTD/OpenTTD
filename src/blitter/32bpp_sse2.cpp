@@ -20,7 +20,7 @@
 /** Instantiation of the SSE2 32bpp blitter factory. */
 static FBlitter_32bppSSE2 iFBlitter_32bppSSE2;
 
-Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator)
 {
 	/* First uint32_t of a line = the number of transparent pixels from the left.
 	 * Second uint32_t of a line = the number of transparent pixels from the right.
@@ -37,7 +37,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	/* Calculate sizes and allocate. */
 	SpriteData sd{};
 	uint all_sprites_size = 0;
-	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max, has_rtl)) {
 		const SpriteLoader::Sprite *src_sprite = &sprite[sck];
 		auto &info = sd.infos[sck];
 		info.sprite_width = src_sprite->width;
@@ -47,23 +47,30 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 		const uint rgba_size = info.sprite_line_size * src_sprite->height;
 		info.mv_offset = all_sprites_size + rgba_size;
 
+		if (!has_rtl) {
+			/* Duplicate the sprite for RTL */
+			SpriteCollKey rtl{sck.zoom, true};
+			sd.infos[rtl] = info;
+		}
+
 		const uint mv_size = sizeof(MapValue) * src_sprite->width * src_sprite->height;
 		all_sprites_size += rgba_size + mv_size;
 	}
 
 	Sprite *dst_sprite = allocator.Allocate<Sprite>(sizeof(Sprite) + sizeof(SpriteData) + all_sprites_size);
-	const auto &root_sprite = sprite.Root();
+	const auto &root_sprite = sprite.Root(false);
 	dst_sprite->height = root_sprite.height;
 	dst_sprite->width = root_sprite.width;
 	dst_sprite->x_offs = root_sprite.x_offs;
 	dst_sprite->y_offs = root_sprite.y_offs;
+	dst_sprite->has_rtl = has_rtl;
 	std::copy_n(reinterpret_cast<std::byte *>(&sd), sizeof(SpriteData), dst_sprite->data);
 
 	/* Copy colours and determine flags. */
 	bool has_remap = false;
 	bool has_anim = false;
 	bool has_translucency = false;
-	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max)) {
+	for (auto sck : SpriteCollKeyRange(zoom_min, zoom_max, has_rtl)) {
 		const SpriteLoader::Sprite *src_sprite = &sprite[sck];
 		const SpriteLoader::CommonPixel *src = (const SpriteLoader::CommonPixel *) src_sprite->data;
 		const auto &info = sd.infos[sck];

@@ -22,7 +22,7 @@ public:
 	};
 
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck) override;
-	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
+	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator) override;
 
 	std::string_view GetName() override { return "32bpp-optimized"; }
 
@@ -30,7 +30,7 @@ public:
 
 protected:
 	template <bool Tpal_to_rgb> void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck);
-	template <bool Tpal_to_rgb> Sprite *EncodeInternal(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
+	template <bool Tpal_to_rgb> Sprite *EncodeInternal(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, bool has_rtl, SpriteAllocator &allocator);
 };
 
 /** Factory for the optimised 32 bpp blitter (without palette animation). */
