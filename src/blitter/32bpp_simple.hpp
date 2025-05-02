@@ -24,7 +24,7 @@ class Blitter_32bppSimple : public Blitter_32bppBase {
 		uint8_t v;  ///< Brightness-channel
 	};
 public:
-	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) override;
+	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck) override;
 	void DrawColourMappingRect(void *dst, int width, int height, PaletteID pal) override;
 	Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) override;
 

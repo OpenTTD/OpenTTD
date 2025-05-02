@@ -19,13 +19,13 @@
 /** Instantiation of the simple 32bpp blitter factory. */
 static FBlitter_32bppSimple iFBlitter_32bppSimple;
 
-void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, SpriteCollKey sck)
 {
 	const Blitter_32bppSimple::Pixel *src, *src_line;
 	Colour *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
-	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, sck.zoom);
 	dst_line = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
@@ -33,7 +33,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 		dst_line += bp->pitch;
 
 		src = src_line;
-		src_line += bp->sprite_width * ScaleByZoom(1, zoom);
+		src_line += bp->sprite_width * ScaleByZoom(1, sck.zoom);
 
 		for (int x = 0; x < bp->width; x++) {
 			switch (mode) {
@@ -82,7 +82,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					break;
 			}
 			dst++;
-			src += ScaleByZoom(1, zoom);
+			src += ScaleByZoom(1, sck.zoom);
 		}
 	}
 }

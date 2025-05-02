@@ -1441,7 +1441,7 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 
 	/* Upload texture data. */
 	for (ZoomLevel zoom = ZoomLevel::Min; zoom <= (sprite_type == SpriteType::Font ? ZoomLevel::Min : ZoomLevel::Max); ++zoom) {
-		const auto &src_sprite = sprite[zoom];
+		const auto &src_sprite = sprite[SpriteCollKey{zoom}];
 		this->Update(src_sprite.width, src_sprite.height, to_underlying(zoom), src_sprite.data);
 	}
 
