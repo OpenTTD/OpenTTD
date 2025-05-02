@@ -202,7 +202,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 			preload_bytes += block.data.size();
 			if (block.ticktime >= _midi.current_segment.start) {
 				if (_midi.current_segment.loop) {
-					Debug(driver, 2, "Win32-MIDI: timer: loop from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, ((int)block.realtime)/1000.0, preload_bytes);
+					Debug(driver, 2, "Win32-MIDI: timer: loop from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, block.realtime / 1000.0, preload_bytes);
 					_midi.current_segment.start_block = bl;
 					break;
 				} else {
@@ -211,7 +211,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 					 * which have a bitrate of 31,250 bits/sec, and transmit 1+8+1 start/data/stop bits per byte.
 					 * The delay compensation is needed to avoid time-compression of following messages.
 					 */
-					Debug(driver, 2, "Win32-MIDI: timer: start from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, ((int)block.realtime) / 1000.0, preload_bytes);
+					Debug(driver, 2, "Win32-MIDI: timer: start from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, block.realtime / 1000.0, preload_bytes);
 					_midi.playback_start_time -= block.realtime / 1000 - (DWORD)(preload_bytes * 1000 / 3125);
 					break;
 				}

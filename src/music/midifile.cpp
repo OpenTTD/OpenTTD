@@ -377,7 +377,7 @@ static bool FixupMidiData(MidiFile &target)
 
 	/* Annotate blocks with real time */
 	last_ticktime = 0;
-	uint32_t last_realtime = 0;
+	int64_t last_realtime = 0;
 	size_t cur_tempo = 0, cur_block = 0;
 	while (cur_block < target.blocks.size()) {
 		MidiFile::DataBlock &block = target.blocks[cur_block];
@@ -387,14 +387,14 @@ static bool FixupMidiData(MidiFile &target)
 			/* block is within the current tempo */
 			int64_t tickdiff = block.ticktime - last_ticktime;
 			last_ticktime = block.ticktime;
-			last_realtime += uint32_t(tickdiff * tempo.tempo / target.tickdiv);
+			last_realtime += tickdiff * tempo.tempo / target.tickdiv;
 			block.realtime = last_realtime;
 			cur_block++;
 		} else {
 			/* tempo change occurs before this block */
 			int64_t tickdiff = next_tempo.ticktime - last_ticktime;
 			last_ticktime = next_tempo.ticktime;
-			last_realtime += uint32_t(tickdiff * tempo.tempo / target.tickdiv); // current tempo until the tempo change
+			last_realtime += tickdiff * tempo.tempo / target.tickdiv; // current tempo until the tempo change
 			cur_tempo++;
 		}
 	}
