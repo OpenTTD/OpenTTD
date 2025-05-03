@@ -73,5 +73,5 @@ struct SQVM;
 
 using CompileException = std::runtime_error;
 
-bool Compile(SQVM *vm, SQLEXREADFUNC rg, SQUserPointer up, const SQChar *sourcename, SQObjectPtr &out, bool raiseerror, bool lineinfo);
+bool Compile(SQVM *vm, SQLEXREADFUNC rg, SQUserPointer up, std::string_view sourcename, SQObjectPtr &out, bool raiseerror, bool lineinfo);
 #endif //_SQCOMPILER_H_

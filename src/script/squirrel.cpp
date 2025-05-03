@@ -179,7 +179,7 @@ size_t Squirrel::GetAllocatedMemory() const noexcept
 }
 
 
-void Squirrel::CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column)
+void Squirrel::CompileError(HSQUIRRELVM vm, std::string_view desc, std::string_view source, SQInteger line, SQInteger column)
 {
 	std::string msg = fmt::format("Error {}:{}/{}: {}", source, line, column, desc);
 

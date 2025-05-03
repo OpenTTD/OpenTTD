@@ -188,7 +188,7 @@ static SQInteger base_compilestring(HSQUIRRELVM v)
 	if(nargs>2){
 		sq_getstring(v,3,name);
 	}
-	if(SQ_SUCCEEDED(sq_compilebuffer(v,src,size,name,SQFalse)))
+	if(SQ_SUCCEEDED(sq_compilebuffer(v,src.substr(0, size),name,SQFalse)))
 		return 1;
 	else
 		return SQ_ERROR;

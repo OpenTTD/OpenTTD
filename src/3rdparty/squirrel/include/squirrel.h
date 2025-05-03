@@ -173,7 +173,7 @@ typedef struct SQVM* HSQUIRRELVM;
 typedef SQObject HSQOBJECT;
 typedef SQInteger (*SQFUNCTION)(HSQUIRRELVM);
 typedef SQInteger (*SQRELEASEHOOK)(SQUserPointer,SQInteger size);
-typedef void (*SQCOMPILERERROR)(HSQUIRRELVM,const SQChar * /*desc*/,const SQChar * /*source*/,SQInteger /*line*/,SQInteger /*column*/);
+typedef void (*SQCOMPILERERROR)(HSQUIRRELVM,std::string_view /*desc*/,std::string_view /*source*/,SQInteger /*line*/,SQInteger /*column*/);
 typedef void (*SQPRINTFUNCTION)(HSQUIRRELVM,std::string_view);
 
 typedef SQInteger (*SQWRITEFUNC)(SQUserPointer,SQUserPointer,SQInteger);
@@ -213,8 +213,8 @@ SQInteger sq_getvmstate(HSQUIRRELVM v);
 void sq_decreaseops(HSQUIRRELVM v, int amount);
 
 /*compiler*/
-SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,const SQChar *sourcename,SQBool raiseerror);
-SQRESULT sq_compilebuffer(HSQUIRRELVM v,const SQChar *s,SQInteger size,const SQChar *sourcename,SQBool raiseerror);
+SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,std::string_view sourcename,SQBool raiseerror);
+SQRESULT sq_compilebuffer(HSQUIRRELVM v,std::string_view buffer,std::string_view sourcename,SQBool raiseerror);
 void sq_enabledebuginfo(HSQUIRRELVM v, SQBool enable);
 void sq_notifyallexceptions(HSQUIRRELVM v, SQBool enable);
 void sq_setcompilererrorhandler(HSQUIRRELVM v,SQCOMPILERERROR f);

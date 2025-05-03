@@ -55,7 +55,7 @@ protected:
 	/**
 	 * The CompileError handler.
 	 */
-	static void CompileError(HSQUIRRELVM vm, const SQChar *desc, const SQChar *source, SQInteger line, SQInteger column);
+	static void CompileError(HSQUIRRELVM vm, std::string_view desc, std::string_view source, SQInteger line, SQInteger column);
 
 	/**
 	 * The RunError handler.

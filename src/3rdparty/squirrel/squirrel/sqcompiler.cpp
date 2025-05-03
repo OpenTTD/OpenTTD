@@ -57,7 +57,7 @@ typedef sqvector<ExpState> ExpStateVec;
 class SQCompiler
 {
 public:
-	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, const SQChar* sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(nullptr), _lex(_ss(v), rg, up), _debugline(0), _debugop(0)
+	SQCompiler(SQVM *v, SQLEXREADFUNC rg, SQUserPointer up, std::string_view sourcename, bool raiseerror, bool lineinfo) : _token(0), _fs(nullptr), _lex(_ss(v), rg, up), _debugline(0), _debugop(0)
 	{
 		_vm=v;
 		_sourcename = SQString::Create(_ss(v), sourcename);
@@ -1346,7 +1346,7 @@ private:
 	SQVM *_vm;
 };
 
-bool Compile(SQVM *vm,SQLEXREADFUNC rg, SQUserPointer up, const SQChar *sourcename, SQObjectPtr &out, bool raiseerror, bool lineinfo)
+bool Compile(SQVM *vm,SQLEXREADFUNC rg, SQUserPointer up, std::string_view sourcename, SQObjectPtr &out, bool raiseerror, bool lineinfo)
 {
 	SQCompiler p(vm, rg, up, sourcename, raiseerror, lineinfo);
 	return p.Compile(out);
