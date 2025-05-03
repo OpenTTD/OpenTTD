@@ -58,18 +58,6 @@ struct CaseInsensitiveComparator {
 	bool operator()(std::string_view s1, std::string_view s2) const { return StrCompareIgnoreCase(s1, s2) < 0; }
 };
 
-/**
- * Check if a string buffer is empty.
- *
- * @param s The pointer to the first element of the buffer
- * @return true if the buffer starts with the terminating null-character or
- *         if the given pointer points to nullptr else return false
- */
-inline bool StrEmpty(const char *s)
-{
-	return s == nullptr || s[0] == '\0';
-}
-
 bool IsValidChar(char32_t key, CharSetFilter afilter);
 
 size_t Utf8StringLength(std::string_view str);
