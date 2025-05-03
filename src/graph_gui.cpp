@@ -116,7 +116,7 @@ static std::unique_ptr<NWidgetBase> MakeNWidgetCompanyLines()
 {
 	auto vert = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	vert->SetPadding(2, 2, 2, 2);
-	uint sprite_height = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_NORMAL).height;
+	uint sprite_height = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZoomLevel::Normal).height;
 
 	for (WidgetID widnum = WID_GL_FIRST_COMPANY; widnum <= WID_GL_LAST_COMPANY; widnum++) {
 		auto panel = std::make_unique<NWidgetBackground>(WWT_PANEL, COLOUR_BROWN, widnum);

@@ -230,7 +230,7 @@ static ZoomLevels LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFil
 	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
 	if (type == 0xFF) return {};
 
-	ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? ZOOM_LVL_NORMAL : ZOOM_LVL_MIN;
+	ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? ZoomLevel::Normal : ZoomLevel::Min;
 	auto &dest_sprite = sprite[zoom_lvl];
 
 	dest_sprite.height = file.ReadByte();
@@ -258,7 +258,7 @@ static ZoomLevels LoadSpriteV1(SpriteLoader::SpriteCollection &sprite, SpriteFil
 
 static ZoomLevels LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp)
 {
-	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_NORMAL, ZOOM_LVL_IN_4X, ZOOM_LVL_IN_2X, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_4X, ZOOM_LVL_OUT_8X};
+	static const ZoomLevel zoom_lvl_map[6] = {ZoomLevel::Normal, ZoomLevel::In4x, ZoomLevel::In2x, ZoomLevel::Out2x, ZoomLevel::Out4x, ZoomLevel::Out8x};
 
 	/* Is the sprite not present/stripped in the GRF? */
 	if (file_pos == SIZE_MAX) return {};
@@ -293,13 +293,13 @@ static ZoomLevels LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFil
 				if (colour != SpriteComponent::Palette) avail_32bpp.Set(zoom_lvl);
 
 				is_wanted_zoom_lvl = true;
-				ZoomLevel zoom_min = sprite_type == SpriteType::Font ? ZOOM_LVL_MIN : _settings_client.gui.sprite_zoom_min;
-				if (zoom_min >= ZOOM_LVL_IN_2X &&
-						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL) && zoom_lvl < ZOOM_LVL_IN_2X) {
+				ZoomLevel zoom_min = sprite_type == SpriteType::Font ? ZoomLevel::Min : _settings_client.gui.sprite_zoom_min;
+				if (zoom_min >= ZoomLevel::In2x &&
+						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_2X_32BPP : SCCF_ALLOW_ZOOM_MIN_2X_PAL) && zoom_lvl < ZoomLevel::In2x) {
 					is_wanted_zoom_lvl = false;
 				}
-				if (zoom_min >= ZOOM_LVL_NORMAL &&
-						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL) && zoom_lvl < ZOOM_LVL_NORMAL) {
+				if (zoom_min >= ZoomLevel::Normal &&
+						HasBit(control_flags, load_32bpp ? SCCF_ALLOW_ZOOM_MIN_1X_32BPP : SCCF_ALLOW_ZOOM_MIN_1X_PAL) && zoom_lvl < ZoomLevel::Normal) {
 					is_wanted_zoom_lvl = false;
 				}
 			} else {
@@ -310,7 +310,7 @@ static ZoomLevels LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFil
 		}
 
 		if (is_wanted_colour_depth && is_wanted_zoom_lvl) {
-			ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? zoom_lvl_map[zoom] : ZOOM_LVL_MIN;
+			ZoomLevel zoom_lvl = (sprite_type != SpriteType::MapGen) ? zoom_lvl_map[zoom] : ZoomLevel::Min;
 
 			if (loaded_sprites.Test(zoom_lvl)) {
 				/* We already have this zoom level, skip sprite. */

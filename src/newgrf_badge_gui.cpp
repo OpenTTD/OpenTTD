@@ -44,7 +44,7 @@ static Dimension GetBadgeMaximalDimension(BadgeClassID class_index, GrfSpecFeatu
 		PalSpriteID ps = GetBadgeSprite(badge, feature, std::nullopt, PAL_NONE);
 		if (ps.sprite == 0) continue;
 
-		d.width = std::max(d.width, GetSpriteSize(ps.sprite, nullptr, ZOOM_LVL_NORMAL).width);
+		d.width = std::max(d.width, GetSpriteSize(ps.sprite, nullptr, ZoomLevel::Normal).width);
 		if (d.width > MAX_BADGE_WIDTH) break;
 	}
 

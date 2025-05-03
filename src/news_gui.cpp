@@ -395,9 +395,9 @@ struct NewsWindow : Window {
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_N_VIEWPORT);
 		if (nvp != nullptr) {
 			if (std::holds_alternative<VehicleID>(ni->ref1)) {
-				nvp->InitializeViewport(this, std::get<VehicleID>(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+				nvp->InitializeViewport(this, std::get<VehicleID>(ni->ref1), ScaleZoomGUI(ZoomLevel::News));
 			} else {
-				nvp->InitializeViewport(this, GetReferenceTile(ni->ref1), ScaleZoomGUI(ZOOM_LVL_NEWS));
+				nvp->InitializeViewport(this, GetReferenceTile(ni->ref1), ScaleZoomGUI(ZoomLevel::News));
 			}
 			if (this->ni->flags.Test(NewsFlag::NoTransparency)) nvp->disp_flags.Set(NWidgetDisplayFlag::NoTransparency);
 			if (!this->ni->flags.Test(NewsFlag::InColour)) {

@@ -43,7 +43,7 @@ void SaveViewportBeforeSaveGame()
 		/* Ensure saved position is clearly invalid. */
 		_saved_scrollpos_x = INT_MAX;
 		_saved_scrollpos_y = INT_MAX;
-		_saved_scrollpos_zoom = ZOOM_LVL_END;
+		_saved_scrollpos_zoom = ZoomLevel::End;
 	} else {
 		_saved_scrollpos_x = w->viewport->scrollpos_x;
 		_saved_scrollpos_y = w->viewport->scrollpos_y;
@@ -61,12 +61,12 @@ void ResetViewportAfterLoadGame()
 	w->viewport->dest_scrollpos_y = _saved_scrollpos_y;
 
 	Viewport &vp = *w->viewport;
-	vp.zoom = std::min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
+	vp.zoom = std::min(_saved_scrollpos_zoom, ZoomLevel::Max);
 	vp.virtual_width = ScaleByZoom(vp.width, vp.zoom);
 	vp.virtual_height = ScaleByZoom(vp.height, vp.zoom);
 
-	/* If zoom_max is ZOOM_LVL_MIN then the setting has not been loaded yet, therefore all levels are allowed. */
-	if (_settings_client.gui.zoom_max != ZOOM_LVL_MIN) {
+	/* If zoom_max is ZoomLevel::Min then the setting has not been loaded yet, therefore all levels are allowed. */
+	if (_settings_client.gui.zoom_max != ZoomLevel::Min) {
 		/* Ensure zoom level is allowed */
 		while (vp.zoom < _settings_client.gui.zoom_min) DoZoomInOutWindow(ZOOM_OUT, w);
 		while (vp.zoom > _settings_client.gui.zoom_max) DoZoomInOutWindow(ZOOM_IN, w);

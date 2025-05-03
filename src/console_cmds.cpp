@@ -313,16 +313,16 @@ static bool ConZoomToLevel(std::span<std::string_view> argv)
 			IConsolePrint(CC_HELP, "Set the current zoom level of the main viewport.");
 			IConsolePrint(CC_HELP, "Usage: 'zoomto <level>'.");
 
-			if (ZOOM_LVL_MIN < _settings_client.gui.zoom_min) {
-				IConsolePrint(CC_HELP, "The lowest zoom-in level allowed by current client settings is {}.", std::max(ZOOM_LVL_MIN, _settings_client.gui.zoom_min));
+			if (ZoomLevel::Min < _settings_client.gui.zoom_min) {
+				IConsolePrint(CC_HELP, "The lowest zoom-in level allowed by current client settings is {}.", std::max(ZoomLevel::Min, _settings_client.gui.zoom_min));
 			} else {
-				IConsolePrint(CC_HELP, "The lowest supported zoom-in level is {}.", std::max(ZOOM_LVL_MIN, _settings_client.gui.zoom_min));
+				IConsolePrint(CC_HELP, "The lowest supported zoom-in level is {}.", std::max(ZoomLevel::Min, _settings_client.gui.zoom_min));
 			}
 
-			if (_settings_client.gui.zoom_max < ZOOM_LVL_MAX) {
-				IConsolePrint(CC_HELP, "The highest zoom-out level allowed by current client settings is {}.", std::min(_settings_client.gui.zoom_max, ZOOM_LVL_MAX));
+			if (_settings_client.gui.zoom_max < ZoomLevel::Max) {
+				IConsolePrint(CC_HELP, "The highest zoom-out level allowed by current client settings is {}.", std::min(_settings_client.gui.zoom_max, ZoomLevel::Max));
 			} else {
-				IConsolePrint(CC_HELP, "The highest supported zoom-out level is {}.", std::min(_settings_client.gui.zoom_max, ZOOM_LVL_MAX));
+				IConsolePrint(CC_HELP, "The highest supported zoom-out level is {}.", std::min(_settings_client.gui.zoom_max, ZoomLevel::Max));
 			}
 			return true;
 
@@ -330,8 +330,8 @@ static bool ConZoomToLevel(std::span<std::string_view> argv)
 			auto level = ParseInteger<std::underlying_type_t<ZoomLevel>>(argv[1]);
 			if (level.has_value()) {
 				auto zoom_lvl = static_cast<ZoomLevel>(*level);
-				if (!IsInsideMM(zoom_lvl, ZOOM_LVL_BEGIN, ZOOM_LVL_END)) {
-					IConsolePrint(CC_ERROR, "Invalid zoom level. Valid range is {} to {}.", ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+				if (!IsInsideMM(zoom_lvl, ZoomLevel::Begin, ZoomLevel::End)) {
+					IConsolePrint(CC_ERROR, "Invalid zoom level. Valid range is {} to {}.", ZoomLevel::Min, ZoomLevel::Max);
 				} else if (!IsInsideMM(zoom_lvl, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max + 1)) {
 					IConsolePrint(CC_ERROR, "Current client settings limit zoom levels to range {} to {}.", _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 				} else {

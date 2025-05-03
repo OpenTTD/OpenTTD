@@ -242,8 +242,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
 	SpriteLoader::SpriteCollection spritecollection;
-	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
-	sprite.AllocateData(ZOOM_LVL_MIN, static_cast<size_t>(width) * height);
+	SpriteLoader::Sprite &sprite = spritecollection[ZoomLevel::Min];
+	sprite.AllocateData(ZoomLevel::Min, static_cast<size_t>(width) * height);
 	sprite.colours = SpriteComponent::Palette;
 	if (aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;

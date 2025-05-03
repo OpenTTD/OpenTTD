@@ -822,7 +822,7 @@ struct SpriteAlignerWindow : Window {
 	Scrollbar *vscroll = nullptr;
 	std::map<SpriteID, XyOffs> offs_start_map{}; ///< Mapping of starting offsets for the sprites which have been aligned in the sprite aligner window.
 
-	static inline ZoomLevel zoom = ZOOM_LVL_END;
+	static inline ZoomLevel zoom = ZoomLevel::End;
 	static bool centre;
 	static bool crosshair;
 	const Action5Type *act5_type = nullptr; ///< Sprite Area of current selected sprite.
@@ -830,7 +830,7 @@ struct SpriteAlignerWindow : Window {
 	SpriteAlignerWindow(WindowDesc &desc, WindowNumber wno) : Window(desc)
 	{
 		/* On first opening, set initial zoom to current zoom level. */
-		if (SpriteAlignerWindow::zoom == ZOOM_LVL_END) SpriteAlignerWindow::zoom = _gui_zoom;
+		if (SpriteAlignerWindow::zoom == ZoomLevel::End) SpriteAlignerWindow::zoom = _gui_zoom;
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 
 		/* Oh yes, we assume there is at least one normal sprite! */
@@ -1071,8 +1071,8 @@ struct SpriteAlignerWindow : Window {
 				break;
 
 			default:
-				if (IsInsideBS(widget, WID_SA_ZOOM, ZOOM_LVL_END)) {
-					SpriteAlignerWindow::zoom = ZoomLevel(widget - WID_SA_ZOOM);
+				if (IsInsideBS(widget, WID_SA_ZOOM, to_underlying(ZoomLevel::End))) {
+					SpriteAlignerWindow::zoom = static_cast<ZoomLevel>(widget - WID_SA_ZOOM);
 					this->InvalidateData(0, true);
 				}
 				break;
@@ -1109,7 +1109,7 @@ struct SpriteAlignerWindow : Window {
 		}
 
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
-		for (ZoomLevel z = ZOOM_LVL_BEGIN; z < ZOOM_LVL_END; z++) {
+		for (ZoomLevel z = ZoomLevel::Begin; z < ZoomLevel::End; z++) {
 			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + to_underlying(z));
 			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + to_underlying(z));
 		}
@@ -1191,12 +1191,12 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SA_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_IN_4X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_IN_2X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_NORMAL)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_OUT_2X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_OUT_4X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_OUT_8X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::In4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::In2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Normal)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZoomLevel::Out8x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

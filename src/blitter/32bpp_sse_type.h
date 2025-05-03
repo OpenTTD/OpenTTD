@@ -28,7 +28,7 @@
 #endif
 
 #define META_LENGTH 2 ///< Number of uint32_t inserted before each line of pixels in a sprite.
-#define MARGIN_NORMAL_THRESHOLD (zoom == ZOOM_LVL_OUT_8X ? 8 : 4) ///< Minimum width to use margins with BlitterMode::Normal.
+#define MARGIN_NORMAL_THRESHOLD (zoom == ZoomLevel::Out8x ? 8 : 4) ///< Minimum width to use margins with BlitterMode::Normal.
 #define MARGIN_REMAP_THRESHOLD 4 ///< Minimum width to use margins with BlitterMode::ColourRemap.
 
 typedef union alignas(16) um128i {

@@ -2873,10 +2873,10 @@ static_assert(VEH_AIRCRAFT == 3);
 
 /** Zoom levels for vehicle views indexed by vehicle type. */
 static const ZoomLevel _vehicle_view_zoom_levels[] = {
-	ZOOM_LVL_TRAIN,
-	ZOOM_LVL_ROADVEH,
-	ZOOM_LVL_SHIP,
-	ZOOM_LVL_AIRCRAFT,
+	ZoomLevel::Train,
+	ZoomLevel::RoadVehicle,
+	ZoomLevel::Ship,
+	ZoomLevel::Aircraft,
 };
 
 /* Constants for geometry of vehicle view viewport */

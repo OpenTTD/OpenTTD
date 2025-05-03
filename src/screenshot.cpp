@@ -94,7 +94,7 @@ static void LargeWorldCallback(Viewport &vp, void *buf, uint y, uint pitch, uint
 		.width = vp.width,
 		.height = static_cast<int>(n),
 		.pitch = static_cast<int>(pitch),
-		.zoom = ZOOM_LVL_WORLD_SCREENSHOT
+		.zoom = ZoomLevel::WorldScreenshot
 	};
 
 	/* We are no longer rendering to the screen */
@@ -105,7 +105,7 @@ static void LargeWorldCallback(Viewport &vp, void *buf, uint y, uint pitch, uint
 		.width = static_cast<int>(pitch),
 		.height = static_cast<int>(n),
 		.pitch = static_cast<int>(pitch),
-		.zoom = ZOOM_LVL_MIN
+		.zoom = ZoomLevel::Min
 	});
 	AutoRestoreBackup disable_anim_backup(_screen_disable_anim, true);
 	AutoRestoreBackup dpi_backup(_cur_dpi, &dpi);
@@ -213,7 +213,7 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 			assert(width == 0 && height == 0);
 
 			/* Determine world coordinates of screenshot */
-			vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
+			vp.zoom = ZoomLevel::WorldScreenshot;
 
 			TileIndex north_tile = _settings_game.construction.freeform_edges ? TileXY(1, 1) : TileXY(0, 0);
 			TileIndex south_tile{Map::Size() - 1};
@@ -237,7 +237,7 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 			break;
 		}
 		default: {
-			vp.zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZOOM_LVL_VIEWPORT;
+			vp.zoom = (t == SC_ZOOMEDIN) ? _settings_client.gui.zoom_min : ZoomLevel::Viewport;
 
 			Window *w = GetMainWindow();
 			vp.virtual_left   = w->viewport->virtual_left;
@@ -247,8 +247,8 @@ static Viewport SetupScreenshotViewport(ScreenshotType t, uint32_t width = 0, ui
 				vp.virtual_width  = w->viewport->virtual_width;
 				vp.virtual_height = w->viewport->virtual_height;
 			} else {
-				vp.virtual_width = width << vp.zoom;
-				vp.virtual_height = height << vp.zoom;
+				vp.virtual_width = width << to_underlying(vp.zoom);
+				vp.virtual_height = height << to_underlying(vp.zoom);
 			}
 
 			/* Compute pixel coordinates */
