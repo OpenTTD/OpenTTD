@@ -1110,8 +1110,8 @@ struct SpriteAlignerWindow : Window {
 
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 		for (ZoomLevel z = ZOOM_LVL_BEGIN; z < ZOOM_LVL_END; z++) {
-			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + z);
-			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + z);
+			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + to_underlying(z));
+			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + to_underlying(z));
 		}
 	}
 
@@ -1191,12 +1191,12 @@ static constexpr NWidgetPart _nested_sprite_aligner_widgets[] = {
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SA_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_IN_4X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_IN_2X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_NORMAL), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_2X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_4X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + ZOOM_LVL_OUT_8X), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_IN_4X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_IN_2X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_NORMAL)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_OUT_2X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_OUT_4X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SA_ZOOM + to_underlying(ZOOM_LVL_OUT_8X)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

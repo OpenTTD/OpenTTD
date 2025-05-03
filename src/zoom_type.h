@@ -42,7 +42,7 @@ enum ZoomLevel : uint8_t {
 	ZOOM_LVL_MAX      = ZOOM_LVL_OUT_8X, ///< Maximum zoom level.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ZoomLevel)
-DECLARE_ENUM_AS_ADDABLE(ZoomLevel)
+DECLARE_ENUM_AS_SEQUENTIAL(ZoomLevel)
 using ZoomLevels = EnumBitSet<ZoomLevel, uint8_t>;
 
 static uint const ZOOM_BASE_SHIFT = static_cast<uint>(ZOOM_LVL_NORMAL);

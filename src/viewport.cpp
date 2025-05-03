@@ -227,7 +227,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->width = width;
 	vp->height = height;
 
-	vp->zoom = static_cast<ZoomLevel>(Clamp(zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+	vp->zoom = Clamp(zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 
 	vp->virtual_width = ScaleByZoom(width, zoom);
 	vp->virtual_height = ScaleByZoom(height, zoom);
@@ -2081,7 +2081,7 @@ void ConstrainAllViewportsZoom()
 	for (Window *w : Window::Iterate()) {
 		if (w->viewport == nullptr) continue;
 
-		ZoomLevel zoom = static_cast<ZoomLevel>(Clamp(w->viewport->zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+		ZoomLevel zoom = Clamp(w->viewport->zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 		if (zoom != w->viewport->zoom) {
 			while (w->viewport->zoom < zoom) DoZoomInOutWindow(ZOOM_OUT, w);
 			while (w->viewport->zoom > zoom) DoZoomInOutWindow(ZOOM_IN, w);

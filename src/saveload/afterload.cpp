@@ -2898,7 +2898,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SLV_165)) {
 		/* Adjust zoom level to account for new levels */
-		_saved_scrollpos_zoom = static_cast<ZoomLevel>(_saved_scrollpos_zoom + ZOOM_BASE_SHIFT);
+		_saved_scrollpos_zoom += ZOOM_BASE_SHIFT;
 		_saved_scrollpos_x *= ZOOM_BASE;
 		_saved_scrollpos_y *= ZOOM_BASE;
 	}
