@@ -13,7 +13,7 @@
 #include "zoom_type.h"
 
 /**
- * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_MIN)
+ * Scale by zoom level, usually shift left (when zoom > ZoomLevel::Min)
  * When shifting right, value is rounded up
  * @param value value to shift
  * @param zoom  zoom level to shift to
@@ -21,11 +21,11 @@
  */
 inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
-	return value << zoom;
+	return value << to_underlying(zoom);
 }
 
 /**
- * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_MIN)
+ * Scale by zoom level, usually shift right (when zoom > ZoomLevel::Min)
  * When shifting right, value is rounded up
  * @param value value to shift
  * @param zoom  zoom level to shift to
@@ -33,7 +33,7 @@ inline int ScaleByZoom(int value, ZoomLevel zoom)
  */
 inline int UnScaleByZoom(int value, ZoomLevel zoom)
 {
-	return (value + (1 << zoom) - 1) >> zoom;
+	return (value + (1 << to_underlying(zoom)) - 1) >> to_underlying(zoom);
 }
 
 /**
@@ -44,34 +44,34 @@ inline int UnScaleByZoom(int value, ZoomLevel zoom)
  */
 inline int AdjustByZoom(int value, int zoom)
 {
-	return zoom < 0 ? UnScaleByZoom(value, ZoomLevel(-zoom)) : ScaleByZoom(value, ZoomLevel(zoom));
+	return zoom < 0 ? UnScaleByZoom(value, static_cast<ZoomLevel>(-zoom)) : ScaleByZoom(value, static_cast<ZoomLevel>(zoom));
 }
 
 /**
- * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_MIN)
+ * Scale by zoom level, usually shift left (when zoom > ZoomLevel::Min)
  * @param value value to shift
  * @param zoom  zoom level to shift to
  * @return shifted value
  */
 inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	return value << zoom;
+	return value << to_underlying(zoom);
 }
 
 /**
- * Scale by zoom level, usually shift right (when zoom > ZOOM_LVL_MIN)
+ * Scale by zoom level, usually shift right (when zoom > ZoomLevel::Min)
  * @param value value to shift
  * @param zoom  zoom level to shift to
  * @return shifted value
  */
 inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	return value >> zoom;
+	return value >> to_underlying(zoom);
 }
 
 /**
  * Short-hand to apply GUI zoom level.
- * @param value Pixel amount at #ZOOM_LVL_MIN (full zoom in).
+ * @param value Pixel amount at #ZoomLevel::Min (full zoom in).
  * @return Pixel amount at #ZOOM_LVL_GUI (current interface size).
  */
 inline int UnScaleGUI(int value)
@@ -86,7 +86,7 @@ inline int UnScaleGUI(int value)
  */
 inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(value + (ZOOM_LVL_GUI - ZOOM_LVL_NORMAL), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+	return std::clamp(value + (ZOOM_LVL_GUI - ZoomLevel::Normal), ZoomLevel::Min, ZoomLevel::Max);
 }
 
 /**
@@ -96,7 +96,7 @@ inline ZoomLevel ScaleZoomGUI(ZoomLevel value)
  */
 inline ZoomLevel UnScaleZoomGUI(ZoomLevel value)
 {
-	return std::clamp(value - (ZOOM_LVL_GUI - ZOOM_LVL_NORMAL), ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+	return std::clamp(value - (ZOOM_LVL_GUI - ZoomLevel::Normal), ZoomLevel::Min, ZoomLevel::Max);
 }
 
 /**

@@ -26,12 +26,12 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	 * Second uint32_t of a line = the number of transparent pixels from the right.
 	 * Then all RGBA then all MV.
 	 */
-	ZoomLevel zoom_min = ZOOM_LVL_MIN;
-	ZoomLevel zoom_max = ZOOM_LVL_MIN;
+	ZoomLevel zoom_min = ZoomLevel::Min;
+	ZoomLevel zoom_max = ZoomLevel::Min;
 	if (sprite_type != SpriteType::Font) {
 		zoom_min = _settings_client.gui.zoom_min;
 		zoom_max = _settings_client.gui.zoom_max;
-		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;
+		if (zoom_max == zoom_min) zoom_max = ZoomLevel::Max;
 	}
 
 	/* Calculate sizes and allocate. */

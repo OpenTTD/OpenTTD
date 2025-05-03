@@ -101,10 +101,10 @@ IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::millis
 			continue;
 		}
 
-		te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
+		te.MarkDirty(ZoomLevel::TextEffect);
 		te.duration -= count;
 		te.top -= count * ZOOM_BASE;
-		te.MarkDirty(ZOOM_LVL_TEXT_EFFECT);
+		te.MarkDirty(ZoomLevel::TextEffect);
 	}
 }};
 
@@ -117,11 +117,11 @@ void InitTextEffects()
 void DrawTextEffects(DrawPixelInfo *dpi)
 {
 	/* Don't draw the text effects when zoomed out a lot */
-	if (dpi->zoom > ZOOM_LVL_TEXT_EFFECT) return;
+	if (dpi->zoom > ZoomLevel::TextEffect) return;
 	if (IsTransparencySet(TO_TEXT)) return;
 
 	ViewportStringFlags flags{};
-	if (dpi->zoom >= ZOOM_LVL_TEXT_EFFECT) flags.Set(ViewportStringFlag::Small);
+	if (dpi->zoom >= ZoomLevel::TextEffect) flags.Set(ViewportStringFlag::Small);
 
 	for (const TextEffect &te : _text_effects) {
 		if (!te.IsValid()) continue;

@@ -13,39 +13,38 @@
 #include "core/enum_type.hpp"
 
 /** All zoom levels we know. */
-enum ZoomLevel : uint8_t {
+enum class ZoomLevel : uint8_t {
 	/* Our possible zoom-levels */
-	ZOOM_LVL_BEGIN  = 0, ///< Begin for iteration.
-	ZOOM_LVL_IN_4X  = 0, ///< Zoomed 4 times in.
-	ZOOM_LVL_IN_2X,      ///< Zoomed 2 times in.
-	ZOOM_LVL_NORMAL,     ///< The normal zoom level.
-	ZOOM_LVL_OUT_2X,     ///< Zoomed 2 times out.
-	ZOOM_LVL_OUT_4X,     ///< Zoomed 4 times out.
-	ZOOM_LVL_OUT_8X,     ///< Zoomed 8 times out.
-	ZOOM_LVL_END,        ///< End for iteration.
+	Begin = 0, ///< Begin for iteration.
+	Min = Begin, ///< Minimum zoom level.
+	In4x = Begin, ///< Zoomed 4 times in.
+	In2x, ///< Zoomed 2 times in.
+	Normal, ///< The normal zoom level.
+	Out2x, ///< Zoomed 2 times out.
+	Out4x, ///< Zoomed 4 times out.
+	Out8x, ///< Zoomed 8 times out.
+	Max = Out8x, ///< Maximum zoom level.
+	End, ///< End for iteration.
 
 	/* Here we define in which zoom viewports are */
-	ZOOM_LVL_VIEWPORT = ZOOM_LVL_NORMAL, ///< Default zoom level for viewports.
-	ZOOM_LVL_NEWS     = ZOOM_LVL_NORMAL, ///< Default zoom level for the news messages.
-	ZOOM_LVL_INDUSTRY = ZOOM_LVL_OUT_2X, ///< Default zoom level for the industry view.
-	ZOOM_LVL_TOWN     = ZOOM_LVL_NORMAL, ///< Default zoom level for the town view.
-	ZOOM_LVL_AIRCRAFT = ZOOM_LVL_NORMAL, ///< Default zoom level for the aircraft view.
-	ZOOM_LVL_SHIP     = ZOOM_LVL_NORMAL, ///< Default zoom level for the ship view.
-	ZOOM_LVL_TRAIN    = ZOOM_LVL_NORMAL, ///< Default zoom level for the train view.
-	ZOOM_LVL_ROADVEH  = ZOOM_LVL_NORMAL, ///< Default zoom level for the road vehicle view.
-	ZOOM_LVL_WORLD_SCREENSHOT = ZOOM_LVL_NORMAL, ///< Default zoom level for the world screen shot.
+	Viewport = Normal, ///< Default zoom level for viewports.
+	News = Normal, ///< Default zoom level for the news messages.
+	Industry = Out2x, ///< Default zoom level for the industry view.
+	Town = Normal, ///< Default zoom level for the town view.
+	Aircraft = Normal, ///< Default zoom level for the aircraft view.
+	Ship = Normal, ///< Default zoom level for the ship view.
+	Train = Normal, ///< Default zoom level for the train view.
+	RoadVehicle = Normal, ///< Default zoom level for the road vehicle view.
+	WorldScreenshot = Normal, ///< Default zoom level for the world screen shot.
 
-	ZOOM_LVL_DETAIL = ZOOM_LVL_OUT_2X, ///< All zoom levels below or equal to this will result in details on the screen, like road-work, ...
-	ZOOM_LVL_TEXT_EFFECT = ZOOM_LVL_OUT_2X, ///< All zoom levels above this will not show text effects.
-
-	ZOOM_LVL_MIN      = ZOOM_LVL_IN_4X, ///< Minimum zoom level.
-	ZOOM_LVL_MAX      = ZOOM_LVL_OUT_8X, ///< Maximum zoom level.
+	Detail = Out2x, ///< All zoom levels below or equal to this will result in details on the screen, like road-work, ...
+	TextEffect = Out2x, ///< All zoom levels above this will not show text effects.
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ZoomLevel)
 DECLARE_ENUM_AS_SEQUENTIAL(ZoomLevel)
 using ZoomLevels = EnumBitSet<ZoomLevel, uint8_t>;
 
-static uint const ZOOM_BASE_SHIFT = static_cast<uint>(ZOOM_LVL_NORMAL);
+static const uint ZOOM_BASE_SHIFT = to_underlying(ZoomLevel::Normal);
 static uint const ZOOM_BASE = 1U << ZOOM_BASE_SHIFT;
 
 extern int _gui_scale;

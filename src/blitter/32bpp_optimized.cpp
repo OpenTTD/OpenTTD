@@ -308,12 +308,12 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 	ZoomLevel zoom_max;
 
 	if (sprite_type == SpriteType::Font) {
-		zoom_min = ZOOM_LVL_MIN;
-		zoom_max = ZOOM_LVL_MIN;
+		zoom_min = ZoomLevel::Min;
+		zoom_max = ZoomLevel::Min;
 	} else {
 		zoom_min = _settings_client.gui.zoom_min;
 		zoom_max = _settings_client.gui.zoom_max;
-		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;
+		if (zoom_max == zoom_min) zoom_max = ZoomLevel::Max;
 	}
 
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
