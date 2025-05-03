@@ -132,7 +132,7 @@ static SQInteger _sqstd_aux_printerror(HSQUIRRELVM v)
 	return 0;
 }
 
-void _sqstd_compiler_error(HSQUIRRELVM v,const SQChar *sErr,const SQChar *sSource,SQInteger line,SQInteger column)
+void _sqstd_compiler_error(HSQUIRRELVM v,std::string_view sErr,std::string_view sSource,SQInteger line,SQInteger column)
 {
 	SQPRINTFUNCTION pf = sq_getprintfunc(v);
 	if(pf) {

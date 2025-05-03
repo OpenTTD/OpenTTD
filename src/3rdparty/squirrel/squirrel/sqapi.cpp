@@ -132,7 +132,7 @@ void sq_close(HSQUIRRELVM v)
 	sq_delete(ss, SQSharedState);
 }
 
-SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,const SQChar *sourcename,SQBool raiseerror)
+SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,std::string_view sourcename,SQBool raiseerror)
 {
 	SQObjectPtr o;
 	if(Compile(v, read, p, sourcename, o, raiseerror != 0, _ss(v)->_debuginfo)) {
@@ -1261,8 +1261,8 @@ char32_t buf_lexfeed(SQUserPointer file)
 	return consumer.AnyBytesLeft() ? consumer.ReadUtf8(-1) : 0;
 }
 
-SQRESULT sq_compilebuffer(HSQUIRRELVM v,const SQChar *s,SQInteger size,const SQChar *sourcename,SQBool raiseerror) {
-	StringConsumer consumer(s, size);
+SQRESULT sq_compilebuffer(HSQUIRRELVM v,std::string_view buffer,std::string_view sourcename,SQBool raiseerror) {
+	StringConsumer consumer{buffer};
 	return sq_compile(v, buf_lexfeed, &consumer, sourcename, raiseerror);
 }
 
