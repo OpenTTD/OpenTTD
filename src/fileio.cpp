@@ -733,8 +733,8 @@ static std::string GetHomeDir()
 	find_directory(B_USER_SETTINGS_DIRECTORY, &path);
 	return std::string(path.Path());
 #else
-	const char *home_env = std::getenv("HOME"); // Stack var, shouldn't be freed
-	if (home_env != nullptr) return std::string(home_env);
+	auto home_env = GetEnv("HOME"); // Stack var, shouldn't be freed
+	if (home_env.has_value()) return std::string(*home_env);
 
 	const struct passwd *pw = getpwuid(getuid());
 	if (pw != nullptr) return std::string(pw->pw_dir);
@@ -751,9 +751,8 @@ void DetermineBasePaths(std::string_view exe)
 	std::string tmp;
 	const std::string homedir = GetHomeDir();
 #ifdef USE_XDG
-	const char *xdg_data_home = std::getenv("XDG_DATA_HOME");
-	if (xdg_data_home != nullptr) {
-		tmp = xdg_data_home;
+	if (auto xdg_data_home = GetEnv("XDG_DATA_HOME"); xdg_data_home.has_value()) {
+		tmp = *xdg_data_home;
 		tmp += PATHSEP;
 		tmp += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 		AppendPathSeparator(tmp);
@@ -882,9 +881,8 @@ void DeterminePaths(std::string_view exe, bool only_local_path)
 #ifdef USE_XDG
 	std::string config_home;
 	std::string homedir = GetHomeDir();
-	const char *xdg_config_home = std::getenv("XDG_CONFIG_HOME");
-	if (xdg_config_home != nullptr) {
-		config_home = xdg_config_home;
+	if (auto xdg_config_home = GetEnv("XDG_CONFIG_HOME"); xdg_config_home.has_value()) {
+		config_home = *xdg_config_home;
 		config_home += PATHSEP;
 		config_home += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 	} else if (!homedir.empty()) {

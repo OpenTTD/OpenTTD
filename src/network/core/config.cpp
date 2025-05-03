@@ -16,25 +16,13 @@
 #include "../../safeguards.h"
 
 /**
- * Get the environment variable using std::getenv and when it is an empty string (or nullptr), return a fallback value instead.
- * @param variable The environment variable to read from.
- * @param fallback The fallback in case the environment variable is not set.
- * @return The environment value, or when that does not exist the given fallback value.
- */
-static std::string_view GetEnv(const char *variable, std::string_view fallback)
-{
-	const char *value = std::getenv(variable);
-	return StrEmpty(value) ? fallback : value;
-}
-
-/**
  * Get the connection string for the game coordinator from the environment variable OTTD_COORDINATOR_CS,
  * or when it has not been set a hard coded default DNS hostname of the production server.
  * @return The game coordinator's connection string.
  */
 std::string_view NetworkCoordinatorConnectionString()
 {
-	return GetEnv("OTTD_COORDINATOR_CS", "coordinator.openttd.org");
+	return GetEnv("OTTD_COORDINATOR_CS").value_or("coordinator.openttd.org");
 }
 
 /**
@@ -44,7 +32,7 @@ std::string_view NetworkCoordinatorConnectionString()
  */
 std::string_view NetworkStunConnectionString()
 {
-	return GetEnv("OTTD_STUN_CS", "stun.openttd.org");
+	return GetEnv("OTTD_STUN_CS").value_or("stun.openttd.org");
 }
 
 /**
@@ -54,7 +42,7 @@ std::string_view NetworkStunConnectionString()
  */
 std::string_view NetworkContentServerConnectionString()
 {
-	return GetEnv("OTTD_CONTENT_SERVER_CS", "content.openttd.org");
+	return GetEnv("OTTD_CONTENT_SERVER_CS").value_or("content.openttd.org");
 }
 
 /**
@@ -64,7 +52,7 @@ std::string_view NetworkContentServerConnectionString()
  */
 std::string_view NetworkContentMirrorUriString()
 {
-	return GetEnv("OTTD_CONTENT_MIRROR_URI", "https://binaries.openttd.org/bananas");
+	return GetEnv("OTTD_CONTENT_MIRROR_URI").value_or("https://binaries.openttd.org/bananas");
 }
 
 /**
@@ -74,5 +62,5 @@ std::string_view NetworkContentMirrorUriString()
  */
 std::string_view NetworkSurveyUriString()
 {
-	return GetEnv("OTTD_SURVEY_URI", "https://survey-participate.openttd.org/");
+	return GetEnv("OTTD_SURVEY_URI").value_or("https://survey-participate.openttd.org/");
 }

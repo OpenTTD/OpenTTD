@@ -167,4 +167,6 @@ inline bool IsWhitespace(char32_t c)
 #include <sys/param.h>
 #endif
 
+std::optional<std::string_view> GetEnv(const char *variable);
+
 #endif /* STRING_FUNC_H */
