@@ -31,7 +31,7 @@ public:
 	SQUserPointer _up;
 	char32_t _currdata;
 	SQSharedState *_sharedstate;
-	sqvector<SQChar> _longstr;
+	sqvector<char> _longstr;
 
 	std::string_view View() const { return std::string_view(_longstr._vals, _longstr.size()); }
 };

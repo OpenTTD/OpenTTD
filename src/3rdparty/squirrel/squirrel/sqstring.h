@@ -18,7 +18,7 @@ public:
 	std::span<char> Span() { return std::span<char>(this->_val, this->_len); }
 private:
 	SQInteger _len;
-	SQChar _val[1];
+	char _val[1];
 };
 
 

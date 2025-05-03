@@ -68,7 +68,6 @@ struct SQClass;
 struct SQInstance;
 struct SQDelegable;
 
-typedef char SQChar;
 #define MAX_CHAR 0xFFFF
 
 #define SQUIRREL_VERSION	"Squirrel 2.2.5 stable - With custom OpenTTD modifications"
