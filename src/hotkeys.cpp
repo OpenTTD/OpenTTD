@@ -96,7 +96,7 @@ static const std::initializer_list<KeycodeNames> _keycode_to_name = {
  */
 static std::optional<uint16_t> ParseCode(std::string_view keystr)
 {
-	keystr = StrTrimView(keystr);
+	keystr = StrTrimView(keystr, StringConsumer::WHITESPACE_NO_NEWLINE);
 	for (const auto &kn : _keycode_to_name) {
 		if (StrEqualsIgnoreCase(keystr, kn.name)) {
 			return kn.keycode;

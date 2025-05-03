@@ -39,7 +39,7 @@ bool strtolower(std::string &str, std::string::size_type offs = 0);
 
 [[nodiscard]] bool StrValid(std::span<const char> str);
 void StrTrimInPlace(std::string &str);
-[[nodiscard]] std::string_view StrTrimView(std::string_view str);
+[[nodiscard]] std::string_view StrTrimView(std::string_view str, std::string_view characters_to_trim);
 
 [[nodiscard]] bool StrStartsWithIgnoreCase(std::string_view str, std::string_view prefix);
 [[nodiscard]] bool StrEndsWithIgnoreCase(std::string_view str, std::string_view suffix);
