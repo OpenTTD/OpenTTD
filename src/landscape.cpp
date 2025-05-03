@@ -836,7 +836,7 @@ static void GenerateTerrain(int type, uint flag)
 
 	if (DiagDirToAxis(direction) == AXIS_Y) std::swap(w, h);
 
-	const uint8_t *p = templ->data;
+	const uint8_t *p = reinterpret_cast<const uint8_t *>(templ->data);
 
 	if ((flag & 4) != 0) {
 		/* This is only executed in secondary/tertiary loops to generate the terrain for arctic and tropic.

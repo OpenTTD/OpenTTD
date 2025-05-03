@@ -73,8 +73,9 @@ Sprite *Blitter_8bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollect
 	dest_sprite->y_offs = root_sprite.y_offs;
 
 	/* Copy over only the 'remap' channel, as that is what we care about in 8bpp */
+	uint8_t *dst = reinterpret_cast<uint8_t *>(dest_sprite->data);
 	for (int i = 0; i < root_sprite.height * root_sprite.width; i++) {
-		dest_sprite->data[i] = root_sprite.data[i].m;
+		dst[i] = root_sprite.data[i].m;
 	}
 
 	return dest_sprite;

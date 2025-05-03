@@ -526,7 +526,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		s->y_offs = root_sprite.y_offs;
 
 		SpriteLoader::CommonPixel *src = root_sprite.data;
-		uint8_t *dest = s->data;
+		uint8_t *dest = reinterpret_cast<uint8_t *>(s->data);
 		while (num-- > 0) {
 			*dest++ = src->m;
 			src++;
