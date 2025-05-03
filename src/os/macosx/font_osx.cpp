@@ -73,9 +73,9 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 			if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) continue;
 
 			/* Get font name. */
-			char name[128];
+			char buffer[128];
 			CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute));
-			CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
+			CFStringGetCString(font_name.get(), buffer, std::size(buffer), kCFStringEncodingUTF8);
 
 			/* Serif fonts usually look worse on-screen with only small
 			 * font sizes. As such, we try for a sans-serif font first.
@@ -84,7 +84,8 @@ bool SetFallbackFont(FontCacheSettings *settings, const std::string &language_is
 
 			/* There are some special fonts starting with an '.' and the last
 			 * resort font that aren't usable. Skip them. */
-			if (name[0] == '.' || strncmp(name, "LastResort", 10) == 0) continue;
+			std::string_view name{buffer};
+			if (name.starts_with(".") || name.starts_with("LastResort")) continue;
 
 			/* Save result. */
 			callback->SetFontNames(settings, name);

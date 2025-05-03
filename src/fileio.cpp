@@ -460,6 +460,7 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 
 		char unused[12];
 	};
+	static_assert(sizeof(TarHeader) == 512);
 
 	/* Check if we already seen this file */
 	TarList::iterator it = _tar_list[this->subdir].find(filename);
@@ -481,19 +482,16 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 	TarHeader th;
 	size_t num = 0, pos = 0;
 
-	/* Make a char of 512 empty bytes */
-	char empty[512];
-	memset(&empty[0], 0, sizeof(empty));
-
 	for (;;) { // Note: feof() always returns 'false' after 'fseek()'. Cool, isn't it?
-		size_t num_bytes_read = fread(&th, 1, 512, f);
-		if (num_bytes_read != 512) break;
+		size_t num_bytes_read = fread(&th, 1, sizeof(TarHeader), f);
+		if (num_bytes_read != sizeof(TarHeader)) break;
 		pos += num_bytes_read;
 
 		/* Check if we have the new tar-format (ustar) or the old one (a lot of zeros after 'link' field) */
-		if (strncmp(th.magic, "ustar", 5) != 0 && memcmp(&th.magic, &empty[0], 512 - offsetof(TarHeader, magic)) != 0) {
+		auto last_of_th = &th.unused[std::size(th.unused)];
+		if (std::string_view{th.magic, 5} != "ustar" && std::any_of(th.magic, last_of_th, [](auto c) { return c != 0; })) {
 			/* If we have only zeros in the block, it can be an end-of-file indicator */
-			if (memcmp(&th, &empty[0], 512) == 0) continue;
+			if (std::all_of(th.name, last_of_th, [](auto c) { return c == 0; })) continue;
 
 			Debug(misc, 0, "The file '{}' isn't a valid tar-file", filename);
 			return false;
