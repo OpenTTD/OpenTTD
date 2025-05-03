@@ -186,6 +186,9 @@ void StringConsumer::SkipIntegerBase(int base)
 		default:
 			assert(false);
 			break;
+		case 8:
+			this->SkipUntilCharNotIn("01234567");
+			break;
 		case 10:
 			this->SkipUntilCharNotIn("0123456789");
 			break;

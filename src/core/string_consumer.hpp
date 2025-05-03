@@ -829,7 +829,7 @@ private:
 		}
 
 		T value{};
-		assert(base == 10 || base == 16); // we only support these bases when skipping
+		assert(base == 8 || base == 10 || base == 16); // we only support these bases when skipping
 		auto result = std::from_chars(src.data(), src.data() + src.size(), value, base);
 		auto len = result.ptr - src.data();
 		if (result.ec == std::errc::result_out_of_range) {
