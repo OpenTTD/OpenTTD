@@ -19,7 +19,7 @@ struct Sprite {
 	uint16_t width;  ///< Width of the sprite.
 	int16_t x_offs;  ///< Number of pixels to shift the sprite to the right.
 	int16_t y_offs;  ///< Number of pixels to shift the sprite downwards.
-	uint8_t data[];   ///< Sprite data.
+	std::byte data[]; ///< Sprite data.
 };
 
 enum SpriteCacheCtrlFlags : uint8_t {
