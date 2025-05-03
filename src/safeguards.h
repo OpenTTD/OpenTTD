@@ -59,6 +59,13 @@
 #define strtoll   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strtoul   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strtoull  SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoi      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stol      SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoll     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoul     SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoull    SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoimax   SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define stoumax   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use fmt::print instead. */
 #define printf    SAFEGUARD_DO_NOT_USE_THIS_METHOD

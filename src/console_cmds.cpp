@@ -2132,9 +2132,9 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 
 		authorized_key = argv[3];
 		if (StrStartsWithIgnoreCase(authorized_key, "client:")) {
-			std::string id_string(authorized_key.substr(7));
-			authorized_key = NetworkGetPublicKeyOfClient(static_cast<ClientID>(std::stoi(id_string)));
-			if (authorized_key.empty()) {
+			auto value = ParseInteger<uint32_t>(authorized_key.substr(7));
+			if (value.has_value()) authorized_key = NetworkGetPublicKeyOfClient(static_cast<ClientID>(*value));
+			if (!value.has_value() || authorized_key.empty()) {
 				IConsolePrint(CC_ERROR, "You must enter a valid client id; see 'clients'.");
 				return false;
 			}
@@ -2154,8 +2154,8 @@ static bool ConNetworkAuthorizedKey(std::span<std::string_view> argv)
 	}
 
 	if (StrStartsWithIgnoreCase(type, "company:")) {
-		std::string id_string(type.substr(8));
-		Company *c = Company::GetIfValid(std::stoi(id_string) - 1);
+		auto value = ParseInteger<uint32_t>(type.substr(8));
+		Company *c = value.has_value() ? Company::GetIfValid(*value - 1) : nullptr;
 		if (c == nullptr) {
 			IConsolePrint(CC_ERROR, "You must enter a valid company id; see 'companies'.");
 			return false;
