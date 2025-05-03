@@ -395,7 +395,7 @@ wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf)
 }
 
 /** Determine the current user's locale. */
-const char *GetCurrentLocale(const char *)
+std::optional<std::string_view> GetCurrentLocale(const char *)
 {
 	const LANGID userUiLang = GetUserDefaultUILanguage();
 	const LCID userUiLocale = MAKELCID(userUiLang, SORT_DEFAULT);
