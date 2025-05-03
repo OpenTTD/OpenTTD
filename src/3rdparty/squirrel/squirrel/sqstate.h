@@ -81,25 +81,25 @@ public:
 #endif
 	SQObjectPtr _root_vm;
 	SQObjectPtr _table_default_delegate;
-	static SQRegFunction _table_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _table_default_delegate_funcz;
 	SQObjectPtr _array_default_delegate;
-	static SQRegFunction _array_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _array_default_delegate_funcz;
 	SQObjectPtr _string_default_delegate;
-	static SQRegFunction _string_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _string_default_delegate_funcz;
 	SQObjectPtr _number_default_delegate;
-	static SQRegFunction _number_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _number_default_delegate_funcz;
 	SQObjectPtr _generator_default_delegate;
-	static SQRegFunction _generator_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _generator_default_delegate_funcz;
 	SQObjectPtr _closure_default_delegate;
-	static SQRegFunction _closure_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _closure_default_delegate_funcz;
 	SQObjectPtr _thread_default_delegate;
-	static SQRegFunction _thread_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _thread_default_delegate_funcz;
 	SQObjectPtr _class_default_delegate;
-	static SQRegFunction _class_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _class_default_delegate_funcz;
 	SQObjectPtr _instance_default_delegate;
-	static SQRegFunction _instance_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _instance_default_delegate_funcz;
 	SQObjectPtr _weakref_default_delegate;
-	static SQRegFunction _weakref_default_delegate_funcz[];
+	static const std::initializer_list<SQRegFunction> _weakref_default_delegate_funcz;
 
 	SQCOMPILERERROR _compilererrorhandler;
 	SQPRINTFUNCTION _printfunc;

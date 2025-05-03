@@ -75,18 +75,16 @@ bool CompileTypemask(SQIntVec &res,const SQChar *typemask)
 	return true;
 }
 
-SQTable *CreateDefaultDelegate(SQSharedState *ss,SQRegFunction *funcz)
+SQTable *CreateDefaultDelegate(SQSharedState *ss,const std::initializer_list<SQRegFunction> &funcz)
 {
-	SQInteger i=0;
 	SQTable *t=SQTable::Create(ss,0);
-	while(funcz[i].name!=nullptr){
-		SQNativeClosure *nc = SQNativeClosure::Create(ss,funcz[i].f);
-		nc->_nparamscheck = funcz[i].nparamscheck;
-		nc->_name = SQString::Create(ss,funcz[i].name);
-		if(funcz[i].typemask && !CompileTypemask(nc->_typecheck,funcz[i].typemask))
+	for (auto &func : funcz) {
+		SQNativeClosure *nc = SQNativeClosure::Create(ss,func.f);
+		nc->_nparamscheck = func.nparamscheck;
+		nc->_name = SQString::Create(ss,func.name);
+		if(func.typemask && !CompileTypemask(nc->_typecheck,func.typemask))
 			return nullptr;
-		t->NewSlot(SQString::Create(ss,funcz[i].name),nc);
-		i++;
+		t->NewSlot(SQString::Create(ss,func.name),nc);
 	}
 	return t;
 }
