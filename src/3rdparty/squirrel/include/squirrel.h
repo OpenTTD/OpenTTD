@@ -182,7 +182,7 @@ typedef SQInteger (*SQREADFUNC)(SQUserPointer,SQUserPointer,SQInteger);
 typedef char32_t (*SQLEXREADFUNC)(SQUserPointer);
 
 typedef struct tagSQRegFunction{
-	const SQChar *name;
+	std::string_view name;
 	SQFUNCTION f;
 	SQInteger nparamscheck;
 	const SQChar *typemask;
