@@ -327,25 +327,18 @@ static bool ConZoomToLevel(std::span<std::string_view> argv)
 			return true;
 
 		case 2: {
-			auto level = ParseInteger(argv[1]);
+			auto level = ParseInteger<std::underlying_type_t<ZoomLevel>>(argv[1]);
 			if (level.has_value()) {
-				/* In case ZOOM_LVL_MIN is more than 0, the next if statement needs to be amended.
-				 * A simple check for less than ZOOM_LVL_MIN does not work here because we are
-				 * reading an unsigned integer from the console, so just check for a '-' char. */
-				static_assert(ZOOM_LVL_MIN == 0);
-				if (argv[1][0] == '-') {
-					IConsolePrint(CC_ERROR, "Zoom-in levels below {} are not supported.", ZOOM_LVL_MIN);
-				} else if (*level < _settings_client.gui.zoom_min) {
-					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming in below level {}.", _settings_client.gui.zoom_min);
-				} else if (*level > ZOOM_LVL_MAX) {
-					IConsolePrint(CC_ERROR, "Zoom-in levels above {} are not supported.", ZOOM_LVL_MAX);
-				} else if (*level > _settings_client.gui.zoom_max) {
-					IConsolePrint(CC_ERROR, "Current client settings do not allow zooming out beyond level {}.", _settings_client.gui.zoom_max);
+				auto zoom_lvl = static_cast<ZoomLevel>(*level);
+				if (!IsInsideMM(zoom_lvl, ZOOM_LVL_BEGIN, ZOOM_LVL_END)) {
+					IConsolePrint(CC_ERROR, "Invalid zoom level. Valid range is {} to {}.", ZOOM_LVL_MIN, ZOOM_LVL_MAX);
+				} else if (!IsInsideMM(zoom_lvl, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max + 1)) {
+					IConsolePrint(CC_ERROR, "Current client settings limit zoom levels to range {} to {}.", _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 				} else {
 					Window *w = GetMainWindow();
 					Viewport &vp = *w->viewport;
-					while (vp.zoom > *level) DoZoomInOutWindow(ZOOM_IN, w);
-					while (vp.zoom < *level) DoZoomInOutWindow(ZOOM_OUT, w);
+					while (vp.zoom > zoom_lvl) DoZoomInOutWindow(ZOOM_IN, w);
+					while (vp.zoom < zoom_lvl) DoZoomInOutWindow(ZOOM_OUT, w);
 				}
 				return true;
 			}
