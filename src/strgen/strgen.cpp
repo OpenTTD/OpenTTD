@@ -97,7 +97,7 @@ struct FileStringReader : StringReader {
 	{
 		this->StringReader::ParseFile();
 
-		if (StrEmpty(_strgen.lang.name) || StrEmpty(_strgen.lang.own_name) || StrEmpty(_strgen.lang.isocode)) {
+		if (*_strgen.lang.name == '\0' || *_strgen.lang.own_name == '\0' || *_strgen.lang.isocode == '\0') {
 			FatalError("Language must include ##name, ##ownname and ##isocode");
 		}
 	}
