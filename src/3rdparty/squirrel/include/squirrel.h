@@ -185,7 +185,7 @@ typedef struct tagSQRegFunction{
 	std::string_view name;
 	SQFUNCTION f;
 	SQInteger nparamscheck;
-	const SQChar *typemask;
+	std::optional<std::string_view> typemask;
 }SQRegFunction;
 
 typedef struct tagSQFunctionInfo {
@@ -235,7 +235,7 @@ SQUserPointer sq_newuserdata(HSQUIRRELVM v,SQUnsignedInteger size);
 void sq_newtable(HSQUIRRELVM v);
 void sq_newarray(HSQUIRRELVM v,SQInteger size);
 void sq_newclosure(HSQUIRRELVM v,SQFUNCTION func,SQUnsignedInteger nfreevars);
-SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,const SQChar *typemask);
+SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,std::optional<std::string_view> typemask);
 SQRESULT sq_bindenv(HSQUIRRELVM v,SQInteger idx);
 void sq_pushstring(HSQUIRRELVM v, std::string_view str);
 void sq_pushfloat(HSQUIRRELVM v,SQFloat f);

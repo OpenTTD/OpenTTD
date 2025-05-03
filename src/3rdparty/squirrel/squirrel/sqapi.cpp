@@ -385,16 +385,16 @@ SQRESULT sq_setnativeclosurename(HSQUIRRELVM v,SQInteger idx,std::string_view na
 	return sq_throwerror(v,"the object is not a nativeclosure");
 }
 
-SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,const SQChar *typemask)
+SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,std::optional<std::string_view> typemask)
 {
 	SQObject o = stack_get(v, -1);
 	if(!sq_isnativeclosure(o))
 		return sq_throwerror(v, "native closure expected");
 	SQNativeClosure *nc = _nativeclosure(o);
 	nc->_nparamscheck = nparamscheck;
-	if(typemask) {
+	if(typemask.has_value()) {
 		SQIntVec res;
-		if(!CompileTypemask(res, typemask))
+		if(!CompileTypemask(res, *typemask))
 			return sq_throwerror(v, "invalid typemask");
 		nc->_typecheck.copy(res);
 	}

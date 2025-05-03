@@ -241,26 +241,26 @@ static SQInteger base_type(HSQUIRRELVM v)
 static const std::initializer_list<SQRegFunction> base_funcs={
 	//generic
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
-	{"seterrorhandler",base_seterrorhandler,2, nullptr},
-	{"setdebughook",base_setdebughook,2, nullptr},
-	{"enabledebuginfo",base_enabledebuginfo,2, nullptr},
+	{"seterrorhandler",base_seterrorhandler,2, std::nullopt},
+	{"setdebughook",base_setdebughook,2, std::nullopt},
+	{"enabledebuginfo",base_enabledebuginfo,2, std::nullopt},
 	{"getstackinfos",base_getstackinfos,2, ".n"},
-	{"getroottable",base_getroottable,1, nullptr},
-	{"setroottable",base_setroottable,2, nullptr},
-	{"getconsttable",base_getconsttable,1, nullptr},
-	{"setconsttable",base_setconsttable,2, nullptr},
+	{"getroottable",base_getroottable,1, std::nullopt},
+	{"setroottable",base_setroottable,2, std::nullopt},
+	{"getconsttable",base_getconsttable,1, std::nullopt},
+	{"setconsttable",base_setconsttable,2, std::nullopt},
 #endif
-	{"assert",base_assert,2, nullptr},
-	{"print",base_print,2, nullptr},
+	{"assert",base_assert,2, std::nullopt},
+	{"print",base_print,2, std::nullopt},
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	{"compilestring",base_compilestring,-2, ".ss"},
 	{"newthread",base_newthread,2, ".c"},
-	{"suspend",base_suspend,-1, nullptr},
+	{"suspend",base_suspend,-1, std::nullopt},
 #endif
 	{"array",base_array,-2, ".n"},
-	{"type",base_type,2, nullptr},
+	{"type",base_type,2, std::nullopt},
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
-	{"dummy",base_dummy,0,nullptr},
+	{"dummy",base_dummy,0,std::nullopt},
 #ifndef NO_GARBAGE_COLLECTOR
 	{"collectgarbage",base_collectgarbage,1, "t"},
 #endif
@@ -414,7 +414,7 @@ static SQInteger table_rawget(HSQUIRRELVM v)
 	{"rawset",table_rawset,3, "t"},
 	{"rawdelete",table_rawdelete,2, "t"},
 	{"rawin",container_rawexists,2, "t"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"clear",obj_clear,1, "."},
 };
@@ -622,7 +622,7 @@ static SQInteger array_slice(HSQUIRRELVM v)
 	{"reverse",array_reverse,1, "a"},
 	{"sort",array_sort,-1, "ac"},
 	{"slice",array_slice,-1, "ann"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"clear",obj_clear,1, "."},
 };
@@ -684,7 +684,7 @@ STRING_TOFUNCZ(toupper)
 	{"find",string_find,-2, "s s n "},
 	{"tolower",string_tolower,1, "s"},
 	{"toupper",string_toupper,1, "s"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 };
 
 //INTEGER DEFAULT DELEGATE//////////////////////////
@@ -693,7 +693,7 @@ STRING_TOFUNCZ(toupper)
 	{"tofloat",default_delegate_tofloat,1, "n|b"},
 	{"tostring",default_delegate_tostring,1, "."},
 	{"tochar",number_delegate_tochar,1, "n|b"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 };
 
 //CLOSURE DEFAULT DELEGATE//////////////////////////
@@ -777,7 +777,7 @@ static SQInteger closure_getinfos(HSQUIRRELVM v) {
 	{"pcall",closure_pcall,-1, "c"},
 	{"acall",closure_acall,2, "ca"},
 	{"pacall",closure_pacall,2, "ca"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"bindenv",closure_bindenv,2, "c x|y|t"},
 	{"getinfos",closure_getinfos,1, "c"},
@@ -797,7 +797,7 @@ static SQInteger generator_getstatus(HSQUIRRELVM v)
 
 /* static */ const std::initializer_list<SQRegFunction> SQSharedState::_generator_default_delegate_funcz={
 	{"getstatus",generator_getstatus,1, "g"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 };
 
@@ -882,7 +882,7 @@ static SQInteger thread_getstatus(HSQUIRRELVM v)
 	{"call", thread_call, -1, "v"},
 	{"wakeup", thread_wakeup, -1, "v"},
 	{"getstatus", thread_getstatus, 1, "v"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 };
 
@@ -911,7 +911,7 @@ static SQInteger class_instance(HSQUIRRELVM v)
 	{"getattributes", class_getattributes, 2, "y."},
 	{"setattributes", class_setattributes, 3, "y.."},
 	{"rawin",container_rawexists,2, "y"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 	{"instance",class_instance,1, "y"},
 };
@@ -926,7 +926,7 @@ static SQInteger instance_getclass(HSQUIRRELVM v)
 /* static */ const std::initializer_list<SQRegFunction> SQSharedState::_instance_default_delegate_funcz = {
 	{"getclass", instance_getclass, 1, "x"},
 	{"rawin",container_rawexists,2, "x"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 };
 
@@ -939,7 +939,7 @@ static SQInteger weakref_ref(HSQUIRRELVM v)
 
 /* static */ const std::initializer_list<SQRegFunction> SQSharedState::_weakref_default_delegate_funcz = {
 	{"ref",weakref_ref,1, "r"},
-	{"weakref",obj_delegate_weakref,1, nullptr },
+	{"weakref",obj_delegate_weakref,1, std::nullopt },
 	{"tostring",default_delegate_tostring,1, "."},
 };
 

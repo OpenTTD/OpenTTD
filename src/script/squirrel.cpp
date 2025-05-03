@@ -265,7 +265,7 @@ void Squirrel::AddMethod(std::string_view method_name, SQFUNCTION proc, std::str
 	}
 
 	sq_newclosure(this->vm, proc, size != 0 ? 1 : 0);
-	if (!params.empty()) sq_setparamscheck(this->vm, params.size(), params.data());
+	if (!params.empty()) sq_setparamscheck(this->vm, params.size(), params);
 	sq_setnativeclosurename(this->vm, -1, method_name);
 	sq_newslot(this->vm, -3, SQFalse);
 }
