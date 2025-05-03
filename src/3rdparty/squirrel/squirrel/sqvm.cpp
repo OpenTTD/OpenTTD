@@ -197,7 +197,7 @@ bool SQVM::ObjCmp(const SQObjectPtr &o1,const SQObjectPtr &o2,SQInteger &result)
 		SQObjectPtr res;
 		switch(type(o1)){
 		case OT_STRING:
-			_RET_SUCCEED(strcmp(_stringval(o1),_stringval(o2)));
+			_RET_SUCCEED(_stringval(o1).compare(_stringval(o2)));
 		case OT_INTEGER:
 			/* FS#3954: wrong integer comparison */
 			_RET_SUCCEED((_integer(o1)<_integer(o2))?-1:(_integer(o1)==_integer(o2))?0:1);
@@ -1284,9 +1284,10 @@ bool SQVM::FallBackGet(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPt
 	case OT_STRING:
 		if(sq_isnumeric(key)){
 			SQInteger n=tointeger(key);
-			if(abs((int)n)<_string(self)->_len){
-				if(n<0)n=_string(self)->_len-n;
-				dest=SQInteger(_stringval(self)[n]);
+			std::string_view str = _stringval(self);
+			if(std::abs(n) < static_cast<SQInteger>(str.size())){
+				if(n<0)n=str.size()+n;
+				dest=SQInteger(str[n]);
 				return true;
 			}
 			return false;

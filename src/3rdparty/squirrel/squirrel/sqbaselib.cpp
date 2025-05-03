@@ -18,12 +18,13 @@
 
 #include "../../../safeguards.h"
 
-bool str2num(const SQChar *s,SQObjectPtr &res)
+bool str2num(std::string_view s,SQObjectPtr &res)
 {
-	SQChar *end;
-	if(strstr(s,".")){
-		SQFloat r = SQFloat(strtod(s,&end));
-		if(s == end) return false;
+	if(s.find('.') != std::string_view::npos){
+		SQChar *end;
+		std::string str{s};
+		SQFloat r = SQFloat(strtod(str.c_str(),&end));
+		if(str.c_str() == end) return false;
 		res = r;
 		return true;
 	}
@@ -632,12 +633,12 @@ static SQInteger string_slice(HSQUIRRELVM v)
 	SQInteger sidx,eidx;
 	SQObjectPtr o;
 	if(SQ_FAILED(get_slice_params(v,sidx,eidx,o)))return -1;
-	SQInteger slen = _string(o)->_len;
+	SQInteger slen = _string(o)->View().size();
 	if(sidx < 0)sidx = slen + sidx;
 	if(eidx < 0)eidx = slen + eidx;
 	if(eidx < sidx)	return sq_throwerror(v,"wrong indexes");
 	if(eidx > slen)	return sq_throwerror(v,"slice out of range");
-	v->Push(SQString::Create(_ss(v),std::string_view(&_stringval(o)[sidx],eidx-sidx)));
+	v->Push(SQString::Create(_ss(v),_stringval(o).substr(sidx,eidx-sidx)));
 	return 1;
 }
 
@@ -662,10 +663,10 @@ static SQInteger string_find(HSQUIRRELVM v)
 #define STRING_TOFUNCZ(func) static SQInteger string_##func(HSQUIRRELVM v) \
 { \
 	SQObject str=stack_get(v,1); \
-	SQInteger len=_string(str)->_len; \
-	const SQChar *sThis=_stringval(str); \
+	std::string_view sThis=_stringval(str); \
+	size_t len=sThis.size(); \
 	std::span<char> sNew=(_ss(v)->GetScratchPad(len)); \
-	for(SQInteger i=0;i<len;i++) sNew[i]=func(sThis[i]); \
+	for(size_t i=0;i<len;i++) sNew[i]=func(sThis[i]); \
 	v->Push(SQString::Create(_ss(v),std::string_view(sNew.data(), len))); \
 	return 1; \
 }

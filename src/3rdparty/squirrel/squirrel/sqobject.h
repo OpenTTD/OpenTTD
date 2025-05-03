@@ -138,7 +138,7 @@ struct SQObjectPtr;
 #define _refcounted(obj) ((obj)._unVal.pRefCounted)
 #define _rawval(obj) ((obj)._unVal.raw)
 
-#define _stringval(obj) (obj)._unVal.pString->_val
+#define _stringval(obj) (obj)._unVal.pString->View()
 #define _userdataval(obj) (obj)._unVal.pUserData->_val
 
 #define tofloat(num) ((type(num)==OT_INTEGER)?(SQFloat)_integer(num):_float(num))

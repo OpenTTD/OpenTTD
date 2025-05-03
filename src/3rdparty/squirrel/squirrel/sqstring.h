@@ -12,8 +12,12 @@ public:
 	void Release() override;
 	SQSharedState *_sharedstate;
 	SQString *_next; //chain for the string table
-	SQInteger _len;
 	std::size_t _hash;
+
+	std::string_view View() const { return std::string_view(this->_val, this->_len); }
+	std::span<char> Span() { return std::span<char>(this->_val, this->_len); }
+private:
+	SQInteger _len;
 	SQChar _val[1];
 };
 

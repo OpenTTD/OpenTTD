@@ -270,10 +270,13 @@ bool WriteObject(HSQUIRRELVM v,SQUserPointer up,SQWRITEFUNC write,SQObjectPtr &o
 {
 	_CHECK_IO(SafeWrite(v,write,up,&type(o),sizeof(SQObjectType)));
 	switch(type(o)){
-	case OT_STRING:
-		_CHECK_IO(SafeWrite(v,write,up,&_string(o)->_len,sizeof(SQInteger)));
-		_CHECK_IO(SafeWrite(v,write,up,_stringval(o),_string(o)->_len));
+	case OT_STRING: {
+		auto str = _string(o)->Span();
+		SQInteger len = str.size();
+		_CHECK_IO(SafeWrite(v,write,up,&len,sizeof(len)));
+		_CHECK_IO(SafeWrite(v,write,up,str.data(),len));
 		break;
+	}
 	case OT_INTEGER:
 		_CHECK_IO(SafeWrite(v,write,up,&_integer(o),sizeof(SQInteger)));break;
 	case OT_FLOAT:
@@ -294,11 +297,11 @@ bool ReadObject(HSQUIRRELVM v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &o)
 	switch(t){
 	case OT_STRING:{
 		SQInteger len;
-		_CHECK_IO(SafeRead(v,read,up,&len,sizeof(SQInteger)));
+		_CHECK_IO(SafeRead(v,read,up,&len,sizeof(len)));
 		_CHECK_IO(SafeRead(v,read,up,_ss(v)->GetScratchPad(len).data(),len));
 		o=SQString::Create(_ss(v),std::string_view(_ss(v)->GetScratchPad(-1).data(),len));
-				   }
 		break;
+	}
 	case OT_INTEGER:{
 		SQInteger i;
 		_CHECK_IO(SafeRead(v,read,up,&i,sizeof(SQInteger))); o = i; break;

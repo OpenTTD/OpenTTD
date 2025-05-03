@@ -583,7 +583,7 @@ SQInteger sq_getsize(HSQUIRRELVM v, SQInteger idx)
 	SQObjectPtr &o = stack_get(v, idx);
 	SQObjectType type = type(o);
 	switch(type) {
-	case OT_STRING:		return _string(o)->_len;
+	case OT_STRING:		return _string(o)->View().size();
 	case OT_TABLE:		return _table(o)->CountUsed();
 	case OT_ARRAY:		return _array(o)->Size();
 	case OT_USERDATA:	return _userdata(o)->_size;
