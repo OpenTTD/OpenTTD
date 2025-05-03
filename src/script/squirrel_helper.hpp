@@ -61,7 +61,7 @@ namespace SQConvert {
 		static inline int Set(HSQUIRRELVM vm, std::optional<std::string> res)
 		{
 			if (res.has_value()) {
-				sq_pushstring(vm, res.value(), -1);
+				sq_pushstring(vm, res.value());
 			} else {
 				sq_pushnull(vm);
 			}

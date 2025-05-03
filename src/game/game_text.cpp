@@ -357,12 +357,12 @@ void RegisterGameTranslation(Squirrel &engine)
 
 	HSQUIRRELVM vm = engine.GetVM();
 	sq_pushroottable(vm);
-	sq_pushstring(vm, "GSText", -1);
+	sq_pushstring(vm, "GSText");
 	if (SQ_FAILED(sq_get(vm, -2))) return;
 
 	int idx = 0;
 	for (const auto &p : _current_gamestrings_data->string_names) {
-		sq_pushstring(vm, p, -1);
+		sq_pushstring(vm, p);
 		sq_pushinteger(vm, idx);
 		sq_rawset(vm, -3);
 		idx++;

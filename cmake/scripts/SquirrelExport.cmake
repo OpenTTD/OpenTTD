@@ -341,7 +341,7 @@ foreach(LINE IN LISTS SOURCE_LINES)
         endif()
 
         string(APPEND SQUIRREL_EXPORT "\n")
-        string(APPEND SQUIRREL_EXPORT "\ntemplate <> SQInteger PushClassName<${CLS}, ScriptType::${APIUC}>(HSQUIRRELVM vm) { sq_pushstring(vm, \"${API_CLS}\", -1); return 1; }")
+        string(APPEND SQUIRREL_EXPORT "\ntemplate <> SQInteger PushClassName<${CLS}, ScriptType::${APIUC}>(HSQUIRRELVM vm) { sq_pushstring(vm, \"${API_CLS}\"); return 1; }")
         string(APPEND SQUIRREL_EXPORT "\n")
 
         # Then do the registration functions of the class.

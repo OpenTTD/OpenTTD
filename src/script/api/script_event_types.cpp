@@ -139,7 +139,7 @@ static bool ScriptEventAdminPortReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 
 		case nlohmann::json::value_t::string: {
 			auto value = json.get<std::string>();
-			sq_pushstring(vm, value.data(), value.size());
+			sq_pushstring(vm, value);
 			break;
 		}
 
@@ -152,7 +152,7 @@ static bool ScriptEventAdminPortReadValue(HSQUIRRELVM vm, nlohmann::json &json)
 			sq_newtable(vm);
 
 			for (auto &[key, value] : json.items()) {
-				sq_pushstring(vm, key.data(), key.size());
+				sq_pushstring(vm, key);
 
 				if (!ScriptEventAdminPortReadValue(vm, value)) {
 					return false;

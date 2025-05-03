@@ -237,8 +237,7 @@ void sq_newarray(HSQUIRRELVM v,SQInteger size);
 void sq_newclosure(HSQUIRRELVM v,SQFUNCTION func,SQUnsignedInteger nfreevars);
 SQRESULT sq_setparamscheck(HSQUIRRELVM v,SQInteger nparamscheck,const SQChar *typemask);
 SQRESULT sq_bindenv(HSQUIRRELVM v,SQInteger idx);
-void sq_pushstring(HSQUIRRELVM v,const SQChar *s,SQInteger len);
-inline void sq_pushstring(HSQUIRRELVM v, std::string_view str, SQInteger len = -1) { sq_pushstring(v, str.data(), len == -1 ? str.size() : len); }
+void sq_pushstring(HSQUIRRELVM v, std::string_view str);
 void sq_pushfloat(HSQUIRRELVM v,SQFloat f);
 void sq_pushinteger(HSQUIRRELVM v,SQInteger n);
 void sq_pushbool(HSQUIRRELVM v,SQBool b);

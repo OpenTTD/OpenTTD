@@ -649,7 +649,7 @@ bool ScriptInstance::IsPaused()
 		ScriptData *data;
 
 		bool operator()(const SQInteger &value) { sq_pushinteger(this->vm, value); return true; }
-		bool operator()(const std::string &value) { sq_pushstring(this->vm, value, -1); return true; }
+		bool operator()(const std::string &value) { sq_pushstring(this->vm, value); return true; }
 		bool operator()(const SQBool &value) { sq_pushbool(this->vm, value); return true; }
 		bool operator()(const SQSaveLoadType &type)
 		{
@@ -778,7 +778,7 @@ bool ScriptInstance::CallLoad()
 	/* Go to the instance-root */
 	sq_pushobject(vm, *this->instance);
 	/* Find the function-name inside the script */
-	sq_pushstring(vm, "Load", -1);
+	sq_pushstring(vm, "Load");
 	/* Change the "Load" string in a function pointer */
 	sq_get(vm, -2);
 	/* Push the main instance as "this" object */

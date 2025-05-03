@@ -99,7 +99,7 @@ SQRESULT sqstd_register_mathlib(HSQUIRRELVM v)
 {
 	SQInteger i=0;
 	while(mathlib_funcs[i].name!=nullptr)	{
-		sq_pushstring(v,mathlib_funcs[i].name,-1);
+		sq_pushstring(v,mathlib_funcs[i].name);
 		sq_newclosure(v,mathlib_funcs[i].f,0);
 		sq_setparamscheck(v,mathlib_funcs[i].nparamscheck,mathlib_funcs[i].typemask);
 		sq_setnativeclosurename(v,-1,mathlib_funcs[i].name);
@@ -107,11 +107,11 @@ SQRESULT sqstd_register_mathlib(HSQUIRRELVM v)
 		i++;
 	}
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
-	sq_pushstring(v,"RAND_MAX",-1);
+	sq_pushstring(v,"RAND_MAX");
 	sq_pushinteger(v,RAND_MAX);
 	sq_createslot(v,-3);
 #endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
-	sq_pushstring(v,"PI",-1);
+	sq_pushstring(v,"PI");
 	sq_pushfloat(v,(SQFloat)M_PI);
 	sq_createslot(v,-3);
 	return SQ_OK;
