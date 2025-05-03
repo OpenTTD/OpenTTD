@@ -14,6 +14,7 @@
 #include "../string_func.h"
 #include "../strings_func.h"
 #include "../core/string_builder.hpp"
+#include "../core/string_consumer.hpp"
 #include "../table/control_codes.h"
 
 #include "table/strings.h"
@@ -398,7 +399,8 @@ static const std::vector<std::pair<std::string, std::string>> _str_trim_testcase
 	{"a  ", "a"},
 	{"  a   ", "a"},
 	{"  a  b  c  ", "a  b  c"},
-	{"   ", ""}
+	{"   ", ""},
+	{"  \r\f\t  ", ""},
 };
 
 TEST_CASE("StrTrimInPlace")
@@ -411,7 +413,7 @@ TEST_CASE("StrTrimInPlace")
 
 TEST_CASE("StrTrimView") {
 	for (const auto& [input, expected] : _str_trim_testcases) {
-		CHECK(StrTrimView(input) == expected);
+		CHECK(StrTrimView(input, StringConsumer::WHITESPACE_NO_NEWLINE) == expected);
 	}
 }
 

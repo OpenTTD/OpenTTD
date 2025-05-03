@@ -8,6 +8,7 @@
 /** @file console_gui.cpp Handling the GUI of the in-game console. */
 
 #include "stdafx.h"
+#include "core/string_consumer.hpp"
 #include "textbuf_type.h"
 #include "window_gui.h"
 #include "autocompletion.h"
@@ -77,7 +78,7 @@ public:
 private:
 	std::vector<std::string> GetSuggestions(std::string_view prefix, std::string_view query) override
 	{
-		prefix = StrTrimView(prefix);
+		prefix = StrTrimView(prefix, StringConsumer::WHITESPACE_NO_NEWLINE);
 		std::vector<std::string> suggestions;
 
 		/* We only suggest commands or aliases, so we only do it for the first token or an argument to help command. */

@@ -225,24 +225,24 @@ bool StrValid(std::span<const char> str)
  */
 void StrTrimInPlace(std::string &str)
 {
-	size_t first_pos = str.find_first_not_of(' ');
+	size_t first_pos = str.find_first_not_of(StringConsumer::WHITESPACE_NO_NEWLINE);
 	if (first_pos == std::string::npos) {
 		str.clear();
 		return;
 	}
 	str.erase(0, first_pos);
 
-	size_t last_pos = str.find_last_not_of(' ');
+	size_t last_pos = str.find_last_not_of(StringConsumer::WHITESPACE_NO_NEWLINE);
 	str.erase(last_pos + 1);
 }
 
-std::string_view StrTrimView(std::string_view str)
+std::string_view StrTrimView(std::string_view str, std::string_view characters_to_trim)
 {
-	size_t first_pos = str.find_first_not_of(' ');
+	size_t first_pos = str.find_first_not_of(characters_to_trim);
 	if (first_pos == std::string::npos) {
 		return std::string_view{};
 	}
-	size_t last_pos = str.find_last_not_of(' ');
+	size_t last_pos = str.find_last_not_of(characters_to_trim);
 	return str.substr(first_pos, last_pos - first_pos + 1);
 }
 
