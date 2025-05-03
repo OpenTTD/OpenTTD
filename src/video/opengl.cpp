@@ -1258,11 +1258,11 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 	}
 }
 
-/* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+/* virtual */ Sprite *OpenGLBackend::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* This encoding is only called for mouse cursors. We don't need real sprites but OpenGLSprites to show as cursor. These need to be put in the LRU cache. */
 	OpenGLSpriteAllocator &gl_allocator = static_cast<OpenGLSpriteAllocator&>(allocator);
-	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite));
+	gl_allocator.lru.Insert(gl_allocator.sprite, std::make_unique<OpenGLSprite>(sprite_type, sprite));
 
 	return nullptr;
 }
@@ -1397,10 +1397,10 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int 
  * Create an OpenGL sprite with a palette remap part.
  * @param sprite The sprite to create the OpenGL sprite for
  */
-OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
+OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite) :
 	dim(sprite[ZOOM_LVL_MIN].width, sprite[ZOOM_LVL_MIN].height), x_offs(sprite[ZOOM_LVL_MIN].x_offs), y_offs(sprite[ZOOM_LVL_MIN].y_offs)
 {
-	int levels = sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END;
+	int levels = sprite_type == SpriteType::Font ? 1 : ZOOM_LVL_END;
 	assert(levels > 0);
 	(void)_glGetError();
 
@@ -1435,7 +1435,7 @@ OpenGLSprite::OpenGLSprite(const SpriteLoader::SpriteCollection &sprite) :
 	}
 
 	/* Upload texture data. */
-	for (int i = 0; i < (sprite[ZOOM_LVL_MIN].type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
+	for (int i = 0; i < (sprite_type == SpriteType::Font ? 1 : ZOOM_LVL_END); i++) {
 		this->Update(sprite[i].width, sprite[i].height, i, sprite[i].data);
 	}
 

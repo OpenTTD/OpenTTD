@@ -49,7 +49,6 @@ public:
 		uint16_t width;                    ///< Width of the sprite
 		int16_t x_offs;                    ///< The x-offset of where the sprite will be drawn
 		int16_t y_offs;                    ///< The y-offset of where the sprite will be drawn
-		SpriteType type;                 ///< The sprite type
 		SpriteComponents colours;   ///< The colour components of the sprite with useful information.
 		SpriteLoader::CommonPixel *data; ///< The sprite itself
 
@@ -124,7 +123,7 @@ public:
 	/**
 	 * Convert a sprite from the loader to our own format.
 	 */
-	virtual Sprite *Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) = 0;
+	virtual Sprite *Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator) = 0;
 
 	/**
 	 * Get the value which the height and width on a sprite have to be aligned by.

@@ -285,7 +285,8 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 	this->Draw<false>(bp, mode, zoom);
 }
 
-template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+template <bool Tpal_to_rgb>
+Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* streams of pixels (a, r, g, b channels)
 	 *
@@ -306,7 +307,7 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 	ZoomLevel zoom_min;
 	ZoomLevel zoom_max;
 
-	if (sprite[ZOOM_LVL_MIN].type == SpriteType::Font) {
+	if (sprite_type == SpriteType::Font) {
 		zoom_min = ZOOM_LVL_MIN;
 		zoom_max = ZOOM_LVL_MIN;
 	} else {
@@ -435,10 +436,10 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 	return dest_sprite;
 }
 
-template Sprite *Blitter_32bppOptimized::EncodeInternal<true>(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
-template Sprite *Blitter_32bppOptimized::EncodeInternal<false>(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
+template Sprite *Blitter_32bppOptimized::EncodeInternal<true>(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
+template Sprite *Blitter_32bppOptimized::EncodeInternal<false>(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator);
 
-Sprite *Blitter_32bppOptimized::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_32bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
-	return this->EncodeInternal<true>(sprite, allocator);
+	return this->EncodeInternal<true>(sprite_type, sprite, allocator);
 }

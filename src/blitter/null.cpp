@@ -15,7 +15,7 @@
 /** Instantiation of the null blitter factory. */
 static FBlitter_Null iFBlitter_Null;
 
-Sprite *Blitter_Null::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_Null::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	Sprite *dest_sprite;
 	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite));
