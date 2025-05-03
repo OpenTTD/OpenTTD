@@ -84,7 +84,7 @@ static const std::initializer_list<SQRegFunction> mathlib_funcs = {
 	_DECL_FUNC(exp,2,".n"),
 #ifdef EXPORT_DEFAULT_SQUIRREL_FUNCTIONS
 	_DECL_FUNC(srand,2,".n"),
-	_DECL_FUNC(rand,1,nullptr),
+	_DECL_FUNC(rand,1,std::nullopt),
 #endif /* EXPORT_DEFAULT_SQUIRREL_FUNCTIONS */
 	_DECL_FUNC(fabs,2,".n"),
 	_DECL_FUNC(abs,2,".n"),

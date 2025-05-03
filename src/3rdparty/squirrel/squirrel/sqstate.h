@@ -129,6 +129,6 @@ extern SQObjectPtr _false_;
 extern SQObjectPtr _one_;
 extern SQObjectPtr _minusone_;
 
-bool CompileTypemask(SQIntVec &res,const SQChar *typemask);
+bool CompileTypemask(SQIntVec &res,std::string_view typemask);
 
 #endif //_SQSTATE_H_

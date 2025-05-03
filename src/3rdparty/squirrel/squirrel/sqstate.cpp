@@ -14,6 +14,7 @@
 #include "sqarray.h"
 #include "squserdata.h"
 #include "sqclass.h"
+#include "../../../core/string_consumer.hpp"
 
 #include "../../../safeguards.h"
 
@@ -32,14 +33,12 @@ SQObjectPtr _minusone_((SQInteger)-1);
 	_table(_metamethodsmap)->NewSlot(_metamethods->back(),(SQInteger)(_metamethods->size()-1)); \
 	}
 
-bool CompileTypemask(SQIntVec &res,const SQChar *typemask)
+bool CompileTypemask(SQIntVec &res,std::string_view typemask)
 {
-	SQInteger i = 0;
-
 	SQInteger mask = 0;
-	while(typemask[i] != 0) {
-
-		switch(typemask[i]){
+	StringConsumer consumer{typemask};
+	while (consumer.AnyBytesLeft()) {
+		switch(consumer.ReadChar()){
 				case 'o': mask |= _RT_NULL; break;
 				case 'i': mask |= _RT_INTEGER; break;
 				case 'f': mask |= _RT_FLOAT; break;
@@ -56,21 +55,18 @@ bool CompileTypemask(SQIntVec &res,const SQChar *typemask)
 				case 'x': mask |= _RT_INSTANCE; break;
 				case 'y': mask |= _RT_CLASS; break;
 				case 'r': mask |= _RT_WEAKREF; break;
-				case '.': mask = -1; res.push_back(mask); i++; mask = 0; continue;
-				case ' ': i++; continue; //ignores spaces
+				case '.': mask = -1; res.push_back(mask); mask = 0; continue;
+				case ' ': continue; //ignores spaces
 				default:
 					return false;
 		}
-		i++;
-		if(typemask[i] == '|') {
-			i++;
-			if(typemask[i] == 0)
-				return false;
+
+		if(consumer.ReadCharIf('|')) {
+			if(!consumer.AnyBytesLeft()) return false;
 			continue;
 		}
 		res.push_back(mask);
 		mask = 0;
-
 	}
 	return true;
 }
@@ -82,7 +78,7 @@ SQTable *CreateDefaultDelegate(SQSharedState *ss,const std::initializer_list<SQR
 		SQNativeClosure *nc = SQNativeClosure::Create(ss,func.f);
 		nc->_nparamscheck = func.nparamscheck;
 		nc->_name = SQString::Create(ss,func.name);
-		if(func.typemask && !CompileTypemask(nc->_typecheck,func.typemask))
+		if(func.typemask.has_value() && !CompileTypemask(nc->_typecheck,*func.typemask))
 			return nullptr;
 		t->NewSlot(SQString::Create(ss,func.name),nc);
 	}
