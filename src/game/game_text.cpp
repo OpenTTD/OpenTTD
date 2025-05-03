@@ -63,19 +63,13 @@ LanguageStrings ReadRawLanguageStrings(const std::string &file)
 
 	char buffer[2048];
 	while (to_read != 0 && fgets(buffer, sizeof(buffer), *fh) != nullptr) {
-		size_t len = strlen(buffer);
+		std::string_view view{buffer};
+		ret.lines.emplace_back(StrTrimView(view, StringConsumer::WHITESPACE_OR_NEWLINE));
 
-		/* Remove trailing spaces/newlines from the string. */
-		size_t i = len;
-		while (i > 0 && (buffer[i - 1] == '\r' || buffer[i - 1] == '\n' || buffer[i - 1] == ' ')) i--;
-		buffer[i] = '\0';
-
-		ret.lines.emplace_back(buffer, i);
-
-		if (len > to_read) {
+		if (view.size() > to_read) {
 			to_read = 0;
 		} else {
-			to_read -= len;
+			to_read -= view.size();
 		}
 	}
 
