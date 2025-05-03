@@ -174,11 +174,21 @@ Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(s
 			}
 		}
 
-		/* Move all lines into a local cache so we can reuse them later on more easily. */
-		for (;;) {
-			auto l = line.layout->NextLine(maxw);
-			if (l == nullptr) break;
-			this->push_back(std::move(l));
+		if (line.cached_width != maxw) {
+			/* First run or width has changed, so we need to go through the layouter. Lines are moved into a cache to
+			 * be reused if the width is not changed. */
+			line.cached_layout.clear();
+			line.cached_width = maxw;
+			for (;;) {
+				auto l = line.layout->NextLine(maxw);
+				if (l == nullptr) break;
+				line.cached_layout.push_back(std::move(l));
+			}
+		}
+
+		/* Retrieve layout from the cache. */
+		for (const auto &l : line.cached_layout) {
+			this->push_back(l.get());
 		}
 
 		/* Break out if this was the last line. */
