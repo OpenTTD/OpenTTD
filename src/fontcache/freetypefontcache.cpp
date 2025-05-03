@@ -244,7 +244,6 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	SpriteLoader::SpriteCollection spritecollection;
 	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
 	sprite.AllocateData(ZOOM_LVL_MIN, static_cast<size_t>(width) * height);
-	sprite.type = SpriteType::Font;
 	sprite.colours = SpriteComponent::Palette;
 	if (aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
@@ -274,7 +273,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	}
 
 	UniquePtrSpriteAllocator allocator;
-	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+	BlitterFactory::GetCurrentBlitter()->Encode(SpriteType::Font, spritecollection, allocator);
 
 	GlyphEntry new_glyph;
 	new_glyph.data = std::move(allocator.data);

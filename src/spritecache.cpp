@@ -476,7 +476,6 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	uint8_t sprite_avail = 0;
 	uint8_t avail_8bpp = 0;
 	uint8_t avail_32bpp = 0;
-	sprite[ZOOM_LVL_MIN].type = sprite_type;
 
 	SpriteLoaderGrf sprite_loader(file.GetContainerVersion());
 	if (sprite_type != SpriteType::MapGen && encoder->Is32BppSupported()) {
@@ -531,17 +530,12 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
 	}
 
-	if (sprite[ZOOM_LVL_MIN].type == SpriteType::Font && _font_zoom != ZOOM_LVL_MIN) {
+	if (sprite_type == SpriteType::Font && _font_zoom != ZOOM_LVL_MIN) {
 		/* Make ZOOM_LVL_MIN be ZOOM_LVL_GUI */
-		sprite[ZOOM_LVL_MIN].width  = sprite[_font_zoom].width;
-		sprite[ZOOM_LVL_MIN].height = sprite[_font_zoom].height;
-		sprite[ZOOM_LVL_MIN].x_offs = sprite[_font_zoom].x_offs;
-		sprite[ZOOM_LVL_MIN].y_offs = sprite[_font_zoom].y_offs;
-		sprite[ZOOM_LVL_MIN].data   = sprite[_font_zoom].data;
-		sprite[ZOOM_LVL_MIN].colours = sprite[_font_zoom].colours;
+		sprite[ZOOM_LVL_MIN] = sprite[_font_zoom];
 	}
 
-	return encoder->Encode(sprite, allocator);
+	return encoder->Encode(sprite_type, sprite, allocator);
 }
 
 struct GrfSpriteOffset {

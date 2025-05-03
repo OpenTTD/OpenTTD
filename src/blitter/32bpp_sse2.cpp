@@ -20,7 +20,7 @@
 /** Instantiation of the SSE2 32bpp blitter factory. */
 static FBlitter_32bppSSE2 iFBlitter_32bppSSE2;
 
-Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
+Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
 	/* First uint32_t of a line = the number of transparent pixels from the left.
 	 * Second uint32_t of a line = the number of transparent pixels from the right.
@@ -28,7 +28,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::SpriteCollection &spri
 	 */
 	ZoomLevel zoom_min = ZOOM_LVL_MIN;
 	ZoomLevel zoom_max = ZOOM_LVL_MIN;
-	if (sprite[ZOOM_LVL_MIN].type != SpriteType::Font) {
+	if (sprite_type != SpriteType::Font) {
 		zoom_min = _settings_client.gui.zoom_min;
 		zoom_max = _settings_client.gui.zoom_max;
 		if (zoom_max == zoom_min) zoom_max = ZOOM_LVL_MAX;

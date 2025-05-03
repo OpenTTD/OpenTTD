@@ -227,7 +227,6 @@ void Win32FontCache::ClearFontCache()
 	SpriteLoader::SpriteCollection spritecollection;
 	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
 	sprite.AllocateData(ZOOM_LVL_MIN, width * height);
-	sprite.type = SpriteType::Font;
 	sprite.colours = SpriteComponent::Palette;
 	if (aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
@@ -266,7 +265,7 @@ void Win32FontCache::ClearFontCache()
 	}
 
 	UniquePtrSpriteAllocator allocator;
-	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+	BlitterFactory::GetCurrentBlitter()->Encode(SpriteType::Font, spritecollection, allocator);
 
 	GlyphEntry new_glyph;
 	new_glyph.data = std::move(allocator.data);

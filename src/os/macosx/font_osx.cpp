@@ -230,7 +230,6 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	SpriteLoader::SpriteCollection spritecollection;
 	SpriteLoader::Sprite &sprite = spritecollection[ZOOM_LVL_MIN];
 	sprite.AllocateData(ZOOM_LVL_MIN, width * height);
-	sprite.type = SpriteType::Font;
 	sprite.colours = SpriteComponent::Palette;
 	if (use_aa) sprite.colours.Set(SpriteComponent::Alpha);
 	sprite.width = width;
@@ -278,7 +277,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	}
 
 	UniquePtrSpriteAllocator allocator;
-	BlitterFactory::GetCurrentBlitter()->Encode(spritecollection, allocator);
+	BlitterFactory::GetCurrentBlitter()->Encode(SpriteType::Font, spritecollection, allocator);
 
 	GlyphEntry new_glyph;
 	new_glyph.data = std::move(allocator.data);
