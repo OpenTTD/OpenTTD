@@ -1074,7 +1074,7 @@ SQRESULT sq_readclosure(HSQUIRRELVM v,SQREADFUNC r,SQUserPointer up)
 	return SQ_OK;
 }
 
-SQChar *sq_getscratchpad(HSQUIRRELVM v,SQInteger minsize)
+std::span<char> sq_getscratchpad(HSQUIRRELVM v,SQInteger minsize)
 {
 	return _ss(v)->GetScratchPad(minsize);
 }

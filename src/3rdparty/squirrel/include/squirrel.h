@@ -259,7 +259,7 @@ SQRESULT sq_getuserdata(HSQUIRRELVM v,SQInteger idx,SQUserPointer *p,SQUserPoint
 SQRESULT sq_settypetag(HSQUIRRELVM v,SQInteger idx,SQUserPointer typetag);
 SQRESULT sq_gettypetag(HSQUIRRELVM v,SQInteger idx,SQUserPointer *typetag);
 void sq_setreleasehook(HSQUIRRELVM v,SQInteger idx,SQRELEASEHOOK hook);
-SQChar *sq_getscratchpad(HSQUIRRELVM v,SQInteger minsize);
+std::span<char> sq_getscratchpad(HSQUIRRELVM v,SQInteger minsize);
 SQRESULT sq_getfunctioninfo(HSQUIRRELVM v,SQInteger idx,SQFunctionInfo *fi);
 SQRESULT sq_getclosureinfo(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger *nparams,SQUnsignedInteger *nfreevars);
 SQRESULT sq_setnativeclosurename(HSQUIRRELVM v,SQInteger idx,std::string_view name);
