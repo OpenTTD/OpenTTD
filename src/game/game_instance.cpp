@@ -50,9 +50,9 @@ void GameInstance::RegisterAPI()
 	/* Register all classes */
 	SQGS_RegisterAll(*this->engine);
 
-	RegisterGameTranslation(*this->engine);
-
 	if (!this->LoadCompatibilityScripts(GAME_DIR, GameInfo::ApiVersions)) this->Died();
+
+	RegisterGameTranslation(*this->engine);
 }
 
 int GameInstance::GetSetting(const std::string &name)

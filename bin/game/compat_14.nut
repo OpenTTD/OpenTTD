@@ -9,6 +9,9 @@
 
 GSBridge.GetBridgeID <- GSBridge.GetBridgeType;
 
+/* Emulate old GSText parameter padding behaviour */
+GSText.SCRIPT_TEXT_MAX_PARAMETERS <- 20;
+
 class GSCompat14 {
 	function Text(text)
 	{

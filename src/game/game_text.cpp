@@ -370,6 +370,8 @@ void RegisterGameTranslation(Squirrel &engine)
 
 	sq_pop(vm, 2);
 
+	ScriptText::SetPadParameterCount(vm);
+
 	ReconsiderGameScriptLanguage();
 }
 
