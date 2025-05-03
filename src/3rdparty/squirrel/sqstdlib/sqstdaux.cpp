@@ -21,21 +21,17 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 		pf(v,"\nCALLSTACK\n");
 		while(SQ_SUCCEEDED(sq_stackinfos(v,level,&si)))
 		{
-			const SQChar *fn="unknown";
-			const SQChar *src="unknown";
-			if(si.funcname)fn=si.funcname;
-			if(si.source) {
+			std::string_view fn="unknown";
+			std::string_view src="unknown";
+			if(!si.funcname.empty())fn=si.funcname;
+			if(!si.source.empty()) {
 				/* We don't want to bother users with absolute paths to all AI files.
 				 * Since the path only reaches NoAI code in a formatted string we have
 				 * to strip it here. Let's hope nobody installs openttd in a subdirectory
 				 * of a directory named /ai/. */
-				src = strstr(si.source, "\\ai\\");
-				if (!src) src = strstr(si.source, "/ai/");
-				if (src) {
-					src += 4;
-				} else {
-					src = si.source;
-				}
+				auto p = si.source.find("\\ai\\");
+				if (p == std::string_view::npos) p = si.source.find("/ai/");
+				src = (p == std::string_view::npos) ? si.source : si.source.substr(p + 4);
 			}
 			pf(v,fmt::format("*FUNCTION [{}()] {} line [{}]\n",fn,src,si.line));
 			level++;

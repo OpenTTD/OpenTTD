@@ -37,7 +37,7 @@ SQRESULT sq_stackinfos(HSQUIRRELVM v, SQInteger level, SQStackInfos *si)
 {
 	SQInteger cssize = v->_callsstacksize;
 	if (cssize > level) {
-		memset(si, 0, sizeof(SQStackInfos));
+		*si = {};
 		SQVM::CallInfo &ci = v->_callsstack[cssize-level-1];
 		switch (type(ci._closure)) {
 		case OT_CLOSURE:{

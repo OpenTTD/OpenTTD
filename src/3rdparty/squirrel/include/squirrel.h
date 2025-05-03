@@ -164,9 +164,9 @@ typedef struct tagSQObject
 }SQObject;
 
 typedef struct tagSQStackInfos{
-	const SQChar* funcname;
-	const SQChar* source;
-	SQInteger line;
+	std::string_view funcname;
+	std::string_view source;
+	SQInteger line = -1;
 }SQStackInfos;
 
 typedef struct SQVM* HSQUIRRELVM;
@@ -190,8 +190,8 @@ typedef struct tagSQRegFunction{
 
 typedef struct tagSQFunctionInfo {
 	SQUserPointer funcid;
-	const SQChar *name;
-	const SQChar *source;
+	std::string_view name;
+	std::string_view source;
 }SQFunctionInfo;
 
 
