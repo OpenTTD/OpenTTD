@@ -2083,25 +2083,23 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
  *        set. Pass nullptr if you don't want additional checks.
  * @return return string containing current charset, or nullptr if not-determinable
  */
-const char *GetCurrentLocale(const char *param)
+std::optional<std::string_view> GetCurrentLocale(const char *param)
 {
-	const char *env;
+	auto env = GetEnv("LANGUAGE");
+	if (env.has_value()) return env;
 
-	env = std::getenv("LANGUAGE");
-	if (env != nullptr) return env;
-
-	env = std::getenv("LC_ALL");
-	if (env != nullptr) return env;
+	env = GetEnv("LC_ALL");
+	if (env.has_value()) return env;
 
 	if (param != nullptr) {
-		env = std::getenv(param);
-		if (env != nullptr) return env;
+		env = GetEnv(param);
+		if (env.has_value()) return env;
 	}
 
-	return std::getenv("LANG");
+	return GetEnv("LANG");
 }
 #else
-const char *GetCurrentLocale(const char *param);
+std::optional<std::string_view> GetCurrentLocale(const char *param);
 #endif /* !(defined(_WIN32) || defined(__APPLE__)) */
 
 /**
@@ -2182,8 +2180,8 @@ void InitializeLanguagePacks()
 	if (_languages.empty()) UserError("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
-	const char *lang = GetCurrentLocale("LC_MESSAGES");
-	if (lang == nullptr) lang = "en_GB";
+	auto lang = GetCurrentLocale("LC_MESSAGES");
+	if (!lang.has_value()) lang = "en_GB";
 
 	const LanguageMetadata *chosen_language   = nullptr; ///< Matching the language in the configuration file or the current locale
 	const LanguageMetadata *language_fallback = nullptr; ///< Using pt_PT for pt_BR locale when pt_BR is not available
@@ -2199,13 +2197,14 @@ void InitializeLanguagePacks()
 			break;
 		}
 
-		if (strcmp (lng.isocode, "en_GB") == 0) en_GB_fallback    = &lng;
+		std::string_view iso_code = lng.isocode;
+		if (iso_code == "en_GB") en_GB_fallback = &lng;
 
 		/* Only auto-pick finished translations */
 		if (!lng.IsReasonablyFinished()) continue;
 
-		if (strncmp(lng.isocode, lang, 5) == 0) chosen_language   = &lng;
-		if (strncmp(lng.isocode, lang, 2) == 0) language_fallback = &lng;
+		if (iso_code.starts_with(lang->substr(0, 5))) chosen_language = &lng;
+		if (iso_code.starts_with(lang->substr(0, 2))) language_fallback = &lng;
 	}
 
 	/* We haven't found the language in the config nor the one in the locale.

@@ -151,7 +151,7 @@ void OSOpenBrowser(const std::string &url)
 /**
  * Determine and return the current user's locale.
  */
-const char *GetCurrentLocale(const char *)
+std::optional<std::string_view> GetCurrentLocale(const char *)
 {
 	static char retbuf[32] = { '\0' };
 	NSUserDefaults *defs = [ NSUserDefaults standardUserDefaults ];

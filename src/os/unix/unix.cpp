@@ -89,7 +89,7 @@ bool FiosIsHiddenFile(const std::filesystem::path &path)
 #include "../../debug.h"
 #include "../../string_func.h"
 
-const char *GetCurrentLocale(const char *param);
+std::optional<std::string_view> GetCurrentLocale(const char *param);
 
 #define INTERNALCODE "UTF-8"
 
@@ -98,16 +98,17 @@ const char *GetCurrentLocale(const char *param);
  * variables. MacOSX is hardcoded, other OS's are dynamic. If no suitable
  * locale can be found, don't do any conversion ""
  */
-static const char *GetLocalCode()
+static std::string_view GetLocalCode()
 {
 #if defined(__APPLE__)
 	return "UTF-8-MAC";
 #else
 	/* Strip locale (eg en_US.UTF-8) to only have UTF-8 */
-	const char *locale = GetCurrentLocale("LC_CTYPE");
-	if (locale != nullptr) locale = strchr(locale, '.');
-
-	return (locale == nullptr) ? "" : locale + 1;
+	auto locale = GetCurrentLocale("LC_CTYPE");
+	if (!locale.has_value()) return "";
+	auto pos = locale->find('.');
+	if (pos == std::string_view::npos) return "";
+	return locale->substr(pos + 1);
 #endif
 }
 
@@ -151,8 +152,8 @@ std::string OTTD2FS(std::string_view name)
 {
 	static iconv_t convd = (iconv_t)(-1);
 	if (convd == (iconv_t)(-1)) {
-		const char *env = GetLocalCode();
-		convd = iconv_open(env, INTERNALCODE);
+		std::string env{GetLocalCode()};
+		convd = iconv_open(env.c_str(), INTERNALCODE);
 		if (convd == (iconv_t)(-1)) {
 			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", INTERNALCODE, env);
 			return std::string{name};
@@ -171,8 +172,8 @@ std::string FS2OTTD(std::string_view name)
 {
 	static iconv_t convd = (iconv_t)(-1);
 	if (convd == (iconv_t)(-1)) {
-		const char *env = GetLocalCode();
-		convd = iconv_open(INTERNALCODE, env);
+		std::string env{GetLocalCode()};
+		convd = iconv_open(INTERNALCODE, env.c_str());
 		if (convd == (iconv_t)(-1)) {
 			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", env, INTERNALCODE);
 			return std::string{name};
