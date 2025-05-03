@@ -13,7 +13,7 @@ struct SQStringTable
 {
 	SQStringTable();
 	~SQStringTable();
-	SQString *Add(const SQChar *,SQInteger len);
+	SQString *Add(std::string_view str);
 	void Remove(SQString *);
 private:
 	void Resize(SQInteger size);
@@ -48,9 +48,6 @@ private:
 	RefNode *_freelist;
 	RefNode **_buckets;
 };
-
-#define ADD_STRING(ss,str,len) ss->_stringtable->Add(str,len)
-#define REMOVE_STRING(ss,bstr) ss->_stringtable->Remove(bstr)
 
 struct SQObjectPtr;
 

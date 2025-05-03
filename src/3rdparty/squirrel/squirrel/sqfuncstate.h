@@ -43,7 +43,7 @@ struct SQFuncState
 	SQInteger TopTarget();
 	SQInteger GetUpTarget(SQInteger n);
 	bool IsLocal(SQUnsignedInteger stkpos);
-	SQObject CreateString(const SQChar *s,SQInteger len = -1);
+	SQObject CreateString(std::string_view s);
 	SQObject CreateTable();
 	bool IsConstant(const SQObject &name,SQObject &e);
 	SQInteger _returnexp;

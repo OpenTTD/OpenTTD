@@ -51,16 +51,16 @@ const SQChar *GetTypeName(const SQObjectPtr &obj1)
 	return IdType2Name(type(obj1));
 }
 
-SQString *SQString::Create(SQSharedState *ss,const SQChar *s,SQInteger len)
+SQString *SQString::Create(SQSharedState *ss,std::string_view s)
 {
-	SQString *str=ADD_STRING(ss,s,len);
+	SQString *str=ss->_stringtable->Add(s);
 	str->_sharedstate=ss;
 	return str;
 }
 
 void SQString::Release()
 {
-	REMOVE_STRING(_sharedstate,this);
+	_sharedstate->_stringtable->Remove(this);
 }
 
 SQInteger SQString::Next(const SQObjectPtr &refpos, SQObjectPtr &outkey, SQObjectPtr &outval)

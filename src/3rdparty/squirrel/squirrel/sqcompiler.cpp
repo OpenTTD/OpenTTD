@@ -123,7 +123,7 @@ public:
 			ret = _fs->CreateString(_lex._svalue);
 			break;
 		case TK_STRING_LITERAL:
-			ret = _fs->CreateString(_lex._svalue,_lex._longstr.size()-1);
+			ret = _fs->CreateString(std::string_view(_lex._svalue,_lex._longstr.size()-1));
 			break;
 		case TK_INTEGER:
 			ret = SQObjectPtr(_lex._nvalue);
@@ -598,7 +598,7 @@ public:
 		switch(_token)
 		{
 		case TK_STRING_LITERAL: {
-				_fs->AddInstruction(_OP_LOAD, _fs->PushTarget(), _fs->GetConstant(_fs->CreateString(_lex._svalue,_lex._longstr.size()-1)));
+				_fs->AddInstruction(_OP_LOAD, _fs->PushTarget(), _fs->GetConstant(_fs->CreateString(std::string_view(_lex._svalue,_lex._longstr.size()-1))));
 				Lex();
 			}
 			break;
@@ -1103,7 +1103,7 @@ public:
 				val._unVal.fFloat = _lex._fvalue;
 				break;
 			case TK_STRING_LITERAL:
-				val = _fs->CreateString(_lex._svalue,_lex._longstr.size()-1);
+				val = _fs->CreateString(std::string_view(_lex._svalue,_lex._longstr.size()-1));
 				break;
 			case '-':
 				Lex();
