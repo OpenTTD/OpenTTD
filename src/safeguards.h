@@ -21,33 +21,33 @@
 #define calloc    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define realloc   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use std::string instead. */
+/* Use std::string/std::string_view instead. */
 #define strdup    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strndup   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use strecpy instead. */
 #define strcpy    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strncpy   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use std::string concatenation/fmt::format instead. */
 #define strcat    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define strncat   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use fmt::format instead. */
 #define sprintf   SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define snprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
-
-/* Use fmt::format instead. */
 #define vsprintf  SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define vsnprintf SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
+#define strncmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define strcasecmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#ifdef stricmp
+#undef stricmp
+#endif
+#define stricmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 /* Use fgets instead. */
 #define gets      SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* No clear replacement. */
-#define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
-
 /* Use StringConsumer instead. */
+#define strtok    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define sscanf    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define from_string SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
