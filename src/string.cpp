@@ -851,3 +851,15 @@ public:
 #endif /* defined(WITH_COCOA) && !defined(STRGEN) && !defined(SETTINGSGEN) */
 
 #endif
+
+/**
+ * Get the environment variable using std::getenv and when it is an empty string (or nullptr), return \c std::nullopt instead.
+ * @param variable The environment variable to read from.
+ * @return The environment value, or \c std::nullopt.
+ */
+std::optional<std::string_view> GetEnv(const char *variable)
+{
+	auto val = std::getenv(variable);
+	if (val == nullptr || *val == '\0') return std::nullopt;
+	return val;
+}
