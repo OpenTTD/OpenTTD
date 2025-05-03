@@ -250,7 +250,7 @@ static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src
 
 static void ResizeSpriteOut(SpriteLoader::SpriteCollection &sprite, ZoomLevel zoom)
 {
-	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	const auto &root_sprite = sprite.Root();
 	const auto &src_sprite = sprite[zoom - 1];
 	auto &dest_sprite = sprite[zoom];
 
@@ -417,7 +417,7 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels spr
 		}
 	}
 
-	/* Upscale to desired sprite_min_zoom if provided sprite only had zoomed in versions. */
+	/* Replace sprites with higher resolution than the desired maximum source resolution with scaled up sprites, if not already done. */
 	if (first_avail < _settings_client.gui.sprite_zoom_min) {
 		for (ZoomLevel zoom = std::min(ZOOM_LVL_NORMAL, _settings_client.gui.sprite_zoom_min); zoom > ZOOM_LVL_MIN; --zoom) {
 			ResizeSpriteIn(sprite, zoom, zoom - 1);
@@ -522,7 +522,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		 * Ugly: yes. Other solution: no. Blame the original author or
 		 *  something ;) The image should really have been a data-stream
 		 *  (so type = 0xFF basically). */
-		const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+		const auto &root_sprite = sprite.Root();
 		uint num = root_sprite.width * root_sprite.height;
 
 		Sprite *s = allocator.Allocate<Sprite>(sizeof(*s) + num);
@@ -1080,4 +1080,4 @@ void GfxClearFontSpriteCache()
 	}
 }
 
-/* static */ ReusableBuffer<SpriteLoader::CommonPixel> SpriteLoader::Sprite::buffer[ZOOM_LVL_END];
+/* static */ SpriteCollMap<ReusableBuffer<SpriteLoader::CommonPixel>> SpriteLoader::Sprite::buffer;

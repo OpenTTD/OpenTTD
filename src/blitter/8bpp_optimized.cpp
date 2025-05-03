@@ -221,7 +221,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 	/* Allocate the exact amount of memory we need */
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + size);
 
-	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	const auto &root_sprite = sprite.Root();
 	dest_sprite->height = root_sprite.height;
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;

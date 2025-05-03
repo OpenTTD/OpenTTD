@@ -63,7 +63,7 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 
 Sprite *Blitter_8bppSimple::Encode(SpriteType, const SpriteLoader::SpriteCollection &sprite, SpriteAllocator &allocator)
 {
-	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	const auto &root_sprite = sprite.Root();
 	Sprite *dest_sprite;
 	dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + static_cast<size_t>(root_sprite.height) * static_cast<size_t>(root_sprite.width));
 

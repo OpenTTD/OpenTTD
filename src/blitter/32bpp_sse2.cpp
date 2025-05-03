@@ -52,7 +52,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	}
 
 	Sprite *dst_sprite = allocator.Allocate<Sprite>(sizeof(Sprite) + sizeof(SpriteData) + all_sprites_size);
-	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	const auto &root_sprite = sprite.Root();
 	dst_sprite->height = root_sprite.height;
 	dst_sprite->width = root_sprite.width;
 	dst_sprite->x_offs = root_sprite.x_offs;

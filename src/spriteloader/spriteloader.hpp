@@ -26,6 +26,20 @@ enum class SpriteComponent : uint8_t {
 };
 using SpriteComponents = EnumBitSet<SpriteComponent, uint8_t, SpriteComponent::End>;
 
+/**
+ * Map zoom level to data.
+ */
+template <class T>
+class SpriteCollMap {
+	std::array<T, ZOOM_LVL_END> data;
+public:
+	inline constexpr T &operator[](const ZoomLevel &zoom) { return this->data[zoom]; }
+	inline constexpr const T &operator[](const ZoomLevel &zoom) const { return this->data[zoom]; }
+
+	T &Root() { return this->data[ZOOM_LVL_MIN]; }
+	const T &Root() const { return this->data[ZOOM_LVL_MIN]; }
+};
+
 /** Interface for the loader of our sprites. */
 class SpriteLoader {
 public:
@@ -60,13 +74,13 @@ public:
 		void AllocateData(ZoomLevel zoom, size_t size) { this->data = Sprite::buffer[zoom].ZeroAllocate(size); }
 	private:
 		/** Allocated memory to pass sprite data around */
-		static ReusableBuffer<SpriteLoader::CommonPixel> buffer[ZOOM_LVL_END];
+		static SpriteCollMap<ReusableBuffer<SpriteLoader::CommonPixel>> buffer;
 	};
 
 	/**
 	 * Type defining a collection of sprites, one for each zoom level.
 	 */
-	using SpriteCollection = std::array<Sprite, ZOOM_LVL_END>;
+	using SpriteCollection = SpriteCollMap<Sprite>;
 
 	/**
 	 * Load a sprite from the disk and return a sprite struct which is the same for all loaders.

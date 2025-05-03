@@ -32,11 +32,11 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 
 	/* src_px : each line begins with uint32_t n = 'number of bytes in this line',
 	 *          then n times is the Colour struct for this line */
-	const Colour *src_px = (const Colour *)(src->data + src->offset[zoom][0]);
+	const Colour *src_px = reinterpret_cast<const Colour *>(src->data + src->offset[0][zoom]);
 	/* src_n  : each line begins with uint32_t n = 'number of bytes in this line',
 	 *          then interleaved stream of 'm' and 'n' channels. 'm' is remap,
 	 *          'n' is number of bytes with the same alpha channel class */
-	const uint16_t *src_n  = (const uint16_t *)(src->data + src->offset[zoom][1]);
+	const uint16_t *src_n = reinterpret_cast<const uint16_t *>(src->data + src->offset[1][zoom]);
 
 	/* skip upper lines in src_px and src_n */
 	for (uint i = bp->skip_top; i != 0; i--) {
@@ -291,7 +291,7 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 	/* streams of pixels (a, r, g, b channels)
 	 *
 	 * stored in separated stream so data are always aligned on 4B boundary */
-	std::array<std::unique_ptr<Colour[]>, ZOOM_LVL_END> dst_px_orig;
+	SpriteCollMap<std::unique_ptr<Colour[]>> dst_px_orig;
 
 	/* interleaved stream of 'm' channel and 'n' channel
 	 * 'n' is number of following pixels with the same alpha channel class
@@ -299,10 +299,10 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 	 *
 	 * it has to be stored in one stream so fewer registers are used -
 	 * x86 has problems with register allocation even with this solution */
-	std::array<std::unique_ptr<uint16_t[]>, ZOOM_LVL_END> dst_n_orig;
+	SpriteCollMap<std::unique_ptr<uint16_t[]>> dst_n_orig;
 
 	/* lengths of streams */
-	uint32_t lengths[ZOOM_LVL_END][2];
+	SpriteCollMap<uint32_t> lengths[2];
 
 	ZoomLevel zoom_min;
 	ZoomLevel zoom_max;
@@ -406,18 +406,18 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 			dst_n_ln =  (uint32_t *)dst_n;
 		}
 
-		lengths[z][0] = reinterpret_cast<uint8_t *>(dst_px_ln) - reinterpret_cast<uint8_t *>(dst_px_orig[z].get()); // all are aligned to 4B boundary
-		lengths[z][1] = reinterpret_cast<uint8_t *>(dst_n_ln)  - reinterpret_cast<uint8_t *>(dst_n_orig[z].get());
+		lengths[0][z] = reinterpret_cast<uint8_t *>(dst_px_ln) - reinterpret_cast<uint8_t *>(dst_px_orig[z].get()); // all are aligned to 4B boundary
+		lengths[1][z] = reinterpret_cast<uint8_t *>(dst_n_ln) - reinterpret_cast<uint8_t *>(dst_n_orig[z].get());
 	}
 
 	uint len = 0; // total length of data
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
-		len += lengths[z][0] + lengths[z][1];
+		len += lengths[0][z] + lengths[1][z];
 	}
 
 	Sprite *dest_sprite = allocator.Allocate<Sprite>(sizeof(*dest_sprite) + sizeof(SpriteData) + len);
 
-	const auto &root_sprite = sprite[ZOOM_LVL_MIN];
+	const auto &root_sprite = sprite.Root();
 	dest_sprite->height = root_sprite.height;
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
@@ -426,12 +426,15 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 	SpriteData *dst = (SpriteData *)dest_sprite->data;
 	memset(dst, 0, sizeof(*dst));
 
+	uint32_t offset = 0;
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
-		dst->offset[z][0] = z == zoom_min ? 0 : lengths[z - 1][1] + dst->offset[z - 1][1];
-		dst->offset[z][1] = lengths[z][0] + dst->offset[z][0];
+		dst->offset[0][z] = offset;
+		offset += lengths[0][z];
+		dst->offset[1][z] = offset;
+		offset += lengths[1][z];
 
-		memcpy(dst->data + dst->offset[z][0], dst_px_orig[z].get(), lengths[z][0]);
-		memcpy(dst->data + dst->offset[z][1], dst_n_orig[z].get(),  lengths[z][1]);
+		memcpy(dst->data + dst->offset[0][z], dst_px_orig[z].get(), lengths[0][z]);
+		memcpy(dst->data + dst->offset[1][z], dst_n_orig[z].get(), lengths[1][z]);
 	}
 
 	return dest_sprite;
