@@ -547,33 +547,34 @@ void SQStringTable::AllocNodes(SQInteger size)
 	memset(_strings,0,sizeof(SQString*)*(size_t)_numofslots);
 }
 
-SQString *SQStringTable::Add(const SQChar *news,SQInteger len)
+static const std::hash<std::string_view> string_table_hash{};
+
+SQString *SQStringTable::Add(std::string_view new_string)
 {
-	if(len<0)
-		len = (SQInteger)strlen(news);
-	SQHash h = ::_hashstr(news,(size_t)len)&(_numofslots-1);
+	size_t len = new_string.size();
+	auto slot = string_table_hash(new_string) & (_numofslots-1);
 	SQString *s;
-	for (s = _strings[h]; s; s = s->_next){
-		if(s->_len == len && (!memcmp(news,s->_val,(size_t)len)))
+	for (s = _strings[slot]; s; s = s->_next){
+		if(static_cast<size_t>(s->_len) == len && (!memcmp(new_string.data(),s->_val,len)))
 			return s; //found
 	}
 
 	SQString *t=(SQString *)SQ_MALLOC(len+sizeof(SQString));
-	new (t) SQString(news, len);
-	t->_next = _strings[h];
-	_strings[h] = t;
+	new (t) SQString(new_string);
+	t->_next = _strings[slot];
+	_strings[slot] = t;
 	_slotused++;
 	if (_slotused > _numofslots)  /* too crowded? */
 		Resize(_numofslots*2);
 	return t;
 }
 
-SQString::SQString(const SQChar *news, SQInteger len)
+SQString::SQString(std::string_view new_string)
 {
-	memcpy(_val,news,(size_t)len);
-	_val[len] = '\0';
-	_len = len;
-	_hash = ::_hashstr(news,(size_t)len);
+	memcpy(_val,new_string.data(),new_string.size());
+	_val[new_string.size()] = '\0';
+	_len = new_string.size();
+	_hash = string_table_hash(new_string);
 	_next = nullptr;
 	_sharedstate = nullptr;
 }

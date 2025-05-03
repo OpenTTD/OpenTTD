@@ -499,9 +499,9 @@ void SQFuncState::AddInstruction(SQInstruction &i)
 	_instructions.push_back(i);
 }
 
-SQObject SQFuncState::CreateString(const SQChar *s,SQInteger len)
+SQObject SQFuncState::CreateString(std::string_view s)
 {
-	SQObjectPtr ns(SQString::Create(_sharedstate,s,len));
+	SQObjectPtr ns(SQString::Create(_sharedstate,s));
 	_table(_strings)->NewSlot(ns,(SQInteger)1);
 	return std::move(ns);
 }

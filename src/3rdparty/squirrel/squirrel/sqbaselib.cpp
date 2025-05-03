@@ -233,7 +233,7 @@ static SQInteger base_array(HSQUIRRELVM v)
 static SQInteger base_type(HSQUIRRELVM v)
 {
 	SQObjectPtr &o = stack_get(v,2);
-	v->Push(SQString::Create(_ss(v),GetTypeName(o),-1));
+	v->Push(SQString::Create(_ss(v),GetTypeName(o)));
 	return 1;
 }
 
@@ -372,7 +372,7 @@ static SQInteger number_delegate_tochar(HSQUIRRELVM v)
 {
 	SQObject &o=stack_get(v,1);
 	SQChar c = (SQChar)tointeger(o);
-	v->Push(SQString::Create(_ss(v),(const SQChar *)&c,1));
+	v->Push(SQString::Create(_ss(v),std::string_view(&c, 1)));
 	return 1;
 }
 
@@ -642,7 +642,7 @@ static SQInteger string_slice(HSQUIRRELVM v)
 	if(eidx < 0)eidx = slen + eidx;
 	if(eidx < sidx)	return sq_throwerror(v,"wrong indexes");
 	if(eidx > slen)	return sq_throwerror(v,"slice out of range");
-	v->Push(SQString::Create(_ss(v),&_stringval(o)[sidx],eidx-sidx));
+	v->Push(SQString::Create(_ss(v),std::string_view(&_stringval(o)[sidx],eidx-sidx)));
 	return 1;
 }
 
@@ -750,19 +750,19 @@ static SQInteger closure_getinfos(HSQUIRRELVM v) {
 			_array(params)->Set((SQInteger)n,f->_parameters[n]);
 		}
 		if(f->_varparams) {
-			_array(params)->Set(nparams-1,SQString::Create(_ss(v),"...",-1));
+			_array(params)->Set(nparams-1,SQString::Create(_ss(v),"..."));
 		}
-		res->NewSlot(SQString::Create(_ss(v),"native",-1),false);
-		res->NewSlot(SQString::Create(_ss(v),"name",-1),f->_name);
-		res->NewSlot(SQString::Create(_ss(v),"src",-1),f->_sourcename);
-		res->NewSlot(SQString::Create(_ss(v),"parameters",-1),params);
-		res->NewSlot(SQString::Create(_ss(v),"varargs",-1),f->_varparams);
+		res->NewSlot(SQString::Create(_ss(v),"native"),false);
+		res->NewSlot(SQString::Create(_ss(v),"name"),f->_name);
+		res->NewSlot(SQString::Create(_ss(v),"src"),f->_sourcename);
+		res->NewSlot(SQString::Create(_ss(v),"parameters"),params);
+		res->NewSlot(SQString::Create(_ss(v),"varargs"),f->_varparams);
 	}
 	else { //OT_NATIVECLOSURE
 		SQNativeClosure *nc = _nativeclosure(o);
-		res->NewSlot(SQString::Create(_ss(v),"native",-1),true);
-		res->NewSlot(SQString::Create(_ss(v),"name",-1),nc->_name);
-		res->NewSlot(SQString::Create(_ss(v),"paramscheck",-1),nc->_nparamscheck);
+		res->NewSlot(SQString::Create(_ss(v),"native"),true);
+		res->NewSlot(SQString::Create(_ss(v),"name"),nc->_name);
+		res->NewSlot(SQString::Create(_ss(v),"paramscheck"),nc->_nparamscheck);
 		SQObjectPtr typecheck;
 		if(!nc->_typecheck.empty()) {
 			typecheck =
@@ -771,7 +771,7 @@ static SQInteger closure_getinfos(HSQUIRRELVM v) {
 					_array(typecheck)->Set((SQInteger)n,nc->_typecheck[n]);
 			}
 		}
-		res->NewSlot(SQString::Create(_ss(v),"typecheck",-1),typecheck);
+		res->NewSlot(SQString::Create(_ss(v),"typecheck"),typecheck);
 	}
 	v->Push(res);
 	return 1;
