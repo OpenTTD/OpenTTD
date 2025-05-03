@@ -27,7 +27,7 @@ static bool CheckAPIVersion(const std::string &api_version)
 	return std::ranges::find(AIInfo::ApiVersions, api_version) != std::end(AIInfo::ApiVersions);
 }
 
-template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIInfo", -1); return 1; }
+template <> SQInteger PushClassName<AIInfo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIInfo"); return 1; }
 
 /* static */ void AIInfo::RegisterAPI(Squirrel &engine)
 {

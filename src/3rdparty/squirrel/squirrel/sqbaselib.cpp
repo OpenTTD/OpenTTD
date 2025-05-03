@@ -111,20 +111,20 @@ static SQInteger base_getstackinfos(HSQUIRRELVM v)
 		if(si.funcname)fn = si.funcname;
 		if(si.source)src = si.source;
 		sq_newtable(v);
-		sq_pushstring(v, "func", -1);
-		sq_pushstring(v, fn, -1);
+		sq_pushstring(v, "func");
+		sq_pushstring(v, fn);
 		sq_createslot(v, -3);
-		sq_pushstring(v, "src", -1);
-		sq_pushstring(v, src, -1);
+		sq_pushstring(v, "src");
+		sq_pushstring(v, src);
 		sq_createslot(v, -3);
-		sq_pushstring(v, "line", -1);
+		sq_pushstring(v, "line");
 		sq_pushinteger(v, si.line);
 		sq_createslot(v, -3);
-		sq_pushstring(v, "locals", -1);
+		sq_pushstring(v, "locals");
 		sq_newtable(v);
 		seq=0;
 		while ((name = sq_getlocal(v, level, seq))) {
-			sq_pushstring(v, name, -1);
+			sq_pushstring(v, name);
 			sq_push(v, -2);
 			sq_createslot(v, -4);
 			sq_pop(v, 1);
@@ -272,23 +272,23 @@ void sq_base_register(HSQUIRRELVM v)
 	SQInteger i=0;
 	sq_pushroottable(v);
 	while(base_funcs[i].name!=nullptr) {
-		sq_pushstring(v,base_funcs[i].name,-1);
+		sq_pushstring(v,base_funcs[i].name);
 		sq_newclosure(v,base_funcs[i].f,0);
 		sq_setnativeclosurename(v,-1,base_funcs[i].name);
 		sq_setparamscheck(v,base_funcs[i].nparamscheck,base_funcs[i].typemask);
 		sq_createslot(v,-3);
 		i++;
 	}
-	sq_pushstring(v,"_version_",-1);
-	sq_pushstring(v,SQUIRREL_VERSION,-1);
+	sq_pushstring(v,"_version_");
+	sq_pushstring(v,SQUIRREL_VERSION);
 	sq_createslot(v,-3);
-	sq_pushstring(v,"_charsize_",-1);
+	sq_pushstring(v,"_charsize_");
 	sq_pushinteger(v,sizeof(SQChar));
 	sq_createslot(v,-3);
-	sq_pushstring(v,"_intsize_",-1);
+	sq_pushstring(v,"_intsize_");
 	sq_pushinteger(v,sizeof(SQInteger));
 	sq_createslot(v,-3);
-	sq_pushstring(v,"_floatsize_",-1);
+	sq_pushstring(v,"_floatsize_");
 	sq_pushinteger(v,sizeof(SQFloat));
 	sq_createslot(v,-3);
 	sq_pop(v,1);
@@ -872,13 +872,13 @@ static SQInteger thread_getstatus(HSQUIRRELVM v)
 	SQObjectPtr &o = stack_get(v,1);
 	switch(sq_getvmstate(_thread(o))) {
 		case SQ_VMSTATE_IDLE:
-			sq_pushstring(v,"idle",-1);
+			sq_pushstring(v,"idle");
 		break;
 		case SQ_VMSTATE_RUNNING:
-			sq_pushstring(v,"running",-1);
+			sq_pushstring(v,"running");
 		break;
 		case SQ_VMSTATE_SUSPENDED:
-			sq_pushstring(v,"suspended",-1);
+			sq_pushstring(v,"suspended");
 		break;
 		default:
 			return sq_throwerror(v,"internal VM error");

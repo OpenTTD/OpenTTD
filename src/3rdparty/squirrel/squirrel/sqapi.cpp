@@ -210,11 +210,9 @@ void sq_pushnull(HSQUIRRELVM v)
 	v->Push(_null_);
 }
 
-void sq_pushstring(HSQUIRRELVM v,const SQChar *s,SQInteger len)
+void sq_pushstring(HSQUIRRELVM v,std::string_view s)
 {
-	if(s)
-		v->Push(SQObjectPtr(SQString::Create(_ss(v), s, len)));
-	else v->Push(_null_);
+	v->Push(SQObjectPtr(SQString::Create(_ss(v), s)));
 }
 
 void sq_pushinteger(HSQUIRRELVM v,SQInteger n)

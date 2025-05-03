@@ -84,7 +84,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 
 			/* Validate if it is a GSText instance */
 			sq_pushroottable(vm);
-			sq_pushstring(vm, "GSText", -1);
+			sq_pushstring(vm, "GSText");
 			sq_get(vm, -2);
 			sq_pushobject(vm, instance);
 			if (sq_instanceof(vm) != SQTrue) return SQ_ERROR;
@@ -171,9 +171,9 @@ void ScriptText::SetPadParameterCount(HSQUIRRELVM vm)
 
 	SQInteger top = sq_gettop(vm);
 	sq_pushroottable(vm);
-	sq_pushstring(vm, "GSText", -1);
+	sq_pushstring(vm, "GSText");
 	if (!SQ_FAILED(sq_get(vm, -2))) {
-		sq_pushstring(vm, "SCRIPT_TEXT_MAX_PARAMETERS", -1);
+		sq_pushstring(vm, "SCRIPT_TEXT_MAX_PARAMETERS");
 		if (!SQ_FAILED(sq_get(vm, -2))) {
 			SQInteger value;
 			if (!SQ_FAILED(sq_getinteger(vm, -1, &value))) {

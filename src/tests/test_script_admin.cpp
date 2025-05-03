@@ -58,7 +58,7 @@ static std::optional<std::string> TestScriptAdminMakeJSON(std::string_view squir
 
 	/* Insert an (empty) class for testing. */
 	sq_pushroottable(vm);
-	sq_pushstring(vm, "DummyClass", -1);
+	sq_pushstring(vm, "DummyClass");
 	sq_newclass(vm, SQFalse);
 	sq_newslot(vm, -3, SQFalse);
 	sq_pop(vm, 1);
