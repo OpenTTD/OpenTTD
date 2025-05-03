@@ -333,13 +333,13 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 	return true;
 }
 
-static bool PadSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
+static bool PadSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite_avail, SpriteEncoder *encoder)
 {
 	/* Get minimum top left corner coordinates. */
 	int min_xoffs = INT32_MAX;
 	int min_yoffs = INT32_MAX;
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
-		if (HasBit(sprite_avail, zoom)) {
+		if (sprite_avail.Test(zoom)) {
 			min_xoffs = std::min(min_xoffs, ScaleByZoom(sprite[zoom].x_offs, zoom));
 			min_yoffs = std::min(min_yoffs, ScaleByZoom(sprite[zoom].y_offs, zoom));
 		}
@@ -349,7 +349,7 @@ static bool PadSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_av
 	int max_width  = INT32_MIN;
 	int max_height = INT32_MIN;
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
-		if (HasBit(sprite_avail, zoom)) {
+		if (sprite_avail.Test(zoom)) {
 			max_width  = std::max(max_width, ScaleByZoom(sprite[zoom].width + sprite[zoom].x_offs - UnScaleByZoom(min_xoffs, zoom), zoom));
 			max_height = std::max(max_height, ScaleByZoom(sprite[zoom].height + sprite[zoom].y_offs - UnScaleByZoom(min_yoffs, zoom), zoom));
 		}
@@ -364,7 +364,7 @@ static bool PadSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_av
 
 	/* Pad sprites where needed. */
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
-		if (HasBit(sprite_avail, zoom)) {
+		if (sprite_avail.Test(zoom)) {
 			auto &cur_sprite = sprite[zoom];
 			/* Scaling the sprite dimensions in the blitter is done with rounding up,
 			 * so a negative padding here is not an error. */
@@ -382,13 +382,18 @@ static bool PadSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_av
 	return true;
 }
 
-static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite_avail, SpriteEncoder *encoder)
+static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels sprite_avail, SpriteEncoder *encoder)
 {
 	/* Create a fully zoomed image if it does not exist */
-	ZoomLevel first_avail = static_cast<ZoomLevel>(FindFirstBit(sprite_avail));
-	if (first_avail != ZOOM_LVL_MIN) {
-		if (!ResizeSpriteIn(sprite, first_avail, ZOOM_LVL_MIN)) return false;
-		SetBit(sprite_avail, ZOOM_LVL_MIN);
+	ZoomLevel first_avail;
+	for (ZoomLevel zoom = ZOOM_LVL_MIN; zoom <= ZOOM_LVL_MAX; ++zoom) {
+		if (!sprite_avail.Test(zoom)) continue;
+		first_avail = zoom;
+		if (zoom != ZOOM_LVL_MIN) {
+			if (!ResizeSpriteIn(sprite, zoom, ZOOM_LVL_MIN)) return false;
+			sprite_avail.Set(ZOOM_LVL_MIN);
+		}
+		break;
 	}
 
 	/* Pad sprites to make sizes match. */
@@ -398,7 +403,7 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
 		if (zoom == ZOOM_LVL_MIN) continue;
 
-		if (HasBit(sprite_avail, zoom)) {
+		if (sprite_avail.Test(zoom)) {
 			/* Check that size and offsets match the fully zoomed image. */
 			[[maybe_unused]] const auto &root_sprite = sprite[ZOOM_LVL_MIN];
 			[[maybe_unused]] const auto &dest_sprite = sprite[zoom];
@@ -406,10 +411,10 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, uint8_t sprite
 			assert(dest_sprite.height == UnScaleByZoom(root_sprite.height, zoom));
 			assert(dest_sprite.x_offs == UnScaleByZoom(root_sprite.x_offs, zoom));
 			assert(dest_sprite.y_offs == UnScaleByZoom(root_sprite.y_offs, zoom));
+		} else {
+			/* Zoom level is not available, or unusable, so create it */
+			ResizeSpriteOut(sprite, zoom);
 		}
-
-		/* Zoom level is not available, or unusable, so create it */
-		if (!HasBit(sprite_avail, zoom)) ResizeSpriteOut(sprite, zoom);
 	}
 
 	/* Upscale to desired sprite_min_zoom if provided sprite only had zoomed in versions. */
@@ -482,25 +487,25 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	Debug(sprite, 9, "Load sprite {}", id);
 
 	SpriteLoader::SpriteCollection sprite;
-	uint8_t sprite_avail = 0;
-	uint8_t avail_8bpp = 0;
-	uint8_t avail_32bpp = 0;
+	ZoomLevels sprite_avail;
+	ZoomLevels avail_8bpp;
+	ZoomLevels avail_32bpp;
 
 	SpriteLoaderGrf sprite_loader(file.GetContainerVersion());
 	if (sprite_type != SpriteType::MapGen && encoder->Is32BppSupported()) {
 		/* Try for 32bpp sprites first. */
 		sprite_avail = sprite_loader.LoadSprite(sprite, file, file_pos, sprite_type, true, sc->control_flags, avail_8bpp, avail_32bpp);
 	}
-	if (sprite_avail == 0) {
+	if (sprite_avail.None()) {
 		sprite_avail = sprite_loader.LoadSprite(sprite, file, file_pos, sprite_type, false, sc->control_flags, avail_8bpp, avail_32bpp);
-		if (sprite_type == SpriteType::Normal && avail_32bpp != 0 && !encoder->Is32BppSupported() && sprite_avail == 0) {
+		if (sprite_type == SpriteType::Normal && avail_32bpp.Any() && !encoder->Is32BppSupported() && sprite_avail.None()) {
 			/* No 8bpp available, try converting from 32bpp. */
 			SpriteLoaderMakeIndexed make_indexed(sprite_loader);
 			sprite_avail = make_indexed.LoadSprite(sprite, file, file_pos, sprite_type, true, sc->control_flags, sprite_avail, avail_32bpp);
 		}
 	}
 
-	if (sprite_avail == 0) {
+	if (sprite_avail.None()) {
 		if (sprite_type == SpriteType::MapGen) return nullptr;
 		if (id == SPR_IMG_QUERY) UserError("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
 		return (void*)GetRawSprite(SPR_IMG_QUERY, SpriteType::Normal, &allocator, encoder);
