@@ -6,7 +6,6 @@ struct SQLexer
 {
 	~SQLexer();
 	SQLexer(SQSharedState *ss,SQLEXREADFUNC rg,SQUserPointer up);
-	[[noreturn]] void Error(const SQChar *err);
 	SQInteger Lex();
 	const SQChar *Tok2Str(SQInteger tok);
 private:

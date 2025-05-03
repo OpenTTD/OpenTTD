@@ -110,11 +110,6 @@ SQFuncState::SQFuncState(SQSharedState *ss,SQFuncState *parent)
 
 }
 
-void SQFuncState::Error(const SQChar *err)
-{
-	throw CompileException(err);
-}
-
 #ifdef _DEBUG_DUMP
 void SQFuncState::Dump(SQFunctionProto *func)
 {
@@ -234,7 +229,7 @@ SQInteger SQFuncState::GetConstant(const SQObject &cons)
 		_nliterals++;
 		if(_nliterals > MAX_LITERALS) {
 			val.Null();
-			Error("internal compiler error: too many literals");
+			throw CompileException("internal compiler error: too many literals");
 		}
 	}
 	return _integer(val);
@@ -264,7 +259,7 @@ SQInteger SQFuncState::AllocStackPos()
 	SQInteger npos=_vlocals.size();
 	_vlocals.push_back(SQLocalVarInfo());
 	if(_vlocals.size()>((SQUnsignedInteger)_stacksize)) {
-		if(_stacksize>MAX_FUNC_STACKSIZE) Error("internal compiler error: too many locals");
+		if(_stacksize>MAX_FUNC_STACKSIZE) throw CompileException("internal compiler error: too many locals");
 		_stacksize=_vlocals.size();
 	}
 	return npos;

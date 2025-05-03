@@ -92,15 +92,10 @@ SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up)
 	Next();
 }
 
-[[noreturn]] void SQLexer::Error(const SQChar *err)
-{
-	throw CompileException(err);
-}
-
 void SQLexer::Next()
 {
 	char32_t t = _readf(_up);
-	if(t > MAX_CHAR) Error("Invalid character");
+	if(t > MAX_CHAR) throw CompileException("Invalid character");
 	if(t != 0) {
 		_currdata = t;
 		return;
@@ -127,7 +122,7 @@ void SQLexer::LexBlockComment()
 		switch(CUR_CHAR) {
 			case '*': { NEXT(); if(CUR_CHAR == '/') { done = true; NEXT(); }}; continue;
 			case '\n': _currentline++; NEXT(); continue;
-			case SQUIRREL_EOB: Error("missing \"*/\" in comment");
+			case SQUIRREL_EOB: throw CompileException("missing \"*/\" in comment");
 			default: NEXT();
 		}
 	}
@@ -196,11 +191,11 @@ SQInteger SQLexer::Lex()
 			SQInteger stype;
 			NEXT();
 			if(CUR_CHAR != '"')
-				Error("string expected");
+				throw CompileException("string expected");
 			if((stype=ReadString('"',true))!=-1) {
 				RETURN_TOKEN(stype);
 			}
-			Error("error parsing the string");
+			throw CompileException("error parsing the string");
 					   }
 		case '"':
 		case '\'': {
@@ -208,7 +203,7 @@ SQInteger SQLexer::Lex()
 			if((stype=ReadString(CUR_CHAR,false))!=-1){
 				RETURN_TOKEN(stype);
 			}
-			Error("error parsing the string");
+			throw CompileException("error parsing the string");
 			}
 		case '{': case '}': case '(': case ')': case '[': case ']':
 		case ';': case ',': case '?': case '^': case '~':
@@ -218,7 +213,7 @@ SQInteger SQLexer::Lex()
 			NEXT();
 			if (CUR_CHAR != '.'){ RETURN_TOKEN('.') }
 			NEXT();
-			if (CUR_CHAR != '.'){ Error("invalid token '..'"); }
+			if (CUR_CHAR != '.'){ throw CompileException("invalid token '..'"); }
 			NEXT();
 			RETURN_TOKEN(TK_VARPARAMS);
 		case '&':
@@ -264,7 +259,7 @@ SQInteger SQLexer::Lex()
 				}
 				else {
 					SQInteger c = CUR_CHAR;
-					if (iscntrl((int)c)) Error("unexpected character(control)");
+					if (iscntrl((int)c)) throw CompileException("unexpected character(control)");
 					NEXT();
 					RETURN_TOKEN(c);
 				}
@@ -294,10 +289,10 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 		while(CUR_CHAR != ndelim) {
 			switch(CUR_CHAR) {
 			case SQUIRREL_EOB:
-				Error("unfinished string");
+				throw CompileException("unfinished string");
 				return -1;
 			case '\n':
-				if(!verbatim) Error("newline in a constant");
+				if(!verbatim) throw CompileException("newline in a constant");
 				APPEND_CHAR(CUR_CHAR); NEXT();
 				_currentline++;
 				break;
@@ -309,7 +304,7 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 					NEXT();
 					switch(CUR_CHAR) {
 					case 'x': NEXT(); {
-						if(!isxdigit(CUR_CHAR)) Error("hexadecimal number expected");
+						if(!isxdigit(CUR_CHAR)) throw CompileException("hexadecimal number expected");
 						const SQInteger maxdigits = 4;
 						SQChar temp[maxdigits];
 						size_t n = 0;
@@ -319,7 +314,7 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 							NEXT();
 						}
 						auto val = ParseInteger(std::string_view{temp, n}, 16);
-						if (!val.has_value()) Error("hexadecimal number expected");
+						if (!val.has_value()) throw CompileException("hexadecimal number expected");
 						APPEND_CHAR(static_cast<SQChar>(*val));
 					}
 				    break;
@@ -335,7 +330,7 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 					case '"': APPEND_CHAR('"'); NEXT(); break;
 					case '\'': APPEND_CHAR('\''); NEXT(); break;
 					default:
-						Error("unrecognised escaper char");
+						throw CompileException("unrecognised escaper char");
 					break;
 					}
 				}
@@ -357,8 +352,8 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 	TERMINATE_BUFFER();
 	SQInteger len = _longstr.size()-1;
 	if(ndelim == '\'') {
-		if(len == 0) Error("empty constant");
-		if(len > 1) Error("constant too long");
+		if(len == 0) throw CompileException("empty constant");
+		if(len > 1) throw CompileException("constant too long");
 		_nvalue = _longstr[0];
 		return TK_INTEGER;
 	}
@@ -420,7 +415,7 @@ SQInteger SQLexer::ReadNumber()
 				APPEND_CHAR(CUR_CHAR);
 				NEXT();
 			}
-			if(isdigit(CUR_CHAR)) Error("invalid octal number");
+			if(isdigit(CUR_CHAR)) throw CompileException("invalid octal number");
 		}
 		else {
 			NEXT();
@@ -429,7 +424,7 @@ SQInteger SQLexer::ReadNumber()
 				APPEND_CHAR(CUR_CHAR);
 				NEXT();
 			}
-			if(_longstr.size() > MAX_HEX_DIGITS) Error("too many digits for an Hex number");
+			if(_longstr.size() > MAX_HEX_DIGITS) throw CompileException("too many digits for an Hex number");
 		}
 	}
 	else {
@@ -437,7 +432,7 @@ SQInteger SQLexer::ReadNumber()
 		while (CUR_CHAR == '.' || isdigit(CUR_CHAR) || isexponent(CUR_CHAR)) {
             if(CUR_CHAR == '.' || isexponent(CUR_CHAR)) type = TFLOAT;
 			if(isexponent(CUR_CHAR)) {
-				if(type != TFLOAT) Error("invalid numeric format");
+				if(type != TFLOAT) throw CompileException("invalid numeric format");
 				type = TSCIENTIFIC;
 				APPEND_CHAR(CUR_CHAR);
 				NEXT();
@@ -445,7 +440,7 @@ SQInteger SQLexer::ReadNumber()
 					APPEND_CHAR(CUR_CHAR);
 					NEXT();
 				}
-				if(!isdigit(CUR_CHAR)) Error("exponent expected");
+				if(!isdigit(CUR_CHAR)) throw CompileException("exponent expected");
 			}
 
 			APPEND_CHAR(CUR_CHAR);
