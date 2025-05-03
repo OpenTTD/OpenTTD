@@ -97,8 +97,6 @@ SQSharedState::SQSharedState()
 	_printfunc = nullptr;
 	_debuginfo = false;
 	_notifyallexceptions = false;
-	_scratchpad=nullptr;
-	_scratchpadsize=0;
 	_collectable_free_processing = false;
 #ifndef NO_GARBAGE_COLLECTOR
 	_gc_chain=nullptr;
@@ -212,7 +210,6 @@ SQSharedState::~SQSharedState()
 	sq_delete(_systemstrings,SQObjectPtrVec);
 	sq_delete(_metamethods,SQObjectPtrVec);
 	sq_delete(_stringtable,SQStringTable);
-	if(_scratchpad)SQ_FREE(_scratchpad,_scratchpadsize);
 }
 
 
@@ -357,19 +354,16 @@ void SQCollectable::RemoveFromChain(SQCollectable **chain,SQCollectable *c)
 }
 #endif
 
-SQChar* SQSharedState::GetScratchPad(SQInteger size)
+std::span<char> SQSharedState::GetScratchPad(SQInteger size)
 {
 	SQInteger newsize;
 	if(size>0) {
-		if(_scratchpadsize < size) {
+		if(_scratchpad.size() < static_cast<size_t>(size)) {
 			newsize = size + (size>>1);
-			_scratchpad = (SQChar *)SQ_REALLOC(_scratchpad,_scratchpadsize,newsize);
-			_scratchpadsize = newsize;
-
-		}else if(_scratchpadsize >= (size<<5)) {
-			newsize = _scratchpadsize >> 1;
-			_scratchpad = (SQChar *)SQ_REALLOC(_scratchpad,_scratchpadsize,newsize);
-			_scratchpadsize = newsize;
+			_scratchpad.resize(newsize);
+		}else if(_scratchpad.size() >= static_cast<size_t>(size<<5)) {
+			newsize = _scratchpad.size() >> 1;
+			_scratchpad.resize(newsize);
 		}
 	}
 	return _scratchpad;

@@ -59,7 +59,7 @@ struct SQSharedState
 	SQSharedState();
 	~SQSharedState();
 public:
-	SQChar* GetScratchPad(SQInteger size);
+	std::span<char> GetScratchPad(SQInteger size);
 	SQInteger GetMetaMethodIdxByName(const SQObjectPtr &name);
 	void DelayFinalFree(SQCollectable *collectable);
 #ifndef NO_GARBAGE_COLLECTOR
@@ -109,8 +109,7 @@ public:
 	bool _debuginfo;
 	bool _notifyallexceptions;
 private:
-	SQChar *_scratchpad;
-	SQInteger _scratchpadsize;
+	std::vector<char> _scratchpad;
 };
 
 #define _sp(s) (_sharedstate->GetScratchPad(s))

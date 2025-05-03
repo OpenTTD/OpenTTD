@@ -302,11 +302,7 @@ bool SQVM::StringCat(const SQObjectPtr &str,const SQObjectPtr &obj,SQObjectPtr &
 	SQObjectPtr a, b;
 	ToString(str, a);
 	ToString(obj, b);
-	SQInteger l = _string(a)->_len , ol = _string(b)->_len;
-	SQChar *s = _sp(l + ol + 1);
-	memcpy(s, _stringval(a), (size_t)l);
-	memcpy(s + l, _stringval(b), (size_t)ol);
-	dest = SQString::Create(_ss(this), _spval, l + ol);
+	dest = SQString::Create(_ss(this), fmt::format("{}{}", _stringval(a), _stringval(b)));
 	return true;
 }
 

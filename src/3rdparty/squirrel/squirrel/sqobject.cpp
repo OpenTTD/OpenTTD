@@ -298,8 +298,8 @@ bool ReadObject(HSQUIRRELVM v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &o)
 	case OT_STRING:{
 		SQInteger len;
 		_CHECK_IO(SafeRead(v,read,up,&len,sizeof(SQInteger)));
-		_CHECK_IO(SafeRead(v,read,up,_ss(v)->GetScratchPad(len),len));
-		o=SQString::Create(_ss(v),_ss(v)->GetScratchPad(-1),len);
+		_CHECK_IO(SafeRead(v,read,up,_ss(v)->GetScratchPad(len).data(),len));
+		o=SQString::Create(_ss(v),std::string_view(_ss(v)->GetScratchPad(-1).data(),len));
 				   }
 		break;
 	case OT_INTEGER:{
