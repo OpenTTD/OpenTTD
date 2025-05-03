@@ -7,9 +7,9 @@ struct SQLexer
 	~SQLexer();
 	SQLexer(SQSharedState *ss,SQLEXREADFUNC rg,SQUserPointer up);
 	SQInteger Lex();
-	const SQChar *Tok2Str(SQInteger tok);
+	std::optional<std::string_view> Tok2Str(SQInteger tok);
 private:
-	SQInteger GetIDType(SQChar *s);
+	SQInteger GetIDType(std::string_view s);
 	SQInteger ReadString(char32_t ndelim,bool verbatim);
 	SQInteger ReadNumber();
 	void LexBlockComment();
@@ -19,14 +19,12 @@ private:
 	SQTable *_keywords;
 	void INIT_TEMP_STRING() { _longstr.resize(0); }
 	void APPEND_CHAR(char32_t c);
-	void TERMINATE_BUFFER() { _longstr.push_back('\0'); }
 
 public:
 	SQInteger _prevtoken;
 	SQInteger _currentline;
 	SQInteger _lasttokenline;
 	SQInteger _currentcolumn;
-	const SQChar *_svalue;
 	SQInteger _nvalue;
 	SQFloat _fvalue;
 	SQLEXREADFUNC _readf;
@@ -34,6 +32,8 @@ public:
 	char32_t _currdata;
 	SQSharedState *_sharedstate;
 	sqvector<SQChar> _longstr;
+
+	std::string_view View() const { return std::string_view(_longstr._vals, _longstr.size()); }
 };
 
 #endif
