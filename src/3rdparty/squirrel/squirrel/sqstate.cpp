@@ -553,8 +553,7 @@ SQString *SQStringTable::Add(std::string_view new_string)
 	auto slot = string_table_hash(new_string) & (_numofslots-1);
 	SQString *s;
 	for (s = _strings[slot]; s; s = s->_next){
-		if(static_cast<size_t>(s->_len) == len && (!memcmp(new_string.data(),s->_val,len)))
-			return s; //found
+		if(s->View() == new_string) return s; //found
 	}
 
 	SQString *t=(SQString *)SQ_MALLOC(len+sizeof(SQString));
@@ -608,7 +607,7 @@ void SQStringTable::Remove(SQString *bs)
 			else
 				_strings[h] = s->_next;
 			_slotused--;
-			SQInteger slen = s->_len;
+			size_t slen = s->View().size();
 			s->~SQString();
 			SQ_FREE(s,sizeof(SQString) + slen);
 			return;
