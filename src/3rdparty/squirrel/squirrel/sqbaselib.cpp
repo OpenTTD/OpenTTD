@@ -21,7 +21,7 @@
 bool str2num(std::string_view s,SQObjectPtr &res)
 {
 	if(s.find('.') != std::string_view::npos){
-		SQChar *end;
+		char *end;
 		std::string str{s};
 		SQFloat r = SQFloat(strtod(str.c_str(),&end));
 		if(str.c_str() == end) return false;
@@ -281,7 +281,7 @@ void sq_base_register(HSQUIRRELVM v)
 	sq_pushstring(v,SQUIRREL_VERSION);
 	sq_createslot(v,-3);
 	sq_pushstring(v,"_charsize_");
-	sq_pushinteger(v,sizeof(SQChar));
+	sq_pushinteger(v,sizeof(char));
 	sq_createslot(v,-3);
 	sq_pushstring(v,"_intsize_");
 	sq_pushinteger(v,sizeof(SQInteger));
@@ -369,7 +369,7 @@ static SQInteger obj_clear(HSQUIRRELVM v)
 static SQInteger number_delegate_tochar(HSQUIRRELVM v)
 {
 	SQObject &o=stack_get(v,1);
-	SQChar c = (SQChar)tointeger(o);
+	char c = static_cast<char>(tointeger(o));
 	v->Push(SQString::Create(_ss(v),std::string_view(&c, 1)));
 	return 1;
 }

@@ -357,7 +357,7 @@ struct SQObjectPtr : public SQObject
 		return *this;
 	}
 	private:
-		SQObjectPtr(const SQChar *){} //safety
+		SQObjectPtr(const char *) = delete; //safety
 };
 
 inline void _Swap(SQObject &a,SQObject &b)
@@ -449,8 +449,8 @@ struct SQDelegable : public CHAINABLE_OBJ {
 SQUnsignedInteger TranslateIndex(const SQObjectPtr &idx);
 typedef sqvector<SQObjectPtr> SQObjectPtrVec;
 typedef sqvector<SQInteger> SQIntVec;
-const SQChar *GetTypeName(const SQObjectPtr &obj1);
-const SQChar *IdType2Name(SQObjectType type);
+std::string_view GetTypeName(const SQObjectPtr &obj1);
+std::string_view IdType2Name(SQObjectType type);
 
 
 

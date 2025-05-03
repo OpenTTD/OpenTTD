@@ -305,7 +305,7 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 					case 'x': NEXT(); {
 						if(!isxdigit(CUR_CHAR)) throw CompileException("hexadecimal number expected");
 						const SQInteger maxdigits = 4;
-						SQChar temp[maxdigits];
+						char temp[maxdigits];
 						size_t n = 0;
 						while(isxdigit(CUR_CHAR) && n < maxdigits) {
 							temp[n] = CUR_CHAR;
@@ -314,7 +314,7 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 						}
 						auto val = ParseInteger(std::string_view{temp, n}, 16);
 						if (!val.has_value()) throw CompileException("hexadecimal number expected");
-						APPEND_CHAR(static_cast<SQChar>(*val));
+						APPEND_CHAR(static_cast<char>(*val));
 					}
 				    break;
 					case 't': APPEND_CHAR('\t'); NEXT(); break;
@@ -357,7 +357,7 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 	return TK_STRING_LITERAL;
 }
 
-SQInteger scisodigit(SQChar c) { return c >= '0' && c <= '7'; }
+SQInteger scisodigit(char c) { return c >= '0' && c <= '7'; }
 
 SQInteger isexponent(SQInteger c) { return c == 'e' || c=='E'; }
 
@@ -371,7 +371,6 @@ SQInteger SQLexer::ReadNumber()
 #define TSCIENTIFIC 4
 #define TOCTAL 5
 	SQInteger type = TINT, firstchar = CUR_CHAR;
-	SQChar *sTemp;
 	INIT_TEMP_STRING();
 	NEXT();
 	if(firstchar == '0' && (toupper(CUR_CHAR) == 'X' || scisodigit(CUR_CHAR)) ) {
@@ -417,6 +416,7 @@ SQInteger SQLexer::ReadNumber()
 	case TSCIENTIFIC:
 	case TFLOAT: {
 		std::string str{View()};
+		char *sTemp;
 		_fvalue = (SQFloat)strtod(str.c_str(),&sTemp);
 		return TK_FLOAT;
 	}

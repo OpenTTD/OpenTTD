@@ -18,7 +18,7 @@
 #include "../../../safeguards.h"
 
 
-const SQChar *IdType2Name(SQObjectType type)
+std::string_view IdType2Name(SQObjectType type)
 {
 	switch(_RAW_TYPE(type))
 	{
@@ -42,11 +42,11 @@ const SQChar *IdType2Name(SQObjectType type)
 	case _RT_INSTANCE: return "instance";
 	case _RT_WEAKREF: return "weakref";
 	default:
-		return nullptr;
+		NOT_REACHED();
 	}
 }
 
-const SQChar *GetTypeName(const SQObjectPtr &obj1)
+std::string_view GetTypeName(const SQObjectPtr &obj1)
 {
 	return IdType2Name(type(obj1));
 }
@@ -323,7 +323,7 @@ bool ReadObject(HSQUIRRELVM v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &o)
 bool SQClosure::Save(SQVM *v,SQUserPointer up,SQWRITEFUNC write)
 {
 	_CHECK_IO(WriteTag(v,write,up,SQ_CLOSURESTREAM_HEAD));
-	_CHECK_IO(WriteTag(v,write,up,sizeof(SQChar)));
+	_CHECK_IO(WriteTag(v,write,up,sizeof(char)));
 	_CHECK_IO(_funcproto(_function)->Save(v,up,write));
 	_CHECK_IO(WriteTag(v,write,up,SQ_CLOSURESTREAM_TAIL));
 	return true;
@@ -332,7 +332,7 @@ bool SQClosure::Save(SQVM *v,SQUserPointer up,SQWRITEFUNC write)
 bool SQClosure::Load(SQVM *v,SQUserPointer up,SQREADFUNC read,SQObjectPtr &ret)
 {
 	_CHECK_IO(CheckTag(v,read,up,SQ_CLOSURESTREAM_HEAD));
-	_CHECK_IO(CheckTag(v,read,up,sizeof(SQChar)));
+	_CHECK_IO(CheckTag(v,read,up,sizeof(char)));
 	SQObjectPtr func;
 	_CHECK_IO(SQFunctionProto::Load(v,up,read,func));
 	_CHECK_IO(CheckTag(v,read,up,SQ_CLOSURESTREAM_TAIL));

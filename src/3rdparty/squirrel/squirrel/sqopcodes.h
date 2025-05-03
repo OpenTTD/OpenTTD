@@ -87,7 +87,7 @@ enum SQOpcode
 };
 
 struct SQInstructionDesc {
-	const SQChar *name;
+	std::string_view name;
 };
 
 struct SQInstruction
