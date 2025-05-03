@@ -251,23 +251,31 @@ static void TownHouseMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		houses.push_back(buf.ReadExtendedByte());
 	}
 
-	/* Skip the cargo type section, we only care about the default group */
-	uint8_t cidcount = buf.ReadByte();
-	buf.Skip(cidcount * 3);
+	auto set_sprite_group = [&houses](StandardSpriteGroup key, uint16_t groupid) {
+		if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
-	uint16_t groupid = buf.ReadWord();
-	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
+		for (auto &house : houses) {
+			HouseSpec *hs = house >= _cur_gps.grffile->housespec.size() ? nullptr : _cur_gps.grffile->housespec[house].get();
+			if (hs == nullptr) {
+				GrfMsg(1, "TownHouseMapSpriteGroup: House {} undefined, skipping.", house);
+				continue;
+			}
 
-	for (auto &house : houses) {
-		HouseSpec *hs = house >= _cur_gps.grffile->housespec.size() ? nullptr : _cur_gps.grffile->housespec[house].get();
-
-		if (hs == nullptr) {
-			GrfMsg(1, "TownHouseMapSpriteGroup: House {} undefined, skipping.", house);
-			continue;
+			hs->grf_prop.SetSpriteGroup(key, _cur_gps.spritegroups[groupid]);
 		}
+	};
 
-		hs->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
+	uint8_t cidcount = buf.ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8_t ctype = buf.ReadByte();
+		uint16_t groupid = buf.ReadWord();
+		if (ctype == 0xFF) {
+			set_sprite_group(StandardSpriteGroup::Purchase, groupid);
+		} else {
+			GrfMsg(1, "TownHouseMapSpriteGroup: Invalid cargo bitnum {} for houses, skipping.", ctype);
+		}
 	}
+	set_sprite_group(StandardSpriteGroup::Default, buf.ReadWord());
 }
 
 static void IndustryMapSpriteGroup(ByteReader &buf, uint8_t idcount)
@@ -283,23 +291,31 @@ static void IndustryMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		industries.push_back(buf.ReadExtendedByte());
 	}
 
-	/* Skip the cargo type section, we only care about the default group */
-	uint8_t cidcount = buf.ReadByte();
-	buf.Skip(cidcount * 3);
+	auto set_sprite_group = [&industries](StandardSpriteGroup key, uint16_t groupid) {
+		if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
-	uint16_t groupid = buf.ReadWord();
-	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
+		for (auto &industry : industries) {
+			IndustrySpec *indsp = industry >= _cur_gps.grffile->industryspec.size() ? nullptr : _cur_gps.grffile->industryspec[industry].get();
+			if (indsp == nullptr) {
+				GrfMsg(1, "IndustryMapSpriteGroup: Industry {} undefined, skipping", industry);
+				continue;
+			}
 
-	for (auto &industry : industries) {
-		IndustrySpec *indsp = industry >= _cur_gps.grffile->industryspec.size() ? nullptr : _cur_gps.grffile->industryspec[industry].get();
-
-		if (indsp == nullptr) {
-			GrfMsg(1, "IndustryMapSpriteGroup: Industry {} undefined, skipping", industry);
-			continue;
+			indsp->grf_prop.SetSpriteGroup(key, _cur_gps.spritegroups[groupid]);
 		}
+	};
 
-		indsp->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
+	uint8_t cidcount = buf.ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8_t ctype = buf.ReadByte();
+		uint16_t groupid = buf.ReadWord();
+		if (ctype == 0xFF) {
+			set_sprite_group(StandardSpriteGroup::Purchase, groupid);
+		} else {
+			GrfMsg(1, "IndustryMapSpriteGroup: Invalid cargo bitnum {} for industries, skipping.", ctype);
+		}
 	}
+	set_sprite_group(StandardSpriteGroup::Default, buf.ReadWord());
 }
 
 static void IndustrytileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
@@ -315,23 +331,31 @@ static void IndustrytileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		indtiles.push_back(buf.ReadExtendedByte());
 	}
 
-	/* Skip the cargo type section, we only care about the default group */
-	uint8_t cidcount = buf.ReadByte();
-	buf.Skip(cidcount * 3);
+	auto set_sprite_group = [&indtiles](StandardSpriteGroup key, uint16_t groupid) {
+		if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
 
-	uint16_t groupid = buf.ReadWord();
-	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
+		for (auto &indtile : indtiles) {
+			IndustryTileSpec *indtsp = indtile >= _cur_gps.grffile->indtspec.size() ? nullptr : _cur_gps.grffile->indtspec[indtile].get();
+			if (indtsp == nullptr) {
+				GrfMsg(1, "IndustrytileMapSpriteGroup: Industry tile {} undefined, skipping", indtile);
+				continue;
+			}
 
-	for (auto &indtile : indtiles) {
-		IndustryTileSpec *indtsp = indtile >= _cur_gps.grffile->indtspec.size() ? nullptr : _cur_gps.grffile->indtspec[indtile].get();
-
-		if (indtsp == nullptr) {
-			GrfMsg(1, "IndustrytileMapSpriteGroup: Industry tile {} undefined, skipping", indtile);
-			continue;
+			indtsp->grf_prop.SetSpriteGroup(key, _cur_gps.spritegroups[groupid]);
 		}
+	};
 
-		indtsp->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
+	uint8_t cidcount = buf.ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8_t ctype = buf.ReadByte();
+		uint16_t groupid = buf.ReadWord();
+		if (ctype == 0xFF) {
+			set_sprite_group(StandardSpriteGroup::Purchase, groupid);
+		} else {
+			GrfMsg(1, "IndustrytileMapSpriteGroup: Invalid cargo bitnum {} for industry tiles, skipping.", ctype);
+		}
 	}
+	set_sprite_group(StandardSpriteGroup::Default, buf.ReadWord());
 }
 
 static void CargoMapSpriteGroup(ByteReader &buf, uint8_t idcount)
@@ -499,23 +523,31 @@ static void AirportMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		airports.push_back(buf.ReadExtendedByte());
 	}
 
-	/* Skip the cargo type section, we only care about the default group */
-	uint8_t cidcount = buf.ReadByte();
-	buf.Skip(cidcount * 3);
+	auto set_sprite_group = [&airports](StandardSpriteGroup key, uint16_t groupid) {
+		if (!IsValidGroupID(groupid, "AirportMapSpriteGroup")) return;
 
-	uint16_t groupid = buf.ReadWord();
-	if (!IsValidGroupID(groupid, "AirportMapSpriteGroup")) return;
+		for (auto &airport : airports) {
+			AirportSpec *as = airport >= _cur_gps.grffile->airportspec.size() ? nullptr : _cur_gps.grffile->airportspec[airport].get();
+			if (as == nullptr) {
+				GrfMsg(1, "AirportMapSpriteGroup: Airport {} undefined, skipping", airport);
+				continue;
+			}
 
-	for (auto &airport : airports) {
-		AirportSpec *as = airport >= _cur_gps.grffile->airportspec.size() ? nullptr : _cur_gps.grffile->airportspec[airport].get();
-
-		if (as == nullptr) {
-			GrfMsg(1, "AirportMapSpriteGroup: Airport {} undefined, skipping", airport);
-			continue;
+			as->grf_prop.SetSpriteGroup(key, _cur_gps.spritegroups[groupid]);
 		}
+	};
 
-		as->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
+	uint8_t cidcount = buf.ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8_t ctype = buf.ReadByte();
+		uint16_t groupid = buf.ReadWord();
+		if (ctype == 0xFF) {
+			set_sprite_group(StandardSpriteGroup::Purchase, groupid);
+		} else {
+			GrfMsg(1, "AirportMapSpriteGroup: Invalid cargo bitnum {} for airports, skipping.", ctype);
+		}
 	}
+	set_sprite_group(StandardSpriteGroup::Default, buf.ReadWord());
 }
 
 static void AirportTileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
@@ -531,23 +563,31 @@ static void AirportTileMapSpriteGroup(ByteReader &buf, uint8_t idcount)
 		airptiles.push_back(buf.ReadExtendedByte());
 	}
 
-	/* Skip the cargo type section, we only care about the default group */
-	uint8_t cidcount = buf.ReadByte();
-	buf.Skip(cidcount * 3);
+	auto set_sprite_group = [&airptiles](StandardSpriteGroup key, uint16_t groupid) {
+		if (!IsValidGroupID(groupid, "AirportTileMapSpriteGroup")) return;
 
-	uint16_t groupid = buf.ReadWord();
-	if (!IsValidGroupID(groupid, "AirportTileMapSpriteGroup")) return;
+		for (auto &airptile : airptiles) {
+			AirportTileSpec *airtsp = airptile >= _cur_gps.grffile->airtspec.size() ? nullptr : _cur_gps.grffile->airtspec[airptile].get();
+			if (airtsp == nullptr) {
+				GrfMsg(1, "AirportTileMapSpriteGroup: Airport tile {} undefined, skipping", airptile);
+				continue;
+			}
 
-	for (auto &airptile : airptiles) {
-		AirportTileSpec *airtsp = airptile >= _cur_gps.grffile->airtspec.size() ? nullptr : _cur_gps.grffile->airtspec[airptile].get();
-
-		if (airtsp == nullptr) {
-			GrfMsg(1, "AirportTileMapSpriteGroup: Airport tile {} undefined, skipping", airptile);
-			continue;
+			airtsp->grf_prop.SetSpriteGroup(key, _cur_gps.spritegroups[groupid]);
 		}
+	};
 
-		airtsp->grf_prop.SetSpriteGroup(_cur_gps.spritegroups[groupid]);
+	uint8_t cidcount = buf.ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8_t ctype = buf.ReadByte();
+		uint16_t groupid = buf.ReadWord();
+		if (ctype == 0xFF) {
+			set_sprite_group(StandardSpriteGroup::Purchase, groupid);
+		} else {
+			GrfMsg(1, "AirportTileMapSpriteGroup: Invalid cargo bitnum {} for airport tiles, skipping.", ctype);
+		}
 	}
+	set_sprite_group(StandardSpriteGroup::Default, buf.ReadWord());
 }
 
 static void RoadStopMapSpriteGroup(ByteReader &buf, uint8_t idcount)

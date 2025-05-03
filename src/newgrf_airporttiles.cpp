@@ -222,7 +222,7 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 		tiles_scope(*this, ats, tile, st),
 		airport_scope(*this, tile, st, st != nullptr ? AirportSpec::Get(st->airport.type) : nullptr, st != nullptr ? st->airport.layout : 0)
 {
-	this->root_spritegroup = ats->grf_prop.GetSpriteGroup();
+	this->root_spritegroup = ats->grf_prop.GetSpriteGroup(st != nullptr);
 }
 
 GrfSpecFeature AirportTileResolverObject::GetFeature() const
