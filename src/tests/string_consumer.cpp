@@ -268,9 +268,11 @@ TEST_CASE("StringConsumer - ascii")
 
 TEST_CASE("StringConsumer - parse int")
 {
-	StringConsumer consumer("1 a -a -2 -2 ffffFFFF ffffFFFF -1aaaAAAA -1aaaAAAA +3 1234567890123 1234567890123 1234567890123 ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE -0x1aaaAAAAaaaaAAAA -1234567890123 "sv);
+	StringConsumer consumer("1 a -a -2 -8 ffffFFFF ffffFFFF -1aaaAAAA -1aaaAAAA +3 1234567890123 1234567890123 1234567890123 ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE ffffFFFFffffFFFE -0x1aaaAAAAaaaaAAAA -1234567890123 "sv);
 	CHECK(consumer.PeekIntegerBase<uint32_t>(0) == std::pair<StringConsumer::size_type, uint32_t>(1, 1));
 	CHECK(consumer.PeekIntegerBase<int32_t>(0) == std::pair<StringConsumer::size_type, int32_t>(1, 1));
+	CHECK(consumer.PeekIntegerBase<uint32_t>(8) == std::pair<StringConsumer::size_type, uint32_t>(1, 1));
+	CHECK(consumer.PeekIntegerBase<int32_t>(8) == std::pair<StringConsumer::size_type, int32_t>(1, 1));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(1, 1));
 	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(1, 1));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(16) == std::pair<StringConsumer::size_type, uint32_t>(1, 1));
@@ -279,6 +281,8 @@ TEST_CASE("StringConsumer - parse int")
 	CHECK(consumer.ReadUtf8() == ' ');
 	CHECK(consumer.PeekIntegerBase<uint32_t>(0) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<int32_t>(0) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<uint32_t>(8) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(8) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(16) == std::pair<StringConsumer::size_type, uint32_t>(1, 0xa));
@@ -287,6 +291,8 @@ TEST_CASE("StringConsumer - parse int")
 	CHECK(consumer.ReadUtf8() == ' ');
 	CHECK(consumer.PeekIntegerBase<uint32_t>(0) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<int32_t>(0) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<uint32_t>(8) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(8) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(16) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
@@ -295,6 +301,8 @@ TEST_CASE("StringConsumer - parse int")
 	CHECK(consumer.ReadUtf8() == ' ');
 	CHECK(consumer.PeekIntegerBase<uint32_t>(0) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<int32_t>(0) == std::pair<StringConsumer::size_type, int32_t>(2, -2));
+	CHECK(consumer.PeekIntegerBase<uint32_t>(8) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(8) == std::pair<StringConsumer::size_type, int32_t>(2, -2));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(2, -2));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(16) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
@@ -302,10 +310,14 @@ TEST_CASE("StringConsumer - parse int")
 	CHECK(consumer.TryReadIntegerBase<uint32_t>(10) == std::nullopt);
 	CHECK(consumer.ReadIntegerBase<uint32_t>(10) == 0);
 	CHECK(consumer.ReadUtf8() == ' ');
+	CHECK(consumer.PeekIntegerBase<uint32_t>(8) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(8) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
+	CHECK(consumer.TryReadIntegerBase<uint32_t>(8) == std::nullopt);
+	CHECK(consumer.TryReadIntegerBase<int32_t>(8) == std::nullopt);
 	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
-	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(2, -2));
+	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(2, -8));
 	CHECK(consumer.TryReadIntegerBase<uint32_t>(10) == std::nullopt);
-	CHECK(consumer.ReadIntegerBase<int32_t>(10) == -2);
+	CHECK(consumer.ReadIntegerBase<int32_t>(10) == -8);
 	CHECK(consumer.ReadUtf8() == ' ');
 	CHECK(consumer.PeekIntegerBase<uint32_t>(16) == std::pair<StringConsumer::size_type, uint32_t>(8, 0xffffffff));
 	CHECK(consumer.PeekIntegerBase<int32_t>(16) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
@@ -324,6 +336,8 @@ TEST_CASE("StringConsumer - parse int")
 	CHECK(consumer.TryReadIntegerBase<uint32_t>(16) == std::nullopt);
 	CHECK(consumer.ReadIntegerBase<int32_t>(16) == -0x1aaaaaaa);
 	CHECK(consumer.ReadUtf8() == ' ');
+	CHECK(consumer.PeekIntegerBase<uint32_t>(8) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
+	CHECK(consumer.PeekIntegerBase<int32_t>(8) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<uint32_t>(10) == std::pair<StringConsumer::size_type, uint32_t>(0, 0));
 	CHECK(consumer.PeekIntegerBase<int32_t>(10) == std::pair<StringConsumer::size_type, int32_t>(0, 0));
 	consumer.SkipIntegerBase(10);
