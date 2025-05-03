@@ -304,8 +304,8 @@ SQRESULT sq_clear(HSQUIRRELVM v,SQInteger idx);
 /*calls*/
 SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror, int suspend = -1);
 SQRESULT sq_resume(HSQUIRRELVM v,SQBool retval,SQBool raiseerror);
-const SQChar *sq_getlocal(HSQUIRRELVM v,SQUnsignedInteger level,SQUnsignedInteger idx);
-const SQChar *sq_getfreevariable(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger nval);
+std::optional<std::string_view> sq_getlocal(HSQUIRRELVM v,SQUnsignedInteger level,SQUnsignedInteger idx);
+std::optional<std::string_view> sq_getfreevariable(HSQUIRRELVM v,SQInteger idx,SQUnsignedInteger nval);
 SQRESULT sq_throwerror(HSQUIRRELVM v,std::string_view err);
 void sq_reseterror(HSQUIRRELVM v);
 void sq_getlasterror(HSQUIRRELVM v);
@@ -316,7 +316,7 @@ void sq_pushobject(HSQUIRRELVM v,HSQOBJECT obj);
 void sq_addref(HSQUIRRELVM v,HSQOBJECT *po);
 SQBool sq_release(HSQUIRRELVM v,HSQOBJECT *po);
 void sq_resetobject(HSQOBJECT *po);
-const SQChar *sq_objtostring(HSQOBJECT *o);
+std::optional<std::string_view> sq_objtostring(HSQOBJECT *o);
 SQBool sq_objtobool(HSQOBJECT *o);
 SQInteger sq_objtointeger(HSQOBJECT *o);
 SQFloat sq_objtofloat(HSQOBJECT *o);
@@ -361,7 +361,7 @@ void sq_setdebughook(HSQUIRRELVM v);
 
 /* Limit the total number of ops that can be consumed by an operation */
 struct SQOpsLimiter {
-	SQOpsLimiter(HSQUIRRELVM v, SQInteger ops, const char *label);
+	SQOpsLimiter(HSQUIRRELVM v, SQInteger ops, std::string_view label);
 	~SQOpsLimiter();
 private:
 	HSQUIRRELVM _v;

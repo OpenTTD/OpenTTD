@@ -117,7 +117,6 @@ SQVM::SQVM(SQSharedState *ss)
 	_in_stackoverflow = false;
 	_ops_till_suspend = 0;
 	_ops_till_suspend_error_threshold = INT64_MIN;
-	_ops_till_suspend_error_label = nullptr;
 	_callsstack = nullptr;
 	_callsstacksize = 0;
 	_alloccallsstacksize = 0;
