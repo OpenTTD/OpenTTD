@@ -73,7 +73,7 @@ public:
 	};
 	struct SpriteData {
 		SpriteFlags flags{};
-		std::array<SpriteInfo, ZOOM_LVL_END> infos{};
+		SpriteCollMap<SpriteInfo> infos{};
 		uint8_t data[]; ///< Data, all zoomlevels.
 	};
 
