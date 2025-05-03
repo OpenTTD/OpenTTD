@@ -4777,8 +4777,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (por {STRING}, sem programação) no máximo a {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(permanecer por {STRING}, sem horário)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar durante {STRING}, sem horário)
-STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaja para {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}e ficar por {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}e viajar durante {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Este horário levará aproximadamente {STRING} para concluir
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário vai levar {STRING} a concluir
@@ -5889,6 +5889,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}G
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}T
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}

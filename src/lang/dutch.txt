@@ -972,6 +972,7 @@ STR_GAME_OPTIONS_VOLUME                                         :Volume
 STR_GAME_OPTIONS_SFX_VOLUME                                     :Geluidseffecten
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :Muziek
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
 STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
@@ -4441,10 +4442,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Orders v
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Orders van vliegtuig weergeven. Ctrl+klik geeft de dienstregeling van het vliegtuig.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Details van trein weergeven
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Details van wegvoertuig weergeven
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Details van schip weergeven
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Details van vliegtuig weergeven
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Details van trein weergeven. Ctrl+klik om de voertuiggroep weer te geven
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Details van voertuig weergeven. Ctrl+klik om de voertuiggroep weer te geven
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Details van schip weergeven. Ctrl+klik om de voertuiggroep weer te geven
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Details van vliegtuig weergeven. Ctrl+klik om de voertuiggroep weer te geven
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Huidige treinactie - klik om de trein te starten of stoppen
@@ -4775,8 +4776,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reis (gedurende
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reis (gedurende {STRING}, geen dienstregeling) maximaal {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(wacht {STRING} lang, geen dienstregeling)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(reis gedurende {STRING}, geen dienstregeling)
-STR_TIMETABLE_STAY_FOR                                          :en blijf gedurende {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}en blijf gedurende {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}en rijd {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Deze dienstregeling heeft ongeveer {STRING} nodig om te voltooien.
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Deze dienstregeling duurt {STRING}
@@ -5887,6 +5888,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mjd
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}

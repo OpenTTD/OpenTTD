@@ -5888,6 +5888,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mrd.
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bilj.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
