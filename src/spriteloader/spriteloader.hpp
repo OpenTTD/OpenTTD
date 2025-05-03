@@ -71,14 +71,16 @@ public:
 	/**
 	 * Load a sprite from the disk and return a sprite struct which is the same for all loaders.
 	 * @param[out] sprite The sprites to fill with data.
-	 * @param file_slot   The file "descriptor" of the file we read from.
+	 * @param file The file "descriptor" of the file we read from.
 	 * @param file_pos    The position within the file the image begins.
 	 * @param sprite_type The type of sprite we're trying to load.
 	 * @param load_32bpp  True if 32bpp sprites should be loaded, false for a 8bpp sprite.
 	 * @param control_flags Control flags, see SpriteCacheCtrlFlags.
-	 * @return Bit mask of the zoom levels successfully loaded or 0 if no sprite could be loaded.
+	 * @param[out] avail_8bpp Available 8bpp sprites.
+	 * @param[out] avail_32bpp Available 32bpp sprites.
+	 * @return Available sprites matching \a load_32bpp.
 	 */
-	virtual uint8_t LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, uint8_t &avail_8bpp, uint8_t &avail_32bpp) = 0;
+	virtual ZoomLevels LoadSprite(SpriteLoader::SpriteCollection &sprite, SpriteFile &file, size_t file_pos, SpriteType sprite_type, bool load_32bpp, uint8_t control_flags, ZoomLevels &avail_8bpp, ZoomLevels &avail_32bpp) = 0;
 
 	virtual ~SpriteLoader() = default;
 };

@@ -43,6 +43,7 @@ enum ZoomLevel : uint8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ZoomLevel)
 DECLARE_ENUM_AS_ADDABLE(ZoomLevel)
+using ZoomLevels = EnumBitSet<ZoomLevel, uint8_t>;
 
 static uint const ZOOM_BASE_SHIFT = static_cast<uint>(ZOOM_LVL_NORMAL);
 static uint const ZOOM_BASE = 1U << ZOOM_BASE_SHIFT;
