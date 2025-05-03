@@ -85,7 +85,6 @@ SQLexer::SQLexer(SQSharedState *ss, SQLEXREADFUNC rg, SQUserPointer up)
 	_prevtoken = -1;
 	_curtoken = -1;
 
-	_svalue = nullptr;
 	_nvalue = 0;
 	_fvalue = 0;
 
@@ -103,7 +102,7 @@ void SQLexer::Next()
 	_currdata = SQUIRREL_EOB;
 }
 
-const SQChar *SQLexer::Tok2Str(SQInteger tok)
+std::optional<std::string_view> SQLexer::Tok2Str(SQInteger tok)
 {
 	SQObjectPtr itr, key, val;
 	SQInteger nitr;
@@ -112,7 +111,7 @@ const SQChar *SQLexer::Tok2Str(SQInteger tok)
 		if(((SQInteger)_integer(val)) == tok)
 			return _stringval(key);
 	}
-	return nullptr;
+	return std::nullopt;
 }
 
 void SQLexer::LexBlockComment()
@@ -270,7 +269,7 @@ SQInteger SQLexer::Lex()
 	return 0;
 }
 
-SQInteger SQLexer::GetIDType(SQChar *s)
+SQInteger SQLexer::GetIDType(std::string_view s)
 {
 	SQObjectPtr t;
 	if(_keywords->Get(SQString::Create(_sharedstate, s), t)) {
@@ -349,49 +348,16 @@ SQInteger SQLexer::ReadString(char32_t ndelim,bool verbatim)
 			break;
 		}
 	}
-	TERMINATE_BUFFER();
-	SQInteger len = _longstr.size()-1;
 	if(ndelim == '\'') {
-		if(len == 0) throw CompileException("empty constant");
-		if(len > 1) throw CompileException("constant too long");
+		if(_longstr.empty()) throw CompileException("empty constant");
+		if(_longstr.size() > 1) throw CompileException("constant too long");
 		_nvalue = _longstr[0];
 		return TK_INTEGER;
 	}
-	_svalue = &_longstr[0];
 	return TK_STRING_LITERAL;
 }
 
-void LexHexadecimal(const SQChar *s,SQUnsignedInteger *res)
-{
-	*res = 0;
-	while(*s != 0)
-	{
-		if(isdigit(*s)) *res = (*res)*16+((*s++)-'0');
-		else if(isxdigit(*s)) *res = (*res)*16+(toupper(*s++)-'A'+10);
-		else { assert(0); }
-	}
-}
-
-void LexInteger(const SQChar *s,SQUnsignedInteger *res)
-{
-	*res = 0;
-	while(*s != 0)
-	{
-		*res = (*res)*10+((*s++)-'0');
-	}
-}
-
 SQInteger scisodigit(SQChar c) { return c >= '0' && c <= '7'; }
-
-void LexOctal(const SQChar *s,SQUnsignedInteger *res)
-{
-	*res = 0;
-	while(*s != 0)
-	{
-		if(scisodigit(*s)) *res = (*res)*8+((*s++)-'0');
-		else { assert(0); }
-	}
-}
 
 SQInteger isexponent(SQInteger c) { return c == 'e' || c=='E'; }
 
@@ -447,20 +413,21 @@ SQInteger SQLexer::ReadNumber()
 			NEXT();
 		}
 	}
-	TERMINATE_BUFFER();
 	switch(type) {
 	case TSCIENTIFIC:
-	case TFLOAT:
-		_fvalue = (SQFloat)strtod(&_longstr[0],&sTemp);
+	case TFLOAT: {
+		std::string str{View()};
+		_fvalue = (SQFloat)strtod(str.c_str(),&sTemp);
 		return TK_FLOAT;
+	}
 	case TINT:
-		LexInteger(&_longstr[0],(SQUnsignedInteger *)&_nvalue);
+		_nvalue = ParseInteger<SQUnsignedInteger>(View(), 10).value_or(0);
 		return TK_INTEGER;
 	case THEX:
-		LexHexadecimal(&_longstr[0],(SQUnsignedInteger *)&_nvalue);
+		_nvalue = ParseInteger<SQUnsignedInteger>(View(), 16).value_or(0);
 		return TK_INTEGER;
 	case TOCTAL:
-		LexOctal(&_longstr[0],(SQUnsignedInteger *)&_nvalue);
+		_nvalue = ParseInteger<SQUnsignedInteger>(View(), 8).value_or(0);
 		return TK_INTEGER;
 	}
 	return 0;
@@ -474,10 +441,6 @@ SQInteger SQLexer::ReadID()
 		APPEND_CHAR(CUR_CHAR);
 		NEXT();
 	} while(isalnum(CUR_CHAR) || CUR_CHAR == '_');
-	TERMINATE_BUFFER();
-	res = GetIDType(&_longstr[0]);
-	if(res == TK_IDENTIFIER || res == TK_CONSTRUCTOR) {
-		_svalue = &_longstr[0];
-	}
+	res = GetIDType(View());
 	return res;
 }

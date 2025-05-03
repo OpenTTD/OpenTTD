@@ -88,7 +88,7 @@ public:
 				//do nothing
 			}
 			else {
-				const SQChar *etypename;
+				std::string_view etypename;
 				if(tok > 255) {
 					switch(tok)
 					{
@@ -105,7 +105,7 @@ public:
 						etypename = "FLOAT";
 						break;
 					default:
-						etypename = _lex.Tok2Str(tok);
+						etypename = _lex.Tok2Str(tok).value_or("<unknown>");
 					}
 					throw CompileException(fmt::format("expected '{}'", etypename));
 				}
@@ -116,10 +116,10 @@ public:
 		switch(tok)
 		{
 		case TK_IDENTIFIER:
-			ret = _fs->CreateString(_lex._svalue);
+			ret = _fs->CreateString(_lex.View());
 			break;
 		case TK_STRING_LITERAL:
-			ret = _fs->CreateString(std::string_view(_lex._svalue,_lex._longstr.size()-1));
+			ret = _fs->CreateString(_lex.View());
 			break;
 		case TK_INTEGER:
 			ret = SQObjectPtr(_lex._nvalue);
@@ -594,7 +594,7 @@ public:
 		switch(_token)
 		{
 		case TK_STRING_LITERAL: {
-				_fs->AddInstruction(_OP_LOAD, _fs->PushTarget(), _fs->GetConstant(_fs->CreateString(std::string_view(_lex._svalue,_lex._longstr.size()-1))));
+				_fs->AddInstruction(_OP_LOAD, _fs->PushTarget(), _fs->GetConstant(_fs->CreateString(_lex.View())));
 				Lex();
 			}
 			break;
@@ -614,7 +614,7 @@ public:
 			SQObject id;
 			SQObject constant;
 				switch(_token) {
-					case TK_IDENTIFIER: id = _fs->CreateString(_lex._svalue); break;
+					case TK_IDENTIFIER: id = _fs->CreateString(_lex.View()); break;
 					case TK_THIS: id = _fs->CreateString("this"); break;
 					case TK_CONSTRUCTOR: id = _fs->CreateString("constructor"); break;
 				}
@@ -1099,7 +1099,7 @@ public:
 				val._unVal.fFloat = _lex._fvalue;
 				break;
 			case TK_STRING_LITERAL:
-				val = _fs->CreateString(std::string_view(_lex._svalue,_lex._longstr.size()-1));
+				val = _fs->CreateString(_lex.View());
 				break;
 			case '-':
 				Lex();
