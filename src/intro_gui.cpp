@@ -27,6 +27,7 @@
 #include "game/game_gui.hpp"
 #include "gfx_func.h"
 #include "core/geometry_func.hpp"
+#include "core/string_consumer.hpp"
 #include "language.h"
 #include "rev.h"
 #include "highscore.h"
@@ -125,45 +126,46 @@ struct SelectGameWindow : public Window {
 
 		for (const Sign *sign : Sign::Iterate()) {
 			std::smatch match;
-			if (std::regex_search(sign->name, match, re)) {
-				IntroGameViewportCommand vc;
-				/* Sequence index from the first matching group. */
-				vc.command_index = std::stoi(match[1].str());
-				/* Sign coordinates for positioning. */
-				vc.position = RemapCoords(sign->x, sign->y, sign->z);
-				/* Delay from the third matching group. */
-				vc.delay = std::stoi(match[3].str()) * 1000; // milliseconds
+			if (!std::regex_search(sign->name, match, re)) continue;
 
-				/* Parse flags from second matching group. */
-				enum IdType : uint8_t {
-					ID_NONE, ID_VEHICLE
-				} id_type = ID_NONE;
-				for (char c : match[2].str()) {
-					if (isdigit(c)) {
-						if (id_type == ID_VEHICLE) {
-							vc.vehicle = static_cast<VehicleID>(vc.vehicle.base() * 10 + (c - '0'));
-						}
-					} else {
-						id_type = ID_NONE;
-						switch (toupper(c)) {
-							case '-': vc.zoom_adjust = +1; break;
-							case '+': vc.zoom_adjust = -1; break;
-							case 'T': vc.align_v = IntroGameViewportCommand::TOP; break;
-							case 'M': vc.align_v = IntroGameViewportCommand::MIDDLE; break;
-							case 'B': vc.align_v = IntroGameViewportCommand::BOTTOM; break;
-							case 'L': vc.align_h = IntroGameViewportCommand::LEFT; break;
-							case 'C': vc.align_h = IntroGameViewportCommand::CENTRE; break;
-							case 'R': vc.align_h = IntroGameViewportCommand::RIGHT; break;
-							case 'P': vc.pan_to_next = true; break;
-							case 'V': id_type = ID_VEHICLE; vc.vehicle = VehicleID::Begin(); break;
-						}
-					}
-				}
-
-				/* Successfully parsed, store. */
-				intro_viewport_commands.push_back(vc);
-				signs_to_delete.push_back(sign->index);
+			IntroGameViewportCommand vc;
+			/* Sequence index from the first matching group. */
+			if (auto value = ParseInteger<int>(match[1].str()); value.has_value()) {
+				vc.command_index = *value;
+			} else {
+				continue;
 			}
+			/* Sign coordinates for positioning. */
+			vc.position = RemapCoords(sign->x, sign->y, sign->z);
+			/* Delay from the third matching group. */
+			if (auto value = ParseInteger<uint>(match[3].str()); value.has_value()) {
+				vc.delay = *value * 1000; // milliseconds
+			} else {
+				continue;
+			}
+
+			/* Parse flags from second matching group. */
+			auto flags = match[2].str();
+			StringConsumer consumer{flags};
+			while (consumer.AnyBytesLeft()) {
+				auto c = consumer.ReadUtf8();
+				switch (toupper(c)) {
+					case '-': vc.zoom_adjust = +1; break;
+					case '+': vc.zoom_adjust = -1; break;
+					case 'T': vc.align_v = IntroGameViewportCommand::TOP; break;
+					case 'M': vc.align_v = IntroGameViewportCommand::MIDDLE; break;
+					case 'B': vc.align_v = IntroGameViewportCommand::BOTTOM; break;
+					case 'L': vc.align_h = IntroGameViewportCommand::LEFT; break;
+					case 'C': vc.align_h = IntroGameViewportCommand::CENTRE; break;
+					case 'R': vc.align_h = IntroGameViewportCommand::RIGHT; break;
+					case 'P': vc.pan_to_next = true; break;
+					case 'V': vc.vehicle = static_cast<VehicleID>(consumer.ReadIntegerBase<uint32_t>(10, VehicleID::Invalid().base())); break;
+				}
+			}
+
+			/* Successfully parsed, store. */
+			intro_viewport_commands.push_back(vc);
+			signs_to_delete.push_back(sign->index);
 		}
 
 		/* Sort the commands by sequence index. */

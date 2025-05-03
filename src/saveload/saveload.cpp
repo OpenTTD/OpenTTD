@@ -2863,18 +2863,17 @@ static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::s
 		for (const auto &slf : _saveload_formats) {
 			if (slf.init_write != nullptr && name.compare(slf.name) == 0) {
 				if (has_comp_level) {
-					const std::string complevel(full_name, separator + 1);
+					auto complevel = std::string_view(full_name).substr(separator + 1);
 
 					/* Get the level and determine whether all went fine. */
-					size_t processed;
-					long level = std::stol(complevel, &processed, 10);
-					if (processed == 0 || level != Clamp(level, slf.min_compression, slf.max_compression)) {
+					auto level = ParseInteger<uint8_t>(complevel);
+					if (!level.has_value() || *level != Clamp(*level, slf.min_compression, slf.max_compression)) {
 						ShowErrorMessage(
 							GetEncodedString(STR_CONFIG_ERROR),
 							GetEncodedString(STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, complevel),
 							WL_CRITICAL);
 					} else {
-						return {slf, ClampTo<uint8_t>(level)};
+						return {slf, *level};
 					}
 				}
 				return {slf, slf.default_compression};
