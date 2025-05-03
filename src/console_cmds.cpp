@@ -934,8 +934,7 @@ static bool ConClientNickChange(std::span<std::string_view> argv)
 		return true;
 	}
 
-	std::string client_name(argv[2]);
-	StrTrimInPlace(client_name);
+	std::string client_name{StrTrimView(argv[2])};
 	if (!NetworkIsValidClientName(client_name)) {
 		IConsolePrint(CC_ERROR, "Cannot give a client an empty name.");
 		return true;

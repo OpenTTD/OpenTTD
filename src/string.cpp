@@ -225,7 +225,15 @@ bool StrValid(std::span<const char> str)
  */
 void StrTrimInPlace(std::string &str)
 {
-	str = StrTrimView(str);
+	size_t first_pos = str.find_first_not_of(' ');
+	if (first_pos == std::string::npos) {
+		str.clear();
+		return;
+	}
+	str.erase(0, first_pos);
+
+	size_t last_pos = str.find_last_not_of(' ');
+	str.erase(last_pos + 1);
 }
 
 std::string_view StrTrimView(std::string_view str)
