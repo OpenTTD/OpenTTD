@@ -17,7 +17,6 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 		SQBool b;
 		SQFloat f;
 		SQInteger level=1; //1 is to skip this function that is level 0
-		const SQChar *name=nullptr;
 		SQInteger seq=0;
 		pf(v,"\nCALLSTACK\n");
 		while(SQ_SUCCEEDED(sq_stackinfos(v,level,&si)))
@@ -46,8 +45,9 @@ void sqstd_printcallstack(HSQUIRRELVM v)
 
 		for(level=0;level<10;level++){
 			seq=0;
-			while((name = sq_getlocal(v,level,seq)))
-			{
+			std::optional<std::string_view> opt;
+			while ((opt = sq_getlocal(v,level,seq)).has_value()) {
+				std::string_view name = *opt;
 				seq++;
 				switch(sq_gettype(v,-1))
 				{

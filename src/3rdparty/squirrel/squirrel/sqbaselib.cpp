@@ -102,12 +102,11 @@ static SQInteger base_getstackinfos(HSQUIRRELVM v)
 	SQInteger level;
 	SQStackInfos si;
 	SQInteger seq = 0;
-	const SQChar *name = nullptr;
 	sq_getinteger(v, -1, &level);
 	if (SQ_SUCCEEDED(sq_stackinfos(v, level, &si)))
 	{
-		const SQChar *fn = "unknown";
-		const SQChar *src = "unknown";
+		std::string_view fn = "unknown";
+		std::string_view src = "unknown";
 		if(si.funcname)fn = si.funcname;
 		if(si.source)src = si.source;
 		sq_newtable(v);
@@ -123,8 +122,9 @@ static SQInteger base_getstackinfos(HSQUIRRELVM v)
 		sq_pushstring(v, "locals");
 		sq_newtable(v);
 		seq=0;
-		while ((name = sq_getlocal(v, level, seq))) {
-			sq_pushstring(v, name);
+		std::optional<std::string_view> name;
+		while ((name = sq_getlocal(v, level, seq)).has_value()) {
+			sq_pushstring(v, *name);
 			sq_push(v, -2);
 			sq_createslot(v, -4);
 			sq_pop(v, 1);

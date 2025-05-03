@@ -202,24 +202,21 @@ void SQArray::Extend(const SQArray *a){
 			Append(a->_values[i]);
 }
 
-const SQChar* SQFunctionProto::GetLocal(SQVM *vm,SQUnsignedInteger stackbase,SQUnsignedInteger nseq,SQUnsignedInteger nop)
+std::optional<std::string_view> SQFunctionProto::GetLocal(SQVM *vm,SQUnsignedInteger stackbase,SQUnsignedInteger nseq,SQUnsignedInteger nop)
 {
 	SQUnsignedInteger nvars=_nlocalvarinfos;
-	const SQChar *res=nullptr;
 	if(nvars>=nseq){
 		for(SQUnsignedInteger i=0;i<nvars;i++){
-			if(_localvarinfos[i]._start_op<=nop && _localvarinfos[i]._end_op>=nop)
-			{
+			if(_localvarinfos[i]._start_op<=nop && _localvarinfos[i]._end_op>=nop) {
 				if(nseq==0){
 					vm->Push(vm->_stack[stackbase+_localvarinfos[i]._pos]);
-					res=_stringval(_localvarinfos[i]._name);
-					break;
+					return _stringval(_localvarinfos[i]._name);
 				}
 				nseq--;
 			}
 		}
 	}
-	return res;
+	return std::nullopt;
 }
 
 SQInteger SQFunctionProto::GetLine(SQInstruction *curr)

@@ -207,7 +207,7 @@ public:
 	/**
 	 * Convert a Squirrel-object to a string.
 	 */
-	static std::string_view ObjectToString(HSQOBJECT *ptr) { return sq_objtostring(ptr); }
+	static std::optional<std::string_view> ObjectToString(HSQOBJECT *ptr) { return sq_objtostring(ptr); }
 
 	/**
 	 * Convert a Squirrel-object to an integer.

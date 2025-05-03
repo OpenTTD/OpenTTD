@@ -411,8 +411,11 @@ bool Squirrel::CallStringMethod(HSQOBJECT instance, std::string_view method_name
 {
 	HSQOBJECT ret;
 	if (!this->CallMethod(instance, method_name, &ret, suspend)) return false;
-	if (ret._type != OT_STRING) return false;
-	*res = StrMakeValid(ObjectToString(&ret));
+
+	auto str = ObjectToString(&ret);
+	if (!str.has_value()) return false;
+
+	*res = StrMakeValid(*str);
 	return true;
 }
 

@@ -169,7 +169,7 @@ public:
 	SQBool _can_suspend;
 	SQInteger _ops_till_suspend;
 	SQInteger _ops_till_suspend_error_threshold;
-	const char *_ops_till_suspend_error_label;
+	std::string_view _ops_till_suspend_error_label;
 	SQBool _in_stackoverflow;
 
 	bool ShouldSuspend()
