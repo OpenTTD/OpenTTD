@@ -2846,7 +2846,7 @@ static const SaveLoadFormat _saveload_formats[] = {
  * @param full_name Name of the savegame format. If empty it picks the first available one
  * @return Pair containing reference to SaveLoadFormat struct giving all characteristics of this type of savegame, and a compression level to use.
  */
-static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::string &full_name)
+static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(std::string_view full_name)
 {
 	/* Find default savegame format, the highest one with which files can be written. */
 	auto it = std::find_if(std::rbegin(_saveload_formats), std::rend(_saveload_formats), [](const auto &slf) { return slf.init_write != nullptr; });
@@ -2858,12 +2858,12 @@ static std::pair<const SaveLoadFormat &, uint8_t> GetSavegameFormat(const std::s
 		/* Get the ":..." of the compression level out of the way */
 		size_t separator = full_name.find(':');
 		bool has_comp_level = separator != std::string::npos;
-		const std::string name(full_name, 0, has_comp_level ? separator : full_name.size());
+		std::string_view name = has_comp_level ? full_name.substr(0, separator) : full_name;
 
 		for (const auto &slf : _saveload_formats) {
 			if (slf.init_write != nullptr && name.compare(slf.name) == 0) {
 				if (has_comp_level) {
-					auto complevel = std::string_view(full_name).substr(separator + 1);
+					auto complevel = full_name.substr(separator + 1);
 
 					/* Get the level and determine whether all went fine. */
 					auto level = ParseInteger<uint8_t>(complevel);
