@@ -221,7 +221,7 @@ SpriteID GetMaxSpriteID()
 
 static bool ResizeSpriteIn(SpriteLoader::SpriteCollection &sprite, ZoomLevel src, ZoomLevel tgt)
 {
-	uint8_t scaled_1 = ScaleByZoom(1, (ZoomLevel)(src - tgt));
+	uint8_t scaled_1 = AdjustByZoom(1, src - tgt);
 	const auto &src_sprite = sprite[src];
 	auto &dest_sprite = sprite[tgt];
 
@@ -419,8 +419,9 @@ static bool ResizeSprites(SpriteLoader::SpriteCollection &sprite, ZoomLevels spr
 
 	/* Upscale to desired sprite_min_zoom if provided sprite only had zoomed in versions. */
 	if (first_avail < _settings_client.gui.sprite_zoom_min) {
-		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_NORMAL) ResizeSpriteIn(sprite, ZOOM_LVL_NORMAL, ZOOM_LVL_IN_2X);
-		if (_settings_client.gui.sprite_zoom_min >= ZOOM_LVL_IN_2X) ResizeSpriteIn(sprite, ZOOM_LVL_IN_2X, ZOOM_LVL_IN_4X);
+		for (ZoomLevel zoom = std::min(ZOOM_LVL_NORMAL, _settings_client.gui.sprite_zoom_min); zoom > ZOOM_LVL_MIN; --zoom) {
+			ResizeSpriteIn(sprite, zoom, zoom - 1);
+		}
 	}
 
 	return  true;
