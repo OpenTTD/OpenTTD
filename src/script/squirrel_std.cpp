@@ -48,13 +48,9 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 	/* Get the script-name of the current file, so we can work relative from it */
 	SQStackInfos si;
 	sq_stackinfos(vm, 1, &si);
-	if (si.source == nullptr) {
-		Debug(misc, 0, "[squirrel] Couldn't detect the script-name of the 'require'-caller; this should never happen!");
-		return SQ_ERROR;
-	}
 
 	/* Keep the dir, remove the rest */
-	std::string path = si.source;
+	std::string path{si.source};
 	auto p = path.find_last_of(PATHSEPCHAR);
 	/* Keep the PATHSEPCHAR there, remove the rest */
 	if (p != std::string::npos) path.erase(p + 1);
