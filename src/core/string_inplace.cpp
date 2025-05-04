@@ -32,12 +32,12 @@
 /**
  * Append buffer.
  */
-void InPlaceBuilder::PutBuffer(const char *str, size_type len)
+void InPlaceBuilder::PutBuffer(std::span<const char> str)
 {
 	auto unused = this->GetBytesUnused();
-	if (len > unused) NOT_REACHED();
-	std::copy(str, str + len, this->dest.data() + this->position);
-	this->position += len;
+	if (str.size() > unused) NOT_REACHED();
+	std::ranges::copy(str, this->dest.data() + this->position);
+	this->position += str.size();
 }
 
 /**
