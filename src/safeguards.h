@@ -37,6 +37,9 @@
 #define vsnprintf SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
 #define strncmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#ifdef strcasecmp
+#undef strcasecmp
+#endif
 #define strcasecmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #ifdef stricmp
 #undef stricmp
