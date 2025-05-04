@@ -36,7 +36,7 @@ inline bool MacOSVersionIsAtLeast(long major, long minor, long bugfix)
 
 bool IsMonospaceFont(CFStringRef name);
 
-void MacOSSetThreadName(const char *name);
+void MacOSSetThreadName(const std::string &name);
 
 uint64_t MacOSGetPhysicalMemory();
 

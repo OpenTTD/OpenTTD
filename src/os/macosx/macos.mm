@@ -242,15 +242,15 @@ bool IsMonospaceFont(CFStringRef name)
  * Set the name of the current thread for the debugger.
  * @param name The new name of the current thread.
  */
-void MacOSSetThreadName(const char *name)
+void MacOSSetThreadName(const std::string &name)
 {
 	if (MacOSVersionIsAtLeast(10, 6, 0)) {
-		pthread_setname_np(name);
+		pthread_setname_np(name.c_str());
 	}
 
 	NSThread *cur = [ NSThread currentThread ];
 	if (cur != nil && [ cur respondsToSelector:@selector(setName:) ]) {
-		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name ] ];
+		[ cur performSelector:@selector(setName:) withObject:[ NSString stringWithUTF8String:name.c_str() ] ];
 	}
 }
 

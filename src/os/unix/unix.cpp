@@ -243,12 +243,12 @@ void OSOpenBrowser(const std::string &url)
 }
 #endif /* __APPLE__ */
 
-void SetCurrentThreadName([[maybe_unused]] const char *threadName)
+void SetCurrentThreadName([[maybe_unused]] const std::string &thread_name)
 {
 #if defined(__GLIBC__)
-	if (threadName) pthread_setname_np(pthread_self(), threadName);
+	pthread_setname_np(pthread_self(), thread_name.c_str());
 #endif /* defined(__GLIBC__) */
 #if defined(__APPLE__)
-	MacOSSetThreadName(threadName);
+	MacOSSetThreadName(thread_name);
 #endif /* defined(__APPLE__) */
 }
