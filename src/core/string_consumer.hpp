@@ -63,10 +63,6 @@ public:
 	 * Construct parser with data from span.
 	 */
 	explicit StringConsumer(std::span<const char> src) : src(src.data(), src.size()) {}
-	/**
-	 * Construct parser with data from buffer.
-	 */
-	StringConsumer(const char *src, size_type len) : src(src, len) {}
 
 	/**
 	 * Check whether any bytes left to read.

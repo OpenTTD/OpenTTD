@@ -18,7 +18,7 @@ class OTTDByteReaderSignal { };
 class ByteReader {
 	StringConsumer consumer;
 public:
-	ByteReader(const uint8_t *data, size_t len) : consumer(reinterpret_cast<const char *>(data), len) { }
+	ByteReader(const uint8_t *data, size_t len) : consumer(std::string_view{reinterpret_cast<const char *>(data), len}) { }
 
 	const uint8_t *ReadBytes(size_t size)
 	{
