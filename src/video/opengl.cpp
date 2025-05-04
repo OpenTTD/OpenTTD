@@ -1077,7 +1077,7 @@ void OpenGLBackend::DrawMouseCursor()
 	for (const auto &cs : this->cursor_sprites) {
 		/* Sprites are cached by PopulateCursorCache(). */
 		if (this->cursor_cache.Contains(cs.image.sprite)) {
-			OpenGLSprite *spr = this->cursor_cache.Get(cs.image.sprite);
+			const OpenGLSprite *spr = this->cursor_cache.Get(cs.image.sprite).get();
 
 			this->RenderOglSprite(spr, cs.image.pal,
 					this->cursor_pos.x + cs.pos.x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
@@ -1089,10 +1089,10 @@ void OpenGLBackend::DrawMouseCursor()
 
 class OpenGLSpriteAllocator : public SpriteAllocator {
 public:
-	LRUCache<SpriteID, OpenGLSprite> &lru;
+	OpenGLSpriteLRUCache &lru;
 	SpriteID sprite;
 
-	OpenGLSpriteAllocator(LRUCache<SpriteID, OpenGLSprite> &lru, SpriteID sprite) : lru(lru), sprite(sprite) {}
+	OpenGLSpriteAllocator(OpenGLSpriteLRUCache &lru, SpriteID sprite) : lru(lru), sprite(sprite) {}
 protected:
 	void *AllocatePtr(size_t) override { NOT_REACHED(); }
 };
@@ -1274,7 +1274,7 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
  * @param y Y position of the sprite.
  * @param zoom Zoom level to use.
  */
-void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom)
+void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom)
 {
 	/* Set textures. */
 	bool rgb = gl_sprite->BindTextures();
@@ -1518,7 +1518,7 @@ inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
  * Bind textures for rendering this sprite.
  * @return True if the sprite has RGBA data.
  */
-bool OpenGLSprite::BindTextures()
+bool OpenGLSprite::BindTextures() const
 {
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA] != 0 ? this->tex[TEX_RGBA] : OpenGLSprite::dummy_tex[TEX_RGBA]);

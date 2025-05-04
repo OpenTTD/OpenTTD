@@ -16,12 +16,12 @@
 /**
  * Size limited cache with a least recently used eviction strategy.
  * @tparam Tkey Type of the cache key.
- * @tparam Tdata Type of the cache item. The cache will store a pointer of this type.
+ * @tparam Tdata Type of the cache item.
  */
 template <class Tkey, class Tdata>
 class LRUCache {
 private:
-	typedef std::pair<Tkey, std::unique_ptr<Tdata>> Tpair;
+	typedef std::pair<Tkey, Tdata> Tpair;
 	typedef typename std::list<Tpair>::iterator Titer;
 
 	std::list<Tpair> data; ///< Ordered list of all items.
@@ -51,7 +51,7 @@ public:
 	 * @param key Key under which the item should be stored.
 	 * @param item Item to insert.
 	 */
-	void Insert(const Tkey key, std::unique_ptr<Tdata> &&item)
+	void Insert(const Tkey key, Tdata &&item)
 	{
 		if (this->Contains(key)) {
 			/* Replace old value. */
@@ -85,13 +85,14 @@ public:
 	 * @return The item value.
 	 * @note Throws if item not found.
 	 */
-	inline Tdata *Get(const Tkey key)
+	inline const Tdata &Get(const Tkey key)
 	{
-		if (this->lookup.find(key) == this->lookup.end()) throw std::out_of_range("item not found");
+		auto it = this->lookup.find(key);
+		if (it == this->lookup.end()) throw std::out_of_range("item not found");
 		/* Move to front if needed. */
-		this->data.splice(this->data.begin(), this->data, this->lookup[key]);
+		this->data.splice(this->data.begin(), this->data, it->second);
 
-		return this->data.front().second.get();
+		return this->data.front().second;
 	}
 };
 
