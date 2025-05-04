@@ -31,6 +31,21 @@ struct StationScopeResolver : public ScopeResolver {
 	Axis axis;                          ///< Station axis, used only for the slope check callback.
 
 	/**
+	 * Station variable cache
+	 * This caches 'expensive' station variable lookups which iterate over
+	 * several tiles that may be called multiple times per Resolve().
+	 */
+	struct Cache {
+		std::optional<uint32_t> v40;
+		std::optional<uint32_t> v41;
+		std::optional<uint32_t> v45;
+		std::optional<uint32_t> v46;
+		std::optional<uint32_t> v47;
+		std::optional<uint32_t> v49;
+	};
+	mutable Cache cache;
+
+	/**
 	 * Constructor for station scopes.
 	 * @param ro Surrounding resolver.
 	 * @param statspec Station (type) specification.
