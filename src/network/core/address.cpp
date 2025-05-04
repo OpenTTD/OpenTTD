@@ -312,7 +312,7 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 
 	int on = 1;
 	if (runp->ai_family == AF_INET6 &&
-			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
+			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, reinterpret_cast<const char *>(&on), sizeof(on)) == -1) {
 		Debug(net, 3, "Could not disable IPv4 over IPv6: {}", NetworkError::GetLast().AsString());
 	}
 

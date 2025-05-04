@@ -273,7 +273,7 @@ struct LanguagePackDeleter {
 	void operator()(LanguagePack *langpack)
 	{
 		/* LanguagePack is in fact reinterpreted char[], we need to reinterpret it back to free it properly. */
-		delete[] reinterpret_cast<char*>(langpack);
+		delete[] reinterpret_cast<char *>(langpack);
 	}
 };
 

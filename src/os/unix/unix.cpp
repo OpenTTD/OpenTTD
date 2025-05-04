@@ -122,7 +122,7 @@ static std::string convert_tofrom_fs(iconv_t convd, std::string_view name)
 	 * e.g. SUSv2, pass a const pointer, whereas the newer ones, e.g.
 	 * IEEE 1003.1 (2004), pass a non-const pointer. */
 #ifdef HAVE_NON_CONST_ICONV
-	char *inbuf = const_cast<char*>(name.data());
+	char *inbuf = const_cast<char *>(name.data());
 #else
 	const char *inbuf = name.data();
 #endif
