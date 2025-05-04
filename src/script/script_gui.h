@@ -18,7 +18,7 @@ struct Window;
 void ShowScriptListWindow(CompanyID slot, bool show_all);
 Window *ShowScriptDebugWindow(CompanyID show_company = CompanyID::Invalid(), bool new_window = false);
 void ShowScriptSettingsWindow(CompanyID slot);
-void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot);
+void ShowScriptTextfileWindow(Window *parent, TextfileType file_type, CompanyID slot);
 void ShowScriptDebugWindowIfScriptError();
 void InitializeScriptGui();
 

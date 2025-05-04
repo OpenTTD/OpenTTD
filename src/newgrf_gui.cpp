@@ -551,7 +551,7 @@ void OpenGRFParameterWindow(bool is_baseset, GRFConfig &c, bool editable)
 struct NewGRFTextfileWindow : public TextfileWindow {
 	const GRFConfig *grf_config = nullptr; ///< View the textfile of this GRFConfig.
 
-	NewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c) : TextfileWindow(file_type), grf_config(c)
+	NewGRFTextfileWindow(Window *parent, TextfileType file_type, const GRFConfig *c) : TextfileWindow(parent, file_type), grf_config(c)
 	{
 		this->ConstructWindow();
 
@@ -569,10 +569,10 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 	}
 };
 
-void ShowNewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c)
+void ShowNewGRFTextfileWindow(Window *parent, TextfileType file_type, const GRFConfig *c)
 {
-	CloseWindowById(WC_TEXTFILE, file_type);
-	new NewGRFTextfileWindow(file_type, c);
+	parent->CloseChildWindowById(WC_TEXTFILE, file_type);
+	new NewGRFTextfileWindow(parent, file_type, c);
 }
 
 typedef std::map<uint32_t, const GRFConfig *> GrfIdMap; ///< Map of grfid to the grf config.
@@ -664,7 +664,6 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		CloseWindowByClass(WC_GRF_PARAMETERS);
-		CloseWindowByClass(WC_TEXTFILE);
 		CloseWindowByClass(WC_SAVE_PRESET);
 
 		if (this->editable && this->modified && !this->execute && !_exit_game) {
@@ -721,7 +720,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			}
 			if (this->active_sel == c->get()) {
 				CloseWindowByClass(WC_GRF_PARAMETERS);
-				CloseWindowByClass(WC_TEXTFILE);
+				this->CloseChildWindows(WC_TEXTFILE);
 				this->active_sel = nullptr;
 			}
 			*c = std::move(d);
@@ -930,7 +929,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TFT_CONTENT_END) {
 			if (this->active_sel == nullptr && this->avail_sel == nullptr) return;
 
-			ShowNewGRFTextfileWindow((TextfileType)(widget - WID_NS_NEWGRF_TEXTFILE), this->active_sel != nullptr ? this->active_sel : this->avail_sel);
+			ShowNewGRFTextfileWindow(this, (TextfileType)(widget - WID_NS_NEWGRF_TEXTFILE), this->active_sel != nullptr ? this->active_sel : this->avail_sel);
 			return;
 		}
 
@@ -1011,7 +1010,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				}
 				if (this->active_sel != old_sel) {
 					CloseWindowByClass(WC_GRF_PARAMETERS);
-					CloseWindowByClass(WC_TEXTFILE);
+					this->CloseChildWindows(WC_TEXTFILE);
 				}
 				this->avail_sel = nullptr;
 				this->avail_pos = -1;
@@ -1028,7 +1027,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_REMOVE: { // Remove GRF
 				if (this->active_sel == nullptr || !this->editable) break;
 				CloseWindowByClass(WC_GRF_PARAMETERS);
-				CloseWindowByClass(WC_TEXTFILE);
+				this->CloseChildWindows(WC_TEXTFILE);
 
 				/* Choose the next GRF file to be the selected file. */
 				int pos = this->GetCurrentActivePosition();
@@ -1065,7 +1064,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				this->active_sel = nullptr;
 				CloseWindowByClass(WC_GRF_PARAMETERS);
 				if (it != std::end(this->avails)) {
-					if (this->avail_sel != *it) CloseWindowByClass(WC_TEXTFILE);
+					if (this->avail_sel != *it) this->CloseChildWindows(WC_TEXTFILE);
 					this->avail_sel = *it;
 					this->avail_pos = static_cast<int>(std::distance(std::begin(this->avails), it));
 				}
@@ -1139,7 +1138,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	void OnNewGRFsScanned() override
 	{
-		if (this->active_sel == nullptr) CloseWindowByClass(WC_TEXTFILE);
+		if (this->active_sel == nullptr) this->CloseChildWindows(WC_TEXTFILE);
 		this->avail_sel = nullptr;
 		this->avail_pos = -1;
 		this->avails.ForceRebuild();
@@ -1161,7 +1160,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		ResetObjectToPlace();
 		CloseWindowByClass(WC_GRF_PARAMETERS);
-		CloseWindowByClass(WC_TEXTFILE);
+		this->CloseChildWindows(WC_TEXTFILE);
 		this->active_sel = nullptr;
 		this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 	}
@@ -1312,7 +1311,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		if (this->avail_pos >= 0) {
 			this->active_sel = nullptr;
 			CloseWindowByClass(WC_GRF_PARAMETERS);
-			if (this->avail_sel != this->avails[this->avail_pos]) CloseWindowByClass(WC_TEXTFILE);
+			if (this->avail_sel != this->avails[this->avail_pos]) this->CloseChildWindows(WC_TEXTFILE);
 			this->avail_sel = this->avails[this->avail_pos];
 			this->vscroll2->ScrollTowards(this->avail_pos);
 			this->InvalidateData(0);
@@ -1473,7 +1472,7 @@ private:
 	{
 		if (this->avail_sel == nullptr || !this->editable || this->avail_sel->flags.Test(GRFConfigFlag::Invalid)) return false;
 
-		CloseWindowByClass(WC_TEXTFILE);
+		this->CloseChildWindows(WC_TEXTFILE);
 
 		/* Get number of non-static NewGRFs. */
 		size_t count = std::ranges::count_if(this->actives, [](const auto &gc) { return !gc->flags.Test(GRFConfigFlag::Static); });
@@ -1928,7 +1927,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
 		CloseWindowByClass(WC_GRF_PARAMETERS);
-		CloseWindowByClass(WC_TEXTFILE);
+		w->CloseChildWindows(WC_TEXTFILE);
 		NewGRFWindow *nw = dynamic_cast<NewGRFWindow*>(w);
 		assert(nw != nullptr);
 
