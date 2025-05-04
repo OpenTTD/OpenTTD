@@ -2700,14 +2700,6 @@ void HandleTextInput(std::string_view str, bool marked, std::optional<size_t> ca
 }
 
 /**
- * Local counter that is incremented each time an mouse input event is detected.
- * The counter is used to stop auto-scrolling.
- * @see HandleAutoscroll()
- * @see HandleMouseEvents()
- */
-static int _input_events_this_tick = 0;
-
-/**
  * If needed and switched on, perform auto scrolling (automatically
  * moving window contents when mouse is near edge of the window).
  */
@@ -2933,14 +2925,6 @@ void HandleMouseEvents()
 	 * But there is no company related window open anyway, so _current_company is not used. */
 	assert(HasModalProgress() || IsLocalCompany());
 
-	/* Handle sprite picker before any GUI interaction */
-	if (_newgrf_debug_sprite_picker.mode == SPM_REDRAW && _input_events_this_tick == 0) {
-		/* We are done with the last draw-frame, so we know what sprites we
-		 * clicked on. Reset the picker mode and invalidate the window. */
-		_newgrf_debug_sprite_picker.mode = SPM_NONE;
-		InvalidateWindowData(WC_SPRITE_ALIGNER, 0, 1);
-	}
-
 	static std::chrono::steady_clock::time_point double_click_time = {};
 	static Point double_click_pos = {0, 0};
 
@@ -2956,18 +2940,15 @@ void HandleMouseEvents()
 		double_click_time = std::chrono::steady_clock::now();
 		double_click_pos = _cursor.pos;
 		_left_button_clicked = true;
-		_input_events_this_tick++;
 	} else if (_right_button_clicked) {
 		_right_button_clicked = false;
 		click = MC_RIGHT;
-		_input_events_this_tick++;
 	}
 
 	int mousewheel = 0;
 	if (_cursor.wheel) {
 		mousewheel = _cursor.wheel;
 		_cursor.wheel = 0;
-		_input_events_this_tick++;
 	}
 
 	static std::chrono::steady_clock::time_point hover_time = {};
@@ -2983,7 +2964,6 @@ void HandleMouseEvents()
 		} else if (!_mouse_hovering) {
 			if (std::chrono::steady_clock::now() > hover_time + std::chrono::milliseconds(_settings_client.gui.hover_delay_ms)) {
 				click = MC_HOVER;
-				_input_events_this_tick++;
 				_mouse_hovering = true;
 				hover_time = std::chrono::steady_clock::now();
 			}
@@ -3046,11 +3026,12 @@ void InputLoop()
 	/* Process scheduled window deletion. */
 	Window::DeleteClosedWindows();
 
-	if (_input_events_this_tick != 0) {
-		/* The input loop is called only once per GameLoop() - so we can clear the counter here */
-		_input_events_this_tick = 0;
-		/* there were some inputs this tick, don't scroll ??? */
-		return;
+	/* Handle sprite picker before any GUI interaction */
+	if (_newgrf_debug_sprite_picker.mode == SPM_REDRAW) {
+		/* We are done with the last draw-frame, so we know what sprites we
+		 * clicked on. Reset the picker mode and invalidate the window. */
+		_newgrf_debug_sprite_picker.mode = SPM_NONE;
+		InvalidateWindowData(WC_SPRITE_ALIGNER, 0, 1);
 	}
 
 	/* HandleMouseEvents was already called for this tick */
