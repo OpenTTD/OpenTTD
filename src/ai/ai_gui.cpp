@@ -218,7 +218,7 @@ struct AIConfigWindow : public Window {
 		if (widget >= WID_AIC_TEXTFILE && widget < WID_AIC_TEXTFILE + TFT_CONTENT_END) {
 			if (this->selected_slot == CompanyID::Invalid() || AIConfig::GetConfig(this->selected_slot) == nullptr) return;
 
-			ShowScriptTextfileWindow((TextfileType)(widget - WID_AIC_TEXTFILE), this->selected_slot);
+			ShowScriptTextfileWindow(this, (TextfileType)(widget - WID_AIC_TEXTFILE), this->selected_slot);
 			return;
 		}
 

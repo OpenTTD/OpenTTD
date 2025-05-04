@@ -609,7 +609,7 @@ void ShowScriptSettingsWindow(CompanyID slot)
 struct ScriptTextfileWindow : public TextfileWindow {
 	CompanyID slot{}; ///< View the textfile of this CompanyID slot.
 
-	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
+	ScriptTextfileWindow(Window *parent, TextfileType file_type, CompanyID slot) : TextfileWindow(parent, file_type), slot(slot)
 	{
 		this->ConstructWindow();
 		this->OnInvalidateData();
@@ -640,10 +640,10 @@ struct ScriptTextfileWindow : public TextfileWindow {
  * @param file_type The type of textfile to display.
  * @param slot The slot the Script is using.
  */
-void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot)
+void ShowScriptTextfileWindow(Window *parent, TextfileType file_type, CompanyID slot)
 {
-	CloseWindowById(WC_TEXTFILE, file_type);
-	new ScriptTextfileWindow(file_type, slot);
+	parent->CloseChildWindowById(WC_TEXTFILE, file_type);
+	new ScriptTextfileWindow(parent, file_type, slot);
 }
 
 

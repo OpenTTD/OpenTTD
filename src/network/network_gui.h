@@ -24,7 +24,7 @@ void ShowNetworkGameWindow();
 void ShowClientList();
 void ShowNetworkAskRelay(std::string_view server_connection_string, std::string &&relay_connection_string, std::string &&token);
 void ShowNetworkAskSurvey();
-void ShowSurveyResultTextfileWindow();
+void ShowSurveyResultTextfileWindow(Window *parent);
 
 /** Company information stored at the client side */
 struct NetworkCompanyInfo : NetworkCompanyStats {

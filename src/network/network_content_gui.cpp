@@ -44,7 +44,7 @@ static bool _accepted_external_search = false;
 struct ContentTextfileWindow : public TextfileWindow {
 	const ContentInfo *ci = nullptr; ///< View the textfile of this ContentInfo.
 
-	ContentTextfileWindow(TextfileType file_type, const ContentInfo *ci) : TextfileWindow(file_type), ci(ci)
+	ContentTextfileWindow(Window *parent, TextfileType file_type, const ContentInfo *ci) : TextfileWindow(parent, file_type), ci(ci)
 	{
 		this->ConstructWindow();
 
@@ -79,10 +79,10 @@ struct ContentTextfileWindow : public TextfileWindow {
 	}
 };
 
-void ShowContentTextfileWindow(TextfileType file_type, const ContentInfo *ci)
+static void ShowContentTextfileWindow(Window *parent, TextfileType file_type, const ContentInfo *ci)
 {
-	CloseWindowById(WC_TEXTFILE, file_type);
-	new ContentTextfileWindow(file_type, ci);
+	parent->CloseChildWindowById(WC_TEXTFILE, file_type);
+	new ContentTextfileWindow(parent, file_type, ci);
 }
 
 /** Nested widgets for the download window. */
@@ -776,7 +776,7 @@ public:
 		if (widget >= WID_NCL_TEXTFILE && widget < WID_NCL_TEXTFILE + TFT_CONTENT_END) {
 			if (this->selected == nullptr || this->selected->state != ContentInfo::ALREADY_HERE) return;
 
-			ShowContentTextfileWindow((TextfileType)(widget - WID_NCL_TEXTFILE), this->selected);
+			ShowContentTextfileWindow(this, (TextfileType)(widget - WID_NCL_TEXTFILE), this->selected);
 			return;
 		}
 

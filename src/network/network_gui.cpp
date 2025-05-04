@@ -2323,7 +2323,7 @@ struct NetworkAskSurveyWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NAS_PREVIEW:
-				ShowSurveyResultTextfileWindow();
+				ShowSurveyResultTextfileWindow(this);
 				break;
 
 			case WID_NAS_LINK:
@@ -2388,7 +2388,7 @@ void ShowNetworkAskSurvey()
 struct SurveyResultTextfileWindow : public TextfileWindow {
 	const GRFConfig *grf_config; ///< View the textfile of this GRFConfig.
 
-	SurveyResultTextfileWindow(TextfileType file_type) : TextfileWindow(file_type)
+	SurveyResultTextfileWindow(Window *parent, TextfileType file_type) : TextfileWindow(parent, file_type)
 	{
 		this->ConstructWindow();
 
@@ -2398,8 +2398,8 @@ struct SurveyResultTextfileWindow : public TextfileWindow {
 	}
 };
 
-void ShowSurveyResultTextfileWindow()
+void ShowSurveyResultTextfileWindow(Window *parent)
 {
-	CloseWindowById(WC_TEXTFILE, TFT_SURVEY_RESULT);
-	new SurveyResultTextfileWindow(TFT_SURVEY_RESULT);
+	parent->CloseChildWindowById(WC_TEXTFILE, TFT_SURVEY_RESULT);
+	new SurveyResultTextfileWindow(parent, TFT_SURVEY_RESULT);
 }

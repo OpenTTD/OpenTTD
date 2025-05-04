@@ -41,7 +41,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	virtual void LoadTextfile(const std::string &textfile, Subdirectory dir);
 
 protected:
-	TextfileWindow(TextfileType file_type);
+	TextfileWindow(Window *parent, TextfileType file_type);
 	void ConstructWindow();
 
 	struct Line {

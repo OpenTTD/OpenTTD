@@ -61,7 +61,7 @@ static std::optional<std::string> FindGameManualFilePath(std::string_view filena
 
 /** Window class displaying the game manual textfile viewer. */
 struct GameManualTextfileWindow : public TextfileWindow {
-	GameManualTextfileWindow(std::string_view filename, Subdirectory subdir) : TextfileWindow(TFT_GAME_MANUAL)
+	GameManualTextfileWindow(std::string_view filename, Subdirectory subdir) : TextfileWindow(nullptr, TFT_GAME_MANUAL)
 	{
 		this->ConstructWindow();
 
