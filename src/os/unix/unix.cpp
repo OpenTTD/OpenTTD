@@ -89,7 +89,7 @@ bool FiosIsHiddenFile(const std::filesystem::path &path)
 #include "../../debug.h"
 #include "../../string_func.h"
 
-std::optional<std::string_view> GetCurrentLocale(const char *param);
+std::optional<std::string> GetCurrentLocale(const char *param);
 
 #define INTERNALCODE "UTF-8"
 
@@ -98,7 +98,7 @@ std::optional<std::string_view> GetCurrentLocale(const char *param);
  * variables. MacOSX is hardcoded, other OS's are dynamic. If no suitable
  * locale can be found, don't do any conversion ""
  */
-static std::string_view GetLocalCode()
+static std::string GetLocalCode()
 {
 #if defined(__APPLE__)
 	return "UTF-8-MAC";
@@ -108,7 +108,8 @@ static std::string_view GetLocalCode()
 	if (!locale.has_value()) return "";
 	auto pos = locale->find('.');
 	if (pos == std::string_view::npos) return "";
-	return locale->substr(pos + 1);
+	locale.erase(0, pos + 1);
+	return locale;
 #endif
 }
 

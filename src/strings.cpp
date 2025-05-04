@@ -2083,23 +2083,26 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
  *        set. Pass nullptr if you don't want additional checks.
  * @return return string containing current charset, or nullptr if not-determinable
  */
-std::optional<std::string_view> GetCurrentLocale(const char *param)
+std::optional<std::string> GetCurrentLocale(const char *param)
 {
 	auto env = GetEnv("LANGUAGE");
-	if (env.has_value()) return env;
+	if (env.has_value()) return std::string{*env};
 
 	env = GetEnv("LC_ALL");
-	if (env.has_value()) return env;
+	if (env.has_value()) return std::string{*env};
 
 	if (param != nullptr) {
 		env = GetEnv(param);
-		if (env.has_value()) return env;
+		if (env.has_value()) return std::string{*env};
 	}
 
-	return GetEnv("LANG");
+	env = GetEnv("LANG");
+	if (env.has_value()) return std::string{*env};
+
+	return std::nullopt;
 }
 #else
-std::optional<std::string_view> GetCurrentLocale(const char *param);
+std::optional<std::string> GetCurrentLocale(const char *param);
 #endif /* !(defined(_WIN32) || defined(__APPLE__)) */
 
 /**
@@ -2180,8 +2183,8 @@ void InitializeLanguagePacks()
 	if (_languages.empty()) UserError("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
-	auto lang = GetCurrentLocale("LC_MESSAGES");
-	if (!lang.has_value()) lang = "en_GB";
+	auto str_lang = GetCurrentLocale("LC_MESSAGES");
+	std::string_view lang = str_lang.has_value() ? std::string_view{*str_lang} : "en_GB";
 
 	const LanguageMetadata *chosen_language   = nullptr; ///< Matching the language in the configuration file or the current locale
 	const LanguageMetadata *language_fallback = nullptr; ///< Using pt_PT for pt_BR locale when pt_BR is not available
@@ -2203,8 +2206,8 @@ void InitializeLanguagePacks()
 		/* Only auto-pick finished translations */
 		if (!lng.IsReasonablyFinished()) continue;
 
-		if (iso_code.starts_with(lang->substr(0, 5))) chosen_language = &lng;
-		if (iso_code.starts_with(lang->substr(0, 2))) language_fallback = &lng;
+		if (iso_code.starts_with(lang.substr(0, 5))) chosen_language = &lng;
+		if (iso_code.starts_with(lang.substr(0, 2))) language_fallback = &lng;
 	}
 
 	/* We haven't found the language in the config nor the one in the locale.

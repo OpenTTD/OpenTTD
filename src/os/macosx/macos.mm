@@ -151,16 +151,18 @@ void OSOpenBrowser(const std::string &url)
 /**
  * Determine and return the current user's locale.
  */
-std::optional<std::string_view> GetCurrentLocale(const char *)
+std::optional<std::string> GetCurrentLocale(const char *)
 {
-	static char retbuf[32] = { '\0' };
 	NSUserDefaults *defs = [ NSUserDefaults standardUserDefaults ];
 	NSArray *languages = [ defs objectForKey:@"AppleLanguages" ];
 	NSString *preferredLang = [ languages objectAtIndex:0 ];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
 
-	[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
-
+	std::string retbuf{32, '\0'};
+	[ preferredLang getCString:retbuf.data() maxLength:retbuf.size() encoding:NSASCIIStringEncoding ];
+	auto end = retbuf.find('\0');
+	if (end == 0) return std::nullopt;
+	if (end != std::string::npos) retbuf.erase(end);
 	return retbuf;
 }
 

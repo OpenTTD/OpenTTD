@@ -395,7 +395,7 @@ wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf)
 }
 
 /** Determine the current user's locale. */
-std::optional<std::string_view> GetCurrentLocale(const char *)
+std::optional<std::string> GetCurrentLocale(const char *)
 {
 	const LANGID userUiLang = GetUserDefaultUILanguage();
 	const LCID userUiLocale = MAKELCID(userUiLang, SORT_DEFAULT);
@@ -407,8 +407,7 @@ std::optional<std::string_view> GetCurrentLocale(const char *)
 		return nullptr;
 	}
 	/* Format it as 'en_us'. */
-	static char retbuf[6] = {lang[0], lang[1], '_', country[0], country[1], 0};
-	return retbuf;
+	return fmt::format("{}_{}", std::string_view{lang, 2}, std::string_view{country, 2});
 }
 
 
