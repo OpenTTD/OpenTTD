@@ -4778,8 +4778,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Reise (i {STRIN
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Reise (i {STRING}, ikke oppsatt i rutetabell) med høyst {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(opphold i {STRING}, ikke oppsatt i rutetabell)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(reise for {STRING}, ikke oppsatt med rutetabell)
-STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}og bli værende i {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}og reis i {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Denne rutetabellen vil ta omtrent {STRING} å fullføre
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å fullføre rutetabellen
@@ -5890,6 +5890,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mrd
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
