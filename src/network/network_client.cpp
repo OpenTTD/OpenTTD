@@ -1278,7 +1278,7 @@ bool NetworkValidateClientName(std::string &client_name)
  * Convenience method for NetworkValidateClientName on _settings_client.network.client_name.
  * It trims the client name and checks whether it is empty. When it is empty
  * an error message is shown to the GUI user.
- * See \c NetworkValidateClientName(char*) for details about the functionality.
+ * See \c NetworkValidateClientName(std::string&) for details about the functionality.
  * @return True iff the client name is valid.
  */
 bool NetworkValidateOurClientName()
