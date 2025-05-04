@@ -27,6 +27,7 @@
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
 #include "animated_tile_func.h"
+#include "core/flatset_type.hpp"
 #include "core/random_func.hpp"
 #include "object_base.h"
 #include "company_func.h"
@@ -1303,7 +1304,7 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 		return { DistanceManhattan(spring, begin) > min_river_length, GetTileZ(begin) == 0 };
 	}
 
-	std::set<TileIndex> marks;
+	FlatSet<TileIndex> marks;
 	marks.insert(begin);
 
 	/* Breadth first search for the closest tile we can flow down to. */
@@ -1339,7 +1340,7 @@ static std::tuple<bool, bool> FlowRiver(TileIndex spring, TileIndex begin, uint 
 		std::tie(found, main_river) = FlowRiver(spring, end, min_river_length);
 	} else if (count > 32) {
 		/* Maybe we can make a lake. Find the Nth of the considered tiles. */
-		std::set<TileIndex>::const_iterator cit = marks.cbegin();
+		auto cit = marks.cbegin();
 		std::advance(cit, RandomRange(count - 1));
 		TileIndex lake_centre = *cit;
 
