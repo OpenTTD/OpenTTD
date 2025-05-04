@@ -7,6 +7,7 @@ add_files(
     convertible_through_base.hpp
     endian_func.hpp
     enum_type.hpp
+    flatset_type.hpp
     format.hpp
     geometry_func.cpp
     geometry_func.hpp
