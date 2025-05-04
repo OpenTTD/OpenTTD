@@ -25,10 +25,6 @@ void StrMakeValidInPlace(char *str, StringValidationSettings settings = StringVa
 void StrMakeValidInPlace(std::string &str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark);
 
 [[nodiscard]] std::string StrMakeValid(std::string_view str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark);
-[[nodiscard]] inline std::string StrMakeValid(const char *str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark)
-{
-	return StrMakeValid(std::string_view(str), settings);
-}
 [[nodiscard]] inline std::string StrMakeValid(std::string &&str, StringValidationSettings settings = StringValidationSetting::ReplaceWithQuestionMark)
 {
 	StrMakeValidInPlace(str, settings);
