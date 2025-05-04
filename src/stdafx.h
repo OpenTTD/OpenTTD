@@ -157,8 +157,6 @@ using namespace std::literals::string_view_literals;
 
 #if !defined(STRGEN) && !defined(SETTINGSGEN)
 #	if defined(_WIN32)
-		char *getcwd(char *buf, size_t size);
-
 		std::string FS2OTTD(std::wstring_view name);
 		std::wstring OTTD2FS(std::string_view name);
 #	elif defined(WITH_ICONV)
