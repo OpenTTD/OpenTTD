@@ -12,7 +12,7 @@
 
 bool MyShowCursor(bool show, bool toggle = false);
 
-char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf);
+std::string_view convert_from_fs(const std::wstring_view src, std::span<char> dst_buf);
 wchar_t *convert_to_fs(std::string_view src, std::span<wchar_t> dst_buf);
 
 int OTTDStringCompare(std::string_view s1, std::string_view s2);

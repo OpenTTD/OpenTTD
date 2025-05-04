@@ -369,13 +369,13 @@ std::wstring OTTD2FS(std::string_view name)
  * @param dst_buf span of valid char buffer that will receive the converted string
  * @return pointer to dst_buf. If conversion fails the string is of zero-length
  */
-char *convert_from_fs(const std::wstring_view src, std::span<char> dst_buf)
+std::string_view convert_from_fs(const std::wstring_view src, std::span<char> dst_buf)
 {
 	/* Convert UTF-16 string to UTF-8. */
 	int len = WideCharToMultiByte(CP_UTF8, 0, src.data(), static_cast<int>(src.size()), dst_buf.data(), static_cast<int>(dst_buf.size() - 1U), nullptr, nullptr);
 	dst_buf[len] = '\0';
 
-	return dst_buf.data();
+	return std::string_view(dst_buf.data(), len);
 }
 
 
