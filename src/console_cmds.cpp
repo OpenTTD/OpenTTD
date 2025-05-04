@@ -2225,11 +2225,11 @@ static void OutputContentState(const ContentInfo &ci)
 
 static bool ConContent(std::span<std::string_view> argv)
 {
-	static ContentCallback *cb = nullptr;
-	if (cb == nullptr) {
-		cb = new ConsoleContentCallback();
-		_network_content_client.AddCallback(cb);
-	}
+	[[maybe_unused]] static ContentCallback *const cb = []() {
+			auto res = new ConsoleContentCallback();
+			_network_content_client.AddCallback(res);
+			return res;
+		}();
 
 	if (argv.size() <= 1) {
 		IConsolePrint(CC_HELP, "Query, select and download content. Usage: 'content update|upgrade|select [id]|unselect [all|id]|state [filter]|download'.");

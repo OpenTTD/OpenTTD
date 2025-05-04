@@ -430,11 +430,16 @@ void Win32SetCurrentLocaleName(std::string iso_code)
 	MultiByteToWideChar(CP_UTF8, 0, iso_code.data(), static_cast<int>(iso_code.size()), _cur_iso_locale, static_cast<int>(std::size(_cur_iso_locale)));
 }
 
+static LibraryLoader::Function GetKernel32Function(const std::string &symbol_name)
+{
+	static LibraryLoader _kernel32("Kernel32.dll");
+	return _kernel32.GetFunction(symbol_name);
+}
+
 int OTTDStringCompare(std::string_view s1, std::string_view s2)
 {
 	typedef int (WINAPI *PFNCOMPARESTRINGEX)(LPCWSTR, DWORD, LPCWCH, int, LPCWCH, int, LPVOID, LPVOID, LPARAM);
-	static PFNCOMPARESTRINGEX _CompareStringEx = nullptr;
-	static bool first_time = true;
+	static const PFNCOMPARESTRINGEX _CompareStringEx = GetKernel32Function("CompareStringEx");
 
 #ifndef SORT_DIGITSASNUMBERS
 #	define SORT_DIGITSASNUMBERS 0x00000008  // use digits as numbers sort method
@@ -442,12 +447,6 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 #ifndef LINGUISTIC_IGNORECASE
 #	define LINGUISTIC_IGNORECASE 0x00000010 // linguistically appropriate 'ignore case'
 #endif
-
-	if (first_time) {
-		static LibraryLoader _kernel32("Kernel32.dll");
-		_CompareStringEx = _kernel32.GetFunction("CompareStringEx");
-		first_time = false;
-	}
 
 	int len_s1 = MultiByteToWideChar(CP_UTF8, 0, s1.data(), (int)s1.size(), nullptr, 0);
 	int len_s2 = MultiByteToWideChar(CP_UTF8, 0, s2.data(), (int)s2.size(), nullptr, 0);
@@ -478,14 +477,7 @@ int OTTDStringCompare(std::string_view s1, std::string_view s2)
 int Win32StringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
 	typedef int (WINAPI *PFNFINDNLSSTRINGEX)(LPCWSTR, DWORD, LPCWSTR, int, LPCWSTR, int, LPINT, LPNLSVERSIONINFO, LPVOID, LPARAM);
-	static PFNFINDNLSSTRINGEX _FindNLSStringEx = nullptr;
-	static bool first_time = true;
-
-	if (first_time) {
-		static LibraryLoader _kernel32("Kernel32.dll");
-		_FindNLSStringEx = _kernel32.GetFunction("FindNLSStringEx");
-		first_time = false;
-	}
+	static const PFNFINDNLSSTRINGEX _FindNLSStringEx = GetKernel32Function("FindNLSStringEx");
 
 	if (_FindNLSStringEx != nullptr) {
 		int len_str = MultiByteToWideChar(CP_UTF8, 0, str.data(), (int)str.size(), nullptr, 0);
