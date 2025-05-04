@@ -720,8 +720,9 @@ public:
 	/**
 	 * The mouse wheel has been turned.
 	 * @param wheel the amount of movement of the mouse wheel.
+	 * @param widget the widget the mouse hovers over.
 	 */
-	virtual void OnMouseWheel([[maybe_unused]] int wheel) {}
+	virtual void OnMouseWheel([[maybe_unused]] int wheel, [[maybe_unused]] WidgetID widget) {}
 
 
 	/**
