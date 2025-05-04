@@ -23,6 +23,8 @@ bool HasStringInExtensionList(std::string_view string, std::string_view substrin
 
 class OpenGLSprite;
 
+using OpenGLSpriteLRUCache = LRUCache<SpriteID, std::unique_ptr<OpenGLSprite>>;
+
 /** Platform-independent back-end class for OpenGL video drivers. */
 class OpenGLBackend : public SpriteEncoder {
 private:
@@ -58,7 +60,7 @@ private:
 	GLint  sprite_rgb_loc = 0; ///< Uniform location for RGB mode flag.
 	GLint  sprite_crash_loc = 0; ///< Uniform location for crash remap mode flag.
 
-	LRUCache<SpriteID, OpenGLSprite> cursor_cache; ///< Cache of encoded cursor sprites.
+	OpenGLSpriteLRUCache cursor_cache; ///< Cache of encoded cursor sprites.
 	PaletteID last_sprite_pal = (PaletteID)-1; ///< Last uploaded remap palette.
 	bool clear_cursor_cache = false; ///< A clear of the cursor cache is pending.
 
@@ -74,7 +76,7 @@ private:
 
 	void InternalClearCursorCache();
 
-	void RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom);
+	void RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom);
 
 public:
 	/** Get singleton instance of this class. */
@@ -134,7 +136,7 @@ private:
 	static bool Create();
 	static void Destroy();
 
-	bool BindTextures();
+	bool BindTextures() const;
 
 public:
 	OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite);
