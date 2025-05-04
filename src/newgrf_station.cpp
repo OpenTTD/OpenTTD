@@ -251,21 +251,6 @@ static uint32_t GetRailContinuationInfo(TileIndex tile)
 
 
 /**
- * Station variable cache
- * This caches 'expensive' station variable lookups which iterate over
- * several tiles that may be called multiple times per Resolve().
- */
-static struct {
-	uint32_t v40;
-	uint32_t v41;
-	uint32_t v45;
-	uint32_t v46;
-	uint32_t v47;
-	uint32_t v49;
-	uint8_t valid; ///< Bits indicating what variable is valid (for each bit, \c 0 is invalid, \c 1 is valid).
-} _svc;
-
-/**
  * Get the town scope associated with a station, if it exists.
  * On the first call, the town scope is created (if possible).
  * @return Town scope, if available.
@@ -322,31 +307,31 @@ TownScopeResolver *StationResolverObject::GetTown()
 	switch (variable) {
 		/* Calculated station variables */
 		case 0x40:
-			if (!HasBit(_svc.valid, 0)) { _svc.v40 = GetPlatformInfoHelper(this->tile, false, false, false); SetBit(_svc.valid, 0); }
-			return _svc.v40;
+			if (!this->cache.v40.has_value()) this->cache.v40 = GetPlatformInfoHelper(this->tile, false, false, false);
+			return *this->cache.v40;
 
 		case 0x41:
-			if (!HasBit(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(this->tile, true,  false, false); SetBit(_svc.valid, 1); }
-			return _svc.v41;
+			if (!this->cache.v41.has_value()) this->cache.v41 = GetPlatformInfoHelper(this->tile, true,  false, false);
+			return *this->cache.v41;
 
 		case 0x42: return GetTerrainType(this->tile) | (GetReverseRailTypeTranslation(GetRailType(this->tile), this->statspec->grf_prop.grffile) << 8);
 		case 0x43: return GetCompanyInfo(this->st->owner); // Station owner
 		case 0x44: return HasStationReservation(this->tile) ? 7 : 4; // PBS status
 		case 0x45:
-			if (!HasBit(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(this->tile); SetBit(_svc.valid, 2); }
-			return _svc.v45;
+			if (!this->cache.v45.has_value()) this->cache.v45 = GetRailContinuationInfo(this->tile);
+			return *this->cache.v45;
 
 		case 0x46:
-			if (!HasBit(_svc.valid, 3)) { _svc.v46 = GetPlatformInfoHelper(this->tile, false, false, true); SetBit(_svc.valid, 3); }
-			return _svc.v46;
+			if (!this->cache.v46.has_value()) this->cache.v46 = GetPlatformInfoHelper(this->tile, false, false, true);
+			return *this->cache.v46;
 
 		case 0x47:
-			if (!HasBit(_svc.valid, 4)) { _svc.v47 = GetPlatformInfoHelper(this->tile, true,  false, true); SetBit(_svc.valid, 4); }
-			return _svc.v47;
+			if (!this->cache.v47.has_value()) this->cache.v47 = GetPlatformInfoHelper(this->tile, true,  false, true);
+			return *this->cache.v47;
 
 		case 0x49:
-			if (!HasBit(_svc.valid, 5)) { _svc.v49 = GetPlatformInfoHelper(this->tile, false, true, false); SetBit(_svc.valid, 5); }
-			return _svc.v49;
+			if (!this->cache.v49.has_value()) this->cache.v49 = GetPlatformInfoHelper(this->tile, false, true, false);
+			return *this->cache.v49;
 
 		case 0x4A: // Animation frame of tile
 			return GetAnimationFrame(this->tile);
@@ -593,9 +578,6 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	: SpecializedResolverObject<StationRandomTriggers>(statspec->grf_prop.grffile, callback, callback_param1, callback_param2),
 	station_scope(*this, statspec, base_station, tile)
 {
-	/* Invalidate all cached vars */
-	_svc.valid = 0;
-
 	CargoType ctype = CargoGRFFileProps::SG_DEFAULT_NA;
 
 	if (this->station_scope.st == nullptr) {
