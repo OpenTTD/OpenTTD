@@ -137,10 +137,6 @@ bool GenerateTownName(Randomizer &randomizer, uint32_t *townnameparts, TownNames
 {
 	TownNameParams par(_settings_game.game_creation.town_name);
 
-	/* This function is called very often without entering the gameloop
-	 * in between. So reset layout cache to prevent it from growing too big. */
-	Layouter::ReduceLineCache();
-
 	/* Do not set i too low, since when we run out of names, we loop
 	 * for #tries only one time anyway - then we stop generating more
 	 * towns. Do not set it too high either, since looping through all

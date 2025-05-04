@@ -35,7 +35,7 @@
 
 
 /** Cache of ParagraphLayout lines. */
-Layouter::LineCache *Layouter::linecache;
+std::unique_ptr<Layouter::LineCache> Layouter::linecache;
 
 /** Cache of Font instances. */
 Layouter::FontColourMap Layouter::fonts[FS_END];
@@ -390,19 +390,20 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str
 {
 	if (linecache == nullptr) {
 		/* Create linecache on first access to avoid trouble with initialisation order of static variables. */
-		linecache = new LineCache();
+		linecache = std::make_unique<LineCache>(4096);
 	}
 
-	if (auto match = linecache->find(LineCacheQuery{state, str});
-		match != linecache->end()) {
-		return match->second;
+	if (auto match = linecache->GetIfValid(LineCacheQuery{state, str});
+		match != nullptr) {
+		return *match;
 	}
 
 	/* Create missing entry */
 	LineCacheKey key;
 	key.state_before = state;
 	key.str.assign(str);
-	return (*linecache)[std::move(key)];
+	linecache->Insert(key, {});
+	return *linecache->GetIfValid(key);
 }
 
 /**
@@ -410,18 +411,7 @@ Layouter::LineCacheItem &Layouter::GetCachedParagraphLayout(std::string_view str
  */
 void Layouter::ResetLineCache()
 {
-	if (linecache != nullptr) linecache->clear();
-}
-
-/**
- * Reduce the size of linecache if necessary to prevent infinite growth.
- */
-void Layouter::ReduceLineCache()
-{
-	if (linecache != nullptr) {
-		/* TODO LRU cache would be fancy, but not exactly necessary */
-		if (linecache->size() > 4096) ResetLineCache();
-	}
+	if (linecache != nullptr) linecache->Clear();
 }
 
 /**
