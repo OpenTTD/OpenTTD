@@ -433,8 +433,9 @@ struct MainWindow : Window
 		this->refresh_timeout.Reset();
 	}
 
-	void OnMouseWheel(int wheel) override
+	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
+		if (widget != WID_M_VIEWPORT) return;
 		if (_settings_client.gui.scrollwheel_scrolling != SWS_OFF) {
 			bool in = wheel < 0;
 

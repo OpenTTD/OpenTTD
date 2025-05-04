@@ -361,8 +361,9 @@ struct IConsoleWindow : Window
 		return GetCharAtPosition(_iconsole_cmdline.GetText(), pt.x - delta);
 	}
 
-	void OnMouseWheel(int wheel) override
+	void OnMouseWheel(int wheel, WidgetID widget) override
 	{
+		if (widget != WID_C_BACKGROUND) return;
 		this->Scroll(-wheel);
 	}
 
