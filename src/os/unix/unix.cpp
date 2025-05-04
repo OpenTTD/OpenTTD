@@ -145,23 +145,29 @@ static std::string convert_tofrom_fs(iconv_t convd, std::string_view name)
 }
 
 /**
+ * Open iconv converter.
+ */
+static std::optional<iconv_t> OpenIconv(std::string from, std::string to)
+{
+	iconv_t convd = iconv_open(from.c_str(), to.c_str());
+	if (convd == reinterpret_cast<iconv_t>(-1)) {
+		Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", from, to);
+		return std::nullopt;
+	}
+	return convd;
+}
+
+/**
  * Convert from OpenTTD's encoding to that of the local environment
  * @param name pointer to a valid string that will be converted
  * @return pointer to a new stringbuffer that contains the converted string
  */
 std::string OTTD2FS(std::string_view name)
 {
-	static iconv_t convd = (iconv_t)(-1);
-	if (convd == (iconv_t)(-1)) {
-		std::string env{GetLocalCode()};
-		convd = iconv_open(env.c_str(), INTERNALCODE);
-		if (convd == (iconv_t)(-1)) {
-			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", INTERNALCODE, env);
-			return std::string{name};
-		}
-	}
+	static const auto convd = OpenIconv(GetLocalCode(), INTERNALCODE);
+	if (!convd.has_value()) return std::string{name};
 
-	return convert_tofrom_fs(convd, name);
+	return convert_tofrom_fs(*convd, name);
 }
 
 /**
@@ -171,17 +177,10 @@ std::string OTTD2FS(std::string_view name)
  */
 std::string FS2OTTD(std::string_view name)
 {
-	static iconv_t convd = (iconv_t)(-1);
-	if (convd == (iconv_t)(-1)) {
-		std::string env{GetLocalCode()};
-		convd = iconv_open(INTERNALCODE, env.c_str());
-		if (convd == (iconv_t)(-1)) {
-			Debug(misc, 0, "[iconv] conversion from codeset '{}' to '{}' unsupported", env, INTERNALCODE);
-			return std::string{name};
-		}
-	}
+	static const auto convd = OpenIconv(INTERNALCODE, GetLocalCode());
+	if (!convd.has_value()) return std::string{name};
 
-	return convert_tofrom_fs(convd, name);
+	return convert_tofrom_fs(*convd, name);
 }
 
 #endif /* WITH_ICONV */
