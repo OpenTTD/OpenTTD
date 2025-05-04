@@ -546,7 +546,9 @@ public:
 	static int SortButtonWidth();
 
 	Window *FindChildWindow(WindowClass wc = WC_INVALID) const;
+	Window *FindChildWindowById(WindowClass wc, WindowNumber number) const;
 	void CloseChildWindows(WindowClass wc = WC_INVALID) const;
+	void CloseChildWindowById(WindowClass wc, WindowNumber number) const;
 	virtual void Close(int data = 0);
 	static void DeleteClosedWindows();
 
