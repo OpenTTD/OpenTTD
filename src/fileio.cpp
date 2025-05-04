@@ -129,7 +129,7 @@ bool FioCheckFileExists(std::string_view filename, Subdirectory subdir)
  * @param filename the file to test.
  * @return true if and only if the file exists.
  */
-bool FileExists(const std::string &filename)
+bool FileExists(std::string_view filename)
 {
 	std::error_code ec;
 	return std::filesystem::exists(OTTD2FS(filename), ec);

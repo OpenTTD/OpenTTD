@@ -27,7 +27,7 @@ void SanitizeFilename(std::string &filename);
 void AppendPathSeparator(std::string &buf);
 void DeterminePaths(std::string_view exe, bool only_local_path);
 std::unique_ptr<char[]> ReadFileToMem(const std::string &filename, size_t &lenp, size_t maxsize);
-bool FileExists(const std::string &filename);
+bool FileExists(std::string_view filename);
 bool ExtractTar(const std::string &tar_filename, Subdirectory subdir);
 
 extern std::string _personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
