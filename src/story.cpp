@@ -438,10 +438,10 @@ CommandCost CmdRemoveStoryPageElement(DoCommandFlags flags, StoryPageElementID p
 CommandCost CmdStoryPageButton(DoCommandFlags flags, TileIndex tile, StoryPageElementID page_element_id, VehicleID reference)
 {
 	if (!StoryPageElement::IsValidID(page_element_id)) return CMD_ERROR;
-	const StoryPageElement *const pe = StoryPageElement::Get(page_element_id);
+	const StoryPageElement * const pe = StoryPageElement::Get(page_element_id);
 
 	/* Check the player belongs to the company that owns the page. */
-	const StoryPage *const sp = StoryPage::Get(pe->page);
+	const StoryPage * const sp = StoryPage::Get(pe->page);
 	if (sp->company != CompanyID::Invalid() && sp->company != _current_company) return CMD_ERROR;
 
 	switch (pe->type) {

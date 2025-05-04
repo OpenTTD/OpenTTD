@@ -114,7 +114,7 @@ static auto _callback_table = MakeCallbackTable(std::make_index_sequence<_callba
 
 template <typename T> struct CallbackArgsHelper;
 template <typename... Targs>
-struct CallbackArgsHelper<void(*const)(Commands, const CommandCost &, Targs...)> {
+struct CallbackArgsHelper<void(* const)(Commands, const CommandCost &, Targs...)> {
 	using Args = std::tuple<std::decay_t<Targs>...>;
 };
 

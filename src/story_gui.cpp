@@ -890,7 +890,7 @@ public:
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
-		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
+		const StoryPageElement * const pe = StoryPageElement::GetIfValid(this->active_button_id);
 		if (pe == nullptr || pe->type != SPET_BUTTON_TILE) {
 			ResetObjectToPlace();
 			this->active_button_id = StoryPageElementID::Invalid();
@@ -904,7 +904,7 @@ public:
 
 	bool OnVehicleSelect(const Vehicle *v) override
 	{
-		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
+		const StoryPageElement * const pe = StoryPageElement::GetIfValid(this->active_button_id);
 		if (pe == nullptr || pe->type != SPET_BUTTON_VEHICLE) {
 			ResetObjectToPlace();
 			this->active_button_id = StoryPageElementID::Invalid();
