@@ -520,11 +520,11 @@ PACK_N(struct THREADNAME_INFO {
 /**
  * Signal thread name to any attached debuggers.
  */
-void SetCurrentThreadName(const char *threadName)
+void SetCurrentThreadName(const std::string &thread_name)
 {
 	THREADNAME_INFO info;
 	info.dwType = 0x1000;
-	info.szName = threadName;
+	info.szName = thread_name.c_str();
 	info.dwThreadID = -1;
 	info.dwFlags = 0;
 
@@ -537,5 +537,5 @@ void SetCurrentThreadName(const char *threadName)
 #pragma warning(pop)
 }
 #else
-void SetCurrentThreadName(const char *) {}
+void SetCurrentThreadName(const std::string &) {}
 #endif

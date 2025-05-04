@@ -30,7 +30,7 @@ inline void CSleep(int milliseconds)
  * Name the thread this function is called on for the debugger.
  * @param name Name to set for the thread..
  */
-void SetCurrentThreadName(const char *name);
+void SetCurrentThreadName(const std::string &name);
 
 
 /**
@@ -44,13 +44,13 @@ void SetCurrentThreadName(const char *name);
  * @return True if the thread was successfully started, false otherwise.
  */
 template <class TFn, class... TArgs>
-inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&&... _Ax)
+inline bool StartNewThread(std::thread *thr, std::string_view name, TFn&& _Fx, TArgs&&... _Ax)
 {
 	try {
 		static std::mutex thread_startup_mutex;
 		std::lock_guard<std::mutex> lock(thread_startup_mutex);
 
-		std::thread t([] (const char *name, TFn&& F, TArgs&&... A) {
+		std::thread t([] (std::string name, TFn&& F, TArgs&&... A) {
 				/* Delay starting the thread till the main thread is finished
 				 * with the administration. This prevent race-conditions on
 				 * startup. */
@@ -68,7 +68,7 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 				} catch (...) {
 					NOT_REACHED();
 				}
-			}, name, std::forward<TFn>(_Fx), std::forward<TArgs>(_Ax)...);
+			}, std::string{name}, std::forward<TFn>(_Fx), std::forward<TArgs>(_Ax)...);
 
 		if (thr != nullptr) {
 			*thr = std::move(t);
