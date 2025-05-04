@@ -47,8 +47,7 @@ public:
 	[[nodiscard]] bool AnyBytesUnused() const noexcept;
 	[[nodiscard]] size_type GetBytesUnused() const noexcept;
 
-	using BaseStringBuilder::PutBuffer;
-	void PutBuffer(const char *str, size_type len) override;
+	void PutBuffer(std::span<const char> str) override;
 
 	/**
 	 * Implementation of std::back_insert_iterator for non-growing destination buffer.

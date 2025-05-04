@@ -113,13 +113,13 @@ void BaseStringBuilder::PutChar(char c)
 void BaseStringBuilder::PutUtf8(char32_t c)
 {
 	auto [buf, len] = EncodeUtf8(c);
-	this->PutBuffer(buf, len);
+	this->PutBuffer({buf, len});
 }
 
 /**
  * Append buffer.
  */
-void StringBuilder::PutBuffer(const char *str, size_type len)
+void StringBuilder::PutBuffer(std::span<const char> str)
 {
-	this->dest->append(str, len);
+	this->dest->append(str.data(), str.size());
 }
