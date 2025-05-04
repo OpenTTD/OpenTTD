@@ -657,7 +657,7 @@ enum VarTypes : uint16_t {
 	SLE_VAR_NULL  =  9 << 4, ///< useful to write zeros in savegame.
 	SLE_VAR_STR   = 12 << 4, ///< string pointer
 	SLE_VAR_STRQ  = 13 << 4, ///< string pointer enclosed in quotes
-	SLE_VAR_NAME  = 14 << 4, ///< old custom name to be converted to a char pointer
+	SLE_VAR_NAME  = 14 << 4, ///< old custom name to be converted to a string pointer
 	/* 1 more possible memory-primitives */
 
 	/* Shortcut values */
