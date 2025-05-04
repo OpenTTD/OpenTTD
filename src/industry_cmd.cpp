@@ -63,7 +63,7 @@ void BuildOilRig(TileIndex tile);
 static uint8_t _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-std::array<std::vector<IndustryID>, NUM_INDUSTRYTYPES> Industry::industries;
+std::array<FlatSet<IndustryID>, NUM_INDUSTRYTYPES> Industry::industries;
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
@@ -190,8 +190,7 @@ Industry::~Industry()
 	delete this->psa;
 
 	auto &industries = Industry::industries[type];
-	auto it = std::ranges::lower_bound(industries, this->index);
-	industries.erase(it);
+	industries.erase(this->index);
 
 	DeleteIndustryNews(this->index);
 	CloseWindowById(WC_INDUSTRY_VIEW, this->index);
@@ -1760,7 +1759,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->type = type;
 
 	auto &industries = Industry::industries[type];
-	industries.emplace(std::ranges::lower_bound(industries, i->index), i->index);
+	industries.insert(i->index);
 
 	for (size_t index = 0; index < std::size(indspec->produced_cargo); ++index) {
 		if (!IsValidCargoType(indspec->produced_cargo[index])) break;

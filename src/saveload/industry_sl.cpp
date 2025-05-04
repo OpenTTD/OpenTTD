@@ -228,7 +228,7 @@ struct INDYChunkHandler : ChunkHandler {
 			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
 			}
-			Industry::industries[i->type].push_back(i->index); // Assume savegame indices are sorted.
+			Industry::industries[i->type].insert(i->index);
 		}
 	}
 
