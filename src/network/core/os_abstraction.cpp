@@ -155,8 +155,8 @@ bool SetNoDelay([[maybe_unused]] SOCKET d)
 	return true;
 #else
 	int flags = 1;
-	/* The (const char*) cast is needed for windows */
-	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, (const char *)&flags, sizeof(flags)) == 0;
+	/* The (const char *) cast is needed for windows */
+	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, reinterpret_cast<const char *>(&flags), sizeof(flags)) == 0;
 #endif
 }
 
