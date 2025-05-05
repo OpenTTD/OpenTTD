@@ -519,11 +519,11 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 	return UINT_MAX;
 }
 
-/* virtual */ ResolverResult StationResolverObject::ResolveReal(const RealSpriteGroup &group) const
+/* virtual */ const SpriteGroup *StationResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
 	if (this->station_scope.st == nullptr || !Station::IsExpected(this->station_scope.st)) {
 		if (!group.loading.empty()) return group.loading[0];
-		return std::monostate{};
+		return nullptr;
 	}
 
 	uint cargo = 0;
@@ -566,7 +566,7 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 	}
 
 	if (!group.loading.empty()) return group.loading[0];
-	return std::monostate{};
+	return nullptr;
 }
 
 GrfSpecFeature StationResolverObject::GetFeature() const
