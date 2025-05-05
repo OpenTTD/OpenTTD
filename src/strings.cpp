@@ -1599,13 +1599,14 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					}
 
 					if (e->info.callback_mask.Test(VehicleCallbackMask::Name)) {
-						uint16_t callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32_t>(arg >> 32), 0, e->index, nullptr);
+						std::array<int32_t, 6> regs100;
+						uint16_t callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32_t>(arg >> 32), 0, e->index, nullptr, regs100);
 						/* Not calling ErrorUnknownCallbackResult due to being inside string processing. */
 						if (callback != CALLBACK_FAILED && callback < 0x400) {
 							const GRFFile *grffile = e->GetGRF();
 							assert(grffile != nullptr);
 
-							builder += GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, 6);
+							builder += GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, regs100);
 							break;
 						}
 					}

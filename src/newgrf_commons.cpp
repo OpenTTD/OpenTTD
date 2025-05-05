@@ -463,11 +463,12 @@ uint32_t GetCompanyInfo(CompanyID owner, const Livery *l)
 /**
  * Get the error message from a shape/location/slope check callback result.
  * @param cb_res Callback result to translate. If bit 10 is set this is a standard error message, otherwise a NewGRF provided string.
+ * @param textstack Text parameter stack.
  * @param grffile NewGRF to use to resolve a custom error message.
  * @param default_error Error message to use for the generic error.
  * @return CommandCost indicating success or the error message.
  */
-CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRFFile *grffile, StringID default_error)
+CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, std::span<const int32_t> textstack, const GRFFile *grffile, StringID default_error)
 {
 	CommandCost res;
 
@@ -478,7 +479,7 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, const GRF
 		if (!IsLocalCompany()) return res;
 
 		StringID stringid = GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + cb_res);
-		auto params = GetGRFSringTextStackParameters(grffile, stringid, 4);
+		auto params = GetGRFSringTextStackParameters(grffile, stringid, textstack);
 		res.SetEncodedMessage(GetEncodedStringWithArgs(stringid, params));
 	} else {
 		switch (cb_res) {
