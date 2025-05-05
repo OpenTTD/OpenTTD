@@ -243,10 +243,10 @@ uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t p
 
 static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, Colours colour)
 {
-	const DrawTileSprites *dts = group->ProcessRegisters(nullptr);
+	auto dts = group->ProcessRegisters(nullptr);
 
-	SpriteID image = dts->ground.sprite;
-	SpriteID pal   = dts->ground.pal;
+	SpriteID image = dts.ground.sprite;
+	SpriteID pal = dts.ground.pal;
 
 	if (GB(image, 0, SPRITE_WIDTH) != 0) {
 		if (image == SPR_FLAT_WATER_TILE && IsTileOnWater(ti->tile)) {
@@ -256,7 +256,7 @@ static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGrou
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, dts, TO_BUILDINGS, 0, GetColourPalette(colour));
+	DrawNewGRFTileSeq(ti, &dts, TO_BUILDINGS, 0, GetColourPalette(colour));
 }
 
 bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
