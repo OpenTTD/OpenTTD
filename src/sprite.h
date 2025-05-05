@@ -58,8 +58,7 @@ struct DrawTileSprites {
 struct DrawTileSpriteSpan : DrawTileSprites {
 	std::span<const DrawTileSeqStruct> seq; ///< Child sprites,
 
-	template <size_t N>
-	DrawTileSpriteSpan(PalSpriteID ground, const DrawTileSeqStruct (&seq)[N]) : DrawTileSprites(ground), seq(std::begin(seq), std::end(seq)) {}
+	DrawTileSpriteSpan(PalSpriteID ground, std::span<const DrawTileSeqStruct> seq) : DrawTileSprites(ground), seq(seq) {}
 	DrawTileSpriteSpan(PalSpriteID ground) : DrawTileSprites(ground) {};
 	DrawTileSpriteSpan() = default;
 

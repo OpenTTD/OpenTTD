@@ -142,10 +142,9 @@ struct NewGRFSpriteLayout : DrawTileSprites {
 	 * @pre #PrepareLayout() and #ProcessRegisters() need calling first.
 	 * @return result spritelayout
 	 */
-	std::span<DrawTileSeqStruct> GetLayout(PalSpriteID *ground) const
+	DrawTileSpriteSpan GetLayout() const
 	{
-		*ground = result_seq[0].image;
-		return {++result_seq.begin(), result_seq.end()};
+		return {result_seq[0].image, {++result_seq.begin(), result_seq.end()}};
 	}
 
 	std::span<const DrawTileSeqStruct> GetSequence() const override { return {this->seq.begin(), this->seq.end()}; }

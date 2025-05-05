@@ -842,7 +842,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 			layout->ProcessRegisters(var10, var10_relocation, separate_ground);
 		}
 
-		tmp_rail_layout.seq = layout->GetLayout(&tmp_rail_layout.ground);
+		tmp_rail_layout = layout->GetLayout();
 		sprites = &tmp_rail_layout;
 		total_offset = 0;
 	} else {

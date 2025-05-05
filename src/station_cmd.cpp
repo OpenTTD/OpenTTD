@@ -3076,7 +3076,7 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 static void DrawTile_Station(TileInfo *ti)
 {
 	const NewGRFSpriteLayout *layout = nullptr;
-	DrawTileSpriteSpan tmp_rail_layout;
+	DrawTileSpriteSpan tmp_layout;
 	const DrawTileSprites *t = nullptr;
 	int32_t total_offset;
 	const RailTypeInfo *rti = nullptr;
@@ -3273,8 +3273,8 @@ draw_default_foundation:
 				uint32_t var10_relocation = GetCustomStationRelocation(statspec, st, ti->tile, var10);
 				layout->ProcessRegisters(var10, var10_relocation, separate_ground);
 			}
-			tmp_rail_layout.seq = layout->GetLayout(&tmp_rail_layout.ground);
-			t = &tmp_rail_layout;
+			tmp_layout = layout->GetLayout();
+			t = &tmp_layout;
 			total_offset = 0;
 		} else if (statspec != nullptr) {
 			/* Simple sprite layout */
@@ -3337,7 +3337,8 @@ draw_default_foundation:
 				if (type == StationType::RoadWaypoint && stop_draw_mode.Test(RoadStopDrawMode::WaypGround)) {
 					draw_ground = true;
 				}
-				t = group->ProcessRegisters(nullptr);
+				tmp_layout = group->ProcessRegisters(nullptr);
+				t = &tmp_layout;
 			}
 		}
 
