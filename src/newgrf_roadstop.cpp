@@ -344,10 +344,12 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	DrawCommonTileSeqInGUI(x, y, &dts, 0, 0, palette, true);
 }
 
-const TileLayoutSpriteGroup *GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view)
+std::optional<SpriteLayoutProcessor> GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view)
 {
 	RoadStopResolverObject object(spec, st, ti->tile, INVALID_ROADTYPE, type, view);
-	return object.Resolve<TileLayoutSpriteGroup>();
+	auto group = object.Resolve<TileLayoutSpriteGroup>();
+	if (group == nullptr) return std::nullopt;
+	return group->ProcessRegisters(nullptr);
 }
 
 /** Wrapper for animation control, see GetRoadStopCallback. */

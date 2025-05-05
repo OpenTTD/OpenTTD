@@ -158,11 +158,8 @@ uint32_t IndustryTileResolverObject::GetDebugID() const
 	return GetIndustryTileSpec(gfx)->grf_prop.local_id;
 }
 
-static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, Colours rnd_colour, uint8_t stage)
+static void IndustryDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, Colours rnd_colour, uint8_t stage)
 {
-	auto processor = group->ProcessRegisters(&stage);
-	auto dts = processor.GetLayout();
-
 	SpriteID image = dts.ground.sprite;
 	PaletteID pal = dts.ground.pal;
 
@@ -211,7 +208,9 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 	/* Limit the building stage to the number of stages supplied. */
 	uint8_t stage = GetIndustryConstructionStage(ti->tile);
-	IndustryDrawTileLayout(ti, group, i->random_colour, stage);
+	auto processor = group->ProcessRegisters(&stage);
+	auto dts = processor.GetLayout();
+	IndustryDrawTileLayout(ti, dts, i->random_colour, stage);
 	return true;
 }
 

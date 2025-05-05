@@ -241,11 +241,8 @@ uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t p
 	return object.ResolveCallback();
 }
 
-static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, Colours colour)
+static void AirportDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, Colours colour)
 {
-	auto processor = group->ProcessRegisters(nullptr);
-	auto dts = processor.GetLayout();
-
 	SpriteID image = dts.ground.sprite;
 	SpriteID pal = dts.ground.pal;
 
@@ -279,7 +276,9 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 		return false;
 	}
 
-	AirportDrawTileLayout(ti, group, Company::Get(st->owner)->colour);
+	auto processor = group->ProcessRegisters(nullptr);
+	auto dts = processor.GetLayout();
+	AirportDrawTileLayout(ti, dts, Company::Get(st->owner)->colour);
 	return true;
 }
 

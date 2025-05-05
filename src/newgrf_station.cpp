@@ -627,6 +627,18 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st
 	return group->sprite - SPR_RAIL_PLATFORM_Y_FRONT;
 }
 
+void GetCustomStationRelocation(SpriteLayoutProcessor &processor, const StationSpec *statspec, BaseStation *st, TileIndex tile)
+{
+	StationResolverObject object(statspec, st, tile, CBID_NO_CALLBACK);
+	for (uint8_t var10 : processor.Var10Values()) {
+		object.ResetState();
+		object.callback_param1 = var10;
+		const auto *group = object.Resolve<ResultSpriteGroup>();
+		if (group == nullptr || group->num_sprites == 0) continue;
+		processor.ProcessRegisters(var10, group->sprite - SPR_RAIL_PLATFORM_Y_FRONT);
+	}
+}
+
 /**
  * Resolve the sprites for custom station foundations.
  * @param statspec Station spec
@@ -820,10 +832,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 		/* Sprite layout which needs preprocessing */
 		bool separate_ground = statspec->flags.Test(StationSpecFlag::SeparateGround);
 		processor = SpriteLayoutProcessor(*layout, total_offset, rti->fallback_railtype, 0, 0, separate_ground);
-		for (uint8_t var10 : processor.Var10Values()) {
-			uint32_t var10_relocation = GetCustomStationRelocation(statspec, nullptr, INVALID_TILE, var10);
-			processor.ProcessRegisters(var10, var10_relocation);
-		}
+		GetCustomStationRelocation(processor, statspec, nullptr, INVALID_TILE);
 		tmp_rail_layout = processor.GetLayout();
 		sprites = &tmp_rail_layout;
 		total_offset = 0;
