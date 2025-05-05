@@ -160,7 +160,8 @@ uint32_t IndustryTileResolverObject::GetDebugID() const
 
 static void IndustryDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, Colours rnd_colour, uint8_t stage)
 {
-	auto dts = group->ProcessRegisters(&stage);
+	auto processor = group->ProcessRegisters(&stage);
+	auto dts = processor.GetLayout();
 
 	SpriteID image = dts.ground.sprite;
 	PaletteID pal = dts.ground.pal;

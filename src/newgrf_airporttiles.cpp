@@ -243,7 +243,8 @@ uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t p
 
 static void AirportDrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, Colours colour)
 {
-	auto dts = group->ProcessRegisters(nullptr);
+	auto processor = group->ProcessRegisters(nullptr);
+	auto dts = processor.GetLayout();
 
 	SpriteID image = dts.ground.sprite;
 	SpriteID pal = dts.ground.pal;

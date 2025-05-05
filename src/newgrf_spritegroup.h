@@ -260,7 +260,7 @@ struct TileLayoutSpriteGroup : SpriteGroup {
 
 	NewGRFSpriteLayout dts{};
 
-	DrawTileSpriteSpan ProcessRegisters(uint8_t *stage) const;
+	SpriteLayoutProcessor ProcessRegisters(uint8_t *stage) const;
 };
 
 struct IndustryProductionSpriteGroup : SpriteGroup {
