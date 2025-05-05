@@ -231,13 +231,6 @@ Money HouseSpec::GetRemovalCost() const
 /* Local */
 static int _grow_town_result;
 
-/* The possible states of town growth. */
-enum TownGrowthResult {
-	GROWTH_SUCCEED         = -1,
-	GROWTH_SEARCH_STOPPED  =  0
-	/* GROWTH_SEARCH_RUNNING >= 1 */
-};
-
 static bool TryBuildTownHouse(Town *t, TileIndex tile);
 static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize size, bool city, TownLayout layout);
 
@@ -1509,6 +1502,13 @@ static inline bool TownAllowedToBuildRoads()
 	return _settings_game.economy.allow_town_roads || _generating_world || _game_mode == GM_EDITOR;
 }
 
+/* The possible states of town growth. */
+enum class TownGrowthResult {
+	Succeed,
+	SearchStopped,
+	Continue,
+};
+
 /**
  * Grows the given town.
  * There are at the moment 3 possible way's for
@@ -1525,8 +1525,9 @@ static inline bool TownAllowedToBuildRoads()
  * @param cur_rb The current tiles RoadBits
  * @param target_dir The target road dir
  * @param t1 The current town
+ * @return Result so far.
  */
-static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection target_dir, Town *t1)
+static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection target_dir, Town *t1)
 {
 	RoadBits rcmd = ROAD_NONE;  // RoadBits for the road construction command
 	TileIndex tile = *tile_ptr; // The main tile on which we base our growth
@@ -1534,12 +1535,11 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	assert(tile < Map::Size());
 
 	if (cur_rb == ROAD_NONE) {
-		/* Tile has no road. First reset the status counter
-		 * to say that this is the last iteration. */
-		_grow_town_result = GROWTH_SEARCH_STOPPED;
+		/* Tile has no road.
+		 * We will return TownGrowthResult::SearchStopped to say that this is the last iteration. */
 
-		if (!TownAllowedToBuildRoads()) return;
-		if (!_settings_game.economy.allow_town_level_crossings && IsTileType(tile, MP_RAILWAY)) return;
+		if (!TownAllowedToBuildRoads()) return TownGrowthResult::SearchStopped;
+		if (!_settings_game.economy.allow_town_level_crossings && IsTileType(tile, MP_RAILWAY)) return TownGrowthResult::SearchStopped;
 
 		/* Remove hills etc */
 		if (!_settings_game.construction.build_on_slopes || Chance16(1, 6)) LevelTownLand(tile);
@@ -1551,12 +1551,12 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			case TL_3X3_GRID:
 			case TL_2X2_GRID:
 				rcmd = GetTownRoadGridElement(t1, tile, target_dir);
-				if (rcmd == ROAD_NONE) return;
+				if (rcmd == ROAD_NONE) return TownGrowthResult::SearchStopped;
 				break;
 
 			case TL_BETTER_ROADS:
 			case TL_ORIGINAL:
-				if (!IsRoadAllowedHere(t1, tile, target_dir)) return;
+				if (!IsRoadAllowedHere(t1, tile, target_dir)) return TownGrowthResult::SearchStopped;
 
 				DiagDirection source_dir = ReverseDiagDir(target_dir);
 
@@ -1568,12 +1568,12 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				if (!IsRoadAllowedHere(t1, TileAddByDiagDir(tile, target_dir), target_dir)) {
 					/* A road is not allowed to continue the randomized road,
 					 *  return if the road we're trying to build is curved. */
-					if (target_dir != ReverseDiagDir(source_dir)) return;
+					if (target_dir != ReverseDiagDir(source_dir)) return TownGrowthResult::SearchStopped;
 
 					/* Return if neither side of the new road is a house */
 					if (!IsTileType(TileAddByDiagDir(tile, ChangeDiagDir(target_dir, DIAGDIRDIFF_90RIGHT)), MP_HOUSE) &&
 							!IsTileType(TileAddByDiagDir(tile, ChangeDiagDir(target_dir, DIAGDIRDIFF_90LEFT)), MP_HOUSE)) {
-						return;
+						return TownGrowthResult::SearchStopped;
 					}
 
 					/* That means that the road is only allowed if there is a house
@@ -1585,15 +1585,13 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		}
 
 	} else if (target_dir < DIAGDIR_END && !(cur_rb & DiagDirToRoadBits(ReverseDiagDir(target_dir)))) {
-		if (!TownCanGrowRoad(tile)) return;
+		if (!TownCanGrowRoad(tile)) return TownGrowthResult::Continue;
+
+		if (!TownAllowedToBuildRoads()) return TownGrowthResult::SearchStopped;
 
 		/* Continue building on a partial road.
 		 * Should be always OK, so we only generate
 		 * the fitting RoadBits */
-		_grow_town_result = GROWTH_SEARCH_STOPPED;
-
-		if (!TownAllowedToBuildRoads()) return;
-
 		switch (t1->layout) {
 			default: NOT_REACHED();
 
@@ -1616,7 +1614,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (target_dir != DIAGDIR_END || Chance16(1, 2))) {
 				*tile_ptr = GetOtherTunnelBridgeEnd(tile);
 			}
-			return;
+			return TownGrowthResult::Continue;
 		}
 
 		/* Possibly extend the road in a direction.
@@ -1633,7 +1631,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			 * one common bit with a straight road so it has the same
 			 * chance to be chosen as the house on the side of a road.
 			 */
-			if ((cur_rb & ROAD_X) != target_rb) return;
+			if ((cur_rb & ROAD_X) != target_rb) return TownGrowthResult::Continue;
 
 			/* Check whether it is a turn and if so determine
 			 * position of the corner tile */
@@ -1651,7 +1649,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 					house_tile = TileAddByDir(tile, DIR_E);
 					break;
 				default:
-					return;  // not a turn
+					return TownGrowthResult::Continue; // not a turn
 			}
 			target_dir = DIAGDIR_END;
 		} else {
@@ -1659,9 +1657,11 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		}
 
 		/* Don't walk into water. */
-		if (HasTileWaterGround(house_tile)) return;
+		if (HasTileWaterGround(house_tile)) return TownGrowthResult::Continue;
 
-		if (!IsValidTile(house_tile)) return;
+		if (!IsValidTile(house_tile)) return TownGrowthResult::Continue;
+
+		TownGrowthResult result = TownGrowthResult::Continue;
 
 		if (target_dir != DIAGDIR_END && TownAllowedToBuildRoads()) {
 			switch (t1->layout) {
@@ -1669,7 +1669,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 				case TL_3X3_GRID: // Use 2x2 grid afterwards!
 					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir))) {
-						_grow_town_result = GROWTH_SUCCEED;
+						result = TownGrowthResult::Succeed;
 					}
 					[[fallthrough]];
 
@@ -1680,7 +1680,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 				case TL_BETTER_ROADS: // Use original afterwards!
 					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir))) {
-						_grow_town_result = GROWTH_SUCCEED;
+						result = TownGrowthResult::Succeed;
 					}
 					[[fallthrough]];
 
@@ -1704,39 +1704,36 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				/* And build a house.
 				 * Set result to -1 if we managed to build it. */
 				if (TryBuildTownHouse(t1, house_tile)) {
-					_grow_town_result = GROWTH_SUCCEED;
+					result = TownGrowthResult::Succeed;
 				}
 			}
-			return;
+			return result;
 		}
 
-		if (!TownCanGrowRoad(tile)) return;
-
-		_grow_town_result = GROWTH_SEARCH_STOPPED;
+		if (!TownCanGrowRoad(tile)) return result;
 	}
 
 	/* Return if a water tile */
-	if (HasTileWaterGround(tile)) return;
+	if (HasTileWaterGround(tile)) return TownGrowthResult::SearchStopped;
 
 	/* Make the roads look nicer */
 	rcmd = CleanUpRoadBits(tile, rcmd);
-	if (rcmd == ROAD_NONE) return;
+	if (rcmd == ROAD_NONE) return TownGrowthResult::SearchStopped;
 
 	/* Only use the target direction for bridges and tunnels to ensure they're connected.
 	 * The target_dir is as computed previously according to town layout, so
 	 * it will match it perfectly. */
 	if (GrowTownWithBridge(t1, tile, target_dir)) {
-		_grow_town_result = GROWTH_SUCCEED;
-		return;
+		return TownGrowthResult::Succeed;
 	}
 	if (GrowTownWithTunnel(t1, tile, target_dir)) {
-		_grow_town_result = GROWTH_SUCCEED;
-		return;
+		return TownGrowthResult::Succeed;
 	}
 
 	if (GrowTownWithRoad(t1, tile, rcmd)) {
-		_grow_town_result = GROWTH_SUCCEED;
+		return TownGrowthResult::Succeed;
 	}
+	return TownGrowthResult::SearchStopped;
 }
 
 /**
@@ -1819,8 +1816,15 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 		RoadBits cur_rb = GetTownRoadBits(tile); // The RoadBits of the current tile
 
 		/* Try to grow the town from this point */
-		GrowTownInTile(&tile, cur_rb, target_dir, t);
-		if (_grow_town_result == GROWTH_SUCCEED) return true;
+		switch (GrowTownInTile(&tile, cur_rb, target_dir, t)) {
+			case TownGrowthResult::Succeed:
+				return true;
+			case TownGrowthResult::SearchStopped:
+				_grow_town_result = 0;
+				break;
+			default:
+				break;
+		};
 
 		/* Exclude the source position from the bitmask
 		 * and return if no more road blocks available */
