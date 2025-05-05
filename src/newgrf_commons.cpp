@@ -651,10 +651,11 @@ SpriteLayoutProcessor::SpriteLayoutProcessor(const NewGRFSpriteLayout &raw_layou
 
 /**
  * Evaluates the register modifiers and integrates them into the preprocessed sprite layout.
+ * @param object ResolverObject owning the temporary storage.
  * @param resolved_var10  The value of var10 the action-1-2-3 chain was evaluated for.
  * @param resolved_sprite Result sprite of the action-1-2-3 chain.
  */
-void SpriteLayoutProcessor::ProcessRegisters(uint8_t resolved_var10, uint32_t resolved_sprite)
+void SpriteLayoutProcessor::ProcessRegisters(const ResolverObject &object, uint8_t resolved_var10, uint32_t resolved_sprite)
 {
 	assert(this->raw_layout != nullptr);
 	const TileLayoutRegisters *regs = this->raw_layout->registers.empty() ? nullptr : this->raw_layout->registers.data();
@@ -669,12 +670,12 @@ void SpriteLayoutProcessor::ProcessRegisters(uint8_t resolved_var10, uint32_t re
 			uint8_t var10 = (flags & TLF_SPRITE_VAR10) ? regs->sprite_var10 : (ground && this->separate_ground ? 1 : 0);
 			if (var10 == resolved_var10) {
 				/* Apply registers */
-				if ((flags & TLF_DODRAW) && GetRegister(regs->dodraw) == 0) {
+				if ((flags & TLF_DODRAW) && object.GetRegister(regs->dodraw) == 0) {
 					result.image.sprite = 0;
 				} else {
 					if (HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE)) result.image.sprite += resolved_sprite;
 					if (flags & TLF_SPRITE) {
-						int16_t offset = (int16_t)GetRegister(regs->sprite); // mask to 16 bits to avoid trouble
+						int16_t offset = static_cast<int16_t>(object.GetRegister(regs->sprite)); // mask to 16 bits to avoid trouble
 						if (!HasBit(result.image.sprite, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_sprite_offset)) {
 							result.image.sprite += offset;
 						} else {
@@ -684,13 +685,13 @@ void SpriteLayoutProcessor::ProcessRegisters(uint8_t resolved_var10, uint32_t re
 
 					if (result.IsParentSprite()) {
 						if (flags & TLF_BB_XY_OFFSET) {
-							result.delta_x += GetRegister(regs->delta.parent[0]);
-							result.delta_y += GetRegister(regs->delta.parent[1]);
+							result.delta_x += object.GetRegister(regs->delta.parent[0]);
+							result.delta_y += object.GetRegister(regs->delta.parent[1]);
 						}
-						if (flags & TLF_BB_Z_OFFSET) result.delta_z += GetRegister(regs->delta.parent[2]);
+						if (flags & TLF_BB_Z_OFFSET) result.delta_z += object.GetRegister(regs->delta.parent[2]);
 					} else {
-						if (flags & TLF_CHILD_X_OFFSET) result.delta_x += GetRegister(regs->delta.child[0]);
-						if (flags & TLF_CHILD_Y_OFFSET) result.delta_y += GetRegister(regs->delta.child[1]);
+						if (flags & TLF_CHILD_X_OFFSET) result.delta_x += object.GetRegister(regs->delta.child[0]);
+						if (flags & TLF_CHILD_Y_OFFSET) result.delta_y += object.GetRegister(regs->delta.child[1]);
 					}
 				}
 			}
@@ -704,7 +705,7 @@ void SpriteLayoutProcessor::ProcessRegisters(uint8_t resolved_var10, uint32_t re
 				/* Apply registers */
 				if (HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) result.image.pal += resolved_sprite;
 				if (flags & TLF_PALETTE) {
-					int16_t offset = (int16_t)GetRegister(regs->palette); // mask to 16 bits to avoid trouble
+					int16_t offset = static_cast<int16_t>(object.GetRegister(regs->palette)); // mask to 16 bits to avoid trouble
 					if (!HasBit(result.image.pal, SPRITE_MODIFIER_CUSTOM_SPRITE) || (offset >= 0 && offset < regs->max_palette_offset)) {
 						result.image.pal += offset;
 					} else {

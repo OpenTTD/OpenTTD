@@ -507,7 +507,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	if (group != nullptr) {
 		/* Limit the building stage to the number of stages supplied. */
 		uint8_t stage = GetHouseBuildingStage(ti->tile);
-		auto processor = group->ProcessRegisters(&stage);
+		auto processor = group->ProcessRegisters(object, &stage);
 		auto dts = processor.GetLayout();
 		DrawTileLayout(ti, dts, stage, house_id);
 	}
@@ -528,7 +528,7 @@ void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id
 	if (group == nullptr) return;
 
 	uint8_t stage = TOWN_HOUSE_COMPLETED;
-	auto processor = group->ProcessRegisters(&stage);
+	auto processor = group->ProcessRegisters(object, &stage);
 	auto dts = processor.GetLayout();
 
 	PaletteID palette = GetColourPalette(spec->random_colour[0]);

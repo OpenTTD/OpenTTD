@@ -208,7 +208,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 	/* Limit the building stage to the number of stages supplied. */
 	uint8_t stage = GetIndustryConstructionStage(ti->tile);
-	auto processor = group->ProcessRegisters(&stage);
+	auto processor = group->ProcessRegisters(object, &stage);
 	auto dts = processor.GetLayout();
 	IndustryDrawTileLayout(ti, dts, i->random_colour, stage);
 	return true;

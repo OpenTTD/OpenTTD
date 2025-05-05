@@ -476,7 +476,7 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return;
 
-	auto processor = group->ProcessRegisters(nullptr);
+	auto processor = group->ProcessRegisters(object, nullptr);
 	auto dts = processor.GetLayout();
 	DrawTileLayout(ti, dts, spec);
 }
@@ -494,7 +494,7 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return;
 
-	auto processor = group->ProcessRegisters(nullptr);
+	auto processor = group->ProcessRegisters(object, nullptr);
 	auto dts = processor.GetLayout();
 
 	PaletteID palette;
