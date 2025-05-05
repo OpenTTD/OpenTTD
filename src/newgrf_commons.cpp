@@ -684,13 +684,13 @@ void SpriteLayoutProcessor::ProcessRegisters(uint8_t resolved_var10, uint32_t re
 
 					if (result.IsParentSprite()) {
 						if (flags & TLF_BB_XY_OFFSET) {
-							result.delta_x += static_cast<int32_t>(GetRegister(regs->delta.parent[0]));
-							result.delta_y += static_cast<int32_t>(GetRegister(regs->delta.parent[1]));
+							result.delta_x += GetRegister(regs->delta.parent[0]);
+							result.delta_y += GetRegister(regs->delta.parent[1]);
 						}
-						if (flags & TLF_BB_Z_OFFSET)    result.delta_z += static_cast<int32_t>(GetRegister(regs->delta.parent[2]));
+						if (flags & TLF_BB_Z_OFFSET) result.delta_z += GetRegister(regs->delta.parent[2]);
 					} else {
-						if (flags & TLF_CHILD_X_OFFSET) result.delta_x += static_cast<int32_t>(GetRegister(regs->delta.child[0]));
-						if (flags & TLF_CHILD_Y_OFFSET) result.delta_y += static_cast<int32_t>(GetRegister(regs->delta.child[1]));
+						if (flags & TLF_CHILD_X_OFFSET) result.delta_x += GetRegister(regs->delta.child[0]);
+						if (flags & TLF_CHILD_Y_OFFSET) result.delta_y += GetRegister(regs->delta.child[1]);
 					}
 				}
 			}

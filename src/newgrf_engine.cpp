@@ -621,7 +621,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			if (object->ro.callback == CBID_NO_CALLBACK || object->ro.callback == CBID_RANDOM_TRIGGER || object->ro.callback == CBID_TRAIN_ALLOW_WAGON_ATTACH ||
 					object->ro.callback == CBID_VEHICLE_START_STOP_CHECK || object->ro.callback == CBID_VEHICLE_32DAY_CALLBACK || object->ro.callback == CBID_VEHICLE_COLOUR_MAPPING ||
 					object->ro.callback == CBID_VEHICLE_SPAWN_VISUAL_EFFECT) {
-				Vehicle *u = v->Move((int32_t)GetRegister(0x10F));
+				Vehicle *u = v->Move(GetRegister(0x10F));
 				if (u == nullptr) return 0; // available, but zero
 
 				if (parameter == 0x5F) {
@@ -1102,7 +1102,7 @@ static void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction d
 		object.ResetState();
 		object.callback_param1 = image_type | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
-		uint32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
+		int32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {
 			result->seq[result->count].sprite = group->sprite + (direction % group->num_sprites);
 			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
@@ -1145,7 +1145,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 		object.ResetState();
 		object.callback_param1 = image_type | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
-		uint32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
+		int32_t reg100 = sprite_stack ? GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {
 			result->seq[result->count].sprite = group->sprite + (rotor_pos % group->num_sprites);
 			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
