@@ -2701,10 +2701,12 @@ static const int8_t _vehicle_smoke_pos[8] = {
  */
 static void SpawnAdvancedVisualEffect(const Vehicle *v)
 {
-	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_SPAWN_VISUAL_EFFECT, 0, Random(), v->engine_type, v);
+	std::array<int32_t, 4> regs100;
+	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_SPAWN_VISUAL_EFFECT, 0, Random(), v->engine_type, v, regs100);
 	if (callback == CALLBACK_FAILED) return;
 
 	uint count = GB(callback, 0, 2);
+	assert(count <= std::size(regs100));
 	bool auto_center = HasBit(callback, 13);
 	bool auto_rotate = !HasBit(callback, 14);
 
@@ -2725,7 +2727,7 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 	int8_t y_center = _vehicle_smoke_pos[t_dir] * l_center;
 
 	for (uint i = 0; i < count; i++) {
-		int32_t reg = GetRegister(0x100 + i);
+		int32_t reg = regs100[i];
 		uint type = GB(reg,  0, 8);
 		int8_t x    = GB(reg,  8, 8);
 		int8_t y    = GB(reg, 16, 8);

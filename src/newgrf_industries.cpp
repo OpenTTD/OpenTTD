@@ -524,12 +524,13 @@ uint32_t IndustriesResolverObject::GetDebugID() const
  * @param industry The industry to do the callback for.
  * @param type The type of industry to do the callback for.
  * @param tile The tile associated with the callback.
+ * @param[out] regs100 Additional result values from registers 100+
  * @return The callback result.
  */
-uint16_t GetIndustryCallback(CallbackID callback, uint32_t param1, uint32_t param2, Industry *industry, IndustryType type, TileIndex tile)
+uint16_t GetIndustryCallback(CallbackID callback, uint32_t param1, uint32_t param2, Industry *industry, IndustryType type, TileIndex tile, std::span<int32_t> regs100)
 {
 	IndustriesResolverObject object(tile, industry, type, 0, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**
@@ -559,7 +560,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	ind.psa = nullptr;
 
 	IndustriesResolverObject object(tile, &ind, type, seed, CBID_INDUSTRY_LOCATION, 0, creation_type);
-	uint16_t result = object.ResolveCallback();
+	uint16_t result = object.ResolveCallback({});
 
 	/* Unlike the "normal" cases, not having a valid result means we allow
 	 * the building of the industry, as that's how it's done in TTDP. */

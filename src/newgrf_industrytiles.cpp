@@ -179,13 +179,13 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan 
 	DrawNewGRFTileSeq(ti, &dts, TO_INDUSTRIES, stage, GetColourPalette(rnd_colour));
 }
 
-uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile)
+uint16_t GetIndustryTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile, std::span<int32_t> regs100)
 {
 	assert(industry != nullptr && IsValidTile(tile));
 	assert(industry->index == IndustryID::Invalid() || IsTileType(tile, MP_INDUSTRY));
 
 	IndustryTileResolverObject object(gfx_id, tile, industry, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds)

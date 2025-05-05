@@ -161,9 +161,10 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  * @param object  pre-populated resolver object
  * @param param1_grfv7 callback_param1 for GRFs up to version 7.
  * @param param1_grfv8 callback_param1 for GRFs from version 8 on.
+ * @param[out] regs100 Additional result values from registers 100+
  * @return answering GRFFile and callback value if successful, or CALLBACK_FAILED
  */
-static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(uint8_t feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8)
+static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(uint8_t feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8, std::span<int32_t> regs100 = {})
 {
 	assert(feature < lengthof(_gcl));
 
@@ -173,7 +174,7 @@ static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(uint8_t fea
 		object.root_spritegroup = it.group;
 		/* Set callback param based on GRF version. */
 		object.callback_param1 = it.file->grf_version >= 8 ? param1_grfv8 : param1_grfv7;
-		uint16_t result = object.ResolveCallback();
+		uint16_t result = object.ResolveCallback(regs100);
 		if (result == CALLBACK_FAILED) continue;
 
 		return {it.file, result};

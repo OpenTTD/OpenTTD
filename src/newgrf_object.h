@@ -165,7 +165,7 @@ private:
 /** Class containing information relating to object classes. */
 using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
 
-uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view = 0);
+uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, std::span<int32_t> regs100 = {}, uint8_t view = 0);
 
 void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec);
 void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view);

@@ -269,10 +269,10 @@ TownScopeResolver *RoadStopResolverObject::GetTown()
 	return &*this->town_scope;
 }
 
-uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view)
+uint16_t GetRoadStopCallback(CallbackID callback, uint32_t param1, uint32_t param2, const RoadStopSpec *roadstopspec, BaseStation *st, TileIndex tile, RoadType roadtype, StationType type, uint8_t view, std::span<int32_t> regs100)
 {
 	RoadStopResolverObject object(roadstopspec, st, tile, roadtype, type, view, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**
@@ -344,11 +344,14 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	DrawCommonTileSeqInGUI(x, y, &dts, 0, 0, palette, true);
 }
 
-std::optional<SpriteLayoutProcessor> GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view)
+std::optional<SpriteLayoutProcessor> GetRoadStopLayout(TileInfo *ti, const RoadStopSpec *spec, BaseStation *st, StationType type, int view, std::span<int32_t> regs100)
 {
 	RoadStopResolverObject object(spec, st, ti->tile, INVALID_ROADTYPE, type, view);
 	auto group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return std::nullopt;
+	for (uint i = 0; i < regs100.size(); ++i) {
+		regs100[i] = object.GetRegister(0x100 + i);
+	}
 	return group->ProcessRegisters(object, nullptr);
 }
 

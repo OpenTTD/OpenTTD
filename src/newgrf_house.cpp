@@ -453,12 +453,12 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 	return UINT_MAX;
 }
 
-uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile,
+uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, HouseID house_id, Town *town, TileIndex tile, std::span<int32_t> regs100,
 		bool not_yet_constructed, uint8_t initial_random_bits, CargoTypes watched_cargo_triggers, int view)
 {
 	HouseResolverObject object(house_id, tile, town, callback, param1, param2,
 			not_yet_constructed, initial_random_bits, watched_cargo_triggers, view);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, uint8_t stage, HouseID house_id)
@@ -533,7 +533,7 @@ void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id
 
 	PaletteID palette = GetColourPalette(spec->random_colour[0]);
 	if (spec->callback_mask.Test(HouseCallbackMask::Colour)) {
-		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, true, view);
+		uint16_t callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, nullptr, INVALID_TILE, {}, true, view);
 		if (callback != CALLBACK_FAILED) {
 			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
 			palette = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
@@ -554,9 +554,9 @@ void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id
 }
 
 /* Simple wrapper for GetHouseCallback to keep the animation unified. */
-uint16_t GetSimpleHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, const HouseSpec *spec, Town *town, TileIndex tile, CargoTypes extra_data)
+static uint16_t GetSimpleHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2, const HouseSpec *spec, Town *town, TileIndex tile, CargoTypes extra_data)
 {
-	return GetHouseCallback(callback, param1, param2, spec - HouseSpec::Get(0), town, tile, false, 0, extra_data);
+	return GetHouseCallback(callback, param1, param2, spec - HouseSpec::Get(0), town, tile, {}, false, 0, extra_data);
 }
 
 /** Helper class for animation control. */

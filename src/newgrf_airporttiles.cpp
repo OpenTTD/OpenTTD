@@ -235,10 +235,10 @@ uint32_t AirportTileResolverObject::GetDebugID() const
 	return this->tiles_scope.ats->grf_prop.local_id;
 }
 
-uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, const AirportTileSpec *ats, Station *st, TileIndex tile, [[maybe_unused]] int extra_data = 0)
+static uint16_t GetAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, const AirportTileSpec *ats, Station *st, TileIndex tile, std::span<int32_t> regs100 = {})
 {
 	AirportTileResolverObject object(ats, tile, st, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 static void AirportDrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, Colours colour)
@@ -282,8 +282,14 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, const AirportTileSpec *airts)
 	return true;
 }
 
+/* Simple wrapper for GetAirportTileCallback to keep the animation unified. */
+static uint16_t GetSimpleAirportTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, const AirportTileSpec *ats, Station *st, TileIndex tile, int)
+{
+	return GetAirportTileCallback(callback, param1, param2, ats, st, tile);
+}
+
 /** Helper class for animation control. */
-struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, int, GetAirportTileCallback, TileAnimationFrameAnimationHelper<Station> > {
+struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, int, GetSimpleAirportTileCallback, TileAnimationFrameAnimationHelper<Station>> {
 	static constexpr CallbackID cb_animation_speed      = CBID_AIRPTILE_ANIMATION_SPEED;
 	static constexpr CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIMATION_NEXT_FRAME;
 

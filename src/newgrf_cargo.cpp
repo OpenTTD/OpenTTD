@@ -62,10 +62,10 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 }
 
 
-uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs)
+uint16_t GetCargoCallback(CallbackID callback, uint32_t param1, uint32_t param2, const CargoSpec *cs, std::span<int32_t> regs100)
 {
 	CargoResolverObject object(cs, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**

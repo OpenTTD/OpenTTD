@@ -3327,10 +3327,11 @@ draw_default_foundation:
 		if (stopspec != nullptr) {
 			stop_draw_mode = stopspec->draw_mode;
 			st = BaseStation::GetByTile(ti->tile);
-			auto result = GetRoadStopLayout(ti, stopspec, st, type, view);
+			std::array<int32_t, 1> regs100;
+			auto result = GetRoadStopLayout(ti, stopspec, st, type, view, regs100);
 			if (result.has_value()) {
 				if (stopspec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
-					stop_draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
+					stop_draw_mode = static_cast<RoadStopDrawMode>(regs100[0]);
 				}
 				if (type == StationType::RoadWaypoint && stop_draw_mode.Test(RoadStopDrawMode::WaypGround)) {
 					draw_ground = true;
