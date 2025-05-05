@@ -18,7 +18,7 @@
 SpriteGroupPool _spritegroup_pool("SpriteGroup");
 INSTANTIATE_POOL_METHODS(SpriteGroup)
 
-TemporaryStorageArray<int32_t, 0x110> _temp_store;
+/* static */ TemporaryStorageArray<int32_t, 0x110> ResolverObject::temp_store;
 
 
 /**
@@ -39,11 +39,9 @@ TemporaryStorageArray<int32_t, 0x110> _temp_store;
 	auto profiler = std::ranges::find(_newgrf_profilers, grf, &NewGRFProfiler::grffile);
 
 	if (profiler == _newgrf_profilers.end() || !profiler->active) {
-		if (top_level) _temp_store.ClearChanges();
 		return group->Resolve(object);
 	} else if (top_level) {
 		profiler->BeginResolve(object);
-		_temp_store.ClearChanges();
 		auto result = group->Resolve(object);
 		profiler->EndResolve(result);
 		return result;
