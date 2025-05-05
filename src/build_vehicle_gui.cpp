@@ -796,7 +796,8 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
  */
 static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
 {
-	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, nullptr);
+	std::array<int32_t, 6> regs100;
+	uint16_t callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, nullptr, regs100);
 	if (callback == CALLBACK_FAILED || callback == 0x400) return std::nullopt;
 	const GRFFile *grffile = Engine::Get(engine)->GetGRF();
 	assert(grffile != nullptr);
@@ -805,7 +806,7 @@ static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
 		return std::nullopt;
 	}
 
-	return GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, 6);
+	return GetGRFStringWithTextStack(grffile, GRFSTR_MISC_GRF_TEXT + callback, regs100);
 }
 
 /**

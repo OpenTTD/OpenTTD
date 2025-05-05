@@ -688,14 +688,15 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 			(numtracks << 24) | (plat_len << 16) | (axis == AXIS_Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff)));
 	object.station_scope.axis = axis;
 
-	uint16_t cb_res = object.ResolveCallback({});
+	std::array<int32_t, 4> regs100;
+	uint16_t cb_res = object.ResolveCallback(regs100);
 
 	/* Failed callback means success. */
 	if (cb_res == CALLBACK_FAILED) return CommandCost();
 
 	/* The meaning of bit 10 is inverted for a grf version < 8. */
 	if (statspec->grf_prop.grffile->grf_version < 8) ToggleBit(cb_res, 10);
-	return GetErrorMessageFromLocationCallbackResult(cb_res, statspec->grf_prop.grffile, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+	return GetErrorMessageFromLocationCallbackResult(cb_res, regs100, statspec->grf_prop.grffile, STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 }
 
 
