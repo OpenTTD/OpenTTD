@@ -3270,10 +3270,7 @@ draw_default_foundation:
 			/* Sprite layout which needs preprocessing */
 			bool separate_ground = statspec->flags.Test(StationSpecFlag::SeparateGround);
 			processor = SpriteLayoutProcessor(*layout, total_offset, rti->fallback_railtype, 0, 0, separate_ground);
-			for (uint8_t var10 : processor.Var10Values()) {
-				uint32_t var10_relocation = GetCustomStationRelocation(statspec, st, ti->tile, var10);
-				processor.ProcessRegisters(var10, var10_relocation);
-			}
+			GetCustomStationRelocation(processor, statspec, st, ti->tile);
 			tmp_layout = processor.GetLayout();
 			t = &tmp_layout;
 			total_offset = 0;
@@ -3330,15 +3327,15 @@ draw_default_foundation:
 		if (stopspec != nullptr) {
 			stop_draw_mode = stopspec->draw_mode;
 			st = BaseStation::GetByTile(ti->tile);
-			const TileLayoutSpriteGroup *group = GetRoadStopLayout(ti, stopspec, st, type, view);
-			if (group != nullptr) {
+			auto result = GetRoadStopLayout(ti, stopspec, st, type, view);
+			if (result.has_value()) {
 				if (stopspec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
 					stop_draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
 				}
 				if (type == StationType::RoadWaypoint && stop_draw_mode.Test(RoadStopDrawMode::WaypGround)) {
 					draw_ground = true;
 				}
-				processor = group->ProcessRegisters(nullptr);
+				processor = std::move(*result);
 				tmp_layout = processor.GetLayout();
 				t = &tmp_layout;
 			}

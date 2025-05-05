@@ -439,13 +439,11 @@ uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2
 /**
  * Draw an group of sprites on the map.
  * @param ti    Information about the tile to draw on.
- * @param group The group of sprites to draw.
+ * @param dts   The sprite layout to draw.
  * @param spec  Object spec to draw.
  */
-static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, const ObjectSpec *spec)
+static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, const ObjectSpec *spec)
 {
-	auto processor = group->ProcessRegisters(nullptr);
-	auto dts = processor.GetLayout();
 	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->colour;
 
 	SpriteID image = dts.ground.sprite;
@@ -477,7 +475,9 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
 	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return;
 
-	DrawTileLayout(ti, group, spec);
+	auto processor = group->ProcessRegisters(nullptr);
+	auto dts = processor.GetLayout();
+	DrawTileLayout(ti, dts, spec);
 }
 
 /**
