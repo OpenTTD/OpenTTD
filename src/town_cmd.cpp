@@ -228,9 +228,6 @@ Money HouseSpec::GetRemovalCost() const
 	return (_price[PR_CLEAR_HOUSE] * this->removal_cost) >> 8;
 }
 
-/* Local */
-static int _grow_town_result;
-
 static bool TryBuildTownHouse(Town *t, TileIndex tile);
 static Town *CreateRandomTown(uint attempts, uint32_t townnameparts, TownSize size, bool city, TownLayout layout);
 
@@ -1797,18 +1794,19 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 	/* Number of times to search.
 	 * Better roads, 2X2 and 3X3 grid grow quite fast so we give
 	 * them a little handicap. */
+	int iterations;
 	switch (t->layout) {
 		case TL_BETTER_ROADS:
-			_grow_town_result = 10 + t->cache.num_houses * 2 / 9;
+			iterations = 10 + t->cache.num_houses * 2 / 9;
 			break;
 
 		case TL_3X3_GRID:
 		case TL_2X2_GRID:
-			_grow_town_result = 10 + t->cache.num_houses * 1 / 9;
+			iterations = 10 + t->cache.num_houses * 1 / 9;
 			break;
 
 		default:
-			_grow_town_result = 10 + t->cache.num_houses * 4 / 9;
+			iterations = 10 + t->cache.num_houses * 4 / 9;
 			break;
 	}
 
@@ -1820,7 +1818,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 			case TownGrowthResult::Succeed:
 				return true;
 			case TownGrowthResult::SearchStopped:
-				_grow_town_result = 0;
+				iterations = 0;
 				break;
 			default:
 				break;
@@ -1862,7 +1860,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile)
 		}
 
 		/* Max number of times is checked. */
-	} while (--_grow_town_result >= 0);
+	} while (--iterations >= 0);
 
 	return false;
 }
