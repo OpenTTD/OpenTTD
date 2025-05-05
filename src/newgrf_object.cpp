@@ -233,7 +233,7 @@ static uint32_t GetClosestObject(TileIndex tile, ObjectType type, const Object *
  */
 static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t local_id, uint32_t grfid, TileIndex tile, const Object *current)
 {
-	uint32_t grf_id = GetRegister(0x100);  // Get the GRFID of the definition to look for in register 100h
+	uint32_t grf_id = static_cast<uint32_t>(GetRegister(0x100)); // Get the GRFID of the definition to look for in register 100h
 	uint32_t idx;
 
 	/* Determine what will be the object type to look for */

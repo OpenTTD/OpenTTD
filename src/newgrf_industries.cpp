@@ -115,7 +115,7 @@ static uint32_t GetClosestIndustry(TileIndex tile, IndustryType type, const Indu
  */
 static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8_t layout_filter, bool town_filter, const Industry *current)
 {
-	uint32_t grf_id = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
+	uint32_t grf_id = static_cast<uint32_t>(GetRegister(0x100)); ///< Get the GRFID of the definition to look for in register 100h
 	IndustryType industry_type;
 	uint32_t closest_dist = UINT32_MAX;
 	uint8_t count = 0;
@@ -311,7 +311,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			uint8_t layout_filter = 0;
 			bool town_filter = false;
 			if (variable == 0x68) {
-				uint32_t reg = GetRegister(0x101);
+				int32_t reg = GetRegister(0x101);
 				layout_filter = GB(reg, 0, 8);
 				town_filter = HasBit(reg, 8);
 			}
@@ -598,7 +598,7 @@ uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityC
 
 static int32_t DerefIndProd(int field, bool use_register)
 {
-	return use_register ? (int32_t)GetRegister(field) : field;
+	return use_register ? GetRegister(field) : field;
 }
 
 /**

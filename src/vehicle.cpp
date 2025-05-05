@@ -2725,7 +2725,7 @@ static void SpawnAdvancedVisualEffect(const Vehicle *v)
 	int8_t y_center = _vehicle_smoke_pos[t_dir] * l_center;
 
 	for (uint i = 0; i < count; i++) {
-		uint32_t reg = GetRegister(0x100 + i);
+		int32_t reg = GetRegister(0x100 + i);
 		uint type = GB(reg,  0, 8);
 		int8_t x    = GB(reg,  8, 8);
 		int8_t y    = GB(reg, 16, 8);
