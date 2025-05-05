@@ -107,15 +107,16 @@ static uint32_t GetClosestIndustry(TileIndex tile, IndustryType type, const Indu
  * Implementation of both var 67 and 68
  * since the mechanism is almost the same, it is easier to regroup them on the same
  * function.
+ * @param object ResolverObject owning the temporary storage.
  * @param param_set_id parameter given to the callback, which is the set id, or the local id, in our terminology
  * @param layout_filter on what layout do we filter?
  * @param town_filter Do we filter on the same town as the current industry?
  * @param current Industry for which the inquiry is made
  * @return the formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8_t layout_filter, bool town_filter, const Industry *current)
+static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &object, uint8_t param_set_id, uint8_t layout_filter, bool town_filter, const Industry *current)
 {
-	uint32_t grf_id = static_cast<uint32_t>(GetRegister(0x100)); ///< Get the GRFID of the definition to look for in register 100h
+	uint32_t grf_id = static_cast<uint32_t>(object.GetRegister(0x100)); ///< Get the GRFID of the definition to look for in register 100h
 	IndustryType industry_type;
 	uint32_t closest_dist = UINT32_MAX;
 	uint8_t count = 0;
@@ -311,11 +312,11 @@ static uint32_t GetCountAndDistanceOfClosestInstance(uint8_t param_set_id, uint8
 			uint8_t layout_filter = 0;
 			bool town_filter = false;
 			if (variable == 0x68) {
-				int32_t reg = GetRegister(0x101);
+				int32_t reg = this->ro.GetRegister(0x101);
 				layout_filter = GB(reg, 0, 8);
 				town_filter = HasBit(reg, 8);
 			}
-			return GetCountAndDistanceOfClosestInstance(parameter, layout_filter, town_filter, this->industry);
+			return GetCountAndDistanceOfClosestInstance(this->ro, parameter, layout_filter, town_filter, this->industry);
 		}
 
 		case 0x69:
@@ -596,11 +597,6 @@ uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityC
 	return default_prob;
 }
 
-static int32_t DerefIndProd(int field, bool use_register)
-{
-	return use_register ? GetRegister(field) : field;
-}
-
 /**
  * Get the industry production callback and apply it to the industry.
  * @param ind    the industry this callback has to be called for
@@ -614,6 +610,10 @@ void IndustryProductionCallback(Industry *ind, int reason)
 	int multiplier = 1;
 	if (spec->behaviour.Test(IndustryBehaviour::ProdMultiHandling)) multiplier = ind->prod_level;
 	object.callback_param2 = reason;
+
+	auto deref_ind_prod = [&object](int field, bool use_register) -> int32_t {
+		return use_register ? object.GetRegister(field) : field;
+	};
 
 	for (uint loop = 0;; loop++) {
 		/* limit the number of calls to break infinite loops.
@@ -648,27 +648,27 @@ void IndustryProductionCallback(Industry *ind, int reason)
 			/* Callback parameters map directly to industry cargo slot indices */
 			for (uint i = 0; i < group->num_input && i < ind->accepted.size(); i++) {
 				if (!IsValidCargoType(ind->accepted[i].cargo)) continue;
-				ind->accepted[i].waiting = ClampTo<uint16_t>(ind->accepted[i].waiting - DerefIndProd(group->subtract_input[i], deref) * multiplier);
+				ind->accepted[i].waiting = ClampTo<uint16_t>(ind->accepted[i].waiting - deref_ind_prod(group->subtract_input[i], deref) * multiplier);
 			}
 			for (uint i = 0; i < group->num_output && i < ind->produced.size(); i++) {
 				if (!IsValidCargoType(ind->produced[i].cargo)) continue;
-				ind->produced[i].waiting = ClampTo<uint16_t>(ind->produced[i].waiting + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
+				ind->produced[i].waiting = ClampTo<uint16_t>(ind->produced[i].waiting + std::max(deref_ind_prod(group->add_output[i], deref), 0) * multiplier);
 			}
 		} else {
 			/* Callback receives list of cargos to apply for, which need to have their cargo slots in industry looked up */
 			for (uint i = 0; i < group->num_input; i++) {
 				auto it = ind->GetCargoAccepted(group->cargo_input[i]);
 				if (it == std::end(ind->accepted)) continue;
-				it->waiting = ClampTo<uint16_t>(it->waiting - DerefIndProd(group->subtract_input[i], deref) * multiplier);
+				it->waiting = ClampTo<uint16_t>(it->waiting - deref_ind_prod(group->subtract_input[i], deref) * multiplier);
 			}
 			for (uint i = 0; i < group->num_output; i++) {
 				auto it = ind->GetCargoProduced(group->cargo_output[i]);
 				if (it == std::end(ind->produced)) continue;
-				it->waiting = ClampTo<uint16_t>(it->waiting + std::max(DerefIndProd(group->add_output[i], deref), 0) * multiplier);
+				it->waiting = ClampTo<uint16_t>(it->waiting + std::max(deref_ind_prod(group->add_output[i], deref), 0) * multiplier);
 			}
 		}
 
-		int32_t again = DerefIndProd(group->again, deref);
+		int32_t again = deref_ind_prod(group->again, deref);
 		if (again == 0) break;
 
 		SB(object.callback_param2, 24, 8, again);

@@ -327,6 +327,30 @@ struct ResolverObject {
 
 	ScopeResolver default_scope; ///< Default implementation of the grf scope.
 
+	/**
+	 * Gets the value of a so-called newgrf "register".
+	 * @param i index of the register
+	 * @return the value of the register
+	 * @pre i < 0x110
+	 */
+	inline int32_t GetRegister(uint i) const
+	{
+		extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
+		return _temp_store.GetValue(i);
+	}
+
+	/**
+	 * Sets the value of a so-called newgrf "register".
+	 * @param i index of the register
+	 * @param value the value of the register
+	 * @pre i < 0x110
+	 */
+	inline void SetRegister(uint i, int32_t value)
+	{
+		extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
+		_temp_store.StoreValue(i, value);
+	}
+
 	CallbackID callback{}; ///< Callback being resolved.
 	uint32_t callback_param1 = 0; ///< First parameter (var 10) of the callback.
 	uint32_t callback_param2 = 0; ///< Second parameter (var 18) of the callback.

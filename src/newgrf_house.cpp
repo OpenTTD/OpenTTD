@@ -389,8 +389,8 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 			if (!IsValidCargoType(cargo_type)) return 0;
 
 			/* Extract tile offset. */
-			int8_t x_offs = GB(GetRegister(0x100), 0, 8);
-			int8_t y_offs = GB(GetRegister(0x100), 8, 8);
+			int8_t x_offs = GB(this->ro.GetRegister(0x100), 0, 8);
+			int8_t y_offs = GB(this->ro.GetRegister(0x100), 8, 8);
 			TileIndex testtile = Map::WrapToMap(this->tile + TileDiffXY(x_offs, y_offs));
 
 			StationFinder stations(TileArea(testtile, 1, 1));
