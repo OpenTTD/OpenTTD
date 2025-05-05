@@ -429,12 +429,13 @@ uint32_t ObjectResolverObject::GetDebugID() const
  * @param o        The object to call the callback for.
  * @param tile     The tile the callback is called for.
  * @param view     The view of the object (only used when o == nullptr).
+ * @param[out] regs100 Additional result values from registers 100+
  * @return The result of the callback.
  */
-uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view)
+uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, std::span<int32_t> regs100, uint8_t view)
 {
 	ObjectResolverObject object(spec, o, tile, view, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**

@@ -21,18 +21,6 @@
 #include "newgrf_storage.h"
 #include "newgrf_commons.h"
 
-/**
- * Gets the value of a so-called newgrf "register".
- * @param i index of the register
- * @pre i < 0x110
- * @return the value of the register
- */
-inline int32_t GetRegister(uint i)
-{
-	extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
-	return _temp_store.GetValue(i);
-}
-
 /* List of different sprite group types */
 enum SpriteGroupType : uint8_t {
 	SGT_REAL,
@@ -396,13 +384,18 @@ public:
 
 	/**
 	 * Resolve callback.
+	 * @param[out] regs100 Additional result values from registers 100+
 	 * @return Callback result.
 	 */
-	inline CallbackResult ResolveCallback()
+	inline CallbackResult ResolveCallback(std::span<int32_t> regs100)
 	{
 		auto result = this->DoResolve();
 		const auto *value = std::get_if<CallbackResult>(&result);
-		return value != nullptr ? *value : CALLBACK_FAILED;
+		if (value == nullptr) return CALLBACK_FAILED;
+		for (uint i = 0; i < regs100.size(); ++i) {
+			regs100[i] = this->GetRegister(0x100 + i);
+		}
+		return *value;
 	}
 
 	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup &group) const;

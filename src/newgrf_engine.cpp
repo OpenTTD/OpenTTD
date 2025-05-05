@@ -1183,12 +1183,13 @@ bool UsesWagonOverride(const Vehicle *v)
  * @param param2   Second parameter of the callback
  * @param engine   Engine type of the vehicle to evaluate the callback for
  * @param v        The vehicle to evaluate the callback for, or nullptr if it doesn't exist yet
+ * @param[out] regs100 Additional result values from registers 100+
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v)
+uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, std::span<int32_t> regs100)
 {
 	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_UNCACHED, false, callback, param1, param2);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 /**
@@ -1199,13 +1200,14 @@ uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param
  * @param engine   Engine type of the vehicle to evaluate the callback for
  * @param v        The vehicle to evaluate the callback for, or nullptr if it doesn't exist yet
  * @param parent   The vehicle to use for parent scope
+ * @param[out] regs100 Additional result values from registers 100+
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent)
+uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent, std::span<int32_t> regs100)
 {
 	VehicleResolverObject object(engine, v, VehicleResolverObject::WO_NONE, false, callback, param1, param2);
 	object.parent_scope.SetVehicle(parent);
-	return object.ResolveCallback();
+	return object.ResolveCallback(regs100);
 }
 
 

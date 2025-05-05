@@ -2804,11 +2804,12 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	bool callback_enabled = indspec->callback_mask.Test(monthly ? IndustryCallbackMask::MonthlyProdChange : IndustryCallbackMask::ProductionChange);
 	if (callback_enabled) {
-		uint16_t res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->location.tile);
+		std::array<int32_t, 1> regs100;
+		uint16_t res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->location.tile, regs100);
 		if (res != CALLBACK_FAILED) { // failed callback means "do nothing"
 			suppress_message = HasBit(res, 7);
 			/* Get the custom message if any */
-			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grfid, GRFStringID(GB(GetRegister(0x100), 0, 16)));
+			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grfid, GRFStringID(GB(regs100[0], 0, 16)));
 			res = GB(res, 0, 4);
 			switch (res) {
 				default: NOT_REACHED();
@@ -2826,7 +2827,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 					increment = res == 0x0D ? -1 : 1;
 					break;
 				case 0xF:                         // Set production to third byte of register 0x100
-					i->prod_level = Clamp(GB(GetRegister(0x100), 16, 8), PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
+					i->prod_level = Clamp(GB(regs100[0], 16, 8), PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
 					recalculate_multipliers = true;
 					break;
 			}

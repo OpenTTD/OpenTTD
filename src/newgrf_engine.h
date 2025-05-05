@@ -92,8 +92,8 @@ struct GRFFile;
 
 void SetEngineGRF(EngineID engine, const struct GRFFile *file);
 
-uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v);
-uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent);
+uint16_t GetVehicleCallback(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, std::span<int32_t> regs100 = {});
+uint16_t GetVehicleCallbackParent(CallbackID callback, uint32_t param1, uint32_t param2, EngineID engine, const Vehicle *v, const Vehicle *parent, std::span<int32_t> regs100 = {});
 bool UsesWagonOverride(const Vehicle *v);
 
 /* Handler to Evaluate callback 36. If the callback fails (i.e. most of the
