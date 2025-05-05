@@ -187,7 +187,7 @@ void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInf
 /** Window for showing the download status of content */
 struct NetworkContentDownloadStatusWindow : public BaseNetworkContentDownloadStatusWindow {
 private:
-	std::vector<ContentType> receivedTypes{}; ///< Types we received so we can update their cache
+	ContentTypes received_types{}; ///< Types we received so we can update their cache
 
 public:
 	/**
@@ -202,7 +202,7 @@ public:
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		TarScanner::Modes modes{};
-		for (auto ctype : this->receivedTypes) {
+		for (auto ctype : this->received_types) {
 			switch (ctype) {
 				case CONTENT_TYPE_AI:
 				case CONTENT_TYPE_AI_LIBRARY:
@@ -236,7 +236,7 @@ public:
 		TarScanner::DoScan(modes);
 
 		/* Tell all the backends about what we've downloaded */
-		for (auto ctype : this->receivedTypes) {
+		for (auto ctype : this->received_types) {
 			switch (ctype) {
 				case CONTENT_TYPE_AI:
 				case CONTENT_TYPE_AI_LIBRARY:
@@ -301,7 +301,7 @@ public:
 	void OnDownloadProgress(const ContentInfo &ci, int bytes) override
 	{
 		BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(ci, bytes);
-		include(this->receivedTypes, ci.type);
+		this->received_types.Set(ci.type);
 
 		/* When downloading is finished change cancel in ok */
 		if (this->downloaded_bytes == this->total_bytes) {
