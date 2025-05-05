@@ -33,6 +33,7 @@ enum ContentType : uint8_t {
 	CONTENT_TYPE_END,               ///< Helper to mark the end of the types
 	INVALID_CONTENT_TYPE       = 0xFF, ///< Invalid/uninitialized content
 };
+using ContentTypes = EnumBitSet<ContentType, uint16_t, CONTENT_TYPE_END>;
 
 /** Enum with all types of TCP content packets. The order MUST not be changed **/
 enum PacketContentType : uint8_t {
