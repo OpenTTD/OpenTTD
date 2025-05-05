@@ -293,7 +293,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	RoadStopResolverObject object(spec, nullptr, INVALID_TILE, roadtype, type, view);
 	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return;
-	auto processor = group->ProcessRegisters(nullptr);
+	auto processor = group->ProcessRegisters(object, nullptr);
 	auto dts = processor.GetLayout();
 
 	PaletteID palette = GetCompanyPalette(_local_company);
@@ -349,7 +349,7 @@ std::optional<SpriteLayoutProcessor> GetRoadStopLayout(TileInfo *ti, const RoadS
 	RoadStopResolverObject object(spec, st, ti->tile, INVALID_ROADTYPE, type, view);
 	auto group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return std::nullopt;
-	return group->ProcessRegisters(nullptr);
+	return group->ProcessRegisters(object, nullptr);
 }
 
 /** Wrapper for animation control, see GetRoadStopCallback. */

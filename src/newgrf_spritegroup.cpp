@@ -284,10 +284,11 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
  * Process registers and the construction stage into the sprite layout.
  * The passed construction stage might get reset to zero, if it gets incorporated into the layout
  * during the preprocessing.
+ * @param object ResolverObject owning the temporary storage.
  * @param[in,out] stage Construction stage (0-3), or nullptr if not applicable.
  * @return sprite layout to draw.
  */
-SpriteLayoutProcessor TileLayoutSpriteGroup::ProcessRegisters(uint8_t *stage) const
+SpriteLayoutProcessor TileLayoutSpriteGroup::ProcessRegisters(const ResolverObject &object, uint8_t *stage) const
 {
 	if (!this->dts.NeedsPreprocessing()) {
 		if (stage != nullptr && this->dts.consistent_max_offset > 0) *stage = GetConstructionStageOffset(*stage, this->dts.consistent_max_offset);
@@ -296,7 +297,7 @@ SpriteLayoutProcessor TileLayoutSpriteGroup::ProcessRegisters(uint8_t *stage) co
 
 	uint8_t actual_stage = stage != nullptr ? *stage : 0;
 	SpriteLayoutProcessor result(this->dts, 0, 0, 0, actual_stage, false);
-	result.ProcessRegisters(0, 0);
+	result.ProcessRegisters(object, 0, 0);
 
 	/* Stage has been processed by PrepareLayout(), set it to zero. */
 	if (stage != nullptr) *stage = 0;

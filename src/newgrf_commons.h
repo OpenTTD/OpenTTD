@@ -159,7 +159,7 @@ public:
 	 */
 	SetBitIterator<uint8_t, uint32_t> Var10Values() const { return this->var10_values; }
 
-	void ProcessRegisters(uint8_t resolved_var10, uint32_t resolved_sprite);
+	void ProcessRegisters(const struct ResolverObject &object, uint8_t resolved_var10, uint32_t resolved_sprite);
 
 	/**
 	 * Returns the result spritelayout after preprocessing.

@@ -635,7 +635,7 @@ void GetCustomStationRelocation(SpriteLayoutProcessor &processor, const StationS
 		object.callback_param1 = var10;
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		if (group == nullptr || group->num_sprites == 0) continue;
-		processor.ProcessRegisters(var10, group->sprite - SPR_RAIL_PLATFORM_Y_FRONT);
+		processor.ProcessRegisters(object, var10, group->sprite - SPR_RAIL_PLATFORM_Y_FRONT);
 	}
 }
 
