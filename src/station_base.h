@@ -10,6 +10,7 @@
 #ifndef STATION_BASE_H
 #define STATION_BASE_H
 
+#include "core/flatset_type.hpp"
 #include "core/random_func.hpp"
 #include "base_station_base.h"
 #include "newgrf_airport.h"
@@ -627,14 +628,15 @@ void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 	if (Station::GetNumItems() == 0) return;
 
 	/* Not using, or don't have a nearby stations list, so we need to scan. */
-	std::set<StationID> seen_stations;
+	FlatSet<StationID> seen_stations;
 
 	/* Scan an area around the building covering the maximum possible station
 	 * to find the possible nearby stations. */
 	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
 	TileArea ta_ext = TileArea(ta).Expand(max_c);
 	for (TileIndex tile : ta_ext) {
-		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
+		if (!IsTileType(tile, MP_STATION)) continue;
+		seen_stations.insert(GetStationIndex(tile));
 	}
 
 	for (StationID stationid : seen_stations) {
