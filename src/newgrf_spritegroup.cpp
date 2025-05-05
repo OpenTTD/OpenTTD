@@ -64,7 +64,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 
 		case 0x5F: return (scope->GetRandomBits() << 8) | scope->GetRandomTriggers();
 
-		case 0x7D: return _temp_store.GetValue(parameter);
+		case 0x7D: return object.GetRegister(parameter);
 
 		case 0x7F:
 			if (object.grffile == nullptr) return 0;
@@ -140,7 +140,7 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver *scope, U last_value, uint32_t value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ResolverObject &object, ScopeResolver *scope, U last_value, uint32_t value)
 {
 	value >>= adjust.shift_num;
 	value  &= adjust.and_mask;
@@ -166,7 +166,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver
 		case DSGA_OP_AND:  return last_value & value;
 		case DSGA_OP_OR:   return last_value | value;
 		case DSGA_OP_XOR:  return last_value ^ value;
-		case DSGA_OP_STO:  _temp_store.StoreValue((U)value, (S)last_value); return last_value;
+		case DSGA_OP_STO:  object.SetRegister((U)value, (S)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
 		case DSGA_OP_STOP: scope->StorePSA((U)value, (S)last_value); return last_value;
 		case DSGA_OP_ROR:  return std::rotr<uint32_t>((U)last_value, (U)value & 0x1F); // mask 'value' to 5 bits, which should behave the same on all architectures.
@@ -214,9 +214,9 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
 		}
 
 		switch (this->size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8_t,  int8_t> (adjust, scope, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16_t, int16_t>(adjust, scope, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32_t, int32_t>(adjust, scope, last_value, value); break;
+			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8_t,  int8_t> (adjust, object, scope, last_value, value); break;
+			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16_t, int16_t>(adjust, object, scope, last_value, value); break;
+			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32_t, int32_t>(adjust, object, scope, last_value, value); break;
 			default: NOT_REACHED();
 		}
 		last_value = value;

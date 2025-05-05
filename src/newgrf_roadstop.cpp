@@ -303,7 +303,7 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 
 	RoadStopDrawModes draw_mode;
 	if (spec->flags.Test(RoadStopSpecFlag::DrawModeRegister)) {
-		draw_mode = static_cast<RoadStopDrawMode>(GetRegister(0x100));
+		draw_mode = static_cast<RoadStopDrawMode>(object.GetRegister(0x100));
 	} else {
 		draw_mode = spec->draw_mode;
 	}

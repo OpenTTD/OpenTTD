@@ -655,7 +655,7 @@ SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseS
 
 	const auto *group = object.Resolve<ResultSpriteGroup>();
 	/* Note: SpriteGroup::Resolve zeroes all registers, so register 0x100 is initialised to 0. (compatibility) */
-	uint32_t offset = static_cast<uint32_t>(GetRegister(0x100));
+	uint32_t offset = static_cast<uint32_t>(object.GetRegister(0x100));
 	if (group == nullptr || group->num_sprites <= offset) return 0;
 
 	return group->sprite + offset;
