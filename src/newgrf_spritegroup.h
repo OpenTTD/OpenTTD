@@ -293,6 +293,10 @@ struct ScopeResolver {
  * to get the results of callbacks, rerandomisations or normal sprite lookups.
  */
 struct ResolverObject {
+private:
+	static TemporaryStorageArray<int32_t, 0x110> temp_store;
+
+public:
 	/**
 	 * Resolver constructor.
 	 * @param grffile NewGRF file associated with the object (or \c nullptr if none).
@@ -323,8 +327,7 @@ struct ResolverObject {
 	 */
 	inline int32_t GetRegister(uint i) const
 	{
-		extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
-		return _temp_store.GetValue(i);
+		return temp_store.GetValue(i);
 	}
 
 	/**
@@ -335,8 +338,7 @@ struct ResolverObject {
 	 */
 	inline void SetRegister(uint i, int32_t value)
 	{
-		extern TemporaryStorageArray<int32_t, 0x110> _temp_store;
-		_temp_store.StoreValue(i, value);
+		temp_store.StoreValue(i, value);
 	}
 
 	CallbackID callback{}; ///< Callback being resolved.
@@ -438,6 +440,7 @@ public:
 	 */
 	void ResetState()
 	{
+		temp_store.ClearChanges();
 		this->last_value = 0;
 		this->waiting_random_triggers = 0;
 		this->used_random_triggers = 0;
