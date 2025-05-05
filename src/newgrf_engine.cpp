@@ -998,14 +998,14 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 }
 
 
-/* virtual */ ResolverResult VehicleResolverObject::ResolveReal(const RealSpriteGroup &group) const
+/* virtual */ const SpriteGroup *VehicleResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
 	const Vehicle *v = this->self_scope.v;
 
 	if (v == nullptr) {
 		if (!group.loading.empty()) return group.loading[0];
 		if (!group.loaded.empty()) return group.loaded[0];
-		return std::monostate{};
+		return nullptr;
 	}
 
 	const Order &order = v->First()->current_order;
@@ -1014,7 +1014,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 	uint totalsets = static_cast<uint>(in_motion ? group.loaded.size() : group.loading.size());
 
-	if (totalsets == 0) return std::monostate{};
+	if (totalsets == 0) return nullptr;
 
 	uint set = (v->cargo.StoredCount() * totalsets) / std::max<uint16_t>(1u, v->cargo_cap);
 	set = std::min(set, totalsets - 1);

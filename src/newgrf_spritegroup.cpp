@@ -120,12 +120,12 @@ static inline uint32_t GetVariable(const ResolverObject &object, ScopeResolver *
  * @param group Group to get.
  * @return The available sprite group.
  */
-/* virtual */ ResolverResult ResolverObject::ResolveReal(const RealSpriteGroup &group) const
+/* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup &group) const
 {
 	if (!group.loaded.empty()) return group.loaded[0];
 	if (!group.loading.empty()) return group.loading[0];
 
-	return std::monostate{};
+	return nullptr;
 }
 
 /**
@@ -274,7 +274,10 @@ static bool RangeHighComparator(const DeterministicSpriteGroupRange &range, uint
 
 /* virtual */ ResolverResult RealSpriteGroup::Resolve(ResolverObject &object) const
 {
-	return object.ResolveReal(*this);
+	/* Call the feature specific evaluation via ResultSpriteGroup::ResolveReal.
+	 * The result is either ResultSpriteGroup, CallbackResultSpriteGroup, or nullptr.
+	 */
+	return SpriteGroup::Resolve(object.ResolveReal(*this), object, false);
 }
 
 /**

@@ -75,7 +75,7 @@ struct StationResolverObject : public SpecializedResolverObject<StationRandomTri
 		}
 	}
 
-	ResolverResult ResolveReal(const RealSpriteGroup &group) const override;
+	const SpriteGroup *ResolveReal(const RealSpriteGroup &group) const override;
 
 	GrfSpecFeature GetFeature() const override;
 	uint32_t GetDebugID() const override;
