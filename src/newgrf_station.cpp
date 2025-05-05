@@ -821,6 +821,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	uint32_t relocation = 0;
 	uint32_t ground_relocation = 0;
 	const NewGRFSpriteLayout *layout = nullptr;
+	SpriteLayoutProcessor processor; // owns heap, borrowed by tmp_rail_layout and sprites
 	DrawTileSpriteSpan tmp_rail_layout;
 
 	if (statspec->renderdata.empty()) {
@@ -836,13 +837,12 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	if (layout != nullptr) {
 		/* Sprite layout which needs preprocessing */
 		bool separate_ground = statspec->flags.Test(StationSpecFlag::SeparateGround);
-		uint32_t var10_values = layout->PrepareLayout(total_offset, rti->fallback_railtype, 0, 0, separate_ground);
-		for (uint8_t var10 : SetBitIterator(var10_values)) {
+		processor = SpriteLayoutProcessor(*layout, total_offset, rti->fallback_railtype, 0, 0, separate_ground);
+		for (uint8_t var10 : processor.Var10Values()) {
 			uint32_t var10_relocation = GetCustomStationRelocation(statspec, nullptr, INVALID_TILE, var10);
-			layout->ProcessRegisters(var10, var10_relocation, separate_ground);
+			processor.ProcessRegisters(var10, var10_relocation);
 		}
-
-		tmp_rail_layout = layout->GetLayout();
+		tmp_rail_layout = processor.GetLayout();
 		sprites = &tmp_rail_layout;
 		total_offset = 0;
 	} else {

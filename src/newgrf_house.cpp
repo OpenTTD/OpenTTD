@@ -463,7 +463,8 @@ uint16_t GetHouseCallback(CallbackID callback, uint32_t param1, uint32_t param2,
 
 static void DrawTileLayout(const TileInfo *ti, const TileLayoutSpriteGroup *group, uint8_t stage, HouseID house_id)
 {
-	auto dts = group->ProcessRegisters(&stage);
+	auto processor = group->ProcessRegisters(&stage);
+	auto dts = processor.GetLayout();
 
 	const HouseSpec *hs = HouseSpec::Get(house_id);
 	PaletteID palette = GetColourPalette(hs->random_colour[TileHash2Bit(ti->x, ti->y)]);
@@ -528,7 +529,8 @@ void DrawNewHouseTileInGUI(int x, int y, const HouseSpec *spec, HouseID house_id
 	if (group == nullptr) return;
 
 	uint8_t stage = TOWN_HOUSE_COMPLETED;
-	auto dts = group->ProcessRegisters(&stage);
+	auto processor = group->ProcessRegisters(&stage);
+	auto dts = processor.GetLayout();
 
 	PaletteID palette = GetColourPalette(spec->random_colour[0]);
 	if (spec->callback_mask.Test(HouseCallbackMask::Colour)) {

@@ -293,7 +293,8 @@ void DrawRoadStopTile(int x, int y, RoadType roadtype, const RoadStopSpec *spec,
 	RoadStopResolverObject object(spec, nullptr, INVALID_TILE, roadtype, type, view);
 	const auto *group = object.Resolve<TileLayoutSpriteGroup>();
 	if (group == nullptr) return;
-	auto dts = group->ProcessRegisters(nullptr);
+	auto processor = group->ProcessRegisters(nullptr);
+	auto dts = processor.GetLayout();
 
 	PaletteID palette = GetCompanyPalette(_local_company);
 
