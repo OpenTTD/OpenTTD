@@ -1234,11 +1234,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 
 		/* If there are enough neighbours stop here */
 		if (counter >= 3) {
-			if (TryBuildTownHouse(t, tile)) {
-				_grow_town_result = GROWTH_SUCCEED;
-				return true;
-			}
-			return false;
+			return TryBuildTownHouse(t, tile);
 		}
 	}
 	return false;
@@ -1255,11 +1251,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 {
 	RoadType rt = GetTownRoadType();
-	if (Command<CMD_BUILD_ROAD>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, rcmd, rt, DRD_NONE, t->index).Succeeded()) {
-		_grow_town_result = GROWTH_SUCCEED;
-		return true;
-	}
-	return false;
+	return Command<CMD_BUILD_ROAD>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoWater}, tile, rcmd, rt, DRD_NONE, t->index).Succeeded();
 }
 
 /**
@@ -1389,7 +1381,6 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 		RoadType rt = GetTownRoadType();
 		if (Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt).Succeeded()) {
 			Command<CMD_BUILD_BRIDGE>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_BRIDGE>()).Set(DoCommandFlag::Execute), tile, bridge_tile, TRANSPORT_ROAD, bridge_type, rt);
-			_grow_town_result = GROWTH_SUCCEED;
 			return true;
 		}
 	}
@@ -1460,7 +1451,6 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 	RoadType rt = GetTownRoadType();
 	if (Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt).Succeeded()) {
 		Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()).Set(DoCommandFlag::Execute), tile, TRANSPORT_ROAD, rt);
-		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}
 
@@ -1678,7 +1668,9 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				default: NOT_REACHED();
 
 				case TL_3X3_GRID: // Use 2x2 grid afterwards!
-					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
+					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir))) {
+						_grow_town_result = GROWTH_SUCCEED;
+					}
 					[[fallthrough]];
 
 				case TL_2X2_GRID:
@@ -1687,7 +1679,9 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 					break;
 
 				case TL_BETTER_ROADS: // Use original afterwards!
-					GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir));
+					if (GrowTownWithExtraHouse(t1, TileAddByDiagDir(house_tile, target_dir))) {
+						_grow_town_result = GROWTH_SUCCEED;
+					}
 					[[fallthrough]];
 
 				case TL_ORIGINAL:
@@ -1731,10 +1725,18 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	/* Only use the target direction for bridges and tunnels to ensure they're connected.
 	 * The target_dir is as computed previously according to town layout, so
 	 * it will match it perfectly. */
-	if (GrowTownWithBridge(t1, tile, target_dir)) return;
-	if (GrowTownWithTunnel(t1, tile, target_dir)) return;
+	if (GrowTownWithBridge(t1, tile, target_dir)) {
+		_grow_town_result = GROWTH_SUCCEED;
+		return;
+	}
+	if (GrowTownWithTunnel(t1, tile, target_dir)) {
+		_grow_town_result = GROWTH_SUCCEED;
+		return;
+	}
 
-	GrowTownWithRoad(t1, tile, rcmd);
+	if (GrowTownWithRoad(t1, tile, rcmd)) {
+		_grow_town_result = GROWTH_SUCCEED;
+	}
 }
 
 /**
