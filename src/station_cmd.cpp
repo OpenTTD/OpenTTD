@@ -8,6 +8,7 @@
 /** @file station_cmd.cpp Handling of station tiles. */
 
 #include "stdafx.h"
+#include "core/flatset_type.hpp"
 #include "aircraft.h"
 #include "bridge_map.h"
 #include "vehiclelist_func.h"
@@ -543,7 +544,7 @@ static void ShowRejectOrAcceptNews(const Station *st, CargoTypes cargoes, bool r
 CargoArray GetProductionAroundTiles(TileIndex north_tile, int w, int h, int rad)
 {
 	CargoArray produced{};
-	std::set<IndustryID> industries;
+	FlatSet<IndustryID> industries;
 	TileArea ta = TileArea(north_tile, w, h).Expand(rad);
 
 	/* Loop over all tiles to get the produced cargo of

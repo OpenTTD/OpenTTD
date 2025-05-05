@@ -8,6 +8,7 @@
 /** @file station.cpp Implementation of the station base class. */
 
 #include "stdafx.h"
+#include "core/flatset_type.hpp"
 #include "company_func.h"
 #include "company_base.h"
 #include "roadveh.h"
@@ -425,8 +426,8 @@ void Station::RemoveIndustryToDeliver(Industry *ind)
  */
 void Station::RemoveFromAllNearbyLists()
 {
-	std::set<TownID> towns;
-	std::set<IndustryID> industries;
+	FlatSet<TownID> towns;
+	FlatSet<IndustryID> industries;
 
 	for (const auto &tile : this->catchment_tiles) {
 		TileType type = GetTileType(tile);
