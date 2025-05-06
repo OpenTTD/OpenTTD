@@ -11,7 +11,6 @@
 #include "../../debug.h"
 #include "../../blitter/factory.hpp"
 #include "../../core/math_func.hpp"
-#include "../../core/mem_func.hpp"
 #include "../../error_func.h"
 #include "../../fileio_func.h"
 #include "../../fontcache.h"
@@ -368,8 +367,7 @@ void LoadWin32Font(FontSize fs)
 	std::string font = GetFontCacheFontName(fs);
 	if (font.empty()) return;
 
-	LOGFONT logfont;
-	MemSetT(&logfont, 0);
+	LOGFONT logfont{};
 	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
 	logfont.lfCharSet = DEFAULT_CHARSET;
 	logfont.lfOutPrecision = OUT_OUTLINE_PRECIS;
