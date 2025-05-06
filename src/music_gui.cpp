@@ -19,7 +19,6 @@
 #include "gfx_func.h"
 #include "zoom_func.h"
 #include "core/random_func.hpp"
-#include "core/mem_func.hpp"
 #include "error.h"
 #include "core/geometry_func.hpp"
 #include "string_func.h"
@@ -439,7 +438,7 @@ void MusicSystem::SaveCustomPlaylist(PlaylistChoices pl)
 	}
 
 	size_t num = 0;
-	MemSetT(settings_pl, 0, NUM_SONGS_PLAYLIST);
+	std::fill_n(settings_pl, NUM_SONGS_PLAYLIST, 0);
 
 	for (const auto &song : this->standard_playlists[pl]) {
 		/* Music set indices in the settings playlist are 1-based, 0 means unused slot */
