@@ -113,8 +113,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 {
 	for (auto &s : this->sockets) {
 		for (int i = 0; i < 1000; i++) { // Do not infinitely loop when DoSing with UDP
-			struct sockaddr_storage client_addr;
-			memset(&client_addr, 0, sizeof(client_addr));
+			struct sockaddr_storage client_addr{};
 
 			/* The limit is UDP_MTU, but also allocate that much as we need to read the whole packet in one go. */
 			Packet p(this, UDP_MTU, UDP_MTU);

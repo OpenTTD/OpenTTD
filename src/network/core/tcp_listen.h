@@ -76,8 +76,7 @@ public:
 	static void AcceptClient(SOCKET ls)
 	{
 		for (;;) {
-			struct sockaddr_storage sin;
-			memset(&sin, 0, sizeof(sin));
+			struct sockaddr_storage sin{};
 			socklen_t sin_len = sizeof(sin);
 			SOCKET s = accept(ls, (struct sockaddr*)&sin, &sin_len);
 			if (s == INVALID_SOCKET) return;

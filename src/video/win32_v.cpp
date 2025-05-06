@@ -152,9 +152,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 	}
 
 	if (full_screen) {
-		DEVMODE settings;
-
-		memset(&settings, 0, sizeof(settings));
+		DEVMODE settings{};
 		settings.dmSize = sizeof(settings);
 		settings.dmFields =
 			DM_BITSPERPEL |

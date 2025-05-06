@@ -202,8 +202,7 @@ bool NetworkAddress::IsInNetmask(std::string_view netmask)
 SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func)
 {
 	struct addrinfo *ai;
-	struct addrinfo hints;
-	memset(&hints, 0, sizeof (hints));
+	struct addrinfo hints{};
 	hints.ai_family   = family;
 	hints.ai_flags    = flags;
 	hints.ai_socktype = socktype;

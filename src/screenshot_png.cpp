@@ -75,8 +75,7 @@ public:
 
 		/* Try to add some game metadata to the PNG screenshot so
 		 * it's more useful for debugging and archival purposes. */
-		png_text_struct text[2];
-		memset(text, 0, sizeof(text));
+		png_text_struct text[2]{};
 		text[0].key = const_cast<char *>("Software");
 		text[0].text = const_cast<char *>(_openttd_revision.c_str());
 		text[0].text_length = _openttd_revision.size();

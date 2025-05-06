@@ -212,8 +212,7 @@ static const uint MAX_FRAMES     = 64;
 		proc.pSymSetOptions(SYMOPT_DEFERRED_LOADS | SYMOPT_FAIL_CRITICAL_ERRORS | SYMOPT_UNDNAME);
 
 		/* Initialize starting stack frame from context record. */
-		STACKFRAME64 frame;
-		memset(&frame, 0, sizeof(frame));
+		STACKFRAME64 frame{};
 #ifdef _M_AMD64
 		frame.AddrPC.Offset = ep->ContextRecord->Rip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Rbp;

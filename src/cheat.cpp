@@ -18,5 +18,5 @@ Cheats _cheats;
 /** Reinitialise all the cheats. */
 void InitializeCheats()
 {
-	memset(&_cheats, 0, sizeof(Cheats));
+	_cheats = {};
 }
