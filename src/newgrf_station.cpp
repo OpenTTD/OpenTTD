@@ -631,7 +631,6 @@ void GetCustomStationRelocation(SpriteLayoutProcessor &processor, const StationS
 {
 	StationResolverObject object(statspec, st, tile, CBID_NO_CALLBACK);
 	for (uint8_t var10 : processor.Var10Values()) {
-		object.ResetState();
 		object.callback_param1 = var10;
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		if (group == nullptr || group->num_sprites == 0) continue;
