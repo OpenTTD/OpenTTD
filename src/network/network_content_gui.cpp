@@ -31,8 +31,6 @@
 #include "table/strings.h"
 #include "../table/sprites.h"
 
-#include <bitset>
-
 #include "../safeguards.h"
 
 
@@ -313,7 +311,7 @@ public:
 /** Filter data for NetworkContentListWindow. */
 struct ContentListFilterData {
 	StringFilter string_filter; ///< Text filter of content list
-	std::bitset<CONTENT_TYPE_END> types; ///< Content types displayed
+	ContentTypes types; ///< Content types displayed
 };
 
 /** Filter criteria for NetworkContentListWindow. */
@@ -474,8 +472,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Filter content by type, but still show content selected for download. */
 	static bool TypeOrSelectedFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
-		if (filter.types.none()) return true;
-		if (filter.types[(*a)->type]) return true;
+		if (filter.types.None()) return true;
+		if (filter.types.Test((*a)->type)) return true;
 		return ((*a)->state == ContentInfo::SELECTED || (*a)->state == ContentInfo::AUTOSELECTED);
 	}
 
@@ -488,7 +486,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 			this->content.SetFilterType(CONTENT_FILTER_TEXT);
 			changed |= this->content.Filter(this->filter_data);
 		}
-		if (this->filter_data.types.any()) {
+		if (this->filter_data.types.Any()) {
 			this->content.SetFilterType(CONTENT_FILTER_TYPE_OR_SELECTED);
 			changed |= this->content.Filter(this->filter_data);
 		}
@@ -513,7 +511,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	bool UpdateFilterState()
 	{
 		Filtering old_params = this->content.GetFiltering();
-		bool new_state = !this->filter_data.string_filter.IsEmpty() || this->filter_data.types.any();
+		bool new_state = !this->filter_data.string_filter.IsEmpty() || this->filter_data.types.Any();
 		if (new_state != old_params.state) {
 			this->content.SetFilterState(new_state);
 		}
@@ -539,7 +537,7 @@ public:
 	 *   other types are only shown when content that depend on them are
 	 *   selected.
 	 */
-	NetworkContentListWindow(WindowDesc &desc, bool select_all, const std::bitset<CONTENT_TYPE_END> &types) :
+	NetworkContentListWindow(WindowDesc &desc, bool select_all, ContentTypes types) :
 			Window(desc),
 			auto_select(select_all),
 			filter_editbox(EDITBOX_MAX_SIZE)
@@ -795,7 +793,7 @@ public:
 					this->list_pos = it - this->content.begin();
 				}
 
-				if (this->filter_data.types.any()) {
+				if (this->filter_data.types.Any()) {
 					this->content.ForceRebuild();
 				}
 
@@ -872,7 +870,7 @@ public:
 							this->content.ForceResort();
 							this->InvalidateData();
 						}
-						if (this->filter_data.types.any()) {
+						if (this->filter_data.types.Any()) {
 							this->content.ForceRebuild();
 							this->InvalidateData();
 						}
@@ -1115,7 +1113,7 @@ static WindowDesc _network_content_list_desc(
 void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentType type2)
 {
 #if defined(WITH_ZLIB)
-	std::bitset<CONTENT_TYPE_END> types;
+	ContentTypes types{};
 	_network_content_client.Clear();
 	if (cv == nullptr) {
 		assert(type1 != CONTENT_TYPE_END || type2 == CONTENT_TYPE_END);
@@ -1123,8 +1121,8 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 		_network_content_client.RequestContentList(type1);
 		if (type2 != CONTENT_TYPE_END) _network_content_client.RequestContentList(type2);
 
-		if (type1 != CONTENT_TYPE_END) types[type1] = true;
-		if (type2 != CONTENT_TYPE_END) types[type2] = true;
+		if (type1 != CONTENT_TYPE_END) types.Set(type1);
+		if (type2 != CONTENT_TYPE_END) types.Set(type2);
 	} else {
 		_network_content_client.RequestContentList(cv, true);
 	}
