@@ -2664,7 +2664,7 @@ static void TileLoop_Track(TileIndex tile)
 		TrackBits rail = GetTrackBits(tile);
 
 		Owner owner = GetTileOwner(tile);
-		uint8_t fences = 0;
+		DiagDirections fences{};
 
 		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
 			static const TrackBits dir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
@@ -2677,22 +2677,22 @@ static void TileLoop_Track(TileIndex tile)
 			/* Show fences if it's a house, industry, object, road, tunnelbridge or not owned by us. */
 			if (!IsValidTile(tile2) || IsTileType(tile2, MP_HOUSE) || IsTileType(tile2, MP_INDUSTRY) ||
 					IsTileType(tile2, MP_ROAD) || (IsTileType(tile2, MP_OBJECT) && !IsObjectType(tile2, OBJECT_OWNED_LAND)) || IsTileType(tile2, MP_TUNNELBRIDGE) || !IsTileOwner(tile2, owner)) {
-				fences |= 1 << d;
+				fences.Set(d);
 			}
 		}
 
-		switch (fences) {
-			case 0: break;
-			case (1 << DIAGDIR_NE): new_ground = RAIL_GROUND_FENCE_NE; break;
-			case (1 << DIAGDIR_SE): new_ground = RAIL_GROUND_FENCE_SE; break;
-			case (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_SW; break;
-			case (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_NW; break;
-			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_NESW; break;
-			case (1 << DIAGDIR_SE) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_SENW; break;
-			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SE): new_ground = RAIL_GROUND_FENCE_VERT1; break;
-			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
-			case (1 << DIAGDIR_SE) | (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
-			case (1 << DIAGDIR_SW) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_VERT2; break;
+		switch (fences.base()) {
+			case DiagDirections{}.base(): break;
+			case DiagDirections{DIAGDIR_NE}.base(): new_ground = RAIL_GROUND_FENCE_NE; break;
+			case DiagDirections{DIAGDIR_SE}.base(): new_ground = RAIL_GROUND_FENCE_SE; break;
+			case DiagDirections{DIAGDIR_SW}.base(): new_ground = RAIL_GROUND_FENCE_SW; break;
+			case DiagDirections{DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_NW; break;
+			case DiagDirections{DIAGDIR_NE, DIAGDIR_SW}.base(): new_ground = RAIL_GROUND_FENCE_NESW; break;
+			case DiagDirections{DIAGDIR_SE, DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_SENW; break;
+			case DiagDirections{DIAGDIR_NE, DIAGDIR_SE}.base(): new_ground = RAIL_GROUND_FENCE_VERT1; break;
+			case DiagDirections{DIAGDIR_NE, DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
+			case DiagDirections{DIAGDIR_SE, DIAGDIR_SW}.base(): new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
+			case DiagDirections{DIAGDIR_SW, DIAGDIR_NW}.base(): new_ground = RAIL_GROUND_FENCE_VERT2; break;
 			default: NOT_REACHED();
 		}
 	}
