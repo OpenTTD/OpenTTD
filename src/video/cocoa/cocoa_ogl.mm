@@ -25,7 +25,6 @@
 #include "../../debug.h"
 #include "../../core/geometry_func.hpp"
 #include "../../core/math_func.hpp"
-#include "../../core/mem_func.hpp"
 #include "cocoa_ogl.h"
 #include "cocoa_wnd.h"
 #include "../../blitter/factory.hpp"
