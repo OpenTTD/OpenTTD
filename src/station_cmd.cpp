@@ -797,7 +797,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlags flags);
  * @param check_bridge Check for the existence of a bridge.
  * @return The cost in case of success, or an error code if it failed.
  */
-CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z, bool allow_steep, bool check_bridge = true)
+CommandCost CheckBuildableTile(TileIndex tile, DiagDirections invalid_dirs, int &allowed_z, bool allow_steep, bool check_bridge = true)
 {
 	if (check_bridge && IsBridgeAbove(tile)) {
 		return CommandCost(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -822,7 +822,7 @@ CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z
 	if (tileh != SLOPE_FLAT) {
 		/* Forbid building if the tile faces a slope in a invalid direction. */
 		for (DiagDirection dir = DIAGDIR_BEGIN; dir != DIAGDIR_END; dir++) {
-			if (HasBit(invalid_dirs, dir) && !CanBuildDepotByTileh(dir, tileh)) {
+			if (invalid_dirs.Test(dir) && !CanBuildDepotByTileh(dir, tileh)) {
 				return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 			}
 		}
@@ -852,7 +852,7 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 	int allowed_z = -1;
 
 	for (; tile_iter != INVALID_TILE; ++tile_iter) {
-		CommandCost ret = CheckBuildableTile(tile_iter, 0, allowed_z, true);
+		CommandCost ret = CheckBuildableTile(tile_iter, {}, allowed_z, true);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret.GetCost());
 
@@ -883,7 +883,7 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_tile, int &allowed_z, DoCommandFlags flags, Axis axis, StationID *station, RailType rt, std::vector<Train *> &affected_vehicles, StationClassID spec_class, uint16_t spec_index, uint8_t plat_len, uint8_t numtracks)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	uint invalid_dirs = 5 << axis;
+	DiagDirections invalid_dirs = AxisToDiagDirs(axis);
 
 	const StationSpec *statspec = StationClass::Get(spec_class)->GetSpec(spec_index);
 	bool slope_cb = statspec != nullptr && statspec->callback_mask.Test(StationCallbackMask::SlopeCheck);
@@ -922,7 +922,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
 			if (HasPowerOnRail(GetRailType(tile_cur), rt)) {
 				TrackBits tracks = GetTrackBits(tile_cur);
 				Track track = RemoveFirstTrack(&tracks);
-				Track expected_track = HasBit(invalid_dirs, DIAGDIR_NE) ? TRACK_X : TRACK_Y;
+				Track expected_track = invalid_dirs.Test(DIAGDIR_NE) ? TRACK_X : TRACK_Y;
 
 				/* The existing track must align with the desired station axis. */
 				if (tracks == TRACK_BIT_NONE && track == expected_track) {
@@ -962,7 +962,7 @@ static CommandCost CheckFlatLandRailStation(TileIndex tile_cur, TileIndex north_
  * @param rt Road type to build, may be INVALID_ROADTYPE if an existing road is required.
  * @return The cost in case of success, or an error code if it failed.
  */
-CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoCommandFlags flags, uint invalid_dirs, bool is_drive_through, StationType station_type, Axis axis, StationID *station, RoadType rt)
+static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, DoCommandFlags flags, DiagDirections invalid_dirs, bool is_drive_through, StationType station_type, Axis axis, StationID *station, RoadType rt)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -1915,12 +1915,12 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  */
 CommandCost CalculateRoadStopCost(TileArea tile_area, DoCommandFlags flags, bool is_drive_through, StationType station_type, Axis axis, DiagDirection ddir, StationID *est, RoadType rt, Money unit_cost)
 {
-	uint invalid_dirs = 0;
+	DiagDirections invalid_dirs{};
 	if (is_drive_through) {
-		SetBit(invalid_dirs, AxisToDiagDir(axis));
-		SetBit(invalid_dirs, ReverseDiagDir(AxisToDiagDir(axis)));
+		invalid_dirs.Set(AxisToDiagDir(axis));
+		invalid_dirs.Set(ReverseDiagDir(AxisToDiagDir(axis)));
 	} else {
-		SetBit(invalid_dirs, ddir);
+		invalid_dirs.Set(ddir);
 	}
 
 	/* Check every tile in the area. */
