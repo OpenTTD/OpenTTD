@@ -11,7 +11,6 @@
 #include "../zoom_func.h"
 #include "../settings_type.h"
 #include "../core/math_func.hpp"
-#include "../core/mem_func.hpp"
 #include "8bpp_optimized.hpp"
 
 #include "../safeguards.h"
@@ -96,7 +95,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 				}
 
 				case BlitterMode::BlackRemap:
-					MemSetT(dst, 0, pixels);
+					std::fill_n(dst, pixels, 0);
 					dst += pixels;
 					break;
 
@@ -112,7 +111,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 				}
 
 				default:
-					MemCpyT(dst, src, pixels);
+					std::copy_n(src, pixels, dst);
 					dst += pixels; src += pixels;
 					break;
 			}
