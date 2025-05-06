@@ -11,12 +11,10 @@
  */
 
 #include "../stdafx.h"
-#include "../debug.h"
+
 #include "../window_func.h"
 #include "network_internal.h"
-#include "network_udp.h"
 #include "network_gamelist.h"
-#include <atomic>
 
 #include "../safeguards.h"
 

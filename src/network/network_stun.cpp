@@ -8,8 +8,8 @@
 /** @file network_stun.cpp STUN sending/receiving part of the network protocol. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "network.h"
 #include "network_coordinator.h"
 #include "network_stun.h"
 
