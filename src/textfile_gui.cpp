@@ -680,8 +680,7 @@ static std::vector<char> Gunzip(std::span<char> input)
 	static const int BLOCKSIZE = 8192;
 	std::vector<char> output;
 
-	z_stream z;
-	memset(&z, 0, sizeof(z));
+	z_stream z{};
 	z.next_in = reinterpret_cast<Bytef *>(input.data());
 	z.avail_in = static_cast<uInt>(input.size());
 

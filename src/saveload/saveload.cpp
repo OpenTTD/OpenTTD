@@ -2557,7 +2557,7 @@ struct NoCompSaveFilter : SaveFilter {
 
 /** Filter using Zlib compression. */
 struct ZlibLoadFilter : LoadFilter {
-	z_stream z;                        ///< Stream state we are reading from.
+	z_stream z{}; ///< Stream state we are reading from.
 	uint8_t fread_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for reading from the file.
 
 	/**
@@ -2566,7 +2566,6 @@ struct ZlibLoadFilter : LoadFilter {
 	 */
 	ZlibLoadFilter(std::shared_ptr<LoadFilter> chain) : LoadFilter(std::move(chain))
 	{
-		memset(&this->z, 0, sizeof(this->z));
 		if (inflateInit(&this->z) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
 	}
 
@@ -2601,7 +2600,7 @@ struct ZlibLoadFilter : LoadFilter {
 
 /** Filter using Zlib compression. */
 struct ZlibSaveFilter : SaveFilter {
-	z_stream z; ///< Stream state we are writing to.
+	z_stream z{}; ///< Stream state we are writing to.
 	uint8_t fwrite_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for writing to the file.
 
 	/**
@@ -2611,7 +2610,6 @@ struct ZlibSaveFilter : SaveFilter {
 	 */
 	ZlibSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level) : SaveFilter(std::move(chain))
 	{
-		memset(&this->z, 0, sizeof(this->z));
 		if (deflateInit(&this->z, compression_level) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 

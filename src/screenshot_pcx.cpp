@@ -45,7 +45,6 @@ public:
 	{
 		uint maxlines;
 		uint y;
-		PcxHeader pcx;
 		bool success;
 
 		if (pixelformat == 32) {
@@ -58,9 +57,8 @@ public:
 		if (!of.has_value()) return false;
 		auto &f = *of;
 
-		memset(&pcx, 0, sizeof(pcx));
-
 		/* setup pcx header */
+		PcxHeader pcx{};
 		pcx.manufacturer = 10;
 		pcx.version = 5;
 		pcx.rle = 1;

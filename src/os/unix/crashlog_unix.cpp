@@ -146,8 +146,7 @@ static sigset_t SetSignals(void(*handler)(int))
 		sigaddset(&sigs, signum);
 	}
 
-	struct sigaction sa;
-	memset(&sa, 0, sizeof(sa));
+	struct sigaction sa{};
 	sa.sa_flags = SA_RESTART;
 
 	sigemptyset(&sa.sa_mask);

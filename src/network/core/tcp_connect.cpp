@@ -222,8 +222,7 @@ void TCPConnecter::Resolve()
 	/* Port is already guaranteed part of the connection_string. */
 	NetworkAddress address = ParseConnectionString(this->connection_string, 0);
 
-	addrinfo hints;
-	memset(&hints, 0, sizeof(hints));
+	addrinfo hints{};
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_flags = AI_ADDRCONFIG;
 	hints.ai_socktype = SOCK_STREAM;
