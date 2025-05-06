@@ -424,7 +424,6 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 	dest_sprite->y_offs = root_sprite.y_offs;
 
 	SpriteData *dst = (SpriteData *)dest_sprite->data;
-	memset(dst, 0, sizeof(*dst));
 
 	uint32_t offset = 0;
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {

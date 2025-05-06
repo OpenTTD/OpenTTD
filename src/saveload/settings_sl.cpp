@@ -25,7 +25,7 @@
  */
 void PrepareOldDiffCustom()
 {
-	memset(_old_diff_custom, 0, sizeof(_old_diff_custom));
+	_old_diff_custom.fill(0);
 }
 
 /**
