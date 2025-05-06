@@ -9,7 +9,6 @@
 
 #include "stdafx.h"
 #include "core/geometry_func.hpp"
-#include "core/mem_func.hpp"
 #include "landscape.h"
 #include "newgrf_text.h"
 #include "error.h"

@@ -18,7 +18,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_text_type.h"
 #include "core/bitmath_func.hpp"
-#include "core/mem_func.hpp"
 
 /**
  * List of different canal 'features'.

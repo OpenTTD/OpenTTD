@@ -13,7 +13,6 @@
 #include "../strings_type.h"
 #include "../misc/getoptdata.h"
 #include "../ini_type.h"
-#include "../core/mem_func.hpp"
 #include "../error_func.h"
 
 #include <filesystem>

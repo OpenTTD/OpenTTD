@@ -19,7 +19,6 @@
 #include "settings_type.h"
 #include "blitter/factory.hpp"
 #include "core/math_func.hpp"
-#include "core/mem_func.hpp"
 #include "video/video_driver.hpp"
 #include "spritecache.h"
 #include "spritecache_internal.h"
