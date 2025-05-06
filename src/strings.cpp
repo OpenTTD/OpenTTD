@@ -1599,7 +1599,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					}
 
 					if (e->info.callback_mask.Test(VehicleCallbackMask::Name)) {
-						std::array<int32_t, 6> regs100;
+						std::array<int32_t, 16> regs100;
 						uint16_t callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32_t>(arg >> 32), 0, e->index, nullptr, regs100);
 						/* Not calling ErrorUnknownCallbackResult due to being inside string processing. */
 						if (callback == 0x40F) {

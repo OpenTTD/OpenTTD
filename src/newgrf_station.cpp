@@ -687,7 +687,7 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 			(numtracks << 24) | (plat_len << 16) | (axis == AXIS_Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff)));
 	object.station_scope.axis = axis;
 
-	std::array<int32_t, 4> regs100;
+	std::array<int32_t, 16> regs100;
 	uint16_t cb_res = object.ResolveCallback(regs100);
 
 	/* Failed callback means success. */
