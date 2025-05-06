@@ -198,7 +198,7 @@ static bool ReadTrackChunk(FileHandle &file, MidiFile &target)
 	if (fread(buf, sizeof(magic), 1, file) != 1) {
 		return false;
 	}
-	if (memcmp(magic, buf, sizeof(magic)) != 0) {
+	if (!std::ranges::equal(magic, buf)) {
 		return false;
 	}
 
