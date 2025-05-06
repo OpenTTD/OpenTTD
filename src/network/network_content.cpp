@@ -118,17 +118,17 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet &p)
 	HasContentProc *proc = GetHasContentProcforContentType(ci->type);
 	if (proc != nullptr) {
 		if (proc(*ci, true)) {
-			ci->state = ContentInfo::ALREADY_HERE;
+			ci->state = ContentInfo::State::AlreadyHere;
 		} else {
-			ci->state = ContentInfo::UNSELECTED;
+			ci->state = ContentInfo::State::Unselected;
 			if (proc(*ci, false)) ci->upgrade = true;
 		}
 	} else {
-		ci->state = ContentInfo::UNSELECTED;
+		ci->state = ContentInfo::State::Unselected;
 	}
 
 	/* Something we don't have and has filesize 0 does not exist in the system */
-	if (ci->state == ContentInfo::UNSELECTED && ci->filesize == 0) ci->state = ContentInfo::DOES_NOT_EXIST;
+	if (ci->state == ContentInfo::State::Unselected && ci->filesize == 0) ci->state = ContentInfo::State::DoesNotExist;
 
 	/* Do we already have a stub for this? */
 	for (const auto &ici : this->infos) {
@@ -295,7 +295,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 
 	ContentIDList content;
 	for (const auto &ci : this->infos) {
-		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
+		if (!ci->IsSelected() || ci->state == ContentInfo::State::AlreadyHere) continue;
 
 		content.push_back(ci->id);
 		bytes += ci->filesize;
@@ -845,9 +845,9 @@ ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid) const
 void ClientNetworkContentSocketHandler::Select(ContentID cid)
 {
 	ContentInfo *ci = this->GetContent(cid);
-	if (ci == nullptr || ci->state != ContentInfo::UNSELECTED) return;
+	if (ci == nullptr || ci->state != ContentInfo::State::Unselected) return;
 
-	ci->state = ContentInfo::SELECTED;
+	ci->state = ContentInfo::State::Selected;
 	this->CheckDependencyState(*ci);
 }
 
@@ -860,7 +860,7 @@ void ClientNetworkContentSocketHandler::Unselect(ContentID cid)
 	ContentInfo *ci = this->GetContent(cid);
 	if (ci == nullptr || !ci->IsSelected()) return;
 
-	ci->state = ContentInfo::UNSELECTED;
+	ci->state = ContentInfo::State::Unselected;
 	this->CheckDependencyState(*ci);
 }
 
@@ -868,8 +868,8 @@ void ClientNetworkContentSocketHandler::Unselect(ContentID cid)
 void ClientNetworkContentSocketHandler::SelectAll()
 {
 	for (const auto &ci : this->infos) {
-		if (ci->state == ContentInfo::UNSELECTED) {
-			ci->state = ContentInfo::SELECTED;
+		if (ci->state == ContentInfo::State::Unselected) {
+			ci->state = ContentInfo::State::Selected;
 			this->CheckDependencyState(*ci);
 		}
 	}
@@ -879,8 +879,8 @@ void ClientNetworkContentSocketHandler::SelectAll()
 void ClientNetworkContentSocketHandler::SelectUpgrade()
 {
 	for (const auto &ci : this->infos) {
-		if (ci->state == ContentInfo::UNSELECTED && ci->upgrade) {
-			ci->state = ContentInfo::SELECTED;
+		if (ci->state == ContentInfo::State::Unselected && ci->upgrade) {
+			ci->state = ContentInfo::State::Selected;
 			this->CheckDependencyState(*ci);
 		}
 	}
@@ -890,7 +890,7 @@ void ClientNetworkContentSocketHandler::SelectUpgrade()
 void ClientNetworkContentSocketHandler::UnselectAll()
 {
 	for (const auto &ci : this->infos) {
-		if (ci->IsSelected() && ci->state != ContentInfo::ALREADY_HERE) ci->state = ContentInfo::UNSELECTED;
+		if (ci->IsSelected() && ci->state != ContentInfo::State::AlreadyHere) ci->state = ContentInfo::State::Unselected;
 	}
 }
 
@@ -898,12 +898,12 @@ void ClientNetworkContentSocketHandler::UnselectAll()
 void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo &ci)
 {
 	switch (ci.state) {
-		case ContentInfo::SELECTED:
-		case ContentInfo::AUTOSELECTED:
+		case ContentInfo::State::Selected:
+		case ContentInfo::State::Autoselected:
 			this->Unselect(ci.id);
 			break;
 
-		case ContentInfo::UNSELECTED:
+		case ContentInfo::State::Unselected:
 			this->Select(ci.id);
 			break;
 
@@ -955,7 +955,7 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
  */
 void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &ci)
 {
-	if (ci.IsSelected() || ci.state == ContentInfo::ALREADY_HERE) {
+	if (ci.IsSelected() || ci.state == ContentInfo::State::AlreadyHere) {
 		/* Selection is easy; just walk all children and set the
 		 * autoselected state. That way we can see what we automatically
 		 * selected and thus can unselect when a dependency is removed. */
@@ -963,15 +963,15 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &
 			ContentInfo *c = this->GetContent(dependency);
 			if (c == nullptr) {
 				this->DownloadContentInfo(dependency);
-			} else if (c->state == ContentInfo::UNSELECTED) {
-				c->state = ContentInfo::AUTOSELECTED;
+			} else if (c->state == ContentInfo::State::Unselected) {
+				c->state = ContentInfo::State::Autoselected;
 				this->CheckDependencyState(*c);
 			}
 		}
 		return;
 	}
 
-	if (ci.state != ContentInfo::UNSELECTED) return;
+	if (ci.state != ContentInfo::State::Unselected) return;
 
 	/* For unselection we need to find the parents of us. We need to
 	 * unselect them. After that we unselect all children that we
@@ -991,7 +991,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &
 			DownloadContentInfo(dependency);
 			continue;
 		}
-		if (c->state != ContentInfo::AUTOSELECTED) continue;
+		if (c->state != ContentInfo::State::Autoselected) continue;
 
 		/* Only unselect when WE are the only parent. */
 		parents.clear();
@@ -1002,7 +1002,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &
 		bool force_selection = false;
 		for (const ContentInfo *parent_ci : parents) {
 			if (parent_ci->IsSelected()) sel_count++;
-			if (parent_ci->state == ContentInfo::SELECTED) force_selection = true;
+			if (parent_ci->state == ContentInfo::State::Selected) force_selection = true;
 		}
 		if (sel_count == 0) {
 			/* Nothing depends on us */
@@ -1018,7 +1018,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &
 
 		/* Is there anything that is "force" selected?, if so... we're done. */
 		for (const ContentInfo *parent_ci : parents) {
-			if (parent_ci->state != ContentInfo::SELECTED) continue;
+			if (parent_ci->state != ContentInfo::State::Selected) continue;
 
 			force_selection = true;
 			break;
@@ -1032,7 +1032,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(const ContentInfo &
 		 * to unselect. Don't do it immediately because it'll do exactly what
 		 * we're doing now. */
 		for (const ContentInfo *parent : parents) {
-			if (parent->state == ContentInfo::AUTOSELECTED) this->Unselect(parent->id);
+			if (parent->state == ContentInfo::State::Autoselected) this->Unselect(parent->id);
 		}
 		for (const ContentInfo *parent : parents) {
 			this->CheckDependencyState(*this->GetContent(parent->id));
@@ -1093,7 +1093,7 @@ void ClientNetworkContentSocketHandler::OnDownloadComplete(ContentID cid)
 {
 	ContentInfo *ci = this->GetContent(cid);
 	if (ci != nullptr) {
-		ci->state = ContentInfo::ALREADY_HERE;
+		ci->state = ContentInfo::State::AlreadyHere;
 	}
 
 	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {

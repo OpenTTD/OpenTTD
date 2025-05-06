@@ -2220,7 +2220,7 @@ static void OutputContentState(const ContentInfo &ci)
 	static const std::string_view states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
 	static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
-	IConsolePrint(state_to_colour[ci.state], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[ci.state], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
+	IConsolePrint(state_to_colour[to_underlying(ci.state)], "{}, {}, {}, {}, {:08X}, {}", ci.id, types[ci.type - 1], states[to_underlying(ci.state)], ci.name, ci.unique_id, FormatArrayAsHex(ci.md5sum));
 }
 
 static bool ConContent(std::span<std::string_view> argv)
@@ -2257,7 +2257,7 @@ static bool ConContent(std::span<std::string_view> argv)
 			/* List selected content */
 			IConsolePrint(CC_WHITE, "id, type, state, name");
 			for (const ContentInfo &ci : _network_content_client.Info()) {
-				if (ci.state != ContentInfo::SELECTED && ci.state != ContentInfo::AUTOSELECTED) continue;
+				if (ci.state != ContentInfo::State::Selected && ci.state != ContentInfo::State::Autoselected) continue;
 				OutputContentState(ci);
 			}
 		} else if (StrEqualsIgnoreCase(argv[2], "all")) {
