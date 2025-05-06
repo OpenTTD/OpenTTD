@@ -43,9 +43,10 @@ void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int s
 
 void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8_t colour)
 {
+	std::byte *p = static_cast<std::byte *>(video);
 	do {
-		memset(video, colour, width);
-		video = (uint8_t *)video + _screen.pitch;
+		std::fill_n(p, width, static_cast<std::byte>(colour));
+		p += _screen.pitch;
 	} while (--height);
 }
 

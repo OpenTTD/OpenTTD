@@ -203,7 +203,7 @@ static bool CreateMainSurface(uint w, uint h)
 	_screen.dst_ptr = _allegro_screen->line[0];
 
 	/* Initialise the screen so we don't blit garbage to the screen */
-	memset(_screen.dst_ptr, 0, static_cast<size_t>(_screen.height) * _screen.pitch);
+	std::fill_n(static_cast<std::byte *>(_screen.dst_ptr), static_cast<size_t>(_screen.height) * _screen.pitch, static_cast<std::byte>(0));
 
 	/* Set the mouse at the place where we expect it */
 	poll_mouse();
