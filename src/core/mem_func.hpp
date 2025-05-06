@@ -10,8 +10,6 @@
 #ifndef MEM_FUNC_HPP
 #define MEM_FUNC_HPP
 
-#include "math_func.hpp"
-
 /**
  * Type-safe version of memcpy().
  *
