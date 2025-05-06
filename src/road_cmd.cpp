@@ -1761,32 +1761,32 @@ static void DrawTile_Road(TileInfo *ti)
 				const Axis road_axis = GetCrossingRoadAxis(ti->tile);
 				const DiagDirection dir1 = AxisToDiagDir(road_axis);
 				const DiagDirection dir2 = ReverseDiagDir(dir1);
-				uint adjacent_diagdirs = 0;
+				DiagDirections adjacent_diagdirs{};
 				for (DiagDirection dir : { dir1, dir2 }) {
 					const TileIndex t = TileAddByDiagDir(ti->tile, dir);
 					if (t < Map::Size() && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == road_axis) {
-						SetBit(adjacent_diagdirs, dir);
+						adjacent_diagdirs.Set(dir);
 					}
 				}
 
-				switch (adjacent_diagdirs) {
-					case 0:
+				switch (adjacent_diagdirs.base()) {
+					case DiagDirections{}.base():
 						DrawRailTileSeq(ti, &_crossing_layout, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case (1 << DIAGDIR_NE):
+					case DiagDirections{DIAGDIR_NE}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_SW, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case (1 << DIAGDIR_SE):
+					case DiagDirections{DIAGDIR_SE}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_NW, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case (1 << DIAGDIR_SW):
+					case DiagDirections{DIAGDIR_SW}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_NE, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
-					case (1 << DIAGDIR_NW):
+					case DiagDirections{DIAGDIR_NW}.base():
 						DrawRailTileSeq(ti, &_crossing_layout_SE, TO_CATENARY, rail, 0, PAL_NONE);
 						break;
 
