@@ -1582,9 +1582,9 @@ STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
 ###length 4
-STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Klimat umiarkowany
-STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Klimat arktyczny
-STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Klimat tropikalny
+STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :Krajobraz umiarkowany
+STR_CLIMATE_SUB_ARCTIC_LANDSCAPE                                :Krajobraz arktyczny
+STR_CLIMATE_SUB_TROPICAL_LANDSCAPE                              :Krajobraz tropikalny
 STR_CLIMATE_TOYLAND_LANDSCAPE                                   :Krajobraz zabawkowy
 
 ###length 7
@@ -2386,10 +2386,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Liniowy
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Rozmieszczenie drzew w grze: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Losowe pojawianie się drzew podczas gry. Może mieć to wpływ na przedsiębiorstwa opierające się na wyrastaniu drzew, np. tartaki
 ###length 4
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Rosną, ale nie rozprzestrzeniają się {RED}(Klimat tropikalny: Tartaki nie działają)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Rosną, ale nie rozprzestrzeniają się {RED}(krajobraz tropikalny: tartaki nie działają)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Rosną, ale rozprzestrzeniają się tylko w lasach deszczowych
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Rosną i rozprzestrzeniają się wszędzie
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Nie rosną, nie rozprzestrzeniają się {RED}(Klimat tropikalny: Tartaki nie działają)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Nie rosną, nie rozprzestrzeniają się {RED}(krajobraz tropikalny: tartaki nie działają)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozycja głównego paska narzędzi: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pozioma pozycja głównego paska narzędzi na górze ekranu
@@ -2452,7 +2452,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :Tryb „symetry
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Tryb dystrybucji dla poczty: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :Tryb „symetryczny” oznacza, że mniej więcej taka sama ilość poczty zostanie wysłana ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach może być wysyłana różna ilość poczty. Tryb „ręczny” oznacza, że dla poczty nie będzie przeprowadzana dystrybucja automatyczna
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Tryb dystrybucji dla klasy ładunków CHRONIONYCH: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Klasa ładunków CHRONIONYCH zawiera kosztowności w klimacie umiarkowanym, diamenty w tropikalnym lub złoto w klimacie arktycznym. NewGRF-y mogą to zmienić. Tryb „symetryczny” oznacza, że mniej więcej taka sama ilość danego ładunku zostanie wysłana ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach mogą być wysyłane różne ilości danego ładunku. Tryb „ręczny” oznacza, że dla danego ładunku nie będzie przeprowadzana dystrybucja automatyczna. Zaleca się ustawienie tej opcji na asymetryczną lub ręczną w klimacie arktycznym lub tropikalnym, ponieważ tam banki jedynie odbierają ładunek. Dla klimatu umiarkowanego możesz wybrać symetryczny, aby banki odsyłały kosztowności do pierwotnego banku
+STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Klasa ładunków CHRONIONYCH zawiera kosztowności w krajobrazie umiarkowanym, diamenty w tropikalnym lub złoto w krajobrazie arktycznym. NewGRF-y mogą to zmienić. Tryb „symetryczny” oznacza, że mniej więcej taka sama ilość danego ładunku zostanie wysłana ze stacji A do stacji B, co z B do A. Tryb „asymetryczny” oznacza, że w obu kierunkach mogą być wysyłane różne ilości danego ładunku. Tryb „ręczny” oznacza, że dla danego ładunku nie będzie przeprowadzana dystrybucja automatyczna. Zaleca się ustawienie tej opcji na asymetryczną lub ręczną w krajobrazie arktycznym lub tropikalnym, ponieważ tam banki jedynie odbierają ładunek. Dla krajobrazu umiarkowanego można wybrać symetryczny, aby banki odsyłały kosztowności do pierwotnego banku
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Tryb dystrybucji dla pozostałych klas ładunków: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :Tryb „asymetryczny” oznacza, że w obu kierunkach mogą być wysyłane różne ilości ładunków. Tryb „ręczny” oznacza, że dla takich ładunków nie będzie przeprowadzana dystrybucja automatyczna
 ###length 3

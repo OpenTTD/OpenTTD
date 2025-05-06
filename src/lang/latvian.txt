@@ -4787,8 +4787,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Ceļot (priekš
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Ceļot (ilgums {STRING}, nav sarakstā) ne ātrāk kā {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(stāvēt {STRING}, nav sarakstā)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(ceļot uz {STRING}, nav sarakstā)
-STR_TIMETABLE_STAY_FOR                                          :un palikt līdz {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :un braukt līdz {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}un palikt līdz {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}un braukt līdz {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Šī saraksta pabeigšana prasīs aptuveni {STRING}.
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Šis saraksts aizņems {STRING}, lai pabeigtu
@@ -5899,6 +5899,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mljrd.
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}trlj.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}

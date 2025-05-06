@@ -4840,8 +4840,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Menet ({STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Menet ({STRING}ig, időzítetlen) {VELOCITY} max. sebességgel
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(ottmarad {STRING}ig, időzítetlen)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(utazás {STRING} városba, időzítetlen)
-STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING}ig
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :és a menetidő: {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}állomásra és maradj ott {STRING}ig
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}és a menetidő: {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :Ez a menetrend körülbelül {STRING} időt vesz igénybe
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}A menetrend teljesítési ideje: {STRING}
@@ -5993,6 +5993,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP} Milliár
 STR_CURRENCY_SHORT_TERA                                         :{NBSP} billó
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}

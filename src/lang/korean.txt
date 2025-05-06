@@ -4443,10 +4443,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}선박�
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}항공기의 경로를 보여줍니다. CTRL+클릭하면 항공기의 시간표를 보여줍니다
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차의 상세정보를 보여줍니다
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}차량의 상세정보를 보여줍니다
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}선박의 상세정보를 보여줍니다
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}항공기의 상세정보를 보여줍니다
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}열차의 상세정보를 보여줍니다. CTRL+클릭하면 열차 그룹 창을 엽니다
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}차량의 상세정보를 보여줍니다. CTRL+클릭하면 차량 그룹 창을 엽니다
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}선박의 상세정보를 보여줍니다. CTRL+클릭하면 선박 그룹 창을 엽니다
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}항공기의 상세정보를 보여줍니다. CTRL+클릭하면 항공기 그룹 창을 엽니다
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}현재 열차 행동 - 열차 운행을 시작/정지하려면 클릭하세요
@@ -4777,8 +4777,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :운행 ({STRING
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :최대 {1:VELOCITY}의 속력으로 운행 ({0:STRING} 동안, 시간표 작성 안 됨)
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}({STRING} 동안 정차, 시간표 작성 안 됨)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}({STRING} 동안 운행, 시간표 작성 안 됨)
-STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}& {STRING} 동안 정차
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}& 다음 목적지({STRING})로 이동
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}이 시간표는 완주하는데 대략 {0:STRING}{G 0 "이" "가"} 걸립니다
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {0:STRING}{G 0 "이" "가"} 걸립니다
@@ -5889,6 +5889,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}bn
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}tn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
