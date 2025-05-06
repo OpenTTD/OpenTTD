@@ -307,13 +307,16 @@ public:
 	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0)
 		: default_scope(*this), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(nullptr)
 	{
-		this->ResetState();
 	}
 
 	virtual ~ResolverObject() = default;
 
 	ResolverResult DoResolve()
 	{
+		temp_store.ClearChanges();
+		this->last_value = 0;
+		this->used_random_triggers = 0;
+		this->reseed.fill(0);
 		return SpriteGroup::Resolve(this->root_spritegroup, *this);
 	}
 
@@ -432,19 +435,6 @@ public:
 			sum |= this->reseed[vsg];
 		}
 		return sum;
-	}
-
-	/**
-	 * Resets the dynamic state of the resolver object.
-	 * To be called before resolving an Action-1-2-3 chain.
-	 */
-	void ResetState()
-	{
-		temp_store.ClearChanges();
-		this->last_value = 0;
-		this->waiting_random_triggers = 0;
-		this->used_random_triggers = 0;
-		this->reseed.fill(0);
 	}
 
 	/**
