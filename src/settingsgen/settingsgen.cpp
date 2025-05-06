@@ -16,6 +16,7 @@
 #include "../error_func.h"
 
 #include <filesystem>
+#include <fstream>
 
 #include "../safeguards.h"
 
@@ -325,29 +326,18 @@ static void AppendFile(std::optional<std::string_view> fname, FILE *out_fp)
  * @param n2 Second file.
  * @return True if both files are identical.
  */
-static bool CompareFiles(std::string_view n1, std::string_view n2)
+static bool CompareFiles(std::filesystem::path path1, std::filesystem::path path2)
 {
-	auto f2 = FileHandle::Open(n2, "rb");
-	if (!f2.has_value()) return false;
+	/* Check for equal size, but ignore the error code for cases when a file does not exist. */
+	std::error_code error_code;
+	if (std::filesystem::file_size(path1, error_code) != std::filesystem::file_size(path2, error_code)) return false;
 
-	auto f1 = FileHandle::Open(n1, "rb");
-	if (!f1.has_value()) {
-		FatalError("can't open {}", n1);
-	}
+	std::ifstream stream1(path1, std::ifstream::binary);
+	std::ifstream stream2(path2, std::ifstream::binary);
 
-	size_t l1, l2;
-	do {
-		char b1[4096];
-		char b2[4096];
-		l1 = fread(b1, 1, sizeof(b1), *f1);
-		l2 = fread(b2, 1, sizeof(b2), *f2);
-
-		if (l1 != l2 || memcmp(b1, b2, l1) != 0) {
-			return false;
-		}
-	} while (l1 != 0);
-
-	return true;
+	return std::equal(std::istreambuf_iterator<char>(stream1.rdbuf()),
+			std::istreambuf_iterator<char>(),
+			std::istreambuf_iterator<char>(stream2.rdbuf()));
 }
 
 /** Options of settingsgen. */
