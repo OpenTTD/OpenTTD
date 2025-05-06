@@ -77,6 +77,16 @@ public:
 	}
 
 	/**
+	 * Reset all bits.
+	 * @returns The bit set
+	 */
+	inline constexpr Timpl &Reset()
+	{
+		this->data = 0;
+		return static_cast<Timpl &>(*this);
+	}
+
+	/**
 	 * Reset the value-th bit.
 	 * @param value Bit to reset.
 	 * @returns The bit set
@@ -180,12 +190,24 @@ public:
 		return this->data == 0;
 	}
 
-	inline constexpr Timpl operator |(const Timpl &other) const
+	inline constexpr Timpl &operator|=(const Timpl &other)
+	{
+		this->data |= other.data;
+		return static_cast<Timpl &>(*this);
+	}
+
+	inline constexpr Timpl operator|(const Timpl &other) const
 	{
 		return Timpl{static_cast<Tstorage>(this->data | other.data)};
 	}
 
-	inline constexpr Timpl operator &(const Timpl &other) const
+	inline constexpr Timpl &operator&=(const Timpl &other)
+	{
+		this->data &= other.data;
+		return static_cast<Timpl &>(*this);
+	}
+
+	inline constexpr Timpl operator&(const Timpl &other) const
 	{
 		return Timpl{static_cast<Tstorage>(this->data & other.data)};
 	}
