@@ -617,7 +617,8 @@ CommandCost CmdStartStopVehicle(DoCommandFlags flags, VehicleID veh_id, bool eva
 
 	if (evaluate_startstop_cb) {
 		/* Check if this vehicle can be started/stopped. Failure means 'allow'. */
-		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
+		std::array<int32_t, 1> regs100;
+		uint16_t callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v, regs100);
 		StringID error = STR_NULL;
 		if (callback != CALLBACK_FAILED) {
 			if (v->GetGRF()->grf_version < 8) {
@@ -629,6 +630,10 @@ CommandCost CmdStartStopVehicle(DoCommandFlags flags, VehicleID veh_id, bool eva
 				} else {
 					switch (callback) {
 						case 0x400: // allow
+							break;
+
+						case 0x40F:
+							error = GetGRFStringID(v->GetGRFID(), static_cast<GRFStringID>(regs100[0]));
 							break;
 
 						default: // unknown reason -> disallow

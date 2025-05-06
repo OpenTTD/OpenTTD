@@ -280,8 +280,12 @@ uint16_t GetAirportCallback(CallbackID callback, uint32_t param1, uint32_t param
 StringID GetAirportTextCallback(const AirportSpec *as, uint8_t layout, uint16_t callback)
 {
 	AirportResolverObject object(INVALID_TILE, nullptr, as, layout, (CallbackID)callback);
-	uint16_t cb_res = object.ResolveCallback({});
+	std::array<int32_t, 1> regs100;
+	uint16_t cb_res = object.ResolveCallback(regs100);
 	if (cb_res == CALLBACK_FAILED || cb_res == 0x400) return STR_UNDEFINED;
+	if (cb_res == 0x40F) {
+		return GetGRFStringID(as->grf_prop.grfid, static_cast<GRFStringID>(regs100[0]));
+	}
 	if (cb_res > 0x400) {
 		ErrorUnknownCallbackResult(as->grf_prop.grfid, callback, cb_res);
 		return STR_UNDEFINED;

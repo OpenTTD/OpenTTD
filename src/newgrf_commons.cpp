@@ -470,17 +470,22 @@ uint32_t GetCompanyInfo(CompanyID owner, const Livery *l)
  */
 CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, std::span<const int32_t> textstack, const GRFFile *grffile, StringID default_error)
 {
-	CommandCost res;
-
-	if (cb_res < 0x400) {
-		res = CommandCost(GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + cb_res));
+	auto get_newgrf_text = [&grffile](GRFStringID text_id, std::span<const int32_t> textstack) {
+		CommandCost res = CommandCost(GetGRFStringID(grffile->grfid, text_id));
 
 		/* If this error isn't for the local player then it won't be seen, so don't bother encoding anything. */
-		if (!IsLocalCompany()) return res;
+		if (IsLocalCompany()) {
+			StringID stringid = GetGRFStringID(grffile->grfid, text_id);
+			auto params = GetGRFSringTextStackParameters(grffile, stringid, textstack);
+			res.SetEncodedMessage(GetEncodedStringWithArgs(stringid, params));
+		}
 
-		StringID stringid = GetGRFStringID(grffile->grfid, GRFSTR_MISC_GRF_TEXT + cb_res);
-		auto params = GetGRFSringTextStackParameters(grffile, stringid, textstack);
-		res.SetEncodedMessage(GetEncodedStringWithArgs(stringid, params));
+		return res;
+	};
+
+	CommandCost res;
+	if (cb_res < 0x400) {
+		res = get_newgrf_text(GRFSTR_MISC_GRF_TEXT + cb_res, textstack);
 	} else {
 		switch (cb_res) {
 			case 0x400: return res; // No error.
@@ -495,6 +500,7 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, std::span
 			case 0x406: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_SEA); break;
 			case 0x407: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_CANAL); break;
 			case 0x408: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER); break;
+			case 0x40F: res = get_newgrf_text(static_cast<GRFStringID>(textstack[0]), textstack.subspan(1)); break;
 		}
 	}
 

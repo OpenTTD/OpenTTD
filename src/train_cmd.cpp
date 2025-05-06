@@ -1041,7 +1041,8 @@ static CommandCost CheckTrainAttachment(Train *t)
 			 * the loop and after each callback does not need to be cleared here. */
 			t->InvalidateNewGRFCache();
 
-			uint16_t callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, head->engine_type, t, head);
+			std::array<int32_t, 1> regs100;
+			uint16_t callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, head->engine_type, t, head, regs100);
 
 			/* Restore original first_engine data */
 			t->gcache.first_engine = first_engine;
@@ -1065,6 +1066,10 @@ static CommandCost CheckTrainAttachment(Train *t)
 						switch (callback) {
 							case 0x400: // allow if railtypes match (always the case for OpenTTD)
 							case 0x401: // allow
+								break;
+
+							case 0x40F:
+								error = GetGRFStringID(head->GetGRFID(), static_cast<GRFStringID>(regs100[0]));
 								break;
 
 							default:    // unknown reason -> disallow
