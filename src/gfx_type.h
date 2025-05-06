@@ -183,6 +183,8 @@ union ColourRGBA {
 	 * @param data The colour in the correct packed format.
 	 */
 	constexpr ColourRGBA(uint data = 0) : data(data) { }
+
+	bool operator==(const ColourRGBA &other) const { return this->data == other.data; };
 };
 
 /** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for big-endian systems. */
@@ -206,6 +208,8 @@ union ColourARGB {
 	 * @param data The colour in the correct packed format.
 	 */
 	constexpr ColourARGB(uint data = 0) : data(data) { }
+
+	bool operator==(const ColourARGB &other) const { return this->data == other.data; };
 };
 
 /** Packed colour union to access the alpha, red, green, and blue channels from a 32 bit number for little-endian systems. */
@@ -229,6 +233,8 @@ union ColourBGRA {
 	 * @param data The colour in the correct packed format.
 	 */
 	constexpr ColourBGRA(uint data = 0) : data(data) { }
+
+	bool operator==(const ColourBGRA &other) const { return this->data == other.data; };
 };
 
 #if defined(__EMSCRIPTEN__)
