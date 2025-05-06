@@ -48,22 +48,22 @@
 /**
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */
-static const uint8_t _flood_from_dirs[] = {
-	(1 << DIR_NW) | (1 << DIR_SW) | (1 << DIR_SE) | (1 << DIR_NE), // SLOPE_FLAT
-	(1 << DIR_NE) | (1 << DIR_SE),                                 // SLOPE_W
-	(1 << DIR_NW) | (1 << DIR_NE),                                 // SLOPE_S
-	(1 << DIR_NE),                                                 // SLOPE_SW
-	(1 << DIR_NW) | (1 << DIR_SW),                                 // SLOPE_E
-	0,                                                             // SLOPE_EW
-	(1 << DIR_NW),                                                 // SLOPE_SE
-	(1 << DIR_N ) | (1 << DIR_NW) | (1 << DIR_NE),                 // SLOPE_WSE, SLOPE_STEEP_S
-	(1 << DIR_SW) | (1 << DIR_SE),                                 // SLOPE_N
-	(1 << DIR_SE),                                                 // SLOPE_NW
-	0,                                                             // SLOPE_NS
-	(1 << DIR_E ) | (1 << DIR_NE) | (1 << DIR_SE),                 // SLOPE_NWS, SLOPE_STEEP_W
-	(1 << DIR_SW),                                                 // SLOPE_NE
-	(1 << DIR_S ) | (1 << DIR_SW) | (1 << DIR_SE),                 // SLOPE_ENW, SLOPE_STEEP_N
-	(1 << DIR_W ) | (1 << DIR_SW) | (1 << DIR_NW),                 // SLOPE_SEN, SLOPE_STEEP_E
+static const Directions _flood_from_dirs[] = {
+	{DIR_NW, DIR_SW, DIR_SE, DIR_NE}, // SLOPE_FLAT
+	{DIR_NE, DIR_SE},                 // SLOPE_W
+	{DIR_NW, DIR_NE},                 // SLOPE_S
+	{DIR_NE},                         // SLOPE_SW
+	{DIR_NW, DIR_SW},                 // SLOPE_E
+	{},                               // SLOPE_EW
+	{DIR_NW},                         // SLOPE_SE
+	{DIR_N, DIR_NW, DIR_NE},          // SLOPE_WSE, SLOPE_STEEP_S
+	{DIR_SW, DIR_SE},                 // SLOPE_N
+	{DIR_SE},                         // SLOPE_NW
+	{},                               // SLOPE_NS
+	{DIR_E, DIR_NE, DIR_SE},          // SLOPE_NWS, SLOPE_STEEP_W
+	{DIR_SW},                         // SLOPE_NE
+	{DIR_S, DIR_SW, DIR_SE},          // SLOPE_ENW, SLOPE_STEEP_N
+	{DIR_W, DIR_SW, DIR_NW},          // SLOPE_SEN, SLOPE_STEEP_E
 };
 
 /**
@@ -1268,7 +1268,7 @@ void TileLoop_Water(TileIndex tile)
 				auto [slope_dest, z_dest] = GetFoundationSlope(dest);
 				if (z_dest > 0) continue;
 
-				if (!HasBit(_flood_from_dirs[slope_dest & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP], ReverseDir(dir))) continue;
+				if (!_flood_from_dirs[slope_dest & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP].Test(ReverseDir(dir))) continue;
 
 				DoFloodTile(dest);
 			}
@@ -1278,7 +1278,7 @@ void TileLoop_Water(TileIndex tile)
 
 		case FLOOD_DRYUP: {
 			Slope slope_here = std::get<0>(GetFoundationSlope(tile)) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
-			for (Direction dir : SetBitIterator<Direction>(_flood_from_dirs[slope_here])) {
+			for (Direction dir : _flood_from_dirs[slope_here]) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				/* Contrary to flooding, drying up does consider MP_VOID tiles. */
 				if (dest == INVALID_TILE) continue;
@@ -1315,7 +1315,7 @@ void ConvertGroundTilesIntoWaterTiles()
 					break;
 
 				default:
-					for (Direction dir : SetBitIterator<Direction>(_flood_from_dirs[slope & ~SLOPE_STEEP])) {
+					for (Direction dir : _flood_from_dirs[slope & ~SLOPE_STEEP]) {
 						TileIndex dest = TileAddByDir(tile, dir);
 						Slope slope_dest = GetTileSlope(dest) & ~SLOPE_STEEP;
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest) || IsTileType(dest, MP_VOID)) {
