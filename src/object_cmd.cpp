@@ -45,7 +45,7 @@
 
 ObjectPool _object_pool("Object");
 INSTANTIATE_POOL_METHODS(Object)
-uint16_t Object::counts[NUM_OBJECTS];
+/* static */ std::array<uint16_t, NUM_OBJECTS> Object::counts;
 
 /**
  * Get the object associated with a tile.
