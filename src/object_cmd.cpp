@@ -276,7 +276,7 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 		for (TileIndex t : ta) {
 			uint16_t callback = CALLBACK_FAILED;
-			std::array<int32_t, 4> regs100;
+			std::array<int32_t, 16> regs100;
 			if (spec->callback_mask.Test(ObjectCallbackMask::SlopeCheck)) {
 				TileIndex diff = t - tile;
 				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t), TileY(diff) << 4 | TileX(diff), spec, nullptr, t, regs100, view);

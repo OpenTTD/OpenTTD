@@ -237,7 +237,7 @@ public:
 
 				/* Get the extra message for the GUI */
 				if (spec->callback_mask.Test(ObjectCallbackMask::FundMoreText)) {
-					std::array<int32_t, 6> regs100;
+					std::array<int32_t, 16> regs100;
 					uint16_t callback_res = GetObjectCallback(CBID_OBJECT_FUND_MORE_TEXT, 0, 0, spec, nullptr, INVALID_TILE, regs100, _object_gui.sel_view);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						std::string str;

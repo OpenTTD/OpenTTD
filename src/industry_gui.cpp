@@ -101,7 +101,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 
 	if (indspec->callback_mask.Test(IndustryCallbackMask::CargoSuffix)) {
 		TileIndex t = (cst != CST_FUND) ? ind->location.tile : INVALID_TILE;
-		std::array<int32_t, 6> regs100;
+		std::array<int32_t, 16> regs100;
 		uint16_t callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, const_cast<Industry *>(ind), ind_type, t, regs100);
 		if (callback == CALLBACK_FAILED) return;
 
@@ -603,7 +603,7 @@ public:
 
 				/* Get the additional purchase info text, if it has not already been queried. */
 				if (indsp->callback_mask.Test(IndustryCallbackMask::FundMoreText)) {
-					std::array<int32_t, 6> regs100;
+					std::array<int32_t, 16> regs100;
 					uint16_t callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, nullptr, this->selected_type, INVALID_TILE, regs100);
 					if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 						std::string str;
@@ -989,7 +989,7 @@ public:
 
 		/* Get the extra message for the GUI */
 		if (ind->callback_mask.Test(IndustryCallbackMask::WindowMoreText)) {
-			std::array<int32_t, 6> regs100;
+			std::array<int32_t, 16> regs100;
 			uint16_t callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->location.tile, regs100);
 			if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
 				std::string str;
