@@ -18,7 +18,6 @@
 #include "midi.h"
 #include "../base_media_base.h"
 #include "../base_media_music.h"
-#include "../core/mem_func.hpp"
 #include <mutex>
 
 #include "../safeguards.h"
@@ -48,7 +47,7 @@ static struct {
 	MidiFile next_file;              ///< upcoming file to play
 	PlaybackSegment next_segment;    ///< segment info for upcoming file
 
-	uint8_t channel_volumes[16]; ///< last seen volume controller values in raw data
+	std::array<uint8_t, 16> channel_volumes; ///< last seen volume controller values in raw data
 } _midi;
 
 static FMusicDriver_Win32 iFMusicDriver_Win32;
@@ -163,7 +162,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR
 			_midi.do_start = 0;
 			_midi.current_block = 0;
 
-			MemSetT<uint8_t>(_midi.channel_volumes, 127, lengthof(_midi.channel_volumes));
+			_midi.channel_volumes.fill(127);
 			/* Invalidate current volume. */
 			_midi.current_volume = UINT8_MAX;
 			volume_throttle = 0;
