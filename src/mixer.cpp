@@ -131,7 +131,7 @@ void MxMixSamples(void *buffer, uint samples)
 	}
 
 	/* Clear the buffer */
-	memset(buffer, 0, sizeof(int16_t) * 2 * samples);
+	std::fill_n(static_cast<int16_t *>(buffer), 2 * samples, 0);
 
 	{
 		std::lock_guard<std::mutex> lock{ _music_stream_mutex };

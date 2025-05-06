@@ -448,7 +448,7 @@ static void *ReadRecolourSprite(SpriteFile &file, size_t file_pos, uint num, Spr
 		uint8_t *dest_tmp = new uint8_t[std::max(RECOLOUR_SPRITE_SIZE, num)];
 
 		/* Only a few recolour sprites are less than 257 bytes */
-		if (num < RECOLOUR_SPRITE_SIZE) memset(dest_tmp, 0, RECOLOUR_SPRITE_SIZE);
+		if (num < RECOLOUR_SPRITE_SIZE) std::fill_n(dest_tmp, RECOLOUR_SPRITE_SIZE, 0);
 		file.ReadBlock(dest_tmp, num);
 
 		/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
