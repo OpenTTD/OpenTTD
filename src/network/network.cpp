@@ -1126,7 +1126,7 @@ void NetworkGameLoop()
 			if (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, (int)_current_company, cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, _current_company.base(), cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
@@ -1187,7 +1187,7 @@ void NetworkGameLoop()
 				cp->data.clear();
 				for (size_t i = 0; i + 1 < args.size(); i += 2) {
 					uint8_t e = 0;
-					std::from_chars(buffer + i, buffer + i + 2, e, 16);
+					std::from_chars(args.data() + i, args.data() + i + 2, e, 16);
 					cp->data.push_back(e);
 				}
 			} else if (consumer.ReadIf("join: ")) {
