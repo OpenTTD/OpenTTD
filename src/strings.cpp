@@ -1602,7 +1602,13 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						std::array<int32_t, 6> regs100;
 						uint16_t callback = GetVehicleCallback(CBID_VEHICLE_NAME, static_cast<uint32_t>(arg >> 32), 0, e->index, nullptr, regs100);
 						/* Not calling ErrorUnknownCallbackResult due to being inside string processing. */
-						if (callback != CALLBACK_FAILED && callback < 0x400) {
+						if (callback == 0x40F) {
+							const GRFFile *grffile = e->GetGRF();
+							assert(grffile != nullptr);
+
+							builder += GetGRFStringWithTextStack(grffile, static_cast<GRFStringID>(regs100[0]), std::span{regs100}.subspan(1));
+							break;
+						} else if (callback < 0x400) {
 							const GRFFile *grffile = e->GetGRF();
 							assert(grffile != nullptr);
 

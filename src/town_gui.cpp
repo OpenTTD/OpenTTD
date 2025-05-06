@@ -1410,15 +1410,19 @@ void DrawHouseInGUI(int x, int y, HouseID house_id, int view)
  */
 static StringID GetHouseName(const HouseSpec *hs)
 {
-	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, 1, 0, hs->Index(), nullptr, INVALID_TILE, {}, true);
+	std::array<int32_t, 1> regs100;
+	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, 1, 0, hs->Index(), nullptr, INVALID_TILE, regs100, true);
 	if (callback_res != CALLBACK_FAILED && callback_res != 0x400) {
-		if (callback_res > 0x400) {
+		StringID new_name = STR_NULL;
+		if (callback_res == 0x40F) {
+			new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, static_cast<GRFStringID>(regs100[0]));
+		} else if (callback_res > 0x400) {
 			ErrorUnknownCallbackResult(hs->grf_prop.grffile->grfid, CBID_HOUSE_CUSTOM_NAME, callback_res);
 		} else {
-			StringID new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
-			if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
-				return new_name;
-			}
+			new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, GRFSTR_MISC_GRF_TEXT + callback_res);
+		}
+		if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
+			return new_name;
 		}
 	}
 
