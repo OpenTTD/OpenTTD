@@ -45,6 +45,7 @@ enum WidgetType : uint8_t {
 	WWT_TEXTBTN,    ///< (Toggle) Button with text
 	WWT_TEXTBTN_2,  ///< (Toggle) Button with diff text when clicked
 	WWT_BOOLBTN,    ///< Standard boolean toggle button.
+	WWT_IMGTEXTBTN, ///< (Toggle) Button with image and text
 	WWT_LABEL,      ///< Centered label
 	WWT_TEXT,       ///< Pure simple text
 	WWT_MATRIX,     ///< Grid of rows and columns. @see MatrixWidgetValues
@@ -104,6 +105,7 @@ enum WidgetType : uint8_t {
 	WWT_PUSHTXTBTN    = WWT_TEXTBTN  | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with text caption
 	WWT_PUSHIMGBTN    = WWT_IMGBTN   | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with image caption
 	WWT_PUSHARROWBTN  = WWT_ARROWBTN | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with arrow caption
+	WWT_PUSHIMGTEXTBTN = WWT_IMGTEXTBTN | WWB_PUSHBUTTON, ///< Normal push-button (no toggle button) with image and text caption
 	NWID_PUSHBUTTON_DROPDOWN = NWID_BUTTON_DROPDOWN | WWB_PUSHBUTTON,
 };
 
@@ -1212,13 +1214,25 @@ constexpr NWidgetPart SetStringTip(StringID string, StringID tip = {})
 
 /**
  * Widget part function for setting the sprite and tooltip.
- * @param data Sprite of the widget.
+ * @param sprite Sprite of the widget.
  * @param tip  Tooltip of the widget.
  * @ingroup NestedWidgetParts
  */
 constexpr NWidgetPart SetSpriteTip(SpriteID sprite, StringID tip = {})
 {
 	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.sprite = sprite}, tip}};
+}
+
+/**
+ * Widget part function for setting the sprite, string and tooltip.
+ * @param sprite Sprite of the widget.
+ * @param string String of the widget.
+ * @param tip  Tooltip of the widget.
+ * @ingroup NestedWidgetParts
+ */
+constexpr NWidgetPart SetSpriteStringTip(SpriteID sprite, StringID string, StringID tip = {})
+{
+	return NWidgetPart{WPT_DATATIP, NWidgetPartDataTip{{.string = string, .sprite = sprite}, tip}};
 }
 
 /**

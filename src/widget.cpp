@@ -359,6 +359,37 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
 }
 
 /**
+ * Draw a button with image and rext.
+ * @param r       Rectangle of the button.
+ * @param colour  Colour of the button.
+ * @param clicked Button is clicked.
+ * @param img     Image caption.
+ * @param text_colour Colour of the text.
+ * @param text    Text caption.
+ * @param align   Alignment of the caption.
+ * @param fs      Font size of the text.
+ */
+static inline void DrawImageTextButtons(const Rect &r, Colours colour, bool clicked, SpriteID img, TextColour text_colour, const std::string &text, StringAlignment align, FontSize fs)
+{
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
+
+	bool rtl = _current_text_dir == TD_RTL;
+	int image_width = img != 0 ? GetScaledSpriteSize(img).width : 0;
+	Rect r_img = r.Shrink(WidgetDimensions::scaled.framerect).WithWidth(image_width, rtl);
+	Rect r_text = r.Shrink(WidgetDimensions::scaled.framerect).Indent(image_width + WidgetDimensions::scaled.hsep_wide, rtl);
+
+	if (img != 0) {
+		DrawSpriteIgnorePadding(img, PAL_NONE, r_img, SA_HOR_CENTER | (align & SA_VERT_MASK));
+	}
+
+	if (!text.empty()) {
+		Dimension d = GetStringBoundingBox(text, fs);
+		Point p = GetAlignedPosition(r_text, d, align);
+		DrawString(r_text.left, r_text.right, p.y, text, text_colour, align, false, fs);
+	}
+}
+
+/**
  * Draw the label-part of a widget.
  * @param r       Rectangle of the label background.
  * @param colour  Colour of the text.
@@ -2720,6 +2751,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, WidgetID index, const Wi
 		case WWT_TEXTBTN:
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
+		case WWT_IMGTEXTBTN:
+		case WWT_PUSHIMGTEXTBTN:
 		case WWT_BOOLBTN:
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
@@ -2898,6 +2931,20 @@ void NWidgetLeaf::SetupSmallestSize(Window *w)
 			size = maxdim(size, d2);
 			break;
 		}
+
+		case WWT_IMGTEXTBTN:
+		case WWT_PUSHIMGTEXTBTN: {
+			padding = {WidgetDimensions::scaled.framerect.Horizontal(), WidgetDimensions::scaled.framerect.Vertical()};
+			Dimension di = GetScaledSpriteSize(this->widget_data.sprite);
+			Dimension dt = GetStringBoundingBox(GetStringForWidget(w, this), this->text_size);
+			Dimension d2{
+				padding.width + di.width + WidgetDimensions::scaled.hsep_wide + dt.width,
+				padding.height + std::max(di.height, dt.height)
+			};
+			size = maxdim(size, d2);
+			break;
+		}
+
 		case WWT_ARROWBTN:
 		case WWT_PUSHARROWBTN: {
 			padding = {WidgetDimensions::scaled.imgbtn.Horizontal(), WidgetDimensions::scaled.imgbtn.Vertical()};
@@ -3019,6 +3066,11 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN_2:
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FrameFlag::Lowered : FrameFlags{});
 			DrawLabel(r, this->text_colour, GetStringForWidget(w, this, (type & WWT_MASK) == WWT_TEXTBTN_2 && clicked), this->align, this->text_size);
+			break;
+
+		case WWT_IMGTEXTBTN:
+		case WWT_PUSHIMGTEXTBTN:
+			DrawImageTextButtons(r, this->colour, clicked, this->widget_data.sprite, this->text_colour, GetStringForWidget(w, this), this->align, this->text_size);
 			break;
 
 		case WWT_ARROWBTN:
