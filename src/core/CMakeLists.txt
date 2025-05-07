@@ -15,7 +15,6 @@ add_files(
     kdtree.hpp
     math_func.cpp
     math_func.hpp
-    mem_func.hpp
     multimap.hpp
     overflowsafe_type.hpp
     pool_func.cpp
