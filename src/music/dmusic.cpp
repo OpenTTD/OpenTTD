@@ -585,7 +585,7 @@ static void MidiThreadProc()
 	PlaybackSegment current_segment;     // segment info for current playback
 	size_t current_block = 0;            // next block index to send
 	uint8_t current_volume = 0;             // current effective volume setting
-	uint8_t channel_volumes[16];            // last seen volume controller values in raw data
+	std::array<uint8_t, 16> channel_volumes; // last seen volume controller values in raw data
 
 	/* Get pointer to the reference clock of our output port. */
 	IReferenceClock *clock;
@@ -640,7 +640,7 @@ static void MidiThreadProc()
 				clock->GetTime(&cur_time);
 				TransmitNotesOff(_buffer, block_time, cur_time);
 
-				MemSetT<uint8_t>(channel_volumes, 127, lengthof(channel_volumes));
+				channel_volumes.fill(127);
 				/* Invalidate current volume. */
 				current_volume = UINT8_MAX;
 				last_volume_time = 0;
