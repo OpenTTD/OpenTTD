@@ -914,8 +914,8 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 			wave->ulOffsetTable[0] = offsetof(WAVE_DOWNLOAD, dmWave);
 			wave->ulOffsetTable[1] = offsetof(WAVE_DOWNLOAD, dmWaveData);
 			wave->dmWave.ulWaveDataIdx = 1;
-			MemCpyT((PCMWAVEFORMAT *)&wave->dmWave.WaveformatEx, &dls_file.waves[i].fmt, 1);
 			wave->dmWaveData.cbSize = (DWORD)dls_file.waves[i].data.size();
+			reinterpret_cast<PCMWAVEFORMAT &>(wave->dmWave.WaveformatEx) = dls_file.waves[i].fmt;
 			std::copy_n(dls_file.waves[i].data.begin(), dls_file.waves[i].data.size(), wave->dmWaveData.byData);
 
 			_dls_downloads.push_back(dl_wave);
