@@ -336,7 +336,6 @@ bool DLSFile::ReadDLSWave(FileHandle &f, DWORD list_length, long offset)
 	DLSWave &wave = this->waves.emplace_back();
 
 	/* Set default values. */
-	MemSetT(&wave.wave_sample, 0);
 	wave.wave_sample.cbSize = sizeof(WSMPL);
 	wave.wave_sample.usUnityNote = 60;
 	wave.file_offset = offset; // Store file offset so we can resolve the wave pool table later on.
@@ -441,8 +440,7 @@ bool DLSFile::LoadFile(std::string_view file)
 
 	Debug(driver, 2, "DMusic: Parsing DLS file");
 
-	DLSHEADER header;
-	MemSetT(&header, 0);
+	DLSHEADER header{};
 
 	/* Iterate over all chunks in the file. */
 	while (hdr.length > 0) {
@@ -845,8 +843,7 @@ static void * DownloadArticulationData(int base_offset, void *data, const std::v
 
 static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::string_view> user_dls)
 {
-	DMUS_PORTCAPS caps;
-	MemSetT(&caps, 0);
+	DMUS_PORTCAPS caps{};
 	caps.dwSize = sizeof(DMUS_PORTCAPS);
 	_port->GetCaps(&caps);
 
@@ -910,7 +907,7 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 			}
 
 			/* Fill download data. */
-			MemSetT(wave, 0);
+			*wave = {};
 			wave->dlInfo.dwDLType = DMUS_DOWNLOADINFO_WAVE;
 			wave->dlInfo.cbSize = wave_size;
 			wave->dlInfo.dwDLId = dlid_wave + i;
@@ -989,7 +986,7 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 
 			/* Instrument header. */
 			DMUS_INSTRUMENT *inst_data = (DMUS_INSTRUMENT *)instrument;
-			MemSetT(inst_data, 0);
+			*inst_data = {};
 			offset_table[last_offset++] = reinterpret_cast<const std::byte *>(inst_data) - inst_base;
 			inst_data->ulPatch = (dls_file.instruments[i].hdr.Locale.ulBank & F_INSTRUMENT_DRUMS) | ((dls_file.instruments[i].hdr.Locale.ulBank & 0x7F7F) << 8) | (dls_file.instruments[i].hdr.Locale.ulInstrument & 0x7F);
 			instrument = inst_data + 1;
@@ -1092,8 +1089,7 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 		/* Print all valid output ports. */
 		char desc[DMUS_MAX_DESCRIPTION];
 
-		DMUS_PORTCAPS caps;
-		MemSetT(&caps, 0);
+		DMUS_PORTCAPS caps{};
 		caps.dwSize = sizeof(DMUS_PORTCAPS);
 
 		Debug(driver, 1, "Detected DirectMusic ports:");
@@ -1107,8 +1103,7 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 	GUID guidPort;
 	if (pIdx >= 0) {
 		/* Check if the passed port is a valid port. */
-		DMUS_PORTCAPS caps;
-		MemSetT(&caps, 0);
+		DMUS_PORTCAPS caps{};
 		caps.dwSize = sizeof(DMUS_PORTCAPS);
 		if (FAILED(_music->EnumPort(pIdx, &caps))) return "Supplied port parameter is not a valid port";
 		if (caps.dwClass != DMUS_PC_OUTPUTCLASS) return "Supplied port parameter is not an output port";
@@ -1118,8 +1113,7 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 	}
 
 	/* Create new port. */
-	DMUS_PORTPARAMS params;
-	MemSetT(&params, 0);
+	DMUS_PORTPARAMS params{};
 	params.dwSize = sizeof(DMUS_PORTPARAMS);
 	params.dwValidParams = DMUS_PORTPARAMS_CHANNELGROUPS;
 	params.dwChannelGroups = 1;
@@ -1128,8 +1122,7 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 	if (FAILED(_port->Activate(TRUE))) return "Failed to activate port";
 
 	/* Create playback buffer. */
-	DMUS_BUFFERDESC desc;
-	MemSetT(&desc, 0);
+	DMUS_BUFFERDESC desc{};
 	desc.dwSize = sizeof(DMUS_BUFFERDESC);
 	desc.guidBufferFormat = KSDATAFORMAT_SUBTYPE_DIRECTMUSIC;
 	desc.cbBuffer = 1024;
