@@ -8,13 +8,10 @@
 /** @file network_turn.cpp TURN sending/receiving part of the network protocol. */
 
 #include "../stdafx.h"
+
 #include "../debug.h"
-#include "../error.h"
-#include "../strings_func.h"
 #include "network_coordinator.h"
 #include "network_turn.h"
-
-#include "table/strings.h"
 
 #include "../safeguards.h"
 

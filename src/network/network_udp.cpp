@@ -13,21 +13,10 @@
  */
 
 #include "../stdafx.h"
-#include "../timer/timer_game_calendar.h"
-#include "../map_func.h"
+
 #include "../debug.h"
-#include "core/network_game_info.h"
-#include "network_gamelist.h"
 #include "network_internal.h"
 #include "network_udp.h"
-#include "network.h"
-#include "../core/endian_func.hpp"
-#include "../company_base.h"
-#include "../rev.h"
-#include "../newgrf_text.h"
-#include "../strings_func.h"
-
-#include "table/strings.h"
 
 #include "core/udp.h"
 
