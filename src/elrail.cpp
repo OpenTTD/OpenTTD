@@ -72,9 +72,9 @@
  * @param t The tile to get the tile location group of.
  * @return The tile location group.
  */
-static inline TLG GetTLG(TileIndex t)
+static inline TileLocationGroup GetTileLocationGroup(TileIndex t)
 {
-	return (TLG)((HasBit(TileX(t), 0) << 1) + HasBit(TileY(t), 0));
+	return static_cast<TileLocationGroup>((GB(TileX(t), 0, 1) << 1) + GB(TileY(t), 0, 1));
 }
 
 /**
@@ -294,7 +294,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		tileh[TS_HOME] = SLOPE_FLAT;
 	}
 
-	TLG tlg = GetTLG(ti->tile);
+	TileLocationGroup tlg = GetTileLocationGroup(ti->tile);
 	DiagDirections pcp_status{};
 	DiagDirections override_pcp{};
 	std::array<Directions, DIAGDIR_END> ppp_preferred{};
@@ -425,7 +425,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		if (ppp_allowed[i].Any() && pcp_status.Test(i) && !override_pcp.Test(i) &&
 				(!IsRailStationTile(ti->tile) || CanStationTileHavePylons(ti->tile))) {
 
-			const auto &ppp_orders = PPPorder[i][GetTLG(ti->tile)];
+			const auto &ppp_orders = PPPorder[i][GetTileLocationGroup(ti->tile)];
 			for (Direction k = DIR_BEGIN; k < DIR_END; k++) {
 				Direction temp = ppp_orders[k];
 
@@ -516,7 +516,7 @@ void DrawRailCatenaryOnBridge(const TileInfo *ti)
 
 	const SortableSpriteStruct *sss;
 	Axis axis = GetBridgeAxis(ti->tile);
-	TLG tlg = GetTLG(ti->tile);
+	TileLocationGroup tlg = GetTileLocationGroup(ti->tile);
 
 	RailCatenarySprite offset = (RailCatenarySprite)(axis == AXIS_X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH);
 
