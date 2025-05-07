@@ -270,6 +270,9 @@ struct MainWindow : Window
 				DrawSprite(sprite, PAL_NONE, off_x, ScaleGUITrad(50));
 				off_x += GetSpriteSize(sprite).width + letter_spacing;
 			}
+
+			int text_y = this->height - GetCharacterHeight(FS_NORMAL) * 2;
+			DrawString(0, this->width - 1, text_y, STR_INTRO_VERSION, TC_WHITE, SA_CENTER);
 		}
 	}
 
