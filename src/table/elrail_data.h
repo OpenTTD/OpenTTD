@@ -17,7 +17,7 @@
  * Tile Location group.
  * This defines whether the X and or Y coordinate of a tile is even
  */
-enum TLG : uint8_t {
+enum TileLocationGroup : uint8_t {
 	XEVEN_YEVEN = 0,
 	XEVEN_YODD  = 1,
 	XODD_YEVEN  = 2,
