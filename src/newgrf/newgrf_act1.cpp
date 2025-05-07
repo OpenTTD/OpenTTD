@@ -32,7 +32,7 @@ static void NewSpriteSet(ByteReader &buf)
 	 *                         In that case, use num-dirs=4.
 	 */
 
-	uint8_t  feature   = buf.ReadByte();
+	GrfSpecFeature feature{buf.ReadByte()};
 	uint16_t num_sets  = buf.ReadByte();
 	uint16_t first_set = 0;
 

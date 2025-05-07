@@ -95,6 +95,8 @@ enum GrfSpecFeature : uint8_t {
 	GSF_FAKE_TOWNS = GSF_END, ///< Fake town GrfSpecFeature for NewGRF debugging (parent scope)
 	GSF_FAKE_END,             ///< End of the fake features
 
+	GSF_ORIGINAL_STRINGS = 0x48,
+
 	GSF_INVALID = 0xFF,       ///< An invalid spec feature
 };
 using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::GSF_END>;
@@ -153,7 +155,7 @@ struct GRFFile {
 	int traininfo_vehicle_pitch = 0; ///< Vertical offset for drawing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width = 0; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
 
-	uint32_t grf_features = 0; ///< Bitset of GrfSpecFeature the grf uses
+	GrfSpecFeatures grf_features{}; ///< Bitset of GrfSpecFeature the grf uses
 	PriceMultipliers price_base_multipliers{}; ///< Price base multipliers as set by the grf.
 
 	GRFFile(const struct GRFConfig &config);
@@ -188,6 +190,16 @@ struct GRFLoadedFeatures {
 	uint64_t used_liveries;     ///< Bitmask of #LiveryScheme used by the defined engines.
 	ShoreReplacement shore;   ///< In which way shore sprites were replaced.
 	TramReplacement tram;     ///< In which way tram depots were replaced.
+};
+
+/**
+ * Describes properties of price bases.
+ */
+struct PriceBaseSpec {
+	Money start_price; ///< Default value at game start, before adding multipliers.
+	PriceCategory category; ///< Price is affected by certain difficulty settings.
+	GrfSpecFeature grf_feature; ///< GRF Feature that decides whether price multipliers apply locally or globally, #GSF_END if none.
+	Price fallback_price; ///< Fallback price multiplier for new prices but old grfs.
 };
 
 /**
