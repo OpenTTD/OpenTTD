@@ -836,9 +836,8 @@ static void * DownloadArticulationData(int base_offset, void *data, const std::v
 	CONNECTIONLIST *con_list = (CONNECTIONLIST *)(art + 1);
 	con_list->cbSize = sizeof(CONNECTIONLIST);
 	con_list->cConnections = (ULONG)artic.size();
-	MemCpyT((CONNECTION *)(con_list + 1), &artic.front(), artic.size());
 
-	return (CONNECTION *)(con_list + 1) + artic.size();
+	return std::copy_n(artic.begin(), artic.size(), reinterpret_cast<CONNECTION *>(con_list + 1));
 }
 
 static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::string_view> user_dls)
@@ -917,7 +916,7 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 			wave->dmWave.ulWaveDataIdx = 1;
 			MemCpyT((PCMWAVEFORMAT *)&wave->dmWave.WaveformatEx, &dls_file.waves[i].fmt, 1);
 			wave->dmWaveData.cbSize = (DWORD)dls_file.waves[i].data.size();
-			MemCpyT(wave->dmWaveData.byData, &dls_file.waves[i].data[0], dls_file.waves[i].data.size());
+			std::copy_n(dls_file.waves[i].data.begin(), dls_file.waves[i].data.size(), wave->dmWaveData.byData);
 
 			_dls_downloads.push_back(dl_wave);
 			if (FAILED(download_port->Download(dl_wave))) {
@@ -1021,14 +1020,10 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 				/* The wave sample data will be taken from the region, if defined, otherwise from the wave itself. */
 				if (rgn.wave_sample.cbSize != 0) {
 					inst_region->WSMP = rgn.wave_sample;
-					if (!rgn.wave_loops.empty()) MemCpyT(inst_region->WLOOP, &rgn.wave_loops.front(), rgn.wave_loops.size());
-
-					instrument = reinterpret_cast<std::byte *>(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * rgn.wave_loops.size();
+					instrument = std::copy_n(rgn.wave_loops.begin(), rgn.wave_loops.size(), inst_region->WLOOP);
 				} else {
 					inst_region->WSMP = rgn.wave_sample;
-					if (!dls_file.waves[wave_id].wave_loops.empty()) MemCpyT(inst_region->WLOOP, &dls_file.waves[wave_id].wave_loops.front(), dls_file.waves[wave_id].wave_loops.size());
-
-					instrument = reinterpret_cast<std::byte *>(inst_region + 1) - sizeof(DMUS_REGION::WLOOP) + sizeof(WLOOP) * dls_file.waves[wave_id].wave_loops.size();
+					instrument = std::copy_n(dls_file.waves[wave_id].wave_loops.begin(), dls_file.waves[wave_id].wave_loops.size(), inst_region->WLOOP);
 				}
 
 				/* Write local articulator data. */
