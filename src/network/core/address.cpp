@@ -270,7 +270,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 			 */
 			if (this->address.ss_family == AF_INET) {
 				sockaddr_in *address_ipv4 = (sockaddr_in *)&this->address;
-				memset(address_ipv4->sin_zero, 0, sizeof(address_ipv4->sin_zero));
+				std::ranges::fill(address_ipv4->sin_zero, 0);
 			}
 #endif
 			break;
