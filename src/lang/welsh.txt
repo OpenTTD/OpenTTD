@@ -2202,10 +2202,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Amlchwar
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Dewisiadau Gêm
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabl Sgôr Uchaf
 STR_INTRO_HELP                                                  :{BLACK}Cymorth a Llawlyfrau
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Gosodiadau NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cynnwys Ar-lein
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Gosodiadau AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Gosodiadau Sgript Gêm
 STR_INTRO_QUIT                                                  :{BLACK}Gadael
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Dechrau gêm newydd. Mae Ctrl+Clic yn hepgor dewisiadau map
@@ -2223,10 +2220,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Dewis ti
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Agor dewisiadau'r gêm
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Agor y tabl sgôr uchaf
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Cael mynediad at ddogfenyddiaeth ac adnoddau ar-lein
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Agor gosodiadau NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Gwirio am gynnwys newydd neu wedi'i ddiweddaru i'w lwytho i lawr
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Agor gosodiadau AI
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Agor gosodiadau sgript gêm
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gadael 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Mae {NUM} corlun ar goll o'r set raffeg sylfaenol a ddewiswyd. Gwiriwch am ddiweddariadau i'r set raffeg.

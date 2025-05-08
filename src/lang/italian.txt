@@ -2218,10 +2218,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multigio
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opzioni di gioco
 STR_INTRO_HIGHSCORE                                             :{BLACK}Punteggi migliori
 STR_INTRO_HELP                                                  :{BLACK}Aiuto e manuali
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Impostazioni NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenuti online
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Impostazioni IA
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Impostazioni script di gioco
 STR_INTRO_QUIT                                                  :{BLACK}Esci
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Inizia una nuova partita. Ctrl salta la configurazione della mappa.
@@ -2239,10 +2236,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selezion
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Apre le opzioni di gioco
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Apre la tabella dei punteggi migliori
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Ottieni l'accesso alla documentazione e alle risorse online
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Apre le impostazioni NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla la disponibilità di contenuti nuovi o aggiornati da scaricare
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Apri impostazioni IA
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Apre le impostazioni dello script di gioco
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Esci da OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}Nel pacchetto grafico di base attualmente selezionato mancano {NUM} sprite. È consigliabile controllare gli aggiornamenti del pacchetto.

@@ -2233,10 +2233,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Mitmikm�
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Liidese seadistus
 STR_INTRO_HIGHSCORE                                             :{BLACK}Edetabel
 STR_INTRO_HELP                                                  :{BLACK}Abi & kasutusjuhendid
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-i seadistus
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Aineste allalaadimine
-STR_INTRO_AI_SETTINGS                                           :{BLACK}TI Seaded
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}GameScript'i seaded
 STR_INTRO_QUIT                                                  :{BLACK}V채lju
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut m채ngu. Ctrl+kl천ps j채tab kaardi seadistamise vahele
@@ -2254,10 +2251,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vali 'm�
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Ava liidese seadus
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Ava edetabel
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Saa ligip채채s dokumentatsioonile ja veebiressursidele
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ava NewGRF-i seadistus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uusi ja uuendatud aineseid
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Ava TI-seaded
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Ava GameScript'i seaded
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}V채lju 'OpenTTD'st
 
 STR_INTRO_BASESET                                               :{BLACK}Hetkel valitud p천higraafika komplektist puudub {NUM} sprite{P "" 'i}. Kontrolli, kas p천hikomplektile on uuendusi.

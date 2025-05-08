@@ -2207,10 +2207,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Jouer en
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options globales
 STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleurs scores
 STR_INTRO_HELP                                                  :{BLACK}Aide et manuels
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenu en ligne
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuration des IAs
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuration du script de jeu
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer outre la configuration du terrain.
@@ -2228,10 +2225,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Sélecti
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Ouvrir les options du jeu
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Ouvrir le tableau des meilleurs scores
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Accéder à la documentation et aux ressources en ligne
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ouvrir la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Ouvrir la configuration des IAs
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Ouvrir la configuration du script de jeu
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter OpenTTD
 
 STR_INTRO_BASESET                                               :{BLACK}{NUM} sprite{P "" s} manque{P "" "nt"} dans les graphiques de base actuellement sélectionnés. Veuillez vérifier les mises à jours pour les graphiques de base.

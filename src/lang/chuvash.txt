@@ -865,12 +865,10 @@ STR_CONFIG_SETTING_AI                                           :Ӑмӑртуҫ�
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF майлаштару
 STR_INTRO_QUIT                                                  :{BLACK}Вӗҫле
 
 
 
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF майлаштару кӑтар
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' вӗҫле
 
 

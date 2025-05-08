@@ -2196,10 +2196,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Онла
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Игрови настройки
 STR_INTRO_HIGHSCORE                                             :{BLACK}Най-добри резултати
 STR_INTRO_HELP                                                  :{BLACK}Помощ и ръководства
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF настройки
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Онлайн съдържание
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Настройки на ИИ
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Игрови скрипт
 STR_INTRO_QUIT                                                  :{BLACK}Изход
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Започване на нова игра. Ctrl+Click пропуска конфигурацията на картата
@@ -2217,10 +2214,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Изби
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Отваряне на настройките на играта
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Отваряне на таблицата с най-добри резултати
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Достъп до документация и онлайн ресурси
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Отваряне на NewGRF настройки
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Проверка за ново съдържание за сваляне
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Отворете ИИ настройки
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Отворете настройките на игровия скрипт
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Изход от 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}От текущият избран графичен комплект липсва{P 0 "" т} {NUM} спрайт{P "" a}. Моля, проверете за актуализации на графичния комплект.

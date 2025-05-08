@@ -2208,10 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijog
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções de Jogo
 STR_INTRO_HIGHSCORE                                             :{BLACK}Painel de Classificação
 STR_INTRO_HELP                                                  :{BLACK}Ajuda & Manuais
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configurações de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Conteúdo Online
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Configurações de IA
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configurações de Script de Jogo
 STR_INTRO_QUIT                                                  :{BLACK}Sair do OpenTTD
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique para saltar a configuração do mapa
@@ -2229,10 +2226,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecion
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir opções de jogo
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostrar classificação das melhores empresas
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Acessar a documentação e recursos online
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir configurações de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar por conteúdo novo e atualizado para download
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir configurações de IA
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir configurações de Script de Jogo
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair do 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Faltam {NUM} sprite{P "" s} no conjunto de gráficos básicos selecionado. Por favor, verifique se existem atualizações para o conjunto.

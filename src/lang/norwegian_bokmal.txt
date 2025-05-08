@@ -2209,10 +2209,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flerspil
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spillinnstillinger
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tavle med høyeste poengsummer
 STR_INTRO_HELP                                                  :{BLACK}Hjelp og manualer
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Innhold på nettet
-STR_INTRO_AI_SETTINGS                                           :{BLACK}KI-innstillinger
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Game Script-innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nytt spill. Ctrl+klikk hopper over kartkonfigurering
@@ -2230,10 +2227,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Velg lek
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Åpne spillinnstillinger
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Åpne tabell med høyeste poengsummer
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Få tilgang til dokumentasjon og ressurser på nettet
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Åpne NewGRF-instillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Se etter nytt og oppdatert innhold for nedlasting
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Åpne KI-innstillinger
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Åpne Game Script-innstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Det valgte innebygde grafikksettet mangler {NUM} sprite{P "" r}. Se etter oppdateringer for settet.

@@ -2207,10 +2207,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera sp
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelalternativ
 STR_INTRO_HIGHSCORE                                             :{BLACK}Bästa spelresultat
 STR_INTRO_HELP                                                  :Hjälp & Manualer
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-inställningar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online-innehåll
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-inställningar
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Spelskriptinställningar
 STR_INTRO_QUIT                                                  :{BLACK}Avsluta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel. Ctrl+klick hoppar över landskapskonfigurationen
@@ -2228,10 +2225,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Välj 'l
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Öppna spelalternativ
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Öppna topplistan över de bästa spelresultaten
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Inhämta dokumentation och onlineresurser
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Öppna NewGRF-inställningar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Öppna AI-inställningar
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Öppna spelskriptinställningar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avsluta 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Det nuvarande valda grundgrafikpaketet saknar {NUM} sprite{P "" s}. Vänligen kontrollera om det finns en uppdatering till paketet.

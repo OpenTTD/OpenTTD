@@ -2164,10 +2164,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Pluraj L
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj agordoj
 STR_INTRO_HIGHSCORE                                             :{BLACK}Altpoentara tabelo
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontroli ĉeretajn aldonaĵojn
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-agordoj
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ludoskriptaj agordoj
 STR_INTRO_QUIT                                                  :{BLACK}Forlasi
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starti novan ludon. Stir-Klak por preterpasi mapan agordon.
@@ -2184,10 +2181,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elektu '
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montri ludajn agordojn
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Malfermu altpoentaran tabelon
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Montru AI-agordojn
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Montru ludoskriptajn agordojn
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}En la elektita baza grafikaro mankas {NUM} bildeto{P "" j}. Bonvolu kontrolu ĉu estas ĝisdatigoj por la bazaj datumoj.

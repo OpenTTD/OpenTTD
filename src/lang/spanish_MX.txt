@@ -2208,10 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijug
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones de juego
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabla de puntuaciones
 STR_INTRO_HELP                                                  :{BLACK}Ayuda y manuales
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido en línea
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración de IA
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Configuración de script de juego
 STR_INTRO_QUIT                                                  :{BLACK}Salir
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comenzar una nueva partida. Ctrl+Clic omite la configuración del mapa
@@ -2229,10 +2226,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir m
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir las opciones de juego
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabla de puntuaciones
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Acceder a documentación y recursos en línea
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Revisar si hay nuevos contenidos actualizados para descargar
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir configuración de IA
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir configuración de script de juego
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Los gráficos base elegidos necesitan {NUM} spirte{P "" s}. Revisa si hay actualizaciones para el paquete base.

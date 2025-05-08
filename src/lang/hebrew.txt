@@ -2003,10 +2003,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}משחק
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}אפשרויות משחק
 STR_INTRO_HIGHSCORE                                             :{BLACK}טבלת ניקוד מירבי
 STR_INTRO_HELP                                                  :{BLACK}עזרה ומדריכים
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
-STR_INTRO_AI_SETTINGS                                           :{BLACK}הגדרות בינה מלאכותית
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}הגדרות סקריפטי משחק
 STR_INTRO_QUIT                                                  :{BLACK}יציאה
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש. Ctrl+לחיצה מדלג על תצורת מפה
@@ -2024,10 +2021,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}ארץ �
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}הצג הגדרות משחק
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}הצג טבלת ניקוד מירבי
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}קבל גישה לתיעוד ולמשאבים מקוונים
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}פתח הגדרות NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}פתח הגדרות בינה מלאכותית
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}פתח הגדרות סקריפטי משחק
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}צא מ-'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}חסרים {NUM} ספרייט עבור גרפיקות הבסיס שנבחרו. אנא בדוק עדכונים לערכה זו.

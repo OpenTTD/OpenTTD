@@ -2208,10 +2208,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multi-jo
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opções de jogo
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tabela de classificações
 STR_INTRO_HELP                                                  :{BLACK}Ajuda & Manuais
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Definições de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Conteúdo Online
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Definições de IA
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Definições de Script de Jogo
 STR_INTRO_QUIT                                                  :{BLACK}Sair
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique salta a configuração do mapa
@@ -2229,10 +2226,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Selecion
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Abrir opções de jogo
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Abrir tabela de classificações
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Obter acesso a documentação e recursos online
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Abrir definições de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verificar conteúdo novo e actualizado para descarga
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Abrir definições de IA
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Abrir definições de Script de Jogo
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}O conjunto de gráficos base seleccionado tem {NUM} sprite{P "" s} em falta. Por favor verifique se existem atualizações para o conjunto.

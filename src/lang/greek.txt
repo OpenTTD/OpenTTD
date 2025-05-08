@@ -2300,10 +2300,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Παιχ
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Επιλογές Παιχνιδιού
 STR_INTRO_HIGHSCORE                                             :{BLACK}Πίνακας Βαθμολογιών
 STR_INTRO_HELP                                                  :{BLACK}Βοήθεια και εγχειρίδια χρήσης
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Διαδικτυακό Περιεχόμενο
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Ρυθμίσεις AI
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Ρυθμίσεις σενάριου παιχνιδιού
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Με Ctrl+Κλικ παρακάμπτεται η ρύθμιση του χάρτη
@@ -2321,10 +2318,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Επιλ
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Εμφάνιση επιλογών παιχνιδιού
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Εμφάνιση του πίνακα βαθμολογιών
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Αποκτήστε πρόσβαση στην τεκμηρίωση και σε διαδικτυακούς πόρους
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για λήψη
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Εμφάνιση ρυθμίσεων ΤΝ
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Εμφάνιση ρυθμίσεων σενάριου παιχνιδιού
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το «OpenTTD»
 
 STR_INTRO_BASESET                                               :{BLACK}Λείπουν {NUM} sprite{P "" s} από το επιλεγμένο βασικό σετ γραφικών. Παρακαλούμε ελέγξτε για ενημερώσεις του βασικού σετ.

@@ -2190,10 +2190,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Netværk
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opsætning
 STR_INTRO_HIGHSCORE                                             :{BLACK} Topresultater
 STR_INTRO_HELP                                                  :{BLACK}Hjælp og manualer
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Indstillinger
-STR_INTRO_GAMESCRIPT_SETTINGS                                   :{BLACK}Indstillinger for spilscript
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nyt spil. Ctrl+Klik springer kortindstillingerne over.
@@ -2211,10 +2208,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vælg 'l
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Åbn spilmuligheder
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Åben topscoreliste
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Få adgang til dokumentation og online ressourcer
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Åben NewGRF-indstillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tjek for nyt og opdateret indhold til download
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Åben AI indstillinger
-STR_INTRO_TOOLTIP_GAMESCRIPT_SETTINGS                           :{BLACK}Åben indstillinger for spilscript
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Afslut 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK} Det aktuelt valgte base grafiksæt mangler {NUM} sprite {P "" s}. Se venligst efter opdateringer til basesættet.
