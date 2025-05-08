@@ -765,6 +765,16 @@ static int DeterminePluralForm(int64_t count, uint plural_form)
 	}
 }
 
+static void SkipStringChoice(StringConsumer &consumer)
+{
+	uint n = consumer.ReadUint8();
+	uint len = 0;
+	for (uint i = 0; i != n; i++) {
+		len += consumer.ReadUint8();
+	}
+	consumer.Skip(len);
+}
+
 static void ParseStringChoice(StringConsumer &consumer, uint form, StringBuilder &builder)
 {
 	/* <NUM> {Length of each string} {each string} */
@@ -1196,6 +1206,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					if (v != nullptr) {
 						ParseStringChoice(consumer, DeterminePluralForm(static_cast<int64_t>(*v), plural_form), builder);
 					} else {
+						SkipStringChoice(consumer);
 						builder += "(invalid PLURAL parameter)";
 					}
 					break;
