@@ -47,6 +47,9 @@
 #endif
 #define stricmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
+#define memcmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#define memcpy SAFEGUARD_DO_NOT_USE_THIS_METHOD
+
 /* Use fgets instead. */
 #define gets      SAFEGUARD_DO_NOT_USE_THIS_METHOD
 

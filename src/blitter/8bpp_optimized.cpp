@@ -225,7 +225,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteType sprite_type, const SpriteLoader
 	dest_sprite->width = root_sprite.width;
 	dest_sprite->x_offs = root_sprite.x_offs;
 	dest_sprite->y_offs = root_sprite.y_offs;
-	memcpy(dest_sprite->data, temp_dst, size);
+	std::copy_n(reinterpret_cast<std::byte *>(temp_dst), size, dest_sprite->data);
 
 	return dest_sprite;
 }

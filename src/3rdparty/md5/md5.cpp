@@ -281,7 +281,7 @@ void Md5::Append(const void *data, const size_t nbytes)
 	if (offset) {
 		size_t copy = (offset + nbytes > 64 ? 64 - offset : nbytes);
 
-		memcpy(this->buf + offset, p, copy);
+		std::copy_n(p, copy, this->buf + offset);
 
 		if (offset + copy < 64) return;
 
@@ -294,7 +294,7 @@ void Md5::Append(const void *data, const size_t nbytes)
 	for (; left >= 64; p += 64, left -= 64) this->Process(p);
 
 	/* Process a final partial block. */
-	if (left) memcpy(this->buf, p, left);
+	if (left) std::copy_n(p, left, this->buf);
 }
 
 void Md5::Finish(MD5Hash &digest)

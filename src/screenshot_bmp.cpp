@@ -123,7 +123,7 @@ public:
 			while (n-- != 0) {
 				if (pixelformat == 8) {
 					/* Move to 'line', leave last few pixels in line zeroed */
-					memcpy(line.data(), buff.data() + n * w, w);
+					std::copy_n(buff.data() + n * w, w, line.data());
 				} else {
 					/* Convert from 'native' 32bpp to BMP-like 24bpp.
 					 * Works for both big and little endian machines */

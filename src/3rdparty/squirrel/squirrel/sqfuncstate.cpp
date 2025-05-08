@@ -534,7 +534,7 @@ SQFunctionProto *SQFuncState::BuildProto()
 	for(SQUnsignedInteger no = 0; no < _lineinfos.size(); no++) f->_lineinfos[no] = _lineinfos[no];
 	for(SQUnsignedInteger no = 0; no < _defaultparams.size(); no++) f->_defaultparams[no] = _defaultparams[no];
 
-	memcpy(f->_instructions,&_instructions[0],(size_t)_instructions.size()*sizeof(SQInstruction));
+	std::copy_n(&_instructions[0], _instructions.size(), f->_instructions);
 
 	f->_varparams = _varparams;
 

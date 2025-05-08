@@ -259,7 +259,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		if (sockets == nullptr) {
 			this->address_length = (int)runp->ai_addrlen;
 			assert(sizeof(this->address) >= runp->ai_addrlen);
-			memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
+			std::copy_n(reinterpret_cast<const std::byte *>(runp->ai_addr), runp->ai_addrlen, reinterpret_cast<std::byte *>(&this->address));
 #ifdef __EMSCRIPTEN__
 			/* Emscripten doesn't zero sin_zero, but as we compare addresses
 			 * to see if they are the same address, we need them to be zero'd.
