@@ -803,7 +803,8 @@ static void CompactSpriteCache()
 			GetSpriteCache(i)->ptr = s->data; // Adjust sprite array entry
 			/* Swap this and the next block */
 			temp = *s;
-			memmove(s, next, next->size);
+			std::byte *p = reinterpret_cast<std::byte *>(next);
+			std::move(p, &p[next->size], reinterpret_cast<std::byte *>(s));
 			s = NextBlock(s);
 			*s = temp;
 
