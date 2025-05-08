@@ -564,7 +564,7 @@ SQString *SQStringTable::Add(std::string_view new_string)
 
 SQString::SQString(std::string_view new_string)
 {
-	memcpy(_val,new_string.data(),new_string.size());
+	std::ranges::copy(new_string, _val);
 	_val[new_string.size()] = '\0';
 	_len = new_string.size();
 	_hash = string_table_hash(new_string);

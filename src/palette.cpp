@@ -209,7 +209,7 @@ void DoPaletteAnimations();
 void GfxInitPalettes()
 {
 	std::lock_guard<std::recursive_mutex> lock(_palette_mutex);
-	memcpy(&_cur_palette, &_palette, sizeof(_cur_palette));
+	_cur_palette = _palette;
 	DoPaletteAnimations();
 }
 

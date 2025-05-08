@@ -146,7 +146,7 @@ void RandomAccessFile::ReadBlock(void *ptr, size_t size)
 {
 	if (this->buffer != this->buffer_end) {
 		size_t to_copy = std::min<size_t>(size, this->buffer_end - this->buffer);
-		memcpy(ptr, this->buffer, to_copy);
+		std::copy_n(this->buffer, to_copy, static_cast<uint8_t *>(ptr));
 		this->buffer += to_copy;
 		size -= to_copy;
 		if (size == 0) return;

@@ -389,11 +389,11 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 		Colour *dst_pal = dst;
 		uint16_t *anim_pal = anim_line;
 
-		memcpy(static_cast<void *>(dst), usrc, width * sizeof(uint32_t));
+		std::copy_n(usrc, width, reinterpret_cast<uint32_t *>(dst));
 		usrc += width;
 		dst += _screen.pitch;
 		/* Copy back the anim-buffer */
-		memcpy(anim_line, usrc, width * sizeof(uint16_t));
+		std::copy_n(reinterpret_cast<const uint16_t *>(usrc), width, anim_line);
 		usrc = (const uint32_t *)&((const uint16_t *)usrc)[width];
 		anim_line += this->anim_buf_pitch;
 
@@ -428,11 +428,11 @@ void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 	const uint16_t *anim_line = this->ScreenToAnimOffset((const uint32_t *)video) + this->anim_buf;
 
 	for (; height > 0; height--) {
-		memcpy(udst, src, width * sizeof(uint32_t));
+		std::copy_n(src, width, udst);
 		src += _screen.pitch;
 		udst += width;
 		/* Copy the anim-buffer */
-		memcpy(udst, anim_line, width * sizeof(uint16_t));
+		std::copy_n(anim_line, width, reinterpret_cast<uint16_t *>(udst));
 		udst = (uint32_t *)&((uint16_t *)udst)[width];
 		anim_line += this->anim_buf_pitch;
 	}
@@ -459,7 +459,7 @@ void Blitter_32bppAnim::ScrollBuffer(void *video, int &left, int &top, int &widt
 		uint tw = width + (scroll_x >= 0 ? -scroll_x : scroll_x);
 		uint th = height - scroll_y;
 		for (; th > 0; th--) {
-			memcpy(dst, src, tw * sizeof(uint16_t));
+			std::copy_n(src, tw, dst);
 			src -= this->anim_buf_pitch;
 			dst -= this->anim_buf_pitch;
 		}

@@ -432,8 +432,8 @@ Sprite *Blitter_32bppOptimized::EncodeInternal(SpriteType sprite_type, const Spr
 		dst->offset[1][z] = offset;
 		offset += lengths[1][z];
 
-		memcpy(dst->data + dst->offset[0][z], dst_px_orig[z].get(), lengths[0][z]);
-		memcpy(dst->data + dst->offset[1][z], dst_n_orig[z].get(), lengths[1][z]);
+		std::copy_n(reinterpret_cast<uint8_t *>(dst_px_orig[z].get()), lengths[0][z], dst->data + dst->offset[0][z]);
+		std::copy_n(reinterpret_cast<uint8_t *>(dst_n_orig[z].get()), lengths[1][z], dst->data + dst->offset[1][z]);
 	}
 
 	return dest_sprite;

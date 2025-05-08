@@ -203,7 +203,7 @@ void HttpThread()
 
 			/* Copy the buffer out of CURL. OnReceiveData() will free it when done. */
 			std::unique_ptr<char[]> buffer = std::make_unique<char[]>(size * nmemb);
-			memcpy(buffer.get(), ptr, size * nmemb);
+			std::copy_n(ptr, size * nmemb, buffer.get());
 			callback->OnReceiveData(std::move(buffer), size * nmemb);
 
 			return size * nmemb;

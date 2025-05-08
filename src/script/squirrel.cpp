@@ -134,7 +134,7 @@ public:
 		this->CheckAllocationAllowed(size - oldsize);
 
 		void *new_p = this->DoAlloc(size);
-		memcpy(new_p, p, std::min(oldsize, size));
+		std::copy_n(static_cast<std::byte *>(p), std::min(oldsize, size), static_cast<std::byte *>(new_p));
 		this->Free(p, oldsize);
 
 		return new_p;
@@ -261,7 +261,7 @@ void Squirrel::AddMethod(std::string_view method_name, SQFUNCTION proc, std::str
 
 	if (size != 0) {
 		void *ptr = sq_newuserdata(vm, size);
-		memcpy(ptr, userdata, size);
+		std::copy_n(static_cast<std::byte *>(userdata), size, static_cast<std::byte *>(ptr));
 	}
 
 	sq_newclosure(this->vm, proc, size != 0 ? 1 : 0);

@@ -57,7 +57,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	dst_sprite->width = root_sprite.width;
 	dst_sprite->x_offs = root_sprite.x_offs;
 	dst_sprite->y_offs = root_sprite.y_offs;
-	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
+	std::copy_n(reinterpret_cast<std::byte *>(&sd), sizeof(SpriteData), dst_sprite->data);
 
 	/* Copy colours and determine flags. */
 	bool has_remap = false;
@@ -135,7 +135,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(SpriteType sprite_type, const SpriteLoader
 	if (has_translucency) sd.flags.Set(SpriteFlag::Translucent);
 	if (!has_remap) sd.flags.Set(SpriteFlag::NoRemap);
 	if (!has_anim) sd.flags.Set(SpriteFlag::NoAnim);
-	memcpy(dst_sprite->data, &sd, sizeof(SpriteData));
+	std::copy_n(reinterpret_cast<std::byte *>(&sd), sizeof(SpriteData), dst_sprite->data);
 
 	return dst_sprite;
 }

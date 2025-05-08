@@ -231,8 +231,7 @@ static const uint MAX_FRAMES     = 64;
 		frame.AddrStack.Mode = AddrModeFlat;
 
 		/* Copy context record as StackWalk64 may modify it. */
-		CONTEXT ctx;
-		memcpy(&ctx, ep->ContextRecord, sizeof(ctx));
+		CONTEXT ctx = *ep->ContextRecord;
 
 		/* Allocate space for symbol info.
 		 * The total initialised size must be sufficient for a null-terminating char at sym_info->Name[sym_info->MaxNameLength],

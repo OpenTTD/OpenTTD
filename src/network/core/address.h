@@ -58,11 +58,11 @@ public:
 	 * @param address The IP address with port.
 	 * @param address_length The length of the address.
 	 */
-	NetworkAddress(sockaddr *address, int address_length) :
+	NetworkAddress(const sockaddr *address, int address_length) :
 		address_length(address_length),
 		resolved(address_length != 0)
 	{
-		memcpy(&this->address, address, address_length);
+		std::copy_n(reinterpret_cast<const std::byte *>(address), address_length, reinterpret_cast<std::byte *>(&this->address));
 	}
 
 	/**

@@ -418,11 +418,11 @@ void Blitter_40bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 	uint8_t *anim_line = ((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + anim_buf;
 
 	for (; height > 0; height--) {
-		memcpy(dst, usrc, width * sizeof(uint32_t));
+		std::copy_n(usrc, width, dst);
 		usrc += width;
 		dst += _screen.pitch;
 		/* Copy back the anim-buffer */
-		memcpy(anim_line, usrc, width * sizeof(uint8_t));
+		std::copy_n(reinterpret_cast<const uint8_t *>(usrc), width, anim_line);
 		usrc = (const uint32_t *)((const uint8_t *)usrc + width);
 		anim_line += _screen.pitch;
 	}
@@ -440,11 +440,11 @@ void Blitter_40bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 	const uint8_t *anim_line = ((const uint32_t *)video - (uint32_t *)_screen.dst_ptr) + anim_buf;
 
 	for (; height > 0; height--) {
-		memcpy(udst, src, width * sizeof(uint32_t));
+		std::copy_n(src, width, udst);
 		src += _screen.pitch;
 		udst += width;
 		/* Copy the anim-buffer */
-		memcpy(udst, anim_line, width * sizeof(uint8_t));
+		std::copy_n(anim_line, width, reinterpret_cast<uint8_t *>(udst));
 		udst = (uint32_t *)((uint8_t *)udst + width);
 		anim_line += _screen.pitch;
 	}
@@ -494,7 +494,7 @@ void Blitter_40bppAnim::ScrollBuffer(void *video, int &left, int &top, int &widt
 		uint tw = width + (scroll_x >= 0 ? -scroll_x : scroll_x);
 		uint th = height - scroll_y;
 		for (; th > 0; th--) {
-			memcpy(dst, src, tw * sizeof(uint8_t));
+			std::copy_n(src, tw, dst);
 			src -= _screen.pitch;
 			dst -= _screen.pitch;
 		}

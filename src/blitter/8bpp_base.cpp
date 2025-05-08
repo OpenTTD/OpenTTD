@@ -56,7 +56,7 @@ void Blitter_8bppBase::CopyFromBuffer(void *video, const void *src, int width, i
 	const uint8_t *usrc = (const uint8_t *)src;
 
 	for (; height > 0; height--) {
-		memcpy(dst, usrc, width * sizeof(uint8_t));
+		std::copy_n(usrc, width, dst);
 		usrc += width;
 		dst += _screen.pitch;
 	}
@@ -68,7 +68,7 @@ void Blitter_8bppBase::CopyToBuffer(const void *video, void *dst, int width, int
 	const uint8_t *src = (const uint8_t *)video;
 
 	for (; height > 0; height--) {
-		memcpy(udst, src, width * sizeof(uint8_t));
+		std::copy_n(src, width, udst);
 		src += _screen.pitch;
 		udst += width;
 	}
@@ -80,7 +80,7 @@ void Blitter_8bppBase::CopyImageToBuffer(const void *video, void *dst, int width
 	const uint8_t *src = (const uint8_t *)video;
 
 	for (; height > 0; height--) {
-		memcpy(udst, src, width * sizeof(uint8_t));
+		std::copy_n(src, width, udst);
 		src += _screen.pitch;
 		udst += dst_pitch;
 	}
@@ -112,7 +112,7 @@ void Blitter_8bppBase::ScrollBuffer(void *video, int &left, int &top, int &width
 		}
 
 		for (int h = height; h > 0; h--) {
-			memcpy(dst, src, width * sizeof(uint8_t));
+			std::copy_n(src, width, dst);
 			src -= _screen.pitch;
 			dst -= _screen.pitch;
 		}
