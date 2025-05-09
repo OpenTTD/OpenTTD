@@ -4437,10 +4437,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órd
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave. Ctrl+Clic muestra su horario
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Ver detalles del tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Ver detalles del vehículo
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Ver detalles del barco
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Ver detalles de la aeronave
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Ver detalles del tren. Ctrl+Clic muestra su grupo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Ver detalles del vehículo. Ctrl+Clic muestra su grupo
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Ver detalles del barco. Ctrl+Clic muestra su grupo
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Ver detalles de la aeronave. Ctrl+Clic muestra su grupo
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Acción actual del tren. Clic para arrancar o detener
@@ -4771,8 +4771,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajar (durante
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajar (durante {STRING}, no programado) a {VELOCITY} como máximo
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(esperar {STRING}, no programado)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(viajar {STRING}, no programado)
-STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}y esperar {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}y viajar {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}El horario tardará aproximadamente {STRING} en completarse
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en completarse
@@ -5883,6 +5883,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}mil mill.
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bill.
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
