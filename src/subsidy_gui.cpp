@@ -219,13 +219,13 @@ struct SubsidyListWindow : Window {
 					if (TimerGameEconomy::UsingWallclockUnits()) {
 						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO,
 							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							GetString(STR_COMPANY_NAME, s->awarded),
+							s->awarded,
 							STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME,
 							s->remaining + 1); // We get the rest of the current economy month for free, since the expiration is checked on each new month.
 					} else {
 						text = GetString(STR_SUBSIDIES_SUBSIDISED_FROM_TO,
 							cs->name, s->src.GetFormat(), s->src.id, s->dst.GetFormat(), s->dst.id,
-							GetString(STR_COMPANY_NAME, s->awarded),
+							s->awarded,
 							STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE,
 							TimerGameEconomy::date.base() - ymd.day + s->remaining * 32);
 					}
