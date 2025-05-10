@@ -475,15 +475,9 @@ void Blitter_32bppAnim::ScrollBuffer(void *video, int &left, int &top, int &widt
 			src -= scroll_x;
 		}
 
-		/* the y-displacement may be 0 therefore we have to use memmove,
-		 * because source and destination may overlap */
 		uint tw = width + (scroll_x >= 0 ? -scroll_x : scroll_x);
 		uint th = height + scroll_y;
-		for (; th > 0; th--) {
-			memmove(dst, src, tw * sizeof(uint16_t));
-			src += this->anim_buf_pitch;
-			dst += this->anim_buf_pitch;
-		}
+		Blitter::MovePixels(src, dst, tw, th, this->anim_buf_pitch);
 	}
 
 	Blitter_32bppBase::ScrollBuffer(video, left, top, width, height, scroll_x, scroll_y);
