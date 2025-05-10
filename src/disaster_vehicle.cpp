@@ -40,8 +40,7 @@
 #include "effectvehicle_func.h"
 #include "roadveh.h"
 #include "train.h"
-#include "ai/ai.hpp"
-#include "game/game.hpp"
+#include "script/script_trigger.hpp"
 #include "company_base.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
@@ -246,7 +245,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 				v->age = CalendarTime::MIN_DATE;
 
 				AddTileNewsItem(GetEncodedString(STR_NEWS_DISASTER_ZEPPELIN, GetStationIndex(v->tile)), NewsType::Accident, v->tile);
-				AI::NewEvent(GetTileOwner(v->tile), new ScriptEventDisasterZeppelinerCrashed(GetStationIndex(v->tile)));
+				ScriptTrigger::NewEvent<ScriptEventDisasterZeppelinerCrashed>(GetTileOwner(v->tile), GetStationIndex(v->tile));
 			}
 		}
 
@@ -264,7 +263,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 			Station *st = Station::GetByTile(v->tile);
 			st->airport.blocks.Reset(AirportBlock::RunwayIn);
-			AI::NewEvent(GetTileOwner(v->tile), new ScriptEventDisasterZeppelinerCleared(st->index));
+			ScriptTrigger::NewEvent<ScriptEventDisasterZeppelinerCleared>(GetTileOwner(v->tile), st->index);
 		}
 
 		v->UpdatePosition(v->x_pos, v->y_pos, GetAircraftFlightLevel(v));
@@ -388,8 +387,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 
 				AddTileNewsItem(GetEncodedString(STR_NEWS_DISASTER_SMALL_UFO), NewsType::Accident, u->tile);
 
-				AI::NewEvent(u->owner, new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO, victims, u->owner));
-				Game::NewEvent(new ScriptEventVehicleCrashed(u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO, victims, u->owner));
+				ScriptTrigger::NewEvent<ScriptEventVehicleCrashed>(u->owner, u->index, u->tile, ScriptEventVehicleCrashed::CRASH_RV_UFO, victims, u->owner);
 			}
 		}
 
