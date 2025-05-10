@@ -192,4 +192,24 @@ void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, 
 	}
 }
 
+template <typename T>
+/* static */ void Blitter::MovePixels(const T *src, T *dst, size_t width, size_t height, ptrdiff_t pitch)
+{
+	if (src == dst) return;
+
+	if (src < dst) {
+		for (size_t i = 0; i < height; ++i) {
+			std::move_backward(src, src + width, dst + width);
+			src += pitch;
+			dst += pitch;
+		}
+	} else {
+		for (size_t i = 0; i < height; ++i) {
+			std::move(src, src + width, dst);
+			src += pitch;
+			dst += pitch;
+		}
+	}
+}
+
 #endif /* BLITTER_COMMON_HPP */
