@@ -40,7 +40,6 @@ enum NetworkContentListWidgets : WidgetID {
 	WID_NCL_SELECT_UPDATE,  ///< 'Select updates' button.
 	WID_NCL_UNSELECT,       ///< 'Unselect all' button.
 	WID_NCL_OPEN_URL,       ///< 'Open url' button.
-	WID_NCL_CANCEL,         ///< 'Cancel' button.
 	WID_NCL_DOWNLOAD,       ///< 'Download' button.
 
 	WID_NCL_SEL_ALL_UPDATE, ///< #NWID_SELECTION widget for select all/update buttons..

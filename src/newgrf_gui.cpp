@@ -429,10 +429,6 @@ struct NewGRFParametersWindow : public Window {
 				this->InvalidateData();
 				SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 				break;
-
-			case WID_NP_ACCEPT:
-				this->Close();
-				break;
 		}
 	}
 
@@ -525,9 +521,8 @@ static constexpr NWidgetPart _nested_newgrf_parameter_widgets[] = {
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_NP_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_NEWGRF_PARAMETERS_CLOSE),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_NP_RESET), SetResize(1, 0), SetFill(1, 0), SetStringTip(STR_NEWGRF_PARAMETERS_RESET, STR_NEWGRF_PARAMETERS_RESET_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_NP_RESET), SetStringTip(STR_NEWGRF_PARAMETERS_RESET, STR_NEWGRF_PARAMETERS_RESET_TOOLTIP),
+		NWidget(WWT_PANEL, COLOUR_MAUVE), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
@@ -1996,7 +1991,6 @@ static constexpr NWidgetPart _nested_save_preset_widgets[] = {
 				SetStringTip(STR_SAVE_PRESET_TITLE, STR_SAVE_PRESET_EDITBOX_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SVP_CANCEL), SetStringTip(STR_SAVE_PRESET_CANCEL, STR_SAVE_PRESET_CANCEL_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SVP_SAVE), SetStringTip(STR_SAVE_PRESET_SAVE, STR_SAVE_PRESET_SAVE_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
@@ -2035,7 +2029,6 @@ struct SavePresetWindow : public Window {
 
 		this->querystrings[WID_SVP_EDITBOX] = &this->presetname_editbox;
 		this->presetname_editbox.ok_button = WID_SVP_SAVE;
-		this->presetname_editbox.cancel_button = WID_SVP_CANCEL;
 
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_SVP_SCROLLBAR);
@@ -2104,10 +2097,6 @@ struct SavePresetWindow : public Window {
 				}
 				break;
 			}
-
-			case WID_SVP_CANCEL:
-				this->Close();
-				break;
 
 			case WID_SVP_SAVE: {
 				Window *w = FindWindowById(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);

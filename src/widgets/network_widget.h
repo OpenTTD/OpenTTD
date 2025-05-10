@@ -45,7 +45,6 @@ enum NetworkGameWidgets : WidgetID {
 	WID_NG_SEARCH_LAN,         ///< 'Search LAN server' button.
 	WID_NG_ADD,                ///< 'Add server' button.
 	WID_NG_START,              ///< 'Start server' button.
-	WID_NG_CANCEL,             ///< 'Cancel' button.
 };
 
 /** Widgets of the #NetworkStartServerWindow class. */
