@@ -106,11 +106,7 @@ void Blitter_32bppBase::ScrollBuffer(void *video, int &left, int &top, int &widt
 			width += scroll_x;
 		}
 
-		for (int h = height; h > 0; h--) {
-			std::copy_n(src, width, dst);
-			src -= _screen.pitch;
-			dst -= _screen.pitch;
-		}
+		Blitter::MovePixels(src, dst, width, height, -_screen.pitch);
 	} else {
 		/* Calculate pointers */
 		dst = (uint32_t *)video + left + top * _screen.pitch;
@@ -130,13 +126,7 @@ void Blitter_32bppBase::ScrollBuffer(void *video, int &left, int &top, int &widt
 			width += scroll_x;
 		}
 
-		/* the y-displacement may be 0 therefore we have to use memmove,
-		 * because source and destination may overlap */
-		for (int h = height; h > 0; h--) {
-			memmove(dst, src, width * sizeof(uint32_t));
-			src += _screen.pitch;
-			dst += _screen.pitch;
-		}
+		Blitter::MovePixels(src, dst, width, height, _screen.pitch);
 	}
 }
 

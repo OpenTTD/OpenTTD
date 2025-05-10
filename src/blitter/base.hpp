@@ -207,6 +207,8 @@ public:
 	virtual ~Blitter() = default;
 
 	template <typename SetPixelT> void DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel);
+
+	template <typename T> static void MovePixels(const T *src, T *dst, size_t width, size_t height, ptrdiff_t pitch);
 };
 
 #endif /* BLITTER_BASE_HPP */
