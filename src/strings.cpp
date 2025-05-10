@@ -1112,7 +1112,10 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 			const size_t ref_param_offset = str_stack.top().first_param_offset;
 			const uint case_index = str_stack.top().case_index;
 			char32_t b = consumer.ReadUtf8();
-			assert(b != 0);
+			if (b == 0) {
+				builder += "(unexpected NUL)";
+				continue;
+			}
 
 			if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 				/* We need to pass some stuff as it might be modified. */
