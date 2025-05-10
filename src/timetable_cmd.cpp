@@ -479,7 +479,8 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	assert(real_current_order != nullptr);
 
 	VehicleOrderID first_manual_order = 0;
-	for (Order *o = v->GetFirstOrder(); o != nullptr && o->IsType(OT_IMPLICIT); o = o->next) {
+	for (const Order &o : v->Orders()) {
+		if (!o.IsType(OT_IMPLICIT)) break;
 		++first_manual_order;
 	}
 

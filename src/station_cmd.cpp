@@ -2752,8 +2752,8 @@ bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 		assert(v != nullptr);
 		if ((v->owner == company) != include_company) continue;
 
-		for (const Order *order = orderlist->GetFirstOrder(); order != nullptr; order = order->next) {
-			if (order->GetDestination() == station && (order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT))) {
+		for (const Order &order : orderlist->GetOrders()) {
+			if (order.GetDestination() == station && (order.IsType(OT_GOTO_STATION) || order.IsType(OT_GOTO_WAYPOINT))) {
 				return true;
 			}
 		}
@@ -4045,15 +4045,15 @@ void DeleteStaleLinks(Station *from)
 					/* Have all vehicles refresh their next hops before deciding to
 					 * remove the node. */
 					std::vector<Vehicle *> vehicles;
-					for (OrderList *l : OrderList::Iterate()) {
+					for (const OrderList *l : OrderList::Iterate()) {
 						bool found_from = false;
 						bool found_to = false;
-						for (Order *order = l->GetFirstOrder(); order != nullptr; order = order->next) {
-							if (!order->IsType(OT_GOTO_STATION) && !order->IsType(OT_IMPLICIT)) continue;
-							if (order->GetDestination() == from->index) {
+						for (const Order &order : l->GetOrders()) {
+							if (!order.IsType(OT_GOTO_STATION) && !order.IsType(OT_IMPLICIT)) continue;
+							if (order.GetDestination() == from->index) {
 								found_from = true;
 								if (found_to) break;
-							} else if (order->GetDestination() == to->index) {
+							} else if (order.GetDestination() == to->index) {
 								found_to = true;
 								if (found_from) break;
 							}

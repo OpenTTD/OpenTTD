@@ -8,6 +8,7 @@
 /** @file script_order.cpp Implementation of ScriptOrder. */
 
 #include "../../stdafx.h"
+#include <ranges>
 #include "script_order.hpp"
 #include "script_cargo.hpp"
 #include "script_map.hpp"
@@ -67,15 +68,12 @@ static const Order *ResolveOrder(VehicleID vehicle_id, ScriptOrder::OrderPositio
 		order_position = ScriptOrder::ResolveOrderPosition(vehicle_id, order_position);
 		if (order_position == ScriptOrder::ORDER_INVALID) return nullptr;
 	}
-	const Order *order = v->GetFirstOrder();
-	assert(order != nullptr);
-	while (order->GetType() == OT_IMPLICIT) order = order->next;
-	while (order_position > 0) {
-		order_position = (ScriptOrder::OrderPosition)(order_position - 1);
-		order = order->next;
-		while (order->GetType() == OT_IMPLICIT) order = order->next;
-	}
-	return order;
+
+	auto real_orders = v->Orders() | std::views::filter([](const Order &order) { return !order.IsType(OT_IMPLICIT); });
+	auto it = std::ranges::next(std::begin(real_orders), order_position, std::end(real_orders));
+	if (it != std::end(real_orders)) return &*it;
+
+	return nullptr;
 }
 
 /**
@@ -91,16 +89,16 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 
 	assert(ScriptOrder::IsValidVehicleOrder(vehicle_id, order_position));
 
+	int pos = (int)order_position;
 	int res = (int)order_position;
-	const Order *order = v->orders->GetFirstOrder();
-	assert(order != nullptr);
-	for (; order->GetType() == OT_IMPLICIT; order = order->next) res++;
-	while (order_position > 0) {
-		order_position = (ScriptOrder::OrderPosition)(order_position - 1);
-		order = order->next;
-		for (; order->GetType() == OT_IMPLICIT; order = order->next) res++;
+	for (const Order &order : v->Orders()) {
+		if (order.IsType(OT_IMPLICIT)) {
+			++res;
+		} else {
+			if (pos == 0) break;
+			--pos;
+		}
 	}
-
 	return res;
 }
 
@@ -111,12 +109,18 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
  */
 static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(VehicleID vehicle_id, int order_position)
 {
-	const Order *order = ::Vehicle::Get(vehicle_id)->GetFirstOrder();
-	assert(order != nullptr);
+	const Vehicle *v = ::Vehicle::Get(vehicle_id);
+
 	int num_implicit_orders = 0;
-	for (int i = 0; i < order_position; i++) {
-		if (order->GetType() == OT_IMPLICIT) num_implicit_orders++;
-		order = order->next;
+	int pos = order_position;
+	for (const Order &order : v->Orders()) {
+		if (order.IsType(OT_IMPLICIT)) {
+			++num_implicit_orders;
+		} else {
+			if (pos == 0) break;
+			--pos;
+		}
+
 	}
 	return static_cast<ScriptOrder::OrderPosition>(order_position - num_implicit_orders);
 }
