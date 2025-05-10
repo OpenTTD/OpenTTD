@@ -31,6 +31,7 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/rivers/tropic_forest.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/fix_graphics.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/fix_gui_icons.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/rtl_icons.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/shore.png
                          # We share some files with 'openttd' grf
                          ${CMAKE_CURRENT_SOURCE_DIR}/../openttd/airports.png
