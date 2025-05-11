@@ -13,10 +13,10 @@
 #include "../newgrf_roadstop.h"
 
 /* Helper for filling property tables */
-#define NIP(prop, base, variable, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), prop, type }
+#define NIP(prop, base_class, variable, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->variable; }, prop, type }
 
 /* Helper for filling callback tables */
-#define NIC(cb_id, base, variable, bit) { #cb_id, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), bit, cb_id }
+#define NIC(cb_id, base_class, variable, bit) { #cb_id, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->variable.base(); }, bit, cb_id }
 
 /* Helper for filling variable tables */
 #define NIV(var, name) { name, var }
@@ -270,8 +270,8 @@ static const NIFeature _nif_industrytile = {
 
 
 /*** NewGRF industries ***/
-#define NIP_PRODUCED_CARGO(prop, base, slot, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->GetProduced(slot).cargo); }, sizeof(CargoType), prop, type }
-#define NIP_ACCEPTED_CARGO(prop, base, slot, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->GetAccepted(slot).cargo); }, sizeof(CargoType), prop, type }
+#define NIP_PRODUCED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetProduced(slot).cargo; }, prop, type }
+#define NIP_ACCEPTED_CARGO(prop, base_class, slot, type, name) { name, [] (const void *b) -> uint32_t { return static_cast<const base_class *>(b)->GetAccepted(slot).cargo; }, prop, type }
 
 static const NIProperty _nip_industries[] = {
 	NIP_PRODUCED_CARGO(0x25, Industry,  0, NIT_CARGO, "produced cargo 0"),

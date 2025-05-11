@@ -86,13 +86,12 @@ enum NIType : uint8_t {
 	NIT_CARGO, ///< The property is a cargo
 };
 
-typedef const void *NIOffsetProc(const void *b);
+using NIReadProc = uint32_t(const void *b);
 
 /** Representation of the data from a NewGRF property. */
 struct NIProperty {
 	std::string_view name;          ///< A (human readable) name for the property
-	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	uint8_t read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
+	NIReadProc *read_proc; ///< Callback proc to get the actual variable from memory
 	uint8_t prop;                 ///< The number of the property
 	uint8_t type;
 };
@@ -104,8 +103,7 @@ struct NIProperty {
  */
 struct NICallback {
 	std::string_view name;          ///< The human readable name of the callback
-	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
-	uint8_t read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
+	NIReadProc *read_proc; ///< Callback proc to get the actual variable from memory
 	std::variant<
 		std::monostate,
 		VehicleCallbackMask,
@@ -488,15 +486,7 @@ struct NewGRFInspectWindow : Window {
 		if (!nif->properties.empty()) {
 			this->DrawString(r, i++, "Properties:");
 			for (const NIProperty &nip : nif->properties) {
-				const void *ptr = nip.offset_proc(base);
-				uint value;
-				switch (nip.read_size) {
-					case 1: value = *(const uint8_t  *)ptr; break;
-					case 2: value = *(const uint16_t *)ptr; break;
-					case 4: value = *(const uint32_t *)ptr; break;
-					default: NOT_REACHED();
-				}
-
+				uint32_t value = nip.read_proc(base);
 				this->DrawString(r, i++, fmt::format("  {:02x}: {} ({})", nip.prop, this->GetPropertyString(nip, value), nip.name));
 			}
 		}
@@ -505,17 +495,10 @@ struct NewGRFInspectWindow : Window {
 			this->DrawString(r, i++, "Callbacks:");
 			for (const NICallback &nic : nif->callbacks) {
 				if (!std::holds_alternative<std::monostate>(nic.cb_bit)) {
-					const void *ptr = nic.offset_proc(base_spec);
-					uint value;
-					switch (nic.read_size) {
-						case 1: value = *(const uint8_t  *)ptr; break;
-						case 2: value = *(const uint16_t *)ptr; break;
-						case 4: value = *(const uint32_t *)ptr; break;
-						default: NOT_REACHED();
-					}
+					uint32_t value = nic.read_proc(base_spec);
 
 					struct visitor {
-						uint value;
+						uint32_t value;
 
 						bool operator()(const std::monostate &) { return false; }
 						bool operator()(const VehicleCallbackMask &bit) { return static_cast<VehicleCallbackMasks>(this->value).Test(bit); }
