@@ -676,7 +676,7 @@ void CleanUpStrings()
 }
 
 struct TextRefStack {
-	std::array<uint8_t, 0x30> stack{};
+	std::array<uint8_t, 0x60> stack{};
 	uint8_t position = 0;
 	const GRFFile *grffile = nullptr;
 
