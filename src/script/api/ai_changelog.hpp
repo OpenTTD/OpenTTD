@@ -32,6 +32,7 @@
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
  * \li AIWaypoint::GetWaypointID now returns the StationID of any type of waypoint
  * \li AIList instances can now be saved
+ * \li AIVehicleList_Station accepts an optional AIVehicle::VehicleType parameter
  *
  * \b 14.0
  *
