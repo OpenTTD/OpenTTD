@@ -1967,7 +1967,6 @@ STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Earráid
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... níor aimsaíodh GPU comhoiriúnach. Luasghéarú cura-earraí díchumasaithe
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Cluiche Nua
 STR_INTRO_LOAD_GAME                                             :{BLACK}Lódáil Cluiche

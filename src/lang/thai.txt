@@ -1875,7 +1875,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}กา�
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ไม่พบ GPU ที่รองรับ การเร่งฮาร์ดแวร์ถูกยกเลิกแล้ว
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}เริ่มเกมใหม่
 STR_INTRO_LOAD_GAME                                             :{BLACK}โหลดเกม

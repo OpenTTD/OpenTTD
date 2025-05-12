@@ -2195,7 +2195,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... Inge
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-drivrutinen kraschade spelet. Maskinvaruacceleration inaktiverad
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nytt spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Ladda spel
@@ -4414,9 +4413,9 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka f
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Köp en kopia av tåget inklusive alla vagnar. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Köp en kopia av vägfordonet. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Köp en kopia av vägfordonet. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Köp en kopia av skeppet. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Köp en kopia av en flygfarkost. Ctrl+Klick för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Köp en kopia av en flygfarkost. Ctrl+klicka för att dela ordrar. Håll även in Shift för att endast visa uppskattad kostnad
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tvinga tåg att fortsätta utan att vänta på signal
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt tågets riktning
@@ -4436,10 +4435,10 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Visa ske
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Visa flygplanets order. Ctrl+klick visar flygplanets tidtabell
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Visa tågdetaljer
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Visa vägfordonsdetaljer
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Visa skeppdetaljer
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Visa flygplan detaljer
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Visa tågdetaljer. Ctrl+klicka för att visa tågets grupp
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Visa vägfordonsdetaljer. Ctrl+klicka för att visa fordonets grupp
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Visa skeppsdetaljer. Ctrl+klicka för att visa skeppets grupp
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Visa flygplansdetaljer. Ctrl+klicka för att visa flygplanets grupp
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Aktuell tågåtgärd - Tryck för att stoppa/starta tåget
@@ -4770,8 +4769,8 @@ STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Resor (för {ST
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Resor (för {STRING}, ej schemalagd) med högst {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :{SPACE}(stanna {STRING}, ej schemalagd)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :{SPACE}(resor för {STRING}, ej schemalagd)
-STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
+STR_TIMETABLE_STAY_FOR                                          :{SPACE}och stanna i {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :{SPACE}och res i {STRING}
 
 STR_TIMETABLE_APPROX_TIME                                       :{BLACK}Den här tidtabellen kommer att ta ungefär {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer att ta {STRING} att slutföra
@@ -5882,6 +5881,7 @@ STR_CURRENCY_SHORT_GIGA                                         :{NBSP}md
 STR_CURRENCY_SHORT_TERA                                         :{NBSP}bn
 
 STR_JUST_CARGO                                                  :{CARGO_LONG}
+STR_JUST_LEFT_ARROW                                             :{LEFT_ARROW}
 STR_JUST_RIGHT_ARROW                                            :{RIGHT_ARROW}
 STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}

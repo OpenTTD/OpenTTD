@@ -2184,7 +2184,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... не
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Графичният драйвер блокира играта. Хардуерното ускорение е изключено
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Нова игра
 STR_INTRO_LOAD_GAME                                             :{BLACK}Отваряне на игра

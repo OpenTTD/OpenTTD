@@ -2060,7 +2060,6 @@ STR_VIDEO_DRIVER_ERROR                                          :{WHITE}ビデ�
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... 対応する GPU が見つかりません。ハードウェアアクセラレーションは無効になります。
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}新しいゲーム
 STR_INTRO_LOAD_GAME                                             :{BLACK}ロード

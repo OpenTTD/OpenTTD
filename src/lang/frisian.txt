@@ -1823,7 +1823,6 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Gjin geh
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nei Spul
 STR_INTRO_LOAD_GAME                                             :{BLACK}Laad Spul

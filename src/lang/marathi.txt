@@ -1046,7 +1046,6 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}ओपेन टीटीडी {REV}
 
 
 

@@ -2195,7 +2195,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE} ... auc
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... le pilote du GPU a fait planter le jeu. L'accélération matérielle est désactivée
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Jouer une nouvelle partie
 STR_INTRO_LOAD_GAME                                             :{BLACK}Charger une partie

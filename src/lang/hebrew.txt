@@ -1991,7 +1991,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE} הקצ�
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... לא נמצא כרטיס מסך תואם, האצת חומרה מושבתת
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}משחק חדש
 STR_INTRO_LOAD_GAME                                             :{BLACK}טען משחק

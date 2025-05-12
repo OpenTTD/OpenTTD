@@ -2221,7 +2221,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ei l
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Mäng seiskus graafikadraiveri pärast. Riistvarakiirendus lülitati välja
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Uus mäng
 STR_INTRO_LOAD_GAME                                             :{BLACK}Mängu jätk

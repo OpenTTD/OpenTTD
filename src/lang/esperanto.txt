@@ -2153,7 +2153,6 @@ STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eraro pr
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ne troveblis kongrua grafika procesoro. Malŝaltis aparataran plirapidigon
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Novan ludon
 STR_INTRO_LOAD_GAME                                             :{BLACK}Ŝarĝu ludon

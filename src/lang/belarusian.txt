@@ -2472,7 +2472,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... не
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... драйвер відэакарты выклікаў крытычную памылку. Апаратнае паскарэньне адключана.
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Новая гульня
 STR_INTRO_LOAD_GAME                                             :{BLACK}Загрузіць гульню

@@ -1154,7 +1154,6 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Нема
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Нова Игра
 STR_INTRO_LOAD_GAME                                             :{BLACK}Вчитај Игра

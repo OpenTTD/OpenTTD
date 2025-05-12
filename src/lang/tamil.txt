@@ -1967,7 +1967,6 @@ STR_VIDEO_DRIVER_ERROR                                          :{WHITE}வீ�
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... இணைவொத்த GPU கிடைக்கவில்லை. வன்பொருள் முடுக்கம் செயலிழக்கப்பட்டுள்ளது
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}புதிய ஆட்டம்
 STR_INTRO_LOAD_GAME                                             :{BLACK}பழைய ஆட்டத்தினை ஏற்று

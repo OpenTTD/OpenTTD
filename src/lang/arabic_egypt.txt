@@ -1761,7 +1761,6 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}نفذت
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... لم يتم العثور على GPU متوافق. تم تعطيل تسريع الأجهزة
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}لعبة جديدة
 STR_INTRO_LOAD_GAME                                             :{BLACK} تحميل

@@ -2178,7 +2178,6 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... inge
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU-driver fik spillet til at gå ned. Hardwareacceleration deaktiveret
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nyt spil
 STR_INTRO_LOAD_GAME                                             :{BLACK}Fortsæt spil

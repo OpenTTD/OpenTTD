@@ -2064,7 +2064,6 @@ STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Non potu
 # Video initalization errors
 
 # Intro window
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Ludus Novus
 STR_INTRO_LOAD_GAME                                             :{BLACK}Legere Ludum
