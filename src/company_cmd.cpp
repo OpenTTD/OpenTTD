@@ -39,6 +39,7 @@
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
 #include "timer/timer_game_tick.h"
+#include "timer/timer_window.h"
 
 #include "widgets/statusbar_widget.h"
 
@@ -219,8 +220,7 @@ void InvalidateCompanyWindows(const Company *company)
 /**
  * Refresh all company finance windows previously marked dirty.
  */
-void InvalidateCompanyWindows()
-{
+static const IntervalTimer<TimerWindow> invalidate_company_windows_interval(std::chrono::milliseconds(1), [](auto) {
 	for (CompanyID cid : _dirty_company_finances) {
 		if (cid == _local_company) SetWindowWidgetDirty(WC_STATUS_BAR, 0, WID_S_RIGHT);
 		Window *w = FindWindowById(WC_FINANCES, cid);
@@ -233,8 +233,8 @@ void InvalidateCompanyWindows()
 		}
 		SetWindowWidgetDirty(WC_COMPANY, cid, WID_C_DESC_COMPANY_VALUE);
 	}
-	_dirty_company_finances = {};
-}
+	_dirty_company_finances.Reset();
+});
 
 /**
  * Get the amount of money that a company has available, or INT64_MAX
