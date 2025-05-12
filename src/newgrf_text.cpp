@@ -30,6 +30,7 @@
 #include "core/string_builder.hpp"
 #include "core/string_consumer.hpp"
 #include "language.h"
+#include <ranges>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -676,21 +677,26 @@ void CleanUpStrings()
 }
 
 struct TextRefStack {
-	std::array<uint8_t, 0x30> stack{};
-	uint8_t position = 0;
+private:
+	std::vector<uint8_t> stack;
+public:
 	const GRFFile *grffile = nullptr;
 
 	TextRefStack(const GRFFile *grffile, std::span<const int32_t> textstack) : grffile(grffile)
 	{
-		auto stack_it = this->stack.begin();
-		for (int32_t value : textstack) {
-			for (uint j = 0; j < 32; j += 8) {
-				*stack_it++ = GB(value, j, 8);
-			}
+		this->stack.reserve(textstack.size() * 4 + 6); // for translations it is reasonable to push 3 word and rotate them
+		for (int32_t value : std::ranges::reverse_view(textstack)) {
+			this->PushDWord(value);
 		}
 	}
 
-	uint8_t  PopUnsignedByte()  { assert(this->position < this->stack.size()); return this->stack[this->position++]; }
+	uint8_t PopUnsignedByte()
+	{
+		if (this->stack.empty()) return 0;
+		auto res = this->stack.back();
+		this->stack.pop_back();
+		return res;
+	}
 	int8_t   PopSignedByte()    { return (int8_t)this->PopUnsignedByte(); }
 
 	uint16_t PopUnsignedWord()
@@ -717,22 +723,31 @@ struct TextRefStack {
 	/** Rotate the top four words down: W1, W2, W3, W4 -> W4, W1, W2, W3 */
 	void RotateTop4Words()
 	{
-		uint8_t tmp[2];
-		for (int i = 0; i  < 2; i++) tmp[i] = this->stack[this->position + i + 6];
-		for (int i = 5; i >= 0; i--) this->stack[this->position + i + 2] = this->stack[this->position + i];
-		for (int i = 0; i  < 2; i++) this->stack[this->position + i] = tmp[i];
+		auto w1 = this->PopUnsignedWord();
+		auto w2 = this->PopUnsignedWord();
+		auto w3 = this->PopUnsignedWord();
+		auto w4 = this->PopUnsignedWord();
+		this->PushWord(w3);
+		this->PushWord(w2);
+		this->PushWord(w1);
+		this->PushWord(w4);
 	}
 
-	void PushWord(uint16_t word)
+	void PushByte(uint8_t b)
 	{
-		if (this->position >= 2) {
-			this->position -= 2;
-		} else {
-			/* Rotate right 2 positions */
-			std::rotate(this->stack.rbegin(), this->stack.rbegin() + 2, this->stack.rend());
-		}
-		this->stack[this->position]     = GB(word, 0, 8);
-		this->stack[this->position + 1] = GB(word, 8, 8);
+		this->stack.push_back(b);
+	}
+
+	void PushWord(uint16_t w)
+	{
+		this->PushByte(GB(w, 8, 8));
+		this->PushByte(GB(w, 0, 8));
+	}
+
+	void PushDWord(uint32_t dw)
+	{
+		this->PushWord(GB(dw, 16, 16));
+		this->PushWord(GB(dw, 0, 16));
 	}
 };
 
