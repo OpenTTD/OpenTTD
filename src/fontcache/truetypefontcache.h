@@ -29,7 +29,7 @@ protected:
 
 	/** Container for information about a glyph. */
 	struct GlyphEntry {
-		std::unique_ptr<uint8_t[]> data; ///< The loaded sprite.
+		std::unique_ptr<std::byte[]> data; ///< The loaded sprite.
 		uint8_t width = 0; ///< The width of the glyph.
 
 		Sprite *GetSprite() { return reinterpret_cast<Sprite *>(data.get()); }
