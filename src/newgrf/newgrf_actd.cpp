@@ -234,11 +234,11 @@ static void ParamSet(ByteReader &buf)
 			} else {
 				/* GRF Resource Management */
 				uint8_t  op      = src1;
-				uint8_t  feature = GB(data, 8, 8);
+				GrfSpecFeature feature{static_cast<uint8_t>(GB(data, 8, 8))};
 				uint16_t count   = GB(data, 16, 16);
 
 				if (_cur_gps.stage == GLS_RESERVE) {
-					if (feature == 0x08) {
+					if (feature == GSF_GLOBALVAR) {
 						/* General sprites */
 						if (op == 0) {
 							/* Check if the allocated sprites will fit below the original sprite limit */
@@ -258,10 +258,10 @@ static void ParamSet(ByteReader &buf)
 					src1 = 0;
 				} else if (_cur_gps.stage == GLS_ACTIVATION) {
 					switch (feature) {
-						case 0x00: // Trains
-						case 0x01: // Road Vehicles
-						case 0x02: // Ships
-						case 0x03: // Aircraft
+						case GSF_TRAINS:
+						case GSF_ROADVEHICLES:
+						case GSF_SHIPS:
+						case GSF_AIRCRAFT:
 							if (!_settings_game.vehicle.dynamic_engines) {
 								src1 = PerformGRM({std::begin(_grm_engines) + _engine_offsets[feature], _engine_counts[feature]}, count, op, target, "vehicles");
 								if (_cur_gps.skip_sprites == -1) return;
@@ -280,7 +280,7 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case 0x08: // General sprites
+						case GSF_GLOBALVAR: // General sprites
 							switch (op) {
 								case 0:
 									/* Return space reserved during reservation stage */
@@ -298,7 +298,7 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case 0x0B: // Cargo
+						case GSF_CARGOES: // Cargo
 							/* There are two ranges: one for cargo IDs and one for cargo bitmasks */
 							src1 = PerformGRM(_grm_cargoes, count, op, target, "cargoes");
 							if (_cur_gps.skip_sprites == -1) return;

@@ -1461,7 +1461,7 @@ static void FinalisePriceBaseMultipliers()
 {
 	extern const PriceBaseSpec _price_base_specs[];
 	/** Features, to which '_grf_id_overrides' applies. Currently vehicle features only. */
-	static const uint32_t override_features = (1 << GSF_TRAINS) | (1 << GSF_ROADVEHICLES) | (1 << GSF_SHIPS) | (1 << GSF_AIRCRAFT);
+	static constexpr GrfSpecFeatures override_features{GSF_TRAINS, GSF_ROADVEHICLES, GSF_SHIPS, GSF_AIRCRAFT};
 
 	/* Evaluate grf overrides */
 	int num_grfs = (uint)_grf_files.size();
@@ -1485,13 +1485,13 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		GRFFile &dest = _grf_files[grf_overrides[i]];
 
-		uint32_t features = (source.grf_features | dest.grf_features) & override_features;
-		source.grf_features |= features;
-		dest.grf_features |= features;
+		GrfSpecFeatures features = (source.grf_features | dest.grf_features) & override_features;
+		source.grf_features.Set(features);
+		dest.grf_features.Set(features);
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* No price defined -> nothing to do */
-			if (!HasBit(features, _price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
+			if (!features.Test(_price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
@@ -1503,13 +1503,13 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		GRFFile &dest = _grf_files[grf_overrides[i]];
 
-		uint32_t features = (source.grf_features | dest.grf_features) & override_features;
-		source.grf_features |= features;
-		dest.grf_features |= features;
+		GrfSpecFeatures features = (source.grf_features | dest.grf_features) & override_features;
+		source.grf_features.Set(features);
+		dest.grf_features.Set(features);
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* Already a price defined -> nothing to do */
-			if (!HasBit(features, _price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
+			if (!features.Test(_price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
 			Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
@@ -1521,12 +1521,12 @@ static void FinalisePriceBaseMultipliers()
 		GRFFile &source = _grf_files[i];
 		GRFFile &dest = _grf_files[grf_overrides[i]];
 
-		uint32_t features = (source.grf_features | dest.grf_features) & override_features;
-		source.grf_features |= features;
-		dest.grf_features |= features;
+		GrfSpecFeatures features = (source.grf_features | dest.grf_features) & override_features;
+		source.grf_features.Set(features);
+		dest.grf_features.Set(features);
 
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
-			if (!HasBit(features, _price_base_specs[p].grf_feature)) continue;
+			if (!features.Test(_price_base_specs[p].grf_feature)) continue;
 			if (source.price_base_multipliers[p] != dest.price_base_multipliers[p]) {
 				Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
 			}
@@ -1556,7 +1556,7 @@ static void FinalisePriceBaseMultipliers()
 				/* No multiplier was set; set it to a neutral value */
 				price_base_multipliers[p] = 0;
 			} else {
-				if (!HasBit(file.grf_features, _price_base_specs[p].grf_feature)) {
+				if (!file.grf_features.Test(_price_base_specs[p].grf_feature)) {
 					/* The grf does not define any objects of the feature,
 					 * so it must be a difficulty setting. Apply it globally */
 					Debug(grf, 3, "'{}' sets global price base multiplier {}", file.filename, p);

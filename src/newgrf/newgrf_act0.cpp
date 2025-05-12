@@ -109,7 +109,7 @@ std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature)
 	return badges;
 }
 
-bool HandleChangeInfoResult(std::string_view caller, ChangeInfoResult cir, uint8_t feature, uint8_t property)
+bool HandleChangeInfoResult(std::string_view caller, ChangeInfoResult cir, GrfSpecFeature feature, uint8_t property)
 {
 	switch (cir) {
 		default: NOT_REACHED();
@@ -204,7 +204,7 @@ static void FeatureChangeInfo(ByteReader &buf)
 	}
 
 	/* Mark the feature as used by the grf */
-	SetBit(_cur_gps.grffile->grf_features, feature);
+	_cur_gps.grffile->grf_features.Set(feature);
 
 	while (numprops-- && buf.HasData()) {
 		uint8_t prop = buf.ReadByte();

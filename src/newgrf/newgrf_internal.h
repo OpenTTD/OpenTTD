@@ -95,7 +95,7 @@ public:
 	 * @param numsets Number of sets to define.
 	 * @param numents Number of sprites per set to define.
 	 */
-	void AddSpriteSets(uint8_t feature, SpriteID first_sprite, uint first_set, uint numsets, uint numents)
+	void AddSpriteSets(GrfSpecFeature feature, SpriteID first_sprite, uint first_set, uint numsets, uint numents)
 	{
 		assert(feature < GSF_END);
 		for (uint i = 0; i < numsets; i++) {
@@ -111,7 +111,7 @@ public:
 	 * @return true if there are any valid sets.
 	 * @note Spritesets with zero sprites are valid to allow callback-failures.
 	 */
-	bool HasValidSpriteSets(uint8_t feature) const
+	bool HasValidSpriteSets(GrfSpecFeature feature) const
 	{
 		assert(feature < GSF_END);
 		return !this->spritesets[feature].empty();
@@ -124,7 +124,7 @@ public:
 	 * @return true if the set is valid.
 	 * @note Spritesets with zero sprites are valid to allow callback-failures.
 	 */
-	bool IsValidSpriteSet(uint8_t feature, uint set) const
+	bool IsValidSpriteSet(GrfSpecFeature feature, uint set) const
 	{
 		assert(feature < GSF_END);
 		return this->spritesets[feature].find(set) != this->spritesets[feature].end();
@@ -136,7 +136,7 @@ public:
 	 * @param set Set to query.
 	 * @return First sprite of the set.
 	 */
-	SpriteID GetSprite(uint8_t feature, uint set) const
+	SpriteID GetSprite(GrfSpecFeature feature, uint set) const
 	{
 		assert(IsValidSpriteSet(feature, set));
 		return this->spritesets[feature].find(set)->second.sprite;
@@ -148,7 +148,7 @@ public:
 	 * @param set Set to query.
 	 * @return Number of sprites in the set.
 	 */
-	uint GetNumEnts(uint8_t feature, uint set) const
+	uint GetNumEnts(GrfSpecFeature feature, uint set) const
 	{
 		assert(IsValidSpriteSet(feature, set));
 		return this->spritesets[feature].find(set)->second.num_sprites;
@@ -192,13 +192,13 @@ void SkipBadgeList(ByteReader &buf);
 std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature);
 
 void MapSpriteMappingRecolour(PalSpriteID *grf_sprite);
-TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, int feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset = nullptr, uint16_t *max_palette_offset = nullptr);
-bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_spritesets, uint8_t feature, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts);
+TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool invert_action1_flag, bool use_cur_spritesets, GrfSpecFeature feature, PalSpriteID *grf_sprite, uint16_t *max_sprite_offset = nullptr, uint16_t *max_palette_offset = nullptr);
+bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_spritesets, GrfSpecFeature feature, bool allow_var10, bool no_z_position, NewGRFSpriteLayout *dts);
 
 GRFFile *GetFileByGRFID(uint32_t grfid);
 GRFError *DisableGrf(StringID message = {}, GRFConfig *config = nullptr);
 void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig &c);
-bool HandleChangeInfoResult(std::string_view caller, ChangeInfoResult cir, uint8_t feature, uint8_t property);
+bool HandleChangeInfoResult(std::string_view caller, ChangeInfoResult cir, GrfSpecFeature feature, uint8_t property);
 uint32_t GetParamVal(uint8_t param, uint32_t *cond_val);
 void GRFUnsafe(ByteReader &);
 

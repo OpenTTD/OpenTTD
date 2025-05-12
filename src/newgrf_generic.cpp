@@ -28,7 +28,7 @@ struct GenericScopeResolver : public ScopeResolver {
 	uint8_t count;
 	uint8_t station_size;
 
-	uint8_t feature;
+	GrfSpecFeature feature;
 
 	/**
 	 * Generic scope resolver.
@@ -105,7 +105,7 @@ void ResetGenericCallbacks()
  * @param file The GRF of the callback.
  * @param group The sprite group of the callback.
  */
-void AddGenericCallback(uint8_t feature, const GRFFile *file, const SpriteGroup *group)
+void AddGenericCallback(GrfSpecFeature feature, const GRFFile *file, const SpriteGroup *group)
 {
 	if (feature >= lengthof(_gcl)) {
 		GrfMsg(5, "AddGenericCallback: Unsupported feature 0x{:02X}", feature);
@@ -164,7 +164,7 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  * @param[out] regs100 Additional result values from registers 100+
  * @return answering GRFFile and callback value if successful, or CALLBACK_FAILED
  */
-static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(uint8_t feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8, std::span<int32_t> regs100 = {})
+static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(GrfSpecFeature feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8, std::span<int32_t> regs100 = {})
 {
 	assert(feature < lengthof(_gcl));
 
@@ -199,7 +199,7 @@ static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(uint8_t fea
  * @param station_size 'Station size' to pass to callback. (Variable 88)
  * @return answering GRFFile and callback value if successful, or CALLBACK_FAILED
  */
-std::pair<const GRFFile *, uint16_t> GetAiPurchaseCallbackResult(uint8_t feature, CargoType cargo_type, uint8_t default_selection, IndustryType src_industry, IndustryType dst_industry, uint8_t distance, AIConstructionEvent event, uint8_t count, uint8_t station_size)
+std::pair<const GRFFile *, uint16_t> GetAiPurchaseCallbackResult(GrfSpecFeature feature, CargoType cargo_type, uint8_t default_selection, IndustryType src_industry, IndustryType dst_industry, uint8_t distance, AIConstructionEvent event, uint8_t count, uint8_t station_size)
 {
 	GenericResolverObject object(true, CBID_GENERIC_AI_PURCHASE_SELECTION);
 
