@@ -899,7 +899,7 @@ void *CacheSpriteAllocator::AllocatePtr(size_t mem_req)
 
 void *UniquePtrSpriteAllocator::AllocatePtr(size_t size)
 {
-	this->data = std::make_unique<uint8_t[]>(size);
+	this->data = std::make_unique<std::byte[]>(size);
 	return this->data.get();
 }
 
