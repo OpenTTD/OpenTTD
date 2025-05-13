@@ -631,8 +631,8 @@ public:
 					this->filter.facilities.Flip(static_cast<StationFacility>(widget - WID_STL_TRAIN));
 					this->ToggleWidgetLoweredState(widget);
 				} else {
-					for (uint i : SetBitIterator(this->filter.facilities.base())) {
-						this->RaiseWidget(i + WID_STL_TRAIN);
+					for (StationFacility i : this->filter.facilities) {
+						this->RaiseWidget(to_underlying(i) + WID_STL_TRAIN);
 					}
 					this->filter.facilities = {};
 					this->filter.facilities.Set(static_cast<StationFacility>(widget - WID_STL_TRAIN));
