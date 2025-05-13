@@ -1021,6 +1021,28 @@ function Regression::Order()
 	foreach (idx, val in list) {
 		print("    " + idx + " => " + val);
 	}
+	list = AIVehicleList_Station(3, AIVehicle.VT_ROAD);
+	print("  Count():             " + list.Count());
+	list.Valuate(AIVehicle.GetLocation);
+	print("  Location ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	print("  foreach():");
+	foreach (idx, val in list) {
+		print("    " + idx + " => " + val);
+	}
+	list = AIVehicleList_Station(3, AIVehicle.VT_RAIL);
+	print("  Count():             " + list.Count());
+	list.Valuate(AIVehicle.GetLocation);
+	print("  Location ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("    " + i + " => " + list.GetValue(i));
+	}
+	print("  foreach():");
+	foreach (idx, val in list) {
+		print("    " + idx + " => " + val);
+	}
 }
 
 function Regression::RailTypeList()
