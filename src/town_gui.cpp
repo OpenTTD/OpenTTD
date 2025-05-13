@@ -89,25 +89,6 @@ private:
 	Dimension exclusive_size{}; ///< Dimensions of exclusive icon
 
 	/**
-	 * Get the position of the Nth set bit.
-	 *
-	 * If there is no Nth bit set return -1
-	 *
-	 * @param n The Nth set bit from which we want to know the position
-	 * @return The position of the Nth set bit, or -1 if no Nth bit set.
-	 */
-	int GetNthSetBit(int n)
-	{
-		if (n >= 0) {
-			for (uint i : SetBitIterator(this->enabled_actions.base())) {
-				n--;
-				if (n < 0) return i;
-			}
-		}
-		return -1;
-	}
-
-	/**
 	 * Gets all town authority actions enabled in settings.
 	 *
 	 * @return Bitmask of actions enabled in the settings.
@@ -314,14 +295,14 @@ public:
 			case WID_TA_COMMAND_LIST: {
 				int y = this->GetRowFromWidget(pt.y, WID_TA_COMMAND_LIST, 1, GetCharacterHeight(FS_NORMAL)) - 1;
 
-				y = GetNthSetBit(y);
-				if (y >= 0) {
-					this->sel_action = static_cast<TownAction>(y);
-					this->SetDirty();
-				}
+				auto action = this->enabled_actions.GetNthSetBit(y);
+				if (!action.has_value()) break;
+
+				this->sel_action = *action;
+				this->SetDirty();
 
 				/* When double-clicking, continue */
-				if (click_count == 1 || y < 0 || !this->available_actions.Test(this->sel_action)) break;
+				if (click_count == 1 || !this->available_actions.Test(this->sel_action)) break;
 				[[fallthrough]];
 			}
 
