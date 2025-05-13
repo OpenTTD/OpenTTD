@@ -23,7 +23,6 @@ void ShowCompanyFinances(CompanyID company);
 void ShowCompany(CompanyID company);
 
 void InvalidateCompanyWindows(const Company *c);
-void InvalidateCompanyWindows();
 void CloseCompanyWindows(CompanyID company);
 void DirtyCompanyInfrastructureWindows(CompanyID company);
 
