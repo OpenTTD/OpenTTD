@@ -636,7 +636,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->vscroll2 = this->GetScrollbar(WID_NS_SCROLL2BAR);
 
 		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_REMOVE)->SetDisplayedPlane(this->editable ? 0 : 1);
-		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : this->show_params ? 1 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_EDIT)->SetDisplayedPlane(this->editable ? 0 : (this->show_params ? 1 : SZSP_HORIZONTAL));
+		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_APPLY)->SetDisplayedPlane(this->editable && this->execute ? 0 : SZSP_VERTICAL);
 		this->FinishInitNested(WN_GAME_OPTIONS_NEWGRF_STATE);
 
 		this->querystrings[WID_NS_FILTER] = &this->filter_editbox;
@@ -1080,19 +1081,14 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_APPLY_CHANGES: // Apply changes made to GRF list
 				if (!this->editable) break;
-				if (this->execute) {
-					ShowQuery(
-						GetEncodedString(STR_NEWGRF_POPUP_CAUTION_CAPTION),
-						GetEncodedString(STR_NEWGRF_CONFIRMATION_TEXT),
-						this,
-						NewGRFConfirmationCallback
-					);
-				} else {
-					CopyGRFConfigList(this->orig_list, this->actives, true);
-					ResetGRFConfig(false);
-					ReloadNewGRFData();
-					this->InvalidateData(GOID_NEWGRF_CHANGES_APPLIED);
-				}
+
+				ShowQuery(
+					GetEncodedString(STR_NEWGRF_POPUP_CAUTION_CAPTION),
+					GetEncodedString(STR_NEWGRF_CONFIRMATION_TEXT),
+					this,
+					NewGRFConfirmationCallback
+				);
+
 				this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 
@@ -1232,11 +1228,6 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				/* Changes have been made to the list of active NewGRFs */
 				this->modified = true;
 
-				break;
-
-			case GOID_NEWGRF_CHANGES_APPLIED:
-				/* No changes have been made to the list of active NewGRFs since the last time the changes got applied */
-				this->modified = false;
 				break;
 		}
 
@@ -1861,7 +1852,7 @@ static constexpr NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 		EndContainer(),
 
 		/* Right side, config buttons. */
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_APPLY),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_EDIT),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.hsep_wide, 0),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
@@ -1869,8 +1860,10 @@ static constexpr NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
 							SetStringTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
 				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
-						SetStringTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_APPLY),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
+							SetStringTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES),
+				EndContainer(),
 			EndContainer(),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_VIEW_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
 					SetStringTip(STR_NEWGRF_SETTINGS_SHOW_PARAMETERS),
