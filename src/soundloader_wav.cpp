@@ -23,7 +23,7 @@ public:
 
 	static constexpr uint16_t DEFAULT_SAMPLE_RATE = 11025;
 
-	bool Load(SoundEntry &sound, bool new_format, std::vector<uint8_t> &data) override
+	bool Load(SoundEntry &sound, bool new_format, std::vector<std::byte> &data) override
 	{
 		RandomAccessFile &file = *sound.file;
 
@@ -71,7 +71,7 @@ public:
 					case 8:
 						/* Convert 8-bit samples from unsigned to signed. */
 						for (auto &sample : data) {
-							sample = sample - 128;
+							sample ^= std::byte{0x80};
 						}
 						break;
 

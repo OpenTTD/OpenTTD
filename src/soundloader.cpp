@@ -26,7 +26,7 @@ bool LoadSoundData(SoundEntry &sound, bool new_format, SoundID sound_id, const s
 	if (sound.file_size == 0 || sound.file_size > SIZE_MAX - 2) return false;
 
 	size_t pos = sound.file->GetPos();
-	sound.data = std::make_shared<std::vector<uint8_t>>();
+	sound.data = std::make_shared<std::vector<std::byte>>();
 	for (auto &loader : ProviderManager<SoundLoader>::GetProviders()) {
 		sound.file->SeekTo(pos, SEEK_SET);
 		if (loader->Load(sound, new_format, *sound.data)) break;
