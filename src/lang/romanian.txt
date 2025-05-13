@@ -3466,15 +3466,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salveaz�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista presetărilor disponibile; alegeți una pentru salvare cu numele de mai jos
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Adaugă denumire presetare
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Numele selectat pentru salvarea presetării
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Anulează
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nu schimba setarea implicită
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Salvează
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salvează setarea pe numele selectat
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Schimbați parametrii grafici de bază
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Schimbă parametrii NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Închide
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetează
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setează toții parametrii la valorile implicite
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
@@ -4819,8 +4816,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptă
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Alege scriptul marcat
-STR_AI_LIST_CANCEL                                              :{BLACK}Anulează
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nu schimba scriptul
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Capturează ecranul
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captură de ecran obișnuită
@@ -4833,7 +4828,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captură
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}IA
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de joc
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Închide
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetează
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

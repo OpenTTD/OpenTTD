@@ -3284,14 +3284,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}プリ�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}使用可能なプリセットの一覧です。選択すると下のセーブ名のプリセットに内容をコピーします
 STR_SAVE_PRESET_TITLE                                           :{BLACK}プリセット名を入力
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}現在選択している名前をプリセットの保存に使用します
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}キャンセル
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}プリセットを変更しません
 STR_SAVE_PRESET_SAVE                                            :{BLACK}セーブ
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}現在選択している名前でプリセットを保存します
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}閉じる
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}リセット
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全パラメータを標準値に変更する
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :パラメーター {NUM}
@@ -4570,8 +4567,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}適用
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選択したスクリプトを使用します
-STR_AI_LIST_CANCEL                                              :{BLACK}キャンセル
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}スクリプトを変更しません
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}スクリーンショットを撮る
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}通常のスクリーンショット
@@ -4584,7 +4579,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}ミニ�
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ゲームスクリプト
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

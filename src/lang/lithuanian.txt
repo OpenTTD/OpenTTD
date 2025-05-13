@@ -3585,15 +3585,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Išsaugo
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Visų rinkinių sąrašas
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Įveskite rinkinio pavadinimą
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Šiuo metu pasirinktas rinkinio pavadinimas
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Atšaukti
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nieko nedaryti ir grįžti atgal
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Išsaugoti
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Išsaugoti rinkinį pasiriktu pavadinimu
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Pakeisti bazinius grafikos parametrus
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Plėtinio nuostatos
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Užverti
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Atstatyti
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Atstatyti pradines reikšmes visoms nuostatoms
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Nuostata {NUM}
@@ -4954,8 +4951,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Priimti
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pasirinkti pažymėtą scenarijų
-STR_AI_LIST_CANCEL                                              :{BLACK}Atšaukti
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nekeisti scenarijaus
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Padaryti ekrano kopiją
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Įprasta kopija
@@ -4968,7 +4963,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Mini že
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :DI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Žaidimo scenarijus
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Uždaryti
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atstatyti
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

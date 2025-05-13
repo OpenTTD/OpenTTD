@@ -2179,7 +2179,7 @@ STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... jät
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei löydetty
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ei turvallinen staattiseen käyttöön
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :järjestelmä-NewGRF
-STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :epäyhteensopiva tämän OpenTTD-version kanssa
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :yhteensopimaton OpenTTD:n tämän version kanssa
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tuntematon
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkaustaso ”{STRING}” on kelvoton
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... pelitallennemuoto ”{STRING}” ei ole saatavilla. Palataan muotoon ”{STRING}”
@@ -2195,6 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}… yhte
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}… Näytönohjaimen ajuri kaatoi pelin. Laitteistokiihdytys on poistettu käytöstä
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Uusi peli
 STR_INTRO_LOAD_GAME                                             :{BLACK}Lataa peli
@@ -3513,22 +3515,19 @@ STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Ei mitään
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ei tietoa
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sopivaa tiedostoa ei löydy
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytössä
-STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Epäyhteensopiva tämän OpenTTD-version kanssa
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Yhteensopimaton OpenTTD:n tämän version kanssa
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Tallenna valmislistaksi
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Luettelo saatavilla olevista valmislistoista, valitse yksi kopioitavaksi alla olevaan tallenteeseen
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Syötä nimi valmislistalle
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Valittu nimi tallennettavalle valmislistalle
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Peruuta
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Älä muuta valmislistaa
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Tallenna
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Tallenna valmislista valitulle nimelle
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Muuta perusgrafiikan parametreja
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametreja
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulje
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Palauta
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Aseta kaikki parametrit oletusarvoihin
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametri {NUM}
@@ -4889,8 +4888,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Hyväksy
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Valitse korostettu skripti
-STR_AI_LIST_CANCEL                                              :{BLACK}Peruuta
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Älä vaihda skriptiä
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ota kuvakaappaus
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Tavallinen kuvakaappaus
@@ -4903,7 +4900,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pienoisk
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tekoälyparametrit
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Peliskriptin parametrit
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

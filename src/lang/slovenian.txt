@@ -3038,14 +3038,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Shrani p
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Seznam prednastavitev na voljo, izberi eno, da jo skopiraš kot ime za shranjevanje spodaj
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Vpiši ime za prednastavitev
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Trenutno izbrano ime za shranjevanje prednastavitev
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Prekliči
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne spremeni prednastavitve
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Shrani
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Shrani prednastavitev k trenutno izbranemu imenu
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Spremeni NewGRF parametre
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zapri
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ponastavi
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ponastavi vse nastavitve na privzeto
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4203,13 +4200,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potrdi
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izberi označeno skripto
-STR_AI_LIST_CANCEL                                              :{BLACK}Prekliči
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne spremeni skripte
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

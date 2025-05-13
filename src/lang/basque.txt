@@ -2789,11 +2789,9 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desgaitua
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD-ren bertsio honekin bateraezina
 
 # NewGRF save preset window
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ez aldatu berezko balioa
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametroak aldatu
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Itxi
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Lehengoratu
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Parametro guztiak hasierako baloreetan jarri
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :{NUM} Parametroa
@@ -3933,13 +3931,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Onartu
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Piztutako script-a aukeratu
-STR_AI_LIST_CANCEL                                              :{BLACK}Ezeztatu
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ez aldatu script-a
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Itxi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Berrabiarazi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

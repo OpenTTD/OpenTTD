@@ -2735,7 +2735,6 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ósamhæft
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Breyta NewGRF stillingum
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Loka
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Endurstilla
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setja allar stillingar á sjálfvalin gildi.
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Stilling {NUM}
@@ -3826,13 +3825,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Vefsló
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Í lagi
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velja merkta forskrift
-STR_AI_LIST_CANCEL                                              :{BLACK}Hætta við
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar forskriftar
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :Gervigreindar
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

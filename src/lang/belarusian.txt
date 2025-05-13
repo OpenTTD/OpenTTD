@@ -3752,15 +3752,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Заха
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Сьпіс даступных набораў. Выберыце адзін з іх, каб скапіяваць яго назву ў радок імя.
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Увядзіце імя набору
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Бягучае імя для захаваньня набору
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Адмена
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Не рабіць ніякіх змен
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Захаваць
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Захаваць набор пад выбраным імем
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Зьмена параметраў базавага графічнага пакета
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Зьмяніць парамэтры NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыць
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ськiд
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ськінуць значэньнi ўсіх парамэтраў
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Парамэтр {NUM}
@@ -5125,8 +5122,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Выбраць
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбраць падсьвечаны скрыпт
-STR_AI_LIST_CANCEL                                              :{BLACK}Скасаваць
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не змяняць скрыпт
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Здымак экрана
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Звычайны здымак
@@ -5139,7 +5134,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Здым
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :ШI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :гульнёвых скрыптоў
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

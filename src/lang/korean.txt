@@ -3521,15 +3521,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}프리�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}사용 가능한 프리셋 목록입니다. 아래에 같은 이름을 복사하려면 선택하세요
 STR_SAVE_PRESET_TITLE                                           :{BLACK}프리셋의 이름을 입력하세요
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}저장할 프리셋에 지정할 이름입니다
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}취소
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}프리셋을 바꾸지 않습니다
 STR_SAVE_PRESET_SAVE                                            :{BLACK}저장
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}이 프리셋을 선택한 이름으로 저장합니다
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}기본 그래픽 매개 변수를 변경합니다
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 매개 변숫값 변경
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}초기화
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 매개 변숫값을 기본값으로 설정합니다
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :매개 변수 {NUM}번
@@ -4890,8 +4887,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}주소:
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}적용
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}선택한 스크립트를 적용합니다
-STR_AI_LIST_CANCEL                                              :{BLACK}취소
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}인공지능 스크립트를 바꾸지 않습니다
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}스크린 샷 찍기
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}일반 스크린 샷
@@ -4904,7 +4899,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}미니�
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}인공지능 매개 변수
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}게임 스크립트 매개 변수
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

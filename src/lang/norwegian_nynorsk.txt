@@ -2818,14 +2818,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lagre f�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liste av tilgjengelege førval, vel ein for å kopiera han til same navn nedanfor
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv inn eit namn for førehandsinnstillinga
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Vald namn for førehandsinnstillinga som skal lagrast
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ikkje endre førehandsinnstillinga
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Lagre
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lagra førehandsinnstillingane til valt namn
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Endre NewGRF-parametrar
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Lukk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nullstill
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set alle parametrar til standardverdi
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -3983,13 +3980,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Godta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Merk utheva AI
-STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikkje endre AI
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lukk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakestill
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

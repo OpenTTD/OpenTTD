@@ -2196,6 +2196,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nenh
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... controlador gráfico travou o jogo. Aceleração por hardware desativada
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Novo Jogo
 STR_INTRO_LOAD_GAME                                             :{BLACK}Abrir Jogo
@@ -3521,15 +3523,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvar p
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecione uma para usar o nome na gravação abaixo
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Introduza um nome para a predefinição
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome que está selecionado para salvar a predefinição
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancelar
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Não alterar a predefinição
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Salvar
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salvar a predefinição com o nome selecionado
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Alterar parâmetros dos gráficos básicos
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros de NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Restaurar
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Restaurar todos os parâmetros para os valores padrão
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
@@ -4890,8 +4889,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aceitar
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Usar o script selecionado
-STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Fazer uma captura de tela
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de tela normal
@@ -4904,7 +4901,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parâmetros da IA
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parâmetros do Script de Jogo
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Restaurar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

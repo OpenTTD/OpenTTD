@@ -1240,7 +1240,6 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верс
 # NewGRF save preset window
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Хуп
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Сикӗ
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Ӗнерленӳ {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}

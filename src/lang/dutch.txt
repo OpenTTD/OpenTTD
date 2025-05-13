@@ -3520,15 +3520,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Voorkeur
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lijst met beschikbare voorkeursinstellingen, Selecteer om deze te kopiëren naar de opslagnaam hieronder.
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Voer een naam in voor de voorkeursinstelling
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Huidige gekozen naam voor de voorkeursinstelling om op te slaan
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annuleren
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Voorkeursinstelling niet wijzigen
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Opslaan
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sla de huidige voorkeursinstelling op onder de huidige gekozen naam
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Grafische basisinstellingen wijzigen
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF-parameters wijzigen
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sluiten
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Terugstellen
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Stel alle parameters terug naar de standaardwaarde
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4889,8 +4886,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Webadre
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accepteren
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Gemarkeerd script selecteren
-STR_AI_LIST_CANCEL                                              :{BLACK}Annuleren
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script niet wijzigen
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Een schermafbeelding maken
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normale schermafbeelding
@@ -4903,7 +4898,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Schermaf
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI-parameters
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spelscript-parameters
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Terugstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

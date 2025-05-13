@@ -1082,7 +1082,6 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versiono
 # NewGRF save preset window
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Klozas
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombro di parametri: {ORANGE}{NUM}
 

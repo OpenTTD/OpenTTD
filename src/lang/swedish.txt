@@ -3520,15 +3520,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Spara f�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista över tillgängliga förinställningar, väljer man att kopiera den till spara namn nedan
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv in ett namn
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nuvarande valt namn för förinställningen att spara
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ändra inte det förinställda
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Spara
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Spara den inställda till den nuvarande valda namnet
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Ändra parametrar för grafikpaketet
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ändra NewGRF-parametrar
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Stäng
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Återställ
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Återställ alla parametrar till deras standardvärden
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4889,8 +4886,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptera
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Välj markerad datorspelare
-STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ändra inte datorspelare
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ta en skärmdump
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Vanlig skärmdump
@@ -4903,7 +4898,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Skärmdu
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametrar för datorspelare
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parametrar för spelskript
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

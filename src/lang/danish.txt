@@ -3494,15 +3494,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Gem foru
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK} Liste over tilgængelige presets, skal du vælge en til at kopiere det til gemte navn nedenfor
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Indtast et navn til det forudindstillede
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktuelt valgte navn til den forudindstillede at gemme
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Annuller
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Du må ikke ændre den forudindstillede
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Gem
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Gem forudindstilling til det valgte navn
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Skift grundlæggende grafiske parametre
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ændre NewGRF parameterne
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Luk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nulstil
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sæt alle parameter til deres standart niveau
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4857,8 +4854,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Godkend
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vælg markeret script
-STR_AI_LIST_CANCEL                                              :{BLACK}Afbryd
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skift ikke scriptet
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Tag skærmbillede
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalt skærmbillede
@@ -4871,7 +4866,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikort
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI-parametre
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spil Script parametre
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Luk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulstil
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

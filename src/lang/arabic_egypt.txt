@@ -2881,14 +2881,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}حفظ �
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}لائحة الإعدادات المسبقة. اختر واحدة لنسخها للإسم المحفوظ بالإسفل
 STR_SAVE_PRESET_TITLE                                           :{BLACK}أدخل اسم للإعداد المسبق
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}الإسم المختار لحفظ الإعداد المسبق
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}إلغاء
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}لا تغير الإعداد المسبق
 STR_SAVE_PRESET_SAVE                                            :{BLACK}إحفظ
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK} احفظ الإعدادات للإسم المختار حاليا
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}غير خصائص الاضافات الجديدة
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}اغلق
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}استرجاع القياسي
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}استرجاع جميع الخصائص لقيمها الاصلية
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :نمط {NUM}
@@ -4045,15 +4042,12 @@ STR_AI_LIST_URL                                                 :{LTBLUE}الع�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK} موافق
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} اختر الذكاء الصناعي المنتقى
-STR_AI_LIST_CANCEL                                              :{BLACK} الغاء
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا تغير الذكاء الصناعي
 
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}لقطة شاشة عادية
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}التقط لقطة شاشة كاملة
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}صور الخاريطة الكاملة
 
 # Script Parameters
-STR_AI_SETTINGS_CLOSE                                           :{BLACK} اغلاق
 STR_AI_SETTINGS_RESET                                           :{BLACK} اعادة ضبط
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

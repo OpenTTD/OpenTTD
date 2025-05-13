@@ -3497,15 +3497,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lưu thi
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Danh sách những thiết lập có sẵn, chọn một để sao chép tên thiết lập
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Nhập tên cho thiết lập
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Tên hiện tại cho thiết lập được lưu
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Hủy bỏ
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Không thay đổi thiết lập
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Lưu
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lưu thiết lập bằng tên được chọn
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Thay đổi các thông số của gói đồ họa chuẩn
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay Đổi Tham Số NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Đóng
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Đặt mặc định
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt tất cả các tham số về mặc định
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
@@ -4863,8 +4860,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Chấp nhận
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Chấp nhận AI đã chọn
-STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ bỏ
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi tập lệnh
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Chụp màn hình
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Chụp màn hình bình thường
@@ -4877,7 +4872,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Chụp m
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Tham Số AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Tham Số Game Script
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

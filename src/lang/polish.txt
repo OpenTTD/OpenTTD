@@ -3900,15 +3900,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Zapis sc
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista dostępnych schematów. Wybierz jeden z nich, aby wykonać zapis z taką nazwą
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Wpisz nazwę schematu
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktualna nazwa dla zapisywanego schematu
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Anuluj
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nie wprowadzaj zmian
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Zapisz
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Zapisz schemat z wybraną nazwą
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Zmień parametry podstawowych grafik
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmień parametry NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zamknij
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetuj
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Przywróć domyślne wartości parametrów
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
@@ -5275,8 +5272,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Adres: 
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Zaakceptuj
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wybierz zaznaczony skrypt
-STR_AI_LIST_CANCEL                                              :{BLACK}Anuluj
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nie zmieniaj skryptu
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Zrób zrzut obrazu
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalny zrzut obrazu
@@ -5289,7 +5284,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut ob
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry SI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parametry Game Script
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

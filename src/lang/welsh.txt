@@ -3515,15 +3515,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Cadw rha
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Rhestr o ragosodiadau ar gael, Dewiswch un i'w gopïo i'r enw cadw isod
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Rhowch enw ar gyfer y rhagosodiad
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Enw a ddewiswyd ar gyfer cadw'r rhagosodiad
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Canslo
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Peidio newid y rhagosodiad
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Cadw
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Cadw'r rhagosodiad i'r enw a ddewiswyd
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Newid paramedrau graffeg sylfaenol
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Newid paramedrau NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cau
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ailosod
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Gosod pob paramedr i'w werth rhagosodedig
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramedr {NUM}
@@ -4884,8 +4881,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Derbyn
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Dewis y sgript a amlygwyd
-STR_AI_LIST_CANCEL                                              :{BLACK}Canslo
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Peidio newid y sgript
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Creu ciplun
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Ciplun arferol
@@ -4898,7 +4893,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Ciplun m
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Paramedrau AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Paramedrau Sgript Gêm
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cau
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ailosod
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

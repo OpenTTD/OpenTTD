@@ -3488,15 +3488,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Запа
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Списък на наличните предварително зададени настройки. Изберете една, за да я копирате в името за запис по-долу
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Въведете име за шаблона
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Текущо избраното име за именуване на шаблона
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Отказ
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Не променяй шаблона
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Запис
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Запази шаблона с текущо избраното име
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Промяна на параметрите на базовата графика
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промени параметрите на новите графики (NewGRF)
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Затвори
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Изчисти
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Върни всички параметри към началните им стойности
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметър {NUM}
@@ -4848,8 +4845,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Приеми
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Изберете маркирания ИИ
-STR_AI_LIST_CANCEL                                              :{BLACK}Отмени
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не променяй ИИ
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Снимка на екрана
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Нормална снимка на екрана
@@ -4862,7 +4857,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Сним
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :ИИ
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Игрови скрипт
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

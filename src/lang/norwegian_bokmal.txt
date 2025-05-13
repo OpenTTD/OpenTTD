@@ -3522,15 +3522,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lagre fo
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liste over tilgjengelige forhåndsinnstillinger. Velg en for å kopiere den til det lagrede navnet nedenfor
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Skriv inn et navn for forhåndsinnstillingen
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Valgt navn for forhåndsinnstillingen som skal lagres
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Avbryt
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ikke forandre forhåndsinnstillingen
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Lagre
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Lagre forhåndsinnstillingen med det valgte navnet
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Endre grunnleggende grafikkparametre
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Endre NewGRF-parametre
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Lukk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tilbakestill
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sett alle parametere til standardverdi
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4891,8 +4888,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Godta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velg det merkede skript
-STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikke endre skriptet
 
 STR_SCREENSHOT_CAPTION                                          :WHITE}Ta skjermbilde
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalt skjermbilde
@@ -4905,7 +4900,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Oversikt
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}KI-parametere
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Game Script-parametere
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lukk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakestill
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

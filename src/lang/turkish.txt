@@ -3455,15 +3455,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Ön ayar
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Kullanılabilir ön ayarların listesi, aşağıdaki isimle kaydetmek üzere kopyalamak için birini seçin
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Ön ayar için bir isim girin
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Geçerli seçimdeki ön ayarın kaydedilmek için adı
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}İptal
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ön ayarı değiştirme
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Kaydet
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Ön ayarı geçerli seçili isimle kaydet
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Temel grafik parametrelerini değiştirin
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametrelerini değiştir
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Kapat
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Sıfırla
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tüm parametreleri varsayılan değerlerine ata
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametre {NUM}
@@ -4811,8 +4808,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Kabul et
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulanan betiği seç
-STR_AI_LIST_CANCEL                                              :{BLACK}İptal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Betiği değiştirme
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ekran görüntüsü al
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normal ekran görüntüsü
@@ -4825,7 +4820,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Küçük
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :YZ
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Oyun Betiği
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

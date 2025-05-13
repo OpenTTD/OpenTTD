@@ -3359,15 +3359,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Menyimpa
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Daftar pengaturan yang tersedia, memilih salah satu untuk menyalin kepada nama penyimpanan di bawah
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Memasukkan nama untuk pengaturan
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nama yang sedang dipilih bagi penyimpanan pengaturan
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Batal
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Jangan mengubah pengaturan awal
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Menyimpan
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Menyimpan presetnya pada nama yang sedang dipilih
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Ubah parameter grafik dasar
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kembalikan setelan awal parameter
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4665,8 +4662,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Terapkan
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip AI yg disorot
-STR_AI_LIST_CANCEL                                              :{BLACK}Batal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan mengubah skrip AI
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ambil tangkapan layar
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Tangkapan layar normal
@@ -4679,7 +4674,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Tangkapa
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parameter AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skrip Permainan
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

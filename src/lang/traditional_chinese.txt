@@ -2195,6 +2195,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}……�
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU 驅動程式導致遊戲崩潰。硬體加速已被停用
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}開新遊戲
 STR_INTRO_LOAD_GAME                                             :{BLACK}載入遊戲
@@ -3520,15 +3522,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}儲存�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}現有的預設值名稱。點選一個預設值名稱，它會被複製到下方的輸入欄
 STR_SAVE_PRESET_TITLE                                           :{BLACK}輸入預設值名稱
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}預設值會儲存成現時選定的名稱
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}取消
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}請勿修改預設值
 STR_SAVE_PRESET_SAVE                                            :{BLACK}存檔
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}儲存預設值到選擇的名稱
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}變更基本圖形集參數
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}關閉
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重設
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}將所有參數設為預設值
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
@@ -4889,8 +4888,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL：{
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}接受
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選擇標示到的腳本
-STR_AI_LIST_CANCEL                                              :{BLACK}取消
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改變腳本
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}螢幕截圖
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}普通截圖
@@ -4903,7 +4900,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}小地�
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI 參數
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}遊戲腳本參數
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}關閉
 STR_AI_SETTINGS_RESET                                           :{BLACK}重設
 STR_AI_SETTINGS_SETTING                                         :{STRING}：{ORANGE}{STRING}
 

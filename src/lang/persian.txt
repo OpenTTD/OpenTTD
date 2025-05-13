@@ -1160,8 +1160,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :به سمت ر�
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :نمایش پنجره مالی در پایان سال: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :نمایش پنجره امور مالی در پایان دوره: {STRING}
 
 ###length 2
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :اگر فعال شود، پنجره‌ی مالی در پایان هر سال برای بررسی آسان وضعیت مالی شرکت باز خواهد شد.
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :اگر فعال شود، پنجره‌ی مالی در پایان هر دوره برای بررسی آسان وضعیت مالی شرکت باز خواهد شد.
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :برنامه های حرکت به طور پیش فرض «بدون توقف» باشند: {STRING}
 
@@ -1333,6 +1336,7 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :شرکت خود
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :همه شرکت‌ها
 
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :ترجیح برای چت با تیمِ «Enter»: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :ارتباط داخلی شرکت و چت عمومی را به <ENTER> و <Ctrl+ENTER> به ترتیب تغییر دهید.
 
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعت حرکت نقشه با چرخاندن غلطک ماوس: {STRING}
 
@@ -1421,8 +1425,10 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :بیشترین 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :غیرفعال بودن قطار برای رایانه: {STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :غیر فعال بودن خودروی‌جاده‌ای برای رایانه: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :فعال کردن این تنظیم، ساخت وسایل نقلیه جاده‌ای را برای یک بازیکن کامپیوتری غیرممکن می‌کند.
 
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :غیر‌فعال بودن هواپیما برای رایانه: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :فعال کردن این تنظیم، ساخت هواپیما را برای بازیکن کامپیوتری غیرممکن می‌کند.
 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :غیر فعال بودن کشتی برای رایانه: {STRING}
 
@@ -1598,8 +1604,11 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :متر (m)
 STR_CONFIG_SETTING_LOCALISATION                                 :بومی سازی
 STR_CONFIG_SETTING_INTERFACE                                    :واسط کاربری
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :ساخت و ساز
+STR_CONFIG_SETTING_ADVISORS                                     :اخبار / مشاوران
+STR_CONFIG_SETTING_ACCOUNTING                                   :حسابداری
 STR_CONFIG_SETTING_VEHICLES                                     :وسایل نقلیه
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :مسیریابی
+STR_CONFIG_SETTING_ACCIDENTS                                    :بلایا / حوادث
 STR_CONFIG_SETTING_ENVIRONMENT                                  :محیط زیست
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :مقامات
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :شهرها
@@ -1945,6 +1954,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :هیچ گذرو
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :خطای کلی طول کشیدن زمان بیش از حد
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :بارگیری نقشه بیش از حد طول کشید
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :پردازش نقشه بیش از حد طول کشید
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :نام کاربری نامعتبر است.
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {STRING}
@@ -2648,14 +2658,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}ذخیر
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}لیست های موجود،برای کپی یکی را انتخاب کنید
 STR_SAVE_PRESET_TITLE                                           :{BLACK}یک نام برای لیست وارد کنید
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}لیست انتخاب شده برای ذخیره
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}لغو
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}تغییر ندادن لیست
 STR_SAVE_PRESET_SAVE                                            :{BLACK}ذخیره
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}ذخیره لیست در نام انتخاب شده
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}تغییر پارامترهای NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}بسته
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}برگرداندن تغییرات
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ثبت مقدار پیش فرض برای همه پارامترها
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :پارامتر{NUM}
@@ -3087,6 +3094,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}خرید
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}خرید هواپیما
 
 ###length VEHICLE_TYPES
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}خرید و تعمیر خودرو
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}خرید قطار مشخص شده. Shift+Click کنید تا قبل از خرید، مبلغ تقریبی آنرا نمایش دهد
@@ -3403,6 +3411,12 @@ STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(توقف بر�
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(دستور کار {STRING}, برنامه ریزی نشده است)
 
 
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK} این وسیله نقلیه در حال حاضر طبق برنامه حرکت می‌کند.
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}این وسیله در حال حاضر با تاخیر {STRING} در حال حرکت است
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}این وسیله نقلیه در حال حاضر {STRING} زودتر در حال اجرا است
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK} این برنامه زمانی هنوز شروع نشده است.
+STR_TIMETABLE_STATUS_START_AT_DATE                              :{BLACK}این برنامه زمانی از {STRING} شروع خواهد شد.
+STR_TIMETABLE_STATUS_START_IN_SECONDS                           :{BLACK}این برنامه زمانی در {COMMA} ثانیه شروع خواهد شد.
 
 
 
@@ -3467,13 +3481,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}آدر�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}قبول
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}انتخاب کد مشخص شده
-STR_AI_LIST_CANCEL                                              :{BLACK}لغو
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}کد را تغییر نده
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :هوش مصنوعی(AI)
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
 STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن
 
 

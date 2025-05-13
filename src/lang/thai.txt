@@ -2976,7 +2976,6 @@ STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}บั�
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}เปลี่ยนแปลง NewGRF parameters
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}ปิด
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}ตั้งค่าใหม่
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ตั้งค่าพารามิเตอร์ทุกตัวให้เป็นแบบค่าดั้งเดิม
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4156,15 +4155,12 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}ยืนยัน
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}เลือก script ที่ไฮไลท์ไว้
-STR_AI_LIST_CANCEL                                              :{BLACK}ยกเลิก
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}ไม่สามารถเปลี่ยน script
 
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}บันทึกหน้าจอของ Heightmap
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}จับภาพหน้าจอ มินิแมพ
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}ปิด
 STR_AI_SETTINGS_RESET                                           :{BLACK}เริ่มใหม่
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

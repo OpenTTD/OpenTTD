@@ -3643,15 +3643,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Збер
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Список доступних шаблонів, скопіюйте один для збереження імені нижче
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Введіть ім'я для шаблону
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Обране поточне ім'я для збереження в шаблоні
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Скасувати
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Не змінювати шаблон
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Зберегти
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Зберегти шаблон для поточного обраного імені
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Змінити параметри базового набору графіки
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змінити параметри NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрити
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Очистити
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Встановити всім параметрам стандартні значення
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
@@ -5009,8 +5006,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Прийняти
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Вибрати виділений скрипт
-STR_AI_LIST_CANCEL                                              :{BLACK}Скасувати
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не міняти скрипт
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Зробити знімок екрану
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Звичайний зняток
@@ -5023,7 +5018,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Знят
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :ШІ
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий скрипт
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

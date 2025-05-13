@@ -3500,15 +3500,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Salvesta
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Võimalike eeltöötluste nimekiri, vali üks et see kopeerida allpool asuvasse salvestuse nimesse
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Sisesta eelseadistuse nimi
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Hetkel eelseadistusele valitud nimi
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Tühista
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ära muuda eelseadistust
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Salvesta
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Salvesta eelseadistus praegusele valitud nimele
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Muuda põhigraafika komplekti parameetreid
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuda NewGRF parameetreid
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulge
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nulli
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Säti kõikidele parameetritele vaikeväärtused
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameeter {NUM}
@@ -4852,8 +4849,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Nõustu
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vali esiletõstetud skript
-STR_AI_LIST_CANCEL                                              :{BLACK}Loobu
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ära skripti muuda
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Tee ekraanipilt
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Tavaline ekraanipilt
@@ -4866,7 +4861,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Pisikaar
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulge
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulli
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

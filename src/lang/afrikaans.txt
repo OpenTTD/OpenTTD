@@ -2957,14 +2957,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Stoor vo
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Beskikbare voorafinstellings, kies een om te gebruik as eksemplaar vir 'n nuwe een
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Kies 'n naam vir die voorafinstellings
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Gekose naam om voorafstellings te stoor
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Kanselleer
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Moenie voorafinstellings verander nie
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Stoor
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Stoor die voorafinstellings na gekose naam
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Verander NewGRF parameters
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Maak Toe
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Herstel
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Stel alle parameters na hul verstek waarde
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4166,8 +4163,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aanvaar
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Kies beligte skrif
-STR_AI_LIST_CANCEL                                              :{BLACK}Kanseleer
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Moenie skrif verander nie
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Neem 'n skermkiekie
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normale skermkiekie
@@ -4179,7 +4174,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap-
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Maak toe
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

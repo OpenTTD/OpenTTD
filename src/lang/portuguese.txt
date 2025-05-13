@@ -3521,15 +3521,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Gravar p
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista de predefinições disponíveis, selecciona uma para a copiar para o nome da gravação abaixo
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Intriduza um nome para a predefinição
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nome seleccionado actualmente para gravação da predefinição
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancelar
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Não mudar a predefinição
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Grava
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Grava a predefinição com o nome seleccionado
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Alterar os parâmetros dos gráficos base
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros de NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Repor
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Retorna todos os parâmetros ao seu valor padrão
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
@@ -4890,8 +4887,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aceitar
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Seleccionar script marcado
-STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Tirar uma captura de ecrã
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de ecrã normal
@@ -4904,7 +4899,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parâmetros da IA
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parâmetros do Script de Jogo
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

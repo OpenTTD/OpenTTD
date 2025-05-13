@@ -2628,7 +2628,6 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Samsvarar 
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Broyt NewGRF parametur
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Lat aftur
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Endustilla
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Áset øll parametur til teirra vanligu virði
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametur {NUM}
@@ -3599,13 +3598,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Góðtak
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vel undirstrikaða scripti
-STR_AI_LIST_CANCEL                                              :{BLACK}Angra
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikki broyta scripti
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lat aftur
 STR_AI_SETTINGS_RESET                                           :{BLACK}Endurstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

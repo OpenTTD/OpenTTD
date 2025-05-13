@@ -1489,7 +1489,6 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Мин. 
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промена НовGRF параметри
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Затвори
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ресетирај
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Наместете ги сите параметри на нивните стандардни вредности
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметар {NUM}

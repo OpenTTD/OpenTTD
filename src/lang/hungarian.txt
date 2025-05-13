@@ -2259,6 +2259,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nem 
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... A videókártya illesztőprogram hibát okozott. Hardveres gyorsítás kikapcsolva
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Új játék
 STR_INTRO_LOAD_GAME                                             :{BLACK}Játék betöltése
@@ -3584,15 +3586,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Lista me
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Az elérhető listák, kattints az egyikre, hogy lemásold a lenti mezőbe
 STR_SAVE_PRESET_TITLE                                           :{BLACK}A lista neve
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}A lista mentéséhez kiválasztott név
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Mégse
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne mentse a listát
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Mentés
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}A lista mentése a megadott névvel
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Alap grafikai paraméterek módosítása
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF paraméterek megváltoztatása
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Bezárás
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Alapértelmezett
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Összes paraméter alapértelmezettre állítása
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraméter {NUM}
@@ -4953,8 +4952,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Elfogadás
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}A kijelölt szkript kiválasztása
-STR_AI_LIST_CANCEL                                              :{BLACK}Mégse
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne változtassa meg a szkriptet
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Képmentés
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normál képernyőkép
@@ -4967,7 +4964,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minitér
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}MI paraméterek
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Játékszkript paraméterek
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárás
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

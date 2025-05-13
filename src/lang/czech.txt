@@ -3594,15 +3594,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Uložit 
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Seznam předvoleb k dispozici, vyber jednu pro zkopírování do uložené hry vybrané níže
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Vlož název pro předvolby
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Aktuálně zvolený název pro předvolby
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Zrušit
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Neměnit předvolby
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Uložit
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Uloží předvolby do aktuálně zvolené uložené hry
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Změnit parametry základní grafiky
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Úprava nastavení parametrů
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zavřít
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastav všechny parametry na jejich výchozí hodnotu
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
@@ -4961,8 +4958,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potvrdit
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrat označený skript
-STR_AI_LIST_CANCEL                                              :{BLACK}Zrušit
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Neměňte skript
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Pořídit snímek obrazovky
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Běžný snímek obrazovky
@@ -4975,7 +4970,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Snímek 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Parametry AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Parametry herního skriptu
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

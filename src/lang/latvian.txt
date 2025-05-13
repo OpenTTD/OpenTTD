@@ -2199,6 +2199,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nav 
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU dzinulis apturēja spēli. Aparatūras paātrinājums ir izslēgts
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Jauna spēle
 STR_INTRO_LOAD_GAME                                             :{BLACK}Ielādēt spēli
@@ -3525,15 +3527,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Iepriek�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Saraksts ar pieejamajiem priekšiestatījumiem, izvēlieties vienu, kuru kopēt uz zemāk esošo nosaukumu
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Ievadiet priekšiestatījuma nosaukumu
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Pašlaik izvēlētā iepriekšiestatījuma nosaukums saglabāšanai
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Atcelt
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Nemainīt iepriekšiestatījumu
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Saglabāt
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}pašreizējos iestatījumus saglābāt kā sākontnējos iestatījumus
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Mainiet pamata grafikas parametrus
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mainīt NewGRF parametrus
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Aizvērt
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Atjaunot
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Iestatīt visiem parametriem to noklusējuma vērtības
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :{NUM}. parametrs
@@ -4900,8 +4899,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Tīmek�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Apstiprināt
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izvēlēties izcelto skriptu
-STR_AI_LIST_CANCEL                                              :{BLACK}Atcelt
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainīt skriptu
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Uzņemt ekrānuzņēmumu
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Parasts ekrānuzņēmums
@@ -4914,7 +4911,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minikart
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}MI (mākslīgā intelekta) parametri
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spēles Skripta Parametri
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atiestatīt
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

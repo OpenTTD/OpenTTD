@@ -2630,12 +2630,10 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak sera
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Simpan pratetapan
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Masukkan nama untuk pratetapan
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Batal
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Simpan
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tetapan semula
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tetapkan semua parameter kepada nilai asal mereka
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -3735,13 +3733,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Terima
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip yang diserlahkan
-STR_AI_LIST_CANCEL                                              :{BLACK}Batal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan ubah skrip
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Semula
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

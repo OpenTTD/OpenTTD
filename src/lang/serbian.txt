@@ -3549,14 +3549,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Sačuvaj
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lista dostupnih postavki, odaberi jednu za kopiranje pod imenom ispod
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Unesi ime postavke
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Trenutno izabrani naziv za snimanje početnih postavki
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Otkaži
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne manjati odabrane postavke
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Sačuvaj
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK} Sačuvaj trenutnu postavku odabranog imena
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promena NewGRF parametara
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvori
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Poništi
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Postavlja parametre na njihove početne vrednosti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
@@ -4885,8 +4882,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Prihvati
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Bira označenu skriptu
-STR_AI_LIST_CANCEL                                              :{BLACK}Otkaži
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne menja skriptu
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Snimi sliku ekrana
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalna slika ekrana
@@ -4899,7 +4894,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika um
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta igre
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

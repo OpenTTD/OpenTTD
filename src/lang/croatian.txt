@@ -3127,14 +3127,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Snimiti 
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Popis dostupnih predpostavki, odaberite jednu za kopiranje pod imenom ispod
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Unesite ime za predpostavke
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Trenutno odabrano ime za snimanje predpostavki
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Odustani
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ne mijenjati predpostavke
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Snimanje
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Snimite predpostavke u trenutno odabrano ime
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promijeni NewGRF parametre
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvori
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetiraj
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Namjesti sve parametre na osnovne vrijednosti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
@@ -4352,8 +4349,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Prihvati
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Odaberi označenu skriptu
-STR_AI_LIST_CANCEL                                              :{BLACK}Odustani
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemoj mijenjati skriptu
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Napravi sliku zaslova
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalna snimka zaslona
@@ -4365,7 +4360,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Slika mi
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

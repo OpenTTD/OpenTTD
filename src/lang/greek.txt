@@ -2288,6 +2288,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... δε
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Το πρόγραμμα οδήγησης της κάρτας γραφικών προκάλεσε πρόβλημα στο παιχνίδι. Η επιτάχυνση υλικού απενεργοποιήθηκε
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Νέο Παιχνίδι
 STR_INTRO_LOAD_GAME                                             :{BLACK}Φόρτωση Παιχνιδιού
@@ -3613,15 +3615,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Αποθ
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Λίστα διαθέσιμων προκαθορισμένων, επιλέχτε ένα για την αντιγραφή το στο όνομα αποθήκευσης απο κάτω
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Δώστε ένα όνομα για το προκαθορισμένο
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Τρέχον επιλεγμένο όνομα για το προκαθορισμένο για αποθήκευση
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Ακύρωση
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Μη αλλαγή του προκαθορισμένου
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Αποθήκευση
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Αποθήκευση προκαθορισμένου, χρησιμοποιώντας το επιλεγμένο όνομα
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Αλλαγή παραμέτρων βασικού σετ γραφικών
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Κλείσιμο
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Επαναφορά
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ρύθμιση όλων των παραμέτρων στις προεπιλεγμένες τιμές
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Παράμετρος {NUM}
@@ -4990,8 +4989,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}Ιστ�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Αποδοχή
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Αποδοχή της επιλεγμένης δέσμης ενεργειών
-STR_AI_LIST_CANCEL                                              :{BLACK}Άκυρωση
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μην γίνει αλλαγή δέσμης ενεργειών
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Βγάλτε στιγμιότυπο εικόνας
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Κανονικό στιγμιότυπο
@@ -5004,7 +5001,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Στιγ
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}Παράμετροι ΤΝ (Τεχνητης Νοημοσύνης)
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Παράμετροι σεναρίου παιχνιδιού
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

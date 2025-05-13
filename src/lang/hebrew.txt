@@ -3162,14 +3162,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}שמור
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}הצג את כל הסביבות הגראפיות, בחר אחת כדי להעתיק את שמה לשמירה
 STR_SAVE_PRESET_TITLE                                           :{BLACK}הכנס שם לסביבה הגראפית
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}השם הנבחר לשמירת הסביבה הגראפית
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}ביטול
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}אל תשנה את הסביבה הגראפית
 STR_SAVE_PRESET_SAVE                                            :{BLACK}שמור
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}שמור את הסביבה הגראפית עם השם שנבחר
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}שנה/י פרמטרים של NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}סגור
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}אתחל
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}הגדר את כל הפרמטרים לערך ברירת המחדל שלהם
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :פרמטר {NUM}
@@ -4402,8 +4399,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}קיש�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}אשר
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} בחר בינה מלאכותית שהודגשה
-STR_AI_LIST_CANCEL                                              :{BLACK}בטל
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל תשנה את התסריט
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}צלם מסך
 STR_SCREENSHOT_SCREENSHOT                                       :תמונת מסך רגילה
@@ -4412,7 +4407,6 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}צילו
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :שחקן מחשב
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
 STR_AI_SETTINGS_RESET                                           :{BLACK}אתחל
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

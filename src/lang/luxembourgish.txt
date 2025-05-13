@@ -3515,15 +3515,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Preset s
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Lëscht vu Presets, wiel een den op den Numm ënnendrënner kopéiert gëtt
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Wiel en Numm fir de Preset
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Grad ausgewielten Numm fir de Preset dee gespäichert soll ginn
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Ofbriechen
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Den Preset net änneren
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Späichern
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Späicher de Preset op dee grad ausgewielten Numm
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}Basis Grafikparameter änneren
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter änneren
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zoumaachen
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setzt all Paramater op de Standard zréck
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -4884,8 +4881,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Akzeptéiert
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wiel de markéierten Script
-STR_AI_LIST_CANCEL                                              :{BLACK}Ofbriechen
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script net änneren
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}E Screenshot maachen
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normale Screenshot
@@ -4898,7 +4893,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap-
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :KI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Spill-Script-Parameter
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaachen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

@@ -2260,8 +2260,6 @@ STR_NEWGRF_SETTINGS_UPGRADE                                     :{BLACK}اپگر
 
 
 # NewGRF save preset window
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}منسوخ
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}پریسیٹ تبدیل نہ کریں
 STR_SAVE_PRESET_SAVE                                            :{BLACK}بچایں
 
 # NewGRF parameters window

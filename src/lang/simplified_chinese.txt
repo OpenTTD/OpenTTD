@@ -2195,11 +2195,13 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}……�
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}……GPU 驱动程序导致游戏崩溃。硬件加速已禁用
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}新游戏
 STR_INTRO_LOAD_GAME                                             :{BLACK}读取存档
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}以场景开始游戏
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}以高度图开始游戏
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}游玩场景
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}游玩高度图
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}场景编辑器
 STR_INTRO_MULTIPLAYER                                           :{BLACK}联机游戏
 
@@ -3520,15 +3522,12 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}保存�
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}可用的预设名称，请选择一个来复制到存档列表中
 STR_SAVE_PRESET_TITLE                                           :{BLACK}输入预设名称
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}保存预设值到当前选定的名称
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}取消
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}不修改默认设置
 STR_SAVE_PRESET_SAVE                                            :{BLACK}保存
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}以当前选定的名称保存预设
 
 # NewGRF parameters window
 STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}改变基本图形组参数
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}关闭
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重置
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全部参数恢复默认
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :参数 {NUM}
@@ -3619,7 +3618,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法�
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暂停可能造成 OpenTTD 游戏错误，请不要将向开发人员报告接下来可能出现的错误情形。{}确定要取消暂停吗？
 
 # NewGRF status
-STR_NEWGRF_LIST_NONE                                            :空
+STR_NEWGRF_LIST_NONE                                            :无
 ###length 3
 STR_NEWGRF_LIST_ALL_FOUND                                       :目前所有文件
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}找到兼容文件
@@ -3844,7 +3843,7 @@ STR_STATION_VIEW_PLANNED_AMOUNT                                 :货物总量：
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT}来自 {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT}途经 {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT}前往 {STATION}
-STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT}来自不明车站
+STR_STATION_VIEW_FROM_ANY                                       :{RED}{CARGO_SHORT}来自未知车站
 STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHORT}前往任何车站
 STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT}途经任何车站
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT}来自本站
@@ -4281,10 +4280,10 @@ STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}购买�
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}购买飞机
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}克隆列车
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}克隆汽车
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}克隆船只
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}克隆飞机
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}复制列车
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}复制汽车
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}复制船只
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}复制飞机
 
 ###length VEHICLE_TYPES
 STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}复制火车。点击此按钮然后再点击任意一列在车库内或车库外的火车以复制购买。按住 <Ctrl> 键单击以共享调度计划。按住 <Shift> 键单击以显示预计费用
@@ -4889,8 +4888,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}链接�
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}接受
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}选择高亮的 AI
-STR_AI_LIST_CANCEL                                              :{BLACK}取消
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不修改本 AI
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}进行截图
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}普通截图
@@ -4903,7 +4900,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}小地�
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI 参数
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}游戏脚本参数
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}关闭
 STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}：{ORANGE}{STRING}
 
@@ -5848,7 +5844,7 @@ STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} 船坞 #
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} 机库
 # _SERIAL version of AIRACRAFT doesn't exist
 
-STR_UNKNOWN_STATION                                             :未知车站（目的地）
+STR_UNKNOWN_STATION                                             :未知车站
 STR_DEFAULT_SIGN_NAME                                           :标志
 STR_COMPANY_SOMEONE                                             :某人
 

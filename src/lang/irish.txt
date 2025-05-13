@@ -3160,14 +3160,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Sábhái
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Liosta de na réamhshocraithe atá ar fáil, roghnaigh ceann chun é a chóipeáil chuig an t-ainm sábháilte thíos
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Iontráil ainm don réamhshocrú
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}An t-ainm atá roghnaithe faoi láthair don réamhshocrú a shábhálfar
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cuir ar ceal
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Ná hathraigh an réamhshocrú
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Sábháil
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Sábháil an réamhshocrú faoin ainm atá roghnaithe faoi láthair
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Athraigh na paraiméadair NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Dún
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Athshocraigh
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Socraigh go mbeidh a réamhshocrú ag gach paraiméadair
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraiméadar{NUM}
@@ -4399,8 +4396,6 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Glac leis
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Roghnaigh an AI aibhsithe
-STR_AI_LIST_CANCEL                                              :{BLACK}Cuir ar ceal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ná hathraigh an AI
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Seat scáileáin a thógáil
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Gnáth-seat scáileáin
@@ -4412,7 +4407,6 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Seat sc�
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Dún
 STR_AI_SETTINGS_RESET                                           :{BLACK}Athshocraigh
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 

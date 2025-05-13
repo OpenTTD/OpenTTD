@@ -3113,14 +3113,11 @@ STR_SAVE_PRESET_CAPTION                                         :{WHITE}Servare 
 STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}Index rationum. Unam elige ut transcribatur nomini infero
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Inscribe nomen rationis
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}Nomen electum rationis conservandum
-STR_SAVE_PRESET_CANCEL                                          :{BLACK}Cancellare
-STR_SAVE_PRESET_CANCEL_TOOLTIP                                  :{BLACK}Non mutare rationem
 STR_SAVE_PRESET_SAVE                                            :{BLACK}Servare
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Rationem conservare huic nomini
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mutare parametra NewGRF
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Claudere
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Redire
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Facere ut quodque parametrum solito reversum sit
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametrum {NUM}
@@ -4308,13 +4305,10 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accipere
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Eligere scriptum
-STR_AI_LIST_CANCEL                                              :{BLACK}Cancellare
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non scriptum mutare
 
 
 # Script Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Claudere
 STR_AI_SETTINGS_RESET                                           :{BLACK}Revertere
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
