@@ -17,7 +17,7 @@ enum class SoundSource : uint8_t {
 };
 
 struct SoundEntry {
-	std::shared_ptr<std::vector<uint8_t>> data;
+	std::shared_ptr<std::vector<std::byte>> data;
 	class RandomAccessFile *file;
 	size_t file_offset;
 	size_t file_size;
