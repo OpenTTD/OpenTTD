@@ -1228,8 +1228,8 @@ public:
 				if (sel == INVALID_VEH_ORDER_ID || this->vehicle->owner != _local_company) {
 					/* Deselect clicked order */
 					this->selected_order = -1;
-				} else if (sel == this->selected_order) {
-					if (click_count > 1 && this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
+				} else if (sel == this->selected_order && click_count > 1) {
+					if (this->vehicle->type == VEH_TRAIN && sel < this->vehicle->GetNumOrders()) {
 						Command<CMD_MODIFY_ORDER>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER,
 								this->vehicle->tile, this->vehicle->index, sel,
 								MOF_STOP_LOCATION, (this->vehicle->GetOrder(sel)->GetStopLocation() + 1) % OSL_END);
