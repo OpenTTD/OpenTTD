@@ -230,6 +230,15 @@ public:
 		return (this->base() & Tmask) == this->base();
 	}
 
+	/**
+	 * Count the number of set bits.
+	 * @return The number of bits set to true.
+	 */
+	inline uint Count() const
+	{
+		return CountBits(this->base());
+	}
+
 	auto begin() const { return SetBitIterator<Tvalue_type>(this->data).begin(); }
 	auto end() const { return SetBitIterator<Tvalue_type>(this->data).end(); }
 
