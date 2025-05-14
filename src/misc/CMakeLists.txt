@@ -1,4 +1,5 @@
 add_files(
+    alternating_iterator.hpp
     binaryheap.hpp
     dbg_helpers.cpp
     dbg_helpers.h
