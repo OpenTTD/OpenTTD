@@ -111,7 +111,7 @@ void TextfileWindow::ConstructWindow()
 uint TextfileWindow::ReflowContent()
 {
 	uint height = 0;
-	if (!IsWidgetLowered(WID_TF_WRAPTEXT)) {
+	if (!this->IsTextWrapped()) {
 		for (auto &line : this->lines) {
 			line.top = height;
 			height++;
@@ -150,7 +150,7 @@ uint TextfileWindow::GetContentHeight()
 /** Set scrollbars to the right lengths. */
 void TextfileWindow::SetupScrollbars(bool force_reflow)
 {
-	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
+	if (this->IsTextWrapped()) {
 		/* Reflow is mandatory if text wrapping is on */
 		uint height = this->ReflowContent();
 		this->vscroll->SetCount(height);
@@ -161,7 +161,7 @@ void TextfileWindow::SetupScrollbars(bool force_reflow)
 		this->hscroll->SetCount(this->max_length);
 	}
 
-	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, IsWidgetLowered(WID_TF_WRAPTEXT));
+	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, this->IsTextWrapped());
 }
 
 
@@ -310,7 +310,7 @@ const TextfileWindow::Hyperlink *TextfileWindow::GetHyperlink(Point pt) const
 	const int clicked_row = this->GetRowFromWidget(pt.y, WID_TF_BACKGROUND, WidgetDimensions::scaled.frametext.top, GetCharacterHeight(FS_MONO)) + this->GetScrollbar(WID_TF_VSCROLLBAR)->GetPosition();
 	size_t line_index;
 	size_t subline;
-	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
+	if (this->IsTextWrapped()) {
 		auto it = std::ranges::find_if(this->lines, [clicked_row](const Line &l) { return l.top <= clicked_row && l.bottom > clicked_row; });
 		if (it == this->lines.cend()) return nullptr;
 		line_index = it - this->lines.cbegin();
@@ -329,7 +329,7 @@ const TextfileWindow::Hyperlink *TextfileWindow::GetHyperlink(Point pt) const
 	if (found_links.empty()) return nullptr;
 
 	/* Build line layout to figure out character position that was clicked. */
-	uint window_width = IsWidgetLowered(WID_TF_WRAPTEXT) ? this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WidgetDimensions::scaled.frametext.Horizontal() : INT_MAX;
+	uint window_width = this->IsTextWrapped() ? this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WidgetDimensions::scaled.frametext.Horizontal() : INT_MAX;
 	Layouter layout(this->lines[line_index].text, window_width, FS_MONO);
 	assert(subline < layout.size());
 	ptrdiff_t char_index = layout.GetCharAtPosition(pt.x - WidgetDimensions::scaled.frametext.left, subline);
@@ -582,7 +582,7 @@ void TextfileWindow::AfterLoadMarkdown()
 	fr = fr.Translate(-fr.left, -fr.top);
 	int line_height = GetCharacterHeight(FS_MONO);
 
-	if (!IsWidgetLowered(WID_TF_WRAPTEXT)) fr = ScrollRect(fr, *this->hscroll, 1);
+	if (!this->IsTextWrapped()) fr = ScrollRect(fr, *this->hscroll, 1);
 
 	int pos = this->vscroll->GetPosition();
 	int cap = this->vscroll->GetCapacity();
@@ -592,7 +592,7 @@ void TextfileWindow::AfterLoadMarkdown()
 		if (line.top > pos + cap) break;
 
 		int y_offset = (line.top - pos) * line_height;
-		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
+		if (this->IsTextWrapped()) {
 			DrawStringMultiLineWithClipping(fr.left, fr.right, y_offset, y_offset + (line.bottom - line.top) * line_height, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
 			DrawString(fr.left, fr.right, y_offset, line.text, line.colour, SA_TOP | SA_LEFT, false, FS_MONO);
@@ -626,13 +626,18 @@ void TextfileWindow::ScrollToLine(size_t line)
 {
 	Scrollbar *sb = this->GetScrollbar(WID_TF_VSCROLLBAR);
 	int newpos;
-	if (this->IsWidgetLowered(WID_TF_WRAPTEXT)) {
+	if (this->IsTextWrapped()) {
 		newpos = this->lines[line].top;
 	} else {
 		newpos = static_cast<int>(line);
 	}
 	sb->SetPosition(std::min(newpos, sb->GetCount() - sb->GetCapacity()));
 	this->SetDirty();
+}
+
+bool TextfileWindow::IsTextWrapped() const
+{
+	return this->IsWidgetLowered(WID_TF_WRAPTEXT);
 }
 
 /* virtual */ void TextfileWindow::Reset()
