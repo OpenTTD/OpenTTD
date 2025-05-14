@@ -3042,11 +3042,20 @@ void InputLoop()
 	HandleMouseEvents();
 }
 
+static std::chrono::time_point<std::chrono::steady_clock> _realtime_tick_start;
+
+bool CanContinueRealtimeTick()
+{
+	auto now = std::chrono::steady_clock::now();
+	return std::chrono::duration_cast<std::chrono::milliseconds>(now - _realtime_tick_start).count() < (MILLISECONDS_PER_TICK * 3 / 4);
+}
+
 /**
  * Dispatch OnRealtimeTick event over all windows
  */
 void CallWindowRealtimeTickEvent(uint delta_ms)
 {
+	_realtime_tick_start = std::chrono::steady_clock::now();
 	for (Window *w : Window::Iterate()) {
 		w->OnRealtimeTick(delta_ms);
 	}
