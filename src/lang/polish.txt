@@ -2575,6 +2575,8 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nie 
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Sterownik GPU spowodował awarię gry. Wyłączono przyspieszenie sprzętowe
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nowa Gra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Wczytaj Grę
