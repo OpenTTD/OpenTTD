@@ -37,6 +37,7 @@ struct TextfileWindow : public Window, MissingGlyphSearcher {
 	bool Monospace() override;
 	void SetFontNames(FontCacheSettings *settings, std::string_view font_name, const void *os_data) override;
 	void ScrollToLine(size_t line);
+	bool IsTextWrapped() const;
 
 	virtual void LoadTextfile(const std::string &textfile, Subdirectory dir);
 
