@@ -818,7 +818,10 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 	if (nwid->type == NWID_VSCROLLBAR) {
 		NWidgetScrollbar *sb = static_cast<NWidgetScrollbar *>(nwid);
 		if (sb->GetCount() > sb->GetCapacity()) {
-			if (sb->UpdatePosition(wheel)) w->SetDirty();
+			if (sb->UpdatePosition(wheel)) {
+				w->OnScrollbarScroll(nwid->GetIndex());
+				w->SetDirty();
+			}
 		}
 		return;
 	}
@@ -826,7 +829,10 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 	/* Scroll the widget attached to the scrollbar. */
 	Scrollbar *sb = (nwid->GetScrollbarIndex() >= 0 ? w->GetScrollbar(nwid->GetScrollbarIndex()) : nullptr);
 	if (sb != nullptr && sb->GetCount() > sb->GetCapacity()) {
-		if (sb->UpdatePosition(wheel)) w->SetDirty();
+		if (sb->UpdatePosition(wheel)) {
+			w->OnScrollbarScroll(nwid->GetScrollbarIndex());
+			w->SetDirty();
+		}
 	}
 }
 
@@ -2342,7 +2348,10 @@ static void HandleScrollbarScrolling(Window *w)
 	if (sb->disp_flags.Any({NWidgetDisplayFlag::ScrollbarUp, NWidgetDisplayFlag::ScrollbarDown})) {
 		if (_scroller_click_timeout == 1) {
 			_scroller_click_timeout = 3;
-			if (sb->UpdatePosition(rtl == sb->disp_flags.Test(NWidgetDisplayFlag::ScrollbarUp) ? 1 : -1)) w->SetDirty();
+			if (sb->UpdatePosition(rtl == sb->disp_flags.Test(NWidgetDisplayFlag::ScrollbarUp) ? 1 : -1)) {
+				w->OnScrollbarScroll(w->mouse_capture_widget);
+				w->SetDirty();
+			}
 		}
 		return;
 	}
@@ -2353,7 +2362,10 @@ static void HandleScrollbarScrolling(Window *w)
 
 	int pos = RoundDivSU((i + _scrollbar_start_pos) * range, std::max(1, _scrollbar_size));
 	if (rtl) pos = range - pos;
-	if (sb->SetPosition(pos)) w->SetDirty();
+	if (sb->SetPosition(pos)) {
+		w->OnScrollbarScroll(w->mouse_capture_widget);
+		w->SetDirty();
+	}
 }
 
 /**

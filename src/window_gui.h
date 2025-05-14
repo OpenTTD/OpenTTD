@@ -712,6 +712,13 @@ public:
 	virtual void OnScroll([[maybe_unused]] Point delta) {}
 
 	/**
+	 * Notify window that a scrollbar position has been updated.
+	 * @note Only called when the user scrolls, not if a window moves its scrollbar.
+	 * @param widget the scrollbar widget index.
+	 */
+	virtual void OnScrollbarScroll([[maybe_unused]] WidgetID widget) {}
+
+	/**
 	 * The mouse is currently moving over the window or has just moved outside
 	 * of the window. In the latter case pt is (-1, -1).
 	 * @param pt     the point inside the window that the mouse hovers over.
