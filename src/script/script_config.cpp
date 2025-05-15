@@ -106,6 +106,16 @@ void ScriptConfig::ResetSettings()
 	this->settings.clear();
 }
 
+void ScriptConfig::ResetSetting(std::string_view name)
+{
+	if (this->info == nullptr) return;
+
+	const ScriptConfigItem *config_item = this->info->GetConfigItem(name);
+	if (config_item == nullptr) return;
+
+	this->settings.erase(std::string{name});
+}
+
 void ScriptConfig::ResetEditableSettings(bool yet_to_start)
 {
 	if (this->info == nullptr) return ResetSettings();
