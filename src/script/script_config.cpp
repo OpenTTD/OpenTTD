@@ -87,7 +87,7 @@ int ScriptConfig::GetSetting(const std::string &name) const
 	return it->second;
 }
 
-void ScriptConfig::SetSetting(std::string_view name, int value)
+void ScriptConfig::SetSetting(std::string_view name, std::optional<int> value)
 {
 	/* You can only set Script specific settings if an Script is selected. */
 	if (this->info == nullptr) return;
@@ -95,9 +95,14 @@ void ScriptConfig::SetSetting(std::string_view name, int value)
 	const ScriptConfigItem *config_item = this->info->GetConfigItem(name);
 	if (config_item == nullptr) return;
 
-	value = Clamp(value, config_item->min_value, config_item->max_value);
+	if (value.has_value()) {
+		*value = Clamp(*value, config_item->min_value, config_item->max_value);
 
-	this->settings[std::string{name}] = value;
+		this->settings[std::string{name}] = *value;
+		return;
+	}
+
+	this->settings.erase(std::string{name});
 }
 
 void ScriptConfig::ResetSettings()
