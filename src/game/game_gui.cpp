@@ -347,10 +347,14 @@ struct GSConfigWindow : public Window {
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
-		if (!str.has_value()) return;
-		auto value = ParseInteger<int32_t>(*str);
-		if (!value.has_value()) return;
-		SetValue(*value);
+		/* Was 'cancel' pressed or nothing entered? */
+		if (!str.has_value() || str->empty()) return;
+
+		auto llvalue = ParseInteger<int64_t>(*str);
+		if (!llvalue.has_value()) return;
+
+		int value = ClampTo<int32_t>(*llvalue);
+		this->SetValue(value);
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index) override
