@@ -1116,7 +1116,7 @@ struct NetworkStartServerWindow : public Window {
 		if (this->widget_id == WID_NSS_SETPWD) {
 			_settings_client.network.server_password = std::move(*str);
 		} else {
-			auto value = ParseInteger<int32_t>(*str);
+			auto value = ParseInteger<int32_t>(*str, 10, true);
 			if (!value.has_value()) return;
 			this->SetWidgetDirty(this->widget_id);
 			switch (this->widget_id) {
