@@ -2501,7 +2501,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 		TimerGameCalendar::Year value;
 		if (!str->empty()) {
-			auto val = ParseInteger(*str);
+			auto val = ParseInteger(*str, 10, true);
 			if (!val.has_value()) return;
 			value = static_cast<TimerGameCalendar::Year>(*val);
 		} else {

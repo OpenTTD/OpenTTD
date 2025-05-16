@@ -594,7 +594,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		if (!str.has_value()) return;
 
-		auto val = ParseInteger<int32_t>(*str);
+		auto val = ParseInteger<int32_t>(*str, 10, true);
 		if (!val.has_value()) return;
 		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = *val;
 		this->SetDirty();
@@ -1066,7 +1066,7 @@ struct SpriteAlignerWindow : Window {
 	{
 		if (!str.has_value()) return;
 
-		auto value = ParseInteger(*str);
+		auto value = ParseInteger(*str, 10, true);
 		if (!value.has_value()) return;
 		this->current_sprite = *value;
 		if (this->current_sprite >= GetMaxSpriteID()) this->current_sprite = 0;

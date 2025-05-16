@@ -435,7 +435,7 @@ struct NewGRFParametersWindow : public Window {
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		if (!str.has_value() || str->empty()) return;
-		auto value = ParseInteger<int32_t>(*str);
+		auto value = ParseInteger<int32_t>(*str, 10, true);
 		if (!value.has_value()) return;
 		GRFParameterInfo &par_info = this->GetParameterInfo(this->clicked_row);
 		this->grf_config.SetValue(par_info, *value);
