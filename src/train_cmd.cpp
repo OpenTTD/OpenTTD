@@ -672,15 +672,22 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 		CheckConsistencyOfArticulatedVehicle(v);
 
 		/* Try to connect the vehicle to one of free chains of wagons. */
-		for (Train *w : Train::Iterate()) {
-			if (w->tile == tile &&              ///< Same depot
-					w->IsFreeWagon() &&             ///< A free wagon chain
+		std::vector<VehicleID> freewagons;
+		for (Vehicle *u : VehiclesOnTile(tile)) {
+			if (u->type != VEH_TRAIN) continue;
+
+			Train *w = Train::From(u);
+			if (w->IsFreeWagon() &&             ///< A free wagon chain
 					w->engine_type == e->index &&   ///< Same type
 					w->First() != v &&              ///< Don't connect to ourself
 					!w->vehstatus.Test(VehState::Crashed)) { ///< Not crashed/flooded
-				if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DoCommandFlag::Execute, v->index, w->Last()->index, true).Succeeded()) {
-					break;
-				}
+				freewagons.push_back(w->Last()->index);
+			}
+		}
+		std::ranges::sort(freewagons);
+		for (VehicleID veh_id : freewagons) {
+			if (Command<CMD_MOVE_RAIL_VEHICLE>::Do(DoCommandFlag::Execute, v->index, veh_id, true).Succeeded()) {
+				break;
 			}
 		}
 	}
