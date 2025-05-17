@@ -27,6 +27,8 @@
  * \li AICargo::CC_NON_POURABLE
  * \li AICargo::CC_POTABLE
  * \li AICargo::CC_NON_POTABLE
+ * \li AIOrder.OF_UNBUNCH_IN_DEPOT
+ * \li AIOrder.ERR_ORDER_UNBUNCH
  *
  * Other changes:
  * \li AIBridge::GetBridgeID renamed to AIBridge::GetBridgeType
