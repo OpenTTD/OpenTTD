@@ -401,6 +401,7 @@ enum SaveLoadVersion : uint16_t {
 	SLV_PROTECT_PLACED_HOUSES,              ///< 351  PR#13270 Houses individually placed by players can be protected from town/AI removal.
 	SLV_SCRIPT_SAVE_INSTANCES,              ///< 352  PR#13556 Scripts are allowed to save instances.
 	SLV_FIX_SCC_ENCODED_NEGATIVE,           ///< 353  PR#14049 Fix encoding of negative parameters.
+	SLV_SCRIPT_FORCE_EXACT_MATCH,           ///< 354  PR#13565 Store script force exact match in savegames.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
