@@ -1085,22 +1085,15 @@ static void NewVehicleAvailable(Engine *e)
 	 * prevent that company from getting future intro periods for a while. */
 	if (e->flags.Test(EngineFlag::ExclusivePreview)) {
 		for (Company *c : Company::Iterate()) {
-			uint block_preview = c->block_preview;
-
 			if (!e->company_avail.Test(c->index)) continue;
 
-			/* We assume the user did NOT build it.. prove me wrong ;) */
-			c->block_preview = 20;
-
-			for (const Vehicle *v : Vehicle::Iterate()) {
-				if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP ||
-						(v->type == VEH_AIRCRAFT && Aircraft::From(v)->IsNormalAircraft())) {
-					if (v->owner == c->index && v->engine_type == index) {
-						/* The user did prove me wrong, so restore old value */
-						c->block_preview = block_preview;
-						break;
-					}
-				}
+			/* Check the company's 'ALL_GROUP' group statistics. This only includes countable vehicles, which is fine
+			 * as those are the only engines that given exclusive previews. */
+			const GroupStatistics &all_stats = GroupStatistics::Get(c->index, ALL_GROUP, e->type);
+			auto it = all_stats.num_engines.find(index);
+			if (it == std::end(all_stats.num_engines) || it->second == 0) {
+				/* The company did not build this engine during preview. */
+				c->block_preview = 20;
 			}
 		}
 	}
