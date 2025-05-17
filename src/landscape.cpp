@@ -636,6 +636,41 @@ void ClearSnowLine()
 }
 
 /**
+ * Check if all tiles on the map edge should be considered water borders.
+ * @param allow_non_flat_void Should we allow non-flat void tiles? (if map edge raised, then flattened to sea level)
+ * @return true If the edge of the map is flat and height 0, allowing for infinite water borders.
+ */
+bool CheckWaterBorders(bool allow_non_flat_void)
+{
+	auto check_tile = [allow_non_flat_void](uint x, uint y, Slope inner_edge) -> bool {
+		auto [slope, h] = GetTilePixelSlopeOutsideMap(x, y);
+
+		/* The edge tile is flat. */
+		if ((slope == SLOPE_FLAT) && (h == 0)) return true;
+		if (allow_non_flat_void && h == 0 && (slope & inner_edge) == 0 && IsTileType(TileXY(x, y), MP_VOID)) return true;
+		return false;
+	};
+
+	/* Check the map corners. */
+	if (!check_tile(0, 0, SLOPE_S)) return false;
+	if (!check_tile(0, Map::SizeY(), SLOPE_W)) return false;
+	if (!check_tile(Map::SizeX(), 0, SLOPE_E)) return false;
+	if (!check_tile(Map::SizeX(), Map::SizeY(), SLOPE_N)) return false;
+
+	/* Check the map edges.*/
+	for (uint x = 0; x <= Map::SizeX(); x++) {
+		if (!check_tile(x, 0, SLOPE_SE)) return false;
+		if (!check_tile(x, Map::SizeY(), SLOPE_NW)) return false;
+	}
+	for (uint y = 1; y < Map::SizeY(); y++) {
+		if (!check_tile(0, y, SLOPE_SW)) return false;
+		if (!check_tile(Map::SizeX(), y, SLOPE_NE)) return false;
+	}
+
+	return true;
+}
+
+/**
  * Clear a piece of landscape
  * @param flags of operation to conduct
  * @param tile tile to clear
