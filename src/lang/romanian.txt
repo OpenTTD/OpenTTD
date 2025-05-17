@@ -3440,6 +3440,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initiali
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Se rulează script-ul
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregătesc jocul
 
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON formatat incorect
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} coordonate formatate incorect, trebuie să fie de la 0 la 1 ca proporție din dimensiunea totală a hărții de înălțime
 
 
@@ -3995,6 +3996,8 @@ STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producț
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}Producție în ultimul minut:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportat)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrează imaginea pe locația industriei. Ctrl+Click pentru a deshide o fereastra cu locația industriei
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH                              :{BLACK}Grafic de producție
+STR_INDUSTRY_VIEW_PRODUCTION_GRAPH_TOOLTIP                      :{BLACK}Arată graficul de producție istoric al industriei
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivelul producției: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industria a anunțat închiderea iminentă!
 
