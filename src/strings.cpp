@@ -1004,7 +1004,7 @@ static void DecodeEncodedString(StringConsumer &consumer, bool game_script, Stri
 	std::vector<StringParameter> sub_args;
 
 	StringIndexInTab id(consumer.ReadIntegerBase<uint32_t>(16));
-	if (consumer.AnyBytesLeft() && !consumer.ReadUtf8If(SCC_RECORD_SEPARATOR)) {
+	if (consumer.AnyBytesLeft() && !consumer.PeekUtf8If(SCC_RECORD_SEPARATOR)) {
 		consumer.SkipAll();
 		builder += "(invalid SCC_ENCODED)";
 		return;
