@@ -2735,14 +2735,14 @@ int WhoCanServiceIndustry(Industry *ind)
 		 * We cannot check the first of shared orders only, since the first vehicle in such a chain
 		 * may have a different cargo type.
 		 */
-		for (const Order *o : v->Orders()) {
-			if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
+		for (const Order &o : v->Orders()) {
+			if (o.IsType(OT_GOTO_STATION) && !(o.GetUnloadType() & OUFB_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
-				Station *st = Station::Get(o->GetDestination().ToStationID());
+				Station *st = Station::Get(o.GetDestination().ToStationID());
 				assert(st != nullptr);
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
-				if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
+				if ((o.GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
 
 				if (ind->stations_near.find(st) != ind->stations_near.end()) {
 					if (v->owner == _local_company) return 2; // Company services industry
