@@ -80,6 +80,20 @@ public:
 };
 
 /**
+ * Creates a list of vehicles that have orders to a given waypoint.
+ * @api ai game
+ * @ingroup ScriptList
+ */
+class ScriptVehicleList_Waypoint : public ScriptList {
+public:
+	/**
+	 * @param waypoint_id The waypoint to get the list of vehicles from, which have orders to it.
+	 * @pre ScriptWaypoint::IsValidWaypoint(waypoint_id)
+	 */
+	ScriptVehicleList_Waypoint(StationID waypoint_id);
+};
+
+/**
  * Creates a list of vehicles that have orders to a given depot.
  * The list is created with a tile. If the tile is part of an airport all
  * aircraft having a depot order on a hangar of that airport will be
