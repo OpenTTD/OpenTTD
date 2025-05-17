@@ -282,7 +282,7 @@ bool Window::IsWidgetHighlighted(WidgetID widget_index) const
  * @param index the element in the dropdown that is selected.
  * @param instant_close whether the dropdown was configured to close on mouse up.
  */
-void Window::OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_close)
+void Window::OnDropdownClose(Point pt, WidgetID widget, int index, int click_result, bool instant_close)
 {
 	if (widget < 0) return;
 
@@ -290,7 +290,7 @@ void Window::OnDropdownClose(Point pt, WidgetID widget, int index, bool instant_
 		/* Send event for selected option if we're still
 		 * on the parent button of the dropdown (behaviour of the dropdowns in the main toolbar). */
 		if (GetWidgetFromPos(this, pt.x, pt.y) == widget) {
-			this->OnDropdownSelect(widget, index);
+			this->OnDropdownSelect(widget, index, click_result);
 		}
 	}
 
