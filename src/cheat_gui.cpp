@@ -608,7 +608,7 @@ struct CheatWindow : Window {
 
 			int32_t value;
 			if (!str->empty()) {
-				auto llvalue = ParseInteger<int64_t>(*str);
+				auto llvalue = ParseInteger<int64_t>(*str, 10, true);
 				if (!llvalue.has_value()) return;
 
 				/* Save the correct currency-translated value */
@@ -623,7 +623,7 @@ struct CheatWindow : Window {
 		} else {
 			const CheatEntry *ce = &_cheats_ui[clicked_cheat];
 			int oldvalue = static_cast<int32_t>(ReadValue(ce->variable, ce->type));
-			auto value = ParseInteger<int32_t>(*str);
+			auto value = ParseInteger<int32_t>(*str, 10, true);
 			if (!value.has_value()) return;
 			*ce->been_used = true;
 			value = ce->proc(*value, *value - oldvalue);

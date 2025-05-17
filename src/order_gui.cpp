@@ -1363,7 +1363,7 @@ public:
 		if (!str.has_value() || str->empty()) return;
 
 		VehicleOrderID sel = this->OrderGetSel();
-		auto value = ParseInteger(*str);
+		auto value = ParseInteger(*str, 10, true);
 		if (!value.has_value()) return;
 
 		switch (this->vehicle->GetOrder(sel)->GetConditionVariable()) {

@@ -1371,7 +1371,7 @@ struct GameOptionsWindow : Window {
 
 		int32_t value;
 		if (!str->empty()) {
-			auto llvalue = ParseInteger<int64_t>(*str);
+			auto llvalue = ParseInteger<int64_t>(*str, 10, true);
 			if (!llvalue.has_value()) return;
 
 			/* Save the correct currency-translated value */
@@ -2067,7 +2067,7 @@ struct CustomCurrencyWindow : Window {
 
 		switch (this->query_widget) {
 			case WID_CC_RATE: {
-				auto val = ParseInteger(*str);
+				auto val = ParseInteger(*str, 10, true);
 				if (!val.has_value()) return;
 				GetCustomCurrency().rate = Clamp(*val, 1, UINT16_MAX);
 				break;
@@ -2088,7 +2088,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_YEAR: { // Year to switch to euro
 				TimerGameCalendar::Year year = CF_NOEURO;
 				if (!str->empty()) {
-					auto val = ParseInteger(*str);
+					auto val = ParseInteger(*str, 10, true);
 					if (!val.has_value()) return;
 					year = Clamp(static_cast<TimerGameCalendar::Year>(*val), MIN_EURO_YEAR, CalendarTime::MAX_YEAR);
 				}

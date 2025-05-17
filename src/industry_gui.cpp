@@ -1165,7 +1165,7 @@ public:
 		if (!str.has_value() || str->empty()) return;
 
 		Industry *i = Industry::Get(this->window_number);
-		auto value = ParseInteger(*str);
+		auto value = ParseInteger(*str, 10, true);
 		if (!value.has_value()) return;
 		switch (this->editbox_line) {
 			case IL_NONE: NOT_REACHED();

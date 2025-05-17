@@ -486,7 +486,7 @@ struct ScriptSettingsWindow : public Window {
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
 		if (!str.has_value()) return;
-		auto value = ParseInteger<int32_t>(*str);
+		auto value = ParseInteger<int32_t>(*str, 10, true);
 		if (!value.has_value()) return;
 		SetValue(*value);
 	}

@@ -914,7 +914,7 @@ struct GenerateLandscapeWindow : public Window {
 
 		int32_t value;
 		if (!str->empty()) {
-			auto val = ParseInteger<int32_t>(*str);
+			auto val = ParseInteger<int32_t>(*str, 10, true);
 			if (!val.has_value()) return;
 			value = *val;
 		} else {
@@ -1203,7 +1203,7 @@ struct CreateScenarioWindow : public Window
 	{
 		if (!str.has_value()) return;
 
-		auto value = ParseInteger<int32_t>(*str);
+		auto value = ParseInteger<int32_t>(*str, 10, true);
 		if (!value.has_value()) return;
 
 		switch (this->widget_id) {

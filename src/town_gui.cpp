@@ -1275,7 +1275,7 @@ public:
 		/* Was 'cancel' pressed? */
 		if (!str.has_value()) return;
 
-		auto value = ParseInteger(*str);
+		auto value = ParseInteger(*str, 10, true);
 		if (!value.has_value()) return;
 
 		Backup<bool> old_generating_world(_generating_world, true);
